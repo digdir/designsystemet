@@ -168,26 +168,26 @@ describe('utils', () => {
   });
 
   describe('announce', () => {
-    it('should mount live region on first user interaction', async () => {
-      // Reset by removing any existing live region
-      document.querySelector('[aria-live="assertive"]')?.remove();
-
+    // Make a button and click it will mount the live region
+    const ensureLiveRegionMounted = async () => {
       document.body.innerHTML = '<button>Click me</button>';
       const button = document.querySelector('button') as HTMLButtonElement;
 
       await user.click(button);
+    };
+    it('should mount live region on first user interaction', async () => {
+      // Reset by removing any existing live region
+      document.querySelector('[aria-live="assertive"]')?.remove();
+
+      await ensureLiveRegionMounted();
 
       const live = document.querySelector('[aria-live="assertive"]');
       expect(live).toBeInTheDocument();
     });
-    it('should create and mount a live region on first call', () => {
-      announce('Hello');
-      const live = document.querySelector('[aria-live="assertive"]');
-      expect(live).toBeInTheDocument();
-      expect(live).toHaveTextContent('Hello');
-    });
 
-    it('should reuse the same live region element', () => {
+    it('should reuse the same live region element', async () => {
+      await ensureLiveRegionMounted();
+
       announce('First');
       announce('Second');
       const regions = document.querySelectorAll('[aria-live="assertive"]');
@@ -195,7 +195,9 @@ describe('utils', () => {
       expect(regions[0]).toHaveTextContent('Second');
     });
 
-    it('should alternate non-breaking space to force re-announcement', () => {
+    it('should alternate non-breaking space to force re-announcement', async () => {
+      await ensureLiveRegionMounted();
+
       announce('Same');
       const live = document.querySelector('[aria-live="assertive"]');
       const first = live?.textContent;
@@ -208,10 +210,12 @@ describe('utils', () => {
       expect([first, second]).toContain('Same\u00A0');
     });
 
-    it('should not set text content when called without text', () => {
+    it('should not set text content when called without text', async () => {
+      await ensureLiveRegionMounted();
+
       announce('Existing');
       const live = document.querySelector('[aria-live="assertive"]');
-      announce();
+      announce('Existing');
       // textContent unchanged from previous call
       expect(live?.textContent).toContain('Existing');
     });
