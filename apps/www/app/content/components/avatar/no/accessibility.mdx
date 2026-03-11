@@ -5,7 +5,7 @@
 
 **Informativ `Avatar` skal ha et tilgjengelig navn.**
 
-Hvis flere avatarer vises sammen, skal hvert tilgjengelige navn være unikt.
+Tilgjengelig navn kan legges til med `aria-label`. Hvis flere avatarer vises sammen, skal hvert navn være unikt.
 
 <span data-size="sm"> 
 (WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90))
@@ -16,7 +16,7 @@ Hvis flere avatarer vises sammen, skal hvert tilgjengelige navn være unikt.
 \
 **Dekorativ `Avatar` skal skjules for skjermlesere.**
 
-Dette gjelder når `Avatar` kun er dekorasjon og ikke formidler informasjon.
+Dette gjelder når `Avatar` kun er dekorasjon og ikke formidler informasjon. Eksempel: Hvis en `Avatar` vises inne i en knapp med teksten “Ola Nordmann”, kan avataren skjules fordi navnet allerede identifiserer personen.
 
 <span data-size="sm"> 
 (WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87))
@@ -25,10 +25,9 @@ Dette gjelder når `Avatar` kun er dekorasjon og ikke formidler informasjon.
 
 <Divider/>
 \
-**Klikkbar `Avatar` skal ha et tydelig tilgjengelig navn.**
+**Klikkbar `Avatar` skal ha et tilgjengelig navn.**
 
-Eksempel: “Profil for Ola Nordmann”.  
-Ikke bare: “ON” eller “Avatar”.
+Tilgjengelig navn kan legges til med `aria-label`. Eksempel: “Profil for Ola Nordmann”. Unngå: kun Innitialer eller “Avatar”.
 
 <span data-size="sm"> 
 (WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))

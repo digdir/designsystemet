@@ -3,7 +3,7 @@
     .ds-divider { margin-top: var(--ds-size-10); }
     `}</style>
 
-**Each button in `ToggleGroup` must have a clear accessible name.**
+**Each button in `ToggleGroup` must have a accessible name.**
 
 If a button only shows an icon, the name must describe what the option means.  
 Example: “List view” or “Grid view”.
@@ -15,24 +15,12 @@ Example: “List view” or “Grid view”.
 
 <Divider/>
 \
-**`ToggleGroup` must have an accessible name that explains what the options relate to.**
+**`ToggleGroup` must be used in a way that keeps all options visible and usable on small screens.**
 
-This can be a visible label or a programmatic name (for example `aria-label`).  
-Example: “View”.
+`ToggleGroup` does not wrap onto multiple lines. Too many options or long labels may cause parts of the component to extend outside the visible viewport.
 
-<span data-size="sm"> 
-(WCAG: [4.1.2 Name, role, value](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
-</span> 
+Check that all options remain visible and usable at a narrow viewport or high zoom without horizontal scrolling.
 
-
-<Divider/>
-\
-**`ToggleGroup` must be used in a way that prevents loss of content or functionality on small screens.**
-
-Too many options or long labels can cause the component to break the layout.  
-Check that all options remain visible and usable at a narrow viewport or high zoom.  
-The entire component must be visible without horizontal scrolling.  
-Test at a narrow viewport or high zoom (for example 320px width or 400% zoom).
 
 <span data-size="sm"> 
 (WCAG: [1.4.10 Dynamisk tilpasning (Reflow)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva-aa/144))

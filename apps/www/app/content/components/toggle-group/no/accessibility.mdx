@@ -2,23 +2,10 @@
 <style>{`
     .ds-divider { margin-top: var(--ds-size-10); }
     `}</style>
-    
-**Hver knapp i `ToggleGroup` skal ha et tydelig tilgjengelig navn.**
 
-Hvis en knapp kun viser ikon, må navnet beskrive hva valget betyr.  
-Eksempel: “Listevisning” eller “Rutenettvisning”.
+**Hver knapp i `ToggleGroup` skal ha et tilgjengelig navn.**
 
-<span data-size="sm"> 
-(WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
-</span> 
-
-
-<Divider/>
-\
-**`ToggleGroup` skal ha et tilgjengelig navn som forklarer hva valgene gjelder.**
-
-Dette kan være en synlig ledetekst eller et programmatisk navn (for eksempel `aria-label`).  
-Eksempel: “Visning”.
+Om knappene kun bruker ikon kan tilgjengelig navn settes med `aria-label` eller `data-tooltip`. Navnet må beskrive hva valget betyr. Eksempel: “Listevisning” eller “Rutenettvisning”.
 
 <span data-size="sm"> 
 (WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
@@ -27,21 +14,16 @@ Eksempel: “Visning”.
 
 <Divider/>
 \
-**`ToggleGroup` skal brukes på en måte som gjør at innhold eller funksjonalitet ikke går tapt på små skjermer.**
+**`ToggleGroup` skal brukes på en måte som gjør at alle valg forblir synlige og brukbare på små skjermer.**
 
-For mange valg eller lange tekster kan føre til at komponenten bryter layouten.  
-Kontroller at alle valg fortsatt er synlige og brukbare ved smal viewport eller høy zoom.  
-Hele komponenten skal være synlig uten horisontal scrolling.  
-Test ved smal viewport eller høy zoom (for eksempel 320px bredde eller 400 % zoom).
+`ToggleGroup` brytes ikke over flere linjer. For mange valg eller lange tekster kan føre til at deler av komponenten havner utenfor den synlige rammen.
+
+Kontroller at alle valg fortsatt er synlige og brukbare ved smal viewport eller høy zoom uten horisontal scrolling.
 
 <span data-size="sm"> 
 (WCAG: [1.4.10 Dynamisk tilpasning (Reflow)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva-aa/144))
 </span> 
 
 <Divider/>
-
-### God praksis
-
-- Hvis `ToggleGroup` bruker kun ikoner, bør det i tillegg vises `Tooltip` for å forklare handlingen visuelt. `Tooltip` erstatter ikke krav om programmatisk navn.
 
 
