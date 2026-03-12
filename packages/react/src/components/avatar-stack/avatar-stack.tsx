@@ -72,7 +72,7 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
   return (
     <figure
       tabIndex={
-        rest.tabIndex !== undefined ? rest.tabIndex : expandable ? 0 : -1
+        rest.tabIndex !== undefined ? rest.tabIndex : expandable ? 0 : undefined
       }
       ref={ref}
       className={cl(`ds-avatar-stack`, className)}
