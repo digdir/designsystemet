@@ -65,7 +65,11 @@ export default function BestPractices({
   },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
-  const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: Best practices - ${title}`;
+  const feedbackUrl = new URL(
+    'https://github.com/digdir/designsystemet/issues/new',
+  );
+  feedbackUrl.searchParams.set('template', 'BLANK_ISSUE');
+  feedbackUrl.searchParams.set('title', `Feedback: Best practices - ${title}`);
   return (
     <div className={cl('l-content-container')}>
       <div className={classes.container}>
@@ -113,7 +117,7 @@ export default function BestPractices({
               variant='secondary'
               asChild
             >
-              <a href={feedbackUrl}>
+              <a href={feedbackUrl.toString()}>
                 <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
               </a>
             </Button>
