@@ -89,7 +89,7 @@ export default function BestPractices({
                     href='#article-contributors'
                     aria-label={t('contributors')}
                   >
-                    <AvatarStack authors={author} expandable='fixed' />
+                    <AvatarStack authors={author} />
                   </a>
                   <span>{author}</span>
                 </>
