@@ -27,14 +27,15 @@
         border-radius: var(--ds-border-radius-sm);
         padding-block: 3px;
 
-        /*It needs to be decided if level 3 should be included
-        and if so, how to style it. This is just placeholder*/
         &[data-level='3'] {
           padding-inline-start: 22px;
         }
 
         &:focus-visible {
           outline-offset: calc(-1 * var(--ds-border-width-focus));
+        }
+        &:hover {
+          background-color: var(--ds-color-neutral-surface-tinted);
         }
 
         &[aria-current='true'] {

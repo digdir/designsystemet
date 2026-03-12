@@ -38,15 +38,15 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   } = {};
 
   if (lang === 'no') {
-    cats.Ferdig = [];
-    cats['Under arbeid'] = [];
-    cats.Kommende = [];
+    cats['Grunnleggende mønstre'] = [];
+    cats['Spør brukerne om...'] = [];
+    cats['Kommende mønstre'] = [];
   }
 
   if (lang === 'en') {
-    cats.Completed = [];
-    cats['Under construction'] = [];
-    cats.Coming = [];
+    cats['Basic patterns'] = [];
+    cats['Ask users for...'] = [];
+    cats['Upcoming patterns'] = [];
   }
 
   /* Map over files with mdx parser to get title */

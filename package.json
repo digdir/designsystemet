@@ -2,7 +2,7 @@
   "name": "root",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9a740017",
+  "packageManager": "pnpm@10.31.0+sha512.e3927388bfaa8078ceb79b748ffc1e8274e84d75163e67bc22e06c0d3aed43dd153151cbf11d7f8301ff4acb98c68bdc5cadf6989532801ffafe3b3e4a63c268",
   "engines": {
     "node": ">=24.14.0"
   },
@@ -37,12 +37,12 @@
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.4",
-    "@changesets/cli": "^2.29.8",
+    "@biomejs/biome": "2.4.6",
+    "@changesets/cli": "^2.30.0",
     "@digdir/designsystemet": "workspace:",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@testing-library/jest-dom": "^6.9.1",
-    "@types/node": "^24.11.0",
+    "@types/node": "^24.12.0",
     "@vitejs/plugin-react-swc": "^4.2.3",
     "@vitest/coverage-v8": "4.0.18",
     "@vitest/browser-playwright": "4.0.18",
