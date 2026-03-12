@@ -59,6 +59,7 @@ export const ToggleGroupItem = forwardRef<
     formTarget,
     required,
     disabled,
+    'aria-disabled': ariaDisabled,
     ...labelProps
   } = rest;
 
@@ -72,6 +73,7 @@ export const ToggleGroupItem = forwardRef<
     formTarget,
     required,
     disabled,
+    'aria-disabled': ariaDisabled,
   };
 
   return (
@@ -80,7 +82,7 @@ export const ToggleGroupItem = forwardRef<
       {...labelProps}
       className={cl('ds-button', className)}
       data-variant='tertiary'
-      aria-disabled={disabled}
+      aria-disabled={ariaDisabled ?? disabled}
     >
       <input
         {...inputProps}
@@ -90,6 +92,7 @@ export const ToggleGroupItem = forwardRef<
         type='radio'
         value={value}
         disabled={disabled}
+        aria-disabled={ariaDisabled}
       />
       {children}
     </label>

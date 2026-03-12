@@ -130,3 +130,18 @@ export const Disabled: StoryFn<typeof ToggleGroup> = () => {
     </ToggleGroup>
   );
 };
+export const AriaDisabled: StoryFn<typeof ToggleGroup> = () => {
+  return (
+    <ToggleGroup>
+      <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
+      <ToggleGroup.Item aria-disabled='true' value='utkast'>
+        Utkast
+      </ToggleGroup.Item>
+      <ToggleGroup.Item aria-disabled='true' value='arkiv'>
+        Arkiv
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value='Søppelpost'>Søppelpost</ToggleGroup.Item>
+      <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
