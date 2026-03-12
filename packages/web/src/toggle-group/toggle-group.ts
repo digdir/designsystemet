@@ -24,10 +24,18 @@ const handleKeydown = (event: Partial<KeyboardEvent>) => {
   if (event.key === 'Enter') event.target.click(); // Forward Enter, but no need to listen for space key, as this is handled by the browser
   if (event.key?.startsWith('Arrow')) {
     event.preventDefault?.();
-    const inputs = group.getElementsByTagName('input');
-    const index = [...inputs].indexOf(event.target);
+    const inputs = [...group.getElementsByTagName('input')];
+    const index = inputs.indexOf(event.target);
     const move = event.key.match(/Arrow(Right|Down)/) ? 1 : -1;
-    inputs[(inputs.length + index + move) % inputs.length]?.focus();
+    let nextIndex = index;
+
+    for (let i = 0; i < inputs.length; i++) {
+      nextIndex = (inputs.length + nextIndex + move) % inputs.length;
+      if (!inputs[nextIndex]?.disabled) {
+        inputs[nextIndex]?.focus();
+        break;
+      }
+    }
   }
 };
 
