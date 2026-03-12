@@ -39,6 +39,7 @@ export type ContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
+  isSyncingControlledValue?: () => boolean;
   getPrefixedValue?: (value?: string) => string | undefined;
 };
 
@@ -68,6 +69,7 @@ export const Tabs = forwardRef<DSTabElement, TabsProps>(function Tabs(
     string | undefined
   >(defaultValue);
   const tabsRef = useRef<DSTabElement>(null);
+  const isSyncingControlledValueRef = useRef(false);
   const valuePrefix = useId(); // Used to generate unique value-based ids for tabs and panels
   const mergedRefs = useMergeRefs([ref, tabsRef]);
 
@@ -82,9 +84,14 @@ export const Tabs = forwardRef<DSTabElement, TabsProps>(function Tabs(
 
   useEffect(() => {
     if (!isControlled || !tabsRef.current || value === undefined) return;
-    tabsRef.current?.tabList?.tabs?.forEach((tab) => {
-      if (tab.getAttribute('data-value') === value) tab.click();
-    });
+    isSyncingControlledValueRef.current = true;
+    try {
+      tabsRef.current?.tabList?.tabs?.forEach((tab) => {
+        if (tab.getAttribute('data-value') === value) tab.click();
+      });
+    } finally {
+      isSyncingControlledValueRef.current = false;
+    }
   }, [value, isControlled]);
 
   return (
@@ -93,6 +100,7 @@ export const Tabs = forwardRef<DSTabElement, TabsProps>(function Tabs(
         value,
         defaultValue,
         onChange: onValueChange,
+        isSyncingControlledValue: () => isSyncingControlledValueRef.current,
         getPrefixedValue: (value?: string) =>
           value && `${valuePrefix}-${value}`,
       }}
