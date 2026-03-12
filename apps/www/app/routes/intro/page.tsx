@@ -66,7 +66,10 @@ export default function Intro({
     'https://github.com/digdir/designsystemet/issues/new',
   );
   feedbackUrl.searchParams.set('template', 'BLANK_ISSUE');
-  feedbackUrl.searchParams.set('title', `Feedback: Intro - ${frontmatter.title}`);
+  feedbackUrl.searchParams.set(
+    'title',
+    `Feedback: Intro - ${frontmatter.title}`,
+  );
   return (
     <>
       <div className={classes.header}>
