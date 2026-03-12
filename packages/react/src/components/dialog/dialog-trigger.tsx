@@ -26,7 +26,7 @@ export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
     return (
       <Component
         suppressHydrationWarning // Might get augmented through designsystemet-web with aria-haspopup
-        command={modal ? 'show-modal' : 'show'}
+        command={modal ? 'show-modal' : '--show-non-modal'}
         commandfor={id}
         ref={ref}
         {...rest}
