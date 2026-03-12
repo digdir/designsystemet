@@ -1,9 +1,50 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## Implementation tests
+<style>{`
+    .ds-divider { margin-top: var(--ds-size-10); }
+    `}</style>
 
-## How to describe `Avatar` for screen readers
+**Informative `Avatar` must have an accessible name.**
 
-`Avatar` must either have an `aria-label` that describes who or what the avatar represents, or be set to `aria-hidden` with visible text conveying the same information. Do not state in the `aria-label` that it is an image - screen readers announce this automatically. It is sufficient to use the name, for example `aria-label="Ola Nordmann"`.
+The accessible name can be provided using `aria-label`. If multiple avatars are displayed together, each name must be unique.
 
-Images and other `children` are automatically given `aria-hidden="true"` to prevent information from being repeated.
+<span data-size="sm"> 
+(WCAG: [1.3.1 Info and relationships](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90))
+</span> 
+
+
+<Divider/>
+\
+**Decorative `Avatar` must be hidden from screen readers.**
+
+This applies when the `Avatar` is purely decorative and does not convey information. Example: If an `Avatar` is shown inside a button with the text “Ola Nordmann”, the avatar can be hidden because the name already identifies the person.
+
+
+<span data-size="sm"> 
+(WCAG: [1.1.1 Non-text content](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87))
+</span> 
+
+
+<Divider/>
+\
+**Clickable `Avatar` must have an accessible name.**
+
+The accessible name can be provided using `aria-label`. Example: “Profile for Ola Nordmann”. Avvoid: just initails or “Avatar”.
+
+<span data-size="sm"> 
+(WCAG: [4.1.2 Name, role, value](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
+</span> 
+
+
+<Divider/>
+\
+**Clickable `Avatar` with visible text (for example initials) must include the same text in the accessible name.**
+
+Example: An `Avatar` displaying “ON” should have the accessible name “ON – Profile for Ola Nordmann”.
+
+<span data-size="sm"> 
+(WCAG: [2.5.3 Label in name](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/150))
+</span> 
+
+<Divider/>
+
+
