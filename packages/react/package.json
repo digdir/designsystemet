@@ -43,7 +43,7 @@
     "@digdir/designsystemet-types": "workspace:^",
     "@digdir/designsystemet-web": "workspace:^",
     "@floating-ui/dom": "^1.7.5",
-    "@floating-ui/react": "0.26.23",
+    "@floating-ui/react": "0.27.19",
     "@navikt/aksel-icons": "^8.6.0",
     "@radix-ui/react-slot": "^1.2.4",
     "@tanstack/react-virtual": "^3.13.19",
