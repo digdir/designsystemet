@@ -274,9 +274,9 @@ const Header = ({
                   className={classes.toggleButton}
                 >
                   {theme === 'dark' ? (
-                    <SunIcon fontSize='1.75em' aria-hidden />
+                    <SunIcon aria-hidden />
                   ) : (
-                    <MoonIcon fontSize='1.75em' aria-hidden />
+                    <MoonIcon aria-hidden />
                   )}
                 </Button>
               </Tooltip>
@@ -294,7 +294,6 @@ const Header = ({
                 >
                   <MenuHamburgerIcon
                     aria-hidden
-                    fontSize={26}
                     color='var(--ds-color-neutral-text-default)'
                   />
                 </Button>
@@ -325,7 +324,6 @@ const Header = ({
                     >
                       <XMarkIcon
                         aria-hidden
-                        fontSize={26}
                         color='var(--ds-color-neutral-text-default)'
                       />
                     </Button>
