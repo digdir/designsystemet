@@ -1,4 +1,4 @@
-import { render as renderRtl, screen } from '@testing-library/react';
+import { render as renderRtl, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 
@@ -153,30 +153,47 @@ describe('Tabs', () => {
   });
 
   it('calls onChange in controlled mode when selecting tab with keyboard', async () => {
-    const ControlledTabs = () => {
+    const ControlledTabs = ({
+      onChange,
+    }: {
+      onChange: (value: string) => void;
+    }) => {
       const [value, setValue] = useState('value1');
 
       return (
-        <>
-          <p>Value: {value}</p>
-          <Tabs value={value} onChange={setValue}>
-            <Tabs.List>
-              <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
-              <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
-            </Tabs.List>
-            <Tabs.Panel value='value1'>content 1</Tabs.Panel>
-            <Tabs.Panel value='value2'>content 2</Tabs.Panel>
-          </Tabs>
-        </>
+        <Tabs
+          value={value}
+          onChange={(v) => {
+            setValue(v);
+            onChange(v);
+          }}
+        >
+          <Tabs.List>
+            <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
+            <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+          <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+        </Tabs>
       );
     };
 
-    render(<ControlledTabs />);
+    const onChange = vi.fn();
 
+    render(<ControlledTabs onChange={onChange} />);
+
+    const tabOne = screen.getByRole('tab', { name: 'Tab 1' });
     const tabTwo = screen.getByRole('tab', { name: 'Tab 2' });
-    tabTwo.focus();
-    await user.keyboard('[Space]');
+    expect(tabOne).toHaveAttribute('aria-selected', 'true');
 
-    expect(screen.getByText('Value: value2')).toBeInTheDocument();
+    tabTwo.focus();
+    expect(tabTwo).toHaveFocus();
+    await user.keyboard('{Space}'); // Activate second tab with keyboard
+
+    waitFor(() => {
+      expect(onChange).toHaveBeenCalledWith('value2');
+      expect(tabTwo).toHaveAttribute('aria-selected', 'true');
+      expect(tabOne).toHaveAttribute('aria-selected', 'false');
+    });
   });
 });
