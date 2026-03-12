@@ -28,7 +28,7 @@ export type AvatarStackProps = {
    *  @default undefined
    */
   expandable?: 'fixed' | true;
-} & HTMLAttributes<HTMLElement>;
+} & HTMLAttributes<HTMLSpanElement>;
 
 /**
  * Use `AvatarStack` to constrain Avatars into a stack.
@@ -45,7 +45,7 @@ export type AvatarStackProps = {
  * </EXPERIMENTAL_AvatarStack>
  */
 export const EXPERIMENTAL_AvatarStack = forwardRef<
-  HTMLElement,
+  HTMLSpanElement,
   AvatarStackProps
 >(function AvatarStack(
   {
@@ -70,7 +70,7 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
       expandable === 'fixed' ? Children.count(children) : undefined,
   } as CSSProperties;
   return (
-    <figure
+    <span
       tabIndex={
         rest.tabIndex !== undefined ? rest.tabIndex : expandable ? 0 : undefined
       }
@@ -82,6 +82,6 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
       {...rest}
     >
       {children}
-    </figure>
+    </span>
   );
 });
