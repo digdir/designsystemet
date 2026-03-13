@@ -41,7 +41,7 @@ The package supports sub-path exports which means you can import individual part
 
 For example - importing `tooltip`, you need to also import `popover` as its built using native popover functionality.
 
-The [invokers-polyfill](#invokers-polyfill) will **not be automatically attach using individual imports**.
+The [invokers-polyfill](#invokers-polyfill) will **not be automatically attached using individual imports**.
 
 ### Types
 Add the package to your `types` for types:
