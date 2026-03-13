@@ -30,6 +30,10 @@ export type CheckboxProps = MergeRight<
      * Error message for field
      */
     error?: ReactNode;
+    /**
+     * If true, the checkbox will be displayed as a tile
+     */
+    'data-input-tile'?: boolean;
   } & LabelRequired
 >;
 
@@ -43,6 +47,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
     {
       'data-size': size,
+      'data-input-tile': inputTile,
       className,
       style,
       children,
@@ -54,7 +59,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ref,
   ) {
     return (
-      <Field data-size={size} className={className} style={style}>
+      <Field
+        data-size={size}
+        data-input-tile={inputTile}
+        className={className}
+        style={style}
+      >
         <Input type='checkbox' ref={ref} {...rest} />
         {!!label && <Label weight='regular'>{label}</Label>}
         {!!description && <div data-field='description'>{description}</div>}
