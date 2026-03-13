@@ -75,6 +75,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/popover/popover.js",
       "require": "./dist/cjs/popover/popover.cjs"
+    },
+    "./readonly": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/readonly/readonly.js",
+      "require": "./dist/cjs/readonly/readonly.cjs"
     }
   },
   "files": [
