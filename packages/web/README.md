@@ -4,8 +4,9 @@
 
 - [`@digdir/designsystemet-web`](#digdirdesignsystemet-web)
   - [Table of contents](#table-of-contents)
-  - [Get started](#get-started)
-    - [Types](#types)
+- [Get started](#get-started)
+  - [Individual imports](#individual-imports)
+  - [Types](#types)
   - [Warnings:](#warnings)
 - [`<ds-breadcrumbs>`](#ds-breadcrumbs)
 - [`<ds-error-summary>`](#ds-error-summary)
@@ -26,14 +27,23 @@
   - [`popover`](#popover)
 
 
-### Get started
+## Get started
 
 We recommend to import the whole package.
 This will register all web components and observers globally, so you only need to do this once.
 ```ts
 import '@digdir/designsystemet-web';
 ```
-#### Types
+
+### Individual imports
+
+The package supports sub-path exports which means you can import individual parts of the package if needed, but this is used at own risk.
+
+For example - importing `tooltip`, you need to also import `popover` as its built using native popover functionality.
+
+The [invokers-polyfill](#invokers-polyfill) will **not be automatically attached using individual imports**.
+
+### Types
 Add the package to your `types` for types:
 ```json
 {
@@ -192,10 +202,12 @@ An observer will look for `[data-toggle-group]` and add proper arrow navigation 
 ## `data-tooltip`
 Using a single element for rendering next to elements with `data-tooltip` attribute.
 Also automatically sets `aria-label` or `aria-description` as needed.
+Uses native popover functionality with our [`popover`](#popover) polyfill.
 
 ```html
 <button data-placement="left" data-tooltip="left" class="ds-button">left</button>
 ```
+
 ## `data-clickdelegatefor`
 Used for delegating click event. For example, you can use this to delegate click events from a parent element to child elements that are added dynamically.
 
