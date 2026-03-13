@@ -23,58 +23,58 @@
     "./vscode.html-custom-data.json": "./dist/vscode.html-custom-data.json",
     "./ds-breadcrumbs": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/breadcrumbs/index.js",
-      "require": "./dist/cjs/breadcrumbs/index.cjs"
+      "import": "./dist/esm/breadcrumbs/breadcrumbs.js",
+      "require": "./dist/cjs/breadcrumbs/breadcrumbs.cjs"
     },
     "./ds-error-summary": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/error-summary/index.js",
-      "require": "./dist/cjs/error-summary/index.cjs"
+      "import": "./dist/esm/error-summary/error-summary.js",
+      "require": "./dist/cjs/error-summary/error-summary.cjs"
     },
     "./ds-field": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/field/index.js",
-      "require": "./dist/cjs/field/index.cjs"
+      "import": "./dist/esm/field/field.js",
+      "require": "./dist/cjs/field/field.cjs"
     },
     "./ds-pagination": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/pagination/index.js",
-      "require": "./dist/cjs/pagination/index.cjs"
+      "import": "./dist/esm/pagination/pagination.js",
+      "require": "./dist/cjs/pagination/pagination.cjs"
     },
     "./ds-suggestion": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/suggestion/index.js",
-      "require": "./dist/cjs/suggestion/index.cjs"
+      "import": "./dist/esm/suggestion/suggestion.js",
+      "require": "./dist/cjs/suggestion/suggestion.cjs"
     },
     "./ds-tabs": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/tabs/index.js",
-      "require": "./dist/cjs/tabs/index.cjs"
+      "import": "./dist/esm/tabs/tabs.js",
+      "require": "./dist/cjs/tabs/tabs.cjs"
     },
     "./dialog": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/dialog/index.js",
-      "require": "./dist/cjs/dialog/index.cjs"
+      "import": "./dist/esm/dialog/dialog.js",
+      "require": "./dist/cjs/dialog/dialog.cjs"
     },
     "./toggle-group": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/toggle-group/index.js",
-      "require": "./dist/cjs/toggle-group/index.cjs"
+      "import": "./dist/esm/toggle-group/toggle-group.js",
+      "require": "./dist/cjs/toggle-group/toggle-group.cjs"
     },
     "./tooltip": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/tooltip/index.js",
-      "require": "./dist/cjs/tooltip/index.cjs"
+      "import": "./dist/esm/tooltip/tooltip.js",
+      "require": "./dist/cjs/tooltip/tooltip.cjs"
     },
     "./clickdelegatefor": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/clickdelegatefor/index.js",
-      "require": "./dist/cjs/clickdelegatefor/index.cjs"
+      "import": "./dist/esm/clickdelegatefor/clickdelegatefor.js",
+      "require": "./dist/cjs/clickdelegatefor/clickdelegatefor.cjs"
     },
     "./popover": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/popover/index.js",
-      "require": "./dist/cjs/popover/index.cjs"
+      "import": "./dist/esm/popover/popover.js",
+      "require": "./dist/cjs/popover/popover.cjs"
     }
   },
   "files": [
