@@ -448,9 +448,8 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
         data-input-tile
         data-clickdelegatefor='card-test'
       >
-        <Heading>
-          <Checkbox id='card-test' label='Lunsj' value='lunsj' />
-        </Heading>
+        <Checkbox id='card-test' label='Lunsj' value='lunsj' />
+        <Heading></Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer.

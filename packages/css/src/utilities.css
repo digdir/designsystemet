@@ -2,7 +2,8 @@
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-color--readonly: var(--ds-color-neutral-text-default);
   --dsc-input-background--readonly: var(--ds-color-neutral-surface-tinted);
-  & [data-clickdelegatefor],
+  /*selects only the outermost data-clickdelegatefor, for input in card*/
+  & [data-clickdelegatefor]:not([data-clickdelegatefor] *),
   &[data-clickdelegatefor] {
     --border-color: var(--ds-color-neutral-border-default);
     padding: var(--ds-size-4);
