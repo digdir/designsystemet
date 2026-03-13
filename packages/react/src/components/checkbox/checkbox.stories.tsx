@@ -451,8 +451,7 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
         <Checkbox id='card-test' label='Lunsj' value='lunsj' />
         <Heading></Heading>
         <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer.
+          This is a card with the checkbox as the click delegate
         </Paragraph>
       </Card>
     </>
