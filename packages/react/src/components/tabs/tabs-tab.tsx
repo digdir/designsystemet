@@ -21,7 +21,8 @@ export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
   { value, className, onClick, ...rest },
   ref,
 ) {
-  const { onChange, getPrefixedValue } = useContext(Context);
+  const { onChange, isSyncingControlledValue, getPrefixedValue } =
+    useContext(Context);
 
   return (
     // biome-ignore lint/a11y/noStaticElementInteractions: ds-tabs IS interactive
@@ -31,7 +32,7 @@ export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
       ref={ref}
       suppressHydrationWarning // Since <ds-tablist> adds attributes
       onClick={(e: MouseEvent<DSTabElement>) => {
-        if (e.isTrusted) onChange?.(value); // Only call onChange is user actually clicked, not when programmatically clicked/controlled
+        if (!isSyncingControlledValue?.()) onChange?.(value);
         onClick?.(e);
       }}
       class={className}
