@@ -3,10 +3,12 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useMemo, useState } from 'react';
 import {
   Button,
+  Card,
   Checkbox,
   Chip,
   Divider,
   Fieldset,
+  Heading,
   Pagination,
   Paragraph,
   Table,
@@ -426,3 +428,32 @@ export const hiddenLegend: StoryFn<typeof Fieldset> = () => (
     <Checkbox label='Test av skjermleser legend' value='selvstendige' />
   </Fieldset>
 );
+
+export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
+  return (
+    <>
+      <Fieldset data-input-tile>
+        <Fieldset.Legend>Hva liker du best med jobben din?</Fieldset.Legend>
+        <Fieldset.Description>
+          Velg alle alternativene som er relevante for deg.
+        </Fieldset.Description>
+        <Checkbox label='Selvstendige oppgaver' value='selvstendige' />
+        <Checkbox label='Møter' value='moter' checked />
+        <Checkbox label='Lunsj' value='lunsj' />
+        <Checkbox disabled checked label='Kolleger' value='kolleger' />
+        <Checkbox readOnly label='Helg' value='helg' checked />
+      </Fieldset>
+      <Card
+        style={{ marginTop: 'var(--ds-size-8)' }}
+        data-input-tile
+        data-clickdelegatefor='card-test'
+      >
+        <Checkbox id='card-test' label='Lunsj' value='lunsj' />
+        <Heading></Heading>
+        <Paragraph>
+          This is a card with the checkbox as the click delegate
+        </Paragraph>
+      </Card>
+    </>
+  );
+};
