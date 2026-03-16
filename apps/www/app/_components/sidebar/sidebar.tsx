@@ -1,4 +1,9 @@
-import { Button, Link, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Link,
+  Paragraph,
+  ToggleGroup,
+} from '@digdir/designsystemet-react';
 import { ChevronRightLastIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, useRef } from 'react';
@@ -65,6 +70,10 @@ export const Sidebar = ({
           <XMarkIcon aria-hidden />
           {/* {t('sidebar.hide')} {t(`sidebar.sidebar`)} */}
         </Button>
+        <ToggleGroup data-toggle-group='Språk' defaultValue='html'>
+          <ToggleGroup.Item value='html'>HTML</ToggleGroup.Item>
+          <ToggleGroup.Item value='utkast'>React</ToggleGroup.Item>
+        </ToggleGroup>
         {hideCatTitle ? null : (
           <Paragraph data-size='md' className={classes.title}>
             {t(`sidebar.${title}`, title)}

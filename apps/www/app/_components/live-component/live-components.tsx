@@ -190,8 +190,8 @@ const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
         onChange={(v) => setShowHTML(v === 'true')}
         data-color='neutral'
       >
-        <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
         <ds.ToggleGroup.Item value='true'>HTML</ds.ToggleGroup.Item>
+        <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
       </ds.ToggleGroup>
       <ds.Button
         data-color='neutral'
