@@ -433,26 +433,56 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
   return (
     <>
       <Fieldset data-input-tile>
-        <Fieldset.Legend>Hva liker du best med jobben din?</Fieldset.Legend>
+        <Fieldset.Legend>
+          This is a Fieldset with data-input-tile
+        </Fieldset.Legend>
         <Fieldset.Description>
-          Velg alle alternativene som er relevante for deg.
+          The checkboxes get tile styling
         </Fieldset.Description>
-        <Checkbox label='Selvstendige oppgaver' value='selvstendige' />
+        <Checkbox
+          label='Selvstendige oppgaver'
+          description='description text'
+          value='selvstendige'
+        />
         <Checkbox label='Møter' value='moter' checked />
-        <Checkbox label='Lunsj' value='lunsj' />
+        <Checkbox
+          label='Lunsj'
+          value='lunsj'
+          error='du må velge et alternativ'
+        />
         <Checkbox disabled checked label='Kolleger' value='kolleger' />
         <Checkbox readOnly label='Helg' value='helg' checked />
       </Fieldset>
+      <Heading style={{ marginTop: 'var(--ds-size-8)' }} level={2}>
+        Card examples
+      </Heading>
       <Card
-        style={{ marginTop: 'var(--ds-size-8)' }}
+        style={{ marginTop: 'var(--ds-size-4)' }}
         data-input-tile
         data-clickdelegatefor='card-test'
       >
         <Checkbox id='card-test' label='Lunsj' value='lunsj' />
-        <Heading></Heading>
         <Paragraph>
-          This is a card with the checkbox as the click delegate
+          This is a card with data-input-tile and the checkbox as the click
+          delegate
         </Paragraph>
+      </Card>
+      <Card
+        style={{ marginTop: 'var(--ds-size-8)' }}
+        data-input-tile
+        data-clickdelegatefor='card-test2'
+      >
+        <Heading level={3}>Hello</Heading>
+        <Paragraph>
+          This is a card with data-input-tile and a hidden checkbox as the click
+          delegate
+        </Paragraph>
+        <Checkbox
+          id='card-test2'
+          label='hidden'
+          value='hidden'
+          className='ds-sr-only'
+        />
       </Card>
     </>
   );
