@@ -1,4 +1,5 @@
 import {
+  announce,
   attr,
   attrOrCSS,
   customElements,
@@ -10,8 +11,6 @@ import {
   onHotReload,
   onMutation,
   QUICK_EVENT,
-  setTextWithoutMutation,
-  tag,
   useId,
   warn,
 } from '../utils/utils';
@@ -94,11 +93,6 @@ const handleMutations = debounce(() => {
   }
 }, 0); // Debounce to merge multiple mutations
 
-const SR_ONLY = 'position:fixed;white-space:nowrap;clip:rect(0 0 0 0)';
-const SR_LIVE = isBrowser()
-  ? tag('div', { 'aria-live': 'polite', style: SR_ONLY })
-  : null;
-
 const updateField = (e: Event | Element) => {
   const input = ((e as Event).target || e) as HTMLInputElement;
   const counter = COUNTS.get(input);
@@ -117,10 +111,8 @@ const updateField = (e: Event | Element) => {
     attr(counter, 'data-color', count < 0 ? 'danger' : null);
 
     // Only update live region when user is actually typing
-    if ((e as Event).type === 'input' && SR_LIVE && label) {
-      if (!SR_LIVE?.isConnected) document.body.appendChild(SR_LIVE); // Prepare live region
+    if ((e as Event).type === 'input' && label)
       debouncedCounterLiveRegion(input, label); // Debounce live region to avoid NVDA interupting announcing typed text
-    }
   }
   if (!HAS_FIELD_SIZING && input instanceof HTMLTextAreaElement) {
     input.style.setProperty('--_ds-field-sizing', 'auto');
@@ -129,8 +121,7 @@ const updateField = (e: Event | Element) => {
 };
 
 const debouncedCounterLiveRegion = debounce((input: Element, text: string) => {
-  const hasFocus = document.activeElement === input; // Only announce if input is still focused
-  if (SR_LIVE?.isConnected && hasFocus) setTextWithoutMutation(SR_LIVE, text);
+  if (document.activeElement === input) announce(text); // Only announce if input is still focused
 }, COUNTER_DEBOUNCE);
 
 const isInvalid = (el: Element) => el.getAttribute('data-color') !== 'success';

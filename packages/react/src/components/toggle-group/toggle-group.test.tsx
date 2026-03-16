@@ -56,6 +56,67 @@ describe('ToggleGroup', () => {
     await user.keyboard('{ArrowLeft}');
     expect(item2).toHaveFocus();
   });
+
+  test('arrow keys will skip disabled items', async () => {
+    render(
+      <ToggleGroup data-toggle-group='Label'>
+        <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
+        <ToggleGroup.Item disabled value='test2'>
+          test2
+        </ToggleGroup.Item>
+        <ToggleGroup.Item disabled value='test3'>
+          test3
+        </ToggleGroup.Item>
+        <ToggleGroup.Item value='test4'>test4</ToggleGroup.Item>
+      </ToggleGroup>,
+    );
+
+    const item1 = screen.getByRole<HTMLButtonElement>('radio', {
+      name: 'test',
+    });
+    const item4 = screen.getByRole<HTMLButtonElement>('radio', {
+      name: 'test4',
+    });
+    await user.tab();
+    expect(item1).toHaveFocus();
+    await user.keyboard('{ArrowRight}');
+    expect(item4).toHaveFocus();
+    await user.keyboard('{ArrowLeft}');
+    expect(item1).toHaveFocus();
+  });
+
+  test('click will not check disabled item', async () => {
+    const onChangeMock = vi.fn();
+
+    render(
+      <ToggleGroup
+        data-toggle-group='Label'
+        defaultValue='test1'
+        onChange={onChangeMock}
+      >
+        <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
+        <ToggleGroup.Item disabled value='test2'>
+          test2
+        </ToggleGroup.Item>
+      </ToggleGroup>,
+    );
+
+    const item1 = screen.getByRole('radio', {
+      name: 'test1',
+    });
+    const item2 = screen.getByRole('radio', {
+      name: 'test2',
+    });
+
+    expect(item1).toHaveProperty('checked', true);
+    expect(item2).toHaveProperty('checked', false);
+
+    await user.click(item2.parentElement as HTMLLabelElement);
+
+    expect(onChangeMock).toBeCalledTimes(0);
+    expect(item2).toHaveProperty('checked', false);
+  });
+
   test('has correct ToggleGroupItem defaultChecked & checked when defaultValue is used', () => {
     render(
       <ToggleGroup data-toggle-group='Label' defaultValue='test2'>
