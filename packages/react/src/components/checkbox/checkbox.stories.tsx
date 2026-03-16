@@ -492,10 +492,10 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
       >
         <Heading level={3}>Hello</Heading>
         <Paragraph>
-          This is a card with data-selection-tile and a hidden checkbox as the
-          click delegate
+          This is a card with data-selection-tile and a button as the click
+          delegate (so data-selection-tile should do nothing)
         </Paragraph>
-        <Button id='button-test'>hello</Button>
+        <Button id='button-test'>Button is left alone</Button>
       </Card>
     </>
   );
