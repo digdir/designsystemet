@@ -1,14 +1,17 @@
 import { FloppydiskIcon, PencilIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Button,
   Card,
   Checkbox,
   Chip,
   Divider,
+  Field,
   Fieldset,
   Heading,
+  Input,
+  Label,
   Pagination,
   Paragraph,
   Table,
@@ -430,6 +433,15 @@ export const hiddenLegend: StoryFn<typeof Fieldset> = () => (
 );
 
 export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
+  /*hust hacking a css class into the entur story*/
+  useEffect(() => {
+    const stylesheet = new CSSStyleSheet();
+    stylesheet.replaceSync(
+      '[data-clickdelegatefor]:not(:has(input:checked)) .visible-checked { display: none; }',
+    );
+    document.adoptedStyleSheets.push(stylesheet);
+  }, []);
+
   return (
     <>
       <Fieldset data-selection-tile>
@@ -497,6 +509,68 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
         </Paragraph>
         <Button id='button-test'>Button is left alone</Button>
       </Card>
+      <Heading style={{ marginTop: 'var(--ds-size-8)' }} level={2}>
+        Entur example recreated
+      </Heading>
+      <div style={{ width: '320px' }}>
+        <Card
+          style={{ marginTop: 'var(--ds-size-4)' }}
+          data-selection-tile
+          data-clickdelegatefor='entur-case1'
+        >
+          <Field
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--ds-size-2)',
+              width: 'auto',
+            }}
+          >
+            <Label
+              className='ds-heading'
+              weight='regular'
+              style={{ marginRight: 'auto', paddingInline: '0' }}
+            >
+              Standard
+            </Label>
+            <Field.Description>199,-</Field.Description>
+            <Input id='entur-case1' type='radio' name='entur' />
+          </Field>
+          <Paragraph>Ikke fleksibel</Paragraph>
+        </Card>
+        <Card
+          style={{ marginTop: 'var(--ds-size-4)' }}
+          data-selection-tile
+          data-clickdelegatefor='entur-case2'
+        >
+          <Field
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--ds-size-2)',
+              width: 'auto',
+            }}
+          >
+            <Label
+              className='ds-heading'
+              weight='regular'
+              style={{ marginRight: 'auto', paddingInline: '0' }}
+            >
+              Premium
+            </Label>
+            <Field.Description>299,-</Field.Description>
+            <Input id='entur-case2' type='radio' name='entur' />
+          </Field>
+          <Paragraph>Fleksibel billett</Paragraph>
+          <Paragraph
+            data-size='sm'
+            className='visible-checked'
+            style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
+          >
+            Billetten kan refunderes eller endres ved et senere tidspunkt
+          </Paragraph>
+        </Card>
+      </div>
     </>
   );
 };
