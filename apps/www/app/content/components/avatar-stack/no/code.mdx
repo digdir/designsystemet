@@ -27,7 +27,7 @@ import { EXPERIMENTAL_AvatarStack as AvatarStack, Avatar } from '@digdir/designs
 <Story story="Playground" layout='block' />
 
 ### Expandable
- `expandable` animerer overlap til 0 ved hover eller fokus. Bruk `expandable="fixed"` for å utvide med overflow uten å endre den fysiske bredden.
+ `expandable` animerer overlap til 0 ved hover eller fokus. Bruk `expandable="fixed"` for å utvide med overflow uten å endre den fysiske bredden. `tabindex="0"` blir automatisk lagt med `expandable`, men dette kan overstyres.
 <Story story="Expandable" layout='block' />
 
 ### Indikere avatarer som ikke vises
@@ -51,10 +51,10 @@ Avatarer i AvatarStack kan ha tooltip og være lenker, men vær obs på tilgjeng
 
 ## HTML
 
-For å lage en `AvatarStack` i ren html brukes klassen `ds-avatar-stack` på en `<figure>`. Inne i denne plasseres elementer med klassen `ds-avatar`. Merk at dersom du vil bruke `data-expandable="fixed"` må antallet avatarer være oppgitt via `--dsc-avatar-count: <number>` for å korrekt kalkulere den faste bredden. Bruk `data-suffix` for å legge til en tekst-indikator for skjulte avatarer.
+For å lage en `AvatarStack` i ren html brukes klassen `ds-avatar-stack` på en `<span>`. Inne i denne plasseres elementer med klassen `ds-avatar`. Merk at dersom du vil bruke `data-expandable="fixed"` må antallet avatarer være oppgitt via `--dsc-avatar-count: <number>` for å korrekt kalkulere den faste bredden. Bruk `data-suffix` for å legge til en tekst-indikator for skjulte avatarer.
 
 ```html
-<figure 
+<span 
   class="ds-avatar-stack" 
   data-expandable="fixed" 
   style="--dsc-avatar-count: 3;" 
@@ -84,7 +84,7 @@ For å lage en `AvatarStack` i ren html brukes klassen `ds-avatar-stack` på en 
   >
     <span>ON</span>
   </span>
-</figure>
+</span>
 ```
 
 Dersom du vil overstyre standard gap/size/overlap gjøres det via disse css variablene:

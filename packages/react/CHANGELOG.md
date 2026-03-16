@@ -1,5 +1,33 @@
 # Change Log
 
+## 1.13.0
+
+### Patch Changes
+
+- **Badge, Button, Spinner, Tabs, Tag**: Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
+
+- **ToggleGroupItem**: Add missing props for backward compatibility. An internal rewrite from `button` to `label+input` in version v1.12.0 led to a lack of some props on `ToggleGroupItem` related to `button`. ([#4580](https://github.com/digdir/designsystemet/pull/4580))
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548))
+
+- **toggle-group**: re-introduce support for disabled items ([#4618](https://github.com/digdir/designsystemet/pull/4618))
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+- **Details**: use `DetailsHTMLAttributes` type to allow `name` attribute ([#4557](https://github.com/digdir/designsystemet/pull/4557))
+
+- **Dialog**: fixed non-modal Dialog not opening when using `Dialog.Trigger` ([#4611](https://github.com/digdir/designsystemet/pull/4611))
+
+- **AvatarStack**: changed underlying element from `figure` to `span` to avoid html-validation issues when used inside a `span` ([#4579](https://github.com/digdir/designsystemet/pull/4579))
+
+- **AvatarStack**: replaced tabindex="-1" with no tabindex at all when `expandable`is not set ([#4579](https://github.com/digdir/designsystemet/pull/4579))
+
+- Updated dependencies [[`5776e4b`](https://github.com/digdir/designsystemet/commit/5776e4b5a5608cc39c309e5b7b7dc3703cec25e9), [`dc023a4`](https://github.com/digdir/designsystemet/commit/dc023a47b0802ad77c00a5b419da9adb6425e343), [`9f7d318`](https://github.com/digdir/designsystemet/commit/9f7d318d04a228b95e1ab32d8e177a223a4a7254), [`303ee66`](https://github.com/digdir/designsystemet/commit/303ee6617672ef0ff968d759e2a5aaafa9dd7381), [`4bd54bd`](https://github.com/digdir/designsystemet/commit/4bd54bd9a93be34f591f8da24564a7ee35e72775)]:
+  - @digdir/designsystemet-web@1.13.0
+  - @digdir/designsystemet-types@1.13.0
+
 ## 1.12.1
 
 ### Patch Changes
