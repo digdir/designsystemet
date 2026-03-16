@@ -433,7 +433,7 @@ export const hiddenLegend: StoryFn<typeof Fieldset> = () => (
 );
 
 export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
-  /*hust hacking a css class into the entur story*/
+  /*just hacking a css class into the entur story*/
   useEffect(() => {
     const stylesheet = new CSSStyleSheet();
     stylesheet.replaceSync(

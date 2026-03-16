@@ -30,6 +30,10 @@ export type RadioProps = MergeRight<
      * Error message for field
      */
     error?: ReactNode;
+    /**
+     * If true, the radio will be displayed as a tile
+     */
+    'data-selection-tile'?: boolean;
   } & LabelRequired
 >;
 
@@ -42,6 +46,7 @@ export type RadioProps = MergeRight<
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   {
     'data-size': size,
+    'data-selection-tile': tile,
     className,
     style,
     children,
@@ -53,7 +58,12 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   ref,
 ) {
   return (
-    <Field data-size={size} className={className} style={style}>
+    <Field
+      data-size={size}
+      data-selection-tile={tile}
+      className={className}
+      style={style}
+    >
       <Input type='radio' ref={ref} {...rest} />
       {!!label && <Label weight='regular'>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}

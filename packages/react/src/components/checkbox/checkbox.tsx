@@ -47,7 +47,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
     {
       'data-size': size,
-      'data-selection-tile': inputTile,
+      'data-selection-tile': tile,
       className,
       style,
       children,
@@ -61,7 +61,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <Field
         data-size={size}
-        data-selection-tile={inputTile}
+        data-selection-tile={tile}
         className={className}
         style={style}
       >

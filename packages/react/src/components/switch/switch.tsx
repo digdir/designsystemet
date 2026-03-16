@@ -30,6 +30,10 @@ export type SwitchProps = MergeRight<
      * @default start
      */
     position?: FieldProps['position'];
+    /**
+     * If true, the switch will be displayed as a tile
+     */
+    'data-selection-tile'?: boolean;
   } & LabelRequired
 >;
 
@@ -42,6 +46,7 @@ export type SwitchProps = MergeRight<
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
   {
     'data-size': size,
+    'data-selection-tile': tile,
     children,
     className,
     description,
@@ -57,6 +62,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
       className={className}
       data-position={position}
       data-size={size}
+      data-selection-tile={tile}
       style={style}
     >
       <Input type='checkbox' role='switch' ref={ref} {...rest} />
