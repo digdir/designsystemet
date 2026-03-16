@@ -432,9 +432,9 @@ export const hiddenLegend: StoryFn<typeof Fieldset> = () => (
 export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
   return (
     <>
-      <Fieldset data-input-tile>
+      <Fieldset data-selection-tile>
         <Fieldset.Legend>
-          This is a Fieldset with data-input-tile
+          This is a Fieldset with data-selection-tile
         </Fieldset.Legend>
         <Fieldset.Description>
           The checkboxes get tile styling
@@ -458,24 +458,24 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
       </Heading>
       <Card
         style={{ marginTop: 'var(--ds-size-4)' }}
-        data-input-tile
+        data-selection-tile
         data-clickdelegatefor='card-test'
       >
         <Checkbox id='card-test' label='Lunsj' value='lunsj' />
         <Paragraph>
-          This is a card with data-input-tile and the checkbox as the click
+          This is a card with data-selection-tile and the checkbox as the click
           delegate
         </Paragraph>
       </Card>
       <Card
         style={{ marginTop: 'var(--ds-size-8)' }}
-        data-input-tile
+        data-selection-tile
         data-clickdelegatefor='card-test2'
       >
         <Heading level={3}>Hello</Heading>
         <Paragraph>
-          This is a card with data-input-tile and a hidden checkbox as the click
-          delegate
+          This is a card with data-selection-tile and a hidden checkbox as the
+          click delegate
         </Paragraph>
         <Checkbox
           id='card-test2'
@@ -483,6 +483,19 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
           value='hidden'
           className='ds-sr-only'
         />
+      </Card>
+
+      <Card
+        style={{ marginTop: 'var(--ds-size-8)' }}
+        data-selection-tile
+        data-clickdelegatefor='button-test'
+      >
+        <Heading level={3}>Hello</Heading>
+        <Paragraph>
+          This is a card with data-selection-tile and a hidden checkbox as the
+          click delegate
+        </Paragraph>
+        <Button id='button-test'>hello</Button>
       </Card>
     </>
   );

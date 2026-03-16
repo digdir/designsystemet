@@ -33,7 +33,7 @@ export type CheckboxProps = MergeRight<
     /**
      * If true, the checkbox will be displayed as a tile
      */
-    'data-input-tile'?: boolean;
+    'data-selection-tile'?: boolean;
   } & LabelRequired
 >;
 
@@ -47,7 +47,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
     {
       'data-size': size,
-      'data-input-tile': inputTile,
+      'data-selection-tile': inputTile,
       className,
       style,
       children,
@@ -61,7 +61,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <Field
         data-size={size}
-        data-input-tile={inputTile}
+        data-selection-tile={inputTile}
         className={className}
         style={style}
       >

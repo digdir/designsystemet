@@ -1,58 +1,62 @@
-[data-input-tile] {
-  --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
-  --dsc-input-color--readonly: var(--ds-color-neutral-text-default);
-  --dsc-input-background--readonly: var(--ds-color-neutral-surface-tinted);
-  --dsc-input-accent-color--invalid: var(--ds-color-danger-text-subtle);
+[data-selection-tile] {
+  --dsc-tile-border-color--readonly: var(--ds-color-neutral-border-subtle);
+  --dsc-tile-color--readonly: var(--ds-color-neutral-text-default);
+  --dsc-tile-background--readonly: var(--ds-color-neutral-surface-tinted);
+  --dsc-tile-accent-color--invalid: var(--ds-color-danger-text-subtle);
 
   /*selects only the outermost data-clickdelegatefor, for input in card*/
   & [data-clickdelegatefor]:not([data-clickdelegatefor] *),
-  &[data-clickdelegatefor] {
-    --_border-color: var(--ds-color-neutral-border-default);
-    border: 1px solid var(--_border-color);
+  /*case: data-selection-tile on Checkbox/Radio/switch directly*/
+    &[data-clickdelegatefor] {
+    /*only target clickdelegatefor containing checkbox/radio*/
+    &:has(:where(input[type='checkbox'], input[type='radio'])) {
+      --_border-color: var(--ds-color-neutral-border-default);
+      border: 1px solid var(--_border-color);
 
-    /*overrides for simple variant (not in card)*/
-    &ds-field {
-      padding: var(--ds-size-4);
-      border-radius: var(--ds-border-radius-lg);
-      width: auto;
-    }
-    /*overrides for card*/
-    &.ds-card {
-      --dsc-card-background--active: var(--ds-color-surface-default);
-      --dsc-card-background--hover: var(--ds-color-surface-default);
-    }
-    /*checked styles*/
-    &:has(:where(input:checked)) {
-      --_border-color: var(--ds-color-border-default);
-      box-shadow: inset 0 0 0 1px var(--_border-color);
-    }
-    &:has(:focus-visible) {
-      @composes ds-focus--visible from './base.css';
-    }
-
-    /*hover styles*/
-    &:not(:has(:disabled, [readonly], [aria-readonly='true'], [aria-disabled='true'])):hover {
-      box-shadow: inset 0 0 0 1px var(--_border-color);
-    }
-
-    /*readonly styles*/
-    &:has([aria-readonly='true'], [readonly]) {
-      background-color: var(--dsc-input-background--readonly);
-      border-color: var(--dsc-input-border-color--readonly);
-      --_border-color: var(--dsc-input-color--readonly);
-
-      @media (forced-colors: active) {
-        border-color: GrayText;
+      /*overrides for simple variant (not in card)*/
+      &ds-field {
+        padding: var(--ds-size-4);
+        border-radius: var(--ds-border-radius-lg);
+        width: auto;
       }
-    }
-    /*invalid styles*/
-    &:has([aria-invalid='true']) {
-      --_border-color: var(--dsc-input-accent-color--invalid);
-    }
-    /*disabled styles*/
-    &:has(:disabled, [aria-disabled='true']) {
-      cursor: not-allowed;
-      border-color: rgb(from var(--_border-color) r g b / var(--ds-opacity-disabled));
+      /*overrides for card*/
+      &.ds-card {
+        --dsc-card-background--active: var(--ds-color-surface-default);
+        --dsc-card-background--hover: var(--ds-color-surface-default);
+      }
+      /*checked styles*/
+      &:has(:where(input:checked)) {
+        --_border-color: var(--ds-color-border-default);
+        box-shadow: inset 0 0 0 1px var(--_border-color);
+      }
+      &:has(:focus-visible) {
+        @composes ds-focus--visible from './base.css';
+      }
+
+      /*hover styles*/
+      &:not(:has(:disabled, [readonly], [aria-readonly='true'], [aria-disabled='true'])):hover {
+        box-shadow: inset 0 0 0 1px var(--_border-color);
+      }
+
+      /*readonly styles*/
+      &:has([aria-readonly='true'], [readonly]) {
+        background-color: var(--dsc-tile-background--readonly);
+        border-color: var(--dsc-tile-border-color--readonly);
+        --_border-color: var(--dsc-tile-color--readonly);
+
+        @media (forced-colors: active) {
+          border-color: GrayText;
+        }
+      }
+      /*invalid styles*/
+      &:has([aria-invalid='true']) {
+        --_border-color: var(--dsc-tile-accent-color--invalid);
+      }
+      /*disabled styles*/
+      &:has(:disabled, [aria-disabled='true']) {
+        cursor: not-allowed;
+        border-color: rgb(from var(--_border-color) r g b / var(--ds-opacity-disabled));
+      }
     }
   }
 }
