@@ -1,8 +1,32 @@
-<Story story="Preview" language="html"/>
-
-
-
 ## Bruk
+
+```html
+<button
+  class="ds-button"
+  type="button"
+  popoverTarget="dropdown"
+>Dropdown</button>
+<div
+  class="ds-popover ds-dropdown"
+  id="dropdown"
+  popover="manual"
+>
+  <ul>
+    <li>
+      <button
+        class="ds-button"
+        type="button"
+      >Item 1</button>
+    </li>
+    <li>
+      <button
+        class="ds-button"
+        type="button"
+      >Item 2</button>
+    </li>
+  </ul>
+</div>
+```
 
 Du kan bruke native popover-api direkte i HTML.
 Dette kan brukes uten JavaScript, dersom du ikke vil polyfille.
@@ -29,6 +53,20 @@ med Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at b
 ## React
 
 Designsystemet tilbyr en React-implementasjon i form av `Dropdown` som gir deg ekstra funksjonalitet i React.
+
+```jsx
+<Button popovertarget='dropdown'>Dropdown</Button>
+<Dropdown id='dropdown'>
+    <Dropdown.List>
+        <Dropdown.Item>
+        <Dropdown.Button>Item 1</Dropdown.Button>
+        </Dropdown.Item>
+        <Dropdown.Item>
+        <Dropdown.Button>Item 2</Dropdown.Button>
+        </Dropdown.Item>
+    </Dropdown.List>
+</Dropdown>
+```
 
 ### `popovertarget`
 

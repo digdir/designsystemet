@@ -58,6 +58,7 @@ export type LiveComponentProps = {
   story: string;
   layout?: 'row' | 'column' | 'centered' | 'block';
   language?: Language;
+  defaultOpen?: boolean;
 };
 
 //copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
@@ -298,10 +299,11 @@ export const LiveComponent = ({
   story,
   layout = 'centered',
   language = 'react',
+  defaultOpen = false,
 }: LiveComponentProps) => {
   const location = useLocation();
   const { t } = useTranslation();
-  const [showEditor, setShowEditor] = useState(false);
+  const [showEditor, setShowEditor] = useState(defaultOpen);
   const [colorScheme, setColorScheme] = useState<string | null>('dark');
   const [invertedColorScheme, setInvertedColorScheme] = useState<string | null>(
     'light',
