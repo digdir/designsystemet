@@ -1,4 +1,5 @@
-[data-selection-tile] {
+[data-selection-tile],
+.ds-selection-tile {
   --dsc-tile-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-tile-color--readonly: var(--ds-color-neutral-text-default);
   --dsc-tile-background--readonly: var(--ds-color-neutral-surface-tinted);
