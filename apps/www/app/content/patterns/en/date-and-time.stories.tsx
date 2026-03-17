@@ -61,9 +61,15 @@ export const StartEndDateEN = () => {
         How long will you be away?
       </Fieldset.Legend>
       <Fieldset.Description>Enter start and end date</Fieldset.Description>
-      <div style={{ display: 'flex', gap: 'var(--ds-size-6)' }}>
-        <Textfield label='Start date' type='date' />
-        <Textfield label='End date' type='date' />
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-size-6)', flexWrap: 'wrap' }}
+      >
+        <Textfield
+          label='Start date'
+          type='date'
+          style={{ minWidth: '12rem' }}
+        />
+        <Textfield label='End date' type='date' style={{ minWidth: '12rem' }} />
       </div>
     </Fieldset>
   );
@@ -77,8 +83,8 @@ export const StartEndTimeEN = () => {
       </Fieldset.Legend>
       <Fieldset.Description>Enter start and end time</Fieldset.Description>
       <div style={{ display: 'flex', gap: 'var(--ds-size-6)' }}>
-        <Textfield label='From' type='time' />
-        <Textfield label='To' type='time' />
+        <Textfield label='From' type='time' style={{ minWidth: '7rem' }} />
+        <Textfield label='To' type='time' style={{ minWidth: '7rem' }} />
       </div>
     </Fieldset>
   );
@@ -94,7 +100,9 @@ export const ApproximateDateEN = () => {
         Enter an approximate date. We cannot process cases more than 20 years
         back.
       </Fieldset.Description>
-      <div style={{ display: 'flex', gap: 'var(--ds-size-6)' }}>
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-size-6)', flexWrap: 'wrap' }}
+      >
         <Field>
           <Label>Month</Label>
           <Select defaultValue='January'>
