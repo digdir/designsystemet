@@ -5,22 +5,22 @@ import { act } from 'react';
 import { Radio } from './radio';
 
 describe('Radio', () => {
-  test('has correct value and label', () => {
+  test('has correct value and label', async () => {
     render(<Radio label='label' value='test' />);
-    expect(screen.getByLabelText('label')).toBeDefined();
+    expect(await screen.findByLabelText('label')).toBeDefined();
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
-  test('has correct description', () => {
+  test('has correct description', async () => {
     render(<Radio label='test' value='test' description='description' />);
     expect(
-      screen.getByRole('radio', { description: 'description' }),
+      await screen.findByRole('radio', { description: 'description' }),
     ).toBeDefined();
   });
 
-  test('should pass down name attribute to input', () => {
+  test('should pass down name attribute to input', async () => {
     render(<Radio label='label' value='test' name='radio-group123' />);
-    expect(screen.getByRole('radio', { name: 'label' })).toHaveAttribute(
+    expect(await screen.findByRole('radio', { name: 'label' })).toHaveAttribute(
       'name',
       'radio-group123',
     );

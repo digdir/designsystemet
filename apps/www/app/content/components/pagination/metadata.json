@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Pagination",
+    "subtitle": "`Pagination` er en liste med knapper som brukes for å navigere mellom ulike sider med innhold, for eksempel søkeresultater eller tabeller."
+  },
+  "en": {
+    "title": "Pagination",
+    "subtitle": "`Pagination` is a list of buttons used to navigate between different pages of content, such as search results or tables."
+  },
+  "image": "Pagination.svg",
+  "cssFile": "pagination.css"
+}

@@ -1,0 +1,11 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
+## Do not use disabled fields
+
+Avoid using the disabled (`disabled`) state on text fields. Consider instead whether you need to show the field at all, or whether you can present the information as plain text or use `readonly`.
+
+## Prefix and suffix
+
+Prefixes and suffixes are purely visual aids and are ignored by screen readers. You must always provide a descriptive label. Prefixes and suffixes are placed outside the input fields they belong to. This prevents issues in some browsers that may insert an icon inside the input field (for example icons for showing or generating passwords).

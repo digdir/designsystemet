@@ -1,0 +1,34 @@
+.panel {
+  background-color: var(--ds-color-neutral-background-tinted);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 8px;
+  margin-top: 28px;
+  width: 100%;
+  max-width: 1390px;
+  overflow: hidden;
+}
+
+.basicPanel {
+  background-color: var(--ds-color-neutral-background-tinted);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 8px;
+  margin-top: 28px;
+  width: 100%;
+  max-width: 1390px;
+  padding: var(--ds-size-6);
+  align-self: flex-start;
+}
+
+.colorsContainer {
+  overflow: auto;
+}
+
+.variablesPanel {
+  display: grid;
+  gap: var(--ds-size-4);
+  justify-content: center;
+
+  > * > * {
+    max-width: 600px;
+  }
+}

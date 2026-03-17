@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Link",
+    "subtitle": "`Link` er klikkbar tekst eller grafikk som tar brukeren videre til andre sider eller dokumenter."
+  },
+  "en": {
+    "title": "Link",
+    "subtitle": "`Link` is clickable text or graphics that take the user to other pages or documents."
+  },
+  "image": "Link.svg",
+  "cssFile": "link.css"
+}

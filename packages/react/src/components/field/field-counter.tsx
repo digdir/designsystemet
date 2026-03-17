@@ -1,10 +1,9 @@
-import { forwardRef, useEffect, useRef, useState } from 'react';
-import { Paragraph } from '../paragraph/paragraph';
+import { forwardRef } from 'react';
+import { warn } from '../../utilities';
 import {
   ValidationMessage,
   type ValidationMessageProps,
 } from '../validation-message/validation-message';
-import { isInputLike } from './field-observer';
 
 export type FieldCounterProps = {
   /**
@@ -22,16 +21,16 @@ export type FieldCounterProps = {
    */
   under?: string;
   /**
+   * @deprecated The hint attribute is deprecated.
+   */
+  hint?: string;
+  /**
    * The maximum allowed characters.
    *
    * @default undefined
    **/
   limit: number;
 } & ValidationMessageProps;
-
-const label = (text: string, count: number) =>
-  text.replace('%d', Math.abs(count).toString());
-
 /**
  * FieldCounter component, used to display a counter for a form field.
  *
@@ -42,62 +41,17 @@ const label = (text: string, count: number) =>
  * </Field>
  */
 export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
-  function FieldCounter(
-    { limit, under = '%d tegn igjen', over = '%d tegn for mye', ...rest },
-    ref,
-  ) {
-    const [count, setCount] = useState(0);
-    const fieldInputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
-    const counterRef = useRef<HTMLDivElement>(null);
-    const hasExceededLimit = count > limit;
-    const remainder = limit - count;
-
-    // Listen to native input events (user typing) to update the counter in real time
-    useEffect(() => {
-      const field = counterRef.current?.closest('.ds-field');
-      const input = Array.from(field?.getElementsByTagName('*') || []).find(
-        isInputLike,
-      );
-      const onInput = ({ target }: { target: Event['target'] }) => {
-        if (isInputLike(target)) setCount(target.value.length);
-      };
-
-      if (input) onInput({ target: input }); // Initial setup
-      fieldInputRef.current = input as HTMLInputElement | HTMLTextAreaElement;
-
-      field?.addEventListener('input', onInput);
-      return () => field?.removeEventListener('input', onInput);
-    }, []);
-
-    /* React does not dispatch a native input event when the value prop changes externally.
-    Since the parent re-renders this component when value changes, we can sync on render. */
-    useEffect(() => {
-      if (fieldInputRef.current) {
-        const valueLength = fieldInputRef.current.value.length;
-        setCount((prev) => (prev === valueLength ? prev : valueLength));
-      }
-    });
-
+  function FieldCounter({ limit, under, over, hint, ...rest }, _ref) {
+    if (hint) warn('hint attribute is deprecated on Field.Counter');
     return (
-      <>
-        <div
-          data-field='description'
-          className='ds-sr-only'
-          aria-live={'polite'}
-          ref={counterRef}
-        >
-          {hasExceededLimit && label(over, remainder)}
-        </div>
-        {hasExceededLimit ? (
-          <ValidationMessage ref={ref} {...rest}>
-            {label(over, remainder)}
-          </ValidationMessage>
-        ) : (
-          <Paragraph ref={ref} {...rest} data-field='validation'>
-            {label(under, remainder)}
-          </Paragraph>
-        )}
-      </>
+      <ValidationMessage
+        suppressHydrationWarning // Since <ds-field> adds attributes
+        data-field='counter'
+        data-limit={limit}
+        data-under={under}
+        data-over={over}
+        {...rest}
+      />
     );
   },
 );

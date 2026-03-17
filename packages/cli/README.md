@@ -26,7 +26,7 @@ If a [config file](#using-a-config-file) you can also re-run with `"clean": true
 > ⚠️ **WARNING** ⚠️  
 > The design tokens created by this tool are considered an implementation detail, and is subject
 > to change at any time without being considered a breaking change. We **only** support customisations
-> done through the CLI options. Direct editing of the design tokens are **not** supported.
+> done through the CLI options and config. Direct editing of the design tokens are **not** supported.
 > 
 > Since tokens may be added or removed at any time, it is necessary to routinely re-run this
 > command when upgrading the libraries. This will remove any direct edits to the design tokens.
@@ -49,7 +49,7 @@ Whenever a new version of the CLI is released, or you have done changes, we reco
 ### Using a config file
 
 > ⚠️ **WARNING** ⚠️  
-> This feature is experimental. The config schema may change at any time.
+> The typography feature is experimental. The config schema may change at any time.
 
 
 The `tokens create` command supports a config file. It will auto-detect a `designsystemet.config.json` file in the current directory. You can also use the `--config <path>` option to supply a different config name and location.
@@ -105,3 +105,11 @@ npx @digdir/designsystemet tokens build
 #### Complex config example
 
 Have a look at the `*.config.json` files under the `packages/cli` in the Github repo for more complex examples.
+
+#### Create config from existing tokens
+
+You can get a minimal config file, meaning without overrides, generated from existing design tokens using the following command:
+
+```sh
+npx @digdir/designsystemet generate-config-from-tokens --dir <path to design tokens>
+```

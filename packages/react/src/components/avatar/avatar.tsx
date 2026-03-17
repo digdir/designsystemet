@@ -1,4 +1,4 @@
-import type { Size } from '@digdir/designsystemet/types';
+import type { Size } from '@digdir/designsystemet-types';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
@@ -6,17 +6,27 @@ import { Fragment, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
-type AriaLabel = {
-  /**
-   * The name of the person the avatar represents.
-   */
-  'aria-label': string;
-};
-type AriaHidden = Partial<AriaLabel> & { 'aria-hidden': true | 'true' };
+type AriaHidden = HTMLAttributes<HTMLSpanElement>['aria-hidden'];
+type AriaAttributes =
+  | {
+      'aria-label': string; // Require aria-label if no data-tooltip
+      'data-tooltip'?: never;
+      'aria-hidden'?: AriaHidden;
+    }
+  | {
+      'aria-label'?: never;
+      'data-tooltip': string; // Require data-tooltip if no aria-label
+      'aria-hidden'?: AriaHidden;
+    }
+  | {
+      'aria-label'?: string; // Make both optional if aria-hidden
+      'data-tooltip'?: string;
+      'aria-hidden': true | 'true';
+    };
 
 export type AvatarProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
-  (AriaLabel | AriaHidden) & {
+  AriaAttributes & {
     /**
      * The size of the avatar.
      */
@@ -31,6 +41,11 @@ export type AvatarProps = MergeRight<
      * Initials to display inside the avatar.
      */
     initials?: string;
+    /**
+     * Change the default rendered element for the one passed as a child, merging their props and behavior.
+     * @default false
+     */
+    asChild?: boolean;
     /**
      * Image, icon or initials to display inside the avatar.
      *
@@ -59,32 +74,37 @@ export type AvatarProps = MergeRight<
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     'aria-label': ariaLabel,
+    'data-tooltip': dataTooltip,
     variant = 'circle',
     className,
     children,
     initials,
+    asChild,
     ...rest
   },
   ref,
 ) {
+  const OuterComponent = asChild ? Slot : 'span';
   const useSlot = children && typeof children !== 'string';
   const textChild = children && typeof children === 'string';
   const Component = useSlot ? Slot : Fragment;
 
   return (
-    <span
+    <OuterComponent
       ref={ref}
       className={cl('ds-avatar', className)}
       data-variant={variant}
       data-initials={initials}
-      role='img'
-      aria-label={ariaLabel}
+      role={asChild ? undefined : 'img'}
+      aria-label={ariaLabel || dataTooltip}
+      data-tooltip={dataTooltip}
+      tabIndex={dataTooltip ? 0 : undefined} // Tooltips require focusability for accessibility
       {...rest}
     >
-      <Component {...(useSlot ? { 'aria-hidden': true } : {})}>
+      <Component {...(useSlot && !asChild ? { 'aria-hidden': true } : {})}>
         {textChild ? <span>{children}</span> : children}
       </Component>
-    </span>
+    </OuterComponent>
   );
 });
 

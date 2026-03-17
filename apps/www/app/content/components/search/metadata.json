@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Search",
+    "subtitle": "`Search` lar brukere raskt finne relevant innhold på et nettsted eller i en applikasjon. Komponenten består av et søkefelt, med eller uten en søkeknapp."
+  },
+  "en": {
+    "title": "Search",
+    "subtitle": "`Search` allows users to quickly find relevant content on a website or in an application. The component consists of a search field, with or without a search button."
+  },
+  "image": "Search.svg",
+  "cssFile": "search.css"
+}

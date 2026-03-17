@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "SkipLink",
+    "subtitle": "`SkipLink` hjelper folk som bruker tastaturnavigasjon til å navigere, slik at dei enkelt kan gå til det viktigaste innhaldet på ei side. "
+  },
+  "en": {
+    "title": "SkipLink",
+    "subtitle": "`SkipLink` helps people using keyboard navigation to navigate, so they can easily go to the main content on a page."
+  },
+  "image": "SkipLink.svg",
+  "cssFile": "skip-link.css"
+}

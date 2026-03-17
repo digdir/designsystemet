@@ -2,7 +2,7 @@ import type { ColorScheme, CssColor } from '@digdir/designsystemet';
 import { ToggleGroup } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { OverviewComponents } from '../overview-components/overview-components';
+import { ExamplesComponents } from '../examples-components/examples-components';
 import classes from './previews.module.css';
 
 const themes: {
@@ -36,6 +36,7 @@ export const Previews = () => {
     <>
       <div className={classes.toolbar} data-size='sm'>
         <ToggleGroup
+          data-toggle-group='Tema'
           value={theme as string}
           onChange={(v) => setTheme(v as keyof typeof themes)}
         >
@@ -47,6 +48,7 @@ export const Previews = () => {
           </ToggleGroup.Item>
         </ToggleGroup>
         <ToggleGroup
+          data-toggle-group='Modus'
           value={colorScheme}
           onChange={(v) => setColorScheme(v as ColorScheme)}
         >
@@ -60,7 +62,7 @@ export const Previews = () => {
       </div>
 
       <div className={classes.preview} data-color-scheme={colorScheme}>
-        <OverviewComponents
+        <ExamplesComponents
           colorScheme={colorScheme}
           color={themes[theme].hex}
           borderRadius={themes[theme].borderRadius}

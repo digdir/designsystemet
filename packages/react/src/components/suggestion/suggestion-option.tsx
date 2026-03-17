@@ -1,6 +1,7 @@
 import type { OptionHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
+import '@digdir/designsystemet-web'; // Load u-option polyfill
 
 export type SuggestionOptionProps = OptionHTMLAttributes<HTMLOptionElement> &
   DefaultProps;
@@ -25,6 +26,7 @@ export const SuggestionOption = forwardRef<
     <u-option
       class={className} // Using "class" since React does not translate className on custom elements
       ref={ref}
+      suppressHydrationWarning // Since <u-option> adds attributes
       {...rest}
     />
   );

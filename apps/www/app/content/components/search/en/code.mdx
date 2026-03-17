@@ -1,0 +1,64 @@
+<Story story="PreviewEn" />
+<ReactComponentDocs />
+
+## Usage
+
+```tsx
+import { Search } from '@digdir/designsystemet-react';
+
+<Search>
+  <Search.Input aria-label="Search" />
+  <Search.Clear />
+  <Search.Button />
+</Search>
+```
+
+## Examples
+
+### Variants
+
+Based on how sub-components, and the structure of the HTML, you can change how `Search` is displayed.
+
+<Story story="VariantsEn" />
+
+### With Label
+
+If you want a label on the search field, you need to add a `Label` component that you connect with `Search.Input`. In the example, we have used `Field` to get a connection between `Label` and `Search.Input`.
+
+<Story story="WithLabelEn" />
+
+### `<form>`
+
+<Story story="Form" layout="column" />
+
+## HTML
+
+You use the class name `ds-search` on a wrapper element around `<input>`.
+If you want a "clear" button, attach a `<button>` with `type="reset"`
+
+**It is important that you add an empty `placeholder` to `<input>` if you have a "clear" button**
+
+```html
+<div class="ds-search">
+  <input
+  class="ds-input"
+  placeholder=""
+  aria-label="Search"
+  type="search"
+  >
+  <button
+  class="ds-button"
+  data-icon="true"
+  data-variant="tertiary"
+  type="reset"
+  aria-label="Clear"
+  ></button>
+</div>
+
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

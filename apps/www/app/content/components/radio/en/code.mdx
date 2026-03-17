@@ -1,0 +1,102 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Usage
+
+```tsx
+import { Radio } from '@digdir/designsystemet-react';
+
+<Radio label="Radio" value="value" name="name" />
+```
+
+## Examples
+
+### Grouping
+Use [`Fieldset`](/en/components/docs/fieldset/code) around a group of radio buttons to provide a common prompt (`<legend>`) and optionally a description (`description`).
+
+<Story story="GroupEn" />
+
+### With Error
+Here we must use [`Fieldset`](/en/components/docs/fieldset/code), because it activates the correct style and ensures that the content has the correct connections for accessibility.
+
+<Story story="WithErrorEn" />
+
+### Readonly
+
+Fields with the `readonly` attribute are included in the tab order. Users can copy the content but not edit it. Information is included when the form is submitted.
+
+`Readonly` fields can be confusing for some users. Not everyone will understand why they cannot change the content of the field. We therefore recommend avoiding `readonly` as much as possible.
+
+<Story story="ReadOnlyEn" />
+
+### Inline
+Radio *can* be positioned horizontally with `flex`, but should generally be [placed vertically](/en/components/docs/radio/overview#placement).
+<Story story="InlineEn" />
+
+## HTML
+
+`Radio` is a composite component, so in HTML you have to build it from multiple components.
+We use [`Fieldset`](/en/components/docs/fieldset/code), [`Label`](/en/components/docs/label/code) and [`Input`](/en/components/docs/input/code) to create a `Radio`.
+
+The code below shows how you can visually build a `Radio` in HTML, but you have to make sure that `<input>` is connected with `<label>` and description.
+
+```html
+<div class="ds-field">
+  <input
+  class="ds-input"
+  type="radio"
+  value="value"
+  name="name"
+  id="my-radio"
+  >
+  <label
+  class="ds-label"
+  data-weight="regular"
+  for="my-radio"
+  >Radio</label>
+</div>
+
+```
+
+### In Fieldset
+
+The code below is an example of how to use multiple `Radio` inside `<fieldset>`.
+
+```html
+<fieldset class="ds-fieldset">
+  <legend class="ds-label" data-weight="medium">Can we contact you by email?</legend>
+  <p class="ds-paragraph" data-variant="default">If you do not wish to be contacted by email, we will send you a letter by post.</p>
+  <div class="ds-field">
+    <input
+    class="ds-input"
+    type="radio"
+    value="yes"
+    id="radio-input"
+    >
+    <label
+    class="ds-label"
+    data-weight="regular"
+    for="radio-input"
+    >Yes</label>
+  </div>
+  <div class="ds-field">
+    <input
+    class="ds-input"
+    type="radio"
+    value="no"
+    id="radio-input"
+    >
+    <label
+    class="ds-label"
+    data-weight="regular"
+    for="radio-input"
+    >No</label>
+  </div>
+</fieldset>
+```
+
+## CSS variables and data attributes
+Checkbox is a composite component, and therefore we show variables and data attributes from `ds-input` here.
+<CssVariables />
+
+<CssAttributes />

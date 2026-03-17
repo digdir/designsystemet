@@ -1,0 +1,53 @@
+---
+title: Typography
+sidebar_title: Typography
+description: How typographic styles are used to present content correctly.
+date: 2024-04-28
+category: Theme
+color: red
+icon: LineHeightIcon
+published: true
+order: 40
+---
+
+To present text correctly, styles have been created with different combinations of size, font weight, and line height. A set of typography components has also been created that encapsulate these styles, making them easy to use in different contexts. A description of how typography components are used can be found in the component article [Typography](/en/components/docs/heading/overview).
+
+## Font-family
+
+Font-family is not part of the library in Designsystemet; you must import the desired font in your app. The components have only been tested with the "Inter" font. If you choose a different font, you need to test that it looks good yourself.
+
+Inter is a font specifically designed for good readability on computer screens. It meets the following criteria:
+
+- [Open font license](https://github.com/rsms/inter/blob/master/LICENSE.txt) + has an [active community](https://github.com/rsms/inter)
+- Large font family (light, regular, italic, bold, semibold)
+- Recognizable letters, numbers, and special characters (not too creative)
+- Clear ascenders and descenders on the letters
+- Visible difference between similar characters (I, l, 1) (must be activated)
+- Open letters don't close up (e.g., characters like a, e, and c)
+- Consistent stroke thickness in transitions
+- Tabular numbers ([monospace](https://fonts.google.com/knowledge/introducing_type/understanding_numerals))
+- [Variable font](https://rsms.me/inter/#variable)
+- Good letter and word spacing
+- Language support
+
+The font is available in Figma without needing to download and install it yourself. If you need it for other purposes, you can download it from [github.com/rsms/inter](https://github.com/rsms/inter/releases/tag/v3.19).
+
+For hosting, the Altinn CDN can be used:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
+/>
+```
+
+### Enable tail on lowercase "l"
+Inter uses a lowercase "l" without a tail by default. This can be confused with an uppercase "I". To improve readability and avoid confusion, we recommend enabling a tail on the lowercase "l". Add the following to your CSS to enable it:
+
+```css
+font-family: 'Inter', sans-serif;
+font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+```
+

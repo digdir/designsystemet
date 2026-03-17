@@ -2,19 +2,23 @@ import { AppearanceToggle } from '~/_components/appearance-toggle/appearance-tog
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import { ThemeHeader } from '~/_components/theme-header/theme-header';
 import { ColorModalProvider } from '~/_utils/color-modal-context';
-import { ThemePages } from './_components/theme-pages';
+import { ThemePages } from '../../layouts/themebuilder/layout';
 import classes from './page.module.css';
 import 'react-color-palette/css';
 import type { ColorScheme, CssColor } from '@digdir/designsystemet';
-import themeConfig from '@digdir/designsystemet-theme/configs/designsystemet.config.json';
 import { parsePath, redirect } from 'react-router';
 import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
+import themeConfig from '../../../../../designsystemet.config.json';
 import {
+  applyOverridesToColors,
   createColorsAndNeutralVariables,
   createColorsFromQuery,
+  createSeverityColorsFromQuery,
+  parseColorOverrides,
   QUERY_SEPARATOR,
+  type SeverityColorTheme,
 } from './_utils/use-themebuilder';
 import type { Route } from './+types/themebuilder';
 
@@ -26,6 +30,10 @@ const THEME = themeConfig.themes.designsystemet.colors;
 const MAIN_COLORS = toQueryString(THEME.main);
 const SUPPORT_COLORS = toQueryString(THEME.support);
 const NEUTRAL_COLOR = THEME.neutral;
+
+export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';
+
+const DEFAULT_TAB: ThemebuilderTabs = 'colorsystem';
 
 export const loader = async ({
   params: { lang },
@@ -44,10 +52,15 @@ export const loader = async ({
       support: SUPPORT_COLORS,
       appearance: 'light',
       'border-radius': '4',
-      tab: 'overview',
+      tab: DEFAULT_TAB,
     });
 
     return redirect(`/${lang}/themebuilder?${newParams.toString()}`);
+  }
+
+  if (urlParams.get('tab') === 'overview') {
+    urlParams.set('tab', 'examples' as ThemebuilderTabs);
+    return redirect(`/${lang}/themebuilder?${urlParams.toString()}`);
   }
 
   const colors = {
@@ -64,11 +77,33 @@ export const loader = async ({
     support: createColorsFromQuery(urlParams.get('support')),
   };
 
+  // Parse and apply color overrides
+  const overridesParam = urlParams.get('color-overrides');
+  const overridesMap = parseColorOverrides(overridesParam);
+
+  const colorsWithOverrides = {
+    main: applyOverridesToColors(colors.main, overridesMap),
+    neutral: applyOverridesToColors(colors.neutral, overridesMap),
+    support: applyOverridesToColors(colors.support, overridesMap),
+  };
+
+  const severityColors = createSeverityColorsFromQuery(
+    urlParams.get('severity'),
+  );
+
+  const severityEnabled = urlParams.get('severity-enabled') === 'true';
+
   return {
-    colors,
+    colors: colorsWithOverrides,
+    severityColors: applyOverridesToColors(
+      severityColors,
+      overridesMap,
+    ) as SeverityColorTheme[],
+    severityEnabled,
+    overrides: overridesMap,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
-    tab: urlParams.get('tab') || 'overview',
+    tab: urlParams.get('tab') || DEFAULT_TAB,
     lang,
     metadata: generateMetadata({
       title: t('meta.title'),

@@ -1,11 +1,21 @@
+import type { DSTabElement } from '@digdir/designsystemet-web';
+import '@digdir/designsystemet-web'; // Import ds-tabs custom element
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { createContext, forwardRef, useRef, useState } from 'react';
+import {
+  createContext,
+  forwardRef,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 
 export type TabsProps = MergeRight<
-  DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>,
+  DefaultProps & Omit<HTMLAttributes<DSTabElement>, 'onChange' | 'value'>,
   {
     /**
      * Controlled state for `Tabs` component
@@ -28,10 +38,8 @@ export type TabsProps = MergeRight<
 export type ContextProps = {
   value?: string;
   defaultValue?: string;
-  panelButtonMap?: Map<string, string>;
-  setPanelButtonMap?: React.Dispatch<React.SetStateAction<Map<string, string>>>;
   onChange?: (value: string) => void;
-  tablistRef?: React.RefObject<HTMLDivElement | null>;
+  getPrefixedValue?: (value?: string) => string | undefined;
 };
 
 export const Context = createContext<ContextProps>({});
@@ -51,20 +59,17 @@ export const Context = createContext<ContextProps>({});
  *   <Tabs.Panel value='3'>content 3</Tabs.Panel>
  * </Tabs>
  */
-export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
+export const Tabs = forwardRef<DSTabElement, TabsProps>(function Tabs(
   { value, defaultValue, className, onChange, ...rest },
   ref,
 ) {
-  const tablistRef = useRef<HTMLDivElement | null>(null);
-
   const isControlled = value !== undefined;
   const [uncontrolledValue, setUncontrolledValue] = useState<
     string | undefined
   >(defaultValue);
-
-  const [panelButtonMap, setPanelButtonMap] = useState<Map<string, string>>(
-    new Map(),
-  );
+  const tabsRef = useRef<DSTabElement>(null);
+  const valuePrefix = useId(); // Used to generate unique value-based ids for tabs and panels
+  const mergedRefs = useMergeRefs([ref, tabsRef]);
 
   let onValueChange = onChange;
   if (!isControlled) {
@@ -75,18 +80,29 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
     value = uncontrolledValue;
   }
 
+  useEffect(() => {
+    if (!isControlled || !tabsRef.current || value === undefined) return;
+    tabsRef.current?.tabList?.tabs?.forEach((tab) => {
+      if (tab.getAttribute('data-value') === value) tab.click();
+    });
+  }, [value, isControlled]);
+
   return (
     <Context.Provider
       value={{
         value,
         defaultValue,
         onChange: onValueChange,
-        tablistRef,
-        panelButtonMap,
-        setPanelButtonMap,
+        getPrefixedValue: (value?: string) =>
+          value && `${valuePrefix}-${value}`,
       }}
     >
-      <div className={cl('ds-tabs', className)} ref={ref} {...rest} />
+      <ds-tabs
+        suppressHydrationWarning // Since <ds-tablist> adds attributes
+        ref={mergedRefs}
+        class={cl('ds-tabs', className)}
+        {...rest}
+      />
     </Context.Provider>
   );
 });

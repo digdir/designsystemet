@@ -1,0 +1,18 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
+Make sure you always use a `<legend>` to ensure good accessibility for screen readers and other assistive technologies. If the `<legend>` is only for screen reader users, use the helper class `ds-sr-only`. This prevents unnecessary top margin on the element directly below the `<legend>`.
+
+### `Fieldset.Description`
+This is not coded as being linked to either the `<fieldset>` or the individual input fields.
+This is because we do not want to associate it with the `<fieldset>`, as attributes on a `<fieldset>` are inherited by all underlying input fields. For example, if `disabled` is set on a `<fieldset>`, it will also apply to all nested `<input>` elements.
+There are also differences in how this is implemented across browsers.
+
+A screen reader user will still be able to navigate to the description.
+
+We also do not want to link the description to every input field, as the same text would then be read out for each field, which can become very cumbersome for the user.
+
+## References
+
+- [Providing a description for groups of form controls using fieldset and legend elements (w3.org)](https://www.w3.org/WAI/WCAG21/Techniques/html/H71)

@@ -1,4 +1,4 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet/types';
+import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
@@ -12,6 +12,12 @@ export type TagProps = MergeRight<
      * Change the color scheme of the tag
      */
     'data-color'?: Color | SeverityColors;
+    /**
+     * The visual variant of the tag
+     *
+     * @default 'default'
+     */
+    variant?: 'default' | 'outline';
   }
 >;
 
@@ -22,8 +28,15 @@ export type TagProps = MergeRight<
  * <Tag>Melk</Tag>
  */
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
-  { className, ...rest },
+  { className, variant = 'default', ...rest },
   ref,
 ) {
-  return <span className={cl('ds-tag', className)} ref={ref} {...rest} />;
+  return (
+    <span
+      className={cl('ds-tag', className)}
+      ref={ref}
+      data-variant={variant}
+      {...rest}
+    />
+  );
 });

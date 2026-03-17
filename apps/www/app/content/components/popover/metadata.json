@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Popover",
+    "subtitle": "`Popover` vises over andre elementer i grensesnittet og er koblet til et spesifikt element. Den brukes til å vise tilleggsinformasjon, interaktive elementer eller korte forklaringer uten å navigere bort fra siden."
+  },
+  "en": {
+    "title": "Popover",
+    "subtitle": "`Popover` appears above other elements in the interface and is linked to a specific element. It is used to display additional information, interactive elements, or brief explanations without navigating away from the page."
+  },
+  "image": "Popover.svg",
+  "cssFile": "popover.css"
+}

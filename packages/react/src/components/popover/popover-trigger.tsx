@@ -1,5 +1,10 @@
 import { Slot } from '@radix-ui/react-slot';
-import { forwardRef, type HTMLAttributes, useContext, version } from 'react';
+import {
+  type ButtonHTMLAttributes,
+  forwardRef,
+  useContext,
+  version,
+} from 'react';
 import type { DefaultProps } from '../../types';
 import { Button, type ButtonProps } from '../button/button';
 import { Context } from './popover-trigger-context';
@@ -16,7 +21,7 @@ export type PopoverTriggerProps =
        * @default false
        */
       asChild?: boolean;
-    } & HTMLAttributes<HTMLButtonElement> &
+    } & ButtonHTMLAttributes<HTMLButtonElement> &
       DefaultProps)
   | ({
       /**
@@ -50,21 +55,22 @@ export type PopoverTriggerProps =
 export const PopoverTrigger = forwardRef<
   HTMLButtonElement,
   PopoverTriggerProps
->(function PopoverTrigger({ id, inline, asChild, ...rest }, ref) {
+>(function PopoverTrigger(
+  { id, inline, asChild, popovertarget, popoverTarget, ...rest },
+  ref,
+) {
   const { popoverId } = useContext(Context);
   const Component = asChild ? Slot : inline ? 'button' : Button;
+  const popoverVal = popoverTarget ?? popovertarget ?? popoverId;
+  const popoverKey = version.startsWith('19')
+    ? 'popoverTarget'
+    : 'popovertarget';
 
-  const popoverProps = Object.assign(
-    {
-      [version.startsWith('19') ? 'popoverTarget' : 'popovertarget']: popoverId,
-      ...(inline
-        ? {
-            'data-popover': 'inline',
-          }
-        : {}),
-    },
-    rest,
+  return (
+    <Component
+      ref={ref}
+      data-popover={inline ? 'inline' : undefined}
+      {...{ [popoverKey]: popoverVal, ...rest }}
+    />
   );
-
-  return <Component ref={ref} {...popoverProps} />;
 });

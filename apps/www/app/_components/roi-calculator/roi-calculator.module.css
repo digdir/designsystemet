@@ -1,0 +1,48 @@
+.roiCalculator {
+  background-color: var(--ds-color-success-background-tinted);
+  padding: var(--ds-size-9);
+  border-radius: var(--ds-border-radius-md);
+
+  @media screen and (max-width: 958px) {
+    padding: var(--ds-size-4);
+  }
+
+  & p {
+    margin-block: var(--ds-size-4);
+
+    &:first-of-type {
+      margin-block-end: var(--ds-size-8);
+    }
+  }
+  & fieldset:first-of-type {
+    margin-block-end: var(--ds-size-6);
+  }
+}
+
+.inputGrid {
+  display: flex;
+  gap: var(--ds-size-4);
+  margin-block-start: var(--ds-size-4);
+  flex-wrap: wrap;
+
+  & :global(.ds-field-affixes) {
+    width: fit-content;
+  }
+
+  & input {
+    font-family: monospace;
+    max-width: 5em;
+  }
+}
+
+.result {
+  background-color: var(--ds-color-success-surface-tinted);
+  border: 1px solid var(--ds-color-success-border-subtle);
+  padding: var(--ds-size-7);
+  margin-block-start: var(--ds-size-8);
+  border-radius: var(--ds-border-radius-md);
+
+  @media screen and (max-width: 958px) {
+    padding: var(--ds-size-4);
+  }
+}

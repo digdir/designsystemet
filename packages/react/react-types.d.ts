@@ -1,8 +1,7 @@
-import type { Color, ColorScheme, Size } from '@digdir/designsystemet/types';
+import type { Color, ColorScheme, Size } from '@digdir/designsystemet-types';
 
 declare global {
   namespace React {
-    // biome-ignore lint/correctness/noUnusedVariables: we overwrite React's HTMLAttributes to add custom attributes
     interface HTMLAttributes<T> {
       /**
        * Represents the recommended size options for the Designsystemet variables.
@@ -27,6 +26,14 @@ declare global {
        * - `'auto'`: Automatically select the color scheme based on system preferences.
        */
       'data-color-scheme'?: ColorScheme | (string & {});
+      // Make React 18 support popover attributes https://github.com/facebook/react/issues/27479
+      popovertarget?: string;
+      popover?: '' | 'auto' | 'manual' | 'hint';
+    }
+    // Make React support command attributes https://github.com/facebook/react/issues/27479
+    interface ButtonHTMLAttributes<T> extends React.HTMLAttributes<T> {
+      command?: string;
+      commandfor?: string;
     }
   }
 }

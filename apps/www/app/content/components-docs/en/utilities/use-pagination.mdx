@@ -1,0 +1,62 @@
+---
+title: usePagination
+sidebar_title: usePagination
+order: 40
+---
+
+<Story story="Preview" />
+
+A React hook to handle pagination.
+
+## Props
+
+In response you get the object:
+
+```ts
+const pagination = {
+  hasPrev: boolean, // Indicates if there is a previous page
+  hasNext: boolean, // Indicates if there is a next page
+  prevButtonProps: PaginationButtonProps, // Properties you can spread on the previous button
+  nextButtonProps: PaginationButtonProps, // Properties you can spread on the next button
+  pages: Array<{
+    page: number | string; // Number of page, or "ellipsis" string if the button should be ...
+    itemKey: string; // key you can pass to Pagination.Item to ensure correct focus handling
+    buttonProps: PaginationButtonProps; // Properties you can spread on Pagination.Button
+  }>
+}
+```
+
+## Use
+
+```tsx
+const onChange = (event, page: number) => console.log(`Going to page ${page}`);
+const [currentPage, setCurrentPage] = useState(4);
+const { pages, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePagination({
+  currentPage,
+  setCurrentPage,
+  onChange,
+  totalPages: 10,
+  showPages: 7
+});
+```
+
+### On `Pagination.Button`
+
+You loop through `pages` from the response object, and spread `buttonProps` on `Pagination.Button`.
+Notice that we check `typeof` on `page`. This is because ellipses should be an empty `li`.
+
+```tsx
+pages.map(({ page, itemKey, buttonProps }) => ( 
+  <Pagination.Item key={itemKey}> 
+    {typeof page === 'number' && ( 
+      <Pagination.Button 
+        asChild 
+        aria-label={`Page ${page}`} 
+        {...buttonProps} 
+      > 
+        <a href={`#page-${page}`}>{page}</a> 
+      </Pagination.Button> 
+    )} 
+  </Pagination.Item>
+))
+```

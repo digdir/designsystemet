@@ -1,9 +1,11 @@
 import { Divider } from '@digdir/designsystemet-react';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-import { Scale } from '../scale/scale';
+import { Scale } from '../color-scale/color-scale';
 import classes from './colors.module.css';
 
 export const Colors = () => {
+  const { severityEnabled } = useThemebuilder();
+
   return (
     <div className={classes.rows}>
       <MainColors />
@@ -11,6 +13,12 @@ export const Colors = () => {
       <NeutralColor />
       <Divider />
       <SupportColors />
+      {severityEnabled && (
+        <>
+          <Divider />
+          <SeverityColors />
+        </>
+      )}
     </div>
   );
 };
@@ -61,6 +69,21 @@ const SupportColors = () => {
   return (
     <div className={classes.rows}>
       {support.map((color, index) => (
+        <div key={index} className={classes.row}>
+          <div className={classes.scaleLabel}>{color.name}</div>
+          <Scale colorScale={color.colors} namespace={color.name} />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const SeverityColors = () => {
+  const { severityColors } = useThemebuilder();
+
+  return (
+    <div className={classes.rows}>
+      {severityColors.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
           <Scale colorScale={color.colors} namespace={color.name} />

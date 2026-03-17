@@ -1,0 +1,46 @@
+---
+title: Bytte innhold med "swap"
+description: Lær hvordan du kan bruke "swap"-funksjonen i Figma for å tilpasse komponenter uten å detache dem.
+date: 2026-02-06
+category: Figma
+color: yellow
+icon: LayersPlusIcon
+published: true
+order: 20
+---
+
+Når du jobber med komponenter i Figma, vil du ofte tilpasse innhold uten å miste koblingen til Designsystemet. Å *detache* komponenten løser problemet raskt, men gjør at du mister videre oppdateringer fra biblioteket.
+
+Med **swap** kan du beholde koblingen og samtidig bytte innhold ved behov. Det gir fleksibilitet, samtidig som struktur og stil forblir uendret.
+
+## Hva er swap?
+Swap lar deg bytte ut en komponent med en annen direkte i en instans. Du finner instans-menyen i høyresidepanelet når du har valgt en komponent.
+
+I videoen under bytter vi ut `body` i `Alert`-komponenten med en egendefinert komponent som inneholder tekst, `details` og knapper.
+
+<ResponsiveIframe
+  src='/img/swap-alert.mp4'
+  title='Skjermopptak av Figma som viser hvordan bytte ut en komponent med en annen.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
+
+## Hvorfor bruke swap?
+- **Beholder koblingen til biblioteket.** Endringer i hovedkomponenten arves automatisk.  
+- **Gir fleksibilitet.** Du kan variere innhold uten å endre strukturen.  
+- **Sikrer konsistens.** Design og oppførsel styres av Designsystemet.
+
+## Slots-områder i komponenter
+Flere av komponentene våre har innebygde **slots**, fordi vi ikke vet hva slags innhold du har behov for. Dette gjelder blant annet `Card`, `Details` og `Dialog`.
+
+En slot er et åpent område inne i en komponent der du kan plassere eget innhold. Det kan være alt fra enkel tekst til mer komplekse sammensetninger av komponenter.
+
+Hvis innholdet består av flere elementer, anbefaler vi å samle dem i en egen komponent og deretter plassere den i slot-området med swap, slik videoen over viser. 
+
+<Card data-color='brand3' variant="tinted">
+**Slots i Figma er på vei**
+
+Figma har annonsert støtte for [innebygd slots-funksjonalitet (figma.com)](https://help.figma.com/hc/en-us/articles/35794667554839-What-s-new-from-Schema-2025#h_01K84PB569NTFMXBDS36C8DCPV). Når dette blir tilgjengelig, vil vi oppdatere Community-filen og denne artikkelen løpende.
+</Card>

@@ -1,73 +1,17 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
-import { CssVariables } from '@doc-components';
-import css from '@digdir/designsystemet-css/link.css?inline';
 import * as LinkStories from './link.stories';
 
 <Meta of={LinkStories} />
 
-# Link
-
-`Link` er klikkbar tekst eller grafikk, som gjør det enkelt for brukerne å navigere til filer eller sider internt eller eksternt. Komponenten er basert på [anchor HTML-taggen (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-## Bruk
-
-```tsx
-import { Link } from '@digdir/designsystemet-react';
-
-<Link href='https://designsystemet.no/'>Gå til designsystemet</Link>;
-```
-
-## Kodeeksempler
-
-### I tekst
-
-En lenke brukes ofte som en del av en tekst.
-
 <Canvas of={LinkStories.InText} />
-
-### Med ikon
-
-Ikonet legges på venstre side. Dette er et funksjonelt ikon som forteller brukerne hva lenken leder dem til. 
-Ikonet burde være skjult skjermleser, ved å legge på `aria-hidden`.
-Plasser teksten i `<span>` for å få anbefalt mellomrom uten understrek mellom ikon og tekst.
 
 <Canvas of={LinkStories.WithIcon} />
 
-### Flere linjer
-
 <Canvas of={LinkStories.LongLink} />
 
-### Nøytral farge
-
 <Canvas of={LinkStories.Neutral} />
-
-## Retningslinjer
-Det er viktig å ikke overbruke lenker, det kan gjøre det vanskelig for brukerne å finne veien videre.
-
-**Passer til å**
-- navigere til en annen side eller et annet sted i applikasjonen
-- navigere til en ekstern side
-- laste ned en fil
-
-**Passer ikke til å:**
-- Utføre en handling som ikke er relatert til navigasjon, for eksempel å sende inn et skjema. Da bør du bruke en [`Button`](/docs/komponenter-button--docs)).
-
-### Åpne lenker i ny fane/vindu
-Både interne og eksterne lenker bør åpnes i samme fane/vindu. Da sikrer vi en forutsigbar brukeropplevelse fordi brukerens egne lenkeinnstillinger i nettleseren videreføres. Les mer om dette i artikkelen [Merking av lenker](https://www.designsystemet.no/no/patterns/external-links).
-
-## Tekst
-I artikkelen [Merking av lenker](https://www.designsystemet.no/no/patterns/external-links#spr%C3%A5k) finner du retningslinjer for hvordan du bør skrive lenketekst. Det er viktig at lenketeksten er beskrivende og gir brukeren en klar indikasjon på hva de kan forvente når de klikker på lenken.
-
-## Tilgjengelighet
-
-`Link` fungerer som `<a>`, og det er ikke endret på funksjonalitet.
-Fokus legger på ein bakgrunn rundt lenken.
-
-Når brukeren har besøkt en lenke tidligere, vil fargen på lenken endres.
-
-## CSS Variabler
-
-<CssVariables css={css} />

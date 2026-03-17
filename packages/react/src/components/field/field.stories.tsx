@@ -1,5 +1,15 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { Divider, Field, Input, Label, Textarea, ValidationMessage } from '../';
+import { useState } from 'react';
+import {
+  Button,
+  Divider,
+  Field,
+  Input,
+  Label,
+  Tag,
+  Textarea,
+  ValidationMessage,
+} from '../';
 
 type Story = StoryFn<typeof Field>;
 
@@ -48,6 +58,25 @@ export const Counter: Story = () => (
   </Field>
 );
 
+export const CounterControlled: Story = () => {
+  const [value, setValue] = useState('Nordmann');
+
+  return (
+    <>
+      <Field>
+        <Label>Legg til en beskrivelse</Label>
+        <Textarea
+          rows={2}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <Field.Counter limit={10} />
+      </Field>
+      <Button onClick={() => setValue('Hei')}>Set verdi "hei"</Button>
+    </>
+  );
+};
+
 export const Position: Story = () => (
   <>
     <Field position='end'>
@@ -74,3 +103,15 @@ Position.decorators = [
     </div>
   ),
 ];
+
+export const Optional: Story = () => (
+  <Field>
+    <Label>
+      Hvor bor du?
+      <Tag data-color='info' style={{ marginInlineStart: 'var(--ds-size-2)' }}>
+        Valgfritt
+      </Tag>
+    </Label>
+    <Input />
+  </Field>
+);

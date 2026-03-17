@@ -1,15 +1,26 @@
-export const generateMetadata = ({
-  title,
-  description,
-  image = '/img/designsystemet-meta.png',
-}: {
+export interface PageMetadata {
   title: string;
   description: string;
   image?: string;
-}) => {
+}
+
+export interface BuiltMetadata {
+  pageTitle: string;
+  title: string;
+  description: string;
+  image: string;
+  siteUrl: string;
+}
+
+export const defaultCoverImagePath = '/img/designsystemet-meta.png';
+export const logoPath = '/img/Logotest.svg';
+
+export const generateMetadata = (metadata: PageMetadata) => {
+  const { title, description, siteUrl, pageTitle, image } =
+    buildMetadata(metadata);
   return [
     {
-      title: `${title} - Designsystemet`,
+      title: pageTitle,
     },
     {
       name: 'description',
@@ -29,7 +40,7 @@ export const generateMetadata = ({
     },
     {
       property: 'og:url',
-      content: 'https://designsystemet.no',
+      content: siteUrl,
     },
     {
       property: 'twitter:title',
@@ -49,3 +60,15 @@ export const generateMetadata = ({
     },
   ];
 };
+
+export const buildMetadata = ({
+  title,
+  description,
+  image = defaultCoverImagePath,
+}: PageMetadata): BuiltMetadata => ({
+  pageTitle: `${title} - Designsystemet`,
+  title,
+  description,
+  image,
+  siteUrl: 'https://designsystemet.no',
+});

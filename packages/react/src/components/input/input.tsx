@@ -53,6 +53,12 @@ export type InputProps = MergeRight<
      * Set role, i.e. `switch` when `checkbox` or `radio`
      **/
     role?: InputAttr['role'];
+    /**
+     * Indeterminate state for checkbox inputs
+     * Only works when used inside `Field` component
+     * @default false
+     **/
+    'data-indeterminate'?: boolean;
   }
 >;
 

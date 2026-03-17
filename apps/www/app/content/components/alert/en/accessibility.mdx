@@ -1,0 +1,49 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
+## Alert in a live region
+
+If you want the alert to be read out dynamically, you must place the `Alert` inside a live region. The region **must wrap around** the `Alert` component, not be placed on the component itself.
+
+Out of the box, `Alert` is presented to screen reader users as regular static content. For alerts that appear dynamically, you can define a *live region* for screen readers yourself, but be aware of the behaviour this introduces. You can read more about this in [MDN's documentation on ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
+
+Pay particular attention to the fact that the live region — that is, the element with the attribute `role="alert"`, `role="status"`, or `aria-live` with the value `"assertive"` or `"polite"` — must exist on the page **before** the alert that is to be read out.
+
+For dynamic alerts, it is generally most relevant to use `role="alert"` for critical alerts or `role="status"` for less critical alerts, as described in the [system notifications pattern](/en/patterns/systemnotifications). See also the [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) and the [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) on MDN.
+
+**Do not** combine `role="alert"` and `aria-live`, since [this may cause the alert to be read out twice in VoiceOver (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#:~:text=adding%20both%20aria%2Dlive%20and%20role=%22alert%22%20causes%20double%20speaking%20issues%20in%20VoiceOver%20on%20iOS).
+
+You **should** combine `role="status"` and `aria-live="polite"` [to maximise compatibility (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#roles_with_implicit_live_region_attributes).
+
+<Story story="CorrectLiveRegionReactEn" />
+
+<Card data-color="info">
+For status messages implemented using markup, the following applies:
+
+**The result of an action must be coded with one of the following:**
+
+- role="status"
+- aria-live="polite"
+
+**A waiting state must be coded with one of the following:**
+
+- role="status"
+- aria-live="polite"
+
+**Errors must be coded with one of the following:**
+
+- role="alert"
+- aria-live="polite"
+- aria-live="assertive"
+
+**Progress in a process must be coded with one of the following:**
+
+- role="progressbar"
+- the `<progress>` element
+- role="log"
+- role="status" and aria-atomic="false"
+- aria-live="polite" and aria-atomic="false"
+
+Source: [4.1.3 Status messages (Level AA) (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+</Card>

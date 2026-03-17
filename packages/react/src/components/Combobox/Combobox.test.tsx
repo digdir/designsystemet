@@ -365,7 +365,7 @@ describe('Combobox', () => {
         <>
           <strong>
             <abbr>CSS</abbr>
-          </strong>
+          </strong>{' '}
           (Cascading Style Sheets)
         </>
       ),

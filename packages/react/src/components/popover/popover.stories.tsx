@@ -1,7 +1,8 @@
 import { TrashIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
+// import { expect, userEvent, within } from 'storybook/test';
 import { Button, Paragraph } from '../';
 import { Popover } from './';
 
@@ -21,12 +22,15 @@ export default {
     },
   },
   play: async (ctx) => {
-    // When not in Docs mode, automatically open the popover
-    const canvas = within(ctx.canvasElement);
-    const button = canvas.getByRole('button');
-    await userEvent.click(button);
-    const popover = ctx.canvasElement.querySelector('[popover]');
-    await expect(popover).toBeVisible();
+    // When not in Docs mode, automatically open the dropdown
+    const button = within(ctx.canvasElement).getByRole('button');
+    await new Promise((resolve) => {
+      document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør click
+      userEvent.click(button);
+    });
+    const dropdown = ctx.canvasElement.querySelector('.ds-popover');
+    await expect(dropdown).toBeInTheDocument();
+    await waitFor(() => expect(dropdown).toBeVisible());
   },
 } satisfies Meta;
 
@@ -188,8 +192,13 @@ export const Controlled: StoryFn<typeof Popover> = () => {
 
   return (
     <Popover.TriggerContext>
-      <Popover.Trigger onClick={() => setOpen(!open)}>Slett</Popover.Trigger>
-      <Popover open={open} onClose={() => setOpen(false)} data-color='neutral'>
+      <Popover.Trigger>Slett</Popover.Trigger>
+      <Popover
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+        data-color='neutral'
+      >
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <div
           style={{

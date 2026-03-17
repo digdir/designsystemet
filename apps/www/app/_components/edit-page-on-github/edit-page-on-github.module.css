@@ -1,8 +1,29 @@
 .githubLink {
-  margin-block: var(--ds-size-6);
-  display: block;
+  margin-block-start: var(--ds-size-10);
+  margin-block-end: var(--ds-size-6);
+  display: inline-block;
+  padding: var(--ds-size-6);
+  border-radius: var(--ds-border-radius-xl);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  background: var(--ds-color-neutral-background-tinted);
+  color: var(--ds-color-neutral-text-subtle);
+  width: 100%;
+  &:hover {
+    color: var(--ds-color-neutral-text-default);
+  }
+  @media (max-width: 1280px) {
+    border-radius: var(--ds-border-radius-lg);
+  }
+
+  svg {
+    margin-inline-end: var(--ds-size-1);
+  }
 
   path {
-    fill: var(--ds-color-neutral-text-default);
+    fill: currentColor;
+  }
+
+  &:visited {
+    color: var(--dsc-link-color--visited);
   }
 }

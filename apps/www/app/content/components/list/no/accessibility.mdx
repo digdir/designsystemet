@@ -1,0 +1,54 @@
+<Alert data-color="info">
+Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
+</Alert>
+
+### Lister til navigasjon
+
+Dersom `List` brukes som navigasjonselement (for eksempel i bunn eller ved siden av hovedinnholdet), 
+kan du legge `<nav>` rundt med `aria-label=""` for å gi skjermlesere en bedre brukeropplevelse.
+Dette gjøres siden W3C anbefaler å unngå `aria-label` / `aria-labelledby` rett på `<ul>`/`<ol>`. Les mer på W3Cs artikkel [<span lang="en">"Practical Support: aria-label, aria-labelledby and aria-describedby"</span> (w3.org)](https://www.w3.org/TR/using-aria/#label-support)
+
+#### Eksempel på `<nav>`
+
+```tsx
+<nav aria-label="Snarveier">
+  <List.Unordered>
+    <List.Item>
+      <Button>Copy</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Cut</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Paste</Button>
+    </List.Item>
+  </List.Unordered>
+</nav>
+```
+
+### `<menu>` istedenfor `<ul>`
+
+Usorterte lister kan byttest ut med `<menu>`, som er et semantisk alternativ til `<ul>`.
+Begge elementene representerer en usortert liste, og nettlesere oppfatter disse likt.
+Forskjellen er at `<menu>` er tiltenkt interaktive elementer.
+
+#### Eksempel på `<menu>`
+
+Dette er et eksempel der `List.Unordered` har blitt endra til `<menu>`, og intensjonen
+for listen er å vise knapper som utfører en funksjonalitet i applikasjonen.
+
+```tsx
+<List.Unordered asChild>
+  <menu>
+    <List.Item>
+      <Button>Copy</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Cut</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Paste</Button>
+    </List.Item>
+  </menu>
+</List.Unordered>
+```

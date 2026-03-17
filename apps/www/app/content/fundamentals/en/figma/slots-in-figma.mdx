@@ -1,0 +1,46 @@
+---
+title: Swap content using "swap"
+description: Learn how to use the swap feature in Figma to customise components without detaching them.
+date: 2026-02-06
+category: Figma
+color: yellow
+icon: LayersPlusIcon
+published: true
+order: 20
+---
+
+When working with components in Figma, you will often want to customise content without losing the connection to Designsystemet. Detaching a component solves this quickly, but means you miss out on future updates from the library.
+
+With **swap**, you can keep the connection and replace content when needed. This provides flexibility while the structure and styling remain unchanged.
+
+## What is swap?
+Swap lets you replace one component with another directly in an instance. When a component is selected, you will find the instance menu in the right-hand panel in Figma.
+
+In the video below, we replace the `body` in the `Alert` component with a custom component containing text, `details`, and buttons.
+
+<ResponsiveIframe
+  src='/img/swap-alert.mp4'
+  title='Screen recording showing how to swap one component with another in Figma.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
+
+## Why use swap?
+- **Keeps the connection to the library.** Changes to the main component are inherited automatically.  
+- **Provides flexibility.** You can vary content without changing the structure.  
+- **Ensures consistency.** Design and behaviour are defined by Designsystemet.
+
+## Slot areas in components
+Several of our components include built-in **slots**, as we cannot anticipate every type of content you may need. This applies to components such as `Card`, `Details`, and `Dialog`.
+
+A slot is an open area within a component where you can place your own content. This can range from simple text to more complex combinations of components.
+
+If the content consists of multiple elements, we recommend grouping them into a separate component and placing it in the slot using swap, as shown in the video above.
+
+<Card data-color='brand3' variant="tinted">
+**Slots in Figma are coming**
+
+Figma has announced support for [built-in slot functionality (figma.com)](https://help.figma.com/hc/en-us/articles/35794667554839-What-s-new-from-Schema-2025#h_01K84PB569NTFMXBDS36C8DCPV). When this becomes available, we will update the Community file and this article on an ongoing basis.
+</Card>

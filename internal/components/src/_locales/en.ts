@@ -2,17 +2,17 @@ import type no from './no';
 
 export default {
   footer: {
-    about: 'About the design system',
+    about: 'About Designsystemet',
     privacy: 'Privacy policy',
     accessibility: 'Accessibility statement',
+    cookies: 'Manage cookie preferences',
     slack: 'Join us on Slack',
-    agencies: {
-      title: 'Created across public agencies:',
-      contact: 'Your agency? Contact us!',
-    },
+    description:
+      'Designsystemet is a shared toolbox of basic UI components, guidelines, and patterns that you can use when developing digital solutions. It is open and free for everyone.',
     'about-site': 'About this site',
     'contact-us': 'Get in touch with us',
     copyright: 'Designsystemet',
+    'dpg-aria-label': 'Digital Public Goods Designsystemet page',
   },
   header: {
     'home-link': 'Designsystemet home page',
@@ -24,6 +24,10 @@ export default {
     dark: 'dark',
     'language-toggle': 'Switch language',
     'back-to-home': 'Go back to the home page',
+    search: 'Search',
+  },
+  meta: {
+    'meta-cover': "Designsystemet's logo",
   },
   'clipboard-button': {
     copy: 'Copy',
@@ -42,6 +46,40 @@ export default {
       'background-colors-and-surface-colors':
         'Background colors and Surface colors',
       'base-colors': 'Base colors',
+    },
+  },
+  'token-preview': {
+    size: {
+      'select-label': 'Select size',
+      caption: 'Size variables',
+    },
+    color: {
+      caption: 'Color variables',
+    },
+    'border-radius': {
+      caption: 'Border-radius variables',
+    },
+    opacity: {
+      caption: 'Opacity variables',
+    },
+    shadow: {
+      caption: 'Shadow variables',
+    },
+    'border-width': {
+      caption: 'Border-width variables',
+    },
+    typography: {
+      caption: 'Typography variables',
+    },
+    'search-in-design-tokens': 'Search in design tokens',
+    'search-input-aria-label':
+      'Search for variable names in CSS for design tokens',
+    colors: 'Colors',
+    'no-results': 'No results found',
+    table: {
+      name: 'Variable name',
+      preview: 'Preview',
+      value: 'Value',
     },
   },
 } satisfies typeof no;

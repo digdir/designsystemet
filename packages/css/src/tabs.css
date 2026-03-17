@@ -8,15 +8,13 @@
   --dsc-tabs-list-border-bottom-width: var(--ds-border-width-default);
   --dsc-tabs-list-border-bottom-style: solid;
 
-  & [role='tabpanel'],
-  & u-tabpanel {
+  & :is([role='tabpanel'], & ds-tabpanel, & u-tabpanel) {
     padding: var(--dsc-tabs-content-padding);
 
     @composes ds-focus from './base.css';
   }
 
-  & [role='tablist'],
-  & u-tablist {
+  & :is([role='tablist'], & ds-tablist, & u-tablist) {
     flex-direction: row;
     border-bottom-width: var(--dsc-tabs-list-border-bottom-width);
     border-bottom-style: var(--dsc-tabs-list-border-bottom-style);
@@ -28,8 +26,7 @@
       display: flex;
     }
 
-    & > [role='tab'] /* Using role= instead og <button> to allow non-tab-buttons in same parent */,
-    & > u-tab {
+    & > :is([role='tab'], ds-tab, u-tab) {
       align-items: center;
       background: none;
       border: 0;
@@ -47,6 +44,7 @@
       position: relative;
       text-align: center;
       white-space: nowrap;
+      --_ds-captured-length: 1em;
 
       @composes ds-focus--inset from './base.css';
 
@@ -60,7 +58,8 @@
 
       & :where(img, svg) {
         flex-shrink: 0; /* Never shrink icon */
-        font-size: 1.25em; /* Auto scale icon based on font-size */
+        /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
+        font-size: calc(var(--_ds-captured-length) * 1.25); /* Auto scale icon based on font-size */
       }
 
       &::after {

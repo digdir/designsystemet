@@ -1,6 +1,10 @@
 .section {
   position: relative;
   margin: 110px 0;
+  /*--breakpoint-mobile: 600px*/
+  @media (max-width: 600px) {
+    margin-block: 82px;
+  }
 }
 
 .blue {
@@ -56,6 +60,7 @@
 }
 
 .textContainer {
+  position: relative;
   flex-basis: 400px;
   flex-grow: 500;
   display: flex;
@@ -63,7 +68,7 @@
 }
 
 .title {
-  margin-bottom: var(--ds-size-8);
+  margin-bottom: var(--ds-size-4);
 }
 
 .tag {
@@ -102,7 +107,7 @@
   display: flex;
   align-items: center;
   margin-top: var(--ds-size-5);
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 500;
   width: fit-content;
 }

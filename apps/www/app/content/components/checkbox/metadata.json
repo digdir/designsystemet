@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Checkbox",
+    "subtitle": "`Checkbox` gir brukerne mulighet til å velge ett eller flere alternativer. Den kan også brukes i tilfeller der brukeren skal bekrefte noe. "
+  },
+  "en": {
+    "title": "Checkbox",
+    "subtitle": "`Checkbox` allows users to select one or more options. It can also be used in situations where the user needs to confirm something."
+  },
+  "image": "Checkbox.svg",
+  "cssFile": "input.css"
+}

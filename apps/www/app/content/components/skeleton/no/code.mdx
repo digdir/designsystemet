@@ -1,0 +1,67 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { Skeleton } from '@digdir/designsystemet-react';
+
+<Skeleton width={200} height={100} />
+```
+
+## Eksempel
+
+### Varianter
+
+<Story story="Components" />
+
+### Eksempel på bruk
+
+<Story story="UsageExample" layout="column" />
+
+### Tekst-variant
+
+<Story story="Text" />
+
+## HTML
+
+Legg klassenavnet `ds-skeleton` på en `<span>` med `aria-hidden="true"`.
+
+Du endrer variant med `data-variant`.
+
+Dersom du har tekst-varianten, setter du `data-text` med så mye tekst du ønsker den skal etterligne.
+I react bruker vi bindestrek ("-") i `data-text`.
+Tekst varianten burde ligge i ein `<p>` eller et heading-element for å få riktig font-størrelse.
+
+Dersom du vil sette størrelse kan du gjøre dette med `style`-attributtet, eller med CSS.
+
+```html
+<span
+  aria-hidden="true"
+  class="ds-skeleton"
+  data-variant="circle"
+  style="width: 50px; height: 50px;"
+></span>
+
+<span
+  aria-hidden="true"
+  class="ds-skeleton"
+  data-variant="rectangle"
+  style="width: 100px; height: 50px;"
+></span>
+
+<p class="ds-paragraph" data-variant="default">
+  <span
+    aria-hidden="true"
+    class="ds-skeleton"
+    data-text="----------"
+    data-variant="text"
+  ></span>
+</p>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

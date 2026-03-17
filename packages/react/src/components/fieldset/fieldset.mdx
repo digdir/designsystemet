@@ -1,52 +1,13 @@
-import { Meta, Controls, Primary, Canvas } from '@storybook/addon-docs/blocks';
-import { CssVariables } from '@doc-components';
-import css from '@digdir/designsystemet-css/fieldset.css?inline';
+import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
 import * as FieldsetStories from './fieldset.stories';
 
 <Meta of={FieldsetStories} />
 
-# Fieldset
-`Fieldset` brukes til å gruppere og navngi felt som naturlig hører sammen, for eksempel datofelt eller adressefelt. Komponenten hjelper med å organisere informasjon, gjøre skjemaer mer oversiktlige og forbedre tilgjengeligheten for skjermlesere.
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-## Bruk
-
-`Fieldset` er et [fieldset](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset)-element med diverse hjelpfunksjoner for å hjelpe med bruk og gruppering av kontrollelementer i et skjema.
-
-## Eksempler 
-
-### Checkbox
 <Canvas of={FieldsetStories.WithCheckbox} />
 
-### Spørsmål som overskrift
-Å bruke selve spørsmålet som overskrift er god praksis i mange tilfeller, fordi brukere med skjermleser da bare hører spørsmålet én gang. 
-
-På sider med flere inndatafelt, gjør det det enklere for brukere med skjermleser om spørsmålet er en overskrift. Dette gjør det lettere å forstå at alle feltene som følger hører til samme gruppe som overskriften.
 <Canvas of={FieldsetStories.LegendAsHeading} />
-
-## Retningslinjer
-Når du bruker `Fieldset`, bør du starte med en `Fieldset.Legend` som forklarer hva feltene under handler om. Det kan være et spørsmål som «Hvor bor du nå?» eller en beskrivende setning som «Personopplysninger». Dette hjelper brukeren med å forstå sammenhengen mellom feltene og hva de skal fylle ut.
-
-**Passer til å**
-- gruppere en liste med flere `Radio` eller `Checkbox` som hører naturlig sammen
-- dele inn et skjema i seksjoner med forklarende ledetekster
-
-**Passer ikke til å**
-- gruppere elementer som ligger utenfor et skjema
-
-
-## Tekst
-Unngå å bruke samme tekst i både `label` og `legend`. Ha gjerne med en hjelpetekst (`Fieldset.Description`) hvis det gjør det enklere for brukerne å fylle ut skjemaet. Lag teksten så kort som mulig.
-
-## Tilgjengelighet
-Sørg for at du alltid bruker en `legend` for å sikre god tilgjengelighet for skjermlesere og andre hjelpemidler. Dersom `legend` kun er for skjermleser, bruk hjelpeklassen `ds-sr-only`, da sørger vi for at det ikke blir en unødvendig toppmarg på elementet direkte under `legend`.
-
-## Referanser
-
-- [Providing a description for groups of form controls using fieldset and legend elements](https://www.w3.org/WAI/WCAG21/Techniques/html/H71)
-
-## CSS Variabler
-
-<CssVariables css={css} />

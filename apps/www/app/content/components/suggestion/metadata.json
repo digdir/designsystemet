@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Suggestion",
+    "subtitle": "`Suggestion` er en søkbar \"select\" med mulighet for å velge flere alternativer."
+  },
+  "en": {
+    "title": "Suggestion",
+    "subtitle": "`Suggestion` is a searchable \"select\" with support for multiple selections."
+  },
+  "image": "Suggestion.svg",
+  "cssFile": "suggestion.css"
+}

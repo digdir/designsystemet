@@ -10,7 +10,7 @@
   grid-template-columns: 1fr auto;
   width: 100%;
   border-radius: var(--ds-border-radius-default);
-  position: relative;
+  isolation: isolate;
 
   &:not([hidden]) {
     display: grid;
@@ -35,7 +35,6 @@
       grid-area: 1 / 1;
       margin-inline: var(--dsc-search-padding-inline);
       pointer-events: none;
-      position: relative;
       z-index: 2;
     }
   }
@@ -61,9 +60,7 @@
     justify-self: end;
     margin-inline: var(--dsc-search-padding-inline);
     padding: var(--dsc-search-clear-padding);
-    position: relative;
     scale: 0.75;
-    z-index: 2;
 
     &::before {
       content: '';

@@ -24,6 +24,7 @@ export default async function handleRequest(
   const ns = i18next.getRouteNamespaces(routerContext);
 
   const url = new URL(request.url);
+
   const lng = url.pathname.startsWith('/no')
     ? 'no'
     : url.pathname.startsWith('/en')
@@ -34,6 +35,7 @@ export default async function handleRequest(
     ...i18n,
     lng,
     ns,
+    showSupportNotice: false,
     resources: {
       en: {
         translation: en,

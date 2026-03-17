@@ -1,0 +1,65 @@
+<Story story="Preview" layout="column" />
+<ReactComponentDocs />
+
+
+## Bruk
+
+```tsx
+import { Textfield } from '@digdir/designsystemet-react';
+
+<Textfield label="Label" />
+```
+
+## Eksempel
+
+### Med rader
+
+<Story story="WithRows" />
+
+### Med prefiks og suffiks
+
+<Story story="WithAffix" />
+
+### Med teller
+
+<Story story="WithCounter" />
+
+## HTML
+
+Dette er en samensatt komponent, som bruker [`Field`](/no/components/docs/field/code), [`Input`](/no/components/docs/input/code) eller [`Textarea`](/no/components/docs/textarea/code) og [`Label`](/no/components/docs/label/code) under panseret.
+
+Siden denne komponenten bygges opp av flere komponenter, anbefaler vi å lese dokumentasjonen for de underliggende komponentene for å få en full oversikt over HTML-strukturen.
+
+```html
+<!-- input -->
+<div class="ds-field">
+  <label
+    class="ds-label"
+    data-weight="medium"
+    for="my-input"
+  >Label</label>
+  <div class="ds-field-affixes">
+    <input class="ds-input" type="text" id="my-input">
+  </div>
+</div>
+
+<!-- textarea -->
+<div class="ds-field">
+  <label
+    class="ds-label"
+    data-weight="medium"
+    for="my-textarea"
+  >Label</label>
+  <div class="ds-field-affixes">
+    <textarea class="ds-input" type="text" id="my-textarea">
+  </div>
+</div>
+```
+
+## CSS variablar og data-attributter
+`Textfield`er en samensatt komponent, med [`Field`](/no/components/docs/field/code), [`Input`](/no/components/docs/input/code) eller [`Textarea`](/no/components/docs/textarea/code) og [`Label`](/no/components/docs/label/code). 
+
+Her viser vi kun `ds-input` sine variabler og data-attributter.
+<CssVariables />
+
+<CssAttributes />

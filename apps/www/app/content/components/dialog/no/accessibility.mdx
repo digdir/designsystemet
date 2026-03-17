@@ -1,0 +1,13 @@
+<Alert data-color="info">
+Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
+</Alert>
+
+### Ikke-modale dialoger
+Når du bruker ikke-modale dialoger, må du passe på at elementer som får fokus gjennom navigering med tastatur ikke havner bak dialogen og blir skjult. Se kriteriene [2.4.11 (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html) (AA) og [2.4.12 (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-enhanced.html) (AAA).
+
+For ikke-modale dialoger betyr dette at du må:
+- Sikre at fokuserbare elementer aldri blir helt dekket av dialogen når brukeren tabber gjennom siden.
+- Sørge for at fokusrekkefølgen er logisk og at fokus alltid er synlig, slik at brukere som navigerer med tastatur eller skjermleser forstår hvor fokus befinner seg.
+
+### Tastaturnavigasjon
+* <kbd>Esc</kbd> lukker dialogen (fokus returnerer til utløser)

@@ -1,7 +1,7 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { Button, Divider, Paragraph } from '../../';
+import { Button, Divider, Paragraph, Tag } from '../../';
 
 import { Textfield } from './textfield';
 
@@ -66,4 +66,21 @@ export const Controlled: StoryFn<typeof Textfield> = () => {
       <Button onClick={() => setValue('Kake')}>Jeg vil ha Kake</Button>
     </>
   );
+};
+
+export const Required: Story = {
+  args: {
+    label: (
+      <>
+        Hvor bor du?
+        <Tag
+          data-color='warning'
+          style={{ marginInlineStart: 'var(--ds-size-2)' }}
+        >
+          Må fylles ut
+        </Tag>
+      </>
+    ),
+    required: true,
+  },
 };

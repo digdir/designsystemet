@@ -1,0 +1,42 @@
+<Story story="Preview" layout="column" />
+<ReactComponentDocs />
+
+## Use
+
+```tsx
+import { Textarea, Label } from '@digdir/designsystemet-react';
+
+<>
+  <Label htmlFor="my-textarea">Label</Label>
+  <Textarea id="my-textarea" />
+</>
+```
+
+## Example
+
+### With Rows
+Use the `rows` attribute to set the number of visible rows in the text area.
+This only affects the initial height of the field.
+
+<Story story="WithRowsEn" layout="column" />
+
+### Disabled
+
+<Story story="Disabled" layout="column" />
+
+### ReadOnly
+
+<Story story="ReadOnlyEn" layout="column" />
+
+## HTML
+Apply the class name `ds-input` to `<textarea>`.
+
+```html
+<textarea class="ds-input"></textarea>
+```
+
+## CSS variables and data attributes
+`Textarea` gets styling from `ds-input`, so we show variables and data attributes from that class here.
+<CssVariables />
+
+<CssAttributes />

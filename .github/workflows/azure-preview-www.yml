@@ -1,5 +1,4 @@
 name: azure preview www
-
 on:
   workflow_dispatch:
   pull_request:
@@ -7,6 +6,9 @@ on:
     paths:
       - 'apps/www/**'
       - 'internal/components/**'
+      - '.github/workflows/azure-preview-www.yml'
+      - '.github/workflows/azure-deploy-www.yml'
+      - 'Dockerfile'
 
 permissions:
   id-token: write
@@ -24,3 +26,4 @@ jobs:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      SLACK_INVITE_URL: ${{ secrets.SLACK_INVITE_URL }}

@@ -1,59 +1,12 @@
 import { Meta, Controls, Primary } from '@storybook/addon-docs/blocks';
-import { CssVariables } from '@doc-components';
-import css from '@digdir/designsystemet-css/skiplink.css?inline';
 import * as SkipLinkStories from './skip-link.stories';
 
 <Meta of={SkipLinkStories} />
 
-# SkipLink
-
-Vi bruker `SkipLink` for å hjelpe folk som bruker tastaturnavigasjon til å navigere, slik at dei enkelt kan gå til det viktigaste innhaldet på ei side. 
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-## Bruk
-`SkipLink` bør vere eit av dei første elementa markøren går til når du navigerer med tastaturet.
-
-```tsx
-import { SkipLink } from '@digdir/designsystemet-react';
-
-<SkipLink href='#main-content'>Hopp til hovedinnhold</SkipLink>
-
-<main id='main-content' tabIndex={-1} >
-  Region som kan motta fokus fra skiplink.
-</main>
-```
-
-## Retningslinjer
-Når ein navigerer med tastatur, skal det vere mogleg å hoppe over innhald som går igjen på fleire sider, til dømes menyar, lenker og topptekst. `SkipLink` gjer at brukaren raskare kjem rett til hovudinnhaldet på sida.
-
-Dersom det berre er nokre få tab-stopp fram til hovudinnhaldet, til dømes om du berre har ei «Heim»-lenke øvst på sida, kan det vere unødvendig å leggje inn ein `SkipLink`. Då risikerer du at det vert fleire knappar å forhalde seg til enn nødvendig. 
-
-Vi plasserer `SkipLink` som det første fokuserbare elementet. Dersom sida har eit varsel om informasjonskapslar, legg du `SkipLink` rett etter koden for dette varselet.
-
-`SkipLink` bør skilje seg frå resten av innhaldet, slik at folk som kan sjå, men bruker tastaturet til å navigere, kjenner att dette elementet før dei flyttar vidare.
-
-
-## Tekst
-
-Pass på at teksten tydeleg seier kva snarvegen skal brukast til. Bruk ein enkel tekst, som for eksempel «Gå direkte til innhaldet» eller «Hopp direkte til innhaldet».
-
-
-## Tilgjengelegheit
-
-`SkipLink` er vanlegvis ikkje synleg før eit trykk på tastaturet aktiverer han.
-
-Ver merksam på at nokre automatiske testar for tilgjengelegheit kan varsle om at `SkipLink` manglar i eit landemerke, for eksempel `<nav>`. Dette varselet gjeld ikkje for `SkipLink`, så det kan du oversjå.  
-
-Pass på at `SkipLink` oppfører seg føreseieleg. Ein `SkipLink` med teksten «Gå direkte til innhaldet» skal flytte brukarens fokus til starten på innhaldet, ikkje til starten av det første avsnittet under overskrifta.  
-
-
-### Tastaturnavigasjon
-* <kbd>Enter</kbd> følger lenken og hopper til mål
-
-## CSS Variabler
-
-<CssVariables css={css} />
 
 

@@ -1,4 +1,4 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet/types';
+import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import cl from 'clsx/lite';
 import { forwardRef, type HTMLAttributes } from 'react';
 import type { DefaultProps } from '../../types';

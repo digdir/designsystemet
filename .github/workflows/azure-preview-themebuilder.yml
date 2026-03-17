@@ -1,5 +1,4 @@
 name: azure preview themebuilder
-
 on:
   workflow_dispatch:
   pull_request:
@@ -7,6 +6,9 @@ on:
     paths:
       - 'apps/themebuilder/**'
       - 'internal/components/**'
+      - '.github/workflows/azure-preview-themebuilder.yml'
+      - '.github/workflows/azure-deploy-themebuilder.yml'
+      - 'Dockerfile'
 
 permissions:
   id-token: write

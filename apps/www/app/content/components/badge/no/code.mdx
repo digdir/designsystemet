@@ -1,0 +1,75 @@
+<Story story="Preview" />
+
+<ReactComponentDocs />
+
+```tsx
+import { Badge } from '@digdir/designsystemet-react';
+
+/* Inline utan tal */
+<Badge />
+
+/* Inline med tal */
+<Badge count={5} maxCount={99} />
+
+/* Flytande over element */
+<Badge.Position>
+  <Badge />
+  <Elem />
+</Badge.Position>
+```
+
+## Eksempel
+
+
+### Variantar
+
+Du kan endre mellom `variant` og `data-color` for å få ulike fargar og stilar.
+
+<Story story="Variants" />
+
+
+### Flytande
+
+Du kan setje plassering med `placement`, og velge kva type `overlap` den kan skal.
+
+<Story story="Floating" />
+
+Ikkje alle ikon har lik form, og då må du kanskje endre kor `Badge` skal plasserast. Dersom du ikkje får `Badge` til å liggje der du ynskjer, kan du bruke `style` for å overstyre plasseringa.
+Dette fungerer også når du bruker `overlap="circle"`.
+
+<Story story="CustomPlacement" />
+
+### Inline
+
+Når du skal ha `Badge` inline, plasserer du den rett i teksten eller komponenten.
+
+<Story story="InTabs" />
+
+## HTML
+
+`Badge` rendrar teksten sin med CSS i eit `:before`-pseudoelement på ein `span`-tagg.
+Du brukar klassenavnet `ds-badge`, i saman med data atributt.
+
+Dersom du vil ha den flytande, så må `ds-badge--position` nyttast på ein wrapper rundt elementet som `Badge` skal plasserast over.
+`data-placement` blir brukt på wrapperen for å bestemme plasseringa. Sjå nederst på sida for støtta plasseringar.
+På den kan du også setje `data-overlap="circle"` for å få sirkulær overlap.
+
+```html
+<!-- inline uten tal -->
+<span class="ds-badge"></span>
+
+<!-- inline med tal -->
+<span class="ds-badge" data-count="9+"></span>
+
+<!-- flytande over element -->
+<span class="ds-badge--position" data-placement="top-right" data-overlap="circle">
+  <span class="ds-badge" data-count="5"></span>
+  <Icon />
+</span>
+```
+
+## CSS variablar og data-attributtar
+
+<CssVariables/>
+
+<CssAttributes />

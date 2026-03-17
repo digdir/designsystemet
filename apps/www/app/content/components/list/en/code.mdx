@@ -1,0 +1,47 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Usage
+
+```tsx
+import { List } from '@digdir/designsystemet-react';
+
+<List.Unordered>
+<List.Item>Item</List.Item>
+</List.Unordered>
+```
+
+## Example
+
+### Unordered list
+
+<Story story="UnorderedEn" layout="column" />
+
+### Ordered list
+
+<Story story="OrderedEn" layout="column" />
+
+## HTML
+
+You use either `<ul>` or `<ol>` with the class name `ds-list`.
+`<li>` is used for each list item, and does not need a class name.
+
+```html
+<!-- unsorted list -->
+<ul class="ds-list">
+<li>Item</li>
+<li>Item</li>
+</ul>
+
+<!-- sorted list -->
+<ol class="ds-list">
+<li>Item</li>
+<li>Item</li>
+</ol>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

@@ -1,6 +1,7 @@
 import { FilesIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { expect, userEvent, within } from 'storybook/test';
+import { useState } from 'react';
+import { expect, within } from 'storybook/test';
 import { Button } from '../../';
 import { Tooltip } from './tooltip';
 
@@ -16,25 +17,24 @@ export default {
     },
   },
   play: async (ctx) => {
-    // When not in Docs mode, automatically open the tooltip
-    const canvas = within(ctx.canvasElement);
-    const button = canvas.getByRole('button');
-    /* wait 1s for tooltip to show */
-    await userEvent.hover(button);
+    document.querySelector('.ds-tooltip')?.remove(); // Reset to run next test without waiting for tooltip to disappear // <== Må "nullstille"/fjerne tooltip mellom hver test
+    const button = ctx.canvasElement.querySelector(
+      '[data-tooltip]',
+    ) as HTMLElement;
+
     await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(true);
-      }, 1000);
+      document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør hover
+      button.focus();
     });
-    const tooltip = canvas.getByRole('tooltip');
-    await expect(tooltip).toBeInTheDocument();
-    await expect(tooltip).toBeVisible();
+
+    const tooltip = await within(document.body).findByText(ctx.args.content); // <== trenger ikke sjekke toBeInDocument siden denne testen krever det
+    expect(tooltip).toBeVisible();
   },
 } satisfies Meta;
 
 export const Preview: StoryFn<typeof Tooltip> = (args) => (
   <Tooltip {...args}>
-    <Button icon aria-label='Kopier'>
+    <Button icon>
       <FilesIcon aria-hidden />
     </Button>
   </Tooltip>
@@ -49,23 +49,8 @@ export const WithString: Story = {
   args: {
     content: 'Organisasjonsnummer',
     children: 'Org.nr.',
+    tabIndex: 0,
   },
-};
-
-WithString.play = async (ctx) => {
-  // When not in Docs mode, automatically open the tooltip
-  const canvas = within(ctx.canvasElement);
-  const button = canvas.getByText('Org.nr.');
-  await userEvent.hover(button);
-  /* wait 1s for tooltip to show */
-  await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1000);
-  });
-  const tooltip = canvas.getByRole('tooltip');
-  await expect(tooltip).toBeInTheDocument();
-  await expect(tooltip).toBeVisible();
 };
 
 export const Placement: Story = {
@@ -73,9 +58,57 @@ export const Placement: Story = {
     content: 'Kopier',
     placement: 'bottom',
     children: (
-      <Button icon aria-label='Kopier'>
+      <Button icon>
         <FilesIcon aria-hidden />
       </Button>
     ),
   },
 };
+
+export const Aria: StoryFn<typeof Tooltip> = () => {
+  return (
+    <>
+      <Tooltip content='Eg er aria-description'>
+        <Button>Eg er aria-description</Button>
+      </Tooltip>
+      <Tooltip content='Eg er aria-label'>
+        <Button icon>
+          <FilesIcon aria-hidden />
+        </Button>
+      </Tooltip>
+    </>
+  );
+};
+
+export const WithDynamicTooltipText: Story = {
+  args: {
+    content: 'Kopier',
+  },
+  render: () => {
+    const [content, setContent] = useState('Kopier');
+
+    return (
+      <Tooltip content={content}>
+        <Button
+          icon
+          onClick={() => setContent('Kopiert')}
+          onBlur={() => setContent('Kopier')}
+        >
+          <FilesIcon aria-hidden />
+        </Button>
+      </Tooltip>
+    );
+  },
+};
+
+Aria.decorators = [
+  (Story) => (
+    <div
+      style={{ display: 'flex', gap: 'var(--ds-size-2)', alignItems: 'center' }}
+    >
+      <Story />
+    </div>
+  ),
+];
+
+Aria.play = async () => {};

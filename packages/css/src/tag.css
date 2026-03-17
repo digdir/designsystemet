@@ -3,13 +3,22 @@
   --dsc-tag-color: var(--ds-color-text-default);
   --dsc-tag-min-height: var(--ds-size-8);
   --dsc-tag-padding: 0 var(--ds-size-2);
+  --dsc-tag-border-width: var(--ds-border-width-default);
+  --dsc-tag-border-color: transparent;
+  --dsc-tag-border-style: solid;
+
+  --_ds-captured-length: 1em;
 
   align-items: center;
   background: var(--dsc-tag-background);
   border-radius: var(--ds-border-radius-sm);
+  border-width: var(--dsc-tag-border-width);
+  border-color: var(--dsc-tag-border-color);
+  border-style: var(--dsc-tag-border-style);
   box-sizing: border-box;
   color: var(--dsc-tag-color);
   height: fit-content; /* In case placed in display: flex */
+  font-size: var(--ds-body-sm-font-size);
   line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-tag-min-height);
   padding: var(--dsc-tag-padding);
@@ -19,11 +28,16 @@
 
   & :where(img, svg) {
     flex-shrink: 0;
-    font-size: 1.25em;
+    /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
+    font-size: calc(var(--_ds-captured-length) * 1.25);
   }
 
   &:not([hidden]) {
     display: inline-flex;
+  }
+
+  &[data-variant='outline'] {
+    --dsc-tag-border-color: var(--ds-color-border-subtle);
   }
 
   @media (forced-colors: active) {

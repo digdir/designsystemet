@@ -4,61 +4,98 @@ on:
   pull_request:
     paths:
       - .github/workflows/test.yml
-      - 'packages/**'
-      - 'apps/storybook/**'
+      - "packages/**"
+      - "apps/storybook/**"
 
 permissions:
   checks: write
   pull-requests: write
+
+concurrency:
+  group: test-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   test:
     name: Build & test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Free up disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          df -h
+
       - uses: ./.github/actions/gh-setup
+
+      - name: Get Playwright version
+        id: playwright-version
+        run: echo "version=$(pnpm --filter @web/storybook list playwright --depth=0 --json | jq -r '.[0].devDependencies.playwright.version')" >> $GITHUB_OUTPUT
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-bust2
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
+        working-directory: apps/storybook
+
+      - name: Install Playwright system dependencies (if cached)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: pnpm exec playwright install-deps chromium firefox webkit
+        working-directory: apps/storybook
+
       - name: Build
         run: pnpm build
+
       - name: Types
         run: pnpm types:react
-
+      - name: Test Web
+        run: pnpm test:web
+      - name: Run Storybook tests
+        run: pnpm --filter @web/storybook vitest
       - name: Test
         run: pnpm test
-      - name: 'Report Coverage'
+      - name: "Report Coverage"
         if: success() || failure()
-        uses: davelosert/vitest-coverage-report-action@8ab049ff5a2c6e78f78af446329379b318544a1a # v2.8.3
+        uses: davelosert/vitest-coverage-report-action@2500dafcee7dd64f85ab689c0b83798a8359770e # v2.9.3
         with:
           comment-on: none
       - name: Publish unit test report
-        uses: mikepenz/action-junit-report@3585e9575db828022551b4231f165eb59a0e74e3 # v5.6.2
+        uses: mikepenz/action-junit-report@49b2ca06f62aa7ef83ae6769a2179271e160d8e4 # v6.3.1
         if: success() || failure()
         with:
-          report_paths: 'test-report.xml'
+          report_paths: "test-report.xml"
           detailed_summary: true
           check_name: Unit Test Report
           check_annotations: true
-          check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
+          check_title_template: "{{FILE_NAME}} / {{TEST_NAME}}"
 
       - name: Test CLI (create tokens, then build the theme)
         run: pnpm test:cli
 
-      - name: Install playwright and run Storybook tests
-        run: pnpm test:storybook
       - name: Replace relative paths in test report
         uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # v3.0.5
         if: success() || failure()
         with:
-          include: 'apps/storybook/test-report.xml'
-          find: '../../'
-          replace: ''
+          include: "apps/storybook/test-report.xml"
+          find: "../../"
+          replace: ""
           regex: false
       - name: Publish Storybook test report
-        uses: mikepenz/action-junit-report@3585e9575db828022551b4231f165eb59a0e74e3 # v5.6.2
+        uses: mikepenz/action-junit-report@49b2ca06f62aa7ef83ae6769a2179271e160d8e4 # v6.3.1
         if: success() || failure()
         with:
-          report_paths: 'apps/storybook/test-report.xml'
+          report_paths: "apps/storybook/test-report.xml"
           detailed_summary: true
           check_name: Storybook Test Report
           check_annotations: true
-          check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
+          check_title_template: "{{FILE_NAME}} / {{TEST_NAME}}"

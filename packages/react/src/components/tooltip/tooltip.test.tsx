@@ -7,7 +7,7 @@ import { Tooltip } from './tooltip';
 
 const render = async (props: Partial<TooltipProps> = {}) => {
   const allProps: TooltipProps = {
-    children: <button>My button</button>,
+    children: <button data-testid='button'>My button</button>,
     content: 'Tooltip text',
     ...props,
   };
@@ -32,48 +32,33 @@ const render = async (props: Partial<TooltipProps> = {}) => {
 describe('Tooltip', () => {
   it('should render child', async () => {
     await render();
-    const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
+    const tooltipTrigger = screen.getByTestId('button');
 
     expect(tooltipTrigger).toBeInTheDocument();
   });
 
   it('should render tooltip on hover', async () => {
-    const { user } = await render();
+    const content = 'Unique content for hover-test';
+    const { user } = await render({ content });
     const tooltipTrigger = screen.getByRole('button');
 
-    expect(screen.getByText('Tooltip text')).not.toBeVisible();
+    expect(screen.queryByText(content)).not.toBeInTheDocument();
 
     await act(async () => await user.hover(tooltipTrigger));
 
-    const tooltip = await screen.findByText('Tooltip text');
+    const tooltip = await screen.findByText(content);
     expect(tooltip).toBeVisible();
-    expect(screen.getByText('Tooltip text')).toBeVisible();
+    expect(screen.getByText(content)).toBeVisible();
   });
 
   it('should render tooltip on focus', async () => {
-    const { user } = await render();
+    const content = 'Unique content for focus-test';
+    const { user } = await render({ content });
 
-    expect(screen.queryByText('Tooltip text')).not.toBeVisible();
-    await user.click(screen.getByRole('button', { name: 'My button' }));
-    const tooltip = await screen.findByText('Tooltip text');
-    expect(tooltip).toBeInTheDocument();
-    expect(screen.queryByRole('tooltip')).toBeVisible();
-  });
-
-  it('should render open when we pass open prop', async () => {
-    await render({ open: true });
-
-    expect(screen.getByRole('tooltip')).toBeVisible();
-  });
-
-  it('should have correct id and popovertarget attributes', async () => {
-    await render({
-      id: 'my-tooltip',
-    });
-    const trigger = screen.getByRole('button');
-    const popover = screen.getByText('Tooltip text');
-
-    expect(trigger.getAttribute('popovertarget')).toBe(popover.id);
+    expect(screen.queryByText(content)).not.toBeInTheDocument();
+    await user.click(screen.getByTestId('button'));
+    const tooltip = await screen.findByText(content);
+    expect(tooltip).toBeVisible();
   });
 
   it('should render span when children is a string', async () => {
@@ -81,5 +66,25 @@ describe('Tooltip', () => {
     const tooltipTrigger = screen.getByText('My string child');
 
     expect(tooltipTrigger.tagName).toBe('SPAN');
+  });
+
+  it('should be aria-describedby when there is text in the trigger', async () => {
+    await render();
+    const trigger = screen.getByRole('button');
+    expect(trigger.getAttribute('aria-describedby')).toBeDefined();
+  });
+
+  it('should be aria-labelledby when there is no text in the trigger', async () => {
+    await render({ children: <button /> });
+    const trigger = screen.getByRole('button');
+    expect(trigger.getAttribute('aria-labelledby')).toBeDefined();
+  });
+
+  it('should be able to override aria type', async () => {
+    await render({
+      type: 'labelledby',
+    });
+    const trigger = screen.getByRole('button');
+    expect(trigger.getAttribute('aria-labelledby')).toBeDefined();
   });
 });

@@ -4,9 +4,6 @@
     "rootDir": "../../",
     "paths": {
       "@assets/*": ["apps/storybook/assets/*"],
-      "@doc-components": ["apps/storybook/docs-components"],
-      "@doc-components/*": ["apps/storybook/docs-components/*"],
-      "@story-utils/*": ["apps/storybook/story-utils/*"],
     },
     "outDir": "./tsc-build",
     "allowSyntheticDefaultImports": true,
@@ -26,9 +23,7 @@
     "src/**/*.stories.ts*",
     "src/**/*.chromatic.ts*",
     "../../apps/storybook/story-utils/**/*.ts*",
-    "../theme/configs/designsystemet.config.json",
-    "../cli/configs/digdir.config.json",
-
+    "../../designsystemet.config.json"
   ],
   "references": [{ "path": "tsconfig.lib.json" }]
 }

@@ -1,0 +1,1768 @@
+---
+title: Designsystemet som fellesløsning
+description: Samfunnsøkonomisk analyse av Designsystemet
+date: 2026-01-07
+category: 
+color: blue
+icon: ComponentIcon
+published: true
+---
+
+<Card data-color='brand3'>
+Analysen er utført av Agenda Kaupang på oppdrag fra Digdir høsten 2025. 
+</Card>
+
+
+## Sammendrag
+Formålet med denne samfunnsøkonomiske analysen har vært å vurdere om [Designsystemet](www.designsystemet.no) bør etableres som en nasjonal fellesløsning. Arbeidet er gjennomført i tråd med DFØs veileder for samfunnsøkonomiske analyser <sup>[1]</sup>, og bygger på omfattende innsikt fra dokumentstudier, intervjuer, interne workshops, en stor workshop med produktrådet og en rekke andre interessenter og en spørreundersøkelse delt på UX Norge.
+
+Den samfunnsøkonomiske analysen identifiserer fire hovedproblemer:
+- Digitalt sårbare får ikke brukervennlige tjenester – sårbare grupper blir stående utenfor, eller klarer ikke fullt ut å bruke offentlige digitale tjenester
+- Fragmentert og lite helhetlige offentlige digitale tjenester – ulikheter på tvers av offentlige nettsider skaper forvirring og dårlige brukeropplevelser
+- Manglende etterlevelse av regelverk for universell utforming og klarspråk – bidrar til diskriminering og redusert rettsikkerhet
+- Manglende samordning, samarbeid og standardisering innenfor design – det brukes betydelige ressurser på grunnleggende designvalg og diskusjoner, dette gir lavere kvalitet og mindre helhetlig digitale tjenester
+
+Målet for tiltaket er å bidra til å skape likeverdige og helhetlige digitale tjenester som er enklere å bruke for alle. Dette innebærer at innbyggere får bedre tilgang til digitale løsninger som oppleves som forståelige, brukervennlige og relevante, uavhengig av hvem som tilbyr tjenesten.
+
+To hovedkonsepter er analysert, i tillegg til nullalternativet:
+
+- **Konsept 1 Grunnmur** \
+Designsystemet videreutvikles i begrenset grad med nye interaksjonsmønstre, komponenter og nye verktøy. Designsystemet gjøres teknologiuavhengig slik at det blir lettere tilgjengelig for alle virksomheter som ønsker å bruke det.
+
+- **Konsept 2 Grunnmur med et teknologisk påbygg** \
+Inneholder det samme som konsept 1, men har et høyere ambisjonsnivå for videreutvikling av interaksjonsmønstre, komponenter og nye verktøy. Det inneholder også et «teknologisk påbygg» med støtte for KI og flere nye verktøy. 
+
+Den samfunnsøkonomiske analysen viser at begge konseptene gir betydelige gevinster sammenlignet med nullalternativet, men i ulikt omfang se tabellen nedfor. Det er bare én prissatt gevinst i den samfunnsøkonomiske analysen – frigjort tid i virksomhetene. 
+
+Designsystemet bidrar til å effektivisere både design- og utviklingsprosesser i virksomhetene som bruker det.
+
+<Table border data-color='success'>
+  <caption>Vurdering av prissatte nyttevirkninger per konsept (i mill. kr)</caption>
+
+  <TableHead style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}
+>
+    <TableRow>
+      <TableHeaderCell scope="col">Prissatte nyttevirkninger</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>
+        Konsept 0
+      </TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>
+        Konsept 1
+      </TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>
+        Konsept 2
+      </TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">Kostnadsvirkninger</TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>-65</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>-176</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>-309</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">Nyttevirkninger</TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>166</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>2 135</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>3 038</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">Endring i skattefinansiering</TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>14</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>306</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>424</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFoot>
+    <TableRow style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}>
+      <TableHeaderCell scope="row">
+        <strong>Sum netto nåverdi</strong>
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>
+        <strong>115</strong>
+      </TableCell>
+      <TableCell style={{ textAlign: 'right' }}>
+        <strong>2 264</strong>
+      </TableCell>
+      <TableCell style={{ textAlign: 'right' }}>
+        <strong>3 154</strong>
+      </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Netto nåverdi per investerte kroner
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>1,8</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>12,8</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>10,2</TableCell>
+    </TableRow>
+    </TableFoot>
+</Table>
+
+<Table border data-color='success'>
+  <caption>Vurdering av ikke-prissatte nyttevirkninger per konsept</caption>
+
+  <TableHead style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}>
+    <TableRow>
+      <TableHeaderCell scope="col">Ikke-prissatte nyttevirkninger</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Økt rettighetsoppfyllelse, pliktoppfyllelse og livskvalitet
+      </TableHeaderCell>
+      <TableCell data-color="neutral" style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Ubetydelig</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv / Stor positiv</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Økt etterlevelse av regelverk
+      </TableHeaderCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Liten positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-active)',
+  }}>Stor positiv</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Spart tid for innbyggere
+      </TableHeaderCell>
+      <TableCell data-color="neutral" style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Ubetydelig</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Liten positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+<Table border data-color='success'>
+  <caption>Rangering av konsepter</caption>
+
+  <TableHead style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}>
+    <TableRow>
+      <TableHeaderCell scope="col">Rangering</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">Plassering</TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>3</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>2</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>1</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+Det er også identifisert tre ikke-prissatte nyttevirkninger. Økt rettighetsoppfyllelse, pliktoppfyllelse og livskvalitet for digitalt sårbare ved at Designsystemet bidrar til økt tilgjengelighet og brukervennlighet for offentlige løsninger. Økt etterlevelse av regelverket, ved at Designsystemet tilbyr komponenter som oppfyller kravene til universell utforming og ved at Designsystemet bidrar til å øke kompetansen på klarspråk og uu-regelverk igjennom felles retningslinjer og et community for å dele beste faglig praksis. Spart tid for innbyggerne ved at Designsystemet bidrar til mer helhetlig og gjenkjennelig brukeropplevelser på tvers av ulike løsninger, dette reduserer den kognitive belastningen og tiden det tar å orientere seg for å løse oppgaver. Vurderingene av den samfunnsøkonomiske verdien av de ikke-prissatte nyttevirkningene i de ulike konseptene er oppsummert i tabellen ovenfor. 
+
+Alle interessentene som er intervjuet i forbindelse med den samfunnsøkonomiske analysen er enige i at et nasjonalt designsystem gir positive nyttevirkninger. Samtidig vurderer de nytten av de ulike konseptene forskjellig, avhengig av egen modenhet og rolle. Flere interessenter ser størst potensial i konsept 2 sammenlignet med konsept 1.
+
+Totalt sett anbefales Konsept 2 basert på den samfunnsøkonomiske analysen og erfaringer fra intervjuer og annet kildemateriale. Konseptet gir størst samlet samfunnsøkonomisk gevinst og svarer bedre på framtidige behov for effektivitet, kvalitet og innovasjon.
+
+  ## 1 Innledning
+  Kommunal- og distriktsdepartementet (KDD) ga i 2022 Digdir i oppdrag å følge opp strategien «Digital hele livet» ved å undersøke hvordan brukskvalitet på tvers av offentlige digitale tjenester påvirker digitalt utenforskap. Digdir utarbeidet rapporten Digital hele livet med bedre brukskvalitet<sup>[2]</sup>. Der ble utfordringene med brukskvalitet på tvers av offentlige digitale tjenester identifisert. Som en oppfølging av rapporten ba KDD Digdir å se på muligheten for å etablere et felles designsystem for Norge. Første versjon av Designsystemet ble lansert i mars 2025. 900 personer fra over 270 ulike virksomheter deltok på den digitale lanseringen. 
+
+Digdir har i denne rapporten utredet om Designsystemet bør bli en nasjonal fellesløsning. En nasjonal fellesløsning er en digital byggekloss som virksomheter kan bruke i utviklingen av digitale tjenester. 
+
+  Tiltaket er godt forankret i nasjonale strategier for digitalisering. Regjeringen har som ambisjon at Norge skal være verdens mest digitaliserte land innen 2030 <sup>[3]</sup>. Allerede i *Én digital offentlig sektor 2019–2025*<sup>[4]</sup> ble det slått fast at brukernes møte med offentlig sektor skal oppleves helhetlig og effektivt. Strategien *Digital hele livet (2021)*<sup>[5]</sup> fremhever risikoen for digitalt utenforskap og understreker behovet for brukervennlige og gjenkjennbare tjenester på tvers av sektorer. I *Fremtidens digitale Norge (2024)*<sup>[6]</sup> peker regjeringen på at det fortsatt er et stykke igjen før vi har sammenhengende, brukerrettede tjenester, men at økt samarbeid på tvers gir resultater.
+
+  Designsystemet har blitt anerkjent som et digitalt fellesgode av Digital Public Goods Alliance (DPGA)<sup>[7]</sup>. Det betyr at Designsystemet oppfyller DPG-standarden og er tilgjengelig for bruk og gjenbruk over hele verden. Fellesgoder er goder som er ikke-rivaliserende og ikke-ekskluderende, og kan derfor være vanskelig å ta betalt for direkte. Manglende finansiering til etablering, vedlikehold og drift av fellesgoder kan svekke fellesgodenes verdi for samfunnet.
+
+  På denne bakgrunnen besluttet Digdirs ledelse å gjennomføre en samfunnsøkonomisk analyse for å vurdere om Designsystemet kan bidra til å nå de nasjonale målene om en helhetlig digital offentlig sektor, redusere digitalt utenforskap og sikre mer effektiv ressursbruk på tvers av virksomheter.
+
+  ### 1.1 Metode
+  Den samfunnsøkonomiske analysen bygger på en kombinasjon av kvalitative metoder og bred involvering av relevante aktører. Det har vært benyttet dokumentstudier, intervjuer, spørreundersøkelse og workshops. Formålet har vært å sikre et godt kunnskapsgrunnlag for vurderingen av behov, muligheter og samfunnsøkonomiske virkninger ved å etablere Designsystemet som en nasjonal fellesløsning. 
+
+  Det er gjennomført flere interne workshops i Digdir, med deltagelse fra sentrale ressurser. Målet med workshopen har vært å kartlegge dagens praksis, identifisere utfordringer og muligheter, og gi innspill til ulike konsepter for videre utvikling. Det har også vært løpende dialog med ulike miljøer og ledere i Digdir for å innhente erfaringer og perspektiver fra ulike fagområder. 
+
+  For å få fram et bredt bilde av behov og erfaringer er det gjennomført intervjuer med sentrale interessenter. Utvalget har omfattet:
+  - Samarbeidspartnere i utviklingen av Designsystemet . Virksomheter som bidrar aktivt i utviklingen av komponenter eller mønstre
+  - Virksomheter som i dag benytter Designsystemet
+  - Virksomheter som vurderer å ta Designsystemet i bruk
+
+Totalt er det gjennomført intervjuer med 16 interessenter. Intervjuene har hatt fokus på gevinster, utfordringer, tidsbruk og opplevd verdi, samt vurderinger av fremtidig nytte under ulike konsepter. 
+
+For å kartlegge omfanget av dagens bruk av Designsystemet er det gjennomført en kort spørreundersøkelse som ble delt på UX Norge og en analyse av mailadresser knyttet til deltagelse i Slack-kanalen til Designsystemet.
+
+Det er også avholdt to større workshops med produktrådet og andre eksterne og interne interessenter. Disse har gitt viktige innspill ved vurdering av alternative løsninger. 
+1. Styringsmodeller: Diskusjon av mulige styrings- og samhandlingsformer for en nasjonal fellesløsning.
+2. Virkninger: Kartlegging av mulige virkninger og vurdering av ulike virkninger ved konseptene.
+
+Det har blitt brukt KI til å oppsummere intervjuene og bearbeide innspillene fra workshopene. KI-oppsummeringene har blitt kvalitetssikret mot notater gjort i workshopen og under intervjuene. 
+
+## 2 Dagens situasjon og problembeskrivelsen
+Mange innbyggere opplever at offentlige digitale tjenester er fragmenterte, vanskelige å forstå og lite tilgjengelige for alle. Manglende samordning, lav brukskvalitet og lav etterlevelse av lovkrav til universell utforming og klarspråk gjør at digitalt sårbare risikerer å bli stående utenfor. Samtidig brukes det betydelige ressurser på overlappende arbeid. Figuren nedenfor viser hvordan disse utfordringene henger sammen fra bakenforliggende årsaker til konsekvenser for innbyggere, virksomheter og samfunnet som helhet.
+
+<Image
+  src="/img/cba/cba-1.webp"
+  alt="Illustrasjon som viser en årsak–virkning-kjede for utfordringer i offentlige digitale tjenester, presentert i fire kolonner fra venstre mot høyre.
+
+Første kolonne har overskriften «Årsaker» og inneholder følgende punkter:
+Individuelle og personlige årsaker, for eksempel lav digital kompetanse, språk og helse.
+Ulik design, navigasjon, språk og begrep på tvers.
+Manglende standardisering og styring.
+Kompetanse- og ressursmangel.
+Manglende prioritering av etterlevelse av krav til universell utforming eller hensyn til digitalt sårbare behov.
+Ikke kultur for samarbeid og samordning på tvers.
+Sektorvise siloer og finansieringsutfordringer.
+Manglende kunnskap om god designpraksis.
+
+Andre kolonne har overskriften «Observerte problemer» og inneholder:
+Digitalt sårbare får ikke brukervennlige tjenester.
+Innbyggere opplever fragmenterte og lite helhetlige offentlige digitale tjenester.
+Manglende etterlevelse av regelverket for universell utforming og klarspråk.
+Manglende samordning, samarbeid og standardisering innenfor design.
+
+Tredje kolonne har overskriften «Konsekvenser» og inneholder:
+Sårbare grupper blir stående utenfor, eller klarer ikke fullt ut å bruke offentlige digitale tjenester.
+Digitalt sårbare må bruke analoge og ineffektive kanaler.
+Ulikheter på tvers av offentlige nettsider skaper forvirring og dårlige brukeropplevelser.
+Dårligere brukeropplevelser og økt risiko for diskriminering.
+Forsinket tempo i utvikling og modernisering av offentlige digitale tjenester.
+Manglende gjenbruk og samhandling fører til lavere kvalitet og mindre helhet i digitale tjenester.
+
+Fjerde kolonne har overskriften «Samfunnseffekter» og inneholder:
+Tapt rettighetsoppfyllelse, pliktoppfyllelse og redusert livskvalitet.
+Redusert omdømme og tillit.
+Lavere kvalitet og manglende tilgjengelighet på offentlige digitale løsninger.
+Redusert rettssikkerhet og risiko for bøter.
+Manglende gevinster av digitalisering.
+Ineffektiv ressursbruk og tidstap."
+  boxShadow={false}
+  caption="Figur 1: Problemkart – årsak, problemer, konsekvenser og samfunnseffekter."
+/>
+
+### 2.1 Digitalt sårbare får ikke brukervennlige tjenester
+Det er en grunnleggende menneskerettighet å ha lik tilgang til offentlig informasjon og tjenester.<sup>[8]</sup> Offentlig informasjon og tjenester blir i stadig større grad tilgjengelig digitalt. Digital tilgjengelighet for alle er derfor avgjørende for å sikre en rettferdig og ikke diskriminerende tilgang på offentlige tjenester. Digdir anslår at om lag 20 prosent av den voksne befolkningen er sårbare i møte med offentlige digitale tjenester og kan dermed risikere å havne i digitalt utenforskap.<sup>[9]</sup> En spørreundersøkelse fra Norges institusjon for menneskerettigheter (NIM) viser at 1 av 4 er bekymret for digitalt utenforskap i alderdommen<sup>[10]</sup>.
+
+ > *«Undersøkelsen viser at digitalt utenforskap er et samfunnsproblem som rammer en stor andel av befolkningen, ikke bare eldre. Mange opplever eller frykter å bli stående igjen på stasjonen når digitaliseringstoget går, og vi ser at de mest sårbare blir hardest utsatt. Dette har myndighetene et ansvar for å gjøre noe med. Når digitaliseringen ikke tar høyde for sårbarhet, kan det utfordre flere menneskerettigheter og føre til forskjellsbehandling av grupper som allerede står i en utsatt posisjon.»*
+
+> *— Kai Spurkland, direktør Norges institusjon for menneskerettigheter (Norges institusjon for menneskerettigheter, 2025)*
+
+Digitalt utenforskap rammer de som ikke har tilgang til digitale verktøy eller teknologi, eller de som møter andre barrierer for å bruke digitale tjenester. Ordet «utenforskap» kan gi inntrykk av at enten klarer du å bruke digitale tjenester, eller så klarer du det ikke. Men virkeligheten er mer nyansert. Noen får til litt selv, men ikke alt. Det er flytende overganger. Derfor er det mer presist å omtale enkelte innbyggere som digitalt sårbare og at denne sårbarheten kan medføre at de ikke kan delta i det digital livet. Dette kan skyldes individuelle forhold som lav digital kompetanse, lav forvaltningskompetanse, språkferdigheter, helsesituasjon, eller selve tjenesten som skaper barrierer.  Alle kan i perioder oppleve digital sårbarhet, for eksempel ved sykdom eller når nye og uvante løsninger tas i bruk.<sup>[11]</sup> Når de digitale løsningene i tillegg mangler universell utforming, har svakt klarspråk, varierer i design og navigasjon, blir det vanskelig eller umulig for mange digitalt sårbare å benytte dem.
+
+Norges demografiske utvikling tilsier at dette problemet vil øke i omfang. Dessverre er ikke digital kompetanse noe vi klarer å opprettholde hele livet. Etter hvert som vi eldes vil den digitale kompetansen vi har opparbeidet gjennom livet, bli utfordret av kognitiv funksjonsevne, teknologisk utvikling, og egen interesse for teknologi. Når befolkningen blir stadig eldre, vil mange som i dag er gode digitale brukere gradvis få funksjonsnedsettelser eller sykdommer som gjør det vanskeligere å være digitalt selvhjulpne. Den teknologiske utviklingen vil også medføre at eldre erfarne brukere kan oppleve usikkerhet i møte med ny teknologi og mange vil da velge å unngå nye digitale tjenester. Dermed vil det stadig komme nye mennesker inn i kategorien digitalt sårbare.<sup>[12]</sup> 
+
+Digitalt sårbare innbyggere får ikke tilgang til offentlige tjenester på like vilkår som andre.  Mange digitalt sårbare må ty til analoge kanaler for å få innfridd sine rettigheter, noe som gir økte kostnader både på individ og samfunnsnivå. Analoge kanaler er bygget kraftig ned de siste årene og gjort mindre tilgjengelig.<sup>[13]</sup> Enkelte digitalt sårbare risikerer å ikke få innfridd sine rettigheter eller oppfylt sine plikter i det hele tatt. De risikerer dermed å falle utenfor viktige deler av samfunnslivet, for eksempel å følge opp legeavtaler, søke økonomiske ytelser, søke om utdanning og annen praktisk bistand. Dårlige digitale løsninger kan ha særlig alvorlige konsekvenser for mennesker med helseutfordringer. En registerstudie fra 2024 viser hvordan digitalt sårbare sliter med å bruke digitale løsninger. Hele 39 prosent av denne gruppen klarte ikke å fullføre Nav-søknaden sin korrekt. Faktisk har den yngste gruppen (16–21 år) lavere sannsynlighet for å fullføre sine Nav-søknader enn eldre.<sup>[14]</sup> Dette kan gi alvorlige økonomiske konsekvenser for brukerne og gjøre normalt livsopphold vanskeligere, noe som igjen vil forverre helsetilstanden og forsterke lav tro på egen mestring og selvfølelse. Digitalt utenforskap har alvorlige sosioøkonomiske, helserelaterte og juridiske konsekvenser for dem som rammes og bidrar til å opprettholde eller øke forskjellene i samfunnet. Dette kan medføre at de digitalt sårbare mister tilliten til systemet.<sup>[15]</sup>
+
+### 2.2	Innbyggerne opplever fragmenterte og lite helhetlige tjenester
+Mange digitale offentlige tjenester fungerer godt hver for seg, men samlet sett gir de innbyggerne en fragmentert opplevelse.<sup>[6]</sup> Navigasjon, utforming og språk varierer fra nettsted til nettsted, med ulik oppførsel på skjemaer og ulike plasseringer av elementer som menyer, knapper og ikoner. Dette gjør det krevende å orientere seg og bidrar til at innbyggere bruker unødvendig mye tid på å finne fram til riktig tjeneste eller funksjon<sup>[2]</sup>.
+
+Utfordringen rammer ikke bare digitalt sårbare grupper, men alle innbyggere i Norge. I DFØs innbyggerundersøkelse<sup>[16]</sup> vurderes brukervennligheten i offentlige digitale tjenester til 6,3 for statlige og 5,9 for kommunale tjenester på en skala fra 1 til 10. Dette illustrere at det er betydelige svakheter i brukskvaliteten i offentlige digitale løsninger. 
+
+I livssituasjoner som krever tjenester fra flere virksomheter, må innbyggerne ofte selv finne ut hvor de kan få hjelp. Et godt eksempel på hvor krevende dette kan være, finnes i spørreundersøkelsen utført av Livshendelsen Alvorlig sykt barn. Foreldre til barn med sammensatte behov oppgir at de i gjennomsnitt bruker 10 timer per uke på oppgaver som å lete etter informasjon, kartlegge rettigheter og navigere mellom flere offentlige tjenester. Dette viser hvordan livssituasjoner med høy belastning forsterker konsekvensene av fragmenterte digitale tjenester.<sup>[17]</sup>
+
+Problemet forsterkes av at mange virksomheter utvikler løsninger i silo, med lite deling av beste praksis og samarbeid på tvers. Ulik grad av etterlevelse av IKT-forskriftens regler om universell utforming og forskjeller i hvordan man løser WCAG-kravene, skaper ulikheter mellom offentlige tjenester.  Denne fragmenteringen skaper utfordringer for både innbyggere og forvaltning. Konsekvensen er at innbyggere må bruke unødvendig tid på å orientere seg i et uoversiktlig digitalt landskap, mens forvaltningen opprettholder parallelle og lite samordnede løsninger. På samfunnsnivå er dette ineffektiv ressursbruk. 
+
+### 2.3	Manglende etterlevelse av regelverk 
+Offentlige digitale tjenester er underlagt krav til universell utforming gjennom IKT-forskriften, som viser til WCAG 2.1-standarden som er juridisk bindende. Kravene er et minimum for å sikre at tjenester er tilgjengelige for alle innbyggere. Likevel etterleves regelverket i altfor liten grad. Tilsynet for universell utforming av IKT (uu-tilsynet) har avdekket brudd i så mange som 97 prosent av de tilsynene de har gjennomført, og i nær 95 prosent av klagesaker på IKT-området som behandles etter diskriminerings-lovgivningen. En studie av etterlevelse av tilgjengelighetskrav på norske kommuners nettsider viser at 79 prosent av de kommunale nettstedene hadde feil som bryter med WCAG kravene.<sup>[18]</sup>
+
+En nordisk undersøkelse blant UX-fagfolk fra 2020 peker på at tilgjengelighet anses som viktig, men i praksis brukes det lite tid på dette. Kompetansen om hvordan innhold skal utformes, testes og implementeres i tråd med WCAG standardene er mangelfull.<sup>[19]</sup> Samlet sett er det svak oppfølging av regelverket, lite oppmerksomhet på universell utforming i utviklingsprosesser og manglende kompetanse i mange virksomheter.
+
+Også språkarbeidet har svakheter. Språkloven paragraf 9<sup>[20]</sup> slår fast at offentlige organ skal bruke et klart og korrekt språk som er tilpasset målgruppen. Til tross for dette oppgir bare 30–40 prosent av innbyggerne at myndighetene vektlegger klarspråk når de utformer brev, lover, forskrifter eller vedtak. Innbyggernes tilfredshet med klarspråkarbeidet er dessuten fallende<sup>[16]</sup>. En spørreundersøkelse om klarspråk i offentlig sektor viser at 70 prosent av offentlige virksomheter har jobbet med klarspråk de siste to årene, men at innsatsen er betydelig lavere i små kommuner (55 prosent). Den vanligste årsaken er mangel på tid.<sup>[21]</sup>
+
+Selv om både universell utforming og klarspråk er lovpålagte oppgaver, blir dette arbeidet ofte nedprioritert. Konsekvensen av problemet er dårligere brukeropplevelser, økt risiko for diskriminering, mange klagesaker og svekket rettssikkerhet. 
+
+### 2.4	Manglende samordning, samarbeid og standardisering innenfor design
+Offentlig sektor i Norge har i liten grad samarbeidet om å dele innsikt og beste praksis for design, universell utforming og utvikling. Dette har ført til et fragmentert landskap, der alle forsøker å finne løsningen på egen hånd og det brukes mye tid på å finne ut av hvordan komponenter og ulike interaksjonsmønstre best mulig kan dekke brukerens behov. Det brukes betydelige ressurser på overlappende arbeid.  
+
+Den manglende samordningen rundt brukeropplevelser kan illustreres med et eksempel: Ved innkjøp av skip finnes det etablerte ISO-standarder som kan refereres til i konkurransegrunnlaget for å sikre at skip virksomheten anskaffer er av høy kvalitet. For digitale tjenester finnes det derimot ingen tilsvarende standarder for å ivareta generell brukskvalitet utover WCAG kravene. Virksomhetene må derfor selv utarbeide egne kriterier og krav. 
+
+Manglende samordning gir også høyere risiko for teknisk gjeld. Når virksomheter utvikler egne komponenter og løsninger uten felles standarder og retningslinjer, oppstår mange til dels overlappende løsninger som er krevende å vedlikeholde og videreutvikle hver for seg. Dette gir risiko for utdatert kode, økt kompleksitet og økte vedlikeholdskostnader siden design og kode må oppdateres på tvers av mange løsninger.
+
+Konsekvensen av problemet er dobbeltarbeid, ineffektiv ressursbruk og dårligere tjenester for brukerne og hele offentlig sektor. 
+
+### 2.5	Om Designsystemet 
+Basert på KDDs oppfordring utforsket Digdir interessen for et felles designsystem, og første versjon av Designsystemet ble lansert i mars 2025. Designsystemet er et konkret tiltak for å forbedre brukskvalitet i digitale løsninger. 
+
+Designsystemet er et felles grunnlag som bidrar til at innbyggere og næringsliv møter et tilgjengelig, gjenkjennelig og forståelig offentlig Norge. Verktøykassen inneholder grunnleggende designelementer, interaksjonsmønstre, god praksis og kodede komponenter som gir verdi å dele på tvers av offentlig sektor. Gjennom felles grunnleggende UI-komponenter og retningslinjer bidrar Designsystemet til helhetlige brukeropplevelser og effektiv produktutvikling. 
+
+Designsystemet handler ikke om å skape like utseender, men om å sikre like forutsetninger for kvalitet, universell utforming og god brukeropplevelse. Felles interaksjonsmønstre og retningslinjer gjør at brukerne møter tjenester som fungerer mer likt, ved at de kjenner igjen hvordan de navigerer, finner frem til informasjon og løser oppgaver, uavhengig av hvilken etat de er i kontakt med.
+
+Designsystemet er et kollektivt gode og kan benyttes av alle i den grad de ønsker. Et kollektivt gode, også kalt et fellesgode er et gode som kjennetegnes av to egenskaper: det er ikke-rivaliserende (bruken av det av én person begrenser ikke bruken for andre) og ikke-ekskluderende (man kan ikke utestenge noen fra å bruke det). Utfordringen med kollektive goder er at de ofte ikke produseres effektivt av private selskaper, fordi det er vanskelig å ta betalt for dem. Derfor er det ofte staten eller offentlige myndigheter som tar ansvar for å produsere og finansiere disse godene gjennom beskatning.
+
+Utviklingen av Designsystemet er et samarbeid mellom flere virksomheter på initiativ fra virksomhetene. Utfordringen med dagens situasjon er at det gir usikkerhet angående ressurstilgang og planlegging, og det er behov for mer forutsigbarhet for driftsorganisasjonen.
+
+Per oktober 2025 utvikles og forvaltes Designsystemet av et tverretatlig kjerneteam ledet av Digdir, med utviklere og designere fra Digdir, Brønnøysundregistrene, Mattilsynet, Utdanningsdirektoratet og KS Digital. Digdir har avsatt fem fast ansatte i teamet. I tillegg deltar én ansatt fra Brønnøysundregistrene, én fra Utdanningsdirektoratet og én fra Mattilsynet med kapasitet etter behov. KS Digital bidrar med én ressurs tilsvarende en 20 prosent stilling.
+
+Flere andre virksomheter bidrar aktivt med kompetanse og ressurser i utviklingen av Designsystemet. Blant annet deltar Nav, Skatteetaten, Oslo kommune, Entur og Politiet i mønstersamarbeid og deler erfaringer og innsikt. Arbeidet skjer i åpne kanaler, og komponentene og interaksjonsmønstrene er fritt tilgjengelige via Designsystemet.no.
+
+Per oktober 2025 er Designsystemet i bruk i Digdir og hos flere offentlige etater og kommuner og hos enkelte private aktører. I forbindelse med arbeidet med den samfunnsøkonomiske analysen er det kartlagt rundt 125 løsninger som bruker Designsystemet, men det er grunn til å anta at det reelle tallet er enda høyere. Produktene deres bygger på felles komponenter og interaksjonsmønstre fra Designsystemet. Offentlige virksomheter som bygger egne designsystem på toppen av Designsystemet, er bl.a. Havforskningsinstituttet og Innovasjon Norge. Forbrukerorganisasjonen Huseierne er et eksempel på en privat virksomhet som har gjort det samme. 
+
+Designsystemet har blitt anerkjent som et digitalt fellesgode av Digital Public Goods Alliance (DPGA). Det betyr at Designsystemet oppfyller DPG-standarden og er tilgjengelig for bruk og gjenbruk over hele verden. Gjennom denne anerkjennelsen blir Designsystemet en del av et internasjonalt fellesskap av digitale fellesgoder som støtter bærekraftig utvikling og inkluderende digitale tjenester. I kunngjøringen av at Designsystemet er anerkjent som DPG sa digitaliserings- og forvaltningsminister Karianne Tung:
+
+ > *«At Designsystemet er godkjent som digitalt fellesgode viser at Norge lykkes med å bygge løsninger som også har internasjonal verdi. Det gjør det enklere for flere å oppdage og ta i bruk systemet. Samtidig inviterer vi interessenter til å bidra med forbedringer og utvidelser. Dette er et fantastisk eksempel på verdien av samarbeid i offentlig sektor og på tvers av landegrenser».*<sup>[22]</sup>
+
+ ## 3 Mål 
+ For å peke ut en ønsket retning er det viktig å beskrive hvilken framtidig situasjon man ønsker å oppnå. Klart formulerte mål gjør det mulig å skape en felles forståelse av hva som er viktig, og gir et grunnlag for både valg av tiltak og vurdering av resultater over tid.
+
+Som hovedregel skiller man mellom samfunnsmål og effektmål. Samfunnsmålet uttrykker den overordnede utviklingen i samfunnet som tiltakene skal støtte opp om, mens effektmålene beskriver de mer konkrete og målbare resultatene for brukere, virksomheter og forvaltning. Sammen gir disse målene et bilde av hva som er ønsket fremtid, og bidrar samtidig til å definere mulighetsrommet for hvilke tiltak som er relevante å vurdere i analysen. 
+
+Som en del av arbeidet med samfunnsøkonomisk analyse er det innhentet innspill fra virksomheter i offentlig sektor om hvordan Designsystemet bør utvikles, og hvilke mål som er viktigst for å realisere en ønsket framtid. Formålet har vært å etablere et felles bilde av hva Designsystemet skal være på lengre sikt.
+Resultatene fra spørreundersøkelsen *«Del din mening om Designsystemets ønskede fremtid og mål»* viser bred støtte for visjonen om et felles designsystem for offentlig sektor. Flertallet ser for seg systemet som en felles grunnmur for utvikling av digitale tjenester som er fleksibelt, kontinuerlig oppdatert og utviklet som et fellesskap med tydelige prosesser for samarbeid og bidrag.
+
+Denne innsikten danner grunnlaget for samfunnsmålet og effektmålene som er oppsummert Figur 2 Samfunns- og effektmål.
+
+<Image
+  src="/img/cba/cba-2.webp"
+  alt="Illustrasjon som viser samfunnsmål og effektmål. Samfunnsmålet er: «Likeverdige og helhetlige digitale tjenester som er enklere å bruke for alle». Dette støttes av fem effektmål: E1 Økt tilgjengelighet for alle innbyggere. E2 Mer helhet og gjenkjennelighet på tvers. E3 Økt etterlevelse av regelverk. E4 Høyere kvalitet og raskere leveranse av digitale løsninger. E5 Mer effektiv utvikling og forvaltning av digitale løsninger."
+  boxShadow={false}
+  caption="Figur 2 Samfunns- og effektmål "
+/>
+
+Samfunnsmålet uttrykker den ønskede utviklingen på overordnet nivå og angir hvilken retning arbeidet skal bidra til. Målet er å skape likeverdige og helhetlige digitale tjenester som er enklere å bruke for alle. Dette innebærer at innbyggere får bedre tilgang til digitale løsninger som oppleves som forståelige, brukervennlige og relevante, uavhengig av hvem som tilbyr tjenesten.
+
+### 3.1 Effektmål
+Effektmålene konkretiserer hva som ønskes oppnådd for tiltakets målgrupper og skal støtte opp under samfunnsmålet. De skal ha en tydelig sammenheng med de identifiserte behovene og beskrive den ønskede tilstanden som tiltaket skal bidra til å realisere.
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Effektmål</TableHeaderCell>
+      <TableHeaderCell scope="col">Beskrivelse</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        E1: Økt tilgjengelighet for alle innbyggere
+      </TableHeaderCell>
+      <TableCell>Digitale løsninger er enklere og mer intuitive å bruke for alle innbyggere. De utformes i større grad slik at de kan brukes av alle uavhengig av varige eller midlertidige funksjonsnedsettelser. Gjenkjennelig oppførsel, god navigasjon og forståelig informasjon gjør at flere kan finne, forstå og løse oppgaver uten hindringer. </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        E2: Mer helhet og gjenkjennelighet på tvers
+      </TableHeaderCell>
+      <TableCell>Digitale løsninger følger i større grad felles prinsipper for struktur og interaksjon slik at brukerne kjenner seg igjen uavhengig av hvilken tjeneste de benytter. Slik blir det lettere å forstå og navigere mellom ulike tjenester. </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        E3: Økt etterlevelse av regelverk
+      </TableHeaderCell>
+      <TableCell>Flere digitale løsninger utvikles slik at de i større grad oppfyller kravene til universell utforming og klarspråk. </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        E4: Høyere kvalitet og raskere leveranse av digitale løsninger
+      </TableHeaderCell>
+      <TableCell>Digitale løsninger utvikles med bedre prosesser og verktøy som gir høyere kvalitet og kortere vei fra behov til ferdig løsning. Når nye og forbedrede tjenester kan leveres raskere og med jevnere kvalitet, får innbyggerne tilgang til stabile og brukervennlige løsninger tidligere. </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        E5: Mer effektiv utvikling og forvaltning av digitale løsninger
+      </TableHeaderCell>
+      <TableCell>Utvikling og drift av digitale løsninger skjer på en måte som utnytter ressurser bedre og reduserer dobbeltarbeid. Større grad av samarbeid og gjenbruk gjør det enklere å levere tjenester som holder høy kvalitet og oppdateres i takt med behov. Dermed unngås opparbeidelse av teknisk gjeld hos hver enkelt virksomhet. En mer effektiv utvikling og forvaltning styrker dermed muligheten til å tilby likeverdige digitale tjenester som er enkle å bruke for alle innbyggere. </TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+## 4 Mulighetsstudie
+Arbeidet med å identifisere relevante tiltak har tatt utgangspunkt i det statlige virkemiddelapparatet. Statlige virkemidler kan deles opp i regulatoriske, organisatoriske, finansielle, pedagogiske virkemidler og offentlige tilbud av produkter /tjenester eller offentlig anskaffelser. Figuren nedenfor gir oversikt over tiltak som ble vurdert, men forkastet. 
+
+**Oversikt over forkastede tiltak**
+
+<Card data-color='danger' data-wide-content={true}>
+**Regulatoriske** 
+- *Skjerpede lov og forskriftskrav* \
+→ Vil ikke løse problemene alene da regulatoriske kravene ikke etterlevelse i dag  \
+→ Kan fungere i kombinasjon med andre tiltak
+
+**Organisatoriske** 
+- *Digdir får ansvaret for alle offentlige nettsider* \
+→ Vil være stor reform som vil kreve svært høye investeringer og bryter med sektorprinsippet i Norge 
+
+**Finansielle**
+- *Skjerpede bøter* \
+→ Vil ikke løse problemene alene da det er bøter i dag og lav etterlevelse av regelverket \
+→ Kan fungere i kombinasjon med andre tiltak
+
+**Pedagogiske**
+- *Lage en veileder for design* \
+→ Vil ikke løse problemene alene da det er lav etterlevelse av regelverket og det finnes betydelig veiledningen i dag som ikke prioriteres å følges
+
+</Card>
+
+I den samfunnsøkonomiske analysen har Digdir vurdert ulike tiltak innenfor offentlige tilbud av produkter og tjenester, da tiltakene i figurene enten fører til svært lav måloppnåelse eller har en kostnadsramme som ikke står i forhold til nytten. 
+
+Konseptene er ulike tekniske ambisjonsnivåer for videre utvikling av dagens designsystem hvor det laveste ambisjonsnivået er nullalternativet som kun innebærer å drifte Designsystemet videre. Sammenhengen mellom de ulike konseptene er illustrert i figuren. 
+
+<Image
+  src="/img/cba/cba-3.webp"
+  alt="Illustrasjon som sammenligner tre konsepter med økende omfang. Konsept 0 består kun av grunnleggende drift. Konsept 1 består av grunnleggende drift, samt teknologiuavhengighet, videreutvikling og tverretatlig samarbeid. Konsept 2 bygger videre på konsept 1 og inkluderer i tillegg i større grad nye mønstre, komponenter og verktøy."
+  boxShadow={false}
+  caption="Figur 3: Ulike ambisjonsnivåer for konseptene"
+/>
+
+### 4.1	Nullalternativet
+Nullalternativet representerer en videreføring av dagens situasjon og er en referanse for å vurdere andre konsepter. Nullalternativet representerer med andre ord et fravær av satsing. Konsept 0 innebærer at Digdir viderefører arbeidet med Designsystemet slik det er i dag som beskrevet i [kapittel 2.5](#25om-designsystemet). innenfor egne rammer.  Omfanget på Designsystemet har nådd et metningspunkt der alle ressursene som jobber med Designsystemet i dag hovedsakelig må benyttes til å drifte og vedlikeholde Designsystemet slik det er i dag. Dette innebærer en meget begrenset videreutvikling, som har som hovedformål å dekke Digdirs behov knyttet til Altinn studio og Digdirs andre løsninger. Andre interessenters behov kan ikke tas hensyn til. 
+
+I dette konseptet blir det ikke utviklet noen nye mønstre eller komponenter eller støtte for nye teknologier. Digdir vil ha lite kapasitet til å koordinere og holde samarbeidet i gang på en god måte.
+
+<Image
+  src="/img/cba/cba-4.webp"
+  alt="Oversikt som viser hva som inngår i et avgrenset konsept. Vedlikehold og drift er inkludert. Videreutvikling er ikke inkludert. Tverretatlig samarbeid er begrenset. Teknologiuavhengighet er ikke inkludert. Det utvikles ikke nye mønstre, nye komponenter eller nye verktøy og funksjonalitet."
+  boxShadow={false}
+  caption="Figur 4: Oppsummering av Nullalternativet"
+/>
+
+### 4.2	Konsept 1: Grunnmur
+
+*Konsept 1: Grunnmur* innebærer at Designsystemet etableres formelt som en nasjonal fellesløsning med et tydelig mandat for organiseringen av arbeidet. Konseptet tar høyde for å støtte ulike teknologier. Teknologiuavhengighet gjør at virksomheter lettere kan ta i bruk Designsystemet selv om de benytter et annet rammeverk for utvikling av brukergrensesnitt (UI) på nett enn Digdir. Konseptet bygger videre på dagens løsning og verktøykassen og utvides gradvis med nye komponenter, interaksjonsmønstre og retningslinjer og verktøy, men i mindre omfang enn i konsept 2. 
+
+Formålet er å tilby et felles fundament som gjør det enklere å utvikle universelt utformede og brukervennlige digitale tjenester på tvers av offentlig sektor. Designsystemet skal fungere som en grunnmur som kan tilpasses, ikke som en fast mal. Virksomheter skal kunne ta i bruk komponenter, kode eller retningslinjer uavhengig av teknologi og uten å måtte endre egen systemarkitektur eller visuelle identitet. På den måten kan både små og store aktører, uavhengig av modenhet og ambisjonsnivå, benytte systemet og samtidig dra nytte av felles utvikling og kompetanse.
+
+I dette konseptet vil det også være ressurser til å videreutvikle veiledningen (beste praksis, eksempler, veiledninger og retningslinjer) knyttet til Designsystemet. Det vil også være ressurser til å videreføre den faglige samarbeidsarenaen og community på tvers av virksomheter. Her kan aktører bidra med kompetanse, dokumentasjon, kode og erfaringer. Digdir vil også kunne tilby noe støtte til team og virksomheter som skal ta Designsystemet i bruk. 
+
+Styringsmodellen vil være en samstyringsmodell, der Digdir har en koordinerende rolle, men hvor utvikling og forvaltning skjer i tett samarbeid med andre etater. Det vil også være noe rom for hospitering og deltagelse fra andre etater. 
+
+Grunnmurskonseptet vil som i nullalternativet være bygget på åpen kildekode og være frivillig å ta i bruk. Designsystemet skal fortsatt være modulært slik at virksomhetene kan bruke de byggeklossene de har behov for. Videreføringen av åpen kildekode medfører at Designsystemet også er tilgjengelig for privat sektor og for leverandører som utvikler løsninger for offentlig sektor. Leverandører og samarbeidspartnere kan derfor gjenbruke eller bidra til systemet, noe som vil styrke økosystemet rundt offentlig digital tjenesteutvikling og senker terskelen for verdiskaping på tvers av sektorer.
+
+<Image
+  src="/img/cba/cba-5.png"
+  alt="Oversikt som viser et konsept med utvidet omfang. Vedlikehold og drift er inkludert. Videreutvikling er inkludert. Tverretatlig samarbeid er inkludert. Teknologiuavhengighet er inkludert. Det utvikles nye mønstre, nye komponenter og nye verktøy og funksjonalitet i mindre grad."
+  boxShadow={false}
+  caption="Figur 5: Oppsummering av Konsept 1: Grunnmur"
+/>
+
+### 4.3	Konsept 2: Grunnmur med teknologisk påbygg
+Dette konseptet bygger videre på Konsept 1: Grunnmur. Konsept 2 inneholder alle elementet i Grunnmurskonseptet, men inneholder i tillegg en mer avansert og ambisiøs videreutvikling av Designsystemet. I dette konseptet blir det i større grad utviklet nye interaksjonsmønstre, komponenter og verktøy, mer i takt med behovet til brukerne enn i konsept 1. Konsept 2 innebærer flere ressurser hos Digdir som dermed kan være tettere på brukerbehovene i virksomhetene som benytter Designsystemet. Konsept 2 inneholder også et «teknologisk påbygg» med støtte for KI og nye verktøy og annen mer innovativ teknologi. 
+
+I Konsept 2 tas det høyde for å utnytte mulighetsrommet fullt ut med tanke på ny teknologi, innovasjon og potensial med KI. KI kan brukes til å effektivisere utviklingsprosesser, sikre universell utforming og forbedre brukeropplevelser. For eksempel kan KI-løsninger benyttes til å generere fungerende front-end basert på regler og komponenter fra Designsystemet.
+
+Konseptet innebærer også en økt satsing på nye verktøy for å gjøre systemet enklest mulig å ta i bruk. Det innebærer også mer rom for å gi støtte til team og virksomheter som skal ta Designsystemet i bruk og for hospitering/deltakelse fra andre etater enn i Konsept 1. 
+
+<Image
+  src="/img/cba/cba-6.png"
+  alt="Oversikt som viser et konsept med fullt omfang. Vedlikehold og drift er inkludert. Videreutvikling er inkludert. Tverretatlig samarbeid er inkludert. Teknologiuavhengighet er inkludert. Det utvikles nye mønstre, nye komponenter og nye verktøy og funksjonalitet i stor grad."
+  boxShadow={false}
+  caption="Figur 6: Oppsummering av Konsept 2: Grunnmur med teknologisk påbygg"
+/>
+
+### 4.4	Prinsipielle spørsmål
+Det skal vurderes hvorvidt tiltakene som utredes reiser prinsipielle spørsmål. 
+Det dreier seg om viktige, grunnleggende prinsipper og verdier vi som samfunn ønsker å overholde og leve opp til, og som fortrinnsvis baserer seg på fellesverdier i samfunnet.
+Prinsippspørsmål kan for eksempel gjelde den enkeltes personvern og integritet, rettssikkerhet, samvittighets- og livssynsspørsmål, likestillings- og diskrimineringsspørsmål eller tiltak som særskilt berører urfolk, minoriteter eller barn.
+
+Det er to viktige prinsipielle spørsmål knyttet til markedet som bør vurderes i forbindelse med konseptene, i hvilken grad bør staten utvikle og forvalte løsninger som kan overlappe med eller konkurrere mot private aktører? Et annet prinsipielt spørsmål er om et åpent designsystem indirekte kan redusere behovet for private aktører til å utvikle egne løsninger, og dermed påvirke markedet for slike tjenester.
+
+ > *«Digdirs samfunnsoppdrag er å bidra til en effektiv, brukerrettet og samordnet digitalisering av hele offentlig sektor. Vår ambisjon er ikke å overta alle behov, men å standardisere og tilby felleskomponenter som legger til rette for innovasjon og integrasjon, og som bransjen kan bygge verdiøkende tjenester rundt.»*
+
+> *— Direktør Frode Danielsen (Digdir, 2025)<sup>[23]</sup>*
+
+Et nasjonalt designsystem kan oppfattes som en konkurrent til kommersielle rammeverk og designsystemer. Dette kan også ses som en form for offentlig «sponsing» av markedet, der næringslivet får tilgang til ressurser som ellers ville krevd betydelige utviklings- og driftskostnader. Det er tidligere foretatt en juridisk vurdering av disse problemstillingene i forbindelse med arbeidet med ny finansieringsmodell for Digdirs fellesløsninger, der Designsystemet også var en del av analysen sammen med de øvrige fellesløsningene som Digdir forvalter. Denne vurderingen konkluderte med at fellestjenestene utgjør en ikke-økonomisk aktivitet, da tjenesten utgjør en del av den offentlige digitale infrastrukturen, utviklet for å støtte offentlig sektor i å levere effektive, inkluderende og universelt utformede digitale tjenester. I vurderingen ble det også lagt vekt på at Designsystemet er et felles gode basert på åpen kildekode, tilgjengelig for alle og gratis. Det er et offentlig ansvar å sikre likeverdige, tilgjengelige og helhetlige digitale offentlige tjenester da effekten av digitalt utenforskap er svært alvorlig for den enkelte, jamfør avsnitt 2.1. 
+
+På workshopen med produktrådet kom det innspill på at Designsystemet kan bidra til å bedre konkurransen i markedet ved at byttekostnadene kan blir lavere for sluttbrukerrettede løsninger hvis de baserer seg på samme interaksjonsmønstre. Informantene pekte også på at oppstartsselskap og mindre leverandører lettere vil kunne konkurrere med de store etablerte aktørene siden de slipper å utvikle egne designsystem. En annen fordel for leverandørmarkedet kan være at det er enklere å levere gode systemer, at man i mindre grad må å tilpasse seg til nye offentlige kunder. Andre informanter har vektlagt at Designsystemet kan bli et sted hvor alle samles for å diskutere designfaget uavhengig om de er leverandør eller kunde.
+
+## 5 Samfunnsøkonomisk analyse
+Tabellen under oppsummerer forutsetninger for den samfunnsøkonomiske analysen. Analysen er gjennomført i tråd med R-109<sup>[24]</sup>. 
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Forutsetning</TableHeaderCell>
+      <TableHeaderCell scope="col">Beskrivelse</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Analyseperiode
+      </TableHeaderCell>
+      <TableCell>10 år fra 2027 til 2036</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Kalkulasjonsrente
+      </TableHeaderCell>
+      <TableCell>4 prosent i henhold til R-109</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Reallønnsjustering
+      </TableHeaderCell>
+      <TableCell>All endring i tidsbruk realprisjusteres i henhold til R-109/21 da det forventes en årlig reallønnsvekst som følge av økt produktivitet. Med dette øker alternativkostnaden av tidsbruk</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Skattefinansieringskostnad
+      </TableHeaderCell>
+      <TableCell>20 prosent i henhold til R-109</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+Figur 7 viser de samfunnsøkonomiske nyttevirkningene av konseptene. Alle konseptene vil bidra til nyttevirkninger, men omfanget vil variere mellom ambisjonsnivåene. 
+
+Diagrammet viser hvordan bruk av Designsystemet bidrar til gevinster for virksomheter og sluttbrukere gjennom en kjede av årsaker og virkninger. Konseptene skaper både prissatte og ikke-prissatte virkninger, i tillegg til drift og forvaltningskostnader. De prissatte gevinstene kommer fra frigjort tid i utvikling og videreutvikling av digitale løsninger for de som bruker Designsystemet direkte inn sine egne IT-løsninger eller virksomheter som velger å bygge et eget designsystem basert på Designsystemet. Virksomheter som bruker komponenter og interaksjonsmønstre fra Designsystemet får færre diskusjoner, kan jobbe mer parallelt mellom designere og utviklere og bruker mindre tid på utvikling og forvaltning av grunnleggende komponenter. 
+
+De ikke-prissatte nyttevirkningene er økt etterlevelse for virksomhetene, spart tid for innbygger og økt rettighetsoppfyllelse, pliktoppfyllelse og livskvalitet for digitalt sårbare. De ikke-prissatte virkningene vil kunne bidra til bedre omdømme og økt tillit til virksomhetene som benytter Designsystemet. Omdømme og tillit er ikke omtalt som egne virkninger i den samfunnsøkonomiske analysen da konseptene antas å ha svært liten påvirkning på dette. 
+
+Vi har benyttet verdimatrisemetoden for å vurdere de ikke-prissatte virkningene som anbefalt i DFØs veileder for samfunnsøkonomiske analyser<sup>[1]</sup>. Metoden er beskrevet i Vedlegg 2 Verdimatrise metoden.
+
+<Image
+  src="/img/cba/cba-7.png"
+  alt="Illustrasjon som viser sammenhengen mellom hvem som opplever nytte, hvordan tiltak gir effekt, og hvilke nyttevirkninger som oppnås ved bruk av Designsystemet.
+  
+  For virksomheter vises det at bruk av komponenter og mønstre fra Designsystemet enten direkte i løsninger, ved å bygge eget designsystem basert på Designsystemet, eller ved bruk av mønstre, fører til færre diskusjoner, mer parallelt arbeid mellom designere og utviklere, og mindre tid brukt på utvikling og forvaltning av grunnleggende komponenter. Dette gir frigjort tid og redusert behov for veiledningstjenester.
+  
+  Videre vises det at komponentene oppfyller krav til universell utforming og er grundig testet, at mønstre gir veiledning for etterlevelse, og at retningslinjer og eksempler på god praksis øker kompetansen på universell utforming. Communityet skaper en arena for deling og fokus på universell utforming. Samlet bidrar dette til økt etterlevelse av lovverk, som igjen bidrar til økt tillit til virksomheten og bedre omdømme.
+  
+  For sluttbrukere vises det at et felles språk og en samarbeidsarena, fører til økt samarbeid på tvers av virksomheter og produktteam. Dette gir mer helhet og gjenkjennelighet på tvers av virksomheter. Økt bruk av kvalitetssikrede komponenter og mønstre gir høyere kvalitet på løsninger og tjenester, og spart tid.
+  
+  For digitalt sårbare innbyggere vises det at komponenter og mønstre fra Designsystemet, samt samarbeidet på tvers, bidrar til løsninger som er utformet slik at de kan brukes av alle, uavhengig av varige eller midlertidige funksjonsnedsettelser. God navigasjon og forståelig informasjon, gjør det lettere å finne, forstå og løse oppgaver uten hindringer. Dette gir økt rettighetsoppfyllelse, pliktoppfyllelse og livskvalitet."
+  boxShadow={false}
+  caption="Figur 7: Årsaks-virkningsdiagram for nyttevirkningene "
+/>
+
+### 5.1	Prissatte virkninger
+
+#### 5.1.1	Prissatte kostnadsvirkninger
+De samfunnsøkonomiske kostnadene knyttet til de ulike ambisjonsnivåene er delt inn i følgende kategorier:
+- Drifts-, forvaltnings- og videreutviklingskostnader
+- Skattefinansieringskostnader 
+
+Det vil også være noen oppstartskostnader ved ta i bruk Designsystemet særlig for virksomheter som ikke benytter rammeverket React eller CSS  for utvikling av brukergrensesnitt. Designsystemet i dag er basert på React og CSS og ifølge intervjuobjektene som ikke benytter disse teknologiene, er det tidkrevende å endre teknologien. I begge konseptene er den teknologiske bindingen fjernet, og basert på innsikten fra intervjuene fremstår investerings eller byttekostnadene som lave. Istedenfor å estimere disse kostnadene er det derfor bevisst valgt å benytte konservative gevinstestimater for å få frem netto effektene for virksomhetene som tar Designsystemet i bruk. 
+
+Kostnadene omfatter årsverksressurser knyttet til drift og vedlikehold, videreutvikling og koordinering, samt lisenskostnader. Det er lagt til grunn totalt 5 årsverk i nullalternativet, 13 i konsept 1 og 20 i konsept 2. 
+
+I nullalternativet inngår kun drift og vedlikehold, ettersom løsningen videreføres uten utvidet funksjonalitet eller betydelig samarbeid med andre virksomheter. I konsept 1 og 2 inngår i tillegg ressurser til videreutvikling og koordinering, i tråd med ambisjonsnivået. Det er lagt til grunn bruk av eksterne konsulenter i Konsept 1 og 2, særlig i Konsept 2. Den økte andelen konsulentressurser bidrar til en høyere samlet kostnad per årsverk knyttet til videreutvikling. 
+
+En sammenstilling av kostnadene i millioner 2027-kroner over analyseperiodens 10 år er vist i tabellen under.
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Kostnadstype</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Drift, forvaltning og videreutvikling
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>65</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>176</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>309</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+### 5.1.2 Prissatt nyttevirkning: Frigjort tid i virksomhetene
+Bruken av Designsystemet bidrar til redusert tidsbruk i virksomheter ved å effektivisere både design- og utviklingsprosesser. Det skilles mellom to hovedformer for bruk: direkte bruk i løsninger og bruk som grunnlag for å bygge et eget designsystem. Den primære målgruppen for Designsystemet er små og mellomstore offentlige virksomheter som ikke har ressurser eller kompetanse til å gjøre store investeringer i et eget designsystem. Store offentlige virksomheter med et stort IKT-miljø har ofte utviklet et eget designsystem som er spesialtilpasset deres behov. De vil ikke ha nytte av å bytte til Designsystemet. 
+
+Ved direkte bruk sparer designere tid fordi de har tilgang til ferdige og standardiserte komponenter som gjør det enklere å utforme skisser og prototyper raskt. Et felles rammeverk for designerne og utviklere reduserer behovet for avklaringer og koordinering. For utviklere gir ferdig testede komponenter betydelig tidsbesparelse, ettersom man unngår å bygge og vedlikeholde grunnleggende komponenter selv. Det reduserer også feilretting og gir kortere vei fra design til implementering. 
+
+For virksomheter som bygger egne designsystem basert på Designsystemet, bidrar den etablerte tokensstrukturen, komponentbiblioteket, dokumentasjonen og verktøy som temabygger til store tidsbesparelser. Disse elementene gir et godt utgangspunkt som ellers ville krevd omfattende utviklingsarbeid. 
+
+Felles for virksomheter som bruker Designsystemet direkte og de som bygger egne designsystem på toppen, er at de også frigjør ressurser ved at de ikke selv må vedlikeholde de komponentene de benytter. Ansvar for oppdateringer, feilrettinger, sikkerhetsforbedringer og tilpasninger til nye krav flyttes fra den enkelte virksomheten til Designsystemet. 
+
+Virksomheter som kun benytter mønstre, vil også få frigjort noe tid ved at Designsystemet gir virksomhetene et felles språk og felles referanseramme som skaper færre interne diskusjoner rundt hvordan interaksjon og gjentagende brukeroppgaver bør løses. Disse besparelsene er ikke forsøkt prissatt. Virksomheter som velger å kun benytte mønstre, er som oftest store offentlige virksomheter med egne designsystemer. Flere av de er sentrale samarbeidspartnere for Designsystemet, som Digdir ønsker at skal bidrar med ressurser og kompetanse inn i den fremtidige videreutviklingen av Designsystemet. Nettoeffekten på tidsbruk i disse virksomhetene er derfor vanskelig å fastslå.  
+
+#### 5.1.2.1 Effektiviseringsgevinst
+Antakelsene om effektivitetsgevinst bygger på tilgjengelig dokumentasjon, blant annet erfaringer fra nettkilder<sup>[25, 26, 27]</sup>, et kunnskapsgrunnlag fra Oslo kommune hvor de har beregnet frigjort tid i Origo av Oslo kommunes designsystem, samt intervjuer med relevante aktører. Kildene viser at bruken av designsystemer kan redusere tidsbruk betydelig, men med stor variasjon mellom oppgaver og kompleksitet. Flere intervjuede aktører anslår en tidsbesparelse på 20 til 50 prosent ved bruk av Designsystemet. 
+
+For virksomheter som benytter Designsystemet direkte i løsninger er det i nullalternativet lagt til grunn en effektiviseringsgevinst på 20 prosent ved utvikling av nye løsninger, mens det for konsept 1 og 2 er forutsatt en gevinst på 25 prosent. Den høyere effektivitetsgevinsten i Konsept 1 og 2 begrunnes med at Designsystemet i disse alternativene er teknologiuavhengig og omfatter flere komponenter og verktøy, noe som legger til rette for mer effektiv utvikling og enklere gjenbruk på tvers av virksomheter.
+
+Det er bevisst valgt å legge seg i det nedre sjiktet av mulige gevinster, ettersom det er betydelig usikkerhet knyttet til hvor store effektiviseringsgevinster som faktisk kan realiseres. Den dokumentasjonen som foreligger gjelder i hovedsak designsystemer som er spesielt tilpasset til den enkelte virksomhet, og ikke generelle løsninger slik som Designsystemet i denne analysen. Anslag fra Nav tilsier at frigjort tid tilsvarer omtrent 0,4 FTE per team/løsning når Nav benytter deres eget Designsystem Aksel.  Vår modell tilsvarer en årlig besparelse på om lag 1/3 av Navs besparelser. 
+
+For virksomheter som bygger egne designsystemer basert på Designsystemet, er effektivitetsgevinsten i hovedsak basert på informasjon fra intervjuer. Flere aktører har informert om at det går svært mye raskere å bygge opp et designsystem basert på Designsystemet, opptil 90 prosent. Det er valgt å legge anslagene i det nedre sjiktet av estimatene fra intervjuene. Den høyere effektiviseringsgevinsten i konsept 1 og 2 begrunnes med at Designsystemet i disse alternativene er teknologiuavhengig og omfatter flere komponenter.
+
+Det er lagt til grunn en effektiviseringsgevinst i vedlikehold på 2,5 prosent for nullalternativet, 4 prosent for konsept 1 og 5 prosent for konsept 2. Forskjellen mellom konseptene skyldes omfanget av komponenter som virksomhetene slipper å vedlikeholde selv. I nullalternativet oppnås en viss effektiviseringsgevinst, mens konsept 1 gir større gevinst fordi Designsystemet i dette scenariet er teknologiuavhengig og tilbyr et bredere sett av komponenter. I konsept 2 er effekten enda større. Her utvides Designsystemet ytterligere, med flere komponenter og funksjoner som vedlikeholdes sentralt. 
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Gevinstområder</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Bruker direkte
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>20%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>25%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>25%</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Bygger på toppen
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>70%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>80%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>80%</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Vedlikehold
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>2,5%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>4%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>5%</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+#### 5.1.2.2 Utbredelse 
+For brukergruppen som benytter Designsystemet direkte, måles utbredelsen i antall løsninger, mens for de som bygger egne designsystemer basert på Designsystemet, måles utbredelsen i antall virksomheter. 
+
+Det er utfordrende å fastslå nøyaktig hvor mange løsninger som i dag benytter Designsystemet, ettersom det er åpen kildekode. I forbindelse med den samfunnsøkonomiske analysen er det kartlagt rundt 125 løsninger som bruker Designsystemet, men det er grunn til å anta at det reelle tallet er enda høyere. 
+
+Det finnes ingen samlet oversikt over antall offentlig digitale løsninger, det er anslått at ca. 10 000 offentlige digitale tjenester er avhengig av Digdirs fellesløsninger<sup>[28]</sup>. En annen indikasjon på antall offentlige digitale løsninger kan være antall tilgjengelighetserklæringer. Ved inngangen til 2025 utgjorde det 7 500 stykker.<sup>[29]</sup>
+
+Dette danner grunnlaget for å vurdere den samlede utbredelsen i konseptene, samt sannsynligheten for at anslagene er realistiske. I løpet av analyseperioden på 10 år er total utbredelse anslått til om lag 30 prosent av offentlige løsninger i konsept 2, 20 prosent i konsept 1, og rundt 3 prosent i nullalternativet. Det er allerede eksempler på at både frivillig sektor og private aktører benytter Designsystemet. Utbredelsen er dermed ikke begrenset til offentlig sektor. Designsystemet er også anerkjent som digital public good<sup>[7]</sup> som åpner for at det også er potensial for bruk utenfor Norge. 
+
+<Table>
+<caption>Total utbredelse per konsept</caption>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Bruksform</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Bruker direkte, løsninger
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>191</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>1 762</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>2 326</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Bygger på toppen, virksomheter
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>19</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>115</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>130</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+Tabellen over viser den totale utbredelsen vi har antatt ved slutten av analyseperioden i 2036. Det er antatt at utbredelsen vil være betydelig større i konsept 1 og 2 enn i nullalternativet. Dette skyldes blant annet at konseptene signaliserer en videre satsing på Designsystemet, noe som forventes å øke tilliten til løsningen blant potensielle brukere. Flere aktører har uttrykt at et stabilt og godt videreutviklet Designsystem som holdes relevant og oppdatert i tråd med behov, er en viktig forutsetning for å ta det i bruk. I tillegg antas teknologiuavhengighet og økte ressurser til koordinering, involvering og utvikling av nye interaksjonsmønstre og komponenter å bidra til at Designsystemet i større grad møter behovene til de ulike virksomhetene, og fører dermed til en bredere og raskere utbredelse. 
+
+#### 5.1.2.3 Beregning av verdien av frigjort tid
+Verdien av spart tid er beregnet med utgangspunkt i en årsverkskostnad tilsvarende intern kostnad i Digdir. Beregningen bygger på en forutsetning om at det i gjennomsnitt er to heltidsekvivalenter i hvert utviklingsteam som kan få frigjort tid ved å benytte Designsystemet. Antakelsen om to heltidsekvivalenter er basert på informasjon fra intervjuer og reflekterer at det blir frigjort mest tid knyttet til design og frontend utviklingsoppgaver. Antakelsen innebærer ikke at hvert team bare består av to personer, men at effektiviseringsgevinstene først og fremst oppstår i disse fagrollene. Andre roller, som produktledelse, backend og test, vil kunne dra indirekte nytte av økt kvalitet og raskere utviklingsprosesser, men er ikke inkludert i den direkte tidsbesparelsen. Den totale verdien av frigjort tid er beregnet som produktet av estimert effektiviseringsgevinst, forventet utbredelse og tilhørende årsverkskostnad.
+
+Tabellen under viser beregnet netto nåverdi av frigjort tid (i millioner 2027-kroner) for de tre konseptene. Resultatene viser at verdien av frigjort tid øker betydelig i konsept 1 og 2 sammenlignet med nullalternativet, som følge av både høyere utbredelse og større effektiviseringsgevinst. 
+
+<Table>
+<caption>Netto nåverdi av frigjort tid i millioner 2027-kroner</caption>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Bruksform</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Bruker direkte
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>147</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>1 872</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>2 715</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Bygger på toppen
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>19</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>262</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>324</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+### 5.1.3 Oppsummering av prissatte nyttevirkninger
+Figur 8 viser beregnet netto nåverdi per investerte krone for de tre alternativene. For nullalternativet er netto nåverdien beregnet til 1,8 kroner per investerte krone, mens konsept 1 og konsept 2 gir vesentlig høyere avkastning, men henholdsvis 12,8 og 10,2 kroner per investerte krone. 
+
+
+<Image
+  src="/img/cba/cba-8.png"
+  alt="Stolpediagram som viser netto nåverdi av frigjort tid for tre alternativer. Nullalternativet har en verdi på 1,8. Konsept 1 har høyest verdi med 12,8. Konsept 2 har en verdi på 10,2. Diagrammet viser at både konsept 1 og konsept 2 gir betydelig høyere verdi av frigjort tid enn nullalternativet, med konsept 1 som det mest lønnsomme alternativet."
+  boxShadow={false}
+  caption="Figur 8: Netto nåverdi per investerte kr"
+/>
+
+Figur 9 viser fordelingen mellom prissatte nyttevirkninger, kostnader og endringer i skattefinansieringskostnader for de tre alternativene, målt i millioner 2027-kroner. Konsept 1 og 2 gir klart høyere netto nåverdi enn nullalternativet. 
+
+<Image
+  src="/img/cba/cba-9.webp"
+  alt="Stablet stolpediagram som viser netto nåverdi for nullalternativet, konsept 1 og konsept 2. For hvert alternativ vises kostnader som negative verdier, samt nytte og endring i skattefinansiering som positive verdier. Nullalternativet har kostnader på minus 65 og samlet netto nåverdi på 115. Konsept 1 har kostnader på minus 176, nytte på 2 135 og endring i skattefinansiering på 306, som gir netto nåverdi 2 264. Konsept 2 har kostnader på minus 309, nytte på 3 038 og endring i skattefinansiering på 424, som gir netto nåverdi 3 154. Diagrammet viser at konsept 1 og 2 gir betydelig høyere netto nytte enn nullalternativet, med høyest netto nåverdi i konsept 2."
+  boxShadow={false}
+  caption="Figur 9: Netto nåverdi i millioner 2027-kroner"
+/>
+
+Samlet vurdering av resultatene i figurene viser at både konsept 1 og konsept 2 er samfunnsøkonomisk lønnsomme basert på de prissatte virkningene. Begge konseptene har vesentlig høyere avkastning per investerte krone og klart høyere netto nåverdi enn nullalternativet. Konsept 2 gir den høyeste prissatte gevinsten, men konsept 1 gir også et positivt resultat. 
+
+### 5.2 Ikke-prissatte virkninger
+
+#### 5.2.1 Økt rettighetsoppfyllelse, pliktoppfyllelse og livskvalitet
+Når flere digitale tjenester utformes med høyere grad av tilgjengelighet, god navigasjon, tydeligere struktur og klart språk, reduseres barrierene for å finne, forstå og bruke både offentlige og private digitale tjenester. Dette kan bidra til at flere digitalt sårbare får tilgang til informasjon og tjenester som er nødvendige for å ivareta egne rettigheter og oppfylle plikter overfor offentlige sektor. Når flere klarer å løse oppgaver selvstendig og uten hjelp, øker rettssikkerheten og livskvaliteten som igjen kan bidra til en økt tillit til offentlige tjenester.
+
+Ifølge Digitaliseringsdirektoratets beregninger er det om lag 850 000 digitalt sårbare i Norge<sup>[9]</sup>. Dette er en svært sammensatt gruppe med ulike utgangspunkt og forutsetninger for å kunne benytte offentlig digitale tjenester jamfør kap. 2.1. Ifølge en spørreundersøkelse utført av Norges institutt for menneskerettigheter<sup>[10]</sup> oppgir 30 prosent at dårlige digitale løsninger er en av årsakene til at de har problemer med tilgang til og bruk av offentlige digitale tjenester. Det er naturlig å anta at en stor andel av de digitalt sårbare vil ha behov for flere tiltak enn Designsystemet for å kunne ivareta egne rettigheter og oppfylle plikter overfor det offentlige.  Antall berørte antas derfor å være langt færre enn 255 000. Påvirkningen per berørt er avhengig av utbredelsen til Designsystemet og hvor stort omfang de ulike konseptene av Designsystemet dekker som beskrevet i [kapittel 4](#4-mulighetsstudie). 
+
+I konsept 0 blir utbredelsen av Designsystemet lavest og Designsystemet vil dekke et mindre omfang og dermed blir påvirkningen på tilgjengelighet og brukskvalitet vesentlig lavere enn i de andre konseptene. I konsept 1 er utbredelsen større enn i konsept 0 anslått til mellom 10 – 24 prosent av alle offentlig løsninger og omfanget av Designsystemet er høyere. Derfor vurderes kvantum i konsept 1 til Lite positivt. Konsept 2 vil ha større omfang av komponenter og mønstre enn konsept 1, men også kunne tilby ny funksjonalitet som automatisk uu-testing slik at påvirkningen per berørt blir noe større enn i konsept 1. Utbredelsen er også større i konsept 2 derfor vurderes kvantum til Lite positivt/Middels positivt. Enhetsverdien eller velferdsøkningen for de digitalt sårbare som opplever virkningen vurderes som høy. 
+
+
+<Table data-color="success">
+<caption>Verdimatrisemetoden økt rettighetsoppfyllelse</caption>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Verdikriterium</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Kvantum
+      </TableHeaderCell>
+      <TableCell>Verken positivt eller negativt</TableCell>
+      <TableCell>Lite positiv</TableCell>
+      <TableCell>Lite positiv/Middels positiv</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Enhetsverdi
+      </TableHeaderCell>
+      <TableCell>Høy</TableCell>
+      <TableCell>Høy</TableCell>
+      <TableCell>Høy</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Samfunnsøkonomisk verdi
+      </TableHeaderCell>
+      <TableCell data-color="neutral" style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Ubetydelig</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-active)',
+  }}>Middels positiv/Stor positiv</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+#### 5.2.2 Økt etterlevelse
+Designsystemet bidrar til at det blir lettere for virksomheter i offentlig sektor å etterleve deler av kravene til universell utforming (uu) i ikt-forskriften.  Ifølge Tilsynet for universell utforming av ikt kan et godt designsystem bidra til økt etterlevelse av mellom 30–50 prosent av kravene i WCAG. Designsystemet fjerner ikke behovet for intern uu-kompetanse i den enkelte virksomhet, da virksomheten er avhengig av slik kompetanse for å kunne ta komponentene i bruk i henhold til regelverket og sørge for etterlevelse av kravene som Designsystemet ikke dekker. 
+
+Designsystemet bidra til å øke fokus og forståelse for uu-kravene i virksomhetene som benytter Designsystemet. Interaksjonsmønstrene og retningslinjene gir konkret veiledning og eksempler på god praksis, og fungerer som et felles rammeverk for hvordan tilgjengelige og brukervennlige løsninger kan designes og utvikles.
+
+Videre skaper Designsystemet en felles arena for deling av erfaringer, diskusjon, samarbeid og forbedring knyttet til universell utforming. Denne delingen styrker kompetansen på universell utforming i fagmiljøene og fremmer en kultur for kontinuerlig læring og kvalitetsforbedring. 
+
+I intervjuer med interessenter som enten bruker komponenter eller har bygget sitt eget designsystem på Designsystemet understrekes det at Designsystemet har vært viktig for å muliggjøre bedre etterlevelse av uu-regelverket. Ikke fordi det alene sikrer oppfyllelse, men fordi det gjør det lettere å gjøre det riktig. Målet er at komponentene i Designsystemet skal være utviklet og testet slik at de oppfyller gjeldende uu-krav, noe som reduserer behovet for at hver enkelt virksomhet selv må gjennomføre omfattende tester og tilpasninger. 
+
+Erfaringer fra Brønnøysundregistrene og Enova viser en markant forbedring i etterlevelsen av relevante WCAG-krav etter de begynte å benytte Designsystemet. 
+
+<Table data-color="success">
+<caption>Etterlevelse av WCAG-kravene før og etter bruk av Designsystemet </caption>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Løsning</TableHeaderCell>
+      <TableHeaderCell scope="col">Etterlevelse WCAG før Designsystemet</TableHeaderCell>
+      <TableHeaderCell scope="col">Etterlevelse WCAG etter Designsystemet</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Årsregnskap i Altinn
+      </TableHeaderCell>
+      <TableCell>62 prosent</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>92 prosent</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Oppslagstjenesten
+      </TableHeaderCell>
+      <TableCell>56 prosent</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>84 prosent</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Innrapportering til frivillighetsregisteret
+      </TableHeaderCell>
+      <TableCell>62 prosent</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>77 prosent</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Virksomhetsopplysninger
+      </TableHeaderCell>
+      <TableCell>55 prosent</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>73 prosent</TableCell>
+    </TableRow>
+    
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Enova.no
+      </TableHeaderCell>
+      <TableCell>54 prosent</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>91 prosent</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+Begge interessentene påpeker at Designsystemet ikke er den eneste årsaken til forbedringene, men at det er en viktig brikke i arbeidet med å oppnå dem.
+
+Andre erfaringer interessentene trekker frem i intervjuene, er at komponenter og tydelige retningslinjer gir trygghet i utviklingsarbeidet. Flere viser til at uu-kravene nå oppleves som en integrert del av utviklingsprosessen, ikke som noe som må kontrolleres i etterkant og at det har økt kompetansen og fokuset på universell utforming særlig blant utviklere. 
+
+I konsept 0 blir utbredelsen av Designsystemet lav, men alle som er intervjuet i forbindelse med den samfunnsøkonomiske analysen sier at Designsystemet har en vesentlig påvirkning på etterlevelsen av relevante krav i uu-regelverket i virksomheten derfor vurderes kvantum som lite positivt. 
+
+I konsept 1 og 2 er utbredelsen og omfanget av Designsystemet høyere og konseptene vil kunne påvirke etterlevelsen av både uu-regelverket og regelverket for klarspråk. I konsept 1 og 2 vil det inngå at klarspråkregelverkets krav gjøres mer konkrete og tilgjengelige for dem som utvikler digitale tjenester. Designsystemet bidrar til at disse kravene blir fulgt i digitale løsninger, ved å tilby felles retningslinjer for tekst på komponenter og interaksjonselementer som knapper, lenker og hjelpetekster. Felles retningslinjer gjør det enklere for virksomheter å skrive tydelig, slik at brukerne forstår hva som skjer når de bruker digitale tjenester og kjenner igjen språket på tvers av ulike løsninger. Slik bidrar Designsystemet til at innbyggerne møtes med et forståelig og konsekvent språk, i tråd med språklova og prinsippene for klart språk.
+
+Enhetsverdien av økt etterlevelse er middels: færre feil og pålegg i revisjoner, færre feil og lavere vedlikeholdskostnader og lavere risiko for bøter. Ifølge Tilsynet for universell utforming av ikt er det svært få som ilegges bøter i dag, da det ikke er målet med revisjonene. 
+
+Økt grad av etterlevelse vil bidra til rettssikkerhet og likeverdig deltakelse, og understøtter tillit og omdømme til offentlige digitale tjenester. Når brukerne kan stole på at løsningene fungerer for alle, styrkes både brukskvaliteten og legitimiteten til forvaltningen.
+
+<Table data-color="success">
+<caption>Verdimatrisemetoden økt etterlevelse</caption>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Verdikriterium</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Kvantum
+      </TableHeaderCell>
+      <TableCell>Lite positiv</TableCell>
+      <TableCell>Middels positiv</TableCell>
+      <TableCell>Stort positiv</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Enhetsverdi
+      </TableHeaderCell>
+      <TableCell>Middels</TableCell>
+      <TableCell>Middels</TableCell>
+      <TableCell>Middels</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Samfunnsøkonomisk verdi
+      </TableHeaderCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Liten positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-active)',
+  }}>Stor positiv</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+#### 5.2.3 Spart tid innbyggere
+Bruk av et felles designsystem bidrar til at digitale tjenester fremstår mer helhetlige og gjenkjennelige på tvers av virksomheter. Når innbyggerne møter en kjent tydelig struktur og konsistente interaksjonsmønstre med funksjonelle likheter og økt grad av etterlevelse av regelverket for universell utforming og klarspråk, reduseres den kognitive belastningen og tiden det tar å orientere seg og å løse oppgaver.
+
+Schmutz et al.<sup>[30, 31]</sup> har dokumentert at økt etterlevelse av WCAG-krav sparer brukerne for tid ved informasjonsinnhenting og oppgaveløsning, samtidig som brukertilfredsheten også øker. Studiene understreker at universell utforming ikke bare har effekt for personer med funksjonsnedsettelser, men også forbedrer effektiviteten og forståelsen for alle brukergrupper.
+
+Funn i intervjuene støtter dette. Flere virksomheter fremhever at Designsystemet gjør det enklere å utvikle løsninger som er mer intuitive og gjenkjennelige på tvers. Selv virksomheter som kun benytter mønstre fremhever at de ser nytten for sluttbrukerne ved at interaksjonsmønstrene bidra til mer helhetlige og gjenkjennelige tjenester på tvers av etater. Brukere slipper å “lære systemet på nytt” hver gang de besøker en ny offentlig tjeneste, noe som reduserer tiden brukt på å finne informasjon, fylle ut skjemaer eller forstå prosesser.
+
+Antall berørte er potensielt 80 prosent av befolkningen over 18 år, men reelt antall berørte vil være færre da det er avhengig av utbredelsen av Designsystemet. Den primære målgruppen for Designsystemet er små og mellomstore offentlige virksomheter, mange av disse mangler kompetanse i dag for å lage gode brukervennlige løsninger<sup>[32]</sup>. Ved å tilby ferdige komponenter og mønstre kan Designsystemet heve kvaliteten og tilgjengeligheten i disse virksomhetenes løsninger, og redusere variasjonen i brukskvalitet på tvers av sektoren. Kvantum vurderes som lite i konsept 0, middels i konsept 1 og stort positivt i konsept 2. Enhetsverdien er verdien av fritid, som tilsvar 341 kr per time. 
+
+For å illustrere størrelsesorden kan følgende regneeksempel benyttes: Dersom 20 prosent av brukerne som logget inn via ID-porten i 2024  sparer ett minutt ved bedre struktur og gjenkjennelighet på tvers av tjenester, tilsvarer det en samfunnsøkonomisk gevinst på om lag 360 millioner kroner. Selv ved en besparelse på bare 10 sekunder per bruker utgjør verdien rundt 60 millioner kroner. Dette eksempelet viser at hvis Designsystemet får en vesentlig utbredelse, vil det også kunne spare innbyggere for betydelig unødvendig tidsbruk i tillegg til de mer kvalitetsmessige aspektene som vil bidrar til økt bruketilfredshet og tillit til offentlige tjenester. 
+
+<Table data-color="success">
+<caption>Verdimatrisemetoden spart tid innbyggere</caption>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Verdikriterium</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Kvantum
+      </TableHeaderCell>
+      <TableCell>Liten positiv</TableCell>
+      <TableCell>Middels positiv</TableCell>
+      <TableCell>Stor positiv</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Enhetsverdi
+      </TableHeaderCell>
+      <TableCell>341 kr</TableCell>
+      <TableCell>341 kr</TableCell>
+      <TableCell>341 kr</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Samfunnsøkonomisk verdi
+      </TableHeaderCell>
+      <TableCell data-color="neutral" style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Ubetydelig</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Liten positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+## 6 Usikkerhetsvurderinger
+
+Tabellen under viser hvor stor effektiviseringsgevinst som kreves, gitt utbredelsen vi har antatt, for at konseptene skal ha positiv netto nåverdi. Resultatene viser at konsept 1 og konsept 2 må ha betydelig lavere effektiviseringsgevinst enn vi har antatt for at nåverdien skal bli negativ. Gitt tilgjengelig dokumentasjon på effektiviseringsgevinster og estimater fra intervjuede aktører vil det være svært usannsynlig at dette er det reelle nivået på gevinsten. 
+
+<Table>
+<caption>Sensitivitetstest effektiviseringsgevinst, NNV = 0</caption>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Gevinstområder</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Bruker direkte
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>8,1%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>2,1%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>2,6%</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Bygger på toppen
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>28,2%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>6,8%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>8,4%</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Vedlikehold
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>1,0%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>0,3%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>0,5%</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+Tabellen under viser hvor stor effektiviseringsgevinst som kreves for at konseptene skal oppnå samme netto nåverdi som nullalternativet. Resultatene viser at konsept 1 og 2 må ha betydelig lavere effektiviseringsgevinst enn det vi har antatt for at netto nåverdien skal bli lavere enn nullalternativet. Gitt tilgjengelig dokumentasjon på effektiviseringsgevinster og estimater gitt i intervjuer vil det være svært usannsynlig at dette er det reelle nivået på gevinsten. 
+
+<Table>
+<caption>Sensitivitetstest effektiviseringsgevinst, NNV = Nullalternativet</caption>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Gevinstområder</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Bruker direkte
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>3,3%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>3,3%</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Bygger på toppen
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>10,6%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>10,5%</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Vedlikehold
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>0,5%</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>0,7%</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+Tabellen under viser netto nåverdi av konseptene gitt ulike nivåer av utbredelse. I analysen har vi inkludert et scenario hvor ingen flere tar i bruk Designsystemet de neste 10 årene. I dette scenarioet vil nullalternativet og konsept 1 fortsatt ha en positiv netto nåverdi, mens konsept 2 vil ha en negativ netto nåverdi. Ved utbredelse som er halvparten av det vi har antatt i modellen vil alle tre konseptene gi en positiv netto nåverdi, men konsept 1 og 2 kommer betydelig bedre ut enn nullalternativet. 
+
+<Table>
+<caption>Netto nåverdi ved ulike nivåer av utbredelse</caption>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell scope="col">Nivå av utbredelse</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Dagens nivå
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>56</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>61</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>-42</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        50%
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>85</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>774</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>923</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        110%
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>121</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>2 716</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>3 862</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+## 7 Samlet vurdering og anbefalt konsept
+Analysen viser at alle konseptene har positiv netto nåverdi, se tabellen nedfor. 
+
+Konsept 2 har høyest prissatt netto nåverdi på 3,2 milliarder kroner, mens konsept 1 har høyest prissatt nytte per investerte krone med 12,8 kroner per investert krone. De ikke-prissatte gevinstene økt rettighetsoppfyllelse, pliktoppfyllelse og livskvalitet, økt etterlevelse av regelverk og spart tid for innbygger er størst i konsept 2. 
+
+Totalt sett anbefales Konsept 2 basert på den samfunnsøkonomiske analysen og erfaringer fra både intervjuer og annet kildemateriale. 
+
+
+<Table border data-color='success'>
+  <caption>Vurdering av prissatte nyttevirkninger per konsept (i mill. kr)</caption>
+
+  <TableHead style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}
+>
+    <TableRow>
+      <TableHeaderCell scope="col">Prissatte nyttevirkninger</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>
+        Konsept 0
+      </TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>
+        Konsept 1
+      </TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>
+        Konsept 2
+      </TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">Kostnadsvirkninger</TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>-65</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>-176</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>-309</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">Nyttevirkninger</TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>166</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>2 135</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>3 038</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">Endring i skattefinansiering</TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>14</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>306</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>424</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFoot>
+
+    <TableRow style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}>
+      <TableHeaderCell scope="row">
+        <strong>Sum netto nåverdi</strong>
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>
+        <strong>115</strong>
+      </TableCell>
+      <TableCell style={{ textAlign: 'right' }}>
+        <strong>2 264</strong>
+      </TableCell>
+      <TableCell style={{ textAlign: 'right' }}>
+        <strong>3 154</strong>
+      </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Netto nåverdi per investerte kroner
+      </TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>1,8</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>12,8</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>10,2</TableCell>
+    </TableRow>
+  </TableFoot>
+</Table>
+
+<Table border data-color='success'>
+  <caption>Vurdering av ikke-prissatte nyttevirkninger per konsept</caption>
+
+  <TableHead style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}>
+    <TableRow>
+      <TableHeaderCell scope="col">Ikke-prissatte nyttevirkninger</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col">Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Økt rettighetsoppfyllelse, pliktoppfyllelse og livskvalitet
+      </TableHeaderCell>
+      <TableCell data-color="neutral" style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Ubetydelig</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv / Stor positiv</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Økt etterlevelse av regelverk
+      </TableHeaderCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Liten positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-active)',
+  }}>Stor positiv</TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Spart tid for innbyggere
+      </TableHeaderCell>
+      <TableCell data-color="neutral" style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Ubetydelig</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-tinted)',
+  }}>Liten positiv</TableCell>
+      <TableCell style={{
+    backgroundColor: 'var(--ds-color-surface-hover)',
+  }}>Middels positiv</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+<Table border data-color='success'>
+  <caption>Rangering av konsepter</caption>
+
+  <TableHead style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}>
+    <TableRow>
+      <TableHeaderCell scope="col">Rangering</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 0</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
+      <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">Plassering</TableHeaderCell>
+      <TableCell style={{ textAlign: 'right' }}>3</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>2</TableCell>
+      <TableCell style={{ textAlign: 'right' }}>1</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+Konsept 2 er den mest ambisiøse utviklingsretningen og dette konseptet innebærer et helhetlig løft av dagens Designsystem.  Samtidig krever konseptet betydelig høyere investeringer og sterk gjennomføringsevne, og innebærer en større teknologisk risiko enn de øvrige alternativene.
+
+Alle intervjuobjektene er enige i at et nasjonalt designsystem gir høy samfunnsnytte, men vurderer nytten av konseptene forskjellig ut fra egen modenhet og rolle. De store virksomhetene opplever konsept 1 som en videreføring av dagens Designsystem som gir lite nytte for de store virksomhetene og ser ett mye større potensial i konsept 2. De fremhever at KI, automatisering og støtte for flere rammeverk og moderne arkitektur for eksempel headless kan gjøre at Designsystemet også kan frigjøre tid hos de store aktørene. De ser også konsept 2 som en plattform for samarbeid og kompetansedeling mellom de store offentlig designsystemmiljøene i Norge. 
+
+De små og mellomstore aktørene er imidlertid mer delt i synet på konseptene. De virksomhetene som har bygget sine egne designsystemer på toppen av Designsystemet ser konsept 1 som en mer realistisk og trygg retning. De ønsker en solid grunnforvaltning, flere interaksjonsmønstre og teknologiuavhengighet og er skeptiske til at ressurskrevende teknologi -løft (for eksempel KI, kodegenerering) vil gi proporsjonal nytte. De er også bekymret for at en veldig ambisiøs teknologisksatsing kan stjele ressursene fra nødvendig grunnforvaltning. 
+
+De små og mellomstore virksomhetene som bruker Designsystemet direkte inn i egne løsninger ser mer nytten av konsept 2 fordi det kan gi mer rom for nyskaping og har et potensial for å øke verdien av Designsystemet, særlig hvis KI og nye verktøy kan effektivisere arbeidet ytterligere. De foretrekker konsept 2 under forutsetningen om at Designsystemet fortsatt er modulært da små virksomheter neppe vil ha kompetansen eller ressurser nok til å kunne benytte hele Designsystemet. 
+
+Dersom det vurderes som mer hensiktsmessig med en trinnvis tilnærming til utviklingen av Designsystemet anbefales Konsept 1 Grunnmur som et første utviklingstrinn som senere kan bygges på med Konsept 2. Konsept 2 gir størst potensial for fremtidig verdi og innovasjon, men også størst risiko og behov for styring og kapasitet. Konsept 1 gir lavere kostnader og risiko, men oppnår fortsatt en høy netto nåverdi på 2,3 milliarder kroner, og vil kunne etablere en solid plattform for videre utbygging mot Konsept 2 på sikt.
+
+En slik trinnvis gjennomføring vil gi mulighet for læring, risikoredusering og gradvis skalering av funksjonalitet, teknologi og samarbeid, samtidig som gevinster kan realiseres tidlig og bygges videre over tid. 
+
+### 7.1 Forutsetninger for en vellykket gjennomføring
+Konsept 2 innebærer et teknologisk løft og en mer ambisiøs videreutvikling av Designsystemet. Den aller viktigste forutsetningen for å realisere gevinstene av konsept 2 er at flere virksomheter velger å ta Designsystemet i bruk (jfr. kap. 6). Den primære målgruppen for Designsystemet er små og mellomstore offentlige virksomheter som ikke har ressurser eller kompetanse til å gjøre store investeringer i et eget designsystem. Disse må gjøres kjent med at Designsystemet finnes og de har behov for støtte for å klare å ta det i bruk. Små og mellomstore offentlige virksomheter har ofte ikke økonomisk handlingsrom til å ha egne IKT-ansatte, og kjøper derfor konsulenttjenester for å dekke behovene sine<sup>[32]</sup>. Et viktig tiltak for å bidra til å øke utbredelse av Designsystemet er å gjøre det kjent i det private IKT-konsulentmarkedet som rådgir de små og mellomstore offentlige virksomhetene slik at det kan anbefale det videre til sine kunder. Flere av de små virksomhetene som benytter Designsystemet i dag har fått det anbefalt av private leverandører. Det er også viktig å involvere leverandører av systemer som brukes i kommuner og statlige virksomheter. Når disse tar i bruk Designsystemet i sine løsninger, bidrar de til mer helhetlige brukeropplevelser og gjør det enklere for mindre virksomheter å tilby gode digitale tjenester.
+
+Et annet tiltak som kan bidra til å gjøre Designsystemet mer kjent i offentlig sektor er at det nevnes i Digitaliseringsrundskrivet som en del av de nasjonale felles komponentene, som er frivillig å ta i bruk.  
+
+Et annet sentralt suksesskriterium ved videreutviklingen av Designsystemet, er å fortsette å stimulere til felles læring og faglig deling på tvers av offentlig sektor. Digdir må prioritere de åpne samarbeidsarenaene og opprettholde et community rundt Designsystemet, da dette bidrar til å heve kompetansen knyttet til design, universell utforming og klarspråk i offentlige virksomheter. Selv virksomheter som ikke benytter Designsystemet i dag sier de ser på Designsystemet som et oppslagsverk og en inspirasjon som bidrar til å heve kompetansen i egen virksomhet. 
+
+Konsept 2 forutsetter at Designsystemet videreutvikles som et fellesskap, ikke som et rent sentralisert tiltak. Digdir bør derfor jobbe aktivt med å få etablert en samstyringsmodell med bred involvering av virksomhetene som deltar aktivt i prioritering, utvikling og forvaltning. Et felles designsystem som brukes av veldig mange virksomheter må ha en viss «treghet» i større endringer og mulig funksjonalitet for å unngå utilsiktede virkninger hos mange. Et nasjonalt designsystem vil også være lengre unna behovene i den enkelte virksomhet enn et internt designsystem og en samstyringsmodell er et viktig tiltak for å sikre at Designsystemet bidrar til nytte for virksomhetene som tar det i bruk. 
+
+Digdir er også avhengig av å få på plass den rette kompetansen internt for å sikre en vellykket gjennomføring. Både UX-designere, uu-spesialister, frontend-utviklere og KI-spesialister er knapphetsressurser i Norge, både i offentlig og privat sektor. En vellykket gjennomføring forutsetter derfor at Digdir og samarbeidende virksomheter har tilstrekkelig tilgang på personell med oppdatert kompetanse innen de ulike fagområdene. Manglende kapasitet eller høy turnover i disse fagmiljøene vil kunne bremse utviklingstakten og redusere kvaliteten på Designsystemet. Et tiltak for å redusere kompetanseutfordringen er å fortsette å samarbeide tett med de store designsystem-fagmiljøene i Norge som for eksempel Nav, Skatteetaten og Oslo kommune for å dele ekspertise og bygge felles standarder. 
+
+For å realisere potensialet i konsept 2 må Digdir først og fremst gjøre Designsystemet kjent slik at det kan tas i bruk i offentlig sektor og bidra til å heve kompetansen knyttet til design, universell utforming og klarspråk i offentlige virksomheter. Uten en målrettet innsats for å øke utbredelsen av Designsystemet, er det en risiko for at de samfunnsøkonomiske gevinstene ikke realiseres i forventet omfang. 
+
+
+## 8 Bibliografi
+
+[1] [Veileder i samfunnøkonomisk analyse (DFØ, juli 2023)](https://www.dfo.no/fagomrader/utredning-og-analyse-av-statlige-tiltak/samfunnsokonomiske-analyser/veileder-i-samfunnsokonomiske-analyser)
+
+[2] [Digital hele livet med bedre brukskvalitet (Digdir, 2023)](https://www.digdir.no/rapporter/digital-hele-livet-med-bedre-brukskvalitet/2863) 
+
+[3] [Digitaliseringsstrategien 2024–2030 (regjeringen.no, PDF)](https://www.regjeringen.no/contentassets/c499c3b6c93740bd989c43d886f65924/no/pdfs/nasjonal-digitaliseringsstrategi_ny.pdf)
+
+[4] [Én digital offentlig sektor 2019–2025 (regjeringen.no)](https://www.regjeringen.no/no/dokumenter/en-digital-offentlig-sektor/id2653874/)
+
+[5] [Digital hele livet (regjeringen.no, 2021, PDF)](https://www.regjeringen.no/contentassets/8f8751780e9749bfa8946526b51f10f4/digital-hele-livet.pdf)
+
+[6] [Fremtidens digitale Norge (regjeringen.no, 2024)](https://www.regjeringen.no/no/dokumenter/fremtidens-digitale-norge/id3054645/?ch=1)
+
+[7] [DPG Registry (digitalpublicgoods.net)](https://www.digitalpublicgoods.net/r/designsystemet) 
+
+[8] [Access to Information Laws (unesco.org)](https://www.unesco.org/en/access-information-laws)
+
+[9] [Digitalt sårbare i Norge (Digdir, 2023)](https://www.digdir.no/rikets-digitale-tilstand/kor-mange-opplever-digitalt-utanforskap/4456)
+
+[10] [En av fire er bekymret for digitalt utenforskap i alderdommen (nhri.no, 2025)](https://www.nhri.no/2025/en-av-fire-er-bekymret-for-digitalt-utenforskap-i-alderdommen/)
+
+[11] [Du behøver ikke være gammel for å føle deg digitalt utenfor (sintef.no, 2022)](https://blogg.sintef.no/digital/du-behover-ikke-vaere-gammel-for-a-fole-deg-digitalt-utenfor/)
+
+[12] [Nei – eldres digitale utfordringer er ikke et utdøende problem (uutilsynet.no, 2023)](https://www.uutilsynet.no/uubloggen/gjesteblogg-nei-eldres-digitale-utfordringer-er-ikke-et-utdoende-problem/1721)
+
+[13] [Risikovurdering av sosiale tjenester i Nav (helsetilsynet.no, 2022)](https://www.helsetilsynet.no/presse/nyhetsarkiv/2022/risikovurdering-av-sosiale-tjenester-i-nav/)
+
+[14] SINTEF. (2024). Fullføring av søknad om ytelser på nav.no. Oslo: SINTEF.
+
+[15] SINTEF. (2022). Digital eksludering i Nav. Oslo: SINTEF.
+
+[16] [Innbyggerundersøkelsen (dfo.no, 2023)](https://www.dfo.no/undersokelser/innbyggerundersokelsen/klarsprak)
+
+[17] Helsedirektoratet . (2021). Livshendelse Alvorlig sykt barn sluttrapport. Oslo: Helsedirektoratet.
+
+[18] Inal, Y., & Torkildsby, A. (2025). Does the law make a difference? a longitudinal study on accessibility compliance of Norwegian municipality website. Springer Natur link, 1845-1855.
+
+[19] Inal, Y., & et al. (2020). Perspectives and Practices of Digital Accessibility: A Survey of User Experience Professionals in Nordic Countries. NordiCHI '20: Proceedings of the 11th Nordic Conference on Human-Computer Interaction: Shaping Experiences, Shaping Society, Pages 1 - 11.
+
+[20] [Språkloven (lovdata.no)](https://lovdata.no/dokument/NL/lov/2021-05-21-42/%C2%A79#%C2%A79)
+
+[21] Opinion. (2022). Klarspråk i offentlig sektor. Oslo: Språkrådet.
+
+[22] [Norsk designsystem får internasjonal status (ntb.no, 2025)](https://kommunikasjon.ntb.no/pressemelding/18671814/norsk-designsystem-far-internasjonal-status?publisherId=17847227&lang=no)
+
+[23] [Digdir utvikler ikke «egen» teknologi. Vi lager fellesløsninger. (digdir.no, 2025)](https://samarbeid.digdir.no/digitalisering/digdir-utvikler-ikke-egen-teknologi-vi-lager-felleslosninger/3099)
+
+[24] [Prinsipper og krav ved utarbeidelse av samfunnsøkonomiske analyser (regjeringen.no, 2021, PDF)](https://www.regjeringen.no/globalassets/upload/fin/vedlegg/okstyring/rundskriv/faste/r_109_2021.pdf)
+
+[25] [Measuring the value of design systems (figma.com, 2019)](https://www.figma.com/blog/measuring-the-value-of-design-systems/)
+
+[26] [One Formula To Rule Them All: The ROI Of A Design System (smashingmagazine.com, 2022)](https://www.smashingmagazine.com/2022/09/formula-roi-design-system/)
+
+[27] [Design as an Agent for Change: The Business Case for Design Systems - Anja Klüver - DSL19, youtube.com, 2019](https://www.youtube.com/watch?v=v8i1qeCv2IQ)
+
+[28] [Revidert nasjonalbudsjett (regjeringen.no, 2025)](https://www.regjeringen.no/no/aktuelt/foreslar-flere-millioner-til-digitalisering-for-a-spare-milliarder/id3100369/)
+
+[29] [Status for tilgjengelegheitserklæringar (uutilsynet.no, 2025)](https://www.uutilsynet.no/innsikt-og-analyse/status-tilgjengelegheitserklaeringar/1800)
+
+[30] Schmutz. (2016, april 4). Implementing Recommendations From Web Accessibility Guidelines: Would They Also Provide Benefits to Nondisabled Users. Human Factors: The Journal of the Human Factors and Ergonomics Society.
+
+[31] Schmutz, S., Sonderegger, A., & Sauer, J. (2017, mai). Implementing Recommendations From Web Accessibility Guidelines: A Comparative Study of Nondisabled Users and Users With Visual Impairments. Human Factors: The Journal of the Human Factors and Ergonomics Society.
+
+[32] [Kunnskapsgrunnlag om innovasjon i offentlig sektor (digdir.no, 2024)](https://www.digdir.no/innovasjon/kunnskapsgrunnlag-om-innovasjon-i-offentlig-sektor/5973)
+
+[33] [Kartlegging IKT-konsulentbruk i små og mellomstore statlige virksomheter (dfo.no, 2024)](https://www.dfo.no/dfo-rapport-202413-kartlegging-av-ikt-konsulentbruk)
+
+## Vedlegg 1: Begreper
+
+<Table>
+  <TableHead style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}>
+    <TableRow>
+      <TableHeaderCell scope="col">Begrep</TableHeaderCell>
+      <TableHeaderCell scope="col">Beskrivelse</TableHeaderCell>
+      <TableHeaderCell scope="col">Kilde</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Brukerbehov</TableHeaderCell>
+      <TableCell>Brukerbehov handler om å forstå hva innbyggere, næringsliv og ansatte faktisk trenger for å løse oppgaver eller få tilgang til tjenester. OECD beskriver det som en forutsetning for brukersentrert utvikling: digitale løsninger skal utformes med utgangspunkt i faktiske behov og forventninger, ikke interne antagelser. 
+      \
+      \
+      Brukerbehov kartlegges gjennom innsikt, testing og dialog med brukerne. UK Government Digital Service (GDS): definerer «user needs» som kjernen i offentlig tjenestedesign, alt arbeid skal ta utgangspunkt i faktiske brukerbehov, ikke antagelser. “Start with user needs. If you don’t know what the user needs are, you won’t build the right thing.”  </TableCell>
+      
+      <TableCell>OECD (2020): [The OECD Digital Government Policy Framework (oecd.org)](https://www.oecd.org/publications/the-oecd-digital-government-policy-framework-f64fed2a-en.htm) 
+      \
+      \
+      UK GDS:
+[Government Design Principles (gov.uk)](https://www.gov.uk/guidance/government-design-principles)</TableCell>
+    </TableRow>
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Brukskvalitet</TableHeaderCell>
+      <TableCell>Brukskvalitet handler om hvor godt en løsning fungerer for brukeren i praksis. Det dreier seg om hvor effektiv, forståelig, tilgjengelig og tilfredsstillende løsningen er for den som skal bruke den. Brukskvalitet måles ofte gjennom oppgaver: Hvor lett det er å finne informasjon, utføre en handling og oppnå ønsket resultat.</TableCell>
+      
+      <TableCell>Digitaliseringsdirektoratet (2022): Veileder for brukskvalitet i digitale tjenester, s. 5</TableCell>
+    </TableRow>
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Brukergrensesnitt</TableHeaderCell>
+      <TableCell>Brukergrensesnitt er det synlige og interaktive laget i en digital løsning og er det brukeren ser og bruker. Det består av for eksempel menyer, knapper, tekstfelter og skjemaer. Et godt brukergrensesnitt gjør det enkelt å forstå hva man skal gjøre, og gir en god opplevelse av tjenesten.</TableCell>
+      
+      <TableCell>ISO 9241-210:2019 – Ergonomics of human-system interaction – Human-centred design for interactive systems</TableCell>
+    </TableRow>
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Community</TableHeaderCell>
+      <TableCell>Et community er et selvstyrt fellesskap av enkeltpersoner eller organisasjoner som samarbeider frivillig for å utvikle, forbedre og dele et felles produkt eller en felles tjeneste. I konteksten av et designsystem omfatter et slikt community ofte både offentlige aktører og eksterne bidragsytere, for eksempel designere, utviklere og brukerrepresentanter som bidrar med kompetanse, dokumentasjon, kode eller råd. Et velfungerende community kan gi rask innovasjon, bred forankring og kunnskapsdeling, men det krever tydelige rammer, koordinering og kvalitetssikring for å sikre retning og konsistens.
+      \
+      \
+      Definisjonen bygger på konseptet om open-source product development, der community beskrives som en gruppe som organiserer seg fritt og bidrar til produktutvikling uten formelt hierarki eller formelle mandater</TableCell>
+      
+      <TableCell>[Open-source product development (wikipedia.org)](https://en.wikipedia.org/wiki/Open-source_product_development?utm_source=chatgpt.com)</TableCell>
+    </TableRow>
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">CSS</TableHeaderCell>
+      <TableCell>CSS står for Cascading Style Sheets og er et språk som brukes for å style og strukturere nettsteder, inkludert utseende, layout og visuelle effekter. I motsetning til HTML som definerer strukturen og innholdet på en side, styrer CSS hvordan innholdet skal se ut på skjerm, papir eller andre medier. CSS brukes til å endre farger, fonter, størrelser, bakgrunner og mye mer. </TableCell>
+      
+      <TableCell>[CSS (Cascading Style Sheets) (digdir.no)](https://www.digdir.no/standarder/css-cascading-style-sheets/1676)</TableCell>
+    </TableRow>
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Digitaliseringsstrategi</TableHeaderCell>
+      <TableCell>En nasjonal strategi som setter mål og tiltak for digitalisering av offentlig sektor. Strategien definerer ofte felles prinsipper, virkemidler og satsinger.</TableCell>
+      
+      <TableCell>[Én digital offentlig sektor – Digitaliseringsstrategi for offentlig sektor 2019–2025 (regjeringen.no)](https://www.regjeringen.no/no/dokumenter/en-digital-offentlig-sektor/id2653874/)</TableCell>
+    </TableRow>
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Digital Public Good</TableHeaderCell>
+      <TableCell>Et Digital Public Good (digitalt offentlig gode) er en åpen, tilgjengelig og gjenbrukbar digital ressurs, for eksempel programvare, data, standarder eller innhold, som bidrar til å oppnå FNs bærekraftsmål. For å klassifiseres som et Digital Public Good må løsningen være tilgjengelig under en åpen lisens, følge etablerte standarder for personvern og sikkerhet, og være designet for å være inkluderende og tilgjengelig for alle.</TableCell>
+      
+      <TableCell>[The Digital Public Goods Alliance (digitalpublicgoods.net)](https://digitalpublicgoods.net/)</TableCell>
+    </TableRow>
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Digitalt sårbare</TableHeaderCell>
+      <TableCell>Digitalt sårbare er personer som har utfordringer med å bruke digitale verktøy, tjenester eller løsninger på egen hånd. Det kan skyldes manglende digital kompetanse, språkbarrierer, funksjonsnedsettelser, helseutfordringer eller manglende tilgang på utstyr og nett. Grad av digital sårbarhet varierer, og kan være både varig og midlertidig.</TableCell>
+      
+      <TableCell>[Digitalt utenforskap og digitalt sårbare (digdir.no)](https://www.digdir.no/sammenhengende-tjenester/brukskvalitet-pavirker-digital-utenforskap/4407#:~:text=Digitalt%20utenforskap%20rammer%20de%20som,for%20%C3%A5%20bruke%20digitale%20tjenester.)</TableCell>
+    </TableRow>
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Digitalt utenforskap</TableHeaderCell>
+      <TableCell>Digitalt utenforskap viser til situasjoner der personer ikke har tilgang til, ikke har ferdigheter til å bruke, eller velger å ikke bruke digitale løsninger. Dette kan føre til at de går glipp av informasjon, tjenester eller muligheter i samfunnet. Digitalt utenforskap kan forsterke eksisterende sosiale forskjeller og bidra til lavere samfunnsdeltakelse.</TableCell>
+      
+      <TableCell>[Digitalt utenforskap og digitalt sårbare (digdir.no)](https://www.digdir.no/sammenhengende-tjenester/brukskvalitet-pavirker-digital-utenforskap/4407#:~:text=Digitalt%20utenforskap%20rammer%20de%20som,for%20%C3%A5%20bruke%20digitale%20tjenester.)</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Designsystem</TableHeaderCell>
+      <TableCell>Designsystem er et verktøy som brukes til å strukturere og administrere design. Et designsystem er en samling av komponenter som, når de settes sammen, vil være organisert i en sammenheng. Systemet kan inneholde for eksempel et bibliotek for interaksjonsmønstre, stilguider, kodede komponenter, eksempler på språk og dokumentasjon.Designsystemer inneholder standarder for å administrere design i stor skala ved å redusere overflødighet samtidig som det skapes et felles visuelt uttrykk og visuell konsistens på tvers av kanaler.</TableCell>
+      
+      <TableCell>Leborg, Christian: [designsystem i Store norske leksikon (snl.no)](https://snl.no/designsystem)</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Fellesløsning</TableHeaderCell>
+      <TableCell>En fellesløsning er en digital løsning som er utviklet for å kunne brukes av flere offentlige virksomheter. Målet er å løse oppgaver på en felles mate, mer effektivt, trygt og brukervennlig, i stedet for at hver virksomhet utvikler egne løsninger. Eksempler på fellesløsninger er ID-porten, Altinn og Kontakt- og reservasjonsregisteret.</TableCell>
+      
+      <TableCell>Digitaliseringsdirektoratet (u.å.): Fellesløsninger – hva er det og hvorfor skal vi bruke dem? Meld. St. 22 (2018–2019): Én digital offentlig sektor, kap. 4</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">IKT</TableHeaderCell>
+      <TableCell>IKT står for informasjons- og kommunikasjonsteknologi. Begrepet dekker teknologier som brukes til å samle inn, lagre, behandle og dele informasjon, for eksempel datamaskiner, programvare, nettverk og digitale tjenester.</TableCell>
+      
+      <TableCell>[Informasjons- og kommunikasjonsteknologi i Store norske leksikon (snl.no)](https://snl.no/informasjons-_og_kommunikasjonsteknologi)</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Interaksjonsmønstre</TableHeaderCell>
+      <TableCell>Interaksjonsmønstre beskriver hvordan brukere typisk samhandler med digitale tjenester, og hvordan systemet bør svare. Det kan for eksempel være hvordan en bruker velger et alternativ, bekrefter et valg eller går tilbake i et skjema. Interaksjonsmønstre gjør det enklere å utvikle løsninger som oppleves intuitive og forutsigbare.</TableCell>
+      
+      <TableCell>Digitaliseringsdirektoratet (2024): Designsystemet.no Supplerende: Norman Nielsen Group (u.å.)</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Komponenter</TableHeaderCell>
+      <TableCell>I designsystem-sammenheng er komponenter gjenbrukbare byggeklosser for grensesnitt. Det kan for eksempel være knapper, søkefelt, datovelgere eller skjemaelementer. Komponentene er designet og kodet slik at de fungerer likt og gjenkjennelig på tvers av tjenester og plattformer.</TableCell>
+      
+      <TableCell>Digitaliseringsdirektoratet (2024): Designsystemet.no, NAV (2023): Aksel designsystem</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Livshendelse</TableHeaderCell>
+      <TableCell>En livshendelse er en situasjon i livet som utløser behov for kontakt med flere offentlige aktører, for eksempel det å få barn, starte en bedrift eller miste en nærstående. Digitalisering av livshendelser handler om å lage helhetlige tjenester som gjør det enkelt for brukeren å få gjort det som trengs, på tvers av sektorer.</TableCell>
+      
+      <TableCell>Meld. St. 22 (2018–2019): Én digital offentlig sektor, kap. 3.1, Digitaliseringsdirektoratet (u.å.): Livshendelser – samordnet digitalisering</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Løsning</TableHeaderCell>
+      <TableCell>I denne samfunnsøkonomiske analysen brukes begrepet løsning om brukervendte digitale systemer eller tjenester som benytter Digdirs designsystem. En løsning har derfor frontend-komponenter, det vil si et brukergrensesnitt rettet mot innbyggere, virksomheter eller saksbehandlere.Begrepet omfatter ikke rene backendløsninger, felleskomponenter eller organisatoriske tiltak uten brukerflate.</TableCell>
+      
+      <TableCell/>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Mønstre (interaksjonsmønstre)</TableHeaderCell>
+      <TableCell>Mønstre i et designsystem er veiledninger for hvordan man kan løse vanlige brukerbehov eller situasjoner – som innlogging, Navigasjon eller feilhåndtering. Mønstre bygger på beste praksis og sikrer at løsninger blir mer konsistente, effektive og brukervennlige.</TableCell>
+      
+      <TableCell>Digitaliseringsdirektoratet (2024): Designsystemet.no, GOV.UK Design System (u.å.)</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">React</TableHeaderCell>
+      <TableCell>React er et rammeverk for utvikling av brukergrensesnitt (UI) på nett, utviklet av Meta (tidligere Facebook) og lansert som åpen kildekode i 2013. Rammeverket brukes til å bygge gjenbrukbare grensesnittkomponenter som gjør det enklere å utvikle, vedlikeholde og skalere store digitale løsninger. React bygger på prinsippet om at hvert grensesnitt består av små, isolerte komponenter som kan kombineres for å lage dynamiske og responsive brukeropplevelser. React er i dag et av de mest brukte rammeverkene for utvikling av moderne nettsider og applikasjoner, både i offentlig og privat sektor.</TableCell>
+      
+      <TableCell>[React – A JavaScript library for building user interfaces (react.dev)](https://react.dev/)</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Sammenhengende tjenester</TableHeaderCell>
+      <TableCell>Sammenhengende tjenester er digitale tjenester som er utviklet på tvers av sektorer og forvaltningsnivåer for å støtte innbyggere og virksomheter i viktige livshendelser slik som «få barn», «starte og drive en bedrift» eller «miste og beholde arbeid». Sammenhengende tjenester krever samordning mellom flere offentlige aktører og fellesløsninger.</TableCell>
+      
+      <TableCell>[Sammenhengende tjenester (digdir.no)](https://www.digdir.no/sammenhengende-tjenester/sammenhengende-tjenester/3157)</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Single Digital Gateway (SDG)</TableHeaderCell>
+      <TableCell>Single Digital Gateway (SDG) er en felles digital portal etablert av EU, som gir innbyggere og virksomheter enkel tilgang til informasjon, prosedyrer og assistansetjenester på tvers av medlemslandene. Portalen bygger på Once Only-prinsippet og skal gjøre det mulig å håndtere grensekryssende tjenester digitalt, for eksempel registrering av bil, bosted eller utdanning i et annet EU/EØS-land.</TableCell>
+      
+      <TableCell>[The single digital gateway and Your Europe (europa.eu)](https://single-market-economy.ec.europa.eu/single-market/single-digital-gateway_en)</TableCell>
+    </TableRow>
+    
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Systemarkitektur</TableHeaderCell>
+      <TableCell>Systemarkitektur beskriver hvordan ulike deler av en digital løsning henger sammen. Det omfatter struktur, komponenter, teknologi og hvordan systemet kommuniserer med andre systemer. God systemarkitektur gjør det lettere å utvikle, drifte og tilpasse løsningen over tid – og bidrar til effektivt samspill mellom fagsystemer, grunndata og fellesløsninger.</TableCell>
+      
+      <TableCell>Digitaliseringsdirektoratet (u.å.): Arkitekturprinsipper for digitalisering i offentlig sektor, Nasjonalt arkitekturrammeverk (Digdir 2022)</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">SWOT-analyse</TableHeaderCell>
+      <TableCell>En SWOT-analyse er et verktøy for å vurdere sterke og svake sider ved et tiltak, samt hvilke muligheter og trusler som finnes i omgivelsene. Forkortelsen står for Strengths (styrker), Weaknesses (svakheter), Opportunities (muligheter) og Threats (trusler). Analysen gir et helhetsbilde og brukes ofte som beslutningsstøtte i strategi- og utviklingsarbeid.</TableCell>
+      
+      <TableCell>Direktoratet for forvaltning og økonomistyring (DFØ): Veileder i samfunnsøkonomiske analyser (2023), kap. 5.3.2 SWOT-analyse</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">UI (brukergrensesnitt)</TableHeaderCell>
+      <TableCell>EUI står for «user interface», på norsk brukergrensesnitt. Det er det laget i en digital løsning som brukeren ser og samhandler med – som menyer, knapper, skjemaer og tekst. Et godt brukergrensesnitt gjør det enkelt å forstå hva man skal gjøre og gir brukeren kontroll i møte med tjenesten.</TableCell>
+      
+      <TableCell>Digitaliseringsdirektoratet (2022): Veileder for brukskvalitet i digitale tjenester, s. 6
+      \
+      \
+      ISO 9241-210:2019 – Human-centered design for interactive systems</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Universell utforming</TableHeaderCell>
+      <TableCell>Universell utforming betyr at tjenester, bygg og omgivelser skal være utformet slik at de kan brukes av alle – så langt det er mulig – uten behov for tilpasning eller spesialløsninger. I digitale tjenester betyr det blant annet at løsningen skal kunne brukes av personer med nedsatt syn, hørsel, bevegelse eller kognisjon, og med ulike hjelpemidler. Lovverket krever universell utforming av nettsider og apper i offentlig sektor, og stiller krav til teknisk og innholdsmessig tilgjengelighet, jf. forskrift om universell utforming av IKT-løsninger (UU-forskriften) og WCAG-standarden.</TableCell>
+      
+      <TableCell>Likestillings- og diskrimineringsloven § 17 
+      \
+      \
+      Digitaliseringsdirektoratet (u.å.): Hva er universell utforming?</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Visuell identitet</TableHeaderCell>
+      <TableCell>Visuell identitet, også kjent som en visuell profil, er det grafiske uttrykket som kjennetegner en merkevare. Det kan være en virksomhet eller et produkt. Den omfatter alle de visuelle elementene som brukes for å representere og kommunisere merkevarens verdier, personlighet og budskap. En tydelig visuell identitet gjør det lettere for brukerne å forstå hvem som står bak en tjeneste eller et produkt og skaper gjenkjennelse, tillit og sammenheng i kommunikasjon.</TableCell>
+      
+      <TableCell/>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">WCAG (Web Content Accessibility)</TableHeaderCell>
+      <TableCell>WCAG er den internasjonale standarden som regelverket peker på som lovkrav. WCAG står for Web Content Accessibility Guidelines, og heter på norsk Retningslinjer for tilgjengelig webinnhold. WCAG er bygd opp av 4 prinsipp, 13 retningslinjer og med til sammen 78 testbare suksesskriterier i bunnen.</TableCell>
+      
+      <TableCell>[WCAG sortert etter prinsipp (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/wcag-sortert-etter-prinsipp/713)</TableCell>
+    </TableRow>
+
+    <TableRow style={{ verticalAlign: 'top' }}>
+      <TableHeaderCell scope="row">Åpen kildekode</TableHeaderCell>
+      <TableCell>Åpen kildekode (Open Source) betyr at kildekoden til en programvare er fritt tilgjengelig for alle. Hvem som helst kan se, bruke, endre og dele koden, innenfor gitte lisensvilkår. Åpen kildekode legger til rette for samarbeid, gjenbruk og åpen innovasjon i offentlig sektor.</TableCell>
+      
+      <TableCell>Digitaliseringsdirektoratet (2023): Anbefalinger for åpen kildekode i offentlig sektor
+      \
+      \
+      OECD (2021): The case for open source in the public sector
+      \
+      \
+      Gramstad, Thomas: [Åpen kildekode i Store norske leksikon (snl.no)](https://snl.no/%C3%A5pen_kildekode)</TableCell>
+    </TableRow>
+
+  </TableBody>
+</Table>
+
+## Vedlegg 2: Verdimatrise metoden
+Vi benytter verdimatrisemetoden for å anslå de ikke-prissatte virkningene. Dette er en kvalitativ metode som anbefales benyttet i DFØs veileder for samfunnsøkonomiske analyser<sup>[1]</sup>. Metoden skal være et hjelpemiddel for å gjøre en systematisk og dokumenterbar vurdering av de ikke-prissatte virkningene. I verdimatrisemetoden anslår man kvantum (hvor mange som påvirkes av virkningen og hvor stor påvirkningen av hver) og enhetsverdien. På samme måte som at prissatte virkninger beregnes ved å ta produktet av kvantum og enhetsverdi, kan «verdivurderingen» av ikke-prissatte virkninger gjøres ved å se kvantum og enhetsverdi i lys av hverandre. Så hvis man for eksempel har vurdert enhetsverdien til å være «høy» og kvantumet til å være «middels positivt», kan vi lese av matrisen at den samfunnsøkonomiske verdien på den ikke-prissatte virkningen er «stor positiv».
+
+<Table border data-color="neutral">
+  <caption>
+    Matrise for å anslå samfunnsøkonomisk verdi for ikke-prissatte virkninger
+  </caption>
+
+  <TableHead
+    style={{
+      backgroundColor: 'var(--ds-color-background-tinted)',
+    }}
+  >
+    <TableRow>
+      <TableHeaderCell scope="col" data-color="neutral" style={{ backgroundColor: 'var(--ds-color-background-default)' }}/>
+      <TableHeaderCell scope="colgroup" colSpan={3} style={{ textAlign: 'center' }}>
+        Enhetsverdi
+      </TableHeaderCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="col">Kvantum</TableHeaderCell>
+      <TableHeaderCell scope="col">Liten</TableHeaderCell>
+      <TableHeaderCell scope="col">Middels</TableHeaderCell>
+      <TableHeaderCell scope="col">Høy</TableHeaderCell>
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">Stort negativ</TableHeaderCell>
+      <TableCell data-color="warning" style={{ backgroundColor: 'var(--ds-color-surface-active)' }}>
+        Middels negativ
+      </TableCell>
+      <TableCell data-color="danger" style={{ backgroundColor: 'var(--ds-color-surface-hover)' }}>
+        Stor negativ
+      </TableCell>
+      <TableCell data-color="danger" style={{ backgroundColor: 'var(--ds-color-surface-active)' }}>
+        Meget stor negativ
+      </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">Middels negativ</TableHeaderCell>
+      <TableCell data-color="warning" style={{ backgroundColor: 'var(--ds-color-surface-hover)' }}>
+        Liten negativ
+      </TableCell>
+      <TableCell data-color="warning" style={{ backgroundColor: 'var(--ds-color-surface-active)' }}>
+        Middels negativ
+      </TableCell>
+      <TableCell data-color="danger" style={{ backgroundColor: 'var(--ds-color-surface-hover)' }}>
+        Stor negativ
+      </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">Lite negativ</TableHeaderCell>
+      <TableCell style={{ backgroundColor: 'var(--ds-color-surface-tinted)' }}>
+        Ubetydelig / ingen
+      </TableCell>
+      <TableCell data-color="warning" style={{ backgroundColor: 'var(--ds-color-surface-hover)' }}>
+        Liten negativ
+      </TableCell>
+      <TableCell data-color="warning" style={{ backgroundColor: 'var(--ds-color-surface-active)' }}>
+        Middels negativ
+      </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">
+        Verken positiv eller negativ
+      </TableHeaderCell>
+      <TableCell style={{ backgroundColor: 'var(--ds-color-surface-tinted)' }}>
+        Ubetydelig / ingen
+      </TableCell>
+      <TableCell style={{ backgroundColor: 'var(--ds-color-surface-tinted)' }}>
+        Ubetydelig / ingen
+      </TableCell>
+      <TableCell style={{ backgroundColor: 'var(--ds-color-surface-tinted)' }}>
+        Ubetydelig / ingen
+      </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">Lite positiv</TableHeaderCell>
+      <TableCell style={{ backgroundColor: 'var(--ds-color-surface-tinted)' }}>
+        Ubetydelig / ingen
+      </TableCell>
+      <TableCell data-color="success"  style={{ backgroundColor: 'var(--ds-color-surface-tinted)' }}>
+        Liten positiv
+      </TableCell>
+      <TableCell data-color="success" style={{ backgroundColor: 'var(--ds-color-surface-hover)' }}>
+        Middels positiv
+      </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">Middels positiv</TableHeaderCell>
+      <TableCell data-color="success"  style={{ backgroundColor: 'var(--ds-color-surface-tinted)' }}>
+        Liten positiv
+      </TableCell>
+      <TableCell data-color="success" style={{ backgroundColor: 'var(--ds-color-surface-hover)' }}>
+        Middels positiv
+      </TableCell>
+      <TableCell data-color="success" style={{ backgroundColor: 'var(--ds-color-surface-active)' }}>
+        Stor positiv
+      </TableCell>
+    </TableRow>
+
+    <TableRow>
+      <TableHeaderCell scope="row">Stort positiv</TableHeaderCell>
+      <TableCell data-color="success" style={{ backgroundColor: 'var(--ds-color-surface-hover)' }}>
+        Middels positiv
+      </TableCell>
+      <TableCell data-color="success" style={{ backgroundColor: 'var(--ds-color-surface-active)' }}>
+        Stor positiv
+      </TableCell>
+      <TableCell data-color="success" style={{ backgroundColor: 'var(--ds-color-border-subtle)' }}>
+        Meget stor positiv
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+
+
+
+<style>{`
+  p.ds-heading {
+    display: none;
+  }
+`}</style>

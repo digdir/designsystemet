@@ -29,7 +29,6 @@ export default {
         width: '100cqw',
       },
     },
-
     chromatic: {
       disableSnapshot: false,
       modes: {
@@ -48,12 +47,7 @@ export default {
     const button = canvas.getByRole('button');
     await userEvent.click(button);
     // Wait for dialog to fade in before running tests
-    const dialog = canvas.getByRole('dialog');
-    await new Promise<void>((resolve) => {
-      dialog.addEventListener('animationend', () => {
-        resolve();
-      });
-    });
+    const dialog = await canvas.findByRole('dialog');
 
     await expect(dialog).toBeInTheDocument();
     await expect(dialog).toHaveAttribute('open');
@@ -68,7 +62,7 @@ export const Preview: StoryFn<typeof Dialog> = (args) => (
     >
       Open Dialog
     </Dialog.Trigger>
-    <Dialog {...args}>
+    <Dialog {...args} onClose={console.log}>
       <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
         Dialog header
       </Heading>
@@ -191,7 +185,12 @@ export const DialogWithForm: StoryFn<typeof Dialog> = () => {
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog ref={dialogRef} onClose={() => setInput('')} closedby='any'>
+      <Dialog
+        ref={dialogRef}
+        onClose={() => setInput('')}
+        closedby='any'
+        id='my-dialog'
+      >
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog med skjema
         </Heading>
@@ -211,13 +210,13 @@ export const DialogWithForm: StoryFn<typeof Dialog> = () => {
         >
           <Button
             onClick={() => {
-              window.alert(`Du har sendt inn skjema med navn: ${input}`);
+              alert(`Du har sendt inn skjema med navn: ${input}`);
               dialogRef.current?.close();
             }}
           >
             Send inn skjema
           </Button>
-          <Button variant='secondary' data-command='close'>
+          <Button variant='secondary' command='close' commandfor='my-dialog'>
             Avbryt
           </Button>
         </div>
@@ -257,7 +256,7 @@ export const DialogWithSuggestion: StoryFn<typeof Dialog> = () => {
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog style={{ overflow: 'visible' }} ref={dialogRef}>
+      <Dialog style={{ overflow: 'visible' }} ref={dialogRef} id='my-dialog'>
         <Dialog.Block>
           <Heading>Dialog med suggestion</Heading>
         </Dialog.Block>
@@ -280,7 +279,7 @@ export const DialogWithSuggestion: StoryFn<typeof Dialog> = () => {
           </Field>
         </Dialog.Block>
         <Dialog.Block>
-          <Button variant='secondary' data-command='close'>
+          <Button variant='secondary' command='close' commandfor='my-dialog'>
             Avbryt
           </Button>
         </Dialog.Block>
@@ -304,6 +303,38 @@ DialogWithSuggestion.parameters = {
 };
 
 export const DialogNonModal: StoryFn<typeof Dialog> = () => {
+  return (
+    <>
+      <Button command='--show-non-modal' commandfor='my-non-modal'>
+        Open Dialog
+      </Button>
+      <Dialog id='my-non-modal'>
+        <Heading>Non-modal dialog</Heading>
+        <Paragraph>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+      </Dialog>
+    </>
+  );
+};
+export const DialogNonModalTrigger: StoryFn<typeof Dialog> = () => (
+  <Dialog.TriggerContext>
+    <Dialog.Trigger>Open non-modal dialog</Dialog.Trigger>
+    <Dialog modal={false}>
+      <Heading style={{ marginBottom: 'var(--ds-size-4)' }}>
+        Let us know
+      </Heading>
+      <Paragraph style={{ marginBottom: 'var(--ds-size-4)' }}>
+        We’d love to hear your feedback on our new design system. Please let us
+        know what you think!
+      </Paragraph>
+      <Button variant='primary'>Give feedback</Button>
+    </Dialog>
+  </Dialog.TriggerContext>
+);
+
+export const DialogNonModalRef: StoryFn<typeof Dialog> = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
@@ -322,4 +353,52 @@ export const DialogNonModal: StoryFn<typeof Dialog> = () => {
 
 DialogNonModal.parameters = {
   customStyles: { padding: 'var(--ds-size-18)' },
+};
+export const DialogPlacementTop: StoryFn<typeof Dialog> = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog placement='top'>
+        <Dialog.Block>
+          <Paragraph>This is a Dialog with placement="top"</Paragraph>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+export const DialogPlacementBottom: StoryFn<typeof Dialog> = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog placement='bottom'>
+        <Dialog.Block>
+          <Paragraph>This is a Dialog with placement="bottom"</Paragraph>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+export const DialogPlacementLeft: StoryFn<typeof Dialog> = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog placement='left'>
+        <Dialog.Block>
+          <Paragraph>This is a Dialog with placement="left"</Paragraph>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+export const DialogPlacementRight: StoryFn<typeof Dialog> = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog placement='left'>
+        <Dialog.Block>
+          <Paragraph>This is a Dialog with placement="right"</Paragraph>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
 };

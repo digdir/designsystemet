@@ -1,16 +1,47 @@
 .ds-suggestion {
   --dsc-suggestion-option-background--selected: var(--ds-color-surface-tinted);
   --dsc-suggestion-option-border-color: var(--ds-color-base-default);
+  --dsc-suggestion-option-border-radius: var(--ds-color-base-default);
+  --dsc-suggestion-option-checkmark-size: var(--ds-size-7);
+  --dsc-suggestion-option-checkmark-url: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221em%22%20height%3D%221em%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20focusable%3D%22false%22%20role%3D%22img%22%3E%3Cpath%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%20d%3D%22M18.998%206.94a.75.75%200%200%201%20.063%201.058l-8%209a.75.75%200%200%201-1.091.032l-5-5a.75.75%200%201%201%201.06-1.06l4.438%204.437%207.471-8.405A.75.75%200%200%201%2019%206.939%22%20clip-rule%3D%22evenodd%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
+  --dsc-suggestion-option-padding: var(--ds-size-2) var(--ds-size-3);
+
   --dsc-suggestion-clear-gap: var(--ds-size-2);
   --dsc-suggestion-clear-padding: var(--ds-size-1);
   --dsc-suggestion-clear-size: var(--ds-size-9);
   --dsc-suggestion-clear-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
-  --dsc-suggestion-option-checkmark-url: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221em%22%20height%3D%221em%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20focusable%3D%22false%22%20role%3D%22img%22%3E%3Cpath%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%20d%3D%22M18.998%206.94a.75.75%200%200%201%20.063%201.058l-8%209a.75.75%200%200%201-1.091.032l-5-5a.75.75%200%201%201%201.06-1.06l4.438%204.437%207.471-8.405A.75.75%200%200%201%2019%206.939%22%20clip-rule%3D%22evenodd%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
-  --dsc-suggestion-option-checkmark-size: var(--ds-size-7);
+  --dsc-suggestion-clear-border-radius: var(--ds-border-radius-md);
+  --dsc-suggestion-clear-background--hover: var(--ds-color-surface-hover);
+  --dsc-suggestion-clear-background--active: var(--ds-color-surface-active);
+
+  --dsc-suggestion-list-background: var(--ds-color-surface-default);
+  --dsc-suggestion-list-border-radius: var(--ds-border-radius-md);
+  --dsc-suggestion-list-box-shadow: var(--ds-shadow-md);
+  --dsc-suggestion-list-color: var(--ds-color-text-default);
   --dsc-suggestion-list-gap: var(--ds-size-2);
-  --dsc-suggestion-border-width: var(--ds-border-width-default);
+  --dsc-suggestion-list-placement: bottom;
+  --dsc-suggestion-border-width: var(--ds-border-width-default); /* TODO: Should have been prefixed, but kept like this for compatibility */
   --dsc-suggestion-border-style: solid;
-  --dsc-suggestion-border-color: var(--ds-color-neutral-border-default);
+  --dsc-suggestion-border-color: var(--ds-color-border-default);
+
+  --dsc-suggestion-chip-gap: var(--ds-size-1);
+  --dsc-suggestion-chip-background: var(--ds-color-base-default);
+  --dsc-suggestion-chip-background--hover: var(--ds-color-base-hover);
+  --dsc-suggestion-chip-border-width: var(--ds-border-width-default);
+  --dsc-suggestion-chip-height: var(--ds-size-8);
+  --dsc-suggestion-chip-font-size: var(--ds-body-sm-font-size);
+  --dsc-suggestion-chip-border-style: solid;
+  --dsc-suggestion-chip-border-color: transparent;
+  --dsc-suggestion-chip-border-radius: var(--ds-border-radius-full);
+  --dsc-suggestion-chip-padding: 0 var(--ds-size-3);
+  --dsc-suggestion-chip-color: var(--ds-color-base-contrast-default);
+  --dsc-suggestion-chip-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
+  --dsc-suggestion-chip-icon-size: var(--ds-size-7);
+  --dsc-suggestion-chip-input-size: var(--ds-size-5);
+  --dsc-suggestion-chip-spacing: calc(
+    (var(--dsc-suggestion-chip-height) - var(--dsc-suggestion-chip-input-size)) /
+    2
+  ); /* Distance between edge of input and chip */
 
   box-sizing: border-box;
   flex-wrap: wrap;
@@ -26,32 +57,75 @@
     display: none; /* Hide data elements when not in multiple mode */
   }
 
+  /* NOTE: This styling should be reflected in chip.css */
   & > data {
-    margin-bottom: var(--ds-size-1);
+    align-items: center;
+    background: var(--dsc-suggestion-chip-background);
+    border-color: var(--dsc-suggestion-chip-border-color);
+    border-radius: var(--dsc-suggestion-chip-border-radius);
+    border-style: var(--dsc-suggestion-chip-border-style);
+    border-width: var(--dsc-suggestion-chip-border-width);
+    box-sizing: border-box;
+    color: var(--dsc-suggestion-chip-color);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--dsc-suggestion-chip-font-size);
+    height: var(--dsc-suggestion-chip-height);
+    line-height: var(--ds-line-height-sm);
+    margin-bottom: var(--dsc-suggestion-chip-gap);
+    padding: var(--dsc-suggestion-chip-padding);
+    padding-inline-end: var(--dsc-suggestion-chip-spacing);
+    white-space: none;
 
+    &::after {
+      content: '';
+      background: currentcolor;
+      height: var(--dsc-suggestion-chip-icon-size);
+      mask: center / contain no-repeat var(--dsc-suggestion-chip-icon-url);
+      width: var(--dsc-suggestion-chip-icon-size);
+      padding-inline: 0; /*override u-combobox default*/
+      margin-left: var(--dsc-suggestion-chip-gap);
+    }
+
+    @composes ds-print-preserve from './base.css';
+    &:focus {
+      @composes ds-focus--visible from './base.css'; /* Using :focus as focus can also be set by mouse clicking on <data> */
+    }
+    &:hover {
+      background: var(--dsc-suggestion-chip-background--hover);
+    }
     &:has(+ data) {
-      margin-inline-end: var(--ds-size-1);
+      margin-inline-end: var(--dsc-suggestion-chip-gap);
     }
   }
 
-  & u-datalist {
-    background: var(--ds-color-neutral-surface-default);
-    border-radius: var(--ds-border-radius-md);
-    border-width: var(--dsc-suggestion-border-width);
-    border-style: var(--dsc-suggestion-border-style);
+  /* Hide u-datalist custom element when not initialized yet */
+  &:is(u-datalist):not(:defined) {
+    display: none;
+  }
+
+  & :is(u-datalist, datalist) {
+    @composes ds-floating from './base.css';
+    --_ds-floating: var(--dsc-suggestion-list-placement);
+    --_ds-floating-overscroll: fit;
+    --_ds-floating-arrow-visibility: hidden;
+    --_ds-floating-arrow-size: var(--ds-size-2);
+
+    background: var(--dsc-suggestion-list-background);
     border-color: var(--dsc-suggestion-border-color);
-    box-shadow: var(--ds-shadow-md);
+    border-radius: var(--dsc-suggestion-list-border-radius);
+    border-style: var(--dsc-suggestion-border-style);
+    border-width: var(--dsc-suggestion-border-width);
+    box-shadow: var(--dsc-suggestion-list-box-shadow);
     box-sizing: border-box;
-    color: var(--ds-color-neutral-text-default);
-    overflow-y: auto;
-    position: fixed;
-    max-height: 200px;
+    color: var(--dsc-suggestion-list-color);
     inset: 0 auto auto 0;
+    overflow: auto;
+    overscroll-behavior: contain;
     padding: 0;
 
     /* If not using popover for the list */
     &:not([popover]) {
-      position: absolute;
       margin-top: var(--dsc-suggestion-list-gap);
       z-index: 1600;
       inset: 100% 0 auto 0;
@@ -62,17 +136,13 @@
       display: none;
     }
 
-    & > * {
-      padding: var(--ds-size-2) var(--ds-size-3);
-      font-family: inherit;
-    }
-
-    & > :is(u-option) {
+    & > u-option {
+      padding: var(--dsc-suggestion-option-padding);
       padding-inline-start: var(--dsc-suggestion-option-checkmark-size);
       border: none;
       border-inline-start: 5px solid transparent;
       outline: none;
-      border-radius: var(--ds-border-radius-sm);
+      border-radius: var(--dsc-suggestion-option-border-radius);
       cursor: pointer;
       position: relative;
 
@@ -140,22 +210,40 @@
     padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
   }
 
+  /* Hide x native icon of input type="search" since we have a custom x-component */
+  &:has(del) input[type='search']::-webkit-search-cancel-button {
+    display: none;
+  }
+
   & del {
     --dsc-button-size: var(--dsc-suggestion-clear-size);
 
-    display: flex;
+    display: grid;
     align-self: center;
     margin-inline-start: calc((var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap)) * -1);
     order: 999; /* Place last */
+    box-sizing: border-box;
+    border-radius: var(--dsc-suggestion-clear-border-radius);
     padding: var(--dsc-suggestion-clear-padding);
+    height: var(--dsc-suggestion-clear-size);
+    width: var(--dsc-suggestion-clear-size);
+    cursor: pointer;
     position: relative;
     scale: 0.75;
     z-index: 2;
 
+    @composes ds-focus from './base.css';
+
+    &:hover {
+      background: var(--dsc-suggestion-clear-background--hover);
+    }
+
+    &:active {
+      background: var(--dsc-suggestion-clear-background--active);
+    }
+
     &::before {
       content: '';
-      height: var(--dsc-suggestion-clear-size);
-      width: var(--dsc-suggestion-clear-size);
       mask: var(--dsc-suggestion-clear-icon-url) center / contain no-repeat;
       background: currentcolor;
     }

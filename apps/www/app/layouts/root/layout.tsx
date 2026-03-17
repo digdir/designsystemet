@@ -1,18 +1,17 @@
 import { SkipLink } from '@digdir/designsystemet-react';
 import type { FooterLinkListItemProps } from '@internal/components';
-import {
-  ContentContainer,
-  Error404,
-  Footer,
-  Header,
-} from '@internal/components';
+import { Error404, Footer, Header } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
+import { ConsentBanner } from '~/_components/consent-banner/consent-banner';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
+import { SearchDialog } from '~/_components/search-dialog';
+import { useShowConsentBanner } from '~/_hooks/use-show-consent-banner';
 import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
@@ -29,7 +28,9 @@ const rightLinks: FooterLinkListItemProps[] = [
   {
     text: 'designsystem@digdir.no' as unknown as FooterLinkListItemProps['text'],
     url: 'mailto:designsystem@digdir.no',
-    prefix: <EnvelopeClosedIcon aria-hidden='true' fontSize='1.5em' />,
+    prefix: (
+      <EnvelopeClosedIcon aria-hidden='true' height='1.5em' width='1.5em' />
+    ),
   },
   {
     text: ['footer.slack'] as unknown as FooterLinkListItemProps['text'],
@@ -60,21 +61,32 @@ export default function RootLayout() {
       href: string;
     }[];
   };
+  const { showBanner } = useShowConsentBanner();
 
   useChangeLanguage(lang);
 
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const openSearch = useCallback(() => setIsSearchOpen(true), []);
+  const closeSearch = useCallback(() => setIsSearchOpen(false), []);
+
   return (
     <>
-      <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
+      <div>
+        {showBanner && <ConsentBanner lang={lang} />}
+        <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
+      </div>
       <Header
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
         themeSwitcher
+        search={{ onSearchClick: openSearch }}
       />
-      <main id='main'>
+      <SearchDialog open={isSearchOpen} onClose={closeSearch} lang={lang} />
+      <main>
         <Outlet />
       </main>
       <Footer
+        resetCookies
         centerLinks={centerLinks}
         rightLinks={rightLinks as FooterLinkListItemProps[]}
       />
@@ -118,7 +130,7 @@ const ErrorWrapperRoot = ({
         themeSwitcher
       />
       <main id='main'>
-        <ContentContainer>{children}</ContentContainer>
+        <div className='l-content-container'>{children}</div>
       </main>
       <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
     </>

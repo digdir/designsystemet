@@ -1,11 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect } from 'react';
-import '@u-elements/u-datalist';
-import {
-  autoUpdate,
-  computePosition,
-  type MiddlewareState,
-} from '@floating-ui/dom';
+import '@digdir/designsystemet-web'; // Load u-datalist polyfill
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { SuggestionContext } from './suggestion';
@@ -23,6 +18,11 @@ export type SuggestionListProps = MergeRight<
      * @default '%d forslag'
      */
     plural?: string;
+    /**
+     * Whether to enable auto placement.
+     * @default true
+     */
+    autoPlacement?: boolean;
   }
 >;
 
@@ -41,49 +41,30 @@ export const SuggestionList = forwardRef<
   HTMLDataListElement,
   SuggestionListProps
 >(function SuggestionList(
-  { singular = '%d forslag', plural = '%d forslag', className, id, ...rest },
+  {
+    singular = '%d forslag',
+    plural = '%d forslag',
+    className,
+    id,
+    autoPlacement = true,
+    ...rest
+  },
   ref,
 ) {
-  const { handleFilter, uComboboxRef } = useContext(SuggestionContext);
+  const { handleFilter } = useContext(SuggestionContext);
 
   useEffect(handleFilter); // Must run on every render
 
-  // Position with floating-ui
-  useEffect(() => {
-    const trigger = uComboboxRef?.current?.control;
-    const list = uComboboxRef?.current?.list;
-
-    if (list && trigger) {
-      return autoUpdate(trigger, list, () => {
-        computePosition(trigger, list, {
-          placement: 'bottom',
-          strategy: 'fixed',
-          middleware: [triggerWidth],
-        }).then(({ x, y }) => {
-          list.style.translate = `${x}px calc(${y}px + var(--dsc-suggestion-list-gap))`;
-        });
-      });
-    }
-  }, []);
-
   return (
     <u-datalist
-      data-nofilter
-      data-sr-singular={singular}
-      data-sr-plural={plural}
       class={className} // Using "class" since React does not translate className on custom elements
+      popover='manual' // Is also set by field.ts, but is nice to have in case focus runs before toggle event
+      data-nofilter
+      data-sr-plural={plural}
+      data-sr-singular={singular}
       ref={ref}
-      popover='manual'
+      suppressHydrationWarning // Since <u-datalist> adds attributes
       {...rest}
     />
   );
 });
-
-const triggerWidth = {
-  name: 'TriggerWidth',
-  fn(data: MiddlewareState) {
-    const { elements, rects } = data;
-    elements.floating.style.width = `${rects.reference.width}px`;
-    return data;
-  },
-};

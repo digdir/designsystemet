@@ -1,92 +1,17 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
-import { CssVariables } from '@doc-components';
-import css from '@digdir/designsystemet-css/input.css?inline';
 import * as SwitchStories from './switch.stories';
 
 <Meta of={SwitchStories} />
 
-# Switch
-
-Vi bruker `Switch` til å gi brukerne et valg mellom to alternativer. Bryteren kan enten slås av eller på og skal alltid være innstilt med et standardvalg.
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-## Bruk
-
-```tsx
-import { Switch } from '@digdir/designsystemet-react';
-
-<Switch label="Mørk modus" value="dark" />
-```
-
-## Kodeeksempler
-
-### Gruppering
-
-Bruk [Fieldset](/docs/komponenter-fieldset--docs) for å gruppere flere `Switch`-komponenter sammen. 
-
 <Canvas of={SwitchStories.Group} />
-
-### Høyrejustert
-
-Bruk `position="end"` til å plassere `Switch` på høyre side av ledeteksten hvis
-du trenger det.
 
 <Canvas of={SwitchStories.RigthAligned} />
 
-## Retningslinjer
-
-`Switch` skal være et valg mellom to alternativer. Vi bruker `Switch` til innstillinger, ikke i skjema.
-
-
-**Passer til å**
-
-- aktivere eller deaktivere funksjoner/tilstander med en gang
-- slå varsler av og på
-
-
-**Passer ikke til**
-
-- å bruke i stedet for `Checkbox` eller `Radio` i et skjema
-- situasjoner der brukerne må lagre informasjon før en endring får effekt
-- endre visning av innhold mellom to kategorier, bruk heller [`ToggleGroup`](/docs/komponenter-togglegroup--docs)
-
-
-**Bruk heller**
-
-- `Checkbox` hvis du skal tilby brukerne flere valg, der de skal velge ett eller flere alternativer
-- `Radio` hvis brukerne skal få flere valg, men bare skal velge ett
-- `Chip` til å filtrere innhold
-
-## Tekst
-
-Teksten til en `Switch` må være kort og presis, ofte betyr det bare ett eller to ord. Det skal gi mening når du sier ledeteksten høyt og legger til av/på etterpå. Unngå tekst med flere ord og mellomrom.
-
-Hvis du har flere `Switch` i en gruppe, må du passe på at du er konsekvent med hvordan du formulerer tekstene til hver av dem også, ikke formulerer dem forskjellig.
-
-Teksten skal beskrive hva funksjonen gjelder, ikke om den er på eller av. Hvis statusen skrives inn i labelen, kan det bli forvirrende og vanskelig å vite hvilken tilstand switchen faktisk er i.
-
-### Eksempel 1
-- Riktig: Varsle på epost (Av/på)
-- Feil: Skru av varsel på epost (Av/på)
-
-### Eksempel 2
-- Riktig: Flymodus (Av/på)
-- Feil: Skru på flymodus (Av/på)
-
-### Plassering av tekst
-
-Som regel er det høyre som er den beste plasseringen for tekst, unntaket er når `Switch` er fast plassert på høyre side i grensesnittet er det best at teksten er på venstre side. Slik at alle knappene blir justert etter samme vertikale linje.
-
-## Tilgjengelighet
-Vi bruker `role="switch"` for å fortelle skjermlesere at dette er en vippebryter. Dette gjør at skjermlesere kan gi brukeren informasjon om at dette er en vippebryter og at den kan skrus av og på. Det er ikke lagt på `aria-checked` siden dette er ikke nødvendig når bryteren er en input med `type="checkbox"`. <sup>1</sup>
-
-### Tastaturnavigasjon
-* <kbd>Space</kbd> slår av/på
-## CSS Variabler
-
-<CssVariables css={css} />
 
 ### Referanser
 

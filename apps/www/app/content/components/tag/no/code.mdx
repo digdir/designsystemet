@@ -1,0 +1,42 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { Tag } from '@digdir/designsystemet-react';
+
+<Tag>Beta</Tag>;
+```
+
+## Eksempel
+
+### Størrelser
+
+<Story story="Sizes" />
+
+### Ikoner
+Du må selv bestemme mellomrom mellom tekst og ikon. Vi anbefaler at `padding` på `Tag` mot ytterste kant er likt `margin` på ikonet.
+
+<Story story="Icons" />
+
+### Varianter
+Du kan sette `variant="outline"` for å gjøre taggen mer synlig på noen bakgrunnsfarger.
+
+<Story story="Variants" />
+
+## HTML
+Legg klassenavnet `ds-tag` på elementet som skal være en tag.
+
+```html
+<span class="ds-tag">Beta</span>
+
+<!-- outline -->
+<span class="ds-tag" data-variant="outline">Beta</span>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

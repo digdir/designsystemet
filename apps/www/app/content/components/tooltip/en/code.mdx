@@ -1,0 +1,49 @@
+<Story story="PreviewEn" />
+<ReactComponentDocs />
+
+## Usage
+
+```tsx
+import { Tooltip, Button } from '@digdir/designsystemet-react';
+
+<Tooltip content="Help text">
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+## Examples
+
+### With text
+
+<Story story="WithStringEn" />
+
+### Placement
+Use the `placement` prop to adjust the placement of the `Tooltip`.
+
+<Story story="PlacementEn" />
+
+## HTML
+Use the `@digdir/designsystemet-web` package to implement `Tooltip`.
+You only need to add the `data-tooltip` attribute to the element that will trigger the tooltip.
+For accessibility, the element will automatically receive either `aria-label` or `aria-description`, depending on whether it contains text content.
+
+```html
+<button data-placement="left" data-tooltip="left" class="ds-button">left</button>
+```
+
+## Custom element
+Use the `setTooltipElement` function to set a custom tooltip element.
+The element will auto automatically be added do `document.body` if it is not already in the document.
+
+```js
+import { setTooltipElement } from @digdir/designsystemet-web
+
+const myTooltip = document.createElement('div');
+myTooltip.className = 'ds-tooltip my-custom-tooltip';
+setTooltipElement(myTooltip);
+```
+
+## CSS variables and data attributes
+<CssVariables />
+
+<CssAttributes />

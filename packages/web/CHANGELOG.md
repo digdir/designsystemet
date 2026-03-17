@@ -1,0 +1,97 @@
+# @digdir/designsystemet-web
+
+## 1.13.0
+
+### Minor Changes
+
+- Add individual exports ([#4565](https://github.com/digdir/designsystemet/pull/4565))
+
+### Patch Changes
+
+- Tooltip now supports being changed programmatically ([#4562](https://github.com/digdir/designsystemet/pull/4562))
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- **toggle-group**: re-introduce support for disabled items ([#4618](https://github.com/digdir/designsystemet/pull/4618))
+
+- Update dependency rolldown to v1.0.0-rc.7 ([#4606](https://github.com/digdir/designsystemet/pull/4606))
+
+## 1.12.1
+
+### Patch Changes
+
+- **tooltip:** prevent errors when pressing esc before tooltip is mounted ([#4535](https://github.com/digdir/designsystemet/pull/4535))
+
+- **field**: update counter when `data-limit` attribute changes ([#4535](https://github.com/digdir/designsystemet/pull/4535))
+
+## 1.12.0
+
+### Minor Changes
+
+- New package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  | Custom elements    |
+  | ------------------ |
+  | `ds-breadcrumbs`   |
+  | `ds-error-summary` |
+  | `ds-field`         |
+  | `ds-pagination`    |
+  | `ds-suggestion`    |
+  | `ds-tabs`          |
+  | `ds-tablist`       |
+  | `ds-tab`           |
+  | `ds-tabpanel`      |
+
+  | Observer                |                                                                             |
+  | ----------------------- | --------------------------------------------------------------------------- |
+  | `data-clickdelegatefor` | Used for delegating click event                                             |
+  | `data-toggle-group`     | Used for adding arrow navigation plus Enter-key support                     |
+  | `data-tooltip`          | Used for adding tooltip text on element                                     |
+  | `readonly`              | Used for fixing `readonly` support on `select` and `input` elements         |
+  | `popover`               | Event listnener on `popovertarget` for placement of `ds-floating` elements. |
+
+  | Polyfill                 |                                                                                                                |
+  | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+  | `details` & `summary`    | Bugfix for Firefox.                                                                                            |
+  | `dialog`                 | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
+  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2).                               |
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+## 1.12.0
+
+### Minor Changes
+
+- New package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  | Custom elements    |
+  | ------------------ |
+  | `ds-breadcrumbs`   |
+  | `ds-error-summary` |
+  | `ds-field`         |
+  | `ds-pagination`    |
+  | `ds-suggestion`    |
+  | `ds-tabs`          |
+  | `ds-tablist`       |
+  | `ds-tab`           |
+  | `ds-tabpanel`      |
+
+  | Observer                |                                                                             |
+  | ----------------------- | --------------------------------------------------------------------------- |
+  | `data-clickdelegatefor` | Used for delegating click event                                             |
+  | `data-toggle-group`     | Used for adding arrow navigation plus Enter-key support                     |
+  | `data-tooltip`          | Used for adding tooltip text on element                                     |
+  | `readonly`              | Used for fixing `readonly` support on `select` and `input` elements         |
+  | `popover`               | Event listnener on `popovertarget` for placement of `ds-floating` elements. |
+
+  | Polyfill                 |                                                                                                                |
+  | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+  | `details` & `summary`    | Bugfix for Firefox.                                                                                            |
+  | `dialog`                 | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
+  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2).                               |
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))

@@ -1,4 +1,4 @@
-import type { SeverityColors } from '@digdir/designsystemet/types';
+import type { SeverityColors } from '@digdir/designsystemet-types';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -39,6 +39,7 @@ export const ValidationMessage = forwardRef<
       className={cl('ds-validation-message', className)}
       data-field='validation'
       ref={ref}
+      suppressHydrationWarning // Since <ds-field> adds attributes
       {...rest}
     />
   );

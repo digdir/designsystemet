@@ -1,0 +1,156 @@
+import type { SizeModes, TokenSet } from '../../../types.js';
+
+const global: TokenSet = {
+  _size: {
+    '0': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 0)',
+    },
+    '1': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 1)',
+    },
+    '2': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 2)',
+    },
+    '3': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 3)',
+    },
+    '4': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 4)',
+    },
+    '5': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 5)',
+    },
+    '6': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 6)',
+    },
+    '7': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 7)',
+    },
+    '8': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 8)',
+    },
+    '9': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 9)',
+    },
+    '10': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 10)',
+    },
+    '11': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 11)',
+    },
+    '12': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 12)',
+    },
+    '13': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 13)',
+    },
+    '14': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 14)',
+    },
+    '15': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 15)',
+    },
+    '18': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 18)',
+    },
+    '22': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 22)',
+    },
+    '26': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 26)',
+    },
+    '30': {
+      $type: 'dimension',
+      $value: 'floor({_size.unit} * 30)',
+    },
+    'mode-font-size': {
+      $type: 'number',
+      $value: '{size._mode-font-size}',
+    },
+    base: {
+      $type: 'number',
+      $value: '{size._base}',
+    },
+    step: {
+      $type: 'number',
+      $value: '{size._step}',
+    },
+    unit: {
+      $type: 'number',
+      $value: '{_size.step} / {_size.base} * {_size.mode-font-size}',
+    },
+  },
+};
+
+const sizeModes: Record<SizeModes, TokenSet> = {
+  large: {
+    size: {
+      '_mode-font-size': {
+        $type: 'dimension',
+        $value: '21',
+      },
+      _base: {
+        $type: 'dimension',
+        $value: '18',
+      },
+      _step: {
+        $type: 'dimension',
+        $value: '4',
+      },
+    },
+  },
+  medium: {
+    size: {
+      '_mode-font-size': {
+        $type: 'dimension',
+        $value: '18',
+      },
+      _base: {
+        $type: 'dimension',
+        $value: '18',
+      },
+      _step: {
+        $type: 'dimension',
+        $value: '4',
+      },
+    },
+  },
+  small: {
+    size: {
+      '_mode-font-size': {
+        $type: 'dimension',
+        $value: '16',
+      },
+      _base: {
+        $type: 'dimension',
+        $value: '18',
+      },
+      _step: {
+        $type: 'dimension',
+        $value: '4',
+      },
+    },
+  },
+};
+
+export const generateSize = (size: SizeModes): TokenSet => sizeModes[size];
+export const generateSizeGlobal = (): TokenSet => global;

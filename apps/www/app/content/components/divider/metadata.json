@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Divider",
+    "subtitle": "`Divider` brukes for å skape et visuelt skille mellom innhold. Det er en enkel horisontal linje som strekker seg over tilgjengelig bredde."
+  },
+  "en": {
+    "title": "Divider",
+    "subtitle": "`Divider` is used to create a visual separation between content. It is a simple horizontal line that spans the available width."
+  },
+  "image": "Divider.svg",
+  "cssFile": "divider.css"
+}

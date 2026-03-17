@@ -1,7 +1,13 @@
-import { forwardRef } from 'react';
-import { RovingFocusItem } from '../../utilities/roving-focus/roving-focus-item';
-import { Button, type ButtonProps } from '../button/button';
-import { useToggleGroupItem } from './use-toggle-groupitem';
+import cl from 'clsx/lite';
+import {
+  forwardRef,
+  type InputHTMLAttributes,
+  type LabelHTMLAttributes,
+  useContext,
+  useId,
+} from 'react';
+import type { DefaultProps } from '../../types';
+import { ToggleGroupContext } from './toggle-group';
 
 export type ToggleGroupItemProps = {
   /**
@@ -9,7 +15,23 @@ export type ToggleGroupItemProps = {
    * Generates a random value if not set.
    **/
   value?: string;
-} & Omit<ButtonProps, 'loading' | 'value' | 'variant'>;
+  /**
+   * @deprecated Icon prop is deprecated
+   **/
+  icon?: boolean;
+} & DefaultProps &
+  LabelHTMLAttributes<HTMLLabelElement> &
+  Pick<
+    InputHTMLAttributes<HTMLInputElement>,
+    | 'formAction'
+    | 'formEncType'
+    | 'formTarget'
+    | 'formMethod'
+    | 'required'
+    | 'formNoValidate'
+    | 'value'
+    | 'disabled'
+  >;
 
 /**
  * A single item in a ToggleGroup.
@@ -17,19 +39,62 @@ export type ToggleGroupItemProps = {
  * <ToggleGroupItem value='1'>Toggle 1</ToggleGroupItem>
  */
 export const ToggleGroupItem = forwardRef<
-  HTMLButtonElement,
+  HTMLLabelElement,
   ToggleGroupItemProps
->(function ToggleGroupItem(rest, ref) {
-  const { active, buttonProps, value, variant } = useToggleGroupItem(rest);
+>(function ToggleGroupItem(
+  { className, children, icon, value: rawValue, ...rest },
+  ref,
+) {
+  const genValue = useId();
+  const toggleGroup = useContext(ToggleGroupContext);
+  const value = rawValue ?? genValue;
+  const active = toggleGroup.value === value;
+
+  const {
+    form,
+    formAction,
+    formEncType,
+    formMethod,
+    formNoValidate,
+    formTarget,
+    required,
+    disabled,
+    'aria-disabled': ariaDisabled,
+    ...labelProps
+  } = rest;
+
+  /** Add backwards compatibility for `button` props that were previously allowed on `ToggleGroupItem` but are passeable to `input`*/
+  const inputProps: InputHTMLAttributes<HTMLInputElement> = {
+    form,
+    formAction,
+    formEncType,
+    formMethod,
+    formNoValidate,
+    formTarget,
+    required,
+    disabled,
+    'aria-disabled': ariaDisabled,
+  };
 
   return (
-    <RovingFocusItem asChild value={value}>
-      <Button
-        variant={active ? variant : 'tertiary'}
-        ref={ref}
-        {...rest}
-        {...buttonProps}
+    <label
+      ref={ref}
+      {...labelProps}
+      className={cl('ds-button', className)}
+      data-variant='tertiary'
+      aria-disabled={ariaDisabled ?? disabled}
+    >
+      <input
+        {...inputProps}
+        checked={active}
+        name={toggleGroup.name}
+        onChange={() => toggleGroup.onChange?.(value)}
+        type='radio'
+        value={value}
+        disabled={disabled}
+        aria-disabled={ariaDisabled}
       />
-    </RovingFocusItem>
+      {children}
+    </label>
   );
 });

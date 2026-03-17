@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
@@ -6,11 +7,23 @@ import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { writeTokens } from '../src/tokens/create/write.js';
+import { createTokenFiles } from '../src/tokens/create/files.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
-import type { Theme } from '../src/tokens/types.js';
-import { cleanDir } from '../src/utils.js';
-import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
+import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
+import type { OutputFile, Theme } from '../src/tokens/types.js';
+import { dsfs } from '../src/utils/filesystem.js';
+import { parseCreateConfig, readConfigFile } from './config.js';
+
+export const figletAscii = `
+ _____            _                           _                      _
+|  __ \\          (_)                         | |                    | |
+| |  | | ___  ___ _  __ _ _ __  ___ _   _ ___| |_ ___ _ __ ___   ___| |_
+| |  | |/ _ \\/ __| |/ _\` | '_ \\/ __| | | / __| __/ _ \\ '_ \` _ \\ / _ \\ __|
+| |__| |  __/\\__ \\ | (_| | | | \\__ \\ |_| \\__ \\ ||  __/ | | | | |  __/ |_
+|_____/ \\___||___/_|\\__, |_| |_|___/\\__, |___/\\__\\___|_| |_| |_|\\___|\\__|
+                     __/ |           __/ |
+                    |___/           |___/
+`;
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -18,7 +31,7 @@ const DEFAULT_TOKENS_CREATE_DIR = './design-tokens';
 const DEFAULT_TOKENS_BUILD_DIR = './design-tokens-build';
 const DEFAULT_FONT = 'Inter';
 const DEFAULT_THEME_NAME = 'theme';
-const DEFAULT_CONFIG_FILE = 'designsystemet.config.json';
+const DEFAULT_CONFIG_FILEPATH = 'designsystemet.config.json';
 
 function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
@@ -35,26 +48,33 @@ function makeTokenCommands() {
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before building tokens', parseBoolean, false)
     .option('--dry [boolean]', `Dry run for built ${pc.blue('design-tokens')}`, parseBoolean, false)
     .option('--verbose', 'Enable verbose output', false)
-    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
+    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
     .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
-
     .action(async (opts) => {
-      const { verbose, clean, dry, experimentalTailwind } = opts;
-      const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
-      const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
+      console.log(figletAscii);
+      const { verbose, clean, dry, experimentalTailwind, tokens } = opts;
 
-      const { configFile, configPath } = await getConfigFile(opts.config);
-      const config = await parseBuildConfig(configFile, { configPath });
+      // TODO - add outdir eqivalent to config option when parsing config, so that it can be set in the config file as well. buildDir?
 
-      if (dry) {
-        console.log(`Performing dry run, no files will be written`);
-      }
+      dsfs.init({ dry, outdir: opts.outDir, verbose });
+
+      const outDir = dsfs.outDir;
 
       if (clean) {
-        await cleanDir(outDir, dry);
+        await dsfs.cleanDir(outDir);
       }
 
-      await buildTokens({ tokensDir, outDir, verbose, dry, tailwind: experimentalTailwind, ...config });
+      const files = await buildTokens({
+        tokensDir: tokens,
+        verbose,
+        tailwind: experimentalTailwind,
+      });
+
+      console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
+
+      await dsfs.writeFiles(files, outDir, true);
+
+      console.log(`\n✅ Finished building tokens in ${pc.green(outDir)}`);
 
       return Promise.resolve();
     });
@@ -80,34 +100,45 @@ function makeTokenCommands() {
       4,
     )
     .option('--theme <string>', 'Theme name (ignored when using JSON config file)', DEFAULT_THEME_NAME)
-    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
+    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
     .action(async (opts, cmd) => {
+      console.log(figletAscii);
       if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
       }
+      const themeName = opts.theme;
 
-      const { configFile, configPath } = await getConfigFile(opts.config);
+      const { configFile, configFilePath } = await getConfigFile(opts.config);
       const config = await parseCreateConfig(configFile, {
-        theme: opts.theme,
+        theme: themeName,
         cmd,
-        configPath,
+        configFilePath,
       });
 
+      dsfs.init({ dry: opts.dry, outdir: config.outDir });
+
+      const outDir = dsfs.outDir;
+
       if (config.clean) {
-        await cleanDir(config.outDir, opts.dry);
+        await dsfs.cleanDir(outDir);
       }
-      /*
-       * Create and write tokens for each theme
-       */
+
+      let files: OutputFile[] = [];
       if (config.themes) {
         for (const [name, themeWithoutName] of Object.entries(config.themes)) {
           // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
           const theme = { name, ...themeWithoutName } as Theme;
 
           const { tokenSets } = await createTokens(theme);
-          await writeTokens({ outDir: config.outDir, theme, dry: opts.dry, tokenSets });
+          files = files.concat(await createTokenFiles({ outDir, theme, tokenSets }));
         }
       }
+
+      await dsfs.writeFiles(files, outDir);
+
+      console.log(`\n✅ Finished creating tokens in ${pc.green(outDir)} for theme: ${pc.blue(themeName)}`);
+
+      return Promise.resolve();
     });
 
   return tokenCmd;
@@ -116,12 +147,52 @@ function makeTokenCommands() {
 program.addCommand(makeTokenCommands());
 
 program
+  .command('generate-config-from-tokens')
+  .description('Generate a config file from existing design tokens. Will not include overrides.')
+  .option('-d, --dir <string>', 'Path to design tokens directory', DEFAULT_TOKENS_CREATE_DIR)
+  .option('-o, --out <string>', 'Output path for config file', DEFAULT_CONFIG_FILEPATH)
+  .option('--dry [boolean]', 'Dry run - show config without writing file', parseBoolean, false)
+  .action(async (opts) => {
+    console.log(figletAscii);
+    const { dry } = opts;
+    const tokensDir = path.resolve(opts.dir);
+    const configFilePath = path.resolve(opts.out);
+
+    dsfs.init({ dry, outdir: path.dirname(configFilePath) });
+
+    try {
+      const config = await generateConfigFromTokens({
+        tokensDir,
+        outFile: configFilePath,
+      });
+
+      if (dry) {
+        console.log();
+        console.log('Generated config (dry run):');
+        console.log(JSON.stringify(config, null, 2));
+      }
+
+      if (configFilePath) {
+        const configJson = JSON.stringify(config, null, 2);
+        await dsfs.writeFile(configFilePath, configJson);
+        console.log();
+        console.log(`\n✅ Config file written to ${pc.blue(configFilePath)}`);
+      }
+    } catch (error) {
+      console.error(pc.redBright('Error generating config:'));
+      console.error(error instanceof Error ? error.message : String(error));
+      process.exit(1);
+    }
+  });
+
+program
   .command('migrate')
   .description('run a Designsystemet migration')
   .addArgument(new Argument('[migration]', 'Available migrations').choices(Object.keys(migrations)))
   .option('-l --list', 'List available migrations')
   .option('-g --glob <glob>', 'Glob for files upon which to apply the migration', './**/*.(tsx|css)')
   .action((migrationKey, opts) => {
+    console.log(figletAscii);
     const { glob, list } = opts;
 
     if (list) {
@@ -156,9 +227,10 @@ function parseBoolean(value: string | boolean): boolean {
   return value === 'true' || value === true;
 }
 
-async function getConfigFile(config: string | undefined) {
-  const allowFileNotFound = R.isNil(config) || config === DEFAULT_CONFIG_FILE;
-  const configPath = config ?? DEFAULT_CONFIG_FILE;
-  const configFile = await readConfigFile(configPath, allowFileNotFound);
-  return { configFile, configPath };
+async function getConfigFile(userConfigFilePath: string | undefined) {
+  const allowFileNotFound = R.isNil(userConfigFilePath) || userConfigFilePath === DEFAULT_CONFIG_FILEPATH;
+  const configFilePath = userConfigFilePath ?? DEFAULT_CONFIG_FILEPATH;
+  const configFile = await readConfigFile(configFilePath, allowFileNotFound);
+
+  return { configFile, configFilePath };
 }

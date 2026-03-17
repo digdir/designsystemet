@@ -1,12 +1,20 @@
 import {
+  Alert,
+  Badge,
   Card,
+  CardBlock,
   Details,
   DetailsContent,
   DetailsSummary,
+  Divider,
   Heading,
+  type HeadingProps,
   Link,
+  type LinkProps,
   ListOrdered,
+  type ListOrderedProps,
   ListUnordered,
+  type ListUnorderedProps,
   Paragraph,
   type ParagraphProps,
   Table,
@@ -18,25 +26,42 @@ import {
   type TableProps,
   TableRow,
 } from '@digdir/designsystemet-react';
-import { CodeBlock } from '@internal/components';
+import {
+  BorderRadiusVariablesTable,
+  CodeBlock,
+  ColorTokensTable,
+  OpacityVariablesTable,
+  ShadowVariablesTable,
+  SizeVariablesTable,
+  TypographyVariablesTable,
+} from '@internal/components';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
-import { type JSX, useMemo } from 'react';
+import { type ComponentType, type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link as RRLink } from 'react-router';
+import { Link as RRLink, useLoaderData } from 'react-router';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
-import { TokenList } from '~/_components/tokens/token-list/token-list';
+import { CssVariables } from '../css-variables/css-variables';
+import {
+  LiveComponent,
+  type LiveComponentProps,
+} from '../live-component/live-components';
+import { RoiCalculator } from '../roi-calculator/roi-calcuator';
 import { VideoCard } from '../video-card/video-card';
 import classes from './mdx-components.module.css';
 
 const defaultComponents = {
   VideoCard,
+  Alert,
+  Badge,
   Details,
   DetailsContent,
   DetailsSummary,
   Card,
+  CardBlock,
+  Divider,
   Table: (props: TableProps) => (
     <div className={classes.tableWrapper}>
       <Table {...props} />
@@ -48,38 +73,38 @@ const defaultComponents = {
   TableBody,
   TableFoot,
   TableCell,
-  h1: (props: JSX.IntrinsicElements['h1']) => (
+  h1: (props: HeadingProps) => (
     <Heading className={classes.heading} level={1} data-size='xl' {...props} />
   ),
-  h2: (props: JSX.IntrinsicElements['h2']) => (
+  h2: (props: HeadingProps) => (
     <Heading className={classes.heading} level={2} data-size='md' {...props} />
   ),
-  h3: (props: JSX.IntrinsicElements['h3']) => (
+  h3: (props: HeadingProps) => (
     <Heading className={classes.heading} level={3} data-size='sm' {...props} />
   ),
-  h4: (props: JSX.IntrinsicElements['h4']) => (
+  h4: (props: HeadingProps) => (
     <Heading className={classes.heading} level={4} data-size='xs' {...props} />
   ),
-  h5: (props: JSX.IntrinsicElements['h5']) => (
+  h5: (props: HeadingProps) => (
     <Heading className={classes.heading} level={5} data-size='xs' {...props} />
   ),
-  h6: (props: JSX.IntrinsicElements['h6']) => (
+  h6: (props: HeadingProps) => (
     <Heading className={classes.heading} level={6} data-size='xs' {...props} />
   ),
-  ol: (props: JSX.IntrinsicElements['ol']) => <ListOrdered {...props} />,
-  ul: (props: JSX.IntrinsicElements['ul']) => <ListUnordered {...props} />,
+  ol: (props: ListOrderedProps) => <ListOrdered {...props} />,
+  ul: (props: ListUnorderedProps) => <ListUnordered {...props} />,
+  hr: (props: JSX.IntrinsicElements['hr']) => <Divider {...props} />,
   Image,
   ResponsiveIframe,
   Contributors,
-  TokenList,
   ColorInfoTable,
   p: (props: ParagraphProps) => <Paragraph {...props} />,
-  Link: ({ href, ...props }: JSX.IntrinsicElements['a']) => (
+  Link: ({ href, ...props }: LinkProps) => (
     <Link {...props} asChild>
       <RRLink to={href || ''}>{props.children}</RRLink>
     </Link>
   ),
-  a: ({ href, ...props }: JSX.IntrinsicElements['a']) => (
+  a: ({ href, ...props }: LinkProps) => (
     <Link {...props} asChild>
       <RRLink to={href || ''}>{props.children}</RRLink>
     </Link>
@@ -100,18 +125,25 @@ const defaultComponents = {
       <Table data-color='neutral' border zebra {...props} />
     </div>
   ),
+  CssVariables,
+  RoiCalculator,
+  BorderRadiusVariablesTable,
+  ColorTokensTable,
+  OpacityVariablesTable,
+  ShadowVariablesTable,
+  SizeVariablesTable,
+  TypographyVariablesTable,
 };
 
 export const MDXComponents = ({
   components,
   code,
 }: {
-  components?: {
-    [key: string]: JSX.Element;
-  };
+  components?: Record<string, ComponentType<unknown>>;
   code?: string;
 }) => {
   const { t } = useTranslation();
+
   const Component = useMemo(() => {
     if (!code) return null;
     return getMDXComponent(code);
@@ -123,6 +155,7 @@ export const MDXComponents = ({
         <Component
           components={{
             ...defaultComponents,
+            Story: Story,
             ...components,
           }}
         />
@@ -130,5 +163,22 @@ export const MDXComponents = ({
         t('mdx.error.loading')
       )}
     </>
+  );
+};
+
+const Story = ({ story, layout, language }: LiveComponentProps) => {
+  const { stories } = useLoaderData();
+  if (!stories) return null;
+
+  const foundStory = stories.find(
+    (s: { name: string; code: string }) => s.name === story,
+  );
+  if (!foundStory) return <Alert lang='en'>Story not found: {story}</Alert>;
+  return (
+    <LiveComponent
+      story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+      layout={layout}
+      language={language}
+    />
   );
 };

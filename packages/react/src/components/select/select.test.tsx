@@ -91,6 +91,24 @@ describe('Select', () => {
     expect(screen.getByRole('combobox')).toBeDisabled();
   });
 
+  it('Is read-only when "aria-readonly" is true', async () => {
+    const onChange = vi.fn();
+    render({ onChange, 'aria-readonly': true });
+
+    const select = screen.getByRole('combobox');
+
+    await user.click(select);
+    expect(select).toHaveFocus();
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{Enter}');
+
+    expect(onChange).not.toHaveBeenCalled();
+    expect(screen.getByRole('combobox')).toHaveAttribute(
+      'aria-readonly',
+      'true',
+    );
+  });
+
   it('Sets the ref on the select element if given', () => {
     const ref = createRef<HTMLSelectElement>();
     render({}, ref);

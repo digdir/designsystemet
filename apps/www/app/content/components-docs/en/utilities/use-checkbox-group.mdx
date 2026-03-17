@@ -1,0 +1,47 @@
+---
+title: useCheckboxGroup
+sidebar_title: useCheckboxGroup
+order: 20
+---
+
+A React hook to more easily handle a group of `Checkbox` components.
+
+## Usage
+
+Below is a simple example of how to use the `useCheckboxGroup` hook to handle a group of `Checkbox` components.
+
+In the `getCheckboxProps` function, the first parameter is `value`, which is a unique identifier for the option, or an object with props to be added to the `Checkbox` component.
+
+If you pass an object, make sure it contains `value`.
+
+**Important:** If you are going to pass props to a `Checkbox`, it is important that you pass them as objects to `getCheckboxProps` and **not** directly to the `Checkbox`. Otherwise, you risk overriding the functionality of `useCheckboxGroup`.
+
+```tsx
+const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
+value: ['epost'],
+...args,
+});
+
+return ( 
+  <Fieldset> 
+    <Checkbox label='Email' {...getCheckboxProps('email')} /> 
+    <Checkbox label='Phone' {...getCheckboxProps('phone')} /> 
+    <Checkbox label='SMS' {...getCheckboxProps('sms')} /> 
+    <ValidationMessage {...validationMessageProps} /> 
+  </Fieldset>
+);
+```
+<br />
+In response you get the object:
+```ts
+{
+  getCheckboxProps: (value: string | CheckboxProps) => CheckboxProps, // Returns props you can spread on <Checkbox /> or <input type="checkbox" />
+  validationMessageProps: ValidationMessageProps, // Props you optionally spread on ValidationMessage to link error message to checkbox group
+  setValue: string, // Function to set checkbox group value
+  value: string, // Current value of checkbox group
+}
+```
+
+## Allow indeterminate
+
+When spreading `getCheckboxProps` on your Checkbox, you can pass `allowIndeterminate: true` to allow the checkbox to be in an indeterminate state.

@@ -7,12 +7,12 @@ describe('Search', () => {
     renderRtl(
       <Search>
         <Search.Input aria-label='Søk' />
-        <Search.Clear />
+        <Search.Clear data-testid='button' />
       </Search>,
     );
 
     const input = screen.getByRole('searchbox');
-    const clearButton = screen.getByRole('button');
+    const clearButton = screen.getByTestId('button');
 
     expect(input).toHaveValue('');
     expect(clearButton).toBeInTheDocument();

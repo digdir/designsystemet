@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Select",
+    "subtitle": "`Select` lar brukeren velge ett alternativ fra en liste."
+  },
+  "en": {
+    "title": "Select",
+    "subtitle": "`Select` allows users to choose an option from a list."
+  },
+  "image": "Select.svg",
+  "cssFile": "input.css"
+}

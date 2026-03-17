@@ -1,27 +1,14 @@
-import path from 'node:path';
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
-import config from './../../configs/digdir.config.json' with { type: 'json' };
+import config from './../../../../designsystemet.config.json' with { type: 'json' };
 import { generate$Themes } from '../tokens/create/generators/$themes.js';
 import { createTokens } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
-import type { OutputFile, Theme } from '../tokens/types.js';
-import { cleanDir, mkdir, writeFile } from '../utils.js';
+import type { SizeModes, Theme } from '../tokens/types.js';
+import { dsfs } from '../utils/filesystem.js';
 
-async function write(files: OutputFile[], outDir: string, dry?: boolean) {
-  for (const { destination, output } of files) {
-    if (destination) {
-      const filePath = path.join(outDir, destination);
-      const fileDir = path.dirname(filePath);
-
-      console.log(`Writing file: ${pc.green(filePath)}`);
-
-      await mkdir(fileDir, dry);
-      await writeFile(filePath, output, dry);
-    }
-  }
-}
+const OUTDIR = '../../internal/components/src/tokens/design-tokens';
 
 const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]): PreviewToken[] =>
   tokens.map(({ token, formatted }) => {
@@ -38,9 +25,10 @@ type PreviewToken = { variable: string; value: string };
 
 export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets } = await createTokens(themeConfig);
-  const outDir = '../../apps/www/app/_components/tokens/design-tokens';
 
-  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
+  const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
+
+  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors, sizeModes);
   const processed$themes = $themes.map(processThemeObject);
 
   // We run this to populate the `buildOptions.buildTokenFormats` with transformed tokens
@@ -52,7 +40,7 @@ export const formatTheme = async (themeConfig: Theme) => {
     buildTokenFormats: {},
   });
 
-  await cleanDir(outDir, false);
+  await dsfs.cleanDir(OUTDIR);
 
   console.log(
     buildOptions?.buildTokenFormats
@@ -92,15 +80,14 @@ export const formatTheme = async (themeConfig: Theme) => {
     console.log(`\n💾 Writing preview tokens`);
 
     for (const [type, tokens] of Object.entries(tokensGroupedByType)) {
-      write(
+      dsfs.writeFiles(
         [
           {
             destination: `${type}.json`,
             output: JSON.stringify(tokens, null, 2),
           },
         ],
-        outDir,
-        false,
+        OUTDIR,
       );
     }
     console.log(`\n✅ Finished building preview tokens for ${pc.blue('Designsystemet')}`);
@@ -109,11 +96,13 @@ export const formatTheme = async (themeConfig: Theme) => {
 
 formatTheme({
   name: 'test',
-  borderRadius: config.themes.digdir.borderRadius,
+  borderRadius: config.themes.designsystemet.borderRadius,
   colors: {
-    main: config.themes.digdir.colors.main as Record<string, `#${string}`>,
-    support: config.themes.digdir.colors.support as Record<string, `#$string`>,
-    neutral: config.themes.digdir.colors.neutral as `#$string`,
+    main: {
+      primary: config.themes.designsystemet.colors.main.accent as `#${string}`,
+    },
+    support: {},
+    neutral: config.themes.designsystemet.colors.neutral as `#${string}`,
   },
-  typography: config.themes.digdir.typography,
+  typography: config.themes.designsystemet.typography,
 });

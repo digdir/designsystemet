@@ -1,0 +1,23 @@
+---
+title: useSynchronizedAnimation
+sidebar_title: useSynchronizedAnimation
+order: 50
+---
+
+A react hook to synchronize CSS animations across multiple elements.
+
+<Story story="Preview" />
+
+You pass in the name of the animation you want to synchronize.
+The hook returns a `ref`, which you pass to your element.
+The animation on your element will be synchronized to the first animation with the same name on the page.
+
+## Bruk
+
+```tsx
+const SyncedBox = () => {
+  const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
+
+  return <div ref={ref} />;
+};
+```

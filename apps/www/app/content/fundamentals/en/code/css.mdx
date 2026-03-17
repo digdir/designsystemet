@@ -1,0 +1,77 @@
+---
+title: CSS
+description: Get started with CSS including layers, data attributes and helpers.
+date: 2026-01-08
+category: Code
+color: blue
+icon: CodeIcon
+published: true
+order: 10
+---
+
+## Layers
+
+We use [css layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) to get the lowest possible specificity in our css.
+This means that you can easily override it with your own styling.
+
+All our layers are under the layer group `ds`.
+
+For example, if you have a css reset, this will override parts of what we have done. We recommend putting this in a layer and sorting this first.
+You do this by first putting your reset in a layer, and then sorting this layer first:
+
+```css
+@layer my-reset, ds;
+```
+
+## Data attributes
+
+We offer several data attributes that can be used to change the theme of the components.
+
+### `data-color-scheme`
+
+Used to change the color mode of the components. Possible values are `light`, `dark` and `auto`.
+
+If `auto` is selected, the color mode will change based on the user's preferences using
+[prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
+
+You can read more about this at "[Colors in code](/en/fundamentals/code/colors)".
+
+### `data-typography`
+
+Used to change the typography of the components. Possible values ​​are `primary` and `secondary`.
+
+A common use for this attribute is when you want a monospace font on tables.
+
+Which typography is associated with `primary` or `secondary` must be defined in the team, using [Tokens Studio](https://tokens.studio/)
+(with the Designsystemet design-tokens) or [Theme Builder](https://theme.designsystemet.no/en).
+
+If you are going to use this attribute, you must remember to define `font-family` to use the `--ds-font-family` CSS variable.
+
+This can be solved by, for example, using [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) in CSS.
+
+```html
+<style>
+[data-typography='secondary'] {
+  font-family: var(--ds-font-family), monospace;
+}
+</style>
+<table data-typography='secondary'>
+…
+</table>
+```
+
+## Helper classes
+
+We use some helper classes that can be used more generally across components.
+
+### `ds-sr-only`
+Visually hides an element while still being accessible to screen readers.
+
+### `ds-print-preserve`
+Preserves appearance, including background color, in print.
+
+### `ds-focus` / `ds-focus--inset`
+Adds the design system focus ring around the element _when it gains focus with keyboard navigation_ (`:focus-visible`).
+
+### `ds-focus--visible` / `ds-focus--visible--inset`
+Static "always-on" classes that add the design system focus ring around the element. <span className='ds-focus--visible'>Example.</span>

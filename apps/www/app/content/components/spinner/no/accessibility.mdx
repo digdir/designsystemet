@@ -1,0 +1,8 @@
+<Alert data-color="info">
+Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
+</Alert>
+
+Når brukeren har `prefers-reduced-motion` satt til `reduce` vil spinneren ha en animasjon på 6 sekunder.
+Animasjonen er ikke dekorativ, og vi skrur den derfor ikke av.
+
+For å sikre en god brukeropplevelse bør `Spinner` kombineres med tekst eller ha en `aria-label`, slik at også brukere med hjelpemidler får informasjon om at lasting pågår. Når du har tekst som indikerer lasting sammen med `Spinner`, må du skjule `Spinner` med `aria-hidden="true"` for å unngå at "lasting" leses opp flere ganger. Hvis du ikke har tekst skal `Spinner` i stedet ha en `aria-label`.

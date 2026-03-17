@@ -1,0 +1,65 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { Search } from '@digdir/designsystemet-react';
+
+<Search>
+  <Search.Input aria-label="Søk" />
+  <Search.Clear />
+  <Search.Button />
+</Search>
+```
+
+## Eksempel
+
+### Varianter
+
+Basert på korleis del-komponentar, og strukturen i HTML, kan du sendre på korleis `Search` vert vist.
+
+<Story story="Variants" />
+
+### Med Label
+
+Dersom du vil ha label på søkefeltet, må du legge til en `Label` komponent som du kobler sammen med `Search.Input`. I eksempelet har vi brukt `Field` for å få oppkobling mellom `Label` og `Search.Input`.
+
+<Story story="WithLabel" />
+
+
+### `<form>`
+
+<Story story="Form" layout="column" />
+
+
+## HTML
+
+Du brukar klassenavnet `ds-search` på eit wrapper element rundt `<input>`.
+Vil du ha ein "tøm"-knapp, legg du ved ein `<button>` med `type="reset"`
+
+**Det er viktig at du legger til ein tom `placeholder` på `<input>` dersom du har "tøm"-knapp**
+
+```html
+<div class="ds-search">
+  <input
+    class="ds-input"
+    placeholder=""
+    aria-label="Søk"
+    type="search"
+  >
+  <button
+    class="ds-button"
+    data-icon="true"
+    data-variant="tertiary"
+    type="reset"
+    aria-label="Tøm"
+  ></button>
+</div>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

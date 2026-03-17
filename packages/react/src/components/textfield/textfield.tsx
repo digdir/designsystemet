@@ -1,5 +1,4 @@
 import { type ForwardedRef, forwardRef, type ReactNode } from 'react';
-
 import type { DefaultProps, LabelRequired } from '../../types';
 import {
   Field,
@@ -130,12 +129,12 @@ export const Textfield = forwardRef<
         )}
         {suffix === undefined || <FieldAffix>{suffix}</FieldAffix>}
       </FieldAffixes>
-      {!!error && <ValidationMessage>{error}</ValidationMessage>}
       {!!counter && (
         <Field.Counter
           {...(typeof counter === 'number' ? { limit: counter } : counter)}
         />
       )}
+      {!!error && <ValidationMessage>{error}</ValidationMessage>}
     </Field>
   );
 });

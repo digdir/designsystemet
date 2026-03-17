@@ -34,6 +34,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
     <Component
       ref={ref}
       className={cl('ds-label', className)}
+      suppressHydrationWarning // Since <ds-field> will add for attribute dynamically
       data-weight={weight}
       {...rest}
     />
