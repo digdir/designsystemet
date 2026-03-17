@@ -2,6 +2,8 @@
 .ds-selection-tile {
   --dsc-tile-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-tile-color--readonly: var(--ds-color-neutral-text-default);
+  --dsc-tile-background--hover: transparent;
+  --dsc-tile-background--checked: transparent;
   --dsc-tile-background--readonly: var(--ds-color-neutral-surface-tinted);
   --dsc-tile-accent-color--invalid: var(--ds-color-danger-text-subtle);
 
@@ -29,6 +31,7 @@
       &:has(:where(input:checked)) {
         --_border-color: var(--ds-color-border-default);
         box-shadow: inset 0 0 0 1px var(--_border-color);
+        background-color: var(--dsc-tile-background--checked);
       }
       &:has(:focus-visible) {
         @composes ds-focus--visible from './base.css';
@@ -37,6 +40,7 @@
       /*hover styles*/
       &:not(:has(:disabled, [readonly], [aria-readonly='true'], [aria-disabled='true'])):hover {
         box-shadow: inset 0 0 0 1px var(--_border-color);
+        background-color: var(--dsc-tile-background--hover);
       }
 
       /*readonly styles*/
