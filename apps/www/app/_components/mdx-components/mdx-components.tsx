@@ -25,7 +25,6 @@ import {
   TableHeaderCell,
   type TableProps,
   TableRow,
-  ToggleGroup,
 } from '@digdir/designsystemet-react';
 import {
   BorderRadiusVariablesTable,
@@ -134,9 +133,7 @@ const defaultComponents = {
   ShadowVariablesTable,
   SizeVariablesTable,
   TypographyVariablesTable,
-  ToggleGroup,
 };
-
 export const MDXComponents = ({
   components,
   code,
