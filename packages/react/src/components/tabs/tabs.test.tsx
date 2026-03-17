@@ -196,4 +196,39 @@ describe('Tabs', () => {
       expect(tabOne).toHaveAttribute('aria-selected', 'false');
     });
   });
+
+  it('does not switch tabs in controlled mode until value prop changes', async () => {
+    const onChange = vi.fn();
+
+    const { rerender } = render(
+      <Tabs value='value1' onChange={onChange}>
+        <Tabs.List>
+          <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
+          <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+        <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+      </Tabs>,
+    );
+
+    await user.click(screen.getByRole('tab', { name: 'Tab 2' }));
+
+    expect(onChange).toHaveBeenCalledWith('value2');
+    expect(screen.queryByText('content 1')).toBeVisible();
+    expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
+
+    rerender(
+      <Tabs value='value2' onChange={onChange}>
+        <Tabs.List>
+          <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
+          <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+        <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+      </Tabs>,
+    );
+
+    expect(screen.queryByText('content 2')).toBeVisible();
+    expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
+  });
 });

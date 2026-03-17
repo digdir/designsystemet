@@ -18,10 +18,11 @@ export type TabsTabProps = {
  * <TabsTab value='1'>Tab 1</TabsTab>
  */
 export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
-  { value, className, onClick, ...rest },
+  { value, className, onClick, onClickCapture, ...rest },
   ref,
 ) {
-  const { onChange, getPrefixedValue } = useContext(Context);
+  const { onChange, getPrefixedValue, isControlled, currentValue } =
+    useContext(Context);
 
   return (
     // biome-ignore lint/a11y/noStaticElementInteractions: ds-tabs IS interactive
@@ -30,6 +31,12 @@ export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
       data-value={value}
       ref={ref}
       suppressHydrationWarning // Since <ds-tablist> adds attributes
+      onClickCapture={(e: MouseEvent<DSTabElement>) => {
+        onClickCapture?.(e);
+        if (isControlled && currentValue !== value) {
+          e.preventDefault();
+        }
+      }}
       onClick={(e: MouseEvent<DSTabElement>) => {
         onChange?.(value);
         onClick?.(e);
