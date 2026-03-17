@@ -42,6 +42,7 @@
       &:has([aria-readonly='true'], [readonly]) {
         background-color: var(--dsc-tile-background--readonly);
         border-color: var(--dsc-tile-border-color--readonly);
+        cursor: default;
         --_border-color: var(--dsc-tile-color--readonly);
 
         @media (forced-colors: active) {
