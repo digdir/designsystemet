@@ -1,6 +1,6 @@
 import { FloppydiskIcon, PencilIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { useEffect, useMemo, useState } from 'react';
+import { type CSSProperties, useEffect, useMemo, useState } from 'react';
 import {
   Button,
   Card,
@@ -452,18 +452,18 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
           The checkboxes get tile styling
         </Fieldset.Description>
         <Checkbox
-          label='Selvstendige oppgaver'
+          label='with description'
           description='description text'
-          value='selvstendige'
+          value='description'
         />
-        <Checkbox label='Møter' value='moter' checked />
+        <Checkbox label='Checked' value='checked' checked />
         <Checkbox
-          label='Lunsj'
-          value='lunsj'
-          error='du må velge et alternativ'
+          label='with error state'
+          value='error'
+          error='the error message'
         />
-        <Checkbox disabled checked label='Kolleger' value='kolleger' />
-        <Checkbox readOnly label='Helg' value='helg' checked />
+        <Checkbox disabled label='disabled' value='disabled' />
+        <Checkbox readOnly label='readonly checked' value='readonly' checked />
       </Fieldset>
       <Heading style={{ marginTop: 'var(--ds-size-8)' }} level={2}>
         Card examples
@@ -476,19 +476,30 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
         <Checkbox id='card-test' label='Lunsj' value='lunsj' />
         <Paragraph>
           This is a card with data-selection-tile and the checkbox as the click
-          delegate
+          delegate.
         </Paragraph>
       </Card>
       <Card
-        style={{ marginTop: 'var(--ds-size-8)' }}
+        style={
+          {
+            marginTop: 'var(--ds-size-8)',
+            '--dsc-tile-background--checked':
+              'var(--ds-color-background-tinted)',
+          } as CSSProperties
+        }
         data-selection-tile
         data-clickdelegatefor='card-test2'
       >
         <Heading level={3}>Hello</Heading>
         <Paragraph>
           This is a card with data-selection-tile and a hidden checkbox as the
-          click delegate
+          click delegate. The background-color when checked was overidden.
         </Paragraph>
+        <Paragraph>
+          Notice that the heading gets underline due to selector in input.
+          Should this be changed to only count for links?
+        </Paragraph>
+
         <Checkbox
           id='card-test2'
           label='hidden'
@@ -499,7 +510,7 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
 
       <Card
         style={{ marginTop: 'var(--ds-size-8)' }}
-        data-selection-tile
+        data-selection-tile /* test that tile does nothing when there are no selection controls */
         data-clickdelegatefor='button-test'
       >
         <Heading level={3}>Hello</Heading>
