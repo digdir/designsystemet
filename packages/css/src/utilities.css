@@ -20,7 +20,8 @@
       border: var(--dsc-tile-border-width) solid var(--_border-color);
 
       /*overrides for simple variant (not in card)*/
-      &ds-field {
+      &ds-field,
+      &.ds-field {
         padding: var(--ds-size-4);
         border-radius: var(--ds-border-radius-lg);
         width: auto;
