@@ -38,7 +38,6 @@ export type TabsProps = MergeRight<
 export type ContextProps = {
   isControlled?: boolean;
   currentValue?: string;
-  value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
   getPrefixedValue?: (value?: string) => string | undefined;
@@ -94,7 +93,6 @@ export const Tabs = forwardRef<DSTabElement, TabsProps>(function Tabs(
       value={{
         isControlled,
         currentValue: value,
-        value,
         defaultValue,
         onChange: onValueChange,
         getPrefixedValue: (value?: string) =>
