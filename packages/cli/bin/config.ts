@@ -4,7 +4,7 @@ import * as R from 'ramda';
 import {
   type BuildConfigSchema,
   type CreateConfigSchema,
-  commonConfig,
+  configFileBuildSchema,
   configFileCreateSchema,
   parseConfig,
   validateConfig,
@@ -27,6 +27,8 @@ export async function readConfigFile(configFilePath: string, allowFileNotFound =
 
   if (configFile) {
     console.log(`Found config file: ${pc.green(configFilePath)}`);
+  } else {
+    console.log(pc.yellow('No config file found, using default settings'));
   }
 
   return configFile;
@@ -79,8 +81,8 @@ export async function parseCreateConfig(
 
   const unvalidatedConfig = noUndefined({
     outDir: configParsed?.outDir ?? getCliOption(cmd, 'outDir'),
-    clean: configParsed?.clean ?? getCliOption(cmd, 'clean'),
-    themes: configParsed?.themes
+    clean: configParsed?.clean ?? (getCliOption(cmd, 'clean') as boolean),
+    themes: (configParsed?.themes
       ? R.map((jsonThemeValues) => {
           // For each theme specified in the JSON config, we resolve the option values in the following order:
           // - default value
@@ -96,8 +98,8 @@ export async function parseCreateConfig(
         // and default theme options from the CLI.
         {
           [theme]: getThemeOptions(getCliOption),
-        },
-  });
+        }) as CreateConfigSchema['themes'],
+  } satisfies CreateConfigSchema);
 
   return validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig, configFilePath);
 }
@@ -108,5 +110,5 @@ export async function parseBuildConfig(
 ): Promise<BuildConfigSchema> {
   const configParsed: BuildConfigSchema = parseConfig<BuildConfigSchema>(configFile, configFilePath);
 
-  return validateConfig<BuildConfigSchema>(commonConfig, configParsed, configFilePath);
+  return validateConfig<BuildConfigSchema>(configFileBuildSchema, configParsed, configFilePath);
 }

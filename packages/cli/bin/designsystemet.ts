@@ -5,6 +5,7 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
+import { type CreateConfigSchema, parseConfig } from '../src/config.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { createTokenFiles } from '../src/tokens/create/files.js';
@@ -12,7 +13,7 @@ import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
 import type { OutputFile, Theme } from '../src/tokens/types.js';
 import { dsfs } from '../src/utils/filesystem.js';
-import { parseCreateConfig, readConfigFile } from './config.js';
+import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
 export const figletAscii = `
  _____            _                           _                      _
@@ -54,6 +55,17 @@ function makeTokenCommands() {
       console.log(figletAscii);
       const { verbose, clean, dry, experimentalTailwind, tokens } = opts;
 
+      const { configFile, configFilePath } = await getConfigFile(opts.config);
+      const config = await parseBuildConfig(configFile, { configFilePath });
+
+      // Hacky: Find any font size overrides from the create config.
+      // This only works because these settings can't be passed as CLI options
+      const typographySizeOverrides = Object.values(parseConfig<CreateConfigSchema>(configFile, configFilePath).themes)
+        .flatMap((x) => x.typography)
+        .flatMap((x) => Object.values(x?.fonts ?? []))
+        .flatMap((x) => Object.values(x.size ?? []))
+        .flatMap((x) => Object.values(x.overrides ?? []));
+
       // TODO - add outdir eqivalent to config option when parsing config, so that it can be set in the config file as well. buildDir?
 
       dsfs.init({ dry, outdir: opts.outDir, verbose });
@@ -69,6 +81,12 @@ function makeTokenCommands() {
         verbose,
         tailwind: experimentalTailwind,
       });
+
+      if (typographySizeOverrides.length > 0) {
+        // If typography sizes have been overridden with explicit values, we can't use modular formulae
+        config.build = config.build ?? {};
+        config.build.typographySizeValues = 'static';
+      }
 
       console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
 
