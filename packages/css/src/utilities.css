@@ -1,5 +1,8 @@
 [data-selection-tile],
 .ds-selection-tile {
+  --dsc-tile-border-width: var(--ds-border-width-default);
+  --dsc-tile-border-width--checked: max(2px, 0.125rem);
+  --dsc-tile-border-width--hover: max(2px, 0.125rem);
   --dsc-tile-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-tile-color--readonly: var(--ds-color-neutral-text-default);
   --dsc-tile-background--hover: transparent;
@@ -14,7 +17,7 @@
     /*only target clickdelegatefor containing checkbox/radio*/
     &:has(:where(input[type='checkbox'], input[type='radio'])) {
       --_border-color: var(--ds-color-neutral-border-default);
-      border: 1px solid var(--_border-color);
+      border: var(--dsc-tile-border-width) solid var(--_border-color);
 
       /*overrides for simple variant (not in card)*/
       &ds-field {
@@ -30,7 +33,7 @@
       /*checked styles*/
       &:has(:where(input:checked)) {
         --_border-color: var(--ds-color-border-default);
-        box-shadow: inset 0 0 0 1px var(--_border-color);
+        box-shadow: inset 0 0 0 calc(var(--dsc-tile-border-width--checked) - var(--dsc-tile-border-width)) var(--_border-color);
         background-color: var(--dsc-tile-background--checked);
 
         @media (forced-colors: active) {
@@ -43,7 +46,7 @@
 
       /*hover styles*/
       &:not(:has(:disabled, [readonly], [aria-readonly='true'], [aria-disabled='true'])):hover {
-        box-shadow: inset 0 0 0 1px var(--_border-color);
+        box-shadow: inset 0 0 0 calc(var(--dsc-tile-border-width--hover) - var(--dsc-tile-border-width)) var(--_border-color);
         background-color: var(--dsc-tile-background--hover);
       }
 
