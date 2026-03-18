@@ -1,5 +1,7 @@
 [data-selection-tile],
 .ds-selection-tile {
+  --dsc-tile-padding: var(--ds-size-4);
+  --dsc-tile-border-radius: var(--ds-border-radius-lg);
   --dsc-tile-border-width: var(--ds-border-width-default);
   --dsc-tile-border-width--checked: max(2px, 0.125rem);
   --dsc-tile-border-width--hover: max(2px, 0.125rem);
@@ -22,8 +24,8 @@
       /*overrides for simple variant (not in card)*/
       &ds-field,
       &.ds-field {
-        padding: var(--ds-size-4);
-        border-radius: var(--ds-border-radius-lg);
+        padding: var(--dsc-tile-padding);
+        border-radius: var(--dsc-tile-border-radius);
         width: auto;
       }
       /*overrides for card*/
