@@ -318,6 +318,21 @@ export const DialogNonModal: StoryFn<typeof Dialog> = () => {
     </>
   );
 };
+export const DialogNonModalTrigger: StoryFn<typeof Dialog> = () => (
+  <Dialog.TriggerContext>
+    <Dialog.Trigger>Open non-modal dialog</Dialog.Trigger>
+    <Dialog modal={false}>
+      <Heading style={{ marginBottom: 'var(--ds-size-4)' }}>
+        Let us know
+      </Heading>
+      <Paragraph style={{ marginBottom: 'var(--ds-size-4)' }}>
+        We’d love to hear your feedback on our new design system. Please let us
+        know what you think!
+      </Paragraph>
+      <Button variant='primary'>Give feedback</Button>
+    </Dialog>
+  </Dialog.TriggerContext>
+);
 
 export const DialogNonModalRef: StoryFn<typeof Dialog> = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);

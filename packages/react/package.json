@@ -1,7 +1,7 @@
 {
   "name": "@digdir/designsystemet-react",
   "type": "module",
-  "version": "1.12.1",
+  "version": "1.13.0",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -42,20 +42,20 @@
   "dependencies": {
     "@digdir/designsystemet-types": "workspace:^",
     "@digdir/designsystemet-web": "workspace:^",
-    "@floating-ui/dom": "^1.7.5",
+    "@floating-ui/dom": "^1.7.6",
     "@floating-ui/react": "0.26.23",
     "@navikt/aksel-icons": "^8.6.0",
     "@radix-ui/react-slot": "^1.2.4",
-    "@tanstack/react-virtual": "^3.13.19",
+    "@tanstack/react-virtual": "^3.13.21",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
-    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-commonjs": "^29.0.2",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@storybook/addon-docs": "^10.2.13",
-    "@storybook/addon-vitest": "^10.2.13",
-    "@storybook/react-vite": "^10.2.13",
+    "@storybook/addon-docs": "^10.2.16",
+    "@storybook/addon-vitest": "^10.2.16",
+    "@storybook/react-vite": "^10.2.16",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -67,7 +67,7 @@
     "rimraf": "^6.1.3",
     "rollup": "^4.59.0",
     "rollup-plugin-copy": "^3.5.0",
-    "storybook": "^10.2.13",
+    "storybook": "^10.2.16",
     "tsx": "4.21.0",
     "typescript": "^5.9.3"
   }

@@ -1,5 +1,11 @@
 import cl from 'clsx/lite';
-import { forwardRef, type LabelHTMLAttributes, useContext, useId } from 'react';
+import {
+  forwardRef,
+  type InputHTMLAttributes,
+  type LabelHTMLAttributes,
+  useContext,
+  useId,
+} from 'react';
 import type { DefaultProps } from '../../types';
 import { ToggleGroupContext } from './toggle-group';
 
@@ -14,7 +20,18 @@ export type ToggleGroupItemProps = {
    **/
   icon?: boolean;
 } & DefaultProps &
-  LabelHTMLAttributes<HTMLLabelElement>;
+  LabelHTMLAttributes<HTMLLabelElement> &
+  Pick<
+    InputHTMLAttributes<HTMLInputElement>,
+    | 'formAction'
+    | 'formEncType'
+    | 'formTarget'
+    | 'formMethod'
+    | 'required'
+    | 'formNoValidate'
+    | 'value'
+    | 'disabled'
+  >;
 
 /**
  * A single item in a ToggleGroup.
@@ -33,19 +50,49 @@ export const ToggleGroupItem = forwardRef<
   const value = rawValue ?? genValue;
   const active = toggleGroup.value === value;
 
+  const {
+    form,
+    formAction,
+    formEncType,
+    formMethod,
+    formNoValidate,
+    formTarget,
+    required,
+    disabled,
+    'aria-disabled': ariaDisabled,
+    ...labelProps
+  } = rest;
+
+  /** Add backwards compatibility for `button` props that were previously allowed on `ToggleGroupItem` but are passeable to `input`*/
+  const inputProps: InputHTMLAttributes<HTMLInputElement> = {
+    form,
+    formAction,
+    formEncType,
+    formMethod,
+    formNoValidate,
+    formTarget,
+    required,
+    disabled,
+    'aria-disabled': ariaDisabled,
+  };
+
   return (
     <label
       ref={ref}
-      {...rest}
+      {...labelProps}
       className={cl('ds-button', className)}
       data-variant='tertiary'
+      aria-disabled={ariaDisabled ?? disabled}
     >
       <input
+        {...inputProps}
         checked={active}
         name={toggleGroup.name}
         onChange={() => toggleGroup.onChange?.(value)}
         type='radio'
         value={value}
+        disabled={disabled}
+        aria-disabled={ariaDisabled}
       />
       {children}
     </label>

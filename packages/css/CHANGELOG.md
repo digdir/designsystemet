@@ -1,5 +1,24 @@
 # Change Log
 
+## 1.13.0
+
+### Patch Changes
+
+- **Badge, Button, Spinner, Tabs, Tag**: Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- **select**: fixed missing chevron icon when `readonly` ([#4585](https://github.com/digdir/designsystemet/pull/4585))
+
+- **badge**: ensure badge is positioned above focus-ring when using `.ds-badge--position` ([#4511](https://github.com/digdir/designsystemet/pull/4511))
+
+- **card**: Fix deeply nested `.ds-details` removing padding ([#4576](https://github.com/digdir/designsystemet/pull/4576))
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.0
+
 ## 1.12.1
 
 ### Patch Changes

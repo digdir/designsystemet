@@ -75,6 +75,7 @@ export default function Intro() {
                   <FundamentalsCard
                     key={item.title}
                     title={item.title}
+                    level={2}
                     url={item.url}
                     color={item.color}
                     description={item.description}

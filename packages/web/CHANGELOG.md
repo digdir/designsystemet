@@ -1,5 +1,21 @@
 # @digdir/designsystemet-web
 
+## 1.13.0
+
+### Minor Changes
+
+- Add individual exports ([#4565](https://github.com/digdir/designsystemet/pull/4565))
+
+### Patch Changes
+
+- Tooltip now supports being changed programmatically ([#4562](https://github.com/digdir/designsystemet/pull/4562))
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- **toggle-group**: re-introduce support for disabled items ([#4618](https://github.com/digdir/designsystemet/pull/4618))
+
+- Update dependency rolldown to v1.0.0-rc.7 ([#4606](https://github.com/digdir/designsystemet/pull/4606))
+
 ## 1.12.1
 
 ### Patch Changes

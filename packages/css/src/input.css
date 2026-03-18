@@ -130,7 +130,8 @@
       height: var(--_ds-field-sizing); /* Support iOS field-sizing, but through CSS custom property for easier overwrite */
     }
   }
-  &:not([type='button'], [type='radio'], [type='checkbox'], [type='color'], [type='file'], textarea, select) {
+  /*unsetting height breaks the height of date & time inputs on ios safari, so we whitelist only text-like inputs */
+  &:where([type='text'], [type='email'], [type='tel'], [type='url'], [type='search']) {
     /* This fixes Å looking like Ă (top part of ring was cut off) in Chrome and Safari */
     height: unset;
     /* The following ensures the same height as before */
@@ -176,7 +177,7 @@
   /* Using attribute [readonly] since pseudo selector :read-only is always true for checkbox, radio and select */
   &[aria-readonly='true'],
   &[readonly] {
-    background: var(--dsc-input-background--readonly);
+    background-color: var(--dsc-input-background--readonly);
     border-color: var(--dsc-input-border-color--readonly);
     color: var(--dsc-input-color--readonly);
 

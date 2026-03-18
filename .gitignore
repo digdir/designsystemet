@@ -49,3 +49,4 @@ packages/cli/temp
 # React Router
 .react-router
 apps/www/build
+apps/storybook/debug-storybook.log

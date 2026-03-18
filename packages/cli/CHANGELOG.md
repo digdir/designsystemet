@@ -1,5 +1,18 @@
 # Change Log
 
+## 1.13.0
+
+### Patch Changes
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548))
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.0
+
 ## 1.12.1
 
 ### Patch Changes

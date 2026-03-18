@@ -6,7 +6,7 @@ on:
       snapshot:
         description: "Create snapshot release"
         type: boolean
-        default: false
+        default: true
       tag:
         description: "npm tag (for snapshot releases)"
         type: choice

@@ -171,7 +171,11 @@ export default function Components({
   loaderData: { stories, mdxCode, metadata, toc, navigation, githubLink },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
-  const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: ${metadata.title}`;
+  const feedbackUrl = new URL(
+    'https://github.com/digdir/designsystemet/issues/new',
+  );
+  feedbackUrl.searchParams.set('template', 'BLANK_ISSUE');
+  feedbackUrl.searchParams.set('title', `Feedback: ${metadata.title}`);
   return (
     <>
       <div className={classes.header}>
@@ -213,7 +217,7 @@ export default function Components({
         <div className={'toc-feedback'}>
           <Paragraph data-size='sm'>{t('toc.feedback.component')}</Paragraph>
           <Button data-size='sm' variant='secondary' asChild>
-            <a href={feedbackUrl}>
+            <a href={feedbackUrl.toString()}>
               <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
             </a>
           </Button>

@@ -69,29 +69,25 @@
   &:focus-visible {
     outline-offset: calc(-1 * var(--ds-border-width-focus));
   }
-
-  &[aria-current='page']::before {
-    content: '';
-    width: 4px;
-    background-color: var(--ds-color-neutral-border-strong);
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    border-bottom-left-radius: var(--ds-border-radius-sm);
-    border-top-left-radius: var(--ds-border-radius-sm);
+  &:hover {
+    background-color: var(--dsc-link-background--active);
   }
 
   &[aria-current='page'] {
-    border-left-color: var(--ds-color-neutral-border-strong);
     color: inherit;
     font-weight: 500;
     background-color: var(--ds-color-neutral-background-tinted);
-  }
-
-  &[aria-current='page']:hover {
-    border-left-color: var(--ds-color-accent-base-default);
+    &::before {
+      content: '';
+      width: 4px;
+      background-color: var(--ds-color-neutral-border-strong);
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      border-bottom-left-radius: var(--ds-border-radius-sm);
+      border-top-left-radius: var(--ds-border-radius-sm);
+    }
   }
 }
 
@@ -123,6 +119,7 @@
     display: none;
     padding-top: var(--ds-size-7);
     height: calc(100vh - var(--header-height));
+    /* biome-ignore lint/suspicious/noDuplicateProperties: <fallback> */
     height: calc(100dvh - var(--header-height));
     overflow-y: auto;
     position: fixed;
