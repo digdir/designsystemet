@@ -121,13 +121,15 @@ export default {
     'skip-link': 'Skip to main content',
   },
   'consent-banner': {
-    heading: 'Do you consent to data collection?',
-    all: 'Accept all',
-    'all-desc': 'We enable the analytics tool Siteimprove.',
-    required: 'Only necessary',
-    'required-desc':
-      'Ensures the website functions properly. Cannot be opted out of.',
-    declaration: 'You can change your choice at any time from the footer.',
+    heading: 'Do you agree that we collect data about how the website is used?',
+    all: 'Accept',
+    'all-desc':
+      'If you consent, we will also collect anonymous data about how the website is used. This helps us improve our services. You can change your choice at any time at the bottom of our pages.',
+    required: 'Decline',
+    'required-desc-start': 'We use some',
+    'required-desc-link': 'necessary cookies',
+    'required-desc-end':
+      'to make the website work. These cannot be opted out of.',
   },
   errors: {
     default: {
