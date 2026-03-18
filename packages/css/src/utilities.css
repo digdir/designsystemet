@@ -65,7 +65,6 @@
       /*disabled styles*/
       &:has(:disabled, [aria-disabled='true']) {
         cursor: not-allowed;
-        border-color: rgb(from var(--_border-color) r g b / var(--ds-opacity-disabled));
         opacity: var(--ds-opacity-disabled);
         /*undo default opacity for these children so we can move it out on the tile */
         :is(.ds-input, .ds-label, [data-field]) {
