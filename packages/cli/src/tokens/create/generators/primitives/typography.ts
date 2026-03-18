@@ -1,221 +1,201 @@
-import type { SizeModes, TokenSet, Typography } from '../../../types.js';
+import * as R from 'ramda';
+import type { TypographyFontSchema, TypographySizeSchema } from '../../../../config.js';
+import type { Token, TokenSet } from '../../../types.js';
 
-export const generateTypography = (themeName: string, { fontFamily }: Typography): TokenSet => ({
-  [themeName]: {
-    'font-family': {
-      $type: 'fontFamilies',
-      $value: fontFamily,
-    },
-    'font-weight': {
-      medium: {
-        $type: 'fontWeights',
-        $value: 'Medium',
-      },
-      semibold: {
-        $type: 'fontWeights',
-        $value: 'Semi bold',
-      },
-      regular: {
-        $type: 'fontWeights',
-        $value: 'Regular',
-      },
-    },
-  },
-});
-
-export const generateFontSizes = (size: SizeModes): TokenSet => fontSizes[size];
-
-const lineHeights = {
-  sm: {
-    $type: 'lineHeights',
-    $value: '130%',
-  },
-  md: {
-    $type: 'lineHeights',
-    $value: '150%',
-  },
-  lg: {
-    $type: 'lineHeights',
-    $value: '170%',
-  },
-};
-
-const letterSpacings = {
-  '1': {
-    $type: 'letterSpacing',
-    $value: '-1%',
-  },
-  '2': {
-    $type: 'letterSpacing',
-    $value: '-0.5%',
-  },
-  '3': {
-    $type: 'letterSpacing',
-    $value: '-0.25%',
-  },
-  '4': {
-    $type: 'letterSpacing',
-    $value: '-0.15%',
-  },
-  '5': {
-    $type: 'letterSpacing',
-    $value: '0%',
-  },
-  '6': {
-    $type: 'letterSpacing',
-    $value: '0.15%',
-  },
-  '7': {
-    $type: 'letterSpacing',
-    $value: '0.25%',
-  },
-  '8': {
-    $type: 'letterSpacing',
-    $value: '0.5%',
-  },
-  '9': {
-    $type: 'letterSpacing',
-    $value: '1.5%',
-  },
-};
-
-const fontSizes = {
-  large: {
-    'line-height': lineHeights,
-    'font-size': {
-      '1': {
-        $type: 'fontSizes',
-        $value: '13',
-      },
-      '2': {
-        $type: 'fontSizes',
-        $value: '16',
-      },
-      '3': {
-        $type: 'fontSizes',
-        $value: '18',
-      },
-      '4': {
-        $type: 'fontSizes',
-        $value: '21',
-      },
-      '5': {
-        $type: 'fontSizes',
-        $value: '24',
-      },
-      '6': {
-        $type: 'fontSizes',
-        $value: '30',
-      },
-      '7': {
-        $type: 'fontSizes',
-        $value: '36',
-      },
-      '8': {
-        $type: 'fontSizes',
-        $value: '48',
-      },
-      '9': {
-        $type: 'fontSizes',
-        $value: '60',
-      },
-      '10': {
-        $type: 'fontSizes',
-        $value: '72',
-      },
-    },
-    'letter-spacing': letterSpacings,
+const defaults = {
+  small: {
+    base: 16,
+    ratio: 1.14234,
   },
   medium: {
-    'line-height': lineHeights,
-    'font-size': {
-      '1': {
-        $type: 'fontSizes',
-        $value: '12',
-      },
-      '2': {
-        $type: 'fontSizes',
-        $value: '14',
-      },
-      '3': {
-        $type: 'fontSizes',
-        $value: '16',
-      },
-      '4': {
-        $type: 'fontSizes',
-        $value: '18',
-      },
-      '5': {
-        $type: 'fontSizes',
-        $value: '21',
-      },
-      '6': {
-        $type: 'fontSizes',
-        $value: '24',
-      },
-      '7': {
-        $type: 'fontSizes',
-        $value: '30',
-      },
-      '8': {
-        $type: 'fontSizes',
-        $value: '36',
-      },
-      '9': {
-        $type: 'fontSizes',
-        $value: '48',
-      },
-      '10': {
-        $type: 'fontSizes',
-        $value: '60',
+    base: 18,
+    ratio: 1.143136,
+  },
+  large: {
+    base: 21,
+    ratio: 1.143136,
+  },
+};
+
+export function generateFontSizeGlobal(themeName: string, fontName: string) {
+  return {
+    [themeName]: {
+      fonts: {
+        [fontName]: {
+          'font-size': {
+            '1': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} / pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 3), 0)`,
+            },
+            '2': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} / pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 2), 0)`,
+            },
+            '3': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} / pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 1), 0)`,
+            },
+            '4': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 0), 0)`,
+            },
+            '5': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 1), 0)`,
+            },
+            '6': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 2), 0)`,
+            },
+            '7': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 3), 0)`,
+            },
+            '8': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 4), 0)`,
+            },
+            '9': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 5), 0)`,
+            },
+            '10': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 6), 0)`,
+            },
+            '11': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 7), 0)`,
+            },
+            '12': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 8), 0)`,
+            },
+            '13': {
+              $type: 'fontSizes',
+              $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 9), 0)`,
+            },
+          },
+        },
       },
     },
-    'letter-spacing': letterSpacings,
-  },
-  small: {
-    'line-height': lineHeights,
-    'font-size': {
-      '1': {
-        $type: 'fontSizes',
-        $value: '11',
-      },
-      '2': {
-        $type: 'fontSizes',
-        $value: '13',
-      },
-      '3': {
-        $type: 'fontSizes',
-        $value: '14',
-      },
-      '4': {
-        $type: 'fontSizes',
-        $value: '16',
-      },
-      '5': {
-        $type: 'fontSizes',
-        $value: '18',
-      },
-      '6': {
-        $type: 'fontSizes',
-        $value: '21',
-      },
-      '7': {
-        $type: 'fontSizes',
-        $value: '24',
-      },
-      '8': {
-        $type: 'fontSizes',
-        $value: '30',
-      },
-      '9': {
-        $type: 'fontSizes',
-        $value: '36',
-      },
-      '10': {
-        $type: 'fontSizes',
-        $value: '48',
+  };
+}
+
+export function generateFontSizeMode(
+  size: 'small' | 'medium' | 'large',
+  themeName: string,
+  fontName: string,
+  config?: TypographySizeSchema,
+) {
+  const sizeConfig = config?.[size];
+  return {
+    [themeName]: {
+      fonts: {
+        [fontName]: {
+          'font-scale': {
+            _base: {
+              $type: 'number',
+              $value: `${sizeConfig?.base ?? defaults[size].base}`,
+            } satisfies Token,
+            _ratio: {
+              $type: 'number',
+              $value: `${sizeConfig?.ratio ?? defaults[size].ratio}`,
+            } satisfies Token,
+          },
+          ...(sizeConfig?.overrides && {
+            'font-size': R.map(
+              (fontSizeInPx) =>
+                ({
+                  $type: 'fontSizes',
+                  $value: `${fontSizeInPx}px`,
+                }) satisfies Token,
+              sizeConfig.overrides,
+            ),
+          }),
+        },
       },
     },
-    'letter-spacing': letterSpacings,
-  },
+  };
+}
+
+export const generateFont = (themeName: string, fontName: string, fontDefinition: TypographyFontSchema): TokenSet => {
+  return {
+    [themeName]: {
+      fonts: {
+        [fontName]: {
+          'font-family': {
+            $type: 'fontFamilies',
+            $value: fontDefinition.fontFamily,
+          },
+          'font-weight': {
+            medium: {
+              $type: 'fontWeights',
+              $value: fontDefinition.fontWeight.medium,
+            },
+            semibold: {
+              $type: 'fontWeights',
+              $value: fontDefinition.fontWeight.semibold,
+            },
+            regular: {
+              $type: 'fontWeights',
+              $value: fontDefinition.fontWeight.regular,
+            },
+          },
+          'line-height': {
+            sm: {
+              $type: 'lineHeights',
+              $value: '130%',
+            },
+            md: {
+              $type: 'lineHeights',
+              $value: '150%',
+            },
+            lg: {
+              $type: 'lineHeights',
+              $value: '170%',
+            },
+          },
+          'letter-spacing': {
+            '1': {
+              $type: 'letterSpacing',
+              $value: '-1%',
+            },
+            '2': {
+              $type: 'letterSpacing',
+              $value: '-0.5%',
+            },
+            '3': {
+              $type: 'letterSpacing',
+              $value: '-0.25%',
+            },
+            '4': {
+              $type: 'letterSpacing',
+              $value: '-0.15%',
+            },
+            '5': {
+              $type: 'letterSpacing',
+              $value: '0%',
+            },
+            '6': {
+              $type: 'letterSpacing',
+              $value: '0.15%',
+            },
+            '7': {
+              $type: 'letterSpacing',
+              $value: '0.25%',
+            },
+            '8': {
+              $type: 'letterSpacing',
+              $value: '0.5%',
+            },
+            '9': {
+              $type: 'letterSpacing',
+              $value: '1.5%',
+            },
+          },
+        },
+      },
+    },
+  } satisfies TokenSet;
 };

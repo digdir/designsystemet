@@ -1,7 +1,9 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import type { ColorScheme } from '../../../colors/types.js';
-import type { Colors, SizeModes } from '../../types.js';
+import type { Colors, SizeModes, TokenSetDimensionsForAllThemes } from '../../types.js';
+
+type FontsPerTheme = TokenSetDimensionsForAllThemes['fontNamesPerTheme'];
 
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
@@ -36,13 +38,13 @@ type ThemeObject_ = ThemeObject & {
 
 */
 export async function generate$Themes(
-  colorSchemes: ColorSchemes,
+  tokenSetDimensions: TokenSetDimensionsForAllThemes,
   themes: string[],
   colors: Colors,
-  sizeModes: SizeModes[],
 ): Promise<ThemeObject_[]> {
+  const { colorSchemes, fontNamesPerTheme, sizeModes } = tokenSetDimensions;
   return [
-    ...generateSizeGroup(sizeModes),
+    ...generateSizeGroup(themes, fontNamesPerTheme, sizeModes),
     ...(await generateThemesGroup(themes)),
     ...generateTypographyGroup(themes),
     ...generateColorSchemesGroup(colorSchemes, themes),
@@ -52,48 +54,47 @@ export async function generate$Themes(
   ];
 }
 
-function generateSizeGroup(_sizes: SizeModes[]): ThemeObject_[] {
-  return [
-    {
+function generateSizeGroup(themes: string[], fonts: FontsPerTheme, sizeModes: SizeModes[]): ThemeObject_[] {
+  const defaultSize = 'medium';
+  const sizesWithDefaultFirst = [
+    ...sizeModes.filter((x) => x === defaultSize),
+    ...sizeModes.filter((x) => x !== defaultSize),
+  ];
+  const existingFigmaIds = {
+    small: {
       id: '8b2c8cc86611a34b135cb22948666779361fd729',
-      name: 'medium',
-      $figmaStyleReferences: {},
-      selectedTokenSets: {
-        'primitives/modes/size/medium': TokenSetStatus.SOURCE,
-        'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/medium': TokenSetStatus.ENABLED,
-      },
-      $figmaCollectionId: 'VariableCollectionId:36248:20757',
-      $figmaModeId: '41630:1',
-      group: 'Size',
-    },
-    {
-      id: 'd49b9eebeb48a4f165a74b7261733d0a73370f0e',
-      name: 'large',
-      $figmaStyleReferences: {},
-      selectedTokenSets: {
-        'primitives/modes/size/large': TokenSetStatus.SOURCE,
-        'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/large': TokenSetStatus.ENABLED,
-      },
-      $figmaCollectionId: 'VariableCollectionId:36248:20757',
-      $figmaModeId: '41630:2',
-      group: 'Size',
-    },
-    {
-      id: 'fb11567729c298ca37c9da4e3a27716a23480824',
-      name: 'small',
-      $figmaStyleReferences: {},
-      selectedTokenSets: {
-        'primitives/modes/size/small': TokenSetStatus.SOURCE,
-        'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/small': TokenSetStatus.ENABLED,
-      },
       $figmaCollectionId: 'VariableCollectionId:36248:20757',
       $figmaModeId: '41630:3',
-      group: 'Size',
     },
-  ];
+    medium: {
+      id: 'fb11567729c298ca37c9da4e3a27716a23480824',
+      $figmaCollectionId: 'VariableCollectionId:36248:20757',
+      $figmaModeId: '41630:1',
+    },
+    large: {
+      id: 'd49b9eebeb48a4f165a74b7261733d0a73370f0e',
+      $figmaCollectionId: 'VariableCollectionId:36248:20757',
+      $figmaModeId: '41630:2',
+    },
+  };
+  return sizesWithDefaultFirst.map((size) => ({
+    name: size,
+    group: 'Size',
+    selectedTokenSets: {
+      [`primitives/modes/size/${size}`]: TokenSetStatus.SOURCE,
+      'primitives/modes/size/global': TokenSetStatus.ENABLED,
+      ...Object.fromEntries(
+        themes.flatMap((theme) =>
+          fonts[theme].flatMap((font) => [
+            [`primitives/modes/size/global/${theme}/font-${font}`, TokenSetStatus.ENABLED],
+            [`primitives/modes/size/${size}/${theme}/font-${font}`, TokenSetStatus.ENABLED],
+          ]),
+        ),
+      ),
+    },
+    ...existingFigmaIds[size],
+    $figmaStyleReferences: {},
+  }));
 }
 
 const colorSchemeDefaults: Record<ColorScheme, ThemeObject_> = {

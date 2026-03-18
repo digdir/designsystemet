@@ -2,7 +2,11 @@ import type { ColorScheme } from '../colors/types.js';
 import { generateColorScheme } from './create/generators/primitives/color-scheme.js';
 import { generateGlobals } from './create/generators/primitives/globals.js';
 import { generateSize, generateSizeGlobal } from './create/generators/primitives/size.js';
-import { generateFontSizes, generateTypography } from './create/generators/primitives/typography.js';
+import {
+  generateFont,
+  generateFontSizeGlobal,
+  generateFontSizeMode,
+} from './create/generators/primitives/typography.js';
 import { generateSemanticColors } from './create/generators/semantic/color.js';
 import { generateColorModes } from './create/generators/semantic/color-modes.js';
 import { generateSemanticStyle } from './create/generators/semantic/style.js';
@@ -31,16 +35,41 @@ export const createTokens = async (theme: Theme) => {
   const colorSchemes: ColorScheme[] = ['light', 'dark'];
   const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 
+  // TODO handle default font definition somewhere else
+  const fontDefinitions = typography.fonts ?? {
+    primary: {
+      // Use deprecated typography.fontFamily as fallback if no typography.fonts is defined
+      fontFamily: typography.fontFamily ?? 'Inter',
+      fontWeight: {
+        regular: 'Regular',
+        medium: 'Medium',
+        semibold: 'Semi bold',
+      },
+    },
+  };
+
+  const fontNames = Object.keys(fontDefinitions);
+
   const tokenSets: TokenSets = new Map([
     ['primitives/globals', generateGlobals()],
-    ...sizeModes.map((size): [string, TokenSet] => [`primitives/modes/size/${size}`, generateSize(size)]),
     ['primitives/modes/size/global', generateSizeGlobal()],
-    ...sizeModes.map((size): [string, TokenSet] => [
-      `primitives/modes/typography/size/${size}`,
-      generateFontSizes(size),
+    ...sizeModes.map((size): [string, TokenSet] => [`primitives/modes/size/${size}`, generateSize(size)]),
+    ...fontNames.map((font): [string, TokenSet] => [
+      `primitives/modes/size/global/${name}/font-${font}`,
+      generateFontSizeGlobal(name, font),
     ]),
-    [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
-    [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
+    ...fontNames.flatMap((font): [string, TokenSet][] =>
+      sizeModes.map((size) => [
+        `primitives/modes/size/${size}/${name}/font-${font}`,
+        generateFontSizeMode(size, name, font, typography.fonts?.[font]?.size),
+      ]),
+    ),
+    ...fontNames.map((font): [string, TokenSet] => [
+      `primitives/fonts/${name}/${font}`,
+      generateFont(name, font, fontDefinitions[font]),
+    ]),
+    // [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
+    // [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),
@@ -53,5 +82,5 @@ export const createTokens = async (theme: Theme) => {
     [`semantic/style`, generateSemanticStyle()],
   ]);
 
-  return { tokenSets };
+  return { tokenSets, themeDimensions: { colorSchemes, fontNames, sizeModes } };
 };
