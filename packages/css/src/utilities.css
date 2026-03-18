@@ -37,12 +37,12 @@
       }
 
       /*hover styles*/
-      &:not(:has(:where(:disabled, [readonly], [aria-readonly='true'], [aria-disabled='true']))):hover {
+      &:not(:has(:where(:disabled, [readonly], [aria-readonly='true'], [aria-disabled='true']))):where(:hover) {
         box-shadow: inset 0 0 0 calc(var(--dsc-tile-border-width--hover) - var(--dsc-tile-border-width)) var(--_border-color);
         background-color: var(--dsc-tile-background--hover);
       }
       /*checked styles*/
-      &:has(:is(input:checked)) {
+      &:has(:where(input:checked)) {
         --_border-color: var(--ds-color-border-default);
         box-shadow: inset 0 0 0 calc(var(--dsc-tile-border-width--checked) - var(--dsc-tile-border-width)) var(--_border-color);
         background-color: var(--dsc-tile-background--checked);
