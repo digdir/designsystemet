@@ -9,7 +9,7 @@
   --dsc-tile-color--readonly: var(--ds-color-neutral-text-default);
   --dsc-tile-background--hover: transparent;
   --dsc-tile-background--checked: transparent;
-  --dsc-tile-background--readonly: var(--ds-color-neutral-surface-tinted);
+  --dsc-tile-background--readonly: transparent;
   --dsc-tile-accent-color--invalid: var(--ds-color-danger-text-subtle);
 
   /*selects only the outermost data-clickdelegatefor, for input in card*/
@@ -59,7 +59,7 @@
         background-color: var(--dsc-tile-background--readonly);
         border-color: var(--dsc-tile-border-color--readonly);
         cursor: default;
-        --_border-color: var(--dsc-tile-color--readonly);
+        --_border-color: var(--dsc-tile-border-color--readonly);
 
         @media (forced-colors: active) {
           border-color: GrayText;
