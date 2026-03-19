@@ -213,7 +213,9 @@ describe('Tabs', () => {
 
     await user.click(screen.getByRole('tab', { name: 'Tab 2' }));
 
+    expect(onChange).toHaveBeenCalledOnce();
     expect(onChange).toHaveBeenCalledWith('value2');
+
     expect(screen.queryByText('content 1')).toBeVisible();
     expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
 
