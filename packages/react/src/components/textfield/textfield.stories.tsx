@@ -68,6 +68,20 @@ export const Controlled: StoryFn<typeof Textfield> = () => {
   );
 };
 
+export const DateInputs: StoryFn<typeof Textfield> = () => {
+  return (
+    <>
+      <Textfield label='text' type='text' />
+      <Textfield label='tel' type='tel' />
+      <Textfield label='time' type='time' />
+      <Textfield label='date' type='date' />
+      <Textfield label='datetime-local' type='datetime-local' />
+      <Textfield label='month' type='month' />
+      <Textfield label='week' type='week' />
+    </>
+  );
+};
+
 export const Required: Story = {
   args: {
     label: (

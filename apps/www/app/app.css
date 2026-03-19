@@ -216,8 +216,8 @@
   }
 
   abbr[title] {
-    border-bottom: none; /* 1 */
-    text-decoration: underline dotted; /* 2 */
+    border-bottom: none;
+    text-decoration: underline dotted;
   }
 
   b,
@@ -228,8 +228,8 @@
   code,
   kbd,
   samp {
-    font-family: monospace; /* 1 */
-    font-size: 1em; /* 2 */
+    font-family: monospace;
+    font-size: 1em;
   }
 
   small {

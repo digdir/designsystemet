@@ -23,7 +23,7 @@ app.use((req, res, next) => {
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader(
     'Content-Security-Policy-Report-Only',
-    `default-src 'none';base-uri 'self';script-src 'self' 'unsafe-inline' 'unsafe-eval';style-src 'self' https://altinncdn.no https://siteimproveanalytics.com 'unsafe-inline';font-src 'self' https://altinncdn.no;img-src 'self' data:;connect-src ${connectSrc};frame-ancestors 'self';form-action 'self';manifest-src 'self';`,
+    `default-src 'none';base-uri 'self';script-src 'self' 'unsafe-inline' 'unsafe-eval';style-src 'self' https://altinncdn.no https://siteimproveanalytics.com 'unsafe-inline';font-src 'self' https://altinncdn.no;img-src 'self' data:;connect-src ${connectSrc};frame-ancestors 'self';form-action 'self';manifest-src 'self'; report-uri https://csp-report.digdir.no/api/reports`,
   );
   res.setHeader(
     'Strict-Transport-Security',
