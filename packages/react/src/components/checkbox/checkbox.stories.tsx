@@ -444,9 +444,9 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
 
   return (
     <>
-      <Fieldset data-selection-tile>
+      <Fieldset className="ds-selection-tile">
         <Fieldset.Legend>
-          This is a Fieldset with data-selection-tile
+          This is a Fieldset with className="ds-selection-tile"
         </Fieldset.Legend>
         <Fieldset.Description>
           The checkboxes get tile styling
@@ -470,12 +470,12 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
       </Heading>
       <Card
         style={{ marginTop: 'var(--ds-size-4)' }}
-        data-selection-tile
+        className="ds-selection-tile"
         data-clickdelegatefor='card-test'
       >
         <Checkbox id='card-test' label='Lunsj' value='lunsj' />
         <Paragraph>
-          This is a card with data-selection-tile and the checkbox as the click
+          This is a card with className="ds-selection-tile" and the checkbox as the click
           delegate.
         </Paragraph>
       </Card>
@@ -487,12 +487,12 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
               'var(--ds-color-background-tinted)',
           } as CSSProperties
         }
-        data-selection-tile
+        className="ds-selection-tile"
         data-clickdelegatefor='card-test2'
       >
         <Heading level={3}>Hello</Heading>
         <Paragraph>
-          This is a card with data-selection-tile and a hidden checkbox as the
+          This is a card with className="ds-selection-tile" and a hidden checkbox as the
           click delegate. The background-color when checked was overidden.
         </Paragraph>
         <Paragraph>
@@ -510,13 +510,13 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
 
       <Card
         style={{ marginTop: 'var(--ds-size-8)' }}
-        data-selection-tile /* test that tile does nothing when there are no selection controls */
+        className="ds-selection-tile" /* test that tile does nothing when there are no selection controls */
         data-clickdelegatefor='button-test'
       >
         <Heading level={3}>Hello</Heading>
         <Paragraph>
-          This is a card with data-selection-tile and a button as the click
-          delegate (so data-selection-tile should do nothing)
+          This is a card with className="ds-selection-tile" and a button as the click
+          delegate (so className="ds-selection-tile" should do nothing)
         </Paragraph>
         <Button id='button-test'>Button is left alone</Button>
       </Card>
@@ -526,7 +526,7 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
       <div style={{ width: '320px' }}>
         <Card
           style={{ marginTop: 'var(--ds-size-4)' }}
-          data-selection-tile
+          className="ds-selection-tile"
           data-clickdelegatefor='entur-case1'
         >
           <Field
@@ -551,7 +551,7 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
         </Card>
         <Card
           style={{ marginTop: 'var(--ds-size-4)' }}
-          data-selection-tile
+          className="ds-selection-tile"
           data-clickdelegatefor='entur-case2'
         >
           <Field
