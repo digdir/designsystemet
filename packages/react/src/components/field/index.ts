@@ -77,9 +77,9 @@ export type {
 export type { FieldCounterProps } from './field-counter';
 export type { FieldDescriptionProps } from './field-description';
 export {
-  FieldComponent as Field,
-  FieldDescription,
   FieldAffix,
   FieldAffixes,
+  FieldComponent as Field,
   FieldCounter,
+  FieldDescription,
 };

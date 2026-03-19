@@ -98,14 +98,6 @@ EXPERIMENTAL_Suggestion.Empty.displayName = 'EXPERIMENTAL_Suggestion.Empty';
 EXPERIMENTAL_Suggestion.Option.displayName = 'EXPERIMENTAL_Suggestion.Option';
 EXPERIMENTAL_Suggestion.Clear.displayName = 'EXPERIMENTAL_Suggestion.Clear';
 
-export {
-  EXPERIMENTAL_Suggestion,
-  SuggestionList as EXPERIMENTAL_SuggestionList,
-  SuggestionInput as EXPERIMENTAL_SuggestionInput,
-  SuggestionEmpty as EXPERIMENTAL_SuggestionEmpty,
-  SuggestionOption as EXPERIMENTAL_SuggestionOption,
-  SuggestionClear as EXPERIMENTAL_SuggestionClear,
-};
 export type {
   SuggestionItem,
   SuggestionMultipleProps,
@@ -117,3 +109,11 @@ export type { SuggestionEmptyProps } from './suggestion-empty';
 export type { SuggestionInputProps } from './suggestion-input';
 export type { SuggestionListProps } from './suggestion-list';
 export type { SuggestionOptionProps } from './suggestion-option';
+export {
+  EXPERIMENTAL_Suggestion,
+  SuggestionClear as EXPERIMENTAL_SuggestionClear,
+  SuggestionEmpty as EXPERIMENTAL_SuggestionEmpty,
+  SuggestionInput as EXPERIMENTAL_SuggestionInput,
+  SuggestionList as EXPERIMENTAL_SuggestionList,
+  SuggestionOption as EXPERIMENTAL_SuggestionOption,
+};
