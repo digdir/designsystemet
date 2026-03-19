@@ -62,4 +62,4 @@ export type { PopoverProps } from './popover';
 export type { PopoverTriggerProps } from './popover-trigger';
 export type { PopoverTriggerContextProps } from './popover-trigger-context';
 
-export { PopoverComponent as Popover, PopoverTriggerContext, PopoverTrigger };
+export { PopoverComponent as Popover, PopoverTrigger, PopoverTriggerContext };

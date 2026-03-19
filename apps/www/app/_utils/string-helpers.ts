@@ -26,8 +26,8 @@ const replaceBackSlashWithForwardSlash = (string: string) => {
 
 export {
   capitalizeString,
+  convertMenuItemToRelativePath,
   convertQueryToReadable,
   removeStringExtension,
-  convertMenuItemToRelativePath,
   replaceBackSlashWithForwardSlash,
 };
