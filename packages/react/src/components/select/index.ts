@@ -47,4 +47,4 @@ SelectComponent.Optgroup.displayName = 'Select.Optgroup';
 export type { SelectProps } from './select';
 export type { SelectOptgroupProps } from './select-optgroup';
 export type { SelectOptionProps } from './select-option';
-export { SelectComponent as Select, SelectOption, SelectOptgroup };
+export { SelectComponent as Select, SelectOptgroup, SelectOption };
