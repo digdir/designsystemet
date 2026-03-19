@@ -141,11 +141,11 @@ export type { DropdownItemProps } from './dropdown-item';
 export type { DropdownListProps } from './dropdown-list';
 export type { DropdownTriggerContextProps } from './dropdown-trigger-context';
 export {
+  DropdownButton,
   DropdownComponent as Dropdown,
-  DropdownTriggerContext,
-  DropdownList,
   DropdownHeading,
   DropdownItem,
-  DropdownButton,
+  DropdownList,
   DropdownTrigger,
+  DropdownTriggerContext,
 };

@@ -47,4 +47,4 @@ FieldsetComponent.Description.displayName = 'Fieldset.Description';
 export type { FieldsetProps } from './fieldset';
 export type { FieldsetDescriptionProps } from './fieldset-description';
 export type { FieldsetLegendProps } from './fieldset-legend';
-export { FieldsetComponent as Fieldset, FieldsetLegend, FieldsetDescription };
+export { FieldsetComponent as Fieldset, FieldsetDescription, FieldsetLegend };
