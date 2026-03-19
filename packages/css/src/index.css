@@ -40,4 +40,3 @@
 @import url('./avatar-stack.css') layer(ds.components);
 @import url('./suggestion.css') layer(ds.components);
 @import url('./combobox.css') layer(ds.components);
-@import url('./utilities.css') layer(ds.utilities);
