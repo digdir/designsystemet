@@ -58,6 +58,7 @@ export const createThemeCSSFiles = ({
   const sortOrder = [
     'size-mode/',
     'type-scale',
+    'type-scale/',
     'color-scheme/light',
     'typography/secondary',
     'size',
