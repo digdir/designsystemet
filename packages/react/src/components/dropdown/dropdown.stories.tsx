@@ -210,8 +210,10 @@ WithNestedDialog.play = async (ctx) => {
   await expect(dropdown).toBeInTheDocument();
   await waitFor(() => expect(dropdown).toBeVisible());
 
+  if (!dropdown) return;
+
   /* open dialog */
-  const dialogButton = within(dropdown!).getByRole('button', {
+  const dialogButton = within(dropdown as HTMLElement).getByRole('button', {
     name: 'Dialog',
   });
   userEvent.click(dialogButton);
