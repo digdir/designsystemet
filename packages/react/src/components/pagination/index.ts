@@ -73,8 +73,8 @@ export type { PaginationItemProps } from './pagination-item';
 export type { PaginationListProps } from './pagination-list';
 
 export {
-  PaginationComponent as Pagination,
-  PaginationList,
-  PaginationItem,
   PaginationButton,
+  PaginationComponent as Pagination,
+  PaginationItem,
+  PaginationList,
 };

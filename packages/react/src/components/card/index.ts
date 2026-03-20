@@ -34,4 +34,4 @@ CardComponent.Block.displayName = 'Card.Block';
 
 export type { CardProps } from './card';
 export type { CardBlockProps } from './card-block';
-export { CardComponent as Card, CardBlock };
+export { CardBlock, CardComponent as Card };
