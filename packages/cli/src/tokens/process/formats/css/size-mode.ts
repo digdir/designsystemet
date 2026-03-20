@@ -12,14 +12,19 @@ const formatBaseSizeToken =
     ...token,
     originalName: token.name,
     name: `${token.name}--${shortSizeName(size)}`,
-    $value: token.$value / basePxFontSize,
+    $value: token.path.includes('_ratio') ? token.$value : token.$value / basePxFontSize,
+    $description: undefined, // removes comment from output
   });
 
 export const sizeMode: Format = {
   name: 'ds/css-size-mode',
   format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, layer, size } = platform;
+    const { selector, layer, size } = platform as {
+      selector: string;
+      layer?: string;
+      size: string;
+    };
     const destination = file.destination as string;
 
     const format = createPropertyFormatter({
