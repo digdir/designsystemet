@@ -152,8 +152,12 @@ function makeTokenCommands() {
           // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
           const theme = { name, ...themeWithoutName } as Theme;
 
-          const { tokenSets } = await createTokens(theme);
-          files = files.concat(await createTokenFiles({ outDir, theme, tokenSets, themeNames }));
+          const { tokenSets, themeDimensions } = await createTokens(theme);
+          const tokenSetDimensions = {
+            ...themeDimensions,
+            fontNamesPerTheme: { [theme.name]: themeDimensions.fontNames },
+          };
+          files = files.concat(await createTokenFiles({ outDir, theme, tokenSets, tokenSetDimensions, themeNames }));
         }
       }
 
