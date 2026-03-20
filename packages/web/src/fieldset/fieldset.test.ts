@@ -1,4 +1,4 @@
-import { describe, vi, it, expect } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { page } from 'vitest/browser';
 
 // Test data:
@@ -28,7 +28,9 @@ describe('fieldset', () => {
 
   it('Applies the description to the fieldset', async () => {
     renderFieldset();
-    await expect.element(page.getByRole('group')).toHaveAccessibleDescription(description);
+    await expect
+      .element(page.getByRole('group'))
+      .toHaveAccessibleDescription(description);
   });
 });
 

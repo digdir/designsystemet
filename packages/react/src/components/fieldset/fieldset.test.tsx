@@ -1,6 +1,7 @@
-import { render, RenderResult, screen } from '@testing-library/react';
-import { Fieldset } from './';
+import type { RenderResult } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Textfield } from '../textfield/textfield';
+import { Fieldset } from './';
 
 describe('Fieldset', () => {
   beforeEach(() => {
@@ -16,7 +17,7 @@ describe('Fieldset', () => {
       <Fieldset>
         <Fieldset.Legend>test legend</Fieldset.Legend>
         <Fieldset.Description>test description</Fieldset.Description>
-        <Textfield label='Test'/>
+        <Textfield label='Test' />
       </Fieldset>,
     );
     const fieldset = screen.getByRole('group', { name: 'test legend' });
@@ -28,10 +29,12 @@ describe('Fieldset', () => {
       <Fieldset>
         <Fieldset.Legend>test legend</Fieldset.Legend>
         <Fieldset.Description>test description</Fieldset.Description>
-        <Textfield label='Test'/>
+        <Textfield label='Test' />
       </Fieldset>,
     );
-    const fieldset = screen.getByRole('group', { description: 'test description' });
+    const fieldset = screen.getByRole('group', {
+      description: 'test description',
+    });
     expect(fieldset).toBeDefined();
     expect(fieldset).toHaveAccessibleDescription('test description');
   });

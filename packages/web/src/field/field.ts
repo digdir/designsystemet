@@ -94,7 +94,9 @@ function applyLegendAndDescriptionToAllFieldsets(): void {
   Array.from(FIELDSETS).forEach(applyLegendAndDescriptionToFieldset);
 }
 
-function applyLegendAndDescriptionToFieldset(fieldset: HTMLFieldSetElement): void {
+function applyLegendAndDescriptionToFieldset(
+  fieldset: HTMLFieldSetElement,
+): void {
   applyLegendToFieldset(fieldset);
   applyDescriptionToFieldset(fieldset);
 }
@@ -113,8 +115,12 @@ function applyDescriptionToFieldset(fieldset: HTMLFieldSetElement): void {
   attr(fieldset, 'aria-describedby', describedby.trim() || null);
 }
 
-function getDescriptionOrFirstParagraph(fieldset: HTMLFieldSetElement): HTMLElement | null {
-  return fieldset.querySelector(':scope > :is([data-field="description"],legend + p)');
+function getDescriptionOrFirstParagraph(
+  fieldset: HTMLFieldSetElement,
+): HTMLElement | null {
+  return fieldset.querySelector(
+    ':scope > :is([data-field="description"],legend + p)',
+  );
 }
 
 const updateField = (e: Event | Element) => {
