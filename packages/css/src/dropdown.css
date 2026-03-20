@@ -45,7 +45,7 @@
     list-style: none;
   }
 
-  & :is(a, button, [role='button']) {
+  & :is(a, button, [role='button']):not(dialog a, dialog button, dialog [role='button']) {
     justify-content: start;
     padding: var(--dsc-dropdown-item-padding);
     min-height: var(--dsc-dropdown-item-size);
