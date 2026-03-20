@@ -3,7 +3,7 @@ import type { ThemeObject } from '@tokens-studio/types';
 import pc from 'picocolors';
 import * as R from 'ramda';
 import { dsfs } from '../../utils/filesystem.js';
-import type { OutputFile, SizeModes, Theme, TokenSets } from '../types.js';
+import type { OutputFile, SizeModes, Theme, TokenSetDimensionsForAllThemes, TokenSets } from '../types.js';
 import { generate$Designsystemet } from './generators/$designsystemet.js';
 import { generate$Metadata } from './generators/$metadata.js';
 import { generate$Themes } from './generators/$themes.js';
@@ -14,6 +14,7 @@ type CreateTokenFilesOptions = {
   outDir: string;
   theme: Theme;
   tokenSets: TokenSets;
+  tokenSetDimensions: TokenSetDimensionsForAllThemes;
 };
 
 export const createTokenFiles = async (options: CreateTokenFilesOptions) => {
@@ -21,13 +22,14 @@ export const createTokenFiles = async (options: CreateTokenFilesOptions) => {
     outDir,
     tokenSets,
     theme: { name: themeName, colors },
+    tokenSetDimensions,
   } = options;
 
   const $themesPath = '$themes.json';
   const $metadataPath = '$metadata.json';
   const $designsystemetPath = '$designsystemet.jsonc';
   let themeObjects: ThemeObject[] = [];
-  const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
+  const _sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 
   await dsfs.mkdir(outDir);
 
@@ -52,8 +54,8 @@ export const createTokenFiles = async (options: CreateTokenFilesOptions) => {
   console.log(`\nThemes: ${pc.blue(themes.join(', '))}`);
 
   // Create metadata and themes json for Token Studio and build script
-  const $themes = await generate$Themes(['dark', 'light'], themes, colors, sizeModes);
-  const $metadata = generate$Metadata(['dark', 'light'], themes, colors, sizeModes);
+  const $themes = await generate$Themes(tokenSetDimensions, themes, colors);
+  const $metadata = generate$Metadata(tokenSetDimensions, themes, colors);
   const $designsystemet = generate$Designsystemet();
 
   const files: OutputFile[] = [];

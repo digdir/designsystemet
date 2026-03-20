@@ -73,7 +73,7 @@ export const createTokens = async (theme: Theme) => {
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),
-    [`themes/${name}`, generateTheme(colors, name, borderRadius)],
+    [`themes/${name}`, generateTheme(colors, name, borderRadius, typography)],
     ['semantic/color', generateSemanticColors(colors, name)],
     // maps out semantic modes, ieg 'semantic/modes/main-color/accent', and 'semantic/modes/support-color/brand1'
     ...Object.entries(generateColorModes(colors, name)).flatMap(([mode, colors]): [string, TokenSet][] =>
