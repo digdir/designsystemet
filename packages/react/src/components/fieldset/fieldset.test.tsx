@@ -1,20 +1,43 @@
-import { render, screen } from '@testing-library/react';
-
+import { render, RenderResult, screen } from '@testing-library/react';
 import { Fieldset } from './';
+import { Textfield } from '../textfield/textfield';
 
 describe('Fieldset', () => {
-  test('has correct legend and description', () => {
-    render(
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  test('has correct legend', () => {
+    renderAndRunTimers(
       <Fieldset>
         <Fieldset.Legend>test legend</Fieldset.Legend>
         <Fieldset.Description>test description</Fieldset.Description>
+        <Textfield label='Test'/>
       </Fieldset>,
     );
     const fieldset = screen.getByRole('group', { name: 'test legend' });
     expect(fieldset).toBeDefined();
   });
+
+  test('has correct description', () => {
+    renderAndRunTimers(
+      <Fieldset>
+        <Fieldset.Legend>test legend</Fieldset.Legend>
+        <Fieldset.Description>test description</Fieldset.Description>
+        <Textfield label='Test'/>
+      </Fieldset>,
+    );
+    const fieldset = screen.getByRole('group', { description: 'test description' });
+    expect(fieldset).toBeDefined();
+    expect(fieldset).toHaveAccessibleDescription('test description');
+  });
+
   test('and its children are disabled', () => {
-    render(
+    renderAndRunTimers(
       <Fieldset disabled>
         <Fieldset.Legend>test legend</Fieldset.Legend>
         <input value='test' readOnly />
@@ -27,3 +50,9 @@ describe('Fieldset', () => {
     expect(screen.getByRole('group')).toBeDisabled();
   });
 });
+
+function renderAndRunTimers(...args: Parameters<typeof render>): RenderResult {
+  const view = render(...args);
+  vi.runAllTimers();
+  return view;
+}

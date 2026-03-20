@@ -31,10 +31,7 @@ const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows 
 const HAS_VALIDATION = new WeakSet<HTMLInputElement>(); // Used to store inputs that have/had validation elements to manage aria-invalid
 
 const handleMutations = debounce(() => {
-  for (const el of FIELDSETS) {
-    const labelledby = `${useId(el.querySelector('legend'))} ${useId(el.querySelector(':scope > :is([data-field="description"],legend + p)'))}`;
-    attr(el, 'aria-labelledby', labelledby.trim() || null);
-  }
+  applyLegendAndDescriptionToAllFieldsets();
   for (const field of FIELDS) {
     const descs: Element[] = [];
     const labels: HTMLLabelElement[] = [];
@@ -92,6 +89,33 @@ const handleMutations = debounce(() => {
     }
   }
 }, 0); // Debounce to merge multiple mutations
+
+function applyLegendAndDescriptionToAllFieldsets(): void {
+  Array.from(FIELDSETS).forEach(applyLegendAndDescriptionToFieldset);
+}
+
+function applyLegendAndDescriptionToFieldset(fieldset: HTMLFieldSetElement): void {
+  applyLegendToFieldset(fieldset);
+  applyDescriptionToFieldset(fieldset);
+}
+
+function applyLegendToFieldset(fieldset: HTMLFieldSetElement): void {
+  const labelledby = useId(getLegend(fieldset));
+  attr(fieldset, 'aria-labelledby', labelledby.trim() || null);
+}
+
+function getLegend(fieldset: HTMLFieldSetElement): HTMLElement | null {
+  return fieldset.querySelector('legend');
+}
+
+function applyDescriptionToFieldset(fieldset: HTMLFieldSetElement): void {
+  const describedby = useId(getDescriptionOrFirstParagraph(fieldset));
+  attr(fieldset, 'aria-describedby', describedby.trim() || null);
+}
+
+function getDescriptionOrFirstParagraph(fieldset: HTMLFieldSetElement): HTMLElement | null {
+  return fieldset.querySelector(':scope > :is([data-field="description"],legend + p)');
+}
 
 const updateField = (e: Event | Element) => {
   const input = ((e as Event).target || e) as HTMLInputElement;
