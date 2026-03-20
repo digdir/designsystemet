@@ -11,31 +11,51 @@ order: 100
 search_terms: icons
 ---
 
-import { InformationSquareIcon, ExclamationmarkTriangleIcon, CheckmarkCircleIcon, XMarkOctagonIcon, ChevronRightIcon, ChevronLeftIcon, ChevronUpIcon, ChevronDownIcon, ChevronUpDownIcon, PadlockLockedIcon, MagnifyingGlassIcon, PersonIcon, LaptopIcon, CalendarIcon, PrinterSmallIcon, PencilIcon, RobotSmileIcon, MobileSmallIcon, XMarkIcon } from '@navikt/aksel-icons';
+import { InformationSquareIcon, ExclamationmarkTriangleIcon, CheckmarkCircleIcon, XMarkOctagonIcon, ChevronRightIcon, ChevronLeftIcon, ChevronUpIcon, ChevronDownIcon, ChevronUpDownIcon, PadlockLockedIcon, MagnifyingGlassIcon, PersonIcon, LaptopIcon, CalendarIcon, PrinterSmallIcon, PencilIcon, RobotSmileIcon, MobileSmallIcon, XMarkIcon, CloudUpIcon, CircleSlashIcon } from '@navikt/aksel-icons';
 
 ## Velg ikonpakke selv
 
-Med Designsystemet velger du selv hvilken ikonpakke du vil bruke. Noen bruker Navs ikonpakke, andre velger andre pakker som står bedre i stil med deres visuelle profil. Dette er helt opp til deg og hva som passer best for din virksomhet.  
+Med Designsystemet kan du velge hvilken ikonpakke du vil bruke. Noen bruker Aksels ikonpakke, mens andre velger et bibliotek som passer bedre til egen visuell profil.
 
 ## Bytt ikonpakke i Figma
-Når du laster ned vår Community fil så vil den inneholde koblinger til vår interne versjon av Aksels ikonpakke. Enten du bruker Aksel eller et annet ikonbibliotek så må du koble ikonene til et sett med ikoner du har lagret i deres Figma organisasjon.
 
-### Alternativ 1: Koble opp egen kopi av Aksel Icons
+Når du laster ned vår Community-fil, er den koblet til vår interne versjon av Aksel Icons. For å bruke ikonene i egne filer må du koble dem til et bibliotek i din egen Figma-organisasjon.
+
+### Alternativ 1: Koble til egen kopi av Aksel Icons
 1. Last ned [Aksel icons (Figma)](https://www.figma.com/community/plugin/1221057403873975172/aksel-icons)
 2. Publiser ikonpakken som et bibliotek i Figma
-3. Bruk [Swap library (Figma)](https://help.figma.com/hc/en-us/articles/4404856784663-Swap-style-and-component-libraries) funksjonen for å bytte ut ikonene i Community filen med dine lokale ikoner
+3. Åpne *Manage libraries* og velg ikonbiblioteket under **Missing libraries**  
+   Deretter bruker du [Swap library (Figma)](https://help.figma.com/hc/en-us/articles/4404856784663-Swap-style-and-component-libraries) for å bytte ikonene i Community-filen
 
-### Alternativ 2: Koble opp et annet ikon bibliotek enn Aksel Icons
-Ofte så er ikoner en del av profilen til virksomheten Designsystemet skal brukes på. Da vil ikke alltid Aksels ikoner passe. Skal man bruke et annet bibliotek er det et par andre ting man må tenke på. 
+### Alternativ 2: Koble til et annet ikonbibliotek
 
-Den enkleste måten å bytte ut ikonene på er å bruke [Swap library (Figma)](https://help.figma.com/hc/en-us/articles/4404856784663-Swap-style-and-component-libraries), men denne funksjonen bruker navnet på komponenten(ikonet) til å finne ut hvilket ikon som skal byttes ut. Så en enkel måte å fikse dette på er å rename ikonene du vil at skal erstatte de vi bruker til det samme som Aksel har kalt de. Etter at man har byttet kan man gå tilbake til de riktige navnene igjen. Nedenfor vil du finne to tabeller med navn og ikoner. For de meningsbærende anbefaler vi å finne noen som er så like som mulig. De ikke-meningsbærende er placeholder ikoner som brukes i for eksempel knapp. Her er det ikke viktig hvilket ikon som man bytter de med. 
+Hvis du ønsker å bruke et annet ikonbibliotek enn Aksel, må ikonene tilpasses slik at de kan erstatte ikonene i Designsystemet.
 
-Når du åpner swap library vil du se mange flere ikoner enn det som er i tabellen nedenfor. Dette er ikoner som brukes i eksempler og har ingen funksjonell konsekvens at ikke blir byttet. Disse blir fjernet i neste versjon av community filen. 
+**Fremgangsmåte:**
 
+1. **Forbered ikonbiblioteket**
+   - Gi ikonene samme navn som tilsvarende Aksel-ikoner. Se oversikt over ikoner vi bruker nedenfor. 
+   - Legg til fargestilen `color/neutral/text-default` på ikonene  
+
+2. **Bytt bibliotek**
+   - Bruk *Swap library* i Figma  
+
+3. **Rydd opp**
+   - Endre ikonnavn tilbake til ønsket navnekonvensjon  
+
+4. **Kontroller farger**
+   - Sjekk at ikonene har riktige farger etter byttet  
+   - Hvis fargene ikke er bevart, må de oppdateres manuelt. Se [oversikt over farger for ikoner](https://github.com/digdir/designsystemet/issues/4652)
+
+Nedenfor finner du to tabeller med ikonnavn og tilhørende ikoner:  
+- **Meningsbærende ikoner** bør erstattes med varianter som ligner mest mulig på Aksel  
+- **Ikke-meningsbærende ikoner** brukes som plassholdere (for eksempel i knapper), og kan erstattes fritt  
+
+Hvis du bruker versjon `1.8.0` eller eldre av Community-filen, vil du se flere ikoner i *Swap library* enn det som er listet i tabellene. Disse brukes kun i eksempler og trenger ikke å byttes.
 <Table border data-color='neutral' style={{
         tableLayout: 'fixed',
       }}>
-  <caption>Meningsbærende ikoner som bør byttes med tilsvarende ikon</caption>
+  <caption style={{paddingBottom: '1rem'}}>Meningsbærende ikoner som bør byttes med tilsvarende ikon</caption>
 
   <TableHead style={{
     backgroundColor: 'var(--ds-color-background-tinted)',
@@ -44,7 +64,7 @@ Når du åpner swap library vil du se mange flere ikoner enn det som er i tabell
     <TableRow>
       <TableHeaderCell scope="col">Navn</TableHeaderCell>
       <TableHeaderCell scope="col" >
-         Ikoner
+         Ikon
       </TableHeaderCell>
 
     </TableRow>
@@ -96,8 +116,16 @@ Når du åpner swap library vil du se mange flere ikoner enn det som er i tabell
       <TableCell><MagnifyingGlassIcon aria-hidden fontSize="2rem" /></TableCell>
     </TableRow>
     <TableRow>
-      <TableHeaderCell scope="row">XMark</TableHeaderCell>
+      <TableHeaderCell scope="row">X-mark</TableHeaderCell>
       <TableCell><XMarkIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">CloudUp</TableHeaderCell>
+      <TableCell><CloudUpIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+     <TableRow>
+      <TableHeaderCell scope="row">CircleSlash</TableHeaderCell>
+      <TableCell><CircleSlashIcon aria-hidden fontSize="2rem" /></TableCell>
     </TableRow>
   </TableBody>
 </Table>
@@ -105,7 +133,7 @@ Når du åpner swap library vil du se mange flere ikoner enn det som er i tabell
 <Table border data-color='neutral' style={{
         tableLayout: 'fixed',
       }}>
-  <caption>ikke-meningsbærende ikoner som ikke trenger å være like</caption>
+  <caption style={{paddingBottom: '1rem'}}>ikke-meningsbærende ikoner</caption>
 
   <TableHead style={{
     backgroundColor: 'var(--ds-color-background-tinted)',

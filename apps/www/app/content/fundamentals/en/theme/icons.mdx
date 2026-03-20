@@ -15,30 +15,49 @@ import { InformationSquareIcon, ExclamationmarkTriangleIcon, CheckmarkCircleIcon
 
 ## Choose your own icon set
 
-With Designsystemet, you choose which icon set to use. Some use Nav's icon set, while others choose alternatives that better match their visual profile. It is entirely up to you and what works best for your organization.
+With Designsystemet, you can choose which icon set to use. Some use Aksel's icon set, while others choose a library that better matches their own visual profile.
 
 ## Swap icon set in Figma
 
-When you download our Community file, it will contain links to our internal version of Aksel's icon set. Whether you use Aksel or another icon library, you need to reconnect the icons to an icon set that is stored in your Figma organization.
+When you download our Community file, it is connected to our internal version of Aksel Icons. To use the icons in your own files, you need to connect them to a library in your own Figma organization.
 
 ### Option 1: Set up your own copy of Aksel Icons
 
 1. Download [Aksel icons (Figma)](https://www.figma.com/community/plugin/1221057403873975172/aksel-icons)
 2. Publish the icon set as a library in Figma
-3. Use the [Swap library (Figma)](https://help.figma.com/hc/en-us/articles/4404856784663-Swap-style-and-component-libraries) function to replace the icons in the Community file with your local icons
+3. Open *Manage libraries* and select the icon library under **Missing libraries**  
+Then use [Swap library (Figma)](https://help.figma.com/hc/en-us/articles/4404856784663-Swap-style-and-component-libraries) to replace the icons in the Community file
 
 ### Option 2: Set up another icon library instead of Aksel Icons
 
-Icons are often part of the visual identity of the organization that will use the design system. That means Aksel's icons will not always be a good fit. If you want to use another library, there are a couple of things to keep in mind.
+If you want to use a different icon library than Aksel, the icons need to be adapted so they can replace the icons in Designsystemet.
 
-The easiest way to replace the icons is to use [Swap library (Figma)](https://help.figma.com/hc/en-us/articles/4404856784663-Swap-style-and-component-libraries), but this function uses the component name to determine which icon should be replaced. One simple way to handle this is to rename the icons you want to use so they match the names Aksel uses. After the swap, you can change them back to their original names. Below you will find two tables with icon names and examples. For the meaningful icons, we recommend choosing icons that are as similar as possible. The non-meaningful icons are placeholder icons used in places such as buttons. In those cases, it is less important which icon you replace them with.
+**How to do it:**
 
-When you open Swap library, you will see many more icons than the ones listed below. These are icons used in examples and do not have any functional consequences if they are not replaced. They will be removed in the next version of the Community file.
+1. **Prepare the icon library**
+   - Give the icons the same names as the corresponding Aksel icons. See the icon overview below.
+   - Add the color style `color/neutral/text-default` to the icons
+
+2. **Swap the library**
+   - Use *Swap library* in Figma
+
+3. **Clean up**
+   - Change the icon names back to your preferred naming convention
+
+4. **Check colors**
+   - Make sure the icons have the correct colors after the swap
+   - If the colors were not preserved, they must be updated manually. See the [overview of icon colors](https://github.com/digdir/designsystemet/issues/4652)
+
+Below you will find two tables with icon names and corresponding icons:
+- **Meaningful icons** should be replaced with variants that are as similar as possible to Aksel
+- **Non-meaningful icons** are used as placeholders, for example in buttons, and can be replaced freely
+
+If you use version `1.8.0` or earlier of the Community file, you will see more icons in *Swap library* than those listed in the tables. These are only used in examples and do not need to be replaced.
 
 <Table border data-color='neutral' style={{
-        width: 'fit-content',
+        tableLayout: 'fixed',
       }}>
-  <caption>Meaningful icons that should be replaced with a corresponding icon</caption>
+  <caption style={{paddingBottom: '1rem'}}>Meaningful icons that should be replaced with a corresponding icon</caption>
 
   <TableHead style={{
     backgroundColor: 'var(--ds-color-background-tinted)',
@@ -47,7 +66,7 @@ When you open Swap library, you will see many more icons than the ones listed be
     <TableRow>
       <TableHeaderCell scope="col">Name</TableHeaderCell>
       <TableHeaderCell scope="col">
-         Icons
+         Icon
       </TableHeaderCell>
 
     </TableRow>
@@ -99,16 +118,24 @@ When you open Swap library, you will see many more icons than the ones listed be
       <TableCell><MagnifyingGlassIcon aria-hidden fontSize="2rem" /></TableCell>
     </TableRow>
     <TableRow>
-      <TableHeaderCell scope="row">XMark</TableHeaderCell>
+      <TableHeaderCell scope="row">X-mark</TableHeaderCell>
       <TableCell><XMarkIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+     <TableRow>
+      <TableHeaderCell scope="row">CloudUp</TableHeaderCell>
+      <TableCell><CloudUpIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+     <TableRow>
+      <TableHeaderCell scope="row">CircleSlash</TableHeaderCell>
+      <TableCell><CircleSlashIcon aria-hidden fontSize="2rem" /></TableCell>
     </TableRow>
   </TableBody>
 </Table>
 
 <Table border data-color='neutral' style={{
-        width: 'fit-content',
+        tableLayout: 'fixed',
       }}>
-  <caption>Examples of non-meaningful icons that do not need to match exactly</caption>
+  <caption style={{paddingBottom: '1rem'}}>Non-meaningful icons</caption>
 
   <TableHead style={{
     backgroundColor: 'var(--ds-color-background-tinted)',
@@ -154,4 +181,3 @@ When you open Swap library, you will see many more icons than the ones listed be
     </TableRow>
   </TableBody>
 </Table>
-
