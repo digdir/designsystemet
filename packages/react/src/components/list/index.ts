@@ -45,4 +45,4 @@ ListComponent.Unordered.displayName = 'List.Unordered';
 
 export type { ListItemProps } from './list-item';
 export type { ListOrderedProps, ListUnorderedProps } from './lists';
-export { ListComponent as List, ListOrdered, ListUnordered, ListItem };
+export { ListComponent as List, ListItem, ListOrdered, ListUnordered };
