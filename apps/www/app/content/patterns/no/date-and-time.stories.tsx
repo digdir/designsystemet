@@ -61,9 +61,19 @@ export const StartEndDate = () => {
         Hvor lenge skal du være borte?
       </Fieldset.Legend>
       <Fieldset.Description>Oppgi start- og sluttdato</Fieldset.Description>
-      <div style={{ display: 'flex', gap: 'var(--ds-size-6)' }}>
-        <Textfield label='Startdato' type='date' />
-        <Textfield label='Sluttdato' type='date' />
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-size-6)', flexWrap: 'wrap' }}
+      >
+        <Textfield
+          label='Startdato'
+          type='date'
+          style={{ minWidth: '12rem' }}
+        />
+        <Textfield
+          label='Sluttdato'
+          type='date'
+          style={{ minWidth: '12rem' }}
+        />
       </div>
     </Fieldset>
   );
@@ -77,8 +87,8 @@ export const StartEndTime = () => {
       </Fieldset.Legend>
       <Fieldset.Description>Oppgi start- og sluttid</Fieldset.Description>
       <div style={{ display: 'flex', gap: 'var(--ds-size-6)' }}>
-        <Textfield label='Fra kl' type='time' />
-        <Textfield label='Til kl' type='time' />
+        <Textfield label='Fra kl' type='time' style={{ minWidth: '7rem' }} />
+        <Textfield label='Til kl' type='time' style={{ minWidth: '7rem' }} />
       </div>
     </Fieldset>
   );
@@ -92,7 +102,9 @@ export const ApproximateDate = () => {
         Oppgi omtrentlig tidspunkt. Vi kan ikke behandle saker lengre enn 20 år
         tilbake i tid.
       </Fieldset.Description>
-      <div style={{ display: 'flex', gap: 'var(--ds-size-6)' }}>
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-size-6)', flexWrap: 'wrap' }}
+      >
         <Field>
           <Label>Måned</Label>
           <Select defaultValue='Januar'>

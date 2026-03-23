@@ -82,7 +82,7 @@ export type { BreadcrumbsLinkProps } from './breadcrumbs-link';
 export type { BreadcrumbsListProps } from './breadcrumbs-list';
 export {
   BreadcrumbsComponent as Breadcrumbs,
-  BreadcrumbsList,
   BreadcrumbsItem,
   BreadcrumbsLink,
+  BreadcrumbsList,
 };

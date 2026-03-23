@@ -8,6 +8,7 @@ import {
 } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect } from 'storybook/test';
 import { Button, Tooltip } from '../';
 import { Tabs } from './';
 
@@ -124,4 +125,42 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
       </Tabs>
     </>
   );
+};
+
+export const ControlledStop: StoryFn<typeof Tabs> = () => {
+  return (
+    <Tabs value='value1'>
+      <Tabs.List>
+        <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
+        <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value='value1'>Content of tab 1</Tabs.Panel>
+      <Tabs.Panel value='value2'>Content of tab 2</Tabs.Panel>
+    </Tabs>
+  );
+};
+
+ControlledStop.play = ({ canvasElement }) => {
+  const tab1 = canvasElement.querySelector(
+    '[data-value="value1"]',
+  ) as HTMLElement | null;
+  const tab2 = canvasElement.querySelector(
+    '[data-value="value2"]',
+  ) as HTMLElement | null;
+
+  if (tab1) {
+    tab1.click();
+  }
+
+  if (tab2) {
+    tab2.click();
+  }
+
+  // First tab is still active
+  if (tab1) {
+    expect(tab1.getAttribute('aria-selected')).toBe('true');
+  }
+  if (tab2) {
+    expect(tab2.getAttribute('aria-selected')).toBe('false');
+  }
 };
