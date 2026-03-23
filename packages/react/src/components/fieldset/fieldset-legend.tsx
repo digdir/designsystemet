@@ -17,7 +17,11 @@ export const FieldsetLegend = forwardRef<
 >(function FieldsetLegend(rest, ref) {
   return (
     <Label asChild>
-      <legend ref={ref} {...rest} />
+      <legend
+        suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
+        ref={ref}
+        {...rest}
+      />
     </Label>
   );
 });

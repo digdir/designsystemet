@@ -24,7 +24,7 @@
   min-width: 15em;
   padding: var(--dsc-dropdown-padding);
 
-  & :is(h2, h3, h4, h5, h6) {
+  & > :is(h2, h3, h4, h5, h6) {
     align-items: center;
     box-sizing: border-box;
     color: var(--ds-color-neutral-text-default);
@@ -39,13 +39,13 @@
     }
   }
 
-  & ul {
+  & > ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  & :is(a, button, [role='button']):not(dialog a, dialog button, dialog [role='button']) {
+  & > ul > li > :is(a, button, [role='button']) {
     justify-content: start;
     padding: var(--dsc-dropdown-item-padding);
     min-height: var(--dsc-dropdown-item-size);

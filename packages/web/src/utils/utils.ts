@@ -203,10 +203,14 @@ export const customElements = {
  * useId
  * @return A generated unique ID
  */
-let id = 0;
-const hash = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`;
+declare global {
+  interface Window {
+    dsUseId?: number; // Use a global counter to ensure this works even when loading designsystemet multiple times
+  }
+}
 export function useId(el?: Element | null) {
-  if (el && !el.id) el.id = `${hash}${++id}`;
+  if (!window.dsUseId) window.dsUseId = 0; // Make sure we have a global counter for SSR and hydration
+  if (el && !el.id) el.id = `:ds:${++window.dsUseId}`;
   return el?.id || '';
 }
 
