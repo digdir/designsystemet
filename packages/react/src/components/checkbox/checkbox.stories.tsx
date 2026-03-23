@@ -76,7 +76,6 @@ export const OneOption: StoryFn<typeof Fieldset> = () => (
     <Fieldset.Description>
       For at vi skal kunne sende deg opplysningen du ber om, må du bekrefte at
       du er myndig.
-      <Button data-tooltip='tooltip'>test</Button>
     </Fieldset.Description>
     <Checkbox label='Jeg bekrefter at jeg er over 18 år' value='samtykke' />
   </Fieldset>
