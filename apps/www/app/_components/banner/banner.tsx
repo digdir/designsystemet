@@ -58,5 +58,5 @@ const Banner: BannerComponent = BannerRoot as BannerComponent;
 Banner.Heading = BannerHeading;
 Banner.Ingress = BannerIngress;
 
-export type { BannerProps, BannerHeadingProps };
-export { Banner, BannerRoot, BannerHeading, BannerIngress };
+export type { BannerHeadingProps, BannerProps };
+export { Banner, BannerHeading, BannerIngress, BannerRoot };

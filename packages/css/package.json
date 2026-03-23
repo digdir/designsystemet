@@ -9,6 +9,7 @@
   },
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/css",
   "license": "MIT",
+  "browser": "dist/src/index.css",
   "exports": {
     "./theme": {
       "types": "./theme/types.d.ts",
