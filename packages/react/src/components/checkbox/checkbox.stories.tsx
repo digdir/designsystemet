@@ -1,6 +1,11 @@
-import { FloppydiskIcon, PencilIcon } from '@navikt/aksel-icons';
+import {
+  CheckmarkIcon,
+  FloppydiskIcon,
+  PencilIcon,
+  XMarkIcon,
+} from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { type CSSProperties, useEffect, useMemo, useState } from 'react';
+import { type CSSProperties, useMemo, useState } from 'react';
 import {
   Button,
   Card,
@@ -433,15 +438,6 @@ export const hiddenLegend: StoryFn<typeof Fieldset> = () => (
 );
 
 export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
-  /*just hacking a css class into the entur story*/
-  useEffect(() => {
-    const stylesheet = new CSSStyleSheet();
-    stylesheet.replaceSync(
-      '[data-clickdelegatefor]:not(:has(input:checked)) .visible-checked { display: none; }',
-    );
-    document.adoptedStyleSheets.push(stylesheet);
-  }, []);
-
   return (
     <>
       <Fieldset className='ds-selection-tile'>
@@ -522,7 +518,7 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
         <Button id='button-test'>Button is left alone</Button>
       </Card>
       <Heading style={{ marginTop: 'var(--ds-size-8)' }} level={2}>
-        Entur example recreated
+        Kystbussen example
       </Heading>
       <div style={{ width: '320px' }}>
         <Card
@@ -538,17 +534,37 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
               width: 'auto',
             }}
           >
+            <Input id='entur-case1' type='radio' name='entur' />
             <Label
               className='ds-heading'
               weight='regular'
-              style={{ marginRight: 'auto', paddingInline: '0' }}
+              style={{
+                marginRight: 'auto',
+                paddingInline: '0',
+                textBox: 'trim-start cap alphapbetic',
+              }}
             >
               Standard
             </Label>
             <Field.Description>199,-</Field.Description>
-            <Input id='entur-case1' type='radio' name='entur' />
           </Field>
-          <Paragraph>Ikke fleksibel</Paragraph>
+          <Divider />
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'auto 1fr',
+              gap: 'var(--ds-size-2)',
+            }}
+          >
+            <XMarkIcon fontSize='2rem' aria-hidden='true' />
+            <Paragraph>Ikke Refunderbar</Paragraph>
+            <CheckmarkIcon
+              fontSize='2rem'
+              aria-hidden='true'
+              color='var(--ds-color-success-base-default)'
+            />
+            <Paragraph>Kan endres frem til 1 time før avgang.</Paragraph>
+          </div>
         </Card>
         <Card
           style={{ marginTop: 'var(--ds-size-4)' }}
@@ -559,28 +575,47 @@ export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 'var(--ds-size-2)',
+              gap: 'var(--ds-size-1)',
               width: 'auto',
             }}
           >
+            <Input id='entur-case2' type='radio' name='entur' />
             <Label
               className='ds-heading'
               weight='regular'
-              style={{ marginRight: 'auto', paddingInline: '0' }}
+              style={{
+                marginRight: 'auto',
+                paddingInline: '0',
+                textBox: 'trim-start cap alphapbetic',
+              }}
             >
-              Premium
+              Fleksibel
             </Label>
             <Field.Description>299,-</Field.Description>
-            <Input id='entur-case2' type='radio' name='entur' />
           </Field>
-          <Paragraph>Fleksibel billett</Paragraph>
-          <Paragraph
-            data-size='sm'
-            className='visible-checked'
-            style={{ color: 'var(--ds-color-neutral-text-subtle)' }}
+          <Divider />
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'auto 1fr',
+              gap: 'var(--ds-size-1)',
+            }}
           >
-            Billetten kan refunderes eller endres ved et senere tidspunkt
-          </Paragraph>
+            <CheckmarkIcon
+              fontSize='2rem'
+              aria-hidden='true'
+              color='var(--ds-color-success-base-default)'
+            />
+            <Paragraph>Refunderbar billett</Paragraph>
+            <CheckmarkIcon
+              fontSize='2rem'
+              aria-hidden='true'
+              color='var(--ds-color-success-base-default)'
+            />
+            <Paragraph>
+              Kan endres uten endringsgebyr frem til 15 minutter før avgang.
+            </Paragraph>
+          </div>
         </Card>
       </div>
     </>
