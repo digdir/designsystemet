@@ -4,7 +4,7 @@ import { createTokens } from './create.js';
 import { createThemeCSSFiles } from './process/output/theme.js';
 import { type FormatOptions, processPlatform } from './process/platform.js';
 import { processThemeObject } from './process/utils/getMultidimensionalThemes.js';
-import type { SizeModes, Theme } from './types.js';
+import type { Theme } from './types.js';
 
 export const formatTokens = async (options: Omit<FormatOptions, 'type' | 'buildTokenFormats'>) => {
   const processedBuilds = await processPlatform({
@@ -18,7 +18,6 @@ export const formatTokens = async (options: Omit<FormatOptions, 'type' | 'buildT
 
 export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets, themeDimensions } = await createTokens(themeConfig);
-  const _sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 
   const tokenSetThemeDimensions = {
     ...themeDimensions,
