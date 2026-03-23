@@ -25,7 +25,7 @@
     margin-bottom: var(--ds-size-2);
   }
   p:last-of-type {
-    margin-block: 0 var(--ds-size-6);
+    margin-block: var(--ds-size-3) var(--ds-size-6);
   }
 }
 .buttons {

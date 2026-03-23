@@ -26,6 +26,7 @@ export const ConsentBanner = forwardRef<HTMLDivElement, BannerProps>(
             {t('consent-banner.required-desc-end')}
           </Paragraph>
           <Paragraph>{t('consent-banner.all-desc')}</Paragraph>
+          <Paragraph>{t('consent-banner.declaration')}</Paragraph>
           <form method='post' action='/api/consent' className={classes.buttons}>
             <Button
               type='submit'
