@@ -69,7 +69,10 @@ const handleInterest = ({ type, target }: Event) => {
 
   if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
   if (type === 'mouseover' && !SOURCE) {
-    if (IS_TOUCH) { IS_TOUCH = false; return; } // skip tooltip on tap
+    if (IS_TOUCH) {
+      IS_TOUCH = false;
+      return;
+    } // skip tooltip on tap
     HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
     return;
   }
