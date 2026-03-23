@@ -16,7 +16,7 @@ let TIP: HTMLElement | undefined;
 let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
-let IS_TOUCH = false;
+let TOUCH_TIME = 0;
 const ATTR_TOOLTIP = 'data-tooltip';
 const ATTR_COLOR = 'data-color';
 const ARIA_LABEL = 'aria-label';
@@ -69,10 +69,7 @@ const handleInterest = ({ type, target }: Event) => {
 
   if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
   if (type === 'mouseover' && !SOURCE) {
-    if (IS_TOUCH) {
-      IS_TOUCH = false;
-      return;
-    } // skip tooltip on tap
+    if (Date.now() - TOUCH_TIME < 500) return; // skip synthesized mouseover after touch (iOS/Android)
     HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
     return;
   }
@@ -111,7 +108,7 @@ onHotReload('tooltip', () => [
     document,
     'touchstart',
     () => {
-      IS_TOUCH = true;
+      TOUCH_TIME = Date.now();
     },
     QUICK_EVENT,
   ),
