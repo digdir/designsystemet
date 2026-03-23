@@ -15,7 +15,7 @@ export type DropdownItemProps = HTMLAttributes<HTMLLIElement>;
  * </Dropdown>
  */
 export const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>(
-  function DropdownItem({ ...rest }, ref) {
+  function DropdownItem(rest, ref) {
     return <li ref={ref} {...rest} />;
   },
 );

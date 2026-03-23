@@ -16,7 +16,7 @@ export type DropdownListProps = HTMLAttributes<HTMLUListElement>;
  * </Dropdown>
  */
 export const DropdownList = forwardRef<HTMLUListElement, DropdownListProps>(
-  function DropdownList({ ...rest }, ref) {
+  function DropdownList(rest, ref) {
     return <ul ref={ref} {...rest} />;
   },
 );

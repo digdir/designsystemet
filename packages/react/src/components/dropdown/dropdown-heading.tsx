@@ -14,6 +14,6 @@ export type DropdownHeadingProps = HeadingProps;
 export const DropdownHeading = forwardRef<
   HTMLHeadingElement,
   DropdownHeadingProps
->(function DropdownHeading({ ...rest }, ref) {
+>(function DropdownHeading(rest, ref) {
   return <Heading ref={ref} {...rest} />;
 });
