@@ -1,7 +1,7 @@
 ---
 title: Icons
 sidebar_title: Icons
-description: With Designsystemet, you choose which icon pack to use
+description: With Designsystemet, you choose which icon library you want to use.
 date: 2025-09-30
 category: Theme
 color: red
@@ -11,48 +11,36 @@ order: 100
 search_terms: icons
 ---
 
-import { InformationSquareIcon, ExclamationmarkTriangleIcon, CheckmarkCircleIcon, XMarkOctagonIcon, ChevronRightIcon, ChevronLeftIcon, ChevronUpIcon, ChevronDownIcon, ChevronUpDownIcon, PadlockLockedIcon, MagnifyingGlassIcon, PersonIcon, LaptopIcon, CalendarIcon, PrinterSmallIcon, PencilIcon, RobotSmileIcon, MobileSmallIcon, XMarkIcon } from '@navikt/aksel-icons';
+import { InformationSquareIcon, ExclamationmarkTriangleIcon, CheckmarkCircleIcon, XMarkOctagonIcon, ChevronRightIcon, ChevronLeftIcon, ChevronUpIcon, ChevronDownIcon, ChevronUpDownIcon, PadlockLockedIcon, MagnifyingGlassIcon, PersonIcon, LaptopIcon, CalendarIcon, PrinterSmallIcon, PencilIcon, RobotSmileIcon, MobileSmallIcon, XMarkIcon, CloudUpIcon, CircleSlashIcon } from '@navikt/aksel-icons';
 
-## Choose your own icon set
+With Designsystemet, you can choose which icon set to use. By default, Designsystemet uses [NAV's icon set](https://aksel.nav.no/komponenter/ikoner), which is open to use and contribute to. You are completely free to choose other icon libraries that better match your organisation's or product's visual identity.
 
-With Designsystemet, you can choose which icon set to use. Some use Aksel's icon set, while others choose a library that better matches their own visual profile.
-
-## Swap icon set in Figma
+## Get icons working in Figma
 
 When you download our Community file, it is connected to our internal version of Aksel Icons. To use the icons in your own files, you need to connect them to a library in your own Figma organization.
 
-### Option 1: Set up your own copy of Aksel Icons
+### How to use Aksel icons
 
-1. Download [Aksel icons (Figma)](https://www.figma.com/community/plugin/1221057403873975172/aksel-icons)
+1. Download [Aksel icons (Figma)](https://www.figma.com/community/file/1214869602572392330/nav-aksel-icons)
 2. Publish the icon set as a library in Figma
 3. Open *Manage libraries* and select the icon library under **Missing libraries**  
 Then use [Swap library (Figma)](https://help.figma.com/hc/en-us/articles/4404856784663-Swap-style-and-component-libraries) to replace the icons in the Community file
 
-### Option 2: Set up another icon library instead of Aksel Icons
+### How to use another icon library
 
 If you want to use a different icon library than Aksel, the icons need to be adapted so they can replace the icons in Designsystemet.
 
-**How to do it:**
-
-1. **Prepare the icon library**
-   - Give the icons the same names as the corresponding Aksel icons. See the icon overview below.
-   - Add the color style `color/neutral/text-default` to the icons
-
-2. **Swap the library**
-   - Use *Swap library* in Figma
-
-3. **Clean up**
-   - Change the icon names back to your preferred naming convention
-
-4. **Check colors**
-   - Make sure the icons have the correct colors after the swap
-   - If the colors were not preserved, they must be updated manually. See the [overview of icon colors](https://github.com/digdir/designsystemet/issues/4652)
+**Procedure:**
 
 Below you will find two tables with icon names and corresponding icons:
 - **Meaningful icons** should be replaced with variants that are as similar as possible to Aksel
 - **Non-meaningful icons** are used as placeholders, for example in buttons, and can be replaced freely
 
 If you use version `1.8.0` or earlier of the Community file, you will see more icons in *Swap library* than those listed in the tables. These are only used in examples and do not need to be replaced.
+
+1. **Preparation**
+   - Give your icons the same names as the corresponding Aksel icons. You only need to do this for the icons shown in the tables below
+   - Add the color style `color/neutral/text-default` to the icons
 
 <Table border data-color='neutral' style={{
         tableLayout: 'fixed',
@@ -181,3 +169,15 @@ If you use version `1.8.0` or earlier of the Community file, you will see more i
     </TableRow>
   </TableBody>
 </Table>
+
+2. **Swap library**
+   - Use *Swap library* in Figma
+
+3. **Clean up**
+   - Change the icon names back to your preferred naming convention
+
+4. **Check colors**
+   - Check that the icons have the correct colors after the swap
+   - If the colors are not preserved, they must be updated manually. See the [overview of icon colors](https://github.com/digdir/designsystemet/issues/4652)
+
+
