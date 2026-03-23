@@ -123,7 +123,7 @@ export default {
     heading: 'Vil du godta at vi samler inn data om bruk av nettsiden?',
     all: 'Godta',
     'all-desc':
-      'Hvis du samtykker, samler vi også inn data om hvordan nettsiden brukes. Dette hjelper oss å forbedre tjenestene våre.',
+      'Hvis du godtar, samler vi også inn data om hvordan nettsiden brukes. Dette hjelper oss å forbedre tjenestene våre.',
     declaration:
       'Du kan når som helst endre valget ditt nederst på våre sider.',
     required: 'Avslå',
