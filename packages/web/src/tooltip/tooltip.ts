@@ -3,6 +3,7 @@ import {
   attr,
   attrOrCSS,
   debounce,
+  isBrowser,
   on,
   onHotReload,
   onMutation,
@@ -18,7 +19,7 @@ let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
 /*needed to omit DELAY_HOVER on iOS that otherwise causes interaction delay 
 (iOS triggers mouseover before click when an element is tapped)*/
-const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const IS_IOS = isBrowser() && /iPad|iPhone|iPod/.test(navigator.userAgent);
 const ATTR_TOOLTIP = 'data-tooltip';
 const ATTR_COLOR = 'data-color';
 const ARIA_LABEL = 'aria-label';
