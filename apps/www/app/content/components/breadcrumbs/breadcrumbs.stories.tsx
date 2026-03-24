@@ -87,7 +87,7 @@ export const ListOnlyEn = () => (
 );
 
 export const BackOnly = () => (
-  <Breadcrumbs>
+  <Breadcrumbs aria-label='Brødsmulesti'>
     <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 3'>
       Nivå 3
     </Breadcrumbs.Link>
@@ -95,7 +95,7 @@ export const BackOnly = () => (
 );
 
 export const BackOnlyEn = () => (
-  <Breadcrumbs>
+  <Breadcrumbs aria-label='Breadcrumbs menu'>
     <Breadcrumbs.Link href='#' aria-label='Back to Level 3'>
       Level 3
     </Breadcrumbs.Link>
@@ -103,7 +103,7 @@ export const BackOnlyEn = () => (
 );
 
 export const LongItems = () => (
-  <Breadcrumbs>
+  <Breadcrumbs aria-label='Brødsmulesti'>
     <Breadcrumbs.Link
       href='#'
       aria-label='Tilbake til helsesertifikat for sjømat'
@@ -145,7 +145,7 @@ export const LongItems = () => (
 );
 
 export const LongItemsEn = () => (
-  <Breadcrumbs>
+  <Breadcrumbs aria-label='Breadcrumbs menu'>
     <Breadcrumbs.Link
       href='#'
       aria-label='Back to health certificate for seafood'
