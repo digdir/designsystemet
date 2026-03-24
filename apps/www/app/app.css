@@ -416,6 +416,9 @@
         margin-bottom: 0 !important;
       }
     }
+    & > .ds-divider {
+      margin-top: var(--ds-size-10);
+    }
     /*headings determine margin for stuff under them*/
     & > :is(h2, h3, h4, h5, h6) + * {
       margin-top: 0;
