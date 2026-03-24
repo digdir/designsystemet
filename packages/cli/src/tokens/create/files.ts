@@ -1,7 +1,3 @@
-// import path from 'node:path';
-// import type { ThemeObject } from '@tokens-studio/types';
-import pc from 'picocolors';
-// import * as R from 'ramda';
 import { dsfs } from '../../utils/filesystem.js';
 import type { OutputFile, SizeModes, Theme, TokenSets } from '../types.js';
 import { generate$Designsystemet } from './generators/$designsystemet.js';
@@ -32,26 +28,6 @@ export const createTokenFiles = async (options: CreateTokenFilesOptions) => {
   const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 
   await dsfs.mkdir(outDir);
-
-  // try {
-  //   // Fetch existing themes
-  //   const $themes = await dsfs.readFile(path.join(outDir, $themesPath));
-  //   if ($themes) {
-  //     themeObjects = JSON.parse($themes) as ThemeObject[];
-  //   }
-  // } catch (_error) {}
-
-  // const concatThemeNames = R.pipe(
-  //   R.filter((obj: ThemeObject) => R.toLower(obj.group || '') === 'theme'),
-  //   R.map(R.prop('name')),
-  //   // New theme is added to the end of the list so we keep the same order from config and Token Studio
-  //   R.append(themeName),
-  //   R.uniq,
-  // );
-
-  // const themes = concatThemeNames(themeObjects);
-
-  console.log(`\nThemes: ${pc.blue(themeNames.join(', '))}`);
 
   // Create metadata and themes json for Token Studio and build script
   const $themes = await generate$Themes(['dark', 'light'], themeNames, colors, sizeModes);

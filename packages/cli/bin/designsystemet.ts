@@ -117,7 +117,7 @@ function makeTokenCommands() {
 
       const themeNames = Object.keys(config.themes);
       if (themeNames.length > 0) {
-        console.log(`Using themes from config file ${pc.blue(configFilePath)}: ${pc.blue(themeNames.join(', '))}`);
+        console.log(`Using themes from config file: ${pc.blue(themeNames.join(', '))}`);
       }
 
       dsfs.init({ dry: opts.dry, outdir: config.outDir });
@@ -141,7 +141,7 @@ function makeTokenCommands() {
 
       await dsfs.writeFiles(files, outDir);
 
-      console.log(`\n✅ Finished creating tokens in ${pc.green(outDir)} for: ${pc.blue(themeNames.join(', '))}`);
+      console.log(`\n✅ Finished creating tokens in ${pc.green(outDir)} for themes: ${pc.blue(themeNames.join(', '))}`);
 
       return Promise.resolve();
     });
