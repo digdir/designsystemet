@@ -49,7 +49,7 @@
         }
       }
     },
-    "test-different-fonts": {
+    "different-fonts": {
       "colors": {
         "main": {
           "accent": "#0062BA"
