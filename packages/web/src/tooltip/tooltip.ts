@@ -70,11 +70,9 @@ const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
 
   if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
-  if (type === 'mouseover' && !SOURCE) {
-    if (!IS_IOS) {
-      HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
-      return;
-    }
+  if (type === 'mouseover' && !SOURCE && !IS_IOS) {
+    HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
+    return;
   }
 
   const source = (target as Element)?.closest?.(`[${ATTR_TOOLTIP}]`);
