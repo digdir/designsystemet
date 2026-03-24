@@ -91,7 +91,7 @@ const handleMutations = debounce(() => {
 }, 0); // Debounce to merge multiple mutations
 
 function applyLegendAndDescriptionToAllFieldsets(): void {
-  Array.from(FIELDSETS).forEach(applyLegendAndDescriptionToFieldset);
+  for (const fieldset of FIELDSETS) applyLegendAndDescriptionToFieldset(fieldset);
 }
 
 function applyLegendAndDescriptionToFieldset(
