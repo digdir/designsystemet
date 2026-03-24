@@ -2,7 +2,7 @@ import { ChevronDownIcon, ChevronUpIcon, LinkIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
-import { Button } from '../';
+import { Button, Dialog } from '../';
 import { Dropdown } from './';
 
 export default {
@@ -175,4 +175,49 @@ export const WithoutTrigger: StoryFn<typeof Dropdown> = () => {
       </Dropdown>
     </>
   );
+};
+
+export const WithNestedDialog: StoryFn<typeof Dropdown> = (args) => {
+  return (
+    <Dropdown.TriggerContext>
+      <Dropdown.Trigger data-color={args['data-color']}>
+        Dropdown
+      </Dropdown.Trigger>
+      <Dropdown {...args}>
+        <Dropdown.List>
+          <Dropdown.Item>
+            <Dialog.TriggerContext>
+              <Dialog.Trigger asChild>
+                <Dropdown.Button>Dialog</Dropdown.Button>
+              </Dialog.Trigger>
+              <Dialog>Min dialog</Dialog>
+            </Dialog.TriggerContext>
+          </Dropdown.Item>
+        </Dropdown.List>
+      </Dropdown>
+    </Dropdown.TriggerContext>
+  );
+};
+
+WithNestedDialog.play = async (ctx) => {
+  // When not in Docs mode, automatically open the dropdown
+  const button = within(ctx.canvasElement).getByRole('button');
+  await new Promise((resolve) => {
+    document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør click
+    userEvent.click(button);
+  });
+  const dropdown = ctx.canvasElement.querySelector('.ds-dropdown');
+  await expect(dropdown).toBeInTheDocument();
+  await waitFor(() => expect(dropdown).toBeVisible());
+
+  if (!dropdown) return;
+
+  /* open dialog */
+  const dialogButton = within(dropdown as HTMLElement).getByRole('button', {
+    name: 'Dialog',
+  });
+  userEvent.click(dialogButton);
+  const dialog = ctx.canvasElement.querySelector('.ds-dialog');
+  await expect(dialog).toBeInTheDocument();
+  await waitFor(() => expect(dialog).toBeVisible());
 };
