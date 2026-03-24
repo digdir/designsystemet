@@ -27,7 +27,6 @@
     "build:storybook": "pnpm --filter @web/storybook build",
     "build:www": "pnpm --filter @web/www build",
     "build:themebuilder": "pnpm --filter @web/themebuilder build",
-    "build:pw-tests": "docker build -t pw-tests .",
     "pw-tests": "pnpm playwright test",
     "types": "pnpm -r types",
     "types:react": "pnpm --filter @digdir/designsystemet-react types",
