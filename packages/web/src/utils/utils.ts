@@ -40,7 +40,7 @@ export const warn = (
   message: string,
   ...args: Parameters<typeof console.warn>
 ) =>
-  typeof window === 'undefined' ||
+  !isBrowser() ||
   window.dsWarnings === false ||
   console.warn(`Designsystemet: ${message}`, ...args);
 
@@ -208,8 +208,10 @@ declare global {
     dsUseId?: number; // Use a global counter to ensure this works even when loading designsystemet multiple times
   }
 }
+let id = 0;
 export function useId(el?: Element | null) {
-  if (!window.dsUseId) window.dsUseId = 0; // Make sure we have a global counter for SSR and hydration
+  if (!isBrowser()) return `:ds:${++id}`; // Emulate browser environment if window not available
+  if (!window.dsUseId) window.dsUseId = 0; // Make sure we have a global to support multiple instances of designsystemet in same page
   if (el && !el.id) el.id = `:ds:${++window.dsUseId}`;
   return el?.id || '';
 }
