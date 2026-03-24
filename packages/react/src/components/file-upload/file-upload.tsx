@@ -1,14 +1,28 @@
-import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { Field, FieldDescription } from '../field';
+import { Label } from '../label/label';
+import { ValidationMessage } from '../validation-message/validation-message';
 
 export type FileUploadProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /** Instances of `FileUpload.Button`, `FileUpload.Label`, `FileUpload.Description`, `FileUpload.Input` or other React nodes */
     children: ReactNode;
+    /**
+     * Label
+     */
+    label?: ReactNode;
+    /**
+     * Description
+     */
+    description?: ReactNode;
+    /**
+     * Error message for field
+     */
+    error?: ReactNode;
   }
 >;
 /* @Todo: field required? */
@@ -31,25 +45,35 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
     {
       className,
       style,
+      error,
       'data-size': size,
       'data-color': color,
+      label,
+      description,
       children,
       ...rest
     },
     ref,
   ) {
     return (
-      <div
-        ref={ref}
-        className={cl(`ds-file-upload`, className)}
-        style={style}
+      <Field
+        className={className}
         data-size={size}
+        style={style}
         data-color={color}
-        data-field='description'
-        {...rest}
       >
-        {children}
-      </div>
+        {!!label && <Label>{label}</Label>}
+        {!!description && <FieldDescription>{description}</FieldDescription>}
+        <div
+          ref={ref}
+          className={`ds-file-upload`}
+          data-field='description'
+          {...rest}
+        >
+          {children}
+        </div>
+        {!!error && <ValidationMessage>{error}</ValidationMessage>}
+      </Field>
     );
   },
 );

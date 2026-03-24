@@ -43,7 +43,7 @@ export const Preview: Story = {
 
 export const Variants: StoryFn<typeof FileUpload> = () => (
   <>
-    <FileUpload>
+    <FileUpload label='color variant default'>
       <CloudUpIcon aria-hidden='true' />
       <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
@@ -52,7 +52,7 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
       <FileUpload.Button>Upload file</FileUpload.Button>
       <FileUpload.Input />
     </FileUpload>
-    <FileUpload data-color='neutral'>
+    <FileUpload data-color='neutral' label='color variant neutral'>
       <CloudUpIcon aria-hidden='true' />
       <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
@@ -76,45 +76,15 @@ export const LinkAlt: StoryFn<typeof FileUpload> = () => (
   </FileUpload>
 );
 
-export const FieldTest: StoryFn<typeof FileUpload> = () => (
-  <Field>
-    <Label>Upload files</Label>
-    <Field.Description>Inside Field</Field.Description>
-    <FileUpload>
+export const ReadOnly: StoryFn<typeof FileUpload> = () => (
+  <>
+    <FileUpload label='Upload file' description='Inside FileUpload'>
       <CloudUpIcon aria-hidden='true' />
       <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
       <FileUpload.Button>Upload file</FileUpload.Button>
-      <FileUpload.Input />
-    </FileUpload>
-  </Field>
-);
-
-export const ReadOnly: StoryFn<typeof FileUpload> = () => (
-  <>
-    <Field>
-      <Label>Upload files</Label>
-      <Field.Description>Inside Field</Field.Description>
-      <FileUpload>
-        <CloudUpIcon aria-hidden='true' />
-        <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
-        <FileUpload.Description>
-          File must be in csv format and less than 2MB
-        </FileUpload.Description>
-        <FileUpload.Button>Upload file</FileUpload.Button>
-        <FileUpload.Input readOnly={true} />
-      </FileUpload>
-    </Field>
-    <FileUpload>
-      <CloudUpIcon aria-hidden='true' />
-      <FileUpload.Label>
-        Drop files or <span className='ds-link'>click to browse</span>
-      </FileUpload.Label>
-      <FileUpload.Description>
-        File must be in csv format and less than 2MB
-      </FileUpload.Description>
       <FileUpload.Input readOnly={true} />
     </FileUpload>
   </>
@@ -122,28 +92,17 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
 
 export const Disabled: StoryFn<typeof FileUpload> = () => (
   <>
-    <Field>
-      <Label>Upload files</Label>
-      <Field.Description>Inside Field</Field.Description>
-      <FileUpload>
-        <CloudUpIcon aria-hidden='true' />
-        <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
-        <FileUpload.Description>
-          File must be in csv format and less than 2MB
-        </FileUpload.Description>
-        <FileUpload.Button>Upload file</FileUpload.Button>
-        <FileUpload.Input disabled={true} />
-      </FileUpload>
-      <ValidationMessage>Invalid file format</ValidationMessage>
-    </Field>
-    <FileUpload>
+    <FileUpload
+      label='Upload file'
+      description='description'
+      error='Invalid file format'
+    >
       <CloudUpIcon aria-hidden='true' />
-      <FileUpload.Label aria-hidden='true'>
-        Drop files or <span className='ds-link'>click to browse</span>
-      </FileUpload.Label>
+      <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
+      <FileUpload.Button>Upload file</FileUpload.Button>
       <FileUpload.Input disabled={true} />
     </FileUpload>
   </>
@@ -160,7 +119,7 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
     setIsReadOnly(true);
   };
 
-  const handleDrop = (event: DragEvent<HTMLDivElement>) => {
+  const handleDrop = (event: DragEvent<HTMLElement>) => {
     event.preventDefault();
     setIsDragging(false);
     if (event.dataTransfer.files.length > 0) {
