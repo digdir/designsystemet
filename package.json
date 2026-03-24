@@ -28,7 +28,7 @@
     "build:www": "pnpm --filter @web/www build",
     "build:themebuilder": "pnpm --filter @web/themebuilder build",
     "build:pw-tests": "docker build -t pw-tests .",
-    "run:pw-tests": "docker run --rm pw-tests",
+    "pw-tests": "pnpm playwright test",
     "types": "pnpm -r types",
     "types:react": "pnpm --filter @digdir/designsystemet-react types",
     "version-packages": "changeset version && node scripts/sync-changelogs.js && pnpm build:types && pnpm build:cli && node scripts/sync-cli-schema.js && pnpm update:theme && pnpm update:theme-digdir && git add . && git commit -m \"sync www changelogs, schema and tokens\" || true",
