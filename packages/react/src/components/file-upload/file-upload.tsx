@@ -5,13 +5,13 @@ import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type FileUploadProps = MergeRight<
-  DefaultProps & HTMLAttributes<HTMLLabelElement>,
+  DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /** Instances of `FileUpload.Button`, `FileUpload.Label`, `FileUpload.Description`, `FileUpload.Input` or other React nodes */
     children: ReactNode;
   }
 >;
-
+/* @Todo: field required? */
 /**
  * FileUpload component to present a file upload area.
  *
@@ -26,7 +26,7 @@ export type FileUploadProps = MergeRight<
  *    <FileUpload.Input />
  *  </FileUpload>
  */
-export const FileUpload = forwardRef<HTMLLabelElement, FileUploadProps>(
+export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
   function FileUpload(
     {
       className,
@@ -39,17 +39,17 @@ export const FileUpload = forwardRef<HTMLLabelElement, FileUploadProps>(
     ref,
   ) {
     return (
-      // biome-ignore lint/a11y/noLabelWithoutControl: input is provided via the FileUpload.Input subcomponent
-      <label
+      <div
         ref={ref}
         className={cl(`ds-file-upload`, className)}
         style={style}
         data-size={size}
         data-color={color}
+        data-field='description'
         {...rest}
       >
         {children}
-      </label>
+      </div>
     );
   },
 );

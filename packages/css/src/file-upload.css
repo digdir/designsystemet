@@ -1,5 +1,5 @@
 /*double class to increase specificity above .ds-field :is() (0.2.0 + order)*/
-.ds-file-upload.ds-file-upload {
+.ds-file-upload {
   --dsc-file-upload-background: var(--ds-color-surface-default);
   --dsc-file-upload-background--hover: var(--ds-color-surface-tinted);
   --dsc-file-upload-icon-color: var(--ds-color-text-subtle);
@@ -12,6 +12,7 @@
   --dsc-file-upload-border-style--hover: solid;
   --dsc-file-upload-padding: var(--ds-size-8) var(--ds-size-6);
 
+  position: relative;
   border: var(--dsc-file-upload-border-width) var(--dsc-file-upload-border-style) var(--dsc-file-upload-border-color);
   width: auto;
   border-radius: var(--dsc-file-upload-border-radius);
@@ -23,8 +24,18 @@
   user-select: none;
   @composes ds-print-preserve from './base.css';
 
-  &:focus-within {
+  /*react-dropzone puts tabindex on wrapper and set tabindex="-1" on input so we handle both cases*/
+  &:focus-visible,
+  &:has(:focus-visible) {
     @composes ds-focus--visible from './base.css';
+  }
+  > input[type='file'] {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    z-index: 1;
+    opacity: 0;
+    cursor: inherit;
   }
 
   &:hover,

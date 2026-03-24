@@ -89,7 +89,6 @@ export const FieldTest: StoryFn<typeof FileUpload> = () => (
       <FileUpload.Button>Upload file</FileUpload.Button>
       <FileUpload.Input />
     </FileUpload>
-    <ValidationMessage>Invalid file format</ValidationMessage>
   </Field>
 );
 
@@ -107,7 +106,6 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
         <FileUpload.Button>Upload file</FileUpload.Button>
         <FileUpload.Input readOnly={true} />
       </FileUpload>
-      <ValidationMessage>Invalid file format</ValidationMessage>
     </Field>
     <FileUpload>
       <CloudUpIcon aria-hidden='true' />
@@ -162,7 +160,7 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
     setIsReadOnly(true);
   };
 
-  const handleDrop = (event: DragEvent<HTMLLabelElement>) => {
+  const handleDrop = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     setIsDragging(false);
     if (event.dataTransfer.files.length > 0) {
