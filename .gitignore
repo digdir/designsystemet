@@ -50,3 +50,11 @@ packages/cli/temp
 .react-router
 apps/www/build
 apps/storybook/debug-storybook.log
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+test-results.json
