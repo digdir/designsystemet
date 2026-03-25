@@ -15,7 +15,7 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
     customColors.map((colorName) => [colorName, generateColorScaleTokens(colorName, themeName)]),
   );
 
-  const { color: themeBaseFileColor, ...remainingThemeFile } = generateBase(themeName);
+  const { color: themeBaseFileColor, ...remainingThemeFile } = generateBase();
   const themeFile = {
     color: {
       ...themeColorTokens,
@@ -64,26 +64,8 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
   return token;
 };
 
-const generateBase = (themeName: string): TokenSet => ({
+const generateBase = (): TokenSet => ({
   color: {},
-  'font-family': {
-    $type: 'fontFamilies',
-    $value: `{${themeName}.font-family}`,
-  },
-  'font-weight': {
-    medium: {
-      $type: 'fontWeights',
-      $value: `{${themeName}.font-weight.medium}`,
-    },
-    semibold: {
-      $type: 'fontWeights',
-      $value: `{${themeName}.font-weight.semibold}`,
-    },
-    regular: {
-      $type: 'fontWeights',
-      $value: `{${themeName}.font-weight.regular}`,
-    },
-  },
   'border-radius': {
     '1': {
       $type: 'dimension',
