@@ -189,7 +189,6 @@ const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
         value={showHTML.toString()}
         onChange={(v) => setShowHTML(v === 'true')}
         data-color='neutral'
-        data-toggle-group='language'
       >
         <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
         <ds.ToggleGroup.Item value='true'>HTML</ds.ToggleGroup.Item>
