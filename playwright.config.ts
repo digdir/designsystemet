@@ -13,7 +13,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : 6,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['list', { printSteps: true }], ['json', {  outputFile: 'test-results.json' }]],
+  reporter: process.env.CI ? "dot" : "list",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     browserName: 'chromium',
