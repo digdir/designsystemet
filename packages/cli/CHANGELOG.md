@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.13.1
+
+### Patch Changes
+
+- fix: add missing references for token sync in Figma ([#4659](https://github.com/digdir/designsystemet/pull/4659))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.1
+
 ## 1.13.0
 
 ### Patch Changes
