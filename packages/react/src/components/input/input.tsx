@@ -77,6 +77,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       className={cl(`ds-input`, className)}
       ref={ref}
       type={type}
+      suppressHydrationWarning // Since <ds-field> adds attributes
       onChange={(event) => rest.readOnly || onChange?.(event)} // Make readonly work for checkbox / radio / switch
       onClick={(event) => {
         if (rest.readOnly) event.preventDefault(); // Make readonly work for checkbox / radio / switch
