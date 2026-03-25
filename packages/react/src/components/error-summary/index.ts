@@ -89,8 +89,8 @@ export type { ErrorSummaryLinkProps } from './error-summary-link';
 export type { ErrorSummaryListProps } from './error-summary-list';
 export {
   ErrorSummaryComponent as ErrorSummary,
-  ErrorSummaryItem,
   ErrorSummaryHeading,
-  ErrorSummaryList,
+  ErrorSummaryItem,
   ErrorSummaryLink,
+  ErrorSummaryList,
 };

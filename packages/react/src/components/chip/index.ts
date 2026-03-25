@@ -52,9 +52,9 @@ export type {
   ChipRemovableProps,
 } from './chips';
 export {
-  ChipComponent as Chip,
   ChipButton,
   ChipCheckbox,
+  ChipComponent as Chip,
   ChipRadio,
   ChipRemovable,
 };

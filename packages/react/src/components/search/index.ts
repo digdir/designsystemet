@@ -65,4 +65,4 @@ export type { SearchProps } from './search';
 export type { SearchButtonProps } from './search-button';
 export type { SearchClearProps } from './search-clear';
 export type { SearchInputProps } from './search-input';
-export { SearchClear, SearchButton, SearchInput, SearchComponent as Search };
+export { SearchButton, SearchClear, SearchComponent as Search, SearchInput };
