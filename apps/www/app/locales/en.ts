@@ -216,6 +216,7 @@ export default {
     'show-code': 'Show code',
     'hide-code': 'Hide code',
     'invert-color-scheme': 'invert color scheme',
+    language: 'Language',
     copy: 'Copy',
     reset: 'Reset',
   },
