@@ -218,6 +218,7 @@ export default {
     'show-code': 'Vis kode',
     'hide-code': 'Skjul kode',
     'invert-color-scheme': 'flipp mellom mørk og lys modus',
+    language: 'Språk',
     copy: 'Kopier',
     reset: 'Nullstill',
   },

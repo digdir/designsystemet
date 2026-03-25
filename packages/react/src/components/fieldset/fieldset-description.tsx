@@ -15,5 +15,11 @@ export const FieldsetDescription = forwardRef<
   HTMLLegendElement,
   FieldsetDescriptionProps
 >(function FieldsetDescription(rest, ref) {
-  return <Paragraph ref={ref} {...rest} />;
+  return (
+    <Paragraph
+      suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
+      ref={ref}
+      {...rest}
+    />
+  );
 });

@@ -25,7 +25,12 @@ export type FieldsetProps = DefaultProps &
 export const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
   function Fieldset({ className, ...rest }, ref) {
     return (
-      <fieldset className={cl('ds-fieldset', className)} ref={ref} {...rest} />
+      <fieldset
+        className={cl('ds-fieldset', className)}
+        suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
+        ref={ref}
+        {...rest}
+      />
     );
   },
 );
