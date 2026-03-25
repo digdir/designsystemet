@@ -29,7 +29,6 @@ export const Preview: Story = {
   render: ({ ...args }) => {
     return (
       <FileUpload {...args}>
-        <CloudUpIcon aria-hidden='true' />
         <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
         <FileUpload.Description>
           File must be in csv format and less than 2MB
@@ -44,7 +43,6 @@ export const Preview: Story = {
 export const Variants: StoryFn<typeof FileUpload> = () => (
   <>
     <FileUpload label='color variant default'>
-      <CloudUpIcon aria-hidden='true' />
       <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
@@ -53,7 +51,6 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
       <FileUpload.Input />
     </FileUpload>
     <FileUpload data-color='neutral' label='color variant neutral'>
-      <CloudUpIcon aria-hidden='true' />
       <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
@@ -65,7 +62,6 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
 );
 export const LinkAlt: StoryFn<typeof FileUpload> = () => (
   <FileUpload>
-    <CloudUpIcon aria-hidden='true' />
     <FileUpload.Label>
       Drop files or <span className='ds-link'>click to browse</span>
     </FileUpload.Label>
@@ -79,7 +75,6 @@ export const LinkAlt: StoryFn<typeof FileUpload> = () => (
 export const ReadOnly: StoryFn<typeof FileUpload> = () => (
   <>
     <FileUpload label='Upload file' description='Inside FileUpload'>
-      <CloudUpIcon aria-hidden='true' />
       <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
@@ -97,7 +92,6 @@ export const Disabled: StoryFn<typeof FileUpload> = () => (
       description='description'
       error='Invalid file format'
     >
-      <CloudUpIcon aria-hidden='true' />
       <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
@@ -161,7 +155,6 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
         )}
         {!isReadOnly && (
           <>
-            <CloudUpIcon aria-hidden='true' />
             <FileUpload.Label aria-hidden='true'>
               {isDragging ? 'Drop file to upload' : 'Drop file here'}
             </FileUpload.Label>
