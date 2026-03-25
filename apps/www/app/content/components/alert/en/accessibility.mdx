@@ -1,38 +1,40 @@
 ## What you need to check
 
-**`Alert` that appears or updates after the page has loaded must be automatically announced by screen readers.**
+<Card>
+    <Card.Block>
+        **`Alert` that appears or updates after the page has loaded must be automatically announced by screen readers.**
 
-Use `role="alert"` for critical messages that require immediate attention. 
-Use `role="status"` for less critical messages.
+        Use `role="alert"` for critical messages that require immediate attention. 
+        Use `role="status"` for less critical messages.
 
-<span data-size="sm"> 
-(WCAG: [4.1.3 Status messages](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152))
-</span> 
+        <span data-size="sm"> 
+        WCAG: [4.1.3 Status messages](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+        </span> 
+    </Card.Block>
+</Card>
 
+<Card>
+    <Card.Block>
+        **`Alert` must be placed so that it follows the reading order.**
 
-<Divider/>
-\
-**`Alert` must be placed so that it follows the reading order.**
+        This means the `Alert` must appear in the DOM in a way that provides a logical reading order for screen readers. If the `Alert` has a heading, the heading level must be correct in the page structure.
 
-This means the `Alert` must appear in the DOM in a way that provides a logical reading order for screen readers. If the `Alert` has a heading, the heading level must be correct in the page structure.
+        <span data-size="sm"> 
+        WCAG: [1.3.1 Info and relationships](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+        </span> 
+    </Card.Block>
+</Card>
 
-<span data-size="sm"> 
-(WCAG: [1.3.1 Info and relationships](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90))
-</span> 
+<Card>
+    <Card.Block>
+        **`Alert` text must explain what happened and what it means for the user.**
 
+        Example: “Your changes have been saved” or “An error occurred while saving. Please try again later”. Not just: “Error” or “Warning”.
 
-<Divider/>
-\
-**`Alert` text must explain what happened and what it means for the user.**
+        See the [system notifications pattern](/en/patterns/systemnotifications#language) for guidance on writing.
 
-Example: “You must enter an email address”.  
-Not just: “Error” or “Warning”.
-
-<span data-size="sm"> 
-(WCAG: [2.4.6 Headings and labels](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108))
-</span> 
-
-<Divider/>
+    </Card.Block>
+</Card>
 
 ## Alert in a live region
 

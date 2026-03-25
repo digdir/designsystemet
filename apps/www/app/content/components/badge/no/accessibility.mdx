@@ -1,39 +1,37 @@
 ## Dette må du sjekke selv
 
-**`Badge` som viser viktig informasjon skal inngå i det interaktive elementets tilgjengelige navn.**
+<Card>
+    <Card.Block>
+        **`Badge` som viser viktig informasjon skal inngå i det interaktive elementets tilgjengelige navn.**
 
-Hvis `Badge` plasseres inline (inni elementet), blir innholdet en del av det tilgjengelige navnet. Eksempel: `Button` med teksten "Innboks" og `Badge` med "2" leses opp som "Innboks 2".
+        Hvis `Badge` plasseres inline (inni elementet), blir innholdet en del av det tilgjengelige navnet. Eksempel: `Button` med teksten "Innboks" og `Badge` med "2" leses opp som "Innboks 2".
 
-<span data-size="sm"> 
-(WCAG: [1.3.1 informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90))
-</span> 
+        <span data-size="sm"> 
+        WCAG: [1.3.1 informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+        </span> 
+    </Card.Block>
+</Card>
+
+<Card>
+    <Card.Block>
+        **Hvis `Badge` er plassert utenfor det interaktive elementet, skal badge-informasjonen legges til i elementets tilgjengelige navn.**
+
+        Dette gjelder ofte når `Badge` vises i hjørnet av en knapp eller ikon. I slike tilfeller skal badge-verdien legges til manuelt i elementets tilgjengelige navn (for eksempel via `aria-label`).
+
+        <span data-size="sm"> 
+        WCAG: [1.3.1 informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+        </span> 
+    </Card.Block>
+</Card>
+
+<Card>
+    <Card.Block>
+        **`Badge` som endrer verdi (for eksempel 1 → 2) skal annonseres til skjermlesere**
+
+        <span data-size="sm"> 
+        WCAG: [4.1.3 Statusbeskjeder](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+        </span> 
+    </Card.Block>
+</Card>
 
 
-<Divider/>
-\
-**Hvis `Badge` er plassert utenfor det interaktive elementet, skal badge-informasjonen legges til i elementets tilgjengelige navn.**
-
-Dette gjelder ofte når `Badge` vises i hjørnet av en knapp eller ikon. I slike tilfeller skal badge-verdien legges til manuelt i elementets tilgjengelige navn (for eksempel via `aria-label`).
-
-<span data-size="sm"> 
-(WCAG: [1.3.1 informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90))
-</span> 
-
-
-<Divider/>
-\
-**`Badge` som endrer verdi (for eksempel 1 → 2) skal annonseres til skjermlesere**
-
-<span data-size="sm"> 
-(WCAG: [4.1.3 Statusbeskjeder](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152))
-</span> 
-
-<Divider/>
-\
-**`Badge` skal ikke formidle informasjon kun med farge eller plassering**
-
-<span data-size="sm"> 
-(WCAG: [1.4.1 Bruk av farge](https://www.uutilsynet.no/veiledning/141-bruk-av-farge/1239))
-</span> 
-
-<Divider/>

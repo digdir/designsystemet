@@ -1,39 +1,41 @@
 ## Dette må du sjekke selv
 
-**`Alert` som vises eller oppdateres etter at siden er lastet skal bli kunngjort automatisk av skjermlesere.**
+<Card>
+    <Card.Block>
+        **`Alert` som vises eller oppdateres etter at siden er lastet skal bli kunngjort automatisk av skjermlesere.**
 
-Bruk `role="alert"` for kritiske meldinger som krever umiddelbar oppmerksomhet.  
-Bruk `role="status"` for mindre kritiske meldinger.
+        Bruk `role="alert"` for kritiske meldinger som krever umiddelbar oppmerksomhet.  
+        Bruk `role="status"` for mindre kritiske meldinger.
 
-<span data-size="sm"> 
-(WCAG: [4.1.3 Statusbeskjeder](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152))
-</span> 
+        <span data-size="sm"> 
+        WCAG: [4.1.3 Statusbeskjeder](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+        </span> 
+    </Card.Block>
+</Card>
 
+<Card>
+    <Card.Block>
+        **`Alert` skal være plassert slik at den følger leserekkefølgen.**
 
-<Divider/>
-\
-**`Alert` skal være plassert slik at den følger leserekkefølgen.**
+        Dette betyr at `Alert` skal ligge i DOM på en måte som gir en logisk leserekkefølge for skjermlesere.  
+        Hvis `Alert` har en overskrift, skal overskriftsnivået være korrekt i sidestrukturen.
 
-Dette betyr at `Alert` skal ligge i DOM på en måte som gir en logisk leserekkefølge for skjermlesere.  
-Hvis `Alert` har en overskrift, skal overskriftsnivået være korrekt i sidestrukturen.
+        <span data-size="sm"> 
+        WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+        </span> 
+    </Card.Block>
+</Card>
 
-<span data-size="sm"> 
-(WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90))
-</span> 
+<Card>
+    <Card.Block>
+        **`Alert`-tekst skal forklare hva som har skjedd og hva det betyr for brukeren.**
 
+        Eksempel: “Endringene dine er lagret” eller “Det oppstod en feil ved lagring. Prøv igjen senere”. Ikke bare: “Feil” eller “Advarsel”.
 
-<Divider/>
-\
-**`Alert`-tekst skal forklare hva som har skjedd og hva det betyr for brukeren.**
+        Se [mønsteret for systemvarsler](/no/patterns/systemnotifications#språk) for anbefalinger om tekst.
 
-Eksempel: “Du må fylle ut e-postadresse”.  
-Ikke bare: “Feil” eller “Advarsel”.
-
-<span data-size="sm"> 
-(WCAG: [2.4.6 Overskrifter og ledetekster](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108))
-</span> 
-
-<Divider/>
+    </Card.Block>
+</Card>
 
 ## Alert i live region
 

@@ -1,46 +1,40 @@
 ## Dette må du sjekke selv
 
-**Informativ `Avatar` skal ha et tilgjengelig navn.**
+<Card>
+    <Card.Block>
+        **Informativ `Avatar` skal ha et tilgjengelig navn.**
 
-Tilgjengelig navn kan legges til med `aria-label`. Hvis flere avatarer vises sammen, skal hvert navn være unikt.
+        Tilgjengelig navn kan legges til med `aria-label`. Hvis flere avatarer vises sammen, skal hvert navn være unikt.
 
-<span data-size="sm"> 
-(WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90))
-</span> 
+        <span data-size="sm"> 
+        WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+        </span> 
+    </Card.Block>
+</Card>
 
+<Card>
+    <Card.Block>
+        **Dekorativ `Avatar` skal skjules for skjermlesere.**
 
-<Divider/>
-\
-**Dekorativ `Avatar` skal skjules for skjermlesere.**
+        Dette gjelder når `Avatar` kun er dekorasjon og ikke formidler informasjon. Eksempel: Hvis en `Avatar` vises inne i en knapp med teksten “Ola Nordmann”, kan avataren skjules fordi navnet allerede identifiserer personen.
 
-Dette gjelder når `Avatar` kun er dekorasjon og ikke formidler informasjon. Eksempel: Hvis en `Avatar` vises inne i en knapp med teksten “Ola Nordmann”, kan avataren skjules fordi navnet allerede identifiserer personen.
+        <span data-size="sm"> 
+        WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)
+        </span> 
+    </Card.Block>
+</Card>
 
-<span data-size="sm"> 
-(WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87))
-</span> 
+<Card>
+    <Card.Block>
+        **Klikkbar `Avatar` skal ha et tilgjengelig navn.**
 
+        Tilgjengelig navn kan legges til med `aria-label`. Eksempel: “Profil for Ola Nordmann”. Unngå: kun Innitialer eller “Avatar”.
 
-<Divider/>
-\
-**Klikkbar `Avatar` skal ha et tilgjengelig navn.**
+        <span data-size="sm"> 
+        WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+        </span> 
+    </Card.Block>
+</Card>
 
-Tilgjengelig navn kan legges til med `aria-label`. Eksempel: “Profil for Ola Nordmann”. Unngå: kun Innitialer eller “Avatar”.
-
-<span data-size="sm"> 
-(WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
-</span> 
-
-
-<Divider/>
-\
-**Klikkbar `Avatar` med synlig tekst (for eksempel initialer) skal inkludere den samme teksten i det tilgjengelige navnet.**
-
-Eksempel: En `Avatar` som viser “ON” bør ha tilgjengelig navn “ON – Profil for Ola Nordmann”.
-
-<span data-size="sm"> 
-(WCAG: [2.5.3 Ledetekst i navn](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/150))
-</span> 
-
-<Divider/>
 
 
