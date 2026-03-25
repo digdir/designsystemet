@@ -24,7 +24,7 @@ jobs:
   snapshot:
     name: Snapshot Release
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.snapshot == 'true' }}
+    if: ${{ github.event.inputs.snapshot == 'true' && github.event.inputs.tag == 'test' }}
     permissions:
       contents: read
       pull-requests: write
@@ -60,7 +60,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    if: ${{ github.event.inputs.snapshot != 'true' }}
+    if: ${{ github.event.inputs.snapshot != 'true' && github.event.inputs.tag == 'production' }}
     permissions:
       contents: write
       pull-requests: write
