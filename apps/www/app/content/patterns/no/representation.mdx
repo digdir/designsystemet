@@ -12,8 +12,6 @@ Det må være enkelt for brukerne å se hvem de er logget inn som, og hvordan de
 ### 1. Forstår brukerne at de er logget inn? 
 Brukerne bør få en tydelig bekreftelse med en gang de har logget inn, for eksempel ved at de kan se at grensesnittet blir endret, eller ved en klar melding som sier: «Du er logget inn som [navn]». Det skal alltid være tydelig at brukeren er logget inn, og hvem brukeren eventuelt handler på vegne av. Denne informasjonen bør være lett synlig, og konsekvent plassert i grensesnittet gjennom hele brukerreisen. Hvis vi sender brukerne videre til en annen nettside som del av samme reise, bør vi videreføre både innlogging og representasjon der det er mulig og forsvarlig. Dette krever at vi vurderer personvern, særlig når reisen går via ulike aktører. 
 
-[Legg inn eksempel på tydelig innlogging] 
-
 ###  2. Forstår brukerne hvem de kan gjøre noe på vegne av? 
 Muligheten til å representere noen andre bygger på for eksempel roller i Enhetsregisteret (daglig leder, signaturrett), eller relasjoner i Folkeregisteret (forelder, verge). Også fullmakter og andre rettigheter i enkeltløsninger kan gi grunnlag for å representere andre. 
 Forklar tydelig hvorfor brukerne kan gjøre noe på vegne av noen andre. 
@@ -25,8 +23,6 @@ Bruk forklarende etiketter som:
 
 Hvis retten til å representere er tidsbegrenset, bør det komme frem når den utløper. Hvis konteksten gjør detaljene unødvendige, kan du utelate dem. Bruk skjønn.  
 
-[Legg inn eksempel på godt representasjonsvalg] 
-
 ### 3. Forstår brukerne hvordan de velger hvem de skal gjøre noe på vegne av? 
 Hvis det er nødvendig for en bruker å gjøre noe på vegne av en annen, bør valget komme rett etter innlogging. Hvis brukerne bare kan gjøre noe på vegne av seg selv, trenger de ikke velge, men det må fortsatt være tydelig at de er innlogget. 
 
@@ -36,16 +32,26 @@ Tenk over om
 - brukerne skal ha mulighet til å gi kallenavn eller merke favoritter 
 - det er behov for søke- og filtreringsfunksjoner, spesielt for brukere som har mange rettigheter 
 
+<Image
+  src="/img/pattern-representation-2.png"
+  alt=".."
+  boxShadow={false}
+  caption="Med en gang brukerne har logget inn, bør det være tydelig at de er logget inn, og hvem de kan bruke tjenesten på vegne av."
+/>
+
 ### 4. Forstår brukerne hvem de gjør noe på vegne av? 
 Det bør alltid være tydelig hvem brukerne representerer, ikke bare hvem de er logget inn som. I noen tjenester kan brukerne se innhold fra flere av dem de representerer. Hvis for eksempel regnskapsførere kan se meldingene til flere virksomheter i samme innboks, må det komme tydelig frem i sammenhengen hvem de gjør noe på vegne av. 
-
-[Legg inn eksempler på visualisering av representasjon] 
 
 ### 5. Forstår brukerne hvordan de endrer hvem de gjør noe på vegne av? 
 
 Brukeren bør enkelt kunne bytte hvem de representerer, for eksempel fra en meny i toppen. Samtidig må det være tydelig når det ikke er mulig å bytte, og hvorfor. Hvis den brukerne representerer blir endret automatisk (for eksempel fordi de kommer fra en annen tjeneste), bør de få beskjed om det. 
 
-[Legg inn eksempler på god representasjonsbytte-funksjon] 
+<Image
+  src="/img/pattern-representation-1.png"
+  alt=".."
+  boxShadow={false}
+  caption="Det bør være tydelig hvorfor brukerne kan gjøre noe på vegne av noen andre, for eksempel at de er foresatt, har fått fullmakt eller er daglig leder."
+/>
 
 
 ## Språk og begreper
@@ -224,96 +230,20 @@ Hvis du må bruke begrepet "underenhet", kan det være nyttig å forklare hva en
 De fleste virksomheter (hovedenheter) har minst én underenhet, som er knyttet til aktiviteten virksomheten driver. En virksomhet kan ha flere underenheter for å skille ulike aktiviteter som driftes adskilt, eller for å dele opp virksomheten i avdelinger og/eller fysiske steder. Når virksomheten har ansatte, skal de være registrert på underenheten. Hver underenhet må ha minst én ansatt. 
 
 ### Min side, din side, eller noens side?
-Brukerne kan bli forvirret når flere offentlige tjenester bruker samme eller lignende navn for innloggede sider, som «Min side» og «Din side». Brukere kan ha problemer med å huske hva de gjorde hvor: «Jeg fant det jo på Min side, men var det hos skatteetaten eller Nav?» 
-I tillegg risikerer vi at brukeropplevelsen blir usammenhengende. Det som oppleves som én type side, kan ha ulikt innhold, struktur og formål fra tjeneste til tjeneste. 
+Brukerne kan bli forvirret når flere offentlige tjenester bruker samme eller lignende navn for innloggede sider, som «Min side» og «Din side». Noen kan ha problemer med å huske hva de gjorde hvor: «Jeg fant det jo på Min side, men var det hos Skatteetaten eller Altinn?» I tillegg risikerer vi at brukeropplevelsen blir usammenhengende. Det som oppleves som én type side, kan ha ulikt innhold, struktur og formål fra tjeneste til tjeneste. 
 
-#### Anbefaling
 Vurder om det er nødvendig å gi de innloggede sidene en tittel. Det fungerer ofte godt å bare bruke navnet til brukeren som er innlogget, eventuelt navnet til den/det brukeren er innlogget på vegne av.  
  
-Hvis det er nødvendig å gi det en tittel, anbefaler vi å være konkret om hvor brukeren er. For eksempel "Ditt Nav" eller "Min skatt". Unngå generelle titler som "Min side" og "Din side". Vi har ikke brukerinnsikt om hva som er best av "min" og "din".  
- 
-Vær konsekvent hvis du velger å ha en tittel med "Min" eller "Din". Pass på at det ikke er formuleringer som "Følg saken din" og "Om meg" på samme side.  
+Hvis det er nødvendig å gi det en tittel, anbefaler vi å være konkret om hvor brukeren er. Vær konsekvent hvis du velger å ha en tittel med "Min" eller "Din". Pass på at det ikke er formuleringer som "Følg saken din" og "Om meg" på samme side.  
  
 Vi har kartlagt innloggede sider fra flere offentlige og private virksomheter, og ser at det oftere er inkonsekvent begrepsbruk på sider som har valgt en tittel med "min". Det er lettere å være konsekvent der "din" blir brukt. I tillegg er det en fordel at det oppleves som en dialog hvis vi henvender oss til brukeren med "din”, “deg” og “du”.  
- 
-Uavhengig av hva du velger, anbefaler vi å bruke "din" og "min" varsomt. Sjekk om det er nødvendig å bruke det, eller om konteksten i stor nok grad gjør brukerne trygge på at de er innlogget og hvem sine opplysninger de ser. 
-
-
-## Forklaring av begreper som er brukt i artikkelen 
-
-<Table>
-  <TableHead>
-    <TableRow>
-      <TableHeaderCell scope="col">Begrep/formulering</TableHeaderCell>
-      <TableHeaderCell scope="col">Forklaring</TableHeaderCell>
-    </TableRow>
-  </TableHead>
-
-  <TableBody>
-    <TableRow>
-      <TableHeaderCell scope="row" style={{ verticalAlign: 'top' }}>
-        Innlogging
-      </TableHeaderCell>
-      <TableCell style={{ verticalAlign: 'top' }}>
-        Prosessen der brukeren identifiserer og autentiserer seg for å få tilgang til en digital tjeneste. Før brukeren kan representere noen andre, må de være identifisert som seg selv.
-      </TableCell>
-    </TableRow>
-
-    <TableRow>
-      <TableHeaderCell scope="row" style={{ verticalAlign: 'top' }}>
-        Representasjon
-      </TableHeaderCell>
-      <TableCell style={{ verticalAlign: 'top' }}>
-        Når noen opptrer eller gjør noe på vegne av noen andre.
-      </TableCell>
-    </TableRow>
-
-    <TableRow>
-      <TableHeaderCell scope="row" style={{ verticalAlign: 'top' }}>
-        Fullmakt
-      </TableHeaderCell>
-      <TableCell style={{ verticalAlign: 'top' }}>
-        Viljeserklæring der den som gir fullmakten tildeler en person eller en virksomhet (fullmektigen) myndighet til å opptre eller gjøre noe på sine vegne.
-      </TableCell>
-    </TableRow>
-
-    <TableRow>
-      <TableHeaderCell scope="row" style={{ verticalAlign: 'top' }}>
-        Samtykke
-      </TableHeaderCell>
-      <TableCell style={{ verticalAlign: 'top' }}>
-        Å akseptere, godkjenne eller gi tillatelse.
-      </TableCell>
-    </TableRow>
-
-    <TableRow>
-      <TableHeaderCell scope="row" style={{ verticalAlign: 'top' }}>
-        Verge
-      </TableHeaderCell>
-      <TableCell style={{ verticalAlign: 'top' }}>
-        En verge er en person som er oppnevnt av statsforvalteren til å ivareta interessene til noen som ikke kan gjøre det selv. Vergen tar beslutninger på vegne av personen og kan representere dem i juridiske og administrative forhold.
-      </TableCell>
-    </TableRow>
-
-    <TableRow>
-      <TableHeaderCell scope="row" style={{ verticalAlign: 'top' }}>
-        Foresatt
-      </TableHeaderCell>
-      <TableCell style={{ verticalAlign: 'top' }}>
-        En foresatt er en person som har det juridiske ansvaret for et barn under 18 år. Foresatte tar beslutninger på vegne av barnet og kan representere barnet i juridiske og administrative forhold. Som regel er foreldrene foresatte, men det kan også være andre som har foreldreansvar, for eksempel fosterforeldre eller verger.
-      </TableCell>
-    </TableRow>
-  </TableBody>
-</Table>
-
-
 
 <Card
   data-color='warning'
   variant="tinted"
 >
-**Arbeid pågår** \
-En tverretatlig arbeidsgruppe arbeider med å utvikle felles retningslinjer og anbefalinger for dette temaet. Vi setter stor pris på innspill fra alle som har erfaringer, innsikt eller resultater fra brukertester. Bidra gjerne i den tilhørende [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/2296).
+**Mer innsikt ønskes** \
+Sitter du på innsikt om dette temaet? Bidra gjerne i den tilhørende [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/2296).
 
 </Card>
 
