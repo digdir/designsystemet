@@ -1,7 +1,5 @@
 ## Dette må du sjekke selv
 
-<Card>
-    <Card.Block>
         **Hver knapp i `ToggleGroup` skal ha et tilgjengelig navn.**
 
         Om knappene kun bruker ikon kan tilgjengelig navn settes med `aria-label` eller `data-tooltip`. Navnet må beskrive hva valget betyr. Eksempel: “Listevisning” eller “Rutenettvisning”.
@@ -9,11 +7,9 @@
         <span data-size="sm"> 
         (WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
         </span> 
-    </Card.Block>
-</Card>
 
-<Card>
-    <Card.Block>
+<Divider/>
+\
         **`ToggleGroup` skal brukes på en måte som gjør at alle valg forblir synlige og brukbare på små skjermer.**
 
         `ToggleGroup` brytes ikke over flere linjer. For mange valg eller lange tekster kan føre til at deler av komponenten havner utenfor den synlige rammen.
@@ -23,6 +19,3 @@
         <span data-size="sm"> 
         (WCAG: [1.4.10 Dynamisk tilpasning (Reflow)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva-aa/144))
         </span> 
-    </Card.Block>
-</Card>
-
