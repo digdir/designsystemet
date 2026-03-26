@@ -1,5 +1,25 @@
 # Change Log
 
+## 1.13.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
+
+- **Tabs**: `onChange` was not called when keyboard changes active tab ([#4616](https://github.com/digdir/designsystemet/pull/4616))
+
+- **Dropdown**: `className` in subcomponents was not forwarded to DOM-element ([#4655](https://github.com/digdir/designsystemet/pull/4655))
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- **Tabs**: fix controlled version not behaving properly ([#4635](https://github.com/digdir/designsystemet/pull/4635))
+
+- **input:** add suppressHydrationWarning as attributes will be added by ds-field ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- Updated dependencies [[`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee), [`811fa99`](https://github.com/digdir/designsystemet/commit/811fa998227802da7fec9fa21e782ac77838eedf), [`80f9305`](https://github.com/digdir/designsystemet/commit/80f9305be3680673c54c3bdd8d8cca1a0a21ee4d), [`97ebdb3`](https://github.com/digdir/designsystemet/commit/97ebdb35a4cf49487084842a63a98b783669a02b), [`f403286`](https://github.com/digdir/designsystemet/commit/f403286714d36f77767464e38b8d324ceb3d251d)]:
+  - @digdir/designsystemet-web@1.13.1
+  - @digdir/designsystemet-types@1.13.1
+
 ## 1.13.0
 
 ### Patch Changes

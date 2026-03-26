@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export const Preview = () => {
   return (
-    <Pagination>
+    <Pagination aria-label='pagineringsmeny'>
       <Pagination.List>
         <Pagination.Item>
           <Pagination.Button aria-label='Forrige side' data-variant='tertiary'>
@@ -49,7 +49,7 @@ export const Preview = () => {
 
 export const PreviewEn = () => {
   return (
-    <Pagination>
+    <Pagination aria-label='Pagination menu'>
       <Pagination.List>
         <Pagination.Item>
           <Pagination.Button aria-label='Previous page' data-variant='tertiary'>
@@ -151,7 +151,7 @@ export const WithAnchorEn = () => {
   });
 
   return (
-    <Pagination aria-label='Sidenavigering'>
+    <Pagination aria-label='Pagination menu'>
       <Pagination.List>
         <Pagination.Item>
           <Pagination.Button
@@ -191,7 +191,7 @@ export const WithAnchorEn = () => {
 
 export const Mobile = () => {
   return (
-    <Pagination>
+    <Pagination aria-label='Pagination menu'>
       <Pagination.List>
         <Pagination.Item>
           <Pagination.Button
@@ -226,7 +226,7 @@ export const Mobile = () => {
 
 export const MobileEn = () => {
   return (
-    <Pagination>
+    <Pagination aria-label='Pagination menu'>
       <Pagination.List>
         <Pagination.Item>
           <Pagination.Button
