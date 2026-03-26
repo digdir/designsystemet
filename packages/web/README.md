@@ -15,7 +15,7 @@
 - [`<ds-pagination>`](#ds-pagination)
 - [`<ds-suggestion>`](#ds-suggestion)
 - [`<ds-tabs>`](#ds-tabs)
-- [`data-toggle-group`](#data-toggle-group)
+- [`ToggleGroup`](#togglegroup)
 - [`data-tooltip`](#data-tooltip)
 - [`data-clickdelegatefor`](#data-clickdelegatefor)
 - [`readonly`](#readonly)
@@ -177,13 +177,13 @@ Extends `u-tabs` from u-elements. See documentation for [u-tabs](https://u-eleme
 </ds-tabs>
 ```
 
-## `data-toggle-group`
+## ToggleGroup
 This is implemented differently from `ToggleGroup` in the react package.
 
-An observer will look for `[data-toggle-group]` and add proper arrow navigation plus Enter-key support.
+An observer will look for toggle group CSS and add proper arrow navigation plus Enter-key support.
 
 ```html
-<fieldset class="ds-toggle-group" data-toggle-group="Text alignment" data-variant="secondary">
+<fieldset class="ds-toggle-group" aria-label="Text alignment" data-variant="secondary">
   <label>
     <input type="radio" name="alignment-two" value="left" checked />
     Left aligned

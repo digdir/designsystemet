@@ -1,32 +1,17 @@
-import {
-  attr,
-  attrOrCSS,
-  debounce,
-  on,
-  onHotReload,
-  onMutation,
-} from '../utils/utils';
-
-const ATTR_TOGGLEGROUP = 'data-toggle-group';
-const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
-
-const handleAriaAttributes = debounce(() => {
-  for (const group of document.querySelectorAll(SELECTOR_TOGGLEGROUP))
-    attr(group, 'aria-label', attrOrCSS(group, ATTR_TOGGLEGROUP));
-}, 0); // Debounce to merge multiple mutations
+import { attr, getCSSProp, on, onHotReload, warn } from '../utils/utils';
 
 const handleKeydown = (event: Partial<KeyboardEvent>) => {
-  const group =
-    event.target instanceof HTMLInputElement &&
-    event.target.closest(SELECTOR_TOGGLEGROUP);
+  const { key, target: el } = event;
+  const group = el instanceof HTMLInputElement && el.closest('fieldset');
 
-  if (!group) return;
-  if (event.key === 'Enter') event.target.click(); // Forward Enter, but no need to listen for space key, as this is handled by the browser
-  if (event.key?.startsWith('Arrow')) {
+  if (!group || !getCSSProp(el, '--_ds-toggle-group')) return;
+  if (!attr(group, 'aria-label')) warn('Missing aria-label on:', group);
+  if (key === 'Enter') el.click(); // Forward Enter, but no need to listen for space key, as this is handled by the browser
+  if (key?.startsWith('Arrow')) {
     event.preventDefault?.();
     const inputs = [...group.getElementsByTagName('input')];
-    const index = inputs.indexOf(event.target);
-    const move = event.key.match(/Arrow(Right|Down)/) ? 1 : -1;
+    const index = inputs.indexOf(el);
+    const move = key.match(/Arrow(Right|Down)/) ? 1 : -1;
     let nextIndex = index;
 
     for (let i = 0; i < inputs.length; i++) {
@@ -39,12 +24,4 @@ const handleKeydown = (event: Partial<KeyboardEvent>) => {
   }
 };
 
-onHotReload('toggle-group', () => [
-  on(document, 'keydown', handleKeydown),
-  onMutation(document, handleAriaAttributes, {
-    attributeFilter: [ATTR_TOGGLEGROUP],
-    attributes: true,
-    childList: true,
-    subtree: true,
-  }),
-]);
+onHotReload('toggle-group', () => [on(document, 'keydown', handleKeydown)]);

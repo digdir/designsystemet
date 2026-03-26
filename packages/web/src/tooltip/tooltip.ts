@@ -46,7 +46,7 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 const handleAriaAttributes = debounce(() => {
   for (const el of document.querySelectorAll(SELECTOR_TOOLTIP)) {
     const aria = el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC); // Using getAttribute for best performance
-    const text = el.getAttribute(ATTR_TOOLTIP) || attrOrCSS(el, ATTR_TOOLTIP); // Only parse CSS if attribute is empty for better performance
+    const text = attrOrCSS(el, ATTR_TOOLTIP);
 
     if (aria !== text) {
       const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
@@ -65,7 +65,7 @@ const handleAriaAttributes = debounce(() => {
       if (document.activeElement === el) announce(text); // Only announce if focus is on the button
     }
   }
-}, 0); // Debounce to merge multiple mutations
+}, 10); // Debounce to merge multiple mutations
 
 const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);

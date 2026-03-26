@@ -62,7 +62,17 @@ export const attr = (
   return null;
 };
 
-const STRIP_SURROUNDING_QUOTES = /^["']|["']$/g; // Matches surrounding single or double quotes
+/**
+ * getCSSProp
+ * @description Retrieves and CSS property value and trims it
+ * @param el The Element to read attributes/CSS from
+ * @param name Attribute or CSS property to get
+ * @return string CSS property value
+ */
+export const getCSSProp = (el: Element, prop: string) =>
+  getComputedStyle(el).getPropertyValue(prop).trim();
+
+const STRIP_QUOTES = /^["']|["']$/g; // Matches surrounding single or double quotes
 /**
  * attrOrCSS
  * @description Retrieves and updates attribute based on attribute or CSS property value
@@ -72,12 +82,10 @@ const STRIP_SURROUNDING_QUOTES = /^["']|["']$/g; // Matches surrounding single o
  */
 export const attrOrCSS = (el: Element, name: string) => {
   let value = attr(el, name);
-  if (!value) {
-    const prop = getComputedStyle(el).getPropertyValue(`--_ds-${name}`);
-    value = prop.replace(STRIP_SURROUNDING_QUOTES, '').trim() || null;
-  }
+  if (!value)
+    value = getCSSProp(el, `--_ds-${name}`).replace(STRIP_QUOTES, '').trim();
   if (!value) warn(`Missing ${name} on:`, el);
-  return value;
+  return value || null;
 };
 
 /**
@@ -137,23 +145,17 @@ export const onHotReload = (key: string, setup: () => Array<() => void>) => {
 let SKIP_MUTATIONS = false;
 export const onMutation = (
   el: Node,
-  callback: (observer: MutationObserver) => void,
+  callback: (observer: MutationObserver, records?: MutationRecord[]) => void,
   options: MutationObserverInit,
 ) => {
-  let queue = 0;
-  const onFrame = () => {
+  const cleanup = () => observer.disconnect();
+  const observer = new MutationObserver((records) => {
     if (!el.isConnected) return cleanup(); // Stop observing if element is removed from DOM
-    callback(observer);
-    observer.takeRecords(); // Clear records in case mutations happened during callback
-    queue = 0;
-  };
-  const cleanup = () => observer?.disconnect?.();
-  const observer = new MutationObserver(() => {
-    if (!SKIP_MUTATIONS && !queue) queue = requestAnimationFrame(onFrame); // requestAnimationFrame only runs when page is visible
+    if (!SKIP_MUTATIONS) callback(observer, records);
   });
 
   observer.observe(el, options);
-  requestAnimationFrame(onFrame); // Initial run when page is visible and children has mounted
+  callback(observer); // Initial is run instantly to make test markup predictable
   return cleanup;
 };
 

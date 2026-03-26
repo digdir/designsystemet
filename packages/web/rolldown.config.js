@@ -25,7 +25,13 @@ export default defineConfig([
       dir: 'dist/esm',
       format: 'esm',
       sourcemap: true,
-      entryFileNames: '[name].js',
+      // See https://github.com/rollup/rollup/issues/3684#issuecomment-1535836196
+      entryFileNames: ({ name }) =>
+        name.includes('node_modules')
+          ? `external${name.split('node_modules').pop()}.js` // Jest does not resolve invokers-polyfill/fn so instead we bundle it into a "external" folder
+          : '[name].js',
+      // Needed to truly enable being treeshakable when Vite is in lib mode
+      // https://stackoverflow.com/questions/74362685/tree-shaking-does-not-work-in-vite-library-mode
       preserveModules: true,
       preserveModulesRoot: 'src',
       minify: true,

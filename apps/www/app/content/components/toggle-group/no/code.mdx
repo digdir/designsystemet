@@ -6,7 +6,7 @@
 ```tsx
 import { ToggleGroup } from '@digdir/designsystemet-react';
 
-<ToggleGroup data-toggle-group='Alternativer' defaultValue="option1">
+<ToggleGroup aria-label='Alternativer' defaultValue="option1">
   <ToggleGroup.Item value="option1">Alternativ 1</ToggleGroup.Item>
   <ToggleGroup.Item value="option2">Alternativ 2</ToggleGroup.Item>
 </ToggleGroup>
@@ -28,10 +28,10 @@ Bruk [`Tooltip`](/no/components/docs/tooltip/code) for å forklare handlingane n
 <Story story="Secondary" />
 
 ## HTML
-Bruker du `@digdir/designsystemet-web` kan du implementere `ToggleGroup` ved å bruke `data-toggle-group`-attributtet.
+Bruker du `@digdir/designsystemet-web` kan du implementere `ToggleGroup` ved å bruke `aria-label`-attributtet.
 
 ```html
-<fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering" data-variant="secondary">
+<fieldset class="ds-toggle-group" aria-label="Tekstjustering" data-variant="secondary">
   <label>
     <input type="radio" name="alignment-two" value="left" checked />
     Venstestilt

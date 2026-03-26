@@ -2,9 +2,12 @@
 
 import { describe, expect, it, vi } from 'vitest';
 
-const renderToggleGroup = async () => {
+const render = () => {
   document.body.innerHTML = `
-    <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering">
+    <style>
+      .ds-toggle-group { --_ds-toggle-group: 1; } /* Needed to trigger JS toggle-group activation */
+    </style>
+    <fieldset class="ds-toggle-group" aria-label="Tekstjustering">
       <label>
         <input type="radio" name="alignment" value="left" />
         Left
@@ -20,27 +23,20 @@ const renderToggleGroup = async () => {
     </fieldset>
   `;
 
-  vi.runAllTimers();
-
-  const group = document.querySelector('[data-toggle-group]') as HTMLElement;
-  const inputs = [...group.querySelectorAll('input')] as HTMLInputElement[];
-
-  await vi.waitUntil(
-    () => group.getAttribute('aria-label') === 'Tekstjustering',
-  );
+  const group = document.querySelector('fieldset') as HTMLFieldSetElement;
+  const inputs = [...group.querySelectorAll('input')];
 
   return { group, inputs };
 };
 
 describe('toggle-group behavior', () => {
-  it('sets aria-label from data-toggle-group', async () => {
-    const { group } = await renderToggleGroup();
-
+  it('sets aria-label from aria-label', () => {
+    const { group } = render();
     expect(group).toHaveAttribute('aria-label', 'Tekstjustering');
   });
 
-  it('clicks input on Enter', async () => {
-    const { inputs } = await renderToggleGroup();
+  it('clicks input on Enter', () => {
+    const { inputs } = render();
 
     const clickSpy = vi.spyOn(inputs[0], 'click');
 
@@ -52,10 +48,9 @@ describe('toggle-group behavior', () => {
   });
 
   it('moves focus with arrow keys and wraps', async () => {
-    const { inputs } = await renderToggleGroup();
+    const { inputs } = render();
 
     inputs[0].focus();
-
     inputs[0].dispatchEvent(
       new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
     );
