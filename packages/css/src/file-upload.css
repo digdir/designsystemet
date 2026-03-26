@@ -37,10 +37,14 @@
     }
   }
 
-  /*react-dropzone puts tabindex on wrapper and set tabindex="-1" on input so we handle both cases*/
-  &:focus-visible,
+  /*react-dropzone puts tabindex="0" on whatever gets {...getRootProps()} and set tabindex="-1" on input.. */
+  :focus-visible &,
   &:has(:focus-visible) {
     @composes ds-focus--visible from './base.css';
+  }
+  /*remove UA outline ()*/
+  :has(:focus-visible &) :focus-visible {
+    outline: 0;
   }
   > input[type='file'] {
     position: absolute;
@@ -76,7 +80,7 @@
     color: var(--dsc-file-upload-icon-color);
     height: var(--dsc-file-upload-icon-size);
     width: auto;
-        @media (forced-colors: active) {
+    @media (forced-colors: active) {
       color: CanvasText;
     }
   }

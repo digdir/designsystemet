@@ -1,3 +1,4 @@
+import { error } from 'node:console';
 import { CircleSlashIcon, CloudUpIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { type DragEvent, useRef, useState } from 'react';
@@ -28,7 +29,26 @@ export default meta;
 export const Preview: Story = {
   render: ({ ...args }) => {
     return (
-      <FileUpload {...args}>
+      <Field>
+        <Label className='ds-sr-only'>Upload file</Label>
+        <FileUpload {...args}>
+          <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
+          <FileUpload.Description>
+            File must be in csv format and less than 2MB
+          </FileUpload.Description>
+          <FileUpload.Button>Upload file</FileUpload.Button>
+          <FileUpload.Input />
+        </FileUpload>
+      </Field>
+    );
+  },
+};
+
+export const Variants: StoryFn<typeof FileUpload> = () => (
+  <>
+    <Field>
+      <Label>color variant default</Label>
+      <FileUpload>
         <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
         <FileUpload.Description>
           File must be in csv format and less than 2MB
@@ -36,45 +56,40 @@ export const Preview: Story = {
         <FileUpload.Button>Upload file</FileUpload.Button>
         <FileUpload.Input />
       </FileUpload>
-    );
-  },
-};
-
-export const Variants: StoryFn<typeof FileUpload> = () => (
-  <>
-    <FileUpload label='color variant default'>
-      <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
-      <FileUpload.Description>
-        File must be in csv format and less than 2MB
-      </FileUpload.Description>
-      <FileUpload.Button>Upload file</FileUpload.Button>
-      <FileUpload.Input />
-    </FileUpload>
-    <FileUpload data-color='neutral' label='color variant neutral'>
-      <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
-      <FileUpload.Description>
-        File must be in csv format and less than 2MB
-      </FileUpload.Description>
-      <FileUpload.Button>Upload file</FileUpload.Button>
-      <FileUpload.Input />
-    </FileUpload>
+    </Field>
+    <Field>
+      <Label>color variant neutral</Label>
+      <FileUpload data-color='neutral'>
+        <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
+        <FileUpload.Description>
+          File must be in csv format and less than 2MB
+        </FileUpload.Description>
+        <FileUpload.Button>Upload file</FileUpload.Button>
+        <FileUpload.Input />
+      </FileUpload>
+    </Field>
   </>
 );
 export const LinkAlt: StoryFn<typeof FileUpload> = () => (
-  <FileUpload>
-    <FileUpload.Label>
-      Drop files or <span className='ds-link'>click to browse</span>
-    </FileUpload.Label>
-    <FileUpload.Description>
-      File must be in csv format and less than 2MB
-    </FileUpload.Description>
-    <FileUpload.Input />
-  </FileUpload>
+  <Field>
+    <Label>Upload file</Label>
+    <FileUpload>
+      <FileUpload.Label>
+        Drop files or <span className='ds-link'>click to browse</span>
+      </FileUpload.Label>
+      <FileUpload.Description>
+        File must be in csv format and less than 2MB
+      </FileUpload.Description>
+      <FileUpload.Input />
+    </FileUpload>
+  </Field>
 );
 
 export const ReadOnly: StoryFn<typeof FileUpload> = () => (
-  <>
-    <FileUpload label='Upload file' description='Inside FileUpload'>
+  <Field>
+    <Label>Upload file</Label>
+    <Field.Description>description text</Field.Description>
+    <FileUpload>
       <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
@@ -82,16 +97,14 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
       <FileUpload.Button>Upload file</FileUpload.Button>
       <FileUpload.Input readOnly={true} />
     </FileUpload>
-  </>
+  </Field>
 );
 
 export const Disabled: StoryFn<typeof FileUpload> = () => (
-  <>
-    <FileUpload
-      label='Upload file'
-      description='description'
-      error='Invalid file format'
-    >
+  <Field>
+    <Label>Upload file</Label>
+    <Field.Description>description text</Field.Description>
+    <FileUpload>
       <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
@@ -99,7 +112,23 @@ export const Disabled: StoryFn<typeof FileUpload> = () => (
       <FileUpload.Button>Upload file</FileUpload.Button>
       <FileUpload.Input disabled={true} />
     </FileUpload>
-  </>
+    <ValidationMessage>Invalid file format</ValidationMessage>
+  </Field>
+);
+
+export const HiddenLabel: StoryFn<typeof FileUpload> = () => (
+  <Field>
+    <Label className='ds-sr-only'>Upload file</Label>
+    <Field.Description>description text</Field.Description>
+    <FileUpload>
+      <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
+      <FileUpload.Description>
+        File must be in csv format and less than 2MB
+      </FileUpload.Description>
+      <FileUpload.Button>Upload file</FileUpload.Button>
+      <FileUpload.Input />
+    </FileUpload>
+  </Field>
 );
 
 export const WorkingExample: StoryFn<typeof FileUpload> = () => {
@@ -139,38 +168,41 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
 
   return (
     <div style={{ minWidth: '300px' }}>
-      <FileUpload
-        onDragOver={(event) => {
-          event.preventDefault();
-          setIsDragging(true);
-        }}
-        onDragLeave={() => setIsDragging(false)}
-        onDrop={handleDrop}
-      >
-        {isReadOnly && (
-          <>
-            <CircleSlashIcon aria-hidden='true' />
-            <FileUpload.Label>You can not upload more files</FileUpload.Label>
-          </>
-        )}
-        {!isReadOnly && (
-          <>
-            <FileUpload.Label aria-hidden='true'>
-              {isDragging ? 'Drop file to upload' : 'Drop file here'}
-            </FileUpload.Label>
-            <FileUpload.Description>
-              File must be in svg format
-            </FileUpload.Description>
-            <FileUpload.Button>Upload file</FileUpload.Button>
-          </>
-        )}
-        <FileUpload.Input
-          ref={fileInputRef}
-          accept='.svg'
-          readOnly={isReadOnly}
-          onChange={handleChange}
-        />
-      </FileUpload>
+      <Field>
+        <Label>Upload profile picture</Label>
+        <FileUpload
+          onDragOver={(event) => {
+            event.preventDefault();
+            setIsDragging(true);
+          }}
+          onDragLeave={() => setIsDragging(false)}
+          onDrop={handleDrop}
+        >
+          {isReadOnly && (
+            <>
+              <CircleSlashIcon aria-hidden='true' />
+              <FileUpload.Label>You can not upload more files</FileUpload.Label>
+            </>
+          )}
+          {!isReadOnly && (
+            <>
+              <FileUpload.Label aria-hidden='true'>
+                {isDragging ? 'Drop file to upload' : 'Drop file here'}
+              </FileUpload.Label>
+              <FileUpload.Description>
+                File must be in svg format
+              </FileUpload.Description>
+              <FileUpload.Button>Upload file</FileUpload.Button>
+            </>
+          )}
+          <FileUpload.Input
+            ref={fileInputRef}
+            accept='.svg'
+            readOnly={isReadOnly}
+            onChange={handleChange}
+          />
+        </FileUpload>
+      </Field>
       {uploadedFiles.length > 0 && (
         <>
           <ul>
@@ -212,41 +244,41 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
 
   return (
     <div style={{ minWidth: '300px' }}>
-      <FileUpload {...getRootProps()}>
-        {isReadOnly && (
-          <>
-            <CircleSlashIcon aria-hidden='true' />
-            <FileUpload.Label>You can not upload more files</FileUpload.Label>
-          </>
-        )}
-        {!isReadOnly && (
-          <>
-            {isDragReject ? (
+      <Field {...getRootProps()}>
+        <Label>Upload profile picture</Label>
+        <FileUpload>
+          {isReadOnly && (
+            <>
               <CircleSlashIcon aria-hidden='true' />
-            ) : (
-              <CloudUpIcon aria-hidden='true' />
-            )}
-            <FileUpload.Label aria-hidden='true'>
-              {isDragReject
-                ? 'File type not accepted'
-                : isDragActive
-                  ? 'Drop file(s) here'
-                  : 'Drop file(s) or click to upload'}
-            </FileUpload.Label>
-            <FileUpload.Description>
-              File must be <code>.svg</code>, {MAX_FILES - files.length} of{' '}
-              {MAX_FILES} files remaining
-            </FileUpload.Description>
-            <FileUpload.Button>Upload files</FileUpload.Button>
-          </>
-        )}
+              <FileUpload.Label>You can not upload more files</FileUpload.Label>
+            </>
+          )}
+          {!isReadOnly && (
+            <>
+              {isDragReject && <CircleSlashIcon aria-hidden='true' />}
+              <FileUpload.Label aria-hidden='true'>
+                {isDragReject
+                  ? 'File type not accepted'
+                  : isDragActive
+                    ? 'Drop file(s) here'
+                    : 'Drop file(s) or click to upload'}
+              </FileUpload.Label>
+              <FileUpload.Description>
+                File must be <code>.svg</code>, {MAX_FILES - files.length} of{' '}
+                {MAX_FILES} files remaining
+              </FileUpload.Description>
+              <FileUpload.Button>Upload files</FileUpload.Button>
+            </>
+          )}
 
-        <FileUpload.Input
-          {...getInputProps()}
-          readOnly={isReadOnly}
-          aria-invalid={isDragReject}
-        />
-      </FileUpload>
+          <FileUpload.Input
+            {...getInputProps({
+              readOnly: isReadOnly,
+              'aria-invalid': isDragReject,
+            })}
+          />
+        </FileUpload>
+      </Field>
       {files.length > 0 && (
         <>
           <p>Accepted files</p>
