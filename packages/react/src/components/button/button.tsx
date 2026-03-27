@@ -45,9 +45,16 @@ export type ButtonProps = MergeRight<
     type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
     /**
      * Native invoker commands. Specifies actions to perform on an element specified by commandfor. Polyfilled by designsystemet-web and includes a custom --show-non-modal command.
-     * "show-modal", "close", "request-close", "show-popover", "hide-popover", "toggle-popover", "--show-non-modal"
      */
-    command?: string;
+    command?:
+      | 'show-modal'
+      | 'close'
+      | 'request-close'
+      | 'show-popover'
+      | 'hide-popover'
+      | 'toggle-popover'
+      | '--show-non-modal'
+      | `--${string}`;
     /**
      * Specifies the target element for "command".
      * value is ID of target
