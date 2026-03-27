@@ -2,40 +2,9 @@ import {
   Divider,
   Field,
   Fieldset,
-  FileUpload,
   Input,
   Label,
 } from '@digdir/designsystemet-react';
-
-export const FileUploadExample = () => (
-  <Field>
-    <Label>Upload profile picture</Label>
-    <Field.Description>description text</Field.Description>
-    <FileUpload>
-      <FileUpload.Label>Drop file here</FileUpload.Label>
-      <FileUpload.Description>
-        File must be in csv format and less than 2MB
-      </FileUpload.Description>
-      <FileUpload.Button>Upload file</FileUpload.Button>
-      <FileUpload.Input />
-    </FileUpload>
-  </Field>
-);
-
-export const FileUploadReactDropzone = () => (
-  <Field tabIndex={0}>
-    <Label>Upload profile picture</Label>
-    <Field.Description>description text</Field.Description>
-    <FileUpload>
-      <FileUpload.Label>Drop file here</FileUpload.Label>
-      <FileUpload.Description>
-        File must be in csv format and less than 2MB
-      </FileUpload.Description>
-      <FileUpload.Button>Upload file</FileUpload.Button>
-      <FileUpload.Input tabIndex={-1} />
-    </FileUpload>
-  </Field>
-);
 
 export const Preview = () => {
   return <Input aria-label='input' />;
