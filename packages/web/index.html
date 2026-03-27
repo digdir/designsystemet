@@ -23,9 +23,14 @@
     <br>
     <br>
 
-    <h2 class="ds-heading">data-clickdelegatefor</h2>
+    <h2 class="ds-heading" id="my-heading">data-clickdelegatefor</h2>
     <ds-field class="ds-card" data-clickdelegatefor="target">
-      <input id="target" class="ds-input" type="checkbox">
+      <input
+        id="target"
+        class="ds-input"
+        type="checkbox"
+        aria-describedby="my-heading"
+      >
       <label>Clicking this card will toggle the checkbox</label>
     </ds-field>
     <ds-field class="ds-card" data-clickdelegatefor="target-disabled">

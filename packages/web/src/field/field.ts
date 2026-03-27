@@ -22,6 +22,7 @@ declare global {
   }
 }
 
+const ATTR_DESCRIBEDBY = 'aria-describedby';
 const ATTR_INDETERMINATE = 'data-indeterminate';
 const FIELDS = new Set<DSFieldElement>(); // Set of Field
 const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so removed inputs/counts does not cause memory leaks
@@ -59,6 +60,7 @@ const handleFieldMutation = (field: DSFieldElement) => {
   const descs: Element[] = [];
   const labels: HTMLLabelElement[] = [];
   let input: HTMLInputElement | undefined;
+  // let descsIDs: string[] = [];
   let counter: Element | undefined;
   let hasValidation = false;
   let invalid = false;
@@ -72,7 +74,10 @@ const handleFieldMutation = (field: DSFieldElement) => {
           `Fields should only have one input element. Use <fieldset> to group multiple fields:`,
           field,
         );
-      else input = el; // Only register if visible input
+      else {
+        input = el; // Only register if visible input
+        // descsIDs = attr(el, ATTR_DESCRIBEDBY)?.trim().split(/\s+/) || [];
+      }
     } else {
       const type = el.getAttribute('data-field'); // Using getAttribute instead of attr for best performance
       if (type === 'counter') counter = el;
@@ -93,6 +98,9 @@ const handleFieldMutation = (field: DSFieldElement) => {
       .closest('fieldset')
       ?.querySelector<HTMLElement>(':scope > [data-field="validation"]');
 
+    // TODO EIRIK
+    // console.log(descsIDs, descs);
+
     // Connect fieldset validation to inputs
     if (fieldsetValidation && !fieldsetValidation?.hidden) {
       hasValidation = true;
@@ -107,7 +115,7 @@ const handleFieldMutation = (field: DSFieldElement) => {
     // Expand click area to ds-field if radio/checkbox
     const isBoolish = input.type === 'radio' || input.type === 'checkbox';
     attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null);
-    attr(input, 'aria-describedby', descs.map(useId).join(' ') || null);
+    attr(input, ATTR_DESCRIBEDBY, descs.map(useId).join(' ') || null);
 
     // Only manage aria-invalid when field has validation elements
     const hadValidation = HAS_VALIDATION.has(input);

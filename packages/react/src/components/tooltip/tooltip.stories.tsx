@@ -114,9 +114,16 @@ export const WithDynamicTooltipText: Story = {
 };
 
 export const WithCSSTooltipText: Story = {
-  args: {
-    content: 'Kopier',
-  },
+  render: () => (
+    <Tooltip content=''>
+      <Button style={{ '--ds-tooltip': '"Kopier"' } as React.CSSProperties}>
+        <FilesIcon aria-hidden />
+      </Button>
+    </Tooltip>
+  ),
+};
+
+export const WithDynamicCSSTooltipText: Story = {
   render: () => {
     const tooltipRef = useRef<HTMLDivElement>(null);
     const [tooltipContent, setTooltipContent] = useState('');
