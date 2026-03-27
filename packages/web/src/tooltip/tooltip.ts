@@ -1,7 +1,9 @@
 import {
+  announce,
   attr,
   attrOrCSS,
   debounce,
+  isBrowser,
   on,
   onHotReload,
   onMutation,
@@ -15,6 +17,9 @@ let TIP: HTMLElement | undefined;
 let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
+/*needed to omit DELAY_HOVER on iOS that otherwise causes interaction delay 
+(iOS triggers mouseover before click when an element is tapped)*/
+const IS_IOS = isBrowser() && /iPad|iPhone|iPod/.test(navigator.userAgent);
 const ATTR_TOOLTIP = 'data-tooltip';
 const ATTR_COLOR = 'data-color';
 const ARIA_LABEL = 'aria-label';
@@ -51,6 +56,14 @@ const handleAriaAttributes = debounce(() => {
       if (!el.matches(SELECTOR_INTERACTIVE))
         warn('Missing tabindex="0" attribute on: ', el);
     }
+
+    // If an existing tooltip has changed programmatically, update tooltip text and announce change
+    const isCurrent = el === SOURCE && TIP?.matches(':popover-open');
+    const isChanged = isCurrent && text && TIP?.textContent !== text; // Only update if mutation is on source element and tooltip is open to avoid unnecessary updates
+    if (isCurrent && isChanged) {
+      if (TIP) setTextWithoutMutation(TIP, text);
+      if (document.activeElement === el) announce(text); // Only announce if focus is on the button
+    }
   }
 }, 0); // Debounce to merge multiple mutations
 
@@ -58,7 +71,7 @@ const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
 
   if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
-  if (type === 'mouseover' && !SOURCE) {
+  if (type === 'mouseover' && !SOURCE && !IS_IOS) {
     HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
     return;
   }

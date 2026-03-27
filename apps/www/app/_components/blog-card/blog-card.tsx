@@ -65,7 +65,7 @@ export const BlogCard = ({
           </Heading>
           <Paragraph data-size={featured ? 'md' : 'sm'}>{desc}</Paragraph>
           <Paragraph data-size={'md'} className={classes.meta} asChild>
-            <span>
+            <div>
               <AvatarStack authors={author || ''} />
               {author ||
                 (date && (
@@ -79,7 +79,7 @@ export const BlogCard = ({
                     )}
                   </>
                 ))}
-            </span>
+            </div>
           </Paragraph>
         </CardBlock>
       </article>

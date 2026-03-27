@@ -1,7 +1,182 @@
 ---
 title: "Changelog"
-latestVersion: 1.12.1
+latestVersion: 1.13.1
 ---
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.13.1
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Patch Changes
+
+- fix: add missing references for token sync in Figma ([#4659](https://github.com/digdir/designsystemet/pull/4659))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.1
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Patch Changes
+
+- **input**: fix height of empty date and time inputs on iOS Safari ([#4634](https://github.com/digdir/designsystemet/pull/4634))
+
+- define `browser` field in `package.json` for easier use client-side in browser and CDN. ([#4646](https://github.com/digdir/designsystemet/pull/4646))
+
+- **dropdown**: don't style `button, a, [role="button"]` in a nested `<dialog>` ([#4651](https://github.com/digdir/designsystemet/pull/4651))
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.1
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Patch Changes
+
+- update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
+
+- **Tabs**: `onChange` was not called when keyboard changes active tab ([#4616](https://github.com/digdir/designsystemet/pull/4616))
+
+- **Dropdown**: `className` in subcomponents was not forwarded to DOM-element ([#4655](https://github.com/digdir/designsystemet/pull/4655))
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- **Tabs**: fix controlled version not behaving properly ([#4635](https://github.com/digdir/designsystemet/pull/4635))
+
+- **input:** add suppressHydrationWarning as attributes will be added by ds-field ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- Updated dependencies [[`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee), [`811fa99`](https://github.com/digdir/designsystemet/commit/811fa998227802da7fec9fa21e782ac77838eedf), [`80f9305`](https://github.com/digdir/designsystemet/commit/80f9305be3680673c54c3bdd8d8cca1a0a21ee4d), [`97ebdb3`](https://github.com/digdir/designsystemet/commit/97ebdb35a4cf49487084842a63a98b783669a02b), [`f403286`](https://github.com/digdir/designsystemet/commit/f403286714d36f77767464e38b8d324ceb3d251d)]:
+  - @digdir/designsystemet-web@1.13.1
+  - @digdir/designsystemet-types@1.13.1
+
+<Divider/>
+
+### @digdir/designsystemet-web
+
+#### Patch Changes
+
+- update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
+
+- update dependency rolldown to v1.0.0-rc.9 ([#4642](https://github.com/digdir/designsystemet/pull/4642))
+
+- Fixed an issue in **tooltip** that caused delay on all touch interactions on iOS devices ([#4657](https://github.com/digdir/designsystemet/pull/4657))
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- **popover**: stop positioning non-popovers. ([#4651](https://github.com/digdir/designsystemet/pull/4651))
+  - This fixes an issue with nested `<dialog>`s in popovers
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.13.0
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Patch Changes
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548))
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.0
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Patch Changes
+
+- **Badge, Button, Spinner, Tabs, Tag**: Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- **select**: fixed missing chevron icon when `readonly` ([#4585](https://github.com/digdir/designsystemet/pull/4585))
+
+- **badge**: ensure badge is positioned above focus-ring when using `.ds-badge--position` ([#4511](https://github.com/digdir/designsystemet/pull/4511))
+
+- **card**: Fix deeply nested `.ds-details` removing padding ([#4576](https://github.com/digdir/designsystemet/pull/4576))
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.0
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Patch Changes
+
+- **Badge, Button, Spinner, Tabs, Tag**: Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
+
+- **ToggleGroupItem**: Add missing props for backward compatibility. An internal rewrite from `button` to `label+input` in version v1.12.0 led to a lack of some props on `ToggleGroupItem` related to `button`. ([#4580](https://github.com/digdir/designsystemet/pull/4580))
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548))
+
+- **toggle-group**: re-introduce support for disabled items ([#4618](https://github.com/digdir/designsystemet/pull/4618))
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+- **Details**: use `DetailsHTMLAttributes` type to allow `name` attribute ([#4557](https://github.com/digdir/designsystemet/pull/4557))
+
+- **Dialog**: fixed non-modal Dialog not opening when using `Dialog.Trigger` ([#4611](https://github.com/digdir/designsystemet/pull/4611))
+
+- **AvatarStack**: changed underlying element from `figure` to `span` to avoid html-validation issues when used inside a `span` ([#4579](https://github.com/digdir/designsystemet/pull/4579))
+
+- **AvatarStack**: replaced tabindex="-1" with no tabindex at all when `expandable`is not set ([#4579](https://github.com/digdir/designsystemet/pull/4579))
+
+- Updated dependencies [[`5776e4b`](https://github.com/digdir/designsystemet/commit/5776e4b5a5608cc39c309e5b7b7dc3703cec25e9), [`dc023a4`](https://github.com/digdir/designsystemet/commit/dc023a47b0802ad77c00a5b419da9adb6425e343), [`9f7d318`](https://github.com/digdir/designsystemet/commit/9f7d318d04a228b95e1ab32d8e177a223a4a7254), [`303ee66`](https://github.com/digdir/designsystemet/commit/303ee6617672ef0ff968d759e2a5aaafa9dd7381), [`4bd54bd`](https://github.com/digdir/designsystemet/commit/4bd54bd9a93be34f591f8da24564a7ee35e72775)]:
+  - @digdir/designsystemet-web@1.13.0
+  - @digdir/designsystemet-types@1.13.0
+
+<Divider/>
+
+### @digdir/designsystemet-web
+
+#### Minor Changes
+
+- Add individual exports ([#4565](https://github.com/digdir/designsystemet/pull/4565))
+
+#### Patch Changes
+
+- Tooltip now supports being changed programmatically ([#4562](https://github.com/digdir/designsystemet/pull/4562))
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- **toggle-group**: re-introduce support for disabled items ([#4618](https://github.com/digdir/designsystemet/pull/4618))
+
+- Update dependency rolldown to v1.0.0-rc.7 ([#4606](https://github.com/digdir/designsystemet/pull/4606))
+
+</div>
 
 <div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",

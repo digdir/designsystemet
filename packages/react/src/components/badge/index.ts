@@ -11,6 +11,6 @@ const Badge = Object.assign(BadgeElm, { Position: BadgePosition });
 
 Badge.Position.displayName = 'Badge.Position';
 
-export { Badge, BadgePosition };
 export type { BadgeProps } from './badge';
 export type { BadgePositionProps } from './badge-position';
+export { Badge, BadgePosition };
