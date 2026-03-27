@@ -1,5 +1,20 @@
 # Change Log
 
+## 1.13.1
+
+### Patch Changes
+
+- **input**: fix height of empty date and time inputs on iOS Safari ([#4634](https://github.com/digdir/designsystemet/pull/4634))
+
+- define `browser` field in `package.json` for easier use client-side in browser and CDN. ([#4646](https://github.com/digdir/designsystemet/pull/4646))
+
+- **dropdown**: don't style `button, a, [role="button"]` in a nested `<dialog>` ([#4651](https://github.com/digdir/designsystemet/pull/4651))
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.1
+
 ## 1.13.0
 
 ### Patch Changes
