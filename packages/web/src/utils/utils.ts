@@ -139,7 +139,7 @@ export const onHotReload = (key: string, setup: () => Array<() => void>) => {
 };
 
 /**
- * Speed up MutationObserver by debouncing and only running when page is visible
+ * MutationObserver wrapper with automatic cleanup and option to skip mutations while updating textContent
  * @return new MutaionObserver
  */
 let SKIP_MUTATIONS = false;
