@@ -27,6 +27,7 @@ const FIELDS = new Set<DSFieldElement>(); // Set of Field
 const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so removed inputs/counts does not cause memory leaks
 const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
+const HAS_VALIDATION = new WeakMap<HTMLInputElement>(); // Used to ensure we only take control of aria-invalid if there current is or has been a validation element
 
 // NOTE:
 // <fieldset> descriptions should be accessible to screen reader users. However, using aria-describedby
@@ -106,7 +107,15 @@ const handleFieldMutation = (field: DSFieldElement) => {
     const isBoolish = input.type === 'radio' || input.type === 'checkbox';
     attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null);
     attr(input, 'aria-describedby', descs.map(useId).join(' ') || null);
-    attr(input, 'aria-invalid', hasValidation && invalid ? 'true' : null);
+
+    // Used to ensure we only take control of aria-invalid if there current is or has been a validation element
+    if (hasValidation || HAS_VALIDATION.has(input)) {
+      const prev = HAS_VALIDATION.get(input);
+      if (!hasValidation) HAS_VALIDATION.delete(input);
+      else HAS_VALIDATION.set(input, attr(input, 'aria-invalid')); // Store previous attribute to enable reverting state
+      attr(input, 'aria-invalid', invalid ? 'true' : prev); // Only manage aria-invalid when field has validation elements
+    }
+
     handleFieldInput(input); // Update counter and textarea sizing
   }
 };
