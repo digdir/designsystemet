@@ -1,5 +1,20 @@
 # @digdir/designsystemet-web
 
+## 1.13.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
+
+- update dependency rolldown to v1.0.0-rc.9 ([#4642](https://github.com/digdir/designsystemet/pull/4642))
+
+- Fixed an issue in **tooltip** that caused delay on all touch interactions on iOS devices ([#4657](https://github.com/digdir/designsystemet/pull/4657))
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- **popover**: stop positioning non-popovers. ([#4651](https://github.com/digdir/designsystemet/pull/4651))
+  - This fixes an issue with nested `<dialog>`s in popovers
+
 ## 1.13.0
 
 ### Minor Changes
