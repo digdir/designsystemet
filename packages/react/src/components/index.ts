@@ -138,6 +138,7 @@ export type {
   FileUploadDescriptionProps,
   FileUploadInputProps,
   FileUploadLabelProps,
+  FileUploadButtonProps,
   FileUploadProps,
 } from './file-upload';
 export { FileUpload } from './file-upload';
