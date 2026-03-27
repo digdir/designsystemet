@@ -150,7 +150,7 @@ export const onMutation = (
 ) => {
   const cleanup = () => observer.disconnect();
   const observer = new MutationObserver((records) => {
-    if (!el.isConnected) return cleanup(); // Stop observing if element is removed from DOM
+    if (!isBrowser() || !el.isConnected) return cleanup(); // Stop observing if element is removed from DOM or document is removed by jdsom tests
     if (!SKIP_MUTATIONS) callback(observer, records);
   });
 

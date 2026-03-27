@@ -24,7 +24,7 @@ declare global {
 
 const ATTR_DESCRIBEDBY = 'aria-describedby';
 const ATTR_INDETERMINATE = 'data-indeterminate';
-const FIELDS = new Set<DSFieldElement>(); // Set of Field
+const FIELDS = new Map<DSFieldElement, string[]>(); // Map of Field and its describedby IDs so we can identify the ones we add/remove
 const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so removed inputs/counts does not cause memory leaks
 const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
@@ -50,7 +50,7 @@ const handleFieldMutations = (_: unknown, mutations?: MutationRecord[]) => {
   if (!mutations) return; // Initial calls are handled by <ds-field> connectedCallback, not mutation triggered
   for (const { target } of mutations) {
     const isFieldset = target instanceof HTMLFieldSetElement;
-    for (const field of FIELDS)
+    for (const [field] of FIELDS)
       if (isFieldset ? target.contains(field) : field.contains(target))
         handleFieldMutation(field);
   }
@@ -172,7 +172,7 @@ const isInputLike = (el: unknown): el is HTMLInputElement =>
 // Custom element is used to performantly keep track of fields on the page
 export class DSFieldElement extends DSElement {
   connectedCallback() {
-    FIELDS.add(this); // Register field
+    FIELDS.set(this, []); // Register field
     handleFieldMutation(this); // Initial setup
   }
   disconnectedCallback() {
