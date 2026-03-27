@@ -106,7 +106,7 @@ const handleFieldMutation = (field: DSFieldElement) => {
     const isBoolish = input.type === 'radio' || input.type === 'checkbox';
     attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null);
     attr(input, 'aria-describedby', descs.map(useId).join(' ') || null);
-    attr(input, 'aria-invalid', `${hasValidation && invalid}`);
+    attr(input, 'aria-invalid', hasValidation && invalid ? 'true' : null);
     handleFieldInput(input); // Update counter and textarea sizing
   }
 };
