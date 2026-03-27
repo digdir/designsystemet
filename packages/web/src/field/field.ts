@@ -36,6 +36,7 @@ const HAS_VALIDATION = new WeakMap<HTMLInputElement>(); // Used to ensure we onl
 // aria-labelledby is only announced when screen readers enter the fieldset, not when navigating its child elements.
 // This means the accessible name of <fieldset> includes both the legend and description, which may differ from some test expectations,
 // but as of March 2026, this approach provides the best user experience across assistive technologies.
+// This approach is also verified by the chief of accessibility at NRK and the accessibility expert at NAV
 const handleFieldsetMutations = () => {
   for (const el of FIELDSETS) {
     if (el.hasAttribute('aria-labelledby')) continue; // Speed up by skipping labelled fieldsets
