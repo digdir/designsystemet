@@ -3,6 +3,7 @@ import { isBrowser } from './utils/utils';
 import '@u-elements/u-details/polyfill'; // Polyfill for <details> element for Android Firefox + Talkback
 import './clickdelegatefor/clickdelegatefor';
 import './dialog/dialog';
+import './fieldset/fieldset';
 import './popover/popover';
 import './readonly/readonly';
 import './toggle-group/toggle-group';

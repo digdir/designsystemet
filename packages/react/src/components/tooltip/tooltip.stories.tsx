@@ -18,13 +18,12 @@ export default {
   },
   play: async (ctx) => {
     document.querySelector('.ds-tooltip')?.remove(); // Reset to run next test without waiting for tooltip to disappear // <== Må "nullstille"/fjerne tooltip mellom hver test
-    const button = ctx.canvasElement.querySelector(
-      '[data-tooltip]',
-    ) as HTMLElement;
+    const button =
+      ctx.canvasElement.querySelector<HTMLButtonElement>('[data-tooltip]');
 
     await new Promise((resolve) => {
       document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør hover
-      button.focus();
+      button?.focus();
     });
 
     const tooltip = await within(document.body).findByText(ctx.args.content); // <== trenger ikke sjekke toBeInDocument siden denne testen krever det
@@ -114,6 +113,9 @@ export const WithDynamicTooltipText: Story = {
 };
 
 export const WithCSSTooltipText: Story = {
+  args: {
+    content: 'Kopier',
+  },
   render: () => (
     <Tooltip content=''>
       <Button style={{ '--ds-tooltip': '"Kopier"' } as React.CSSProperties}>
@@ -124,6 +126,9 @@ export const WithCSSTooltipText: Story = {
 };
 
 export const WithDynamicCSSTooltipText: Story = {
+  args: {
+    content: 'Kopier',
+  },
   render: () => {
     const tooltipRef = useRef<HTMLDivElement>(null);
     const [tooltipContent, setTooltipContent] = useState('');

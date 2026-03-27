@@ -46,6 +46,11 @@
       "import": "./dist/esm/field/field.js",
       "require": "./dist/cjs/field/field.cjs"
     },
+    "./fieldset": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/fieldset/fieldset.js",
+      "require": "./dist/cjs/fieldset/fieldset.cjs"
+    },
     "./ds-pagination": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/pagination/pagination.js",
@@ -88,7 +93,7 @@
   "scripts": {
     "start": "vite --config=./vite.config.ts --port=5174",
     "build": "rimraf dist && tsup && rolldown -c && cem analyze",
-    "test": "vitest --config=vitest.browser.config.ts src/suggestion/suggestion.test.ts"
+    "test": "vitest --config=vitest.browser.config.ts"
   },
   "customElements": "dist/custom-elements.json",
   "publishConfig": {
