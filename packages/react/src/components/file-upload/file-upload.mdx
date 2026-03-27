@@ -9,9 +9,11 @@ import * as FileStories from './file-upload.stories';
 <Controls />
 
 ### working example for testing
+Issue: the button in the input gets focus and the screen reader reads "Label -> Ingen fil valgt -> Description inside dropzone wrapper" (then label and ingen fil valgt again but could be due to iframe)
 <Canvas of={FileStories.WorkingExample} />
 
 ### Using react-dropzone
+Issue: `react-dropzone` puts `tabindex="0"` on whatever gets `{...getRootProps()}` and set `tabindex="-1"` on input, so screen reader does not read label/description outside of the dropzone wrapper.
 <Canvas of={FileStories.ReactDropZoneExample} />
 
 <Canvas of={FileStories.Variants} />
