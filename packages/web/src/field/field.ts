@@ -108,12 +108,14 @@ const handleFieldMutation = (field: DSFieldElement) => {
     attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null);
     attr(input, 'aria-describedby', descs.map(useId).join(' ') || null);
 
-    // Used to ensure we only take control of aria-invalid if there current is or has been a validation element
-    if (hasValidation || HAS_VALIDATION.has(input)) {
-      const prev = HAS_VALIDATION.get(input);
-      if (!hasValidation) HAS_VALIDATION.delete(input);
-      else HAS_VALIDATION.set(input, attr(input, 'aria-invalid')); // Store previous attribute to enable reverting state
-      attr(input, 'aria-invalid', invalid ? 'true' : prev); // Only manage aria-invalid when field has validation elements
+    // Only manage aria-invalid when field has validation elements
+    const hadValidation = HAS_VALIDATION.has(input);
+    if (hasValidation && !hadValidation) {
+      HAS_VALIDATION.set(input, attr(input, 'aria-invalid')); // Store previous attribute to enable reverting state
+      attr(input, 'aria-invalid', 'true');
+    } else if (!hasValidation && hadValidation) {
+      attr(input, 'aria-invalid', HAS_VALIDATION.get(input)); // Revert to previous state if validation element was removed
+      HAS_VALIDATION.delete(input);
     }
 
     handleFieldInput(input); // Update counter and textarea sizing
