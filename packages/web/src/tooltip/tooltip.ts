@@ -3,6 +3,7 @@ import {
   attr,
   attrOrCSS,
   debounce,
+  isBrowser,
   on,
   onHotReload,
   onMutation,
@@ -16,6 +17,9 @@ let TIP: HTMLElement | undefined;
 let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
+/*needed to omit DELAY_HOVER on iOS that otherwise causes interaction delay 
+(iOS triggers mouseover before click when an element is tapped)*/
+const IS_IOS = isBrowser() && /iPad|iPhone|iPod/.test(navigator.userAgent);
 const ATTR_TOOLTIP = 'data-tooltip';
 const ATTR_COLOR = 'data-color';
 const ARIA_LABEL = 'aria-label';
@@ -67,7 +71,7 @@ const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
 
   if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
-  if (type === 'mouseover' && !SOURCE) {
+  if (type === 'mouseover' && !SOURCE && !IS_IOS) {
     HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
     return;
   }
