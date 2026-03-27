@@ -15,7 +15,7 @@ Det må være enkelt for brukerne å se hvem de er logget inn som, og hvordan de
 Brukerne bør få en tydelig bekreftelse med en gang de har logget inn, for eksempel ved at de kan se at grensesnittet blir endret, eller ved en klar melding som sier: «Du er logget inn som [navn]». Det skal alltid være tydelig at brukeren er logget inn, og hvem brukeren eventuelt handler på vegne av. Denne informasjonen bør være lett synlig, og konsekvent plassert i grensesnittet gjennom hele brukerreisen. 
 
 <Image
-  src="/img/pattern-representation-2.png"
+  src="/img/pattern-representation-1.png"
   alt=".."
   style={{ maxWidth: '700px' }}
   boxShadow={true}
@@ -35,11 +35,19 @@ Bruk forklarende etiketter som:
 - Du er styreleder
 
 <Image
-  src="/img/pattern-representation-1.png"
-  alt="Illustrasjonen viser en grensesnitt med tittelen 'Hvem vil du bruke tjensten på vegne av?' og tre valg: 'Meg selv', 'Min virksomhet' og 'En annen person'."
+  src="/img/pattern-representation-2.png"
+  alt="Illustrasjonen viser en grensesnitt med tittelen 'Hvem vil du bruke tjensten på vegne av?' og noen valg mellom personer og virksomheter. Det er også en beskrivelse som forklarer hvorfor brukerne kan gjøre noe på vegne av noen andre, for eksempel at de er foresatt, har fått fullmakt eller er daglig leder."
   style={{ maxWidth: '700px' }}
   boxShadow={true}
-  caption="Det bør være tydelig hvorfor brukerne kan gjøre noe på vegne av noen andre, for eksempel at de er foresatt, har fått fullmakt eller er daglig leder."
+  caption="Det bør være tydelig hvorfor brukerne kan gjøre noe på vegne av noen andre, for eksempel at de er foresatt..."
+/>
+
+<Image
+  src="/img/pattern-representation-3.png"
+  alt="Illustrasjonen viser en grensesnitt med tittelen 'Hvem vil du bruke tjenesten på vegne av?' og noen valg mellom personer og virksomheter. Det er også en beskrivelse som forklarer hvorfor brukerne kan gjøre noe på vegne av noen andre, for eksempel at de er foresatt, har fått fullmakt eller er daglig leder."
+  style={{ maxWidth: '700px' }}
+  boxShadow={true}
+  caption="...eller at de har en rolle i en virksomhet."
 />
 
 Hvis retten til å representere er tidsbegrenset, bør det komme frem når den utløper. Hvis konteksten gjør detaljene unødvendige, kan du utelate dem. Bruk skjønn.
@@ -64,6 +72,22 @@ Brukeren skal enkelt kunne bytte hvem de representerer, for eksempel fra en meny
 
 Det skal være enkelt å få oversikt over hvem som har rett til å handle på brukernes vegne og hva de kan gjøre. Forklar gjerne hvorfor noen har tilgang, for eksempel at de har fått fullmakt, eller at personen er registrert med en rolle.
 
+<Image
+  src="/img/pattern-representation-5.png"
+  alt="Illustrasjonen viser en grensesnitt med tittelen ..."
+  style={{ maxWidth: '700px' }}
+  boxShadow={true}
+  caption="Det skal være tydelig hvem som kan gjøre noe på vegne av deg..."
+/>
+
+<Image
+  src="/img/pattern-representation-4.png"
+  alt="Illustrasjonen viser en grensesnitt med tittelen ..."
+  style={{ maxWidth: '700px' }}
+  boxShadow={true}
+  caption="...eller på vegne av din virksomhet."
+/>
+
 Brukerne skal også kunne se hva andre har gjort på deres vegne, særlig når handlinger har konsekvenser. Det skal være tydelig hvem som har gjort noe, hva som er gjort, og når det ble gjort.
 
 I noen tilfeller kan det også være behov for varsling, for eksempel når noen får eller bruker en fullmakt.
@@ -73,10 +97,11 @@ Hvis vi bruker de samme begrepene på tvers av offentlige digitale tjenester, bl
 
 ### Bruk disse begrepene
 
-<Card data-color='neutral'>
+<Divider />
+<br/>
 **Bruk: Hvem skal du gjøre noe på vegne av?** \
 Unngå: Hvem skal du representere?
-<br/>
+
 «På vegne av» er mer uformelt og intuitivt enn «representere».
 
 Dette begrepet trenger vi i to ulike kontekster:  
@@ -84,35 +109,34 @@ Dette begrepet trenger vi i to ulike kontekster:
 «Hvem vil du gjøre noe på vegne av?»  
 2. Vi vet hva brukeren skal gjøre. I disse tilfellene anbefaler vi å bruke et konkret verb:  «Hvem søker du på vegne av?» «Hvem svarer du på vegne av?» 
 
-</Card>
-
-<Card data-color='neutral'>
+<Divider />
+<br/>
 **Bruk: Virksomhet** \
 Unngå: Aktør, bedrift, selskap, hovedenhet
-<br/>
+
 - «Virksomhet» er et bredt og nøytralt begrep. Det omfatter alle som driver en aktivitet, både kommersielle bedrifter, offentlige etater, frivillige organisasjoner og foreninger.
 - Merk: Hvis du vet at det kun er én type virksomhet som skal bruke tjenesten, bruk navnet på den. Lager du for eksempel en tjeneste for kun sameier, bør du bruke «sameie» konsekvent.
-</Card>
 
-<Card data-color='neutral'>
-**Bruk: Organisasjon (for frivillige organisasjoner)**
+<Divider />
 <br/>
+**Bruk: Organisasjon (for frivillige organisasjoner)**
+
 - «Organisasjon» er også et bredt begrep, men assosieres sterkere med frivillige organisasjoner, interesseorganisasjoner og foreninger. Bruk det når du vet at du kun omtaler frivillige organisasjoner.
 - Hvis vi vet at noen av målgruppene ikke kjenner seg igjen i «virksomhet», kan vi bruke «virksomhet eller annen organisasjon». Du kan også vurdere en beskrivelse under ledeteksten.
-</Card>
 
-<Card data-color='neutral'>
+<Divider />
+<br/>
 Bruk **Aktør** som et paraplybegrep for personer og virksomheter.
-</Card>
 
-<Card data-color='neutral'>
-<span style={{ padding: 'var(--ds-size-6)', display: 'flow' }}>
+<Divider />
+<br/>
 **Bruk: Underenhet (eller mer presist begrep hvis mulig)** \
 Unngå: Aktivitet, næringsaktivitet
 <br/>
 - «aktivitet» eller «næringsaktivitet» har ikke alltid et direkte forhold til underenheter.
 - Hva som er en underenhet er ofte uklart for brukerne, men det finnes ikke et alternativt begrep som fungerer i alle sammenhenger. Vi anbefaler at du bare erstatter «underenhet» hvis du er sikker på at et annet ord gir mening for brukerne.
-</span>
+
+<Card data-color='neutral'>
 <Details>
   <DetailsSummary>Mer om begrepet: «Underenhet» </DetailsSummary>
   <DetailsContent>
@@ -131,14 +155,16 @@ Her er en beskrivelse du kan bruke eller ta utgangspunkt i: \
 </Details>
 </Card>
 
-<Card data-color='neutral'>
+
+<Divider />
+<br/>
 **Bruk: Fullmakt** \
 Unngå: Tilgang, rettighet, delegering, tillatelse
-<br/>
+
 - Fullmakt gir juridisk myndighet og må ikke forveksles med tilgang.
 - Se også [«Fullmakt, samtykke og tilgang»](#fullmakt-samtykke-og-tilgang)
-</Card>
 
+<Divider />
 
 ## «Fullmakt, samtykke og tilgang»
 
@@ -175,6 +201,8 @@ Det er nyttig å skille mellom målgruppene når vi forklarer hva en fullmakt er
 
 ## Min side, din side, eller noens side?
 Brukerne kan bli forvirret når flere offentlige tjenester bruker samme eller lignende navn for innloggede sider, som «Min side» og «Din side». Noen kan ha problemer med å huske hva de gjorde hvor: «Jeg fant det jo på Min side, men var det hos Skatteetaten eller Altinn?» I tillegg risikerer vi at brukeropplevelsen blir usammenhengende. Det som oppleves som én type side, kan ha ulikt innhold, struktur og formål fra tjeneste til tjeneste. 
+
+Vurder også om navnet for den innloggede siden kan virke forvirrende når brukerne skal representere noen. Eksempel: Hvis en bruker logger inn på vegne av moren sin, hvordan fungerer det at siden heter "Min side"?
 
 Vurder om det er nødvendig å gi de innloggede sidene en tittel. Det fungerer ofte godt å bare bruke navnet til brukeren som er innlogget, eventuelt navnet til den/det brukeren er innlogget på vegne av.  
  
