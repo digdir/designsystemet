@@ -22,7 +22,7 @@ declare global {
   }
 }
 
-const INDETERMINATE = 'data-indeterminate';
+const ATTR_INDETERMINATE = 'data-indeterminate';
 const FIELDS = new Set<DSFieldElement>(); // Set of Field
 const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so removed inputs/counts does not cause memory leaks
 const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
@@ -99,7 +99,7 @@ const handleFieldMutation = (field: DSFieldElement) => {
     }
 
     // Add support for data-indeterminate attribute as this normally can only be set by javascript
-    const indeterminate = attr(input, INDETERMINATE);
+    const indeterminate = attr(input, ATTR_INDETERMINATE);
     if (indeterminate) input.indeterminate = indeterminate === 'true';
 
     // Expand click area to ds-field if radio/checkbox
@@ -174,7 +174,7 @@ onHotReload('field', () => [
       'data-limit',
       'hidden', // Needed to check validation visibility
       'value', // Needed to detect changes in controlled React inputs as they do not trigger input events
-      INDETERMINATE,
+      ATTR_INDETERMINATE,
     ],
     attributes: true,
     childList: true,

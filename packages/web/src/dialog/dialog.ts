@@ -1,6 +1,6 @@
 import {
   attr,
-  debounce,
+  isBrowser,
   on,
   onHotReload,
   onMutation,
@@ -33,10 +33,12 @@ const handleClosedbyAny = ({
 };
 
 // Ensure buttons that trigger a modeal dialog has aria-haspopup="dialog" for better screen reader experience
-const handleAriaAttributes = debounce(() => {
-  for (const btn of document.querySelectorAll('button[command="show-modal"]'))
-    attr(btn, 'aria-haspopup', 'dialog');
-}, 10); // This is a non-vital enhancement, and can run after a delay to avoid blocking event loop
+const BUTTONS = isBrowser() ? document.getElementsByTagName('button') : [];
+const handleAriaAttributes = () => {
+  for (const btn of BUTTONS)
+    if (btn.getAttribute('command')?.endsWith('-modal'))
+      btn.setAttribute('aria-haspopup', 'dialog'); // Using get/setAttribute for performance
+};
 
 const handleCommand = ({ command, target }: Event & { command?: string }) =>
   command === '--show-non-modal' &&

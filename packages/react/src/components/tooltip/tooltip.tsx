@@ -61,18 +61,19 @@ export type TooltipProps = MergeRight<
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   function Tooltip(
     { content, placement = 'top', autoPlacement = true, ...rest },
-    _ref,
+    ref,
   ) {
     /* check if children is a string */
     const isString = typeof rest.children === 'string';
 
     return (
       <Slot
-        aria-label={content} // designsystemet-web will re-evaulate if this should be an aria-label or aria-description, but kept here for better SSR
+        aria-label={content || undefined} // designsystemet-web will re-evaulate if this should be an aria-label or aria-description, but kept here for better SSR
         data-tooltip={content}
         data-placement={placement}
         data-autoplacement={autoPlacement}
         suppressHydrationWarning // Since data-tooltip adds aria-label/aria-description
+        ref={ref}
         {...rest}
       >
         {isString ? <span tabIndex={0}>{rest.children}</span> : rest.children}

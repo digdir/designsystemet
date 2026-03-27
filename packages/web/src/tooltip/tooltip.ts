@@ -2,7 +2,6 @@ import {
   announce,
   attr,
   attrOrCSS,
-  debounce,
   isBrowser,
   on,
   onHotReload,
@@ -25,7 +24,6 @@ const ATTR_COLOR = 'data-color';
 const ARIA_LABEL = 'aria-label';
 const ARIA_DESC = 'aria-description';
 const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
-const SELECTOR_TOOLTIP = `[${ATTR_TOOLTIP}]`;
 const ATTR_SCHEME = 'data-color-scheme';
 const SELECTOR_SCHEME = `[${ATTR_SCHEME}]`;
 const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
@@ -43,29 +41,35 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
   TIP = el || undefined;
 };
 
-const handleAriaAttributes = debounce(() => {
-  for (const el of document.querySelectorAll(SELECTOR_TOOLTIP)) {
-    const aria = el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC); // Using getAttribute for best performance
-    const text = attrOrCSS(el, ATTR_TOOLTIP);
+const handleAriaAttributes = (_: unknown, records?: MutationRecord[]) => {
+  if (!records)
+    for (const el of document.querySelectorAll(`[${ATTR_TOOLTIP}]`)) render(el); // Initial setup
+  else
+    for (const { target: el } of records)
+      if ((el as Element).hasAttribute?.(ATTR_TOOLTIP)) render(el as Element);
+};
 
-    if (aria !== text) {
-      const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
-      attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
-      attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
-      attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
-      if (!el.matches(SELECTOR_INTERACTIVE))
-        warn('Missing tabindex="0" attribute on: ', el);
-    }
+const render = (el: Element) => {
+  const aria = el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC); // Using getAttribute for best performance
+  const text = attrOrCSS(el, ATTR_TOOLTIP); // Using getAttribute for best performance
 
-    // If an existing tooltip has changed programmatically, update tooltip text and announce change
-    const isCurrent = el === SOURCE && TIP?.matches(':popover-open');
-    const isChanged = isCurrent && text && TIP?.textContent !== text; // Only update if mutation is on source element and tooltip is open to avoid unnecessary updates
-    if (isCurrent && isChanged) {
-      if (TIP) setTextWithoutMutation(TIP, text);
-      if (document.activeElement === el) announce(text); // Only announce if focus is on the button
-    }
+  if (aria !== text) {
+    const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
+    attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
+    attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
+    attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
+    if (!el.matches(SELECTOR_INTERACTIVE))
+      warn('Missing tabindex="0" attribute on: ', el);
   }
-}, 10); // Debounce to merge multiple mutations
+
+  // If an existing tooltip has changed programmatically, update tooltip text and announce change
+  const isCurrent = el === SOURCE && TIP?.matches(':popover-open');
+  const isChanged = isCurrent && text && TIP?.textContent !== text; // Only update if mutation is on source element and tooltip is open to avoid unnecessary updates
+  if (isCurrent && isChanged) {
+    if (TIP) setTextWithoutMutation(TIP, text);
+    if (document.activeElement === el) announce(text); // Only announce if focus is on the button
+  }
+};
 
 const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
@@ -85,6 +89,7 @@ const handleInterest = ({ type, target }: Event) => {
   const color = source.closest(SELECTOR_COLOR); // Match source color of source element
   const scheme = source.closest(SELECTOR_SCHEME); // Match source color-scheme of source element
   const isReset = color !== scheme && color?.contains(scheme as Node); // If data-scheme is closer to target, it will reset data-color
+
   clearTimeout(SKIP_TIMER);
   attr(TIP, 'popover', 'manual'); // Ensure popover behavior
   attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME) || null); // Fallback to null to reset if not scheme found

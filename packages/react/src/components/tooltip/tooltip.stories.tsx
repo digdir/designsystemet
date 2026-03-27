@@ -1,6 +1,6 @@
 import { FilesIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { expect, within } from 'storybook/test';
 import { Button } from '../../';
 import { Tooltip } from './tooltip';
@@ -80,6 +80,18 @@ export const Aria: StoryFn<typeof Tooltip> = () => {
   );
 };
 
+Aria.decorators = [
+  (Story) => (
+    <div
+      style={{ display: 'flex', gap: 'var(--ds-size-2)', alignItems: 'center' }}
+    >
+      <Story />
+    </div>
+  ),
+];
+
+Aria.play = async () => {};
+
 export const WithDynamicTooltipText: Story = {
   args: {
     content: 'Kopier',
@@ -101,14 +113,32 @@ export const WithDynamicTooltipText: Story = {
   },
 };
 
-Aria.decorators = [
-  (Story) => (
-    <div
-      style={{ display: 'flex', gap: 'var(--ds-size-2)', alignItems: 'center' }}
-    >
-      <Story />
-    </div>
-  ),
-];
+export const WithCSSTooltipText: Story = {
+  args: {
+    content: 'Kopier',
+  },
+  render: () => {
+    const tooltipRef = useRef<HTMLDivElement>(null);
+    const [tooltipContent, setTooltipContent] = useState('');
 
-Aria.play = async () => {};
+    // Tooltip text from css variable
+    useEffect(() => {
+      if (typeof window === 'undefined' || !tooltipRef.current) return;
+      const content = getComputedStyle(tooltipRef.current)
+        .getPropertyValue('--ds-tooltip-content')
+        .replace(/^["']|["']$/g, '')
+        .trim();
+      setTooltipContent(content);
+    }, []);
+
+    return (
+      <Tooltip content={tooltipContent} ref={tooltipRef}>
+        <Button
+          style={{ '--ds-tooltip-content': '"Kopier"' } as React.CSSProperties}
+        >
+          <FilesIcon aria-hidden />
+        </Button>
+      </Tooltip>
+    );
+  },
+};
