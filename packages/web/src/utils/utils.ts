@@ -143,19 +143,19 @@ export const onHotReload = (key: string, setup: () => Array<() => void>) => {
  * @return new MutaionObserver
  */
 let SKIP_MUTATIONS = false;
-export const onMutation = (
-  el: Node,
-  callback: (observer: MutationObserver, records?: MutationRecord[]) => void,
+export const onMutation = <T extends Node>(
+  el: T,
+  callback: (el: T, records?: MutationRecord[]) => void,
   options: MutationObserverInit,
 ) => {
   const cleanup = () => observer.disconnect();
   const observer = new MutationObserver((records) => {
     if (!isBrowser() || !el.isConnected) return cleanup(); // Stop observing if element is removed from DOM or document is removed by jdsom tests
-    if (!SKIP_MUTATIONS) callback(observer, records);
+    if (!SKIP_MUTATIONS) callback(el, records);
   });
 
   observer.observe(el, options);
-  callback(observer); // Initial is run instantly to make test markup predictable
+  callback(el); // Initial is run instantly to make test markup predictable
   return cleanup;
 };
 

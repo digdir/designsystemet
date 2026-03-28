@@ -29,9 +29,8 @@ const FIELDS = new Map<DSFieldElement, string[]>(); // Map of Field and its desc
 const VALIDATIONS = new WeakMap<HTMLInputElement>(); // Used to ensure we only take control of aria-invalid if there current is or has been a validation element
 const WARNING_MULTIPLE_INPUTS = `Fields should only have one input element. Use <fieldset> to group multiple fields:`;
 
-const handleFieldMutations = (_: unknown, mutations?: MutationRecord[]) => {
-  if (!mutations) return; // Initial calls are handled by <ds-field> connectedCallback, not mutation triggered
-  for (const { target } of mutations) {
+const handleFieldMutations = (_doc: Node, records: MutationRecord[] = []) => {
+  for (const { target } of records) {
     const isFieldset = target instanceof HTMLFieldSetElement;
     for (const [field] of FIELDS)
       if (isFieldset ? target.contains(field) : field.contains(target))

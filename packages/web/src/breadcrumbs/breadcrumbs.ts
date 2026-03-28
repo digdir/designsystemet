@@ -30,7 +30,7 @@ export class DSBreadcrumbsElement extends DSElement {
     this._label = attrOrCSS(this, ATTR_LABEL); // Label can have been set by attributeChangedCallback before connectedCallback
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
     this._unresize = on(window, 'resize', resize);
-    this._unmutate = onMutation(this, () => render(this), {
+    this._unmutate = onMutation(this, render, {
       childList: true,
       subtree: true,
     });

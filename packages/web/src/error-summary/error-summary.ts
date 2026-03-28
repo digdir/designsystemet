@@ -21,7 +21,7 @@ export class DSErrorSummaryElement extends DSElement {
   connectedCallback() {
     on(this, 'animationend', this, QUICK_EVENT); // Using animationend to detect when element is visible
     attr(this, 'tabindex', '-1');
-    this._unmutate = onMutation(this, () => render(this), {
+    this._unmutate = onMutation(this, render, {
       childList: true,
       subtree: true,
     });

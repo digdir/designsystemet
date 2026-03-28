@@ -21,7 +21,7 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this._unmutate = onMutation(this, () => render(this), { childList: true }); // .control and .list are direct children of the custom element
+    this._unmutate = onMutation(this, render, { childList: true }); // .control and .list are direct children of the custom element
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
   disconnectedCallback() {
