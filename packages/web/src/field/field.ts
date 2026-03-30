@@ -166,6 +166,7 @@ onHotReload('field', () => [
       'data-field',
       'data-limit',
       'hidden', // Needed to check validation visibility
+      'id', // Needed to sync label "for" when ID of input/selec/textarea changes
       'value', // Needed to detect changes in controlled React inputs as they do not trigger input events
       ATTR_INDETERMINATE,
     ],
