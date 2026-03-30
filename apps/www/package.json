@@ -50,7 +50,7 @@
     "@types/ramda": "^0.31.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "vite": "^7.3.1",
     "vite-env-only": "^3.0.3",
     "vite-tsconfig-paths": "^6.1.1"
