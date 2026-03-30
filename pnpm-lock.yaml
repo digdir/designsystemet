@@ -39,8 +39,8 @@ importers:
         specifier: 4.1.0
         version: 4.1.0(@vitest/browser@4.1.0(vite@7.3.1(@types/node@24.12.0)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.21.0)(yaml@2.7.1))(vitest@4.1.0))(vitest@4.1.0)
       chromatic:
-        specifier: ^13.3.5
-        version: 13.3.5
+        specifier: ^16.0.0
+        version: 16.0.0
       just-pnpm:
         specifier: ^1.0.2
         version: 1.0.2
@@ -3192,8 +3192,8 @@ packages:
   chroma-js@3.2.0:
     resolution: {integrity: sha512-os/OippSlX1RlWWr+QDPcGUZs0uoqr32urfxESG9U93lhUfbnlyckte84Q8P1UQY/qth983AS1JONKmLS4T0nw==}
 
-  chromatic@13.3.5:
-    resolution: {integrity: sha512-MzPhxpl838qJUo0A55osCF2ifwPbjcIPeElr1d4SHcjnHoIcg7l1syJDrAYK/a+PcCBrOGi06jPNpQAln5hWgw==}
+  chromatic@16.0.0:
+    resolution: {integrity: sha512-O81RVGDXXoreNeG894hjaUx08xep+C/BA6aJNMZkwSjH7Lln8IweZekBpBEoQPNNpjmHyZvcTIwN/aGitdK53Q==}
     hasBin: true
     peerDependencies:
       '@chromatic-com/cypress': ^0.*.* || ^1.0.0
@@ -8504,7 +8504,7 @@ snapshots:
 
   chroma-js@3.2.0: {}
 
-  chromatic@13.3.5: {}
+  chromatic@16.0.0: {}
 
   cliui@8.0.1:
     dependencies:
