@@ -25,10 +25,12 @@ export const Contributors = ({
         <Heading level={headingLevel} data-size='2xs'>
           {t('contributors')}
         </Heading>
-        <Paragraph data-size='sm' className={classes.meta}>
-          {authors?.map((author, index) => (
-            <span key={index}>{author}</span>
-          ))}
+        <Paragraph data-size='sm' className={classes.meta} asChild>
+          <ul>
+            {authors?.map((author, index) => (
+              <li key={index}>{author}</li>
+            ))}
+          </ul>
         </Paragraph>
       </div>
     </section>
