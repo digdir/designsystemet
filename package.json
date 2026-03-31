@@ -2,9 +2,9 @@
   "name": "root",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be",
+  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
   "engines": {
-    "node": ">=24.14.0"
+    "node": ">=24.14.1"
   },
   "scripts": {
     "test": "vitest",
@@ -37,21 +37,21 @@
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.7",
+    "@biomejs/biome": "2.4.9",
     "@changesets/cli": "^2.30.0",
     "@digdir/designsystemet": "workspace:",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@types/node": "^24.12.0",
     "@vitejs/plugin-react-swc": "^4.3.0",
-    "@vitest/coverage-v8": "4.1.0",
-    "@vitest/browser-playwright": "4.1.0",
-    "chromatic": "^13.3.5",
+    "@vitest/coverage-v8": "4.1.2",
+    "@vitest/browser-playwright": "4.1.2",
+    "chromatic": "^16.0.0",
     "just-pnpm": "^1.0.2",
     "tsconfck": "^3.1.6",
     "typescript": "^5.9.3",
     "typescript-plugin-css-modules": "^5.2.0",
     "vite": "^7.3.1",
-    "vitest": "4.1.0"
+    "vitest": "4.1.2"
   }
 }

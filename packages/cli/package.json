@@ -4,7 +4,7 @@
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=20.20.1"
+    "node": ">=20.20.2"
   },
   "repository": {
     "type": "git",
@@ -70,7 +70,7 @@
     "picocolors": "^1.1.1",
     "postcss": "^8.5.8",
     "ramda": "^0.32.0",
-    "style-dictionary": "^5.3.3",
+    "style-dictionary": "^5.4.0",
     "zod": "^4.3.6",
     "zod-validation-error": "^5.0.0"
   },
