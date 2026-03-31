@@ -23,6 +23,10 @@ export type ToggleGroupProps = MergeRight<
      */
     'aria-label'?: string;
     /**
+     * Toggle group labelledby pointing to another element ID to use as accessible label
+     */
+    'aria-labelledby'?: string;
+    /**
      * Specify which variant to use
      * @default 'primary'
      */
