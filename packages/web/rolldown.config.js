@@ -17,6 +17,11 @@ const input = files.reduce((acc, file) => {
   return acc;
 }, {});
 
+const entryFileNames = ({ name }) =>
+  name.includes('node_modules')
+    ? `_vendors${name.split('node_modules').pop()}.js` // Jest does not resolve invokers-polyfill/fn so instead we inline it
+    : '[name].js';
+
 export default defineConfig([
   // ES Module build with individual files
   {
@@ -26,10 +31,7 @@ export default defineConfig([
       format: 'esm',
       sourcemap: true,
       // See https://github.com/rollup/rollup/issues/3684#issuecomment-1535836196
-      entryFileNames: ({ name }) =>
-        name.includes('node_modules')
-          ? `_vendors${name.split('node_modules').pop()}.js` // Jest does not resolve invokers-polyfill/fn so instead we inline it
-          : '[name].js',
+      entryFileNames,
       // Needed to truly enable being treeshakable when Vite is in lib mode
       // https://stackoverflow.com/questions/74362685/tree-shaking-does-not-work-in-vite-library-mode
       preserveModules: true,
@@ -45,7 +47,10 @@ export default defineConfig([
       dir: 'dist/cjs',
       format: 'cjs',
       sourcemap: true,
-      entryFileNames: '[name].cjs',
+      // See https://github.com/rollup/rollup/issues/3684#issuecomment-1535836196
+      entryFileNames: entryFileNames,
+      // Needed to truly enable being treeshakable when Vite is in lib mode
+      // https://stackoverflow.com/questions/74362685/tree-shaking-does-not-work-in-vite-library-mode
       preserveModules: true,
       preserveModulesRoot: 'src',
       exports: 'named',
