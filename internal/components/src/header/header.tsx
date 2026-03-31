@@ -240,16 +240,22 @@ const Header = ({
               </Dropdown.Trigger>
 
               <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
-                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                  <Link to={langPaths.no} lang='no' hrefLang='no'>
-                    Norsk
-                  </Link>
-                </Dropdown.Button>
-                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                  <Link to={langPaths.en} lang='en' hrefLang='en'>
-                    English
-                  </Link>
-                </Dropdown.Button>
+                <Dropdown.List>
+                  <Dropdown.Item>
+                    <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                      <Link to={langPaths.no} lang='no' hrefLang='no'>
+                        Norsk
+                      </Link>
+                    </Dropdown.Button>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                      <Link to={langPaths.en} lang='en' hrefLang='en'>
+                        English
+                      </Link>
+                    </Dropdown.Button>
+                  </Dropdown.Item>
+                </Dropdown.List>
               </Dropdown>
             </Dropdown.TriggerContext>
             {themeSwitcher && (
