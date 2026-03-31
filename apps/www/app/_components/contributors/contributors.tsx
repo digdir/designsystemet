@@ -1,4 +1,4 @@
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, List } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 
 import classes from './contributors.module.css';
@@ -25,13 +25,11 @@ export const Contributors = ({
         <Heading level={headingLevel} data-size='2xs'>
           {t('contributors')}
         </Heading>
-        <Paragraph data-size='sm' className={classes.meta} asChild>
-          <ul>
-            {authors?.map((author, index) => (
-              <li key={index}>{author}</li>
-            ))}
-          </ul>
-        </Paragraph>
+        <List.Unordered data-size='sm' className={classes.meta}>
+          {authors?.map((author, index) => (
+            <List.Item key={index}>{author}</List.Item>
+          ))}
+        </List.Unordered>
       </div>
     </section>
   );
