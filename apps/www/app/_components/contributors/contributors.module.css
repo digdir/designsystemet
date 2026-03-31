@@ -64,7 +64,7 @@
   list-style: none;
   padding-inline-start: 0;
   margin-left: calc(-1 * (var(--_column-gap) + var(--_square-size)));
-  
+
   li {
     text-wrap: wrap;
   }
