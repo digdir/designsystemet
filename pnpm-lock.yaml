@@ -689,8 +689,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2
       invokers-polyfill:
-        specifier: ^0.6.1
-        version: 0.6.1
+        specifier: ^1.0.1
+        version: 1.0.1
     devDependencies:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.11.0
@@ -3979,8 +3979,8 @@ packages:
   inline-style-parser@0.2.4:
     resolution: {integrity: sha512-0aO8FkhNZlj/ZIbNi7Lxxr12obT7cL1moPfE4tg1LkX7LlLfC6DeX4l2ZEud1ukP9jNQyNnfzQVqwbwmAATY4Q==}
 
-  invokers-polyfill@0.6.1:
-    resolution: {integrity: sha512-SOl+PfmPcjaXGYvUs3GkbwXN5rAADzl3i33GJ1jOsGhwtlwfMonQvVu5/4aI7X9+J4g+KX2kfiO8jUIvISBubg==}
+  invokers-polyfill@1.0.1:
+    resolution: {integrity: sha512-U+fck31TKDgoazU6HD0t2WJEo6sY2dSeOAyaFMpP3bljrEdPNzH0eyWl/pHEi6yY790FDxUd+JZ28kyQ6++arg==}
 
   ip-address@10.1.0:
     resolution: {integrity: sha512-XXADHxXmvT9+CRxhXg56LJovE+bmWnEWB78LB83VZTprKTmaC5QfruXocxzTZ2Kl0DNwKuBdlIhjL8LeY8Sf8Q==}
@@ -9387,7 +9387,7 @@ snapshots:
 
   inline-style-parser@0.2.4: {}
 
-  invokers-polyfill@0.6.1: {}
+  invokers-polyfill@1.0.1: {}
 
   ip-address@10.1.0: {}
 
