@@ -28,7 +28,7 @@ export default defineConfig([
       // See https://github.com/rollup/rollup/issues/3684#issuecomment-1535836196
       entryFileNames: ({ name }) =>
         name.includes('node_modules')
-          ? `bundled_dependencies${name.split('node_modules').pop()}.js` // Jest does not resolve invokers-polyfill/fn so instead we inline it
+          ? `_vendors${name.split('node_modules').pop()}.js` // Jest does not resolve invokers-polyfill/fn so instead we inline it
           : '[name].js',
       // Needed to truly enable being treeshakable when Vite is in lib mode
       // https://stackoverflow.com/questions/74362685/tree-shaking-does-not-work-in-vite-library-mode
