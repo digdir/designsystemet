@@ -64,49 +64,47 @@ const handleFieldMutation = (field: DSFieldElement) => {
     }
   }
 
-  if (!input) warn(`Field is missing input element:`, field);
-  else {
-    if (counter) COUNTS.set(input, counter);
-    for (const label of labels) attr(label, 'for', useId(input));
+  if (!input) return; // Do not warn about missing input as virtual DOM libraries might give false positives
+  if (counter) COUNTS.set(input, counter);
+  for (const label of labels) attr(label, 'for', useId(input));
 
-    const fieldsetValidation = field
-      .closest('fieldset')
-      ?.querySelector<HTMLElement>(':scope > [data-field="validation"]');
+  const fieldsetValidation = field
+    .closest('fieldset')
+    ?.querySelector<HTMLElement>(':scope > [data-field="validation"]');
 
-    // Connect fieldset validation to inputs
-    if (fieldsetValidation && !fieldsetValidation?.hidden) {
-      hasValidation = true;
-      invalid = invalid || isInvalid(fieldsetValidation);
-      nextDescs.unshift(useId(fieldsetValidation));
-    }
-
-    // Add support for data-indeterminate attribute as this normally can only be set by javascript
-    const indeterminate = attr(input, ATTR_INDETERMINATE);
-    if (indeterminate) input.indeterminate = indeterminate === 'true';
-
-    // Expand click area to ds-field if radio/checkbox
-    const isBoolish = input.type === 'radio' || input.type === 'checkbox';
-    if (isBoolish) attr(field, 'data-clickdelegatefor', useId(input));
-
-    // Setup aria-describedby, but repsect existing ids in aria-describedby
-    const describedby = attr(input, ATTR_DESCRIBEDBY)?.trim().split(/\s+/);
-    const keep = describedby?.filter((id) => !prevDescs.includes(id)) || []; // Find non-ds-field-managed aria-describedby IDs
-    attr(input, ATTR_DESCRIBEDBY, [...nextDescs, ...keep].join(' ') || null);
-    FIELDS.set(field, nextDescs);
-
-    // Only manage aria-invalid when field has validation elements
-    const hadValidation = VALIDATIONS.has(input);
-    if (hasValidation && !hadValidation) {
-      VALIDATIONS.set(input, attr(input, 'aria-invalid')); // Store previous attribute to enable reverting state
-      attr(input, 'aria-invalid', 'true');
-    } else if (!hasValidation && hadValidation) {
-      attr(input, 'aria-invalid', VALIDATIONS.get(input)); // Revert to previous state if validation element was removed
-      VALIDATIONS.delete(input);
-    }
-
-    handleFieldInput(input); // Update counter and textarea sizing
+  // Connect fieldset validation to inputs
+  if (fieldsetValidation && !fieldsetValidation?.hidden) {
+    hasValidation = true;
+    invalid = invalid || isInvalid(fieldsetValidation);
+    nextDescs.unshift(useId(fieldsetValidation));
   }
-};
+
+  // Add support for data-indeterminate attribute as this normally can only be set by javascript
+  const indeterminate = attr(input, ATTR_INDETERMINATE);
+  if (indeterminate) input.indeterminate = indeterminate === 'true';
+
+  // Expand click area to ds-field if radio/checkbox
+  const isBoolish = input.type === 'radio' || input.type === 'checkbox';
+  if (isBoolish) attr(field, 'data-clickdelegatefor', useId(input));
+
+  // Setup aria-describedby, but repsect existing ids in aria-describedby
+  const describedby = attr(input, ATTR_DESCRIBEDBY)?.trim().split(/\s+/);
+  const keep = describedby?.filter((id) => !prevDescs.includes(id)) || []; // Find non-ds-field-managed aria-describedby IDs
+  attr(input, ATTR_DESCRIBEDBY, [...nextDescs, ...keep].join(' ') || null);
+  FIELDS.set(field, nextDescs);
+
+  // Only manage aria-invalid when field has validation elements
+  const hadValidation = VALIDATIONS.has(input);
+  if (hasValidation && !hadValidation) {
+    VALIDATIONS.set(input, attr(input, 'aria-invalid')); // Store previous attribute to enable reverting state
+    attr(input, 'aria-invalid', 'true');
+  } else if (!hasValidation && hadValidation) {
+    attr(input, 'aria-invalid', VALIDATIONS.get(input)); // Revert to previous state if validation element was removed
+    VALIDATIONS.delete(input);
+  }
+
+  handleFieldInput(input); // Update counter and textarea sizing
+}
 
 const handleFieldInput = (e: Event | Element) => {
   const input = ((e as Event).target || e) as HTMLInputElement;
