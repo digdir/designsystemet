@@ -1,5 +1,3 @@
-import cat1 from '@assets/img/cats/Cat 1.jpg';
-import cat5 from '@assets/img/cats/Cat 5.jpg';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { severityColors, themeColors } from '../../../stories/constants';
 
@@ -94,7 +92,7 @@ export const Media: Story = () => (
         </Paragraph>
       </Card.Block>
       <Card.Block>
-        <img src={cat1} alt='katt' />
+        <img src='https://placebear.com/300' alt='bear' />
       </Card.Block>
     </Card>
   </>
@@ -135,7 +133,7 @@ export const WithLink: Story = (args) => (
   <>
     <Card {...args}>
       <Card.Block>
-        <img src={cat5} alt='' />
+        <img src='https://placebear.com/300' alt='bear' />
       </Card.Block>
       <Card.Block>
         <Heading>
@@ -174,7 +172,7 @@ export const WithLink: Story = (args) => (
         <Paragraph data-size='sm'>Footer text</Paragraph>
       </Card.Block>
       <Card.Block>
-        <img src={cat5} alt='' />
+        <img src='https://placebear.com/300' alt='bear' />
       </Card.Block>
     </Card>
   </>
