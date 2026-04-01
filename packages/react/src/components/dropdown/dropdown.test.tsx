@@ -31,7 +31,7 @@ describe('Dropdown', async () => {
     );
 
     await act(async () => screen.getByRole('button').click());
-    expect(screen.queryByText('Item 2')).toBeInTheDocument();
+    expect(screen.getByText('Item 2')).toBeInTheDocument();
   });
 
   it('should be able to render `Dropdown.Button` as a anchor element using asChild', async () => {

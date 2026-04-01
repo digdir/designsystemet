@@ -1,6 +1,9 @@
 import { act, render, screen } from '@testing-library/react';
 import { ToggleGroup } from './';
 
+const keydown = (el: Element, key: string) =>
+  el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+
 describe('ToggleGroup', () => {
   test('has generated name for ToggleGroupItem children', () => {
     render(
@@ -24,7 +27,7 @@ describe('ToggleGroup', () => {
     expect(item.name).toEqual('my name');
   });
 
-  test('can navigate with tab and arrow keys', () => {
+  test('can navigate with tab and arrow keys', async () => {
     render(
       <ToggleGroup aria-label='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
@@ -33,32 +36,24 @@ describe('ToggleGroup', () => {
       </ToggleGroup>,
     );
 
-    const item1 = screen.getByRole<HTMLButtonElement>('radio', {
-      name: 'test',
-    });
-    const item2 = screen.getByRole<HTMLButtonElement>('radio', {
-      name: 'test2',
-    });
-    const item3 = screen.getByRole<HTMLButtonElement>('radio', {
-      name: 'test3',
-    });
-    item1.focus();
+    const item1 = screen.getByRole('radio', { name: 'test' });
+    const item2 = screen.getByRole('radio', { name: 'test2' });
+    const item3 = screen.getByRole('radio', { name: 'test3' });
+
+    await act(async () => item1.focus());
     expect(item1).toHaveFocus();
-    item1.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
-    );
+
+    await act(async () => keydown(item1, 'ArrowRight'));
     expect(item2).toHaveFocus();
-    item2.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
-    );
+
+    await act(async () => keydown(item2, 'ArrowRight'));
     expect(item3).toHaveFocus();
-    item3.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
-    );
+
+    await act(async () => keydown(item3, 'ArrowLeft'));
     expect(item2).toHaveFocus();
   });
 
-  test('arrow keys will skip disabled items', () => {
+  test('arrow keys will skip disabled items', async () => {
     render(
       <ToggleGroup aria-label='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
@@ -72,21 +67,16 @@ describe('ToggleGroup', () => {
       </ToggleGroup>,
     );
 
-    const item1 = screen.getByRole<HTMLButtonElement>('radio', {
-      name: 'test',
-    });
-    const item4 = screen.getByRole<HTMLButtonElement>('radio', {
-      name: 'test4',
-    });
-    item1.focus();
+    const item1 = screen.getByRole('radio', { name: 'test' });
+    const item4 = screen.getByRole('radio', { name: 'test4' });
+
+    await act(async () => item1.focus());
     expect(item1).toHaveFocus();
-    item1.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
-    );
+
+    await act(async () => keydown(item1, 'ArrowRight'));
     expect(item4).toHaveFocus();
-    item4.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
-    );
+
+    await act(async () => keydown(item4, 'ArrowLEft'));
     expect(item1).toHaveFocus();
   });
 

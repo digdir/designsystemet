@@ -33,7 +33,7 @@ describe('Dialog', () => {
     const button = screen.getByRole('button', { name: OPEN_Dialog });
     await act(async () => button.click());
 
-    expect(screen.queryByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
   });
 
   it('should open and close the Dialog', async () => {
@@ -43,7 +43,7 @@ describe('Dialog', () => {
 
     const button = screen.getByRole('button', { name: OPEN_Dialog });
     await act(async () => button.click());
-    expect(screen.queryByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
 
     const closeButton = screen.getByRole('button', { name: CLOSE_LABEL });
     await act(async () => closeButton.click());
@@ -84,12 +84,12 @@ describe('Dialog', () => {
     expect(screen.getByText(children)).toBeInTheDocument();
   });
 
-  it('should call onClose when the Dialog is closed with ESC', () => {
+  it('should call onClose when the Dialog is closed with ESC', async () => {
     const onClose = vi.fn();
     render(<Comp open onClose={onClose} />);
     const dialog = screen.getByRole('dialog');
     const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true });
-    dialog.dispatchEvent(esc);
+    await act(async () => dialog.dispatchEvent(esc));
 
     expect(onClose).toHaveBeenCalledTimes(1);
   });
@@ -105,7 +105,7 @@ describe('Dialog', () => {
       screen.getByRole('button', { name: CLOSE_LABEL }).click(),
     );
     vi.waitFor(
-      () => expect(onClose).toHaveBeenCalledTimes(1), // Let events bubble
+      () => expect(onClose).toHaveBeenCalledTimes(1), // Let native <dialog> close trigger
     );
   });
 

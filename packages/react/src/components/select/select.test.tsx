@@ -89,8 +89,6 @@ describe('Select', () => {
 
   it('Is read-only when "aria-readonly" is true', async () => {
     const onChange = vi.fn();
-    const keydown = (el: Element, key: string) =>
-      el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
     render(
       <Select onChange={onChange} aria-readonly='true'>
@@ -102,8 +100,10 @@ describe('Select', () => {
     await act(async () => select.click());
     expect(select).toHaveFocus();
 
-    await act(async () => keydown(select, 'ArrowDown'));
-    await act(async () => keydown(select, 'Enter'));
+    const down = new KeyboardEvent('keydown', { key: 'ArrowDown' });
+    const enter = new KeyboardEvent('keydown', { key: 'Enter' });
+    await act(async () => select.dispatchEvent(down));
+    await act(async () => select.dispatchEvent(enter));
 
     expect(onChange).not.toHaveBeenCalled();
     expect(screen.getByRole('combobox')).toHaveAttribute(

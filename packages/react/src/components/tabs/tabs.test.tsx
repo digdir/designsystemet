@@ -16,11 +16,11 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    expect(screen.queryByText('content 1')).toBeVisible();
-    expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
+    expect(screen.getByText('content 1')).toBeVisible();
+    expect(screen.getByText('content 2')).toHaveAttribute('hidden', '');
     await act(async () => screen.getByRole('tab', { name: 'Tab 2' }).click());
-    expect(screen.queryByText('content 2')).toBeVisible();
-    expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
+    expect(screen.getByText('content 2')).toBeVisible();
+    expect(screen.getByText('content 1')).toHaveAttribute('hidden', '');
   });
 
   it('item renders with correct aria attributes', async () => {
@@ -50,7 +50,7 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    expect(screen.queryByText('content 1')).toBeInTheDocument();
+    expect(screen.getByText('content 1')).toBeInTheDocument();
   });
 
   it('has tabindex 0 on tabpanel', () => {
@@ -167,8 +167,6 @@ describe('Tabs', () => {
     };
 
     const onChange = vi.fn();
-    const keydown = (el: Element, key: string) =>
-      el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
     render(<ControlledTabs onChange={onChange} />);
 
@@ -178,13 +176,13 @@ describe('Tabs', () => {
 
     await act(async () => tabTwo.focus());
     expect(tabTwo).toHaveFocus();
-    await act(async () => keydown(tabTwo, ' ')); // Activate second tab with keyboard
 
-    vi.waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith('value2');
-      expect(tabTwo).toHaveAttribute('aria-selected', 'true');
-      expect(tabOne).toHaveAttribute('aria-selected', 'false');
-    });
+    const space = new KeyboardEvent('keydown', { key: ' ', bubbles: true });
+    await act(async () => tabTwo.dispatchEvent(space)); // Activate second tab with keyboard
+
+    expect(onChange).toHaveBeenCalledWith('value2');
+    expect(tabTwo).toHaveAttribute('aria-selected', 'true');
+    expect(tabOne).toHaveAttribute('aria-selected', 'false');
   });
 
   it('does not switch tabs in controlled mode until value prop changes', async () => {
@@ -206,8 +204,8 @@ describe('Tabs', () => {
     expect(onChange).toHaveBeenCalledOnce();
     expect(onChange).toHaveBeenCalledWith('value2');
 
-    expect(screen.queryByText('content 1')).toBeVisible();
-    expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
+    expect(screen.getByText('content 1')).toBeVisible();
+    expect(screen.getByText('content 2')).toHaveAttribute('hidden', '');
 
     rerender(
       <Tabs value='value2' onChange={onChange}>
@@ -220,7 +218,7 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    expect(screen.queryByText('content 2')).toBeVisible();
-    expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
+    expect(screen.getByText('content 2')).toBeVisible();
+    expect(screen.getByText('content 1')).toHaveAttribute('hidden', '');
   });
 });

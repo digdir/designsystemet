@@ -54,7 +54,7 @@ describe('Button', () => {
       </Button>,
     );
     expect(screen.getByRole('link')).not.toHaveAttribute('type');
-    expect(screen.queryByRole('button')).toBeNull();
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('should not render children when icon-only button is loading', () => {
@@ -63,7 +63,7 @@ describe('Button', () => {
         Button text
       </Button>,
     );
-    expect(screen.queryByText('Button text')).toBeNull();
+    expect(screen.queryByText('Button text')).not.toBeInTheDocument();
     expect(screen.getByRole('button')).toHaveAttribute('aria-busy');
   });
 });
