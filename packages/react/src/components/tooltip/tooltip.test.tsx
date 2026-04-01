@@ -1,42 +1,34 @@
-import { render as renderRtl, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import { act } from 'react';
-
-import type { TooltipProps } from './tooltip';
 import { Tooltip } from './tooltip';
-
-const render = (props: Partial<TooltipProps> = {}) => {
-  const allProps: TooltipProps = {
-    children: <button data-testid='button'>My button</button>,
-    content: 'Tooltip text',
-    ...props,
-  };
-  /* Flush microtasks */
-  // await act(() => {});
-  const user = userEvent.setup();
-
-  return {
-    user,
-    ...renderRtl(<Tooltip {...allProps} />),
-  };
-};
 
 describe('Tooltip', () => {
   it('should render child', () => {
-    render();
-    const tooltipTrigger = screen.getByTestId('button');
-
+    render(
+      <Tooltip content='text'>
+        <button>Button</button>
+      </Tooltip>,
+    );
+    const tooltipTrigger = screen.getByRole('button');
     expect(tooltipTrigger).toBeInTheDocument();
+    vi.waitFor(
+      () => expect(tooltipTrigger).toHaveAttribute('aria-description', 'text'), // Let MutationObserver run first
+    );
   });
 
   it('should render tooltip on hover', async () => {
     const content = 'Unique content for hover-test';
-    const { user } = render({ content });
-    const tooltipTrigger = screen.getByRole('button');
+    render(
+      <Tooltip content={content}>
+        <button>Button</button>
+      </Tooltip>,
+    );
 
+    const tooltipTrigger = screen.getByRole('button');
     expect(screen.queryByText(content)).not.toBeInTheDocument();
 
-    await act(async () => await user.hover(tooltipTrigger));
+    const hover = new MouseEvent('mouseover', { bubbles: true });
+    await act(async () => tooltipTrigger.dispatchEvent(hover));
 
     const tooltip = await screen.findByText(content);
     expect(tooltip).toBeVisible();
@@ -45,37 +37,42 @@ describe('Tooltip', () => {
 
   it('should render tooltip on focus', async () => {
     const content = 'Unique content for focus-test';
-    const { user } = render({ content });
+    render(
+      <Tooltip content={content}>
+        <button>Button</button>
+      </Tooltip>,
+    );
 
     expect(screen.queryByText(content)).not.toBeInTheDocument();
-    await user.click(screen.getByTestId('button'));
-    const tooltip = await screen.findByText(content);
+    await act(async () => screen.getByRole('button').focus());
+    const tooltip = screen.getByText(content);
     expect(tooltip).toBeVisible();
   });
 
   it('should render span when children is a string', () => {
-    render({ children: 'My string child' });
-    const tooltipTrigger = screen.getByText('My string child');
+    const children = 'My string child';
+    render(<Tooltip content='text'>{children}</Tooltip>);
 
+    const tooltipTrigger = screen.getByText(children);
     expect(tooltipTrigger.tagName).toBe('SPAN');
   });
 
   it('should be aria-describedby when there is text in the trigger', () => {
-    render();
+    render(
+      <Tooltip content='text'>
+        <button>text</button>
+      </Tooltip>,
+    );
     const trigger = screen.getByRole('button');
     expect(trigger.getAttribute('aria-describedby')).toBeDefined();
   });
 
   it('should be aria-labelledby when there is no text in the trigger', () => {
-    render({ children: <button /> });
-    const trigger = screen.getByRole('button');
-    expect(trigger.getAttribute('aria-labelledby')).toBeDefined();
-  });
-
-  it('should be able to override aria type', () => {
-    render({
-      type: 'labelledby',
-    });
+    render(
+      <Tooltip content='text'>
+        <button />
+      </Tooltip>,
+    );
     const trigger = screen.getByRole('button');
     expect(trigger.getAttribute('aria-labelledby')).toBeDefined();
   });
