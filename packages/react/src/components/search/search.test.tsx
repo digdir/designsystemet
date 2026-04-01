@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { Search } from './';
 
 describe('Search', () => {
-  it('should clear input when clear button is clickd', async () => {
+  it('should clear input when clear button is clickd', () => {
     render(
       <Search>
         <Search.Input aria-label='Søk' />

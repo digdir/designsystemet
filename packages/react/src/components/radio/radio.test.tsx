@@ -1,24 +1,23 @@
 import { render, screen } from '@testing-library/react';
-
 import { Radio } from './radio';
 
 describe('Radio', () => {
-  test('has correct value and label', async () => {
+  test('has correct value and label', () => {
     render(<Radio label='label' value='test' />);
     expect(screen.getByLabelText('label')).toBeDefined();
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
-  test('has correct description', async () => {
+  test('has correct description', () => {
     render(<Radio label='test' value='test' description='description' />);
     expect(
-      await screen.findByRole('radio', { description: 'description' }),
+      screen.getByRole('radio', { description: 'description' }),
     ).toBeDefined();
   });
 
-  test('should pass down name attribute to input', async () => {
+  test('should pass down name attribute to input', () => {
     render(<Radio label='label' value='test' name='radio-group123' />);
-    expect(await screen.findByRole('radio', { name: 'label' })).toHaveAttribute(
+    expect(screen.getByRole('radio', { name: 'label' })).toHaveAttribute(
       'name',
       'radio-group123',
     );
@@ -41,10 +40,9 @@ describe('Radio', () => {
     ).toBeVisible();
   });
 
-  it('calls onChange and onClick when user clicks', async () => {
+  it('calls onChange and onClick when user clicks', () => {
     const onChange = vi.fn();
     const onClick = vi.fn();
-
     const value = 'test';
 
     render(
@@ -67,7 +65,7 @@ describe('Radio', () => {
     expect(radio.checked).toBeTruthy();
   });
 
-  it('does not call onChange or onClick when user clicks and the radio is disabled', async () => {
+  it('does not call onChange or onClick when user clicks and the radio is disabled', () => {
     const onChange = vi.fn();
     const onClick = vi.fn();
 
@@ -89,7 +87,7 @@ describe('Radio', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('does not call onChange when user clicks and the radio is readOnly', async () => {
+  it('does not call onChange when user clicks and the radio is readOnly', () => {
     const onChange = vi.fn();
     const onClick = vi.fn();
 

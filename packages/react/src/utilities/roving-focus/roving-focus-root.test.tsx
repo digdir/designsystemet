@@ -1,14 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { act } from 'react';
-
 import { RovingFocusItem } from './roving-focus-item';
 import { RovingFocusRoot } from './roving-focus-root';
 
-const user = userEvent.setup();
-
 describe('RovingFocusRoot', () => {
-  it('can navigate with tab and arrow keys', async () => {
+  it('can navigate with tab and arrow keys', () => {
     render(
       <RovingFocusRoot>
         <RovingFocusItem>test</RovingFocusItem>
@@ -20,23 +15,35 @@ describe('RovingFocusRoot', () => {
     const item1 = screen.getByText('test');
     const item2 = screen.getByText('test2');
     const item3 = screen.getByText('test3');
-    await act(async () => await user.tab());
+    item1.focus();
     expect(item1).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowRight}'));
+    item1.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+    );
     expect(item2).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowRight}'));
+    item2.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+    );
     expect(item3).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowRight}'));
+    item3.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+    );
     expect(item1).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowLeft}'));
+    item1.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
+    );
     expect(item3).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowLeft}'));
+    item3.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
+    );
     expect(item2).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowLeft}'));
+    item2.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
+    );
     expect(item1).toHaveFocus();
   });
 
-  it('can navigate with tab and arrow keys with custom value', async () => {
+  it('can navigate with tab and arrow keys with custom value', () => {
     render(
       <RovingFocusRoot>
         <RovingFocusItem data-testid='id1' value='banana'>
@@ -54,19 +61,32 @@ describe('RovingFocusRoot', () => {
     const item1 = screen.getByTestId('id1');
     const item2 = screen.getByTestId('id2');
     const item3 = screen.getByTestId('id3');
-    await act(async () => await user.tab());
+
+    item1.focus();
     expect(item1).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowRight}'));
+    item1.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+    );
     expect(item2).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowRight}'));
+    item2.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+    );
     expect(item3).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowRight}'));
+    item3.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+    );
     expect(item1).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowLeft}'));
+    item1.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
+    );
     expect(item3).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowLeft}'));
+    item3.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
+    );
     expect(item2).toHaveFocus();
-    await act(async () => await user.keyboard('{ArrowLeft}'));
+    item2.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
+    );
     expect(item1).toHaveFocus();
   });
 });

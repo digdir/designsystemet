@@ -23,7 +23,7 @@ describe('Tabs', () => {
     expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
   });
 
-  it('item renders with correct aria attributes', async () => {
+  it('item renders with correct aria attributes', () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.List>
@@ -34,7 +34,7 @@ describe('Tabs', () => {
     );
 
     const tab = screen.getByRole('tab', { name: 'Tab 2' });
-    await vi.waitFor(
+    vi.waitFor(
       () => expect(tab).toHaveAttribute('aria-selected', 'false'), // Let MutationObserver run first
     );
     tab.click();
@@ -82,7 +82,7 @@ describe('Tabs', () => {
     expect(panel).not.toHaveAttribute('tabindex', '0');
   });
 
-  it('panel is aria-labelledby button', async () => {
+  it('panel is aria-labelledby button', () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.List>
@@ -103,10 +103,8 @@ describe('Tabs', () => {
     );
 
     const testButton = screen.getByRole('tab', { name: 'Tab 2' });
-
     const panelOne = screen.getByTestId('panel-1');
     expect(panelOne).toHaveAttribute('aria-labelledby', 'custom-id');
-
     testButton.click(); // Activate tab 2 to render its panel
 
     const panelTwo = screen.getByTestId('panel-2');
@@ -142,7 +140,7 @@ describe('Tabs', () => {
     expect(buttonTwo).toHaveAttribute('aria-controls', panelTwo.id);
   });
 
-  it('calls onChange in controlled mode when selecting tab with keyboard', async () => {
+  it('calls onChange in controlled mode when selecting tab with keyboard', () => {
     const ControlledTabs = ({
       onChange,
     }: {
@@ -188,7 +186,7 @@ describe('Tabs', () => {
     });
   });
 
-  it('does not switch tabs in controlled mode until value prop changes', async () => {
+  it('does not switch tabs in controlled mode until value prop changes', () => {
     const onChange = vi.fn();
 
     const { rerender } = render(

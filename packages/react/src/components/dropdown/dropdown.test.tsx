@@ -21,7 +21,7 @@ const Comp = (args: Partial<DropdownTriggerContextProps>) => {
 
 describe('Dropdown', () => {
   /* We are testing closing and opening in Popover.tests.tsx */
-  it('should render children', async () => {
+  it('should render children', () => {
     render(
       <Comp>
         <Dropdown.Item>
@@ -29,14 +29,12 @@ describe('Dropdown', () => {
         </Dropdown.Item>
       </Comp>,
     );
-    const dropdownTrigger = screen.getByRole('button');
 
-    dropdownTrigger.click();
-
+    screen.getByRole('button').click();
     expect(screen.queryByText('Item 2')).toBeInTheDocument();
   });
 
-  it('should be able to render `Dropdown.Button` as a anchor element using asChild', async () => {
+  it('should be able to render `Dropdown.Button` as a anchor element using asChild', () => {
     render(
       <Comp>
         <Dropdown.Item>
@@ -46,10 +44,8 @@ describe('Dropdown', () => {
         </Dropdown.Item>
       </Comp>,
     );
-    const dropdownTrigger = screen.getByRole('button');
 
-    dropdownTrigger.click();
-
+    screen.getByRole('button').click();
     expect(screen.getByText('Anchor')).toHaveAttribute('href', '/');
     expect(screen.getByText('Anchor').tagName).toBe('A');
   });

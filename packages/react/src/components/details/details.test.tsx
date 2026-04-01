@@ -39,15 +39,15 @@ describe('Details', () => {
     expect(detailsExpandButton.parentElement).toHaveAttribute('open');
   });
 
-  test('should be able to render Details as controlled', async () => {
+  test('should be able to render Details as controlled', () => {
     render(<TestComponent open onToggle={VOID} />);
 
     const detailsExpandButton = screen.getByTestId('summary');
     expect(detailsExpandButton.parentElement).toHaveAttribute('open');
 
     detailsExpandButton.click();
-    vi.waitFor(() =>
-      expect(detailsExpandButton.parentElement).toHaveAttribute('open'),
+    vi.waitFor(
+      () => expect(detailsExpandButton.parentElement).toHaveAttribute('open'), // Let React controll state before checking
     );
   });
 });

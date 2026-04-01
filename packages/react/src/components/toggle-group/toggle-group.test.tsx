@@ -24,7 +24,7 @@ describe('ToggleGroup', () => {
     expect(item.name).toEqual('my name');
   });
 
-  test('can navigate with tab and arrow keys', async () => {
+  test('can navigate with tab and arrow keys', () => {
     render(
       <ToggleGroup aria-label='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
@@ -58,7 +58,7 @@ describe('ToggleGroup', () => {
     expect(item2).toHaveFocus();
   });
 
-  test('arrow keys will skip disabled items', async () => {
+  test('arrow keys will skip disabled items', () => {
     render(
       <ToggleGroup aria-label='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
@@ -90,7 +90,7 @@ describe('ToggleGroup', () => {
     expect(item1).toHaveFocus();
   });
 
-  test('click will not check disabled item', async () => {
+  test('click will not check disabled item', () => {
     const onChangeMock = vi.fn();
 
     render(
@@ -136,7 +136,7 @@ describe('ToggleGroup', () => {
     });
     expect(item).toHaveProperty('checked', true);
   });
-  test('has passed clicked ToggleGroupItem value to onChange', async () => {
+  test('has passed clicked ToggleGroupItem value to onChange', () => {
     const onChangeMock = vi.fn();
 
     render(
@@ -157,7 +157,7 @@ describe('ToggleGroup', () => {
     expect(onChangeMock).toHaveBeenCalledWith('test2value');
     expect(item).toHaveProperty('checked', true);
   });
-  test('has correct checked on correct ToggleGroupItem when clicked', async () => {
+  test('has correct checked on correct ToggleGroupItem when clicked', () => {
     const onChangeMock = vi.fn();
 
     render(

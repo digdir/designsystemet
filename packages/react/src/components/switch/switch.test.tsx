@@ -1,24 +1,20 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { act } from 'react';
-
 import { Switch } from './switch';
 
 describe('Switch', () => {
-  test('has correct value and label', async () => {
+  test('has correct value and label', () => {
     render(<Switch label='label' value='test' />);
-    expect(await screen.findByLabelText('label')).toBeDefined();
+    expect(screen.getByLabelText('label')).toBeDefined();
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
-  test('has correct description', async () => {
+  test('has correct description', () => {
     render(<Switch label='test' value='test' description='description' />);
     expect(
-      await screen.findByRole('switch', { description: 'description' }),
+      screen.getByRole('switch', { description: 'description' }),
     ).toBeDefined();
   });
-  it('calls onChange and onClick when user clicks', async () => {
-    const user = userEvent.setup();
+  it('calls onChange and onClick when user clicks', () => {
     const onChange = vi.fn();
     const onClick = vi.fn();
 
@@ -37,15 +33,14 @@ describe('Switch', () => {
 
     expect(switch_.checked).toBeFalsy();
 
-    await act(async () => await user.click(switch_));
+    switch_.click();
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(1);
     expect(switch_.checked).toBeTruthy();
   });
 
-  it('does not call onChange or onClick when user clicks and the Switch is disabled', async () => {
-    const user = userEvent.setup();
+  it('does not call onChange or onClick when user clicks and the Switch is disabled', () => {
     const onChange = vi.fn();
     const onClick = vi.fn();
 
@@ -60,32 +55,29 @@ describe('Switch', () => {
     );
 
     const switch_ = screen.getByRole('switch');
-    await user.click(switch_);
+    switch_.click();
 
     expect(switch_).toBeDisabled();
     expect(onClick).not.toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  // TODO: Re-enable when using <Input> component
-  // it('does not call onChange when user clicks and the Switch is readOnly', async () => {
-  //   const user = userEvent.setup();
-  //   const onChange = vi.fn();
+  it('does not call onChange when user clicks and the Switch is readOnly', () => {
+    const onChange = vi.fn();
 
-  //   render(
-  //     <Switch value='test' readOnly onChange={onChange}>
-  //       readonly switch_
-  //     </Switch>,
-  //   );
+    render(
+      <Switch
+        aria-label='readonly'
+        value='test'
+        readOnly
+        onChange={onChange}
+      />,
+    );
 
-  //   const switch_ = screen.getByRole('switch');
-  //   await act(async () => await user.click(switch_));
+    const switch_ = screen.getByRole('switch');
+    switch_.click();
 
-  //   console.log(switch_.outerHTML);
-
-  //   expect(switch_).toHaveAttribute('readonly');
-  //   expect(onChange).not.toHaveBeenCalled();
-  // });
-
-  //TODO is there a good way to test size?
+    expect(switch_).toHaveAttribute('readonly');
+    expect(onChange).not.toHaveBeenCalled();
+  });
 });

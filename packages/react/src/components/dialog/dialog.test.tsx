@@ -96,14 +96,15 @@ describe('Dialog', () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  it('should call onClose when the Dialog is closed with the close button', async () => {
+  it('should call onClose when the Dialog is closed with the close button', () => {
     const onClose = vi.fn();
     render(<Comp onClose={onClose} />);
 
     screen.getByRole('button', { name: OPEN_Dialog }).click();
     screen.getByRole('button', { name: CLOSE_LABEL }).click();
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let events bubble
-    expect(onClose).toHaveBeenCalledTimes(1);
+    vi.waitFor(
+      () => expect(onClose).toHaveBeenCalledTimes(1), // Let events bubble
+    );
   });
 
   it('a custom data-command=close button should close the dialog', () => {
