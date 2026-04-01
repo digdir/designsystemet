@@ -1,11 +1,8 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
 import type { ButtonProps } from './button';
 import { Button } from './button';
-
-const user = userEvent.setup();
 
 describe('Button', () => {
   beforeAll(() => {
@@ -42,8 +39,7 @@ describe('Button', () => {
       onClick: fn,
     });
 
-    const button = screen.getByRole('button');
-    await act(async () => await user.click(button));
+    screen.getByRole('button').click();
     expect(fn).not.toHaveBeenCalled();
   });
 
@@ -57,7 +53,7 @@ describe('Button', () => {
   it('should handle onClick event', async () => {
     const fn = vi.fn();
     render({ onClick: fn });
-    await act(async () => await user.click(screen.getByRole('button')));
+    screen.getByRole('button').click();
     expect(fn).toHaveBeenCalled();
   });
 

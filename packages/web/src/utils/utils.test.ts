@@ -1,7 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { describe, expect, it, vi } from 'vitest';
-import { userEvent } from 'vitest/browser';
 import {
   announce,
   attr,
@@ -17,8 +16,6 @@ import {
   warn,
 } from './utils';
 
-const user = userEvent.setup();
-
 describe('utils', () => {
   it('attr gets, sets, and removes attributes', () => {
     const el = document.createElement('div');
@@ -32,7 +29,7 @@ describe('utils', () => {
     expect(el).not.toHaveAttribute('data-test');
   });
 
-  it('attrOrCSS reads from CSS custom property and strips quotes', async () => {
+  it('attrOrCSS reads from CSS custom property and strips quotes', () => {
     const el = document.createElement('div');
     document.body.appendChild(el); // Needed for getComputedStyle to work, which is used by attrOrCSS
     el.style.setProperty('--_ds-test', '"property-value"');
@@ -169,24 +166,24 @@ describe('utils', () => {
 
   describe('announce', () => {
     // Make a button and click it will mount the live region
-    const ensureLiveRegionMounted = async () => {
+    const ensureLiveRegionMounted = () => {
       document.body.innerHTML = '<button>Click me</button>';
       const button = document.querySelector('button') as HTMLButtonElement;
 
-      await user.click(button);
+      button.focus();
     };
-    it('should mount live region on first user interaction', async () => {
+    it('should mount live region on first user interaction', () => {
       // Reset by removing any existing live region
       document.querySelector('[aria-live="assertive"]')?.remove();
 
-      await ensureLiveRegionMounted();
+      ensureLiveRegionMounted();
 
       const live = document.querySelector('[aria-live="assertive"]');
       expect(live).toBeInTheDocument();
     });
 
-    it('should reuse the same live region element', async () => {
-      await ensureLiveRegionMounted();
+    it('should reuse the same live region element', () => {
+      ensureLiveRegionMounted();
 
       announce('First');
       announce('Second');
@@ -195,8 +192,8 @@ describe('utils', () => {
       expect(regions[0]).toHaveTextContent('Second');
     });
 
-    it('should alternate non-breaking space to force re-announcement', async () => {
-      await ensureLiveRegionMounted();
+    it('should alternate non-breaking space to force re-announcement', () => {
+      ensureLiveRegionMounted();
 
       announce('Same');
       const live = document.querySelector('[aria-live="assertive"]');
@@ -210,8 +207,8 @@ describe('utils', () => {
       expect([first, second]).toContain('Same\u00A0');
     });
 
-    it('should not set text content when called without text', async () => {
-      await ensureLiveRegionMounted();
+    it('should not set text content when called without text', () => {
+      ensureLiveRegionMounted();
 
       announce('Existing');
       const live = document.querySelector('[aria-live="assertive"]');

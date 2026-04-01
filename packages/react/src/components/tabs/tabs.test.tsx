@@ -1,21 +1,10 @@
-import { render as renderRtl, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import { useState } from 'react';
 
 import { Tabs } from './';
 
-const user = userEvent.setup();
-
-const render = (...args: Parameters<typeof renderRtl>) => {
-  vi.useFakeTimers();
-  const result = renderRtl(...args);
-  vi.runAllTimers(); // Flush any pending timers to setup tags properly
-  vi.useRealTimers();
-  return result;
-};
-
 describe('Tabs', () => {
-  it('renders content based on value', async () => {
+  it('renders content based on value', () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.List>
@@ -29,7 +18,7 @@ describe('Tabs', () => {
 
     expect(screen.queryByText('content 1')).toBeVisible();
     expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
-    await user.click(screen.getByRole('tab', { name: 'Tab 2' }));
+    screen.getByRole('tab', { name: 'Tab 2' }).click();
     expect(screen.queryByText('content 2')).toBeVisible();
     expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
   });
@@ -45,8 +34,10 @@ describe('Tabs', () => {
     );
 
     const tab = screen.getByRole('tab', { name: 'Tab 2' });
-    expect(tab).toHaveAttribute('aria-selected', 'false');
-    await user.click(tab);
+    await vi.waitFor(
+      () => expect(tab).toHaveAttribute('aria-selected', 'false'), // Let MutationObserver run first
+    );
+    tab.click();
     expect(tab).toHaveAttribute('aria-selected', 'true');
   });
 
@@ -59,8 +50,7 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    const content = screen.queryByText('content 1');
-    expect(content).toBeInTheDocument();
+    expect(screen.queryByText('content 1')).toBeInTheDocument();
   });
 
   it('has tabindex 0 on tabpanel', () => {
@@ -117,7 +107,7 @@ describe('Tabs', () => {
     const panelOne = screen.getByTestId('panel-1');
     expect(panelOne).toHaveAttribute('aria-labelledby', 'custom-id');
 
-    await user.click(testButton); // Activate tab 2 to render its panel
+    testButton.click(); // Activate tab 2 to render its panel
 
     const panelTwo = screen.getByTestId('panel-2');
     expect(panelTwo).toHaveAttribute('aria-labelledby', testButton.id);
@@ -188,9 +178,10 @@ describe('Tabs', () => {
 
     tabTwo.focus();
     expect(tabTwo).toHaveFocus();
-    await user.keyboard('{Space}'); // Activate second tab with keyboard
+    const space = new KeyboardEvent('keydown', { key: ' ', bubbles: true });
+    tabTwo.dispatchEvent(space); // Activate second tab with keyboard
 
-    waitFor(() => {
+    vi.waitFor(() => {
       expect(onChange).toHaveBeenCalledWith('value2');
       expect(tabTwo).toHaveAttribute('aria-selected', 'true');
       expect(tabOne).toHaveAttribute('aria-selected', 'false');
@@ -211,7 +202,7 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    await user.click(screen.getByRole('tab', { name: 'Tab 2' }));
+    screen.getByRole('tab', { name: 'Tab 2' }).click();
 
     expect(onChange).toHaveBeenCalledOnce();
     expect(onChange).toHaveBeenCalledWith('value2');

@@ -1,10 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FormEvent } from 'react';
-
 import { ToggleGroup } from './';
-
-const user = userEvent.setup();
 
 describe('ToggleGroup', () => {
   test('has generated name for ToggleGroupItem children', () => {
@@ -47,13 +42,19 @@ describe('ToggleGroup', () => {
     const item3 = screen.getByRole<HTMLButtonElement>('radio', {
       name: 'test3',
     });
-    await user.tab();
+    item1.focus();
     expect(item1).toHaveFocus();
-    await user.keyboard('{ArrowRight}');
+    item1.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+    );
     expect(item2).toHaveFocus();
-    await user.keyboard('{ArrowRight}');
+    item2.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+    );
     expect(item3).toHaveFocus();
-    await user.keyboard('{ArrowLeft}');
+    item3.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
+    );
     expect(item2).toHaveFocus();
   });
 
@@ -77,11 +78,15 @@ describe('ToggleGroup', () => {
     const item4 = screen.getByRole<HTMLButtonElement>('radio', {
       name: 'test4',
     });
-    await user.tab();
+    item1.focus();
     expect(item1).toHaveFocus();
-    await user.keyboard('{ArrowRight}');
+    item1.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+    );
     expect(item4).toHaveFocus();
-    await user.keyboard('{ArrowLeft}');
+    item4.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
+    );
     expect(item1).toHaveFocus();
   });
 
@@ -111,7 +116,7 @@ describe('ToggleGroup', () => {
     expect(item1).toHaveProperty('checked', true);
     expect(item2).toHaveProperty('checked', false);
 
-    await user.click(item2.parentElement as HTMLLabelElement);
+    item2.parentElement?.click();
 
     expect(onChangeMock).toBeCalledTimes(0);
     expect(item2).toHaveProperty('checked', false);
@@ -147,7 +152,7 @@ describe('ToggleGroup', () => {
 
     expect(item).toHaveProperty('checked', false);
 
-    await user.click(item.parentElement as HTMLLabelElement);
+    item.parentElement?.click();
 
     expect(onChangeMock).toHaveBeenCalledWith('test2value');
     expect(item).toHaveProperty('checked', true);
@@ -176,7 +181,7 @@ describe('ToggleGroup', () => {
     expect(item1).toHaveProperty('checked', true);
     expect(item2).toHaveProperty('checked', false);
 
-    await user.click(item2.parentElement as HTMLLabelElement);
+    item2.parentElement?.click();
 
     expect(onChangeMock).toHaveBeenCalledWith('test2');
     expect(item2).toHaveProperty('checked', true);
@@ -208,7 +213,7 @@ describe('ToggleGroup', () => {
 
   test('should send the value to a form when the form is submitted', async () => {
     const formSubmitPromise = new Promise<FormData>((resolve) => {
-      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+      const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
         resolve(new FormData(event.currentTarget));
       };
@@ -225,7 +230,7 @@ describe('ToggleGroup', () => {
     });
 
     const submitButton = screen.getByRole('button', { name: 'Submit' });
-    await user.click(submitButton);
+    submitButton.click();
 
     const formData = await formSubmitPromise;
     expect(formData.get('test')).toBe('test2');

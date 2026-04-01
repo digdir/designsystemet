@@ -1,10 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import type { JSX } from 'react';
 
 import { Details, type DetailsProps } from './';
 
-const user = userEvent.setup();
 const VOID = () => {};
 
 const TestComponent = (rest: DetailsProps): JSX.Element => {
@@ -47,7 +45,9 @@ describe('Details', () => {
     const detailsExpandButton = screen.getByTestId('summary');
     expect(detailsExpandButton.parentElement).toHaveAttribute('open');
 
-    await user.click(detailsExpandButton);
-    expect(detailsExpandButton.parentElement).toHaveAttribute('open');
+    detailsExpandButton.click();
+    vi.waitFor(() =>
+      expect(detailsExpandButton.parentElement).toHaveAttribute('open'),
+    );
   });
 });

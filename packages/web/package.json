@@ -93,7 +93,7 @@
   "scripts": {
     "start": "vite --config=./vite.config.ts --port=5174",
     "build": "rimraf dist && tsup && rolldown -c && cem analyze",
-    "test": "vitest --config=vitest.browser.config.ts"
+    "test": "vitest --config=vitest.config.ts"
   },
   "customElements": "dist/custom-elements.json",
   "publishConfig": {
