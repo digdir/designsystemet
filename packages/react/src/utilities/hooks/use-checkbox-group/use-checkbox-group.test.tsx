@@ -1,5 +1,4 @@
 import { act, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 
 import {
@@ -192,7 +191,6 @@ describe('CheckboxGroup', () => {
   });
 
   test('correctly merges passed props with generated props', async () => {
-    const _user = userEvent.setup();
     const onChangeMock = vi.fn();
     const customAriaDescribedBy = 'custom aria-describedby';
 

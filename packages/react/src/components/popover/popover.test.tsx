@@ -1,5 +1,5 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
-import { act, render as renderRtl, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { useState } from 'react';
 
 import { Button } from '../';
@@ -60,7 +60,7 @@ const defaultPopover = (
 
 describe('Popover', () => {
   it('should render popover on trigger-click when closed', async () => {
-    renderRtl(defaultPopover);
+    render(defaultPopover);
     const popoverTrigger = screen.getByRole('button');
 
     expect(screen.getByText(contentText)).not.toBeVisible();
@@ -70,7 +70,7 @@ describe('Popover', () => {
   });
 
   it('should close when we click the button twitce', async () => {
-    renderRtl(defaultPopover);
+    render(defaultPopover);
     const popoverTrigger = screen.getByRole('button');
 
     await act(async () => popoverTrigger.click());
@@ -81,7 +81,7 @@ describe('Popover', () => {
   });
 
   it('should close when we click outside', async () => {
-    renderRtl(defaultPopover);
+    render(defaultPopover);
 
     const popoverTrigger = screen.getByRole('button');
 
@@ -93,7 +93,7 @@ describe('Popover', () => {
   });
 
   it('should close when we press ESC', async () => {
-    renderRtl(defaultPopover);
+    render(defaultPopover);
 
     const popoverTrigger = screen.getByRole('button');
     await act(async () => popoverTrigger.click());
@@ -105,7 +105,7 @@ describe('Popover', () => {
   });
 
   it('should close when we press SPACE', async () => {
-    renderRtl(defaultPopover);
+    render(defaultPopover);
 
     const popoverTrigger = screen.getByRole('button');
     await act(async () => popoverTrigger.click());
@@ -117,7 +117,7 @@ describe('Popover', () => {
   });
 
   it('should close when we press ENTER', async () => {
-    renderRtl(defaultPopover);
+    render(defaultPopover);
 
     const popoverTrigger = screen.getByRole('button');
     await act(async () => popoverTrigger.click());
@@ -129,7 +129,7 @@ describe('Popover', () => {
   });
 
   it('should not close if we click inside the popover', async () => {
-    renderRtl(defaultPopover);
+    render(defaultPopover);
 
     const popoverTrigger = screen.getByRole('button');
     await act(async () => popoverTrigger.click());
@@ -140,7 +140,7 @@ describe('Popover', () => {
   });
 
   it('should have correct id and popovertarget attributes', () => {
-    renderRtl(defaultPopover);
+    render(defaultPopover);
     const trigger = screen.getByRole('button');
     const popover = screen.getByText(contentText);
 
@@ -148,7 +148,7 @@ describe('Popover', () => {
   });
 
   it('should be able to change content inside Popover trigger element but still toggle when controlled', async () => {
-    const { container } = renderRtl(<CompControlled />);
+    const { container } = render(<CompControlled />);
     const content = screen.getByText('Content');
     const click = (el?: Element | null) =>
       el?.dispatchEvent(new MouseEvent('click', { bubbles: true })); // Using dispatchEvent to support trigger on SVGElement
@@ -166,7 +166,7 @@ describe('Popover', () => {
 
   it('should not call onClose when the popover is closed', async () => {
     const onClose = vi.fn();
-    renderRtl(
+    render(
       <Popover.TriggerContext>
         <Popover.Trigger>trigger</Popover.Trigger>
         <Popover onClose={onClose}>{contentText}</Popover>
@@ -186,7 +186,7 @@ describe('Popover', () => {
 
   it('should not call onOpen when the popover is open', async () => {
     const onOpen = vi.fn();
-    renderRtl(
+    render(
       <Popover.TriggerContext>
         <Popover.Trigger>trigger</Popover.Trigger>
         <Popover onOpen={onOpen}>{contentText}</Popover>
@@ -208,7 +208,7 @@ describe('Popover', () => {
   describe('with controlled state', () => {
     it('should not call onClose when the popover is closed', async () => {
       const onClose = vi.fn();
-      renderRtl(
+      render(
         <CompControlledWithTrigger isInitiallyOpen={false} onClose={onClose} />,
       );
       const popoverTrigger = screen.getByRole('button');
@@ -221,7 +221,7 @@ describe('Popover', () => {
 
     it('should not call onOpen when the popover is open', async () => {
       const onOpen = vi.fn();
-      renderRtl(<CompControlledWithTrigger isInitiallyOpen onOpen={onOpen} />);
+      render(<CompControlledWithTrigger isInitiallyOpen onOpen={onOpen} />);
       const popoverTrigger = screen.getByRole('button');
       expect(screen.getByText(contentText)).toBeVisible();
 
