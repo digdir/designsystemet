@@ -25,7 +25,7 @@ describe('Dialog', () => {
     render(
       <Comp>
         <Dialog.Block>{HEADER_TITLE}</Dialog.Block>
-      </Comp>
+      </Comp>,
     );
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
@@ -53,25 +53,19 @@ describe('Dialog', () => {
   });
 
   it('should render the Dialog', () => {
-    render(
-      <Comp open />
-    );
+    render(<Comp open />);
     expect(screen.getByRole('dialog')).toBeInTheDocument();
   });
 
   it('should render the close button', () => {
-    render(
-      <Comp open />
-    );
+    render(<Comp open />);
     expect(
       screen.getByRole('button', { name: CLOSE_LABEL }),
     ).toBeInTheDocument();
   });
 
   it('should not render the close button when closeButton is false', () => {
-    render(
-      <Comp open closeButton={false} />
-    );
+    render(<Comp open closeButton={false} />);
     expect(
       screen.queryByRole('button', { name: CLOSE_LABEL }),
     ).not.toBeInTheDocument();
@@ -81,16 +75,14 @@ describe('Dialog', () => {
     render(
       <Comp open>
         <Dialog.Block>{HEADER_TITLE}</Dialog.Block>
-      </Comp>
+      </Comp>,
     );
     expect(screen.getByText(HEADER_TITLE)).toBeInTheDocument();
   });
 
   it('should render the children', () => {
     const children = 'Dialog children';
-    render(
-      <Comp open>{children}</Comp>
-    );
+    render(<Comp open>{children}</Comp>);
     expect(screen.getByText(children)).toBeInTheDocument();
   });
 
@@ -124,7 +116,7 @@ describe('Dialog', () => {
             Close
           </button>
         </Dialog.Block>
-      </Comp>
+      </Comp>,
     );
 
     screen.getByRole('button', { name: OPEN_Dialog }).click();

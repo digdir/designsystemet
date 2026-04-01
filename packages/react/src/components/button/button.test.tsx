@@ -1,5 +1,4 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import { act } from 'react';
 
 import type { ButtonProps } from './button';
 import { Button } from './button';

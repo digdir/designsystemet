@@ -1,6 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 const renderTabs = async () => {
   document.body.innerHTML = `

@@ -104,7 +104,7 @@ const handleFieldMutation = (field: DSFieldElement) => {
   }
 
   handleFieldInput(input); // Update counter and textarea sizing
-}
+};
 
 const handleFieldInput = (e: Event | Element) => {
   const input = ((e as Event).target || e) as HTMLInputElement;
