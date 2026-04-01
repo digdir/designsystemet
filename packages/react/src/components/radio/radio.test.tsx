@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { Radio } from './radio';
 
 describe('Radio', () => {
@@ -40,7 +40,7 @@ describe('Radio', () => {
     ).toBeVisible();
   });
 
-  it('calls onChange and onClick when user clicks', () => {
+  it('calls onChange and onClick when user clicks', async () => {
     const onChange = vi.fn();
     const onClick = vi.fn();
     const value = 'test';
@@ -58,14 +58,13 @@ describe('Radio', () => {
 
     expect(radio.checked).toBeFalsy();
 
-    radio.click();
-
+    await act(async () => radio.click());
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(1);
     expect(radio.checked).toBeTruthy();
   });
 
-  it('does not call onChange or onClick when user clicks and the radio is disabled', () => {
+  it('does not call onChange or onClick when user clicks and the radio is disabled', async () => {
     const onChange = vi.fn();
     const onClick = vi.fn();
 
@@ -80,14 +79,13 @@ describe('Radio', () => {
     );
 
     const radio = screen.getByRole('radio');
-    radio.click();
-
+    await act(async () => radio.click());
     expect(radio).toBeDisabled();
     expect(onClick).not.toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('does not call onChange when user clicks and the radio is readOnly', () => {
+  it('does not call onChange when user clicks and the radio is readOnly', async () => {
     const onChange = vi.fn();
     const onClick = vi.fn();
 
@@ -102,8 +100,7 @@ describe('Radio', () => {
     );
 
     const radio = screen.getByRole('radio');
-    radio.click();
-
+    await act(async () => radio.click());
     expect(radio).toHaveAttribute('readonly');
     expect(onChange).not.toHaveBeenCalled();
   });

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { useState } from 'react';
 
 import {
@@ -131,7 +131,7 @@ describe('RadioGroup', () => {
     expect(radio2).not.toBeChecked();
     expect(radio3).not.toBeChecked();
   });
-  test('has passed clicked Radio element to onChange', () => {
+  test('has passed clicked Radio element to onChange', async () => {
     const onChangeMock = vi.fn();
 
     render(<RadioGroup onChange={onChangeMock} />);
@@ -140,14 +140,14 @@ describe('RadioGroup', () => {
     const radio2 = screen.getByLabelText('Test 2');
     const radio3 = screen.getByLabelText('Test 3');
 
-    radio1.click();
+    await act(async () => radio1.click());
     expect(onChangeMock).toHaveBeenCalledWith('test1', '');
     expect(radio1).toBeChecked();
     expect(radio2).not.toBeChecked();
     expect(radio3).not.toBeChecked();
   });
 
-  test('correctly merges passed props with generated props', () => {
+  test('correctly merges passed props with generated props', async () => {
     const onChangeMock = vi.fn();
     const customAriaDescribedBy = 'custom aria-describedby';
 
@@ -160,23 +160,19 @@ describe('RadioGroup', () => {
     );
 
     const radio1 = screen.getByLabelText('Test 1');
-    radio1.click();
-
+    await act(async () => radio1.click());
     expect(onChangeMock).toHaveBeenCalledOnce();
     expect(radio1).toBeChecked();
-
     expect(radio1).toHaveAttribute('aria-describedby', customAriaDescribedBy);
   });
 
-  test('can be conditionally rendered', () => {
+  test('can be conditionally rendered', async () => {
     render(<ConditionalRadioGroup />);
 
     /* click button to show radio buttons */
     const button = screen.getByRole('button', { name: 'Toggle' });
-    button.click();
-    vi.waitFor(() => {
-      expect(screen.getByLabelText('Test 1')).toBeVisible();
-      expect(screen.getByLabelText('Test 2')).toBeVisible();
-    });
+    await act(async () => button.click());
+    expect(screen.getByLabelText('Test 1')).toBeVisible();
+    expect(screen.getByLabelText('Test 2')).toBeVisible();
   });
 });

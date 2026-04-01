@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { Switch } from './switch';
 
 describe('Switch', () => {
@@ -14,7 +14,7 @@ describe('Switch', () => {
       screen.getByRole('switch', { description: 'description' }),
     ).toBeDefined();
   });
-  it('calls onChange and onClick when user clicks', () => {
+  it('calls onChange and onClick when user clicks', async () => {
     const onChange = vi.fn();
     const onClick = vi.fn();
 
@@ -33,14 +33,13 @@ describe('Switch', () => {
 
     expect(switch_.checked).toBeFalsy();
 
-    switch_.click();
-
+    await act(async () => switch_.click());
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(1);
     expect(switch_.checked).toBeTruthy();
   });
 
-  it('does not call onChange or onClick when user clicks and the Switch is disabled', () => {
+  it('does not call onChange or onClick when user clicks and the Switch is disabled', async () => {
     const onChange = vi.fn();
     const onClick = vi.fn();
 
@@ -55,14 +54,13 @@ describe('Switch', () => {
     );
 
     const switch_ = screen.getByRole('switch');
-    switch_.click();
-
+    await act(async () => switch_.click());
     expect(switch_).toBeDisabled();
     expect(onClick).not.toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('does not call onChange when user clicks and the Switch is readOnly', () => {
+  it('does not call onChange when user clicks and the Switch is readOnly', async () => {
     const onChange = vi.fn();
 
     render(
@@ -75,8 +73,7 @@ describe('Switch', () => {
     );
 
     const switch_ = screen.getByRole('switch');
-    switch_.click();
-
+    await act(async () => switch_.click());
     expect(switch_).toHaveAttribute('readonly');
     expect(onChange).not.toHaveBeenCalled();
   });

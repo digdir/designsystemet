@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import type { JSX } from 'react';
 
 import { Details, type DetailsProps } from './';
@@ -39,15 +39,13 @@ describe('Details', () => {
     expect(detailsExpandButton.parentElement).toHaveAttribute('open');
   });
 
-  test('should be able to render Details as controlled', () => {
+  test('should be able to render Details as controlled', async () => {
     render(<TestComponent open onToggle={VOID} />);
 
     const detailsExpandButton = screen.getByTestId('summary');
     expect(detailsExpandButton.parentElement).toHaveAttribute('open');
 
-    detailsExpandButton.click();
-    vi.waitFor(
-      () => expect(detailsExpandButton.parentElement).toHaveAttribute('open'), // Let React controll state before checking
-    );
+    await act(async () => detailsExpandButton.click());
+    expect(detailsExpandButton.parentElement).toHaveAttribute('open'); // Let React controll state before checking
   });
 });

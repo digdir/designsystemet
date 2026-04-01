@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { ToggleGroup } from './';
 
 describe('ToggleGroup', () => {
@@ -90,7 +90,7 @@ describe('ToggleGroup', () => {
     expect(item1).toHaveFocus();
   });
 
-  test('click will not check disabled item', () => {
+  test('click will not check disabled item', async () => {
     const onChangeMock = vi.fn();
 
     render(
@@ -116,9 +116,8 @@ describe('ToggleGroup', () => {
     expect(item1).toHaveProperty('checked', true);
     expect(item2).toHaveProperty('checked', false);
 
-    item2.parentElement?.click();
-
-    expect(onChangeMock).toBeCalledTimes(0);
+    await act(async () => item2.parentElement?.click());
+    expect(onChangeMock).toHaveBeenCalledTimes(0);
     expect(item2).toHaveProperty('checked', false);
   });
 
@@ -136,7 +135,7 @@ describe('ToggleGroup', () => {
     });
     expect(item).toHaveProperty('checked', true);
   });
-  test('has passed clicked ToggleGroupItem value to onChange', () => {
+  test('has passed clicked ToggleGroupItem value to onChange', async () => {
     const onChangeMock = vi.fn();
 
     render(
@@ -152,12 +151,11 @@ describe('ToggleGroup', () => {
 
     expect(item).toHaveProperty('checked', false);
 
-    item.parentElement?.click();
-
+    await act(async () => item.parentElement?.click());
     expect(onChangeMock).toHaveBeenCalledWith('test2value');
     expect(item).toHaveProperty('checked', true);
   });
-  test('has correct checked on correct ToggleGroupItem when clicked', () => {
+  test('has correct checked on correct ToggleGroupItem when clicked', async () => {
     const onChangeMock = vi.fn();
 
     render(
@@ -181,8 +179,7 @@ describe('ToggleGroup', () => {
     expect(item1).toHaveProperty('checked', true);
     expect(item2).toHaveProperty('checked', false);
 
-    item2.parentElement?.click();
-
+    await act(async () => item2.parentElement?.click());
     expect(onChangeMock).toHaveBeenCalledWith('test2');
     expect(item2).toHaveProperty('checked', true);
   });
@@ -230,7 +227,7 @@ describe('ToggleGroup', () => {
     });
 
     const submitButton = screen.getByRole('button', { name: 'Submit' });
-    submitButton.click();
+    await act(async () => submitButton.click());
 
     const formData = await formSubmitPromise;
     expect(formData.get('test')).toBe('test2');

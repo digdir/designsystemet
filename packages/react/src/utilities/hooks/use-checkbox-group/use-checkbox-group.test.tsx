@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 
@@ -136,7 +136,7 @@ describe('CheckboxGroup', () => {
     expect(checkbox1).toBeChecked();
     expect(checkbox2).not.toBeChecked();
   });
-  test('has passed clicked Checkbox element to onChange', () => {
+  test('has passed clicked Checkbox element to onChange', async () => {
     const onChangeMock = vi.fn();
 
     render(<CheckboxGroup onChange={onChangeMock} />);
@@ -144,12 +144,12 @@ describe('CheckboxGroup', () => {
     const checkbox1 = screen.getByLabelText('Test 1');
     const checkbox2 = screen.getByLabelText('Test 2');
 
-    checkbox1.click();
+    await act(async () => checkbox1.click());
     expect(onChangeMock).toHaveBeenCalledWith(['test1'], []);
     expect(checkbox1).toBeChecked();
     expect(checkbox2).not.toBeChecked();
   });
-  test('correctly renders indeterminate', () => {
+  test('correctly renders indeterminate', async () => {
     render(<CheckboxGroup />);
 
     const indeterminate = screen.getByLabelText('All');
@@ -163,35 +163,35 @@ describe('CheckboxGroup', () => {
     expect(checkbox2).not.toBeChecked();
 
     // Should be indeterminate when first checkbox is checked
-    checkbox1.click();
+    await act(async () => checkbox1.click());
     expect(indeterminate).toHaveProperty('indeterminate', true);
     expect(indeterminate).toHaveProperty('checked', false);
     expect(checkbox1).toBeChecked();
     expect(checkbox2).not.toBeChecked();
 
     // Should be checked when both checkboxes are checked
-    checkbox2.click();
+    await act(async () => checkbox2.click());
     expect(indeterminate).toHaveProperty('indeterminate', false);
     expect(indeterminate).toHaveProperty('checked', true);
     expect(checkbox1).toBeChecked();
     expect(checkbox2).toBeChecked();
 
     // Should uncheck all when clicking the main checkbox
-    indeterminate.click();
+    await act(async () => indeterminate.click());
     expect(indeterminate).toHaveProperty('indeterminate', false);
     expect(indeterminate).toHaveProperty('checked', false);
     expect(checkbox1).not.toBeChecked();
     expect(checkbox2).not.toBeChecked();
 
     // Should check all when clicking the main checkbox again
-    indeterminate.click();
+    await act(async () => indeterminate.click());
     expect(indeterminate).toHaveProperty('indeterminate', false);
     expect(indeterminate).toHaveProperty('checked', true);
     expect(checkbox1).toBeChecked();
     expect(checkbox2).toBeChecked();
   });
-  // TODO: ds-field web component overwrites aria-describedby, needs fix to merge existing values
-  test.skip('correctly merges passed props with generated props', () => {
+
+  test('correctly merges passed props with generated props', async () => {
     const _user = userEvent.setup();
     const onChangeMock = vi.fn();
     const customAriaDescribedBy = 'custom aria-describedby';
@@ -205,26 +205,23 @@ describe('CheckboxGroup', () => {
     );
 
     const checkbox1 = screen.getByLabelText('Test 1');
-    checkbox1.click();
+    await act(async () => checkbox1.click());
 
     expect(onChangeMock).toHaveBeenCalledOnce();
     expect(checkbox1).toBeChecked();
-
     expect(checkbox1).toHaveAttribute(
       'aria-describedby',
       customAriaDescribedBy,
     );
   });
 
-  test('can be conditionally rendered', () => {
+  test('can be conditionally rendered', async () => {
     render(<ConditionalCheckboxGroup />);
 
     /* click button to show checkboxes */
     const button = screen.getByRole('button', { name: 'Toggle' });
-    button.click();
-    vi.waitFor(() => {
-      expect(screen.getByLabelText('Test 1')).toBeVisible();
-      expect(screen.getByLabelText('Test 2')).toBeVisible();
-    });
+    await act(async () => button.click());
+    expect(screen.getByLabelText('Test 1')).toBeVisible();
+    expect(screen.getByLabelText('Test 2')).toBeVisible();
   });
 });

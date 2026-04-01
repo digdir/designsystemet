@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { Button } from './button';
 
 describe('Button', () => {
@@ -25,11 +25,11 @@ describe('Button', () => {
     expect(button).toBeDisabled();
   });
 
-  it('should not call onClick when disabled', () => {
+  it('should not call onClick when disabled', async () => {
     const fn = vi.fn();
     render(<Button disabled onClick={fn} />);
 
-    screen.getByRole('button').click();
+    await act(async () => screen.getByRole('button').click());
     expect(fn).not.toHaveBeenCalled();
   });
 
@@ -40,10 +40,10 @@ describe('Button', () => {
     ).toBeInTheDocument();
   });
 
-  it('should handle onClick event', () => {
+  it('should handle onClick event', async () => {
     const fn = vi.fn();
     render(<Button onClick={fn} />);
-    screen.getByRole('button').click();
+    await act(async () => screen.getByRole('button').click());
     expect(fn).toHaveBeenCalled();
   });
 

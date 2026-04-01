@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { Search } from './';
 
 describe('Search', () => {
-  it('should clear input when clear button is clickd', () => {
+  it('should clear input when clear button is clickd', async () => {
     render(
       <Search>
         <Search.Input aria-label='Søk' />
@@ -16,13 +16,13 @@ describe('Search', () => {
     expect(input).toHaveValue('');
     expect(clearButton).toBeInTheDocument();
 
-    input.focus();
+    await act(async () => input.focus());
     expect(input).toHaveFocus();
 
     input.value = 'Hello, World!';
     expect(input).toHaveValue('Hello, World!');
 
-    clearButton.click();
+    await act(async () => clearButton.click());
     expect(input).toHaveValue('');
   });
 });

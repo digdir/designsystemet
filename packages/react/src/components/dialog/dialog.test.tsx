@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 
 import type { DialogProps } from './';
 import { Dialog } from './';
@@ -21,7 +21,7 @@ describe('Dialog', () => {
     vi.restoreAllMocks();
   });
 
-  it('should open the Dialog', () => {
+  it('should open the Dialog', async () => {
     render(
       <Comp>
         <Dialog.Block>{HEADER_TITLE}</Dialog.Block>
@@ -31,24 +31,22 @@ describe('Dialog', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: OPEN_Dialog });
-    button.click();
+    await act(async () => button.click());
 
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
   });
 
-  it('should open and close the Dialog', () => {
+  it('should open and close the Dialog', async () => {
     render(<Comp />);
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: OPEN_Dialog });
-    button.click();
-
+    await act(async () => button.click());
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
 
     const closeButton = screen.getByRole('button', { name: CLOSE_LABEL });
-    closeButton.click();
-
+    await act(async () => closeButton.click());
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
@@ -96,18 +94,22 @@ describe('Dialog', () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  it('should call onClose when the Dialog is closed with the close button', () => {
+  it('should call onClose when the Dialog is closed with the close button', async () => {
     const onClose = vi.fn();
     render(<Comp onClose={onClose} />);
 
-    screen.getByRole('button', { name: OPEN_Dialog }).click();
-    screen.getByRole('button', { name: CLOSE_LABEL }).click();
+    await act(async () =>
+      screen.getByRole('button', { name: OPEN_Dialog }).click(),
+    );
+    await act(async () =>
+      screen.getByRole('button', { name: CLOSE_LABEL }).click(),
+    );
     vi.waitFor(
       () => expect(onClose).toHaveBeenCalledTimes(1), // Let events bubble
     );
   });
 
-  it('a custom data-command=close button should close the dialog', () => {
+  it('a custom data-command=close button should close the dialog', async () => {
     const onClose = vi.fn();
 
     render(
@@ -121,7 +123,7 @@ describe('Dialog', () => {
     );
 
     screen.getByRole('button', { name: OPEN_Dialog }).click();
-    screen.getByTestId('closebutton').click();
+    await act(async () => screen.getByTestId('closebutton').click());
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

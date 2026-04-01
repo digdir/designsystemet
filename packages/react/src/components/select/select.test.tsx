@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { createRef } from 'react';
 import { Select, type SelectProps } from './';
 
@@ -87,8 +87,11 @@ describe('Select', () => {
     expect(screen.getByRole('combobox')).toBeDisabled();
   });
 
-  it('Is read-only when "aria-readonly" is true', () => {
+  it('Is read-only when "aria-readonly" is true', async () => {
     const onChange = vi.fn();
+    const keydown = (el: Element, key: string) =>
+      el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+
     render(
       <Select onChange={onChange} aria-readonly='true'>
         {children}
@@ -96,15 +99,11 @@ describe('Select', () => {
     );
 
     const select = screen.getByRole('combobox');
-
-    select.click();
+    await act(async () => select.click());
     expect(select).toHaveFocus();
-    select.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }),
-    );
-    select.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
-    );
+
+    await act(async () => keydown(select, 'ArrowDown'));
+    await act(async () => keydown(select, 'Enter'));
 
     expect(onChange).not.toHaveBeenCalled();
     expect(screen.getByRole('combobox')).toHaveAttribute(

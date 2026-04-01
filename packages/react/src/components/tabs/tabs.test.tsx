@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { useState } from 'react';
 
 import { Tabs } from './';
 
 describe('Tabs', () => {
-  it('renders content based on value', () => {
+  it('renders content based on value', async () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.List>
@@ -18,12 +18,12 @@ describe('Tabs', () => {
 
     expect(screen.queryByText('content 1')).toBeVisible();
     expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
-    screen.getByRole('tab', { name: 'Tab 2' }).click();
+    await act(async () => screen.getByRole('tab', { name: 'Tab 2' }).click());
     expect(screen.queryByText('content 2')).toBeVisible();
     expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
   });
 
-  it('item renders with correct aria attributes', () => {
+  it('item renders with correct aria attributes', async () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.List>
@@ -37,7 +37,7 @@ describe('Tabs', () => {
     vi.waitFor(
       () => expect(tab).toHaveAttribute('aria-selected', 'false'), // Let MutationObserver run first
     );
-    tab.click();
+    await act(async () => tab.click());
     expect(tab).toHaveAttribute('aria-selected', 'true');
   });
 
@@ -82,7 +82,7 @@ describe('Tabs', () => {
     expect(panel).not.toHaveAttribute('tabindex', '0');
   });
 
-  it('panel is aria-labelledby button', () => {
+  it('panel is aria-labelledby button', async () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.List>
@@ -105,7 +105,7 @@ describe('Tabs', () => {
     const testButton = screen.getByRole('tab', { name: 'Tab 2' });
     const panelOne = screen.getByTestId('panel-1');
     expect(panelOne).toHaveAttribute('aria-labelledby', 'custom-id');
-    testButton.click(); // Activate tab 2 to render its panel
+    await act(async () => testButton.click()); // Activate tab 2 to render its panel
 
     const panelTwo = screen.getByTestId('panel-2');
     expect(panelTwo).toHaveAttribute('aria-labelledby', testButton.id);
@@ -140,7 +140,7 @@ describe('Tabs', () => {
     expect(buttonTwo).toHaveAttribute('aria-controls', panelTwo.id);
   });
 
-  it('calls onChange in controlled mode when selecting tab with keyboard', () => {
+  it('calls onChange in controlled mode when selecting tab with keyboard', async () => {
     const ControlledTabs = ({
       onChange,
     }: {
@@ -167,6 +167,8 @@ describe('Tabs', () => {
     };
 
     const onChange = vi.fn();
+    const keydown = (el: Element, key: string) =>
+      el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
     render(<ControlledTabs onChange={onChange} />);
 
@@ -174,10 +176,9 @@ describe('Tabs', () => {
     const tabTwo = screen.getByRole('tab', { name: 'Tab 2' });
     expect(tabOne).toHaveAttribute('aria-selected', 'true');
 
-    tabTwo.focus();
+    await act(async () => tabTwo.focus());
     expect(tabTwo).toHaveFocus();
-    const space = new KeyboardEvent('keydown', { key: ' ', bubbles: true });
-    tabTwo.dispatchEvent(space); // Activate second tab with keyboard
+    await act(async () => keydown(tabTwo, ' ')); // Activate second tab with keyboard
 
     vi.waitFor(() => {
       expect(onChange).toHaveBeenCalledWith('value2');
@@ -186,7 +187,7 @@ describe('Tabs', () => {
     });
   });
 
-  it('does not switch tabs in controlled mode until value prop changes', () => {
+  it('does not switch tabs in controlled mode until value prop changes', async () => {
     const onChange = vi.fn();
 
     const { rerender } = render(
@@ -200,7 +201,7 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    screen.getByRole('tab', { name: 'Tab 2' }).click();
+    await act(async () => screen.getByRole('tab', { name: 'Tab 2' }).click());
 
     expect(onChange).toHaveBeenCalledOnce();
     expect(onChange).toHaveBeenCalledWith('value2');
