@@ -44,8 +44,6 @@ describe('suggestion component', () => {
     event.newState = 'open';
     suggestion.dispatchEvent(event);
 
-    // await vi.waitUntil(() => Boolean(detail));
-
     expect(detail).toBe(input);
   });
 });
