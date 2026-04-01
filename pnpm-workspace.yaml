@@ -12,8 +12,6 @@ onlyBuiltDependencies:
   - esbuild
   - just-pnpm
   - style-dictionary
-executionEnv:
-  nodeVersion: 24.14.1
 packageExtensions:
   '@navikt/aksel-icons':
     peerDependencies:
