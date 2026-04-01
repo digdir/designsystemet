@@ -40,6 +40,13 @@ Preview.args = {
 
 const variants = ['default', 'tinted'];
 
+const placeholderImg = (
+  <img
+    src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+    alt='1x1 transparent pixel'
+  />
+);
+
 export const Variants: StoryFn<typeof Card> = () => (
   <>
     {variants.map((variant) =>
@@ -91,9 +98,7 @@ export const Media: Story = () => (
           about this
         </Paragraph>
       </Card.Block>
-      <Card.Block>
-        <img src='https://placebear.com/300' alt='bear' />
-      </Card.Block>
+      <Card.Block>{placeholderImg}</Card.Block>
     </Card>
   </>
 );
@@ -132,9 +137,7 @@ export const Video: Story = () => (
 export const WithLink: Story = (args) => (
   <>
     <Card {...args}>
-      <Card.Block>
-        <img src='https://placebear.com/300' alt='bear' />
-      </Card.Block>
+      <Card.Block>{placeholderImg}</Card.Block>
       <Card.Block>
         <Heading>
           <a
@@ -171,9 +174,7 @@ export const WithLink: Story = (args) => (
         </Paragraph>
         <Paragraph data-size='sm'>Footer text</Paragraph>
       </Card.Block>
-      <Card.Block>
-        <img src='https://placebear.com/300' alt='bear' />
-      </Card.Block>
+      <Card.Block>{placeholderImg}</Card.Block>
     </Card>
   </>
 );
