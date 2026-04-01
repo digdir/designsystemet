@@ -39,7 +39,7 @@ describe('utils', () => {
 
   it('warn respects dsWarnings flag', () => {
     const warnSpy = vi
-      .spyOn(console, 'warn')
+      .spyOn(console, 'log')
       .mockImplementation(() => undefined);
 
     (window as Window & { dsWarnings?: boolean }).dsWarnings = false;

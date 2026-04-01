@@ -29,7 +29,7 @@ export function debounce<T extends unknown[]>(
 
 /**
  * warn
- * @description Utility to console.warn, but can be silenced in production with window.dsWarnings = false;
+ * @description Utility to console.log, but can be silenced in production with window.dsWarnings = false;
  */
 declare global {
   interface Window {
@@ -38,11 +38,11 @@ declare global {
 }
 export const warn = (
   message: string,
-  ...args: Parameters<typeof console.warn>
+  ...args: Parameters<typeof console.log> // Using console.log, not console.warn, to prevent stopping test runners such as Jest
 ) =>
   !isBrowser() ||
   window.dsWarnings === false ||
-  console.warn(`Designsystemet: ${message}`, ...args);
+  console.log(`\x1B[1mDesignsystemet:\x1B[m ${message}`, ...args);
 
 /**
  * attr
