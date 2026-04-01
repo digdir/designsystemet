@@ -34,7 +34,7 @@ describe('Breadcrumbs', () => {
 });
 
 describe('Breadcrumbs.List', () => {
-  it('should render with aria-current on last item', async () => {
+  it('should render with aria-current on last item', () => {
     renderWithRoot();
 
     const links = screen.getAllByRole('link');
@@ -44,7 +44,7 @@ describe('Breadcrumbs.List', () => {
     expect(links.at(2)).not.toHaveAttribute('aria-current', 'page');
   });
 
-  it('should move aria-current to item when re-rendering', async () => {
+  it('should move aria-current to item when re-rendering', () => {
     renderWithRoot();
 
     const links = screen.getAllByRole('link');
