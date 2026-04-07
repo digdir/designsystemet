@@ -2,13 +2,12 @@
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   //  "exclude": ["src/components/*.test.tsx", "src/components/*.stories.tsx"],
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       // Prevent imports from e.g. 'packages/react', which will not work for consumers
-      "packages/*": ["this/dir/does/not/exist/*"],
+      "packages/*": ["./this/dir/does/not/exist/*"],
       // Paths matching package.json exports section in @digdir/designsystem-react
-      "@digdir/designsystemet-react": ["packages/react/src/index.ts"],
-      "@digdir/designsystemet-react/colors": ["packages/react/src/colors.ts"]
+      "@digdir/designsystemet-react": ["./packages/react/src/index.ts"],
+      "@digdir/designsystemet-react/colors": ["./packages/react/src/colors.ts"]
     },
     "target": "ES2022",
     "module": "ESNext",
