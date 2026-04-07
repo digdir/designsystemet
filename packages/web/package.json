@@ -101,7 +101,7 @@
     "@u-elements/u-details": "^0.2.2",
     "@u-elements/u-progress": "^0.0.7",
     "@u-elements/u-tabs": "^0.1.2",
-    "invokers-polyfill": "^1.0.1"
+    "invokers-polyfill": "^1.0.2"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.11.0",
