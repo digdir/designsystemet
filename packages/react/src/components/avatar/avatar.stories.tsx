@@ -1,6 +1,6 @@
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { themeColors } from '../../../stories/constants';
+import { placeholderImg, themeColors } from '../../../stories/constants';
 
 import { Avatar, type AvatarProps, Badge, Dropdown } from '../';
 
@@ -72,9 +72,7 @@ export const ShapeVariants: Story = () => (
 );
 
 export const WithImage: Story = () => (
-  <Avatar aria-label='Ola Nordmann'>
-    <img src='https://i.pravatar.cc/100' alt='' />
-  </Avatar>
+  <Avatar aria-label='Ola Nordmann'>{placeholderImg}</Avatar>
 );
 
 export const InDropdown: Story = () => (

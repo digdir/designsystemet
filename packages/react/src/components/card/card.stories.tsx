@@ -1,5 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { severityColors, themeColors } from '../../../stories/constants';
+import {
+  placeholderImg,
+  severityColors,
+  themeColors,
+} from '../../../stories/constants';
 
 import { Card, Heading, Link, Paragraph } from '../';
 
@@ -39,13 +43,6 @@ Preview.args = {
 };
 
 const variants = ['default', 'tinted'];
-
-const placeholderImg = (
-  <img
-    src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-    alt='1x1 transparent pixel'
-  />
-);
 
 export const Variants: StoryFn<typeof Card> = () => (
   <>
