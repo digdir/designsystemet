@@ -48,3 +48,38 @@ export const RigthAligned: Story = {
     <Switch label='Flymodus' position='end' checked {...args} />
   ),
 };
+
+export const Secondary: Story = {
+  render: () => (
+    <>
+      <Fieldset>
+        <Fieldset.Legend>Using data-variant="secondary</Fieldset.Legend>
+        <Switch
+          data-variant='secondary'
+          label='with description'
+          description='description text'
+          value='description'
+        />
+        <Switch
+          data-variant='secondary'
+          label='Checked'
+          value='checked'
+          checked
+        />
+        <Switch
+          data-variant='secondary'
+          disabled
+          label='disabled'
+          value='disabled'
+        />
+        <Switch
+          data-variant='secondary'
+          readOnly
+          label='readonly checked'
+          value='readonly'
+          checked
+        />
+      </Fieldset>
+    </>
+  ),
+};

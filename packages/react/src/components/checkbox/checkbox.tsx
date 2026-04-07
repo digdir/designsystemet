@@ -31,9 +31,10 @@ export type CheckboxProps = MergeRight<
      */
     error?: ReactNode;
     /**
-     * If true, the checkbox will be displayed as a tile
+     * If secondary, the checkbox will have a border.
+     * @default 'tertiary'
      */
-    'data-selection-tile'?: boolean;
+    'data-variant'?: 'tertiary' | 'secondary';
   } & LabelRequired
 >;
 
@@ -47,7 +48,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
     {
       'data-size': size,
-      'data-selection-tile': tile,
+      'data-variant': variant,
       className,
       style,
       children,
@@ -61,7 +62,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <Field
         data-size={size}
-        data-selection-tile={tile}
+        data-variant={variant}
         className={className}
         style={style}
       >

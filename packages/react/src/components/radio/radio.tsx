@@ -31,9 +31,10 @@ export type RadioProps = MergeRight<
      */
     error?: ReactNode;
     /**
-     * If true, the radio will be displayed as a tile
+     * If secondary, the radio will have a border.
+     * @default 'tertiary'
      */
-    'data-selection-tile'?: boolean;
+    'data-variant'?: 'tertiary' | 'secondary';
   } & LabelRequired
 >;
 
@@ -46,7 +47,7 @@ export type RadioProps = MergeRight<
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   {
     'data-size': size,
-    'data-selection-tile': tile,
+    'data-variant': variant,
     className,
     style,
     children,
@@ -60,7 +61,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   return (
     <Field
       data-size={size}
-      data-selection-tile={tile}
+      data-variant={variant}
       className={className}
       style={style}
     >
