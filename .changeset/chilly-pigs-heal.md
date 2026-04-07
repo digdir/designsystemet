@@ -3,4 +3,4 @@
 "@digdir/designsystemet-web": patch
 ---
 
-`<ds-field>` should now respect existing `aria-describedby` and `aria-invalid`
+**Field**: `<ds-field>` should now respect existing `aria-describedby` and `aria-invalid`

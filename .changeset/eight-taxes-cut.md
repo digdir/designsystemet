@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-fix PaginationButton missing some Button props
+**Pagination:** fix `PaginationButton` missing some `Button` props

@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-fix `ds-link` styling with icon
+**Link**: Fix spacing when icon is present
