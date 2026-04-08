@@ -1,22 +1,15 @@
 import {
-  CheckmarkIcon,
   FloppydiskIcon,
   PencilIcon,
-  XMarkIcon,
 } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useMemo, useState } from 'react';
 import {
   Button,
-  Card,
   Checkbox,
   Chip,
   Divider,
-  Field,
   Fieldset,
-  Heading,
-  Input,
-  Label,
   Pagination,
   Paragraph,
   Table,
