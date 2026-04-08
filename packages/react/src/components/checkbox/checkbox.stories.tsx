@@ -5,7 +5,7 @@ import {
   XMarkIcon,
 } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { type CSSProperties, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   Button,
   Card,
