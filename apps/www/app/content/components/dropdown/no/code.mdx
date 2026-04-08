@@ -1,32 +1,7 @@
 ## Bruk
 
-```html
-<button
-  class="ds-button"
-  type="button"
-  popoverTarget="dropdown"
->Dropdown</button>
-<div
-  class="ds-popover ds-dropdown"
-  id="dropdown"
-  popover="manual"
->
-  <ul>
-    <li>
-      <button
-        class="ds-button"
-        type="button"
-      >Item 1</button>
-    </li>
-    <li>
-      <button
-        class="ds-button"
-        type="button"
-      >Item 2</button>
-    </li>
-  </ul>
-</div>
-```
+<Story story="Preview" language="html" />
+
 
 Du kan bruke native popover-api direkte i HTML.
 Dette kan brukes uten JavaScript, dersom du ikke vil polyfille.
@@ -49,6 +24,12 @@ Du kan styre plassering med attributt på selve popoveren.
 `dropdown` bruker [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline 2024: 
 Newly available (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, 
 med Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill) for å sikre at `dropdown` fungerer for alle.
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />
 
 ## React
 
@@ -98,11 +79,7 @@ Merk at vi ikke bruker `onClick` på triggeren, dropdownen håndterer dette inte
 
 
 
-## CSS variabler og data-attributter
 
-<CssVariables />
-
-<CssAttributes />
 
 ### Referanser
 
