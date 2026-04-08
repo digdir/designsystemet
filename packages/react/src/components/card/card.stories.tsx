@@ -1,7 +1,10 @@
-import cat1 from '@assets/img/cats/Cat 1.jpg';
-import cat5 from '@assets/img/cats/Cat 5.jpg';
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { severityColors, themeColors } from '../../../stories/constants';
+import {
+  cat1Img,
+  cat5Img,
+  severityColors,
+  themeColors,
+} from '../../../stories/constants';
 
 import { Card, Heading, Link, Paragraph } from '../';
 
@@ -93,9 +96,7 @@ export const Media: Story = () => (
           about this
         </Paragraph>
       </Card.Block>
-      <Card.Block>
-        <img src={cat1} alt='katt' />
-      </Card.Block>
+      <Card.Block>{cat1Img}</Card.Block>
     </Card>
   </>
 );
@@ -134,9 +135,7 @@ export const Video: Story = () => (
 export const WithLink: Story = (args) => (
   <>
     <Card {...args}>
-      <Card.Block>
-        <img src={cat5} alt='' />
-      </Card.Block>
+      <Card.Block>{cat5Img}</Card.Block>
       <Card.Block>
         <Heading>
           <a
@@ -173,9 +172,7 @@ export const WithLink: Story = (args) => (
         </Paragraph>
         <Paragraph data-size='sm'>Footer text</Paragraph>
       </Card.Block>
-      <Card.Block>
-        <img src={cat5} alt='' />
-      </Card.Block>
+      <Card.Block>{cat5Img}</Card.Block>
     </Card>
   </>
 );
