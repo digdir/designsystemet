@@ -49,31 +49,31 @@ export const RigthAligned: Story = {
   ),
 };
 
-export const Secondary: Story = {
+export const Outline: Story = {
   render: () => (
     <>
       <Fieldset>
-        <Fieldset.Legend>Using data-variant="secondary</Fieldset.Legend>
+        <Fieldset.Legend>Using data-variant="outline"</Fieldset.Legend>
         <Switch
-          data-variant='secondary'
+          data-variant='outline'
           label='with description'
           description='description text'
           value='description'
         />
         <Switch
-          data-variant='secondary'
+          data-variant='outline'
           label='Checked'
           value='checked'
           checked
         />
         <Switch
-          data-variant='secondary'
+          data-variant='outline'
           disabled
           label='disabled'
           value='disabled'
         />
         <Switch
-          data-variant='secondary'
+          data-variant='outline'
           readOnly
           label='readonly checked'
           value='readonly'

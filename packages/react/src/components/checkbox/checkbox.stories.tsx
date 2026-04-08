@@ -437,36 +437,36 @@ export const hiddenLegend: StoryFn<typeof Fieldset> = () => (
   </Fieldset>
 );
 
-export const Secondary: StoryFn<UseCheckboxGroupProps> = () => (
+export const Outline: StoryFn<UseCheckboxGroupProps> = () => (
   <>
     <Fieldset>
-      <Fieldset.Legend>Using data-variant="secondary</Fieldset.Legend>
+      <Fieldset.Legend>Using data-variant="outline"</Fieldset.Legend>
       <Checkbox
-        data-variant='secondary'
+        data-variant='outline'
         label='with description'
         description='description text'
         value='description'
       />
       <Checkbox
-        data-variant='secondary'
+        data-variant='outline'
         label='Checked'
         value='checked'
         checked
       />
       <Checkbox
-        data-variant='secondary'
+        data-variant='outline'
         label='with error state'
         value='error'
         error='the error message'
       />
       <Checkbox
-        data-variant='secondary'
+        data-variant='outline'
         disabled
         label='disabled'
         value='disabled'
       />
       <Checkbox
-        data-variant='secondary'
+        data-variant='outline'
         readOnly
         label='readonly checked'
         value='readonly'

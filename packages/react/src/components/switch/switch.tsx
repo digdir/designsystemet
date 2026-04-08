@@ -31,10 +31,10 @@ export type SwitchProps = MergeRight<
      */
     position?: FieldProps['position'];
     /**
-     * If secondary, the switch will have a border.
-     * @default 'tertiary'
+     * If outline, the checkbox will have a border.
+     * @default 'default'
      */
-    'data-variant'?: 'tertiary' | 'secondary';
+    'data-variant'?: 'default' | 'outline';
   } & LabelRequired
 >;
 

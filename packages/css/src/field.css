@@ -115,7 +115,7 @@
       }
     }
 
-    &[data-variant='secondary'] {
+    &[data-variant='outline'] {
       --dsc-field-border-color: var(--ds-color-neutral-border-default);
       --dsc-field-border-color--checked: var(--ds-color-border-default);
       --dsc-field-border-color--invalid: var(--ds-color-danger-border-default);
@@ -135,10 +135,10 @@
       outline: 0 var(--dsc-field-border-style) var(--dsc-field-border-color);
       outline-offset: calc(var(--dsc-field-border-width--active) * -1);
     }
-    &[data-variant='secondary']:hover {
+    &[data-variant='outline']:hover {
       outline-width: var(--dsc-field-border-width--active);
     }
-    &[data-variant='secondary']:has(input:checked) {
+    &[data-variant='outline']:has(input:checked) {
       border-color: var(--dsc-field-border-color--checked);
       outline-color: var(--dsc-field-border-color--checked);
       outline-width: var(--dsc-field-border-width--active);
@@ -147,12 +147,12 @@
         border-color: LinkText;
       }
     }
-    &[data-variant='secondary']:has(input[aria-invalid='true']) {
+    &[data-variant='outline']:has(input[aria-invalid='true']) {
       border-color: var(--dsc-field-border-color--invalid);
       outline-color: var(--dsc-field-border-color--invalid);
       outline-width: var(--dsc-field-border-width--active);
     }
-    &[data-variant='secondary']:has(input:disabled, input[aria-disabled='true']) {
+    &[data-variant='outline']:has(input:disabled, input[aria-disabled='true']) {
       cursor: not-allowed;
       opacity: var(--ds-opacity-disabled);
       outline: none;
@@ -160,7 +160,7 @@
         opacity: 1; /* Undo default opacity for these children so we can move it out on the tile */
       }
     }
-    &[data-variant='secondary']:has(input[readonly], input[aria-readonly='true']) {
+    &[data-variant='outline']:has(input[readonly], input[aria-readonly='true']) {
       border-color: var(--dsc-field-border-color--readonly);
       cursor: default;
       outline: none;

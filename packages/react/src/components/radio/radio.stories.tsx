@@ -105,31 +105,31 @@ export const Inline: StoryFn<typeof Fieldset> = () => (
   </Fieldset>
 );
 
-export const Secondary: StoryFn<UseRadioGroupProps> = () => (
+export const Outline: StoryFn<UseRadioGroupProps> = () => (
   <>
     <Fieldset>
-      <Fieldset.Legend>Using data-variant="secondary</Fieldset.Legend>
+      <Fieldset.Legend>Using data-variant="outline"</Fieldset.Legend>
       <Radio
-        data-variant='secondary'
+        data-variant='outline'
         label='with description'
         description='description text'
         value='description'
       />
-      <Radio data-variant='secondary' label='Checked' value='checked' checked />
+      <Radio data-variant='outline' label='Checked' value='checked' checked />
       <Radio
-        data-variant='secondary'
+        data-variant='outline'
         label='with error state'
         value='error'
         error='the error message'
       />
       <Radio
-        data-variant='secondary'
+        data-variant='outline'
         disabled
         label='disabled'
         value='disabled'
       />
       <Radio
-        data-variant='secondary'
+        data-variant='outline'
         readOnly
         label='readonly checked'
         value='readonly'
