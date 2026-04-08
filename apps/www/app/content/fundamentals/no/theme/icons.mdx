@@ -1,7 +1,7 @@
 ---
-title: Ikoner
+title: Ikoner i Figma
 sidebar_title: Ikoner
-description: Med Designsystemet velger du selv hvilken ikonpakke du vil bruke
+description: Med Designsystemet velger du selv hvilken ikonpakke du vil bruke.
 date: 2025-09-30
 category: Tema
 color: red
@@ -11,29 +11,178 @@ order: 100
 search_terms: icons
 ---
 
-## Velg ikonpakke selv
+import { InformationSquareIcon, ExclamationmarkTriangleIcon, CheckmarkCircleIcon, XMarkOctagonIcon, ChevronRightIcon, ChevronLeftIcon, ChevronUpIcon, ChevronDownIcon, ChevronUpDownIcon, PadlockLockedIcon, MagnifyingGlassIcon, PersonIcon, LaptopIcon, CalendarIcon, PrinterSmallIcon, PencilIcon, RobotSmileIcon, MobileSmallIcon, XMarkIcon, CloudUpIcon, CircleSlashIcon } from '@navikt/aksel-icons';
 
-Med Designsystemet velger du selv hvilken ikonpakke du vil bruke. Noen bruker Navs ikonpakke, andre velger andre pakker som står bedre i stil med deres visuelle profil. Dette er helt opp til deg og hva som passer best for din virksomhet.  
+Med Designsystemet velger du selv hvilken ikonpakke du vil bruke. Som standard bruker Designsystemet [Navs ikonpakke](https://aksel.nav.no/komponenter/ikoner), som er åpen å bruke og bidra til. Du står helt fritt til å velge andre ikonbibliotek som står bedre i stil med den visuelle profilen til din virksomhet/ditt produkt.
 
-##  Nav sitt ikonsett
+## Slik kobler du ikonene til ditt Figma-bibliotek
+Når du laster ned vår Community-fil, er den koblet til vår interne versjon av Aksel Icons. For å bruke ikonene i egne filer må du koble dem til et bibliotek i din Figma-organisasjon.
 
-Nav har laget et solid [sett med ikoner (nav.no)](https://aksel.nav.no/ikoner) (900+) som er åpen for å bruke og bidra til. At et ikon har samme betydning i en offentlig sammenheng som en annen tror vi bare har fordeler.
+### Slik bruker du Aksel icons
+1. Last ned [Aksel icons (Figma)](https://www.figma.com/community/file/1214869602572392330/nav-aksel-icons)
+2. Publiser ikonpakken som et bibliotek i Figma
+3. Åpne *Manage libraries* og velg ikonbiblioteket under **Missing libraries**  
+   Deretter bruker du [Swap library (Figma)](https://help.figma.com/hc/en-us/articles/4404856784663-Swap-style-and-component-libraries) for å bytte ikonene i Community-filen
 
-Ikonene støtter justering i størrelse og fargeendringer, og kommer i både stroke og fill-varianter.
+<video controls preload="metadata" aria-label="Video som viser en enkel gjennomgang av stegene i guiden Slik bruker du Aksel icons.">
+  <source src="/videos/designsystemet/icon-swap-aksel-library.mov" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
 
-Her finner du oversikten over ikoner: [aksel.nav.no/ikoner](https://aksel.nav.no/ikoner)<br/>
-Her kan du laste ned ikonpakken: [cdn.nav.no/aksel/icons](https://cdn.nav.no/aksel/icons/zip/aksel-icons.zip)<br/>
-Her finner du NPM-pakken: [@navikt/aksel-icons (npmjs.com)](https://www.npmjs.com/package/@navikt/aksel-icons)<br/>
-Her finner du ikonene i Figma: [Core Icons 3 (figma.com)](https://www.figma.com/community/file/1214869602572392330/Core-Icons-3)<br/>
+### Slik bruker du et annet ikonbibliotek
 
-### Tilgjengelighet
+Hvis du ønsker å bruke et annet ikonbibliotek enn Aksel, må ikonene tilpasses slik at de kan erstatte ikonene i Designsystemet.
 
-Ikonene skal funke for alle brukerene, uansett situasjon. Les mer om [hvordan du sikrer tilgjengeligheten (nav.no)](https://aksel.nav.no/god-praksis/artikler/tilgjengelig-ikonbruk) når du bruker ikoner og hvilke aria-attributter du bør bruke.
+**Fremgangsmåte:**
 
+1. **Forberedelser**
+   - Gi ikonene dine samme navn som tilsvarende Aksel-ikoner. Du trenger bare å gjøre dette for ikonene som vises i tabellen nedenfor
+   - Legg til fargestilen `color/neutral/text-default` på ikonene  
 
-### Slik bidrar du
+Nedenfor finner du to tabeller med ikonnavn og tilhørende ikoner:  
+- **Meningsbærende ikoner** bør erstattes med varianter som ligner mest mulig på Aksel  
+- **Ikke-meningsbærende ikoner** brukes som plassholdere (for eksempel i knapper), og kan erstattes fritt  
 
-Har du forslag til nye ikoner eller forbedringer? [Meld inn ønsket ditt her (github.com)](https://github.com/digdir/designsystemet/discussions/categories/ikonforesp%C3%B8rsler). Vi vurderer sammen med Nav om ikonet skal legges inn i Navs bibliotek.  
-Dersom det dukker opp mange gjentatte behov som ikke passer inn der, vil vi vurdere å tilby en egen tilleggspakke fra Designsystemet. 
+Hvis du bruker versjon `1.8.0` eller eldre av Community-filen, vil du se flere ikoner i *Swap library* enn det som er listet i tabellene. Disse brukes kun i eksempler og trenger ikke å byttes.
+<Table border data-color='neutral' style={{
+        tableLayout: 'fixed',
+      }}>
+  <caption style={{paddingBottom: '1rem'}}>Meningsbærende ikoner som bør byttes med tilsvarende ikon</caption>
 
-Husk også at du alltid kan lage dine egne ikoner for dine egne behov, da slipper du å vente på at det eventuelt blir en del av en fellespakke. Når du lager egne ikoner som skal brukes sammen med Nav sin ikonpakke, er det lurt å følge [retningslinjene deres (github.com)](https://github.com/navikt/aksel/blob/main/%40navikt/aksel-icons/CONTRIBUTING.md) for utforming.
+  <TableHead style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}
+>
+    <TableRow>
+      <TableHeaderCell scope="col">Name</TableHeaderCell>
+      <TableHeaderCell scope="col" >
+         Ikon
+      </TableHeaderCell>
+
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">InformationSquare</TableHeaderCell>
+      <TableCell><InformationSquareIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">ExclamationmarkTriangle</TableHeaderCell>
+      <TableCell><ExclamationmarkTriangleIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">CheckmarkCircle</TableHeaderCell>
+      <TableCell><CheckmarkCircleIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">XMarkOctagon</TableHeaderCell>
+      <TableCell><XMarkOctagonIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">ChevronRight</TableHeaderCell>
+      <TableCell><ChevronRightIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">ChevronLeft</TableHeaderCell>
+      <TableCell><ChevronLeftIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">ChevronUp</TableHeaderCell>
+      <TableCell><ChevronUpIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">ChevronDown</TableHeaderCell>
+      <TableCell><ChevronDownIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">ChevronUpDown</TableHeaderCell>
+      <TableCell><ChevronUpDownIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">PadlockLocked</TableHeaderCell>
+      <TableCell><PadlockLockedIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">MagnifyingGlass</TableHeaderCell>
+      <TableCell><MagnifyingGlassIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">X-mark</TableHeaderCell>
+      <TableCell><XMarkIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">CloudUp</TableHeaderCell>
+      <TableCell><CloudUpIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+     <TableRow>
+      <TableHeaderCell scope="row">CircleSlash</TableHeaderCell>
+      <TableCell><CircleSlashIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+<Table border data-color='neutral' style={{
+        tableLayout: 'fixed',
+      }}>
+  <caption style={{paddingBottom: '1rem'}}>ikke-meningsbærende ikoner</caption>
+
+  <TableHead style={{
+    backgroundColor: 'var(--ds-color-background-tinted)',
+  }}
+>
+    <TableRow>
+      <TableHeaderCell scope="col">Navn</TableHeaderCell>
+      <TableHeaderCell scope="col">
+         Ikoner
+      </TableHeaderCell>
+
+    </TableRow>
+  </TableHead>
+
+  <TableBody>
+    <TableRow>
+      <TableHeaderCell scope="row">Person</TableHeaderCell>
+      <TableCell><PersonIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Laptop</TableHeaderCell>
+      <TableCell><LaptopIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Calendar</TableHeaderCell>
+      <TableCell><CalendarIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">PrinterSmall</TableHeaderCell>
+      <TableCell><PrinterSmallIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">Pencil</TableHeaderCell>
+      <TableCell><PencilIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">RobotSmile</TableHeaderCell>
+      <TableCell><RobotSmileIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableHeaderCell scope="row">MobileSmall</TableHeaderCell>
+      <TableCell><MobileSmallIcon aria-hidden fontSize="2rem" /></TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+2. **Bytt bibliotek**
+   - Bruk *Swap library* i Figma  
+
+3. **Rydd opp**
+   - Endre ikonnavn tilbake til ønsket navnekonvensjon  
+
+4. **Kontroller farger**
+   - Sjekk at ikonene har riktige farger etter byttet  
+   - Hvis fargene ikke er bevart, må de oppdateres manuelt. Se [oversikt over farger for ikoner (Github)](https://github.com/digdir/designsystemet/issues/4652)
+
+<video controls preload="metadata" aria-label="Video som viser en enkel gjennomgang av stegene i guiden Slik bruker et annet ikonbibliotek.">
+  <source src="/videos/designsystemet/icon-swap-other-library.mov" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
