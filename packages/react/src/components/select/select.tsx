@@ -40,6 +40,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       <select
         className={cl('ds-input', className)}
         aria-readonly={rest['aria-readonly'] ?? readOnly}
+        suppressHydrationWarning // Since <ds-field> adds attributes
         data-width={width}
         ref={ref}
         {...rest}

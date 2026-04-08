@@ -99,6 +99,7 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
           className={cl('ds-toggle-group', className)}
           data-toggle-group='' // Default to empty string to ensure attribute is present
           data-variant={variant}
+          suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
           ref={ref}
           {...rest}
         >
