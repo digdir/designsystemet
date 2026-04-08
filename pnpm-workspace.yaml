@@ -12,7 +12,7 @@ onlyBuiltDependencies:
   - esbuild
   - just-pnpm
   - style-dictionary
-useNodeVersion: 24.14.0
+useNodeVersion: 24.14.1
 packageExtensions:
   '@navikt/aksel-icons':
     peerDependencies:
@@ -30,3 +30,5 @@ injectWorkspacePackages: true
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - "@u-elements/*"
+  # Renovate security update: vite@7.3.2
+  - vite@7.3.2
