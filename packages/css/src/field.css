@@ -125,45 +125,42 @@
       --dsc-field-border-width: var(--ds-border-width-default);
       --dsc-field-border-width--active: max(2px, 0.125rem);
       --dsc-field-padding: var(--ds-size-4);
+      --_dsc-field-border-color: var(--dsc-field-border-color); /* Using proxy props to easliy change source without overwriting states */
+      --_dsc-field-outline-width: 0;
 
-      border-color: var(--dsc-field-border-color);
+      border-color: var(--_dsc-field-border-color);
       border-radius: var(--dsc-field-border-radius);
       border-style: var(--dsc-field-border-style);
       border-width: var(--dsc-field-border-width);
+      box-shadow: inset 0 0 0 calc(var(--_dsc-field-outline-width) - var(--dsc-field-border-width)) var(--_dsc-field-border-color);
       padding: var(--dsc-field-padding);
       width: auto;
-      outline: 0 var(--dsc-field-border-style) var(--dsc-field-border-color);
-      outline-offset: calc(var(--dsc-field-border-width--active) * -1);
     }
     &[data-variant='outline']:hover {
-      outline-width: var(--dsc-field-border-width--active);
+      --_dsc-field-outline-width: var(--dsc-field-border-width--active);
     }
     &[data-variant='outline']:has(input:checked) {
-      border-color: var(--dsc-field-border-color--checked);
-      outline-color: var(--dsc-field-border-color--checked);
-      outline-width: var(--dsc-field-border-width--active);
+      --_dsc-field-border-color: var(--dsc-field-border-color--checked);
+      --_dsc-field-outline-width: var(--dsc-field-border-width--active);
 
       @media (forced-colors: active) {
         border-color: LinkText;
       }
     }
     &[data-variant='outline']:has(input[aria-invalid='true']) {
-      border-color: var(--dsc-field-border-color--invalid);
-      outline-color: var(--dsc-field-border-color--invalid);
-      outline-width: var(--dsc-field-border-width--active);
+      --_dsc-field-border-color: var(--dsc-field-border-color--invalid);
+      --_dsc-field-outline-width: var(--dsc-field-border-width--active);
     }
     &[data-variant='outline']:has(input:disabled, input[aria-disabled='true']) {
       cursor: not-allowed;
       opacity: var(--ds-opacity-disabled);
-      outline: none;
       & * {
         opacity: 1; /* Undo default opacity for these children so we can move it out on the tile */
       }
     }
     &[data-variant='outline']:has(input[readonly], input[aria-readonly='true']) {
-      border-color: var(--dsc-field-border-color--readonly);
+      --_dsc-field-border-color: var(--dsc-field-border-color--readonly);
       cursor: default;
-      outline: none;
 
       @media (forced-colors: active) {
         border-color: GrayText;
