@@ -53,27 +53,27 @@ export const Outline: Story = {
   render: () => (
     <>
       <Fieldset>
-        <Fieldset.Legend>Using data-variant="outline"</Fieldset.Legend>
+        <Fieldset.Legend>Using variant="outline"</Fieldset.Legend>
         <Switch
-          data-variant='outline'
+          variant='outline'
           label='with description'
           description='description text'
           value='description'
         />
         <Switch
-          data-variant='outline'
+          variant='outline'
           label='Checked'
           value='checked'
           checked
         />
         <Switch
-          data-variant='outline'
+          variant='outline'
           disabled
           label='disabled'
           value='disabled'
         />
         <Switch
-          data-variant='outline'
+          variant='outline'
           readOnly
           label='readonly checked'
           value='readonly'
