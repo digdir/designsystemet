@@ -46,7 +46,7 @@
     "digdir"
   ],
   "scripts": {
-    "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./src/experimental/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme",
+    "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme",
     "build:theme": "tsx ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./theme --experimental-tailwind"
   },
   "dependencies": {

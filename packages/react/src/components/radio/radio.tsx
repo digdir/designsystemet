@@ -31,9 +31,10 @@ export type RadioProps = MergeRight<
      */
     error?: ReactNode;
     /**
-     * If true, the radio will be displayed as a tile
+     * If outline, the checkbox will have a border.
+     * @default 'default'
      */
-    'data-selection-tile'?: boolean;
+    variant?: 'default' | 'outline';
   } & LabelRequired
 >;
 
@@ -46,13 +47,13 @@ export type RadioProps = MergeRight<
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   {
     'data-size': size,
-    'data-selection-tile': tile,
     className,
     style,
     children,
     label,
     description,
     error,
+    variant,
     ...rest
   },
   ref,
@@ -60,7 +61,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   return (
     <Field
       data-size={size}
-      data-selection-tile={tile}
+      data-variant={variant}
       className={className}
       style={style}
     >

@@ -64,7 +64,6 @@
     cursor: pointer;
   }
   &:has(input:is([type='radio'], [type='checkbox'])) {
-    border-radius: var(--ds-border-radius-md);
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
@@ -113,6 +112,58 @@
       & > *:not(input) {
         padding-inline-start: 0;
         padding-inline-end: var(--dsc-field-content-spacing);
+      }
+    }
+
+    &[data-variant='outline'] {
+      --dsc-field-border-color: var(--ds-color-neutral-border-default);
+      --dsc-field-border-color--checked: var(--ds-color-border-default);
+      --dsc-field-border-color--invalid: var(--ds-color-danger-border-default);
+      --dsc-field-border-color--readonly: var(--ds-color-neutral-border-subtle);
+      --dsc-field-border-radius: var(--ds-border-radius-lg);
+      --dsc-field-border-style: solid;
+      --dsc-field-border-width: var(--ds-border-width-default);
+      --dsc-field-border-width--active: max(2px, 0.125rem);
+      --dsc-field-padding: var(--ds-size-4);
+      --_dsc-field-border-color: var(--dsc-field-border-color); /* Using proxy props to easliy change source without overwriting states */
+      --_dsc-field-outline-width: 0;
+
+      border-color: var(--_dsc-field-border-color);
+      border-radius: var(--dsc-field-border-radius);
+      border-style: var(--dsc-field-border-style);
+      border-width: var(--dsc-field-border-width);
+      box-shadow: inset 0 0 0 calc(var(--_dsc-field-outline-width) - var(--dsc-field-border-width)) var(--_dsc-field-border-color);
+      padding: var(--dsc-field-padding);
+      width: auto;
+    }
+    &[data-variant='outline']:hover {
+      --_dsc-field-outline-width: var(--dsc-field-border-width--active);
+    }
+    &[data-variant='outline']:has(input:checked) {
+      --_dsc-field-border-color: var(--dsc-field-border-color--checked);
+      --_dsc-field-outline-width: var(--dsc-field-border-width--active);
+
+      @media (forced-colors: active) {
+        border-color: LinkText;
+      }
+    }
+    &[data-variant='outline']:has(input[aria-invalid='true']) {
+      --_dsc-field-border-color: var(--dsc-field-border-color--invalid);
+      --_dsc-field-outline-width: var(--dsc-field-border-width--active);
+    }
+    &[data-variant='outline']:has(input:disabled, input[aria-disabled='true']) {
+      cursor: not-allowed;
+      opacity: var(--ds-opacity-disabled);
+      & * {
+        opacity: 1; /* Undo default opacity for these children so we can move it out on the tile */
+      }
+    }
+    &[data-variant='outline']:has(input[readonly], input[aria-readonly='true']) {
+      --_dsc-field-border-color: var(--dsc-field-border-color--readonly);
+      cursor: default;
+
+      @media (forced-colors: active) {
+        border-color: GrayText;
       }
     }
   }

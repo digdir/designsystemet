@@ -1,22 +1,12 @@
-import {
-  CheckmarkIcon,
-  FloppydiskIcon,
-  PencilIcon,
-  XMarkIcon,
-} from '@navikt/aksel-icons';
+import { FloppydiskIcon, PencilIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { type CSSProperties, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   Button,
-  Card,
   Checkbox,
   Chip,
   Divider,
-  Field,
   Fieldset,
-  Heading,
-  Input,
-  Label,
   Pagination,
   Paragraph,
   Table,
@@ -437,187 +427,31 @@ export const hiddenLegend: StoryFn<typeof Fieldset> = () => (
   </Fieldset>
 );
 
-export const Tile: StoryFn<UseCheckboxGroupProps> = () => {
-  return (
-    <>
-      <Fieldset className='ds-selection-tile'>
-        <Fieldset.Legend>
-          This is a Fieldset with className="ds-selection-tile"
-        </Fieldset.Legend>
-        <Fieldset.Description>
-          The checkboxes get tile styling
-        </Fieldset.Description>
-        <Checkbox
-          label='with description'
-          description='description text'
-          value='description'
-        />
-        <Checkbox label='Checked' value='checked' checked />
-        <Checkbox
-          label='with error state'
-          value='error'
-          error='the error message'
-        />
-        <Checkbox disabled label='disabled' value='disabled' />
-        <Checkbox readOnly label='readonly checked' value='readonly' checked />
-      </Fieldset>
-      <Heading style={{ marginTop: 'var(--ds-size-8)' }} level={2}>
-        Card examples
-      </Heading>
-      <Card
-        style={{ marginTop: 'var(--ds-size-4)' }}
-        className='ds-selection-tile'
-        data-clickdelegatefor='card-test'
-      >
-        <Checkbox id='card-test' label='Lunsj' value='lunsj' />
-        <Paragraph>
-          This is a card with className="ds-selection-tile" and the checkbox as
-          the click delegate.
-        </Paragraph>
-      </Card>
-      <Card
-        style={
-          {
-            marginTop: 'var(--ds-size-8)',
-            '--dsc-tile-background--checked':
-              'var(--ds-color-background-tinted)',
-          } as CSSProperties
-        }
-        className='ds-selection-tile'
-        data-clickdelegatefor='card-test2'
-      >
-        <Heading level={3}>Hello</Heading>
-        <Paragraph>
-          This is a card with className="ds-selection-tile" and a hidden
-          checkbox as the click delegate. The background-color when checked was
-          overidden.
-        </Paragraph>
-        <Paragraph>
-          Notice that the heading gets underline due to selector in input.
-          Should this be changed to only count for links?
-        </Paragraph>
-
-        <Checkbox
-          id='card-test2'
-          label='hidden'
-          value='hidden'
-          className='ds-sr-only'
-        />
-      </Card>
-
-      <Card
-        style={{ marginTop: 'var(--ds-size-8)' }}
-        className='ds-selection-tile' /* test that tile does nothing when there are no selection controls */
-        data-clickdelegatefor='button-test'
-      >
-        <Heading level={3}>Hello</Heading>
-        <Paragraph>
-          This is a card with className="ds-selection-tile" and a button as the
-          click delegate (so className="ds-selection-tile" should do nothing)
-        </Paragraph>
-        <Button id='button-test'>Button is left alone</Button>
-      </Card>
-      <Heading style={{ marginTop: 'var(--ds-size-8)' }} level={2}>
-        Kystbussen example
-      </Heading>
-      <div style={{ width: '320px' }}>
-        <Card
-          style={{ marginTop: 'var(--ds-size-4)' }}
-          className='ds-selection-tile'
-          data-clickdelegatefor='entur-case1'
-        >
-          <Field
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--ds-size-2)',
-              width: 'auto',
-            }}
-          >
-            <Input id='entur-case1' type='radio' name='entur' />
-            <Label
-              className='ds-heading'
-              weight='regular'
-              style={{
-                marginRight: 'auto',
-                paddingInline: '0',
-                textBox: 'trim-start cap alphapbetic',
-              }}
-            >
-              Standard
-            </Label>
-            <Field.Description>199,-</Field.Description>
-          </Field>
-          <Divider />
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'auto 1fr',
-              gap: 'var(--ds-size-2)',
-            }}
-          >
-            <XMarkIcon fontSize='2rem' aria-hidden='true' />
-            <Paragraph>Ikke Refunderbar</Paragraph>
-            <CheckmarkIcon
-              fontSize='2rem'
-              aria-hidden='true'
-              color='var(--ds-color-success-base-default)'
-            />
-            <Paragraph>Kan endres frem til 1 time før avgang.</Paragraph>
-          </div>
-        </Card>
-        <Card
-          style={{ marginTop: 'var(--ds-size-4)' }}
-          className='ds-selection-tile'
-          data-clickdelegatefor='entur-case2'
-        >
-          <Field
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--ds-size-1)',
-              width: 'auto',
-            }}
-          >
-            <Input id='entur-case2' type='radio' name='entur' />
-            <Label
-              className='ds-heading'
-              weight='regular'
-              style={{
-                marginRight: 'auto',
-                paddingInline: '0',
-                textBox: 'trim-start cap alphapbetic',
-              }}
-            >
-              Fleksibel
-            </Label>
-            <Field.Description>299,-</Field.Description>
-          </Field>
-          <Divider />
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'auto 1fr',
-              gap: 'var(--ds-size-1)',
-            }}
-          >
-            <CheckmarkIcon
-              fontSize='2rem'
-              aria-hidden='true'
-              color='var(--ds-color-success-base-default)'
-            />
-            <Paragraph>Refunderbar billett</Paragraph>
-            <CheckmarkIcon
-              fontSize='2rem'
-              aria-hidden='true'
-              color='var(--ds-color-success-base-default)'
-            />
-            <Paragraph>
-              Kan endres uten endringsgebyr frem til 15 minutter før avgang.
-            </Paragraph>
-          </div>
-        </Card>
-      </div>
-    </>
-  );
-};
+export const Outline: StoryFn<UseCheckboxGroupProps> = () => (
+  <>
+    <Fieldset>
+      <Fieldset.Legend>Using variant="outline"</Fieldset.Legend>
+      <Checkbox
+        variant='outline'
+        label='with description'
+        description='description text'
+        value='description'
+      />
+      <Checkbox variant='outline' label='Checked' value='checked' checked />
+      <Checkbox
+        variant='outline'
+        label='with error state'
+        value='error'
+        error='the error message'
+      />
+      <Checkbox variant='outline' disabled label='disabled' value='disabled' />
+      <Checkbox
+        variant='outline'
+        readOnly
+        label='readonly checked'
+        value='readonly'
+        checked
+      />
+    </Fieldset>
+  </>
+);
