@@ -34,7 +34,7 @@ export type SwitchProps = MergeRight<
      * If outline, the checkbox will have a border.
      * @default 'default'
      */
-    'data-variant'?: 'default' | 'outline';
+    variant?: 'default' | 'outline';
   } & LabelRequired
 >;
 
@@ -47,13 +47,13 @@ export type SwitchProps = MergeRight<
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
   {
     'data-size': size,
-    'data-variant': variant,
     children,
     className,
     description,
     label,
     position,
     style,
+    variant,
     ...rest
   },
   ref,

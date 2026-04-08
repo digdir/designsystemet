@@ -34,7 +34,7 @@ export type CheckboxProps = MergeRight<
      * If outline, the checkbox will have a border.
      * @default 'default'
      */
-    'data-variant'?: 'default' | 'outline';
+    variant?: 'default' | 'outline';
   } & LabelRequired
 >;
 
@@ -48,13 +48,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
     {
       'data-size': size,
-      'data-variant': variant,
       className,
       style,
       children,
       label,
       description,
       error,
+      variant,
       ...rest
     },
     ref,
