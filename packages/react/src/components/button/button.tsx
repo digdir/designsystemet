@@ -8,7 +8,11 @@ import type { MergeRight } from '../../utilities';
 import { Spinner } from '../spinner/spinner';
 
 export type ButtonProps = MergeRight<
-  DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
+  DefaultProps &
+    Omit<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      'command' | 'commandfor' | 'commandFor'
+    >,
   {
     /**
      * Specify which variant to use
@@ -42,6 +46,17 @@ export type ButtonProps = MergeRight<
      * @default 'button'
      */
     type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+    /**
+     * Native invoker commands. Specifies actions to perform on an element specified by commandfor. Polyfilled by designsystemet-web and includes a custom --show-non-modal command.
+     * "show-modal", "close", "request-close", "show-popover", "hide-popover", "toggle-popover", "--show-non-modal"
+     */
+    command?: string;
+    /**
+     * Specifies the target element for "command".
+     * value is ID of target
+     */
+    commandfor?: string;
+    commandFor?: string;
   }
 >;
 
@@ -62,6 +77,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = 'primary',
       popoverTarget,
       popovertarget,
+      commandfor,
+      commandFor,
       ...rest
     },
     ref,
@@ -72,6 +89,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ? 'popoverTarget'
       : 'popovertarget';
 
+    const commandForVal = commandFor ?? commandfor;
+
     // Fallbacks to undefined to prevent rendering attribute="false"
     return (
       <Component
@@ -80,6 +99,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-disabled={Boolean(loading) || undefined}
         className={cl('ds-button', className)}
         data-icon={icon || undefined}
+        commandfor={commandForVal}
         data-variant={variant}
         ref={ref}
         /* don't set type when we use `asChild` */
