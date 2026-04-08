@@ -60,18 +60,8 @@ export const Outline: Story = {
           description='description text'
           value='description'
         />
-        <Switch
-          variant='outline'
-          label='Checked'
-          value='checked'
-          checked
-        />
-        <Switch
-          variant='outline'
-          disabled
-          label='disabled'
-          value='disabled'
-        />
+        <Switch variant='outline' label='Checked' value='checked' checked />
+        <Switch variant='outline' disabled label='disabled' value='disabled' />
         <Switch
           variant='outline'
           readOnly

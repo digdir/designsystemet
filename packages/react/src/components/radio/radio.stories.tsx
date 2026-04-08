@@ -122,12 +122,7 @@ export const Outline: StoryFn<UseRadioGroupProps> = () => (
         value='error'
         error='the error message'
       />
-      <Radio
-        variant='outline'
-        disabled
-        label='disabled'
-        value='disabled'
-      />
+      <Radio variant='outline' disabled label='disabled' value='disabled' />
       <Radio
         variant='outline'
         readOnly

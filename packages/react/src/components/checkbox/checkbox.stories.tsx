@@ -1,7 +1,4 @@
-import {
-  FloppydiskIcon,
-  PencilIcon,
-} from '@navikt/aksel-icons';
+import { FloppydiskIcon, PencilIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useMemo, useState } from 'react';
 import {
@@ -440,24 +437,14 @@ export const Outline: StoryFn<UseCheckboxGroupProps> = () => (
         description='description text'
         value='description'
       />
-      <Checkbox
-        variant='outline'
-        label='Checked'
-        value='checked'
-        checked
-      />
+      <Checkbox variant='outline' label='Checked' value='checked' checked />
       <Checkbox
         variant='outline'
         label='with error state'
         value='error'
         error='the error message'
       />
-      <Checkbox
-        variant='outline'
-        disabled
-        label='disabled'
-        value='disabled'
-      />
+      <Checkbox variant='outline' disabled label='disabled' value='disabled' />
       <Checkbox
         variant='outline'
         readOnly
