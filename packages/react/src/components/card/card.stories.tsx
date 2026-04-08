@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import {
-  placeholderImg,
+  cat1Img,
+  cat5Img,
   severityColors,
   themeColors,
 } from '../../../stories/constants';
@@ -95,7 +96,7 @@ export const Media: Story = () => (
           about this
         </Paragraph>
       </Card.Block>
-      <Card.Block>{placeholderImg}</Card.Block>
+      <Card.Block>{cat1Img}</Card.Block>
     </Card>
   </>
 );
@@ -134,7 +135,7 @@ export const Video: Story = () => (
 export const WithLink: Story = (args) => (
   <>
     <Card {...args}>
-      <Card.Block>{placeholderImg}</Card.Block>
+      <Card.Block>{cat5Img}</Card.Block>
       <Card.Block>
         <Heading>
           <a
@@ -171,7 +172,7 @@ export const WithLink: Story = (args) => (
         </Paragraph>
         <Paragraph data-size='sm'>Footer text</Paragraph>
       </Card.Block>
-      <Card.Block>{placeholderImg}</Card.Block>
+      <Card.Block>{cat5Img}</Card.Block>
     </Card>
   </>
 );
