@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@layer ds.theme, ds.base, ds.components, ds.utilities;
+@layer ds.theme, ds.base, ds.components;
 
 /** Import order defines ordinal specificity for layers */
 @import url('./base.css') layer(ds.base);
