@@ -7,6 +7,11 @@ settings:
 
 packageExtensionsChecksum: sha256-IQSNU9cJtri1P9xMWAvG91nRHacWCj8xtjZCK1etLxM=
 
+patchedDependencies:
+  invokers-polyfill@1.0.2:
+    hash: d5677be15320f04cdc552d82cb4a79242bd1cf8b26bcbb0a13e1153e7bed3b5a
+    path: patches/invokers-polyfill@1.0.2.patch
+
 importers:
 
   .:
@@ -690,7 +695,7 @@ importers:
         version: 0.1.2
       invokers-polyfill:
         specifier: ^1.0.2
-        version: 1.0.2
+        version: 1.0.2(patch_hash=d5677be15320f04cdc552d82cb4a79242bd1cf8b26bcbb0a13e1153e7bed3b5a)
     devDependencies:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.11.0
@@ -6137,7 +6142,7 @@ snapshots:
       '@u-elements/u-details': 0.2.2
       '@u-elements/u-progress': 0.0.7
       '@u-elements/u-tabs': 0.1.2
-      invokers-polyfill: 1.0.2
+      invokers-polyfill: 1.0.2(patch_hash=d5677be15320f04cdc552d82cb4a79242bd1cf8b26bcbb0a13e1153e7bed3b5a)
 
   '@emnapi/core@1.8.1':
     dependencies:
@@ -8552,7 +8557,7 @@ snapshots:
 
   inline-style-parser@0.2.4: {}
 
-  invokers-polyfill@1.0.2: {}
+  invokers-polyfill@1.0.2(patch_hash=d5677be15320f04cdc552d82cb4a79242bd1cf8b26bcbb0a13e1153e7bed3b5a): {}
 
   ip-address@10.1.0: {}
 
