@@ -7,7 +7,7 @@ on:
     types: [opened, ready_for_review, synchronize, reopened]
     paths:
       - .github/workflows/test-visual.yml
-      - 'packages/**/*.ts?'
+      - 'packages/**/*.tsx?'
       - 'packages/**/*.css'
       - 'packages/**/package.json'
       - 'packages/**/*.stories.tsx?'
@@ -18,7 +18,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'packages/**/*.ts?'
+      - 'packages/**/*.tsx?'
       - 'packages/**/*.css'
       - 'packages/**/package.json'
       - 'packages/**/*.stories.tsx?'
