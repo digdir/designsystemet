@@ -7,8 +7,9 @@ on:
     types: [opened, ready_for_review, synchronize, reopened]
     paths:
       - .github/workflows/test-visual.yml
-      - 'packages/**/*.tsx?'
+      - 'packages/**/*.ts?'
       - 'packages/**/*.css'
+      - 'packages/**/package.json'
       - 'packages/**/*.stories.tsx?'
       - 'apps/storybook/**'
       - 'design-tokens/**/*.jsonc?'
@@ -17,8 +18,9 @@ on:
   push:
     branches: [main]
     paths:
-      - 'packages/**/*.tsx?'
+      - 'packages/**/*.ts?'
       - 'packages/**/*.css'
+      - 'packages/**/package.json'
       - 'packages/**/*.stories.tsx?'
       - 'apps/storybook/**'
       - 'design-tokens/**/*.jsonc?'
