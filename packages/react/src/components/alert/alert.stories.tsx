@@ -36,7 +36,6 @@ export const VariantInfo: Story = (args) => (
       Det er lange køer for å bestille pass om dagen, det kan være lurt å
       bestille i god tid før du skal reise.
     </Paragraph>
-    <Paragraph>force trigger chromatic</Paragraph>
   </Alert>
 );
 
