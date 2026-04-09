@@ -48,7 +48,7 @@ export const Previews = () => {
           </ToggleGroup.Item>
         </ToggleGroup>
         <ToggleGroup
-          aria-label='Modus'
+          data-toggle-group='Modus'
           value={colorScheme}
           onChange={(v) => setColorScheme(v as ColorScheme)}
         >

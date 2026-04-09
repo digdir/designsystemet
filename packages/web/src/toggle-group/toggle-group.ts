@@ -1,4 +1,11 @@
-import { attr, on, onHotReload, onMutation, warn } from '../utils/utils';
+import {
+  attr,
+  attrOrCSS,
+  on,
+  onHotReload,
+  onMutation,
+  warn,
+} from '../utils/utils';
 
 const ARIA_LABELLEDBY = 'aria-labelledby';
 const ARIA_LABEL = 'aria-label';
@@ -7,7 +14,7 @@ const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
 
 const handleAriaAttributes = () => {
   for (const group of document.querySelectorAll(SELECTOR_TOGGLEGROUP))
-    attr(group, 'aria-label', attr(group, ATTR_TOGGLEGROUP));
+    attr(group, 'aria-label', attrOrCSS(group, ATTR_TOGGLEGROUP));
 };
 
 const handleKeydown = (event: Partial<KeyboardEvent>) => {
