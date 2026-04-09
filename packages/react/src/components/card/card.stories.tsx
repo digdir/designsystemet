@@ -135,7 +135,7 @@ export const WithLink: Story = (args) => (
   <>
     <Card {...args}>
       <Card.Block>
-        <img src={cat5} alt='' />
+        <img src={cat1} alt='' />
       </Card.Block>
       <Card.Block>
         <Heading>
