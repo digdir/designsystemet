@@ -16,7 +16,6 @@
       "default": "./dist/theme/designsystemet.css"
     },
     "./theme.css": "./dist/theme/designsystemet.css",
-    "./experimental/*": "./dist/src/experimental/*",
     "./theme/*": "./dist/theme/*",
     ".": {
       "types": "./types.d.ts",
