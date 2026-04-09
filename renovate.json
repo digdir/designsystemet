@@ -2,5 +2,15 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["local>digdir/renovate-config"],
   "rangeStrategy": "bump",
-  "ignoreDeps": ["@floating-ui/react"]
+  "ignoreDeps": ["@floating-ui/react"],
+  "customManagers": [
+    {
+      "customType": "jsonata",
+      "fileFormat": "yaml",
+      "managerFilePatterns": ["/pnpm-workspace.yaml$/"],
+      "matchStrings": ["{ 'currentValue': useNodeVersion }"],
+      "datasourceTemplate": "node-version",
+      "depNameTemplate": "node"
+    }
+  ]
 }
