@@ -23,8 +23,10 @@
   height: var(--dsc-togglegroup-button-size);
   padding: var(--dsc-togglegroup-spacing);
   max-width: fit-content;
+  min-width: 0;
   overflow-x: auto;
   width: auto;
+  margin-inline: 0;
 
   &:not([hidden]) {
     display: flex;

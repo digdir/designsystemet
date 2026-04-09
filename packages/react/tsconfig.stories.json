@@ -2,9 +2,6 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "../../",
-    "paths": {
-      "@assets/*": ["apps/storybook/assets/*"],
-    },
     "outDir": "./tsc-build",
     "allowSyntheticDefaultImports": true,
     "composite": true,
