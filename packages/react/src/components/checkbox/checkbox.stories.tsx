@@ -444,7 +444,25 @@ export const Outline: StoryFn<UseCheckboxGroupProps> = () => (
         value='error'
         error='the error message'
       />
-      <Checkbox variant='outline' disabled label='disabled' value='disabled' />
+      <Checkbox
+        variant='outline'
+        disabled
+        label='disabled not checked'
+        value='disabled'
+      />
+      <Checkbox
+        variant='outline'
+        disabled
+        label='disabled'
+        value='disabled'
+        checked
+      />
+      <Checkbox
+        variant='outline'
+        readOnly
+        label='readonly not checked'
+        value='readonly2'
+      />
       <Checkbox
         variant='outline'
         readOnly

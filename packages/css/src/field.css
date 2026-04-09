@@ -149,17 +149,25 @@
     }
     &[data-variant='outline']:has(input[aria-invalid='true']) {
       --_dsc-field-border-color: var(--dsc-field-border-color--invalid);
-      --_dsc-field-outline-width: var(--dsc-field-border-width--active);
     }
     &[data-variant='outline']:has(input:disabled, input[aria-disabled='true']) {
       cursor: not-allowed;
       opacity: var(--ds-opacity-disabled);
+      --_dsc-field-outline-width: var(--ds-border-width-default);
+      &:has(input:checked) {
+        --_dsc-field-outline-width: var(--dsc-field-border-width--active);
+      }
+
       & * {
         opacity: 1; /* Undo default opacity for these children so we can move it out on the tile */
       }
     }
     &[data-variant='outline']:has(input[readonly], input[aria-readonly='true']) {
       --_dsc-field-border-color: var(--dsc-field-border-color--readonly);
+      --_dsc-field-outline-width: var(--ds-border-width-default);
+      &:has(input:checked) {
+        --_dsc-field-outline-width: var(--dsc-field-border-width--active);
+      }
       cursor: default;
 
       @media (forced-colors: active) {
