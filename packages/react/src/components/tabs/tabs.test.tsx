@@ -35,8 +35,9 @@ describe('Tabs', () => {
   });
 
   it('defaultValue set correct value', async () => {
+    const onChange = vi.fn();
     render(
-      <Tabs defaultValue='value2'>
+      <Tabs defaultValue='value2' onChange={onChange}>
         <Tabs.List>
           <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
           <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
@@ -46,11 +47,12 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
-    expect(screen.queryByText('content 2')).toBeVisible();
+    expect(onChange).not.toHaveBeenCalled();
+    expect(screen.getByText('content 1')).toHaveAttribute('hidden', '');
+    expect(screen.getByText('content 2')).toBeVisible();
     await user.click(screen.getByRole('tab', { name: 'Tab 1' }));
-    expect(screen.queryByText('content 1')).toBeVisible();
-    expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
+    expect(screen.getByText('content 1')).toBeVisible();
+    expect(screen.getByText('content 2')).toHaveAttribute('hidden', '');
   });
 
   it('item renders with correct aria attributes', async () => {
