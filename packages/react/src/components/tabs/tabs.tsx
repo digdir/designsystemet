@@ -90,7 +90,8 @@ export const Tabs = forwardRef<DSTabElement, TabsProps>(function Tabs(
   useEffect(() => {
     if (defaultValue && tabsRef.current) {
       tabsRef.current?.tabList?.tabs?.forEach((tab) => {
-        if (tab.getAttribute('data-value') === defaultValue) tab.click();
+        if (tab.getAttribute('data-value') === defaultValue)
+          tab.setAttribute('aria-selected', 'true');
       });
     }
   }, []);
