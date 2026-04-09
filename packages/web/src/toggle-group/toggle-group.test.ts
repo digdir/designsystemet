@@ -4,9 +4,6 @@ import { describe, expect, it, vi } from 'vitest';
 
 const render = () => {
   document.body.innerHTML = `
-    <style>
-      .ds-toggle-group { --_ds-toggle-group: 1; } /* Needed to trigger JS toggle-group activation */
-    </style>
     <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering">
       <label>
         <input type="radio" name="alignment" value="left" />
@@ -30,8 +27,9 @@ const render = () => {
 };
 
 describe('toggle-group behavior', () => {
-  it('sets data-toggle-group from aria-label', () => {
+  it('sets data-toggle-group from aria-label', async () => {
     const { group } = render();
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
     expect(group).toHaveAttribute('aria-label', 'Tekstjustering');
   });
 
