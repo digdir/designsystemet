@@ -36,7 +36,7 @@ export const Previews = () => {
     <>
       <div className={classes.toolbar} data-size='sm'>
         <ToggleGroup
-          aria-label='Tema'
+          data-toggle-group='Tema'
           value={theme as string}
           onChange={(v) => setTheme(v as keyof typeof themes)}
         >

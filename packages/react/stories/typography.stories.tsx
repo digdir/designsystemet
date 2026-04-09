@@ -24,7 +24,7 @@ const Controls = ({ size, setSize }: ControlsProps) => {
           Størrelse <code>(data-size)</code>
         </Fieldset.Legend>
         <ToggleGroup
-          aria-label='Tekststørrelse'
+          data-toggle-group='Tekststørrelse'
           value={size}
           onChange={(val) => setSize(val as Size)}
         >

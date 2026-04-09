@@ -35,7 +35,7 @@ Please check all tests and console to look for errors or unexpected behavior.
 `ToggleGroup` still uses `ToggleGroup.Item` in React, but now internally does not create `<button>` anymore.
 The new structure is:
 ```html
-<fieldset class="ds-toggle-group" aria-label="Text alignment">
+<fieldset class="ds-toggle-group" data-toggle-group="Text alignment">
   <label>
     <input type="radio" name="alignment-two" value="left" checked />
     Left aligned

@@ -7,7 +7,7 @@ const render = () => {
     <style>
       .ds-toggle-group { --_ds-toggle-group: 1; } /* Needed to trigger JS toggle-group activation */
     </style>
-    <fieldset class="ds-toggle-group" aria-label="Tekstjustering">
+    <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering">
       <label>
         <input type="radio" name="alignment" value="left" />
         Left
@@ -30,7 +30,7 @@ const render = () => {
 };
 
 describe('toggle-group behavior', () => {
-  it('sets aria-label from aria-label', () => {
+  it('sets data-toggle-group from aria-label', () => {
     const { group } = render();
     expect(group).toHaveAttribute('aria-label', 'Tekstjustering');
   });

@@ -19,14 +19,6 @@ export type ToggleGroupProps = MergeRight<
     Omit<HTMLAttributes<HTMLFieldSetElement>, 'value' | 'onChange'>,
   {
     /**
-     * Toggle group label for accessibility
-     */
-    'aria-label'?: string;
-    /**
-     * Toggle group labelledby pointing to another element ID to use as accessible label
-     */
-    'aria-labelledby'?: string;
-    /**
      * Specify which variant to use
      * @default 'primary'
      */
@@ -49,7 +41,6 @@ export type ToggleGroupProps = MergeRight<
     name?: string;
     /**
      * Toggle group label for accessibility
-     * @deprecated Use `aria-label` instead.
      */
     'data-toggle-group'?: string;
   }
@@ -59,7 +50,7 @@ export type ToggleGroupProps = MergeRight<
  * Display a group of buttons that can be toggled between.
  *
  * @example
- * <ToggleGroup aria-label="Label" onChange={(value) => console.log(value)}>
+ * <ToggleGroup data-toggle-group="Label" onChange={(value) => console.log(value)}>
  *   <ToggleGroup.Item value='1'>Toggle 1</ToggleGroup.Item>
  *   <ToggleGroup.Item value='2'>Toggle 2</ToggleGroup.Item>
  *   <ToggleGroup.Item value='3'>Toggle 3</ToggleGroup.Item>
@@ -68,8 +59,6 @@ export type ToggleGroupProps = MergeRight<
 export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
   function ToggleGroup(
     {
-      'aria-label': ariaLabel,
-      'data-toggle-group': dataToggleGroup,
       children,
       className,
       defaultValue,
@@ -108,7 +97,7 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
       >
         <fieldset
           className={cl('ds-toggle-group', className)}
-          aria-label={ariaLabel || dataToggleGroup} // Default to empty string to ensure attribute is present
+          data-toggle-group='' // Default to empty string to ensure attribute is present
           data-variant={variant}
           suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
           ref={ref}

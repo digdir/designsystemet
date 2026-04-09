@@ -97,10 +97,10 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     },
     ref,
   ) {
-    const { setContext } = useContext(Context);
+    const contextRef = useContext(Context);
     const dialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the dialog works without a DialogTriggerContext
     const Component = asChild ? Slot : 'dialog';
-    const mergedRefs = useMergeRefs([ref, dialogRef]);
+    const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
     const showProp = modal ? 'showModal' : 'show';
     const autoId = useId();
     const usedId = id ?? autoId;
@@ -108,13 +108,11 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     // Toggle open based on prop
     useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]);
 
-    // Store context for DialogTrigger to consume, so it can open the dialog when the trigger is clicked
-    useEffect(() => setContext?.({ id: usedId, modal }), [usedId, modal]);
-
     return (
       <Component
         className={cl('ds-dialog', className)}
         data-placement={placement}
+        data-modal={modal} // Needed for dialog-trigger.tsx
         id={usedId}
         onClose={(event) => onClose?.(event.nativeEvent)} // Backward compatibility: expose native event
         onClick={(event) => {
@@ -144,7 +142,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
             icon
             variant='tertiary'
             command='close'
-            commandfor={id ?? autoId}
+            commandfor={usedId}
           />
         )}
         {children}
