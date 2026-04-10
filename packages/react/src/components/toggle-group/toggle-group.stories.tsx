@@ -37,7 +37,7 @@ export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
 };
 
 Preview.args = {
-  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
   defaultValue: 'innboks',
   name: 'toggle-group-nuts',
 };
@@ -73,7 +73,7 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
   return (
     <>
       <ToggleGroup
-        data-toggle-group='Filtering'
+        data-toggle-group='Filtrering'
         value={value}
         onChange={setValue}
       >
@@ -104,20 +104,20 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
 };
 export const Secondary = Preview.bind({});
 Secondary.args = {
-  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
   defaultValue: 'innboks',
   variant: 'secondary',
 };
 
 export const SecondaryOnlyIcons = OnlyIcons.bind({});
 SecondaryOnlyIcons.args = {
-  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
   variant: 'secondary',
 };
 
 export const Disabled: StoryFn<typeof ToggleGroup> = () => {
   return (
-    <ToggleGroup>
+    <ToggleGroup data-toggle-group='Filtrering'>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item disabled value='utkast'>
         Utkast
@@ -132,7 +132,7 @@ export const Disabled: StoryFn<typeof ToggleGroup> = () => {
 };
 export const AriaDisabled: StoryFn<typeof ToggleGroup> = () => {
   return (
-    <ToggleGroup>
+    <ToggleGroup data-toggle-group='Filtrering'>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item aria-disabled='true' value='utkast'>
         Utkast
