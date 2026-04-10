@@ -472,7 +472,7 @@ importers:
   packages/cli:
     dependencies:
       '@commander-js/extra-typings':
-        specifier: 14.0.0
+        specifier: ^14.0.0
         version: 14.0.0(commander@14.0.3)
       '@digdir/designsystemet-types':
         specifier: workspace:^
@@ -481,40 +481,40 @@ importers:
         specifier: 2.0.3
         version: 2.0.3(style-dictionary@5.4.0)
       chroma-js:
-        specifier: 3.2.0
+        specifier: ^3.2.0
         version: 3.2.0
       colorjs.io:
-        specifier: 0.6.1
+        specifier: ^0.6.1
         version: 0.6.1
       commander:
-        specifier: 14.0.3
+        specifier: ^14.0.3
         version: 14.0.3
       fast-glob:
-        specifier: 3.3.3
+        specifier: ^3.3.3
         version: 3.3.3
       hsluv:
-        specifier: 1.0.1
+        specifier: ^1.0.1
         version: 1.0.1
       object-hash:
-        specifier: 3.0.0
+        specifier: ^3.0.0
         version: 3.0.0
       picocolors:
-        specifier: 1.1.1
+        specifier: ^1.1.1
         version: 1.1.1
       postcss:
-        specifier: 8.5.8
+        specifier: ^8.5.8
         version: 8.5.8
       ramda:
-        specifier: 0.32.0
+        specifier: ^0.32.0
         version: 0.32.0
       style-dictionary:
-        specifier: 5.4.0
+        specifier: ^5.4.0
         version: 5.4.0
       zod:
-        specifier: 4.3.6
+        specifier: ^4.3.6
         version: 4.3.6
       zod-validation-error:
-        specifier: 5.0.0
+        specifier: ^5.0.0
         version: 5.0.0(zod@4.3.6)
     devDependencies:
       '@tokens-studio/types':
@@ -582,22 +582,22 @@ importers:
         specifier: workspace:^
         version: link:../web
       '@floating-ui/dom':
-        specifier: 1.7.6
+        specifier: ^1.7.6
         version: 1.7.6
       '@floating-ui/react':
         specifier: 0.26.23
         version: 0.26.23(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@navikt/aksel-icons':
-        specifier: 8.9.0
+        specifier: ^8.9.0
         version: 8.9.0(react@19.2.4)
       '@radix-ui/react-slot':
-        specifier: 1.2.4
+        specifier: ^1.2.4
         version: 1.2.4(@types/react@19.2.14)(react@19.2.4)
       '@tanstack/react-virtual':
-        specifier: 3.13.23
+        specifier: ^3.13.23
         version: 3.13.23(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       clsx:
-        specifier: 2.1.1
+        specifier: ^2.1.1
         version: 2.1.1
     devDependencies:
       '@digdir/designsystemet-css':
@@ -676,22 +676,22 @@ importers:
   packages/web:
     dependencies:
       '@floating-ui/dom':
-        specifier: 1.7.6
+        specifier: ^1.7.6
         version: 1.7.6
       '@u-elements/u-combobox':
-        specifier: 1.0.7
+        specifier: ^1.0.7
         version: 1.0.7
       '@u-elements/u-datalist':
-        specifier: 1.1.0
+        specifier: ^1.1.0
         version: 1.1.0
       '@u-elements/u-details':
-        specifier: 0.2.2
+        specifier: ^0.2.2
         version: 0.2.2
       '@u-elements/u-progress':
-        specifier: 0.0.7
+        specifier: ^0.0.7
         version: 0.0.7
       '@u-elements/u-tabs':
-        specifier: 0.1.2
+        specifier: ^0.1.2
         version: 0.1.2
     devDependencies:
       '@custom-elements-manifest/analyzer':
