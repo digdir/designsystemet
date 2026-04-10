@@ -37,10 +37,8 @@ export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
           e.preventDefault();
         }
       }}
-      onClick={(e: MouseEvent<DSTabElement>) => {
-        if (e.isTrusted || !isControlled || currentValue !== value) {
-          onChange?.(value); // Only call onChange is user actually clicked, not when programmatically clicked/controlled
-        }
+      onClick={(e: MouseEvent<DSTabElement> & { detail?: string }) => {
+        if (currentValue !== value) onChange?.(value); // Only call onChange when actual value change
         onClick?.(e);
       }}
       class={className}

@@ -2,7 +2,6 @@ import {
   announce,
   attr,
   attrOrCSS,
-  debounce,
   isBrowser,
   on,
   onHotReload,
@@ -43,12 +42,12 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
   TIP = el || undefined;
 };
 
-const handleAriaAttributes = debounce(() => {
+const handleAriaAttributes = () => {
   for (const el of document.querySelectorAll(SELECTOR_TOOLTIP)) {
-    const aria = el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC); // Using getAttribute for best performance
-    const text = el.getAttribute(ATTR_TOOLTIP) || attrOrCSS(el, ATTR_TOOLTIP); // Only parse CSS if attribute is empty for better performance
+    const text = attrOrCSS(el, ATTR_TOOLTIP);
 
-    if (aria !== text) {
+    if (!text) return; // Early return if no tooltip text
+    if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {
       const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
       attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
       attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
@@ -65,7 +64,7 @@ const handleAriaAttributes = debounce(() => {
       if (document.activeElement === el) announce(text); // Only announce if focus is on the button
     }
   }
-}, 0); // Debounce to merge multiple mutations
+};
 
 const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
@@ -85,6 +84,7 @@ const handleInterest = ({ type, target }: Event) => {
   const color = source.closest(SELECTOR_COLOR); // Match source color of source element
   const scheme = source.closest(SELECTOR_SCHEME); // Match source color-scheme of source element
   const isReset = color !== scheme && color?.contains(scheme as Node); // If data-scheme is closer to target, it will reset data-color
+
   clearTimeout(SKIP_TIMER);
   attr(TIP, 'popover', 'manual'); // Ensure popover behavior
   attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME) || null); // Fallback to null to reset if not scheme found

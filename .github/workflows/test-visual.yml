@@ -9,6 +9,7 @@ on:
       - .github/workflows/test-visual.yml
       - 'packages/**/*.tsx?'
       - 'packages/**/*.css'
+      - 'packages/**/package.json'
       - 'packages/**/*.stories.tsx?'
       - 'apps/storybook/**'
       - 'design-tokens/**/*.jsonc?'
@@ -19,6 +20,7 @@ on:
     paths:
       - 'packages/**/*.tsx?'
       - 'packages/**/*.css'
+      - 'packages/**/package.json'
       - 'packages/**/*.stories.tsx?'
       - 'apps/storybook/**'
       - 'design-tokens/**/*.jsonc?'

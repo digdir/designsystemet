@@ -11,8 +11,7 @@ const SELECTOR_SKIP =
 
 const handleClickDelegateFor = (event: MouseEvent) => {
   const isNewTab = event.button === 1 || event.metaKey || event.ctrlKey; // Middle click or cmd/ctrl + click should open in new tab
-  const isUserLeftOrMiddleClick = event.isTrusted && event.button < 2; // Only accept left or middle clicks, and ignore the programatic .click() we're about to trigger
-  const delegateTarget = isUserLeftOrMiddleClick && getDelegateTarget(event);
+  const delegateTarget = event.button < 2 && getDelegateTarget(event); // Only accept left or middle clicks
 
   if (!delegateTarget || delegateTarget.contains(event.target as Node)) return; // Only proxy event if delegated target isn't part of the original target
   if (isNewTab && delegateTarget instanceof HTMLAnchorElement)

@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
-import { createContext, useState } from 'react';
+import { createContext, useRef } from 'react';
 
-type DialogContext = { id?: string; modal?: boolean };
-export const Context = createContext<
-  DialogContext & { setContext?: (context: DialogContext) => void }
->({});
+export const Context = createContext<React.RefObject<HTMLDialogElement | null>>(
+  {
+    current: null,
+  },
+);
 
 export type DialogTriggerContextProps = { children: ReactNode };
 
@@ -20,10 +21,9 @@ export type DialogTriggerContextProps = { children: ReactNode };
  * </Dialog.TriggerContext>
  */
 export const DialogTriggerContext = (rest: DialogTriggerContextProps) => {
-  const [state, setState] = useState<DialogContext>({});
-  const setContext = (next: DialogContext) => setState({ ...state, ...next });
+  const contextRef = useRef<HTMLDialogElement>(null);
 
-  return <Context.Provider value={{ ...state, setContext }} {...rest} />;
+  return <Context.Provider value={contextRef} {...rest} />;
 };
 
 DialogTriggerContext.displayName = 'DialogTriggerContext';

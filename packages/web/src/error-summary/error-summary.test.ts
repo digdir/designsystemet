@@ -1,11 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
-const waitForErrorSummary = async () => {
-  vi.runAllTimers();
-};
-
-const renderDefault = async () => {
+const render = () => {
   document.body.innerHTML = `
     <ds-error-summary class="ds-error-summary">
       <h2>There are errors</h2>
@@ -13,12 +9,11 @@ const renderDefault = async () => {
         <li><a href="#field">Go to field</a></li>
       </ul>
     </ds-error-summary>`;
-  await waitForErrorSummary();
 };
 
 describe('Error summary component', () => {
-  it('should set aria-labelledby, tabindex, and focus', async () => {
-    await renderDefault();
+  it('should set aria-labelledby, tabindex, and focus', () => {
+    render();
 
     const errorSummary = document.querySelector('ds-error-summary');
     const heading = document.querySelector('h2');
@@ -36,7 +31,6 @@ describe('Error summary component', () => {
     document.body.innerHTML = `<ds-error-summary class="ds-error-summary">
         <p>Something went wrong</p>
       </ds-error-summary>`;
-    await waitForErrorSummary();
 
     const errorSummary = document.querySelector('ds-error-summary');
 
@@ -47,7 +41,7 @@ describe('Error summary component', () => {
   });
 
   it('should ignore animation events from children', async () => {
-    await renderDefault();
+    render();
 
     const errorSummary = document.querySelector('ds-error-summary');
     const childLink = document.querySelector('a');
