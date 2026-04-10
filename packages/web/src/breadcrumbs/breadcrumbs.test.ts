@@ -53,7 +53,7 @@ describe('Breadcrumbs component', () => {
     });
     await renderAndResize();
 
-    expect(await vi.waitUntil(() => breadcrumbs?._label)).toBeTruthy();
+    expect(breadcrumbs?._label).toBeTruthy();
     expect(breadcrumbs).not.toHaveAttribute('aria-label', 'Breadcrumbs');
   });
 
@@ -76,8 +76,6 @@ describe('Breadcrumbs component', () => {
     });
 
     await renderAndResize();
-    await vi.waitUntil(() => breadcrumbs?._label); // Wait for mutation observer
-
     expect(breadcrumbs).not.toHaveAttribute('aria-label', 'Breadcrumbs');
     expect(breadcrumbs?._label).toBe('Breadcrumbs');
 
@@ -87,8 +85,6 @@ describe('Breadcrumbs component', () => {
     });
 
     await renderAndResize();
-    await vi.waitUntil(() => breadcrumbs?.hasAttribute('aria-label')); // Wait for mutation observer
-
     expect(breadcrumbs).toHaveAttribute('aria-label', 'Breadcrumbs');
   });
 });

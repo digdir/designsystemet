@@ -3,7 +3,6 @@ import {
   attrOrCSS,
   customElements,
   DSElement,
-  debounce,
   onMutation,
   warn,
 } from '../utils/utils';
@@ -46,14 +45,13 @@ export class DSPaginationElement extends DSElement {
 
     attr(this, ATTR_LABEL, attrOrCSS(this, ATTR_LABEL));
     attr(this, 'role', 'navigation');
-    this._render = debounce(() => render(this), 0); // Debounce groups mutation observer calls and attributeChangedCallback calls
-    this._unmutate = onMutation(this, this._render, {
+    this._unmutate = onMutation(this, render, {
       childList: true,
       subtree: true,
     });
   }
   attributeChangedCallback() {
-    this._render?.();
+    if (this._unmutate) render(this); // Ensure we do not run any renders before connectedCallback
   }
   disconnectedCallback() {
     this._unmutate?.();

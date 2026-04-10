@@ -1,9 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 
-import { describe, expect, it, vi } from 'vitest';
-import { userEvent } from 'vitest/browser';
-
-const user = userEvent.setup();
+import { describe, expect, it } from 'vitest';
 
 const renderTabs = async () => {
   document.body.innerHTML = `
@@ -12,62 +9,45 @@ const renderTabs = async () => {
         <ds-tab value="tab-1" id="tab-1">Tab 1</ds-tab>
         <ds-tab value="tab-2">Tab 2</ds-tab>
       </ds-tablist>
-      <ds-tabpanel value="tab-1" data-testid="panel-1">
+      <ds-tabpanel value="tab-1">
       content 1
       </ds-tabpanel>
-      <ds-tabpanel value="tab-2" data-testid="panel-2">
+      <ds-tabpanel value="tab-2">
        content 2
       </ds-tabpanel>
     </ds-tabs>
   `;
 
-  vi.runAllTimers();
-
-  const tablist = document.querySelector('ds-tablist');
-  const tabs = [...(document.querySelectorAll('ds-tab') || [])];
-
-  await vi.waitUntil(() => tablist?.getAttribute('role') === 'tablist');
-  await vi.waitUntil(() => tabs[0]?.getAttribute('role') === 'tab');
-
   return {
-    tablist: tablist as HTMLElement,
-    tabOne: tabs[0] as HTMLElement,
-    tabTwo: tabs[1] as HTMLElement,
-    panelOne: document.querySelector('[data-testid="panel-1"]') as HTMLElement,
-    panelTwo: document.querySelector('[data-testid="panel-2"]') as HTMLElement,
+    tablist: document.querySelector('ds-tablist'),
+    tabs: document.getElementsByTagName('ds-tab'),
+    panels: document.getElementsByTagName('ds-tabpanel'),
   };
 };
 
 describe('tabs component', () => {
   it('toggles panels when tabs are activated', async () => {
-    const { tabTwo, panelOne, panelTwo } = await renderTabs();
+    const { tabs, panels } = await renderTabs();
 
-    expect(panelOne).not.toHaveAttribute('hidden');
-    expect(panelTwo).toHaveAttribute('hidden');
+    expect(panels[0]).not.toHaveAttribute('hidden');
+    expect(panels[1]).toHaveAttribute('hidden');
 
-    await user.click(tabTwo);
+    tabs[1].click();
 
-    await vi.waitUntil(() => panelTwo.hasAttribute('hidden') === false);
-
-    expect(panelTwo).not.toHaveAttribute('hidden');
-    expect(panelOne).toHaveAttribute('hidden');
+    expect(panels[1]).not.toHaveAttribute('hidden');
+    expect(panels[0]).toHaveAttribute('hidden');
   });
 
   it('wires aria-controls and aria-labelledby', async () => {
-    const { tabOne, tabTwo, panelOne, panelTwo } = await renderTabs();
+    const { tabs, panels } = await renderTabs();
 
-    await vi.waitUntil(() => Boolean(tabOne.getAttribute('aria-controls')));
-
-    expect(panelOne).toHaveAttribute('aria-labelledby', tabOne.id);
-    expect(tabOne).toHaveAttribute('aria-controls', panelOne.id);
-    expect(tabTwo).toHaveAttribute('aria-controls', panelTwo.id);
+    expect(panels[0]).toHaveAttribute('aria-labelledby', tabs[0].id);
+    expect(tabs[0]).toHaveAttribute('aria-controls', panels[0].id);
+    expect(tabs[1]).toHaveAttribute('aria-controls', panels[1].id);
   });
 
   it('sets tabindex on panel without focusable content', async () => {
-    const { panelOne } = await renderTabs();
-
-    await vi.waitUntil(() => panelOne.hasAttribute('tabindex'));
-
-    expect(panelOne).toHaveAttribute('tabindex', '0');
+    const { panels } = await renderTabs();
+    expect(panels[0]).toHaveAttribute('tabindex', '0');
   });
 });

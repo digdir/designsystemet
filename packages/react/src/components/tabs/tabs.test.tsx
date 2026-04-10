@@ -1,18 +1,7 @@
-import { render as renderRtl, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { act, render, screen } from '@testing-library/react';
 import { useState } from 'react';
 
 import { Tabs } from './';
-
-const user = userEvent.setup();
-
-const render = (...args: Parameters<typeof renderRtl>) => {
-  vi.useFakeTimers();
-  const result = renderRtl(...args);
-  vi.runAllTimers(); // Flush any pending timers to setup tags properly
-  vi.useRealTimers();
-  return result;
-};
 
 describe('Tabs', () => {
   it('renders content based on value', async () => {
@@ -27,11 +16,11 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    expect(screen.queryByText('content 1')).toBeVisible();
-    expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
-    await user.click(screen.getByRole('tab', { name: 'Tab 2' }));
-    expect(screen.queryByText('content 2')).toBeVisible();
-    expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
+    expect(screen.getByText('content 1')).toBeVisible();
+    expect(screen.getByText('content 2')).toHaveAttribute('hidden', '');
+    await act(async () => screen.getByRole('tab', { name: 'Tab 2' }).click());
+    expect(screen.getByText('content 2')).toBeVisible();
+    expect(screen.getByText('content 1')).toHaveAttribute('hidden', '');
   });
 
   it('defaultValue set correct value', async () => {
@@ -66,8 +55,10 @@ describe('Tabs', () => {
     );
 
     const tab = screen.getByRole('tab', { name: 'Tab 2' });
-    expect(tab).toHaveAttribute('aria-selected', 'false');
-    await user.click(tab);
+    vi.waitFor(
+      () => expect(tab).toHaveAttribute('aria-selected', 'false'), // Let MutationObserver run first
+    );
+    await act(async () => tab.click());
     expect(tab).toHaveAttribute('aria-selected', 'true');
   });
 
@@ -80,8 +71,7 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    const content = screen.queryByText('content 1');
-    expect(content).toBeInTheDocument();
+    expect(screen.getByText('content 1')).toBeInTheDocument();
   });
 
   it('has tabindex 0 on tabpanel', () => {
@@ -134,11 +124,9 @@ describe('Tabs', () => {
     );
 
     const testButton = screen.getByRole('tab', { name: 'Tab 2' });
-
     const panelOne = screen.getByTestId('panel-1');
     expect(panelOne).toHaveAttribute('aria-labelledby', 'custom-id');
-
-    await user.click(testButton); // Activate tab 2 to render its panel
+    await act(async () => testButton.click()); // Activate tab 2 to render its panel
 
     const panelTwo = screen.getByTestId('panel-2');
     expect(panelTwo).toHaveAttribute('aria-labelledby', testButton.id);
@@ -207,15 +195,15 @@ describe('Tabs', () => {
     const tabTwo = screen.getByRole('tab', { name: 'Tab 2' });
     expect(tabOne).toHaveAttribute('aria-selected', 'true');
 
-    tabTwo.focus();
+    await act(async () => tabTwo.focus());
     expect(tabTwo).toHaveFocus();
-    await user.keyboard('{Space}'); // Activate second tab with keyboard
 
-    waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith('value2');
-      expect(tabTwo).toHaveAttribute('aria-selected', 'true');
-      expect(tabOne).toHaveAttribute('aria-selected', 'false');
-    });
+    const space = new KeyboardEvent('keydown', { key: ' ', bubbles: true });
+    await act(async () => tabTwo.dispatchEvent(space)); // Activate second tab with keyboard
+
+    expect(onChange).toHaveBeenCalledWith('value2');
+    expect(tabTwo).toHaveAttribute('aria-selected', 'true');
+    expect(tabOne).toHaveAttribute('aria-selected', 'false');
   });
 
   it('does not switch tabs in controlled mode until value prop changes', async () => {
@@ -232,13 +220,13 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    await user.click(screen.getByRole('tab', { name: 'Tab 2' }));
+    await act(async () => screen.getByRole('tab', { name: 'Tab 2' }).click());
 
     expect(onChange).toHaveBeenCalledOnce();
     expect(onChange).toHaveBeenCalledWith('value2');
 
-    expect(screen.queryByText('content 1')).toBeVisible();
-    expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
+    expect(screen.getByText('content 1')).toBeVisible();
+    expect(screen.getByText('content 2')).toHaveAttribute('hidden', '');
 
     rerender(
       <Tabs value='value2' onChange={onChange}>
@@ -251,7 +239,7 @@ describe('Tabs', () => {
       </Tabs>,
     );
 
-    expect(screen.queryByText('content 2')).toBeVisible();
-    expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
+    expect(screen.getByText('content 2')).toBeVisible();
+    expect(screen.getByText('content 1')).toHaveAttribute('hidden', '');
   });
 });

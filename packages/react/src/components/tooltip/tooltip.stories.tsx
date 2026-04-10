@@ -1,6 +1,6 @@
 import { FilesIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { expect, within } from 'storybook/test';
 import { Button } from '../../';
 import { Tooltip } from './tooltip';
@@ -18,13 +18,12 @@ export default {
   },
   play: async (ctx) => {
     document.querySelector('.ds-tooltip')?.remove(); // Reset to run next test without waiting for tooltip to disappear // <== Må "nullstille"/fjerne tooltip mellom hver test
-    const button = ctx.canvasElement.querySelector(
-      '[data-tooltip]',
-    ) as HTMLElement;
+    const button =
+      ctx.canvasElement.querySelector<HTMLButtonElement>('[data-tooltip]');
 
     await new Promise((resolve) => {
       document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør hover
-      button.focus();
+      button?.focus();
     });
 
     const tooltip = await within(document.body).findByText(ctx.args.content); // <== trenger ikke sjekke toBeInDocument siden denne testen krever det
@@ -80,6 +79,18 @@ export const Aria: StoryFn<typeof Tooltip> = () => {
   );
 };
 
+Aria.decorators = [
+  (Story) => (
+    <div
+      style={{ display: 'flex', gap: 'var(--ds-size-2)', alignItems: 'center' }}
+    >
+      <Story />
+    </div>
+  ),
+];
+
+Aria.play = async () => {};
+
 export const WithDynamicTooltipText: Story = {
   args: {
     content: 'Kopier',
@@ -101,14 +112,45 @@ export const WithDynamicTooltipText: Story = {
   },
 };
 
-Aria.decorators = [
-  (Story) => (
-    <div
-      style={{ display: 'flex', gap: 'var(--ds-size-2)', alignItems: 'center' }}
-    >
-      <Story />
-    </div>
+export const WithCSSTooltipText: Story = {
+  args: {
+    content: 'Kopier',
+  },
+  render: () => (
+    <Tooltip content=''>
+      <Button style={{ '--ds-tooltip': '"Kopier"' } as React.CSSProperties}>
+        <FilesIcon aria-hidden />
+      </Button>
+    </Tooltip>
   ),
-];
+};
 
-Aria.play = async () => {};
+export const WithDynamicCSSTooltipText: Story = {
+  args: {
+    content: 'Kopier',
+  },
+  render: () => {
+    const tooltipRef = useRef<HTMLDivElement>(null);
+    const [tooltipContent, setTooltipContent] = useState('');
+
+    // Tooltip text from css variable
+    useEffect(() => {
+      if (typeof window === 'undefined' || !tooltipRef.current) return;
+      const content = getComputedStyle(tooltipRef.current)
+        .getPropertyValue('--ds-tooltip-content')
+        .replace(/^["']|["']$/g, '')
+        .trim();
+      setTooltipContent(content);
+    }, []);
+
+    return (
+      <Tooltip content={tooltipContent} ref={tooltipRef}>
+        <Button
+          style={{ '--ds-tooltip-content': '"Kopier"' } as React.CSSProperties}
+        >
+          <FilesIcon aria-hidden />
+        </Button>
+      </Tooltip>
+    );
+  },
+};

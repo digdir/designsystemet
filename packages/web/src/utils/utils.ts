@@ -29,7 +29,7 @@ export function debounce<T extends unknown[]>(
 
 /**
  * warn
- * @description Utility to console.warn, but can be silenced in production with window.dsWarnings = false;
+ * @description Utility to console.log, but can be silenced in production with window.dsWarnings = false;
  */
 declare global {
   interface Window {
@@ -38,11 +38,11 @@ declare global {
 }
 export const warn = (
   message: string,
-  ...args: Parameters<typeof console.warn>
+  ...args: Parameters<typeof console.log> // Using console.log, not console.warn, to prevent stopping test runners such as Jest
 ) =>
   !isBrowser() ||
   window.dsWarnings === false ||
-  console.warn(`Designsystemet: ${message}`, ...args);
+  console.log(`\x1B[1mDesignsystemet:\x1B[m ${message}`, ...args);
 
 /**
  * attr
@@ -62,7 +62,17 @@ export const attr = (
   return null;
 };
 
-const STRIP_SURROUNDING_QUOTES = /^["']|["']$/g; // Matches surrounding single or double quotes
+/**
+ * getCSSProp
+ * @description Retrieves and CSS property value and trims it
+ * @param el The Element to read attributes/CSS from
+ * @param name Attribute or CSS property to get
+ * @return string CSS property value
+ */
+export const getCSSProp = (el: Element, prop: string) =>
+  getComputedStyle(el).getPropertyValue(prop).trim();
+
+const STRIP_QUOTES = /^["']|["']$/g; // Matches surrounding single or double quotes
 /**
  * attrOrCSS
  * @description Retrieves and updates attribute based on attribute or CSS property value
@@ -72,12 +82,10 @@ const STRIP_SURROUNDING_QUOTES = /^["']|["']$/g; // Matches surrounding single o
  */
 export const attrOrCSS = (el: Element, name: string) => {
   let value = attr(el, name);
-  if (!value) {
-    const prop = getComputedStyle(el).getPropertyValue(`--_ds-${name}`);
-    value = prop.replace(STRIP_SURROUNDING_QUOTES, '').trim() || null;
-  }
+  if (!value)
+    value = getCSSProp(el, `--_ds-${name}`).replace(STRIP_QUOTES, '').trim();
   if (!value) warn(`Missing ${name} on:`, el);
-  return value;
+  return value || null;
 };
 
 /**
@@ -131,29 +139,23 @@ export const onHotReload = (key: string, setup: () => Array<() => void>) => {
 };
 
 /**
- * Speed up MutationObserver by debouncing and only running when page is visible
+ * MutationObserver wrapper with automatic cleanup and option to skip mutations while updating textContent
  * @return new MutaionObserver
  */
 let SKIP_MUTATIONS = false;
-export const onMutation = (
-  el: Node,
-  callback: (observer: MutationObserver) => void,
+export const onMutation = <T extends Node>(
+  el: T,
+  callback: (el: T, records?: MutationRecord[]) => void,
   options: MutationObserverInit,
 ) => {
-  let queue = 0;
-  const onFrame = () => {
-    if (!el.isConnected) return cleanup(); // Stop observing if element is removed from DOM
-    callback(observer);
-    observer.takeRecords(); // Clear records in case mutations happened during callback
-    queue = 0;
-  };
-  const cleanup = () => observer?.disconnect?.();
-  const observer = new MutationObserver(() => {
-    if (!SKIP_MUTATIONS && !queue) queue = requestAnimationFrame(onFrame); // requestAnimationFrame only runs when page is visible
+  const cleanup = () => observer.disconnect();
+  const observer = new MutationObserver((records) => {
+    if (!isBrowser() || !el.isConnected) return cleanup(); // Stop observing if element is removed from DOM or document is removed by jdsom tests
+    if (!SKIP_MUTATIONS) callback(el, records);
   });
 
   observer.observe(el, options);
-  requestAnimationFrame(onFrame); // Initial run when page is visible and children has mounted
+  callback(el); // Initial is run instantly to make test markup predictable
   return cleanup;
 };
 

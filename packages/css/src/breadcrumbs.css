@@ -5,6 +5,10 @@
   --dsc-breadcrumbs-color: var(--ds-color-text-subtle);
   --_ds-aria-label: var(--dsc-breadcrumbs-label); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
 
+  &:not([hidden]) {
+    display: block; /* Needed for <ds-breadcrumbs> element */
+  }
+
   &:is([lang='nb'], [lang='nn'], [lang='no']),
   :is([lang='nb'], [lang='nn'], [lang='no']) & {
     --dsc-breadcrumbs-label: 'Du er her:'; /* Only set default label if Norwegian */

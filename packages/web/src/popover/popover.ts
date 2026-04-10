@@ -8,7 +8,7 @@ import {
   shift,
   size,
 } from '@floating-ui/dom';
-import { attr, on, onHotReload, QUICK_EVENT } from '../utils/utils';
+import { attr, getCSSProp, on, onHotReload, QUICK_EVENT } from '../utils/utils';
 
 declare global {
   interface GlobalEventHandlersEventMap {
@@ -95,9 +95,6 @@ onHotReload('popover', () => [
   on(document, 'mousedown scroll mouseup', handleScrollbar, true),
   on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
 ]);
-
-const getCSSProp = (el: Element, prop: string) =>
-  getComputedStyle(el).getPropertyValue(prop).trim();
 
 const arrowPseudo = () => ({
   name: 'arrowPseudo',

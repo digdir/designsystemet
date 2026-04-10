@@ -1,24 +1,20 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { act } from 'react';
-
+import { act, render, screen } from '@testing-library/react';
 import { Checkbox } from './checkbox';
 
 describe('Checkbox', () => {
-  test('has correct value and label', async () => {
+  test('has correct value and label', () => {
     render(<Checkbox label='label' value='test' />);
-    expect(await screen.findByLabelText('label')).toBeDefined();
+    expect(screen.getByLabelText('label')).toBeDefined();
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
-  test('has correct description', async () => {
+  test('has correct description', () => {
     render(<Checkbox label='test' value='test' description='description' />);
     expect(
-      await screen.findByRole('checkbox', { description: 'description' }),
+      screen.getByRole('checkbox', { description: 'description' }),
     ).toBeDefined();
   });
   it('calls onChange and onClick when user clicks', async () => {
-    const user = userEvent.setup();
     const onChange = vi.fn();
     const onClick = vi.fn();
 
@@ -37,7 +33,7 @@ describe('Checkbox', () => {
 
     expect(radio.checked).toBeFalsy();
 
-    await act(async () => await user.click(radio));
+    await act(async () => radio.click());
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(1);
@@ -45,7 +41,6 @@ describe('Checkbox', () => {
   });
 
   it('does not call onChange or onClick when user clicks and the radio is disabled', async () => {
-    const user = userEvent.setup();
     const onChange = vi.fn();
     const onClick = vi.fn();
 
@@ -60,7 +55,7 @@ describe('Checkbox', () => {
     );
 
     const radio = screen.getByRole('checkbox');
-    await act(async () => await user.click(radio));
+    await act(async () => radio.click());
 
     expect(radio).toBeDisabled();
     expect(onClick).not.toHaveBeenCalled();
@@ -68,7 +63,6 @@ describe('Checkbox', () => {
   });
 
   it('does not call onChange when user clicks and the radio is readOnly', async () => {
-    const user = userEvent.setup();
     const onChange = vi.fn();
 
     render(
@@ -81,7 +75,7 @@ describe('Checkbox', () => {
     );
 
     const radio = screen.getByRole('checkbox');
-    await act(async () => await user.click(radio));
+    await act(async () => radio.click());
 
     expect(radio).toHaveAttribute('readonly');
     expect(onChange).not.toHaveBeenCalled();

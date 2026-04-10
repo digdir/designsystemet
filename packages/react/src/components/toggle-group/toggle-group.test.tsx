@@ -1,10 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FormEvent } from 'react';
-
+import { act, render, screen } from '@testing-library/react';
 import { ToggleGroup } from './';
 
-const user = userEvent.setup();
+const keydown = (el: Element, key: string) =>
+  el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
 describe('ToggleGroup', () => {
   test('has generated name for ToggleGroupItem children', () => {
@@ -38,22 +36,20 @@ describe('ToggleGroup', () => {
       </ToggleGroup>,
     );
 
-    const item1 = screen.getByRole<HTMLButtonElement>('radio', {
-      name: 'test',
-    });
-    const item2 = screen.getByRole<HTMLButtonElement>('radio', {
-      name: 'test2',
-    });
-    const item3 = screen.getByRole<HTMLButtonElement>('radio', {
-      name: 'test3',
-    });
-    await user.tab();
+    const item1 = screen.getByRole('radio', { name: 'test' });
+    const item2 = screen.getByRole('radio', { name: 'test2' });
+    const item3 = screen.getByRole('radio', { name: 'test3' });
+
+    await act(async () => item1.focus());
     expect(item1).toHaveFocus();
-    await user.keyboard('{ArrowRight}');
+
+    await act(async () => keydown(item1, 'ArrowRight'));
     expect(item2).toHaveFocus();
-    await user.keyboard('{ArrowRight}');
+
+    await act(async () => keydown(item2, 'ArrowRight'));
     expect(item3).toHaveFocus();
-    await user.keyboard('{ArrowLeft}');
+
+    await act(async () => keydown(item3, 'ArrowLeft'));
     expect(item2).toHaveFocus();
   });
 
@@ -71,17 +67,16 @@ describe('ToggleGroup', () => {
       </ToggleGroup>,
     );
 
-    const item1 = screen.getByRole<HTMLButtonElement>('radio', {
-      name: 'test',
-    });
-    const item4 = screen.getByRole<HTMLButtonElement>('radio', {
-      name: 'test4',
-    });
-    await user.tab();
+    const item1 = screen.getByRole('radio', { name: 'test' });
+    const item4 = screen.getByRole('radio', { name: 'test4' });
+
+    await act(async () => item1.focus());
     expect(item1).toHaveFocus();
-    await user.keyboard('{ArrowRight}');
+
+    await act(async () => keydown(item1, 'ArrowRight'));
     expect(item4).toHaveFocus();
-    await user.keyboard('{ArrowLeft}');
+
+    await act(async () => keydown(item4, 'ArrowLEft'));
     expect(item1).toHaveFocus();
   });
 
@@ -111,9 +106,8 @@ describe('ToggleGroup', () => {
     expect(item1).toHaveProperty('checked', true);
     expect(item2).toHaveProperty('checked', false);
 
-    await user.click(item2.parentElement as HTMLLabelElement);
-
-    expect(onChangeMock).toBeCalledTimes(0);
+    await act(async () => item2.parentElement?.click());
+    expect(onChangeMock).toHaveBeenCalledTimes(0);
     expect(item2).toHaveProperty('checked', false);
   });
 
@@ -147,8 +141,7 @@ describe('ToggleGroup', () => {
 
     expect(item).toHaveProperty('checked', false);
 
-    await user.click(item.parentElement as HTMLLabelElement);
-
+    await act(async () => item.parentElement?.click());
     expect(onChangeMock).toHaveBeenCalledWith('test2value');
     expect(item).toHaveProperty('checked', true);
   });
@@ -176,8 +169,7 @@ describe('ToggleGroup', () => {
     expect(item1).toHaveProperty('checked', true);
     expect(item2).toHaveProperty('checked', false);
 
-    await user.click(item2.parentElement as HTMLLabelElement);
-
+    await act(async () => item2.parentElement?.click());
     expect(onChangeMock).toHaveBeenCalledWith('test2');
     expect(item2).toHaveProperty('checked', true);
   });
@@ -208,7 +200,7 @@ describe('ToggleGroup', () => {
 
   test('should send the value to a form when the form is submitted', async () => {
     const formSubmitPromise = new Promise<FormData>((resolve) => {
-      const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+      const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
         resolve(new FormData(event.currentTarget));
       };
@@ -229,7 +221,7 @@ describe('ToggleGroup', () => {
     });
 
     const submitButton = screen.getByRole('button', { name: 'Submit' });
-    await user.click(submitButton);
+    await act(async () => submitButton.click());
 
     const formData = await formSubmitPromise;
     expect(formData.get('test')).toBe('test2');
