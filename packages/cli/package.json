@@ -76,12 +76,12 @@
   },
   "devDependencies": {
     "@tokens-studio/types": "0.5.2",
-    "@types/chroma-js": "^3.1.2",
-    "@types/node": "^24.12.2",
-    "@types/object-hash": "^3.0.6",
-    "@types/ramda": "^0.31.1",
-    "tsup": "^8.5.1",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "@types/chroma-js": "3.1.2",
+    "@types/node": "24.12.2",
+    "@types/object-hash": "3.0.6",
+    "@types/ramda": "0.31.1",
+    "tsup": "8.5.1",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3"
   }
 }
