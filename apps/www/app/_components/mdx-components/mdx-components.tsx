@@ -134,6 +134,7 @@ const defaultComponents = {
   SizeVariablesTable,
   TypographyVariablesTable,
 };
+
 export const MDXComponents = ({
   components,
   code,
