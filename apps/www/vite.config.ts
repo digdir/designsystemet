@@ -30,6 +30,9 @@ export default defineConfig(({ isSsrBuild }) => ({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router'],
+    esbuildOptions: {
+      jsx: 'automatic',
+    },
   },
   server: {
     warmup: {
