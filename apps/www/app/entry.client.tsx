@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import { StrictMode, startTransition } from 'react';
+import React, { StrictMode, startTransition } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import { HydratedRouter } from 'react-router/dom';
