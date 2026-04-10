@@ -8,8 +8,11 @@ const isReadOnly = (el: unknown): el is HTMLInputElement | HTMLSelectElement =>
 // If radio buttons, move focus without changing checked state
 const handleKeyDown = (e: Event & Partial<KeyboardEvent>) => {
   if (e.key !== 'Tab' && isReadOnly(e.target)) {
-    e.preventDefault();
-    if (e.key?.startsWith('Arrow') && attr(e.target, 'type') === 'radio') {
+    const isArrow = e.key?.startsWith('Arrow'); // Always control arrow keys
+    const isModifier = e.altKey || e.ctrlKey || e.metaKey; // Allow modifier keys so native functions like CMD + D to bookmark  etc. still works
+
+    if (isArrow || !isModifier) e.preventDefault(); // Prevent changing <select> value with keyboard, but allow non-arrow modifier keys
+    if (isArrow && attr(e.target, 'type') === 'radio') {
       const all = document.querySelectorAll(`input[name="${e.target.name}"]`);
       const move = e.key?.match(/Arrow(Right|Down)/) ? 1 : -1;
       const next = all.length + [...all].indexOf(e.target) + move;

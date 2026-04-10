@@ -51,6 +51,8 @@ export const ToggleGroupItem = forwardRef<
   const active = toggleGroup.value === value;
 
   const {
+    'aria-disabled': ariaDisabled,
+    disabled,
     form,
     formAction,
     formEncType,
@@ -58,23 +60,8 @@ export const ToggleGroupItem = forwardRef<
     formNoValidate,
     formTarget,
     required,
-    disabled,
-    'aria-disabled': ariaDisabled,
     ...labelProps
   } = rest;
-
-  /** Add backwards compatibility for `button` props that were previously allowed on `ToggleGroupItem` but are passeable to `input`*/
-  const inputProps: InputHTMLAttributes<HTMLInputElement> = {
-    form,
-    formAction,
-    formEncType,
-    formMethod,
-    formNoValidate,
-    formTarget,
-    required,
-    disabled,
-    'aria-disabled': ariaDisabled,
-  };
 
   return (
     <label
@@ -85,14 +72,20 @@ export const ToggleGroupItem = forwardRef<
       aria-disabled={ariaDisabled ?? disabled}
     >
       <input
-        {...inputProps}
+        aria-disabled={ariaDisabled}
         checked={active}
+        disabled={disabled}
+        form={form}
+        formAction={formAction}
+        formEncType={formEncType}
+        formMethod={formMethod}
+        formNoValidate={formNoValidate}
+        formTarget={formTarget}
         name={toggleGroup.name}
         onChange={() => toggleGroup.onChange?.(value)}
+        required={required}
         type='radio'
         value={value}
-        disabled={disabled}
-        aria-disabled={ariaDisabled}
       />
       {children}
     </label>

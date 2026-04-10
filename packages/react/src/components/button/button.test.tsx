@@ -1,11 +1,5 @@
-import { render as renderRtl, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { act } from 'react';
-
-import type { ButtonProps } from './button';
+import { act, render, screen } from '@testing-library/react';
 import { Button } from './button';
-
-const user = userEvent.setup();
 
 describe('Button', () => {
   beforeAll(() => {
@@ -16,9 +10,7 @@ describe('Button', () => {
   });
 
   it('should render as aria-disabled when aria-disabled is true regardless of variant', () => {
-    render({
-      'aria-disabled': true,
-    });
+    render(<Button aria-disabled='true' />);
 
     const button = screen.getByRole('button');
 
@@ -26,9 +18,7 @@ describe('Button', () => {
   });
 
   it('should render as disabled when disabled is true regardless of variant', () => {
-    render({
-      disabled: true,
-    });
+    render(<Button disabled />);
 
     const button = screen.getByRole('button');
 
@@ -37,18 +27,14 @@ describe('Button', () => {
 
   it('should not call onClick when disabled', async () => {
     const fn = vi.fn();
-    render({
-      disabled: true,
-      onClick: fn,
-    });
+    render(<Button disabled onClick={fn} />);
 
-    const button = screen.getByRole('button');
-    await act(async () => await user.click(button));
+    await act(async () => screen.getByRole('button').click());
     expect(fn).not.toHaveBeenCalled();
   });
 
   it('should render children as button text', () => {
-    render({ children: 'different button text' });
+    render(<Button>different button text</Button>);
     expect(
       screen.getByRole('button', { name: 'different button text' }),
     ).toBeInTheDocument();
@@ -56,22 +42,28 @@ describe('Button', () => {
 
   it('should handle onClick event', async () => {
     const fn = vi.fn();
-    render({ onClick: fn });
-    await act(async () => await user.click(screen.getByRole('button')));
+    render(<Button onClick={fn} />);
+    await act(async () => screen.getByRole('button').click());
     expect(fn).toHaveBeenCalled();
   });
 
   it('should not have type attribute when asChild is true', () => {
-    render({ asChild: true, children: <a href='#'>Link</a> });
+    render(
+      <Button asChild>
+        <a href='#'>Link</a>
+      </Button>,
+    );
     expect(screen.getByRole('link')).not.toHaveAttribute('type');
-    expect(screen.queryByRole('button')).toBeNull();
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('should not render children when icon-only button is loading', () => {
-    render({ loading: true, icon: true, children: 'Button text' });
-    expect(screen.queryByText('Button text')).toBeNull();
+    render(
+      <Button loading icon>
+        Button text
+      </Button>,
+    );
+    expect(screen.queryByText('Button text')).not.toBeInTheDocument();
     expect(screen.getByRole('button')).toHaveAttribute('aria-busy');
   });
 });
-
-const render = (props?: ButtonProps) => renderRtl(<Button {...props} />);

@@ -1,27 +1,22 @@
-import { render as renderRtl, screen } from '@testing-library/react';
-
-import type { CardProps } from './card';
+import { render, screen } from '@testing-library/react';
 import { Card } from './card';
 import { CardBlock } from './card-block';
 
-const renderCard = (props?: Partial<CardProps>) =>
-  renderRtl(
-    <Card title='card' {...props}>
-      <CardBlock />
-    </Card>,
-  );
-
 describe('Card Component', () => {
   it('renders Card component', () => {
-    renderCard();
+    render(
+      <Card title='card'>
+        <CardBlock />
+      </Card>,
+    );
     expect(screen.getByTitle('card')).toBeInTheDocument();
   });
 
   it('renders media image if provided', () => {
     const mediaImage = 'some/media/image/path';
 
-    renderRtl(
-      <Card title='card'>
+    render(
+      <Card>
         <CardBlock>
           <img src={mediaImage} alt='cat' />
         </CardBlock>

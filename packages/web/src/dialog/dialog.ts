@@ -1,4 +1,11 @@
-import { attr, on, onHotReload, onMutation, QUICK_EVENT } from '../utils/utils';
+import {
+  attr,
+  isBrowser,
+  on,
+  onHotReload,
+  onMutation,
+  QUICK_EVENT,
+} from '../utils/utils';
 
 // Polyfill closedby functionaliy in Safari
 // Also in Safari 26.2 where `closedBy` property is supported natively,
@@ -26,9 +33,11 @@ const handleClosedbyAny = ({
 };
 
 // Ensure buttons that trigger a modeal dialog has aria-haspopup="dialog" for better screen reader experience
+const BUTTONS = isBrowser() ? document.getElementsByTagName('button') : [];
 const handleAriaAttributes = () => {
-  for (const btn of document.querySelectorAll('button[command="show-modal"]'))
-    attr(btn, 'aria-haspopup', 'dialog');
+  for (const btn of BUTTONS)
+    if (btn.getAttribute('command')?.endsWith('-modal'))
+      btn.setAttribute('aria-haspopup', 'dialog'); // Using get/setAttribute for performance
 };
 
 const handleCommand = ({ command, target }: Event & { command?: string }) =>

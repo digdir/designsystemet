@@ -1,5 +1,5 @@
-import { Slot } from '@radix-ui/react-slot';
-import { type AriaAttributes, forwardRef, type HTMLAttributes } from 'react';
+import { type AriaAttributes, forwardRef } from 'react';
+import { Button, type ButtonProps } from '../button/button';
 
 export type PaginationButtonProps = {
   /**
@@ -7,12 +7,7 @@ export type PaginationButtonProps = {
    * @default false
    */
   'aria-current'?: AriaAttributes['aria-current'];
-  /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   * @default false
-   */
-  asChild?: boolean;
-} & HTMLAttributes<HTMLButtonElement>;
+} & Omit<ButtonProps, 'icon' | 'loading'>;
 
 /**
  * PaginationButton component, use within a Pagination.Item.
@@ -25,16 +20,6 @@ export type PaginationButtonProps = {
 export const PaginationButton = forwardRef<
   HTMLButtonElement,
   PaginationButtonProps
->(function PaginationButton({ asChild, ...rest }, ref) {
-  const Component = asChild ? Slot : 'button';
-
-  return (
-    <Component
-      className='ds-button'
-      data-variant='tertiary'
-      suppressHydrationWarning // Since <ds-pagination> adds attributes
-      ref={ref}
-      {...rest}
-    />
-  );
+>(function PaginationButton(rest, ref) {
+  return <Button data-variant='tertiary' ref={ref} {...rest} />;
 });

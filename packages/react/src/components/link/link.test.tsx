@@ -1,17 +1,14 @@
-import { render as renderRtl, screen } from '@testing-library/react';
-import type { ComponentProps, RefObject } from 'react';
+import { render, screen } from '@testing-library/react';
 import { createRef } from 'react';
-import type { LinkProps } from './link';
 import { Link } from './link';
 
 // Test data:
 const href = 'https://designsystemet.no/';
 const children = 'Gå til designsystemet';
-const defaultProps: LinkProps = { href, children };
 
 describe('Link', () => {
   it('Renders an anchor element with the given text and href', () => {
-    render();
+    render(<Link href={href}>{children}</Link>);
     const link = screen.getByRole('link');
     expect(link).toBeInTheDocument();
     expect(link).toHaveTextContent(children);
@@ -20,7 +17,11 @@ describe('Link', () => {
 
   it('Appends given className to the anchor element', () => {
     const className = 'foo';
-    render({ className });
+    render(
+      <Link className={className} href={href}>
+        {children}
+      </Link>,
+    );
     const link = screen.getByRole('link');
     expect(link).toHaveClass('ds-link');
     expect(link).toHaveClass(className);
@@ -28,19 +29,11 @@ describe('Link', () => {
 
   it('Sets the ref on the anchor element if given', () => {
     const ref = createRef<HTMLAnchorElement>();
-    render({}, ref);
+    render(
+      <Link ref={ref} href={href}>
+        {children}
+      </Link>,
+    );
     expect(ref.current).toBe(screen.getByRole('link'));
   });
 });
-
-const render = (
-  props: Partial<ComponentProps<typeof Link>> = {},
-  ref?: RefObject<HTMLAnchorElement | null>,
-) => {
-  const allProps = { ...defaultProps, ...props };
-  return renderRtl(
-    <Link {...allProps} ref={ref}>
-      {allProps.children}
-    </Link>,
-  );
-};
