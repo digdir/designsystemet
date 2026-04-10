@@ -1,32 +1,21 @@
-import { render as renderRtl, screen } from '@testing-library/react';
-
-import type { InputProps } from './input';
+import { render, screen } from '@testing-library/react';
 import { Input } from './input';
 
 describe('Input', () => {
   test('has correct value and label', () => {
-    render({ value: 'test' });
-    expect(screen.getByDisplayValue('test')).toBeDefined();
+    const value = 'test';
+    render(<Input value={value} />);
+    expect(screen.getByDisplayValue(value)).toBeDefined();
   });
 
   it('Has type attribute set to "text" by default', () => {
-    render();
+    render(<Input />);
     expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text');
   });
 
   it('Has given type attribute if set', () => {
     const type = 'tel';
-    render({ type });
+    render(<Input type={type} />);
     expect(screen.getByRole('textbox')).toHaveAttribute('type', type);
   });
 });
-
-const render = (props: Partial<InputProps> = {}) =>
-  renderRtl(
-    <Input
-      {...{
-        onChange: vi.fn(),
-        ...props,
-      }}
-    />,
-  );

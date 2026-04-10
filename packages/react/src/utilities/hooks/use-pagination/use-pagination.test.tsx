@@ -1,5 +1,4 @@
 import { renderHook } from '@testing-library/react';
-import type { MouseEvent } from 'react';
 import { usePagination } from './use-pagination';
 
 describe('usePagination', () => {
@@ -59,9 +58,11 @@ describe('usePagination', () => {
     expect(result.current.nextButtonProps['aria-hidden']).toBe(true);
   });
 
-  it('should trigger onChange when clicking button', async () => {
+  it('should trigger onChange when clicking button', () => {
     const mockOnChange = vi.fn();
-    const event = { preventDefault: () => {} } as MouseEvent<HTMLButtonElement>;
+    const event = {
+      preventDefault: () => {},
+    } as React.MouseEvent<HTMLButtonElement>;
     const { result } = renderHook(() =>
       usePagination({ totalPages: 10, currentPage: 1, onChange: mockOnChange }),
     );
@@ -71,9 +72,11 @@ describe('usePagination', () => {
     expect(mockOnChange).toHaveBeenCalledWith(event, 2);
   });
 
-  it('should not trigger onChange when clicking previous button and in start', async () => {
+  it('should not trigger onChange when clicking previous button and in start', () => {
     const mockOnChange = vi.fn();
-    const event = { preventDefault: () => {} } as MouseEvent<HTMLButtonElement>;
+    const event = {
+      preventDefault: () => {},
+    } as React.MouseEvent<HTMLButtonElement>;
     const { result } = renderHook(() =>
       usePagination({ totalPages: 10, currentPage: 1, onChange: mockOnChange }),
     );

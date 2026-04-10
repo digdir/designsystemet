@@ -5,7 +5,6 @@ import {
   customElements,
   DSElement,
   debounce,
-  isBrowser,
   isWindows,
   on,
   onHotReload,
@@ -22,78 +21,92 @@ declare global {
   }
 }
 
-const INDETERMINATE = 'data-indeterminate';
-const FIELDS = new Set<DSFieldElement>(); // Set of Field
-const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so removed inputs/counts does not cause memory leaks
-const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
-const HAS_FIELD_SIZING = isBrowser() && CSS.supports('field-sizing', 'content');
+const ATTR_DESCRIBEDBY = 'aria-describedby';
+const ATTR_INDETERMINATE = 'data-indeterminate';
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
-const HAS_VALIDATION = new WeakSet<HTMLInputElement>(); // Used to store inputs that have/had validation elements to manage aria-invalid
+const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so removed inputs/counts does not cause memory leaks
+const FIELDS = new Map<DSFieldElement, string[]>(); // Map of Field and its describedby IDs so we can identify the ones we add/remove
+const VALIDATIONS = new WeakMap<HTMLInputElement>(); // Used to ensure we only take control of aria-invalid if there current is or has been a validation element
+const WARNING_MULTIPLE_INPUTS = `Fields should only have one input element. Use <fieldset> to group multiple fields:`;
 
-const handleMutations = debounce(() => {
-  for (const el of FIELDSETS) {
-    const labelledby = `${useId(el.querySelector('legend'))} ${useId(el.querySelector(':scope > :is([data-field="description"],legend + p)'))}`;
-    attr(el, 'aria-labelledby', labelledby.trim() || null);
+const handleFieldMutations = (_doc: Node, records: MutationRecord[] = []) => {
+  for (const { target } of records) {
+    const isFieldset = target instanceof HTMLFieldSetElement;
+    for (const [field] of FIELDS)
+      if (isFieldset ? target.contains(field) : field.contains(target))
+        handleFieldMutation(field);
   }
-  for (const field of FIELDS) {
-    const descs: Element[] = [];
-    const labels: HTMLLabelElement[] = [];
-    let input: HTMLInputElement | undefined;
-    let counter: Element | undefined;
-    let hasValidation = false;
-    let invalid = false;
+};
 
-    for (const el of field.getElementsByTagName('*')) {
-      if (el instanceof HTMLLabelElement) labels.push(el);
-      if ((el as HTMLElement).hidden) continue; // Skip hidden elements except labels
-      if (isInputLike(el)) {
-        if (input)
-          warn(
-            `Fields should only have one input element. Use <fieldset> to group multiple fields:`,
-            field,
-          );
-        else input = el; // Only register if visible input
-      } else {
-        const type = el.getAttribute('data-field'); // Using getAttribute instead of attr for best performance
-        if (type === 'counter') counter = el;
-        if (type === 'validation') {
-          descs.unshift(el);
-          hasValidation = true;
-          invalid = invalid || isInvalid(el);
-        } else if (type) descs.push(el); // Adds both counter and descriptions
-      }
-    }
+const handleFieldMutation = (field: DSFieldElement) => {
+  const labels: HTMLLabelElement[] = [];
+  const nextDescs: string[] = []; // Keep track of descriptions we are adding in this mutation
+  const prevDescs = FIELDS.get(field) || []; // Retrieve previously managed IDs for this field
+  let input: HTMLInputElement | undefined;
+  let counter: Element | undefined;
+  let hasValidation = false;
+  let invalid = false;
 
-    if (!input) warn(`Field is missing input element:`, field);
-    else {
-      if (counter) COUNTS.set(input, counter);
-      for (const label of labels) attr(label, 'for', useId(input));
-
-      const isBoolish = input.type === 'radio' || input.type === 'checkbox';
-      const fieldsetValidation = field
-        .closest('fieldset')
-        ?.querySelector<HTMLElement>(':scope > [data-field="validation"]');
-      if (fieldsetValidation && !fieldsetValidation?.hidden) {
+  for (const el of field.getElementsByTagName('*')) {
+    if (el instanceof HTMLLabelElement) labels.push(el);
+    if ((el as HTMLElement).hidden) continue; // Skip hidden elements except labels
+    if (isInputLike(el)) {
+      if (input) warn(WARNING_MULTIPLE_INPUTS, field);
+      else input = el; // Only register if visible input
+    } else {
+      const type = el.getAttribute('data-field'); // Using getAttribute instead of attr for best performance
+      if (type === 'counter') counter = el;
+      if (type === 'validation') {
+        nextDescs.unshift(useId(el));
         hasValidation = true;
-        invalid = invalid || isInvalid(fieldsetValidation);
-        descs.unshift(fieldsetValidation);
-      }
-
-      const indeterminate = attr(input, INDETERMINATE);
-      if (indeterminate) input.indeterminate = indeterminate === 'true';
-
-      attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null); // Expand click area to ds-field if radio/checkbox
-      attr(input, 'aria-describedby', descs.map(useId).join(' ') || null);
-      if (hasValidation || HAS_VALIDATION.has(input)) {
-        HAS_VALIDATION[hasValidation ? 'add' : 'delete'](input); // Track if field has validation elements to avoid managing aria-invalid on every mutation
-        attr(input, 'aria-invalid', `${invalid}`); // Only manage aria-invalid when field has validation elements
-      }
-      updateField(input); // Update counter and textarea sizing
+        invalid = invalid || isInvalid(el);
+      } else if (type) nextDescs.push(useId(el)); // Adds both counter and descriptions
     }
   }
-}, 0); // Debounce to merge multiple mutations
 
-const updateField = (e: Event | Element) => {
+  if (!input) return; // Do not warn about missing input as virtual DOM libraries might give false positives
+  if (counter) COUNTS.set(input, counter);
+  for (const label of labels) attr(label, 'for', useId(input));
+
+  const fieldsetValidation = field
+    .closest('fieldset')
+    ?.querySelector<HTMLElement>(':scope > [data-field="validation"]');
+
+  // Connect fieldset validation to inputs
+  if (fieldsetValidation && !fieldsetValidation?.hidden) {
+    hasValidation = true;
+    invalid = invalid || isInvalid(fieldsetValidation);
+    nextDescs.unshift(useId(fieldsetValidation));
+  }
+
+  // Add support for data-indeterminate attribute as this normally can only be set by javascript
+  const indeterminate = attr(input, ATTR_INDETERMINATE);
+  if (indeterminate) input.indeterminate = indeterminate === 'true';
+
+  // Expand click area to ds-field if radio/checkbox
+  const isBoolish = input.type === 'radio' || input.type === 'checkbox';
+  if (isBoolish) attr(field, 'data-clickdelegatefor', useId(input));
+
+  // Setup aria-describedby, but repsect existing ids in aria-describedby
+  const describedby = attr(input, ATTR_DESCRIBEDBY)?.trim().split(/\s+/);
+  const keep = describedby?.filter((id) => !prevDescs.includes(id)) || []; // Find non-ds-field-managed aria-describedby IDs
+  attr(input, ATTR_DESCRIBEDBY, [...nextDescs, ...keep].join(' ') || null);
+  FIELDS.set(field, nextDescs);
+
+  // Only manage aria-invalid when field has validation elements
+  const hadValidation = VALIDATIONS.has(input);
+  if (hasValidation && !hadValidation) {
+    VALIDATIONS.set(input, attr(input, 'aria-invalid')); // Store previous attribute to enable reverting state
+    attr(input, 'aria-invalid', 'true');
+  } else if (!hasValidation && hadValidation) {
+    attr(input, 'aria-invalid', VALIDATIONS.get(input)); // Revert to previous state if validation element was removed
+    VALIDATIONS.delete(input);
+  }
+
+  handleFieldInput(input); // Update counter and textarea sizing
+};
+
+const handleFieldInput = (e: Event | Element) => {
   const input = ((e as Event).target || e) as HTMLInputElement;
   const counter = COUNTS.get(input);
 
@@ -114,7 +127,7 @@ const updateField = (e: Event | Element) => {
     if ((e as Event).type === 'input' && label)
       debouncedCounterLiveRegion(input, label); // Debounce live region to avoid NVDA interupting announcing typed text
   }
-  if (!HAS_FIELD_SIZING && input instanceof HTMLTextAreaElement) {
+  if (input instanceof HTMLTextAreaElement) {
     input.style.setProperty('--_ds-field-sizing', 'auto');
     input.style.setProperty('--_ds-field-sizing', `${input.scrollHeight}px`);
   }
@@ -134,8 +147,8 @@ const isInputLike = (el: unknown): el is HTMLInputElement =>
 // Custom element is used to performantly keep track of fields on the page
 export class DSFieldElement extends DSElement {
   connectedCallback() {
-    FIELDS.add(this); // Register field
-    handleMutations(); // Initial setup
+    FIELDS.set(this, []); // Register field
+    handleFieldMutation(this); // Initial setup
   }
   disconnectedCallback() {
     FIELDS.delete(this);
@@ -144,16 +157,16 @@ export class DSFieldElement extends DSElement {
 
 customElements.define('ds-field', DSFieldElement);
 
-// Listen for hidden to detect hidden validations, and listen for value to detect controlled React inputs
 onHotReload('field', () => [
-  on(document, 'input', updateField, QUICK_EVENT),
-  onMutation(document, handleMutations, {
+  on(document, 'input', handleFieldInput, QUICK_EVENT),
+  onMutation(document, handleFieldMutations, {
     attributeFilter: [
       'data-field',
       'data-limit',
-      'hidden',
-      'value',
-      INDETERMINATE,
+      'hidden', // Needed to check validation visibility
+      'id', // Needed to sync label "for" when ID of input/selec/textarea changes
+      'value', // Needed to detect changes in controlled React inputs as they do not trigger input events
+      ATTR_INDETERMINATE,
     ],
     attributes: true,
     childList: true,

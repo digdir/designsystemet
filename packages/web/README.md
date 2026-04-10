@@ -19,6 +19,7 @@
 - [`data-tooltip`](#data-tooltip)
 - [`data-clickdelegatefor`](#data-clickdelegatefor)
 - [`readonly`](#readonly)
+- [`fieldset`](#fieldset)
 - [Polyfills](#polyfills)
   - [invokers-polyfill](#invokers-polyfill)
   - [`<dialog>`](#dialog)
@@ -180,7 +181,7 @@ Extends `u-tabs` from u-elements. See documentation for [u-tabs](https://u-eleme
 ## `data-toggle-group`
 This is implemented differently from `ToggleGroup` in the react package.
 
-An observer will look for `[data-toggle-group]` and add proper arrow navigation plus Enter-key support.
+An observer will look for `data-toggle-group` and add proper arrow navigation plus Enter-key support.
 
 ```html
 <fieldset class="ds-toggle-group" data-toggle-group="Text alignment" data-variant="secondary">
@@ -227,6 +228,16 @@ Used for fixing `readonly` support on `select` and `input` elements. Add `aria-r
   <option value="2">Option 2</option>
   <option value="3">Option 3</option>
 </select>
+```
+## `fieldset`
+
+An observer will look on `fieldset` element, add an id to combine children element with `data-field="description"` and `legend` into `aria-labeledby` on `fieldset`.
+
+```html
+<fieldset>
+    <legend>Delivery method</legend>
+    <p data-field="description">Choose one option</p>
+</fieldset>
 ```
 
 

@@ -1,12 +1,9 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { describe, expect, it, vi } from 'vitest';
-import { userEvent } from 'vitest/browser';
-
-const user = userEvent.setup();
 
 describe('data-clickdelegatefor', () => {
-  it('should delegate click to target element', async () => {
+  it('should delegate click to target element', () => {
     document.body.innerHTML = `
       <div data-clickdelegatefor="target">
         <input id="target" type="checkbox" >Link</input>
@@ -20,7 +17,7 @@ describe('data-clickdelegatefor', () => {
 
     expect(target.checked).toBe(false);
 
-    await user.click(area);
+    area.click();
 
     expect(targetSpy).toHaveBeenCalledTimes(1);
     expect(target.checked).toBe(true);
@@ -28,7 +25,7 @@ describe('data-clickdelegatefor', () => {
     targetSpy.mockRestore();
   });
 
-  it('should ignore interactive elements inside the delegate', async () => {
+  it('should ignore interactive elements inside the delegate', () => {
     document.body.innerHTML = `
         <div data-clickdelegatefor="target">
           <input id="target" type="checkbox" >Link</input>
@@ -41,7 +38,7 @@ describe('data-clickdelegatefor', () => {
 
     const targetSpy = vi.spyOn(target, 'click');
 
-    await user.click(skip);
+    skip.click();
 
     expect(targetSpy).not.toHaveBeenCalled();
     expect(target.checked).toBe(false);
