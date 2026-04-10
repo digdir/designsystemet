@@ -1,0 +1,18 @@
+{
+  "designsystemet": {
+    "fonts": {
+      "primary": {
+        "font-scale": {
+          "_base": {
+            "$type": "number",
+            "$value": "16"
+          },
+          "_ratio": {
+            "$type": "number",
+            "$value": "1.14234"
+          }
+        }
+      }
+    }
+  }
+}
