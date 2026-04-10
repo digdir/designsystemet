@@ -38,7 +38,6 @@ export type TabsProps = MergeRight<
 export type ContextProps = {
   isControlled?: boolean;
   currentValue?: string;
-  defaultValue?: string;
   onChange?: (value: string) => void;
   getPrefixedValue?: (value?: string) => string | undefined;
 };
@@ -88,12 +87,20 @@ export const Tabs = forwardRef<DSTabElement, TabsProps>(function Tabs(
     });
   }, [value, isControlled]);
 
+  useEffect(() => {
+    if (defaultValue && tabsRef.current) {
+      tabsRef.current?.tabList?.tabs?.forEach((tab) => {
+        if (tab.getAttribute('data-value') === defaultValue)
+          tab.setAttribute('aria-selected', 'true');
+      });
+    }
+  }, []);
+
   return (
     <Context.Provider
       value={{
         isControlled,
         currentValue: value,
-        defaultValue,
         onChange: onValueChange,
         getPrefixedValue: (value?: string) =>
           value && `${valuePrefix}-${value}`,
