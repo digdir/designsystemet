@@ -149,12 +149,13 @@
       }
 
       &[selected] {
-        padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + 4px);
+        --_checkmark-spacing: var(--ds-size-1);
+        padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + (var(--_checkmark-spacing) * 2));
         background-color: var(--dsc-suggestion-option-background--selected);
         &::before {
           content: '';
           position: absolute;
-          inset-inline-start: 4px;
+          inset-inline-start: var(--_checkmark-spacing);
           mask: var(--dsc-suggestion-option-checkmark-url) center / contain no-repeat;
           background: currentcolor;
           width: var(--dsc-suggestion-option-checkmark-size);
@@ -169,14 +170,60 @@
 
       @media (hover: hover) and (pointer: fine) {
         &:not([data-empty]):hover {
-          /*  background: var(--dsc-suggestion-option-background--selected); */
           outline: 2px solid var(--ds-color-neutral-border-strong);
         }
       }
     }
     [data-multiple] & {
-      & > u-option {
-        padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + 4px);
+      & > u-option:not([data-empty]) {
+        --_checkbox-spacing: var(--ds-size-2);
+        --_checkbox-border: max(2px, 0.125rem);
+        padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + (var(--_checkbox-spacing) * 2));
+        &::before {
+          --_stroke-width: 0.07em;
+          --_diagonal-1: transparent calc(48% - var(--_stroke-width));
+          --_diagonal-2: currentcolor calc(50% - var(--_stroke-width));
+          --_diagonal-3: currentcolor calc(50% + var(--_stroke-width));
+          --_diagonal-4: transparent calc(52% + var(--_stroke-width));
+
+          position: absolute;
+          inset-inline-start: var(--_checkbox-spacing);
+          mask: none;
+          width: var(--dsc-suggestion-option-checkmark-size);
+          height: var(--dsc-suggestion-option-checkmark-size);
+          border-radius: var(--ds-border-radius-sm);
+          outline: var(--_checkbox-border) solid var(--ds-color-neutral-border-default);
+          outline-offset: calc(-1 * var(--_checkbox-border));
+          padding: 0.188rem;
+          box-sizing: border-box;
+          translate: 0 calc(0.5lh - 50%);
+
+          content: '';
+          background-origin: content-box;
+          background-repeat: no-repeat;
+          background-position:
+            10% 73%,
+            90% 50%;
+          background-size:
+            35% 35%,
+            65% 65%;
+        }
+        &[selected] {
+          &::before {
+            background-color: var(--ds-color-base-default);
+            color: var(--ds-color-base-contrast-default);
+            outline: none;
+            background-image:
+              linear-gradient(45deg, var(--_diagonal-1), var(--_diagonal-2), var(--_diagonal-3), var(--_diagonal-4)),
+              linear-gradient(-45deg, var(--_diagonal-1), var(--_diagonal-2), var(--_diagonal-3), var(--_diagonal-4));
+
+            @media (forced-colors: active) {
+              background-color: LinkText;
+              color: canvas;
+              forced-color-adjust: none; /* To be able to draw check */
+            }
+          }
+        }
       }
     }
   }
