@@ -5,4 +5,4 @@
 "@digdir/designsystemet-web": patch
 ---
 
-Pin `@digdir` packages
+Pin `@digdir` dependencies
