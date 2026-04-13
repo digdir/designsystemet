@@ -106,6 +106,12 @@ const handleFieldMutation = (field: DSFieldElement) => {
   handleFieldInput(input); // Update counter and textarea sizing
 };
 
+// Used as fallback in tests when CSS is not loaded
+const TEXTS = {
+  over: '%d tegn for mye',
+  under: '%d tegn igjen',
+};
+
 const handleFieldInput = (e: Event | Element) => {
   const input = ((e as Event).target || e) as HTMLInputElement;
   const counter = COUNTS.get(input);
@@ -114,10 +120,9 @@ const handleFieldInput = (e: Event | Element) => {
     const limit = Number(attr(counter, 'data-limit')) || 0;
     const count = limit - input.value.length;
     const state = count < 0 ? 'over' : 'under';
-    const label = attrOrCSS(counter, `data-${state}`)?.replace(
-      '%d',
-      `${Math.abs(count)}`,
-    );
+    const label = (
+      attrOrCSS(counter, `data-${state}`) || TEXTS[state]
+    )?.replace('%d', `${Math.abs(count)}`);
 
     attr(counter, 'data-label', label); // Using attribute to prevent hydation errors, not using aria-label to make axe tests happy
     attr(counter, 'data-state', state);

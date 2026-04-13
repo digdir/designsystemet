@@ -1,9 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
-
-const waitForFieldset = async () => {
-  vi.runAllTimers();
-  await new Promise((resolve) => setTimeout(resolve, 0));
-};
+import { describe, expect, it } from 'vitest';
 
 describe('Fieldset behavior', () => {
   it('should set aria-labelledby from legend and description', async () => {
@@ -14,7 +9,7 @@ describe('Fieldset behavior', () => {
 				<label><input type="radio" name="delivery" /> Mail</label>
 			</fieldset>`;
 
-    await waitForFieldset();
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
 
     const fieldset = document.querySelector('fieldset');
     const legend = document.querySelector('legend');
@@ -37,7 +32,7 @@ describe('Fieldset behavior', () => {
 				<label><input type="checkbox" /> Email</label>
 			</fieldset>`;
 
-    await waitForFieldset();
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
 
     const fieldset = document.querySelector('fieldset');
     const legend = document.querySelector('legend');
@@ -58,7 +53,7 @@ describe('Fieldset behavior', () => {
 				<p data-field="description">Select one</p>
 			</fieldset>`;
 
-    await waitForFieldset();
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
 
     const fieldset = document.querySelector('fieldset');
 
@@ -72,7 +67,7 @@ describe('Fieldset behavior', () => {
 				<label><input type="radio" name="address" /> Home</label>
 			</fieldset>`;
 
-    await waitForFieldset();
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
 
     const fieldset = document.querySelector('fieldset');
     const legend = document.querySelector('legend');

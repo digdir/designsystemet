@@ -1,43 +1,13 @@
 /// <reference types="@testing-library/jest-dom" />
 
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { setTooltipElement } from './tooltip';
 
 const DELAY_HOVER = 300;
-const DELAY_SKIP = 300;
-
-type TooltipElement = HTMLElement & {
-  showPopover: () => void;
-  hidePopover: () => void;
-  popover?: string;
-};
-
-const createTooltip = (): TooltipElement => {
-  const tip = document.createElement('div') as TooltipElement;
-  tip.showPopover = vi.fn(() => {
-    tip.popover = 'manual';
-  });
-  tip.hidePopover = vi.fn();
-  return tip;
-};
-
-const resetTooltipState = async (tip: TooltipElement) => {
-  if (!tip.isConnected) document.body.appendChild(tip);
-  const event = new Event('toggle', { bubbles: true }) as Event & {
-    newState?: string;
-  };
-  event.newState = 'closed';
-  tip.dispatchEvent(event);
-  await vi.advanceTimersByTimeAsync(DELAY_SKIP);
-};
-
-beforeEach(() => {
-  window.dsWarnings = false;
-});
 
 afterEach(() => {
-  delete (window as Window & { dsWarnings?: boolean }).dsWarnings;
-  setTooltipElement(null);
+  setTooltipElement(null); // Reset tooltip between tests
+  document.querySelector('ds-tooltip')?.remove(); // Remove tooltip element between tests
 });
 
 describe('tooltip behavior', () => {
@@ -45,8 +15,7 @@ describe('tooltip behavior', () => {
     document.body.innerHTML = `<button data-tooltip="Help"></button>`;
 
     const el = document.querySelector('button') as HTMLElement;
-
-    await vi.waitUntil(() => el.hasAttribute('aria-label'), 2000); // Wait for mutation observer
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver run
 
     expect(el).toHaveAttribute('aria-label', 'Help');
     expect(el).not.toHaveAttribute('aria-description');
@@ -56,22 +25,22 @@ describe('tooltip behavior', () => {
     document.body.innerHTML = `<button data-tooltip="Help">Label</button>`;
 
     const el = document.querySelector('button') as HTMLElement;
-
-    await vi.waitUntil(() => el.hasAttribute('aria-description'), 2000); // Wait for mutation observer
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver run
 
     expect(el).toHaveAttribute('aria-description', 'Help');
     expect(el).not.toHaveAttribute('aria-label');
   });
 
   it('shows tooltip on focus and syncs text', async () => {
-    const tip = createTooltip();
+    const tip = document.createElement('div');
+    tip.showPopover = vi.fn();
+    tip.hidePopover = vi.fn();
     setTooltipElement(tip);
-    await resetTooltipState(tip);
 
     document.body.innerHTML = `<button data-tooltip="More info">Button</button>`;
 
     const button = document.querySelector('button') as HTMLButtonElement;
-    await vi.waitUntil(() => button.hasAttribute('aria-description'), 2000); // Wait for mutation observer
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
 
     let eventSource: Element | undefined;
     tip.addEventListener('ds-toggle-source', (event) => {
@@ -85,76 +54,68 @@ describe('tooltip behavior', () => {
     expect(tip.getAttribute('popover')).toBe('manual');
     expect(button).toHaveAttribute('aria-description', 'More info');
     expect(eventSource).toBe(button);
+    setTooltipElement(null); // Reset
+    tip.remove(); // Remove element
   });
 
   it('delays tooltip on first mouseover', async () => {
-    const tip = createTooltip();
+    vi.useFakeTimers();
+    const tip = document.createElement('div');
+    tip.showPopover = vi.fn();
+    tip.hidePopover = vi.fn();
     setTooltipElement(tip);
-    await resetTooltipState(tip);
 
     document.body.innerHTML = `<button data-tooltip="Hover">Hover</button>`;
 
     const button = document.querySelector('button') as HTMLButtonElement;
-
     button.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
-
-    expect(tip.showPopover).not.toHaveBeenCalled();
+    expect(tip.showPopover).not.toHaveBeenCalled(); // TODO EIRIK
 
     await vi.advanceTimersByTimeAsync(DELAY_HOVER - 100);
     expect(tip.showPopover).not.toHaveBeenCalled();
 
     await vi.advanceTimersByTimeAsync(100);
     expect(tip.showPopover).toHaveBeenCalledTimes(1);
+    vi.useRealTimers();
   });
 
   it('hides tooltip on Escape', async () => {
-    const tip = createTooltip();
+    const tip = document.createElement('div');
+    tip.showPopover = vi.fn();
+    tip.hidePopover = vi.fn();
     setTooltipElement(tip);
-    await resetTooltipState(tip);
 
     document.body.innerHTML = `<button data-tooltip="Close">Close</button>`;
 
     const button = document.querySelector('button') as HTMLButtonElement;
-
-    button.dispatchEvent(new FocusEvent('focus'));
-
+    button.focus();
     expect(tip.showPopover).toHaveBeenCalledTimes(1);
 
-    document.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }),
-    );
-
+    const esc = { key: 'Escape', bubbles: true };
+    document.dispatchEvent(new KeyboardEvent('keydown', esc));
     expect(tip.hidePopover).toHaveBeenCalledTimes(1);
   });
 
   it('updates tooltip text and announces when data-tooltip changes programmatically', async () => {
-    const tooltip = createTooltip();
-    // Mock :popover-open so the update path is triggered
-    const originalMatches = tooltip.matches.bind(tooltip);
-    tooltip.matches = (selector: string) =>
-      selector === ':popover-open' ? true : originalMatches(selector);
+    const tip = document.createElement('div');
+    setTooltipElement(tip);
 
-    setTooltipElement(tooltip);
-    await resetTooltipState(tooltip);
-
-    document.body.innerHTML = `<button data-tooltip="Original">Label</button>`;
+    document.body.innerHTML = `<button data-testid='hei' data-tooltip="Original">Label</button>`;
 
     const button = document.querySelector('button') as HTMLButtonElement;
-    await vi.waitUntil(() => button.hasAttribute('aria-description'), 2000);
-
-    button.dispatchEvent(new FocusEvent('focus'));
-    expect(tooltip.textContent).toBe('Original');
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver run
+    expect(button).toHaveAttribute('aria-description', 'Original');
+    expect(tip.textContent).not.toBe('Original');
 
     button.focus();
-
-    await vi.advanceTimersByTimeAsync(100);
+    expect(tip).toBeVisible();
+    expect(tip.textContent).toBe('Original');
 
     // Change tooltip text programmatically
+    expect(button).toHaveFocus();
     button.setAttribute('data-tooltip', 'Updated');
-
-    await vi.advanceTimersByTimeAsync(100);
-
-    expect(tooltip.textContent).toBe('Updated');
+    await new Promise((resolve) => setTimeout(resolve, 100)); // Let MutationObserver run
+    expect(tip.textContent).toBe('Updated');
     expect(button).toHaveAttribute('aria-description', 'Updated');
 
     // Should exist a live region with the updated text to announce the change

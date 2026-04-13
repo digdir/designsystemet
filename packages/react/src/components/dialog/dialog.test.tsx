@@ -7,20 +7,14 @@ const CLOSE_LABEL = 'Lukk dialogvindu';
 const HEADER_TITLE = 'Dialog header title';
 const OPEN_Dialog = 'Open Dialog';
 
-const Comp = (args: Partial<DialogProps>) => {
-  return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>{OPEN_Dialog}</Dialog.Trigger>
-      <Dialog {...args} />
-    </Dialog.TriggerContext>
-  );
-};
+const Comp = (args: Partial<DialogProps>) => (
+  <Dialog.TriggerContext>
+    <Dialog.Trigger>{OPEN_Dialog}</Dialog.Trigger>
+    <Dialog {...args} />
+  </Dialog.TriggerContext>
+);
 
 describe('Dialog', () => {
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
-
   it('should open the Dialog', async () => {
     render(
       <Comp>
@@ -111,6 +105,7 @@ describe('Dialog', () => {
 
   it('a custom data-command=close button should close the dialog', async () => {
     const onClose = vi.fn();
+    window.dsWarnings = false; // Suppress warnings about data-command being deprecated
 
     render(
       <Comp onClose={onClose} closeButton={false}>
@@ -125,5 +120,6 @@ describe('Dialog', () => {
     screen.getByRole('button', { name: OPEN_Dialog }).click();
     await act(async () => screen.getByTestId('closebutton').click());
     expect(onClose).toHaveBeenCalledTimes(1);
+    window.dsWarnings = true; // Re-enable warnings after test
   });
 });
