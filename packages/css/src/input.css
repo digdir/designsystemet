@@ -237,6 +237,7 @@
     border-radius: var(--ds-border-radius-sm);
   }
 
+  /*note: checkbox styles are duplicated in suggestion.css */
   &[type='checkbox']:checked {
     background-origin: content-box;
     background-repeat: no-repeat;

@@ -179,7 +179,7 @@
         --_checkbox-spacing: var(--ds-size-2);
         --_checkbox-border: max(2px, 0.125rem);
         padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + (var(--_checkbox-spacing) * 2));
-        /*mock checkbox styles*/
+        /*mock checkbox styles copied from input.css*/
         &::before {
           --_stroke-width: 0.05em;
           --_diagonal-1: transparent calc(48% - var(--_stroke-width));
