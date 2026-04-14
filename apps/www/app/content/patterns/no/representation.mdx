@@ -1,21 +1,221 @@
 ---
-title: Innlogging og representasjon
+title: Representasjon og innlogging på vegne av andre
 sidebar_title: Representasjon
-category: Kommende mønstre
-description: Hvordan håndterer vi aktørbytte på tvers av tjenester?
-partners: Digdir, Nav, Skatteetaten ++
-date: 2025-12-03
-order: 50
+category: Grunnleggende mønstre
+partners: Nav, Digdir, Brønnøysundregistrene
+description: Mange som logger seg inn i offentlige digitale tjenester, gjør det for å utføre oppgaver på vegne av andre, kanskje som en del av jobben, eller i rollen som verge, forelder eller styreleder.  
+date: 2026-04-13
+order: 99
 ---
 
-Når folk logger inn i offentlige digitale tjenester, er det ikke alltid for å gjøre noe på vegne av seg selv. Mange utfører oppgaver på vegne av andre, kanskje som en del av jobben, eller i rollen som verge, forelder eller styreleder. Dersom det ikke er tydelig hvem de handler på vegne av, eller hvilken virksomhet de representerer, kan det føre til feil, forsinkelser eller andre uheldige konsekvenser.
+## Brukerens forståelse av innlogging og representasjon 
+Det må være enkelt for brukerne å se hvem de er logget inn som, og hvordan de kan endre hvem de gjør noe på vegne av. For å sikre en god og trygg opplevelse er det noen ting brukerne må forstå.  
+
+### 1. Forstår brukerne at de er logget inn? 
+Brukerne bør få en tydelig bekreftelse med en gang de har logget inn, for eksempel ved at de kan se at grensesnittet blir endret, eller ved en klar melding som sier: «Du er logget inn som [navn]». Det skal alltid være tydelig at brukeren er logget inn, og hvem brukeren eventuelt handler på vegne av. Denne informasjonen bør være lett synlig, og konsekvent plassert i grensesnittet gjennom hele brukerreisen. 
+
+<Image
+  src="/img/pattern-representation-1.png"
+  alt="Illustrasjonen viser en grensesnitt med tittelen 'Hvem vil du bruke tjenesten på vegne av? I toppen står det at du er logget inn som Kari Nordmann, og under er det en liste med personer du kan bruke tjenesten på vegne av."
+  data-short-content
+  boxShadow={false}
+  caption="Med en gang brukerne har logget inn, bør det være tydelig at de er logget inn, og hvem de kan bruke tjenesten på vegne av."
+/>
+
+Hvis vi sender brukerne videre til en annen nettside som del av samme reise, bør vi videreføre både innlogging og representasjon der det er mulig og forsvarlig. Dette krever at vi vurderer personvern, særlig når reisen går via ulike aktører. 
+
+
+###  2. Forstår brukerne hvem de kan gjøre noe på vegne av? 
+Muligheten til å representere noen andre bygger på for eksempel roller i Enhetsregisteret (daglig leder, signaturrett), eller relasjoner i Folkeregisteret (forelder, verge). Også fullmakter og andre rettigheter i enkeltløsninger kan gi grunnlag for å representere andre. 
+Forklar tydelig hvorfor brukerne kan gjøre noe på vegne av noen andre. 
+
+Bruk forklarende etiketter som: 
+- Du har foreldreansvar
+- Du er pårørende
+- Du er styreleder
+
+<Image
+  src="/img/pattern-representation-2.png"
+  alt="Illustrasjonen viser en grensesnitt med tittelen 'Hvem vil du bruke tjenesten på vegne av?' og noen valg mellom personer og virksomheter. Det er også en beskrivelse som forklarer hvorfor brukerne kan gjøre noe på vegne av noen andre, for eksempel at de er foresatt, har fått fullmakt eller er daglig leder. I toppen står det at du representerer Oliver Kristoffer Nordmann, og at du har foreldreansvar for ham."
+  data-short-content
+  boxShadow={false}
+  caption="Det bør være tydelig hvorfor brukerne kan gjøre noe på vegne av noen andre, for eksempel at de er foresatt..."
+/>
+
+<Image
+  src="/img/pattern-representation-3.png"
+  alt="Illustrasjonen viser en grensesnitt med tittelen 'Hvem vil du bruke tjenesten på vegne av?' og noen valg mellom personer og virksomheter. I toppen står det at du representerer Nordlyn Tek AS, og at du er styreleder."
+  data-short-content
+  boxShadow={false}
+  caption="...eller at de har en rolle i en virksomhet."
+/>
+
+Hvis retten til å representere er tidsbegrenset, bør det komme frem når den utløper. Hvis konteksten gjør detaljene unødvendige, kan du utelate dem. Bruk skjønn.
+
+### 3. Forstår brukerne hvordan de velger hvem de skal gjøre noe på vegne av? 
+Hvis det er nødvendig for en bruker å gjøre noe på vegne av en annen, bør valget komme rett etter innlogging. Hvis brukerne bare kan gjøre noe på vegne av seg selv, trenger de ikke velge, men det må fortsatt være tydelig at de er innlogget.
+
+Tenk over om  
+- det er lett å skille personer eller virksomheter som har like navn 
+- det er behov for å vise fødselsdato, organisasjonsnummer eller relasjon 
+- brukerne skal ha mulighet til å gi kallenavn eller merke favoritter 
+- det er behov for søke- og filtreringsfunksjoner, spesielt for brukere som har mange rettigheter 
+
+### 4. Forstår brukerne hvem de gjør noe på vegne av? 
+Det skal alltid være tydelig hvem brukerne representerer, ikke bare hvem de er logget inn som. I noen tjenester kan brukerne se innhold fra flere av dem de representerer. Hvis for eksempel regnskapsførere kan se meldingene til flere virksomheter i samme innboks, skal det komme tydelig frem i sammenhengen hvem de gjør noe på vegne av. 
+
+### 5. Forstår brukerne hvordan de endrer hvem de gjør noe på vegne av? 
+
+Brukeren skal enkelt kunne bytte hvem de representerer, for eksempel fra en meny i toppen. Samtidig skal det være tydelig når det ikke er mulig å bytte, og hvorfor. Hvis den brukerne representerer blir endret automatisk (for eksempel fordi de kommer fra en annen tjeneste), skal de få beskjed om det.
+
+### 6. Forstår brukerne hvem som kan handle på vegne av dem – og hva som er gjort på deres vegne?
+
+Det skal være enkelt å få oversikt over hvem som har rett til å handle på brukernes vegne og hva de kan gjøre. Forklar gjerne hvorfor noen har tilgang, for eksempel at de har fått fullmakt, eller at personen er registrert med en rolle.
+
+<Image
+  src="/img/pattern-representation-4.png"
+  alt="Illustrasjonen viser en grensesnitt med tittelen Hvem kan bruke <Tjenesten> på dine vegne? I toppen står det at du er innlogget som Oliver Kristoffer Nordmann. Det er en liste over personer som har tilgang, og det kommer frem hvorfor de har tilgang, i dette eksempelet to personer som er foreldre."
+  data-short-content
+  boxShadow={false}
+  caption="Det skal være tydelig hvem som kan gjøre noe på vegne av deg..."
+/>
+
+<Image
+  src="/img/pattern-representation-5.png"
+  alt="Illustrasjonen viser en grensesnitt med tittelen Hvem kan bruke <Tjenesten> på vegne av Nordlyn Tek AS? I toppen står det at du representerer Nordlyn Tek AS, og at du (Kari M.N.) er styreleder. Det er en liste over personer som har tilgang, og det kommer frem hvorfor de har tilgang, i dette eksempelet to personer som har fått fullmakt til ulike tilgangspakker for virksomheten. "
+  data-short-content
+  boxShadow={false}
+  caption="...eller på vegne av din virksomhet."
+/>
+
+Brukerne skal også kunne se hva andre har gjort på deres vegne, særlig når handlinger har konsekvenser. Det skal være tydelig hvem som har gjort noe, hva som er gjort, og når det ble gjort.
+
+I noen tilfeller kan det også være behov for varsling, for eksempel når noen får eller bruker en fullmakt.
+
+## Språk og begreper
+Hvis vi bruker de samme begrepene på tvers av offentlige digitale tjenester, blir det lettere for brukerne å forstå både hva de skal gjøre og hva som er konsekvensen av handlingen. Noen ganger må vi bruke andre begreper i brukergrensesnittet enn internt i forvaltningen.  
+
+### Bruk disse begrepene
+
+<Divider />
+<br/>
+**Bruk: Hvem skal du gjøre noe på vegne av?** \
+Unngå: Hvem skal du representere?
+
+«På vegne av» er mer uformelt og intuitivt enn «representere».
+
+Dette begrepet trenger vi i to ulike kontekster:  
+1. Vi vet ikke hva brukerne skal gjøre, kun at de skal gjøre noe på vegne av en annen. I disse tilfellene anbefaler vi en generell formulering med verbet «gjøre»: 
+«Hvem vil du gjøre noe på vegne av?»  
+2. Vi vet hva brukeren skal gjøre. I disse tilfellene anbefaler vi å bruke et konkret verb:  «Hvem søker du på vegne av?» «Hvem svarer du på vegne av?» 
+
+<Divider />
+<br/>
+**Bruk: Virksomhet** \
+Unngå: Aktør, bedrift, selskap, hovedenhet
+
+- «Virksomhet» er et bredt og nøytralt begrep. Det omfatter alle som driver en aktivitet, både kommersielle bedrifter, offentlige etater, frivillige organisasjoner og foreninger.
+- Merk: Hvis du vet at det kun er én type virksomhet som skal bruke tjenesten, bruk navnet på den. Lager du for eksempel en tjeneste for kun sameier, bør du bruke «sameie» konsekvent.
+
+<Divider />
+<br/>
+**Bruk: Organisasjon (for frivillige organisasjoner)**
+
+- «Organisasjon» er også et bredt begrep, men assosieres sterkere med frivillige organisasjoner, interesseorganisasjoner og foreninger. Bruk det når du vet at du kun omtaler frivillige organisasjoner.
+- Hvis vi vet at noen av målgruppene ikke kjenner seg igjen i «virksomhet», kan vi bruke «virksomhet eller annen organisasjon». Du kan også vurdere en beskrivelse under ledeteksten.
+
+<Divider />
+<br/>
+Bruk **Aktør** som et paraplybegrep for personer og virksomheter.
+
+<Divider />
+<br/>
+**Bruk: Underenhet (eller mer presist begrep hvis mulig)** \
+Unngå: Aktivitet, næringsaktivitet
+<br/>
+- «aktivitet» eller «næringsaktivitet» har ikke alltid et direkte forhold til underenheter.
+- Hva som er en underenhet er ofte uklart for brukerne, men det finnes ikke et alternativt begrep som fungerer i alle sammenhenger. Vi anbefaler at du bare erstatter «underenhet» hvis du er sikker på at et annet ord gir mening for brukerne.
+
+<Card data-color='neutral'>
+<Details>
+  <DetailsSummary>Mer om begrepet: «Underenhet» </DetailsSummary>
+  <DetailsContent>
+Vi anbefaler at du bare erstatter «underenhet» hvis du er sikker på at et annet ord gir mening for brukerne. Det kan for eksempel være riktig i tjenester der underenhetene faktisk er fysiske steder, som butikker eller avdelingskontorer. Da kan du for eksempel spørre: «Hvilket sted leverer du omsetningsoppgave for?»  
+<br/>
+Før du vurderer å bytte begrep, avklar dette: 
+- Er brukerne vant til begrepet «underenhet» fra lignende tjenester? 
+- Er oppgaven knyttet til konkrete steder der virksomheten driver aktivitet? For eksempel butikker, avdelingskontorer, barnehager, serveringssteder. 
+- Er oppgaven knyttet til administrative enheter som ikke nødvendigvis er steder? For eksempel avdelinger som ikke har egen adresse. Hvis svaret er uklart, bruk “underenhet”. 
+<br/>
+Hvis du velger å bruke et alternativt ord, kan det være lurt å få frem at det er det samme som "underenhet". Det gjør det lettere for brukerne å kjenne igjen begrepet fra andre tjenester. Hvis du må bruke begrepet "underenhet", kan det være nyttig å forklare hva en underenhet er. 
+<br/>
+Her er en beskrivelse du kan bruke eller ta utgangspunkt i: \
+*De fleste virksomheter (hovedenheter) har minst én underenhet, som er knyttet til aktiviteten virksomheten driver. En virksomhet kan ha flere underenheter for å skille ulike aktiviteter som driftes adskilt, eller for å dele opp virksomheten i avdelinger og/eller fysiske steder. Når virksomheten har ansatte, skal de være registrert på underenheten. Hver underenhet må ha minst én ansatt.*
+  </DetailsContent>
+</Details>
+</Card>
+
+
+<Divider />
+<br/>
+**Bruk: Fullmakt** \
+Unngå: Tilgang, rettighet, delegering, tillatelse
+
+- Fullmakt gir juridisk myndighet og må ikke forveksles med tilgang.
+- Se også [«Fullmakt, samtykke og tilgang»](#fullmakt-samtykke-og-tilgang)
+
+<Divider />
+
+## «Fullmakt, samtykke og tilgang»
+
+Fullmakt er ikke det samme som tilgang eller samtykke. Derfor må vi unngå å bruke disse begrepene om hverandre i et grensesnitt. 
+ 
+Tilgang er en teknisk rettighet til å for eksempel se eller gjøre noe. Du må ha en fullmakt for å få tilgang på vegne av noen andre. Tilgang er dermed den tekniske gjennomføringen av at noen har fått en fullmakt. I løpende tekst kan vi bruke ordet "tilgang" for å forklare hva fullmakten gir deg rett til å gjøre. 
+
+### Slik kan vi forklare fullmakt
+Det er nyttig å skille mellom målgruppene når vi forklarer hva en fullmakt er. Om du skal gi eller få en fullmakt som privatperson eller som ansatt (proffbruker), påvirker hvilke ord vi bør bruke. Her er eksempler på formuleringer du kan bruke, delt inn etter målgruppe og hvorvidt brukeren skal få eller gi fullmakt. 
+
+#### Gi fullmakt
+
+**Privatpersoner - eksempler på formuleringer:**  
+- En fullmakt lar andre hjelpe deg.
+- Med en fullmakt kan andre hjelpe deg. 
+- En fullmakt gir andre mulighet til å gjøre noe på vegne av deg, men du har fortsatt muligheten til å gjøre det selv.
+
+**Eksempler for proffbrukere:**  
+- En fullmakt lar andre gjøre oppgaver for virksomheten.
+- Med en fullmakt kan andre gjøre oppgaver for virksomheten.
+
+#### Få fullmakt
+
+**Eksempler for privatpersoner:**
+- En fullmakt gjør det mulig å hjelpe en annen.
+- En fullmakt bekrefter at du kan gjøre noe på vegne av en annen.
+- En fullmakt er en rett til å gjøre noe på vegne av en annen.
+- Med en fullmakt kan du hjelpe andre med forskjellige oppgaver. Det kan for eksempel være å levere skattemeldingen eller søke om pensjon.
+
+**Eksempler for proffbrukere:**  
+- En fullmakt lar deg gjøre noe på vegne av en virksomhet.
+- Med en fullmakt kan du gjøre oppgaver for en virksomhet. Det kan for eksempel være å rapportere merverdiavgift.
+
+
+## Min side, din side, eller noens side?
+Brukerne kan bli forvirret når flere offentlige tjenester bruker samme eller lignende navn for innloggede sider, som «Min side» og «Din side». Noen kan ha problemer med å huske hva de gjorde hvor: «Jeg fant det jo på Min side, men var det hos Skatteetaten eller Altinn?» I tillegg risikerer vi at brukeropplevelsen blir usammenhengende. Det som oppleves som én type side, kan ha ulikt innhold, struktur og formål fra tjeneste til tjeneste. 
+
+Vurder også om navnet for den innloggede siden kan virke forvirrende når brukerne skal representere noen. Eksempel: Hvis en bruker logger inn på vegne av moren sin, hvordan fungerer det at siden heter "Min side"?
+
+Vurder om det er nødvendig å gi de innloggede sidene en tittel. Det fungerer ofte godt å bare bruke navnet til brukeren som er innlogget, eventuelt navnet til den/det brukeren er innlogget på vegne av.  
+ 
+Hvis det er nødvendig å gi det en tittel, anbefaler vi å være konkret om hvor brukeren er. Vær konsekvent hvis du velger å ha en tittel med "Min" eller "Din". Pass på at det ikke er formuleringer som "Følg saken din" og "Om meg" på samme side.  
+ 
+Vi har kartlagt innloggede sider fra flere offentlige og private virksomheter, og ser at det oftere er inkonsekvent begrepsbruk på sider som har valgt en tittel med "min". Det er lettere å være konsekvent der "din" blir brukt. I tillegg er det en fordel at det oppleves som en dialog hvis vi henvender oss til brukeren med "din”, “deg” og “du”.  
 
 <Card
   data-color='warning'
   variant="tinted"
 >
-**Arbeid pågår** \
-En tverretatlig arbeidsgruppe arbeider med å utvikle felles retningslinjer og anbefalinger for dette temaet. Vi setter stor pris på innspill fra alle som har erfaringer, innsikt eller resultater fra brukertester. Bidra gjerne i den tilhørende [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/2296).
+**Mer innsikt ønskes** \
+Sitter du på innsikt om representasjon og innlogging på vegne av andre? Bidra gjerne i den tilhørende [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/2296).
 
 </Card>
 
@@ -25,7 +225,10 @@ En tverretatlig arbeidsgruppe arbeider med å utvikle felles retningslinjer og a
   authors={[
     'Nav',
     'Digdir',
-    'Skatteetaten',
     'Brønnøysundregistrene',
+    'Skatteetaten',
+    'Husbanken',
+    'Oslo kommune',
+    'Lillestrøm kommune',
   ]}
 />

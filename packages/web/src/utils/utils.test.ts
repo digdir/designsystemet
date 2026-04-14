@@ -10,7 +10,6 @@ import {
   on,
   onHotReload,
   onMutation,
-  setTextWithoutMutation,
   tag,
   useId,
   warn,
@@ -54,6 +53,7 @@ describe('utils', () => {
   });
 
   it('debounce runs only once for rapid calls', async () => {
+    vi.useFakeTimers();
     const spy = vi.fn();
     const debounced = debounce(spy, 100);
 
@@ -66,6 +66,7 @@ describe('utils', () => {
     await vi.advanceTimersByTimeAsync(1);
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith('second');
+    vi.useRealTimers();
   });
 
   it('on/off attaches and removes multiple event types', () => {
@@ -109,27 +110,8 @@ describe('utils', () => {
 
     el.appendChild(document.createElement('span'));
 
-    await vi.waitUntil(() => callback.mock.calls.length > 0);
-
     cleanup();
-
     expect(callback).toHaveBeenCalled();
-    rafSpy.mockRestore();
-  });
-
-  it('setTextWithoutMutation updates text and restores mutation processing', () => {
-    const el = document.createElement('div');
-    const rafSpy = vi
-      .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((callback) => {
-        callback(0);
-        return 0;
-      });
-
-    setTextWithoutMutation(el, 'Updated');
-
-    expect(el.textContent).toBe('Updated');
-
     rafSpy.mockRestore();
   });
 

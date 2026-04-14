@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.13.1",
+  "version": "1.13.2",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",
-    "@digdir/designsystemet-types": "workspace:^",
+    "@digdir/designsystemet-types": "workspace:",
     "@tokens-studio/sd-transforms": "2.0.3",
     "chroma-js": "^3.2.0",
     "colorjs.io": "^0.6.1",
