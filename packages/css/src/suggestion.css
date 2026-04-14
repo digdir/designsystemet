@@ -101,8 +101,12 @@
   }
 
   /* Hide u-datalist custom element when not initialized yet */
-  &:is(u-datalist):not(:defined) {
+  & :is(u-datalist):not(:defined) {
     display: none;
+  }
+  /* Hide u-datalist before it has been placed by floating-ui */
+  & :is(u-datalist):not([style*='translate']) {
+    opacity: 0;
   }
 
   & :is(u-datalist, datalist) {
