@@ -48,7 +48,7 @@
     & > .ds-card__block > :is(h1, h2, h3, h4, h5, h6) {
       text-decoration-line: underline;
       text-decoration-style: solid;
-      text-decoration-thickness: 0.0625em; /* 1px ish */
+      text-decoration-thickness: max(1px, 0.0625rem, 0.1025em); /* 2px ish */
       text-underline-offset: 0.27em; /* 5px ish */
 
       & > a {

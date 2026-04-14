@@ -46,6 +46,18 @@ export const InCard: StoryFn<typeof Details> = () => (
   </Card>
 );
 
+export const InCardNested: StoryFn<typeof Details> = () => (
+  <Card variant='tinted'>
+    <Heading>Test-kort</Heading>
+    <Card variant='default'>
+      <Details>
+        <Details.Summary>Test</Details.Summary>
+        <Details.Content>Test 2</Details.Content>
+      </Details>
+    </Card>
+  </Card>
+);
+
 export const InCardWithColor: StoryFn<typeof Details> = () => (
   <>
     <Card data-color='accent'>
