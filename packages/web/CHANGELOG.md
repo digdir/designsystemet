@@ -1,5 +1,33 @@
 # @digdir/designsystemet-web
 
+## 1.13.2
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4694](https://github.com/digdir/designsystemet/pull/4694))
+
+- **Field**: `<ds-field>` should now respect existing `aria-describedby` and `aria-invalid` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- **Field:** No longer uses `CSS.supports` to play nice with Jest + JSDOM ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- fixed some native keystrokes being ignored if readonly fields were focused ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))
+
+- update npm non-major dependencies ([#4677](https://github.com/digdir/designsystemet/pull/4677))
+
+- `invokers-polyfill` is now bundled inline as part of source files for better compatibility with Jest module resolving. ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- update dependency `invokers-polyfill` to v1 ([#4683](https://github.com/digdir/designsystemet/pull/4683))
+
+- Remove `@u-elements/u-progress` as a dependency ([#4736](https://github.com/digdir/designsystemet/pull/4736))
+
+- **All components:** Renders instantly for easier test setup ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- update dependency @u-elements/u-details to v1 ([#4734](https://github.com/digdir/designsystemet/pull/4734))
+
+- **Field Counter:** Now includes fallback texts to support test environments without CSS ([#4727](https://github.com/digdir/designsystemet/pull/4727))
+
 ## 1.13.1
 
 ### Patch Changes
