@@ -1,3 +1,4 @@
+import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
@@ -28,16 +29,9 @@ export type FileUploadProps = MergeRight<
  * </Field>
  */
 export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
-  function FileUpload({ children, ...rest }, ref) {
+  function FileUpload({ className, ...rest }, ref) {
     return (
-      <div
-        ref={ref}
-        className={`ds-file-upload`}
-        data-field='description'
-        {...rest}
-      >
-        {children}
-      </div>
+      <div ref={ref} className={cl('ds-file-upload', className)} {...rest} />
     );
   },
 );

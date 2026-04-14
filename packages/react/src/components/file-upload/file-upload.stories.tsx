@@ -1,5 +1,4 @@
-import { error } from 'node:console';
-import { CircleSlashIcon, CloudUpIcon } from '@navikt/aksel-icons';
+import { CircleSlashIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { type DragEvent, useRef, useState } from 'react';
 import type { FileRejection } from 'react-dropzone';
@@ -32,7 +31,9 @@ export const Preview: Story = {
       <Field>
         <Label className='ds-sr-only'>Upload file</Label>
         <FileUpload {...args}>
-          <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
+          <FileUpload.Description aria-hidden='true'>
+            Drop file here
+          </FileUpload.Description>
           <FileUpload.Description>
             File must be in csv format and less than 2MB
           </FileUpload.Description>
@@ -49,7 +50,9 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
     <Field>
       <Label>color variant default</Label>
       <FileUpload>
-        <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
+        <FileUpload.Description aria-hidden='true'>
+          Drop file here
+        </FileUpload.Description>
         <FileUpload.Description>
           File must be in csv format and less than 2MB
         </FileUpload.Description>
@@ -60,7 +63,9 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
     <Field>
       <Label>color variant neutral</Label>
       <FileUpload data-color='neutral'>
-        <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
+        <FileUpload.Description aria-hidden='true'>
+          Drop file here
+        </FileUpload.Description>
         <FileUpload.Description>
           File must be in csv format and less than 2MB
         </FileUpload.Description>
@@ -74,9 +79,9 @@ export const LinkAlt: StoryFn<typeof FileUpload> = () => (
   <Field>
     <Label>Upload file</Label>
     <FileUpload>
-      <FileUpload.Label>
+      <FileUpload.Description>
         Drop files or <span className='ds-link'>click to browse</span>
-      </FileUpload.Label>
+      </FileUpload.Description>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
@@ -90,7 +95,9 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
     <Label>Upload file</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
+      <FileUpload.Description aria-hidden='true'>
+        Drop file here
+      </FileUpload.Description>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
@@ -105,7 +112,9 @@ export const Disabled: StoryFn<typeof FileUpload> = () => (
     <Label>Upload file</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
+      <FileUpload.Description aria-hidden='true'>
+        Drop file here
+      </FileUpload.Description>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
@@ -121,7 +130,9 @@ export const HiddenLabel: StoryFn<typeof FileUpload> = () => (
     <Label className='ds-sr-only'>Upload file</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
+      <FileUpload.Description aria-hidden='true'>
+        Drop file here
+      </FileUpload.Description>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
@@ -181,14 +192,16 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
           {isReadOnly && (
             <>
               <CircleSlashIcon aria-hidden='true' />
-              <FileUpload.Label>You can not upload more files</FileUpload.Label>
+              <FileUpload.Description>
+                You can not upload more files
+              </FileUpload.Description>
             </>
           )}
           {!isReadOnly && (
             <>
-              <FileUpload.Label aria-hidden='true'>
+              <FileUpload.Description aria-hidden='true'>
                 {isDragging ? 'Drop file to upload' : 'Drop file here'}
-              </FileUpload.Label>
+              </FileUpload.Description>
               <FileUpload.Description>
                 File must be in svg format
               </FileUpload.Description>
@@ -250,19 +263,21 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
           {isReadOnly && (
             <>
               <CircleSlashIcon aria-hidden='true' />
-              <FileUpload.Label>You can not upload more files</FileUpload.Label>
+              <FileUpload.Description>
+                You can not upload more files
+              </FileUpload.Description>
             </>
           )}
           {!isReadOnly && (
             <>
               {isDragReject && <CircleSlashIcon aria-hidden='true' />}
-              <FileUpload.Label aria-hidden='true'>
+              <FileUpload.Description aria-hidden='true'>
                 {isDragReject
                   ? 'File type not accepted'
                   : isDragActive
                     ? 'Drop file(s) here'
                     : 'Drop file(s) or click to upload'}
-              </FileUpload.Label>
+              </FileUpload.Description>
               <FileUpload.Description>
                 File must be <code>.svg</code>, {MAX_FILES - files.length} of{' '}
                 {MAX_FILES} files remaining
