@@ -1,6 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { pagination } from './pagination';
 
 describe('pagination component', () => {
@@ -25,8 +25,6 @@ describe('pagination component', () => {
     const links = [
       ...paginationEl.querySelectorAll('a'),
     ] as HTMLAnchorElement[];
-
-    await vi.waitUntil(() => prev.getAttribute('aria-label') === '1');
 
     expect(paginationEl).toHaveAttribute('role', 'navigation');
     expect(prev).toHaveAttribute('aria-label', '1');
@@ -55,8 +53,6 @@ describe('pagination component', () => {
       ...paginationEl.querySelectorAll('button'),
     ] as HTMLButtonElement[];
     const hidden = links[4];
-
-    await vi.waitUntil(() => hidden.getAttribute('tabindex') === '-1');
 
     expect(hidden).toHaveAttribute('role', 'none');
     expect(hidden).toHaveAttribute('tabindex', '-1');
