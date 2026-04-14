@@ -69,7 +69,7 @@ describe('tooltip behavior', () => {
 
     const button = document.querySelector('button') as HTMLButtonElement;
     button.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
-    expect(tip.showPopover).not.toHaveBeenCalled(); // TODO EIRIK
+    expect(tip.showPopover).not.toHaveBeenCalled();
 
     await vi.advanceTimersByTimeAsync(DELAY_HOVER - 100);
     expect(tip.showPopover).not.toHaveBeenCalled();
