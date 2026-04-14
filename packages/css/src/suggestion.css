@@ -105,7 +105,7 @@
     display: none;
   }
   /* Hide u-datalist before it has been placed by floating-ui */
-  & :is(u-datalist):not([style*='translate']) {
+  & :is(u-datalist):where([popover='manual']):not([style*='translate']) {
     opacity: 0;
   }
 
