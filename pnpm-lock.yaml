@@ -682,8 +682,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7
       '@u-elements/u-datalist':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^2.0.0
+        version: 2.0.0
       '@u-elements/u-details':
         specifier: ^0.2.2
         version: 0.2.2
@@ -2315,8 +2315,8 @@ packages:
   '@u-elements/u-combobox@1.0.7':
     resolution: {integrity: sha512-rueG+Wof9ycmbjIW2omS4bLite5BkH87SWfkBrvSjrR1GWn4wgpjnUQ1lORDRalYcPYlgFWy2uGFEqqKPx3Yqw==}
 
-  '@u-elements/u-datalist@1.1.0':
-    resolution: {integrity: sha512-t8H3OddziXmq0YBuXodVWnvRi56WW4sfbJEIO1fx4i39sZ0s/0xjHBsoAsTZkb9mXJEtpgrsH8IkDYP0ZSgSXQ==}
+  '@u-elements/u-datalist@2.0.0':
+    resolution: {integrity: sha512-Mpyo3+jnTc4X/+v0CTRHfrxo71XqrckqMqIjj1BoCvTvQdFXIlr/gVQ5CTPMxc7R4YdLE6PImu1RTCnl9LTVBA==}
 
   '@u-elements/u-details@0.2.2':
     resolution: {integrity: sha512-8EJH3ajS34IjX4bauUi7z16FNZOLa3GNxfS6QReO1dck4nGNsHT25GYSyDaoQOQX7ZMxlsWADWrUJ9AGLgDO7w==}
@@ -6153,7 +6153,7 @@ snapshots:
     dependencies:
       '@floating-ui/dom': 1.7.6
       '@u-elements/u-combobox': 1.0.7
-      '@u-elements/u-datalist': 1.1.0
+      '@u-elements/u-datalist': 2.0.0
       '@u-elements/u-details': 0.2.2
       '@u-elements/u-progress': 0.0.7
       '@u-elements/u-tabs': 0.1.2
@@ -7303,7 +7303,7 @@ snapshots:
 
   '@u-elements/u-combobox@1.0.7': {}
 
-  '@u-elements/u-datalist@1.1.0': {}
+  '@u-elements/u-datalist@2.0.0': {}
 
   '@u-elements/u-details@0.2.2': {}
 
