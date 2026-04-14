@@ -5,7 +5,7 @@ import { Textarea } from './textarea';
 // TODO EIRIK: Commented out because this whole file is basically testing React
 describe('Textarea', () => {
   test('has correct value', () => {
-    render(<Textarea value='test' />);
+    render(<Textarea value='test' onChange={() => {}} />);
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 

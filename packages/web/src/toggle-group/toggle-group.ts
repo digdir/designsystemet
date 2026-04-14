@@ -1,11 +1,4 @@
-import {
-  attr,
-  attrOrCSS,
-  on,
-  onHotReload,
-  onMutation,
-  warn,
-} from '../utils/utils';
+import { attr, attrOrCSS, on, onHotReload, onMutation } from '../utils/utils';
 
 const ARIA_LABELLEDBY = 'aria-labelledby';
 const ARIA_LABEL = 'aria-label';
@@ -24,7 +17,7 @@ const handleKeydown = (event: Partial<KeyboardEvent>) => {
 
   if (!group) return;
   if (!attr(group, ARIA_LABEL) && !attr(group, ARIA_LABELLEDBY))
-    warn(`Missing ${ARIA_LABEL} or ${ARIA_LABELLEDBY} on:`, group);
+    attr(group, ARIA_LABEL, attrOrCSS(group, ATTR_TOGGLEGROUP));
   if (key === 'Enter') el.click(); // Forward Enter, but no need to listen for space key, as this is handled by the browser
   if (key?.startsWith('Arrow')) {
     event.preventDefault?.();

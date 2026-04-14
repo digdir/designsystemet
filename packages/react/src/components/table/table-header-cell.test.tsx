@@ -3,7 +3,13 @@ import { TableHeaderCell } from './';
 import type { TableHeaderCellProps } from './table-header-cell';
 
 const Comp = (args: Partial<TableHeaderCellProps>) => (
-  <TableHeaderCell {...args}>Header 1</TableHeaderCell>
+  <table>
+    <thead>
+      <tr>
+        <TableHeaderCell {...args}>Header 1</TableHeaderCell>
+      </tr>
+    </thead>
+  </table>
 );
 
 describe('table header cell', (): void => {
