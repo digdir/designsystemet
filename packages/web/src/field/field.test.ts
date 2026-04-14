@@ -1,5 +1,5 @@
 /// <reference types="@testing-library/jest-dom" />
-import { describe, expect, it, test, vi } from 'vitest';
+import { describe, expect, it, test } from 'vitest';
 
 const render = () => {
   document.body.innerHTML = `<ds-field class="ds-field">
@@ -50,7 +50,6 @@ describe('Field component', () => {
     expect(counter).toBeInTheDocument();
 
     textarea?.dispatchEvent(new Event('input', { bubbles: true }));
-    vi.advanceTimersByTime(150); // Advance past debounce time
 
     expect(counter?.getAttribute('data-label')).toBe('13 tegn for mye');
   });
