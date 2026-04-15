@@ -53,13 +53,11 @@ describe('toggle-group behavior', () => {
       new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
     );
 
-    await vi.waitUntil(() => document.activeElement === inputs[2]);
+    expect(document.activeElement).toBe(inputs[2]);
 
     inputs[2].dispatchEvent(
       new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
     );
-
-    await vi.waitUntil(() => document.activeElement === inputs[0]);
 
     expect(document.activeElement).toBe(inputs[0]);
   });

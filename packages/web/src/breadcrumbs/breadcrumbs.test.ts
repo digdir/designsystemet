@@ -3,8 +3,10 @@
 import { describe, expect, it, vi } from 'vitest';
 
 const renderAndResize = async () => {
+  vi.useFakeTimers();
   window.dispatchEvent(new Event('resize'));
   await vi.advanceTimersByTimeAsync(120);
+  vi.useRealTimers();
 };
 
 describe('Breadcrumbs component', () => {

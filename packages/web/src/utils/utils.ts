@@ -139,10 +139,9 @@ export const onHotReload = (key: string, setup: () => Array<() => void>) => {
 };
 
 /**
- * MutationObserver wrapper with automatic cleanup and option to skip mutations while updating textContent
+ * MutationObserver wrapper with automatic cleanup
  * @return new MutaionObserver
  */
-let SKIP_MUTATIONS = false;
 export const onMutation = <T extends Node>(
   el: T,
   callback: (el: T, records?: MutationRecord[]) => void,
@@ -151,25 +150,12 @@ export const onMutation = <T extends Node>(
   const cleanup = () => observer.disconnect();
   const observer = new MutationObserver((records) => {
     if (!isBrowser() || !el.isConnected) return cleanup(); // Stop observing if element is removed from DOM or document is removed by jdsom tests
-    if (!SKIP_MUTATIONS) callback(el, records);
+    callback(el, records);
   });
 
-  observer.observe(el, options);
   callback(el); // Initial is run instantly to make test markup predictable
+  observer.observe(el, options);
   return cleanup;
-};
-
-/**
- * Many mutation observers need to watch childNodes, thus running on all `textContent` changes
- * This utility allows skipping mutation observers while updating textContent
- */
-export const setTextWithoutMutation = (el: Element, text: string | null) => {
-  SKIP_MUTATIONS = true;
-  el.textContent = text;
-  requestAnimationFrame(enableMutations); // Let all mutationobservers run before enabling again
-};
-const enableMutations = () => {
-  SKIP_MUTATIONS = false;
 };
 
 /**
@@ -227,8 +213,7 @@ let LIVE_FIX = 0;
 let LIVE_CLEAR: ReturnType<typeof setTimeout> | number = 0;
 export const announce = (text: string) => {
   clearTimeout(LIVE_CLEAR);
-  if (LIVE_EL)
-    setTextWithoutMutation(LIVE_EL, `${text}${LIVE_FIX++ % 2 ? '\u00A0' : ''}`); // Non-breaking space to ensure screen reader announces
+  if (LIVE_EL) LIVE_EL.textContent = `${text}${LIVE_FIX++ % 2 ? '\u00A0' : ''}`; // Non-breaking space to ensure screen reader announces
   if (text) LIVE_CLEAR = setTimeout(announce, 2000, ''); // Clear prevent old announcements being found by screen readers, with 2 seconds brace period to avoid cutting of Android Talkback
 };
 

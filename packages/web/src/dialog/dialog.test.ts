@@ -20,9 +20,7 @@ describe('Dialog behavior', () => {
 
     const button = document.querySelector('button') as HTMLButtonElement;
 
-    vi.runAllTimers(); // Skip dialog debounce
     await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
-
     expect(button).toHaveAttribute('aria-haspopup', 'dialog');
   });
 
@@ -42,7 +40,6 @@ describe('Dialog behavior', () => {
     (event as Event & { command?: string }).command = '--show-non-modal';
 
     dialog?.dispatchEvent(event);
-    vi.runAllTimers();
 
     expect(showSpy).toHaveBeenCalledTimes(1);
   });

@@ -121,9 +121,11 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
           const isClose = (el as Element)?.closest?.('[data-command="close"]');
           if (!defaultPrevented && isClose) {
             dialog.close();
-            console.warn(
-              'Designsystemet: data-command="close" is deprecated. Use command="close" and commandfor="DIALOG-ID" instead.',
-            );
+
+            if (window.dsWarnings !== false)
+              console.log(
+                'Designsystemet: data-command="close" is deprecated. Use command="close" and commandfor="DIALOG-ID" instead.',
+              );
           }
         }}
         onAnimationEnd={(event: AnimationEvent<HTMLDialogElement>) => {

@@ -6,6 +6,12 @@ const keydown = (el: Element, key: string) =>
   el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
 describe('RovingFocusRoot', () => {
+  beforeEach(() => {
+    window.dsWarnings = false; // Suppress warnings about RovingFocus being deprecated
+  });
+  afterEach(() => {
+    window.dsWarnings = true; // Re-enable warnings after tests
+  });
   it('can navigate with tab and arrow keys', async () => {
     render(
       <RovingFocusRoot>

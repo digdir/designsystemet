@@ -7,18 +7,16 @@ import {
   onHotReload,
   onMutation,
   QUICK_EVENT,
-  setTextWithoutMutation,
   tag,
   warn,
 } from '../utils/utils';
 
 let TIP: HTMLElement | undefined;
 let SOURCE: Element | undefined;
+let IS_HOVERING = false;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
-/*needed to omit DELAY_HOVER on iOS that otherwise causes interaction delay 
-(iOS triggers mouseover before click when an element is tapped)*/
-const IS_IOS = isBrowser() && /iPad|iPhone|iPod/.test(navigator.userAgent);
+const IS_IOS = isBrowser() && /iPad|iPhone|iPod/.test(navigator.userAgent); // Needed to omit DELAY_HOVER since iOS triggers mouseover before click
 const ATTR_TOOLTIP = 'data-tooltip';
 const ATTR_COLOR = 'data-color';
 const ARIA_LABEL = 'aria-label';
@@ -39,6 +37,10 @@ const DELAY_SKIP = 300;
 export const setTooltipElement = (el?: HTMLElement | null) => {
   if (el && !(el instanceof HTMLElement))
     warn('setTooltipElement expects an HTMLElement, got: ', el);
+  clearTimeout(SKIP_TIMER); // Reset when changing source
+  clearTimeout(HOVER_TIMER);
+  SOURCE = undefined;
+  IS_HOVERING = false;
   TIP = el || undefined;
 };
 
@@ -57,10 +59,10 @@ const handleAriaAttributes = () => {
     }
 
     // If an existing tooltip has changed programmatically, update tooltip text and announce change
-    const isCurrent = el === SOURCE && TIP?.matches(':popover-open');
+    const isCurrent = el === SOURCE && TIP?.offsetHeight && TIP?.offsetWidth; // Using offsetHeight+Width to check visibility as :popover-open is not well supported by JSDOM
     const isChanged = isCurrent && text && TIP?.textContent !== text; // Only update if mutation is on source element and tooltip is open to avoid unnecessary updates
     if (isCurrent && isChanged) {
-      if (TIP) setTextWithoutMutation(TIP, text);
+      if (TIP) TIP.textContent = text;
       if (document.activeElement === el) announce(text); // Only announce if focus is on the button
     }
   }
@@ -70,7 +72,7 @@ const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
 
   if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
-  if (type === 'mouseover' && !SOURCE && !IS_IOS) {
+  if (type === 'mouseover' && !IS_HOVERING && !IS_IOS) {
     HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
     return;
   }
@@ -89,9 +91,10 @@ const handleInterest = ({ type, target }: Event) => {
   attr(TIP, 'popover', 'manual'); // Ensure popover behavior
   attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME) || null); // Fallback to null to reset if not scheme found
   attr(TIP, ATTR_COLOR, (isReset && color?.getAttribute(ATTR_COLOR)) || null); // Fallback to null to reset if not scheme found
-  setTextWithoutMutation(TIP, attr(source, ATTR_TOOLTIP));
+  TIP.textContent = attr(source, ATTR_TOOLTIP);
   TIP.showPopover();
   TIP.dispatchEvent(new CustomEvent('ds-toggle-source', { detail: source })); // Since showPopover({ source }) is not supported in all browsers yet
+  IS_HOVERING = true;
   SOURCE = source;
 };
 
@@ -100,9 +103,11 @@ const hideTooltip = () => TIP?.isConnected && TIP.popover && TIP.hidePopover(); 
 const handleClose = (event?: Partial<ToggleEvent & KeyboardEvent>) => {
   if (event?.type === 'keydown')
     return event?.key === 'Escape' && hideTooltip();
-  if (!event) SOURCE = undefined;
-  else if (event.target === TIP && event.newState === 'closed')
+  if (!event) IS_HOVERING = false;
+  else if (event.target === TIP && event.newState === 'closed') {
+    SOURCE = undefined;
     SKIP_TIMER = setTimeout(handleClose, DELAY_SKIP);
+  }
 };
 
 onHotReload('tooltip', () => [
