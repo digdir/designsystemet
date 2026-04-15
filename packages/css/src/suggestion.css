@@ -170,7 +170,7 @@
       }
 
       /*use same effect as hover instead of regular focus ring*/
-      &:focus-visible {
+      &[data-activedescendant] {
         outline: var(--dsc-suggestion-option-border-width) solid var(--dsc-suggestion-option-border-color);
       }
 
