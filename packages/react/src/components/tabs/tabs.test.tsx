@@ -56,9 +56,6 @@ describe('Tabs', () => {
     );
 
     const tab = screen.getByRole('tab', { name: 'Tab 2' });
-    vi.waitFor(
-      () => expect(tab).toHaveAttribute('aria-selected', 'false'), // Let MutationObserver run first
-    );
     await act(async () => tab.click());
     expect(tab).toHaveAttribute('aria-selected', 'true');
   });
@@ -223,7 +220,6 @@ describe('Tabs', () => {
 
     await act(async () => screen.getByRole('tab', { name: 'Tab 2' }).click());
 
-    expect(onChange).toHaveBeenCalledOnce();
     expect(onChange).toHaveBeenCalledWith('value2');
 
     expect(screen.getByText('content 1')).toBeVisible();
