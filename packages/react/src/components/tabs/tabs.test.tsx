@@ -199,6 +199,7 @@ describe('Tabs', () => {
     const space = new KeyboardEvent('keydown', { key: ' ', bubbles: true });
     await act(async () => tabTwo.dispatchEvent(space)); // Activate second tab with keyboard
 
+    expect(onChange).toHaveBeenCalledOnce();
     expect(onChange).toHaveBeenCalledWith('value2');
     expect(tabTwo).toHaveAttribute('aria-selected', 'true');
     expect(tabOne).toHaveAttribute('aria-selected', 'false');
