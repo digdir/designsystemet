@@ -39,22 +39,22 @@ type ThemeObject_ = ThemeObject & {
 */
 export async function generate$Themes(
   tokenSetDimensions: TokenSetDimensionsForAllThemes,
-  themes: string[],
+  themeNames: string[],
   colors: Colors,
 ): Promise<ThemeObject_[]> {
   const { colorSchemes, fontNamesPerTheme, sizeModes } = tokenSetDimensions;
   return [
-    ...generateSizeGroup(themes, fontNamesPerTheme, sizeModes),
-    ...(await generateThemesGroup(themes)),
-    ...generateTypographyGroup(themes),
-    ...generateColorSchemesGroup(colorSchemes, themes),
+    ...generateSizeGroup(themeNames, fontNamesPerTheme, sizeModes),
+    ...(await generateThemesGroup(themeNames)),
+    ...generateTypographyGroup(themeNames),
+    ...generateColorSchemesGroup(colorSchemes, themeNames),
     generateSemanticGroup(),
     ...(await generateColorGroup('main', colors)),
     ...(await generateColorGroup('support', colors)),
   ];
 }
 
-function generateSizeGroup(themes: string[], fonts: FontsPerTheme, sizeModes: SizeModes[]): ThemeObject_[] {
+function generateSizeGroup(themeNames: string[], fonts: FontsPerTheme, sizeModes: SizeModes[]): ThemeObject_[] {
   const defaultSize = 'medium';
   const sizesWithDefaultFirst = [
     ...sizeModes.filter((x) => x === defaultSize),
@@ -84,11 +84,12 @@ function generateSizeGroup(themes: string[], fonts: FontsPerTheme, sizeModes: Si
       [`primitives/modes/size/${size}`]: TokenSetStatus.SOURCE,
       'primitives/modes/size/global': TokenSetStatus.ENABLED,
       ...Object.fromEntries(
-        themes.flatMap((theme) =>
-          fonts[theme].flatMap((font) => [
-            [`primitives/modes/size/global/${theme}/font-${font}`, TokenSetStatus.ENABLED],
-            [`primitives/modes/size/${size}/${theme}/font-${font}`, TokenSetStatus.ENABLED],
-          ]),
+        themeNames.flatMap(
+          (theme) =>
+            fonts[theme]?.flatMap((font) => [
+              [`primitives/modes/size/global/${theme}/font-${font}`, TokenSetStatus.ENABLED],
+              [`primitives/modes/size/${size}/${theme}/font-${font}`, TokenSetStatus.ENABLED],
+            ]) ?? [],
         ),
       ),
     },
@@ -121,21 +122,21 @@ const colorSchemeDefaults: Record<ColorScheme, ThemeObject_> = {
   },
 };
 
-function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[]): ThemeObject_[] {
+function generateColorSchemesGroup(colorSchemes: ColorSchemes, themeNames: string[]): ThemeObject_[] {
   return colorSchemes.map(
     (scheme): ThemeObject_ => ({
       ...colorSchemeDefaults[scheme],
       selectedTokenSets: Object.fromEntries([
-        ...themes.map((theme) => [`primitives/modes/color-scheme/${scheme}/${theme}`, TokenSetStatus.ENABLED]),
+        ...themeNames.map((theme) => [`primitives/modes/color-scheme/${scheme}/${theme}`, TokenSetStatus.ENABLED]),
       ]),
       group: 'Color scheme',
     }),
   );
 }
 
-async function generateThemesGroup(themes: string[]): Promise<ThemeObject_[]> {
+async function generateThemesGroup(themeNames: string[]): Promise<ThemeObject_[]> {
   return Promise.all(
-    themes.map(
+    themeNames.map(
       async (theme, index): Promise<ThemeObject_> => ({
         id: await createHash(theme),
         $figmaCollectionId: 'VariableCollectionId:36528:61712',
@@ -180,7 +181,7 @@ async function generateColorGroup(group: 'main' | 'support', colors: Colors): Pr
   );
 }
 
-function generateTypographyGroup(themes: string[]): ThemeObject_[] {
+function generateTypographyGroup(themeNames: string[]): ThemeObject_[] {
   return [
     {
       id: '368d753fcac4455f289500eaa42e70dc0a03522f',
@@ -188,7 +189,7 @@ function generateTypographyGroup(themes: string[]): ThemeObject_[] {
       $figmaModeId: '36248:2',
       name: 'Primary',
       selectedTokenSets: Object.fromEntries(
-        themes.map((theme) => [`primitives/modes/typography/primary/${theme}`, TokenSetStatus.ENABLED]),
+        themeNames.map((theme) => [`primitives/modes/typography/primary/${theme}`, TokenSetStatus.ENABLED]),
       ),
       group: 'Typography',
     },
@@ -198,7 +199,7 @@ function generateTypographyGroup(themes: string[]): ThemeObject_[] {
       $figmaModeId: '36248:3',
       name: 'Secondary',
       selectedTokenSets: Object.fromEntries(
-        themes.map((theme) => [`primitives/modes/typography/secondary/${theme}`, TokenSetStatus.ENABLED]),
+        themeNames.map((theme) => [`primitives/modes/typography/secondary/${theme}`, TokenSetStatus.ENABLED]),
       ),
       group: 'Typography',
     },

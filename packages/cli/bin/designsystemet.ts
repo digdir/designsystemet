@@ -148,9 +148,9 @@ function makeTokenCommands() {
 
       let files: OutputFile[] = [];
       if (config.themes) {
-        for (const [name, themeWithoutName] of Object.entries(config.themes)) {
+        for (const [name, themeConfig] of Object.entries(config.themes)) {
           // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
-          const theme = { name, ...themeWithoutName } as Theme;
+          const theme = { name, ...themeConfig } as Theme;
 
           const { tokenSets, themeDimensions } = await createTokens(theme);
           const tokenSetDimensions = {
