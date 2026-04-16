@@ -40,17 +40,16 @@ type ThemeObject_ = ThemeObject & {
 export async function generate$Themes(
   tokenSetDimensions: TokenSetDimensionsForAllThemes,
   themeNames: string[],
-  colors: Colors,
 ): Promise<ThemeObject_[]> {
-  const { colorSchemes, fontNamesPerTheme, sizeModes } = tokenSetDimensions;
+  const { colorSchemes, fontNamesPerTheme, sizeModes, colorsPerTheme } = tokenSetDimensions;
   return [
     ...generateSizeGroup(themeNames, fontNamesPerTheme, sizeModes),
-    ...(await generateThemesGroup(themeNames)),
+    ...(await generateThemesGroup(themeNames, fontNamesPerTheme)),
     ...generateTypographyGroup(themeNames),
     ...generateColorSchemesGroup(colorSchemes, themeNames),
     generateSemanticGroup(),
-    ...(await generateColorGroup('main', colors)),
-    ...(await generateColorGroup('support', colors)),
+    ...(await generateColorGroup('main', colorsPerTheme)),
+    ...(await generateColorGroup('support', colorsPerTheme)),
   ];
 }
 
@@ -134,7 +133,10 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themeNames: strin
   );
 }
 
-async function generateThemesGroup(themeNames: string[]): Promise<ThemeObject_[]> {
+async function generateThemesGroup(themeNames: string[], fonts: FontsPerTheme): Promise<ThemeObject_[]> {
+  console.log('Generating themes group with themes:', themeNames);
+  console.log('Fonts for themes group:', fonts);
+
   return Promise.all(
     themeNames.map(
       async (theme, index): Promise<ThemeObject_> => ({
@@ -143,6 +145,9 @@ async function generateThemesGroup(themeNames: string[]): Promise<ThemeObject_[]
         $figmaModeId: `40960:${index + 6}`, // Start on 6 in Token Studio and Community file for some reason
         name: theme,
         selectedTokenSets: {
+          ...Object.fromEntries(
+            fonts[theme]?.map((font) => [`primitives/fonts/${theme}/${font}`, TokenSetStatus.ENABLED]) ?? [],
+          ),
           [`themes/${theme}`]: TokenSetStatus.ENABLED,
         },
         group: 'Theme',
@@ -166,17 +171,22 @@ function generateSemanticGroup(): ThemeObject_ {
   };
 }
 
-async function generateColorGroup(group: 'main' | 'support', colors: Colors): Promise<ThemeObject_[]> {
+async function generateColorGroup(
+  group: 'main' | 'support',
+  colorsPerTheme: Record<string, Colors>,
+): Promise<ThemeObject_[]> {
   return Promise.all(
-    Object.entries(colors[group]).map(
-      async ([color]): Promise<ThemeObject_> => ({
-        id: await createHash(`${group}-${color}`),
-        name: color,
-        selectedTokenSets: {
-          [`semantic/modes/${group}-color/${color}`]: TokenSetStatus.ENABLED,
-        },
-        group: `${capitalize(group)} color`,
-      }),
+    Object.entries(colorsPerTheme).flatMap(([_, colors]) =>
+      Object.entries(colors[group]).map(
+        async ([color]): Promise<ThemeObject_> => ({
+          id: await createHash(`${group}-${color}`),
+          name: color,
+          selectedTokenSets: {
+            [`semantic/modes/${group}-color/${color}`]: TokenSetStatus.ENABLED,
+          },
+          group: `${capitalize(group)} color`,
+        }),
+      ),
     ),
   );
 }

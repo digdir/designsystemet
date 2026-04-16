@@ -29,8 +29,9 @@ export const formatTheme = async (themeConfig: Theme) => {
   const tokenSetDimensions = {
     ...themeDimensions,
     fontNamesPerTheme: { [themeConfig.name]: themeDimensions.fontNames },
+    colorsPerTheme: { [themeConfig.name]: themeConfig.colors },
   };
-  const $themes = await generate$Themes(tokenSetDimensions, [themeConfig.name], themeConfig.colors);
+  const $themes = await generate$Themes(tokenSetDimensions, [themeConfig.name]);
   const processed$themes = $themes.map(processThemeObject);
 
   // We run this to populate the `buildOptions.buildTokenFormats` with transformed tokens

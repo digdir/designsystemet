@@ -1,15 +1,11 @@
-import type { Colors, TokenSetDimensionsForAllThemes } from '../../types.js';
+import type { TokenSetDimensionsForAllThemes } from '../../types.js';
 
 type Metadata = {
   tokenSetOrder: string[];
 };
 
-export function generate$Metadata(
-  dimensions: TokenSetDimensionsForAllThemes,
-  themes: string[],
-  colors: Colors,
-): Metadata {
-  const { colorSchemes, sizeModes, fontNamesPerTheme } = dimensions;
+export function generate$Metadata(dimensions: TokenSetDimensionsForAllThemes, themes: string[]): Metadata {
+  const { colorSchemes, sizeModes, fontNamesPerTheme, colorsPerTheme } = dimensions;
   const sizesAndGlobal = ['global', ...sizeModes];
   return {
     tokenSetOrder: [
@@ -27,8 +23,12 @@ export function generate$Metadata(
       ]),
       ...themes.map((theme) => `themes/${theme}`),
       'semantic/color',
-      ...Object.entries(colors.main).map(([color]) => `semantic/modes/main-color/${color}`),
-      ...Object.entries(colors.support).map(([color]) => `semantic/modes/support-color/${color}`),
+      ...Object.entries(colorsPerTheme).flatMap(([_, colors]) =>
+        Object.entries(colors.main).map(([color]) => `semantic/modes/main-color/${color}`),
+      ),
+      ...Object.entries(colorsPerTheme).flatMap(([_, colors]) =>
+        Object.entries(colors.support).map(([color]) => `semantic/modes/support-color/${color}`),
+      ),
       'semantic/style',
     ],
   };

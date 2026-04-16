@@ -22,9 +22,10 @@ export const formatTheme = async (themeConfig: Theme) => {
   const tokenSetThemeDimensions = {
     ...themeDimensions,
     fontNamesPerTheme: { [themeConfig.name]: themeDimensions.fontNames },
+    colorsPerTheme: { [themeConfig.name]: themeConfig.colors },
   };
 
-  const $themes = await generate$Themes(tokenSetThemeDimensions, [themeConfig.name], themeConfig.colors);
+  const $themes = await generate$Themes(tokenSetThemeDimensions, [themeConfig.name]);
   const processed$themes = $themes.map(processThemeObject);
 
   const processedBuilds = await formatTokens({

@@ -8,10 +8,10 @@ import type { CssColor } from '../src/colors/types.js';
 import { type CreateConfigSchema, parseConfig } from '../src/config.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { createTokenFiles } from '../src/tokens/create/files.js';
+import { createTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
-import type { OutputFile, Theme } from '../src/tokens/types.js';
+import type { OutputFile, Theme, TokenSetDimensionsForAllThemes } from '../src/tokens/types.js';
 import { dsfs } from '../src/utils/filesystem.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
@@ -147,19 +147,31 @@ function makeTokenCommands() {
       }
 
       let files: OutputFile[] = [];
+      let tokenSetDimensions: TokenSetDimensionsForAllThemes = {
+        colorSchemes: [],
+        sizeModes: [],
+        fontNamesPerTheme: {},
+        colorsPerTheme: {},
+      };
       if (config.themes) {
         for (const [name, themeConfig] of Object.entries(config.themes)) {
           // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
           const theme = { name, ...themeConfig } as Theme;
 
           const { tokenSets, themeDimensions } = await createTokens(theme);
-          const tokenSetDimensions = {
+
+          tokenSetDimensions = R.mergeDeepRight(tokenSetDimensions, {
             ...themeDimensions,
             fontNamesPerTheme: { [theme.name]: themeDimensions.fontNames },
-          };
-          files = files.concat(await createTokenFiles({ outDir, theme, tokenSets, tokenSetDimensions, themeNames }));
+            colorsPerTheme: { [theme.name]: theme.colors },
+          });
+
+          files = files.concat(tokenSetsToFiles(tokenSets));
         }
       }
+      files = files.concat(await createTokenFiles({ tokenSetDimensions, themeNames }));
+
+      await dsfs.mkdir(outDir);
 
       await dsfs.writeFiles(files, outDir);
 

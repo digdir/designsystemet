@@ -62,6 +62,7 @@ export type TokenSetDimensions = {
  */
 export type TokenSetDimensionsForAllThemes = Omit<TokenSetDimensions, 'fontNames'> & {
   fontNamesPerTheme: Record<string, string[]>;
+  colorsPerTheme: Record<string, Colors>;
 };
 
 export type GetSDConfigOptions = {
