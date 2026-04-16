@@ -156,13 +156,14 @@
       }
 
       &[selected] {
-        --_checkmark-spacing: var(--ds-size-1);
-        padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + (var(--_checkmark-spacing) * 2));
+        --_checkmark-spacing-start: var(--ds-size-2);
+        --_checkmark-spacing-end: var(--ds-size-1);
+        padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + var(--_checkmark-spacing-start) + var(--_checkmark-spacing-end));
         background-color: var(--dsc-suggestion-option-background--selected);
         &::before {
           content: '';
           position: absolute;
-          inset-inline-start: var(--_checkmark-spacing);
+          inset-inline-start: var(--_checkmark-spacing-start);
           mask: var(--dsc-suggestion-option-checkmark-url) center / contain no-repeat;
           background: currentcolor;
           width: var(--dsc-suggestion-option-checkmark-size);
@@ -183,9 +184,10 @@
     }
     [data-multiple] & {
       & > u-option:not([data-empty]) {
-        --_checkbox-spacing: var(--ds-size-2);
+        --_checkbox-spacing-start: var(--ds-size-3);
+        --_checkbox-spacing-end: var(--ds-size-2);
         --_checkbox-border: max(2px, 0.125rem);
-        padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + (var(--_checkbox-spacing) * 2));
+        padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + var(--_checkbox-spacing-start) + var(--_checkbox-spacing-end));
         /*mock checkbox styles copied from input.css*/
         &::before {
           --_stroke-width: 0.05em;
@@ -196,7 +198,7 @@
 
           content: '';
           position: absolute;
-          inset-inline-start: var(--_checkbox-spacing);
+          inset-inline-start: var(--_checkbox-spacing-start);
           mask: none;
           width: var(--dsc-suggestion-option-checkmark-size);
           height: var(--dsc-suggestion-option-checkmark-size);
