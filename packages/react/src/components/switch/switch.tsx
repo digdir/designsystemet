@@ -31,7 +31,7 @@ export type SwitchProps = MergeRight<
      */
     position?: FieldProps['position'];
     /**
-     * If outline, the checkbox will have a border.
+     * If outline, the switch will have a border.
      * @default 'default'
      */
     variant?: 'default' | 'outline';
