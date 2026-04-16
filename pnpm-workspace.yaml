@@ -5,6 +5,7 @@ packages:
   - internal/*
 ignoredBuiltDependencies:
   - '@bundled-es-modules/glob'
+  - '@parcel/watcher'
   - rs-module-lexer
   - sharp
 injectWorkspacePackages: true
@@ -13,7 +14,6 @@ minimumReleaseAgeExclude:
   - "@u-elements/*"
 onlyBuiltDependencies:
   - '@biomejs/biome'
-  - '@parcel/watcher'
   - '@swc/core'
   - esbuild
   - just-pnpm
