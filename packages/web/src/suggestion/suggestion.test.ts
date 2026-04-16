@@ -1,44 +1,28 @@
 /// <reference types="@testing-library/jest-dom" />
 
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
+import type { DSSuggestionElement } from './suggestion';
 
-type SuggestionElement = HTMLElement & {
-  control?: HTMLInputElement;
-  list?: HTMLElement;
-};
-
-const renderSuggestion = async () => {
+const render = () => {
   document.body.innerHTML = `
     <ds-suggestion class="ds-suggestion">
       <input type="search" class="ds-input" />
-      <u-datalist>
+      <u-datalist role="listbox">
         <u-option value="option-1">Option 1</u-option>
       </u-datalist>
     </ds-suggestion>
   `;
 
-  const suggestion = document.querySelector(
-    'ds-suggestion',
-  ) as SuggestionElement;
-
-  vi.runAllTimers();
-  await vi.waitUntil(() => {
-    const input = suggestion.querySelector('input');
-    const list = suggestion.querySelector('u-datalist');
-    return Boolean(
-      input?.getAttribute('popovertarget') &&
-        list?.getAttribute('popover') === 'manual',
-    );
-  });
-
-  return suggestion;
+  return document.querySelector('ds-suggestion') as DSSuggestionElement;
 };
 
 describe('suggestion component', () => {
   it('sets placeholder, popovertarget, and popover attributes', async () => {
-    const suggestion = await renderSuggestion();
+    const suggestion = render();
     const input = suggestion.querySelector('input') as HTMLInputElement;
     const list = suggestion.querySelector('u-datalist') as HTMLElement;
+
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
 
     expect(input).toHaveAttribute('placeholder', ' ');
     expect(list.id).toBeTruthy();
@@ -46,8 +30,8 @@ describe('suggestion component', () => {
     expect(list).toHaveAttribute('popover', 'manual');
   });
 
-  it('dispatches ds-toggle-source when opened', async () => {
-    const suggestion = await renderSuggestion();
+  it('dispatches ds-toggle-source when opened', () => {
+    const suggestion = render();
     const input = suggestion.querySelector('input') as HTMLInputElement;
     const list = suggestion.querySelector('u-datalist') as HTMLElement;
 
@@ -59,8 +43,6 @@ describe('suggestion component', () => {
     const event = new Event('toggle') as Event & { newState?: string };
     event.newState = 'open';
     suggestion.dispatchEvent(event);
-
-    await vi.waitUntil(() => Boolean(detail));
 
     expect(detail).toBe(input);
   });

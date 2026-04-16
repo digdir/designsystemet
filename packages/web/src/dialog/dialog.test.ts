@@ -1,14 +1,8 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { describe, expect, it, vi } from 'vitest';
-import { userEvent } from 'vitest/browser';
 
-const user = userEvent.setup();
-const flushTimers = async () => {
-  vi.runAllTimers();
-};
-
-const renderDefault = async () => {
+const render = () => {
   document.body.innerHTML = `
 <button command="show-modal" commandfor="my-dialog">
     Open dialog
@@ -18,22 +12,20 @@ const renderDefault = async () => {
     <p>Dialog content</p>
     <button command="close" commandfor="my-dialog">Close</button>
 </dialog>`;
-  await flushTimers();
 };
 
 describe('Dialog behavior', () => {
   it('should set aria-haspopup on show-modal buttons', async () => {
-    await renderDefault();
+    render();
 
     const button = document.querySelector('button') as HTMLButtonElement;
 
-    await user.click(button); // Trigger mutation observer to set aria-haspopup
-
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
     expect(button).toHaveAttribute('aria-haspopup', 'dialog');
   });
 
   it('should call show for --show-non-modal command', async () => {
-    await renderDefault();
+    render();
 
     const dialog = document.querySelector('dialog');
 
@@ -48,7 +40,6 @@ describe('Dialog behavior', () => {
     (event as Event & { command?: string }).command = '--show-non-modal';
 
     dialog?.dispatchEvent(event);
-    await flushTimers();
 
     expect(showSpy).toHaveBeenCalledTimes(1);
   });

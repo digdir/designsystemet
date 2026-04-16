@@ -1,11 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
-import { describe, expect, it, test, vi } from 'vitest';
+import { describe, expect, it, test } from 'vitest';
 
-const waitForField = async () => {
-  vi.runAllTimers();
-};
-
-const renderDefault = async () => {
+const render = () => {
   document.body.innerHTML = `<ds-field class="ds-field">
       <label>Label</label>
       <input type="text" placeholder="Placeholder" class="ds-input" />
@@ -13,12 +9,11 @@ const renderDefault = async () => {
         Dette er ein feilmelding
       </div>
     </ds-field>`;
-  await waitForField();
 };
 
 describe('Field component', () => {
-  it('should add id and connect label and input', async () => {
-    await renderDefault();
+  it('should add id and connect label and input', () => {
+    render();
 
     const label = document.querySelector('label');
     const input = document.querySelector('input');
@@ -33,8 +28,8 @@ describe('Field component', () => {
     );
   });
 
-  it('should set aria-invalid when validation message is present', async () => {
-    await renderDefault();
+  it('should set aria-invalid when validation message is present', () => {
+    render();
 
     const input = document.querySelector('input');
 
@@ -42,13 +37,12 @@ describe('Field component', () => {
     expect(input).toHaveAttribute('aria-invalid', 'true');
   });
 
-  test('should update counter live region', async () => {
+  test('should update counter live region', () => {
     document.body.innerHTML = `<ds-field class="ds-field">
       <label>Label</label>
       <textarea class="ds-input">Dette er ein test som er for lang</textarea>
       <p class="ds-validation-message" data-field="counter" data-limit="20" data-over="%d tegn for mye" data-under="%d tegn igjen"></p>
     </ds-field>`;
-    await waitForField();
 
     const textarea = document.querySelector('textarea');
     const counter = document.querySelector('[data-field="counter"]');
@@ -56,7 +50,6 @@ describe('Field component', () => {
     expect(counter).toBeInTheDocument();
 
     textarea?.dispatchEvent(new Event('input', { bubbles: true }));
-    vi.advanceTimersByTime(150); // Advance past debounce time
 
     expect(counter?.getAttribute('data-label')).toBe('13 tegn for mye');
   });
@@ -67,7 +60,6 @@ describe('Field component', () => {
       <textarea class="ds-input">Dette er ein test som er for lang</textarea>
       <p class="ds-validation-message" data-field="counter" data-limit="20" data-over="%d tegn for mye" data-under="%d tegn igjen"></p>
     </ds-field>`;
-    await waitForField();
 
     const textarea = document.querySelector('textarea');
     const counter = document.querySelector('[data-field="counter"]');
@@ -76,12 +68,8 @@ describe('Field component', () => {
     expect(counter?.getAttribute('data-label')).toBe('13 tegn for mye');
 
     counter?.setAttribute('data-limit', '10');
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver in JS Event Loop run
 
-    expect(
-      vi.waitUntil(
-        () => counter?.getAttribute('data-label') === '23 tegn for mye',
-        2000,
-      ),
-    ).toBeTruthy();
+    expect(counter?.getAttribute('data-label')).toBe('23 tegn for mye');
   });
 });

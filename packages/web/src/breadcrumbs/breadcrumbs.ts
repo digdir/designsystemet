@@ -19,7 +19,6 @@ const ATTR_LABEL = 'aria-label';
 export class DSBreadcrumbsElement extends DSElement {
   _items?: HTMLCollectionOf<HTMLAnchorElement>; // Using underscore instead of private fields for backwards compatibility
   _label: string | null = null;
-  _render?: () => void;
   _unresize?: () => void;
   _unmutate?: () => void;
 
@@ -27,23 +26,24 @@ export class DSBreadcrumbsElement extends DSElement {
     return [ATTR_LABEL]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
-    this._label = attrOrCSS(this, ATTR_LABEL); // Cache label for when list is hidden to prevent expensive DOM reads during resize
+    const resize = debounce(() => render(this), 100);
+    this._label = attrOrCSS(this, ATTR_LABEL); // Label can have been set by attributeChangedCallback before connectedCallback
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
-    this._render = debounce(() => render(this), 100); // Debounce render to prevent multiple calls during resize and mutation observer calls
-    this._unresize = on(window, 'resize', this._render);
-    this._unmutate = onMutation(this, this._render, {
+    this._unresize = on(window, 'resize', resize);
+    this._unmutate = onMutation(this, render, {
       childList: true,
       subtree: true,
     });
   }
   attributeChangedCallback(_name: string, _prev?: string, next?: string) {
-    if (next) this._label = next; // Update cacheed label if aria-label attribute changes
-    this._render?.();
+    if (!this._unmutate || !next) return; // Ensure we do not run unless connected and we have a label to set
+    this._label = next; // Update cacheed label if aria-label attribute changes
+    render(this);
   }
   disconnectedCallback() {
     this._unresize?.();
     this._unmutate?.();
-    this._unresize = this._unmutate = this._render = this._items = undefined;
+    this._unresize = this._unmutate = this._items = undefined;
   }
 }
 

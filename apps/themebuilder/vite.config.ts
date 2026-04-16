@@ -10,4 +10,10 @@ export default defineConfig(({ isSsrBuild }) => ({
   build: {
     rollupOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
   },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router'],
+    esbuildOptions: {
+      jsx: 'automatic',
+    },
+  },
 }));

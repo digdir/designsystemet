@@ -215,6 +215,7 @@ const Header = ({
                       to={item.href}
                       className={cl(
                         pathname?.includes(item.href) && classes.active,
+                        classes.headerLink,
                         'ds-focus',
                       )}
                     >
@@ -240,16 +241,22 @@ const Header = ({
               </Dropdown.Trigger>
 
               <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
-                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                  <Link to={langPaths.no} lang='no' hrefLang='no'>
-                    Norsk
-                  </Link>
-                </Dropdown.Button>
-                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                  <Link to={langPaths.en} lang='en' hrefLang='en'>
-                    English
-                  </Link>
-                </Dropdown.Button>
+                <Dropdown.List>
+                  <Dropdown.Item>
+                    <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                      <Link to={langPaths.no} lang='no' hrefLang='no'>
+                        Norsk
+                      </Link>
+                    </Dropdown.Button>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                      <Link to={langPaths.en} lang='en' hrefLang='en'>
+                        English
+                      </Link>
+                    </Dropdown.Button>
+                  </Dropdown.Item>
+                </Dropdown.List>
               </Dropdown>
             </Dropdown.TriggerContext>
             {themeSwitcher && (
@@ -328,7 +335,7 @@ const Header = ({
                       />
                     </Button>
                   </div>
-                  <ul>
+                  <ul className={classes.hamburgerMenuList}>
                     {menu.map((item, index) => (
                       <li key={index}>
                         <Paragraph data-size='md' asChild>
@@ -338,6 +345,7 @@ const Header = ({
                             onClick={() => closeMenuRef.current?.click()}
                             className={cl(
                               pathname?.includes(item.href) && classes.active,
+                              classes.headerLink,
                               'ds-focus',
                             )}
                           >

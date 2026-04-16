@@ -5,14 +5,19 @@ packages:
   - internal/*
 ignoredBuiltDependencies:
   - '@bundled-es-modules/glob'
+  - '@parcel/watcher'
+  - rs-module-lexer
   - sharp
+injectWorkspacePackages: true
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@u-elements/*"
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@swc/core'
   - esbuild
   - just-pnpm
   - style-dictionary
-useNodeVersion: 24.14.0
 packageExtensions:
   '@navikt/aksel-icons':
     peerDependencies:
@@ -20,13 +25,12 @@ packageExtensions:
     peerDependenciesMeta:
       react:
         optional: true
+patchedDependencies:
+  invokers-polyfill@1.0.2: patches/invokers-polyfill@1.0.2.patch
 syncInjectedDepsAfterScripts:
   - build
   - build:all
   - build:www
   - build:themebuilder
   - build:storybook
-injectWorkspacePackages: true
-minimumReleaseAge: 1440
-minimumReleaseAgeExclude:
-  - "@u-elements/*"
+useNodeVersion: 24.14.1

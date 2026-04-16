@@ -1,5 +1,29 @@
 # Change Log
 
+## 1.13.2
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4694](https://github.com/digdir/designsystemet/pull/4694))
+
+- Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))
+
+- update npm non-major dependencies ([#4677](https://github.com/digdir/designsystemet/pull/4677))
+
+- update npm non-major dependencies ([#4668](https://github.com/digdir/designsystemet/pull/4668))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.2
+
+## 1.13.1
+
+### Patch Changes
+
+- fix: add missing references for token sync in Figma ([#4659](https://github.com/digdir/designsystemet/pull/4659))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.1
+
 ## 1.13.0
 
 ### Patch Changes

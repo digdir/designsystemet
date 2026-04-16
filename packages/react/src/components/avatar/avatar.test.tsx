@@ -1,6 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { Avatar } from './avatar';
 
+const EMPTY_IMAGE =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
+
 describe('Avatar', () => {
   it('should render correctly with default props', () => {
     render(<Avatar aria-label='ola' />);
@@ -23,7 +26,7 @@ describe('Avatar', () => {
   it('should render children', () => {
     render(
       <Avatar aria-label='Ola Nordmann'>
-        <img src='' alt='ola nordmann' data-testid='child-image' />
+        <img src={EMPTY_IMAGE} alt='ola nordmann' data-testid='child-image' />
       </Avatar>,
     );
     /* look for image with correct id */
@@ -33,7 +36,7 @@ describe('Avatar', () => {
   it('children should have aria-hidden', () => {
     render(
       <Avatar aria-label='Ola Nordmann'>
-        <img src='' alt='ola nordmann' data-testid='child-image' />
+        <img src={EMPTY_IMAGE} alt='ola nordmann' data-testid='child-image' />
       </Avatar>,
     );
     expect(screen.getByTestId('child-image')).toHaveAttribute(

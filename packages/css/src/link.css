@@ -35,12 +35,12 @@
   /*
    * Ensure proper spacing if there is svg or img and span.
    */
-  &:has(> span):has(> :is(img, svg)) {
+  &:has(> span) > :is(img, svg) {
     &:first-child {
-      margin-inline-start: var(--ds-size-1);
+      margin-inline-end: var(--ds-size-1);
     }
     &:last-child {
-      margin-inline-end: var(--ds-size-1);
+      margin-inline-start: var(--ds-size-1);
     }
   }
 

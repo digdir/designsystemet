@@ -15,7 +15,7 @@
     overflow: clip;
   }
 
-  & span {
+  & li {
     display: flex;
     align-items: center;
     &::before {
@@ -44,9 +44,7 @@
 .container :where(h2, h3, h4) {
   margin: 0;
 }
-.container p {
-  margin-left: calc(-1 * (var(--_column-gap) + var(--_square-size)));
-}
+
 .container :where(h2, h3, h4) {
   margin-bottom: 12px;
 }
@@ -63,7 +61,16 @@
   column-gap: var(--_column-gap);
   row-gap: 8px;
   color: var(--ds-color-neutral-text-subtle);
-  span {
+  list-style: none;
+  padding-inline-start: 0;
+  margin-left: calc(-1 * (var(--_column-gap) + var(--_square-size)));
+
+  li {
+    margin-top: 0;
     text-wrap: wrap;
+
+    &::before {
+      position: relative;
+    }
   }
 }

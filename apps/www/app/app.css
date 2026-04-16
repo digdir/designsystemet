@@ -275,10 +275,10 @@
     > * {
       max-width: var(--short-content-width);
     }
-    :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row, [data-wide-content]) {
+    :where(div:not([class]), img, section, figure, table, iframe, [data-iframe-video], .u-long-content, .dodont-row, [data-wide-content]) {
       max-width: var(--long-content-width);
     }
-    :where(.u-short-content) {
+    :where(.u-short-content, [data-short-content]) {
       max-width: var(--short-content-width);
     }
     > hr {
@@ -372,7 +372,8 @@
       border-collapse: collapse;
     }
 
-    & > img {
+    & > img,
+    & > video {
       width: 100%;
       margin: var(--ds-size-2) 0;
       border-radius: var(--ds-border-radius-md);
@@ -415,6 +416,9 @@
       & :last-child {
         margin-bottom: 0 !important;
       }
+    }
+    & > .ds-divider {
+      margin-top: var(--ds-size-10);
     }
     /*headings determine margin for stuff under them*/
     & > :is(h2, h3, h4, h5, h6) + * {

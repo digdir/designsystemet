@@ -1,4 +1,4 @@
-import { render as renderRtl, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import {
   TableBody,
   TableCell,
@@ -7,7 +7,6 @@ import {
   TableHeaderCell,
   TableRow,
 } from './';
-import type { TableProps } from './table';
 import { Table } from './table';
 
 const children = (
@@ -41,18 +40,14 @@ const children = (
   </>
 );
 
-const render = (props: TableProps = {}) => {
-  return renderRtl(<Table {...props} />);
-};
-
 describe('table', (): void => {
   it('should render table', (): void => {
-    render();
+    render(<Table />);
     expect(screen.getByRole('table')).toBeInTheDocument();
   });
 
   it('should render with children', (): void => {
-    render({ children });
+    render(<Table>{children}</Table>);
     expect(screen.getByRole('table').querySelector('tr')).toBeInTheDocument();
   });
 });

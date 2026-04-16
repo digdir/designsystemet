@@ -3,8 +3,10 @@
 import { describe, expect, it, vi } from 'vitest';
 
 const renderAndResize = async () => {
+  vi.useFakeTimers();
   window.dispatchEvent(new Event('resize'));
   await vi.advanceTimersByTimeAsync(120);
+  vi.useRealTimers();
 };
 
 describe('Breadcrumbs component', () => {
@@ -53,7 +55,7 @@ describe('Breadcrumbs component', () => {
     });
     await renderAndResize();
 
-    expect(await vi.waitUntil(() => breadcrumbs?._label)).toBeTruthy();
+    expect(breadcrumbs?._label).toBeTruthy();
     expect(breadcrumbs).not.toHaveAttribute('aria-label', 'Breadcrumbs');
   });
 
@@ -76,8 +78,6 @@ describe('Breadcrumbs component', () => {
     });
 
     await renderAndResize();
-    await vi.waitUntil(() => breadcrumbs?._label); // Wait for mutation observer
-
     expect(breadcrumbs).not.toHaveAttribute('aria-label', 'Breadcrumbs');
     expect(breadcrumbs?._label).toBe('Breadcrumbs');
 
@@ -87,8 +87,6 @@ describe('Breadcrumbs component', () => {
     });
 
     await renderAndResize();
-    await vi.waitUntil(() => breadcrumbs?.hasAttribute('aria-label')); // Wait for mutation observer
-
     expect(breadcrumbs).toHaveAttribute('aria-label', 'Breadcrumbs');
   });
 });

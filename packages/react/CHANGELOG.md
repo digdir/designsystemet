@@ -1,5 +1,57 @@
 # Change Log
 
+## 1.13.2
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4694](https://github.com/digdir/designsystemet/pull/4694))
+
+- **Field**: `<ds-field>` should now respect existing `aria-describedby` and `aria-invalid` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- **Pagination:** fix `PaginationButton` missing some `Button` props ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- **Tabs**: Now supports programmatically triggering click on controlled `Tabs` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- **Tabs**: `defaultValue` now works as expected ([#4709](https://github.com/digdir/designsystemet/pull/4709))
+
+- Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))
+
+- update npm non-major dependencies ([#4677](https://github.com/digdir/designsystemet/pull/4677))
+
+- **Button**: add `command`and `commandfor`as explicit types on `ButtonProps` ([#4676](https://github.com/digdir/designsystemet/pull/4676))
+
+- **Link**: Fix spacing when icon is present ([#4707](https://github.com/digdir/designsystemet/pull/4707))
+
+- **Dialog:** Use `ref` in `Dialog.TriggerContext` for better performance ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- update npm non-major dependencies ([#4668](https://github.com/digdir/designsystemet/pull/4668))
+
+- **Field Counter:** Now includes fallback texts to support test environments without CSS ([#4727](https://github.com/digdir/designsystemet/pull/4727))
+
+- Updated dependencies [[`bb600db`](https://github.com/digdir/designsystemet/commit/bb600db35da04d5f3174ee5a8b0b2a8e17bea756), [`d129260`](https://github.com/digdir/designsystemet/commit/d1292605b0999e0eba4ac69dd61f017373124fed), [`d129260`](https://github.com/digdir/designsystemet/commit/d1292605b0999e0eba4ac69dd61f017373124fed), [`d129260`](https://github.com/digdir/designsystemet/commit/d1292605b0999e0eba4ac69dd61f017373124fed), [`d8286ee`](https://github.com/digdir/designsystemet/commit/d8286ee9d8e8dc8e652a07683e77b4741ab0fab7), [`381a51d`](https://github.com/digdir/designsystemet/commit/381a51d65a5482d972043f8c4fa0a19d47151ac9), [`d129260`](https://github.com/digdir/designsystemet/commit/d1292605b0999e0eba4ac69dd61f017373124fed), [`cfb204d`](https://github.com/digdir/designsystemet/commit/cfb204d05a5af330517bdd7ced81798f6a6e5974), [`52c0527`](https://github.com/digdir/designsystemet/commit/52c052747ab2f7c39028400bbf4036b7fee15fdd), [`d129260`](https://github.com/digdir/designsystemet/commit/d1292605b0999e0eba4ac69dd61f017373124fed), [`47758af`](https://github.com/digdir/designsystemet/commit/47758afbed188436b666e61b1908995c25faa3d1), [`86f4434`](https://github.com/digdir/designsystemet/commit/86f44343ff289af31859b2abea97bc75aff107fa)]:
+  - @digdir/designsystemet-web@1.13.2
+  - @digdir/designsystemet-types@1.13.2
+
+## 1.13.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
+
+- **Tabs**: `onChange` was not called when keyboard changes active tab ([#4616](https://github.com/digdir/designsystemet/pull/4616))
+
+- **Dropdown**: `className` in subcomponents was not forwarded to DOM-element ([#4655](https://github.com/digdir/designsystemet/pull/4655))
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- **Tabs**: fix controlled version not behaving properly ([#4635](https://github.com/digdir/designsystemet/pull/4635))
+
+- **input:** add suppressHydrationWarning as attributes will be added by ds-field ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- Updated dependencies [[`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee), [`811fa99`](https://github.com/digdir/designsystemet/commit/811fa998227802da7fec9fa21e782ac77838eedf), [`80f9305`](https://github.com/digdir/designsystemet/commit/80f9305be3680673c54c3bdd8d8cca1a0a21ee4d), [`97ebdb3`](https://github.com/digdir/designsystemet/commit/97ebdb35a4cf49487084842a63a98b783669a02b), [`f403286`](https://github.com/digdir/designsystemet/commit/f403286714d36f77767464e38b8d324ceb3d251d)]:
+  - @digdir/designsystemet-web@1.13.1
+  - @digdir/designsystemet-types@1.13.1
+
 ## 1.13.0
 
 ### Patch Changes

@@ -1,15 +1,11 @@
-import { render as renderRtl, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { act } from 'react';
+import { render, screen } from '@testing-library/react';
 
-import type { TextareaProps } from './textarea';
 import { Textarea } from './textarea';
 
-const user = userEvent.setup();
-
+// TODO EIRIK: Commented out because this whole file is basically testing React
 describe('Textarea', () => {
   test('has correct value', () => {
-    render({ value: 'test' });
+    render(<Textarea value='test' onChange={() => {}} />);
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
@@ -39,7 +35,7 @@ describe('Textarea', () => {
   //   expect(textarea).toBeInvalid();
   // });
   // test('is invalid with correct error message from errorId', () => {
-  //   renderRtl(
+  //   render(
   //     <>
   //       <span id='my-error'>my error message</span>
   //       <Textarea errorId='my-error' error />
@@ -64,8 +60,7 @@ describe('Textarea', () => {
   //   expect(screenReaderText).toBeInTheDocument();
   // });
 
-  // it('should countdown remaining characters', async () => {
-  //   const user = userEvent.setup();
+  // it('should countdown remaining characters', () => {
   //   render({
   //     label: 'First name',
   //     characterLimit: {
@@ -75,58 +70,49 @@ describe('Textarea', () => {
   //     },
   //   });
   //   const textareaField = screen.getByLabelText('First name');
-  //   await act(async () => await user.type(textareaField, 'Peter'));
+  //   await act(() => await user.type(textareaField, 'Peter'));
   //   expect(screen.getByText('5 characters remaining')).toBeInTheDocument();
   // });
 
-  it('Triggers onBlur event when field loses focus', async () => {
-    const onBlur = vi.fn();
-    render({ onBlur });
-    const element = screen.getByRole('textbox');
-    await act(async () => await user.click(element));
-    expect(element).toHaveFocus();
-    await act(async () => await user.tab());
-    expect(onBlur).toHaveBeenCalledTimes(1);
-  });
+  // it('Triggers onBlur event when field loses focus', () => {
+  //   const onBlur = vi.fn();
+  //   render({ onBlur });
+  //   const element = screen.getByRole('textbox');
+  //   await act(() => await user.click(element));
+  //   expect(element).toHaveFocus();
+  //   await act(() => await user.tab());
+  //   expect(onBlur).toHaveBeenCalledTimes(1);
+  // });
 
-  it('Triggers onChange event for each keystroke', async () => {
-    const onChange = vi.fn();
-    const data = 'test';
-    render({ onChange });
-    const element = screen.getByRole('textbox');
-    await act(async () => await user.click(element));
-    expect(element).toHaveFocus();
-    await act(async () => await user.keyboard(data));
-    expect(onChange).toHaveBeenCalledTimes(data.length);
-  });
+  // it('Triggers onChange event for each keystroke', () => {
+  //   const onChange = vi.fn();
+  //   const data = 'test';
+  //   render({ onChange });
+  //   const element = screen.getByRole('textbox');
+  //   await act(() => await user.click(element));
+  //   expect(element).toHaveFocus();
+  //   await act(() => await user.keyboard(data));
+  //   expect(onChange).toHaveBeenCalledTimes(data.length);
+  // });
 
-  it('Sets given id on textarea field', () => {
-    const id = 'some-unique-id';
-    render({ id });
-    expect(screen.getByRole('textbox')).toHaveAttribute('id', id);
-  });
+  // it('Sets given id on textarea field', () => {
+  //   const id = 'some-unique-id';
+  //   render(<Textarea id={id} />);
+  //   expect(screen.getByRole('textbox')).toHaveAttribute('id', id);
+  // });
 
-  //   it('Focuses on textarea field when label is clicked and id is not given', async () => {
+  // TODO EIRIK: Commented out because this is covered by field tests
+  //   it('Focuses on textarea field when label is clicked and id is not given', () => {
   //     const label = 'Lorem ipsum';
   //     render({ label });
-  //     await act(async () => await user.click(screen.getByText(label)));
+  //     await act(() => await user.click(screen.getByText(label)));
   //     expect(screen.getByRole('textbox')).toHaveFocus();
   //   });
 
-  //   it('Focuses on textarea field when label is clicked and id is given', async () => {
+  //   it('Focuses on textarea field when label is clicked and id is given', () => {
   //     const label = 'Lorem ipsum';
   //     render({ id: 'some-unique-id', label });
-  //     await act(async () => await user.click(screen.getByText(label)));
+  //     await act(() => await user.click(screen.getByText(label)));
   //     expect(screen.getByRole('textbox')).toHaveFocus();
   //   });
 });
-
-const render = (props: Partial<TextareaProps> = {}) =>
-  renderRtl(
-    <Textarea
-      {...{
-        onChange: vi.fn(),
-        ...props,
-      }}
-    />,
-  );

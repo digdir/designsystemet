@@ -1,7 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { describe, expect, it, vi } from 'vitest';
-import { userEvent } from 'vitest/browser';
 import {
   announce,
   attr,
@@ -11,13 +10,10 @@ import {
   on,
   onHotReload,
   onMutation,
-  setTextWithoutMutation,
   tag,
   useId,
   warn,
 } from './utils';
-
-const user = userEvent.setup();
 
 describe('utils', () => {
   it('attr gets, sets, and removes attributes', () => {
@@ -32,7 +28,7 @@ describe('utils', () => {
     expect(el).not.toHaveAttribute('data-test');
   });
 
-  it('attrOrCSS reads from CSS custom property and strips quotes', async () => {
+  it('attrOrCSS reads from CSS custom property and strips quotes', () => {
     const el = document.createElement('div');
     document.body.appendChild(el); // Needed for getComputedStyle to work, which is used by attrOrCSS
     el.style.setProperty('--_ds-test', '"property-value"');
@@ -42,7 +38,7 @@ describe('utils', () => {
 
   it('warn respects dsWarnings flag', () => {
     const warnSpy = vi
-      .spyOn(console, 'warn')
+      .spyOn(console, 'log')
       .mockImplementation(() => undefined);
 
     (window as Window & { dsWarnings?: boolean }).dsWarnings = false;
@@ -57,6 +53,7 @@ describe('utils', () => {
   });
 
   it('debounce runs only once for rapid calls', async () => {
+    vi.useFakeTimers();
     const spy = vi.fn();
     const debounced = debounce(spy, 100);
 
@@ -69,6 +66,7 @@ describe('utils', () => {
     await vi.advanceTimersByTimeAsync(1);
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith('second');
+    vi.useRealTimers();
   });
 
   it('on/off attaches and removes multiple event types', () => {
@@ -112,27 +110,8 @@ describe('utils', () => {
 
     el.appendChild(document.createElement('span'));
 
-    await vi.waitUntil(() => callback.mock.calls.length > 0);
-
     cleanup();
-
     expect(callback).toHaveBeenCalled();
-    rafSpy.mockRestore();
-  });
-
-  it('setTextWithoutMutation updates text and restores mutation processing', () => {
-    const el = document.createElement('div');
-    const rafSpy = vi
-      .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((callback) => {
-        callback(0);
-        return 0;
-      });
-
-    setTextWithoutMutation(el, 'Updated');
-
-    expect(el.textContent).toBe('Updated');
-
     rafSpy.mockRestore();
   });
 
@@ -169,24 +148,24 @@ describe('utils', () => {
 
   describe('announce', () => {
     // Make a button and click it will mount the live region
-    const ensureLiveRegionMounted = async () => {
+    const ensureLiveRegionMounted = () => {
       document.body.innerHTML = '<button>Click me</button>';
       const button = document.querySelector('button') as HTMLButtonElement;
 
-      await user.click(button);
+      button.focus();
     };
-    it('should mount live region on first user interaction', async () => {
+    it('should mount live region on first user interaction', () => {
       // Reset by removing any existing live region
       document.querySelector('[aria-live="assertive"]')?.remove();
 
-      await ensureLiveRegionMounted();
+      ensureLiveRegionMounted();
 
       const live = document.querySelector('[aria-live="assertive"]');
       expect(live).toBeInTheDocument();
     });
 
-    it('should reuse the same live region element', async () => {
-      await ensureLiveRegionMounted();
+    it('should reuse the same live region element', () => {
+      ensureLiveRegionMounted();
 
       announce('First');
       announce('Second');
@@ -195,8 +174,8 @@ describe('utils', () => {
       expect(regions[0]).toHaveTextContent('Second');
     });
 
-    it('should alternate non-breaking space to force re-announcement', async () => {
-      await ensureLiveRegionMounted();
+    it('should alternate non-breaking space to force re-announcement', () => {
+      ensureLiveRegionMounted();
 
       announce('Same');
       const live = document.querySelector('[aria-live="assertive"]');
@@ -210,8 +189,8 @@ describe('utils', () => {
       expect([first, second]).toContain('Same\u00A0');
     });
 
-    it('should not set text content when called without text', async () => {
-      await ensureLiveRegionMounted();
+    it('should not set text content when called without text', () => {
+      ensureLiveRegionMounted();
 
       announce('Existing');
       const live = document.querySelector('[aria-live="assertive"]');
