@@ -168,6 +168,10 @@
           background: currentcolor;
           width: var(--dsc-suggestion-option-checkmark-size);
           height: var(--dsc-suggestion-option-checkmark-size);
+          @media (forced-colors: active) {
+            background-color: LinkText;
+            forced-color-adjust: none; /* To be able to draw check */
+          }
         }
       }
 
