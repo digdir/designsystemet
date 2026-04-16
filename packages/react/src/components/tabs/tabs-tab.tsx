@@ -33,9 +33,7 @@ export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
       suppressHydrationWarning // Since <ds-tablist> adds attributes
       onClickCapture={(e: MouseEvent<DSTabElement>) => {
         onClickCapture?.(e);
-        if (isControlled && currentValue !== value) {
-          e.preventDefault();
-        }
+        if (isControlled && currentValue !== value) e.preventDefault(); // In controlled mode, prevent click in event capture phase
       }}
       onClick={(e: MouseEvent<DSTabElement> & { detail?: string }) => {
         if (currentValue !== value) onChange?.(value); // Only call onChange when actual value change
