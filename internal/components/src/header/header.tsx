@@ -215,6 +215,7 @@ const Header = ({
                       to={item.href}
                       className={cl(
                         pathname?.includes(item.href) && classes.active,
+                        classes.headerLink,
                         'ds-focus',
                       )}
                     >
@@ -334,7 +335,7 @@ const Header = ({
                       />
                     </Button>
                   </div>
-                  <ul>
+                  <ul className={classes.hamburgerMenuList}>
                     {menu.map((item, index) => (
                       <li key={index}>
                         <Paragraph data-size='md' asChild>
@@ -344,6 +345,7 @@ const Header = ({
                             onClick={() => closeMenuRef.current?.click()}
                             className={cl(
                               pathname?.includes(item.href) && classes.active,
+                              classes.headerLink,
                               'ds-focus',
                             )}
                           >
