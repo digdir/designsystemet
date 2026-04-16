@@ -86,6 +86,10 @@
       width: var(--dsc-suggestion-chip-icon-size);
       padding-inline: 0; /*override u-combobox default*/
       margin-left: var(--dsc-suggestion-chip-gap);
+      @media (forced-colors: active) {
+        background-color: canvastext;
+        forced-color-adjust: none; /* To be able to draw check */
+      }
     }
 
     @composes ds-print-preserve from './base.css';
@@ -316,6 +320,10 @@
       content: '';
       mask: var(--dsc-suggestion-clear-icon-url) center / contain no-repeat;
       background: currentcolor;
+      @media (forced-colors: active) {
+        background-color: canvastext;
+        forced-color-adjust: none; /* To be able to draw check */
+      }
     }
   }
 }
