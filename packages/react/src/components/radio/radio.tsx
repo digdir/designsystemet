@@ -31,7 +31,7 @@ export type RadioProps = MergeRight<
      */
     error?: ReactNode;
     /**
-     * If outline, the checkbox will have a border.
+     * If outline, the radio will have a border.
      * @default 'default'
      */
     variant?: 'default' | 'outline';
