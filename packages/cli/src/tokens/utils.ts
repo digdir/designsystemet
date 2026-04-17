@@ -1,7 +1,13 @@
 import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
-import { type ColorCategories, colorCategories, type TokenSet } from './types.js';
+import {
+  type ColorCategories,
+  type ColorNamesByCategory,
+  type Colors,
+  colorCategories,
+  type TokenSet,
+} from './types.js';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
 
@@ -158,4 +164,12 @@ export const sizeComparator = (size: string): number => {
 
 export function orderBySize(sizes: string[]): string[] {
   return R.sortBy(sizeComparator, sizes);
+}
+
+export function colorNamesByCategory(colors: Colors): ColorNamesByCategory {
+  const result = {} as ColorNamesByCategory;
+  for (const [category, colorGroup] of Object.entries(colors)) {
+    result[category as keyof Colors] = Object.keys(colorGroup);
+  }
+  return result;
 }

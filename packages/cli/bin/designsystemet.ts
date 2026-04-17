@@ -7,10 +7,11 @@ import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { createTokenFiles } from '../src/tokens/create/files.js';
-import { cliOptions, createTokens } from '../src/tokens/create.js';
+import { createTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.js';
+import { cliOptions, createTokens, tokenSetDimensions } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
 import type { OutputFile, Theme } from '../src/tokens/types.js';
+import { colorNamesByCategory } from '../src/tokens/utils.js';
 import { dsfs } from '../src/utils/filesystem.js';
 import { parseCreateConfig, readConfigFile } from './config.js';
 
@@ -128,17 +129,27 @@ function makeTokenCommands() {
         await dsfs.cleanDir(outDir);
       }
 
-      let files: OutputFile[] = [];
-      if (config.themes) {
-        for (const [name, themeWithoutName] of Object.entries(config.themes)) {
-          // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
-          const theme = { name, ...themeWithoutName } as Theme;
+      const files: OutputFile[] = [];
 
-          const { tokenSets } = await createTokens(theme);
-          files = files.concat(await createTokenFiles({ outDir, theme, tokenSets, themeNames }));
+      if (config.themes) {
+        for (const [name, themeConfig] of Object.entries(config.themes)) {
+          const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme);
+          files.push(...tokenSetsToFiles(tokenSets));
         }
       }
 
+      // Pick colors from first theme since we have a constraint they should be the same across themes.
+      const colors = config.themes?.[themeNames[0]]?.colors ?? { main: {}, support: {} };
+
+      files.push(
+        ...(await createTokenFiles({
+          tokenSetDimensions,
+          themeNames,
+          colors: colorNamesByCategory(colors),
+        })),
+      );
+
+      await dsfs.mkdir(outDir);
       await dsfs.writeFiles(files, outDir);
 
       console.log(`\n✅ Finished creating tokens in ${pc.green(outDir)} for themes: ${pc.blue(themeNames.join(', '))}`);
