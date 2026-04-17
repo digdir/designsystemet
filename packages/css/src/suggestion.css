@@ -21,6 +21,7 @@
   --dsc-suggestion-list-color: var(--ds-color-text-default);
   --dsc-suggestion-list-gap: var(--ds-size-2);
   --dsc-suggestion-list-placement: bottom;
+  --dsc-suggestion-list-padding: var(--ds-size-3) var(--ds-size-2);
   --dsc-suggestion-border-width: var(--ds-border-width-default); /* TODO: Should have been prefixed, but kept like this for compatibility */
   --dsc-suggestion-border-style: solid;
   --dsc-suggestion-border-color: var(--ds-color-neutral-border-subtle);
@@ -131,7 +132,7 @@
     inset: 0 auto auto 0;
     overflow: auto;
     overscroll-behavior: contain;
-    padding: var(--ds-size-3) var(--ds-size-2);
+    padding: var(--dsc-suggestion-list-padding);
 
     /* If not using popover for the list */
     &:not([popover]) {
