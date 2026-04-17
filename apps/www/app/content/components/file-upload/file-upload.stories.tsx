@@ -5,7 +5,7 @@ export const FileUploadExample = () => (
     <Label>Upload profile picture</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Label>Drop file here</FileUpload.Label>
+      <FileUpload.Description>Drop file here</FileUpload.Description>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
@@ -20,7 +20,7 @@ export const FileUploadReactDropzone = () => (
     <Label>Upload profile picture</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Label>Drop file here</FileUpload.Label>
+      <FileUpload.Description>Drop file here</FileUpload.Description>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
