@@ -109,7 +109,7 @@
     display: none;
   }
   /* Hide u-datalist before it has been placed by floating-ui */
-  & :is(u-datalist):where([popover='manual']):not([style*='translate']) {
+  &ds-suggestion :is(u-datalist):not([style*='translate']) {
     opacity: 0;
   }
 
