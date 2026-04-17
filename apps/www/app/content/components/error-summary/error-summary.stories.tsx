@@ -1,5 +1,5 @@
 import { Button, ErrorSummary, Textfield } from '@digdir/designsystemet-react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 export const Preview = () => {
   return (
