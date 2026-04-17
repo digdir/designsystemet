@@ -125,17 +125,11 @@ function makeTokenCommands() {
 
       const outDir = dsfs.outDir;
 
-      if (config.clean) {
-        await dsfs.cleanDir(outDir);
-      }
-
       const files: OutputFile[] = [];
 
-      if (config.themes) {
-        for (const [name, themeConfig] of Object.entries(config.themes)) {
-          const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme);
-          files.push(...tokenSetsToFiles(tokenSets));
-        }
+      for (const [name, themeConfig] of Object.entries(config.themes)) {
+        const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme);
+        files.push(...tokenSetsToFiles(tokenSets));
       }
 
       // Pick colors from first theme since we have a constraint they should be the same across themes.
@@ -148,6 +142,10 @@ function makeTokenCommands() {
           colors: colorNamesByCategory(colors),
         })),
       );
+
+      if (config.clean) {
+        await dsfs.cleanDir(outDir);
+      }
 
       await dsfs.mkdir(outDir);
       await dsfs.writeFiles(files, outDir);
