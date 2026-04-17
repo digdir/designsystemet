@@ -109,8 +109,8 @@
   & :is(u-datalist):not(:defined) {
     display: none;
   }
-  /* Hide u-datalist before it has been placed by floating-ui */
-  &ds-suggestion :is(u-datalist):not([style*='translate']) {
+  /* Hide list before it has been placed by floating-ui */
+  & :is(datalist, u-datalist, [role='listbox']):is([popover='manual']):not([style*='translate']) {
     opacity: 0;
   }
 
