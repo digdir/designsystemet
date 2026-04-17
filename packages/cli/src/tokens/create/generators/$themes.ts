@@ -42,18 +42,19 @@ export async function generate$Themes(
   themeNames: string[],
 ): Promise<ThemeObject_[]> {
   const { colorSchemes, fontNamesPerTheme, sizeModes, colorsPerTheme } = tokenSetDimensions;
+  const colors = colorsPerTheme[themeNames[0]]; // Get colors from the first theme as a representative for generating color groups, since they are expected to be the same across themes
   return [
-    ...generateSizeGroup(themeNames, fontNamesPerTheme, sizeModes),
-    ...(await generateThemesGroup(themeNames, fontNamesPerTheme)),
+    ...generateSizeGroups(themeNames, fontNamesPerTheme, sizeModes),
+    ...(await generateThemeGroups(themeNames, fontNamesPerTheme)),
     ...generateTypographyGroup(themeNames),
-    ...generateColorSchemesGroup(colorSchemes, themeNames),
+    ...generateColorSchemeGroups(themeNames, colorSchemes),
     generateSemanticGroup(),
-    ...(await generateColorGroup('main', colorsPerTheme)),
-    ...(await generateColorGroup('support', colorsPerTheme)),
+    ...(await generateColorGroups('main', colors)),
+    ...(await generateColorGroups('support', colors)),
   ];
 }
 
-function generateSizeGroup(themeNames: string[], fonts: FontsPerTheme, sizeModes: SizeModes[]): ThemeObject_[] {
+function generateSizeGroups(themeNames: string[], fonts: FontsPerTheme, sizeModes: SizeModes[]): ThemeObject_[] {
   const defaultSize = 'medium';
   const sizesWithDefaultFirst = [
     ...sizeModes.filter((x) => x === defaultSize),
@@ -121,7 +122,7 @@ const colorSchemeDefaults: Record<ColorScheme, ThemeObject_> = {
   },
 };
 
-function generateColorSchemesGroup(colorSchemes: ColorSchemes, themeNames: string[]): ThemeObject_[] {
+function generateColorSchemeGroups(themeNames: string[], colorSchemes: ColorSchemes): ThemeObject_[] {
   return colorSchemes.map(
     (scheme): ThemeObject_ => ({
       ...colorSchemeDefaults[scheme],
@@ -133,10 +134,7 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themeNames: strin
   );
 }
 
-async function generateThemesGroup(themeNames: string[], fonts: FontsPerTheme): Promise<ThemeObject_[]> {
-  console.log('Generating themes group with themes:', themeNames);
-  console.log('Fonts for themes group:', fonts);
-
+async function generateThemeGroups(themeNames: string[], fonts: FontsPerTheme): Promise<ThemeObject_[]> {
   return Promise.all(
     themeNames.map(
       async (theme, index): Promise<ThemeObject_> => ({
@@ -171,22 +169,17 @@ function generateSemanticGroup(): ThemeObject_ {
   };
 }
 
-async function generateColorGroup(
-  group: 'main' | 'support',
-  colorsPerTheme: Record<string, Colors>,
-): Promise<ThemeObject_[]> {
+async function generateColorGroups(group: 'main' | 'support', colors: Colors): Promise<ThemeObject_[]> {
   return Promise.all(
-    Object.entries(colorsPerTheme).flatMap(([_, colors]) =>
-      Object.entries(colors[group]).map(
-        async ([color]): Promise<ThemeObject_> => ({
-          id: await createHash(`${group}-${color}`),
-          name: color,
-          selectedTokenSets: {
-            [`semantic/modes/${group}-color/${color}`]: TokenSetStatus.ENABLED,
-          },
-          group: `${capitalize(group)} color`,
-        }),
-      ),
+    Object.entries(colors[group]).map(
+      async ([color]): Promise<ThemeObject_> => ({
+        id: await createHash(`${group}-${color}`),
+        name: color,
+        selectedTokenSets: {
+          [`semantic/modes/${group}-color/${color}`]: TokenSetStatus.ENABLED,
+        },
+        group: `${capitalize(group)} color`,
+      }),
     ),
   );
 }

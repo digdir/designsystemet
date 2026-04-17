@@ -8,10 +8,10 @@ import type { CssColor } from '../src/colors/types.js';
 import { type CreateConfigSchema, parseConfig } from '../src/config.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { createTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.js';
+import { createSystemTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
-import type { OutputFile, Theme, TokenSetDimensionsForAllThemes } from '../src/tokens/types.js';
+import type { OutputFile, ThemeConfig, TokenSetDimensionsForAllThemes } from '../src/tokens/types.js';
 import { dsfs } from '../src/utils/filesystem.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
@@ -153,23 +153,23 @@ function makeTokenCommands() {
         fontNamesPerTheme: {},
         colorsPerTheme: {},
       };
+
       if (config.themes) {
         for (const [name, themeConfig] of Object.entries(config.themes)) {
           // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
-          const theme = { name, ...themeConfig } as Theme;
-
-          const { tokenSets, themeDimensions } = await createTokens(theme);
-
-          tokenSetDimensions = R.mergeDeepRight(tokenSetDimensions, {
-            ...themeDimensions,
-            fontNamesPerTheme: { [theme.name]: themeDimensions.fontNames },
-            colorsPerTheme: { [theme.name]: theme.colors },
-          });
+          const { tokenSets, themeDimensions } = createTokens({ name, ...themeConfig } as ThemeConfig);
 
           files = files.concat(tokenSetsToFiles(tokenSets));
+
+          tokenSetDimensions = R.mergeDeepRight(tokenSetDimensions, {
+            colorSchemes: themeDimensions.colorSchemes,
+            sizeModes: themeDimensions.sizeModes,
+            fontNamesPerTheme: { [name]: themeDimensions.fontNames },
+            colorsPerTheme: { [name]: themeConfig.colors },
+          });
         }
       }
-      files = files.concat(await createTokenFiles({ tokenSetDimensions, themeNames }));
+      files = files.concat(await createSystemTokenFiles({ tokenSetDimensions, themeNames }));
 
       await dsfs.mkdir(outDir);
 

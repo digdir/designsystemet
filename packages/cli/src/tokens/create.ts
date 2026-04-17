@@ -11,7 +11,7 @@ import { generateSemanticColors } from './create/generators/semantic/color.js';
 import { generateColorModes } from './create/generators/semantic/color-modes.js';
 import { generateSemanticStyle } from './create/generators/semantic/style.js';
 import { generateTheme } from './create/generators/themes/theme.js';
-import type { SizeModes, Theme, TokenSet, TokenSets } from './types.js';
+import type { SizeModes, ThemeConfig, TokenSet, TokenSetDimensions, TokenSets } from './types.js';
 
 export const cliOptions = {
   outDir: 'out-dir',
@@ -30,8 +30,10 @@ export const cliOptions = {
   },
 } as const;
 
-export const createTokens = async (theme: Theme) => {
-  const { colors, typography, name, borderRadius, overrides } = theme;
+export const createTokens = (
+  themeConfig: ThemeConfig,
+): { tokenSets: TokenSets; themeDimensions: TokenSetDimensions } => {
+  const { colors, typography, name, borderRadius, overrides } = themeConfig;
   const colorSchemes: ColorScheme[] = ['light', 'dark'];
   const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 

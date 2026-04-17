@@ -4,7 +4,7 @@ import { createTokens } from './create.js';
 import { createThemeCSSFiles } from './process/output/theme.js';
 import { type FormatOptions, processPlatform } from './process/platform.js';
 import { processThemeObject } from './process/utils/getMultidimensionalThemes.js';
-import type { Theme } from './types.js';
+import type { ThemeConfig, TokenSetDimensionsForAllThemes } from './types.js';
 
 export const formatTokens = async (options: Omit<FormatOptions, 'type' | 'buildTokenFormats'>) => {
   const processedBuilds = await processPlatform({
@@ -16,11 +16,12 @@ export const formatTokens = async (options: Omit<FormatOptions, 'type' | 'buildT
   return processedBuilds;
 };
 
-export const formatTheme = async (themeConfig: Theme) => {
-  const { tokenSets, themeDimensions } = await createTokens(themeConfig);
+export const formatTheme = async (themeConfig: ThemeConfig) => {
+  const { tokenSets, themeDimensions } = createTokens(themeConfig);
 
-  const tokenSetThemeDimensions = {
-    ...themeDimensions,
+  const tokenSetThemeDimensions: TokenSetDimensionsForAllThemes = {
+    colorSchemes: themeDimensions.colorSchemes,
+    sizeModes: themeDimensions.sizeModes,
     fontNamesPerTheme: { [themeConfig.name]: themeDimensions.fontNames },
     colorsPerTheme: { [themeConfig.name]: themeConfig.colors },
   };
@@ -46,7 +47,7 @@ export const formatTheme = async (themeConfig: Theme) => {
  * @param themeConfig - The theme configuration object to be formatted.
  * @returns A promise that resolves to the generated CSS string.
  */
-export const formatThemeCSS = async (themeConfig: Theme) => {
+export const formatThemeCSS = async (themeConfig: ThemeConfig) => {
   const processedBuilds = await formatTheme(themeConfig);
   const themeCSSFiles = createThemeCSSFiles({ processedBuilds });
   return R.head(themeCSSFiles)?.output ?? '';

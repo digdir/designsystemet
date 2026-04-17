@@ -16,10 +16,10 @@ export type TokenSet = {
 };
 export type TokenSets = Map<string, TokenSet>;
 
-export type Colors = Theme['colors'];
-export type Typography = Theme['typography'];
+export type Colors = ThemeConfig['colors'];
+export type Typography = ThemeConfig['typography'];
 
-export type Theme = {
+export type ThemeConfig = {
   name: string;
 } & Required<Omit<ConfigSchemaTheme, 'overrides'>> &
   Pick<ConfigSchemaTheme, 'overrides'>;

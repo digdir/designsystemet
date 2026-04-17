@@ -5,24 +5,26 @@ import { generate$Themes } from './generators/$themes.js';
 
 export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 
-type CreateTokenFilesOptions = {
+type CreateSystemTokenFilesOptions = {
   tokenSetDimensions: TokenSetDimensionsForAllThemes;
   themeNames: string[];
 };
-
-export const createTokenFiles = async (options: CreateTokenFilesOptions) => {
+/**
+ * Creates system token files (`$themes.json`, `$metadata.json`, `$designsystemet.jsonc`) based on the provided token set dimensions and theme names.
+ *
+ * `$themes.json` and `$metadata.json` are essential for Token Studio and Style Dictionary to correctly interpret and manage the design tokens.
+ */
+export const createSystemTokenFiles = async (options: CreateSystemTokenFilesOptions) => {
   const { themeNames, tokenSetDimensions } = options;
 
+  const files: OutputFile[] = [];
   const $themesPath = '$themes.json';
   const $metadataPath = '$metadata.json';
   const $designsystemetPath = '$designsystemet.jsonc';
 
-  // Create metadata and themes json for Token Studio and build script
   const $themes = await generate$Themes(tokenSetDimensions, themeNames);
   const $metadata = generate$Metadata(tokenSetDimensions, themeNames);
   const $designsystemet = generate$Designsystemet();
-
-  const files: OutputFile[] = [];
 
   files.push({ destination: $themesPath, output: stringify($themes) });
   files.push({ destination: $metadataPath, output: stringify($metadata) });

@@ -5,7 +5,7 @@ import { generate$Themes } from '../tokens/create/generators/$themes.js';
 import { createTokens } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
-import type { Theme } from '../tokens/types.js';
+import type { ThemeConfig, TokenSetDimensionsForAllThemes } from '../tokens/types.js';
 import { dsfs } from '../utils/filesystem.js';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
@@ -23,11 +23,12 @@ const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]
 
 type PreviewToken = { variable: string; value: string };
 
-export const formatTheme = async (themeConfig: Theme) => {
-  const { tokenSets, themeDimensions } = await createTokens(themeConfig);
+export const formatTheme = async (themeConfig: ThemeConfig) => {
+  const { tokenSets, themeDimensions } = createTokens(themeConfig);
 
-  const tokenSetDimensions = {
-    ...themeDimensions,
+  const tokenSetDimensions: TokenSetDimensionsForAllThemes = {
+    colorSchemes: themeDimensions.colorSchemes,
+    sizeModes: themeDimensions.sizeModes,
     fontNamesPerTheme: { [themeConfig.name]: themeDimensions.fontNames },
     colorsPerTheme: { [themeConfig.name]: themeConfig.colors },
   };
