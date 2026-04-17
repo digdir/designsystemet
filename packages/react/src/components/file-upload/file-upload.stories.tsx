@@ -107,7 +107,7 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
   </Field>
 );
 
-export const Disabled: StoryFn<typeof FileUpload> = () => (
+/* export const Disabled: StoryFn<typeof FileUpload> = () => (
   <Field>
     <Label>Upload file</Label>
     <Field.Description>description text</Field.Description>
@@ -123,7 +123,7 @@ export const Disabled: StoryFn<typeof FileUpload> = () => (
     </FileUpload>
     <ValidationMessage>Invalid file format</ValidationMessage>
   </Field>
-);
+); */
 
 export const HiddenLabel: StoryFn<typeof FileUpload> = () => (
   <Field>
