@@ -1,0 +1,18 @@
+{
+  "different-fonts": {
+    "fonts": {
+      "headings": {
+        "font-scale": {
+          "_base": {
+            "$type": "number",
+            "$value": "18"
+          },
+          "_ratio": {
+            "$type": "number",
+            "$value": "1.143136"
+          }
+        }
+      }
+    }
+  }
+}
