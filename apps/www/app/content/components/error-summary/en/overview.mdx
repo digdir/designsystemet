@@ -34,10 +34,9 @@ You can read more about this in the [article on error messages](/en/patterns/err
 
 ### Visibility
 
-The summary should not be visible before the user has taken an action that triggers an error. It should become visible only after the user performs an action that results in errors.
+The summary should not be visible before the user has taken an action that triggers an error. It should become visible only after the user performs an action that results in errors. The summary automatically receives focus when it becomes visible and when its content changes.
 
-- If validation happens continuously (for example using `onBlur` on each field), wait to show `ErrorSummary` until the user attempts to submit the form.  
-- It is important that the component receives focus when it appears, so the user notices that there are errors or missing information.  
+- If validation happens continuously (for example using `onBlur` on each field), wait to show `ErrorSummary` until the user attempts to submit the form.   
 - Error messages must link directly to the relevant field.  
 - If the error applies to several fields, for example when two fields are validated together, link to the first instance of the error.
 

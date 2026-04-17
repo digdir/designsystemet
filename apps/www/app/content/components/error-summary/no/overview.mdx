@@ -32,9 +32,8 @@ I noen tilfeller kan det likevel være bedre å vise oppsummeringen i toppen, de
 
 ### Synlighet
 
-Oppsummeringen skal ikke være synlig uten at brukeren foretar seg noe. Den skal bli synlig først når brukeren har utført en handling som utløser feil.
-- Hvis vi validerer fortløpende (for eksempel ved `onBlur` på hvert felt), venter vi med å vise ErrorSummary til brukeren prøver å sende inn skjemaet.
-- Det er viktig at komponenten får fokus når den blir vist, slik at brukeren får med seg at det er feil eller mangler i skjemaet.
+Oppsummeringen skal ikke være synlig uten at brukeren foretar seg noe. Den skal bli synlig først når brukeren har utført en handling som utløser feil. Oppsummeringen får automatisk fokus når den vises, og når innholdet endres.
+- Hvis vi validerer fortløpende (for eksempel ved `onBlur` på hvert felt), venter vi med å vise ErrorSummary til brukeren prøver å sende inn skjemaet. 
 - Feilmeldingene skal lenke direkte til feltet det gjelder.
 - Hvis feilen gjelder flere felt, for eksempel når to felt valideres på tvers, lenker vi til det første tilfellet av feilen.
 

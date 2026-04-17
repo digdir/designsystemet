@@ -127,13 +127,6 @@ export const WithFormEn = () => {
 
 export const ShowHide = () => {
   const [show, setShow] = useState(false);
-  const summaryRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (show) {
-      summaryRef.current?.focus();
-    }
-  }, [show]);
 
   return (
     <>
@@ -149,7 +142,7 @@ export const ShowHide = () => {
         </Button>
       </div>
       {show && (
-        <ErrorSummary ref={summaryRef}>
+        <ErrorSummary>
           <ErrorSummary.Heading>
             For å gå videre må du rette opp følgende feil:
           </ErrorSummary.Heading>
@@ -173,13 +166,6 @@ export const ShowHide = () => {
 
 export const ShowHideEn = () => {
   const [show, setShow] = useState(false);
-  const summaryRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (show) {
-      summaryRef.current?.focus();
-    }
-  }, [show]);
 
   return (
     <>
@@ -195,7 +181,7 @@ export const ShowHideEn = () => {
         </Button>
       </div>
       {show && (
-        <ErrorSummary ref={summaryRef}>
+        <ErrorSummary>
           <ErrorSummary.Heading>
             To proceed, you must correct the following errors:
           </ErrorSummary.Heading>
