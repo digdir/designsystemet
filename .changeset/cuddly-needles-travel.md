@@ -1,7 +1,6 @@
 ---
-"@digdir/designsystemet": patch
 "@digdir/designsystemet-react": patch
 "@digdir/designsystemet-web": patch
 ---
 
-update npm non-major dependencies
+**Tabs:** Has improved synchronous rendering for easier snapshot testing

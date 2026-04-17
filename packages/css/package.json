@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "1.13.1",
+  "version": "1.13.2",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -49,7 +49,7 @@
     "build:theme": "tsx ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./theme --experimental-tailwind"
   },
   "dependencies": {
-    "@digdir/designsystemet-types": "workspace:^"
+    "@digdir/designsystemet-types": "workspace:"
   },
   "devDependencies": {
     "autoprefixer": "10.4.27",

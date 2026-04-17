@@ -1,5 +1,28 @@
 # Change Log
 
+## 1.13.2
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4694](https://github.com/digdir/designsystemet/pull/4694))
+
+- **Card**: ensure underline on link in heading has same thickness as in version 1.11.1 ([#4723](https://github.com/digdir/designsystemet/pull/4723))
+
+- **Link**: Spacing for icons in links are now the same as in version 1.11.1 ([#4722](https://github.com/digdir/designsystemet/pull/4722))
+
+- Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))
+
+- **Breadcrumbs:** Renders correcly as `display: block` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- **details**: support `details` in nested cards where the inner is variant `default` and the outer is `tinted` ([#4724](https://github.com/digdir/designsystemet/pull/4724))
+
+- **Link**: Fix spacing when icon is present ([#4707](https://github.com/digdir/designsystemet/pull/4707))
+
+- **toggle-group**: fix overflow scroll and remove user-agent set inline margins ([#4702](https://github.com/digdir/designsystemet/pull/4702))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.2
+
 ## 1.13.1
 
 ### Patch Changes
