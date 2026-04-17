@@ -11,7 +11,12 @@ type CreateTokenFilesOptions = {
   themeNames: string[];
 };
 
-export const createTokenFiles = async (options: CreateTokenFilesOptions) => {
+/**
+ * Creates system token files (`$themes.json`, `$metadata.json`, `$designsystemet.jsonc`) based on the provided token set dimensions and theme names.
+ *
+ * `$themes.json` and `$metadata.json` are essential for Token Studio and Style Dictionary to correctly interpret and manage the design tokens.
+ */
+export const createSystemTokenFiles = async (options: CreateTokenFilesOptions) => {
   const { colors, themeNames, tokenSetDimensions } = options;
 
   const files: OutputFile[] = [];
