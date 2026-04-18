@@ -1,6 +1,6 @@
+import { readFileSync } from 'node:fs';
 import compression from 'compression';
 import express from 'express';
-import { readFileSync } from 'node:fs';
 //import rateLimit from 'express-rate-limit';
 import morgan from 'morgan';
 import { markdownNegotiation } from './server/markdown-negotiation.js';
@@ -17,7 +17,7 @@ app.use(markdownNegotiation);
 app.disable('x-powered-by');
 
 /* Serve /.well-known/api-catalog with correct Content-Type (RFC 9727) */
-app.get('/.well-known/api-catalog', (req, res) => {
+app.get('/.well-known/api-catalog', (_req, res) => {
   const filePath = DEVELOPMENT
     ? 'public/.well-known/api-catalog'
     : 'dist/client/.well-known/api-catalog';
