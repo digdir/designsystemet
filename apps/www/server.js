@@ -1,7 +1,9 @@
 import compression from 'compression';
 import express from 'express';
+import { readFileSync } from 'node:fs';
 //import rateLimit from 'express-rate-limit';
 import morgan from 'morgan';
+import { markdownNegotiation } from './server/markdown-negotiation.js';
 
 // Short-circuit the type-checking of the built output.
 const BUILD_PATH = './dist/server/index.js';
@@ -11,7 +13,26 @@ const PORT = Number.parseInt(process.env.PORT || '3000', 10);
 const app = express();
 
 app.use(compression());
+app.use(markdownNegotiation);
 app.disable('x-powered-by');
+
+/* Serve /.well-known/api-catalog with correct Content-Type (RFC 9727) */
+app.get('/.well-known/api-catalog', (req, res) => {
+  const filePath = DEVELOPMENT
+    ? 'public/.well-known/api-catalog'
+    : 'dist/client/.well-known/api-catalog';
+  try {
+    const content = readFileSync(filePath, 'utf-8');
+    res.setHeader(
+      'Content-Type',
+      'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"',
+    );
+    res.setHeader('Cache-Control', 'public, max-age=86400');
+    res.send(content);
+  } catch {
+    res.status(404).send('Not Found');
+  }
+});
 
 if (DEVELOPMENT) {
   console.log('Starting development server');

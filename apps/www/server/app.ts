@@ -31,6 +31,16 @@ app.use((req, res, next) => {
   );
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Cache-Control', 'max-age');
+
+  /* Add Link headers for agent discovery (RFC 8288 / RFC 9727) on the homepage */
+  if (req.path === '/' || req.path === '') {
+    res.setHeader('Link', [
+      '</.well-known/api-catalog>; rel="api-catalog"',
+      '</.well-known/security.txt>; rel="disclosure"',
+      '</sitemap.xml>; rel="sitemap"',
+    ]);
+  }
+
   /* Stop TRACE request */
   if (req.method === 'TRACE') {
     res
