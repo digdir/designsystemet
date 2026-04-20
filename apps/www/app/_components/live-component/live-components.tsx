@@ -58,6 +58,7 @@ export type LiveComponentProps = {
   story: string;
   layout?: 'row' | 'column' | 'centered' | 'block';
   language?: Language;
+  startAsInert?: boolean /*to prevent focus on load of error-summary stories*/;
 };
 
 //copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
@@ -298,6 +299,7 @@ export const LiveComponent = ({
   story,
   layout = 'centered',
   language = 'react',
+  startAsInert,
 }: LiveComponentProps) => {
   const location = useLocation();
   const { t } = useTranslation();
@@ -363,8 +365,14 @@ export const LiveComponent = ({
         data-layout={layout}
       >
         <LivePreview
+          inert={startAsInert}
           data-color-scheme={previewColorScheme}
           className={classes['live-preview']}
+          ref={(el: HTMLDivElement | null) => {
+            if (el && startAsInert)
+              /*500 has been tested to work in firefox & chrome*/
+              setTimeout(() => el?.removeAttribute('inert'), 500);
+          }}
         />
         <LiveError className={cl('ds-alert', classes['live-preview-error'])} />
         <ds.Button
