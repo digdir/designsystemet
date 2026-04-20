@@ -49,7 +49,7 @@ function getFrameworkTypes([_file, code]: string[], index: number) {
   return `${
     index
       ? '' // Only add once for each package, not for every file
-      : `import type * as PreactTypes from 'preact'
+      : `\nimport type * as PreactTypes from 'preact'
 import type * as ReactTypes from 'react'
 import type * as SvelteTypes from 'svelte/elements'
 import type * as VueJSX from '@vue/runtime-dom'
