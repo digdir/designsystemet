@@ -28,6 +28,9 @@
   margin-block: 0;
   a {
     color: inherit;
+    &:focus-visible {
+      outline: none;
+    }
   }
 }
 
