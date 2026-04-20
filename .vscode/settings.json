@@ -39,8 +39,5 @@
   },
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
-  },
-  "chat.tools.terminal.autoApprove": {
-    "pnpm": true
   }
 }
