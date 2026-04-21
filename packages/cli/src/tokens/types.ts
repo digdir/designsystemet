@@ -17,7 +17,6 @@ export type TokenSet = {
 export type TokenSets = Map<string, TokenSet>;
 
 export type Colors = Theme['colors'];
-export type ColorNamesByCategory = Record<ColorCategories, string[]>;
 export type Typography = Theme['typography'];
 
 export type Theme = {
@@ -31,6 +30,7 @@ export const colorCategories = {
 } as const;
 
 export type ColorCategories = keyof typeof colorCategories;
+export type ColorNamesByCategory = Record<ColorCategories, string[]>;
 
 export type BuiltInColors = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 
