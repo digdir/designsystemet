@@ -19,7 +19,7 @@ const getAllTsFiles = (dir: string): string[] => {
 
 export default defineConfig({
   async onSuccess() {
-    const dtsPath = path.resolve(pkgPath, 'dist/index.d.mts');
+    const dtsPath = path.resolve(pkgPath, 'dist/index.d.ts');
     if (!fs.existsSync(dtsPath)) return;
 
     const modules = getAllTsFiles(srcPath).map((file) => [
@@ -65,7 +65,10 @@ ${tagDefinitions
 
     return `
 export type Preact${componentType} = PreactTypes.JSX.HTMLAttributes<${domInterface}> & { ${events
-      .map(([, eventName, event]) => `"on${eventName}"?: (event: ${event}) => void`)
+      .map(
+        ([, eventName, event]) =>
+          `"on${eventName}"?: (event: ${event}) => void`,
+      )
       .join('; ')} }
 export type React${componentType} = ReactTypes.DetailedHTMLProps<ReactTypes.HTMLAttributes<${domInterface}>, ${domInterface}> & { class?: string }
 export type Qwik${componentType} = QwikJSX.IntrinsicElements['div'] & { class?: string }
