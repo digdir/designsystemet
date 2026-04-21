@@ -44,7 +44,7 @@
     "build:json-schema": "tsx ./src/scripts/createJsonSchema.ts",
     "types": "tsc --noEmit",
     "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./temp/options/design-tokens --theme options --clean",
-    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./configs/test-tokens.config.json",
+    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./tests/test-tokens.config.json",
     "test:tokens-build": "pnpm run designsystemet tokens build -t ./temp/options/design-tokens -o ./temp/options/build --clean",
     "test:tokens-build-tailwind": "pnpm run designsystemet tokens build -t ./temp/options/design-tokens -o ./temp/options/build --clean --experimental-tailwind",
     "test:tokens-build-config": "pnpm run designsystemet tokens build -t ./temp/config/design-tokens -o ./temp/config/build --clean",
