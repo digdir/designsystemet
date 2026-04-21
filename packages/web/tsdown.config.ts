@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { defineConfig } from 'tsdown';
+import pkg from './package.json' with { type: 'json' };
 
 const pkgPath = process.cwd();
 const srcPath = path.resolve(pkgPath, 'src');
@@ -19,7 +20,7 @@ const getAllTsFiles = (dir: string): string[] => {
 
 export default defineConfig({
   async onSuccess() {
-    const dtsPath = path.resolve(pkgPath, 'dist/index.d.ts');
+    const dtsPath = path.resolve(pkgPath, pkg.types);
     if (!fs.existsSync(dtsPath)) return;
 
     const modules = getAllTsFiles(srcPath).map((file) => [
