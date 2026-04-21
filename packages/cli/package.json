@@ -15,8 +15,7 @@
   "type": "module",
   "main": "./dist/src/index.js",
   "files": [
-    "./dist/**",
-    "./configs/**"
+    "./dist/**"
   ],
   "bin": "dist/bin/designsystemet.js",
   "exports": {
