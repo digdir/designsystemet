@@ -168,7 +168,7 @@ export function orderBySize(sizes: string[]): string[] {
 
 export function colorNamesByCategory(colors: Colors): ColorNamesByCategory {
   const result = {} as ColorNamesByCategory;
-  for (const category of colorCategories) {
+  for (const category of Object.values(colorCategories)) {
     result[category] = Object.keys(colors[category] ?? {});
   }
   return result;
