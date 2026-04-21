@@ -10,4 +10,5 @@ export default defineConfig({
   root: './',
   dts: false,
   fixedExtension: false,
+  clean: true,
 });
