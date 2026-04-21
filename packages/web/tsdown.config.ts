@@ -19,9 +19,9 @@ const getAllTsFiles = (dir: string): string[] => {
 };
 
 export default defineConfig({
+  fixedExtension: false,
   async onSuccess() {
     const dtsPath = path.resolve(pkgPath, pkg.types);
-    if (!fs.existsSync(dtsPath)) return;
 
     const modules = getAllTsFiles(srcPath).map((file) => [
       path.basename(file),
@@ -30,7 +30,11 @@ export default defineConfig({
 
     const footer = modules.map(getFrameworkTypes).join('');
     if (footer) {
-      fs.appendFileSync(dtsPath, footer);
+      try {
+        fs.appendFileSync(dtsPath, footer);
+      } catch {
+        // dts file does not exist yet, skip appending
+      }
     }
   },
 });
