@@ -19,6 +19,11 @@ const getAllTsFiles = (dir: string): string[] => {
 };
 
 export default defineConfig({
+  entry: ['./src/index.ts'],
+  outDir: 'dist',
+  format: 'esm',
+  clean: true,
+  dts: true,
   fixedExtension: false,
   async onSuccess() {
     const dtsPath = path.resolve(pkgPath, pkg.types);
