@@ -1,4 +1,5 @@
 export default {
+  lang: 'no',
   'use-theme': 'Ta i bruk tema',
   'theme-name': 'Gi temaet ditt et navn',
   'theme-name-description':

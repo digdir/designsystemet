@@ -20,7 +20,7 @@ export default function Config({
           {t('themeModal.config.step-one')}{' '}
           <Link
             target='_blank'
-            href='https://www.designsystemet.no/no/fundamentals/start-here/own-theme'
+            href={`https://www.designsystemet.no/${t('themeModal.lang')}/fundamentals/start-here/own-theme`}
           >
             {t('themeModal.own-theme')}
           </Link>
