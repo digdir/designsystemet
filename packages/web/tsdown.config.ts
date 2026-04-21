@@ -59,33 +59,35 @@ import type { JSX as SolidJSX } from 'solid-js'`
 
 ${tagDefinitions
   .map(([, tag, domInterface]) => {
-    const type = tag?.replace(/\W/g, '').replace(/./, (m) => m.toUpperCase());
+    const componentType = tag
+      ?.replace(/\W/g, '')
+      .replace(/./, (m) => m.toUpperCase());
 
     return `
-export type Preact${type} = PreactTypes.JSX.HTMLAttributes<${domInterface}> & { ${events
-      .map(([, type, event]) => `"on${type}"?: (event: ${event}) => void`)
+export type Preact${componentType} = PreactTypes.JSX.HTMLAttributes<${domInterface}> & { ${events
+      .map(([, eventName, event]) => `"on${eventName}"?: (event: ${event}) => void`)
       .join('; ')} }
-export type React${type} = ReactTypes.DetailedHTMLProps<ReactTypes.HTMLAttributes<${domInterface}>, ${domInterface}> & { class?: string }
-export type Qwik${type} = QwikJSX.IntrinsicElements['div'] & { class?: string }
-export type Vue${type} = VueJSX.HTMLAttributes
-export type Svelte${type} = SvelteTypes.HTMLAttributes<${domInterface}> & { ${events
+export type React${componentType} = ReactTypes.DetailedHTMLProps<ReactTypes.HTMLAttributes<${domInterface}>, ${domInterface}> & { class?: string }
+export type Qwik${componentType} = QwikJSX.IntrinsicElements['div'] & { class?: string }
+export type Vue${componentType} = VueJSX.HTMLAttributes
+export type Svelte${componentType} = SvelteTypes.HTMLAttributes<${domInterface}> & { ${events
       .map(
-        ([, type, event]) =>
-          `"on:${type}"?: (event: ${event}) => void, "on${type}"?: (event: ${event}) => void`,
+        ([, eventName, event]) =>
+          `"on:${eventName}"?: (event: ${event}) => void, "on${eventName}"?: (event: ${event}) => void`,
       )
       .join('; ')} }
-export type Solid${type} = SolidJSX.HTMLAttributes<${domInterface}>
+export type Solid${componentType} = SolidJSX.HTMLAttributes<${domInterface}>
 
-declare global { namespace React.JSX { interface IntrinsicElements { '${tag}': React${type} } } }
-declare global { namespace preact.JSX { interface IntrinsicElements { '${tag}': Preact${type} } } }
-declare module '@builder.io/qwik/jsx-runtime' { export namespace JSX { export interface IntrinsicElements { '${tag}': Qwik${type} } } }
+declare global { namespace React.JSX { interface IntrinsicElements { '${tag}': React${componentType} } } }
+declare global { namespace preact.JSX { interface IntrinsicElements { '${tag}': Preact${componentType} } } }
+declare module '@builder.io/qwik/jsx-runtime' { export namespace JSX { export interface IntrinsicElements { '${tag}': Qwik${componentType} } } }
 // Augmenting @vue/runtime-dom instead of vue directly to avoid interfering with React JSX
-declare module '@vue/runtime-dom' { export interface GlobalComponents { '${tag}': Vue${type} } }
-declare module 'svelte/elements' { interface SvelteHTMLElements { '${tag}': Svelte${type} } }
+declare module '@vue/runtime-dom' { export interface GlobalComponents { '${tag}': Vue${componentType} } }
+declare module 'svelte/elements' { interface SvelteHTMLElements { '${tag}': Svelte${componentType} } }
 declare module 'solid-js' {
   namespace JSX {
-    interface IntrinsicElements { '${tag}': Solid${type} }
-    interface CustomEvents { ${events.map(([, type, event]) => `"${type}": (event: ${event}) => void`).join('; ')} }
+    interface IntrinsicElements { '${tag}': Solid${componentType} }
+    interface CustomEvents { ${events.map(([, eventName, event]) => `"${eventName}": (event: ${event}) => void`).join('; ')} }
   }
 }`;
   })
