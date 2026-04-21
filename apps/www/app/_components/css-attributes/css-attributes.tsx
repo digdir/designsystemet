@@ -66,8 +66,8 @@ export function getAttributes(css: string) {
   const globals = ['color', 'size', 'color-scheme'];
 
   const allAttrs = Array.from(
-    css.matchAll(/\[data-([^=\]]+)(?:=([^\]]+))?\]/g),
-  ).map((matches) => ({ [matches[1]]: matches[2] }));
+    css.matchAll(/\[data-([^=\]|$~*^]+)(?:([|$~*^]?=)([^\]]+))?\]/g),
+  ).map((matches) => ({ [matches[1]]: matches[3] }));
 
   for (const attr of allAttrs) {
     for (const [key, value] of Object.entries(attr)) {
