@@ -8,6 +8,10 @@
   transition-property: border-color, outline;
   outline: 1px solid transparent;
 
+  a:focus-visible {
+    outline: none;
+  }
+
   &:hover {
     border-color: var(--ds-color-border-strong);
     outline: 1px solid var(--ds-color-border-strong);

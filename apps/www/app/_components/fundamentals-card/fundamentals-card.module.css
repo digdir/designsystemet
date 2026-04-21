@@ -26,6 +26,9 @@
 
   & a {
     color: inherit;
+    &:focus-visible {
+      outline: none;
+    }
   }
 }
 
