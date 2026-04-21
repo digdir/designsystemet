@@ -32,7 +32,6 @@ export type CheckboxProps = MergeRight<
     error?: ReactNode;
     /**
      * If outline, the checkbox will have a border.
-     * @default 'default'
      */
     variant?: 'default' | 'outline';
   } & LabelRequired

@@ -32,7 +32,6 @@ export type SwitchProps = MergeRight<
     position?: FieldProps['position'];
     /**
      * If outline, the switch will have a border.
-     * @default 'default'
      */
     variant?: 'default' | 'outline';
   } & LabelRequired

@@ -32,7 +32,6 @@ export type RadioProps = MergeRight<
     error?: ReactNode;
     /**
      * If outline, the radio will have a border.
-     * @default 'default'
      */
     variant?: 'default' | 'outline';
   } & LabelRequired
