@@ -24,18 +24,9 @@ export default {
     'Save your config file as "designsystemet.config.json". If you want to use the schema, install "@digdir/designsystemet"',
   config: {
     'step-one':
-      'Save your config file as "designsystemet.config.json" where you want the tokens and CSS to be generated.',
+      'Save your config file as "designsystemet.config.json" where you want the tokens and CSS to be generated. Read more about how to synchronize tokens with Figma here:',
     'step-two':
       'Open a terminal in the same folder as the config file. Run the code snippets to generate tokens and CSS variables for code.',
-  },
-  cli: {
-    'step-one':
-      'Copy the code snippet and run it on your machine to generate design tokens (JSON files).',
-    'step-two': 'Run the code snippet to generate CSS variables for code.',
-    'severity-warning':
-      'Note: Severity colors have changed in your theme. These will not be included if you use the CLI.',
-    'overrides-warning':
-      'Note: Color overrides have been added in your theme. These will not be included if you use the CLI.',
   },
   'max-X-colors': 'Maximum {count} colors allowed.',
   'severity-colors': 'Severity',

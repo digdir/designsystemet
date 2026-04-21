@@ -20,18 +20,9 @@ export default {
   color: 'Farge',
   config: {
     'step-one':
-      'Lagre config fila di som "designsystemet.config.json" der du vil at tokens og CSS skal bli generert.',
+      'Lagre config fila di som "designsystemet.config.json" der du vil at tokens og CSS skal bli generert. Les mer om hvordan du synkroniserer tokens med Figma her:',
     'step-two':
       'Åpne terminal i samme mappe som config fila. Kjør kodesnuttene for å generere tokens og CSS variabler til kode.',
-  },
-  cli: {
-    'step-one':
-      'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer).',
-    'step-two': 'Kjør kodesnutten for å generere CSS variabler til kode.',
-    'severity-warning':
-      'Merk: Severity farger er endret i temaet ditt. Disse vil ikke komme med dersom du bruker CLI.',
-    'overrides-warning':
-      'Merk: Fargeoverstyringer er lagt til i temaet ditt. Disse vil ikke komme med dersom du bruker CLI.',
   },
   'max-X-colors': 'Maks {count} farger tillatt.',
   'severity-colors': 'Severity',
