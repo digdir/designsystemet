@@ -125,7 +125,7 @@
       --dsc-field-border-width: var(--ds-border-width-default);
       --dsc-field-border-width--active: max(2px, 0.125rem);
       --dsc-field-padding: var(--ds-size-4);
-      --_dsc-field-border-color: var(--dsc-field-border-color); /* Using proxy props to easliy change source without overwriting states */
+      --_dsc-field-border-color: var(--dsc-field-border-color); /* Using proxy props to easily change source without overwriting states */
       --_dsc-field-outline-width: 0;
 
       border-color: var(--_dsc-field-border-color);
