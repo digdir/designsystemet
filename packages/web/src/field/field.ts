@@ -27,7 +27,7 @@ const ATTR_INDETERMINATE = 'data-indeterminate';
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
 const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so removed inputs/counts does not cause memory leaks
 const FIELDS = new Map<DSFieldElement, string[]>(); // Map of Field and its describedby IDs so we can identify the ones we add/remove
-const VALIDATIONS = new WeakSet<HTMLInputElement>(); // Used to ensure we only take control of aria-invalid if there current is or has been a validation element
+const VALIDATIONS = new WeakSet<HTMLInputElement>(); // Used to ensure we only take control of aria-invalid if the current is or has been a validation element
 const WARNING_MULTIPLE_INPUTS = `Fields should only have one input element. Use <fieldset> to group multiple fields:`;
 
 const handleFieldMutations = (_doc: Node, records: MutationRecord[] = []) => {
