@@ -21,12 +21,13 @@ declare global {
   }
 }
 
+const ATTR_INVALID = 'aria-invalid';
 const ATTR_DESCRIBEDBY = 'aria-describedby';
 const ATTR_INDETERMINATE = 'data-indeterminate';
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
 const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so removed inputs/counts does not cause memory leaks
 const FIELDS = new Map<DSFieldElement, string[]>(); // Map of Field and its describedby IDs so we can identify the ones we add/remove
-const VALIDATIONS = new WeakMap<HTMLInputElement>(); // Used to ensure we only take control of aria-invalid if there current is or has been a validation element
+const VALIDATIONS = new WeakSet<HTMLInputElement>(); // Used to ensure we only take control of aria-invalid if there current is or has been a validation element
 const WARNING_MULTIPLE_INPUTS = `Fields should only have one input element. Use <fieldset> to group multiple fields:`;
 
 const handleFieldMutations = (_doc: Node, records: MutationRecord[] = []) => {
@@ -93,13 +94,13 @@ const handleFieldMutation = (field: DSFieldElement) => {
   attr(input, ATTR_DESCRIBEDBY, [...nextDescs, ...keep].join(' ') || null);
   FIELDS.set(field, nextDescs);
 
-  // Only manage aria-invalid when field has validation elements
+  // Only manage aria-invalid when field has validation elements, and aria-invalid does not already exist
   const hadValidation = VALIDATIONS.has(input);
-  if (hasValidation && !hadValidation) {
-    VALIDATIONS.set(input, attr(input, 'aria-invalid')); // Store previous attribute to enable reverting state
-    attr(input, 'aria-invalid', 'true');
+  if (hasValidation && !hadValidation && !input.hasAttribute(ATTR_INVALID)) {
+    attr(input, ATTR_INVALID, 'true');
+    VALIDATIONS.add(input);
   } else if (!hasValidation && hadValidation) {
-    attr(input, 'aria-invalid', VALIDATIONS.get(input)); // Revert to previous state if validation element was removed
+    attr(input, ATTR_INVALID, null); // Remove aria-invalid
     VALIDATIONS.delete(input);
   }
 
