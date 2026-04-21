@@ -37,8 +37,12 @@ export default defineConfig({
     if (footer) {
       try {
         fs.appendFileSync(dtsPath, footer);
-      } catch {
-        // dts file does not exist yet, skip appending
+      } catch (error) {
+        if ((error as { code?: string }).code === 'ENOENT') {
+          // dts file does not exist yet, skip appending
+          return;
+        }
+        throw error;
       }
     }
   },
