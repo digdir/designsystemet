@@ -38,7 +38,7 @@
   "scripts": {
     "designsystemet": "tsx ./bin/designsystemet.ts",
     "designsystemet:inspect": "tsx --inspect-brk ./bin/designsystemet.ts",
-    "build": "tsup && pnpm build:types && pnpm build:json-schema",
+    "build": "tsdown && pnpm build:types && pnpm build:json-schema",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "build:json-schema": "tsx ./src/scripts/createJsonSchema.ts",
     "types": "tsc --noEmit",
@@ -77,7 +77,7 @@
     "@types/node": "24.12.2",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.31.1",
-    "tsup": "8.5.1",
+    "tsdown": "0.21.9",
     "tsx": "4.21.0",
     "typescript": "5.9.3"
   }
