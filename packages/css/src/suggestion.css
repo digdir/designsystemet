@@ -121,7 +121,7 @@
     --_ds-floating-arrow-visibility: hidden;
     --_ds-floating-arrow-size: var(--ds-size-2);
 
-    background-color: var(--dsc-suggestion-list-background);
+    background: var(--dsc-suggestion-list-background);
     border-color: var(--dsc-suggestion-border-color);
     border-radius: var(--dsc-suggestion-list-border-radius);
     border-style: var(--dsc-suggestion-border-style);
