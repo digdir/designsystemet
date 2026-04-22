@@ -4,45 +4,58 @@ search_terms: toggle, state, onoff
 
 <Story story="Preview" />
 
-**Use the `Switch` when**
-- the choice controls a function or setting that can be turned on or off
-- the change takes effect immediately when the user toggles the switch
+**Use `Switch` when**
+- users need to turn a feature or setting on or off  
+- you want the action to take immediate effect  
 
-**Avoid using the `Switch` when**
-- users are answering questions in forms, use [`Radio`](/en/components/docs/radio/overview) or [`Checkbox`](/en/components/docs/checkbox/overview) instead
-- content should switch between two categories, use [`ToggleGroup`](/en/components/docs/toggle-group/overview) instead
-- content should be filtered, use [`Chip`](/en/components/docs/chip/overview) instead
+**Avoid `Switch` when**
+- users are answering questions in forms, use [`Radio`](/no/components/docs/radio/overview) or [`Checkbox`](/no/components/docs/checkbox/overview) instead  
+- users are switching between different content views, such as list and graph, use [`ToggleGroup`](/no/components/docs/toggle-group/overview) instead  
+- content needs to be filtered, use [`Chip`](/no/components/docs/chip/overview) instead  
 
 ## Example
 
 ### Grouping
-Use [Fieldset](/en/components/docs/fieldset/overview) to group multiple `Switch` components together.
+Use [Fieldset](/no/components/docs/fieldset/overview) to group multiple `Switch` components together.
 
-<Story story="GroupEn" />
+<Story story="Group" />
 
-### Right aligned
-Sometimes it can be useful to right-align a `Switch`, for example when it is placed in a table or within a fixed layout.
+### Right-aligned
+Sometimes it can be useful to right-align a `Switch`, for example when it is placed in a table or a fixed layout.
 
-<Story story="RightAligned2En" />
+<Story story="RightAligned2" />
 
 ## Guidelines
-Use the `Switch` to turn settings, functions, or notifications on or off. It provides users with a clear visual indication of state.
+Whether the switch is shown as on or off depends on the context.
 
 ## Text
+The label for a switch should be short and precise, often just one or two words.
 
-The text for a `Switch` must be short and precise, often just one or two words. It should make sense when you read the label aloud and add “on/off” afterwards.
+The text should make sense when you read it aloud and add an on/off switch at the end.
 
-If you have several `Switch` components in a group, make sure the wording is consistent. Do not phrase them differently.
-
-The text should describe what the function relates to, not whether it is on or off. If the state is written directly in the label, it can become confusing and make it harder to understand the actual position of the switch.
+The label should describe what the feature is about, not whether it is on or off.
 
 <div className="dodont-row">
-  <DoDont story="DoIconEn">
-    Describe what the function applies to.
+  <DoDont story="DoIconEN">
+    Describe what the feature is about.
   </DoDont>
-  <DoDont story="DontIconEn">
-    Do not mention whether it is on or off.
+  <DoDont story="DontIconEN">
+    Never include whether the switch is on or off in the label.
   </DoDont>
 </div>
 
+If you have multiple switches in a group, make sure the labels are written in a consistent way. The example below shows consistent wording when there are several switches in the same group.
 
+<div className="dodont-row">
+  <DoDont story="DoIcon2EN">
+    Write labels for each switch in a consistent way.
+  </DoDont>
+  <DoDont story="DontIcon2EN">
+    Avoid inconsistent wording.
+  </DoDont>
+</div>
+
+### Where should the label be placed?
+As a rule, the switch is placed on the left and the label on the right. This makes it easy to see which label belongs to which switch.
+
+In some cases, switches are fixed on the right side of the interface. In those situations, it is best to place the label on the left, so all switches align neatly on the right.
