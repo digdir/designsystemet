@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-Remove included `/configs` files that was used internally
+Remove included `/configs` files that were used internally
