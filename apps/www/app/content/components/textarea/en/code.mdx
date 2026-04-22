@@ -1,27 +1,24 @@
----
-title: Textarea
-subtitle: '`Textarea` is a field where the user can enter longer text over multiple lines.'
-image: Textarea.svg
-cssfile: textarea
----
-
 <Story story="Preview" layout="column" />
+<ReactComponentDocs />
 
-## Usage
+## Use
 
 ```tsx
 import { Textarea, Label } from '@digdir/designsystemet-react';
+
 <>
-<Label htmlFor="my-textarea">Label</Label>
-<Textarea id="my-textarea" />
+  <Label htmlFor="my-textarea">Label</Label>
+  <Textarea id="my-textarea" />
 </>
 ```
 
-## Code Examples
+## Example
 
-### With rows
+### With Rows
+Use the `rows` attribute to set the number of visible rows in the text area.
+This only affects the initial height of the field.
 
-<Story story="WithRows" layout="column" />
+<Story story="WithRowsEn" layout="column" />
 
 ### Disabled
 
@@ -29,4 +26,17 @@ import { Textarea, Label } from '@digdir/designsystemet-react';
 
 ### ReadOnly
 
-<Story story="ReadOnly" layout="column" />
+<Story story="ReadOnlyEn" layout="column" />
+
+## HTML
+Apply the class name `ds-input` to `<textarea>`.
+
+```html
+<textarea class="ds-input"></textarea>
+```
+
+## CSS variables and data attributes
+`Textarea` gets styling from `ds-input`, so we show variables and data attributes from that class here.
+<CssVariables />
+
+<CssAttributes />

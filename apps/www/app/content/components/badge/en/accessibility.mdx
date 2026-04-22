@@ -1,0 +1,28 @@
+## What you need to check
+
+**`Badge` that shows important information must be included in the interactive element’s accessible name.**
+
+If `Badge` is placed inline (inside the element), the content becomes part of the accessible name. Example: `Button` with the text "Inbox" and a `Badge` with "2" will be announced as "Inbox 2".
+
+<span data-size="sm"> 
+WCAG: [1.3.1 Info and relationships](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+</span> 
+
+<Divider/>
+\
+**If a `Badge` is placed outside the interactive element, the badge information must be added to the element’s accessible name.**
+
+This often applies when a `Badge` is shown in the corner of a button or icon. In such cases, the badge value must be added manually to the element’s accessible name (for example via `aria-label`).
+
+<span data-size="sm"> 
+WCAG: [1.3.1 Info and relationships](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+</span> 
+
+<Divider/>
+\
+**`Badge` that changes value (for example 1 → 2) must be announced to screen readers**
+
+<span data-size="sm"> 
+WCAG: [4.1.3 Status messages](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+</span> 
+

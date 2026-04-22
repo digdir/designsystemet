@@ -1,19 +1,89 @@
----
-title: Pagination
-image: Pagination.svg
-cssfile: pagination
----
+<Story story="PreviewEn" />
+<ReactComponentDocs />
 
+## Usage
+`Pagination` is a stateless component, and you must control which pages are displayed.
+
+Use `usePagination` for pagination logic together with the single-part components.
+[Read more about `usePagination`](/en/components/utilities/use-pagination).
+
+```tsx
+import { Pagination } from '@digdir/designsystemet-react';
+
+<Pagination>
+  <Pagination.List>
+    <Pagination.Item>
+      <Pagination.Button aria-label='Previous page'>
+      Previous
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Page 1'>
+      1
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item />
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Page 10'>
+      10
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Next Page'>
+      Next
+      </Pagination.Button>
+    </Pagination.Item>
+  </Pagination.List>
+</Pagination>
+```
 ## Examples
 
 ### Default
 
-<Story story="Preview" />
+The example shows `Pagination' with buttons that are not linked to any action.
+When you press, you will not navigate to another page.
+
+<Story story="PreviewEn" />
 
 ### With links
 
-<Story story="WithAnchor" />
+Below you see `usePagination` used with `Pagination` to create pagination with links.
+
+You use `asChild` to change `Pagination.Button` to `<a>`.
+
+<Story story="WithAnchorEn" />
 
 ### Mobile
 
-<Story story="Mobile" />
+There is no built-in mobile support in `Pagination`, but you can show fewer pages and remove text for the previous/next buttons on mobile devices.
+
+<Story story="MobileEn" />
+
+## HTML
+
+Add the class name `ds-pagination` to the `<ds-pagination>` element.
+The web component automatically fills the buttons or anchors based on the data attributes `data-current` and `data-total`.
+
+If you wish to use your own buttons you can add them inside `<a>` or `<button>` elements inside `<ds-pagination>`.
+If you fill these with text, and do not send any attributes, the web component will not change the buttons.
+
+```html
+<ds-pagination class="ds-pagination" aria-label="Pagination" data-href="?page=%d" data-current="2" data-total="100">
+  <ol>
+    <li><a></a></li>
+    <li><a></a></li>
+    <li><a></a></li>
+    <li><a></a></li>
+  </ol>
+</ds-pagination>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

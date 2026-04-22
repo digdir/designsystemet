@@ -17,18 +17,14 @@ export const NoName = () => {
 export const Sizes = () => (
   <>
     <Avatar data-size='xs' aria-label='extra small' initials='xs' />
-    <Avatar data-size='xs' aria-label='extra small' />
     <Avatar data-size='sm' aria-label='small' initials='sm' />
-    <Avatar data-size='sm' aria-label='small' />
     <Avatar data-size='md' aria-label='medium' initials='md' />
-    <Avatar data-size='md' aria-label='medium' />
     <Avatar data-size='lg' aria-label='large' initials='lg' />
-    <Avatar data-size='lg' aria-label='large' />
   </>
 );
 
 export const ColorVariants = () => {
-  const colors = ['neutral', 'accent', 'brand1', 'brand2', 'nramd3'];
+  const colors = ['neutral', 'accent', 'brand1', 'brand2', 'brand3'];
 
   return (
     <>
@@ -47,10 +43,10 @@ export const ShapeVariants = () => (
   <>
     <Avatar variant='circle' aria-label='variant circle' />
     <Avatar variant='square' aria-label='variant square' />
-    <Avatar variant='circle' aria-label='Ola Nordman'>
+    <Avatar variant='circle' aria-label='Ola Nordmann'>
       ON
     </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordman'>
+    <Avatar variant='square' aria-label='Ola Nordmann'>
       ON
     </Avatar>
   </>
@@ -58,10 +54,10 @@ export const ShapeVariants = () => (
 
 export const WithImageAndIcon = () => (
   <>
-    <Avatar aria-label='Ola Nordman'>
+    <Avatar aria-label='Ola Nordmann'>
       <img src='/img/component-docs/cats/cat1.webp' alt='' />
     </Avatar>
-    <Avatar aria-label='Ola Nordman'>
+    <Avatar aria-label='Ola Nordmann'>
       <BriefcaseIcon />
     </Avatar>
   </>
@@ -73,7 +69,7 @@ export const InDropdown = () => (
       <Avatar aria-hidden='true' data-size='sm'>
         ON
       </Avatar>
-      Velg Profil
+      Ola Nordmann
     </Dropdown.Trigger>
     <Dropdown placement='bottom-end' autoPlacement={false} data-size='md'>
       <Dropdown.List>

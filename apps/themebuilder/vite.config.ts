@@ -2,9 +2,18 @@ import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [reactRouter(), tsconfigPaths()],
   ssr: {
-    noExternal: ['ramda'],
+    noExternal: ['@navikt/aksel-icons', 'ramda'],
   },
-});
+  build: {
+    rollupOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router'],
+    esbuildOptions: {
+      jsx: 'automatic',
+    },
+  },
+}));

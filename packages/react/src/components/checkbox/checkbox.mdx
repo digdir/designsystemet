@@ -1,178 +1,29 @@
-import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/addon-docs/blocks';
-import { Do, Dont, Stack, CssVariables } from '@doc-components';
-import css from '@digdir/designsystemet-css/input.css?inline';
+import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
 import * as CheckboxStories from './checkbox.stories';
-import * as useCheckboxGroupStories from '../../utilities/hooks/use-checkbox-group/use-checkbox-group.stories';
 
 <Meta of={CheckboxStories} />
 
-# Checkbox
-
-Vi bruker `Checkbox` for å gi brukerne valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Bruk [`Fieldset`](#fieldset) til å gruppere flere valg.
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-## Bruk
-
-```tsx
-import { Checkbox } from '@digdir/designsystemet-react';
-
-<Fieldset>
-  <Fieldset.Legend>Skal du reise til noen av disse landene?</Fieldset.Legend>
-  <Checkbox label='Kroatia' value='kroatia' />
-  <Checkbox label='Slovakia' value='slovakia' />
-  <Checkbox label='Hobsyssel' value='hobsyssel' />
-  <Checkbox label='Jeg skal ikke til noen av disse landene' value='ingen' />
-</Fieldset>
-```
-
-## Kodeeksempler
-
-### Kun ett valg
-
-Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `Checkbox` stå alene. For eksempel når brukeren skal samtykke til vilkår.
-
 <Canvas of={CheckboxStories.OneOption} />
-
-### Gruppering av flere valg
-
-Bruk `Fieldset` og `useCheckboxGroup` for gruppering av flere valg. [Les mer om `useCheckboxGroup`](/docs/utilities-usecheckboxgroup--docs)
 
 <Canvas of={CheckboxStories.Group} />
 
-### Velge alle alternativer med en overordnet Checkbox
-
-Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet `Checkbox` som kan velge eller fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere `Checkbox` er markert i gruppen. Den vises som en vanlig `Checkbox` dersom alle i gruppen har samme tilstand.
-
 <Canvas of={CheckboxStories.InTable} />
-
-### Vise feilmelding
-
-Bruk `error` på `Fieldset` for å vise feilmelding.
-
-Her må du bruke `Fieldset` for å gjøre innholdet tilgjengelig og aktivere riktig stil.
 
 <Canvas of={CheckboxStories.WithError} />
 
-### Kontrollert
-
-Bruk `useCheckboxGroup` og `setValue` for å kontrollere hvilke alternativer som er valgt utenfor komponenten.
-I eksempelet under kontrollerer vi hvilke `Checkbox` som er valgt med både [`Button`](/docs/komponenter-button--docs) og [`Chip`](/docs/komponenter-chip--docs).
-
 <Canvas of={CheckboxStories.Controlled} />
-
-### Skrivebeskyttet Checkbox
-
-`Checkbox` støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon
-som skiller seg fra redigerbare felter.
-Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrekkefølgen, og informasjon blir
-med når skjemaet sendes inn.
-
-Vi unngår `readOnly` så langt det lar seg gjøre, fordi slike felter kan være forvirrende for noen brukere.
-Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet.
 
 <Canvas of={CheckboxStories.ReadOnly} />
 
-### Ikke bruk deaktivert Checkbox
-
-Vi bør unngå at `Checkbox` er deaktivert (`disabled`) fordi det kan være vanskelig å oppfatte. Noen brukere vil ikke forstå hva valget sier eller hvorfor det ikke er klikkbart. Hvis en `Checkbox` eller gruppe med `Checkbox` ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelige.
-
-Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
-
 <Canvas of={CheckboxStories.Disabled} />
-
-## Retningslinjer
-Bruk `Checkbox` når flere svaralternativer kan velges samtidig.
-
-**Passer til å**
-
-- velge ett eller flere alternativer i skjemaer
-- godta vilkår for en tjeneste eller lignende funksjonalitet
-
-**Passer ikke til å**
-
-- velge bare ett alternativ, bruk heller [`Radio`](/docs/komponenter-radio--docs), [`Select`](/docs/komponenter-select--docs) eller [`Suggestion`](/docs/komponenter-suggestion--docs)
-- velge mellom flere enn 7 svaralternativer, bruk heller [`Suggestion`](/docs/komponenter-suggestion--docs)
-- slå noe av eller på, bruk heller [`Switch`](/docs/komponenter-switch--docs)
-
-
-### Rekkefølge
-
-Vær bevisst på rekkefølgen du velger for alternativene. Ofte er en alfabetisk sortering det beste, men dersom det finnes en logisk rekkefølge, f.eks. _vinter, vår, sommer, høst_, bør du
-heller bruke denne.
-
-I noen tilfeller kan det være hjelpsomt å ha de mest aktuelle alternativene først, men vær forsiktig så rekkefølgen ikke påvirker svaret eller gjør det vanskelig å finne ønsket alternativ.
-
-### Plassering
-
-`Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn
-til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger
-under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å
-se godt nok, er en horisontal liste ekstra vanskelig.
-
-<Stack
-  direction='row'
-  style={{
-    justifyContent: 'unset',
-    alignItems: 'unset',
-  }}
->
-  <Do
-    description={<>Plasser <code>Checkbox</code> vertikalt, slik at listen blir lettere å lese.</>}
-    image='/img/component-guidelines/checkbox/CheckboxGroupV.png'
-  />
-  <Dont
-    description={<>Du bør unngå å plassere <code>Checkbox</code> i flere kolonner.</>}
-    image='/img/component-guidelines/checkbox/CheckboxGroupH.png'
-  />
-</Stack>
-
-## Tekst 
-
-I et skjema er ofte forklaringen formulert som et spørsmål. I noen sammenhenger kan det være uklart for brukeren om det er lov å velge flere alternativer, eller om de må velge kun ett. Vurder derfor om du bør spesifisere at brukeren kan velge flere svaralternativer.
-
-Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når `legend`
-er en setning, kan du skrive den i du-form og svaralternativene (`label`) i jeg-form. `label` skal alltid ha stor forbokstav.
-
-<img
-  src='/img/component-guidelines/checkbox/checkbox-anatomy.png'
-  alt='Illustrasjonen viser hva som er legend, description og label i en gruppe med flere `Checkbox`.'
-/>
-
-### Lag logisk sammenheng mellom forklaringen og svaralternativene
-
-Brukeren skal kunne lese hvert svaralternativ som en logisk respons på forklaringen over boksene.
-
-Eksempel på riktig logisk sammenheng:
 
 <Canvas of={CheckboxStories.ContentEx1} />
 
-### Gi svaralternativene samme språklige form
-
-Det betyr at de kan ha enten fullstendige setninger eller ett ord, ikke begge deler.
-
-**Enten:**
-
 <Canvas of={CheckboxStories.ContentEx2} />
 
-**Eller:**
-
 <Canvas of={CheckboxStories.ContentEx3} />
-
-## Tilgjengelighet
-
-Det skal være mulig å flytte fokus til `Checkbox`, ved å trykke <kbd>Tab</kbd> på tastaturet. Det skal være mulig å merke og fjerne avmerking ved å trykke <kbd>Space</kbd>.
-
-### Tastaturnavigasjon
-* <kbd>Space</kbd> slår av/på
-
-### Bruk label
-
-`Checkbox` skal alltid ha et tilgjengelig navn. I de fleste tilfeller er dette `label`. I spesielle tilfeller kan det gi mening å unnlate `label`, og heller bruke `aria-label` eller `aria-labelledby`. Et eksempel på begge disse aria-attributtene er [bruken av `Checkbox` i tabell](#velge-alle-alternativer-med-en-overordnet-checkbox) lenger opp.
-
-## CSS Variabler
-
-<CssVariables css={css} />
-
-

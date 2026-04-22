@@ -1,35 +1,38 @@
 .card {
-  display: block;
-  text-align: center;
-  background-color: var(--ds-color-neutral-background-default);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background-color: var(--ds-color-neutral-surface-default);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  outline: 1px solid transparent;
   color: var(--ds-color-neutral-text-default);
-  padding: var(--ds-size-10);
-  border-radius: var(--ds-border-radius-md);
-  box-shadow: var(--ds-shadow-xs);
+  border-radius: var(--ds-border-radius-lg);
   text-decoration: none;
-  @media (prefers-reduced-motion: no-preference) {
-    transition:
-      0.2s transform ease-in-out,
-      0.2s box-shadow ease-in-out;
+  transition: 0.2s ease;
+  transition-property: border-color, outline;
+  &:hover {
+    border-color: var(--ds-color-neutral-border-strong);
+    outline: 1px solid var(--ds-color-neutral-border-strong);
   }
-
-  [data-color-scheme='dark'] &,
-  [data-color-scheme='auto'] & {
-    background-color: var(--ds-color-neutral-surface-tinted);
+  &:focus-visible {
+    box-shadow: var(--dsc-focus-boxShadow);
+    outline: var(--dsc-focus-outline);
+    outline-offset: var(--ds-border-width-focus);
   }
-}
-
-.card:hover {
-  box-shadow: var(--ds-shadow-md);
-  transform: translateY(-4px);
+  :has(:focus-visible) & {
+    transition: none;
+  }
 }
 
 .title {
-  margin-top: var(--ds-size-3);
+  padding: 20px;
+  padding-bottom: 24px;
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
   text-decoration: underline;
-  text-underline-offset: 7px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
 .image {
   width: 100%;
+  padding: var(--ds-size-8) var(--ds-size-10);
 }

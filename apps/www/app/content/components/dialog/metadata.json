@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Dialog",
-    "subtitle": "`Dialog` lar deg lage modale og ikke-modale dialoger basert på HTML-elementet `dialog`."
+    "subtitle": "Det er to typer dialoger, en modal og en ikke-modal. En modal dialog tvinger brukerne til å ta stilling til noe før de kan fortsette å bruke siden. En Ikke-modal dialog lar brukerne fortsette å bruke siden, selv om dialogen er åpen."
   },
   "en": {
     "title": "Dialog",
-    "subtitle": "`Dialog` allows you to create both modal and non-modal dialogs based on the HTML `dialog` element."
+    "subtitle": "There are two types of dialogs: modal and non-modal. A modal dialog requires users to take action before they can continue using the page. A non-modal dialog allows users to continue using the page, even while the dialog is open."
   },
   "image": "Dialog.svg",
   "cssFile": "dialog.css"

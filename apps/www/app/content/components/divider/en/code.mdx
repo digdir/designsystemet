@@ -1,11 +1,5 @@
----
-title: Divider
-subtitle: '`Divider` is used to create a visual separation between content. It is a simple horizontal line that extends across the available width.'
-image: Divider.svg
-cssfile: divider
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Usage
 
@@ -14,3 +8,18 @@ import { Divider } from '@digdir/designsystemet-react';
 
 <Divider />
 ```
+
+## HTML
+
+The class name `ds-divider` is applied directly to the `<hr>` element.
+Apply `aria-hidden="true"` to avoid noise in screen readers.
+
+```html
+<hr class="ds-divider" aria-hidden="true" />
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

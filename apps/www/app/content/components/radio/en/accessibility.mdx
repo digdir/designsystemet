@@ -1,0 +1,18 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
+Make sure there is enough spacing around each radio button so that it is easy to select, including on touch devices.
+
+Avoid placing radio buttons next to each other. This makes them harder to read and creates problems for users who need to zoom a webpage or app to see clearly.
+
+### Disabled states
+Avoid disabled states if possible. They have low colour contrast, which can be problematic for some users. `disabled` cannot meet contrast requirements, because if the contrast were higher, users might think the element is active, try to select it, and not understand why nothing happens. NAV has a good explanation of [why disabled states are problematic](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) and what alternatives exist.
+
+### Keyboard navigation
+Note that we use the arrow keys to select options in the `Radio` component, not the Tab key.
+
+- <kbd data-icon>↑</kbd> or <kbd data-icon>←</kbd> moves to the previous option  
+- <kbd data-icon>↓</kbd> or <kbd data-icon>→</kbd> moves to the next option  
+- <kbd>Space</kbd> moves to the first option in a group of radio buttons when the group does not have a preselected option  
+- <kbd>Tab</kbd> moves to the entire group of options  

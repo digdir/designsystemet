@@ -3,9 +3,9 @@
   box-shadow: var(--ds-shadow-sm);
   border: none;
   border-radius: 8px;
+  padding: var(--ds-size-8);
 
   position: relative;
-  z-index: 2;
   height: 100%;
   @media (prefers-reduced-motion: no-preference) {
     transition:
@@ -27,8 +27,8 @@
 }
 
 .iconContainer {
-  height: 54px;
-  width: 54px;
+  height: 3.375rem;
+  width: 3.375rem;
   border-radius: var(--ds-border-radius-sm);
   transform: rotate(45deg);
   margin: 0 auto;
@@ -37,12 +37,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
 }
 
 .iconContainer svg,
 .iconContainer img {
   transform: rotate(-45deg);
+  height: 2.125rem;
+  width: auto;
 }
 
 .red {
@@ -83,8 +84,6 @@
   margin-top: var(--ds-size-5);
   margin-bottom: var(--ds-size-5);
   text-align: center;
-  text-decoration: underline;
-  text-underline-offset: 7px;
   line-height: 1.4em;
 }
 

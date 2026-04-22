@@ -1,7 +1,7 @@
-import cat1 from '@assets/img/cats/Cat 3.jpg';
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import themeConfig from '../../../../cli/configs/digdir.config.json';
+import { cat3Img, themeColors } from '../../../stories/constants';
+
 import { Avatar, type AvatarProps, Badge, Dropdown } from '../';
 
 type Story = StoryFn<typeof Avatar>;
@@ -20,12 +20,6 @@ const meta: Meta<typeof Avatar> = {
     },
   },
 };
-
-const colorVariants = [
-  ...Object.keys(themeConfig.themes.digdir.colors.main),
-  ...Object.keys(themeConfig.themes.digdir.colors.support),
-  'neutral',
-];
 
 export default meta;
 
@@ -54,7 +48,7 @@ export const Sizes: Story = () => (
 
 export const ColorVariants: Story = () => (
   <>
-    {colorVariants.map((color) => (
+    {[...themeColors].map((color) => (
       <Avatar
         key={color}
         data-color={color as AvatarProps['data-color']}
@@ -68,19 +62,17 @@ export const ShapeVariants: Story = () => (
   <>
     <Avatar variant='circle' aria-label='variant circle' />
     <Avatar variant='square' aria-label='variant square' />
-    <Avatar variant='circle' aria-label='Ola Nordman'>
+    <Avatar variant='circle' aria-label='Ola Nordmann'>
       ON
     </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordman'>
+    <Avatar variant='square' aria-label='Ola Nordmann'>
       ON
     </Avatar>
   </>
 );
 
 export const WithImage: Story = () => (
-  <Avatar aria-label='Ola Nordman'>
-    <img src={cat1} alt='' />
-  </Avatar>
+  <Avatar aria-label='Ola Nordmann'>{cat3Img}</Avatar>
 );
 
 export const InDropdown: Story = () => (

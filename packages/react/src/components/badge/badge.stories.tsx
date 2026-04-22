@@ -9,7 +9,7 @@ import {
 } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import type { CSSProperties } from 'react';
-import { Badge, Button, Tabs } from '../';
+import { Badge, Button, Paragraph, Tabs } from '../';
 
 type Story = StoryFn<typeof Badge>;
 
@@ -179,6 +179,12 @@ export const InButton: Story = () => (
         <VideoIcon title='Skru på video' />
       </Badge.Position>
     </Button>
+    <Badge.Position>
+      <Badge data-color='danger' count={10} />
+      <Button>
+        <InboxIcon title='Innboks' /> Test
+      </Button>
+    </Badge.Position>
   </>
 );
 
@@ -232,3 +238,10 @@ Variants.parameters = {
     width: '100%',
   },
 };
+
+export const Bullet: Story = () => (
+  <Paragraph>
+    <Badge data-color='success' />
+    Aktiv
+  </Paragraph>
+);

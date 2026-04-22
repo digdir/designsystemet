@@ -1,14 +1,18 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet/types';
+import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, version } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Spinner } from '../spinner/spinner';
 
 export type ButtonProps = MergeRight<
-  DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
+  DefaultProps &
+    Omit<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      'command' | 'commandfor' | 'commandFor'
+    >,
   {
     /**
      * Specify which variant to use
@@ -42,6 +46,17 @@ export type ButtonProps = MergeRight<
      * @default 'button'
      */
     type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+    /**
+     * Native invoker commands. Specifies actions to perform on an element specified by commandfor. Polyfilled by designsystemet-web and includes a custom --show-non-modal command.
+     * "show-modal", "close", "request-close", "show-popover", "hide-popover", "toggle-popover", "--show-non-modal"
+     */
+    command?: string;
+    /**
+     * Specifies the target element for "command".
+     * value is ID of target
+     */
+    commandfor?: string;
+    commandFor?: string;
   }
 >;
 
@@ -60,25 +75,37 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       icon = false,
       loading = false,
       variant = 'primary',
+      popoverTarget,
+      popovertarget,
+      commandfor,
+      commandFor,
       ...rest
     },
     ref,
   ) {
     const Component = asChild ? Slot : 'button';
+    const popoverVal = popoverTarget ?? popovertarget;
+    const popoverKey = version.startsWith('19')
+      ? 'popoverTarget'
+      : 'popovertarget';
+
+    const commandForVal = commandFor ?? commandfor;
 
     // Fallbacks to undefined to prevent rendering attribute="false"
     return (
       <Component
+        suppressHydrationWarning // Might get augmented through designsystemet-web with aria-haspopup etc.
         aria-busy={Boolean(loading) || undefined}
         aria-disabled={Boolean(loading) || undefined}
         className={cl('ds-button', className)}
         data-icon={icon || undefined}
+        commandfor={commandForVal}
         data-variant={variant}
         ref={ref}
         /* don't set type when we use `asChild` */
         type={asChild ? undefined : 'button'}
         /* if consumers set type, our default does not set anything, as `rest` contains this */
-        {...rest}
+        {...{ [popoverKey]: popoverVal, ...rest }}
       >
         {loading === true ? (
           <Spinner aria-hidden='true' />

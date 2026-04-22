@@ -65,7 +65,8 @@ export const ColorModal = ({
           </Paragraph>
           <Paragraph asChild className={classes.value}>
             <div>
-              {hex} <ClipboardButton value={hex} />
+              <code>{hex}</code>
+              <ClipboardButton value={hex} />
             </div>
           </Paragraph>
           <Select defaultValue='oklch' onChange={handleColorFormat}>
@@ -80,14 +81,14 @@ export const ColorModal = ({
             <Select.Option value='xyz-d65'>XYZ-D65</Select.Option>
           </Select>
           <Paragraph className={classes.value}>
-            {convertedColor}
+            <code>{convertedColor}</code>
             <ClipboardButton value={convertedColor} />
           </Paragraph>
           <Paragraph className={classes.key}>
             {t('color-modal.css-variable')}
           </Paragraph>
           <Paragraph className={classes.value}>
-            {getCssVariable(namespace, number)}
+            <code>{getCssVariable(namespace, number)}</code>
             <ClipboardButton value={getCssVariable(namespace, number)} />
           </Paragraph>
           <Paragraph className={classes.key}>

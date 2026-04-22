@@ -23,13 +23,23 @@ import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
 import classes from './header.module.css';
+import { SearchTrigger } from './search-trigger';
+
+export type HeaderSearchConfig = {
+  /**
+   * Callback when search is triggered
+   */
+  onSearchClick: () => void;
+};
 
 type HeaderProps = {
   menu: { name: TemplateStringsArray; href: string }[];
-  betaTag?: boolean;
   themeSwitcher?: boolean;
-  transparentBackground?: boolean;
   logoLink?: string;
+  /**
+   * Search configuration. If provided, shows a search trigger in the header.
+   */
+  search?: HeaderSearchConfig;
 } & React.HTMLAttributes<HTMLElement>;
 
 /**
@@ -61,10 +71,9 @@ const detectWrap = (items: HTMLCollection) => {
 
 const Header = ({
   menu,
-  betaTag,
   themeSwitcher = false,
-  transparentBackground = false,
   logoLink = '/',
+  search: searchConfig,
   className,
   ...props
 }: HeaderProps) => {
@@ -80,25 +89,24 @@ const Header = ({
   };
 
   const langPaths = getNewLangPaths();
-
-  const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
   const [langOpen, setLangOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
+  const hamburgerMenu = useRef<HTMLDivElement>(null);
+  const closeMenuRef = useRef<HTMLButtonElement>(null);
   const headerRef = useRef<HTMLElement>(null);
 
   const [theme, setTheme] = useState('light');
 
   //close mobile menu when tabfocus leaves the header
   const handleBlur = (e: FocusEvent) => {
-    if (!open) return;
     if (
-      headerRef.current &&
+      hamburgerMenu.current &&
       e.relatedTarget instanceof Node &&
-      !headerRef.current.contains(e.relatedTarget)
+      !hamburgerMenu.current.contains(e.relatedTarget)
     ) {
-      setOpen(false);
+      closeMenuRef.current?.click();
     }
   };
 
@@ -150,7 +158,6 @@ const Header = ({
         const SAFETY_MARGIN = 50;
         if (window.innerWidth > viewportWidth + SAFETY_MARGIN) {
           setIsHamburger(false);
-          setOpen(false);
         }
       } else if (menuRef.current && headerRef.current) {
         const wrappedItems = detectWrap(menuRef.current.children);
@@ -178,16 +185,13 @@ const Header = ({
           />
         );
       })}
-      {/* biome-ignore lint/a11y/noStaticElementInteractions: onBlur bubbles from children that are interactive and must be captured here */}
       <header
         className={cl(
           classes.header,
           isHamburger && classes.hamburger,
-          transparentBackground && classes.transparentHeader,
           className,
         )}
         ref={headerRef}
-        onBlur={handleBlur}
         {...props}
       >
         <div className={classes.container}>
@@ -196,15 +200,10 @@ const Header = ({
               className={cl(classes.logoLink, 'ds-focus')}
               to={logoLink}
               aria-label={t('header.home-link')}
-              onClick={() => setOpen(false)}
             >
-              {isHamburger ? (
-                <DsEmbledLogo className={classes.logo} />
-              ) : (
-                <DsFullLogo className={classes.logo} />
-              )}
+              <DsEmbledLogo className={classes.logo} />
+              <DsFullLogo className={classes.logoWide} />
             </Link>
-            {betaTag && <div className={classes.tag}>Beta</div>}
           </div>
           <nav data-mobile={isHamburger}>
             <ul ref={menuRef} className={classes.desktopMenu}>
@@ -216,6 +215,7 @@ const Header = ({
                       to={item.href}
                       className={cl(
                         pathname?.includes(item.href) && classes.active,
+                        classes.headerLink,
                         'ds-focus',
                       )}
                     >
@@ -225,6 +225,40 @@ const Header = ({
                 </li>
               ))}
             </ul>
+            {searchConfig && (
+              <SearchTrigger onClick={searchConfig.onSearchClick} />
+            )}
+            <Dropdown.TriggerContext>
+              <Dropdown.Trigger
+                variant='tertiary'
+                data-color='neutral'
+                className={classes.toggleButton}
+                onClick={() => setLangOpen(!langOpen)}
+                lang='en'
+              >
+                <LanguageIcon aria-hidden />
+                <span>Language</span>
+              </Dropdown.Trigger>
+
+              <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
+                <Dropdown.List>
+                  <Dropdown.Item>
+                    <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                      <Link to={langPaths.no} lang='no' hrefLang='no'>
+                        Norsk
+                      </Link>
+                    </Dropdown.Button>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                      <Link to={langPaths.en} lang='en' hrefLang='en'>
+                        English
+                      </Link>
+                    </Dropdown.Button>
+                  </Dropdown.Item>
+                </Dropdown.List>
+              </Dropdown>
+            </Dropdown.TriggerContext>
             {themeSwitcher && (
               <Tooltip
                 content={t('header.theme-toggle', {
@@ -247,87 +281,81 @@ const Header = ({
                   className={classes.toggleButton}
                 >
                   {theme === 'dark' ? (
-                    <SunIcon fontSize='1.75em' aria-hidden />
+                    <SunIcon aria-hidden />
                   ) : (
-                    <MoonIcon fontSize='1.75em' aria-hidden />
+                    <MoonIcon aria-hidden />
                   )}
                 </Button>
               </Tooltip>
             )}
-            <Dropdown.TriggerContext>
-              <Dropdown.Trigger
-                variant='tertiary'
-                data-color='neutral'
-                className={classes.toggleButton}
-                onClick={() => setLangOpen(!langOpen)}
-                lang='en'
-              >
-                <LanguageIcon aria-hidden />
-                Language
-              </Dropdown.Trigger>
-
-              <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
-                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                  <Link to={langPaths.no} lang='no' hrefLang='no'>
-                    Norsk
-                  </Link>
-                </Dropdown.Button>
-                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                  <Link to={langPaths.en} lang='en' hrefLang='en'>
-                    English
-                  </Link>
-                </Dropdown.Button>
-              </Dropdown>
-            </Dropdown.TriggerContext>
             {isHamburger && (
               <>
                 <Button
                   variant='tertiary'
                   icon={true}
                   data-color='neutral'
-                  aria-expanded={open}
-                  aria-label={
-                    open ? t('header.close-menu') : t('header.open-menu')
-                  }
+                  aria-label={t('header.open-menu')}
                   className={cl(classes.toggle, 'ds-focus')}
-                  onClick={() => {
-                    setOpen(!open);
-                  }}
+                  popoverTarget='hamburgerMenu'
+                  popoverTargetAction='show'
                 >
-                  {open && (
-                    <XMarkIcon
-                      aria-hidden
-                      fontSize={26}
-                      color='var(--ds-color-neutral-text-default)'
-                    />
-                  )}
-                  {!open && (
-                    <MenuHamburgerIcon
-                      aria-hidden
-                      fontSize={26}
-                      color='var(--ds-color-neutral-text-default)'
-                    />
-                  )}
+                  <MenuHamburgerIcon
+                    aria-hidden
+                    color='var(--ds-color-neutral-text-default)'
+                  />
                 </Button>
-                <ul data-open={open}>
-                  {menu.map((item, index) => (
-                    <li key={index}>
-                      <Paragraph data-size='md' asChild>
-                        <Link
-                          suppressHydrationWarning
-                          to={item.href}
-                          onClick={() => setOpen(false)}
-                          className={cl(
-                            pathname?.includes(item.href) && classes.active,
-                            'ds-focus',
-                          )}
-                        >
-                          {t(item.name)}
-                        </Link>
-                      </Paragraph>
-                    </li>
-                  ))}
-                </ul>
+                {/* biome-ignore lint/a11y/noStaticElementInteractions: onBlur bubbles from children that are interactive and must be captured here */}
+                <div
+                  className={classes.listContainer}
+                  id='hamburgerMenu'
+                  popover='auto'
+                  ref={hamburgerMenu}
+                  onBlur={handleBlur}
+                >
+                  <div className={classes.hamburgerHeader}>
+                    <Link
+                      className={cl(classes.hamburgerLogo, 'ds-focus')}
+                      to={logoLink}
+                      aria-label={t('header.home-link')}
+                    >
+                      <DsFullLogo />
+                    </Link>
+                    <Button
+                      data-color='neutral'
+                      ref={closeMenuRef}
+                      icon={true}
+                      popoverTarget='hamburgerMenu'
+                      popoverTargetAction='hide'
+                      variant='tertiary'
+                      aria-label={t('header.close-menu')}
+                    >
+                      <XMarkIcon
+                        aria-hidden
+                        color='var(--ds-color-neutral-text-default)'
+                      />
+                    </Button>
+                  </div>
+                  <ul className={classes.hamburgerMenuList}>
+                    {menu.map((item, index) => (
+                      <li key={index}>
+                        <Paragraph data-size='md' asChild>
+                          <Link
+                            suppressHydrationWarning
+                            to={item.href}
+                            onClick={() => closeMenuRef.current?.click()}
+                            className={cl(
+                              pathname?.includes(item.href) && classes.active,
+                              classes.headerLink,
+                              'ds-focus',
+                            )}
+                          >
+                            {t(item.name)}
+                          </Link>
+                        </Paragraph>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </>
             )}
           </nav>

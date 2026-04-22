@@ -1,6 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { act, useState } from 'react';
+import { act, render, screen } from '@testing-library/react';
+import { useState } from 'react';
 
 import {
   Button,
@@ -86,7 +85,7 @@ describe('CheckboxGroup', () => {
     expect(checkbox1).toHaveAttribute('name');
     expect(checkbox2).toHaveAttribute('name');
   });
-  test('has passed name to Checkbox children', (): void => {
+  test('has passed name to Checkbox children', () => {
     render(<CheckboxGroup name='my-name' />);
 
     const checkbox1 = screen.getByLabelText('Test 1');
@@ -94,7 +93,7 @@ describe('CheckboxGroup', () => {
     expect(checkbox1).toHaveAttribute('name', 'my-name');
     expect(checkbox2).toHaveAttribute('name', 'my-name');
   });
-  test('has passed disabled to Checkbox children', (): void => {
+  test('has passed disabled to Checkbox children', () => {
     render(<CheckboxGroup disabled />);
 
     const checkbox1 = screen.getByLabelText('Test 1');
@@ -102,7 +101,7 @@ describe('CheckboxGroup', () => {
     expect(checkbox1).toHaveAttribute('disabled');
     expect(checkbox2).toHaveAttribute('disabled');
   });
-  test('has passed required to Checkbox children', (): void => {
+  test('has passed required to Checkbox children', () => {
     render(<CheckboxGroup required />);
 
     const checkbox1 = screen.getByLabelText('Test 1');
@@ -110,7 +109,7 @@ describe('CheckboxGroup', () => {
     expect(checkbox1).toHaveAttribute('required');
     expect(checkbox2).toHaveAttribute('required');
   });
-  test('has passed readOnly to Checkbox children', (): void => {
+  test('has passed readOnly to Checkbox children', () => {
     render(<CheckboxGroup readOnly />);
 
     const checkbox1 = screen.getByLabelText('Test 1');
@@ -118,7 +117,7 @@ describe('CheckboxGroup', () => {
     expect(checkbox1).toHaveAttribute('readonly');
     expect(checkbox2).toHaveAttribute('readonly');
   });
-  test('has passed aria-invalid to Checkbox children', (): void => {
+  test('has passed aria-invalid to Checkbox children', () => {
     render(<CheckboxGroup error='message' />);
 
     const checkbox1 = screen.getByLabelText('Test 1');
@@ -137,7 +136,6 @@ describe('CheckboxGroup', () => {
     expect(checkbox2).not.toBeChecked();
   });
   test('has passed clicked Checkbox element to onChange', async () => {
-    const user = userEvent.setup();
     const onChangeMock = vi.fn();
 
     render(<CheckboxGroup onChange={onChangeMock} />);
@@ -145,7 +143,7 @@ describe('CheckboxGroup', () => {
     const checkbox1 = screen.getByLabelText('Test 1');
     const checkbox2 = screen.getByLabelText('Test 2');
 
-    await act(async () => await user.click(checkbox1));
+    await act(async () => checkbox1.click());
     expect(onChangeMock).toHaveBeenCalledWith(['test1'], []);
     expect(checkbox1).toBeChecked();
     expect(checkbox2).not.toBeChecked();
@@ -156,7 +154,6 @@ describe('CheckboxGroup', () => {
     const indeterminate = screen.getByLabelText('All');
     const checkbox1 = screen.getByLabelText('Test 1');
     const checkbox2 = screen.getByLabelText('Test 2');
-    const user = userEvent.setup();
 
     // Shoud be neither checked or indeterminate initially
     expect(indeterminate).toHaveProperty('indeterminate', false);
@@ -165,35 +162,35 @@ describe('CheckboxGroup', () => {
     expect(checkbox2).not.toBeChecked();
 
     // Should be indeterminate when first checkbox is checked
-    await act(async () => await user.click(checkbox1));
+    await act(async () => checkbox1.click());
     expect(indeterminate).toHaveProperty('indeterminate', true);
     expect(indeterminate).toHaveProperty('checked', false);
     expect(checkbox1).toBeChecked();
     expect(checkbox2).not.toBeChecked();
 
     // Should be checked when both checkboxes are checked
-    await act(async () => await user.click(checkbox2));
+    await act(async () => checkbox2.click());
     expect(indeterminate).toHaveProperty('indeterminate', false);
     expect(indeterminate).toHaveProperty('checked', true);
     expect(checkbox1).toBeChecked();
     expect(checkbox2).toBeChecked();
 
     // Should uncheck all when clicking the main checkbox
-    await act(async () => await user.click(indeterminate));
+    await act(async () => indeterminate.click());
     expect(indeterminate).toHaveProperty('indeterminate', false);
     expect(indeterminate).toHaveProperty('checked', false);
     expect(checkbox1).not.toBeChecked();
     expect(checkbox2).not.toBeChecked();
 
     // Should check all when clicking the main checkbox again
-    await act(async () => await user.click(indeterminate));
+    await act(async () => indeterminate.click());
     expect(indeterminate).toHaveProperty('indeterminate', false);
     expect(indeterminate).toHaveProperty('checked', true);
     expect(checkbox1).toBeChecked();
     expect(checkbox2).toBeChecked();
   });
+
   test('correctly merges passed props with generated props', async () => {
-    const user = userEvent.setup();
     const onChangeMock = vi.fn();
     const customAriaDescribedBy = 'custom aria-describedby';
 
@@ -206,11 +203,10 @@ describe('CheckboxGroup', () => {
     );
 
     const checkbox1 = screen.getByLabelText('Test 1');
-    await act(async () => await user.click(checkbox1));
+    await act(async () => checkbox1.click());
 
     expect(onChangeMock).toHaveBeenCalledOnce();
     expect(checkbox1).toBeChecked();
-
     expect(checkbox1).toHaveAttribute(
       'aria-describedby',
       customAriaDescribedBy,
@@ -222,7 +218,7 @@ describe('CheckboxGroup', () => {
 
     /* click button to show checkboxes */
     const button = screen.getByRole('button', { name: 'Toggle' });
-    await act(async () => await userEvent.click(button));
+    await act(async () => button.click());
     expect(screen.getByLabelText('Test 1')).toBeVisible();
     expect(screen.getByLabelText('Test 2')).toBeVisible();
   });

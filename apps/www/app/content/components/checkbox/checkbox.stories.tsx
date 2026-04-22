@@ -75,6 +75,55 @@ export const Group = () => {
   );
 };
 
+export const GroupEn = () => {
+  const [value, setValue] = useState<string[]>(['epost']);
+
+  return (
+    <Fieldset>
+      <Fieldset.Legend>How would you prefer us to contact you?</Fieldset.Legend>
+      <Fieldset.Description>
+        Select all the options that are relevant to you.
+      </Fieldset.Description>
+      <Checkbox
+        label='E-mail'
+        value='email'
+        checked={value.includes('email')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'email']);
+          } else {
+            setValue(value.filter((v) => v !== 'email'));
+          }
+        }}
+      />
+      <Checkbox
+        label='Phone'
+        value='phone'
+        checked={value.includes('phone')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'phone']);
+          } else {
+            setValue(value.filter((v) => v !== 'phone'));
+          }
+        }}
+      />
+      <Checkbox
+        label='Text message'
+        value='text'
+        checked={value.includes('text')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'text']);
+          } else {
+            setValue(value.filter((v) => v !== 'text'));
+          }
+        }}
+      />
+    </Fieldset>
+  );
+};
+
 export const WithError = () => {
   const [error, setError] = useState('');
   const { getCheckboxProps, validationMessageProps, value } = useCheckboxGroup({
@@ -204,6 +253,81 @@ export const InTable = () => {
           </Table.HeaderCell>
           <Table.HeaderCell>Navn</Table.HeaderCell>
           <Table.HeaderCell>E-post</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {tableData.map((person) => (
+          <Table.Row key={person.id}>
+            <Table.Cell>
+              <Checkbox
+                aria-labelledby={`checkbox-${person.id}-name`}
+                {...getCheckboxProps(person.id.toString())}
+              />
+            </Table.Cell>
+            <Table.Cell id={`checkbox-${person.id}-name`}>
+              {person.navn}
+            </Table.Cell>
+            <Table.Cell>{person.epost}</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
+  );
+};
+export const InTableEn = () => {
+  const tableData = [
+    {
+      id: 1,
+      navn: 'Lise Nordmann',
+      epost: 'lise@nordmann.no',
+      telefon: '68051156',
+    },
+    {
+      id: 2,
+      navn: 'Kari Nordmann',
+      epost: 'kari@nordmann.no',
+      telefon: '68059679',
+    },
+    {
+      id: 3,
+      navn: 'Ola Nordmann',
+      epost: 'ola@nordmann.no',
+      telefon: '68055731',
+    },
+    {
+      id: 4,
+      navn: 'Per Nordmann',
+      epost: 'per@nordmann.no',
+      telefon: '68059631',
+    },
+  ];
+
+  const { getCheckboxProps } = useCheckboxGroup({
+    name: 'checkbox-table',
+    value: ['2', '3'],
+  });
+
+  return (
+    <Table>
+      <colgroup>
+        {/* ensure the first column only takes up the necessary space */}
+        <col style={{ width: '1px' }} />
+        <col />
+        <col />
+      </colgroup>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>
+            <Checkbox
+              aria-label='Select all'
+              {...getCheckboxProps({
+                allowIndeterminate: true,
+                value: 'all',
+              })}
+            />
+          </Table.HeaderCell>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>E-mail</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>

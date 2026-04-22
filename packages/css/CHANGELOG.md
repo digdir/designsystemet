@@ -1,5 +1,192 @@
 # Change Log
 
+## 1.13.2
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4694](https://github.com/digdir/designsystemet/pull/4694))
+
+- **Card**: ensure underline on link in heading has same thickness as in version 1.11.1 ([#4723](https://github.com/digdir/designsystemet/pull/4723))
+
+- **Link**: Spacing for icons in links are now the same as in version 1.11.1 ([#4722](https://github.com/digdir/designsystemet/pull/4722))
+
+- Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))
+
+- **Breadcrumbs:** Renders correcly as `display: block` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- **details**: support `details` in nested cards where the inner is variant `default` and the outer is `tinted` ([#4724](https://github.com/digdir/designsystemet/pull/4724))
+
+- **Link**: Fix spacing when icon is present ([#4707](https://github.com/digdir/designsystemet/pull/4707))
+
+- **toggle-group**: fix overflow scroll and remove user-agent set inline margins ([#4702](https://github.com/digdir/designsystemet/pull/4702))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.2
+
+## 1.13.1
+
+### Patch Changes
+
+- **input**: fix height of empty date and time inputs on iOS Safari ([#4634](https://github.com/digdir/designsystemet/pull/4634))
+
+- define `browser` field in `package.json` for easier use client-side in browser and CDN. ([#4646](https://github.com/digdir/designsystemet/pull/4646))
+
+- **dropdown**: don't style `button, a, [role="button"]` in a nested `<dialog>` ([#4651](https://github.com/digdir/designsystemet/pull/4651))
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.1
+
+## 1.13.0
+
+### Patch Changes
+
+- **Badge, Button, Spinner, Tabs, Tag**: Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- **select**: fixed missing chevron icon when `readonly` ([#4585](https://github.com/digdir/designsystemet/pull/4585))
+
+- **badge**: ensure badge is positioned above focus-ring when using `.ds-badge--position` ([#4511](https://github.com/digdir/designsystemet/pull/4511))
+
+- **card**: Fix deeply nested `.ds-details` removing padding ([#4576](https://github.com/digdir/designsystemet/pull/4576))
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.0
+
+## 1.12.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.12.1
+
+## 1.12.0
+
+### Minor Changes
+
+- **input**: add support for `[aria-readonly='true']` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **field**: add new css variables: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+  `--dsc-field-counter-over: '%d tegn for mye';`
+  `--dsc-field-counter-under: '%d tegn igjen';`
+
+- Support for new package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **popover**: add `--dsc-popover-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **fieldset**: add `--dsc-fieldset-gap` with default value `var(--ds-size-4)` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **tooltip**: add `--dsc-tooltip-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **dropdown**: add `--dsc-dropdown-placement` with default value `bottom` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **pagination**: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+  - add `--dsc-pagination-ellipsis` with default value `'\2026'`
+  - set `--dsc-pagination-label: 'Bla i sider';` if language is `'nn'`, `'nb'` or `'no'`
+
+### Patch Changes
+
+- **suggestion**: various changes to chip styling. You no longer need to pass a class to `<data>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **link**: don't set `:visited` color and set default `border-radius` to 0 ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **dialog**: style `.ds-dialog button[command='close']:empty::before` with X-icon ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **toggle-group**: remove `--dsc-togglegroup-text-color`, as this was not used ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+- **Card**: fix issues with deeply nested heading links. Now uses web observer `data-clickdelegatefor` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **toggle-group**: add styling for new DOM structure introduced in `@digdir/designsystemet-web` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **field**: add styling for `<ds-field>` counter. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **tabs**: add support for `<ds-tabs>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **breadcrumbs**: don't remove underline on `a[aria-current='page']`, but on `li:last-child a` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- added class `ds-floating`, which is used on floating elements internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.12.0
+
+## 1.11.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4469](https://github.com/digdir/designsystemet/pull/4469))
+
+- **AvatarStack**: override user-agent margins on figure ([#4431](https://github.com/digdir/designsystemet/pull/4431))
+
+- update dependency postcss-nesting to v14 ([#4424](https://github.com/digdir/designsystemet/pull/4424))
+
+- Removed browserlist entry `"cover 90% in NO"` due to an apparent error in the dataset causing excessive irrelevant prefixing. This reduces the size of `index.css` from 157 to 113kb. ([#4434](https://github.com/digdir/designsystemet/pull/4434))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.11.1
+
+## 1.11.0
+
+### Minor Changes
+
+- **Version `1.10.0` was released by accident, and we are skipping to `1.11.0`** ([#4392](https://github.com/digdir/designsystemet/pull/4392))
+  - Version `1.10.0` is deprecated on npm, and not accessible on Github. Use `1.11.0` or newer.
+
+- **avatar-stack**: New experimental component ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+### Patch Changes
+
+- **avatar**: added `--dsc-avatar-font-size` to easier override font size ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+- Hover styles for cards containing `<a>` inside a heading will no longer propagate to wrapping cards ([#4360](https://github.com/digdir/designsystemet/pull/4360))
+
+- update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336))
+
+- **card**: Fix focus being clipped on nested `<summary>` ([#4379](https://github.com/digdir/designsystemet/pull/4379))
+
+- **Dialog**: removed media-query that forces 100% width under 640px ([#4345](https://github.com/digdir/designsystemet/pull/4345))
+
+- **dialog**: More gentle animations when using `data-placement` ([#4350](https://github.com/digdir/designsystemet/pull/4350))
+
+- Updated dependencies [[`4d48a81`](https://github.com/digdir/designsystemet/commit/4d48a815c67114f4ff3d102b7b271a343cd491c4)]:
+  - @digdir/designsystemet-types@1.11.0
+
+## 1.9.0
+
+### Minor Changes
+
+- **Dialog**: `data-placement` selector styles the Dialog as a "drawer"-component from the direction given (`left | right | top | bottom` or `center` which is the default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
+  Added 3 new local variables:
+  - `--dsc-dialog-placement-inline-max-width` (max-width when placement="left | right")
+  - `--dsc-dialog-placement-block-max-width` (max-width when placement="top | bottom")
+  - `--dsc-dialog-transition-duration` (duration for the slide in animations)
+
+### Patch Changes
+
+- **Input, Search, Suggestion, Textfield**: Uppercase Å was cut off at the top in Chrome and Safari, making it look like Ă ([#4301](https://github.com/digdir/designsystemet/pull/4301))
+
+- **link**: Style background, border, and padding regardless of default browser styles ([#4231](https://github.com/digdir/designsystemet/issues/4231)) ([#4302](https://github.com/digdir/designsystemet/pull/4302))
+
+- Add export for a default theme under `/theme`. ([#4328](https://github.com/digdir/designsystemet/pull/4328))
+  If you are using the default theme from `@digdir/designsystemet-theme`, we recommend importing the CSS from `@digdir/designsystemet-css/theme.css` and removing `@digdir/designsystemet-theme` from your dependencies.
+
+## 1.8.0
+
+### Patch Changes
+
+- **badge**: Set `display: inline-flex` on `.ds-badge` ([#4269](https://github.com/digdir/designsystemet/pull/4269))
+
+- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242))
+
+- **select**: Fix `:hover` on `<label>` adding border to `<select>` ([#4248](https://github.com/digdir/designsystemet/pull/4248))
+
+- Update npm non-major dependencies ([#4262](https://github.com/digdir/designsystemet/pull/4262))
+
 ## 1.7.3
 
 ## 1.7.2

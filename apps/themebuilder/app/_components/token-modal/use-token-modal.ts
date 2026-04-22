@@ -1,18 +1,8 @@
-import type { Color, CssColor, ThemeInfo } from '@digdir/designsystemet/color';
-import {
-  type CreateTokensOptions,
-  cliOptions,
-} from '@digdir/designsystemet/tokens';
+import type { Color, CssColor } from '@digdir/designsystemet/color';
+import type { CreateTokensOptions } from '@digdir/designsystemet/tokens';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-
-type ColorTheme = {
-  name: string;
-  colors: ThemeInfo;
-};
-
-const colorCliOptions = cliOptions.theme.colors;
 
 const getBaseDefault = (colorTheme: Color[]) =>
   colorTheme.find((color) => color.name === 'base-default');
@@ -39,7 +29,12 @@ export const useTokenModal = () => {
     Record<string, { light?: CssColor; dark?: CssColor }>
   > = {};
 
-  [...colors.main, ...colors.support, ...colors.neutral].forEach((color) => {
+  [
+    ...colors.main,
+    ...colors.support,
+    ...colors.neutral,
+    ...severityColors,
+  ].forEach((color) => {
     if (color.overrides && Object.keys(color.overrides).length > 0) {
       colorOverrides[color.name] = color.overrides;
     }
@@ -70,31 +65,9 @@ export const useTokenModal = () => {
     },
   };
 
-  const setCliColors = (colorTheme: ColorTheme[]) => {
-    if (!colorTheme.length) return '';
-
-    return (
-      colorTheme
-        .map((theme) => {
-          const baseColor = getBaseDefault(theme.colors.light);
-          return `"${theme.name}:${baseColor?.hex}"`;
-        })
-        .join(' ') + ' '
-    );
-  };
-
   const packageWithTag = `@digdir/designsystemet${isProduction ? '@latest' : '@next'}`;
-  const cliBuildSnippet = `npx ${packageWithTag} tokens build`;
-  const configBuildSnippet = `npx ${packageWithTag} tokens create --config designsystemet.config.json\nnpx ${packageWithTag} tokens build --config designsystemet.config.json`;
 
-  const cliSnippet = [
-    `npx ${packageWithTag} tokens create`,
-    `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
-    `--${colorCliOptions.neutral} "${getBaseDefault(colors.neutral[0]?.colors.light)?.hex}"`,
-    `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
-    `--border-radius ${baseBorderRadius}`,
-    `--theme "${name}"`,
-  ].filter(Boolean);
+  const configBuildSnippet = `npx ${packageWithTag} tokens create --config designsystemet.config.json\nnpx ${packageWithTag} tokens build --config designsystemet.config.json`;
 
   const configSnippet = {
     $schema: 'node_modules/@digdir/designsystemet/dist/config.schema.json',
@@ -128,12 +101,7 @@ export const useTokenModal = () => {
     themeName: name,
     setThemeName: setName,
     theme,
-    cliSnippet: {
-      windows: cliSnippet.join(' ^\n'),
-      unix: cliSnippet.join(' \\\n'),
-    },
     buildSnippet: {
-      cli: cliBuildSnippet,
       config: configBuildSnippet,
     },
     configSnippet: JSON.stringify(configSnippet, null, 2),

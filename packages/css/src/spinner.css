@@ -6,33 +6,32 @@
 
   animation: ds-spinner-rotate-animation linear infinite var(--dsc-spinner-animation-duration);
   box-sizing: border-box;
-  font-size: var(--ds-size-11);
-  height: 1em;
-  width: 1em;
+  height: var(--ds-size-11);
+  width: auto;
 
-  /* Using font-size to ensure consistent size when explicitly setting data-size */
+  /* Ensure consistent size when explicitly setting data-size */
   &[data-size='2xs'] {
-    font-size: 0.75rem;
+    height: 0.75rem;
   }
 
   &[data-size='xs'] {
-    font-size: 1.25rem;
+    height: 1.25rem;
   }
 
   &[data-size='sm'] {
-    font-size: 2rem;
+    height: 2rem;
   }
 
   &[data-size='md'] {
-    font-size: 2.75rem;
+    height: 2.75rem;
   }
 
   &[data-size='lg'] {
-    font-size: 3.75rem;
+    height: 3.75rem;
   }
 
   &[data-size='xl'] {
-    font-size: 5.5rem;
+    height: 5.5rem;
   }
 }
 

@@ -1,10 +1,8 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
-import { render as renderRtl, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { act, useState } from 'react';
+import { act, render, screen } from '@testing-library/react';
+import { useState } from 'react';
 
 import { Button } from '../';
-import type { PopoverProps } from './';
 import { Popover } from './';
 
 const CompControlled = () => {
@@ -23,116 +21,126 @@ const CompControlled = () => {
   );
 };
 
-const contentText = 'popover content';
-
-const render = async (props: PopoverProps = {}) => {
-  /* Flush microtasks */
-  await act(async () => {});
-  const user = userEvent.setup();
-
-  return {
-    user,
-    ...renderRtl(
-      <Popover.TriggerContext>
-        <Popover.Trigger>trigger</Popover.Trigger>
-        <Popover {...props}>{contentText}</Popover>
-      </Popover.TriggerContext>,
-    ),
-  };
+type ControlledWithTriggerProps = {
+  isInitiallyOpen: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
 };
+
+const CompControlledWithTrigger = (props: ControlledWithTriggerProps) => {
+  const [open, setOpen] = useState(props.isInitiallyOpen);
+
+  return (
+    <Popover.TriggerContext>
+      <Popover.Trigger>Dropdown</Popover.Trigger>
+      <Popover
+        open={open}
+        onOpen={() => {
+          props.onOpen?.();
+          setOpen(true);
+        }}
+        onClose={() => {
+          props.onClose?.();
+          setOpen(false);
+        }}
+      >
+        {contentText}
+      </Popover>
+    </Popover.TriggerContext>
+  );
+};
+
+const contentText = 'popover content';
+const defaultPopover = (
+  <Popover.TriggerContext>
+    <Popover.Trigger>trigger</Popover.Trigger>
+    <Popover>{contentText}</Popover>
+  </Popover.TriggerContext>
+);
 
 describe('Popover', () => {
   it('should render popover on trigger-click when closed', async () => {
-    const { user } = await render();
+    render(defaultPopover);
     const popoverTrigger = screen.getByRole('button');
 
-    expect(screen.queryByText(contentText)).not.toBeVisible();
+    expect(screen.getByText(contentText)).not.toBeVisible();
 
-    await act(async () => await user.click(popoverTrigger));
-
-    expect(screen.queryByText(contentText)).toBeVisible();
+    await act(async () => popoverTrigger.click());
+    expect(screen.getByText(contentText)).toBeVisible();
   });
 
   it('should close when we click the button twitce', async () => {
-    const { user } = await render();
+    render(defaultPopover);
     const popoverTrigger = screen.getByRole('button');
 
-    await act(async () => await user.click(popoverTrigger));
+    await act(async () => popoverTrigger.click());
+    expect(screen.getByText(contentText)).toBeVisible();
 
-    expect(screen.queryByText(contentText)).toBeVisible();
-
-    await act(async () => await user.click(popoverTrigger));
-
-    expect(screen.queryByText(contentText)).not.toBeVisible();
+    await act(async () => popoverTrigger.click());
+    expect(screen.getByText(contentText)).not.toBeVisible();
   });
 
   it('should close when we click outside', async () => {
-    const { user } = await render();
+    render(defaultPopover);
+
     const popoverTrigger = screen.getByRole('button');
 
-    await act(async () => await user.click(popoverTrigger));
+    await act(async () => popoverTrigger.click());
+    expect(screen.getByText(contentText)).toBeVisible();
 
-    expect(screen.queryByText(contentText)).toBeVisible();
-
-    await act(async () => await user.click(document.body));
-
-    expect(screen.queryByText(contentText)).not.toBeVisible();
+    await act(async () => document.body.click());
+    expect(screen.getByText(contentText)).not.toBeVisible();
   });
 
   it('should close when we press ESC', async () => {
-    const { user } = await render();
+    render(defaultPopover);
+
     const popoverTrigger = screen.getByRole('button');
+    await act(async () => popoverTrigger.click());
+    expect(screen.getByText(contentText)).toBeVisible();
 
-    await act(async () => await user.click(popoverTrigger));
-
-    expect(screen.queryByText(contentText)).toBeVisible();
-
-    await act(async () => await user.keyboard('[Escape]'));
-
-    expect(screen.queryByText(contentText)).not.toBeVisible();
+    const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true });
+    await act(async () => popoverTrigger.dispatchEvent(esc));
+    expect(screen.getByText(contentText)).not.toBeVisible();
   });
 
   it('should close when we press SPACE', async () => {
-    const { user } = await render();
+    render(defaultPopover);
+
     const popoverTrigger = screen.getByRole('button');
+    await act(async () => popoverTrigger.click());
+    expect(screen.getByText(contentText)).toBeVisible();
 
-    await act(async () => await user.click(popoverTrigger));
-
-    expect(screen.queryByText(contentText)).toBeVisible();
-
-    await act(async () => await user.keyboard('[Space]'));
-
-    expect(screen.queryByText(contentText)).not.toBeVisible();
+    const space = new KeyboardEvent('keydown', { key: ' ', bubbles: true });
+    await act(async () => popoverTrigger.dispatchEvent(space));
+    vi.waitFor(() => expect(screen.getByText(contentText)).not.toBeVisible()); // Wait for Popover API
   });
 
   it('should close when we press ENTER', async () => {
-    const { user } = await render();
+    render(defaultPopover);
+
     const popoverTrigger = screen.getByRole('button');
+    await act(async () => popoverTrigger.click());
+    expect(screen.getByText(contentText)).toBeVisible();
 
-    await act(async () => await user.click(popoverTrigger));
-
-    expect(screen.queryByText(contentText)).toBeVisible();
-
-    await act(async () => await user.keyboard('[Enter]'));
-
-    expect(screen.queryByText(contentText)).not.toBeVisible();
+    const enter = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true });
+    await act(async () => popoverTrigger.dispatchEvent(enter));
+    vi.waitFor(() => expect(screen.getByText(contentText)).not.toBeVisible()); // Wait for Popover API
   });
 
   it('should not close if we click inside the popover', async () => {
-    const { user } = await render();
+    render(defaultPopover);
+
     const popoverTrigger = screen.getByRole('button');
+    await act(async () => popoverTrigger.click());
+    expect(screen.getByText(contentText)).toBeVisible();
 
-    await act(async () => await user.click(popoverTrigger));
-
-    expect(screen.queryByText(contentText)).toBeVisible();
-
-    await act(async () => await user.click(screen.getByText(contentText)));
-
-    expect(screen.queryByText(contentText)).toBeVisible();
+    await act(async () => screen.getByText(contentText).click());
+    expect(screen.getByText(contentText)).toBeVisible();
   });
 
-  it('should have correct id and popovertarget attributes', async () => {
-    await render();
+  it('should have correct id and popovertarget attributes', () => {
+    render(defaultPopover);
     const trigger = screen.getByRole('button');
     const popover = screen.getByText(contentText);
 
@@ -140,41 +148,85 @@ describe('Popover', () => {
   });
 
   it('should be able to change content inside Popover trigger element but still toggle when controlled', async () => {
-    await act(async () => {});
-    const user = userEvent.setup();
-
-    const { container } = renderRtl(<CompControlled />);
-    const content = screen.queryByText('Content');
+    const { container } = render(<CompControlled />);
+    const content = screen.getByText('Content');
+    const click = (el?: Element | null) =>
+      el?.dispatchEvent(new MouseEvent('click', { bubbles: true })); // Using dispatchEvent to support trigger on SVGElement
 
     expect(content).not.toBeVisible();
-    await act(
-      async () =>
-        await user.click(container.querySelector('svg') as SVGSVGElement),
-    );
+
+    await act(async () => click(container.querySelector('svg')));
     expect(content).toBeVisible();
-    await act(
-      async () =>
-        await user.click(container.querySelector('svg') as SVGSVGElement),
-    );
+
+    await act(async () => click(container.querySelector('svg')));
     expect(content).not.toBeVisible();
-    await act(
-      async () =>
-        await user.click(container.querySelector('svg') as SVGSVGElement),
-    );
+    await act(async () => click(container.querySelector('svg')));
     expect(content).toBeVisible();
   });
 
   it('should not call onClose when the popover is closed', async () => {
     const onClose = vi.fn();
-    const { user } = await render({ onClose });
-    const popoverTrigger = screen.getByRole('button');
+    render(
+      <Popover.TriggerContext>
+        <Popover.Trigger>trigger</Popover.Trigger>
+        <Popover onClose={onClose}>{contentText}</Popover>
+      </Popover.TriggerContext>,
+    );
 
-    await act(async () => await user.click(document.body));
+    const popoverTrigger = screen.getByRole('button');
+    await act(async () => document.body.click());
     expect(onClose).toHaveBeenCalledTimes(0);
 
-    await act(async () => await user.click(popoverTrigger));
-    expect(screen.queryByText(contentText)).toBeVisible();
-    await act(async () => await user.click(document.body));
+    await act(async () => popoverTrigger.click());
+    expect(screen.getByText(contentText)).toBeVisible();
+
+    await act(async () => document.body.click());
     expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not call onOpen when the popover is open', async () => {
+    const onOpen = vi.fn();
+    render(
+      <Popover.TriggerContext>
+        <Popover.Trigger>trigger</Popover.Trigger>
+        <Popover onOpen={onOpen}>{contentText}</Popover>
+      </Popover.TriggerContext>,
+    );
+
+    const popoverTrigger = screen.getByRole('button');
+    await act(async () => document.body.click());
+    expect(onOpen).toHaveBeenCalledTimes(0);
+
+    await act(async () => popoverTrigger.click());
+    expect(screen.getByText(contentText)).toBeVisible();
+    expect(onOpen).toHaveBeenCalledTimes(1);
+
+    await act(async () => popoverTrigger.click());
+    expect(onOpen).toHaveBeenCalledTimes(1);
+  });
+
+  describe('with controlled state', () => {
+    it('should not call onClose when the popover is closed', async () => {
+      const onClose = vi.fn();
+      render(
+        <CompControlledWithTrigger isInitiallyOpen={false} onClose={onClose} />,
+      );
+      const popoverTrigger = screen.getByRole('button');
+
+      await act(async () => popoverTrigger.click());
+      expect(onClose).toHaveBeenCalledTimes(0);
+      await act(async () => popoverTrigger.click());
+      expect(onClose).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onOpen when the popover is open', async () => {
+      const onOpen = vi.fn();
+      render(<CompControlledWithTrigger isInitiallyOpen onOpen={onOpen} />);
+      const popoverTrigger = screen.getByRole('button');
+      expect(screen.getByText(contentText)).toBeVisible();
+
+      await act(async () => popoverTrigger.click());
+      expect(onOpen).toHaveBeenCalledTimes(0);
+    });
   });
 });

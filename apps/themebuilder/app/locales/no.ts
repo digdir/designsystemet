@@ -4,10 +4,11 @@ import themeModal from './no/theme-modal';
 export default {
   ...no,
   navigation: {
-    fundamentals: 'Grunnleggende',
+    intro: 'Intro',
+    fundamentals: 'Kom i gang',
     'best-practices': 'God praksis',
     patterns: 'Mønstre',
-    blog: 'Bloggen',
+    blog: 'Blogg',
     components: 'Komponenter',
     'theme-builder': 'Temabygger',
   },
@@ -59,10 +60,11 @@ export default {
     'import-config': 'Importer config',
   },
   tabs: {
-    overview: 'Oversikt',
+    examples: 'Eksempler',
     colorsystem: 'Fargesystem',
     colors: 'Farger',
     dimensions: 'Dimensjoner',
+    variables: 'Variabler',
   },
   colorPreview: {
     title: 'Se fargene dine i bruk',
@@ -144,6 +146,11 @@ export default {
     dark: 'Mørk',
     'set-to': 'Sett til',
     view: 'visning',
+  },
+  'color-tokens': {
+    title: 'Fargetokens',
+    description:
+      'Her ser du hvilke tokens som er brukt for å lage kortene i seksjonen over.',
   },
   colorContrasts: {
     title: 'Kontraster mellom farger',

@@ -1,0 +1,93 @@
+import { existsSync, statSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { cwd } from 'node:process';
+
+export async function generateSitemap(allPages: string[]): Promise<void> {
+  const dirname = cwd();
+
+  try {
+    const baseUrl = 'https://designsystemet.no';
+
+    // Get file modification dates for accurate lastmod
+    const getLastModForPath = (urlPath: string): string => {
+      try {
+        // Convert URL path back to file path
+        const pathParts = urlPath.split('/').filter(Boolean);
+        if (pathParts.length < 2) return new Date().toISOString().split('T')[0];
+
+        const [lang, ...segments] = pathParts;
+        const contentFolder = segments[0];
+        const filePath = segments.slice(1).join('/');
+
+        // Special case for /no/components
+        if (urlPath === '/no/components') {
+          const path = join(dirname, 'app/content/components', lang);
+          if (existsSync(path)) {
+            const stats = statSync(path);
+            return stats.mtime.toISOString().split('T')[0];
+          }
+
+          return new Date().toISOString().split('T')[0];
+        }
+
+        // For other content paths, construct the actual file path
+        if (filePath) {
+          const actualFilePath = join(
+            dirname,
+            'app/content',
+            contentFolder,
+            lang,
+            `${filePath}.mdx`,
+          );
+          if (existsSync(actualFilePath)) {
+            const stats = statSync(actualFilePath);
+            return stats.mtime.toISOString().split('T')[0];
+          }
+        } else {
+          // This is a section index page, try to find the index file
+          const indexPath = join(
+            dirname,
+            'app/content',
+            contentFolder,
+            lang,
+            'index.mdx',
+          );
+          if (existsSync(indexPath)) {
+            const stats = statSync(indexPath);
+            return stats.mtime.toISOString().split('T')[0];
+          }
+        }
+
+        // Fallback to current date if file not found
+        return new Date().toISOString().split('T')[0];
+      } catch (error) {
+        console.warn(`Could not get lastmod for ${urlPath}:`, error);
+        return new Date().toISOString().split('T')[0];
+      }
+    };
+
+    // Generate sitemap XML with accurate lastmod dates
+    const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allPages
+  .map(
+    (path) => `  <url>
+    <loc>${baseUrl}${path}</loc>
+    <lastmod>${getLastModForPath(path)}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`,
+  )
+  .join('\n')}
+</urlset>`;
+
+    const sitemapPath = join(dirname, 'public', 'sitemap.xml');
+    const sitemapClientPath = join(dirname, 'dist', 'client', 'sitemap.xml');
+    console.log(
+      `Writing sitemap.xml to ${sitemapPath} with ${allPages.length} URLs`,
+    );
+    writeFileSync(sitemapClientPath, sitemapXml);
+  } catch (error) {
+    console.error(`Error generating sitemap: ${error}`);
+  }
+}

@@ -35,6 +35,7 @@ export default async function handleRequest(
     ...i18n,
     lng,
     ns,
+    showSupportNotice: false,
     resources: {
       en: {
         translation: en,

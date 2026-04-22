@@ -1,13 +1,13 @@
 import cl from 'clsx/lite';
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { DetailsHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import { useMergeRefs } from '../../utilities/hooks';
-import '@u-elements/u-details';
+import '@digdir/designsystemet-web'; // Load details polyfill
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type DetailsProps = MergeRight<
-  DefaultProps & HTMLAttributes<HTMLDetailsElement>,
+  DefaultProps & DetailsHTMLAttributes<HTMLDetailsElement>,
   {
     /**
      * Change the background color of the details.
@@ -86,8 +86,8 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
     }, []);
 
     return (
-      <u-details
-        class={cl('ds-details', className)} // Using class since React does not translate className on custom elements
+      <details
+        className={cl('ds-details', className)}
         open={(open ?? initialOpen.current) || undefined} // Fallback to undefined to prevent rendering open="false"
         data-variant={variant}
         ref={mergedRefs}

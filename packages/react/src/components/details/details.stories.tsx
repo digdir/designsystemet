@@ -2,7 +2,7 @@ import { ChevronDownUpIcon, ChevronUpDownIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { Button, Card, Details, Link, Paragraph } from '../';
+import { Button, Card, Details, Heading, Link, Paragraph } from '../';
 
 export default {
   title: 'Komponenter/Details',
@@ -30,8 +30,31 @@ export const InCard: StoryFn<typeof Details> = () => (
   <Card data-color='neutral'>
     <Details>
       <Details.Summary>Vedlegg</Details.Summary>
-      <Details.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Details.Content>
+      <Details.Content>
+        <Heading>
+          <a
+            href='https://designsystemet.no'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Heading with link
+          </a>
+        </Heading>
+        <p>Vedlegg 1, vedlegg 2, vedlegg 3</p>
+      </Details.Content>
     </Details>
+  </Card>
+);
+
+export const InCardNested: StoryFn<typeof Details> = () => (
+  <Card variant='tinted'>
+    <Heading>Test-kort</Heading>
+    <Card variant='default'>
+      <Details>
+        <Details.Summary>Test</Details.Summary>
+        <Details.Content>Test 2</Details.Content>
+      </Details>
+    </Card>
   </Card>
 );
 

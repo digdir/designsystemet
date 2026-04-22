@@ -1,0 +1,49 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
+### Lists for navigation
+
+If `List` is used as a navigation element (for example in the footer or beside the main content), you can wrap it in a `<nav>` with `aria-label=""` to provide a better experience for screen reader users. This is recommended because W3C advises against using `aria-label` / `aria-labelledby` directly on `<ul>` or `<ol>`. Read more in W3C’s article ["Practical Support: aria-label, aria-labelledby and aria-describedby" (w3.org)](https://www.w3.org/TR/using-aria/#label-support).
+
+#### Example of `<nav>`
+
+```tsx
+<nav aria-label="Snarveier">
+  <List.Unordered>
+    <List.Item>
+      <Button>Copy</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Cut</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Paste</Button>
+    </List.Item>
+  </List.Unordered>
+</nav>
+```
+
+### `<menu>` instead of `<ul>`
+
+Unordered lists can be replaced with `<menu>`, which is a semantic alternative to `<ul>`. Both elements represent an unordered list, and browsers interpret them in the same way. The difference is that `<menu>` is intended for interactive elements.
+
+#### Example of `<menu>`
+
+This is an example where `List.Unordered` has been changed to `<menu>`, and the purpose of the list is to display buttons that perform actions in the application.
+
+```tsx
+<List.Unordered asChild>
+  <menu>
+    <List.Item>
+      <Button>Copy</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Cut</Button>
+    </List.Item>
+    <List.Item>
+      <Button>Paste</Button>
+    </List.Item>
+  </menu>
+</List.Unordered>
+```

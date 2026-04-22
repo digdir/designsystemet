@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
 import {
@@ -7,6 +7,7 @@ import {
   Heading,
   Paragraph,
 } from '@digdir/designsystemet-react';
+import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
@@ -22,10 +23,8 @@ import {
 } from '~/_components/css-variables/css-variables';
 import { DoDont } from '~/_components/do-dont/do-dont';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
-import {
-  LiveComponent,
-  type LiveComponentProps,
-} from '~/_components/live-component/live-components';
+import { IconFrame } from '~/_components/icon-frame/icon-frame';
+import { LiveComponent } from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { ReactComponentDocs } from '~/_components/react-component-props/react-component-props';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
@@ -47,6 +46,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   if (!component) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
+  const componentDir = join('app', 'content', 'components', component);
+
+  if (!existsSync(componentDir)) {
+    throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
+  }
 
   if (
     !request.url.includes('code') &&
@@ -57,7 +61,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       request.url.endsWith(`/${component}`) ||
       request.url.endsWith(`/${component}/`)
     ) {
-      return redirect(`/${lang}/components/${component}/overview`);
+      return redirect(`/${lang}/components/docs/${component}/overview`);
     }
 
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
@@ -69,8 +73,6 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const compPage = trimmedUrl.split('/').pop();
 
   const componentDocs = getComponentDocs(component);
-
-  const componentDir = join('app', 'content', 'components', component);
 
   // Extract exported story functions from *.stories.tsx
   const storyEntries = extractStories(componentDir);
@@ -147,9 +149,9 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     toc: result.toc,
     componentDocs,
     navigation: {
-      overviewLink: `/${lang}/components/${component}/overview`,
-      codeLink: `/${lang}/components/${component}/code`,
-      accessibilityLink: `/${lang}/components/${component}/accessibility`,
+      overviewLink: `/${lang}/components/docs/${component}/overview`,
+      codeLink: `/${lang}/components/docs/${component}/code`,
+      accessibilityLink: `/${lang}/components/docs/${component}/accessibility`,
     },
     githubLink: `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/components/${component}/${lang}/${compPage}.mdx`,
   };
@@ -169,21 +171,31 @@ export default function Components({
   loaderData: { stories, mdxCode, metadata, toc, navigation, githubLink },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
+  const feedbackUrl = new URL(
+    'https://github.com/digdir/designsystemet/issues/new',
+  );
+  feedbackUrl.searchParams.set('template', 'BLANK_ISSUE');
+  feedbackUrl.searchParams.set('title', `Feedback: ${metadata.title}`);
   return (
     <>
       <div className={classes.header}>
         <div className={classes.headerUpper}>
           <div className={classes.headerText}>
+            <Heading data-size='xs' asChild>
+              <p>{t('components.title')}</p>
+            </Heading>
             <Heading data-size='lg' level={1}>
               {metadata.title}
             </Heading>
             <MDXComponents code={metadata.subtitle} />
           </div>
-          <img
-            src={'/img/component-previews/' + metadata.image}
-            alt={metadata.title}
-            aria-hidden='true'
-          />
+          <IconFrame className={classes.iconFrame} data-color='brand3'>
+            <img
+              src={'/img/component-previews/' + metadata.image}
+              alt={metadata.title}
+              aria-hidden='true'
+            />
+          </IconFrame>
         </div>
         <div className={classes.headerBottom}>
           <Button asChild variant='tertiary'>
@@ -201,18 +213,22 @@ export default function Components({
           </Button>
         </div>
       </div>
-      <TableOfContents
-        className={classes.tableOfContents}
-        title={metadata.title || ''}
-        items={toc}
-      />
+      <TableOfContents items={toc} level={3}>
+        <div className={'toc-feedback'}>
+          <Paragraph data-size='sm'>{t('toc.feedback.component')}</Paragraph>
+          <Button data-size='sm' variant='secondary' asChild>
+            <a href={feedbackUrl.toString()}>
+              <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
+            </a>
+          </Button>
+        </div>
+      </TableOfContents>
 
       <div className={cl(classes.content, 'u-rich-text')}>
         {mdxCode ? (
           <MDXComponents
             code={mdxCode}
             components={{
-              Story: Story as unknown as ComponentType<unknown>,
               DoDont: DoDontComponent as unknown as ComponentType<unknown>,
               ReactComponentDocs:
                 PropsTable as unknown as ComponentType<unknown>,
@@ -233,23 +249,6 @@ export default function Components({
     </>
   );
 }
-
-const Story = ({ story, layout }: LiveComponentProps) => {
-  const data =
-    useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
-  if (!data) return null;
-
-  const { stories } = data;
-
-  const foundStory = stories.find((s) => s.name === story);
-  if (!foundStory) return <Alert lang='en'>Story not found: {story}</Alert>;
-  return (
-    <LiveComponent
-      story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
-      layout={layout}
-    />
-  );
-};
 
 const DoDontComponent = ({
   story,

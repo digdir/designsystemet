@@ -1,0 +1,12 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
+`SkipLink` is usually not visible until a keyboard press activates it.
+
+Be aware that some automated accessibility tests may warn that a `SkipLink` is missing from a landmark, such as a `<nav>`. This warning does not apply to `SkipLink`, so you can safely ignore it.
+
+Make sure that `SkipLink` behaves predictably. A `SkipLink` with the text “Skip to content” should move the user’s focus to the start of the content, not to the beginning of the first paragraph under the heading.
+
+### Keyboard navigation
+* <kbd>Enter</kbd> follows the link and jumps to the target

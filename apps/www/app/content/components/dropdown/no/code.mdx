@@ -3,34 +3,36 @@
 
 ## Bruk
 
-`Dropdown` bruker [`Popover`](/no/components/popover/code) internt.
+`Dropdown` bruker [`Popover`](/no/components/docs/popover/code) internt.
 
 ```tsx
 import { Dropdown } from '@digdir/designsystemet-react';
 
-// med context
-<Dropdown.TriggerContext>
-  <Dropdown.Trigger>Trigger</Dropdown.Trigger>
-  <Dropdown>
-    <Dropdown.Heading>Heading</Dropdown.Heading>
-    <Dropdown.List>
-      <Dropdown.Item>
-        <Dropdown.Button>Item</Dropdown.Button>
-      </Dropdown.Item>
-    </Dropdown.List>
+<>
+{/* med context */}
+<Dropdown.TriggerContext> 
+  <Dropdown.Trigger>Trigger</Dropdown.Trigger> 
+  <Dropdown> 
+    <Dropdown.Heading>Heading</Dropdown.Heading> 
+    <Dropdown.List> 
+      <Dropdown.Item> 
+        <Dropdown.Button>Item</Dropdown.Button> 
+      </Dropdown.Item> 
+    </Dropdown.List> 
   </Dropdown>
 </Dropdown.TriggerContext>
 
-// uten context
+{/* uten context */}
 <Button popovertarget="my-dropdown">Trigger</Button>
-<Dropdown id="my-dropdown">
-  <Dropdown.Heading>Heading</Dropdown.Heading>
-  <Dropdown.List>
-    <Dropdown.Item>
+<Dropdown id="my-dropdown"> 
+  <Dropdown.Heading>Heading</Dropdown.Heading> 
+  <Dropdown.List> 
+    <Dropdown.Item> 
       <Dropdown.Button>Item</Dropdown.Button>
-    </Dropdown.Item>
+    </Dropdown.Item> 
   </Dropdown.List>
 </Dropdown>
+</>
 ```
 
 ### React og `popovertarget`
@@ -51,6 +53,8 @@ med Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at b
 
 Dersom du sender inn `open`, så bruker du `Dropdown` kontrollert. Du kan bruke `onClose` for å få beskjed når `Dropdown` vil lukkes.
 
+Merk at vi ikke bruker `onClick` på triggeren, dropdownen håndterer dette internt on sendet til `onOpen` og `onClose`.
+
 <Story story="Controlled" />
 
 ### Uten `TriggerContext`
@@ -67,6 +71,14 @@ Dette kan brukes uten JavaScript, dersom du ikke vil polyfille.
 
 Merk deg at elementet med `popover="manual"` bruker to klasser, `ds-popover` og `ds-dropdown`.
 Du velger selv om du vil bruke `popover="manual"` eller bare `popover` for å åpne dropdownen.
+
+Når du bruker `@digdir/designsystemet-web` legger vi på en listener som automatisk plasserer popoveren riktig ved hjelp av `floating-ui`. 
+Du kan styre plassering med attributt på selve popoveren.
+| attribute     | type   | default    | required |
+|---------------|--------|------------|----------|
+| data-placement | string | top        | false    |
+| data-overscroll | `'contain' \| undefined` | undefined | undefined       | false    |
+| data-autoplacement | boolean | true          | false    |
 
 [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using)
 

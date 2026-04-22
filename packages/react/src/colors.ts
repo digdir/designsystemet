@@ -1,4 +1,4 @@
 export type {
   Color,
   SeverityColors,
-} from '@digdir/designsystemet/types';
+} from '@digdir/designsystemet-types';

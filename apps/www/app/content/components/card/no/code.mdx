@@ -23,8 +23,7 @@ Kort kommer i alle farger, og har to varianter.
 
 ### Med inndeling
 
-Bruk flere `Card.Block` hvis du vil dele opp kortet med skillelinjer eller legge til bilder eller video som går ut i kanten. 
-Merk at når du bruker `Card.Block`, må alt innhold ligge inni `Card.Block` - ikke plasseres direkte i `Card`.
+Bruk flere `Card.Block` hvis du vil dele opp kortet med skillelinjer eller legge til bilder eller video som går ut i kanten. Merk at når du bruker `Card.Block`, må alt innhold ligge inni `Card.Block` - ikke plasseres direkte i `Card`.
 
 <Story story="Media" />
 
@@ -81,6 +80,25 @@ Du kan endre mellom `display: flex` og `display: grid` for å legge `Card.Block`
   <div class="ds-card__block">
     Valgfri fotnote
   </div>
+</div>
+```
+
+### Lenkekort med data-attributt 
+
+Du kan gjøre hele kortet klikkbart ved å legge til `data-clickdelegatefor` og peke på id-en til en lenke inne i kortet.
+
+```html
+<div
+  class="ds-card"
+  data-clickdelegatefor="lenke"
+>
+  <a
+    id="lenke"
+    class="ds-link"
+    href="https://designsystemet.no"
+    target="_blank"
+    rel="noopener noreferrer"
+  >Myrkheim Museum</a>
 </div>
 ```
 

@@ -75,8 +75,8 @@ export type { DialogBlockProps } from './dialog-block';
 export type { DialogTriggerProps } from './dialog-trigger';
 export type { DialogTriggerContextProps } from './dialog-trigger-context';
 export {
-  DialogComponent as Dialog,
   DialogBlock,
-  DialogTriggerContext,
+  DialogComponent as Dialog,
   DialogTrigger,
+  DialogTriggerContext,
 };

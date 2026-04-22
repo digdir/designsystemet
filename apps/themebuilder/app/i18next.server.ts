@@ -10,6 +10,7 @@ const i18next = new RemixI18Next({
   },
   i18next: {
     ...i18n,
+    showSupportNotice: false,
     resources: {
       en: {
         translation: en,

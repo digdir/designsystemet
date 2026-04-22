@@ -1,32 +1,28 @@
-import { act, render as renderRtl, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { act, render, screen } from '@testing-library/react';
 import { Search } from './';
 
 describe('Search', () => {
   it('should clear input when clear button is clickd', async () => {
-    renderRtl(
+    render(
       <Search>
         <Search.Input aria-label='Søk' />
-        <Search.Clear />
+        <Search.Clear data-testid='button' />
       </Search>,
     );
 
-    const input = screen.getByRole('searchbox');
-    const clearButton = screen.getByRole('button');
+    const input = screen.getByRole('searchbox') as HTMLInputElement;
+    const clearButton = screen.getByTestId('button');
 
     expect(input).toHaveValue('');
     expect(clearButton).toBeInTheDocument();
 
-    input.focus();
-
+    await act(async () => input.focus());
     expect(input).toHaveFocus();
 
-    await act(async () => await userEvent.type(input, 'Hello, World!'));
-
+    input.value = 'Hello, World!';
     expect(input).toHaveValue('Hello, World!');
 
-    await act(async () => await userEvent.click(clearButton));
-
+    await act(async () => clearButton.click());
     expect(input).toHaveValue('');
   });
 });

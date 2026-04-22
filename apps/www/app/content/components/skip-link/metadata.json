@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "SkipLink",
-    "subtitle": "Vi bruker `SkipLink` for å hjelpe folk som bruker tastaturnavigasjon til å navigere, slik at dei enkelt kan gå til det viktigaste innhaldet på ei side. "
+    "subtitle": "`SkipLink` hjelper folk som bruker tastaturnavigasjon til å navigere, slik at dei enkelt kan gå til det viktigaste innhaldet på ei side. "
   },
   "en": {
     "title": "SkipLink",
-    "subtitle": "We use `SkipLink` to help people using keyboard navigation to navigate, so they can easily go to the main content on a page."
+    "subtitle": "`SkipLink` helps people using keyboard navigation to navigate, so they can easily go to the main content on a page."
   },
   "image": "SkipLink.svg",
   "cssFile": "skip-link.css"

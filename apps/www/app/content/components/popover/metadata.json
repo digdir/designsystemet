@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Popover",
-    "subtitle": "`Popover` vises over andre elementer i grensesnittet og er koblet til et spesifikt element. Den brukes til å vise tilleggsinformasjon, interaktive elementer eller korte forklaringer uten å navigere bort fra siden. `Popover` kan brukes som en utvidet løsning når [`Tooltip`](/no/components/tooltip) ikke strekker til."
+    "subtitle": "`Popover` vises over andre elementer i grensesnittet og er koblet til et spesifikt element. Den brukes til å vise tilleggsinformasjon, interaktive elementer eller korte forklaringer uten å navigere bort fra siden."
   },
   "en": {
     "title": "Popover",
-    "subtitle": "`Popover` appears above other elements in the interface and is linked to a specific element. It is used to display additional information, interactive elements, or brief explanations without navigating away from the page. `Popover` can be used as an extended solution when [`Tooltip`](/en/components/tooltip) is not sufficient."
+    "subtitle": "`Popover` appears above other elements in the interface and is linked to a specific element. It is used to display additional information, interactive elements, or brief explanations without navigating away from the page."
   },
   "image": "Popover.svg",
   "cssFile": "popover.css"

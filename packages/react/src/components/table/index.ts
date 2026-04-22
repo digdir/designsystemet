@@ -118,21 +118,21 @@ TableComponent.Cell.displayName = 'Table.Cell';
 TableComponent.HeaderCell.displayName = 'Table.HeaderCell';
 TableComponent.Foot.displayName = 'Table.Foot';
 
-export {
-  TableComponent as Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableHeaderCell,
-  TableFoot,
-};
 export type {
-  TableProps,
-  TableHeadProps,
   TableBodyProps,
-  TableRowProps,
   TableCellProps,
-  TableHeaderCellProps,
   TableFootProps,
+  TableHeaderCellProps,
+  TableHeadProps,
+  TableProps,
+  TableRowProps,
+};
+export {
+  TableBody,
+  TableCell,
+  TableComponent as Table,
+  TableFoot,
+  TableHead,
+  TableHeaderCell,
+  TableRow,
 };

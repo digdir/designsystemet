@@ -75,8 +75,8 @@ export const BorderRadiusInput = () => {
               aria-checked={baseBorderRadius === item.value}
               aria-current={baseBorderRadius === item.value}
             >
-              <div className={classes.text}>{item.name}</div>
-              <div
+              <span className={classes.text}>{item.name}</span>
+              <span
                 className={classes.inner}
                 style={{ borderRadius: item.value }}
               />

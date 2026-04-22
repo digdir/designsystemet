@@ -1,26 +1,108 @@
----
-title: Field
-image: Field.svg
-cssfile: field
----
+It is common to get confused between `Fieldset` and `Field`.
+A good rule of thumb is that **`Fieldset` is a set of `Field`**
 
-<Story story="Preview" />
+<Story story="PreviewEn" />
+<ReactComponentDocs />
 
-## Prefix/Suffix
+## Usage
+`Field` can be used with `Input`, `Textarea` and `Select`. **NOTE**: `Textfield` already has `Field` built in, and therefore cannot be used in a `Field`.
 
-Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer informasjon som er relevant for feltet.
-Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp.
-Det er viktig at samme informasjon som vises i prefixet eller suffixet også er inkludert i ledeteksten.
+```tsx
+<Field>
+  <Label>Short description</Label>
+  <Field.Description>Description</Field.Description>
+  <Input />
+  <ValidationMessage>Error message</ValidationMessage>
+</Field>
+```
 
-<Story story="Affix" />
+## Examples
 
-## Antall tegn
+### Prefix/Suffix
 
-Bruk `Field.Counter` til å informere om antall tegn brukerne kan skrive i feltet.
+Prefixes and suffixes are useful for displaying units, currency or other types of information relevant to the field. You should **not** use these on their own, as screen readers do not read them out. It is important that the same information displayed in the prefix or suffix is ​​also included in the prompt.
 
-<Story story="Counter" />
+<Story story="AffixEn" />
 
-## Plassering
-Bruk `position="end"` når du ønsker å plassere for eksempel en `Switch` til høyre for `Label`. Dette kan være nyttig i innstillingsgrensesnitt, slik at brukeren først kan lese etiketten til venstre - som forklarer hva innstillingen gjelder - og deretter handlingselementet (bryteren) til høyre. 
+### Number of characters
 
-<Story story="Position" />
+Use `Field.Counter` to inform about the number of characters users can type in the field.
+
+<Story story="CounterEn" />
+
+### Position
+
+Use `position="end"` when you want to place, for example, a `Switch` to the right of `Label`.
+
+You can change the text by submitting props, which you can see at the top of the page. The language is standard Norwegian Bokmål.
+
+<Story story="PositionEn" layout="column" />
+
+## HTML
+
+Add the class name `ds-field` to the `<ds-field>` element.
+`<ds-field>` links together label, input and validation message.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <input type="text" placeholder="Placeholder" class="ds-input" />
+  <div class="ds-validation-message" data-field="validation">
+    This is an error message
+  </div>
+</ds-field>
+```
+
+### Number of characters
+
+To get a counter on input and textarea, add a `<p>` with the attribute `data-field="counter"` inside the `ds-field`.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <textarea class="ds-input"></textarea>
+  <p class="ds-validation-message" data-field="counter" data-limit="20" data-over="%d characters too many" data-under="%d characters left"></p>
+</ds-field>
+```
+
+You can control the text in the counter using the following attributes:
+| attribute  | type   | default               | required |
+|------------|--------|-----------------------|----------|
+| data-limit | number | undefined             | true     |
+| data-over  | string | %d tegn for mye       | false    |
+| data-under | string | %d tegn igjen         | false    |
+
+### Indeterminate
+
+To make a `checkbox` indeterminate, add `data-indeterminate="true"` on the `<input>` element.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <input class="ds-input" type="checkbox" data-indeterminate="true" />
+</ds-field>
+```
+
+### Position
+
+To change the position of elements in `Field`, such as a `Switch`, you can add `data-position="end|start"` to the same element as `ds-field`.
+
+```html
+<ds-field class="ds-field" data-position="end">
+  <label
+    class="ds-label"
+    data-weight="medium"
+  >Flightmode</label>
+  <input
+    class="ds-input"
+    role="switch"
+    type="checkbox"
+  >
+</ds-field>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

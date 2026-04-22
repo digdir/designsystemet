@@ -1,73 +1,86 @@
-<Story story="Preview" />
+<Story story="PreviewEn" />
 
-## Bruk
+## Usage
 
-Den siste lenkja i `Breadcrumbs` blir automatisk markert med `aria-current="page"`.
+The last link in `Breadcrumbs` is automatically marked with `aria-current="page"`.
 
 ```tsx
-<Breadcrumbs aria-label="Du er her:">
-  <Breadcrumbs.Link aria-label="Tilbake til nivå 3">Nivå 3</Breadcrumbs.Link>
-  <Breadcrumbs.List>
-    <Breadcrumbs.Item>
-      <Breadcrumbs.Link href="https://designsystemet.no/">Nivå 1</Breadcrumbs.Link>
-    </Breadcrumbs.Item>
-    <Breadcrumbs.Item>
-      <Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Nivå 2</Breadcrumbs.Link>
-    </Breadcrumbs.Item>
-  </Breadcrumbs.List>
+<Breadcrumbs aria-label="You are here:">
+<Breadcrumbs.Link aria-label="Back to level 3">Level 3</Breadcrumbs.Link>
+<Breadcrumbs.List>
+<Breadcrumbs.Item>
+<Breadcrumbs.Link href="https://designsystemet.no/">Level 1</Breadcrumbs.Link>
+</Breadcrumbs.Item>
+<Breadcrumbs.Item>
+<Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Level 2</Breadcrumbs.Link>
+</Breadcrumbs.Item>
+</Breadcrumbs.List>
 </Breadcrumbs>
 ```
 
-## Kodeeksempel
+## Examples
 
-### Berre tilbake-knapp
+### Back button only
 
-Om du legg ein `Breadcrumbs.Link` direkte i `Breadcrumbs`, vil lenkja visast som ein tilbake-knapp. Det er viktig at du er konsistent i løysinga di, og bruker anten tilbake-knapp eller sti, ikkje begge delar.
+If you place a `Breadcrumbs.Link` directly in `Breadcrumbs`, the link will be displayed as a back button. It is important that you are consistent in your solution, and use either the back button or the path, not both.
 
-<Story story="BackOnly" />
+<Story story="BackOnlyEn" />
 
-### Berre sti
+### Path only
 
-Om du legg ein `Breadcrumbs.List` direkte i `Breadcrumbs`, vil denne visast som ein sti.
+If you only put `Breadcrumbs.List` directly in `Breadcrumbs`, it will always be displayed as a path.
+This means that you will get the same display on both mobile and desktop.
 
-<Story story="ListOnly" />
+<Story story="ListOnlyEn" />
 
-### Sti eller tilbake-knapp basert på skjermbreidde
+### Path or back button based on screen width
 
-Om du legg både ein `Breadcrumbs.Link` og ein `Breadcrumbs.List` direkte i `Breadcrumbs`, vil tilbake-knappen visast på skjermar smalare enn 650px, og stien visast på breiare skjermar.
+If you put both a `Breadcrumbs.Link` and a `Breadcrumbs.List` directly in `Breadcrumbs`, the back button will be displayed on screens narrower than 650px, and the path will be displayed on wider screens.
 
-<Story story="Preview" />
+<Story story="MobileViewportEn" />
 
-## Retningslinjer
-Det er først når det er tre eller fleire nivå på ein nettstad at det er behov for `Breadcrumbs`. 
+## HTML
 
-**Passar til**
-- Sider der brukarane kan ønskje å gå tilbake til tidlegare nivå
-- Å hjelpe brukarar med å forstå kvar dei er i strukturen
+The class name `ds-breadcrumbs` is added to a `<ds-breadcrumbs>`.
+The web component automatically handles `aria-current="page"` on the last link in the list.
 
-**Passar ikkje til**
-- Lineær navigasjon, for eksempel for dei ulike stega i ein arbeidsflyt eller eit skjema.
+If you want to do this yourself, you can use `<nav class="ds-breadcrumbs" aria-label="You are here:">`.
 
-### Plassering
-`Breadcrumbs` skal alltid plasserast øvst på venstre side av sida. Han skal liggje under menyen og hovudnavigasjonen, men over sidetittelen.
+```html
+<ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
+  <ol>
+    <li><a href="#none">level 1</a></li>
+    <li><a href="#none">level 2</a></li>
+    <li><a href="#none">level 3</a></li>
+  </ol>
+</ds-breadcrumbs>
+```
 
-### Skjule Breadcrumbs på mobil
-Om du har lang navigasjon, kan du setje opp komponenten til berre å vise første og siste del av søkestien på mobil.  
-Dette skjer automatisk på skjermar som er smalare enn 650px, der vi berre viser lenkja eitt nivå ned.
+### Back button only
 
-## Tekst
-Bruk korte og tydelege namn i brødsmulestien, slik at brukarane raskt forstår kvar dei er. Teksten bør samsvare med overskriftene eller navigasjonen på nettsida, slik at det er lett å kjenne igjen nivåa.
+```html
+<ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
+  <a href="#none" aria-label="Back to level 2">Back to level 2</a>
+</ds-breadcrumbs>
+```
 
-## Tilgjengelegheit
-`Breadcrumbs` kan innehalde fleire interaktive element som må kunne navigerast med tastatur. Pass derfor på at [`SkipLink`](/docs/komponenter-skiplink--docs) til hovudinnhaldet også hoppar over `Breadcrumbs`.
+### Path or back button based on screen width
 
-### Siste nivå
-Den siste lenkja skal tilsvare noverande side. Den ser ut som vanleg tekst, men er koda som ein lenkje med `aria-current="page"`. På den måten får skjermlesarar korrekt informasjon om kva side brukaren er på, utan at andre brukarar feilaktig oppfattar det som ei klikkbar lenkje.
+```html
+<ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
+  <a href="#none" aria-label="Back to level 3">
+    level 3
+  </a>
+  <ol>
+    <li><a href="#none">level 1</a></li>
+    <li><a href="#none">level 2</a></li>
+    <li><a href="#none">level 3</a></li>
+  </ol>
+</ds-breadcrumbs>
+```
 
-## CSS
+## CSS variables and data attributes
 
-### Variabler
 <CssVariables />
 
-### Attributter
 <CssAttributes />

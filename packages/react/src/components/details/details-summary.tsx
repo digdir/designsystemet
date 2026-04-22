@@ -13,8 +13,13 @@ export type DetailsSummaryProps = {
  * <Details.Summary>Heading</Details.Summary>
  */
 export const DetailsSummary = forwardRef<HTMLElement, DetailsSummaryProps>(
-  function DetailsSummary({ className, ...rest }, ref) {
-    /* Set `className` as `class` so react is happy */
-    return <u-summary ref={ref} class={className} {...rest} />;
+  function DetailsSummary(rest, ref) {
+    return (
+      <summary
+        suppressHydrationWarning // Since <details> polyfill adds attributes
+        ref={ref}
+        {...rest}
+      />
+    );
   },
 );

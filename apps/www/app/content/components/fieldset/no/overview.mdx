@@ -1,18 +1,23 @@
+---
+search_terms: feltgruppe, gruppering, skjema, felter
+---
+
 <Story story="Preview" />
 
 **Bruk `Fieldset` når**
 - du har en gruppe eller liste med flere `Radio` eller `Checkbox` som hører naturlig sammen
 - et skjema skal deles i seksjoner med forklarende ledetekster
+- flere felt naturlig hører sammen for eksempel kontaktinformasjon
 
 **Unngå `Fieldset` når**
 - du skal gruppere elementer som ligger utenfor et skjema
+- feltene ikke deler et felles formål
 
 ## Eksempel
 
 ### Checkbox
 
-Det kan være scenarioer hvor et `Fieldset` kun har en `Checkbox`, dette er basert på konteksten.
-Under er et eksempel på et slikt scenario.
+Det kan være scenarioer hvor et `Fieldset` kun har en `Checkbox`, dette er basert på konteksten. Under er et eksempel på et slikt scenario.
 
 <Story story="WithCheckbox" />
 
@@ -20,20 +25,15 @@ Under er et eksempel på et slikt scenario.
 
 Å bruke selve spørsmålet som overskrift er god praksis i mange tilfeller, fordi brukere med skjermleser da bare hører spørsmålet én gang. 
 
-På sider med flere inndatafelt, men som omfavner det samme spørsmålet, blir det enklere for brukere med skjermleser om spørsmålet er en overskrift.
-Dette gjør det lettere å forstå at alle feltene som følger hører til samme gruppe som overskriften.
+På sider med flere inndatafelt, men som omfavner det samme spørsmålet, blir det enklere for brukere med skjermleser om spørsmålet er en overskrift. Dette gjør det lettere å forstå at alle feltene som følger hører til samme gruppe som overskriften.
 
 I eksempelet under bruker vi `<h1>`, som da hadde stått som hovedoverskrift for siden, men samtidig `<legend>`.
 
 <Story story="LegendAsHeading" />
 
 ## Retningslinjer
-Når du bruker `Fieldset`, skal du starte med en `Fieldset.Legend` som forklarer hva feltene under handler om.
-Det kan være et spørsmål som «Hvor bor du nå?» eller en beskrivende setning som «Personopplysninger».
-Dette hjelper brukeren med å forstå sammenhengen mellom feltene og hva de skal fylle ut.
+Når du bruker `Fieldset`, skal du starte med en `Fieldset.Legend` som forklarer hva feltene under handler om. Det kan være et spørsmål som «Hvor bor du nå?» eller en beskrivende setning som «Personopplysninger». Dette hjelper brukeren med å forstå sammenhengen mellom feltene og hva de skal fylle ut.
 
 ## Tekst
-Unngå å bruke samme tekst i både `<label>` og `<legend>`.
-Ha gjerne med en hjelpetekst (`Fieldset.Description`) hvis det gjør det enklere for brukerne å fylle ut skjemaet.
-Merk at beskrivelsen ikke blir koblet til input-feltene.
+Unngå å bruke samme tekst i både `<label>` og `<legend>`. Ha gjerne med en hjelpetekst (`Fieldset.Description`) hvis det gjør det enklere for brukerne å fylle ut skjemaet. Merk at beskrivelsen ikke blir koblet til input-feltene.
 Lag teksten så kort som mulig.

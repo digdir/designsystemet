@@ -1,11 +1,8 @@
----
-title: Fieldset
-subtitle: '`Fieldset` is used to group related form elements.'
-image: Fieldset.svg
-cssfile: fieldset
----
+It is common to get confused between `Fieldset` and `Field`.
+A good rule of thumb is that **`Fieldset` is a set of `Field`**
 
-<Story story="Preview" />
+<Story story="PreviewEn" />
+<ReactComponentDocs />
 
 ## Usage
 
@@ -13,19 +10,44 @@ cssfile: fieldset
 import { Fieldset, Radio } from '@digdir/designsystemet-react';
 
 <Fieldset>
-  <Fieldset.Legend>Question</Fieldset.Legend>
-  <Fieldset.Description>Description</Fieldset.Description>
-  <Radio label="Option 1" name="radio" value="1" />
-  <Radio label="Option 2" name="radio" value="2" />
+<Fieldset.Legend>Question</Fieldset.Legend>
+<Fieldset.Description>Description</Fieldset.Description>
+<Radio label="Option 1" name="radio" value="1" />
+<Radio label="Option 2" name="radio" value="2" />
 </Fieldset>
 ```
 
-## Code Examples
+## Examples
 
 ### With checkbox
 
-<Story story="WithCheckbox" />
+Both [`Checkbox`](/en/components/docs/checkbox/code) and [`Radio`](/en/components/docs/radio/code) should be grouped in a `Fieldset`, even if there is only one element in the group.
+
+<Story story="WithCheckboxEn" />
+
+### More fields
+
+<Story story="WithFieldsEn" />
 
 ### Legend as heading
 
-<Story story="LegendAsHeading" />
+If it is a page that only has form on it, and the title of the page (`<h1>`) is the same as what will be in `<legend>`, you can put `<h1>` inside `Fieldset.Legend`.
+
+<Story story="LegendAsHeadingEn" />
+
+## HTML
+
+The class name `ds-fieldset` is added to the `<fieldset>` element.
+
+```html
+<fieldset class="ds-fieldset">
+<legend class="ds-label" data-weight="medium">Do you accept the terms?</legend>
+<!-- your fields -->
+</fieldset>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

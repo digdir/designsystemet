@@ -1,4 +1,17 @@
+---
+search_terms: tekstfelt, inputfelt, fritekst, input, singleline
+---
+
 <Story story="Preview" />
+
+**Bruk `Textfield` når**
+- du trenger et komplett skjemafelt med label, hjelpetekst og valideringsmelding
+- feltet skal valideres underveis eller ved innsending  
+- verdien er unik og ikke kan velges fra en liste
+
+**Unngå `Textfield` når**
+- du trenger et helt enkelt inputfelt uten skjemalogikk, bruk heller [`Input`](/no/components/docs/input/overview)
+- brukeren skal velge fra et begrenset sett med alternativer, bruk heller [`Radio`](/no/components/docs/radio/overview), [`Checkbox`](/no/components/docs/checkbox/overview), [`Select`](/no/components/docs/select/overview) eller [`Suggestion`](/no/components/docs/suggestion/overview)  
 
 ## Eksempel
 
@@ -21,10 +34,13 @@ Bruk `counter` til å informere om antall tegn brukerne kan skrive i feltet.
 <Story story="WithCounter" />
 
 ### Påkrevde og valgfrie felt
-Det er lovpålagt å markere feltene dine, du kan lese vårt mønster om [obligatoriske og valgfrie felt](/no/patterns/required-and-optional-fields) for mer informasjon.
-Når du plasserer `Tag` i `<label>` anbefaler vi at du bruker `margin-inline-start: var(--ds-size-2)` for å skape avstand mellom teksten og taggen.
+Det er lovpålagt å markere påkrevde felt. Les om [obligatoriske og valgfrie felt](/no/patterns/required-and-optional-fields) for mer informasjon. Når du plasserer `Tag` i `<label>` anbefaler vi at du bruker `margin-inline-start: var(--ds-size-2)` for å skape avstand mellom teksten og taggen.
 
 <Story story="Required" />
+
+### Type
+Siden `Textfield` er basert på native `input`, kan du bruke de fleste `type`-verdiene `input` støtter, men vi har valgt å fjerne noen av de fra vår eksporterte type. Du kan se de gyldige type verdiene i nedtrekksmenyen nedenfor.
+<Story story="InputType" layout="block" />
 
 ## Retningslinjer
 `Input` er egnet til korte tekster og svar. `Textarea` er egnet til mer utfyllende og lengre svar. 
@@ -64,4 +80,4 @@ Det skal alltid være ledetekst på `Textfield`.
 
 - Hold ledeteksten kort, unngå at den går over to linjer
 - Unngå å legge til beskrivelse som ikke er relevant eller meningsfull for brukeren
-- Unngå å bruke kolon etter `label`
+- Unngå å bruke kolon etter `<label>`

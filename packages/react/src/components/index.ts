@@ -1,8 +1,13 @@
+import '@digdir/designsystemet-web';
+
 export type { AlertProps } from './alert/alert';
 export { Alert } from './alert/alert';
 
 export type { AvatarProps } from './avatar/avatar';
 export { Avatar } from './avatar/avatar';
+
+export type { AvatarStackProps } from './avatar-stack/avatar-stack';
+export { EXPERIMENTAL_AvatarStack } from './avatar-stack/avatar-stack';
 
 export type { BadgePositionProps, BadgeProps } from './badge';
 export { Badge, BadgePosition } from './badge';

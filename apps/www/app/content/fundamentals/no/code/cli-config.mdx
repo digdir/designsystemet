@@ -6,7 +6,8 @@ category: Kode
 color: blue
 icon: FileJsonIcon
 published: true
-order: 60
+order: 40
+search_terms: konfigurasjon, tokens
 ---
 
 <Alert data-color="warning">
@@ -32,10 +33,7 @@ Har du plassert fila di ein anna plass, eller med eit anna navn, kan du bruke `-
         "neutral": "#1E2B3C",
         "support": { "extra1": "#F45F63" }
       },
-      "borderRadius": 4,
-      "typography": {
-        "fontFamily": "Inter"
-      }
+      "borderRadius": 4
     }
   }
 }
@@ -105,6 +103,7 @@ Objektet for main og support inneheld fargar, der nøkkelen er fargen sitt namn 
 | colors | Objekt | Nei | Inneheld overskrivingar for individuelle fargesteg |
 | severity | Objekt | Nei | Inneheld overskrivingar for severity-fargar |
 | linkVisited | Objekt | Nei | Inneheld overskrivingar for farge på besøkte lenker |
+| focus | Objekt | Nei | Inneheld overskrivingar for fokus fargar |
 
 #### overrides.colors
 | Namn | Type | Påkrevd | Forklaring |
@@ -148,6 +147,18 @@ Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity
 | ---- | ---- | ------- | ----------- |
 | light | Streng | Nei | Hex-farge for besøkte lenker i lyst tema |
 | dark | Streng | Nei | Hex-farge for besøkte lenker i mørkt tema |
+
+#### overrides.focus
+| Namn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| inner | Objekt | Nei | Inneheld fargar for indre fokus |
+| outer | Objekt | Nei | Inneheld fargar for ytre fokus |
+
+##### overrides.focus.(inner|outer)
+| Namn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| light | Streng | Nei | Hex-farge for indre fokus i lyst tema |
+| dark | Streng | Nei | Hex-farge for indre fokus i mørkt tema
 
 ## Komplett Eksempel
 

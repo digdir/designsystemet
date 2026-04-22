@@ -56,13 +56,14 @@ export const ColorPreview = () => {
         <div className='panelBottom'>
           <div className={classes.label}>{t('colorPreview.view')}</div>
           <ToggleGroup
+            data-toggle-group='Visning'
             data-size='sm'
             defaultValue={DEFAULT_VIEW}
             onChange={(value: string) => setView(value as ViewType)}
           >
             <ToggleGroup.Item value='grid'>Grid</ToggleGroup.Item>
             <ToggleGroup.Item value='list'>
-              {t('tabs.overview')}
+              {t('tabs.examples')}
             </ToggleGroup.Item>
           </ToggleGroup>
         </div>

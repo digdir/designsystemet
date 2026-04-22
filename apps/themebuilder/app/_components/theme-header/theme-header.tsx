@@ -4,6 +4,7 @@ import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData, useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import type { ThemebuilderTabs } from '~/routes/themebuilder/themebuilder';
 import classes from './theme-header.module.css';
 
 export const ThemeHeader = () => {
@@ -14,17 +15,18 @@ export const ThemeHeader = () => {
 
   const tabs: {
     name: string;
-    value: 'overview' | 'colorsystem';
+    value: ThemebuilderTabs;
   }[] = [
-    { name: t('tabs.overview'), value: 'overview' },
     { name: t('tabs.colorsystem'), value: 'colorsystem' },
+    { name: t('tabs.examples'), value: 'examples' },
+    // { name: t('tabs.variables'), value: 'variables' }, // hide variables tab for now
   ];
 
   return (
     <div className={classes.header}>
       <div className={classes.textContainer}>
         <RRLink data-size='sm' className={classes.backLink} to={`/${lang}/`}>
-          <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
+          <ChevronLeftIcon aria-hidden height='1.5rem' width='1.5rem' />
           {t('header.back-to-home')}
         </RRLink>
         <Heading data-size='md' level={1}>

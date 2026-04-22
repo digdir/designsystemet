@@ -15,6 +15,7 @@ const Image = ({
   src,
   boxShadow = false,
   caption,
+  className,
   ...rest
 }: ImageProps) => {
   const { t } = useTranslation();
@@ -27,18 +28,14 @@ const Image = ({
   };
 
   const closeFullImage = () => {
-    if (dialogRef.current) {
-      dialogRef.current.close();
-    }
+    dialogRef.current?.close();
   };
 
   useEffect(() => {
     const dialog = dialogRef.current;
 
     if (dialog) {
-      const handleClick = () => {
-        dialog.close();
-      };
+      const handleClick = () => dialog.close();
 
       dialog.addEventListener('click', handleClick);
 
@@ -49,7 +46,13 @@ const Image = ({
   }, []);
 
   return (
-    <figure className={cl(classes.container, boxShadow && classes.boxShadow)}>
+    <figure
+      className={cl(
+        classes.container,
+        className,
+        boxShadow && classes.boxShadow,
+      )}
+    >
       <div className={classes.imageContainer}>
         <img className={classes.image} src={src} alt={alt} {...rest} />
         <button
@@ -70,7 +73,7 @@ const Image = ({
             icon
             variant='tertiary'
           >
-            <XMarkIcon fontSize='1.5rem' />
+            <XMarkIcon />
           </Button>
           <div className={classes.dialogMessage}>
             {t('image.enlarged-text')}
@@ -79,7 +82,7 @@ const Image = ({
       </dialog>
 
       {caption && (
-        <Paragraph data-size='sm' asChild>
+        <Paragraph className={classes.caption} data-size='sm' asChild>
           <figcaption>{caption}</figcaption>
         </Paragraph>
       )}

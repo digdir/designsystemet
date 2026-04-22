@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "outDir": {
+      "type": "string",
+      "description": "Path to the output directory for the created design tokens"
+    },
+    "themes": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "colors": {
+            "type": "object",
+            "properties": {
+              "main": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string",
+                  "pattern": "^(?!(?:neutral|success|warning|danger|info)$)"
+                },
+                "additionalProperties": {
+                  "description": "A hex color, which is used for creating a color scale. Invalid color names: neutral, success, warning, danger, info"
+                },
+                "description": "An object with one or more color definitions. The property name is used as the color name."
+              },
+              "support": {
+                "default": {},
+                "type": "object",
+                "propertyNames": {
+                  "type": "string",
+                  "pattern": "^(?!(?:neutral|success|warning|danger|info)$)"
+                },
+                "additionalProperties": {
+                  "description": "A hex color, which is used for creating a color scale. Invalid color names: neutral, success, warning, danger, info"
+                },
+                "description": "An object with one or more color definitions. The property name is used as the color name."
+              },
+              "neutral": {
+                "description": "A hex color, which is used for creating a color scale."
+              }
+            },
+            "required": [
+              "main",
+              "support",
+              "neutral"
+            ],
+            "additionalProperties": false,
+            "description": "Defines the colors for this theme"
+          },
+          "typography": {
+            "type": "object",
+            "properties": {
+              "fontFamily": {
+                "type": "string",
+                "description": "Sets the font-family for this theme"
+              }
+            },
+            "required": [
+              "fontFamily"
+            ],
+            "additionalProperties": false,
+            "description": "Defines the typography for a given theme"
+          },
+          "borderRadius": {
+            "type": "number",
+            "description": "Defines the border-radius for this theme"
+          },
+          "overrides": {
+            "type": "object",
+            "properties": {
+              "colors": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string",
+                    "enum": [
+                      "background-default",
+                      "background-tinted",
+                      "surface-default",
+                      "surface-tinted",
+                      "surface-hover",
+                      "surface-active",
+                      "border-subtle",
+                      "border-default",
+                      "border-strong",
+                      "text-subtle",
+                      "text-default",
+                      "base-default",
+                      "base-hover",
+                      "base-active",
+                      "base-contrast-subtle",
+                      "base-contrast-default"
+                    ]
+                  },
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "light": {
+                        "description": "A hex color that overrides light mode"
+                      },
+                      "dark": {
+                        "description": "A hex color that overrides dark mode"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "description": "Override values for semantic color tokens like \"background-subtle\", \"border-default\", etc."
+                  },
+                  "description": "The name of the color to add overrides for, e.g. \"accent\""
+                },
+                "description": "An object with color names as keys"
+              },
+              "severity": {
+                "description": "An object with severity color names as keys",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string",
+                  "enum": [
+                    "info",
+                    "success",
+                    "warning",
+                    "danger"
+                  ]
+                },
+                "additionalProperties": {
+                  "description": "A hex color, which is used for creating a color scale"
+                }
+              },
+              "linkVisited": {
+                "type": "object",
+                "properties": {
+                  "light": {
+                    "description": "A hex color that overrides light mode"
+                  },
+                  "dark": {
+                    "description": "A hex color that overrides dark mode"
+                  }
+                },
+                "additionalProperties": false,
+                "description": "Overrides for the \"link-visited\" color"
+              },
+              "focus": {
+                "type": "object",
+                "properties": {
+                  "inner": {
+                    "description": "Overrides for the \"focus-inner\" color",
+                    "type": "object",
+                    "properties": {
+                      "light": {
+                        "description": "A hex color that overrides light mode"
+                      },
+                      "dark": {
+                        "description": "A hex color that overrides dark mode"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "outer": {
+                    "description": "Overrides for the \"focus-outer\" color",
+                    "type": "object",
+                    "properties": {
+                      "light": {
+                        "description": "A hex color that overrides light mode"
+                      },
+                      "dark": {
+                        "description": "A hex color that overrides dark mode"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false,
+                "description": "Overrides for the focus colors"
+              }
+            },
+            "additionalProperties": false,
+            "description": "Overrides for generated design tokens. Currently only supports colors defined in your theme"
+          }
+        },
+        "required": [
+          "colors"
+        ],
+        "additionalProperties": false,
+        "description": "An object defining a theme. The property name holding the object becomes the theme name."
+      },
+      "description": "An object with one or more themes. Each property defines a theme, and the property name is used as the theme name."
+    },
+    "clean": {
+      "type": "boolean",
+      "description": "Delete the output directory before building or creating tokens"
+    }
+  },
+  "required": [
+    "outDir",
+    "themes"
+  ],
+  "additionalProperties": false
+}

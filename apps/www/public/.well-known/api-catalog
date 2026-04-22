@@ -1,0 +1,43 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://designsystemet.no",
+      "service-doc": [
+        {
+          "href": "https://designsystemet.no/en",
+          "type": "text/html",
+          "title": "Designsystemet Documentation"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://designsystemet.no/sitemap.xml",
+          "type": "application/xml",
+          "title": "Sitemap"
+        }
+      ],
+      "alternate": [
+        {
+          "href": "https://designsystemet.no/en/blog/feed.rss",
+          "type": "application/rss+xml",
+          "title": "Blog RSS Feed (English)"
+        },
+        {
+          "href": "https://designsystemet.no/no/blog/feed.rss",
+          "type": "application/rss+xml",
+          "title": "Blog RSS Feed (Norwegian)"
+        },
+        {
+          "href": "https://designsystemet.no/en/blog/feed.atom",
+          "type": "application/atom+xml",
+          "title": "Blog Atom Feed (English)"
+        },
+        {
+          "href": "https://designsystemet.no/no/blog/feed.atom",
+          "type": "application/atom+xml",
+          "title": "Blog Atom Feed (Norwegian)"
+        }
+      ]
+    }
+  ]
+}

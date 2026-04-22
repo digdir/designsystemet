@@ -36,15 +36,17 @@ describe('Breadcrumbs', () => {
 describe('Breadcrumbs.List', () => {
   it('should render with aria-current on last item', () => {
     renderWithRoot();
+
     const links = screen.getAllByRole('link');
+    expect(links.at(-1)).toHaveAttribute('aria-current', 'page');
     expect(links.at(0)).not.toHaveAttribute('aria-current', 'page');
     expect(links.at(1)).not.toHaveAttribute('aria-current', 'page');
     expect(links.at(2)).not.toHaveAttribute('aria-current', 'page');
-    expect(links.at(-1)).toHaveAttribute('aria-current', 'page');
   });
 
   it('should move aria-current to item when re-rendering', () => {
     renderWithRoot();
+
     const links = screen.getAllByRole('link');
     expect(links.at(-1)).toHaveAttribute('aria-current', 'page');
 
@@ -74,7 +76,7 @@ describe('Breadcrumbs.List', () => {
       </Breadcrumbs>,
     );
 
-    expect(links.at(-2)).not.toHaveAttribute('aria-current', 'page');
     expect(links.at(-1)).toHaveAttribute('aria-current', 'page');
+    expect(links.at(-2)).not.toHaveAttribute('aria-current', 'page');
   });
 });

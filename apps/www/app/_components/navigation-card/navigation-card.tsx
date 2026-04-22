@@ -1,8 +1,7 @@
-import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Card, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type * as React from 'react';
-
-import { Link } from 'react-router';
+import { Link as RouterLink } from 'react-router';
 import classes from './navigation-card.module.css';
 
 export interface NavigationCardProps {
@@ -15,7 +14,7 @@ export interface NavigationCardProps {
   level?: 2 | 3;
 }
 
-const NavigationCard = ({
+export const NavigationCard = ({
   title,
   color = 'red',
   icon,
@@ -35,7 +34,9 @@ const NavigationCard = ({
         </div>
 
         <Heading level={level} data-size='sm' className={classes.title}>
-          <Link to={url}>{title}</Link>
+          <Link asChild>
+            <RouterLink to={url}>{title}</RouterLink>
+          </Link>
         </Heading>
 
         <Paragraph data-size='sm' variant='long' className={classes.desc}>
@@ -45,5 +46,3 @@ const NavigationCard = ({
     </Card>
   );
 };
-
-export { NavigationCard };

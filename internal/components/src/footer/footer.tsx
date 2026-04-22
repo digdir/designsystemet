@@ -1,14 +1,10 @@
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { forwardRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ContentContainer } from '../content-container/content-container';
 import { RRLink } from '../link';
-import { Bronnoysund } from '../logos/bronnoysund';
-import { Digdir } from '../logos/digdir';
-import { KsDigital } from '../logos/ks-digital';
-import { Mattilsynet } from '../logos/mattilsynet';
-import { Udir } from '../logos/udir';
+import { DsFullNeutralLogo } from '../logos/designsystemet';
+import { DpgBadgeWhite } from '../logos/dpg';
 import classes from './footer.module.css';
 
 export type FooterLinkListItemProps = {
@@ -41,68 +37,68 @@ const LinkList = (links: FooterLinkListItemProps[]) => {
 type FooterProps = {
   centerLinks: FooterLinkListItemProps[];
   rightLinks: FooterLinkListItemProps[];
+  resetCookies?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
 export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
-  { centerLinks, rightLinks, className, ...rest },
+  { centerLinks, rightLinks, resetCookies, className, ...rest },
   ref,
 ) {
   const { t } = useTranslation();
 
   return (
-    <footer
-      ref={ref}
-      className={cl(classes.footer, className)}
-      data-color-scheme='dark'
-      {...rest}
-    >
-      <div className={classes.top}>
-        <ContentContainer className={classes.container}>
-          <div>
-            <Heading data-size='xs' level={2} className={classes.title}>
-              {t('footer.agencies.title')}
-            </Heading>
-            <div className={classes.logos}>
-              <Digdir />
-              <Bronnoysund />
-              <Mattilsynet />
-              <Udir className={classes.udir} />
-              <KsDigital />
-            </div>
-            <Button
-              asChild
-              variant='secondary'
-              data-color='neutral'
-              data-size='sm'
-            >
-              <a
-                href='mailto:designsystem@digdir.no'
-                className={classes.button}
-              >
-                {t('footer.agencies.contact')}
-              </a>
-            </Button>
-          </div>
-          <div>
-            <Heading data-size='xs' level={2} className={classes.title}>
-              {t('footer.about-site')}
-            </Heading>
-            {LinkList(centerLinks)}
-          </div>
-          <div>
-            <Heading data-size='xs' level={2} className={classes.title}>
-              {t('footer.contact-us')}
-            </Heading>
-            {LinkList(rightLinks)}
-          </div>
-        </ContentContainer>
+    <footer ref={ref} className={cl(classes.footer, className)} {...rest}>
+      <div className={classes.container}>
+        <div>
+          <DsFullNeutralLogo className={classes.logo} />
+          <Paragraph
+            data-size='sm'
+            variant='long'
+            className={classes.description}
+          >
+            {t('footer.description')}
+          </Paragraph>
+        </div>
+        <div>
+          <Heading data-size='2xs' level={2} className={classes.title}>
+            {t('footer.about-site')}
+          </Heading>
+          {LinkList(centerLinks)}
+          {resetCookies && (
+            <form method='post' action='/api/consent'>
+              <Link asChild className={classes.link}>
+                <button
+                  type='submit'
+                  name='action'
+                  value='delete'
+                  data-color='neutral'
+                  style={{ marginTop: 'var(--ds-size-5)' }}
+                >
+                  {t('footer.cookies')}
+                </button>
+              </Link>
+            </form>
+          )}
+        </div>
+        <div>
+          <Heading data-size='2xs' level={2} className={classes.title}>
+            {t('footer.contact-us')}
+          </Heading>
+          {LinkList(rightLinks)}
+        </div>
       </div>
       <div className={classes.bottom}>
-        <ContentContainer>
-          <Paragraph data-size='sm'>
+        <div className={classes.bottomContainer}>
+          <Paragraph data-size='sm' className={classes.copyright}>
             © {getCurrentYear()} {t('footer.copyright')}
           </Paragraph>
-        </ContentContainer>
+          <Link
+            href='https://www.digitalpublicgoods.net/r/designsystemet'
+            aria-label={t('footer.dpg-aria-label')}
+          >
+            <DpgBadgeWhite className={classes.dpgBadge} />
+          </Link>
+        </div>
       </div>
     </footer>
   );

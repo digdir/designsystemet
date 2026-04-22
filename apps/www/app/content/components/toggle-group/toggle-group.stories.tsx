@@ -18,7 +18,7 @@ import { useState } from 'react';
 
 export const Preview = () => {
   return (
-    <ToggleGroup defaultValue='innboks'>
+    <ToggleGroup data-toggle-group='Filter' defaultValue='innboks'>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
       <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
@@ -27,21 +27,54 @@ export const Preview = () => {
   );
 };
 
+export const PreviewEn = () => {
+  return (
+    <ToggleGroup data-toggle-group='Filter' defaultValue='inbox'>
+      <ToggleGroup.Item value='inbox'>Inbox</ToggleGroup.Item>
+      <ToggleGroup.Item value='drafts'>Drafts</ToggleGroup.Item>
+      <ToggleGroup.Item value='archive'>Archive</ToggleGroup.Item>
+      <ToggleGroup.Item value='sent'>Sent</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
+
 export const OnlyIcons = () => {
   return (
-    <ToggleGroup defaultValue='option-1'>
+    <ToggleGroup data-toggle-group='Tekstjustering' defaultValue='option-1'>
       <Tooltip content='Venstrestilt'>
-        <ToggleGroup.Item value='option-1' icon>
+        <ToggleGroup.Item value='option-1'>
           <AlignLeftIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Midtstilt'>
-        <ToggleGroup.Item value='option-2' icon>
+        <ToggleGroup.Item value='option-2'>
           <AlignCenterIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Høyrestilt'>
-        <ToggleGroup.Item value='option-3' icon>
+        <ToggleGroup.Item value='option-3'>
+          <AlignRightIcon aria-hidden />
+        </ToggleGroup.Item>
+      </Tooltip>
+    </ToggleGroup>
+  );
+};
+
+export const OnlyIconsEn = () => {
+  return (
+    <ToggleGroup data-toggle-group='Textalignment' defaultValue='option-1'>
+      <Tooltip content='Left aligned'>
+        <ToggleGroup.Item value='option-1'>
+          <AlignLeftIcon aria-hidden />
+        </ToggleGroup.Item>
+      </Tooltip>
+      <Tooltip content='Center aligned'>
+        <ToggleGroup.Item value='option-2'>
+          <AlignCenterIcon aria-hidden />
+        </ToggleGroup.Item>
+      </Tooltip>
+      <Tooltip content='Right aligned'>
+        <ToggleGroup.Item value='option-3'>
           <AlignRightIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
@@ -53,7 +86,7 @@ export const Controlled = () => {
   const [value, setValue] = useState<string>('utkast');
   return (
     <>
-      <ToggleGroup value={value} onChange={setValue}>
+      <ToggleGroup data-toggle-group='Filter' value={value} onChange={setValue}>
         <ToggleGroup.Item value='innboks'>
           <EnvelopeClosedIcon aria-hidden />
           Innboks
@@ -80,13 +113,63 @@ export const Controlled = () => {
   );
 };
 
+export const ControlledEn = () => {
+  const [value, setValue] = useState<string>('drafts');
+  return (
+    <>
+      <ToggleGroup data-toggle-group='Filter' value={value} onChange={setValue}>
+        <ToggleGroup.Item value='inbox'>
+          <EnvelopeClosedIcon aria-hidden />
+          Inbox
+        </ToggleGroup.Item>
+        <ToggleGroup.Item value='drafts'>
+          <DocPencilIcon aria-hidden />
+          Drafts
+        </ToggleGroup.Item>
+        <ToggleGroup.Item value='archive'>
+          <ArchiveIcon aria-hidden />
+          Archive
+        </ToggleGroup.Item>
+        <ToggleGroup.Item value='sent'>
+          <PaperplaneIcon aria-hidden />
+          Sent
+        </ToggleGroup.Item>
+      </ToggleGroup>
+      <Divider />
+      <Paragraph>You have selected: {value}</Paragraph>
+      <Button data-size='sm' onClick={() => setValue('archive')}>
+        Select Archive
+      </Button>
+    </>
+  );
+};
+
 export const Secondary = () => {
   return (
-    <ToggleGroup defaultValue='innboks' variant='secondary'>
+    <ToggleGroup
+      data-toggle-group='Filter'
+      defaultValue='innboks'
+      variant='secondary'
+    >
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
       <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
       <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
+
+export const SecondaryEn = () => {
+  return (
+    <ToggleGroup
+      data-toggle-group='Filter'
+      defaultValue='inbox'
+      variant='secondary'
+    >
+      <ToggleGroup.Item value='inbox'>Inbox</ToggleGroup.Item>
+      <ToggleGroup.Item value='drafts'>Drafts</ToggleGroup.Item>
+      <ToggleGroup.Item value='archive'>Archive</ToggleGroup.Item>
+      <ToggleGroup.Item value='sent'>Sent</ToggleGroup.Item>
     </ToggleGroup>
   );
 };

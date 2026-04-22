@@ -4,7 +4,7 @@ import { cwd } from 'node:process';
 
 const dirname = cwd();
 
-const safeReadDir = (path: string): string[] => {
+export const safeReadDir = (path: string): string[] => {
   try {
     return readdirSync(path);
   } catch (_error) {

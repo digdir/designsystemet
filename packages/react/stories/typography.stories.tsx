@@ -1,4 +1,4 @@
-import type { Size } from '@digdir/designsystemet/types';
+import type { Size } from '@digdir/designsystemet-types';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Fieldset, Heading, Paragraph, ToggleGroup } from '../src';
@@ -23,7 +23,11 @@ const Controls = ({ size, setSize }: ControlsProps) => {
         <Fieldset.Legend>
           Størrelse <code>(data-size)</code>
         </Fieldset.Legend>
-        <ToggleGroup value={size} onChange={(val) => setSize(val as Size)}>
+        <ToggleGroup
+          data-toggle-group='Tekststørrelse'
+          value={size}
+          onChange={(val) => setSize(val as Size)}
+        >
           {sizes.map((size) => (
             <ToggleGroup.Item key={size} value={size}>
               {size}

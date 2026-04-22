@@ -1,0 +1,27 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
+## Avoid using disabled buttons
+
+We avoid using disabled (`disabled`) buttons because they can be difficult to perceive. Some users will not understand what the button means or why it is not clickable. An active button that displays an error message when the user clicks it provides a better user experience in most cases. Nav has a good explanation of [why disabled states are problematic (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) and what alternatives exist.
+
+**If you still need to use a disabled button:**
+
+- Ensure that all users both notice and understand that the button exists, that it is disabled, and why.
+- Consider using supporting text that is always visible when the button is disabled.
+- If it makes sense that the button should still receive keyboard focus,  
+  or if it is important for other reasons to preserve the tab order, use `aria-disabled` instead of `disabled`.  
+  Remember to manually prevent callback functions (for example `onClick`) from running.
+
+## Loading and `aria-disabled` do not disable `onClick`
+
+**Note:** Neither `loading="true"` nor `aria-disabled="true"` automatically prevents the button from triggering `onClick`. These attributes only affect appearance and accessibility, not functionality.
+
+If the button should not be able to perform actions while it is loading or disabled, you must add logic yourself to prevent the callback function from running. For example:
+
+```jsx
+function handleClick() {
+  if (isLoading || isDisabled) return;
+  // The rest of the logic
+}

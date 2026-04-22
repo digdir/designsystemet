@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Breadcrumbs",
-    "subtitle": "Breadcrumbs er ein navigasjonskomponent med synleg sti. Vi bruker denne komponenten for å hjelpe brukarane med å forstå kvar dei er i ei struktur, for eksempel på ei nettside. Då kan dei lettare byte mellom dei ulike nivåa i strukturen."
+    "subtitle": "`Breadcrumbs` hjelper brukarane med å forstå kvar dei er i ei struktur, og gjer det mogleg å navigere tilbake til høgare nivå."
   },
   "en": {
     "title": "Breadcrumbs",
-    "subtitle": "Breadcrumbs is a navigation component with a visible path. We use this component to help users understand where they are in a structure, such as on a website. This makes it easier for them to switch between the different levels of the structure."
+    "subtitle": "``Breadcrumbs` help users understand where they are within a structure and make it possible to navigate back to higher levels."
   },
   "image": "Breadcrumbs.svg",
   "cssFile": "breadcrumbs.css"

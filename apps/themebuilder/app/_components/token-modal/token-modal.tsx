@@ -7,12 +7,10 @@ import {
   Label,
   Link,
   Paragraph,
-  Tabs,
 } from '@digdir/designsystemet-react';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import Cli from './steps/cli';
 import Config from './steps/config';
 import classes from './token-modal.module.css';
 import { useTokenModal } from './use-token-modal';
@@ -20,7 +18,7 @@ import { useTokenModal } from './use-token-modal';
 export const TokenModal = () => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDialogElement>(null);
-  const { themeName, setThemeName, cliSnippet, buildSnippet, configSnippet } =
+  const { themeName, setThemeName, buildSnippet, configSnippet } =
     useTokenModal();
 
   return (
@@ -31,7 +29,7 @@ export const TokenModal = () => {
           return modalRef.current?.showModal();
         }}
       >
-        <StarIcon aria-hidden fontSize='1.5rem' />
+        <StarIcon aria-hidden height='auto' />
         {t('themeModal.use-theme')}
       </Dialog.Trigger>
       <Dialog
@@ -73,28 +71,18 @@ export const TokenModal = () => {
         <Dialog.Block>
           <div className={classes.content}>
             <div className={classes.rightSection}>
-              <Tabs defaultValue='config'>
-                <Tabs.List>
-                  <Tabs.Tab value='config'>Config File</Tabs.Tab>
-                  <Tabs.Tab value='cli'>CLI</Tabs.Tab>
-                </Tabs.List>
-                <Tabs.Panel value='cli' className={classes.tabpanel}>
-                  <Cli
-                    cliSnippet={cliSnippet}
-                    buildSnippet={buildSnippet.cli}
-                  />
-                </Tabs.Panel>
-                <Tabs.Panel value='config' className={classes.tabpanel}>
-                  <Config
-                    configSnippet={configSnippet}
-                    buildSnippet={buildSnippet.config}
-                  />
-                </Tabs.Panel>
-              </Tabs>
+              <Config
+                configSnippet={configSnippet}
+                buildSnippet={buildSnippet.config}
+              />
               <Divider />
               <div className={classes.contact}>
                 <div className={classes.contact__icon}>
-                  <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
+                  <InformationSquareIcon
+                    aria-hidden='true'
+                    height='1.5rem'
+                    width='1.5rem'
+                  />
                 </div>
                 <div className={classes.contact__content}>
                   <Heading data-size='2xs'>

@@ -1,0 +1,57 @@
+---
+title: "@digdir/designsystemet-web prerelease 1"
+description: First prerelease of the @digdir/designsystemet-web package, which provides the ability to use Designsystemet without React.
+date: 2026-01-21
+author: Designsystemet
+imageSrc: /img/blog/ds-web-pre1.webp
+imageAlt: First prerelease of the @digdir/designsystemet-web package
+---
+
+We are happy that the work is finally underway, and are now looking for ongoing feedback.
+In this blog post, we will go over the components that have been changed, and how you can test.
+
+<Alert>
+You can install all `@digdir/designsystemet-*` packages with version `0.0.0-fix-designsystemet-web-20260121152531`.
+
+All prereleases will also be under the `test` tag on NPM.
+</Alert>
+
+## Test in existing application
+
+We have updated the React package to use `@digdir/designsystemet-web` as the underlying framework-independent component library.
+This means that some components that are currently implemented in React may be experienced differently since they now come from the web package.
+Feel free to test these and provide feedback.
+
+These are:
+- Popover (controlled may have problems here)
+- Dropdown
+- Tooltip
+- Dialog
+- Pagination
+- Breadcrumbs
+- Tabs
+- Field
+
+## Test in other frameworks or pure HTML/JS
+
+To test the package without React, you can install `@digdir/designsystemet-web` and `@digdir/designsystemet-css` in your project.
+Then use the components and functionality directly.
+
+We do not yet generate framework-specific types.
+
+## Documentation
+
+The documentation will be continuously changed in the [README for the package](https://www.npmjs.com/package/@digdir/designsystemet-web/v/0.0.0-fix-designsystemet-web-20260121152531), which you can read on NPM.
+When the full release of the package is out, we will update the relevant documentation on designsystemet.no.
+
+## Give feedback
+
+We are very interested in hearing from you as a user!
+If you discover errors, or have suggestions for improvements, you can create an issue in our [GitHub repo](https://github.com/digdir/designsystemet/issues/new) or on [Slack](/slack).
+
+<Contributors
+  authors={[
+    'Tobias Barsnes',
+    'Eirik Backer',
+  ]}
+/>

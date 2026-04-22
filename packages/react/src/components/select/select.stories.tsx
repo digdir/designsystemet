@@ -68,7 +68,7 @@ export const ReadOnly: StoryFn<typeof Select> = (args) => (
 );
 
 ReadOnly.args = {
-  readOnly: true,
+  'aria-readonly': true,
   value: 'sogndal',
 };
 

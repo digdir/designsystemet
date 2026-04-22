@@ -1,3 +1,31 @@
-`Avatar` må enten ha en `aria-label` som forklarer hvem eller hva avataren representerer, eller ha `aria-hidden` og synlig tekst som formidler den samme informasjonen. Ikke spesifiser i `aria-label` at det er et bilde, skjermleseren formidler dette automatisk. Det holder å bruke navnet, som for eksempel `aria-label="Ola Nordmann"`.
+## Dette må du sjekke selv
 
-Bilder, og andre `children`, får automatisk `aria-hidden="true"` for å unngå dobbel informasjon.
+**Informativ `Avatar` skal ha et tilgjengelig navn.**
+
+Tilgjengelig navn kan legges til med `aria-label`. Hvis flere avatarer vises sammen, skal hvert navn være unikt.
+
+<span data-size="sm"> 
+WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+</span> 
+
+<Divider/>
+\
+**Dekorativ `Avatar` skal skjules for skjermlesere.**
+
+Dette gjelder når `Avatar` kun er dekorasjon og ikke formidler informasjon. Eksempel: Hvis en `Avatar` vises inne i en knapp med teksten “Ola Nordmann”, kan avataren skjules fordi navnet allerede identifiserer personen.
+
+<span data-size="sm"> 
+WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)
+</span> 
+
+<Divider/>
+\
+**Klikkbar `Avatar` skal ha et tilgjengelig navn.**
+
+Tilgjengelig navn kan legges til med `aria-label`. Eksempel: “Profil for Ola Nordmann”. Unngå: kun Innitialer eller “Avatar”.
+
+<span data-size="sm"> 
+WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+</span> 
+
+

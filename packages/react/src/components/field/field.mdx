@@ -1,68 +1,17 @@
-import { Meta, Controls, Primary, Canvas } from '@storybook/addon-docs/blocks';
-import { CssVariables } from '@doc-components';
-import css from '@digdir/designsystemet-css/field.css?inline';
+import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
 import * as FieldStories from './field.stories';
 
 <Meta of={FieldStories} />
 
-# Field
-`Field` er et hjelpemiddel for å automatisk koble et felt sammen med [`Label`](/docs/komponenter-typography--docs#label), `Field.Description`, [`ValidationMessage`](/docs/komponenter-typography--docs#validationmessage) og `Field.Counter`. `Field` kan brukes sammen med `Input`, `Textarea` og `Select`. **OBS**: `Textfield` har allerede `Field` innebygd, og kan derfor ikke brukes i en `Field`.
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-##  Bruk
-
-```tsx
-<Field>
-  <Label>Kort beskrivelse</Label>
-  <Field.Description>Beskrivelse</Field.Description>
-  <Input />
-  <ValidationMessage>Feilmelding</ValidationMessage>
-</Field>
-```
-
-## Eksempler
-
-### Prefix/Suffix
-
-Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer informasjon som er relevant for feltet.
-Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp.
-Det er viktig at samme informasjon som vises i prefixet eller suffixet også er inkludert i ledeteksten.
-
 <Canvas of={FieldStories.Affix} />
-
-### Antall tegn
-
-Bruk `Field.Counter` til å informere om antall tegn brukerne kan skrive i feltet.
 
 <Canvas of={FieldStories.Counter} />
 
-### Plassering
-Bruk `position="end"` når du ønsker å plassere for eksempel en `Switch` til høyre for `Label`. Dette kan være nyttig i innstillingsgrensesnitt, slik at brukeren først kan lese etiketten til venstre - som forklarer hva innstillingen gjelder - og deretter handlingselementet (bryteren) til høyre. 
-
 <Canvas of={FieldStories.Position} />
 
-### Påkrevde og valgfrie felt
-
-Det er lovpålagt å markere feltene dine, du kan lese vårt mønster om [obligatoriske og valgfrie felt](https://designsystemet.no/no/patterns/required-and-optional-fields) for mer informasjon.
-Når du plasserer `Tag` i `<label>` anbefaler vi at du bruker `margin-inline-start: var(--ds-size-2)` for å skape avstand mellom teksten og taggen.
-
 <Canvas of={FieldStories.Optional} />
-
-
-## Retningslinjer
-`Field` hjelper deg med å strukturere skjemafelt på en tilgjengelig og konsistent måte. Den kobler automatisk sammen [`Label`](/docs/komponenter-typography--docs#label), `Field.Description`, [`ValidationMessage`](/docs/komponenter-typography--docs#validationmessage) og `Field.Counter` med det tilhørende feltet via riktige ARIA-attributter.
-
-**Passer til å**
-- sørge for at [`Label`](/docs/komponenter-typography--docs#label), `Field.Description`, [`ValidationMessage`](/docs/komponenter-typography--docs#validationmessage) og `Field.Counter` er riktig koblet til et felt
-
-**Passer ikke til**
-- å semantisk gruppere flere felt - bruk heller [`Fieldset`](/docs/komponenter-fieldset--docs)
-
-## Kjente mangler
-VoiceOver kan noen ganger lese `Field.Counter` to ganger om den ligger i en iframe. [Bug report hos apple.com](https://discussions.apple.com/thread/256085771?sortBy=rank).
-
-## CSS Variabler
-
-<CssVariables css={css} />

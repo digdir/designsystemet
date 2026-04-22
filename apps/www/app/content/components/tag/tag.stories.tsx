@@ -56,6 +56,21 @@ export const Icons = () => {
   );
 };
 
+export const IconsEn = () => {
+  return (
+    <Tag
+      data-color='neutral'
+      data-size='md'
+      style={{
+        paddingInlineStart: 'var(--ds-size-1)',
+      }}
+    >
+      <RobotIcon aria-hidden style={{ marginInlineEnd: 'var(--ds-size-1)' }} />
+      This text is AI-generated
+    </Tag>
+  );
+};
+
 export const Variants = () => {
   const colors = [
     'accent',

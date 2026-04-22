@@ -13,5 +13,12 @@ export const FieldDescription = forwardRef<
   HTMLDivElement,
   FieldDescriptionProps
 >(function FieldDescription(rest, ref) {
-  return <div data-field='description' ref={ref} {...rest} />;
+  return (
+    <div
+      suppressHydrationWarning // Since <ds-field> adds attributes
+      data-field='description'
+      ref={ref}
+      {...rest}
+    />
+  );
 });

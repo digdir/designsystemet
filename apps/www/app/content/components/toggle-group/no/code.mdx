@@ -6,7 +6,7 @@
 ```tsx
 import { ToggleGroup } from '@digdir/designsystemet-react';
 
-<ToggleGroup defaultValue="option1">
+<ToggleGroup data-toggle-group='Alternativer' defaultValue="option1">
   <ToggleGroup.Item value="option1">Alternativ 1</ToggleGroup.Item>
   <ToggleGroup.Item value="option2">Alternativ 2</ToggleGroup.Item>
 </ToggleGroup>
@@ -15,7 +15,7 @@ import { ToggleGroup } from '@digdir/designsystemet-react';
 ## Eksempel
 
 ### Kun ikoner
-Bruk [`Tooltip`](/no/components/tooltip/code) for å forklare handlingane når du brukar berre ikon.
+Bruk [`Tooltip`](/no/components/docs/tooltip/code) for å forklare handlingane når du brukar berre ikon.
 
 <Story story="OnlyIcons" />
 
@@ -28,8 +28,29 @@ Bruk [`Tooltip`](/no/components/tooltip/code) for å forklare handlingane når d
 <Story story="Secondary" />
 
 ## HTML
-**Det trengst også javascript for å håndtere fokus.**
-Du kan lese om kva du må gjere for å implementere dette i [tilgjengelighetsdokumentasjonen](/no/components/toggle-group/accessibility).
+Bruker du `@digdir/designsystemet-web` kan du implementere `ToggleGroup` ved å bruke `data-toggle-group`-attributtet.
+
+```html
+<fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering" data-variant="secondary">
+  <label class="ds-button" data-variant="tertiary">
+    <input type="radio" name="alignment-two" value="left" checked />
+    Venstestilt
+  </label>
+  <label class="ds-button" data-variant="tertiary">
+    <input type="radio" name="alignment-two" value="center" />
+    Midtstilt
+  </label>
+  <label class="ds-button" data-variant="tertiary">
+    <input type="radio" name="alignment-two" value="right" />
+    Høyrestilt
+  </label>
+</fieldset>
+```
+
+### Gammel måte med `<button>`
+**Her må du håndtere tastaturnavigasjon og ARIA-roller sjølv.**
+
+Du kan lese om kva du må gjere for å implementere dette i [tilgjengelighetsdokumentasjonen](/no/components/docs/toggle-group/accessibility).
 
 Klassenavnet `ds-toggle-group` blir lagt på ein `<div>` med `role="radiogroup"`.
 

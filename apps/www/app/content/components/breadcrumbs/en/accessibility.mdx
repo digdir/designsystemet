@@ -1,0 +1,8 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
+`Breadcrumbs` can contain multiple interactive elements that must be navigable with the keyboard. Therefore, make sure that the [`SkipLink`](/en/components/docs/skip-link/overview) of the main content also skips `Breadcrumbs`.
+
+## Last level
+The last link should correspond to the current page. It looks like regular text, but is coded as a link with `aria-current="page"`. This way, screen readers get the correct information about which page the user is on, without other users mistakenly perceiving it as a clickable link.

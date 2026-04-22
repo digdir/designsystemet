@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, type MouseEvent } from 'react';
 import { Button, type ButtonProps } from '../button/button';
 import { setReactInputValue } from '../Combobox/utilities';
 
@@ -22,9 +22,7 @@ export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
  */
 export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
   function SearchClear({ 'aria-label': label = 'Tøm', onClick, ...rest }, ref) {
-    const handleClear = (
-      e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    ) => {
+    const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
       const target = e.target;
       let input: HTMLElement | null | undefined = null;
 

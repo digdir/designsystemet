@@ -1,0 +1,28 @@
+---
+title: Shadows
+sidebar_title: Shadows
+description: How shadows are defined and used in Designsystemet.
+date: 2023-04-10
+category: Theme
+color: red
+icon: MoonIcon
+published: true
+order: 50
+---
+
+## Use of shadows in design
+
+Shadows should be used consciously and consistently, as they communicate that an element is positioned above something else in the interface.
+
+Shadows can assist users with visual impairments in identifying components. The combination of shadows and outlines makes it easier to locate elements when scanning a page.  
+(Research: [Material Design](https://m2.material.io/design/environment/light-shadows.html#research))
+
+Shadows are not intended for use in dark mode, as they are based on darker color tones. To create hierarchy and contrast in dark mode, it is better to use other means such as light edges.
+
+### Shadow strengths
+
+We provide different shadow strengths, ranging from `xs` to `xl`. These levels indicate the perceived height of a surface. Elements that appear higher should use larger shadows, while lower surfaces should use smaller shadows. Shadows help create a visual hierarchy, making it easier to see which elements are layered above or below others.
+
+### Example
+
+[Popover](/en/components/docs/popover/overview) is a component that overlays other content. This is made clear by using a medium shadow.

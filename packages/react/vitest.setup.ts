@@ -1,6 +1,7 @@
 import { configure } from '@testing-library/react';
 import { version as reactVersion } from 'react';
 import { version as reactDomVersion } from 'react-dom';
+import '@digdir/designsystemet-web';
 
 interface ImportMetaEnv {
   VITE_REACT_VERSION?: string;
@@ -11,7 +12,6 @@ declare global {
     env: ImportMetaEnv;
   }
 }
-
 const expectedVersion = import.meta.env.VITE_REACT_VERSION;
 
 if (expectedVersion) {

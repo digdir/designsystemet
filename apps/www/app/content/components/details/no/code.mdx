@@ -1,9 +1,8 @@
-## Bruk
-
 <Story layout="block" story="Preview" />
 
 <ReactComponentDocs />
 
+## Bruk
 ```tsx
 /* Utan ramme */
 import { Details } from '@digdir/designsystemet-react';
@@ -42,38 +41,11 @@ Du kan også bruke `variant="tinted"` på enten `Details` eller `Card` for å f�
 
 ## HTML
 
-`Details` er bygd på web-komponenten [u-details (github.io)](https://u-elements.github.io/u-elements/elements/u-details), som du kan bruke.
-Den er bygd funksjonelt lik som native-elementet `<details>`, men med betre tilgjengelegheit.
-
-Du bruker klassenavnet `.ds-details` på hovudelementet.
-Du kan velge å ikkje ha ein nøsta `<div>` rundt hovudinnhaldet, men har du denne får den `margin`.
-
-Dersom du vil bruke tinta variant, legg til attributtet `data-variant="tinted"` på hovudelementet eller `.ds-card`.
+`Details` er en native `<details>`-tagg.
+Vi polyfyller ein feil i Firefox når den blir brukt saman med Android Talkback skjermlesar for å annonsere tilstand og rolle riktig.
 
 ```html
 <!-- uten ramme -->
-<u-details class="ds-details">
-  <u-summary>
-    Details heading text
-  </u-summary>
-  <div>
-    Details content
-  </div>
-</u-details>
-
-<!-- med ramme -->
-<div class="ds-card">
-  <u-details class="ds-details">
-    <u-summary>
-      Details heading text
-    </u-summary>
-    <div>
-      Details content
-    </div>
-  </u-details>
-</div>
-
-<!-- uten u-elements -->
 <details class="ds-details">
   <summary>
     Details heading text
@@ -82,6 +54,18 @@ Dersom du vil bruke tinta variant, legg til attributtet `data-variant="tinted"` 
     Details content
   </div>
 </details>
+
+<!-- med ramme -->
+<div class="ds-card">
+  <details class="ds-details">
+    <summary>
+      Details heading text
+    </summary>
+    <div>
+      Details content
+    </div>
+  </details>
+</div>
 ```
 
 ## CSS variabler og data-attributter

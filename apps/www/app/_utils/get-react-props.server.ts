@@ -12,17 +12,24 @@ const require = createRequire(import.meta.url);
 const getParser = () => {
   return withCustomConfig(
     require.resolve(
-      path.join(process.cwd(), '../../packages/react/tsconfig.json'),
+      path.join(process.cwd(), '../../packages/react/tsconfig.lib.json'),
     ),
     {
       savePropValueAsString: true,
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
+      shouldExtractValuesFromUnion: true,
       propFilter: (prop: PropItem) => {
         const defaultLogicFromStorybook = prop.parent
           ? !/node_modules/.test(prop.parent.fileName)
           : true;
-        return defaultLogicFromStorybook && prop.name !== 'popovertarget';
+        return (
+          defaultLogicFromStorybook &&
+          prop.name !== 'popovertarget' &&
+          prop.name !== 'data-color' &&
+          prop.name !== 'data-color-scheme' &&
+          prop.name !== 'data-size'
+        );
       },
     },
   );
@@ -30,20 +37,26 @@ const getParser = () => {
 
 // Get the absolute path to the component directory using require.resolve
 const getReactDir = (component: string) => {
-  try {
-    // First, resolve the path to the main component file
-    const mainFilePath = require.resolve(
-      path.join(
-        process.cwd(),
-        `../../packages/react/src/components/${component}/${component}.tsx`,
-      ),
-    );
-    // Then get its directory
-    return join(mainFilePath, '..');
-  } catch (error) {
-    console.error('Error resolving component path:', error);
-    return '';
+  const basePath = path.join(
+    process.cwd(),
+    '../../packages/react/src/components',
+  );
+
+  const variants = [component, `${component}s`];
+
+  for (const variant of variants) {
+    try {
+      const mainFilePath = require.resolve(
+        path.join(basePath, component, `${variant}.tsx`),
+      );
+      return join(mainFilePath, '..');
+    } catch {
+      // Continue to next variant
+    }
   }
+
+  console.error(`Component path not found for: ${component}`);
+  return '';
 };
 
 export const getComponentDocs = (component: string): ComponentDoc[] => {

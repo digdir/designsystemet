@@ -1,6 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { act, useState } from 'react';
+import { act, render, screen } from '@testing-library/react';
+import { useState } from 'react';
 
 import {
   Button,
@@ -70,7 +69,7 @@ describe('RadioGroup', () => {
     expect(radio2).toHaveAttribute('name');
     expect(radio3).toHaveAttribute('name');
   });
-  test('has passed name to Radio children', (): void => {
+  test('has passed name to Radio children', () => {
     render(<RadioGroup name='my-name' />);
 
     const radio1 = screen.getByLabelText('Test 1');
@@ -80,7 +79,7 @@ describe('RadioGroup', () => {
     expect(radio2).toHaveAttribute('name', 'my-name');
     expect(radio3).toHaveAttribute('name', 'my-name');
   });
-  test('has passed disabled to Radio children', (): void => {
+  test('has passed disabled to Radio children', () => {
     render(<RadioGroup disabled />);
 
     const radio1 = screen.getByLabelText('Test 1');
@@ -90,7 +89,7 @@ describe('RadioGroup', () => {
     expect(radio2).toHaveAttribute('disabled');
     expect(radio3).toHaveAttribute('disabled');
   });
-  test('has passed readOnly to Radio children', (): void => {
+  test('has passed readOnly to Radio children', () => {
     render(<RadioGroup readOnly />);
 
     const radio1 = screen.getByLabelText('Test 1');
@@ -100,7 +99,7 @@ describe('RadioGroup', () => {
     expect(radio2).toHaveAttribute('readonly');
     expect(radio3).toHaveAttribute('readonly');
   });
-  test('has passed required to Radio children', (): void => {
+  test('has passed required to Radio children', () => {
     render(<RadioGroup required />);
 
     const radio1 = screen.getByLabelText('Test 1');
@@ -110,7 +109,7 @@ describe('RadioGroup', () => {
     expect(radio2).toHaveAttribute('required');
     expect(radio3).toHaveAttribute('required');
   });
-  test('has passed aria-invalid to Radio children', (): void => {
+  test('has passed aria-invalid to Radio children', () => {
     render(<RadioGroup error='message' />);
 
     const radio1 = screen.getByLabelText('Test 1');
@@ -133,7 +132,6 @@ describe('RadioGroup', () => {
     expect(radio3).not.toBeChecked();
   });
   test('has passed clicked Radio element to onChange', async () => {
-    const user = userEvent.setup();
     const onChangeMock = vi.fn();
 
     render(<RadioGroup onChange={onChangeMock} />);
@@ -142,7 +140,7 @@ describe('RadioGroup', () => {
     const radio2 = screen.getByLabelText('Test 2');
     const radio3 = screen.getByLabelText('Test 3');
 
-    await act(async () => await user.click(radio1));
+    await act(async () => radio1.click());
     expect(onChangeMock).toHaveBeenCalledWith('test1', '');
     expect(radio1).toBeChecked();
     expect(radio2).not.toBeChecked();
@@ -150,7 +148,6 @@ describe('RadioGroup', () => {
   });
 
   test('correctly merges passed props with generated props', async () => {
-    const user = userEvent.setup();
     const onChangeMock = vi.fn();
     const customAriaDescribedBy = 'custom aria-describedby';
 
@@ -163,11 +160,9 @@ describe('RadioGroup', () => {
     );
 
     const radio1 = screen.getByLabelText('Test 1');
-    await act(async () => await user.click(radio1));
-
+    await act(async () => radio1.click());
     expect(onChangeMock).toHaveBeenCalledOnce();
     expect(radio1).toBeChecked();
-
     expect(radio1).toHaveAttribute('aria-describedby', customAriaDescribedBy);
   });
 
@@ -176,7 +171,7 @@ describe('RadioGroup', () => {
 
     /* click button to show radio buttons */
     const button = screen.getByRole('button', { name: 'Toggle' });
-    await act(async () => await userEvent.click(button));
+    await act(async () => button.click());
     expect(screen.getByLabelText('Test 1')).toBeVisible();
     expect(screen.getByLabelText('Test 2')).toBeVisible();
   });

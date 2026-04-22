@@ -18,9 +18,9 @@ const ComponentCard = ({ title, image, url }: ComponentCardProps) => {
         className={classes.image}
         aria-hidden='true'
       />
-      <span data-size='lg' className={classes.title}>
+      <div data-size='lg' className={classes.title}>
         {title}
-      </span>
+      </div>
     </Link>
   );
 };

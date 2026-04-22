@@ -1,23 +1,17 @@
----
-title: ValidationMessage
-image: ValidationMessage.svg
-cssfile: validation-message
----
+<Story story="PreviewEn" />
 
-`ValidationMessage` is used to display error messages and other validation information to the user.
+`ValidationMessage` is a typography component used to display short, clear messages that help users understand the status of a form field. Use it to show errors, warnings, success messages, or information. Validation messages are designed to be easy to notice while still fitting naturally into the form layout.
 
-<Story story="Preview" />
+## Example
 
-## Usage
+### All colours
 
-```tsx
-import { ValidationMessage } from '@digdir/designsystemet-react';
+<Story story="AllColorsEn" />
 
-<ValidationMessage>This is a validation message.</ValidationMessage>
-```
+## Guidelines
 
-## Code Examples
+Use `ValidationMessage` to provide immediate, context-specific feedback. Messages should be placed close to the field they relate to, so that both visual users and users of assistive technologies can easily understand the connection. See the article on [user-triggered error messages](/en/patterns/errors) for more guidance on good practice.
 
-### With error
+## Text
 
-<Story story="WithError" />
+Validation messages should be short, specific, and help the user move forward. Learn more about how to write [good error messages](/en/patterns/errors#language).

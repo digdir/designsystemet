@@ -10,6 +10,12 @@ export default [
   route('/slack', 'routes/slack.tsx', {
     id: 'slack-redirect',
   }),
+  route('/api/search', 'routes/search.tsx', {
+    id: 'api-search',
+  }),
+  route('/api/consent', 'routes/consent.tsx', {
+    id: 'consent-action',
+  }),
   ...prefix('/schemas', [
     route('/cli/:version', 'routes/cli-schema.tsx', {
       id: 'schemas-cli',
@@ -48,6 +54,16 @@ export default [
           }),
         ]),
       ]),
+      ...prefix('/intro', [
+        layout('./layouts/intro/layout.tsx', [
+          route('/', 'routes/intro/intro.tsx', {
+            id: 'intro-index',
+          }),
+          route('/*', 'routes/intro/page.tsx', {
+            id: 'intro-page',
+          }),
+        ]),
+      ]),
       ...prefix('/best-practices', [
         layout('./layouts/best-practices/layout.tsx', [
           route('/', 'routes/best-practices/best-practices.tsx', {
@@ -58,19 +74,22 @@ export default [
           }),
         ]),
       ]),
-      route('/components', 'routes/components/components.tsx', {
-        id: 'components',
-      }),
       layout('./layouts/components/layout.tsx', [
-        route('/changelog', 'routes/components/changelog.tsx', {
-          id: 'changelog-page',
+        route('/components', 'routes/components/components.tsx', {
+          id: 'components',
         }),
         ...prefix('/components', [
-          ...prefix(':component', [
+          ...prefix('/docs/:component', [
             route('/*', 'routes/components/component.tsx', {
               id: 'components-page',
             }),
           ]),
+          route('/changelog', 'routes/components/changelog.tsx', {
+            id: 'changelog-page',
+          }),
+          route('/*', 'routes/components/text.tsx', {
+            id: 'component-text-page',
+          }),
         ]),
       ]),
       route('*', 'routes/not-found.tsx', {

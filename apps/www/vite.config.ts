@@ -15,7 +15,10 @@ function mdxFullReload() {
   };
 }
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
+  build: {
+    rollupOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
+  },
   css: {
     postcss: {
       plugins: [],
@@ -25,4 +28,15 @@ export default defineConfig({
   ssr: {
     noExternal: ['@navikt/aksel-icons', 'ramda'],
   },
-});
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router'],
+    esbuildOptions: {
+      jsx: 'automatic',
+    },
+  },
+  server: {
+    warmup: {
+      clientFiles: ['./app/root.tsx', './app/entry.client.tsx'],
+    },
+  },
+}));

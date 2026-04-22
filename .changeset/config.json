@@ -11,8 +11,9 @@
     [
       "@digdir/designsystemet",
       "@digdir/designsystemet-css",
-      "@digdir/designsystemet-theme",
-      "@digdir/designsystemet-react"
+      "@digdir/designsystemet-types",
+      "@digdir/designsystemet-react",
+      "@digdir/designsystemet-web"
     ]
   ],
   "linked": [],
@@ -23,7 +24,8 @@
     "@web/www",
     "@web/themebuilder",
     "@web/storybook",
-    "@plugin/figma",
-    "@internal/components"
+    "@internal/components",
+    "@internal/digdir",
+    "@digdir/designsystemet-theme"
   ]
 }

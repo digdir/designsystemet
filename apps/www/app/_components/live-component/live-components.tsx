@@ -1,16 +1,19 @@
 import * as ds from '@digdir/designsystemet-react';
+import { useSynchronizedAnimation } from '@digdir/designsystemet-react';
 import * as aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { prettify } from 'htmlfy';
 import { themes } from 'prism-react-renderer';
 import {
   type ComponentType,
+  createElement,
   type KeyboardEvent,
   useEffect,
   useId,
   useRef,
   useState,
 } from 'react';
+import { renderToString } from 'react-dom/server';
 import { useTranslation } from 'react-i18next';
 import {
   LiveEditor,
@@ -22,6 +25,23 @@ import {
 import { useLocation } from 'react-router';
 import classes from './live-component.module.css';
 
+const SyncedBox = () => {
+  const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        animation: 'spin 2s linear infinite',
+
+        width: '30px',
+        height: '30px',
+        backgroundColor: 'red',
+      }}
+    />
+  );
+};
+
 const scopes = {
   ...ds,
   ...aksel,
@@ -29,11 +49,16 @@ const scopes = {
   useEffect,
   useRef,
   useId,
+  SyncedBox,
 };
+
+type Language = 'react' | 'html';
 
 export type LiveComponentProps = {
   story: string;
   layout?: 'row' | 'column' | 'centered' | 'block';
+  language?: Language;
+  startAsInert?: boolean /*to prevent focus on load of error-summary stories*/;
 };
 
 //copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
@@ -51,26 +76,28 @@ type ContextValue = {
 
 type EditorProps = {
   live: ContextValue;
-  html: HTMLElement | null;
+  html: string;
   id?: string;
   hidden?: boolean;
+  language?: Language;
 };
 
-//@TODO: i18n
-const Editor = ({ live, html, id, hidden }: EditorProps) => {
+const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
   const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const activateEditorRef = useRef<HTMLDivElement>(null);
   const [resetCount, setResetCount] = useState(0);
-  const [showHTML, setShowHTML] = useState(false);
+  const [showHTML, setShowHTML] = useState(language === 'html');
   const [copied, setCopied] = useState('');
-  const rawHtml = prettify(
-    html?.innerHTML.toString() || 'Unable to parse html',
-    {
-      tag_wrap: 63,
-      content_wrap: 70,
-    },
+  // Truncate SVGs to <svg></svg> to reduce noise
+  const truncatedHtml = (html || 'Unable to parse html').replace(
+    /<svg[^>]*>[\s\S]*?<\/svg>/gi,
+    '<svg></svg>',
   );
+  const rawHtml = prettify(truncatedHtml, {
+    tag_wrap: 63,
+    content_wrap: 70,
+  });
 
   const setupEditorTabIndex = () => {
     const preEl = wrapperRef.current?.querySelector(
@@ -115,7 +142,9 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(showHTML ? rawHtml : live.code);
+      await navigator.clipboard.writeText(
+        showHTML ? rawHtml : live.newCode ? live.newCode : live.code,
+      );
       setCopied(classes.copied);
     } catch (error) {
       throw Error(String(error));
@@ -156,9 +185,11 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
       </ds.Paragraph>
       <ds.ToggleGroup
         variant='secondary'
+        data-toggle-group={t('live-component.language')}
         data-size='sm'
         value={showHTML.toString()}
         onChange={(v) => setShowHTML(v === 'true')}
+        data-color='neutral'
       >
         <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
         <ds.ToggleGroup.Item value='true'>HTML</ds.ToggleGroup.Item>
@@ -173,7 +204,7 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
         type='button'
       >
         <aksel.ArrowsCirclepathIcon />
-        {t('live-component.reset')}
+        <span className={classes.resetText}>{t('live-component.reset')}</span>
       </ds.Button>
       <ds.Button
         data-color='neutral'
@@ -188,7 +219,7 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
           <aksel.FilesIcon aria-hidden />
           <aksel.ClipboardCheckmarkIcon aria-hidden />
         </span>
-        {t('live-component.copy')}
+        <span>{t('live-component.copy')}</span>
       </ds.Button>
       {/* biome-ignore lint/a11y/noStaticElementInteractions: <need to manage keyboard events from here> */}
       <div
@@ -206,37 +237,69 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
           <kbd>{t('live-component.activateB')}</kbd>{' '}
           {t('live-component.activateC')}
         </div>
-        {showHTML ? (
-          <LiveEditor
-            className={classes.editor}
-            disabled
-            code={rawHtml}
-            language='html'
-          />
-        ) : (
-          <LiveEditor
-            key={resetCount}
-            onChange={live.onChange}
-            className={cl(
-              classes.editor,
-              classes['live-editor'],
-              'live-editor',
-            )}
-          />
-        )}
+        <LiveEditor
+          className={cl(classes.editor, !showHTML && classes.hidden)}
+          disabled
+          code={rawHtml}
+          language='html'
+        />
+        <LiveEditor
+          key={resetCount}
+          onChange={live.onChange}
+          className={cl(
+            classes.editor,
+            classes['live-editor'],
+            'live-editor',
+            showHTML && classes.hidden,
+          )}
+        />
       </div>
     </section>
   );
 };
 const EditorWithLive = withLive(Editor) as ComponentType<{
-  html: HTMLElement | null;
+  html: string;
   id?: string;
   hidden?: boolean;
+  language?: Language;
+}>;
+
+/**
+ * Hidden component that captures the SSR HTML using renderToString.
+ * This gives us the HTML that React produces before hydration,
+ * rather than the DOM after client-side rendering.
+ */
+type HtmlCaptureProps = {
+  live: ContextValue;
+  onHtmlCapture: (html: string) => void;
+};
+
+const HtmlCapture = ({ live, onHtmlCapture }: HtmlCaptureProps) => {
+  const Element = live.element;
+
+  useEffect(() => {
+    if (Element) {
+      try {
+        const html = renderToString(createElement(Element));
+        onHtmlCapture(html);
+      } catch {
+        onHtmlCapture('Unable to render HTML');
+      }
+    }
+  }, [Element, onHtmlCapture]);
+
+  return null;
+};
+
+const HtmlCaptureWithLive = withLive(HtmlCapture) as ComponentType<{
+  onHtmlCapture: (html: string) => void;
 }>;
 
 export const LiveComponent = ({
   story,
   layout = 'centered',
+  language = 'react',
+  startAsInert,
 }: LiveComponentProps) => {
   const location = useLocation();
   const { t } = useTranslation();
@@ -246,15 +309,20 @@ export const LiveComponent = ({
     'light',
   );
   const [useInverted, setUseInverted] = useState(false);
-  const [html, setHtml] = useState<HTMLElement | null>(null);
+  const [html, setHtml] = useState<string>('');
   const previewColorScheme = useInverted ? invertedColorScheme : colorScheme;
   const editorId = useId();
 
   useEffect(() => {
-    // Set initial color scheme
-    setColorScheme(
-      document?.documentElement?.getAttribute('data-color-scheme'),
-    );
+    // Set initial color scheme and inverted color scheme
+    const initialColorScheme =
+      document?.documentElement?.getAttribute('data-color-scheme');
+    setColorScheme(initialColorScheme);
+    if (initialColorScheme === 'dark') {
+      setInvertedColorScheme('light');
+    } else {
+      setInvertedColorScheme('dark');
+    }
 
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
@@ -288,16 +356,23 @@ export const LiveComponent = ({
       noInline
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
     >
+      {/* Hidden component that captures SSR HTML using renderToString */}
+      <HtmlCaptureWithLive onHtmlCapture={setHtml} />
       <div
-        className={classes.preview}
+        className={cl(classes.preview, 'u-long-content')}
         data-color='accent'
         data-live='true'
         data-layout={layout}
       >
         <LivePreview
+          inert={startAsInert}
           data-color-scheme={previewColorScheme}
           className={classes['live-preview']}
-          ref={setHtml}
+          ref={(el: HTMLDivElement | null) => {
+            if (el && startAsInert)
+              /*500 has been tested to work in firefox & chrome*/
+              setTimeout(() => el?.removeAttribute('inert'), 500);
+          }}
         />
         <LiveError className={cl('ds-alert', classes['live-preview-error'])} />
         <ds.Button
@@ -325,13 +400,18 @@ export const LiveComponent = ({
           className={classes.codeButton}
           aria-controls={editorId}
         >
-          <aksel.ChevronDownIcon />
+          <aksel.ChevronDownIcon aria-hidden />
           {showEditor
             ? t('live-component.hide-code')
             : t('live-component.show-code')}
         </ds.Button>
       </div>
-      <EditorWithLive id={editorId} html={html} hidden={!showEditor} />
+      <EditorWithLive
+        id={editorId}
+        html={html}
+        hidden={!showEditor}
+        language={language}
+      />
     </LiveProvider>
   );
 };

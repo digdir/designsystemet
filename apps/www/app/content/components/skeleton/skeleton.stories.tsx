@@ -58,3 +58,24 @@ export const Text = () => {
     </>
   );
 };
+
+export const TextEn = () => {
+  return (
+    <>
+      <div style={{ flex: '1 1 200px' }}>
+        <Heading>A title</Heading>
+        <Paragraph data-size='sm'>
+          Here is a paragraph that spans multiple lines
+        </Paragraph>
+      </div>
+      <div style={{ flex: '1 1 200px' }}>
+        <Heading>
+          <Skeleton variant='text'>A title</Skeleton>
+        </Heading>
+        <Paragraph data-size='sm'>
+          <Skeleton variant='text' width={40} />
+        </Paragraph>
+      </div>
+    </>
+  );
+};

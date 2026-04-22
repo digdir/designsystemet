@@ -533,6 +533,16 @@
         "$type": "color",
         "$value": "{designsystemet.link.visited}"
       }
+    },
+    "focus": {
+      "inner-color": {
+        "$type": "color",
+        "$value": "{designsystemet.focus.inner}"
+      },
+      "outer-color": {
+        "$type": "color",
+        "$value": "{designsystemet.focus.outer}"
+      }
     }
   },
   "font-family": {

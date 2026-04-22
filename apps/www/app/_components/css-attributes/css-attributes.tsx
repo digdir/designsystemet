@@ -1,4 +1,8 @@
-import { Paragraph, Table } from '@digdir/designsystemet-react';
+import {
+  Paragraph,
+  Table,
+  type TableProps,
+} from '@digdir/designsystemet-react';
 import cl from 'clsx';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -7,7 +11,7 @@ type CssAttributesProps = {
   vars: {
     [key: string]: string;
   };
-} & React.HTMLAttributes<HTMLTableElement>;
+} & TableProps;
 
 export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
   function CssAttributes({ vars, className, ...rest }, ref) {
@@ -20,16 +24,18 @@ export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
     return (
       <Table
         className={cl('component-table', className)}
-        data-color='accent'
-        zebra
+        data-color='neutral'
         border
+        zebra
         style={{
           tableLayout: 'fixed',
         }}
         {...rest}
         ref={ref}
       >
-        <caption>{t('components.data-attributes')}</caption>
+        <caption style={{ marginBottom: 'var(--ds-size-4)' }}>
+          {t('components.data-attributes')}
+        </caption>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>
@@ -60,8 +66,8 @@ export function getAttributes(css: string) {
   const globals = ['color', 'size', 'color-scheme'];
 
   const allAttrs = Array.from(
-    css.matchAll(/\[data-([^=\]]+)(?:=([^\]]+))?\]/g),
-  ).map((matches) => ({ [matches[1]]: matches[2] }));
+    css.matchAll(/\[data-([^=\]|$~*^]+)(?:([|$~*^]?=)([^\]]+))?\]/g),
+  ).map((matches) => ({ [matches[1]]: matches[3] }));
 
   for (const attr of allAttrs) {
     for (const [key, value] of Object.entries(attr)) {

@@ -1,5 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
+import { useState } from 'react';
 import {
+  Button,
   Divider,
   Field,
   Input,
@@ -55,6 +57,25 @@ export const Counter: Story = () => (
     <Field.Counter limit={10} />
   </Field>
 );
+
+export const CounterControlled: Story = () => {
+  const [value, setValue] = useState('Nordmann');
+
+  return (
+    <>
+      <Field>
+        <Label>Legg til en beskrivelse</Label>
+        <Textarea
+          rows={2}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <Field.Counter limit={10} />
+      </Field>
+      <Button onClick={() => setValue('Hei')}>Set verdi "hei"</Button>
+    </>
+  );
+};
 
 export const Position: Story = () => (
   <>

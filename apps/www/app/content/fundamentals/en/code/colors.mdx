@@ -4,12 +4,12 @@ description: Information about how to use colors in frontend.
 date: 2024-11-26
 category: Code
 color: blue
-icon: CodeIcon
+icon: PaletteIcon
 published: true
-order: 20
+order: 60
 ---
 
-This article assumes that you have already defined the colors you will use with the help of the [Theme Builder](/en/fundamentals/themebuilder/own-theme).
+This article assumes that you have already defined the colors you will use with the help of the [Theme Builder](/en/fundamentals/start-here/own-theme).
 
 HTML data attributes are used to define the color of a component. The components can use all colors in the theme.
 
@@ -38,6 +38,19 @@ You can change `data-color-scheme` on all or parts of the page and switch betwee
 but with a dark footer. You can then set `data-color-scheme="dark"` on the footer.
 
 `data-color-scheme` can be set to `light`, `dark`, or `auto`. `auto` will follow the user's system settings.
+
+`color` and `background-color` are redeclared to default values on the element with `data-color-scheme`. This is necessary to ensure good color contrast, as `color` is otherwise inherited.
+
+```css
+/*@digdir/designsystemet-css*/
+body,
+[data-color-scheme] {
+  color: var(--ds-color-neutral-text-default);
+  background: var(--ds-color-neutral-background-default);
+}
+```
+
+You can override this by setting custom values for `color` and `background-color` on the element, or globally by matching our selector.
 
 ## `data-color`
 

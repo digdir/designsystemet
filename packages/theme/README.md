@@ -1,3 +1,8 @@
+
+>⚠️ **THIS PACKAGE IS DEPRECATED** ⚠️  
+>Use `@digdir/designsystemet-css/theme` for default theme or make your own using the [Theme builder](https://theme.designsystemet.no/)
+
+
 # @digdir/designsystemet-theme
 
 This package contains the following predefined Designsystemet themes for use in Digdir.
@@ -7,7 +12,7 @@ This package contains the following predefined Designsystemet themes for use in 
 - `uutilsynet`
 - `portal`
   
-As well as a default theme used in the themebuilder.
+As well as a default theme used in the themebuilder. `@digdir/designsystemet-css` also exports this theme by default under `@digdir/designsystemet-css/theme`.
 
 Build your own theme on https://theme.designsystemet.no/
 

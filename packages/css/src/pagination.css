@@ -2,6 +2,13 @@
   --dsc-pagination-gap: var(--ds-size-2);
   --dsc-pagination-icon-size: var(--ds-size-6);
   --dsc-pagination-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M9.47 5.97a.75.75 0 0 1 1.06 0l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06L14.44 12 9.47 7.03a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
+  --dsc-pagination-ellipsis: '\2026';
+  --_ds-aria-label: var(--dsc-pagination-label); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
+
+  &:is([lang='nb'], [lang='nn'], [lang='no']),
+  :is([lang='nb'], [lang='nn'], [lang='no']) & {
+    --dsc-pagination-label: 'Bla i sider'; /* Only set default label if Norwegian */
+  }
 
   & :is(ol, ul) {
     align-items: center;
@@ -15,8 +22,34 @@
       display: flex;
     }
 
-    & > li > [aria-hidden='true'] {
+    & > li:first-child > [aria-hidden='true'],
+    & > li:last-child > [aria-hidden='true'] {
       visibility: hidden;
+    }
+
+    /* Style active if ds-button */
+    & > li > [aria-current='true'] {
+      --dsc-button-background--active: var(--ds-color-base-active);
+      --dsc-button-background--hover: var(--ds-color-base-hover);
+      --dsc-button-background: var(--ds-color-base-default);
+      --dsc-button-color: var(--ds-color-base-contrast-default);
+    }
+
+    & > li:has([aria-label='hidden']) {
+      display: none; /* Hide list item if no page is linkable */
+    }
+
+    & > li > [aria-label]:empty::before {
+      content: attr(aria-label);
+    }
+    /* aria-label="0" is used for ellipsis */
+    & > li > [aria-label='0']:empty {
+      color: inherit;
+      pointer-events: none;
+      text-decoration: none;
+    }
+    & > li > [aria-label='0']:empty::before {
+      content: var(--dsc-pagination-ellipsis) / '';
     }
 
     & > li:first-child > ::before,
@@ -45,12 +78,12 @@
       rotate: 180deg;
     }
 
-    /* Style as non-interactive ellipsis when empty */
+    /* Keeping empty-li styling for backwards compatiblity */
     & > li:empty::before {
-      content: '\2026'; /* ellipsis */
+      content: var(--dsc-pagination-ellipsis);
       display: block;
-      min-width: var(--ds-size-12);
       text-align: center;
+      min-width: var(--ds-size-12);
     }
   }
 }

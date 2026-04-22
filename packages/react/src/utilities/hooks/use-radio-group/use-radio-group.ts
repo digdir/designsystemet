@@ -1,4 +1,10 @@
-import type { ReactNode } from 'react';
+import type {
+  ChangeEvent,
+  Dispatch,
+  ForwardedRef,
+  ReactNode,
+  SetStateAction,
+} from 'react';
 import { useId, useState } from 'react';
 import type { RadioProps } from '../../../components';
 
@@ -40,13 +46,13 @@ export type GetRadioProps = Omit<
   | 'checked'
   | 'value'
 > & {
-  ref?: React.ForwardedRef<HTMLInputElement>; // Use this to match Ref from `Radio`, remove when `Radio` no longer uses `forwardRef`
+  ref?: ForwardedRef<HTMLInputElement>; // Use this to match Ref from `Radio`, remove when `Radio` no longer uses `forwardRef`
   value?: string;
 };
 
 type useRadioGroupReturn = {
   value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  setValue: Dispatch<SetStateAction<string>>;
   getRadioProps: (propsOrValue: string | GetRadioProps) => GetRadioProps;
   validationMessageProps: {
     children: ReactNode;
@@ -122,7 +128,7 @@ export function useRadioGroup({
         }
       };
 
-      const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.name === radioGroupName) {
           setGroupValue((prevValue) => {
             onChange?.(e.target.value, prevValue);
@@ -143,7 +149,7 @@ export function useRadioGroup({
         required: required || rest.required,
         readOnly: readOnly || rest.readOnly,
         disabled: disabled || rest.disabled,
-        onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange: (e: ChangeEvent<HTMLInputElement>) => {
           rest.onChange?.(e);
           if (e.defaultPrevented) return;
           handleChange(e);

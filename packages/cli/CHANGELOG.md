@@ -1,5 +1,154 @@
 # Change Log
 
+## 1.13.2
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4694](https://github.com/digdir/designsystemet/pull/4694))
+
+- Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))
+
+- update npm non-major dependencies ([#4677](https://github.com/digdir/designsystemet/pull/4677))
+
+- update npm non-major dependencies ([#4668](https://github.com/digdir/designsystemet/pull/4668))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.2
+
+## 1.13.1
+
+### Patch Changes
+
+- fix: add missing references for token sync in Figma ([#4659](https://github.com/digdir/designsystemet/pull/4659))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.1
+
+## 1.13.0
+
+### Patch Changes
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548))
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.0
+
+## 1.12.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.12.1
+
+## 1.12.0
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+- update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.12.0
+
+## 1.11.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4469](https://github.com/digdir/designsystemet/pull/4469))
+
+- update dependency colorjs.io to ^0.6.1 ([#4422](https://github.com/digdir/designsystemet/pull/4422))
+
+- update npm non-major dependencies ([#4445](https://github.com/digdir/designsystemet/pull/4445))
+
+- update npm non-major dependencies ([#4423](https://github.com/digdir/designsystemet/pull/4423))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.11.1
+
+## 1.11.0
+
+### Minor Changes
+
+- **Version `1.10.0` was released by accident, and we are skipping to `1.11.0`** ([#4392](https://github.com/digdir/designsystemet/pull/4392))
+  - Version `1.10.0` is deprecated on npm, and not accessible on Github. Use `1.11.0` or newer.
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4373](https://github.com/digdir/designsystemet/pull/4373))
+
+- Update dependency zod-validation-error to v5 ([#4401](https://github.com/digdir/designsystemet/pull/4401))
+
+- Update dependency colorjs.io to ^0.6.0 ([#4372](https://github.com/digdir/designsystemet/pull/4372))
+
+- Remove `change-case` as dependency ([#4343](https://github.com/digdir/designsystemet/pull/4343))
+
+- Update `@types/node` to `24.10.7` ([#4396](https://github.com/digdir/designsystemet/pull/4396))
+  - This does not affect the node versions we support
+
+- update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336))
+
+- update npm non-major dependencies ([#4398](https://github.com/digdir/designsystemet/pull/4398))
+
+- Update npm non-major dependencies ([#4347](https://github.com/digdir/designsystemet/pull/4347))
+
+- Updated dependencies [[`4d48a81`](https://github.com/digdir/designsystemet/commit/4d48a815c67114f4ff3d102b7b271a343cd491c4)]:
+  - @digdir/designsystemet-types@1.11.0
+
+## 1.9.0
+
+### Minor Changes
+
+- Add ability to override focus colors from config: ([#4320](https://github.com/digdir/designsystemet/pull/4320))
+
+  ```json
+  {
+    "overrides": {
+      "focus": {
+        "inner": { "light": "HEX", "dark": "HEX" },
+        "outer": { "light": "HEX", "dark": "HEX" }
+      }
+    }
+  }
+  ```
+
+  This comes with a change to you design tokens, where focus colors are now on the theme layer.
+  Make sure you rebuild your tokens: `npx @digdir/designsystemet tokens create <options> --clean`
+
+### Patch Changes
+
+- Update `@tokens-studio/sd-transforms` to `2.0.3` ([#4315](https://github.com/digdir/designsystemet/pull/4315))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.0
+
+## 1.8.0
+
+### Minor Changes
+
+- Move submodule `@digdir/designsystemet/types` to a new package `@digdir/designsystemet-types` and change all references. ([#4241](https://github.com/digdir/designsystemet/pull/4241))
+
+  After re-running `tokens build` downstream, this removes transitive dependencies on runtime dependencies on CLI tools like `commander` and `style-dictionary` which are never used in runtime, but are required for the CLI to function. It also makes code which doesn't use the CLI unaffected by our node version limitations (currently >= 22 due to `style-dictionary`).
+
+  `@digdir/designsystemet/types` is preserved for now as a deprecated re-export of `@digdir/designsystemet-types` to avoid breaking people's builds.
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4275](https://github.com/digdir/designsystemet/pull/4275))
+
+- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242))
+
+- Update npm non-major dependencies ([#4262](https://github.com/digdir/designsystemet/pull/4262))
+
+- Update dependency @tokens-studio/sd-transforms to v2 ([#4271](https://github.com/digdir/designsystemet/pull/4271))
+
+- Updated dependencies [[`c2faf2e`](https://github.com/digdir/designsystemet/commit/c2faf2ee545628ca03fef0409c7b5811edd22d74)]:
+  - @digdir/designsystemet-types@1.8.0
+
 ## 1.7.3
 
 ## 1.7.2

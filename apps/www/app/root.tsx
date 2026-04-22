@@ -9,12 +9,13 @@ import {
   ScrollRestoration,
 } from 'react-router';
 import type { Route } from './+types/root';
-import '@digdir/designsystemet-theme/digdir.css';
+import '@internal/digdir/themes/digdir.css';
 import '@digdir/designsystemet-css';
 import './app.css';
 import { Error404 } from '@internal/components';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
+import { SiteimproveScript } from './_components/siteimprove-script';
 import { designsystemetRedirects } from './_utils/redirects.server';
 
 export const links = () => {
@@ -65,11 +66,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const centerLinks = [
     {
       text: 'footer.about',
-      url: `${lang}/fundamentals/introduction/about-the-design-system`,
+      url: `${lang}/intro/about-the-design-system`,
     },
     {
       text: 'footer.privacy',
-      url: `${lang}/fundamentals/privacy-policy`,
+      url: `${lang}/intro/privacy-policy`,
     },
     {
       text: 'footer.accessibility',
@@ -79,24 +80,28 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const menu = [
     {
+      name: 'navigation.intro',
+      href: `/${lang}/intro`,
+    },
+    {
       name: 'navigation.fundamentals',
       href: `/${lang}/fundamentals`,
     },
     {
-      name: 'navigation.best-practices',
-      href: `/${lang}/best-practices`,
+      name: 'navigation.components',
+      href: `/${lang}/components`,
     },
     {
       name: 'navigation.patterns',
       href: `/${lang}/patterns`,
     },
     {
-      name: 'navigation.blog',
-      href: `/${lang}/blog`,
+      name: 'navigation.best-practices',
+      href: `/${lang}/best-practices`,
     },
     {
-      name: 'navigation.components',
-      href: `/${lang}/components`,
+      name: 'navigation.blog',
+      href: `/${lang}/blog`,
     },
     {
       name: 'navigation.theme-builder',
@@ -142,12 +147,7 @@ function Document({ children }: DocumentProps) {
         {/* This uses sessionStorage, but we deem it necessary to make navigation work as expected */}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'production' && (
-          <script
-            src='https://siteimproveanalytics.com/js/siteanalyze_6255470.js'
-            crossOrigin='anonymous'
-          />
-        )}
+        <SiteimproveScript />
       </body>
     </html>
   );

@@ -20,7 +20,7 @@ export type DialogTriggerProps = ComponentPropsWithRef<typeof Button>;
  */
 export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
   function DialogTrigger({ asChild, ...rest }, ref) {
-    const contextRef = useContext(Context);
+    const contextRef = useContext(Context); // Using contextRef instead of command as this is instantly available and plays nice with tests
     const Component = asChild ? Slot : Button;
 
     const openDialog = () => {
@@ -35,6 +35,7 @@ export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
         aria-haspopup='dialog'
         onClick={openDialog}
         ref={ref}
+        suppressHydrationWarning // Might get augmented through designsystemet-web with aria-haspopup
         {...rest}
       />
     );

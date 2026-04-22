@@ -1,5 +1,4 @@
 import { type AriaAttributes, forwardRef } from 'react';
-
 import { Button, type ButtonProps } from '../button/button';
 
 export type PaginationButtonProps = {
@@ -22,5 +21,5 @@ export const PaginationButton = forwardRef<
   HTMLButtonElement,
   PaginationButtonProps
 >(function PaginationButton(rest, ref) {
-  return <Button ref={ref} {...rest} />;
+  return <Button data-variant='tertiary' ref={ref} {...rest} />;
 });

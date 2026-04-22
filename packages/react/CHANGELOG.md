@@ -1,5 +1,237 @@
 # Change Log
 
+## 1.13.2
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4694](https://github.com/digdir/designsystemet/pull/4694))
+
+- **Field**: `<ds-field>` should now respect existing `aria-describedby` and `aria-invalid` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- **Pagination:** fix `PaginationButton` missing some `Button` props ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- **Tabs**: Now supports programmatically triggering click on controlled `Tabs` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- **Tabs**: `defaultValue` now works as expected ([#4709](https://github.com/digdir/designsystemet/pull/4709))
+
+- Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))
+
+- update npm non-major dependencies ([#4677](https://github.com/digdir/designsystemet/pull/4677))
+
+- **Button**: add `command`and `commandfor`as explicit types on `ButtonProps` ([#4676](https://github.com/digdir/designsystemet/pull/4676))
+
+- **Link**: Fix spacing when icon is present ([#4707](https://github.com/digdir/designsystemet/pull/4707))
+
+- **Dialog:** Use `ref` in `Dialog.TriggerContext` for better performance ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+- update npm non-major dependencies ([#4668](https://github.com/digdir/designsystemet/pull/4668))
+
+- **Field Counter:** Now includes fallback texts to support test environments without CSS ([#4727](https://github.com/digdir/designsystemet/pull/4727))
+
+- Updated dependencies [[`bb600db`](https://github.com/digdir/designsystemet/commit/bb600db35da04d5f3174ee5a8b0b2a8e17bea756), [`d129260`](https://github.com/digdir/designsystemet/commit/d1292605b0999e0eba4ac69dd61f017373124fed), [`d129260`](https://github.com/digdir/designsystemet/commit/d1292605b0999e0eba4ac69dd61f017373124fed), [`d129260`](https://github.com/digdir/designsystemet/commit/d1292605b0999e0eba4ac69dd61f017373124fed), [`d8286ee`](https://github.com/digdir/designsystemet/commit/d8286ee9d8e8dc8e652a07683e77b4741ab0fab7), [`381a51d`](https://github.com/digdir/designsystemet/commit/381a51d65a5482d972043f8c4fa0a19d47151ac9), [`d129260`](https://github.com/digdir/designsystemet/commit/d1292605b0999e0eba4ac69dd61f017373124fed), [`cfb204d`](https://github.com/digdir/designsystemet/commit/cfb204d05a5af330517bdd7ced81798f6a6e5974), [`52c0527`](https://github.com/digdir/designsystemet/commit/52c052747ab2f7c39028400bbf4036b7fee15fdd), [`d129260`](https://github.com/digdir/designsystemet/commit/d1292605b0999e0eba4ac69dd61f017373124fed), [`47758af`](https://github.com/digdir/designsystemet/commit/47758afbed188436b666e61b1908995c25faa3d1), [`86f4434`](https://github.com/digdir/designsystemet/commit/86f44343ff289af31859b2abea97bc75aff107fa)]:
+  - @digdir/designsystemet-web@1.13.2
+  - @digdir/designsystemet-types@1.13.2
+
+## 1.13.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
+
+- **Tabs**: `onChange` was not called when keyboard changes active tab ([#4616](https://github.com/digdir/designsystemet/pull/4616))
+
+- **Dropdown**: `className` in subcomponents was not forwarded to DOM-element ([#4655](https://github.com/digdir/designsystemet/pull/4655))
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- **Tabs**: fix controlled version not behaving properly ([#4635](https://github.com/digdir/designsystemet/pull/4635))
+
+- **input:** add suppressHydrationWarning as attributes will be added by ds-field ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+- Updated dependencies [[`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee), [`811fa99`](https://github.com/digdir/designsystemet/commit/811fa998227802da7fec9fa21e782ac77838eedf), [`80f9305`](https://github.com/digdir/designsystemet/commit/80f9305be3680673c54c3bdd8d8cca1a0a21ee4d), [`97ebdb3`](https://github.com/digdir/designsystemet/commit/97ebdb35a4cf49487084842a63a98b783669a02b), [`f403286`](https://github.com/digdir/designsystemet/commit/f403286714d36f77767464e38b8d324ceb3d251d)]:
+  - @digdir/designsystemet-web@1.13.1
+  - @digdir/designsystemet-types@1.13.1
+
+## 1.13.0
+
+### Patch Changes
+
+- **Badge, Button, Spinner, Tabs, Tag**: Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
+
+- **ToggleGroupItem**: Add missing props for backward compatibility. An internal rewrite from `button` to `label+input` in version v1.12.0 led to a lack of some props on `ToggleGroupItem` related to `button`. ([#4580](https://github.com/digdir/designsystemet/pull/4580))
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+- update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548))
+
+- **toggle-group**: re-introduce support for disabled items ([#4618](https://github.com/digdir/designsystemet/pull/4618))
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+- **Details**: use `DetailsHTMLAttributes` type to allow `name` attribute ([#4557](https://github.com/digdir/designsystemet/pull/4557))
+
+- **Dialog**: fixed non-modal Dialog not opening when using `Dialog.Trigger` ([#4611](https://github.com/digdir/designsystemet/pull/4611))
+
+- **AvatarStack**: changed underlying element from `figure` to `span` to avoid html-validation issues when used inside a `span` ([#4579](https://github.com/digdir/designsystemet/pull/4579))
+
+- **AvatarStack**: replaced tabindex="-1" with no tabindex at all when `expandable`is not set ([#4579](https://github.com/digdir/designsystemet/pull/4579))
+
+- Updated dependencies [[`5776e4b`](https://github.com/digdir/designsystemet/commit/5776e4b5a5608cc39c309e5b7b7dc3703cec25e9), [`dc023a4`](https://github.com/digdir/designsystemet/commit/dc023a47b0802ad77c00a5b419da9adb6425e343), [`9f7d318`](https://github.com/digdir/designsystemet/commit/9f7d318d04a228b95e1ab32d8e177a223a4a7254), [`303ee66`](https://github.com/digdir/designsystemet/commit/303ee6617672ef0ff968d759e2a5aaafa9dd7381), [`4bd54bd`](https://github.com/digdir/designsystemet/commit/4bd54bd9a93be34f591f8da24564a7ee35e72775)]:
+  - @digdir/designsystemet-web@1.13.0
+  - @digdir/designsystemet-types@1.13.0
+
+## 1.12.1
+
+### Patch Changes
+
+- **Avatar**: fixed an issue where tooltip could not be set ([#4534](https://github.com/digdir/designsystemet/pull/4534))
+
+- Updated dependencies [[`d81048f`](https://github.com/digdir/designsystemet/commit/d81048f3bb31f5537f9c132582bbefb9144eb387), [`d81048f`](https://github.com/digdir/designsystemet/commit/d81048f3bb31f5537f9c132582bbefb9144eb387)]:
+  - @digdir/designsystemet-web@1.12.1
+  - @digdir/designsystemet-types@1.12.1
+
+## 1.12.0
+
+### Minor Changes
+
+- **Input** Support for new attribute `data-indeterminate` to toggle indeterminate state when `type="checkbox"` inside `Field`/`ds-field`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Support for new package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **ToggleGroup**: Updated DOM structure and now uses new web observer `data-toggle-group`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Add `suppressHydrationWarning` to various components. This is to support `@digdir/designsystemet-web` being used internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Field.Counter**: Deprecate `hint` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Field**: Deprecated `asChild` as this component now uses `<ds-field>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **ErrorSummary**: Deprecate `asChild` as this component now uses `<ds-error-summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Select**: Deprecate `readOnly`. Use `aria-readonly` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **RovingFocus**: Deprecate component. This will be removed in the next major version ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Tooltip**: Deprecate `open`. This should not be used on Tooltip. Use a `Popover` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Dialog**: Deprecate `data-command="close"`. Use `command="close"` and `commandfor="DIALOG-ID"` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+### Patch Changes
+
+- **Breadcrumbs**: Now uses `<ds-breadcrumbs>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Card**: Fix deeply nested anchors in headings causing navigation ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+- **Card**: fix issues with deeply nested heading links. Now uses web observer `data-clickdelegatefor` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Pagination**: Now uses `<ds-pagination>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497))
+
+- **Tabs**: Now uses `<ds-tabs>` and related web components internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Tooltip**: Now uses `data-tooltip` from `@digdir/designsystemet-web` internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Details**: Use `<details>` and `<summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Updated dependencies [[`6bde739`](https://github.com/digdir/designsystemet/commit/6bde739dee0adc79ac7a275ec00e0287bb4c2891), [`34c1ca7`](https://github.com/digdir/designsystemet/commit/34c1ca739c9bfaa5d7219c5f5df29aa610281100)]:
+  - @digdir/designsystemet-web@1.12.0
+  - @digdir/designsystemet-types@1.12.0
+
+## 1.11.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4469](https://github.com/digdir/designsystemet/pull/4469))
+
+- **Avatar**: fix - removed aria-hidden and role=img when asChild ([#4445](https://github.com/digdir/designsystemet/pull/4445))
+
+- update npm non-major dependencies ([#4445](https://github.com/digdir/designsystemet/pull/4445))
+
+- update dependency @navikt/aksel-icons to v8 ([#4447](https://github.com/digdir/designsystemet/pull/4447))
+
+- update npm non-major dependencies ([#4423](https://github.com/digdir/designsystemet/pull/4423))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.11.1
+
+## 1.11.0
+
+### Minor Changes
+
+- **Version `1.10.0` was released by accident, and we are skipping to `1.11.0`** ([#4392](https://github.com/digdir/designsystemet/pull/4392))
+  - Version `1.10.0` is deprecated on npm, and not accessible on Github. Use `1.11.0` or newer.
+
+- **Avatar**: added `asChild` prop ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+- **AvatarStack**: New experimental component ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+- **Suggestion**: Add new prop `autoPlacement`, which is by default `true` ([#4359](https://github.com/digdir/designsystemet/pull/4359))
+  - This means that `Suggestion` will now try to stay within the viewport on the y-axis
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4373](https://github.com/digdir/designsystemet/pull/4373))
+
+- Removed `sideEffects:false` property used by some bundlers to help tree-shake cjs files. ([#4376](https://github.com/digdir/designsystemet/pull/4376))
+
+- update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336))
+
+- update npm non-major dependencies ([#4398](https://github.com/digdir/designsystemet/pull/4398))
+
+- **Suggestion**: Always call `onSelectedChange`, and return `null` instead of `undefined` ([#4388](https://github.com/digdir/designsystemet/pull/4388))
+
+- Update npm non-major dependencies ([#4347](https://github.com/digdir/designsystemet/pull/4347))
+
+- Updated dependencies [[`4d48a81`](https://github.com/digdir/designsystemet/commit/4d48a815c67114f4ff3d102b7b271a343cd491c4)]:
+  - @digdir/designsystemet-types@1.11.0
+
+## 1.9.0
+
+### Minor Changes
+
+- **Dialog**: added `placement` prop. This will set `data-placement` and style the `Dialog` as a "drawer"-component from the direction given: `left | right | top | bottom` or `center` (default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
+
+### Patch Changes
+
+- **SuggestionClear**: send `onClick`. In earlier versions `onClick` was never called ([#4327](https://github.com/digdir/designsystemet/pull/4327))
+
+- **Popover**: Fix controlled open state going out of sync ([#4314](https://github.com/digdir/designsystemet/pull/4314))
+
+- Update npm non-major dependencies ([#4308](https://github.com/digdir/designsystemet/pull/4308))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.0
+
+## 1.8.0
+
+### Minor Changes
+
+- Move submodule `@digdir/designsystemet/types` to a new package `@digdir/designsystemet-types` and change all references. ([#4241](https://github.com/digdir/designsystemet/pull/4241))
+
+  After re-running `tokens build` downstream, this removes transitive dependencies on runtime dependencies on CLI tools like `commander` and `style-dictionary` which are never used in runtime, but are required for the CLI to function. It also makes code which doesn't use the CLI unaffected by our node version limitations (currently >= 22 due to `style-dictionary`).
+
+  `@digdir/designsystemet/types` is preserved for now as a deprecated re-export of `@digdir/designsystemet-types` to avoid breaking people's builds.
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4275](https://github.com/digdir/designsystemet/pull/4275))
+
+- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242))
+
+- **Popover**: Fix unnecesary call of `onOpen` and missing call of `onClose` ([#4230](https://github.com/digdir/designsystemet/pull/4230))
+  - Don't call `onOpen` when clicking `Popover.Trigger` when `Popover` is already open.
+  - Call `onClose` when a controlled `Popover` is closed by clicking on `Popover.Trigger`.
+
+- Update npm non-major dependencies ([#4262](https://github.com/digdir/designsystemet/pull/4262))
+
+- Update `react` and `react-dom` to `19.2.1` ([#4276](https://github.com/digdir/designsystemet/pull/4276))
+
+- Updated dependencies [[`c2faf2e`](https://github.com/digdir/designsystemet/commit/c2faf2ee545628ca03fef0409c7b5811edd22d74)]:
+  - @digdir/designsystemet-types@1.8.0
+
 ## 1.7.3
 
 ### Patch Changes

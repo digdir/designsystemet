@@ -5,7 +5,8 @@ import type no from './no';
 export default {
   ...en,
   navigation: {
-    fundamentals: 'Fundamentals',
+    intro: 'Intro',
+    fundamentals: 'Get Started',
     'best-practices': 'Best Practices',
     patterns: 'Patterns',
     blog: 'Blog',
@@ -60,10 +61,11 @@ export default {
     'import-config': 'Import config',
   },
   tabs: {
-    overview: 'Overview',
+    examples: 'Examples',
     colorsystem: 'Colour system',
     colors: 'Colours',
     dimensions: 'Dimensions',
+    variables: 'Variables',
   },
   colorPreview: {
     title: 'See your colours in use',
@@ -145,6 +147,11 @@ export default {
     dark: 'Dark',
     'set-to': 'Set to',
     view: 'view',
+  },
+  'color-tokens': {
+    title: 'Color Tokens',
+    description:
+      'Here you can see which tokens have been used to create the cards in the section above.',
   },
   colorContrasts: {
     title: 'Contrasts between colours',

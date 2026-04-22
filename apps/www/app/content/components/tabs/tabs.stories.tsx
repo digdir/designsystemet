@@ -50,6 +50,39 @@ export const IconsOnly = () => {
   );
 };
 
+export const IconsOnlyEn = () => {
+  return (
+    <Tabs defaultValue='car'>
+      <Tabs.List>
+        <Tooltip content='Your cars'>
+          <Tabs.Tab value='car'>
+            <CarIcon title='Car' />
+          </Tabs.Tab>
+        </Tooltip>
+        <Tooltip content='Your bicycles'>
+          <Tabs.Tab value='bicycle'>
+            <BicycleIcon title='Bicycle' />
+          </Tabs.Tab>
+        </Tooltip>
+        <Tooltip content='Your motorcycles'>
+          <Tabs.Tab value='motorcycle'>
+            <MotorcycleIcon title='Motorcycle' />
+          </Tabs.Tab>
+        </Tooltip>
+      </Tabs.List>
+      <Tabs.Panel value='car'>
+        You have no items of this type registered with us
+      </Tabs.Panel>
+      <Tabs.Panel value='bicycle'>
+        You have no items of this type registered with us
+      </Tabs.Panel>
+      <Tabs.Panel value='motorcycle'>
+        You have no items of this type registered with us
+      </Tabs.Panel>
+    </Tabs>
+  );
+};
+
 export const IconsWithText = () => {
   return (
     <Tabs defaultValue='car'>
@@ -77,6 +110,39 @@ export const IconsWithText = () => {
       </Tabs.Panel>
       <Tabs.Panel value='motorcycle'>
         Du har ingen av denne typen registrert hos oss
+      </Tabs.Panel>
+    </Tabs>
+  );
+};
+
+export const IconsWithTextEn = () => {
+  return (
+    <Tabs defaultValue='car'>
+      <Tabs.List>
+        <Tabs.Tab value='car'>
+          <CarIcon aria-hidden='true' />
+          Cars
+        </Tabs.Tab>
+
+        <Tabs.Tab value='bicycle'>
+          <BicycleIcon aria-hidden='true' />
+          Bicycles
+        </Tabs.Tab>
+
+        <Tabs.Tab value='motorcycle'>
+          <MotorcycleIcon aria-hidden='true' />
+          Motorcycles
+        </Tabs.Tab>
+      </Tabs.List>
+
+      <Tabs.Panel value='car'>
+        You have no items of this type registered with us
+      </Tabs.Panel>
+      <Tabs.Panel value='bicycle'>
+        You have no items of this type registered with us
+      </Tabs.Panel>
+      <Tabs.Panel value='motorcycle'>
+        You have no items of this type registered with us
       </Tabs.Panel>
     </Tabs>
   );

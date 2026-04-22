@@ -531,11 +531,11 @@
     "focus": {
       "inner": {
         "$type": "color",
-        "$value": "{color.neutral.background-default}"
+        "$value": "{color.focus.inner-color}"
       },
       "outer": {
         "$type": "color",
-        "$value": "{color.neutral.text-default}"
+        "$value": "{color.focus.outer-color}"
       }
     }
   },

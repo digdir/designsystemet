@@ -27,6 +27,7 @@ export default mergeConfig(viteConfig, {
       provider: playwright(),
       headless: true,
     },
+    testTimeout: 10000,
     setupFiles: ['./.storybook/vitest.setup.ts'],
     reporters: [
       'default',

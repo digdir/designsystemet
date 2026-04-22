@@ -1,0 +1,86 @@
+---
+title: "@digdir/designsystemet-web prerelease 2"
+description: Second prerelease of the @digdir/designsystemet-web package, which provides the ability to use the Designsystemet without React.
+date: 2026-01-26
+author: Designsystemet
+imageSrc: /img/blog/ds-web-pre2.webp
+imageAlt: Second prerelease of the @digdir/designsystemet-web package
+---
+
+<Alert>
+All `@digdir/designsystemet-*` packages can be installed with version `0.0.0-fix-designsystemet-web-20260126133306`.
+
+All prereleases will also be under the `test` tag on NPM.
+</Alert>
+
+## Test in existing application
+
+We have updated `@digdir/designsystemet-react` to use `@digdir/designsystemet-web` as the underlying package for framework-independent interactivity.
+No React components have breaking changes, but _may_ be experienced a little differently since they now come from the web package. That's why we need you to test and provide feedback:
+Please test these and provide feedback.
+
+These are:
+- Popover
+- Dropdown
+- Tooltip
+- Dialog
+- Pagination
+- Breadcrumbs
+- Tabs
+- ToggleGroup
+- Field
+
+Please check all tests and console to look for errors or unexpected behavior.
+
+`ToggleGroup` still uses `ToggleGroup.Item` in React, but now internally does not create `<button>` anymore.
+The new structure is:
+```html
+<fieldset class="ds-toggle-group" data-toggle-group="Text alignment">
+  <label>
+    <input type="radio" name="alignment-two" value="left" checked />
+    Left aligned
+  </label>
+  <label>
+    <input type="radio" name="alignment-two" value="center" />
+    Centered
+  </label>
+  <label>
+    <input type="radio" name="alignment-two" value="right" />
+    Right aligned
+  </label>
+</fieldset>
+```
+
+## Testing in other frameworks or pure HTML/JS
+
+To test the package without React, you can install `@digdir/designsystemet-web` and `@digdir/designsystemet-css` in your project.
+Then you can use the components and functionality directly.
+
+Types are also generated for various frameworks.
+You can get these by adding them to your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["@digdir/designsystemet-web"]
+  }
+}
+```
+
+## Documentation
+
+The documentation will be continuously changed in the [README for the package](https://www.npmjs.com/package/@digdir/designsystemet-web/v/0.0.0-fix-designsystemet-web-20260126133306), which you can read on NPM.
+
+When the complete release of the package is out, we will update the relevant documentation on designsystemet.no.
+
+## Give feedback
+
+We are very interested in hearing from you as a user!
+If you discover errors, or have suggestions for improvements, you can create an issue in our [GitHub repo](https://github.com/digdir/designsystemet/issues/new) or on [Slack](/slack).
+
+<Contributors
+  authors={[
+    'Tobias Barsnes',
+    'Eirik Backer',
+  ]}
+/>

@@ -9,6 +9,15 @@ export const Preview = () => {
   );
 };
 
+export const PreviewEn = () => {
+  return (
+    <Paragraph>
+      The privacy statement provides information about what personal data we
+      process, how this data is processed, and what rights you have.
+    </Paragraph>
+  );
+};
+
 export const Sizes = () => {
   return (
     <>
