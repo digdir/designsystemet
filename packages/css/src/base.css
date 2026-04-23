@@ -121,6 +121,31 @@ body,
   }
 }
 
+.ds-checkbox--checked {
+  --_stroke-width-fallback: 0.05em;
+  --_diagonal-1: transparent calc(48% - var(--_stroke-width, var(--_stroke-width-fallback)));
+  --_diagonal-2: currentcolor calc(50% - var(--_stroke-width, var(--_stroke-width-fallback)));
+  --_diagonal-3: currentcolor calc(50% + var(--_stroke-width, var(--_stroke-width-fallback)));
+  --_diagonal-4: transparent calc(52% + var(--_stroke-width, var(--_stroke-width-fallback)));
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  background-position:
+    10% 73%,
+    90% 50%;
+  background-size:
+    35% 35%,
+    65% 65%;
+  background-image:
+    linear-gradient(45deg, var(--_diagonal-1), var(--_diagonal-2), var(--_diagonal-3), var(--_diagonal-4)),
+    linear-gradient(-45deg, var(--_diagonal-1), var(--_diagonal-2), var(--_diagonal-3), var(--_diagonal-4));
+
+  @media (forced-colors: active) {
+    background-color: LinkText;
+    border-color: LinkText;
+    forced-color-adjust: none; /* To be able to draw check */
+  }
+}
+
 /**
  * Used to position floating elements like dropdowns, popovers and tooltips
  */
