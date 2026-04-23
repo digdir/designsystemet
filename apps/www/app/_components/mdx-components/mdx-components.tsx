@@ -166,12 +166,7 @@ export const MDXComponents = ({
   );
 };
 
-const Story = ({
-  story,
-  layout,
-  language,
-  startAsInert,
-}: LiveComponentProps) => {
+const Story = ({ story, ...rest }: LiveComponentProps) => {
   const { stories } = useLoaderData();
   if (!stories) return null;
 
@@ -182,9 +177,7 @@ const Story = ({
   return (
     <LiveComponent
       story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
-      layout={layout}
-      language={language}
-      startAsInert={startAsInert}
+      {...rest}
     />
   );
 };
