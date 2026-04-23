@@ -1,5 +1,13 @@
 # @digdir/designsystemet-web
 
+## 1.13.3
+
+### Patch Changes
+
+- **Tabs:** Has improved synchronous rendering for easier snapshot testing ([#4745](https://github.com/digdir/designsystemet/pull/4745))
+
+- **Field:** Now respects manually set `aria-invalid` attribute ([#4765](https://github.com/digdir/designsystemet/pull/4765))
+
 ## 1.13.2
 
 ### Patch Changes

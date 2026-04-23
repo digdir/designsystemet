@@ -1,7 +1,7 @@
 {
   "name": "@digdir/designsystemet-web",
   "type": "module",
-  "version": "1.13.2",
+  "version": "1.13.3",
   "description": "Javascript for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -92,7 +92,7 @@
   ],
   "scripts": {
     "start": "vite --config=./vite.config.ts --port=5174",
-    "build": "rimraf dist && tsup && rolldown -c && cem analyze",
+    "build": "rimraf dist && tsdown && rolldown -c && cem analyze",
     "test": "vitest --config=vitest.config.ts"
   },
   "customElements": "dist/custom-elements.json",
@@ -101,8 +101,8 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.6",
-    "@u-elements/u-combobox": "^2.0.1",
-    "@u-elements/u-datalist": "^2.0.0",
+    "@u-elements/u-combobox": "^1.0.7",
+    "@u-elements/u-datalist": "^1.1.0",
     "@u-elements/u-details": "^1.0.0",
     "@u-elements/u-tabs": "^1.0.1"
   },
@@ -114,7 +114,7 @@
     "invokers-polyfill": "1.0.2",
     "rimraf": "6.1.3",
     "rolldown": "1.0.0-rc.13",
-    "tsup": "8.5.1",
+    "tsdown": "0.21.9",
     "vite": "7.3.2",
     "vitest": "4.1.2"
   }
