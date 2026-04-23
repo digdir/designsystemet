@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.13.2",
+  "version": "1.13.3",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
@@ -15,8 +15,7 @@
   "type": "module",
   "main": "./dist/src/index.js",
   "files": [
-    "./dist/**",
-    "./configs/**"
+    "./dist/**"
   ],
   "bin": "dist/bin/designsystemet.js",
   "exports": {
@@ -39,18 +38,16 @@
   "scripts": {
     "designsystemet": "tsx ./bin/designsystemet.ts",
     "designsystemet:inspect": "tsx --inspect-brk ./bin/designsystemet.ts",
-    "build": "tsup && pnpm build:types && pnpm build:json-schema",
+    "build": "tsdown && pnpm build:types && pnpm build:json-schema",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "build:json-schema": "tsx ./src/scripts/createJsonSchema.ts",
     "types": "tsc --noEmit",
     "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./temp/options/design-tokens --theme options --clean",
-    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./configs/test-tokens.config.json",
-    "test:tokens-build": "pnpm run designsystemet tokens build -t ./temp/options/design-tokens -o ./temp/options/build --clean",
-    "test:tokens-build-tailwind": "pnpm run designsystemet tokens build -t ./temp/options/design-tokens -o ./temp/options/build --clean --experimental-tailwind",
-    "test:tokens-build-config": "pnpm run designsystemet tokens build -t ./temp/config/design-tokens -o ./temp/config/build --clean",
-    "test:tokens-build-config:inspect": "pnpm run designsystemet:inspect tokens build -t ./temp/config/design-tokens -o ./temp/config/build --clean",
-    "test:tokens-build-config-tailwind": "pnpm run designsystemet tokens build -t ./temp/config/design-tokens -o ./temp/config/build --clean --experimental-tailwind",
-    "test:tokens-create-and-build-options": "pnpm test:tokens-create-options && pnpm test:tokens-build",
+    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./tests/test-tokens.config.json",
+    "test:tokens-build-options": "pnpm run designsystemet tokens build -t ./temp/options/design-tokens -o ./temp/options/build --clean --experimental-tailwind",
+    "test:tokens-build-config": "pnpm run designsystemet tokens build -t ./tests/config/design-tokens -o ./tests/config/build --clean --experimental-tailwind",
+    "test:tokens-build-config:inspect": "pnpm run designsystemet:inspect tokens build -t ./tests/config/design-tokens -o ./tests/config/build --clean",
+    "test:tokens-create-and-build-options": "pnpm test:tokens-create-options && pnpm test:tokens-build-options",
     "test:tokens-create-and-build-config": "pnpm test:tokens-create-config && pnpm test:tokens-build-config",
     "test:generate-config-from-tokens": "pnpm run designsystemet generate-config-from-tokens -d ../../design-tokens --dry",
     "test": "node -v && pnpm test:tokens-create-and-build-options && pnpm test:generate-config-from-tokens && pnpm test:tokens-create-and-build-config",
@@ -80,7 +77,7 @@
     "@types/node": "24.12.2",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.31.1",
-    "tsup": "8.5.1",
+    "tsdown": "0.21.9",
     "tsx": "4.21.0",
     "typescript": "5.9.3"
   }

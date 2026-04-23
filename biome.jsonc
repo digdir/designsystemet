@@ -24,7 +24,8 @@
       "!**/.react-router/",
       "!**/package.json", // changeset wants the files to be formatted differently
       "!**/wc/public",
-      "!**/content/schemas/**/*.json"
+      "!**/content/schemas/**/*.json",
+      "!**/packages/cli/tests/**/*.css"
     ]
   },
   "formatter": {

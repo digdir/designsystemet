@@ -40,6 +40,8 @@ The entire card then becomes clickable, but screen reader users get a [better ex
 In this example, `Card` renders an `<a>` inside the heading element.  
 This is useful when `Card` contains text or media and should navigate to another page.
 
+Note that with keyboard navigation, the focus ring only surrounds the text in the link, not the entire card. This is because link cards can also contain additional clickable elements (secondary actions), and it is less confusing for users of assistive technology — such as voice control or screen readers — if the link text matches the focus area.
+
 <Story story="WithLinkEn" />
 
 #### 2. Card as a link
