@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.13.3
+
+### Patch Changes
+
+- **card**: use designsystemet focus outline when card itself is a link or button ([#4768](https://github.com/digdir/designsystemet/pull/4768))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.3
+
 ## 1.13.2
 
 ### Patch Changes
