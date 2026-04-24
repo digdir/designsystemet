@@ -11,17 +11,22 @@ import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
 import { SearchDialog } from '~/_components/search-dialog';
-import { useShowConsentBanner } from '~/_hooks/use-show-consent-banner';
+import { CONSENT_VERSION, userConsent } from '~/_utils/cookies';
 import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
 
-export const loader = ({ params }: Route.LoaderArgs) => {
+export const loader = async ({ params, request }: Route.LoaderArgs) => {
   if (!i18n.supportedLngs.includes(params.lang || '')) {
     throw new Response('Not Found', {
       status: 404,
     });
   }
+
+  const consent = await userConsent.parse(request.headers.get('Cookie'));
+  const showConsentBanner = !consent || consent.version !== CONSENT_VERSION;
+
+  return { showConsentBanner };
 };
 
 const rightLinks: FooterLinkListItemProps[] = [
@@ -49,7 +54,7 @@ const rightLinks: FooterLinkListItemProps[] = [
   },
 ];
 
-export default function RootLayout() {
+export default function RootLayout({ loaderData }: Route.ComponentProps) {
   const { t } = useTranslation();
   const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
     RootRoute.ComponentProps['loaderData'],
@@ -61,7 +66,6 @@ export default function RootLayout() {
       href: string;
     }[];
   };
-  const { showBanner } = useShowConsentBanner();
 
   useChangeLanguage(lang);
 
@@ -72,7 +76,7 @@ export default function RootLayout() {
   return (
     <>
       <div>
-        {showBanner && <ConsentBanner lang={lang} />}
+        {loaderData?.showConsentBanner && <ConsentBanner lang={lang} />}
         <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
       </div>
       <Header
