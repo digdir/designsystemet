@@ -135,8 +135,8 @@ export type {
 export { Fieldset, FieldsetDescription, FieldsetLegend } from './fieldset';
 
 export type {
-  FileUploadFakeButtonProps,
   FileUploadDescriptionProps,
+  FileUploadFakeButtonProps,
   FileUploadInputProps,
   FileUploadProps,
 } from './file-upload';
