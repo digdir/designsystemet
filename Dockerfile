@@ -2,7 +2,7 @@ ARG PORT
 ARG HOST
 ARG APP_ENV
 # find sha for image on https://hub.docker.com/_/node/tags
-FROM node:24.14.1-slim@sha256:06e5c9f86bfa0aaa7163cf37a5eaa8805f16b9acb48e3f85645b09d459fc2a9f AS base
+FROM node:24.14.1-slim@sha256:b506e7321f176aae77317f99d67a24b272c1f09f1d10f1761f2773447d8da26c AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -54,7 +54,7 @@ ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm deploy --filter=@web/storybook --prod /prod/@web/storybook
 
-FROM nginx:alpine@sha256:645eda1c2477aaa9b879f73909b9222c6f19798dd45be6706268d82a661c6e6d AS storybook
+FROM nginx:alpine@sha256:5616878291a2eed594aee8db4dade5878cf7edcb475e59193904b198d9b830de AS storybook
 # remove default config
 RUN rm /etc/nginx/conf.d/default.conf
 COPY /apps/storybook/nginx.conf /etc/nginx/conf.d/storybook.conf

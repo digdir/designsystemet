@@ -21,8 +21,6 @@
   border-color: var(--dsc-card-border-color);
   box-sizing: border-box;
   color: var(--dsc-card-color);
-  font: inherit; /* In case used as <button> */
-  margin: 0; /* In case used as <button> */
   overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);
   text-align: inherit;
@@ -95,6 +93,11 @@
 }
 
 /* Using :where to overwrite user agent CSS, but not our own CSS */
+:where(.ds-card) {
+  font: inherit; /* In case used as <button> */
+  margin: 0; /* In case used as <button> */
+}
+
 :where(.ds-card, .ds-card__block) > :first-child {
   margin-block: 0;
 }

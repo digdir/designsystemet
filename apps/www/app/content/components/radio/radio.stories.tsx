@@ -187,3 +187,69 @@ export const InlineEn = () => {
     </Fieldset>
   );
 };
+
+export const Outline = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Hvordan ønsker du at vi kontakter deg?</Fieldset.Legend>
+      <Fieldset.Description>
+        Velg metoden som passer best for deg. Vi bruker dette kun til å sende
+        viktig informasjon om saken din.
+      </Fieldset.Description>
+      <Radio
+        label='E-post'
+        variant='outline'
+        description='Vi bruker e-postadressen du har oppgitt tidligere (navn@epost.no)'
+        value='epost'
+        name='kontakt'
+      />
+      <Radio
+        label='SMS'
+        variant='outline'
+        description='Vi bruker telefonnummeret du har oppgitt tidligere (99 99 99 99)'
+        value='sms'
+        name='kontakt'
+      />
+      <Radio
+        label='Brev'
+        variant='outline'
+        description='Levering kan ta 3-5 virkedager, avhengig av posttjenesten.'
+        value='brev'
+        name='kontakt'
+      />
+    </Fieldset>
+  );
+};
+
+export const OutlineEn = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>How would you like us to contact you?</Fieldset.Legend>
+      <Fieldset.Description>
+        Choose the method that works best for you. We use this only to send
+        important updates about your case.
+      </Fieldset.Description>
+      <Radio
+        label='Email'
+        description='We will use the email address you provided earlier (name@example.com)'
+        value='email'
+        name='contact'
+        variant='outline'
+      />
+      <Radio
+        label='SMS'
+        description='We will use the phone number you provided earlier (99 99 99 99)'
+        value='sms'
+        name='contact'
+        variant='outline'
+      />
+      <Radio
+        label='Letter'
+        description='Delivery may take 3-5 working days, depending on the postal service.'
+        value='letter'
+        name='contact'
+        variant='outline'
+      />
+    </Fieldset>
+  );
+};
