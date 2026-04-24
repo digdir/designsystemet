@@ -23,7 +23,12 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     });
   }
 
-  const consent = await userConsent.parse(request.headers.get('Cookie'));
+  let consent = null;
+  try {
+    consent = await userConsent.parse(request.headers.get('Cookie'));
+  } catch {
+    consent = null;
+  }
   const showConsentBanner = !consent || consent.version !== CONSENT_VERSION;
 
   return { showConsentBanner };
