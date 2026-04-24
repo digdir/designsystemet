@@ -30,6 +30,10 @@ export type RadioProps = MergeRight<
      * Error message for field
      */
     error?: ReactNode;
+    /**
+     * If outline, the radio will have a border.
+     */
+    variant?: 'default' | 'outline';
   } & LabelRequired
 >;
 
@@ -48,12 +52,18 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     label,
     description,
     error,
+    variant,
     ...rest
   },
   ref,
 ) {
   return (
-    <Field data-size={size} className={className} style={style}>
+    <Field
+      data-size={size}
+      data-variant={variant}
+      className={className}
+      style={style}
+    >
       <Input type='radio' ref={ref} {...rest} />
       {!!label && <Label weight='regular'>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}

@@ -349,3 +349,109 @@ export const InTableEn = () => {
     </Table>
   );
 };
+
+export const Outline = () => {
+  const [value, setValue] = useState<string[]>(['epost']);
+
+  return (
+    <Fieldset>
+      <Fieldset.Legend>
+        Hvordan vil du helst at vi skal kontakte deg?
+      </Fieldset.Legend>
+      <Fieldset.Description>
+        Velg alle alternativene som er relevante for deg.
+      </Fieldset.Description>
+      <Checkbox
+        label='E-post'
+        value='epost'
+        variant='outline'
+        checked={value.includes('epost')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'epost']);
+          } else {
+            setValue(value.filter((v) => v !== 'epost'));
+          }
+        }}
+      />
+      <Checkbox
+        label='Telefon'
+        value='telefon'
+        variant='outline'
+        checked={value.includes('telefon')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'telefon']);
+          } else {
+            setValue(value.filter((v) => v !== 'telefon'));
+          }
+        }}
+      />
+      <Checkbox
+        label='SMS'
+        value='sms'
+        variant='outline'
+        checked={value.includes('sms')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'sms']);
+          } else {
+            setValue(value.filter((v) => v !== 'sms'));
+          }
+        }}
+      />
+    </Fieldset>
+  );
+};
+
+export const OutlineEn = () => {
+  const [value, setValue] = useState<string[]>(['epost']);
+
+  return (
+    <Fieldset>
+      <Fieldset.Legend>How would you prefer us to contact you?</Fieldset.Legend>
+      <Fieldset.Description>
+        Select all the options that are relevant to you.
+      </Fieldset.Description>
+      <Checkbox
+        label='E-mail'
+        value='email'
+        variant='outline'
+        checked={value.includes('email')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'email']);
+          } else {
+            setValue(value.filter((v) => v !== 'email'));
+          }
+        }}
+      />
+      <Checkbox
+        label='Phone'
+        value='phone'
+        variant='outline'
+        checked={value.includes('phone')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'phone']);
+          } else {
+            setValue(value.filter((v) => v !== 'phone'));
+          }
+        }}
+      />
+      <Checkbox
+        label='Text message'
+        value='text'
+        variant='outline'
+        checked={value.includes('text')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'text']);
+          } else {
+            setValue(value.filter((v) => v !== 'text'));
+          }
+        }}
+      />
+    </Fieldset>
+  );
+};

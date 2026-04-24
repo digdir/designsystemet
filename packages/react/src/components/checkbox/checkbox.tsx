@@ -30,6 +30,10 @@ export type CheckboxProps = MergeRight<
      * Error message for field
      */
     error?: ReactNode;
+    /**
+     * If outline, the checkbox will have a border.
+     */
+    variant?: 'default' | 'outline';
   } & LabelRequired
 >;
 
@@ -49,12 +53,18 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       label,
       description,
       error,
+      variant,
       ...rest
     },
     ref,
   ) {
     return (
-      <Field data-size={size} className={className} style={style}>
+      <Field
+        data-size={size}
+        data-variant={variant}
+        className={className}
+        style={style}
+      >
         <Input type='checkbox' ref={ref} {...rest} />
         {!!label && <Label weight='regular'>{label}</Label>}
         {!!description && <div data-field='description'>{description}</div>}
