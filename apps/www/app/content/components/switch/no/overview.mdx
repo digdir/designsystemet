@@ -5,12 +5,12 @@ search_terms: bryter, avpå, toggel, toggle
 <Story story="Preview" />
 
 **Bruk `Switch` når**
-- valget styrer en funksjon eller innstilling som kan være av eller på
-- endringen trer i kraft umiddelbart når brukeren slår bryteren av eller på
+- brukerne skal slå på eller av en funksjon eller innstilling  
+- du vil at handlingen skal få umiddelbar effekt  
 
 **Unngå `Switch` når**
 - brukerne skal svare på spørsmål i skjemaer, bruk heller [`Radio`](/no/components/docs/radio/overview) eller [`Checkbox`](/no/components/docs/checkbox/overview) 
-- innhold skal endre visning mellom to kategorier, bruk heller [`ToggleGroup`](/no/components/docs/toggle-group/overview)
+- brukerne skal veksle mellom ulike visninger av innhold, for eksempel liste og graf, bruk heller [`ToggleGroup`](/no/components/docs/toggle-group/overview)
 - innhold skal filtreres, bruk heller [`Chip`](/no/components/docs/chip/overview)
 
 ## Eksempel
@@ -26,24 +26,39 @@ Noen ganger kan det være nyttig å høyrejustere `Switch`, for eksempel når de
 <Story story="RightAligned2" />
 
 ## Retningslinjer
-`Switch` skal brukes til å slå av eller på innstillinger, funksjoner eller varsler. Den gir brukeren en visuell bekreftelse på en tilstand.
+Om bryteren skal vises som av eller på, avhenger av konteksten.  
 
 ## Tekst
+Teksten til en bryter bør være kort og presis, ofte betyr det bare ett eller to ord. 
 
-Teksten til en `Switch` må være kort og presis, ofte betyr det bare ett eller to ord. Det skal gi mening når du sier ledeteksten høyt og legger til av/på etterpå. 
+Teksten skal gi mening når du sier ledeteksten høyt og legger til en av/på-bryter etterpå. 
 
-Hvis du har flere `Switch` i en gruppe, må du passe på at du er konsekvent med hvordan du formulerer tekstene til hver av dem, ikke formulerer dem forskjellig.
+Teksten skal beskrive hva funksjonen gjelder, ikke om den er på eller av. 
 
-Teksten skal beskrive hva funksjonen gjelder, ikke om den er på eller av. Hvis statusen skrives inn i labelen, kan det bli forvirrende og vanskelig å vite hvilken tilstand switchen faktisk er i.
 
 <div className="dodont-row">
   <DoDont story="DoIcon">
     Beskriv hva funksjonen gjelder.
   </DoDont>
   <DoDont story="DontIcon">
-    Ikke si noe om av eller på.
+     Aldri skriv om bryteren er på eller av i teksten.
   </DoDont>
 </div>
 
+Hvis du har flere brytere i en gruppe, må du passe på at du formulerer tekstene for hver bryter på samme måte. Eksempelet under viser at tekstene er formulert likt når det er flere brytere på samme sted (gruppe).
+
+<div className="dodont-row">
+  <DoDont story="DoIcon2">
+    Formulerer tekstene for hver bryter på samme måte.
+  </DoDont>
+  <DoDont story="DontIcon2">
+     Unngå ulike formuleringer. 
+  </DoDont>
+</div>
+
+### Hvor skal teksten stå? 
+Som regel setter vi bryteren til venstre og teksten til høyre. Da er det enklest å se hvilken tekst som tilhører hvilken bryter. 
+
+I noen tilfeller er brytere fast plassert på høyre side i grensesnittet. Da er det best at teksten er på venstre side, slik at alle bryterne blir høyrejustert rett under hverandre. 
 
 

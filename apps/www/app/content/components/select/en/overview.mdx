@@ -34,13 +34,21 @@ Use `readOnly` when you want to show a preselected value in a Select component w
 <Story story="ReadOnlyEn" />
 
 ## Guidelines
+Use `select` when there are 7 or more options. For fewer options, radio buttons (`radio`) are often easier for users. `Select` is especially mobile friendly and provides good accessibility because it follows operating system standards. It works well when the user needs to choose one option from a list. If the user needs to select multiple options or filter the list, you should consider using `Suggestion`.
 
-Use `Select` when there are 7 or more options. For fewer options, radio buttons may be easier for users. `Select` is especially user-friendly on mobile and provides good accessibility, as it follows the operating system’s native behaviour. It works well when the user must choose one option from a list. If users need to select multiple options or filter the list, consider using `Suggestion`.
+Sort answer options alphabetically unless there is a good reason not to. Be careful about placing the most commonly used option first in cases involving personal or value-based questions, such as religion or political affiliation.
 
-**Note:** [Gov.uk recommends avoiding `select`](https://design-system.service.gov.uk/components/select) in public digital services. Their user research shows that people often find the component difficult to use correctly. It may be better to ask additional questions to reduce the number of options. If you ask the right questions first, radio buttons may be a better choice.
+**Note**: [Gov.uk recommends avoiding `select`](https://design-system.service.gov.uk/components/select) in public digital services. Their user testing shows that users often find the component difficult to use correctly. It may be better to ask multiple questions to reduce the number of options to choose from. If you ask the right questions first, radio buttons (`radio`) can be a better choice.
+
+The `select` component should always have a label. We place the label and description above the field to ensure good visibility on small screens and to avoid issues with error messages.
+
+If `select` is inside a table and gets its label from the table header, the label can be hidden. However, make sure the label still makes sense, since it will still be read aloud by screen readers.
 
 ## Text
+Keep the label short, preferably on a single line.
 
-The `Select` component must always have a label. Place the label and any description above the field to ensure good visibility on small screens and to avoid issues when error messages appear. Keep the label short, preferably on a single line.
+Prefer short, established phrases instead of questions in labels when the categories are well known to users, for example “Choose department” instead of “Which department do you work in?”
 
-If a `Select` is placed inside a table and receives its label from the table header, you may hide the visual label. However, ensure the label text still makes sense, as screen readers will announce it.
+Consider using questions or more descriptive formulations when the topic and options are less familiar to users.
+
+Answer options should be as short as possible, and each option should follow the same grammatical structure.
