@@ -36,6 +36,10 @@ export async function loader({ params }: Route.LoaderArgs) {
     path: join('patterns', params.lang, `${file}.stories.tsx`),
   });
 
+  const dodont = await getStories({
+    path: join('patterns', params.lang, `${file}.dodont.tsx`),
+  });
+
   // Bundle the MDX content
   const result = await generateFromMdx(fileContent);
 
@@ -46,6 +50,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     lang: params.lang,
     toc: result.toc,
     stories,
+    dodont,
   };
 }
 

@@ -1,15 +1,10 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import {
-  Alert,
-  Button,
-  Heading,
-  Paragraph,
-} from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import type { ComponentType, ReactNode } from 'react';
+import type { ComponentType } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
 import { useTranslation } from 'react-i18next';
 import { NavLink, redirect, useRouteLoaderData } from 'react-router';
@@ -21,7 +16,6 @@ import {
   CssVariables,
   getCssVariables,
 } from '~/_components/css-variables/css-variables';
-import { DoDont } from '~/_components/do-dont/do-dont';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { IconFrame } from '~/_components/icon-frame/icon-frame';
 import { LiveComponent } from '~/_components/live-component/live-components';
@@ -229,7 +223,6 @@ export default function Components({
           <MDXComponents
             code={mdxCode}
             components={{
-              DoDont: DoDontComponent as unknown as ComponentType<unknown>,
               ReactComponentDocs:
                 PropsTable as unknown as ComponentType<unknown>,
               CssVariables: CssVars as unknown as ComponentType<unknown>,
@@ -249,35 +242,6 @@ export default function Components({
     </>
   );
 }
-
-const DoDontComponent = ({
-  story,
-  children,
-  layout,
-}: {
-  story: string;
-  layout?: 'row' | 'column' | 'centered';
-  children?: ReactNode;
-}) => {
-  const data =
-    useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
-  if (!data) return null;
-
-  const { dodont } = data;
-
-  const foundStory = dodont.find((s) => s.name === story);
-  if (!foundStory) return <Alert lang='en'>Do/Dont not found: {story}</Alert>;
-  const variant = story.toLowerCase().includes('dont') ? 'dont' : 'do';
-  return (
-    <DoDont
-      layout={layout}
-      variant={variant}
-      code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
-    >
-      {children}
-    </DoDont>
-  );
-};
 
 const PropsTable = () => {
   const data =
