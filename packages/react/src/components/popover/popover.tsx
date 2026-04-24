@@ -119,7 +119,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       const handleKeydown = (event: KeyboardEvent) => {
         if (event.key === 'Escape' && controlledOpen && isTopLayer(popover)) {
           event.preventDefault(); // Prevent closing fullscreen in Safari
-          document.querySelector<HTMLElement>(trigger)?.focus?.(); // Move focus back to trigger since `popoover="manual"` doesn't do this
+          document.querySelector<HTMLElement>(trigger)?.focus?.(); // Move focus back to trigger since `popover="manual"` doesn't do this
           setInternalOpen(false);
           onClose?.();
         }
