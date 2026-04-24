@@ -37,11 +37,6 @@
     border-style: var(--dsc-file-upload-border-style--hover);
     background-color: var(--dsc-file-upload-background--hover);
     cursor: pointer;
-    & > .ds-button {
-      /*link hover to button*/
-      --dsc-button-background: var(--dsc-button-background--hover);
-      --dsc-button-color: var(--dsc-button-color--hover);
-    }
   }
   &:has([readonly]) {
     cursor: not-allowed;
