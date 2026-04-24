@@ -27,6 +27,8 @@
     "isbot": "5.1.37",
     "mdx-bundler": "10.1.1",
     "morgan": "1.10.1",
+    "node-html-markdown": "^2.0.0",
+    "node-html-parser": "^7.0.1",
     "prism-react-renderer": "2.4.1",
     "ramda": "0.32.0",
     "react": "19.2.4",

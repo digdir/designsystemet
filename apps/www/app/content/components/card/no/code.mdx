@@ -41,6 +41,8 @@ Hele kortet blir da automatisk klikkbart, men skjermlesere får en [bedre bruker
 I dette eksempelet rendrer `Card` `<a>` inni heading-elementet.
 Dette er nyttig når `Card` inneholder tekst eller media, og skal navigere til en annen side.
 
+Legg merke til at med tastaturnavigering omfavner fokus-ringen kun teksten i lenken, og ikke hele kortet. Dette er fordi lenkekort også kan inneholde flere klikkbare elementer (sekundærhandlinger), og samtidig er det mindre forvirrende for brukere av assisterende teknologi, som stemmestyring eller skjermlesere, at lenketeksten samsvarer med fokusområdet.
+
 <Story story="WithLink" />
 
 #### 2. Kort som er en lenke

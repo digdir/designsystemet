@@ -426,3 +426,50 @@ export const hiddenLegend: StoryFn<typeof Fieldset> = () => (
     <Checkbox label='Test av skjermleser legend' value='selvstendige' />
   </Fieldset>
 );
+
+export const Outline: StoryFn<UseCheckboxGroupProps> = () => (
+  <>
+    <Fieldset>
+      <Fieldset.Legend>Using variant="outline"</Fieldset.Legend>
+      <Checkbox
+        variant='outline'
+        label='with description'
+        description='description text'
+        value='description'
+      />
+      <Checkbox variant='outline' label='Checked' value='checked' checked />
+      <Checkbox
+        variant='outline'
+        label='with error state'
+        value='error'
+        error='the error message'
+      />
+      <Checkbox
+        variant='outline'
+        disabled
+        label='disabled not checked'
+        value='disabled'
+      />
+      <Checkbox
+        variant='outline'
+        disabled
+        label='disabled'
+        value='disabled'
+        checked
+      />
+      <Checkbox
+        variant='outline'
+        readOnly
+        label='readonly not checked'
+        value='readonly2'
+      />
+      <Checkbox
+        variant='outline'
+        readOnly
+        label='readonly checked'
+        value='readonly'
+        checked
+      />
+    </Fieldset>
+  </>
+);
