@@ -11,6 +11,7 @@ import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
 import { SearchDialog } from '~/_components/search-dialog';
+import { hasConsent } from '~/_utils/consent.client';
 import { CONSENT_VERSION, userConsent } from '~/_utils/cookies';
 import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
@@ -33,6 +34,12 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   return { showConsentBanner };
 };
+
+export const clientLoader = async () => {
+  const showConsentBanner = !(await hasConsent());
+  return { showConsentBanner };
+};
+clientLoader.hydrate = true as const;
 
 const rightLinks: FooterLinkListItemProps[] = [
   {
