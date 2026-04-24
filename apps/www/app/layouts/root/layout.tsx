@@ -12,28 +12,8 @@ import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
 import { SearchDialog } from '~/_components/search-dialog';
 import { hasConsent } from '~/_utils/consent.client';
-import { CONSENT_VERSION, userConsent } from '~/_utils/cookies';
-import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
-
-export const loader = async ({ params, request }: Route.LoaderArgs) => {
-  if (!i18n.supportedLngs.includes(params.lang || '')) {
-    throw new Response('Not Found', {
-      status: 404,
-    });
-  }
-
-  let consent = null;
-  try {
-    consent = await userConsent.parse(request.headers.get('Cookie'));
-  } catch {
-    consent = null;
-  }
-  const showConsentBanner = !consent || consent.version !== CONSENT_VERSION;
-
-  return { showConsentBanner };
-};
 
 export const clientLoader = async () => {
   const showConsentBanner = !(await hasConsent());
@@ -88,7 +68,9 @@ export default function RootLayout({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <div>
-        {loaderData?.showConsentBanner && <ConsentBanner lang={lang} />}
+        {loaderData?.showConsentBanner || false ? (
+          <ConsentBanner lang={lang} />
+        ) : null}
         <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
       </div>
       <Header
