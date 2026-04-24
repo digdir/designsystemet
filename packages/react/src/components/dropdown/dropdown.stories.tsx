@@ -221,3 +221,51 @@ WithNestedDialog.play = async (ctx) => {
   await expect(dialog).toBeInTheDocument();
   await waitFor(() => expect(dialog).toBeVisible());
 };
+
+export const WithAdjacentDialog: StoryFn<typeof Dropdown> = (args) => {
+  return (
+    <>
+      <Dropdown.TriggerContext>
+        <Dropdown.Trigger data-color={args['data-color']}>
+          Dropdown
+        </Dropdown.Trigger>
+        <Dropdown {...args}>
+          <Dropdown.List>
+            <Dropdown.Item>
+              <Dropdown.Button command='show-modal' commandFor='adjacent-modal'>
+                Dialog
+              </Dropdown.Button>
+            </Dropdown.Item>
+          </Dropdown.List>
+        </Dropdown>
+      </Dropdown.TriggerContext>
+      <Dialog id='adjacent-modal'>Min dialog</Dialog>
+    </>
+  );
+};
+
+export const WithNestedDropdown: StoryFn<typeof Dropdown> = (args) => {
+  return (
+    <Dropdown.TriggerContext>
+      <Dropdown.Trigger data-color={args['data-color']}>
+        Dropdown
+      </Dropdown.Trigger>
+      <Dropdown {...args}>
+        <Dropdown.List>
+          <Dropdown.Item>
+            <Dropdown.TriggerContext>
+              <Dropdown.Trigger variant='tertiary'>Dropdown</Dropdown.Trigger>
+              <Dropdown>
+                <Dropdown.List>
+                  <Dropdown.Item>
+                    <Dropdown.Button>Nested</Dropdown.Button>
+                  </Dropdown.Item>
+                </Dropdown.List>
+              </Dropdown>
+            </Dropdown.TriggerContext>
+          </Dropdown.Item>
+        </Dropdown.List>
+      </Dropdown>
+    </Dropdown.TriggerContext>
+  );
+};
