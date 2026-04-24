@@ -35,7 +35,7 @@ export const Preview: Story = {
           <FileUpload.Description>
             File must be in csv format and less than 2MB
           </FileUpload.Description>
-          <FileUpload.Button>Upload file</FileUpload.Button>
+          <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
           <FileUpload.Input />
         </FileUpload>
       </Field>
@@ -52,7 +52,7 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
         <FileUpload.Description>
           File must be in csv format and less than 2MB
         </FileUpload.Description>
-        <FileUpload.Button>Upload file</FileUpload.Button>
+        <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
         <FileUpload.Input />
       </FileUpload>
     </Field>
@@ -63,7 +63,7 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
         <FileUpload.Description>
           File must be in csv format and less than 2MB
         </FileUpload.Description>
-        <FileUpload.Button>Upload file</FileUpload.Button>
+        <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
         <FileUpload.Input />
       </FileUpload>
     </Field>
@@ -93,7 +93,7 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
-      <FileUpload.Button>Upload file</FileUpload.Button>
+      <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
       <FileUpload.Input readOnly={true} />
     </FileUpload>
   </Field>
@@ -110,7 +110,7 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
-      <FileUpload.Button>Upload file</FileUpload.Button>
+      <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
       <FileUpload.Input disabled={true} />
     </FileUpload>
     <ValidationMessage>Invalid file format</ValidationMessage>
@@ -126,7 +126,7 @@ export const HiddenLabel: StoryFn<typeof FileUpload> = () => (
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
-      <FileUpload.Button>Upload file</FileUpload.Button>
+      <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
       <FileUpload.Input />
     </FileUpload>
   </Field>
@@ -195,7 +195,7 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
               <FileUpload.Description>
                 File must be in svg format
               </FileUpload.Description>
-              <FileUpload.Button>Upload file</FileUpload.Button>
+              <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
             </>
           )}
           <FileUpload.Input
@@ -275,7 +275,7 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
                 File must be <code>.svg</code>, {MAX_FILES - files.length} of{' '}
                 {MAX_FILES} files remaining
               </FileUpload.Description>
-              <FileUpload.Button>Upload files</FileUpload.Button>
+              <FileUpload.FakeButton>Upload files</FileUpload.FakeButton>
             </>
           )}
 

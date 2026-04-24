@@ -1,20 +1,20 @@
 import { FileUpload as FileUploadParent } from './file-upload';
-import { FileUploadButton } from './file-upload-button';
+import { FileUploadFakeButton } from './file-upload-button';
 import { FileUploadDescription } from './file-upload-description';
 import { FileUploadInput } from './file-upload-input';
 
 type FileUpload = typeof FileUploadParent & {
   /**
-   * Use `FileUpload.Button` to add a fake button for click affordance
+   * Use `FileUpload.FakeButton` to add a fake button for click affordance
    *
    * Place as a descendant of `FileUpload`
    *
    * @example
    * <FileUpload>
-   *   <FileUpload.Button>Upload file</FileUpload.Button>
+   *   <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
    * </FileUpload>
    */
-  Button: typeof FileUploadButton;
+  FakeButton: typeof FileUploadFakeButton;
   /**
    * Use `FileUpload.Description` to add secondary text inside FileUpload
    *
@@ -46,21 +46,21 @@ type FileUpload = typeof FileUploadParent & {
  * <FileUpload>
  *  <FileUpload.Description>Drop file here</FileUpload.Description>
  *  <FileUpload.Description>File must be in csv format</FileUpload.Description>
- *  <FileUpload.Button>Upload file</FileUpload.Button>
+ *  <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
  * </FileUpload>
  */
 const FileUploadComponent: FileUpload = Object.assign(FileUploadParent, {
-  Button: FileUploadButton,
+  FakeButton: FileUploadFakeButton,
   Description: FileUploadDescription,
   Input: FileUploadInput,
 });
 
-FileUploadComponent.Button.displayName = 'FileUpload.Button';
+FileUploadComponent.FakeButton.displayName = 'FileUpload.FakeButton';
 FileUploadComponent.Description.displayName = 'FileUpload.Description';
 FileUploadComponent.Input.displayName = 'FileUpload.Input';
 
 export type { FileUploadProps } from './file-upload';
-export type { FileUploadButtonProps } from './file-upload-button';
+export type { FileUploadFakeButtonProps } from './file-upload-button';
 export type { FileUploadDescriptionProps } from './file-upload-description';
 export type { FileUploadInputProps } from './file-upload-input';
 export { FileUploadComponent as FileUpload };

@@ -2,13 +2,13 @@ import { forwardRef, type HTMLAttributes } from 'react';
 import type { ButtonProps } from '../button/button';
 import { Button } from '../button/button';
 
-export type FileUploadButtonProps = Pick<ButtonProps, 'variant'> &
+export type FileUploadFakeButtonProps = Pick<ButtonProps, 'variant'> &
   HTMLAttributes<HTMLSpanElement>;
 
-export const FileUploadButton = forwardRef<
+export const FileUploadFakeButton = forwardRef<
   HTMLSpanElement,
-  FileUploadButtonProps
->(function FileUploadButton({ variant = 'secondary', ...rest }, ref) {
+  FileUploadFakeButtonProps
+>(function FileUploadFakeButton({ variant = 'secondary', ...rest }, ref) {
   return (
     <Button variant={variant} asChild>
       <span ref={ref} {...rest} />
