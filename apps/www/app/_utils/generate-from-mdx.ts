@@ -10,7 +10,11 @@ import { extractToc } from './extract-toc';
 const mdxCache = new Map<
   string,
   // biome-ignore lint/suspicious/noExplicitAny: this is how frontmatter is typed in mdx-bundler
-  { code: string; frontmatter: { [key: string]: any }; toc: TableOfContentsItem[] }
+  {
+    code: string;
+    frontmatter: { [key: string]: any };
+    toc: TableOfContentsItem[];
+  }
 >();
 
 export const generateFromMdx = async (
