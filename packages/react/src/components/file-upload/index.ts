@@ -1,6 +1,6 @@
 import { FileUpload as FileUploadParent } from './file-upload';
-import { FileUploadFakeButton } from './file-upload-button';
 import { FileUploadDescription } from './file-upload-description';
+import { FileUploadFakeButton } from './file-upload-fake-button';
 import { FileUploadInput } from './file-upload-input';
 
 type FileUpload = typeof FileUploadParent & {
@@ -60,7 +60,7 @@ FileUploadComponent.Description.displayName = 'FileUpload.Description';
 FileUploadComponent.Input.displayName = 'FileUpload.Input';
 
 export type { FileUploadProps } from './file-upload';
-export type { FileUploadFakeButtonProps } from './file-upload-button';
 export type { FileUploadDescriptionProps } from './file-upload-description';
+export type { FileUploadFakeButtonProps } from './file-upload-fake-button';
 export type { FileUploadInputProps } from './file-upload-input';
 export { FileUploadComponent as FileUpload };

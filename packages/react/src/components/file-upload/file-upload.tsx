@@ -7,7 +7,7 @@ import type { MergeRight } from '../../utilities';
 export type FileUploadProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
-    /** Instances of `FileUpload.Button`, `FileUpload.Label`, `FileUpload.Description`, `FileUpload.Input` or other React nodes */
+    /** Instances of `FileUpload.FakeButton`, `FileUpload.Label`, `FileUpload.Description`, `FileUpload.Input` or other React nodes */
     children: ReactNode;
   }
 >;
@@ -23,7 +23,7 @@ export type FileUploadProps = MergeRight<
  *    <FileUpload.Description>
  *      File must be in csv format and less than 2MB
  *    </FileUpload.Description>
- *    <FileUpload.Button>Upload file</FileUpload.Button>
+ *    <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
  *    <FileUpload.Input />
  *  </FileUpload>
  * </Field>

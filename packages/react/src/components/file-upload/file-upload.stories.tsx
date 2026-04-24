@@ -172,7 +172,7 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
       <Field>
         <Label>Upload profile picture</Label>
         <FileUpload
-          onDragOver={(event) => {
+          onDragOver={(event: React.DragEvent<HTMLElement>) => {
             event.preventDefault();
             setIsDragging(true);
           }}
