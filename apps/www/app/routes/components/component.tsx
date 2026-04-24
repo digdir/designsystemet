@@ -32,6 +32,38 @@ import classes from './component.module.css';
 
 const require = createRequire(import.meta.url);
 
+// Cache CSS resolution and parsing per cssFile — shared across all pages for the same component
+const cssCache = new Map<
+  string,
+  {
+    cssSource?: string;
+    cssVars: Record<string, string>;
+    cssAttrs: Record<string, string>;
+  }
+>();
+
+const getComponentCss = (cssFile: string) => {
+  const cached = cssCache.get(cssFile);
+  if (cached) return cached;
+
+  let cssSource: string | undefined;
+  let cssVars: Record<string, string> = {};
+  let cssAttrs: Record<string, string> = {};
+
+  try {
+    const cssPath = require.resolve(`@digdir/designsystemet-css/${cssFile}`);
+    cssSource = readFileSync(cssPath, 'utf-8');
+    cssVars = getCssVariables(cssSource);
+    cssAttrs = getAttributes(cssSource);
+  } catch {
+    // CSS file not found — leave empty
+  }
+
+  const result = { cssSource, cssVars, cssAttrs };
+  cssCache.set(cssFile, result);
+  return result;
+};
+
 export { ErrorBoundary } from '~/root';
 
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
@@ -94,34 +126,9 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     jsonMetadata[lang].subtitle,
   );
 
-  // Resolve raw CSS for this component from @digdir/designsystemet-css
-
-  let cssPath: string | undefined;
-
-  try {
-    cssPath = require.resolve(
-      `@digdir/designsystemet-css/${jsonMetadata.cssFile}`,
-    );
-  } catch {
-    console.warn(
-      `Could not resolve CSS file for component ${component}: ${jsonMetadata.cssFile}`,
-    );
-  }
-
-  let cssSource: string | undefined;
-  let cssVars: {
-    [key: string]: string;
-  } = {};
-  let cssAttrs: {
-    [key: string]: string;
-  } = {};
-  if (cssPath) {
-    try {
-      cssSource = readFileSync(cssPath, 'utf-8');
-      cssVars = getCssVariables(cssSource);
-      cssAttrs = getAttributes(cssSource);
-    } catch {}
-  }
+  const { cssSource, cssVars, cssAttrs } = getComponentCss(
+    jsonMetadata.cssFile,
+  );
 
   return {
     component,

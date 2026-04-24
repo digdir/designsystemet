@@ -66,7 +66,14 @@ const getReactDir = (component: string) => {
   return '';
 };
 
+// Cache component docs by component name — each component has up to 6 prerender
+// pages (3 page types × 2 languages) that all need the same docs
+const componentDocsCache = new Map<string, ComponentDoc[]>();
+
 export const getComponentDocs = (component: string): ComponentDoc[] => {
+  const cached = componentDocsCache.get(component);
+  if (cached) return cached;
+
   const reactDir = getReactDir(component);
   try {
     if (!reactDir || !existsSync(reactDir)) {
@@ -98,6 +105,7 @@ export const getComponentDocs = (component: string): ComponentDoc[] => {
       allDocs.push(...docs);
     }
 
+    componentDocsCache.set(component, allDocs);
     return allDocs;
   } catch (error) {
     console.error('Error parsing component docs:', error);

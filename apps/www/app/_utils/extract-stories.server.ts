@@ -51,10 +51,16 @@ export const extractExportedFunctions = (
 };
 
 // Extract exported story functions from *.stories.tsx and *.dodont.tsx
+const storiesCache = new Map<string, StoryEntry[]>();
+
 export const extractStories = (
   componentPath: string,
   dodont?: boolean,
 ): StoryEntry[] => {
+  const cacheKey = `${componentPath}:${dodont ? 'dodont' : 'stories'}`;
+  const cached = storiesCache.get(cacheKey);
+  if (cached) return cached;
+
   try {
     if (!existsSync(componentPath)) return [];
 
@@ -77,12 +83,14 @@ export const extractStories = (
 
     if (files.length === 0) return [];
 
-    return files.flatMap((file) => {
+    const result = files.flatMap((file) => {
       const full = join(baseDir, file);
       const src = readFileSync(full, 'utf-8');
       const fns = extractExportedFunctions(src);
       return fns.map((f) => ({ ...f, file }));
     });
+    storiesCache.set(cacheKey, result);
+    return result;
   } catch (error) {
     console.error('Error extracting stories:', error);
     return [];
