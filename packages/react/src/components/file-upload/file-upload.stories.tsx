@@ -3,7 +3,7 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { type DragEvent, useRef, useState } from 'react';
 import type { FileRejection } from 'react-dropzone';
 import { useDropzone } from 'react-dropzone';
-import { Button, Field, Label, ValidationMessage } from '../';
+import { Button, Field, Label } from '../';
 import { FileUpload } from './';
 
 type Story = StoryObj<typeof FileUpload>;
@@ -31,9 +31,7 @@ export const Preview: Story = {
       <Field>
         <Label className='ds-sr-only'>Upload file</Label>
         <FileUpload {...args}>
-          <FileUpload.Description aria-hidden='true'>
-            Drop file here
-          </FileUpload.Description>
+          <FileUpload.Description>Drop file here</FileUpload.Description>
           <FileUpload.Description>
             File must be in csv format and less than 2MB
           </FileUpload.Description>
@@ -50,9 +48,7 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
     <Field>
       <Label>color variant default</Label>
       <FileUpload>
-        <FileUpload.Description aria-hidden='true'>
-          Drop file here
-        </FileUpload.Description>
+        <FileUpload.Description>Drop file here</FileUpload.Description>
         <FileUpload.Description>
           File must be in csv format and less than 2MB
         </FileUpload.Description>
@@ -63,9 +59,7 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
     <Field>
       <Label>color variant neutral</Label>
       <FileUpload data-color='neutral'>
-        <FileUpload.Description aria-hidden='true'>
-          Drop file here
-        </FileUpload.Description>
+        <FileUpload.Description>Drop file here</FileUpload.Description>
         <FileUpload.Description>
           File must be in csv format and less than 2MB
         </FileUpload.Description>
@@ -95,9 +89,7 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
     <Label>Upload file</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Description aria-hidden='true'>
-        Drop file here
-      </FileUpload.Description>
+      <FileUpload.Description>Drop file here</FileUpload.Description>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
@@ -112,7 +104,7 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
     <Label>Upload file</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Description aria-hidden='true'>
+      <FileUpload.Description>
         Drop file here
       </FileUpload.Description>
       <FileUpload.Description>
@@ -130,9 +122,7 @@ export const HiddenLabel: StoryFn<typeof FileUpload> = () => (
     <Label className='ds-sr-only'>Upload file</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Description aria-hidden='true'>
-        Drop file here
-      </FileUpload.Description>
+      <FileUpload.Description>Drop file here</FileUpload.Description>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
@@ -199,7 +189,7 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
           )}
           {!isReadOnly && (
             <>
-              <FileUpload.Description aria-hidden='true'>
+              <FileUpload.Description>
                 {isDragging ? 'Drop file to upload' : 'Drop file here'}
               </FileUpload.Description>
               <FileUpload.Description>
@@ -257,6 +247,9 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
 
   return (
     <div style={{ minWidth: '300px' }}>
+      {/* When using react-dropzone, it is important to apply the getRootProps to the
+       Field component and not the FileUpload component so screenreaders see the Label.
+        This should be noted in the docs */}
       <Field {...getRootProps()}>
         <Label>Upload profile picture</Label>
         <FileUpload>
@@ -271,7 +264,7 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
           {!isReadOnly && (
             <>
               {isDragReject && <CircleSlashIcon aria-hidden='true' />}
-              <FileUpload.Description aria-hidden='true'>
+              <FileUpload.Description>
                 {isDragReject
                   ? 'File type not accepted'
                   : isDragActive
