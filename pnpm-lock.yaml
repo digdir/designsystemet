@@ -7,11 +7,6 @@ settings:
 
 packageExtensionsChecksum: sha256-IQSNU9cJtri1P9xMWAvG91nRHacWCj8xtjZCK1etLxM=
 
-patchedDependencies:
-  invokers-polyfill@1.0.2:
-    hash: d5677be15320f04cdc552d82cb4a79242bd1cf8b26bcbb0a13e1153e7bed3b5a
-    path: patches/invokers-polyfill@1.0.2.patch
-
 importers:
 
   .:
@@ -710,8 +705,8 @@ importers:
         specifier: 1.5.0
         version: 1.5.0(prettier@3.8.1)
       invokers-polyfill:
-        specifier: 1.0.2
-        version: 1.0.2(patch_hash=d5677be15320f04cdc552d82cb4a79242bd1cf8b26bcbb0a13e1153e7bed3b5a)
+        specifier: 1.0.3
+        version: 1.0.3
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -3682,8 +3677,8 @@ packages:
   inline-style-parser@0.2.4:
     resolution: {integrity: sha512-0aO8FkhNZlj/ZIbNi7Lxxr12obT7cL1moPfE4tg1LkX7LlLfC6DeX4l2ZEud1ukP9jNQyNnfzQVqwbwmAATY4Q==}
 
-  invokers-polyfill@1.0.2:
-    resolution: {integrity: sha512-RP1rx4eLqKzeLBqHUhzIr+4OK7sE86//GknalXXxI65ym/+4bEAyQVCi8tjQx5Cv85ff/4RNPYqzlLec0scs1Q==}
+  invokers-polyfill@1.0.3:
+    resolution: {integrity: sha512-T8zVavFQu5GlWlpkjghmaCaTx6Wk+9tWwJ2BC4oNsNAnar6AIrvSJQFZUcYDfrxzK9thBIyZvAkeLfdN9hTzGA==}
 
   ip-address@10.1.0:
     resolution: {integrity: sha512-XXADHxXmvT9+CRxhXg56LJovE+bmWnEWB78LB83VZTprKTmaC5QfruXocxzTZ2Kl0DNwKuBdlIhjL8LeY8Sf8Q==}
@@ -8912,7 +8907,7 @@ snapshots:
 
   inline-style-parser@0.2.4: {}
 
-  invokers-polyfill@1.0.2(patch_hash=d5677be15320f04cdc552d82cb4a79242bd1cf8b26bcbb0a13e1153e7bed3b5a): {}
+  invokers-polyfill@1.0.3: {}
 
   ip-address@10.1.0: {}
 
