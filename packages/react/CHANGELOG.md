@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.13.3
+
+### Patch Changes
+
+- **Tabs:** Has improved synchronous rendering for easier snapshot testing ([#4745](https://github.com/digdir/designsystemet/pull/4745))
+
+- **Field:** Now respects manually set `aria-invalid` attribute ([#4765](https://github.com/digdir/designsystemet/pull/4765))
+
+- **Textfield:** when `aria-invalid` is now correcly both set and removed based on the `error` prop ([#4765](https://github.com/digdir/designsystemet/pull/4765))
+
+- Updated dependencies [[`7ad8a16`](https://github.com/digdir/designsystemet/commit/7ad8a16a4e8e13fb9b4892de362b243e3e695a8e), [`3223805`](https://github.com/digdir/designsystemet/commit/3223805cb509d1c5f1252c72c1a40dbdc8bf4cd1)]:
+  - @digdir/designsystemet-web@1.13.3
+  - @digdir/designsystemet-types@1.13.3
+
 ## 1.13.2
 
 ### Patch Changes
