@@ -203,7 +203,7 @@ const DoDontComponent = ({
   const { dodont } = useLoaderData() as {
     dodont?: { name: string; code: string }[] | null;
   };
-  if (!dodont) return null;
+  if (!dodont) return <Alert lang='en'>Do/Dont not found: {story}</Alert>;
 
   const foundStory = dodont.find((s) => s.name === story);
   if (!foundStory) return <Alert lang='en'>Do/Dont not found: {story}</Alert>;
