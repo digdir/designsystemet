@@ -11,9 +11,9 @@ search_terms: statusmelding, varsel, advarsel, notifikasjon, systemvarsel, syste
 
 **Unngå Alert når**
 - feilen hindrer all videre bruk av tjenesten, bruk [feilside](/no/patterns/systemnotifications#når-bruker-vi-feilsider) i stedet
-- du skal gjøre brukeren oppmerksom på feil i enkeltfelt, bruk heller komponentens egen feilmelding [`ValidationMessage`](/no/components/docs/validation-message/overview)
-- varslene er statiske infobokser, bruk heller [`Card`](/no/components/docs/card/overview)
-- flere feilmeldinger skal oppsummeres, bruk heller [`ErrorSummary`](/no/components/docs/error-summary/overview)
+- du skal gjøre brukeren oppmerksom på feil i enkeltfelt, bruk heller komponentens egen feilmelding [validation message](/no/components/docs/validation-message/overview)
+- varslene er statiske infobokser, bruk heller [card](/no/components/docs/card/overview)
+- flere feilmeldinger skal oppsummeres, bruk heller [error summary](/no/components/docs/error-summary/overview)
 
 For mer helhetlige retningslinjer for bruk av varsler i tjenester, se mønsteret for [Systemvarsler](/no/patterns/systemnotifications). Der finner du eksempler og anbefalinger for når du skal bruke alert, og når andre løsninger passer bedre.
 
@@ -49,7 +49,7 @@ Bruk `danger` for å informere om noe som er kritisk eller som hindrer brukeren 
 ### Med og uten overskrift
 
 Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. 
-Dette kan gjøres med [`Heading`](/no/components/docs/heading/overview). 
+Dette kan gjøres med [heading](/no/components/docs/heading/overview). 
 Husk å velge riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
 
 <Story story="WithHeading" />

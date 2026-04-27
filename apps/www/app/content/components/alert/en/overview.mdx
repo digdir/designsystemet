@@ -11,9 +11,9 @@ search_terms: notification, feedback, warning, message, confirmation, error, war
 
 **Avoid Alert when**
 - the error prevents further use of the service, use an [error page](/en/patterns/systemnotifications#n%C3%A5r-bruker-vi-feilsider) instead
-- you need to notify the user about an error in a single form field, use the component’s own error message [`ValidationMessage`](/en/components/docs/validation-message/overview)
-- the message is a static info box, use [`Card`](/en/components/docs/card/overview) instead
-- multiple error messages need to be summarised, use [`ErrorSummary`](/en/components/docs/error-summary/overview) instead
+- you need to notify the user about an error in a single form field, use the component’s own error message [validation message](/en/components/docs/validation-message/overview)
+- the message is a static info box, use [card](/en/components/docs/card/overview) instead
+- multiple error messages need to be summarised, use [error summary](/en/components/docs/error-summary/overview) instead
 
 For more comprehensive guidelines on how to use alerts in services, see the pattern for [System notifications](/en/patterns/systemnotifications). There you will find examples and recommendations on when to use alert, and when other solutions may be more appropriate.
 
@@ -75,10 +75,10 @@ Make sure that alert has the same look and feel across all services and products
 - inform about connection problems or API errors that are likely to be resolved by reloading the page
 
 **Not suitable for**
-- validate individual form elements, instead use the component's own error message (See [`ValidationMessage`](/en/components/docs/validation-message/overview))
-- summarize multiple error messages in a form, instead use [`ErrorSummary`](/en/components/docs/error-summary/overview)
+- validate individual form elements, instead use the component's own error message (See [validation message](/en/components/docs/validation-message/overview))
+- summarize multiple error messages in a form, instead use [error summary](/en/components/docs/error-summary/overview)
 - display errors that prevent all further use of the service, instead use an error page
-- display static information that should be displayed all the time, instead use [`Card`](/en/components/docs/card/overview)
+- display static information that should be displayed all the time, instead use [card](/en/components/docs/card/overview)
 
 ## Text
 
