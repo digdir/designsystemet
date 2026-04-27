@@ -1,22 +1,33 @@
-<Story story="Preview" />
+<Story story="Preview" language="html" />
 
-<ReactComponentDocs />
+## Bruk
 
-```tsx
-import { Badge } from '@digdir/designsystemet-react';
+Badge rendrar teksten sin med CSS i eit `:before`-pseudoelement på ein `span`-tagg.
+Du brukar klassenavnet `ds-badge`, i saman med data atributt `data-count`.
 
-/* Inline utan tal */
-<Badge />
+Dersom du vil ha den flytande, så må `ds-badge--position` nyttast på ein wrapper rundt elementet som `Badge` skal plasserast over.
+`data-placement` blir brukt på wrapperen for å bestemme plasseringa. Sjå nederst på sida for støtta plasseringar.
+På den kan du også setje `data-overlap="circle"` for å få sirkulær overlap.
 
-/* Inline med tal */
-<Badge count={5} maxCount={99} />
+```html
+<!-- inline uten tal -->
+<span class="ds-badge"></span>
 
-/* Flytande over element */
-<Badge.Position>
-  <Badge />
-  <Elem />
-</Badge.Position>
+<!-- inline med tal -->
+<span class="ds-badge" data-count="9+"></span>
+
+<!-- flytande over element -->
+<span class="ds-badge--position" data-placement="top-right" data-overlap="circle">
+  <span class="ds-badge" data-count="5"></span>
+  <Icon />
+</span>
 ```
+
+## CSS variablar og data-attributtar
+
+<CssVariables/>
+
+<CssAttributes />
 
 ## Eksempel
 
@@ -47,29 +58,25 @@ Når du skal ha `Badge` inline, plasserer du den rett i teksten eller komponente
 
 ## HTML
 
-`Badge` rendrar teksten sin med CSS i eit `:before`-pseudoelement på ein `span`-tagg.
-Du brukar klassenavnet `ds-badge`, i saman med data atributt.
 
-Dersom du vil ha den flytande, så må `ds-badge--position` nyttast på ein wrapper rundt elementet som `Badge` skal plasserast over.
-`data-placement` blir brukt på wrapperen for å bestemme plasseringa. Sjå nederst på sida for støtta plasseringar.
-På den kan du også setje `data-overlap="circle"` for å få sirkulær overlap.
 
-```html
-<!-- inline uten tal -->
-<span class="ds-badge"></span>
 
-<!-- inline med tal -->
-<span class="ds-badge" data-count="9+"></span>
+## React
 
-<!-- flytande over element -->
-<span class="ds-badge--position" data-placement="top-right" data-overlap="circle">
-  <span class="ds-badge" data-count="5"></span>
-  <Icon />
-</span>
+<ReactComponentDocs />
+
+```tsx
+import { Badge } from '@digdir/designsystemet-react';
+
+/* Inline utan tal */
+<Badge />
+
+/* Inline med tal */
+<Badge count={5} maxCount={99} />
+
+/* Flytande over element */
+<Badge.Position>
+  <Badge />
+  <Elem />
+</Badge.Position>
 ```
-
-## CSS variablar og data-attributtar
-
-<CssVariables/>
-
-<CssAttributes />
