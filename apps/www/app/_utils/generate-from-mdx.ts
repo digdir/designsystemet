@@ -9,9 +9,9 @@ import { extractToc } from './extract-toc';
 // Cache MDX compilation results by source content to avoid recompiling identical files
 const mdxCache = new Map<
   string,
-  // biome-ignore lint/suspicious/noExplicitAny: this is how frontmatter is typed in mdx-bundler
   {
     code: string;
+    // biome-ignore lint/suspicious/noExplicitAny: this is how frontmatter is typed in mdx-bundler
     frontmatter: { [key: string]: any };
     toc: TableOfContentsItem[];
   }
