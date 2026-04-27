@@ -30,6 +30,10 @@ export type SwitchProps = MergeRight<
      * @default start
      */
     position?: FieldProps['position'];
+    /**
+     * If outline, the switch will have a border.
+     */
+    variant?: 'default' | 'outline';
   } & LabelRequired
 >;
 
@@ -48,6 +52,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
     label,
     position,
     style,
+    variant,
     ...rest
   },
   ref,
@@ -57,6 +62,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
       className={className}
       data-position={position}
       data-size={size}
+      data-variant={variant}
       style={style}
     >
       <Input type='checkbox' role='switch' ref={ref} {...rest} />
