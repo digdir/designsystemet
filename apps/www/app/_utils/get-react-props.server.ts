@@ -8,12 +8,39 @@ import {
 } from 'react-docgen-typescript';
 
 const require = createRequire(import.meta.url);
+const shouldUseCache = process.env.NODE_ENV === 'production';
 
 // Cache the parser as a singleton — withCustomConfig creates a TypeScript program
 // which is very expensive. Reusing it across all component pages saves minutes of build time.
 let cachedParser: ReturnType<typeof withCustomConfig> | undefined;
 
 const getParser = () => {
+  if (!shouldUseCache) {
+    return withCustomConfig(
+      require.resolve(
+        path.join(process.cwd(), '../../packages/react/tsconfig.lib.json'),
+      ),
+      {
+        savePropValueAsString: true,
+        shouldExtractLiteralValuesFromEnum: true,
+        shouldRemoveUndefinedFromOptional: true,
+        shouldExtractValuesFromUnion: true,
+        propFilter: (prop: PropItem) => {
+          const defaultLogicFromStorybook = prop.parent
+            ? !/node_modules/.test(prop.parent.fileName)
+            : true;
+          return (
+            defaultLogicFromStorybook &&
+            prop.name !== 'popovertarget' &&
+            prop.name !== 'data-color' &&
+            prop.name !== 'data-color-scheme' &&
+            prop.name !== 'data-size'
+          );
+        },
+      },
+    );
+  }
+
   if (!cachedParser) {
     cachedParser = withCustomConfig(
       require.resolve(
@@ -39,6 +66,7 @@ const getParser = () => {
       },
     );
   }
+
   return cachedParser;
 };
 
@@ -71,8 +99,10 @@ const getReactDir = (component: string) => {
 const componentDocsCache = new Map<string, ComponentDoc[]>();
 
 export const getComponentDocs = (component: string): ComponentDoc[] => {
-  const cached = componentDocsCache.get(component);
-  if (cached) return cached;
+  if (shouldUseCache) {
+    const cached = componentDocsCache.get(component);
+    if (cached) return cached;
+  }
 
   const reactDir = getReactDir(component);
   try {
@@ -105,7 +135,9 @@ export const getComponentDocs = (component: string): ComponentDoc[] => {
       allDocs.push(...docs);
     }
 
-    componentDocsCache.set(component, allDocs);
+    if (shouldUseCache) {
+      componentDocsCache.set(component, allDocs);
+    }
     return allDocs;
   } catch (error) {
     console.error('Error parsing component docs:', error);

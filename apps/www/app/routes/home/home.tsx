@@ -62,7 +62,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       join('blog', lang, file.relativePath),
     );
 
-    // Parse YAML frontmatter directly — much faster than bundleMDX
+    // Parse frontmatter directly — much faster than bundleMDX.
     const fmMatch = fileContent.match(/^---\r?\n([\s\S]*?)\r?\n---/);
     const frontmatter: Record<string, string> = {};
     if (fmMatch) {
