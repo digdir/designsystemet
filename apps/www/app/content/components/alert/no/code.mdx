@@ -1,20 +1,13 @@
 <Story story="Preview" language="html" />
 
-
-
-
 ## Bruk
 
-Bruk klassenavnet `ds-alert` og attributtet `data-color` for å endre type varsel.
+Bruk attributtet `data-color` for å endre type varsel.
 Les over for når du skal bruke `role` og `aria-live`.
 
 [Les om `role` og `aria-live` på tilgjengeligheitssiden for `Alert`-komponenten.](/no/components/docs/alert/accessibility#alert-i-live-region)
 
-```html
-<div class="ds-alert" data-color="info">
-  Dette er en info alert.
-</div>
-```
+
 
 ## CSS variabler og data-attributter
 <CssVariables />
@@ -24,4 +17,6 @@ Les over for når du skal bruke `role` og `aria-live`.
 
 ## React
 
-<ReactComponentDocs />
+```jsx
+<Alert data-color="info">Dette er en informasjonsmelding.</Alert>
+```

@@ -2,25 +2,25 @@
 search_terms: statusmelding, varsel, advarsel, notifikasjon, systemvarsel, systemmelding, feilmelding, bekreftelse, åtvaring, varslingsmelding, notification, feedback, warning, info, confirmation, error
 ---
 
-<Story story="Preview" />
+<Story story="Preview" language="html" />
 
-**Bruk `Alert` når**
+**Bruk Alert når**
 - det er korte og informative tidsbegrensede varsler
 - det er informasjon om feil som kun påvirker én del av systemet eller en mindre funksjon
 - det oppstår tilkoblingsproblemer eller API-feil som vil løse seg med en ny innlasting av siden
 
-**Unngå `Alert` når**
+**Unngå Alert når**
 - feilen hindrer all videre bruk av tjenesten, bruk [feilside](/no/patterns/systemnotifications#når-bruker-vi-feilsider) i stedet
 - du skal gjøre brukeren oppmerksom på feil i enkeltfelt, bruk heller komponentens egen feilmelding [`ValidationMessage`](/no/components/docs/validation-message/overview)
 - varslene er statiske infobokser, bruk heller [`Card`](/no/components/docs/card/overview)
 - flere feilmeldinger skal oppsummeres, bruk heller [`ErrorSummary`](/no/components/docs/error-summary/overview)
 
-For mer helhetlige retningslinjer for bruk av varsler i tjenester, se mønsteret for [Systemvarsler](/no/patterns/systemnotifications). Der finner du eksempler og anbefalinger for når du skal bruke `Alert`, og når andre løsninger passer bedre.
+For mer helhetlige retningslinjer for bruk av varsler i tjenester, se mønsteret for [Systemvarsler](/no/patterns/systemnotifications). Der finner du eksempler og anbefalinger for når du skal bruke alert, og når andre løsninger passer bedre.
 
 
 ## Eksempel
 
-`Alert` kan brukes til fire ulike budskap: Informasjon, suksess, advarsel og feilmelding.
+Alert kan brukes til fire ulike budskap: Informasjon, suksess, advarsel og feilmelding.
 
 ### Informasjon
 
@@ -50,7 +50,7 @@ Bruk `danger` for å informere om noe som er kritisk eller som hindrer brukeren 
 
 Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. 
 Dette kan gjøres med [`Heading`](/no/components/docs/heading/overview). 
-Husk å velge riktig overskriftsnivå ut fra plassen `Alert` har i innholdsstrukturen på siden.
+Husk å velge riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
 
 <Story story="WithHeading" />
 
@@ -60,19 +60,19 @@ Dersom tittel og beskrivelse gjentar det samme er det bedre å bruke en enkel se
 
 ### Med lenke
 
-Du kan ha en lenke i `Alert` hvis det hjelper brukeren med å løse oppgaven. 
+Du kan ha en lenke i alert hvis det hjelper brukeren med å løse oppgaven. 
 Men vær obs på at en lenke tar brukeren ut av tjenesten, så bruk lenke kun når det er absolutt nødvendig, for eksempel hvis du vil at brukeren skal åpne et skjema eller utføre en viktig oppgave.
 
 <Story story="MedLenke" />
 
 ## Retningslinjer
 
-`Alert` brukes for å vise viktige meldinger som krever oppmerksomhet, men ikke nødvendigvis handling. Den kan brukes til å informere brukeren om status, endringer eller problemer i en løsning. Meldingen vises tydelig og skiller seg visuelt fra resten av innholdet.
+Alert brukes for å vise viktige meldinger som krever oppmerksomhet, men ikke nødvendigvis handling. Den kan brukes til å informere brukeren om status, endringer eller problemer i en løsning. Meldingen vises tydelig og skiller seg visuelt fra resten av innholdet.
 
 Bruk komponenten varsomt. Brukere kan forveksle varsler med reklame, og dermed overse dem. 
 Hvis vi bruker varsler for ofte, kan vi forverre dette problemet.
 
-Pass på at `Alert` har samme utseende og formspråk i alle tjenester og produkter. 
+Pass på at alert har samme utseende og formspråk i alle tjenester og produkter. 
 Denne komponenten skal være mulig å kjenne igjen overalt, så vi skal unngå å justere den.
 
 ## Tekst
