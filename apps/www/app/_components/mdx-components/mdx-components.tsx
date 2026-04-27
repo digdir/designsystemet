@@ -36,7 +36,7 @@ import {
   TypographyVariablesTable,
 } from '@internal/components';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
-import { type ComponentType, type JSX, useMemo } from 'react';
+import { type ComponentType, type JSX, type ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RRLink, useLoaderData } from 'react-router';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
@@ -44,6 +44,7 @@ import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
 import { CssVariables } from '../css-variables/css-variables';
+import { DoDont } from '../do-dont/do-dont';
 import {
   LiveComponent,
   type LiveComponentProps,
@@ -156,6 +157,7 @@ export const MDXComponents = ({
           components={{
             ...defaultComponents,
             Story: Story,
+            DoDont: DoDontComponent,
             ...components,
           }}
         />
@@ -179,5 +181,33 @@ const Story = ({ story, ...rest }: LiveComponentProps) => {
       story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
       {...rest}
     />
+  );
+};
+
+const DoDontComponent = ({
+  story,
+  children,
+  layout,
+}: {
+  story: string;
+  layout?: 'row' | 'column' | 'centered';
+  children?: ReactNode;
+}) => {
+  const { dodont } = useLoaderData() as {
+    dodont?: { name: string; code: string }[] | null;
+  };
+  if (!dodont) return <Alert lang='en'>Do/Dont not found: {story}</Alert>;
+
+  const foundStory = dodont.find((s) => s.name === story);
+  if (!foundStory) return <Alert lang='en'>Do/Dont not found: {story}</Alert>;
+  const variant = story.toLowerCase().includes('dont') ? 'dont' : 'do';
+  return (
+    <DoDont
+      layout={layout}
+      variant={variant}
+      code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+    >
+      {children}
+    </DoDont>
   );
 };
