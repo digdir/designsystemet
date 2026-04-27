@@ -41,27 +41,40 @@ const cssCache = new Map<
     cssAttrs: Record<string, string>;
   }
 >();
+const warnedCssFiles = new Set<string>();
 
 const getComponentCss = (cssFile: string) => {
   const cached = cssCache.get(cssFile);
   if (cached) return cached;
 
-  let cssSource: string | undefined;
-  let cssVars: Record<string, string> = {};
-  let cssAttrs: Record<string, string> = {};
+  const emptyResult = {
+    cssSource: undefined,
+    cssVars: {},
+    cssAttrs: {},
+  };
 
   try {
     const cssPath = require.resolve(`@digdir/designsystemet-css/${cssFile}`);
-    cssSource = readFileSync(cssPath, 'utf-8');
-    cssVars = getCssVariables(cssSource);
-    cssAttrs = getAttributes(cssSource);
-  } catch {
-    // CSS file not found — leave empty
-  }
+    const cssSource = readFileSync(cssPath, 'utf-8');
+    const result = {
+      cssSource,
+      cssVars: getCssVariables(cssSource),
+      cssAttrs: getAttributes(cssSource),
+    };
 
-  const result = { cssSource, cssVars, cssAttrs };
-  cssCache.set(cssFile, result);
-  return result;
+    cssCache.set(cssFile, result);
+    return result;
+  } catch (error) {
+    if (!warnedCssFiles.has(cssFile)) {
+      warnedCssFiles.add(cssFile);
+      console.warn(
+        `Failed to resolve or read CSS file "@digdir/designsystemet-css/${cssFile}".`,
+        error,
+      );
+    }
+
+    return emptyResult;
+  }
 };
 
 export { ErrorBoundary } from '~/root';
