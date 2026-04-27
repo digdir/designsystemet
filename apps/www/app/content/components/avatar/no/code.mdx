@@ -31,7 +31,7 @@ import { Avatar } from '@digdir/designsystemet-react';
 
 ### Standard Ikon
 
-Dersom du ikke sender inn noen `children`, vil `Avatar` vise et standard brukerikon.
+Dersom du ikke sender inn noen `children`, vil avatar vise et standard brukerikon.
 
 Dette kan overstyres i css med variabelen `--dsc-avatar-icon-url`. Se liste over CSS variabler nederst på siden.
 
@@ -41,7 +41,7 @@ Dette kan overstyres i css med variabelen `--dsc-avatar-icon-url`. Se liste over
 
 Komponenten styres med `data-size`, og vil arve størrelse fra nærmeste forelder med `data-size` satt. 
 
-I tillegg til `sm`, `md` og `lg`, støtter `Avatar` også størrelsen `xs`.
+I tillegg til `sm`, `md` og `lg`, støtter avatar også størrelsen `xs`.
 
 <Story story="Sizes" />
 
@@ -60,14 +60,14 @@ Alle farger i ditt tema er gyldige, og komponenten vil arve nærmeste `data-colo
 ### Med bilde eller ikon
 
 Dersom du legger bilder eller ikon som barn vil disse få `aria-hidden="true"` automatisk for å unngå dobbel informasjon.
-Du må selv sette `aria-label` på `Avatar` for å forklare hvem eller hva avataren representerer.
+Du må selv sette `aria-label` på avatar for å forklare hvem eller hva avataren representerer.
 
 <Story story="WithImageAndIcon" />
 
 ### Komponering
 
 Komponenten skal kunne komponeres inn i andre komponenter.
-Her er et eksempel på bruk av `Avatar` inne i en `Dropdown`-komponent.
+Her er et eksempel på bruk av avatar inne i en `Dropdown`-komponent.
 
 <Story story="InDropdown" />
 
