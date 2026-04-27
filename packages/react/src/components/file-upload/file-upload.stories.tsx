@@ -89,10 +89,7 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
     <Label>Upload file</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Description>Drop file here</FileUpload.Description>
-      <FileUpload.Description>
-        File must be in csv format and less than 2MB
-      </FileUpload.Description>
+      <FileUpload.Description>Upload limit reached</FileUpload.Description>
       <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
       <FileUpload.Input readOnly={true} />
     </FileUpload>

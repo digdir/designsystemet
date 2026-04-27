@@ -11,8 +11,10 @@
   --dsc-file-upload-color: currentcolor;
   --dsc-file-upload-padding: var(--ds-size-8) var(--ds-size-6);
   --dsc-file-upload-icon-size: var(--ds-size-8);
-  --dsc-file-upload-icon-url: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M11 2.25A5.75 5.75 0 0 0 5.25 8c0 .052-.017.1-.074.157a.66.66 0 0 1-.325.158A3.25 3.25 0 0 0 5.5 14.75a.75.75 0 0 0 0-1.5 1.75 1.75 0 0 1-.35-3.465c.745-.151 1.6-.747 1.6-1.785a4.25 4.25 0 0 1 8.076-1.854c.288.593.896 1.104 1.68 1.104h.744a3 3 0 0 1 1 5.83.75.75 0 1 0 .5 1.414 4.501 4.501 0 0 0-1.5-8.744h-.745c-.09 0-.236-.066-.33-.26A5.746 5.746 0 0 0 11 2.25m.47 8.22a.75.75 0 0 1 1.06 0l3.5 3.5a.75.75 0 1 1-1.06 1.06l-2.22-2.22v7.69a.75.75 0 0 1-1.5 0v-7.69l-2.22 2.22a.75.75 0 0 1-1.06-1.06z" clip-rule="evenodd"/></svg>');
+  --dsc-file-upload-icon-url: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M11 2.25A5.75 5.75 0 0 0 5.25 8c0 .052-.017.1-.074.157a.66.66 0 0 1-.325.158A3.25 3.25 0 0 0 5.5 14.75a.75.75 0 0 0 0-1.5 1.75 1.75 0 0 1-.35-3.465c.745-.151 1.6-.747 1.6-1.785a4.25 4.25 0 0 1 8.076-1.854c.288.593.896 1.104 1.68 1.104h.744a3 3 0 0 1 1 5.83.75.75 0 1 0 .5 1.414 4.501 4.501 0 0 0-1.5-8.744h-.745c-.09 0-.236-.066-.33-.26A5.746 5.746 0 0 0 11 2.25m.47 8.22a.75.75 0 0 1 1.06 0l3.5 3.5a.75.75 0 1 1-1.06 1.06l-2.22-2.22v7.69a.75.75 0 0 1-1.5 0v-7.69l-2.22 2.22a.75.75 0 0 1-1.06-1.06z" clip-rule="evenodd"/></svg>');
+  --dsc-file-upload-icon-url--readonly: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M5.098 5.114A9.72 9.72 0 0 0 2.25 12c0 5.385 4.365 9.75 9.75 9.75s9.75-4.365 9.75-9.75S17.385 2.25 12 2.25a9.72 9.72 0 0 0-6.886 2.848l-.008.008zm1.623.546a8.25 8.25 0 0 1 11.62 11.62zM5.66 6.72l11.62 11.62A8.25 8.25 0 0 1 5.66 6.72" clip-rule="evenodd"/></svg>');
 
+  --_icon-url: var(--dsc-file-upload-icon-url);
   position: relative;
   border: var(--dsc-file-upload-border-width) var(--dsc-file-upload-border-style) var(--dsc-file-upload-border-color);
   border-radius: var(--dsc-file-upload-border-radius);
@@ -32,14 +34,40 @@
     @composes ds-focus--visible from './base.css';
   }
 
-  &:hover,
-  &:has([readonly]) {
+  &:hover {
     border-style: var(--dsc-file-upload-border-style--hover);
     background-color: var(--dsc-file-upload-background--hover);
     cursor: pointer;
   }
-  &:has([readonly]) {
+  &:has(:is([readonly], [aria-readonly='true'])) {
     cursor: not-allowed;
+    pointer-events: none;
+    --_icon-url: var(--dsc-file-upload-icon-url--readonly);
+    --dsc-file-upload-background: var(--ds-color-surface-tinted);
+    --dsc-file-upload-background--hover: var(--ds-color-surface-tinted);
+
+    /* Override color scale to neutral*/
+    --ds-color-background-default: var(--ds-color-neutral-background-default);
+    --ds-color-background-tinted: var(--ds-color-neutral-background-tinted);
+    --ds-color-surface-default: var(--ds-color-neutral-surface-default);
+    --ds-color-surface-tinted: var(--ds-color-neutral-surface-tinted);
+    --ds-color-surface-hover: var(--ds-color-neutral-surface-hover);
+    --ds-color-surface-active: var(--ds-color-neutral-surface-active);
+    --ds-color-border-subtle: var(--ds-color-neutral-border-subtle);
+    --ds-color-border-default: var(--ds-color-neutral-border-default);
+    --ds-color-border-strong: var(--ds-color-neutral-border-strong);
+    --ds-color-text-subtle: var(--ds-color-neutral-text-subtle);
+    --ds-color-text-default: var(--ds-color-neutral-text-default);
+    --ds-color-base-default: var(--ds-color-neutral-base-default);
+    --ds-color-base-hover: var(--ds-color-neutral-base-hover);
+    --ds-color-base-active: var(--ds-color-neutral-base-active);
+    --ds-color-base-contrast-subtle: var(--ds-color-neutral-base-contrast-subtle);
+    --ds-color-base-contrast-default: var(--ds-color-neutral-base-contrast-default);
+
+    /* We could perhaps hide the button when readonly */
+    /*  .ds-button {
+      display: none;
+    } */
   }
   &:has([aria-invalid='true']) {
     border-color: var(--ds-color-danger-border-default);
@@ -70,7 +98,7 @@
   &:not(:has(> svg))::before {
     content: '';
     background: currentColor;
-    mask: var(--dsc-file-upload-icon-url) center / contain no-repeat;
+    mask: var(--_icon-url) center / contain no-repeat;
     @media (forced-colors: active) {
       background: CanvasText;
     }
