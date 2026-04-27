@@ -1,4 +1,3 @@
-import { createHash } from 'node:crypto';
 import type { Root } from 'hast';
 import { bundleMDX } from 'mdx-bundler';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -7,7 +6,7 @@ import remarkGfm from 'remark-gfm';
 import type { TableOfContentsItem, VFile } from './extract-toc';
 import { extractToc } from './extract-toc';
 
-// Cache MDX compilation results in production only, with bounded size
+// Cache MDX compilation results by source content to avoid recompiling identical files
 const mdxCache = new Map<
   string,
   {
@@ -18,27 +17,16 @@ const mdxCache = new Map<
   }
 >();
 
-const MAX_CACHE_ENTRIES = 200;
-
-const getCacheKey = (fileContent: string, cacheKey?: string) =>
-  cacheKey ?? createHash('sha256').update(fileContent).digest('hex');
-
 export const generateFromMdx = async (
   fileContent: string,
-  cacheKey?: string,
 ): Promise<{
   code: string;
   // biome-ignore lint/suspicious/noExplicitAny: this is how frontmatter is typed in mdx-bundler
   frontmatter: { [key: string]: any };
   toc: TableOfContentsItem[];
 }> => {
-  const shouldUseCache = process.env.NODE_ENV === 'production';
-  const resolvedCacheKey = getCacheKey(fileContent, cacheKey);
-
-  if (shouldUseCache) {
-    const cached = mdxCache.get(resolvedCacheKey);
-    if (cached) return cached;
-  }
+  const cached = mdxCache.get(fileContent);
+  if (cached) return cached;
 
   let tocData: TableOfContentsItem[] = [];
 
@@ -64,16 +52,6 @@ export const generateFromMdx = async (
     ...result,
     toc: tocData,
   };
-
-  if (shouldUseCache) {
-    if (mdxCache.size >= MAX_CACHE_ENTRIES) {
-      const oldestKey = mdxCache.keys().next().value;
-      if (oldestKey) {
-        mdxCache.delete(oldestKey);
-      }
-    }
-    mdxCache.set(resolvedCacheKey, output);
-  }
-
+  mdxCache.set(fileContent, output);
   return output;
 };
