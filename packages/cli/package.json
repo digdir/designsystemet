@@ -65,7 +65,7 @@
     "hsluv": "^1.0.1",
     "object-hash": "^3.0.0",
     "picocolors": "^1.1.1",
-    "postcss": "^8.5.8",
+    "postcss": "^8.5.10",
     "ramda": "^0.32.0",
     "style-dictionary": "^5.4.0",
     "zod": "^4.3.6",
