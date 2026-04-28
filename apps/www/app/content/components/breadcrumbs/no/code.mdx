@@ -2,45 +2,6 @@
 
 ## Bruk
 
-Den siste lenka i `Breadcrumbs` blir automatisk markert med `aria-current="page"`.
-
-```tsx
-<Breadcrumbs aria-label="Du er her:">
-  <Breadcrumbs.Link aria-label="Tilbake til nivå 3">Nivå 3</Breadcrumbs.Link>
-  <Breadcrumbs.List>
-    <Breadcrumbs.Item>
-      <Breadcrumbs.Link href="https://designsystemet.no/">Nivå 1</Breadcrumbs.Link>
-    </Breadcrumbs.Item>
-    <Breadcrumbs.Item>
-      <Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Nivå 2</Breadcrumbs.Link>
-    </Breadcrumbs.Item>
-  </Breadcrumbs.List>
-</Breadcrumbs>
-```
-
-## Eksempel
-
-### Tilbake-knapp
-
-Om du legg ein `Breadcrumbs.Link` direkte i `Breadcrumbs`, vil lenka visast som ein tilbake-knapp. Det er viktig at du er konsistent i løysinga di, og bruker anten tilbake-knapp eller sti, ikkje begge delar.
-
-<Story story="BackOnly" />
-
-### Berre sti
-
-Om du kun legg `Breadcrumbs.List` direkte i `Breadcrumbs`, vil denne alltid visast som ein sti.
-Dette betyr at du får lik visning på både mobil og desktop.
-
-<Story story="ListOnly" />
-
-### Sti eller tilbake-knapp basert på skjermbreidde
-
-Om du legg både ein `Breadcrumbs.Link` og ein `Breadcrumbs.List` direkte i `Breadcrumbs`, vil tilbake-knappen visast på skjermar smalare enn 650px, og stien visast på breiare skjermar.
-
-<Story story="MobileViewport" />
-
-## HTML
-
 Klassenavnet `ds-breadcrumbs` blir lagt på et `<ds-breadcrumbs>`.
 Web komponenten håndterer automatisk `aria-current="page"` på siste lenke i lista.
 
@@ -56,31 +17,52 @@ Dersom du vil gjøre dette selv kan du bruke `<nav class="ds-breadcrumbs" aria-l
 </ds-breadcrumbs>
 ```
 
-### Kun tilbake-knapp
-
-```html
-<ds-breadcrumbs class="ds-breadcrumbs" aria-label="Du er her:">
-  <a href="#" class="ds-link">Tilbake til nivå 2</a>
-</ds-breadcrumbs>
-```
-
-### Sti eller tilbake-knapp basert på skjermbreidde
-
-```html
-<ds-breadcrumbs class="ds-breadcrumbs" aria-label="Du er her:">
-  <a href="#none" aria-label="Tilbake til Nivå 3">
-    Nivå 3
-  </a>
-  <ol>
-    <li><a href="#none">Nivå 1</a></li>
-    <li><a href="#none">Nivå 2</a></li>
-    <li><a href="#none">Nivå 3</a></li>
-  </ol>
-</ds-breadcrumbs>
-```
 
 ## CSS variablar og data-attributt
+
+Størrelsar styrast med [`data-size`](/no/fundamentals/code/sizes) og fargar med [`data-color`](/no/fundamentals/code/colors). Komponenten vil arve næraste forelder med desse satt.
 
 <CssVariables />
 
 <CssAttributes />
+
+## Eksempel
+
+### Tilbake-knapp
+
+Om du legg ein `<a>` direkte i `<ds-breadcrumbs>` som eneste barn, vil lenka visast som ein tilbake-knapp. Det er viktig at du er konsistent i løysinga di, og bruker anten tilbake-knapp eller sti, ikkje begge delar.
+
+<Story story="BackOnly" />
+
+### Berre sti
+
+Om du kun legg `<ol>` direkte i `<ds-breadcrumbs>`, vil denne alltid visast som ein sti.
+Dette betyr at du får lik visning på både mobil og desktop.
+
+<Story story="ListOnly" />
+
+### Sti eller tilbake-knapp basert på skjermbreidde
+
+Om du legg både ein `<a>` og ein `<ol>` direkte i `<ds-breadcrumbs>`, vil tilbake-knappen visast på skjermar smalare enn 650px, og stien visast på breiare skjermar.
+
+<Story story="MobileViewport" />
+
+## React
+
+```tsx
+<Breadcrumbs aria-label="Du er her:">
+  <Breadcrumbs.Link aria-label="Tilbake til nivå 3">Nivå 3</Breadcrumbs.Link>
+  <Breadcrumbs.List>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/">Nivå 1</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Nivå 2</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+  </Breadcrumbs.List>
+</Breadcrumbs>
+```
+
+### Breadcrumbs
+
+<ReactComponentDocs />
