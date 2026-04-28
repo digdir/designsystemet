@@ -32,6 +32,51 @@ import classes from './component.module.css';
 
 const require = createRequire(import.meta.url);
 
+// Cache CSS resolution and parsing per cssFile — shared across all pages for the same component
+const cssCache = new Map<
+  string,
+  {
+    cssSource?: string;
+    cssVars: Record<string, string>;
+    cssAttrs: Record<string, string>;
+  }
+>();
+const warnedCssFiles = new Set<string>();
+
+const getComponentCss = (cssFile: string) => {
+  const cached = cssCache.get(cssFile);
+  if (cached) return cached;
+
+  const emptyResult = {
+    cssSource: undefined,
+    cssVars: {},
+    cssAttrs: {},
+  };
+
+  try {
+    const cssPath = require.resolve(`@digdir/designsystemet-css/${cssFile}`);
+    const cssSource = readFileSync(cssPath, 'utf-8');
+    const result = {
+      cssSource,
+      cssVars: getCssVariables(cssSource),
+      cssAttrs: getAttributes(cssSource),
+    };
+
+    cssCache.set(cssFile, result);
+    return result;
+  } catch (error) {
+    if (!warnedCssFiles.has(cssFile)) {
+      warnedCssFiles.add(cssFile);
+      console.warn(
+        `Failed to resolve or read CSS file "@digdir/designsystemet-css/${cssFile}".`,
+        error,
+      );
+    }
+
+    return emptyResult;
+  }
+};
+
 export { ErrorBoundary } from '~/root';
 
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
@@ -94,34 +139,9 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     jsonMetadata[lang].subtitle,
   );
 
-  // Resolve raw CSS for this component from @digdir/designsystemet-css
-
-  let cssPath: string | undefined;
-
-  try {
-    cssPath = require.resolve(
-      `@digdir/designsystemet-css/${jsonMetadata.cssFile}`,
-    );
-  } catch {
-    console.warn(
-      `Could not resolve CSS file for component ${component}: ${jsonMetadata.cssFile}`,
-    );
-  }
-
-  let cssSource: string | undefined;
-  let cssVars: {
-    [key: string]: string;
-  } = {};
-  let cssAttrs: {
-    [key: string]: string;
-  } = {};
-  if (cssPath) {
-    try {
-      cssSource = readFileSync(cssPath, 'utf-8');
-      cssVars = getCssVariables(cssSource);
-      cssAttrs = getAttributes(cssSource);
-    } catch {}
-  }
+  const { cssSource, cssVars, cssAttrs } = getComponentCss(
+    jsonMetadata.cssFile,
+  );
 
   return {
     component,
