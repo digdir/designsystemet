@@ -1,39 +1,173 @@
 ---
-title: Button placement and order
+title: Placement, order and language in buttons
 sidebar_title: Button placement
-category: Upcoming patterns
-description: How can we create a more predictable and inclusive experience by standardizing button placement and order?
-partners: Digdir, Nav, Skatteetaten ++
-search_terms: placement, order
-date: 2025-12-03
-order: 60
+category: Basic patterns
+description: How can we create a more predictable and inclusive experience by standardising button placement and order?
+date: 2026-04-22
 ---
 
-Different placements and orders of buttons, especially navigation buttons, can create unnecessary confusion for users. This applies in forms, step-by-step processes, dialogs, and popovers, where buttons often guide the user forward or complete an action. Shared patterns for button order and placement can contribute to a more predictable and inclusive experience.
+Inconsistent placement and order of buttons create unnecessary friction. It increases the risk of errors and makes tasks harder, especially for people with reduced vision, motor challenges or cognitive barriers. When we use the same placement, order and language across solutions, the experience becomes more predictable. Users find their way faster and make fewer mistakes.
+
+## Design and experience
+
+### Limit the number of buttons
+Limit the number of buttons to what the user actually needs in the situation. When each choice is clear and unambiguous, it becomes easier to understand what is happening and safer to click.<sup>1</sup>
+
+### Use the order primary, secondary, tertiary
+As a general rule, buttons that appear in a group should always be presented in the order primary → secondary → tertiary.
+
+<Image
+  src="/img/patterns/button-order.png"
+  alt="Three buttons placed horizontally with the order primary, secondary and tertiary from left to right on a desktop screen, and vertically with the same order from top to bottom on a mobile screen."
+  boxShadow={false}
+  dataUnstyled
+  caption='The example above shows three buttons in a group, where the order primary → secondary → tertiary is followed on both mobile and desktop.'
+/>
+
+### Place buttons to the left
+Place buttons to the left in the interface. This makes them easier to find for all users, especially those with reduced visual fields or those using screen magnification.<sup>2</sup>
+
+<Image
+  src="/img/patterns/button-left.png"
+  alt="Three buttons placed to the left in the interface."
+  boxShadow={false}
+  dataUnstyled
+  caption='Place buttons to the left. This increases the likelihood that users will see them.'
+/>
+<Image
+  src="/img/patterns/button-right.png"
+  alt="Three buttons placed to the right in the interface."
+  boxShadow={false}
+  dataUnstyled
+  caption='Avoid placing buttons to the right. Users must read less important options before reaching the primary action. It can also make the buttons harder to find for some users.'
+/>
+
+### Practical examples
+**Modal (dialogue)**  
+To create a predictable experience, buttons in a modal should be placed and ordered the same way as elsewhere.
+
+<Image
+  src="/img/patterns/button-modal.png"
+  alt="Modal with the text 'Do you want to stay signed in?' and two buttons placed to the left in the order primary 'Keep me signed in' and secondary 'Sign out'."
+  boxShadow={false}
+  dataUnstyled
+  caption='Example of a modal with buttons placed to the left.'
+/>
+
+The close button (X) should be placed in the top right corner of the modal. It should have the same function as clicking outside the modal or pressing the Esc key. The modal closes, and if a question requires an answer, it should always fall back to the least intrusive or least destructive option for the user.
+
+**Popover**  
+A popover is used for short, limited choices or confirmations that require immediate action without taking the user out of context. Buttons in a popover should follow the same placement and order as elsewhere.
+
+<Image
+  src="/img/patterns/button-popover.png"
+  alt="Popover with the text 'Are you sure you want to delete the row? You cannot undo this' and two buttons placed to the left in the order primary 'Yes, delete row' and secondary 'Keep row'."
+  boxShadow={true}
+  dataUnstyled
+  caption='Example of a popover with buttons placed to the left.'
+/>
+
+**Single-page form**  
+In forms where everything is completed on one page, the “Submit” button will usually be the only primary action.
+
+<Image
+  src="/img/patterns/button-form-onepage.png"
+  alt="Form with an input field and a primary button with the text 'Submit', followed by a secondary button with the text 'Cancel'."
+  boxShadow={false}
+  dataUnstyled
+  caption='Example of a form with a single page.'
+/>
+
+**Multi-step form**  
+Do not use a disabled “Previous” button on the first page of a multi-step form.<sup>3</sup>
+
+<Image
+  src="/img/patterns/button-form-firstpage.png"
+  alt="Multi-step form where the first page has a primary button with the text 'Next step' and no secondary button."
+  boxShadow={false}
+  dataUnstyled
+  caption='The example above shows the first step of a form, which does not include a "Previous" button.'
+/>
+
+On the remaining pages, the “Previous” button should be placed near the “Next” button. Elements placed close to each other are perceived as related.<sup>4</sup> Alternative actions such as “Continue later” or “Delete form” are different types of actions and should not be grouped with Next or Previous.
+
+On small screens, “Previous” should appear below “Next”, following the main ordering principle. On larger screens, there are differing views on whether this rule should be broken. Some choose to prioritise reading and action direction, but there is currently no documented evidence that this is beneficial.
 
 <Card
   data-color='warning'
   variant="tinted"
 >
-**Work in progress** \
-A cross-agency working group is working in autumn 2025 to develop shared guidelines and recommendations on this topic. We greatly appreciate input from anyone with relevant experience, insights, or user testing results. Please share your thoughts in the related [discussion thread on github.com](https://github.com/digdir/designsystemet/discussions/1671).
+**More insight needed**  
+If you have insight into the placement of Next and Previous buttons, please share it in the ongoing [discussion on GitHub](https://github.com/digdir/designsystemet/discussions/1671).
 </Card>
 
-
-<Contributors
-  headingLevel={2}
-  authors={[
-    'Victoria Nerem (Oslo Kommune)',
-    'Sjur Grønningsæter (Nav)',
-    'Morten Tollefsen (Nav)',
-    'Tonje Fiskvik (Skatteetaten)',
-    'Charles Aleksander Ravndal (Skatteetaten)',
-    'Roy Halvor Frimanslund (Brønnøysundregistrene)',
-    'Wenche Schjølberg (Brønnøysundregistrene)',
-    'Chris Arnesen (Politiet)',
-    'Øyvind Hjartnes (Entur)',
-    'Lasse Febakke Straum (Digdir)',
-    'Eira Bjerkeng Scherjon (Digdir)',
-    'Marianne Røsvik (Digdir)',
-  ]}
+<Image
+  src="/img/patterns/button-form-secondpage.png"
+  alt="Step 2 in a form with a primary button 'Next step' and a secondary button 'Previous step'. Next step appears first on desktop."
+  boxShadow={false}
+  dataUnstyled
+  caption='This example follows the main rule that buttons in a group should be presented in the order primary → secondary → tertiary.'
 />
+
+<Image
+  src="/img/patterns/button-form-secondpage-alt2.png"
+  alt="Step 2 in a form with a primary button 'Next step' and a secondary button 'Previous step'. Previous step appears first on desktop."
+  boxShadow={false}
+  dataUnstyled
+  caption='Here, an exception to the rule has been made on larger screens.'
+/>
+
+If you make an exception, it should only apply to larger screens, not small screens where buttons are stacked. It is important that the visual presentation matches the DOM. This can be solved by adding an extra button that is hidden with `display: none;` and completely removed for screen readers. See [code example with extra button (nav.no)](https://aksel.nav.no/templates/skjemavalidering/demo?darkside=true).
+
+**Final step in a form**  
+On the final step of a form, it should be clear that the user is submitting the form. “Submit” is the primary button.
+
+<Image
+  src="/img/patterns/button-form-lastpage.png"
+  alt="Final step in a form with a primary button 'Submit' and a secondary button 'Previous step'."
+  boxShadow={false}
+  dataUnstyled
+  caption='The example above shows the final step in a form.'
+/>
+
+## Language
+Button text should always describe what happens when the user clicks. The text should be short and concise, ideally no more than three words. Use verbs in the imperative form, such as “submit” and “sign”.
+
+Avoid abstract terms such as “OK” or “Cancel” when there are alternatives that clearly describe what happens. Users should not have to interpret the buttons. It should be obvious what happens when they click.
+
+<Image
+  src="/img/patterns/button-language-bad.png"
+  alt="Avoid: A modal showing 'Are you sure you want to cancel?' with two buttons labelled 'OK' and 'Cancel'."
+  boxShadow={false}
+  dataUnstyled
+  caption='The question and button labels increase the risk of mistakes because it is unclear what happens when clicking.'
+/>
+
+<Image
+  src="/img/patterns/button-language-good.png"
+  alt="Do: A modal showing 'Are you sure you want to exit without saving?' with two buttons labelled 'Exit without saving' and 'Continue editing'."
+  boxShadow={false}
+  dataUnstyled
+  caption='Make it clear what happens. Describe both the action and the consequence in the text and the button.'
+/>
+
+### Use the wording "Previous step"
+Use the wording “Previous step” in forms instead of “Back”. This makes it clear that the action only takes the user to the previous step in the form, not out of the process.
+
+### Use “Cancel” consistently
+“Cancel” should always mean that the user cancels an action without saving or changing anything. If there is a risk of data loss, consider asking: “Are you sure you want to cancel? Your changes will be lost.” When the function is something else, use terms that describe the action, such as “Save and continue later”. This removes the need for users to interpret what will happen.
+
+## Code
+
+### Focus order
+The tab order should, as a main rule, follow the reading direction. This means that when a user navigates with the keyboard, focus should move through elements in the same order as they are visually presented.<sup>5-6</sup>
+
+If “Next” is placed to the right of “Previous”, it may be tempting to change the focus order in the code so that users reach “Next” first. This should be avoided, as it creates unpredictable behaviour for keyboard users. It is better that the focus order matches the visual order. This provides a predictable and accessible user experience.
+
+## Relevant sources
+* [1] [Simplicity Wins over Abundance of Choice (baymard.com)](https://baymard.com/learn/button-design)
+* [2] [Understanding vision impairment](https://designsystemet.no/no/best-practices/accessibility/understanding-vision-impairment)
+* [3] [Disabled states (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander)
+* [4] [Proximity Principle in Visual Design (nngroup.com)](https://www.nngroup.com/articles/gestalt-proximity/)
+* [5] [Understanding SC 2.4.3: Focus Order (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
+* [6] [2.4.3 Focus order (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/105)
