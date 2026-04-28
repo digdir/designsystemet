@@ -2,10 +2,11 @@ import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
 import { generate$Themes } from '../tokens/create/generators/$themes.js';
-import { createTokens } from '../tokens/create.js';
+import { createTokens, tokenSetDimensions } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
-import type { SizeModes, Theme } from '../tokens/types.js';
+import type { Theme } from '../tokens/types.js';
+import { colorNamesByCategory } from '../tokens/utils.js';
 import { dsfs } from '../utils/filesystem.js';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
@@ -26,9 +27,10 @@ type PreviewToken = { variable: string; value: string };
 export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets } = await createTokens(themeConfig);
 
-  const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
+  const themeNames = [themeConfig.name];
+  const colors = colorNamesByCategory(themeConfig.colors);
+  const $themes = await generate$Themes(tokenSetDimensions, themeNames, colors);
 
-  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors, sizeModes);
   const processed$themes = $themes.map(processThemeObject);
 
   // We run this to populate the `buildOptions.buildTokenFormats` with transformed tokens
