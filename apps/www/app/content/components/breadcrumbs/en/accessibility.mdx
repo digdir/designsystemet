@@ -1,8 +1,64 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## What you need to check
 
-`Breadcrumbs` can contain multiple interactive elements that must be navigable with the keyboard. Therefore, make sure that the [`SkipLink`](/en/components/docs/skip-link/overview) of the main content also skips `Breadcrumbs`.
+**`Breadcrumbs` must be handled so that it does not become too long on small screens.**
+
+Check that the breadcrumb trail does not extend beyond the visible area at a narrow viewport or high zoom.  
+If the trail becomes too long, it should be replaced with a back link.
+
+See the [Breadcrumbs documentation](/en/components/docs/breadcrumbs/code) for the recommended solution.
+
+<span data-size="sm"> 
+(WCAG: [1.4.10 Reflow](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva-aa/144))
+</span>
+
+
+<Divider/>
+\
+**Skip link must bypass `Breadcrumbs` and go directly to the main content.**
+
+Users should be able to skip repeated content without navigating through the breadcrumbs.
+
+<span data-size="sm"> 
+(WCAG: [2.4.1 Bypass blocks](https://www.uutilsynet.no/wcag-standarden/241-hoppe-over-blokker-niva-a/95))
+</span>
+
+
+<Divider/>
+\
+**The link text in `Breadcrumbs` must be understandable.**
+
+Avoid generic names or unclear abbreviations.
+
+Example: “Tax for businesses”  
+Not just: “Page 2” or “Info”
+
+<span data-size="sm"> 
+(WCAG: [2.4.4 Link purpose (in context)](https://www.uutilsynet.no/wcag-standarden/244-lenkeformal-i-kontekst-niva-aa/107))
+</span>
+
+
+<Divider/>
+\
+**`Breadcrumbs` must be consistently placed and structured across pages.**
+
+The breadcrumb trail should appear in the same location and follow the same order on all pages where it is used.
+
+<span data-size="sm"> 
+(WCAG: [3.2.3 Consistent navigation](https://www.uutilsynet.no/wcag-standarden/323-konsistent-navigasjon-niva-aa/119))
+</span>
+
+
+<Divider/>
+\
+**`Breadcrumbs` must not be the only way to navigate.**
+
+Users should have multiple ways to navigate to content.
+
+<span data-size="sm"> 
+(WCAG: [2.4.5 Multiple ways](https://www.uutilsynet.no/wcag-standarden/245-flere-mater-niva-aa/106))
+</span>
+
+<Divider/>
 
 ## Last level
 The last link should correspond to the current page. It looks like regular text, but is coded as a link with `aria-current="page"`. This way, screen readers get the correct information about which page the user is on, without other users mistakenly perceiving it as a clickable link.

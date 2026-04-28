@@ -1,9 +1,70 @@
-<Alert data-color="info">
-Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
-</Alert>
+## Dette må du sjekke selv
 
+**`Breadcrumbs` skal håndteres slik at den ikke blir for lang på små skjermer.**
 
-`Breadcrumbs` kan innehalde fleire interaktive element som må kunne navigerast med tastatur. Pass derfor på at [`SkipLink`](/no/components/docs/skip-link/overview) til hovudinnhaldet også hoppar over `Breadcrumbs`.
+Test at brødsmulestien ikke går utenfor synlig område ved smal viewport eller høy zoom. Hvis stien blir for lang, bør den erstattes med en tilbake-lenke.
+
+Se [dokumentasjon for Breadcrumbs](/no/components/docs/breadcrumbs/code) for anbefalt løsning.
+
+<span data-size="sm"> 
+WCAG: [1.4.10 Dynamisk tilpasning (Reflow)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva-aa/144)
+</span>
+
+<Divider/>
+
+\
+**Skiplink skal hoppe forbi `Breadcrumbs` og direkte til hovedinnholdet.**
+
+Brukeren skal kunne navigere forbi gjentakende innhold uten å måtte gå gjennom `Breadcrumbs`.
+
+<span data-size="sm"> 
+
+WCAG: [2.4.1 Hoppe over blokker](https://www.uutilsynet.no/wcag-standarden/241-hoppe-over-blokker-niva-a/95)
+
+</span>
+
+<Divider/>
+
+\
+**Lenketekstene i `Breadcrumbs` skal være forståelige.**
+
+Unngå generiske navn eller forkortelser som er vanskelige å forstå. 
+Eksempel: “Skatt for næringsdrivende” 
+Ikke bare: “Side 2” eller “Info”
+
+<span data-size="sm"> 
+
+WCAG: [2.4.4 Lenkeformål (i kontekst)](https://www.uutilsynet.no/wcag-standarden/244-lenkeformal-i-kontekst-niva-aa/107)
+
+</span>
+
+<Divider/>
+
+\
+**`Breadcrumbs` skal være konsistent plassert og bygget opp på tvers av sider.**
+
+Brødsmulestien skal vises på samme sted og i samme rekkefølge på alle sider der den brukes.
+
+<span data-size="sm"> 
+
+(WCAG: [3.2.3 Konsistent navigasjon](https://www.uutilsynet.no/wcag-standarden/323-konsistent-navigasjon-niva-aa/119))
+
+</span>
+
+<Divider/>
+
+\
+**`Breadcrumbs` skal ikke være eneste måte å navigere på.**
+
+Brukeren skal ha flere måter å navigere til innholdet på.
+
+<span data-size="sm"> 
+
+WCAG: [2.4.5 Flere måter](https://www.uutilsynet.no/wcag-standarden/245-flere-mater-niva-aa/106)
+
+</span>
+
+<Divider/>
 
 ## Siste nivå
 Den siste lenka skal tilsvare noverande side. Den ser ut som vanleg tekst, men er koda som ein lenkje med `aria-current="page"`. På den måten får skjermlesarar korrekt informasjon om kva side brukaren er på, utan at andre brukarar feilaktig oppfattar det som ei klikkbar lenkje.
