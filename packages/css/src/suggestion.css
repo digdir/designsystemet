@@ -159,6 +159,12 @@
         margin-top: var(--ds-size-1);
       }
 
+      @media (hover: hover) and (pointer: fine) {
+        &:not([data-empty]):where(:hover) {
+          background: var(--dsc-suggestion-option-background--hover);
+        }
+      }
+
       &[selected] {
         --_checkmark-spacing-start: var(--ds-size-2);
         --_checkmark-spacing-end: var(--ds-size-1);
@@ -183,12 +189,6 @@
       /*&[data-activedescendant],*/ /* replace selector after u-combobox update */
       &:focus-visible {
         @composes ds-focus--visible--middle from './base.css';
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        &:not([data-empty]):hover {
-          background: var(--dsc-suggestion-option-background--hover);
-        }
       }
     }
     [data-multiple] & {
