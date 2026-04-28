@@ -2,45 +2,6 @@
 
 ## Usage
 
-The last link in `Breadcrumbs` is automatically marked with `aria-current="page"`.
-
-```tsx
-<Breadcrumbs aria-label="You are here:">
-<Breadcrumbs.Link aria-label="Back to level 3">Level 3</Breadcrumbs.Link>
-<Breadcrumbs.List>
-<Breadcrumbs.Item>
-<Breadcrumbs.Link href="https://designsystemet.no/">Level 1</Breadcrumbs.Link>
-</Breadcrumbs.Item>
-<Breadcrumbs.Item>
-<Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Level 2</Breadcrumbs.Link>
-</Breadcrumbs.Item>
-</Breadcrumbs.List>
-</Breadcrumbs>
-```
-
-## Examples
-
-### Back button only
-
-If you place a `Breadcrumbs.Link` directly in `Breadcrumbs`, the link will be displayed as a back button. It is important that you are consistent in your solution, and use either the back button or the path, not both.
-
-<Story story="BackOnlyEn" />
-
-### Path only
-
-If you only put `Breadcrumbs.List` directly in `Breadcrumbs`, it will always be displayed as a path.
-This means that you will get the same display on both mobile and desktop.
-
-<Story story="ListOnlyEn" />
-
-### Path or back button based on screen width
-
-If you put both a `Breadcrumbs.Link` and a `Breadcrumbs.List` directly in `Breadcrumbs`, the back button will be displayed on screens narrower than 650px, and the path will be displayed on wider screens.
-
-<Story story="MobileViewportEn" />
-
-## HTML
-
 The class name `ds-breadcrumbs` is added to a `<ds-breadcrumbs>`.
 The web component automatically handles `aria-current="page"` on the last link in the list.
 
@@ -49,38 +10,59 @@ If you want to do this yourself, you can use `<nav class="ds-breadcrumbs" aria-l
 ```html
 <ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
   <ol>
-    <li><a href="#none">level 1</a></li>
-    <li><a href="#none">level 2</a></li>
-    <li><a href="#none">level 3</a></li>
+    <li><a href="#none">Level 1</a></li>
+    <li><a href="#none">Level 2</a></li>
+    <li><a href="#none">Level 3</a></li>
   </ol>
 </ds-breadcrumbs>
 ```
 
-### Back button only
-
-```html
-<ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
-  <a href="#none" aria-label="Back to level 2">Back to level 2</a>
-</ds-breadcrumbs>
-```
-
-### Path or back button based on screen width
-
-```html
-<ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
-  <a href="#none" aria-label="Back to level 3">
-    level 3
-  </a>
-  <ol>
-    <li><a href="#none">level 1</a></li>
-    <li><a href="#none">level 2</a></li>
-    <li><a href="#none">level 3</a></li>
-  </ol>
-</ds-breadcrumbs>
-```
 
 ## CSS variables and data attributes
+
+Sizes are controlled with [`data-size`](/en/fundamentals/code/sizes) and colors with [`data-color`](/en/fundamentals/code/colors). The component will inherit from the nearest parent with these set.
 
 <CssVariables />
 
 <CssAttributes />
+
+## Examples
+
+### Back button only
+
+If you place an `<a>` directly in `<ds-breadcrumbs>` as the only child, the link will be displayed as a back button. It is important that you are consistent in your solution, and use either the back button or the path, not both.
+
+<Story story="BackOnlyEn" />
+
+### Path only
+
+If you only put `<ol>` directly in `<ds-breadcrumbs>`, it will always be displayed as a path.
+This means that you will get the same display on both mobile and desktop.
+
+<Story story="ListOnlyEn" />
+
+### Path or back button based on screen width
+
+If you put both an `<a>` and an `<ol>` directly in `<ds-breadcrumbs>`, the back button will be displayed on screens narrower than 650px, and the path will be displayed on wider screens.
+
+<Story story="MobileViewportEn" />
+
+## React
+
+```tsx
+<Breadcrumbs aria-label="You are here:">
+  <Breadcrumbs.Link aria-label="Back to level 3">Level 3</Breadcrumbs.Link>
+  <Breadcrumbs.List>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/">Level 1</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Level 2</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+  </Breadcrumbs.List>
+</Breadcrumbs>
+```
+
+### Breadcrumbs
+
+<ReactComponentDocs />
