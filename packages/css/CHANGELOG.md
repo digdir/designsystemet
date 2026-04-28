@@ -1,5 +1,18 @@
 # Change Log
 
+## 1.14.0
+
+### Minor Changes
+
+- **Field / Radio / Checkbox / Switch**: Now supports `data-variant="outline"` for an outlined tile look. ([#4625](https://github.com/digdir/designsystemet/pull/4625))
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.14.0
+
 ## 1.13.3
 
 ### Patch Changes

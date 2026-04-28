@@ -1,5 +1,13 @@
 # @digdir/designsystemet-web
 
+## 1.14.0
+
+### Patch Changes
+
+- Update `invokers-polyfill` to 1.0.3 ([#4784](https://github.com/digdir/designsystemet/pull/4784))
+
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783))
+
 ## 1.13.3
 
 ### Patch Changes
