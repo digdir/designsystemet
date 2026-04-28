@@ -1,7 +1,7 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import type { ColorScheme } from '../../../colors/types.js';
-import type { Colors, SizeModes } from '../../types.js';
+import type { ColorNamesByCategory, SizeModes, TokenSetDimensions } from '../../types.js';
 
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
@@ -36,19 +36,19 @@ type ThemeObject_ = ThemeObject & {
 
 */
 export async function generate$Themes(
-  colorSchemes: ColorSchemes,
-  themes: string[],
-  colors: Colors,
-  sizeModes: SizeModes[],
+  tokenSetDimensions: TokenSetDimensions,
+  themeNames: string[],
+  colors: ColorNamesByCategory,
 ): Promise<ThemeObject_[]> {
+  const { colorSchemes, sizeModes } = tokenSetDimensions;
   return [
     ...generateSizeGroup(sizeModes),
-    ...(await generateThemesGroup(themes)),
-    ...generateTypographyGroup(themes),
-    ...generateColorSchemesGroup(colorSchemes, themes),
+    ...(await generateThemesGroup(themeNames)),
+    ...generateTypographyGroup(themeNames),
+    ...generateColorSchemesGroup(colorSchemes, themeNames),
     generateSemanticGroup(),
-    ...(await generateColorGroup('main', colors)),
-    ...(await generateColorGroup('support', colors)),
+    ...(await generateColorGroup('main', colors.main)),
+    ...(await generateColorGroup('support', colors.support)),
   ];
 }
 
@@ -164,10 +164,13 @@ function generateSemanticGroup(): ThemeObject_ {
   };
 }
 
-async function generateColorGroup(group: 'main' | 'support', colors: Colors): Promise<ThemeObject_[]> {
+async function generateColorGroup(
+  group: 'main' | 'support',
+  colors: ColorNamesByCategory['main'] | ColorNamesByCategory['support'],
+): Promise<ThemeObject_[]> {
   return Promise.all(
-    Object.entries(colors[group]).map(
-      async ([color]): Promise<ThemeObject_> => ({
+    colors.map(
+      async (color): Promise<ThemeObject_> => ({
         id: await createHash(`${group}-${color}`),
         name: color,
         selectedTokenSets: {
