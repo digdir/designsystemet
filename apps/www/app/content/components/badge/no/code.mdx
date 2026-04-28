@@ -5,39 +5,38 @@
 Badge rendrar teksten sin med CSS i eit `:before`-pseudoelement på ein `span`-tagg.
 Du brukar klassenavnet `ds-badge`, i saman med data atributt `data-count`.
 
-Dersom du vil ha den flytande, så må `ds-badge--position` nyttast på ein wrapper rundt elementet som `Badge` skal plasserast over.
-`data-placement` blir brukt på wrapperen for å bestemme plasseringa. Sjå nederst på sida for støtta plasseringar.
-På den kan du også setje `data-overlap="circle"` for å få sirkulær overlap.
-
 ```html
 <!-- inline uten tal -->
 <span class="ds-badge"></span>
 
 <!-- inline med tal -->
 <span class="ds-badge" data-count="9+"></span>
+```
 
-<!-- flytande over element -->
+Dersom du vil ha den flytande, så må `ds-badge--position` klassen nyttast på ein wrapper rundt elementet som badge skal plasserast over.
+`data-placement` blir brukt på wrapperen for å bestemme plasseringa. Sjå nederst på sida for støtta plasseringar.
+På den kan du også setje `data-overlap="circle"` for å få sirkulær overlap.
+
+```html
+
 <span class="ds-badge--position" data-placement="top-right" data-overlap="circle">
   <span class="ds-badge" data-count="5"></span>
-  <Icon />
+  // ikon eller anna element som badge skal plasserast over
 </span>
 ```
 
-## CSS variablar og data-attributtar
 
-<CssVariables/>
+## CSS variabler og data-attributter
+
+Størrelser styres med [`data-size`](/no/fundamentals/code/sizes) og farger med [`data-color`](/no/fundamentals/code/colors#data-color). Komponenten vil arve nærmeste forelder med disse satt.
 
 <CssAttributes />
 
+<CssVariables/>
+
+
+
 ## Eksempel
-
-
-### Variantar
-
-Du kan endre mellom `variant` og `data-color` for å få ulike fargar og stilar.
-
-<Story story="Variants" />
-
 
 ### Flytande
 
@@ -52,18 +51,12 @@ Dette fungerer også når du bruker `overlap="circle"`.
 
 ### Inline
 
-Når du skal ha `Badge` inline, plasserer du den rett i teksten eller komponenten.
+Når du skal ha `Badge` inline, plasserer du den rett i teksten eller komponenten. Her er et eksempel på badge inline i en [tab-komponent](/no/components/docs/tabs).
 
 <Story story="InTabs" />
 
-## HTML
-
-
-
 
 ## React
-
-<ReactComponentDocs />
 
 ```tsx
 import { Badge } from '@digdir/designsystemet-react';
@@ -80,3 +73,4 @@ import { Badge } from '@digdir/designsystemet-react';
   <Elem />
 </Badge.Position>
 ```
+<ReactComponentDocs />
