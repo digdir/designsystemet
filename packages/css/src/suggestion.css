@@ -1,10 +1,10 @@
 .ds-suggestion {
-  --dsc-suggestion-option-background--selected: var(--ds-color-surface-tinted);
-  --dsc-suggestion-option-border-color: var(--ds-color-base-default);
-  --dsc-suggestion-option-border-radius: var(--ds-color-base-default);
-  --dsc-suggestion-option-checkmark-size: var(--ds-size-7);
+  --dsc-suggestion-option-background--hover: var(--ds-color-surface-hover);
+  --dsc-suggestion-option-background--selected: var(--ds-color-surface-active);
+  --dsc-suggestion-option-border-radius: var(--ds-border-radius-md);
+  --dsc-suggestion-option-checkmark-size: var(--ds-size-6);
   --dsc-suggestion-option-checkmark-url: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221em%22%20height%3D%221em%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20focusable%3D%22false%22%20role%3D%22img%22%3E%3Cpath%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%20d%3D%22M18.998%206.94a.75.75%200%200%201%20.063%201.058l-8%209a.75.75%200%200%201-1.091.032l-5-5a.75.75%200%201%201%201.06-1.06l4.438%204.437%207.471-8.405A.75.75%200%200%201%2019%206.939%22%20clip-rule%3D%22evenodd%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
-  --dsc-suggestion-option-padding: var(--ds-size-2) var(--ds-size-3);
+  --dsc-suggestion-option-padding: var(--ds-size-3);
 
   --dsc-suggestion-clear-gap: var(--ds-size-2);
   --dsc-suggestion-clear-padding: var(--ds-size-1);
@@ -14,15 +14,16 @@
   --dsc-suggestion-clear-background--hover: var(--ds-color-surface-hover);
   --dsc-suggestion-clear-background--active: var(--ds-color-surface-active);
 
-  --dsc-suggestion-list-background: var(--ds-color-surface-default);
+  --dsc-suggestion-list-background: var(--ds-color-neutral-surface-default);
   --dsc-suggestion-list-border-radius: var(--ds-border-radius-md);
   --dsc-suggestion-list-box-shadow: var(--ds-shadow-md);
   --dsc-suggestion-list-color: var(--ds-color-text-default);
   --dsc-suggestion-list-gap: var(--ds-size-2);
   --dsc-suggestion-list-placement: bottom;
+  --dsc-suggestion-list-padding: var(--ds-size-3) var(--ds-size-2);
   --dsc-suggestion-border-width: var(--ds-border-width-default); /* TODO: Should have been prefixed, but kept like this for compatibility */
   --dsc-suggestion-border-style: solid;
-  --dsc-suggestion-border-color: var(--ds-color-border-default);
+  --dsc-suggestion-border-color: var(--ds-color-neutral-border-subtle);
 
   --dsc-suggestion-chip-gap: var(--ds-size-1);
   --dsc-suggestion-chip-background: var(--ds-color-base-default);
@@ -85,6 +86,10 @@
       width: var(--dsc-suggestion-chip-icon-size);
       padding-inline: 0; /*override u-combobox default*/
       margin-left: var(--dsc-suggestion-chip-gap);
+      @media (forced-colors: active) {
+        background-color: CanvasText;
+        forced-color-adjust: none; /* To be able to draw check */
+      }
     }
 
     @composes ds-print-preserve from './base.css';
@@ -100,8 +105,12 @@
   }
 
   /* Hide u-datalist custom element when not initialized yet */
-  &:is(u-datalist):not(:defined) {
+  & :is(u-datalist):not(:defined) {
     display: none;
+  }
+  /* Hide list before it has been placed by floating-ui. data-is-floating is used as a whitelist and is added by suggestion.ts (web) */
+  & :is([data-is-floating]):not([style*='translate']) {
+    opacity: 0;
   }
 
   & :is(u-datalist, datalist) {
@@ -122,7 +131,7 @@
     inset: 0 auto auto 0;
     overflow: auto;
     overscroll-behavior: contain;
-    padding: 0;
+    padding: var(--dsc-suggestion-list-padding);
 
     /* If not using popover for the list */
     &:not([popover]) {
@@ -138,32 +147,77 @@
 
     & > u-option {
       padding: var(--dsc-suggestion-option-padding);
-      padding-inline-start: var(--dsc-suggestion-option-checkmark-size);
       border: none;
-      border-inline-start: 5px solid transparent;
       outline: none;
       border-radius: var(--dsc-suggestion-option-border-radius);
       cursor: pointer;
       position: relative;
+      outline-offset: calc(var(--dsc-suggestion-option-activedecendant-outline-width) * -1);
+      line-height: 1.3;
+
+      & + u-option {
+        margin-top: var(--ds-size-1);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:not([data-empty]):where(:hover) {
+          background: var(--dsc-suggestion-option-background--hover);
+        }
+      }
 
       &[selected] {
+        --_checkmark-spacing-start: var(--ds-size-2);
+        --_checkmark-spacing-end: var(--ds-size-1);
+        padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + var(--_checkmark-spacing-start) + var(--_checkmark-spacing-end));
+        background-color: var(--dsc-suggestion-option-background--selected);
         &::before {
           content: '';
           position: absolute;
-          inset-inline-start: 0;
+          inset-inline-start: var(--_checkmark-spacing-start);
           mask: var(--dsc-suggestion-option-checkmark-url) center / contain no-repeat;
           background: currentcolor;
           width: var(--dsc-suggestion-option-checkmark-size);
           height: var(--dsc-suggestion-option-checkmark-size);
+          @media (forced-colors: active) {
+            background-color: LinkText;
+            forced-color-adjust: none; /* To be able to draw check */
+          }
         }
       }
 
-      @composes ds-focus--inset from './base.css';
-
-      @media (hover: hover) and (pointer: fine) {
-        &:not([data-empty]):hover {
-          border-inline-start-color: var(--dsc-suggestion-option-border-color);
-          background: var(--dsc-suggestion-option-background--selected);
+      /*use same effect as hover instead of regular focus ring*/
+      /*&[data-activedescendant],*/ /* replace selector after u-combobox update */
+      &:focus-visible {
+        @composes ds-focus--visible--middle from './base.css';
+      }
+    }
+    [data-multiple] & {
+      & > u-option:not([data-empty]) {
+        --_checkbox-spacing-start: var(--ds-size-3);
+        --_checkbox-spacing-end: var(--ds-size-2);
+        --_checkbox-border: max(2px, 0.125rem);
+        padding-inline-start: calc(var(--dsc-suggestion-option-checkmark-size) + var(--_checkbox-spacing-start) + var(--_checkbox-spacing-end));
+        /*mock checkbox styles copied from input.css*/
+        &::before {
+          content: '';
+          position: absolute;
+          inset-inline-start: var(--_checkbox-spacing-start);
+          mask: none;
+          width: var(--dsc-suggestion-option-checkmark-size);
+          height: var(--dsc-suggestion-option-checkmark-size);
+          border-radius: var(--ds-border-radius-sm);
+          outline: var(--_checkbox-border) solid var(--ds-color-neutral-border-default);
+          outline-offset: calc(-1 * var(--_checkbox-border));
+          padding: 0.188rem;
+          box-sizing: border-box;
+          translate: 0 calc(0.5lh - 50%);
+        }
+        &[selected]::before {
+          background-color: var(--ds-color-base-default);
+          color: var(--ds-color-base-contrast-default);
+          outline: none;
+          --_stroke-width: 0.05em;
+          @composes ds-checkbox--checked from './base.css';
         }
       }
     }
@@ -246,6 +300,10 @@
       content: '';
       mask: var(--dsc-suggestion-clear-icon-url) center / contain no-repeat;
       background: currentcolor;
+      @media (forced-colors: active) {
+        background-color: canvastext;
+        forced-color-adjust: none; /* To be able to draw check */
+      }
     }
   }
 }
