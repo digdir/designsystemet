@@ -1,60 +1,31 @@
-<Story story="Preview" language="html" />
+<Story story="Preview" defaultOpen />
 
 ## Bruk
 
 Badge rendrar teksten sin med CSS i eit `:before`-pseudoelement på ein `span`-tagg.
 Du brukar klassenavnet `ds-badge`, i saman med data-attributt `data-count`.
 
-```html
-<!-- inline uten tal -->
-<span class="ds-badge"></span>
-
-<!-- inline med tal -->
-<span class="ds-badge" data-count="9+"></span>
-```
-
-Dersom du vil ha den flytande, så må `ds-badge--position` klassen nyttast på ein wrapper rundt elementet som badge skal plasserast over.
-`data-placement` blir brukt på wrapperen for å bestemme plasseringa. Sjå seksjonen «CSS variabler og data-attributter» under for støtta verdiar.
-På den kan du også setje `data-overlap="circle"` for å få sirkulær overlap.
-
-```html
-
-<span class="ds-badge--position" data-placement="top-right" data-overlap="circle">
-  <span class="ds-badge" data-count="5"></span>
-  <!-- ikon eller anna element som badge skal plasserast over -->
-</span>
-```
-
-
 ## CSS variabler og data-attributter
 
-Størrelser styres med [`data-size`](/no/fundamentals/code/sizes) og farger med [`data-color`](/no/fundamentals/code/colors#data-color). Komponenten vil arve nærmeste forelder med disse satt.
+Størrelsar styrast med [`data-size`](/no/fundamentals/code/sizes) og fargar med [`data-color`](/no/fundamentals/code/colors). Komponenten vil arve næraste forelder med desse satt.
 
 <CssAttributes />
 
 <CssVariables/>
 
 
-
 ## Eksempel
 
 ### Flytande
 
-Du kan setje plassering med `placement`, og velge kva type `overlap` den kan skal.
+Dersom du vil ha den flytande, så må `ds-badge--position` klassen nyttast på ein wrapper rundt elementet som badge skal plasserast over.
+Bruk `data-placement` på wrapperen for å bestemme plasseringa. Sjå seksjonen «CSS variabler og data-attributter» under for støtta verdiar.
 
-<Story story="Floating" />
 
-Ikkje alle ikon har lik form, og då må du kanskje endre kor `Badge` skal plasserast. Dersom du ikkje får `Badge` til å liggje der du ynskjer, kan du bruke `style` for å overstyre plasseringa.
-Dette fungerer også når du bruker `overlap="circle"`.
+Dersom du ikkje får badge til å liggje der du ynskjer, kan du bruke `style` for å overstyre plasseringa.
+Ska badge plasserast på et sirkulært element kan du også setje `data-overlap="circle"` for å få sirkulær overlap.
 
 <Story story="CustomPlacement" />
-
-### Inline
-
-Når du skal ha `Badge` inline, plasserer du den rett i teksten eller komponenten. Her er et eksempel på badge inline i en [tab-komponent](/no/components/docs/tabs).
-
-<Story story="InTabs" />
-
 
 ## React
 
@@ -74,3 +45,9 @@ import { Badge } from '@digdir/designsystemet-react';
 </Badge.Position>
 ```
 <ReactComponentDocs />
+
+### Flytande
+
+Du kan setje plassering med `placement`, og velge kva type `overlap` den kan skal.
+
+<Story story="Floating" />
