@@ -1,29 +1,42 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview"  />
 
-```tsx
-import { Badge } from '@digdir/designsystemet-react';
+## Usage
 
-/* Inline without numbers */
-<Badge />
+`Badge` renders its text with CSS in a `:before` pseudo-element on a `span` tag.
+You use the class name `ds-badge`, in conjunction with the data attribute `data-count`.
 
-/* Inline with numbers */
-<Badge count={5} maxCount={99} />
+```html
+<!-- inline without numbers -->
+<span class="ds-badge"></span>
 
-/* Floating over element */
-<Badge.Position>
-<Badge />
-<Elem />
-</Badge.Position>
+<!-- inline with numbers -->
+<span class="ds-badge" data-count="9+"></span>
 ```
 
+If you want it to be floating, `ds-badge--position` must be used on a wrapper around the element that the `Badge` is to be placed over.
+`data-placement` is used on the wrapper to determine the placement. See the bottom of the page for supported placements.
+You can also set `data-overlap="circle"` on it to get circular overlap.
+
+```html
+
+<span class="ds-badge--position" data-placement="top-right" data-overlap="circle">
+  <span class="ds-badge" data-count="5"></span>
+  // icon or other element that the badge should be placed over
+</span>
+```
+
+
+## CSS variables and data attributes
+
+Sizes are controlled with [`data-size`](/en/fundamentals/code/sizes) and colors with [`data-color`](/en/fundamentals/code/colors#data-color). The component will inherit from the nearest parent with these set.
+
+<CssAttributes />
+
+<CssVariables/>
+
+
+
 ## Examples
-
-### Variants
-
-You can switch between `variant` and `data-color` to get different colors and styles.
-
-<Story story="Variants" />
 
 ### Floating
 
@@ -38,35 +51,26 @@ This also works when using `overlap="circle"`.
 
 ### Inline
 
-To have the `Badge` inline, place it directly in the text or component.
+To have the `Badge` inline, place it directly in the text or component. Here is an example of badge inline in a [tab component](/en/components/docs/tabs).
 
 <Story story="InTabsEn" />
 
-## HTML
 
-`Badge` renders its text with CSS in a `:before` pseudo-element on a `span` tag.
-You use the class name `ds-badge`, in conjunction with the data attribute.
+## React
 
-If you want it to be floating, `ds-badge--position` must be used on a wrapper around the element that the `Badge` is to be placed over.
-`data-placement` is used on the wrapper to determine the placement. See the bottom of the page for supported placements.
-You can also set `data-overlap="circle"` on it to get circular overlap.
+```tsx
+import { Badge } from '@digdir/designsystemet-react';
 
-```html
-<!-- inline without numbers -->
-<span class="ds-badge"></span>
+/* Inline without numbers */
+<Badge />
 
-<!-- inline with numbers -->
-<span class="ds-badge" data-count="9+"></span>
+/* Inline with numbers */
+<Badge count={5} maxCount={99} />
 
-<!-- float over element -->
-<span class="ds-badge--position" data-placement="top-right" data-overlap="circle">
-<span class="ds-badge" data-count="5"></span>
-<Icon />
-</span>
+/* Floating over element */
+<Badge.Position>
+  <Badge />
+  <Elem />
+</Badge.Position>
 ```
-
-## CSS variables and data attributes
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />
