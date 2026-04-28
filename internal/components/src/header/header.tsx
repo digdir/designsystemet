@@ -24,6 +24,7 @@ import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
 import classes from './header.module.css';
 import { SearchTrigger } from './search-trigger';
+/* comment to trigger build */
 
 export type HeaderSearchConfig = {
   /**
