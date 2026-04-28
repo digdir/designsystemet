@@ -14,6 +14,7 @@
 @import url('./input.css') layer(ds.components);
 @import url('./field.css') layer(ds.components);
 @import url('./fieldset.css') layer(ds.components);
+@import url('./file-upload.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
 @import url('./popover.css') layer(ds.components);
 @import url('./skip-link.css') layer(ds.components);
