@@ -74,7 +74,6 @@ export type PopoverProps = MergeRight<
  *   Content
  * </Popover>
  */
-
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(
     {
@@ -118,16 +117,12 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       };
 
       const handleKeydown = (event: KeyboardEvent) => {
-        if (event.key !== 'Escape' || !controlledOpen) return;
-        const isOpen =
-          popoverRef.current?.matches(':popover-open') ||
-          popoverRef.current?.classList.contains(':popover-open'); // Polyfill support
-
-        if (!isOpen) return;
-        event.preventDefault(); // Prevent closing fullscreen in Safari
-        document.querySelector<HTMLElement>(trigger)?.focus?.(); // Move focus back to trigger since `popoover="manual"` doesn't do this
-        setInternalOpen(false);
-        onClose?.();
+        if (event.key === 'Escape' && controlledOpen && isTopLayer(popover)) {
+          event.preventDefault(); // Prevent closing fullscreen in Safari
+          document.querySelector<HTMLElement>(trigger)?.focus?.(); // Move focus back to trigger since `popover="manual"` doesn't do this
+          setInternalOpen(false);
+          onClose?.();
+        }
       };
 
       popover?.togglePopover?.(controlledOpen);
@@ -163,3 +158,20 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     );
   },
 );
+
+// NOTE: This is not able to check if the popover is the most recently added #topLayer,
+// so we need another method in time, or remove the controlled popover="manual" in a v2
+const isTopLayer = (checkElement?: Element | null) => {
+  if (!checkElement) return false;
+  const { x, y, width, height } = checkElement.getBoundingClientRect();
+  const topElement = document.elementFromPoint(x + width / 2, y + height / 2);
+
+  // If the element on top is on browser #top-layer but not same as provided element, then provided element is not on top
+  for (let el = topElement; el; el = el.parentElement) {
+    if (checkElement === el) return true; // If the topElement is same as provided element, it's on top
+    if (el instanceof HTMLDialogElement && el.open) return false; // Check for open dialog
+    if (el.classList.contains(':popover-open')) return false; // Polyfill support
+    if (el.matches(':popover-open')) return false; // Native support
+  }
+  return false;
+};
