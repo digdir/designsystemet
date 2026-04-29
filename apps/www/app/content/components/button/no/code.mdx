@@ -1,4 +1,4 @@
-<Story story="Preview" />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
 Klassenavnet `ds-button` blir satt på `<button>`.
@@ -7,25 +7,6 @@ Det er tre data-attributtar du kan bruke for tilspasning:
 `data-icon` - legg på dersom knappen kun har ikon.
 `data-variant` - set variant på knappen (`primary`, `secondary`, `tertiary`).
 `data-fullWidth` - legg på dersom knappen skal vere full bredde.
-
-```html
-<button class="ds-button"type="button">Knapp</button>
-
-<!-- sekundær variant -->
-<button class="ds-button" type="button" data-variant="secondary">Knapp</button>
-
-<!-- kun ikon -->
-<button class="ds-button" type="button" data-icon="true"><svg /></button>
-```
-
-Dersom du skal ha ein knapp som laster, må du sjølv legge til laste-indikator.
-
-```html
-<button class="ds-button" type="button" aria-disabled="true" aria-busy="true">
-  <svg class="ds-spinner" />
-  Lastar...
-</button>
-```
 
 ## CSS variablar og data-attributtar
 Størrelsar styrast med [`data-size`](/no/fundamentals/code/sizes) og fargar med [`data-color`](/no/fundamentals/code/colors). Komponenten vil arve næraste forelder med desse satt.
@@ -45,7 +26,7 @@ Størrelsar styrast med [`data-size`](/no/fundamentals/code/sizes) og fargar med
 
 ### Ikon
 
-Dersom du har kun ikon i knappen kan du sette `icon={true}` for å få den firkanta. Har du anna innhald, som tekst, vil knappen automatisk få luft rundt ikonet.
+Dersom du har kun ikon i knappen kan du sette `data-icon="true"` for å få den firkanta. Har du anna innhald, som tekst, vil knappen automatisk få luft rundt ikonet.
 
 <Story story="Icons" />
 
@@ -55,15 +36,10 @@ Lenker kan få utsjånad som ein knapp, men vurder først om det er betre å bru
 
 <Story story="AsLink" />
 
-### Knappar som lastar
+### Knappar som lastar 
+Dersom du skal ha ein knapp som laster, må du sjølv legge til laste-indikator.
 
-Under brukar me `loading={true}` for å vise at knappen lastar noko. Her kan du også sende inn din eigen loading-komponent dersom vår [`Spinner`](/no/components/docs/spinner/code) ikkje passar.
-
-<Story story="Loading" />
-
-I eksempelet over blir `aria-disabled` sett automatisk når `loading={true}`. Dette er den anbefalte måten å vise at ein knapp er deaktivert på. Då kan knappen framleis få fokus når brukaren navigerer med tastatur. Slik blir skjermlesarar og andre hjelpemiddel informerte om at knappen finst, men at han ikkje er aktiv.
-
-**Merk:** Verken `loading="true"` eller `aria-disabled` hindrar automatisk at knappen utløyser `onClick`. Du må sjølv sørgje for at callback-funksjonen ikkje køyrer når knappen er deaktivert.
+Merk: Verken `aria-busy` eller `aria-disabled` hindrar automatisk at knappen utløyser `onClick`. Du må sjølv sørgje for at callback-funksjonen ikkje køyrer når knappen er deaktivert.
 
 ## React
 I React legg me også på `type="button"` som standard, for å unngå uventa submit i skjema.
@@ -75,3 +51,13 @@ import { Button } from '@digdir/designsystemet-react';
 ```
 
 <ReactComponentDocs />
+
+### Ekstra logikk for knappar som lastar
+
+I React brukar me `loading={true}` for å vise at knappen lastar noko. Her kan du også sende inn din eigen loading-komponent dersom vår [`Spinner`](/no/components/docs/spinner/code) ikkje passar.
+
+<Story story="Loading" language="react"/>
+
+I eksempelet over blir `aria-disabled` sett automatisk når `loading={true}`. Dette er den anbefalte måten å vise at ein knapp er deaktivert på. Då kan knappen framleis få fokus når brukaren navigerer med tastatur. Slik blir skjermlesarar og andre hjelpemiddel informerte om at knappen finst, men at han ikkje er aktiv.
+
+
