@@ -4,8 +4,8 @@ import { defineConfig } from 'vite';
 import { envOnlyMacros } from 'vite-env-only';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-const internalComponentsSrc = fileURLToPath(
-  new URL('../../internal/components/src/index.ts', import.meta.url),
+const internalComponentsDir = fileURLToPath(
+  new URL('../../internal/components', import.meta.url),
 );
 
 function mdxFullReload() {
@@ -34,7 +34,7 @@ export default defineConfig(({ isSsrBuild, command }) => ({
   // copy so peer-dep resolution stays correct.
   resolve:
     command === 'serve'
-      ? { alias: { '@internal/components': internalComponentsSrc } }
+      ? { alias: { '@internal/components': internalComponentsDir } }
       : undefined,
   plugins: [tsconfigPaths(), envOnlyMacros(), reactRouter(), mdxFullReload()],
   ssr: {

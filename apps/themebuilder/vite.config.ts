@@ -3,8 +3,8 @@ import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-const internalComponentsSrc = fileURLToPath(
-  new URL('../../internal/components/src/index.ts', import.meta.url),
+const internalComponentsDir = fileURLToPath(
+  new URL('../../internal/components', import.meta.url),
 );
 
 export default defineConfig(({ isSsrBuild, command }) => ({
@@ -17,7 +17,7 @@ export default defineConfig(({ isSsrBuild, command }) => ({
   // copy so peer-dep resolution stays correct.
   resolve:
     command === 'serve'
-      ? { alias: { '@internal/components': internalComponentsSrc } }
+      ? { alias: { '@internal/components': internalComponentsDir } }
       : undefined,
   build: {
     rollupOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
