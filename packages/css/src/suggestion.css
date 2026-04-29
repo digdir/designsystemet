@@ -256,20 +256,20 @@
   /**
    * Clear button
    */
-  & del[hidden],
-  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) del {
+  & :is(del[hidden], button[type='reset'][hidden]),
+  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) :is(del, button[type='reset']) {
     visibility: hidden; /* We hide the clear button when input is empty */
   }
-  &:has(del) input {
+  &:has(:is(del, button[type='reset'])) input {
     padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
   }
 
   /* Hide x native icon of input type="search" since we have a custom x-component */
-  &:has(del) input[type='search']::-webkit-search-cancel-button {
+  &:has(:is(del, button[type='reset'])) input[type='search']::-webkit-search-cancel-button {
     display: none;
   }
 
-  & del {
+  & :is(del, button[type='reset']) {
     --dsc-button-size: var(--dsc-suggestion-clear-size);
 
     display: grid;
@@ -285,6 +285,10 @@
     position: relative;
     scale: 0.75;
     z-index: 2;
+
+    &:focus {
+      outline: none; /* remove ua outline when button */
+    }
 
     @composes ds-focus from './base.css';
 
