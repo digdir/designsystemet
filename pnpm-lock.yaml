@@ -140,7 +140,7 @@ importers:
         version: link:../../packages/react
       '@internal/components':
         specifier: workspace:^
-        version: link:../../internal/components
+        version: file:internal/components(@types/react@19.2.14)(i18next@25.10.10(typescript@5.9.3))(typescript@5.9.3)
       '@internal/digdir':
         specifier: workspace:^
         version: link:../../internal/digdir
@@ -246,7 +246,7 @@ importers:
         version: link:../../packages/react
       '@internal/components':
         specifier: workspace:^
-        version: link:../../internal/components
+        version: file:internal/components(@types/react@19.2.14)(i18next@25.10.10(typescript@5.9.3))(typescript@5.9.3)
       '@internal/digdir':
         specifier: workspace:^
         version: link:../../internal/digdir
@@ -1321,9 +1321,6 @@ packages:
 
   '@internal/components@file:internal/components':
     resolution: {directory: internal/components, type: directory}
-    peerDependencies:
-      react: '>=18.3.1 || ^19.0.0'
-      react-dom: '>=18.3.1 || ^19.0.0'
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -6730,7 +6727,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 24.12.2
 
-  '@internal/components@file:internal/components(@types/react@19.2.14)(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(typescript@5.9.3)':
+  '@internal/components@file:internal/components(@types/react@19.2.14)(i18next@25.10.10(typescript@5.9.3))(typescript@5.9.3)':
     dependencies:
       '@digdir/designsystemet-css': file:packages/css
       '@digdir/designsystemet-react': file:packages/react(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
