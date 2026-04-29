@@ -1,27 +1,8 @@
-<Story story="Preview" language="html"/>
+<Story story="Preview" language="html" defaultOpen/>
 
 ## Bruk
 
-Avatar bruker klassenavnet `ds-avatar` på en `<span>` med `role="img"`.
-
-```html
-<!-- Med standard brukerikon -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann"></span>
-
-<!-- Med initialer -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann">ON</span>
-<!-- eller -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann" data-initials="ON"></span>
-
-<!-- Med bilde -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann">
-  <img src="..." aria-hidden="true" />
-</span>
-
-<!-- Sammen med synlig tekst -->
-<span class="ds-avatar" aria-hidden="true">ON</span>
-<span>Ola Nordmann</span>
-```
+Avatar bruker klassenavnet `ds-avatar` på en `<span>` med `role="img"`. Sørg for at avatar har [tilgjengelig navn]().
 
 ## CSS variabler og data-attributter
 Størrelser styres med [`data-size`](/no/fundamentals/code/sizes) og farger med [`data-color`](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
@@ -49,8 +30,7 @@ Dette kan overstyres i css med variabelen `--dsc-avatar-icon-url`. Se liste over
 
 ### Med bilde eller ikon
 
-Dersom du legger bilder eller ikon som barn vil disse få `aria-hidden="true"` automatisk for å unngå dobbel informasjon.
-Du må selv sette `aria-label` på avatar for å forklare hvem eller hva avataren representerer.
+Dersom du legger bilder eller ikon som barn vil disse få `aria-hidden="true"` automatisk for å unngå dobbel informasjon. Du må selv sette `aria-label` på avatar for å forklare hvem eller hva avataren representerer.
 
 <Story story="WithImageAndIcon" />
 
