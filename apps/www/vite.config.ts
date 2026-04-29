@@ -1,7 +1,12 @@
+import { fileURLToPath } from 'node:url';
 import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
 import { envOnlyMacros } from 'vite-env-only';
 import tsconfigPaths from 'vite-tsconfig-paths';
+
+const internalComponentsSrc = fileURLToPath(
+  new URL('../../internal/components/src/index.ts', import.meta.url),
+);
 
 function mdxFullReload() {
   return {
@@ -15,7 +20,7 @@ function mdxFullReload() {
   };
 }
 
-export default defineConfig(({ isSsrBuild }) => ({
+export default defineConfig(({ isSsrBuild, command }) => ({
   build: {
     rollupOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
   },
@@ -24,6 +29,13 @@ export default defineConfig(({ isSsrBuild }) => ({
       plugins: [],
     },
   },
+  // In dev, resolve @internal/components directly to its source so edits
+  // hot-reload. In prod (`vite build`), use the installed (pnpm-injected)
+  // copy so peer-dep resolution stays correct.
+  resolve:
+    command === 'serve'
+      ? { alias: { '@internal/components': internalComponentsSrc } }
+      : undefined,
   plugins: [tsconfigPaths(), envOnlyMacros(), reactRouter(), mdxFullReload()],
   ssr: {
     noExternal: ['@navikt/aksel-icons', 'ramda'],
