@@ -1,33 +1,37 @@
 <Story story="Preview" language="html"/>
 
-<ReactComponentDocs />
-
 ## Usage
 
-```tsx
-import { Avatar } from '@digdir/designsystemet-react';
+Avatar uses the class name `ds-avatar` on a `<span>` with `role="img"`.
 
-<>
-{/* With default user icon */}
-<Avatar aria-label="Ola Nordmann" />
+```html
+<!-- With default user icon -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann"></span>
 
-{/* With initials */}
-<Avatar aria-label="Ola Nordmann">ON</Avatar>
-{/* or */}
-<Avatar aria-label="Ola Nordmann" data-initials="ON" />
+<!-- With initials -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann">ON</span>
+<!-- or -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann" data-initials="ON"></span>
 
-{/* With image */}
-<Avatar aria-label="Ola Nordmann">
-<img src="..." />
-</Avatar>
+<!-- With image -->
+  <img src="..." aria-hidden="true" />
+</span>
 
-{/* Together with visible text */}
-<Avatar aria-hidden>ON</Avatar>
+<!-- Together with visible text -->
+<span class="ds-avatar" aria-hidden="true">ON</span>
 <span>Ola Nordmann</span>
-</>
 ```
 
-## Examples
+## CSS variables and data attributes
+
+Sizes are controlled with [`data-size`](/en/fundamentals/code/sizes) and colors with [`data-color`](/en/fundamentals/code/colors). The component will inherit the closest parent where these are set.
+
+<CssAttributes />
+
+<CssVariables />
+
+
+## Example
 
 ### Default Icon
 
@@ -36,20 +40,6 @@ If you do not send any `children`, avatar will display a default user icon.
 This can be overridden in CSS with the `--dsc-avatar-icon-url` variable. See list of CSS variables at the bottom of the page.
 
 <Story story="NoName" />
-
-### Sizes
-
-The component is controlled by `data-size`, and will inherit size from the closest parent with `data-size` set.
-
-In addition to `sm`, `md` and `lg`, avatar also supports the `xs` size.
-
-<Story story="Sizes" />
-
-### Colors
-
-All colors in your theme are valid, and the component will inherit the closest `data-color`.
-
-<Story story="ColorVariants" />
 
 ### Variants
 
@@ -65,38 +55,36 @@ You must set `aria-label` on avatar yourself to explain who or what the avatar r
 
 <Story story="WithImageAndIcon" />
 
+## React
+
+```tsx
+import { Avatar } from '@digdir/designsystemet-react';
+
+<>
+  {/* With default user icon */}
+  <Avatar aria-label="Ola Nordmann" />
+
+  {/* With initials */}
+  <Avatar aria-label="Ola Nordmann">ON</Avatar>
+  {/* or */}
+  <Avatar aria-label="Ola Nordmann" data-initials="ON" />
+
+  {/* With image */}
+  <Avatar aria-label="Ola Nordmann">
+    <img src="..." />
+  </Avatar>
+
+  {/* Together with visible text */}
+  <Avatar aria-hidden>ON</Avatar>
+  <span>Ola Nordmann</span>
+</>
+```
+
+<ReactComponentDocs />
+
 ### Composition
 
 The component should be able to be composed into other components.
 Here is an example of using avatar inside a `Dropdown` component.
 
-<Story story="InDropdown" />
-
-## HTML
-
-Avatar uses the class name `ds-avatar` on a `<span>` with `role="img"`.
-
-```html
-<!-- With default user icon -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann"></span>
-
-<!-- With initials -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann">ON</span>
-<!-- or -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann" data-initials="ON"></span>
-
-<!-- With image -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann">
-<img src="..." aria-hidden="true" />
-</span>
-
-<!-- Together with visible text -->
-<span class="ds-avatar" aria-hidden="true">ON</span>
-<span>Ola Nordmann</span>
-```
-
-## CSS variables and data attributes
-
-<CssVariables />
-
-<CssAttributes />
+<Story story="InDropdown" language="react"/>
