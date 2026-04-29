@@ -46,7 +46,7 @@
     --dsc-file-upload-background: var(--ds-color-surface-tinted);
     --dsc-file-upload-background--hover: var(--ds-color-surface-tinted);
 
-    /* Override color scale to neutral*/
+    /* Override entire color scale to neutral as a catch-all*/
     --ds-color-background-default: var(--ds-color-neutral-background-default);
     --ds-color-background-tinted: var(--ds-color-neutral-background-tinted);
     --ds-color-surface-default: var(--ds-color-neutral-surface-default);
@@ -63,11 +63,6 @@
     --ds-color-base-active: var(--ds-color-neutral-base-active);
     --ds-color-base-contrast-subtle: var(--ds-color-neutral-base-contrast-subtle);
     --ds-color-base-contrast-default: var(--ds-color-neutral-base-contrast-default);
-
-    /* We could perhaps hide the button when readonly */
-    /*  .ds-button {
-      display: none;
-    } */
   }
   &:has([aria-invalid='true']) {
     border-color: var(--ds-color-danger-border-default);
