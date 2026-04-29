@@ -11,6 +11,10 @@
   "scripts": {
     "types": "tsc --noEmit"
   },
+  "peerDependencies": {
+    "react": ">=18.3.1 || ^19.0.0",
+    "react-dom": ">=18.3.1 || ^19.0.0"
+  },
   "dependencies": {
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
