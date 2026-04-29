@@ -25,12 +25,10 @@ packageExtensions:
     peerDependenciesMeta:
       react:
         optional: true
-patchedDependencies:
-  invokers-polyfill@1.0.2: patches/invokers-polyfill@1.0.2.patch
 syncInjectedDepsAfterScripts:
   - build
   - build:all
   - build:www
   - build:themebuilder
   - build:storybook
-useNodeVersion: 24.14.1
+useNodeVersion: 24.15.0

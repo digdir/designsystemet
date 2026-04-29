@@ -58,6 +58,7 @@ export type LiveComponentProps = {
   story: string;
   layout?: 'row' | 'column' | 'centered' | 'block';
   language?: Language;
+  defaultOpen?: boolean;
   startAsInert?: boolean /*to prevent focus on load of error-summary stories*/;
 };
 
@@ -191,8 +192,8 @@ const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
         onChange={(v) => setShowHTML(v === 'true')}
         data-color='neutral'
       >
-        <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
         <ds.ToggleGroup.Item value='true'>HTML</ds.ToggleGroup.Item>
+        <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
       </ds.ToggleGroup>
       <ds.Button
         data-color='neutral'
@@ -299,11 +300,12 @@ export const LiveComponent = ({
   story,
   layout = 'centered',
   language = 'react',
+  defaultOpen = false,
   startAsInert,
 }: LiveComponentProps) => {
   const location = useLocation();
   const { t } = useTranslation();
-  const [showEditor, setShowEditor] = useState(false);
+  const [showEditor, setShowEditor] = useState(defaultOpen);
   const [colorScheme, setColorScheme] = useState<string | null>('dark');
   const [invertedColorScheme, setInvertedColorScheme] = useState<string | null>(
     'light',
