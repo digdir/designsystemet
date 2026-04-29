@@ -2,4 +2,4 @@
 "@digdir/designsystemet-web": patch
 ---
 
-Suggestion: fix accessible role from `textbox` to `combobox`.
+**Suggestion:** fix to ensure input has role `combobox` (not `textbox`) on first render.
