@@ -1,11 +1,7 @@
 <Story story="Preview" />
 
-
-
 ## Bruk
-
 Klassenavnet `ds-button` blir satt på `<button>`.
-I React legg me også på `type="button"` som standard, for å unngå uventa submit i skjema.
 
 Det er tre data-attributtar du kan bruke for tilspasning:
 `data-icon` - legg på dersom knappen kun har ikon.
@@ -32,9 +28,11 @@ Dersom du skal ha ein knapp som laster, må du sjølv legge til laste-indikator.
 ```
 
 ## CSS variablar og data-attributtar
-<CssVariables />
+Størrelsar styrast med [`data-size`](/no/fundamentals/code/sizes) og fargar med [`data-color`](/no/fundamentals/code/colors). Komponenten vil arve næraste forelder med desse satt.
 
 <CssAttributes />
+
+<CssVariables />
 
 
 ## Eksempel
@@ -44,12 +42,6 @@ Dersom du skal ha ein knapp som laster, må du sjølv legge til laste-indikator.
 `variant` brukast for å endre utsjånad på knappen.
 
 <Story story="Variants" />
-
-### Fargar
-
-Enten sett du `data-color` direkte på button, eller så arvar den frå næraste overordna element med `data-color`.
-
-<Story story="ColorVariants" />
 
 ### Ikon
 
@@ -74,6 +66,7 @@ I eksempelet over blir `aria-disabled` sett automatisk når `loading={true}`. De
 **Merk:** Verken `loading="true"` eller `aria-disabled` hindrar automatisk at knappen utløyser `onClick`. Du må sjølv sørgje for at callback-funksjonen ikkje køyrer når knappen er deaktivert.
 
 ## React
+I React legg me også på `type="button"` som standard, for å unngå uventa submit i skjema.
 
 ```tsx
 import { Button } from '@digdir/designsystemet-react';
