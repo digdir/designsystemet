@@ -1,4 +1,3 @@
-import type { DSErrorSummaryElement } from '@digdir/designsystemet-web';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useEffect, useRef, useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
@@ -86,7 +85,7 @@ WithForm.decorators = [
 
 export const ShowHideReact: Story = () => {
   const [show, setShow] = useState(false);
-  const summaryRef = useRef<DSErrorSummaryElement>(null);
+  const summaryRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (show) {
       summaryRef.current?.focus();
