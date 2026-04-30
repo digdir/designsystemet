@@ -10,10 +10,6 @@ export const Preview = () => (
   <Avatar aria-label='Ola Nordmann' variant='circle' />
 );
 
-export const NoName = () => {
-  return <Avatar aria-label='Ola' />;
-};
-
 export const Sizes = () => (
   <>
     <Avatar data-size='xs' aria-label='extra small' initials='xs' />

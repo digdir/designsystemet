@@ -14,14 +14,6 @@ Størrelser styres med [`data-size`](/no/fundamentals/code/sizes) og farger med 
 
 ## Eksempel
 
-### Standard Ikon
-
-Dersom du ikke sender inn noen `children`, vil avatar vise et standard brukerikon.
-
-Dette kan overstyres i css med variabelen `--dsc-avatar-icon-url`. Se liste over CSS variabler nederst på siden.
-
-<Story story="NoName" />
-
 ### Varianter
 
 `variant` prop kan settes til `square` eller `circle`. `circle` er standard.
@@ -29,8 +21,7 @@ Dette kan overstyres i css med variabelen `--dsc-avatar-icon-url`. Se liste over
 <Story story="ShapeVariants" />
 
 ### Med bilde eller ikon
-
-Dersom du legger bilder eller ikon som barn vil disse få `aria-hidden="true"` automatisk for å unngå dobbel informasjon. Du må selv sette `aria-label` på avatar for å forklare hvem eller hva avataren representerer.
+Avatar viser som standard et brukerikon, men dette kan overstyres i CSS med variabelen `--dsc-avatar-icon-url`. Dersom du legger bilder eller ikon som barn vil disse få `aria-hidden="true"` automatisk for å unngå dobbel informasjon. Du må selv sette `aria-label` på avatar for å forklare hvem eller hva avataren representerer.
 
 <Story story="WithImageAndIcon" />
 

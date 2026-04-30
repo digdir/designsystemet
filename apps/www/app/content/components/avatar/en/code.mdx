@@ -14,14 +14,6 @@ Sizes are controlled with [`data-size`](/en/fundamentals/code/sizes) and colors 
 
 ## Example
 
-### Default Icon
-
-If you do not send any `children`, the avatar will display a default user icon.
-
-This can be overridden in CSS with the `--dsc-avatar-icon-url` variable. See the list of CSS variables at the bottom of the page.
-
-<Story story="NoName" />
-
 ### Variants
 
 The `variant` prop can be set to `square` or `circle`. `circle` is the default.
@@ -29,10 +21,7 @@ The `variant` prop can be set to `square` or `circle`. `circle` is the default.
 <Story story="ShapeVariants" />
 
 ### With image or icon
-
-If you add images or icons as children, they will automatically get `aria-hidden="true"` to avoid duplicate information.
-
-You must set `aria-label` on the avatar yourself to explain who or what the avatar represents.
+Avatar displays a user icon by default, but this can be overridden in CSS using the `--dsc-avatar-icon-url` variable. If you add an image or icon as content inside the avatar, it will automatically receive `aria-hidden="true"` to avoid duplicate information. You must add an `aria-label` to the avatar yourself to explain who or what the avatar represents.
 
 <Story story="WithImageAndIcon" />
 
