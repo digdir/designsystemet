@@ -28,7 +28,7 @@ Merk at når du bruker `ds-card__block`, må alt innhold ligge i elementer med `
 
 Card kan brukes som navigasjonskort for å ta brukerne videre til en annen side.
 
-Det er to ulike måter å gjøre dette på.
+Det er tre ulike måter å gjøre dette på.
 
 #### 1. Kort med lenke i tittel
 
@@ -51,8 +51,7 @@ Hele kortet kan brukes som en lenke ved å bruke `<a>` som ytterst element. Dett
 
 ### 3. Kort med lenkede elementer
 
-Du kan gjøre hele kortet klikkbart ved å legge til `data-clickdelegatefor` og peke på id-en til en lenke inne i kortet.
-
+Har du et kort med flere interaktive elementer, som lenker eller knapper, kan du bruke `data-clickdelegatefor` for å gjøre hele kortet klikkbart, samtidig som det beholder semantikken til de interaktive elementene.
 
 ```html
 <div
