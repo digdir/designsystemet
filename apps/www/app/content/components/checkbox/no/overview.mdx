@@ -25,20 +25,20 @@ En checkbox for samtykke skal alltid kreve en aktiv handling, du skal aldri forh
 
 ### Gruppering
 
-De aller fleste ganger brukes checkbox i grupper, der brukerne kan velge flere alternativer. `<fieldset>` som er rundt gruppen burde ha en tittel som forklarer hva valgene handler om.
+De aller fleste ganger brukes checkbox i grupper, der brukerne kan velge flere alternativer. 
 
 <Story story="Group" />
 
-### Outline
-`variant="outline"` legger på ekstra padding og en ramme rundt valget slik at det blir en større klikkflate.
-
-<Story story="Outline" />
-
 ### Med feil
 
-Når checkbox brukes i grupper, skal feilmeldingen vises på `Fieldset`, så den blir samlet for hele gruppen.
+Når checkbox brukes i grupper, skal feilmeldingen vises samlet for hele gruppen.
 
 <Story story="WithError" />
+
+### Outline
+I noen tilfeller kan det være hensiktsmessig å fremheve valgene med en større klikkflate rundt checkboxen. Dette kan for eksempel være når en enkel liste med standard checkboxer ville gitt en visuelt svak layout, eller når valget representerer et tydelig veivalg som bør skille seg ut i grensesnittet. Det kan også brukes for å gruppere mer informasjon som hører sammen med valget, slik at tekst, beskrivelser og eventuelle tilleggsdetaljer oppleves som én samlet og sammenhengende interaksjon.
+
+<Story story="Outline" />
 
 ### Skrivebeskyttet Checkbox
 
