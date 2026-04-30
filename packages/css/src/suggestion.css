@@ -158,7 +158,9 @@
         }
       }
 
-      @composes ds-focus--inset from './base.css';
+      &[data-activedescendant] {
+        @composes ds-focus--visible--inset from './base.css';
+      }
 
       @media (hover: hover) and (pointer: fine) {
         &:not([data-empty]):hover {
