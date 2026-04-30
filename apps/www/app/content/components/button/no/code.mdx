@@ -15,7 +15,6 @@ Størrelsar styrast med [`data-size`](/no/fundamentals/code/sizes) og fargar med
 
 <CssVariables />
 
-
 ## Eksempel
 
 ### Varianter
@@ -29,12 +28,6 @@ Størrelsar styrast med [`data-size`](/no/fundamentals/code/sizes) og fargar med
 Dersom du har kun ikon i knappen kan du sette `data-icon="true"` for å få den firkanta. Har du anna innhald, som tekst, vil knappen automatisk få luft rundt ikonet.
 
 <Story story="Icons" />
-
-### Knapp som lenkje
-
-Lenker kan få utsjånad som ein knapp, men vurder først om det er betre å bruke [`Link`](/no/components/docs/link/overview)-komponenten. For å endre knappen til ei lenkje brukast `asChild`. Les meir kom [komposisjon i Designsystemet](/no/fundamentals/code/composition).
-
-<Story story="AsLink" />
 
 ### Knappar som lastar 
 Dersom du skal ha ein knapp som laster, må du sjølv legge til laste-indikator.
@@ -60,4 +53,8 @@ I React brukar me `loading={true}` for å vise at knappen lastar noko. Her kan d
 
 I eksempelet over blir `aria-disabled` sett automatisk når `loading={true}`. Dette er den anbefalte måten å vise at ein knapp er deaktivert på. Då kan knappen framleis få fokus når brukaren navigerer med tastatur. Slik blir skjermlesarar og andre hjelpemiddel informerte om at knappen finst, men at han ikkje er aktiv.
 
+### Knapp som lenkje
 
+Lenker kan få utsjånad som ein knapp, men vurder først om det er betre å bruke [`Link`](/no/components/docs/link/overview)-komponenten. For å endre knappen til ei lenkje brukast `asChild`. Les meir kom [komposisjon i Designsystemet](/no/fundamentals/code/composition).
+
+<Story story="AsLink" />
