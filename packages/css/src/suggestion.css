@@ -186,7 +186,6 @@
       }
 
       /*use same effect as hover instead of regular focus ring*/
-      /*&[data-activedescendant],*/ /* replace selector after u-combobox update */
       &[data-activedescendant] {
         @composes ds-focus--visible--middle from './base.css';
       }
