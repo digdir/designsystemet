@@ -1,6 +1,6 @@
 ## What you need to check
 
-**`Alert` that appears or updates after the page has loaded must be automatically announced by screen readers.**
+**Alert that appears or updates after the page has loaded must be automatically announced by screen readers.**
 
 Use `role="alert"` for critical messages that require immediate attention.
 Use `role="status"` for less critical messages.
@@ -11,9 +11,9 @@ WCAG: [4.1.3 Status messages](https://www.uutilsynet.no/wcag-standarden/413-stat
 
 <Divider/>
 \
-**`Alert` must be placed so that it follows the reading order.**
+**Alert must be placed so that it follows the reading order.**
 
-This means the `Alert` must appear in the DOM in a way that provides a logical reading order for screen readers. If the `Alert` has a heading, the heading level must be correct in the page structure.
+This means the Alert must appear in the DOM in a way that provides a logical reading order for screen readers. If the Alert has a heading, the heading level must be correct in the page structure.
 
 <span data-size="sm"> 
 WCAG: [1.3.1 Info and relationships](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
@@ -21,7 +21,7 @@ WCAG: [1.3.1 Info and relationships](https://www.uutilsynet.no/wcag-standarden/1
 
 <Divider/>
 \
-**`Alert` text must explain what happened and what it means for the user.**
+**Alert text must explain what happened and what it means for the user.**
 
 Example: “Your changes have been saved” or “An error occurred while saving. Please try again later”. Not just: “Error” or “Warning”.
 
@@ -31,9 +31,9 @@ See the [system notifications pattern](/en/patterns/systemnotifications#language
 
 ## Alert in a live region
 
-If you want the alert to be read out dynamically, you must place the `Alert` inside a live region. The region **must wrap around** the `Alert` component, not be placed on the component itself.
+If you want the alert to be read out dynamically, you must place the alert inside a live region. The region **must wrap around** the alert component, not be placed on the component itself.
 
-Out of the box, `Alert` is presented to screen reader users as regular static content. For alerts that appear dynamically, you can define a *live region* for screen readers yourself, but be aware of the behaviour this introduces. You can read more about this in [MDN's documentation on ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
+Out of the box, alert is presented to screen reader users as regular static content. For alerts that appear dynamically, you can define a *live region* for screen readers yourself, but be aware of the behaviour this introduces. You can read more about this in [MDN's documentation on ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
 
 Pay particular attention to the fact that the live region — that is, the element with the attribute `role="alert"`, `role="status"`, or `aria-live` with the value `"assertive"` or `"polite"` — must exist on the page **before** the alert that is to be read out.
 
