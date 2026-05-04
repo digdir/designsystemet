@@ -4,37 +4,27 @@ import { useState } from 'react';
 
 export const Preview = () => {
   return (
-    <Dropdown.TriggerContext>
-      <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
-      <Dropdown placement='bottom-end'>
-        <Dropdown.Heading>First heading</Dropdown.Heading>
+    <>
+      <Button popovertarget='dropdown'>Dropdown</Button>
+      <Dropdown id='dropdown'>
         <Dropdown.List>
           <Dropdown.Item>
-            <Dropdown.Button>Button 1.1</Dropdown.Button>
+            <Dropdown.Button>Item 1</Dropdown.Button>
           </Dropdown.Item>
           <Dropdown.Item>
-            <Dropdown.Button>Button 1.2</Dropdown.Button>
-          </Dropdown.Item>
-        </Dropdown.List>
-        <Dropdown.Heading>Second heading</Dropdown.Heading>
-        <Dropdown.List>
-          <Dropdown.Item>
-            <Dropdown.Button>Button 2.1</Dropdown.Button>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Dropdown.Button>Button 2.2</Dropdown.Button>
+            <Dropdown.Button>Item 2</Dropdown.Button>
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.TriggerContext>
+    </>
   );
 };
 
 export const Icons = () => {
   return (
-    <Dropdown.TriggerContext>
-      <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
-      <Dropdown>
+    <>
+      <Button popovertarget='dropdown-icons'>Dropdown</Button>
+      <Dropdown id='dropdown-icons'>
         <Dropdown.List>
           <Dropdown.Item>
             <Dropdown.Button asChild>
@@ -62,7 +52,35 @@ export const Icons = () => {
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.TriggerContext>
+    </>
+  );
+};
+
+export const Headings = () => {
+  return (
+    <>
+      <Button popovertarget='dropdown-headings'>Dropdown</Button>
+      <Dropdown id='dropdown-headings'>
+        <Dropdown.Heading>First heading</Dropdown.Heading>
+        <Dropdown.List>
+          <Dropdown.Item>
+            <Dropdown.Button>Button 1.1</Dropdown.Button>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button>Button 1.2</Dropdown.Button>
+          </Dropdown.Item>
+        </Dropdown.List>
+        <Dropdown.Heading>Second heading</Dropdown.Heading>
+        <Dropdown.List>
+          <Dropdown.Item>
+            <Dropdown.Button>Button 2.1</Dropdown.Button>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button>Button 2.2</Dropdown.Button>
+          </Dropdown.Item>
+        </Dropdown.List>
+      </Dropdown>
+    </>
   );
 };
 
@@ -124,17 +142,20 @@ export const ControlledEn = () => {
   );
 };
 
-export const WithoutTrigger = () => {
+export const TriggerContext = () => {
   return (
-    <>
-      <Button popovertarget='dropdown'>Dropdown</Button>
-      <Dropdown id='dropdown'>
+    <Dropdown.TriggerContext>
+      <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+      <Dropdown>
         <Dropdown.List>
           <Dropdown.Item>
-            <Dropdown.Button>Item</Dropdown.Button>
+            <Dropdown.Button>Item 1</Dropdown.Button>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button>Item 2</Dropdown.Button>
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </>
+    </Dropdown.TriggerContext>
   );
 };

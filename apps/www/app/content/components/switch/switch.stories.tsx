@@ -126,3 +126,37 @@ export const RightAligned2En = () => (
     <Divider />
   </div>
 );
+
+export const Outline = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Skru av/på lys</Fieldset.Legend>
+      <Switch variant='outline' label='Stue' checked />
+      <Switch variant='outline' label='Kjøkken' />
+      <Switch variant='outline' label='Bad' />
+      <Switch
+        label='Soverom'
+        description='Får ikke kontakt med lyspærene'
+        variant='outline'
+        readOnly
+      />
+    </Fieldset>
+  );
+};
+
+export const OutlineEn = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Turn lights on/off</Fieldset.Legend>
+      <Switch variant='outline' label='Living room' checked />
+      <Switch variant='outline' label='Kitchen' />
+      <Switch variant='outline' label='Bathroom' />
+      <Switch
+        label='Bedroom'
+        description='Unable to connect to the light bulbs'
+        variant='outline'
+        readOnly
+      />
+    </Fieldset>
+  );
+};

@@ -1,29 +1,35 @@
-import type { ColorScheme } from '../../../colors/types.js';
-import type { Colors, SizeModes } from '../../types.js';
+import type { ColorNamesByCategory, TokenSetDimensions } from '../../types.js';
 
 type Metadata = {
   tokenSetOrder: string[];
 };
 
+/**
+ * Generates metadata for the given token set dimensions, theme names, and colors.
+ *
+ * This is used to order tokens in Token Studio
+ */
 export function generate$Metadata(
-  schemes: ColorScheme[],
-  themes: string[],
-  colors: Colors,
-  sizeModes: SizeModes[],
+  tokenSetDimensions: TokenSetDimensions,
+  themeNames: string[],
+  colors: ColorNamesByCategory,
 ): Metadata {
+  const { colorSchemes, sizeModes } = tokenSetDimensions;
   return {
     tokenSetOrder: [
       'primitives/globals',
       ...sizeModes.map((size) => `primitives/modes/size/${size}`),
       'primitives/modes/size/global',
       ...sizeModes.map((size) => `primitives/modes/typography/size/${size}`),
-      ...themes.map((theme) => `primitives/modes/typography/primary/${theme}`),
-      ...themes.map((theme) => `primitives/modes/typography/secondary/${theme}`),
-      ...schemes.flatMap((scheme) => [...themes.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`)]),
-      ...themes.map((theme) => `themes/${theme}`),
+      ...themeNames.map((theme) => `primitives/modes/typography/primary/${theme}`),
+      ...themeNames.map((theme) => `primitives/modes/typography/secondary/${theme}`),
+      ...colorSchemes.flatMap((scheme) => [
+        ...themeNames.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`),
+      ]),
+      ...themeNames.map((theme) => `themes/${theme}`),
       'semantic/color',
-      ...Object.entries(colors.main).map(([color]) => `semantic/modes/main-color/${color}`),
-      ...Object.entries(colors.support).map(([color]) => `semantic/modes/support-color/${color}`),
+      ...colors.main.map((color) => `semantic/modes/main-color/${color}`),
+      ...colors.support.map((color) => `semantic/modes/support-color/${color}`),
       'semantic/style',
     ],
   };

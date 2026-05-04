@@ -1,6 +1,6 @@
 ## Dette må du sjekke selv
 
-**`Alert` som vises eller oppdateres etter at siden er lastet skal bli kunngjort automatisk av skjermlesere.**
+**Alert som vises eller oppdateres etter at siden er lastet skal bli kunngjort automatisk av skjermlesere.**
 
 Bruk `role="alert"` for kritiske meldinger som krever umiddelbar oppmerksomhet.  
 Bruk `role="status"` for mindre kritiske meldinger.
@@ -11,10 +11,10 @@ WCAG: [4.1.3 Statusbeskjeder](https://www.uutilsynet.no/wcag-standarden/413-stat
 
 <Divider/>
 \
-**`Alert` skal være plassert slik at den følger leserekkefølgen.**
+**Alert skal være plassert slik at den følger leserekkefølgen.**
 
-Dette betyr at `Alert` skal ligge i DOM på en måte som gir en logisk leserekkefølge for skjermlesere.  
-Hvis `Alert` har en overskrift, skal overskriftsnivået være korrekt i sidestrukturen.
+Dette betyr at alert skal ligge i DOM på en måte som gir en logisk leserekkefølge for skjermlesere.  
+Hvis alert har en overskrift, skal overskriftsnivået være korrekt i sidestrukturen.
 
 <span data-size="sm"> 
 WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
@@ -22,7 +22,7 @@ WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarde
 
 <Divider/>
 \
-**`Alert`-tekst skal forklare hva som har skjedd og hva det betyr for brukeren.**
+**Alert-tekst skal forklare hva som har skjedd og hva det betyr for brukeren.**
 
 Eksempel: “Endringene dine er lagret” eller “Det oppstod en feil ved lagring. Prøv igjen senere”. Ikke bare: “Feil” eller “Advarsel”.
 
@@ -32,9 +32,9 @@ Se [mønsteret for systemvarsler](/no/patterns/systemnotifications#språk) for a
 
 ## Alert i live region
 
-Dersom du vil at varselet skal bli lest opp dynamisk, må du legge `Alert` i en live region. Regionen **skal være rundt** `Alert`-komponenten, ikke på den.
+Dersom du vil at varselet skal bli lest opp dynamisk, må du legge alert i en live region. Regionen **skal være rundt** alert-komponenten, ikke på den.
 
-Ut av boksen blir `Alert` presentert for skjermleserbrukere som vanlig statisk innhold. For varsler som oppstår dynamisk kan du selv definere en *live region* for skjermlesere, men vær oppmerksom på hvilken oppførsel dette medfører. Du kan lese mer om dette i [MDN sin dokumentasjon om ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
+Ut av boksen blir alert presentert for skjermleserbrukere som vanlig statisk innhold. For varsler som oppstår dynamisk kan du selv definere en *live region* for skjermlesere, men vær oppmerksom på hvilken oppførsel dette medfører. Du kan lese mer om dette i [MDN sin dokumentasjon om ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
 
 Legg spesielt merke til at live-regionen — altså elementet med attributt `role="alert"`, `role="status"` eller `aria-live` med verdi `"assertive"` eller `"polite"` — må eksistere på siden **før** varselet som skal leses opp.
 
