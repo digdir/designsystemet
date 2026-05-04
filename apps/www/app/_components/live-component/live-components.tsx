@@ -106,8 +106,10 @@ const Editor = ({
         /<svg[^>]*>[\s\S]*?<\/svg>/gi,
         (match) => {
           const ariaAttrs = match.match(/aria-[\w-]+="[^"]*"/gi) || [];
+          const dataAttrs = match.match(/data-[\w-]+="[^"]*"/gi) || [];
           const classAttr = match.match(/class="[^"]*"/i) || [];
-          const attrs = [...classAttr, ...ariaAttrs];
+          const roleAttr = match.match(/role="[^"]*"/i) || [];
+          const attrs = [...classAttr, ...ariaAttrs, ...roleAttr, ...dataAttrs];
           return `<svg${attrs.length ? ` ${attrs.join(' ')}` : ''}></svg>`;
         },
       )
