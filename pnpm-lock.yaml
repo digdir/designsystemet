@@ -689,8 +689,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@u-elements/u-tabs':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.3
+        version: 1.0.3
     devDependencies:
       '@custom-elements-manifest/analyzer':
         specifier: 0.11.0
@@ -2588,8 +2588,8 @@ packages:
   '@u-elements/u-details@1.0.0':
     resolution: {integrity: sha512-CA0w0VTH/vWWouFWEw7XIws3RUCBm2dh7ity+sbDXgpc6yz5NkoMpeDTdB/DHpI+/YInULz0XLOTrw8b7KX3Qg==}
 
-  '@u-elements/u-tabs@1.0.1':
-    resolution: {integrity: sha512-3qAWrFtHCI7+8K2TR1LtcDTPihjANn0lGcMA7d+OZiQxMO00hWns9nKR/4OHmXc8LWLB6MWKG9e6Yg7Vs/MkjQ==}
+  '@u-elements/u-tabs@1.0.3':
+    resolution: {integrity: sha512-Jqd3YuwpWHZVrPx8qiLN4njsdQ/KZY6PbHsskC42mrnxkuR4LnnmWBoRPgcKrn7P74rRtm0MnPp0PMDZYbSorg==}
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
@@ -6535,7 +6535,7 @@ snapshots:
       '@u-elements/u-combobox': 2.0.4
       '@u-elements/u-datalist': 2.0.1
       '@u-elements/u-details': 1.0.0
-      '@u-elements/u-tabs': 1.0.1
+      '@u-elements/u-tabs': 1.0.3
 
   '@emnapi/core@1.10.0':
     dependencies:
@@ -7823,7 +7823,7 @@ snapshots:
 
   '@u-elements/u-details@1.0.0': {}
 
-  '@u-elements/u-tabs@1.0.1': {}
+  '@u-elements/u-tabs@1.0.3': {}
 
   '@ungap/structured-clone@1.3.0': {}
 
