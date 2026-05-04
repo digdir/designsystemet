@@ -60,6 +60,7 @@ export type LiveComponentProps = {
   language?: Language;
   defaultOpen?: boolean;
   startAsInert?: boolean /*to prevent focus on load of error-summary stories*/;
+  truncateSvg?: boolean;
 };
 
 //copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
@@ -279,6 +280,7 @@ const EditorWithLive = withLive(Editor) as ComponentType<{
   id?: string;
   hidden?: boolean;
   language?: Language;
+  truncateSvg?: boolean;
 }>;
 
 /**
@@ -318,6 +320,7 @@ export const LiveComponent = ({
   language = 'react',
   defaultOpen = false,
   startAsInert,
+  truncateSvg,
 }: LiveComponentProps) => {
   const location = useLocation();
   const { t } = useTranslation();
@@ -429,6 +432,7 @@ export const LiveComponent = ({
         html={html}
         hidden={!showEditor}
         language={language}
+        truncateSvg={truncateSvg}
       />
     </LiveProvider>
   );
