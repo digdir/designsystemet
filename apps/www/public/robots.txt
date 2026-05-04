@@ -1,3 +1,4 @@
 User-agent: *
+Content-Signal: ai-train=no, search=yes, ai-input=no
 Disallow: /
 Sitemap: https://designsystemet.no/sitemap.xml
