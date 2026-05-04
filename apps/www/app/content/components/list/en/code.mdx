@@ -1,15 +1,17 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Usage
 
-```tsx
-import { List } from '@digdir/designsystemet-react';
+You use either `<ul>` or `<ol>` with the class name `ds-list`.
+`<li>` is used for each list item, and does not need a class name.
 
-<List.Unordered>
-<List.Item>Item</List.Item>
-</List.Unordered>
-```
+
+## CSS variables and data attributes
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit the closest parent where these are set.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Example
 
@@ -21,27 +23,13 @@ import { List } from '@digdir/designsystemet-react';
 
 <Story story="OrderedEn" layout="column" />
 
-## HTML
+## React
+<ReactComponentDocs />
 
-You use either `<ul>` or `<ol>` with the class name `ds-list`.
-`<li>` is used for each list item, and does not need a class name.
+```tsx
+import { List } from '@digdir/designsystemet-react';
 
-```html
-<!-- unsorted list -->
-<ul class="ds-list">
-<li>Item</li>
-<li>Item</li>
-</ul>
-
-<!-- sorted list -->
-<ol class="ds-list">
-<li>Item</li>
-<li>Item</li>
-</ol>
+<List.Unordered>
+  <List.Item>Item</List.Item>
+</List.Unordered>
 ```
-
-## CSS variables and data attributes
-
-<CssVariables />
-
-<CssAttributes />
