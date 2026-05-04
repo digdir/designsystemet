@@ -18,17 +18,17 @@ reviews:
     #   instructions: 'Check for Norwegian Bokmål (nb-NO) grammar and spelling with extra care. Pay special attention to specialized terminology and Norwegian-specific words.'
     # - path: '**/*.nn.mdx'
     #   instructions: 'Check for Norwegian Nynorsk (nn-NO) grammar and spelling with extra care. Pay special attention to specialized terminology and Norwegian-specific words.'
-    - path: "*.md"
+    - path: "**/*.md"
       instructions: "Check for links, markdown formatting, headings, grammar, and spelling in multiple languages (en-US, nb-NO, nn-NO)."
     - path: "apps/www/app/content/**/*"
       instructions: "Check for links, markdown formatting, headings, grammar, and spelling in multiple languages (en-US, nb-NO, nn-NO)."
-    - path: "*.yaml"
+    - path: "**/*.yaml"
       instructions: "Check syntax."
-    - path: "*.yml"
+    - path: "**/*.yml"
       instructions: "Check syntax."
-    - path: "*.toml"
+    - path: "**/*.toml"
       instructions: "Check syntax."
-    - path: "*.json"
+    - path: "**/*.json"
       instructions: "Check syntax."
   tools:
     biome:
