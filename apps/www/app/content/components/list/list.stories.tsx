@@ -10,7 +10,7 @@ export const Preview = () => {
   );
 };
 
-export const OrderedEN = () => {
+export const OrderedEn = () => {
   return (
     <>
       <Heading
@@ -57,7 +57,7 @@ export const Ordered = () => {
   );
 };
 
-export const UnorderedEN = () => {
+export const UnorderedEn = () => {
   return (
     <>
       <Heading
@@ -147,7 +147,7 @@ export const Write2 = () => {
   );
 };
 
-export const Write1EN = () => {
+export const Write1En = () => {
   return (
     <>
       <Heading
@@ -167,7 +167,7 @@ export const Write1EN = () => {
   );
 };
 
-export const Write2EN = () => {
+export const Write2En = () => {
   return (
     <>
       <Heading

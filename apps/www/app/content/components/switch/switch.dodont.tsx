@@ -7,11 +7,11 @@ export const DontIcon = () => {
   return <Switch label='Skru av flymodus' data-color='accent' />;
 };
 
-export const DoIconEN = () => {
+export const DoIconEn = () => {
   return <Switch label='Flight mode' data-color='accent' />;
 };
 
-export const DontIconEN = () => {
+export const DontIconEn = () => {
   return <Switch label='Turn off flight mode' data-color='accent' />;
 };
 
@@ -34,7 +34,7 @@ export const DontIcon2 = () => {
   );
 };
 
-export const DoIcon2EN = () => {
+export const DoIcon2En = () => {
   return (
     <Fieldset>
       <Fieldset.Legend>Turn notifications on/off</Fieldset.Legend>
@@ -44,7 +44,7 @@ export const DoIcon2EN = () => {
   );
 };
 
-export const DontIcon2EN = () => {
+export const DontIcon2En = () => {
   return (
     <Fieldset>
       <Fieldset.Legend>Turn notifications on/off</Fieldset.Legend>
