@@ -20,7 +20,7 @@
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@navikt/aksel-icons": "8.10.1",
+    "@navikt/aksel-icons": "8.10.2",
     "@storybook/addon-a11y": "10.3.5",
     "@storybook/addon-docs": "10.3.5",
     "@storybook/addon-themes": "10.3.5",
@@ -29,13 +29,13 @@
     "@types/ramda": "0.31.1",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "@vitest/browser": "4.1.4",
+    "@vitest/browser": "4.1.5",
     "axe-playwright": "2.2.2",
     "playwright": "1.59.1",
     "ramda": "0.32.0",
     "react-docgen-typescript": "2.4.0",
     "storybook": "10.3.5",
     "storybook-addon-pseudo-states": "10.3.5",
-    "vitest": "4.1.4"
+    "vitest": "4.1.5"
   }
 }
