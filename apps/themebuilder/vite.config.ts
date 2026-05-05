@@ -13,8 +13,8 @@ export default defineConfig(({ isSsrBuild, command }) => ({
     noExternal: ['@navikt/aksel-icons', 'ramda'],
   },
   // In dev, resolve @internal/components directly to its source so edits
-  // hot-reload. In prod (`vite build`), use the installed (pnpm-injected)
-  // copy so peer-dep resolution stays correct.
+  // hot-reload. In build mode, use normal node_modules resolution so
+  // peer-dep resolution stays correct.
   resolve:
     command === 'serve'
       ? { alias: { '@internal/components': internalComponentsDir } }
