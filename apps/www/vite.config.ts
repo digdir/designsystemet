@@ -30,8 +30,8 @@ export default defineConfig(({ isSsrBuild, command }) => ({
     },
   },
   // In dev, resolve @internal/components directly to its source so edits
-  // hot-reload. In prod (`vite build`), use the installed (pnpm-injected)
-  // copy so peer-dep resolution stays correct.
+  // hot-reload. In build mode, fall back to normal package resolution via
+  // node_modules so peer-dep resolution stays correct.
   resolve:
     command === 'serve'
       ? { alias: { '@internal/components': internalComponentsDir } }
