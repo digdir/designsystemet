@@ -323,7 +323,7 @@ export const AsGridImageEn = () => {
       <Card.Block>
         <Heading>
           <Link
-            href='/no/blog/why-we-need-a-common-design-system'
+            href='/en/blog/why-we-need-a-common-design-system'
             target='_blank'
             rel='noopener noreferrer'
           >
