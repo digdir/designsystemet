@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.13.3
+
+### Patch Changes
+
+- Remove included `/configs` files that were used internally ([#4763](https://github.com/digdir/designsystemet/pull/4763))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.3
+
 ## 1.13.2
 
 ### Patch Changes

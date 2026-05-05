@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.10/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.12/schema.json",
   "assist": {
     "actions": { "source": { "organizeImports": "on" } }
   },
@@ -24,7 +24,8 @@
       "!**/.react-router/",
       "!**/package.json", // changeset wants the files to be formatted differently
       "!**/wc/public",
-      "!**/content/schemas/**/*.json"
+      "!**/content/schemas/**/*.json",
+      "!**/packages/cli/tests/**/*.css"
     ]
   },
   "formatter": {

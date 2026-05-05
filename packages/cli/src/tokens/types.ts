@@ -1,5 +1,6 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
 import type { ConfigSchemaTheme } from '../config.js';
+import type { ColorScheme } from '../index.js';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
 
 export type Token =
@@ -29,6 +30,7 @@ export const colorCategories = {
 } as const;
 
 export type ColorCategories = keyof typeof colorCategories;
+export type ColorNamesByCategory = Record<ColorCategories, string[]>;
 
 export type BuiltInColors = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 
@@ -48,6 +50,11 @@ export type ThemePermutation = {
 };
 
 export type ThemeDimension = keyof ThemePermutation;
+
+export type TokenSetDimensions = {
+  colorSchemes: ColorScheme[];
+  sizeModes: SizeModes[];
+};
 
 export type GetSDConfigOptions = {
   tokensDir?: string;
