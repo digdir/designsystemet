@@ -6,21 +6,9 @@ Use the class name `ds-search` on a wrapper element around `<input>`.
 If you want a clear button, add a `<button>` with `type="reset"`.
 Add an empty `placeholder` to `<input>` if you have a clear button.
 
-## CSS variables and data attributes
-
-Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
-
-<CssVariables />
-
-<CssAttributes />
+You can change the `variant` on the button to adjust its appearance. Alternatively, you may remove the button and use a search field with an icon.
 
 ## Examples
-
-### Variants
-
-Based on the subcomponents and the HTML structure, you can change how search is displayed.
-
-<Story story="VariantsEn" />
 
 ### With label
 
@@ -31,6 +19,14 @@ If you want a label on the search field, add a label that you connect with `Sear
 ### `<form>`
 
 <Story story="Form" layout="column" />
+
+## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## React
 

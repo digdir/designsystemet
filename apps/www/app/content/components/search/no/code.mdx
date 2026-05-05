@@ -6,21 +6,9 @@ Bruk klassenavnet `ds-search` på et wrapper-element rundt `<input>`.
 Vil du ha en tøm-knapp, legger du til en `<button>` med `type="reset"`.
 Legg til en tom `placeholder` på `<input>` dersom du har tøm-knapp.
 
-## CSS variabler og data-attributter
-
-Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
-
-<CssVariables />
-
-<CssAttributes />
+Du kan endre `variant` på button for å tilpasse visningen. Alternativt kan du fjerne knappen for å bruke et søkefelt med ikon. 
 
 ## Eksempel
-
-### Varianter
-
-Basert på delkomponentene og strukturen i HTML kan du endre hvordan search vises.
-
-<Story story="Variants" />
 
 ### Med label
 
@@ -31,6 +19,14 @@ Dersom du vil ha label på søkefeltet, må du legge til label som du kobler sam
 ### `<form>`
 
 <Story story="Form" layout="column" />
+
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## React
 
