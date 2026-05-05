@@ -1,7 +1,24 @@
-<Story story="PreviewEn" />
-<ReactComponentDocs />
+<Story story="PreviewEn" defaultOpen/>
 
 ## Usage
+
+Use the class name `ds-heading` to style an HTML `<h1>`-`<h6>` element.
+
+## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
+
+<CssVariables />
+
+<CssAttributes />
+
+## Example
+
+### Sizes
+
+<Story story="Sizes" layout="column" />
+
+## React
 
 ```tsx
 import { Heading } from '@digdir/designsystemet-react';
@@ -9,23 +26,4 @@ import { Heading } from '@digdir/designsystemet-react';
 <Heading>Title text</Heading>;
 ```
 
-## Examples
-
-### Sizes
-
-<Story story="Sizes" layout="column" />
-
-## HTML
-
-Use the class name `ds-heading` to style an HTML `<h1>`-`<h6>` element.
-
-```html
-<h1 class="ds-heading" data-size="xl">Heading level 1</h1>
-<h2 class="ds-heading" data-size="lg">Heading level 2</h2>
-```
-
-## CSS variables and data attributes
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />
