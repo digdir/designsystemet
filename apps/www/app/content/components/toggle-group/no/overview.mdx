@@ -4,22 +4,22 @@ search_terms: valggruppe, enkeltvalg, switch
 
 <Story story="Preview" />
 
-**Bruk `ToggleGroup` når**
+**Bruk toggleGroup når**
 - du skal veksle mellom visningar, til dømes mellom liste og graf  
 - innhald i ei liste eller tabell skal filtrerast  
 
-**Unngå `ToggleGroup` når**
+**Unngå toggleGroup når**
 - du har så mange val at dei ikkje får plass i breidda  
 - vala inneheld lange tekstar som gjer at gruppa verkar tung og uoversiktleg
-- alternativa er svar i eit skjema - bruk heller [`Radio`](/no/components/docs/radio/overview)  
-- valet er ein av/på-innstilling - bruk heller [`Switch`](/no/components/docs/switch/overview)  
+- alternativa er svar i eit skjema - bruk heller [radio](/no/components/docs/radio/overview)  
+- valet er ein av/på-innstilling - bruk heller [switch](/no/components/docs/switch/overview)  
 
 ## Eksempel
 
 ### Kun ikoner
-`ToggleGroup` står utan tekst bør berre brukast når ikona er lett forståelege for brukarane.
-Det kan til dømes vere ekspertbrukarar eller brukarar av interne tenester som kjenner symbola i den aktuelle `ToggleGroup` godt.
-Forklar handlingane med [`Tooltip`](/no/components/docs/tooltip/overview) når du brukar berre ikon.
+ToggleGroup står utan tekst bør berre brukast når ikona er lett forståelege for brukarane.
+Det kan til dømes vere ekspertbrukarar eller brukarar av interne tenester som kjenner symbola i den aktuelle toggleGroup godt.
+Forklar handlingane med [tooltip](/no/components/docs/tooltip/overview) når du brukar berre ikon.
 
 <Story story="OnlyIcons" />
 
@@ -28,12 +28,12 @@ Forklar handlingane med [`Tooltip`](/no/components/docs/tooltip/overview) når d
 <Story story="Secondary" />
 
 ## Retningslinjer
-Det er ikkje alltid heilt rett fram å avgjere når du bør bruke ein `ToggleGroup` i staden for eksempelvis `Tabs` eller `Radio`.
+Det er ikkje alltid heilt rett fram å avgjere når du bør bruke ein toggleGroup i staden for eksempelvis tabs eller radio.
 Valet kjem ofte an på situasjonen og korleis grensesnittet elles er bygd opp. 
-Som ein tommelfingerregel bør `ToggleGroup` berre brukast når valet har ein direkte og synleg effekt i grensesnittet, til dømes at innhaldet på sida eller eit element vert oppdatert med ein gong basert på kva brukaren vel.
+Som ein tommelfingerregel bør toggleGroup berre brukast når valet har ein direkte og synleg effekt i grensesnittet, til dømes at innhaldet på sida eller eit element vert oppdatert med ein gong basert på kva brukaren vel.
 
-`ToggleGroup` bør ha minst to val, men ikkje fleire enn at alle vala får plass i breidda.
+ToggleGroup bør ha minst to val, men ikkje fleire enn at alle vala får plass i breidda.
 Du må sjølv passe på at det er nok plass til både innhaldet i vala og talet på val utan å bryte linja. Pass på at heile komponenten får plass på skjermen, også på mobil, og at alle vala er godt synlege for brukarane.
 
 ## Tekst
-Ha gjerne med ei ledetekst for gruppa som forklarer kva vala gjeld. Skriv tydelege tekstar for vala i komponenten, og pass på at dei har same språklege form. Bruk gjerne [`Tooltip`](/no/components/docs/tooltip/overview) til å gje hint, særleg dersom du berre viser ikon.
+Ha gjerne med ei ledetekst for gruppa som forklarer kva vala gjeld. Skriv tydelege tekstar for vala i komponenten, og pass på at dei har same språklege form. Bruk gjerne [tooltip](/no/components/docs/tooltip/overview) til å gje hint, særleg dersom du berre viser ikon.

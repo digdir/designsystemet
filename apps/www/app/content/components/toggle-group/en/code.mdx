@@ -1,35 +1,7 @@
-<Story story="PreviewEn" />
-<ReactComponentDocs />
+<Story story="PreviewEn" defaultOpen />
 
 ## Usage
-
-```tsx
-import { ToggleGroup } from '@digdir/designsystemet-react';
-
-<ToggleGroup data-toggle-group='Options' defaultValue="option1">
-<ToggleGroup.Item value="option1">Option 1</ToggleGroup.Item>
-<ToggleGroup.Item value="option2">Option 2</ToggleGroup.Item>
-</ToggleGroup>
-
-```
-
-## Examples
-
-### Icons only
-Use [`Tooltip`](/en/components/docs/tooltip/code) to explain the actions when using only icons.
-
-<Story story="OnlyIconsEn" />
-
-### Controlled
-
-<Story story="ControlledEn" />
-
-### Secondary variant
-
-<Story story="SecondaryEn" />
-
-## HTML
-If you are using `@digdir/designsystemet-web`, you can implement `ToggleGroup` by using the `data-toggle-group` attribute.
+If you are using `@digdir/designsystemet-web`, you can implement toggleGroup by using the `data-toggle-group` attribute.
 
 ```html
 <fieldset class="ds-toggle-group" data-toggle-group="Text alignment" data-variant="secondary">
@@ -86,6 +58,26 @@ The remaining buttons should have `data-variant="tertiary"`.
 ```
 
 ## CSS variables and data attributes
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
+The component will inherit from the closest parent where these are set.
+
 <CssVariables />
 
 <CssAttributes />
+
+## React
+
+```tsx
+import { ToggleGroup } from '@digdir/designsystemet-react';
+
+<ToggleGroup data-toggle-group='Options' defaultValue="option1">
+  <ToggleGroup.Item value="option1">Option 1</ToggleGroup.Item>
+  <ToggleGroup.Item value="option2">Option 2</ToggleGroup.Item>
+</ToggleGroup>
+```
+
+### Controlled example
+
+<Story story="ControlledEn" language="react" />
+
+<ReactComponentDocs />
