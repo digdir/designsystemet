@@ -1,7 +1,38 @@
-<Story story="PreviewEn" />
-<ReactComponentDocs />
+<Story story="PreviewEn" defaultOpen/>
 
 ## Usage
+
+Use the class name `ds-search` on a wrapper element around `<input>`.
+If you want a clear button, add a `<button>` with `type="reset"`.
+Add an empty `placeholder` to `<input>` if you have a clear button.
+
+## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
+
+<CssVariables />
+
+<CssAttributes />
+
+## Examples
+
+### Variants
+
+Based on the subcomponents and the HTML structure, you can change how search is displayed.
+
+<Story story="VariantsEn" />
+
+### With label
+
+If you want a label on the search field, add a label that you connect with `Search.Input`. In the example, we have used field to get a connection between label and `Search.Input`.
+
+<Story story="WithLabelEn" />
+
+### `<form>`
+
+<Story story="Form" layout="column" />
+
+## React
 
 ```tsx
 import { Search } from '@digdir/designsystemet-react';
@@ -13,52 +44,4 @@ import { Search } from '@digdir/designsystemet-react';
 </Search>
 ```
 
-## Examples
-
-### Variants
-
-Based on how sub-components, and the structure of the HTML, you can change how `Search` is displayed.
-
-<Story story="VariantsEn" />
-
-### With Label
-
-If you want a label on the search field, you need to add a `Label` component that you connect with `Search.Input`. In the example, we have used `Field` to get a connection between `Label` and `Search.Input`.
-
-<Story story="WithLabelEn" />
-
-### `<form>`
-
-<Story story="Form" layout="column" />
-
-## HTML
-
-You use the class name `ds-search` on a wrapper element around `<input>`.
-If you want a "clear" button, attach a `<button>` with `type="reset"`
-
-**It is important that you add an empty `placeholder` to `<input>` if you have a "clear" button**
-
-```html
-<div class="ds-search">
-  <input
-  class="ds-input"
-  placeholder=""
-  aria-label="Search"
-  type="search"
-  >
-  <button
-  class="ds-button"
-  data-icon="true"
-  data-variant="tertiary"
-  type="reset"
-  aria-label="Clear"
-  ></button>
-</div>
-
-```
-
-## CSS variables and data attributes
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

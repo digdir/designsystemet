@@ -1,7 +1,38 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
+
+Bruk klassenavnet `ds-search` på et wrapper-element rundt `<input>`.
+Vil du ha en tøm-knapp, legger du til en `<button>` med `type="reset"`.
+Legg til en tom `placeholder` på `<input>` dersom du har tøm-knapp.
+
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
+
+## Eksempel
+
+### Varianter
+
+Basert på delkomponentene og strukturen i HTML kan du endre hvordan search vises.
+
+<Story story="Variants" />
+
+### Med label
+
+Dersom du vil ha label på søkefeltet, må du legge til label som du kobler sammen med `Search.Input`. I eksempelet har vi brukt field for å få oppkobling mellom label og `Search.Input`.
+
+<Story story="WithLabel" />
+
+### `<form>`
+
+<Story story="Form" layout="column" />
+
+## React
 
 ```tsx
 import { Search } from '@digdir/designsystemet-react';
@@ -13,53 +44,4 @@ import { Search } from '@digdir/designsystemet-react';
 </Search>
 ```
 
-## Eksempel
-
-### Varianter
-
-Basert på korleis del-komponentar, og strukturen i HTML, kan du sendre på korleis `Search` vert vist.
-
-<Story story="Variants" />
-
-### Med Label
-
-Dersom du vil ha label på søkefeltet, må du legge til en `Label` komponent som du kobler sammen med `Search.Input`. I eksempelet har vi brukt `Field` for å få oppkobling mellom `Label` og `Search.Input`.
-
-<Story story="WithLabel" />
-
-
-### `<form>`
-
-<Story story="Form" layout="column" />
-
-
-## HTML
-
-Du brukar klassenavnet `ds-search` på eit wrapper element rundt `<input>`.
-Vil du ha ein "tøm"-knapp, legg du ved ein `<button>` med `type="reset"`
-
-**Det er viktig at du legger til ein tom `placeholder` på `<input>` dersom du har "tøm"-knapp**
-
-```html
-<div class="ds-search">
-  <input
-    class="ds-input"
-    placeholder=""
-    aria-label="Søk"
-    type="search"
-  >
-  <button
-    class="ds-button"
-    data-icon="true"
-    data-variant="tertiary"
-    type="reset"
-    aria-label="Tøm"
-  ></button>
-</div>
-```
-
-## CSS variabler og data-attributter
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />
