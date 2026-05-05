@@ -1,17 +1,20 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
 
-```tsx
-import { Select, Label } from '@digdir/designsystemet-react';
-<>
-<Label>Velg et fjell</Label>
-<Select>
-  <Select.Option value="everest">Mount Everest</Select.Option>
-</Select>
-</>
-```
+Legg klassenavnet `ds-select` på `<select>`.
+
+Dersom du vil ha `readonly` på en select, må du selv stoppe `onKeyDown` og `onMouseDown` for å forhindre endring av tilstanden.
+
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+
+Klassen `ds-input` kan også brukes til å style [input](/no/components/docs/input/overview) og [textarea](/no/components/docs/textarea/overview).
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Eksempel
 
@@ -30,23 +33,17 @@ Du kan bruke `Select.Optgroup` for å gruppere alternativer i kategorier, noe so
 
 <Story story="ReadOnly" />
 
-## HTML
-Legg klassenavnet `ds-select` på `<select>`.
+## React
 
-```html
-<select class="ds-select">
-  <option value="1">Alternativ 1</option>
-  <option value="2">Alternativ 2</option>
-  <option value="3">Alternativ 3</option>
-</select>
+```tsx
+import { Select, Label } from '@digdir/designsystemet-react';
+
+<>
+  <Label>Velg et fjell</Label>
+  <Select>
+    <Select.Option value="everest">Mount Everest</Select.Option>
+  </Select>
+</>
 ```
 
-Dersom du vil ha `readonly` på en select, må du selv stoppe `onKeyDown` og `onMouseDown` for å forhindre endring av tilstanden.
-
-## CSS variabler og data-attributter
-
-Klassen `ds-input` kan bli brukt for å style [`Input`](/no/components/docs/input/overview) og [`Textarea`](/no/components/docs/textarea/overview) også.
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

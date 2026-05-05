@@ -4,14 +4,14 @@ search_terms: options, nativeselect, selection, dropdown, choose
 
 <Story story="PreviewEn" />
 
-**Use `Select` when**
+**Use select when**
 * you need to display many options and the user can choose only one  
 * you need a compact way of presenting a long list of options
 
-**Avoid `Select` when**
-* you have only a few options and enough space — use [`Radio`](/en/components/docs/radio/overview) instead  
+**Avoid select when**
+* you have only a few options and enough space — use [radio](/en/components/docs/radio/overview) instead  
 * you are navigating between pages or sections in an application  
-* the user must select multiple options. Although HTML select supports this through the `multiple` attribute, it is not user-friendly, especially on mobile. We recommend `Checkbox` or `Suggestion` for a clearer and more accessible solution.
+* the user must select multiple options. Although HTML select supports this through the `multiple` attribute, it is not user-friendly, especially on mobile. We recommend checkbox or suggestion for a clearer and more accessible solution.
 
 ## Example
 
@@ -23,26 +23,26 @@ Grouping helps organise options into categories, making long lists easier to und
 
 ### Disabled
 
-Avoid disabling `Select` if you can. It may be difficult for users to understand why the field cannot be used. Read more about [why disabled states are problematic (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) and which alternatives exist.
+Avoid disabling select if you can. It may be difficult for users to understand why the field cannot be used. Read more about [why disabled states are problematic (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) and which alternatives exist.
 
 <Story story="DisabledEn" />
 
 ### ReadOnly
 
-Use `readOnly` when you want to show a preselected value in a Select component without allowing the user to change it. This can be useful when the value is determined by the system or by an earlier step in a process and should not be editable.
+Use `readOnly` when you want to show a preselected value in select without allowing the user to change it. This can be useful when the value is determined by the system or by an earlier step in a process and should not be editable.
 
 <Story story="ReadOnlyEn" />
 
 ## Guidelines
-Use `select` when there are 7 or more options. For fewer options, radio buttons (`radio`) are often easier for users. `Select` is especially mobile friendly and provides good accessibility because it follows operating system standards. It works well when the user needs to choose one option from a list. If the user needs to select multiple options or filter the list, you should consider using `Suggestion`.
+Use select when there are 7 or more options. For fewer options, radio buttons (radio) are often easier for users. Select is especially mobile friendly and provides good accessibility because it follows operating system standards. It works well when the user needs to choose one option from a list. If the user needs to select multiple options or filter the list, you should consider using suggestion.
 
 Sort answer options alphabetically unless there is a good reason not to. Be careful about placing the most commonly used option first in cases involving personal or value-based questions, such as religion or political affiliation.
 
-**Note**: [Gov.uk recommends avoiding `select`](https://design-system.service.gov.uk/components/select) in public digital services. Their user testing shows that users often find the component difficult to use correctly. It may be better to ask multiple questions to reduce the number of options to choose from. If you ask the right questions first, radio buttons (`radio`) can be a better choice.
+**Note**: [Gov.uk recommends avoiding select](https://design-system.service.gov.uk/components/select) in public digital services. Their user testing shows that users often find the component difficult to use correctly. It may be better to ask multiple questions to reduce the number of options to choose from. If you ask the right questions first, radio buttons (radio) can be a better choice.
 
-The `select` component should always have a label. We place the label and description above the field to ensure good visibility on small screens and to avoid issues with error messages.
+Select should always have a label. We place the label and description above the field to ensure good visibility on small screens and to avoid issues with error messages.
 
-If `select` is inside a table and gets its label from the table header, the label can be hidden. However, make sure the label still makes sense, since it will still be read aloud by screen readers.
+If select is inside a table and gets its label from the table header, the label can be hidden. However, make sure the label still makes sense, since it will still be read aloud by screen readers.
 
 ## Text
 Keep the label short, preferably on a single line.
