@@ -1,13 +1,17 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
 
-```tsx
-import { Label } from '@digdir/designsystemet-react';
+Bruk klassenavnet `ds-label` for å style et HTML `<label>`-element.
+Bruk `data-weight` for å sette fontvekt.
 
-<Label>Fødselsnummer (11 sifre)</Label>;
-```
+## CSS variabler og data-attributter
+
+Størrelsar styrast med [data-size](/no/fundamentals/code/sizes) og fargar med [data-color](/no/fundamentals/code/colors). Komponenten vil arve næraste forelder med desse satt.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Eksempel
 
@@ -15,18 +19,12 @@ import { Label } from '@digdir/designsystemet-react';
 
 <Story story="Weights" layout="column" />
 
-## HTML
+## React
 
-Bruk klassenavnet `ds-label` for å style et HTML `<label>`-element.
+```tsx
+import { Label } from '@digdir/designsystemet-react';
 
-Bruk `data-weight` for å sette fontvekt.
-
-```html
-<label class="ds-label" for="my-input">Fødselsnummer (11 sifre)</label>
+<Label>Fødselsnummer (11 sifre)</Label>;
 ```
 
-## CSS variabler og data-attributter
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />
