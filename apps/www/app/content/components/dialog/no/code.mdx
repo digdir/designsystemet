@@ -1,34 +1,29 @@
-<Story story="Preview" />
-
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
 
-For å legge til egen lukk knapp, kan du enten bruke `command="close" commandfor="DIALOG-ID"` ellr `ref` og `Dialog.close()` på en knapp du lager selv.
+For å legge til egen lukkeknapp, kan du enten bruke `command="close" commandfor="DIALOG-ID"` eller `ref` og `Dialog.close()` på en knapp du lager selv.
 Dersom knappen er tom vil den få et ikon.
 Dersom knappen er direkte barn av dialogen og første element, vil den flyte til topp høyre.
+
+Hovedklassenavnet er `ds-dialog`, som blir plassert på `<dialog>`-elementet.
+Blokker inne i dialogen får klassenavn som `ds-dialog__block`.
+
+I HTML må du selv koble `<dialog>`-elementet til en trigger via `command="show-modal"` eller `command="--show-non-modal"` og `commandfor="DIALOG-ID"`.
 
 <Card data-color="info">
   Attributtene [`command` (developer.mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command) og `commandfor` er en relativt ny del av web-standarden som lar knapper utføre handlinger på andre elementer deklarativt. Vi legger automatisk til [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) for å støtte eldre nettlesere.
 </Card>
 
-```tsx
-import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
+## CSS variabler og data-attributter
 
-/* med context */
-<Dialog.TriggerContext>
-  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-  <Dialog>
-    Dialog content
-  </Dialog>
-</Dialog.TriggerContext>
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
 
-/* uten context */
-<Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
-<Dialog id="my-dialog">
-Dialog content
-</Dialog>
-```
+Alle CSS variabler brukt av `ds-dialog__block` er satt på `ds-dialog`.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Eksempel
 
@@ -57,7 +52,7 @@ Denne prop-en eksistere ikke i React sine typedefinisjoner, så vi har ignorert 
 
 ### Med blokker
 
-Bruk flere `Dialog.Block` hvis du vil dele opp dialogen med skillelinjer til for eksempel topp- og bunn-område. Merk at innhold kan ikke plasseres direkte i `Dialog` dersom du bruker `Dialog.Block`; da burde alt innholdet være inni en av av dialogens `Dialog.Block`-seksjoner.
+Bruk flere `Dialog.Block` hvis du vil dele opp dialogen med skillelinjer til for eksempel topp- og bunn-område. Merk at innhold ikke kan plasseres direkte i dialog dersom du bruker `Dialog.Block`; da burde alt innholdet være inni en av dialogens `Dialog.Block`-seksjoner.
 
 <Story story="WithBlocks" />
 
@@ -68,42 +63,24 @@ Vi legger til polyfill så `closedby="any"` også fungerer i eldre Safari.
 
 <Story story="CloseWithClickOutside" />
 
-## HTML
+## React
 
-Hovedklassenavnet er `ds-dialog`, som blir plassert på `<dialog>`-elementet.
-Blokker inne i dialogen får klassenavn som `ds-dialog__block`.
-```html
-<dialog class="ds-dialog">
-  Content
-</dialog>
+```tsx
+import { Button, Dialog } from '@digdir/designsystemet-react';
 
-<!-- med inndeling -->
-<dialog class="ds-dialog">
-  <div class="ds-dialog__block">
-    Header
-  </div>
-  <div class="ds-dialog__block">
-    Content
-  </div>
-  <div class="ds-dialog__block">
-    Footer
-  </div>
-</dialog>
+/* med context */
+<Dialog.TriggerContext>
+  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+  <Dialog>
+    Dialog content
+  </Dialog>
+</Dialog.TriggerContext>
+
+/* uten context */
+<Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
+<Dialog id="my-dialog">
+  Dialog content
+</Dialog>
 ```
 
-I HTML må du selv koble `<dialog>`-elementet til en trigger via `command="show-modal"` eller `command="--show-non-modal"` og `commandfor="DIALOG-ID"`.
-
-```html
-<button command="show-dialog" commandfor="my-dialog" type="button">Open Dialog</button>
-<dialog id="my-dialog" class="ds-dialog">
-  <div>Content</div>
-  <button command="close" commandfor="my-dialog">Close</button>
-</dialog>
-```
-
-## CSS variabler og data-attributter
-Alle CSS variabler brukt av `ds-dialog__block` er satt på `ds-dialog`.
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />
