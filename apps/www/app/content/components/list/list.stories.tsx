@@ -1,4 +1,4 @@
-import { Heading, List, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, List } from '@digdir/designsystemet-react';
 
 export const Preview = () => {
   return (

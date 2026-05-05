@@ -58,7 +58,9 @@ export type LiveComponentProps = {
   story: string;
   layout?: 'row' | 'column' | 'centered' | 'block';
   language?: Language;
+  defaultOpen?: boolean;
   startAsInert?: boolean /*to prevent focus on load of error-summary stories*/;
+  truncateSvg?: boolean;
 };
 
 //copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
@@ -80,20 +82,38 @@ type EditorProps = {
   id?: string;
   hidden?: boolean;
   language?: Language;
+  truncateSvg?: boolean;
 };
 
-const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
+const Editor = ({
+  live,
+  html,
+  id,
+  hidden,
+  language,
+  truncateSvg = true,
+}: EditorProps) => {
   const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const activateEditorRef = useRef<HTMLDivElement>(null);
   const [resetCount, setResetCount] = useState(0);
   const [showHTML, setShowHTML] = useState(language === 'html');
   const [copied, setCopied] = useState('');
-  // Truncate SVGs to <svg></svg> to reduce noise
-  const truncatedHtml = (html || 'Unable to parse html').replace(
-    /<svg[^>]*>[\s\S]*?<\/svg>/gi,
-    '<svg></svg>',
-  );
+
+  // Truncate SVGs to <svg></svg> to reduce noise, preserving aria-* and class attributes
+  const truncatedHtml = truncateSvg
+    ? (html || 'Unable to parse html').replace(
+        /<svg[^>]*>[\s\S]*?<\/svg>/gi,
+        (match) => {
+          const ariaAttrs = match.match(/aria-[\w-]+="[^"]*"/gi) || [];
+          const dataAttrs = match.match(/data-[\w-]+="[^"]*"/gi) || [];
+          const classAttr = match.match(/class="[^"]*"/i) || [];
+          const roleAttr = match.match(/role="[^"]*"/i) || [];
+          const attrs = [...classAttr, ...ariaAttrs, ...roleAttr, ...dataAttrs];
+          return `<svg${attrs.length ? ` ${attrs.join(' ')}` : ''}></svg>`;
+        },
+      )
+    : html || 'Unable to parse html';
   const rawHtml = prettify(truncatedHtml, {
     tag_wrap: 63,
     content_wrap: 70,
@@ -191,8 +211,8 @@ const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
         onChange={(v) => setShowHTML(v === 'true')}
         data-color='neutral'
       >
-        <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
         <ds.ToggleGroup.Item value='true'>HTML</ds.ToggleGroup.Item>
+        <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
       </ds.ToggleGroup>
       <ds.Button
         data-color='neutral'
@@ -262,6 +282,7 @@ const EditorWithLive = withLive(Editor) as ComponentType<{
   id?: string;
   hidden?: boolean;
   language?: Language;
+  truncateSvg?: boolean;
 }>;
 
 /**
@@ -299,11 +320,13 @@ export const LiveComponent = ({
   story,
   layout = 'centered',
   language = 'react',
+  defaultOpen = false,
   startAsInert,
+  truncateSvg,
 }: LiveComponentProps) => {
   const location = useLocation();
   const { t } = useTranslation();
-  const [showEditor, setShowEditor] = useState(false);
+  const [showEditor, setShowEditor] = useState(defaultOpen);
   const [colorScheme, setColorScheme] = useState<string | null>('dark');
   const [invertedColorScheme, setInvertedColorScheme] = useState<string | null>(
     'light',
@@ -411,6 +434,7 @@ export const LiveComponent = ({
         html={html}
         hidden={!showEditor}
         language={language}
+        truncateSvg={truncateSvg}
       />
     </LiveProvider>
   );

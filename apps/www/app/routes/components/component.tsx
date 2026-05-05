@@ -1,15 +1,10 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import {
-  Alert,
-  Button,
-  Heading,
-  Paragraph,
-} from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import type { ComponentType, ReactNode } from 'react';
+import type { ComponentType } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
 import { useTranslation } from 'react-i18next';
 import { NavLink, redirect, useRouteLoaderData } from 'react-router';
@@ -21,7 +16,6 @@ import {
   CssVariables,
   getCssVariables,
 } from '~/_components/css-variables/css-variables';
-import { DoDont } from '~/_components/do-dont/do-dont';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { IconFrame } from '~/_components/icon-frame/icon-frame';
 import { LiveComponent } from '~/_components/live-component/live-components';
@@ -37,6 +31,51 @@ import type { Route } from './+types/component';
 import classes from './component.module.css';
 
 const require = createRequire(import.meta.url);
+
+// Cache CSS resolution and parsing per cssFile — shared across all pages for the same component
+const cssCache = new Map<
+  string,
+  {
+    cssSource?: string;
+    cssVars: Record<string, string>;
+    cssAttrs: Record<string, string>;
+  }
+>();
+const warnedCssFiles = new Set<string>();
+
+const getComponentCss = (cssFile: string) => {
+  const cached = cssCache.get(cssFile);
+  if (cached) return cached;
+
+  const emptyResult = {
+    cssSource: undefined,
+    cssVars: {},
+    cssAttrs: {},
+  };
+
+  try {
+    const cssPath = require.resolve(`@digdir/designsystemet-css/${cssFile}`);
+    const cssSource = readFileSync(cssPath, 'utf-8');
+    const result = {
+      cssSource,
+      cssVars: getCssVariables(cssSource),
+      cssAttrs: getAttributes(cssSource),
+    };
+
+    cssCache.set(cssFile, result);
+    return result;
+  } catch (error) {
+    if (!warnedCssFiles.has(cssFile)) {
+      warnedCssFiles.add(cssFile);
+      console.warn(
+        `Failed to resolve or read CSS file "@digdir/designsystemet-css/${cssFile}".`,
+        error,
+      );
+    }
+
+    return emptyResult;
+  }
+};
 
 export { ErrorBoundary } from '~/root';
 
@@ -100,34 +139,9 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     jsonMetadata[lang].subtitle,
   );
 
-  // Resolve raw CSS for this component from @digdir/designsystemet-css
-
-  let cssPath: string | undefined;
-
-  try {
-    cssPath = require.resolve(
-      `@digdir/designsystemet-css/${jsonMetadata.cssFile}`,
-    );
-  } catch {
-    console.warn(
-      `Could not resolve CSS file for component ${component}: ${jsonMetadata.cssFile}`,
-    );
-  }
-
-  let cssSource: string | undefined;
-  let cssVars: {
-    [key: string]: string;
-  } = {};
-  let cssAttrs: {
-    [key: string]: string;
-  } = {};
-  if (cssPath) {
-    try {
-      cssSource = readFileSync(cssPath, 'utf-8');
-      cssVars = getCssVariables(cssSource);
-      cssAttrs = getAttributes(cssSource);
-    } catch {}
-  }
+  const { cssSource, cssVars, cssAttrs } = getComponentCss(
+    jsonMetadata.cssFile,
+  );
 
   return {
     component,
@@ -229,7 +243,6 @@ export default function Components({
           <MDXComponents
             code={mdxCode}
             components={{
-              DoDont: DoDontComponent as unknown as ComponentType<unknown>,
               ReactComponentDocs:
                 PropsTable as unknown as ComponentType<unknown>,
               CssVariables: CssVars as unknown as ComponentType<unknown>,
@@ -249,35 +262,6 @@ export default function Components({
     </>
   );
 }
-
-const DoDontComponent = ({
-  story,
-  children,
-  layout,
-}: {
-  story: string;
-  layout?: 'row' | 'column' | 'centered';
-  children?: ReactNode;
-}) => {
-  const data =
-    useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
-  if (!data) return null;
-
-  const { dodont } = data;
-
-  const foundStory = dodont.find((s) => s.name === story);
-  if (!foundStory) return <Alert lang='en'>Do/Dont not found: {story}</Alert>;
-  const variant = story.toLowerCase().includes('dont') ? 'dont' : 'do';
-  return (
-    <DoDont
-      layout={layout}
-      variant={variant}
-      code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
-    >
-      {children}
-    </DoDont>
-  );
-};
 
 const PropsTable = () => {
   const data =

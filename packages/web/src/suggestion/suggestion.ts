@@ -16,7 +16,6 @@ declare global {
 }
 
 export class DSSuggestionElement extends UHTMLComboboxElement {
-  _render?: () => void;
   _unmutate?: ReturnType<typeof onMutation>; // Using underscore instead of private fields for backwards compatibility
 
   connectedCallback() {
@@ -27,7 +26,7 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this._unmutate?.();
-    this._unmutate = this._render = undefined;
+    this._unmutate = undefined;
     off(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
 }
