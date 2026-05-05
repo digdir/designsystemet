@@ -7,6 +7,11 @@ The web component automatically fills the buttons or anchors based on the data a
 
 If you wish to use your own buttons, you can add `<a>` or `<button>` elements inside `<ds-pagination>`. If you fill these with text and do not pass any attributes, the web component will not change the buttons.
 
+### With links
+You can use pagination with links (anchor tags) for better navigation.
+
+<Story story="WithAnchorEn"/>
+
 ## CSS variables and data attributes
 
 Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
@@ -14,29 +19,6 @@ Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors wi
 <CssVariables />
 
 <CssAttributes />
-
-## Example
-
-### Default
-
-The example shows pagination with buttons that are not linked to any action.
-When you press, you will not navigate to another page.
-
-<Story story="PreviewEn" />
-
-### With links
-
-Below you see `usePagination` used with pagination to create pagination with links.
-
-You use `asChild` to change `Pagination.Button` to `<a>`.
-
-<Story story="WithAnchorEn" />
-
-### Mobile
-
-There is no built-in mobile support in pagination, but you can show fewer pages and remove text for the previous/next buttons on mobile devices.
-
-<Story story="MobileEn" />
 
 ## React
 
@@ -80,3 +62,11 @@ import { Pagination } from '@digdir/designsystemet-react';
 ```
 
 <ReactComponentDocs />
+
+### Additional logic for creating pagination with links
+
+Below you see `usePagination` used with pagination to create pagination with links.
+
+You use `asChild` to change `Pagination.Button` to `<a>`.
+
+<Story story="WithAnchorEn" language="react"/>
