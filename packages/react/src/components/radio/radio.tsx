@@ -33,7 +33,7 @@ export type RadioProps = MergeRight<
     /**
      * If outline, the radio will have a border.
      */
-    variant?: 'default' | 'outline';
+    variant?: 'outline';
   } & LabelRequired
 >;
 
