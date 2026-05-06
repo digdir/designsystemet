@@ -1,34 +1,6 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen />
 
 ## Usage
-
-```tsx
-import { Switch } from '@digdir/designsystemet-react';
-
-<Switch label="Dark mode" value="dark" />
-```
-
-## Examples
-
-### Grouping
-
-Use [Fieldset](/en/components/docs/fieldset/code) to group multiple `Switch` components together.
-
-<Story story="GroupEn" />
-
-### Outline
-`variant="outline"` adds extra padding and a border around the selection, increasing the clickable area.
-
-<Story story="OutlineEn" />
-
-### Right-aligned
-Use `position="end"` to position `Switch` on the right side of the prompt if
-you need it.
-
-<Story story="RightAlignedEn" />
-
-## HTML
 The class name `ds-input` is added to `<input>` along with `type="checkbox"` and `role="switch"`.
 
 ```html
@@ -62,6 +34,19 @@ To right-align `<input>`, add `data-position="end"` to `ds-field`.
 ## CSS variables and data attributes
 Switch is a composite component, so we show variables and data attributes from `ds-input` here.
 
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
+The component will inherit from the closest parent where these are set.
+
 <CssVariables />
 
 <CssAttributes />
+
+## React
+
+```tsx
+import { Switch } from '@digdir/designsystemet-react';
+
+<Switch label="Dark mode" value="dark" />
+```
+
+<ReactComponentDocs />
