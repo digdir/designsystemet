@@ -237,7 +237,6 @@
     border-radius: var(--ds-border-radius-sm);
   }
 
-  /*note: checkbox styles are duplicated in suggestion.css */
   &[type='checkbox']:checked {
     --_stroke-width: var(--dsc-input-stroke-width);
     @composes ds-checkbox--checked from './base.css';
