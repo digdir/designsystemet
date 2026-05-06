@@ -33,7 +33,7 @@ export type CheckboxProps = MergeRight<
     /**
      * If outline, the checkbox will have a border.
      */
-    variant?: 'default' | 'outline';
+    variant?: 'outline';
   } & LabelRequired
 >;
 
