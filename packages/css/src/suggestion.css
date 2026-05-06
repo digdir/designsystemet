@@ -135,8 +135,11 @@
     overflow: auto;
     overscroll-behavior: contain;
     padding: var(--dsc-suggestion-list-padding);
-    display: grid;
-    gap: var(--dsc-suggestion-option-gap);
+
+    &:not([hidden]) {
+      display: grid;
+      gap: var(--dsc-suggestion-option-gap);
+    }
 
     /* If not using popover for the list */
     &:not([popover]) {
