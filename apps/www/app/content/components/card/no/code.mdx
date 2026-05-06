@@ -8,7 +8,7 @@ Card har to klassenavn du kan bruke.
 
 
 ## CSS variabler og data-attributter
-Card har to css klasser, `ds-card` og `ds-card__block`, men alle css variabler er knyttet til hovedklassen `ds-card`.
+Alle css variabler er knyttet til hovedklassen `ds-card`.
 
 <CssVariables />
 
@@ -28,18 +28,16 @@ Merk at når du bruker `ds-card__block`, må alt innhold ligge i elementer med `
 
 Card kan brukes som navigasjonskort for å ta brukerne videre til en annen side.
 
-Det er tre ulike måter å gjøre dette på.
+Det er to ulike måter å gjøre dette på.
 
-
-
-#### 2. Kort som er en lenke
+#### 1. Kort som er en lenke
 
 Hele kortet kan brukes som en lenke ved å bruke `<a>` som ytterst element. Dette er nyttig når du ønsker at all tekst og innhold i Card blir lest opp av skjermlesere som én sammenhengende lenke.
 
 <Story story="AsLink" />
 
 
-### 3. Kort med lenkede elementer
+### 2. Kort med lenkede elementer
 
 Har du et kort med flere interaktive elementer, som lenker eller knapper, kan du bruke `data-clickdelegatefor` for å gjøre hele kortet klikkbart, samtidig som det beholder semantikken til de interaktive elementene.
 
