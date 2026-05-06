@@ -4,4 +4,4 @@
 "@digdir/designsystemet-web": patch
 ---
 
-**Suggestion**: fixed dropdown list being briefly visible before placement in some cases
+**Suggestion**: fixed dropdown so it no longer has a brief flash in wrong position
