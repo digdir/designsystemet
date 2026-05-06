@@ -19,6 +19,7 @@
   --dsc-suggestion-list-border-radius: var(--ds-border-radius-md);
   --dsc-suggestion-list-box-shadow: var(--ds-shadow-md);
   --dsc-suggestion-list-color: var(--ds-color-text-default);
+  --dsc-suggestion-list-offset: var(--ds-size-1);
   --dsc-suggestion-list-gap: var(--ds-size-1);
   --dsc-suggestion-list-placement: bottom;
   --dsc-suggestion-list-padding: var(--ds-size-3) var(--ds-size-2);
@@ -136,7 +137,7 @@
 
     /* If not using popover for the list */
     &:not([popover]) {
-      margin-top: var(--dsc-suggestion-list-gap);
+      margin-top: var(--dsc-suggestion-list-offset);
       z-index: 1600;
       inset: 100% 0 auto 0;
     }
@@ -144,6 +145,12 @@
     /* Hide datalist if no children */
     &:empty {
       display: none;
+    }
+
+    &:not([hidden]) {
+      display: grid;
+      align-content: start;
+      gap: var(--dsc-suggestion-list-gap);
     }
 
     & > u-option {
@@ -154,12 +161,7 @@
       cursor: pointer;
       position: relative;
       outline-offset: calc(var(--dsc-suggestion-option-activedecendant-outline-width) * -1);
-      line-height: 1.3;
-
-      & + u-option {
-        /* We use margin-top instead of display:grid and gap because of Safari compatibility */
-        margin-top: var(--dsc-suggestion-list-gap);
-      }
+      line-height: var(--ds-line-height-sm);
 
       @media (hover: hover) and (pointer: fine) {
         /* Prevent hover on "Tomt/No result found" feedback thats shown in the option list when no options are matched */
@@ -232,7 +234,7 @@
     background-repeat: no-repeat;
 
     :dir(rtl) & {
-      background-position: calc(1.2em - var(--dsc-input-stroke-width)), calc(0% + 0.8em);
+      background-position: calc(1.2em - var(--dsc-input-stroke-width)), 0.8em;
     }
 
     @media (forced-colors: active) {

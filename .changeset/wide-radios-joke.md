@@ -11,10 +11,11 @@
   - Added: 
     - `--dsc-suggestion-option-background--hover`
     - `--dsc-suggestion-list-padding` 
+    - `--dsc-suggestion-list-offset` 
     - `--dsc-suggestion-option-gap`
   - Removed: 
     - `--dsc-suggestion-option-border-color`
-  - Changed default value: 
+  - Changed default value:
     - `--dsc-suggestion-option-background--selected`
     - `--dsc-suggestion-option-border-radius` 
     - `--dsc-suggestion-option-padding`
