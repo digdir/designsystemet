@@ -155,8 +155,11 @@
       position: relative;
       outline-offset: calc(var(--dsc-suggestion-option-activedecendant-outline-width) * -1);
       line-height: 1.3;
-      /* We use margin-top instead of display:grid and gap because of Safari compatibility */
-      margin-top: var(--dsc-suggestion-list-gap);
+
+      & + u-option {
+        /* We use margin-top instead of display:grid and gap because of Safari compatibility */
+        margin-top: var(--dsc-suggestion-list-gap);
+      }
 
       @media (hover: hover) and (pointer: fine) {
         /* Prevent hover on "Tomt/No result found" feedback thats shown in the option list when no options are matched */
