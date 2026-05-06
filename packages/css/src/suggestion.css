@@ -4,9 +4,8 @@
   --dsc-suggestion-option-border-radius: var(--ds-border-radius-md);
   --dsc-suggestion-option-checkmark-size: var(--ds-size-6);
   --dsc-suggestion-option-checkmark-url: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221em%22%20height%3D%221em%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20focusable%3D%22false%22%20role%3D%22img%22%3E%3Cpath%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%20d%3D%22M18.998%206.94a.75.75%200%200%201%20.063%201.058l-8%209a.75.75%200%200%201-1.091.032l-5-5a.75.75%200%201%201%201.06-1.06l4.438%204.437%207.471-8.405A.75.75%200%200%201%2019%206.939%22%20clip-rule%3D%22evenodd%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
-  --dsc-suggestion-option-checkmark-gap: var(--ds-size-2);
   --dsc-suggestion-option-padding: var(--ds-size-3);
-  --dsc-suggestion-option-gap: var(--ds-size-1);
+  --dsc-suggestion-option-gap: var(--ds-size-2);
 
   --dsc-suggestion-clear-gap: var(--ds-size-2);
   --dsc-suggestion-clear-padding: var(--ds-size-1);
@@ -20,7 +19,7 @@
   --dsc-suggestion-list-border-radius: var(--ds-border-radius-md);
   --dsc-suggestion-list-box-shadow: var(--ds-shadow-md);
   --dsc-suggestion-list-color: var(--ds-color-text-default);
-  --dsc-suggestion-list-gap: var(--ds-size-2);
+  --dsc-suggestion-list-gap: var(--ds-size-1);
   --dsc-suggestion-list-placement: bottom;
   --dsc-suggestion-list-padding: var(--ds-size-3) var(--ds-size-2);
   --dsc-suggestion-border-width: var(--ds-border-width-default); /* TODO: Should have been prefixed, but kept like this for compatibility */
@@ -137,12 +136,11 @@
 
     &:not([hidden]) {
       display: grid;
-      gap: var(--dsc-suggestion-option-gap);
+      gap: var(--dsc-suggestion-list-gap);
     }
 
     /* If not using popover for the list */
     &:not([popover]) {
-      margin-top: var(--dsc-suggestion-list-gap);
       z-index: 1600;
       inset: 100% 0 auto 0;
     }
@@ -170,11 +168,7 @@
       }
 
       &[selected] {
-        padding-inline-start: calc(
-          var(--dsc-suggestion-option-padding) +
-          var(--dsc-suggestion-option-checkmark-size) +
-          var(--dsc-suggestion-option-checkmark-gap)
-        );
+        padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));
         background-color: var(--dsc-suggestion-option-background--selected);
         &::before {
           content: '';
@@ -200,11 +194,7 @@
       & > u-option:not([data-empty]) {
         --dsc-suggestion-option-checkmark-border: max(2px, 0.125rem);
 
-        padding-inline-start: calc(
-          var(--dsc-suggestion-option-padding) +
-          var(--dsc-suggestion-option-checkmark-size) +
-          var(--dsc-suggestion-option-checkmark-gap)
-        );
+        padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));
         /*mock checkbox styles copied from input.css*/
         &::before {
           content: '';
