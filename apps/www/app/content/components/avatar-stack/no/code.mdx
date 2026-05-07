@@ -83,10 +83,6 @@ Du kan ikke bruke `data-size` for å endre størrelsen på avatarer i en avatar 
 Avatar stack bruker CSS `mask` for å lage det synlige mellomrommet mellom avatarene. Standard er 2px, men kan tilpasses med `gap`.
 <Story story="Gap" layout='block' />
 
-### Link og tooltip
-Avatarer i avatar stack kan ha tooltip og være lenker, men vær obs på tilgjengelighetshensyn. Bruk `asChild` for å gjøre en avatar til en lenke.
-<Story story="WithTooltipAndLink" layout='block' />
-
 ## React
 
 ```tsx
@@ -102,3 +98,7 @@ import { EXPERIMENTAL_AvatarStack as AvatarStack, Avatar } from '@digdir/designs
 ```
 
 <ReactComponentDocs />
+
+### Ekstra logikk for link
+Bruk `asChild` for å gjøre en avatar til en lenke.
+<Story story="WithTooltipAndLink" layout='block' />
