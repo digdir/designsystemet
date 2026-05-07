@@ -33,7 +33,7 @@ export type SwitchProps = MergeRight<
     /**
      * If outline, the switch will have a border.
      */
-    variant?: 'default' | 'outline';
+    variant?: 'outline';
   } & LabelRequired
 >;
 
