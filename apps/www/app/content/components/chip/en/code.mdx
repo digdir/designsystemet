@@ -1,75 +1,41 @@
-<Story story="PreviewEn" />
-
-<ReactComponentDocs />
+<Story story="PreviewEn" defaultOpen />
 
 ## Usage
 
-```tsx
-import { Chip } from '@digdir/designsystemet-react';
+Chip uses two different HTML structures, but both have the class name `ds-chip`.
 
-// like radio
-<Chip.Radio name="my-chip">Radio</Chip.Radio>;
-
-// as checkbox
-<Chip.Checkbox name="my-chip">Checkbox</Chip.Checkbox>;
-
-// as removable
-<Chip.Removable>Renewable</Chip.Removable>;
-
-// as button
-<Chip.Button>Button</Chip.Button>;
-```
-
-## Examples
-
-### `Chip.Checkbox`
-
-<Story story="CheckboxVariantEn" />
-
-### `Chip.Removable`
-
-Remember `aria-label` if the contents of `Chip` do not explain that it can be removed.
-
-<Story story="RemovableEn" />
-
-### `Chip.Button`
-
-<Story story="AsButtonEn" />
-## HTML
-`Chip` uses two different HTML structures, but both have the class name `ds-chip`.
-
-### Like radio or checkbox
+### As radio or checkbox
 
 Notice that we put `<input>` inside `<label>`, this means you don't need to connect them with `for` and `id`.
 
 ```html
 <!-- radio -->
 <label class="ds-chip">
-<input
-class="ds-input"
-type="radio"
-value="bokmål"
-name="my-radio"
->
-Bokmål
+  <input
+    class="ds-input"
+    type="radio"
+    value="bokmål"
+    name="my-radio"
+  >
+  Bokmål
 </label>
 
 <!-- checkbox -->
 <label class="ds-chip">
-<input
-class="ds-input"
-type="checkbox"
-value="value"
-name="my-checkbox"
->
-Checkbox
+  <input
+    class="ds-input"
+    type="checkbox"
+    value="value"
+    name="my-checkbox"
+  >
+  Checkbox
 </label>
 ```
 
 ### As removable or button
 
-A removable `Chip` uses a `<button>` element, but `data-removable="true"` has been added to indicate that it is a removable `Chip`.
-Then a cross will appear to the right of `Chip`, this is drawn with CSS.
+A removable chip uses a `<button>` element, but `data-removable="true"` has been added to indicate that it is a removable chip.
+Then a cross will appear to the right of the chip, this is drawn with CSS.
 
 ```html
 <!-- button -->
@@ -77,17 +43,40 @@ Then a cross will appear to the right of `Chip`, this is drawn with CSS.
 
 <!-- removable -->
 <button
-class="ds-chip"
-type="button"
-data-removable="true"
-aria-label="Delete Norway"
+  class="ds-chip"
+  type="button"
+  data-removable="true"
+  aria-label="Delete Norway"
 >Norway</button>
 ```
 
 ## CSS variables and data attributes
 
-`Chip` also uses `ds-input` internally when it is a radio or checkbox.
+Chip also uses `ds-input` internally when it is a radio or checkbox.
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
+The component will inherit from the closest parent where these are set.
 
 <CssVariables />
 
 <CssAttributes />
+
+## React
+
+```tsx
+import { Chip } from '@digdir/designsystemet-react';
+
+// as radio
+<Chip.Radio name="my-chip">Radio</Chip.Radio>;
+
+// as checkbox
+<Chip.Checkbox name="my-chip">Checkbox</Chip.Checkbox>;
+
+// as removable
+<Chip.Removable>Removable</Chip.Removable>;
+
+// as button
+<Chip.Button>Button</Chip.Button>;
+```
+
+<ReactComponentDocs />
