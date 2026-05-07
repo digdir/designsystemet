@@ -32,3 +32,4 @@ syncInjectedDepsAfterScripts:
   - build:themebuilder
   - build:storybook
 useNodeVersion: 24.15.0
+blockExoticSubdeps: true
