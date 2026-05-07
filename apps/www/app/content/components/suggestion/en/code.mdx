@@ -2,52 +2,13 @@
 Suggestion is under development. If you find any errors or bugs, please report them on Github or Slack.
 </Alert>
 
-<Story story="PreviewEn" />
-<ReactComponentDocs />
+<Story story="PreviewEn" defaultOpen />
 
 ## Usage
-`Suggestion` is based on [u-combobox from u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). It is inspected by [open-ui's combobox pattern (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
+Suggestion is based on [u-combobox from u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). It is inspired by [open-ui's combobox pattern (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
 
-```tsx
-import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-react'
-
-<Suggestion>
-  <Suggestion.Input />
-  <Suggestion.Clear />
-  <Suggestion.List>
-    <Suggestion.Empty>Empty</Suggestion.Empty>
-    <Suggestion.Option label="Sogndal" value="sogndal">
-    Sogndal
-    </Suggestion.Option>
-    <Suggestion.Option label="Oslo" value="oslo">
-    Oslo
-    </Suggestion.Option>
-  </Suggestion.List>
-</Suggestion>
-```
-
-## Examples
-
-### Multiple Choice
-
-Use `multiple` on `Suggestion`.
-If you want to change how selected options are displayed, you can use `renderSelected`.
-
-<Story story='MultipleEn' />
-
-### Controlled Multiple Choice
-
-<Story story='ControlledMultipleEn' layout='column' />
-
-### Adding new options
-
-With `creatable` on `Suggestion`, a user can create new selected options by entering text in the input and pressing <kbd>Enter</kbd>.
-
-<Story story='CreatableEn' layout='column' />
-
-## HTML
 `ds-suggestion` is an extension of `u-combobox` from u-elements.
-You can find general documentation on using `u-combobox` at u-elements:
+You can find general documentation on using `ds-combobox` at u-elements:
 [https://u-elements.github.io/u-elements/elements/u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
 
 To get the Design System styling, add the class name `ds-suggestion` to the `<ds-combobox>` element.
@@ -66,11 +27,59 @@ If you enable multiple choice, `<data>` should have the class name `ds-chip` and
 </ds-suggestion>
 ```
 
+## Examples
+
+### Multiple choice
+To allow users to select multiple options, use `data-multiple` on suggestion.
+
+<Story story='MultipleEn' />
+
+### Adding new options
+
+With `data-creatable` on suggestion, a user can create new selected options by entering text in the input and pressing <kbd>Enter</kbd>.
+
+<Story story='CreatableEn' layout='column' />
+
+### Filtering
+Filtering is enabled by default, and it searches based on the text in the input field. You can provide your own filter logic. The example below shows how to turn filtering off entirely.
+
+<Story story='Filter' />
+
 ## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
+The component will inherit from the closest parent where these are set.
 
 <CssVariables />
 
 <CssAttributes />
 
-`Suggestion` is based on [u-combobox from u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox).
-It is inspected by [open-ui's combobox pattern (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
+Suggestion is based on [u-combobox from u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox).
+It is inspired by [open-ui's combobox pattern (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
+
+
+## React
+
+```tsx
+import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-react'
+
+<Suggestion>
+  <Suggestion.Input />
+  <Suggestion.Clear />
+  <Suggestion.List>
+    <Suggestion.Empty>Empty</Suggestion.Empty>
+    <Suggestion.Option label="Sogndal" value="sogndal">
+      Sogndal
+    </Suggestion.Option>
+    <Suggestion.Option label="Oslo" value="oslo">
+      Oslo
+    </Suggestion.Option>
+  </Suggestion.List>
+</Suggestion>
+```
+
+### Controlled multiple choice example
+
+<Story story='ControlledMultipleEn' layout='column' language="react" />
+
+<ReactComponentDocs />

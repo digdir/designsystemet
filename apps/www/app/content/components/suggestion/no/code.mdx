@@ -2,51 +2,12 @@
 Suggestion er under utvikling. Finner du feil eller mangler, meld fra på Github eller Slack.
 </Alert>
 
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen />
 
 ## Bruk
-`Suggestion` baserer seg på [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). Den er inspisert av [open-ui sitt combobox mønster (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
+Suggestion baserer seg på [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). Den er inspisert av [open-ui sitt combobox mønster (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
 
-```tsx
-import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-react'
-
-<Suggestion>
-  <Suggestion.Input />
-  <Suggestion.Clear />
-  <Suggestion.List>
-    <Suggestion.Empty>Tomt</Suggestion.Empty>
-    <Suggestion.Option label="Sogndal" value="sogndal">
-      Sogndal
-    </Suggestion.Option>
-    <Suggestion.Option label="Oslo" value="oslo">
-      Oslo
-    </Suggestion.Option>
-  </Suggestion.List>
-</Suggestion>
-```
-
-## Eksempel
-
-### Flervalg
-
-Bruk `multiple` på `Suggestion`.
-Dersom du vil endre hvordan valgte alternativer vises, kan du bruke `renderSelected`.
-
-<Story story='Multiple' />
-
-### Kontrollert flervalg
-
-<Story story='ControlledMultiple' layout='column' />
-
-### Legge til nye alternativer
-
-Med `creatable` på `Suggestion` kan en bruker opprette nye valgte alternativer ved å skrive inn tekst i input og trykke <kbd>Enter</kbd>.
-
-<Story story='Creatable' layout='column' />
-
-## HTML
-`ds-suggetion` er en utvidelse av `u-combobox` fra u-elements.
+`ds-suggestion` er en utvidelse av `u-combobox` fra u-elements.
 Du finner generell dokumentasjon på bruk av `ds-combobox` hos u-elements:
 [https://u-elements.github.io/u-elements/elements/u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
 
@@ -66,11 +27,59 @@ Dersom du skrur på flervalg, skal `<data>` ha klassenavnet `ds-chip` og data at
 </ds-suggestion>
 ```
 
+## Eksempel
+
+### Flervalg
+For å tillate at brukeren kan velge flere alternativer, bruk `data-multiple` på suggestion.
+
+<Story story='Multiple' />
+
+### Legge til nye alternativer
+
+Med `data-creatable` på suggestion kan en bruker opprette nye valgte alternativer ved å skrive inn tekst i input og trykke <kbd>Enter</kbd>.
+
+<Story story='Creatable' layout='column' />
+
+### Filter
+Filter er som standard på, og filteret ser etter teksten i input. Du kan sende inn ditt eget filter. Under vises et eksempel som skrur av filteret helt.
+
+<Story story='Filter' />
+
 ## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve nærmeste forelder med disse satt.
 
 <CssVariables />
 
 <CssAttributes />
 
-`Suggestion` baserer seg på [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). 
+Suggestion baserer seg på [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). 
 Den er inspisert av [open-ui sitt combobox mønster (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
+
+
+## React
+
+```tsx
+import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-react'
+
+<Suggestion>
+  <Suggestion.Input />
+  <Suggestion.Clear />
+  <Suggestion.List>
+    <Suggestion.Empty>Tomt</Suggestion.Empty>
+    <Suggestion.Option label="Sogndal" value="sogndal">
+      Sogndal
+    </Suggestion.Option>
+    <Suggestion.Option label="Oslo" value="oslo">
+      Oslo
+    </Suggestion.Option>
+  </Suggestion.List>
+</Suggestion>
+```
+
+### Eksempl på kontrollert flervalg
+
+<Story story='ControlledMultiple' layout='column' language="react" />
+
+<ReactComponentDocs />
