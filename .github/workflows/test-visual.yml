@@ -56,7 +56,7 @@ jobs:
       - name: Build storybook
         run: pnpm build:storybook
       - name: Chromatic (visual + interaction)
-        uses: chromaui/action@cad40970f69e7a6a5bef4ddfe42c01309ba17cb1 # latest
+        uses: chromaui/action@84e0c70520cf012d7cbcd0d9677b4240f893e25e # latest
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
@@ -82,7 +82,7 @@ jobs:
       - name: Build storybook
         run: pnpm build:storybook
       - name: Chromatic (auto-accept on main)
-        uses: chromaui/action@cad40970f69e7a6a5bef4ddfe42c01309ba17cb1 # latest
+        uses: chromaui/action@84e0c70520cf012d7cbcd0d9677b4240f893e25e # latest
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

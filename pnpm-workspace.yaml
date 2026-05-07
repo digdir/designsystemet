@@ -31,4 +31,4 @@ syncInjectedDepsAfterScripts:
   - build:www
   - build:themebuilder
   - build:storybook
-useNodeVersion: 24.14.1
+useNodeVersion: 24.15.0

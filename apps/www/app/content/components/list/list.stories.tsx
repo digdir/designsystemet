@@ -102,3 +102,92 @@ export const Unordered = () => {
     </>
   );
 };
+
+export const Write1 = () => {
+  return (
+    <>
+      <Heading
+        level={2}
+        data-size='xs'
+        style={{ marginBottom: 'var(--ds-size-2)' }}
+      >
+        Siste frist for å søke er
+      </Heading>
+      <List.Unordered>
+        <List.Item>
+          15.november for hele året eller bare høstsemesteret
+        </List.Item>
+        <List.Item>15.mars for vårsemesteret</List.Item>
+      </List.Unordered>
+    </>
+  );
+};
+
+export const Write2 = () => {
+  return (
+    <>
+      <Heading
+        level={2}
+        data-size='xs'
+        style={{ marginBottom: 'var(--ds-size-2)' }}
+      >
+        Du må som hovedregel fylle disse vilkårene:
+      </Heading>
+      <List.Unordered>
+        <List.Item>Du må være mellom 18 og 67 år.</List.Item>
+        <List.Item>
+          Du må ha vært medlem av folketrygden de siste 5 årene før du ble syk
+          eller skadet.
+        </List.Item>
+        <List.Item>
+          Du må ha minst 50 prosent redusert arbeids- og inntektsevne.
+        </List.Item>
+      </List.Unordered>
+    </>
+  );
+};
+
+export const Write1En = () => {
+  return (
+    <>
+      <Heading
+        level={2}
+        data-size='xs'
+        style={{ marginBottom: 'var(--ds-size-2)' }}
+      >
+        The application deadline is
+      </Heading>
+      <List.Unordered>
+        <List.Item>
+          15 November for the full year or autumn semester only
+        </List.Item>
+        <List.Item>15 March for the spring semester</List.Item>
+      </List.Unordered>
+    </>
+  );
+};
+
+export const Write2En = () => {
+  return (
+    <>
+      <Heading
+        level={2}
+        data-size='xs'
+        style={{ marginBottom: 'var(--ds-size-2)' }}
+      >
+        As a general rule, you must meet these requirements:
+      </Heading>
+      <List.Unordered>
+        <List.Item>You must be between 18 and 67 years old.</List.Item>
+        <List.Item>
+          You must have been a member of the National Insurance Scheme for the
+          last 5 years before you became ill or injured.
+        </List.Item>
+        <List.Item>
+          You must have at least a 50 per cent reduction in your ability to work
+          and earn an income.
+        </List.Item>
+      </List.Unordered>
+    </>
+  );
+};
