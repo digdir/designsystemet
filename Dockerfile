@@ -11,6 +11,7 @@ RUN corepack enable
 RUN corepack install
 
 FROM base AS packages
+WORKDIR /usr/src/app
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm build
 
