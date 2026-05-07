@@ -10,6 +10,7 @@ RUN corepack enable
 FROM base AS packages
 COPY . /usr/src/app
 WORKDIR /usr/src/app
+RUN corepack install
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm build
 
@@ -22,7 +23,7 @@ ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm build:www
 RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 
-FROM base AS www
+FROM packages AS www
 COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
@@ -38,7 +39,7 @@ ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm build:themebuilder
 RUN pnpm deploy --filter=@web/themebuilder --prod /prod/@web/themebuilder
 
-FROM base AS themebuilder
+FROM packages AS themebuilder
 COPY --from=themebuilder-build /prod/@web/themebuilder /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
