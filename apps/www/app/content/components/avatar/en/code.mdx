@@ -21,7 +21,9 @@ The `variant` prop can be set to `square` or `circle`. `circle` is the default.
 <Story story="ShapeVariants" />
 
 ### With image or icon
-Avatar displays a user icon by default, but this can be overridden in CSS using the `--dsc-avatar-icon-url` variable. You can also add an image or icon as content inside the avatar. You must add an `aria-label` to the avatar yourself to explain who or what the avatar represents.
+Avatar displays a user icon by default, but this can be overridden in CSS using the `--dsc-avatar-icon-url` variable. 
+
+If you add an image or icon as content inside the avatar, make sure to set `aria-hidden="true"` to avoid duplicate information. You must add an `aria-label` to the avatar yourself to explain who or what the avatar represents.
 
 <Story story="WithImageAndIcon" />
 

@@ -21,7 +21,9 @@ Størrelser styres med [`data-size`](/no/fundamentals/code/sizes) og farger med 
 <Story story="ShapeVariants" />
 
 ### Med bilde eller ikon
-Avatar viser som standard et brukerikon, men dette kan overstyres i CSS med variabelen `--dsc-avatar-icon-url`. Du kan og legge til et bilde eller ikon som innhold i avatar. Du må selv sette `aria-label` på avatar for å forklare hvem eller hva avataren representerer.
+Avatar viser som standard et brukerikon, men dette kan overstyres i CSS med variabelen `--dsc-avatar-icon-url`. 
+
+Dersom du legger bilder eller ikon som barn må du sørge for å sette `aria-hidden="true"` for å unngå dobbel informasjon. Du må selv sette `aria-label` på avatar for å forklare hvem eller hva avataren representerer.
 
 <Story story="WithImageAndIcon" />
 
