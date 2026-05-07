@@ -53,8 +53,8 @@
   },
   "devDependencies": {
     "autoprefixer": "10.5.0",
-    "cssnano": "7.1.7",
-    "postcss": "8.5.12",
+    "cssnano": "7.1.8",
+    "postcss": "8.5.13",
     "postcss-cli": "11.0.1",
     "postcss-import": "16.1.1",
     "postcss-nesting": "14.0.0",

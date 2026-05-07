@@ -574,3 +574,28 @@ Creatable.args = {
   multiple: true,
   creatable: true,
 };
+/* commented out due to performance, but for testing with many items */
+/* export const BigList: StoryFn<typeof Suggestion> = () => {
+  return (
+    <Field>
+      <Label>Velg en destinasjon</Label>
+      <Suggestion multiple>
+        <Suggestion.Input />
+        <Suggestion.Clear />
+        <Suggestion.List id='long-list'>
+          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          {Array.from({ length: 1000 }).map((_, index) => (
+            <Suggestion.Option
+              key={index}
+              label={`long list ${index}`}
+              value={`long_list_${index}`}
+            >
+              {`long list ${index}`}
+              <div>second line</div>
+            </Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+}; */
