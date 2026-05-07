@@ -106,16 +106,12 @@
     }
   }
 
-  /* Hide u-datalist custom element when not initialized yet */
-  & u-datalist:not(:defined) {
-    display: none;
-  }
   /* Hide list before it has been placed by floating-ui. data-is-floating is used as a whitelist and is added by suggestion.ts (web) */
   & u-datalist[data-is-floating]:not([style*='translate']) {
     opacity: 0;
   }
 
-  & :is(u-datalist, datalist) {
+  & u-datalist {
     @composes ds-floating from './base.css';
     --_ds-floating: var(--dsc-suggestion-list-placement);
     --_ds-floating-overscroll: fit;
@@ -130,6 +126,7 @@
     box-shadow: var(--dsc-suggestion-list-box-shadow);
     box-sizing: border-box;
     color: var(--dsc-suggestion-list-color);
+    display: none; /* Hide u-datalist custom element when not initialized yet */
     inset: 0 auto auto 0;
     overflow: auto;
     overscroll-behavior: contain;
@@ -142,12 +139,7 @@
       inset: 100% 0 auto 0;
     }
 
-    /* Hide datalist if no children */
-    &:empty {
-      display: none;
-    }
-
-    &:not([hidden]) {
+    &:not([hidden]):not(:empty) {
       display: grid;
       align-content: start;
       gap: var(--dsc-suggestion-list-gap);
