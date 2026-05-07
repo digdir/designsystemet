@@ -1,7 +1,7 @@
 <Story story="Preview" defaultOpen />
 
 ## Bruk
-Bruker du `@digdir/designsystemet-web` kan du implementere toggleGroup ved å bruke `data-toggle-group`-attributtet.
+Bruker du `@digdir/designsystemet-web` kan du implementere toggle group ved å bruke `data-toggle-group`-attributtet.
 
 ```html
 <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering" data-variant="secondary">
@@ -28,7 +28,7 @@ Du kan lese om kva du må gjere for å implementere dette i [tilgjengelighetsdok
 Klassenavnet `ds-toggle-group` blir lagt på ein `<div>` med `role="radiogroup"`.
 
 Kvar knapp i gruppa er ein `<button>` med klassenavn `ds-button` med `role="radio"` og `aria-checked` som indikerer om knappen er vald eller ikkje.
-`data-variant` for valde knappar skal stemme med `data-variant` på `ToggleGroup`.
+`data-variant` for valde knappar skal stemme med `data-variant` på toggle group.
 Resterande knappar skal ha `data-variant="tertiary"`.
 
 ```html
