@@ -229,4 +229,102 @@ describe('Popover', () => {
       expect(onOpen).toHaveBeenCalledTimes(0);
     });
   });
+
+  describe('when a dialog is open above the popover', () => {
+    it('should not close the popover with Escape when a modal dialog is open', async () => {
+      render(
+        <>
+          <Popover.TriggerContext>
+            <Popover.Trigger>trigger</Popover.Trigger>
+            <Popover>{contentText}</Popover>
+          </Popover.TriggerContext>
+          <dialog data-testid='test-dialog'>Dialog content</dialog>
+        </>,
+      );
+
+      const popoverTrigger = screen.getByRole('button');
+      await act(async () => popoverTrigger.click());
+      expect(screen.getByText(contentText)).toBeVisible();
+
+      /* Open the dialog modally so it covers the popover in the top layer */
+      const dialog = screen.getByTestId('test-dialog') as HTMLDialogElement;
+      await act(async () => dialog.showModal());
+      expect(dialog.open).toBe(true);
+
+      /* Pressing Escape should close the dialog but NOT the popover */
+      const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true });
+      await act(async () => document.dispatchEvent(esc));
+
+      /* Popover should still be visible since it was not the top-layer element */
+      expect(screen.getByText(contentText)).toBeVisible();
+    });
+
+    it('should close the popover with Escape when no dialog is open', async () => {
+      render(
+        <>
+          <Popover.TriggerContext>
+            <Popover.Trigger>trigger</Popover.Trigger>
+            <Popover>{contentText}</Popover>
+          </Popover.TriggerContext>
+          <dialog data-testid='test-dialog'>Dialog content</dialog>
+        </>,
+      );
+
+      const popoverTrigger = screen.getByRole('button');
+      await act(async () => popoverTrigger.click());
+      expect(screen.getByText(contentText)).toBeVisible();
+
+      /* Dialog is present in DOM but NOT open */
+      const dialog = screen.getByTestId('test-dialog') as HTMLDialogElement;
+      expect(dialog.open).toBe(false);
+
+      /* Pressing Escape should close the popover since it is the top-layer element */
+      const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true });
+      await act(async () => document.dispatchEvent(esc));
+
+      expect(screen.getByText(contentText)).not.toBeVisible();
+    });
+
+    it('should not call onClose when Escape is pressed with a modal dialog open', async () => {
+      const onClose = vi.fn();
+      render(
+        <>
+          <Popover.TriggerContext>
+            <Popover.Trigger>trigger</Popover.Trigger>
+            <Popover onClose={onClose}>{contentText}</Popover>
+          </Popover.TriggerContext>
+          <dialog data-testid='test-dialog'>Dialog content</dialog>
+        </>,
+      );
+
+      const popoverTrigger = screen.getByRole('button');
+      await act(async () => popoverTrigger.click());
+
+      const dialog = screen.getByTestId('test-dialog') as HTMLDialogElement;
+      await act(async () => dialog.showModal());
+
+      const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true });
+      await act(async () => document.dispatchEvent(esc));
+
+      expect(onClose).not.toHaveBeenCalled();
+    });
+
+    it('should call onClose when Escape is pressed with the popover on top and no open dialog', async () => {
+      const onClose = vi.fn();
+      render(
+        <Popover.TriggerContext>
+          <Popover.Trigger>trigger</Popover.Trigger>
+          <Popover onClose={onClose}>{contentText}</Popover>
+        </Popover.TriggerContext>,
+      );
+
+      const popoverTrigger = screen.getByRole('button');
+      await act(async () => popoverTrigger.click());
+
+      const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true });
+      await act(async () => document.dispatchEvent(esc));
+
+      expect(onClose).toHaveBeenCalledTimes(1);
+    });
+  });
 });
