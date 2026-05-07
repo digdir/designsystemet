@@ -1,43 +1,8 @@
-<Story story="Preview" />
-
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen />
 
 ## Bruk
 
-```tsx
-import { Chip } from '@digdir/designsystemet-react';
-
-// som radio
-<Chip.Radio name="my-chip">Radio</Chip.Radio>;
-
-// som checkbox
-<Chip.Checkbox name="my-chip">Checkbox</Chip.Checkbox>;
-
-// som removable
-<Chip.Removable>Renovable</Chip.Removable>;
-
-// som button
-<Chip.Button>Button</Chip.Button>;
-```
-
-## Eksempel
-
-### `Chip.Checkbox`
-
-<Story story="CheckboxVariant" />
-
-### `Chip.Removable`
-
-Hugs `aria-label` dersom innhaldet i `Chip` ikkje forklarer at den kan fjernes.
-
-<Story story="Removable" />
-
-### `Chip.Button`
-
-<Story story="AsButton" />
-
-## HTML
-`Chip` bruker to forskjellige HTML-strukturer, men begge har klassenavnet `ds-chip`.
+Chip bruker to forskjellige HTML-strukturer, men begge har klassenavnet `ds-chip`.
 
 ### Som radio eller checkbox
 
@@ -69,8 +34,8 @@ Legg merke til at vi legger `<input>` inni `<label>`, dette betyr at du ikke tre
 
 ### Som removable eller button
 
-En removable `Chip` bruker et `<button>` element, men det er lagt til `data-removable="true"` for å indikere at det er en removable `Chip`.
-Da vil et kryss vises til høyre i `Chip`, dette tegnes med CSS.
+En removable chip bruker et `<button>` element, men det er lagt til `data-removable="true"` for å indikere at det er en removable chip.
+Da vil et kryss vises til høyre i chip, dette tegnes med CSS.
 
 ```html
 <!-- button -->
@@ -87,8 +52,31 @@ Da vil et kryss vises til høyre i `Chip`, dette tegnes med CSS.
 
 ## CSS variablar og data-attributter
 
-`Chip` bruker også `ds-input` internt når det er radio eller checkbox.
+Chip bruker også `ds-input` internt når det er radio eller checkbox.
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve nærmeste forelder med disse satt.
 
 <CssVariables />
 
 <CssAttributes />
+
+## React
+
+```tsx
+import { Chip } from '@digdir/designsystemet-react';
+
+// som radio
+<Chip.Radio name="my-chip">Radio</Chip.Radio>;
+
+// som checkbox
+<Chip.Checkbox name="my-chip">Checkbox</Chip.Checkbox>;
+
+// som removable
+<Chip.Removable>Renovable</Chip.Removable>;
+
+// som button
+<Chip.Button>Button</Chip.Button>;
+```
+
+<ReactComponentDocs />

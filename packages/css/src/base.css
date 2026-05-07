@@ -29,6 +29,7 @@
 [data-color-scheme] {
   --dsc-focus-boxShadow: 0 0 0 var(--ds-border-width-focus) var(--ds-color-focus-inner);
   --dsc-focus-boxShadow-inset: inset 0 0 0 calc(var(--ds-border-width-focus) * 2) var(--ds-color-focus-inner);
+  --dsc-focus-boxShadow-middle: inset 0 0 0 var(--ds-border-width-focus) var(--ds-color-focus-inner);
   --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--ds-border-width-focus);
 }
 
@@ -78,6 +79,12 @@ body,
 .ds-focus--inset:focus-visible {
   @composes ds-focus--visible--inset from './base.css';
 }
+/**
+ * Apply a focus outline where the inner segment is inset and the outer segment is not ("middle" between ds-focus and ds-focus--inset)
+ */
+.ds-focus--middle:focus-visible {
+  @composes ds-focus--visible--middle from './base.css';
+}
 
 /**
  * Focus outline that can be composed if it needs a specific selector
@@ -118,6 +125,48 @@ body,
    */
   * {
     --_ds--focus: ;
+  }
+}
+.ds-focus--visible--middle {
+  /**
+   * We use both box-shadow and outline to ensure that the focus style is visible,
+   * in case box-shadow is overridden.
+   */
+  box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow-middle));
+  outline: var(--_ds--focus, var(--dsc-focus-outline));
+  outline-offset: calc(var(--_ds--focus, 0));
+
+  /**
+   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
+   * https://css-tricks.com/the-css-custom-property-toggle-trick/
+   */
+  * {
+    --_ds--focus: ;
+  }
+}
+
+.ds-checkbox--checked {
+  --_stroke-width-fallback: 0.05em;
+  --_diagonal-1: transparent calc(48% - var(--_stroke-width, var(--_stroke-width-fallback)));
+  --_diagonal-2: currentcolor calc(50% - var(--_stroke-width, var(--_stroke-width-fallback)));
+  --_diagonal-3: currentcolor calc(50% + var(--_stroke-width, var(--_stroke-width-fallback)));
+  --_diagonal-4: transparent calc(52% + var(--_stroke-width, var(--_stroke-width-fallback)));
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  background-position:
+    10% 73%,
+    90% 50%;
+  background-size:
+    35% 35%,
+    65% 65%;
+  background-image:
+    linear-gradient(45deg, var(--_diagonal-1), var(--_diagonal-2), var(--_diagonal-3), var(--_diagonal-4)),
+    linear-gradient(-45deg, var(--_diagonal-1), var(--_diagonal-2), var(--_diagonal-3), var(--_diagonal-4));
+
+  @media (forced-colors: active) {
+    background-color: LinkText;
+    border-color: LinkText;
+    forced-color-adjust: none; /* To be able to draw check */
   }
 }
 
