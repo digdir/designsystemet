@@ -21,7 +21,7 @@ The `variant` prop can be set to `square` or `circle`. `circle` is the default.
 <Story story="ShapeVariants" />
 
 ### With image or icon
-Avatar displays a user icon by default, but this can be overridden in CSS using the `--dsc-avatar-icon-url` variable. If you add an image or icon as content inside the avatar, it will automatically receive `aria-hidden="true"` to avoid duplicate information. You must add an `aria-label` to the avatar yourself to explain who or what the avatar represents.
+Avatar displays a user icon by default, but this can be overridden in CSS using the `--dsc-avatar-icon-url` variable. You can also add an image or icon as content inside the avatar. You must add an `aria-label` to the avatar yourself to explain who or what the avatar represents.
 
 <Story story="WithImageAndIcon" />
 
@@ -58,3 +58,6 @@ The component should be able to be composed into other components.
 Here is an example of using avatar inside a dropdown component.
 
 <Story story="InDropdown" language="react"/>
+
+### Non-text content
+If you add anything other than text as a child inside `<Avatar>` (like an image or icon), it will automatically receive `aria-hidden="true"` to avoid duplicate information.
