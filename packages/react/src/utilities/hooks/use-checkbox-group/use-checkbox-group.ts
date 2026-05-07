@@ -7,45 +7,49 @@ import type {
 } from 'react';
 import { useEffect, useId, useRef, useState } from 'react';
 import type { CheckboxProps } from '../../../components';
+import type { MergeRight } from '../../types';
 
-export type UseCheckboxGroupProps = {
-  /**
-   * Disables all checkboxes in the group.
-   */
-  disabled?: boolean;
-  /**
-   * Error message for the group.
-   * If set, all checkboxes will have `aria-invalid` set to `true`.
-   */
-  error?: ReactNode;
-  /**
-   * Name of the group.
-   * If not set, a random id will be generated.
-   */
-  name?: string;
-  /**
-   * Makes all checkboxes in the group read-only.
-   * If set, all checkboxes will have `aria-readonly` set to `true`.
-   */
-  readOnly?: boolean;
-  /**
-   * Initial value of the group
-   * @default []
-   */
-  value?: string[];
-  /**
-   * Makes all checkboxes in the group required.
-   * If set, all checkboxes will have `required` set to `true`.
-   */
-  required?: boolean;
-  /**
-   * Callback that is called when the value of the group changes.
-   * @param nextValue string[]
-   * @param currentValue string[]
-   * @returns void
-   */
-  onChange?: (nextValue: string[], currentValue: string[]) => void;
-};
+export type UseCheckboxGroupProps = MergeRight<
+  CheckboxProps,
+  {
+    /**
+     * Disables all checkboxes in the group.
+     */
+    disabled?: boolean;
+    /**
+     * Error message for the group.
+     * If set, all checkboxes will have `aria-invalid` set to `true`.
+     */
+    error?: ReactNode;
+    /**
+     * Name of the group.
+     * If not set, a random id will be generated.
+     */
+    name?: string;
+    /**
+     * Makes all checkboxes in the group read-only.
+     * If set, all checkboxes will have `aria-readonly` set to `true`.
+     */
+    readOnly?: boolean;
+    /**
+     * Initial value of the group
+     * @default []
+     */
+    value?: string[];
+    /**
+     * Makes all checkboxes in the group required.
+     * If set, all checkboxes will have `required` set to `true`.
+     */
+    required?: boolean;
+    /**
+     * Callback that is called when the value of the group changes.
+     * @param nextValue string[]
+     * @param currentValue string[]
+     * @returns void
+     */
+    onChange?: (nextValue: string[], currentValue: string[]) => void;
+  }
+>;
 
 /**
  * Get anything that is set on a checkbox, but
@@ -151,7 +155,14 @@ export function useCheckboxGroup(
      * <Checkbox {...getCheckboxProps({ value: 'all', allowIndeterminate: true })} />
      */
     getCheckboxProps: (propsOrValue?: string | GetCheckboxProps) => {
-      const props =
+      let groupProps:
+        | Omit<CheckboxProps, 'aria-label' | 'aria-labelledby'>
+        | undefined;
+      if (props) {
+        const { onChange, error, ...rest } = props;
+        groupProps = rest;
+      }
+      const checkboxProps =
         typeof propsOrValue === 'string'
           ? { value: propsOrValue }
           : propsOrValue || {};
@@ -161,7 +172,7 @@ export function useCheckboxGroup(
         ref: forwardedRef = undefined,
         value = '',
         ...rest
-      } = props;
+      } = checkboxProps;
 
       const handleRef = (element: HTMLInputElement | null) => {
         if (element) {
@@ -209,6 +220,7 @@ export function useCheckboxGroup(
       };
 
       return {
+        ...groupProps,
         ...rest,
         'aria-describedby':
           `${error ? errorId : ''} ${rest['aria-describedby'] || ''}`.trim() ||
