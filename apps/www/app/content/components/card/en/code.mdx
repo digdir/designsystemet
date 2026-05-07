@@ -1,92 +1,45 @@
-<Story story="PreviewEn" />
-
 ## Usage
+<Story story="Preview" defaultOpen/>
 
-```tsx
-import { Card } from '@digdir/designsystemet-react';
 
-<Card>
-  <Card.Block>Title</Card.Block>
-  <Card.Block>Content</Card.Block>
-  <Card.Block>Optional footer</Card.Block>
-</Card>;
-```
+Card has two class names you can use.
+- `ds-card`: The main class that wraps the entire card.
+- `ds-card__block`: The class used for each section in the card.
 
-## Code examples
 
-### Colours
+## CSS variables and data attributes
+All CSS variables are tied to the main class `ds-card`.
 
-Cards come in all theme colours and have two variants.
+<CssVariables />
 
-<Story story="Variants" />
+<CssAttributes />
+
+## Examples
 
 ### With sections
 
-Use multiple `Card.Block` elements if you want to divide the card with separators or add images or video that extend to the edge. Note that when you use `Card.Block`, all content must be placed inside a `Card.Block` and not directly in the `Card`.
+If you need sections in the card, use `ds-card__block` if you want to divide the card with dividers or add images or video that extend to the edge.
 
-<Story story="MediaEn" />
+Note that when you use `ds-card__block`, all content must be placed inside elements with `ds-card__block` - not placed directly in `Card`.
+
+<Story story="Media" />
 
 ### Link card
 
-`Card` can be used as a navigation card to take users to another page.
+Card can be used as a navigation card to take users to another page.
 
-There are two ways to do this.
+There are two different ways to do this.
 
-#### 1. Card with a link in the title
+#### 1. Card that is a link
 
-If the card should link to another page, you can place a link in the card’s title.  
-The entire card then becomes clickable, but screen reader users get a [better experience than if the whole card were a link (adrianroselli.com)](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
-
-In this example, `Card` renders an `<a>` inside the heading element.  
-This is useful when `Card` contains text or media and should navigate to another page.
-
-Note that with keyboard navigation, the focus ring only surrounds the text in the link, not the entire card. This is because link cards can also contain additional clickable elements (secondary actions), and it is less confusing for users of assistive technology — such as voice control or screen readers — if the link text matches the focus area.
-
-<Story story="WithLinkEn" />
-
-#### 2. Card as a link
-
-The entire card can become a link by using `asChild`. This is useful when you want all text and content in the `Card` to be read by screen readers as one continuous link.
-
-In this example, `Card` renders as `<a>`.
+The entire card can be used as a link by using `<a>` as the outermost element. This is useful when you want all text and content in Card to be read by screen readers as one continuous link.
 
 <Story story="AsLink" />
 
-### Horizontal
 
-You can switch between `display: flex` and `display: grid` to place `Card.Block` next to each other:
+### 2. Card with linked elements
 
-<Story story="AsGridEn" />
-
-## HTML
-
-`Card` has two class names you can use.
-- `ds-card`: The main class that wraps the entire card.
-- `ds-card__block`: The class used for each section within the card.
-
-```html
-<!-- without sections -->
-<div class="ds-card">
-  A card
-</div>
-
-<!-- with sections -->
-<div class="ds-card">
-  <div class="ds-card__block">
-    Title
-  </div>
-  <div class="ds-card__block">
-    Content
-  </div>
-  <div class="ds-card__block">
-    Optional footer
-  </div>
-</div>
-```
-
-### Link card with data attribute
-
-You can make the entire card clickable by adding `data-clickdelegatefor` and pointing to the id of a link inside the card.
+If you have a card with multiple interactive elements, such as links or buttons, you can use `data-clickdelegatefor` to make the entire card clickable while retaining the semantics of the interactive elements.
 
 ```html
 <div
@@ -100,15 +53,39 @@ You can make the entire card clickable by adding `data-clickdelegatefor` and poi
     target="_blank"
     rel="noopener noreferrer"
   >Myrkheim Museum</a>
+  <button class="ds-button">Add to favorites</button>
 </div>
 ```
 
-## CSS variables and data attributes
+### Horizontal
 
-`Card` has two CSS classes, but all CSS variables are attached to the main class `ds-card`.
+You can switch between `display: flex` and `display: grid` to place `Card.Block` next to each other:
 
-<CssVariables />
-
-<CssAttributes />
+<Story story="AsGrid" />
 
 
+## React
+
+```tsx
+import { Card } from '@digdir/designsystemet-react';
+
+<Card>
+  <Card.Block>Title</Card.Block>
+  <Card.Block>Content</Card.Block>
+  <Card.Block>Optional footer</Card.Block>
+</Card>;
+```
+### Card
+<ReactComponentDocs />
+
+#### Card with link in title
+
+If the card should link to another page, you can place a link in the card's title.
+The entire card then becomes clickable, but screen reader users get a [better experience than if the whole card were a link (adrianroselli.com)](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
+
+When `Card` finds an `<a>` inside the heading element, [data-clickdelegatefor](/en/components/utilities/clickdelegatefor) will automatically be added to the card.
+This is useful when `Card` contains text or media and should navigate to another page.
+
+Note that with keyboard navigation, the focus ring only surrounds the text in the link, not the entire card. This is because link cards can also contain multiple clickable elements (secondary actions), and it is less confusing for users of assistive technology, such as voice control or screen readers, if the link text matches the focus area.
+
+<Story story="WithLink" />
