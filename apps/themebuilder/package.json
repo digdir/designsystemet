@@ -14,7 +14,7 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@internal/components": "workspace:^",
     "@internal/digdir": "workspace:^",
-    "@navikt/aksel-icons": "8.10.2",
+    "@navikt/aksel-icons": "8.10.3",
     "@radix-ui/react-slot": "1.2.4",
     "@react-router/express": "7.14.2",
     "@react-router/node": "7.14.2",
@@ -28,7 +28,7 @@
     "react": "19.2.5",
     "react-color-palette": "7.3.1",
     "react-dom": "19.2.5",
-    "react-i18next": "17.0.4",
+    "react-i18next": "17.0.6",
     "react-router": "7.14.2",
     "remix-i18next": "7.5.0"
   },
