@@ -5,13 +5,15 @@ ARG APP_ENV
 FROM node:24.14.1-slim@sha256:b506e7321f176aae77317f99d67a24b272c1f09f1d10f1761f2773447d8da26c AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-COPY . /usr/src/app
-WORKDIR /usr/src/app
+COPY  ./package.json /usr/src/app
+COPY  ./pnpm-lock.yaml /usr/src/app
+COPY  ./pnpm-workspace.yaml /usr/src/app
 ENV CI=true
 RUN corepack enable
-RUN corepack install -g pnpm@10.33.2
+RUN corepack install
 
 FROM base AS packages
+COPY . /usr/src/app
 WORKDIR /usr/src/app
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm build
@@ -26,6 +28,7 @@ RUN pnpm build:www
 RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 
 FROM base AS www
+
 COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
