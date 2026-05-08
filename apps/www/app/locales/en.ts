@@ -94,6 +94,7 @@ export default {
       getStarted: 'Getting Started',
       typography: 'Typography',
       utilities: 'Utilities',
+      utilitiesReact: 'Utilities for React',
     },
     items: {
       Introduction: 'Introduction',

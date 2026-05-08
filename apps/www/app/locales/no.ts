@@ -93,6 +93,7 @@ export default {
       getStarted: 'Kom i gang',
       typography: 'Typografi',
       utilities: 'Hjelpeverktøy',
+      utilitiesReact: 'Hjelpeverktøy for React',
     },
     items: {
       Introduction: 'Introduksjon',

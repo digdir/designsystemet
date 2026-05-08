@@ -46,11 +46,21 @@ export const loader = async ({
 
   // Get all folders in components-docs/{lang}
   const docsFolders = getFoldersInContentDir(join('components-docs', lang));
+  const reactUtilities = new Set([
+    'roving-focus',
+    'use-checkbox-group',
+    'use-pagination',
+    'use-radio-group',
+    'use-synchronized-animation',
+  ]);
 
   // Process each folder as a category
   for (const folder of docsFolders) {
     const categoryKey = folder === 'get-started' ? 'getStarted' : folder;
     cats[categoryKey] = [];
+    if (folder === 'utilities') {
+      cats.utilitiesReact = [];
+    }
 
     // Get all files in this folder
     const filesInFolder = getFilesFromContentDir(
@@ -62,18 +72,28 @@ export const loader = async ({
         join('components-docs', lang, folder, `${file.relativePath}`),
       );
       const result = await generateFromMdx(fileContent);
+      const slug = file.relativePath.replace('.mdx', '');
+      const utilityCategory =
+        folder === 'utilities' && reactUtilities.has(slug)
+          ? 'utilitiesReact'
+          : categoryKey;
 
-      cats[categoryKey].push({
+      cats[utilityCategory].push({
         title:
           result.frontmatter.sidebar_title ||
           file.relativePath.replace('.mdx', ''),
-        url: `/${lang}/components/${folder}/${file.relativePath.replace('.mdx', '')}`,
+        url: `/${lang}/components/${folder}/${slug}`,
         order: parseInt(result.frontmatter.order, 10) || 9999,
       });
     }
 
     // Sort items within the category by order
     cats[categoryKey].sort((a, b) => (a.order || 9999) - (b.order || 9999));
+    if (folder === 'utilities') {
+      cats.utilitiesReact.sort(
+        (a, b) => (a.order || 9999) - (b.order || 9999),
+      );
+    }
   }
 
   /* read all folders in content/components */
