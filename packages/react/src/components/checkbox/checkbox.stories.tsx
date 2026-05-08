@@ -177,7 +177,7 @@ export const ReadOnly = {
 
 export const Disabled = {
   args: {
-    ...Preview.args,
+    ...Group.args,
     name: 'my-disabled',
     disabled: true,
   },
