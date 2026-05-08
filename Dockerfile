@@ -7,8 +7,9 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 COPY . /usr/src/app
 WORKDIR /usr/src/app
+ENV CI=true
 RUN corepack enable
-RUN corepack install
+RUN corepack install -g pnpm@10.33.2
 
 FROM base AS packages
 WORKDIR /usr/src/app
