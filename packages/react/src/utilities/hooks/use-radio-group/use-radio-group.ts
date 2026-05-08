@@ -78,16 +78,17 @@ type useRadioGroupReturn = {
  *   value: '',
  * });
  */
-export function useRadioGroup({
-  error,
-  readOnly,
-  required,
-  disabled,
-  name,
-  onChange,
-  value: initalValue = '',
-}: UseRadioGroupProps = {}): useRadioGroupReturn {
-  const [groupValue, setGroupValue] = useState(initalValue);
+export function useRadioGroup(props?: UseRadioGroupProps): useRadioGroupReturn {
+  const {
+    error,
+    readOnly,
+    required,
+    disabled,
+    name,
+    onChange,
+    value: initialValue = '',
+  } = props || {};
+  const [groupValue, setGroupValue] = useState(initialValue);
   const errorId = useId();
   const namedId = useId();
   const radioGroupName = name || namedId;
