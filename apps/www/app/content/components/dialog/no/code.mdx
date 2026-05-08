@@ -40,7 +40,7 @@ Attributtet `aria-haspopup="dialog"` bør legges til på elementet som åpner di
 ```
 ### Polyfill
 
-Dialog er avhenging av attributtene [`command`  og `commandfor`(mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command) er en relativt ny del av web-standarden som lar [button](no/components/docs/button/) utføre handlinger på andre elementer deklarativt. Vi legger automatisk til [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) for å støtte eldre nettlesere.
+Dialog er avhengig av attributtene [`command` og `commandfor` (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command), som er en relativt ny del av webstandarden og lar [button](/no/components/docs/button/overview) utføre handlinger på andre elementer deklarativt. Vi legger automatisk til [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) for å støtte eldre nettlesere.
 
 Vi legger også til en polyfill for `closedby="any"` for å støtte eldre Safari, som ikke støtter dette nativt.
 
