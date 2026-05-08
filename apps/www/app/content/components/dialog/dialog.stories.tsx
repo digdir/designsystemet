@@ -16,10 +16,10 @@ import { type ChangeEvent, useRef, useState } from 'react';
 export const Preview = () => {
   return (
     <>
-      <Button command='show-modal' commandfor='my-dialog-commant'>
+      <Button command='show-modal' commandfor='my-dialog-preview'>
         Open Dialog
       </Button>
-      <Dialog id='my-dialog-commant'>
+      <Dialog id='my-dialog-preview'>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog header
         </Heading>
@@ -34,10 +34,10 @@ export const Preview = () => {
 
 export const WithCommand = () => (
   <>
-    <Button command='show-modal' commandfor='my-dialog-commant'>
+    <Button command='show-modal' commandfor='my-dialog-command'>
       Open Dialog with command
     </Button>
-    <Dialog id='my-dialog-commant'>
+    <Dialog id='my-dialog-command'>
       <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
         Dialog header
       </Heading>
