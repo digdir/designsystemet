@@ -7,27 +7,31 @@ import type {
 } from 'react';
 import { useId, useState } from 'react';
 import type { RadioProps } from '../../../components';
+import type { MergeRight } from '../../types';
 
-export type UseRadioGroupProps = {
-  /** Set disabled state of all radios */
-  disabled?: boolean;
-  /** Shared error message for all radios */
-  error?: ReactNode;
-  /** Name of all radios.
-   * @default string of auto-generated name
-   */
-  name?: string;
-  /** Set read only state of all radios */
-  readOnly?: boolean;
-  /** Set required state of all radios */
-  required?: boolean;
-  /**
-   * Initial value of the group
-   */
-  value?: string;
-  /** Callback when selected radios changes */
-  onChange?: (nextValue: string, prevValue: string) => void;
-};
+export type UseRadioGroupProps = MergeRight<
+  RadioProps,
+  {
+    /** Set disabled state of all radios */
+    disabled?: boolean;
+    /** Shared error message for all radios */
+    error?: ReactNode;
+    /** Name of all radios.
+     * @default string of auto-generated name
+     */
+    name?: string;
+    /** Set read only state of all radios */
+    readOnly?: boolean;
+    /** Set required state of all radios */
+    required?: boolean;
+    /**
+     * Initial value of the group
+     */
+    value?: string;
+    /** Callback when selected radios changes */
+    onChange?: (nextValue: string, prevValue: string) => void;
+  }
+>;
 
 /**
  * Get anything that is set on a radio, but
@@ -106,11 +110,18 @@ export function useRadioGroup({
      * <Radio label="Option 1" {...getRadioProps('option-1')} />
      */
     getRadioProps: (propsOrValue: string | GetRadioProps) => {
-      const props =
+      let groupProps:
+        | Omit<RadioProps, 'aria-label' | 'aria-labelledby'>
+        | undefined;
+      if (props) {
+        const { onChange, error, ...rest } = props;
+        groupProps = rest;
+      }
+      const radioProps =
         typeof propsOrValue === 'string'
           ? { value: propsOrValue }
           : propsOrValue;
-      const { ref: forwardedRef = undefined, value = '', ...rest } = props;
+      const { ref: forwardedRef = undefined, value = '', ...rest } = radioProps;
 
       const handleRef = (element: HTMLInputElement | null) => {
         if (element) {
@@ -138,6 +149,7 @@ export function useRadioGroup({
       };
 
       return {
+        ...groupProps,
         ...rest,
         name: radioGroupName,
         'aria-describedby':
