@@ -42,7 +42,7 @@ The attribute `aria-haspopup="dialog"` should be added to the element that opens
 
 ### Polyfill
 
-Dialog depends on the attributes [`command` and `commandfor` (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command) which are a relatively new part of the web-platform that allow [button](en/components/docs/button/) to perform actions on other elements declaratively. We automatically add [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) to support older browsers.
+Dialog depends on the attributes [`command` and `commandfor` (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command) which are a relatively new part of the web platform that allow [button](/en/components/docs/button/overview) to perform actions on other elements declaratively. We automatically add [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) to support older browsers.
 
 We also add a polyfill for `closedby="any"` to support older Safari, which does not support this natively.
 
