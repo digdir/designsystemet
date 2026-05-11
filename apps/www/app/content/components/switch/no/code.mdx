@@ -25,10 +25,10 @@ For et gyldig skjemaelement anbefaler vi å bruke `<ds-field>` sammen med en `<l
 ```
 
 ## CSS variabler og data-attributter
-Switch er en sammensatt komponent, og derfor viser vi variabler og data-attributter fra `ds-input` her.
-
 Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
 Komponenten vil arve nærmeste forelder med disse satt.
+
+Switch er `ds-input` med `type="checkbox"` så variabler og data-attributter som gjelder for [input](/no/components/docs/input/overview) gjelder også for switch.
 
 <CssVariables />
 
@@ -43,7 +43,7 @@ Komponenten vil arve nærmeste forelder med disse satt.
 
 I React er det enklere å bygge en switch, fordi vi har en ferdiglaget komponent som håndterer det meste av logikken og tilstandshåndteringen for oss.
 
-`Switch` er en sammensatt komponent som bruker [field](/en/components/docs/field/overview), [label](/en/components/docs/label/overview), og [input](/en/components/docs/input/overview) for å lage en switch.
+`Switch` er en sammensatt komponent som bruker [field](/no/components/docs/field/overview), [label](/no/components/docs/label/overview), og [input](/no/components/docs/input/overview) for å lage en switch.
 
 
 ```tsx
