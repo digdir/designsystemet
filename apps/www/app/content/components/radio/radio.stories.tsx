@@ -124,36 +124,6 @@ export const WithErrorEn = () => {
   );
 };
 
-export const ReadOnly = () => {
-  return (
-    <Fieldset>
-      <Fieldset.Legend>Hvilken bydel bor du i?</Fieldset.Legend>
-      <Fieldset.Description>
-        Trondheim er delt inn i fire bydeler
-      </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' readOnly />
-      <Radio label='Lerkendal' value='lerkendal' name='city' readOnly />
-      <Radio label='Heimdal' value='heimdal' name='city' readOnly checked />
-      <Radio label='Midtbyen' value='midtbyen' name='city' readOnly />
-    </Fieldset>
-  );
-};
-
-export const ReadOnlyEn = () => {
-  return (
-    <Fieldset>
-      <Fieldset.Legend>Which district do you live in?</Fieldset.Legend>
-      <Fieldset.Description>
-        Trondheim is divided into four districts
-      </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' readOnly />
-      <Radio label='Lerkendal' value='lerkendal' name='city' readOnly />
-      <Radio label='Heimdal' value='heimdal' name='city' readOnly checked />
-      <Radio label='Midtbyen' value='midtbyen' name='city' readOnly />
-    </Fieldset>
-  );
-};
-
 export const Inline = () => {
   return (
     <Fieldset>

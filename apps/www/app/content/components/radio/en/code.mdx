@@ -2,105 +2,62 @@
 
 ## Usage
 
-Radio is a composite component, so in HTML you have to build it from multiple components.
-We use [field](/en/components/docs/field/code), [label](/en/components/docs/label/code) and [input](/en/components/docs/input/code) to create a radio.
-
-The code below shows how you can visually build a radio in HTML, but you have to make sure that `<input>` is connected with `<label>` and description.
+Use the class `ds-input` on `<input>` together with `type="radio"`.
 
 ```html
-<div class="ds-field">
-  <input
+<input
   class="ds-input"
   type="radio"
-  value="value"
-  name="name"
-  id="my-radio"
-  >
-  <label
-  class="ds-label"
-  data-weight="regular"
-  for="my-radio"
-  >Radio</label>
-<ds-field class="ds-field">
-<input
-class="ds-input"
-type="radio"
-value="value"
-name="name"
-id="my-radio"
->
-<label
-class="ds-label"
-data-weight="regular"
-for="my-radio"
->Radio</label>
-</ds-field>
+/>
+```
 
+For a valid form element, we recommend using `<ds-field>` together with a `<label>`.
+
+```html
+<ds-field>
+  <label class="ds-label">Radio</label>
+  <input
+    class="ds-input"
+    type="radio"
+    value="value"
+    name="name"
+  >
+</ds-field>
 ```
 
 ## Examples
 
-### Readonly
+### Grouping
 
-Fields with the `readonly` attribute are included in the tab order. Users can copy the content but not edit it. Information is included when the form is submitted.
+Use [fieldset](/en/components/docs/fieldset/code) for grouping multiple choices.
 
-`Readonly` fields can be confusing for some users. Not everyone will understand why they cannot change the content of the field. We therefore recommend avoiding `readonly` as much as possible.
+<Story story="GroupEn" />
 
-<Story story="ReadOnlyEn" />
+### Outline
+`data-variant="outline"` adds extra padding and a border around the option to create a larger clickable area.
+<Story story="OutlineEn" />
 
 ### Inline
 Radio *can* be positioned horizontally with `flex`, but should generally be [placed vertically](/en/components/docs/radio/overview#placement).
 <Story story="InlineEn" />
 
-
-### In Fieldset
-
-The code below is an example of how to use multiple radio inside `<fieldset>`.
-
-```html
-<fieldset class="ds-fieldset">
-  <legend class="ds-label" data-weight="medium">Can we contact you by email?</legend>
-  <p class="ds-paragraph" data-variant="default">If you do not wish to be contacted by email, we will send you a letter by post.</p>
-  <div class="ds-field">
-    <input
-    class="ds-input"
-    type="radio"
-    value="yes"
-    id="radio-input"
-    >
-    <label
-    class="ds-label"
-    data-weight="regular"
-    for="radio-input"
-    >Yes</label>
-  </div>
-  <div class="ds-field">
-    <input
-    class="ds-input"
-    type="radio"
-    value="no"
-    id="radio-input"
-    >
-    <label
-    class="ds-label"
-    data-weight="regular"
-    for="radio-input"
-    >No</label>
-  </div>
-</fieldset>
-```
-
 ## CSS variables and data attributes
-Checkbox is a composite component, and therefore we show variables and data attributes from `ds-input` here.
-
-Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors).
 The component will inherit from the closest parent where these are set.
+
+Radio is `ds-input` with `type="radio"`, so variables and data attributes that apply to [input](/en/components/docs/input/overview) also apply to radio.
 
 <CssVariables />
 
 <CssAttributes />
 
 ## React
+
+In React, building a radio is easier, because we have a ready-made component that handles most of the logic and state management for us.
+
+`Radio` is a composite component that uses [field](/en/components/docs/field/overview), [label](/en/components/docs/label/overview), [validation message](/en/components/docs/validation-message/overview), and [input](/en/components/docs/input/overview) to create a radio.
+
+In addition, we have a dedicated [useRadioGroup](/en/components/utilities/use-radio-group) React hook to make it easier to manage a group of Radio components.
 
 ```tsx
 import { Radio } from '@digdir/designsystemet-react';

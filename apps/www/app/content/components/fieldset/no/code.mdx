@@ -4,7 +4,7 @@ En god huskeregel er at **fieldset er et sett med fields**
 <Story story="Preview" defaultOpen />
 
 ## Bruk
-Klassenavnet `ds-fieldset` legges på `<fieldset>`-elementet.
+Bruk `ds-fieldset` på `<fieldset>`-elementet.
 
 ```html
 <fieldset class="ds-fieldset">
@@ -21,11 +21,19 @@ Bygg opp gruppen med [checkbox](/no/components/docs/checkbox/code) eller [radio]
 
 <Story story="WithCheckbox" />
 
-### Flere felter
+### Ulike felt typer
 
 Et fieldset kan også gruppere andre felter, for eksempel [field](/no/components/docs/field/code) med [input](/no/components/docs/input/code) og [select](/no/components/docs/select/code).
 
 <Story story="WithFields" />
+
+### Readonly
+
+Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere innholdet men ikke redigere det. Informasjon blir med når skjemaet sendes inn.
+
+`readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå `readonly` så langt det lar seg gjøre.
+
+<Story story="ReadOnly" />
 
 
 ## CSS variabler og data-attributter
