@@ -1,13 +1,10 @@
 <Story story="Preview" defaultOpen/>
 
-## Bruk
-
-Checkbox er ein samansatt komponent, så i HTML må du bygge den opp av fleire komponentar. Me bruker [fieldset](/no/components/docs/fieldset/code), [label](/no/components/docs/label/code) og [input](/no/components/docs/input/code) for å lage ein checkbox.
 
 ## CSS variablar og data-attributter
 Størrelser styres med [`data-size`](/no/fundamentals/code/sizes) og farger med [`data-color`](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
 
-Checkbox er en sammensatt komponent, og derfor viser vi også variabler og data-attributter fra `ds-input` her.
+Checkbox er `ds-input` med `type="checkbox"` så variabler og data-attributter som gjelder for [input](/no/components/docs/input/overview) gjelder også for checkbox.
 
 <CssAttributes />
 
@@ -18,22 +15,26 @@ Checkbox er en sammensatt komponent, og derfor viser vi også variabler og data-
 
 ### Gruppering
 
-Bruk [fieldset](/no/components/docs/fieldset/code) og `useCheckboxGroup` for gruppering av flere valg.
+Bruk [fieldset](/no/components/docs/fieldset/code) for gruppering av flere valg.
 
 <Story story="Group" />
 
+
 ### Outline
-`variant="outline"` legger på ekstra padding og en ramme rundt valget slik at det blir en større klikkflate.
+`data-variant="outline"` legger på ekstra padding og en ramme rundt valget slik at det blir en større klikkflate.
 
 <Story story="Outline" />
 
-### Indeterminate checkbox
 
-Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet checkbox som kan velge eller fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere checkbox er markert i gruppen. Den vises som en vanlig checkbox dersom alle i gruppen har samme tilstand.
 
-<Story story="InTable" />
 
 ## React
+
+I React er det enklere å bygge opp en checkbox, da vi har en ferdig komponent som tar seg av det meste av logikken og tilstandshåndteringen for oss.
+
+`Checkbox` er ein samansatt komponent som bruker [field](/no/components/docs/field/overview), [label](/no/components/docs/label/overview), [validation message](/no/components/docs/validation-message/overview) og [input](/no/components/docs/input/overview) for å lage ein checkbox.
+
+I tillegg har vi en egen [useCheckboxGroup](/no/components/utilities/use-checkbox-group) React-hook for å lettere håndtere en gruppe av Checkbox-komponenter.
 
 ```tsx
 import { Checkbox } from '@digdir/designsystemet-react';
@@ -42,3 +43,15 @@ import { Checkbox } from '@digdir/designsystemet-react';
 ```
 
 <ReactComponentDocs />
+
+### Gruppering med `useCheckboxGroup`
+
+Bruk [fieldset](/no/components/docs/fieldset/code) og `useCheckboxGroup` for gruppering av flere valg.
+
+<Story story="Group" language="react"/>
+
+### Indeterminate checkbox
+
+Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet checkbox som kan velge eller fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere checkbox er markert i gruppen. Den vises som en vanlig checkbox dersom alle i gruppen har samme tilstand.
+
+<Story story="InTable" language="react" />
