@@ -1,35 +1,8 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen />
 
 ## Usage
 
-```tsx
-import { Switch } from '@digdir/designsystemet-react';
-
-<Switch label="Dark mode" value="dark" />
-```
-
-## Examples
-
-### Grouping
-
-Use [Fieldset](/en/components/docs/fieldset/code) to group multiple `Switch` components together.
-
-<Story story="GroupEn" />
-
-### Outline
-`variant="outline"` adds extra padding and a border around the selection, increasing the clickable area.
-
-<Story story="OutlineEn" />
-
-### Right-aligned
-Use `position="end"` to position `Switch` on the right side of the prompt if
-you need it.
-
-<Story story="RightAlignedEn" />
-
-## HTML
-The class name `ds-input` is added to `<input>` along with `type="checkbox"` and `role="switch"`.
+Use the classname `ds-input` on `<input>` along with `type="checkbox"` and `role="switch"`.
 
 ```html
 <input
@@ -39,29 +12,48 @@ The class name `ds-input` is added to `<input>` along with `type="checkbox"` and
 />
 ```
 
-To mirror what the composite component in React does, you need to use `ds-field` together with a `<label>`.
-
-To right-align `<input>`, add `data-position="end"` to `ds-field`.
+For a valid form element, we recommend using `<ds-field>` together with a `<label>`.
 
 ```html
-<div class="ds-field" data-position="end">
+<ds-field>
+  <label class="ds-label">Switch</label>
   <input
     class="ds-input"
     role="switch"
-    type="checkbox"
-    id="my-switch"
-  >
-  <label
-    class="ds-label"
-    data-weight="regular"
-    for="my-switch"
-  >Flightmode</label>
-</div>
+    type="checkbox">
+</ds-field>
 ```
 
 ## CSS variables and data attributes
-Switch is a composite component, so we show variables and data attributes from `ds-input` here.
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
+The component will inherit from the closest parent where these are set.
+
+Switch is `ds-input` with `type="checkbox"`, so variables and data attributes that apply to [input](/en/components/docs/input/overview) also apply to switch.
 
 <CssVariables />
 
 <CssAttributes />
+
+### Right-aligned
+To right-align the switch, add `data-position="end"` to `<ds-field>`.
+
+<Story story="RightAlignedEn" />
+
+### Outline
+`data-variant="outline"` adds extra padding and a border around the selection to create a larger clickable area.
+
+<Story story="OutlineEn" />
+
+## React
+
+In React, building a switch is easier because we have a ready-made component that handles most of the logic and state management for us.
+
+`Switch` is a composite component that uses [field](/en/components/docs/field/overview), [label](/en/components/docs/label/overview), and [input](/en/components/docs/input/overview) to create a switch.
+
+```tsx
+import { Switch } from '@digdir/designsystemet-react';
+
+<Switch label="Dark mode" value="dark" />
+```
+
+<ReactComponentDocs />
