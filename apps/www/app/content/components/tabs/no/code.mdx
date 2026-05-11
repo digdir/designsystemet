@@ -1,7 +1,21 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
+
+Vi utvider [u-tabs (u-elements.github.io)](https://u-elements.github.io/u-elements/elements/u-tabs), som er en web-komponent som implementerer tabs.
+Legg på klassenavnet `ds-tabs` på `<ds-tabs>` elementet for å få Designsystemet styling.
+
+Vi anbefaler å bruke `<ds-tabs>`, og ikke bygge egne tabs fra bunnen av, for å sikre god tilgjengelighet og funksjonalitet.
+
+## CSS variabler og data-attributter
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med[data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
 
 ```tsx
 import { Tabs } from '@digdir/designsystemet-react';
@@ -16,37 +30,8 @@ import { Tabs } from '@digdir/designsystemet-react';
 </Tabs>
 ```
 
-## Eksempel
+### Eksempel på kontrollert
 
-### Kun ikoner
+<Story story="Controlled" language="react" />
 
-I eksempelet under har vi lagt [`Tooltip`](/no/components/docs/tooltip/code) rundt `Tabs.Tab` for å gi beskrivende tekst til ikonene.
-
-<Story story="IconsOnly" />
-
-### Kontrollert
-
-<Story story="Controlled" />
-
-## HTML
-Vi utvider [u-tabs (u-elements.github.io)](https://u-elements.github.io/u-elements/elements/u-tabs), som er en web-komponent som implementerer tabs.
-Legg på klassenavnet `ds-tabs` på `<ds-tabs>` elementet for å få Designsystemet styling.
-
-```html
-<ds-tabs class="ds-tabs">
-  <ds-tablist>
-    <ds-tab>Tab 1</ds-tab>
-    <ds-tab>Tab 2</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>Panel 1</ds-tabpanel>
-  <ds-tabpanel>Panel 2</ds-tabpanel>
-</ds-tabs>
-```
-
-Vi anbefaler å bruke `<ds-tabs>`, og ikke bygge egne tabs fra bunnen av, for å sikre god tilgjengelighet og funksjonalitet.
-
-## CSS variabler og data-attributter
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

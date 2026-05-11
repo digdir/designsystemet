@@ -1,22 +1,23 @@
 ---
-search_terms: block, container, panel, tile, module, section
+search_terms: card, content card, information card, presentation card, overview card, content block, block, container, panel, tile, module, section
 ---
 
-<Story story="PreviewEn" />
+<Story story="Preview" />
 
-**Use `Card` when**
+**Use Card when**
 - content should be grouped
 - functionality should be separated from the rest of the content
 
-**Avoid `Card` when**
+**Avoid Card when**
 - long text blocks or detailed explanations need to be displayed
-- important messages should be presented as alerts (use [`Alert`](/en/components/docs/alert/overview) instead)
+- important messages should be presented as alerts (use [Alert](/en/components/docs/alert/overview) instead)
+
 
 ## Examples
 
-### Colours
+### Colours and variants
 
-`Card` is available in all theme colours, and in the default and tinted variants.
+Card is available in all theme colours, and in the default and tinted variants.
 
 <Story story="Variants" />
 
@@ -28,13 +29,15 @@ You can divide the card into sections. These get dividers between them and may i
 
 ### Link card
 
-`Card` can be used as a navigation card to take users to another page. Developers must ensure it is used correctly. This is documented in the code examples.
+Card can be used as a navigation card to take users to another page. Developers must ensure it is used correctly. This is documented in the code examples.
 
 <Story story="WithLinkEn" />
 
+
 ### Card as a button
 
-In this example, `Card` renders as a button. This is useful when the card contains little text and should open a dialogue or perform another action on the same page.
+In this example, Card renders as a button.
+This is useful when the card contains little text and should open a dialogue or perform another action on the same page.
 
 **When the card is a button, the content inside loses all semantics, so use this carefully.**
 
@@ -46,6 +49,15 @@ You can change the display mode of the card so that it appears horizontally inst
 
 <Story story="AsGrid" />
 
+
 ## Guidelines
 
-`Card` is a flexible component used to structure and present content in a clear and visually distinct way. The card can contain different
+Card is a flexible component used to structure and present content in a clear and visually distinct way. The card can contain different types of content, such as text, media and links, and is often used in overviews, navigation or to highlight individual topics.
+
+## Text
+
+The text in a card should be clear, relevant and give the user enough information to understand what the card is about.
+
+How you shape the text depends on the context. The card can be an entry point to a new page, a choice in a process or part of an information overview. The text should reflect that.
+
+Avoid unnecessary details, and ensure that the title and description belong together and make sense in relation to the rest of the content.
