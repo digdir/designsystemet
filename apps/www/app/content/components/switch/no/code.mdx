@@ -1,34 +1,8 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen />
 
 ## Bruk
 
-```tsx
-import { Switch } from '@digdir/designsystemet-react';
-
-<Switch label="Mørk modus" value="dark" />
-```
-
-## Eksempel
-
-### Gruppering
-Bruk [Fieldset](/no/components/docs/fieldset/code) for å gruppere flere `Switch`-komponenter sammen. 
-
-<Story story="Group" />
-
-### Outline
-`variant="outline"` legger på ekstra padding og en ramme rundt valget slik at det blir en større klikkflate.
-
-<Story story="Outline" />
-
-### Høyrejustert
-Bruk `position="end"` til å plassere `Switch` på høyre side av ledeteksten hvis
-du trenger det.
-
-<Story story="RightAligned" />
-
-## HTML
-Klassenavnet `ds-input` legges på `<input>` sammen med `type="checkbox"` og `role="switch"`.
+Bruk klassenavnet `ds-input` på `<input>` sammen med `type="checkbox"` og `role="switch"`.
 
 ```html
 <input
@@ -38,30 +12,50 @@ Klassenavnet `ds-input` legges på `<input>` sammen med `type="checkbox"` og `ro
 />
 ```
 
-For å speile det som den samensatte komponenten i React gjør, må du bruke `ds-field` sammen med en `<label>`.
-
-Skal du høyrejustere `<input>` legger du `data-position="end"` på `ds-field`.
+For et gyldig skjemaelement anbefaler vi å bruke `<ds-field>` sammen med en `<label>`.
 
 ```html
-<div class="ds-field" data-position="end">
+<ds-field>
+  <label class="ds-label" >Switch</label>
   <input
     class="ds-input"
     role="switch"
-    type="checkbox"
-    id="my-switch"
-  >
-  <label
-    class="ds-label"
-    data-weight="regular"
-    for="my-switch"
-  >Flymodus</label>
-</div>
+    type="checkbox">
+</ds-field>
 ```
 
-
 ## CSS variabler og data-attributter
-Switch er en sammensatt komponent, og derfor viser vi variabler og data-attributter fra `ds-input` her.
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve nærmeste forelder med disse satt.
+
+Switch er `ds-input` med `type="checkbox"` så variabler og data-attributter som gjelder for [input](/no/components/docs/input/overview) gjelder også for switch.
 
 <CssVariables />
 
 <CssAttributes />
+
+### Høyrejustert
+Ønsker du å høyrejustere switch legger du `data-position="end"` på `<ds-field>`.
+
+<Story story="RightAligned" />
+
+### Outline
+`data-variant="outline"` legger på ekstra padding og en ramme rundt valget slik at det blir en større klikkflate.
+
+<Story story="Outline" />
+
+
+## React
+
+I React er det enklere å bygge en switch, fordi vi har en ferdiglaget komponent som håndterer det meste av logikken og tilstandshåndteringen for oss.
+
+`Switch` er en sammensatt komponent som bruker [field](/no/components/docs/field/overview), [label](/no/components/docs/label/overview), og [input](/no/components/docs/input/overview) for å lage en switch.
+
+
+```tsx
+import { Switch } from '@digdir/designsystemet-react';
+
+<Switch label="Mørk modus" value="dark" />
+```
+
+<ReactComponentDocs />
