@@ -1,6 +1,28 @@
 <Story story="Preview" defaultOpen/>
 
 
+## Bruk
+
+Bruk klassenavnet `ds-input` på `<input>` sammen med `type="checkbox"`.
+
+```html
+<input
+  class="ds-input"
+  type="checkbox"
+/>
+```
+
+For et gyldig skjemaelement anbefaler vi å bruke `<ds-field>` sammen med en `<label>`.
+
+```html
+<ds-field>
+  <label class="ds-label" >Checkbox</label>
+  <input
+    class="ds-input"
+    type="checkbox">
+</ds-field>
+```
+
 ## CSS variablar og data-attributter
 Størrelser styres med [`data-size`](/no/fundamentals/code/sizes) og farger med [`data-color`](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
 
