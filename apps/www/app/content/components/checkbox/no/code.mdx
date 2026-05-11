@@ -45,6 +45,10 @@ import { Checkbox } from '@digdir/designsystemet-react';
 
 ### Indeterminate checkbox
 
-Legg inn `allowIndeterminate: true` i `getCheckboxProps` fra [useCheckboxGroup](/no/components/utilities/use-checkbox-group) for å opprette en overordnet checkbox som kan velge eller fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere checkbox er markert i gruppen. Den vises som en vanlig checkbox dersom alle i gruppen har samme tilstand.
+Bruk [useCheckboxGroup](/no/components/utilities/use-checkbox-group) for å lage en overordnet checkbox som kan velge eller fjerne alle alternativer i gruppen. 
+
+Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere checkbox er markert i gruppen. Den vises som en vanlig checkbox dersom alle i gruppen har samme tilstand.
+
+Dette aktiveres ved å sette `allowIndeterminate: true` i `getCheckboxProps`. 
 
 <Story story="InTable" language="react" />
