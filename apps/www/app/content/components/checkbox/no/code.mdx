@@ -26,8 +26,6 @@ Bruk [fieldset](/no/components/docs/fieldset/code) for gruppering av flere valg.
 <Story story="Outline" />
 
 
-
-
 ## React
 
 I React er det enklere å bygge opp en checkbox, da vi har en ferdig komponent som tar seg av det meste av logikken og tilstandshåndteringen for oss.
@@ -44,14 +42,9 @@ import { Checkbox } from '@digdir/designsystemet-react';
 
 <ReactComponentDocs />
 
-### Gruppering med `useCheckboxGroup`
-
-Bruk [fieldset](/no/components/docs/fieldset/code) og `useCheckboxGroup` for gruppering av flere valg.
-
-<Story story="Group" language="react"/>
 
 ### Indeterminate checkbox
 
-Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet checkbox som kan velge eller fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere checkbox er markert i gruppen. Den vises som en vanlig checkbox dersom alle i gruppen har samme tilstand.
+Legg inn `allowIndeterminate: true` i `getCheckboxProps` fra [useCheckboxGroup](/no/components/utilities/use-checkbox-group) for å opprette en overordnet checkbox som kan velge eller fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere checkbox er markert i gruppen. Den vises som en vanlig checkbox dersom alle i gruppen har samme tilstand.
 
 <Story story="InTable" language="react" />
