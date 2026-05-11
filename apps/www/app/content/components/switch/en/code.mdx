@@ -2,7 +2,7 @@
 
 ## Usage
 
-The class name `ds-input` is added to `<input>` along with `type="checkbox"` and `role="switch"`.
+Use the classname `ds-input` on `<input>` along with `type="checkbox"` and `role="switch"`.
 
 ```html
 <input
@@ -12,24 +12,16 @@ The class name `ds-input` is added to `<input>` along with `type="checkbox"` and
 />
 ```
 
-To mirror what the composite component in React does, you need to use `ds-field` together with a `<label>`.
-
-To right-align `<input>`, add `data-position="end"` to `ds-field`.
+For a valid form element, we recommend using `<ds-field>` together with a `<label>`.
 
 ```html
-<div class="ds-field" data-position="end">
+<ds-field>
+  <label class="ds-label">Switch</label>
   <input
     class="ds-input"
     role="switch"
-    type="checkbox"
-    id="my-switch"
-  >
-  <label
-    class="ds-label"
-    data-weight="regular"
-    for="my-switch"
-  >Flightmode</label>
-</div>
+    type="checkbox">
+</ds-field>
 ```
 
 ## CSS variables and data attributes
@@ -42,7 +34,16 @@ The component will inherit from the closest parent where these are set.
 
 <CssAttributes />
 
+### Right-aligned
+To right-align the switch, add `data-position="end"` to `<ds-field>`.
+
+<Story story="RightAlignedEn" />
+
 ## React
+
+In React, building a switch is easier because we have a ready-made component that handles most of the logic and state management for us.
+
+`Switch` is a composite component that uses [field](/en/components/docs/field/overview), [label](/en/components/docs/label/overview), and [input](/en/components/docs/input/overview) to create a switch.
 
 ```tsx
 import { Switch } from '@digdir/designsystemet-react';
