@@ -355,15 +355,14 @@ export const Outline = () => {
 
   return (
     <Fieldset>
-      <Fieldset.Legend>
-        Hvordan vil du helst at vi skal kontakte deg?
-      </Fieldset.Legend>
+      <Fieldset.Legend>Hvordan ønsker å bli kontaktet?</Fieldset.Legend>
       <Fieldset.Description>
-        Velg alle alternativene som er relevante for deg.
+        Velg hvordan du vi motta viktig informasjon om saken din.
       </Fieldset.Description>
       <Checkbox
         label='E-post'
         value='epost'
+        description='Vi bruker e-postadressen du har oppgitt tidligere (********)'
         variant='outline'
         checked={value.includes('epost')}
         onChange={(e) => {
@@ -375,21 +374,9 @@ export const Outline = () => {
         }}
       />
       <Checkbox
-        label='Telefon'
-        value='telefon'
-        variant='outline'
-        checked={value.includes('telefon')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'telefon']);
-          } else {
-            setValue(value.filter((v) => v !== 'telefon'));
-          }
-        }}
-      />
-      <Checkbox
         label='SMS'
         value='sms'
+        description='Vi bruker telefonnummeret du har oppgitt tidligere (*******)'
         variant='outline'
         checked={value.includes('sms')}
         onChange={(e) => {
@@ -405,17 +392,18 @@ export const Outline = () => {
 };
 
 export const OutlineEn = () => {
-  const [value, setValue] = useState<string[]>(['epost']);
+  const [value, setValue] = useState<string[]>(['email']);
 
   return (
     <Fieldset>
-      <Fieldset.Legend>How would you prefer us to contact you?</Fieldset.Legend>
+      <Fieldset.Legend>How would you like to be contacted?</Fieldset.Legend>
       <Fieldset.Description>
-        Select all the options that are relevant to you.
+        Choose how you want to receive important information about your case.
       </Fieldset.Description>
       <Checkbox
         label='E-mail'
         value='email'
+        description='We use the e-mail address you have provided earlier (********)'
         variant='outline'
         checked={value.includes('email')}
         onChange={(e) => {
@@ -427,28 +415,16 @@ export const OutlineEn = () => {
         }}
       />
       <Checkbox
-        label='Phone'
-        value='phone'
+        label='SMS'
+        value='sms'
+        description='We use the phone number you have provided earlier (*******)'
         variant='outline'
-        checked={value.includes('phone')}
+        checked={value.includes('sms')}
         onChange={(e) => {
           if (e.target.checked) {
-            setValue([...value, 'phone']);
+            setValue([...value, 'sms']);
           } else {
-            setValue(value.filter((v) => v !== 'phone'));
-          }
-        }}
-      />
-      <Checkbox
-        label='Text message'
-        value='text'
-        variant='outline'
-        checked={value.includes('text')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'text']);
-          } else {
-            setValue(value.filter((v) => v !== 'text'));
+            setValue(value.filter((v) => v !== 'sms'));
           }
         }}
       />
