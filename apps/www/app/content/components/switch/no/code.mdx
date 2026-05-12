@@ -44,6 +44,14 @@ Switch er `ds-input` med `type="checkbox"` så variabler og data-attributter som
 
 <Story story="Outline" />
 
+### Readonly
+`type="checkbox"` er alltid `:read-only`, og har ikke støtte for dette på samme måte som input-typer du kan skrive i.
+
+Dersom du setter `readonly` på switch sørger vi for at den oppfører seg som om den kun har lesetilgang, ved å stoppe `onClick` og `onChange`.
+
+Brukeren vil fortsatt kunne fokusere på elementet.
+
+<Story story="ReadOnly"  />
 
 ## React
 

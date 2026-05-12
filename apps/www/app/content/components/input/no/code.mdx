@@ -19,7 +19,6 @@ For et gyldig skjemaelement anbefaler vi å bruke `<ds-field>` sammen med en `<l
 </ds-field>
 ```
 
-Dersom du skal ha `readonly` på checkbox eller radio, må du selv stoppe `onClick` og `onChange` for å hindre endring av tilstanden.
 
 ## CSS variabler og data-attributter
 
@@ -35,11 +34,6 @@ Komponenten vil arve nærmeste forelder med disse satt.
 ### ReadOnly
 
 <Story story="ReadOnly" />
-
-`type="checkbox"` og `type="radio"` er alltid `:read-only`, og har ikkje støtte for dette på samme måte som input typer du kan skrive i. Dersom du setter `readOnly` på checkbox eller radio passe vi på at den oppfører som om den kun har lesetilgang, ved å stoppe `onClick` og `onChange`.
-
-<Story story="ReadOnlyCheckAndRadio" layout="block" />
-
 
 
 ## React 

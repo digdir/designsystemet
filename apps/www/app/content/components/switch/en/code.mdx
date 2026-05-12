@@ -44,6 +44,15 @@ To right-align the switch, add `data-position="end"` to `<ds-field>`.
 
 <Story story="OutlineEn" />
 
+### ReadOnly
+`type="checkbox"` is always `:read-only` and does not support this in the same way as input types you can type into.
+
+If you set `readonly` on a switch, we ensure that it behaves as if it has read-only access by stopping `onClick` and `onChange`.
+
+The user will still be able to focus on the element.
+
+<Story story="ReadOnly" />
+
 ## React
 
 In React, building a switch is easier because we have a ready-made component that handles most of the logic and state management for us.

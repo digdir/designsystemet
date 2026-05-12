@@ -45,6 +45,15 @@ Use [fieldset](/en/components/docs/fieldset/code) for grouping multiple choices.
 
 <Story story="OutlineEn" />
 
+### ReadOnly
+`type="checkbox"` is always `:read-only` and does not support this in the same way as input types you can type into.
+
+If you set `readonly` on checkbox or radio, we ensure that it behaves as if it has read-only access by stopping `onClick` and `onChange`.
+
+The user will still be able to focus on the element.
+
+<Story story="ReadOnly" />
+
 
 ## React
 

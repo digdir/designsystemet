@@ -177,7 +177,7 @@ export const Disabled = () => {
   );
 };
 
-export const ReadOnly = () => {
+export const ReadOnlyGroup = () => {
   const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
     value: ['epost'],
     readOnly: true,
@@ -431,3 +431,12 @@ export const OutlineEn = () => {
     </Fieldset>
   );
 };
+
+export const ReadOnly = () => (
+  <Checkbox
+    label='Checkbox label'
+    description='Description'
+    value='value'
+    readOnly
+  />
+);
