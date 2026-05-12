@@ -3,19 +3,18 @@ packages:
   - apps/*
   - plugins/*
   - internal/*
+allowBuilds:
+  "@biomejs/biome": true
+  '@parcel/watcher': false
+  '@swc/core': true
+  esbuild: true
+  rs-module-lexer: false
+  style-dictionary: true
+blockExoticSubdeps: true
 injectWorkspacePackages: true
 minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - "@u-elements/*"
-allowBuilds:
-  "@biomejs/biome": true
-  "@swc/core": true
-  esbuild: true
-  style-dictionary: true
-  "@bundled-es-modules/glob": false
-  "@parcel/watcher": false
-  "rs-module-lexer": false
-  "sharp": false
 packageExtensions:
   "@navikt/aksel-icons":
     peerDependencies:
@@ -30,4 +29,3 @@ syncInjectedDepsAfterScripts:
   - build:themebuilder
   - build:storybook
 useNodeVersion: 24.15.0
-blockExoticSubdeps: true
