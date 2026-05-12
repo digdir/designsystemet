@@ -11,7 +11,6 @@ allowBuilds:
   "@biomejs/biome": true
   "@swc/core": true
   esbuild: true
-  just-pnpm: true
   style-dictionary: true
   "@bundled-es-modules/glob": false
   "@parcel/watcher": false
