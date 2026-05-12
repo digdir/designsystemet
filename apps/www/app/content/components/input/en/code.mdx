@@ -1,16 +1,34 @@
-<Story story="Preview" />
+<Story story="Preview" defaultOpen/>
 
 ## Usage
 
-Append the class name `ds-input` to the `<input>` element to get the design from the design system.
-
-Several types of input are supported, see the prop table at the bottom for the full list.
+The class `ds-input` is used on most form controls, such as `<input>`, `<textarea>`, and `<select>`.
 
 ```html
-<input class="ds-input" />
+<input class="ds-input"/>
+<textarea class="ds-input"/>
+<select class="ds-input"/>
 ```
 
-If you want `readonly` on checkbox or radio, you must stop `onClick` and `onChange` yourself to prevent changing the state.
+For a valid form element, we recommend using `<ds-field>` together with a `<label>`.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label" >Checkbox</label>
+  <input class="ds-input">
+</ds-field>
+```
+
+If you want `readonly` on checkbox or radio, you must stop `onClick` and `onChange` yourself to prevent state changes.
+
+## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors).
+The component will inherit from the closest parent where these are set.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Examples
 
@@ -18,27 +36,12 @@ If you want `readonly` on checkbox or radio, you must stop `onClick` and `onChan
 
 <Story story="ReadOnlyEn" />
 
-`type="checkbox"` and `type="radio"` are always `:read-only`, and do not support this in the same way as input types you can type into. If you set `readOnly` on checkbox or radio, we ensure that it behaves as if it only has read access, by stopping `onClick` and `onChange`.
+`type="checkbox"` and `type="radio"` are always `:read-only`, and do not support this in the same way as input types you can type into. If you set `readOnly` on checkbox or radio, we ensure it behaves as read-only by stopping `onClick` and `onChange`.
 
-<Story story="ReadOnlyCheckAndRadio" layout="block" />
+<Story story="ReadOnlyCheckAndRadioEn" layout="block" />
 
-## CSS variables and data attributes
-
-The `ds-input` class can be used to style [select](/en/components/docs/select/overview) and [textarea](/en/components/docs/textarea/overview) as well.
-
-Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
-The component will inherit from the closest parent where these are set.
-
-<CssVariables />
-
-<CssAttributes />
 
 ## React
-
-Input is a styled native `<input>` element, so the documentation is sparse.
-You can use this component to style most `type` attributes of `<input>`.
-
-You can read about [The HTML Input element on MDN (mozilla.com)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input).
 
 ```tsx
 import { Input, Label } from '@digdir/designsystemet-react';
@@ -50,3 +53,7 @@ import { Input, Label } from '@digdir/designsystemet-react';
 ```
 
 <ReactComponentDocs />
+
+### Type values
+`Input` only exposes supported `type` values. You can view the valid type values in the dropdown below.
+<Story story="InputType" layout="block" />
