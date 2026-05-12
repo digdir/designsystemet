@@ -3,23 +3,22 @@ packages:
   - apps/*
   - plugins/*
   - internal/*
-ignoredBuiltDependencies:
-  - '@bundled-es-modules/glob'
-  - '@parcel/watcher'
-  - rs-module-lexer
-  - sharp
 injectWorkspacePackages: true
 minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - "@u-elements/*"
-onlyBuiltDependencies:
-  - '@biomejs/biome'
-  - '@swc/core'
-  - esbuild
-  - just-pnpm
-  - style-dictionary
+allowBuilds:
+  "@biomejs/biome": true
+  "@swc/core": true
+  esbuild: true
+  just-pnpm: true
+  style-dictionary: true
+  "@bundled-es-modules/glob": false
+  "@parcel/watcher": false
+  "rs-module-lexer": false
+  "sharp": false
 packageExtensions:
-  '@navikt/aksel-icons':
+  "@navikt/aksel-icons":
     peerDependencies:
       react: ">=18.3.1 || ^19.0.0"
     peerDependenciesMeta:
