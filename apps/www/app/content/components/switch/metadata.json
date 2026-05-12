@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Switch",
-    "subtitle": "`Switch` lar brukerne velge mellom to alternativer ved å slå noe av eller på."
+    "subtitle": "Switch lar brukerne velge mellom to alternativer ved å slå noe av eller på."
   },
   "en": {
     "title": "Switch",
-    "subtitle": "`Switch` allows users to choose between two options by turning something on or off."
+    "subtitle": "Switch allows users to choose between two options by turning something on or off."
   },
   "image": "Switch.svg",
   "cssFile": "input.css"

@@ -1,5 +1,25 @@
 <Story story="Preview" defaultOpen/>
 
+## Usage
+Use the classname `ds-input` on `<input>` along with `type="checkbox"`.
+
+```html
+<input
+  class="ds-input"
+  type="checkbox"
+/>
+```
+
+For a valid form element, we recommend using `<ds-field>` together with a `<label>`.
+
+```html
+<ds-field>
+  <label class="ds-label">Checkbox</label>
+  <input
+    class="ds-input"
+    type="checkbox">
+</ds-field>
+```
 
 ## CSS variables and data attributes
 Sizes are controlled with [`data-size`](/en/fundamentals/code/sizes) and colors with [`data-color`](/en/fundamentals/code/colors). The component will inherit these from the nearest parent.
