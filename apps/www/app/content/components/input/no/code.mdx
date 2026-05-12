@@ -1,16 +1,34 @@
-<Story story="Preview" />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
 
-Legg klassenavnet på `<input>`-elementet for å få designet fra designsystemet.
-
-Flere typer av input er støttet, se propstabellen på toppen for full liste.
+Klassen `ds-input` brukes på de fleste inndatafelter, som `<input>`, `<textarea>` og `<select>`.
 
 ```html
-<input class="ds-input" />
+<input class="ds-input"/>
+<textarea class="ds-input"/>
+<select class="ds-input"/>
+```
+
+For et gyldig skjemaelement anbefaler vi å bruke `<ds-field>` sammen med en `<label>`.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label" >Checkbox</label>
+  <input class="ds-input">
+</ds-field>
 ```
 
 Dersom du skal ha `readonly` på checkbox eller radio, må du selv stoppe `onClick` og `onChange` for å hindre endring av tilstanden.
+
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Eksempel
 
@@ -22,23 +40,9 @@ Dersom du skal ha `readonly` på checkbox eller radio, må du selv stoppe `onCli
 
 <Story story="ReadOnlyCheckAndRadio" layout="block" />
 
-## CSS variabler og data-attributter
 
-Klassen `ds-input` kan bli brukt for å style [select](/no/components/docs/select/overview) og [textarea](/no/components/docs/textarea/overview) også.
-
-Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
-Komponenten vil arve nærmeste forelder med disse satt.
-
-<CssVariables />
-
-<CssAttributes />
 
 ## React 
-
-Input er er styla native `<input>`-element, så dokumentasjonen er lite utfylt.
-Du kan bruke denne komponenten for å style de fleste `type`-attributtene til `<input>`.
-
-Du kan lese om [The HTML Input element på MDN (mozilla.com)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input).
 
 ```tsx
 import { Input, Label } from '@digdir/designsystemet-react';
@@ -50,3 +54,7 @@ import { Input, Label } from '@digdir/designsystemet-react';
 ```
 
 <ReactComponentDocs />
+
+### Type verdier
+`Input` eksponerer kun støttede `type`-verdier. Du kan se de gyldige type verdiene i nedtrekksmenyen nedenfor.
+<Story story="InputType" layout="block" />
