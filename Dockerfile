@@ -6,8 +6,9 @@ FROM node:24.14.1-slim@sha256:b506e7321f176aae77317f99d67a24b272c1f09f1d10f1761f
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ENV CI=true
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN corepack enable
-RUN corepack install -g pnpm@10.33.2
+RUN corepack install
 
 FROM base AS packages
 COPY . /usr/src/app

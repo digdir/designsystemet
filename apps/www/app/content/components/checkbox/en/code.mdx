@@ -1,8 +1,58 @@
-<Story story="Preview" />
-
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Usage
+Use the classname `ds-input` on `<input>` along with `type="checkbox"`.
+
+```html
+<input
+  class="ds-input"
+  type="checkbox"
+/>
+```
+
+For a valid form element, we recommend using `<ds-field>` together with a `<label>`.
+
+```html
+<ds-field>
+  <label class="ds-label">Checkbox</label>
+  <input
+    class="ds-input"
+    type="checkbox">
+</ds-field>
+```
+
+## CSS variables and data attributes
+Sizes are controlled with [`data-size`](/en/fundamentals/code/sizes) and colors with [`data-color`](/en/fundamentals/code/colors). The component will inherit these from the nearest parent.
+
+Checkbox is `ds-input` with `type="checkbox"`, so variables and data attributes that apply to [input](/en/components/docs/input/overview) also apply to checkbox.
+
+<CssAttributes />
+
+<CssVariables />
+
+
+## Examples
+
+### Grouping
+
+Use [fieldset](/en/components/docs/fieldset/code) for grouping multiple choices.
+
+<Story story="GroupEn" />
+
+
+### Outline
+`data-variant="outline"` adds extra padding and a border around the selection to create a larger clickable area.
+
+<Story story="OutlineEn" />
+
+
+## React
+
+In React, building a checkbox is simpler, because we have a ready-made component that handles most of the logic and state management for us.
+
+`Checkbox` is a composite component that uses [field](/en/components/docs/field/overview), [label](/en/components/docs/label/overview), [validation message](/en/components/docs/validation-message/overview), and [input](/en/components/docs/input/overview) to create a checkbox.
+
+We also have a dedicated [useCheckboxGroup](/en/components/utilities/use-checkbox-group) React hook to make it easier to manage a group of Checkbox components.
 
 ```tsx
 import { Checkbox } from '@digdir/designsystemet-react';
@@ -10,79 +60,15 @@ import { Checkbox } from '@digdir/designsystemet-react';
 <Checkbox label="Checkbox label" value="value" />
 ```
 
-## Examples
+<ReactComponentDocs />
 
-### Grouping
-
-Use [`Fieldset`](/en/components/docs/fieldset/code) and `useCheckboxGroup` for grouping multiple options.
-
-<Story story="GroupEn" />
-
-### Outline
-`variant="outline"` adds extra padding and a border around the selection, increasing the clickable area.
-
-<Story story="OutlineEn" />
 
 ### Indeterminate checkbox
 
-Add `allowIndeterminate: true` to `getCheckboxProps` to create a parent `Checkbox` that can select or clear all options.
-This activates an additional state, `indeterminate`, next to `checked` and `unchecked`.
-It is displayed with a horizontal line when one or more `Checkbox` are selected in the group.
-It will be displayed as a regular `Checkbox` if everyone in the group has the same state.
+Use [useCheckboxGroup](/en/components/utilities/use-checkbox-group) to create a parent checkbox that can select or clear all options in the group.
 
-<Story story="InTableEn" />
+This activates an additional state, `indeterminate`, alongside `checked` and `unchecked`. It is shown as a horizontal line when one or more checkboxes are selected in the group. It is shown as a regular checkbox when all checkboxes in the group share the same state.
 
-## HTML
+This is enabled by setting `allowIndeterminate: true` in `getCheckboxProps`.
 
-`Checkbox` is a composite component, so in HTML you have to build it from multiple components.
-We use [`Fieldset`](/en/components/docs/fieldset/code), [`Label`](/en/components/docs/label/code) and [`Input`](/en/components/docs/input/code) to create a `Checkbox`.
-
-The code below shows how you can visually build a `Checkbox` in HTML, but you have to make sure that `<input>` is connected to `<label>` and description.
-
-```html
-<div class="ds-field"> 
-<input 
-class="ds-input" 
-type="checkbox" 
-value="value" 
-id="check-input" 
-aria-describedby="description" 
-> 
-<label 
-class="ds-label" 
-data-weight="regular" 
-for="check-input">Checkbox label</label> 
-<div data-field="description" id="description">Description</div>
-</div>
-```
-
-### In Fieldset
-
-The code below is an example of how to use `Checkbox` inside `<fieldset>`.
-Note that we only show one `Checkbox' here, in practice this will often be several.
-
-```html
-<fieldset class="ds-fieldset">
-<legend class="ds-label" data-weight="medium">How would you prefer us to contact you?</legend>
-<p class="ds-paragraph" data-variant="default">Select all the options that are relevant to you.</p>
-<div class="ds-field">
-<input
-class="ds-input"
-type="checkbox"
-value="email"
-id="check-input"
->
-<label
-class="ds-label"
-data-weight="regular"
-for="check-input"
->Email</label>
-</div>
-</fieldset>
-```
-
-## CSS variables and data attributes
-Checkbox is a composite component, so we show variables and data attributes from `ds-input` here.
-<CssVariables />
-
-<CssAttributes />
+<Story story="InTableEn" language="react" />
