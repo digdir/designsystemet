@@ -19,7 +19,6 @@ For a valid form element, we recommend using `<ds-field>` together with a `<labe
 </ds-field>
 ```
 
-If you want `readonly` on checkbox or radio, you must stop `onClick` and `onChange` yourself to prevent state changes.
 
 ## CSS variables and data attributes
 
@@ -34,11 +33,7 @@ The component will inherit from the closest parent where these are set.
 
 ### ReadOnly
 
-<Story story="ReadOnlyEn" />
-
-`type="checkbox"` and `type="radio"` are always `:read-only`, and do not support this in the same way as input types you can type into. If you set `readOnly` on checkbox or radio, we ensure it behaves as read-only by stopping `onClick` and `onChange`.
-
-<Story story="ReadOnlyCheckAndRadioEn" layout="block" />
+<Story story="ReadOnly" />
 
 
 ## React
@@ -55,5 +50,5 @@ import { Input, Label } from '@digdir/designsystemet-react';
 <ReactComponentDocs />
 
 ### Type values
-`Input` only exposes supported `type` values. You can view the valid type values in the dropdown below.
+`Input` exposes only supported `type` values. You can see the valid type values in the dropdown below.
 <Story story="InputType" layout="block" />
