@@ -9,7 +9,7 @@ ignoredBuiltDependencies:
   - rs-module-lexer
   - sharp
 injectWorkspacePackages: true
-minimumReleaseAge: 1440
+minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - "@u-elements/*"
 onlyBuiltDependencies:
