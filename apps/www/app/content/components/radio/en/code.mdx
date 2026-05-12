@@ -41,6 +41,17 @@ Use [fieldset](/en/components/docs/fieldset/code) for grouping multiple choices.
 Radio *can* be positioned horizontally with `flex`, but should generally be [placed vertically](/en/components/docs/radio/overview#placement).
 <Story story="InlineEn" />
 
+### ReadOnly
+`type="radio"` is always `:read-only` and does not support this in the same way as input types you can type into.
+
+If you set `readonly` on radio, we ensure that it behaves as if it has read-only access by stopping `onClick` and `onChange`.
+
+The user will still be able to focus on the element.
+
+<Story story="ReadOnly" />
+
+
+
 ## CSS variables and data attributes
 Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors).
 The component will inherit from the closest parent where these are set.

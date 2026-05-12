@@ -223,3 +223,7 @@ export const OutlineEn = () => {
     </Fieldset>
   );
 };
+
+export const ReadOnly = () => (
+  <Radio label='Radio' value='value' name='name' readOnly />
+);
