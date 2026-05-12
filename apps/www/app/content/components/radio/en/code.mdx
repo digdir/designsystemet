@@ -24,6 +24,15 @@ For a valid form element, we recommend using `<ds-field>` together with a `<labe
   >
 </ds-field>
 ```
+## CSS variables and data attributes
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors).
+The component will inherit from the closest parent where these are set.
+
+Radio is `ds-input` with `type="radio"`, so variables and data attributes that apply to [input](/en/components/docs/input/overview) also apply to radio.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Examples
 
@@ -52,15 +61,7 @@ The user will still be able to focus on the element.
 
 
 
-## CSS variables and data attributes
-Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors).
-The component will inherit from the closest parent where these are set.
 
-Radio is `ds-input` with `type="radio"`, so variables and data attributes that apply to [input](/en/components/docs/input/overview) also apply to radio.
-
-<CssVariables />
-
-<CssAttributes />
 
 ## React
 
