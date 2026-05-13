@@ -25,6 +25,17 @@ WCAG: [2.5.3 Label in Name](https://www.uutilsynet.no/wcag-standarden/253-ledete
 
 <Divider/>
 \
+**Icon in a button with text should be decorative and hidden from screen readers.**
+
+The icon should not be announced if the text already describes the action.
+
+<span data-size="sm"> 
+WCAG: [1.1.1 Non-text content](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)
+</span>
+
+
+<Divider/>
+\
 **Icon-only button must have an accessible name that describes the action.**
 
 This applies when the button consists only of an icon.
@@ -38,7 +49,9 @@ WCAG: [4.1.2 Name, role, value](https://www.uutilsynet.no/wcag-standarden/412-na
 \
 **Using a loader in button must provide understandable feedback to screen reader users.**
 
-If the button shows a loading indicator, consider how the status is communicated (for example with an `aria-live` region or updated text).
+If the button shows a loading indicator, remember to add `aria-busy="true"` to indicate that an action is in progress.
+
+In addition, you must consider how status is communicated, for example by updating the text.
 
 <span data-size="sm"> 
 WCAG: [4.1.3 Status messages](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)

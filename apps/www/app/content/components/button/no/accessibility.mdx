@@ -50,7 +50,9 @@ WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-n
 \
 **Bruk av loader i button skal gi forståelig tilbakemelding til skjermleserbrukere.**
 
-Hvis knappen viser en lasteindikator, må det vurderes hvordan status kommuniseres (for eksempel med en `aria-live` region eller oppdatert tekst).
+Hvis knappen viser en lasteindikator, huske å legg på `aria-busy="true"` for å indikere at en handling pågår. 
+
+I tillegg må du vurdere hvordan status kommuniseres, for eksempel ved å oppdatere teksten.
 
 <span data-size="sm"> 
 WCAG: [4.1.3 Statusbeskjeder](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
