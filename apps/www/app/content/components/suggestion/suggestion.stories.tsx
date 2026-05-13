@@ -9,15 +9,7 @@ import {
 import { useState } from 'react';
 
 export const Preview = () => {
-  const DATA_PLACES = [
-    'Sogndal',
-    'Oslo',
-    'Brønnøysund',
-    'Stavanger',
-    'Trondheim',
-    'Bergen',
-    'Lillestrøm',
-  ];
+  const DATA_PLACES = ['Sogndal', 'Oslo', 'Brønnøysund'];
   return (
     <Field>
       <Label>Velg en destinasjon</Label>
@@ -45,15 +37,7 @@ export const Preview = () => {
 };
 
 export const PreviewEn = () => {
-  const DATA_PLACES = [
-    'Sogndal',
-    'Oslo',
-    'Brønnøysund',
-    'Stavanger',
-    'Trondheim',
-    'Bergen',
-    'Lillestrøm',
-  ];
+  const DATA_PLACES = ['Sogndal', 'Oslo', 'Brønnøysund'];
   return (
     <Field>
       <Label>Select a destination</Label>

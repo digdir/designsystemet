@@ -5,27 +5,50 @@ Suggestion er under utvikling. Finner du feil eller mangler, meld fra på Github
 <Story story="Preview" defaultOpen />
 
 ## Bruk
-Suggestion baserer seg på [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). Den er inspisert av [open-ui sitt combobox mønster (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
+Suggestion baserer seg på [open-ui sitt combobox mønster (open-ui.org)](https://open-ui.org/components/combobox.explainer/) og bruker [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox) for å oppfylle grunnleggende funksjonalitet fra combobox mønsteret.
 
-`ds-suggestion` er en utvidelse av `u-combobox` fra u-elements.
-Du finner generell dokumentasjon på bruk av `ds-combobox` hos u-elements:
-[https://u-elements.github.io/u-elements/elements/u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
-
-For å få Designsystemet styling, legger du klassenavnet `ds-suggestion` på `<ds-combobox>` elementet.
-`<input>` skal ha `ds-input` klassen.
-
-Dersom du skrur på flervalg, skal `<data>` ha klassenavnet `ds-chip` og data attributtet `data-removable="true"`.
+Bruk klassen `ds-suggestion` på custom elementet `<ds-suggestion>`.
+Legg til `<input class="ds-input" />` og `<u-datalist>` med `<u-option>` som barn for å få en fungerende suggestion.
 
 ```html
-<ds-suggestion class="ds-suggestion" ...>
-  <data class="ds-chip" data-removable="true" ...>Valgt alternativ</data>
-  <input class="ds-input" ... />
-  <ds-datalist>
-    <ds-option label="Sogndal" value="sogndal">Sogndal</ds-option>
-    <ds-option label="Oslo" value="oslo">Oslo</ds-option>
-  </ds-datalist>
+<ds-suggestion class="ds-suggestion">
+  <input class="ds-input"  />
+  <u-datalist>
+    <u-option label="Sogndal" value="Sogndal">Sogndal</u-option>
+    <u-option label="Oslo" value="Oslo">Oslo</u-option>
+    <u-option label="Brønnøysund" value="Brønnøysund">Brønnøysund</u-option>
+  </u-datalist>
 </ds-suggestion>
 ```
+
+For et gyldig skjemaelement anbefaler vi å bruke `<ds-suggestion>` i `<ds-field>` sammen med en `<label>`.
+
+```html
+<ds-field>
+  <label class="ds-label" >Checkbox</label>
+  <ds-suggestion class="ds-suggestion">
+    <input class="ds-input"  />
+    <button type="reset" aria-label="Tøm"/>
+    <u-datalist>
+      <u-option label="Sogndal" value="Sogndal">Sogndal</u-option>
+      <u-option label="Oslo" value="Oslo">Oslo</u-option>
+      <u-option label="Brønnøysund" value="Brønnøysund">Brønnøysund</u-option>
+    </u-datalist>
+  </ds-suggestion>
+</ds-field>
+```
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve nærmeste forelder med disse satt.
+
+Suggestion bruker elementer fra `u-elements` og har derfor mange av de samme custom elementer, data-attributter og CSS variabler. 
+Du kan lese mer om hvordan du bruker disse i [u-elements sin `u-combobox` dokumentasjon](https://u-elements.github.io/u-elements/elements/u-combobox#attributes-and-props).
+
+<CssVariables />
+
+<CssAttributes />
+
 
 ## Eksempel
 
@@ -38,24 +61,14 @@ For å tillate at brukeren kan velge flere alternativer, bruk `data-multiple` p�
 
 Med `data-creatable` på suggestion kan en bruker opprette nye valgte alternativer ved å skrive inn tekst i input og trykke <kbd>Enter</kbd>.
 
-<Story story='Creatable' layout='column' />
+<Story story='Creatable' />
 
-### Filter
-Filter er som standard på, og filteret ser etter teksten i input. Du kan sende inn ditt eget filter. Under vises et eksempel som skrur av filteret helt.
+### Tøm valget
 
-<Story story='Filter' />
+Legg til en knapp med `type="reset"` og `aria-label` for å la brukeren tømme valget.
 
-## CSS variabler og data-attributter
+<Story story='Preview' />
 
-Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
-Komponenten vil arve nærmeste forelder med disse satt.
-
-<CssVariables />
-
-<CssAttributes />
-
-Suggestion baserer seg på [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). 
-Den er inspisert av [open-ui sitt combobox mønster (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
 
 
 ## React
@@ -78,8 +91,19 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
 </Suggestion>
 ```
 
-### Eksempl på kontrollert flervalg
+
+
+<ReactComponentDocs />
+
+### Eksempel på kontrollert flervalg
+
+Har du behov for å kontrollere hvilke alternativer som er valgt, kan du bruke `selected` og `onSelectedChange` på `Suggestion`.
 
 <Story story='ControlledMultiple' layout='column' language="react" />
 
-<ReactComponentDocs />
+### Filter
+Filter er som standard på, og filteret ser etter teksten i input. Du kan sende inn ditt eget filter. Under vises et eksempel som skrur av filteret helt.
+
+<Story story='Filter' language="react"  />
+
+

@@ -5,27 +5,50 @@ Suggestion is under development. If you find any errors or bugs, please report t
 <Story story="PreviewEn" defaultOpen />
 
 ## Usage
-Suggestion is based on [u-combobox from u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). It is inspired by [open-ui's combobox pattern (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
+Suggestion is based on [open-ui's combobox pattern (open-ui.org)](https://open-ui.org/components/combobox.explainer/) and uses [u-combobox from u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox) to provide core combobox functionality.
 
-`ds-suggestion` is an extension of `u-combobox` from u-elements.
-You can find general documentation on using `ds-combobox` at u-elements:
-[https://u-elements.github.io/u-elements/elements/u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
-
-To get the Design System styling, add the class name `ds-suggestion` to the `<ds-combobox>` element.
-`<input>` should have the `ds-input` class.
-
-If you enable multiple choice, `<data>` should have the class name `ds-chip` and the data attribute `data-removable="true"`.
+Use the class `ds-suggestion` on the custom element `<ds-suggestion>`.
+Add `<input class="ds-input" />` and `<u-datalist>` with `<u-option>` children to get a working suggestion.
 
 ```html
-<ds-suggestion class="ds-suggestion" ...>
-  <data class="ds-chip" data-removable="true" ...>Selected option</data>
-  <input class="ds-input" ... />
-  <ds-datalist>
-    <ds-option label="Sogndal" value="sogndal">Sogndal</ds-option>
-    <ds-option label="Oslo" value="oslo">Oslo</ds-option>
-  </ds-datalist>
+<ds-suggestion class="ds-suggestion">
+  <input class="ds-input" />
+  <u-datalist>
+    <u-option label="Sogndal" value="Sogndal">Sogndal</u-option>
+    <u-option label="Oslo" value="Oslo">Oslo</u-option>
+    <u-option label="Brønnøysund" value="Brønnøysund">Brønnøysund</u-option>
+  </u-datalist>
 </ds-suggestion>
 ```
+
+For a valid form control, we recommend using `<ds-suggestion>` inside `<ds-field>` together with a `<label>`.
+
+```html
+<ds-field>
+  <label class="ds-label">Suggestion</label>
+  <ds-suggestion class="ds-suggestion">
+    <input class="ds-input" />
+    <button type="reset" aria-label="Clear" />
+    <u-datalist>
+      <u-option label="Sogndal" value="Sogndal">Sogndal</u-option>
+      <u-option label="Oslo" value="Oslo">Oslo</u-option>
+      <u-option label="Brønnøysund" value="Brønnøysund">Brønnøysund</u-option>
+    </u-datalist>
+  </ds-suggestion>
+</ds-field>
+```
+
+## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors).
+The component will inherit from the closest parent where these are set.
+
+Suggestion uses elements from `u-elements` and therefore supports many of the same custom elements, data attributes, and CSS variables.
+You can read more about how to use these in the [u-elements `u-combobox` documentation](https://u-elements.github.io/u-elements/elements/u-combobox#attributes-and-props).
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Examples
 
@@ -38,24 +61,13 @@ To allow users to select multiple options, use `data-multiple` on suggestion.
 
 With `data-creatable` on suggestion, a user can create new selected options by entering text in the input and pressing <kbd>Enter</kbd>.
 
-<Story story='CreatableEn' layout='column' />
+<Story story='CreatableEn' />
 
-### Filtering
-Filtering is enabled by default, and it searches based on the text in the input field. You can provide your own filter logic. The example below shows how to turn filtering off entirely.
+### Clear selection
 
-<Story story='Filter' />
+Add a button with `type="reset"` and `aria-label` to allow users to clear the selection.
 
-## CSS variables and data attributes
-
-Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
-The component will inherit from the closest parent where these are set.
-
-<CssVariables />
-
-<CssAttributes />
-
-Suggestion is based on [u-combobox from u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox).
-It is inspired by [open-ui's combobox pattern (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
+<Story story='PreviewEn' />
 
 
 ## React
@@ -78,8 +90,16 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
 </Suggestion>
 ```
 
+<ReactComponentDocs />
+
 ### Controlled multiple choice example
+
+If you need to control which options are selected, you can use `selected` and `onSelectedChange` on `Suggestion`.
 
 <Story story='ControlledMultipleEn' layout='column' language="react" />
 
-<ReactComponentDocs />
+### Filter
+
+Filter is enabled by default, and the filter searches based on the text in the input. You can pass your own filter. The example below shows how to turn the filter off entirely.
+
+<Story story='Filter' language="react" />
