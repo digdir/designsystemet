@@ -5,11 +5,12 @@ language: en-US
 early_access: false
 tone_instructions: "Please check documentation in English (en-US), Norwegian Bokmål (nb-NO), and Norwegian Nynorsk (nn-NO)."
 reviews:
+  review_status: false
   profile: "chill"
   poem: false
   high_level_summary: true
   auto_review:
-    enabled: true
+    enabled: false
     drafts: false
     base_branches:
       - "main"
