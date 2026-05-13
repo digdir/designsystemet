@@ -36,6 +36,7 @@ const render = ({ control, list }: DSSuggestionElement) => {
   if (control && !control.placeholder) attr(control, 'placeholder', ' '); // .control comes from UHTMLComboboxElement
   if (control) attr(control, 'popovertarget', useId(list) || null);
   if (list) attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
+  if (list) attr(list, 'data-is-floating', 'true'); // identifier for css to toggle opacity when it is placed by floating-ui.
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:

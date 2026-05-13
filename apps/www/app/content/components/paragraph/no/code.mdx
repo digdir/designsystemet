@@ -1,13 +1,16 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
 
-```tsx
-import { Paragraph } from '@digdir/designsystemet-react';
+Bruk klassenavnet `ds-paragraph` på `<p>`.
 
-<Paragraph>Dette er en paragraf.</Paragraph>;
-```
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Eksempel
 
@@ -15,16 +18,12 @@ import { Paragraph } from '@digdir/designsystemet-react';
 
 <Story story="Sizes" layout="column" />
 
-## HTML
+## React
 
-Bruk klassenavnet `ds-paragraph` på `<p>`.
+```tsx
+import { Paragraph } from '@digdir/designsystemet-react';
 
-```html
-<p class="ds-paragraph">Dette er en paragraf.</p>
+<Paragraph>Dette er en paragraf.</Paragraph>;
 ```
 
-## CSS variabler og data-attributter
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

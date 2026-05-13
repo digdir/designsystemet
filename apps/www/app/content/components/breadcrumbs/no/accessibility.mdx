@@ -1,6 +1,6 @@
 ## Dette må du sjekke selv
 
-**`Breadcrumbs` skal håndteres slik at den ikke blir for lang på små skjermer.**
+**Breadcrumbs skal håndteres slik at den ikke blir for lang på små skjermer.**
 
 Test at brødsmulestien ikke går utenfor synlig område ved smal viewport eller høy zoom. Hvis stien blir for lang, bør den erstattes med en tilbake-lenke.
 
@@ -11,11 +11,10 @@ WCAG: [1.4.10 Dynamisk tilpasning (Reflow)](https://www.uutilsynet.no/wcag-stand
 </span>
 
 <Divider/>
-
 \
-**Skiplink skal hoppe forbi `Breadcrumbs` og direkte til hovedinnholdet.**
+**Skiplink skal hoppe forbi breadcrumbs og direkte til hovedinnholdet.**
 
-Brukeren skal kunne navigere forbi gjentakende innhold uten å måtte gå gjennom `Breadcrumbs`.
+Brukeren skal kunne navigere forbi gjentakende innhold uten å måtte gå gjennom breadcrumbs.
 
 <span data-size="sm"> 
 
@@ -24,9 +23,8 @@ WCAG: [2.4.1 Hoppe over blokker](https://www.uutilsynet.no/veiledning/241-hoppe-
 </span>
 
 <Divider/>
-
 \
-**Lenketekstene i `Breadcrumbs` skal være forståelige.**
+**Lenketekstene i breadcrumbs skal være forståelige.**
 
 Unngå generiske navn eller forkortelser som er vanskelige å forstå. 
 Eksempel: “Skatt for næringsdrivende” 
@@ -39,9 +37,8 @@ WCAG: [2.4.4 Formål med lenke (i kontekst)](https://www.uutilsynet.no/wcag-stan
 </span>
 
 <Divider/>
-
 \
-**`Breadcrumbs` skal være konsistent plassert og bygget opp på tvers av sider.**
+**Breadcrumbs skal være konsistent plassert og bygget opp på tvers av sider.**
 
 Brødsmulestien skal vises på samme sted og i samme rekkefølge på alle sider der den brukes.
 
@@ -52,9 +49,8 @@ WCAG: [3.2.3 Konsekvent navigering](https://www.uutilsynet.no/veiledning/323-kon
 </span>
 
 <Divider/>
-
 \
-**`Breadcrumbs` skal ikke være eneste måte å navigere på.**
+**Breadcrumbs skal ikke være eneste måte å navigere på.**
 
 Brukeren skal ha flere måter å navigere til innholdet på.
 
@@ -65,6 +61,6 @@ WCAG: [2.4.5 Flere måter](https://www.uutilsynet.no/veiledning/245-flere-mater/
 </span>
 
 <Divider/>
-
+\
 ## Siste nivå
 Den siste lenka skal tilsvare noverande side. Den ser ut som vanleg tekst, men er koda som ein lenkje med `aria-current="page"`. På den måten får skjermlesarar korrekt informasjon om kva side brukaren er på, utan at andre brukarar feilaktig oppfattar det som ei klikkbar lenkje.

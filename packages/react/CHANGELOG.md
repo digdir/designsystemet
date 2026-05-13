@@ -1,5 +1,33 @@
 # Change Log
 
+## 1.14.0
+
+### Minor Changes
+
+- **Suggestion**: `Suggestion.Clear` underlying element changed from `del`to `button type='reset'`. This means types, props and ref are now `HTMLButtonElement` instead of `HTMLModElement`. ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- **ErrorSummary:** fix `ErrorSummaryProps` and `ref` types to use the correct type; `DSErrorSummaryElement` (instead of `HTMLDivElement`) ([#4817](https://github.com/digdir/designsystemet/pull/4817))
+
+- **Field / Radio / Checkbox / Switch**: added `variant='outline' for an outlined tile look` ([#4625](https://github.com/digdir/designsystemet/pull/4625))
+
+### Patch Changes
+
+- **Suggestion:** fixed an issue where value did not properly clear when moving focus between multiple instances ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+- **Suggestion**: fixed dropdown so it no longer has a brief flash in wrong position ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- Update npm non-major dependencies ([#4809](https://github.com/digdir/designsystemet/pull/4809))
+
+- **Tabs:** fix issue where `aria-controls` combined with `aria-selected` was not respected on initial render ([#4821](https://github.com/digdir/designsystemet/pull/4821))
+
+- Update npm non-major dependencies ([#4859](https://github.com/digdir/designsystemet/pull/4859))
+
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783))
+
+- Updated dependencies [[`3a1f7d5`](https://github.com/digdir/designsystemet/commit/3a1f7d5cb6de27bc14516cdf5fbe855fa4924ecd), [`fb79b3b`](https://github.com/digdir/designsystemet/commit/fb79b3b9a38494f10e351f42c43b84c8cb491dc8), [`1438369`](https://github.com/digdir/designsystemet/commit/1438369b1c78add45dd19298626929b0f2d1992d), [`2baf80c`](https://github.com/digdir/designsystemet/commit/2baf80c8ad71808d752617e5cd91bc979eb0e0a9), [`8c7af0a`](https://github.com/digdir/designsystemet/commit/8c7af0a17d4cd7192aa02a91d1971a7f1c99006e), [`3a1f7d5`](https://github.com/digdir/designsystemet/commit/3a1f7d5cb6de27bc14516cdf5fbe855fa4924ecd), [`3a1f7d5`](https://github.com/digdir/designsystemet/commit/3a1f7d5cb6de27bc14516cdf5fbe855fa4924ecd), [`05e842f`](https://github.com/digdir/designsystemet/commit/05e842f3ce013b2db4e17a5ee266d58da3060185)]:
+  - @digdir/designsystemet-web@1.14.0
+  - @digdir/designsystemet-types@1.14.0
+
 ## 1.13.3
 
 ### Patch Changes

@@ -17,5 +17,11 @@ We use several automated mechanisms to help detect and reduce risk:
 - Renovate is configured to *only propose updates for packages that have been published for at least 3 days*.  
   This allows time for the ecosystem to discover and revert problematic releases.
 
-### pnpm Policies
-pnpm is configured to ensure **no dependency version newer than 24 hours** is installed.
+### Dependency manager 
+We use [pnpm](https://pnpm.io) for managing dependencies.
+
+We have cofingured pnpm with the following:
+- No dependency version newer than 72 hours is installed.
+- Prevent transitive dependencies from using exotic sources.
+- By default block script execution for dependencies.
+  - See `allowedBuilds` in [pnpm-workspace-yaml](./pnpm-workspace.yaml) for whitelisted depedencies

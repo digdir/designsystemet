@@ -1,15 +1,17 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
 
-```tsx
-import { List } from '@digdir/designsystemet-react';
+Du bruker enten `<ul>` eller `<ol>` med klassenavnet `ds-list`.
+`<li>` brukes for hvert listepunkt, og trenger ingen klassenavn.
 
-<List.Unordered>
-  <List.Item>Item</List.Item>
-</List.Unordered>
-```
+
+## CSS variabler og data-attributter
+Størrelser styres med [data-size](/no/fundamentals/code/sizes). Komponenten vil arve nærmeste forelder med denne satt.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Eksempel
 
@@ -21,27 +23,15 @@ import { List } from '@digdir/designsystemet-react';
 
 <Story story="Ordered" layout="column" />
 
-## HTML
+## React
 
-Du bruker enten `<ul>` eller `<ol>` med klassenavnet `ds-list`.
-`<li>` brukes for hvert listepunkt, og trenger ingen klassenavn.
+```tsx
+import { List } from '@digdir/designsystemet-react';
 
-```html
-<!-- usortert liste -->
-<ul class="ds-list">
-  <li>Item</li>
-  <li>Item</li>
-</ul>
-
-<!-- sortert liste -->
-<ol class="ds-list">
-  <li>Item</li>
-  <li>Item</li>
-</ol>
+<List.Unordered>
+  <List.Item>Item</List.Item>
+</List.Unordered>
 ```
 
-## CSS variabler og data-attributter
+<ReactComponentDocs />
 
-<CssVariables />
-
-<CssAttributes />

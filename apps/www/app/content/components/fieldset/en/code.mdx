@@ -1,53 +1,61 @@
-It is common to get confused between `Fieldset` and `Field`.
-A good rule of thumb is that **`Fieldset` is a set of `Field`**
+It is common to get confused between fieldset and field.
+A good rule of thumb is that **fieldset is a set of fields**
 
-<Story story="PreviewEn" />
-<ReactComponentDocs />
+<Story story="PreviewEn" defaultOpen />
 
 ## Usage
+Use `ds-fieldset` on the `<fieldset>` element.
+
+```html
+<fieldset class="ds-fieldset">
+  <legend class="ds-label" data-weight="medium">Do you accept the terms?</legend>
+  <!-- your fields -->
+</fieldset>
+```
+
+## Examples
+
+### With checkbox or radio
+
+Build the group with [checkbox](/en/components/docs/checkbox/code) or [radio](/en/components/docs/radio/code) as children of `<fieldset>`. This also applies when the group has only one element.
+
+<Story story="WithCheckboxEn" />
+
+### Multiple field types
+
+A fieldset can also group other fields, for example [field](/en/components/docs/field/code) with [input](/en/components/docs/input/code) and [select](/en/components/docs/select/code).
+
+<Story story="WithFieldsEn" />
+
+### Readonly
+
+Fields with the `readonly` attribute are included in the tab order. Users can copy the content but not edit it. Information is included when the form is submitted.
+
+`Readonly` fields can be confusing for some users. Not everyone will understand why they cannot change the content of the field. We therefore recommend avoiding `readonly` as much as possible.
+
+<Story story="ReadOnlyEn" />
+
+
+## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
+The component will inherit from the closest parent where these are set.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
 
 ```tsx
 import { Fieldset, Radio } from '@digdir/designsystemet-react';
 
 <Fieldset>
-<Fieldset.Legend>Question</Fieldset.Legend>
-<Fieldset.Description>Description</Fieldset.Description>
-<Radio label="Option 1" name="radio" value="1" />
-<Radio label="Option 2" name="radio" value="2" />
+  <Fieldset.Legend>Question</Fieldset.Legend>
+  <Fieldset.Description>Description</Fieldset.Description>
+  <Radio label="Option 1" name="radio" value="1" />
+  <Radio label="Option 2" name="radio" value="2" />
 </Fieldset>
 ```
 
-## Examples
-
-### With checkbox
-
-Both [`Checkbox`](/en/components/docs/checkbox/code) and [`Radio`](/en/components/docs/radio/code) should be grouped in a `Fieldset`, even if there is only one element in the group.
-
-<Story story="WithCheckboxEn" />
-
-### More fields
-
-<Story story="WithFieldsEn" />
-
-### Legend as heading
-
-If it is a page that only has form on it, and the title of the page (`<h1>`) is the same as what will be in `<legend>`, you can put `<h1>` inside `Fieldset.Legend`.
-
-<Story story="LegendAsHeadingEn" />
-
-## HTML
-
-The class name `ds-fieldset` is added to the `<fieldset>` element.
-
-```html
-<fieldset class="ds-fieldset">
-<legend class="ds-label" data-weight="medium">Do you accept the terms?</legend>
-<!-- your fields -->
-</fieldset>
-```
-
-## CSS variables and data attributes
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

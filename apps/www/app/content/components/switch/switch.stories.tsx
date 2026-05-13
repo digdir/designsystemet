@@ -160,3 +160,12 @@ export const OutlineEn = () => {
     </Fieldset>
   );
 };
+
+export const ReadOnly = () => (
+  <Switch
+    label='Flymodus'
+    description='Får ikke kontakt med flymodusenheten'
+    readOnly
+    defaultChecked
+  />
+);
