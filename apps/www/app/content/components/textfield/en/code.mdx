@@ -1,32 +1,8 @@
-<Story story="Preview" layout="column" />
-<ReactComponentDocs />
+<Story story="Preview" layout="column" defaultOpen />
 
 
 ## Usage
-
-```tsx
-import { Textfield } from '@digdir/designsystemet-react';
-
-<Textfield label="Label" />
-```
-
-## Examples
-
-### With rows
-
-<Story story="WithRows" />
-
-### With prefix and suffix
-
-<Story story="WithAffixEn" />
-
-### With counter
-
-<Story story="WithCounterEn" />
-
-## HTML
-
-This is a composite component, which uses [`Field`](/en/components/docs/field/code), [`Input`](/en/components/docs/input/code) or [`Textarea`](/en/components/docs/textarea/code) and [`Label`](/en/components/docs/label/code) under the hood.
+This is a composite component, which uses [field](/en/components/docs/field/code), [input](/en/components/docs/input/code) or [textarea](/en/components/docs/textarea/code) and [label](/en/components/docs/label/code) under the hood.
 
 Since this component is built from multiple components, we recommend reading the documentation for the underlying components to get a full overview of the HTML structure.
 
@@ -56,10 +32,42 @@ for="my-textarea"
 </div>
 ```
 
+
+## Examples
+
+### Multiline
+You can switch to a `textarea` by setting `multiline` to `true`. This allows users to write longer text.
+
+<Story story="WithRows" />
+
+### Type
+Since textfield is based on native `input`, you can use most of the `type` values that `input` supports, but we have chosen to remove some of them from our exported type. You can see the valid type values in the select menu below.
+<Story story="InputType" layout="block" />
+
+### Required and optional fields
+When placing a tag inside a `<label>`, we recommend using `margin-inline-start: var(--ds-size-2)` to add space between the text and the tag.
+
+<Story story="RequiredEn" />
+
 ## CSS variables and data attributes
-`Textfield` is a composite component, with [`Field`](/en/components/docs/field/code), [`Input`](/en/components/docs/input/code) or [`Textarea`](/en/components/docs/textarea/code) and [`Label`](/en/components/docs/label/code).
+Textfield is a composite component, with [field](/en/components/docs/field/code), [input](/en/components/docs/input/code) or [textarea](/en/components/docs/textarea/code) and [label](/en/components/docs/label/code).
 
 Here we only show `ds-input`'s variables and data attributes.
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
+The component will inherit from the closest parent where these are set.
+
 <CssVariables />
 
 <CssAttributes />
+
+
+## React 
+
+```tsx
+import { Textfield } from '@digdir/designsystemet-react';
+
+<Textfield label="Label" />
+```
+
+<ReactComponentDocs />

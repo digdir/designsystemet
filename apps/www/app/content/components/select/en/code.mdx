@@ -26,7 +26,11 @@ You can use `<optgroup>` to group options into categories, making long lists mor
 
 ### ReadOnly
 
-`<select>` is always `:read-only`, and does not support this in the same way as input types you can type into. If you set `aria-readonly` on a `<select>`, we ensure that it behaves as if it has read-only access, by preventing `onKeyDown` and `onMouseDown`. The user will still be able to focus on the element.
+`<select>` is always `:read-only`, and does not support this in the same way as input types you can type into. 
+
+If you set `aria-readonly` on a `<select>`, we ensure that it behaves as if it has read-only access, by preventing `onKeyDown` and `onMouseDown`. 
+
+The user will still be able to focus on the element.
 
 <Story story="ReadOnlyEn" />
 

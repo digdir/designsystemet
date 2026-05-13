@@ -1,8 +1,69 @@
-<Story story="Preview" />
+<Story story="Preview" defaultOpen/>
 
-<ReactComponentDocs />
 
 ## Bruk
+
+Bruk klassenavnet `ds-input` på `<input>` sammen med `type="checkbox"`.
+
+```html
+<input
+  class="ds-input"
+  type="checkbox"
+/>
+```
+
+For et gyldig skjemaelement anbefaler vi å bruke `<ds-field>` sammen med en `<label>`.
+
+```html
+<ds-field>
+  <label class="ds-label" >Checkbox</label>
+  <input
+    class="ds-input"
+    type="checkbox">
+</ds-field>
+```
+
+## CSS variablar og data-attributter
+Størrelser styres med [`data-size`](/no/fundamentals/code/sizes) og farger med [`data-color`](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+
+Checkbox er `ds-input` med `type="checkbox"` så variabler og data-attributter som gjelder for [input](/no/components/docs/input/overview) gjelder også for checkbox.
+
+<CssAttributes />
+
+<CssVariables />
+
+
+## Eksempler
+
+### Gruppering
+
+Bruk [fieldset](/no/components/docs/fieldset/code) for gruppering av flere valg.
+
+<Story story="Group" />
+
+
+### Outline
+`data-variant="outline"` legger på ekstra padding og en ramme rundt valget slik at det blir en større klikkflate.
+
+<Story story="Outline" />
+
+### Readonly  
+`type="checkbox"` er alltid `:read-only`, og har ikke støtte for dette på samme måte som input-typer du kan skrive i. 
+
+Dersom du setter `readonly` på checkbox sørger vi for at den oppfører seg som om den kun har lesetilgang, ved å stoppe `onClick` og `onChange`.
+
+Brukeren vil fortsatt kunne fokusere på elementet.
+
+<Story story="ReadOnly"  />
+
+
+## React
+
+I React er det enklere å bygge opp en checkbox, da vi har en ferdig komponent som tar seg av det meste av logikken og tilstandshåndteringen for oss.
+
+`Checkbox` er ein samansatt komponent som bruker [field](/no/components/docs/field/overview), [label](/no/components/docs/label/overview), [validation message](/no/components/docs/validation-message/overview) og [input](/no/components/docs/input/overview) for å lage ein checkbox.
+
+I tillegg har vi en egen [useCheckboxGroup](/no/components/utilities/use-checkbox-group) React-hook for å lettere håndtere en gruppe av Checkbox-komponenter.
 
 ```tsx
 import { Checkbox } from '@digdir/designsystemet-react';
@@ -10,80 +71,15 @@ import { Checkbox } from '@digdir/designsystemet-react';
 <Checkbox label="Checkbox label" value="value" />
 ```
 
-## Eksempler
+<ReactComponentDocs />
 
-### Gruppering
-
-Bruk [`Fieldset`](/no/components/docs/fieldset/code) og `useCheckboxGroup` for gruppering av flere valg.
-
-<Story story="Group" />
-
-### Outline
-`variant="outline"` legger på ekstra padding og en ramme rundt valget slik at det blir en større klikkflate.
-
-<Story story="Outline" />
 
 ### Indeterminate checkbox
 
-Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet `Checkbox` som kan velge eller fjerne alle alternativer.
-Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`.
-Den vises med en horisontal strek når én eller flere `Checkbox` er markert i gruppen.
-Den vises som en vanlig `Checkbox` dersom alle i gruppen har samme tilstand.
+Bruk [useCheckboxGroup](/no/components/utilities/use-checkbox-group) for å lage en overordnet checkbox som kan velge eller fjerne alle alternativer i gruppen. 
 
-<Story story="InTable" />
+Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere checkbox er markert i gruppen. Den vises som en vanlig checkbox dersom alle i gruppen har samme tilstand.
 
-## HTML
+Dette aktiveres ved å sette `allowIndeterminate: true` i `getCheckboxProps`. 
 
-`Checkbox` er ein samansatt komponent, så i HTML må du bygge den opp av fleire komponentar.
-Me bruker [`Fieldset`](/no/components/docs/fieldset/code), [`Label`](/no/components/docs/label/code) og [`Input`](/no/components/docs/input/code) for å lage ein `Checkbox`.
-
-Koden under viser hvordan du visuelt kan bygge opp en `Checkbox` i HTML, men du må selv passe på at `<input>` blir koblet sammen med `<label>` og beskrivelse.
-
-```html
-<div class="ds-field">
-  <input
-    class="ds-input"
-    type="checkbox"
-    value="value"
-    id="check-input"
-    aria-describedby="description"
-  >
-  <label
-    class="ds-label"
-    data-weight="regular"
-    for="check-input">Checkbox label</label>
-  <div data-field="description" id="description">Description</div>
-</div>
-```
-
-### I Fieldset
-
-Koden under er et eksempel på hvordan du bruker `Checkbox` inni `<fieldset>`.
-Merk at vi kun viser en `Checkbox` her, i praksis vil dette ofte være flere.
-
-```html
-<fieldset class="ds-fieldset">
-  <legend class="ds-label" data-weight="medium">Hvordan vil du helst at vi skal kontakte deg?</legend>
-  <p class="ds-paragraph" data-variant="default">Velg alle alternativene som er relevante for deg.</p>
-  <div class="ds-field">
-    <input
-      class="ds-input"
-      type="checkbox"
-      value="epost"
-      id="check-input"
-    >
-    <label
-      class="ds-label"
-      data-weight="regular"
-      for="check-input"
-    >E-post</label>
-  </div>
-</fieldset>
-```
-
-
-## CSS variablar og data-attributter
-Checkbox er en sammensatt komponent, og derfor viser vi variabler og data-attributter fra `ds-input` her.
-<CssVariables />
-
-<CssAttributes />
+<Story story="InTable" language="react" />

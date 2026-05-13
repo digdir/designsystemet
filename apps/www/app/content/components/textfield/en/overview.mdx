@@ -4,44 +4,37 @@ search_terms: input, singleline
 
 <Story story="Preview" />
 
-**Use `Textfield` when**
+**Use textfield when**
 - you need a complete form field with label, help text, and validation message  
 - the field must be validated either continuously or on submission  
 - the value is unique and cannot be selected from a list  
 
-**Avoid using `Textfield` when**
-- you need a simple input field without form logic, use [`Input`](/en/components/docs/input/overview) instead  
-- the user should choose from a limited set of options, use [`Radio`](/en/components/docs/radio/overview), [`Checkbox`](/en/components/docs/checkbox/overview), [`Select`](/en/components/docs/select/overview), or [`Suggestion`](/en/components/docs/suggestion/overview) instead  
+**Avoid using textfield when**
+- you need a simple input field without form logic, use [input](/en/components/docs/input/overview) instead  
+- the user should choose from a limited set of options, use [radio](/en/components/docs/radio/overview), [checkbox](/en/components/docs/checkbox/overview), [select](/en/components/docs/select/overview), or [suggestion](/en/components/docs/suggestion/overview) instead  
 
 ## Example
 
-### Multiline
-You can switch to a `textarea` by setting `multiline` to `true`. This allows users to write longer text.
-
-<Story story="WithRows" />
-
-### With prefix and suffix
-Prefixes and suffixes are useful for showing units, currency, or other information relevant to the field. These must **not** be used without a `<label>`, since screen readers will not announce them. The information shown in the prefix or suffix must also be reflected in the label text.
-
-<Story story="WithAffixEn" />
-
-### With counter
-Use `counter` to inform users about the number of characters they can enter.
-
-<Story story="WithCounterEn" />
-
 ### Required and optional fields
-It is legally required to mark mandatory fields. Read more about [required and optional fields](/en/patterns/required-and-optional-fields) for details. When placing a `Tag` inside a `<label>`, we recommend using `margin-inline-start: var(--ds-size-2)` to add space between the text and the tag.
+It is legally required to mark mandatory fields. Read more about [required and optional fields](/en/patterns/required-and-optional-fields) for details. 
 
 <Story story="RequiredEn" />
 
-### Type
-Since `Textfield` is based on native `input`, you can use most of the `type` values that `input` supports, but we have chosen to remove some of them from our exported type. You can see the valid type values in the select menu below.
-<Story story="InputType" layout="block" />
+### With counter
+You can inform users about how many characters they can enter.
+
+<Story story="WithCounterEn" />
+
+### With prefix and suffix
+Prefixes and suffixes are useful for showing units, currency, or other information relevant to the field. These must **not** be used without a `<label>`, since screen readers will not announce them. 
+The information shown in the prefix or suffix must also be reflected in the label text.
+
+<Story story="WithAffixEn" />
+
 
 ## Guidelines
-`Input` is suitable for short, simple text.  
-`Textarea` is better for more detailed or longer responses.
+Input is suitable for short, simple text.  
+Textarea is better for more detailed or longer responses.
 
 ### Avoid placeholder text
 
@@ -76,7 +69,7 @@ Autocomplete is required in fields where a predefined purpose exists, as defined
   This type may remove leading zeros, change values on scroll, cause issues with screen readers, and round long numbers. Use `type="text"` with `inputmode="numeric"` instead for better accessibility. Read more: [Why the GOV.UK Design System team changed the input type for numbers (gov.uk)](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/)
 
 ## Text
-A `Textfield` must always have a label.
+A textfield must always have a label.
 
 - Keep the label short, ideally not more than two lines  
 - Avoid adding descriptions that are not meaningful to the user  
