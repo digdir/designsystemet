@@ -90,9 +90,7 @@ export const loader = async ({
     // Sort items within the category by order
     cats[categoryKey].sort((a, b) => (a.order || 9999) - (b.order || 9999));
     if (folder === 'utilities') {
-      cats.utilitiesReact.sort(
-        (a, b) => (a.order || 9999) - (b.order || 9999),
-      );
+      cats.utilitiesReact.sort((a, b) => (a.order || 9999) - (b.order || 9999));
     }
   }
 
