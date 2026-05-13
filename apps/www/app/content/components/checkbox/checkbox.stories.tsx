@@ -375,10 +375,10 @@ export const Outline = () => {
       />
       <Checkbox
         label='Påminnelser'
-        value='påminnelse'
+        value='paminnelse'
         description='Varsler om frister og oppgaver som krever handling.'
         variant='outline'
-        checked={value.includes('påminnelse')}
+        checked={value.includes('paminnelse')}
         onChange={(e) => {
           if (e.target.checked) {
             setValue([...value, 'påminnelse']);
