@@ -22,6 +22,6 @@ We use [pnpm](https://pnpm.io) for managing dependencies.
 
 We have cofingured pnpm with the following:
 - No dependency version newer than 72 hours is installed.
-- Preventing transitive exotic dependencies.
+- Prevent transitive dependencies from using exotic sources.
 - By default block script execution for dependencies.
   - See `allowedBuilds` in [pnpm-workspace-yaml](./pnpm-workspace.yaml) for whitelisted depedencies
