@@ -19,7 +19,7 @@ importers:
         version: 2.31.0(@types/node@24.12.2)
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: link:packages/cli
+        version: file:packages/cli
       '@svitejs/changesets-changelog-github-compact':
         specifier: 1.2.0
         version: 1.2.0
@@ -41,9 +41,6 @@ importers:
       chromatic:
         specifier: 16.6.3
         version: 16.6.3
-      just-pnpm:
-        specifier: 1.0.2
-        version: 1.0.2
       tsconfck:
         specifier: 3.1.6
         version: 3.1.6(typescript@5.9.3)
@@ -1091,6 +1088,11 @@ packages:
 
   '@digdir/designsystemet-web@file:packages/web':
     resolution: {directory: packages/web, type: directory}
+
+  '@digdir/designsystemet@file:packages/cli':
+    resolution: {directory: packages/cli, type: directory}
+    engines: {node: '>=20.20.2'}
+    hasBin: true
 
   '@emnapi/core@1.10.0':
     resolution: {integrity: sha512-yq6OkJ4p82CAfPl0u9mQebQHKPJkY7WrIuk205cTYnYe+k2Z8YBh11FrbRG/H6ihirqcacOgl2BIO8oyMQLeXw==}
@@ -3610,9 +3612,6 @@ packages:
     resolution: {integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==}
     engines: {node: '>= 0.4'}
 
-  get-tsconfig@4.10.0:
-    resolution: {integrity: sha512-kGzZ3LWWQcGIAmg6iWvXn0ei6WDtV26wzHRMwDSzmAbcXrTEXxHy6IehI6/4eT6VRKyMP1eF1VqwrVUmE/LR7A==}
-
   get-tsconfig@4.14.0:
     resolution: {integrity: sha512-yTb+8DXzDREzgvYmh6s9vHsSVCHeC0G3PI5bEXNBHtmshPnO+S5O7qgLEOn0I5QvMy6kpZN8K1NKGyilLb93wA==}
 
@@ -3999,10 +3998,6 @@ packages:
   junit-report-builder@5.1.1:
     resolution: {integrity: sha512-ZNOIIGMzqCGcHQEA2Q4rIQQ3Df6gSIfne+X9Rly9Bc2y55KxAZu8iGv+n2pP0bLf0XAOctJZgeloC54hWzCahQ==}
     engines: {node: '>=16'}
-
-  just-pnpm@1.0.2:
-    resolution: {integrity: sha512-a/LtVYjTy1Z1yBl3kFEsic313J8MZ29ZEAFrw1snFOY7/x6Afy1VO2zAgtAlUjIgexOt8TRCRCXo1J+PABIo/Q==}
-    hasBin: true
 
   kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
@@ -6523,6 +6518,24 @@ snapshots:
       '@u-elements/u-details': 1.0.0
       '@u-elements/u-tabs': 1.0.3
 
+  '@digdir/designsystemet@file:packages/cli':
+    dependencies:
+      '@commander-js/extra-typings': 14.0.0(commander@14.0.3)
+      '@digdir/designsystemet-types': file:packages/types
+      '@tokens-studio/sd-transforms': 2.0.3(style-dictionary@5.4.0)
+      chroma-js: 3.2.0
+      colorjs.io: 0.6.1
+      commander: 14.0.3
+      fast-glob: 3.3.3
+      hsluv: 1.0.1
+      object-hash: 3.0.0
+      picocolors: 1.1.1
+      postcss: 8.5.13
+      ramda: 0.32.0
+      style-dictionary: 5.4.0
+      zod: 4.4.3
+      zod-validation-error: 5.0.0(zod@4.4.3)
+
   '@emnapi/core@1.10.0':
     dependencies:
       '@emnapi/wasi-threads': 1.2.1
@@ -8862,10 +8875,6 @@ snapshots:
       dunder-proto: 1.0.1
       es-object-atoms: 1.1.1
 
-  get-tsconfig@4.10.0:
-    dependencies:
-      resolve-pkg-maps: 1.0.0
-
   get-tsconfig@4.14.0:
     dependencies:
       resolve-pkg-maps: 1.0.0
@@ -9299,8 +9308,6 @@ snapshots:
       lodash: 4.17.21
       make-dir: 3.1.0
       xmlbuilder: 15.1.1
-
-  just-pnpm@1.0.2: {}
 
   kind-of@6.0.3: {}
 
@@ -11360,7 +11367,7 @@ snapshots:
   tsx@4.21.0:
     dependencies:
       esbuild: 0.27.7
-      get-tsconfig: 4.10.0
+      get-tsconfig: 4.14.0
     optionalDependencies:
       fsevents: 2.3.3
 
