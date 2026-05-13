@@ -4,7 +4,7 @@ A good rule of thumb is that **fieldset is a set of fields**
 <Story story="PreviewEn" defaultOpen />
 
 ## Usage
-The class name `ds-fieldset` is added to the `<fieldset>` element.
+Use `ds-fieldset` on the `<fieldset>` element.
 
 ```html
 <fieldset class="ds-fieldset">
@@ -21,11 +21,19 @@ Build the group with [checkbox](/en/components/docs/checkbox/code) or [radio](/e
 
 <Story story="WithCheckboxEn" />
 
-### More fields
+### Multiple field types
 
 A fieldset can also group other fields, for example [field](/en/components/docs/field/code) with [input](/en/components/docs/input/code) and [select](/en/components/docs/select/code).
 
 <Story story="WithFieldsEn" />
+
+### Readonly
+
+Fields with the `readonly` attribute are included in the tab order. Users can copy the content but not edit it. Information is included when the form is submitted.
+
+`Readonly` fields can be confusing for some users. Not everyone will understand why they cannot change the content of the field. We therefore recommend avoiding `readonly` as much as possible.
+
+<Story story="ReadOnlyEn" />
 
 
 ## CSS variables and data attributes
