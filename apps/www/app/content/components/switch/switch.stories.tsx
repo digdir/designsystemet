@@ -130,13 +130,13 @@ export const RightAligned2En = () => (
 export const Outline = () => {
   return (
     <Fieldset>
-      <Fieldset.Legend>Skru av/på lys</Fieldset.Legend>
-      <Switch variant='outline' label='Stue' checked />
-      <Switch variant='outline' label='Kjøkken' />
-      <Switch variant='outline' label='Bad' />
+      <Fieldset.Legend>Aktiver varslinger</Fieldset.Legend>
+      <Switch variant='outline' label='Driftsmeldinger' checked />
+      <Switch variant='outline' label='Påminnelser' />
+      <Switch variant='outline' label='Nyhetsoppdateringer' />
       <Switch
-        label='Soverom'
-        description='Får ikke kontakt med lyspærene'
+        label='SMS-varsler'
+        description='Mangler gyldig telefonnummer i profilen'
         variant='outline'
         readOnly
       />
@@ -147,13 +147,13 @@ export const Outline = () => {
 export const OutlineEn = () => {
   return (
     <Fieldset>
-      <Fieldset.Legend>Turn lights on/off</Fieldset.Legend>
-      <Switch variant='outline' label='Living room' checked />
-      <Switch variant='outline' label='Kitchen' />
-      <Switch variant='outline' label='Bathroom' />
+      <Fieldset.Legend>Enable notifications</Fieldset.Legend>
+      <Switch variant='outline' label='Service messages' checked />
+      <Switch variant='outline' label='Reminders' />
+      <Switch variant='outline' label='News updates' />
       <Switch
-        label='Bedroom'
-        description='Unable to connect to the light bulbs'
+        label='SMS alerts'
+        description='Missing a valid phone number in your profile'
         variant='outline'
         readOnly
       />

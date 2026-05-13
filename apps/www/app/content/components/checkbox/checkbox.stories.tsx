@@ -351,39 +351,39 @@ export const InTableEn = () => {
 };
 
 export const Outline = () => {
-  const [value, setValue] = useState<string[]>(['epost']);
+  const [value, setValue] = useState<string[]>(['drift']);
 
   return (
     <Fieldset>
-      <Fieldset.Legend>Hvordan ønsker å bli kontaktet?</Fieldset.Legend>
+      <Fieldset.Legend>Hvilke varsler vil du motta?</Fieldset.Legend>
       <Fieldset.Description>
-        Velg hvordan du vi motta viktig informasjon om saken din.
+        Velg hvilke typer varsler som er relevante for deg.
       </Fieldset.Description>
       <Checkbox
-        label='E-post'
-        value='epost'
-        description='Vi bruker e-postadressen du har oppgitt tidligere (********)'
+        label='Driftsmeldinger'
+        value='drift'
+        description='Varsler ved planlagt vedlikehold og driftsavvik.'
         variant='outline'
-        checked={value.includes('epost')}
+        checked={value.includes('drift')}
         onChange={(e) => {
           if (e.target.checked) {
-            setValue([...value, 'epost']);
+            setValue([...value, 'drift']);
           } else {
-            setValue(value.filter((v) => v !== 'epost'));
+            setValue(value.filter((v) => v !== 'drift'));
           }
         }}
       />
       <Checkbox
-        label='SMS'
-        value='sms'
-        description='Vi bruker telefonnummeret du har oppgitt tidligere (*******)'
+        label='Påminnelser'
+        value='påminnelse'
+        description='Varsler om frister og oppgaver som krever handling.'
         variant='outline'
-        checked={value.includes('sms')}
+        checked={value.includes('påminnelse')}
         onChange={(e) => {
           if (e.target.checked) {
-            setValue([...value, 'sms']);
+            setValue([...value, 'påminnelse']);
           } else {
-            setValue(value.filter((v) => v !== 'sms'));
+            setValue(value.filter((v) => v !== 'påminnelse'));
           }
         }}
       />
@@ -392,39 +392,41 @@ export const Outline = () => {
 };
 
 export const OutlineEn = () => {
-  const [value, setValue] = useState<string[]>(['email']);
+  const [value, setValue] = useState<string[]>(['operations']);
 
   return (
     <Fieldset>
-      <Fieldset.Legend>How would you like to be contacted?</Fieldset.Legend>
+      <Fieldset.Legend>
+        Which notifications do you want to receive?
+      </Fieldset.Legend>
       <Fieldset.Description>
-        Choose how you want to receive important information about your case.
+        Choose the notification types that are relevant to you.
       </Fieldset.Description>
       <Checkbox
-        label='E-mail'
-        value='email'
-        description='We use the e-mail address you have provided earlier (********)'
+        label='Service updates'
+        value='operations'
+        description='Alerts about planned maintenance and service disruptions.'
         variant='outline'
-        checked={value.includes('email')}
+        checked={value.includes('operations')}
         onChange={(e) => {
           if (e.target.checked) {
-            setValue([...value, 'email']);
+            setValue([...value, 'operations']);
           } else {
-            setValue(value.filter((v) => v !== 'email'));
+            setValue(value.filter((v) => v !== 'operations'));
           }
         }}
       />
       <Checkbox
-        label='SMS'
-        value='sms'
-        description='We use the phone number you have provided earlier (*******)'
+        label='Reminders'
+        value='reminders'
+        description='Alerts about deadlines and tasks that need your attention.'
         variant='outline'
-        checked={value.includes('sms')}
+        checked={value.includes('reminders')}
         onChange={(e) => {
           if (e.target.checked) {
-            setValue([...value, 'sms']);
+            setValue([...value, 'reminders']);
           } else {
-            setValue(value.filter((v) => v !== 'sms'));
+            setValue(value.filter((v) => v !== 'reminders'));
           }
         }}
       />
