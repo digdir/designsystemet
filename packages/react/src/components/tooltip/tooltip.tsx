@@ -44,8 +44,8 @@ export type TooltipProps = MergeRight<
      */
     open?: boolean;
     /**
-     * Override if `aria-describedby` or `aria-labelledby` is used.
-     * By default, if the trigger element has no inner text, `aria-labelledby` is used.
+     * @deprecated This prop has no effect. The tooltip will be set as `aria-description`
+     * if the component already contains accessible text, and `aria-label` otherwise.
      */
     type?: 'describedby' | 'labelledby';
   }
