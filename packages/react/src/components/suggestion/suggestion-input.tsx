@@ -2,7 +2,10 @@ import { forwardRef, useContext, useEffect } from 'react';
 import { Input, type InputProps } from '../input/input';
 import { SuggestionContext } from './suggestion';
 
-export type SuggestionInputProps = InputProps;
+export type SuggestionInputProps = Omit<
+  InputProps,
+  'role' | 'data-indeterminate'
+>;
 
 // Make React support popovertarget attribute
 // https://github.com/facebook/react/issues/27479
