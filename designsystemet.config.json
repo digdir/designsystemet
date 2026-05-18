@@ -1,12 +1,13 @@
 {
-  "$schema": "packages/cli/dist/config.schema.json",
+  "$schema": "https://designsystemet.no/schemas/cli/1.14.0.json",
   "outDir": "design-tokens",
   "clean": true,
   "themes": {
     "designsystemet": {
       "colors": {
         "main": {
-          "accent": "#0062BA"
+          "accent": "#0062BA",
+           "inverted": "#dde6ee"
         },
         "support": {
           "brand1": "#0D7A5F",
@@ -17,6 +18,60 @@
       "borderRadius": 4,
       "typography": {
         "fontFamily": "Inter"
+      },
+      "overrides": {
+        "colors": {
+          "inverted": {
+            "surface-default": {
+              "light": "#00509E"
+            },
+            "background-default": {
+              "light": "#155ea6"
+            },
+            "border-default": {
+              "light": "#ccdcec"
+            },
+            "border-strong": {
+              "light": "#ffffff"
+            },
+            "border-subtle": {
+              "light": "#ebf2f9"
+            },
+            "text-default": {
+              "light": "#ffffff"
+            },
+            "base-hover": {
+              "light": "#b3cce6"
+            },
+            "base-active": {
+              "light": "#89b0d7"
+            },
+            "base-contrast-subtle": {
+              "light": "#00509E"
+            },
+            "base-contrast-default": {
+              "light": "#003e7a"
+            },
+            "surface-active": {
+              "light": "#003e7a"
+            },
+            "surface-hover": {
+              "light": "#004285"
+            },
+            "surface-tinted": {
+              "light": "#004f9e"
+            },
+            "background-tinted": {
+              "light": "#06213c"
+            },
+            "text-subtle": {
+              "light": "#dbe3eb"
+            },
+            "base-default": {
+              "light": "#dde6ee"
+            }
+          }
+        }
       }
     }
   }
