@@ -2,7 +2,7 @@ import { FilesIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useEffect, useRef, useState } from 'react';
 import { expect, within } from 'storybook/test';
-import { Button } from '../../';
+import { Button, Link } from '../../';
 import { Tooltip } from './tooltip';
 
 type Story = StoryObj<typeof Tooltip>;
@@ -44,6 +44,33 @@ Preview.args = {
   placement: 'top',
 };
 
+export const WithLink = () => {
+  return (
+    <Tooltip content='Gå til en annen side...' placement='top'>
+      <Link href='#'>En lenke</Link>
+    </Tooltip>
+  );
+};
+WithLink.play = () => {};
+
+export const WithSpan = () => {
+  return (
+    <Tooltip content='Innholdet i tooltipen' placement='top'>
+      <span>Tekst med tooltip</span>
+    </Tooltip>
+  );
+};
+WithSpan.play = () => {};
+
+export const WithPlainText = () => {
+  return (
+    <Tooltip content='Innholdet i tooltipen' placement='top'>
+      Tekst med tooltip
+    </Tooltip>
+  );
+};
+WithPlainText.play = () => {};
+
 export const WithString: Story = {
   args: {
     content: 'Organisasjonsnummer',
@@ -67,8 +94,14 @@ export const Placement: Story = {
 export const Aria: StoryFn<typeof Tooltip> = () => {
   return (
     <>
-      <Tooltip content='Eg er aria-description'>
+      <Tooltip content='Beskrivelse for aria-description'>
         <Button>Eg er aria-description</Button>
+      </Tooltip>
+      <Tooltip content='Beskrivelse for aria-description'>
+        <Button>
+          <FilesIcon aria-hidden />
+          <span>Eg er også aria-description</span>
+        </Button>
       </Tooltip>
       <Tooltip content='Eg er aria-label'>
         <Button icon>
