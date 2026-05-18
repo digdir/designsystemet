@@ -41,14 +41,12 @@ export class DSErrorSummaryElement extends DSElement {
 
 const render = (self: DSErrorSummaryElement) => {
   const label = attr(self, 'aria-label')?.trim();
-  let labelledBy = attr(self, 'aria-labelledby')?.trim();
+  const labelledBy = attr(self, 'aria-labelledby')?.trim();
   const heading = self.querySelector('h2,h3,h4,h5,h6');
   if (heading && !label && !labelledBy) {
     attr(self, 'aria-labelledby', useId(heading));
   }
-
-  labelledBy = attr(self, 'aria-labelledby')?.trim();
-  if (!label && !labelledBy) {
+  if (!heading && !label && !labelledBy) {
     warn(
       'Missing accessible name on:',
       self,
