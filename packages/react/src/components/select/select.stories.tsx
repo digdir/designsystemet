@@ -114,3 +114,23 @@ export const WithOptgroup: StoryFn<typeof Select> = (args) => (
     </Select>
   </Field>
 );
+
+export const Inverted: StoryFn<typeof Select> = Preview.bind({});
+
+Inverted.args = {
+  ...Preview.args,
+};
+
+Inverted.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];

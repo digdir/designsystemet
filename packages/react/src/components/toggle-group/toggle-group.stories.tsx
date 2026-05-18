@@ -145,3 +145,24 @@ export const AriaDisabled: StoryFn<typeof ToggleGroup> = () => {
     </ToggleGroup>
   );
 };
+
+export const Inverted: StoryFn<typeof ToggleGroup> = Preview.bind({});
+
+Inverted.args = {
+  ...Preview.args,
+};
+
+Inverted.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+        maxWidth: '80vw',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];

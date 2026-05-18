@@ -48,3 +48,19 @@ export const Sizes: Story = (args) => (
     <Spinner aria-label='Henter kaffi' {...args} data-size='xl' />
   </>
 );
+
+export const Inverted: Story = () => <Spinner aria-label='Henter kaffi' />;
+
+Inverted.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];

@@ -5,9 +5,7 @@ import {
   severityColors,
   themeColors,
 } from '../../../stories/constants';
-
 import { Card, Heading, Link, Paragraph } from '../';
-
 import type { CardProps } from './';
 
 type Story = StoryFn<typeof Card>;
@@ -237,3 +235,5 @@ export const AsGrid: Story = (args) => (
     </Card.Block>
   </Card>
 );
+
+export const Inverted: Story = Preview.bind({});

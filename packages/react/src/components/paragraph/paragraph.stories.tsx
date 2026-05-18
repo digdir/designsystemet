@@ -18,3 +18,23 @@ export const Preview: Story = {
     variant: 'default',
   },
 };
+
+export const Inverted: StoryObj<typeof Paragraph> = {
+  args: {
+    ...Preview.args,
+  },
+};
+
+Inverted.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];

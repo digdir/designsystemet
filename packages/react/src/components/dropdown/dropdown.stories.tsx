@@ -221,3 +221,19 @@ WithNestedDialog.play = async (ctx) => {
   await expect(dialog).toBeInTheDocument();
   await waitFor(() => expect(dialog).toBeVisible());
 };
+
+export const Inverted: StoryFn<typeof Dropdown> = Preview.bind({});
+
+Inverted.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];

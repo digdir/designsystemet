@@ -98,3 +98,23 @@ export const AsButton: Story = {
     asChild: true,
   },
 };
+
+export const Inverted: Story = {
+  args: {
+    ...Normal.args,
+  },
+};
+
+Inverted.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];

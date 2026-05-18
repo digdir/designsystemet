@@ -473,3 +473,40 @@ export const Outline: StoryFn<UseCheckboxGroupProps> = () => (
     </Fieldset>
   </>
 );
+
+export const Inverted: Story = {
+  args: {
+    ...Preview.args,
+    'data-color': 'inverted',
+  },
+};
+
+Inverted.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];
+
+export const InvertedGroup: StoryFn<UseCheckboxGroupProps> = Group.bind({});
+
+InvertedGroup.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];

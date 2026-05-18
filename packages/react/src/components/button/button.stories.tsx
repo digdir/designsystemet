@@ -120,3 +120,23 @@ export const Loading: StoryFn<typeof Button> = () => (
     </Button>
   </>
 );
+
+export const Inverted: Story = Variants.bind({});
+
+Inverted.args = {
+  ...Variants.args,
+};
+
+Inverted.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];

@@ -259,3 +259,19 @@ export const ListeMedOverskrift: Story = () => (
 ListeMedOverskrift.parameters = {
   customStyles: { display: 'flex', gap: '2rem', flexWrap: 'wrap' },
 };
+
+export const Inverted: Story = Preview.bind({});
+
+Inverted.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];

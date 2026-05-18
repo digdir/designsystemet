@@ -354,3 +354,24 @@ Switch.parameters = {
     gap: '2rem',
   },
 };
+
+export const Inverted: Story = {
+  args: {
+    ...Preview.args,
+    'data-color': 'inverted',
+  },
+};
+
+Inverted.decorators = [
+  (Story) => (
+    <div
+      data-color='inverted'
+      style={{
+        background: 'var(--ds-color-background-default)',
+        padding: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];
