@@ -22,7 +22,7 @@
       "default": "./dist/src/index.css"
     },
     "./*": "./dist/src/*",
-    "./v2": "./dist/src/_v2.css"
+    "./v2": "./dist/src/_v2-index.css"
   },
   "files": [
     "./types.d.ts",
