@@ -58,7 +58,7 @@ Great news! We have created a process to handle just this use case!
 3. If the feature fits within the scope of Designsystemet we will follow you up from there.
 
 ##### New components
-Developing a new components for Designsystemet requires a lot research and work, in addition to deep understand of accessebility and Desigsystemets inner workings to provide all of its features (theming, cli, tokens etc.). This is a process that requires a lot of time and if you are interested in contributing this way we encourage you to become part of the team during this time. We will invite you to participate in our daily check-ins throughout the development process to ensure that the component adheres to our coding standards and seamlessly integrates with our design system.
+Developing a new components for Designsystemet requires a lot research and work, in addition to deep understand of accessibility and Designsystemets inner workings to provide all of its features (theming, cli, tokens etc.). This is a process that requires a lot of time and if you are interested in contributing this way we encourage you to become part of the team during this time. We will invite you to participate in our daily check-ins throughout the development process to ensure that the component adheres to our coding standards and seamlessly integrates with our design system.
 
 ### Getting started with development
 
@@ -89,7 +89,7 @@ When creating a pull request for Designsystemet, there are a few things to keep 
 ### Changesets
 We use [Changesets](https://github.com/changesets/changesets) to manage versioning and changelogs.
 
-Changes in `/packages/*`, will flag a need for adding adding a changeset to document changes.
+Changes in `/packages/*`, will flag a need for adding a changeset to document changes.
 We recommend you look at previous releases and what wording has been used there to describe changes. 
 At a minimum, a prefix for which part or component the changes apply to.
 
