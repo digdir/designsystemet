@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-**Suggestion**: Added `--dsc-suggestion-option-checkmark-border-color`.
+**Suggestion**: Added `--dsc-suggestion-option-checkmark-border-color`.
