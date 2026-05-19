@@ -6,6 +6,12 @@
  * - .ds-togglegroup: No overrides added as the component is being removed in the next major version.
  * -
  */
+[data-color-scheme],
+body {
+  /** Change from neutral to color */
+  background: var(--ds-color-background-default);
+  color: var(--ds-color-text-default);
+}
 
 .ds-dialog {
   /** Change from neutral to color */
@@ -84,7 +90,7 @@
   --dsc-tabs-list-border-color: var(--ds-color-border-subtle);
 }
 
-.ds-tooltipe {
+.ds-tooltip {
   /** Change from neutral to color */
   --dsc-tooltip-background: var(--ds-color-text-default);
   --dsc-tooltip-color: var(--ds-color-background-default);
