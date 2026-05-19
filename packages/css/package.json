@@ -22,7 +22,7 @@
       "default": "./dist/src/index.css"
     },
     "./*": "./dist/src/*",
-    "./v2": "./dist/src/_v2-index.css"
+    "./v2": "./dist/src/v2/index.css"
   },
   "files": [
     "./types.d.ts",
@@ -46,7 +46,7 @@
     "digdir"
   ],
   "scripts": {
-    "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme",
+    "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme && postcss ./src/v2/*.css --dir ./dist/src/v2",
     "build:theme": "tsx ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./theme --experimental-tailwind"
   },
   "dependencies": {
