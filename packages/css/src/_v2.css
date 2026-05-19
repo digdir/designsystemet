@@ -1,0 +1,89 @@
+/** Notes
+ * This file contains planned changes for the next major version of Designsystemet.
+ * Exceptions:
+ * - Did not override --readonly and --disabled states
+ * - .ds-link has changed mapping from text-default to text-subtle when data-color="neutral"
+ * - .ds-togglegroup: No overrides added as the component is being removed in the next major version.
+ * -
+ */
+
+.ds-dialog {
+  /** Change from neutral to color */
+  --dsc-dialog-background: var(--ds-color-surface-default);
+  --dsc-dialog-color: var(--ds-color-text-default);
+  --dsc-dialog-divider-border-color: var(--ds-color-border-subtle);
+  --dsc-dialog-border-color: var(--ds-color-border-subtle);
+}
+
+.ds-divider {
+  /** Change from neutral to color */
+  --dsc-divider-border-color: var(--ds-color-border-subtle);
+}
+
+.ds-dropdown {
+  /** Change from neutral to color */
+  --dsc-dropdown-background: var(--ds-color-surface-default);
+  --dsc-dropdown-border-color: var(--ds-color-border-subtle);
+}
+
+.ds-error-summary {
+  /** Change from neutral to color */
+  --dsc-errorsummary-link-color: var(--ds-color-text-default);
+}
+
+.ds-field {
+  /** Change from neutral to color */
+  --dsc-field-description-color: var(--ds-color-text-subtle);
+
+  &[data-variant='outline'] {
+    /** Change from neutral to color */
+    --dsc-field-border-color: var(--ds-color-border-default);
+  }
+}
+
+.ds-field-affixes {
+  /** Change from neutral to color */
+  --dsc-field-affix-border-color: var(--ds-color-border-default);
+  --dsc-field-affix-background: var(--ds-color-surface-tinted);
+  --dsc-field-affix-color: var(--ds-color-text-subtle);
+}
+
+.ds-fieldset {
+  /** Change from neutral to color */
+  --dsc-fieldset-description-color: var(--ds-color-text-subtle);
+}
+
+.ds-input {
+  /** Change from neutral to color */
+  --dsc-input-background: var(--ds-color-surface-default);
+  --dsc-input-border-color: var(--ds-color-border-default);
+  --dsc-input-outline-color--hover: var(--ds-color-border-default);
+  --dsc-input-color: var(--ds-color-text-default);
+}
+
+.ds-skeleton {
+  /** Change from neutral to color */
+  --dsc-skeleton-background: var(--ds-color-surface-tinted);
+}
+
+.ds-suggestion {
+  /** Change from neutral to color */
+  --dsc-suggestion-list-background: var(--ds-color-surface-default);
+  --dsc-suggestion-border-color: var(--ds-color-border-subtle);
+  & u-datalist [data-multiple] & > u-option:not([data-empty]) {
+    --dsc-suggestion-option-checkmark-border-color: var(--ds-color-border-default);
+  }
+}
+
+.ds-tabs {
+  /** Change from neutral to color */
+  --dsc-tabs-tab-color: var(--ds-color-text-subtle);
+  --dsc-tabs-tab-color--hover: var(--ds-color-text-default);
+  --dsc-tabs-list-border-color: var(--ds-color-border-subtle);
+}
+
+.ds-tooltipe {
+  /** Change from neutral to color */
+  --dsc-tooltip-background: var(--ds-color-text-default);
+  --dsc-tooltip-color: var(--ds-color-background-default);
+}
