@@ -188,6 +188,7 @@
     [data-multiple] & {
       & > u-option:not([data-empty]) {
         --dsc-suggestion-option-checkmark-border: max(2px, 0.125rem);
+        --dsc-suggestion-option-checkmark-border-color: var(--ds-color-neutral-border-default);
 
         padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));
         /*mock checkbox styles copied from input.css*/
@@ -199,7 +200,7 @@
           width: var(--dsc-suggestion-option-checkmark-size);
           height: var(--dsc-suggestion-option-checkmark-size);
           border-radius: var(--ds-border-radius-sm);
-          outline: var(--dsc-suggestion-option-checkmark-border) solid var(--ds-color-neutral-border-default);
+          outline: var(--dsc-suggestion-option-checkmark-border) solid var(--dsc-suggestion-option-checkmark-border-color);
           outline-offset: calc(-1 * var(--dsc-suggestion-option-checkmark-border));
           padding: 0.188rem;
           box-sizing: border-box;
