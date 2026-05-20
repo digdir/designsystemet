@@ -83,6 +83,10 @@ function makeTokenCommands() {
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
+    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
+    .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
+    .option('--dry [boolean]', `Dry run for created ${pc.blue('design-tokens')}`, parseBoolean, false)
+    /** Deprecated options */
     .option(
       `-m, --${cliOptions.theme.colors.main} <name:hex...>`,
       `    Main colors (deprecated, use JSON config file instead)`,
@@ -103,9 +107,11 @@ function makeTokenCommands() {
       `Output directory for created ${pc.blue('design-tokens')}`,
       DEFAULT_TOKENS_CREATE_DIR,
     )
-    .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
-    .option('--dry [boolean]', `Dry run for created ${pc.blue('design-tokens')}`, parseBoolean, false)
-    .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family (experimental)`, DEFAULT_FONT)
+    .option(
+      `-f, --${cliOptions.theme.typography.fontFamily} <string>`,
+      `Font family (experimental, deprecated, use JSON config file instead)`,
+      DEFAULT_FONT,
+    )
     .option(
       `-b, --${cliOptions.theme.borderRadius} <number>`,
       `Unitless base border-radius in px (deprecated, use JSON config file instead)`,
@@ -113,7 +119,6 @@ function makeTokenCommands() {
       4,
     )
     .option('--theme <string>', 'Theme name (deprecated, use JSON config file instead)', DEFAULT_THEME_NAME)
-    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
     .action(async (opts, cmd) => {
       if (
         opts.mainColors ||
@@ -125,7 +130,7 @@ function makeTokenCommands() {
       ) {
         console.warn(
           pc.yellow(
-            'Warning: Using CLI options for colors is deprecated and will be removed in a future release. Please use a JSON config file instead.',
+            'Warning: Using CLI options for colors, border radius, theme, or font family is deprecated and will be removed in a future release. Please use a JSON config file instead.',
           ),
         );
       }
