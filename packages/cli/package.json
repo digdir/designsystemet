@@ -78,7 +78,7 @@
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.31.1",
     "tsdown": "0.22.0",
-    "tsx": "4.21.0",
+    "tsx": "4.22.1",
     "typescript": "5.9.3"
   }
 }
