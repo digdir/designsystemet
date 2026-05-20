@@ -13,9 +13,9 @@ body {
   color: var(--ds-color-text-default);
 }
 
-[data-color] {
+/* [data-color] {
   color: var(--ds-color-text-default);
-}
+} */
 
 .ds-label {
   font-weight: var(--ds-font-weight-semibold);
