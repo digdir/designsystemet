@@ -2,31 +2,31 @@
 search_terms: loading, progress, waiting
 ---
 
-<Story story="Preview" />
+<Story story="Preview" truncateSvg={false} />
 
-**Use `Spinner` when**
+**Use spinner when**
 - you need to indicate that the system is working on a task the user must wait for  
 - a local action is being performed, such as submitting a form or updating a table  
 - loading will take more than one second
 
-**Avoid `Spinner` when**
-- only specific parts of the page are loading — consider using [`Skeleton`](/en/components/docs/skeleton/overview) instead  
+**Avoid spinner when**
+- only specific parts of the page are loading — consider using [skeleton](/en/components/docs/skeleton/overview) instead  
 - loading takes less than one second
 
 ## Example
 
 ### Sizes
 
-You can adjust the size of the `Spinner` depending on where it is placed.
+You can adjust the size of the spinner depending on where it is placed.
 
-<Story story="Sizes" />
+<Story story="Sizes" truncateSvg={false} />
 
 ## Guidelines
 
-The purpose of `Spinner` is to reassure the user that the system is working and has not stopped. It can be used in a button, a field, or another defined area where the user is waiting for something to happen, such as saving or updating content.
+The purpose of spinner is to reassure the user that the system is working and has not stopped. It can be used in a button, a field, or another defined area where the user is waiting for something to happen, such as saving or updating content.
 
 ## Text
 
-In some cases, it may improve the user experience to show explanatory text alongside the `Spinner`, describing why the user has to wait. A clear explanation helps reduce uncertainty and confusion.
+In some cases, it may improve the user experience to show explanatory text alongside the spinner, describing why the user has to wait. A clear explanation helps reduce uncertainty and confusion.
 
-<Story story="TextEn" />
+<Story story="TextEn" truncateSvg={false} />

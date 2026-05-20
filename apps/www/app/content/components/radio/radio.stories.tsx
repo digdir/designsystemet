@@ -124,36 +124,6 @@ export const WithErrorEn = () => {
   );
 };
 
-export const ReadOnly = () => {
-  return (
-    <Fieldset>
-      <Fieldset.Legend>Hvilken bydel bor du i?</Fieldset.Legend>
-      <Fieldset.Description>
-        Trondheim er delt inn i fire bydeler
-      </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' readOnly />
-      <Radio label='Lerkendal' value='lerkendal' name='city' readOnly />
-      <Radio label='Heimdal' value='heimdal' name='city' readOnly checked />
-      <Radio label='Midtbyen' value='midtbyen' name='city' readOnly />
-    </Fieldset>
-  );
-};
-
-export const ReadOnlyEn = () => {
-  return (
-    <Fieldset>
-      <Fieldset.Legend>Which district do you live in?</Fieldset.Legend>
-      <Fieldset.Description>
-        Trondheim is divided into four districts
-      </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' readOnly />
-      <Radio label='Lerkendal' value='lerkendal' name='city' readOnly />
-      <Radio label='Heimdal' value='heimdal' name='city' readOnly checked />
-      <Radio label='Midtbyen' value='midtbyen' name='city' readOnly />
-    </Fieldset>
-  );
-};
-
 export const Inline = () => {
   return (
     <Fieldset>
@@ -187,3 +157,71 @@ export const InlineEn = () => {
     </Fieldset>
   );
 };
+
+export const Outline = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Hvilket kursnivå passer deg best?</Fieldset.Legend>
+      <Fieldset.Description>
+        Velg nivået som beskriver din erfaring med temaet.
+      </Fieldset.Description>
+      <Radio
+        variant='outline'
+        label='Nybegynner'
+        description='Passer for deg som er helt ny og ønsker en rolig introduksjon.'
+        value='beginner'
+        name='course-level'
+      />
+      <Radio
+        variant='outline'
+        label='Viderekommen'
+        description='Passer for deg som kjenner grunnleggende begreper og vil gå dypere.'
+        value='intermediate'
+        name='course-level'
+      />
+      <Radio
+        label='Ekspert'
+        variant='outline'
+        description='Passer for deg som ønsker avanserte temaer og praktiske case.'
+        value='expert'
+        name='course-level'
+      />
+    </Fieldset>
+  );
+};
+
+export const OutlineEn = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Which course level fits you best?</Fieldset.Legend>
+      <Fieldset.Description>
+        Choose the level that best describes your experience with the topic.
+      </Fieldset.Description>
+      <Radio
+        variant='outline'
+        label='Beginner'
+        description='Best for you if you are completely new and want a gentle introduction.'
+        value='beginner'
+        name='course-level'
+      />
+      <Radio
+        variant='outline'
+        label='Intermediate'
+        description='Best for you if you know the basics and want to go deeper.'
+        value='intermediate'
+        name='course-level'
+      />
+      <Radio
+        variant='outline'
+        label='Expert'
+        description='Best for you if you want advanced topics and hands-on cases.'
+        value='expert'
+        name='course-level'
+      />
+    </Fieldset>
+  );
+};
+
+export const ReadOnly = () => (
+  <Radio label='Radio' value='value' name='name' readOnly />
+);

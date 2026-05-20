@@ -4,40 +4,49 @@ search_terms: selection, multiselect, option, options, check, tick
 
 <Story story="Preview" />
 
-**Use `Checkbox` when**
+**Use checkbox when**
 - the user should be able to select one or more options within the same context
 - the user needs to accept terms and conditions
 
-**Avoid using `Checkbox` when**
-- the user should choose only one option; use a [`Radio`](/en/components/docs/radio/overview) instead
-- the user must choose from more than seven options; use a [`Select`](/en/components/docs/select/overview) or [`Suggestion`](/en/components/docs/suggestion/overview) instead
-- something should be turned on or off; use a [`Switch`](/en/components/docs/switch/overview) instead
+**Avoid checkbox when**
+- the user should choose only one option; use a [radio](/en/components/docs/radio/overview) instead
+- the user must choose from more than seven options; use a [select](/en/components/docs/select/overview) or [suggestion](/en/components/docs/suggestion/overview) instead
+- something should be turned on or off; use a [switch](/en/components/docs/switch/overview) instead
 
 ## Example
 
-### Confirmation with `Checkbox`
+### Confirmation with checkbox
 
-If the user must confirm something rather than choose between alternatives, a single `Checkbox` can stand alone. For example, when the user needs to confirm that something is correct or give consent to terms and conditions.
+If the user must confirm something rather than choose between alternatives, a single checkbox can stand alone. For example, when the user needs to confirm that something is correct or give consent to terms and conditions.
 
-A `Checkbox` for consent must always require an active action, and you should never preselect the box. This ensures that the consent is given voluntarily.
+A checkbox for consent must always require an active action, and you should never preselect the box. This ensures that the consent is given voluntarily.
 
 <Story story="OneOption" />
 
 ### Grouping
 
-Most of the time, `Checkbox` is used in groups where the user can select more than one option. The `<fieldset>` around the group should have a legend that explains what the options relate to.
+Most of the time, checkbox is used in groups where the user can select more than one option. 
 
-<Story story="Group" />
+<Story story="GroupEn" />
 
 ### With error
-
-When `Checkbox` is used in groups, the error message should be placed on the `Fieldset`, so it applies to the entire group.
+When checkboxes are used in groups, the error message should be shown collectively for the entire group.
 
 <Story story="WithError" />
 
+### Outline
+In some cases, it may be appropriate to emphasise options by using a larger click area around the checkbox. 
+
+This can for example be appropriate when:
+- the option represents a clear decision point that should stand out in the interface
+- related information (such as descriptions and additional details) should be perceived as a single, coherent interaction
+- standard checkboxes would result in a visually weak layout
+
+<Story story="OutlineEn" />
+
 ### Read-only checkbox
 
-`Checkbox` supports the `readOnly` attribute to make the field non-editable and gives a visual indication that distinguishes it from editable fields. Although they cannot be changed, fields with `readOnly` are still part of the tab order, and the information is included when the form is submitted.
+Checkbox supports the `readOnly` attribute to make the field non-editable and gives a visual indication that distinguishes it from editable fields. Although they cannot be changed, fields with `readOnly` are still part of the tab order, and the information is included when the form is submitted.
 
 We avoid using `readOnly` whenever possible because such fields can be confusing. Not all users will understand why they cannot change the content.
 
@@ -45,8 +54,8 @@ We avoid using `readOnly` whenever possible because such fields can be confusing
 
 ### Disabled
 
-We should avoid disabling (`disabled`) `Checkbox`, because it can be difficult to perceive.  
-Some users will not understand what the option means or why it is not clickable. If a `Checkbox` or group of `Checkbox` options is not relevant, it is usually better to remove them rather than disable them. If possible, give users an explanation of why options are unavailable.
+We should avoid disabling (`disabled`) checkbox, because it can be difficult to perceive.
+Some users will not understand what the option means or why it is not clickable. If a checkbox or group of checkbox options is not relevant, it is usually better to remove them rather than disable them. If possible, give users an explanation of why options are unavailable.
 
 Nav has a helpful explanation of [why disabled states are problematic (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) and which alternatives exist.
 
@@ -54,7 +63,7 @@ Nav has a helpful explanation of [why disabled states are problematic (nav.no)](
 
 ## Guidelines
 
-Use `Checkbox` when the user can select one or more options.
+Use checkbox when the user can select one or more options.
 
 ### Sort the options
 
@@ -66,10 +75,10 @@ Preferably place the response options vertically. This makes it easier to scan t
 
 <div className="dodont-row">
   <DoDont story="DoPlacement">
-    Place `Checkbox` vertically for improved readability.
+    Place checkbox vertically for improved readability.
   </DoDont>
   <DoDont story="DontPlacement">
-    Avoid placing `Checkbox` horizontally, as it reduces readability.
+    Avoid placing checkbox horizontally, as it reduces readability.
   </DoDont>
 </div>
 

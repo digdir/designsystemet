@@ -1,7 +1,18 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
+
+Bruk klassenavnet `ds-validation-message` for å style en validation message.
+
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
 
 ```tsx
 import { ValidationMessage } from '@digdir/designsystemet-react';
@@ -9,15 +20,4 @@ import { ValidationMessage } from '@digdir/designsystemet-react';
 <ValidationMessage>Dette er en valideringsmelding.</ValidationMessage>
 ```
 
-## Eksempel
-
-### Alle farger
-Du bytter mellom farger ved å sette `data-color`-attributtet.
-Dette endrer ikon.
-
-<Story story="AllColors" />
-
-## CSS variablar og data-attributter
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

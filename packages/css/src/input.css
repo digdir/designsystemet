@@ -61,7 +61,7 @@
 
   /* only hover effect on input, but with label if it is a radio or checkbox */
   :has(label):not(:has(label:hover)) &:not(:focus-visible, :disabled, [readonly], [aria-readonly='true']):hover,
-  &:is([type='radio'], [type='checkbox']):not(:focus-visible, :disabled, [readonly], [aria-readonly='true']):hover {
+  &:is([type='radio'], [type='checkbox']):not(:focus-visible, :disabled, [readonly], [aria-readonly='true']):where(:hover, .\:click-delegate-hover) {
     outline-color: var(--dsc-input-outline-color--hover);
     outline-width: var(--dsc-input-outline-width--hover);
     outline-style: var(--dsc-input-outline-style--hover);
@@ -238,23 +238,8 @@
   }
 
   &[type='checkbox']:checked {
-    background-origin: content-box;
-    background-repeat: no-repeat;
-    background-position:
-      10% 73%,
-      90% 50%;
-    background-size:
-      35% 35%,
-      65% 65%;
-    background-image:
-      linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
-      linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
-
-    @media (forced-colors: active) {
-      background-color: LinkText;
-      border-color: LinkText;
-      forced-color-adjust: none; /* To be able to draw check */
-    }
+    --_stroke-width: var(--dsc-input-stroke-width);
+    @composes ds-checkbox--checked from './base.css';
   }
 
   &[type='checkbox']:indeterminate {

@@ -1,34 +1,26 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
 
-```tsx
-import { Table } from '@digdir/designsystemet-react';
+Det anbefales å lese om [`<table>` på MDN (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table) for en grundig gjennomgang av HTML-tabeller og deres semantikk.
 
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.HeaderCell>Header</Table.HeaderCell>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell>Cell</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-```
+Klassenavnet `ds-table` legges på `<table>`-elementet.
+
+Ved å legge `<button>` i en `<th>` med `aria-sort="*"` får du en visuell knapp for sortering. Du kobler selv logikken for sortering på knappen. Legg på `type="button"` for å unngå at knappen oppfører seg som en submit-knapp.
+
+Du kan legge på `data-clickdelegatefor` på en `<tr>` for å delegere klikkhendelser til et element i raden, for eksempel en `<a>`-tag.
+
+Bruk `data-border="true"` for å legge til en synlig kant rundt tabellen.
+
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
 
 ## Eksempel
-
-### Zebrastriper
-
-<Story story="Zebra" />
-
-### Med border
-
-<Story story="Border" />
 
 ### Sortering
 Du kan bruke props på `Table.HeaderCell` for å vise at tabellen kan sorteres etter innholdet i en kolonne.
@@ -49,44 +41,27 @@ Det er spesielt nyttig i tabeller med paginering eller annen dynamisk oppdaterin
 
 <Story story='FixedTable' />
 
-## HTML
-Det anbefales å lese om [`<table>` på MDN (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table) for en grundig gjennomgang av HTML-tabeller og deres semantikk.
-
-Klassenavnet `ds-table` legges på `<table>`-elementet.
-
-```html
-<table class="ds-table">
-  ...
-</table>
-```
-
-### Sortering
-Ved å legge `<button>` i en `<th>` med `aria-sort="*"` for du en visuell knapp for sortering.
-
-Du kobler selv logikken for sortering på knappen.
-Merk at vi legger på `type="button"` for å unngå at knappen oppfører seg som en submit-knapp.
-
-```html
-<table class="ds-table">
-  <thead>
-    <tr>
-      <th aria-sort="ascending">
-        <button type="button">Header 1</button>
-      </th>
-    </tr>
-  </thead>
-  ...
-</table>
-```
-
 ### Klikkbar rad
-Du kan legge på `data-clickdelegatefor` på en `<tr>` for å delegere klikk-hendelser til et element i raden, for eksempel en `<a>`-tag.
 
-<Story story="HTMLClickableRows" language="html" />
+<Story story="HTMLClickableRows" />
 
+## React
 
-## CSS variabler og data-attributter
+```tsx
+import { Table } from '@digdir/designsystemet-react';
 
-<CssVariables />
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.HeaderCell>Header</Table.HeaderCell>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>Cell</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+```
 
-<CssAttributes />
+<ReactComponentDocs />

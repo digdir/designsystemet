@@ -70,7 +70,7 @@ export default {
     tag: 'Blog',
     title: 'Blog',
     description:
-      'Here you will find stories, experiences, and updates from Designsystemet. A place to learn from each other and stay up to date.',
+      'Here you will find stories, experiences, and updates from Designsystemet. A place to learn from each other and stay up to date. You can subscribe to this blog through <0>RSS</0> or <1>Atom</1>',
     write: {
       title: 'Want to write for the blog?',
       description:
@@ -94,6 +94,7 @@ export default {
       getStarted: 'Getting Started',
       typography: 'Typography',
       utilities: 'Utilities',
+      utilitiesReact: 'Utilities for React',
     },
     items: {
       Introduction: 'Introduction',

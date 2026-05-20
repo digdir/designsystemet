@@ -16,7 +16,6 @@ declare global {
 }
 
 export class DSSuggestionElement extends UHTMLComboboxElement {
-  _render?: () => void;
   _unmutate?: ReturnType<typeof onMutation>; // Using underscore instead of private fields for backwards compatibility
 
   connectedCallback() {
@@ -27,7 +26,7 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this._unmutate?.();
-    this._unmutate = this._render = undefined;
+    this._unmutate = undefined;
     off(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
 }
@@ -37,6 +36,7 @@ const render = ({ control, list }: DSSuggestionElement) => {
   if (control && !control.placeholder) attr(control, 'placeholder', ' '); // .control comes from UHTMLComboboxElement
   if (control) attr(control, 'popovertarget', useId(list) || null);
   if (list) attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
+  if (list) attr(list, 'data-is-floating', 'true'); // identifier for css to toggle opacity when it is placed by floating-ui.
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:

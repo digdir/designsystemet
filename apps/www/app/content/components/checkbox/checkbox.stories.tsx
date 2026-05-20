@@ -177,7 +177,7 @@ export const Disabled = () => {
   );
 };
 
-export const ReadOnly = () => {
+export const ReadOnlyGroup = () => {
   const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
     value: ['epost'],
     readOnly: true,
@@ -349,3 +349,96 @@ export const InTableEn = () => {
     </Table>
   );
 };
+
+export const Outline = () => {
+  const [value, setValue] = useState<string[]>(['drift']);
+
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Hvilke varsler vil du motta?</Fieldset.Legend>
+      <Fieldset.Description>
+        Velg hvilke typer varsler som er relevante for deg.
+      </Fieldset.Description>
+      <Checkbox
+        label='Driftsmeldinger'
+        value='drift'
+        description='Varsler ved planlagt vedlikehold og driftsavvik.'
+        variant='outline'
+        checked={value.includes('drift')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'drift']);
+          } else {
+            setValue(value.filter((v) => v !== 'drift'));
+          }
+        }}
+      />
+      <Checkbox
+        label='Påminnelser'
+        value='paminnelse'
+        description='Varsler om frister og oppgaver som krever handling.'
+        variant='outline'
+        checked={value.includes('paminnelse')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'påminnelse']);
+          } else {
+            setValue(value.filter((v) => v !== 'påminnelse'));
+          }
+        }}
+      />
+    </Fieldset>
+  );
+};
+
+export const OutlineEn = () => {
+  const [value, setValue] = useState<string[]>(['operations']);
+
+  return (
+    <Fieldset>
+      <Fieldset.Legend>
+        Which notifications do you want to receive?
+      </Fieldset.Legend>
+      <Fieldset.Description>
+        Choose the notification types that are relevant to you.
+      </Fieldset.Description>
+      <Checkbox
+        label='Service updates'
+        value='operations'
+        description='Alerts about planned maintenance and service disruptions.'
+        variant='outline'
+        checked={value.includes('operations')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'operations']);
+          } else {
+            setValue(value.filter((v) => v !== 'operations'));
+          }
+        }}
+      />
+      <Checkbox
+        label='Reminders'
+        value='reminders'
+        description='Alerts about deadlines and tasks that need your attention.'
+        variant='outline'
+        checked={value.includes('reminders')}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setValue([...value, 'reminders']);
+          } else {
+            setValue(value.filter((v) => v !== 'reminders'));
+          }
+        }}
+      />
+    </Fieldset>
+  );
+};
+
+export const ReadOnly = () => (
+  <Checkbox
+    label='Checkbox label'
+    description='Description'
+    value='value'
+    readOnly
+  />
+);

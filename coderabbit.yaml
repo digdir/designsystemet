@@ -1,0 +1,42 @@
+# CodeRabbit Configuration
+# This file configures how CodeRabbit reviews your pull requests
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+early_access: false
+tone_instructions: "Please check documentation in English (en-US), Norwegian Bokmål (nb-NO), and Norwegian Nynorsk (nn-NO)."
+reviews:
+  review_status: false
+  profile: "chill"
+  poem: false
+  high_level_summary: true
+  auto_review:
+    enabled: false
+    drafts: false
+    base_branches:
+      - "main"
+  path_instructions:
+    # - path: '**/*.nb.mdx'
+    #   instructions: 'Check for Norwegian Bokmål (nb-NO) grammar and spelling with extra care. Pay special attention to specialized terminology and Norwegian-specific words.'
+    # - path: '**/*.nn.mdx'
+    #   instructions: 'Check for Norwegian Nynorsk (nn-NO) grammar and spelling with extra care. Pay special attention to specialized terminology and Norwegian-specific words.'
+    - path: "**/*.md"
+      instructions: "Check for links, markdown formatting, headings, grammar, and spelling in multiple languages (en-US, nb-NO, nn-NO)."
+    - path: "apps/www/app/content/**/*"
+      instructions: "Check for links, markdown formatting, headings, grammar, and spelling in multiple languages (en-US, nb-NO, nn-NO)."
+    - path: "**/*.yaml"
+      instructions: "Check syntax."
+    - path: "**/*.yml"
+      instructions: "Check syntax."
+    - path: "**/*.toml"
+      instructions: "Check syntax."
+    - path: "**/*.json"
+      instructions: "Check syntax."
+  tools:
+    biome:
+      enabled: true
+chat:
+  auto_reply: true
+knowledge_base: {}
+code_generation:
+  docstrings:
+    language: en-US

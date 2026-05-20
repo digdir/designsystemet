@@ -11,7 +11,7 @@ const config: Config = {
   buildDirectory: 'dist',
   prerender: {
     paths: generatePrerenderPaths(),
-    unstable_concurrency: 10,
+    concurrency: 25,
   },
   presets: [],
   future: {

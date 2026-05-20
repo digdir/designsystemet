@@ -1,7 +1,21 @@
-<Story story="PreviewEn" />
-<ReactComponentDocs />
+<Story story="PreviewEn" defaultOpen truncateSvg={false}/>
 
 ## Usage
+
+Add the class name `ds-spinner` to an `<svg>` tag to create a spinner.
+The `<svg>` should have two `<circle>` elements inside it to create the spinner.
+
+## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
+
+
+<CssVariables />
+
+
+<CssAttributes />
+
+## React
 
 ```tsx
 import { Spinner } from '@digdir/designsystemet-react';
@@ -9,46 +23,4 @@ import { Spinner } from '@digdir/designsystemet-react';
 <Spinner aria-label="Loader" />
 ```
 
-## Examples
-
-### Sizes
-
-<Story story="SizesEn" />
-
-## HTML
-Append the class name `ds-spinner` to a `<svg>` tag to create a spinner.
-The `<svg>` should have two `<circle>` elements inside it to create the spinner.
-
-Check the code snippet below for the complete HTML structure.
-
-```html
-<svg
-  aria-label="Loading coffee"
-  class="ds-spinner"
-  role="img"
-  viewBox="0 0 50 50"
->
-  <circle
-    class="ds-spinner__background"
-    cx="25"
-    cy="25"
-    r="20"
-    fill="none"
-    stroke-width="5"
-  ></circle>
-  <circle
-    class="ds-spinner__circle"
-    cx="25"
-    cy="25"
-    r="20"
-    fill="none"
-    stroke-width="5"
-  ></circle>
-</svg>
-```
-
-## CSS variables and data attributes
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

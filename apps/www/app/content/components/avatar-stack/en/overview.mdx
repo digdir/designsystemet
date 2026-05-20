@@ -3,16 +3,16 @@ search_terms: avatargroup, avatars, profile, avatarlist, participants, members
 ---
 
 <Alert data-color="info">
-`AvatarStack` is under development. If you have feedback or suggestions, please report them on [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20AvatarStack) or in [Slack](https://designsystemet.no/slack).
+Avatar stack is under development. If you have feedback or suggestions, please report them on [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20AvatarStack) or in [Slack](https://designsystemet.no/slack).
 </Alert>
 
 <Story story="Preview" />
 
-**Use `AvatarStack` when**
+**Use avatar stack when**
 - A group of people or entities should be displayed together, but space is limited.
 - You need to signal that multiple people are involved, without showing everyone at full size.
 
-**Avoid `AvatarStack` when**
+**Avoid avatar stack when**
 - There is only ever a single avatar to display.
 - Each person or entity must be clearly identifiable by name or role at the same time.
 
@@ -20,11 +20,11 @@ search_terms: avatargroup, avatars, profile, avatarlist, participants, members
 ## Examples
 
 ### Customization
-`AvatarStack` is designed to be flexible enough to cover many different needs and use cases.
+Avatar stack is designed to be flexible enough to cover many different needs and use cases.
 <Story story="Playground" layout='block' />
 
 ### Sizes
-The size of avatars in an `AvatarStack` is controlled via `avatarSize` and can be specified in any valid CSS size unit for maximum flexibility.
+The size of avatars in an avatar stack is controlled via `avatarSize` and can be specified in any valid CSS size unit for maximum flexibility.
 <Story story="DataSize" layout='block' />
 
 ### Gap
@@ -36,7 +36,7 @@ In some cases, it may be desirable to expand the stack on hover and focus. This 
 <Story story="Expandable" layout='block' />
 
 ### Variants
-`AvatarStack` supports both round and square variants, but only one variant per stack.
+Avatar stack supports both round and square variants, but only one variant per stack.
 <Story story="ShapeVariants" layout='block' />
 
 ### Indicating avatars not shown
@@ -44,13 +44,13 @@ When there are more avatars than can be displayed in the stack, there are two di
 <Story story="AdditionalAvatars" layout='block' />
 
 ### Tooltips and links
-Avatars in AvatarStack can have tooltips and be links, but be aware of accessibility considerations.
+Avatars in avatar stack can have tooltips and be links, but be aware of accessibility considerations.
 <Story story="WithTooltipAndLink" layout='block' />
 
 ## Guidelines
-`AvatarStack` should be used with caution, as it can be challenging for users to identify individual avatars in a tightly packed stack. Ensure that the use of `AvatarStack` makes sense in the context of the user experience and does not compromise accessibility or usability.
+Avatar stack should be used with caution, as it can be challenging for users to identify individual avatars in a tightly packed stack. Ensure that the use of avatar stack makes sense in the context of the user experience and does not compromise accessibility or usability.
 
-AvatarStack does not support wrapping across multiple lines. If there are more avatars than can fit in the stack, you can use `suffix` or an additional `Avatar` with `+xx` to indicate the number of hidden avatars.
+Avatar stack does not support wrapping across multiple lines. If there are more avatars than can fit in the stack, you can use `suffix` or an additional avatar with `+xx` to indicate the number of hidden avatars.
 
 ## Text
-`aria-label` or `aria-description` can be used on `AvatarStack` to provide context to screen readers about what the stack represents, for example "Meeting participants" or "Team members".
+`aria-label` or `aria-description` can be used on avatar stack to provide context to screen readers about what the stack represents, for example "Meeting participants" or "Team members".

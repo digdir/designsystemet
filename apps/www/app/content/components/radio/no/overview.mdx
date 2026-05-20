@@ -4,11 +4,11 @@ search_terms: radioknapp, radiovalg, radiobutton, enkeltvalg, valg, alternativ, 
 
 <Story story="Preview" />
 
-**Bruk `Radio` når**
+**Bruk radio når**
 - brukeren skal velge ett av flere alternativer i skjemaer
 
-**Unngå `Radio` når**
-- brukeren skal kunne velge flere alternativer, bruk heller [`Checkbox`](/en/components/docs/checkbox/overview)
+**Unngå radio når**
+- brukeren skal kunne velge flere alternativer, bruk heller [checkbox](/no/components/docs/checkbox/overview)
 
 ## Eksempel
 
@@ -17,14 +17,19 @@ Bruk ledetekst til å stille spørsmålet og legg eventuelt ved beskrivelse der 
 
 <Story story="Group" />
 
+### Outline
+Det finnes en variant av radio som heter `outline`. Den legger til ekstra padding og en ramme rundt valget, og øker dermed klikkområdet.
+
+<Story story="Outline" />
+
 ### Med feil
 Hvis brukeren prøver å gå videre uten å svare på et obligatorisk spørsmål, skal feilmeldingen gjelde for hele gruppen med alternativer.
 <Story story="WithError" />
 
 ## Retningslinjer
-Vi bruker `Radio` når vi skal gi brukerne mulighet til å velge kun ett alternativ. Skal de kunne velge flere, bruker du [`Checkbox`](/en/components/docs/checkbox/overview).
+Vi bruker radio når vi skal gi brukerne mulighet til å velge kun ett alternativ. Skal de kunne velge flere, bruker du [checkbox](/no/components/docs/checkbox/overview).
 
-Vi bør ikke ha mer enn syv alternativer i en gruppe. Trenger vi å gi brukerne flere valg, bør vi heller bruke [`Suggestion`](/no/components/docs/suggestion/overview) eller [`Select`](/no/components/docs/select/overview). Hvis vi bare skal gi brukerne ett valg, kan en [`Switch`](/no/components/docs/switch/overview) eller [`Checkbox`](/no/components/docs/checkbox/overview) passe bedre.
+Vi bør ikke ha mer enn syv alternativer i en gruppe. Trenger vi å gi brukerne flere valg, bør vi heller bruke [suggestion](/no/components/docs/suggestion/overview) eller [select](/no/components/docs/select/overview). Hvis vi bare skal gi brukerne ett valg, kan en [switch](/no/components/docs/switch/overview) eller [checkbox](/no/components/docs/checkbox/overview) passe bedre.
 
 ### Sortering
 Sorter svaralternativene alfabetisk hvis det ikke er en god grunn til å gjøre noe annet. Vær forsiktig med å la det mest brukte svaralternativet stå først hvis det er et personlig spørsmål eller et verdispørsmål, som for eksempel legning eller partitilhørighet. 
