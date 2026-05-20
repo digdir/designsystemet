@@ -3,7 +3,6 @@
  * Exceptions:
  * - Did not override --readonly and --disabled states
  * - .ds-togglegroup: No overrides added as the component is being removed in the next major version.
- * -
  */
 [data-color-scheme],
 body {
