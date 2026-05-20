@@ -110,7 +110,7 @@ const CodeBlockContent = ({
         </div>
         <ReactCodeBlock.Code className={cl(classes.codeBlock, className)}>
           <code>
-            <ReactCodeBlock.LineContent>
+            <ReactCodeBlock.LineContent as='span'>
               <ReactCodeBlock.Token />
             </ReactCodeBlock.LineContent>
           </code>
