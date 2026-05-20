@@ -27,6 +27,7 @@
   & > :is(h2, h3, h4, h5, h6) {
     align-items: center;
     box-sizing: border-box;
+    color: var(--ds-color-neutral-text-default);
     font-size: inherit;
     margin: 0;
     min-height: var(--dsc-dropdown-item-size);
