@@ -83,9 +83,21 @@ function makeTokenCommands() {
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
-    .option(`-m, --${cliOptions.theme.colors.main} <name:hex...>`, `Main colors`, parseColorValues)
-    .option(`-s, --${cliOptions.theme.colors.support} <name:hex...>`, `Support colors`, parseColorValues)
-    .option(`-n, --${cliOptions.theme.colors.neutral} <hex>`, `Neutral hex color`, convertToHex)
+    .option(
+      `-m, --${cliOptions.theme.colors.main} <name:hex...>`,
+      `    Main colors (deprecated, use JSON config file instead)`,
+      parseColorValues,
+    )
+    .option(
+      `-s, --${cliOptions.theme.colors.support} <name:hex...>`,
+      `Support colors (deprecated, use JSON config file instead)`,
+      parseColorValues,
+    )
+    .option(
+      `-n, --${cliOptions.theme.colors.neutral} <hex>`,
+      `Neutral hex color (deprecated, use JSON config file instead)`,
+      convertToHex,
+    )
     .option(
       `-o, --${cliOptions.outDir} <string>`,
       `Output directory for created ${pc.blue('design-tokens')}`,
@@ -96,13 +108,28 @@ function makeTokenCommands() {
     .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family (experimental)`, DEFAULT_FONT)
     .option(
       `-b, --${cliOptions.theme.borderRadius} <number>`,
-      `Unitless base border-radius in px`,
+      `Unitless base border-radius in px (deprecated, use JSON config file instead)`,
       (radiusAsString) => Number(radiusAsString),
       4,
     )
-    .option('--theme <string>', 'Theme name (ignored when using JSON config file)', DEFAULT_THEME_NAME)
+    .option('--theme <string>', 'Theme name (deprecated, use JSON config file instead)', DEFAULT_THEME_NAME)
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
     .action(async (opts, cmd) => {
+      if (
+        opts.mainColors ||
+        opts.supportColors ||
+        opts.neutralColor ||
+        opts.borderRadius ||
+        opts.theme ||
+        opts.fontFamily
+      ) {
+        console.warn(
+          pc.yellow(
+            'Warning: Using CLI options for colors is deprecated and will be removed in a future release. Please use a JSON config file instead.',
+          ),
+        );
+      }
+
       console.log(figletAscii);
       if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
