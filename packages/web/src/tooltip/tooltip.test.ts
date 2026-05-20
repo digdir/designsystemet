@@ -124,8 +124,6 @@ describe('tooltip behavior', () => {
     expect(liveRegion?.textContent).toContain('Updated');
   });
 
-  // Regression: previously used `return` instead of `continue`, which would abort
-  // processing of all subsequent tooltip elements when an empty data-tooltip was encountered.
   it('processes all tooltip elements even when one has empty data-tooltip', async () => {
     window.dsWarnings = false; // Suppress expected warning about empty tooltip
     document.body.innerHTML = `
