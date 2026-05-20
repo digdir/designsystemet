@@ -13,7 +13,7 @@ body {
   color: var(--ds-color-text-default);
 }
 
-/* [data-color] {
+/* [data-color] { // This needs more work on filled component such as button, or neutral.
   color: var(--ds-color-text-default);
 } */
 
