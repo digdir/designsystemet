@@ -82,11 +82,7 @@ body {
   /** Change from neutral to color */
   --dsc-suggestion-list-background: var(--ds-color-surface-default);
   --dsc-suggestion-border-color: var(--ds-color-border-subtle);
-  & u-datalist {
-    [data-multiple] & > u-option:not([data-empty]) {
-      --dsc-suggestion-option-checkmark-border-color: var(--ds-color-border-default);
-    }
-  }
+  --dsc-suggestion-option-checkmark-border-color: var(--ds-color-border-default);
 }
 
 .ds-tabs {
