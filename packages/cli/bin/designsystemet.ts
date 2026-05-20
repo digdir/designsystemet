@@ -129,9 +129,8 @@ function makeTokenCommands() {
         opts.fontFamily
       ) {
         console.warn(
-          pc.yellow(
-            'Warning: Using CLI options for colors, border radius, theme, or font family is deprecated and will be removed in a future release. Please use a JSON config file instead.',
-          ),
+          pc.yellow(`\n ⚠️  Using CLI options for ${pc.bold(`colors, border radius, theme, or font family is deprecated`)} and will be removed in a future release.
+           \n ⚠️  Please use a JSON config file instead.`),
         );
       }
 
