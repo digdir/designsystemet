@@ -24,7 +24,7 @@ export default {
   },
   play: async (ctx) => {
     const tooltips = ctx.canvasElement.querySelectorAll('[data-tooltip]');
-    for (const event of [fireEvent.focus, userEvent.hover])
+    for (const event of [userEvent.hover, fireEvent.focus])
       for (const tooltipTrigger of tooltips) {
         await event(tooltipTrigger);
         await waitFor(async () => {
