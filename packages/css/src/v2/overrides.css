@@ -36,6 +36,10 @@ body {
   /** Change from neutral to color */
   --dsc-dropdown-background: var(--ds-color-surface-default);
   --dsc-dropdown-border-color: var(--ds-color-border-subtle);
+
+  & > :is(h2, h3, h4, h5, h6) {
+    color: inherit;
+  }
 }
 
 .ds-error-summary {
@@ -45,7 +49,7 @@ body {
 
 .ds-field {
   /** Change from neutral to color */
-  --dsc-field-description-color: currentColor;
+  --dsc-field-description-color: inherit;
 
   &[data-variant='outline'] {
     /** Change from neutral to color */
@@ -57,12 +61,12 @@ body {
   /** Change from neutral to color */
   --dsc-field-affix-border-color: var(--ds-color-border-default);
   --dsc-field-affix-background: var(--ds-color-surface-tinted);
-  --dsc-field-affix-color: currentColor;
+  --dsc-field-affix-color: inherit;
 }
 
 .ds-fieldset {
   /** Change from neutral to color */
-  --dsc-fieldset-description-color: currentColor;
+  --dsc-fieldset-description-color: inherit;
 }
 
 .ds-input {
