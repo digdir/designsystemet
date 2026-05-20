@@ -21,7 +21,7 @@
       "types": "./types.d.ts",
       "default": "./dist/src/index.css"
     },
-    "./v2": {
+    "./experimental_v2": {
       "types": "./types.d.ts",
       "default": "./dist/src/v2/index.css"
     },
