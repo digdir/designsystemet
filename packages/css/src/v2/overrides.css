@@ -13,6 +13,14 @@ body {
   color: var(--ds-color-text-default);
 }
 
+[data-color] {
+  color: var(--ds-color-text-default);
+}
+
+.ds-label {
+  font-weight: var(--ds-font-weight-semibold);
+}
+
 .ds-dialog {
   /** Change from neutral to color */
   --dsc-dialog-background: var(--ds-color-surface-default);
@@ -39,7 +47,7 @@ body {
 
 .ds-field {
   /** Change from neutral to color */
-  --dsc-field-description-color: var(--ds-color-text-subtle);
+  --dsc-field-description-color: currentColor;
 
   &[data-variant='outline'] {
     /** Change from neutral to color */
@@ -51,12 +59,12 @@ body {
   /** Change from neutral to color */
   --dsc-field-affix-border-color: var(--ds-color-border-default);
   --dsc-field-affix-background: var(--ds-color-surface-tinted);
-  --dsc-field-affix-color: var(--ds-color-text-subtle);
+  --dsc-field-affix-color: currentColor;
 }
 
 .ds-fieldset {
   /** Change from neutral to color */
-  --dsc-fieldset-description-color: var(--ds-color-text-subtle);
+  --dsc-fieldset-description-color: currentColor;
 }
 
 .ds-input {
@@ -88,6 +96,15 @@ body {
   --dsc-tabs-tab-color: var(--ds-color-text-subtle);
   --dsc-tabs-tab-color--hover: var(--ds-color-text-default);
   --dsc-tabs-list-border-color: var(--ds-color-border-subtle);
+
+  & :is([role='tablist'], & ds-tablist, & u-tablist) {
+    & > :is([role='tab'], ds-tab, u-tab) {
+      &[aria-selected='true'] {
+        color: var(--dsc-tabs-tab-color--selected);
+        font-weight: var(--ds-font-weight-semibold);
+      }
+    }
+  }
 }
 
 .ds-tooltip {
