@@ -94,7 +94,6 @@ body {
   & :is([role='tablist'], & ds-tablist, & u-tablist) {
     & > :is([role='tab'], ds-tab, u-tab) {
       &[aria-selected='true'] {
-        color: var(--dsc-tabs-tab-color--selected);
         font-weight: var(--ds-font-weight-semibold);
       }
     }
