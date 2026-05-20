@@ -21,8 +21,8 @@
       "types": "./types.d.ts",
       "default": "./dist/src/index.css"
     },
-    "./*": "./dist/src/*",
-    "./v2": "./dist/src/v2/index.css"
+    "./v2": "./dist/src/v2/index.css",
+    "./*": "./dist/src/*"
   },
   "files": [
     "./types.d.ts",
