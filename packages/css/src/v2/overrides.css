@@ -2,7 +2,6 @@
  * This file contains planned changes for the next major version of Designsystemet.
  * Exceptions:
  * - Did not override --readonly and --disabled states
- * - .ds-link has changed mapping from text-default to text-subtle when data-color="neutral"
  * - .ds-togglegroup: No overrides added as the component is being removed in the next major version.
  * -
  */
