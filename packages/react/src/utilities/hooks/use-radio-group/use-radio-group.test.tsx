@@ -121,6 +121,20 @@ describe('RadioGroup', () => {
     expect(radio3).toHaveAttribute('aria-invalid', 'true');
     expect(error).toBeVisible();
   });
+  test('has passed variant to Radio children', () => {
+    render(<RadioGroup variant='outline' />);
+    const labels = ['Test 1', 'Test 2', 'Test 3'];
+    const radios = labels.map((label) => screen.getByLabelText(label));
+    const fields = radios
+      .map((radio) => radio.parentElement)
+      .filter((x) => x !== null);
+
+    expect(fields).toHaveLength(labels.length);
+    for (const field of fields) {
+      expect(field.nodeName).toBe('DS-FIELD');
+      expect(field).toHaveAttribute('data-variant', 'outline');
+    }
+  });
   test('has correct Radio checked when value is used', () => {
     render(<RadioGroup value='test1' />);
 
