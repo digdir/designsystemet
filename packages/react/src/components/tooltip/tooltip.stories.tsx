@@ -23,8 +23,13 @@ export default {
     },
   },
   play: async (ctx) => {
-    const tooltips = ctx.canvasElement.querySelectorAll('[data-tooltip]');
-    for (const event of [userEvent.hover, fireEvent.focus])
+    const tooltips =
+      ctx.canvasElement.querySelectorAll<HTMLElement>('[data-tooltip]');
+    const fakeFocus = (e: HTMLElement) => {
+      fireEvent.focus(e); // shows up in interaction log in Storybook
+      e.focus({ focusVisible: true } as Record<string, unknown>); // necessary to get focusVisible styling, but doesn't show up in interaction log
+    };
+    for (const event of [userEvent.hover, fakeFocus])
       for (const tooltipTrigger of tooltips) {
         await event(tooltipTrigger);
         await waitFor(async () => {
