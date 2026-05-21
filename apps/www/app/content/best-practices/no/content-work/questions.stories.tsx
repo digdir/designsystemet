@@ -19,7 +19,7 @@ export const WithRows = () => {
 };
 
 export const WithExpandableDescription = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <Field style={{ width: 'min(100%, 26rem)' }}>
