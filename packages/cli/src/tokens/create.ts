@@ -1,9 +1,9 @@
+import { baseColors } from '../index.js';
 import { generateColorScheme } from './create/generators/primitives/color-scheme.js';
 import { generateGlobals } from './create/generators/primitives/globals.js';
 import { generateSize, generateSizeGlobal } from './create/generators/primitives/size.js';
 import { generateFontSizes, generateTypography } from './create/generators/primitives/typography.js';
-import { generateSemanticColors } from './create/generators/semantic/color.js';
-import { generateColorModes } from './create/generators/semantic/color-modes.js';
+import { generateColorTokens } from './create/generators/semantic/color.js';
 import { generateSemanticStyle } from './create/generators/semantic/style.js';
 import { generateTheme } from './create/generators/themes/theme.js';
 import type { Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.js';
@@ -33,8 +33,14 @@ export const cliOptions = {
 export const createTokens = async (theme: Theme) => {
   const { colors, typography, name, borderRadius, overrides } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
+  const colorNames = [
+    Object.keys(theme.colors.main),
+    Object.keys(theme.colors.support),
+    'neutral',
+    Object.keys(baseColors),
+  ].flat();
 
-  const colorTokens = Object.entries(generateColorModes(colors, name));
+  const colorTokens = Object.entries(generateColorTokens(colorNames, name));
 
   const tokenSets: TokenSets = new Map([
     ['primitives/globals', generateGlobals()],
@@ -50,12 +56,11 @@ export const createTokens = async (theme: Theme) => {
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),
     [`themes/${name}`, generateTheme(colors, name, borderRadius)],
-    ['semantic/color', generateSemanticColors(colors, name)],
     ...colorTokens.map(([colorName, colorSetTokens]): [string, TokenSet] => [
       `semantic/color/${colorName}`,
       colorSetTokens,
     ]),
-    [`semantic/style`, generateSemanticStyle()],
+    [`semantic/style`, generateSemanticStyle(colorNames)],
   ]);
 
   return { tokenSets };
