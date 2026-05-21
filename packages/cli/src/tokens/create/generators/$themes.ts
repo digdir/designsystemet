@@ -152,7 +152,6 @@ function generateSemanticGroup(): ThemeObject_ {
     name: 'Semantic',
     selectedTokenSets: {
       'semantic/style': TokenSetStatus.ENABLED,
-      'semantic/color': TokenSetStatus.ENABLED,
       'primitives/globals': TokenSetStatus.SOURCE,
     },
     $figmaCollectionId: 'VariableCollectionId:34811:5976',
