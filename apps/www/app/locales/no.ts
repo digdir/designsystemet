@@ -69,7 +69,7 @@ export default {
     tag: 'Bloggen',
     title: 'Bloggen',
     description:
-      'Her finner du historier, erfaringer og oppdateringer fra designsystemet. Et sted for å lære av hverandre og holde deg oppdatert. Du kan abonnere på bloggen gjennom <0>RSS</0> eller <1>Atom</1>',
+      'Her finner du historier, erfaringer og oppdateringer fra Designsystemet. Et sted for å lære av hverandre og holde deg oppdatert. Du kan abonnere på bloggen gjennom <0>RSS</0> eller <1>Atom</1>',
     write: {
       title: 'Vil du skrive for bloggen?',
       description:
