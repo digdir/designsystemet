@@ -5,9 +5,7 @@ export const generateColorTokens = (colorNames: string[], _themeName: string): R
   const colorTokens = {} as Record<string, TokenSet>;
 
   for (const colorName of colorNames) {
-    const customColorTokens = {
-      color: generateSemanticColorScaleTokens(colorName),
-    };
+    const customColorTokens = generateSemanticColorScaleTokens(colorName);
     colorTokens[colorName] = customColorTokens;
   }
 

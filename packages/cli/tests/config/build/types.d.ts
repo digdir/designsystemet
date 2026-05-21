@@ -1,15 +1,9 @@
-/* build: v1.13.2 */
+/* build: v1.14.0 */
 import type {} from '@digdir/designsystemet-types';
 
 // Augment types based on theme
 declare module '@digdir/designsystemet-types' {
   export interface ColorDefinitions {
-    dominant: never;
-    complimentary: never;
-    first: never;
-    second: never;
-    third: never;
-    fourth: never;
     neutral: never;
   }
   export interface SeverityColorDefinitions {

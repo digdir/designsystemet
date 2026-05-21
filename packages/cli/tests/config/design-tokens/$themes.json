@@ -107,7 +107,6 @@
     "name": "Semantic",
     "selectedTokenSets": {
       "semantic/style": "enabled",
-      "semantic/color": "enabled",
       "primitives/globals": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5976",
