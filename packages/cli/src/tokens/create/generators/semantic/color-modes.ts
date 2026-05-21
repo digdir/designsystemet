@@ -1,39 +1,21 @@
 import { type ColorNames, semanticColorNames } from '../../../../colors/types.js';
 import type { Colors, Token, TokenSet } from '../../../types.js';
 
-type SemanticModes = {
-  'main-color': Record<string, TokenSet>;
-  'support-color': Record<string, TokenSet>;
-};
-
-export const generateColorModes = (colors: Colors, _themeName: string) => {
+export const generateColorModes = (colors: Colors, _themeName: string): Record<string, TokenSet> => {
   const mainColorNames = Object.keys(colors.main);
   const supportColorNames = Object.keys(colors.support);
+  const _allColorNames = [...mainColorNames, ...supportColorNames, 'neutral'];
 
-  const modes: SemanticModes = {
-    'main-color': {},
-    'support-color': {},
-  };
+  const colorTokens = {} as Record<string, TokenSet>;
 
-  const categories = [
-    ['main-color', mainColorNames],
-    ['support-color', supportColorNames],
-  ] as const;
-
-  // Create main-color and support-color modes for the custom colors
-  for (const [colorCategory, colorNames] of categories) {
-    for (const colorName of colorNames) {
-      const category = colorCategory.replace('-color', '');
-      const customColorTokens = {
-        color: {
-          [category]: generateColorScaleTokens(colorName),
-        },
-      };
-      modes[colorCategory][colorName] = customColorTokens;
-    }
+  for (const colorName of _allColorNames) {
+    const customColorTokens = {
+      color: generateColorScaleTokens(colorName),
+    };
+    colorTokens[colorName] = customColorTokens;
   }
 
-  return modes;
+  return colorTokens;
 };
 
 const generateColorScaleTokens = (colorName: string): Record<ColorNames, Token> => {

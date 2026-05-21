@@ -34,6 +34,8 @@ export const createTokens = async (theme: Theme) => {
   const { colors, typography, name, borderRadius, overrides } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
 
+  const colorTokens = Object.entries(generateColorModes(colors, name));
+
   const tokenSets: TokenSets = new Map([
     ['primitives/globals', generateGlobals()],
     ...sizeModes.map((size): [string, TokenSet] => [`primitives/modes/size/${size}`, generateSize(size)]),
@@ -49,10 +51,10 @@ export const createTokens = async (theme: Theme) => {
     ]),
     [`themes/${name}`, generateTheme(colors, name, borderRadius)],
     ['semantic/color', generateSemanticColors(colors, name)],
-    // maps out semantic modes, ieg 'semantic/modes/main-color/accent', and 'semantic/modes/support-color/brand1'
-    ...Object.entries(generateColorModes(colors, name)).flatMap(([mode, colors]): [string, TokenSet][] =>
-      Object.entries(colors).map(([key, colorSet]): [string, TokenSet] => [`semantic/modes/${mode}/${key}`, colorSet]),
-    ),
+    ...colorTokens.map(([colorName, colorSetTokens]): [string, TokenSet] => [
+      `semantic/color/${colorName}`,
+      colorSetTokens,
+    ]),
     [`semantic/style`, generateSemanticStyle()],
   ]);
 
