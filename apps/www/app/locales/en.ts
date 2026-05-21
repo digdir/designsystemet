@@ -17,7 +17,7 @@ export default {
     components: {
       title: 'Components',
       description:
-        'See the overview of UI components created in React, CSS and Figma.',
+        'See the overview of UI components available for Figma, CSS, a framework-independent web package and React.',
     },
     toolbox: {
       title: 'A common design system',
@@ -28,7 +28,7 @@ export default {
     'components-section': {
       title: 'Accessible and flexible components',
       description:
-        'By creating the most basic components once in a common design system, we ensure high quality. Each component is thoroughly tested and meets accessibility requirements. Components are built in both Figma and React, and can be combined in various ways to support different patterns.',
+        'By creating the most basic components once in a common design system, we ensure high quality. Each component is thoroughly tested and meets accessibility requirements. Components are available for Figma, CSS, a framework-independent web package and React, and can be combined in various ways to support different patterns.',
       link: 'Read more about accessibility',
       fallbackImgAlt:
         'Design sketch of a mobile phone containing components from Designsystemet.',

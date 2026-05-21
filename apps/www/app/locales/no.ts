@@ -16,7 +16,7 @@ export default {
     components: {
       title: 'Komponenter',
       description:
-        'Se oversikten over UI-komponentene som er laget i React, CSS og Figma.',
+        'Se oversikten over UI-komponentene som finnes for Figma, CSS, en rammeverkuavhengig web-pakke og React.',
     },
     toolbox: {
       title: 'En felles digital verktøykasse',
@@ -27,7 +27,7 @@ export default {
     'components-section': {
       title: 'Tilgjengelige og fleksible komponenter',
       description:
-        'Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet og ivaretar krav til universell utforming. Komponentene finnes i egne bibliotek for Figma, CSS og React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre.',
+        'Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet og ivaretar krav til universell utforming. Komponentene finnes for Figma, CSS, en rammeverkuavhengig web-pakke og React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre.',
       link: 'Les mer om universell utforming',
       fallbackImgAlt:
         'Designskisse av en mobiltelefon som har komponenter fra Designsystemet i seg.',
