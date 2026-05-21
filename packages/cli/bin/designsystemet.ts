@@ -3,7 +3,7 @@ import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import { baseColors, convertToHex } from '../src/colors/index.js';
+import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
@@ -162,7 +162,9 @@ function makeTokenCommands() {
       const colorNames = toColorNames(config.themes?.[themeNames[0]]?.colors);
 
       for (const [name, themeConfig] of Object.entries(config.themes)) {
-        const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme);
+        const { tokenSets } = await createTokens({ name, colorNames, ...themeConfig } as Theme & {
+          colorNames: string[];
+        });
         files.push(...tokenSetsToFiles(tokenSets));
       }
 

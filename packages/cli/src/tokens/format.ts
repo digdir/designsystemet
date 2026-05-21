@@ -18,11 +18,11 @@ export const formatTokens = async (options: Omit<FormatOptions, 'type' | 'buildT
 };
 
 export const formatTheme = async (themeConfig: Theme) => {
-  const { tokenSets } = await createTokens(themeConfig);
-
   const themeNames = [themeConfig.name];
-  const colors = toColorNames(themeConfig.colors);
-  const $themes = await generate$Themes(tokenSetDimensions, themeNames, colors);
+  const colorNames = toColorNames(themeConfig.colors);
+
+  const { tokenSets } = await createTokens({ ...themeConfig, colorNames } as Theme & { colorNames: string[] });
+  const $themes = await generate$Themes(tokenSetDimensions, themeNames, colorNames);
 
   const processed$themes = $themes.map(processThemeObject);
 
