@@ -10,8 +10,8 @@ import { useState } from 'react';
 export const WithRows = () => {
   return (
     <Textfield
-      label='Hva slags utfordring opplevde du? (Dette er en ledetekst)'
-      description='Forklar gjerne hva du prøvde å gjøre, og hva som skjedde. (Dette er en beskrivelse)'
+      label='Etternavn (Dette er en ledetekst)'
+      description='Skriv bare det siste etternavnet. Hvis det er etternavn med bindestrek kan du skrive hele navnet. (Dette er en beskrivelse)'
       multiline
       rows={4}
     />
@@ -23,7 +23,7 @@ export const WithExpandableDescription = () => {
 
   return (
     <Field style={{ width: 'min(100%, 26rem)' }}>
-      <Label>Hva er fødselsnummeret ditt?</Label>
+      <Label>Fødselsnummer</Label>
       <Details
         open={open}
         onToggle={() => setOpen(!open)}

@@ -10,8 +10,8 @@ import { useState } from 'react';
 export const WithRowsEn = () => {
   return (
     <Textfield
-      label='What kind of issue did you experience? (This is a label)'
-      description='Feel free to explain what you tried to do and what happened. (This is a description)'
+      label='Last name (This is a label)'
+      description='If you have more than one last name, type only the very last. If you have a hyphenated name, type your whole last name. (This is a description)'
       multiline
       rows={4}
     />
@@ -23,7 +23,7 @@ export const WithExpandableDescriptionEn = () => {
 
   return (
     <Field style={{ width: 'min(100%, 26rem)' }}>
-      <Label>What is your national identity number?</Label>
+      <Label>National identity number</Label>
       <Details
         open={open}
         onToggle={() => setOpen(!open)}

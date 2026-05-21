@@ -41,9 +41,8 @@ export const DoClosedEn = () => {
   return (
     <Fieldset>
       <Fieldset.Legend>Do you own the home you live in?</Fieldset.Legend>
-      <Radio label='Yes, I own the home' value='yes' />
-      <Radio label='No, I rent' value='no-rent' />
-      <Radio label='No, I live with someone else' value='no-live' />
+      <Radio label='Yes' value='yes' />
+      <Radio label='No' value='no' />
     </Fieldset>
   );
 };
@@ -76,7 +75,7 @@ export const DoPlaceholderEn = () => {
   return (
     <Textfield
       label='Department code'
-      description='Must be 6 digits. You can find it on your payslip.'
+      description='6 digits. You can find it on your payslip.'
     />
   );
 };

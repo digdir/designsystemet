@@ -38,9 +38,8 @@ export const DoClosed = () => {
   return (
     <Fieldset>
       <Fieldset.Legend>Eier du boligen du bor i?</Fieldset.Legend>
-      <Radio label='Ja, jeg eier boligen' value='yes' />
-      <Radio label='Nei, jeg leier' value='no-rent' />
-      <Radio label='Nei, jeg bor hos noen' value='no-live' />
+      <Radio label='Ja' value='yes' />
+      <Radio label='Nei' value='no' />
     </Fieldset>
   );
 };
@@ -71,7 +70,7 @@ export const DoPlaceholder = () => {
   return (
     <Textfield
       label='Avdelingskode'
-      description='Skal være 6 siffer, kan finnes på lønnslippen din'
+      description='6 siffer. Du finner koden på lønnsslippen.'
     />
   );
 };
