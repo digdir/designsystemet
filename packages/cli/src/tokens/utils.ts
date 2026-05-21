@@ -1,13 +1,8 @@
 import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
-import {
-  type ColorCategories,
-  type ColorNamesByCategory,
-  type Colors,
-  colorCategories,
-  type TokenSet,
-} from './types.js';
+import { baseColors } from '../colors/colorMetadata.js';
+import { type ColorCategories, colorCategories, type Theme, type TokenSet } from './types.js';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
 
@@ -166,10 +161,14 @@ export function orderBySize(sizes: string[]): string[] {
   return R.sortBy(sizeComparator, sizes);
 }
 
-export function colorNamesByCategory(colors: Colors): ColorNamesByCategory {
-  const result = {} as ColorNamesByCategory;
-  for (const category of Object.values(colorCategories)) {
-    result[category] = Object.keys(colors[category] ?? {});
-  }
-  return result;
+export function toColorNames(themeColors: Theme['colors']): string[] {
+  const colorsCategories = themeColors ? themeColors : { main: {}, support: {}, neutral: {} };
+  const colors = {
+    ...colorsCategories.main,
+    ...colorsCategories.support,
+    neutral: colorsCategories.neutral,
+    ...baseColors,
+  };
+
+  return Object.keys(colors);
 }

@@ -115,51 +115,91 @@
     "group": "Semantic"
   },
   {
-    "id": "21e2bd9a713964df9b7fcee294d1ff568b79f270",
+    "id": "18abe41a47a1ec464e4a502902d3e791142ecaa4",
     "name": "dominant",
     "selectedTokenSets": {
-      "semantic/modes/main-color/dominant": "enabled"
+      "semantic/color/dominant": "enabled"
     },
-    "group": "Main color"
+    "group": "Color"
   },
   {
-    "id": "398515dd0662a8a5ac6d2f1ff57c4a1214d4af87",
+    "id": "a496d42fc07a58949b17bfe8ddda74064f8f3f1f",
     "name": "complimentary",
     "selectedTokenSets": {
-      "semantic/modes/main-color/complimentary": "enabled"
+      "semantic/color/complimentary": "enabled"
     },
-    "group": "Main color"
+    "group": "Color"
   },
   {
-    "id": "850086db50ab2678dbd84e9994d81d696f3e6513",
+    "id": "e0996a37c13d44c3b06074939d43fa3759bd32c1",
     "name": "first",
     "selectedTokenSets": {
-      "semantic/modes/support-color/first": "enabled"
+      "semantic/color/first": "enabled"
     },
-    "group": "Support color"
+    "group": "Color"
   },
   {
-    "id": "c69fb8f69a2b50bee470a3e2dda1872ba65ba2ce",
+    "id": "352f7829a2384b001cc12b0c2613c756454a1f6a",
     "name": "second",
     "selectedTokenSets": {
-      "semantic/modes/support-color/second": "enabled"
+      "semantic/color/second": "enabled"
     },
-    "group": "Support color"
+    "group": "Color"
   },
   {
-    "id": "934c852ee2aa7d462f084e1fdc0c069ee9f3d3f2",
+    "id": "34fb3300b9a77bebdc988ec3edd0d4a6a42a26f9",
     "name": "third",
     "selectedTokenSets": {
-      "semantic/modes/support-color/third": "enabled"
+      "semantic/color/third": "enabled"
     },
-    "group": "Support color"
+    "group": "Color"
   },
   {
-    "id": "cfa64bb6d93cdba55e2586081a01b11bbccc1589",
+    "id": "2db18e1d98e7ab7f49dea56027312c2d97b1a2e0",
     "name": "fourth",
     "selectedTokenSets": {
-      "semantic/modes/support-color/fourth": "enabled"
+      "semantic/color/fourth": "enabled"
     },
-    "group": "Support color"
+    "group": "Color"
+  },
+  {
+    "id": "e7fb41a6a0544d8a8aa178232034311f9d725555",
+    "name": "neutral",
+    "selectedTokenSets": {
+      "semantic/color/neutral": "enabled"
+    },
+    "group": "Color"
+  },
+  {
+    "id": "59bd0a3ff43b32849b319e645d4798d8a5d1e889",
+    "name": "info",
+    "selectedTokenSets": {
+      "semantic/color/info": "enabled"
+    },
+    "group": "Color"
+  },
+  {
+    "id": "53a5687cb26dc41f2ab4033e97e13adefd3740d6",
+    "name": "success",
+    "selectedTokenSets": {
+      "semantic/color/success": "enabled"
+    },
+    "group": "Color"
+  },
+  {
+    "id": "383fd7bf84aa027bdc40159c5d7c5805664a8eb2",
+    "name": "warning",
+    "selectedTokenSets": {
+      "semantic/color/warning": "enabled"
+    },
+    "group": "Color"
+  },
+  {
+    "id": "222b3e11200d82d61f1b89533e59175f71d23972",
+    "name": "danger",
+    "selectedTokenSets": {
+      "semantic/color/danger": "enabled"
+    },
+    "group": "Color"
   }
 ]

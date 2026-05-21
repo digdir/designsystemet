@@ -3,7 +3,7 @@ import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import { convertToHex } from '../src/colors/index.js';
+import { baseColors, convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
@@ -11,7 +11,7 @@ import { createSystemTokenFiles, tokenSetsToFiles } from '../src/tokens/create/f
 import { cliOptions, createTokens, tokenSetDimensions } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
 import type { OutputFile, Theme } from '../src/tokens/types.js';
-import { colorNamesByCategory } from '../src/tokens/utils.js';
+import { toColorNames } from '../src/tokens/utils.js';
 import { dsfs } from '../src/utils/filesystem.js';
 import { parseCreateConfig, readConfigFile } from './config.js';
 
@@ -158,19 +158,19 @@ function makeTokenCommands() {
 
       const files: OutputFile[] = [];
 
+      // Pick colors from first theme since we have a constraint they should be the same across themes.
+      const colorNames = toColorNames(config.themes?.[themeNames[0]]?.colors);
+
       for (const [name, themeConfig] of Object.entries(config.themes)) {
         const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme);
         files.push(...tokenSetsToFiles(tokenSets));
       }
 
-      // Pick colors from first theme since we have a constraint they should be the same across themes.
-      const colors = config.themes?.[themeNames[0]]?.colors ?? { main: {}, support: {} };
-
       files.push(
         ...(await createSystemTokenFiles({
           tokenSetDimensions,
           themeNames,
-          colors: colorNamesByCategory(colors),
+          colorNames,
         })),
       );
 
