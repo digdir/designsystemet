@@ -2,7 +2,7 @@
   "name": "root",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@11.1.2+sha512.415a1cc25974731e75455c1468371be74c5aa5fb7621b50d4056d222451609f11412f23fd602e6169f1e060466641f798597e1be961a10688836a67b16569499",
+  "packageManager": "pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800",
   "engines": {
     "node": ">=24.15.0",
     "runtime": {
@@ -48,10 +48,10 @@
     "@svitejs/changesets-changelog-github-compact": "1.2.0",
     "@testing-library/jest-dom": "6.9.1",
     "@types/node": "24.12.4",
-    "@vitejs/plugin-react-swc": "4.3.0",
+    "@vitejs/plugin-react-swc": "4.3.1",
     "@vitest/browser-playwright": "4.1.6",
     "@vitest/coverage-v8": "4.1.6",
-    "chromatic": "16.10.0",
+    "chromatic": "16.10.1",
     "tsconfck": "3.1.6",
     "typescript": "5.9.3",
     "typescript-plugin-css-modules": "5.2.0",
