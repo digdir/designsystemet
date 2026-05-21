@@ -16,8 +16,7 @@ export default {
     },
     components: {
       title: 'Components',
-      description:
-        'See the overview of UI components available for Figma, CSS, a framework-independent web package and React.',
+      description: 'See the overview of framework-independent UI components.',
     },
     toolbox: {
       title: 'A common design system',
@@ -151,7 +150,7 @@ export default {
   components: {
     title: 'Components',
     description:
-      'Designsystemet contains basic components that can be combined in many different ways and in various patterns.',
+      'Designsystemet contains basic components that can be used independently of framework, and combined in many different ways and in various patterns.',
     changelog: {
       title: 'Changelog',
     },

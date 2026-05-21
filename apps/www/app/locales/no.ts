@@ -15,8 +15,7 @@ export default {
     },
     components: {
       title: 'Komponenter',
-      description:
-        'Se oversikten over UI-komponentene som finnes for Figma, CSS, en rammeverkuavhengig web-pakke og React.',
+      description: 'Se oversikten over rammeverkuavhengige UI-komponenter.',
     },
     toolbox: {
       title: 'En felles digital verktøykasse',
@@ -150,7 +149,7 @@ export default {
   components: {
     title: 'Komponenter',
     description:
-      'Designsystemet inneholder grunnleggende komponenter som kan settes sammen på mange ulike måter og i forskjellige mønstre.',
+      'Designsystemet inneholder grunnleggende komponenter som kan brukes uavhengig av rammeverk, og settes sammen på mange ulike måter og i forskjellige mønstre.',
     changelog: {
       title: 'Endringslogg',
     },
