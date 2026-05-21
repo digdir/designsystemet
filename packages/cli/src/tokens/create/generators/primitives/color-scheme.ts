@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 import { baseColors, colorMetadata, dsLinkColor } from '../../../../colors/colorMetadata.js';
 import { generateColorScale } from '../../../../colors/index.js';
-import type { Color, ColorScheme } from '../../../../colors/types.js';
+import type { Color, ColorScheme, CssColor } from '../../../../colors/types.js';
 import type { ColorOverrideSchema } from '../../../../config.js';
-import type { Colors, Token, TokenSet } from '../../../types.js';
+import type { Token, TokenSet } from '../../../types.js';
 
 const generateColor = (colorArray: Color[], overrides?: Record<number, string>): TokenSet => {
   const obj: TokenSet = {};
@@ -22,7 +22,7 @@ const generateColor = (colorArray: Color[], overrides?: Record<number, string>):
 export const generateColorScheme = (
   themeName: string,
   colorScheme: ColorScheme,
-  colors: Colors,
+  colors: Record<string, CssColor>,
   overrides?: ColorOverrideSchema,
 ): TokenSet => {
   /* Create override mappings for each color */
@@ -55,25 +55,21 @@ export const generateColorScheme = (
     return Object.keys(positionOverrides).length > 0 ? positionOverrides : undefined;
   };
 
-  const main = R.mapObjIndexed(
-    (color, colorName) => generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName)),
-    colors.main,
-  );
+  const colorScales = R.mapObjIndexed((color, colorName) => {
+    if (colorName === 'neutral') {
+      const neutralColorScale = generateColorScale(colors.neutral, colorScheme);
+      return generateColor(neutralColorScale, createColorOverrides('neutral'));
+    }
 
-  const support = R.mapObjIndexed(
-    (color, colorName) => generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName)),
-    colors.support,
-  );
-
-  const neutralColorScale = generateColorScale(colors.neutral, colorScheme);
-  const neutral = generateColor(neutralColorScale, createColorOverrides('neutral'));
+    return generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName));
+  }, colors);
 
   const baseColorsWithOverrides = {
     ...baseColors,
     ...overrides?.severity,
   };
 
-  const globalColors = R.mapObjIndexed(
+  const severityColors = R.mapObjIndexed(
     (color, colorName) => generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName)),
     baseColorsWithOverrides,
   );
@@ -85,18 +81,16 @@ export const generateColorScheme = (
     : undefined;
 
   /* Default focus-inner is position 1 (background-default), focus-outer is position 11 (text-default) */
-  const defaultFocusInner = neutralColorScale[0].hex;
-  const defaultFocusOuter = neutralColorScale[10].hex;
+  const defaultFocusInner = colorScales.neutral[1].$value;
+  const defaultFocusOuter = colorScales.neutral[11].$value;
 
   const focusInnerOverride = overrides?.focus?.inner?.[colorScheme as 'light' | 'dark'];
   const focusOuterOverride = overrides?.focus?.outer?.[colorScheme as 'light' | 'dark'];
 
   return {
     [themeName]: {
-      ...main,
-      ...support,
-      neutral,
-      ...globalColors,
+      ...colorScales,
+      ...severityColors,
       link: {
         visited: linkOverride || defaultLinkVisited,
       },

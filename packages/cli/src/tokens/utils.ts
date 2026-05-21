@@ -2,6 +2,7 @@ import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
 import { baseColors } from '../colors/colorMetadata.js';
+import type { CssColor } from '../index.js';
 import { type ColorCategories, colorCategories, type Theme, type TokenSet } from './types.js';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
@@ -161,14 +162,18 @@ export function orderBySize(sizes: string[]): string[] {
   return R.sortBy(sizeComparator, sizes);
 }
 
-export function toColorNames(themeColors: Theme['colors']): string[] {
-  const colorsCategories = themeColors ? themeColors : { main: {}, support: {}, neutral: {} };
-  const colors = {
+export function toFlatColors(colors: Theme['colors']): Record<string, CssColor> {
+  const colorsCategories = colors ? colors : { main: {}, support: {}, neutral: `#ececec` };
+  return {
     ...colorsCategories.main,
     ...colorsCategories.support,
-    neutral: colorsCategories.neutral,
+    neutral: colorsCategories.neutral as CssColor,
     ...baseColors,
   };
+}
+
+export function toColorNames(themeColors: Theme['colors']): string[] {
+  const colors = toFlatColors(themeColors);
 
   return Object.keys(colors);
 }

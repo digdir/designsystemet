@@ -6,6 +6,7 @@ import { generateColorTokens } from './create/generators/semantic/color.js';
 import { generateSemanticStyle } from './create/generators/semantic/style.js';
 import { generateTheme } from './create/generators/themes/theme.js';
 import type { Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.js';
+import { toFlatColors } from './utils.js';
 
 export const tokenSetDimensions: TokenSetDimensions = {
   colorSchemes: ['dark', 'light'],
@@ -30,9 +31,10 @@ export const cliOptions = {
 } as const;
 
 export const createTokens = async (theme: Theme & { colorNames: string[] }) => {
-  const { colors, typography, name, borderRadius, overrides, colorNames } = theme;
+  const { typography, name, borderRadius, overrides, colorNames } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
 
+  const colors = toFlatColors(theme.colors);
   const colorTokens = Object.entries(generateColorTokens(colorNames, name));
 
   const tokenSets: TokenSets = new Map([
