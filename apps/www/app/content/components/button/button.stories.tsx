@@ -2,7 +2,7 @@ import { Button, type ButtonProps } from '@digdir/designsystemet-react';
 import { PencilWritingIcon } from '@navikt/aksel-icons';
 
 export const Preview = () => {
-  return <Button>Hello world</Button>;
+  return <Button>Min knapp</Button>;
 };
 
 export const PreviewEn = () => {
