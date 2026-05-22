@@ -428,10 +428,8 @@ export const generateColors = (colorNames: string[]) => {
 
   return {
     ...baseColorTemplate,
-    color: {
-      ...Object.fromEntries(semanticColorTokens),
-      ...baseColorTemplate.color,
-    },
+    ...Object.fromEntries(semanticColorTokens),
+    ...baseColorTemplate.color,
   };
 };
 
