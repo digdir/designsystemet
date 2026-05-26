@@ -66,7 +66,7 @@ function handleToggle(
             size({
               apply({ availableHeight }) {
                 if (overscroll === 'fit')
-                  el.style.width = `${source.clientWidth}px`;
+                  el.style.width = `${source.offsetWidth}px`; // Use offsetWidth to include padding, matching the width of the source element
                 el.style.maxHeight = `${Math.max(50, availableHeight - padding * 2)}px`;
               },
             }),
