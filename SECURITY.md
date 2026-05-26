@@ -20,8 +20,8 @@ We use several automated mechanisms to help detect and reduce risk:
 ### Dependency manager 
 We use [pnpm](https://pnpm.io) for managing dependencies.
 
-We have cofingured pnpm with the following:
+We have configured pnpm with the following:
 - No dependency version newer than 72 hours is installed.
 - Prevent transitive dependencies from using exotic sources.
 - By default block script execution for dependencies.
-  - See `allowedBuilds` in [pnpm-workspace-yaml](./pnpm-workspace.yaml) for whitelisted depedencies
+  - See `allowedBuilds` in [pnpm-workspace-yaml](./pnpm-workspace.yaml) for whitelisted dependencies

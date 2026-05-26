@@ -37,9 +37,7 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ## 🚀 Get started
 
-Please refer to our differen guides for getting started:
-- [React](https://designsystemet.no/en/fundamentals/code/react)
-- [Other frameworks](https://designsystemet.no/en/fundamentals/code/other-frameworks)
+Please refer to our [setup guide](https://designsystemet.no/en/fundamentals/code/setup) for getting started in code.
 
 ## 🫶 Contributing
 

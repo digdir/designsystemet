@@ -1,6 +1,7 @@
 import {
   Fieldset,
   Radio,
+  useRadioGroup,
   ValidationMessage,
 } from '@digdir/designsystemet-react';
 
@@ -9,6 +10,11 @@ export const Preview = () => {
 };
 
 export const Group = () => {
+  const { getRadioProps } = useRadioGroup({
+    name: 'kontakt',
+    value: 'epost',
+  });
+
   return (
     <Fieldset>
       <Fieldset.Legend>Hvordan ønsker du at vi kontakter deg?</Fieldset.Legend>
@@ -19,26 +25,28 @@ export const Group = () => {
       <Radio
         label='E-post'
         description='Vi bruker e-postadressen du har oppgitt tidligere (navn@epost.no)'
-        value='epost'
-        name='kontakt'
+        {...getRadioProps('epost')}
       />
       <Radio
         label='SMS'
         description='Vi bruker telefonnummeret du har oppgitt tidligere (99 99 99 99)'
-        value='sms'
-        name='kontakt'
+        {...getRadioProps('sms')}
       />
       <Radio
         label='Brev'
         description='Levering kan ta 3-5 virkedager, avhengig av posttjenesten.'
-        value='brev'
-        name='kontakt'
+        {...getRadioProps('brev')}
       />
     </Fieldset>
   );
 };
 
 export const GroupEn = () => {
+  const { getRadioProps } = useRadioGroup({
+    name: 'contact',
+    value: 'email',
+  });
+
   return (
     <Fieldset>
       <Fieldset.Legend>How would you like us to contact you?</Fieldset.Legend>
@@ -49,20 +57,17 @@ export const GroupEn = () => {
       <Radio
         label='Email'
         description='We will use the email address you provided earlier (name@example.com)'
-        value='email'
-        name='contact'
+        {...getRadioProps('email')}
       />
       <Radio
         label='SMS'
         description='We will use the phone number you provided earlier (99 99 99 99)'
-        value='sms'
-        name='contact'
+        {...getRadioProps('sms')}
       />
       <Radio
         label='Letter'
         description='Delivery may take 3-5 working days, depending on the postal service.'
-        value='letter'
-        name='contact'
+        {...getRadioProps('letter')}
       />
     </Fieldset>
   );
@@ -159,6 +164,11 @@ export const InlineEn = () => {
 };
 
 export const Outline = () => {
+  const { getRadioProps } = useRadioGroup({
+    name: 'course-level',
+    variant: 'outline',
+  });
+
   return (
     <Fieldset>
       <Fieldset.Legend>Hvilket kursnivå passer deg best?</Fieldset.Legend>
@@ -166,31 +176,30 @@ export const Outline = () => {
         Velg nivået som beskriver din erfaring med temaet.
       </Fieldset.Description>
       <Radio
-        variant='outline'
         label='Nybegynner'
         description='Passer for deg som er helt ny og ønsker en rolig introduksjon.'
-        value='beginner'
-        name='course-level'
+        {...getRadioProps('beginner')}
       />
       <Radio
-        variant='outline'
         label='Viderekommen'
         description='Passer for deg som kjenner grunnleggende begreper og vil gå dypere.'
-        value='intermediate'
-        name='course-level'
+        {...getRadioProps('intermediate')}
       />
       <Radio
         label='Ekspert'
-        variant='outline'
         description='Passer for deg som ønsker avanserte temaer og praktiske case.'
-        value='expert'
-        name='course-level'
+        {...getRadioProps('expert')}
       />
     </Fieldset>
   );
 };
 
 export const OutlineEn = () => {
+  const { getRadioProps } = useRadioGroup({
+    name: 'course-level',
+    variant: 'outline',
+  });
+
   return (
     <Fieldset>
       <Fieldset.Legend>Which course level fits you best?</Fieldset.Legend>
@@ -198,25 +207,19 @@ export const OutlineEn = () => {
         Choose the level that best describes your experience with the topic.
       </Fieldset.Description>
       <Radio
-        variant='outline'
         label='Beginner'
         description='Best for you if you are completely new and want a gentle introduction.'
-        value='beginner'
-        name='course-level'
+        {...getRadioProps('beginner')}
       />
       <Radio
-        variant='outline'
         label='Intermediate'
         description='Best for you if you know the basics and want to go deeper.'
-        value='intermediate'
-        name='course-level'
+        {...getRadioProps('intermediate')}
       />
       <Radio
-        variant='outline'
         label='Expert'
         description='Best for you if you want advanced topics and hands-on cases.'
-        value='expert'
-        name='course-level'
+        {...getRadioProps('expert')}
       />
     </Fieldset>
   );
