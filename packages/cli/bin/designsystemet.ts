@@ -124,9 +124,9 @@ function makeTokenCommands() {
         opts.mainColors ||
         opts.supportColors ||
         opts.neutralColor ||
-        opts.borderRadius ||
-        opts.theme ||
-        opts.fontFamily
+        (opts.borderRadius && opts.borderRadius !== 4) ||
+        (opts.theme && opts.theme !== DEFAULT_THEME_NAME) ||
+        (opts.fontFamily && opts.fontFamily !== DEFAULT_FONT)
       ) {
         console.warn(
           pc.yellow(`\n ⚠️  Using CLI options for ${pc.bold(`colors, border radius, theme, or font family is deprecated`)} and will be removed in a future release.
