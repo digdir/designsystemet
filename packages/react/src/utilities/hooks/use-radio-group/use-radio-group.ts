@@ -27,6 +27,10 @@ export type UseRadioGroupProps = {
   value?: string;
   /** Callback when selected radios changes */
   onChange?: (nextValue: string, prevValue: string) => void;
+  /**
+   * If outline, all radios in the group will have a border
+   */
+  variant?: RadioProps['variant'];
 };
 
 /**
@@ -74,16 +78,17 @@ type useRadioGroupReturn = {
  *   value: '',
  * });
  */
-export function useRadioGroup({
-  error,
-  readOnly,
-  required,
-  disabled,
-  name,
-  onChange,
-  value: initalValue = '',
-}: UseRadioGroupProps = {}): useRadioGroupReturn {
-  const [groupValue, setGroupValue] = useState(initalValue);
+export function useRadioGroup(props?: UseRadioGroupProps): useRadioGroupReturn {
+  const {
+    error,
+    readOnly,
+    required,
+    disabled,
+    name,
+    onChange,
+    value: initialValue = '',
+  } = props || {};
+  const [groupValue, setGroupValue] = useState(initialValue);
   const errorId = useId();
   const namedId = useId();
   const radioGroupName = name || namedId;
@@ -106,11 +111,18 @@ export function useRadioGroup({
      * <Radio label="Option 1" {...getRadioProps('option-1')} />
      */
     getRadioProps: (propsOrValue: string | GetRadioProps) => {
-      const props =
+      let groupProps:
+        | Omit<UseRadioGroupProps, 'onChange' | 'error'>
+        | undefined;
+      if (props) {
+        const { onChange, error, ...rest } = props;
+        groupProps = rest;
+      }
+      const radioProps =
         typeof propsOrValue === 'string'
           ? { value: propsOrValue }
           : propsOrValue;
-      const { ref: forwardedRef = undefined, value = '', ...rest } = props;
+      const { ref: forwardedRef = undefined, value = '', ...rest } = radioProps;
 
       const handleRef = (element: HTMLInputElement | null) => {
         if (element) {
@@ -138,6 +150,7 @@ export function useRadioGroup({
       };
 
       return {
+        ...groupProps,
         ...rest,
         name: radioGroupName,
         'aria-describedby':
