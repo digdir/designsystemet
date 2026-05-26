@@ -7,13 +7,14 @@
 [data-color-scheme],
 body {
   /** Change from neutral to color */
-  background: var(--ds-color-background-default);
-  color: var(--ds-color-text-default);
+  background: inherit;
+  color: inherit;
 }
 
-/* [data-color] { // This needs more work on filled component such as button, or neutral.
+[data-color] {
+  /* This needs more work on filled component such as button, or neutral. */
   color: var(--ds-color-text-default);
-} */
+}
 
 .ds-label {
   font-weight: var(--ds-font-weight-semibold);
