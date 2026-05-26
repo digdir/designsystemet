@@ -89,7 +89,7 @@ function makeTokenCommands() {
     /** Deprecated options */
     .option(
       `-m, --${cliOptions.theme.colors.main} <name:hex...>`,
-      `    Main colors (deprecated, use JSON config file instead)`,
+      `Main colors (deprecated, use JSON config file instead)`,
       parseColorValues,
     )
     .option(
