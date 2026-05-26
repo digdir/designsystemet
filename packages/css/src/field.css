@@ -2,6 +2,7 @@
   --dsc-field-content-spacing: var(--ds-size-2);
   --dsc-field-counter-over: '%d tegn for mye';
   --dsc-field-counter-under: '%d tegn igjen';
+  --dsc-field-description-color: var(--ds-color-neutral-text-subtle);
 
   @composes ds-print-preserve from './base.css';
 
@@ -14,9 +15,7 @@
   }
 
   & [data-field='description'] {
-    color: var(
-      --ds-color-neutral-text-subtle
-    ); /* TODO: Change to opacity or color-mix(currentColor, transparent) to ensure contrast when parent element color changes? */
+    color: var(--dsc-field-description-color);
     margin-top: 0; /* Line-height removes the need for this */
     margin-block: 0;
   }
@@ -185,11 +184,13 @@
   --dsc-field-affix-border-style: solid;
   --dsc-field-affix-border-color: var(--ds-color-neutral-border-default);
   --dsc-field-affix-padding-inline: var(--ds-size-4);
+  --dsc-field-affix-background: var(--ds-color-neutral-surface-tinted);
+  --dsc-field-affix-color: var(--ds-color-neutral-text-subtle);
 
-  background: var(--ds-color-neutral-surface-tinted);
+  background: var(--dsc-field-affix-background);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--dsc-field-affix-color);
   max-width: 100%;
   white-space: nowrap;
 
