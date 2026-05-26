@@ -103,6 +103,25 @@ describe('Dialog', () => {
     );
   });
 
+  it('should not call onClose on parent when nested dialog closes', async () => {
+    const outerOnClose = vi.fn();
+    const innerOnClose = vi.fn();
+
+    render(
+      <Dialog open onClose={outerOnClose} aria-label='outer'>
+        <Dialog open onClose={innerOnClose} aria-label='inner' />
+      </Dialog>,
+    );
+
+    const innerDialog = screen.getByRole('dialog', { name: 'inner' });
+    await act(async () => {
+      innerDialog.dispatchEvent(new Event('close', { bubbles: false }));
+    });
+
+    expect(innerOnClose).toHaveBeenCalledTimes(1);
+    expect(outerOnClose).not.toHaveBeenCalled();
+  });
+
   it('a custom data-command=close button should close the dialog', async () => {
     const onClose = vi.fn();
     window.dsWarnings = false; // Suppress warnings about data-command being deprecated
