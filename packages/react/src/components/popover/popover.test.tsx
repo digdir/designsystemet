@@ -143,6 +143,9 @@ describe('Popover', () => {
 
     expect(onClose).not.toHaveBeenCalled();
     expect(screen.getByText(contentText)).toBeVisible();
+
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(screen.getByText('dialog content')).not.toBeVisible();
   });
 
   it('should close when we press SPACE', async () => {
