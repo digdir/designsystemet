@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { act } from 'react';
 import { Tooltip } from './tooltip';
 
@@ -64,7 +64,9 @@ describe('Tooltip', () => {
       </Tooltip>,
     );
     const trigger = screen.getByRole('button');
-    expect(trigger.getAttribute('aria-describedby')).toBeDefined();
+    waitFor(() =>
+      expect(trigger.getAttribute('aria-description')).not.toBeNullable(),
+    );
   });
 
   it('should be aria-labelledby when there is no text in the trigger', () => {
@@ -74,6 +76,8 @@ describe('Tooltip', () => {
       </Tooltip>,
     );
     const trigger = screen.getByRole('button');
-    expect(trigger.getAttribute('aria-labelledby')).toBeDefined();
+    waitFor(() =>
+      expect(trigger.getAttribute('aria-label')).not.toBeNullable(),
+    );
   });
 });

@@ -109,11 +109,10 @@ const CodeBlockContent = ({
           <CopyButton text={text} />
         </div>
         <ReactCodeBlock.Code className={cl(classes.codeBlock, className)}>
-          <code>
-            <ReactCodeBlock.LineContent as='span'>
-              <ReactCodeBlock.Token />
-            </ReactCodeBlock.LineContent>
-          </code>
+          {/* @ts-ignore TODO: Children has incorrect type when as is defined */}
+          <ReactCodeBlock.LineContent as='code'>
+            <ReactCodeBlock.Token />
+          </ReactCodeBlock.LineContent>
         </ReactCodeBlock.Code>
       </div>
     </ReactCodeBlock>
