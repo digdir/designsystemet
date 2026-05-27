@@ -1,5 +1,49 @@
 # Change Log
 
+## 1.14.0
+
+### Minor Changes
+
+- **Field / Radio / Checkbox / Switch**: Now supports `data-variant="outline"` for an outlined tile look. ([#4625](https://github.com/digdir/designsystemet/pull/4625))
+
+### Patch Changes
+
+- **Suggestion**: fixed dropdown so it no longer has a brief flash in wrong position ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- Update npm non-major dependencies ([#4809](https://github.com/digdir/designsystemet/pull/4809))
+
+- **Suggestion:** now uses attribute `data-activedescendant` under the hood to add focus styling on option elements ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+- Update npm non-major dependencies ([#4859](https://github.com/digdir/designsystemet/pull/4859))
+
+- **Suggestion**: fixed icons being invisible in forced colors mode ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783))
+
+- **base**: added `.ds-focus--middle` / `.ds-focus--visible--middle` classes for use in the `suggestion` redesign ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- **Suggestion**: changes to design: ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+  - dropdown border and background-color to neutral
+  - new hover styles on items
+  - adjusted spacings
+  - `multiple` now has checkboxes
+  - CSS variables:
+    - Added:
+      - `--dsc-suggestion-option-background--hover`
+      - `--dsc-suggestion-list-padding`
+      - `--dsc-suggestion-list-offset`
+      - `--dsc-suggestion-option-gap`
+    - Removed:
+      - `--dsc-suggestion-option-border-color`
+    - Changed default value:
+      - `--dsc-suggestion-option-background--selected`
+      - `--dsc-suggestion-option-border-radius`
+      - `--dsc-suggestion-option-padding`
+      - `--dsc-suggestion-list-background`
+      - `--dsc-suggestion-list-gap`
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.14.0
+
 ## 1.13.3
 
 ### Patch Changes

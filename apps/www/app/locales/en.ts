@@ -16,8 +16,7 @@ export default {
     },
     components: {
       title: 'Components',
-      description:
-        'See the overview of UI components created in React, CSS and Figma.',
+      description: 'See the overview of framework-independent UI components.',
     },
     toolbox: {
       title: 'A common design system',
@@ -28,7 +27,7 @@ export default {
     'components-section': {
       title: 'Accessible and flexible components',
       description:
-        'By creating the most basic components once in a common design system, we ensure high quality. Each component is thoroughly tested and meets accessibility requirements. Components are built in both Figma and React, and can be combined in various ways to support different patterns.',
+        'By creating the most basic components once in a common design system, we ensure high quality. Each component is thoroughly tested and meets accessibility requirements. Components are available for Figma, CSS, a framework-independent web package and React, and can be combined in various ways to support different patterns.',
       link: 'Read more about accessibility',
       fallbackImgAlt:
         'Design sketch of a mobile phone containing components from Designsystemet.',
@@ -70,7 +69,7 @@ export default {
     tag: 'Blog',
     title: 'Blog',
     description:
-      'Here you will find stories, experiences, and updates from Designsystemet. A place to learn from each other and stay up to date.',
+      'Here you will find stories, experiences, and updates from Designsystemet. A place to learn from each other and stay up to date. You can subscribe to this blog through <0>RSS</0> or <1>Atom</1>',
     write: {
       title: 'Want to write for the blog?',
       description:
@@ -94,6 +93,7 @@ export default {
       getStarted: 'Getting Started',
       typography: 'Typography',
       utilities: 'Utilities',
+      utilitiesReact: 'Utilities for React',
     },
     items: {
       Introduction: 'Introduction',
@@ -150,7 +150,7 @@ export default {
   components: {
     title: 'Components',
     description:
-      'Designsystemet contains basic components that can be combined in many different ways and in various patterns.',
+      'Designsystemet contains basic components that can be used independently of framework, and combined in many different ways and in various patterns.',
     changelog: {
       title: 'Changelog',
     },

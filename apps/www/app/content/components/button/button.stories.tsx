@@ -20,14 +20,7 @@ export const Variants = () => {
 };
 
 export const ColorVariants = () => {
-  const colorVariants = [
-    'accent',
-    'brand1',
-    'brand2',
-    'brand3',
-    'neutral',
-    'danger',
-  ];
+  const colorVariants = ['accent', 'neutral', 'danger'];
 
   return (
     <>

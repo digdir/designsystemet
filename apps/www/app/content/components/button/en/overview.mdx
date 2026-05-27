@@ -4,14 +4,14 @@ search_terms: action, cta, submit, save, cancel, confirm
 
 <Story story="PreviewEn" />
 
-**Use `Button` when**
+**Use Button when**
 - a concrete action needs to be performed, for example saving or submitting a form
 - the state of the solution changes, for example when opening a dialog or starting a process
 
-**Avoid `Button` when**
-- navigating to other pages or out of the service, use [`Link`](/en/components/docs/link/overview) instead
-- filtering information, for example in lists or tables, use [`Chip`](/en/components/docs/chip/overview) instead
-- showing which filters are selected, use [`Chip`](/en/components/docs/chip/overview) instead
+**Avoid Button when**
+- navigating to other pages or out of the service, use [Link](/en/components/docs/link/overview) instead
+- filtering information, for example in lists or tables, use [Chip](/en/components/docs/chip/overview) instead
+- showing which filters are selected, use [Chip](/en/components/docs/chip/overview) instead
 
 ## Examples
 ### Emphasis levels
@@ -43,7 +43,7 @@ A group of buttons should use the same colour variant. The exception is when you
 <Story story="CombinedColorsEn" />
 
 ### Icons
-`Button` can have an icon placed either to the left or the right of the text. As a general rule, we recommend placing the icon on the left. Icons inside buttons automatically get spacing to the text.
+Button can have an icon placed either to the left or the right of the text. As a general rule, we recommend placing the icon on the left. Icons inside buttons automatically get spacing to the text.
 
 <Story story="IconsEn" />
 
@@ -87,6 +87,14 @@ When showing that the button is loading something, you can combine it with a spi
 ## Guidelines
 
 Buttons have an important function and are directly tied to an action. They give the user the ability to complete tasks.
+
+### Button or link?
+
+Use button when the user should perform an action. Use a [link](/en/components/link/overview) when the user is navigated to a new URL.
+
+#### Log in
+
+Use button when “Log in” actually logs the user in, for example by submitting a login form. Use a [link](/en/components/link/overview) when “Log in” sends the user to a login page or external authentication service.
 
 ### Button placement
 

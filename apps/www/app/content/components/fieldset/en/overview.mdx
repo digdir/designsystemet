@@ -2,24 +2,24 @@
 search_terms: grouping, group, section, fields
 ---
 
-<Story story="Preview" />
+<Story story="PreviewEn" />
 
-**Use `Fieldset` when**
-- you have a group or list of multiple `Radio` or `Checkbox` components that naturally belong together
+**Use fieldset when**
+- you have a group or list of multiple radio or checkbox components that naturally belong together
 - a form needs to be divided into sections with explanatory headings
 - several fields naturally belong together such as contact information
 
-**Avoid `Fieldset` when**
+**Avoid fieldset when**
 - you are grouping elements that are not part of a form
 - the fields do not share a common purpose
 
 ## Example
 
-### Checkbox
+### A single checkbox in a fieldset
 
-There may be scenarios where a `Fieldset` contains only one `Checkbox`, depending on the context. Below is an example of such a scenario.
+Even if a group consists of only one [checkbox](/en/components/docs/checkbox/overview) or [radio](/en/components/docs/radio/overview), it should still be placed inside a fieldset. This gives the choice a clear label through `<legend>`, and screen reader users understand what they are confirming.
 
-<Story story="WithCheckbox" />
+<Story story="WithCheckboxEn" />
 
 ### Legend as a heading
 
@@ -29,12 +29,11 @@ On pages with several input fields that relate to the same question, it is easie
 
 In the example below, we use an `<h1>`, which would act as the main heading of the page, together with the `<legend>`.
 
-<Story story="LegendAsHeading" />
+<Story story="LegendAsHeadingEn" />
 
 ## Guidelines
-
-When using `Fieldset`, start with a `Fieldset.Legend` that explains what the fields below relate to. This may be a question such as “Where do you currently live?” or a descriptive phrase like “Personal details”. This helps users understand the relationship between the fields and what they need to fill in.
+When using fieldset, start with a `<legend>` that explains what the fields below relate to. This may be a question such as “Where do you currently live?” or a descriptive phrase like “Personal details”. This helps users understand the relationship between the fields and what they need to fill in.
 
 ## Text
-
-Avoid using the same text in both `<label>` and `<legend>`. Include helper text (`Fieldset.Description`) if it makes the form easier to complete. Note that the description is not associated with the input fields. Keep the text as short as possible.
+Avoid using the same text in both `<label>` and `<legend>`. Include helper text if it makes the form easier to complete. Note that the description is not associated with the input fields.
+Keep the text as short as possible.

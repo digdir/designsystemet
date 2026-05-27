@@ -114,7 +114,10 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
         data-placement={placement}
         data-modal={modal} // Needed for dialog-trigger.tsx
         id={usedId}
-        onClose={(event) => onClose?.(event.nativeEvent)} // Backward compatibility: expose native event
+        onClose={(event) => {
+          if (event.target !== event.currentTarget) return; // Ignore close events from nested dialogs
+          onClose?.(event.nativeEvent); // Backward compatibility: expose native event
+        }}
         onClick={(event) => {
           onClick?.(event);
           const { currentTarget: dialog, target: el, defaultPrevented } = event;

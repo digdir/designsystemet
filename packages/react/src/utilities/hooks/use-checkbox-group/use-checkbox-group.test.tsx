@@ -127,6 +127,20 @@ describe('CheckboxGroup', () => {
     expect(checkbox2).toHaveAttribute('aria-invalid', 'true');
     expect(error).toBeVisible();
   });
+  test('has passed variant to Checkbox children', () => {
+    render(<CheckboxGroup variant='outline' />);
+    const labels = ['Test 1', 'Test 2'];
+    const checkboxes = labels.map((label) => screen.getByLabelText(label));
+    const fields = checkboxes
+      .map((checkbox) => checkbox.parentElement)
+      .filter((x) => x !== null);
+
+    expect(fields).toHaveLength(labels.length);
+    for (const field of fields) {
+      expect(field.nodeName).toBe('DS-FIELD');
+      expect(field).toHaveAttribute('data-variant', 'outline');
+    }
+  });
   test('has correct Checkbox checked when value is used', () => {
     render(<CheckboxGroup value={['test1']} />);
 

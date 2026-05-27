@@ -1,77 +1,11 @@
 <Story story="Preview" />
 
-<ReactComponentDocs />
-
 ## Bruk
 
-For å legge til egen lukk knapp, kan du enten bruke `command="close" commandfor="DIALOG-ID"` ellr `ref` og `Dialog.close()` på en knapp du lager selv.
-Dersom knappen er tom vil den få et ikon.
-Dersom knappen er direkte barn av dialogen og første element, vil den flyte til topp høyre.
+Dialog har to klassenavn du kan bruke.
+- `ds-dialog`: Hovedklassen til bruk på `<dialog>`-elementet.
+- `ds-dialog__block`: Klassen som brukes for hver seksjon i dialogen.
 
-<Card data-color="info">
-  Attributtene [`command` (developer.mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command) og `commandfor` er en relativt ny del av web-standarden som lar knapper utføre handlinger på andre elementer deklarativt. Vi legger automatisk til [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) for å støtte eldre nettlesere.
-</Card>
-
-```tsx
-import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
-
-/* med context */
-<Dialog.TriggerContext>
-  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-  <Dialog>
-    Dialog content
-  </Dialog>
-</Dialog.TriggerContext>
-
-/* uten context */
-<Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
-<Dialog id="my-dialog">
-Dialog content
-</Dialog>
-```
-
-## Eksempel
-
-### Med command og uten context
-
-Dersom du ikke vil bruke `Dialog.TriggerContext`, kan du bruke `command="show-modal"` eller `command="--show-non-modal"` og `commandfor="DIALOG-ID"` for å åpne dialogen fra en ekstern trigger.
-
-<Story story="WithCommand" />
-
-### Med ref og uten context
-
-Dersom du ikke vil bruke `Dialog.TriggerContext`, kan du bruke `ref` for å åpne dialogen fra en ekstern trigger.
-Du bruker da native metoder på `<dialog>`-elementet, som `showModal()` eller `show()`.
-Merk at knappen som åpner dialogen da bør ha `aria-haspopup="dialog"`-attributtet.
-
-<Story story="WithRef" />
-
-### Med skjema og fokus
-
-Dersom du vil at et felt i et skjema inni dialogen skal få fokus når dialogen åpnes, kan du bruke native `autofocus`-attributtet på input-elementet.
-
-Når du bruker dette med React, må du skrive det med små bokstaver som `autofocus`, ikke `autoFocus`.
-Denne prop-en eksistere ikke i React sine typedefinisjoner, så vi har ignorert feilen med en `@ts-expect-error`-kommentar i eksempelet under.
-
-<Story story="WithForm" />
-
-### Med blokker
-
-Bruk flere `Dialog.Block` hvis du vil dele opp dialogen med skillelinjer til for eksempel topp- og bunn-område. Merk at innhold kan ikke plasseres direkte i `Dialog` dersom du bruker `Dialog.Block`; da burde alt innholdet være inni en av av dialogens `Dialog.Block`-seksjoner.
-
-<Story story="WithBlocks" />
-
-### Lukk ved klikk utenfor
-
-Vi bruker `closedby="any"` for å lukke dialogen når brukeren klikker utenfor.
-Vi legger til polyfill så `closedby="any"` også fungerer i eldre Safari.
-
-<Story story="CloseWithClickOutside" />
-
-## HTML
-
-Hovedklassenavnet er `ds-dialog`, som blir plassert på `<dialog>`-elementet.
-Blokker inne i dialogen får klassenavn som `ds-dialog__block`.
 ```html
 <dialog class="ds-dialog">
   Content
@@ -91,19 +25,104 @@ Blokker inne i dialogen får klassenavn som `ds-dialog__block`.
 </dialog>
 ```
 
-I HTML må du selv koble `<dialog>`-elementet til en trigger via `command="show-modal"` eller `command="--show-non-modal"` og `commandfor="DIALOG-ID"`.
+### Åpne og lukke dialogen
+Bruk `command` og `commandfor` for å koble `<dialog>`-elementet til en trigger. 
+Benytt verdiene `command="show-modal"` eller `command="--show-non-modal"` for modal med eller uten bakgrunnsdimming og `commandfor="DIALOG-ID"` for å koble triggeren til dialogen.
+
+Attributtet `aria-haspopup="dialog"` bør legges til på elementet som åpner dialogen, for å gjøre det tydelig for brukere av skjermlesere at det vil åpne en dialog. Vi gjør dette automatisk for deg når du bruker `@digdir/designsystemet-web` eller `@digdir/designsystemet-react`.
 
 ```html
-<button command="show-dialog" commandfor="my-dialog" type="button">Open Dialog</button>
+<button type="button" aria-haspopup="dialog" command="show-modal" commandfor="my-dialog" >Open Dialog</button>
 <dialog id="my-dialog" class="ds-dialog">
   <div>Content</div>
   <button command="close" commandfor="my-dialog">Close</button>
 </dialog>
 ```
+### Polyfill
+
+Dialog er avhengig av attributtene [`command` og `commandfor` (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command), som er en relativt ny del av webstandarden og lar [button](/no/components/docs/button/overview) utføre handlinger på andre elementer deklarativt. Vi legger automatisk til [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) for å støtte eldre nettlesere.
+
+Vi legger også til en polyfill for `closedby="any"` for å støtte eldre Safari, som ikke støtter dette nativt.
 
 ## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+
 Alle CSS variabler brukt av `ds-dialog__block` er satt på `ds-dialog`.
 
 <CssVariables />
 
 <CssAttributes />
+
+## Eksempel
+
+### Med skjema og fokus
+
+Dersom du vil at et felt i et skjema inni dialogen skal få fokus når dialogen åpnes, kan du bruke native `autofocus`-attributtet på input-elementet.
+
+Når du bruker dette med React, må du skrive det med små bokstaver som `autofocus`, ikke `autoFocus`.
+Denne prop-en eksistere ikke i React sine typedefinisjoner, så vi har ignorert feilen med en `@ts-expect-error`-kommentar i eksempelet under.
+
+<Story story="WithForm" />
+
+### Med seksjoner
+
+Bruk flere `ds-dialog__block` hvis du vil dele opp dialogen med skillelinjer til for eksempel topp- og bunn-område. 
+
+Merk at innhold ikke kan plasseres direkte i dialog dersom du bruker `ds-dialog__block`; da burde alt innholdet være inni en av dialogens `ds-dialog__block`-seksjoner.
+
+<Story story="WithBlocks" />
+
+### Lukk ved klikk utenfor
+
+Bruk `closedby="any"` for å lukke dialogen når brukeren klikker utenfor.
+Vi legger til polyfill så `closedby="any"` også fungerer i eldre Safari.
+
+<Story story="CloseWithClickOutside" />
+
+### Lukk med knapp
+
+For å legge til egen lukkeknapp, kan du enten bruke `command="close" commandfor="DIALOG-ID"` eller `ref` og `Dialog.close()` på en knapp du lager selv.
+Dersom knappen er tom vil den få et ikon.
+Dersom knappen er direkte barn av dialogen og første element, vil den flyte til topp høyre.
+
+
+
+## React
+
+```tsx
+import { Button, Dialog } from '@digdir/designsystemet-react';
+
+/* med context */
+<Dialog.TriggerContext>
+  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+  <Dialog>
+    Dialog content
+  </Dialog>
+</Dialog.TriggerContext>
+
+/* uten context */
+<Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
+<Dialog id="my-dialog">
+  Dialog content
+</Dialog>
+```
+
+### `TriggerContext`
+
+Bruk `Dialog.TriggerContext` og `Dialog.Trigger` sammen, så kan `Dialog` kommunisere uten å måtte bruke `id` og `commandfor`.
+
+<Story story="TriggerContext" language="react" />
+
+### Med ref og uten context
+
+Dersom du ikke vil bruke `Dialog.TriggerContext`, kan du bruke `ref` for å åpne dialogen fra en ekstern trigger.
+Du bruker da native metoder på `<dialog>`-elementet, som `showModal()` eller `show()`.
+
+<Story story="WithRef" language="react" />
+
+### Props
+
+### Dialog
+
+<ReactComponentDocs />

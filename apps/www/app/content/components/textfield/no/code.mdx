@@ -1,32 +1,8 @@
-<Story story="Preview" layout="column" />
-<ReactComponentDocs />
-
+<Story story="Preview" layout="column" defaultOpen />
 
 ## Bruk
 
-```tsx
-import { Textfield } from '@digdir/designsystemet-react';
-
-<Textfield label="Label" />
-```
-
-## Eksempel
-
-### Med rader
-
-<Story story="WithRows" />
-
-### Med prefiks og suffiks
-
-<Story story="WithAffix" />
-
-### Med teller
-
-<Story story="WithCounter" />
-
-## HTML
-
-Dette er en samensatt komponent, som bruker [`Field`](/no/components/docs/field/code), [`Input`](/no/components/docs/input/code) eller [`Textarea`](/no/components/docs/textarea/code) og [`Label`](/no/components/docs/label/code) under panseret.
+Dette er en samensatt komponent, som bruker [field](/no/components/docs/field/code), [inputi](/no/components/docs/input/code) eller [textarea](/no/components/docs/textarea/code) og [label](/no/components/docs/label/code) under panseret.
 
 Siden denne komponenten bygges opp av flere komponenter, anbefaler vi å lese dokumentasjonen for de underliggende komponentene for å få en full oversikt over HTML-strukturen.
 
@@ -56,10 +32,41 @@ Siden denne komponenten bygges opp av flere komponenter, anbefaler vi å lese do
 </div>
 ```
 
+## Eksempel
+
+### Multiline
+Du endrer til `textarea` ved å sette `multiline` til `true`. Da kan brukerne skrive lengre tekster.
+
+<Story story="WithRows" />
+
+### Type
+Siden textfield er basert på native `input`, kan du bruke de fleste `type`-verdiene `input` støtter, men vi har valgt å fjerne noen av de fra vår eksporterte type. Du kan se de gyldige type verdiene i nedtrekksmenyen nedenfor.
+<Story story="InputType" layout="block" />
+
+### Påkrevde og valgfrie felt
+Når du plasserer tag i `<label>` anbefaler vi at du bruker `margin-inline-start: var(--ds-size-2)` for å skape avstand mellom teksten og taggen.
+
+<Story story="Required" />
+
+
 ## CSS variablar og data-attributter
-`Textfield`er en samensatt komponent, med [`Field`](/no/components/docs/field/code), [`Input`](/no/components/docs/input/code) eller [`Textarea`](/no/components/docs/textarea/code) og [`Label`](/no/components/docs/label/code). 
+Textfield er en samensatt komponent, med [field](/no/components/docs/field/code), [input](/no/components/docs/input/code) eller [textarea](/no/components/docs/textarea/code) og [label](/no/components/docs/label/code). 
 
 Her viser vi kun `ds-input` sine variabler og data-attributter.
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve nærmeste forelder med disse satt.
+
 <CssVariables />
 
 <CssAttributes />
+
+## React 
+
+```tsx
+import { Textfield } from '@digdir/designsystemet-react';
+
+<Textfield label="Label" />
+```
+
+<ReactComponentDocs />
