@@ -1,5 +1,35 @@
 # Change Log
 
+## 1.15.0
+
+### Minor Changes
+
+- **SuggestionInput:** Remove unsupported props `role` and `data-indeterminate` that would break `Suggestion` ([#4883](https://github.com/digdir/designsystemet/pull/4883))
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+- **Tooltip**: deprecate `type` prop, as it no longer does anything ([#4898](https://github.com/digdir/designsystemet/pull/4898))
+
+- **Tooltip**: the React component will no longer override existing accessible text. It now correctly sets `aria-description` in that case. If there is no accessible text, `aria-label` will be used as before. ([#4898](https://github.com/digdir/designsystemet/pull/4898))
+
+- **useCheckboxGroup** and **useRadioGroup**: these hooks now also accept the prop `variant`, which sets the variant for all the checkboxes or radios in the group. ([#4864](https://github.com/digdir/designsystemet/pull/4864))
+
+- **Dialog**: Fix dialog with nested dialog getting a close event when the nested one was closed ([#4899](https://github.com/digdir/designsystemet/pull/4899))
+
+- **Popover:** now correctly calculates width of source element also in Firefox ([#4921](https://github.com/digdir/designsystemet/pull/4921))
+
+- **Popover:** No longer closes with "Escape" key if a Dialog element is open above the popover ([#4788](https://github.com/digdir/designsystemet/pull/4788))
+
+- **Heading**: fix wrong default in `HeadingProps` for `data-size` ([#4926](https://github.com/digdir/designsystemet/pull/4926))
+
+- Update npm non-major dependencies ([#4910](https://github.com/digdir/designsystemet/pull/4910))
+
+- Updated dependencies [[`f54563f`](https://github.com/digdir/designsystemet/commit/f54563f9b16020ae9094148933dc5efbc7720ad5), [`dc93a59`](https://github.com/digdir/designsystemet/commit/dc93a5961ec0b90a13b63b3478b17eafe83ef749), [`14975a1`](https://github.com/digdir/designsystemet/commit/14975a14efdf1c45013464da78f8db20d939a02b), [`dc93a59`](https://github.com/digdir/designsystemet/commit/dc93a5961ec0b90a13b63b3478b17eafe83ef749)]:
+  - @digdir/designsystemet-web@1.15.0
+  - @digdir/designsystemet-types@1.15.0
+
 ## 1.14.0
 
 ### Minor Changes
