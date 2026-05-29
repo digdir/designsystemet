@@ -162,18 +162,13 @@ export function orderBySize(sizes: string[]): string[] {
   return R.sortBy(sizeComparator, sizes);
 }
 
-export function toFlatColors(colors: Theme['colors']): Record<string, CssColor> {
-  const colorsCategories = colors ? colors : { main: {}, support: {}, neutral: `#ececec` };
-  return {
-    ...colorsCategories.main,
-    ...colorsCategories.support,
-    neutral: colorsCategories.neutral as CssColor,
-    ...baseColors,
-  };
+export function addSeverityColors(colors: Theme['colors']): Record<string, CssColor> {
+  // Add severity colors if not present
+  return R.mergeDeepLeft(colors, baseColors);
 }
 
 export function toColorNames(themeColors: Theme['colors']): string[] {
-  const colors = toFlatColors(themeColors);
+  const colors = addSeverityColors(themeColors);
 
   return Object.keys(colors);
 }

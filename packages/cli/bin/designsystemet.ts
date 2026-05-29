@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
+import confirm from '@inquirer/confirm';
 import pc from 'picocolors';
 import * as R from 'ramda';
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
+import flattenColorCategories from '../src/migrations/flatten-color-categories.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { createSystemTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.js';
@@ -34,7 +36,7 @@ const DEFAULT_FONT = 'Inter';
 const DEFAULT_THEME_NAME = 'theme';
 const DEFAULT_CONFIG_FILEPATH = 'designsystemet.config.json';
 
-function makeTokenCommands() {
+function _makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
 
   tokenCmd
@@ -141,7 +143,36 @@ function makeTokenCommands() {
       const themeName = opts.theme;
 
       const { configFile, configFilePath } = await getConfigFile(opts.config);
-      const config = await parseCreateConfig(configFile, {
+
+      // TODO make this better automigrate
+      let migratedConfigFile = null;
+      if (configFile) {
+        if (flattenColorCategories.isEligible(configFile)) {
+          console.log(pc.red(`\n ✋ Automigration detected \n`));
+          console.log(
+            pc.yellow(
+              `Config file ${pc.blue(configFilePath)} is eligible for migration: ${pc.blue(flattenColorCategories.name)}\n`,
+            ),
+          );
+          console.log(`${flattenColorCategories.logMessage}`);
+          const answer = await confirm({
+            message: `Do you want to migrate?`,
+          });
+
+          if (!answer) {
+            console.log(pc.yellow('Migration cancelled by user. Using existing config file without changes.'));
+            migratedConfigFile = configFile;
+          } else {
+            migratedConfigFile = flattenColorCategories.migrate(configFile);
+            if (migratedConfigFile) {
+              dsfs.writeFile(configFilePath, migratedConfigFile);
+              console.log(pc.green(`Config file successfully migrated!`));
+            }
+          }
+        }
+      }
+
+      const config = await parseCreateConfig(migratedConfigFile || configFile, {
         theme: themeName,
         cmd,
         configFilePath,
@@ -191,7 +222,7 @@ function makeTokenCommands() {
   return tokenCmd;
 }
 
-program.addCommand(makeTokenCommands());
+program.addCommand(_makeTokenCommands());
 
 program
   .command('generate-config-from-tokens')

@@ -1,14 +1,13 @@
 import type { Command, OptionValues } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
+import { parseConfig, validateConfig } from '../src/schemas/helpers.js';
 import {
   type BuildConfigSchema,
   type CreateConfigSchema,
   commonConfig,
   configFileCreateSchema,
-  parseConfig,
-  validateConfig,
-} from '../src/config.js';
+} from '../src/schemas/v2/schema.js';
 import { dsfs } from '../src/utils/filesystem.js';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
 
@@ -44,9 +43,7 @@ export async function parseCreateConfig(
    * Check that we're not creating multiple themes with different color names.
    * For the themes' modes to work in Figma and when building css, the color names must be consistent
    */
-  const themeColors = Object.values(configParsed?.themes ?? {}).map(
-    (x) => new Set([...R.keys(x.colors.main), ...R.keys(x.colors.support)]),
-  );
+  const themeColors = Object.values(configParsed?.themes ?? {}).map((x) => new Set(R.keys(x.colors)));
   if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
     console.error(pc.redBright(`In config, all themes must have the same custom color names, but we found:`));
     const themeNames = R.keys(configParsed.themes ?? {});

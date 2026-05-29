@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import { baseColors, colorMetadata, dsLinkColor } from '../../../../colors/colorMetadata.js';
 import { generateColorScale } from '../../../../colors/index.js';
 import type { Color, ColorScheme, CssColor } from '../../../../colors/types.js';
-import type { ColorOverrideSchema } from '../../../../config.js';
+import type { ColorOverrideSchema } from '../../../../schemas/v2/schema.js';
 import type { Token, TokenSet } from '../../../types.js';
 
 const generateColor = (colorArray: Color[], overrides?: Record<number, string>): TokenSet => {
