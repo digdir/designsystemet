@@ -14,7 +14,7 @@ import {
 let TIP: HTMLElement | undefined;
 let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
-let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
+const SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
 const IS_IOS = isBrowser() && /iPad|iPhone|iPod/.test(navigator.userAgent); // Needed to omit DELAY_HOVER since iOS triggers mouseover before click
 const ATTR_TOOLTIP = 'data-tooltip';
 const ATTR_COLOR = 'data-color';
@@ -26,7 +26,7 @@ const ATTR_SCHEME = 'data-color-scheme';
 const SELECTOR_SCHEME = `[${ATTR_SCHEME}]`;
 const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
 const DELAY_HOVER = 300;
-const DELAY_SKIP = 300;
+const _DELAY_SKIP = 300;
 
 // Check if the tooltip popover is currently visible.
 // Uses :popover-open in supporting browsers, falls back to offset dimensions for JSDOM.
@@ -81,7 +81,6 @@ const handleInterest = (event: Event) => {
   clearTimeout(HOVER_TIMER);
 
   if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
-  if (type === 'blur' || type === 'mouseout') return hideTooltip();
   if (type === 'mouseover' && !SOURCE && !IS_IOS) {
     HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
     return;
@@ -133,16 +132,13 @@ const hideTooltip = () => {
   SOURCE = undefined; // Cleanup
 };
 
-const handleClose = (event?: Partial<ToggleEvent & KeyboardEvent>) => {
-  clearTimeout(SKIP_TIMER); // Ensure previous pending timer is cleared before scheduling a new one
-  if (event?.type === 'keydown' && event?.key === 'Escape') hideTooltip();
-  if (event?.target === TIP && event?.newState === 'closed')
-    SKIP_TIMER = setTimeout(hideTooltip, DELAY_SKIP);
+const handleClose = (event: Partial<KeyboardEvent>) => {
+  if (event.type !== 'keydown' || event.key === 'Escape') hideTooltip();
 };
 
 onHotReload('tooltip', () => [
   on(document, 'blur focus mouseover mouseout', handleInterest, QUICK_EVENT),
-  on(document, 'toggle keydown', handleClose, QUICK_EVENT),
+  on(document, 'keydown blur mouseout', handleClose, QUICK_EVENT),
   onMutation(document, handleAriaAttributes, {
     attributeFilter: [ATTR_TOOLTIP],
     attributes: true,
