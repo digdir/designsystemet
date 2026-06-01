@@ -43,20 +43,22 @@ export const useTokenModal = () => {
   const theme: CreateTokensOptions = {
     name,
     colors: {
-      main: colors.main.reduce(
-        (acc, color) => {
-          acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
-          return acc;
-        },
-        {} as Record<string, CssColor>,
-      ),
-      support: colors.support.reduce(
-        (acc, color) => {
-          acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
-          return acc;
-        },
-        {} as Record<string, CssColor>,
-      ),
+      ...{
+        ...colors.main.reduce(
+          (acc, color) => {
+            acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
+            return acc;
+          },
+          {} as Record<string, CssColor>,
+        ),
+        ...colors.support.reduce(
+          (acc, color) => {
+            acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
+            return acc;
+          },
+          {} as Record<string, CssColor>,
+        ),
+      },
       neutral: getBaseDefault(colors.neutral[0]?.colors.light)?.hex || '#',
     },
     borderRadius: baseBorderRadius,
