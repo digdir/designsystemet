@@ -1,0 +1,36 @@
+
+---
+title: Use tokens to colour illustrations
+sidebar_title: Illustrations
+description: With Designsystemet, you can colour illustrations using tokens.
+date: 2026-06-01
+category: Theme
+color: red
+icon: PencilLineIcon
+published: true
+order: 200
+search_terms: svg, colouring, symbol
+---
+
+If the illustration should look exactly the same regardless of light or dark mode, and use the colours defined in the illustration tool, you do not need to follow the guidance below.
+
+However, if you want to control colours and scaling via code (for example using design tokens), illustrations should be added as SVGs and structured in a specific way.
+
+## Basic setup
+
+To make an SVG easy to reuse and style, you should prepare the file as follows:
+
+- wrap the graphics in `<symbol>`
+- give the symbol an id
+- define a viewBox on the symbol
+
+```SVG
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ds-logo" viewBox="0 0 40 40">
+    <path d="..." />
+    <path d="..." />
+    <path d="..." />
+    <path d="..." />
+  </symbol>
+</svg>
+```
