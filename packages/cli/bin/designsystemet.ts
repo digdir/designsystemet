@@ -87,6 +87,8 @@ function _makeTokenCommands() {
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
     .option('--dry [boolean]', `Dry run for created ${pc.blue('design-tokens')}`, parseBoolean, false)
+    .option('--skip-check', 'Skip migration check', false) // TODO -- will be moved to global option in the future, since it applies to all commands, not just create
+    .option('-y, --yes', 'Skip user prompts', false) // TODO -- will be moved to global option in the future, since it applies to all commands, not just create
     /** Deprecated options */
     .option(
       `-m, --${cliOptions.theme.colors.main} <name:hex...>`,
@@ -143,8 +145,9 @@ function _makeTokenCommands() {
 
       const { configFile, configFilePath } = await getConfigFile(opts.config);
 
-      // TODO make this automigrate better
-      const updatedConfigFile = await checkAutomigrate(configFile, configFilePath);
+      const updatedConfigFile = opts.skipCheck
+        ? configFile
+        : await checkAutomigrate(configFile, configFilePath, opts.yes);
 
       const config = await parseCreateConfig(updatedConfigFile || configFile, {
         theme: themeName,

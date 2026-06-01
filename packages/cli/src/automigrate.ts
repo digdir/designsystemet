@@ -3,7 +3,7 @@ import pc from 'picocolors';
 import { dsfs } from '../src/utils/filesystem.js';
 import { automigrations } from './migrations/index.js';
 
-export const checkAutomigrate = async (configFile: string, configFilePath: string) => {
+export const checkAutomigrate = async (configFile: string, configFilePath: string, yes: boolean) => {
   let migratedConfigFile = null;
   const eligbleMigrations = Object.values(automigrations).filter((migration) => migration.check(configFile));
 
@@ -17,9 +17,15 @@ export const checkAutomigrate = async (configFile: string, configFilePath: strin
       pc.yellow(`Config file ${pc.blue(configFilePath)} is eligible for migration: ${pc.blue(migration.name)}\n`),
     );
     console.log(`${migration.message}`);
-    const answer = await confirm({
-      message: `Do you want to migrate?`,
-    });
+    let answer = true;
+
+    if (!yes) {
+      answer = await confirm({
+        message: `Do you want to migrate?`,
+      });
+    } else {
+      console.log(pc.green(`Auto-confirming migration with --yes flag`));
+    }
 
     if (!answer) {
       migratedConfigFile = migration.no(configFile);
