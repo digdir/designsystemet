@@ -1,19 +1,19 @@
 ---
-title: Bruk tokens for å fargelegge illustrasjoner
-sidebar_title: Illustrasjoner
-description: Med Designsystemet kan du fargelegge illustrasjoner.
+title: Bruk tokens for å fargelegge grafikk
+sidebar_title: Fargelegg grafikk
+description: Med Designsystemet kan du fargelegge grafikk.
 date: 2026-06-01
 category: Tema
 color: red
 icon: PencilLineIcon
 published: true
 order: 200
-search_terms: svg, fargelegge, symbol
+search_terms: svg, fargelegge, symbol, grafikk
 ---
 
-Hvis illustrasjonen skal se helt lik ut uansett lys eller mørk modus, og ha de fargene som er satt i illustrasjonsverktøyet, trenger du ikke følge guiden under.
+Hvis grafikk skal se helt likt ut uansett lys eller mørk modus, og ha de fargene som er satt i illustrasjonsverktøyet, trenger du ikke følge guiden under.
 
-Hvis du derimot ønsker å styre farger og skalering via kode (for eksempel med design tokens), bør illustrasjoner legges til som SVG via `<use>` og struktureres på en bestemt måte. Merk at skal en svg brukes kun ett sted så kan du også sette inn svg-koden inline, eksempel på dette finner du helt til slutt i guiden.
+Hvis du derimot ønsker å styre farger og skalering via kode (for eksempel med design tokens), bør grafikken legges til som SVG via `<use>` og struktureres på en bestemt måte. Merk at skal en svg brukes kun ett sted så kan du også sette inn svg-koden inline, eksempel på dette finner du helt til slutt i guiden.
 
 ## Grunnleggende oppsett
 
@@ -45,17 +45,17 @@ Fila brukes deretter slik i html:
 
 Hva du må tilpasse videre avhenger av hva du ønsker å oppnå.
 
-### Ensfarget illustrasjon, typisk for enkelte logoer og ikoner
+### Ensfarget grafikk, typisk for enkelte logoer og ikoner
 
-For en énsfarget illustrasjon kan du styre fargene enten ved å peke på gjeldende tekstfarge eller fargelegge via en klasse eller id.
+For en énsfarget grafikk kan du styre fargene enten ved å peke på gjeldende tekstfarge eller fargelegge via en klasse eller id.
 
-Vil du bruke gjeldende tekstfarge som standard på alle svg-illustrasjoner kan du bruke currentColor som stil. Fjern alle farger fra grafikken i svg-fila og legg til stilregelen for currentColor, da arver illustrasjonen gjeldende tekstfarge. Det kan hende du må gjøre det samme for stroke.
+Vil du bruke gjeldende tekstfarge som standard på alle svg-grafikk kan du bruke currentColor som stil. Fjern alle farger i svg-fila og legg til stilregelen for currentColor, da arver grafikken gjeldende tekstfarge. Det kan hende du må gjøre det samme for stroke.
 ```CSS
 svg {
     fill:currentColor;
 }
 ```
-Om du ikke vil sette en standard regel for alle illustrasjoner, kan du heller sette currentColor på fill og/eller stroke path inne i selve svg-fila. I designsystemet blir denne metoden brukt på ikoner, for eksempel i knappene.
+Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette currentColor på fill og/eller stroke path inne i selve svg-fila. I designsystemet blir denne metoden brukt på ikoner, for eksempel i knappene.
 ```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
   <symbol id="ds-logo" viewBox="0 0 40 40">
@@ -85,31 +85,31 @@ Med tilhørende token:
 Test story for icon color token
 <Story story="WithIconColor" />
 
-### Flerfarget illustrasjon, typisk merkevarebærende symboler og små illustrasjoner
+### Flerfarget grafikk, typisk merkevarebærende symboler og små illustrasjoner
 
-For illustrasjoner med flere farger kan du styre fargene direkte i fill og stroke på hver path i grafikken inni svg-fila.
+For grafikk med flere farger kan du styre fargene direkte i fill og stroke på hver path i grafikken inni svg-fila.
 ```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
   <symbol id="ds-logo" viewBox="0 0 40 40">
-    <path d="..." fill="var(--ds-color-logopart1)"/>
-    <path d="..." fill="var(--ds-color-logopart2)"/>
-    <path d="..." fill="var(--ds-color-logopart3)"/>
-    <path d="..." fill="var(--ds-color-logopart4)"/>
+    <path d="..." fill="var(--logo-color-part1)"/>
+    <path d="..." fill="var(--logo-color-part2)"/>
+    <path d="..." fill="var(--logo-color-part3)"/>
+    <path d="..." fill="var(--logo-color-part4)"/>
   </symbol>
 </svg>
 ```
 Med tilhørende tokens, i eksempelet har illustrasjonen fått gråskala i mørk modus:
 ```CSS
 :root {
-    --ds-color-logopart1:#1E98F5;
-    --ds-color-logopart2:#68707C;
-    --ds-color-logopart3:#E5AA20;
-    --ds-color-logopart4:#F45F63;
+    --logo-color-part1:#1E98F5;
+    --logo-color-part2:#68707C;
+    --logo-color-part3:#E5AA20;
+    --logo-color-part4:#F45F63;
     @media ( prefers-color-scheme: dark) {
-        --ds-color-logopart1:#A3A3A3;
-        --ds-color-logopart2:#68707C;
-        --ds-color-logopart3:#C2C2C2;
-        --ds-color-logopart4:#8A8A8A;
+        --logo-color-part1:#A3A3A3;
+        --logo-color-part2:#68707C;
+        --logo-color-part3:#C2C2C2;
+        --logo-color-part4:#8A8A8A;
     }
 }
 ```
@@ -122,35 +122,35 @@ Test story for flerfarget illustrasjon
 
 For å sikre at illustrasjonen er tilgjengelig for alle må du legge til et par detaljer i det omsluttende svg-elementet.
 
-### Illustrasjonen er kun dekorativ
+### Grafikk som kun er dekorativ
 
-Skjul illustrasjonen for skjermleser med å sette rolle til presentasjon og at den skal være skjult.
+Skjul grafikken for skjermleser med å sette rolle til presentasjon og at den skal være skjult.
 ```HTML
 <svg height="1rem" width="1rem" class="logocolor" role="presentation" aria-hidden="true">
   <use href="logo.svg#ds-logo"></use>
 </svg>
 ```
 
-### Illustrasjonen er meningsbærende
+### Grafikk som er meningsbærende
 
-Gi illustrasjonen rollen for bilde og en beskrivende tekst
+Gi grafikken rollen for bilde og en beskrivende tekst
 ```HTML
 <svg height="1rem" width="1rem" class="logocolor" role="img" aria-label="Designsystemets logo med farger satt via variabler">
   <use href="logo.svg#ds-logo"></use>
 </svg>
 ```
-For mer komplekse illustrasjoner kan du bruke mer detaljerte beskrivelser og det finnes også måter å sette inn slike detaljerte beskrivelser på selve grafikken, det går vi ikke inn på her.
+For mer kompleks grafikk kan du bruke mer detaljerte beskrivelser og det finnes også måter å sette inn slike detaljerte beskrivelser på selve grafikken, det går vi ikke inn på her.
 
-## Illustrasjon inline
+## Inline grafikk
 
-Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere steder. Når du uansett kun skal ha en illustrasjon på ett sted på siden din, så kan du gjerne sette den inn inline.
+Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere steder. Når du uansett kun skal ha grafikken på ett sted på siden din, så kan du gjerne sette den inn inline.
 
 ```HTML
 <svg width="80" height="80" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-  <path d="..." fill="var(--ds-color-logopart1)"/>
-  <path d="..." fill="var(--ds-color-logopart2)"/>
-  <path d="..." fill="var(--ds-color-logopart3)"/>
-  <path d="..." fill="var(--ds-color-logopart4)"/>
+  <path d="..." fill="var(--logo-color-part1)"/>
+  <path d="..." fill="var(--logo-color-part2)"/>
+  <path d="..." fill="var(--logo-color-part3)"/>
+  <path d="..." fill="var(--logo-color-part4)"/>
 </svg>
 ```
 
