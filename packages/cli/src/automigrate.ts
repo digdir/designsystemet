@@ -5,29 +5,27 @@ import { automigrations } from './migrations/index.js';
 
 export const checkAutomigrate = async (configFile: string, configFilePath: string) => {
   let migratedConfigFile = null;
-  for (const migration of Object.values(automigrations)) {
-    if (!migration.isEligible(configFile)) {
-      continue;
-    }
+  const eligbleMigrations = Object.values(automigrations).filter((migration) => migration.check(configFile));
 
+  if (eligbleMigrations.length === 0) {
+    return null;
+  }
+
+  for (const migration of eligbleMigrations) {
     console.log(pc.red(`\n ✋ Automigration detected \n`));
     console.log(
       pc.yellow(`Config file ${pc.blue(configFilePath)} is eligible for migration: ${pc.blue(migration.name)}\n`),
     );
-    console.log(`${migration.logMessage}`);
+    console.log(`${migration.message}`);
     const answer = await confirm({
       message: `Do you want to migrate?`,
     });
 
     if (!answer) {
-      console.log(pc.yellow('Migration cancelled by user. Using existing config file without changes.'));
-      migratedConfigFile = configFile;
+      migratedConfigFile = migration.no(configFile);
     } else {
-      migratedConfigFile = migration.migrate(configFile);
-      if (migratedConfigFile) {
-        dsfs.writeFile(configFilePath, migratedConfigFile);
-        console.log(pc.green(`Config file successfully migrated!`));
-      }
+      migratedConfigFile = migration.yes(configFile);
+      await dsfs.writeFile(configFilePath, migratedConfigFile);
     }
   }
   return migratedConfigFile;

@@ -3,9 +3,10 @@ import pc from 'picocolors';
 
 type Automigrate = {
   name: string;
-  isEligible: (config: any) => boolean;
-  logMessage: string;
-  migrate: (config: string) => string;
+  check: (config: any) => boolean;
+  message: string;
+  yes: (config: string) => string;
+  no: (config: string) => string;
 };
 
 const isOldColorSchema = (theme: any): boolean => {
@@ -28,40 +29,55 @@ const isConfigWithOldColorSchema = (config: any): boolean => {
   return Object.values(currentConfig.themes).some(isOldColorSchema);
 };
 
-export default {
-  name: 'Flatten color categories',
-  isEligible: isConfigWithOldColorSchema,
-  logMessage: `Config file is using the old color schema with ${pc.yellow('main')} and ${pc.yellow('support')} categories.\nThis migration will flatten all colors into a single "colors" category per theme.\n`,
-  migrate: (config: string): string => {
-    const currentConfig = JSON.parse(config);
-    const updatedThemes: Record<string, any> = {};
+const yes = (config: string): string => {
+  const currentConfig = JSON.parse(config);
+  const updatedThemes: Record<string, any> = {};
 
-    if (currentConfig.themes) {
-      for (const [themeName, _] of Object.entries(currentConfig.themes)) {
-        const theme = currentConfig.themes[themeName];
+  if (currentConfig.themes) {
+    for (const [themeName, _] of Object.entries(currentConfig.themes)) {
+      const theme = currentConfig.themes[themeName];
 
-        if (isOldColorSchema(theme)) {
-          const { main, support, neutral, ...restColors } = theme.colors;
+      if (isOldColorSchema(theme)) {
+        const { main, support, neutral, ...restColors } = theme.colors;
 
-          const updatedTheme = {
-            ...theme,
-            colors: {
-              ...restColors,
-              ...main,
-              ...support,
-              neutral,
-            },
-          };
+        const updatedTheme = {
+          ...theme,
+          colors: {
+            ...restColors,
+            ...main,
+            ...support,
+            neutral,
+          },
+        };
 
-          updatedThemes[themeName] = updatedTheme;
-        }
+        updatedThemes[themeName] = updatedTheme;
       }
     }
-    const migratedConfig = {
-      ...currentConfig,
-      themes: updatedThemes,
-    };
+  }
+  const migratedConfig = {
+    ...currentConfig,
+    themes: updatedThemes,
+  };
 
-    return JSON.stringify(migratedConfig, null, 2);
+  return JSON.stringify(migratedConfig, null, 2);
+};
+
+const migration: Automigrate = {
+  name: 'Flatten color categories',
+  check: isConfigWithOldColorSchema,
+  message: `Config file is using the old color schema with ${pc.yellow('main')} and ${pc.yellow('support')} categories.\nThis migration will flatten all colors under ${pc.yellow('colors')} per theme.\n`,
+  yes: (config: string): string => {
+    const migratedConfig = yes(config);
+    console.log(pc.green(`\nConfig file successfully migrated.`));
+
+    return migratedConfig;
   },
-} as Automigrate;
+  no: (config: string): string => {
+    // We still want to flatten the config file even if the user chooses not to migrate, as we need to maintain compatibility with the new schema. However, we won't write the migrated config back to the file system.
+    const migratedConfig = yes(config);
+    console.log(pc.yellow('\nUsing existing config file but migration was skipped.\n'));
+    return migratedConfig;
+  },
+};
+
+export default migration;
