@@ -13,7 +13,7 @@ search_terms: svg, fargelegge, symbol
 
 Hvis illustrasjonen skal se helt lik ut uansett lys eller mørk modus, og ha de fargene som er satt i illustrasjonsverktøyet, trenger du ikke følge guiden under.
 
-Hvis du derimot ønsker å styre farger og skalering via kode (for eksempel med design tokens), bør illustrasjoner legges til som SVG og struktureres på en bestemt måte.
+Hvis du derimot ønsker å styre farger og skalering via kode (for eksempel med design tokens), bør illustrasjoner legges til som SVG via `<use>` og struktureres på en bestemt måte. Merk at skal en svg brukes kun ett sted så kan du også sette inn svg-koden inline, eksempel på dette finner du helt til slutt i guiden.
 
 ## Grunnleggende oppsett
 
@@ -66,7 +66,7 @@ Om du ikke vil sette en standard regel for alle illustrasjoner, kan du heller se
   </symbol>
 </svg>
 ```
-Test story
+Test story for currentColor
 <Story story="WithCurrentColor" />
 
 Ønsker du mer kontroll kan du styre fargen med klasse eller id, fjern alle farger fra grafikken og sett inn for ekesmpel en klasse på det omsluttende svg-elementet:
@@ -81,6 +81,9 @@ Med tilhørende token:
     color: var(--ds-color-text-default);
 }
 ```
+
+Test story for icon color token
+<Story story="WithIconColor" />
 
 ### Flerfarget illustrasjon, typisk merkevarebærende symboler og små illustrasjoner
 
@@ -112,6 +115,9 @@ Med tilhørende tokens, i eksempelet har illustrasjonen fått gråskala i mørk 
 ```
 Du kan selvsagt fargelegge ved å peke direkte til fargene i designsystemet, eller om du har laget tokens for illustrasjoner så bruker du dem.
 
+Test story for flerfarget illustrasjon
+<Story story="WithMultiColor" />
+
 ## Husk på tilgjengelighet
 
 For å sikre at illustrasjonen er tilgjengelig for alle må du legge til et par detaljer i det omsluttende svg-elementet.
@@ -134,3 +140,19 @@ Gi illustrasjonen rollen for bilde og en beskrivende tekst
 </svg>
 ```
 For mer komplekse illustrasjoner kan du bruke mer detaljerte beskrivelser og det finnes også måter å sette inn slike detaljerte beskrivelser på selve grafikken, det går vi ikke inn på her.
+
+## Illustrasjon inline
+
+Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere steder. Når du uansett kun skal ha en illustrasjon på ett sted på siden din, så kan du gjerne sette den inn inline.
+
+```HTML
+<svg width="80" height="80" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <path d="..." fill="var(--ds-color-logopart1)"/>
+  <path d="..." fill="var(--ds-color-logopart2)"/>
+  <path d="..." fill="var(--ds-color-logopart3)"/>
+  <path d="..." fill="var(--ds-color-logopart4)"/>
+</svg>
+```
+
+Test story for inline flerfarget illustrasjon
+<Story story="WithMultiColorInline" />
