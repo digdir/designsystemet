@@ -144,7 +144,7 @@ function _makeTokenCommands() {
 
       const { configFile, configFilePath } = await getConfigFile(opts.config);
 
-      // TODO make this better automigrate
+      // TODO make this automigrate better
       let migratedConfigFile = null;
       if (configFile) {
         if (flattenColorCategories.isEligible(configFile)) {

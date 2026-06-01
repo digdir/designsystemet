@@ -2,10 +2,10 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import { z } from 'zod';
 import { fromError } from 'zod-validation-error';
-import { baseColorNames, colorNames } from './colors/colorMetadata.js';
-import { convertToHex } from './colors/index.js';
-import { RESERVED_COLORS } from './colors/theme.js';
-import { cliOptions } from './tokens/create.js';
+import { baseColorNames, colorNames } from '../../colors/colorMetadata.js';
+import { convertToHex } from '../../colors/index.js';
+import { RESERVED_COLORS } from '../../colors/theme.js';
+import { cliOptions } from '../../tokens/create.js';
 
 function mapPathToOptionName(path: PropertyKey[]) {
   // replace "themes.some-theme-name" with "theme" to match cliOptions object
