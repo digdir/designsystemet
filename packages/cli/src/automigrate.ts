@@ -8,13 +8,13 @@ export const checkAutomigrate = async (configFile: string, configFilePath: strin
     return null;
   }
   let migratedConfigFile = null;
-  const eligbleMigrations = Object.values(automigrations).filter((migration) => migration.check(configFile));
+  const eligibleMigrations = Object.values(automigrations).filter((migration) => migration.check(configFile));
 
-  if (eligbleMigrations.length === 0) {
+  if (eligibleMigrations.length === 0) {
     return null;
   }
 
-  for (const migration of eligbleMigrations) {
+  for (const migration of eligibleMigrations) {
     console.log(pc.red(`\n ✋ Automigration detected \n`));
     console.log(
       pc.yellow(`Config file ${pc.blue(configFilePath)} is eligible for migration: ${pc.blue(migration.name)}\n`),
