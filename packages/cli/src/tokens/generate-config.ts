@@ -1,7 +1,7 @@
 import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.js';
-import type { CreateConfigSchema } from '../schemas/v2/schema.js';
+import type { CreateConfigSchema } from '../schemas/v1.1/schema.js';
 import { dsfs } from '../utils/filesystem.js';
 
 type TokenValue = {

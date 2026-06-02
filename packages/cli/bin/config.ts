@@ -7,7 +7,7 @@ import {
   type CreateConfigSchema,
   commonConfig,
   configFileCreateSchema,
-} from '../src/schemas/v2/schema.js';
+} from '../src/schemas/v1.1/schema.js';
 import { dsfs } from '../src/utils/filesystem.js';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
 

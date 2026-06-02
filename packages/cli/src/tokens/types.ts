@@ -1,6 +1,6 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
 import type { ColorScheme } from '../index.js';
-import type { ConfigSchemaTheme } from '../schemas/v2/schema.js';
+import type { ConfigSchemaTheme } from '../schemas/v1.1/schema.js';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
 
 export type Token =
