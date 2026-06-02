@@ -100,7 +100,7 @@ formatTheme({
   name: 'test',
   borderRadius: config.themes.designsystemet.borderRadius,
   colors: {
-    primary: config.themes.designsystemet.colors.main.accent as `#${string}`,
+    primary: config.themes.designsystemet.colors.accent as `#${string}`,
     neutral: config.themes.designsystemet.colors.neutral as `#${string}`,
   },
   typography: config.themes.designsystemet.typography,
