@@ -1,11 +1,11 @@
 ---
-title: Spør brukerne om samtykke til å samle inn opplysninger om hvordan tjenesten brukes
-sidebar_title: Samtykke til bruk av informasjonskapsler
+title: Spør brukerne om samtykke til å lagre informasjon om hvordan siden brukes
+sidebar_title: Samtykke til å lagre informasjon
 category: Spør brukerne om...
 description: Slik lager du et juridisk forsvarlig samtykkebanner som er brukervennlig, tilgjengelig, og oppfyller formålet.
 partners: Digdir, Nav, Skatteetaten ++
 search_terms: consent banner, cookie banner, cookies, samtykke, personvern
-date: 2026-02-16
+date: 2026-06-02
 order: 75
 ---
 
@@ -19,17 +19,17 @@ Et felles mønster gir tydelige rammer for hvordan samtykke kan løses likt på 
 ## Forberedelser
 Du må forstå hva dere samler inn før du kan spørre om samtykke. Nettsteder bruker teknologier for å samle inn opplysninger om hvordan tjenesten brukes, samt teknisk informasjon om enhet, nettleser og tilkobling. Dette skjer ofte i form av «informasjonskapsler», men kan også være andre teknologier.
 
-Det er juridiske krav til hvordan vi gir brukerne informasjon om teknologiene som brukes, og hva vi trenger deres samtykke til. Hensikten er å gi brukerne mulighet til å ta informerte valg og ivareta personvernet.
+Du er juridisk pålagt å informere brukerne om teknologiene som brukes, og hva vi trenger deres samtykke til. Hensikten er å gi brukerne mulighet til å ta informerte valg og ivareta personvernet.
 
 ### Forstå hva og hvorfor du samler inn
-Begynn med å lage en oversikt over hvilke teknologier nettstedet bruker. Kartleggingen bør omfatte både førsteparts- og tredjepartsteknologi, inkludert informasjonskapsler, analyseverktøy og eventuelle integrasjoner som lagrer eller overfører data. 
+Lag en oversikt over hvilke teknologier nettstedet bruker. Kartlegg både førsteparts- og tredjepartsteknologi, inkludert informasjonskapsler, analyseverktøy og eventuelle integrasjoner som lagrer eller overfører data. 
 
 Få oversikt over
 - hvilke opplysninger som samles inn
 - hva som er formålet med å samle opplysningene
 - hvilke konsekvenser det har for brukerne dersom teknologiene ikke blir brukt
 
-Kartleggingen bør være et tverrfaglig samarbeid. Husk å ta med personvernombudet. 
+Gjør kartleggingen til et tverrfaglig samarbeid. Husk å ta med personvernombudet. 
 
 ### Kartlegg om det er nødvendige og valgfrie teknologier
 Det er ulike regler for teknologiene som er nødvendig for at nettstedet skal fungere teknisk, og for de som er valgfrie og krever samtykke. Når du lager oversikten over hvilke teknologier nettstedet bruker, må du også finne ut hvilke som er valgfrie og hvilke som er nødvendige.
@@ -38,19 +38,16 @@ Det er ulike regler for teknologiene som er nødvendig for at nettstedet skal fu
 
 Veiledning om kartlegging av teknologier, hva en skal informere om og hva en skal be om samtykke til finner du i datatilsynets veileder. Ytterligere informasjon finner du også på Nkom’s informasjonsside om temaet. Samt om strengt nødvendige teknologier i ekomloven § 3-15.
 
-### Ikke spør om samtykke før det er nødvendig
-Hvis en tjeneste kun er relevant for noen brukere, eller kun tas i bruk i bestemte situasjoner, bør du vente med å be om samtykke til brukeren faktisk møter den aktuelle funksjonaliteten.
-
-Et typisk eksempel er innebygd video fra tredjeparter som YouTube eller Vimeo. Disse tjenestene kan sette egne informasjonskapsler når videoen lastes. I stedet for å be om samtykke i det generelle samtykkebanneret, kan du vise en plassholder der videoen skal være – og først spørre om samtykke når brukeren faktisk ønsker å se videoen.
-
-Dette gir en bedre brukeropplevelse og sikrer at samtykket er relevant og meningsfullt når det gis.
-
 ## Design og opplevelse
 
 ### Hvis du kan samle alt under et spørsmål
 Samle samtykket under ett enkelt spørsmål når det er mulig. Da holder det med to knapper: én for å godta og én for å avslå. Dette er den enkleste og mest forståelige løsningen for brukeren.
  
-[ ENKELT VALG EKSEMPEL ]
+<Image
+  src="/img/patterns/consent-banner-simple.png"
+  alt="..."
+  caption='...'
+/>
 
 ### Hvis du må dele valgene opp
 Noen ganger må du gi brukerne mulighet til å godta noe og avslå noe annet. 
@@ -59,17 +56,40 @@ Tilby snarveisknapper.
 
 I tillegg til en knapp for å lagre de valgene brukeren har gjort, skal det finnes knapper for «Godta alle» og «Avslå alle». Dette er nødvendig for at det skal være like enkelt å avslå som å godta – noe som er et krav for at samtykket skal være gyldig.
 
-[ FLERE VALG EKSEMPEL ]
+<Image
+  src="/img/patterns/consent-banner-check.png"
+  alt="..."
+  caption='...'
+/>
  
 ### Hvis du bare har nødvendige informasjonskapsler
 Dersom nettstedet kun bruker strengt nødvendige informasjonskapsler – som for eksempel lagring av språkvalg eller innloggingsstatus – trenger du ikke vise et samtykkebanner. Du er likevel pålagt å informere brukerne om at slike informasjonskapsler brukes. Det kan du gjøre i bunnen av nettsiden, med en lenke til mer informasjon. 
 
-[ FOOTER EKSEMPEL ]
+<Image
+  src="/img/patterns/consent-banner-footer.png"
+  alt="..."
+  caption='...'
+/>
 
-### Plassering
+
+### Hvis du kan vente med å spørre om samtykke
+Hvis en tjeneste kun er relevant for noen brukere, eller kun tas i bruk i bestemte situasjoner, bør du vente med å be om samtykke til brukeren faktisk møter den aktuelle funksjonaliteten.
+
+Et typisk eksempel er innebygd video fra tredjeparter som YouTube eller Vimeo. Disse tjenestene kan sette egne informasjonskapsler når videoen lastes. I stedet for å be om samtykke i det generelle samtykkebanneret, kan du vise en plassholder der videoen skal være – og først spørre om samtykke når brukeren faktisk ønsker å se videoen.
+
+Dette gir en bedre brukeropplevelse og sikrer at samtykket er relevant og meningsfullt når det gis.
+
+<Image
+  src="/img/patterns/consent-banner-video.png"
+  alt="..."
+  caption='...'
+/>
+
+
+### Plassering og løsning
 Vis samtykkebanneret inline i toppen av siden, som eksemplene over viser. Da legger det seg ikke over annet innhold, og tvinger ikke brukerne til å ta et valg. Dersom brukerne navigerer videre uten å ha tatt et valg, følger banneret med videre på andre sider. Ingen valgfrie informasjonskapsler trer i kraft før brukerne har gjort et aktivt samtykke.
 
-### Unngå dialog-løsninger
+#### Unngå dialog-løsninger
 Modal dialog bør unngås fordi den tvinger brukerne til å ta et valg før de har sett innholdet på siden. Selv om det er mulig å legge til en lukk-knapp (×), er det vanskelig for brukeren å forstå at å lukke dialogen og å velge «Avslå» gir samme konsekvens.
 Ikke-modal dialog bør unngås fordi den legger seg over annet interaktivt innhold på siden. Dette bryter WCAG 2.4.11 Fokus ikke skjult (minimum).
 
@@ -96,7 +116,7 @@ Brukeren skal enkelt forstå
 Informasjonen må gis i et klart og enkelt språk som er forståelig for alle målgrupper. Bruk hverdagslige uttrykk og korte, presise setninger, slik at alle har så like muligheter som mulig til å forstå hva samtykket handler om. Unngå juridiske og tekniske uttrykk der det ikke er nødvendig. Legg vekt på formålet med behandlingen, ikke teknologien som brukes.
 
 ### Unngå vanskelige begreper
-Begrepet «informasjonskapsler» kan være uforståelig for mange brukere, og det kan være upresist hvis det er en blanding av ulike teknologier som brukes. Vurder alternative formuleringer som «teknologier for å samle inn opplysninger om hvordan tjenesten brukes», eller lignende, som bedre kommuniserer hva det handler om.
+Begrepet «informasjonskapsler» kan være uforståelig for mange brukere, og det kan være upresist hvis det er en blanding av ulike teknologier som brukes. Bruk heller formuleringer som «teknologier for å samle inn opplysninger om hvordan tjenesten brukes», eller lignende, som bedre kommuniserer hva det handler om.
 
 ### Still ett klart og tydelig spørsmål
 Samtykkebanneret bør stille ett klart og tydelig spørsmål: Hva ber vi om samtykke til, og hvorfor?
@@ -156,21 +176,16 @@ Valg for å godta eller avslå skal kodes som knapper (`<button>`), siden disse 
 
 ### Landemerker og tilgjengelig navn
 For at skjermlesere skal oppdage banneret som et landemerke (eng. landmark), må seksjonen ha et tilgjengelig navn. Vi anbefaler aria-labelledby koblet mot bannerets overskrift fremfor aria-label, for å unngå at teksten leses opp to ganger:
-html
+
+```
 <section aria-labelledby="samtykkebanner__tittel">
   <h2 id="samtykkebanner__tittel">TITTEL</h2>
   ...
 </section>
-
-### Synlig fokus, plassering og skalering
-•	Ikke blokker synlig fokus (WCAG 2.4.11 / 2.4.12).
-•	Banneret må ikke dekke over innhold brukeren trenger for å ta en vurdering.
-•	Ikke gjør banneret sticky – brukeren må kunne skalere siden uten at banneret dekker hele skjermen.
-•	Element må ikke flyte over andre elementer.
-•	Bruk relative enheter (f.eks rem) for størrelser, slik at banneret skalerer på lik linje med resten av siden. (WCAG 1.4.4 / WCAG 1.4.10)
+```
 
 ### Skjermleser
-Alle valg og tilbakemeldinger må fungere med skjermleser. Ikke bruk role="alert" eller lignende med mindre det er særlig viktig for brukeren å få med seg banneret eller endringer i det for å kunne bruke siden.
+Alle valg og tilbakemeldinger må fungere med skjermleser. Ikke bruk `role="alert"` eller lignende med mindre det er særlig viktig for brukeren å få med seg banneret eller endringer i det for å kunne bruke siden.
 
 ### Fokusrekkefølge og tastaturnavigasjon
 For et ikke-modalt samtykkebanner må ikke banneret få fokus automatisk – det skal følge vanlig fokusrekkefølge i DOM-en.
@@ -194,8 +209,15 @@ Reglene gjelder ikke bare informasjonskapsler (eng. cookies), men all lagring og
 Hvis samtykke skal deles på tvers av tjenester, må de aktuelle sidene oppleves som del av samme nettsted for brukeren. Samtykkebanneret må i tillegg inneholde informasjon om alt som kan leses eller lagres på alle tjenestene som deler banneret.
       
 ## Kilder og relevant informasjon
-•	Datatilsynet: Samtykke til bruk av informasjonskapsler og andre sporingsteknologier | Datatilsynet
-•	Nasjonal kommunikasjonsmyndighet: Informasjonskapsler/cookies - Nkom
--	UUtilsynet WCAG 2.4.11 (lenker til alle relevante kriterier)
--	https://www.datatilsynet.no/regelverk-og-verktoy/ordliste/ 
--	(Kjartan vurderer å skrive et blogginnlegg om NRK’s prosess rundt måling av brukeradferd).
+
+- [Samtykke til bruk av informasjonskapsler og andre sporingsteknologier hos Datatilsynet](https://www.datatilsynet.no/personvern-pa-ulike-omrader/internett-og-apper/bruk-av-informasjonskapsler-og-andre-sporingsteknologier/)
+- [Informasjonskapsler/cookies hos Nasjonal kommunikasjonsmyndighet](https://nkom.no/internett/informasjonskapsler-cookies)
+- [Ekomloven § 3-15 om bruk av informasjonskapsler hos Lovdata](https://lovdata.no/lov/2024-12-13-76/§3-15)
+- [Ordliste hos Datatilsynet](https://www.datatilsynet.no/regelverk-og-verktoy/ordliste/)
+- [WCAG 2.4.7 Synlig fokus hos Tilsynet for universell utforming av IKT](https://www.uutilsynet.no/wcag-standarden/247-synlig-fokus-niva-aa/109)
+- [WCAG 1.4.10 Dynamisk tilpasning hos Tilsynet for universell utforming av IKT](https://www.uutilsynet.no/wcag-standarden/14-mulig-skille-fra-hverandre/744)
+- [WCAG 2.4.11 Focus Not Obscured (Minimum) hos W3C](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html)
+- [Cookie banner i GOV.UK Design System](https://design-system.service.gov.uk/components/cookie-banner/)
+- [Cookies page pattern i GOV.UK Design System](https://design-system.service.gov.uk/patterns/cookies-page/)
+- [Working with cookies and similar technologies i GOV.UK Service Manual](https://www.gov.uk/service-manual/technology/working-with-cookies-and-similar-technologies/)
+- [Evaluating browser-based cookie setting options hos GOV.UK](https://www.gov.uk/government/publications/evaluating-browser-based-cookie-setting-options)
