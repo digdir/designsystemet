@@ -51,6 +51,8 @@ const yes = (config: string): string => {
         };
 
         updatedThemes[themeName] = updatedTheme;
+      } else {
+        updatedThemes[themeName] = theme;
       }
     }
   }
