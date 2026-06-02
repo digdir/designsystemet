@@ -198,6 +198,14 @@ const redirects: Redirect[] = [
     from: '/no/fundamentals/figma/get-started',
     to: '/no/fundamentals/start-here/preparations#figma',
   },
+  {
+    from: '/en/fundamentals/figma/new-component',
+    to: '/en/fundamentals/figma/variables-in-figma',
+  },
+  {
+    from: '/no/fundamentals/figma/new-component',
+    to: '/no/fundamentals/figma/variables-in-figma',
+  },
 
   {
     from: '/en/fundamentals/figma/get-started',

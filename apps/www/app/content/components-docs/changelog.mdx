@@ -1,7 +1,105 @@
 ---
 title: "Changelog"
-latestVersion: 1.14.0
+latestVersion: 1.15.0
 ---
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.15.0
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+- Add deprecation warning for cli options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme`. Use JSON config file instead. ([#4912](https://github.com/digdir/designsystemet/pull/4912))
+
+- Update npm non-major dependencies ([#4910](https://github.com/digdir/designsystemet/pull/4910))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.15.0
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+- **Dropdown**: Removed hardcoded `font-weight` on some heading elements. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- Added new export for testing experimental changes. Use this by appending `/experimental_v2` to your package import: `@digdir/designsystemet-css/experimental_v2`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Suggestion**: Added `--dsc-suggestion-option-checkmark-border-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Field**: Added `--dsc-field-description-color`, `--dsc-field-affix-background`, and `--dsc-field-affix-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Fieldset**: Added `--dsc-fieldset-description-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Card**: when using a link in a Card, ensure plain `<a>` tags without `class="ds-link"` also get the correct focus styling. ([#4896](https://github.com/digdir/designsystemet/pull/4896))
+
+- Update npm non-major dependencies ([#4910](https://github.com/digdir/designsystemet/pull/4910))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.15.0
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Minor Changes
+
+- **SuggestionInput:** Remove unsupported props `role` and `data-indeterminate` that would break `Suggestion` ([#4883](https://github.com/digdir/designsystemet/pull/4883))
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+- **Tooltip**: deprecate `type` prop, as it no longer does anything ([#4898](https://github.com/digdir/designsystemet/pull/4898))
+
+- **Tooltip**: the React component will no longer override existing accessible text. It now correctly sets `aria-description` in that case. If there is no accessible text, `aria-label` will be used as before. ([#4898](https://github.com/digdir/designsystemet/pull/4898))
+
+- **useCheckboxGroup** and **useRadioGroup**: these hooks now also accept the prop `variant`, which sets the variant for all the checkboxes or radios in the group. ([#4864](https://github.com/digdir/designsystemet/pull/4864))
+
+- **Dialog**: Fix dialog with nested dialog getting a close event when the nested one was closed ([#4899](https://github.com/digdir/designsystemet/pull/4899))
+
+- **Popover:** now correctly calculates width of source element also in Firefox ([#4921](https://github.com/digdir/designsystemet/pull/4921))
+
+- **Popover:** No longer closes with "Escape" key if a Dialog element is open above the popover ([#4788](https://github.com/digdir/designsystemet/pull/4788))
+
+- **Heading**: fix wrong default in `HeadingProps` for `data-size` ([#4926](https://github.com/digdir/designsystemet/pull/4926))
+
+- Update npm non-major dependencies ([#4910](https://github.com/digdir/designsystemet/pull/4910))
+
+- Updated dependencies [[`f54563f`](https://github.com/digdir/designsystemet/commit/f54563f9b16020ae9094148933dc5efbc7720ad5), [`dc93a59`](https://github.com/digdir/designsystemet/commit/dc93a5961ec0b90a13b63b3478b17eafe83ef749), [`14975a1`](https://github.com/digdir/designsystemet/commit/14975a14efdf1c45013464da78f8db20d939a02b), [`dc93a59`](https://github.com/digdir/designsystemet/commit/dc93a5961ec0b90a13b63b3478b17eafe83ef749)]:
+  - @digdir/designsystemet-web@1.15.0
+  - @digdir/designsystemet-types@1.15.0
+
+<Divider/>
+
+### @digdir/designsystemet-web
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+- **Error summary**: Now only sets `aria-labelledby` based on heading element if `aria-label` or `aria-labelledby` is not already set, and logs a warning if neither of these are set and no heading element is present. ([#4895](https://github.com/digdir/designsystemet/pull/4895))
+
+- **Popover:** now correctly calculates width of source element also in Firefox ([#4921](https://github.com/digdir/designsystemet/pull/4921))
+
+- **Error summary**: Set `role="group"` since the implicit role "generic" does not allow `aria-labelledby`, which is used in the component ([#4895](https://github.com/digdir/designsystemet/pull/4895))
+
+</div>
 
 <div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",

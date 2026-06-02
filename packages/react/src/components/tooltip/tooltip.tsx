@@ -38,8 +38,8 @@ export type TooltipProps = MergeRight<
      */
     open?: boolean;
     /**
-     * Override if `aria-describedby` or `aria-labelledby` is used.
-     * By default, if the trigger element has no inner text, `aria-labelledby` is used.
+     * @deprecated This prop has no effect. The tooltip will be set as `aria-description`
+     * if the component already contains accessible text, and `aria-label` otherwise.
      */
     type?: 'describedby' | 'labelledby';
   }
@@ -68,7 +68,6 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     return (
       <Slot
-        aria-label={content || undefined} // designsystemet-web will re-evaulate if this should be an aria-label or aria-description, but kept here for better SSR
         data-tooltip={content}
         data-placement={placement}
         data-autoplacement={autoPlacement}
