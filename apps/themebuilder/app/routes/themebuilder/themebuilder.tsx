@@ -5,7 +5,7 @@ import { ColorModalProvider } from '~/_utils/color-modal-context';
 import { ThemePages } from '../../layouts/themebuilder/layout';
 import classes from './page.module.css';
 import 'react-color-palette/css';
-import type { ColorScheme, CssColor } from '@digdir/designsystemet';
+import type { ColorScheme } from '@digdir/designsystemet';
 import { parsePath, redirect } from 'react-router';
 import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
@@ -13,7 +13,6 @@ import i18n from '~/i18next.server';
 import themeConfig from '../../../../../designsystemet.config.json';
 import {
   applyOverridesToColors,
-  createColorsAndNeutralVariables,
   createColorsFromQuery,
   createSeverityColorsFromQuery,
   parseColorOverrides,
@@ -27,9 +26,7 @@ const toQueryString = (obj: Record<string, string>) =>
     .map(([key, value]) => `${key}:${value}`)
     .join(QUERY_SEPARATOR);
 const THEME = themeConfig.themes.designsystemet.colors;
-const MAIN_COLORS = toQueryString(THEME.main);
-const SUPPORT_COLORS = toQueryString(THEME.support);
-const NEUTRAL_COLOR = THEME.neutral;
+const COLORS = toQueryString(THEME);
 
 export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';
 
@@ -47,9 +44,7 @@ export const loader = async ({
   /* if we have no params, push some default values */
   if (urlParams.toString() === '') {
     const newParams = new URLSearchParams({
-      main: MAIN_COLORS,
-      neutral: NEUTRAL_COLOR,
-      support: SUPPORT_COLORS,
+      colors: COLORS,
       appearance: 'light',
       'border-radius': '4',
       tab: DEFAULT_TAB,
@@ -63,29 +58,39 @@ export const loader = async ({
     return redirect(`/${lang}/themebuilder?${urlParams.toString()}`);
   }
 
-  const colors = {
-    main: createColorsFromQuery(urlParams.get('main') || MAIN_COLORS) || [],
-    neutral: [
-      {
-        name: 'neutral',
-        ...createColorsAndNeutralVariables(
-          (urlParams.get('neutral') as CssColor) || NEUTRAL_COLOR,
-        ),
-        hex: (urlParams.get('neutral') as CssColor) || NEUTRAL_COLOR,
-      },
-    ],
-    support: createColorsFromQuery(urlParams.get('support')),
-  };
+  /* Backwards compatibility: merge legacy `main`, `support` and `neutral`
+   * params into the single `colors` param and redirect to normalize the URL. */
+  if (
+    !urlParams.has('colors') &&
+    (urlParams.has('main') ||
+      urlParams.has('support') ||
+      urlParams.has('neutral'))
+  ) {
+    const legacyColors = [
+      urlParams.get('main'),
+      urlParams.get('support'),
+      urlParams.get('neutral')
+        ? `neutral:${urlParams.get('neutral')}`
+        : null,
+    ]
+      .filter(Boolean)
+      .join(QUERY_SEPARATOR);
+
+    urlParams.delete('main');
+    urlParams.delete('support');
+    urlParams.delete('neutral');
+    urlParams.set('colors', legacyColors);
+
+    return redirect(`/${lang}/themebuilder?${urlParams.toString()}`);
+  }
+
+  const colors = createColorsFromQuery(urlParams.get('colors') || COLORS);
 
   // Parse and apply color overrides
   const overridesParam = urlParams.get('color-overrides');
   const overridesMap = parseColorOverrides(overridesParam);
 
-  const colorsWithOverrides = {
-    main: applyOverridesToColors(colors.main, overridesMap),
-    neutral: applyOverridesToColors(colors.neutral, overridesMap),
-    support: applyOverridesToColors(colors.support, overridesMap),
-  };
+  const colorsWithOverrides = applyOverridesToColors(colors, overridesMap);
 
   const severityColors = createSeverityColorsFromQuery(
     urlParams.get('severity'),

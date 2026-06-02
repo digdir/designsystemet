@@ -25,7 +25,7 @@ import classes from './color-page.module.css';
 
 type ColorEditorState = {
   activePanel: 'add-color' | 'edit-color' | 'edit-severity' | 'none';
-  colorType: 'main' | 'neutral' | 'support' | 'severity';
+  colorType: 'color' | 'neutral' | 'severity';
   index: number;
   name: string;
   initialName: string;
@@ -41,7 +41,7 @@ export const ColorPage = () => {
 
   const [editorState, setEditorState] = useState<ColorEditorState>({
     activePanel: 'none',
-    colorType: 'main',
+    colorType: 'color',
     index: 0,
     name: '',
     initialName: '',
@@ -49,6 +49,10 @@ export const ColorPage = () => {
   });
 
   const [color, setColor] = useColor(DEFAULT_COLOR);
+
+  const neutralIndex = colors.findIndex((c) => c.name === 'neutral');
+  const neutralColor = neutralIndex >= 0 ? colors[neutralIndex] : undefined;
+  const themeColorCount = colors.filter((c) => c.name !== 'neutral').length;
 
   const updateColorInParams = (
     hex: string,
@@ -60,8 +64,8 @@ export const ColorPage = () => {
 
     const updatedParams = new URLSearchParams(query);
 
-    if (type === 'main' || type === 'support') {
-      const colorParam = query.get(type) || '';
+    if (type === 'color' || type === 'neutral') {
+      const colorParam = query.get('colors') || '';
       const colorArray = colorParam.split(QUERY_SEPARATOR).filter(Boolean);
 
       if (index < colorArray.length) {
@@ -70,9 +74,7 @@ export const ColorPage = () => {
         colorArray.push(`${name}:${hex}`);
       }
 
-      updatedParams.set(type, colorArray.join(QUERY_SEPARATOR));
-    } else if (type === 'neutral') {
-      updatedParams.set('neutral', hex);
+      updatedParams.set('colors', colorArray.join(QUERY_SEPARATOR));
     } else if (type === 'severity') {
       updateSeverityColorInParams(hex, name, updatedParams);
     }
@@ -112,7 +114,7 @@ export const ColorPage = () => {
   const openColorEditor = (
     colorTheme: ColorTheme,
     index: number,
-    type: 'main' | 'neutral' | 'support',
+    type: 'color' | 'neutral',
   ) => {
     const hexColor = colorTheme.colors.light[11].hex;
 
@@ -128,22 +130,22 @@ export const ColorPage = () => {
     });
   };
 
-  const openNewColorEditor = (type: 'main' | 'neutral' | 'support') => {
-    const colorCount = colors[type].length;
-    const newColorName = `${type}-color-${colorCount + 1}`;
+  const openNewColorEditor = () => {
+    const newColorName = `color-${themeColorCount + 1}`;
+    const index = colors.length;
 
     setColor(ColorService.convert('hex', DEFAULT_COLOR));
 
     setEditorState({
       activePanel: 'add-color',
-      colorType: type,
-      index: colorCount,
+      colorType: 'color',
+      index,
       name: newColorName,
       initialName: newColorName,
       initialHex: DEFAULT_COLOR,
     });
 
-    updateColorInParams(DEFAULT_COLOR, newColorName, type, colorCount);
+    updateColorInParams(DEFAULT_COLOR, newColorName, 'color', index);
   };
 
   const openSeverityColorEditor = (
@@ -171,22 +173,19 @@ export const ColorPage = () => {
     }));
   };
 
-  const removeColor = (index: number, type: 'main' | 'neutral' | 'support') => {
+  const removeColor = (index: number) => {
     if (index < 0) return;
 
     const updatedParams = new URLSearchParams(query);
+    const colorParam = query.get('colors') || '';
+    const colorArray = colorParam.split(QUERY_SEPARATOR).filter(Boolean);
+    colorArray.splice(index, 1);
+    updatedParams.set('colors', colorArray.join(QUERY_SEPARATOR));
 
-    if (type === 'main' || type === 'support') {
-      const colorParam = query.get(type) || '';
-      const colorArray = colorParam.split(QUERY_SEPARATOR).filter(Boolean);
-      colorArray.splice(index, 1);
-      updatedParams.set(type, colorArray.join(QUERY_SEPARATOR));
-
-      setQuery(updatedParams, {
-        replace: true,
-        preventScrollReset: true,
-      });
-    }
+    setQuery(updatedParams, {
+      replace: true,
+      preventScrollReset: true,
+    });
   };
 
   const toggleSeverityColors = (enabled: boolean) => {
@@ -206,82 +205,46 @@ export const ColorPage = () => {
         <>
           <div className={classes.group}>
             <div className={classes.groupHeader}>
-              <Heading data-size='2xs'>Main</Heading>
-              {colors.main.length < 40 && (
-                <Button
-                  variant='tertiary'
-                  data-size='sm'
-                  className={classes.AddBtn}
-                  onClick={() => openNewColorEditor('main')}
-                  aria-label={`${t('colorPane.add')} ${t('colorPane.main-color')}`}
-                >
-                  {t('colorPane.add')} {t('themeModal.color')}
-                  <PlusIcon aria-hidden />
-                </Button>
-              )}{' '}
-              {colors.main.length >= 40 && (
-                <div className={classes.error}>Maximum 4 main colours</div>
-              )}
+              <Heading data-size='2xs'>{t('themeModal.color')}</Heading>
+              <Button
+                variant='tertiary'
+                data-size='sm'
+                className={classes.AddBtn}
+                onClick={() => openNewColorEditor()}
+                aria-label={`${t('colorPane.add')} ${t('themeModal.color')}`}
+              >
+                {t('colorPane.add')} {t('themeModal.color')}
+                <PlusIcon aria-hidden />
+              </Button>
             </div>
             <div className={classes.colors}>
-              {colors.main.map((colorTheme, index) => (
-                <ColorInput
-                  key={index}
-                  color={colorTheme.colors.light[11].hex}
-                  name={colorTheme.name}
-                  onClick={() => openColorEditor(colorTheme, index, 'main')}
-                />
-              ))}
+              {colors.map((colorTheme, index) =>
+                colorTheme.name === 'neutral' ? null : (
+                  <ColorInput
+                    key={index}
+                    color={colorTheme.colors.light[11].hex}
+                    name={colorTheme.name}
+                    onClick={() => openColorEditor(colorTheme, index, 'color')}
+                  />
+                ),
+              )}
             </div>
           </div>
           <Divider />
-          <div className={classes.group}>
-            <div className={classes.colors}>
-              {colors.neutral.map((colorTheme, index) => (
+          {neutralColor && (
+            <div className={classes.group}>
+              <div className={classes.colors}>
                 <ColorInput
-                  key={index}
-                  color={colorTheme.colors.light[11].hex}
-                  name={colorTheme.name}
-                  onClick={() => openColorEditor(colorTheme, index, 'neutral')}
+                  color={neutralColor.colors.light[11].hex}
+                  name={neutralColor.name}
+                  onClick={() =>
+                    openColorEditor(neutralColor, neutralIndex, 'neutral')
+                  }
                 />
-              ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          <Divider />
-
-          <div className={classes.group}>
-            <div className={classes.groupHeader}>
-              <Heading data-size='2xs'>Support</Heading>
-              {colors.support.length < 40 && (
-                <Button
-                  variant='tertiary'
-                  data-size='sm'
-                  className={classes.AddBtn}
-                  onClick={() => openNewColorEditor('support')}
-                  aria-label={`${t('colorPane.add')} ${t('colorPane.support-color')}`}
-                >
-                  {t('colorPane.add')} {t('themeModal.color')}
-                  <PlusIcon aria-hidden />
-                </Button>
-              )}{' '}
-              {colors.support.length >= 40 && (
-                <div className={classes.error}>
-                  {t('themeModal.max-X-colors', { count: 4 })}
-                </div>
-              )}
-            </div>
-            <div className={classes.colors}>
-              {colors.support.map((colorTheme, index) => (
-                <ColorInput
-                  key={index}
-                  color={colorTheme.colors.light[11].hex}
-                  name={colorTheme.name}
-                  onClick={() => openColorEditor(colorTheme, index, 'support')}
-                />
-              ))}
-            </div>
-          </div>
           <Divider />
           <div className={classes.group}>
             <div className={classes.groupHeader}>
@@ -350,11 +313,8 @@ export const ColorPage = () => {
             closeEditor();
           }}
           onRemove={() => {
-            if (
-              editorState.colorType === 'main' ||
-              editorState.colorType === 'support'
-            ) {
-              removeColor(editorState.index, editorState.colorType);
+            if (editorState.colorType === 'color') {
+              removeColor(editorState.index);
             }
             closeEditor();
           }}
