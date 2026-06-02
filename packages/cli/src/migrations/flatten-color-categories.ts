@@ -59,7 +59,7 @@ const yes = (config: string): string => {
     themes: updatedThemes,
   };
 
-  return JSON.stringify(migratedConfig, null, 2);
+  return JSON.stringify(migratedConfig, null, 2).concat('\n');
 };
 
 const migration: Automigrate = {
