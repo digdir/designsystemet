@@ -142,7 +142,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   /** For sharing build options in other files */
   buildOptions = options;
   buildOptions.defaultColor = UNSAFE_DEFAULT_COLOR;
-  buildOptions.colorGroups = colorGroups;
+  buildOptions.colorGroups = [...colorGroups, 'color'];
 
   if (!buildOptions.defaultColor) {
     const customColors = getCustomColors(processed$themes, colorGroups);
