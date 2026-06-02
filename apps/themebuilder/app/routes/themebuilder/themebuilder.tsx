@@ -69,9 +69,7 @@ export const loader = async ({
     const legacyColors = [
       urlParams.get('main'),
       urlParams.get('support'),
-      urlParams.get('neutral')
-        ? `neutral:${urlParams.get('neutral')}`
-        : null,
+      urlParams.get('neutral') ? `neutral:${urlParams.get('neutral')}` : null,
     ]
       .filter(Boolean)
       .join(QUERY_SEPARATOR);
