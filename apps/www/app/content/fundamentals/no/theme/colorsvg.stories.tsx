@@ -14,5 +14,5 @@ export const WithMultiColor = () => {
 };
 
 export const WithMultiColorInline = () => {
-  return <Textfield label='Bytt ut dette eksempelet med multicolor tokens SVG-eksempel' />;
+  return <Textfield label='Bytt ut dette eksempelet med inline multicolor tokens SVG-eksempel' />;
 };
