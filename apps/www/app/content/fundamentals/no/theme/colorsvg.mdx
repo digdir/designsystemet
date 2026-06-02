@@ -2,7 +2,7 @@
 title: Bruk tokens for å fargelegge grafikk
 sidebar_title: Fargelegg grafikk
 description: Med Designsystemet kan du fargelegge grafikk.
-date: 2026-06-01
+date: 2026-06-02
 category: Tema
 color: red
 icon: PencilLineIcon
@@ -11,9 +11,20 @@ order: 200
 search_terms: svg, fargelegge, symbol, grafikk
 ---
 
-Hvis grafikk skal se helt likt ut uansett lys eller mørk modus, og ha de fargene som er satt i illustrasjonsverktøyet, trenger du ikke følge guiden under.
+Hvis grafikk skal se helt likt ut uansett lys eller mørk modus, og bruke de fargene som er satt i illustrasjonsverktøyet, trenger du ikke følge guiden under.
 
-Hvis du derimot ønsker å styre farger og skalering via kode (for eksempel med design tokens), bør grafikken legges til som SVG via `<use>` og struktureres på en bestemt måte. Merk at skal en svg brukes kun ett sted så kan du også sette inn svg-koden inline, eksempel på dette finner du helt til slutt i guiden.
+Hvis du derimot ønsker å styre farger og skalering via kode (for eksempel med design tokens), må grafikken legges til som SVG på en måte som gjør den mulig å style med CSS.
+
+Dette kan gjøres på to måter:
+
+- ved å bruke SVG inline direkte i HTML
+- ved å bruke `<use>` sammen med `<symbol>` for gjenbruk
+
+Begge metodene fungerer. `<use>` er nyttig når samme grafikk skal brukes flere steder uten å duplisere kode, mens inline SVG gir full kontroll og er ofte enklere når grafikken kun brukes ett sted.
+
+Når SVG brukes inline eller via `<use>`, kan både farger og størrelse styres via CSS. Dette forutsetter at SVG-en er satt opp riktig, blant annet med `viewBox`.
+
+Andre metoder for å bruke grafikk i frontend, som `<img src="...svg">`, canvas, CSS-tegning eller icon fonts, gir ikke helt de samme mulighet til å styre farger med design tokens, og er derfor ikke dekket i denne guiden.
 
 ## Grunnleggende oppsett
 
@@ -40,6 +51,24 @@ Fila brukes deretter slik i html:
   <use href="logo.svg#ds-logo"></use>
 </svg>
 ```
+
+<Alert data-color='info'>
+<h3 class="ds-heading" data-size='xs'>Tips: Skalering av SVG</h3>
+<p>
+SVG skalerer enklest når:
+</p>
+<ul>
+<li>viewBox er satt på `<symbol>` eller `<svg>`</li>
+<li>størrelse styres via width og height på det omsluttende elementet</li>
+</ul>
+<p>
+Hvis SVG ikke skalerer som forventet, er det ofte fordi:
+</p>
+<ul>
+<li>viewBox mangler</li>
+<li>eller at den har feil proporsjoner</li>
+</ul>
+</Alert>
 
 ## I praktisk bruk
 
@@ -156,3 +185,41 @@ Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere s
 
 Test story for inline flerfarget illustrasjon
 <Story story="WithMultiColorInline" />
+
+## Vanlige problemer og hva du bør sjekke
+
+Hvis SVG ikke oppfører seg som forventet, er dette de vanligste årsakene:
+
+- **SVG får feil størrelse**
+  - Sjekk at `viewBox` er satt
+  - Sjekk at `width` og `height` er definert på `<svg>` eller via CSS
+
+- **Farger endrer seg ikke**
+  - Sjekk at SVG ligger inline i DOM (ikke via `<img>`)
+  - Sjekk at `fill` og `stroke` ikke er hardkodet med faste farger
+  - Sjekk at CSS-variablene (`var(...)`) er definert og tilgjengelige der SVG brukes
+
+- **Grafikken blir én farge i stedet for flerfarget**
+  - Sjekk om `currentColor` brukes på alle paths
+  - Sjekk at du ikke har globale regler som påvirker alle SVG-er
+
+- **SVG vises ikke i det hele tatt**
+  - Sjekk at `href` i `<use>` peker til riktig fil og `id` (`file.svg#id`)
+  - Sjekk at SVG-fila inneholder et `<symbol>` med riktig `id`
+
+- **Endringer i CSS påvirker ikke SVG**
+  - Sjekk at SVG ikke lastes via `<img>`
+  - Sjekk at CSS-variabler (`var(...)`) er definert i samme DOM
+``
+
+
+## Kilder og videre lesning
+
+Her finner du lenker til nyttige ressurser dersom du ønsker å forstå SVG bedre, fordype deg i detaljer rundt styling og feilsøking, eller jobbe videre med optimalisering av grafikk.
+
+- [SVG: Scalable Vector Graphics (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG)  
+- [\<use> – SVG element (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/use)  
+- [viewBox attribute (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox)  
+- [Fills and strokes (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes)  
+- [SVG 2 spesifikkasjon (W3C)](https://svgwg.org/svg2-draft/)  
+- [6 Common SVG Fails (and How to Fix Them) (CSS‑Tricks)](https://css-tricks.com/6-common-svg-fails-and-how-to-fix-them/)  
