@@ -63,9 +63,9 @@ export async function parseCreateConfig(
   const getThemeOptions = (optionGetter: OptionGetter) =>
     noUndefined({
       colors: noUndefined({
-        main: optionGetter(cmd, 'mainColors'),
-        support: optionGetter(cmd, 'supportColors'),
-        neutral: optionGetter(cmd, 'neutralColor'),
+        ...(optionGetter(cmd, 'mainColors') as Record<string, string>),
+        ...(optionGetter(cmd, 'supportColors') as Record<string, string>),
+        neutral: optionGetter(cmd, 'neutralColor') as string,
       }),
       typography: noUndefined({
         fontFamily: optionGetter(cmd, 'fontFamily'),

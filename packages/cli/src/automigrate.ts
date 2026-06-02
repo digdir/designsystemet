@@ -4,6 +4,9 @@ import { dsfs } from '../src/utils/filesystem.js';
 import { automigrations } from './migrations/index.js';
 
 export const checkAutomigrate = async (configFile: string, configFilePath: string, yes: boolean) => {
+  if (!configFile) {
+    return null;
+  }
   let migratedConfigFile = null;
   const eligbleMigrations = Object.values(automigrations).filter((migration) => migration.check(configFile));
 
