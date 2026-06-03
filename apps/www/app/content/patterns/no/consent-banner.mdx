@@ -53,7 +53,6 @@ Samle samtykket under ett enkelt spørsmål når det er mulig. Da holder det med
 ### Hvis du må dele valgene opp
 Noen ganger må du gi brukerne mulighet til å godta noe og avslå noe annet. 
 Da bør du bruke [avkrysningsbokser](/no/components/docs/checkbox/overview), ikke brytere. En bryter ([switch](/no/components/docs/switch/overview)) signaliserer at endringen trer i kraft umiddelbart. Det passer ikke her, siden valget først gjelder etter at brukerne har bekreftet. Avkrysningsbokser kommuniserer at valget er noe brukerne stiller inn og deretter lagrer. Avkrysningsboksene skal ikke være forhåndsmarkert.
-Tilby snarveisknapper. 
 
 I tillegg til en knapp for å lagre de valgene brukerne har gjort, skal det finnes knapper for «Godta alle» og «Avslå alle». Dette er nødvendig for at det skal være like enkelt å avslå som å godta – noe som er et krav for at samtykket skal være gyldig.
 
@@ -101,7 +100,7 @@ For at samtykket skal være frivillig og gyldig, må valgalternativene fremstå 
 Unngå visuelle hint som leder brukerne mot ett bestemt valg, for eksempel ved å gjøre «Godta»-knappen større, mer fargerik eller mer fremtredende enn «Avslå»-knappen.
 
 ### Hvordan endre samtykke i etterkant
-Brukerne må når som helst kunne endre eller trekke tilbake samtykket sitt. Legg derfor en fast lenke i nederst på siden som åpner samtykkebanneret på nytt. Lenken skal være synlig på alle sider og ha en tydelig tekst, for eksempel «Endre hva vi kan samle inn av informasjon». 
+Brukerne må når som helst kunne endre eller trekke tilbake samtykket sitt. Legg derfor en fast lenke nederst på siden som åpner samtykkebanneret på nytt. Lenken skal være synlig på alle sider og ha en tydelig tekst, for eksempel «Endre hva vi kan samle inn av informasjon». 
 
 <Image
   src="/img/patterns/consent-banner-footerchange.png"
@@ -198,7 +197,6 @@ Selve samtykkesvaret trenger ikke eget samtykke for å lagres. Det regnes som en
 
 Utover det bør du lagre så lite som mulig:
 - Lagre minst mulig data, og i kortest mulig tid. For eksempel: data fra en A/B-test trenger ikke lagres etter at testen er avsluttet og retningen er valgt.
-- Hvis mulig, vent med å be om samtykke til brukerne aktivt tar funksjonaliteten i bruk. For eksempel: vil du lagre brukernes ti siste søk? Spør når brukerne søker for første gang, ikke når de starter appen.
 - Ikke lagre standardverdier. Hvis norsk er standardspråket på nettstedet, trenger du ikke lagre dette på brukernes enhet – lagre kun når brukerne avviker fra standarden.
 
 ### Teknologinøytralitet
