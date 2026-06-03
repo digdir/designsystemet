@@ -200,10 +200,8 @@ const Editor = ({
       aria-label={t('live-component.show-code')}
       hidden={hidden}
     >
-      <ds.Paragraph className={classes.language}>
-        {showHTML ? 'HTML' : 'React'}
-      </ds.Paragraph>
       <ds.ToggleGroup
+        className={classes.language}
         variant='secondary'
         data-toggle-group={t('live-component.language')}
         data-size='sm'
@@ -220,7 +218,7 @@ const Editor = ({
         className={classes.action}
         onClick={reset}
         data-size='sm'
-        /* disabled={live.code === live.newCode} */
+        hidden={live.code === live.newCode}
         type='button'
       >
         <aksel.ArrowsCirclepathIcon />
