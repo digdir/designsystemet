@@ -25,7 +25,6 @@ export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
     useContext(Context);
 
   return (
-    // biome-ignore lint/a11y/noStaticElementInteractions: ds-tabs IS interactive
     <ds-tab
       aria-controls={rest['aria-controls'] ?? getPrefixedValue?.(value)}
       data-value={value}
