@@ -9,7 +9,7 @@ date: 2026-06-02
 order: 75
 ---
 
-## Innledning – Hvorfor trenger vi et mønster? 
+## Innledning – Hvorfor trengs et mønster? 
 Samtykkebannere utformes i dag svært ulikt, med store forskjeller i språkbruk, design, plassering og brukernes faktiske valgmuligheter. Det gjør det utfordrende for brukerne å velge riktig i hvert enkelt tilfelle.
 
 Samtidig er de juridiske rammene klare. Samtykket skal fylle kravene til et gyldig samtykke etter personvernforordningen og kravene i tilgjengelighetsforskriften.
@@ -19,7 +19,7 @@ Et felles mønster gir tydelige rammer for hvordan samtykke kan løses likt på 
 ## Forberedelser
 Du må forstå hva dere samler inn før du kan spørre om samtykke. Nettsteder bruker teknologier for å samle inn opplysninger om hvordan tjenesten brukes, samt teknisk informasjon om enhet, nettleser og tilkobling. Dette skjer ofte i form av «informasjonskapsler», men kan også være andre teknologier.
 
-Du er juridisk pålagt å informere brukerne om teknologiene som brukes, og hva vi trenger deres samtykke til. Hensikten er å gi brukerne mulighet til å ta informerte valg og ivareta personvernet.
+Du er juridisk pålagt å informere brukerne om teknologiene som brukes, og hva du trenger samtykke til. Hensikten er å gi brukerne mulighet til å ta informerte valg og ivareta personvernet.
 
 ### Forstå hva og hvorfor du samler inn
 Lag en oversikt over hvilke teknologier nettstedet bruker. Kartlegg både førsteparts- og tredjepartsteknologi, inkludert informasjonskapsler, analyseverktøy og eventuelle integrasjoner som lagrer eller overfører data. 
@@ -120,7 +120,7 @@ Unngå juridiske og tekniske uttrykk der det ikke er nødvendig. Legg vekt på f
 Begrepet «informasjonskapsler» kan være uforståelig for mange brukere, og det kan være upresist hvis det er en blanding av ulike teknologier som brukes. Bruk heller formuleringer som «teknologier for å samle inn opplysninger om hvordan tjenesten brukes», eller lignende, som bedre kommuniserer hva det handler om.
 
 ### Still ett klart og tydelig spørsmål
-Samtykkebanneret bør stille ett klart og tydelig spørsmål: Hva ber vi om samtykke til? Beskrivelsen under spørsmålet kan forklare mer om hvorfor vi spør om dette og hva det betyr hvis du svarer ja. 
+Samtykkebanneret bør stille ett klart og tydelig spørsmål: Hva ber du om samtykke til? Beskrivelsen under spørsmålet kan forklare mer om hvorfor du spør om dette og hva det betyr hvis brukerne svarer ja. 
 
 <div className="dodont-row">
   <DoDont story="DontNegations">
@@ -182,7 +182,7 @@ Valg for å godta eller avslå skal kodes som knapper (`<button>`), siden disse 
 
 
 ### Landemerker og tilgjengelig navn
-For at skjermlesere skal oppdage banneret som et landemerke (eng. landmark), må seksjonen ha et tilgjengelig navn. Vi anbefaler aria-labelledby koblet mot bannerets overskrift fremfor aria-label, for å unngå at teksten leses opp to ganger:
+For at skjermlesere skal oppdage banneret som et landemerke (eng. landmark), må seksjonen ha et tilgjengelig navn. Bruk `aria-labelledby` koblet mot bannerets overskrift fremfor `aria-label`, for å unngå at teksten leses opp to ganger:
 
 ```
 <section aria-labelledby="samtykkebanner__tittel">
@@ -201,7 +201,7 @@ Samtykkebanneret skal følge vanlig fokusrekkefølge i DOM-en. La brukerne navig
 - Fokus må ikke fanges inne i banneret. Siden må fungere uten at man interagerer med samtykkebanneret.
 
 ### Lagring av samtykke
-Selve samtykkesvaret trenger ikke eget samtykke for å lagres. Det regnes som en strengt nødvendig informasjonskapsel siden vi er pålagt å be om samtykke, og det er nødvendig å lagre svaret for å oppfylle dette.
+Selve samtykkesvaret trenger ikke eget samtykke for å lagres. Det regnes som en strengt nødvendig informasjonskapsel siden du er pålagt å be om samtykke, og det er nødvendig å lagre svaret for å oppfylle dette.
 
 Utover det bør du lagre så lite som mulig:
 - Lagre minst mulig data, og i kortest mulig tid. For eksempel: data fra en A/B-test trenger ikke lagres etter at testen er avsluttet og retningen er valgt.
