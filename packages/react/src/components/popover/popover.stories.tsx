@@ -264,19 +264,3 @@ WithoutContext.parameters = {
     padding: '8rem 6rem 1rem',
   },
 };
-
-export const Inverted: StoryFn<typeof Popover> = Preview.bind({});
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

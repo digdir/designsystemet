@@ -176,19 +176,3 @@ export const WithDirectContent: StoryFn<typeof Details> = () => (
     </Details>
   </Card>
 );
-
-export const Inverted: StoryFn<typeof Details> = Preview.bind({});
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

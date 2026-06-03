@@ -108,19 +108,3 @@ export const Form: StoryFn<typeof Search> = () => {
     </>
   );
 };
-
-export const Inverted: StoryFn<typeof Search> = Preview.bind({});
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

@@ -405,23 +405,3 @@ WithBorder.args = {
 WithBorder.parameters = {
   customStyles: { display: 'grid', gap: '1rem' },
 };
-
-export const Inverted: Story = Preview.bind({});
-
-Inverted.args = {
-  ...Preview.args,
-};
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

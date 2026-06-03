@@ -177,23 +177,3 @@ export const DefaultValue: StoryFn<typeof Tabs> = () => (
     <Tabs.Panel value='value3'>content 3</Tabs.Panel>
   </Tabs>
 );
-
-export const Inverted: StoryFn<typeof Tabs> = Preview.bind({});
-
-Inverted.args = {
-  ...Preview.args,
-};
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

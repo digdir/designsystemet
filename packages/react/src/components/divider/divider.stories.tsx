@@ -20,19 +20,3 @@ export const Preview: Story = (args) => (
     </Paragraph>
   </>
 );
-
-export const Inverted: Story = Preview.bind({});
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

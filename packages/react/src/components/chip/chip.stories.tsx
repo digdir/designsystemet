@@ -45,19 +45,3 @@ Button.parameters = {
     justifyContent: 'center',
   },
 };
-
-export const Inverted: StoryFn<typeof Chip.Radio> = Preview.bind({});
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

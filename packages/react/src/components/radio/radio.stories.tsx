@@ -133,39 +133,3 @@ export const Outline: StoryFn<UseRadioGroupProps> = () => (
     </Fieldset>
   </>
 );
-
-export const Inverted: StoryObj<typeof Radio> = {
-  args: {
-    ...Preview.args,
-  },
-};
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-export const InvertedGroup: StoryFn<UseRadioGroupProps> = Group.bind({});
-
-InvertedGroup.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

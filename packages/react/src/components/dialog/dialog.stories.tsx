@@ -402,19 +402,3 @@ export const DialogPlacementRight: StoryFn<typeof Dialog> = () => {
     </Dialog.TriggerContext>
   );
 };
-
-export const Inverted: StoryFn<typeof Dialog> = Preview.bind({});
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

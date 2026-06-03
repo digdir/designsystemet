@@ -354,29 +354,3 @@ Switch.parameters = {
     gap: '2rem',
   },
 };
-
-export const Inverted: Story = {
-  args: {
-    ...Preview.args,
-    'data-color': 'inverted',
-  },
-  render: (args) => {
-    if (args.role !== 'switch') args.role = undefined; // Ensure we only keep switch role in storybook
-
-    return <Input {...args} aria-label='input' />;
-  },
-};
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

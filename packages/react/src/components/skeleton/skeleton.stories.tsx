@@ -109,23 +109,3 @@ export const Text: StoryFn<typeof Skeleton> = () => (
 Text.parameters = {
   customStyles: { display: 'flex', gap: '20px', maxWidth: 300 },
 };
-
-export const Inverted: Story = {
-  args: {
-    ...Preview.args,
-  },
-};
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

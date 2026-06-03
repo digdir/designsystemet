@@ -48,19 +48,3 @@ function isVisibleOnScreen(el: Element) {
   const { height, width } = el.getBoundingClientRect();
   return height > 1 && width > 1;
 }
-
-export const Inverted: Story = Preview.bind({});
-
-Inverted.decorators = [
-  (Story) => (
-    <div
-      data-color='inverted'
-      style={{
-        background: 'var(--ds-color-background-default)',
-        padding: 'var(--ds-size-4)',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];

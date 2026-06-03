@@ -235,5 +235,3 @@ export const AsGrid: Story = (args) => (
     </Card.Block>
   </Card>
 );
-
-export const Inverted: Story = Preview.bind({});
