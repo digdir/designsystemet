@@ -507,6 +507,36 @@ Multiple.args = {
   multiple: true,
 };
 
+export const MultipleCount: StoryFn<SuggestionMultipleProps> = (args) => {
+  const [selected, setSelected] = useState<string[]>(["Sogndal"]);
+
+  return (
+      <Field>
+        <Label>Velg destinasjoner</Label>
+        <Suggestion
+          {...args}
+          multiple
+          display='count'
+          selected={selected}
+          onSelectedChange={(items) =>
+            setSelected(items.map((item) => item.value))
+          }
+        >
+          <Suggestion.Input />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place} label={place} value={place}>
+                {place}
+              </Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+  );
+};
+
 export const InDetails: StoryFn<typeof Suggestion> = (args) => {
   return (
     <Details>

@@ -92,6 +92,17 @@ type SuggestionBaseProps = {
    * @default ({ label }) => label
    */
   renderSelected?: (args: { label: string; value: string }) => ReactNode;
+  /**
+   * How selected items are displayed when `multiple` is true.
+   *
+   * - `chips` renders removable chips for each selected item (default)
+   * - `count` hides chips and shows a count label (e.g. "2 valgt")
+   *
+   * Customize the label text with the `--dsc-suggestion-count-label` CSS variable.
+   *
+   * @default 'chips'
+   */
+  display?: 'chips' | 'count';
 } & Omit<HTMLAttributes<DSSuggestionElement>, 'defaultValue'>;
 
 type SuggestionValueProps<T extends { multiple: boolean }> = {
@@ -169,6 +180,7 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
       className,
       creatable = false,
       defaultSelected,
+      display = 'chips',
       filter = true,
       multiple = false,
       name,
@@ -266,6 +278,10 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
         <ds-suggestion
           data-multiple={multiple || undefined}
           data-creatable={creatable || undefined}
+          data-count={
+            (multiple && display === 'count' && selectedItems.length) ||
+            undefined
+          }
           class={cl('ds-suggestion', className)} // Using "class" since React does not translate className on custom elements
           ref={mergedRefs}
           suppressHydrationWarning // Since <ds-suggestion> adds attributes
