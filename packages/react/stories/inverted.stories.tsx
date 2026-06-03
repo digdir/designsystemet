@@ -48,13 +48,7 @@ const meta: Meta = {
   },
   decorators: [
     (Story) => (
-      <div
-        data-color='inverted'
-        style={{
-          background: 'var(--ds-color-background-default)',
-          padding: 'var(--ds-size-4)',
-        }}
-      >
+      <div data-color-scheme='auto'>
         <Story />
       </div>
     ),
@@ -65,20 +59,23 @@ export default meta;
 
 const Demo = ({ label, children }: { label: string; children: ReactNode }) => (
   <section
+    data-color='inverted'
     style={{
       display: 'flex',
       flexDirection: 'column',
       gap: 'var(--ds-size-2)',
+      background: 'var(--ds-color-background-default)',
+      padding: 'var(--ds-size-8)',
     }}
   >
     <Label data-size='sm'>{label}</Label>
     {children}
-    <Divider />
   </section>
 );
 
-export const Inverted: StoryFn = () => (
+export const Inverted: StoryFn = (args) => (
   <div
+    {...args}
     style={{
       display: 'flex',
       flexDirection: 'column',
