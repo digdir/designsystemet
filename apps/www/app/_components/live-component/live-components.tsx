@@ -218,7 +218,7 @@ const Editor = ({
         className={classes.action}
         onClick={reset}
         data-size='sm'
-        hidden={live.code === live.newCode}
+        hidden={live.newCode === undefined || live.newCode === live.code}
         type='button'
       >
         <aksel.ArrowsCirclepathIcon />
