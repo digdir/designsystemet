@@ -7,8 +7,10 @@ html {
 }
 
 .docblock-code-toggle {
-  background-color: var(--ds-color-background-tinted) !important;
-  color: var(--ds-color-text-default) !important;
+  background-color: var(--ds-color-neutral-background-tinted) !important;
+  color: var(--ds-color-neutral-text-default) !important;
+  /* background-color: var(--ds-color-background-tinted) !important;
+  color: var(--ds-color-text-default) !important; */
 }
 
 .sbdocs {
