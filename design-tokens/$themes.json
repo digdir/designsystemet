@@ -109,14 +109,6 @@
     "group": "Main color"
   },
   {
-    "id": "6272c7bdf7d73f7fc4d90f2277bb3e625055e1b9",
-    "name": "inverted",
-    "selectedTokenSets": {
-      "semantic/modes/main-color/inverted": "enabled"
-    },
-    "group": "Main color"
-  },
-  {
     "id": "77270e21ea69e87b1111ab73f82f2c9501ffb509",
     "name": "brand1",
     "selectedTokenSets": {
