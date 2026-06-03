@@ -14,7 +14,7 @@ export const DoNegations = () => {
   );
 };
 
-export const DontButtons = () => {
+export const DontButtons1 = () => {
   return (
     <>
       <Button variant='primary'>Nei, jeg vil ikke ha en bedre tjeneste</Button>
@@ -25,4 +25,8 @@ export const DontButtons = () => {
       <Button variant='primary'>Jeg forstår</Button>
     </>
   );
+};
+
+export const DontButtons2 = () => {
+  return <Button variant='primary'>Godta bare nødvendige</Button>;
 };

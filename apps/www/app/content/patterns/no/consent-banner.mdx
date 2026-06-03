@@ -138,10 +138,18 @@ For at samtykket skal være frivillig, må ja- og nei-alternativene fremstå som
 
 Unngå ledende, følelsesladde eller manipulerende formuleringer som kan presse brukerne mot ett valg. 
 
+<div className="dodont-row">
+  <DoDont story="DontButtons1">
+Unngå vage, uklare eller manipulerende tekster til knapper.
+  </DoDont>
+</div>
+
+#### Strengt nødvendige informasjonskapsler er unntatt samtykke
+Strengt nødvendige informasjonskapsler krever ikke samtykke, og skal ikke være en del av spørsmålet brukerne skal ta stilling til. Unngå derfor formuleringer i knappene som «Godta bare nødvendige informasjonskapsler», som kan skape forvirring og gjøre valget mer komplisert.
 
 <div className="dodont-row">
-  <DoDont story="DontButtons">
-Unngå vage, uklare eller manipulerende tekster til knapper.
+  <DoDont story="DontButtons2">
+Nødvendige informasjonskapsler skal ikke være en del av spørsmålet brukerne skal ta stilling til, og bør ikke nevnes i knappene.
   </DoDont>
 </div>
 
@@ -153,10 +161,8 @@ Samtykkebanneret må ha nok informasjon til at brukerne kan ta et informert valg
 #### Legg fullstendig informasjon i en egen erklæring
 Brukerne skal ha tilgang til detaljert og fullstendig informasjon. Denne informasjonen bør samles på en egen side om personvern og informasjonskapsler. Sørg for at samtykkebanneret har en tydelig lenke til denne erklæringen. Det skal også finnes lenke til erklæringen nederst på siden.
 
-#### Strengt nødvendige informasjonskapsler er unntatt samtykke
-Strengt nødvendige informasjonskapsler krever ikke samtykke, og skal ikke være en del av spørsmålet brukerne skal ta stilling til. Unngå derfor formuleringer i knappene som «Godta bare nødvendige informasjonskapsler», som kan skape forvirring og gjøre valget mer komplisert.
-
-Det er likevel anbefalt å informere kort om bruken av strengt nødvendige informasjonskapsler i banneret, og med lenke til mer informasjon om hva slags informasjonskapsler det handler om. 
+#### Informer om strengt nødvendige informasjonskapsler 
+ Legg informasjonen om strengt nødvendige informasjonskapsler *under* valgalternativene, siden det ikke er en del av spørsmålet brukerne skal ta stilling til. 
 
 ## Kode
 
@@ -186,11 +192,10 @@ For at skjermlesere skal oppdage banneret som et landemerke (eng. landmark), må
 Alle valg og tilbakemeldinger må fungere med skjermleser. Ikke bruk `role="alert"` eller lignende med mindre det er særlig viktig for brukerne å få med seg banneret eller endringer i det for å kunne bruke siden.
 
 ### Fokusrekkefølge og tastaturnavigasjon
-For et ikke-modalt samtykkebanner må ikke banneret få fokus automatisk – det skal følge vanlig fokusrekkefølge i DOM-en.
+Samtykkebanneret skal følge vanlig fokusrekkefølge i DOM-en. La brukerne navigere til banneret selv, i stedet for å flytte fokus dit automatisk.
 - Banneret skal ligge tidlig i DOM-en, slik at det er noe av det første brukerne møter.
 - Banneret bør ligge før «hopp til hovedinnhold»-lenken. Da blir banneret lettere å oppdage for tastaturbrukere, samtidig som brukerne fortsatt kan hoppe videre til hovedinnholdet etter banneret.
 - Fokus må ikke fanges inne i banneret. Siden må fungere uten at man interagerer med samtykkebanneret.
-- All funksjonalitet må fungere uten datamus.
 
 ### Lagring av samtykke
 Selve samtykkesvaret trenger ikke eget samtykke for å lagres. Det regnes som en strengt nødvendig informasjonskapsel siden vi er pålagt å be om samtykke, og det er nødvendig å lagre svaret for å oppfylle dette.
