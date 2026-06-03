@@ -1,4 +1,4 @@
-import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Checkbox, Paragraph } from '@digdir/designsystemet-react';
 
 export const DontNegations = () => {
   return (
@@ -28,4 +28,15 @@ export const DontButtons1 = () => {
 
 export const DontButtons2 = () => {
   return <Button variant='primary'>Godta bare nødvendige</Button>;
+};
+
+export const DontNecessaryCookiesCheckbox = () => {
+  return (
+    <Checkbox
+      checked
+      disabled
+      label='Nødvendige informasjonskapsler'
+      readOnly
+    />
+  );
 };
