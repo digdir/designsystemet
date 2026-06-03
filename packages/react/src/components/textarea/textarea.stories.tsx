@@ -98,6 +98,12 @@ export const Inverted: Story = {
   args: {
     ...Preview.args,
   },
+  render: (args) => (
+    <>
+      <Label htmlFor={args.id}>Label</Label>
+      <Textarea {...args} />
+    </>
+  ),
 };
 
 Inverted.decorators = [

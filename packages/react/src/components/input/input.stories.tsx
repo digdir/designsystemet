@@ -360,6 +360,11 @@ export const Inverted: Story = {
     ...Preview.args,
     'data-color': 'inverted',
   },
+  render: (args) => {
+    if (args.role !== 'switch') args.role = undefined; // Ensure we only keep switch role in storybook
+
+    return <Input {...args} aria-label='input' />;
+  },
 };
 
 Inverted.decorators = [
