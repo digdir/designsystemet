@@ -101,10 +101,7 @@ For at samtykket skal være frivillig og gyldig, må valgalternativene fremstå 
 Unngå visuelle hint som leder brukerne mot ett bestemt valg, for eksempel ved å gjøre «Godta»-knappen større, mer fargerik eller mer fremtredende enn «Avslå»-knappen.
 
 ### Hvordan endre samtykke i etterkant
-
-Brukerne må når som helst kunne endre eller trekke tilbake samtykket sitt. Legg derfor en fast lenke i footeren som åpner samtykkebanneret på nytt.
-
-Lenken bør være synlig på alle sider og ha en tydelig tekst, for eksempel «Endre hva vi kan samle inn av informasjon». Ikke gjør denne funksjonen tilgjengelig kun i selve samtykkebanneret, siden banneret forsvinner når brukerne har tatt et valg.
+Brukerne må når som helst kunne endre eller trekke tilbake samtykket sitt. Legg derfor en fast lenke i nederst på siden som åpner samtykkebanneret på nytt. Lenken skal være synlig på alle sider og ha en tydelig tekst, for eksempel «Endre hva vi kan samle inn av informasjon». 
 
 <Image
   src="/img/patterns/consent-banner-footerchange.png"
@@ -114,47 +111,40 @@ Lenken bør være synlig på alle sider og ha en tydelig tekst, for eksempel «E
 />
 
 ## Språk 
-For at et samtykke skal være gyldig, må brukerne få klar og forståelig informasjon som gjør det mulig å ta et aktivt og informert valg. Det må være tydelig hva brukerne samtykker til, og hva konsekvensene av valget er. 
+For at et samtykke skal være gyldig, må brukerne få klar og forståelig informasjon som gjør det mulig å ta et aktivt og informert valg. Det må være tydelig hva brukerne samtykker til, hva konsekvensene av valget er og hvem opplysningene eventuelt deles med.
 
-Brukerne skal enkelt forstå
-- hva formålet er
-- hvilke opplysninger som behandles
-- hvem som er behandlingsansvarlig
-- hvem opplysningene eventuelt deles med
-
-Informasjonen må gis i et klart og enkelt språk som er forståelig for alle målgrupper. Bruk hverdagslige uttrykk og korte, presise setninger, slik at alle har så like muligheter som mulig til å forstå hva samtykket handler om. Unngå juridiske og tekniske uttrykk der det ikke er nødvendig. Legg vekt på formålet med behandlingen, ikke teknologien som brukes.
+Bruk hverdagslige uttrykk og korte, presise setninger, slik at alle har så like muligheter som mulig til å forstå hva samtykket handler om. 
 
 ### Unngå vanskelige begreper
+Unngå juridiske og tekniske uttrykk der det ikke er nødvendig. Legg vekt på formålet med behandlingen, ikke teknologien som brukes.
+
 Begrepet «informasjonskapsler» kan være uforståelig for mange brukere, og det kan være upresist hvis det er en blanding av ulike teknologier som brukes. Bruk heller formuleringer som «teknologier for å samle inn opplysninger om hvordan tjenesten brukes», eller lignende, som bedre kommuniserer hva det handler om.
 
 ### Still ett klart og tydelig spørsmål
-Samtykkebanneret bør stille ett klart og tydelig spørsmål: Hva ber vi om samtykke til, og hvorfor?
-Vær konkret og presis. Forklar kort
-- hvorfor vi ber om samtykke
-- hvilke opplysninger som samles inn
-- hva formålet er
+Samtykkebanneret bør stille ett klart og tydelig spørsmål: Hva ber vi om samtykke til? Beskrivelsen under spørsmålet kan forklare mer om hvorfor vi spør om dette og hva det betyr hvis du svarer ja. 
 
-Unngå vage eller uklare formuleringer som kan gi rom for tolkning og misforståelser. Fjern alt som ikke hjelper brukerne å forstå valget og konsekvensene av det.
+<div className="dodont-row">
+  <DoDont story="DontNegations">
+Spørsmål med nektelser kan gjøre det vanskelig å forstå spørsmålet. Det er ofte setninger med «ikke» og «aldri».
+  </DoDont>
+  <DoDont story="DoNegations">
+Still spørsmålet konkret. Da blir det tydeligere hva brukerne sier ja til, og valget blir enklere å forstå.
+  </DoDont>
+</div>
 
-Unngå:
-Ønsker du at vi ikke skal lagre informasjon om deg og dine bruksmønstre?
-Tekst på knapper og valg
-
+### Tekst på knapper og valg
 Knappetekstene må være så tydelige at brukerne umiddelbart forstår hvilket valg de tar, og hva det er de samtykker til. 
 
-For at samtykket skal være frivillig, må ja- og nei-alternativene fremstå som likeverdige. Det betyr at de skal være
-•	like enkle å forstå
-•	like enkle å velge
-•	formulert i et enkelt, nøytralt og objektivt språk, uten skjulte føringer
+For at samtykket skal være frivillig, må ja- og nei-alternativene fremstå som likeverdige. Det betyr at de skal være formulert i et enkelt språk uten skjulte føringer.
 
 Unngå ledende, følelsesladde eller manipulerende formuleringer som kan presse brukerne mot ett valg. 
-❌ Eksempler på vage, uklare eller manipulerende tekster til knapper:
-•	Nei, jeg vil ikke ha en bedre tjeneste 
-•	Ja, jeg vil hjelpe til
-•	Godta anbefalte 
-•	Bare nødvendige
-•	OK 
-•	Jeg forstår
+
+
+<div className="dodont-row">
+  <DoDont story="DontButtons">
+Unngå vage, uklare eller manipulerende tekster til knapper.
+  </DoDont>
+</div>
 
 ### Innhold i samtykkebanneret
 
@@ -162,15 +152,12 @@ Unngå ledende, følelsesladde eller manipulerende formuleringer som kan presse 
 Samtykkebanneret må ha nok informasjon til at brukerne kan ta et informert valg, men ikke mer enn nødvendig. For mye tekst kan føre til at brukerne ikke leser informasjonen eller blir overveldet, og dermed ikke gir informerte og gyldige samtykker. Pass likevel på at du ikke gjemmer bort informasjon som er viktig for valget.
 
 #### Legg fullstendig informasjon i en egen erklæring
-Brukerne skal ha tilgang til detaljert og fullstendig informasjon. Denne informasjonen bør samles i en egen cookie- eller personvernerklæring. Sørg for at samtykkebanneret har en tydelig lenke til denne erklæringen. 
-
-Husk at erklæringen også skal være
-- enkel å forstå og sette seg inn i 
-- lett å finne også utenfor samtykkebanneret, for eksempel i bunnmenyen
+Brukerne skal ha tilgang til detaljert og fullstendig informasjon. Denne informasjonen bør samles på en egen side om personvern og informasjonskapsler. Sørg for at samtykkebanneret har en tydelig lenke til denne erklæringen. Det skal også finnes lenke til erklæringen nederst på siden.
 
 #### Strengt nødvendige informasjonskapsler er unntatt samtykke
-Strengt nødvendige informasjonskapsler krever ikke samtykke, og skal ikke være en del av valget brukerne skal ta stilling til. Unngå derfor formuleringer som «Bare nødvendige informasjonskapsler» eller «godta alle informasjonskapsler», som kan skape forvirring og gjøre valget mer komplisert.
-Det er likevel anbefalt å informere kort om bruken av strengt nødvendige informasjonskapsler i banneret, og med henvisning til cookie- eller personvernerklæringen for detaljer. 
+Strengt nødvendige informasjonskapsler krever ikke samtykke, og skal ikke være en del av spørsmålet brukerne skal ta stilling til. Unngå derfor formuleringer i knappene som «Godta bare nødvendige informasjonskapsler», som kan skape forvirring og gjøre valget mer komplisert.
+
+Det er likevel anbefalt å informere kort om bruken av strengt nødvendige informasjonskapsler i banneret, og med lenke til mer informasjon om hva slags informasjonskapsler det handler om. 
 
 ## Kode
 
