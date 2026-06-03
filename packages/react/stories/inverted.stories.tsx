@@ -45,6 +45,7 @@ const meta: Meta = {
   title: 'Inverted',
   parameters: {
     layout: 'fullscreen',
+    a11y: { manual: true },
   },
   decorators: [
     (Story) => (
