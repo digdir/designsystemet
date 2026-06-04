@@ -126,18 +126,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     );
   }
 
-  const UNSAFE_COLOR_GROUPS = Array.from(process.env.UNSAFE_COLOR_GROUPS?.split(',') ?? []);
-  if (UNSAFE_COLOR_GROUPS.length > 0) {
-    console.warn(
-      pc.yellow(
-        `\n⚠️ UNSAFE_COLOR_GROUPS is set to ${pc.blue(`[${UNSAFE_COLOR_GROUPS.join(', ')}]`)}. This will override the default color groups.`,
-      ),
-    );
-  }
-  const colorGroups =
-    UNSAFE_COLOR_GROUPS.length > 0
-      ? UNSAFE_COLOR_GROUPS
-      : [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
+  const colorGroups = [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
 
   /** For sharing build options in other files */
   buildOptions = options;
