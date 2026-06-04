@@ -40,7 +40,12 @@ function handleToggle(
     source = (el.id && root?.querySelector?.<HTMLElement>(css)) || undefined; // Polyfill ToggleEvent .source for older browsers
   }
   if (!source || source === el || (oldState && oldState === newState)) return; // No need to update
-  el.style.scrollMarginBottom = `var(--_ds-floating-arrow-size)`; // Use scroll-margin-bottom to measure computed arrow-size property
+
+  // Use scroll-margin-bottom to measure computed arrow-size property as this does
+  // not affect layout or position, makes the browser calculate the pixel value instead
+  // of returning the calc() (as it would if reading the --_ds-floating-arrow-size directly)
+  // and makes it possible to read the value even if ::before is not used to draw the arrow.
+  el.style.scrollMarginBottom = `var(--_ds-floating-arrow-size)`;
 
   const padding = 10;
   const overscroll = getCSSProp(el, '--_ds-floating-overscroll');
