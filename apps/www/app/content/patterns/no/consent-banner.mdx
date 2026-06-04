@@ -43,7 +43,7 @@ Veiledning om kartlegging av teknologier, hva du skal informere om og hva du ska
 
 ## Design og opplevelse
 
-### Hvis du kan samle alt under et spørsmål
+### Hvis du kan ha ett spørsmål
 Samle samtykket under ett enkelt spørsmål når det er mulig. Da holder det med to knapper: én for å godta og én for å avslå. Dette er den enkleste og mest forståelige løsningen for brukerne.
  
 <Image
@@ -53,7 +53,7 @@ Samle samtykket under ett enkelt spørsmål når det er mulig. Da holder det med
   caption='Et enkelt samtykkebanner med ett spørsmål og to likeverdige valg.'
 />
 
-### Hvis du må dele valgene opp
+### Hvis du må gi brukerne flere valg
 Noen ganger må du gi brukerne mulighet til å godta noe og avslå noe annet. 
 Da bør du bruke [avkrysningsbokser](/no/components/docs/checkbox/overview), ikke brytere. En bryter ([switch](/no/components/docs/switch/overview)) signaliserer at endringen trer i kraft umiddelbart. Det passer ikke her, siden valget først gjelder etter at brukerne har bekreftet. Avkrysningsbokser kommuniserer at valget er noe brukerne stiller inn og deretter lagrer. Avkrysningsboksene skal ikke være forhåndsmarkert.
 
@@ -66,8 +66,8 @@ I tillegg til en knapp for å lagre de valgene brukerne har gjort, skal det finn
   caption='Bruk av avkrysningsbokser når brukerne må kunne velge mellom flere valgfrie formål.'
 />
  
-### Hvis du bare har nødvendige informasjonskapsler
-Dersom nettstedet kun bruker strengt nødvendige informasjonskapsler – som for eksempel lagring av språkvalg eller innloggingsstatus – trenger du ikke vise et samtykkebanner. Du er likevel pålagt å informere brukerne om at slike informasjonskapsler brukes. Det kan du gjøre i bunnen av nettsiden, med en lenke til mer informasjon. 
+### Hvis det bare er nødvendige informasjonskapsler
+Om nettstedet kun bruker strengt nødvendige informasjonskapsler – som for eksempel lagring av språkvalg eller innloggingsstatus – trenger du ikke vise et samtykkebanner. Du må likevel informere om at slike informasjonskapsler brukes. Det kan du gjøre i bunnen av nettsiden, med en lenke til mer informasjon. 
 
 <Image
   src="/img/patterns/consent-banner-footer.png"
@@ -77,9 +77,7 @@ Dersom nettstedet kun bruker strengt nødvendige informasjonskapsler – som for
 />
 
 ### Hvis du kan vente med å spørre om samtykke
-Hvis en tjeneste kun er relevant for noen brukere, eller kun tas i bruk i bestemte situasjoner, bør du vente med å be om samtykke til brukerne faktisk møter den aktuelle funksjonaliteten.
-
-Et typisk eksempel er innebygd video fra tredjeparter som YouTube eller Vimeo. Disse tjenestene kan sette egne informasjonskapsler når videoen lastes. I stedet for å be om samtykke i det generelle samtykkebanneret, kan du vise en plassholder der videoen skal være – og først spørre om samtykke når brukerne faktisk ønsker å se videoen. Dette sikrer at samtykket er relevant og meningsfullt når det gis.
+Vent med å be om samtykke til det er aktuelt. For eksempel for å vise en innebygd video fra tredjeparter som YouTube eller Vimeo. Disse tjenestene kan sette egne informasjonskapsler når videoen lastes. I stedet for å be om samtykke i det generelle samtykkebanneret, kan du vise en plassholder der videoen skal være – og først spørre om samtykke når brukerne faktisk ønsker å se videoen. Dette sikrer at samtykket er relevant og meningsfullt når det gis.
 
 <Image
   src="/img/patterns/consent-banner-video.png"
@@ -113,14 +111,11 @@ Brukerne må når som helst kunne endre eller trekke tilbake samtykket sitt. Leg
 />
 
 ## Språk 
-For at et samtykke skal være gyldig, må brukerne få klar og forståelig informasjon som gjør det mulig å ta et aktivt og informert valg. Det må være tydelig hva brukerne samtykker til, hva konsekvensene av valget er og hvem opplysningene eventuelt deles med.
+Bruk hverdagslige uttrykk og korte, presise setninger. 
 
-Bruk hverdagslige uttrykk og korte, presise setninger, slik at alle har så like muligheter som mulig til å forstå hva samtykket handler om. 
-
-### Unngå vanskelige begreper
 Unngå juridiske og tekniske uttrykk der det ikke er nødvendig. Legg vekt på formålet med behandlingen, ikke teknologien som brukes.
 
-Begrepet «informasjonskapsler» kan være uforståelig for mange brukere, og det kan være upresist hvis det er en blanding av ulike teknologier som brukes. Bruk heller formuleringer som «teknologier for å samle inn opplysninger om hvordan tjenesten brukes», eller lignende, som bedre kommuniserer hva det handler om.
+Begrepet «informasjonskapsler» kan være uforståelig for mange brukere, og det kan være upresist hvis nettstedet bruker en blanding av teknologier. Skriv heller «teknologier for å samle inn opplysninger om hvordan tjenesten brukes», eller lignende. Det kommuniserer bedre hva det handler om.
 
 ### Still ett klart og tydelig spørsmål
 Samtykkebanneret bør stille ett klart og tydelig spørsmål: Hva ber du om samtykke til? Beskrivelsen under spørsmålet kan forklare mer om hvorfor du spør om dette og hva det betyr hvis brukerne svarer ja. 
@@ -136,8 +131,6 @@ Still spørsmålet konkret. Da blir det tydeligere hva brukerne sier ja til, og 
 
 ### Tekst på knapper og valg
 Knappetekstene må være så tydelige at brukerne umiddelbart forstår hvilket valg de tar, og hva det er de samtykker til. 
-
-For at samtykket skal være frivillig, må ja- og nei-alternativene fremstå som likeverdige. Det betyr at de skal være formulert i et enkelt språk uten skjulte føringer.
 
 Unngå ledende, følelsesladde eller manipulerende formuleringer som kan presse brukerne mot ett valg. 
 
@@ -159,16 +152,15 @@ Ikke vis nødvendige informasjonskapsler som et forhåndsvalgt eller deaktivert 
   </DoDont>
 </div>
 
+Legg informasjonen om strengt nødvendige informasjonskapsler *under* valgalternativene, siden det ikke er en del av spørsmålet brukerne skal ta stilling til. 
+
 ### Innhold i samtykkebanneret
 
 #### Unngå for mye tekst i selve samtykkebanneret
-Samtykkebanneret må ha nok informasjon til at brukerne kan ta et informert valg, men ikke mer enn nødvendig. For mye tekst kan føre til at brukerne ikke leser informasjonen eller blir overveldet, og dermed ikke gir informerte og gyldige samtykker. Pass likevel på at du ikke gjemmer bort informasjon som er viktig for valget.
+For at et samtykke skal være gyldig, må brukerne få klar og forståelig informasjon som gjør det mulig å ta et aktivt og informert valg. Det må være tydelig hva brukerne samtykker til, hva konsekvensene av valget er og hvem opplysningene eventuelt deles med. 
 
 #### Legg fullstendig informasjon i en egen erklæring
-Brukerne skal ha tilgang til detaljert og fullstendig informasjon. Denne informasjonen bør samles på en egen side om personvern og informasjonskapsler. Sørg for at samtykkebanneret har en tydelig lenke til denne erklæringen. Det skal også finnes lenke til erklæringen nederst på siden.
-
-#### Informer om strengt nødvendige informasjonskapsler 
- Legg informasjonen om strengt nødvendige informasjonskapsler *under* valgalternativene, siden det ikke er en del av spørsmålet brukerne skal ta stilling til. 
+Brukerne skal ha tilgang til detaljert og fullstendig informasjon. Denne informasjonen bør samles på en egen side om personvern og informasjonskapsler. Sørg for at samtykkebanneret har en tydelig lenke til denne erklæringen, i tillegg til en lenke i footer.
 
 ## Kode
 
