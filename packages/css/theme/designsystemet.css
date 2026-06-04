@@ -221,23 +221,6 @@ design-tokens: v1.15.0
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #292c30;
-  --ds-link-color-visited: #663299;
-  --ds-background-default: #ffffff;
-  --ds-background-tinted: #eef4fa;
-  --ds-surface-default: #ffffff;
-  --ds-surface-tinted: #ddeaf6;
-  --ds-surface-hover: #c7ddf0;
-  --ds-surface-active: #afcee9;
-  --ds-border-subtle: #99c0e3;
-  --ds-border-default: #2a7cc5;
-  --ds-border-strong: #005db1;
-  --ds-text-subtle: #005db1;
-  --ds-text-default: #002c54;
-  --ds-base-default: #0062BA;
-  --ds-base-hover: #004f96;
-  --ds-base-active: #003d75;
-  --ds-base-contrast-subtle: #dbe9f5;
-  --ds-base-contrast-default: #ffffff;
 
   color-scheme: light;
 }
@@ -374,23 +357,6 @@ design-tokens: v1.15.0
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #292c30;
-  --ds-link-color-visited: #663299;
-  --ds-background-default: #ffffff;
-  --ds-background-tinted: #eef4fa;
-  --ds-surface-default: #ffffff;
-  --ds-surface-tinted: #ddeaf6;
-  --ds-surface-hover: #c7ddf0;
-  --ds-surface-active: #afcee9;
-  --ds-border-subtle: #99c0e3;
-  --ds-border-default: #2a7cc5;
-  --ds-border-strong: #005db1;
-  --ds-text-subtle: #005db1;
-  --ds-text-default: #002c54;
-  --ds-base-default: #0062BA;
-  --ds-base-hover: #004f96;
-  --ds-base-active: #003d75;
-  --ds-base-contrast-subtle: #dbe9f5;
-  --ds-base-contrast-default: #ffffff;
 
   color-scheme: light;
 }
@@ -692,23 +658,6 @@ design-tokens: v1.15.0
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #17181a;
   --ds-color-focus-outer: #ececec;
-  --ds-link-color-visited: #b49acd;
-  --ds-background-default: #0c1927;
-  --ds-background-tinted: #102033;
-  --ds-surface-default: #142941;
-  --ds-surface-tinted: #172f4b;
-  --ds-surface-hover: #1a3757;
-  --ds-surface-active: #21446d;
-  --ds-border-subtle: #285182;
-  --ds-border-default: #5a84b4;
-  --ds-border-strong: #8eaacb;
-  --ds-text-subtle: #8eaacb;
-  --ds-text-default: #e7edf4;
-  --ds-base-default: #4c91cf;
-  --ds-base-hover: #6fa6d8;
-  --ds-base-active: #92bce1;
-  --ds-base-contrast-subtle: #0d1924;
-  --ds-base-contrast-default: #000000;
 
   color-scheme: dark;
 }
@@ -845,23 +794,6 @@ design-tokens: v1.15.0
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #17181a;
   --ds-color-focus-outer: #ececec;
-  --ds-link-color-visited: #b49acd;
-  --ds-background-default: #0c1927;
-  --ds-background-tinted: #102033;
-  --ds-surface-default: #142941;
-  --ds-surface-tinted: #172f4b;
-  --ds-surface-hover: #1a3757;
-  --ds-surface-active: #21446d;
-  --ds-border-subtle: #285182;
-  --ds-border-default: #5a84b4;
-  --ds-border-strong: #8eaacb;
-  --ds-text-subtle: #8eaacb;
-  --ds-text-default: #e7edf4;
-  --ds-base-default: #4c91cf;
-  --ds-base-hover: #6fa6d8;
-  --ds-base-active: #92bce1;
-  --ds-base-contrast-subtle: #0d1924;
-  --ds-base-contrast-default: #000000;
 
   color-scheme: dark;
 }
