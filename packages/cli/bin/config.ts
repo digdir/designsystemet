@@ -11,6 +11,8 @@ import {
 import { dsfs } from '../src/utils/filesystem.js';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
 
+export { deprecatedCLIOptions } from '../src/schemas/helpers.js';
+
 export async function readConfigFile(configFilePath: string, allowFileNotFound = true): Promise<string> {
   let configFile: string;
 

@@ -9,12 +9,12 @@ import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { createSystemTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.js';
-import { cliOptions, createTokens, tokenSetDimensions } from '../src/tokens/create.js';
+import { createTokens, tokenSetDimensions } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
 import type { OutputFile, Theme } from '../src/tokens/types.js';
 import { toColorNames } from '../src/tokens/utils.js';
 import { dsfs } from '../src/utils/filesystem.js';
-import { parseCreateConfig, readConfigFile } from './config.js';
+import { deprecatedCLIOptions as cliOptions, parseCreateConfig, readConfigFile } from './config.js';
 
 export const figletAscii = `
  _____            _                           _                      _

@@ -2,14 +2,12 @@ import pc from 'picocolors';
 import pkg from '../../../../package.json' with { type: 'json' };
 import { baseColors } from '../../../colors/colorMetadata.js';
 import type { OutputFile } from '../../types.js';
-import { buildOptions } from '../platform.js';
-import { getCustomColors, type ProcessedThemeObject } from '../utils/getMultidimensionalThemes.js';
+import { getThemeColors, type ProcessedThemeObject } from '../utils/getMultidimensionalThemes.js';
 
 export const defaultFileHeader = `build: v${pkg.version}`;
 
 export const createTypeDeclarationFiles = (processed$themes: ProcessedThemeObject[]): OutputFile[] => {
-  const colorGroups = buildOptions?.colorGroups || [];
-  const customColors = getCustomColors(processed$themes, colorGroups);
+  const customColors = getThemeColors(processed$themes);
   const uniqueColors = Array.from(new Set<string>(customColors));
 
   // Add neutral for backwards compatibility, with main and support categories

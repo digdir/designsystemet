@@ -2,12 +2,28 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import type { z } from 'zod';
 import { fromError } from 'zod-validation-error';
-import { cliOptions } from '../tokens/create.js';
+
+export const deprecatedCLIOptions = {
+  outDir: 'out-dir',
+  clean: 'clean',
+  tailwind: 'tailwind',
+  theme: {
+    colors: {
+      main: 'main-colors',
+      support: 'support-colors',
+      neutral: 'neutral-color',
+    },
+    typography: {
+      fontFamily: 'font-family',
+    },
+    borderRadius: 'border-radius',
+  },
+} as const;
 
 function mapPathToOptionName(path: PropertyKey[]) {
   // replace "themes.some-theme-name" with "theme" to match cliOptions object
   const normalisedPath = path[0] === 'themes' ? ['theme', ...R.drop(2, path)] : path;
-  const option = R.path(normalisedPath as Array<string | number>, cliOptions);
+  const option = R.path(normalisedPath as Array<string | number>, deprecatedCLIOptions);
   if (typeof option !== 'string') {
     return;
   }

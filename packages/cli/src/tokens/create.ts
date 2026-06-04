@@ -13,23 +13,6 @@ export const tokenSetDimensions: TokenSetDimensions = {
   sizeModes: ['small', 'medium', 'large'],
 };
 
-export const cliOptions = {
-  outDir: 'out-dir',
-  clean: 'clean',
-  tailwind: 'tailwind',
-  theme: {
-    colors: {
-      main: 'main-colors',
-      support: 'support-colors',
-      neutral: 'neutral-color',
-    },
-    typography: {
-      fontFamily: 'font-family',
-    },
-    borderRadius: 'border-radius',
-  },
-} as const;
-
 export const createTokens = async (theme: Theme & { colorNames: string[] }) => {
   const { typography, name, borderRadius, overrides, colorNames } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
