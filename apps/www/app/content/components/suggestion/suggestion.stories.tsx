@@ -318,7 +318,7 @@ export const MultipleCount = () => {
     'Bergen',
     'Lillestrøm',
   ];
-  const [selected, setSelected] = useState<string[]>(["Sogndal"]);
+  const [selected, setSelected] = useState<string[]>(['Sogndal']);
 
   return (
     <Field>
@@ -362,7 +362,7 @@ export const MultipleCountEn = () => {
     'Bergen',
     'Lillestrøm',
   ];
-  const [selected, setSelected] = useState<string[]>(["Sogndal"]);
+  const [selected, setSelected] = useState<string[]>(['Sogndal']);
 
   return (
     <Field>
@@ -374,7 +374,11 @@ export const MultipleCountEn = () => {
         onSelectedChange={(items) =>
           setSelected(items.map((item) => item.value))
         }
-        style={{ '--dsc-suggestion-count-label': '"selected"' } as React.CSSProperties}
+        style={
+          {
+            '--dsc-suggestion-count-label': '"selected"',
+          } as React.CSSProperties
+        }
       >
         <EXPERIMENTAL_Suggestion.Input />
         <EXPERIMENTAL_Suggestion.Clear />
