@@ -40,11 +40,13 @@ function handleToggle(
     source = (el.id && root?.querySelector?.<HTMLElement>(css)) || undefined; // Polyfill ToggleEvent .source for older browsers
   }
   if (!source || source === el || (oldState && oldState === newState)) return; // No need to update
+  el.style.scrollMarginBottom = `var(--_ds-floating-arrow-size)`; // Use scroll-margin-bottom to measure computed arrow-size property
+
   const padding = 10;
   const overscroll = getCSSProp(el, '--_ds-floating-overscroll');
   const placement = attr(el, ATTR_PLACE) || attr(source, ATTR_PLACE) || float;
   const auto = attr(el, ATTR_AUTO) || attr(source, ATTR_AUTO);
-  const arrowSize = parseFloat(getComputedStyle(el, '::before').height) || 0;
+  const arrowSize = parseFloat(getCSSProp(el, 'scroll-margin-bottom')) || 0;
   const shiftProp = placement.match(/left|right/gi) ? 'Height' : 'Width';
   const shiftLimit = source[`offset${shiftProp}`] / 2 + arrowSize;
 
