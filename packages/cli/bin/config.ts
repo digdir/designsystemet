@@ -2,12 +2,7 @@ import type { Command, OptionValues } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.js';
-import {
-  type BuildConfigSchema,
-  type CreateConfigSchema,
-  commonConfig,
-  configFileCreateSchema,
-} from '../src/schemas/v1.1/schema.js';
+import { type CreateConfigSchema, configFileCreateSchema } from '../src/schemas/v1.1/schema.js';
 import { dsfs } from '../src/utils/filesystem.js';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
 
@@ -99,13 +94,4 @@ export async function parseCreateConfig(
   });
 
   return validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig, configFilePath);
-}
-
-export async function parseBuildConfig(
-  configFile: string,
-  { configFilePath }: { configFilePath: string },
-): Promise<BuildConfigSchema> {
-  const configParsed: BuildConfigSchema = parseConfig<BuildConfigSchema>(configFile, configFilePath);
-
-  return validateConfig<BuildConfigSchema>(commonConfig, configParsed, configFilePath);
 }

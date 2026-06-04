@@ -187,7 +187,7 @@ function extractColors(themeTokens: TokenObject, themeName: string): Record<stri
   return colors;
 }
 
-export type GenerateConfigOptions = {
+type GenerateConfigOptions = {
   tokensDir: string;
   outFile?: string;
 };

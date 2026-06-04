@@ -34,7 +34,7 @@ export const getMultidimensionalThemes = (processed$themes: ProcessedThemeObject
   });
 };
 
-export type PermutatedTheme = {
+type PermutatedTheme = {
   name: string;
   selectedTokenSets: string[];
   permutation: ThemePermutation;
@@ -67,7 +67,7 @@ export function processThemeObject(theme: ThemeObject | ProcessedThemeObject): P
   return result;
 }
 
-export type GroupedThemes = Record<keyof ThemePermutation, ProcessedThemeObject[]>;
+type GroupedThemes = Record<keyof ThemePermutation, ProcessedThemeObject[]>;
 
 function groupThemes(themes: ProcessedThemeObject[]): GroupedThemes {
   const groups = {} as GroupedThemes;

@@ -35,7 +35,7 @@ export type FormatOptions = {
   tokenSets: Map<string, TokenSet>;
 } & SharedOptions;
 
-export type ProcessOptions = BuildOptions | FormatOptions;
+type ProcessOptions = BuildOptions | FormatOptions;
 
 type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs, T>;
 

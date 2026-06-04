@@ -14,7 +14,7 @@ const hasAnyTruth = R.any(R.equals(true));
  * @param token Transformed token
  * @returns type
  */
-export const getType = (token: TransformedToken) => ((token.$type ?? token.type) as string) || '';
+const getType = (token: TransformedToken) => ((token.$type ?? token.type) as string) || '';
 
 /**
  * Returns value based on design token format used. Read more:https://v4.styledictionary.com/info/dtcg/

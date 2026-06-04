@@ -423,7 +423,7 @@ function _generateTypography() {
   };
 }
 
-export const generateColors = (colorNames: string[]) => {
+const generateColors = (colorNames: string[]) => {
   const semanticColorTokens = colorNames.map((colorName) => [colorName, generateColorScaleTokens(colorName)]);
 
   return {
