@@ -67,10 +67,6 @@ export function isSemanticColorToken(token: TransformedToken, color: string): bo
   return token.filePath.includes('semantic/') && R.startsWith(['color', color], token.path);
 }
 
-export function isGlobalColorToken(token: TransformedToken): boolean {
-  return typeEquals('color', token) && pathStartsWithOneOf(['global'], token);
-}
-
 export const isDigit = (s: string) => /^\d+$/.test(s);
 
 /** Copied from Style Dictionary and added types

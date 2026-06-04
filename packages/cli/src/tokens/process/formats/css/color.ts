@@ -3,7 +3,7 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
 
-import { isGlobalColorToken, isSemanticToken } from '../../../utils.js';
+import { isSemanticToken } from '../../../utils.js';
 import { buildOptions } from '../../platform.js';
 
 const prefersColorScheme = (colorScheme: string, content: string) => `
@@ -36,8 +36,6 @@ export const colorScheme: Format = {
         R.anyPass([
           // Include semantic tokens in the output
           isSemanticToken,
-          // Include global color tokens
-          isGlobalColorToken,
         ]),
       ]),
     );

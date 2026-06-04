@@ -1,6 +1,5 @@
-import * as R from 'ramda';
 import type { Config as StyleDictionaryConfig } from 'style-dictionary/types';
-import { isSemanticColorToken, typeEquals } from '../../utils.js';
+import { isSemanticColorToken, pathStartsWithOneOf } from '../../utils.js';
 import { formats } from '../formats/css.js';
 import { buildOptions } from '../platform.js';
 
@@ -27,7 +26,7 @@ export const colorSchemeVariables: GetStyleDictionaryConfig = ({ 'color-scheme':
           {
             destination: `color-scheme/${colorScheme}.css`,
             format: formats.colorScheme.name,
-            filter: (token) => typeEquals('color', token) && !R.startsWith(['global'], token.path),
+            filter: (token) => pathStartsWithOneOf(['color'], token),
           },
         ],
         options: {
