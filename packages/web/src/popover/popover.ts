@@ -61,7 +61,7 @@ function handleToggle(
     strategy: 'absolute',
     placement,
     middleware: [
-      offset(arrowSize || 0), // Add space for arrow or default to 8px
+      offset(arrowSize),
       shift({
         padding,
         limiter: limitShift({ offset: { mainAxis: shiftLimit } }), // Prevent from shifing away from source
