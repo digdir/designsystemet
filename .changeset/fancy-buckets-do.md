@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**Label**: Remove default value for `weight` prop
+**Label**: Removed unneeded default value for `weight` prop.
