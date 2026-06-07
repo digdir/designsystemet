@@ -49,11 +49,30 @@ const handleAriaAttributes = () => {
     const text = attrOrCSS(el, ATTR_TOOLTIP);
 
     if (!text) return; // Early return if no tooltip text
-    if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {
+
+    // If element is a <label>, apply aria attributes to its first labelable descendant
+    // so the accessible name is set directly on the form control rather than indirectly
+    // via the label. This also avoids false positives in a11y tools that treat <label>
+    // as having the generic role (where aria-label is prohibited) instead of "no role"
+    const ariaTarget =
+      el.localName === 'label'
+        ? el.querySelector('input,select,textarea,button') || el
+        : el;
+
+    if (
+      text !==
+      (ariaTarget.getAttribute(ARIA_LABEL) ||
+        ariaTarget.getAttribute(ARIA_DESC))
+    ) {
       const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
       attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
-      attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
-      attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
+      attr(ariaTarget, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
+      attr(ariaTarget, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
+      // Clean up stale aria attributes from the label element if target differs
+      if (ariaTarget !== el) {
+        attr(el, ARIA_LABEL, null);
+        attr(el, ARIA_DESC, null);
+      }
       if (!el.matches(SELECTOR_INTERACTIVE))
         warn('Missing tabindex="0" attribute on: ', el);
     }

@@ -96,6 +96,34 @@ describe('tooltip behavior', () => {
     expect(tip.hidePopover).toHaveBeenCalledTimes(1);
   });
 
+  it('sets aria-label on labelable descendant when tooltip is on a <label>', async () => {
+    document.body.innerHTML = `<label data-tooltip="Align left"><input type="radio" value="left"></label>`;
+
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver run
+
+    const label = document.querySelector('label') as HTMLElement;
+    const input = document.querySelector('input') as HTMLElement;
+
+    expect(input).toHaveAttribute('aria-label', 'Align left');
+    expect(input).not.toHaveAttribute('aria-description');
+    expect(label).not.toHaveAttribute('aria-label');
+    expect(label).not.toHaveAttribute('aria-description');
+  });
+
+  it('sets aria-description on labelable descendant when label has text', async () => {
+    document.body.innerHTML = `<label data-tooltip="More info"><input type="radio" value="opt">Option</label>`;
+
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver run
+
+    const label = document.querySelector('label') as HTMLElement;
+    const input = document.querySelector('input') as HTMLElement;
+
+    expect(input).toHaveAttribute('aria-description', 'More info');
+    expect(input).not.toHaveAttribute('aria-label');
+    expect(label).not.toHaveAttribute('aria-label');
+    expect(label).not.toHaveAttribute('aria-description');
+  });
+
   it('updates tooltip text and announces when data-tooltip changes programmatically', async () => {
     const tip = document.createElement('div');
     setTooltipElement(tip);
