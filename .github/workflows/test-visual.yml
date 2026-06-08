@@ -62,7 +62,7 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           exitZeroOnChanges: true
           onlyChanged: true
-          # skip: '@(renovate/**|dependabot/**)'
+          skip: "@(renovate/**|dependabot/**)"
 
   main-visual-tests:
     if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main') }}
