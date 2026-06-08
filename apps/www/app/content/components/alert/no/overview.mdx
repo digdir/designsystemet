@@ -10,8 +10,8 @@ search_terms: statusmelding, varsel, advarsel, notifikasjon, systemvarsel, syste
 - du skal informere om mindre eller tekniske feil
 
 **Unngå Alert når**
-- du skal gjøre brukeren oppmerksom på feil i enkeltfelt, bruk heller komponentens egen feilmelding [validation message](/no/components/docs/validation-message/overview) og [error summary](/no/components/docs/error-summary/overview) dersom det er flere feilmeldinger som skal oppsummeres.
-- du ønsker å fremheve innhold visuelt.
+- du skal gjøre brukeren oppmerksom på feil i enkeltfelt, bruk heller komponentens egen feilmelding [validation message](/no/components/docs/validation-message/overview) og [error summary](/no/components/docs/error-summary/overview) for å oppsummere flere feil
+- du ønsker å fremheve innhold visuelt
 
 For mer helhetlige retningslinjer for bruk av varsler i tjenester, se mønsteret for [Systemvarsler](/no/patterns/systemnotifications). Der finner du eksempler og anbefalinger for når du skal bruke alert, og når andre løsninger passer bedre.
 
@@ -58,8 +58,8 @@ Dersom tittel og beskrivelse gjentar det samme er det bedre å bruke en enkel se
 
 ### Med lenke
 
-Du kan legge inn en lenke i alerten hvis den er nødvendig for at brukeren skal kunne fullføre oppgaven. 
-Husk at lenker tar brukeren ut av tjenesten, så de bør brukes med varsomhet, for eksempel ved åpning av skjemaer eller andre viktige handlinger.
+Du kan ha en lenke i alert hvis det hjelper brukeren med å løse oppgaven. 
+Husk at lenker tar brukeren ut av tjenesten, så bruk dem kun når det er nødvendig, for eksempel hvis du vil at brukeren skal åpne et skjema eller utføre en viktig oppgave.
 
 <Story story="MedLenke" />
 
