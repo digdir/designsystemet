@@ -46,6 +46,17 @@ export const Variants: StoryFn<typeof Button> = () => (
   </>
 );
 
+export const test: StoryFn<typeof Button> = () => (
+  <>
+    <Button variant='primary'>Primary</Button>
+    <Button variant='secondary'>Secondary</Button>
+    <Button variant='tertiary'>Teritiary</Button>
+    <Button variant='tertiary' data-color='danger'>
+      Teritiary
+    </Button>
+  </>
+);
+
 export const Colors: StoryFn<typeof Button> = () => (
   <>
     {[...themeColors, 'danger'].map((color) => (
