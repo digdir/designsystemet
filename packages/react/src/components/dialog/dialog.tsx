@@ -132,10 +132,11 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
           }
         }}
         onAnimationEnd={(event: AnimationEvent<HTMLDialogElement>) => {
-          const { currentTarget: dialog } = event;
-          const autofocus = dialog.querySelector<HTMLElement>('[autofocus]');
-          if (document.activeElement !== autofocus) autofocus?.focus(); // Handle autofocus on open
           onAnimationEnd?.(event);
+          if (event.currentTarget !== event.target) return; // Only run if event is from the dialog itself
+          const autofocus =
+            event.currentTarget.querySelector<HTMLElement>('[autofocus]');
+          if (document.activeElement !== autofocus) autofocus?.focus(); // Handle autofocus on open
         }}
         ref={mergedRefs}
         {...rest}
