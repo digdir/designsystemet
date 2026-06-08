@@ -28,7 +28,7 @@ export const Preview: Story = {
     return <Button {...args} />;
   },
   args: {
-    children: 'Knapp',
+    children: 'Knapp Knapp',
     disabled: false,
     variant: 'primary',
     icon: false,
