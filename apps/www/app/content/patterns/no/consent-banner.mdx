@@ -5,7 +5,7 @@ category: Spør brukerne om...
 description: Slik lager du et samtykkebanner som er forståelig, tilgjengelig og gir brukerne reelle valgmuligheter.
 partners: Digdir, Oslo kommune, Nav, Skatteetaten, Entur ++
 search_terms: consent banner, cookie banner, cookies, samtykke, personvern
-date: 2026-06-02
+date: 2026-06-09
 order: 75
 ---
 
@@ -15,8 +15,6 @@ Virksomheter utformer i dag samtykkebannere svært ulikt når det gjelder språk
 Samtidig er de juridiske rammene klare. Samtykket må fylle kravene til et gyldig samtykke etter personvernforordningen og kravene i tilgjengelighetsforskriften.
 
 Et felles mønster gir tydelige rammer for hvordan du kan utforme gode samtykkeløsninger. Når samtykke håndteres likt på tvers av tjenester, blir det enklere for brukerne å forstå valgene sine. Det gir mer forutsigbare brukeropplevelser og reduserer den kognitive belastningen. Samtidig blir det enklere å lage løsninger som bygger på god praksis for brukeropplevelse, tilgjengelighet og personvern. Du må selv vurdere hvilke teknologier du bruker og hvilket rettslig grunnlag som gjelder.
-
-I denne artikkelen får du råd om når du må be om samtykke, hvordan du utformer samtykkebanneret, og hvordan du oppfyller krav til tilgjengelighet og personvern.
 
 ## Forberedelser
 Før du kan be om samtykke, må du ha oversikt over hvilke opplysninger du skal samle inn og hvilke teknologier du bruker. Dette kan være informasjonskapsler (cookies), men også andre metoder for å lagre eller lese data på brukerens enhet, for eksempel localStorage og fingerprinting. Reglene gjelder også når du lagrer data på en server, dersom du først henter informasjonen fra brukerens enhet.
@@ -137,6 +135,9 @@ Knappetekstene må være så tydelige at brukerne umiddelbart forstår hvilket v
   <DoDont story="DontButtons1">
 Unngå ledende, følelsesladde eller manipulerende formuleringer som kan presse brukerne mot ett valg. 
   </DoDont>
+    <DoDont story="DoButtons1">
+Bruk korte og nøytrale knappetekster som svarer på spørsmålet i samtykkebanneret. For eksempel «Ja» og «Nei», eller «Godta» og «Avslå», avhengig av hvordan du har formulert spørsmålet.
+  </DoDont>
 </div>
 
 #### Strengt nødvendige informasjonskapsler er unntatt samtykke
@@ -169,7 +170,6 @@ Kod samtykkebanneret som en `<section>` – en avgrenset seksjon på siden som e
 <Story story="ConsentBanner" />
 
 ### Knapper og lenker
-
 Skriv kode for å godta eller avslå skal som knapper (`<button>`), siden de utfører handlinger. Innganger til personvernerklæringen eller mer informasjon om informasjonskapsler koder du ut fra hva som skjer når brukerne aktiverer dem:
 - Lenke (`<a>`) hvis de fører til en ny side.
 - Knapp (`<button>`) hvis de åpner en modal eller lignende innhold på samme side.

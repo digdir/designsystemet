@@ -1,4 +1,9 @@
-import { Button, Checkbox, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Checkbox,
+  Divider,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 
 export const DontNegations = () => {
   return (
@@ -22,6 +27,18 @@ export const DontButtons1 = () => {
       <Button variant='primary'>Godta anbefalte</Button>
       <Button variant='primary'>OK</Button>
       <Button variant='primary'>Jeg forstår</Button>
+    </>
+  );
+};
+
+export const DoButtons1 = () => {
+  return (
+    <>
+      <Button variant='primary'>Ja</Button>
+      <Button variant='primary'>Nei</Button>
+      <Divider />
+      <Button variant='primary'> Godta</Button>
+      <Button variant='primary'>Avslå</Button>
     </>
   );
 };
