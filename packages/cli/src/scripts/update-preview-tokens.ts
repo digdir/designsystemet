@@ -6,7 +6,7 @@ import { createTokens, tokenSetDimensions } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
 import type { Theme } from '../tokens/types.js';
-import { colorNamesByCategory } from '../tokens/utils.js';
+import { toColorNames } from '../tokens/utils.js';
 import { dsfs } from '../utils/filesystem.js';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
@@ -25,11 +25,11 @@ const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]
 type PreviewToken = { variable: string; value: string };
 
 export const formatTheme = async (themeConfig: Theme) => {
-  const { tokenSets } = await createTokens(themeConfig);
-
+  const colorNames = toColorNames(themeConfig.colors);
   const themeNames = [themeConfig.name];
-  const colors = colorNamesByCategory(themeConfig.colors);
-  const $themes = await generate$Themes(tokenSetDimensions, themeNames, colors);
+
+  const { tokenSets } = await createTokens({ ...themeConfig, colorNames } as Theme & { colorNames: string[] });
+  const $themes = await generate$Themes(tokenSetDimensions, themeNames, colorNames);
 
   const processed$themes = $themes.map(processThemeObject);
 
@@ -100,10 +100,7 @@ formatTheme({
   name: 'test',
   borderRadius: config.themes.designsystemet.borderRadius,
   colors: {
-    main: {
-      primary: config.themes.designsystemet.colors.main.accent as `#${string}`,
-    },
-    support: {},
+    primary: config.themes.designsystemet.colors.accent as `#${string}`,
     neutral: config.themes.designsystemet.colors.neutral as `#${string}`,
   },
   typography: config.themes.designsystemet.typography,

@@ -12,8 +12,8 @@ export const ColorVariables = () => {
   const { colors, colorScheme, severityEnabled, severityColors } =
     useThemebuilder();
 
-  const neutralColor = colors?.neutral[0]?.hex || '';
-  const [previewColor, setPreviewColor] = useState(colors?.main[0] || '');
+  const neutralColor = colors?.find((c) => c.name === 'neutral')?.hex || '';
+  const [previewColor, setPreviewColor] = useState(colors?.[0] || '');
 
   const style = {
     ...styleColorVars(neutralColor as CssColor, colorScheme, 'neutral'),
@@ -21,9 +21,7 @@ export const ColorVariables = () => {
   };
 
   const allColors = [
-    ...colors.main,
-    ...colors.neutral,
-    ...colors.support,
+    ...(colors ?? []),
     ...(severityEnabled ? severityColors : []),
   ];
 
@@ -40,7 +38,7 @@ export const ColorVariables = () => {
                 const selectedColor = allColors.find(
                   (c) => c.name === v.target.value,
                 );
-                setPreviewColor(selectedColor ?? colors.main[0]);
+                setPreviewColor(selectedColor ?? colors[0]);
               }}
             >
               {allColors.map((color) => (

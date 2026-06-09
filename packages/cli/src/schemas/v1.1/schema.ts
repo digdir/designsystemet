@@ -1,85 +1,6 @@
-import pc from 'picocolors';
-import * as R from 'ramda';
 import { z } from 'zod';
-import { fromError } from 'zod-validation-error';
-import { baseColorNames, colorNames } from './colors/colorMetadata.js';
-import { convertToHex } from './colors/index.js';
-import { RESERVED_COLORS } from './colors/theme.js';
-import { cliOptions } from './tokens/create.js';
-
-function mapPathToOptionName(path: PropertyKey[]) {
-  // replace "themes.some-theme-name" with "theme" to match cliOptions object
-  const normalisedPath = path[0] === 'themes' ? ['theme', ...R.drop(2, path)] : path;
-  const option = R.path(normalisedPath as Array<string | number>, cliOptions);
-  if (typeof option !== 'string') {
-    return;
-  }
-  return option;
-}
-
-function makeFriendlyError(err: unknown) {
-  try {
-    return fromError(err, {
-      messageBuilder: (issues) =>
-        issues
-          .map((issue) => {
-            const issuePath = issue.path.join('.');
-            const optionName = mapPathToOptionName(issue.path);
-
-            const errorCode = `(error code: ${issue.code})`;
-            const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
-            return `  - Error in JSON value ${pc.red(issuePath)}${optionMessage}:
-      ${issue.message} ${pc.dim(errorCode)}`;
-          })
-          .join('\n'),
-    });
-  } catch (_err2) {
-    console.error(pc.red(err instanceof Error ? err.message : 'Unknown error occurred while parsing config file'));
-    console.error(err instanceof Error ? err.stack : 'No stack trace available');
-  }
-}
-
-/**
- * Validates a configuration object against a provided Zod schema.
- *
- * @template T - The expected type of the validated configuration.
- * @param schema - A Zod schema used to validate the configuration object.
- * @param unvalidatedConfig - The configuration object to validate.
- * @returns The validated configuration object, typed as T.
- * @throws Exits the process with code 1 if validation fails, after logging a friendly error message.
- */
-export function validateConfig<T>(
-  schema: z.ZodType<T>,
-  unvalidatedConfig: Record<string, unknown>,
-  configFilePath: string,
-): T {
-  try {
-    return schema.parse(unvalidatedConfig) as T;
-  } catch (err) {
-    console.error(pc.redBright(`Invalid config file at ${pc.red(configFilePath)}`));
-
-    const validationError = makeFriendlyError(err);
-    console.error(validationError?.toString());
-    process.exit(1);
-  }
-}
-
-export function parseConfig<T>(configFile: string, configFilePath: string): T {
-  if (!configFile) {
-    return {} as T;
-  }
-
-  try {
-    return JSON.parse(configFile) as T;
-  } catch (err) {
-    console.error(pc.redBright(`Failed parsing config file at ${pc.red(configFilePath)}`));
-
-    const validationError = makeFriendlyError(err);
-    console.error(validationError?.toString());
-
-    process.exit(1);
-  }
-}
+import { baseColorNames, colorNames } from '../../colors/colorMetadata.js';
+import { convertToHex } from '../../colors/index.js';
 
 const hexPatterns = [
   // Hex colors: #000, #0000, #000000, #00000000
@@ -88,7 +9,6 @@ const hexPatterns = [
   `#[0-9a-fA-F]{6}`,
   `#[0-9a-fA-F]{8}`,
 ];
-const reservedColorsPattern = `^(?!(?:${RESERVED_COLORS.join('|')})$)`;
 
 export const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
 
@@ -96,24 +16,7 @@ const colorSchema = z
   .string()
   .regex(colorRegex)
   .transform(convertToHex)
-  .describe(
-    `A hex color, which is used for creating a color scale. Invalid color names: ${RESERVED_COLORS.join(', ')}`,
-  );
-
-const colorCategorySchema = z
-  .record(
-    z.string().regex(new RegExp(reservedColorsPattern, 'i'), {
-      error: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
-    }),
-    colorSchema,
-    {
-      error: 'Color definitions must be hex color values',
-    },
-  )
-  .refine((colors) => !Object.keys(colors).some((key) => RESERVED_COLORS.includes(key.toLowerCase())), {
-    error: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
-  })
-  .describe('An object with one or more color definitions. The property name is used as the color name.');
+  .describe(`A hex color, which is used for creating a color scale.`);
 
 const colorModeOverrideSchema = z
   .object({
@@ -173,13 +76,7 @@ const overridesSchema = z
 
 const themeSchema = z
   .object({
-    colors: z
-      .object({
-        main: colorCategorySchema,
-        support: colorCategorySchema.optional().default({}),
-        neutral: colorSchema.describe('A hex color, which is used for creating a color scale.'),
-      })
-      .meta({ description: 'Defines the colors for this theme' }),
+    colors: z.record(z.string(), colorSchema).meta({ description: 'Defines the colors for this theme' }),
     typography: z
       .object({
         fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }),

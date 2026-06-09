@@ -86,9 +86,11 @@ npx @digdir/designsystemet tokens create \
   "themes": {
     "theme": {
       "colors": {
-        "main": { "primary": "#0062BA", "accent": "#1E98F5" },
+        "primary": "#0062BA",
+        "accent": "#1E98F5",
         "neutral": "#1E2B3C",
-        "support": { "extra1": "#F45F63", "extra2": "#E5AA20" }
+        "extra1": "#F45F63",
+        "extra2": "#E5AA20"
       },
       "borderRadius": 4
     }

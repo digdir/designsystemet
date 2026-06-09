@@ -34,7 +34,7 @@ export const getMultidimensionalThemes = (processed$themes: ProcessedThemeObject
   });
 };
 
-export type PermutatedTheme = {
+type PermutatedTheme = {
   name: string;
   selectedTokenSets: string[];
   permutation: ThemePermutation;
@@ -67,7 +67,7 @@ export function processThemeObject(theme: ThemeObject | ProcessedThemeObject): P
   return result;
 }
 
-export type GroupedThemes = Record<keyof ThemePermutation, ProcessedThemeObject[]>;
+type GroupedThemes = Record<keyof ThemePermutation, ProcessedThemeObject[]>;
 
 function groupThemes(themes: ProcessedThemeObject[]): GroupedThemes {
   const groups = {} as GroupedThemes;
@@ -116,8 +116,7 @@ function permutateThemes(groups: GroupedThemes): PermutatedTheme[] {
         selectedTokenSets: [],
         permutation: {
           'color-scheme': 'unknown',
-          'main-color': 'unknown',
-          'support-color': 'unknown',
+          color: 'unknown',
           theme: 'unknown',
           semantic: 'unknown',
           size: 'unknown',
@@ -161,13 +160,5 @@ function cartesian(a: Array<unknown[]>) {
   return a.reduce((a, b) => a.flatMap((d) => b.map((e) => [d, e].flat())));
 }
 
-export const getCustomColors = (processed$themes: ProcessedThemeObject[], colorGroups: (string | RegExp)[]) =>
-  processed$themes
-    .filter((x) => {
-      if (!x.group) {
-        return false;
-      }
-
-      return colorGroups.includes(x.group);
-    })
-    .map((x) => x.name);
+export const getThemeColors = (processed$themes: ProcessedThemeObject[]) =>
+  processed$themes.filter((x) => x.group === 'color').map((x) => x.name);
