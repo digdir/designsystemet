@@ -107,7 +107,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     // Toggle open based on prop
     useEffect(() => {
       const dialog = dialogRef.current;
-      if (open && modal && !dialog?.open) dialog?.showModal();
+      if (open && !dialog?.open) dialog?.[modal ? 'showModal' : 'show']();
       else if (dialog) dialog.open = !!open; // Close with prop to prevent close event from firing
     }, [open, modal]);
 
