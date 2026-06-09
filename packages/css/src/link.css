@@ -29,7 +29,7 @@
   }
 
   & > :is(img, svg) {
-    display: inline-block; /* Fix Tailwind setteing display: block on <svg> */
+    display: inline-block; /* Fix Tailwind setting display: block on <svg> */
     vertical-align: middle; /* Align img or svg icon with text */
   }
 
