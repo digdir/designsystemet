@@ -96,7 +96,7 @@
 
   /* Fix Safari placeholder issues to date inputs https://stackoverflow.com/q/73896040 */
   @supports (-webkit-hyphens: none) {
-    .input[type='date'] {
+    &[type='date'] {
       color: initial;
     }
   }
