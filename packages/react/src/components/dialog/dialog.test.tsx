@@ -103,6 +103,16 @@ describe('Dialog', () => {
     );
   });
 
+  it('should not call onClose when controlled open prop changes to false', () => {
+    const onClose = vi.fn();
+    const { rerender } = render(<Dialog open onClose={onClose} />);
+
+    rerender(<Dialog open={false} onClose={onClose} />);
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
   it('should not call onClose on parent when nested dialog closes', async () => {
     const outerOnClose = vi.fn();
     const innerOnClose = vi.fn();
