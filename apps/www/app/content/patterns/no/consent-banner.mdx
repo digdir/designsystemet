@@ -9,20 +9,20 @@ date: 2026-06-02
 order: 75
 ---
 
-## Hvorfor trenger vi et mønster for samtykkebannere? 
-Samtykkebannere utformes i dag svært ulikt, med store forskjeller i språkbruk, design, plassering og brukernes faktiske valgmuligheter. Det gjør det vanskeligere for brukerne å ta informerte valg.
+## Hvorfor et felles mønster for samtykkebanner? 
+Virksomheter utformer i dag samtykkebannere svært ulikt, med store forskjeller i språkbruk, design, plassering og brukernes faktiske valgmuligheter. Det gjør det vanskelig for brukerne å ta informerte valg. 
 
-Samtidig er de juridiske rammene klare. Samtykket skal fylle kravene til et gyldig samtykke etter personvernforordningen og kravene i tilgjengelighetsforskriften.
+Samtidig er de juridiske rammene klare. Samtykket må fylle kravene til et gyldig samtykke etter personvernforordningen og kravene i tilgjengelighetsforskriften.
 
-Et felles mønster gir tydelige rammer for hvordan vi kan løse samtykke likt på tvers, slik at brukerne  forstår og vi følger UU-kravene. Det gir mer forutsigbare brukeropplevelser og mindre kognitiv belastning. Samtidig blir det enklere for utviklingsteam å lage løsninger som bygger på god praksis for brukeropplevelse, tilgjengelighet og personvern. Hver virksomhet må selv vurdere hvilke teknologier de bruker og hvilket rettslig grunnlag som gjelder.
+Et felles mønster gir tydelige rammer for hvordan du kan utforme samtykkeløsninger på en gjenkjennelig måte på tvers av tjenester. Det gjør det enklere for brukerne å forstå valgene sine, gir mer forutsigbare brukeropplevelser og reduserer den kognitive belastningen. Samtidig blir det enklere å lage løsninger som bygger på god praksis for brukeropplevelse, tilgjengelighet og personvern. Du må selv vurdere hvilke teknologier du bruker og hvilket rettslig grunnlag som gjelder.
 
 ## Forberedelser
-Før du kan be om samtykke, må du ha oversikt over hvilke opplysninger dere skal samle inn og hvilke teknologier dere bruker. Dette kan være informasjonskapsler (cookies), men også andre metoder for å lagre eller lese data på brukerens enhet, for eksempel localStorage og fingerprinting. Reglene gjelder også når vi lagrer data på server, hvis vi først henter informasjonen fra brukerens enhet.
+Før du kan be om samtykke, må du ha oversikt over hvilke opplysninger du skal samle inn og hvilke teknologier du bruker. Dette kan være informasjonskapsler (cookies), men også andre metoder for å lagre eller lese data på brukerens enhet, for eksempel localStorage og fingerprinting. Reglene gjelder også når du lagrer data på en server, dersom du først henter informasjonen fra brukerens enhet.
 
-Du er juridisk pålagt å informere brukerne dine om hvilke teknologier der bruker og hva dere ber om samtykke til. Da kan de ta informerte valg og ivareta personvernet sitt.
+Du er juridisk pålagt å informere brukerne dine om hvilke teknologier du bruker og hva du ber om samtykke til. Da kan de ta informerte valg og ivareta personvernet sitt.
 
 ### Forstå hva og hvorfor du samler inn
-Lag en oversikt over hvilke teknologier nettstedet deres bruker, inkludert førsteparts- og tredjepartsteknologi. Det kan være informasjonskapsler, analyseverktøy og integrasjoner. Kartlegg hvilke opplysninger dere samler inn og hvorfor dere samler dem inn, og tenk over hvilke konsekvenser det har for brukerne dersom de ikke godkjenner at teknologiene ikke brukes. Kartlegg gjerne dette sammen i  tverrfaglige team. Husk å ta med personvernombudet. 
+Lag en oversikt over hvilke teknologier nettstedet du bruker, inkludert førsteparts- og tredjepartsteknologi. Det kan være informasjonskapsler, analyseverktøy og integrasjoner. Kartlegg hvilke opplysninger du samler inn og hvorfor du samler dem inn, og tenk over hvilke konsekvenser det har for brukerne dersom de ikke godkjenner at teknologiene ikke brukes. Kartlegg gjerne dette sammen i  tverrfaglige team. Husk å ta med personvernombudet. 
 
 Vurder også hvilke teknologier som er nødvendige og hvilke som er valgfrie.
 - De valgfrie teknologiene må du be om samtykke til. 
@@ -31,7 +31,7 @@ Vurder også hvilke teknologier som er nødvendige og hvilke som er valgfrie.
 Se [Datatilsynets veileder om informasjonskapsler og andre sporingsteknologier](https://www.datatilsynet.no/personvern-pa-ulike-omrader/internett-og-apper/bruk-av-informasjonskapsler-og-andre-sporingsteknologier/) om når samtykke er nødvendig. Du finner også informasjon på [Nkoms side om informasjonskapsler](https://nkom.no/internett/informasjonskapsler-cookies), og om strengt nødvendige teknologier i [ekomloven § 3-15](https://lovdata.no/lov/2024-12-13-76/§3-15).
 
 ### Lagring av samtykke
-Det trengs ikke eget samtykke for å lagre selve samtykkesvaret. Det regnes som en strengt nødvendig informasjonskapsel, siden du er pålagt å be om samtykke og det er nødvendig å lagre svaret for å oppfylle dette.
+Du trenger ikke innhente et eget samtykke for å lagre selve samtykkesvaret. Det regnes som en strengt nødvendig informasjonskapsel, siden du er pålagt å be om samtykke og det er nødvendig å lagre svaret for å oppfylle dette.
 
 Utover det bør du lagre så lite som mulig:
 - Lagre minst mulig data, og i kortest mulig tid. For eksempel: data fra en A/B-test trenger ikke lagres etter at testen er avsluttet og retningen er valgt.
@@ -66,7 +66,7 @@ I tillegg til en knapp for å lagre de valgene brukerne har gjort, skal det allt
 />
  
 ### Hvis det bare er nødvendige informasjonskapsler
-Om nettstedet ditt kun bruker strengt nødvendige informasjonskapsler – for eksempel lagrer språkvalg eller innloggingsstatus – trenger du ikke vise et samtykkebanner. Du må likevel informere om at dere bruker slike informasjonskapsler. Det kan du gjøre i bunnen av nettsiden, med en lenke til mer informasjon. 
+Om nettstedet ditt kun bruker strengt nødvendige informasjonskapsler – for eksempel lagrer språkvalg eller innloggingsstatus – trenger du ikke vise et samtykkebanner. Du må likevel informere om at du bruker slike informasjonskapsler. Legg informasjonen i bunnen av nettsiden, med en lenke til mer informasjon. 
 
 <Image
   src="/img/patterns/consent-banner-footer.png"
@@ -158,7 +158,7 @@ Legg informasjonen om strengt nødvendige informasjonskapsler *under* valgaltern
 For at et samtykke skal være gyldig, må brukerne få klar og forståelig informasjon som gjør det mulig å ta et aktivt og informert valg. Det må være tydelig hva brukerne samtykker til, hva konsekvensene av valget er og hvem opplysningene eventuelt deles med. 
 
 #### Legg fullstendig informasjon i en egen erklæring
-Brukerne skal ha tilgang til detaljert og fullstendig informasjon. Denne informasjonen bør samles på en egen side om personvern og informasjonskapsler. Sørg for at samtykkebanneret har en tydelig lenke til denne erklæringen, i tillegg til en lenke i footer.
+Brukerne skal ha tilgang til detaljert og fullstendig informasjon. Samle informasjonen på en egen side om personvern og informasjonskapsler. Sørg for at samtykkebanneret har en tydelig lenke til denne erklæringen, i tillegg til en lenke i bunnen av siden.
 
 ## Kode
 
