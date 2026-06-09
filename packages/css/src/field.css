@@ -63,6 +63,7 @@
     cursor: pointer;
   }
   &:has(input:is([type='radio'], [type='checkbox'])) {
+    column-gap: var(--dsc-field-content-spacing);
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
@@ -74,9 +75,6 @@
     & > * {
       margin-block: 0; /* Reset "the stack" */
       grid-column: content; /* Only allow input in column 1 */
-    }
-    & > *:not(input) {
-      padding-inline-start: var(--dsc-field-content-spacing);
     }
 
     & label {

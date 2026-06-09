@@ -28,15 +28,16 @@
   box-shadow: var(--ds-shadow-xl);
   box-sizing: border-box;
   color: var(--dsc-dialog-color);
+  inset: 0;
   margin: auto;
   max-height: var(--dsc-dialog-max-height);
   max-width: var(--dsc-dialog-max-width);
+  outline: none; /* Prevent outline in Chrome */
   overflow: auto;
   overscroll-behavior: contain;
   padding: var(--dsc-dialog-spacing);
   position: fixed;
   width: 100%;
-  inset: 0;
 
   &::backdrop {
     animation: ds-dialog-fade-in var(--dsc-dialog-transition-duration) ease-in-out;
@@ -81,6 +82,10 @@
   &[data-placement='right'] {
     left: auto;
     border-right-width: 0;
+  }
+  &[data-placement='center'],
+  &:not([data-placement]) {
+    align-self: center; /* Center also when inside display: flex */
   }
 
   &[open] {

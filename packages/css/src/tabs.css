@@ -34,6 +34,7 @@
       color: var(--dsc-tabs-tab-color);
       cursor: pointer;
       flex-direction: row;
+      flex-shrink: 0; /* Prevent shrinking if many tabs */
       font-family: inherit;
       font-size: inherit;
       gap: var(--ds-size-1);
