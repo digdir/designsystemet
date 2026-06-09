@@ -55,7 +55,6 @@ export const Preview: Story = {
     type: 'text',
     role: 'checkbox',
     name: 'inputs',
-    placeholder: 'Skriv noe her',
   },
   render: (args) => {
     if (args.role !== 'switch') args.role = undefined; // Ensure we only keep switch role in storybook
