@@ -115,7 +115,7 @@ InDropdown.parameters = {
   },
 };
 
-export const InLink: Story = () => (
+export const AsLink: Story = () => (
   <a href='#'>
     <Avatar aria-label='Ola Nordmann' />
   </a>

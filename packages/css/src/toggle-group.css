@@ -44,15 +44,14 @@
     &[data-icon] {
       width: var(--dsc-togglegroup-button-size);
     }
+  }
+  @media (forced-colors: active) {
+    & > :is(label:has(input:checked), button[aria-checked='true'], a[aria-current='true']) {
+      background: ButtonText;
+      color: CanvasText;
 
-    @media (forced-colors: active) {
-      &:has(input:checked) {
-        background: ButtonText;
+      & svg {
         color: CanvasText;
-
-        & svg {
-          color: CanvasText;
-        }
       }
     }
   }
