@@ -29,7 +29,7 @@
   }
 
   & > :is(img, svg) {
-    vertical-align: middle; /* Align img or svg icon with text */
+    @composes ds-icon from './base.css';
   }
 
   /*

@@ -10,7 +10,6 @@
   --dsc-button-gap: var(--ds-size-2);
   --dsc-button-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-button-size: var(--ds-size-12);
-  --_ds-captured-length: 1em;
 
   align-items: center;
   background: var(--dsc-button-background);
@@ -53,39 +52,28 @@
     font-size: inherit; /* Ensure inheriting font-size when <button> */
   }
 
-  & :where(img, svg):not(.ds-spinner) {
-    flex-shrink: 0;
-    /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
-    font-size: calc(var(--_ds-captured-length) * 1.3);
+  & :is(img, svg) {
+    @composes ds-icon from './base.css';
   }
 
   &:focus-visible {
     position: relative; /* Place focusring on top */
   }
 
-  &:where(:not([hidden])) {
+  &:not([hidden]) {
     display: flex;
   }
 
   &[data-icon] {
+    --ds-icon-size: var(--ds-icon-size--lg); /* TODO: Should we really? */
     width: var(--dsc-button-size); /* Ensure it keeps square shape */
     height: var(--dsc-button-size); /* Ensure it keeps square shape */
     padding: 0;
-
-    & :where(img, svg):not(.ds-spinner) {
-      /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
-      font-size: calc(var(--_ds-captured-length) * 1.5);
-    }
   }
 
   &[data-fullwidth] {
     width: 100%;
     text-align: center;
-  }
-
-  /* Style spinner when in button */
-  & .ds-spinner {
-    height: 1.4em;
   }
 
   /**
