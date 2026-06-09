@@ -31,7 +31,7 @@ Vurder også hvilke teknologier som er nødvendige og hvilke som er valgfrie.
 Se [Datatilsynets veileder om informasjonskapsler og andre sporingsteknologier](https://www.datatilsynet.no/personvern-pa-ulike-omrader/internett-og-apper/bruk-av-informasjonskapsler-og-andre-sporingsteknologier/) om når samtykke er nødvendig. Du finner også informasjon på [Nkoms side om informasjonskapsler](https://nkom.no/internett/informasjonskapsler-cookies), og om strengt nødvendige teknologier i [ekomloven § 3-15](https://lovdata.no/lov/2024-12-13-76/§3-15).
 
 ### Lagring av samtykke
-Du trenger ikke innhente et eget samtykke for å lagre selve samtykkesvaret. Det regnes som en strengt nødvendig informasjonskapsel, siden du er pålagt å be om samtykke og det er nødvendig å lagre svaret for å oppfylle dette.
+Du trenger ikke innhente et eget samtykke for å lagre selve samtykkesvaret. Dette er en strengt nødvendig informasjonskapsel, siden du er pålagt å be om samtykke og det er nødvendig å lagre svaret for å oppfylle dette.
 
 Utover det bør du lagre så lite som mulig:
 - Lagre minst mulig data, og i kortest mulig tid. For eksempel: data fra en A/B-test trenger ikke lagres etter at testen er avsluttet og retningen er valgt.
@@ -53,8 +53,7 @@ Samle samtykket i ett enkelt spørsmål når det er mulig. Da holder det med to 
 />
 
 ### Hvis du må gi brukerne flere valg
-Noen ganger må du gi brukerne mulighet til å godta noe og avslå noe annet. 
-Da bør du bruke [avkrysningsbokser](/no/components/docs/checkbox/overview), ikke brytere. En bryter ([switch](/no/components/docs/switch/overview)) signaliserer at endringen trer i kraft umiddelbart. Det passer ikke her, siden valget først gjelder etter at brukerne har bekreftet. Avkrysningsbokser forteller brukerne at dette er noe de selv stiller inn og deretter lagrer. Ingen av avkrysningsboksene skal være forhåndsmarkert.
+Noen ganger må du gi brukerne mulighet til å godta noe og avslå noe annet. Da bør du bruke [avkrysningsbokser](/no/components/docs/checkbox/overview), ikke brytere. En bryter ([switch](/no/components/docs/switch/overview)) signaliserer at endringen trer i kraft umiddelbart. Det passer ikke her, siden valget først gjelder etter at brukerne har bekreftet. Avkrysningsbokser forteller brukerne at dette er noe de selv stiller inn og deretter lagrer. Ingen av avkrysningsboksene skal være forhåndsmarkert.
 
 I tillegg til en knapp for å lagre de valgene brukerne har gjort, skal det alltid være knapper for «Godta alle» og «Avslå alle». Det skal nemlig være like enkelt å avslå som å godta, det er et krav for at samtykket skal være gyldig.
 
@@ -66,7 +65,7 @@ I tillegg til en knapp for å lagre de valgene brukerne har gjort, skal det allt
 />
  
 ### Hvis det bare er nødvendige informasjonskapsler
-Om nettstedet ditt kun bruker strengt nødvendige informasjonskapsler – for eksempel lagrer språkvalg eller innloggingsstatus – trenger du ikke vise et samtykkebanner. Du må likevel informere om at du bruker slike informasjonskapsler. Legg informasjonen i bunnen av nettsiden, med en lenke til mer informasjon. 
+Om nettstedet ditt kun bruker strengt nødvendige informasjonskapsler – for eksempel lagrer språkvalg eller innloggingsstatus – trenger du ikke vise et samtykkebanner. Informer likevel om at du bruker slike informasjonskapsler. Legg informasjonen i bunnen av nettsiden, med en lenke til mer informasjon. 
 
 <Image
   src="/img/patterns/consent-banner-footer.png"
@@ -96,7 +95,7 @@ Unngå [Modal dialog](/no/components/docs/dialog/overview) om du kan, fordi den 
 [Ikke-modal dialog](/no/components/docs/dialog/overview#ikke-modal-dialog) bør unngås fordi den legger seg over annet interaktivt innhold på siden. Dette bryter [WCAG 2.4.11 Fokus ikke skjult (minimum)](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html). Suksesskriteriet ble innført i WCAG 2.2 og er foreløpig ikke en del av tilgjengelighetsforskriften, men representerer likevel god praksis for tilgjengelighet.
 
 ### Likestilte valg
-For at samtykket skal være frivillig og gyldig, må valgalternativene fremstå som likeverdige. Knappene for å godta og avslå skal ha samme farge, størrelse og synlighet – ingen av dem skal skille seg ut som det «riktige» valget.
+For at samtykket skal være frivillig og gyldig, må valgalternativene fremstå som likeverdige. Gi knappene for å godta og avslå samme farge, størrelse og synlighet – ingen av dem skal skille seg ut som det «riktige» valget.
 
 Unngå visuelle hint som leder brukerne mot ett bestemt valg, for eksempel ved å gjøre «Godta»-knappen større, mer fargerik eller mer fremtredende enn «Avslå»-knappen.
 
@@ -155,7 +154,7 @@ Legg informasjonen om strengt nødvendige informasjonskapsler *under* valgaltern
 ### Innhold i samtykkebanneret
 
 #### Unngå for mye tekst i selve samtykkebanneret
-For at et samtykke skal være gyldig, må brukerne få klar og forståelig informasjon som gjør det mulig å ta et aktivt og informert valg. Det må være tydelig hva brukerne samtykker til, hva konsekvensene av valget er og hvem opplysningene eventuelt deles med. 
+For at et samtykke skal være gyldig, må brukerne få klar og forståelig informasjon som gjør det mulig å ta et aktivt og informert valg. Forklar tydelig hva brukerne samtykker til, hva konsekvensene av valget er og hvem opplysningene eventuelt deles med. 
 
 #### Legg fullstendig informasjon i en egen erklæring
 Brukerne skal ha tilgang til detaljert og fullstendig informasjon. Samle informasjonen på en egen side om personvern og informasjonskapsler. Sørg for at samtykkebanneret har en tydelig lenke til denne erklæringen, i tillegg til en lenke i bunnen av siden.
@@ -163,7 +162,7 @@ Brukerne skal ha tilgang til detaljert og fullstendig informasjon. Samle informa
 ## Kode
 
 ### HTML-semantikk
-Samtykkebanneret bør kodes som en `<section>` – en avgrenset seksjon på siden som enkelt kan navigeres til eller hoppes over. Ikke bruk `role="banner"` eller `role="alertdialog"` på seksjonen.
+Kod samtykkebanneret som en `<section>` – en avgrenset seksjon på siden som enkelt kan navigeres til eller hoppes over. Ikke bruk `role="banner"` eller `role="alertdialog"` på seksjonen.
 
 <Story story="ConsentBanner" />
 
@@ -185,7 +184,7 @@ For at skjermlesere skal oppdage banneret som et landemerke (eng. landmark), må
 ```
 
 ### Skjermleser
-Alle valg og tilbakemeldinger må fungere med skjermleser. Ikke bruk `role="alert"` eller lignende, med mindre det er særlig viktig for brukerne å få med seg banneret, eller endringer i det, for å kunne bruke siden.
+Sørg for at alle valg og tilbakemeldinger fungerer med skjermleser. Ikke bruk `role="alert"` eller lignende, med mindre det er særlig viktig for brukerne å få med seg banneret, eller endringer i det, for å kunne bruke siden.
 
 ### Fokusrekkefølge og tastaturnavigasjon
 Samtykkebanneret skal følge vanlig fokusrekkefølge i DOM-en. La brukerne navigere til banneret selv, i stedet for å flytte fokus dit automatisk.
