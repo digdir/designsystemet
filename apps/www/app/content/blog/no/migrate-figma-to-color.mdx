@@ -11,8 +11,7 @@ imageCaption: Migrering
 ## Introduksjon
 
 **Dette endres:**
-- `Main color` og `Support color` slås sammen til én collection:
-  - `Color`
+- `Main color` og `Support color` slås sammen til én collection: `Color`
 - Alle "support" og "neutral" varianter av komponentene skal fjernes
 
 **Hva skjer med skissene som bruker variantene som blir fjernet?**
@@ -20,22 +19,24 @@ Visuelt vil det ikke være noe forskjell. De instansene som brukte "main" varian
 
 Det negative her er at man vil i en periode ha skisser med to versjonen av komponentbiblioteket. Dette kan gi rar oppførsel når man setter modes.
 
-Vi har laget en migreringsplugin som vil gjøre de mest repeterende oppgavene for deg. Om du ønsker å gjøre migreringen manuelt vil vi oppgi hvordan man går frem for å gjøre det.
+Vi har laget en migreringsplugin som vil gjøre de mest repeterende oppgavene for deg. Om du ønsker å gjøre migreringen manuelt vil vi oppgi hvordan man går frem for å gjøre det på de stegene hvor det er relevant. Du finner det manuelle steget på bunnen av steget.
 
-## Kan vi vente med denne oppdateringen? 
+NOTAT: Severity / Guide for å fjerne severity fra color / Støtte for dette i plugin
+
+## Må vi følge hele guiden
+Nei, du kan...
 Ja, frem til dere trenger å oppdatere tokens. CLIet vil fra nå generere den nye strukturen. Om dere vil oppdatere noe i Figma så må man følge denne guiden for at Figma filen skal bli riktig.
 
 ## Før du starter
 - Oppdater Tokens til den nye stukturen. NOTAT:Lenke til en annen guide eller docs?
 - Gjerne test migreringen i en kopi av filen først
-- Informer teamet før publisering
 
-## Steg 1 – Opprett snapshot i Version History
+## Steg 1 – Opprett snapshot i versjonshistorikken
 
 Sikre at filen kan gjenopprettes hvis noe går galt. Om du foretrekker å jobbe i en branch kan du gjøre det i stedet.
 
 **Gjør dette:**
-- Åpne Version History
+- Åpne "Version history"
 - Opprett nytt snapshot
 - Gi snapshot tydelig navn, For eksempel "before migration"
 
@@ -46,9 +47,6 @@ Sikre at filen kan gjenopprettes hvis noe går galt. Om du foretrekker å jobbe 
   autoPlay={false}
   aspectRatio='16-9'
 />
-
-**Kontroller at:**
-- Snapshot er opprettet
 
 ---
 
@@ -95,7 +93,7 @@ For at Token studio skal eksportere variablene riktig må vi gjøre en liten jus
 ---
 
 ## Steg 3 – Sync oppdaterte tokens med Token Studio
-Importere oppdatert token-struktur. OBS: Legg til link til guide for token studio her
+Importere oppdatert token-struktur. NOTAT: Legg til link til guide for token studio her
 
 **Gjør dette:**
 - Generer oppdaterte tokens
