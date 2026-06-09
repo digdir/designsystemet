@@ -11,6 +11,14 @@
       "matchStrings": ["{ 'currentValue': useNodeVersion }"],
       "datasourceTemplate": "node-version",
       "depNameTemplate": "node"
+    },
+    {
+      "customType": "jsonata",
+      "fileFormat": "json",
+      "managerFilePatterns": ["/^package.json$/"],
+      "matchStrings": ["engines.runtime[name = 'node'].{ 'currentValue': version }"],
+      "datasourceTemplate": "node-version",
+      "depNameTemplate": "node"
     }
   ]
 }
