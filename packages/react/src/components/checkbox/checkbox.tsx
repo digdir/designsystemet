@@ -34,6 +34,11 @@ export type CheckboxProps = MergeRight<
      * If outline, the checkbox will have a border.
      */
     variant?: 'outline';
+    /**
+     * Optional position of checkbox in field
+     * @default 'start'
+     */
+    'data-position'?: 'start' | 'end';
   } & LabelRequired
 >;
 
@@ -47,6 +52,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
     {
       'data-size': size,
+      'data-position': position,
       className,
       style,
       children,
@@ -62,6 +68,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <Field
         data-size={size}
         data-variant={variant}
+        data-position={position}
         className={className}
         style={style}
       >

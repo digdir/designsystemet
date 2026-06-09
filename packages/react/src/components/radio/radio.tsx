@@ -34,6 +34,11 @@ export type RadioProps = MergeRight<
      * If outline, the radio will have a border.
      */
     variant?: 'outline';
+    /**
+     * Optional position of radio in field
+     * @default 'start'
+     */
+    'data-position'?: 'start' | 'end';
   } & LabelRequired
 >;
 
@@ -46,6 +51,7 @@ export type RadioProps = MergeRight<
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   {
     'data-size': size,
+    'data-position': position,
     className,
     style,
     children,
@@ -61,6 +67,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     <Field
       data-size={size}
       data-variant={variant}
+      data-position={position}
       className={className}
       style={style}
     >

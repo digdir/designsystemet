@@ -106,10 +106,6 @@
       grid-template-areas: 'content input';
       grid-template-columns: 1fr auto;
       width: auto;
-      & > *:not(input) {
-        padding-inline-start: 0;
-        padding-inline-end: var(--dsc-field-content-spacing);
-      }
     }
 
     &[data-variant='outline'] {
