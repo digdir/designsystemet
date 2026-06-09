@@ -62,6 +62,37 @@
     display: none; /* Hide data elements when not in multiple mode */
   }
 
+  /* Count display mode: hide chips, show count label inside input */
+  &[data-count] data {
+    display: none;
+  }
+
+  /* NOTE: This styling should be reflected in tag.css */
+  &[data-count]::before {
+    content: attr(data-count) ' ' var(--dsc-suggestion-count-label, 'valgt');
+    position: absolute;
+    inset-inline-start: var(--ds-size-3);
+    top: 50%;
+    translate: 0 -50%;
+    pointer-events: none;
+    z-index: 1;
+    align-items: center;
+    background: var(--ds-color-surface-tinted);
+    border: solid transparent var(--ds-border-width-default);
+    border-radius: var(--ds-border-radius-sm);
+    box-sizing: border-box;
+    color: var(--ds-color-text-default);
+    font-size: var(--ds-body-sm-font-size);
+    line-height: var(--ds-line-height-sm);
+    min-height: var(--ds-size-8);
+    padding: 0 var(--ds-size-2);
+    display: inline-flex;
+  }
+
+  &[data-count]:focus-within::before {
+    display: none;
+  }
+
   /* NOTE: This styling should be reflected in chip.css */
   & > data {
     align-items: center;

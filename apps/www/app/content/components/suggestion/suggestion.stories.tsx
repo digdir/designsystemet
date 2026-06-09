@@ -308,6 +308,99 @@ export const Creatable = () => {
     </Field>
   );
 };
+export const MultipleCount = () => {
+  const DATA_PLACES = [
+    'Sogndal',
+    'Oslo',
+    'Brønnøysund',
+    'Stavanger',
+    'Trondheim',
+    'Bergen',
+    'Lillestrøm',
+  ];
+  const [selected, setSelected] = useState<string[]>(['Sogndal']);
+
+  return (
+    <Field>
+      <Label>Velg destinasjoner</Label>
+      <EXPERIMENTAL_Suggestion
+        multiple
+        display='count'
+        selected={selected}
+        onSelectedChange={(items) =>
+          setSelected(items.map((item) => item.value))
+        }
+      >
+        <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Clear />
+        <EXPERIMENTAL_Suggestion.List>
+          <EXPERIMENTAL_Suggestion.Empty>
+            Ingen treff
+          </EXPERIMENTAL_Suggestion.Empty>
+          {DATA_PLACES.map((place) => (
+            <EXPERIMENTAL_Suggestion.Option
+              key={place}
+              label={place}
+              value={place}
+            >
+              {place}
+            </EXPERIMENTAL_Suggestion.Option>
+          ))}
+        </EXPERIMENTAL_Suggestion.List>
+      </EXPERIMENTAL_Suggestion>
+    </Field>
+  );
+};
+
+export const MultipleCountEn = () => {
+  const DATA_PLACES = [
+    'Sogndal',
+    'Oslo',
+    'Brønnøysund',
+    'Stavanger',
+    'Trondheim',
+    'Bergen',
+    'Lillestrøm',
+  ];
+  const [selected, setSelected] = useState<string[]>(['Sogndal']);
+
+  return (
+    <Field>
+      <Label>Select destinations</Label>
+      <EXPERIMENTAL_Suggestion
+        multiple
+        display='count'
+        selected={selected}
+        onSelectedChange={(items) =>
+          setSelected(items.map((item) => item.value))
+        }
+        style={
+          {
+            '--dsc-suggestion-count-label': '"selected"',
+          } as React.CSSProperties
+        }
+      >
+        <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Clear />
+        <EXPERIMENTAL_Suggestion.List>
+          <EXPERIMENTAL_Suggestion.Empty>
+            No results found
+          </EXPERIMENTAL_Suggestion.Empty>
+          {DATA_PLACES.map((place) => (
+            <EXPERIMENTAL_Suggestion.Option
+              key={place}
+              label={place}
+              value={place}
+            >
+              {place}
+            </EXPERIMENTAL_Suggestion.Option>
+          ))}
+        </EXPERIMENTAL_Suggestion.List>
+      </EXPERIMENTAL_Suggestion>
+    </Field>
+  );
+};
+
 export const CreatableEn = () => {
   const DATA_PLACES = [
     'Sogndal',
