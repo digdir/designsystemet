@@ -1,0 +1,232 @@
+---
+title: "Figma guide: Migrer til ny fargestruktur"
+description: Få hjelp til å migrere din Figma fil til å følge den nye fargestrukturen
+date: 2026-06-09
+author: Digdir
+imageSrc: /img/blog/altinnstudio-16-9.png
+imageAlt: migrering
+imageCaption: Migrering
+---
+
+## Introduksjon
+
+**Dette endres:**
+- `Main color` og `Support color` slås sammen til én collection:
+  - `Color`
+- Alle "support" og "neutral" varianter av komponentene skal fjernes
+
+**Hva skjer med skissene som bruker variantene som blir fjernet?**
+Visuelt vil det ikke være noe forskjell. De instansene som brukte "main" varianten vil bli oppdatert å se like ut. For "support" og "neutral" så vil Figma velge å ikke oppdatere disse. Det vil si at du fortsatt vil ha "neutral" og "support" variantene i skissene. Så blir det opp til konsumenten å oppdatere til de nye versjonene når det passer for de. 
+
+Det negative her er at man vil i en periode ha skisser med to versjonen av komponentbiblioteket. Dette kan gi rar oppførsel når man setter modes.
+
+Vi har laget en migreringsplugin som vil gjøre de mest repeterende oppgavene for deg. Om du ønsker å gjøre migreringen manuelt vil vi oppgi hvordan man går frem for å gjøre det.
+
+## Kan vi vente med denne oppdateringen? 
+Ja, frem til dere trenger å oppdatere tokens. CLIet vil fra nå generere den nye strukturen. Om dere vil oppdatere noe i Figma så må man følge denne guiden for at Figma filen skal bli riktig.
+
+## Før du starter
+- Oppdater Tokens til den nye stukturen. NOTAT:Lenke til en annen guide eller docs?
+- Gjerne test migreringen i en kopi av filen først
+- Informer teamet før publisering
+
+## Steg 1 – Opprett snapshot i Version History
+
+Sikre at filen kan gjenopprettes hvis noe går galt. Om du foretrekker å jobbe i en branch kan du gjøre det i stedet.
+
+**Gjør dette:**
+- Åpne Version History
+- Opprett nytt snapshot
+- Gi snapshot tydelig navn, For eksempel "before migration"
+
+<ResponsiveIframe
+  src='/img/blog/migrate-steg1.mp4'
+  title='Skjermopptak som viser hvordan man legger til et snapshot i versjonshistorikken.'
+  frameBorder='0'
+  autoPlay={false}
+  aspectRatio='16-9'
+/>
+
+**Kontroller at:**
+- Snapshot er opprettet
+
+---
+
+## Steg 2 – Oppdater navn i variabelstrukturen
+
+For at Token studio skal eksportere variablene riktig må vi gjøre en liten justering på varibelstrukturen først. 
+
+**Plugin**
+1. Kjør "migration helper"
+2. Trykk på "update library"
+3. "Migration helper" sjekker om variabelen strukturen er riktig. Om den ikke er det kan du fikse det ved hjelp av å trykke på "prepare variables"
+
+<ResponsiveIframe
+  src='/img/blog/migrate-steg2.mp4'
+  title='Skjermopptak som viser hvordan man bruker vår plugin til å endre navn'
+  frameBorder='0'
+  autoplay='false'
+  aspectRatio='16-9'
+/>
+<Card >
+  <Details>
+    <Details.Summary>
+    Endre manuelt
+    </Details.Summary>
+    <Details.Content>
+    1. Finn `Main color`collection og rename til `Color`
+    2. Under "Groups" nede til venstre vil det stå `All/color/main`. Høyreklikk på `color` og trykk "ungroup"
+
+    OBS: Vurder å bytt ut med før/etter bilde
+
+    <Image
+      src='/img/blog/migrate-steg2variabler.png'
+      alt='Skjermbilde som viser hvordan variablene i Figma burde se ut etter endring'
+      caption='Variablene dine burde se like som i skjermbilde her'
+      boxShadow={true}
+      
+    />
+    </Details.Content>
+  </Details>
+</Card>
+**Kontroller at:**
+- at variblene har lik navngivning som i bilde over
+
+---
+
+## Steg 3 – Sync oppdaterte tokens med Token Studio
+Importere oppdatert token-struktur. OBS: Legg til link til guide for token studio her
+
+**Gjør dette:**
+- Generer oppdaterte tokens
+- Hent tokens inn til Token Studio
+- Eksporter tokens
+
+**Kontroller at:**
+- Alle farger nå ligger i `color`
+
+---
+
+## Steg 4 – Fjern gamle variable collections
+**NOTAT: Man kan stoppe her. Da har man oppdatert strukturen. Support vil fortsatt fungere. Dette kan være en myk overgang. Kanskje vi skal skrive noe om det???**
+
+Rydde opp etter eksport. Token studio vil ikke slette `support color`, du må derfor slette denne manuelt. Om det er noen farger som har endret navn eller som er fjernet fra token strukturen så vil disse også ligge igjen i `color` ta en titt å fjern eventuelt farger som ikke har referanser. 
+
+
+<ResponsiveIframe
+  src='/img/blog/migrate-steg4.mp4'
+  title='Skjermopptak som viser hvordan man sletter support color'
+  frameBorder='0'
+  autoplay='false'
+  aspectRatio='16-9'
+/>
+
+---
+
+## Steg 5 – Kjør plugin: Remove variants
+Nå skal vi gjøre den store endringen. I filen vår har vi 3 farge varianter av komponentene. Main, Support og Neutral. Support er nå ikke lenger koblet til noen variabler, og neutral er overflødig da man kan bruke "color" til å sette alle komponenter til neutral.  
+
+**Pluginen gjør dette:**
+- Fjerner support-varianter
+- Fjerner neutral-varianter
+- Fjerner `color` egenskap fra alle komponenter
+  - Utenom alert og validationMessage. Disse beholder sine severity nivå.
+- Om det bare er en variant igjen endrer den fra `ComponentSet` til `Component`
+
+<Card >
+  <Details>
+    <Details.Summary>
+    Endre manuelt
+    </Details.Summary>
+    <Details.Content>
+   1. Gå gjennom alle komponenter og subkomponenter. Fjern alle varianter som er av typen "support" eller "neutral"
+    </Details.Content>
+  </Details>
+</Card>
+
+---
+
+## Steg 6 – Kjør plugin: Fix in library
+
+Oppdatere instanser som brukte variantene som nå er fjernet.
+
+**Pluginen gjør dette:**
+- Neutral-varianter:
+  - Endres til `default`
+  - Får `color mode = neutral`
+- Support-varianter:
+  - Krever manuelt valg av ny farge
+  - Pluginen lar deg velge mapping
+
+**Merk:** Pluginen kan ikke automatisk vite hva tidligere support-farger tilsvarer.
+
+**Kontroller at:**
+- ✅ Instanser er oppdatert
+- ✅ Ingen manglende komponenter
+- ✅ Eksempler ser riktige ut
+
+---
+
+## Steg 7 – Kvalitetssikring
+
+Kontrollere at biblioteket fungerer som forventet.
+
+**Sjekk dette:**
+- Komponenter:
+  - Feil farger
+  - Feil states
+  - Manglende modes
+- Eksempelsider:
+  - Dokumentasjon
+  - Showcase
+  - Komponentsider
+- Variabler:
+  - Ingen gamle collections
+  - Ingen ubrukt struktur
+
+**Kontroller at:**
+- ✅ Biblioteket ser korrekt ut
+- ✅ Ingen åpenbare feil
+
+---
+
+## Steg 8 – Publiser biblioteket
+
+Gjøre endringene tilgjengelige for teamet.
+
+**Gjør dette:**
+- Publiser oppdaterte komponenter
+- Publiser oppdaterte variabler
+
+**Merk:**
+- Informer teamet om breaking changes
+- Be teamet oppdatere bibliotek før skisser migreres
+
+**Kontroller at:**
+- ✅ Biblioteket er publisert
+
+---
+
+## Steg 9 – Oppdater skisser og designfiler
+
+Migrere eksisterende designfiler til ny struktur.
+
+**Gjør dette:**
+- Oppdaterer instanser
+- Mapper gamle varianter til ny struktur
+
+**Anbefalt rekkefølge:**
+1. Migrer bibliotek
+2. Publiser bibliotek
+3. Oppdater designfiler
+
+**Merk:** Dette steget kjøres utenfor biblioteksfilen.
+
+**Kontroller at:**
+- ✅ Skisser bruker oppdatert bibliotek
+- ✅ Ingen gamle varianter gjenstår
+
+
+
+
+<Contributors authors={['Lasse Febakke Straum']} />

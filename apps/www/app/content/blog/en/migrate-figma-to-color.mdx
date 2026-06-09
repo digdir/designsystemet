@@ -1,0 +1,314 @@
+---
+title: "Figma guide: Migrer til ny fargestruktur"
+description: Få hjelp til å migrere din Figma fil til å følge den nye fargestrukturen
+date: 2026-06-09
+author: Digdir
+imageSrc: /img/blog/altinnstudio-16-9.png
+imageAlt: migrering
+imageCaption: Migrering
+---
+
+# Migreringsguide – Ny fargestruktur i Figma
+
+## Kortversjon
+
+1. Opprett snapshot i Version History
+2. Oppdater navn i variabelstrukturen
+3. Sync oppdaterte tokens med Token Studio
+4. Fjern gamle variable collections
+5. Kjør plugin – Remove variants
+6. Kjør plugin – Fix in library
+7. Kvalitetssikre biblioteket
+8. Publiser biblioteket
+9. Oppdater skisser/designfiler
+
+---
+
+# Introduksjon
+
+## Hva endres
+- `Main color` og `Support color` slås sammen til én collection:
+  - `Color`
+- Alle "support" og "neutral" varianter av komponentene skal fjernes
+
+## Anbefalinger
+- Gjerne test migreringen i en kopi av filen deres først
+- Informer teamet før publisering
+
+---
+
+# Steg 1 – Opprett snapshot i Version History
+
+## Hensikt
+Sikre at filen kan gjenopprettes hvis noe går galt. Om du foretrekker å jobbe i en branch kan du selvfølgelig gjøre det i stedet.
+
+## Gjør dette
+- Åpne Version History
+- Opprett nytt snapshot
+- Gi snapshot tydelig navn
+
+## Eksempel
+- `Before color migration`
+
+## Kontrollpunkt
+- ✅ Snapshot er opprettet
+
+## Video / bilder
+- Placeholder
+
+---
+
+# Steg 2 – Oppdater navn i variabelstrukturen
+
+## Hensikt
+Forberede filen for ny token-struktur.
+
+## Endringer som må gjøres
+
+### Collection-navn
+- `Main color` → `Color`
+
+### Variabelstruktur
+Eksempel:
+- `color/main/background-default`
+→ `background-default`
+
+## Dette kan gjøres på to måter
+- Manuelt
+- Via steg 1 i pluginen
+
+## Viktig
+- Dette er nødvendig for at Token Studio skal plassere variabler riktig
+- Feil struktur kan føre til ødelagte referanser i filen
+
+## Kontrollpunkt
+- ✅ `Color` collection finnes
+- ✅ Variabler har ny struktur
+- ✅ Ingen duplikater
+
+## Video / bilder
+- Placeholder
+
+---
+
+# Steg 3 – Sync oppdaterte tokens med Token Studio
+
+## Hensikt
+Importere oppdatert token-struktur.
+
+## Gjør dette
+- Kjør sync i Token Studio
+- Apply oppdaterte tokens
+
+## Kontroller
+- Nye variabler opprettes riktig
+- Ingen røde variable references
+- Variabler havner i riktig collection
+
+## Kontrollpunkt
+- ✅ Tokens er synced
+- ✅ Ingen feil i variabler
+
+## Video / bilder
+- Placeholder
+
+---
+
+# Steg 4 – Fjern gamle variable collections
+
+## Hensikt
+Rydde opp etter migreringen.
+
+## Sjekk dette
+- Finnes gamle variabler fortsatt?
+- Finnes `Support color` fortsatt?
+
+## Fjern
+- Gammel `Support color`
+- Eventuelle utdaterte variabler
+
+## Viktig
+- Kontroller at ingen komponenter fortsatt bruker gamle variabler før sletting
+
+## Kontrollpunkt
+- ✅ Kun ny color-struktur gjenstår
+
+## Video / bilder
+- Placeholder
+
+---
+
+# Steg 5 – Kjør plugin: Remove variants
+
+## Hensikt
+Fjerne gamle color-varianter fra komponentene.
+
+## Pluginen gjør følgende
+- Fjerner support-varianter
+- Fjerner neutral-varianter
+- Fjerner `color` variant property
+
+## Viktig
+- Dette påvirker hele biblioteket
+- Dette steget kan være vanskelig å reversere uten snapshot
+
+## Kontrollpunkt
+- ✅ Gamle color-varianter er fjernet
+- ✅ Component sets ser riktige ut
+
+## Video / bilder
+- Placeholder
+
+---
+
+# Steg 6 – Kjør plugin: Fix in library
+
+## Hensikt
+Oppdatere instanser som brukte variantene som nå er fjernet.
+
+## Pluginen gjør følgende
+
+### Neutral-varianter
+- Endres til:
+  - `default`
+- Legger på:
+  - `color mode = neutral`
+
+### Support-varianter
+- Krever manuelt valg av ny farge
+- Pluginen lar deg velge mapping
+
+## Viktig
+- Pluginen kan ikke automatisk vite hva tidligere support-farger tilsvarer
+
+## Kontrollpunkt
+- ✅ Instanser er oppdatert
+- ✅ Ingen manglende komponenter
+- ✅ Eksempler ser riktige ut
+
+## Video / bilder
+- Placeholder
+
+---
+
+# Steg 7 – Kvalitetssikring
+
+## Hensikt
+Kontrollere at biblioteket fungerer som forventet.
+
+## Sjekk dette
+
+### Komponenter
+- Feil farger
+- Feil states
+- Manglende modes
+
+### Eksempelsider
+- Dokumentasjon
+- Showcase
+- Komponentsider
+
+### Variabler
+- Ingen gamle collections
+- Ingen ubrukt struktur
+
+## Kontrollpunkt
+- ✅ Biblioteket ser korrekt ut
+- ✅ Ingen åpenbare feil
+
+## Video / bilder
+- Placeholder
+
+---
+
+# Steg 8 – Publiser biblioteket
+
+## Hensikt
+Gjøre endringene tilgjengelige for teamet.
+
+## Gjør dette
+- Publiser oppdaterte komponenter
+- Publiser oppdaterte variabler
+
+## Anbefaling
+- Informer teamet om breaking changes
+- Be teamet oppdatere bibliotek før skisser migreres
+
+## Kontrollpunkt
+- ✅ Biblioteket er publisert
+
+---
+
+# Steg 9 – Oppdater skisser og designfiler
+
+## Hensikt
+Migrere eksisterende designfiler til ny struktur.
+
+## Viktig
+- Dette steget kjøres utenfor biblioteksfilen
+
+## Funksjonen gjør følgende
+- Oppdaterer instanser
+- Mapper gamle varianter til ny struktur
+
+## Anbefalt rekkefølge
+1. Migrer bibliotek
+2. Publiser bibliotek
+3. Oppdater designfiler
+
+## Kontrollpunkt
+- ✅ Skisser bruker oppdatert bibliotek
+- ✅ Ingen gamle varianter gjenstår
+
+## Video / bilder
+- Placeholder
+
+---
+
+# Feilsøking
+
+## Vanlige problemer
+
+### Gamle collections finnes fortsatt
+- Kontroller Token Studio sync
+- Sjekk om variabler fortsatt er i bruk
+
+### Komponenter mistet farger
+- Kontroller variable mappings
+- Kjør Fix in library på nytt
+
+### Support-farger ble feil
+- Oppdater mapping manuelt
+
+### Instanser oppdateres ikke
+- Kontroller at biblioteket er publisert
+- Oppdater library references
+
+---
+
+# FAQ
+
+## Kan jeg reversere migreringen?
+- Ja, hvis du opprettet snapshot i steg 1
+
+## Må alle skisser oppdateres?
+- Ja, dersom de bruker gamle varianter
+
+## Kan dette gjøres uten plugin?
+- Delvis, men pluginen anbefales sterkt
+
+---
+
+# Ressurser
+
+## Videoer
+- Migrering av bibliotek
+- Oppdatering av skisser
+
+## Dokumentasjon
+- Plugin-dokumentasjon
+- Token Studio-oppsett
+
+## Support
+- Kontaktperson / Slack-kanal / Teams-kanal
+<Contributors authors={['David Øvrelid']} />
