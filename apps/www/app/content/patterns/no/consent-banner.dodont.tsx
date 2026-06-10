@@ -2,8 +2,10 @@ import {
   Button,
   Checkbox,
   Divider,
+  Fieldset,
   Link,
   Paragraph,
+  useCheckboxGroup,
 } from '@digdir/designsystemet-react';
 
 export const DontNegations = () => {
@@ -58,23 +60,21 @@ export const DoButtons2 = () => {
 };
 
 export const DontNecessaryCookiesCheckbox = () => {
+  const { getCheckboxProps } = useCheckboxGroup({
+    value: ['necessary'],
+  });
+
   return (
-    <div
-      style={{
-        alignItems: 'flex-start',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-size-2)',
-      }}
-    >
+    <Fieldset>
+      <Fieldset.Legend>Hvilken informasjon kan vi lagre?</Fieldset.Legend>
       <Checkbox
-        checked
-        disabled
         label='Nødvendige informasjonskapsler'
-        readOnly
+        {...getCheckboxProps({
+          disabled: true,
+        })}
       />
-      <Checkbox label='Hvordan nettsiden brukes' />
-    </div>
+      <Checkbox label='Statistikk om hvordan nettsiden brukes' />
+    </Fieldset>
   );
 };
 

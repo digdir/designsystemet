@@ -20,7 +20,7 @@ export const ConsentBanner = () => {
         <Paragraph>
           Hvis du svarer ja, lagrer og analyserer vi informasjon som hjelper oss
           å forbedre nettsiden. Du kan når som helst endre valget ditt nederst
-          på siden.
+          på siden.{' '}
           <Link href='#mer-om-hva-vi-lagrer' style={{ color: 'inherit' }}>
             Mer om hva vi lagrer og hvorfor.
           </Link>
@@ -47,9 +47,9 @@ export const ConsentBanner = () => {
             marginTop: 'var(--ds-size-8)',
           }}
         >
-          <Link href='#nodvendig-informasjon'>
+          <Link href='#nodvendig-informasjon' style={{ color: 'inherit' }}>
             Vi lagrer også nødvendig informasjon
-          </Link>
+          </Link>{' '}
           som ikke kan velges bort. Dette gjør at nettsiden fungerer og er
           trygg.
         </Paragraph>
