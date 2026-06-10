@@ -2,6 +2,7 @@ import {
   Button,
   Checkbox,
   Divider,
+  Link,
   Paragraph,
 } from '@digdir/designsystemet-react';
 
@@ -47,13 +48,43 @@ export const DontButtons2 = () => {
   return <Button variant='primary'>Godta bare nødvendige</Button>;
 };
 
+export const DoButtons2 = () => {
+  return (
+    <>
+      <Button variant='primary'>Ja</Button>
+      <Button variant='primary'>Nei</Button>
+    </>
+  );
+};
+
 export const DontNecessaryCookiesCheckbox = () => {
   return (
-    <Checkbox
-      checked
-      disabled
-      label='Nødvendige informasjonskapsler'
-      readOnly
-    />
+    <div
+      style={{
+        alignItems: 'flex-start',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-size-2)',
+      }}
+    >
+      <Checkbox
+        checked
+        disabled
+        label='Nødvendige informasjonskapsler'
+        readOnly
+      />
+      <Checkbox label='Hvordan nettsiden brukes' />
+    </div>
+  );
+};
+
+export const DoNecessaryCookiesCheckbox = () => {
+  return (
+    <Paragraph>
+      <Link href='#nodvendig-informasjon' style={{ color: 'inherit' }}>
+        Vi lagrer også nødvendig informasjon
+      </Link>{' '}
+      som ikke kan velges bort. Dette gjør at nettsiden fungerer og er trygg.
+    </Paragraph>
   );
 };

@@ -14,7 +14,7 @@ Virksomheter utformer i dag samtykkebannere svært ulikt når det gjelder språk
 
 Samtidig er de juridiske rammene klare. Samtykket må fylle kravene til et gyldig samtykke etter personvernforordningen og kravene i tilgjengelighetsforskriften.
 
-Et felles mønster gir tydelige rammer for hvordan du kan utforme gode samtykkeløsninger. Når samtykke håndteres likt på tvers av tjenester, blir det enklere for brukerne å forstå valgene sine. Det gir mer forutsigbare brukeropplevelser og reduserer den kognitive belastningen. Samtidig blir det enklere å lage løsninger som bygger på god praksis for brukeropplevelse, tilgjengelighet og personvern. Du må selv vurdere hvilke teknologier du bruker og hvilket rettslig grunnlag som gjelder.
+Et felles mønster gir tydelige rammer for hvordan du kan utforme gode samtykkeløsninger. Når samtykke håndteres likt på tvers av tjenester, blir det enklere for brukerne å forstå valgene sine. Det gir mer forutsigbare brukeropplevelser og reduserer den kognitive belastningen. Samtidig blir det enklere for deg å lage løsninger som bygger på god praksis for brukeropplevelse, tilgjengelighet og personvern. Du må selv vurdere hvilke teknologier du bruker og hvilket rettslig grunnlag som gjelder.
 
 ## Forberedelser
 Før du kan be om samtykke, må du ha oversikt over hvilke opplysninger du skal samle inn og hvilke teknologier du bruker. Dette kan være informasjonskapsler (cookies), men også andre metoder for å lagre eller lese data på brukerens enhet, for eksempel localStorage og fingerprinting. Reglene gjelder også når du lagrer data på en server, dersom du først henter informasjonen fra brukerens enhet.
@@ -147,20 +147,24 @@ Strengt nødvendige informasjonskapsler krever ikke samtykke, og skal ikke være
   <DoDont story="DontButtons2">
 Nødvendige informasjonskapsler skal ikke være en del av spørsmålet brukerne skal ta stilling til, så de bør du ikke nevne i knappene.
   </DoDont>
-  <DoDont story="DontNecessaryCookiesCheckbox">
-Ikke vis nødvendige informasjonskapsler som et forhåndsvalgt eller deaktivert valg. De kan ikke velges bort, og skal derfor heller forklares i tekst.
+  <DoDont story="DoButtons2">
+Bruk knappetekster som svarer på spørsmålet i samtykkebanneret, og hold informasjonen om nødvendige informasjonskapsler adskilt fra valgalternativene. 
   </DoDont>
 </div>
 
+<div className="dodont-row">
+  <DoDont story="DontNecessaryCookiesCheckbox">
+Ikke vis nødvendige informasjonskapsler som et forhåndsvalgt eller deaktivert valg. De kan ikke velges bort, og skal derfor heller forklares i tekst.
+  </DoDont>
+  <DoDont story="DoNecessaryCookiesCheckbox">
 Legg informasjonen om strengt nødvendige informasjonskapsler *under* valgalternativene, siden det ikke er en del av spørsmålet brukerne skal ta stilling til. 
+  </DoDont>
+</div>
 
 ### Innhold i samtykkebanneret
+For at et samtykke skal være gyldig, må brukerne få forståelig informasjon som gjør det mulig å ta et informert valg. Forklar tydelig hva brukerne samtykker til, hva konsekvensene av valget er og hvem opplysningene eventuelt deles med.
 
-#### Unngå for mye tekst i selve samtykkebanneret
-For at et samtykke skal være gyldig, må brukerne få forståelig informasjon som gjør det mulig å ta et informert valg. Forklar tydelig hva brukerne samtykker til, hva konsekvensene av valget er og hvem opplysningene eventuelt deles med. 
-
-#### Legg fullstendig informasjon i en egen erklæring
-Brukerne skal ha tilgang til detaljert og fullstendig informasjon. Samle informasjonen på en egen side om personvern og informasjonskapsler. Sørg for at samtykkebanneret har en tydelig lenke til denne erklæringen, i tillegg til en lenke i bunnen av siden.
+Unngå for mye tekst i selve samtykkebanneret. Samle detaljert og fullstendig informasjon på en egen side om personvern og informasjonskapsler. Sørg for at samtykkebanneret har en tydelig lenke til denne erklæringen, i tillegg til en lenke i bunnen av siden.
 
 ## Kode
 
