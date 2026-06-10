@@ -40,11 +40,18 @@ function handleToggle(
     source = (el.id && root?.querySelector?.<HTMLElement>(css)) || undefined; // Polyfill ToggleEvent .source for older browsers
   }
   if (!source || source === el || (oldState && oldState === newState)) return; // No need to update
+
+  // Use scroll-margin-bottom to measure computed arrow-size property as this does
+  // not affect layout or position, makes the browser calculate the pixel value instead
+  // of returning the calc() (as it would if reading the --_ds-floating-arrow-size directly)
+  // and makes it possible to read the value even if ::before is not used to draw the arrow.
+  el.style.scrollMarginBottom = `var(--_ds-floating-arrow-size)`;
+
   const padding = 10;
   const overscroll = getCSSProp(el, '--_ds-floating-overscroll');
   const placement = attr(el, ATTR_PLACE) || attr(source, ATTR_PLACE) || float;
   const auto = attr(el, ATTR_AUTO) || attr(source, ATTR_AUTO);
-  const arrowSize = parseFloat(getComputedStyle(el, '::before').height) || 0;
+  const arrowSize = parseFloat(getCSSProp(el, 'scroll-margin-bottom')) || 0;
   const shiftProp = placement.match(/left|right/gi) ? 'Height' : 'Width';
   const shiftLimit = source[`offset${shiftProp}`] / 2 + arrowSize;
 
@@ -54,7 +61,7 @@ function handleToggle(
     strategy: 'absolute',
     placement,
     middleware: [
-      offset(arrowSize || 0), // Add space for arrow or default to 8px
+      offset(arrowSize),
       shift({
         padding,
         limiter: limitShift({ offset: { mainAxis: shiftLimit } }), // Prevent from shifing away from source
