@@ -54,9 +54,7 @@ export const ConsentBanner = () => {
           trygg.
         </Paragraph>
       </section>
-      <SkipLink className='consent-banner-skip-link' href='#main'>
-        Hopp til hovedinnhold
-      </SkipLink>
+      <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
     </>
   );
 };
