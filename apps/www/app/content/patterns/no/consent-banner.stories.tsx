@@ -9,7 +9,7 @@ import {
 export const ConsentBanner = () => {
   return (
     <>
-      <section>
+      <section aria-labelledby='samtykkebanner__tittel'>
         <Heading
           id='samtykkebanner__tittel'
           data-size='md'
