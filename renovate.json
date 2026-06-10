@@ -16,7 +16,9 @@
       "customType": "jsonata",
       "fileFormat": "json",
       "managerFilePatterns": ["/^package.json$/"],
-      "matchStrings": ["engines.runtime[name = 'node'].{ 'currentValue': version }"],
+      "matchStrings": [
+        "engines.runtime[name = 'node'].{ 'currentValue': version }"
+      ],
       "datasourceTemplate": "node-version",
       "depNameTemplate": "node"
     }
