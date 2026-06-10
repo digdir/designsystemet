@@ -9,14 +9,7 @@ import {
 export const ConsentBanner = () => {
   return (
     <>
-      <section
-        aria-labelledby='samtykkebanner__tittel'
-        style={{
-          background: '#0062ba',
-          color: 'white',
-          padding: 'var(--ds-size-8) var(--ds-size-8)',
-        }}
-      >
+      <section>
         <Heading
           id='samtykkebanner__tittel'
           data-size='md'
@@ -24,13 +17,7 @@ export const ConsentBanner = () => {
         >
           Får vi samle informasjon om hvordan nettsiden brukes?
         </Heading>
-        <Paragraph
-          style={{
-            color: 'inherit',
-            fontSize: '1.25rem',
-            maxWidth: '68rem',
-          }}
-        >
+        <Paragraph>
           Hvis du svarer ja, lagrer og analyserer vi informasjon som hjelper oss
           å forbedre nettsiden. Du kan når som helst endre valget ditt nederst
           på siden.{' '}
@@ -47,57 +34,26 @@ export const ConsentBanner = () => {
             marginTop: 'var(--ds-size-5)',
           }}
         >
-          <Button
-            className='consent-banner-button'
-            data-color='neutral'
-            data-size='md'
-            name='action'
-            type='submit'
-            value='all'
-          >
+          <Button className='consent-banner-button' name='action' type='submit'>
             Ja
           </Button>
-          <Button
-            className='consent-banner-button'
-            data-color='neutral'
-            data-size='md'
-            name='action'
-            type='submit'
-            value='required'
-          >
+          <Button className='consent-banner-button' name='action' type='submit'>
             Nei
           </Button>
         </form>
         <Paragraph
+          data-size='sm'
           style={{
-            color: 'inherit',
-            fontSize: '1.125rem',
             marginTop: 'var(--ds-size-8)',
           }}
         >
-          <Link href='#nodvendig-informasjon' style={{ color: 'inherit' }}>
+          <Link href='#nodvendig-informasjon'>
             Vi lagrer også nødvendig informasjon
           </Link>{' '}
           som ikke kan velges bort. Dette gjør at nettsiden fungerer og er
           trygg.
         </Paragraph>
       </section>
-      <style>
-        {`
-          .consent-banner-button {
-            background-color: rgb(255 255 255 / 100%);
-            color: rgb(0 0 0 / 100%);
-          }
-
-          .consent-banner-button:hover {
-            background-color: rgb(255 255 255 / 70%);
-          }
-
-          .consent-banner-skip-link:focus {
-            width: 100%;
-          }
-        `}
-      </style>
       <SkipLink className='consent-banner-skip-link' href='#main'>
         Hopp til hovedinnhold
       </SkipLink>
