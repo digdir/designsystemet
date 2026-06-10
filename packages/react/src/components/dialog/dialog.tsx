@@ -101,12 +101,19 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     const dialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the dialog works without a DialogTriggerContext
     const Component = asChild ? Slot : 'dialog';
     const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
-    const showProp = modal ? 'showModal' : 'show';
     const autoId = useId();
     const usedId = id ?? autoId;
 
     // Toggle open based on prop
-    useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]);
+    useEffect(() => {
+      if (open === undefined) return; // Uncontrolled if open prop is not provided
+
+      const dialog = dialogRef.current;
+      if (dialog) {
+        if (open && !dialog.open) dialog[modal ? 'showModal' : 'show']();
+        else dialog.open = !!open; // Close with prop to prevent close event from firing
+      }
+    }, [open, modal]);
 
     return (
       <Component
@@ -132,10 +139,11 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
           }
         }}
         onAnimationEnd={(event: AnimationEvent<HTMLDialogElement>) => {
-          const { currentTarget: dialog } = event;
-          const autofocus = dialog.querySelector<HTMLElement>('[autofocus]');
-          if (document.activeElement !== autofocus) autofocus?.focus(); // Handle autofocus on open
           onAnimationEnd?.(event);
+          if (event.currentTarget !== event.target) return; // Only run if event is from the dialog itself
+          const autofocus =
+            event.currentTarget.querySelector<HTMLElement>('[autofocus]');
+          if (document.activeElement !== autofocus) autofocus?.focus(); // Handle autofocus on open
         }}
         ref={mergedRefs}
         {...rest}
