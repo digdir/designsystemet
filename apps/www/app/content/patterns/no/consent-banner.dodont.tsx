@@ -71,6 +71,7 @@ export const DontNecessaryCookiesCheckbox = () => {
         label='Nødvendige informasjonskapsler'
         {...getCheckboxProps({
           disabled: true,
+          value: 'necessary',
         })}
       />
       <Checkbox label='Statistikk om hvordan nettsiden brukes' />
