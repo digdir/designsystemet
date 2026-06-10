@@ -9,9 +9,9 @@ import {
 export const ConsentBanner = () => {
   return (
     <>
-      <section aria-labelledby='samtykkebanner__tittel'>
+      <section aria-labelledby='samtykkebanner-tittel'>
         <Heading
-          id='samtykkebanner__tittel'
+          id='samtykkebanner-tittel'
           data-size='md'
           style={{ marginBottom: 'var(--ds-size-4)' }}
         >
