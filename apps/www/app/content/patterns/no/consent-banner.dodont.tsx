@@ -40,7 +40,7 @@ export const DoButtons1 = () => {
       <Button variant='primary'>Ja</Button>
       <Button variant='primary'>Nei</Button>
       <Divider />
-      <Button variant='primary'> Godta</Button>
+      <Button variant='primary'>Godta</Button>
       <Button variant='primary'>Avslå</Button>
     </>
   );
