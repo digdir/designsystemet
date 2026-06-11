@@ -65,7 +65,6 @@
   }
 
   &[data-icon] {
-    --ds-icon-size: var(--ds-icon-size--lg); /* TODO: Should we really? */
     width: var(--dsc-button-size); /* Ensure it keeps square shape */
     height: var(--dsc-button-size); /* Ensure it keeps square shape */
     padding: 0;
