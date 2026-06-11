@@ -25,7 +25,9 @@ export const OneOption = () => (
 );
 
 export const Group = () => {
-  const [value, setValue] = useState<string[]>(['epost']);
+  const { getCheckboxProps } = useCheckboxGroup({
+    value: ['epost'],
+  });
 
   return (
     <Fieldset>
@@ -35,48 +37,17 @@ export const Group = () => {
       <Fieldset.Description>
         Velg alle alternativene som er relevante for deg.
       </Fieldset.Description>
-      <Checkbox
-        label='E-post'
-        value='epost'
-        checked={value.includes('epost')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'epost']);
-          } else {
-            setValue(value.filter((v) => v !== 'epost'));
-          }
-        }}
-      />
-      <Checkbox
-        label='Telefon'
-        value='telefon'
-        checked={value.includes('telefon')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'telefon']);
-          } else {
-            setValue(value.filter((v) => v !== 'telefon'));
-          }
-        }}
-      />
-      <Checkbox
-        label='SMS'
-        value='sms'
-        checked={value.includes('sms')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'sms']);
-          } else {
-            setValue(value.filter((v) => v !== 'sms'));
-          }
-        }}
-      />
+      <Checkbox label='E-post' {...getCheckboxProps('epost')} />
+      <Checkbox label='Telefon' {...getCheckboxProps('telefon')} />
+      <Checkbox label='SMS' {...getCheckboxProps('sms')} />
     </Fieldset>
   );
 };
 
 export const GroupEn = () => {
-  const [value, setValue] = useState<string[]>(['epost']);
+  const { getCheckboxProps } = useCheckboxGroup({
+    value: ['email'],
+  });
 
   return (
     <Fieldset>
@@ -84,42 +55,9 @@ export const GroupEn = () => {
       <Fieldset.Description>
         Select all the options that are relevant to you.
       </Fieldset.Description>
-      <Checkbox
-        label='E-mail'
-        value='email'
-        checked={value.includes('email')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'email']);
-          } else {
-            setValue(value.filter((v) => v !== 'email'));
-          }
-        }}
-      />
-      <Checkbox
-        label='Phone'
-        value='phone'
-        checked={value.includes('phone')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'phone']);
-          } else {
-            setValue(value.filter((v) => v !== 'phone'));
-          }
-        }}
-      />
-      <Checkbox
-        label='Text message'
-        value='text'
-        checked={value.includes('text')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'text']);
-          } else {
-            setValue(value.filter((v) => v !== 'text'));
-          }
-        }}
-      />
+      <Checkbox label='E-mail' {...getCheckboxProps('email')} />
+      <Checkbox label='Phone' {...getCheckboxProps('phone')} />
+      <Checkbox label='Text message' {...getCheckboxProps('text')} />
     </Fieldset>
   );
 };
@@ -351,7 +289,10 @@ export const InTableEn = () => {
 };
 
 export const Outline = () => {
-  const [value, setValue] = useState<string[]>(['drift']);
+  const { getCheckboxProps } = useCheckboxGroup({
+    value: ['drift'],
+    variant: 'outline',
+  });
 
   return (
     <Fieldset>
@@ -361,38 +302,23 @@ export const Outline = () => {
       </Fieldset.Description>
       <Checkbox
         label='Driftsmeldinger'
-        value='drift'
         description='Varsler ved planlagt vedlikehold og driftsavvik.'
-        variant='outline'
-        checked={value.includes('drift')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'drift']);
-          } else {
-            setValue(value.filter((v) => v !== 'drift'));
-          }
-        }}
+        {...getCheckboxProps('drift')}
       />
       <Checkbox
         label='Påminnelser'
-        value='paminnelse'
         description='Varsler om frister og oppgaver som krever handling.'
-        variant='outline'
-        checked={value.includes('paminnelse')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'påminnelse']);
-          } else {
-            setValue(value.filter((v) => v !== 'påminnelse'));
-          }
-        }}
+        {...getCheckboxProps('paminnelse')}
       />
     </Fieldset>
   );
 };
 
 export const OutlineEn = () => {
-  const [value, setValue] = useState<string[]>(['operations']);
+  const { getCheckboxProps } = useCheckboxGroup({
+    value: ['operations'],
+    variant: 'outline',
+  });
 
   return (
     <Fieldset>
@@ -404,31 +330,13 @@ export const OutlineEn = () => {
       </Fieldset.Description>
       <Checkbox
         label='Service updates'
-        value='operations'
         description='Alerts about planned maintenance and service disruptions.'
-        variant='outline'
-        checked={value.includes('operations')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'operations']);
-          } else {
-            setValue(value.filter((v) => v !== 'operations'));
-          }
-        }}
+        {...getCheckboxProps('operations')}
       />
       <Checkbox
         label='Reminders'
-        value='reminders'
         description='Alerts about deadlines and tasks that need your attention.'
-        variant='outline'
-        checked={value.includes('reminders')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'reminders']);
-          } else {
-            setValue(value.filter((v) => v !== 'reminders'));
-          }
-        }}
+        {...getCheckboxProps('reminders')}
       />
     </Fieldset>
   );

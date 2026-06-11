@@ -1,11 +1,17 @@
 import { FilesIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useEffect, useRef, useState } from 'react';
-import { expect, within } from 'storybook/test';
-import { Button } from '../../';
+import { expect, fireEvent, userEvent, waitFor } from 'storybook/test';
+import { Button, Link } from '../../';
 import { Tooltip } from './tooltip';
 
 type Story = StoryObj<typeof Tooltip>;
+type FnStory = StoryFn<typeof Tooltip>;
+
+function isInViewport(el: Element) {
+  const { height, width } = el.getBoundingClientRect();
+  return height > 1 && width > 1;
+}
 
 export default {
   title: 'Komponenter/Tooltip',
@@ -17,17 +23,34 @@ export default {
     },
   },
   play: async (ctx) => {
-    document.querySelector('.ds-tooltip')?.remove(); // Reset to run next test without waiting for tooltip to disappear // <== Må "nullstille"/fjerne tooltip mellom hver test
-    const button =
-      ctx.canvasElement.querySelector<HTMLButtonElement>('[data-tooltip]');
-
-    await new Promise((resolve) => {
-      document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør hover
-      button?.focus();
-    });
-
-    const tooltip = await within(document.body).findByText(ctx.args.content); // <== trenger ikke sjekke toBeInDocument siden denne testen krever det
-    expect(tooltip).toBeVisible();
+    const tooltips =
+      ctx.canvasElement.querySelectorAll<HTMLElement>('[data-tooltip]');
+    const fakeFocus = (e: HTMLElement) => {
+      fireEvent.focus(e); // shows up in interaction log in Storybook
+      e.focus({ focusVisible: true } as Record<string, unknown>); // necessary to get focusVisible styling, but doesn't show up in interaction log
+    };
+    for (const event of [userEvent.hover, fakeFocus])
+      for (const tooltipTrigger of tooltips) {
+        await event(tooltipTrigger);
+        await waitFor(async () => {
+          const text = tooltipTrigger.getAttribute('data-tooltip');
+          if (!text) {
+            throw new Error('Tooltip trigger has no data-tooltip attribute');
+          }
+          const tooltipRenderer = document.body.querySelector('.ds-tooltip');
+          await expect(tooltipRenderer).toBeVisible();
+          await expect(tooltipRenderer).toSatisfy(isInViewport); // toBeVisible() doesn't check if the element is in the viewport
+          await expect(tooltipRenderer).toHaveTextContent(text);
+          if (tooltipTrigger.textContent.trim()) {
+            await expect(tooltipTrigger).toHaveAttribute(
+              'aria-description',
+              text,
+            );
+          } else {
+            await expect(tooltipTrigger).toHaveAttribute('aria-label', text);
+          }
+        });
+      }
   },
 } satisfies Meta;
 
@@ -42,6 +65,30 @@ export const Preview: StoryFn<typeof Tooltip> = (args) => (
 Preview.args = {
   content: 'Kopier',
   placement: 'top',
+};
+
+export const WithLink: FnStory = () => {
+  return (
+    <Tooltip content='Gå til en annen side...' placement='top'>
+      <Link href='#'>En lenke</Link>
+    </Tooltip>
+  );
+};
+
+export const WithSpan: FnStory = () => {
+  return (
+    <Tooltip content='Innholdet i tooltipen' placement='top'>
+      <span>Tekst med tooltip</span>
+    </Tooltip>
+  );
+};
+
+export const WithPlainText: FnStory = () => {
+  return (
+    <Tooltip content='Innholdet i tooltipen' placement='top'>
+      Tekst med tooltip
+    </Tooltip>
+  );
 };
 
 export const WithString: Story = {
@@ -64,11 +111,17 @@ export const Placement: Story = {
   },
 };
 
-export const Aria: StoryFn<typeof Tooltip> = () => {
+export const Aria: FnStory = () => {
   return (
     <>
-      <Tooltip content='Eg er aria-description'>
+      <Tooltip content='Beskrivelse for aria-description'>
         <Button>Eg er aria-description</Button>
+      </Tooltip>
+      <Tooltip content='Beskrivelse for aria-description'>
+        <Button>
+          <FilesIcon aria-hidden />
+          <span>Eg er også aria-description</span>
+        </Button>
       </Tooltip>
       <Tooltip content='Eg er aria-label'>
         <Button icon>
@@ -79,17 +132,13 @@ export const Aria: StoryFn<typeof Tooltip> = () => {
   );
 };
 
-Aria.decorators = [
-  (Story) => (
-    <div
-      style={{ display: 'flex', gap: 'var(--ds-size-2)', alignItems: 'center' }}
-    >
-      <Story />
-    </div>
-  ),
-];
-
-Aria.play = async () => {};
+Aria.parameters = {
+  customStyles: {
+    display: 'flex',
+    gap: 'var(--ds-size-2)',
+    alignItems: 'center',
+  },
+};
 
 export const WithDynamicTooltipText: Story = {
   args: {

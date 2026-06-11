@@ -83,26 +83,57 @@ function makeTokenCommands() {
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
-    .option(`-m, --${cliOptions.theme.colors.main} <name:hex...>`, `Main colors`, parseColorValues)
-    .option(`-s, --${cliOptions.theme.colors.support} <name:hex...>`, `Support colors`, parseColorValues)
-    .option(`-n, --${cliOptions.theme.colors.neutral} <hex>`, `Neutral hex color`, convertToHex)
+    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
+    .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
+    .option('--dry [boolean]', `Dry run for created ${pc.blue('design-tokens')}`, parseBoolean, false)
+    /** Deprecated options */
+    .option(
+      `-m, --${cliOptions.theme.colors.main} <name:hex...>`,
+      `Main colors (deprecated, use JSON config file instead)`,
+      parseColorValues,
+    )
+    .option(
+      `-s, --${cliOptions.theme.colors.support} <name:hex...>`,
+      `Support colors (deprecated, use JSON config file instead)`,
+      parseColorValues,
+    )
+    .option(
+      `-n, --${cliOptions.theme.colors.neutral} <hex>`,
+      `Neutral hex color (deprecated, use JSON config file instead)`,
+      convertToHex,
+    )
     .option(
       `-o, --${cliOptions.outDir} <string>`,
       `Output directory for created ${pc.blue('design-tokens')}`,
       DEFAULT_TOKENS_CREATE_DIR,
     )
-    .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
-    .option('--dry [boolean]', `Dry run for created ${pc.blue('design-tokens')}`, parseBoolean, false)
-    .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family (experimental)`, DEFAULT_FONT)
+    .option(
+      `-f, --${cliOptions.theme.typography.fontFamily} <string>`,
+      `Font family (experimental, deprecated, use JSON config file instead)`,
+      DEFAULT_FONT,
+    )
     .option(
       `-b, --${cliOptions.theme.borderRadius} <number>`,
-      `Unitless base border-radius in px`,
+      `Unitless base border-radius in px (deprecated, use JSON config file instead)`,
       (radiusAsString) => Number(radiusAsString),
       4,
     )
-    .option('--theme <string>', 'Theme name (ignored when using JSON config file)', DEFAULT_THEME_NAME)
-    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
+    .option('--theme <string>', 'Theme name (deprecated, use JSON config file instead)', DEFAULT_THEME_NAME)
     .action(async (opts, cmd) => {
+      if (
+        opts.mainColors ||
+        opts.supportColors ||
+        opts.neutralColor ||
+        (opts.borderRadius && opts.borderRadius !== 4) ||
+        (opts.theme && opts.theme !== DEFAULT_THEME_NAME) ||
+        (opts.fontFamily && opts.fontFamily !== DEFAULT_FONT)
+      ) {
+        console.warn(
+          pc.yellow(`\n ⚠️  Using CLI options for ${pc.bold(`colors, border radius, theme, or font family is deprecated`)} and will be removed in a future release.
+           \n ⚠️  Please use a JSON config file instead.`),
+        );
+      }
+
       console.log(figletAscii);
       if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);

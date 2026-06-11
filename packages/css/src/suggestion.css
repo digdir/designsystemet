@@ -6,6 +6,8 @@
   --dsc-suggestion-option-checkmark-url: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221em%22%20height%3D%221em%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20focusable%3D%22false%22%20role%3D%22img%22%3E%3Cpath%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%20d%3D%22M18.998%206.94a.75.75%200%200%201%20.063%201.058l-8%209a.75.75%200%200%201-1.091.032l-5-5a.75.75%200%201%201%201.06-1.06l4.438%204.437%207.471-8.405A.75.75%200%200%201%2019%206.939%22%20clip-rule%3D%22evenodd%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
   --dsc-suggestion-option-padding: var(--ds-size-3);
   --dsc-suggestion-option-gap: var(--ds-size-2);
+  --dsc-suggestion-option-checkmark-border: max(2px, 0.125rem);
+  --dsc-suggestion-option-checkmark-border-color: var(--ds-color-neutral-border-default);
 
   --dsc-suggestion-clear-gap: var(--ds-size-2);
   --dsc-suggestion-clear-padding: var(--ds-size-1);
@@ -58,6 +60,10 @@
   &:not([data-multiple]) data,
   &[data-multiple='false'] data {
     display: none; /* Hide data elements when not in multiple mode */
+  }
+
+  &:not(:has(data))::part(items) {
+    position: absolute; /* Make items container not take up any space when no chips */
   }
 
   /* NOTE: This styling should be reflected in chip.css */
@@ -187,8 +193,6 @@
     }
     [data-multiple] & {
       & > u-option:not([data-empty]) {
-        --dsc-suggestion-option-checkmark-border: max(2px, 0.125rem);
-
         padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));
         /*mock checkbox styles copied from input.css*/
         &::before {
@@ -199,7 +203,7 @@
           width: var(--dsc-suggestion-option-checkmark-size);
           height: var(--dsc-suggestion-option-checkmark-size);
           border-radius: var(--ds-border-radius-sm);
-          outline: var(--dsc-suggestion-option-checkmark-border) solid var(--ds-color-neutral-border-default);
+          outline: var(--dsc-suggestion-option-checkmark-border) solid var(--dsc-suggestion-option-checkmark-border-color);
           outline-offset: calc(-1 * var(--dsc-suggestion-option-checkmark-border));
           padding: 0.188rem;
           box-sizing: border-box;

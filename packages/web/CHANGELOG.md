@@ -1,5 +1,17 @@
 # @digdir/designsystemet-web
 
+## 1.15.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+- **Error summary**: Now only sets `aria-labelledby` based on heading element if `aria-label` or `aria-labelledby` is not already set, and logs a warning if neither of these are set and no heading element is present. ([#4895](https://github.com/digdir/designsystemet/pull/4895))
+
+- **Popover:** now correctly calculates width of source element also in Firefox ([#4921](https://github.com/digdir/designsystemet/pull/4921))
+
+- **Error summary**: Set `role="group"` since the implicit role "generic" does not allow `aria-labelledby`, which is used in the component ([#4895](https://github.com/digdir/designsystemet/pull/4895))
+
 ## 1.14.0
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
@@ -77,8 +77,8 @@
     "@types/node": "24.12.4",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.31.1",
-    "tsdown": "0.22.0",
-    "tsx": "4.21.0",
+    "tsdown": "0.22.2",
+    "tsx": "4.22.1",
     "typescript": "5.9.3"
   }
 }

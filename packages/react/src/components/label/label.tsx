@@ -7,7 +7,6 @@ import type { DefaultProps } from '../../types';
 export type LabelProps = {
   /**
    * Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset
-   * @default 'medium'
    */
   weight?: 'regular' | 'medium' | 'semibold';
   /**
@@ -25,7 +24,7 @@ export type LabelProps = {
  * <Label data-size='lg' weight='medium'>Label</Label>
  */
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
-  { className, weight = 'medium', asChild, ...rest },
+  { className, weight, asChild, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'label';

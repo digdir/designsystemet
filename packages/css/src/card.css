@@ -53,6 +53,7 @@
       & > a {
         text-decoration: none;
         color: inherit;
+        @composes ds-focus from './base.css';
       }
     }
   }
