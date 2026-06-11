@@ -131,6 +131,10 @@
       box-shadow: inset 0 0 0 calc(var(--_dsc-field-outline-width) - var(--dsc-field-border-width)) var(--_dsc-field-border-color);
       padding: var(--dsc-field-padding);
       width: auto;
+
+      & > [data-field='validation'] {
+        grid-column: input / content; /* Place validation message in content column */
+      }
     }
     &[data-variant='outline']:hover {
       --_dsc-field-outline-width: var(--dsc-field-border-width--active);
