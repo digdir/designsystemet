@@ -44,7 +44,6 @@
       position: relative;
       text-align: center;
       white-space: nowrap;
-      --_ds-captured-length: 1em;
 
       @composes ds-focus--inset from './base.css';
 
@@ -56,10 +55,8 @@
         font-size: inherit; /* Ensure inheriting font-size when <button> */
       }
 
-      & :where(img, svg) {
-        flex-shrink: 0; /* Never shrink icon */
-        /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
-        font-size: calc(var(--_ds-captured-length) * 1.25); /* Auto scale icon based on font-size */
+      & :is(img, svg) {
+        @composes ds-icon from './base.css';
       }
 
       &::after {
