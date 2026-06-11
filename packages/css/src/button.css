@@ -36,6 +36,7 @@
   padding: var(--dsc-button-padding);
   text-align: inherit;
   text-decoration: none;
+  width: fit-content; /* If button placed inside display: flex */
 
   @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';

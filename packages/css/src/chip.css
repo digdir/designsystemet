@@ -41,7 +41,7 @@
   max-width: fit-content;
   min-height: var(--dsc-chip-height);
   padding: 0 var(--ds-size-3);
-  text-align: inherit; /* Fix text alignment when removeable is <button> */
+  text-align: inherit; /* Fix text alignment when removable is <button> */
   text-decoration: none;
 
   @composes ds-print-preserve from './base.css';

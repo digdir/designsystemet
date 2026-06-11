@@ -26,6 +26,7 @@
   --dsc-input-outline-style--hover: solid;
   /* Color */
   --dsc-input-color--readonly: var(--ds-color-neutral-text-default);
+  --dsc-input-color-placeholder: color-mix(in srgb, var(--dsc-input-color), transparent 30%);
   --dsc-input-color: var(--ds-color-neutral-text-default);
   /* Stroke is used as the dot in radio, and checkmark in checkboxes */
   --dsc-input-stroke-color: var(--ds-color-base-contrast-default);
@@ -34,14 +35,12 @@
   /* Accent color, used in checkboxes and radio */
   --dsc-input-accent-color: var(--ds-color-base-default);
   --dsc-input-accent-color--invalid: var(--ds-color-danger-text-subtle);
+
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
   --_dsc-input-diagonal-1: transparent calc(48% - var(--dsc-input-stroke-width));
   --_dsc-input-diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke-width));
   --_dsc-input-diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke-width));
   --_dsc-input-diagonal-4: transparent calc(52% + var(--dsc-input-stroke-width));
-
-  /* TODO Unsure if this should be exposed, as we do want to avoid placeholders */
-  --_dsc-input-color-placeholder: color-mix(in srgb, var(--dsc-input-color), transparent 35%);
   --_dsc-input-spacing--toggle: calc(var(--ds-size-1) / 2);
 
   appearance: none;
@@ -82,16 +81,16 @@
 
   /* Style placeholder colors to ensure dark mode contrasts */
   &::-webkit-input-placeholder {
-    color: var(--_dsc-input-color-placeholder); /* Chrome/Opera/Safari */
+    color: var(--dsc-input-color-placeholder); /* Chrome/Opera/Safari */
   }
   &::-moz-placeholder {
-    color: var(--_dsc-input-color-placeholder); /* Firefox 19+ */
+    color: var(--dsc-input-color-placeholder); /* Firefox 19+ */
   }
   &:-ms-input-placeholder {
-    color: var(--_dsc-input-color-placeholder); /* IE 10+ */
+    color: var(--dsc-input-color-placeholder); /* IE 10+ */
   }
   &::placeholder {
-    color: var(--_dsc-input-color-placeholder); /* Modern */
+    color: var(--dsc-input-color-placeholder); /* Modern */
   }
 
   /* Fix Safari placeholder issues to date inputs https://stackoverflow.com/q/73896040 */
