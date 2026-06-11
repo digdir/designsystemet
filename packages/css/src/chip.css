@@ -25,10 +25,10 @@
 
   align-items: center;
   background: var(--dsc-chip-background);
-  border-radius: var(--dsc-chip-border-radius);
-  border-width: var(--dsc-chip-border-width);
-  border-style: var(--dsc-chip-border-style);
   border-color: var(--dsc-chip-border-color);
+  border-radius: var(--dsc-chip-border-radius);
+  border-style: var(--dsc-chip-border-style);
+  border-width: var(--dsc-chip-border-width);
   box-sizing: border-box;
   color: var(--dsc-chip-color);
   cursor: pointer;
@@ -37,10 +37,11 @@
   gap: var(--dsc-chip-spacing);
   line-height: var(--ds-line-height-sm);
   margin: 0;
-  min-height: var(--dsc-chip-height);
   max-height: fit-content;
   max-width: fit-content;
+  min-height: var(--dsc-chip-height);
   padding: 0 var(--ds-size-3);
+  text-align: inherit; /* Fix text alignment when removable is <button> */
   text-decoration: none;
 
   @composes ds-print-preserve from './base.css';
@@ -81,6 +82,7 @@
       mask: center / contain no-repeat var(--dsc-chip-icon-url);
       width: var(--dsc-chip-icon-size);
       padding-inline: 0; /*override u-combobox default*/
+      flex-shrink: 0; /* Prevent shrinking when content is long */
     }
   }
 

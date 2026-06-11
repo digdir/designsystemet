@@ -16,13 +16,20 @@
   --dsc-table-header-background: transparent;
   --dsc-table-padding: var(--ds-size-2) var(--ds-size-3);
   --dsc-table-sort-size: var(--ds-icon-size);
+  --dsc-table-vertical-align: middle;
   --_dsc-table-border-radius--inner: calc(var(--dsc-table-border-radius) - var(--dsc-table-border-width)); /* Shrink border radius to match border-width */
 
   border-collapse: separate; /* Using separate mode to enable border-radius */
   border-spacing: 0;
   box-sizing: border-box;
+  break-inside: avoid; /* Help better printing */
   color: var(--dsc-table-color);
+  vertical-align: var(--dsc-table-vertical-align);
   width: 100%;
+
+  & > :is(thead, tbody, tfoot) {
+    vertical-align: inherit; /* Enable setting vertical-align on table, and have this inherit down to cells */
+  }
 
   & > :is(tbody, thead, tfoot) > tr > :is(th, td) {
     background: var(--dsc-table-background);

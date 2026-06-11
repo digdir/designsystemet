@@ -3,20 +3,23 @@
   --dsc-tag-color: var(--ds-color-text-default);
   --dsc-tag-min-height: var(--ds-size-8);
   --dsc-tag-padding: 0 var(--ds-size-2);
+  --dsc-tag-border-radius: var(--ds-border-radius-sm);
   --dsc-tag-border-width: var(--ds-border-width-default);
   --dsc-tag-border-color: transparent;
   --dsc-tag-border-style: solid;
 
   align-items: center;
   background: var(--dsc-tag-background);
-  border-radius: var(--ds-border-radius-sm);
-  border-width: var(--dsc-tag-border-width);
   border-color: var(--dsc-tag-border-color);
+  border-radius: var(--dsc-tag-border-radius);
   border-style: var(--dsc-tag-border-style);
+  border-width: var(--dsc-tag-border-width);
   box-sizing: border-box;
   color: var(--dsc-tag-color);
-  height: fit-content; /* In case placed in display: flex */
+  flex-shrink: 0; /* If placed inside display: flex */
   font-size: var(--ds-body-sm-font-size);
+  font-weight: normal; /* Ensure no inheritance of font-weight */
+  height: fit-content; /* In case placed in display: flex */
   line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-tag-min-height);
   padding: var(--dsc-tag-padding);

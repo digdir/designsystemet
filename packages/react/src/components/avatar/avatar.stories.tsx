@@ -132,3 +132,9 @@ export const AsLink: Story = () => (
     <Avatar aria-label='Ola Nordmann' />
   </a>
 );
+
+export const AsButton: Story = () => (
+  <Avatar aria-label='Ola Nordmann' asChild>
+    <button type='button'></button>
+  </Avatar>
+);

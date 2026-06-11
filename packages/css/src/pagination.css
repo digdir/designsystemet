@@ -27,11 +27,22 @@
       visibility: hidden;
     }
 
-    /* Style active if ds-button */
-    & > li > [aria-current='true'] {
+    /* Recreates button data-variant="tertiary" when not selected */
+    & > li > :not([aria-current='true']) {
+      --dsc-button-background--active: var(--ds-color-surface-active);
+      --dsc-button-background--hover: var(--ds-color-surface-hover);
+      --dsc-button-background: transparent;
+      --dsc-button-color--active: var(--dsc-button-color);
+      --dsc-button-color--hover: var(--dsc-button-color);
+      --dsc-button-color: var(--ds-color-text-subtle);
+    }
+    /* Style active element when manually set data-variant="tertiary" button - deprecated but kept for compatibility */
+    & > li > [data-variant='tertiary'][aria-current='true'] {
       --dsc-button-background--active: var(--ds-color-base-active);
       --dsc-button-background--hover: var(--ds-color-base-hover);
       --dsc-button-background: var(--ds-color-base-default);
+      --dsc-button-color--active: var(--dsc-button-color);
+      --dsc-button-color--hover: var(--dsc-button-color);
       --dsc-button-color: var(--ds-color-base-contrast-default);
     }
 
