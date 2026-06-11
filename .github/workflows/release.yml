@@ -85,7 +85,7 @@ jobs:
             echo "Install with:"
             echo '```sh'
             echo "$PACKAGES" | while IFS= read -r pkg; do
-              [ -n "$pkg" ] && echo "npm install $pkg"
+              [ -n "$pkg" ] && echo "npm install ${pkg%@*}@$TAG"
             done
             echo '```'
           } > comment.md
