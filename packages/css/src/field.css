@@ -63,13 +63,16 @@
     cursor: pointer;
   }
   &:has(input:is([type='radio'], [type='checkbox'])) {
-    column-gap: var(--dsc-field-content-spacing);
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
 
     &:not([hidden]) {
       display: grid;
+    }
+
+    &:has(input:not(:only-child)) {
+      column-gap: var(--dsc-field-content-spacing); /* Prevents adding if not needed */
     }
 
     & > * {
