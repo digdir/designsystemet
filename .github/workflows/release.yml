@@ -81,15 +81,21 @@ jobs:
             echo "Published at \`$PUBLISHED_AT\` to npm with tag \`$TAG\`:"
             echo
             echo "$PACKAGES" | while IFS= read -r pkg; do
-              [ -n "$pkg" ] && echo "- \`$pkg\`"
+              if [ -n "$pkg" ]; then
+                name="${pkg%@*}"
+                version="${pkg##*@}"
+                echo "- [\`$pkg\`](https://www.npmjs.com/package/$name/v/$version)"
+              fi
             done
             echo
             echo "Install with:"
-            echo '```sh'
             echo "$PACKAGES" | while IFS= read -r pkg; do
-              [ -n "$pkg" ] && echo "npm install ${pkg%@*}@$TAG"
+              if [ -n "$pkg" ]; then
+                echo '```sh'
+                echo "npm install ${pkg%@*}@$TAG"
+                echo '```'
+              fi
             done
-            echo '```'
           } > comment.md
           gh pr comment "$PR" --body-file comment.md
 
