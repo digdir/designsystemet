@@ -244,7 +244,7 @@ An observer will look on `fieldset` element, add an id to combine children eleme
 ## Polyfills
 
 ### invokers-polyfill
-We automatically attach [invokers-polyfill](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2), which means that you get support for `command` and `commandfor`.
+We automatically attach [invokers-polyfill](https://www.npmjs.com/package/invokers-polyfill), which means that you get support for `command` and `commandfor`.
 
 ### `<dialog>`
 Use the native `<dialog>` element. We polyfill support for [`closedby="any"`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). 
