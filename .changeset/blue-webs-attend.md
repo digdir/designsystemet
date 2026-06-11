@@ -1,5 +1,5 @@
 ---
-"@digdir/designsystemet-css": patch
+"@digdir/designsystemet-css": minor
 ---
 
 **Root:** Add `--ds-icon-size` variable for easier consistent icon sizing
