@@ -62,6 +62,10 @@
     display: none; /* Hide data elements when not in multiple mode */
   }
 
+  &:not(:has(data))::part(items) {
+    position: absolute; /* Make items container not take up any space when no chips */
+  }
+
   /* NOTE: This styling should be reflected in chip.css */
   & > data {
     align-items: center;
