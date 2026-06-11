@@ -125,8 +125,7 @@ export default {
     decline: 'Nei',
     'desc-start':
       'Hvis du svarer ja, lagrer og analyserer vi informasjon som hjelper oss å forbedre nettsiden.',
-    'desc-end':
-      'Du kan når som helst endre valget ditt nederst på siden.',
+    'desc-end': 'Du kan når som helst endre valget ditt nederst på siden.',
     'desc-link': 'Mer om hva vi lagrer og hvorfor.',
     'necessary-info-link': 'Vi lagrer også nødvendig informasjon',
     'necessary-info-end':

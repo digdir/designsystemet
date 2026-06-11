@@ -22,8 +22,7 @@ export const ConsentBanner = forwardRef<HTMLElement, BannerProps>(
             {t('consent-banner.heading')}
           </Heading>
           <Paragraph>
-            {t('consent-banner.desc-start')}{' '}
-            {t('consent-banner.desc-end')}{' '}
+            {t('consent-banner.desc-start')} {t('consent-banner.desc-end')}{' '}
             <Link
               to={`/${lang}/intro/privacy-policy#${lang === 'no' ? 'valgfrie-informasjonskapsler' : 'optional-cookies'}`}
             >
