@@ -72,10 +72,11 @@ jobs:
             echo "No open PR found for branch $BRANCH, skipping comment."
             exit 0
           fi
+          PUBLISHED_AT="$(TZ='Europe/Oslo' date '+%d.%m.%Y %H:%M:%S')"
           {
             echo "### 📦 Snapshot release published"
             echo
-            echo "Published to npm with tag \`$TAG\`:"
+            echo "Published at \`$PUBLISHED_AT\` to npm with tag \`$TAG\`:"
             echo
             echo "$PACKAGES" | while IFS= read -r pkg; do
               [ -n "$pkg" ] && echo "- \`$pkg\`"
