@@ -44,17 +44,51 @@ jobs:
           NAME="${{ github.ref_name }}"
           NAME="${NAME//\//-}"
           echo "name=${NAME}" >> $GITHUB_OUTPUT
-      - name: Create Snapshot Release
+      - id: publish
+        name: Create Snapshot Release
         run: |
           pnpm changeset version --snapshot "${{ steps.snapshot.outputs.name }}"
           echo '---'
           echo 'Detected Changes:'
           git diff
           echo '---'
-          pnpm run publish-packages --tag "${{ github.event.inputs.tag }}" --no-git-tag
+          pnpm run publish-packages --tag "${{ github.event.inputs.tag }}" --no-git-tag | tee publish.log
+          echo 'packages<<EOF' >> "$GITHUB_OUTPUT"
+          grep -oE '@digdir/[^ ]+@[0-9][^ ]*' publish.log | sort -u >> "$GITHUB_OUTPUT"
+          echo 'EOF' >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ""
+      - name: Comment published packages on PR
+        if: ${{ steps.publish.outputs.packages != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.ref_name }}
+          TAG: ${{ github.event.inputs.tag }}
+          PACKAGES: ${{ steps.publish.outputs.packages }}
+        run: |
+          PR=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number')
+          if [ -z "$PR" ]; then
+            echo "No open PR found for branch $BRANCH, skipping comment."
+            exit 0
+          fi
+          {
+            echo "### 📦 Snapshot release published"
+            echo
+            echo "Published to npm with tag \`$TAG\`:"
+            echo
+            echo "$PACKAGES" | while IFS= read -r pkg; do
+              [ -n "$pkg" ] && echo "- \`$pkg\`"
+            done
+            echo
+            echo "Install with:"
+            echo '```sh'
+            echo "$PACKAGES" | while IFS= read -r pkg; do
+              [ -n "$pkg" ] && echo "npm install $pkg"
+            done
+            echo '```'
+          } > comment.md
+          gh pr comment "$PR" --body-file comment.md
 
   release:
     name: Release
