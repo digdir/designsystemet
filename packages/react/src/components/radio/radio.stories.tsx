@@ -141,27 +141,22 @@ export const End: StoryFn<UseRadioGroupProps> = () => {
       <Fieldset.Description>
         Velg din favorittsmak blant alternativene.
       </Fieldset.Description>
+      <Radio position='end' label='Vanilje' value='vanilje' name='icecream' />
       <Radio
-        data-position='end'
-        label='Vanilje'
-        value='vanilje'
-        name='icecream'
-      />
-      <Radio
-        data-position='end'
+        position='end'
         label='Jordbær'
         description='Jordbær er best'
         value='jordbær'
         name='icecream'
       />
       <Radio
-        data-position='end'
+        position='end'
         label='Sjokolade'
         value='sjokolade'
         name='icecream'
       />
       <Radio
-        data-position='end'
+        position='end'
         label='Jeg spiser ikke iskrem'
         value='spiser-ikke-is'
         name='icecream'
