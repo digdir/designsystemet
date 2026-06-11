@@ -5,15 +5,13 @@ search_terms: statusmelding, varsel, advarsel, notifikasjon, systemvarsel, syste
 <Story story="Preview" language="html" />
 
 **Bruk Alert når**
-- det er korte og informative tidsbegrensede varsler
-- det er informasjon om feil som kun påvirker én del av systemet eller en mindre funksjon
-- det oppstår tilkoblingsproblemer eller API-feil som vil løse seg med en ny innlasting av siden
+- du skal vise et kort og informativt varsel som er viktig å fremheve
+- du skal formidle informasjon med en semantisk betydning (som feil, suksess, informasjon eller advarsel)
+- du skal informere om mindre eller tekniske feil
 
 **Unngå Alert når**
-- feilen hindrer all videre bruk av tjenesten, bruk [feilside](/no/patterns/systemnotifications#når-bruker-vi-feilsider) i stedet
-- du skal gjøre brukeren oppmerksom på feil i enkeltfelt, bruk heller komponentens egen feilmelding [validation message](/no/components/docs/validation-message/overview)
-- varslene er statiske infobokser, bruk heller [card](/no/components/docs/card/overview)
-- flere feilmeldinger skal oppsummeres, bruk heller [error summary](/no/components/docs/error-summary/overview)
+- du skal gjøre brukeren oppmerksom på feil i enkeltfelt, bruk heller komponentens egen feilmelding [validation message](/no/components/docs/validation-message/overview) og [error summary](/no/components/docs/error-summary/overview) for å oppsummere flere feil
+- du ønsker å fremheve innhold visuelt
 
 For mer helhetlige retningslinjer for bruk av varsler i tjenester, se mønsteret for [Systemvarsler](/no/patterns/systemnotifications). Der finner du eksempler og anbefalinger for når du skal bruke alert, og når andre løsninger passer bedre.
 
@@ -61,15 +59,15 @@ Dersom tittel og beskrivelse gjentar det samme er det bedre å bruke en enkel se
 ### Med lenke
 
 Du kan ha en lenke i alert hvis det hjelper brukeren med å løse oppgaven. 
-Men vær obs på at en lenke tar brukeren ut av tjenesten, så bruk lenke kun når det er absolutt nødvendig, for eksempel hvis du vil at brukeren skal åpne et skjema eller utføre en viktig oppgave.
+Husk at lenker tar brukeren ut av tjenesten, så bruk dem kun når det er nødvendig, for eksempel hvis du vil at brukeren skal åpne et skjema eller utføre en viktig oppgave.
 
 <Story story="MedLenke" />
 
 ## Retningslinjer
 
-Alert brukes for å vise viktige meldinger som krever oppmerksomhet, men ikke nødvendigvis handling. Den kan brukes til å informere brukeren om status, endringer eller problemer i en løsning. Meldingen vises tydelig og skiller seg visuelt fra resten av innholdet.
+Alert brukes til å vise viktige meldinger som krever oppmerksomhet. Den kan brukes til å informere brukeren om status, endringer eller problemer i en løsning.
 
-Bruk komponenten varsomt. Brukere kan forveksle varsler med reklame, og dermed overse dem. 
+Bruk alert varsomt. Brukere kan forveksle varsler med reklame, og dermed overse dem. 
 Hvis vi bruker varsler for ofte, kan vi forverre dette problemet.
 
 Pass på at alert har samme utseende og formspråk i alle tjenester og produkter. 
@@ -80,6 +78,8 @@ Denne komponenten skal være mulig å kjenne igjen overalt, så vi skal unngå �
 Det er ikke alltid lett å forstå forskjellen på varslene, selv om de har ulike ikoner og farger. Derfor er det viktig at teksten vi skriver i varselet er tydelig og lett å forstå.
 
 Hvis det er noe brukerne må eller kan gjøre for å komme videre med oppgaven sin, skal teksten formidle dette. Når meldingen er lengre enn en setning, kan det være lurt å ha med en overskrift som fremhever det viktigste. 
+
+Unngå flere alerts på samme side, da det kan forvirre brukeren og gjøre det vanskelig å forstå hva som er viktig.
 
 Her er en liste med hvilken type informasjon varsel bør inneholde:
 - Fortell hva som har skjedd
