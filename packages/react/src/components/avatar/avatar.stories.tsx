@@ -1,4 +1,4 @@
-import { BriefcaseIcon } from '@navikt/aksel-icons';
+import { BriefcaseIcon, HeartIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { cat3Img, themeColors } from '../../../stories/constants';
 
@@ -37,12 +37,24 @@ export const Sizes: Story = () => (
   <>
     <Avatar data-size='xs' aria-label='extra small' initials='xs' />
     <Avatar data-size='xs' aria-label='extra small' />
+    <Avatar data-size='xs' aria-label='extra small'>
+      <HeartIcon aria-hidden />
+    </Avatar>
     <Avatar data-size='sm' aria-label='small' initials='sm' />
     <Avatar data-size='sm' aria-label='small' />
+    <Avatar data-size='sm' aria-label='small'>
+      <HeartIcon aria-hidden />
+    </Avatar>
     <Avatar data-size='md' aria-label='medium' initials='md' />
     <Avatar data-size='md' aria-label='medium' />
+    <Avatar data-size='md' aria-label='medium'>
+      <HeartIcon aria-hidden />
+    </Avatar>
     <Avatar data-size='lg' aria-label='large' initials='lg' />
     <Avatar data-size='lg' aria-label='large' />
+    <Avatar data-size='lg' aria-label='large'>
+      <HeartIcon aria-hidden />
+    </Avatar>
   </>
 );
 
