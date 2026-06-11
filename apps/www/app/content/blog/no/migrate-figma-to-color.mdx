@@ -10,11 +10,12 @@ imageCaption: Migrering
 
 ## Introduksjon
 
-**Dette endres:**
-- `Main color` og `Support color` slås sammen til én collection: `Color`
-- Alle "support" og "neutral" varianter av komponentene skal fjernes
+### Dette skal endres
 
-**Hva skjer med skissene som bruker variantene som blir fjernet?**
+- `Main color` og `Support color` slås sammen til én collection: `Color`
+- Alle "support" og "neutral" varianter av komponentene fjernes
+
+### Hva skjer med skissene som bruker variantene som blir fjernet?
 Visuelt vil det ikke være noe forskjell. De instansene som brukte "main" varianten vil bli oppdatert å se like ut. For "support" og "neutral" så vil Figma velge å ikke oppdatere disse. Det vil si at du fortsatt vil ha "neutral" og "support" variantene i skissene. Så blir det opp til konsumenten å oppdatere til de nye versjonene når det passer for de. 
 
 Det negative her er at man vil i en periode ha skisser med to versjonen av komponentbiblioteket. Dette kan gi rar oppførsel når man setter modes.
@@ -24,8 +25,11 @@ Vi har laget en migreringsplugin som vil gjøre de mest repeterende oppgavene fo
 NOTAT: Severity / Guide for å fjerne severity fra color / Støtte for dette i plugin
 
 ## Må vi følge hele guiden
-Nei, du kan...
-Ja, frem til dere trenger å oppdatere tokens. CLIet vil fra nå generere den nye strukturen. Om dere vil oppdatere noe i Figma så må man følge denne guiden for at Figma filen skal bli riktig.
+Nei, om du ikke ønsker å fjerne "support" og "neutral" variantene kan du gjøre steg 1-3. Da vil det meste være som før, bare at main kan nå bli til alle farge og følger den nye "color" collection.
+
+Dere kan også vente med kjøre migreringen. Men om dere på et tidspunkt trenger å genere tokens på nytt så må dere følge de 3 første stegene i listen her. 
+
+NOTAT: Jobbe litt mer med denne delen. Hva ønsker vi å formidle? 
 
 ## Før du starter
 - Oppdater Tokens til den nye stukturen. NOTAT:Lenke til en annen guide eller docs?
@@ -66,6 +70,15 @@ For at Token studio skal eksportere variablene riktig må vi gjøre en liten jus
   autoplay='false'
   aspectRatio='16-9'
 />
+
+<Image
+      src='/img/blog/migrate-steg2variabler.png'
+      alt='Skjermbilde som viser hvordan variablene i Figma burde se ut etter endring'
+      caption='Etter at du har kjørt oppdateringen skal variablene se slik ut'
+      boxShadow={true}
+      
+    />
+
 <Card >
   <Details>
     <Details.Summary>
@@ -75,20 +88,19 @@ For at Token studio skal eksportere variablene riktig må vi gjøre en liten jus
     1. Finn `Main color`collection og rename til `Color`
     2. Under "Groups" nede til venstre vil det stå `All/color/main`. Høyreklikk på `color` og trykk "ungroup"
 
-    OBS: Vurder å bytt ut med før/etter bilde
-
-    <Image
-      src='/img/blog/migrate-steg2variabler.png'
-      alt='Skjermbilde som viser hvordan variablene i Figma burde se ut etter endring'
-      caption='Variablene dine burde se like som i skjermbilde her'
-      boxShadow={true}
-      
+    <ResponsiveIframe
+      src='/img/blog/migrate-steg2manuelt.mp4'
+      title='Skjermopptak som viser hvordan man manuelt endrer til riktige navn i variable strukturen'
+      frameBorder='0'
+      autoplay='false'
+      aspectRatio='16-9'
     />
+    
     </Details.Content>
   </Details>
 </Card>
-**Kontroller at:**
-- at variblene har lik navngivning som i bilde over
+
+
 
 ---
 
@@ -122,14 +134,22 @@ Rydde opp etter eksport. Token studio vil ikke slette `support color`, du må de
 ---
 
 ## Steg 5 – Kjør plugin: Remove variants
-Nå skal vi gjøre den store endringen. I filen vår har vi 3 farge varianter av komponentene. Main, Support og Neutral. Support er nå ikke lenger koblet til noen variabler, og neutral er overflødig da man kan bruke "color" til å sette alle komponenter til neutral.  
+Nå skal vi gjøre den store endringen. I filen vår har vi 3 farge varianter av komponentene. Main, Support og Neutral. Support er ikke lenger koblet til noen variabler, og neutral er overflødig da man kan bruke "color" til å sette alle komponenter til neutral. Plugin vil fjerne alle support og neutral varianter. Utenom på alert og validationmessage. Disse vil beholde sine varianter men bli koblet om internt til å bruke den nye "color" skalaen.
 
-**Pluginen gjør dette:**
-- Fjerner support-varianter
-- Fjerner neutral-varianter
-- Fjerner `color` egenskap fra alle komponenter
-  - Utenom alert og validationMessage. Disse beholder sine severity nivå.
-- Om det bare er en variant igjen endrer den fra `ComponentSet` til `Component`
+**Gjør dette:**
+1. Åpne "migration helper"
+2. Trykk på "Update library"
+3. Gå til "2. remove variants"
+4. Trykk på "Scan variants", pluginen vil nå gå gjennom hele Figma filen din. Dette vil ta litt tid. (Video eksempelet er klippet for å spare plass.)
+5. Når den er ferdig vil den oppgi hvor mange komponenter som vil bli oppdatert. Du må trykke på "Remove and update variants" for å faktisk gjøre endringen i filen.
+
+  <ResponsiveIframe
+      src='/img/blog/migrate-steg5.mp4'
+      title='Skjermopptak som viser prosessen når man bruker plugin til å fjerne varianter'
+      frameBorder='0'
+      autoplay='false'
+      aspectRatio='16-9'
+    />
 
 <Card >
   <Details>
@@ -137,7 +157,7 @@ Nå skal vi gjøre den store endringen. I filen vår har vi 3 farge varianter av
     Endre manuelt
     </Details.Summary>
     <Details.Content>
-   1. Gå gjennom alle komponenter og subkomponenter. Fjern alle varianter som er av typen "support" eller "neutral"
+   Gå gjennom alle komponenter og subkomponenter. Fjern alle varianter som er av typen "support" eller "neutral". Det er til sammen 329 varianter som er av typen neutral eller support. [Oversikt over alle varianter som utgår](https://github.com/digdir/designsystemet/issues/4893#:~:text=Variant%20cleanup%20scope)
     </Details.Content>
   </Details>
 </Card>
@@ -145,46 +165,43 @@ Nå skal vi gjøre den store endringen. I filen vår har vi 3 farge varianter av
 ---
 
 ## Steg 6 – Kjør plugin: Fix in library
-
-Oppdatere instanser som brukte variantene som nå er fjernet.
+Nå eller alle komponenente oppdatert. Men instansene som ligger i biblioteksfilen er ikke blitt oppdatert. Dette gjelder alle eksemplene som er på de ulike sidene. Om man ønsker å få de også oppdatert kan man kjøre det 3. steget i pluginen.
 
 **Pluginen gjør dette:**
 - Neutral-varianter:
   - Endres til `default`
   - Får `color mode = neutral`
 - Support-varianter:
-  - Krever manuelt valg av ny farge
-  - Pluginen lar deg velge mapping
+  - Du velger hvilken farge Support variantene skal bli til
+  - Endres til `default` og `color mode = neutral` 
 
-**Merk:** Pluginen kan ikke automatisk vite hva tidligere support-farger tilsvarer.
+  <ResponsiveIframe
+      src='/img/blog/migrate-steg6.mp4'
+      title='Skjermopptak som viser prosessen når man bruker plugin til å oppdatere instanser'
+      frameBorder='0'
+      autoplay='false'
+      aspectRatio='16-9'
+    />
 
-**Kontroller at:**
-- ✅ Instanser er oppdatert
-- ✅ Ingen manglende komponenter
-- ✅ Eksempler ser riktige ut
+<Card >
+  <Details>
+    <Details.Summary>
+    Om du ønsker å gjøre denne delen manuelt har du tre muligheter. 
+    * Bare ikke gjøre noe. Du vil få mange instanser som ikke er koblet riktig. Men det er har lite å si for brukerne dine ute i skissene. (Notat: Skal vi ha denne?)
+    * Slett alle instanser av neutral og support fra eksemplene. Du kan legge til de eksemplene dere selv ønsker etterpå
+    * Faktisk oppdatere alle instansene. Dette vil være en stor jobb. Her finner du komplett [liste over instanser som må oppdateres]
+    </Details.Summary>
+    <Details.Content>
+      
+    </Details.Content>
+  </Details>
+</Card>
 
 ---
 
 ## Steg 7 – Kvalitetssikring
 
 Kontrollere at biblioteket fungerer som forventet.
-
-**Sjekk dette:**
-- Komponenter:
-  - Feil farger
-  - Feil states
-  - Manglende modes
-- Eksempelsider:
-  - Dokumentasjon
-  - Showcase
-  - Komponentsider
-- Variabler:
-  - Ingen gamle collections
-  - Ingen ubrukt struktur
-
-**Kontroller at:**
-- ✅ Biblioteket ser korrekt ut
-- ✅ Ingen åpenbare feil
 
 ---
 
