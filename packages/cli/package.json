@@ -55,7 +55,7 @@
     "verify": "pnpm test && pnpm update:template && pnpm --filter @internal/digdir update:theme-digdir"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^14.0.0",
+    "@commander-js/extra-typings": "^15.0.0",
     "@digdir/designsystemet-types": "workspace:",
     "@tokens-studio/sd-transforms": "2.0.3",
     "chroma-js": "^3.2.0",
