@@ -697,7 +697,7 @@ importers:
         specifier: 0.11.0
         version: 0.11.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       '@oddbird/popover-polyfill':
-        specifier: ^0.6.1
+        specifier: 0.6.1
         version: 0.6.1
       '@testing-library/dom':
         specifier: 10.4.1
