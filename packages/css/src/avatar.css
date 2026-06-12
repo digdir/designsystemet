@@ -14,6 +14,7 @@
   align-items: center;
   background: var(--dsc-avatar-background);
   border-radius: var(--ds-border-radius-full);
+  border: 0;
   box-sizing: border-box;
   color: var(--dsc-avatar-color);
   flex-shrink: 0;
@@ -21,6 +22,7 @@
   height: var(--dsc-avatar-size);
   justify-content: center;
   overflow: hidden;
+  padding: 0;
   text-decoration: none;
   text-transform: uppercase;
   user-select: none;
@@ -35,13 +37,17 @@
     padding: var(--dsc-avatar-padding);
   }
 
-  & img,
-  & svg {
+  &:is(button:enabled) {
+    cursor: pointer;
+  }
+
+  & :is(img, svg) {
+    @composes ds-icon from './base.css';
     object-fit: cover;
     width: 100%;
     height: 100%;
   }
-  > span {
+  & > span {
     font-size: var(--dsc-avatar-font-size);
   }
 
