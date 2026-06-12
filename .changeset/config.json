@@ -3,7 +3,8 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "digdir/designsystemet"
+      "repo": "digdir/designsystemet",
+      "disableThanks": true
     }
   ],
   "commit": false,
