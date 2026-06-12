@@ -1,5 +1,29 @@
 # Change Log
 
+## 1.16.0
+
+### Patch Changes
+
+- [#4933](https://github.com/digdir/designsystemet/pull/4933) [`c35d1e1`](https://github.com/digdir/designsystemet/commit/c35d1e1c68090a858f4675e45d7ab04498d6525d) - **Suggestion:** Better handle React async rendering child `<u-datalist>` element
+
+- [#4965](https://github.com/digdir/designsystemet/pull/4965) [`133fa58`](https://github.com/digdir/designsystemet/commit/133fa582d173033b8092d3015960c89a725e223a) - **Dialog:** do not trigger `close` event when using controlled mode
+
+- [#4955](https://github.com/digdir/designsystemet/pull/4955) [`ca44fd1`](https://github.com/digdir/designsystemet/commit/ca44fd1867707364e782856715ae69570902215b) - **Label**: Removed unneeded default value for `weight` prop.
+
+- [#4970](https://github.com/digdir/designsystemet/pull/4970) [`4e8fa0f`](https://github.com/digdir/designsystemet/commit/4e8fa0f0d1ab03d588f64cf4d032876a0a25b283) - **Suggestion:** Updated VoiceOver compatibility - both with and without QuickNav
+
+- [#4958](https://github.com/digdir/designsystemet/pull/4958) [`268386b`](https://github.com/digdir/designsystemet/commit/268386bdeca2e4f351a89d0fc59dce2010cd9cd4) - **Dialog:** Apply `autofocus` only for dialog-level animations, not nested element animations
+
+- [#4968](https://github.com/digdir/designsystemet/pull/4968) [`6ad3402`](https://github.com/digdir/designsystemet/commit/6ad340237d6cc25bd215cc8ad2993927fee86491) - **Button**: No longer renders a redundant `data-variant` attribute in HTML when no `variant` is specified.
+  **Field**: Added missing TypeScript support for `data-position` when using `radio` or `checkbox` inputs.
+  **usePagination**: No longer outputs redundant `variant` props
+
+- [#4978](https://github.com/digdir/designsystemet/pull/4978) [`fecb6ba`](https://github.com/digdir/designsystemet/commit/fecb6bae295bb46c36d22b95081a68d5deaa205a) - Export missing types `DefaultProps` and `Placement`
+
+- Updated dependencies [[`4e8fa0f`](https://github.com/digdir/designsystemet/commit/4e8fa0f0d1ab03d588f64cf4d032876a0a25b283), [`ae3a92b`](https://github.com/digdir/designsystemet/commit/ae3a92b1cd00f1aa94391b73c80d42cbe10050d9)]:
+  - @digdir/designsystemet-web@1.16.0
+  - @digdir/designsystemet-types@1.16.0
+
 ## 1.15.0
 
 ### Minor Changes

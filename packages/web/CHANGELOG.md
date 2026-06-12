@@ -1,5 +1,13 @@
 # @digdir/designsystemet-web
 
+## 1.16.0
+
+### Patch Changes
+
+- [#4970](https://github.com/digdir/designsystemet/pull/4970) [`4e8fa0f`](https://github.com/digdir/designsystemet/commit/4e8fa0f0d1ab03d588f64cf4d032876a0a25b283) - **Suggestion:** Updated VoiceOver compatibility - both with and without QuickNav
+
+- [#4951](https://github.com/digdir/designsystemet/pull/4951) [`ae3a92b`](https://github.com/digdir/designsystemet/commit/ae3a92b1cd00f1aa94391b73c80d42cbe10050d9) - **Popover, Tooltip, Dropdown:** No longer requires arrow to be drawn by `::before` element to correctly calculate arrow size
+
 ## 1.15.0
 
 ### Patch Changes
