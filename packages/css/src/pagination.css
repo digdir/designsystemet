@@ -1,6 +1,6 @@
 .ds-pagination {
   --dsc-pagination-gap: var(--ds-size-2);
-  --dsc-pagination-icon-size: var(--ds-size-6);
+  --dsc-pagination-icon-size: var(--ds-icon-size);
   --dsc-pagination-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M9.47 5.97a.75.75 0 0 1 1.06 0l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06L14.44 12 9.47 7.03a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
   --dsc-pagination-ellipsis: '\2026';
   --_ds-aria-label: var(--dsc-pagination-label); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
@@ -27,11 +27,22 @@
       visibility: hidden;
     }
 
-    /* Style active if ds-button */
-    & > li > [aria-current='true'] {
+    /* Recreates button data-variant="tertiary" when not selected */
+    & > li > :not([aria-current='true']) {
+      --dsc-button-background--active: var(--ds-color-surface-active);
+      --dsc-button-background--hover: var(--ds-color-surface-hover);
+      --dsc-button-background: transparent;
+      --dsc-button-color--active: var(--dsc-button-color);
+      --dsc-button-color--hover: var(--dsc-button-color);
+      --dsc-button-color: var(--ds-color-text-subtle);
+    }
+    /* Style active element when manually set data-variant="tertiary" button - deprecated but kept for compatibility */
+    & > li > [data-variant='tertiary'][aria-current='true'] {
       --dsc-button-background--active: var(--ds-color-base-active);
       --dsc-button-background--hover: var(--ds-color-base-hover);
       --dsc-button-background: var(--ds-color-base-default);
+      --dsc-button-color--active: var(--dsc-button-color);
+      --dsc-button-color--hover: var(--dsc-button-color);
       --dsc-button-color: var(--ds-color-base-contrast-default);
     }
 

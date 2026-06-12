@@ -4,7 +4,7 @@ export type {
 } from '@digdir/designsystemet-types';
 export * from './components';
 export { omit } from './components/Combobox/omit/omit'; //deprecated
-export type { LabelRequired } from './types';
+export type { DefaultProps, LabelRequired, Placement } from './types';
 export type {
   /** @deprecated This export is deprecated. */
   MergeRight,
