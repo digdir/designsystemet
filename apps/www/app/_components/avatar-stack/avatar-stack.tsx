@@ -12,11 +12,15 @@ const avatarMap = {
   brønnøysundregistrene: 'brønnøysundregistrene.svg',
   digdir: 'digdir.svg',
   designsystemet: 'designsystemet.svg',
+  entur: 'entur.svg',
+  helsedirektoratet: 'helsedirektoratet.svg',
   'ks digital': 'ksdigital.svg',
   ks: 'ks.png',
   mattilsynet: 'mattilsynet.svg',
   nav: 'nav.svg',
+  nrk: 'nrk.svg',
   'oslo kommune': 'oslokommune.svg',
+  politiet: 'politiet.svg',
   skatteetaten: 'skatteetaten.svg',
 } as const;
 
