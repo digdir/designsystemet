@@ -136,7 +136,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
           /* We need this for firefox, because it focuses anything with overflow: hidden */
           tabIndex={-1}
         >
-          <div className={cl('l-content-container', classes.container)}>
+          <div className={cl('l-content-container', classes.container)} id='main'>
             <img
               draggable='false'
               className={classes.decoration}
