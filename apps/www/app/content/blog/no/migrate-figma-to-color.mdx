@@ -199,47 +199,19 @@ Nå eller alle komponenente oppdatert. Men instansene som ligger i biblioteksfil
 
 ---
 
-## Steg 7 – Kvalitetssikring
+## Steg 7 – Se over filen og publiser biblioteket
+Nå skal biblioteksfilen være oppdatert. Jeg ville nå tatt en titt gjennom komponentene før vi publiserer en oppdatering. Om det er mange brukere av biblioteket kan det være lurt å informere om endringen og hva som er skjer med skisser som bruker dagens varianter. NOTAT: Se guide for oppdatering av skisser. 
 
-Kontrollere at biblioteket fungerer som forventet.
-
----
-
-## Steg 8 – Publiser biblioteket
-
-Gjøre endringene tilgjengelige for teamet.
-
-**Gjør dette:**
-- Publiser oppdaterte komponenter
-- Publiser oppdaterte variabler
-
-**Merk:**
-- Informer teamet om breaking changes
-- Be teamet oppdatere bibliotek før skisser migreres
-
-**Kontroller at:**
-- ✅ Biblioteket er publisert
+NOTAT: Info om scope og syntax
 
 ---
 
-## Steg 9 – Oppdater skisser og designfiler
+## Oppdater skisser og designfiler
+Når en fil henter oppdateringen fra biblioteket så tar Figma et valg for oss. instanser som bruker default versjonen. Det vi før kalte "main" vil bli oppdatert, og om dere ikke har gjort noen endringer på rekkefølgen eller navn på farger så vil de se helt like ut. Om en instans brukte "Support" eller "Neutral" så velger Figma og ikke oppdatere disse. Det positive med det er at ingen skisser vil bli ødelagt av denne endringen. For å være på den trygge siden kan man be brukere om å lage et snapshot i versjonshistorikken, men i vår testing har vi ikke sett at noe har blitt forandret i skissene av endringen.
 
-Migrere eksisterende designfiler til ny struktur.
+Det negative er at skisser vil ha referanser til to ulike versjoner av komponentbiblioteket ditt. Så på sikt så kan det være lurt å få oppdatert instansene. Vi har laget en egen funksjon for å oppdatere filer utenfor biblioteket. Dette swapper ut den gamle versjonen med en ny og setter korrekt color mode. 
 
-**Gjør dette:**
-- Oppdaterer instanser
-- Mapper gamle varianter til ny struktur
 
-**Anbefalt rekkefølge:**
-1. Migrer bibliotek
-2. Publiser bibliotek
-3. Oppdater designfiler
-
-**Merk:** Dette steget kjøres utenfor biblioteksfilen.
-
-**Kontroller at:**
-- ✅ Skisser bruker oppdatert bibliotek
-- ✅ Ingen gamle varianter gjenstår
 
 
 
