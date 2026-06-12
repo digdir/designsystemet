@@ -1,0 +1,271 @@
+---
+title: "Figma-guide: Migrer til ny fargestruktur"
+description: Få hjelp til å migrere Figma-filen din til den nye fargestrukturen
+date: 2026-06-09
+author: Digdir
+imageSrc: /img/blog/altinnstudio-16-9.png
+imageAlt: migrering
+imageCaption: Migrering
+---
+
+## Introduksjon
+
+Denne guiden hjelper deg med å migrere en Figma-biblioteksfil til den nye fargestrukturen.
+
+Etter migreringen:
+
+- ligger fargene i collection `Color`
+- er `support`- og `neutral`-varianter fjernet
+- styres komponentfarger med `color mode`
+
+### Dette skal endres
+
+- `Main color` og `Support color` slås sammen til én collection: `Color`
+- Alle `support`- og `neutral`-varianter av komponentene fjernes
+
+### Plugin eller manuell migrering
+
+Vi anbefaler å bruke migreringspluginen når du følger denne guiden. Stegene kan også gjøres manuelt, men det kan bli en omfattende jobb, særlig når gamle komponentvarianter og instanser skal ryddes opp.
+
+### Hva skjer med filer som bruker biblioteket?
+
+Med filer som bruker biblioteket mener vi Figma-filer der komponenter fra biblioteket er brukt som instanser. Det er altså ikke selve biblioteksfilen.
+
+Filer som bruker biblioteket blir ikke ødelagt av migreringen.
+
+Instanser som bruker det som tidligere het `main`, blir automatisk koblet til nye varianter. Instanser som bruker `support` eller `neutral`, blir ikke oppdatert automatisk av Figma.
+
+Senere i guiden forklarer vi hvordan disse instansene kan oppdateres med pluginen.
+
+## Må vi følge hele guiden?
+
+Nei. Guiden kan deles i to deler:
+
+- Steg 1–3 oppdaterer token- og variabelstrukturen
+- Steg 4–7 fjerner gamle varianter og rydder opp i biblioteket
+
+Hvis dere ønsker en gradvis overgang, kan dere stoppe etter steg 3. Da vil eksisterende `support`- og `neutral`-varianter fortsatt fungere.
+
+Dere kan også vente med å gjennomføre hele migreringen. Hvis dere senere må generere tokens på nytt, må dere gjennomføre steg 1–3 først.
+
+## Før du starter
+- Oppdater tokens til den nye strukturen. NOTAT:Lenke til en annen guide eller docs?
+- Test gjerne migreringen i en kopi av filen først
+
+## Steg 1 – Opprett snapshot i versjonshistorikken
+
+Sørg for at du kan gjenopprette filen hvis noe går galt. Hvis du foretrekker å jobbe i en branch, kan du gjøre det i stedet.
+
+**Gjør dette:**
+- Åpne "Version history" i Figma
+- Opprett et nytt snapshot
+- Gi snapshotet et tydelig navn, for eksempel "before migration"
+
+<ResponsiveIframe
+  src='/img/blog/migrate-steg1.mp4'
+  title='Skjermopptak som viser hvordan man legger til et snapshot i versjonshistorikken.'
+  frameBorder='0'
+  autoPlay={false}
+  aspectRatio='16-9'
+/>
+
+---
+
+## Steg 2 – Oppdater navn i variabelstrukturen
+
+Oppdater variabelstrukturen før du eksporterer tokens fra Token Studio. Da havner tokenene riktig når du importerer dem igjen.
+
+**Plugin**
+1. Kjør "Migration helper"
+2. Trykk på "Update library"
+3. Pluginen sjekker om variabelstrukturen er riktig
+4. Trykk på "Prepare variables" hvis pluginen ber deg om å oppdatere strukturen
+
+<ResponsiveIframe
+  src='/img/blog/migrate-steg2.mp4'
+  title='Skjermopptak som viser hvordan man bruker pluginen til å endre navn'
+  frameBorder='0'
+  autoPlay={false}
+  aspectRatio='16-9'
+/>
+
+<Image
+      src='/img/blog/migrate-steg2variabler.png'
+      alt='Skjermbilde som viser hvordan variablene i Figma skal se ut etter oppdateringen'
+      caption='Slik skal variablene se ut etter oppdateringen'
+      boxShadow={true}
+      
+    />
+
+<Card >
+  <Details>
+    <Details.Summary>
+    Endre manuelt
+    </Details.Summary>
+    <Details.Content>
+    1. Finn collection `Main color` og gi den nytt navn: `Color`.
+    2. Under "Groups" nederst til venstre står det `All/color/main`. Høyreklikk på `color` og velg "Ungroup".
+
+    <ResponsiveIframe
+      src='/img/blog/migrate-steg2manuelt.mp4'
+      title='Skjermopptak som viser hvordan man manuelt endrer navn i variabelstrukturen'
+      frameBorder='0'
+      autoPlay={false}
+      aspectRatio='16-9'
+    />
+    
+    </Details.Content>
+  </Details>
+</Card>
+
+
+
+---
+
+## Steg 3 – Synkroniser oppdaterte tokens med Token Studio
+
+Synkroniser Token Studio med den nye variabelstrukturen, slik at tokens eksporteres riktig. NOTAT: Legg til link til guide for token studio her
+
+**Gjør dette:**
+- Generer oppdaterte tokens
+- Importer tokens til Token Studio
+- Eksporter tokens på nytt
+
+**Kontroller at:**
+- Alle farger ligger i `Color`
+- `Main color` og `Support color` ikke lenger brukes
+
+---
+
+## Steg 4 – Fjern gamle collections
+
+Rydd opp etter eksporten. Token Studio sletter ikke `Support color` automatisk, så collectionen må slettes manuelt.
+
+Hvis dere tidligere har hatt egne farger som nå er fjernet eller har fått nytt navn i token-strukturen, kan noen variabler bli liggende igjen i `Color`. Sjekk om det finnes variabler uten referanser, og fjern dem ved behov.
+
+<ResponsiveIframe
+  src='/img/blog/migrate-steg4.mp4'
+  title='Skjermopptak som viser hvordan man sletter support color'
+  frameBorder='0'
+  autoPlay={false}
+  aspectRatio='16-9'
+/>
+
+---
+
+## Steg 5 – Kjør plugin: Remove variants
+
+I biblioteket finnes det i dag tre fargevarianter av komponentene: `main`, `support` og `neutral`.
+
+`support` brukes ikke lenger, og `neutral` er overflødig fordi komponentene nå kan styres med `color mode`.
+
+Pluginen fjerner alle `support`- og `neutral`-varianter, med unntak av `Alert` og `ValidationMessage`. Disse beholder variantene sine, men kobles om internt til den nye `Color`-skalaen.
+
+**Gjør dette:**
+1. Åpne "Migration helper"
+2. Trykk på "Update library"
+3. Gå til "2. Remove variants"
+4. Trykk på "Scan variants". Pluginen går nå gjennom hele Figma-filen. Dette kan ta litt tid. (Videoeksempelet er klippet for å spare plass.)
+5. Når skanningen er ferdig, viser pluginen hvor mange komponenter som vil bli oppdatert
+6. Trykk på "Remove and update variants" for å gjennomføre endringen
+
+  <ResponsiveIframe
+      src='/img/blog/migrate-steg5.mp4'
+      title='Skjermopptak som viser prosessen når man bruker pluginen til å fjerne varianter'
+      frameBorder='0'
+      autoPlay={false}
+      aspectRatio='16-9'
+    />
+
+<Card >
+  <Details>
+    <Details.Summary>
+    Endre manuelt
+    </Details.Summary>
+    <Details.Content>
+    Gå gjennom alle komponenter og underkomponenter. Fjern alle varianter av typen `support` eller `neutral`.
+
+    Det finnes totalt 329 varianter av typen `support` eller `neutral`.
+
+    [Oversikt over alle varianter som utgår](https://github.com/digdir/designsystemet/issues/4893#:~:text=Variant%20cleanup%20scope)
+    </Details.Content>
+  </Details>
+</Card>
+
+---
+
+## Steg 6 – Kjør plugin: Fix in library
+
+Nå er alle komponentene oppdatert, men eksempelinstansene i biblioteksfilen er fortsatt ikke oppdatert. Dette gjelder eksemplene på de ulike sidene i biblioteket.
+
+Hvis du også vil oppdatere disse instansene, kan du kjøre steg 3 i pluginen.
+
+**Pluginen gjør dette:**
+- `neutral`-varianter oppdateres til `default` og får `color mode = neutral`
+- `support`-varianter oppdateres til `default`, og du velger hvilken `color mode` de skal bruke
+
+  <ResponsiveIframe
+      src='/img/blog/migrate-steg6.mp4'
+      title='Skjermopptak som viser prosessen når man bruker pluginen til å oppdatere instanser'
+      frameBorder='0'
+      autoPlay={false}
+      aspectRatio='16-9'
+    />
+
+<Card >
+  <Details>
+    <Details.Summary>
+    Om du ønsker å gjøre denne delen manuelt har du tre muligheter.
+    </Details.Summary>
+    <Details.Content>
+      <ul>
+        <li>
+          Ikke gjøre noe. Eksisterende eksempelinstanser vil fortsatt bruke gamle varianter, men det påvirker ikke filer som bruker biblioteket. (Notat: Skal vi ha denne?)
+        </li>
+        <li>
+          Slett alle instanser av `neutral` og `support` fra eksemplene. Dere kan legge til nye eksempler etterpå.
+        </li>
+        <li>
+          Oppdater alle instansene. Dette er et omfattende arbeid. Her finner du komplett <a href='https://github.com/digdir/designsystemet/issues/4893#:~:text=Inside%20components%20or%20component%20sets'>liste over instanser som må oppdateres</a>.
+        </li>
+      </ul>
+    </Details.Content>
+  </Details>
+</Card>
+
+---
+
+## Steg 7 – Se over filen og publiser biblioteket
+
+Biblioteksfilen skal nå være oppdatert.
+
+Gå gjennom komponentene før du publiserer biblioteket på nytt. Hvis biblioteket brukes av mange, kan det være lurt å informere om endringen og forklare hva som skjer med filer som bruker biblioteket.
+
+NOTAT: Info om scope og syntax
+
+---
+
+## Oppdater filer som bruker biblioteket
+
+Når biblioteket er publisert, kan filer som bruker biblioteket oppdateres. Figma vil automatisk koble noen instanser til nye varianter, men ikke alle.
+
+### Dette oppdateres automatisk
+
+Instanser som bruker det som tidligere het `main`, blir automatisk oppdatert. Hvis dere ikke har endret rekkefølge eller navn på farger, vil disse se like ut som før.
+
+### Dette må oppdateres med pluginen
+
+Instanser som bruker `support` eller `neutral`, blir ikke oppdatert automatisk av Figma. Disse kan oppdateres med migreringspluginen.
+
+Pluginen bytter ut gamle instanser med nye og setter riktig `color mode`.
+
+### Anbefaling
+
+Be gjerne brukere opprette et snapshot i versjonshistorikken før de oppdaterer biblioteket. I vår testing har vi ikke sett visuelle endringer i filer som bruker biblioteket, men et snapshot gjør det enkelt å gå tilbake hvis noe likevel skjer.
+
+På sikt anbefaler vi å oppdatere gamle instanser. Filer som bruker biblioteket kan ellers midlertidig inneholde instanser fra både gammel og ny bibliotekversjon.
+
+
+
+
+<Contributors authors={['Lasse Febakke Straum']} />
