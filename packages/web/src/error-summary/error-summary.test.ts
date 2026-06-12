@@ -28,6 +28,7 @@ describe('Error summary component', () => {
   });
 
   it('should not set aria-labelledby when no heading exists', async () => {
+    window.dsWarnings = false; // Suppress expected warning about missing heading
     document.body.innerHTML = `<ds-error-summary class="ds-error-summary">
         <p>Something went wrong</p>
       </ds-error-summary>`;
@@ -38,6 +39,7 @@ describe('Error summary component', () => {
     expect(errorSummary).not.toHaveAttribute('aria-labelledby');
     expect(errorSummary).toHaveAttribute('tabindex', '-1');
     expect(errorSummary).toHaveFocus();
+    window.dsWarnings = true; // Re-enable warnings for subsequent tests
   });
 
   it('should ignore animation events from children', async () => {

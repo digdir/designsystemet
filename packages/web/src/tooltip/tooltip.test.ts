@@ -123,4 +123,117 @@ describe('tooltip behavior', () => {
     expect(liveRegion).toBeInTheDocument();
     expect(liveRegion?.textContent).toContain('Updated');
   });
+
+  it('processes all tooltip elements even when one has empty data-tooltip', async () => {
+    window.dsWarnings = false; // Suppress expected warning about empty tooltip
+    document.body.innerHTML = `
+      <button id="first" data-tooltip="" style="--_ds-data-tooltip: 'First tooltip'">First</button>
+      <button id="second" data-tooltip="Second tooltip">Second</button>
+    `;
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    const first = document.getElementById('first') as HTMLElement;
+    const second = document.getElementById('second') as HTMLElement;
+    expect(first).toHaveAttribute('aria-description', 'First tooltip');
+    expect(second).toHaveAttribute('aria-description', 'Second tooltip');
+    window.dsWarnings = false; // Re-enable warnings for subsequent tests
+  });
+
+  it('hides tooltip when source loses focus', async () => {
+    const tip = document.createElement('div');
+    tip.showPopover = vi.fn();
+    tip.hidePopover = vi.fn();
+    setTooltipElement(tip);
+
+    document.body.innerHTML = `<button data-tooltip="Bye">Bye</button>`;
+
+    const button = document.querySelector('button') as HTMLButtonElement;
+    button.dispatchEvent(new FocusEvent('focus'));
+    expect(tip.showPopover).toHaveBeenCalledTimes(1);
+
+    button.dispatchEvent(new FocusEvent('blur'));
+    expect(tip.hidePopover).toHaveBeenCalledTimes(1);
+  });
+
+  // Switching from one source to another while tooltip is open used
+  // to call showPopover() again, which throws InvalidStateError per the popover spec.
+  it('does not throw when switching between two open tooltip sources', async () => {
+    document.body.innerHTML = `
+      <button id="a" data-tooltip="A">A</button>
+      <button id="b" data-tooltip="B">B</button>
+    `;
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    const a = document.querySelector('#a') as HTMLButtonElement;
+    const b = document.querySelector('#b') as HTMLButtonElement;
+
+    a.focus();
+    const tip = document.querySelector('.ds-tooltip');
+
+    expect(tip).toBeInTheDocument();
+    expect(tip?.textContent).toBe('A');
+    // Switching focus should not throw and should update content
+    expect(() => b.focus()).not.toThrow();
+    expect(tip?.textContent).toBe('B');
+  });
+
+  it('hides tooltip when source element is removed from DOM', async () => {
+    const tip = document.createElement('div');
+    tip.showPopover = vi.fn();
+    tip.hidePopover = vi.fn();
+    setTooltipElement(tip);
+
+    document.body.innerHTML = `<button data-tooltip="Vanish">Vanish</button>`;
+    const button = document.querySelector('button') as HTMLButtonElement;
+    button.focus();
+    expect(tip.showPopover).toHaveBeenCalledTimes(1);
+
+    button.remove();
+    await new Promise((resolve) => setTimeout(resolve, 10)); // Let MutationObserver run
+    expect(tip.hidePopover).toHaveBeenCalledTimes(1);
+  });
+
+  it('hides previous tooltip element when setTooltipElement is called with a new element', async () => {
+    const tip1 = document.createElement('div');
+    tip1.showPopover = vi.fn();
+    tip1.hidePopover = vi.fn();
+    setTooltipElement(tip1);
+
+    document.body.innerHTML = `<button data-tooltip="Swap">Swap</button>`;
+    const button = document.querySelector('button') as HTMLButtonElement;
+    button.focus();
+    expect(tip1.showPopover).toHaveBeenCalledTimes(1);
+
+    const tip2 = document.createElement('div');
+    tip2.showPopover = vi.fn();
+    tip2.hidePopover = vi.fn();
+    setTooltipElement(tip2);
+
+    expect(tip1.hidePopover).toHaveBeenCalledTimes(1);
+  });
+
+  it('re-shows tooltip on the same element after it has been hidden', async () => {
+    const tip = document.createElement('div');
+    tip.showPopover = vi.fn();
+    tip.hidePopover = vi.fn();
+    setTooltipElement(tip);
+
+    document.body.innerHTML = `
+      <button id="src" data-tooltip="Again">Again</button>
+      <button id="other">Other</button>
+    `;
+    const button = document.querySelector('#src') as HTMLButtonElement;
+    const other = document.querySelector('#other') as HTMLButtonElement;
+
+    button.focus();
+    expect(tip.showPopover).toHaveBeenCalledTimes(1);
+
+    // Simulate focus leaving source by dispatching a focus event from a
+    // sibling element with no tooltip (which triggers the "no source" hide path)
+    other.dispatchEvent(new FocusEvent('focus', { bubbles: true }));
+    expect(tip.hidePopover).toHaveBeenCalledTimes(1);
+
+    button.dispatchEvent(new FocusEvent('focus', { bubbles: true }));
+    expect(tip.showPopover).toHaveBeenCalledTimes(2);
+  });
 });
