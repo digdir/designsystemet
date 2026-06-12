@@ -16,7 +16,7 @@ Sizes are controlled with [`data-size`](/en/fundamentals/code/sizes) and colors 
 
 ### Variants
 
-The `variant` prop can be set to `square` or `circle`. `circle` is the default.
+Use `data-variant` to determine the shape of the avatar. You can choose between `circle` (default) or `square`.
 
 <Story story="ShapeVariants" />
 
@@ -32,24 +32,19 @@ If you add an image or icon as content inside the avatar, make sure to set `aria
 ```tsx
 import { Avatar } from '@digdir/designsystemet-react';
 
-<>
-  {/* With default user icon */}
-  <Avatar aria-label="Ola Nordmann" />
 
-  {/* With initials */}
-  <Avatar aria-label="Ola Nordmann">ON</Avatar>
-  {/* or */}
-  <Avatar aria-label="Ola Nordmann" data-initials="ON" />
+/* With default user icon */
+<Avatar aria-label="Ola Nordmann" />
 
-  {/* With image */}
-  <Avatar aria-label="Ola Nordmann">
-    <img src="..." />
-  </Avatar>
+/* With initials */
+<Avatar aria-label="Ola Nordmann">ON</Avatar>
+/* or */
+<Avatar aria-label="Ola Nordmann" data-initials="ON" />
 
-  {/* Together with visible text */}
-  <Avatar aria-hidden>ON</Avatar>
-  <span>Ola Nordmann</span>
-</>
+/* With image */
+<Avatar aria-label="Ola Nordmann">
+  <img src="..." />
+</Avatar>
 ```
 
 <ReactComponentDocs />

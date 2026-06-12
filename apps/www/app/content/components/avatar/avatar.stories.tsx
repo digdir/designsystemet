@@ -2,6 +2,7 @@ import {
   Avatar,
   type AvatarProps,
   Badge,
+  Button,
   Dropdown,
 } from '@digdir/designsystemet-react';
 import { BriefcaseIcon } from '@navikt/aksel-icons';
@@ -60,14 +61,14 @@ export const WithImageAndIcon = () => (
 );
 
 export const InDropdown = () => (
-  <Dropdown.TriggerContext>
-    <Dropdown.Trigger variant='tertiary'>
+  <>
+    <Button popovertarget='dropdown' variant='tertiary'>
       <Avatar aria-hidden='true' data-size='sm'>
         ON
       </Avatar>
       Ola Nordmann
-    </Dropdown.Trigger>
-    <Dropdown placement='bottom-end' autoPlacement={false} data-size='md'>
+    </Button>
+    <Dropdown id='dropdown' placement='bottom-end' autoPlacement={false}>
       <Dropdown.List>
         <Dropdown.Item>
           <Dropdown.Button>
@@ -90,5 +91,5 @@ export const InDropdown = () => (
         </Dropdown.Item>
       </Dropdown.List>
     </Dropdown>
-  </Dropdown.TriggerContext>
+  </>
 );
