@@ -173,6 +173,10 @@ Kod samtykkebanneret som en `<section>` – en avgrenset seksjon på siden som e
 
 <Story story="ConsentBanner" />
 
+<Story story="ConsentBannerCheckboxes" />
+
+Når samtykkebanneret har flere valg som hører sammen, bruker vi `<fieldset>` og `<legend>` for å gruppere valgene. Legg selve overskriften inni `<legend>`, slik at den både er synlig tittel og tilgjengelig navn for gruppen. Dette unngår at skjermlesere leser opp samme spørsmål to ganger. Se også [GOV.UK om labels, legends og headings](https://design-system.service.gov.uk/get-started/labels-legends-headings/).
+
 ### Knapper og lenker
 Skriv kode for å godta eller avslå skal som knapper (`<button>`), siden de utfører handlinger. Innganger til personvernerklæringen eller mer informasjon om informasjonskapsler koder du ut fra hva som skjer når brukerne aktiverer dem:
 - Lenke (`<a>`) hvis de fører til en ny side.
