@@ -6,19 +6,17 @@ export const Preview = () => {
     <Pagination aria-label='pagineringsmeny'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button aria-label='Forrige side' data-variant='tertiary'>
+          <Pagination.Button aria-label='Forrige side'>
             Forrige
           </Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 1' data-variant='tertiary'>
-            1
-          </Pagination.Button>
+          <Pagination.Button aria-label='Side 1'>1</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 2' data-variant='primary'>
+          <Pagination.Button aria-label='Side 2' aria-current='true'>
             2
           </Pagination.Button>
         </Pagination.Item>
@@ -26,21 +24,15 @@ export const Preview = () => {
         <Pagination.Item />
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 9' data-variant='tertiary'>
-            9
-          </Pagination.Button>
+          <Pagination.Button aria-label='Side 9'>9</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 10' data-variant='tertiary'>
-            10
-          </Pagination.Button>
+          <Pagination.Button aria-label='Side 10'>10</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Neste side' data-variant='tertiary'>
-            Neste
-          </Pagination.Button>
+          <Pagination.Button aria-label='Neste side'>Neste</Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
     </Pagination>
@@ -52,19 +44,17 @@ export const PreviewEn = () => {
     <Pagination aria-label='Pagination menu'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button aria-label='Previous page' data-variant='tertiary'>
+          <Pagination.Button aria-label='Previous page'>
             Previous
           </Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 1' data-variant='tertiary'>
-            1
-          </Pagination.Button>
+          <Pagination.Button aria-label='Page 1'>1</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 2' data-variant='primary'>
+          <Pagination.Button aria-label='Page 2' aria-current='true'>
             2
           </Pagination.Button>
         </Pagination.Item>
@@ -72,21 +62,15 @@ export const PreviewEn = () => {
         <Pagination.Item />
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 9' data-variant='tertiary'>
-            9
-          </Pagination.Button>
+          <Pagination.Button aria-label='Page 9'>9</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 10' data-variant='tertiary'>
-            10
-          </Pagination.Button>
+          <Pagination.Button aria-label='Page 10'>10</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Next page' data-variant='tertiary'>
-            Next
-          </Pagination.Button>
+          <Pagination.Button aria-label='Next page'>Next</Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
     </Pagination>
@@ -194,30 +178,25 @@ export const Mobile = () => {
     <Pagination aria-label='Pagination menu'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button
-            aria-label='Forrige side'
-            data-variant='tertiary'
-          />
+          <Pagination.Button aria-label='Forrige side' />
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 2' data-variant='tertiary'>
-            2
+          <Pagination.Button aria-label='Side 2'>2</Pagination.Button>
+        </Pagination.Item>
+
+        <Pagination.Item>
+          <Pagination.Button aria-label='Side 3' aria-current='true'>
+            3
           </Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 3'>3</Pagination.Button>
+          <Pagination.Button aria-label='Side 4'>4</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 4' data-variant='tertiary'>
-            4
-          </Pagination.Button>
-        </Pagination.Item>
-
-        <Pagination.Item>
-          <Pagination.Button aria-label='Neste side' data-variant='tertiary' />
+          <Pagination.Button aria-label='Neste side' />
         </Pagination.Item>
       </Pagination.List>
     </Pagination>
@@ -229,16 +208,11 @@ export const MobileEn = () => {
     <Pagination aria-label='Pagination menu'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button
-            aria-label='Previous page'
-            data-variant='tertiary'
-          />
+          <Pagination.Button aria-label='Previous page' />
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 2' data-variant='tertiary'>
-            2
-          </Pagination.Button>
+          <Pagination.Button aria-label='Page 2'>2</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
@@ -246,13 +220,11 @@ export const MobileEn = () => {
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 4' data-variant='tertiary'>
-            4
-          </Pagination.Button>
+          <Pagination.Button aria-label='Page 4'>4</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Next page' data-variant='tertiary' />
+          <Pagination.Button aria-label='Next page' />
         </Pagination.Item>
       </Pagination.List>
     </Pagination>
