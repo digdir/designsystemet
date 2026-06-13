@@ -8,7 +8,20 @@ import {
   shift,
   size,
 } from '@floating-ui/dom';
-import { attr, getCSSProp, on, onHotReload, QUICK_EVENT } from '../utils/utils';
+import {
+  isSupported,
+  apply as polyfillPopover,
+} from '@oddbird/popover-polyfill/fn';
+import {
+  attr,
+  getCSSProp,
+  isBrowser,
+  on,
+  onHotReload,
+  QUICK_EVENT,
+} from '../utils/utils';
+
+if (isBrowser() && !isSupported()) polyfillPopover(); // Ensure popover polyfill is loaded in browser environment only
 
 declare global {
   interface GlobalEventHandlersEventMap {
