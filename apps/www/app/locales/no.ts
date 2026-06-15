@@ -26,7 +26,7 @@ export default {
     'components-section': {
       title: 'Tilgjengelige og fleksible komponenter',
       description:
-        'Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet og ivaretar krav til universell utforming. Komponentene finnes for Figma, CSS, en rammeverkuavhengig web-pakke og React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre.',
+        'Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet og ivaretar krav til universell utforming. Komponentene finnes for Figma, CSS, en rammeverkuavhengig web-pakke og React. Bruk de komponentene som gir verdi i din løsning, og bygg videre på toppen av dem når du trenger det.',
       link: 'Les mer om universell utforming',
       fallbackImgAlt:
         'Designskisse av en mobiltelefon som har komponenter fra Designsystemet i seg.',
@@ -34,7 +34,7 @@ export default {
     'theme-section': {
       title: 'Bruk egne tema',
       description:
-        'Designsystemet støtter ulike identiteter gjennom tema. På denne måten kan alle ta utgangspunkt i samme designsystem, men tilpasse til ulike avsenderidentiteter.',
+        'Designsystemet støtter ulike identiteter gjennom tema. Du kan bruke Temabyggeren for å komme i gang, og bygge videre på temaet slik at det passer din profil og løsning. På denne måten kan alle ta utgangspunkt i samme designsystem-fundament, men tilpasse det til ulike avsenderidentiteter.',
       link: 'Bygg ditt tema',
       fallbackImgAlt:
         'Designskisse av en nettside som viser hvordan Designsystemet kan tilpasses ulike identiteter.',
