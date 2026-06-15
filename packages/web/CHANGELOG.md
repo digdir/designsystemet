@@ -139,7 +139,7 @@
   | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
   | `details` & `summary`    | Bugfix for Firefox.                                                                                            |
   | `dialog`                 | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
-  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2).                               |
+  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill).                                       |
 
 ### Patch Changes
 
@@ -175,7 +175,7 @@
   | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
   | `details` & `summary`    | Bugfix for Firefox.                                                                                            |
   | `dialog`                 | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
-  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2).                               |
+  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill).                                       |
 
 ### Patch Changes
 
