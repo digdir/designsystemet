@@ -5,6 +5,7 @@
 - [`@digdir/designsystemet-web`](#digdirdesignsystemet-web)
   - [Table of contents](#table-of-contents)
 - [Get started](#get-started)
+  - [Pick the parts you need](#pick-the-parts-you-need)
   - [Individual imports](#individual-imports)
   - [Types](#types)
   - [Warnings:](#warnings)
@@ -30,17 +31,42 @@
 
 ## Get started
 
-We recommend to import the whole package.
+`@digdir/designsystemet-web` provides framework-independent behaviour for Designsystemet components.
+It can be used together with `@digdir/designsystemet-css`, with your own CSS, or as a smaller enhancement layer in an existing setup.
+
+We recommend importing the whole package when you want all web components, observers and polyfills available globally.
 This will register all web components and observers globally, so you only need to do this once.
+
 ```ts
 import '@digdir/designsystemet-web';
 ```
 
+### Pick the parts you need
+
+Designsystemet packages are meant to be used like a toolbox. You can use the full package, or only the parts that speed up your project.
+
+For example, you can:
+
+- use `@digdir/designsystemet-web` without `@digdir/designsystemet-css` if you already have your own styling
+- use `@digdir/designsystemet-css` without `@digdir/designsystemet-web` if you only need styles and handle interactivity yourself
+- combine some Designsystemet components with your own components
+- build on top of the package where it helps, and skip the parts that do not fit your setup
+
 ### Individual imports
 
-The package supports sub-path exports which means you can import individual parts of the package if needed, but this is used at own risk.
+The package supports sub-path exports, so you can import individual parts of the package if needed.
 
-For example - importing `tooltip`, you need to also import `popover` as its built using native popover functionality.
+```ts
+import '@digdir/designsystemet-web/ds-tabs';
+import '@digdir/designsystemet-web/ds-field';
+```
+
+Some features depend on other parts of the package. For example, `tooltip` uses native popover functionality, so you should also import `popover` when importing `tooltip` directly:
+
+```ts
+import '@digdir/designsystemet-web/popover';
+import '@digdir/designsystemet-web/tooltip';
+```
 
 The [invokers-polyfill](#invokers-polyfill) will **not be automatically attached using individual imports**.
 
@@ -59,8 +85,8 @@ Add the package to your `types` for types:
 `@digdir/designsystemet-web` will warn you about deprecations and missing attributes.
 This can come in handy while developing, but can also easily be hidden, for example in production:
 
-```
-import `@digdir/designsystemet-web`;
+```ts
+import '@digdir/designsystemet-web';
 if (typeof window !== 'undefined' && isProduction()) window.dsWarnings = false;
 ```
 
@@ -296,5 +322,3 @@ We use native popover functionality, but we attach an event listener that fixes 
 | data-autoplacement | boolean | true          | false    |
 
 **If you don't use the class `ds-popover` you need to add the CSS property `--_ds-floating` to the popover element.** This can be `top`, `bottom`, `left` or `right`.
-
-
