@@ -2,6 +2,7 @@
   --dsc-field-content-spacing: var(--ds-size-2);
   --dsc-field-counter-over: '%d tegn for mye';
   --dsc-field-counter-under: '%d tegn igjen';
+  --dsc-field-description-color: var(--ds-color-neutral-text-subtle);
 
   @composes ds-print-preserve from './base.css';
 
@@ -14,9 +15,7 @@
   }
 
   & [data-field='description'] {
-    color: var(
-      --ds-color-neutral-text-subtle
-    ); /* TODO: Change to opacity or color-mix(currentColor, transparent) to ensure contrast when parent element color changes? */
+    color: var(--dsc-field-description-color);
     margin-top: 0; /* Line-height removes the need for this */
     margin-block: 0;
   }
@@ -72,12 +71,13 @@
       display: grid;
     }
 
+    &:has(input:not(:only-child)) {
+      column-gap: var(--dsc-field-content-spacing); /* Prevents adding if not needed */
+    }
+
     & > * {
       margin-block: 0; /* Reset "the stack" */
       grid-column: content; /* Only allow input in column 1 */
-    }
-    & > *:not(input) {
-      padding-inline-start: var(--dsc-field-content-spacing);
     }
 
     & label {
@@ -109,10 +109,6 @@
       grid-template-areas: 'content input';
       grid-template-columns: 1fr auto;
       width: auto;
-      & > *:not(input) {
-        padding-inline-start: 0;
-        padding-inline-end: var(--dsc-field-content-spacing);
-      }
     }
 
     &[data-variant='outline'] {
@@ -135,6 +131,10 @@
       box-shadow: inset 0 0 0 calc(var(--_dsc-field-outline-width) - var(--dsc-field-border-width)) var(--_dsc-field-border-color);
       padding: var(--dsc-field-padding);
       width: auto;
+
+      & > [data-field='validation'] {
+        grid-column: input / content; /* Place validation message in content column */
+      }
     }
     &[data-variant='outline']:hover {
       --_dsc-field-outline-width: var(--dsc-field-border-width--active);
@@ -185,11 +185,13 @@
   --dsc-field-affix-border-style: solid;
   --dsc-field-affix-border-color: var(--ds-color-neutral-border-default);
   --dsc-field-affix-padding-inline: var(--ds-size-4);
+  --dsc-field-affix-background: var(--ds-color-neutral-surface-tinted);
+  --dsc-field-affix-color: var(--ds-color-neutral-text-subtle);
 
-  background: var(--ds-color-neutral-surface-tinted);
+  background: var(--dsc-field-affix-background);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--dsc-field-affix-color);
   max-width: 100%;
   white-space: nowrap;
 

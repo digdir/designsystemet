@@ -33,7 +33,7 @@ export const PreviewEn = () => {
 };
 
 export const Variants = () => {
-  const colorVariants = ['accent', 'brand1', 'brand2', 'brand3', 'neutral'];
+  const colorVariants = ['accent'];
   const variants = ['default', 'tinted'];
 
   return (
@@ -46,9 +46,7 @@ export const Variants = () => {
             data-color={color as CardProps['data-color']}
           >
             <Card.Block>
-              <Paragraph>
-                {variant}: {color}
-              </Paragraph>
+              <Paragraph>{variant}</Paragraph>
             </Card.Block>
           </Card>
         )),
@@ -186,7 +184,7 @@ export const AsLink = () => {
   return (
     <Card data-color='neutral' asChild>
       <a href='https://designsystemet.no' rel='noopener noreferrer'>
-        <Heading>Link Card with asChild</Heading>
+        <Heading>Card as link</Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer.
@@ -323,7 +321,7 @@ export const AsGridImageEn = () => {
       <Card.Block>
         <Heading>
           <Link
-            href='/no/blog/why-we-need-a-common-design-system'
+            href='/en/blog/why-we-need-a-common-design-system'
             target='_blank'
             rel='noopener noreferrer'
           >

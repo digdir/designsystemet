@@ -133,3 +133,34 @@ export const Outline: StoryFn<UseRadioGroupProps> = () => (
     </Fieldset>
   </>
 );
+
+export const End: StoryFn<UseRadioGroupProps> = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
+      <Fieldset.Description>
+        Velg din favorittsmak blant alternativene.
+      </Fieldset.Description>
+      <Radio position='end' label='Vanilje' value='vanilje' name='icecream' />
+      <Radio
+        position='end'
+        label='Jordbær'
+        description='Jordbær er best'
+        value='jordbær'
+        name='icecream'
+      />
+      <Radio
+        position='end'
+        label='Sjokolade'
+        value='sjokolade'
+        name='icecream'
+      />
+      <Radio
+        position='end'
+        label='Jeg spiser ikke iskrem'
+        value='spiser-ikke-is'
+        name='icecream'
+      />
+    </Fieldset>
+  );
+};

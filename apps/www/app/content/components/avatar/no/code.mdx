@@ -1,101 +1,59 @@
-<Story story="Preview" />
-
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
 
-```tsx
-import { Avatar } from '@digdir/designsystemet-react';
+Avatar bruker klassenavnet `ds-avatar` på en `<span>` med `role="img"`. Sørg for at avatar har [tilgjengelig navn](/no/components/docs/avatar/accessibility).
 
-<>
-  {/* Med standard brukerikon */}
-  <Avatar aria-label="Ola Nordmann" />
+## CSS variabler og data-attributter
+Størrelser styres med [`data-size`](/no/fundamentals/code/sizes) og farger med [`data-color`](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
 
-  {/* Med initialer */}
-  <Avatar aria-label="Ola Nordmann">ON</Avatar>
-  {/* eller */}
-  <Avatar aria-label="Ola Nordmann" data-initials="ON" />
+<CssAttributes />
 
-  {/* Med bilde */}
-  <Avatar aria-label="Ola Nordmann">
-    <img src="..." />
-  </Avatar>
+<CssVariables />
 
-  {/* Sammen med synlig tekst */}
-  <Avatar aria-hidden>ON</Avatar>
-  <span>Ola Nordmann</span>
-</>
-```
 
 ## Eksempel
 
-### Standard Ikon
-
-Dersom du ikke sender inn noen `children`, vil `Avatar` vise et standard brukerikon.
-
-Dette kan overstyres i css med variabelen `--dsc-avatar-icon-url`. Se liste over CSS variabler nederst på siden.
-
-<Story story="NoName" />
-
-### Størrelser
-
-Komponenten styres med `data-size`, og vil arve størrelse fra nærmeste forelder med `data-size` satt. 
-
-I tillegg til `sm`, `md` og `lg`, støtter `Avatar` også størrelsen `xs`.
-
-<Story story="Sizes" />
-
-### Farger
-
-Alle farger i ditt tema er gyldige, og komponenten vil arve nærmeste `data-color`.
-
-<Story story="ColorVariants" />
-
 ### Varianter
 
-`variant` prop kan settes til `square` eller `circle`. `circle` er standard.
+Bruk `data-variant` til å bestemme formen på avatar. 
+Du kan velge mellom `circle` (standard) eller `square` .
 
 <Story story="ShapeVariants" />
 
 ### Med bilde eller ikon
+Avatar viser som standard et brukerikon, men dette kan overstyres i CSS med variabelen `--dsc-avatar-icon-url`. 
 
-Dersom du legger bilder eller ikon som barn vil disse få `aria-hidden="true"` automatisk for å unngå dobbel informasjon.
-Du må selv sette `aria-label` på `Avatar` for å forklare hvem eller hva avataren representerer.
+Dersom du legger bilder eller ikon som barn må du sørge for å sette `aria-hidden="true"` for å unngå dobbel informasjon. Du må selv sette `aria-label` på avatar for å forklare hvem eller hva avataren representerer.
 
 <Story story="WithImageAndIcon" />
+
+
+## React
+
+```tsx
+/* Med standard brukerikon */
+<Avatar aria-label="Ola Nordmann" />
+
+/* Med initialer */
+<Avatar aria-label="Ola Nordmann">ON</Avatar>
+/* eller */
+<Avatar aria-label="Ola Nordmann" data-initials="ON" />
+
+/* Med bilde */
+<Avatar aria-label="Ola Nordmann">
+  <img src="..." />
+</Avatar>
+```
+
+<ReactComponentDocs />
 
 ### Komponering
 
 Komponenten skal kunne komponeres inn i andre komponenter.
-Her er et eksempel på bruk av `Avatar` inne i en `Dropdown`-komponent.
+Her er et eksempel på bruk av avatar inne i en `Dropdown`-komponent.
 
-<Story story="InDropdown" />
+<Story story="InDropdown" language="react"/>
 
-## HTML
-
-Avatar bruker klassenavnet `ds-avatar` på en `<span>` med `role="img"`.
-
-```html
-<!-- Med standard brukerikon -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann"></span>
-
-<!-- Med initialer -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann">ON</span>
-<!-- eller -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann" data-initials="ON"></span>
-
-<!-- Med bilde -->
-<span class="ds-avatar" role="img" aria-label="Ola Nordmann">
-  <img src="..." aria-hidden="true" />
-</span>
-
-<!-- Sammen med synlig tekst -->
-<span class="ds-avatar" aria-hidden="true">ON</span>
-<span>Ola Nordmann</span>
-```
-
-## CSS variabler og data-attributter
-
-<CssVariables />
-
-<CssAttributes />
+### Ikke tekstlig innhold
+Dersom du legger inn noe annet enn tekst som barn i `<Avatar>` (som for eksempel et bilde eller ikon), vil disse få `aria-hidden="true"` automatisk for å unngå dobbel informasjon.

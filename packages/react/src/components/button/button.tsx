@@ -74,7 +74,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       icon = false,
       loading = false,
-      variant = 'primary',
+      variant,
       popoverTarget,
       popovertarget,
       commandfor,

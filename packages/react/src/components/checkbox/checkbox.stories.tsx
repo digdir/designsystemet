@@ -177,7 +177,7 @@ export const ReadOnly = {
 
 export const Disabled = {
   args: {
-    ...Preview.args,
+    ...Group.args,
     name: 'my-disabled',
     disabled: true,
   },
@@ -473,3 +473,29 @@ export const Outline: StoryFn<UseCheckboxGroupProps> = () => (
     </Fieldset>
   </>
 );
+
+export const End: StoryFn<UseCheckboxGroupProps> = (args) => {
+  const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
+    value: ['epost'],
+    ...args,
+  });
+
+  return (
+    <Fieldset>
+      <Fieldset.Legend>
+        Hvordan vil du helst at vi skal kontakte deg?
+      </Fieldset.Legend>
+      <Fieldset.Description>
+        Velg alle alternativene som er relevante for deg.
+      </Fieldset.Description>
+      <Checkbox position='end' label='E-post' {...getCheckboxProps('epost')} />
+      <Checkbox
+        position='end'
+        label='Telefon'
+        {...getCheckboxProps('telefon')}
+      />
+      <Checkbox position='end' label='SMS' {...getCheckboxProps('sms')} />
+      <ValidationMessage {...validationMessageProps} />
+    </Fieldset>
+  );
+};

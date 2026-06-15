@@ -11,7 +11,6 @@ export type HeadingProps = {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /**
    * Changes text sizing
-   * @default 'md'
    */
   'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   /**

@@ -1,7 +1,19 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Usage
+
+The class name `ds-divider` is applied directly to the `<hr>` element.
+Apply `aria-hidden="true"` to avoid noise in screen readers.
+
+## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
 
 ```tsx
 import { Divider } from '@digdir/designsystemet-react';
@@ -9,17 +21,4 @@ import { Divider } from '@digdir/designsystemet-react';
 <Divider />
 ```
 
-## HTML
-
-The class name `ds-divider` is applied directly to the `<hr>` element.
-Apply `aria-hidden="true"` to avoid noise in screen readers.
-
-```html
-<hr class="ds-divider" aria-hidden="true" />
-```
-
-## CSS variables and data attributes
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

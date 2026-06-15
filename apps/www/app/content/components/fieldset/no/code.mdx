@@ -1,10 +1,51 @@
-Det er vanlig å bli forvirret mellom `Fieldset` og `Field`.
-En god huskeregel er at **`Fieldset` er et sett med `Field`**
+Det er vanlig å bli forvirret mellom fieldset og field.
+En god huskeregel er at **fieldset er et sett med fields**
 
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen />
 
 ## Bruk
+Bruk `ds-fieldset` på `<fieldset>`-elementet.
+
+```html
+<fieldset class="ds-fieldset">
+  <legend class="ds-label" data-weight="medium">Godtar du vilkårene?</legend>
+  <!-- dine fields -->
+</fieldset>
+```
+
+## Eksempel
+
+### Med checkbox eller radio
+
+Bygg opp gruppen med [checkbox](/no/components/docs/checkbox/code) eller [radio](/no/components/docs/radio/code) som barn av `<fieldset>`. Dette gjelder også når gruppen kun har ett element.
+
+<Story story="WithCheckbox" />
+
+### Ulike felt typer
+
+Et fieldset kan også gruppere andre felter, for eksempel [field](/no/components/docs/field/code) med [input](/no/components/docs/input/code) og [select](/no/components/docs/select/code).
+
+<Story story="WithFields" />
+
+### Readonly
+
+Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere innholdet men ikke redigere det. Informasjon blir med når skjemaet sendes inn.
+
+`readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå `readonly` så langt det lar seg gjøre.
+
+<Story story="ReadOnly" />
+
+
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
 
 ```tsx
 import { Fieldset, Radio } from '@digdir/designsystemet-react';
@@ -17,37 +58,4 @@ import { Fieldset, Radio } from '@digdir/designsystemet-react';
 </Fieldset>
 ```
 
-## Eksempel
-
-### Med checkbox
-
-Både [`Checkbox`](/no/components/docs/checkbox/code) og [`Radio`](/no/components/docs/radio/code) bør grupperes i et `Fieldset`, selv om det kun er ett element i gruppen.
-
-<Story story="WithCheckbox" />
-
-### Flere felter
-
-<Story story="WithFields" />
-
-### Legend som heading
-
-Dersom det er en side som kun har skjema på seg, og tittel på siden (`<h1>`) er samme som vil være i `<legend>`, kan du legge `<h1>` inni `Fieldset.Legend`.
-
-<Story story="LegendAsHeading" />
-
-## HTML
-
-Klassenavnet `ds-fieldset` legges på `<fieldset>`-elementet.
-
-```html
-<fieldset class="ds-fieldset">
-  <legend class="ds-label" data-weight="medium">Godtar du vilkårene?</legend>
-  <!-- dine fields -->
-</fieldset>
-```
-
-## CSS variabler og data-attributter
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

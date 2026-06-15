@@ -1,46 +1,19 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen />
 
 ## Bruk
-
-```tsx
-import { ToggleGroup } from '@digdir/designsystemet-react';
-
-<ToggleGroup data-toggle-group='Alternativer' defaultValue="option1">
-  <ToggleGroup.Item value="option1">Alternativ 1</ToggleGroup.Item>
-  <ToggleGroup.Item value="option2">Alternativ 2</ToggleGroup.Item>
-</ToggleGroup>
-```
-
-## Eksempel
-
-### Kun ikoner
-Bruk [`Tooltip`](/no/components/docs/tooltip/code) for å forklare handlingane når du brukar berre ikon.
-
-<Story story="OnlyIcons" />
-
-### Kontrollert
-
-<Story story="Controlled" />
-
-### Secondary variant
-
-<Story story="Secondary" />
-
-## HTML
-Bruker du `@digdir/designsystemet-web` kan du implementere `ToggleGroup` ved å bruke `data-toggle-group`-attributtet.
+Bruker du `@digdir/designsystemet-web` kan du implementere toggle group ved å bruke `data-toggle-group`-attributtet.
 
 ```html
 <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering" data-variant="secondary">
-  <label class="ds-button" data-variant="tertiary">
+  <label class="ds-button">
     <input type="radio" name="alignment-two" value="left" checked />
     Venstestilt
   </label>
-  <label class="ds-button" data-variant="tertiary">
+  <label class="ds-button">
     <input type="radio" name="alignment-two" value="center" />
     Midtstilt
   </label>
-  <label class="ds-button" data-variant="tertiary">
+  <label class="ds-button">
     <input type="radio" name="alignment-two" value="right" />
     Høyrestilt
   </label>
@@ -55,37 +28,47 @@ Du kan lese om kva du må gjere for å implementere dette i [tilgjengelighetsdok
 Klassenavnet `ds-toggle-group` blir lagt på ein `<div>` med `role="radiogroup"`.
 
 Kvar knapp i gruppa er ein `<button>` med klassenavn `ds-button` med `role="radio"` og `aria-checked` som indikerer om knappen er vald eller ikkje.
-`data-variant` for valde knappar skal stemme med `data-variant` på `ToggleGroup`.
-Resterande knappar skal ha `data-variant="tertiary"`.
 
 ```html
-<div
-  class="ds-toggle-group"
-  role="radiogroup"
-  data-variant="primary"
->
+<div class="ds-toggle-group" role="radiogroup" data-variant="primary">
   <button
     class="ds-button"
-    data-variant="primary"
     type="button"
     id="togglegroup-item-1"
     aria-checked="true"
-    aria-current="true"
     role="radio"
   >Innboks</button>
   <button
     class="ds-button"
-    data-variant="tertiary"
     type="button"
     id="togglegroup-item-2"
     aria-checked="false"
-    aria-current="false"
     role="radio"
   >Sendt</button>
 </div>
 ```
 
 ## CSS variablar og data-attributter
+Størrelsar styrast med [data-size](/no/fundamentals/code/sizes) og fargar med [data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve næraste forelder med desse satt.
+
 <CssVariables />
 
 <CssAttributes />
+
+## React
+
+```tsx
+import { ToggleGroup } from '@digdir/designsystemet-react';
+
+<ToggleGroup data-toggle-group='Alternativer' defaultValue="option1">
+  <ToggleGroup.Item value="option1">Alternativ 1</ToggleGroup.Item>
+  <ToggleGroup.Item value="option2">Alternativ 2</ToggleGroup.Item>
+</ToggleGroup>
+```
+
+### Eksempel på kontrollert
+
+<Story story="Controlled" language="react" />
+
+<ReactComponentDocs />

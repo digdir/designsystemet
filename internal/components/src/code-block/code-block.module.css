@@ -19,6 +19,9 @@
     & :global(.token.plain-text) {
       color: var(--ds-color-neutral-text-default);
     }
+    & :global(.token-line) {
+      display: block;
+    }
     code {
       font-size: min(0.8em, 14px);
     }

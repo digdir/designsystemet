@@ -1,13 +1,8 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
 
-```tsx
-import { Heading } from '@digdir/designsystemet-react';
-
-<Heading>Tittel tekst</Heading>;
-```
+Bruk klassenavnet `ds-heading` for å style et HTML `<h1>`-`<h6>`-element.
 
 ## Eksempel
 
@@ -15,17 +10,12 @@ import { Heading } from '@digdir/designsystemet-react';
 
 <Story story="Sizes" layout="column" />
 
-## HTML
+## React
 
-Bruk klassenavnet `ds-heading` for å style et HTML `<h1>`-`<h6>`-element.
+```tsx
+import { Heading } from '@digdir/designsystemet-react';
 
-```html
-<h1 class="ds-heading" data-size="xl">Overskrift nivå 1</h1>
-<h2 class="ds-heading" data-size="lg">Overskrift nivå 2</h2>
+<Heading>Tittel tekst</Heading>;
 ```
 
-## CSS variabler og data-attributter
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

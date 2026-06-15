@@ -1,5 +1,72 @@
 # Change Log
 
+## 1.15.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+- **Dropdown**: Removed hardcoded `font-weight` on some heading elements. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- Added new export for testing experimental changes. Use this by appending `/experimental_v2` to your package import: `@digdir/designsystemet-css/experimental_v2`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Suggestion**: Added `--dsc-suggestion-option-checkmark-border-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Field**: Added `--dsc-field-description-color`, `--dsc-field-affix-background`, and `--dsc-field-affix-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Fieldset**: Added `--dsc-fieldset-description-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Card**: when using a link in a Card, ensure plain `<a>` tags without `class="ds-link"` also get the correct focus styling. ([#4896](https://github.com/digdir/designsystemet/pull/4896))
+
+- Update npm non-major dependencies ([#4910](https://github.com/digdir/designsystemet/pull/4910))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.15.0
+
+## 1.14.0
+
+### Minor Changes
+
+- **Field / Radio / Checkbox / Switch**: Now supports `data-variant="outline"` for an outlined tile look. ([#4625](https://github.com/digdir/designsystemet/pull/4625))
+
+### Patch Changes
+
+- **Suggestion**: fixed dropdown so it no longer has a brief flash in wrong position ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- Update npm non-major dependencies ([#4809](https://github.com/digdir/designsystemet/pull/4809))
+
+- **Suggestion:** now uses attribute `data-activedescendant` under the hood to add focus styling on option elements ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+- Update npm non-major dependencies ([#4859](https://github.com/digdir/designsystemet/pull/4859))
+
+- **Suggestion**: fixed icons being invisible in forced colors mode ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783))
+
+- **base**: added `.ds-focus--middle` / `.ds-focus--visible--middle` classes for use in the `suggestion` redesign ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- **Suggestion**: changes to design: ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+  - dropdown border and background-color to neutral
+  - new hover styles on items
+  - adjusted spacings
+  - `multiple` now has checkboxes
+  - CSS variables:
+    - Added:
+      - `--dsc-suggestion-option-background--hover`
+      - `--dsc-suggestion-list-padding`
+      - `--dsc-suggestion-list-offset`
+      - `--dsc-suggestion-option-gap`
+    - Removed:
+      - `--dsc-suggestion-option-border-color`
+    - Changed default value:
+      - `--dsc-suggestion-option-background--selected`
+      - `--dsc-suggestion-option-border-radius`
+      - `--dsc-suggestion-option-padding`
+      - `--dsc-suggestion-list-background`
+      - `--dsc-suggestion-list-gap`
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.14.0
+
 ## 1.13.3
 
 ### Patch Changes

@@ -1,0 +1,23 @@
+# CodeRabbit Configuration
+# This file configures how CodeRabbit reviews your pull requests
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+early_access: false
+reviews:
+  review_status: false
+  profile: "chill"
+  poem: false
+  high_level_summary: true
+  auto_review:
+    enabled: false
+    drafts: false
+    base_branches:
+      - "main"
+  tools:
+    biome:
+      enabled: true
+    stylelint:
+      enabled: false
+chat:
+  auto_reply: true
+knowledge_base: {}

@@ -4,54 +4,59 @@ search_terms: avkrysningsboks, avkryssingsboks, avhuking, avhukingsboks, flerval
 
 <Story story="Preview" />
 
-**Bruk `Checkbox` når**
+**Bruk checkbox når**
 - brukerne skal kunne velge ett eller flere alternativer
 - brukerne skal bekrefte eller avkrefte noe, for eksempel at innholdet er lest og forstått
 
-**Unngå `Checkbox` når**
-- brukerne kun skal velge ett alternativ, bruk heller en [`Radio`](/no/components/docs/radio/overview)
-- brukerne har mange alternativer å velge mellom, bruk heller en [`Select`](/no/components/docs/select/overview) eller [`Suggestion`](/no/components/docs/suggestion/overview)
-- brukerne skal slå noe av eller på, bruk heller en [`Switch`](/no/components/docs/switch/overview)
+**Unngå checkbox når**
+- brukerne kun skal velge ett alternativ, bruk heller [radio](/no/components/docs/radio/overview)
+- brukerne har mange alternativer å velge mellom, bruk heller [select](/no/components/docs/select/overview) eller [suggestion](/no/components/docs/suggestion/overview)
+- brukerne skal slå noe av eller på, bruk heller [switch](/no/components/docs/switch/overview)
 
 ## Eksempel
 
-### Bekrefting med `Checkbox`
+### Bekrefting med checkbox
 
-Hvis brukerne skal bekrefte noe, men ikke velge noe, kan en `Checkbox` stå alene. For eksempel når brukerne skal bekrefte at noe er riktig, eller samtykke til vilkår.
+Hvis brukerne skal bekrefte noe, men ikke velge noe, kan en checkbox stå alene. For eksempel når brukerne skal bekrefte at noe er riktig, eller samtykke til vilkår.
 
-En `Checkbox` for samtykke skal alltid kreve en aktiv handling, du skal aldri forhåndsvelge boksen. Dette sikrer at samtykket er gitt frivillig.
+En checkbox for samtykke skal alltid kreve en aktiv handling, du skal aldri forhåndsvelge boksen. Dette sikrer at samtykket er gitt frivillig.
 
 <Story story="OneOption" />
 
 ### Gruppering
 
-De aller fleste ganger brukes `Checkbox` i grupper, der brukerne kan velge flere alternativer. `<fieldset>` som er rundt gruppen burde ha en tittel som forklarer hva valgene handler om.
+De aller fleste ganger brukes checkbox i grupper, der brukerne kan velge flere alternativer. 
 
 <Story story="Group" />
 
-### Outline
-`variant="outline"` legger på ekstra padding og en ramme rundt valget slik at det blir en større klikkflate.
-
-<Story story="Outline" />
-
 ### Med feil
 
-Når `Checkbox` brukes i grupper, skal feilmeldingen vises på `Fieldset`, så den blir samlet for hele gruppen.
+Når checkbox brukes i grupper, skal feilmeldingen vises samlet for hele gruppen.
 
 <Story story="WithError" />
 
+### Outline
+I noen tilfeller kan det være hensiktsmessig å fremheve valgene med en større klikkflate rundt checkboxen. 
+
+Dette kan for eksempel være når 
+- valget representerer et tydelig veivalg som bør skille seg ut i grensesnittet 
+- informasjon som hører sammen med valget (beskrivelser og eventuelle tilleggsdetaljer) skal oppleves som én samlet og sammenhengende interaksjon
+- standard checkboxer ville gitt en visuelt svak layout
+
+<Story story="Outline" />
+
 ### Skrivebeskyttet Checkbox
 
-`Checkbox` støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon som skiller seg fra redigerbare felter. Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrekkefølgen, og informasjon blir med når skjemaet sendes inn.
+Checkbox støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon som skiller seg fra redigerbare felter. Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrekkefølgen, og informasjon blir med når skjemaet sendes inn.
 
 Vi unngår `readOnly` så langt det lar seg gjøre, fordi slike felter kan være forvirrende for noen brukere. Ikke alle vil forstå hvorfor de ikke får til å endre innholdet i feltet.
 
-<Story story="ReadOnly" />
+<Story story="ReadOnlyGroup" />
 
 ### Disabled
 
-Vi bør unngå at `Checkbox` er deaktivert (`disabled`) fordi det kan være vanskelig å oppfatte. Noen brukere vil ikke forstå hva valget sier eller hvorfor det ikke er klikkbart.
-Hvis en `Checkbox` eller gruppe med `Checkbox` ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukerne informasjon om hvorfor valgene ikke er tilgjengelige.
+Vi bør unngå at checkbox er deaktivert (`disabled`) fordi det kan være vanskelig å oppfatte. Noen brukere vil ikke forstå hva valget sier eller hvorfor det ikke er klikkbart.
+Hvis en checkbox eller gruppe med checkbox ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukerne informasjon om hvorfor valgene ikke er tilgjengelige.
 
 Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
 
@@ -59,7 +64,7 @@ Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk (n
 
 ## Retningslinjer
 
-Bruk `Checkbox` når brukerne kan velge ett eller flere alternativer.
+Bruk checkbox når brukerne kan velge ett eller flere alternativer.
 
 ### Sorter alternativene
 
@@ -71,10 +76,10 @@ Plasser helst svaralternativene vertikalt. Da blir det lettere å skanne listen 
 
 <div className="dodont-row">
   <DoDont story="DoPlacement">
-    Plasser `Checkbox` vertikalt for bedre lesbarhet.
+    Plasser checkbox vertikalt for bedre lesbarhet.
   </DoDont>
   <DoDont story="DontPlacement">
-    Unngå å plassere `Checkbox` horisontalt, da det reduserer lesbarheten.
+    Unngå å plassere checkbox horisontalt, da det reduserer lesbarheten.
   </DoDont>
 </div>
 
@@ -83,3 +88,5 @@ Plasser helst svaralternativene vertikalt. Da blir det lettere å skanne listen 
 - Ledeteksten skal henge godt sammen med svaralternativene. Tenk på teksten som en samtale, og bruk du-form i ledeteksten og jeg-form i alternativene.
 - Få frem at brukerne kan velge flere alternativer, og presiser det hvis de bare kan velge et begrenset antall alternativer.
 - Svaralternativene skal alltid ha stor forbokstav. 
+
+Les mer om hvordan du skriver [ledetekster, spørsmål og svaralternativer i skjema](/no/best-practices/content-work/questions).

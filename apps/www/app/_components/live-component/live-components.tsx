@@ -60,6 +60,7 @@ export type LiveComponentProps = {
   language?: Language;
   defaultOpen?: boolean;
   startAsInert?: boolean /*to prevent focus on load of error-summary stories*/;
+  truncateSvg?: boolean;
 };
 
 //copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
@@ -81,20 +82,38 @@ type EditorProps = {
   id?: string;
   hidden?: boolean;
   language?: Language;
+  truncateSvg?: boolean;
 };
 
-const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
+const Editor = ({
+  live,
+  html,
+  id,
+  hidden,
+  language,
+  truncateSvg = true,
+}: EditorProps) => {
   const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const activateEditorRef = useRef<HTMLDivElement>(null);
   const [resetCount, setResetCount] = useState(0);
   const [showHTML, setShowHTML] = useState(language === 'html');
   const [copied, setCopied] = useState('');
-  // Truncate SVGs to <svg></svg> to reduce noise
-  const truncatedHtml = (html || 'Unable to parse html').replace(
-    /<svg[^>]*>[\s\S]*?<\/svg>/gi,
-    '<svg></svg>',
-  );
+
+  // Truncate SVGs to <svg></svg> to reduce noise, preserving aria-* and class attributes
+  const truncatedHtml = truncateSvg
+    ? (html || 'Unable to parse html').replace(
+        /<svg[^>]*>[\s\S]*?<\/svg>/gi,
+        (match) => {
+          const ariaAttrs = match.match(/aria-[\w-]+="[^"]*"/gi) || [];
+          const dataAttrs = match.match(/data-[\w-]+="[^"]*"/gi) || [];
+          const classAttr = match.match(/class="[^"]*"/i) || [];
+          const roleAttr = match.match(/role="[^"]*"/i) || [];
+          const attrs = [...classAttr, ...ariaAttrs, ...roleAttr, ...dataAttrs];
+          return `<svg${attrs.length ? ` ${attrs.join(' ')}` : ''}></svg>`;
+        },
+      )
+    : html || 'Unable to parse html';
   const rawHtml = prettify(truncatedHtml, {
     tag_wrap: 63,
     content_wrap: 70,
@@ -181,10 +200,8 @@ const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
       aria-label={t('live-component.show-code')}
       hidden={hidden}
     >
-      <ds.Paragraph className={classes.language}>
-        {showHTML ? 'HTML' : 'React'}
-      </ds.Paragraph>
       <ds.ToggleGroup
+        className={classes.language}
         variant='secondary'
         data-toggle-group={t('live-component.language')}
         data-size='sm'
@@ -201,7 +218,7 @@ const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
         className={classes.action}
         onClick={reset}
         data-size='sm'
-        /* disabled={live.code === live.newCode} */
+        hidden={live.newCode === undefined || live.newCode === live.code}
         type='button'
       >
         <aksel.ArrowsCirclepathIcon />
@@ -263,6 +280,7 @@ const EditorWithLive = withLive(Editor) as ComponentType<{
   id?: string;
   hidden?: boolean;
   language?: Language;
+  truncateSvg?: boolean;
 }>;
 
 /**
@@ -302,6 +320,7 @@ export const LiveComponent = ({
   language = 'react',
   defaultOpen = false,
   startAsInert,
+  truncateSvg,
 }: LiveComponentProps) => {
   const location = useLocation();
   const { t } = useTranslation();
@@ -413,6 +432,7 @@ export const LiveComponent = ({
         html={html}
         hidden={!showEditor}
         language={language}
+        truncateSvg={truncateSvg}
       />
     </LiveProvider>
   );

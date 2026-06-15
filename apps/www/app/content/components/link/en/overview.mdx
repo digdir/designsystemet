@@ -4,14 +4,14 @@ search_terms: url, navigate, navigation, hyperlink, address
 
 <Story story="PreviewEn" />
 
-**Use `Link` when**
+**Use link when**
 - navigating to a new page, internally or externally
 - linking to another location on the same page
 - a file should be downloaded
 
-**Avoid `Link` when**
-- the user is meant to perform an action, such as “Save” or “Log in”; use a [`Button`](/en/components/docs/button/overview) instead
-- the action changes the state of the solution, such as opening a dialog, starting a process or saving data, use a [`Button`](/en/components/docs/button/overview) instead
+**Avoid link when**
+- the user should perform an action on the same page, for example “Save” or “Submit”, use a [button](/en/components/docs/button/overview) instead
+- the action changes the state of the solution, such as opening a dialog, starting a process or saving data, use a [button](/en/components/docs/button/overview) instead
 
 
 ## Example
@@ -36,6 +36,13 @@ Links can also be displayed in a neutral colour. This can be useful when the lin
 The link must point to information the user needs, or to a place where they can complete their task. Avoid linking to general pages where the user must search for the relevant information themselves.
 
 It is important not to overuse links, as this can make it harder for users to find their way forward.
+
+### Link or button?
+
+Links are used when the user is navigated to a new URL, while buttons are used when an action should be performed.
+
+#### Log in
+Use a link when “Log in” sends the user to a login page or external authentication service. Use a [button](/en/components/docs/button/overview) when “Log in” actually logs the user in, for example by submitting a login form.
 
 ### Do not use an external link icon
 

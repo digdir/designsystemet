@@ -7,12 +7,15 @@
   --dsc-input-padding: var(--dsc-input-padding-block) var(--dsc-input-padding-inline);
   --dsc-input-size--toggle: var(--ds-size-6);
   --dsc-input-size: var(--ds-size-12);
+  --dsc-input-font-size: max(1rem, 1em); /* Minimum 16px to prevent zoom in iOS, but allow inheriting font-size */
+  --dsc-input-line-height: var(--ds-line-height-md);
   /* Background */
   --dsc-input-background--readonly: var(--ds-color-neutral-surface-tinted);
   --dsc-input-background: var(--ds-color-neutral-surface-default);
   /* Border */
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);
+  --dsc-input-border-radius: var(--ds-border-radius-md);
   --dsc-input-border-style: solid;
   --dsc-input-border-width--toggle: max(var(--ds-border-width-default), calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
   --dsc-input-border-width: var(--ds-border-width-default);
@@ -23,6 +26,7 @@
   --dsc-input-outline-style--hover: solid;
   /* Color */
   --dsc-input-color--readonly: var(--ds-color-neutral-text-default);
+  --dsc-input-color-placeholder: color-mix(in srgb, var(--dsc-input-color), transparent 30%);
   --dsc-input-color: var(--ds-color-neutral-text-default);
   /* Stroke is used as the dot in radio, and checkmark in checkboxes */
   --dsc-input-stroke-color: var(--ds-color-base-contrast-default);
@@ -31,20 +35,20 @@
   /* Accent color, used in checkboxes and radio */
   --dsc-input-accent-color: var(--ds-color-base-default);
   --dsc-input-accent-color--invalid: var(--ds-color-danger-text-subtle);
+
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
   --_dsc-input-diagonal-1: transparent calc(48% - var(--dsc-input-stroke-width));
   --_dsc-input-diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke-width));
   --_dsc-input-diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke-width));
   --_dsc-input-diagonal-4: transparent calc(52% + var(--dsc-input-stroke-width));
-  --dsc-input-line-height: var(--ds-line-height-md);
   --_dsc-input-spacing--toggle: calc(var(--ds-size-1) / 2);
 
   appearance: none;
   background: var(--dsc-input-background);
-  border-radius: var(--ds-border-radius-md);
-  border-width: var(--dsc-input-border-width);
-  border-style: var(--dsc-input-border-style);
   border-color: var(--dsc-input-border-color);
+  border-radius: var(--dsc-input-border-radius);
+  border-style: var(--dsc-input-border-style);
+  border-width: var(--dsc-input-border-width);
   box-sizing: border-box;
   color: var(--dsc-input-color);
   font-family: inherit;
@@ -75,6 +79,27 @@
     }
   }
 
+  /* Style placeholder colors to ensure dark mode contrasts */
+  &::-webkit-input-placeholder {
+    color: var(--dsc-input-color-placeholder); /* Chrome/Opera/Safari */
+  }
+  &::-moz-placeholder {
+    color: var(--dsc-input-color-placeholder); /* Firefox 19+ */
+  }
+  &:-ms-input-placeholder {
+    color: var(--dsc-input-color-placeholder); /* IE 10+ */
+  }
+  &::placeholder {
+    color: var(--dsc-input-color-placeholder); /* Modern */
+  }
+
+  /* Fix Safari placeholder issues to date inputs https://stackoverflow.com/q/73896040 */
+  @supports (-webkit-hyphens: none) {
+    &[type='date'] {
+      color: initial;
+    }
+  }
+
   @media (forced-colors: active) {
     border-color: ButtonText;
     background-color: Canvas;
@@ -93,7 +118,7 @@
   }
 
   &:not([data-size]) {
-    font-size: inherit; /* Ensure inheriting font-size */
+    font-size: var(--dsc-input-font-size);
   }
 
   &:is(select) {
@@ -238,23 +263,8 @@
   }
 
   &[type='checkbox']:checked {
-    background-origin: content-box;
-    background-repeat: no-repeat;
-    background-position:
-      10% 73%,
-      90% 50%;
-    background-size:
-      35% 35%,
-      65% 65%;
-    background-image:
-      linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
-      linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
-
-    @media (forced-colors: active) {
-      background-color: LinkText;
-      border-color: LinkText;
-      forced-color-adjust: none; /* To be able to draw check */
-    }
+    --_stroke-width: var(--dsc-input-stroke-width);
+    @composes ds-checkbox--checked from './base.css';
   }
 
   &[type='checkbox']:indeterminate {
