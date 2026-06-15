@@ -20,7 +20,7 @@ export default {
     toolbox: {
       title: 'En felles digital verktøykasse',
       description:
-        'Designsystemet er en felles verktøykasse med UI-komponenter og retningslinjer for utvikling av digitale tjenester. Det er gratis, brukes sammen med virksomhetens egen visuelle profil og bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.',
+        'Designsystemet er en felles verktøykasse med rammeverkuavhengige UI-komponenter og retningslinjer for utvikling av digitale tjenester. Du kan bruke hele verktøykassen, eller plukke ut de delene som gir verdi i din løsning. Det er gratis, brukes sammen med virksomhetens egen visuelle profil og bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.',
       link: 'Les mer om Designsystemet',
     },
     'components-section': {
