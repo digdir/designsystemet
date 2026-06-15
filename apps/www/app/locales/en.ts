@@ -121,17 +121,17 @@ export default {
     'skip-link': 'Skip to main content',
   },
   'consent-banner': {
-    heading: 'Can we collect data about how you use the website?',
-    all: 'Accept',
-    'all-desc':
-      'If you accept, we will also collect data about how the website is used. This helps us improve our services.',
-    declaration:
-      'You can change your choice at any time at the bottom of our pages.',
-    required: 'Decline',
-    'required-desc-start': 'We use some',
-    'required-desc-link': 'essential cookies',
-    'required-desc-end':
-      'to make the website work. These cannot be opted out of.',
+    heading: 'Can we collect information about how the website is used?',
+    approve: 'Yes',
+    decline: 'No',
+    'desc-start':
+      'If you answer yes, we store and analyse information that helps us improve the website.',
+    'desc-end':
+      'You can change your choice at any time at the bottom of the page.',
+    'desc-link': 'More about what we store and why.',
+    'necessary-info-link': 'We also store necessary information',
+    'necessary-info-end':
+      'that cannot be opted out of. This makes the website work and keeps it secure.',
   },
   errors: {
     default: {
