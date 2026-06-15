@@ -1,6 +1,11 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.0.2/schema.json",
-  "changelog": "./changelog-generator.ts",
+  "changelog": [
+    "./changelog-generator.ts",
+    {
+      "repo": "digdir/designsystemet"
+    }
+  ],
   "commit": false,
   "fixed": [
     [
