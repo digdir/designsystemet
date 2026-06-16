@@ -6,18 +6,9 @@ File upload er under utvikling. Har du tilbakemelding eller innspill, meld fra p
 
 ## Bruk
 
-File upload er en sammensatt komponent som består av flere deler:
+Plasser File upload inni en [field](/no/components/docs/field/code) med en [label](/no/components/docs/label/code) slik at opplastingsområdet får en tilgjengelig ledetekst.
 
-- File upload - selve opplastingsområdet (`<div>` med klassen `ds-file-upload`).
-- `FileUpload.Description` - sekundærtekst inne i området.
-- `FileUpload.FakeButton` - en visuell knapp for tydelig klikkflate (rendres som en `Button`).
-- `FileUpload.Input` - den skjulte `<input type="file">`. Tar imot alle native input-attributter som `accept`, `multiple`, `disabled`, `readOnly` og `capture`.
-
-Plasser File upload inni en `Field` med en `Label` slik at opplastingsområdet får en tilgjengelig ledetekst.
-
-### Ren HTML
-
-I ren HTML brukes klassen `ds-file-upload` på et element som inneholder en `<input type="file">`. Inputen blir lagt oppå hele området slik at hele flaten blir klikkbar.
+Bruk klassen `ds-file-upload` på et element som inneholder en `<input type="file">`. Inputen blir lagt oppå hele området slik at hele flaten blir klikkbar.
 
 ```html
 <div class="ds-field">

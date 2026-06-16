@@ -16,15 +16,15 @@ File upload is a form element used to upload files. The component combines a dra
 
 **Avoid file upload when**
 - The user only needs to choose from a predefined set of options.
-- You need advanced file handling with per-file upload status – in that case you must build this around the component yourself.
+- You need advanced file handling with per-file upload status - in that case you must build this around the component yourself.
 
 ## Examples
 
-### Default
-File upload is placed inside a `Field` together with a `Label`. Use `FileUpload.Description` to provide additional information, `FileUpload.FakeButton` for a clear call to action, and `FileUpload.Input` for the file input itself.
+### With description
+You can provide a more detailed description inside the upload area.
+
 <Story story="FileUploadExampleEn" />
 
 ## Guidelines
-Make sure there is always a visible `Label` that describes what should be uploaded. Use `FileUpload.Description` to explain which file formats and sizes are allowed, so the user knows what is expected before uploading.
-
-The component does not validate or upload files by itself – this must be implemented in your application. You can use the native attributes of `FileUpload.Input`, such as `accept`, `multiple`, `disabled`, `readOnly` and `capture`, to control its behaviour.
+Make sure there is always a visible label that describes what should be uploaded.
+The component does not validate or upload files by itself - this must be implemented in your application.

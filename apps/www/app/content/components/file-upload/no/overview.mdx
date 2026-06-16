@@ -16,15 +16,15 @@ File upload er et skjemaelement for å laste opp filer. Komponenten kombinerer e
 
 **Unngå file upload når**
 - Brukeren kun skal velge fra et forhåndsdefinert sett med alternativer.
-- Du trenger avansert filhåndtering med opplastingsstatus per fil – da må du selv bygge dette rundt komponenten.
+- Du trenger avansert filhåndtering med opplastingsstatus per fil - da må du selv bygge dette rundt komponenten.
 
 ## Eksempel
 
-### Standard
-File upload plasseres inni en `Field` sammen med en `Label`. Bruk `FileUpload.Description` for å gi utfyllende informasjon, `FileUpload.FakeButton` for en tydelig knapp, og `FileUpload.Input` for selve filinputen.
+### Med beskrivelse
+Du kan gi en mer utfyllende beskrivelse inni opplastingsområdet.
+
 <Story story="FileUploadExample" />
 
 ## Retningslinjer
-Pass på at det alltid finnes en synlig `Label` som beskriver hva som skal lastes opp. Bruk `FileUpload.Description` til å forklare hvilke filformater og størrelser som er tillatt, slik at brukeren vet hva som forventes før opplasting.
-
-Komponenten håndterer ikke validering eller opplasting av filer i seg selv – dette må implementeres i applikasjonen. Du kan bruke `FileUpload.Input` sine native attributter som `accept`, `multiple`, `disabled`, `readOnly` og `capture` for å styre oppførselen.
+Pass på at det alltid finnes en synlig label som beskriver hva som skal lastes opp. 
+Komponenten håndterer ikke validering eller opplasting av filer i seg selv - dette må implementeres i applikasjonen.
