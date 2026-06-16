@@ -17,10 +17,8 @@ You choose whether you want to use `popover="manual"` or just `popover` to open 
 
 ### Polyfill
 
-`Dropdown` uses the [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). This API is classified as [Baseline:
-Newly available (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as of April 2024,
-with Firefox as the last browser to add it. In some cases, you may find that users are locked to older browser versions for various reasons, and then it may be appropriate to add a [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill) to ensure that `Dropdown` works for everyone.
-
+`Dropdown` uses the [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover).
+We automatically add [popover-polyfill (npmjs.com)](https://www.npmjs.com/package/@oddbird/popover-polyfill) to support older browsers if needed.
 
 ## CSS variables and data attributes
 

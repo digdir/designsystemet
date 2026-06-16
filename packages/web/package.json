@@ -31,6 +31,11 @@
       "import": "./dist/esm/clickdelegatefor/clickdelegatefor.js",
       "require": "./dist/cjs/clickdelegatefor/clickdelegatefor.cjs"
     },
+    "./details": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/details/details.js",
+      "require": "./dist/cjs/details/details.cjs"
+    },
     "./dialog": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/dialog/dialog.js",
@@ -50,6 +55,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/fieldset/fieldset.js",
       "require": "./dist/cjs/fieldset/fieldset.cjs"
+    },
+    "./invokers": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/invokers/invokers.js",
+      "require": "./dist/cjs/invokers/invokers.cjs"
     },
     "./ds-pagination": {
       "types": "./dist/index.d.ts",
@@ -101,13 +111,14 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.6",
-    "@u-elements/u-combobox": "^2.0.4",
+    "@u-elements/u-combobox": "^2.0.5",
     "@u-elements/u-datalist": "^2.0.1",
     "@u-elements/u-details": "^1.0.0",
     "@u-elements/u-tabs": "^1.0.3"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
+    "@oddbird/popover-polyfill": "0.6.1",
     "@testing-library/dom": "10.4.1",
     "@vitest/browser-playwright": "4.1.6",
     "custom-element-vs-code-integration": "1.5.0",

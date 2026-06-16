@@ -4,7 +4,7 @@
 
 import { CONSENT_VERSION, userConsent } from './cookies';
 
-export type ConsentChoice = 'all' | 'required' | null;
+export type ConsentChoice = 'approve' | 'decline' | null;
 
 export async function getConsentFromCookie(): Promise<{
   choice: ConsentChoice;
@@ -31,7 +31,7 @@ export async function shouldIncludeSiteimprove(): Promise<boolean> {
   const consent = await getConsentFromCookie();
   return (
     consent !== null &&
-    consent.choice === 'all' &&
+    consent.choice === 'approve' &&
     consent.version === CONSENT_VERSION
   );
 }

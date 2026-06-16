@@ -94,17 +94,15 @@ export const usePagination = ({
             }
           : null) as PaginationButtonProps | null,
       })),
-      /** Properties to spread on Pagination.Button used for previous naviagation */
+      /** Properties to spread on Pagination.Button used for previous navigation */
       prevButtonProps: {
         'aria-hidden': !prev, // Using aria-hidden to support all HTML elements because of potential asChild
         onClick: handleClick(prev),
-        variant: 'tertiary',
       } as PaginationButtonProps,
-      /** Properties to spread on Pagination.Button used for next naviagation */
+      /** Properties to spread on Pagination.Button used for next navigation */
       nextButtonProps: {
         'aria-hidden': !next, // Using aria-hidden to support all HTML elements because of potential asChild
         onClick: handleClick(next),
-        variant: 'tertiary',
       } as PaginationButtonProps,
       /** Indication if previous page action should be shown or not */
       hasPrev: !!prev,
