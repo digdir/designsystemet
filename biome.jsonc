@@ -56,7 +56,8 @@
         "useMediaCaption": "off",
         "useKeyWithClickEvents": "off",
         "noNoninteractiveTabindex": "off",
-        "useAriaPropsForRole": "off"
+        "useAriaPropsForRole": "off",
+        "noAmbiguousAnchorText": "off"
       },
       "correctness": {
         "useUniqueElementIds": "off",
