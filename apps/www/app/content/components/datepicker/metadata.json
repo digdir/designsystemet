@@ -7,7 +7,7 @@
     "title": "Date picker",
     "subtitle": "Designsystemet does not currently provide a Date picker component. This is a deliberate choice, because a calendar is not always the best solution when users need to provide a date."
   },
-  "image": "",
+  "image": "DatePicker.svg",
   "cssFile": "",
   "tabs": false
 }

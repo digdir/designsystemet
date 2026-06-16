@@ -7,7 +7,7 @@
     "title": "Toast",
     "subtitle": "Toast as an interaction pattern has known accessibility issues, and we have therefore deliberately chosen not to provide a toast component."
   },
-  "image": "",
+  "image": "Toast.svg",
   "cssFile": "",
   "tabs": false
 }
