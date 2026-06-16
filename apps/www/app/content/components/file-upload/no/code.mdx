@@ -1,7 +1,64 @@
-## Midlertidig fileUpload eksempel
-regular
-<Story story="FileUploadExample" />
-simulated react dropzone (tabindex="-1" on input, tabindex="0" on Field)
+<Alert data-color="warning">
+FileUpload er under utvikling. Har du tilbakemelding eller innspill, meld fra på [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20FileUpload) eller i [Slack](https://designsystemet.no/slack).
+</Alert>
+
+<Story story="Preview" defaultOpen/>
+
+## Bruk
+
+`FileUpload` er en sammensatt komponent som består av flere deler:
+
+- `FileUpload` - selve opplastingsområdet (`<div>` med klassen `ds-file-upload`).
+- `FileUpload.Description` - sekundærtekst inne i området.
+- `FileUpload.FakeButton` - en visuell knapp for tydelig klikkflate (rendres som en `Button`).
+- `FileUpload.Input` - den skjulte `<input type="file">`. Tar imot alle native input-attributter som `accept`, `multiple`, `disabled`, `readOnly` og `capture`.
+
+Plasser `FileUpload` inni en `Field` med en `Label` slik at opplastingsområdet får en tilgjengelig ledetekst.
+
+### Ren HTML
+
+I ren HTML brukes klassen `ds-file-upload` på et element som inneholder en `<input type="file">`. Inputen blir lagt oppå hele området slik at hele flaten blir klikkbar.
+
+```html
+<div class="ds-field">
+  <label class="ds-label">Last opp fil</label>
+  <div class="ds-file-upload">
+    <p class="ds-paragraph" data-field="description">Slipp fil her</p>
+    <input type="file" title="" />
+  </div>
+</div>
+```
+
+For å gjøre området skrivebeskyttet, sett `readonly` på inputen. Komponenten bytter da automatisk til en nøytral fargeskala og deaktiverer interaksjon.
+
+## CSS-variabler og data-attributter
+
+`FileUpload` bruker egne CSS-variabler for å styre blant annet bakgrunn, kantlinje, ikon og luft. Disse kan overstyres på `.ds-file-upload`.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
+
+```tsx
+import { EXPERIMENTAL_FileUpload as FileUpload, Field, Label } from '@digdir/designsystemet-react';
+
+<Field>
+  <Label>Last opp fil</Label>
+  <FileUpload>
+    <FileUpload.Description>Slipp fil her</FileUpload.Description>
+    <FileUpload.Description>
+      Filen må være i csv-format og mindre enn 2MB
+    </FileUpload.Description>
+    <FileUpload.FakeButton>Last opp fil</FileUpload.FakeButton>
+    <FileUpload.Input accept=".csv" />
+  </FileUpload>
+</Field>
+```
+
+### Bruk med react-dropzone
+For mer avansert håndtering kan `FileUpload` kombineres med [react-dropzone](https://react-dropzone.js.org/). Vær oppmerksom på at react-dropzone setter `tabindex="-1"` på inputen og `tabindex="0"` på elementet som får `{...getRootProps()}`.
 <Story story="FileUploadReactDropzone" />
 
 <ReactComponentDocs />

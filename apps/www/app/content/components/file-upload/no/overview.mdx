@@ -1,3 +1,34 @@
-<Alert data-color="info">
-    Nothing here yet
+---
+search_terms: filopplasting, last opp fil, opplasting, vedlegg, dra og slipp, fileupload, file input, upload, dropzone
+---
+
+<Alert data-color="warning">
+FileUpload er under utvikling. Har du tilbakemelding eller innspill, meld fra på [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20FileUpload) eller i [Slack](https://designsystemet.no/slack).
 </Alert>
+
+<Story story="Preview" />
+
+`FileUpload` er et skjemaelement for å laste opp filer. Komponenten kombinerer et område for å dra og slippe filer med en vanlig filvelger, slik at brukeren kan velge filer enten ved å klikke eller ved å slippe dem i området.
+
+**Bruk file upload når**
+- Brukeren skal laste opp én eller flere filer som en del av et skjema.
+- Du ønsker å støtte både dra-og-slipp og klikk for å velge fil.
+
+**Unngå file upload når**
+- Brukeren kun skal velge fra et forhåndsdefinert sett med alternativer.
+- Du trenger avansert filhåndtering med opplastingsstatus per fil – da må du selv bygge dette rundt komponenten.
+
+## Eksempel
+
+### Standard
+`FileUpload` plasseres inni en `Field` sammen med en `Label`. Bruk `FileUpload.Description` for å gi utfyllende informasjon, `FileUpload.FakeButton` for en tydelig knapp, og `FileUpload.Input` for selve filinputen.
+<Story story="FileUploadExample" />
+
+### Bruk med react-dropzone
+`FileUpload` kan kombineres med tredjepartsbiblioteker som [react-dropzone](https://react-dropzone.js.org/) for mer avansert håndtering av filer.
+<Story story="FileUploadReactDropzone" />
+
+## Retningslinjer
+Pass på at det alltid finnes en synlig `Label` som beskriver hva som skal lastes opp. Bruk `FileUpload.Description` til å forklare hvilke filformater og størrelser som er tillatt, slik at brukeren vet hva som forventes før opplasting.
+
+Komponenten håndterer ikke validering eller opplasting av filer i seg selv – dette må implementeres i applikasjonen. Du kan bruke `FileUpload.Input` sine native attributter som `accept`, `multiple`, `disabled`, `readOnly` og `capture` for å styre oppførselen.

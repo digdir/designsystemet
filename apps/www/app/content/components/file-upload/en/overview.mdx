@@ -1,3 +1,34 @@
-<Alert data-color="info">
-    Nothing here yet
+---
+search_terms: file upload, upload file, attachment, drag and drop, fileupload, file input, dropzone
+---
+
+<Alert data-color="warning">
+FileUpload is under development. If you have feedback or suggestions, please report them on [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20FileUpload) or in [Slack](https://designsystemet.no/slack).
 </Alert>
+
+<Story story="PreviewEn" />
+
+`FileUpload` is a form element used to upload files. The component combines a drag-and-drop area with a regular file picker, so the user can select files either by clicking or by dropping them into the area.
+
+**Use file upload when**
+- The user needs to upload one or more files as part of a form.
+- You want to support both drag-and-drop and click-to-select.
+
+**Avoid file upload when**
+- The user only needs to choose from a predefined set of options.
+- You need advanced file handling with per-file upload status – in that case you must build this around the component yourself.
+
+## Examples
+
+### Default
+`FileUpload` is placed inside a `Field` together with a `Label`. Use `FileUpload.Description` to provide additional information, `FileUpload.FakeButton` for a clear call to action, and `FileUpload.Input` for the file input itself.
+<Story story="FileUploadExampleEn" />
+
+### Using react-dropzone
+`FileUpload` can be combined with third-party libraries such as [react-dropzone](https://react-dropzone.js.org/) for more advanced file handling.
+<Story story="FileUploadReactDropzoneEn" />
+
+## Guidelines
+Make sure there is always a visible `Label` that describes what should be uploaded. Use `FileUpload.Description` to explain which file formats and sizes are allowed, so the user knows what is expected before uploading.
+
+The component does not validate or upload files by itself – this must be implemented in your application. You can use the native attributes of `FileUpload.Input`, such as `accept`, `multiple`, `disabled`, `readOnly` and `capture`, to control its behaviour.

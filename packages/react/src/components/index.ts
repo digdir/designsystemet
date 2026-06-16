@@ -140,7 +140,7 @@ export type {
   FileUploadInputProps,
   FileUploadProps,
 } from './file-upload';
-export { FileUpload } from './file-upload';
+export { EXPERIMENTAL_FileUpload } from './file-upload';
 
 export type { HeadingProps } from './heading/heading';
 export { Heading } from './heading/heading';

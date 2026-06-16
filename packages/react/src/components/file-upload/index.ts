@@ -49,18 +49,21 @@ type FileUpload = typeof FileUploadParent & {
  *  <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
  * </FileUpload>
  */
-const FileUploadComponent: FileUpload = Object.assign(FileUploadParent, {
+const EXPERIMENTAL_FileUpload: FileUpload = Object.assign(FileUploadParent, {
   FakeButton: FileUploadFakeButton,
   Description: FileUploadDescription,
   Input: FileUploadInput,
 });
 
-FileUploadComponent.FakeButton.displayName = 'FileUpload.FakeButton';
-FileUploadComponent.Description.displayName = 'FileUpload.Description';
-FileUploadComponent.Input.displayName = 'FileUpload.Input';
+EXPERIMENTAL_FileUpload.displayName = 'EXPERIMENTAL_FileUpload';
+EXPERIMENTAL_FileUpload.FakeButton.displayName =
+  'EXPERIMENTAL_FileUpload.FakeButton';
+EXPERIMENTAL_FileUpload.Description.displayName =
+  'EXPERIMENTAL_FileUpload.Description';
+EXPERIMENTAL_FileUpload.Input.displayName = 'EXPERIMENTAL_FileUpload.Input';
 
 export type { FileUploadProps } from './file-upload';
 export type { FileUploadDescriptionProps } from './file-upload-description';
 export type { FileUploadFakeButtonProps } from './file-upload-fake-button';
 export type { FileUploadInputProps } from './file-upload-input';
-export { FileUploadComponent as FileUpload };
+export { EXPERIMENTAL_FileUpload };

@@ -1,4 +1,3 @@
-/*double class to increase specificity above .ds-field :is() (0.2.0 + order)*/
 .ds-file-upload {
   --dsc-file-upload-background: var(--ds-color-surface-default);
   --dsc-file-upload-background--hover: var(--ds-color-surface-tinted);

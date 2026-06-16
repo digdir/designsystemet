@@ -4,7 +4,7 @@ import { type DragEvent, useRef, useState } from 'react';
 import type { FileRejection } from 'react-dropzone';
 import { useDropzone } from 'react-dropzone';
 import { Button, Field, Label } from '../';
-import { FileUpload } from './';
+import { EXPERIMENTAL_FileUpload as FileUpload } from './';
 
 type Story = StoryObj<typeof FileUpload>;
 

@@ -1,6 +1,5 @@
 ---
 "@digdir/designsystemet-react": minor
-"@digdir/designsystemet-css": minor
 ---
 
-**New component**: FileUpload
+**New experimental component**: `FileUpload`. Use it by importing `EXPERIMENTAL_FileUpload` from `@digdir/designsystemet-react`.
