@@ -7,7 +7,6 @@ imageSrc: /img/blog/altinnstudio-16-9.png
 imageAlt: migrering
 imageCaption: Migrering
 ---
-
 ## Introduksjon
 
 Denne guiden hjelper deg med å migrere en Figma-biblioteksfil til den nye fargestrukturen.
@@ -36,6 +35,25 @@ Filer som bruker biblioteket blir ikke ødelagt av migreringen.
 Instanser som bruker det som tidligere het `main`, blir automatisk koblet til nye varianter. Instanser som bruker `support` eller `neutral`, blir ikke oppdatert automatisk av Figma.
 
 Senere i guiden forklarer vi hvordan disse instansene kan oppdateres med pluginen.
+
+### Forutsetninger – navn pluginen forventer
+
+Pluginen gjenkjenner ting i filen på faste navn. Har dere endret noen av disse, kan pluginen feile eller gi feil resultat:
+
+| Hva | Forventet navn |
+|---|---|
+| Fargecollection (før/etter) | `Main color` → `Color` |
+| Support-collection | `Support color` |
+| Variabelprefiks som fjernes | `color/main/` |
+| Variantegenskap for farge | `color` eller `color mode` |
+| Komponenter med spesialbehandling | `Alert` og `ValidationMessage` |
+| Mode-navn i `Color` | `neutral`, `info`, `warning`, `danger`, `success` |
+| Subkomponent med spesialregel | `TableColumn` |
+
+Spesielt viktig:
+
+- **`Alert` / `ValidationMessage`**: heter de noe annet, blir fargevariantene deres *slettet* i stedet for å beholdes og kobles om.
+
 
 ## Må vi følge hele guiden?
 
@@ -76,10 +94,12 @@ Sørg for at du kan gjenopprette filen hvis noe går galt. Hvis du foretrekker �
 Oppdater variabelstrukturen før du eksporterer tokens fra Token Studio. Da havner tokenene riktig når du importerer dem igjen.
 
 **Plugin**
-1. Kjør "Migration helper"
+1. Kjør "color-migration-helper"
 2. Trykk på "Update library"
 3. Pluginen sjekker om variabelstrukturen er riktig
 4. Trykk på "Prepare variables" hvis pluginen ber deg om å oppdatere strukturen
+
+> **Merk:** Hvis både `Main color` og `Color` finnes samtidig, stopper pluginen og ber deg beholde bare den ene. Det samme gjelder hvis det finnes flere `Main color`-collections. Notat: Trenger vi denne?
 
 <ResponsiveIframe
   src='/img/blog/migrate-steg2.mp4'
@@ -161,8 +181,10 @@ I biblioteket finnes det i dag tre fargevarianter av komponentene: `main`, `supp
 
 Pluginen fjerner alle `support`- og `neutral`-varianter, med unntak av `Alert` og `ValidationMessage`. Disse beholder variantene sine, men kobles om internt til den nye `Color`-skalaen.
 
+I tillegg fjernes eventuelle semantiske variantverdier (`info`, `warning`, `danger`, `success`) fra andre komponenter enn `Alert` og `ValidationMessage`.
+
 **Gjør dette:**
-1. Åpne "Migration helper"
+1. Åpne "color-migration-helper"
 2. Trykk på "Update library"
 3. Gå til "2. Remove variants"
 4. Trykk på "Scan variants". Pluginen går nå gjennom hele Figma-filen. Dette kan ta litt tid. (Videoeksempelet er klippet for å spare plass.)
@@ -185,9 +207,7 @@ Pluginen fjerner alle `support`- og `neutral`-varianter, med unntak av `Alert` o
     <Details.Content>
     Gå gjennom alle komponenter og underkomponenter. Fjern alle varianter av typen `support` eller `neutral`.
 
-    Det finnes totalt 329 varianter av typen `support` eller `neutral`.
-
-    [Oversikt over alle varianter som utgår](https://github.com/digdir/designsystemet/issues/4893#:~:text=Variant%20cleanup%20scope)
+    Antallet varianter som utgår varierer per bibliotek. [Oversikt over alle varianter som utgår i vår standardfil](https://github.com/digdir/designsystemet/issues/4893#:~:text=Variant%20cleanup%20scope)
     </Details.Content>
   </Details>
 </Card>
@@ -198,11 +218,16 @@ Pluginen fjerner alle `support`- og `neutral`-varianter, med unntak av `Alert` o
 
 Nå er alle komponentene oppdatert, men eksempelinstansene i biblioteksfilen er fortsatt ikke oppdatert. Dette gjelder eksemplene på de ulike sidene i biblioteket.
 
-Hvis du også vil oppdatere disse instansene, kan du kjøre steg 3 i pluginen.
+Hvis du også vil oppdatere disse instansene, kan du gå til fanen **3. Fix in library** i pluginen.
 
 **Pluginen gjør dette:**
 - `neutral`-varianter oppdateres til `default` og får `color mode = neutral`
 - `support`-varianter oppdateres til `default`, og du velger hvilken `color mode` de skal bruke
+- `Support color`-variabler som er brukt direkte på frames, tekst og andre lag (ikke bare på instanser) kobles om til `Color`
+
+**Velg område (Scope):** Du kan avgrense til utvalg, gjeldende side eller hele filen. Hele filen er tregest, men mest komplett.
+
+**Etter skanning:** Noen instanser kan havne under **Needs review** eller **blocked** – for eksempel `support`-instanser uten valgt fargemode, eller varianter som ikke finnes i det nye komponentsettet. Disse må håndteres manuelt. Klikk en rad for å hoppe til instansen i Figma.
 
   <ResponsiveIframe
       src='/img/blog/migrate-steg6.mp4'
@@ -255,9 +280,14 @@ Instanser som bruker det som tidligere het `main`, blir automatisk oppdatert. Hv
 
 ### Dette må oppdateres med pluginen
 
-Instanser som bruker `support` eller `neutral`, blir ikke oppdatert automatisk av Figma. Disse kan oppdateres med migreringspluginen.
+Instanser som bruker `support` eller `neutral`, blir ikke oppdatert automatisk av Figma. Disse kan oppdateres med "Update sketches"-flyten i migreringspluginen.
 
-Pluginen bytter ut gamle instanser med nye og setter riktig `color mode`.
+Pluginen bytter ut gamle instanser med nye og setter riktig `color mode`. Den rydder samtidig opp `Support color`-variabler som er brukt direkte på frames, tekst og andre lag, og kobler dem om til `Color`.
+
+**Slik gjør du:**
+- Velg **Scope** for å avgrense til utvalg, gjeldende side eller hele filen.
+- For `support`-instanser uten egen mode velger du en erstatningsfarge i nedtrekkslisten **"Replace 'support' with"**.
+- Avkrysningsboksen **"Rebind legacy color variables (experimental)"** er eksperimentell og kobler om gamle fargevariabler inne i instansene – la den stå av med mindre du vet du trenger den.
 
 ### Anbefaling
 
@@ -265,6 +295,9 @@ Be gjerne brukere opprette et snapshot i versjonshistorikken før de oppdaterer 
 
 På sikt anbefaler vi å oppdatere gamle instanser. Filer som bruker biblioteket kan ellers midlertidig inneholde instanser fra både gammel og ny bibliotekversjon.
 
+## Kjente feil (Lasse fyller ut)
+- Swap library konsekvens
+- TableColumn feil 
 
 
 
