@@ -2,25 +2,27 @@
   --dsc-button-background--active: var(--ds-color-base-active);
   --dsc-button-background--hover: var(--ds-color-base-hover);
   --dsc-button-background: var(--ds-color-base-default);
-  --dsc-button-color: var(--ds-color-base-contrast-default);
-  --dsc-button-color--hover: var(--ds-color-base-contrast-default);
-  --dsc-button-border-width: var(--ds-border-width-default);
-  --dsc-button-border-style: solid;
   --dsc-button-border-color: transparent;
+  --dsc-button-border-radius: var(--ds-border-radius-default);
+  --dsc-button-border-style: solid;
+  --dsc-button-border-width: var(--ds-border-width-default);
+  --dsc-button-color--active: var(--dsc-button-color--hover);
+  --dsc-button-color--hover: var(--dsc-button-color);
+  --dsc-button-color: var(--ds-color-base-contrast-default);
   --dsc-button-gap: var(--ds-size-2);
   --dsc-button-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-button-size: var(--ds-size-12);
-  --_ds-captured-length: 1em;
 
   align-items: center;
   background: var(--dsc-button-background);
-  border-radius: var(--ds-border-radius-default);
-  border-width: var(--dsc-button-border-width);
-  border-style: var(--dsc-button-border-style);
   border-color: var(--dsc-button-border-color);
+  border-radius: var(--dsc-button-border-radius);
+  border-style: var(--dsc-button-border-style);
+  border-width: var(--dsc-button-border-width);
   box-sizing: border-box;
   color: var(--dsc-button-color);
   cursor: pointer;
+  flex-shrink: 0; /* If button placed inside display: flex */
   font-family: inherit;
   font-weight: var(--ds-font-weight-medium);
   gap: var(--dsc-button-gap);
@@ -33,17 +35,19 @@
   padding: var(--dsc-button-padding);
   text-align: inherit;
   text-decoration: none;
+  width: fit-content; /* If button placed inside display: flex */
 
   @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';
 
   &[data-variant='secondary'],
   &[data-variant='tertiary'] {
-    --dsc-button-background: transparent;
     --dsc-button-background--active: var(--ds-color-surface-active);
     --dsc-button-background--hover: var(--ds-color-surface-hover);
+    --dsc-button-background: transparent;
+    --dsc-button-color--active: var(--dsc-button-color);
+    --dsc-button-color--hover: var(--dsc-button-color);
     --dsc-button-color: var(--ds-color-text-subtle);
-    --dsc-button-color--hover: var(--ds-color-text-default);
   }
   &[data-variant='secondary'] {
     --dsc-button-border-color: var(--ds-color-border-strong);
@@ -53,17 +57,15 @@
     font-size: inherit; /* Ensure inheriting font-size when <button> */
   }
 
-  & :where(img, svg):not(.ds-spinner) {
-    flex-shrink: 0;
-    /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
-    font-size: calc(var(--_ds-captured-length) * 1.3);
+  & :is(img, svg) {
+    @composes ds-icon from './base.css';
   }
 
   &:focus-visible {
     position: relative; /* Place focusring on top */
   }
 
-  &:where(:not([hidden])) {
+  &:not([hidden]) {
     display: flex;
   }
 
@@ -71,21 +73,11 @@
     width: var(--dsc-button-size); /* Ensure it keeps square shape */
     height: var(--dsc-button-size); /* Ensure it keeps square shape */
     padding: 0;
-
-    & :where(img, svg):not(.ds-spinner) {
-      /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
-      font-size: calc(var(--_ds-captured-length) * 1.5);
-    }
   }
 
   &[data-fullwidth] {
     width: 100%;
     text-align: center;
-  }
-
-  /* Style spinner when in button */
-  & .ds-spinner {
-    height: 1.4em;
   }
 
   /**
@@ -118,5 +110,6 @@
   /* Using :where to prevent adding specificity */
   &:where(:not(:disabled, [aria-disabled='true'], [aria-busy='true'])):active {
     background: var(--dsc-button-background--active);
+    color: var(--dsc-button-color--active);
   }
 }

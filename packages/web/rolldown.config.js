@@ -21,7 +21,7 @@ const entryFileNames =
   (ext) =>
   ({ name }) =>
     name.includes('node_modules')
-      ? `_vendors${name.split('node_modules').pop()}.${ext}` // Jest does not resolve invokers-polyfill/fn so instead we inline it
+      ? `_vendors${name.split('node_modules').pop()}.${ext}` // Jest does not resolve invokers-polyfill/fn and popover-polyfill/fn so instead we inline it
       : `[name].${ext}`;
 
 export default defineConfig([

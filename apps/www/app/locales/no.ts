@@ -120,17 +120,16 @@ export default {
     'skip-link': 'Hopp til hovedinnhold',
   },
   'consent-banner': {
-    heading: 'Vil du godta at vi samler inn data om bruk av nettsiden?',
-    all: 'Godta',
-    'all-desc':
-      'Hvis du godtar, samler vi også inn data om hvordan nettsiden brukes. Dette hjelper oss å forbedre tjenestene våre.',
-    declaration:
-      'Du kan når som helst endre valget ditt nederst på våre sider.',
-    required: 'Avslå',
-    'required-desc-start': 'Vi bruker noen',
-    'required-desc-link': 'nødvendige informasjonskapsler',
-    'required-desc-end':
-      'for at nettsiden skal fungere. Disse kan ikke velges bort.',
+    heading: 'Får vi samle informasjon om hvordan nettsiden brukes?',
+    approve: 'Ja',
+    decline: 'Nei',
+    'desc-start':
+      'Hvis du svarer ja, lagrer og analyserer vi informasjon som hjelper oss å forbedre nettsiden.',
+    'desc-end': 'Du kan når som helst endre valget ditt nederst på siden.',
+    'desc-link': 'Mer om hva vi lagrer og hvorfor.',
+    'necessary-info-link': 'Vi lagrer også nødvendig informasjon',
+    'necessary-info-end':
+      'som ikke kan velges bort. Dette gjør at nettsiden fungerer og er trygg.',
   },
   errors: {
     default: {

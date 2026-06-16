@@ -65,7 +65,7 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
       name,
       onChange,
       value,
-      variant = 'primary',
+      variant,
       ...rest
     },
     ref,
