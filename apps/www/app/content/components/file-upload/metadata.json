@@ -7,6 +7,6 @@
     "title": "File upload",
     "subtitle": "File upload is a form element used to upload files."
   },
-  "image": "Input.svg",
+  "image": "FileUpload.svg",
   "cssFile": "file-upload.css"
 }
