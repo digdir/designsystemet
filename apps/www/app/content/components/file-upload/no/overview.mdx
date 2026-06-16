@@ -8,7 +8,7 @@ FileUpload er under utvikling. Har du tilbakemelding eller innspill, meld fra p�
 
 <Story story="Preview" />
 
-`FileUpload` er et skjemaelement for å laste opp filer. Komponenten kombinerer et område for å dra og slippe filer med en vanlig filvelger, slik at brukeren kan velge filer enten ved å klikke eller ved å slippe dem i området.
+File upload er et skjemaelement for å laste opp filer. Komponenten kombinerer et område for å dra og slippe filer med en vanlig filvelger, slik at brukeren kan velge filer enten ved å klikke eller ved å slippe dem i området.
 
 **Bruk file upload når**
 - Brukeren skal laste opp én eller flere filer som en del av et skjema.
@@ -21,12 +21,8 @@ FileUpload er under utvikling. Har du tilbakemelding eller innspill, meld fra p�
 ## Eksempel
 
 ### Standard
-`FileUpload` plasseres inni en `Field` sammen med en `Label`. Bruk `FileUpload.Description` for å gi utfyllende informasjon, `FileUpload.FakeButton` for en tydelig knapp, og `FileUpload.Input` for selve filinputen.
+File upload plasseres inni en `Field` sammen med en `Label`. Bruk `FileUpload.Description` for å gi utfyllende informasjon, `FileUpload.FakeButton` for en tydelig knapp, og `FileUpload.Input` for selve filinputen.
 <Story story="FileUploadExample" />
-
-### Bruk med react-dropzone
-`FileUpload` kan kombineres med tredjepartsbiblioteker som [react-dropzone](https://react-dropzone.js.org/) for mer avansert håndtering av filer.
-<Story story="FileUploadReactDropzone" />
 
 ## Retningslinjer
 Pass på at det alltid finnes en synlig `Label` som beskriver hva som skal lastes opp. Bruk `FileUpload.Description` til å forklare hvilke filformater og størrelser som er tillatt, slik at brukeren vet hva som forventes før opplasting.
