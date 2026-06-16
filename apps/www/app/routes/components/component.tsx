@@ -126,6 +126,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   } & {
     image: string;
     cssFile: string;
+    tabs?: boolean;
   } = JSON.parse(
     getFileFromContentDir(join('components', component, 'metadata.json')),
   );
@@ -152,6 +153,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       ...jsonMetadata[lang],
       image: jsonMetadata.image,
       subtitle: subtitleFromMetadata.code,
+      tabs: jsonMetadata.tabs !== false,
     },
     linkMetadata: generateMetadata({
       title: jsonMetadata[lang].title,
@@ -203,29 +205,35 @@ export default function Components({
             </Heading>
             <MDXComponents code={metadata.subtitle} />
           </div>
-          <IconFrame className={classes.iconFrame} data-color='brand3'>
-            <img
-              src={'/img/component-previews/' + metadata.image}
-              alt={metadata.title}
-              aria-hidden='true'
-            />
-          </IconFrame>
+          {metadata.image && (
+            <IconFrame className={classes.iconFrame} data-color='brand3'>
+              <img
+                src={'/img/component-previews/' + metadata.image}
+                alt={metadata.title}
+                aria-hidden='true'
+              />
+            </IconFrame>
+          )}
         </div>
-        <div className={classes.headerBottom}>
-          <Button asChild variant='tertiary'>
-            <NavLink to={navigation.overviewLink}>
-              {t('component.overview')}
-            </NavLink>
-          </Button>
-          <Button asChild variant='tertiary'>
-            <NavLink to={navigation.codeLink}>{t('component.code')}</NavLink>
-          </Button>
-          <Button asChild variant='tertiary'>
-            <NavLink to={navigation.accessibilityLink}>
-              {t('component.accessibility')}
-            </NavLink>
-          </Button>
-        </div>
+        {metadata.tabs && (
+          <div className={classes.headerBottom}>
+            <Button asChild variant='tertiary'>
+              <NavLink to={navigation.overviewLink}>
+                {t('component.overview')}
+              </NavLink>
+            </Button>
+            <Button asChild variant='tertiary'>
+              <NavLink to={navigation.codeLink}>
+                {t('component.code')}
+              </NavLink>
+            </Button>
+            <Button asChild variant='tertiary'>
+              <NavLink to={navigation.accessibilityLink}>
+                {t('component.accessibility')}
+              </NavLink>
+            </Button>
+          </div>
+        )}
       </div>
       <TableOfContents items={toc} level={3}>
         <div className={'toc-feedback'}>
