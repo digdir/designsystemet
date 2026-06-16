@@ -206,16 +206,6 @@ export const ColorPage = () => {
           <div className={classes.group}>
             <div className={classes.groupHeader}>
               <Heading data-size='2xs'>{t('themeModal.color')}</Heading>
-              <Button
-                variant='tertiary'
-                data-size='sm'
-                className={classes.AddBtn}
-                onClick={() => openNewColorEditor()}
-                aria-label={`${t('colorPane.add')} ${t('themeModal.color')}`}
-              >
-                {t('colorPane.add')} {t('themeModal.color')}
-                <PlusIcon aria-hidden />
-              </Button>
             </div>
             <div className={classes.colors}>
               {colors.map((colorTheme, index) =>
@@ -228,6 +218,15 @@ export const ColorPage = () => {
                   />
                 ),
               )}
+              <Button
+                variant='secondary'
+                className={classes.btn}
+                onClick={() => openNewColorEditor()}
+                aria-label={`${t('colorPane.add')} ${t('themeModal.color')}`}
+              >
+                {t('colorPane.add')} {t('themeModal.color')}
+                <PlusIcon aria-hidden />
+              </Button>
             </div>
           </div>
           <Divider />
@@ -244,7 +243,6 @@ export const ColorPage = () => {
               </div>
             </div>
           )}
-
           <Divider />
           <div className={classes.group}>
             <div className={classes.groupHeader}>
