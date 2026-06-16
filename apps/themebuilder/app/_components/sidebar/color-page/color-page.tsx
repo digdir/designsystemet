@@ -204,9 +204,6 @@ export const ColorPage = () => {
       {editorState.activePanel === 'none' && (
         <>
           <div className={classes.group}>
-            <div className={classes.groupHeader}>
-              <Heading data-size='2xs'>{t('themeModal.color')}</Heading>
-            </div>
             <div className={classes.colors}>
               {colors.map((colorTheme, index) =>
                 colorTheme.name === 'neutral' ? null : (
