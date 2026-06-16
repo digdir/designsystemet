@@ -26,5 +26,17 @@ Du kan gi en mer utfyllende beskrivelse inni opplastingsområdet.
 <Story story="FileUploadExample" />
 
 ## Retningslinjer
-Pass på at det alltid finnes en synlig label som beskriver hva som skal lastes opp. 
-Komponenten håndterer ikke validering eller opplasting av filer i seg selv - dette må implementeres i applikasjonen.
+Be bare om filopplasting når det er nødvendig. Hvis du kan hente inn informasjonen på en enklere måte, bør du gjøre det i stedet.
+
+Pass på at det alltid finnes en synlig label som beskriver hva som skal lastes opp. Fortell også hvilke krav som gjelder for filene. 
+
+Oppgi alltid
+- hvilke filtyper som er tillatt
+- eventuelle begrensninger på filstørrelse
+- hvor mange filer som kan lastes opp
+- hva filene skal brukes til
+
+## Tekst
+Knappeteksten bør være kort og handlingsorientert, f.eks "Velg filer" eller "Velg fil". 
+
+Sørg for at feilmeldinger følger [retningslinjene for feilmeldinger](/no/patterns/errors), og bruk spesifikke feilmeldinger for ulike feilsituasjoner.

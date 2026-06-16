@@ -26,5 +26,17 @@ You can provide a more detailed description inside the upload area.
 <Story story="FileUploadExampleEn" />
 
 ## Guidelines
-Make sure there is always a visible label that describes what should be uploaded.
-The component does not validate or upload files by itself - this must be implemented in your application.
+Only ask for file upload when it is necessary. If you can collect the information in a simpler way, you should do that instead.
+
+Make sure there is always a visible label that describes what should be uploaded. Also tell the user which requirements apply to the files.
+
+Always state
+- which file types are allowed
+- any file size limits
+- how many files can be uploaded
+- what the files will be used for
+
+## Text
+The button text should be short and action-oriented, for example "Choose files" or "Choose file".
+
+Make sure error messages follow the [guidelines for error messages](/en/patterns/errors), and use specific error messages for different error situations.
