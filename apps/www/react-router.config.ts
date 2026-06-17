@@ -15,7 +15,7 @@ const config: Config = {
   },
   presets: [],
   future: {
-    unstable_trailingSlashAwareDataRequests: true,
+    v8_trailingSlashAwareDataRequests: true,
   },
   buildEnd: async () => {
     const dirname = process.cwd();
