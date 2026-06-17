@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Toast",
-    "subtitle": "Toast som interaksjonsmønster har kjente tilgjengelighetsproblemer, og vi har derfor bevisst valgt å ikke tilby en toast-komponent. "
+    "subtitle": "Designsystemet tilbyr bevisst ikke en toast-komponent, fordi den har kjente tilgjengelighetsproblemer. "
   },
   "en": {
     "title": "Toast",
-    "subtitle": "Toast as an interaction pattern has known accessibility issues, and we have therefore deliberately chosen not to provide a toast component."
+    "subtitle": "Designsystemet deliberately does not provide a toast component because it has known accessibility issues."
   },
   "image": "Toast.svg",
   "cssFile": "",
