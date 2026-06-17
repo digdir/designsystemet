@@ -39,5 +39,8 @@
   },
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "biomejs.biome"
   }
 }
