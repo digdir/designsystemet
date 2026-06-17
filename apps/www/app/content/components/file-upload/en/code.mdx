@@ -11,13 +11,13 @@ Place File upload inside a [field](/en/components/docs/field/code) with a [label
 In plain HTML, use the class `ds-file-upload` on an element that contains an `<input type="file">`. The input is placed on top of the whole area so the entire surface becomes clickable.
 
 ```html
-<div class="ds-field">
+<ds-field class="ds-field">
   <label class="ds-label">Upload file</label>
   <div class="ds-file-upload">
     <p class="ds-paragraph" data-field="description">Drop file here</p>
     <input type="file" title="" />
   </div>
-</div>
+</ds-field>
 ```
 
 To make the area read-only, set `readonly` on the input. The component then automatically switches to a neutral color scale and disables interaction.

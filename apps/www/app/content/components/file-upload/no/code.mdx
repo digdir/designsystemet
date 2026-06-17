@@ -11,13 +11,13 @@ Plasser File upload inni en [field](/no/components/docs/field/code) med en [labe
 Bruk klassen `ds-file-upload` på et element som inneholder en `<input type="file">`. Inputen blir lagt oppå hele området slik at hele flaten blir klikkbar.
 
 ```html
-<div class="ds-field">
+<ds-field class="ds-field">
   <label class="ds-label">Last opp fil</label>
   <div class="ds-file-upload">
     <p class="ds-paragraph" data-field="description">Slipp fil her</p>
     <input type="file" title="" />
   </div>
-</div>
+</ds-field>
 ```
 
 For å gjøre området skrivebeskyttet, sett `readonly` på inputen. Komponenten bytter da automatisk til en nøytral fargeskala og deaktiverer interaksjon.
