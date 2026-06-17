@@ -5,6 +5,7 @@
 - [`@digdir/designsystemet-web`](#digdirdesignsystemet-web)
   - [Table of contents](#table-of-contents)
 - [Get started](#get-started)
+  - [Pick the parts you need](#pick-the-parts-you-need)
   - [Individual imports](#individual-imports)
   - [Types](#types)
   - [Warnings:](#warnings)
@@ -29,11 +30,26 @@
 
 ## Get started
 
-We recommend to import the whole package.
+`@digdir/designsystemet-web` provides framework-independent behaviour for Designsystemet components.
+It can be used together with `@digdir/designsystemet-css`, with your own CSS, or as a smaller enhancement layer in an existing setup.
+
+We recommend importing the whole package when you want all web components, observers and polyfills available globally.
 This will register all web components and observers globally, so you only need to do this once.
+
 ```ts
 import '@digdir/designsystemet-web';
 ```
+
+### Pick the parts you need
+
+Designsystemet packages are meant to be used like a toolbox. You can use the full package, or only the parts that speed up your project.
+
+For example, you can:
+
+- use `@digdir/designsystemet-web` without `@digdir/designsystemet-css` if you already have your own styling
+- use `@digdir/designsystemet-css` without `@digdir/designsystemet-web` if you only need styles and handle interactivity yourself
+- combine some Designsystemet components with your own components
+- build on top of the package where it helps, and skip the parts that do not fit your setup
 
 ### Individual imports
 
@@ -71,8 +87,8 @@ Add the package to your `types` for types:
 `@digdir/designsystemet-web` will warn you about deprecations and missing attributes.
 This can come in handy while developing, but can also easily be hidden, for example in production:
 
-```
-import `@digdir/designsystemet-web`;
+```ts
+import '@digdir/designsystemet-web';
 if (typeof window !== 'undefined' && isProduction()) window.dsWarnings = false;
 ```
 
