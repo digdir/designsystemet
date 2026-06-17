@@ -1,5 +1,29 @@
 # Change Log
 
+## 1.16.0
+
+### Patch Changes
+
+- **Suggestion:** Better handle React async rendering child `<u-datalist>` element ([#4933](https://github.com/digdir/designsystemet/pull/4933))
+
+- **Dialog:** do not trigger `close` event when using controlled mode ([#4965](https://github.com/digdir/designsystemet/pull/4965))
+
+- **Label**: Removed unneeded default value for `weight` prop. ([#4955](https://github.com/digdir/designsystemet/pull/4955))
+
+- **Suggestion:** Updated VoiceOver compatibility - both with and without QuickNav ([#4970](https://github.com/digdir/designsystemet/pull/4970))
+
+- **Dialog:** Apply `autofocus` only for dialog-level animations, not nested element animations ([#4958](https://github.com/digdir/designsystemet/pull/4958))
+
+- **Button**: No longer renders a redundant `data-variant` attribute in HTML when no `variant` is specified. ([#4968](https://github.com/digdir/designsystemet/pull/4968))
+  **Field**: Added missing TypeScript support for `data-position` when using `radio` or `checkbox` inputs.
+  **usePagination**: No longer outputs redundant `variant` props
+
+- Export missing types `DefaultProps` and `Placement` ([#4978](https://github.com/digdir/designsystemet/pull/4978))
+
+- Updated dependencies [[`4e8fa0f`](https://github.com/digdir/designsystemet/commit/4e8fa0f0d1ab03d588f64cf4d032876a0a25b283), [`ae3a92b`](https://github.com/digdir/designsystemet/commit/ae3a92b1cd00f1aa94391b73c80d42cbe10050d9), [`ef2bf9c`](https://github.com/digdir/designsystemet/commit/ef2bf9c3699cd55786e5254ce198289b44239d6a)]:
+  - @digdir/designsystemet-web@1.16.0
+  - @digdir/designsystemet-types@1.16.0
+
 ## 1.15.0
 
 ### Minor Changes
