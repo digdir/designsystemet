@@ -87,9 +87,3 @@ import { Button } from '@digdir/designsystemet-react';
 
 `@digdir/designsystemet-css` and `@digdir/designsystemet-css/theme` must only be imported once in the application.
 
-## Extras
-
-### Polyfill
-
-Designsystemet uses [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) in some components. This api is classified as [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as of April 2024, when Firefox was the last browser to add it. In some cases, you may find that users are locked to older browser versions for various reasons, and then it may be appropriate to add a polyfill to ensure that `popover` works for everyone.
-* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)

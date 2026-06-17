@@ -29,7 +29,7 @@
     "@types/ramda": "0.31.1",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "@vitest/browser": "4.1.6",
+    "@vitest/browser": "4.1.8",
     "axe-playwright": "2.2.2",
     "playwright": "1.60.0",
     "ramda": "0.32.0",

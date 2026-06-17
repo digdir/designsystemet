@@ -5,44 +5,72 @@
 - [`@digdir/designsystemet-web`](#digdirdesignsystemet-web)
   - [Table of contents](#table-of-contents)
 - [Get started](#get-started)
+  - [Pick the parts you need](#pick-the-parts-you-need)
   - [Individual imports](#individual-imports)
   - [Types](#types)
   - [Warnings:](#warnings)
 - [`<ds-breadcrumbs>`](#ds-breadcrumbs)
+- [`data-clickdelegatefor`](#data-clickdelegatefor)
+- [`details` and `summary` (accessibility polyfill)](#details-and-summary-accessibility-polyfill)
+- [`<dialog>` (`closedby` polyfill)](#dialog-closedby-polyfill)
 - [`<ds-error-summary>`](#ds-error-summary)
 - [`<ds-field>`](#ds-field)
   - [Counter](#counter)
+- [`fieldset`](#fieldset)
+- [invokers (`command` polyfill)](#invokers-command-polyfill)
 - [`<ds-pagination>`](#ds-pagination)
+- [`popover`](#popover)
+- [`readonly`](#readonly)
 - [`<ds-suggestion>`](#ds-suggestion)
 - [`<ds-tabs>`](#ds-tabs)
 - [`data-toggle-group`](#data-toggle-group)
 - [`data-tooltip`](#data-tooltip)
-- [`data-clickdelegatefor`](#data-clickdelegatefor)
-- [`readonly`](#readonly)
-- [`fieldset`](#fieldset)
-- [Polyfills](#polyfills)
-  - [invokers-polyfill](#invokers-polyfill)
-  - [`<dialog>`](#dialog)
-    - [open \& close](#open--close)
-  - [`details` and `summary`](#details-and-summary)
-  - [`popover`](#popover)
+  
 
 
 ## Get started
 
-We recommend to import the whole package.
+`@digdir/designsystemet-web` provides framework-independent behaviour for Designsystemet components.
+It can be used together with `@digdir/designsystemet-css`, with your own CSS, or as a smaller enhancement layer in an existing setup.
+
+We recommend importing the whole package when you want all web components, observers and polyfills available globally.
 This will register all web components and observers globally, so you only need to do this once.
+
 ```ts
 import '@digdir/designsystemet-web';
 ```
 
+### Pick the parts you need
+
+Designsystemet packages are meant to be used like a toolbox. You can use the full package, or only the parts that speed up your project.
+
+For example, you can:
+
+- use `@digdir/designsystemet-web` without `@digdir/designsystemet-css` if you already have your own styling
+- use `@digdir/designsystemet-css` without `@digdir/designsystemet-web` if you only need styles and handle interactivity yourself
+- combine some Designsystemet components with your own components
+- build on top of the package where it helps, and skip the parts that do not fit your setup
+
 ### Individual imports
 
-The package supports sub-path exports which means you can import individual parts of the package if needed, but this is used at own risk.
+The package supports sub-path exports which means you can import individual parts of the package if needed.
 
-For example - importing `tooltip`, you need to also import `popover` as its built using native popover functionality.
-
-The [invokers-polyfill](#invokers-polyfill) will **not be automatically attached using individual imports**.
+```
+import '@digdir/designsystemet-web/clickdelegatefor';
+import '@digdir/designsystemet-web/details';
+import '@digdir/designsystemet-web/dialog';
+import '@digdir/designsystemet-web/ds-error-summary';
+import '@digdir/designsystemet-web/ds-field';
+import '@digdir/designsystemet-web/fieldset';
+import '@digdir/designsystemet-web/invokers';
+import '@digdir/designsystemet-web/ds-pagination';
+import '@digdir/designsystemet-web/popover';
+import '@digdir/designsystemet-web/readonly';
+import '@digdir/designsystemet-web/ds-suggestion';
+import '@digdir/designsystemet-web/ds-tabs';
+import '@digdir/designsystemet-web/toggle-group';
+import '@digdir/designsystemet-web/tooltip';
+```
 
 ### Types
 Add the package to your `types` for types:
@@ -59,8 +87,8 @@ Add the package to your `types` for types:
 `@digdir/designsystemet-web` will warn you about deprecations and missing attributes.
 This can come in handy while developing, but can also easily be hidden, for example in production:
 
-```
-import `@digdir/designsystemet-web`;
+```ts
+import '@digdir/designsystemet-web';
 if (typeof window !== 'undefined' && isProduction()) window.dsWarnings = false;
 ```
 
@@ -80,6 +108,50 @@ Automatically hides/shows `aria-label` on desktop/mobile and `aria-current="page
     <li><a href="#none">Level 3</a></li>
   </ol>
 </ds-breadcrumbs>
+```
+
+### `details` and `summary`
+Use native elements. We polyfill a bug in Firefox when combined with Android Talkback screen reader to announce state and role properly.
+
+```html
+<details class="ds-details">
+  <summary>More info</summary>
+  <div>Lorem ipsum dolor sit amet.</div>
+</details>
+```
+
+
+## `data-clickdelegatefor`
+Used for delegating click event. For example, you can use this to delegate click events from a parent element to child elements that are added dynamically.
+
+```html
+<div class="ds-card" data-clickdelegatefor="target">
+  <a id="target" href="https://example.com" rel="noopener">Go to example</a>
+  <span>Clicking this card will open example in a new tab</span>
+</div>
+```
+
+
+
+### `<dialog>`
+Use the native `<dialog>` element. We polyfill support for [`closedby="any"`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). 
+
+```html
+<dialog class="ds-dialog" closedby="any" id="my-dialog">
+my dialog
+</dialog>
+```
+
+#### open & close
+
+Use invokers  `command` and `commandfor`, to open and close dialog.
+```html
+<button class="ds-button" type="button" command="show-modal" commandfor="my-dialog">
+  Open dialog
+</button>
+<dialog id="my-dialog" class="ds-dialog">
+  <button class="ds-button" command="close" commandfor="my-dialog">Close</button>
+</dialog>
 ```
 
 ## `<ds-error-summary>`
@@ -126,6 +198,21 @@ You can add a counter to inputs and textareas by adding the `data-field="counter
 | data-over  | string | %d tegn for mye       | false    |
 | data-under | string | %d tegn igjen         | false    |
 
+### invokers (`command` polyfill)
+We automatically attach [invokers-polyfill](https://www.npmjs.com/package/invokers-polyfill), which means that you get support for `command` and `commandfor`.
+
+
+## `fieldset`
+
+An observer will look on `fieldset` element, add an id to combine children element with `data-field="description"` and `legend` into `aria-labeledby` on `fieldset`.
+
+```html
+<fieldset>
+    <legend>Delivery method</legend>
+    <p data-field="description">Choose one option</p>
+</fieldset>
+```
+
 ## `<ds-pagination>`
 Implements pagination, fills buttons with text.
 You can use both `<a>` and `<button>` elements inside the pagination.
@@ -142,6 +229,39 @@ If you don't pass any attributes you can implement your own logic for current pa
   </ol>
 </ds-pagination>
 ```
+
+
+### `popover`
+We use native popover functionality, but we attach an event listener that fixes placement of designsystem components.
+
+```html
+<button class="ds-button" popovertarget="popover">Open popover</button>
+<div class="ds-popover" popover id="popover" data-placement="left">
+  This is some popover content. It can be very long, but it will wrap and
+  stay within the viewport.
+</div>
+```
+
+| attribute     | type   | default    | required |
+|---------------|--------|------------|----------|
+| data-placement | string | top        | false    |
+| data-overscroll | 'contain' | undefined | undefined       | false    |
+| data-autoplacement | boolean | true          | false    |
+
+**If you don't use the class `ds-popover` you need to add the CSS property `--_ds-floating` to the popover element.** This can be `top`, `bottom`, `left` or `right`.
+
+
+## `readonly`
+Used for fixing `readonly` support on `select` and `input` elements. Add `aria-readonly="true"` to make the element behave as readonly, which means that it will not be editable by the user or call any change events.
+
+```html
+<select aria-readonly="true">
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</select>
+```
+
 
 ## `<ds-suggestion>`
 Extends `u-combobox` from u-elements. See documentation for [u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
@@ -209,92 +329,5 @@ Uses native popover functionality with our [`popover`](#popover) polyfill.
 <button data-placement="left" data-tooltip="left" class="ds-button">left</button>
 ```
 
-## `data-clickdelegatefor`
-Used for delegating click event. For example, you can use this to delegate click events from a parent element to child elements that are added dynamically.
-
-```html
-<div class="ds-card" data-clickdelegatefor="target">
-  <a id="target" href="https://example.com" rel="noopener">Go to example</a>
-  <span>Clicking this card will open example in a new tab</span>
-</div>
-```
-
-## `readonly`
-Used for fixing `readonly` support on `select` and `input` elements. Add `aria-readonly="true"` to make the element behave as readonly, which means that it will not be editable by the user or call any change events.
-
-```html
-<select aria-readonly="true">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-</select>
-```
-## `fieldset`
-
-An observer will look on `fieldset` element, add an id to combine children element with `data-field="description"` and `legend` into `aria-labeledby` on `fieldset`.
-
-```html
-<fieldset>
-    <legend>Delivery method</legend>
-    <p data-field="description">Choose one option</p>
-</fieldset>
-```
-
-
-## Polyfills
-
-### invokers-polyfill
-We automatically attach [invokers-polyfill](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2), which means that you get support for `command` and `commandfor`.
-
-### `<dialog>`
-Use the native `<dialog>` element. We polyfill support for [`closedby="any"`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). 
-
-```html
-<dialog class="ds-dialog" closedby="any" id="my-dialog">
-my dialog
-</dialog>
-```
-
-#### open & close
-
-Use invokers  `command` and `commandfor`, to open and close dialog.
-```html
-<button class="ds-button" type="button" command="show-modal" commandfor="my-dialog">
-  Open dialog
-</button>
-<dialog id="my-dialog" class="ds-dialog">
-  <button class="ds-button" command="close" commandfor="my-dialog">Close</button>
-</dialog>
-```
-
-### `details` and `summary`
-Use native elements. We polyfill a bug in Firefox when combined with Android Talkback screen reader to announce state and role properly.
-
-```html
-<details class="ds-details">
-  <summary>More info</summary>
-  <div>Lorem ipsum dolor sit amet.</div>
-</details>
-```
-
-
-### `popover`
-We use native popover functionality, but we attach an event listener that fixes placement of designsystem components.
-
-```html
-<button class="ds-button" popovertarget="popover">Open popover</button>
-<div class="ds-popover" popover id="popover" data-placement="left">
-  This is some popover content. It can be very long, but it will wrap and
-  stay within the viewport.
-</div>
-```
-
-| attribute     | type   | default    | required |
-|---------------|--------|------------|----------|
-| data-placement | string | top        | false    |
-| data-overscroll | 'contain' | undefined | undefined       | false    |
-| data-autoplacement | boolean | true          | false    |
-
-**If you don't use the class `ds-popover` you need to add the CSS property `--_ds-floating` to the popover element.** This can be `top`, `bottom`, `left` or `right`.
 
 

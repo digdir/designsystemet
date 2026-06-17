@@ -1,3 +1,4 @@
+import '../popover/popover'; // Ensure popover is imported when using individual imports, since tooltip relies on it
 import {
   announce,
   attr,
