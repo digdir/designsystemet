@@ -15,8 +15,6 @@ injectWorkspacePackages: true
 minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - "@u-elements/*"
-  # Renovate security update: vite@7.3.5
-  - vite@7.3.5
 packageExtensions:
   "@navikt/aksel-icons":
     peerDependencies:
