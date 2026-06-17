@@ -223,9 +223,7 @@ export default function Components({
               </NavLink>
             </Button>
             <Button asChild variant='tertiary'>
-              <NavLink to={navigation.codeLink}>
-                {t('component.code')}
-              </NavLink>
+              <NavLink to={navigation.codeLink}>{t('component.code')}</NavLink>
             </Button>
             <Button asChild variant='tertiary'>
               <NavLink to={navigation.accessibilityLink}>
