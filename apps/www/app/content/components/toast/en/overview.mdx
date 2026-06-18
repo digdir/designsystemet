@@ -9,22 +9,22 @@ Toast has known accessibility issues that make it difficult to support all users
 ### Time constraints
 Toast messages disappear after a few seconds. Users must be able to extend the duration until they choose to close the message themselves. Users with cognitive disabilities or users of assistive technology often do not have time to read or act on the message. Users who are in the middle of something else may miss it entirely.
 
-[WCAG 2.2.1 Timing Adjustable](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html)
+[WCAG 2.2.1 Timing Adjustable (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html)
 
 ### DOM order and context
 Toast messages are usually placed far from the content they relate to. For assistive technology users, there is no logical connection between the action that triggered the message and the message itself. This creates confusion about what the message actually refers to.
 
-[WCAG 1.3.2 Meaningful Sequence](https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html)
+[WCAG 1.3.2 Meaningful Sequence (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html)
 
 ### Keyboard operability
 All interactive elements in a toast, including the option to close it, must be usable with a keyboard. Toast also does not steal focus, so keyboard users who are in the middle of something else will not automatically be made aware of the message.
 
-[WCAG 2.1.1 Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)
+[WCAG 2.1.1 Keyboard (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)
 
 ### Status messages
 Implementing toast in a way that meets the requirements for status messages is challenging. It requires ARIA live regions with correct configuration, and incorrect implementation can cause the message to not be announced by screen readers, or to be announced too late and interrupt what the user is doing.
 
-[WCAG 4.1.3 Status Messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)
+[WCAG 4.1.3 Status Messages (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)
 
 ### Screen magnification
 Users who magnify the screen only see part of the page at a time. Toast messages shown in a corner can end up outside the visible area and never be discovered.
