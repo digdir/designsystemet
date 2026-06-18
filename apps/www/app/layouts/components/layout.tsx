@@ -31,6 +31,7 @@ export const loader = async ({
       title: string;
       url: string;
       order?: number;
+      keywords?: string;
     }[];
   } = {
     ' ': [],
@@ -84,6 +85,7 @@ export const loader = async ({
           file.relativePath.replace('.mdx', ''),
         url: `/${lang}/components/${folder}/${slug}`,
         order: parseInt(result.frontmatter.order, 10) || 9999,
+        keywords: result.frontmatter.search_terms || '',
       });
     }
 
@@ -114,10 +116,18 @@ export const loader = async ({
       const parsedMetadata = JSON.parse(metadataJson);
       const category = parsedMetadata.category || 'components';
 
+      const overviewMdx = getFileFromContentDir(
+        join('components', folder, lang, 'overview.mdx'),
+      );
+      const keywords = overviewMdx
+        ? (await generateFromMdx(overviewMdx)).frontmatter.search_terms || ''
+        : '';
+
       return {
         category,
         title: parsedMetadata[lang].title || folder,
         url: `/${lang}/components/docs/${folder}`,
+        keywords,
       };
     }),
   );
@@ -187,6 +197,7 @@ export default function Layout({
         title={'Components'}
         suffix={sidebarSuffix}
         hideCatTitle
+        searchable
       />
       <div className={classes.content} id='main'>
         <Outlet />

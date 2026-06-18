@@ -26,6 +26,16 @@
   margin-bottom: var(--ds-size-5);
 }
 
+.search {
+  margin-bottom: var(--ds-size-5);
+  padding: 0 var(--ds-size-4);
+}
+
+.noResults {
+  padding: 0 var(--ds-size-4);
+  color: var(--ds-color-neutral-text-subtle);
+}
+
 .list {
   margin: 0;
   padding: 0;

@@ -1,7 +1,14 @@
-import { Button, Link, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Link, Paragraph, Search } from '@digdir/designsystemet-react';
+import { useDebounceCallback } from '@internal/components';
 import { ChevronRightLastIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { type HTMLAttributes, useRef } from 'react';
+import {
+  type HTMLAttributes,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 import classes from './sidebar.module.css';
@@ -11,10 +18,16 @@ export type SidebarProps = {
     [key: string]: {
       title: string;
       url: string;
+      keywords?: string;
     }[];
   };
   title: string;
   hideCatTitle?: boolean;
+  /**
+   * Show a search input above the sidebar navigation that filters items by
+   * title and keywords.
+   */
+  searchable?: boolean;
   /**
    * mapped list of suffixes to it's category key
    */
@@ -27,12 +40,61 @@ export const Sidebar = ({
   cats,
   title,
   hideCatTitle = false,
+  searchable = false,
   suffix = {},
   className,
   ...props
 }: SidebarProps) => {
   const { t } = useTranslation();
   const closeMenuRef = useRef<HTMLButtonElement>(null);
+  const [query, setQuery] = useState('');
+
+  const filteredCats = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+    if (!normalizedQuery) {
+      return cats;
+    }
+
+    const result: SidebarProps['cats'] = {};
+    for (const [key, value] of Object.entries(cats)) {
+      const items = value.filter((item) => {
+        const itemTitle = t(`sidebar.items.${item.title}`, item.title);
+        const haystack =
+          `${itemTitle} ${item.title} ${item.keywords ?? ''}`.toLowerCase();
+        return haystack.includes(normalizedQuery);
+      });
+      if (items.length) {
+        result[key] = items;
+      }
+    }
+    return result;
+  }, [cats, query, t]);
+
+  const hasResults = Object.values(filteredCats).some(
+    (value) => value.length > 0,
+  );
+
+  const resultCount = useMemo(
+    () =>
+      Object.values(filteredCats).reduce((sum, value) => sum + value.length, 0),
+    [filteredCats],
+  );
+
+  const [announce, setAnnounce] = useState('');
+  /* delay announce so it is not interrupted while the user is typing */
+  const debouncedAnnounce = useDebounceCallback((value: string) => {
+    setAnnounce(value);
+  }, 1000);
+
+  useEffect(() => {
+    if (!searchable || !query.trim()) {
+      debouncedAnnounce('');
+      return;
+    }
+    debouncedAnnounce(
+      `${t('search.srA')} ${resultCount} ${t('search.srB')} ${query}`,
+    );
+  }, [searchable, query, resultCount, t, debouncedAnnounce]);
 
   return (
     <div
@@ -70,8 +132,33 @@ export const Sidebar = ({
             {t(`sidebar.${title}`, title)}
           </Paragraph>
         )}
+        {searchable ? (
+          <Search className={classes.search} data-size='sm'>
+            <Search.Input
+              aria-label={t('sidebar.search.label', 'Search')}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <Search.Clear onClick={() => setQuery('')} />
+          </Search>
+        ) : null}
+        {searchable ? (
+          <div
+            className='ds-sr-only'
+            aria-live='assertive'
+            aria-atomic='true'
+            aria-relevant='text'
+          >
+            {announce}
+          </div>
+        ) : null}
+        {searchable && !hasResults ? (
+          <Paragraph data-size='sm' className={classes.noResults}>
+            {t('sidebar.search.noResults', 'No results')}
+          </Paragraph>
+        ) : null}
         <ul className={classes.list}>
-          {Object.entries(cats).map(([key, value]) => {
+          {Object.entries(filteredCats).map(([key, value]) => {
             if (!value.length) {
               return null;
             }
