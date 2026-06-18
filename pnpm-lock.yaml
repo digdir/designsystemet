@@ -1,3 +1,97 @@
+---
+lockfileVersion: '9.0'
+
+importers:
+
+  .:
+    configDependencies: {}
+    packageManagerDependencies:
+      '@pnpm/exe':
+        specifier: 10.34.3+sha512.f2c531b08829d7be7f03c90addc266615f9c5477463e4bf1d275cb263ce9ea57cf0d5599110d94649a9bb3fed9f0b5efcea74a7016b61532a24cb9ad87860c1d
+        version: 10.34.3
+      pnpm:
+        specifier: 10.34.3+sha512.f2c531b08829d7be7f03c90addc266615f9c5477463e4bf1d275cb263ce9ea57cf0d5599110d94649a9bb3fed9f0b5efcea74a7016b61532a24cb9ad87860c1d
+        version: 10.34.3
+
+packages:
+
+  '@pnpm/exe@10.34.3':
+    resolution: {integrity: sha512-Z9+a1W/7qSPv/iynZfN9OOPcbNpSgiRvlgFOmThdMWxueKRf/cyvJyl8Jjp2yk046AagSAbb5wZrJlruBVJUjA==}
+    hasBin: true
+
+  '@pnpm/linux-arm64@10.34.3':
+    resolution: {integrity: sha512-8hyBQQ8qhqsnOEKHtG3TN+Z48uRQmfpF22JIvWPMVqPxSBhQ4lt56M/kw1JY0YsYeh/rYYrSuOaBP8PhUbuWsQ==}
+    cpu: [arm64]
+    os: [linux]
+    hasBin: true
+
+  '@pnpm/linux-x64@10.34.3':
+    resolution: {integrity: sha512-+lz/RbgjTZ2xmCo7Z6EyHHk7quQY7bfZB9ZsMy2i0hRxmiwZLjnx3YYjvi1r+nPigVRo+2LixfOTtpUdJJpb2w==}
+    cpu: [x64]
+    os: [linux]
+    hasBin: true
+
+  '@pnpm/macos-arm64@10.34.3':
+    resolution: {integrity: sha512-VmhI5hyamEeqpUz4WPdPcON+fBLeL3Nojaovc2QCYHCwNcmw5P/nOZUFoYBHtOahyBvCTfhBIoAbWJoDxgcqGQ==}
+    cpu: [arm64]
+    os: [darwin]
+    hasBin: true
+
+  '@pnpm/macos-x64@10.34.3':
+    resolution: {integrity: sha512-hY31byZYZVdEYKfg32C4ML7oVl9qdcK/9osqXq3AcDOmrXIQMtQZrN2fxFxSaO15yxHwlUnaO/dntFepU/vkvw==}
+    cpu: [x64]
+    os: [darwin]
+    hasBin: true
+
+  '@pnpm/win-arm64@10.34.3':
+    resolution: {integrity: sha512-9TBeSa2MpGB/7PJ3j3WFBU0/7eeGeZLpiB3VuUdPGgZKeCvQCDEubPlXUouiqff5Znq3xvlL5ncVGO/hbejBLA==}
+    cpu: [arm64]
+    os: [win32]
+    hasBin: true
+
+  '@pnpm/win-x64@10.34.3':
+    resolution: {integrity: sha512-SekWOYaL4CaBzRtGMKL8GZ0/1Tij+6GLlF5x/z2azKFtDGY0TF6l+gdcxFmv+8auyX/LIA6ESvFBKgVliDBNVQ==}
+    cpu: [x64]
+    os: [win32]
+    hasBin: true
+
+  pnpm@10.34.3:
+    resolution: {integrity: sha512-8sUxsIgp175/A8kK3cJmYV+cVHdGPkvx0nXLJjzp6lfPDVWZEQ2UZJqbs/7Z8LXvzqdKcBa2FTKiTLmth4YMHQ==}
+    engines: {node: '>=18.12'}
+    hasBin: true
+
+snapshots:
+
+  '@pnpm/exe@10.34.3':
+    optionalDependencies:
+      '@pnpm/linux-arm64': 10.34.3
+      '@pnpm/linux-x64': 10.34.3
+      '@pnpm/macos-arm64': 10.34.3
+      '@pnpm/macos-x64': 10.34.3
+      '@pnpm/win-arm64': 10.34.3
+      '@pnpm/win-x64': 10.34.3
+
+  '@pnpm/linux-arm64@10.34.3':
+    optional: true
+
+  '@pnpm/linux-x64@10.34.3':
+    optional: true
+
+  '@pnpm/macos-arm64@10.34.3':
+    optional: true
+
+  '@pnpm/macos-x64@10.34.3':
+    optional: true
+
+  '@pnpm/win-arm64@10.34.3':
+    optional: true
+
+  '@pnpm/win-x64@10.34.3':
+    optional: true
+
+  pnpm@10.34.3: {}
+
+---
 lockfileVersion: '9.0'
 
 settings:
