@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.16.1
+
+### Patch Changes
+
+- fix(deps): update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
+
+- **base**: `ds-icon` no longer defines `fill`. Users must make sure their icons inherit color the correct way for their icons. ([#5013](https://github.com/digdir/designsystemet/pull/5013))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.16.1
+
 ## 1.16.0
 
 ### Minor Changes
