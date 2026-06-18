@@ -82,6 +82,10 @@
   }
 }
 
+.header:not(:has(.headerBottom)) {
+  padding-bottom: var(--ds-size-8);
+}
+
 .headerBottom {
   display: flex;
 
