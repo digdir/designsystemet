@@ -43,7 +43,6 @@ body,
 
 .ds-icon {
   display: inline-block; /* Overwrite Tailwind setting display: block on <svg> */
-  fill: currentcolor;
   flex-shrink: 0;
   font-size: 1em;
   height: var(--ds-icon-size);
