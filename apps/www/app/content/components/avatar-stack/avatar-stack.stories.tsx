@@ -10,15 +10,15 @@ import { useState } from 'react';
 
 export const Preview = () => (
   <EXPERIMENTAL_AvatarStack>
-    <Avatar aria-label=''>
+    <Avatar aria-label='cat'>
       <img src='/img/component-docs/cats/cat1.webp' alt='' />
     </Avatar>
-    <Avatar aria-label=''>
+    <Avatar aria-label='briefcase'>
       <BriefcaseIcon />
     </Avatar>
-    <Avatar aria-label='' initials='sm' />
-    <Avatar aria-label=''>md</Avatar>
-    <Avatar aria-label='' initials='on' />
+    <Avatar aria-label='Søren Magnussen' >sm</Avatar>
+    <Avatar aria-label='Mark Downright'>md</Avatar>
+    <Avatar aria-label='Ola Nordman'>on</Avatar>
   </EXPERIMENTAL_AvatarStack>
 );
 
@@ -208,10 +208,7 @@ export const ShapeVariants = () => (
 );
 
 export const DataSize = () => (
-  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-size-8)' }}>
-    <fieldset>
-      <legend>avatarSize='var(--ds-size-8)'</legend>
-      <EXPERIMENTAL_AvatarStack avatarSize={'var(--ds-size-8)'}>
+        <EXPERIMENTAL_AvatarStack avatarSize='clamp(5rem, 1.5rem + 2vw, 10rem)'>
         <Avatar aria-label=''>
           <img src='/img/component-docs/cats/cat6.webp' alt='' />
         </Avatar>
@@ -225,74 +222,15 @@ export const DataSize = () => (
           <img src='/img/component-docs/cats/cat1.webp' alt='' />
         </Avatar>
       </EXPERIMENTAL_AvatarStack>
-    </fieldset>
-    <fieldset>
-      <legend>avatarSize='3em'</legend>
-      <EXPERIMENTAL_AvatarStack avatarSize='3em'>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-      </EXPERIMENTAL_AvatarStack>
-    </fieldset>
-    <fieldset>
-      <legend>avatarSize='clamp(2rem, 1.5rem + 2vw, 4rem)'</legend>
-      <EXPERIMENTAL_AvatarStack avatarSize='clamp(2rem, 1.5rem + 2vw, 4rem)'>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-      </EXPERIMENTAL_AvatarStack>
-    </fieldset>
-  </div>
 );
 
 export const Gap = () => (
-  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-size-8)' }}>
-    <fieldset>
-      <legend>gap='2px'</legend>
-      <EXPERIMENTAL_AvatarStack avatarSize='3rem' gap='2px'>
-        <Avatar aria-label='' initials='AA' />
-        <Avatar aria-label='' initials='BB' />
-        <Avatar aria-label='' initials='CC' />
-        <Avatar aria-label='' initials='DD' />
-      </EXPERIMENTAL_AvatarStack>
-    </fieldset>
-    <fieldset>
-      <legend>gap='4px'</legend>
-      <EXPERIMENTAL_AvatarStack avatarSize='3rem' gap='4px'>
-        <Avatar aria-label='' initials='AA' />
-        <Avatar aria-label='' initials='BB' />
-        <Avatar aria-label='' initials='CC' />
-        <Avatar aria-label='' initials='DD' />
-      </EXPERIMENTAL_AvatarStack>
-    </fieldset>
-    <fieldset>
-      <legend>gap='6px'</legend>
       <EXPERIMENTAL_AvatarStack avatarSize='3rem' gap='6px'>
         <Avatar aria-label='' initials='AA' />
         <Avatar aria-label='' initials='BB' />
         <Avatar aria-label='' initials='CC' />
         <Avatar aria-label='' initials='DD' />
       </EXPERIMENTAL_AvatarStack>
-    </fieldset>
-  </div>
 );
 
 export const AdditionalAvatars = () => (
@@ -331,30 +269,30 @@ export const WithTooltipAndLink = () => (
     <fieldset>
       <legend>Link + Tooltip</legend>
       <EXPERIMENTAL_AvatarStack overlap={20} aria-label='contributors'>
-        <Tooltip content='Ola Nordmann'>
+        <Tooltip content='Ola Katt'>
           <Avatar aria-label='' asChild>
             <a href='#'>
               <img src='/img/component-docs/cats/cat1.webp' alt='' />
             </a>
           </Avatar>
         </Tooltip>
-        <Tooltip content='Kari Nordmann'>
+        <Tooltip content='Kari Katt'>
           <Avatar aria-label='' asChild>
             <a href='#'>
               <img src='/img/component-docs/cats/cat6.webp' alt='' />
             </a>
           </Avatar>
         </Tooltip>
-        <Tooltip content='Person 2'>
+        <Tooltip content='Katt 2'>
           <Avatar aria-label='' asChild>
             <a href='#'>
               <img src='/img/component-docs/cats/cat1.webp' alt='' />
             </a>
           </Avatar>
         </Tooltip>
-        <Tooltip content='Person 3'>
+        <Tooltip content='Børge Katt'>
           <Avatar aria-label='' asChild>
-            <a href='#'>BR</a>
+            <a href='#'>BK</a>
           </Avatar>
         </Tooltip>
       </EXPERIMENTAL_AvatarStack>
@@ -366,30 +304,30 @@ export const WithTooltipAndLink = () => (
         expandable='fixed'
         aria-label='contributors'
       >
-        <Tooltip content='Ola Nordmann'>
+        <Tooltip content='Ola Katt'>
           <Avatar aria-label='' asChild>
             <a href='#'>
               <img src='/img/component-docs/cats/cat6.webp' alt='' />
             </a>
           </Avatar>
         </Tooltip>
-        <Tooltip content='Kari Nordmann'>
+        <Tooltip content='Kari Katt'>
           <Avatar aria-label='' asChild>
             <a href='#'>
               <img src='/img/component-docs/cats/cat1.webp' alt='' />
             </a>
           </Avatar>
         </Tooltip>
-        <Tooltip content='Person 2'>
+        <Tooltip content='Katt 2'>
           <Avatar aria-label='' asChild>
             <a href='#'>
               <img src='/img/component-docs/cats/cat6.webp' alt='' />
             </a>
           </Avatar>
         </Tooltip>
-        <Tooltip content='Person 3'>
+        <Tooltip content='Børge Katt'>
           <Avatar aria-label='' asChild>
-            <a href='#'>BR</a>
+            <a href='#'>BK</a>
           </Avatar>
         </Tooltip>
       </EXPERIMENTAL_AvatarStack>
