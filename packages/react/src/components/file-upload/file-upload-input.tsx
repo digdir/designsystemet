@@ -11,6 +11,7 @@ export const FileUploadInput = forwardRef<
       title='' // Hide native "No file choosen" tooltip on Mac
       type='file'
       ref={ref}
+      suppressHydrationWarning // Since <ds-field> adds attributes
       {...rest}
     />
   );
