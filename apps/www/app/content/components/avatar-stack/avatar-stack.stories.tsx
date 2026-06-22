@@ -16,7 +16,7 @@ export const Preview = () => (
     <Avatar aria-label='briefcase'>
       <BriefcaseIcon />
     </Avatar>
-    <Avatar aria-label='Søren Magnussen' >sm</Avatar>
+    <Avatar aria-label='Søren Magnussen'>sm</Avatar>
     <Avatar aria-label='Mark Downright'>md</Avatar>
     <Avatar aria-label='Ola Nordman'>on</Avatar>
   </EXPERIMENTAL_AvatarStack>
@@ -208,29 +208,29 @@ export const ShapeVariants = () => (
 );
 
 export const DataSize = () => (
-        <EXPERIMENTAL_AvatarStack avatarSize='clamp(5rem, 1.5rem + 2vw, 10rem)'>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-      </EXPERIMENTAL_AvatarStack>
+  <EXPERIMENTAL_AvatarStack avatarSize='clamp(5rem, 1.5rem + 2vw, 10rem)'>
+    <Avatar aria-label=''>
+      <img src='/img/component-docs/cats/cat6.webp' alt='' />
+    </Avatar>
+    <Avatar aria-label=''>
+      <img src='/img/component-docs/cats/cat1.webp' alt='' />
+    </Avatar>
+    <Avatar aria-label=''>
+      <img src='/img/component-docs/cats/cat6.webp' alt='' />
+    </Avatar>
+    <Avatar aria-label=''>
+      <img src='/img/component-docs/cats/cat1.webp' alt='' />
+    </Avatar>
+  </EXPERIMENTAL_AvatarStack>
 );
 
 export const Gap = () => (
-      <EXPERIMENTAL_AvatarStack avatarSize='3rem' gap='6px'>
-        <Avatar aria-label='' initials='AA' />
-        <Avatar aria-label='' initials='BB' />
-        <Avatar aria-label='' initials='CC' />
-        <Avatar aria-label='' initials='DD' />
-      </EXPERIMENTAL_AvatarStack>
+  <EXPERIMENTAL_AvatarStack avatarSize='3rem' gap='6px'>
+    <Avatar aria-label='' initials='AA' />
+    <Avatar aria-label='' initials='BB' />
+    <Avatar aria-label='' initials='CC' />
+    <Avatar aria-label='' initials='DD' />
+  </EXPERIMENTAL_AvatarStack>
 );
 
 export const AdditionalAvatars = () => (
