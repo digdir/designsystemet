@@ -5,7 +5,12 @@ import { defineProject } from 'vitest/config';
 
 export default defineProject({
   esbuild: {
-    tsconfigRaw: resolve(import.meta.dirname, 'tsconfig.tests.json'),
+    tsconfigRaw: {
+      compilerOptions: {
+        jsx: 'react-jsx',
+        target: 'es2022',
+      },
+    },
   },
   test: {
     env: {
