@@ -41,7 +41,7 @@ export type BadgeProps = MergeRight<
  * </Badge>
  */
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
-  { className, count, maxCount, variant = 'base', ...rest },
+  { className, count, maxCount, variant, ...rest },
   ref,
 ) {
   return (

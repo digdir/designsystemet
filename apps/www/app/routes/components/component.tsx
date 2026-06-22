@@ -91,6 +91,28 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
+  const jsonMetadata: {
+    [lang: string]: {
+      title: string;
+      subtitle: string;
+    };
+  } & {
+    image: string;
+    cssFile: string;
+    tabs?: boolean;
+  } = JSON.parse(
+    getFileFromContentDir(join('components', component, 'metadata.json')),
+  );
+
+  /* When tabs are disabled, only the overview page exists */
+  if (
+    jsonMetadata.tabs === false &&
+    !request.url.includes('overview') &&
+    (request.url.includes('code') || request.url.includes('accessibility'))
+  ) {
+    return redirect(`/${lang}/components/docs/${component}/overview`);
+  }
+
   if (
     !request.url.includes('code') &&
     !request.url.includes('overview') &&
@@ -117,19 +139,6 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const storyEntries = extractStories(componentDir);
   // Extract exported dodont functions from *.dodont.tsx
   const doDontEntries = extractStories(componentDir, true);
-
-  const jsonMetadata: {
-    [lang: string]: {
-      title: string;
-      subtitle: string;
-    };
-  } & {
-    image: string;
-    cssFile: string;
-    tabs?: boolean;
-  } = JSON.parse(
-    getFileFromContentDir(join('components', component, 'metadata.json')),
-  );
 
   const mdxSource = getFileFromContentDir(
     join('components', component, lang, `${compPage}.mdx`),
