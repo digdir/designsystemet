@@ -27,8 +27,9 @@
 }
 
 .search {
-  margin-bottom: var(--ds-size-5);
-  padding: 0 var(--ds-size-4);
+  margin-bottom: var(--ds-size-7);
+  padding-inline-start: var(--ds-size-4);
+  padding-inline-end: var(--ds-size-5);
 }
 
 .noResults {
