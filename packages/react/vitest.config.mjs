@@ -5,6 +5,8 @@ import { defineProject } from 'vitest/config';
 
 export default defineProject({
   esbuild: {
+    // esbuild does not follow `extends`, so we need to specify the jsx and target options here as well
+    // https://esbuild.github.io/api/#tsconfig
     tsconfigRaw: {
       compilerOptions: {
         jsx: 'react-jsx',
