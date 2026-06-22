@@ -69,16 +69,26 @@ const handleAriaAttributes = () => {
   }
 };
 
-const handleInterest = ({ type, target }: Event) => {
+const handleInterest = (event: Event) => {
+  const { type, target } = event;
   clearTimeout(HOVER_TIMER);
 
   if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
+
+  const source = (target as Element)?.closest?.(SELECTOR_TOOLTIP);
+
+  // This prevents the tooltip from reappearing on mousedown/click
+  if (type === 'blur') {
+    const next = (event as FocusEvent).relatedTarget as Element | null;
+    if (source === SOURCE && !next?.closest?.(SELECTOR_TOOLTIP)) hideTooltip();
+    return;
+  }
+
   if (type === 'mouseover' && !IS_HOVERING && !IS_IOS) {
     HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
     return;
   }
 
-  const source = (target as Element)?.closest?.(`[${ATTR_TOOLTIP}]`);
   if (source === SOURCE) return; // No need to update
   if (!source) return hideTooltip(); // If no new anchor, cleanup previous autoUpdate
   if (!TIP) TIP = tag('div', { class: 'ds-tooltip' });
