@@ -107,6 +107,10 @@ export default {
     show: 'Show',
     hide: 'Hide',
     sidebar: 'sidebar',
+    search: {
+      label: 'Search',
+      noResults: 'No results',
+    },
   },
   navigation: {
     intro: 'Intro',
