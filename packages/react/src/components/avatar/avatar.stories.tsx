@@ -128,18 +128,22 @@ InDropdown.parameters = {
 };
 
 export const AsLink: Story = () => (
-  <a href='#'>
-    <Avatar aria-label='Ola Nordmann' />
-  </a>
+  <Avatar aria-label='Ola Nordmann' asChild>
+    <a href='#none'></a>
+  </Avatar>
 );
 
 export const AsButton: Story = () => (
   <>
-  <Avatar aria-label='Ola Nordmann' asChild>
-    <span><HeartIcon aria-hidden /></span>
-  </Avatar>
-  <Avatar aria-label='Ola Nordmann' asChild>
-    <button type='button'><HeartIcon aria-hidden /></button>
-  </Avatar>
+    <Avatar aria-label='Ola Nordmann' asChild>
+      <span>
+        <HeartIcon aria-hidden />
+      </span>
+    </Avatar>
+    <Avatar aria-label='Ola Nordmann' asChild>
+      <button type='button'>
+        <HeartIcon aria-hidden />
+      </button>
+    </Avatar>
   </>
 );
