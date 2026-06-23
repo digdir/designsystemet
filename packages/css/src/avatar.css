@@ -22,8 +22,10 @@
   font: inherit;
   height: var(--dsc-avatar-size);
   justify-content: center;
+  line-height: inherit;
   overflow: hidden;
   padding: 0;
+  text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   user-select: none;
