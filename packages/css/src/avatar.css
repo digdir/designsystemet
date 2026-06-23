@@ -19,6 +19,7 @@
   color: var(--dsc-avatar-color);
   flex-shrink: 0;
   font-weight: var(--ds-font-weight-medium);
+  font: inherit;
   height: var(--dsc-avatar-size);
   justify-content: center;
   overflow: hidden;
