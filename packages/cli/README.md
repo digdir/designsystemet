@@ -14,7 +14,7 @@ Read the Designsystemet [README](https://github.com/digdir/designsystemet) to ge
 Use `npx @digdir/designsystemet tokens create <options>` to create design tokens for use with Designsystemet.
 
 This allows you to define themes including custom colors, font-family, and border-radius.
-We recommend using the [Designsystemet theme builder](https://theme.designsystemet.no/) for generating a valid command with correct options.
+We recommend using the [Designsystemet theme builder](https://theme.designsystemet.no/) for generating a valid config.
 
 #### Update tokens
 
@@ -67,18 +67,6 @@ To get started, use this template for a `designsystemet.config.json` file:
 In editors which support JSON Schema, the `$schema` will then  give you editor hints for the structure of the file.
 
 #### Minimal config example
-As a minimal example, the following CLI snippet from the theme builder
-
-```
-npx @digdir/designsystemet tokens create \
---main-colors "primary:#0062BA" "accent:#1E98F5" \
---neutral-color "#1E2B3C" \
---support-colors "extra1:#F45F63" "extra2:#E5AA20" \
---border-radius 4 \
---theme "theme"
-```
-
-...is equivalent to this `designsystemet.config.json` file
 ```jsonc
 {
   "$schema": "./node_modules/@digdir/designsystemet/dist/config.schema.json",
@@ -86,11 +74,8 @@ npx @digdir/designsystemet tokens create \
   "themes": {
     "theme": {
       "colors": {
-        "primary": "#0062BA",
         "accent": "#1E98F5",
         "neutral": "#1E2B3C",
-        "extra1": "#F45F63",
-        "extra2": "#E5AA20"
       },
       "borderRadius": 4
     }
