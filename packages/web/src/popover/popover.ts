@@ -21,7 +21,7 @@ import {
   QUICK_EVENT,
 } from '../utils/utils';
 
-if (isBrowser() && !isSupported()) polyfillPopover(); // Ensure popover polyfill is loaded in browser environment only
+if (isBrowser() && !isSupported()) on(window, 'load', polyfillPopover); // Ensure popover polyfill is loaded in browser environment after CSS is loaded to ensure correct order of CSS layers.
 
 declare global {
   interface GlobalEventHandlersEventMap {
