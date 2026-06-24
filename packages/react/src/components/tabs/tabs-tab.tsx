@@ -1,7 +1,7 @@
 import type { DSTabElement } from '@digdir/designsystemet-web';
 import type { HTMLAttributes, MouseEvent } from 'react';
 import '@digdir/designsystemet-web'; // Import ds-tab custom element
-import { forwardRef, useContext, useRef, useState } from 'react';
+import { forwardRef, useContext } from 'react';
 import { Context } from './tabs';
 
 export type TabsTabProps = {
