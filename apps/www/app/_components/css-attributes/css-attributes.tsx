@@ -13,6 +13,15 @@ type CssAttributesProps = {
   };
 } & TableProps;
 
+const EXCLUDED_ATTRIBUTES = new Set([
+  'color',
+  'size',
+  'color-scheme',
+  // Floating UI positioning hooks are internal and not authored by consumers.
+  'floating',
+  'floating-ui-portal',
+]);
+
 export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
   function CssAttributes({ vars, className, ...rest }, ref) {
     const { t } = useTranslation();
@@ -62,8 +71,6 @@ export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
 /* returns data-attributes and their possible values as key value pairs*/
 export function getAttributes(css: string) {
   const res: { [key: string]: Set<unknown> | string } = {};
-  //filter out global attributes referenced locally
-  const globals = ['color', 'size', 'color-scheme'];
 
   const allAttrs = Array.from(
     css.matchAll(/\[data-([^=\]|$~*^]+)(?:([|$~*^]?=)([^\]]+))?\]/g),
@@ -71,7 +78,7 @@ export function getAttributes(css: string) {
 
   for (const attr of allAttrs) {
     for (const [key, value] of Object.entries(attr)) {
-      if (globals.includes(key)) continue;
+      if (EXCLUDED_ATTRIBUTES.has(key)) continue;
       if (!res[key]) {
         res[key] = new Set();
       }

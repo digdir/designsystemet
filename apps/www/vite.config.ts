@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { reactRouter } from '@react-router/dev/vite';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import { envOnlyMacros } from 'vite-env-only';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
@@ -50,5 +50,9 @@ export default defineConfig(({ isSsrBuild, command }) => ({
     warmup: {
       clientFiles: ['./app/root.tsx', './app/entry.client.tsx'],
     },
+  },
+  test: {
+    environment: 'node',
+    globals: true,
   },
 }));
