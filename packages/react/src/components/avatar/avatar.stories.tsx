@@ -128,17 +128,48 @@ InDropdown.parameters = {
 };
 
 export const AsLink: Story = () => (
-  <Avatar aria-label='Ola Nordmann' asChild>
-    <a href='#none'></a>
-  </Avatar>
+  <>
+    <Avatar aria-label='xs' data-size='xs' asChild>
+      <a href='#none'>
+        <HeartIcon aria-hidden />
+      </a>
+    </Avatar>
+    <Avatar aria-label='sm' data-size='sm' asChild>
+      <a href='#none'>
+        <HeartIcon aria-hidden />
+      </a>
+    </Avatar>
+    <Avatar aria-label='md' data-size='md' asChild>
+      <a href='#none'>
+        <HeartIcon aria-hidden />
+      </a>
+    </Avatar>
+    <Avatar aria-label='lg' data-size='lg' asChild>
+      <a href='#none'>
+        <HeartIcon aria-hidden />
+      </a>
+    </Avatar>
+  </>
 );
 
 export const AsButton: Story = () => (
   <>
-    <Avatar aria-label='Ola Nordmann'>
-      <HeartIcon aria-hidden />
+    <Avatar aria-label='xs' data-size='xs' asChild>
+      <button type='button'>
+        <HeartIcon aria-hidden />
+      </button>
     </Avatar>
-    <Avatar aria-label='Ola Nordmann' asChild>
+    <Avatar aria-label='sm' data-size='sm' asChild>
+      <button type='button'>
+        <HeartIcon aria-hidden />
+      </button>
+    </Avatar>
+    <Avatar aria-label='md' data-size='md' asChild>
+      <button type='button'>
+        <HeartIcon aria-hidden />
+      </button>
+    </Avatar>
+    <Avatar aria-label='lg' data-size='lg' asChild>
       <button type='button'>
         <HeartIcon aria-hidden />
       </button>
