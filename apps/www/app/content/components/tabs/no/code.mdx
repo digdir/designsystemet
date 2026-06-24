@@ -34,4 +34,10 @@ import { Tabs } from '@digdir/designsystemet-react';
 
 <Story story="Controlled" language="react" />
 
+### Eksempel server side rendering
+
+React `<Tabs>` er avhengig av JavaScript for å sette riktig fane som aktiv. For å unngå at innholdet «hopper» når JavaScript er lastet, kan du sette `aria-selected="true"` på det `<TabsTab>`-elementet som skal være aktivt ved første visning, og `hidden` på de `<TabsPanel>`-elementene som ikke skal vises.
+
+<Story story="SSR" language="react" />
+
 <ReactComponentDocs />
