@@ -106,6 +106,10 @@ export default {
     show: 'Vis',
     hide: 'Skjul',
     sidebar: 'sidemeny',
+    search: {
+      label: 'Søk',
+      noResults: 'Ingen treff',
+    },
   },
   navigation: {
     intro: 'Intro',

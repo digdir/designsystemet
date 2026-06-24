@@ -49,6 +49,7 @@
       "preset": "recommended",
       "a11y": {
         "noNoninteractiveElementToInteractiveRole": "off",
+        "useAnchorContent": "off",
         "useValidAnchor": "off",
         "useButtonType": "off",
         "useValidAriaRole": "off",

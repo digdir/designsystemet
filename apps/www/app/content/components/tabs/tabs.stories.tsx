@@ -164,3 +164,32 @@ export const Controlled = () => {
     </Tabs>
   );
 };
+
+export const SSR = () => {
+  const [value, setValue] = useState('value2');
+
+  return (
+    <Tabs value={value} onChange={(newValue) => setValue(newValue)}>
+      <Tabs.List>
+        <Tabs.Tab value='value1' aria-selected={`${value === 'value1'}`}>
+          Tab 1
+        </Tabs.Tab>
+        <Tabs.Tab value='value2' aria-selected={`${value === 'value2'}`}>
+          Tab 2
+        </Tabs.Tab>
+        <Tabs.Tab value='value3' aria-selected={`${value === 'value3'}`}>
+          Tab 3
+        </Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value='value1' hidden={value !== 'value1'}>
+        content 1
+      </Tabs.Panel>
+      <Tabs.Panel value='value2' hidden={value !== 'value2'}>
+        content 2
+      </Tabs.Panel>
+      <Tabs.Panel value='value3' hidden={value !== 'value3'}>
+        content 3
+      </Tabs.Panel>
+    </Tabs>
+  );
+};

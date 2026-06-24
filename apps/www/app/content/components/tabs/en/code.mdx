@@ -32,4 +32,10 @@ import { Tabs } from '@digdir/designsystemet-react';
 ### Example of controlled
 <Story story="Controlled" />
 
+### Eksempel server side rendering
+
+React `<Tabs>` relies on JavaScript to set the correct tab as active. To avoid content jumping when JavaScript is loaded, you can set `aria-selected="true"` on the `<TabsTab>` element that should be active on first view, and `hidden` on the `<TabsPanel>` elements that should not be displayed.
+
+<Story story="SSR" language="react" />
+
 <ReactComponentDocs />

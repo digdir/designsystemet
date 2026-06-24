@@ -54,14 +54,7 @@ export type DetailsProps = MergeRight<
  */
 export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
   function Details(
-    {
-      className,
-      open,
-      defaultOpen = false,
-      variant = 'default',
-      onToggle,
-      ...rest
-    },
+    { className, open, defaultOpen = false, variant, onToggle, ...rest },
     ref,
   ) {
     const detailsRef = useRef<HTMLDetailsElement>(null);
