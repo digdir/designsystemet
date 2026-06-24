@@ -1,6 +1,6 @@
 ---
-title: "Figma-guide: Migrer til ny fargestruktur"
-description: Få hjelp til å migrere Figma-filen din til den nye fargestrukturen
+title: "Migrering til forenklet fargestruktur"
+description: Få hjelp til å migrere Designsystemet til den nye fargestrukturen
 date: 2026-06-09
 author: Designsystemet
 imageSrc: /img/blog/migrate-figma-color.png
@@ -8,7 +8,18 @@ imageAlt: Illustrasjonsbilde som viser main, support og neutral til venstre, og 
 imageCaption: Med den nye fargestrukturen samles fargene i én Color-collection i Figma, slik at de fungerer likt som i kode.
 ---
 ## Introduksjon
-I dag er fargene delt inn i to separate collections – `Main color` og `Support color` – og komponentene finnes i variantene`main`, `support` og `neutral`. Denne inndelingen skaper unødvendige begrensninger og resulterer i mange varianter som er vanskelige å vedlikeholde. Med den nye strukturen samles alle farger i én `Color`-collection, og du styrer fargebruk gjennom `color mode` – akkurat slik det allerede fungerer i kode.
+I dag er fargene i Figma delt inn i to separate collections – `Main color` og `Support color` – og komponentene finnes i variantene`main`, `support` og `neutral`. Dette var gjort fordi Figma tidligere har vært begrenset til 4 farger per collection som var litt begrensende. Figma har siden økt begrensningen til flere farger per collection. I kode har vi allerede en struktur som samler alle farger, og styrer fargebruk gjennom `color` attributtet.
+
+Denne inndelingen har skapt unødvendige begrensninger i Figma og resulterer i mange varianter som er vanskelige å vedlikeholde. Med den nye strukturen samles alle farger i én `Color`-collection, og du styrer fargebruk gjennom `color mode` – akkurat slik det allerede fungerer i kode.
+
+
+## Migrering av kodebasen
+Config filen `designsystem.config.json` og `design-tokens` må oppdateres for å bruke den nye fargestrukturen. 
+
+Kjører du cliet med `designsystemet tokens create` vil den automatisk migrere fargene og configen til den nye strukturen. Du kan også gjøre dette manuelt ved å flytte fargene fra `main` og `support` til `color` i config filen.
+
+## Migrering av Figma-biblioteket
+Før du migrerer Figma-biblioteket, må config filen `designsystem.config.json` og `design-tokens` være migrert til den nye fargetstrukturen.
 
 Denne guiden hjelper deg som vedlikeholder en Figmafil basert på Designsystemet med å migrere Figma-biblioteket ditt til den nye fargestrukturen.
 
