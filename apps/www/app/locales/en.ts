@@ -21,13 +21,13 @@ export default {
     toolbox: {
       title: 'A common design system',
       description:
-        'Designsystemet is a shared toolkit of UI components and guidelines for developing digital services. It is free to use, designed to be used with an organisation’s own visual identity, and supports efficient product development and coherent user experiences.',
+        'Designsystemet is a shared toolkit of framework-independent UI components and guidelines for developing digital services. You can use the full toolkit, or pick the parts that add value in your solution. It is free to use, designed to work with an organisation’s own visual identity, and supports efficient product development and coherent user experiences.',
       link: 'Read more about Designsystemet',
     },
     'components-section': {
       title: 'Accessible and flexible components',
       description:
-        'By creating the most basic components once in a common design system, we ensure high quality. Each component is thoroughly tested and meets accessibility requirements. Components are available for Figma, CSS, a framework-independent web package and React, and can be combined in various ways to support different patterns.',
+        'By creating the most basic components once in a common design system, we ensure high quality. Each component is thoroughly tested and meets accessibility requirements. Components are available for Figma, CSS, a framework-independent web package and React. Use the components that add value in your solution, and build on top of them when you need to.',
       link: 'Read more about accessibility',
       fallbackImgAlt:
         'Design sketch of a mobile phone containing components from Designsystemet.',
@@ -35,7 +35,7 @@ export default {
     'theme-section': {
       title: 'Use your own themes',
       description:
-        'With theming, Designsystemet makes it possible to support different visual identities. This means everyone can build on the same foundation while tailoring the design to their own brand.',
+        'With theming, Designsystemet makes it possible to support different visual identities. You can use the Theme Builder to get started, and build on the theme so it fits your own profile and solution. This means everyone can build on the same design system foundation, while adapting it to different sender identities.',
       link: 'Build your theme',
       fallbackImgAlt:
         'Design sketch of a website showing how Designsystemet can be adapted to different identities.',
@@ -107,6 +107,10 @@ export default {
     show: 'Show',
     hide: 'Hide',
     sidebar: 'sidebar',
+    search: {
+      label: 'Search',
+      noResults: 'No results',
+    },
   },
   navigation: {
     intro: 'Intro',
