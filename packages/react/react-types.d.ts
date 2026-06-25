@@ -15,7 +15,6 @@ declare global {
        *
        * These are augmented based on your theme configuration.
        *
-       * Consist of both main and support colors
        * @link https://theme.designsystemet.no
        */
       'data-color'?: Color | (string & {});

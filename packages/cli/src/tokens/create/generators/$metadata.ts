@@ -1,4 +1,4 @@
-import type { ColorNamesByCategory, TokenSetDimensions } from '../../types.js';
+import type { TokenSetDimensions } from '../../types.js';
 
 type Metadata = {
   tokenSetOrder: string[];
@@ -12,7 +12,7 @@ type Metadata = {
 export function generate$Metadata(
   tokenSetDimensions: TokenSetDimensions,
   themeNames: string[],
-  colors: ColorNamesByCategory,
+  colorNames: string[],
 ): Metadata {
   const { colorSchemes, sizeModes } = tokenSetDimensions;
   return {
@@ -27,9 +27,7 @@ export function generate$Metadata(
         ...themeNames.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`),
       ]),
       ...themeNames.map((theme) => `themes/${theme}`),
-      'semantic/color',
-      ...colors.main.map((color) => `semantic/modes/main-color/${color}`),
-      ...colors.support.map((color) => `semantic/modes/support-color/${color}`),
+      ...colorNames.map((color) => `semantic/color/${color}`),
       'semantic/style',
     ],
   };

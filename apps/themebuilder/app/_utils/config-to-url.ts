@@ -11,25 +11,12 @@ export function configThemeToUrl(
 ): string {
   const params = new URLSearchParams();
 
-  // Convert main colors
-  if (theme.colors.main) {
-    const mainColors = Object.entries(theme.colors.main)
+  // Convert colors (a flat record of name -> hex, including the reserved `neutral`)
+  if (theme.colors && Object.keys(theme.colors).length > 0) {
+    const colors = Object.entries(theme.colors)
       .map(([name, hex]) => `${name}:${hex}`)
       .join(QUERY_SEPARATOR);
-    params.set('main', mainColors);
-  }
-
-  // Convert neutral color
-  if (theme.colors.neutral) {
-    params.set('neutral', theme.colors.neutral);
-  }
-
-  // Convert support colors
-  if (theme.colors.support && Object.keys(theme.colors.support).length > 0) {
-    const supportColors = Object.entries(theme.colors.support)
-      .map(([name, hex]) => `${name}:${hex}`)
-      .join(QUERY_SEPARATOR);
-    params.set('support', supportColors);
+    params.set('colors', colors);
   }
 
   // Convert severity colors if overridden

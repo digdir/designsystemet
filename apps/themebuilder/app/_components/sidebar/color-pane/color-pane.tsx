@@ -22,7 +22,7 @@ type ColorPaneProps = {
   setName: (name: string) => void;
   onCancel: () => void;
   onRemove: () => void;
-  colorType: 'main' | 'neutral' | 'support' | 'severity';
+  colorType: 'color' | 'neutral' | 'severity';
 };
 
 export const ColorPane = ({
@@ -39,17 +39,12 @@ export const ColorPane = ({
   const { t } = useTranslation();
   const [localColor, setLocalColor] = useColor(color.hex);
 
-  const {
-    colors: { main: mainColors },
-  } = useThemebuilder();
+  const { colors } = useThemebuilder();
+  const themeColorCount = colors.filter((c) => c.name !== 'neutral').length;
   const [colorError, setColorError] = useState('');
   const headingText = (() => {
-    const colorTypeText =
-      colorType === 'main'
-        ? t('colorPane.main-color')
-        : t('colorPane.support-color');
     return type === 'add-color'
-      ? `${t('colorPane.add')} ${colorTypeText}`
+      ? `${t('colorPane.add')} ${t('themeModal.color')}`
       : t('colorPane.edit-color');
   })();
 
@@ -116,7 +111,7 @@ export const ColorPane = ({
           hidden={
             colorType === 'neutral' ||
             colorType === 'severity' ||
-            (colorType === 'main' && mainColors.length <= 1)
+            (colorType === 'color' && themeColorCount <= 1)
           }
         >
           {t('colorPane.remove-color')}

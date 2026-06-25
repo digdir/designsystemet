@@ -4,7 +4,7 @@
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=20.20.2"
+    "node": ">=24.16.0"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,9 @@
     },
     "./types": {
       "import": "./dist/src/types.js"
+    },
+    "./schemas/*": {
+      "import": "./dist/src/schemas/*"
     }
   },
   "publishConfig": {
@@ -57,6 +60,7 @@
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",
     "@digdir/designsystemet-types": "workspace:",
+    "@inquirer/confirm": "^6.1.0",
     "@tokens-studio/sd-transforms": "2.0.3",
     "chroma-js": "^3.2.0",
     "colorjs.io": "^0.6.1",

@@ -54,18 +54,18 @@ To set up your own color variables, see the guide "[Design System with Custom Th
 />
 
 
-### What is main and support?
-Main and Support are separate modes in Figma that simulate the functionality of data-color from code. They only exist in Figma and allow you to control which colors components should use, based on context.
+### What is the Color mode?
+The *Color* mode in Figma simulates the functionality of data-color from code. It only exists in Figma and allows you to control which color a component should use, based on context.
 
-Read more about how these are used in [modes in Figma](/en/fundamentals/figma/modes-in-figma)
+Read more about how it is used in [modes in Figma](/en/fundamentals/figma/modes-in-figma)
 
 This gives you two important advantages:
 1. You can use custom names for the colors \
-If you had used the color variables directly in the components, it would have caused errors every time someone imported or replaced colors. By using main/support, the components refer to an abstract color, and you can change the content without affecting the structure.
+If you had used the color variables directly in the components, it would have caused errors every time someone imported or replaced colors. By using the Color mode, the components refer to an abstract color, and you can change the content without affecting the structure.
 2. You don't have to create one variant per color \
-Instead of creating separate components for blue, red, green, etc., the same component can change color based on which mode (main or support) is set. This provides less maintenance and makes it easier to keep the file organized.
+Instead of creating separate components for blue, red, green, etc., the same component can change color based on which color mode is set. This provides less maintenance and makes it easier to keep the file organized.
 
 ### Colors in Figma Dev Mode
 In Figma Dev Mode, colors are displayed in two ways:
-- Main / Support: Used for flexible colors, equivalent to [data-color in code](/en/fundamentals/code/colors). You set a mode like main/border-default, and the component inherits the correct color. This makes it easier to reuse components without creating new variants. The modes are cascading - you can set them on page, frame or element.
+- Color: Used for flexible colors, equivalent to [data-color in code](/en/fundamentals/code/colors). You set a color mode (for example `accent`), and the component inherits the correct color. This makes it easier to reuse components without creating new variants. The modes are cascading - you can set them on page, frame or element.
 - Explicit color: Used when a color should always be the same, regardless of mode. The display in Dev Mode will then show a specific variable, just as in code.
