@@ -67,7 +67,7 @@ const yes = (config: string): string => {
 const migration: Automigrate = {
   name: 'Flatten color categories',
   check: isConfigWithOldColorSchema,
-  message: `Config file is using the old color schema with ${pc.yellow('main')} and ${pc.yellow('support')} categories.\nThis required migration will flatten all colors under ${pc.yellow('colors')} per theme.\n`,
+  message: `Your config file uses the old color schema with ${pc.yellow('main')} and ${pc.yellow('support')} categories.\nThis required migration will move all colors under a single ${pc.yellow('colors')} per theme.\n`,
   yes: (config: string): string => {
     const migratedConfig = yes(config);
     console.log(pc.green(`\nConfig file successfully migrated.`));
