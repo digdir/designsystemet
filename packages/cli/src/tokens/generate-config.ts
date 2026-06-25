@@ -157,7 +157,7 @@ function extractFontFamilyFromPrimitives(typographyConfig: TokenObject | null, t
 }
 
 /**
- * Categorizes colors into main, support, and neutral based on color names
+ * Extracts colors from the theme tokens, excluding reserved colors and extracting base colors from color scales.
  */
 function extractColors(themeTokens: TokenObject, themeName: string): Record<string, CssColor> {
   const colors: Record<string, CssColor> = {};
