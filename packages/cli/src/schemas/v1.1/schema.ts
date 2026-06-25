@@ -76,7 +76,12 @@ const overridesSchema = z
 
 const themeSchema = z
   .object({
-    colors: z.record(z.string(), colorSchema).meta({ description: 'Defines the colors for this theme' }),
+    colors: z
+      .record(z.string(), colorSchema)
+      .refine((c) => typeof (c as Record<string, unknown>).neutral === 'string', {
+        message: 'Theme colors must include a "neutral" color.',
+      })
+      .meta({ description: 'Defines the colors for this theme' }),
     typography: z
       .object({
         fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }),
