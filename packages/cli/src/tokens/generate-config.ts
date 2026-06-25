@@ -3,6 +3,7 @@ import pc from 'picocolors';
 import type { CssColor } from '../colors/types.js';
 import type { CreateConfigSchema } from '../schemas/v1.1/schema.js';
 import { dsfs } from '../utils/filesystem.js';
+import type { Theme } from './types.js';
 
 type TokenValue = {
   $type: string;
@@ -159,8 +160,8 @@ function extractFontFamilyFromPrimitives(typographyConfig: TokenObject | null, t
 /**
  * Extracts colors from the theme tokens, excluding reserved colors and extracting base colors from color scales.
  */
-function extractColors(themeTokens: TokenObject, themeName: string): Record<string, CssColor> {
-  const colors: Record<string, CssColor> = {};
+function extractColors(themeTokens: TokenObject, themeName: string): Theme['colors'] {
+  const colors: Theme['colors'] = { neutral: '#24272B' }; // Default neutral color if not found
 
   // Reserved colors
   const specialKeys = ['link'];

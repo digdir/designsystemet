@@ -100,6 +100,14 @@
     "group": "Semantic"
   },
   {
+    "id": "e7fb41a6a0544d8a8aa178232034311f9d725555",
+    "name": "neutral",
+    "selectedTokenSets": {
+      "semantic/color/neutral": "enabled"
+    },
+    "group": "Color"
+  },
+  {
     "id": "50f8438e2eea35c78499ec80a31e3dc3ee65a3ea",
     "name": "accent",
     "selectedTokenSets": {
@@ -120,14 +128,6 @@
     "name": "brand2",
     "selectedTokenSets": {
       "semantic/color/brand2": "enabled"
-    },
-    "group": "Color"
-  },
-  {
-    "id": "e7fb41a6a0544d8a8aa178232034311f9d725555",
-    "name": "neutral",
-    "selectedTokenSets": {
-      "semantic/color/neutral": "enabled"
     },
     "group": "Color"
   },
