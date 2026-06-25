@@ -1,7 +1,7 @@
 import confirm from '@inquirer/confirm';
 import pc from 'picocolors';
-import { dsfs } from '../src/utils/filesystem.js';
 import { automigrations } from './migrations/index.js';
+import { dsfs } from './utils/filesystem.js';
 
 export const checkAutomigrate = async (configFile: string, configFilePath: string, yes: boolean) => {
   if (!configFile) {
