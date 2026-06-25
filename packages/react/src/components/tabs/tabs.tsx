@@ -2,14 +2,7 @@ import type { DSTabElement } from '@digdir/designsystemet-web';
 import '@digdir/designsystemet-web'; // Import ds-tabs custom element
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import {
-  createContext,
-  forwardRef,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from 'react';
+import { createContext, forwardRef, useId, useRef, useState } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
@@ -79,23 +72,6 @@ export const Tabs = forwardRef<DSTabElement, TabsProps>(function Tabs(
     };
     value = uncontrolledValue;
   }
-
-  useEffect(() => {
-    if (!isControlled || !tabsRef.current || value === undefined) return;
-    tabsRef.current?.tabList?.tabs?.forEach((tab) => {
-      if (tab.getAttribute('data-value') === value)
-        tab.setAttribute('aria-selected', 'true');
-    });
-  }, [value, isControlled]);
-
-  useEffect(() => {
-    if (defaultValue && tabsRef.current) {
-      tabsRef.current?.tabList?.tabs?.forEach((tab) => {
-        if (tab.getAttribute('data-value') === defaultValue)
-          tab.setAttribute('aria-selected', 'true');
-      });
-    }
-  }, []);
 
   return (
     <Context.Provider

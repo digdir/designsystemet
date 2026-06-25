@@ -91,6 +91,28 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
+  const jsonMetadata: {
+    [lang: string]: {
+      title: string;
+      subtitle: string;
+    };
+  } & {
+    image: string;
+    cssFile: string;
+    tabs?: boolean;
+  } = JSON.parse(
+    getFileFromContentDir(join('components', component, 'metadata.json')),
+  );
+
+  /* When tabs are disabled, only the overview page exists */
+  if (
+    jsonMetadata.tabs === false &&
+    !request.url.includes('overview') &&
+    (request.url.includes('code') || request.url.includes('accessibility'))
+  ) {
+    return redirect(`/${lang}/components/docs/${component}/overview`);
+  }
+
   if (
     !request.url.includes('code') &&
     !request.url.includes('overview') &&
@@ -118,18 +140,6 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   // Extract exported dodont functions from *.dodont.tsx
   const doDontEntries = extractStories(componentDir, true);
 
-  const jsonMetadata: {
-    [lang: string]: {
-      title: string;
-      subtitle: string;
-    };
-  } & {
-    image: string;
-    cssFile: string;
-  } = JSON.parse(
-    getFileFromContentDir(join('components', component, 'metadata.json')),
-  );
-
   const mdxSource = getFileFromContentDir(
     join('components', component, lang, `${compPage}.mdx`),
   );
@@ -152,6 +162,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       ...jsonMetadata[lang],
       image: jsonMetadata.image,
       subtitle: subtitleFromMetadata.code,
+      tabs: jsonMetadata.tabs !== false,
     },
     linkMetadata: generateMetadata({
       title: jsonMetadata[lang].title,
@@ -203,29 +214,33 @@ export default function Components({
             </Heading>
             <MDXComponents code={metadata.subtitle} />
           </div>
-          <IconFrame className={classes.iconFrame} data-color='brand3'>
-            <img
-              src={'/img/component-previews/' + metadata.image}
-              alt={metadata.title}
-              aria-hidden='true'
-            />
-          </IconFrame>
+          {metadata.image && (
+            <IconFrame className={classes.iconFrame} data-color='brand3'>
+              <img
+                src={'/img/component-previews/' + metadata.image}
+                alt={metadata.title}
+                aria-hidden='true'
+              />
+            </IconFrame>
+          )}
         </div>
-        <div className={classes.headerBottom}>
-          <Button asChild variant='tertiary'>
-            <NavLink to={navigation.overviewLink}>
-              {t('component.overview')}
-            </NavLink>
-          </Button>
-          <Button asChild variant='tertiary'>
-            <NavLink to={navigation.codeLink}>{t('component.code')}</NavLink>
-          </Button>
-          <Button asChild variant='tertiary'>
-            <NavLink to={navigation.accessibilityLink}>
-              {t('component.accessibility')}
-            </NavLink>
-          </Button>
-        </div>
+        {metadata.tabs && (
+          <div className={classes.headerBottom}>
+            <Button asChild variant='tertiary'>
+              <NavLink to={navigation.overviewLink}>
+                {t('component.overview')}
+              </NavLink>
+            </Button>
+            <Button asChild variant='tertiary'>
+              <NavLink to={navigation.codeLink}>{t('component.code')}</NavLink>
+            </Button>
+            <Button asChild variant='tertiary'>
+              <NavLink to={navigation.accessibilityLink}>
+                {t('component.accessibility')}
+              </NavLink>
+            </Button>
+          </div>
+        )}
       </div>
       <TableOfContents items={toc} level={3}>
         <div className={'toc-feedback'}>

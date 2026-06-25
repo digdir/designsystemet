@@ -1,13 +1,15 @@
 .preview {
-  --_br: var(--ds-border-radius-lg);
-  border-radius: var(--_br);
+  --_border-radius: var(--ds-border-radius-lg);
+
+  border-radius: var(--_border-radius);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   display: grid;
   grid-template-columns: auto auto 1fr auto;
+  margin-bottom: var(--ds-size-5);
 
   & .live-preview {
-    border-top-left-radius: var(--_br);
-    border-top-right-radius: var(--_br);
+    border-top-left-radius: var(--_border-radius);
+    border-top-right-radius: var(--_border-radius);
     background-color: var(--ds-color-neutral-background-tinted);
     grid-column: 1 / -1;
     padding: var(--ds-size-8);
@@ -42,7 +44,7 @@
     color: var(--ds-color-neutral-text-subtle);
     font-weight: var(--ds-font-weight-regular);
     border-radius: 0;
-    border-bottom-right-radius: var(--_br);
+    border-bottom-right-radius: var(--_border-radius);
     grid-column: 4 / 5;
     &[aria-expanded='true'] {
       > svg {
@@ -53,16 +55,18 @@
   & .themeToggle {
     font-size: var(--ds-font-size-3);
     border-radius: 0;
-    border-bottom-left-radius: var(--_br);
+    border-bottom-left-radius: var(--_border-radius);
   }
 }
 .editorOuterWrapper {
-  --_br: var(--ds-border-radius-lg);
-  border-radius: var(--_br);
+  --_border-radius: var(--ds-border-radius-lg);
+
+  border-radius: var(--_border-radius);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   background-color: var(--ds-color-neutral-background-tinted);
   display: grid;
   grid-template-columns: 1fr auto auto auto;
+  margin-top: 0;
 
   &[hidden] {
     display: none;
@@ -115,8 +119,8 @@
   font-family: monospace;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  border-bottom-right-radius: var(--_br);
-  border-bottom-left-radius: var(--_br);
+  border-bottom-right-radius: var(--_border-radius);
+  border-bottom-left-radius: var(--_border-radius);
   outline-offset: -1px;
   &:focus-within {
     outline: 2px solid var(--ds-color-neutral-border-default);
@@ -127,8 +131,8 @@
     font-size: min(0.8em, 14px);
     padding: var(--ds-size-5) !important;
     white-space: pre-wrap;
-    border-bottom-left-radius: var(--_br);
-    border-bottom-right-radius: var(--_br);
+    border-bottom-left-radius: var(--_border-radius);
+    border-bottom-right-radius: var(--_border-radius);
     &:global(.language-html) [class~='plain'] {
       color: var(--ds-color-neutral-text-default);
     }
@@ -154,12 +158,12 @@
   }
 }
 .copy {
-  border-top-right-radius: var(--_br);
+  border-top-right-radius: var(--_border-radius);
   padding-inline-end: var(--ds-size-4);
 }
 .language {
   margin: 0;
-  margin-left: var(--ds-size-4);
+  margin-left: var(--ds-size-2);
   align-self: center;
   @media screen and (max-width: 480px) {
     display: none;

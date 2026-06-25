@@ -1,4 +1,4 @@
-import { BriefcaseIcon } from '@navikt/aksel-icons';
+import { BriefcaseIcon, HeartIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { cat3Img, themeColors } from '../../../stories/constants';
 
@@ -37,12 +37,24 @@ export const Sizes: Story = () => (
   <>
     <Avatar data-size='xs' aria-label='extra small' initials='xs' />
     <Avatar data-size='xs' aria-label='extra small' />
+    <Avatar data-size='xs' aria-label='extra small'>
+      <HeartIcon aria-hidden />
+    </Avatar>
     <Avatar data-size='sm' aria-label='small' initials='sm' />
     <Avatar data-size='sm' aria-label='small' />
+    <Avatar data-size='sm' aria-label='small'>
+      <HeartIcon aria-hidden />
+    </Avatar>
     <Avatar data-size='md' aria-label='medium' initials='md' />
     <Avatar data-size='md' aria-label='medium' />
+    <Avatar data-size='md' aria-label='medium'>
+      <HeartIcon aria-hidden />
+    </Avatar>
     <Avatar data-size='lg' aria-label='large' initials='lg' />
     <Avatar data-size='lg' aria-label='large' />
+    <Avatar data-size='lg' aria-label='large'>
+      <HeartIcon aria-hidden />
+    </Avatar>
   </>
 );
 
@@ -116,7 +128,51 @@ InDropdown.parameters = {
 };
 
 export const AsLink: Story = () => (
-  <a href='#'>
-    <Avatar aria-label='Ola Nordmann' />
-  </a>
+  <>
+    <Avatar aria-label='xs' data-size='xs' asChild>
+      <a href='#none'>
+        <HeartIcon aria-hidden />
+      </a>
+    </Avatar>
+    <Avatar aria-label='sm' data-size='sm' asChild>
+      <a href='#none'>
+        <HeartIcon aria-hidden />
+      </a>
+    </Avatar>
+    <Avatar aria-label='md' data-size='md' asChild>
+      <a href='#none'>
+        <HeartIcon aria-hidden />
+      </a>
+    </Avatar>
+    <Avatar aria-label='lg' data-size='lg' asChild>
+      <a href='#none'>
+        <HeartIcon aria-hidden />
+      </a>
+    </Avatar>
+  </>
+);
+
+export const AsButton: Story = () => (
+  <>
+    <Avatar aria-label='xs' data-size='xs' asChild>
+      <button type='button'>
+        <HeartIcon aria-hidden />
+      </button>
+    </Avatar>
+    <Avatar aria-label='sm' data-size='sm' asChild>
+      <button type='button'>
+        <HeartIcon aria-hidden />
+      </button>
+    </Avatar>
+    <Avatar aria-label='md' data-size='md' asChild>
+      <button type='button'>
+        <HeartIcon aria-hidden />
+      </button>
+    </Avatar>
+    <Avatar aria-label='lg' data-size='lg' asChild>
+      <button type='button'>
+        <HeartIcon aria-hidden />
+      </button>
+    </Avatar>
+  </>
 );

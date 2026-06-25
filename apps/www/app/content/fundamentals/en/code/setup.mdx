@@ -14,11 +14,9 @@ search_terms: setup, oppsett, installasjon, installation, getting started, komme
 Follow these steps to get started with using Designsystemet in code for the first time.
 
 ## 1. Install the packages
+Designsystemet consists of several code packages that you can freely choose from, depending on your needs and preferences. You can use the packages together, or pick only the parts that speed you up, while keeping the freedom to code things yourself where you want to.
 
-Designsystemet consists of several code packages that you can freely choose from, depending on your needs and preferences.
-
-We recommend starting with `@digdir/designsystemet-web` and `@digdir/designsystemet-css` which are the most basic packages to get started.
-
+We recommend starting with `@digdir/designsystemet-web` and `@digdir/designsystemet-css`. You can also use `@digdir/designsystemet-web` without `@digdir/designsystemet-css` if you already have your own styling, or use only the CSS package if you handle interactivity yourself.
 
 <ds-tabs class="ds-tabs" data-wide-content>
   <ds-tablist>
@@ -238,9 +236,3 @@ body {
   font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
 }
 ```
-
-
-## Polyfill
-
-The design system uses [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) in some components. This api is classified as [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as of April 2024, when Firefox was the last browser to add it. In some cases, you may find that users are locked to older browser versions for various reasons, and then it may be appropriate to add a polyfill to ensure that `popover` works for everyone.
-* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)

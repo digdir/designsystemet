@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.15.0",
+  "version": "1.16.1",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
@@ -65,20 +65,20 @@
     "hsluv": "^1.0.1",
     "object-hash": "^3.0.0",
     "picocolors": "^1.1.1",
-    "postcss": "^8.5.14",
+    "postcss": "^8.5.15",
     "ramda": "^0.32.0",
-    "style-dictionary": "^5.4.0",
+    "style-dictionary": "^5.4.4",
     "zod": "^4.4.3",
     "zod-validation-error": "^5.0.0"
   },
   "devDependencies": {
     "@tokens-studio/types": "0.5.2",
     "@types/chroma-js": "3.1.2",
-    "@types/node": "24.12.4",
+    "@types/node": "24.13.2",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.31.1",
-    "tsdown": "0.22.0",
-    "tsx": "4.22.1",
+    "tsdown": "0.22.2",
+    "tsx": "4.22.4",
     "typescript": "5.9.3"
   }
 }

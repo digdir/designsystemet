@@ -8,20 +8,24 @@ describe('pagination component', () => {
     document.body.innerHTML = `
       <ds-pagination data-current="2" data-total="5" data-href="/page/%d" aria-label="Pagination">
        <ol>
-          <li><a class="ds-button prev" data-variant="tertiary" href="#none">prev</a></li>
-          <li><a class="ds-button" data-variant="tertiary" href="/page/1"></a></li>
-          <li><a class="ds-button" data-variant="tertiary" href="/page/2"></a></li>
-          <li><a class="ds-button" data-variant="tertiary" href="/page/3"></a></li>
-          <li><a class="ds-button" data-variant="tertiary" href="/page/4"></a></li>
-          <li><a class="ds-button" data-variant="tertiary" href="/page/5"></a></li>
-          <li><a class="ds-button next" data-variant="tertiary" href="#none">next</a></li>
+          <li><a class="ds-button" data-testid="prev" href="#none">prev</a></li>
+          <li><a class="ds-button" href="/page/1"></a></li>
+          <li><a class="ds-button" href="/page/2"></a></li>
+          <li><a class="ds-button" href="/page/3"></a></li>
+          <li><a class="ds-button" href="/page/4"></a></li>
+          <li><a class="ds-button" href="/page/5"></a></li>
+          <li><a class="ds-button" data-testid="next" href="#none">next</a></li>
        </ol>
       </ds-pagination>
     `;
 
     const paginationEl = document.querySelector('ds-pagination') as HTMLElement;
-    const prev = paginationEl.querySelector('a.prev') as HTMLAnchorElement;
-    const next = paginationEl.querySelector('a.next') as HTMLAnchorElement;
+    const prev = paginationEl.querySelector(
+      '[data-testid="prev"]',
+    ) as HTMLAnchorElement;
+    const next = paginationEl.querySelector(
+      '[data-testid="next"]',
+    ) as HTMLAnchorElement;
     const links = [
       ...paginationEl.querySelectorAll('a'),
     ] as HTMLAnchorElement[];
@@ -37,13 +41,13 @@ describe('pagination component', () => {
     document.body.innerHTML = `
       <ds-pagination data-current="1" data-total="100" data-href="/page/%d" aria-label="Pagination">
      <ol>
-        <li><button class="ds-button prev" data-variant="tertiary">prev</button></li>
-        <li><button class="ds-button" data-variant="tertiary">1</button></li>
-        <li><button class="ds-button" data-variant="tertiary">2</button></li>
-        <li><button class="ds-button" data-variant="tertiary">3</button></li>
-        <li><button class="ds-button" data-variant="tertiary">4</button></li>
-        <li><button class="ds-button" data-variant="tertiary">5</button></li>
-        <li><button class="ds-button next" data-variant="tertiary">next</button></li>
+        <li><button class="ds-button">prev</button></li>
+        <li><button class="ds-button">1</button></li>
+        <li><button class="ds-button">2</button></li>
+        <li><button class="ds-button">3</button></li>
+        <li><button class="ds-button">4</button></li>
+        <li><button class="ds-button">5</button></li>
+        <li><button class="ds-button">next</button></li>
       </ol>
       </ds-pagination>
     `;

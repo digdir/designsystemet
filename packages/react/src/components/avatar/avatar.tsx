@@ -75,7 +75,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     'aria-label': ariaLabel,
     'data-tooltip': dataTooltip,
-    variant = 'circle',
+    variant,
     className,
     children,
     initials,

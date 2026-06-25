@@ -82,7 +82,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onClose,
       onOpen,
       open,
-      variant = 'default',
+      variant,
       placement = 'top',
       autoPlacement = true,
       asChild = false,

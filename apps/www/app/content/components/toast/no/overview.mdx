@@ -1,0 +1,48 @@
+---
+search_terms: snackbar, notifikasjon
+---
+## Tilgjengelighetsproblemer med toast
+
+Toast har kjente tilgjengelighetsproblemer som gjør det vanskelig å støtte alle brukere:
+
+### Tidsbegrensning
+Toast-meldinger forsvinner etter noen sekunder. Brukerne må kunne forlenge varigheten til de selv velger å lukke meldingen. Brukere med kognitive utfordringer eller de som bruker hjelpemidler rekker ofte ikke å lese eller handle på meldingen. Brukere som er i gang med noe annet, kan gå glipp av den helt.
+
+[WCAG 2.2.1 Justerbar hastighet (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/221-justerbar-hastighet-niva/100)
+
+### DOM-rekkefølge og kontekst
+Toast-meldinger plasseres vanligvis langt fra innholdet de gjelder. For brukere av hjelpemidler er det ingen logisk sammenheng mellom handlingen som utløste meldingen og meldingen selv. Det skaper forvirring om hva meldingen egentlig gjelder.
+
+[WCAG 1.3.2 Meningsfull rekkefølge (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/132-meningsfylt-rekkefolge-niva/91)
+
+### Tastaturoperabilitet
+Alle interaktive elementer i en toast, inkludert muligheten for å lukke den, må kunne brukes med tastatur. Toast stjeler heller ikke fokus, så tastaturbrukere som er i gang med noe annet, vil ikke automatisk bli gjort oppmerksomme på meldingen.
+
+[WCAG 2.1.1 Tastatur (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/211-tastatur-niva/98)
+
+### Statusbeskjeder
+Det er krevende å implementere toast på en måte som oppfyller kravene til statusmeldinger. Det krever ARIA live-regioner med riktig oppsett, og feil implementasjon kan føre til at meldingen ikke leses opp av skjermlesere, eller leses opp for sent og forstyrrer det brukeren holder på med.
+
+[WCAG 4.1.3 Statusbeskjeder (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+
+### Skjermforstørring
+Brukere som forstørrer skjermen ser bare en del av siden om gangen. Toast-meldinger som vises i et hjørne, kan havne utenfor synsfeltet og aldri bli oppdaget.
+
+### Ingen mulighet til å gå tilbake
+Når en toast-melding forsvinner, er den borte. Det er ingen måte for brukeren å finne tilbake til informasjonen etterpå.
+
+## Bruk heller
+Hva du skal bruke, avhenger av hva slags melding det er. Her er noen typiske situasjoner og anbefalte løsninger:
+
+- **Bekreftelse etter innsending:** Bruk en [alert](/no/components/docs/alert/overview) i innholdet eller en kvitteringsside.
+- **Mislykket handling:** Bruk en [alert](/no/components/docs/alert/overview) nær der feilen oppsto, eller en [dialog](/no/components/docs/dialog/overview) hvis brukeren må ta et aktivt valg for å komme videre.
+- **Fil lastet opp:** Vis filen direkte i listen over opplastede filer.
+- **Automatisk lagring:** Vis lagringsstatus nær innholdet som lagres.
+- **Bakgrunnsoppgaver:** Bruk en fremdriftsindikator eller et statusområde som oppdateres underveis.
+
+Se også [systemvarsler](/no/patterns/systemnotifications) for mer veiledning om hvordan du bør informere brukerne om ulike typer meldinger og varsler.
+
+## Lenker og relevant informasjon
+
+- [Diskusjon om toast på GitHub](https://github.com/digdir/designsystemet/discussions/1822)
+- [Accessible notifications and messages (primer.style)](https://primer.style/accessibility/patterns/accessible-notifications-and-messages/)

@@ -25,11 +25,12 @@ export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
     useContext(Context);
 
   return (
-    // biome-ignore lint/a11y/noStaticElementInteractions: ds-tabs IS interactive
     <ds-tab
       aria-controls={rest['aria-controls'] ?? getPrefixedValue?.(value)}
+      aria-selected={`${currentValue === value}`}
       data-value={value}
       ref={ref}
+      role='tab'
       suppressHydrationWarning // Since <ds-tablist> adds attributes
       onClickCapture={(e: MouseEvent<DSTabElement>) => {
         onClickCapture?.(e);

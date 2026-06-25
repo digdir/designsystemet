@@ -1,5 +1,21 @@
 # @digdir/designsystemet-web
 
+## 1.16.1
+
+### Patch Changes
+
+- fix(deps): update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
+
+## 1.16.0
+
+### Patch Changes
+
+- **Suggestion:** Updated VoiceOver compatibility - both with and without QuickNav ([#4970](https://github.com/digdir/designsystemet/pull/4970))
+
+- **Popover, Tooltip, Dropdown:** No longer requires arrow to be drawn by `::before` element to correctly calculate arrow size ([#4951](https://github.com/digdir/designsystemet/pull/4951))
+
+- **Popover:** Automatically run Popover API polyfill if needed in older browsers ([#4983](https://github.com/digdir/designsystemet/pull/4983))
+
 ## 1.15.0
 
 ### Patch Changes
@@ -139,7 +155,7 @@
   | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
   | `details` & `summary`    | Bugfix for Firefox.                                                                                            |
   | `dialog`                 | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
-  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2).                               |
+  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill).                                       |
 
 ### Patch Changes
 
@@ -175,7 +191,7 @@
   | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
   | `details` & `summary`    | Bugfix for Firefox.                                                                                            |
   | `dialog`                 | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
-  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2).                               |
+  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill).                                       |
 
 ### Patch Changes
 
