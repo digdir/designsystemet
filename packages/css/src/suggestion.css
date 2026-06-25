@@ -66,9 +66,15 @@
     position: absolute; /* Make items container not take up any space when no chips */
   }
 
+  &::part(items) {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--dsc-suggestion-chip-gap);
+  }
+
   /* NOTE: This styling should be reflected in chip.css */
   & > data {
-    align-items: center;
     background: var(--dsc-suggestion-chip-background);
     border-color: var(--dsc-suggestion-chip-border-color);
     border-radius: var(--dsc-suggestion-chip-border-radius);
@@ -77,23 +83,31 @@
     box-sizing: border-box;
     color: var(--dsc-suggestion-chip-color);
     cursor: pointer;
-    display: inline-flex;
+    display: block;
     font-size: var(--dsc-suggestion-chip-font-size);
     height: var(--dsc-suggestion-chip-height);
     line-height: var(--ds-line-height-sm);
-    margin-bottom: var(--dsc-suggestion-chip-gap);
+    min-width: 0; /* Allow text-overflow: ellipsis to work when placed inside display: flex */
+    overflow: hidden;
     padding: var(--dsc-suggestion-chip-padding);
-    padding-inline-end: var(--dsc-suggestion-chip-spacing);
-    white-space: none;
+    padding-block: calc((var(--dsc-suggestion-chip-height) - var(--dsc-suggestion-chip-border-width) - 1lh) / 2);
+    padding-inline-end: calc(var(--dsc-suggestion-chip-spacing) * 2 + var(--dsc-suggestion-chip-icon-size));
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &::after {
       content: '';
       background: currentcolor;
       height: var(--dsc-suggestion-chip-icon-size);
-      mask: center / contain no-repeat var(--dsc-suggestion-chip-icon-url);
-      width: var(--dsc-suggestion-chip-icon-size);
-      padding-inline: 0; /*override u-combobox default*/
+      inset-block-start: 50%;
+      inset-inline-end: var(--dsc-suggestion-chip-spacing);
       margin-left: var(--dsc-suggestion-chip-gap);
+      mask: center / contain no-repeat var(--dsc-suggestion-chip-icon-url);
+      padding-inline: 0; /*override u-combobox default*/
+      position: absolute;
+      translate: 0 -50%;
+      width: var(--dsc-suggestion-chip-icon-size);
       @media (forced-colors: active) {
         background-color: CanvasText;
         forced-color-adjust: none; /* To be able to draw check */
@@ -106,9 +120,6 @@
     }
     &:hover {
       background: var(--dsc-suggestion-chip-background--hover);
-    }
-    &:has(+ data) {
-      margin-inline-end: var(--dsc-suggestion-chip-gap);
     }
   }
 
