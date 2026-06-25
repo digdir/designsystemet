@@ -1,4 +1,5 @@
 import { type ConfigSchema, configSchema } from '@digdir/designsystemet';
+
 import {
   Button,
   Paragraph,
@@ -10,6 +11,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router';
 import { configThemeToUrl } from '~/_utils/config-to-url';
+import { automigrations } from '../../../../../packages/cli/src/migrations/index';
 import classes from './config-paste.module.css';
 
 export function ConfigPaste() {
@@ -31,7 +33,9 @@ export function ConfigPaste() {
     }
 
     try {
-      const parsed = JSON.parse(configText);
+      const parsed = automigrations.colorCategoryFlattening.check(configText)
+        ? automigrations.colorCategoryFlattening.yes(configText)
+        : JSON.parse(configText);
       const validated = configSchema.parse(parsed);
       setValidatedConfig(validated);
 
