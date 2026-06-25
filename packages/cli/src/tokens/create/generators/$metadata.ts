@@ -27,7 +27,6 @@ export function generate$Metadata(
         ...themeNames.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`),
       ]),
       ...themeNames.map((theme) => `themes/${theme}`),
-      'semantic/color',
       ...colorNames.map((color) => `semantic/color/${color}`),
       'semantic/style',
     ],
