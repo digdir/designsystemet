@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-Increased minimum required `node` version to latest LTS (24.18.0).
+Increased minimum required `node` version 24.16.0.
