@@ -28,7 +28,7 @@ export const formatTheme = async (themeConfig: Theme) => {
   const colorNames = toColorNames(themeConfig.colors);
   const themeNames = [themeConfig.name];
 
-  const { tokenSets } = await createTokens({ ...themeConfig, colorNames } as Theme & { colorNames: string[] });
+  const { tokenSets } = await createTokens(themeConfig);
   const $themes = await generate$Themes(tokenSetDimensions, themeNames, colorNames);
 
   const processed$themes = $themes.map(processThemeObject);

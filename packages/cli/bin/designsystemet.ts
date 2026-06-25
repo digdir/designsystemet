@@ -170,9 +170,7 @@ function _makeTokenCommands() {
       const colorNames = toColorNames(config.themes?.[themeNames[0]]?.colors);
 
       for (const [name, themeConfig] of Object.entries(config.themes)) {
-        const { tokenSets } = await createTokens({ name, colorNames, ...themeConfig } as Theme & {
-          colorNames: string[];
-        });
+        const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme);
         files.push(...tokenSetsToFiles(tokenSets));
       }
 

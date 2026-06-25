@@ -6,18 +6,19 @@ import { generateColorTokens } from './create/generators/semantic/color.js';
 import { generateSemanticStyle } from './create/generators/semantic/style.js';
 import { generateTheme } from './create/generators/themes/theme.js';
 import type { Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.js';
-import { addSeverityColors } from './utils.js';
+import { addSeverityColors, toColorNames } from './utils.js';
 
 export const tokenSetDimensions: TokenSetDimensions = {
   colorSchemes: ['dark', 'light'],
   sizeModes: ['small', 'medium', 'large'],
 };
 
-export const createTokens = async (theme: Theme & { colorNames: string[] }) => {
-  const { typography, name, borderRadius, overrides, colorNames } = theme;
+export const createTokens = async (theme: Theme) => {
+  const { typography, name, borderRadius, overrides } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
 
   const colors = addSeverityColors(theme.colors);
+  const colorNames = toColorNames(colors);
   const colorTokens = Object.entries(generateColorTokens(colorNames, name));
 
   const tokenSets: TokenSets = new Map([
