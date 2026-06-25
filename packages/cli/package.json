@@ -33,10 +33,6 @@
     },
     "./schemas/*": {
       "import": "./dist/src/schemas/*"
-    },
-    "./migrations": {
-      "import": "./dist/src/migrations/index.js",
-      "types": "./dist/src/migrations/index.d.ts"
     }
   },
   "publishConfig": {

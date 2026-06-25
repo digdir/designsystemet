@@ -1,5 +1,5 @@
+// biome-ignore-all lint/suspicious/noExplicitAny: we have not kept old schema for types, so we need to use any here
 import { type ConfigSchema, configSchema } from '@digdir/designsystemet';
-import { automigrations } from '@digdir/designsystemet/migrations';
 import {
   Button,
   Paragraph,
@@ -32,9 +32,10 @@ export function ConfigPaste() {
     }
 
     try {
-      const parsed = automigrations.colorCategoryFlattening.check(configText)
-        ? automigrations.colorCategoryFlattening.yes(configText)
+      const parsed = isConfigWithOldColorSchema(configText)
+        ? migrateConfigWithOldColorSchema(configText)
         : JSON.parse(configText);
+
       const validated = configSchema.parse(parsed);
       setValidatedConfig(validated);
 
@@ -143,3 +144,59 @@ export function ConfigPaste() {
     </div>
   );
 }
+
+// Temporary migration functions for old color schema, to be removed in future versions
+const isOldColorSchema = (theme: any): boolean => {
+  return (
+    theme.colors &&
+    Object.keys(theme.colors).length === 3 &&
+    theme.colors.main &&
+    theme.colors.support &&
+    theme.colors.neutral
+  );
+};
+
+const isConfigWithOldColorSchema = (config: any): boolean => {
+  const currentConfig = JSON.parse(config);
+
+  if (!currentConfig.themes) {
+    return false;
+  }
+
+  return Object.values(currentConfig.themes).some(isOldColorSchema);
+};
+
+const migrateConfigWithOldColorSchema = (config: string): string => {
+  const currentConfig = JSON.parse(config);
+  const updatedThemes: Record<string, any> = {};
+
+  if (currentConfig.themes) {
+    for (const [themeName, _] of Object.entries(currentConfig.themes)) {
+      const theme = currentConfig.themes[themeName];
+
+      if (isOldColorSchema(theme)) {
+        const { main, support, neutral, ...restColors } = theme.colors;
+
+        const updatedTheme = {
+          ...theme,
+          colors: {
+            ...restColors,
+            ...main,
+            ...support,
+            neutral,
+          },
+        };
+
+        updatedThemes[themeName] = updatedTheme;
+      } else {
+        updatedThemes[themeName] = theme;
+      }
+    }
+  }
+  const migratedConfig = {
+    ...currentConfig,
+    themes: updatedThemes,
+  };
+
+  return migratedConfig;
+};
