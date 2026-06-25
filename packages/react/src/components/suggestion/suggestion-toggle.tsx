@@ -3,12 +3,12 @@ import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 /* We omit children since we render the icon with css */
-export type SuggestionClearProps = MergeRight<
+export type SuggestionToggleProps = MergeRight<
   DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
   {
     /**
      * Aria label for the clear button
-     * @default 'Tøm'
+     * @default 'Valg'
      */
     'aria-label'?: string;
   }
@@ -27,17 +27,17 @@ export type SuggestionClearProps = MergeRight<
  *   <Suggestion.List />
  * </Suggestion>
  */
-export const SuggestionClear = forwardRef<
+export const SuggestionToggle = forwardRef<
   HTMLButtonElement,
-  SuggestionClearProps
->(function SuggestionClear({ 'aria-label': label = 'Tøm', ...rest }, ref) {
+  SuggestionToggleProps
+>(function SuggestionToggle({ 'aria-label': label = 'Valg', ...rest }, ref) {
   return (
     <button
+      aria-expanded='false'
       aria-label={label}
-      hidden
       ref={ref}
       suppressHydrationWarning // Since <ds-suggestion> adds attributes
-      type='reset'
+      type='button'
       {...rest}
     />
   );
