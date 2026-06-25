@@ -8,8 +8,13 @@ export const checkAutomigrate = async (configFile: string, configFilePath: strin
     return null;
   }
   let migratedConfigFile = null;
-  const eligibleMigrations = Object.values(automigrations).filter((migration) => migration.check(configFile));
-
+  const eligibleMigrations = Object.values(automigrations).filter((migration) => {
+    try {
+      return migration.check(configFile);
+    } catch {
+      return false;
+    }
+  });
   if (eligibleMigrations.length === 0) {
     return null;
   }
@@ -31,9 +36,9 @@ export const checkAutomigrate = async (configFile: string, configFilePath: strin
     }
 
     if (!answer) {
-      migratedConfigFile = migration.no(configFile);
+      migratedConfigFile = migration.no(migratedConfigFile ?? configFile);
     } else {
-      migratedConfigFile = migration.yes(configFile);
+      migratedConfigFile = migration.yes(migratedConfigFile ?? configFile);
       await dsfs.writeFile(configFilePath, migratedConfigFile);
     }
   }
