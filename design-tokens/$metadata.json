@@ -13,7 +13,6 @@
     "primitives/modes/color-scheme/dark/designsystemet",
     "primitives/modes/color-scheme/light/designsystemet",
     "themes/designsystemet",
-    "semantic/color",
     "semantic/color/accent",
     "semantic/color/brand1",
     "semantic/color/brand2",
