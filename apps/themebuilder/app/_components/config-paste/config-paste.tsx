@@ -1,5 +1,5 @@
 import { type ConfigSchema, configSchema } from '@digdir/designsystemet';
-
+import { automigrations } from '@digdir/designsystemet/migrations';
 import {
   Button,
   Paragraph,
@@ -11,7 +11,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router';
 import { configThemeToUrl } from '~/_utils/config-to-url';
-import { automigrations } from '../../../../../packages/cli/src/migrations/index';
 import classes from './config-paste.module.css';
 
 export function ConfigPaste() {
