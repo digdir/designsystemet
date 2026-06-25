@@ -35,7 +35,6 @@ export type SeverityColors = ColorWithFallback<keyof SeverityColorDefinitions>;
  *
  * These are augmented based on your theme configuration.
  *
- * Consist of both main and support colors
  * @link https://theme.designsystemet.no
  */
 export type Color = ColorWithFallback<keyof ColorDefinitions>;

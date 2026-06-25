@@ -1,6 +1,6 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
-import type { ConfigSchemaTheme } from '../config.js';
 import type { ColorScheme } from '../index.js';
+import type { ConfigSchemaTheme } from '../schemas/v1.1/schema.js';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
 
 export type Token =
@@ -24,16 +24,6 @@ export type Theme = {
 } & Required<Omit<ConfigSchemaTheme, 'overrides'>> &
   Pick<ConfigSchemaTheme, 'overrides'>;
 
-export const colorCategories = {
-  main: 'main',
-  support: 'support',
-} as const;
-
-export type ColorCategories = keyof typeof colorCategories;
-export type ColorNamesByCategory = Record<ColorCategories, string[]>;
-
-export type BuiltInColors = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
-
 export type SizeModes = 'small' | 'medium' | 'large';
 
 /**
@@ -41,8 +31,7 @@ export type SizeModes = 'small' | 'medium' | 'large';
  */
 export type ThemePermutation = {
   'color-scheme': string;
-  'main-color': string;
-  'support-color'?: string;
+  color: string;
   semantic: string;
   size: string;
   theme: string;
@@ -67,7 +56,7 @@ export type BuildConfig = {
   name?: string;
   /** Style Dictionary configuration creator */
   getConfig: GetStyleDictionaryConfig;
-  /** Which theme dimensions to include. `theme` (e.g. digdir/altinn) is always included. */
+  /** Which theme dimensions to include. `theme` is always included. */
   dimensions: ThemeDimension[];
   /** Whether the build config is enabled. @default () => true */
   enabled?: () => boolean;
