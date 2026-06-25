@@ -161,4 +161,4 @@ function cartesian(a: Array<unknown[]>) {
 }
 
 export const getThemeColors = (processed$themes: ProcessedThemeObject[]) =>
-  processed$themes.filter((x) => x.group === 'color').map((x) => x.name);
+  Array.from(new Set<string>(processed$themes.filter((x) => x.group === 'color').map((x) => x.name)));

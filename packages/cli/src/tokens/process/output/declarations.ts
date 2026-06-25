@@ -7,15 +7,8 @@ import { getThemeColors, type ProcessedThemeObject } from '../utils/getMultidime
 export const defaultFileHeader = `build: v${pkg.version}`;
 
 export const createTypeDeclarationFiles = (processed$themes: ProcessedThemeObject[]): OutputFile[] => {
-  const customColors = getThemeColors(processed$themes);
-  const uniqueColors = Array.from(new Set<string>(customColors));
-
-  // Add neutral for backwards compatibility, with main and support categories
-  if (!uniqueColors.find((color) => color === 'neutral')) {
-    uniqueColors.push('neutral');
-  }
-
-  const typeDeclaration = createColorTypeDeclaration(uniqueColors);
+  const colors = getThemeColors(processed$themes);
+  const typeDeclaration = createColorTypeDeclaration(colors);
   return [
     {
       output: `/* This file is deprecated and will be removed in a future release. Use types.d.ts instead */\n${typeDeclaration}`,
