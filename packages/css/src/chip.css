@@ -85,7 +85,7 @@
   }
 
   &[data-removable] {
-    padding-inline-end: calc(var(--dsc-chip-spacing) * 2 + var(--dsc-chip-input-size));
+    padding-inline-end: calc(var(--dsc-chip-spacing) * 2 + var(--dsc-chip-icon-size));
 
     &::after {
       content: '';
@@ -103,7 +103,7 @@
   }
 
   &:has(input) {
-    padding-inline-start: calc(var(--dsc-chip-spacing) * 2 + var(--dsc-chip-input-size));
+    padding-inline-start: calc(var(--dsc-chip-spacing) * 2 + var(--dsc-chip-icon-size));
   }
 
   &:has(input[type='checkbox']) {

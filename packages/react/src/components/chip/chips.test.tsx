@@ -57,6 +57,7 @@ describe('Chip.Checkbox', () => {
       <Chip.Checkbox
         checked
         className='testClass'
+        data-wrap='wrap'
         disabled
         name='language'
         value='norwegian'
@@ -68,6 +69,8 @@ describe('Chip.Checkbox', () => {
     const chip = screen.getByText('Norwegian', { selector: 'label' });
     const input = screen.getByRole('checkbox');
     expect(chip).toHaveClass('testClass');
+    expect(chip).toHaveAttribute('data-warp', 'wrap');
+    expect(input).not.toHaveAttribute('data-warp', 'wrap');
     expect(input).toHaveAttribute('name', 'language');
     expect(input).toHaveAttribute('value', 'norwegian');
     expect(input).toBeChecked();
@@ -94,6 +97,7 @@ describe('Chip.Radio', () => {
       <Chip.Radio
         checked
         className='testClass'
+        data-wrap='wrap'
         disabled
         name='language'
         value='norwegian'
@@ -105,6 +109,8 @@ describe('Chip.Radio', () => {
     const chip = screen.getByText('Norwegian', { selector: 'label' });
     const input = screen.getByRole('radio');
     expect(chip).toHaveClass('testClass');
+    expect(chip).toHaveAttribute('data-warp', 'wrap');
+    expect(input).not.toHaveAttribute('data-warp', 'wrap');
     expect(input).toHaveAttribute('name', 'language');
     expect(input).toHaveAttribute('value', 'norwegian');
     expect(input).toBeChecked();
