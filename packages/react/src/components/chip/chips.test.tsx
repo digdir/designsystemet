@@ -19,6 +19,20 @@ describe('Chip.Button', () => {
     const lastClassNameIndex = chip.classList.length - 1;
     expect(chip.classList[lastClassNameIndex]).toBe('testClass');
   });
+
+  it('does not set data-wrap by default (so default truncation applies)', () => {
+    render(<Chip.Button>Norwegian</Chip.Button>);
+
+    const chip = screen.getByRole('button', { name: 'Norwegian' });
+    expect(chip).not.toHaveAttribute('data-wrap');
+  });
+
+  it('passes data-wrap through to the DOM via rest props', () => {
+    render(<Chip.Button data-wrap='wrap'>A very long chip label</Chip.Button>);
+
+    const chip = screen.getByRole('button', { name: 'A very long chip label' });
+    expect(chip).toHaveAttribute('data-wrap', 'wrap');
+  });
 });
 
 describe('Chip.Removable', () => {

@@ -40,9 +40,20 @@
   max-height: fit-content;
   max-width: fit-content;
   min-height: var(--dsc-chip-height);
+  min-width: 0; /* Allow text content to shrink so it can truncate */
+  overflow: hidden;
   padding: 0 var(--ds-size-3);
   text-align: inherit; /* Fix text alignment when removable is <button> */
   text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Truncate long labels by default; opt out with data-wrap="wrap" */
+
+  /* Opt-out: restore wrapping for cases where multi-line labels are wanted */
+  &[data-wrap='wrap'] {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+  }
 
   @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';
