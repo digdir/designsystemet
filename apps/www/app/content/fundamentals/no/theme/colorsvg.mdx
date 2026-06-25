@@ -53,21 +53,15 @@ Fila brukes deretter slik i html:
 ```
 
 <Alert data-color='info'>
-<h3 class="ds-heading" data-size='xs'>Tips: Skalering av SVG</h3>
-<p>
-SVG skalerer enklest når:
-</p>
-<ul>
-<li>viewBox er satt på `<symbol>` eller `<svg>`</li>
-<li>størrelse styres via width og height på det omsluttende elementet</li>
-</ul>
-<p>
-Hvis SVG ikke skalerer som forventet, er det ofte fordi:
-</p>
-<ul>
-<li>viewBox mangler</li>
-<li>eller at den har feil proporsjoner</li>
-</ul>
+  <h3 class="ds-heading" data-size='xs'>Tips: Skalering av SVG</h3>
+  <br />
+  SVG skalerer enklest når:
+  - viewBox er satt på `<symbol>` eller `<svg>`
+  - størrelse styres via width og height på det omsluttende elementet
+  <br />
+  Hvis SVG ikke skalerer som forventet, er det ofte fordi:
+  - viewBox mangler
+  - eller at den har feil proporsjoner
 </Alert>
 
 ## I praktisk bruk
@@ -79,13 +73,13 @@ Hva du må tilpasse videre avhenger av hva du ønsker å oppnå.
 For en énsfarget grafikk kan du styre fargene enten ved å peke på gjeldende tekstfarge eller fargelegge via en klasse eller id.
 
 Vil du bruke gjeldende tekstfarge som standard på alle svg-grafikk kan du bruke currentColor som stil. Fjern alle farger i svg-fila og legg til stilregelen for currentColor, da arver grafikken gjeldende tekstfarge. Det kan hende du må gjøre det samme for stroke.
-```CSS
+```css
 svg {
     fill:currentColor;
 }
 ```
 Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette currentColor på fill og/eller stroke path inne i selve svg-fila. I designsystemet blir denne metoden brukt på ikoner, for eksempel i knappene.
-```SVG
+```html
 <svg xmlns="http://www.w3.org/2000/svg">
   <symbol id="ds-logo" viewBox="0 0 40 40">
     <path d="..." fill="currentColor"/>
@@ -95,24 +89,24 @@ Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette c
   </symbol>
 </svg>
 ```
-Test story for currentColor
-<Story story="WithCurrentColor" />
+
+<Story story="WithCurrentColor" truncateSvg={false} />
 
 Ønsker du mer kontroll kan du styre fargen med klasse eller id, fjern alle farger fra grafikken og sett inn for ekesmpel en klasse på det omsluttende svg-elementet:
-```HTML
+```html
 <svg height="1rem" width="1rem" class="iconcolor">
   <use href="logo.svg#ds-logo"></use>
 </svg>
 ```
 Med tilhørende token:
-```CSS
+```css
 .iconcolor {
     color: var(--ds-color-text-default);
 }
 ```
 
 Test story for icon color token
-<Story story="WithIconColor" />
+<Story story="WithIconColor" truncateSvg={false} />
 
 ### Flerfarget grafikk, typisk merkevarebærende symboler og små illustrasjoner
 
@@ -128,7 +122,7 @@ For grafikk med flere farger kan du styre fargene direkte i fill og stroke på h
 </svg>
 ```
 Med tilhørende tokens, i eksempelet har illustrasjonen fått gråskala i mørk modus:
-```CSS
+```css
 :root {
     --logo-color-part1:#1E98F5;
     --logo-color-part2:#68707C;
@@ -144,8 +138,7 @@ Med tilhørende tokens, i eksempelet har illustrasjonen fått gråskala i mørk 
 ```
 Du kan selvsagt fargelegge ved å peke direkte til fargene i designsystemet, eller om du har laget tokens for illustrasjoner så bruker du dem.
 
-Test story for flerfarget illustrasjon
-<Story story="WithMultiColor" />
+<Story story="WithMultiColor" truncateSvg={false} />
 
 ## Husk på tilgjengelighet
 
@@ -154,7 +147,7 @@ For å sikre at illustrasjonen er tilgjengelig for alle må du legge til et par 
 ### Grafikk som kun er dekorativ
 
 Skjul grafikken for skjermleser med å sette rolle til presentasjon og at den skal være skjult.
-```HTML
+```html
 <svg height="1rem" width="1rem" class="logocolor" role="presentation" aria-hidden="true">
   <use href="logo.svg#ds-logo"></use>
 </svg>
@@ -163,7 +156,7 @@ Skjul grafikken for skjermleser med å sette rolle til presentasjon og at den sk
 ### Grafikk som er meningsbærende
 
 Gi grafikken rollen for bilde og en beskrivende tekst
-```HTML
+```html
 <svg height="1rem" width="1rem" class="logocolor" role="img" aria-label="Designsystemets logo med farger satt via variabler">
   <use href="logo.svg#ds-logo"></use>
 </svg>
@@ -174,7 +167,7 @@ For mer kompleks grafikk kan du bruke mer detaljerte beskrivelser og det finnes 
 
 Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere steder. Når du uansett kun skal ha grafikken på ett sted på siden din, så kan du gjerne sette den inn inline.
 
-```HTML
+```html
 <svg width="80" height="80" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
   <path d="..." fill="var(--logo-color-part1)"/>
   <path d="..." fill="var(--logo-color-part2)"/>
@@ -182,9 +175,6 @@ Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere s
   <path d="..." fill="var(--logo-color-part4)"/>
 </svg>
 ```
-
-Test story for inline flerfarget illustrasjon
-<Story story="WithMultiColorInline" />
 
 ## Vanlige problemer og hva du bør sjekke
 
