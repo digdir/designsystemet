@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.17.0
+
+### Patch Changes
+
+- **Avatar:** now scales correctly also when rendered as `<button>` ([#5029](https://github.com/digdir/designsystemet/pull/5029))
+
+- **Field, Fieldset:** `disabled` and `read only` styling is now only affected by form elements with class name set to `ds-input` ([#5028](https://github.com/digdir/designsystemet/pull/5028))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.17.0
+
 ## 1.16.1
 
 ### Patch Changes
