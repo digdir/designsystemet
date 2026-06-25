@@ -2,12 +2,11 @@ import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
-/* We omit children since we render the icon with css */
 export type SuggestionToggleProps = MergeRight<
   DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
   {
     /**
-     * Aria label for the clear button
+     * Aria label for the toggle button
      * @default 'Valg'
      */
     'aria-label'?: string;
@@ -15,7 +14,7 @@ export type SuggestionToggleProps = MergeRight<
 >;
 
 /**
- * Component that provides a clear button for the Suggestion input.
+ * Component that provides a toggle button for the Suggestion list.
  *
  * Place as a descendant of `Suggestion`
  *

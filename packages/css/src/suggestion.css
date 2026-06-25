@@ -249,10 +249,10 @@
    * Clear button
    */
   & > :is(del[hidden], button[type='reset'][hidden], button[aria-expanded][hidden]),
-  &:has(> input:is(:read-only, :disabled, [aria-disabled='true'])) > :is(del, button[type='reset']) {
+  &:has(> input:is(:read-only, :disabled, [aria-disabled='true'])) > :is(del, button[type='reset'], button[aria-expanded]) {
     display: none;
   }
-  &:has(> :is(del, button[type='reset'])) input {
+  &:has(> :is(del, button[type='reset'], button[aria-expanded])) input {
     padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
   }
 
@@ -288,7 +288,7 @@
       background: var(--dsc-suggestion-clear-background--active);
     }
 
-    &::before {
+    &:empty::before {
       content: '';
       mask: var(--dsc-suggestion-clear-icon-url) center / contain no-repeat;
       background: currentcolor;
@@ -299,7 +299,7 @@
     }
   }
 
-  & > button[aria-expanded]::before {
+  & > button[aria-expanded]:empty::before {
     mask-image: var(--dsc-suggestion-toggle-icon-url);
   }
   &:has(:popover-open) > button[aria-expanded]::before {
