@@ -7,11 +7,18 @@ imageSrc: /img/blog/migrate-figma-color.png
 imageAlt: Illustrasjonsbilde som viser main, support og neutral til venstre, og den nye strukturen med én Color-collection og color mode til høyre.
 imageCaption: Med den nye fargestrukturen samles fargene i én Color-collection i Figma, slik at de fungerer likt som i kode.
 ---
-## Introduksjon
-I dag er fargene i Figma delt inn i to separate collections – `Main color` og `Support color` – og komponentene finnes i variantene`main`, `support` og `neutral`. Dette var gjort fordi Figma tidligere har vært begrenset til 4 farger per collection som var litt begrensende. Figma har siden økt begrensningen til flere farger per collection. I kode har vi allerede en struktur som samler alle farger, og styrer fargebruk gjennom `color` attributtet.
 
-Denne inndelingen har skapt unødvendige begrensninger i Figma og resulterer i mange varianter som er vanskelige å vedlikeholde. Med den nye strukturen samles alle farger i én `Color`-collection, og du styrer fargebruk gjennom `color mode` – akkurat slik det allerede fungerer i kode.
+## Hvorfor gjør vi denne endringen?
 
+I dag er fargene i Figma delt inn i to separate collections – `Main color` og `Support color` – og komponentene finnes i variantene `main`, `support` og `neutral`.
+
+Denne strukturen gjør bibliotekene mer komplekse enn nødvendig. Den fører til flere komponentvarianter å vedlikeholde, og gjør det mer komplisert for designerne som bruker biblioteket å velge og endre farger.
+
+Med den nye strukturen samles alle farger i én `Color`-collection. Komponentene trenger ikke lenger egne `main`, `support` og `neutral`-varianter. I stedet velger brukerne ønsket farge direkte gjennom **Appearance** med `color mode`, akkurat slik det allerede fungerer i kode.
+
+Resultatet er et enklere bibliotek med færre varianter å vedlikeholde og en mer intuitiv måte å bruke farger på.
+
+Bakgrunnen for denne endringen er at Figma tidligere hadde en begrensning på hvor mange farger en collection kunne inneholde. Derfor ble fargene delt opp i flere collections. Denne begrensningen finnes ikke lenger, og vi kan derfor bruke en enklere struktur.
 
 ## Før du migrerer kodebase og Figma-bibliotek
 
