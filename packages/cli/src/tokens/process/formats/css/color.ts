@@ -73,7 +73,10 @@ export const colorCategory: Format = {
       }),
       (token: TransformedToken) => ({
         ...token,
-        name: token.name.replace(/color-\w+-/, 'color-'),
+        // Strip the color name (e.g. "color-brand1-" -> "color-"). Color names can
+        // contain hyphens (e.g. "my-brand"), so remove the exact name from the path
+        // rather than matching with \w+, which would stop at the first hyphen.
+        name: token.name.replace(`color-${token.path[1]}-`, 'color-'),
         original: {
           ...token.original,
           $value: `{${token.path.join('.')}}`,
