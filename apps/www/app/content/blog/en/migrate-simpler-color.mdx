@@ -57,7 +57,7 @@ To verify that your design tokens have been updated, check the `semantic/modes` 
 
 ### Plugin or manual migration
 
-We recommend using the migration plugin when following this guide. The migration can also be done manually, but it can be a significant amount of work, especially when cleaning up old component variants and instances.
+We recommend using our migration plugin when following this guide: [Designsystemet migration helper](https://www.figma.com/community/plugin/1641069372132680632/designsystemet-migration-helper). The migration can also be done manually, but it can be a significant amount of work, especially when cleaning up old component variants and instances.
 
 #### Requirements – naming expected by the plugin
 
@@ -99,7 +99,7 @@ Create a snapshot so you can restore the file if anything goes wrong. If you pre
 Update the variable structure before exporting tokens from Token Studio. This ensures the variables are exported to the correct structure.
 
 **Do this:**
-1. Run **Designsystemet migration helper**.
+1. Run [Designsystemet migration helper](https://www.figma.com/community/plugin/1641069372132680632/designsystemet-migration-helper).
 2. Click **Update library**.
 3. The plugin checks whether the variable structure is correct.
 4. If prompted, click **Prepare variables**.
@@ -199,7 +199,7 @@ The plugin removes the old variants and updates all instances in the library fil
 </Card>
 
 **Do this:**
-1. Open **Designsystemet migration helper**.
+1. Open [Designsystemet migration helper](https://www.figma.com/community/plugin/1641069372132680632/designsystemet-migration-helper).
 2. Click **Update library**.
 3. Choose which color should replace `support`. This selection is required.
 4. Click **Run migration**.
@@ -246,7 +246,7 @@ Review the components and verify that the variables have the correct scope and C
 
 **Do this:**
 1. Review the components and verify that the migration looks correct.
-2. Run the **Designsystemet – Code syntax & scoping** plugin on the variables in the file.
+2. Run the [Designsystemet – Code syntax & scoping](https://www.figma.com/community/plugin/1500739115059498140/designsystemet-code-syntax-scoping) plugin on the variables in the file.
 3. Update the scope and CSS syntax if the plugin finds anything that needs to be fixed.
 4. Publish the library.
 
@@ -275,4 +275,3 @@ After migration, several examples on the **Table** page lose their content. We h
 On the **Popover** page, the **Popover definition** example is broken after running **Designsystemet migration helper**. This must be fixed manually.
 
 <Contributors authors={['Lasse Febakke Straum']} />
-
