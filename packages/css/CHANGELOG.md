@@ -1,5 +1,18 @@
 # Change Log
 
+## 1.18.0
+
+### Minor Changes
+
+- **Chip:** now by default keeps text on a single line and truncates with ellipsis if needed, but allows text wrapping by adding `data-wrap="wrap"` ([#5040](https://github.com/digdir/designsystemet/pull/5040))
+
+### Patch Changes
+
+- **@charset**: remove redundant `@charset` as this simplifies merging Designsystemet with other CSS files ([#5041](https://github.com/digdir/designsystemet/pull/5041))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.18.0
+
 ## 1.17.0
 
 ### Patch Changes

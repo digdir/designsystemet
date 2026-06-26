@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.18.0
+
+### Minor Changes
+
+- **Chip:** now by default keeps text on a single line and truncates with ellipsis if needed, but allows text wrapping by adding `data-wrap="wrap"` ([#5040](https://github.com/digdir/designsystemet/pull/5040))
+
+### Patch Changes
+
+- **Suggestion:** now always correctly syncs input value in single mode ([#5043](https://github.com/digdir/designsystemet/pull/5043))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.18.0
+  - @digdir/designsystemet-web@1.18.0
+
 ## 1.17.0
 
 ### Patch Changes
