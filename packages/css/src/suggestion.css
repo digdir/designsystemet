@@ -66,7 +66,7 @@
     position: absolute; /* Make items container not take up any space when no chips */
   }
 
-  &::part(items) {
+  &[data-multiple]::part(items) {
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
