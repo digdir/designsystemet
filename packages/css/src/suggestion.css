@@ -63,6 +63,9 @@
   }
 
   /* ::part(items) comes from u-combobox */
+  &:not(:has(data))::part(items) {
+    position: absolute; /* Make items container in multiple mode not take up any space when no chips */
+  }
   &[data-multiple]::part(items) {
     display: flex;
     flex-wrap: wrap;
