@@ -62,15 +62,12 @@
     display: none; /* Hide data elements when not in multiple mode */
   }
 
-  &:not(:has(data))::part(items) {
-    position: absolute; /* Make items container not take up any space when no chips */
-  }
-
+  /* ::part(items) comes from u-combobox */
   &[data-multiple]::part(items) {
-    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: var(--dsc-suggestion-chip-gap);
+    max-width: 100%;
   }
 
   /* NOTE: This styling should be reflected in chip.css */
