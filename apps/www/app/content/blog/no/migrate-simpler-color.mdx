@@ -22,7 +22,7 @@ Bakgrunnen for denne endringen er at Figma tidligere hadde en begrensning på hv
 
 ## Før du migrerer Figma-biblioteket
 
-Denne guiden hjelper deg som vedlikeholder en Figma-fil basert på Designsystemet med å migrere Figma-biblioteket ditt til den nye fargestrukturen.
+Denne guiden er for deg som vedlikeholder et Figma-bibliotek basert på Designsystemet.
 
 Før du starter i Figma, må `designsystem.config.json` og `design-tokens` være oppdatert til den nye fargestrukturen. Her kan det være lurt å få hjelp fra en utvikler.
 
@@ -95,7 +95,7 @@ Sørg for at du kan gjenopprette filen hvis noe går galt. Hvis du foretrekker �
 />
 
 
-## Steg 2 – Oppdater navn i variabelstrukturen
+## Steg 2 – Oppdater variabelstrukturen
 
 Oppdater variabelstrukturen før du eksporterer tokens fra Token Studio. Da havner variablene riktig når du eksporterer dem igjen.
 
@@ -180,7 +180,7 @@ Rydd opp etter eksporten. Token Studio sletter ikke `Support color` automatisk, 
 
 ## Steg 5 – Kjør migreringen i pluginen
 
-I biblioteket finnes det i hovedsak tre fargevarianter av komponentene: `main`, `support` og `neutral`.
+De fleste komponentene i biblioteket finnes i tre fargevarianter: `main`, `support` og `neutral`.
 
 `support` brukes ikke lenger, og `neutral` er overflødig fordi komponentene nå kan styres med `color mode`.
 
