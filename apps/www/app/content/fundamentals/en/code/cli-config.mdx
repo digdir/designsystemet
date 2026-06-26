@@ -28,9 +28,9 @@ If you've placed your file in a different location or with a different name, you
   "themes": {
     "my-theme": {
       "colors": {
-        "main": { "primary": "#0062BA" },
+        "primary": "#0062BA",
         "neutral": "#1E2B3C",
-        "support": { "extra1": "#F45F63" }
+        "extra1": "#F45F63"
       },
       "borderRadius": 4
     }
@@ -39,8 +39,7 @@ If you've placed your file in a different location or with a different name, you
 ```
 
 Above, we have defined a theme called `my-theme` with some colours and border radius.
-Note that `neutral` is defined as a string, while `main` and `support` are objects.
-This is because `neutral` only has one colour, while `main` and `support` have multiple.
+Each colour is defined directly under `colors`, where the key is the colour's name and the value is a hex code.
 
 ## Structure
 
@@ -84,18 +83,15 @@ Note that typography is experimental. The config schema may change at any time.
 ### Colors
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
-| main | Object | Yes | Main colours for the theme. |
+| "colorName" | String | No | A colour for the theme. |
 | neutral | String | Yes | Neutral colour for the theme. |
-| support | Object | No | Support colours for the theme. Defaults to empty object. |
 
-The object for main and support contains colours, where the name is the colour's name and the value is a hex code.
+Colours are defined directly under `colors`, where the key is the colour's name and the value is a hex code.
 
 ```json
 {
-  "main": {
-    "primary": "#0062BA",
-    "accent": "#1E98F5"
-  },
+  "primary": "#0062BA",
+  "accent": "#1E98F5",
   "neutral": "#1E2B3C"
 }
 ```
@@ -115,7 +111,7 @@ The object for main and support contains colours, where the name is the colour's
 
 The `colors` override allows you to customise specific semantic colour tokens for any colour defined in your theme.
 
-Each key in the `colors` object should match a colour name from your colours (both `main` and `support` colours), or one of the severity colours (`success`, `warning`, `danger`, `info`).
+Each key in the `colors` object should match a colour name from your colours, or one of the severity colours (`success`, `warning`, `danger`, `info`).
 
 For each colour, you can override individual semantic tokens like `background-default`, `border-subtle`, `text-default`, etc.
 Each token override has a `light` and/or `dark` value that points to a hex code.
@@ -178,9 +174,11 @@ The `severity` override allows you to customise the colours used for severity, w
   "themes": {
     "my-theme": {
       "colors": {
-        "main": { "primary": "#0062BA", "accent": "#1E98F5" },
+        "primary": "#0062BA",
+        "accent": "#1E98F5",
         "neutral": "#1E2B3C",
-        "support": { "extra1": "#F45F63", "extra2": "#E5AA20" }
+        "extra1": "#F45F63",
+        "extra2": "#E5AA20"
       },
       "borderRadius": 4,
       "typography": {

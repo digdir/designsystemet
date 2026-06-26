@@ -29,12 +29,7 @@ export const useTokenModal = () => {
     Record<string, { light?: CssColor; dark?: CssColor }>
   > = {};
 
-  [
-    ...colors.main,
-    ...colors.support,
-    ...colors.neutral,
-    ...severityColors,
-  ].forEach((color) => {
+  [...colors, ...severityColors].forEach((color) => {
     if (color.overrides && Object.keys(color.overrides).length > 0) {
       colorOverrides[color.name] = color.overrides;
     }
@@ -42,23 +37,13 @@ export const useTokenModal = () => {
 
   const theme: CreateTokensOptions = {
     name,
-    colors: {
-      main: colors.main.reduce(
-        (acc, color) => {
-          acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
-          return acc;
-        },
-        {} as Record<string, CssColor>,
-      ),
-      support: colors.support.reduce(
-        (acc, color) => {
-          acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
-          return acc;
-        },
-        {} as Record<string, CssColor>,
-      ),
-      neutral: getBaseDefault(colors.neutral[0]?.colors.light)?.hex || '#',
-    },
+    colors: colors.reduce(
+      (acc, color) => {
+        acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
+        return acc;
+      },
+      {} as Record<string, CssColor>,
+    ),
     borderRadius: baseBorderRadius,
     typography: {
       fontFamily: 'Inter',
@@ -74,11 +59,7 @@ export const useTokenModal = () => {
     outDir: './design-tokens',
     themes: {
       [theme.name]: {
-        colors: {
-          main: theme.colors.main,
-          support: theme.colors.support,
-          neutral: theme.colors.neutral,
-        },
+        colors: theme.colors,
         ...(Object.keys(severityOverrides).length > 0 ||
         Object.keys(colorOverrides).length > 0
           ? {

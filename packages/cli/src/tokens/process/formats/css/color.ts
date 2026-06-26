@@ -3,8 +3,7 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
 
-import { colorCategories } from '../../../types.js';
-import { isColorCategoryToken, isGlobalColorToken, isSemanticToken } from '../../../utils.js';
+import { isSemanticToken } from '../../../utils.js';
 import { buildOptions } from '../../platform.js';
 
 const prefersColorScheme = (colorScheme: string, content: string) => `
@@ -37,11 +36,7 @@ export const colorScheme: Format = {
         R.anyPass([
           // Include semantic tokens in the output
           isSemanticToken,
-          // Include global color tokens
-          isGlobalColorToken,
         ]),
-        // Don't include color category tokens -- they are exported separately
-        (t) => !isColorCategoryToken(t),
       ]),
     );
     const formattedMap = filteredAllTokens.map((token: TransformedToken) => ({
@@ -49,7 +44,6 @@ export const colorScheme: Format = {
       formatted: format(token),
     }));
 
-    // If the token is a color category token, we want to use the original value
     const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).join('\n');
     const content = `{\n${formattedTokens}\n${colorSchemeProperty}}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(colorScheme_)
@@ -82,9 +76,7 @@ export const colorCategory: Format = {
         name: token.name.replace(/color-\w+-/, 'color-'),
         original: {
           ...token.original,
-          $value: new RegExp(`color-(${colorCategories.main}|${colorCategories.support})-`).test(token.name)
-            ? token.original.$value
-            : `{${token.path.join('.')}}`,
+          $value: `{${token.path.join('.')}}`,
         },
       }),
     );
@@ -96,7 +88,6 @@ export const colorCategory: Format = {
 
     buildOptions.buildTokenFormats[destination] = formattedMap;
 
-    // If the token is a color category token, we want to use the original value
     const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).join('\n');
     const content = `{\n${formattedTokens}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;

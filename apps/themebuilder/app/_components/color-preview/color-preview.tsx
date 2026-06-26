@@ -30,12 +30,7 @@ export const ColorPreview = () => {
     useThemebuilder();
   const [view, setView] = useState<ViewType>(DEFAULT_VIEW);
 
-  const allColors = [
-    ...colors.main,
-    ...colors.neutral,
-    ...colors.support,
-    ...(severityEnabled ? severityColors : []),
-  ];
+  const allColors = [...colors, ...(severityEnabled ? severityColors : [])];
 
   const prepVariables = (variables: Record<string, string>) => {
     const prepped: Record<string, string> = {};
@@ -92,7 +87,7 @@ export const ColorPreview = () => {
 };
 
 type CardProps = {
-  color: ReturnType<typeof useThemebuilder>['colors']['main'][number];
+  color: ReturnType<typeof useThemebuilder>['colors'][number];
   view?: ViewType;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'color'>;
 

@@ -1,57 +1,24 @@
-import * as R from 'ramda';
-import { baseColorNames } from '../../../../colors/colorMetadata.js';
-import { type ColorNames, semanticColorMap } from '../../../../colors/types.js';
-import type { Colors, Token, TokenSet } from '../../../types.js';
+import { type ColorNames, semanticColorNames } from '../../../../colors/types.js';
+import type { Token, TokenSet } from '../../../types.js';
 
-export const generateSemanticColors = (colors: Colors, _themeName: string) => {
-  const mainColorNames = Object.keys(colors.main);
-  const supportColorNames = Object.keys(colors.support);
+export const generateColorTokens = (colorNames: string[], _themeName: string): Record<string, TokenSet> => {
+  const colorTokens = {} as Record<string, TokenSet>;
 
-  const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
+  for (const colorName of colorNames) {
+    const customColorTokens = generateSemanticColorScaleTokens(colorName);
+    colorTokens[colorName] = customColorTokens;
+  }
 
-  const allColors = [...customColors, ...baseColorNames];
-
-  const semanticColorTokens = allColors.map((colorName) => [colorName, generateColorScaleTokens(colorName)]);
-
-  return {
-    ...baseColorTemplate,
-    color: {
-      ...Object.fromEntries(semanticColorTokens),
-      ...baseColorTemplate.color,
-    },
-  };
+  return colorTokens;
 };
 
-const baseColorTemplate: TokenSet = {
-  color: {
-    focus: {
-      inner: {
-        $type: 'color',
-        $value: '{color.focus.inner-color}',
-      },
-      outer: {
-        $type: 'color',
-        $value: '{color.focus.outer-color}',
-      },
-    },
-  },
-  link: {
-    color: {
-      visited: {
-        $type: 'color',
-        $value: '{color.link.visited}',
-      },
-    },
-  },
-};
-
-const generateColorScaleTokens = (colorName: string): Record<ColorNames, Token> => {
+const generateSemanticColorScaleTokens = (colorName: string): Record<ColorNames, Token> => {
   const colorScale = {} as Record<ColorNames, Token>;
 
-  for (const [colorSemantic, colorNumber] of R.toPairs(semanticColorMap)) {
-    colorScale[colorSemantic] = {
+  for (const semanticColorName of semanticColorNames) {
+    colorScale[semanticColorName] = {
       $type: 'color',
-      $value: `{color.${colorName}.${colorNumber}}`,
+      $value: `{color.${colorName}.${semanticColorName}}`,
     };
   }
 

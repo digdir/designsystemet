@@ -1,5 +1,26 @@
 # Change Log
 
+## 1.17.0
+
+### Patch Changes
+
+- **Tabs:** enhanced support for server side rendering ([#5032](https://github.com/digdir/designsystemet/pull/5032))
+
+- **Avatar:** now scales correctly also when rendered as `<button>` ([#5029](https://github.com/digdir/designsystemet/pull/5029))
+
+- **Avatar, Badge, Card, Details, Paragraph, Popover, Skeleton, Tag**: Remove redundant default value for `variant` prop: ([#4999](https://github.com/digdir/designsystemet/pull/4999))
+  - Avatar - circle
+  - Badge - base
+  - Card - default
+  - Details - default
+  - Paragraph - default
+  - Popover - default
+  - Skeleton - rectangle
+  - Tag - default
+- Updated dependencies [[`f45f4a3`](https://github.com/digdir/designsystemet/commit/f45f4a3f9cc606fc8ec88ead22fc0de15eaf1143)]:
+  - @digdir/designsystemet-web@1.17.0
+  - @digdir/designsystemet-types@1.17.0
+
 ## 1.16.1
 
 ### Patch Changes
