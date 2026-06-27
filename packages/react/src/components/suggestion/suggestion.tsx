@@ -210,9 +210,11 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
       const beforeChange = (event: CustomEvent<HTMLDataElement>) => {
         event.preventDefault();
         const multiple = combobox?.multiple;
+        const input = combobox?.control;
         const data = event.detail;
         const nextItem = nextItems(data, selectedItemsRef.current, multiple);
 
+        if (!multiple && input) input.value = data?.textContent || ''; // Sync input value for single selection
         onSelectedChangeRef.current?.(
           (nextItem as SuggestionItem & SuggestionItem[]) || null,
         );

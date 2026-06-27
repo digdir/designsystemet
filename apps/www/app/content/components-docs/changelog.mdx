@@ -1,7 +1,61 @@
 ---
 title: "Changelog"
-latestVersion: 1.17.0
+latestVersion: 1.18.0
 ---
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.18.0
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Patch Changes
+
+- Now correctly creates CSS variables when color name has hyphen ([#5044](https://github.com/digdir/designsystemet/pull/5044))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.18.0
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Minor Changes
+
+- **Chip:** now by default keeps text on a single line and truncates with ellipsis if needed, but allows text wrapping by adding `data-wrap="wrap"` ([#5040](https://github.com/digdir/designsystemet/pull/5040))
+
+#### Patch Changes
+
+- **@charset**: remove redundant `@charset` as this simplifies merging Designsystemet with other CSS files ([#5041](https://github.com/digdir/designsystemet/pull/5041))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.18.0
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Minor Changes
+
+- **Chip:** now by default keeps text on a single line and truncates with ellipsis if needed, but allows text wrapping by adding `data-wrap="wrap"` ([#5040](https://github.com/digdir/designsystemet/pull/5040))
+
+#### Patch Changes
+
+- **Suggestion:** now always correctly syncs input value in single mode ([#5043](https://github.com/digdir/designsystemet/pull/5043))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.18.0
+  - @digdir/designsystemet-web@1.18.0
+
+</div>
 
 <div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",

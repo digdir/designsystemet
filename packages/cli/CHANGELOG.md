@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.18.0
+
+### Patch Changes
+
+- Now correctly creates CSS variables when color name has hyphen ([#5044](https://github.com/digdir/designsystemet/pull/5044))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.18.0
+
 ## 1.17.0
 
 ### Minor Changes
