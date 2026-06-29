@@ -40,9 +40,6 @@ export const Variants: StoryFn<typeof Button> = () => (
     <Button variant='primary'>Primary</Button>
     <Button variant='secondary'>Secondary</Button>
     <Button variant='tertiary'>Teritiary</Button>
-    <Button variant='primary'>Primary</Button>
-    <Button variant='secondary'>Secondary</Button>
-    <Button variant='tertiary'>Teritiary</Button>
   </>
 );
 

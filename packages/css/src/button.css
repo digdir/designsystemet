@@ -1,7 +1,7 @@
 .ds-button {
   --dsc-button-background--active: var(--ds-color-base-active);
   --dsc-button-background--hover: var(--ds-color-base-hover);
-  --dsc-button-background: var(--ds-color-base-default);
+  --dsc-button-background: var(--ds-color-danger-base-default);
   --dsc-button-border-color: transparent;
   --dsc-button-border-radius: var(--ds-border-radius-default);
   --dsc-button-border-style: solid;
