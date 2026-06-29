@@ -141,7 +141,7 @@ importers:
         version: link:../../packages/react
       '@internal/components':
         specifier: workspace:^
-        version: file:internal/components(@types/react@19.2.17)(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
+        version: link:../../internal/components
       '@internal/digdir':
         specifier: workspace:^
         version: link:../../internal/digdir
@@ -170,8 +170,8 @@ importers:
         specifier: 5.2.1
         version: 5.2.1
       i18next:
-        specifier: 25.10.10
-        version: 25.10.10(typescript@5.9.3)
+        specifier: 26.3.2
+        version: 26.3.2(typescript@5.9.3)
       isbot:
         specifier: 5.1.42
         version: 5.1.42
@@ -189,13 +189,13 @@ importers:
         version: 19.2.7(react@19.2.7)
       react-i18next:
         specifier: 17.0.8
-        version: 17.0.8(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
+        version: 17.0.8(i18next@26.3.2(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
       react-router:
         specifier: 8.0.1
         version: 8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       remix-i18next:
         specifier: 7.5.0
-        version: 7.5.0(i18next@25.10.10(typescript@5.9.3))(react-i18next@17.0.8(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3))(react-router@8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
+        version: 7.5.0(i18next@26.3.2(typescript@5.9.3))(react-i18next@17.0.8(i18next@26.3.2(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3))(react-router@8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@react-router/dev':
         specifier: 8.0.1
@@ -247,7 +247,7 @@ importers:
         version: link:../../packages/react
       '@internal/components':
         specifier: workspace:^
-        version: file:internal/components(@types/react@19.2.17)(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
+        version: link:../../internal/components
       '@internal/digdir':
         specifier: workspace:^
         version: link:../../internal/digdir
@@ -279,8 +279,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2
       i18next:
-        specifier: 25.10.10
-        version: 25.10.10(typescript@5.9.3)
+        specifier: 26.3.2
+        version: 26.3.2(typescript@5.9.3)
       isbot:
         specifier: 5.1.42
         version: 5.1.42
@@ -313,7 +313,7 @@ importers:
         version: 19.2.7(react@19.2.7)
       react-i18next:
         specifier: 17.0.8
-        version: 17.0.8(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
+        version: 17.0.8(i18next@26.3.2(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
       react-live:
         specifier: 4.1.8
         version: 4.1.8(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -331,7 +331,7 @@ importers:
         version: 4.0.1
       remix-i18next:
         specifier: 7.5.0
-        version: 7.5.0(i18next@25.10.10(typescript@5.9.3))(react-i18next@17.0.8(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3))(react-router@8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
+        version: 7.5.0(i18next@26.3.2(typescript@5.9.3))(react-i18next@17.0.8(i18next@26.3.2(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3))(react-router@8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@react-router/dev':
         specifier: 8.0.1
@@ -413,7 +413,7 @@ importers:
         version: 19.2.7(react@19.2.7)
       react-i18next:
         specifier: 17.0.8
-        version: 17.0.8(i18next@26.0.3(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
+        version: 17.0.8(i18next@26.3.2(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
       react-router:
         specifier: 8.0.1
         version: 8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -1123,21 +1123,6 @@ packages:
   '@custom-elements-manifest/find-dependencies@0.0.7':
     resolution: {integrity: sha512-icHEBPHcOXSrpDOFkQhvM7vljEbqrEReW251RBxSzDctXzYWIL0Hk2yMDINn3d6mZ4KSsqLZlaFiGFp/2nn9rA==}
 
-  '@digdir/designsystemet-css@file:packages/css':
-    resolution: {directory: packages/css, type: directory}
-
-  '@digdir/designsystemet-react@file:packages/react':
-    resolution: {directory: packages/react, type: directory}
-    peerDependencies:
-      react: '>=18.3.1 || ^19.0.0'
-      react-dom: '>=18.3.1 || ^19.0.0'
-
-  '@digdir/designsystemet-types@file:packages/types':
-    resolution: {directory: packages/types, type: directory}
-
-  '@digdir/designsystemet-web@file:packages/web':
-    resolution: {directory: packages/web, type: directory}
-
   '@emnapi/core@1.10.0':
     resolution: {integrity: sha512-yq6OkJ4p82CAfPl0u9mQebQHKPJkY7WrIuk205cTYnYe+k2Z8YBh11FrbRG/H6ihirqcacOgl2BIO8oyMQLeXw==}
 
@@ -1552,12 +1537,6 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
-
-  '@internal/components@file:internal/components':
-    resolution: {directory: internal/components, type: directory}
-    peerDependencies:
-      react: '>=18.3.1 || ^19.0.0'
-      react-dom: '>=18.3.1 || ^19.0.0'
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -4205,16 +4184,8 @@ packages:
     resolution: {integrity: sha512-Y93lCzHYgGWdrJ66yIktxiaGULYc6oGiABxhcO5AufBeOyoIdZF7bIfLaOrbM0iGIOXQQgxxRrFEnb+Y6w1n4A==}
     engines: {node: '>=10.18'}
 
-  i18next@25.10.10:
-    resolution: {integrity: sha512-cqUW2Z3EkRx7NqSyywjkgCLK7KLCL6IFVFcONG7nVYIJ3ekZ1/N5jUsihHV6Bq37NfhgtczxJcxduELtjTwkuQ==}
-    peerDependencies:
-      typescript: ^5 || ^6
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  i18next@26.0.3:
-    resolution: {integrity: sha512-1571kXINxHKY7LksWp8wP+zP0YqHSSpl/OW0Y0owFEf2H3s8gCAffWaZivcz14rMkOvn3R/psiQxVsR9t2Nafg==}
+  i18next@26.3.2:
+    resolution: {integrity: sha512-QQkXAM1sPDHqhxMQuBeHVMUn6mJchF+wdpOoQerciLAFqO3ZYdxO0EUbeEhruyutnNwpUQIITDVzLjwnNL0T1w==}
     peerDependencies:
       typescript: ^5 || ^6
     peerDependenciesMeta:
@@ -6978,35 +6949,6 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  '@digdir/designsystemet-css@file:packages/css':
-    dependencies:
-      '@digdir/designsystemet-types': file:packages/types
-
-  '@digdir/designsystemet-react@file:packages/react(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
-    dependencies:
-      '@digdir/designsystemet-types': file:packages/types
-      '@digdir/designsystemet-web': file:packages/web
-      '@floating-ui/dom': 1.7.6
-      '@floating-ui/react': 0.26.23(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@navikt/aksel-icons': 8.12.1(react@19.2.7)
-      '@radix-ui/react-slot': 1.2.5(@types/react@19.2.17)(react@19.2.7)
-      '@tanstack/react-virtual': 3.14.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      clsx: 2.1.1
-      react: 19.2.7
-      react-dom: 19.2.7(react@19.2.7)
-    transitivePeerDependencies:
-      - '@types/react'
-
-  '@digdir/designsystemet-types@file:packages/types': {}
-
-  '@digdir/designsystemet-web@file:packages/web':
-    dependencies:
-      '@floating-ui/dom': 1.7.6
-      '@u-elements/u-combobox': 2.0.5
-      '@u-elements/u-datalist': 2.0.1
-      '@u-elements/u-details': 1.0.0
-      '@u-elements/u-tabs': 1.0.4
-
   '@emnapi/core@1.10.0':
     dependencies:
       '@emnapi/wasi-threads': 1.2.1
@@ -7294,28 +7236,6 @@ snapshots:
   '@inquirer/type@4.0.6(@types/node@24.13.2)':
     optionalDependencies:
       '@types/node': 24.13.2
-
-  '@internal/components@file:internal/components(@types/react@19.2.17)(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)':
-    dependencies:
-      '@digdir/designsystemet-css': file:packages/css
-      '@digdir/designsystemet-react': file:packages/react(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      '@digdir/designsystemet-types': file:packages/types
-      '@navikt/aksel-icons': 8.12.1(react@19.2.7)
-      '@radix-ui/react-slot': 1.2.5(@types/react@19.2.17)(react@19.2.7)
-      clsx: 2.1.1
-      prettier: 3.8.4
-      prism-react-renderer: 2.4.1(react@19.2.7)
-      ramda: 0.32.0
-      react: 19.2.7
-      react-code-block: 1.1.3(prism-react-renderer@2.4.1(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      react-dom: 19.2.7(react@19.2.7)
-      react-i18next: 17.0.8(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
-      react-router: 8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-    transitivePeerDependencies:
-      - '@types/react'
-      - i18next
-      - react-native
-      - typescript
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -9796,15 +9716,7 @@ snapshots:
 
   hyperdyperid@1.2.0: {}
 
-  i18next@25.10.10(typescript@5.9.3):
-    dependencies:
-      '@babel/runtime': 7.29.2
-    optionalDependencies:
-      typescript: 5.9.3
-
-  i18next@26.0.3(typescript@5.9.3):
-    dependencies:
-      '@babel/runtime': 7.29.2
+  i18next@26.3.2(typescript@5.9.3):
     optionalDependencies:
       typescript: 5.9.3
 
@@ -11266,22 +11178,11 @@ snapshots:
       react: 19.2.7
       scheduler: 0.27.0
 
-  react-i18next@17.0.8(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3):
+  react-i18next@17.0.8(i18next@26.3.2(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3):
     dependencies:
       '@babel/runtime': 7.29.2
       html-parse-stringify: 3.0.1
-      i18next: 25.10.10(typescript@5.9.3)
-      react: 19.2.7
-      use-sync-external-store: 1.6.0(react@19.2.7)
-    optionalDependencies:
-      react-dom: 19.2.7(react@19.2.7)
-      typescript: 5.9.3
-
-  react-i18next@17.0.8(i18next@26.0.3(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3):
-    dependencies:
-      '@babel/runtime': 7.29.2
-      html-parse-stringify: 3.0.1
-      i18next: 26.0.3(typescript@5.9.3)
+      i18next: 26.3.2(typescript@5.9.3)
       react: 19.2.7
       use-sync-external-store: 1.6.0(react@19.2.7)
     optionalDependencies:
@@ -11459,11 +11360,11 @@ snapshots:
       mdast-util-to-markdown: 2.1.2
       unified: 11.0.5
 
-  remix-i18next@7.5.0(i18next@25.10.10(typescript@5.9.3))(react-i18next@17.0.8(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3))(react-router@8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7):
+  remix-i18next@7.5.0(i18next@26.3.2(typescript@5.9.3))(react-i18next@17.0.8(i18next@26.3.2(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3))(react-router@8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7):
     dependencies:
-      i18next: 25.10.10(typescript@5.9.3)
+      i18next: 26.3.2(typescript@5.9.3)
       react: 19.2.7
-      react-i18next: 17.0.8(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
+      react-i18next: 17.0.8(i18next@26.3.2(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
       react-router: 8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
 
   require-directory@2.1.1: {}
