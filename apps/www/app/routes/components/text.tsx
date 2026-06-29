@@ -22,8 +22,8 @@ import { TableOfContents } from '~/_components/table-of-contents/toc';
 import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
-import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import { generateMetadata } from '~/_utils/metadata';
+import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import type { Route } from './+types/text';
 import classes from './component.module.css';
 

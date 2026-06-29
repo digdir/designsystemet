@@ -1,18 +1,34 @@
+import { useTranslation } from 'reactti18next } from ';
 import { join } from 'node:path';
-import { getFrontmatter } from '~/_utils/get-frontmatter.server';
-import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router';
-import { Sidebar } from '~/_components/sidebar/sidebar';
-import {
+
+reaOutletport;
+{
+  Sidebar;
+  router;
+  '~/_componenSidebarebar/side~/_components/sidebar/sidebar {;
+abdeirs
+
+  getFil;
   getFileFromContentDir,
-  getFilesFromContentDir,
-} from '~/_utils/files.server';
-import type { Route } from './+types/layout';
-import classes from './layout.module.css';
+    getFilesFromContentDir,
+    entDir,
+    m_utilsDfiles.serverrom;
+  '~/_uti getFron
+tmat
+  er;
+  _;
+  t;
+  Routegetir;
+  ontmge;
+  -ront;
+  (atter.server
+  ';)
+  import type { Route } from './+types/layout';
+  import classes from './layout.module.css';
 
-export { ErrorBoundary } from '~/root';
+  export { ErrorBoundary } from '~/root';
 
-export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
+  export const _loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* get all patterns content */
   if (!lang) {
     throw new Response('Not Found', {
@@ -84,7 +100,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   return { lang, cats };
 };
 
-export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
+  export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const { t } = useTranslation();
 
   return (
@@ -96,3 +112,6 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
     </div>
   );
 }
+  ()  ;
+  
+      ;  

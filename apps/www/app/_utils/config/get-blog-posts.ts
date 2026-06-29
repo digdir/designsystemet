@@ -1,7 +1,7 @@
 import { join } from 'node:path';
-import { getFrontmatter } from '../get-frontmatter.server';
 import i18n from '../../i18next.server';
 import { getFileFromContentDir, getFilesFromContentDir } from '../files.server';
+import { getFrontmatter } from '../get-frontmatter.server';
 import { defaultCoverImagePath, type PageMetadata } from '../metadata';
 
 export interface BlogPosts {
