@@ -128,10 +128,9 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  const trimmedUrl = request.url.endsWith('/')
-    ? request.url.slice(0, -1)
-    : request.url;
-  const compPage = trimmedUrl.split('/').pop();
+  // Use the splat route param rather than parsing request.url: single-fetch data
+  // requests append a `.data` suffix (e.g. `/accessibility.data`) to request.url.
+  const compPage = params['*'];
 
   const componentDocs = getComponentDocs(component);
 

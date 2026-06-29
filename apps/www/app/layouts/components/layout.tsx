@@ -168,10 +168,11 @@ export const loader = async ({
     orderedCats[key] = value;
   });
 
-  const trimmedUrl = request.url.endsWith('/')
-    ? request.url.slice(0, -1).split('/')
-    : request.url.split('/');
-  const compPage = trimmedUrl[trimmedUrl.length - 1];
+  // Derive the current doc page from the pathname. Strip any `.data` suffix so
+  // single-fetch data requests (e.g. `/accessibility.data`) don't leak into the
+  // sidebar links. `filter(Boolean)` drops a trailing-slash empty segment.
+  const pathname = new URL(request.url).pathname.replace(/\.data$/, '');
+  const compPage = pathname.split('/').filter(Boolean).pop();
 
   const isComponentPage = request.url.includes('/components/docs/');
 

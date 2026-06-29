@@ -14,9 +14,6 @@ const config: Config = {
     concurrency: 25,
   },
   presets: [],
-  future: {
-    v8_trailingSlashAwareDataRequests: true,
-  },
   buildEnd: async () => {
     const dirname = process.cwd();
     const allPages = generatePrerenderPaths();
