@@ -45,3 +45,66 @@ Button.parameters = {
     justifyContent: 'center',
   },
 };
+
+export const Nowrap: StoryFn<typeof Chip.Radio> = () => (
+  <>
+    <Chip.Radio name='my-radio' value='nynorsk' defaultChecked>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+      sapien.
+    </Chip.Radio>
+    <Chip.Checkbox name='my-checkbox' value='nynorsk' defaultChecked>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+      sapien.
+    </Chip.Checkbox>
+    <Chip.Removable>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+      sapien.
+    </Chip.Removable>
+    <Chip.Button>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+      sapien.
+    </Chip.Button>
+  </>
+);
+
+Nowrap.parameters = {
+  layout: 'padded',
+};
+
+export const Wrap: StoryFn<typeof Chip.Radio> = () => (
+  <>
+    <Chip.Radio data-wrap='wrap' name='my-radio' value='nynorsk' defaultChecked>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+      sapien.
+    </Chip.Radio>
+    <Chip.Checkbox
+      data-wrap='wrap'
+      name='my-checkbox'
+      value='nynorsk'
+      defaultChecked
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+      sapien.
+    </Chip.Checkbox>
+    <Chip.Removable data-wrap='wrap'>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+      sapien.
+    </Chip.Removable>
+    <Chip.Button data-wrap='wrap'>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+      sapien.
+    </Chip.Button>
+  </>
+);
+
+Wrap.parameters = {
+  layout: 'padded',
+};

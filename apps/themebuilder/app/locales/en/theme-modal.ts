@@ -29,7 +29,6 @@ export default {
     'step-two':
       'Open a terminal in the same folder as the config file. Run the code snippets to generate tokens and CSS variables for code.',
   },
-  'max-X-colors': 'Maximum {count} colors allowed.',
   'severity-colors': 'Severity',
   'severity-colors-switch': 'Activate to override severity colors',
 } as typeof no;

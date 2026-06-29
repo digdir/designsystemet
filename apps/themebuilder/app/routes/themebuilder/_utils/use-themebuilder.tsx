@@ -55,17 +55,23 @@ export const useThemebuilder = () => {
   };
 };
 
-export function createColorsFromQuery(colors: string | null) {
+export function createColorsFromQuery(colors: string | null): ColorTheme[] {
   if (!colors) return [];
-  return colors.split(QUERY_SEPARATOR).map((color) => {
-    const [name, hex] = color.split(':');
-    return {
-      name,
-      hex,
-      overrides: {},
-      ...createColorsAndVariables(hex as CssColor),
-    };
-  });
+  return colors
+    .split(QUERY_SEPARATOR)
+    .filter(Boolean)
+    .map((color) => {
+      const [name, hex] = color.split(':');
+      return {
+        name,
+        hex,
+        overrides: {},
+        // The neutral color uses a dedicated variable namespace
+        ...(name === 'neutral'
+          ? createColorsAndNeutralVariables(hex as CssColor)
+          : createColorsAndVariables(hex as CssColor)),
+      };
+    });
 }
 
 export function createColorsAndVariables(color: CssColor) {
