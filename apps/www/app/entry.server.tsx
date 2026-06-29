@@ -35,7 +35,6 @@ export default async function handleRequest(
     ...i18n,
     lng,
     ns,
-    showSupportNotice: false,
     resources: {
       en: {
         translation: en,
@@ -44,7 +43,7 @@ export default async function handleRequest(
         translation: no,
       },
     },
-  });
+  } as Parameters<typeof instance.init>[0]) 
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;
