@@ -15,16 +15,9 @@ export const ColorOverrides = ({ triggerButton }: ColorOverridesProps) => {
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const allColors: Array<{ color: ColorTheme; type: string }> = [
-    ...colors.main.map((c) => ({ color: c, type: 'main' })),
-    ...colors.neutral.map((c) => ({ color: c, type: 'neutral' })),
-    ...colors.support.map((c) => ({ color: c, type: 'support' })),
-    ...(severityEnabled
-      ? severityColors.map((c) => ({
-          color: c as ColorTheme,
-          type: 'severity',
-        }))
-      : []),
+  const allColors: ColorTheme[] = [
+    ...colors,
+    ...(severityEnabled ? (severityColors as ColorTheme[]) : []),
   ];
 
   return (
@@ -42,7 +35,7 @@ export const ColorOverrides = ({ triggerButton }: ColorOverridesProps) => {
 
         <Dialog.Block>
           <Card data-color='neutral' variant='tinted'>
-            {allColors.map(({ color }) => {
+            {allColors.map((color) => {
               return <ColorDetails key={color.name} color={color} />;
             })}
           </Card>

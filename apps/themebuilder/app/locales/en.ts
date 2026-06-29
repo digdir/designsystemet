@@ -125,8 +125,6 @@ export default {
     'example-2': 'Example 2',
   },
   colorPane: {
-    'main-color': 'main colour',
-    'support-color': 'support colour',
     add: 'Add',
     'edit-color': 'Edit colour',
     save: 'Save',

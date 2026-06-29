@@ -1,5 +1,13 @@
 # @digdir/designsystemet-web
 
+## 1.18.0
+
+## 1.17.0
+
+### Patch Changes
+
+- **tooltip**: Fixes a bug where tooltip would reappear on mousedown outside trigger ([#5012](https://github.com/digdir/designsystemet/pull/5012))
+
 ## 1.16.1
 
 ### Patch Changes

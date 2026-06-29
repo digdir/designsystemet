@@ -54,10 +54,9 @@ export const ExamplesComponents = ({
   const ref = useRef<HTMLDivElement>(null);
   const { colors } = useThemebuilder();
 
-  const neutralColor = colors?.neutral[0].hex || '#F5F7FA';
-  const [previewColor, setPreviewColor] = useState(
-    colors?.main[0].hex || color,
-  );
+  const neutralColor =
+    colors?.find((c) => c.name === 'neutral')?.hex || '#F5F7FA';
+  const [previewColor, setPreviewColor] = useState(colors?.[0]?.hex || color);
 
   useEffect(() => {
     if (ref.current) {
@@ -74,7 +73,7 @@ export const ExamplesComponents = ({
 
   useEffect(() => {
     if (!colors) return;
-    const allColors = [...colors.main, ...colors.support];
+    const allColors = colors.filter((c) => c.name !== 'neutral');
     /* if select colors is gone, set to default */
     if (!allColors.find((c) => c.hex === previewColor)) {
       setPreviewColor(color);
@@ -97,27 +96,24 @@ export const ExamplesComponents = ({
               value={previewColor}
               onChange={(v) => {
                 if (!colors) return;
-                const allColors = [...colors.main, ...colors.support];
+                const allColors = colors.filter((c) => c.name !== 'neutral');
                 /* find the selected color */
                 let selected = allColors.find(
                   (c) => c.hex === v.target.value,
                 )?.hex;
                 if (!selected) {
-                  selected = colors.main[0].hex;
+                  selected = allColors[0]?.hex;
                 }
                 setPreviewColor(selected as CssColor);
               }}
             >
-              {colors.main.map((color) => (
-                <Select.Option key={color.name} value={color.hex}>
-                  {color.name}
-                </Select.Option>
-              ))}
-              {colors.support.map((color) => (
-                <Select.Option key={color.name} value={color.hex}>
-                  {color.name}
-                </Select.Option>
-              ))}
+              {colors
+                .filter((c) => c.name !== 'neutral')
+                .map((color) => (
+                  <Select.Option key={color.name} value={color.hex}>
+                    {color.name}
+                  </Select.Option>
+                ))}
             </Select>
           </Field>
 

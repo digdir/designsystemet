@@ -1,16 +1,12 @@
 import type { Command, OptionValues } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import {
-  type BuildConfigSchema,
-  type CreateConfigSchema,
-  commonConfig,
-  configFileCreateSchema,
-  parseConfig,
-  validateConfig,
-} from '../src/config.js';
+import { parseConfig, validateConfig } from '../src/schemas/helpers.js';
+import { type CreateConfigSchema, configFileCreateSchema } from '../src/schemas/v1.1/schema.js';
 import { dsfs } from '../src/utils/filesystem.js';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
+
+export { deprecatedCLIOptions } from '../src/schemas/helpers.js';
 
 export async function readConfigFile(configFilePath: string, allowFileNotFound = true): Promise<string> {
   let configFile: string;
@@ -44,9 +40,7 @@ export async function parseCreateConfig(
    * Check that we're not creating multiple themes with different color names.
    * For the themes' modes to work in Figma and when building css, the color names must be consistent
    */
-  const themeColors = Object.values(configParsed?.themes ?? {}).map(
-    (x) => new Set([...R.keys(x.colors.main), ...R.keys(x.colors.support)]),
-  );
+  const themeColors = Object.values(configParsed?.themes ?? {}).map((x) => new Set(R.keys(x.colors)));
   if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
     console.error(pc.redBright(`In config, all themes must have the same custom color names, but we found:`));
     const themeNames = R.keys(configParsed.themes ?? {});
@@ -66,9 +60,9 @@ export async function parseCreateConfig(
   const getThemeOptions = (optionGetter: OptionGetter) =>
     noUndefined({
       colors: noUndefined({
-        main: optionGetter(cmd, 'mainColors'),
-        support: optionGetter(cmd, 'supportColors'),
-        neutral: optionGetter(cmd, 'neutralColor'),
+        ...(optionGetter(cmd, 'mainColors') as Record<string, string>),
+        ...(optionGetter(cmd, 'supportColors') as Record<string, string>),
+        neutral: optionGetter(cmd, 'neutralColor') as string,
       }),
       typography: noUndefined({
         fontFamily: optionGetter(cmd, 'fontFamily'),
@@ -100,13 +94,4 @@ export async function parseCreateConfig(
   });
 
   return validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig, configFilePath);
-}
-
-export async function parseBuildConfig(
-  configFile: string,
-  { configFilePath }: { configFilePath: string },
-): Promise<BuildConfigSchema> {
-  const configParsed: BuildConfigSchema = parseConfig<BuildConfigSchema>(configFile, configFilePath);
-
-  return validateConfig<BuildConfigSchema>(commonConfig, configParsed, configFilePath);
 }

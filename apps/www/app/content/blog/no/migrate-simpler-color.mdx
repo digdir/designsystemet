@@ -1,0 +1,280 @@
+---
+title: "Migrering til forenklet fargestruktur"
+description: Få hjelp til å migrere Designsystemet til den nye fargestrukturen
+date: 2026-06-26
+author: Designsystemet
+imageSrc: /img/blog/migrate-figma-color.png
+imageAlt: Illustrasjonsbilde som viser main, support og neutral til venstre, og den nye strukturen med én Color-collection og color mode til høyre.
+imageCaption: Med den nye fargestrukturen samles fargene i én Color-collection i Figma, slik at de fungerer likt som i kode.
+---
+
+## Hvorfor gjør vi denne endringen?
+
+I dag er fargene i Figma delt inn i to separate collections – `Main color` og `Support color` – og komponentene finnes i variantene `main`, `support` og `neutral`.
+
+Denne strukturen gjør bibliotekene mer komplekse enn nødvendig. Den fører til flere komponentvarianter å vedlikeholde, og gjør det mer komplisert for designerne som bruker biblioteket å velge og endre farger.
+
+Med den nye strukturen samles alle farger i én `Color`-collection. Komponentene trenger ikke lenger egne `main`, `support` og `neutral`-varianter. I stedet velger brukerne ønsket farge direkte gjennom **Appearance** med `color mode`, akkurat slik det allerede fungerer i kode.
+
+Resultatet er et enklere bibliotek med færre varianter å vedlikeholde og en mer intuitiv måte å bruke farger på.
+
+Bakgrunnen for denne endringen er at Figma tidligere hadde en begrensning på hvor mange farger en collection kunne inneholde. Derfor ble fargene delt opp i flere collections. Denne begrensningen finnes ikke lenger, og vi kan derfor bruke en enklere struktur.
+
+## Før du migrerer Figma-biblioteket
+
+Denne guiden er for deg som vedlikeholder et Figma-bibliotek basert på Designsystemet.
+
+Før du starter i Figma, må `designsystem.config.json` og `design-tokens` være oppdatert til den nye fargestrukturen. Her kan det være lurt å få hjelp fra en utvikler.
+
+Kjører dere CLI-et med `designsystemet tokens create --clean`, migreres fargene og configen automatisk. Dere kan også gjøre dette manuelt ved å flytte fargene fra `main` og `support` til `color` i config-filen.
+
+Du kan sjekke om design tokens er oppdatert ved å se i mappen `semantic/modes`:
+
+- inneholder den `support color` og `main color`, bruker dere fortsatt forrige struktur
+- inneholder den kun `color`, bruker dere den nye strukturen
+
+<Image
+      src='/img/blog/migrate-folders.png'
+      alt='Illustrasjon av mappestrukturen før og etter migrering. Hvor den gamle inneholder main og support color, mens den nye kun inneholder color'
+      caption='Slik endrer mappestrukturen seg når design tokens migreres til den nye versjonen'
+      boxShadow={true}
+
+    />
+
+### Dette skal endres i Figma
+
+- `Main color` og `Support color` slås sammen til én collection: `Color`
+- Alle varianter som ikke er `main` vil bli slettet
+- Instanser og eksempler vil bli oppdatert til å følge
+
+<Image
+      src='/img/blog/migrationbeforeafter.png'
+      alt='Før og etter illustrasjon av hvordan Button komponenten ser ut'
+      caption='Button komponenten før og etter migrering'
+      boxShadow={true}
+      
+    />
+
+### Plugin eller manuell migrering
+
+Vi anbefaler å bruke vår migreringsplugin når du følger denne guiden. [Designsystemet migration helper](https://www.figma.com/community/plugin/1641069372132680632/designsystemet-migration-helper) Stegene kan også gjøres manuelt, men det kan bli en omfattende jobb, særlig når gamle komponentvarianter og instanser skal ryddes opp.
+
+#### Forutsetninger – navn pluginen forventer
+
+Pluginen skal være dynamisk, det vil si at den også vil migrere komponenter som dere har laget. Men det er noen faste navn den er avhengig av for å fungere. Har dere endret noen av disse, kan pluginen feile eller gi feil resultat:
+
+- **Variantegenskap for farge** må hete `color` eller `color mode`. Er den endret, fjerner ikke pluginen variantene.
+
+- **`Alert` / `ValidationMessage`**: Disse variantene skal ikke endres. Pluginen ignorerer dem så lenge komponentene har de opprinnelige navnene. Hvis navnene er endret, må du kontrollere dem manuelt – ellers kan variantene bli slettet.
+
+### Hva skjer med filer som bruker biblioteket?
+
+Med filer som bruker biblioteket mener vi Figma-filer der komponenter fra biblioteket er brukt som instanser. Det er altså ikke selve biblioteksfilen.
+
+Filer som bruker biblioteket blir ikke ødelagt av migreringen.
+
+Instanser som bruker det som tidligere het `main`, blir automatisk koblet til nye varianter. Instanser som bruker `support` eller `neutral`, blir ikke oppdatert automatisk av Figma.
+
+Senere i guiden forklarer vi hvordan disse instansene kan oppdateres med pluginen.
+
+## Steg 1 – Opprett snapshot i versjonshistorikken
+
+Sørg for at du kan gjenopprette filen hvis noe går galt. Hvis du foretrekker å jobbe i en branch, kan du gjøre det i stedet.
+
+**Gjør dette:**
+- Åpne "Version history" i Figma
+- Opprett et nytt snapshot
+- Gi snapshotet et tydelig navn, for eksempel "before migration"
+
+<ResponsiveIframe
+  src='/img/blog/migrate-steg1.mp4'
+  title='Skjermopptak som viser hvordan man legger til et snapshot i versjonshistorikken.'
+  frameBorder='0'
+  autoPlay={false}
+  aspectRatio='16-9'
+/>
+
+
+## Steg 2 – Oppdater variabelstrukturen
+
+Oppdater variabelstrukturen før du eksporterer tokens fra Token Studio. Da havner variablene riktig når du eksporterer dem igjen.
+
+**Gjør dette**
+1. Kjør [Designsystemet migration helper](https://www.figma.com/community/plugin/1641069372132680632/designsystemet-migration-helper)
+2. Trykk på "Update library"
+3. Pluginen sjekker om variabelstrukturen er riktig
+4. Trykk på "Prepare variables" hvis pluginen ber deg om å oppdatere strukturen
+
+<ResponsiveIframe
+  src='/img/blog/migrate-steg2.mp4'
+  title='Skjermopptak som viser hvordan man bruker pluginen til å endre navn'
+  frameBorder='0'
+  autoPlay={false}
+  aspectRatio='16-9'
+/>
+
+<Image
+      src='/img/blog/migrate-steg2variabler.png'
+      alt='Skjermbilde som viser hvordan variablene i Figma skal se ut etter oppdateringen'
+      caption='Slik skal variablene se ut etter oppdateringen'
+      boxShadow={true}
+      
+    />
+
+<Card >
+  <Details>
+    <Details.Summary>
+    Endre manuelt
+    </Details.Summary>
+    <Details.Content>
+    1. Finn collection `Main color` og gi den nytt navn: `Color`.
+    2. Under "Groups" nederst til venstre står det `All/color/main`. Høyreklikk på `color` og velg "Ungroup".
+
+    <ResponsiveIframe
+      src='/img/blog/migrate-steg2manuelt.mp4'
+      title='Skjermopptak som viser hvordan man manuelt endrer navn i variabelstrukturen'
+      frameBorder='0'
+      autoPlay={false}
+      aspectRatio='16-9'
+    />
+    
+    </Details.Content>
+  </Details>
+</Card>
+
+## Steg 3 – Synkroniser oppdaterte tokens med Token Studio
+
+Før dere eksporterer tokens til Figma, må tokenstrukturen i GitHub være oppdatert til den nye fargestrukturen. Sjekk at `semantic/modes` kun inneholder `color`, og ikke `main color` eller `support color`.
+
+**Gjør dette:**
+1. Push oppdaterte tokens til GitHub hvis dere ikke allerede har gjort det.
+2. Åpne Token Studio og hent siste tokens fra repoet.
+3. Eksporter tokens til Figma.
+
+Hvis dere ikke har eksportert tokens med Token Studio før, kan dere følge [guiden for eget tema](/no/fundamentals/start-here/own-theme). Start fra steg 7 i guiden. Stegene før det handler om å sette opp et nytt tema, og er ikke nødvendige for denne migreringen.
+
+**Kontroller at:**
+- Alle farger ligger i `Color`-collectionen, inkludert severity-fargene `info`, `warning`, `danger` og `success`.
+
+
+## Steg 4 – Slett Support color collection
+
+Rydd opp etter eksporten. Token Studio sletter ikke `Support color` automatisk, så denne **må** slettes manuelt.
+
+**Gjør dette:**
+1. Åpne variablene i Figma.
+2. Finn collectionen `Support color`.
+3. Slett `Support color`.
+
+**Kontroller at:**
+- I oversikten over variabel-collections skal du kun se `Color`, `Semantic`, `Theme`, `Size`, `Color scheme` og `Typography`.
+
+<ResponsiveIframe
+  src='/img/blog/migrate-steg4.mp4'
+  title='Skjermopptak som viser hvordan man sletter support color'
+  frameBorder='0'
+  autoPlay={false}
+  aspectRatio='16-9'
+/>
+
+
+## Steg 5 – Kjør migreringen i pluginen
+
+De fleste komponentene i biblioteket finnes i tre fargevarianter: `main`, `support` og `neutral`.
+
+`support` brukes ikke lenger, og `neutral` er overflødig fordi komponentene nå kan styres med `color mode`.
+
+Pluginen fjerner gamle varianter og oppdaterer instanser i biblioteksfilen i samme operasjon, over hele fila.
+<Card>
+  <Details>
+    <Details.Summary>
+    Designsystemet migration helper gjør dette
+    </Details.Summary>
+    <Details.Content>
+      - `support`- og `neutral`-varianter slettes fra komponentene
+      - `neutral`-instanser oppdateres til `default` og får `color mode = neutral`
+      - `support`-instanser oppdateres til `default`, og du velger hvilken `color mode` de skal bruke
+      - instanser som brukte gamle varianter byttes til ny variant og får riktig `color mode` – også instanser som ligger inne i andre instanser
+      - `Support color`-variabler som er brukt direkte på frames, tekst og andre lag (ikke bare på instanser) kobles om til `Color`
+      </Details.Content>
+  </Details>
+</Card>
+
+**Gjør dette:**
+1. Åpne [Designsystemet migration helper](https://www.figma.com/community/plugin/1641069372132680632/designsystemet-migration-helper)
+2. Trykk på "Update library"
+3. Velg hvilken farge som skal erstatte `support`. Dette må velges.
+4. Trykk på "Run migration"
+
+<ResponsiveIframe
+  src='/img/blog/migrate-steg5.mp4'
+  title='Skjermopptak som viser prosessen ved å åpne og kjøre migreringsplugin'
+  frameBorder='0'
+  autoPlay={false}
+  aspectRatio='16-9'
+/>
+
+> **Merk:** Pluginen viser ikke **Run migration** før fila er klar. Mangler noe, sier statuskortet hva:
+> - variablene er ikke omdøpt ennå → trykk **Rename variables** i pluginen (Steg 2), eller
+> - `Color`-collectionen mangler fargemodusene `info`, `warning`, `danger` eller `success` → eksporter tokens fra Token Studio med oppdatert struktur og åpne pluginen på nytt (Steg 3).
+
+**Etter migreringen:** Du får et sammendrag som viser hvor mange varianter som ble fjernet og hvor mange instanser som ble oppdatert. Det meste håndteres automatisk. Hvis noe ikke kunne oppdateres, listes det under resultatet:
+- komponentsett som allerede hadde feil i Figma (f.eks. variantkonflikter) – disse hoppes over; fiks konflikten og kjør på nytt
+- enkeltvarianter som ikke kunne oppdateres
+
+Klikk en rad for å hoppe til komponenten i Figma og fikse den manuelt.
+
+<Card>
+  <Details>
+    <Details.Summary>
+    Endre manuelt
+    </Details.Summary>
+    <Details.Content>
+    Manuell migrering er en omfattende jobb. Du må gå gjennom komponenter, underkomponenter og eksempelinstanser i biblioteksfilen.
+
+    Fjern alle varianter av typen `support` eller `neutral`, og oppdater instanser som bruker gamle varianter. `neutral`-varianter må settes til `default` med `color mode = neutral`. `support`-varianter må settes til `default` med riktig `color mode`.
+
+    Antallet varianter som utgår varierer per bibliotek. [Oversikt over alle varianter som utgår i vår standardfil](https://github.com/digdir/designsystemet/issues/4893#:~:text=Variant%20cleanup%20scope)
+    </Details.Content>
+  </Details>
+</Card>
+
+## Steg 6 – Se over filen og publiser biblioteket
+
+Biblioteksfilen skal nå være oppdatert.
+
+Gå gjennom komponentene, og sjekk at variablene har riktig scope og CSS syntax før du publiserer biblioteket på nytt.
+
+**Gjør dette:**
+1. Se over komponentene og kontroller at migreringen ser riktig ut.
+2. Kjør pluginen [Designsystemet - Code syntax & scoping](https://www.figma.com/community/plugin/1500739115059498140/designsystemet-code-syntax-scoping) på variablene i filen.
+3. Oppdater scope og CSS syntax hvis pluginen finner noe som må rettes.
+4. Publiser biblioteket.
+
+Hvis biblioteket brukes av mange, kan det være lurt å informere om endringen og forklare hva som skjer med filer som bruker biblioteket.
+
+Du kan lese mer om [scope og syntax for variabler i Figma](https://help.figma.com/hc/en-us/articles/15145852043927-Create-and-manage-variables-and-collections#h_01H32HZB74TE7MJXYBWEBBQWJV).
+
+
+## Oppdater filer som bruker biblioteket
+
+Når du har publisert biblioteket, kan alle som bruker biblioteket oppdatere. Figma kobler automatisk instanser som brukte `main` til nye varianter. Hvis dere ikke har endret rekkefølge eller navn på farger, vil disse se like ut som før.
+
+Instanser som bruker `support` eller `neutral`, blir ikke oppdatert automatisk av Figma. De kan fortsatt bli liggende i filene og fungere, men hvis dere vil rydde dem opp, kan dere bruke "Update sketches"-flyten i migreringspluginen.
+
+Be gjerne brukere opprette et snapshot i versjonshistorikken før de oppdaterer biblioteket eller kjører pluginen. I vår testing har vi ikke sett visuelle endringer i filer som bruker biblioteket, men et snapshot gjør det enkelt å gå tilbake hvis noe likevel skjer.
+
+Pluginen bytter ut gamle instanser med nye og setter riktig `color mode`. Den kan også rydde opp `Support color`-variabler som er brukt direkte på frames, tekst og andre lag, og koble dem om til `Color`.
+
+**Slik gjør du:**
+- Velg **Scope** for å avgrense til utvalg, gjeldende side eller hele filen.
+- For `support`-instanser uten egen mode velger du en erstatningsfarge i nedtrekkslisten **"Replace 'support' with"**.
+
+## Kjente feil
+Etter migrering så mister flere av tabelleksemplene på siden "Table" innhold. Vi har ikke klart å gjenprodusere det i skisser som bruker et bibliotek. Men vi anbefaler uansett å være ekstra oppmerksom på tabeller når man oppdaterer skisser.
+
+
+På siden Popover blir eksempelet Ordforklaring med popover ødelagt når man kjører Designsystemet migration helper. Dette må fikses manuelt selv.
+
+
+<Contributors authors={['Lasse Febakke Straum']} />

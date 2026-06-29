@@ -71,6 +71,6 @@ ${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-size-mode-font-size-
   },
 };
 
-export function wrapInLayer(content: string, layer?: string) {
+function wrapInLayer(content: string, layer?: string) {
   return R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}\n` : `${content}\n`;
 }
