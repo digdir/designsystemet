@@ -81,8 +81,7 @@ export const loader = async ({
 
       cats[utilityCategory].push({
         title:
-          frontmatter.sidebar_title ||
-          file.relativePath.replace('.mdx', ''),
+          frontmatter.sidebar_title || file.relativePath.replace('.mdx', ''),
         url: `/${lang}/components/${folder}/${slug}`,
         order: parseInt(frontmatter.order, 10) || 9999,
         keywords: frontmatter.search_terms || '',

@@ -53,8 +53,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       continue;
     }
 
-    const title =
-      frontmatter.title || file.relativePath.replace('.mdx', '');
+    const title = frontmatter.title || file.relativePath.replace('.mdx', '');
     const url = `/${lang}/best-practices/${file.relativePath.replace('.mdx', '')}`;
     const author = frontmatter.author || '';
     const date = frontmatter.date || '';

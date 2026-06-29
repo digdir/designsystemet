@@ -56,8 +56,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     );
     const frontmatter = getFrontmatter(fileContent);
 
-    const title =
-      frontmatter.title || file.relativePath.replace('.mdx', '');
+    const title = frontmatter.title || file.relativePath.replace('.mdx', '');
     const url = `/${lang}/patterns/${file.relativePath.replace('.mdx', '')}`;
 
     if (!frontmatter.category) {

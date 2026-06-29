@@ -40,14 +40,11 @@ export async function getBlogPosts(lang: string): Promise<BlogPosts> {
     );
     const frontmatter = getFrontmatter(fileContent);
 
-    const title =
-      frontmatter.title || file.relativePath.replace('.mdx', '');
+    const title = frontmatter.title || file.relativePath.replace('.mdx', '');
     const url = file.relativePath.replace('.mdx', '');
     const searchTerms: string[] = [];
     if (typeof frontmatter.search_terms === 'string')
-      frontmatter.search_terms
-        .split(',')
-        .map((term) => searchTerms.push(term));
+      frontmatter.search_terms.split(',').map((term) => searchTerms.push(term));
 
     posts.push({
       title,

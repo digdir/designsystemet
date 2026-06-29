@@ -43,7 +43,7 @@ export default async function handleRequest(
         translation: no,
       },
     },
-  } as Parameters<typeof instance.init>[0]) 
+  } as Parameters<typeof instance.init>[0]);
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;

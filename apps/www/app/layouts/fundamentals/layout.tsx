@@ -59,8 +59,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       continue;
     }
 
-    const title =
-      frontmatter.title || file.relativePath.replace('.mdx', '');
+    const title = frontmatter.title || file.relativePath.replace('.mdx', '');
     const url =
       `/${lang}/fundamentals/${file.relativePath.replace('.mdx', '')}`.replace(
         '\\',
