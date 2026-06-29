@@ -1,3 +1,4 @@
+import { type ParseError, parse as parseJsoncRaw, printParseErrorCode } from 'jsonc-parser';
 import pc from 'picocolors';
 import * as R from 'ramda';
 import type { z } from 'zod';
@@ -77,13 +78,33 @@ export function validateConfig<T>(
   }
 }
 
+/**
+ * Parses a JSONC string (JSON with comments and trailing commas).
+ *
+ * @template T - The expected type of the parsed value.
+ * @param content - The JSONC string to parse.
+ * @returns The parsed value, typed as T.
+ * @throws SyntaxError if the content contains syntax errors.
+ */
+export function parseJsonc<T>(content: string): T {
+  const errors: ParseError[] = [];
+  const result = parseJsoncRaw(content, errors, { allowTrailingComma: true }) as T;
+
+  if (errors.length > 0) {
+    const message = errors.map((error) => `${printParseErrorCode(error.error)} at offset ${error.offset}`).join(', ');
+    throw new SyntaxError(message);
+  }
+
+  return result;
+}
+
 export function parseConfig<T>(configFile: string, configFilePath: string): T {
   if (!configFile) {
     return {} as T;
   }
 
   try {
-    return JSON.parse(configFile) as T;
+    return parseJsonc<T>(configFile);
   } catch (err) {
     console.error(pc.redBright(`Failed parsing config file at ${pc.red(configFilePath)}`));
 
