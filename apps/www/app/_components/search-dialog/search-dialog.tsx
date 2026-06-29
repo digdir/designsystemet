@@ -49,6 +49,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   const [isTyping, setIsTyping] = useState(false);
   const [resultAnnounce, setresultAnnounce] = useState('');
   const latestQueryRef = useRef<string>('');
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   const performSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) {
@@ -86,6 +87,14 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   };
 
   const handleClose = () => {
+    // Use the native close() so the modal dialog is removed from the top
+    // layer. Setting `open = false` via the prop alone leaves the backdrop
+    // in place and keeps the rest of the page inert. The native `close`
+    // event then resets state and notifies the parent (see Dialog onClose).
+    dialogRef.current?.close();
+  };
+
+  const handleDialogClose = () => {
     setQuery('');
     setQuickResults([]);
     setIsQuickLoading(false);
@@ -168,9 +177,10 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
 
   return (
     <Dialog
+      ref={dialogRef}
       closedby='any'
       open={open}
-      onClose={handleClose}
+      onClose={handleDialogClose}
       className={cl(classes.dialog, 'search-dialog')}
       closeButton={false}
     >

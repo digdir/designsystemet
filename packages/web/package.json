@@ -1,7 +1,7 @@
 {
   "name": "@digdir/designsystemet-web",
   "type": "module",
-  "version": "1.16.0",
+  "version": "1.18.0",
   "description": "Javascript for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -114,7 +114,7 @@
     "@u-elements/u-combobox": "^2.0.5",
     "@u-elements/u-datalist": "^2.0.1",
     "@u-elements/u-details": "^1.0.0",
-    "@u-elements/u-tabs": "^1.0.3"
+    "@u-elements/u-tabs": "^1.0.4"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",

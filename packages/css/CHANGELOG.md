@@ -1,5 +1,40 @@
 # Change Log
 
+## 1.18.0
+
+### Minor Changes
+
+- **Chip:** now by default keeps text on a single line and truncates with ellipsis if needed, but allows text wrapping by adding `data-wrap="wrap"` ([#5040](https://github.com/digdir/designsystemet/pull/5040))
+
+### Patch Changes
+
+- **@charset**: remove redundant `@charset` as this simplifies merging Designsystemet with other CSS files ([#5041](https://github.com/digdir/designsystemet/pull/5041))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.18.0
+
+## 1.17.0
+
+### Patch Changes
+
+- **Avatar:** now scales correctly also when rendered as `<button>` ([#5029](https://github.com/digdir/designsystemet/pull/5029))
+
+- **Field, Fieldset:** `disabled` and `read only` styling is now only affected by form elements with class name set to `ds-input` ([#5028](https://github.com/digdir/designsystemet/pull/5028))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.17.0
+
+## 1.16.1
+
+### Patch Changes
+
+- fix(deps): update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
+
+- **base**: `ds-icon` no longer defines `fill`. Users must make sure their icons inherit color the correct way for their icons. ([#5013](https://github.com/digdir/designsystemet/pull/5013))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.16.1
+
 ## 1.16.0
 
 ### Minor Changes

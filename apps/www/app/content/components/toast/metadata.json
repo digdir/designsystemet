@@ -1,0 +1,13 @@
+{
+  "no": {
+    "title": "Toast",
+    "subtitle": "Designsystemet tilbyr bevisst ikke en toast-komponent, fordi den har kjente tilgjengelighetsproblemer. "
+  },
+  "en": {
+    "title": "Toast",
+    "subtitle": "Designsystemet deliberately does not provide a toast component because it has known accessibility issues."
+  },
+  "image": "Toast.svg",
+  "cssFile": "",
+  "tabs": false
+}

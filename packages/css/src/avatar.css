@@ -18,16 +18,19 @@
   box-sizing: border-box;
   color: var(--dsc-avatar-color);
   flex-shrink: 0;
+  font: inherit;
   font-weight: var(--ds-font-weight-medium);
   height: var(--dsc-avatar-size);
   justify-content: center;
   overflow: hidden;
   padding: 0;
+  text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   user-select: none;
   width: var(--dsc-avatar-size);
   @composes ds-print-preserve from './base.css';
+  @composes ds-focus from './base.css';
 
   &:not([hidden]) {
     display: inline-flex;

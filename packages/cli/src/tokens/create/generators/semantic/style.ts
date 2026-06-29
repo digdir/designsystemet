@@ -1,7 +1,52 @@
+import * as R from 'ramda';
+import { type ColorNames, semanticColorMap } from '../../../../colors/types.js';
 import type { Token, TokenSet } from '../../../types.js';
 
-export function generateSemanticStyle(): TokenSet {
+export function generateSemanticStyle(colorNames: string[]): TokenSet {
   return {
+    ...generateColors(colorNames),
+    'border-width': {
+      default: {
+        $type: 'borderWidth',
+        $value: '{border-width.1}',
+      },
+      focus: {
+        $type: 'borderWidth',
+        $value: '{border-width.3}',
+      },
+    },
+    'border-radius': {
+      sm: {
+        $type: 'dimension',
+        $value: '{border-radius.1}',
+      },
+      md: {
+        $type: 'dimension',
+        $value: '{border-radius.2}',
+      },
+      lg: {
+        $type: 'dimension',
+        $value: '{border-radius.3}',
+      },
+      xl: {
+        $type: 'dimension',
+        $value: '{border-radius.4}',
+      },
+      default: {
+        $type: 'dimension',
+        $value: '{border-radius.5}',
+      },
+      full: {
+        $type: 'dimension',
+        $value: '{border-radius.6}',
+      },
+    },
+    opacity: {
+      disabled: {
+        $type: 'opacity',
+        $value: '{opacity.30}',
+      },
+    },
     typography: {
       heading: {
         '2xl': {
@@ -232,22 +277,6 @@ export function generateSemanticStyle(): TokenSet {
         },
       },
     },
-    opacity: {
-      disabled: {
-        $type: 'opacity',
-        $value: '{opacity.30}',
-      },
-    },
-    'border-width': {
-      default: {
-        $type: 'borderWidth',
-        $value: '{border-width.1}',
-      },
-      focus: {
-        $type: 'borderWidth',
-        $value: '{border-width.3}',
-      },
-    },
     shadow: {
       xs: {
         $type: 'boxShadow',
@@ -268,32 +297,6 @@ export function generateSemanticStyle(): TokenSet {
       xl: {
         $type: 'boxShadow',
         $value: '{shadow.500}',
-      },
-    },
-    'border-radius': {
-      sm: {
-        $type: 'dimension',
-        $value: '{border-radius.1}',
-      },
-      md: {
-        $type: 'dimension',
-        $value: '{border-radius.2}',
-      },
-      lg: {
-        $type: 'dimension',
-        $value: '{border-radius.3}',
-      },
-      xl: {
-        $type: 'dimension',
-        $value: '{border-radius.4}',
-      },
-      default: {
-        $type: 'dimension',
-        $value: '{border-radius.5}',
-      },
-      full: {
-        $type: 'dimension',
-        $value: '{border-radius.6}',
       },
     },
     size: {
@@ -419,3 +422,51 @@ function _generateTypography() {
     },
   };
 }
+
+const generateColors = (colorNames: string[]) => {
+  const semanticColorTokens = colorNames.map((colorName) => [colorName, generateColorScaleTokens(colorName)]);
+
+  return {
+    ...baseColorTemplate,
+    color: {
+      ...Object.fromEntries(semanticColorTokens),
+      ...baseColorTemplate.color,
+    },
+  };
+};
+
+const baseColorTemplate: TokenSet = {
+  color: {
+    focus: {
+      inner: {
+        $type: 'color',
+        $value: '{color.focus.inner-color}',
+      },
+      outer: {
+        $type: 'color',
+        $value: '{color.focus.outer-color}',
+      },
+    },
+  },
+  link: {
+    color: {
+      visited: {
+        $type: 'color',
+        $value: '{color.link.visited}',
+      },
+    },
+  },
+};
+
+const generateColorScaleTokens = (colorName: string): Record<ColorNames, Token> => {
+  const colorScale = {} as Record<ColorNames, Token>;
+
+  for (const [colorSemantic, colorNumber] of R.toPairs(semanticColorMap)) {
+    colorScale[colorSemantic] = {
+      $type: 'color',
+      $value: `{color.${colorName}.${colorNumber}}`,
+    };
+  }
+
+  return colorScale;
+};

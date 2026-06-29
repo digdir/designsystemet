@@ -96,6 +96,62 @@ describe('tooltip behavior', () => {
     expect(tip.hidePopover).toHaveBeenCalledTimes(1);
   });
 
+  it('hides tooltip on blur when focus leaves to a non-tooltip element', async () => {
+    const tip = document.createElement('div');
+    tip.showPopover = vi.fn();
+    tip.hidePopover = vi.fn();
+    setTooltipElement(tip);
+
+    document.body.innerHTML = `<button data-tooltip="Info">Info</button>`;
+
+    const button = document.querySelector('button') as HTMLButtonElement;
+    button.dispatchEvent(new FocusEvent('focus'));
+    expect(tip.showPopover).toHaveBeenCalledTimes(1);
+
+    button.dispatchEvent(new FocusEvent('blur'));
+    expect(tip.hidePopover).toHaveBeenCalledTimes(1);
+    expect(tip.showPopover).toHaveBeenCalledTimes(1); // Must not reshow on blur
+  });
+
+  it('does not reshow tooltip on blur (regression #4801)', async () => {
+    const tip = document.createElement('div');
+    tip.showPopover = vi.fn();
+    tip.hidePopover = vi.fn();
+    setTooltipElement(tip);
+
+    document.body.innerHTML = `<button data-tooltip="Info">Info</button>`;
+
+    const button = document.querySelector('button') as HTMLButtonElement;
+    button.dispatchEvent(new FocusEvent('focus'));
+    expect(tip.showPopover).toHaveBeenCalledTimes(1);
+
+    // Reset internal source by hiding (mimics moving mouse away/closing)
+    setTooltipElement(tip);
+
+    // Blurring the still-focused button (e.g. clicking elsewhere) must not reshow
+    button.dispatchEvent(new FocusEvent('blur'));
+    expect(tip.showPopover).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not reshow the previous tooltip when blurring to another tooltip trigger', async () => {
+    const tip = document.createElement('div');
+    tip.showPopover = vi.fn();
+    tip.hidePopover = vi.fn();
+    setTooltipElement(tip);
+
+    document.body.innerHTML = `<button id="a" data-tooltip="A">A</button><button id="b" data-tooltip="B">B</button>`;
+
+    const a = document.querySelector('#a') as HTMLButtonElement;
+    const b = document.querySelector('#b') as HTMLButtonElement;
+    a.dispatchEvent(new FocusEvent('focus'));
+    expect(tip.showPopover).toHaveBeenCalledTimes(1);
+
+    // Focus moves to another tooltip trigger: blur must not hide nor reshow
+    a.dispatchEvent(new FocusEvent('blur', { relatedTarget: b }));
+    expect(tip.hidePopover).not.toHaveBeenCalled();
+    expect(tip.showPopover).toHaveBeenCalledTimes(1);
+  });
+
   it('updates tooltip text and announces when data-tooltip changes programmatically', async () => {
     const tip = document.createElement('div');
     setTooltipElement(tip);
