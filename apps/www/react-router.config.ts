@@ -11,7 +11,13 @@ const config: Config = {
   buildDirectory: 'dist',
   prerender: {
     paths: generatePrerenderPaths(),
-    concurrency: 25,
+    // RR v8 prerenders by fetching each path from a preview server with a
+    // hardcoded 10s timeout and no retries (neither is configurable). With
+    // concurrency > 1, a heavy page (e.g. the ~140 KB intro/cba.mdx) starves its
+    // concurrent neighbours of CPU while it compiles/renders, pushing them past
+    // the 10s wall. Serial prerendering gives every page the full timeout to
+    // itself. Raise this only if the heaviest content pages are slimmed down.
+    concurrency: 1,
   },
   presets: [],
   buildEnd: async () => {

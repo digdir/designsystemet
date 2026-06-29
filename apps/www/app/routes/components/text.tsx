@@ -22,12 +22,15 @@ import { TableOfContents } from '~/_components/table-of-contents/toc';
 import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/text';
 import classes from './component.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const { '*': file, lang } = params;
+  const { lang } = params;
+  // RR v8 prerenders HTML with a trailing slash; strip it from the splat param.
+  const file = stripTrailingSlash(params['*']);
   const dirname = cwd();
   const basePath = join(dirname, './app/content');
 

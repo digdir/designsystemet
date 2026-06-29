@@ -6,7 +6,7 @@ import {
   getFilesFromContentDir,
   getFoldersInContentDir,
 } from '~/_utils/files.server';
-import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import { getFrontmatter } from '~/_utils/get-frontmatter.server';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
@@ -72,7 +72,7 @@ export const loader = async ({
       const fileContent = getFileFromContentDir(
         join('components-docs', lang, folder, `${file.relativePath}`),
       );
-      const result = await generateFromMdx(fileContent);
+      const frontmatter = getFrontmatter(fileContent);
       const slug = file.relativePath.replace('.mdx', '');
       const utilityCategory =
         folder === 'utilities' && reactUtilities.has(slug)
@@ -81,11 +81,11 @@ export const loader = async ({
 
       cats[utilityCategory].push({
         title:
-          result.frontmatter.sidebar_title ||
+          frontmatter.sidebar_title ||
           file.relativePath.replace('.mdx', ''),
         url: `/${lang}/components/${folder}/${slug}`,
-        order: parseInt(result.frontmatter.order, 10) || 9999,
-        keywords: result.frontmatter.search_terms || '',
+        order: parseInt(frontmatter.order, 10) || 9999,
+        keywords: frontmatter.search_terms || '',
       });
     }
 
@@ -120,7 +120,7 @@ export const loader = async ({
         join('components', folder, lang, 'overview.mdx'),
       );
       const keywords = overviewMdx
-        ? (await generateFromMdx(overviewMdx)).frontmatter.search_terms || ''
+        ? getFrontmatter(overviewMdx).search_terms || ''
         : '';
 
       return {

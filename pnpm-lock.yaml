@@ -275,6 +275,9 @@ importers:
       express-rate-limit:
         specifier: 8.5.2
         version: 8.5.2(express@5.2.1)
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
       htmlfy:
         specifier: 1.0.2
         version: 1.0.2
