@@ -36,10 +36,10 @@ export const ConsentBanner = () => {
             marginTop: 'var(--ds-size-5)',
           }}
         >
-          <Button className='consent-banner-button' name='action' type='submit'>
+          <Button name='action' type='submit'>
             Ja
           </Button>
-          <Button className='consent-banner-button' name='action' type='submit'>
+          <Button name='action' type='submit'>
             Nei
           </Button>
         </form>
@@ -109,28 +109,13 @@ export const ConsentBannerCheckboxes = () => {
               marginTop: 'var(--ds-size-5)',
             }}
           >
-            <Button
-              className='consent-banner-button'
-              name='action'
-              type='submit'
-              value='save'
-            >
+            <Button name='action' type='submit' value='save'>
               Lagre valg
             </Button>
-            <Button
-              className='consent-banner-button'
-              name='action'
-              type='submit'
-              value='approve-all'
-            >
+            <Button name='action' type='submit' value='approve-all'>
               Godta alle
             </Button>
-            <Button
-              className='consent-banner-button'
-              name='action'
-              type='submit'
-              value='decline-all'
-            >
+            <Button name='action' type='submit' value='decline-all'>
               Avslå alle
             </Button>
           </div>
