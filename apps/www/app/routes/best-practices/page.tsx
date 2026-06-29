@@ -51,8 +51,8 @@ export async function loader({ params }: Route.LoaderArgs) {
   };
 }
 
-export const meta = ({ data }: Route.MetaArgs) => {
-  if (!data)
+export const meta = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData)
     return [
       {
         title: 'Designsystemet',
@@ -60,7 +60,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
     ];
   const {
     frontmatter: { title, description },
-  } = data;
+  } = loaderData;
   return generateMetadata({
     title,
     description,
