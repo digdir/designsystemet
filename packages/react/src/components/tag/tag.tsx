@@ -28,7 +28,7 @@ export type TagProps = MergeRight<
  * <Tag>Melk</Tag>
  */
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
-  { className, variant = 'default', ...rest },
+  { className, variant, ...rest },
   ref,
 ) {
   return (

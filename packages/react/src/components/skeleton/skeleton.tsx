@@ -37,15 +37,7 @@ export type SkeletonProps = {
  */
 export const Skeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
   function Skeleton(
-    {
-      asChild,
-      className,
-      height,
-      style,
-      variant = 'rectangle',
-      width,
-      ...rest
-    },
+    { asChild, className, height, style, variant, width, ...rest },
     ref,
   ) {
     const Component = asChild ? Slot : 'span';

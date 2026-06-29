@@ -15,8 +15,9 @@
 :root {
   --ds-font-size-minus-1: max(0.9em, 0.875rem); /* Default to 90% of font-size, but minimum 14px */
   --ds-font-size-plus-1: 1.1em; /* Default to 110% */
-  --ds-readonly-icon-size: 1.2em;
+  --ds-readonly-icon-size: var(--ds-icon-size);
   --ds-readonly-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 2.25A4.75 4.75 0 0 0 7.25 7v2.25H7A1.75 1.75 0 0 0 5.25 11v9c0 .41.34.75.75.75h12a.75.75 0 0 0 .75-.75v-9A1.75 1.75 0 0 0 17 9.25h-.25V7A4.75 4.75 0 0 0 12 2.25m3.25 7V7a3.25 3.25 0 0 0-6.5 0v2.25zM12 13a1.5 1.5 0 0 0-.75 2.8V17a.75.75 0 0 0 1.5 0v-1.2A1.5 1.5 0 0 0 12 13'/%3E%3C/svg%3E");
+  --ds-icon-size: var(--ds-size-6);
 
   /* font-size adjustments if supporting round() */
   @supports (width: round(down, 0.1em, 1px)) {
@@ -38,6 +39,15 @@ body,
 [data-color-scheme] {
   color: var(--ds-color-neutral-text-default);
   background: var(--ds-color-neutral-background-default);
+}
+
+.ds-icon {
+  display: inline-block; /* Overwrite Tailwind setting display: block on <svg> */
+  flex-shrink: 0;
+  font-size: 1em;
+  height: var(--ds-icon-size);
+  vertical-align: middle;
+  width: var(--ds-icon-size);
 }
 
 .ds-readonly-icon::before {
@@ -243,11 +253,4 @@ body {
 /* Recalculate font-size variable when changing size mode */
 [data-size] {
   font-size: var(--ds-body-md-font-size);
-}
-
-/* Capture a length value, e.g. 1em, at the element where the variable is set */
-@property --_ds-captured-length {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 0px;
 }

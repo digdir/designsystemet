@@ -2,6 +2,7 @@
   --dsc-dialog-backdrop-background: rgb(0 0 0 / 0.5);
   --dsc-dialog-background: var(--ds-color-neutral-surface-default);
   --dsc-dialog-icon-spacing: var(--ds-size-3);
+  --dsc-dialog-icon-size: var(--ds-icon-size);
   --dsc-dialog-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
   --dsc-dialog-color: var(--ds-color-neutral-text-default);
   --dsc-dialog-divider-border-width: var(--ds-border-width-default);
@@ -28,15 +29,16 @@
   box-shadow: var(--ds-shadow-xl);
   box-sizing: border-box;
   color: var(--dsc-dialog-color);
+  inset: 0;
   margin: auto;
   max-height: var(--dsc-dialog-max-height);
   max-width: var(--dsc-dialog-max-width);
+  outline: none; /* Prevent outline in Chrome */
   overflow: auto;
   overscroll-behavior: contain;
   padding: var(--dsc-dialog-spacing);
   position: fixed;
   width: 100%;
-  inset: 0;
 
   &::backdrop {
     animation: ds-dialog-fade-in var(--dsc-dialog-transition-duration) ease-in-out;
@@ -82,6 +84,10 @@
     left: auto;
     border-right-width: 0;
   }
+  &[data-placement='center'],
+  &:not([data-placement]) {
+    align-self: center; /* Center also when inside display: flex */
+  }
 
   &[open] {
     animation:
@@ -120,8 +126,8 @@
   & button[data-command='close']:empty::before {
     content: '';
     background: currentcolor;
-    height: var(--ds-size-6);
-    width: var(--ds-size-6);
+    height: var(--dsc-dialog-icon-size);
+    width: var(--dsc-dialog-icon-size);
     mask: center / contain no-repeat var(--dsc-dialog-icon-url);
 
     @media (forced-colors: active) {

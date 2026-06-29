@@ -25,15 +25,11 @@ app.use((req, res, next) => {
     'Content-Security-Policy-Report-Only',
     `default-src 'none';base-uri 'self';script-src 'self' 'unsafe-inline' 'unsafe-eval';style-src 'self' https://altinncdn.no https://siteimproveanalytics.com 'unsafe-inline';font-src 'self' https://altinncdn.no;img-src 'self' data:;connect-src ${connectSrc};frame-ancestors 'self';form-action 'self';manifest-src 'self'; report-uri https://csp-report.digdir.no/api/reports`,
   );
-  res.setHeader(
-    'Strict-Transport-Security',
-    'max-age=31536000; includeSubDomains',
-  );
-  res.setHeader('X-Content-Type-Options', 'nosniff');
+
   res.setHeader('Cache-Control', 'max-age');
 
   /* Add Link headers for agent discovery (RFC 8288 / RFC 9727) on the homepage */
-  if (req.path === '/' || req.path === '') {
+  if (req.path === '/') {
     res.setHeader('Link', [
       '</.well-known/api-catalog>; rel="api-catalog"',
       '</.well-known/security.txt>; rel="disclosure"',

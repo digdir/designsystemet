@@ -111,5 +111,9 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 };
 
 export default function Layout() {
-  return <Outlet />;
+  return (
+    <div id='main'>
+      <Outlet />
+    </div>
+  );
 }

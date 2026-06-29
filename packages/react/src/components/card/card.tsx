@@ -41,7 +41,7 @@ const SELECTOR_SKIP =
  * </Card>
  */
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { asChild = false, variant = 'default', className, ...rest },
+  { asChild = false, variant, className, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'div';

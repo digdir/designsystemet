@@ -25,7 +25,6 @@ export default {
     'step-two':
       'Åpne terminal i samme mappe som config fila. Kjør kodesnuttene for å generere tokens og CSS variabler til kode.',
   },
-  'max-X-colors': 'Maks {count} farger tillatt.',
   'severity-colors': 'Severity',
   'severity-colors-switch': 'Aktiver for å overstyre severity-farger',
 };

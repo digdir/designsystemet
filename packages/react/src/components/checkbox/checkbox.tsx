@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps, LabelRequired } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { Field } from '../field';
+import { Field, type FieldProps } from '../field';
 import { Input, type InputProps } from '../input/input';
 import { Label } from '../label/label';
 import { ValidationMessage } from '../validation-message/validation-message';
@@ -34,6 +34,11 @@ export type CheckboxProps = MergeRight<
      * If outline, the checkbox will have a border.
      */
     variant?: 'outline';
+    /**
+     * Position of checkbox
+     * @default start
+     */
+    position?: FieldProps['position'];
   } & LabelRequired
 >;
 
@@ -47,12 +52,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
     {
       'data-size': size,
-      className,
-      style,
       children,
-      label,
+      className,
       description,
       error,
+      label,
+      position,
+      style,
       variant,
       ...rest
     },
@@ -62,6 +68,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <Field
         data-size={size}
         data-variant={variant}
+        data-position={position}
         className={className}
         style={style}
       >

@@ -41,7 +41,7 @@
   --dsc-suggestion-chip-padding: 0 var(--ds-size-3);
   --dsc-suggestion-chip-color: var(--ds-color-base-contrast-default);
   --dsc-suggestion-chip-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
-  --dsc-suggestion-chip-icon-size: var(--ds-size-7);
+  --dsc-suggestion-chip-icon-size: var(--ds-icon-size);
   --dsc-suggestion-chip-input-size: var(--ds-size-5);
   --dsc-suggestion-chip-spacing: calc(
     (var(--dsc-suggestion-chip-height) - var(--dsc-suggestion-chip-input-size)) /
@@ -62,9 +62,19 @@
     display: none; /* Hide data elements when not in multiple mode */
   }
 
+  /* ::part(items) comes from u-combobox */
+  &:not(:has(data))::part(items) {
+    position: absolute; /* Make items container in multiple mode not take up any space when no chips */
+  }
+  &[data-multiple]::part(items) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--dsc-suggestion-chip-gap);
+    max-width: 100%;
+  }
+
   /* NOTE: This styling should be reflected in chip.css */
   & > data {
-    align-items: center;
     background: var(--dsc-suggestion-chip-background);
     border-color: var(--dsc-suggestion-chip-border-color);
     border-radius: var(--dsc-suggestion-chip-border-radius);
@@ -73,23 +83,31 @@
     box-sizing: border-box;
     color: var(--dsc-suggestion-chip-color);
     cursor: pointer;
-    display: inline-flex;
+    display: block;
     font-size: var(--dsc-suggestion-chip-font-size);
     height: var(--dsc-suggestion-chip-height);
     line-height: var(--ds-line-height-sm);
-    margin-bottom: var(--dsc-suggestion-chip-gap);
+    min-width: 0; /* Allow text-overflow: ellipsis to work when placed inside display: flex */
+    overflow: hidden;
     padding: var(--dsc-suggestion-chip-padding);
-    padding-inline-end: var(--dsc-suggestion-chip-spacing);
-    white-space: none;
+    padding-block: calc((var(--dsc-suggestion-chip-height) - var(--dsc-suggestion-chip-border-width) - 1lh) / 2);
+    padding-inline-end: calc(var(--dsc-suggestion-chip-spacing) * 2 + var(--dsc-suggestion-chip-icon-size));
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &::after {
       content: '';
       background: currentcolor;
       height: var(--dsc-suggestion-chip-icon-size);
-      mask: center / contain no-repeat var(--dsc-suggestion-chip-icon-url);
-      width: var(--dsc-suggestion-chip-icon-size);
-      padding-inline: 0; /*override u-combobox default*/
+      inset-block-start: 50%;
+      inset-inline-end: var(--dsc-suggestion-chip-spacing);
       margin-left: var(--dsc-suggestion-chip-gap);
+      mask: center / contain no-repeat var(--dsc-suggestion-chip-icon-url);
+      padding-inline: 0; /*override u-combobox default*/
+      position: absolute;
+      translate: 0 -50%;
+      width: var(--dsc-suggestion-chip-icon-size);
       @media (forced-colors: active) {
         background-color: CanvasText;
         forced-color-adjust: none; /* To be able to draw check */
@@ -102,9 +120,6 @@
     }
     &:hover {
       background: var(--dsc-suggestion-chip-background--hover);
-    }
-    &:has(+ data) {
-      margin-inline-end: var(--dsc-suggestion-chip-gap);
     }
   }
 

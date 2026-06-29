@@ -1,52 +1,65 @@
 /* NOTE: This styling should be reflected in suggestion.css for <data> elements */
 .ds-chip {
-  --dsc-chip-background: var(--ds-color-surface-tinted);
-  --dsc-chip-background--hover: var(--ds-color-surface-hover);
   --dsc-chip-background--active: var(--ds-color-surface-active);
-  --dsc-chip-background--checked: var(--ds-color-base-default);
-  --dsc-chip-background--checked--hover: var(--ds-color-base-hover);
   --dsc-chip-background--checked--active: var(--ds-color-base-active);
-  --dsc-chip-border-width: var(--ds-border-width-default);
-  --dsc-chip-border-style: solid;
-  --dsc-chip-border-color: var(--ds-color-border-subtle);
+  --dsc-chip-background--checked--hover: var(--ds-color-base-hover);
+  --dsc-chip-background--checked: var(--ds-color-base-default);
+  --dsc-chip-background--hover: var(--ds-color-surface-hover);
+  --dsc-chip-background: var(--ds-color-surface-tinted);
   --dsc-chip-border-color--checked: transparent;
+  --dsc-chip-border-color: var(--ds-color-border-subtle);
+  --dsc-chip-border-radius--checkbox-input: var(--ds-border-radius-sm);
+  --dsc-chip-border-radius--checkbox: var(--ds-border-radius-md);
+  --dsc-chip-border-radius: calc(var(--dsc-chip-height) / 2);
+  --dsc-chip-border-style: solid;
+  --dsc-chip-border-width: var(--ds-border-width-default);
   --dsc-chip-color: var(--ds-color-text-default);
+  --dsc-chip-height: var(--ds-size-8);
+  --dsc-chip-icon-size: var(--ds-icon-size);
+  --dsc-chip-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
   --dsc-chip-input-accent-color: var(--ds-color-base-contrast-default);
   --dsc-chip-input-color: var(--ds-color-text-subtle);
-  --dsc-chip-input-stroke-color: var(--ds-color-base-default);
-  --dsc-chip-border-radius: var(--ds-border-radius-full);
-  --dsc-chip-border-radius--checkbox: var(--ds-border-radius-md);
-  --dsc-chip-border-radius--checkbox-input: var(--ds-border-radius-sm);
-  --dsc-chip-height: var(--ds-size-8);
-  --dsc-chip-icon-size: var(--ds-size-7);
-  --dsc-chip-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
   --dsc-chip-input-size: var(--ds-size-5);
+  --dsc-chip-input-stroke-color: var(--ds-color-base-default);
+  --dsc-chip-padding-inline: var(--ds-size-3);
   --dsc-chip-spacing: calc((var(--dsc-chip-height) - var(--dsc-chip-input-size)) / 2); /* Distance between edge of input and chip */
 
-  align-items: center;
   background: var(--dsc-chip-background);
-  border-radius: var(--dsc-chip-border-radius);
-  border-width: var(--dsc-chip-border-width);
-  border-style: var(--dsc-chip-border-style);
   border-color: var(--dsc-chip-border-color);
+  border-radius: var(--dsc-chip-border-radius);
+  border-style: var(--dsc-chip-border-style);
+  border-width: var(--dsc-chip-border-width);
   box-sizing: border-box;
   color: var(--dsc-chip-color);
   cursor: pointer;
   font-family: inherit;
   font-size: var(--ds-body-sm-font-size);
-  gap: var(--dsc-chip-spacing);
   line-height: var(--ds-line-height-sm);
   margin: 0;
-  min-height: var(--dsc-chip-height);
   max-height: fit-content;
   max-width: fit-content;
-  padding: 0 var(--ds-size-3);
+  min-width: 0; /* Allow text-overflow: ellipsis to work when placed inside display: flex */
+  min-height: var(--dsc-chip-height);
+  padding-block: calc((var(--dsc-chip-height) - var(--dsc-chip-border-width) - 1lh) / 2);
+  padding-inline: var(--dsc-chip-padding-inline);
+  position: relative;
+  text-align: inherit; /* Fix text alignment when removable is <button> */
   text-decoration: none;
+
+  &:not([data-wrap='wrap']) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
   @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';
 
   & > input {
+    inset-block-start: 50%;
+    inset-inline-start: var(--dsc-chip-spacing);
+    position: absolute;
+    translate: 0 -50%;
     --dsc-input-background: transparent;
     --dsc-input-border-color: var(--dsc-chip-input-color);
     --dsc-input-accent-color: var(--dsc-chip-input-accent-color);
@@ -56,7 +69,7 @@
   }
 
   &:not([hidden]) {
-    display: inline-flex;
+    display: inline-block;
   }
 
   /* Show focus ring when input inside is focused by keyboard interaction */
@@ -72,29 +85,29 @@
   }
 
   &[data-removable] {
-    padding-inline-end: var(--dsc-chip-spacing);
+    padding-inline-end: calc(var(--dsc-chip-spacing) * 2 + var(--dsc-chip-icon-size));
 
     &::after {
       content: '';
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-end: var(--dsc-chip-spacing);
+      translate: 0 -50%;
       background: currentcolor;
       height: var(--dsc-chip-icon-size);
       mask: center / contain no-repeat var(--dsc-chip-icon-url);
       width: var(--dsc-chip-icon-size);
       padding-inline: 0; /*override u-combobox default*/
+      flex-shrink: 0; /* Prevent shrinking when content is long */
     }
   }
 
-  &:has(input[type='radio']) {
-    padding-inline-start: var(--dsc-chip-spacing);
+  &:has(input) {
+    padding-inline-start: calc(var(--dsc-chip-spacing) * 2 + var(--dsc-chip-icon-size));
   }
 
   &:has(input[type='checkbox']) {
     border-radius: var(--dsc-chip-border-radius--checkbox);
-    padding-inline: var(--dsc-chip-spacing);
-
-    & > input {
-      border-radius: var(--dsc-chip-border-radius--checkbox-input);
-    }
   }
 
   &:has(input:checked),

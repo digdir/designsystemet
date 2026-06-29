@@ -1,5 +1,47 @@
 # Change Log
 
+## 1.18.0
+
+### Patch Changes
+
+- Now correctly creates CSS variables when color name has hyphen ([#5044](https://github.com/digdir/designsystemet/pull/5044))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.18.0
+
+## 1.17.0
+
+### Minor Changes
+
+- Removed color categories `main` and `support`. All colors are now defined in config file under `themes.<name>.colors` (just like neutral). ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+- Remove `UNSAFE_COLOR_GROUPS` env variable as its no longer relevant ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+- Added support for auto-migrations which checks files and prompts users about needed migrations. ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+### Patch Changes
+
+- Increased minimum required `node` version 24.16.0. ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.17.0
+
+## 1.16.1
+
+### Patch Changes
+
+- fix(deps): update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.16.1
+
+## 1.16.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.16.0
+
 ## 1.15.0
 
 ### Patch Changes

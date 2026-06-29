@@ -1,3 +1,4 @@
+// biome-ignore-all lint/suspicious/noExplicitAny: we have not kept old schema for types, so we need to use any here
 import { type ConfigSchema, configSchema } from '@digdir/designsystemet';
 import {
   Button,
@@ -31,7 +32,10 @@ export function ConfigPaste() {
     }
 
     try {
-      const parsed = JSON.parse(configText);
+      const parsed = isConfigWithOldColorSchema(configText)
+        ? migrateConfigWithOldColorSchema(configText)
+        : JSON.parse(configText);
+
       const validated = configSchema.parse(parsed);
       setValidatedConfig(validated);
 
@@ -107,29 +111,9 @@ export function ConfigPaste() {
                       {themeName}
                     </Paragraph>
                     <div className={classes.colorPreview}>
-                      {themeConfig.colors.main &&
-                        Object.values(themeConfig.colors.main)
-                          .slice(0, 3)
-                          .map((color, idx) => (
-                            <div
-                              key={idx}
-                              className={classes.colorDot}
-                              style={{ backgroundColor: color }}
-                              title={color}
-                            />
-                          ))}
-                      {themeConfig.colors.neutral && (
-                        <div
-                          className={classes.colorDot}
-                          style={{
-                            backgroundColor: themeConfig.colors.neutral,
-                          }}
-                          title={themeConfig.colors.neutral}
-                        />
-                      )}
-                      {themeConfig.colors?.support &&
-                        Object.values(themeConfig.colors.support)
-                          .slice(0, 3)
+                      {themeConfig.colors &&
+                        Object.values(themeConfig.colors)
+                          .slice(0, 7)
                           .map((color, idx) => (
                             <div
                               key={idx}
@@ -160,3 +144,59 @@ export function ConfigPaste() {
     </div>
   );
 }
+
+// Temporary migration functions for old color schema, to be removed in future versions
+const isOldColorSchema = (theme: any): boolean => {
+  return (
+    theme.colors &&
+    Object.keys(theme.colors).length === 3 &&
+    theme.colors.main &&
+    theme.colors.support &&
+    theme.colors.neutral
+  );
+};
+
+const isConfigWithOldColorSchema = (config: any): boolean => {
+  const currentConfig = JSON.parse(config);
+
+  if (!currentConfig.themes) {
+    return false;
+  }
+
+  return Object.values(currentConfig.themes).some(isOldColorSchema);
+};
+
+const migrateConfigWithOldColorSchema = (config: string): string => {
+  const currentConfig = JSON.parse(config);
+  const updatedThemes: Record<string, any> = {};
+
+  if (currentConfig.themes) {
+    for (const [themeName, _] of Object.entries(currentConfig.themes)) {
+      const theme = currentConfig.themes[themeName];
+
+      if (isOldColorSchema(theme)) {
+        const { main, support, neutral, ...restColors } = theme.colors;
+
+        const updatedTheme = {
+          ...theme,
+          colors: {
+            ...restColors,
+            ...main,
+            ...support,
+            neutral,
+          },
+        };
+
+        updatedThemes[themeName] = updatedTheme;
+      } else {
+        updatedThemes[themeName] = theme;
+      }
+    }
+  }
+  const migratedConfig = {
+    ...currentConfig,
+    themes: updatedThemes,
+  };
+
+  return migratedConfig;
+};
