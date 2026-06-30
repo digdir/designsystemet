@@ -22,6 +22,10 @@ ARG PORT
 ARG HOST
 ARG APP_ENV
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
+# RR v8 prerenders via an in-process Vite preview server over HTTP. Force IPv4
+# localhost resolution so the prerender can connect to it (avoids
+# `ECONNREFUSED 127.0.0.1` when `localhost` resolves to IPv6 in the container).
+ENV NODE_OPTIONS="--dns-result-order=ipv4first"
 RUN pnpm build:www
 RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 
