@@ -60,11 +60,10 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     }
 
     const title = frontmatter.title || file.relativePath.replace('.mdx', '');
-    const url =
-      `/${lang}/fundamentals/${file.relativePath.replace('.mdx', '')}`.replace(
-        '\\',
-        '/',
-      );
+    const url = `/${lang}/fundamentals/${file.relativePath.replace(
+      '.mdx',
+      '',
+    )}`.replace(/\\/g, '/');
 
     if (!frontmatter.category) {
       continue;
