@@ -73,6 +73,12 @@ Add a button with `type="reset"` and `aria-label` to allow users to clear the se
 
 <Story story='PreviewEn' />
 
+### Toggle list
+
+Add a button with `type="button" aria-expanded="false"` and `aria-label` to allow users to toggle the list.
+
+<Story story='PreviewEn' />
+
 
 ## React
 
@@ -81,6 +87,7 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
 
 <Suggestion>
   <Suggestion.Input />
+  <Suggestion.Toggle />
   <Suggestion.Clear />
   <Suggestion.List>
     <Suggestion.Empty>Empty</Suggestion.Empty>
