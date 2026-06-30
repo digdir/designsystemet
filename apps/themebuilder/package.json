@@ -43,7 +43,6 @@
     "@types/react-dom": "19.2.3",
     "ramda": "0.32.0",
     "typescript": "5.9.3",
-    "vite": "8.1.0",
-    "vite-tsconfig-paths": "6.1.1"
+    "vite": "8.1.0"
   }
 }
