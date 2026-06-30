@@ -6,6 +6,7 @@ on:
       - .github/workflows/test.yml
       - "packages/**"
       - "apps/storybook/**"
+      - "apps/www/**"
 
 permissions:
   checks: write
