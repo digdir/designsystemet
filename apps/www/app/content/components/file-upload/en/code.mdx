@@ -1,0 +1,51 @@
+<Alert data-color="warning">
+File upload is under development. If you have feedback or suggestions, please report them on [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20FileUpload) or in [Slack](https://designsystemet.no/slack).
+</Alert>
+
+<Story story="PreviewEn" defaultOpen/>
+
+## Usage
+
+Place File upload inside a [field](/en/components/docs/field/code) with a [label](/en/components/docs/label/code) so the upload area gets an accessible label.
+
+In plain HTML, use the class `ds-file-upload` on an element that contains an `<input type="file">`. The input is placed on top of the whole area so the entire surface becomes clickable.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Upload file</label>
+  <div class="ds-file-upload">
+    <p class="ds-paragraph" data-field="description">Drop file here</p>
+    <input type="file" title="" />
+  </div>
+</ds-field>
+```
+
+To make the area read-only, set `readonly` on the input. The component then automatically switches to a neutral color scale and disables interaction.
+
+## CSS variables and data attributes
+
+File upload uses its own CSS variables to control things like background, border, icon and spacing. These can be overridden on `.ds-file-upload`.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
+
+```tsx
+import { EXPERIMENTAL_FileUpload as FileUpload, Field, Label } from '@digdir/designsystemet-react';
+
+<Field>
+  <Label>Upload file</Label>
+  <FileUpload>
+    <FileUpload.Description>Drop file here</FileUpload.Description>
+    <FileUpload.Description>
+      File must be in csv format and less than 2MB
+    </FileUpload.Description>
+    <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
+    <FileUpload.Input accept=".csv" />
+  </FileUpload>
+</Field>
+```
+
+<ReactComponentDocs />
