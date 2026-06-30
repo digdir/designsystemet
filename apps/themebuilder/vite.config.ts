@@ -20,7 +20,7 @@ export default defineConfig(({ isSsrBuild, command }) => ({
       ? { alias: { '@internal/components': internalComponentsDir } }
       : undefined,
   build: {
-    rollupOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
+    rolldownOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router'],

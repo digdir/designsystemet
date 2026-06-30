@@ -22,7 +22,7 @@ function mdxFullReload() {
 
 export default defineConfig(({ isSsrBuild, command }) => ({
   build: {
-    rollupOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
+    rolldownOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
   },
   css: {
     postcss: {
