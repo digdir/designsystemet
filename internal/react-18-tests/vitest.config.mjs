@@ -21,9 +21,6 @@ export default defineProject({
     ),
   },
   cacheDir: 'node_modules/.vite/react-18',
-  esbuild: {
-    ...baseConfig.esbuild,
-  },
   test: {
     ...baseConfig.test,
     env: {
