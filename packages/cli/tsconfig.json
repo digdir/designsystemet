@@ -11,6 +11,8 @@
     "resolveJsonModule": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
     "sourceMap": false,
     "incremental": false
   },

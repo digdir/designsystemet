@@ -1,7 +1,7 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
-import type { ColorScheme } from '../../../colors/types.js';
-import type { SizeModes, TokenSetDimensions } from '../../types.js';
+import type { ColorScheme } from '../../../colors/types.ts';
+import type { SizeModes, TokenSetDimensions } from '../../types.ts';
 
 async function createHash(text: string, algo = 'SHA-1') {
   const crypto = globalThis.crypto;

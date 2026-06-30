@@ -3,18 +3,18 @@ import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import { checkAutomigrate } from '../src/automigrate.js';
-import { convertToHex } from '../src/colors/index.js';
-import type { CssColor } from '../src/colors/types.js';
-import migrations from '../src/migrations/index.js';
-import { buildTokens } from '../src/tokens/build.js';
-import { createSystemTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.js';
-import { createTokens, tokenSetDimensions } from '../src/tokens/create.js';
-import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
-import type { OutputFile, Theme } from '../src/tokens/types.js';
-import { toColorNames } from '../src/tokens/utils.js';
-import { dsfs } from '../src/utils/filesystem.js';
-import { deprecatedCLIOptions as cliOptions, parseCreateConfig, readConfigFile } from './config.js';
+import { checkAutomigrate } from '../src/automigrate.ts';
+import { convertToHex } from '../src/colors/index.ts';
+import type { CssColor } from '../src/colors/types.ts';
+import migrations from '../src/migrations/index.ts';
+import { buildTokens } from '../src/tokens/build.ts';
+import { createSystemTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.ts';
+import { createTokens, tokenSetDimensions } from '../src/tokens/create.ts';
+import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
+import type { OutputFile, Theme } from '../src/tokens/types.ts';
+import { toColorNames } from '../src/tokens/utils.ts';
+import { dsfs } from '../src/utils/filesystem.ts';
+import { deprecatedCLIOptions as cliOptions, parseCreateConfig, readConfigFile } from './config.ts';
 
 const figletAscii = `
  _____            _                           _                      _
