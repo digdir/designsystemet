@@ -5,10 +5,11 @@
   "themes": {
     "some-org": {
       "colors": {
-        "dominant": "#0062BA",
-        "complimentary": "#94237C",
+        "dominant": "#0062BA", // This is a comment using slashes
+        "complimentary": "#94237C" /* This is a comment using stars */,
         "hyphen-color": "#F45F63",
         "double-hyphen-color": "#E5AA20",
+        //"ignore-commented-color": "#F45F63",
         "neutral": "#303030"
       },
       "typography": {
