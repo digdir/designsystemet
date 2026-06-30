@@ -3,11 +3,9 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "allowSyntheticDefaultImports": true,
     "composite": true,
     "noEmit": false,
-    "emitDeclarationOnly": true,
-    "incremental": true
+    "emitDeclarationOnly": true
   },
   "include": ["src"]
 }
