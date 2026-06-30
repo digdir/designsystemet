@@ -36,7 +36,6 @@
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
 
     "moduleDetection": "force",
-    "declarationMap": true,
     "allowJs": true,
     "noEmit": true,
     "incremental": true,
