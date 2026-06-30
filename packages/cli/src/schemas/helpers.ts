@@ -91,7 +91,14 @@ export function parseJsonc<T>(content: string): T {
   const result = parseJsoncRaw(content, errors, { allowTrailingComma: true }) as T;
 
   if (errors.length > 0) {
-    const message = errors.map((error) => `${printParseErrorCode(error.error)} at offset ${error.offset}`).join(', ');
+    const message = errors
+      .map((error) => {
+        const before = content.slice(0, error.offset);
+        const line = before.split(/\r?\n/).length;
+        const col = before.length - before.lastIndexOf('\n');
+        return `${printParseErrorCode(error.error)} at ${line}:${col} (offset ${error.offset})`;
+      })
+      .join(', ');
     throw new SyntaxError(message);
   }
 
