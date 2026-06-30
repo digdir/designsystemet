@@ -46,8 +46,8 @@ importers:
         specifier: 4.1.8
         version: 4.1.8(@vitest/browser@4.1.8)(vitest@4.1.8)
       chromatic:
-        specifier: 17.4.1
-        version: 17.4.1
+        specifier: 17.7.1
+        version: 17.7.1
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -3479,8 +3479,8 @@ packages:
   chroma-js@3.2.0:
     resolution: {integrity: sha512-os/OippSlX1RlWWr+QDPcGUZs0uoqr32urfxESG9U93lhUfbnlyckte84Q8P1UQY/qth983AS1JONKmLS4T0nw==}
 
-  chromatic@17.4.1:
-    resolution: {integrity: sha512-qL1f0IhOBi0Z6kpQZGR62fJzzCOdjFJLHrJw3QL9YNktj2Kl3+adlU+6psqNGfZUycKF7+pizCSbhsUQNIS/uQ==}
+  chromatic@17.7.1:
+    resolution: {integrity: sha512-iDgauml4FOo6a7Pp8mnzSr0/LyMWB47hlsBR3azCtsTbpKM/tzD4+Z0vGsS2mvi6HI/qcirMDGVZNQoA5SRuUA==}
     engines: {node: '>=22.0.0'}
     hasBin: true
     peerDependencies:
@@ -8919,7 +8919,7 @@ snapshots:
 
   chroma-js@3.2.0: {}
 
-  chromatic@17.4.1:
+  chromatic@17.7.1:
     dependencies:
       semver: 7.8.1
 

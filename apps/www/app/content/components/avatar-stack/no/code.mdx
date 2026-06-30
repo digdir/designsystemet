@@ -8,49 +8,8 @@ Avatar stack er under utvikling. Har du tilbakemelding eller innspill, meld fra 
 
 For å lage en avatar stack i ren HTML brukes klassen `ds-avatar-stack` på en `<span>`. Inne i denne plasseres elementer med klassen `ds-avatar`. Merk at dersom du vil bruke `data-expandable="fixed"` må antallet avatarer være oppgitt via `--dsc-avatar-count: <number>` for å korrekt kalkulere den faste bredden. Bruk `data-suffix` for å legge til en tekstindikator for skjulte avatarer.
 
-```html
-<span 
-  class="ds-avatar-stack" 
-  data-expandable="fixed" 
-  style="--dsc-avatar-count: 3;" 
-  tabindex="0" 
-  aria-label="contributors" 
-  data-suffix="+4">
-  <span
-    class="ds-avatar"
-    data-variant="circle"
-    role="img"
-    aria-label=""
-  >
-    <img alt="" aria-hidden="true" src="...">
-  </span>
-  <span
-    class="ds-avatar"
-    data-variant="circle"
-    data-initials="ON"
-    role="img"
-    aria-label=""
-  ></span>
-  <span
-    class="ds-avatar"
-    data-variant="circle"
-    role="img"
-    aria-label=""
-  >
-    <span>ON</span>
-  </span>
-</span>
-```
+`aria-label` eller `aria-description` kan brukes på avatar stack for å gi kontekst til skjermlesere om hva stabelen representerer.
 
-Dersom du vil overstyre standard gap/size/overlap gjøres det via disse CSS-variablene:
-
-```css
-.ds-avatar-stack {
-  --dsc-avatar-stack-gap: 4px; /* standard er 2px */
-  --dsc-avatar-stack-avatar-size: 3rem; /* standard er var(--ds-size-12) */
-  --dsc-avatar-stack-overlap: 30; /* standard er 50 */
-}
-```
 
 ## CSS variabler og data-attributter
 
@@ -62,25 +21,23 @@ Avatar stack bruker egne CSS-variabler for å styre gap, størrelse og overlapp.
 
 ## Eksempel
 
-### Tilpassbarhet
-Avatar stack er laget for å være fleksibel nok til å dekke mange ulike behov og brukstilfeller.
-<Story story="Playground" layout='block' />
-
 ### Expandable
- `expandable` animerer overlap til 0 ved hover eller fokus. Bruk `expandable="fixed"` for å utvide med overflow uten å endre den fysiske bredden. `tabindex="0"` blir automatisk lagt med `expandable`, men dette kan overstyres.
+`data-expandable` animerer overlap til 0 ved hover eller fokus. Bruk `data-expandable="fixed"` for å utvide med overflow uten å endre den fysiske bredden. `tabindex="0"` blir automatisk lagt til med `data-expandable`, men dette kan overstyres.
 <Story story="Expandable" layout='block' />
 
 ### Indikere avatarer som ikke vises
 Avatar stack støtter ikke "wrapping" over flere linjer. Dersom det er flere avatarer enn det er plass til i stacken, kan man bruke `suffix` for å indikere dette i form av tekst til høyre for stabelen. Denne skalerer seg automatisk med avatar-størrelsen.
+
 Det er også mulig å bruke en avatar med `+xx` som `initials` eller child, men da bør du overstyre tekststørrelsen på denne avataren med `--dsc-avatar-font-size` dersom det skal være plass til tosifret eller høyere tall.
+
 <Story story="AdditionalAvatars" layout='block' />
 
 ### Størrelser
-Du kan ikke bruke `data-size` for å endre størrelsen på avatarer i en avatar stack. I stedet styres størrelsen via `avatarSize` prop på `AvatarStack`. Denne må oppgis i en gyldig CSS-lengdeenhet (`px`, `em`, `rem`, `var(--ds-size-6)` osv.).
+Du kan ikke bruke `data-size` for å endre størrelsen på avatarer i en avatar stack. I stedet styres størrelsen med å sette størrelsen på variabelen `--dsc-avatar-stack-size`. 
 <Story story="DataSize" layout='block' />
 
 ### Gap
-Avatar stack bruker CSS `mask` for å lage det synlige mellomrommet mellom avatarene. Standard er 2px, men kan tilpasses med `gap`.
+Avatar stack bruker CSS `mask` for å lage det synlige mellomrommet mellom avatarene, denne kan justeres ved sette størrelsen på variabelen `--dsc-avatar-stack-gap`.
 <Story story="Gap" layout='block' />
 
 ## React

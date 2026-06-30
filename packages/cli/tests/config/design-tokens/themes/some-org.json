@@ -132,268 +132,136 @@
         "$value": "{some-org.complimentary.16}"
       }
     },
-    "first": {
+    "hyphen-color": {
       "1": {
         "$type": "color",
-        "$value": "{some-org.first.1}"
+        "$value": "{some-org.hyphen-color.1}"
       },
       "2": {
         "$type": "color",
-        "$value": "{some-org.first.2}"
+        "$value": "{some-org.hyphen-color.2}"
       },
       "3": {
         "$type": "color",
-        "$value": "{some-org.first.3}"
+        "$value": "{some-org.hyphen-color.3}"
       },
       "4": {
         "$type": "color",
-        "$value": "{some-org.first.4}"
+        "$value": "{some-org.hyphen-color.4}"
       },
       "5": {
         "$type": "color",
-        "$value": "{some-org.first.5}"
+        "$value": "{some-org.hyphen-color.5}"
       },
       "6": {
         "$type": "color",
-        "$value": "{some-org.first.6}"
+        "$value": "{some-org.hyphen-color.6}"
       },
       "7": {
         "$type": "color",
-        "$value": "{some-org.first.7}"
+        "$value": "{some-org.hyphen-color.7}"
       },
       "8": {
         "$type": "color",
-        "$value": "{some-org.first.8}"
+        "$value": "{some-org.hyphen-color.8}"
       },
       "9": {
         "$type": "color",
-        "$value": "{some-org.first.9}"
+        "$value": "{some-org.hyphen-color.9}"
       },
       "10": {
         "$type": "color",
-        "$value": "{some-org.first.10}"
+        "$value": "{some-org.hyphen-color.10}"
       },
       "11": {
         "$type": "color",
-        "$value": "{some-org.first.11}"
+        "$value": "{some-org.hyphen-color.11}"
       },
       "12": {
         "$type": "color",
-        "$value": "{some-org.first.12}"
+        "$value": "{some-org.hyphen-color.12}"
       },
       "13": {
         "$type": "color",
-        "$value": "{some-org.first.13}"
+        "$value": "{some-org.hyphen-color.13}"
       },
       "14": {
         "$type": "color",
-        "$value": "{some-org.first.14}"
+        "$value": "{some-org.hyphen-color.14}"
       },
       "15": {
         "$type": "color",
-        "$value": "{some-org.first.15}"
+        "$value": "{some-org.hyphen-color.15}"
       },
       "16": {
         "$type": "color",
-        "$value": "{some-org.first.16}"
+        "$value": "{some-org.hyphen-color.16}"
       }
     },
-    "second": {
+    "double-hyphen-color": {
       "1": {
         "$type": "color",
-        "$value": "{some-org.second.1}"
+        "$value": "{some-org.double-hyphen-color.1}"
       },
       "2": {
         "$type": "color",
-        "$value": "{some-org.second.2}"
+        "$value": "{some-org.double-hyphen-color.2}"
       },
       "3": {
         "$type": "color",
-        "$value": "{some-org.second.3}"
+        "$value": "{some-org.double-hyphen-color.3}"
       },
       "4": {
         "$type": "color",
-        "$value": "{some-org.second.4}"
+        "$value": "{some-org.double-hyphen-color.4}"
       },
       "5": {
         "$type": "color",
-        "$value": "{some-org.second.5}"
+        "$value": "{some-org.double-hyphen-color.5}"
       },
       "6": {
         "$type": "color",
-        "$value": "{some-org.second.6}"
+        "$value": "{some-org.double-hyphen-color.6}"
       },
       "7": {
         "$type": "color",
-        "$value": "{some-org.second.7}"
+        "$value": "{some-org.double-hyphen-color.7}"
       },
       "8": {
         "$type": "color",
-        "$value": "{some-org.second.8}"
+        "$value": "{some-org.double-hyphen-color.8}"
       },
       "9": {
         "$type": "color",
-        "$value": "{some-org.second.9}"
+        "$value": "{some-org.double-hyphen-color.9}"
       },
       "10": {
         "$type": "color",
-        "$value": "{some-org.second.10}"
+        "$value": "{some-org.double-hyphen-color.10}"
       },
       "11": {
         "$type": "color",
-        "$value": "{some-org.second.11}"
+        "$value": "{some-org.double-hyphen-color.11}"
       },
       "12": {
         "$type": "color",
-        "$value": "{some-org.second.12}"
+        "$value": "{some-org.double-hyphen-color.12}"
       },
       "13": {
         "$type": "color",
-        "$value": "{some-org.second.13}"
+        "$value": "{some-org.double-hyphen-color.13}"
       },
       "14": {
         "$type": "color",
-        "$value": "{some-org.second.14}"
+        "$value": "{some-org.double-hyphen-color.14}"
       },
       "15": {
         "$type": "color",
-        "$value": "{some-org.second.15}"
+        "$value": "{some-org.double-hyphen-color.15}"
       },
       "16": {
         "$type": "color",
-        "$value": "{some-org.second.16}"
-      }
-    },
-    "third": {
-      "1": {
-        "$type": "color",
-        "$value": "{some-org.third.1}"
-      },
-      "2": {
-        "$type": "color",
-        "$value": "{some-org.third.2}"
-      },
-      "3": {
-        "$type": "color",
-        "$value": "{some-org.third.3}"
-      },
-      "4": {
-        "$type": "color",
-        "$value": "{some-org.third.4}"
-      },
-      "5": {
-        "$type": "color",
-        "$value": "{some-org.third.5}"
-      },
-      "6": {
-        "$type": "color",
-        "$value": "{some-org.third.6}"
-      },
-      "7": {
-        "$type": "color",
-        "$value": "{some-org.third.7}"
-      },
-      "8": {
-        "$type": "color",
-        "$value": "{some-org.third.8}"
-      },
-      "9": {
-        "$type": "color",
-        "$value": "{some-org.third.9}"
-      },
-      "10": {
-        "$type": "color",
-        "$value": "{some-org.third.10}"
-      },
-      "11": {
-        "$type": "color",
-        "$value": "{some-org.third.11}"
-      },
-      "12": {
-        "$type": "color",
-        "$value": "{some-org.third.12}"
-      },
-      "13": {
-        "$type": "color",
-        "$value": "{some-org.third.13}"
-      },
-      "14": {
-        "$type": "color",
-        "$value": "{some-org.third.14}"
-      },
-      "15": {
-        "$type": "color",
-        "$value": "{some-org.third.15}"
-      },
-      "16": {
-        "$type": "color",
-        "$value": "{some-org.third.16}"
-      }
-    },
-    "fourth": {
-      "1": {
-        "$type": "color",
-        "$value": "{some-org.fourth.1}"
-      },
-      "2": {
-        "$type": "color",
-        "$value": "{some-org.fourth.2}"
-      },
-      "3": {
-        "$type": "color",
-        "$value": "{some-org.fourth.3}"
-      },
-      "4": {
-        "$type": "color",
-        "$value": "{some-org.fourth.4}"
-      },
-      "5": {
-        "$type": "color",
-        "$value": "{some-org.fourth.5}"
-      },
-      "6": {
-        "$type": "color",
-        "$value": "{some-org.fourth.6}"
-      },
-      "7": {
-        "$type": "color",
-        "$value": "{some-org.fourth.7}"
-      },
-      "8": {
-        "$type": "color",
-        "$value": "{some-org.fourth.8}"
-      },
-      "9": {
-        "$type": "color",
-        "$value": "{some-org.fourth.9}"
-      },
-      "10": {
-        "$type": "color",
-        "$value": "{some-org.fourth.10}"
-      },
-      "11": {
-        "$type": "color",
-        "$value": "{some-org.fourth.11}"
-      },
-      "12": {
-        "$type": "color",
-        "$value": "{some-org.fourth.12}"
-      },
-      "13": {
-        "$type": "color",
-        "$value": "{some-org.fourth.13}"
-      },
-      "14": {
-        "$type": "color",
-        "$value": "{some-org.fourth.14}"
-      },
-      "15": {
-        "$type": "color",
-        "$value": "{some-org.fourth.15}"
-      },
-      "16": {
-        "$type": "color",
-        "$value": "{some-org.fourth.16}"
+        "$value": "{some-org.double-hyphen-color.16}"
       }
     },
     "neutral": {

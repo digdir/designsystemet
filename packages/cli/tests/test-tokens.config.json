@@ -7,10 +7,8 @@
       "colors": {
         "dominant": "#0062BA",
         "complimentary": "#94237C",
-        "first": "#F45F63",
-        "second": "#E5AA20",
-        "third": "#1E98F5",
-        "fourth": "#F167EC",
+        "hyphen-color": "#F45F63",
+        "double-hyphen-color": "#E5AA20",
         "neutral": "#303030"
       },
       "typography": {
@@ -59,10 +57,8 @@
       "colors": {
         "dominant": "#ffaaaa",
         "complimentary": "#00ff00",
-        "first": "#abcdef",
-        "second": "#123456",
-        "third": "#994a22",
-        "fourth": "#3d5f30",
+        "hyphen-color": "#abcdef",
+        "double-hyphen-color": "#123456",
         "neutral": "#c05030"
       },
       "typography": {
