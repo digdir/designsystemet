@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
-import { envOnlyMacros } from 'vite-env-only';
 
 const internalComponentsDir = fileURLToPath(
   new URL('../../internal/components', import.meta.url),
@@ -38,7 +37,7 @@ export default defineConfig(({ isSsrBuild, command }) => ({
           tsconfigPaths: true,
         }
       : { tsconfigPaths: true },
-  plugins: [envOnlyMacros(), reactRouter(), mdxFullReload()],
+  plugins: [reactRouter(), mdxFullReload()],
   ssr: {
     noExternal: ['@navikt/aksel-icons', 'ramda'],
   },
