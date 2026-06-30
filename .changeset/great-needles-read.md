@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-Reduced package size by removing unintended source map files being generated.
+Reduced package size by removing unintended declaration map files being generated.
