@@ -80,4 +80,4 @@ jobs:
       - name: test cli (built dist bin)
         run: pnpm --filter "@digdir/designsystemet" test
         env:
-          DESIGNSYSTEMET_BIN: ./dist/bin/designsystemet.js
+          DESIGNSYSTEMET_BIN: packages/cli/dist/bin/designsystemet.js
