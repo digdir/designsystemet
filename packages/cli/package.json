@@ -39,7 +39,7 @@
     "access": "public"
   },
   "scripts": {
-    "designsystemet": "pnpm node ./bin/designsystemet.ts",
+    "designsystemet": "pnpm node ${DESIGNSYSTEMET_BIN:-./bin/designsystemet.ts}",
     "designsystemet:inspect": "pnpm node --inspect-brk ./bin/designsystemet.ts",
     "build": "tsdown && pnpm build:json-schema",
     "build:json-schema": "pnpm node ./src/scripts/createJsonSchema.ts",

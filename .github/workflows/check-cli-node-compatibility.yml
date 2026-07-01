@@ -77,5 +77,7 @@ jobs:
           name: cli-dist
           path: packages/cli/dist
 
-      - name: test cli
+      - name: test cli (built dist bin)
         run: pnpm --filter "@digdir/designsystemet" test
+        env:
+          DESIGNSYSTEMET_BIN: ./dist/bin/designsystemet.js
