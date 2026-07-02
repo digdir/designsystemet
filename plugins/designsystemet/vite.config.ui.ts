@@ -14,19 +14,16 @@ export default defineConfig(({ mode }) => ({
     sourcemap: mode !== 'production' ? 'inline' : false,
     emptyOutDir: false,
     outDir: path.resolve('dist'),
-    rollupOptions: {
+    rolldownOptions: {
       input: path.resolve('src/ui/index.html'),
+      output: {
+        codeSplitting: false,
+      },
     },
   },
   css: {
     postcss: {
       plugins: [postcssUrl({ url: 'inline' })],
-    },
-  },
-  resolve: {
-    alias: {
-      '@common': path.resolve('src/common'),
-      '@ui': path.resolve('src/ui'),
     },
   },
 }));

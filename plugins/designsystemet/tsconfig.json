@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "ES2022",
-    "typeRoots": ["./node_modules/@figma"]
+    "types": ["@figma/plugin-typings", "vite/client"]
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx"]
 }
