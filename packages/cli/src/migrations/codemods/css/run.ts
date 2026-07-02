@@ -1,7 +1,7 @@
 import glob from 'fast-glob';
 import type { AcceptedPlugin } from 'postcss';
 import postcss from 'postcss';
-import { dsfs } from '../../../../src/utils/filesystem.js';
+import { dsfs } from '../../../../src/utils/filesystem.ts';
 
 type CssCodemodProps = {
   plugins: AcceptedPlugin[];

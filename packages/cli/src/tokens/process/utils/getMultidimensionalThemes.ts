@@ -2,9 +2,9 @@ import type { ThemeObject } from '@tokens-studio/types';
 import { TokenSetStatus } from '@tokens-studio/types';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import type { ThemeDimension, ThemePermutation } from '../../types.js';
-import { buildOptions } from '../platform.js';
-import { kebabCase } from './kebab-case.js';
+import type { ThemeDimension, ThemePermutation } from '../../types.ts';
+import { buildOptions } from '../platform.ts';
+import { kebabCase } from './kebab-case.ts';
 
 /**
  * Find the theme permutations that are relevant for the given theme dimensions.
