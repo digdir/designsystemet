@@ -20,12 +20,17 @@
     "access": "public"
   },
   "scripts": {
-    "build": "",
-    "build:theme": ""
+    "build": "rimraf dist && pnpm run build:ui && pnpm run build:code",
+    "build:ui": "vite build -c ./vite.config.ui.ts",
+    "build:code": "vite build -c ./vite.config.code.ts",
+    "watch": "pnpm run watch:ui & pnpm run watch:code",
+    "watch:ui": "npm run build:ui -- --watch --mode=development",
+    "watch:code": "npm run build:code -- --watch --mode=development"
   },
   "dependencies": {
     "@digdir/designsystemet": "workspace:",
     "@digdir/designsystemet-css": "workspace:",
+    "@digdir/designsystemet-react": "workspace:",
     "@digdir/designsystemet-types": "workspace:",
     "react": "19.2.7",
     "react-dom": "19.2.7"

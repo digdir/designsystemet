@@ -731,6 +731,9 @@ importers:
       '@digdir/designsystemet-css':
         specifier: 'workspace:'
         version: link:../../packages/css
+      '@digdir/designsystemet-react':
+        specifier: 'workspace:'
+        version: link:../../packages/react
       '@digdir/designsystemet-types':
         specifier: 'workspace:'
         version: link:../../packages/types
