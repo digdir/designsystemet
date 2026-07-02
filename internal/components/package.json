@@ -23,7 +23,7 @@
     "@navikt/aksel-icons": "8.14.0",
     "clsx": "2.1.1",
     "prism-react-renderer": "2.4.1",
-    "prettier": "3.8.5",
+    "prettier": "3.9.3",
     "react-code-block": "1.1.3",
     "react": "19.2.7",
     "react-i18next": "17.0.8",
