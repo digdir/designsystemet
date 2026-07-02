@@ -1,3 +1,5 @@
+import helmet from 'helmet';
+
 const DEVELOPMENT = process.env.NODE_ENV === 'development';
 
 const connectSrc = [
@@ -8,28 +10,43 @@ const connectSrc = [
   .filter(Boolean)
   .join(' ');
 
-/**
- * Security/CSP headers, homepage Link headers (RFC 8288 / RFC 9727) and TRACE
- * blocking.
- *
- * In RR v7 these were applied by the bundled `server/app.ts`. Under RR v8 the
- * SSR build no longer bundles `server/app.ts` (it emits the React Router server
- * build instead), so the production server in `server.js` drives the request
- * handler directly and applies this middleware itself. Keep in sync with the
- * inline copy in `server/app.ts`, which still serves the dev server.
- */
-export function securityHeaders(req, res, next) {
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader(
-    'Strict-Transport-Security',
-    'max-age=31536000; includeSubDomains',
-  );
-  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-  res.setHeader(
-    'Content-Security-Policy-Report-Only',
-    `default-src 'none';base-uri 'self';script-src 'self' 'unsafe-inline' 'unsafe-eval';style-src 'self' https://altinncdn.no https://siteimproveanalytics.com 'unsafe-inline';font-src 'self' https://altinncdn.no;img-src 'self' data:;connect-src ${connectSrc};frame-ancestors 'self';form-action 'self';manifest-src 'self'; report-uri https://csp-report.digdir.no/api/reports`,
-  );
+export const helmetMiddleware = helmet({
+  contentSecurityPolicy: {
+    reportOnly: true,
+    directives: {
+      defaultSrc: ["'none'"],
+      baseUri: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      styleSrc: [
+        "'self'",
+        'https://altinncdn.no',
+        'https://siteimproveanalytics.com',
+        "'unsafe-inline'",
+      ],
+      fontSrc: ["'self'", 'https://altinncdn.no'],
+      imgSrc: ["'self'", 'data:'],
+      connectSrc,
+      frameAncestors: ["'self'"],
+      formAction: ["'self'"],
+      manifestSrc: ["'self'"],
+      reportUri: ['https://csp-report.digdir.no/api/reports'],
+    },
+  },
 
+  strictTransportSecurity: {
+    maxAge: 31536000,
+    includeSubDomains: true,
+  },
+  frameguard: { action: 'sameorigin' },
+  noSniff: true,
+});
+
+/**
+ * Homepage Link headers (RFC 8288 / RFC 9727) and TRACE blocking.
+ * Complements helmetMiddleware, which handles
+ * the standard security headers and CSP.
+ */
+export function extraSecurityHeaders(req, res, next) {
   res.setHeader('Cache-Control', 'max-age');
 
   /* Add Link headers for agent discovery (RFC 8288 / RFC 9727) on the homepage */
