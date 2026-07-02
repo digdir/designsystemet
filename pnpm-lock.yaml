@@ -95,8 +95,8 @@ importers:
         specifier: 10.4.6
         version: 10.4.6(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(rollup@4.62.2)(storybook@10.4.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.5)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@5.9.3)(vite@8.1.0(@types/node@24.13.2)(esbuild@0.28.0)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(tsx@4.22.4)(yaml@2.7.1))
       '@types/ramda':
-        specifier: 0.31.1
-        version: 0.31.1
+        specifier: 0.32.0
+        version: 0.32.0
       '@types/react':
         specifier: 19.2.17
         version: 19.2.17
@@ -213,8 +213,8 @@ importers:
         specifier: 24.13.2
         version: 24.13.2
       '@types/ramda':
-        specifier: 0.31.1
-        version: 0.31.1
+        specifier: 0.32.0
+        version: 0.32.0
       '@types/react':
         specifier: 19.2.17
         version: 19.2.17
@@ -352,8 +352,8 @@ importers:
         specifier: 24.13.2
         version: 24.13.2
       '@types/ramda':
-        specifier: 0.31.1
-        version: 0.31.1
+        specifier: 0.32.0
+        version: 0.32.0
       '@types/react':
         specifier: 19.2.17
         version: 19.2.17
@@ -413,8 +413,8 @@ importers:
         version: 8.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@types/ramda':
-        specifier: 0.31.1
-        version: 0.31.1
+        specifier: 0.32.0
+        version: 0.32.0
       '@types/react':
         specifier: 19.2.17
         version: 19.2.17
@@ -532,8 +532,8 @@ importers:
         specifier: 3.0.6
         version: 3.0.6
       '@types/ramda':
-        specifier: 0.31.1
-        version: 0.31.1
+        specifier: 0.32.0
+        version: 0.32.0
       tsdown:
         specifier: 0.22.2
         version: 0.22.2(oxc-resolver@11.19.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0))(tsx@4.22.4)(typescript@5.9.3)
@@ -2662,8 +2662,8 @@ packages:
   '@types/qs@6.14.0':
     resolution: {integrity: sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==}
 
-  '@types/ramda@0.31.1':
-    resolution: {integrity: sha512-Vt6sFXnuRpzaEj+yeutA0q3bcAsK7wdPuASIzR9LXqL4gJPyFw8im9qchlbp4ltuf3kDEIRmPJTD/Fkg60dn7g==}
+  '@types/ramda@0.32.0':
+    resolution: {integrity: sha512-eTRIFYUxjVvZimlPNpXzXc3j4tnSYc7lBsD7X3zwtRvJML3qXclM4+m8vvmAZAHhBASKPmZAp6qu2C/DwJpBGQ==}
 
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
@@ -5796,8 +5796,8 @@ packages:
     resolution: {integrity: sha512-OZs6gsjF4vMp32qrCbiVSkrFmXtG/AZhY3t0iAMrMBiAZyV9oALtXO8hsrHbMXF9x6L3grlFuwW2oAz7cav+Gw==}
     engines: {node: '>= 0.6'}
 
-  types-ramda@0.31.0:
-    resolution: {integrity: sha512-vaoC35CRC3xvL8Z6HkshDbi6KWM1ezK0LHN0YyxXWUn9HKzBNg/T3xSGlJZjCYspnOD3jE7bcizsp0bUXZDxnQ==}
+  types-ramda@0.32.0:
+    resolution: {integrity: sha512-iZtriSUdsDqOlip/wUaDNcoiskbVf5RdcqLNpQdUcOM1JKFClochCvPZCDjn/cc9HzoBzi4DEB4iPr1PbrhN1w==}
 
   typescript-plugin-css-modules@5.2.0:
     resolution: {integrity: sha512-c5pAU5d+m3GciDr/WhkFldz1NIEGBafuP/3xhFt9BEXS2gmn/LvjkoZ11vEBIuP8LkXfPNhOt1BUhM5efFuwOw==}
@@ -7908,9 +7908,9 @@ snapshots:
 
   '@types/qs@6.14.0': {}
 
-  '@types/ramda@0.31.1':
+  '@types/ramda@0.32.0':
     dependencies:
-      types-ramda: 0.31.0
+      types-ramda: 0.32.0
 
   '@types/range-parser@1.2.7': {}
 
@@ -11474,7 +11474,7 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  types-ramda@0.31.0:
+  types-ramda@0.32.0:
     dependencies:
       ts-toolbelt: 9.6.0
 
