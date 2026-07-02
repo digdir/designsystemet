@@ -1,5 +1,20 @@
 # Change Log
 
+## 1.19.0
+
+### Minor Changes
+
+- **cli**: Add support for JSONC config files. Config files may now contain comments and trailing commas, and a `designsystemet.config.jsonc` file is auto-detected in addition to `designsystemet.config.json`. ([#5051](https://github.com/digdir/designsystemet/pull/5051))
+
+### Patch Changes
+
+- Reduced package size by removing unintended declaration map files being generated. ([#5065](https://github.com/digdir/designsystemet/pull/5065))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.0
+
 ## 1.18.0
 
 ### Patch Changes
