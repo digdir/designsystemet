@@ -1,6 +1,8 @@
+import { createRequestHandler } from '@react-router/express';
 import compression from 'compression';
 import express from 'express';
 import morgan from 'morgan';
+import { securityHeaders } from './server/security-headers.js';
 
 // Short-circuit the type-checking of the built output.
 const BUILD_PATH = './dist/server/index.js';
@@ -43,7 +45,16 @@ if (DEVELOPMENT) {
     express.static('dist/client/.well-known', { maxAge: '1y' }),
   );
   app.use(express.static('dist/client', { maxAge: '30d' }));
-  app.use(await import(BUILD_PATH).then((mod) => mod.app));
+
+  // RR v8 emits the server build (not the bundled `server/app.ts`) at
+  // BUILD_PATH, so drive the request handler from it directly. `securityHeaders`
+  // replaces the middleware that the bundled `server/app.ts` used to provide.
+  app.use(securityHeaders);
+  app.use(
+    createRequestHandler({
+      build: () => import(BUILD_PATH),
+    }),
+  );
 }
 
 app.listen(PORT, () => {

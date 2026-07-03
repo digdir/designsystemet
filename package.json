@@ -2,12 +2,12 @@
   "name": "root",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@10.34.3+sha512.f2c531b08829d7be7f03c90addc266615f9c5477463e4bf1d275cb263ce9ea57cf0d5599110d94649a9bb3fed9f0b5efcea74a7016b61532a24cb9ad87860c1d",
+  "packageManager": "pnpm@10.34.4+sha512.8768be55200ae3f2226b6527fcca2687e14bc4e5f12d7721a0f25da3df47915177058648db4177baf348120fa0ba2752d8d8d93f6beaf1fe64ae18da8de961af",
   "engines": {
-    "node": ">=24.16.0",
+    "node": ">=24.18.0",
     "runtime": {
       "name": "node",
-      "version": "24.16.0",
+      "version": "24.18.0",
       "onFail": "download"
     }
   },
@@ -42,7 +42,7 @@
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
+    "@biomejs/biome": "2.5.1",
     "@changesets/cli": "2.31.0",
     "@changesets/get-github-info": "^0.8.0",
     "@changesets/types": "^6.1.0",
@@ -50,13 +50,13 @@
     "@testing-library/jest-dom": "6.9.1",
     "@types/node": "24.13.2",
     "@vitejs/plugin-react-swc": "4.3.1",
-    "@vitest/browser-playwright": "4.1.8",
-    "@vitest/coverage-v8": "4.1.8",
-    "chromatic": "17.4.1",
+    "@vitest/browser-playwright": "4.1.9",
+    "@vitest/coverage-v8": "4.1.9",
+    "chromatic": "17.7.2",
     "typescript": "5.9.3",
     "typescript-plugin-css-modules": "5.2.0",
-    "vite": "7.3.5",
-    "vitest": "4.1.8"
+    "vite": "8.1.0",
+    "vitest": "4.1.9"
   },
   "dependencies": {}
 }

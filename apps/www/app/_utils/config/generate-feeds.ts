@@ -1,4 +1,4 @@
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
 import { buildMetadata, logoPath } from '../metadata';
@@ -107,27 +107,19 @@ ${searchTerms.map((term) => `      <category term="${escapeXml(term.trim())}" />
   .join('\n')}
 </feed>`;
 
-    const rssClientPath = join(
-      dirname,
-      'dist',
-      'client',
-      lang,
-      'blog',
-      'feed.rss',
-    );
+    // In React Router v8 `buildEnd` runs *before* prerendering, so the
+    // `dist/client/<lang>/blog` directory (otherwise created when the blog route
+    // is prerendered) does not exist yet. Create it before writing the feeds.
+    const blogClientDir = join(dirname, 'dist', 'client', lang, 'blog');
+    mkdirSync(blogClientDir, { recursive: true });
+
+    const rssClientPath = join(blogClientDir, 'feed.rss');
     console.log(
       `Writing feed.rss to ${rssClientPath} with ${blogPosts.posts.length} URLs`,
     );
     writeFileSync(rssClientPath, rssOutput);
 
-    const atomClientPath = join(
-      dirname,
-      'dist',
-      'client',
-      lang,
-      'blog',
-      'feed.atom',
-    );
+    const atomClientPath = join(blogClientDir, 'feed.atom');
     console.log(
       `Writing feed.atom to ${atomClientPath} with ${blogPosts.posts.length} URLs`,
     );

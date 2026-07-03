@@ -6,7 +6,7 @@ import {
   getFileFromContentDir,
   getFilesFromContentDir,
 } from '~/_utils/files.server';
-import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import { getFrontmatter } from '~/_utils/get-frontmatter.server';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
@@ -39,35 +39,34 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     const fileContent = getFileFromContentDir(
       join('intro', lang, file.relativePath),
     );
-    const result = await generateFromMdx(fileContent);
+    const frontmatter = getFrontmatter(fileContent);
 
-    if (!result.frontmatter.published) {
+    if (!frontmatter.published) {
       continue;
     }
 
-    const title =
-      result.frontmatter.title || file.relativePath.replace('.mdx', '');
+    const title = frontmatter.title || file.relativePath.replace('.mdx', '');
     const url =
       `/${lang}/intro/${file.relativePath.replace('.mdx', '')}`.replace(
         /\\/g,
         '/',
       );
 
-    if (!result.frontmatter.category) {
+    if (!frontmatter.category) {
       continue;
     }
 
-    if (!cats[result.frontmatter.category]) {
-      cats[result.frontmatter.category] = [];
+    if (!cats[frontmatter.category]) {
+      cats[frontmatter.category] = [];
     }
 
-    cats[result.frontmatter.category].push({
-      title: result.frontmatter.sidebar_title || title,
+    cats[frontmatter.category].push({
+      title: frontmatter.sidebar_title || title,
       url,
-      order: result.frontmatter.order,
-      icon: result.frontmatter.icon,
-      color: result.frontmatter.color || 'red',
-      description: result.frontmatter.description || '',
+      order: frontmatter.order,
+      icon: frontmatter.icon,
+      color: frontmatter.color || 'red',
+      description: frontmatter.description || '',
     });
   }
   /* Sort articles by given order */

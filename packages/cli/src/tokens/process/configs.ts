@@ -4,7 +4,7 @@ import StyleDictionary, { type Tokens } from 'style-dictionary';
 import type { DesignTokens } from 'style-dictionary/types';
 import type { GetSDConfigOptions, SDConfigForThemePermutation, ThemeDimension } from '../types.js';
 import { traverseObj } from '../utils.js';
-import { colorCategoryVariables, colorSchemeVariables } from './configs/color.js';
+import { colorSchemeVariables, colorVariables } from './configs/color.js';
 import { semanticVariables } from './configs/semantic.js';
 import type { GetStyleDictionaryConfig } from './configs/shared.js';
 import { sizeVariables } from './configs/size.js';
@@ -29,13 +29,7 @@ for (const format of Object.values(formats)) {
 
 export const configs = {
   colorSchemeVariables,
-  mainColorVariables: colorCategoryVariables({ category: 'main' }),
-  supportColorVariables: colorCategoryVariables({ category: 'support' }),
-  neutralColorVariables: colorCategoryVariables({ category: 'builtin', color: 'neutral' }),
-  successColorVariables: colorCategoryVariables({ category: 'builtin', color: 'success' }),
-  dangerColorVariables: colorCategoryVariables({ category: 'builtin', color: 'danger' }),
-  warningColorVariables: colorCategoryVariables({ category: 'builtin', color: 'warning' }),
-  infoColorVariables: colorCategoryVariables({ category: 'builtin', color: 'info' }),
+  colorVariables,
   sizeModeVariables,
   sizeVariables,
   typographyVariables,

@@ -124,8 +124,6 @@ export default {
     'example-2': 'Eksempel 2',
   },
   colorPane: {
-    'main-color': 'main-farge',
-    'support-color': 'support-farge',
     add: 'Legg til',
     'edit-color': 'Rediger farge',
     save: 'Lagre',

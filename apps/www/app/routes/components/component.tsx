@@ -27,6 +27,7 @@ import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
 import { generateMetadata } from '~/_utils/metadata';
+import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
 
@@ -128,10 +129,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  const trimmedUrl = request.url.endsWith('/')
-    ? request.url.slice(0, -1)
-    : request.url;
-  const compPage = trimmedUrl.split('/').pop();
+  // Use the splat route param rather than parsing request.url: single-fetch data
+  // requests append a `.data` suffix (e.g. `/accessibility.data`) to request.url.
+  // stripTrailingSlash: RR v8 prerenders HTML with a trailing slash, which the
+  // splat would otherwise include (e.g. `code/` → reading `code/.mdx`).
+  const compPage = stripTrailingSlash(params['*']);
 
   const componentDocs = getComponentDocs(component);
 
