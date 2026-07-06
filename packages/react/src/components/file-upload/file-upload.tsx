@@ -19,12 +19,14 @@ export type FileUploadProps = MergeRight<
  * <Label>Upload file</Label>
  *  <FileUpload>
  *    <CloudUpIcon aria-hidden='true' />
- *    <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
- *    <FileUpload.Description>
+ *    <Field.Description>Drop file here</Field.Description>
+ *    <Field.Description>
  *      File must be in csv format and less than 2MB
- *    </FileUpload.Description>
- *    <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
- *    <FileUpload.Input />
+ *    </Field.Description>
+ *    <Button asChild data-variant='secondary'>
+ *      <span>Upload file</span>
+ *    </Button>
+ *    <input type="file" />
  *  </FileUpload>
  * </Field>
  */

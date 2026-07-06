@@ -1,4 +1,5 @@
 import {
+  Button,
   EXPERIMENTAL_FileUpload,
   Field,
   Label,
@@ -11,13 +12,11 @@ export const Preview = () => (
       Filen må være i csv-format og mindre enn 2MB
     </Field.Description>
     <EXPERIMENTAL_FileUpload>
-      <EXPERIMENTAL_FileUpload.Description>
-        Slipp fil her
-      </EXPERIMENTAL_FileUpload.Description>
-      <EXPERIMENTAL_FileUpload.FakeButton>
-        Last opp fil
-      </EXPERIMENTAL_FileUpload.FakeButton>
-      <EXPERIMENTAL_FileUpload.Input />
+      <Field.Description>Slipp fil her</Field.Description>
+      <Button asChild data-variant='secondary'>
+        <span>Last opp fil</span>
+      </Button>
+      <input type='file' />
     </EXPERIMENTAL_FileUpload>
   </Field>
 );
@@ -29,13 +28,11 @@ export const PreviewEn = () => (
       File must be in csv format and less than 2MB
     </Field.Description>
     <EXPERIMENTAL_FileUpload>
-      <EXPERIMENTAL_FileUpload.Description>
-        Drop file here
-      </EXPERIMENTAL_FileUpload.Description>
-      <EXPERIMENTAL_FileUpload.FakeButton>
-        Upload file
-      </EXPERIMENTAL_FileUpload.FakeButton>
-      <EXPERIMENTAL_FileUpload.Input />
+      <Field.Description>Drop file here</Field.Description>
+      <Button asChild data-variant='secondary'>
+        <span>Upload file</span>
+      </Button>
+      <input type='file' />
     </EXPERIMENTAL_FileUpload>
   </Field>
 );
@@ -45,16 +42,14 @@ export const FileUploadExample = () => (
     <Label>Last opp profilbilde</Label>
     <Field.Description>beskrivelsestekst</Field.Description>
     <EXPERIMENTAL_FileUpload>
-      <EXPERIMENTAL_FileUpload.Description>
-        Slipp fil her
-      </EXPERIMENTAL_FileUpload.Description>
-      <EXPERIMENTAL_FileUpload.Description>
+      <Field.Description>Slipp fil her</Field.Description>
+      <Field.Description>
         Filen må være i csv-format og mindre enn 2MB
-      </EXPERIMENTAL_FileUpload.Description>
-      <EXPERIMENTAL_FileUpload.FakeButton>
-        Last opp fil
-      </EXPERIMENTAL_FileUpload.FakeButton>
-      <EXPERIMENTAL_FileUpload.Input />
+      </Field.Description>
+      <Button asChild data-variant='secondary'>
+        <span>Last opp fil</span>
+      </Button>
+      <input type='file' />
     </EXPERIMENTAL_FileUpload>
   </Field>
 );
@@ -64,16 +59,14 @@ export const FileUploadExampleEn = () => (
     <Label>Upload profile picture</Label>
     <Field.Description>description text</Field.Description>
     <EXPERIMENTAL_FileUpload>
-      <EXPERIMENTAL_FileUpload.Description>
-        Drop file here
-      </EXPERIMENTAL_FileUpload.Description>
-      <EXPERIMENTAL_FileUpload.Description>
+      <Field.Description>Drop file here</Field.Description>
+      <Field.Description>
         File must be in csv format and less than 2MB
-      </EXPERIMENTAL_FileUpload.Description>
-      <EXPERIMENTAL_FileUpload.FakeButton>
-        Upload file
-      </EXPERIMENTAL_FileUpload.FakeButton>
-      <EXPERIMENTAL_FileUpload.Input />
+      </Field.Description>
+      <Button asChild data-variant='secondary'>
+        <span>Upload file</span>
+      </Button>
+      <input type='file' />
     </EXPERIMENTAL_FileUpload>
   </Field>
 );

@@ -29,14 +29,16 @@ export const Preview: Story = {
   render: ({ ...args }) => {
     return (
       <Field>
-        <Label className='ds-sr-only'>Upload file</Label>
+        <Label>Upload file</Label>
         <FileUpload {...args}>
-          <FileUpload.Description>Drop file here</FileUpload.Description>
-          <FileUpload.Description>
+          <Field.Description>Drop file here</Field.Description>
+          <Field.Description>
             File must be in csv format and less than 2MB
-          </FileUpload.Description>
-          <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
-          <FileUpload.Input />
+          </Field.Description>
+          <Button asChild data-variant='secondary'>
+            <span>Upload file</span>
+          </Button>
+          <input type='file' />
         </FileUpload>
       </Field>
     );
@@ -48,23 +50,27 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
     <Field>
       <Label>color variant default</Label>
       <FileUpload>
-        <FileUpload.Description>Drop file here</FileUpload.Description>
-        <FileUpload.Description>
+        <Field.Description>Drop file here</Field.Description>
+        <Field.Description>
           File must be in csv format and less than 2MB
-        </FileUpload.Description>
-        <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
-        <FileUpload.Input />
+        </Field.Description>
+        <Button asChild data-variant='secondary'>
+          <span>Upload file</span>
+        </Button>
+        <input type='file' />
       </FileUpload>
     </Field>
     <Field>
       <Label>color variant neutral</Label>
       <FileUpload data-color='neutral'>
-        <FileUpload.Description>Drop file here</FileUpload.Description>
-        <FileUpload.Description>
+        <Field.Description>Drop file here</Field.Description>
+        <Field.Description>
           File must be in csv format and less than 2MB
-        </FileUpload.Description>
-        <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
-        <FileUpload.Input />
+        </Field.Description>
+        <Button asChild data-variant='secondary'>
+          <span>Upload file</span>
+        </Button>
+        <input type='file' />
       </FileUpload>
     </Field>
   </>
@@ -73,13 +79,13 @@ export const LinkAlt: StoryFn<typeof FileUpload> = () => (
   <Field>
     <Label>Upload file</Label>
     <FileUpload>
-      <FileUpload.Description>
+      <Field.Description>
         Drop files or <span className='ds-link'>click to browse</span>
-      </FileUpload.Description>
-      <FileUpload.Description>
+      </Field.Description>
+      <Field.Description>
         File must be in csv format and less than 2MB
-      </FileUpload.Description>
-      <FileUpload.Input />
+      </Field.Description>
+      <input type='file' />
     </FileUpload>
   </Field>
 );
@@ -89,9 +95,11 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
     <Label>Upload file</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Description>Upload limit reached</FileUpload.Description>
-      <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
-      <FileUpload.Input readOnly={true} />
+      <Field.Description>Upload limit reached</Field.Description>
+      <Button asChild data-variant='secondary'>
+        <span>Upload file</span>
+      </Button>
+      <input type='file' readOnly={true} />
     </FileUpload>
   </Field>
 );
@@ -101,14 +109,16 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
     <Label>Upload file</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Description>
+      <Field.Description>
         Drop file here
-      </FileUpload.Description>
-      <FileUpload.Description>
+      </Field.Description>
+      <Field.Description>
         File must be in csv format and less than 2MB
-      </FileUpload.Description>
-      <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
-      <FileUpload.Input disabled={true} />
+      </Field.Description>
+      <Button asChild data-variant='secondary'>
+        <span>Upload file</span>
+      </Button>
+      <input type="file" disabled={true} />
     </FileUpload>
     <ValidationMessage>Invalid file format</ValidationMessage>
   </Field>
@@ -119,12 +129,14 @@ export const HiddenLabel: StoryFn<typeof FileUpload> = () => (
     <Label className='ds-sr-only'>Upload file</Label>
     <Field.Description>description text</Field.Description>
     <FileUpload>
-      <FileUpload.Description>Drop file here</FileUpload.Description>
-      <FileUpload.Description>
+      <Field.Description>Drop file here</Field.Description>
+      <Field.Description>
         File must be in csv format and less than 2MB
-      </FileUpload.Description>
-      <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
-      <FileUpload.Input />
+      </Field.Description>
+      <Button asChild data-variant='secondary'>
+        <span>Upload file</span>
+      </Button>
+      <input type='file' />
     </FileUpload>
   </Field>
 );
@@ -179,23 +191,24 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
           {isReadOnly && (
             <>
               <CircleSlashIcon aria-hidden='true' />
-              <FileUpload.Description>
+              <Field.Description>
                 You can not upload more files
-              </FileUpload.Description>
+              </Field.Description>
             </>
           )}
           {!isReadOnly && (
             <>
-              <FileUpload.Description>
+              <Field.Description>
                 {isDragging ? 'Drop file to upload' : 'Drop file here'}
-              </FileUpload.Description>
-              <FileUpload.Description>
-                File must be in svg format
-              </FileUpload.Description>
-              <FileUpload.FakeButton>Upload file</FileUpload.FakeButton>
+              </Field.Description>
+              <Field.Description>File must be in svg format</Field.Description>
+              <Button asChild data-variant='secondary'>
+                <span>Upload file</span>
+              </Button>
             </>
           )}
-          <FileUpload.Input
+          <input
+            type='file'
             ref={fileInputRef}
             accept='.svg'
             readOnly={isReadOnly}
@@ -253,30 +266,32 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
           {isReadOnly && (
             <>
               <CircleSlashIcon aria-hidden='true' />
-              <FileUpload.Description>
+              <Field.Description>
                 You can not upload more files
-              </FileUpload.Description>
+              </Field.Description>
             </>
           )}
           {!isReadOnly && (
             <>
               {isDragReject && <CircleSlashIcon aria-hidden='true' />}
-              <FileUpload.Description>
+              <Field.Description>
                 {isDragReject
                   ? 'File type not accepted'
                   : isDragActive
                     ? 'Drop file(s) here'
                     : 'Drop file(s) or click to upload'}
-              </FileUpload.Description>
-              <FileUpload.Description>
+              </Field.Description>
+              <Field.Description>
                 File must be <code>.svg</code>, {MAX_FILES - files.length} of{' '}
                 {MAX_FILES} files remaining
-              </FileUpload.Description>
-              <FileUpload.FakeButton>Upload files</FileUpload.FakeButton>
+              </Field.Description>
+              <Button asChild data-variant='secondary'>
+                <span>Upload file</span>
+              </Button>
             </>
           )}
 
-          <FileUpload.Input
+          <input
             {...getInputProps({
               readOnly: isReadOnly,
               'aria-invalid': isDragReject,

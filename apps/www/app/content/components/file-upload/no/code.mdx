@@ -15,6 +15,8 @@ Bruk klassen `ds-file-upload` på et element som inneholder en `<input type="fil
   <label class="ds-label">Last opp fil</label>
   <div class="ds-file-upload">
     <p class="ds-paragraph" data-field="description">Slipp fil her</p>
+    <p class="ds-paragraph" data-field="description">Filen må være mindre enn 2MB</p>
+    <span class="ds-button" data-variant="secondary">Last opp fil</span>
     <input type="file" title="" />
   </div>
 </ds-field>
@@ -38,12 +40,14 @@ import { EXPERIMENTAL_FileUpload as FileUpload, Field, Label } from '@digdir/des
 <Field>
   <Label>Last opp fil</Label>
   <FileUpload>
-    <FileUpload.Description>Slipp fil her</FileUpload.Description>
-    <FileUpload.Description>
+    <Field.Description>Slipp fil her</Field.Description>
+    <Field.Description>
       Filen må være i csv-format og mindre enn 2MB
-    </FileUpload.Description>
-    <FileUpload.FakeButton>Last opp fil</FileUpload.FakeButton>
-    <FileUpload.Input accept=".csv" />
+    </Field.Description>
+    <Button asChild data-variant='secondary'>
+      <span>Last opp fil</span>
+    </Button>
+    <input type="file" accept=".csv" />
   </FileUpload>
 </Field>
 ```
