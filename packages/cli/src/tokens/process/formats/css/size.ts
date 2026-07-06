@@ -18,7 +18,7 @@ export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSi
  * @param tokens - Array of transformed tokens to format.
  * @returns Object with formatted CSS strings for calc and round.
  */
-export const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
+const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
   const [name, value] = format(token).replace(/;$/, '').split(': ');
 
   let calc: string;

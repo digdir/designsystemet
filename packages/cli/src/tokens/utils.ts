@@ -1,13 +1,9 @@
 import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
-import {
-  type ColorCategories,
-  type ColorNamesByCategory,
-  type Colors,
-  colorCategories,
-  type TokenSet,
-} from './types.js';
+import { baseColors } from '../colors/colorMetadata.js';
+import type { CssColor } from '../index.js';
+import type { Theme, TokenSet } from './types.js';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
 
@@ -18,7 +14,7 @@ const hasAnyTruth = R.any(R.equals(true));
  * @param token Transformed token
  * @returns type
  */
-export const getType = (token: TransformedToken) => ((token.$type ?? token.type) as string) || '';
+const getType = (token: TransformedToken) => ((token.$type ?? token.type) as string) || '';
 
 /**
  * Returns value based on design token format used. Read more:https://v4.styledictionary.com/info/dtcg/
@@ -69,19 +65,6 @@ export function isSemanticToken(token: TransformedToken): boolean {
 
 export function isSemanticColorToken(token: TransformedToken, color: string): boolean {
   return token.filePath.includes('semantic/') && R.startsWith(['color', color], token.path);
-}
-
-export function isGlobalColorToken(token: TransformedToken): boolean {
-  return typeEquals('color', token) && pathStartsWithOneOf(['global'], token);
-}
-
-export function isColorCategoryToken(token: TransformedToken, category?: ColorCategories): boolean {
-  if (!category) {
-    return Object.keys(colorCategories).some((colorCategory) =>
-      isColorCategoryToken(token, colorCategory as ColorCategories),
-    );
-  }
-  return R.startsWith(['color', category], token.path);
 }
 
 export const isDigit = (s: string) => /^\d+$/.test(s);
@@ -166,10 +149,13 @@ export function orderBySize(sizes: string[]): string[] {
   return R.sortBy(sizeComparator, sizes);
 }
 
-export function colorNamesByCategory(colors: Colors): ColorNamesByCategory {
-  const result = {} as ColorNamesByCategory;
-  for (const category of Object.values(colorCategories)) {
-    result[category] = Object.keys(colors[category] ?? {});
-  }
-  return result;
+export function addSeverityColors(colors: Theme['colors']): Record<string, CssColor> {
+  // Add severity colors if not present
+  return R.mergeDeepLeft(colors, baseColors);
+}
+
+export function toColorNames(themeColors: Theme['colors']): string[] {
+  const colors = addSeverityColors(themeColors);
+
+  return Object.keys(colors);
 }

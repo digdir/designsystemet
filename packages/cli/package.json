@@ -1,10 +1,10 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.16.1",
+  "version": "1.18.0",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=20.20.2"
+    "node": ">=24.18.0"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,9 @@
     },
     "./types": {
       "import": "./dist/src/types.js"
+    },
+    "./schemas/*": {
+      "import": "./dist/src/schemas/*"
     }
   },
   "publishConfig": {
@@ -43,7 +46,7 @@
     "build:json-schema": "tsx ./src/scripts/createJsonSchema.ts",
     "types": "tsc --noEmit",
     "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./temp/options/design-tokens --theme options --clean",
-    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./tests/test-tokens.config.json",
+    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./tests/test-tokens.config.jsonc",
     "test:tokens-build-options": "pnpm run designsystemet tokens build -t ./temp/options/design-tokens -o ./temp/options/build --clean --experimental-tailwind",
     "test:tokens-build-config": "pnpm run designsystemet tokens build -t ./tests/config/design-tokens -o ./tests/config/build --clean --experimental-tailwind",
     "test:tokens-build-config:inspect": "pnpm run designsystemet:inspect tokens build -t ./tests/config/design-tokens -o ./tests/config/build --clean",
@@ -57,17 +60,19 @@
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",
     "@digdir/designsystemet-types": "workspace:",
+    "@inquirer/confirm": "^6.1.1",
     "@tokens-studio/sd-transforms": "2.0.3",
     "chroma-js": "^3.2.0",
     "colorjs.io": "^0.6.1",
     "commander": "^14.0.3",
     "fast-glob": "^3.3.3",
-    "hsluv": "^1.0.1",
+    "hsluv": "^1.0.2",
+    "jsonc-parser": "^3.3.1",
     "object-hash": "^3.0.0",
     "picocolors": "^1.1.1",
     "postcss": "^8.5.15",
     "ramda": "^0.32.0",
-    "style-dictionary": "^5.4.4",
+    "style-dictionary": "^5.5.0",
     "zod": "^4.4.3",
     "zod-validation-error": "^5.0.0"
   },
