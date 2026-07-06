@@ -23,7 +23,7 @@ import {
 } from './popover-fn'; // (move back to @oddbird/popover-polyfill when https://github.com/oddbird/popover-polyfill/pull/286 is released)
 
 if (isBrowser() && !isSupported() && !isPolyfilled())
-  polyfillPopover({ layerName: 'ds.base' }); // Ensure popover polyfill is loaded in browser environment after CSS is loaded to ensure correct order of CSS layers.
+  polyfillPopover({ layerName: 'ds.base' }); // Load popover polyfill in the ds.base CSS layer to keep cascade order consistent with Designsystemet layers.
 
 declare global {
   interface GlobalEventHandlersEventMap {
