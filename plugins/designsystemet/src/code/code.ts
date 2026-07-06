@@ -24,6 +24,16 @@ function makeLoadedFile(path: string, data: unknown): LoadedFile {
   };
 }
 
+// Use a Map so that token sets shared across themes (e.g. semantic/color) are only
+// kept once. Theme-specific sets have unique paths (themes/some-org, etc.) and are
+// kept as-is; shared sets are identical across themes so overwriting is safe.
+const fileMap = new Map<string, LoadedFile>();
+
+// Color names are derived from the generated `semantic/color/<name>` token sets so
+// the auto-generated severity colors (danger, info, success, warning) are included
+// alongside the user-defined colors and neutral.
+const semanticColorNames = new Set<string>();
+
 type ConfigSchema = ZodInfer<typeof configFileCreateSchema>;
 
 if (figma.editorType === 'figma') {
@@ -38,16 +48,6 @@ if (figma.editorType === 'figma') {
 figma.ui.onmessage = async (msg: FigmaMessages) => {
   switch (msg.type) {
     case 'import-tokens': {
-      // Use a Map so that token sets shared across themes (e.g. semantic/color) are only
-      // kept once. Theme-specific sets have unique paths (themes/some-org, etc.) and are
-      // kept as-is; shared sets are identical across themes so overwriting is safe.
-      const fileMap = new Map<string, LoadedFile>();
-
-      // Color names are derived from the generated `semantic/color/<name>` token sets so
-      // the auto-generated severity colors (danger, info, success, warning) are included
-      // alongside the user-defined colors and neutral.
-      const semanticColorNames = new Set<string>();
-
       try {
         const parsed = JSON.parse(msg.config);
         const config = configFileCreateSchema.parse(parsed) as ConfigSchema;
