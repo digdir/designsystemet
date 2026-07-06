@@ -35,6 +35,7 @@
     "react": "19.2.7",
     "react-docgen-typescript": "2.4.0",
     "react-dom": "19.2.7",
+    "react-dropzone": "15.0.0",
     "react-i18next": "17.0.8",
     "react-live": "4.1.8",
     "react-router": "8.0.1",
