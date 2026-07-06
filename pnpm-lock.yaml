@@ -7,6 +7,11 @@ settings:
 
 packageExtensionsChecksum: sha256-IQSNU9cJtri1P9xMWAvG91nRHacWCj8xtjZCK1etLxM=
 
+patchedDependencies:
+  '@oddbird/popover-polyfill':
+    hash: 85bdc7e5a14f11686b27f959f8d8314b44a9076775a7d5ba5a2f79217b35838a
+    path: patches/@oddbird__popover-polyfill.patch
+
 importers:
 
   .:
@@ -700,8 +705,8 @@ importers:
         specifier: 0.11.0
         version: 0.11.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
       '@oddbird/popover-polyfill':
-        specifier: 0.6.1
-        version: 0.6.1
+        specifier: 0.7.0
+        version: 0.7.0(patch_hash=85bdc7e5a14f11686b27f959f8d8314b44a9076775a7d5ba5a2f79217b35838a)
       '@testing-library/dom':
         specifier: 10.4.1
         version: 10.4.1
@@ -1428,8 +1433,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@oddbird/popover-polyfill@0.6.1':
-    resolution: {integrity: sha512-Papau51NPG+NajXvoEHCNT1CBJv4WIyvIGfH5gpJPLL8MZJt/4giC0jJ/mNZRtJmdzRuXWpUFB6QxkJa1RvMAQ==}
+  '@oddbird/popover-polyfill@0.7.0':
+    resolution: {integrity: sha512-lXjKHrRO/OVx+oRxmwRVnE444hk2WyiSge0YJKZ/H60C5zZrZcbwURCuvx0JCWg18p5WHMKr4OKMt5iIHtLnDA==}
 
   '@oxc-parser/binding-android-arm-eabi@0.127.0':
     resolution: {integrity: sha512-0LC7ye4hvqbIKxAzThzvswgHLFu2AURKzYLeSVvLdu2TBOYWQDmHnTqPLeA597BcUCxiLqLsS4CJ5uoI5WYWCQ==}
@@ -6979,7 +6984,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@oddbird/popover-polyfill@0.6.1': {}
+  '@oddbird/popover-polyfill@0.7.0(patch_hash=85bdc7e5a14f11686b27f959f8d8314b44a9076775a7d5ba5a2f79217b35838a)': {}
 
   '@oxc-parser/binding-android-arm-eabi@0.127.0':
     optional: true

@@ -9,6 +9,7 @@ import {
   size,
 } from '@floating-ui/dom';
 import {
+  isPolyfilled,
   isSupported,
   apply as polyfillPopover,
 } from '@oddbird/popover-polyfill/fn';
@@ -21,7 +22,8 @@ import {
   QUICK_EVENT,
 } from '../utils/utils';
 
-if (isBrowser() && !isSupported()) polyfillPopover(); // Ensure popover polyfill is loaded in browser environment only
+if (isBrowser() && !isSupported() && !isPolyfilled())
+  polyfillPopover({ layerName: 'ds.base' }); // Load popover polyfill in the ds.base CSS layer to keep cascade order consistent with Designsystemet layers.
 
 declare global {
   interface GlobalEventHandlersEventMap {
