@@ -1,13 +1,27 @@
-async function bootstrap() {
-  if (figma.editorType === 'figma') {
-    figma.showUI(__html__, {
-      width: 800,
-      height: 650,
-      title: 'My Figma Plugin!',
-    });
-  }
+import { createTokens } from '@digdir/designsystemet';
+import type { FigmaMessages } from '../types';
 
-  console.log('Hello world from the plugin code!');
+if (figma.editorType === 'figma') {
+  figma.showUI(__html__, {
+    width: 800,
+    height: 650,
+    title: 'Designsystemet',
+    themeColors: true,
+  });
 }
 
-bootstrap();
+figma.ui.onmessage = (msg: FigmaMessages) => {
+  switch (msg.type) {
+    case 'import-tokens': {
+      const config = JSON.parse(msg.config);
+      const _tokens = createTokens(config);
+      console.log('Importing tokens with config:', _tokens);
+
+      figma.ui.postMessage({
+        type: 'import-tokens',
+        message: 'Tokens imported successfully!',
+      });
+      break;
+    }
+  }
+};

@@ -1,25 +1,58 @@
 import '@digdir/designsystemet-css/theme';
 import '@digdir/designsystemet-css';
-import { Button } from '@digdir/designsystemet-react';
-import { useEffect, useState } from 'react';
+import {
+  Button,
+  Heading,
+  Paragraph,
+  Textarea,
+} from '@digdir/designsystemet-react';
+import { useEffect, useRef, useState } from 'react';
 
 import './app.css';
 
 function App() {
-  const [_count, _setCount] = useState(0);
-  const [_pingCount, _setPingCount] = useState(0);
+  const [message, setMessage] = useState('');
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    // UI_CHANNEL.subscribe('ping', () => {
-    //   setPingCount((cnt) => cnt + 1);
-    // });
+    const handleMessage = (event: MessageEvent) => {
+      const msg = event.data.pluginMessage;
+      switch (msg.type) {
+        case 'import-tokens': {
+          setMessage(msg.message);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
   }, []);
 
+  const handleClick = () => {
+    if (textareaRef.current) {
+      const config = textareaRef.current.value;
+      parent.postMessage(
+        { pluginMessage: { type: 'import-tokens', config } },
+        '*',
+      );
+    }
+  };
+
   return (
-    <div className='homepage'>
-      <h1>Designsystemet</h1>
-      <Button>hot refresh me</Button>
-    </div>
+    <main>
+      <header>
+        <Heading>Designsystemet</Heading>
+      </header>
+      <section>
+        <Textarea ref={textareaRef} />
+        <Button onClick={handleClick}>hot refresh me</Button>
+        {message && <Paragraph>{message}</Paragraph>}
+      </section>
+    </main>
   );
 }
 

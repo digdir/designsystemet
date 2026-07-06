@@ -1,10 +1,25 @@
+:root {
+  color-scheme: light dark;
+}
+
 body {
-  min-height: 100%;
+  min-height: 100vh;
   font-family: 'Inter', sans-serif;
   font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
   margin: 0;
   padding: 0;
   display: grid;
+  gap: var(--ds-size-4);
 
-  color: var(--ds-color-text-default);
+  color: var(--figma-color-text);
+  background: var(--figma-color-bg);
+}
+
+main {
+  padding: var(--ds-size-4);
+}
+
+section {
+  display: grid;
+  gap: var(--ds-size-4);
 }

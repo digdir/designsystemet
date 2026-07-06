@@ -1,6 +1,6 @@
 {
   "name": "Designsystemet",
-  "id": "1628760162140635414",
+  "id": "1628760162140635415",
   "api": "1.0.0",
   "main": "dist/code.js",
   "ui": "dist/index.html",
