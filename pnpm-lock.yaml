@@ -780,6 +780,9 @@ importers:
       vite-plugin-singlefile:
         specifier: ^2.3.3
         version: 2.3.3(rollup@4.62.2)(vite@8.1.0(@types/node@24.13.2)(esbuild@0.28.0)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(tsx@4.22.4)(yaml@2.7.1))
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
 
 packages:
 
