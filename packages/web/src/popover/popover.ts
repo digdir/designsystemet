@@ -9,11 +9,6 @@ import {
   size,
 } from '@floating-ui/dom';
 import {
-  isPolyfilled,
-  isSupported,
-  apply as polyfillPopover,
-} from '@oddbird/popover-polyfill/fn';
-import {
   attr,
   getCSSProp,
   isBrowser,
@@ -21,9 +16,14 @@ import {
   onHotReload,
   QUICK_EVENT,
 } from '../utils/utils';
+import {
+  isPolyfilled,
+  isSupported,
+  apply as polyfillPopover,
+} from './popover-fn'; // (move back to @oddbird/popover-polyfill when https://github.com/oddbird/popover-polyfill/pull/286 is released)
 
 if (isBrowser() && !isSupported() && !isPolyfilled())
-  on(window, 'load', polyfillPopover); // Ensure popover polyfill is loaded in browser environment after CSS is loaded to ensure correct order of CSS layers.
+  polyfillPopover({ layerName: 'ds.base' }); // Ensure popover polyfill is loaded in browser environment after CSS is loaded to ensure correct order of CSS layers.
 
 declare global {
   interface GlobalEventHandlersEventMap {
