@@ -7,7 +7,6 @@ import type { MergeRight } from '../../utilities';
 export type FileUploadProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
-    /** Instances of `FileUpload.FakeButton`, `FileUpload.Label`, `FileUpload.Description`, `FileUpload.Input` or other React nodes */
     children: ReactNode;
   }
 >;
