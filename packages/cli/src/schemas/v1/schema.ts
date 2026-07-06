@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { baseColorNames, colorNames } from '../../colors/colorMetadata.js';
-import { convertToHex } from '../../colors/index.js';
-import { RESERVED_COLORS } from '../../colors/theme.js';
+import { baseColorNames, colorNames } from '../../colors/colorMetadata.ts';
+import { convertToHex } from '../../colors/index.ts';
+import { RESERVED_COLORS } from '../../colors/theme.ts';
 
 const hexPatterns = [
   // Hex colors: #000, #0000, #000000, #00000000

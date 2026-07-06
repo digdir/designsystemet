@@ -39,11 +39,10 @@
     "access": "public"
   },
   "scripts": {
-    "designsystemet": "tsx ./bin/designsystemet.ts",
-    "designsystemet:inspect": "tsx --inspect-brk ./bin/designsystemet.ts",
-    "build": "tsdown && pnpm build:types && pnpm build:json-schema",
-    "build:types": "tsc --emitDeclarationOnly --declaration",
-    "build:json-schema": "tsx ./src/scripts/createJsonSchema.ts",
+    "designsystemet": "pnpm node ${DESIGNSYSTEMET_BIN:-./bin/designsystemet.ts}",
+    "designsystemet:inspect": "pnpm node --inspect-brk ./bin/designsystemet.ts",
+    "build": "tsdown && pnpm build:json-schema",
+    "build:json-schema": "pnpm node ./src/scripts/createJsonSchema.ts",
     "types": "tsc --noEmit",
     "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./temp/options/design-tokens --theme options --clean",
     "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./tests/test-tokens.config.jsonc",
@@ -54,7 +53,7 @@
     "test:tokens-create-and-build-config": "pnpm test:tokens-create-config && pnpm test:tokens-build-config",
     "test:generate-config-from-tokens": "pnpm run designsystemet generate-config-from-tokens -d ../../design-tokens --dry",
     "test": "node -v && pnpm test:tokens-create-and-build-options && pnpm test:generate-config-from-tokens && pnpm test:tokens-create-and-build-config",
-    "update:preview-tokens": "tsx ./src/scripts/update-preview-tokens.ts",
+    "update:preview-tokens": "pnpm node ./src/scripts/update-preview-tokens.ts",
     "verify": "pnpm test && pnpm update:template && pnpm --filter @internal/digdir update:theme-digdir"
   },
   "dependencies": {
@@ -62,6 +61,7 @@
     "@digdir/designsystemet-types": "workspace:",
     "@inquirer/confirm": "^6.1.1",
     "@tokens-studio/sd-transforms": "2.0.3",
+    "@tokens-studio/types": "0.5.2",
     "chroma-js": "^3.2.0",
     "colorjs.io": "^0.6.1",
     "commander": "^14.0.3",
@@ -77,13 +77,11 @@
     "zod-validation-error": "^5.0.0"
   },
   "devDependencies": {
-    "@tokens-studio/types": "0.5.2",
     "@types/chroma-js": "3.1.2",
     "@types/node": "24.13.2",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.31.1",
     "tsdown": "0.22.2",
-    "tsx": "4.22.4",
     "typescript": "5.9.3"
   }
 }

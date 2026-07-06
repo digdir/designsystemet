@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import type { ColorMetadataByName, ColorNumber, CssColor, GlobalColors } from './types.js';
+import type { ColorMetadataByName, ColorNumber, CssColor, GlobalColors } from './types.ts';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   info: '#0A71C0',
