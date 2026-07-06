@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @layer ds.theme, ds.base, ds.components;
 
 /** Import order defines ordinal specificity for layers */
