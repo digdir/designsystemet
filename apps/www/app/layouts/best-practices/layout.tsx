@@ -4,7 +4,7 @@ import {
   getFileFromContentDir,
   getFilesFromContentDir,
 } from '~/_utils/files.server';
-import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import { getFrontmatter } from '~/_utils/get-frontmatter.server';
 import type { Route } from './+types/layout';
 
 export { ErrorBoundary } from '~/root';
@@ -47,32 +47,31 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     const fileContent = getFileFromContentDir(
       join('best-practices', lang, file.relativePath),
     );
-    const result = await generateFromMdx(fileContent);
+    const frontmatter = getFrontmatter(fileContent);
 
-    if (!result.frontmatter.published) {
+    if (!frontmatter.published) {
       continue;
     }
 
-    const title =
-      result.frontmatter.title || file.relativePath.replace('.mdx', '');
+    const title = frontmatter.title || file.relativePath.replace('.mdx', '');
     const url = `/${lang}/best-practices/${file.relativePath.replace('.mdx', '')}`;
-    const author = result.frontmatter.author || '';
-    const date = result.frontmatter.date || '';
+    const author = frontmatter.author || '';
+    const date = frontmatter.date || '';
 
-    if (!result.frontmatter.category) {
+    if (!frontmatter.category) {
       continue;
     }
 
-    if (!cats[result.frontmatter.category]) {
-      cats[result.frontmatter.category] = [];
+    if (!cats[frontmatter.category]) {
+      cats[frontmatter.category] = [];
     }
 
-    cats[result.frontmatter.category].push({
+    cats[frontmatter.category].push({
       title,
       url,
       author,
       date,
-      description: result.frontmatter.description || '',
+      description: frontmatter.description || '',
     });
   }
   /* Sort articles by date */

@@ -1,7 +1,5 @@
-import * as R from 'ramda';
 import type { Config as StyleDictionaryConfig } from 'style-dictionary/types';
-import type { BuiltInColors, ColorCategories } from '../../types.js';
-import { isColorCategoryToken, isSemanticColorToken, typeEquals } from '../../utils.js';
+import { isSemanticColorToken, pathStartsWithOneOf } from '../../utils.js';
 import { formats } from '../formats/css.js';
 import { buildOptions } from '../platform.js';
 
@@ -28,7 +26,7 @@ export const colorSchemeVariables: GetStyleDictionaryConfig = ({ 'color-scheme':
           {
             destination: `color-scheme/${colorScheme}.css`,
             format: formats.colorScheme.name,
-            filter: (token) => typeEquals('color', token) && !R.startsWith(['global'], token.path),
+            filter: (token) => pathStartsWithOneOf(['color'], token) || token.path[1] === 'color', // link-visited tokens have "color" as the second segment of their path, e.g. "ds.color.link-visited"
           },
         ],
         options: {
@@ -39,55 +37,41 @@ export const colorSchemeVariables: GetStyleDictionaryConfig = ({ 'color-scheme':
   };
 };
 
-type ColorCategoryOpts = { category: ColorCategories } | { category: 'builtin'; color: BuiltInColors };
+export const colorVariables: GetStyleDictionaryConfig = ({ 'color-scheme': colorScheme, theme, ...permutation }) => {
+  const color = permutation.color;
 
-export const colorCategoryVariables =
-  (opts: ColorCategoryOpts): GetStyleDictionaryConfig =>
-  ({ 'color-scheme': colorScheme, theme, ...permutation }) => {
-    const category = opts.category;
-    const color = category === 'builtin' ? opts.color : permutation[`${category}-color`];
+  const layer = `ds.theme.color`;
+  const isRootColor = color === buildOptions?.defaultColor;
+  const selector = isRootColor
+    ? `:root, [data-color-scheme], [data-color="${color}"]`
+    : `[data-color="${color}"], [data-color-scheme][data-color="${color}"]`;
 
-    if (!color) {
-      throw new Error(
-        category === 'builtin'
-          ? `Missing color for built-in color ${opts.color}`
-          : `Missing color for category ${category}`,
-      );
-    }
-
-    const layer = `ds.theme.color`;
-    const isRootColor = color === buildOptions?.defaultColor;
-    const selector = isRootColor
-      ? `:root, [data-color-scheme], [data-color="${color}"]`
-      : `[data-color="${color}"], [data-color-scheme][data-color="${color}"]`;
-
-    const config: StyleDictionaryConfig = {
-      preprocessors: ['tokens-studio'],
-      platforms: {
-        css: {
-          // custom
-          colorScheme,
-          theme,
-          selector,
-          layer,
-          //
-          prefix,
-          buildPath: `${theme}/`,
-          transforms: dsTransformers,
-          files: [
-            {
-              destination: `color/${color}.css`,
-              format: formats.colorCategory.name,
-              filter: (token) =>
-                category === 'builtin' ? isSemanticColorToken(token, color) : isColorCategoryToken(token, category),
-            },
-          ],
-          options: {
-            outputReferences: true,
+  const config: StyleDictionaryConfig = {
+    preprocessors: ['tokens-studio'],
+    platforms: {
+      css: {
+        // custom
+        colorScheme,
+        theme,
+        selector,
+        layer,
+        //
+        prefix,
+        buildPath: `${theme}/`,
+        transforms: dsTransformers,
+        files: [
+          {
+            destination: `color/${color}.css`,
+            format: formats.colorCategory.name,
+            filter: (token) => isSemanticColorToken(token, color),
           },
+        ],
+        options: {
+          outputReferences: true,
         },
       },
-    };
-
-    return config;
+    },
   };
+
+  return config;
+};

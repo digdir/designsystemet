@@ -18,13 +18,15 @@
     "primitives/modes/color-scheme/light/other-org",
     "themes/some-org",
     "themes/other-org",
-    "semantic/color",
-    "semantic/modes/main-color/dominant",
-    "semantic/modes/main-color/complimentary",
-    "semantic/modes/support-color/first",
-    "semantic/modes/support-color/second",
-    "semantic/modes/support-color/third",
-    "semantic/modes/support-color/fourth",
+    "semantic/color/dominant",
+    "semantic/color/complimentary",
+    "semantic/color/hyphen-color",
+    "semantic/color/double-hyphen-color",
+    "semantic/color/neutral",
+    "semantic/color/info",
+    "semantic/color/success",
+    "semantic/color/warning",
+    "semantic/color/danger",
     "semantic/style"
   ]
 }

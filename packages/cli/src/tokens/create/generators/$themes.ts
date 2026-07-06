@@ -1,9 +1,7 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import type { ColorScheme } from '../../../colors/types.js';
-import type { ColorNamesByCategory, SizeModes, TokenSetDimensions } from '../../types.js';
-
-const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
+import type { SizeModes, TokenSetDimensions } from '../../types.js';
 
 async function createHash(text: string, algo = 'SHA-1') {
   const crypto = globalThis.crypto;
@@ -38,7 +36,7 @@ type ThemeObject_ = ThemeObject & {
 export async function generate$Themes(
   tokenSetDimensions: TokenSetDimensions,
   themeNames: string[],
-  colors: ColorNamesByCategory,
+  colorNames: string[],
 ): Promise<ThemeObject_[]> {
   const { colorSchemes, sizeModes } = tokenSetDimensions;
   return [
@@ -47,8 +45,7 @@ export async function generate$Themes(
     ...generateTypographyGroup(themeNames),
     ...generateColorSchemesGroup(colorSchemes, themeNames),
     generateSemanticGroup(),
-    ...(await generateColorGroup('main', colors.main)),
-    ...(await generateColorGroup('support', colors.support)),
+    ...(await generateColorGroup(colorNames)),
   ];
 }
 
@@ -155,7 +152,6 @@ function generateSemanticGroup(): ThemeObject_ {
     name: 'Semantic',
     selectedTokenSets: {
       'semantic/style': TokenSetStatus.ENABLED,
-      'semantic/color': TokenSetStatus.ENABLED,
       'primitives/globals': TokenSetStatus.SOURCE,
     },
     $figmaCollectionId: 'VariableCollectionId:34811:5976',
@@ -164,19 +160,16 @@ function generateSemanticGroup(): ThemeObject_ {
   };
 }
 
-async function generateColorGroup(
-  group: 'main' | 'support',
-  colors: ColorNamesByCategory['main'] | ColorNamesByCategory['support'],
-): Promise<ThemeObject_[]> {
+async function generateColorGroup(colorNames: string[]): Promise<ThemeObject_[]> {
   return Promise.all(
-    colors.map(
+    colorNames.map(
       async (color): Promise<ThemeObject_> => ({
-        id: await createHash(`${group}-${color}`),
+        id: await createHash(color),
         name: color,
         selectedTokenSets: {
-          [`semantic/modes/${group}-color/${color}`]: TokenSetStatus.ENABLED,
+          [`semantic/color/${color}`]: TokenSetStatus.ENABLED,
         },
-        group: `${capitalize(group)} color`,
+        group: `Color`,
       }),
     ),
   );

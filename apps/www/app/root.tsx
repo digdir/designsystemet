@@ -53,7 +53,14 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const lang = params.lang === 'no' ? 'no' : params.lang === 'en' ? 'en' : 'no';
 
-  if (url.pathname.match('/.*/$')) {
+  // RR v8 prerenders HTML by requesting each route WITH a trailing slash. Skip
+  // this canonicalizing redirect during prerender (IS_RR_BUILD_REQUEST), so those
+  // requests render the page instead of a redirect stub pointing at the localhost
+  // preview-server origin. The redirect still applies to real runtime requests.
+  if (
+    process.env.IS_RR_BUILD_REQUEST !== 'yes' &&
+    url.pathname.match('/.*/$')
+  ) {
     /* do this to make sure we keep params */
     url.pathname = url.pathname.replace(/\/+$/, '');
     return redirect(url.toString());

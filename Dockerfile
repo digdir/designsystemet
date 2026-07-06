@@ -22,6 +22,10 @@ ARG PORT
 ARG HOST
 ARG APP_ENV
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
+# RR v8 prerenders via an in-process Vite preview server over HTTP. Force IPv4
+# localhost resolution so the prerender can connect to it (avoids
+# `ECONNREFUSED 127.0.0.1` when `localhost` resolves to IPv6 in the container).
+ENV NODE_OPTIONS="--dns-result-order=ipv4first"
 RUN pnpm build:www
 RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 
@@ -57,7 +61,7 @@ ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm deploy --filter=@web/storybook --prod /prod/@web/storybook
 
-FROM nginx:alpine@sha256:8b1e78743a03dbb2c95171cc58639fef29abc8816598e27fb910ed2e621e589a AS storybook
+FROM nginx:alpine@sha256:54f2a904c251d5a34adf545a72d32515a15e08418dae0266e23be2e18c66fefa AS storybook
 # remove default config
 RUN rm /etc/nginx/conf.d/default.conf
 COPY /apps/storybook/nginx.conf /etc/nginx/conf.d/storybook.conf

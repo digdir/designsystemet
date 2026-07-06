@@ -40,19 +40,19 @@
 
   /* Using pure HTML elements in selector to make this work if consumer changes name of .ds-input */
   &:not([hidden]),
-  & :is(label, input, select, textarea, .ds-input):where(:not([hidden])) {
+  & :where(label:not([hidden]), .ds-input:not([hidden])) {
     display: block; /* Ensure input is not placed on same line as label/description/validation, but respect [hidden] attribute */
   }
 
   /**
    * States
    */
-  &:has([aria-disabled='true']:not(u-option, [role='option'][aria-disabled='true']), :disabled:not(option)) > * {
+  &:has(.ds-input[aria-disabled='true'], .ds-input:disabled) > * {
     cursor: not-allowed;
     opacity: var(--ds-opacity-disabled);
   }
 
-  &:has([aria-readonly='true'], [readonly]) label {
+  &:where(:has(.ds-input[aria-readonly='true'], .ds-input[readonly])) label {
     @composes ds-readonly-icon from './base.css'; /* Activate lock icon for label when readonly */
   }
 
@@ -62,7 +62,7 @@
   &[data-clickdelegatefor] {
     cursor: pointer;
   }
-  &:has(input:is([type='radio'], [type='checkbox'])) {
+  &:has(input[type='radio'], input[type='checkbox']) {
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
@@ -92,7 +92,7 @@
       grid-row: 1; /* Always place input in row 1 */
     }
 
-    &:not(:has([readonly], [aria-disabled='true']:not(u-option), :disabled:not(option))) label {
+    &:not(:has(.ds-input[readonly], .ds-input[aria-disabled='true'], .ds-input:disabled)) label {
       cursor: pointer;
     }
 
