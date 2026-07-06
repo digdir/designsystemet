@@ -1,4 +1,4 @@
-import type { TokenSet } from '../../../types.js';
+import type { TokenSet } from '../../../types.ts';
 
 const globals: TokenSet = {
   'border-width': {

@@ -1,6 +1,6 @@
 import * as R from 'ramda';
-import { cssVarRename } from './codemods/css/plugins.js';
-import { runCssCodemod } from './codemods/css/run.js';
+import { cssVarRename } from './codemods/css/plugins.ts';
+import { runCssCodemod } from './codemods/css/run.ts';
 
 /**
  * Replaces placeholders [color] in the given templates with the provided colors.

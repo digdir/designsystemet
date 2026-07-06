@@ -1,13 +1,13 @@
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
-import { generate$Themes } from '../tokens/create/generators/$themes.js';
-import { createTokens, tokenSetDimensions } from '../tokens/create.js';
-import { buildOptions, processPlatform } from '../tokens/process/platform.js';
-import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
-import type { Theme } from '../tokens/types.js';
-import { toColorNames } from '../tokens/utils.js';
-import { dsfs } from '../utils/filesystem.js';
+import { generate$Themes } from '../tokens/create/generators/$themes.ts';
+import { createTokens, tokenSetDimensions } from '../tokens/create.ts';
+import { buildOptions, processPlatform } from '../tokens/process/platform.ts';
+import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.ts';
+import type { Theme } from '../tokens/types.ts';
+import { toColorNames } from '../tokens/utils.ts';
+import { dsfs } from '../utils/filesystem.ts';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
 

@@ -1,7 +1,7 @@
-import type { OutputFile, TokenSetDimensions, TokenSets } from '../types.js';
-import { generate$Designsystemet } from './generators/$designsystemet.js';
-import { generate$Metadata } from './generators/$metadata.js';
-import { generate$Themes } from './generators/$themes.js';
+import type { OutputFile, TokenSetDimensions, TokenSets } from '../types.ts';
+import { generate$Designsystemet } from './generators/$designsystemet.ts';
+import { generate$Metadata } from './generators/$metadata.ts';
+import { generate$Themes } from './generators/$themes.ts';
 
 export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 

@@ -1,9 +1,9 @@
 import pc from 'picocolors';
 import * as R from 'ramda';
 import pkg from '../../../../package.json' with { type: 'json' };
-import type { OutputFile } from '../../types.js';
-import { sizeComparator } from '../../utils.js';
-import type { ProcessReturn } from '../platform.js';
+import type { OutputFile } from '../../types.ts';
+import { sizeComparator } from '../../utils.ts';
+import type { ProcessReturn } from '../platform.ts';
 
 export const defaultFileHeader = `build: v${pkg.version}`;
 
