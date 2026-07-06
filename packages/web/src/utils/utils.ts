@@ -1,5 +1,8 @@
 export const QUICK_EVENT = { passive: true, capture: true };
 
+// TODO EIRIK check built file of this
+import { version } from '../../package.json' with { type: 'json' };
+
 // Using function instead of constant to support evnironments where DOM can be unloaded (like Vitest with jsdom)
 export const isBrowser = () =>
   typeof window !== 'undefined' && typeof document !== 'undefined';
@@ -118,9 +121,10 @@ export const off = (
 };
 
 // Used to store cleanup functions for hot-reloading
+const HOT_RELOAD_KEY = `_dsHotReloadCleanup${version}` as const; // Ensure multiple versions of Designsystemet can run on same page
 declare global {
   interface Window {
-    _dsHotReloadCleanup?: Map<string, Array<() => void>>;
+    [HOT_RELOAD_KEY]?: Map<string, Array<() => void>>;
   }
 }
 
@@ -132,10 +136,10 @@ declare global {
  */
 export const onHotReload = (key: string, setup: () => Array<() => void>) => {
   if (!isBrowser()) return; // Skip if not in modern browser environment, but on each call as Vitest might have unloaded jsdom between tests
-  if (!window._dsHotReloadCleanup) window._dsHotReloadCleanup = new Map(); // Hot reload cleanup support supporting all build tools
+  if (!window[HOT_RELOAD_KEY]) window[HOT_RELOAD_KEY] = new Map(); // Hot reload cleanup support supporting all build tools
 
-  window._dsHotReloadCleanup?.get(key)?.map((cleanup) => cleanup()); // Run previous cleanup
-  window._dsHotReloadCleanup?.set(key, setup()); // Store new cleanup
+  window[HOT_RELOAD_KEY]?.get(key)?.map((cleanup: () => void) => cleanup()); // Run previous cleanup
+  window[HOT_RELOAD_KEY]?.set(key, setup()); // Store new cleanup
 };
 
 /**
