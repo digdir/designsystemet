@@ -5,7 +5,7 @@ import { FileUpload } from './file-upload';
  *
  * @example
  * <Field>
- * <Label>Upload file</Label>
+ *  <Label>Upload file</Label>
  *  <FileUpload>
  *    <CloudUpIcon aria-hidden='true' />
  *    <Field.Description>Drop file here</Field.Description>
