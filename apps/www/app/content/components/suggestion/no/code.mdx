@@ -73,6 +73,9 @@ Legg til en knapp med `type="reset"` og `aria-label` for å la brukeren tømme v
 
 <Story story='Preview' />
 
+### Åpne og lukk liste
+
+Legg til en knapp med `type="button" aria-expanded="false"` og `aria-label` for å la brukeren åpne og lukke listen.
 
 
 ## React
@@ -82,6 +85,7 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
 
 <Suggestion>
   <Suggestion.Input />
+  <Suggestion.Toggle />
   <Suggestion.Clear />
   <Suggestion.List>
     <Suggestion.Empty>Tomt</Suggestion.Empty>
