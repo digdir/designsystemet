@@ -21,6 +21,8 @@ packageExtensions:
     peerDependenciesMeta:
       react:
         optional: true
+patchedDependencies:
+  '@oddbird/popover-polyfill': patches/@oddbird__popover-polyfill.patch
 syncInjectedDepsAfterScripts:
   - build
   - build:all

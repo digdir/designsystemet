@@ -20,7 +20,7 @@ import {
   isPolyfilled,
   isSupported,
   apply as polyfillPopover,
-} from './popover-fn'; // (move back to @oddbird/popover-polyfill when https://github.com/oddbird/popover-polyfill/pull/286 is released)
+} from '@oddbird/popover-polyfill/fn';
 
 if (isBrowser() && !isSupported() && !isPolyfilled())
   polyfillPopover({ layerName: 'ds.base' }); // Load popover polyfill in the ds.base CSS layer to keep cascade order consistent with Designsystemet layers.

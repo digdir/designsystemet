@@ -25,8 +25,7 @@
       "!**/package.json", // changeset wants the files to be formatted differently
       "!**/wc/public",
       "!**/content/schemas/**/*.json",
-      "!**/packages/cli/tests/**/*.css",
-      "!packages/web/src/popover/popover-fn.js"
+      "!**/packages/cli/tests/**/*.css"
     ]
   },
   "formatter": {
