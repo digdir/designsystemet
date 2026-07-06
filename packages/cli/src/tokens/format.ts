@@ -1,11 +1,11 @@
 import * as R from 'ramda';
-import { generate$Themes } from './create/generators/$themes.js';
-import { createTokens, tokenSetDimensions } from './create.js';
-import { createThemeCSSFiles } from './process/output/theme.js';
-import { type FormatOptions, processPlatform } from './process/platform.js';
-import { processThemeObject } from './process/utils/getMultidimensionalThemes.js';
-import type { Theme } from './types.js';
-import { toColorNames } from './utils.js';
+import { generate$Themes } from './create/generators/$themes.ts';
+import { createTokens, tokenSetDimensions } from './create.ts';
+import { createThemeCSSFiles } from './process/output/theme.ts';
+import { type FormatOptions, processPlatform } from './process/platform.ts';
+import { processThemeObject } from './process/utils/getMultidimensionalThemes.ts';
+import type { Theme } from './types.ts';
+import { toColorNames } from './utils.ts';
 
 export const formatTokens = async (options: Omit<FormatOptions, 'type' | 'buildTokenFormats'>) => {
   const processedBuilds = await processPlatform({

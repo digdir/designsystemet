@@ -1,7 +1,7 @@
 import * as R from 'ramda';
-import { formats } from '../formats/css.js';
+import { formats } from '../formats/css.ts';
 
-import { basePxFontSize, dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.js';
+import { basePxFontSize, dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.ts';
 
 export const sizeModeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
   const selector = `:root`;

@@ -2,7 +2,6 @@ import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
-/* We omit children since we render the icon with css */
 export type SuggestionClearProps = MergeRight<
   DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
   {
@@ -22,6 +21,7 @@ export type SuggestionClearProps = MergeRight<
  * @example
  * <Suggestion>
  *   <Suggestion.Input />
+ *   <Suggestion.Toggle />
  *   <Suggestion.Clear />
  *   <Suggestion.List />
  * </Suggestion>

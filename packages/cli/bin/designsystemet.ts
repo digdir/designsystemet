@@ -3,18 +3,18 @@ import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import { checkAutomigrate } from '../src/automigrate.js';
-import { convertToHex } from '../src/colors/index.js';
-import type { CssColor } from '../src/colors/types.js';
-import migrations from '../src/migrations/index.js';
-import { buildTokens } from '../src/tokens/build.js';
-import { createSystemTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.js';
-import { createTokens, tokenSetDimensions } from '../src/tokens/create.js';
-import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
-import type { OutputFile, Theme } from '../src/tokens/types.js';
-import { toColorNames } from '../src/tokens/utils.js';
-import { dsfs } from '../src/utils/filesystem.js';
-import { deprecatedCLIOptions as cliOptions, parseCreateConfig, readConfigFile } from './config.js';
+import { checkAutomigrate } from '../src/automigrate.ts';
+import { convertToHex } from '../src/colors/index.ts';
+import type { CssColor } from '../src/colors/types.ts';
+import migrations from '../src/migrations/index.ts';
+import { buildTokens } from '../src/tokens/build.ts';
+import { createSystemTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.ts';
+import { createTokens, tokenSetDimensions } from '../src/tokens/create.ts';
+import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
+import type { OutputFile, Theme } from '../src/tokens/types.ts';
+import { toColorNames } from '../src/tokens/utils.ts';
+import { dsfs } from '../src/utils/filesystem.ts';
+import { deprecatedCLIOptions as cliOptions, parseCreateConfig, readConfigFile } from './config.ts';
 
 const figletAscii = `
  _____            _                           _                      _
@@ -34,6 +34,8 @@ const DEFAULT_TOKENS_BUILD_DIR = './design-tokens-build';
 const DEFAULT_FONT = 'Inter';
 const DEFAULT_THEME_NAME = 'theme';
 const DEFAULT_CONFIG_FILEPATH = 'designsystemet.config.json';
+// Default config files to auto-detect when no --config is supplied, in order of precedence.
+const DEFAULT_CONFIG_FILEPATHS = ['designsystemet.config.json', 'designsystemet.config.jsonc'];
 
 function _makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
@@ -50,7 +52,10 @@ function _makeTokenCommands() {
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before building tokens', parseBoolean, false)
     .option('--dry [boolean]', `Dry run for built ${pc.blue('design-tokens')}`, parseBoolean, false)
     .option('--verbose', 'Enable verbose output', false)
-    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
+    .option(
+      '--config <string>',
+      `Path to config file (auto-detects ${DEFAULT_CONFIG_FILEPATHS.map((p) => `"${p}"`).join(' or ')})`,
+    )
     .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
     .action(async (opts) => {
       console.log(figletAscii);
@@ -84,7 +89,10 @@ function _makeTokenCommands() {
   tokenCmd
     .command('create')
     .description('Create Designsystemet tokens')
-    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
+    .option(
+      '--config <string>',
+      `Path to config file (auto-detects ${DEFAULT_CONFIG_FILEPATHS.map((p) => `"${p}"`).join(' or ')})`,
+    )
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
     .option('--dry [boolean]', `Dry run for created ${pc.blue('design-tokens')}`, parseBoolean, false)
     .option('--skip-check', 'Skip migration check', false) // TODO -- will be moved to global option in the future, since it applies to all commands, not just create
@@ -281,9 +289,22 @@ function parseBoolean(value: string | boolean): boolean {
 }
 
 async function getConfigFile(userConfigFilePath: string | undefined) {
-  const allowFileNotFound = R.isNil(userConfigFilePath) || userConfigFilePath === DEFAULT_CONFIG_FILEPATH;
-  const configFilePath = userConfigFilePath ?? DEFAULT_CONFIG_FILEPATH;
-  const configFile = await readConfigFile(configFilePath, allowFileNotFound);
+  if (!R.isNil(userConfigFilePath)) {
+    // A config path was supplied explicitly. It's allowed to not exist only if it's one of the defaults.
+    const allowFileNotFound = DEFAULT_CONFIG_FILEPATHS.includes(userConfigFilePath);
+    const configFile = await readConfigFile(userConfigFilePath, allowFileNotFound);
 
-  return { configFile, configFilePath };
+    return { configFile, configFilePath: userConfigFilePath };
+  }
+
+  // No config path supplied: auto-detect the default config files (.json, then .jsonc).
+  for (const configFilePath of DEFAULT_CONFIG_FILEPATHS) {
+    const configFile = await readConfigFile(configFilePath, true);
+    if (configFile) {
+      return { configFile, configFilePath };
+    }
+  }
+
+  // None found - return empty config using the canonical default path for messaging.
+  return { configFile: '', configFilePath: DEFAULT_CONFIG_FILEPATH };
 }

@@ -1,5 +1,5 @@
-import { cssClassRename, cssVarRename } from './codemods/css/plugins.js';
-import { runCssCodemod } from './codemods/css/run.js';
+import { cssClassRename, cssVarRename } from './codemods/css/plugins.ts';
+import { runCssCodemod } from './codemods/css/run.ts';
 
 export default (glob?: string) =>
   runCssCodemod({

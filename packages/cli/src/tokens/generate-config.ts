@@ -1,8 +1,8 @@
 import path from 'node:path';
 import pc from 'picocolors';
-import type { CssColor } from '../colors/types.js';
-import type { CreateConfigSchema } from '../schemas/v1.1/schema.js';
-import { dsfs } from '../utils/filesystem.js';
+import type { CssColor } from '../colors/types.ts';
+import type { CreateConfigSchema } from '../schemas/v1.1/schema.ts';
+import { dsfs } from '../utils/filesystem.ts';
 
 type TokenValue = {
   $type: string;

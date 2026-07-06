@@ -1,5 +1,5 @@
-import { type ColorNames, semanticColorNames } from '../../../../colors/types.js';
-import type { Token, TokenSet } from '../../../types.js';
+import { type ColorNames, semanticColorNames } from '../../../../colors/types.ts';
+import type { Token, TokenSet } from '../../../types.ts';
 
 export const generateColorTokens = (colorNames: string[], _themeName: string): Record<string, TokenSet> => {
   const colorTokens = {} as Record<string, TokenSet>;

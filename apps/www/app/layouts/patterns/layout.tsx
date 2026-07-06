@@ -1,5 +1,4 @@
 import { join } from 'node:path';
-import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
@@ -7,6 +6,7 @@ import {
   getFileFromContentDir,
   getFilesFromContentDir,
 } from '~/_utils/files.server';
+import { getFrontmatter } from '~/_utils/get-frontmatter.server';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
@@ -54,27 +54,24 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     const fileContent = getFileFromContentDir(
       join('patterns', lang, file.relativePath),
     );
-    const result = await bundleMDX({
-      source: fileContent,
-    });
+    const frontmatter = getFrontmatter(fileContent);
 
-    const title =
-      result.frontmatter.title || file.relativePath.replace('.mdx', '');
+    const title = frontmatter.title || file.relativePath.replace('.mdx', '');
     const url = `/${lang}/patterns/${file.relativePath.replace('.mdx', '')}`;
 
-    if (!result.frontmatter.category) {
+    if (!frontmatter.category) {
       continue;
     }
 
-    if (!cats[result.frontmatter.category]) {
-      cats[result.frontmatter.category] = [];
+    if (!cats[frontmatter.category]) {
+      cats[frontmatter.category] = [];
     }
 
-    cats[result.frontmatter.category].push({
-      title: result.frontmatter.sidebar_title || title,
+    cats[frontmatter.category].push({
+      title: frontmatter.sidebar_title || title,
       url,
-      partners: result.frontmatter.partners || '',
-      order: result.frontmatter.order || 10,
+      partners: frontmatter.partners || '',
+      order: frontmatter.order || 10,
     });
   }
 

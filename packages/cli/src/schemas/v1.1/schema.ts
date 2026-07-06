@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { baseColorNames, colorNames } from '../../colors/colorMetadata.js';
-import { convertToHex } from '../../colors/index.js';
+import { baseColorNames, colorNames } from '../../colors/colorMetadata.ts';
+import { convertToHex } from '../../colors/index.ts';
 
 const hexPatterns = [
   // Hex colors: #000, #0000, #000000, #00000000
