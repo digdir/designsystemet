@@ -1,9 +1,8 @@
 export const QUICK_EVENT = { passive: true, capture: true };
 
-// TODO EIRIK check built file of this
 import { version } from '../../package.json' with { type: 'json' };
 
-// Using function instead of constant to support evnironments where DOM can be unloaded (like Vitest with jsdom)
+// Using function instead of constant to support environments where DOM can be unloaded (like Vitest with jsdom)
 export const isBrowser = () =>
   typeof window !== 'undefined' && typeof document !== 'undefined';
 
