@@ -46,6 +46,65 @@ describe('data-clickdelegatefor', () => {
     targetSpy.mockRestore();
   });
 
+  it('should delegate click when interactive ancestor is outside the scope', () => {
+    document.body.innerHTML = `
+      <button>
+        <div data-clickdelegatefor="target">
+          <input id="target" type="checkbox">
+          <span>Click area</span>
+        </div>
+      </button>
+    `;
+
+    const target = document.getElementById('target') as HTMLInputElement;
+    const area = document.querySelector('span') as HTMLElement;
+    const targetSpy = vi.spyOn(target, 'click');
+
+    area.click();
+
+    expect(targetSpy).toHaveBeenCalledTimes(1);
+
+    targetSpy.mockRestore();
+  });
+
+  it('should not delegate click to a disabled target', () => {
+    document.body.innerHTML = `
+      <div data-clickdelegatefor="target">
+        <input id="target" type="checkbox" disabled>
+        <span>Click area</span>
+      </div>
+    `;
+
+    const target = document.getElementById('target') as HTMLInputElement;
+    const area = document.querySelector('span') as HTMLElement;
+    const targetSpy = vi.spyOn(target, 'click');
+
+    area.click();
+
+    expect(targetSpy).not.toHaveBeenCalled();
+
+    targetSpy.mockRestore();
+  });
+
+  it('should not delegate click to an aria-disabled target', () => {
+    document.body.innerHTML = `
+      <div data-clickdelegatefor="target">
+        <button id="target" aria-disabled="true">Target</button>
+        <span>Click area</span>
+      </div>
+    `;
+
+    const target = document.getElementById('target') as HTMLButtonElement;
+    const area = document.querySelector('span') as HTMLElement;
+    const targetSpy = vi.spyOn(target, 'click');
+
+    area.click();
+
+    expect(targetSpy).not.toHaveBeenCalled();
+
+    targetSpy.mockRestore();
+  });
+
   // TODO - Add test for ctrl/meta and middle click opening links in new tab, but having problems mocking window.open so leaving out for now
   // it('should open delegated anchors in new tab when ctrl/meta or middle click', async () => {
   //   document.body.innerHTML = `
