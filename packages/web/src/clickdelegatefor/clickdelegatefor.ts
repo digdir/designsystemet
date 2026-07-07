@@ -6,7 +6,7 @@ import { on, onHotReload, QUICK_EVENT } from '../utils/utils';
 const CLASS_HOVER = ':click-delegate-hover';
 const ATTR_CLICKDELEGATEFOR = 'data-clickdelegatefor';
 const SELECTOR_CLICKDELEGATEFOR = `[${ATTR_CLICKDELEGATEFOR}]`;
-const SELECTOR_INACTIVE = `:disabled,[readonly],[aria-disabled="true"],[aria-readonly="true"]`;
+const SELECTOR_INACTIVE = `:disabled,[readonly]`;
 const SELECTOR_SKIP =
   'a,button,label,input,select,textarea,[contenteditable],[role="button"],details,dialog,[popover]';
 // details, dialog and [popover] are added to prevent click delegation inside elements that create a new "context" or "scope"

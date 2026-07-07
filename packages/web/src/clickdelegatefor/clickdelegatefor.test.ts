@@ -46,7 +46,7 @@ describe('data-clickdelegatefor', () => {
     targetSpy.mockRestore();
   });
 
-  it('should delegate click when interactive ancestor is outside the scope', () => {
+  it('should delegate click when interactive ancestor (skipped elements) is outside the scope', () => {
     document.body.innerHTML = `
       <button>
         <div data-clickdelegatefor="target">
@@ -76,25 +76,6 @@ describe('data-clickdelegatefor', () => {
     `;
 
     const target = document.getElementById('target') as HTMLInputElement;
-    const area = document.querySelector('span') as HTMLElement;
-    const targetSpy = vi.spyOn(target, 'click');
-
-    area.click();
-
-    expect(targetSpy).not.toHaveBeenCalled();
-
-    targetSpy.mockRestore();
-  });
-
-  it('should not delegate click to an aria-disabled target', () => {
-    document.body.innerHTML = `
-      <div data-clickdelegatefor="target">
-        <button id="target" aria-disabled="true">Target</button>
-        <span>Click area</span>
-      </div>
-    `;
-
-    const target = document.getElementById('target') as HTMLButtonElement;
     const area = document.querySelector('span') as HTMLElement;
     const targetSpy = vi.spyOn(target, 'click');
 
