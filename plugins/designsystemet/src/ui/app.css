@@ -23,3 +23,8 @@ section {
   display: grid;
   gap: var(--ds-size-4);
 }
+
+textarea {
+  width: 100%;
+  height: 200px;
+}
