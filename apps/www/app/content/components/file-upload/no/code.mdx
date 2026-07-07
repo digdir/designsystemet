@@ -1,0 +1,62 @@
+<Alert data-color="warning">
+File upload er under utvikling. Har du tilbakemelding eller innspill, meld fra på [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20FileUpload) eller i [Slack](https://designsystemet.no/slack).
+</Alert>
+
+<Story story="Preview" defaultOpen/>
+
+## Bruk
+
+Plasser File upload inni en [field](/no/components/docs/field/code) med en [label](/no/components/docs/label/code) slik at opplastingsområdet får en tilgjengelig ledetekst.
+
+Bruk klassen `ds-file-upload` på et element som inneholder en `<input type="file">`. Inputen blir lagt oppå hele området slik at hele flaten blir klikkbar.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Last opp fil</label>
+  <div class="ds-file-upload">
+    <p class="ds-paragraph" data-field="description">Slipp fil her</p>
+    <p class="ds-paragraph" data-field="description">Filen må være mindre enn 2MB</p>
+    <span class="ds-button" data-variant="secondary">Last opp fil</span>
+    <input type="file" title="" />
+  </div>
+</ds-field>
+```
+
+For å gjøre området skrivebeskyttet, sett `readonly` på inputen. Komponenten bytter da automatisk til en nøytral fargeskala og deaktiverer interaksjon.
+
+## CSS-variabler og data-attributter
+
+File upload bruker egne CSS-variabler for å styre blant annet bakgrunn, kantlinje, ikon og luft. Disse kan overstyres på `.ds-file-upload`.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
+
+```tsx
+import { EXPERIMENTAL_FileUpload as FileUpload, Field, Label, Button } from '@digdir/designsystemet-react';
+
+<Field>
+  <Label>Last opp fil</Label>
+  <FileUpload>
+    <Field.Description>Slipp fil her</Field.Description>
+    <Field.Description>
+      Filen må være i csv-format og mindre enn 2MB
+    </Field.Description>
+    <Button asChild data-variant='secondary'>
+      <span>Last opp fil</span>
+    </Button>
+    <input type="file" accept=".csv" />
+  </FileUpload>
+</Field>
+```
+### react-dropzone
+
+[react-dropzone](https://react-dropzone.js.org/) er et populært bibliotek for å lage filopplastingskomponenter i React. Her har du et eksempel på hvordan du kan bruke `react-dropzone` sammen med `FileUpload`.
+
+<Story story="ReactDropZoneExample" language="react"/>
+
+
+
+<ReactComponentDocs />

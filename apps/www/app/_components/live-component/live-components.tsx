@@ -14,6 +14,7 @@ import {
   useState,
 } from 'react';
 import { renderToString } from 'react-dom/server';
+import { useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 import {
   LiveEditor,
@@ -50,6 +51,7 @@ const scopes = {
   useRef,
   useId,
   SyncedBox,
+  useDropzone,
 };
 
 type Language = 'react' | 'html';

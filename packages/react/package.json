@@ -61,6 +61,7 @@
     "@testing-library/user-event": "14.6.1",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
+    "react-dropzone": "15.0.0",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "rimraf": "6.1.3",
