@@ -6,8 +6,10 @@ import { on, onHotReload, QUICK_EVENT } from '../utils/utils';
 const CLASS_HOVER = ':click-delegate-hover';
 const ATTR_CLICKDELEGATEFOR = 'data-clickdelegatefor';
 const SELECTOR_CLICKDELEGATEFOR = `[${ATTR_CLICKDELEGATEFOR}]`;
+const SELECTOR_INACTIVE = `:disabled,[readonly]`;
 const SELECTOR_SKIP =
-  'a,button,label,input,select,textarea,summary,dialog,[role="button"],[popover],[contenteditable]';
+  'a,button,label,input,select,textarea,[contenteditable],[role="button"],details,dialog,[popover]';
+// details, dialog and [popover] are added to prevent click delegation inside elements that create a new "context" or "scope"
 
 const handleClickDelegateFor = (event: MouseEvent) => {
   const isNewTab = event.button === 1 || event.metaKey || event.ctrlKey; // Middle click or cmd/ctrl + click should open in new tab
@@ -36,9 +38,8 @@ const getDelegateTarget = ({ target: el }: Event) => {
   const target = (id && document.getElementById(id)) || undefined;
   const skip = target && (el as Element).closest(SELECTOR_SKIP); // Ignore if interactive
 
-  return (!skip || skip === target) && !(target as HTMLInputElement)?.disabled
-    ? target
-    : undefined; // Skip disabled inputs
+  if (skip && skip !== target && scope?.contains(skip)) return undefined; // Ignore if interactive and inside the scope
+  return target?.matches(SELECTOR_INACTIVE) ? undefined : target; // Ignore inactive elements
 };
 
 onHotReload('clickdelegatefor', () => [
