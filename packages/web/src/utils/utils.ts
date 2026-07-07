@@ -93,14 +93,17 @@ export const attrOrCSS = (el: Element, name: string) => {
 };
 
 /**
- * ariaLabelledByText
- * @description Retrieves the text content of element referenced by aria-labelledby on the given element
- * @param el The Element to read aria-labelledby from
- * @return string text content of element referenced by aria-labelledby, or null if not found
+ * getRoot
+ * @description Helper for better compatibility
+ * @param node The target node
+ * @return The root document fragment or shadow root
  */
-export const ariaLabelledByText = (el: Element): string | null =>
-  el.ariaLabelledByElements?.map((el) => el.textContent.trim()).join('') ??
-  null;
+export const getRoot = (node: Node): Document | ShadowRoot => {
+  const root = node.getRootNode?.() || node.ownerDocument;
+  return root instanceof Document || root instanceof ShadowRoot
+    ? root
+    : document;
+};
 
 /**
  * on

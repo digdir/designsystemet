@@ -3,9 +3,9 @@ import {
   ARIA_DESC,
   ARIA_LABEL,
   announce,
-  ariaLabelledByText,
   attr,
   attrOrCSS,
+  getRoot,
   isBrowser,
   on,
   onHotReload,
@@ -48,7 +48,12 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 
 const handleAriaAttributes = () => {
   for (const el of document.querySelectorAll(SELECTOR_TOOLTIP)) {
-    const text = attrOrCSS(el, ATTR_TOOLTIP) || ariaLabelledByText(el); // Allow empty `data-tooltip` attribute, but finding text from aria-labelledby
+    let text = attrOrCSS(el, ATTR_TOOLTIP);
+
+    // Allow using another element as source
+    if (text?.[0] === '#')
+      text =
+        getRoot(el).getElementById(text.slice(1))?.textContent.trim() || null;
 
     if (!text) return; // Early return if no tooltip text
     if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {

@@ -1,7 +1,6 @@
 import {
   ARIA_LABEL,
   ARIA_LABELLEDBY,
-  ariaLabelledByText,
   attr,
   attrOrCSS,
   customElements,
@@ -28,7 +27,7 @@ export class DSBreadcrumbsElement extends DSElement {
   }
   connectedCallback() {
     const resize = debounce(() => render(this), 100);
-    this._label = attrOrCSS(this, ARIA_LABEL) || ariaLabelledByText(this); // Label can have been set by attributeChangedCallback before connectedCallback
+    this._label = getLabel(this); // Label can have been set by attributeChangedCallback before connectedCallback
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
     this._unresize = on(window, 'resize', resize);
     this._unmutate = onMutation(this, render, {
@@ -37,7 +36,7 @@ export class DSBreadcrumbsElement extends DSElement {
     });
   }
   attributeChangedCallback() {
-    const label = attr(this, ARIA_LABEL) || ariaLabelledByText(this); // Update cacheed label if aria-label attribute changes;
+    const label = getLabel(this); // Update cacheed label if aria-label attribute changes;
     if (!this._unmutate || !label) return; // Ensure we do not run unless connected
     this._label = label;
     render(this);
@@ -60,5 +59,10 @@ const render = (self: DSBreadcrumbsElement) => {
   for (const item of self._items || [])
     attr(item, 'aria-current', item === lastItemInList ? 'page' : null);
 };
+
+const getLabel = (el: Element): string | null =>
+  el.ariaLabelledByElements?.map((el) => el.textContent.trim()).join('') ??
+  attrOrCSS(el, ARIA_LABEL) ??
+  null;
 
 customElements.define('ds-breadcrumbs', DSBreadcrumbsElement);
