@@ -149,9 +149,9 @@ export function orderBySize(sizes: string[]): string[] {
   return R.sortBy(sizeComparator, sizes);
 }
 
-export function addSeverityColors(colors: Theme['colors']): Record<string, CssColor> {
+export function addSeverityColors(colors: Theme['colors']): Theme['colors'] {
   // Add severity colors if not present
-  return R.mergeDeepLeft(colors, baseColors);
+  return R.mergeDeepLeft<Theme['colors'], Theme['colors']>(colors, baseColors);
 }
 
 export function toColorNames(themeColors: Theme['colors']): string[] {
