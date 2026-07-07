@@ -15,8 +15,8 @@
     "@internal/components": "workspace:^",
     "@internal/digdir": "workspace:^",
     "@navikt/aksel-icons": "8.14.0",
-    "@react-router/express": "8.0.1",
-    "@react-router/node": "8.0.1",
+    "@react-router/express": "8.1.0",
+    "@react-router/node": "8.1.0",
     "clsx": "2.1.1",
     "compression": "1.8.1",
     "cross-env": "10.1.0",
@@ -24,7 +24,7 @@
     "express-rate-limit": "8.5.2",
     "gray-matter": "^4.0.3",
     "htmlfy": "1.0.2",
-    "i18next": "26.3.3",
+    "i18next": "26.3.4",
     "isbot": "5.1.44",
     "mdx-bundler": "10.1.1",
     "morgan": "1.11.0",
@@ -37,14 +37,14 @@
     "react-dom": "19.2.7",
     "react-i18next": "17.0.8",
     "react-live": "4.1.8",
-    "react-router": "8.0.1",
+    "react-router": "8.1.0",
     "rehype-autolink-headings": "7.1.0",
     "rehype-slug": "6.0.0",
     "remark-gfm": "4.0.1",
     "remix-i18next": "7.5.0"
   },
   "devDependencies": {
-    "@react-router/dev": "8.0.1",
+    "@react-router/dev": "8.1.0",
     "@types/express": "5.0.6",
     "@types/express-serve-static-core": "5.1.1",
     "@types/hast": "3.0.4",
@@ -54,6 +54,6 @@
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "typescript": "5.9.3",
-    "vite": "8.1.0"
+    "vite": "8.1.3"
   }
 }
