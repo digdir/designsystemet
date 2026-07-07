@@ -2,19 +2,19 @@ import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
-export type SuggestionClearProps = MergeRight<
+export type SuggestionToggleProps = MergeRight<
   DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
   {
     /**
-     * Aria label for the clear button
-     * @default 'Tøm'
+     * Aria label for the toggle button
+     * @default 'Valg'
      */
     'aria-label'?: string;
   }
 >;
 
 /**
- * Component that provides a clear button for the Suggestion input.
+ * Component that provides a toggle button for the Suggestion list.
  *
  * Place as a descendant of `Suggestion`
  *
@@ -26,17 +26,17 @@ export type SuggestionClearProps = MergeRight<
  *   <Suggestion.List />
  * </Suggestion>
  */
-export const SuggestionClear = forwardRef<
+export const SuggestionToggle = forwardRef<
   HTMLButtonElement,
-  SuggestionClearProps
->(function SuggestionClear({ 'aria-label': label = 'Tøm', ...rest }, ref) {
+  SuggestionToggleProps
+>(function SuggestionToggle({ 'aria-label': label = 'Valg', ...rest }, ref) {
   return (
     <button
+      aria-expanded='false'
       aria-label={label}
-      hidden
       ref={ref}
       suppressHydrationWarning // Since <ds-suggestion> adds attributes
-      type='reset'
+      type='button'
       {...rest}
     />
   );

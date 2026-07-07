@@ -1,0 +1,13 @@
+diff --git a/dist/popover-fn.js b/dist/popover-fn.js
+index 427d1a847a662c5d61fbf39ab0bbe055fbf78f92..62e9c8bc25a9c61f6d8526e28bb42f9543aa2454 100644
+--- a/dist/popover-fn.js
++++ b/dist/popover-fn.js
+@@ -519,7 +519,7 @@ function getStyles(layerName) {
+   const useLayer = hasLayerSupport();
+   const layerNameEscaped = CSS.escape(
+     layerName ?? ((_a = window.POPOVER_POLYFILL_OPTIONS) == null ? void 0 : _a.layerName) ?? DEFAULT_LAYER_NAME
+-  );
++  ).split('\\.').join('.');
+   return `
+ ${useLayer ? `@layer ${layerNameEscaped} {` : ""}
+   :where([popover]) {
