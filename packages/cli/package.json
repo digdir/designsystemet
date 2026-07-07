@@ -81,7 +81,7 @@
     "@types/node": "24.13.2",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.31.1",
-    "tsdown": "0.22.2",
+    "tsdown": "0.22.3",
     "typescript": "5.9.3"
   }
 }
