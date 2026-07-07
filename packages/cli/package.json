@@ -70,7 +70,7 @@
     "jsonc-parser": "^3.3.1",
     "object-hash": "^3.0.0",
     "picocolors": "^1.1.1",
-    "postcss": "^8.5.15",
+    "postcss": "^8.5.16",
     "ramda": "^0.32.0",
     "style-dictionary": "^5.5.0",
     "zod": "^4.4.3",
