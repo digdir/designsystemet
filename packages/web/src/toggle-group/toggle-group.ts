@@ -1,13 +1,24 @@
-import { attr, attrOrCSS, on, onHotReload, onMutation } from '../utils/utils';
+import {
+  ARIA_LABEL,
+  ARIA_LABELLEDBY,
+  attr,
+  attrOrCSS,
+  on,
+  onHotReload,
+  onMutation,
+  warn,
+} from '../utils/utils';
 
-const ARIA_LABELLEDBY = 'aria-labelledby';
-const ARIA_LABEL = 'aria-label';
 const ATTR_TOGGLEGROUP = 'data-toggle-group';
 const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
 
 const handleAriaAttributes = () => {
-  for (const group of document.querySelectorAll(SELECTOR_TOGGLEGROUP))
-    attr(group, 'aria-label', attrOrCSS(group, ATTR_TOGGLEGROUP));
+  for (const group of document.querySelectorAll(SELECTOR_TOGGLEGROUP)) {
+    const label = attrOrCSS(group, ATTR_TOGGLEGROUP);
+    const labelledby = group.hasAttribute(ARIA_LABELLEDBY);
+    if (label || labelledby) attr(group, ARIA_LABEL, labelledby ? null : label);
+    else warn(`Missing ${ARIA_LABEL} on:`, this);
+  }
 };
 
 const handleKeydown = (event: Partial<KeyboardEvent>) => {
@@ -16,8 +27,6 @@ const handleKeydown = (event: Partial<KeyboardEvent>) => {
     el instanceof HTMLInputElement && el.closest(SELECTOR_TOGGLEGROUP);
 
   if (!group) return;
-  if (!attr(group, ARIA_LABEL) && !attr(group, ARIA_LABELLEDBY))
-    attr(group, ARIA_LABEL, attrOrCSS(group, ATTR_TOGGLEGROUP));
   if (key === 'Enter') el.click(); // Forward Enter, but no need to listen for space key, as this is handled by the browser
   if (key?.startsWith('Arrow')) {
     event.preventDefault?.();

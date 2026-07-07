@@ -1,4 +1,6 @@
 import {
+  ARIA_LABEL,
+  ARIA_LABELLEDBY,
   attr,
   attrOrCSS,
   customElements,
@@ -13,7 +15,6 @@ declare global {
   }
 }
 
-const ATTR_LABEL = 'aria-label';
 const ATTR_CURRENT = 'data-current';
 const ATTR_TOTAL = 'data-total';
 const ATTR_HREF = 'data-href';
@@ -34,7 +35,7 @@ export class DSPaginationElement extends DSElement {
   _render?: () => void;
 
   static get observedAttributes() {
-    return [ATTR_LABEL, ATTR_CURRENT, ATTR_TOTAL, ATTR_HREF]; // Using ES2015 syntax for backwards compatibility
+    return [ARIA_LABEL, ARIA_LABELLEDBY, ATTR_CURRENT, ATTR_TOTAL, ATTR_HREF]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
     // Check for required attributes
@@ -43,7 +44,11 @@ export class DSPaginationElement extends DSElement {
     if (current && !total) warn(`Missing ${ATTR_TOTAL} attribute on:`, this);
     if (total && !current) warn(`Missing ${ATTR_CURRENT} attribute on:`, this);
 
-    attr(this, ATTR_LABEL, attrOrCSS(this, ATTR_LABEL));
+    const label = attrOrCSS(this, ARIA_LABEL);
+    const labelledby = this.hasAttribute(ARIA_LABELLEDBY);
+    if (label || labelledby) attr(this, ARIA_LABEL, labelledby ? null : label);
+    else warn(`Missing ${ARIA_LABEL} on:`, this);
+
     attr(this, 'role', 'navigation');
     this._unmutate = onMutation(this, render, {
       childList: true,
@@ -72,7 +77,7 @@ const render = (self: DSPaginationElement) => {
     items.forEach((item, i) => {
       const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
       attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
-      attr(item, 'aria-label', `${page ?? 'hidden'}`); // Used for CSS content and to hide if more items than pages, using aria-label to make Axe tests and VoiceOver rotor happy
+      attr(item, ARIA_LABEL, `${page ?? 'hidden'}`); // Used for CSS content and to hide if more items than pages, using aria-label to make Axe tests and VoiceOver rotor happy
       attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
       attr(item, 'tabindex', page ? null : '-1');
       if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);

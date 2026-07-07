@@ -1,4 +1,6 @@
 import {
+  ARIA_LABEL,
+  ARIA_LABELLEDBY,
   attr,
   customElements,
   DSElement,
@@ -40,17 +42,17 @@ export class DSErrorSummaryElement extends DSElement {
 }
 
 const render = (self: DSErrorSummaryElement) => {
-  const label = attr(self, 'aria-label')?.trim();
-  const labelledBy = attr(self, 'aria-labelledby')?.trim();
+  const label = attr(self, ARIA_LABEL)?.trim();
+  const labelledBy = attr(self, ARIA_LABELLEDBY)?.trim();
   const heading = self.querySelector('h2,h3,h4,h5,h6');
   if (heading && !label && !labelledBy) {
-    attr(self, 'aria-labelledby', useId(heading));
+    attr(self, ARIA_LABELLEDBY, useId(heading));
   }
   if (!heading && !label && !labelledBy) {
     warn(
       'Missing accessible name on:',
       self,
-      '\nAdd a heading (h2–h6), or set aria-label or aria-labelledby to provide an accessible name for screen readers.',
+      `\nAdd a heading (h2–h6), or set ${ARIA_LABEL} or ${ARIA_LABELLEDBY} to provide an accessible name for screen readers.`,
     );
   }
 };

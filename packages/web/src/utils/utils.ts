@@ -1,3 +1,6 @@
+export const ARIA_DESC = 'aria-description';
+export const ARIA_LABEL = 'aria-label';
+export const ARIA_LABELLEDBY = 'aria-labelledby';
 export const QUICK_EVENT = { passive: true, capture: true };
 
 import { version } from '../../package.json' with { type: 'json' };
@@ -86,9 +89,18 @@ export const attrOrCSS = (el: Element, name: string) => {
   let value = attr(el, name);
   if (!value)
     value = getCSSProp(el, `--_ds-${name}`).replace(STRIP_QUOTES, '').trim();
-  if (!value) warn(`Missing ${name} on:`, el);
   return value || null;
 };
+
+/**
+ * ariaLabelledByText
+ * @description Retrieves the text content of element referenced by aria-labelledby on the given element
+ * @param el The Element to read aria-labelledby from
+ * @return string text content of element referenced by aria-labelledby, or null if not found
+ */
+export const ariaLabelledByText = (el: Element): string | null =>
+  el.ariaLabelledByElements?.map((el) => el.textContent.trim()).join('') ??
+  null;
 
 /**
  * on

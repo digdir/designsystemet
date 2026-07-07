@@ -1,6 +1,9 @@
 import '../popover/popover'; // Ensure popover is imported when using individual imports, since tooltip relies on it
 import {
+  ARIA_DESC,
+  ARIA_LABEL,
   announce,
+  ariaLabelledByText,
   attr,
   attrOrCSS,
   isBrowser,
@@ -20,8 +23,6 @@ let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
 const IS_IOS = isBrowser() && /iPad|iPhone|iPod/.test(navigator.userAgent); // Needed to omit DELAY_HOVER since iOS triggers mouseover before click
 const ATTR_TOOLTIP = 'data-tooltip';
 const ATTR_COLOR = 'data-color';
-const ARIA_LABEL = 'aria-label';
-const ARIA_DESC = 'aria-description';
 const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
 const SELECTOR_TOOLTIP = `[${ATTR_TOOLTIP}]`;
 const ATTR_SCHEME = 'data-color-scheme';
@@ -47,7 +48,7 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 
 const handleAriaAttributes = () => {
   for (const el of document.querySelectorAll(SELECTOR_TOOLTIP)) {
-    const text = attrOrCSS(el, ATTR_TOOLTIP);
+    const text = attrOrCSS(el, ATTR_TOOLTIP) || ariaLabelledByText(el); // Allow empty `data-tooltip` attribute, but finding text from aria-labelledby
 
     if (!text) return; // Early return if no tooltip text
     if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {
