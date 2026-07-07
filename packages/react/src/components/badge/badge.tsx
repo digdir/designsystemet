@@ -21,10 +21,6 @@ export type BadgeProps = MergeRight<
      * @default 'base'
      */
     variant?: 'base' | 'tinted';
-    /**
-     * Change the color scheme of the badge
-     */
-    'data-color'?: Color | SeverityColors;
     children?: never;
   }
 >;

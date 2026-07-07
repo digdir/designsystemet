@@ -33,10 +33,6 @@ export type PopoverProps = MergeRight<
      */
     variant?: 'default' | 'tinted';
     /**
-     * Change the color scheme of the popover
-     */
-    'data-color'?: Color | SeverityColors;
-    /**
      * Callback when the popover wants to open.
      */
     onOpen?: () => void;

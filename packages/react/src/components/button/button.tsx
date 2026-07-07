@@ -20,10 +20,6 @@ export type ButtonProps = MergeRight<
      */
     variant?: 'primary' | 'secondary' | 'tertiary';
     /**
-     * Change the color scheme of the button
-     */
-    'data-color'?: Color | Extract<SeverityColors, 'danger'>;
-    /**
      * Toggle icon only styling, pass icon as children
      * When combined with loading, the loading-icon will be shown instead of the icon.
      * @default false
