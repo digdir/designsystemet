@@ -74,8 +74,10 @@ jobs:
             echo "No open PR found for branch $BRANCH, skipping comment."
             exit 0
           fi
+          MARKER="<!-- snapshot-release-comment -->"
           PUBLISHED_AT="$(TZ='Europe/Oslo' date '+%d.%m.%Y %H:%M:%S')"
           {
+            echo "$MARKER"
             echo "### 📦 Snapshot release published"
             echo
             echo "Published at \`$PUBLISHED_AT\` to npm with tag \`$TAG\`:"
@@ -97,7 +99,17 @@ jobs:
               fi
             done
           } > comment.md
-          gh pr comment "$PR" --body-file comment.md
+          # Find an existing snapshot-release comment to update, otherwise create a new one
+          COMMENT_ID=$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" --paginate \
+            --jq "[.[] | select(.body | contains(\"$MARKER\"))] | last | .id // empty")
+          if [ -n "$COMMENT_ID" ]; then
+            echo "Updating existing comment $COMMENT_ID"
+            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}" \
+              -F body=@comment.md > /dev/null
+          else
+            echo "No existing comment found, creating a new one"
+            gh pr comment "$PR" --body-file comment.md
+          fi
 
   release:
     name: Release

@@ -1,12 +1,12 @@
-import { generateColorScheme } from './create/generators/primitives/color-scheme.js';
-import { generateGlobals } from './create/generators/primitives/globals.js';
-import { generateSize, generateSizeGlobal } from './create/generators/primitives/size.js';
-import { generateFontSizes, generateTypography } from './create/generators/primitives/typography.js';
-import { generateColorTokens } from './create/generators/semantic/color.js';
-import { generateSemanticStyle } from './create/generators/semantic/style.js';
-import { generateTheme } from './create/generators/themes/theme.js';
-import type { Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.js';
-import { addSeverityColors, toColorNames } from './utils.js';
+import { generateColorScheme } from './create/generators/primitives/color-scheme.ts';
+import { generateGlobals } from './create/generators/primitives/globals.ts';
+import { generateSize, generateSizeGlobal } from './create/generators/primitives/size.ts';
+import { generateFontSizes, generateTypography } from './create/generators/primitives/typography.ts';
+import { generateColorTokens } from './create/generators/semantic/color.ts';
+import { generateSemanticStyle } from './create/generators/semantic/style.ts';
+import { generateTheme } from './create/generators/themes/theme.ts';
+import type { Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.ts';
+import { addSeverityColors, toColorNames } from './utils.ts';
 
 export const tokenSetDimensions: TokenSetDimensions = {
   colorSchemes: ['dark', 'light'],

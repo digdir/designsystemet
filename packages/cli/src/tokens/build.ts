@@ -1,13 +1,13 @@
 import type { ThemeObject } from '@tokens-studio/types';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import { dsfs } from '../utils/filesystem.js';
-import { createTypeDeclarationFiles } from './process/output/declarations.js';
-import { createTailwindCSSFiles } from './process/output/tailwind.js';
-import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
-import { type BuildOptions, processPlatform } from './process/platform.js';
-import { processThemeObject } from './process/utils/getMultidimensionalThemes.js';
-import type { DesignsystemetObject, OutputFile } from './types.js';
+import { dsfs } from '../utils/filesystem.ts';
+import { createTypeDeclarationFiles } from './process/output/declarations.ts';
+import { createTailwindCSSFiles } from './process/output/tailwind.ts';
+import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.ts';
+import { type BuildOptions, processPlatform } from './process/platform.ts';
+import { processThemeObject } from './process/utils/getMultidimensionalThemes.ts';
+import type { DesignsystemetObject, OutputFile } from './types.ts';
 
 export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processed$themes' | 'buildTokenFormats'>) => {
   const tokensDir = options.tokensDir;

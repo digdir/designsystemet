@@ -8,7 +8,7 @@ export default defineConfig({
   platform: 'node',
   target: 'esnext',
   root: './',
-  dts: false,
+  dts: true,
   fixedExtension: false,
   clean: true,
 });
