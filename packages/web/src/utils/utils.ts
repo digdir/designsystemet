@@ -136,8 +136,7 @@ declare global {
 export const onHotReload = (key: string, setup: () => Array<() => void>) => {
   if (!isBrowser()) return; // Skip if not in modern browser environment, but on each call as Vitest might have unloaded jsdom between tests
   if (!window[HOT_RELOAD_KEY]) window[HOT_RELOAD_KEY] = new Map(); // Hot reload cleanup support supporting all build tools
-
-  window[HOT_RELOAD_KEY]?.get(key)?.map((cleanup: () => void) => cleanup()); // Run previous cleanup
+  for (const cleanup of window[HOT_RELOAD_KEY]?.get(key) || []) cleanup(); // Run previous cleanup
   window[HOT_RELOAD_KEY]?.set(key, setup()); // Store new cleanup
 };
 

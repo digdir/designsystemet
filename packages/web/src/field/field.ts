@@ -33,6 +33,8 @@ const handleFieldMutation = (field: DSFieldElement) => {
   let hasValidation = false;
   let invalid = false;
 
+  if (field._input?.hidden) field._input = undefined; // Reset input if it has been hidden
+
   for (const el of field.getElementsByTagName('*')) {
     if (el instanceof HTMLLabelElement) labels.push(el);
     if ((el as HTMLElement).hidden) continue; // Skip hidden elements except labels
@@ -122,7 +124,7 @@ export class DSFieldElement extends DSElement {
   _unmutate?: () => void;
 
   connectedCallback() {
-    this._unevents = on(document, 'input', this, QUICK_EVENT);
+    this._unevents = on(this, 'input', this, QUICK_EVENT);
     this._unmutate = onMutation(this, () => handleFieldMutation(this), {
       attributeFilter: [
         'data-field',
