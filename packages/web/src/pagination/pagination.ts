@@ -45,7 +45,7 @@ export class DSPaginationElement extends DSElement {
     if (total && !current) warn(`Missing ${ATTR_CURRENT} attribute on:`, this);
 
     const label = attrOrCSS(this, ARIA_LABEL);
-    const labelledby = attr(this, ARIA_LABELLEDBY);
+    const labelledby = attr(this, ARIA_LABELLEDBY)?.trim();
     if (label || labelledby) attr(this, ARIA_LABEL, labelledby ? null : label);
     else warn(`Missing ${ARIA_LABEL} on:`, this);
 

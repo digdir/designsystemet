@@ -149,7 +149,7 @@ export class DSFieldElement extends DSElement {
       const label = (attrOrCSS(_counter, `data-${state}`) || TEXTS[state]) // Browser translation tools will not pick up dynamic text anyway, so no need to use aria-labelledby here
         ?.replace('%d', `${Math.abs(count)}`);
 
-      if (!label) warn(`Missing data-${state} on:`, this);
+      if (!label) warn(`Missing data-${state} on:`, _counter);
       attr(_counter, 'data-label', label); // Using attribute to prevent hydration errors, not using aria-label to make axe tests happy
       attr(_counter, 'data-state', state);
       attr(_counter, 'data-color', count < 0 ? 'danger' : null);

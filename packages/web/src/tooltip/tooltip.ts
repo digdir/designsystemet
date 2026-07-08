@@ -58,7 +58,6 @@ const handleAriaAttributes = () => {
     if (!text) continue; // Early return if no tooltip text
     if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {
       const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
-      attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
       attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
       attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
       if (!el.matches(SELECTOR_INTERACTIVE))

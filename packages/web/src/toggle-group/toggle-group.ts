@@ -15,7 +15,7 @@ const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
 const handleAriaAttributes = () => {
   for (const group of document.querySelectorAll(SELECTOR_TOGGLEGROUP)) {
     const label = attrOrCSS(group, ATTR_TOGGLEGROUP);
-    const labelledby = attr(group, ARIA_LABELLEDBY);
+    const labelledby = attr(group, ARIA_LABELLEDBY)?.trim();
     if (label || labelledby) attr(group, ARIA_LABEL, labelledby ? null : label);
     else warn(`Missing ${ARIA_LABEL} on:`, group);
   }
