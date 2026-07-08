@@ -15,6 +15,36 @@ function App() {
   const [message, setMessage] = useState('');
   const [logs, setLogs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState(`{
+  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "outDir": "./design-tokens",
+  "themes": {
+    "theme": {
+      "colors": {
+        "accent": "#ba4000",
+        "brand1": "#180d7a",
+        "brand2": "#56a03f",
+        "neutral": "#24272B"
+      },
+      "borderRadius": 4,
+      "typography": {
+        "fontFamily": "IBM Plex Sans"
+      }
+    },
+    "theme2": {
+      "colors": {
+        "accent": "#0062BA",
+        "brand1": "#0D7A5F",
+        "brand2": "#5B3FA0",
+        "neutral": "#24272B"
+      },
+      "borderRadius": 4,
+      "typography": {
+        "fontFamily": "Arial"
+      }
+    }
+  }
+}`);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -65,23 +95,8 @@ function App() {
       <section>
         <Textarea
           ref={textareaRef}
-          value={`{
-  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
-  "outDir": "./design-tokens",
-  "themes": {
-    "theme": {
-      "colors": {
-        "accent": "#ba4000",
-        "brand1": "#180d7a",
-        "brand2": "#56a03f",
-        "neutral": "#24272B"
-      },
-      "borderRadius": 4
-    }
-  }
-}
-
-`}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
         />
         <Button onClick={() => handleClick('import-config')}>
           import-config
