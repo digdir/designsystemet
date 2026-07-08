@@ -15,7 +15,6 @@ function App() {
   const [message, setMessage] = useState('');
   const [logs, setLogs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -30,7 +29,7 @@ function App() {
           const { status, message: msgMessage } = msg;
           if (status === 'exporting') {
             setLoading(true);
-            setProgress(parseFloat(msgMessage));
+            setMessage(msgMessage);
           } else if (status === 'finished') {
             setLoading(false);
             setLogs(msg.logs || []);
@@ -91,12 +90,7 @@ function App() {
           export-tokens-to-figma
         </Button>
         {message && <Paragraph>{message}</Paragraph>}
-        {loading && (
-          <>
-            <Spinner aria-label='Exporting tokens to Figma' />
-            <Paragraph>{`Progress: ${progress.toFixed(2)}%`}</Paragraph>
-          </>
-        )}
+        {loading && <Spinner aria-label='Exporting tokens to Figma' />}
         {logs.length > 0 && (
           <section>
             <Heading>Logs</Heading>
