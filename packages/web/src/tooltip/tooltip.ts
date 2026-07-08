@@ -53,9 +53,9 @@ const handleAriaAttributes = () => {
     // Allow using another element as source
     if (text?.[0] === '#')
       text =
-        getRoot(el).getElementById(text.slice(1))?.textContent.trim() || null;
+        getRoot(el).getElementById(text.slice(1))?.textContent?.trim() || null;
 
-    if (!text) return; // Early return if no tooltip text
+    if (!text) continue; // Early return if no tooltip text
     if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {
       const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
       attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations

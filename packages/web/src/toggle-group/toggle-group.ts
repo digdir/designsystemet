@@ -17,7 +17,7 @@ const handleAriaAttributes = () => {
     const label = attrOrCSS(group, ATTR_TOGGLEGROUP);
     const labelledby = group.hasAttribute(ARIA_LABELLEDBY);
     if (label || labelledby) attr(group, ARIA_LABEL, labelledby ? null : label);
-    else warn(`Missing ${ARIA_LABEL} on:`, this);
+    else warn(`Missing ${ARIA_LABEL} on:`, group);
   }
 };
 

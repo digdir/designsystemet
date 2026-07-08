@@ -146,11 +146,11 @@ export class DSFieldElement extends DSElement {
       const limit = Number(attr(_counter, 'data-limit')) || 0;
       const count = limit - _input.value.length;
       const state = count < 0 ? 'over' : 'under';
-      const label = (attrOrCSS(_counter, `data-${state}`) || TEXTS[state]) // Browser translation tools will not pick up dyanmic text anyway, so no need to use aria-labelledby here
+      const label = (attrOrCSS(_counter, `data-${state}`) || TEXTS[state]) // Browser translation tools will not pick up dynamic text anyway, so no need to use aria-labelledby here
         ?.replace('%d', `${Math.abs(count)}`);
 
       if (!label) warn(`Missing data-${state} on:`, this);
-      attr(_counter, 'data-label', label); // Using attribute to prevent hydation errors, not using aria-label to make axe tests happy
+      attr(_counter, 'data-label', label); // Using attribute to prevent hydration errors, not using aria-label to make axe tests happy
       attr(_counter, 'data-state', state);
       attr(_counter, 'data-color', count < 0 ? 'danger' : null);
 

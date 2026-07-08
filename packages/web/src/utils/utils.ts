@@ -96,7 +96,7 @@ export const attrOrCSS = (el: Element, name: string) => {
  * getRoot
  * @description Helper for better compatibility
  * @param node The target node
- * @return The root document fragment or shadow root
+ * @return The shadow root or document
  */
 export const getRoot = (node: Node): Document | ShadowRoot => {
   const root = node.getRootNode?.() || node.ownerDocument;

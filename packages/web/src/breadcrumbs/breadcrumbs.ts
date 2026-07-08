@@ -37,7 +37,7 @@ export class DSBreadcrumbsElement extends DSElement {
   }
   attributeChangedCallback() {
     const label = getLabel(this); // Update cacheed label if aria-label attribute changes;
-    if (!this._unmutate || !label) return; // Ensure we do not run unless connected
+    if (!this._unmutate || !label) return; // Ensure we do not run unless connected, and keep cached label if aria-label/aria-labelledby is removed
     this._label = label;
     render(this);
   }
@@ -61,8 +61,8 @@ const render = (self: DSBreadcrumbsElement) => {
 };
 
 const getLabel = (el: Element): string | null =>
-  el.ariaLabelledByElements?.map((el) => el.textContent.trim()).join('') ??
-  attrOrCSS(el, ARIA_LABEL) ??
+  el.ariaLabelledByElements?.map((el) => el.textContent.trim()).join(' ') ||
+  attrOrCSS(el, ARIA_LABEL) ||
   null;
 
 customElements.define('ds-breadcrumbs', DSBreadcrumbsElement);
