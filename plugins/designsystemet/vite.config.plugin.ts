@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     outDir: path.resolve('dist'),
     emptyOutDir: false,
     rolldownOptions: {
-      input: path.resolve('src/code/code.ts'),
+      input: path.resolve('src/plugin/code.ts'),
       output: {
         codeSplitting: false,
         entryFileNames: '[name].js',

@@ -1,5 +1,5 @@
-import type { CodeModule } from '../../code/harness'
-import { postToUi } from '../../code/harness'
+import type { CodeModule } from '../harness'
+import { postToUi } from '../harness'
 import { importToFigma } from './importer'
 import { tokenExportManifest } from './manifest'
 import { checkVariableStructure, prepareVariables } from './prepare-variables'

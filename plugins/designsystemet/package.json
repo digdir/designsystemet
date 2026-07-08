@@ -20,12 +20,12 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rimraf dist && pnpm run build:ui && pnpm run build:code",
+    "build": "rimraf dist && pnpm run build:ui && pnpm run build:plugin",
     "build:ui": "vite build -c ./vite.config.ui.ts",
-    "build:code": "vite build -c ./vite.config.code.ts",
-    "watch": "pnpm run watch:ui & pnpm run watch:code",
+    "build:plugin": "vite build -c ./vite.config.plugin.ts",
+    "watch": "pnpm run watch:ui & pnpm run watch:plugin",
     "watch:ui": "npm run build:ui -- --watch --mode=development",
-    "watch:code": "npm run build:code -- --watch --mode=development"
+    "watch:plugin": "npm run build:plugin -- --watch --mode=development"
   },
   "dependencies": {
     "@digdir/designsystemet": "workspace:",

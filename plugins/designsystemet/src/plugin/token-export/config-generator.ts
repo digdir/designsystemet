@@ -1,11 +1,11 @@
 import type { infer as ZodInfer } from 'zod';
 import legacyColorMigration from '../../../node_modules/@digdir/designsystemet/dist/src/migrations/flatten-color-categories.js';
-import { configFileCreateSchema } from '../../../node_modules/@digdir/designsystemet/dist/src/schemas/v1.1/schema.js';
-import { createTokens } from '../../../node_modules/@digdir/designsystemet/dist/src/tokens/create.js';
-import { COLLECTION } from './constants';
-import { buildPreview } from './preview-model';
-import type { LoadedFile, PreviewData } from './types';
-import { parseJsonLike } from './utils';
+import { configFileCreateSchema } from '@digdir/designsystemet/schemas/v1.1/schema.js';
+import { createTokens } from '@digdir/designsystemet/tokens/create';
+import { COLLECTION } from './constants.js';
+import { buildPreview } from './preview-model.js';
+import type { LoadedFile, PreviewData } from './types.js';
+import { parseJsonLike } from './utils.js';
 
 const GENERATED_ROOT = 'generated-design-tokens';
 const SIZE_MODES = ['medium', 'large', 'small'] as const;
