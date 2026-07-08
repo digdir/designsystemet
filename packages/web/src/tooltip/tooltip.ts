@@ -48,16 +48,18 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 
 const handleAriaAttributes = () => {
   for (const el of document.querySelectorAll(SELECTOR_TOOLTIP)) {
-    let text = attrOrCSS(el, ATTR_TOOLTIP);
+      let text = attrOrCSS(el, ATTR_TOOLTIP);
 
-    // Allow using another element as source
+    // Allow using another element as source.
+    // Note: Only checks on initial mutation, as we do not want to keep checking if the source element is removed or changed, 
+    // since this would be a performance issue. If the source element is removed, the tooltip will be empty and not shown.
     if (text?.[0] === '#')
       text =
-        getRoot(el).getElementById(text.slice(1))?.textContent?.trim() || null;
+        getRoot(el).getElementById(text.slice(1))?.textContent?.trim() || null;    if (!text) continue; // Early return if no tooltip text
 
-    if (!text) continue; // Early return if no tooltip text
     if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {
       const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
+      attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
       attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
       attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
       if (!el.matches(SELECTOR_INTERACTIVE))
