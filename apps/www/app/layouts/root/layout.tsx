@@ -10,6 +10,7 @@ import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
 import { SearchDialog } from '~/_components/search-dialog';
+import { useChangeLanguage } from '~/_hooks/use-change-language';
 import { useShowConsentBanner } from '~/_hooks/use-show-consent-banner';
 import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
@@ -49,7 +50,7 @@ const rightLinks: FooterLinkListItemProps[] = [
 ];
 
 export default function RootLayout() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
     RootRoute.ComponentProps['loaderData'],
     'centerLinks'
@@ -62,7 +63,7 @@ export default function RootLayout() {
   };
   const { showBanner } = useShowConsentBanner();
 
-  i18n.changeLanguage(lang);
+  useChangeLanguage(lang);
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const openSearch = useCallback(() => setIsSearchOpen(true), []);
