@@ -20,8 +20,9 @@ type ExportTokensToFigmaVariables = {
 
 type ExportTokensToFigmaResult = {
   type: 'export-tokens-to-figma-result';
-  status: 'exporting' | 'finished' | 'error';
+  status: 'exporting' | 'finished' | 'error' | 'noop';
   message: string;
+  logs?: string[];
 };
 
 export type FigmaMessages =

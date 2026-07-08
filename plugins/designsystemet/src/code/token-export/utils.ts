@@ -107,15 +107,6 @@ export function countBy(values: string[]): Record<string, number> {
   return counts
 }
 
-export function escapeHtml(value: unknown): string {
-  return String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
-}
-
 export function formatValue(value: unknown): string {
   if (typeof value === 'string') {
     return value

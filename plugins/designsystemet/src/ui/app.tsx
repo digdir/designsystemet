@@ -13,6 +13,7 @@ import './app.css';
 
 function App() {
   const [message, setMessage] = useState('');
+  const [logs, setLogs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -32,6 +33,7 @@ function App() {
             setProgress(parseFloat(msgMessage));
           } else if (status === 'finished') {
             setLoading(false);
+            setLogs(msg.logs || []);
             setMessage('Export completed successfully.');
           } else if (status === 'error') {
             setLoading(false);
@@ -70,15 +72,16 @@ function App() {
   "themes": {
     "theme": {
       "colors": {
-        "accent": "#0062BA",
-        "brand1": "#0D7A5F",
-        "brand2": "#5B3FA0",
+        "accent": "#ba4000",
+        "brand1": "#180d7a",
+        "brand2": "#56a03f",
         "neutral": "#24272B"
       },
       "borderRadius": 4
     }
   }
 }
+
 `}
         />
         <Button onClick={() => handleClick('import-config')}>
@@ -93,6 +96,14 @@ function App() {
             <Spinner aria-label='Exporting tokens to Figma' />
             <Paragraph>{`Progress: ${progress.toFixed(2)}%`}</Paragraph>
           </>
+        )}
+        {logs.length > 0 && (
+          <section>
+            <Heading>Logs</Heading>
+            {logs.map((log, index) => (
+              <Paragraph key={index}>{log}</Paragraph>
+            ))}
+          </section>
         )}
       </section>
     </main>
