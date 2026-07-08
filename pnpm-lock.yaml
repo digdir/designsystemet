@@ -198,9 +198,6 @@ importers:
       react-router:
         specifier: 8.1.0
         version: 8.1.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      remix-i18next:
-        specifier: 7.5.0
-        version: 7.5.0(i18next@26.3.4(typescript@5.9.3))(react-i18next@17.0.8(i18next@26.3.4(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3))(react-router@8.1.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@react-router/dev':
         specifier: 8.1.0
@@ -337,9 +334,6 @@ importers:
       remark-gfm:
         specifier: 4.0.1
         version: 4.0.1
-      remix-i18next:
-        specifier: 7.5.0
-        version: 7.5.0(i18next@26.3.4(typescript@5.9.3))(react-i18next@17.0.8(i18next@26.3.4(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3))(react-router@8.1.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@react-router/dev':
         specifier: 8.1.0
@@ -5298,15 +5292,6 @@ packages:
   remark-stringify@11.0.0:
     resolution: {integrity: sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==}
 
-  remix-i18next@7.5.0:
-    resolution: {integrity: sha512-7vAwnNkAXzr/YQwFkV1FHrY+3utgGrDwn7oP/aM2gFHrwbGT0+uVtuUx3USpTrJvhzAN+2YU/mnmgyBi9EhYyw==}
-    engines: {node: '>=20.0.0'}
-    peerDependencies:
-      i18next: ^24.0.0 || ^25.0.0 || ^26.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      react-i18next: ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-      react-router: ^7.0.0
-
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
@@ -6878,6 +6863,7 @@ snapshots:
       '@types/mdx': 2.0.13
       '@types/react': 19.2.17
       react: 19.2.7
+
   '@napi-rs/wasm-runtime@1.1.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)':
     dependencies:
       '@emnapi/core': 1.11.1
@@ -8126,7 +8112,9 @@ snapshots:
       js-tokens: 10.0.0
 
   astring@1.9.0: {}
+
   attr-accept@2.2.5: {}
+
   autoprefixer@10.5.2(postcss@8.5.16):
     dependencies:
       browserslist: 4.28.4
@@ -10593,12 +10581,14 @@ snapshots:
     dependencies:
       react: 19.2.7
       scheduler: 0.27.0
+
   react-dropzone@15.0.0(react@19.2.7):
     dependencies:
       attr-accept: 2.2.5
       file-selector: 2.1.2
       prop-types: 15.8.1
       react: 19.2.7
+
   react-i18next@17.0.8(i18next@26.3.4(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3):
     dependencies:
       '@babel/runtime': 7.29.2
@@ -10783,13 +10773,6 @@ snapshots:
       mdast-util-to-markdown: 2.1.2
       unified: 11.0.5
 
-  remix-i18next@7.5.0(i18next@26.3.4(typescript@5.9.3))(react-i18next@17.0.8(i18next@26.3.4(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3))(react-router@8.1.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7):
-    dependencies:
-      i18next: 26.3.4(typescript@5.9.3)
-      react: 19.2.7
-      react-i18next: 17.0.8(i18next@26.3.4(typescript@5.9.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
-      react-router: 8.1.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-
   require-directory@2.1.1: {}
 
   reserved-words@0.1.2: {}
@@ -10810,6 +10793,7 @@ snapshots:
     dependencies:
       glob: 13.0.6
       package-json-from-dist: 1.0.1
+
   rolldown-plugin-dts@0.26.0(oxc-resolver@11.19.1(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1))(rolldown@1.1.3)(typescript@5.9.3):
     dependencies:
       '@babel/generator': 8.0.0
