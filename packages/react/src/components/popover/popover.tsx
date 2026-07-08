@@ -1,4 +1,3 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -32,10 +31,6 @@ export type PopoverProps = MergeRight<
      * @default 'default'
      */
     variant?: 'default' | 'tinted';
-    /**
-     * Change the color scheme of the popover
-     */
-    'data-color'?: Color | SeverityColors;
     /**
      * Callback when the popover wants to open.
      */

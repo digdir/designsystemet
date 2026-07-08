@@ -10,7 +10,8 @@ export type ErrorSummaryProps = {
    * @deprecated This is not supported anymore, as the element needs to be `ds-error-summary`
    */
   asChild?: ReactNode;
-} & Omit<HTMLAttributes<DSErrorSummaryElement> & DefaultProps, 'data-color'>;
+} & HTMLAttributes<DSErrorSummaryElement> &
+  DefaultProps;
 
 /**
  * ErrorSummary component, used to display a list of errors.
