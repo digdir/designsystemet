@@ -1,3 +1,6 @@
+export const ARIA_DESC = 'aria-description';
+export const ARIA_LABEL = 'aria-label';
+export const ARIA_LABELLEDBY = 'aria-labelledby';
 export const QUICK_EVENT = { passive: true, capture: true };
 
 import { version } from '../../package.json' with { type: 'json' };
@@ -86,8 +89,19 @@ export const attrOrCSS = (el: Element, name: string) => {
   let value = attr(el, name);
   if (!value)
     value = getCSSProp(el, `--_ds-${name}`).replace(STRIP_QUOTES, '').trim();
-  if (!value) warn(`Missing ${name} on:`, el);
   return value || null;
+};
+
+/**
+ * getRoot
+ * @description Helper for better compatibility
+ * @param node The target node
+ * @return The shadow root or document
+ */
+export const getRoot = (node: Node): Document | ShadowRoot => {
+  const root = node.getRootNode?.() || node.ownerDocument;
+  if (root instanceof Document || root instanceof ShadowRoot) return root;
+  return node.ownerDocument || document;
 };
 
 /**

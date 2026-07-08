@@ -1,8 +1,11 @@
 import '../popover/popover'; // Ensure popover is imported when using individual imports, since tooltip relies on it
 import {
+  ARIA_DESC,
+  ARIA_LABEL,
   announce,
   attr,
   attrOrCSS,
+  getRoot,
   isBrowser,
   on,
   onHotReload,
@@ -20,8 +23,6 @@ let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
 const IS_IOS = isBrowser() && /iPad|iPhone|iPod/.test(navigator.userAgent); // Needed to omit DELAY_HOVER since iOS triggers mouseover before click
 const ATTR_TOOLTIP = 'data-tooltip';
 const ATTR_COLOR = 'data-color';
-const ARIA_LABEL = 'aria-label';
-const ARIA_DESC = 'aria-description';
 const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
 const SELECTOR_TOOLTIP = `[${ATTR_TOOLTIP}]`;
 const ATTR_SCHEME = 'data-color-scheme';
@@ -47,9 +48,16 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 
 const handleAriaAttributes = () => {
   for (const el of document.querySelectorAll(SELECTOR_TOOLTIP)) {
-    const text = attrOrCSS(el, ATTR_TOOLTIP);
+    let text = attrOrCSS(el, ATTR_TOOLTIP);
 
-    if (!text) return; // Early return if no tooltip text
+    // Allow using another element as source.
+    // Note: Only checks on initial mutation, as we do not want to keep checking if the source element is removed or changed,
+    // since this would be a performance issue. If the source element is removed, the tooltip will be empty and not shown.
+    if (text?.[0] === '#')
+      text =
+        getRoot(el).getElementById(text.slice(1))?.textContent?.trim() || null;
+
+    if (!text) continue; // Early return if no tooltip text
     if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {
       const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
       attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
