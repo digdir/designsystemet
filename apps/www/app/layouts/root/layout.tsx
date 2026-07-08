@@ -5,7 +5,6 @@ import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
-import { useChangeLanguage } from 'remix-i18next/react';
 import { ConsentBanner } from '~/_components/consent-banner/consent-banner';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
@@ -50,7 +49,7 @@ const rightLinks: FooterLinkListItemProps[] = [
 ];
 
 export default function RootLayout() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
     RootRoute.ComponentProps['loaderData'],
     'centerLinks'
@@ -63,7 +62,7 @@ export default function RootLayout() {
   };
   const { showBanner } = useShowConsentBanner();
 
-  useChangeLanguage(lang);
+  i18n.changeLanguage(lang);
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const openSearch = useCallback(() => setIsSearchOpen(true), []);
