@@ -61,7 +61,7 @@ const render = (self: DSBreadcrumbsElement) => {
 };
 
 const getLabel = (el: Element): string | null =>
-  el.ariaLabelledByElements?.map((el) => el.textContent.trim()).join(' ') ||
+  el.ariaLabelledByElements?.map((el) => el.textContent?.trim() || '').join(' ') ||
   attrOrCSS(el, ARIA_LABEL) ||
   null;
 

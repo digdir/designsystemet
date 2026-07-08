@@ -100,9 +100,8 @@ export const attrOrCSS = (el: Element, name: string) => {
  */
 export const getRoot = (node: Node): Document | ShadowRoot => {
   const root = node.getRootNode?.() || node.ownerDocument;
-  return root instanceof Document || root instanceof ShadowRoot
-    ? root
-    : document;
+  if (root instanceof Document || root instanceof ShadowRoot) return root;
+  return node.ownerDocument || document;
 };
 
 /**
