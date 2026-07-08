@@ -83,6 +83,6 @@
     "@types/ramda": "0.32.0",
     "tsdown": "0.22.3",
     "tsx": "4.22.4",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }

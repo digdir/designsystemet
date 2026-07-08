@@ -16,8 +16,6 @@
       "../../internal/digdir/themes/types.d.ts"
     ],
     "module": "ES2022",
-    // Required for ~/ path alias resolution — do not remove
-    "baseUrl": ".",
     "rootDirs": [".", "./.react-router/types"],
     "paths": {
       "~/*": ["./app/*"]
