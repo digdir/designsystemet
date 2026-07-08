@@ -1,10 +1,10 @@
-import { COLLECTION } from './constants'
+import { COLLECTION } from './constants';
 
 // Names from the old Core UI Kit variable structure that predate the flattened
 // single "Color" collection. Mirrors the "prime" step of the migration-plugin.
-const MAIN_COLOR = 'Main color'
-const SUPPORT_COLOR = 'Support color'
-const VARIABLE_PREFIX = 'color/main/'
+const MAIN_COLOR = 'Main color';
+const SUPPORT_COLOR = 'Support color';
+const VARIABLE_PREFIX = 'color/main/';
 
 export type VariableStructureStatus = {
   // - ok: nothing to prepare (clean Color collection, or a fresh file with no color
@@ -13,46 +13,53 @@ export type VariableStructureStatus = {
   //   and would break an import. Prime must run first.
   // - ambiguous: both "Main color" and "Color" exist, or multiple "Main color"
   //   collections. We cannot safely auto-prime; the user must resolve it manually.
-  state: 'ok' | 'needs-prepare' | 'ambiguous'
-  hasMainColor: boolean
-  hasSupportColor: boolean
-  hasColor: boolean
-  message: string
-}
+  state: 'ok' | 'needs-prepare' | 'ambiguous';
+  hasMainColor: boolean;
+  hasSupportColor: boolean;
+  hasColor: boolean;
+  message: string;
+};
 
 export type PrepareResult = {
-  status: 'success' | 'noop' | 'error'
-  message: string
-  renamedCollection: boolean
-  renamedVariableCount: number
+  status: 'success' | 'noop' | 'error';
+  message: string;
+  renamedCollection: boolean;
+  renamedVariableCount: number;
   // Whether a leftover "Support color" collection remains after priming. The component
   // cleanup for it lives in the separate migration-plugin, not here.
-  hasSupportColor: boolean
-}
+  hasSupportColor: boolean;
+};
 
-async function countPrefixedVariables(collections: VariableCollection[]): Promise<number> {
-  let count = 0
+async function countPrefixedVariables(
+  collections: VariableCollection[],
+): Promise<number> {
+  let count = 0;
   for (const collection of collections) {
-    if (collection.name !== MAIN_COLOR && collection.name !== COLLECTION.COLOR) {
-      continue
+    if (
+      collection.name !== MAIN_COLOR &&
+      collection.name !== COLLECTION.COLOR
+    ) {
+      continue;
     }
     for (const variableId of collection.variableIds) {
-      const variable = await figma.variables.getVariableByIdAsync(variableId)
+      const variable = await figma.variables.getVariableByIdAsync(variableId);
       if (variable && variable.name.startsWith(VARIABLE_PREFIX)) {
-        count += 1
+        count += 1;
       }
     }
   }
-  return count
+  return count;
 }
 
 export async function checkVariableStructure(): Promise<VariableStructureStatus> {
-  const collections = await figma.variables.getLocalVariableCollectionsAsync()
-  const mainColorCount = collections.filter((c) => c.name === MAIN_COLOR).length
-  const hasMainColor = mainColorCount > 0
-  const hasSupportColor = collections.some((c) => c.name === SUPPORT_COLOR)
-  const hasColor = collections.some((c) => c.name === COLLECTION.COLOR)
-  const prefixedVariableCount = await countPrefixedVariables(collections)
+  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  const mainColorCount = collections.filter(
+    (c) => c.name === MAIN_COLOR,
+  ).length;
+  const hasMainColor = mainColorCount > 0;
+  const hasSupportColor = collections.some((c) => c.name === SUPPORT_COLOR);
+  const hasColor = collections.some((c) => c.name === COLLECTION.COLOR);
+  const prefixedVariableCount = await countPrefixedVariables(collections);
 
   // Can't safely rename "Main color" -> "Color" when a "Color" already exists, or when
   // there are several "Main color" collections.
@@ -64,7 +71,7 @@ export async function checkVariableStructure(): Promise<VariableStructureStatus>
       hasColor,
       message:
         'Filen har både «Main color» og «Color» (eller flere «Main color»-collections). Behold kun den du vil oppdatere før du fortsetter.',
-    }
+    };
   }
 
   if (hasMainColor || prefixedVariableCount > 0) {
@@ -73,8 +80,9 @@ export async function checkVariableStructure(): Promise<VariableStructureStatus>
       hasMainColor,
       hasSupportColor,
       hasColor,
-      message: 'Filen bruker den gamle variabelstrukturen og må forberedes før import.',
-    }
+      message:
+        'Filen bruker den gamle variabelstrukturen og må forberedes før import.',
+    };
   }
 
   return {
@@ -83,14 +91,16 @@ export async function checkVariableStructure(): Promise<VariableStructureStatus>
     hasSupportColor,
     hasColor,
     message: 'Variabelstrukturen er klar.',
-  }
+  };
 }
 
 export async function prepareVariables(): Promise<PrepareResult> {
-  const collections = await figma.variables.getLocalVariableCollectionsAsync()
-  const mainColorCollections = collections.filter((c) => c.name === MAIN_COLOR)
-  const colorCollections = collections.filter((c) => c.name === COLLECTION.COLOR)
-  const hasSupportColor = collections.some((c) => c.name === SUPPORT_COLOR)
+  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  const mainColorCollections = collections.filter((c) => c.name === MAIN_COLOR);
+  const colorCollections = collections.filter(
+    (c) => c.name === COLLECTION.COLOR,
+  );
+  const hasSupportColor = collections.some((c) => c.name === SUPPORT_COLOR);
 
   if (mainColorCollections.length > 1) {
     return {
@@ -99,7 +109,7 @@ export async function prepareVariables(): Promise<PrepareResult> {
       renamedCollection: false,
       renamedVariableCount: 0,
       hasSupportColor,
-    }
+    };
   }
 
   if (mainColorCollections.length === 1 && colorCollections.length > 0) {
@@ -109,10 +119,10 @@ export async function prepareVariables(): Promise<PrepareResult> {
       renamedCollection: false,
       renamedVariableCount: 0,
       hasSupportColor,
-    }
+    };
   }
 
-  const targetCollection = mainColorCollections[0] || colorCollections[0]
+  const targetCollection = mainColorCollections[0] || colorCollections[0];
   if (!targetCollection) {
     return {
       status: 'noop',
@@ -120,28 +130,28 @@ export async function prepareVariables(): Promise<PrepareResult> {
       renamedCollection: false,
       renamedVariableCount: 0,
       hasSupportColor,
-    }
+    };
   }
 
-  let renamedCollection = false
+  let renamedCollection = false;
   if (targetCollection.name === MAIN_COLOR) {
-    targetCollection.name = COLLECTION.COLOR
-    renamedCollection = true
+    targetCollection.name = COLLECTION.COLOR;
+    renamedCollection = true;
   }
 
-  let renamedVariableCount = 0
+  let renamedVariableCount = 0;
   for (const variableId of targetCollection.variableIds) {
-    const variable = await figma.variables.getVariableByIdAsync(variableId)
+    const variable = await figma.variables.getVariableByIdAsync(variableId);
     if (variable && variable.name.startsWith(VARIABLE_PREFIX)) {
-      variable.name = variable.name.slice(VARIABLE_PREFIX.length)
-      renamedVariableCount += 1
+      variable.name = variable.name.slice(VARIABLE_PREFIX.length);
+      renamedVariableCount += 1;
     }
   }
 
-  const changed = renamedCollection || renamedVariableCount > 0
+  const changed = renamedCollection || renamedVariableCount > 0;
   if (changed) {
     // Make prime its own undo step so Cmd+Z reverses just the preparation.
-    figma.commitUndo()
+    figma.commitUndo();
   }
 
   return {
@@ -152,5 +162,5 @@ export async function prepareVariables(): Promise<PrepareResult> {
     renamedCollection,
     renamedVariableCount,
     hasSupportColor,
-  }
+  };
 }

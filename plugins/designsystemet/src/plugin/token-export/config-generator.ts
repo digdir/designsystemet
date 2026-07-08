@@ -1,7 +1,7 @@
-import type { infer as ZodInfer } from 'zod';
-import legacyColorMigration from '../../../node_modules/@digdir/designsystemet/dist/src/migrations/flatten-color-categories.js';
 import { configFileCreateSchema } from '@digdir/designsystemet/schemas/v1.1/schema.js';
 import { createTokens } from '@digdir/designsystemet/tokens/create';
+import type { infer as ZodInfer } from 'zod';
+import legacyColorMigration from '../../../node_modules/@digdir/designsystemet/dist/src/migrations/flatten-color-categories.js';
 import { COLLECTION } from './constants.js';
 import { buildPreview } from './preview-model.js';
 import type { LoadedFile, PreviewData } from './types.js';

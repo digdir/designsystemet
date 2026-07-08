@@ -12,6 +12,7 @@ import {
 } from '@digdir/designsystemet/tokens/create';
 import type { Theme } from '@digdir/designsystemet/tokens/types';
 import type { infer as ZodInfer } from 'zod';
+import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { importToFigma } from './token-export/importer';
 import { buildPreview } from './token-export/preview-model';
@@ -87,8 +88,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
             }
           }
 
-          figma.ui.postMessage({
-            type: 'import-config-result',
+          postMessage('import-config-result', {
             status: 'success',
             message: `Imported ${fileMap.size} token sets for theme "${themeName}".`,
           });
@@ -115,8 +115,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
       } catch (error) {
         const errorMessage =
           error instanceof Error ? error.message : String(error);
-        figma.ui.postMessage({
-          type: 'import-config-result',
+        postMessage('import-config-result', {
           status: 'error',
           message: `Error importing tokens: ${errorMessage}`,
         });
@@ -128,8 +127,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     case 'export-tokens-to-figma': {
       try {
         const previewData = buildPreview(files);
-        figma.ui.postMessage({
-          type: 'export-tokens-to-figma-result',
+        postMessage('export-tokens-to-figma-result', {
           status: 'exporting',
 
           message: `Starting export of ${themeNames[0]} token sets to Figma variables...`,
@@ -140,8 +138,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           selectedTheme: themeNames.length > 0 ? themeNames[0] : null,
           selectedScheme: 'light',
         });
-        figma.ui.postMessage({
-          type: 'export-tokens-to-figma-result',
+        postMessage('export-tokens-to-figma-result', {
           status: 'finished',
           message: 'Exported tokens to Figma variables successfully.',
           logs: result.logs,
@@ -149,8 +146,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
       } catch (error) {
         const errorMessage =
           error instanceof Error ? error.message : String(error);
-        figma.ui.postMessage({
-          type: 'export-tokens-to-figma-result',
+        postMessage('export-tokens-to-figma-result', {
           status: 'error',
           message: `Error exporting tokens: ${errorMessage}`,
         });

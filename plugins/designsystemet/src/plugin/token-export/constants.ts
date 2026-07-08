@@ -7,4 +7,4 @@ export const COLLECTION = {
   COLOR: 'Color',
   SIZE: 'Size',
   TYPOGRAPHY: 'Typography',
-} as const
+} as const;

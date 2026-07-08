@@ -1,28 +1,34 @@
-import { COLLECTION } from './constants'
-import type { PreviewData } from './types'
-import { parseNumber } from './utils'
+import { COLLECTION } from './constants';
+import type { PreviewData } from './types';
+import { parseNumber } from './utils';
 
 export function getActiveTokenSets(
   preview: PreviewData,
   selectedTheme: string | null,
   selectedScheme: string | null,
 ): string[] {
-  const activeSets: string[] = []
-  const semanticMode = preview.themes.find((mode) => mode.group === COLLECTION.SEMANTIC)
-  const theme = preview.themeOptions.find((item) => item.name === selectedTheme)
-  const scheme = preview.colorSchemeOptions.find((item) => item.name === selectedScheme)
+  const activeSets: string[] = [];
+  const semanticMode = preview.themes.find(
+    (mode) => mode.group === COLLECTION.SEMANTIC,
+  );
+  const theme = preview.themeOptions.find(
+    (item) => item.name === selectedTheme,
+  );
+  const scheme = preview.colorSchemeOptions.find(
+    (item) => item.name === selectedScheme,
+  );
 
-  appendTokenSets(activeSets, semanticMode?.selectedTokenSets ?? [])
-  appendTokenSetNames(activeSets, theme?.tokenSets ?? [])
-  appendTokenSetNames(activeSets, scheme?.tokenSets ?? [])
+  appendTokenSets(activeSets, semanticMode?.selectedTokenSets ?? []);
+  appendTokenSetNames(activeSets, theme?.tokenSets ?? []);
+  appendTokenSetNames(activeSets, scheme?.tokenSets ?? []);
 
   for (const set of preview.tokenSets) {
     if (activeSets.indexOf(set.path) === -1) {
-      activeSets.push(set.path)
+      activeSets.push(set.path);
     }
   }
 
-  return activeSets
+  return activeSets;
 }
 
 export function resolveValue(
@@ -32,44 +38,56 @@ export function resolveValue(
   stack: string[] = [],
 ): unknown {
   if (typeof value === 'number') {
-    return value
+    return value;
   }
 
   if (typeof value !== 'string') {
-    return value
+    return value;
   }
 
-  const exactReference = value.match(/^\{([^}]+)\}$/)
+  const exactReference = value.match(/^\{([^}]+)\}$/);
   if (exactReference) {
-    return resolveTokenValue(exactReference[1], preview, activeTokenSets, stack)
+    return resolveTokenValue(
+      exactReference[1],
+      preview,
+      activeTokenSets,
+      stack,
+    );
   }
 
   if (value.indexOf('{') !== -1) {
-    return resolveExpression(value, preview, activeTokenSets, stack)
+    return resolveExpression(value, preview, activeTokenSets, stack);
   }
 
-  return value
+  return value;
 }
 
 export function findUnresolvedReferences(
   preview: PreviewData,
 ): Array<{ tokenSet: string; path: string; reference: string }> {
-  const available = buildAvailableReferenceNames(preview)
-  const unresolved: Array<{ tokenSet: string; path: string; reference: string }> = []
+  const available = buildAvailableReferenceNames(preview);
+  const unresolved: Array<{
+    tokenSet: string;
+    path: string;
+    reference: string;
+  }> = [];
 
   for (const token of preview.flatTokens) {
     for (const reference of token.references) {
-      if (!available.has(reference) && !isPlannedColorReference(reference, available)) {
+      if (
+        !available.has(reference) &&
+        !isPlannedColorReference(reference, available)
+      ) {
         unresolved.push({
           tokenSet: token.tokenSet,
           path: token.path,
           reference,
-        })
+        });
       }
     }
   }
 
-  return unresolved
+  return unresolved;
 }
 
 function appendTokenSets(
@@ -78,7 +96,7 @@ function appendTokenSets(
 ): void {
   for (const item of selectedTokenSets) {
     if (item.exists && target.indexOf(item.tokenSet) === -1) {
-      target.push(item.tokenSet)
+      target.push(item.tokenSet);
     }
   }
 }
@@ -86,7 +104,7 @@ function appendTokenSets(
 function appendTokenSetNames(target: string[], tokenSets: string[]): void {
   for (const tokenSet of tokenSets) {
     if (target.indexOf(tokenSet) === -1) {
-      target.push(tokenSet)
+      target.push(tokenSet);
     }
   }
 }
@@ -97,22 +115,27 @@ function resolveTokenValue(
   activeTokenSets: string[],
   stack: string[],
 ): unknown {
-  const candidates = getReferenceCandidates(reference)
+  const candidates = getReferenceCandidates(reference);
 
   for (const path of candidates) {
     if (stack.indexOf(path) !== -1) {
-      continue
+      continue;
     }
 
     for (const tokenSet of activeTokenSets) {
-      const token = preview.tokenLookup.get(tokenSet + '::' + path)
+      const token = preview.tokenLookup.get(tokenSet + '::' + path);
       if (token) {
-        return resolveValue(token.value, preview, activeTokenSets, stack.concat(path))
+        return resolveValue(
+          token.value,
+          preview,
+          activeTokenSets,
+          stack.concat(path),
+        );
       }
     }
   }
 
-  return null
+  return null;
 }
 
 function resolveExpression(
@@ -121,25 +144,25 @@ function resolveExpression(
   activeTokenSets: string[],
   stack: string[],
 ): unknown {
-  let allNumeric = true
+  let allNumeric = true;
   const replaced = expression.replace(/\{([^}]+)\}/g, (_match, reference) => {
-    const value = resolveTokenValue(reference, preview, activeTokenSets, stack)
-    const number = parseNumber(value)
+    const value = resolveTokenValue(reference, preview, activeTokenSets, stack);
+    const number = parseNumber(value);
 
     if (number === null) {
-      allNumeric = false
-      return '0'
+      allNumeric = false;
+      return '0';
     }
 
-    return String(number)
-  })
+    return String(number);
+  });
 
   if (!allNumeric) {
-    return null
+    return null;
   }
 
   if (!/^[0-9+\-*/().,\sA-Za-z]+$/.test(replaced)) {
-    return null
+    return null;
   }
 
   try {
@@ -156,88 +179,94 @@ function resolveExpression(
       floor: Math['floor'],
       ceil: Math['ceil'],
       round: Math['round'],
-    ) => unknown
+    ) => unknown;
 
-    return fn(Math.min, Math.max, Math.floor, Math.ceil, Math.round)
+    return fn(Math.min, Math.max, Math.floor, Math.ceil, Math.round);
   } catch {
-    return null
+    return null;
   }
 }
 
 function getReferenceCandidates(reference: string): string[] {
-  const candidates = [reference]
+  const candidates = [reference];
 
   if (reference.indexOf('theme.') === 0) {
-    candidates.push(reference.replace(/^theme\./, ''))
+    candidates.push(reference.replace(/^theme\./, ''));
   }
 
   if (reference.indexOf('color.') === 0) {
-    candidates.push(reference.replace(/^color\./, 'theme.'))
+    candidates.push(reference.replace(/^color\./, 'theme.'));
   }
 
-  return candidates
+  return candidates;
 }
 
 function buildAvailableReferenceNames(preview: PreviewData): Set<string> {
-  const available = new Set<string>()
+  const available = new Set<string>();
 
   for (const token of preview.flatTokens) {
-    available.add(token.path)
-    available.add(token.figmaName.replace(/\//g, '.'))
+    available.add(token.path);
+    available.add(token.figmaName.replace(/\//g, '.'));
 
     if (token.path.indexOf('theme.') === 0) {
-      available.add(token.path.replace(/^theme\./, ''))
+      available.add(token.path.replace(/^theme\./, ''));
     }
   }
 
   for (const collection of preview.collections) {
     for (const variable of collection.variablePreview) {
-      const dottedName = variable.name.replace(/\//g, '.')
-      available.add(dottedName)
+      const dottedName = variable.name.replace(/\//g, '.');
+      available.add(dottedName);
 
       if (collection.name === COLLECTION.THEME) {
-        available.add('theme.' + dottedName)
+        available.add('theme.' + dottedName);
       }
 
       if (collection.name === COLLECTION.COLOR_SCHEME) {
-        const parts = dottedName.split('.')
+        const parts = dottedName.split('.');
         if (parts.length >= 3) {
-          available.add('theme.' + parts.slice(1).join('.'))
-          available.add('color.' + parts.slice(1).join('.'))
+          available.add('theme.' + parts.slice(1).join('.'));
+          available.add('color.' + parts.slice(1).join('.'));
         }
       }
     }
   }
 
-  return available
+  return available;
 }
 
-function isPlannedColorReference(reference: string, available: Set<string>): boolean {
-  const parts = reference.split('.')
+function isPlannedColorReference(
+  reference: string,
+  available: Set<string>,
+): boolean {
+  const parts = reference.split('.');
 
   if (parts.length < 3 || parts[0] !== 'color') {
-    return false
+    return false;
   }
 
-  const colorName = parts[1]
-  const tail = parts.slice(2).join('.')
+  const colorName = parts[1];
+  const tail = parts.slice(2).join('.');
 
   return (
     available.has('theme.' + colorName + '.' + tail) ||
     available.has('color.' + colorName + '.' + tail) ||
     hasScaleInAvailableReferences(colorName, available)
-  )
+  );
 }
 
-function hasScaleInAvailableReferences(colorName: string, available: Set<string>): boolean {
+function hasScaleInAvailableReferences(
+  colorName: string,
+  available: Set<string>,
+): boolean {
   for (const reference of available) {
     if (
       reference.indexOf('theme.' + colorName + '.') === 0 ||
       reference.indexOf('color.' + colorName + '.') === 0
     ) {
-      return true
+      return true;
     }
   }
 
-  return false
+  return false;
 }
