@@ -21,7 +21,7 @@ export type CardProps = MergeRight<
      */
     asChild?: boolean;
     /** Instances of `Card.Block`, `Divider` or other React nodes */
-    children: ReactNode;
+    children?: ReactNode;
   }
 >;
 

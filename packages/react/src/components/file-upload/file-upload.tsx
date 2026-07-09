@@ -7,7 +7,7 @@ import type { MergeRight } from '../../utilities';
 export type FileUploadProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
-    children: ReactNode;
+    children?: ReactNode;
   }
 >;
 /**

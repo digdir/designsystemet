@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 
 export type DetailsSummaryProps = {
   /** Heading text */
-  children: ReactNode;
+  children?: ReactNode;
 } & HTMLAttributes<HTMLElement>;
 
 /**
