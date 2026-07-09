@@ -1,6 +1,72 @@
-<Alert data-color="info">
-Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
-</Alert>
+## Dette må du sjekke selv
+
+**Feltet skal ha en synlig label.**
+
+Skjermlesere skal presentere ledetekst, hjelpetekst og feilmeldinger når feltet får fokus.
+
+Du kan bruke [Field](/no/components/docs/field/overview) for å koble sammen label, beskrivelse og feilmeldinger.
+
+<span data-size="sm">
+	WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/veiledning/131-informasjon-og-relasjoner/1234)
+</span>
+
+<Divider/>
+
+\
+**Feltet skal ha et tydelig tilgjengelig navn som samsvarer med den synlige label.**
+
+Det tilgjengelige navnet skal inneholde den synlige teksten som beskriver feltet. Dette gjør at brukere av talegjenkjenning og skjermlesere kan referere til feltet med samme navn som vises på skjermen.
+
+<span data-size="sm">
+	WCAG: [2.5.3 Ledetekst i navn](https://www.uutilsynet.no/veiledning/253-ledetekst-i-navn/1256)
+</span>
+
+<Divider/>
+
+\
+**Obligatoriske felt skal være tydelig merket.**
+
+Brukeren skal enkelt kunne forstå hvilke felt som må fylles ut. Følg [mønsteret for obligatoriske og valgfrie skjemafelt](/no/patterns/required-and-optional-fields).
+
+<span data-size="sm">
+	WCAG: [3.3.2 Ledetekster eller instruksjoner](https://www.uutilsynet.no/veiledning/332-ledetekster-eller-instruksjoner/1263)
+</span>
+
+<Divider/>
+
+\
+**Feilmeldinger skal være tydelig knyttet til riktig felt og forklare hvordan feilen kan rettes.**
+
+Feilmeldingen skal gjøre det klart hvilket felt som inneholder en feil, hva som er galt og hvordan brukeren kan rette den. Unngå generelle meldinger som «Feil» eller «Ugyldig verdi». Bruk heller konkrete meldinger, for eksempel «E-postadressen må inneholde @».
+
+Se [mønsteret for brukerutløste feilmeldinger](/no/patterns/errors) for anbefalinger om når og hvordan feilmeldinger bør vises.
+
+<span data-size="sm">
+	WCAG: [3.3.1 Identifikasjon av feil](https://www.uutilsynet.no/veiledning/331-identifikasjon-av-feil/1262) og [3.3.3 Forslag ved feil](https://www.uutilsynet.no/veiledning/333-forslag-ved-feil/1264)
+</span>
+
+<Divider/>
+
+\
+**Placeholder skal ikke brukes som eneste ledetekst eller til viktig informasjon.**
+
+Placeholder forsvinner når brukeren begynner å skrive og blir ikke alltid lest opp av hjelpemidler. Bruk den derfor kun som et eksempel på forventet innhold eller format – se [Unngå plassholdertekster](/no/components/docs/textfield/overview#unngå-plassholdertekster).
+
+<span data-size="sm">
+	WCAG: [3.3.2 Ledetekster eller instruksjoner](https://www.uutilsynet.no/veiledning/332-ledetekster-eller-instruksjoner/1263)
+</span>
+
+<Divider/>
+
+\
+**Bruk riktig autocomplete-verdi når feltet gjelder brukeren selv.**
+
+Riktig autocomplete gjør det enklere å fylle ut skjema, og er påkrevd for felt som gjelder brukerens egne personopplysninger. Se [Formål med inndata](/no/components/docs/textfield/overview#formål-med-inndata) for når og hvordan du bruker det.
+
+<span data-size="sm">
+	WCAG: [1.3.5 Identifisere formål med inndata](https://www.uutilsynet.no/veiledning/135-identifisere-formal-med-inndata/1238)
+</span>
+
 
 ## Ikke bruk deaktivert tilstand
 Ikke bruk deaktivert (`disabled`) tilstand. Tenk heller over om du trenger å vise feltet i det hele tatt, eller om du heller kan skrive informasjonen ut i ren tekst eller bruke `readOnly`.

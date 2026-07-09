@@ -1,12 +1,57 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## What you need to check
 
-It must be possible to move focus to the `Checkbox` by pressing <kbd>Tab</kbd> on the keyboard. It must also be possible to check and uncheck it by pressing <kbd>Space</kbd>.
+**Groups of choices must have a descriptive legend.**
 
-### Keyboard navigation
-* <kbd>Space</kbd> toggles the state
+The legend, help text, and error messages must be connected to the group so that they are available to assistive technologies.
 
-### Use a label
+You can use [Fieldset](/en/components/docs/fieldset/overview) to connect the legend, help text, and error messages.
 
-A `Checkbox` must always have an accessible name. In most cases, this will be a `<label>`. In special cases, it may make sense to omit the `<label>` and instead use `aria-label` or `aria-labelledby`. An example of both of these aria attributes is shown in the use of `Checkbox` in the table further up the page.
+<span data-size="sm">
+	WCAG: [1.3.1 Info and relationships](https://www.uutilsynet.no/veiledning/131-informasjon-og-relasjoner/1234)
+</span>
+
+<Divider/>
+
+\
+**The field must have a clear accessible name that matches the visible label.**
+
+The accessible name must contain the visible text that describes the field. This allows users of speech recognition and screen readers to refer to the field using the same name shown on screen.
+
+<span data-size="sm">
+	WCAG: [2.5.3 Label in Name](https://www.uutilsynet.no/veiledning/253-ledetekst-i-navn/1256)
+</span>
+
+<Divider/>
+
+\
+**A checkbox without a visible label must have an accessible name.**
+
+This applies, for example, when a checkbox is used in a table and the name must be derived from the content of the row or column.
+
+The accessible name must make it clear what the checkbox refers to.
+
+<span data-size="sm">
+	WCAG: [4.1.2 Name, role, value](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
+</span>
+
+<Divider/>
+
+\
+**Required fields must be clearly marked.**
+
+Users must easily understand which fields must be filled in. Follow the [pattern for required and optional form fields](/en/patterns/required-and-optional-fields).
+
+<span data-size="sm">
+	WCAG: [3.3.2 Labels or Instructions](https://www.uutilsynet.no/veiledning/332-ledetekster-eller-instruksjoner/1263)
+</span>
+
+<Divider/>
+
+\
+**Error messages must be clearly linked to the correct field and explain how to fix the error.**
+
+The error message must make it clear which field contains an error, what is wrong, and how the user can fix it. Avoid generic messages such as “Error” or “Invalid value”. Use specific messages instead, for example “The email address must contain @”. See the [pattern for user-triggered error messages](/en/patterns/errors) for recommendations on when and how error messages should be shown.
+
+<span data-size="sm">
+	WCAG: [3.3.1 Error Identification](https://www.uutilsynet.no/veiledning/331-identifikasjon-av-feil/1262) and [3.3.3 Error Suggestion](https://www.uutilsynet.no/veiledning/333-forslag-ved-feil/1264)
+</span>

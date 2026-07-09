@@ -1,8 +1,53 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## What you need to check
+
+**The field must have a visible label.**
+
+Screen readers must present the label, help text, and error messages when the field receives focus.
+
+You can use [Field](/en/components/docs/field/overview) to connect the label, description, and error messages.
+
+<span data-size="sm">
+	WCAG: [1.3.1 Info and relationships](https://www.uutilsynet.no/veiledning/131-informasjon-og-relasjoner/1234)
+</span>
+
+<Divider/>
+
+\
+**The field must have a clear accessible name that matches the visible label.**
+
+The accessible name must contain the visible text that describes the field. This allows users of speech recognition and screen readers to refer to the field using the same name shown on screen.
+
+<span data-size="sm">
+	WCAG: [2.5.3 Label in Name](https://www.uutilsynet.no/veiledning/253-ledetekst-i-navn/1256)
+</span>
+
+<Divider/>
+
+\
+**Required fields must be clearly marked.**
+
+Users must easily understand which fields must be filled in. Follow the [pattern for required and optional form fields](/en/patterns/required-and-optional-fields).
+
+<span data-size="sm">
+	WCAG: [3.3.2 Labels or Instructions](https://www.uutilsynet.no/veiledning/332-ledetekster-eller-instruksjoner/1263)
+</span>
+
+<Divider/>
+
+\
+**Error messages must be clearly linked to the correct field and explain how to fix the error.**
+
+The error message must make it clear which field contains an error, what is wrong, and how the user can fix it. Avoid generic messages such as “Error” or “Invalid value”. Use specific messages instead, for example “The email address must contain @”.
+
+See the [pattern for user-triggered error messages](/en/patterns/errors) for recommendations on when and how error messages should be shown.
+
+<span data-size="sm">
+	WCAG: [3.3.1 Error Identification](https://www.uutilsynet.no/veiledning/331-identifikasjon-av-feil/1262) and [3.3.3 Error Suggestion](https://www.uutilsynet.no/veiledning/333-forslag-ved-feil/1264)
+</span>
+
+## role="switch"
 
 We use `role="switch"` to inform screen readers that this is a toggle switch. This allows screen readers to tell the user that it is a switch and that it can be turned on and off. We do not add `aria-checked` because it is not necessary when the switch is an input with `type="checkbox"`.
 
-### Keyboard navigation
+## Keyboard navigation
 * <kbd>Space</kbd> toggles the switch on and off
