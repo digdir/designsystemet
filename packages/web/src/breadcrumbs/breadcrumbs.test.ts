@@ -10,6 +10,7 @@ const renderAndResize = async () => {
 };
 
 const setOffsetHeight = (el: Element | null | undefined, value: number) => {
+  if (!el) throw new Error('Expected element to exist');
   Object.defineProperty(el, 'offsetHeight', { value, configurable: true });
 };
 
