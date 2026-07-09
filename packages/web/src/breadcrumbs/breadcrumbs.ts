@@ -65,8 +65,8 @@ const render = (self: DSBreadcrumbsElement) => {
 
   // Update label attributes, but only if needed to prevent infinite attributeChangedCallback loop
   if (prevLabel !== nextLabel) {
-    attr(self, ARIA_LABELLEDBY, null); // Reset both aria-attributes to ensure only one is set
-    attr(self, ARIA_LABEL, null); // Reset both aria-attributes to ensure only one is set
+    attr(self, ARIA_LABELLEDBY, null); // Reset aria-attributes before setting new
+    attr(self, ARIA_LABEL, null);
     attr(self, self._label.key, nextLabel); // Setup new attribute
   }
 };
