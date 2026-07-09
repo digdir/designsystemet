@@ -2,6 +2,7 @@ import '@digdir/designsystemet-css/theme';
 import '@digdir/designsystemet-css';
 import {
   Button,
+  Details,
   Heading,
   Paragraph,
   Spinner,
@@ -98,22 +99,36 @@ function App() {
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        <Button onClick={() => handleClick('import-config')}>
-          import-config
-        </Button>
-        <Button onClick={() => handleClick('export-tokens-to-figma')}>
-          export-tokens-to-figma
-        </Button>
-        {message && <Paragraph>{message}</Paragraph>}
-        {loading && <Spinner aria-label='Exporting tokens to Figma' />}
-        {logs.length > 0 && (
-          <section>
-            <Heading>Logs</Heading>
-            {logs.map((log, index) => (
-              <Paragraph key={index}>{log}</Paragraph>
-            ))}
-          </section>
-        )}
+        <div className='actions'>
+          <Button
+            disabled={loading}
+            onClick={() => handleClick('import-config')}
+          >
+            import-config
+          </Button>
+          <Button
+            disabled={loading}
+            onClick={() => handleClick('export-tokens-to-figma')}
+          >
+            export-tokens-to-figma
+          </Button>
+          {message && <Paragraph>{message}</Paragraph>}
+          {loading && <Spinner aria-label='Exporting tokens to Figma' />}
+        </div>
+        <div className='logs'>
+          {logs.length > 0 && (
+            <Details>
+              <Details.Summary>{logs.length} logs</Details.Summary>
+              <Details.Content>
+                <ul>
+                  {logs.map((log, index) => (
+                    <li key={index}>{log}</li>
+                  ))}
+                </ul>
+              </Details.Content>
+            </Details>
+          )}
+        </div>
       </section>
     </main>
   );
