@@ -11,14 +11,12 @@ import {
 // Also in Safari 26.2 where `closedBy` property is supported natively,
 // but no corresponding functionality/behavior is implemented.
 let DOWN_INSIDE = false; // Prevent close if selecting text inside dialog
-const handleClosedbyAny = ({
-  type,
-  target: el,
-  clientX: x = 0,
-  clientY: y = 0,
-}: Partial<MouseEvent>) => {
+const handleClosedbyAny = (event: Event) => {
+  const { type, clientX: x = 0, clientY: y = 0 } = event as MouseEvent;
+  const el = event.composedPath()[0];
+  if (!(el instanceof Element)) return;
   if (type === 'pointerdown') {
-    const r = (el as Element)?.closest?.('dialog')?.getBoundingClientRect();
+    const r = el.closest?.('dialog')?.getBoundingClientRect();
     const isInside =
       r && r.top <= y && y <= r.bottom && r.left <= x && x <= r.right;
 

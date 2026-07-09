@@ -77,23 +77,26 @@ const handleAriaAttributes = () => {
   }
 };
 
-const handleInterest = (event: Event) => {
-  const { type, target } = event;
+const handleInterest = (e: Event | Element) => {
+  const isEvent = e instanceof Event;
+  const el = isEvent ? e.composedPath()[0] : e;
   clearTimeout(HOVER_TIMER);
 
-  if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
+  // TODO EIRIK CHECK BLUR, FOCUS, MOUSEOVER, and onMutation fixes
 
-  const source = (target as Element)?.closest?.(SELECTOR_TOOLTIP);
+  if (el === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
+
+  const source = (el as Element)?.closest?.(SELECTOR_TOOLTIP);
 
   // This prevents the tooltip from reappearing on mousedown/click
-  if (type === 'blur') {
+  if (isEvent && e.type === 'blur') {
     const next = (event as FocusEvent).relatedTarget as Element | null;
     if (source === SOURCE && !next?.closest?.(SELECTOR_TOOLTIP)) hideTooltip();
     return;
   }
 
-  if (type === 'mouseover' && !IS_HOVERING && !IS_IOS) {
-    HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
+  if (isEvent && e.type === 'mouseover' && !IS_HOVERING && !IS_IOS) {
+    HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, el); // Delay mouse showing tooltip if not already shown
     return;
   }
 

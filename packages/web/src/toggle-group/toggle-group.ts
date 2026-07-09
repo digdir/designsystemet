@@ -21,18 +21,18 @@ const handleAriaAttributes = () => {
   }
 };
 
-const handleKeydown = (event: Partial<KeyboardEvent>) => {
-  const { key, target: el } = event;
+const handleKeydown = (e: Partial<KeyboardEvent>) => {
+  const el = e.composedPath?.()[0];
   const group =
     el instanceof HTMLInputElement && el.closest(SELECTOR_TOGGLEGROUP);
 
   if (!group) return;
-  if (key === 'Enter') el.click(); // Forward Enter, but no need to listen for space key, as this is handled by the browser
-  if (key?.startsWith('Arrow')) {
-    event.preventDefault?.();
+  if (e.key === 'Enter') el.click(); // Forward Enter, but no need to listen for space key, as this is handled by the browser
+  if (e.key?.startsWith('Arrow')) {
+    e.preventDefault?.();
     const inputs = [...group.getElementsByTagName('input')];
     const index = inputs.indexOf(el);
-    const move = key.match(/Arrow(Right|Down)/) ? 1 : -1;
+    const move = e.key.match(/Arrow(Right|Down)/) ? 1 : -1;
     let nextIndex = index;
 
     for (let i = 0; i < inputs.length; i++) {

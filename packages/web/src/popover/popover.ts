@@ -43,9 +43,11 @@ function handleToggle(
     source?: HTMLElement;
   },
 ) {
-  let { newState, oldState, target: el, source = event.detail } = event;
+  let { newState, oldState, source = event.detail } = event;
+  const el = event.composedPath?.()[0];
   const isPopover = el instanceof HTMLElement && attr(el, 'popover') !== null;
   const float = isPopover && getCSSProp(el, '--_ds-floating');
+  console.log(event, el);
 
   if (!float) return;
   if (newState === 'closed') return POPOVERS.get(el)?.(); // Cleanup on close
@@ -113,10 +115,20 @@ const handleScrollbar = ({ type }: Event) => {
     for (const [popover] of POPOVERS) popover.showPopover(); // Immediately show again to prevent flicker
 };
 
-onHotReload('popover', () => [
-  on(document, 'mousedown scroll mouseup', handleScrollbar, true),
-  on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
-]);
+onHotReload('popover', () => {
+  const attachShadow = HTMLElement.prototype.attachShadow;
+  HTMLElement.prototype.attachShadow = function (init) {
+    const shadow = attachShadow.call(this, init);
+    shadow.addEventListener('toggle', handleToggle, QUICK_EVENT); // Native Toggle event does not bubble from shadow DOM, so we need to listen for it on every shadow root
+    return shadow;
+  };
+
+  return [
+    on(document, 'mousedown scroll mouseup', handleScrollbar, true),
+    on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
+    () => (HTMLElement.prototype.attachShadow = attachShadow), // Restore original attachShadow on hot reload
+  ];
+});
 
 const arrowPseudo = () => ({
   name: 'arrowPseudo',
