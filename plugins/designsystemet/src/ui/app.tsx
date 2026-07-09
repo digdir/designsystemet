@@ -50,11 +50,6 @@ function App() {
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      const trustedOrigins = new Set([window.location.origin, 'null']);
-      if (!trustedOrigins.has(event.origin)) {
-        return;
-      }
-
       const msg = event.data.pluginMessage as FigmaMessages;
       switch (msg.type) {
         case 'import-config-result': {
