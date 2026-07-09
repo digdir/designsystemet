@@ -55,11 +55,6 @@ const RenderColors = () => (
 
 export const Colors = meta.story({
   render: RenderColors,
-
-  parameters: {
-    pseudo: { hover: true },
-    chromatic: { modes: { mobile: { disable: true } } },
-  },
 });
 
 export const ColorsHover = meta.story({

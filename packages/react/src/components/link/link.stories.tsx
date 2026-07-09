@@ -21,17 +21,16 @@ const meta = preview.meta({
       url: 'http://www.url.com/status',
     },
   },
-});
-
-export const Normal = meta.story({
   args: {
     children: 'Gå til designsystemet',
     href: designsystemetLink,
   },
 });
 
+export const Normal = meta.story();
+
 export const InText = meta.story({
-  render: (args) => (
+  render: ({ children, ...args }) => (
     <>
       <Paragraph>
         Vi bruker komponenter fra{' '}

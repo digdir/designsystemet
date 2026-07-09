@@ -22,10 +22,13 @@ const meta = preview.meta({
       gridTemplateColumns: 'repeat(auto-fit, minmax(280px , 1fr))',
     },
   },
+  args: {
+    children: '',
+  },
 });
 
 export const Preview = meta.story({
-  render: (args) => (
+  render: ({ children, ...args }) => (
     <Card {...args} style={{ maxWidth: '320px' }}>
       <Heading>Card</Heading>
       <Paragraph>
@@ -37,7 +40,6 @@ export const Preview = meta.story({
   ),
 
   args: {
-    children: null,
     'data-color': 'neutral',
   },
 });
@@ -132,7 +134,7 @@ export const Video = meta.story(() => (
 ));
 
 export const WithLink = meta.story({
-  render: (args) => (
+  render: ({ children, ...args }) => (
     <>
       <Card {...args}>
         <Card.Block>{cat5Img}</Card.Block>
@@ -179,7 +181,7 @@ export const WithLink = meta.story({
 });
 
 export const AsLink = meta.story({
-  render: (args) => (
+  render: ({ children, ...args }) => (
     <>
       <Card {...args} asChild>
         <a
@@ -210,7 +212,7 @@ export const AsLink = meta.story({
 });
 
 export const AsButton = meta.story({
-  render: (args) => (
+  render: ({ children, ...args }) => (
     <>
       <Card {...args} asChild>
         <button type='button'>
@@ -230,7 +232,7 @@ export const AsButton = meta.story({
 });
 
 export const AsGrid = meta.story({
-  render: (args) => (
+  render: ({ children, ...args }) => (
     <Card {...args} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
       <Card.Block>
         <Heading>Button Card with blocks</Heading>

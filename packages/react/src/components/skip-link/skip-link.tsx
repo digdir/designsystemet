@@ -9,7 +9,7 @@ export type SkipLinkProps = MergeRight<
     /**
      * The content to display inside the skiplink.
      */
-    children?: ReactNode;
+    children: ReactNode;
     /**
      * Href of an element in the DOM the skiplink should skip to. E.g #main-content
      */

@@ -7,6 +7,7 @@ const meta = preview.meta({
   title: 'Komponenter/SkipLink',
   component: SkipLink,
   args: {
+    children: 'Hopp til hovedinnhold',
     href: '#main-content',
   },
 });
@@ -17,9 +18,7 @@ export const Preview = meta.story({
       <Paragraph>
         For å vise skiplinken, tab til dette eksempelet, eller klikk inni
         eksempelet og trykk <kbd>Tab</kbd>.
-        <SkipLink {...args} href='#main-content'>
-          Hopp til hovedinnhold
-        </SkipLink>
+        <SkipLink {...args} />
       </Paragraph>
       <main id='main-content' tabIndex={-1}>
         Region som kan motta fokus fra skiplink.
