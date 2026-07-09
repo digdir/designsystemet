@@ -88,38 +88,3 @@ export type PreviewData = {
   borderRadii: BorderRadiusPreview[];
   warnings: string[];
 };
-
-export type SerializedPreviewData = Omit<PreviewData, 'tokenLookup'> & {
-  tokenLookupEntries: Array<[string, FlatToken]>;
-};
-
-export type UiState = {
-  preview: PreviewData | null;
-  selectedTheme: string | null;
-  selectedScheme: string | null;
-  isImporting: boolean;
-  // Migrated config text awaiting the user's confirmation, set when a pasted config
-  // still uses the legacy main/support color categories. Null when no prompt is shown.
-  pendingLegacyConfig: string | null;
-  // Status of the Figma file's color variable structure. Null until the first check
-  // from the plugin code returns. When state is not 'ok', import is blocked.
-  variableStructure: VariableStructureStatus | null;
-  isPreparingVariables: boolean;
-  // The dismissible banner shown under the header. Null when no banner is shown.
-  notification: Notification | null;
-};
-
-export type Notification = {
-  kind: 'success' | 'error' | 'warning' | 'info';
-  text: string;
-  // Optional extra lines (e.g. the list of preview warnings).
-  details?: string[];
-};
-
-export type VariableStructureStatus = {
-  state: 'ok' | 'needs-prepare' | 'ambiguous';
-  hasMainColor: boolean;
-  hasSupportColor: boolean;
-  hasColor: boolean;
-  message: string;
-};

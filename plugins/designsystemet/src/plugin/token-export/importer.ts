@@ -1,8 +1,9 @@
+import { postMessage } from '../../common';
 import { COLLECTION } from './constants';
 import { getActiveTokenSets, resolveValue } from './resolver';
 import { applyScopesAndSyntax } from './scope-syntax';
 import type { FlatToken, PreviewData } from './types';
-import { parseNumber } from './utils';
+import { inferVariableName, parseNumber } from './utils';
 
 type ImportPayload = {
   preview: PreviewData;
@@ -110,7 +111,13 @@ function buildCollectionSpecs(
       });
     }
 
-    const collection = byGroup.get(mode.group)!;
+    const collection = byGroup.get(mode.group);
+    if (!collection) {
+      logs.push(
+        `Collection not found for ${mode.group}/${mode.name} — this should never happen`,
+      );
+      continue;
+    }
     collection.modeNames.push(mode.name);
     const modeActiveTokenSets = getModeActiveTokenSets(
       preview,
@@ -165,7 +172,14 @@ function buildCollectionSpecs(
             });
           }
 
-          const variable = collection.variables.get(entry.name)!;
+          const variable = collection.variables.get(entry.name);
+          if (!variable) {
+            logs.push(
+              `Variable not found for ${mode.group}/${entry.name} (${mode.name})`,
+            );
+            continue;
+          }
+
           const valueSpec = buildValueSpec(
             token,
             preview,
@@ -233,38 +247,6 @@ function expandVariableEntries(
   }
 
   return [{ name: inferVariableName(group, modeName, token) }];
-}
-
-function inferVariableName(
-  group: string,
-  modeName: string,
-  token: FlatToken,
-): string {
-  const figmaName = token.figmaName;
-
-  if (group === COLLECTION.COLOR_SCHEME && figmaName.indexOf('theme/') === 0) {
-    return `${modeName}/${figmaName.replace(/^theme\//, '')}`;
-  }
-
-  if (group === COLLECTION.THEME && figmaName.indexOf('theme/') === 0) {
-    return figmaName.replace(/^theme\//, '');
-  }
-
-  if (group === COLLECTION.TYPOGRAPHY && figmaName.indexOf('theme/') === 0) {
-    return `${modeName}/${figmaName.replace(/^theme\//, '')}`;
-  }
-
-  if (group === COLLECTION.SIZE) {
-    if (token.path.indexOf('size._') === 0) {
-      return `_size/${token.path.replace(/^size\._/, '')}`;
-    }
-
-    if (token.path.indexOf('_size.') === 0) {
-      return `_size/${token.path.replace(/^_size\./, '')}`;
-    }
-  }
-
-  return figmaName;
 }
 
 function buildValueSpec(
@@ -510,8 +492,7 @@ async function syncCollections(
   const result = new Map<string, VariableCollection>();
 
   for (const spec of specs) {
-    figma.ui.postMessage({
-      type: 'export-tokens-to-figma-result',
+    postMessage('export-tokens-to-figma-result', {
       status: 'exporting',
       message: `Creating collection ${spec.name} with modes: ${spec.modeNames.join(', ')}`,
     });

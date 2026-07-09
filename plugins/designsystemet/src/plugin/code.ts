@@ -7,7 +7,6 @@ import { configFileCreateSchema } from '@digdir/designsystemet/schemas/v1.1/sche
 import {
   createSystemTokens,
   createTokens,
-  type ThemeObject_,
   tokenSetDimensions,
 } from '@digdir/designsystemet/tokens/create';
 import type { Theme } from '@digdir/designsystemet/tokens/types';
@@ -38,8 +37,6 @@ let files: LoadedFile[] = [];
 // alongside the user-defined colors and neutral.
 const semanticColorNames = new Set<string>();
 
-let _$themes: ThemeObject_[] = [];
-
 let themeNames: string[] = [];
 
 type ConfigSchema = ZodInfer<typeof configFileCreateSchema>;
@@ -65,6 +62,9 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         );
 
         themeNames = Object.keys(config.themes ?? {});
+        semanticColorNames.clear();
+        fileMap.clear();
+        files = [];
 
         for (const [themeName, themeConfig] of Object.entries(
           config.themes,
@@ -100,14 +100,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           themeNames,
         };
 
-        console.log(
-          'Creating system tokens with options:',
-          systemTokensOptions,
-        );
         const systemTokens = await createSystemTokens(systemTokensOptions);
-
-        // This will be used later for exporting tokens to Figma variables
-        _$themes = systemTokens.$themes;
 
         files = Array.from(fileMap.values());
         files.push(makeLoadedFile('$themes.json', systemTokens.$themes));

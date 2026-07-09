@@ -10,7 +10,12 @@ import type {
   SemanticColorScale,
   ThemeOption,
 } from './types';
-import { countBy, detectRootName, isMetaFile } from './utils';
+import {
+  countBy,
+  detectRootName,
+  inferVariableName,
+  isMetaFile,
+} from './utils';
 
 export function buildPreview(files: LoadedFile[]): PreviewData {
   const warnings: string[] = [];
@@ -235,28 +240,6 @@ function inferVariablesForGroup(
   return Array.from(names.values()).sort((a, b) =>
     a.name.localeCompare(b.name),
   );
-}
-
-function inferVariableName(
-  group: string,
-  modeName: string,
-  token: FlatToken,
-): string {
-  const figmaName = token.figmaName;
-
-  if (group === COLLECTION.COLOR_SCHEME && figmaName.indexOf('theme/') === 0) {
-    return modeName + '/' + figmaName.replace(/^theme\//, '');
-  }
-
-  if (group === COLLECTION.THEME && figmaName.indexOf('theme/') === 0) {
-    return figmaName.replace(/^theme\//, '');
-  }
-
-  if (group === COLLECTION.TYPOGRAPHY && figmaName.indexOf('theme/') === 0) {
-    return modeName + '/' + figmaName.replace(/^theme\//, '');
-  }
-
-  return figmaName;
 }
 
 function buildThemeOptions(
