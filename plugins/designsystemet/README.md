@@ -7,9 +7,15 @@
 ## Known issues and TODO
 
 1. Unknown variables are deleted.
+2. Better placement for notification banner?
+3. Clean up CSS
+4. Use predefined preview model with css variables and values (maybe based on [preview-tokens](../../packages/cli/src/scripts/update-preview-tokens.ts))
 
 ## How to test in Figma
 
+In Figma menu: Plugins -> Development -> Import from manifest...
+
+Used config for testing
 ```json
 {
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
@@ -31,7 +37,7 @@
       "colors": {
         "accent": "#0062BA",
         "test1": "#0D7A5F",
-        "test2": "#5B3FA0", 
+        "test2": "#5B3FA0", // test
         "neutral": "#24272B"
       },
       "borderRadius": 0,

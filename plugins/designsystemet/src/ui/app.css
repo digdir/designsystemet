@@ -59,11 +59,8 @@ footer {
   min-height: 0;
 }
 
-/* Token-export module layout. Definite height (not min-height) so the 1fr content row is
-   constrained and scrolls internally, keeping the footer pinned at the bottom. */
 .app {
   display: grid;
-  grid-template-rows: auto auto 1fr auto;
   height: 100vh;
 }
 
