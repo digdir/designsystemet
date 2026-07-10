@@ -27,7 +27,7 @@ const meta = preview.meta({
       e.focus({ focusVisible: true } as Record<string, unknown>); // necessary to get focusVisible styling, but doesn't show up in interaction log
     };
     for (const event of [userEvent.hover, fakeFocus])
-      for (const tooltipTrigger of tooltips) {
+      for (const tooltipTrigger of Array.from(tooltips)) {
         await event(tooltipTrigger);
         await waitFor(async () => {
           const text = tooltipTrigger.getAttribute('data-tooltip');

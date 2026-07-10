@@ -26,19 +26,20 @@ const isStory = (value: unknown): value is CSFNextStory =>
  *   export const Snapshots = meta.story(createSingleStory(ButtonStories));
  */
 export function createSingleStory(rawStories: Record<string, unknown>) {
+  const stories = Object.entries(rawStories).filter(
+    (entry): entry is [string, CSFNextStory] => isStory(entry[1]),
+  );
+
   return {
-    render: (args: { children: React.ReactNode }) => (
+    render: () => (
       <>
         {/* Diff fever pixels: */}
         <style>{`[data-storybook-decorator="true"]{padding:0!important}`}</style>
-        <Fragment {...args} />
+        {stories.map(([storyName, story]) => (
+          <story.Component key={storyName} />
+        ))}
       </>
     ),
-    args: {
-      children: Object.entries(rawStories)
-        .filter((entry): entry is [string, CSFNextStory] => isStory(entry[1]))
-        .map(([storyName, story]) => <story.Component key={storyName} />),
-    },
     parameters: {
       chromatic: {
         disableSnapshot: false,
@@ -47,7 +48,7 @@ export function createSingleStory(rawStories: Record<string, unknown>) {
         display: 'flex',
         flexDirection: 'column',
         gap: 'var(--ds-size-2)',
-      },
+      } as React.CSSProperties,
       pseudo: {
         hover: ['[data-pseudo-state="hover"] > *'],
         active: ['[data-pseudo-state="active"] > *'],

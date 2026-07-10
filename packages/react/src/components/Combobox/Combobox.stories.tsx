@@ -269,6 +269,7 @@ export const InForm = meta.story({
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const formData = new FormData(e.currentTarget);
+      // @ts-expect-error FormData.values() returns an iterator
       const values = Array.from(formData.values());
       alert(values);
     };

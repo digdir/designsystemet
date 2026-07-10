@@ -380,7 +380,7 @@ export const CustomMatching = meta.story({
       const { list, control } = event.currentTarget;
       const value = control?.value.toLowerCase() || '';
 
-      for (const option of list?.options || [])
+      for (const option of Array.from(list?.options || []))
         option.selected = option.value.toLowerCase().startsWith(value); // Setting selected indicates a match
     };
 
