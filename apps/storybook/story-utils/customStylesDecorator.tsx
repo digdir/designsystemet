@@ -61,7 +61,6 @@ export const customStylesDecorator: Decorator = (Story, ctx) => {
       data-storybook-decorator
       style={{
         boxSizing: 'border-box',
-        overflow: 'hidden',
         padding: '1rem',
         ...style,
         ...(ctx.viewMode === 'docs' && docs),

@@ -19,10 +19,7 @@ export function createSingleStory(stories: Record<string, unknown>) {
     render: () => (
       <>
         {/* Diff fever pixels by removing nestes padding: */}
-        <style>{`[data-storybook-decorator="true"] [data-storybook-decorator="true"]{
-          padding: 0!important;
-          overflow: visible!important;
-        }`}</style>
+        <style>{`[data-storybook-decorator="true"] [data-storybook-decorator="true"]{ padding: 0!important }`}</style>
         {Object.entries(composed).map(([key, Story]) => {
           // @ts-expect-error pseudo is not typed on composed stories
           const pseudo = stories[key]?.input.parameters?.pseudo;
