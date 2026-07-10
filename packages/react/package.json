@@ -68,6 +68,6 @@
     "rollup": "4.62.2",
     "rollup-plugin-copy": "3.5.0",
     "storybook": "10.4.6",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }
