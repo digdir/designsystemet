@@ -2,8 +2,9 @@ import '@digdir/designsystemet-css/theme';
 import '@digdir/designsystemet-css';
 import {
   Button,
+  Field,
   Heading,
-  Paragraph,
+  Label,
   Spinner,
   Textarea,
 } from '@digdir/designsystemet-react';
@@ -199,55 +200,52 @@ function App() {
       </header>
       <main>
         {view === 'paste' && (
-          <section>
-            <Paragraph>
-              Paste your designsystemet.config.json content below and click
-              Start to preview the tokens.
-            </Paragraph>
-            <Textarea
-              ref={textareaRef}
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-            />
-            <div className='actions'>
-              <Button
-                onClick={() =>
-                  sendMessageOnClick(
-                    'import-config-and-create-preview-tokens',
-                    {
-                      config: textareaRef.current?.value,
-                    },
-                  )
-                }
-              >
-                Upload
-              </Button>
-            </div>
-          </section>
+          <div className='padding-inline'>
+            <Field className='padding-block'>
+              <Label>Upload config</Label>
+              <Field.Description>
+                Paste your designsystemet.config.json content below and click
+                Upload for preview.
+              </Field.Description>
+              <Textarea
+                id='config-textarea'
+                ref={textareaRef}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+              />
+            </Field>
+          </div>
         )}
         {view === 'preview' && state.previewData && (
-          <section>
-            <PreviewView
-              preview={state.previewData}
-              selectedScheme={state.selectedScheme}
-              selectedTheme={state.selectedTheme}
-              onSelectScheme={(scheme) =>
-                dispatch({ type: 'select-scheme', scheme })
-              }
-              onSelectTheme={(theme) =>
-                dispatch({ type: 'select-theme', theme })
-              }
-            />
-            <div className='actions'>
-              <Button
-                onClick={() => sendMessageOnClick('export-tokens-to-figma')}
-              >
-                export-tokens-to-figma
-              </Button>
-            </div>
-          </section>
+          <PreviewView
+            preview={state.previewData}
+            selectedScheme={state.selectedScheme}
+            selectedTheme={state.selectedTheme}
+            onSelectScheme={(scheme) =>
+              dispatch({ type: 'select-scheme', scheme })
+            }
+            onSelectTheme={(theme) => dispatch({ type: 'select-theme', theme })}
+          />
         )}
       </main>
+      <footer>
+        {view === 'paste' && (
+          <Button
+            onClick={() =>
+              sendMessageOnClick('import-config-and-create-preview-tokens', {
+                config: textareaRef.current?.value,
+              })
+            }
+          >
+            Upload
+          </Button>
+        )}
+        {view === 'preview' && (
+          <Button onClick={() => sendMessageOnClick('export-tokens-to-figma')}>
+            export-tokens-to-figma
+          </Button>
+        )}
+      </footer>
       {state.isImporting && (
         <div className='tx-overlay' role='status' aria-live='polite'>
           <div className='tx-overlay-card'>

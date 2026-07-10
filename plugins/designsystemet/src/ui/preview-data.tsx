@@ -75,7 +75,7 @@ export function PreviewView({
   return (
     <>
       {(showThemes || showSchemes) && (
-        <section className='tx-hero'>
+        <div className='tx-hero'>
           <div className='tx-control-row'>
             {showThemes && (
               <div>
@@ -108,28 +108,26 @@ export function PreviewView({
               </div>
             )}
           </div>
-        </section>
+        </div>
       )}
 
-      <section>
-        <div
-          key={selectedScheme ?? 'none'}
-          className={`tx-surface tx-surface--${surface}`}
-        >
-          <div className='tx-preview-layout'>
-            <ColorScales
-              scales={preview.semanticColorScales}
-              preview={preview}
-              activeTokenSets={activeTokenSets}
-            />
-            <BorderRadii
-              radii={preview.borderRadii}
-              preview={preview}
-              activeTokenSets={activeTokenSets}
-            />
-          </div>
+      <div
+        key={selectedScheme ?? 'none'}
+        className={`tx-surface tx-surface--${surface}`}
+      >
+        <div className='tx-preview-layout'>
+          <ColorScales
+            scales={preview.semanticColorScales}
+            preview={preview}
+            activeTokenSets={activeTokenSets}
+          />
+          <BorderRadii
+            radii={preview.borderRadii}
+            preview={preview}
+            activeTokenSets={activeTokenSets}
+          />
         </div>
-      </section>
+      </div>
     </>
   );
 }
