@@ -71,30 +71,6 @@ footer {
   height: 100vh;
 }
 
-.tx-content {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  min-height: 0;
-}
-
-/* In paste view the section fills the available height so the textarea grows down to the
-   sticky footer instead of leaving a gap. Preview content stays content-sized. */
-.tx-paste {
-  display: flex;
-  flex: 1 1 auto;
-  min-height: 0;
-  padding: 14px 20px 18px;
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-  background: var(--ds-color-neutral-background-tinted);
-}
-
-.tx-paste > * {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-}
-
 /* Banner (Designsystemet Alert) — a dismiss button sits to the right of the message. */
 .tx-banner {
   display: flex;
@@ -110,34 +86,6 @@ footer {
 .tx-banner-details {
   margin: 6px 0 0;
   padding-left: 18px;
-}
-
-/* Message cards: prepare gate, ambiguous structure, legacy-config migration prompt. */
-.tx-message {
-  display: grid;
-  gap: 12px;
-  max-width: 520px;
-  margin: 24px auto;
-  padding: 20px;
-}
-
-.tx-message p {
-  color: var(--ds-color-neutral-text-subtle);
-  line-height: 1.4;
-}
-
-.tx-message code {
-  padding: 1px 4px;
-  border-radius: 4px;
-  background: var(--ds-color-neutral-surface-tinted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
-
-.tx-actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
 }
 
 .tx-subtle {
@@ -178,12 +126,6 @@ footer {
   display: grid;
   padding-block: var(--ds-size-4);
   margin: 0 auto;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tx-surface {
-    animation: none;
-  }
 }
 
 .tx-surface--light {
@@ -325,37 +267,4 @@ footer {
   background: var(--ds-color-neutral-surface-default);
   color: var(--ds-color-neutral-text-subtle);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-}
-
-/* Landing card picker — shown by the shell once more than one module is registered. */
-.tx-landing {
-  display: grid;
-  gap: 18px;
-  padding: 20px;
-}
-
-.tx-landing-header {
-  display: grid;
-  gap: 4px;
-}
-
-.tx-module-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 12px;
-}
-
-.tx-module-card button {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  width: 100%;
-  padding: 16px;
-  border: 0;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
 }
