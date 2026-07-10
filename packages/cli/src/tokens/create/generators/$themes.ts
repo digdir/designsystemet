@@ -6,9 +6,7 @@ import type { SizeModes, TokenSetDimensions } from '../../types.ts';
 async function createHash(text: string, algo = 'SHA-1') {
   const crypto = globalThis.crypto;
   if (!crypto?.subtle) {
-    console.warn(
-      'Crypto API not available; using deterministic fallback hash. This may still result in collisions.',
-    );
+    console.warn('Crypto API not available; using deterministic fallback hash. This may still result in collisions.');
     let hash = 2166136261;
     for (let i = 0; i < text.length; i++) {
       hash ^= text.charCodeAt(i);
