@@ -34,7 +34,7 @@ export function createSingleStory(rawStories: Record<string, unknown>) {
     render: () => (
       <>
         {/* Diff fever pixels: */}
-        <style>{`[data-storybook-decorator="true"]{padding:0!important}`}</style>
+        <style>{`[data-storybook-decorator="true"] [data-storybook-decorator="true"]{padding:0!important}`}</style>
         {stories.map(([storyName, story]) => (
           <story.Component key={storyName} />
         ))}
