@@ -10,30 +10,17 @@ import type {
   SemanticColorScale,
   ThemeOption,
 } from './types';
-import {
-  countBy,
-  detectRootName,
-  inferVariableName,
-  isMetaFile,
-} from './utils';
+import { inferVariableName, isMetaFile } from './utils';
 
 export function buildPreview(files: LoadedFile[]): PreviewData {
   const warnings: string[] = [];
-  const validFiles = files.filter((file) => file.data !== null);
-  const invalidFiles = files.filter((file) => file.data === null);
-
-  for (const file of invalidFiles) {
-    warnings.push(`${file.path}: ${file.error}`);
-  }
 
   const fileByTokenSet = new Map<string, LoadedFile>();
-  for (const file of validFiles) {
+  for (const file of files) {
     fileByTokenSet.set(file.tokenSetPath, file);
   }
 
-  const themesFile = validFiles.find((file) =>
-    file.path.endsWith('$themes.json'),
-  );
+  const themesFile = files.find((file) => file.path.endsWith('$themes.json'));
   const themes = Array.isArray(themesFile?.data) ? themesFile.data : [];
 
   if (!themesFile) {
@@ -42,18 +29,12 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
     );
   }
 
-  const tokenSets = validFiles
+  const tokenSets = files
     .filter((file) => !isMetaFile(file.path))
-    .map((file) => {
-      const tokens = flattenTokens(file.data);
-      return {
-        path: file.tokenSetPath,
-        filePath: file.path,
-        tokenCount: tokens.length,
-        types: countBy(tokens.map((token) => token.type || '(unknown)')),
-        tokens,
-      };
-    });
+    .map((file) => ({
+      path: file.tokenSetPath,
+      tokens: flattenTokens(file.data),
+    }));
 
   const flatTokens: FlatToken[] = [];
   const tokenLookup: Record<string, FlatToken> = {};
@@ -93,25 +74,7 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
   }
 
   const preview: PreviewData = {
-    generatedAt: new Date().toISOString(),
-    rootName: detectRootName(files),
-    summary: {
-      files: files.length,
-      validFiles: validFiles.length,
-      tokenSets: tokenSets.length,
-      themes: 0,
-      colorSchemes: 0,
-      semanticColorScales: 0,
-      borderRadii: 0,
-      fontFamilies: 0,
-      warnings: 0,
-    },
-    tokenSets: tokenSets.map((set) => ({
-      path: set.path,
-      filePath: set.filePath,
-      tokenCount: set.tokenCount,
-      types: set.types,
-    })),
+    tokenSets: tokenSets.map((set) => ({ path: set.path })),
     flatTokens,
     tokenLookup,
     themes: modePreviews,
@@ -140,13 +103,6 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
     );
   }
 
-  preview.summary.themes = preview.themeOptions.length;
-  preview.summary.colorSchemes = preview.colorSchemeOptions.length;
-  preview.summary.semanticColorScales = preview.semanticColorScales.length;
-  preview.summary.borderRadii = preview.borderRadii.length;
-  preview.summary.fontFamilies = preview.fontFamilies.length;
-  preview.summary.warnings = preview.warnings.length;
-
   return preview;
 }
 
@@ -159,17 +115,11 @@ function buildModePreview(
     string,
     string
   >;
-  const selected = Object.keys(selectedTokenSets).map((tokenSet) => {
-    const status = selectedTokenSets[tokenSet];
-    const file = fileByTokenSet.get(tokenSet);
-
-    return {
-      tokenSet,
-      status,
-      exists: Boolean(file),
-      tokenCount: file ? flattenTokens(file.data).length : 0,
-    };
-  });
+  const selected = Object.keys(selectedTokenSets).map((tokenSet) => ({
+    tokenSet,
+    status: selectedTokenSets[tokenSet],
+    exists: fileByTokenSet.has(tokenSet),
+  }));
 
   const sourceCount = selected.filter(
     (item) => item.status === 'source',
@@ -202,12 +152,6 @@ function buildCollectionPreview(
 
   return Array.from(byGroup.entries()).map(([group, modes]) => ({
     name: group || '(ungrouped)',
-    modes: modes.map((mode) => ({
-      name: mode.name,
-      tokenSets: mode.selectedTokenSets
-        .filter((item) => item.exists)
-        .map((item) => item.tokenSet),
-    })),
     variablePreview: inferVariablesForGroup(group, modes, flatTokens),
   }));
 }

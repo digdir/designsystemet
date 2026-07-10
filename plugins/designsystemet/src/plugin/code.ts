@@ -21,7 +21,6 @@ function makeLoadedFile(path: string, data: unknown): LoadedFile {
   return {
     path,
     tokenSetPath: path.replace(/\.jsonc?$/i, ''),
-    size: JSON.stringify(data).length,
     data,
   };
 }

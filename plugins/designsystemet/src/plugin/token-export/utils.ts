@@ -6,33 +6,6 @@ export function isMetaFile(path: string): boolean {
   return Boolean(fileName && fileName.charAt(0) === '$');
 }
 
-export function detectRootName(
-  files: Array<{ webkitRelativePath?: string; path?: string; name?: string }>,
-): string | null {
-  const first = files[0];
-  if (!first) {
-    return null;
-  }
-
-  const raw = first.webkitRelativePath || first.path || first.name;
-  if (!raw) {
-    return null;
-  }
-
-  const parts = raw.replace(/\\/g, '/').split('/').filter(Boolean);
-  return parts.length > 1 ? parts[0] : null;
-}
-
-export function countBy(values: string[]): Record<string, number> {
-  const counts: Record<string, number> = {};
-
-  for (const value of values) {
-    counts[value] = (counts[value] || 0) + 1;
-  }
-
-  return counts;
-}
-
 export function parseNumber(value: unknown): number | null {
   if (typeof value === 'number' && Number.isFinite(value)) {
     return value;

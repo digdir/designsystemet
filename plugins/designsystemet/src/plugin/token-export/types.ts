@@ -1,9 +1,7 @@
 export type LoadedFile = {
   path: string;
   tokenSetPath: string;
-  size: number;
-  data: unknown | null;
-  error?: string;
+  data: unknown;
 };
 
 export type FlatToken = {
@@ -23,16 +21,11 @@ export type ModePreview = {
     tokenSet: string;
     status: string;
     exists: boolean;
-    tokenCount: number;
   }>;
 };
 
 export type CollectionPreview = {
   name: string;
-  modes: Array<{
-    name: string;
-    tokenSets: string[];
-  }>;
   variablePreview: Array<{
     name: string;
     type: string;
@@ -68,24 +61,8 @@ export type ThemeOption = {
 };
 
 export type PreviewData = {
-  generatedAt: string;
-  rootName: string | null;
-  summary: {
-    files: number;
-    validFiles: number;
-    tokenSets: number;
-    themes: number;
-    colorSchemes: number;
-    semanticColorScales: number;
-    borderRadii: number;
-    fontFamilies: number;
-    warnings: number;
-  };
   tokenSets: Array<{
     path: string;
-    filePath: string;
-    tokenCount: number;
-    types: Record<string, number>;
   }>;
   flatTokens: FlatToken[];
   // Plain object (not Map) so it survives figma.ui.postMessage serialization to the UI.

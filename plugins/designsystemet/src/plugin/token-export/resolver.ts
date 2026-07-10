@@ -206,7 +206,6 @@ function buildAvailableReferenceNames(preview: PreviewData): Set<string> {
 
   for (const token of preview.flatTokens) {
     available.add(token.path);
-    available.add(token.figmaName.replace(/\//g, '.'));
 
     if (token.path.indexOf('theme.') === 0) {
       available.add(token.path.replace(/^theme\./, ''));
