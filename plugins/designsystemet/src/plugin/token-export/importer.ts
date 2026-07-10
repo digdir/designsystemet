@@ -1,4 +1,3 @@
-import { postMessage } from '../../common';
 import { COLLECTION } from './constants';
 import { getActiveTokenSets, resolveValue } from './resolver';
 import { applyScopesAndSyntax } from './scope-syntax';
@@ -492,10 +491,6 @@ async function syncCollections(
   const result = new Map<string, VariableCollection>();
 
   for (const spec of specs) {
-    postMessage('export-tokens-to-figma-result', {
-      status: 'exporting',
-      message: `Creating collection ${spec.name} with modes: ${spec.modeNames.join(', ')}`,
-    });
     const collection =
       collectionByName.get(spec.name) ||
       figma.variables.createVariableCollection(spec.name);
