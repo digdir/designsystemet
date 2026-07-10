@@ -3,6 +3,7 @@ import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
+import pkg from '../package.json' with { type: 'json' };
 import { checkAutomigrate } from '../src/automigrate.ts';
 import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
@@ -274,6 +275,13 @@ program
     } else {
       console.log('Migrate: please specify a migration name or --list');
     }
+  });
+
+program
+  .option('-v --version', 'Show the version of Designsystemet CLI')
+  .description('Show the version of Designsystemet CLI')
+  .action(() => {
+    console.log(pkg.version);
   });
 
 await program.parseAsync(process.argv);
