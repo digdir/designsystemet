@@ -278,11 +278,8 @@ program
   });
 
 program
-  .option('-v --version', 'Show the version of Designsystemet CLI')
-  .description('Show the version of Designsystemet CLI')
-  .action(() => {
-    console.log(pkg.version);
-  });
+  .version(pkg.version, '-v, --version', 'output the current version')
+  .helpOption('-h, --help', 'display help for command');
 
 await program.parseAsync(process.argv);
 
