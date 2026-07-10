@@ -277,9 +277,7 @@ program
     }
   });
 
-program
-  .version(pkg.version, '-v, --version', 'output the current version')
-  .helpOption('-h, --help', 'display help for command');
+program.version(pkg.version, '-v, --version', 'Display version number').helpOption('-h, --help', 'Display help');
 
 await program.parseAsync(process.argv);
 
