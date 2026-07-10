@@ -56,7 +56,7 @@ const render = (self: DSBreadcrumbsElement) => {
   // Get current label attributes
   const label = attrOrCSS(self, ARIA_LABEL)?.trim();
   const labelledby = attr(self, ARIA_LABELLEDBY)?.trim();
-  const prevLabel = labelledby || label;
+  const prevLabel = label || labelledby; // Prefer aria-label over aria-labelledby as this is also most browsers default if both are defined
 
   // Update, but keep cached label if aria-label/aria-labelledby is removed
   if (prevLabel) self._label.value = prevLabel;
