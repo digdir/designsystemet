@@ -47,14 +47,20 @@ footer {
   position: absolute;
   bottom: 0;
   width: stretch;
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: var(--ds-size-2);
   grid-auto-flow: column;
-  justify-content: end;
   padding: var(--ds-size-4);
 
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   background: var(--ds-color-neutral-background-tinted);
+}
+
+.footer-left:empty,
+.footer-right:empty {
+  min-height: 0;
 }
 
 /* Token-export module layout. Definite height (not min-height) so the 1fr content row is

@@ -81,36 +81,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const view = computeView(state);
 
-  const [value, setValue] = useState(`{
-  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
-  "outDir": "./design-tokens",
-  "themes": {
-    "theme": {
-      "colors": {
-        "accent": "#ba4000",
-        "brand1": "#180d7a",
-        "brand2": "#56a03f",
-        "neutral": "#24272B"
-      },
-      "borderRadius": 4,
-      "typography": {
-        "fontFamily": "IBM Plex Sans"
-      }
-    },
-    "theme2": {
-      "colors": {
-        "accent": "#0062BA",
-        "brand1": "#0D7A5F",
-        "brand2": "#5B3FA0",
-        "neutral": "#24272B"
-      },
-      "borderRadius": 4,
-      "typography": {
-        "fontFamily": "Arial"
-      }
-    }
-  }
-}`);
+  const [value, setValue] = useState(``);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -238,22 +209,37 @@ function App() {
         )}
       </main>
       <footer>
-        {view === 'paste' && (
-          <Button
-            onClick={() =>
-              sendMessageOnClick('import-config-and-create-preview-tokens', {
-                config: textareaRef.current?.value,
-              })
-            }
-          >
-            Upload
-          </Button>
-        )}
-        {view === 'preview' && (
-          <Button onClick={() => sendMessageOnClick('export-tokens-to-figma')}>
-            Export to Figma
-          </Button>
-        )}
+        <div className='footer-left'>
+          {view === 'preview' && (
+            <Button
+              onClick={() => dispatch({ type: 'clear-preview' })}
+              data-variant='tertiary'
+            >
+              Go back
+            </Button>
+          )}
+        </div>
+        <div className='footer-right'>
+          {view === 'paste' && (
+            <Button
+              onClick={() =>
+                sendMessageOnClick('import-config-and-create-preview-tokens', {
+                  config: textareaRef.current?.value,
+                })
+              }
+            >
+              Upload
+            </Button>
+          )}
+
+          {view === 'preview' && (
+            <Button
+              onClick={() => sendMessageOnClick('export-tokens-to-figma')}
+            >
+              Export to Figma
+            </Button>
+          )}
+        </div>
       </footer>
       {state.isImporting && (
         <div className='tx-overlay' role='status' aria-live='polite'>
