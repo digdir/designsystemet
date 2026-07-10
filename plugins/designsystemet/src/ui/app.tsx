@@ -1,6 +1,7 @@
 import '@digdir/designsystemet-css/theme';
 import '@digdir/designsystemet-css';
 import {
+  Alert,
   Button,
   Field,
   Heading,
@@ -191,13 +192,21 @@ function App() {
     parent.postMessage({ pluginMessage: { type, ...payload } }, '*');
   };
 
-  console.log('isImporting', state.isImporting);
-
   return (
     <div className='app'>
       <header>
-        <Heading>Designsystemet</Heading>
+        <Heading>Export theme to Figma</Heading>
       </header>
+
+      {state.notification && (
+        <Banner
+          notification={state.notification}
+          onDismiss={() =>
+            dispatch({ type: 'set-notification', notification: null })
+          }
+        />
+      )}
+
       <main>
         {view === 'paste' && (
           <div className='padding-inline'>
@@ -242,7 +251,7 @@ function App() {
         )}
         {view === 'preview' && (
           <Button onClick={() => sendMessageOnClick('export-tokens-to-figma')}>
-            export-tokens-to-figma
+            Export to Figma
           </Button>
         )}
       </footer>
@@ -255,6 +264,40 @@ function App() {
         </div>
       )}
     </div>
+  );
+}
+
+function Banner({
+  notification,
+  onDismiss,
+}: {
+  notification: Notification;
+  onDismiss: () => void;
+}): React.JSX.Element {
+  // Notification.kind maps onto Designsystemet severity colors; 'error' is 'danger' there.
+  const color = notification.kind === 'error' ? 'danger' : notification.kind;
+  return (
+    <Alert data-color={color} className='tx-banner'>
+      <div className='tx-banner-body'>
+        <span>{notification.text}</span>
+        {notification.details && notification.details.length > 0 && (
+          <ul className='tx-banner-details'>
+            {notification.details.slice(0, 8).map((line, index) => (
+              <li key={index}>{line}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <Button
+        variant='tertiary'
+        data-size='sm'
+        icon
+        onClick={onDismiss}
+        aria-label='Dismiss'
+      >
+        ×
+      </Button>
+    </Alert>
   );
 }
 
