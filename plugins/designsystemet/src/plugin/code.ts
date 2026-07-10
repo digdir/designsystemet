@@ -31,6 +31,7 @@ function makeLoadedFile(path: string, data: unknown): LoadedFile {
 // kept as-is; shared sets are identical across themes so overwriting is safe.
 const fileMap = new Map<string, LoadedFile>();
 let files: LoadedFile[] = [];
+let previewData: ReturnType<typeof buildPreview> | null = null;
 
 // Color names are derived from the generated `semantic/color/<name>` token sets so
 // the auto-generated severity colors (danger, info, success, warning) are included
@@ -53,6 +54,7 @@ if (figma.editorType === 'figma') {
 figma.ui.onmessage = async (msg: FigmaMessages) => {
   switch (msg.type) {
     case 'import-config-and-create-preview-tokens': {
+      console.log('Importing config and creating preview tokens...');
       try {
         semanticColorNames.clear();
         fileMap.clear();
@@ -102,10 +104,11 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         files.push(makeLoadedFile('$themes.json', systemTokens.$themes));
         files.sort((a, b) => a.path.localeCompare(b.path));
 
+        previewData = buildPreview(files);
         postMessage('preview-tokens-from-config', {
           status: 'success',
           preview: {
-            previewData: buildPreview(files),
+            previewData,
             colorNames: Array.from(semanticColorNames),
             themeNames,
           },
@@ -124,13 +127,17 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
       break;
     }
     case 'export-tokens-to-figma': {
+      console.log('Exporting tokens to Figma variables...');
+
       try {
-        const previewData = buildPreview(files);
         postMessage('export-tokens-to-figma', {
           status: 'exporting',
-
           message: `Starting export of ${themeNames[0]} token sets to Figma variables...`,
         });
+
+        if (!previewData) {
+          throw new Error('No preview data available for export.');
+        }
 
         const result = await importToFigma({
           preview: previewData,

@@ -79,7 +79,8 @@ export type PreviewData = {
     types: Record<string, number>;
   }>;
   flatTokens: FlatToken[];
-  tokenLookup: Map<string, FlatToken>;
+  // Plain object (not Map) so it survives figma.ui.postMessage serialization to the UI.
+  tokenLookup: Record<string, FlatToken>;
   themes: ModePreview[];
   collections: CollectionPreview[];
   themeOptions: ThemeOption[];

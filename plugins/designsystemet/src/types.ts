@@ -27,3 +27,18 @@ export type FigmaMessages =
   | ImportConfig
   | PreviewTokensFromConfig
   | ExportTokensToFigma;
+
+export type UiState = {
+  previewData: PreviewData | null;
+  selectedTheme: string | null;
+  selectedScheme: string | null;
+  isImporting: boolean;
+  notification: Notification | null;
+};
+
+export type Notification = {
+  kind: 'success' | 'error' | 'warning' | 'info';
+  text: string;
+  // Optional extra lines (e.g. the list of preview warnings).
+  details?: string[];
+};

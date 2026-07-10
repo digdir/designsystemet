@@ -123,7 +123,7 @@ function resolveTokenValue(
     }
 
     for (const tokenSet of activeTokenSets) {
-      const token = preview.tokenLookup.get(tokenSet + '::' + path);
+      const token = preview.tokenLookup[tokenSet + '::' + path];
       if (token) {
         return resolveValue(
           token.value,

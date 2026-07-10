@@ -2,24 +2,83 @@ import '@digdir/designsystemet-css/theme';
 import '@digdir/designsystemet-css';
 import {
   Button,
-  Details,
   Heading,
   Paragraph,
   Spinner,
   Textarea,
 } from '@digdir/designsystemet-react';
-import { useEffect, useRef, useState } from 'react';
-import type { FigmaMessages } from '../types';
+import { useEffect, useReducer, useRef, useState } from 'react';
+import type { FigmaMessages, Notification, UiState } from '../types';
 import './app.css';
 import type { PreviewData } from '../plugin/token-export/types';
+import { PreviewView } from './preview-data';
+
+type View = 'paste' | 'preview';
+
+const initialState: UiState = {
+  previewData: null,
+  selectedTheme: null,
+  selectedScheme: null,
+  isImporting: false,
+  notification: null,
+};
+
+type Action =
+  | {
+      type: 'set-preview';
+      previewData: PreviewData;
+      theme: string | null;
+      scheme: string | null;
+      notification: Notification | null;
+    }
+  | { type: 'clear-preview' }
+  | { type: 'set-importing'; value: boolean }
+  | { type: 'set-notification'; notification: Notification | null }
+  | { type: 'select-theme'; theme: string }
+  | { type: 'select-scheme'; scheme: string };
+
+function reducer(state: UiState, action: Action): UiState {
+  switch (action.type) {
+    case 'set-preview':
+      return {
+        ...state,
+        previewData: action.previewData,
+        selectedTheme: action.theme,
+        selectedScheme: action.scheme,
+        notification: action.notification,
+      };
+    case 'clear-preview':
+      return { ...state, previewData: null, notification: null };
+
+    case 'set-importing':
+      return {
+        ...state,
+        isImporting: action.value,
+        notification: action.value ? null : state.notification,
+      };
+    case 'set-notification':
+      return { ...state, notification: action.notification };
+    case 'select-theme':
+      return { ...state, selectedTheme: action.theme };
+    case 'select-scheme':
+      return { ...state, selectedScheme: action.scheme };
+
+    default:
+      return state;
+  }
+}
+
+function computeView(state: UiState): View {
+  if (state.previewData) {
+    return 'preview';
+  }
+  return 'paste';
+}
 
 function App() {
-  const [message, setMessage] = useState('');
-  const [logs, setLogs] = useState<string[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [_previewData, setPreviewData] = useState<PreviewData | null>(null);
-  const [_themeNames, setThemeNames] = useState<string[]>([]);
-  const [_semanticColorNames, setSemanticColorNames] = useState<string[]>([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const view = computeView(state);
+
   const [value, setValue] = useState(`{
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
   "outDir": "./design-tokens",
@@ -59,36 +118,58 @@ function App() {
         case 'preview-tokens-from-config': {
           switch (msg.status) {
             case 'success':
-              setLoading(false);
-              setMessage(msg.message);
-              setPreviewData(msg.preview?.previewData ?? null);
-              setThemeNames(msg.preview?.themeNames ?? []);
-              setSemanticColorNames(msg.preview?.colorNames ?? []);
+              if (!msg.preview) {
+                return;
+              }
+              dispatch({
+                type: 'set-preview',
+                previewData: msg.preview?.previewData,
+                theme: msg.preview?.themeNames[0] || null,
+                scheme: 'light',
+                notification: null,
+              });
               break;
             case 'error':
-              setLoading(false);
-              setMessage(`Error importing tokens: ${msg.message}`);
+              dispatch({
+                type: 'set-notification',
+                notification: {
+                  kind: 'error',
+                  text: msg.message,
+                },
+              });
               break;
           }
           break;
         }
-        // case 'preview-tokens-from-config': {
-        //   setLoading(false);
-        //   setMessage(msg.message);
-        //   break;
-        // }
         case 'export-tokens-to-figma': {
           const { status, message: msgMessage } = msg;
           if (status === 'exporting') {
-            setLoading(true);
-            setMessage(msgMessage);
+            console.log('exporting tokens to figma...');
+            dispatch({
+              type: 'set-importing',
+              value: true,
+            });
           } else if (status === 'success') {
-            setLoading(false);
-            setLogs(msg.logs || []);
-            setMessage('Export completed successfully.');
+            dispatch({
+              type: 'set-importing',
+              value: false,
+            });
+            dispatch({
+              type: 'set-notification',
+              notification: {
+                kind: 'success',
+                text: msgMessage,
+              },
+            });
           } else if (status === 'error') {
-            setLoading(false);
-            setMessage(`Error exporting tokens: ${msgMessage}`);
+            dispatch({
+              type: 'set-notification',
+              notification: {
+                kind: 'error',
+                text: msgMessage,
+                details: msg.logs,
+              },
+            });
           }
           break;
         }
@@ -102,58 +183,80 @@ function App() {
     };
   }, []);
 
-  const handleClick = (type: FigmaMessages['type']) => {
-    if (textareaRef.current) {
-      const config = textareaRef.current.value;
-      parent.postMessage({ pluginMessage: { type, config } }, '*');
-    }
+  const sendMessageOnClick = (
+    type: FigmaMessages['type'],
+    payload?: Record<string, unknown>,
+  ) => {
+    parent.postMessage({ pluginMessage: { type, ...payload } }, '*');
   };
 
+  console.log('isImporting', state.isImporting);
+
   return (
-    <main>
+    <div className='app'>
       <header>
         <Heading>Designsystemet</Heading>
       </header>
-      <section>
-        <Textarea
-          ref={textareaRef}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <div className='actions'>
-          <Button
-            disabled={loading}
-            onClick={() =>
-              handleClick('import-config-and-create-preview-tokens')
-            }
-          >
-            Start
-          </Button>
-          <Button
-            disabled={loading}
-            onClick={() => handleClick('export-tokens-to-figma')}
-          >
-            export-tokens-to-figma
-          </Button>
-          {message && <Paragraph>{message}</Paragraph>}
-          {loading && <Spinner aria-label='Exporting tokens to Figma' />}
+      <main>
+        {view === 'paste' && (
+          <section>
+            <Paragraph>
+              Paste your designsystemet.config.json content below and click
+              Start to preview the tokens.
+            </Paragraph>
+            <Textarea
+              ref={textareaRef}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
+            <div className='actions'>
+              <Button
+                onClick={() =>
+                  sendMessageOnClick(
+                    'import-config-and-create-preview-tokens',
+                    {
+                      config: textareaRef.current?.value,
+                    },
+                  )
+                }
+              >
+                Upload
+              </Button>
+            </div>
+          </section>
+        )}
+        {view === 'preview' && state.previewData && (
+          <section>
+            <PreviewView
+              preview={state.previewData}
+              selectedScheme={state.selectedScheme}
+              selectedTheme={state.selectedTheme}
+              onSelectScheme={(scheme) =>
+                dispatch({ type: 'select-scheme', scheme })
+              }
+              onSelectTheme={(theme) =>
+                dispatch({ type: 'select-theme', theme })
+              }
+            />
+            <div className='actions'>
+              <Button
+                onClick={() => sendMessageOnClick('export-tokens-to-figma')}
+              >
+                export-tokens-to-figma
+              </Button>
+            </div>
+          </section>
+        )}
+      </main>
+      {state.isImporting && (
+        <div className='tx-overlay' role='status' aria-live='polite'>
+          <div className='tx-overlay-card'>
+            <Spinner aria-label='Exporting to Figma…' />
+            <span>Exporting to Figma…</span>
+          </div>
         </div>
-        <div className='logs'>
-          {logs.length > 0 && (
-            <Details>
-              <Details.Summary>{logs.length} logs</Details.Summary>
-              <Details.Content>
-                <ul>
-                  {logs.map((log, index) => (
-                    <li key={index}>{log}</li>
-                  ))}
-                </ul>
-              </Details.Content>
-            </Details>
-          )}
-        </div>
-      </section>
-    </main>
+      )}
+    </div>
   );
 }
 

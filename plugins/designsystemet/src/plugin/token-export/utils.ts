@@ -77,3 +77,27 @@ export function inferVariableName(
 
   return figmaName;
 }
+
+export function formatValue(value: unknown): string {
+  if (typeof value === 'string') {
+    return value;
+  }
+
+  return JSON.stringify(value);
+}
+
+export function toCssColor(value: unknown): string | null {
+  if (typeof value !== 'string') {
+    return null;
+  }
+
+  if (/^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(value)) {
+    return value;
+  }
+
+  if (/^rgba?\(/i.test(value)) {
+    return value;
+  }
+
+  return null;
+}

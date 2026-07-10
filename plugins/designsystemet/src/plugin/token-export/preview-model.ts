@@ -56,7 +56,7 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
     });
 
   const flatTokens: FlatToken[] = [];
-  const tokenLookup = new Map<string, FlatToken>();
+  const tokenLookup: Record<string, FlatToken> = {};
   for (const set of tokenSets) {
     for (const token of set.tokens) {
       const flatToken: FlatToken = {
@@ -68,7 +68,7 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
         references: findReferences(token.value),
       };
       flatTokens.push(flatToken);
-      tokenLookup.set(set.path + '::' + token.path, flatToken);
+      tokenLookup[set.path + '::' + token.path] = flatToken;
     }
   }
 
