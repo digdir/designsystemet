@@ -168,7 +168,7 @@ footer {
 .tx-preview-layout {
   display: grid;
   gap: var(--ds-size-4);
-  margin: 0 auto;
+  padding-inline: var(--ds-size-4);
 }
 
 /* The preview surface follows the selected color scheme rather than Figma's theme. Softened
@@ -208,7 +208,7 @@ footer {
 }
 
 .tx-color-row-label {
-  flex: 0 0 80px;
+  flex: 0 0 120px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -252,19 +252,44 @@ footer {
 .tx-radius-item {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--ds-size-3);
 }
 
 .tx-radius-sample {
-  width: 24px;
-  height: 24px;
+  width: var(--ds-size-5);
+  height: var(--ds-size-5);
   border: 1px solid currentColor;
   border-radius: min(var(--radius, 0px), 50%);
   opacity: 0.6;
 }
 
 .tx-radius-label {
-  font-size: 10px;
+  font-size: var(--ds-font-size-4);
+  opacity: 0.75;
+}
+
+.tx-font-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tx-font-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* The sample inherits the surface color; the family itself comes from the theme token.
+   If the font isn't available inside the plugin iframe, the sans-serif fallback renders. */
+.tx-font-sample {
+  font-size: var(--ds-font-size-5);
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.tx-font-name {
+  font-size: var(--ds-font-size-5);
   opacity: 0.75;
 }
 

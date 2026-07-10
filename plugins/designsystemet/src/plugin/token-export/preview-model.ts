@@ -103,6 +103,7 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
       colorSchemes: 0,
       semanticColorScales: 0,
       borderRadii: 0,
+      fontFamilies: 0,
       warnings: 0,
     },
     tokenSets: tokenSets.map((set) => ({
@@ -122,6 +123,7 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
     colorSchemeOptions: buildColorSchemeOptions(modePreviews),
     semanticColorScales: buildSemanticColorScales(flatTokens, modePreviews),
     borderRadii: buildBorderRadii(flatTokens),
+    fontFamilies: buildFontFamilies(flatTokens),
     warnings,
   };
 
@@ -142,6 +144,7 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
   preview.summary.colorSchemes = preview.colorSchemeOptions.length;
   preview.summary.semanticColorScales = preview.semanticColorScales.length;
   preview.summary.borderRadii = preview.borderRadii.length;
+  preview.summary.fontFamilies = preview.fontFamilies.length;
   preview.summary.warnings = preview.warnings.length;
 
   return preview;
@@ -341,6 +344,36 @@ function buildBorderRadii(flatTokens: FlatToken[]) {
       value: token.value,
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+// The font-family token is defined once per `themes/<name>` set, so the same path shows
+// up in every theme. Dedupe on path and store a `{reference}` instead of any one theme's
+// raw value — resolving the reference against the active token sets picks the selected
+// theme's definition.
+function buildFontFamilies(flatTokens: FlatToken[]) {
+  const byPath = new Map<string, { name: string; path: string; value: string }>();
+
+  for (const token of flatTokens) {
+    if (
+      token.type !== 'fontFamilies' ||
+      (token.path !== 'font-family' &&
+        token.path.indexOf('font-family.') !== 0)
+    ) {
+      continue;
+    }
+
+    if (!byPath.has(token.path)) {
+      byPath.set(token.path, {
+        name: token.path.replace(/\./g, '/'),
+        path: token.path,
+        value: `{${token.path}}`,
+      });
+    }
+  }
+
+  return Array.from(byPath.values()).sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
 }
 
 function getSemanticColorScaleOrder(modePreviews: ModePreview[]): string[] {

@@ -54,6 +54,14 @@ export type BorderRadiusPreview = {
   value: unknown;
 };
 
+export type FontFamilyPreview = {
+  name: string;
+  path: string;
+  // A `{reference}` to the token path rather than a copied raw value, so the UI
+  // resolves it against the active token sets and follows the selected theme.
+  value: string;
+};
+
 export type ThemeOption = {
   name: string;
   tokenSets: string[];
@@ -70,6 +78,7 @@ export type PreviewData = {
     colorSchemes: number;
     semanticColorScales: number;
     borderRadii: number;
+    fontFamilies: number;
     warnings: number;
   };
   tokenSets: Array<{
@@ -87,5 +96,6 @@ export type PreviewData = {
   colorSchemeOptions: ThemeOption[];
   semanticColorScales: SemanticColorScale[];
   borderRadii: BorderRadiusPreview[];
+  fontFamilies: FontFamilyPreview[];
   warnings: string[];
 };

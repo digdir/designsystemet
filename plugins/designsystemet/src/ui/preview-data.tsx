@@ -5,6 +5,7 @@ import {
 } from '../plugin/token-export/resolver';
 import type {
   BorderRadiusPreview,
+  FontFamilyPreview,
   PreviewData,
   SemanticColorScale,
 } from '../plugin/token-export/types';
@@ -126,6 +127,11 @@ export function PreviewView({
             preview={preview}
             activeTokenSets={activeTokenSets}
           />
+          <FontFamilies
+            fonts={preview.fontFamilies}
+            preview={preview}
+            activeTokenSets={activeTokenSets}
+          />
         </div>
       </div>
     </>
@@ -216,6 +222,56 @@ function BorderRadii({
                 className='tx-radius-sample'
                 style={{ '--radius': `${cssValue}px` } as React.CSSProperties}
               />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function FontFamilies({
+  fonts,
+  preview,
+  activeTokenSets,
+}: {
+  fonts: FontFamilyPreview[];
+  preview: PreviewData;
+  activeTokenSets: string[];
+}): React.JSX.Element | null {
+  if (fonts.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className='tx-color-row'>
+      <span className='tx-color-row-label tx-subtle'>Font family</span>
+      <div className='tx-font-row'>
+        {fonts.map((font) => {
+          const resolved = resolveValue(
+            font.value,
+            preview,
+            activeTokenSets,
+            [],
+          );
+          const family =
+            typeof resolved === 'string' && resolved.trim() !== ''
+              ? resolved
+              : null;
+          const label = family ?? formatValue(font.value);
+          return (
+            <div
+              className='tx-font-item'
+              key={font.name}
+              title={`${font.name}: ${label}`}
+              style={
+                family ? { fontFamily: `'${family}', sans-serif` } : undefined
+              }
+            >
+              <span className='tx-font-sample' aria-hidden='true'>
+                Aa
+              </span>
+              <span className='tx-font-name'>{label}</span>
             </div>
           );
         })}
