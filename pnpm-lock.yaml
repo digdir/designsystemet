@@ -539,9 +539,6 @@ importers:
       tsdown:
         specifier: 0.22.3
         version: 0.22.3(oxc-resolver@11.19.1(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1))(tsx@4.22.4)(typescript@6.0.3)
-      tsx:
-        specifier: 4.22.4
-        version: 4.22.4
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -11325,6 +11322,7 @@ snapshots:
       esbuild: 0.28.0
     optionalDependencies:
       fsevents: 2.3.3
+    optional: true
 
   type-is@2.0.1:
     dependencies:
