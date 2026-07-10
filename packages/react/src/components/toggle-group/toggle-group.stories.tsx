@@ -10,7 +10,7 @@ import {
 import { useState } from 'react';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Button, Divider, Paragraph, Tooltip } from '../';
-import { ToggleGroup, type ToggleGroupProps } from './';
+import { ToggleGroup } from './';
 
 const meta = preview.meta({
   title: 'Komponenter/ToggleGroup',
@@ -25,41 +25,15 @@ const meta = preview.meta({
   ],
 });
 
-const PreviewRender = (args: ToggleGroupProps) => (
-  <ToggleGroup {...args}>
-    <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
-    <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
-    <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
-    <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
-  </ToggleGroup>
-);
-
-const IconsRender = (args: ToggleGroupProps) => (
-  <ToggleGroup
-    {...args}
-    data-toggle-group='Tekstjustering'
-    defaultValue='option-1'
-  >
-    <Tooltip content='Venstrestilt'>
-      <ToggleGroup.Item value='option-1'>
-        <AlignLeftIcon aria-hidden />
-      </ToggleGroup.Item>
-    </Tooltip>
-    <Tooltip content='Midtstilt'>
-      <ToggleGroup.Item value='option-2'>
-        <AlignCenterIcon aria-hidden />
-      </ToggleGroup.Item>
-    </Tooltip>
-    <Tooltip content='Høyrestilt'>
-      <ToggleGroup.Item value='option-3'>
-        <AlignRightIcon aria-hidden />
-      </ToggleGroup.Item>
-    </Tooltip>
-  </ToggleGroup>
-);
-
 export const Preview = meta.story({
-  render: PreviewRender,
+  render: (args) => (
+    <ToggleGroup {...args}>
+      <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
+      <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
+      <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
+      <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
+    </ToggleGroup>
+  ),
   args: {
     'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
     defaultValue: 'innboks',
@@ -68,7 +42,29 @@ export const Preview = meta.story({
 });
 
 export const OnlyIcons = meta.story({
-  render: IconsRender,
+  render: (args) => (
+    <ToggleGroup
+      {...args}
+      data-toggle-group='Tekstjustering'
+      defaultValue='option-1'
+    >
+      <Tooltip content='Venstrestilt'>
+        <ToggleGroup.Item value='option-1'>
+          <AlignLeftIcon aria-hidden />
+        </ToggleGroup.Item>
+      </Tooltip>
+      <Tooltip content='Midtstilt'>
+        <ToggleGroup.Item value='option-2'>
+          <AlignCenterIcon aria-hidden />
+        </ToggleGroup.Item>
+      </Tooltip>
+      <Tooltip content='Høyrestilt'>
+        <ToggleGroup.Item value='option-3'>
+          <AlignRightIcon aria-hidden />
+        </ToggleGroup.Item>
+      </Tooltip>
+    </ToggleGroup>
+  ),
 });
 
 export const Kontrollert = meta.story(() => {
@@ -106,8 +102,7 @@ export const Kontrollert = meta.story(() => {
   );
 });
 
-export const Secondary = meta.story({
-  render: PreviewRender,
+export const Secondary = Preview.extend({
   args: {
     'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
     defaultValue: 'innboks',
@@ -115,8 +110,7 @@ export const Secondary = meta.story({
   },
 });
 
-export const SecondaryOnlyIcons = meta.story({
-  render: IconsRender,
+export const SecondaryOnlyIcons = OnlyIcons.extend({
   args: {
     'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
     variant: 'secondary',
