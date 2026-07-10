@@ -21,11 +21,9 @@ export const Cardception = meta.story({
   render: () => (
     <Card>
       <Card>
-        <Card>
-          <h2>
-            <a href='#'>Nested Card Link</a>
-          </h2>
-        </Card>
+        <h2>
+          <a href='#'>Nested Card Link</a>
+        </h2>
       </Card>
     </Card>
   ),

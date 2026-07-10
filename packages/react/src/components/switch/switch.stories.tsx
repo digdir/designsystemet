@@ -40,7 +40,7 @@ export const Group = meta.story({
   ),
 });
 
-export const RigthAligned = meta.story({
+export const RightAligned = meta.story({
   args: {
     label: 'Flymodus',
     position: 'end',
