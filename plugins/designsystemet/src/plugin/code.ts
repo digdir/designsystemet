@@ -53,7 +53,6 @@ if (figma.editorType === 'figma') {
 figma.ui.onmessage = async (msg: FigmaMessages) => {
   switch (msg.type) {
     case 'import-config-and-create-preview-tokens': {
-      console.log('Importing config and creating preview tokens...');
       try {
         semanticColorNames.clear();
         fileMap.clear();
@@ -126,8 +125,6 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
       break;
     }
     case 'export-tokens-to-figma': {
-      console.log('Exporting tokens to Figma variables...');
-
       try {
         postMessage('export-tokens-to-figma', {
           status: 'exporting',

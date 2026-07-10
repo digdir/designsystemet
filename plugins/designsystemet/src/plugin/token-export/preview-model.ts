@@ -25,7 +25,7 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
 
   if (!themesFile) {
     warnings.push(
-      'Mangler $themes.json. Preview kan ikke gruppere modes fra token sets.',
+      'Missing $themes.json. Preview cannot group modes from token sets.',
     );
   }
 
@@ -69,7 +69,7 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
   );
   for (const tokenSet of missingTokenSets) {
     warnings.push(
-      `Token set finnes i $themes.json men mangler fil: ${tokenSet}`,
+      `Token set is listed in $themes.json but has no file: ${tokenSet}`,
     );
   }
 
@@ -93,13 +93,13 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
   const unresolvedReferences = findUnresolvedReferences(preview);
   for (const reference of unresolvedReferences.slice(0, 25)) {
     warnings.push(
-      `Uavklart alias: {${reference.reference}} brukt i ${reference.tokenSet}/${reference.path}`,
+      `Unresolved alias: {${reference.reference}} used in ${reference.tokenSet}/${reference.path}`,
     );
   }
 
   if (unresolvedReferences.length > 25) {
     warnings.push(
-      `${unresolvedReferences.length - 25} flere uavklarte aliaser er skjult i preview.`,
+      `${unresolvedReferences.length - 25} more unresolved aliases hidden from preview.`,
     );
   }
 
@@ -126,7 +126,7 @@ function buildModePreview(
   ).length;
   if (sourceCount > 1) {
     warnings.push(
-      `${theme.name}: har ${sourceCount} token sets markert som source.`,
+      `${theme.name}: has ${sourceCount} token sets marked as source.`,
     );
   }
 

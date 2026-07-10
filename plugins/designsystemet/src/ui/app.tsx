@@ -117,7 +117,6 @@ function App() {
         case 'export-tokens-to-figma': {
           const { status, message: msgMessage } = msg;
           if (status === 'exporting') {
-            console.log('exporting tokens to figma...');
             dispatch({
               type: 'set-importing',
               value: true,
