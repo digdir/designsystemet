@@ -1,5 +1,5 @@
-import preview from '../../../apps/storybook/.storybook/preview';
 import type { ReactNode } from 'react';
+import preview from '../../../apps/storybook/.storybook/preview';
 import {
   Avatar,
   EXPERIMENTAL_AvatarStack as AvatarStack,

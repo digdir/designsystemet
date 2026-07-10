@@ -1,6 +1,6 @@
 import type { Size } from '@digdir/designsystemet-types';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import {
   Button,
   Divider,
@@ -12,9 +12,7 @@ import {
 } from '../../';
 import { Input } from './input';
 
-type Story = StoryObj<typeof Input>;
-
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Input',
   component: Input,
   argTypes: {
@@ -45,9 +43,9 @@ export default {
       },
     },
   },
-} as Meta;
+});
 
-export const Preview: Story = {
+export const Preview = meta.story({
   args: {
     'aria-invalid': false,
     disabled: false,
@@ -61,8 +59,9 @@ export const Preview: Story = {
 
     return <Input {...args} aria-label='input' />;
   },
-};
-export const HtmlSize: Story = {
+});
+
+export const HtmlSize = meta.story({
   args: {
     size: 10,
   },
@@ -72,9 +71,9 @@ export const HtmlSize: Story = {
       <Input {...args} />
     </Field>
   ),
-};
+});
 
-export const Controlled: StoryObj<typeof Input> = {
+export const Controlled = meta.story({
   render: (args) => {
     const [value, setValue] = useState<string>();
 
@@ -99,7 +98,7 @@ export const Controlled: StoryObj<typeof Input> = {
       </>
     );
   },
-};
+});
 
 const sizes: Size[] = ['sm', 'md', 'lg'];
 const sizenames = {
@@ -108,7 +107,7 @@ const sizenames = {
   lg: 'Large',
 };
 
-export const Text: StoryObj<typeof Input> = {
+export const Text = meta.story({
   render: (args) => {
     const states = [
       { label: 'Default', props: {} },
@@ -156,9 +155,9 @@ export const Text: StoryObj<typeof Input> = {
   args: {
     value: 'Value',
   },
-};
+});
 
-export const Radio: StoryObj<typeof Input> = {
+export const Radio = meta.story({
   render: (args) => {
     const states = [
       { label: 'Default', props: {} },
@@ -218,85 +217,85 @@ export const Radio: StoryObj<typeof Input> = {
   args: {
     type: 'radio',
   },
-};
+});
 
-export const Checkbox: StoryFn<typeof Input> = function Render(args) {
-  const states = [
-    { label: 'Default', props: {} },
-    { label: 'Checked', props: { defaultChecked: true } },
-    { label: 'Indeterminate', props: { 'data-indeterminate': true } },
-    { label: 'Disabled', props: { disabled: true } },
-    {
-      label: 'Disabled checked',
-      props: { disabled: true, defaultChecked: true },
-    },
-    {
-      label: 'Disabled indeterminate',
-      props: { disabled: true, 'data-indeterminate': true },
-    },
-    { label: 'Invalid', props: { 'aria-invalid': true } },
-    {
-      label: 'Invalid checked',
-      props: { 'aria-invalid': true, defaultChecked: true },
-    },
-    {
-      label: 'Invalid indeterminate',
-      props: { 'aria-invalid': true, 'data-indeterminate': true },
-    },
-    { label: 'Read-only', props: { readOnly: true } },
-    {
-      label: 'Read-only checked',
-      props: { readOnly: true, defaultChecked: true },
-    },
-    {
-      label: 'Read-only indeterminate',
-      props: { readOnly: true, 'data-indeterminate': true },
-    },
-  ];
-
-  return (
-    <>
-      {sizes.map((size) => (
-        <div
-          key={size}
-          data-size={size}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1rem',
-          }}
-        >
-          <Heading data-size='2xs' style={{ gridColumn: '1 / -1' }}>
-            {sizenames[size]}
-          </Heading>
-          {states.map((state) => (
-            <Field key={state.label}>
-              <Input
-                {...args}
-                name={`${size}-${state.label.toLowerCase().replace(' ', '-')}`}
-                {...state.props}
-              />
-              <Label>{state.label}</Label>
-            </Field>
-          ))}
-        </div>
-      ))}
-    </>
-  );
-};
-
-Checkbox.args = {
-  type: 'checkbox',
-};
-
-Checkbox.parameters = {
-  customStyles: {
-    display: 'grid',
-    gap: '2rem',
+export const Checkbox = meta.story({
+  args: {
+    type: 'checkbox',
   },
-};
+  parameters: {
+    customStyles: {
+      display: 'grid',
+      gap: '2rem',
+    },
+  },
+  render: (args) => {
+    const states = [
+      { label: 'Default', props: {} },
+      { label: 'Checked', props: { defaultChecked: true } },
+      { label: 'Indeterminate', props: { 'data-indeterminate': true } },
+      { label: 'Disabled', props: { disabled: true } },
+      {
+        label: 'Disabled checked',
+        props: { disabled: true, defaultChecked: true },
+      },
+      {
+        label: 'Disabled indeterminate',
+        props: { disabled: true, 'data-indeterminate': true },
+      },
+      { label: 'Invalid', props: { 'aria-invalid': true } },
+      {
+        label: 'Invalid checked',
+        props: { 'aria-invalid': true, defaultChecked: true },
+      },
+      {
+        label: 'Invalid indeterminate',
+        props: { 'aria-invalid': true, 'data-indeterminate': true },
+      },
+      { label: 'Read-only', props: { readOnly: true } },
+      {
+        label: 'Read-only checked',
+        props: { readOnly: true, defaultChecked: true },
+      },
+      {
+        label: 'Read-only indeterminate',
+        props: { readOnly: true, 'data-indeterminate': true },
+      },
+    ];
 
-export const Switch: StoryObj<typeof Input> = {
+    return (
+      <>
+        {sizes.map((size) => (
+          <div
+            key={size}
+            data-size={size}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '1rem',
+            }}
+          >
+            <Heading data-size='2xs' style={{ gridColumn: '1 / -1' }}>
+              {sizenames[size]}
+            </Heading>
+            {states.map((state) => (
+              <Field key={state.label}>
+                <Input
+                  {...args}
+                  name={`${size}-${state.label.toLowerCase().replace(' ', '-')}`}
+                  {...state.props}
+                />
+                <Label>{state.label}</Label>
+              </Field>
+            ))}
+          </div>
+        ))}
+      </>
+    );
+  },
+});
+
+export const Switch = meta.story({
   render: (args) => {
     const states = [
       { label: 'Default', props: {} },
@@ -361,4 +360,4 @@ export const Switch: StoryObj<typeof Input> = {
       gap: '2rem',
     },
   },
-};
+});
