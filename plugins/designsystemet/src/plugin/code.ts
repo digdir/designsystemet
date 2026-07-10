@@ -115,10 +115,12 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
       } catch (error) {
         const errorMessage =
           error instanceof Error ? error.message : String(error);
+
         postMessage('preview-tokens-from-config', {
           status: 'error',
           message: `Error importing tokens: ${errorMessage}`,
         });
+
         console.error('Error importing tokens:', error);
       }
 
