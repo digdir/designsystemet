@@ -17,7 +17,6 @@ export const highlightText = (query: string, scope: HTMLElement) => {
 
   // Clear the HighlightRegistry to remove the
   // previous search results.
-  // @ts-expect-error HighlightRegistry is not yet fully supported in TypeScript
   CSS.highlights.clear();
 
   // Clean-up the search query and bail-out if
@@ -55,6 +54,5 @@ export const highlightText = (query: string, scope: HTMLElement) => {
   const searchResultsHighlight = new Highlight(...ranges.flat());
 
   // Register the Highlight object in the registry.
-  // @ts-expect-error HighlightRegistry is not yet fully supported in TypeScript
   CSS.highlights.set('custom-highlight', searchResultsHighlight);
 };
