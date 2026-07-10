@@ -2,7 +2,11 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "ES2022",
-    "types": ["@figma/plugin-typings", "vite/client"]
+    "types": [
+      "@figma/plugin-typings",
+      "vite/client",
+      "../../packages/react/react-types.d.ts"
+    ]
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx"]
 }

@@ -351,13 +351,15 @@ function buildBorderRadii(flatTokens: FlatToken[]) {
 // raw value — resolving the reference against the active token sets picks the selected
 // theme's definition.
 function buildFontFamilies(flatTokens: FlatToken[]) {
-  const byPath = new Map<string, { name: string; path: string; value: string }>();
+  const byPath = new Map<
+    string,
+    { name: string; path: string; value: string }
+  >();
 
   for (const token of flatTokens) {
     if (
       token.type !== 'fontFamilies' ||
-      (token.path !== 'font-family' &&
-        token.path.indexOf('font-family.') !== 0)
+      (token.path !== 'font-family' && token.path.indexOf('font-family.') !== 0)
     ) {
       continue;
     }

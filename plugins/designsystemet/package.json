@@ -11,16 +11,9 @@
   },
   "homepage": "https://github.com/digdir/designsystemet/tree/main/plugins/designsystemet",
   "license": "MIT",
-  "files": [
-    "./types.d.ts",
-    "theme/types.d.ts",
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "rimraf dist && pnpm run build:ui && pnpm run build:plugin",
+    "types": "tsc --noEmit",
     "build:ui": "vite build -c ./vite.config.ui.ts",
     "build:plugin": "vite build -c ./vite.config.plugin.ts",
     "watch": "pnpm run watch:ui & pnpm run watch:plugin",
