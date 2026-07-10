@@ -131,7 +131,7 @@ export const MobileViewport = meta.story({
 
   globals: {
     viewport: {
-      value: 'mobile1',
+      value: '375px',
     },
   },
 });
