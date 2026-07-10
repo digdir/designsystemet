@@ -52,8 +52,12 @@ if (figma.editorType === 'figma') {
 
 figma.ui.onmessage = async (msg: FigmaMessages) => {
   switch (msg.type) {
-    case 'import-config': {
+    case 'import-config-and-create-preview-tokens': {
       try {
+        semanticColorNames.clear();
+        fileMap.clear();
+        files = [];
+
         const parsedConfig = parseConfig<ConfigSchema>(msg.config);
 
         const config = validateConfig<ConfigSchema>(
@@ -62,9 +66,6 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         );
 
         themeNames = Object.keys(config.themes ?? {});
-        semanticColorNames.clear();
-        fileMap.clear();
-        files = [];
 
         for (const [themeName, themeConfig] of Object.entries(
           config.themes,
@@ -87,11 +88,6 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
               semanticColorNames.add(colorMatch[1]);
             }
           }
-
-          postMessage('import-config-result', {
-            status: 'success',
-            message: `Imported ${fileMap.size} token sets for theme "${themeName}".`,
-          });
         }
 
         const systemTokensOptions = {
@@ -105,10 +101,20 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         files = Array.from(fileMap.values());
         files.push(makeLoadedFile('$themes.json', systemTokens.$themes));
         files.sort((a, b) => a.path.localeCompare(b.path));
+
+        postMessage('preview-tokens-from-config', {
+          status: 'success',
+          preview: {
+            previewData: buildPreview(files),
+            colorNames: Array.from(semanticColorNames),
+            themeNames,
+          },
+          message: `Imported ${files.length} token sets from ${themeNames.length} themes.`,
+        });
       } catch (error) {
         const errorMessage =
           error instanceof Error ? error.message : String(error);
-        postMessage('import-config-result', {
+        postMessage('preview-tokens-from-config', {
           status: 'error',
           message: `Error importing tokens: ${errorMessage}`,
         });
@@ -120,7 +126,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     case 'export-tokens-to-figma': {
       try {
         const previewData = buildPreview(files);
-        postMessage('export-tokens-to-figma-result', {
+        postMessage('export-tokens-to-figma', {
           status: 'exporting',
 
           message: `Starting export of ${themeNames[0]} token sets to Figma variables...`,
@@ -131,15 +137,15 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           selectedTheme: themeNames.length > 0 ? themeNames[0] : null,
           selectedScheme: 'light',
         });
-        postMessage('export-tokens-to-figma-result', {
-          status: 'finished',
+        postMessage('export-tokens-to-figma', {
+          status: 'success',
           message: 'Exported tokens to Figma variables successfully.',
           logs: result.logs,
         });
       } catch (error) {
         const errorMessage =
           error instanceof Error ? error.message : String(error);
-        postMessage('export-tokens-to-figma-result', {
+        postMessage('export-tokens-to-figma', {
           status: 'error',
           message: `Error exporting tokens: ${errorMessage}`,
         });

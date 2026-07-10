@@ -1,33 +1,29 @@
-type CreateTokensFromConfig = {
-  type: 'import-config';
-  config: string;
-};
+import type { PreviewData } from './plugin/token-export/types';
 
-type CreateTokensFromConfigResult = {
-  type: 'import-config-result';
-  status: 'success' | 'error';
-  message: string;
+type ImportConfig = {
+  type: 'import-config-and-create-preview-tokens';
+  config: string;
 };
 
 type PreviewTokensFromConfig = {
-  type: 'preview-config';
-  config: string;
+  type: 'preview-tokens-from-config';
+  status: 'success' | 'error';
+  message: string;
+  preview?: {
+    previewData: PreviewData;
+    colorNames: string[];
+    themeNames: string[];
+  };
 };
 
-type ExportTokensToFigmaVariables = {
+type ExportTokensToFigma = {
   type: 'export-tokens-to-figma';
-};
-
-type ExportTokensToFigmaResult = {
-  type: 'export-tokens-to-figma-result';
-  status: 'exporting' | 'finished' | 'error' | 'noop';
+  status: 'exporting' | 'success' | 'error';
   message: string;
   logs?: string[];
 };
 
 export type FigmaMessages =
-  | CreateTokensFromConfig
-  | CreateTokensFromConfigResult
+  | ImportConfig
   | PreviewTokensFromConfig
-  | ExportTokensToFigmaVariables
-  | ExportTokensToFigmaResult;
+  | ExportTokensToFigma;

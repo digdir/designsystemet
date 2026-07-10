@@ -11,11 +11,15 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import type { FigmaMessages } from '../types';
 import './app.css';
+import type { PreviewData } from '../plugin/token-export/types';
 
 function App() {
   const [message, setMessage] = useState('');
   const [logs, setLogs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+  const [_previewData, setPreviewData] = useState<PreviewData | null>(null);
+  const [_themeNames, setThemeNames] = useState<string[]>([]);
+  const [_semanticColorNames, setSemanticColorNames] = useState<string[]>([]);
   const [value, setValue] = useState(`{
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
   "outDir": "./design-tokens",
@@ -52,16 +56,33 @@ function App() {
     const handleMessage = (event: MessageEvent) => {
       const msg = event.data.pluginMessage as FigmaMessages;
       switch (msg.type) {
-        case 'import-config-result': {
-          setMessage(msg.message);
+        case 'preview-tokens-from-config': {
+          switch (msg.status) {
+            case 'success':
+              setLoading(false);
+              setMessage(msg.message);
+              setPreviewData(msg.preview?.previewData ?? null);
+              setThemeNames(msg.preview?.themeNames ?? []);
+              setSemanticColorNames(msg.preview?.colorNames ?? []);
+              break;
+            case 'error':
+              setLoading(false);
+              setMessage(`Error importing tokens: ${msg.message}`);
+              break;
+          }
           break;
         }
-        case 'export-tokens-to-figma-result': {
+        // case 'preview-tokens-from-config': {
+        //   setLoading(false);
+        //   setMessage(msg.message);
+        //   break;
+        // }
+        case 'export-tokens-to-figma': {
           const { status, message: msgMessage } = msg;
           if (status === 'exporting') {
             setLoading(true);
             setMessage(msgMessage);
-          } else if (status === 'finished') {
+          } else if (status === 'success') {
             setLoading(false);
             setLogs(msg.logs || []);
             setMessage('Export completed successfully.');
@@ -102,9 +123,11 @@ function App() {
         <div className='actions'>
           <Button
             disabled={loading}
-            onClick={() => handleClick('import-config')}
+            onClick={() =>
+              handleClick('import-config-and-create-preview-tokens')
+            }
           >
-            import-config
+            Start
           </Button>
           <Button
             disabled={loading}
