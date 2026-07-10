@@ -90,7 +90,7 @@ export const Icons = meta.story({
                   rel='noreferrer'
                 >
                   <LinkIcon aria-hidden />
-                  GitHub
+                  Github
                 </a>
               </Dropdown.Button>
             </Dropdown.Item>
