@@ -1,4 +1,3 @@
-import { Fragment, type PropsWithChildren } from 'react';
 import type preview from '../../../../apps/storybook/.storybook/preview';
 
 /**
@@ -33,8 +32,11 @@ export function createSingleStory(rawStories: Record<string, unknown>) {
   return {
     render: () => (
       <>
-        {/* Diff fever pixels: */}
-        <style>{`[data-storybook-decorator="true"] [data-storybook-decorator="true"]{padding:0!important}`}</style>
+        {/* Diff fever pixels by removing nestes padding: */}
+        <style>{`[data-storybook-decorator="true"] [data-storybook-decorator="true"]{
+          padding: 0!important;
+          overflow: visible!important;
+        }`}</style>
         {stories.map(([storyName, story]) => (
           <story.Component key={storyName} />
         ))}
