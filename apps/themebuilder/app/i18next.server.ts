@@ -1,25 +1,25 @@
-import { RemixI18Next } from 'remix-i18next/server';
+import { createInstance } from 'i18next';
 import i18n from '~/i18n';
 import en from '~/locales/en';
 import no from '~/locales/no';
 
-const i18next = new RemixI18Next({
-  detection: {
-    supportedLanguages: i18n.supportedLngs,
-    fallbackLanguage: i18n.fallbackLng,
-  },
-  i18next: {
-    ...i18n,
-    resources: {
-      en: {
-        translation: en,
-      },
-      no: {
-        translation: no,
-      },
+const instance = createInstance({
+  ...i18n,
+  resources: {
+    en: {
+      translation: en,
+    },
+    no: {
+      translation: no,
     },
   },
-  plugins: [],
 });
 
-export default i18next;
+const ready = instance.init();
+
+export async function getFixedT(lang: string) {
+  await ready;
+  return instance.getFixedT(lang);
+}
+
+export default { getFixedT };

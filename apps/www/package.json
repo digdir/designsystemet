@@ -41,8 +41,7 @@
     "react-router": "8.1.0",
     "rehype-autolink-headings": "7.1.0",
     "rehype-slug": "6.0.0",
-    "remark-gfm": "4.0.1",
-    "remix-i18next": "7.5.0"
+    "remark-gfm": "4.0.1"
   },
   "devDependencies": {
     "@react-router/dev": "8.1.0",

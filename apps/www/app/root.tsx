@@ -14,8 +14,8 @@ import '@digdir/designsystemet-css';
 import './app.css';
 import { Error404 } from '@internal/components';
 import { useTranslation } from 'react-i18next';
-import { useChangeLanguage } from 'remix-i18next/react';
 import { SiteimproveScript } from './_components/siteimprove-script';
+import { useChangeLanguage } from './_hooks/use-change-language';
 import { designsystemetRedirects } from './_utils/redirects.server';
 
 export const links = () => {

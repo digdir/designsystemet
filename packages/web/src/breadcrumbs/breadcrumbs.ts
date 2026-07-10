@@ -1,4 +1,6 @@
 import {
+  ARIA_LABEL,
+  ARIA_LABELLEDBY,
   attr,
   attrOrCSS,
   customElements,
@@ -14,8 +16,6 @@ declare global {
   }
 }
 
-const ATTR_LABEL = 'aria-label';
-
 export class DSBreadcrumbsElement extends DSElement {
   _items?: HTMLCollectionOf<HTMLAnchorElement>; // Using underscore instead of private fields for backwards compatibility
   _label: string | null = null;
@@ -23,11 +23,11 @@ export class DSBreadcrumbsElement extends DSElement {
   _unmutate?: () => void;
 
   static get observedAttributes() {
-    return [ATTR_LABEL]; // Using ES2015 syntax for backwards compatibility
+    return [ARIA_LABEL, ARIA_LABELLEDBY]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
     const resize = debounce(() => render(this), 100);
-    this._label = attrOrCSS(this, ATTR_LABEL); // Label can have been set by attributeChangedCallback before connectedCallback
+    this._label = getLabel(this); // Label can have been set by attributeChangedCallback before connectedCallback
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
     this._unresize = on(window, 'resize', resize);
     this._unmutate = onMutation(this, render, {
@@ -35,9 +35,10 @@ export class DSBreadcrumbsElement extends DSElement {
       subtree: true,
     });
   }
-  attributeChangedCallback(_name: string, _prev?: string, next?: string) {
-    if (!this._unmutate || !next) return; // Ensure we do not run unless connected and we have a label to set
-    this._label = next; // Update cacheed label if aria-label attribute changes
+  attributeChangedCallback() {
+    const label = getLabel(this); // Update cacheed label if aria-label attribute changes;
+    if (!this._unmutate || !label) return; // Ensure we do not run unless connected, and keep cached label if aria-label/aria-labelledby is removed
+    this._label = label;
     render(this);
   }
   disconnectedCallback() {
@@ -53,10 +54,18 @@ const render = (self: DSBreadcrumbsElement) => {
   const isListHidden = !lastItemInList?.offsetHeight;
 
   attr(self, 'role', isListHidden ? null : 'navigation');
-  attr(self, ATTR_LABEL, isListHidden ? null : self._label); // Remove aria-label if list is hidden to prevent screen readers from announcing as breadcrumbs
+  attr(self, ARIA_LABEL, isListHidden ? null : self._label); // Remove aria-label if list is hidden to prevent screen readers from announcing as breadcrumbs
 
   for (const item of self._items || [])
     attr(item, 'aria-current', item === lastItemInList ? 'page' : null);
 };
+
+const getLabel = (el: Element): string | null =>
+  el.ariaLabelledByElements
+    ?.map((el) => el.textContent?.trim() || '')
+    .filter(Boolean)
+    .join(' ') ||
+  attrOrCSS(el, ARIA_LABEL) ||
+  null;
 
 customElements.define('ds-breadcrumbs', DSBreadcrumbsElement);

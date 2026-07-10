@@ -21,6 +21,14 @@ myTooltip.className = 'ds-tooltip my-custom-tooltip';
 setTooltipElement(myTooltip);
 ```
 
+## Text from another HTML element
+You can use the `data-tooltip` attribute with a CSS ID selector to point to another element that contains tooltip text.
+
+```html
+<button data-tooltip="#tooltip-content" class="ds-button">Button</button>
+<div id="tooltip-content" class="ds-sr-only">This is the tooltip content.</div>
+```
+
 ## CSS variables and data attributes
 Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
 The component will inherit from the nearest parent with these set.
