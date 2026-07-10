@@ -62,6 +62,29 @@ export function resolveValue(
   return value;
 }
 
+export function resolveCompositeValue(
+  value: unknown,
+  preview: PreviewData,
+  activeTokenSets: string[],
+): unknown {
+  if (Array.isArray(value)) {
+    return value.map((item) =>
+      resolveCompositeValue(item, preview, activeTokenSets),
+    );
+  }
+
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, nested]) => [
+        key,
+        resolveCompositeValue(nested, preview, activeTokenSets),
+      ]),
+    );
+  }
+
+  return resolveValue(value, preview, activeTokenSets, []);
+}
+
 export function findUnresolvedReferences(
   preview: PreviewData,
 ): Array<{ tokenSet: string; path: string; reference: string }> {

@@ -1,4 +1,5 @@
 import { ToggleGroup, ToggleGroupItem } from '@digdir/designsystemet-react';
+import { toCssColor } from '../plugin/token-export/color';
 import {
   getActiveTokenSets,
   resolveValue,
@@ -9,11 +10,7 @@ import type {
   PreviewData,
   SemanticColorScale,
 } from '../plugin/token-export/types';
-import {
-  formatValue,
-  parseNumber,
-  toCssColor,
-} from '../plugin/token-export/utils';
+import { formatValue, parseNumber } from '../plugin/token-export/utils';
 
 const SEMANTIC_ROLE_ORDER = [
   'background-default',
