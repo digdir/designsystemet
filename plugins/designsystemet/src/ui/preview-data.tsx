@@ -10,7 +10,11 @@ import type {
   PreviewData,
   SemanticColorScale,
 } from '../plugin/token-export/types';
-import { formatValue, parseNumber } from '../plugin/token-export/utils';
+import {
+  compareByOrder,
+  formatValue,
+  parseNumber,
+} from '../plugin/token-export/utils';
 
 const SEMANTIC_ROLE_ORDER = [
   'background-default',
@@ -280,18 +284,7 @@ function FontFamilies({
 function sortSemanticRoles(
   roles: SemanticColorScale['roles'],
 ): SemanticColorScale['roles'] {
-  return roles.slice().sort((a, b) => {
-    const indexA = SEMANTIC_ROLE_ORDER.indexOf(
-      a.name as (typeof SEMANTIC_ROLE_ORDER)[number],
-    );
-    const indexB = SEMANTIC_ROLE_ORDER.indexOf(
-      b.name as (typeof SEMANTIC_ROLE_ORDER)[number],
-    );
-    const safeA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
-    const safeB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
-    if (safeA !== safeB) {
-      return safeA - safeB;
-    }
-    return a.name.localeCompare(b.name);
-  });
+  return roles
+    .slice()
+    .sort((a, b) => compareByOrder(a.name, b.name, SEMANTIC_ROLE_ORDER));
 }

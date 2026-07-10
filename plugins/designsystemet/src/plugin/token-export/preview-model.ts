@@ -10,7 +10,13 @@ import type {
   SemanticColorScale,
   ThemeOption,
 } from './types';
-import { inferVariableName, isMetaFile } from './utils';
+import {
+  compareByOrder,
+  inferVariableName,
+  isMetaFile,
+  pathToFigmaName,
+} from './utils';
+import { mapTokenTypeToVariableType } from './variable-values';
 
 export function buildPreview(files: LoadedFile[]): PreviewData {
   const warnings: string[] = [];
@@ -43,7 +49,7 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
       const flatToken: FlatToken = {
         tokenSet: set.path,
         path: token.path,
-        figmaName: token.path.replace(/\./g, '/'),
+        figmaName: pathToFigmaName(token.path),
         type: token.type,
         value: token.value,
         references: findReferences(token.value),
@@ -200,9 +206,7 @@ function buildThemeOptions(
   if (themeModes.length > 1) {
     return themeModes.map((mode) => ({
       name: mode.name,
-      tokenSets: mode.selectedTokenSets
-        .filter((item) => item.exists)
-        .map((item) => item.tokenSet),
+      tokenSets: existingTokenSets(mode),
     }));
   }
 
@@ -219,9 +223,7 @@ function buildThemeOptions(
 
   return themeModes.map((mode) => ({
     name: mode.name,
-    tokenSets: mode.selectedTokenSets
-      .filter((item) => item.exists)
-      .map((item) => item.tokenSet),
+    tokenSets: existingTokenSets(mode),
   }));
 }
 
@@ -230,10 +232,14 @@ function buildColorSchemeOptions(modePreviews: ModePreview[]): ThemeOption[] {
     .filter((mode) => mode.group === COLLECTION.COLOR_SCHEME)
     .map((mode) => ({
       name: mode.name,
-      tokenSets: mode.selectedTokenSets
-        .filter((item) => item.exists)
-        .map((item) => item.tokenSet),
+      tokenSets: existingTokenSets(mode),
     }));
+}
+
+function existingTokenSets(mode: ModePreview): string[] {
+  return mode.selectedTokenSets
+    .filter((item) => item.exists)
+    .map((item) => item.tokenSet);
 }
 
 function buildSemanticColorScales(
@@ -252,7 +258,7 @@ function buildSemanticColorScales(
     }
 
     const scaleName = colorSetMatch[1];
-    const roleName = token.path.replace(/\./g, '/');
+    const roleName = token.figmaName;
 
     if (!scales.has(scaleName)) {
       scales.set(scaleName, { name: scaleName, roles: [] });
@@ -271,7 +277,7 @@ function buildSemanticColorScales(
       name: scale.name,
       roles: scale.roles.sort((a, b) => a.name.localeCompare(b.name)),
     }))
-    .sort((a, b) => compareColorScales(a.name, b.name, scaleOrder));
+    .sort((a, b) => compareByOrder(a.name, b.name, scaleOrder));
 }
 
 function buildBorderRadii(flatTokens: FlatToken[]) {
@@ -283,7 +289,7 @@ function buildBorderRadii(flatTokens: FlatToken[]) {
         token.path.indexOf('border-radius.') === 0,
     )
     .map((token) => ({
-      name: token.path.replace(/^border-radius\./, '').replace(/\./g, '/'),
+      name: pathToFigmaName(token.path.replace(/^border-radius\./, '')),
       path: token.path,
       value: token.value,
     }))
@@ -310,7 +316,7 @@ function buildFontFamilies(flatTokens: FlatToken[]) {
 
     if (!byPath.has(token.path)) {
       byPath.set(token.path, {
-        name: token.path.replace(/\./g, '/'),
+        name: token.figmaName,
         path: token.path,
         value: `{${token.path}}`,
       });
@@ -323,54 +329,26 @@ function buildFontFamilies(flatTokens: FlatToken[]) {
 }
 
 function getSemanticColorScaleOrder(modePreviews: ModePreview[]): string[] {
-  const order: string[] = [];
+  const order = new Set<string>();
 
-  appendModeNames(order, modePreviews, COLLECTION.COLOR);
+  for (const mode of modePreviews) {
+    if (mode.group === COLLECTION.COLOR) {
+      order.add(mode.name);
+    }
+  }
 
-  const standardOrder = [
+  for (const name of [
     'neutral',
     'success',
     'warning',
     'danger',
     'error',
     'info',
-  ];
-  for (const name of standardOrder) {
-    if (order.indexOf(name) === -1) {
-      order.push(name);
-    }
+  ]) {
+    order.add(name);
   }
 
-  return order;
-}
-
-function appendModeNames(
-  order: string[],
-  modePreviews: ModePreview[],
-  group: string,
-): void {
-  for (const mode of modePreviews) {
-    if (mode.group === group && order.indexOf(mode.name) === -1) {
-      order.push(mode.name);
-    }
-  }
-}
-
-function compareColorScales(
-  a: string,
-  b: string,
-  scaleOrder: string[],
-): number {
-  const indexA = scaleOrder.indexOf(a);
-  const indexB = scaleOrder.indexOf(b);
-  const safeA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
-  const safeB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
-
-  if (safeA !== safeB) {
-    return safeA - safeB;
-  }
-
-  return a.localeCompare(b);
+  return Array.from(order);
 }
 
 function collectMissingTokenSets(
@@ -395,20 +373,18 @@ function collectMissingTokenSets(
 }
 
 function mapTokenType(type: string | null): string {
-  const mapping: Record<string, string> = {
-    color: 'COLOR',
-    dimension: 'FLOAT',
-    number: 'FLOAT',
-    borderWidth: 'FLOAT',
-    opacity: 'FLOAT',
-    fontSizes: 'FLOAT',
-    lineHeights: 'FLOAT',
-    letterSpacing: 'FLOAT',
-    fontFamilies: 'STRING',
-    fontWeights: 'STRING',
-    typography: 'STYLE_TEXT',
-    boxShadow: 'STYLE_EFFECT',
-  };
+  const variableType = mapTokenTypeToVariableType(type);
+  if (variableType) {
+    return variableType;
+  }
 
-  return mapping[type || ''] || type || '(unknown)';
+  if (type === 'typography') {
+    return 'STYLE_TEXT';
+  }
+
+  if (type === 'boxShadow') {
+    return 'STYLE_EFFECT';
+  }
+
+  return type || '(unknown)';
 }

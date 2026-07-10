@@ -14,9 +14,7 @@ export async function syncEffectStyles(
   );
 
   const existing = await figma.getLocalEffectStylesAsync();
-  const desiredNames = new Set(
-    desired.map((token) => token.path.replace(/\./g, '/')),
-  );
+  const desiredNames = new Set(desired.map((token) => token.figmaName));
 
   for (const style of existing) {
     if (style.name.indexOf('shadow/') === 0 && !desiredNames.has(style.name)) {
@@ -26,7 +24,7 @@ export async function syncEffectStyles(
   }
 
   for (const token of desired) {
-    const styleName = token.path.replace(/\./g, '/');
+    const styleName = token.figmaName;
     const resolved = resolveCompositeValue(
       token.value,
       preview,

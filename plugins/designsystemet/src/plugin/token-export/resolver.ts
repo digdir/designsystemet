@@ -1,13 +1,13 @@
 import { COLLECTION } from './constants';
 import type { PreviewData } from './types';
-import { parseNumber } from './utils';
+import { figmaNameToPath, parseNumber } from './utils';
 
 export function getActiveTokenSets(
   preview: PreviewData,
   selectedTheme: string | null,
   selectedScheme: string | null,
 ): string[] {
-  const activeSets: string[] = [];
+  const activeSets = new Set<string>();
   const semanticMode = preview.themes.find(
     (mode) => mode.group === COLLECTION.SEMANTIC,
   );
@@ -18,17 +18,22 @@ export function getActiveTokenSets(
     (item) => item.name === selectedScheme,
   );
 
-  appendTokenSets(activeSets, semanticMode?.selectedTokenSets ?? []);
-  appendTokenSetNames(activeSets, theme?.tokenSets ?? []);
-  appendTokenSetNames(activeSets, scheme?.tokenSets ?? []);
-
-  for (const set of preview.tokenSets) {
-    if (activeSets.indexOf(set.path) === -1) {
-      activeSets.push(set.path);
+  for (const item of semanticMode?.selectedTokenSets ?? []) {
+    if (item.exists) {
+      activeSets.add(item.tokenSet);
     }
   }
+  for (const tokenSet of theme?.tokenSets ?? []) {
+    activeSets.add(tokenSet);
+  }
+  for (const tokenSet of scheme?.tokenSets ?? []) {
+    activeSets.add(tokenSet);
+  }
+  for (const set of preview.tokenSets) {
+    activeSets.add(set.path);
+  }
 
-  return activeSets;
+  return Array.from(activeSets);
 }
 
 export function resolveValue(
@@ -111,25 +116,6 @@ export function findUnresolvedReferences(
   }
 
   return unresolved;
-}
-
-function appendTokenSets(
-  target: string[],
-  selectedTokenSets: Array<{ tokenSet: string; exists: boolean }>,
-): void {
-  for (const item of selectedTokenSets) {
-    if (item.exists && target.indexOf(item.tokenSet) === -1) {
-      target.push(item.tokenSet);
-    }
-  }
-}
-
-function appendTokenSetNames(target: string[], tokenSets: string[]): void {
-  for (const tokenSet of tokenSets) {
-    if (target.indexOf(tokenSet) === -1) {
-      target.push(tokenSet);
-    }
-  }
 }
 
 function resolveTokenValue(
@@ -237,7 +223,7 @@ function buildAvailableReferenceNames(preview: PreviewData): Set<string> {
 
   for (const collection of preview.collections) {
     for (const variable of collection.variablePreview) {
-      const dottedName = variable.name.replace(/\//g, '.');
+      const dottedName = figmaNameToPath(variable.name);
       available.add(dottedName);
 
       if (collection.name === COLLECTION.THEME) {

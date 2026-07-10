@@ -1,8 +1,11 @@
 import { COLLECTION } from './constants';
 import { resolveValue } from './resolver';
 import type { FlatToken, PreviewData } from './types';
-import { inferVariableName } from './utils';
-import { convertRawVariableValue, mapVariableType } from './variable-values';
+import { inferVariableName, pathToFigmaName } from './utils';
+import {
+  convertRawVariableValue,
+  mapTokenTypeToVariableType,
+} from './variable-values';
 
 export type ValueSpec =
   | {
@@ -84,7 +87,7 @@ export function buildCollectionSpecs(
         );
 
         for (const entry of entries) {
-          const variableType = mapVariableType(token.type);
+          const variableType = mapTokenTypeToVariableType(token.type);
           if (!variableType) {
             continue;
           }
@@ -142,27 +145,23 @@ function getModeActiveTokenSets(
   activeTokenSets: string[],
   mode: PreviewData['themes'][number],
 ): string[] {
-  const prioritized: string[] = [];
+  const prioritized = new Set<string>();
 
   for (const selected of mode.selectedTokenSets) {
-    if (selected.exists && prioritized.indexOf(selected.tokenSet) === -1) {
-      prioritized.push(selected.tokenSet);
+    if (selected.exists) {
+      prioritized.add(selected.tokenSet);
     }
   }
 
   for (const tokenSet of activeTokenSets) {
-    if (prioritized.indexOf(tokenSet) === -1) {
-      prioritized.push(tokenSet);
-    }
+    prioritized.add(tokenSet);
   }
 
-  for (const tokenSet of preview.tokenSets.map((item) => item.path)) {
-    if (prioritized.indexOf(tokenSet) === -1) {
-      prioritized.push(tokenSet);
-    }
+  for (const item of preview.tokenSets) {
+    prioritized.add(item.path);
   }
 
-  return prioritized;
+  return Array.from(prioritized);
 }
 
 function expandVariableEntries(
@@ -264,8 +263,7 @@ function mapReferenceToVariableTarget(
   }
 
   if (reference.indexOf('theme.') === 0) {
-    const rawSuffix = reference.replace(/^theme\./, '');
-    const suffix = rawSuffix.replace(/\./g, '/');
+    const suffix = pathToFigmaName(reference.replace(/^theme\./, ''));
 
     if (group === COLLECTION.COLOR_SCHEME || group === COLLECTION.TYPOGRAPHY) {
       const themePrefix = preview.themeOptions[0]?.name || 'theme';
@@ -285,20 +283,20 @@ function mapReferenceToVariableTarget(
     if (group === COLLECTION.COLOR) {
       return {
         collection: COLLECTION.SEMANTIC,
-        name: reference.replace(/\./g, '/'),
+        name: pathToFigmaName(reference),
       };
     }
 
     if (group === COLLECTION.SEMANTIC) {
       return {
         collection: COLLECTION.THEME,
-        name: reference.replace(/\./g, '/'),
+        name: pathToFigmaName(reference),
       };
     }
   }
 
   if (reference.indexOf('border-radius.') === 0) {
-    const name = reference.replace(/\./g, '/');
+    const name = pathToFigmaName(reference);
     return {
       collection: group === COLLECTION.SEMANTIC ? COLLECTION.THEME : group,
       name,
@@ -319,7 +317,7 @@ function mapReferenceToVariableTarget(
   if (reference.indexOf('font-size.') === 0) {
     return {
       collection: COLLECTION.SIZE,
-      name: reference.replace(/\./g, '/'),
+      name: pathToFigmaName(reference),
     };
   }
 
@@ -331,7 +329,7 @@ function mapReferenceToVariableTarget(
   ) {
     return {
       collection: COLLECTION.THEME,
-      name: reference.replace(/\./g, '/'),
+      name: pathToFigmaName(reference),
     };
   }
 

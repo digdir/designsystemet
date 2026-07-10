@@ -2,7 +2,7 @@ import { COLLECTION } from './constants';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
 import { resolveCompositeValue } from './resolver';
 import type { PreviewData } from './types';
-import { parseNumber } from './utils';
+import { parseNumber, pathToFigmaName } from './utils';
 import { findVariable } from './variable-sync';
 
 export async function syncTextStyles(
@@ -18,9 +18,7 @@ export async function syncTextStyles(
   );
 
   const existing = await figma.getLocalTextStylesAsync();
-  const desiredNames = new Set(
-    desired.map((token) => token.path.replace(/\./g, '/')),
-  );
+  const desiredNames = new Set(desired.map((token) => token.figmaName));
 
   for (const style of existing) {
     if (
@@ -33,7 +31,7 @@ export async function syncTextStyles(
   }
 
   for (const token of desired) {
-    const styleName = token.path.replace(/\./g, '/');
+    const styleName = token.figmaName;
     const styleValue = resolveCompositeValue(
       token.value,
       preview,
@@ -128,7 +126,7 @@ function normalizeFontSizeReference(value: unknown): string | null {
     return null;
   }
 
-  return match[1].replace(/\./g, '/');
+  return pathToFigmaName(match[1]);
 }
 
 function toLineHeight(value: unknown, fontSize: number): LineHeight {

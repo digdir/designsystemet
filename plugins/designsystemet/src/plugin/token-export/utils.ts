@@ -6,6 +6,34 @@ export function isMetaFile(path: string): boolean {
   return Boolean(fileName && fileName.charAt(0) === '$');
 }
 
+// Token paths use dots (color.background.default); Figma variable names use
+// slashes (color/background/default).
+export function pathToFigmaName(path: string): string {
+  return path.replace(/\./g, '/');
+}
+
+export function figmaNameToPath(name: string): string {
+  return name.replace(/\//g, '.');
+}
+
+// Sorts by position in `order`; names not in the list go last, alphabetically.
+export function compareByOrder(
+  a: string,
+  b: string,
+  order: readonly string[],
+): number {
+  const indexA = order.indexOf(a);
+  const indexB = order.indexOf(b);
+  const safeA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
+  const safeB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
+
+  if (safeA !== safeB) {
+    return safeA - safeB;
+  }
+
+  return a.localeCompare(b);
+}
+
 export function parseNumber(value: unknown): number | null {
   if (typeof value === 'number' && Number.isFinite(value)) {
     return value;
