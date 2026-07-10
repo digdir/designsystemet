@@ -51,11 +51,11 @@ export async function preloadAllFonts(
   }
 }
 
-export async function findFontName(
+export function findFontName(
   fontCache: FontCache,
   family: string,
   styleName: string,
-): Promise<FontName | null> {
+): FontName | null {
   const normalizedStyle = normalizeFontStyle(styleName);
   const exact = fontCache.availableFonts.find(
     (font) =>

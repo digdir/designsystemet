@@ -17,7 +17,7 @@ export async function syncEffectStyles(
   const desiredNames = new Set(desired.map((token) => token.figmaName));
 
   for (const style of existing) {
-    if (style.name.indexOf('shadow/') === 0 && !desiredNames.has(style.name)) {
+    if (style.name.startsWith('shadow/') && !desiredNames.has(style.name)) {
       style.remove();
       logs.push(`Deleted effect style ${style.name}`);
     }

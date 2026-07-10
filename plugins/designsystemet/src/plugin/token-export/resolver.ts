@@ -60,7 +60,7 @@ export function resolveValue(
     );
   }
 
-  if (value.indexOf('{') !== -1) {
+  if (value.includes('{')) {
     return resolveExpression(value, preview, activeTokenSets, stack);
   }
 
@@ -127,7 +127,7 @@ function resolveTokenValue(
   const candidates = getReferenceCandidates(reference);
 
   for (const path of candidates) {
-    if (stack.indexOf(path) !== -1) {
+    if (stack.includes(path)) {
       continue;
     }
 
@@ -199,11 +199,11 @@ function resolveExpression(
 function getReferenceCandidates(reference: string): string[] {
   const candidates = [reference];
 
-  if (reference.indexOf('theme.') === 0) {
+  if (reference.startsWith('theme.')) {
     candidates.push(reference.replace(/^theme\./, ''));
   }
 
-  if (reference.indexOf('color.') === 0) {
+  if (reference.startsWith('color.')) {
     candidates.push(reference.replace(/^color\./, 'theme.'));
   }
 
@@ -216,7 +216,7 @@ function buildAvailableReferenceNames(preview: PreviewData): Set<string> {
   for (const token of preview.flatTokens) {
     available.add(token.path);
 
-    if (token.path.indexOf('theme.') === 0) {
+    if (token.path.startsWith('theme.')) {
       available.add(token.path.replace(/^theme\./, ''));
     }
   }
@@ -269,8 +269,8 @@ function hasScaleInAvailableReferences(
 ): boolean {
   for (const reference of available) {
     if (
-      reference.indexOf('theme.' + colorName + '.') === 0 ||
-      reference.indexOf('color.' + colorName + '.') === 0
+      reference.startsWith('theme.' + colorName + '.') ||
+      reference.startsWith('color.' + colorName + '.')
     ) {
       return true;
     }

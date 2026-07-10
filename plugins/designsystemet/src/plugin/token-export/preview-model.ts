@@ -211,7 +211,7 @@ function buildThemeOptions(
   }
 
   const themeSets = tokenSetPaths
-    .filter((path) => path.indexOf('themes/') === 0)
+    .filter((path) => path.startsWith('themes/'))
     .map((path) => ({
       name: path.split('/').pop() || path,
       tokenSets: [path],
@@ -286,7 +286,7 @@ function buildBorderRadii(flatTokens: FlatToken[]) {
       (token) =>
         token.tokenSet === 'semantic/style' &&
         token.type === 'dimension' &&
-        token.path.indexOf('border-radius.') === 0,
+        token.path.startsWith('border-radius.'),
     )
     .map((token) => ({
       name: pathToFigmaName(token.path.replace(/^border-radius\./, '')),
@@ -309,7 +309,7 @@ function buildFontFamilies(flatTokens: FlatToken[]) {
   for (const token of flatTokens) {
     if (
       token.type !== 'fontFamilies' ||
-      (token.path !== 'font-family' && token.path.indexOf('font-family.') !== 0)
+      (token.path !== 'font-family' && !token.path.startsWith('font-family.'))
     ) {
       continue;
     }

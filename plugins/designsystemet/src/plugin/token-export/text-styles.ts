@@ -21,10 +21,7 @@ export async function syncTextStyles(
   const desiredNames = new Set(desired.map((token) => token.figmaName));
 
   for (const style of existing) {
-    if (
-      style.name.indexOf('typography/') === 0 &&
-      !desiredNames.has(style.name)
-    ) {
+    if (style.name.startsWith('typography/') && !desiredNames.has(style.name)) {
       style.remove();
       logs.push(`Deleted text style ${style.name}`);
     }
@@ -53,7 +50,7 @@ export async function syncTextStyles(
       typeof styleValue.fontWeight === 'string'
         ? styleValue.fontWeight
         : 'Regular';
-    const fontName = await findFontName(fontCache, fontFamily, fontWeight);
+    const fontName = findFontName(fontCache, fontFamily, fontWeight);
     if (!fontName) {
       logs.push(
         `Skipped text style ${styleName} because font ${fontFamily} ${fontWeight} is unavailable`,
@@ -136,7 +133,7 @@ function toLineHeight(value: unknown, fontSize: number): LineHeight {
       return { unit: 'AUTO' };
     }
 
-    if (lower.indexOf('%') !== -1) {
+    if (lower.includes('%')) {
       const number = parseNumber(lower);
       return { unit: 'PERCENT', value: number === null ? 100 : number };
     }
@@ -147,7 +144,7 @@ function toLineHeight(value: unknown, fontSize: number): LineHeight {
 }
 
 function toLetterSpacing(value: unknown): LetterSpacing {
-  if (typeof value === 'string' && value.indexOf('%') !== -1) {
+  if (typeof value === 'string' && value.includes('%')) {
     const number = parseNumber(value);
     return { unit: 'PERCENT', value: number === null ? 0 : number };
   }

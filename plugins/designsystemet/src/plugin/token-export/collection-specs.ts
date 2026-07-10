@@ -121,7 +121,6 @@ export function buildCollectionSpecs(
             modeActiveTokenSets,
             mode.group,
             mode.name,
-            entry.name,
           );
 
           if (!valueSpec) {
@@ -186,7 +185,6 @@ function buildValueSpec(
   activeTokenSets: string[],
   group: string,
   modeName: string,
-  variableName: string,
 ): ValueSpec | null {
   const exactReference =
     typeof token.value === 'string' ? token.value.match(/^\{([^}]+)\}$/) : null;
@@ -200,7 +198,6 @@ function buildValueSpec(
           token,
           group,
           modeName,
-          variableName,
         );
 
     if (aliasTarget) {
@@ -230,9 +227,7 @@ function shouldResolveReferenceAsRaw(token: FlatToken, group: string): boolean {
   // computed from a math formula. They are the source of truth that other collections
   // (e.g. Semantic) alias back to. Keeping them as aliases here would create a circular
   // reference to a primitive that has no corresponding Figma variable.
-  return (
-    group === COLLECTION.THEME && token.path.indexOf('border-radius.') === 0
-  );
+  return group === COLLECTION.THEME && token.path.startsWith('border-radius.');
 }
 
 function mapReferenceToVariableTarget(
@@ -241,14 +236,13 @@ function mapReferenceToVariableTarget(
   token: FlatToken,
   group: string,
   modeName: string,
-  _variableName: string,
 ): { collection: string; name: string } | null {
   const themeScopedSuffix = getThemeScopedSuffix(reference, preview, token);
 
   if (group === COLLECTION.THEME && themeScopedSuffix) {
     if (
       themeScopedSuffix === 'font-family' ||
-      themeScopedSuffix.indexOf('font-weight/') === 0
+      themeScopedSuffix.startsWith('font-weight/')
     ) {
       return {
         collection: COLLECTION.TYPOGRAPHY,
@@ -262,7 +256,7 @@ function mapReferenceToVariableTarget(
     };
   }
 
-  if (reference.indexOf('theme.') === 0) {
+  if (reference.startsWith('theme.')) {
     const suffix = pathToFigmaName(reference.replace(/^theme\./, ''));
 
     if (group === COLLECTION.COLOR_SCHEME || group === COLLECTION.TYPOGRAPHY) {
@@ -279,7 +273,7 @@ function mapReferenceToVariableTarget(
     };
   }
 
-  if (reference.indexOf('color.') === 0) {
+  if (reference.startsWith('color.')) {
     if (group === COLLECTION.COLOR) {
       return {
         collection: COLLECTION.SEMANTIC,
@@ -295,7 +289,7 @@ function mapReferenceToVariableTarget(
     }
   }
 
-  if (reference.indexOf('border-radius.') === 0) {
+  if (reference.startsWith('border-radius.')) {
     const name = pathToFigmaName(reference);
     return {
       collection: group === COLLECTION.SEMANTIC ? COLLECTION.THEME : group,
@@ -303,18 +297,17 @@ function mapReferenceToVariableTarget(
     };
   }
 
-  if (reference.indexOf('_size.') === 0 || reference.indexOf('size._') === 0) {
-    const name =
-      reference.indexOf('_size.') === 0
-        ? `_size/${reference.replace(/^_size\./, '')}`
-        : `_size/${reference.replace(/^size\._/, '')}`;
+  if (reference.startsWith('_size.') || reference.startsWith('size._')) {
+    const name = reference.startsWith('_size.')
+      ? `_size/${reference.replace(/^_size\./, '')}`
+      : `_size/${reference.replace(/^size\._/, '')}`;
     return {
       collection: COLLECTION.SIZE,
       name,
     };
   }
 
-  if (reference.indexOf('font-size.') === 0) {
+  if (reference.startsWith('font-size.')) {
     return {
       collection: COLLECTION.SIZE,
       name: pathToFigmaName(reference),
@@ -322,10 +315,10 @@ function mapReferenceToVariableTarget(
   }
 
   if (
-    reference.indexOf('font-family') === 0 ||
-    reference.indexOf('font-weight.') === 0 ||
-    (group === COLLECTION.THEME && reference.indexOf('border-width.') === 0) ||
-    (group === COLLECTION.THEME && reference.indexOf('opacity.') === 0)
+    reference.startsWith('font-family') ||
+    reference.startsWith('font-weight.') ||
+    (group === COLLECTION.THEME && reference.startsWith('border-width.')) ||
+    (group === COLLECTION.THEME && reference.startsWith('opacity.'))
   ) {
     return {
       collection: COLLECTION.THEME,

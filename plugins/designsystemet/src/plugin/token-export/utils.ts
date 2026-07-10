@@ -3,7 +3,7 @@ import type { FlatToken } from './types';
 
 export function isMetaFile(path: string): boolean {
   const fileName = path.split('/').pop();
-  return Boolean(fileName && fileName.charAt(0) === '$');
+  return Boolean(fileName?.startsWith('$'));
 }
 
 // Token paths use dots (color.background.default); Figma variable names use
@@ -54,24 +54,24 @@ export function inferVariableName(
 ): string {
   const figmaName = token.figmaName;
 
-  if (group === COLLECTION.COLOR_SCHEME && figmaName.indexOf('theme/') === 0) {
+  if (group === COLLECTION.COLOR_SCHEME && figmaName.startsWith('theme/')) {
     return `${modeName}/${figmaName.replace(/^theme\//, '')}`;
   }
 
-  if (group === COLLECTION.THEME && figmaName.indexOf('theme/') === 0) {
+  if (group === COLLECTION.THEME && figmaName.startsWith('theme/')) {
     return figmaName.replace(/^theme\//, '');
   }
 
-  if (group === COLLECTION.TYPOGRAPHY && figmaName.indexOf('theme/') === 0) {
+  if (group === COLLECTION.TYPOGRAPHY && figmaName.startsWith('theme/')) {
     return `${modeName}/${figmaName.replace(/^theme\//, '')}`;
   }
 
   if (group === COLLECTION.SIZE) {
-    if (token.path.indexOf('size._') === 0) {
+    if (token.path.startsWith('size._')) {
       return `_size/${token.path.replace(/^size\._/, '')}`;
     }
 
-    if (token.path.indexOf('_size.') === 0) {
+    if (token.path.startsWith('_size.')) {
       return `_size/${token.path.replace(/^_size\./, '')}`;
     }
   }
