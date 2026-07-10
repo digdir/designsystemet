@@ -33,6 +33,24 @@ describe('toggle-group behavior', () => {
     expect(group).toHaveAttribute('aria-label', 'Tekstjustering');
   });
 
+  it('respects aria-labelledby and does not set aria-label', async () => {
+    document.body.innerHTML = `
+      <span id="tg-label">External label</span>
+      <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering" aria-labelledby="tg-label">
+        <label>
+          <input type="radio" name="alignment" value="left" />
+          Left
+        </label>
+      </fieldset>
+    `;
+    const group = document.querySelector<HTMLFieldSetElement>(
+      '[data-toggle-group]',
+    );
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
+    expect(group).toHaveAttribute('aria-labelledby', 'tg-label');
+    expect(group).not.toHaveAttribute('aria-label');
+  });
+
   it('clicks input on Enter', () => {
     const { inputs } = render();
 
