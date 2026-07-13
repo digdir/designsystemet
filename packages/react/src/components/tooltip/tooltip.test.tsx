@@ -27,7 +27,7 @@ describe('Tooltip', () => {
     const tooltipTrigger = screen.getByRole('button');
     expect(screen.queryByText(content)).not.toBeInTheDocument();
 
-    const hover = new MouseEvent('mouseover', { bubbles: true });
+    const hover = new MouseEvent('mousemove', { bubbles: true });
     await act(async () => tooltipTrigger.dispatchEvent(hover));
 
     const tooltip = await screen.findByText(content);

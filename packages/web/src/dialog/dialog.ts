@@ -1,5 +1,6 @@
 import {
   attr,
+  getComposedTarget,
   isBrowser,
   on,
   onHotReload,
@@ -13,7 +14,7 @@ import {
 let DOWN_INSIDE = false; // Prevent close if selecting text inside dialog
 const handleClosedbyAny = (event: Event) => {
   const { type, clientX: x = 0, clientY: y = 0 } = event as MouseEvent;
-  const el = event.composedPath()[0];
+  const el = getComposedTarget(event);
   if (!(el instanceof Element)) return;
   if (type === 'pointerdown') {
     const r = el.closest?.('dialog')?.getBoundingClientRect();

@@ -3,6 +3,7 @@ import {
   ARIA_LABELLEDBY,
   attr,
   attrOrCSS,
+  getComposedTarget,
   on,
   onHotReload,
   onMutation,
@@ -21,8 +22,8 @@ const handleAriaAttributes = () => {
   }
 };
 
-const handleKeydown = (e: Partial<KeyboardEvent>) => {
-  const el = e.composedPath?.()[0];
+const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
+  const el = getComposedTarget(e);
   const group =
     el instanceof HTMLInputElement && el.closest(SELECTOR_TOGGLEGROUP);
 

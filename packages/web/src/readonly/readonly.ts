@@ -1,4 +1,10 @@
-import { attr, getRoot, on, onHotReload } from '../utils/utils';
+import {
+  attr,
+  getComposedTarget,
+  getRoot,
+  on,
+  onHotReload,
+} from '../utils/utils';
 
 const isReadOnly = (el: unknown): el is HTMLInputElement | HTMLSelectElement =>
   (el instanceof HTMLSelectElement || el instanceof HTMLInputElement) &&
@@ -7,7 +13,7 @@ const isReadOnly = (el: unknown): el is HTMLInputElement | HTMLSelectElement =>
 // Allow tabbing when readonly, and only fix readonly input/select elements (since type select and non-text-inputs do not support readonly)
 // If radio buttons, move focus without changing checked state
 const handleKeyDown = (e: Event & Partial<KeyboardEvent>) => {
-  const el = e.composedPath()[0];
+  const el = getComposedTarget(e);
   if (e.key !== 'Tab' && isReadOnly(el)) {
     const isArrow = e.key?.startsWith('Arrow'); // Always control arrow keys
     const isModifier = e.altKey || e.ctrlKey || e.metaKey; // Allow modifier keys so native functions like CMD + D to bookmark  etc. still works
@@ -23,7 +29,7 @@ const handleKeyDown = (e: Event & Partial<KeyboardEvent>) => {
 };
 
 const handleClick = (e: Event) => {
-  const el = e.composedPath()[0] as Element;
+  const el = getComposedTarget(e) as Element | null;
   const input = el?.closest?.('label')?.control || el;
   if (isReadOnly(input)) {
     e.preventDefault();
@@ -32,7 +38,7 @@ const handleClick = (e: Event) => {
 };
 
 const handleMouseDown = (e: Event) => {
-  const el = e.composedPath()[0];
+  const el = getComposedTarget(e);
   if (el instanceof HTMLSelectElement && isReadOnly(el)) e.preventDefault();
 };
 

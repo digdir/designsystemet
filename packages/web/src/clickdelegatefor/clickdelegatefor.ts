@@ -1,7 +1,13 @@
 // Adding support for click deletagtion, following
 // https://open-ui.org/components/link-area-delegation-explainer/
 // and https://github.com/openui/open-ui/issues/1104#issuecomment-3151387080
-import { getRoot, on, onHotReload, QUICK_EVENT } from '../utils/utils';
+import {
+  getComposedTarget,
+  getRoot,
+  on,
+  onHotReload,
+  QUICK_EVENT,
+} from '../utils/utils';
 
 const CLASS_HOVER = ':click-delegate-hover';
 const ATTR_CLICKDELEGATEFOR = 'data-clickdelegatefor';
@@ -14,7 +20,7 @@ const SELECTOR_SKIP =
 const handleClickDelegateFor = (event: MouseEvent) => {
   const isNewTab = event.button === 1 || event.metaKey || event.ctrlKey; // Middle click or cmd/ctrl + click should open in new tab
   const delegateTarget =
-    event.button < 2 && getDelegateTarget(event.composedPath()[0]); // Only accept left or middle clicks
+    event.button < 2 && getDelegateTarget(getComposedTarget(event)); // Only accept left or middle clicks
 
   // console.log(event);
 
@@ -28,7 +34,7 @@ const handleClickDelegateFor = (event: MouseEvent) => {
 let HOVER: Element | null = null;
 let TARGET: EventTarget; // Used to speed up mouseover handling
 const handleMouseOver = (event: Event) => {
-  const target = event.composedPath()[0];
+  const target = getComposedTarget(event);
   if (target === TARGET) return; // Same target, no need to check delegate target again
   TARGET = target;
   const delegateTarget = getDelegateTarget(target);

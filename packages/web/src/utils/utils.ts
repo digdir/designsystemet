@@ -105,6 +105,15 @@ export const getRoot = (node: Node): Document | ShadowRoot => {
 };
 
 /**
+ * getComposedTarget
+ * @description Helper to get the composed target of an event, supporting ShadowDOM rendering
+ * @param event The event
+ * @return The target EventTarget
+ */
+export const getComposedTarget = (event: Event): EventTarget =>
+  event.composedPath?.()?.[0] || event.target; // Fallback to target for browsers that do not support ShadowDOM
+
+/**
  * on
  * @param el The Element to use as EventTarget
  * @param types A space separated string of event types

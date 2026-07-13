@@ -58,7 +58,7 @@ describe('tooltip behavior', () => {
     tip.remove(); // Remove element
   });
 
-  it('delays tooltip on first mouseover', async () => {
+  it('delays tooltip on first mousemove', async () => {
     vi.useFakeTimers();
     const tip = document.createElement('div');
     tip.showPopover = vi.fn();
@@ -68,7 +68,7 @@ describe('tooltip behavior', () => {
     document.body.innerHTML = `<button data-tooltip="Hover">Hover</button>`;
 
     const button = document.querySelector('button') as HTMLButtonElement;
-    button.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
+    button.dispatchEvent(new MouseEvent('mousemove', { bubbles: true }));
     expect(tip.showPopover).not.toHaveBeenCalled();
 
     await vi.advanceTimersByTimeAsync(DELAY_HOVER - 100);
@@ -108,7 +108,7 @@ describe('tooltip behavior', () => {
     button.dispatchEvent(new FocusEvent('focus'));
     expect(tip.showPopover).toHaveBeenCalledTimes(1);
 
-    button.dispatchEvent(new FocusEvent('blur'));
+    document.body.dispatchEvent(new FocusEvent('focus'));
     expect(tip.hidePopover).toHaveBeenCalledTimes(1);
     expect(tip.showPopover).toHaveBeenCalledTimes(1); // Must not reshow on blur
   });
