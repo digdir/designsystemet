@@ -1,4 +1,5 @@
 import {
+  ARIA_LABELLEDBY,
   attr,
   isBrowser,
   onHotReload,
@@ -18,9 +19,9 @@ const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 // This approach is also verified by the chief of accessibility at NRK and the accessibility expert at NAV
 const handleFieldsetMutations = () => {
   for (const el of FIELDSETS) {
-    if (el.hasAttribute('aria-labelledby')) continue; // Speed up by skipping labelled fieldsets
+    if (el.hasAttribute(ARIA_LABELLEDBY)) continue; // Speed up by skipping labelled fieldsets
     const labelledby = `${useId(el.querySelector('legend'))} ${useId(el.querySelector(':scope > :is([data-field="description"],legend + p)'))}`;
-    attr(el, 'aria-labelledby', labelledby.trim() || null);
+    attr(el, ARIA_LABELLEDBY, labelledby.trim() || null);
   }
 };
 

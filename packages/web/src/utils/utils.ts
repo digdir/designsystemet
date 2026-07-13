@@ -1,6 +1,11 @@
+export const ARIA_DESC = 'aria-description';
+export const ARIA_LABEL = 'aria-label';
+export const ARIA_LABELLEDBY = 'aria-labelledby';
 export const QUICK_EVENT = { passive: true, capture: true };
 
-// Using function instead of constant to support evnironments where DOM can be unloaded (like Vitest with jsdom)
+import { version } from '../../package.json' with { type: 'json' };
+
+// Using function instead of constant to support environments where DOM can be unloaded (like Vitest with jsdom)
 export const isBrowser = () =>
   typeof window !== 'undefined' && typeof document !== 'undefined';
 
@@ -84,8 +89,19 @@ export const attrOrCSS = (el: Element, name: string) => {
   let value = attr(el, name);
   if (!value)
     value = getCSSProp(el, `--_ds-${name}`).replace(STRIP_QUOTES, '').trim();
-  if (!value) warn(`Missing ${name} on:`, el);
   return value || null;
+};
+
+/**
+ * getRoot
+ * @description Helper for better compatibility
+ * @param node The target node
+ * @return The shadow root or document
+ */
+export const getRoot = (node: Node): Document | ShadowRoot => {
+  const root = node.getRootNode?.() || node.ownerDocument;
+  if (root instanceof Document || root instanceof ShadowRoot) return root;
+  return node.ownerDocument || document;
 };
 
 /**
@@ -118,9 +134,10 @@ export const off = (
 };
 
 // Used to store cleanup functions for hot-reloading
+const HOT_RELOAD_KEY = `_dsHotReloadCleanup${version}` as const; // Ensure multiple versions of Designsystemet can run on same page
 declare global {
   interface Window {
-    _dsHotReloadCleanup?: Map<string, Array<() => void>>;
+    [HOT_RELOAD_KEY]?: Map<string, Array<() => void>>;
   }
 }
 
@@ -132,10 +149,9 @@ declare global {
  */
 export const onHotReload = (key: string, setup: () => Array<() => void>) => {
   if (!isBrowser()) return; // Skip if not in modern browser environment, but on each call as Vitest might have unloaded jsdom between tests
-  if (!window._dsHotReloadCleanup) window._dsHotReloadCleanup = new Map(); // Hot reload cleanup support supporting all build tools
-
-  window._dsHotReloadCleanup?.get(key)?.map((cleanup) => cleanup()); // Run previous cleanup
-  window._dsHotReloadCleanup?.set(key, setup()); // Store new cleanup
+  if (!window[HOT_RELOAD_KEY]) window[HOT_RELOAD_KEY] = new Map(); // Hot reload cleanup support supporting all build tools
+  for (const cleanup of window[HOT_RELOAD_KEY]?.get(key) || []) cleanup(); // Run previous cleanup
+  window[HOT_RELOAD_KEY]?.set(key, setup()); // Store new cleanup
 };
 
 /**
