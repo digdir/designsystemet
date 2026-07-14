@@ -23,6 +23,28 @@
     <br>
     <br>
 
+    <ds-field class="ds-field" style="width: 200px">
+      <label>Label</label>
+      <ds-suggestion
+        class="ds-suggestion"
+        data-multiple
+        data-creatable='Legg til "{value}"'
+      >
+        <input type="search" class="ds-input">
+        <button type="button" aria-expanded="false" aria-label="Valg"></button>
+        <button type="reset" aria-label="Tøm"></button>
+        <u-datalist>
+          <u-option></u-option>
+          <u-option value="option-1">Option 1</u-option>
+          <u-option value="option-2">Option 2</u-option>
+          <u-option value="option-3">Option 3</u-option>
+        </u-datalist>
+      </ds-suggestion>
+    </ds-field>
+
+    <br>
+    <br>
+
     <h2 class="ds-heading">data-clickdelegatefor</h2>
     <ds-field class="ds-card" data-clickdelegatefor="target">
       <input id="target" class="ds-input" type="checkbox">
@@ -220,23 +242,6 @@
         <label>Alternativ 3</label>
       </ds-field>
     </fieldset>
-
-    <br>
-    <br>
-
-    <ds-field class="ds-field" style="width: 200px">
-      <label>Label</label>
-      <ds-suggestion class="ds-suggestion" data-multiple>
-        <input type="search" class="ds-input">
-        <button type="button" aria-expanded="false" aria-label="Valg"></button>
-        <button type="reset" aria-label="Tøm"></button>
-        <u-datalist>
-          <u-option value="option-1">Option 1</u-option>
-          <u-option value="option-2">Option 2</u-option>
-          <u-option value="option-3">Option 3</u-option>
-        </u-datalist>
-      </ds-suggestion>
-    </ds-field>
 
     <br>
     <br>

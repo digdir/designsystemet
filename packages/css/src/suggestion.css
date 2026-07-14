@@ -203,6 +203,10 @@
         @composes ds-focus--visible--middle from './base.css';
       }
     }
+    & > u-option[data-creatable]::after {
+      content: 'Legg til ' var(--dsc-suggestion-creatable);
+    }
+
     [data-multiple] & {
       & > u-option:not([data-empty]) {
         padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));

@@ -21,12 +21,14 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
   connectedCallback() {
     super.connectedCallback();
     this._unmutate = onMutation(this, render, { childList: true }); // .control and .list are direct children of the custom element
+    on(this, 'comboboxafterselect input', handleCreatable);
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this._unmutate?.();
     this._unmutate = undefined;
+    off(this, 'comboboxafterselect input', handleCreatable);
     off(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
 }
@@ -40,6 +42,18 @@ const render = (self: DSSuggestionElement) => {
   if (control) attr(control, 'popovertarget', useId(list) || null);
   if (datalist) attr(datalist, 'popover', 'manual'); // Ensure popover attribute is set on the list
   if (datalist) attr(datalist, 'data-is-floating', 'true'); // identifier for css to toggle opacity when it is placed by floating-ui.
+};
+
+const handleCreatable = (event: Event) => {
+  const self = event.currentTarget;
+  const creatable = self.getAttribute('data-creatable');
+  const value = self.control.value.trim();
+  const add = self.list.options[0];
+
+  add.hidden = !value || self.values.includes(value);
+  add.value = value;
+  add.label = value;
+  add.textContent = creatable.replace('{value}', value);
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:
