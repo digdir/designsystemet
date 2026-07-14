@@ -1,5 +1,5 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import {
   Button,
   Divider,
@@ -11,9 +11,7 @@ import {
   ValidationMessage,
 } from '../';
 
-type Story = StoryFn<typeof Field>;
-
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Field',
   component: Field,
   parameters: {
@@ -22,9 +20,9 @@ export default {
       width: '90vw',
     },
   },
-} as Meta;
+});
 
-export const Preview: Story = () => {
+export const Preview = meta.story(() => {
   return (
     <Field>
       <Label>Etternavn</Label>
@@ -37,9 +35,9 @@ export const Preview: Story = () => {
       </ValidationMessage>
     </Field>
   );
-};
+});
 
-export const Affix: Story = () => (
+export const Affix = meta.story(() => (
   <Field>
     <Label>Hvor mange kroner koster det per måned?</Label>
     <Field.Affixes>
@@ -48,17 +46,17 @@ export const Affix: Story = () => (
       <Field.Affix>pr. mnd.</Field.Affix>
     </Field.Affixes>
   </Field>
-);
+));
 
-export const Counter: Story = () => (
+export const Counter = meta.story(() => (
   <Field>
     <Label>Legg til en beskrivelse</Label>
     <Textarea rows={2} />
     <Field.Counter limit={10} />
   </Field>
-);
+));
 
-export const CounterControlled: Story = () => {
+export const CounterControlled = meta.story(() => {
   const [value, setValue] = useState('Nordmann');
 
   return (
@@ -75,36 +73,38 @@ export const CounterControlled: Story = () => {
       <Button onClick={() => setValue('Hei')}>Set verdi "hei"</Button>
     </>
   );
-};
+});
 
-export const Position: Story = () => (
-  <>
-    <Field position='end'>
-      <Label>Flymodus</Label>
-      <Input type='checkbox' role='switch' />
-    </Field>
-    <Divider />
-    <Field position='end'>
-      <Label>Lydløs</Label>
-      <Input type='checkbox' role='switch' />
-    </Field>
-  </>
-);
-
-Position.decorators = [
-  (Story) => (
-    <div
-      style={{
-        maxWidth: 200,
-        margin: 'auto',
-      }}
-    >
-      <Story />
-    </div>
+export const Position = meta.story({
+  render: () => (
+    <>
+      <Field position='end'>
+        <Label>Flymodus</Label>
+        <Input type='checkbox' role='switch' />
+      </Field>
+      <Divider />
+      <Field position='end'>
+        <Label>Lydløs</Label>
+        <Input type='checkbox' role='switch' />
+      </Field>
+    </>
   ),
-];
 
-export const Optional: Story = () => (
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          maxWidth: 200,
+          margin: 'auto',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
+});
+
+export const Optional = meta.story(() => (
   <Field>
     <Label>
       Hvor bor du?
@@ -114,4 +114,4 @@ export const Optional: Story = () => (
     </Label>
     <Input />
   </Field>
-);
+));

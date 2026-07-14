@@ -1,13 +1,11 @@
 import type { Size } from '@digdir/designsystemet-types';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../apps/storybook/.storybook/preview';
 import { Fieldset, Heading, Paragraph, ToggleGroup } from '../src';
 
-const meta: Meta = {
+const meta = preview.meta({
   title: 'Komponenter/Typography',
-};
-
-export default meta;
+});
 
 const sizes: Size[] = ['sm', 'md', 'lg'];
 
@@ -39,8 +37,8 @@ const Controls = ({ size, setSize }: ControlsProps) => {
   );
 };
 
-export const EksempelTekst: StoryFn = () => {
-  return (
+export const EksempelTekst = meta.story({
+  render: () => (
     <>
       <Heading
         level={1}
@@ -140,54 +138,59 @@ export const EksempelTekst: StoryFn = () => {
         behandler, hvordan disse blir behandlet og hvilke rettigheter du har.
       </Paragraph>
     </>
-  );
-};
-EksempelTekst.decorators = [
-  (Story) => {
-    const [size, setSize] = useState<Size>('md');
-    return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--ds-size-4)',
-        }}
-      >
-        <Controls size={size} setSize={setSize} />
-        <div data-size={size}>
+  ),
+
+  decorators: [
+    (Story) => {
+      const [size, setSize] = useState<Size>('md');
+      return (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--ds-size-4)',
+          }}
+        >
+          <Controls size={size} setSize={setSize} />
+          <div data-size={size}>
+            <Story />
+          </div>
+        </div>
+      );
+    },
+  ],
+});
+
+export const EksempelTekstDark = EksempelTekst.extend({
+  decorators: [
+    ...EksempelTekst.input.decorators,
+    (Story) => (
+      <div data-color-scheme='dark'>
+        <Story />
+      </div>
+    ),
+  ],
+});
+
+export const EksempelTekstAutoSize = EksempelTekst.extend({
+  decorators: [
+    ...EksempelTekst.input.decorators,
+    (Story) => (
+      <>
+        <style>{`.responsive-text {
+    --ds-size: var(--ds-size--sm);
+
+    @media (min-width: 600px) {
+      --ds-size: var(--ds-size--md);
+    }
+    @media (min-width: 992px) {
+      --ds-size: var(--ds-size--lg);
+    }
+  }`}</style>
+        <div className='responsive-text' data-size=''>
           <Story />
         </div>
-      </div>
-    );
-  },
-];
-
-export const EksempelTekstDark = EksempelTekst.bind({});
-EksempelTekstDark.decorators = [
-  ...EksempelTekst.decorators,
-  (Story) => (
-    <div data-color-scheme='dark'>
-      <Story />
-    </div>
-  ),
-];
-
-export const EksempelTekstAutoSize: StoryFn = (args, ctx) => {
-  return (
-    <>
-      <style>{`.responsive-text {
-  --ds-size: var(--ds-size--sm);
-
-  @media (min-width: 600px) {
-    --ds-size: var(--ds-size--md);
-  }
-  @media (min-width: 992px) {
-    --ds-size: var(--ds-size--lg);
-  }
-}`}</style>
-      <div className='responsive-text' data-size=''>
-        {EksempelTekst(args, ctx)}
-      </div>
-    </>
-  );
-};
+      </>
+    ),
+  ],
+});

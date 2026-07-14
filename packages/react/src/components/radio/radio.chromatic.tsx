@@ -1,16 +1,15 @@
-import type { Meta } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
 import { Radio } from './radio';
 import * as RadioStories from './radio.stories';
 
-const meta: Meta = {
+const meta = preview.meta({
   title: 'Chromatic/Radio',
   component: Radio,
   tags: ['chromatic'],
   parameters: {
     layout: 'padded',
   },
-};
-export default meta;
+});
 
-export const Snapshots = createSingleStory(RadioStories, meta);
+export const Snapshots = meta.story(createSingleStory(RadioStories));

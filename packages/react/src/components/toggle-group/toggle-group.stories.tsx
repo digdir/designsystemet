@@ -7,12 +7,12 @@ import {
   EnvelopeClosedIcon,
   PaperplaneIcon,
 } from '@navikt/aksel-icons';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Button, Divider, Paragraph, Tooltip } from '../';
 import { ToggleGroup } from './';
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/ToggleGroup',
   component: ToggleGroup,
   decorators: [
@@ -23,27 +23,26 @@ export default {
       </div>
     ),
   ],
-} as Meta;
+});
 
-export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
-  return (
+export const Preview = meta.story({
+  render: (args) => (
     <ToggleGroup {...args}>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
       <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
       <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
     </ToggleGroup>
-  );
-};
+  ),
+  args: {
+    'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
+    defaultValue: 'innboks',
+    name: 'toggle-group-nuts',
+  },
+});
 
-Preview.args = {
-  'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
-  defaultValue: 'innboks',
-  name: 'toggle-group-nuts',
-};
-
-export const OnlyIcons: StoryFn<typeof ToggleGroup> = (args) => {
-  return (
+export const OnlyIcons = meta.story({
+  render: (args) => (
     <ToggleGroup
       {...args}
       data-toggle-group='Tekstjustering'
@@ -65,10 +64,10 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = (args) => {
         </ToggleGroup.Item>
       </Tooltip>
     </ToggleGroup>
-  );
-};
+  ),
+});
 
-export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
+export const Kontrollert = meta.story(() => {
   const [value, setValue] = useState<string>('utkast');
   return (
     <>
@@ -101,21 +100,24 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
       </Button>
     </>
   );
-};
-export const Secondary = Preview.bind({});
-Secondary.args = {
-  'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
-  defaultValue: 'innboks',
-  variant: 'secondary',
-};
+});
 
-export const SecondaryOnlyIcons = OnlyIcons.bind({});
-SecondaryOnlyIcons.args = {
-  'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
-  variant: 'secondary',
-};
+export const Secondary = Preview.extend({
+  args: {
+    'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
+    defaultValue: 'innboks',
+    variant: 'secondary',
+  },
+});
 
-export const Disabled: StoryFn<typeof ToggleGroup> = () => {
+export const SecondaryOnlyIcons = OnlyIcons.extend({
+  args: {
+    'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
+    variant: 'secondary',
+  },
+});
+
+export const Disabled = meta.story(() => {
   return (
     <ToggleGroup data-toggle-group='Filtrering'>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
@@ -129,8 +131,9 @@ export const Disabled: StoryFn<typeof ToggleGroup> = () => {
       <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
     </ToggleGroup>
   );
-};
-export const AriaDisabled: StoryFn<typeof ToggleGroup> = () => {
+});
+
+export const AriaDisabled = meta.story(() => {
   return (
     <ToggleGroup data-toggle-group='Filtrering'>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
@@ -144,4 +147,4 @@ export const AriaDisabled: StoryFn<typeof ToggleGroup> = () => {
       <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
     </ToggleGroup>
   );
-};
+});

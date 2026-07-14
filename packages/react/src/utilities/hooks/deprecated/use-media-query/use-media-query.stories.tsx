@@ -1,17 +1,15 @@
-import type { Meta } from '@storybook/react-vite';
+import preview from '../../../../../../../apps/storybook/.storybook/preview';
 
 import { Paragraph } from '../../../../components';
 
 import { useMediaQuery } from './use-media-query';
 
-const meta: Meta = {
+const meta = preview.meta({
   title: 'Utilities/useMediaQuery',
   parameters: { chromatic: { disableSnapshot: true } },
-};
+});
 
-export default meta;
-
-export const TestMediaQuery = () => {
+export const TestMediaQuery = meta.story(() => {
   const isBelow = useMediaQuery('(max-width: 1000px)');
 
   return (
@@ -21,4 +19,4 @@ export const TestMediaQuery = () => {
       </Paragraph>
     </div>
   );
-};
+});

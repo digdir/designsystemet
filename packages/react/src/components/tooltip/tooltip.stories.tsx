@@ -1,19 +1,16 @@
 import { FilesIcon } from '@navikt/aksel-icons';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useEffect, useRef, useState } from 'react';
 import { expect, fireEvent, userEvent, waitFor } from 'storybook/test';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Button, Link } from '../../';
 import { Tooltip } from './tooltip';
-
-type Story = StoryObj<typeof Tooltip>;
-type FnStory = StoryFn<typeof Tooltip>;
 
 function isInViewport(el: Element) {
   const { height, width } = el.getBoundingClientRect();
   return height > 1 && width > 1;
 }
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Tooltip',
   component: Tooltip,
   parameters: {
@@ -30,7 +27,7 @@ export default {
       e.focus({ focusVisible: true } as Record<string, unknown>); // necessary to get focusVisible styling, but doesn't show up in interaction log
     };
     for (const event of [userEvent.hover, fakeFocus])
-      for (const tooltipTrigger of tooltips) {
+      for (const tooltipTrigger of Array.from(tooltips)) {
         await event(tooltipTrigger);
         await waitFor(async () => {
           const text = tooltipTrigger.getAttribute('data-tooltip');
@@ -52,54 +49,57 @@ export default {
         });
       }
   },
-} satisfies Meta;
+});
 
-export const Preview: StoryFn<typeof Tooltip> = (args) => (
-  <Tooltip {...args}>
-    <Button icon>
-      <FilesIcon aria-hidden />
-    </Button>
-  </Tooltip>
-);
+export const Preview = meta.story({
+  render: ({ children, ...args }) => (
+    <Tooltip {...args}>
+      <Button icon>
+        <FilesIcon aria-hidden />
+      </Button>
+    </Tooltip>
+  ),
 
-Preview.args = {
-  content: 'Kopier',
-  placement: 'top',
-};
+  args: {
+    children: '',
+    content: 'Kopier',
+    placement: 'top',
+  },
+});
 
-export const WithLink: FnStory = () => {
+export const WithLink = meta.story(() => {
   return (
     <Tooltip content='Gå til en annen side...' placement='top'>
       <Link href='#'>En lenke</Link>
     </Tooltip>
   );
-};
+});
 
-export const WithSpan: FnStory = () => {
+export const WithSpan = meta.story(() => {
   return (
     <Tooltip content='Innholdet i tooltipen' placement='top'>
       <span>Tekst med tooltip</span>
     </Tooltip>
   );
-};
+});
 
-export const WithPlainText: FnStory = () => {
+export const WithPlainText = meta.story(() => {
   return (
     <Tooltip content='Innholdet i tooltipen' placement='top'>
       Tekst med tooltip
     </Tooltip>
   );
-};
+});
 
-export const WithString: Story = {
+export const WithString = meta.story({
   args: {
     content: 'Organisasjonsnummer',
     children: 'Org.nr.',
     tabIndex: 0,
   },
-};
+});
 
-export const Placement: Story = {
+export const Placement = meta.story({
   args: {
     content: 'Kopier',
     placement: 'bottom',
@@ -109,38 +109,40 @@ export const Placement: Story = {
       </Button>
     ),
   },
-};
+});
 
-export const Aria: FnStory = () => {
-  return (
-    <>
-      <Tooltip content='Beskrivelse for aria-description'>
-        <Button>Eg er aria-description</Button>
-      </Tooltip>
-      <Tooltip content='Beskrivelse for aria-description'>
-        <Button>
-          <FilesIcon aria-hidden />
-          <span>Eg er også aria-description</span>
-        </Button>
-      </Tooltip>
-      <Tooltip content='Eg er aria-label'>
-        <Button icon>
-          <FilesIcon aria-hidden />
-        </Button>
-      </Tooltip>
-    </>
-  );
-};
-
-Aria.parameters = {
-  customStyles: {
-    display: 'flex',
-    gap: 'var(--ds-size-2)',
-    alignItems: 'center',
+export const Aria = meta.story({
+  render: () => {
+    return (
+      <>
+        <Tooltip content='Beskrivelse for aria-description'>
+          <Button>Eg er aria-description</Button>
+        </Tooltip>
+        <Tooltip content='Beskrivelse for aria-description'>
+          <Button>
+            <FilesIcon aria-hidden />
+            <span>Eg er også aria-description</span>
+          </Button>
+        </Tooltip>
+        <Tooltip content='Eg er aria-label'>
+          <Button icon>
+            <FilesIcon aria-hidden />
+          </Button>
+        </Tooltip>
+      </>
+    );
   },
-};
 
-export const WithDynamicTooltipText: Story = {
+  parameters: {
+    customStyles: {
+      display: 'flex',
+      gap: 'var(--ds-size-2)',
+      alignItems: 'center',
+    },
+  },
+});
+
+export const WithDynamicTooltipText = meta.story({
   args: {
     content: 'Kopier',
   },
@@ -159,9 +161,9 @@ export const WithDynamicTooltipText: Story = {
       </Tooltip>
     );
   },
-};
+});
 
-export const WithCSSTooltipText: Story = {
+export const WithCSSTooltipText = meta.story({
   args: {
     content: 'Kopier',
   },
@@ -172,9 +174,9 @@ export const WithCSSTooltipText: Story = {
       </Button>
     </Tooltip>
   ),
-};
+});
 
-export const WithDynamicCSSTooltipText: Story = {
+export const WithDynamicCSSTooltipText = meta.story({
   args: {
     content: 'Kopier',
   },
@@ -202,4 +204,4 @@ export const WithDynamicCSSTooltipText: Story = {
       </Tooltip>
     );
   },
-};
+});

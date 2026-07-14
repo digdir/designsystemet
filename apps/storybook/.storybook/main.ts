@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { StorybookConfig } from '@storybook/react-vite';
+import { defineMain } from '@storybook/react-vite/node';
 import type { PropItem } from 'react-docgen-typescript';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -11,7 +11,7 @@ const dirname =
     ? __dirname
     : path.dirname(fileURLToPath(import.meta.url));
 
-const config: StorybookConfig = {
+export default defineMain({
   typescript: {
     check: true,
     /* If in prod, use docgen-typescript, locally use docgen */
@@ -92,6 +92,4 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
   },
-};
-
-export default config;
+});

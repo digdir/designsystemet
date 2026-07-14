@@ -1,14 +1,12 @@
 import { CircleSlashIcon } from '@navikt/aksel-icons';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { type DragEvent, useRef, useState } from 'react';
 import type { FileRejection } from 'react-dropzone';
 import { useDropzone } from 'react-dropzone';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Button, Field, Label } from '../';
 import { EXPERIMENTAL_FileUpload as FileUpload } from './';
 
-type Story = StoryObj<typeof FileUpload>;
-
-const meta: Meta<typeof FileUpload> = {
+const meta = preview.meta({
   title: 'Komponenter/FileUpload',
   component: FileUpload,
   parameters: {
@@ -21,31 +19,27 @@ const meta: Meta<typeof FileUpload> = {
       gap: 'var(--ds-size-4)',
     },
   },
-};
+});
 
-export default meta;
+export const Preview = meta.story({
+  render: ({ ...args }) => (
+    <Field>
+      <Label>Upload file</Label>
+      <FileUpload {...args}>
+        <Field.Description>Drop file here</Field.Description>
+        <Field.Description>
+          File must be in csv format and less than 2MB
+        </Field.Description>
+        <Button asChild data-variant='secondary'>
+          <span>Upload file</span>
+        </Button>
+        <input type='file' />
+      </FileUpload>
+    </Field>
+  ),
+});
 
-export const Preview: Story = {
-  render: ({ ...args }) => {
-    return (
-      <Field>
-        <Label>Upload file</Label>
-        <FileUpload {...args}>
-          <Field.Description>Drop file here</Field.Description>
-          <Field.Description>
-            File must be in csv format and less than 2MB
-          </Field.Description>
-          <Button asChild data-variant='secondary'>
-            <span>Upload file</span>
-          </Button>
-          <input type='file' />
-        </FileUpload>
-      </Field>
-    );
-  },
-};
-
-export const Variants: StoryFn<typeof FileUpload> = () => (
+export const Variants = meta.story(() => (
   <>
     <Field>
       <Label>color variant default</Label>
@@ -74,8 +68,8 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
       </FileUpload>
     </Field>
   </>
-);
-export const LinkAlt: StoryFn<typeof FileUpload> = () => (
+));
+export const LinkAlt = meta.story(() => (
   <Field>
     <Label>Upload file</Label>
     <FileUpload>
@@ -88,9 +82,9 @@ export const LinkAlt: StoryFn<typeof FileUpload> = () => (
       <input type='file' />
     </FileUpload>
   </Field>
-);
+));
 
-export const ReadOnly: StoryFn<typeof FileUpload> = () => (
+export const ReadOnly = meta.story(() => (
   <Field>
     <Label>Upload file</Label>
     <Field.Description>description text</Field.Description>
@@ -102,29 +96,9 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
       <input type='file' readOnly={true} />
     </FileUpload>
   </Field>
-);
+));
 
-/* export const Disabled: StoryFn<typeof FileUpload> = () => (
-  <Field>
-    <Label>Upload file</Label>
-    <Field.Description>description text</Field.Description>
-    <FileUpload>
-      <Field.Description>
-        Drop file here
-      </Field.Description>
-      <Field.Description>
-        File must be in csv format and less than 2MB
-      </Field.Description>
-      <Button asChild data-variant='secondary'>
-        <span>Upload file</span>
-      </Button>
-      <input type="file" disabled={true} />
-    </FileUpload>
-    <ValidationMessage>Invalid file format</ValidationMessage>
-  </Field>
-); */
-
-export const HiddenLabel: StoryFn<typeof FileUpload> = () => (
+export const HiddenLabel = meta.story(() => (
   <Field>
     <Label className='ds-sr-only'>Upload file</Label>
     <Field.Description>description text</Field.Description>
@@ -139,9 +113,9 @@ export const HiddenLabel: StoryFn<typeof FileUpload> = () => (
       <input type='file' />
     </FileUpload>
   </Field>
-);
+));
 
-export const WorkingExample: StoryFn<typeof FileUpload> = () => {
+export const WorkingExample = meta.story(() => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [isDragging, setIsDragging] = useState(false);
@@ -230,9 +204,9 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
       )}
     </div>
   );
-};
+});
 
-export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
+export const ReactDropZoneExample = meta.story(() => {
   const MAX_FILES = 3;
   const [files, setFiles] = useState<File[]>([]);
   const [rejected, setRejected] = useState<FileRejection[]>([]);
@@ -323,4 +297,4 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
       )}
     </div>
   );
-};
+});
