@@ -1,12 +1,10 @@
 import { PencilWritingIcon } from '@navikt/aksel-icons';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { themeColors } from '../../../stories/constants';
 
 import { Button, type ButtonProps } from './button';
 
-type Story = StoryObj<typeof Button>;
-
-const meta: Meta<typeof Button> = {
+const meta = preview.meta({
   title: 'Komponenter/Button',
   component: Button,
   parameters: {
@@ -19,11 +17,9 @@ const meta: Meta<typeof Button> = {
       gap: 'var(--ds-size-4)',
     },
   },
-};
+});
 
-export default meta;
-
-export const Preview: Story = {
+export const Preview = meta.story({
   render: ({ ...args }) => {
     return <Button {...args} />;
   },
@@ -33,17 +29,17 @@ export const Preview: Story = {
     variant: 'primary',
     icon: false,
   },
-};
+});
 
-export const Variants: StoryFn<typeof Button> = () => (
+export const Variants = meta.story(() => (
   <>
     <Button variant='primary'>Primary</Button>
     <Button variant='secondary'>Secondary</Button>
     <Button variant='tertiary'>Teritiary</Button>
   </>
-);
+));
 
-export const Colors: StoryFn<typeof Button> = () => (
+const RenderColors = () => (
   <>
     {[...themeColors, 'danger'].map((color) => (
       <Button
@@ -57,19 +53,29 @@ export const Colors: StoryFn<typeof Button> = () => (
   </>
 );
 
-export const ColorsHover = Colors.bind({});
-ColorsHover.parameters = {
-  pseudo: { hover: true },
-  chromatic: { modes: { mobile: { disable: true } } },
-};
+export const Colors = meta.story({
+  render: RenderColors,
+});
 
-export const ColorsPressed = Colors.bind({});
-ColorsPressed.parameters = {
-  pseudo: { active: true },
-  chromatic: { modes: { mobile: { disable: true } } },
-};
+export const ColorsHover = meta.story({
+  render: RenderColors,
 
-export const Icons: StoryFn<typeof Button> = () => (
+  parameters: {
+    pseudo: { hover: true },
+    chromatic: { modes: { mobile: { disable: true } } },
+  },
+});
+
+export const ColorsPressed = meta.story({
+  render: RenderColors,
+
+  parameters: {
+    pseudo: { active: true },
+    chromatic: { modes: { mobile: { disable: true } } },
+  },
+});
+
+export const Icons = meta.story(() => (
   <>
     <Button icon aria-label='Rediger'>
       <PencilWritingIcon aria-hidden />
@@ -79,9 +85,9 @@ export const Icons: StoryFn<typeof Button> = () => (
       Rediger
     </Button>
   </>
-);
+));
 
-export const CombinedColors: StoryFn<typeof Button> = () => (
+export const CombinedColors = meta.story(() => (
   <>
     <Button variant='primary' data-color='neutral'>
       Publiser
@@ -93,17 +99,17 @@ export const CombinedColors: StoryFn<typeof Button> = () => (
       Slett
     </Button>
   </>
-);
+));
 
-export const AsLink: StoryFn<typeof Button> = () => (
+export const AsLink = meta.story(() => (
   <Button asChild>
     <a target='_blank' rel='noreferrer' href='https://www.designsystemet.no'>
       Gå til designsystemet.no
     </a>
   </Button>
-);
+));
 
-export const Loading: StoryFn<typeof Button> = () => (
+export const Loading = meta.story(() => (
   <>
     <Button variant='primary' loading>
       Laster...
@@ -119,4 +125,4 @@ export const Loading: StoryFn<typeof Button> = () => (
       <PencilWritingIcon aria-hidden />
     </Button>
   </>
-);
+));

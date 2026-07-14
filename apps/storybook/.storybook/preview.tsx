@@ -1,17 +1,22 @@
+import addonA11y from '@storybook/addon-a11y';
+import addonDocs from '@storybook/addon-docs';
+import addonThemes from '@storybook/addon-themes';
+import { definePreview } from '@storybook/react-vite';
+import addonPseudoStates from 'storybook-addon-pseudo-states';
 import './style.css';
 /* We use relative imports to get HMR updates when developing */
 import '../../../packages/css/src/index.css';
 import '../../../packages/css/theme/designsystemet.css';
 
 import { DocsContainer } from '@storybook/addon-docs/blocks';
-import type { Preview } from '@storybook/react-vite';
 import isChromatic from 'chromatic/isChromatic';
+import type { ViewportMap } from 'storybook/viewport';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
 import customTheme from './customThemeLight';
 
-const viewports: Record<string, object> = {};
+const viewports: ViewportMap = {};
 
 for (const width of viewportWidths) {
   viewports[`${width}px`] = {
@@ -37,7 +42,7 @@ const DocsContainerWithWrapper: typeof DocsContainer = ({
   );
 };
 
-const preview: Preview = {
+export default definePreview({
   tags: ['a11y-test'],
   globalTypes: {
     colorScheme: {
@@ -94,7 +99,7 @@ const preview: Preview = {
       test: 'error',
     },
     backgrounds: {
-      disabled: true,
+      disable: true,
     },
     html: {
       root: '[data-storybook-decorator]', // default: #root
@@ -102,6 +107,5 @@ const preview: Preview = {
   },
   decorators: [customStylesDecorator],
   loaders: isChromatic() && document.fonts ? [fontsLoader] : [],
-};
-
-export default preview;
+  addons: [addonA11y(), addonThemes(), addonPseudoStates(), addonDocs()],
+});

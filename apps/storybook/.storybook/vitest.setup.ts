@@ -1,7 +1,3 @@
-import * as a11yAddonAnnotations from '@storybook/addon-a11y/preview';
-import { setProjectAnnotations } from '@storybook/react-vite';
-import * as projectAnnotations from './preview';
-
 // Speed up by using instant animations/transitions during testing
 document.head.appendChild(
   Object.assign(document.createElement('style'), {
@@ -13,7 +9,3 @@ document.head.appendChild(
   }`,
   }),
 );
-
-// This is an important step to apply the right configuration when testing your stories.
-// More info at: https://storybook.js.org/docs/api/portable-stories/portable-stories-vitest#setprojectannotations
-setProjectAnnotations([a11yAddonAnnotations, projectAnnotations]);

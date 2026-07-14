@@ -243,7 +243,7 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
       let disabled = 0;
       let index = 0;
 
-      for (const option of options)
+      for (const option of Array.from(options))
         if (!option.hasAttribute('data-empty')) {
           if (filterFn && input)
             option.disabled =

@@ -4,16 +4,14 @@ import {
   EnvelopeClosedIcon,
   ExternalLinkIcon,
 } from '@navikt/aksel-icons';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Paragraph } from '../';
 import { Link } from './link';
-
-type Story = StoryObj<typeof Link>;
 
 const randomNum = Math.floor(Math.random() * 1000);
 const designsystemetLink = 'https://designsystemet.no/?=' + randomNum;
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Link',
   component: Link,
   parameters: {
@@ -23,78 +21,96 @@ export default {
       url: 'http://www.url.com/status',
     },
   },
-} as Meta;
-
-export const Normal: Story = {
   args: {
     children: 'Gå til designsystemet',
     href: designsystemetLink,
   },
-};
+});
 
-export const InText: StoryFn = (args) => (
-  <>
-    <Paragraph>
-      Vi bruker komponenter fra{' '}
-      <Link href={designsystemetLink} {...args}>
-        designsystemet.no
-      </Link>
-      .
-    </Paragraph>
-  </>
-);
+export const Normal = meta.story();
 
-export const WithIcon: StoryFn = (args) => (
-  <Link href='mailto:designsystem@digdir.no' {...args}>
-    <EnvelopeClosedIcon aria-hidden height={'1.5rem'} width={'1.5rem'} />
-    <span>Kontakt oss</span>
-  </Link>
-);
-export const WithIconRight: StoryFn = (args) => (
-  <Link href='mailto:designsystem@digdir.no' {...args}>
-    <span>Kontakt oss</span>
-    <EnvelopeClosedIcon aria-hidden height={'1.5rem'} width={'1.5rem'} />
-  </Link>
-);
-export const WithMultipleIcons: StoryFn = (args) => (
-  <Link href={designsystemetLink} {...args}>
-    <ComponentIcon aria-hidden height={'1.5rem'} width={'1.5rem'} />
-    <span>Komponenter og</span>
-    <BookIcon aria-hidden height={'1.5rem'} width={'1.5rem'} />
-    <span>dokumentasjon på designsystemet.no</span>
-    <ExternalLinkIcon aria-hidden height={'1.5rem'} width={'1.5rem'} />
-  </Link>
-);
-export const WithOnlyIcon: StoryFn = (args) => (
-  <Link href={designsystemetLink} {...args}>
-    <ComponentIcon title='Designsystemet' height={'1.5rem'} width={'1.5rem'} />
-  </Link>
-);
+export const InText = meta.story({
+  render: ({ children, ...args }) => (
+    <>
+      <Paragraph>
+        Vi bruker komponenter fra{' '}
+        <Link href={designsystemetLink} {...args}>
+          designsystemet.no
+        </Link>
+        .
+      </Paragraph>
+    </>
+  ),
+});
 
-export const LongLink: StoryFn = (args) => (
-  <Paragraph>
-    <Link href={designsystemetLink} {...args}>
-      Dette er en lenke som brekker over flere linjer
+export const WithIcon = meta.story({
+  render: (args) => (
+    <Link href='mailto:designsystem@digdir.no' {...args}>
+      <EnvelopeClosedIcon aria-hidden height={'1.5rem'} width={'1.5rem'} />
+      <span>Kontakt oss</span>
     </Link>
-  </Paragraph>
-);
+  ),
+});
 
-LongLink.parameters = {
-  customStyles: { width: '200px' },
-};
+export const WithIconRight = meta.story({
+  render: (args) => (
+    <Link href='mailto:designsystem@digdir.no' {...args}>
+      <span>Kontakt oss</span>
+      <EnvelopeClosedIcon aria-hidden height={'1.5rem'} width={'1.5rem'} />
+    </Link>
+  ),
+});
 
-export const Neutral: Story = {
+export const WithMultipleIcons = meta.story({
+  render: (args) => (
+    <Link href={designsystemetLink} {...args}>
+      <ComponentIcon aria-hidden height={'1.5rem'} width={'1.5rem'} />
+      <span>Komponenter og</span>
+      <BookIcon aria-hidden height={'1.5rem'} width={'1.5rem'} />
+      <span>dokumentasjon på designsystemet.no</span>
+      <ExternalLinkIcon aria-hidden height={'1.5rem'} width={'1.5rem'} />
+    </Link>
+  ),
+});
+
+export const WithOnlyIcon = meta.story({
+  render: (args) => (
+    <Link href={designsystemetLink} {...args}>
+      <ComponentIcon
+        title='Designsystemet'
+        height={'1.5rem'}
+        width={'1.5rem'}
+      />
+    </Link>
+  ),
+});
+
+export const LongLink = meta.story({
+  render: (args) => (
+    <Paragraph>
+      <Link href={designsystemetLink} {...args}>
+        Dette er en lenke som brekker over flere linjer
+      </Link>
+    </Paragraph>
+  ),
+
+  parameters: {
+    customStyles: { width: '200px' },
+  },
+});
+
+export const Neutral = meta.story({
   args: {
     children: 'Gå til designsystemet',
     href: designsystemetLink,
     'data-color': 'neutral',
   },
-};
+});
 
-export const AsButton: Story = {
+export const AsButton = meta.story({
   args: {
     children: <button type='button'>Gå til designsystemet</button>,
     href: designsystemetLink,
     asChild: true,
   },
-};
+});

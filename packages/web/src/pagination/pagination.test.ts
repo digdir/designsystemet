@@ -37,6 +37,24 @@ describe('pagination component', () => {
     expect(links[2]).toHaveAttribute('aria-current', 'true');
   });
 
+  it('respects aria-labelledby and does not set aria-label', async () => {
+    document.body.innerHTML = `
+      <span id="pg-label">External label</span>
+      <ds-pagination data-current="2" data-total="5" data-href="/page/%d" aria-labelledby="pg-label">
+        <ol>
+          <li><a class="ds-button" href="#none">prev</a></li>
+          <li><a class="ds-button" href="/page/1"></a></li>
+          <li><a class="ds-button" href="/page/2"></a></li>
+          <li><a class="ds-button" href="#none">next</a></li>
+        </ol>
+      </ds-pagination>
+    `;
+
+    const paginationEl = document.querySelector('ds-pagination') as HTMLElement;
+    expect(paginationEl).toHaveAttribute('aria-labelledby', 'pg-label');
+    expect(paginationEl).not.toHaveAttribute('aria-label');
+  });
+
   it('marks hidden steps as not focusable', async () => {
     document.body.innerHTML = `
       <ds-pagination data-current="1" data-total="100" data-href="/page/%d" aria-label="Pagination">

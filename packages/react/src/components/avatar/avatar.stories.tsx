@@ -1,12 +1,10 @@
 import { BriefcaseIcon, HeartIcon } from '@navikt/aksel-icons';
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { cat3Img, themeColors } from '../../../stories/constants';
 
 import { Avatar, type AvatarProps, Badge, Dropdown } from '../';
 
-type Story = StoryFn<typeof Avatar>;
-
-const meta: Meta<typeof Avatar> = {
+const meta = preview.meta({
   title: 'Komponenter/Avatar',
   component: Avatar,
   parameters: {
@@ -19,21 +17,19 @@ const meta: Meta<typeof Avatar> = {
       flexWrap: 'wrap',
     },
   },
-};
+});
 
-export default meta;
+export const Preview = meta.story({
+  args: {
+    'aria-label': 'Ola Nordmann',
+    variant: 'circle',
+    children: '',
+  },
+});
 
-export const Preview: Story = (args) => <Avatar {...args} />;
+export const NoName = meta.story(() => <Avatar aria-label='Ola' />);
 
-Preview.args = {
-  'aria-label': 'Ola Nordmann',
-  variant: 'circle',
-  children: '',
-};
-
-export const NoName: Story = () => <Avatar aria-label='Ola' />;
-
-export const Sizes: Story = () => (
+export const Sizes = meta.story(() => (
   <>
     <Avatar data-size='xs' aria-label='extra small' initials='xs' />
     <Avatar data-size='xs' aria-label='extra small' />
@@ -56,9 +52,9 @@ export const Sizes: Story = () => (
       <HeartIcon aria-hidden />
     </Avatar>
   </>
-);
+));
 
-export const ColorVariants: Story = () => (
+export const ColorVariants = meta.story(() => (
   <>
     {[...themeColors].map((color) => (
       <Avatar
@@ -68,9 +64,9 @@ export const ColorVariants: Story = () => (
       />
     ))}
   </>
-);
+));
 
-export const ShapeVariants: Story = () => (
+export const ShapeVariants = meta.story(() => (
   <>
     <Avatar variant='circle' aria-label='variant circle' />
     <Avatar variant='square' aria-label='variant square' />
@@ -81,53 +77,61 @@ export const ShapeVariants: Story = () => (
       ON
     </Avatar>
   </>
-);
+));
 
-export const WithImage: Story = () => (
+export const WithImage = meta.story(() => (
   <Avatar aria-label='Ola Nordmann'>{cat3Img}</Avatar>
-);
+));
 
-export const InDropdown: Story = () => (
-  <Dropdown.TriggerContext>
-    <Dropdown.Trigger variant='tertiary'>
-      <Avatar aria-label='Ola Nordmann' data-size='sm'>
-        ON
-      </Avatar>
-      Velg Profil
-    </Dropdown.Trigger>
-    <Dropdown placement='bottom-end' autoPlacement={false} data-size='md' open>
-      <Dropdown.List>
-        <Dropdown.Item>
-          <Dropdown.Button>
-            <Badge.Position overlap='circle'>
-              <Badge data-color='danger' data-size='sm'></Badge>
-              <Avatar aria-hidden={true} data-size='xs'>
-                ON
+export const InDropdown = meta.story({
+  render: () => (
+    <Dropdown.TriggerContext>
+      <Dropdown.Trigger variant='tertiary'>
+        <Avatar aria-label='Ola Nordmann' data-size='sm'>
+          ON
+        </Avatar>
+        Velg Profil
+      </Dropdown.Trigger>
+      <Dropdown
+        placement='bottom-end'
+        autoPlacement={false}
+        data-size='md'
+        open
+      >
+        <Dropdown.List>
+          <Dropdown.Item>
+            <Dropdown.Button>
+              <Badge.Position overlap='circle'>
+                <Badge data-color='danger' data-size='sm'></Badge>
+                <Avatar aria-hidden={true} data-size='xs'>
+                  ON
+                </Avatar>
+              </Badge.Position>
+              Ola Nordmann
+            </Dropdown.Button>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button>
+              <Avatar aria-hidden data-size='xs'>
+                <BriefcaseIcon />
               </Avatar>
-            </Badge.Position>
-            Ola Nordmann
-          </Dropdown.Button>
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <Dropdown.Button>
-            <Avatar aria-hidden data-size='xs'>
-              <BriefcaseIcon />
-            </Avatar>
-            Sogndal kommune
-          </Dropdown.Button>
-        </Dropdown.Item>
-      </Dropdown.List>
-    </Dropdown>
-  </Dropdown.TriggerContext>
-);
-InDropdown.parameters = {
-  layout: 'fullscreen',
-  customStyles: {
-    height: '320px',
+              Sogndal kommune
+            </Dropdown.Button>
+          </Dropdown.Item>
+        </Dropdown.List>
+      </Dropdown>
+    </Dropdown.TriggerContext>
+  ),
+
+  parameters: {
+    layout: 'fullscreen',
+    customStyles: {
+      height: '320px',
+    },
   },
-};
+});
 
-export const AsLink: Story = () => (
+export const AsLink = meta.story(() => (
   <>
     <Avatar aria-label='xs' data-size='xs' asChild>
       <a href='#none'>
@@ -150,9 +154,9 @@ export const AsLink: Story = () => (
       </a>
     </Avatar>
   </>
-);
+));
 
-export const AsButton: Story = () => (
+export const AsButton = meta.story(() => (
   <>
     <Avatar aria-label='xs' data-size='xs' asChild>
       <button type='button'>
@@ -175,4 +179,4 @@ export const AsButton: Story = () => (
       </button>
     </Avatar>
   </>
-);
+));

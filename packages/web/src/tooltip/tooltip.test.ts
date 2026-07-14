@@ -152,6 +152,16 @@ describe('tooltip behavior', () => {
     expect(tip.showPopover).toHaveBeenCalledTimes(1);
   });
 
+  it('reads tooltip text from another element when data-tooltip starts with #', async () => {
+    document.body.innerHTML = `<button data-tooltip="#tip-source"></button><span id="tip-source">Text from element</span>`;
+
+    const el = document.querySelector('button') as HTMLElement;
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver run
+
+    expect(el).toHaveAttribute('aria-label', 'Text from element');
+    expect(el).not.toHaveAttribute('aria-description');
+  });
+
   it('updates tooltip text and announces when data-tooltip changes programmatically', async () => {
     const tip = document.createElement('div');
     setTooltipElement(tip);
