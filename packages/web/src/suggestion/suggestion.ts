@@ -48,7 +48,13 @@ const polyfillToggleSource = (event: Partial<ToggleEvent>) => {
   const detail = event.newState === 'open' && self.control; // .control comes from UHTMLComboboxElement
 
   if (detail)
-    self.list?.dispatchEvent(new CustomEvent('ds-toggle-source', { detail }));
+    self.list?.dispatchEvent(
+      new CustomEvent('ds-toggle-source', {
+        bubbles: true,
+        composed: true, // Enable bubbling out of shadow DOM boundries
+        detail, // Since showPopover({ source }) is not supported in all browsers yet
+      }),
+    );
 };
 
 // Ensure u-datalist is defined before ds-suggestion

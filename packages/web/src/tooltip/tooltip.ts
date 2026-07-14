@@ -110,7 +110,13 @@ const show = () => {
   setupText(SOURCE, false); // If mutation observer is not triggered, ensure tooltip text is updated
   // TIP.textContent = attr(SOURCE, ATTR_TOOLTIP);
   TIP.showPopover();
-  TIP.dispatchEvent(new CustomEvent('ds-toggle-source', { detail: SOURCE })); // Since showPopover({ source }) is not supported in all browsers yet
+  TIP.dispatchEvent(
+    new CustomEvent('ds-toggle-source', {
+      bubbles: true,
+      composed: true, // Enable bubbling out of shadow DOM boundries
+      detail: SOURCE, // Since showPopover({ source }) is not supported in all browsers yet
+    }),
+  );
 };
 
 const hide = (event?: Partial<KeyboardEvent>) => {
