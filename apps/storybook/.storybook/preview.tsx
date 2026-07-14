@@ -2,7 +2,7 @@ import addonA11y from '@storybook/addon-a11y';
 import addonDocs from '@storybook/addon-docs';
 import addonThemes from '@storybook/addon-themes';
 import { definePreview } from '@storybook/react-vite';
-import storybookAddonPseudoStates from 'storybook-addon-pseudo-states';
+import addonPseudoStates from 'storybook-addon-pseudo-states';
 import './style.css';
 /* We use relative imports to get HMR updates when developing */
 import '../../../packages/css/src/index.css';
@@ -107,10 +107,5 @@ export default definePreview({
   },
   decorators: [customStylesDecorator],
   loaders: isChromatic() && document.fonts ? [fontsLoader] : [],
-  addons: [
-    addonA11y(),
-    addonThemes(),
-    storybookAddonPseudoStates(),
-    addonDocs(),
-  ],
+  addons: [addonA11y(), addonThemes(), addonPseudoStates(), addonDocs()],
 });
