@@ -1,3 +1,5 @@
 ---
+"@digdir/designsystemet": patch
 ---
-new exports for internal use, not documenting
+
+New exports for internal use (not documented).

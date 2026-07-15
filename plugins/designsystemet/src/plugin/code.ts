@@ -130,7 +130,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
       try {
         postMessage('export-tokens-to-figma', {
           status: 'exporting',
-          message: `Starting export of ${themeNames[0]} token sets to Figma variables...`,
+          message: 'Starting export of tokens to Figma variables...',
         });
 
         if (!previewData) {

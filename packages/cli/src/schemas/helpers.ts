@@ -59,7 +59,7 @@ function makeFriendlyError(err: unknown) {
  * @param schema - A Zod schema used to validate the configuration object.
  * @param unvalidatedConfig - The configuration object to validate.
  * @returns The validated configuration object, typed as T.
- * @throws Exits the process with code 1 if validation fails, after logging a friendly error message.
+ * @throws Throws an Error with a friendly, user-facing validation message if validation fails.
  */
 export function validateConfig<T>(schema: z.ZodType<T>, unvalidatedConfig: Record<string, unknown>): T {
   try {

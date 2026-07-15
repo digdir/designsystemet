@@ -44,14 +44,10 @@ textarea {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  width: stretch;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--ds-size-2);
-  grid-auto-flow: column;
   padding: var(--ds-size-4);
 
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
