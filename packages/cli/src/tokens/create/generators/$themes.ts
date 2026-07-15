@@ -6,8 +6,15 @@ import type { SizeModes, TokenSetDimensions } from '../../types.ts';
 async function createHash(text: string, algo = 'SHA-1') {
   const crypto = globalThis.crypto;
   if (!crypto?.subtle) {
-    console.warn('Crypto API not available, using fallback hash function. This may result in collisions.');
-    return Promise.resolve(Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15));
+    console.warn(
+      'Crypto API not available; using deterministic fallback hash. This may still result in collisions.',
+    );
+    let hash = 2166136261;
+    for (let i = 0; i < text.length; i++) {
+      hash ^= text.charCodeAt(i);
+      hash = Math.imul(hash, 16777619);
+    }
+    return Promise.resolve(hash.toString(16).padStart(8, '0'));
   }
 
   return Array.from(new Uint8Array(await crypto.subtle.digest(algo, new TextEncoder().encode(text))), (byte) =>
