@@ -8,6 +8,8 @@ import { checkAutomigrate } from '../src/automigrate.ts';
 import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
 import migrations from '../src/migrations/index.ts';
+import { parseConfig } from '../src/schemas/helpers.ts';
+import type { RootConfigSchema, rootConfig } from '../src/schemas/next/schema.ts';
 import { buildTokens } from '../src/tokens/build.ts';
 import { createTokens, systemTokenToFiles, tokenSetDimensions, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
@@ -277,6 +279,94 @@ program
   });
 
 program.version(pkg.version, '-v, --version', 'Display version number').helpOption('-h, --help', 'Display help');
+
+program
+  .usage('designsystemet')
+  .command('config', { isDefault: true })
+  .description('Parses config file and run Designsystemet commands')
+  .option(
+    '-c, --config <filename>',
+    `Use a custom config file (auto-detects ${DEFAULT_CONFIG_FILEPATHS.map((p) => `"${p}"`).join(' or ')})`,
+  )
+  .option('--dry [boolean]', 'Dry run - show config without writing files', parseBoolean, false)
+  .action(async (opts) => {
+    console.log(figletAscii);
+    const { configFile, configFilePath } = await getConfigFile(opts.config);
+
+    dsfs.init({ dry: opts.dry, outdir: path.dirname(configFilePath) });
+
+    if (!configFile) {
+      console.error(pc.redBright(`No config file found. Please create one at ${pc.blue(DEFAULT_CONFIG_FILEPATH)}.`));
+      process.exit(1);
+    }
+
+    const parsedConfig = await parseConfig<RootConfigSchema>(configFile, configFilePath);
+    const config = parsedConfig ? parsedConfig : parseConfig<RootConfigSchema>(configFile, configFilePath);
+
+    const themeNames = Object.keys(config.themes);
+    if (themeNames.length > 0) {
+      console.log(`Using themes from config file: ${pc.blue(themeNames.join(', '))}`);
+    }
+
+    for (const output of config.output) {
+      if (output.type === 'design-tokens') {
+        console.log(`\nGenerating design tokens in ${pc.green(output.dir)}...`);
+
+        const files: OutputFile[] = [];
+
+        const outDir = path.join(dsfs.outDir, output.dir);
+
+        // Pick colors from first theme since we have a constraint they should be the same across themes.
+        const colorNames = toColorNames(config.themes?.[themeNames[0]]?.colors);
+
+        for (const [name, themeConfig] of Object.entries(config.themes)) {
+          const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme);
+          files.push(...tokenSetsToFiles(tokenSets));
+        }
+
+        files.push(
+          ...(await createSystemTokenFiles({
+            tokenSetDimensions,
+            themeNames,
+            colorNames,
+          })),
+        );
+
+        if (config.clean) {
+          await dsfs.cleanDir(outDir);
+        }
+
+        await dsfs.mkdir(outDir);
+        await dsfs.writeFiles(files, outDir);
+
+        console.log(
+          `\n✅ Finished creating tokens in ${pc.green(output.dir)} for themes: ${pc.blue(themeNames.join(', '))}`,
+        );
+      }
+
+      if (output.type === 'css') {
+        console.log(`\nGenerating CSS in ${pc.green(output.dir)}...`);
+
+        const outDir = path.join(dsfs.outDir, output.dir);
+
+        if (output.cleanDir) {
+          await dsfs.cleanDir(outDir);
+        }
+
+        const files = await buildTokens({
+          tokensDir: output.tokenDir,
+          verbose: false,
+          tailwind: output.experimental_tailwind || false,
+        });
+
+        console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
+
+        await dsfs.writeFiles(files, outDir, true);
+
+        console.log(`\n✅ Finished building tokens in ${pc.green(outDir)}`);
+      }
+    }
+  });
 
 await program.parseAsync(process.argv);
 

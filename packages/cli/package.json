@@ -48,7 +48,7 @@
     "designsystemet": "pnpm node ${DESIGNSYSTEMET_BIN:-./bin/designsystemet.ts}",
     "designsystemet:inspect": "pnpm node --inspect-brk ./bin/designsystemet.ts",
     "build": "tsdown && pnpm build:json-schema",
-    "build:json-schema": "pnpm node ./src/scripts/createJsonSchema.ts",
+    "build:json-schema": "pnpm node ./src/scripts/createJsonSchema.ts && pnpm node ./src/scripts/create-json-schema-next.ts",
     "types": "tsc --noEmit",
     "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./temp/options/design-tokens --theme options --clean",
     "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./tests/test-tokens.config.jsonc",
