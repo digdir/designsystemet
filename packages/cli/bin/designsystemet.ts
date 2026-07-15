@@ -3,6 +3,7 @@ import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
+import pkg from '../package.json' with { type: 'json' };
 import { checkAutomigrate } from '../src/automigrate.ts';
 import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
@@ -275,6 +276,8 @@ program
       console.log('Migrate: please specify a migration name or --list');
     }
   });
+
+program.version(pkg.version, '-v, --version', 'Display version number').helpOption('-h, --help', 'Display help');
 
 await program.parseAsync(process.argv);
 
