@@ -13,9 +13,36 @@
     >
   </head>
   <body data-color-scheme="auto" style="padding:20px;font-family: Inter;">
-    <test-shadow-render></test-shadow-render>
+    <!-- <test-shadow-render></test-shadow-render> -->
     <div id="app">
       <h1 class="ds-heading" data-size="lg">Test webcomponents</h1>
+
+      <fieldset
+        class="ds-toggle-group"
+        focusgroup="toolbar wrap"
+        aria-label="Tekstjustering"
+      >
+        <label class="ds-button">
+          <input type="radio" name="focusgroup" value="left" checked>
+          Venstestilt
+        </label>
+        <my-test>
+          <template shadowrootmode="open">
+            <label class="ds-button">
+              <input type="radio" name="focusgroup" value="center">
+              Midtstilt
+            </label>
+            <label class="ds-button">
+              <input type="radio" name="focusgroup" value="right">
+              Høyrestilt
+            </label>
+            <label class="ds-button" hidden>
+              <input type="radio" name="focusgroup" value="justify">
+              Utfallende
+            </label>
+          </template>
+        </my-test>
+      </fieldset>
 
       <br>
       <br>

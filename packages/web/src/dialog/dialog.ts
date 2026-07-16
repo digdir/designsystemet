@@ -1,10 +1,8 @@
 import {
   attr,
   getComposedTarget,
-  isBrowser,
   on,
   onHotReload,
-  onMutation,
   QUICK_EVENT,
 } from '../utils/utils';
 
@@ -32,25 +30,18 @@ const handleClosedbyAny = (event: Event) => {
 };
 
 // Ensure buttons that trigger a modeal dialog has aria-haspopup="dialog" for better screen reader experience
-const BUTTONS = isBrowser() ? document.getElementsByTagName('button') : [];
-const handleAriaAttributes = () => {
-  for (const btn of BUTTONS)
-    if (btn.getAttribute('command')?.endsWith('-modal'))
-      btn.setAttribute('aria-haspopup', 'dialog'); // Using get/setAttribute for performance
+const MODAL = 'show-modal';
+const NON_MODAL = '--show-non-modal';
+const handleAriaAttributes = (event: Event) => {
+  const el = (getComposedTarget(event) as Element).closest?.('[command]');
+  if (el && attr(el, 'command') === MODAL) attr(el, 'aria-haspopup', 'dialog');
 };
 
 const handleCommand = ({ command, target }: Event & { command?: string }) =>
-  command === '--show-non-modal' &&
-  target instanceof HTMLDialogElement &&
-  target.show();
+  command === NON_MODAL && target instanceof HTMLDialogElement && target.show();
 
 onHotReload('dialog', () => [
   on(document, 'command', handleCommand, QUICK_EVENT),
+  on(document, 'focus', handleAriaAttributes, QUICK_EVENT),
   on(document, 'pointerdown pointerup', handleClosedbyAny, QUICK_EVENT),
-  onMutation(document, handleAriaAttributes, {
-    attributeFilter: ['command'],
-    attributes: true,
-    childList: true,
-    subtree: true,
-  }),
 ]);
