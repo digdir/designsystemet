@@ -54,6 +54,7 @@ function makeFriendlyError(err: unknown) {
 
 /**
  * Validates a configuration object against a provided Zod schema.
+ * Populates default values from the schema and returns the validated configuration object.
  *
  * @template T - The expected type of the validated configuration.
  * @param schema - A Zod schema used to validate the configuration object.

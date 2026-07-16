@@ -1,6 +1,8 @@
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
+import { validateConfig } from '../schemas/helpers.ts';
+import { nextConfigSchema } from '../schemas/next/schema.ts';
 import { generate$Themes } from '../tokens/create/generators/$themes.ts';
 import { createTokens, tokenSetDimensions } from '../tokens/create.ts';
 import { buildOptions, processPlatform } from '../tokens/process/platform.ts';
@@ -96,12 +98,15 @@ export const formatTheme = async (themeConfig: Theme) => {
   }
 };
 
+// Parse the config through the schema so defaults (typography, borderRadius) are applied.
+const { themes } = validateConfig(nextConfigSchema, config);
+
 formatTheme({
   name: 'test',
-  borderRadius: config.themes.designsystemet.borderRadius,
+  borderRadius: themes.designsystemet.borderRadius,
   colors: {
-    primary: config.themes.designsystemet.colors.accent as `#${string}`,
-    neutral: config.themes.designsystemet.colors.neutral as `#${string}`,
+    primary: themes.designsystemet.colors.accent,
+    neutral: themes.designsystemet.colors.neutral,
   },
-  typography: config.themes.designsystemet.typography,
+  typography: themes.designsystemet.typography,
 });
