@@ -10,7 +10,12 @@ import {
   Textarea,
 } from '@digdir/designsystemet-react';
 import { useEffect, useReducer, useRef, useState } from 'react';
-import type { FigmaMessages, Notification, UiState } from '../types';
+import type {
+  FigmaMessages,
+  Notification,
+  UiColorScheme,
+  UiState,
+} from '../types';
 import './app.css';
 import type { PreviewData } from '../plugin/token-export/types';
 import { PreviewView } from './preview-data';
@@ -20,7 +25,7 @@ type View = 'paste' | 'preview';
 const initialState: UiState = {
   previewData: null,
   selectedTheme: null,
-  selectedScheme: null,
+  selectedScheme: 'Light',
   isImporting: false,
   notification: null,
 };
@@ -30,14 +35,14 @@ type Action =
       type: 'set-preview';
       previewData: PreviewData;
       theme: string | null;
-      scheme: string | null;
+      scheme: UiColorScheme;
       notification: Notification | null;
     }
   | { type: 'clear-preview' }
   | { type: 'set-importing'; value: boolean }
   | { type: 'set-notification'; notification: Notification | null }
   | { type: 'select-theme'; theme: string }
-  | { type: 'select-scheme'; scheme: string };
+  | { type: 'select-scheme'; scheme: UiColorScheme };
 
 function reducer(state: UiState, action: Action): UiState {
   switch (action.type) {
@@ -98,7 +103,7 @@ function App() {
                 type: 'set-preview',
                 previewData: msg.preview?.previewData,
                 theme: msg.preview?.themeNames[0] || null,
-                scheme: 'light',
+                scheme: 'Light',
                 notification: null,
               });
               break;
@@ -201,7 +206,10 @@ function App() {
             selectedScheme={state.selectedScheme}
             selectedTheme={state.selectedTheme}
             onSelectScheme={(scheme) =>
-              dispatch({ type: 'select-scheme', scheme })
+              dispatch({
+                type: 'select-scheme',
+                scheme: scheme as UiColorScheme,
+              })
             }
             onSelectTheme={(theme) => dispatch({ type: 'select-theme', theme })}
           />

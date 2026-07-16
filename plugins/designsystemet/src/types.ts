@@ -28,10 +28,13 @@ export type FigmaMessages =
   | PreviewTokensFromConfig
   | ExportTokensToFigma;
 
+/** Using a separate type for UI color schemes for now as our main one from CLI is lowercase and needs to be Pascal case to match figma variables import for now */
+export type UiColorScheme = 'Light' | 'Dark';
+
 export type UiState = {
   previewData: PreviewData | null;
   selectedTheme: string | null;
-  selectedScheme: string | null;
+  selectedScheme: UiColorScheme;
   isImporting: boolean;
   notification: Notification | null;
 };

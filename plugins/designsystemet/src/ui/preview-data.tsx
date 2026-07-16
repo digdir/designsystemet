@@ -61,13 +61,6 @@ export function PreviewView({
   const showThemes = preview.themeOptions.length > 1;
   const showSchemes = preview.colorSchemeOptions.length > 1;
 
-  // Always show Light before Dark (and any custom schemes in between).
-  const rank = (name: string) =>
-    /light/i.test(name) ? 0 : /dark/i.test(name) ? 2 : 1;
-  const orderedSchemes = preview.colorSchemeOptions
-    .slice()
-    .sort((a, b) => rank(a.name) - rank(b.name));
-
   // The preview surface follows the selected scheme (not the user's Figma theme) so light
   // colors are read on a light surface and dark colors on a dark one. Keying the surface on
   // the scheme remounts it on scheme change, replaying the reveal animation — but not on
@@ -83,6 +76,7 @@ export function PreviewView({
               <div>
                 <div className='tx-control-label'>Theme</div>
                 <ToggleGroup
+                  data-toggle-group='Toggle between themes'
                   value={selectedTheme ?? undefined}
                   onChange={onSelectTheme}
                 >
@@ -98,10 +92,11 @@ export function PreviewView({
               <div>
                 <div className='tx-control-label'>Color scheme</div>
                 <ToggleGroup
+                  data-toggle-group='Toggle between color schemes'
                   value={selectedScheme ?? undefined}
                   onChange={onSelectScheme}
                 >
-                  {orderedSchemes.map((scheme) => (
+                  {preview.colorSchemeOptions.map((scheme) => (
                     <ToggleGroupItem key={scheme.name} value={scheme.name}>
                       {scheme.name}
                     </ToggleGroupItem>

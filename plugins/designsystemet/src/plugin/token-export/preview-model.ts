@@ -226,14 +226,17 @@ function buildThemeOptions(
     tokenSets: existingTokenSets(mode),
   }));
 }
-
 function buildColorSchemeOptions(modePreviews: ModePreview[]): ThemeOption[] {
+  const rank = (name: string) =>
+    /Light/i.test(name) ? 0 : /Dark/i.test(name) ? 2 : 1;
+
   return modePreviews
     .filter((mode) => mode.group === COLLECTION.COLOR_SCHEME)
     .map((mode) => ({
       name: mode.name,
       tokenSets: existingTokenSets(mode),
-    }));
+    }))
+    .sort((a, b) => rank(a.name) - rank(b.name));
 }
 
 function existingTokenSets(mode: ModePreview): string[] {
