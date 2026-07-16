@@ -17,8 +17,8 @@
     "build:ui": "vite build -c ./vite.config.ui.ts",
     "build:plugin": "vite build -c ./vite.config.plugin.ts",
     "watch": "pnpm run watch:ui & pnpm run watch:plugin",
-    "watch:ui": "npm run build:ui -- --watch --mode=development",
-    "watch:plugin": "npm run build:plugin -- --watch --mode=development"
+    "watch:ui": "pnpm run build:ui -- --watch --mode=development",
+    "watch:plugin": "pnpm run build:plugin -- --watch --mode=development"
   },
   "dependencies": {
     "@digdir/designsystemet": "workspace:",
