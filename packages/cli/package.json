@@ -38,7 +38,8 @@
       "import": "./dist/src/types.js"
     },
     "./schemas/*": {
-      "import": "./dist/src/schemas/*"
+      "import": "./dist/src/schemas/*",
+      "types": "./dist/src/schemas/*"
     }
   },
   "publishConfig": {

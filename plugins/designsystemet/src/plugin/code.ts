@@ -2,14 +2,12 @@ import {
   parseConfig,
   validateConfig,
 } from '@digdir/designsystemet/schemas/helpers.js';
-import { defaultTheme } from '@digdir/designsystemet/schemas/v1.1/defaults.js';
 import { configFileCreateSchema } from '@digdir/designsystemet/schemas/v1.1/schema.js';
 import {
   createSystemTokens,
   createTokens,
   tokenSetDimensions,
 } from '@digdir/designsystemet/tokens/create';
-import type { Theme } from '@digdir/designsystemet/tokens/types';
 import type { infer as ZodInfer } from 'zod';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
@@ -70,13 +68,10 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         for (const [themeName, themeConfig] of Object.entries(
           config.themes,
         ) as [string, ConfigSchema['themes'][string]][]) {
-          const mergedTheme: Theme = {
-            ...defaultTheme,
+          const { tokenSets } = await createTokens({
             name: themeName,
             ...themeConfig,
-          };
-
-          const { tokenSets } = await createTokens(mergedTheme);
+          });
 
           // Collect semantic color names from the token set paths to get severity colors, neutral and other default colors. These will be used to generate system tokens later.
           for (const [tokenSetPath, data] of tokenSets.entries()) {

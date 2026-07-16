@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { baseColorNames, colorNames } from '../../colors/colorMetadata.ts';
 import { convertToHex } from '../../colors/index.ts';
-import { defaultBorderRadius, defaultFontFamily } from './defaults.ts';
+import { defaultBorderRadius, defaultFontFamily } from '../defaults.ts';
 
 const hexPatterns = [
   // Hex colors: #000, #0000, #000000, #00000000
@@ -134,12 +134,19 @@ const themesSchema = z
   });
 
 export const commonConfig = z.object({
-  clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
+  clean: z
+    .boolean()
+    .default(false)
+    .meta({ description: 'Delete the output directory before building or creating tokens' })
+    .optional(),
 });
 
 const _configFileCreateSchema = z
   .object({
-    outDir: z.string().meta({ description: 'Path to the output directory for the created design tokens' }),
+    outDir: z
+      .string()
+      .default('design-tokens')
+      .meta({ description: 'Path to the output directory for the created design tokens' }),
     themes: themesSchema,
   })
   .required();
