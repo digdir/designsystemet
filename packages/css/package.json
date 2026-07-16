@@ -49,7 +49,7 @@
     "digdir"
   ],
   "scripts": {
-    "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme && postcss ./src/v2/*.css --dir ./dist/src/v2"
+    "build": "rimraf dist && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme && postcss ./src/v2/*.css --dir ./dist/src/v2"
   },
   "dependencies": {
     "@digdir/designsystemet-types": "workspace:"
