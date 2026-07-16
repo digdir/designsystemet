@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-`typography` and `border-radius` are no longer required to be defined in config file. If not defined default values `typography: font-family: "Inter"` and/or `border-radius:4` will be used.
+`typography` and `borderRadius` are no longer required in the config file. If omitted, defaults will be used: `typography.fontFamily = "Inter"` and `borderRadius = 4`.
