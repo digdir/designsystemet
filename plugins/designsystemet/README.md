@@ -2,7 +2,7 @@
 
 **⚠️ Experimental ⚠️**
 
-
+[Figma design](https://www.figma.com/design/trNNkbj9vNueZ8wRXjYpnh/Figma-Plugin?node-id=9-46&t=KRKRa4lkcS2rsFAl-1)
 
 ## Known issues and TODO
 
