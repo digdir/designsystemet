@@ -16,12 +16,22 @@ const cssOutputSchema = z.object({
   experimental_tailwind: z.boolean().default(true).describe('Whether to enable experimental Tailwind support'),
 });
 
-const outputSchema = z
+const outputObjectSchema = z
   .union([designTokensOutputSchema, cssOutputSchema])
   .describe('An object representing an output file');
 
-export const rootConfigSchema = configFileCreateSchema.extend({
+const outputShorthandSchema = z
+  .enum(['design-tokens', 'css'])
+  .describe('An output type using its default settings')
+  .transform((type) => ({ type }))
+  .pipe(outputObjectSchema);
+
+const outputSchema = z
+  .union([outputObjectSchema, outputShorthandSchema])
+  .describe('An output file, either as an object or an output type using its default settings');
+
+export const nextConfigSchema = configFileCreateSchema.extend({
   output: z.array(outputSchema).describe('An array of output files'),
 });
 
-export type RootConfigSchema = z.infer<typeof rootConfigSchema>;
+export type NextConfigSchema = z.infer<typeof nextConfigSchema>;

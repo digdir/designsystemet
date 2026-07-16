@@ -9,8 +9,8 @@ import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
 import migrations from '../src/migrations/index.ts';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
-import type { RootConfigSchema } from '../src/schemas/next/schema.ts';
-import { rootConfigSchema } from '../src/schemas/next/schema.ts';
+import type { NextConfigSchema } from '../src/schemas/next/schema.ts';
+import { nextConfigSchema } from '../src/schemas/next/schema.ts';
 import { buildTokens } from '../src/tokens/build.ts';
 import { createTokens, systemTokenToFiles, tokenSetDimensions, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
@@ -292,6 +292,7 @@ program
   .option('--dry [boolean]', 'Dry run - show config without writing files', parseBoolean, false)
   .action(async (opts) => {
     console.log(figletAscii);
+
     const { configFile, configFilePath } = await getConfigFile(opts.config);
 
     dsfs.init({ dry: opts.dry, outdir: path.dirname(configFilePath) });
@@ -301,8 +302,8 @@ program
       process.exit(1);
     }
 
-    const parsedConfig = parseConfig<RootConfigSchema>(configFile);
-    const config = validateConfig<RootConfigSchema>(rootConfigSchema, parsedConfig);
+    const parsedConfig = parseConfig<NextConfigSchema>(configFile);
+    const config = validateConfig<NextConfigSchema>(nextConfigSchema, parsedConfig);
 
     const themeNames = Object.keys(config.themes);
     if (themeNames.length > 0) {
