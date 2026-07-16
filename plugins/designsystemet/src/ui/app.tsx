@@ -231,7 +231,7 @@ function App() {
             <Button
               onClick={() =>
                 sendMessageOnClick('import-config-and-create-preview-tokens', {
-                  config: textareaRef.current?.value,
+                  config: value,
                 })
               }
             >
