@@ -220,7 +220,7 @@ function App() {
           {view === 'preview' && (
             <Button
               onClick={() => dispatch({ type: 'clear-preview' })}
-              data-variant='tertiary'
+              variant='tertiary'
             >
               Go back
             </Button>
