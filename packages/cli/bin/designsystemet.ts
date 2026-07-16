@@ -8,8 +8,9 @@ import { checkAutomigrate } from '../src/automigrate.ts';
 import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
 import migrations from '../src/migrations/index.ts';
-import { parseConfig } from '../src/schemas/helpers.ts';
-import type { RootConfigSchema, rootConfig } from '../src/schemas/next/schema.ts';
+import { getSchemaDefaults, parseConfig } from '../src/schemas/helpers.ts';
+import type { RootConfigSchema } from '../src/schemas/next/schema.ts';
+import { rootConfig } from '../src/schemas/next/schema.ts';
 import { buildTokens } from '../src/tokens/build.ts';
 import { createTokens, systemTokenToFiles, tokenSetDimensions, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
@@ -300,8 +301,12 @@ program
       process.exit(1);
     }
 
-    const parsedConfig = await parseConfig<RootConfigSchema>(configFile, configFilePath);
-    const config = parsedConfig ? parsedConfig : parseConfig<RootConfigSchema>(configFile, configFilePath);
+    const parsedConfig = parseConfig<RootConfigSchema>(configFile, configFilePath);
+    const defaultConfig = getSchemaDefaults(rootConfig);
+    const config = { ...defaultConfig, ...parsedConfig };
+
+    console.log('Default config:', defaultConfig);
+    console.log('Merged config:', config);
 
     const themeNames = Object.keys(config.themes);
     if (themeNames.length > 0) {

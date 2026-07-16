@@ -24,4 +24,4 @@ export const rootConfig = configFileCreateSchema.extend({
   output: z.array(outputSchema).describe('An array of output files'),
 });
 
-export type RootConfigSchema = z.input<typeof rootConfig>;
+export type RootConfigSchema = z.infer<typeof rootConfig>;

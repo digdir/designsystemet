@@ -2,7 +2,7 @@
   "$schema": "packages/cli/dist/config-next.schema.json",
   "outDir": "design-tokens",
   "clean": true,
-  "output": [],
+  "output": [{ "type": "design-tokens" }, { "type": "css" }],
   "themes": {
     "designsystemet": {
       "colors": {
