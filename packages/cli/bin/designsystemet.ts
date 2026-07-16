@@ -7,6 +7,7 @@ import pkg from '../package.json' with { type: 'json' };
 import { checkAutomigrate } from '../src/automigrate.ts';
 import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
+import { formatThemeCSS } from '../src/index.ts';
 import migrations from '../src/migrations/index.ts';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
 import type { NextConfigSchema } from '../src/schemas/next/schema.ts';
@@ -265,24 +266,38 @@ program
     const config = validateConfig<NextConfigSchema>(nextConfigSchema, parsedConfig);
 
     for (const output of config.output) {
+      const outDir = path.join(dsfs.outDir, output.dir);
+
       if (output.type === 'design-tokens') {
         console.log(`\n🍱 Generating design tokens in ${pc.green(output.dir)}...`);
 
         await createDesignTokens({
           themes: config.themes,
-          outDir: path.join(dsfs.outDir, output.dir),
-          clean: config.clean,
+          outDir: outDir,
+          clean: output.cleanDir,
         });
       }
 
       if (output.type === 'css') {
         console.log(`\n🍱 Generating CSS in ${pc.green(output.dir)}...`);
 
+        // We use parsedConfig to check if user explicitly set tokenDir in their config file because validateConfig will populate defaults.
+        if (!parsedConfig.output.find((o) => o.type === 'css')?.tokenDir) {
+          await createCss({
+            themes: config.themes,
+            outDir: outDir,
+            clean: output.cleanDir,
+            verbose,
+            tailwind: output.experimental_tailwind,
+          });
+          continue;
+        }
+
         await buildCss({
           // Resolve the token directory relative to the config file, like output.dir,
           // so it matches where a preceding design-tokens output wrote its files.
           tokensDir: path.join(dsfs.outDir, output.tokenDir),
-          outDir: path.join(dsfs.outDir, output.dir),
+          outDir,
           clean: output.cleanDir,
           verbose,
           tailwind: output.experimental_tailwind,
@@ -391,8 +406,6 @@ async function buildCss({
     await dsfs.cleanDir(outDir);
   }
 
-  await dsfs.mkdir(outDir);
-
   const files = await buildTokens({
     tokensDir,
     verbose: verbose ?? false,
@@ -401,7 +414,47 @@ async function buildCss({
 
   console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
 
+  await dsfs.mkdir(outDir);
   await dsfs.writeFiles(files, outDir, true);
 
   console.log(`\n✅ Finished building tokens in ${pc.green(outDir)}`);
+}
+
+async function createCss({
+  themes,
+  outDir,
+  clean,
+  verbose,
+  tailwind,
+}: {
+  themes: CreateConfigSchema['themes'];
+  outDir: string;
+  clean?: boolean;
+  verbose: boolean;
+  tailwind: boolean;
+}) {
+  if (clean) {
+    await dsfs.cleanDir(outDir);
+  }
+
+  const themeNames = Object.keys(themes);
+  if (themeNames.length > 0) {
+    console.log(`Using themes from config file: ${pc.blue(themeNames.join(', '))}`);
+  }
+
+  const files: OutputFile[] = [];
+
+  for (const [name, themeConfig] of Object.entries(themes)) {
+    const themeCSSFiles = await formatThemeCSS({ name, ...themeConfig } as Theme, { verbose, tailwind });
+    files.push(...themeCSSFiles);
+  }
+
+  if (clean) {
+    await dsfs.cleanDir(outDir);
+  }
+
+  await dsfs.mkdir(outDir);
+  await dsfs.writeFiles(files, outDir, true);
+
+  console.log(`\n✅ Finished creating tokens in ${pc.green(outDir)} for themes: ${pc.blue(themeNames.join(', '))}`);
 }
