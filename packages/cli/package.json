@@ -28,6 +28,12 @@
     "./tokens": {
       "import": "./dist/src/tokens/index.js"
     },
+    "./tokens/create": {
+      "import": "./dist/src/tokens/create.js"
+    },
+    "./tokens/types": {
+      "import": "./dist/src/tokens/types.js"
+    },
     "./types": {
       "import": "./dist/src/types.js"
     },

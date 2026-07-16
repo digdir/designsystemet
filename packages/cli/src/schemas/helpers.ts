@@ -20,7 +20,7 @@ export const deprecatedCLIOptions = {
     borderRadius: 'border-radius',
   },
 } as const;
-
+/** @deprecated  options support will be removed */
 function mapPathToOptionName(path: PropertyKey[]) {
   // replace "themes.some-theme-name" with "theme" to match cliOptions object
   const normalisedPath = path[0] === 'themes' ? ['theme', ...R.drop(2, path)] : path;
@@ -40,10 +40,9 @@ function makeFriendlyError(err: unknown) {
             const issuePath = issue.path.join('.');
             const optionName = mapPathToOptionName(issue.path);
 
-            const errorCode = `(error code: ${issue.code})`;
             const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
-            return `  - Error in JSON value ${pc.red(issuePath)}${optionMessage}:
-      ${issue.message} ${pc.dim(errorCode)}`;
+            return `Error in value ${pc.red(issuePath)}${optionMessage}:
+      ${issue.message}`;
           })
           .join('\n'),
     });
@@ -60,21 +59,14 @@ function makeFriendlyError(err: unknown) {
  * @param schema - A Zod schema used to validate the configuration object.
  * @param unvalidatedConfig - The configuration object to validate.
  * @returns The validated configuration object, typed as T.
- * @throws Exits the process with code 1 if validation fails, after logging a friendly error message.
+ * @throws Throws an Error with a friendly, user-facing validation message if validation fails.
  */
-export function validateConfig<T>(
-  schema: z.ZodType<T>,
-  unvalidatedConfig: Record<string, unknown>,
-  configFilePath: string,
-): T {
+export function validateConfig<T>(schema: z.ZodType<T>, unvalidatedConfig: Record<string, unknown>): T {
   try {
     return schema.parse(unvalidatedConfig) as T;
   } catch (err) {
-    console.error(pc.redBright(`Invalid config file at ${pc.red(configFilePath)}`));
-
     const validationError = makeFriendlyError(err);
-    console.error(validationError?.toString());
-    process.exit(1);
+    throw new Error(validationError?.toString());
   }
 }
 
@@ -105,7 +97,7 @@ export function parseJsonc<T>(content: string): T {
   return result;
 }
 
-export function parseConfig<T>(configFile: string, configFilePath: string): T {
+export function parseConfig<T>(configFile: string): T {
   if (!configFile) {
     return {} as T;
   }
@@ -113,11 +105,7 @@ export function parseConfig<T>(configFile: string, configFilePath: string): T {
   try {
     return parseJsonc<T>(configFile);
   } catch (err) {
-    console.error(pc.redBright(`Failed parsing config file at ${pc.red(configFilePath)}`));
-
     const validationError = makeFriendlyError(err);
-    console.error(validationError?.toString());
-
-    process.exit(1);
+    throw new Error(validationError?.toString());
   }
 }

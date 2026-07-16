@@ -9,8 +9,7 @@ import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
 import migrations from '../src/migrations/index.ts';
 import { buildTokens } from '../src/tokens/build.ts';
-import { createSystemTokenFiles, tokenSetsToFiles } from '../src/tokens/create/files.ts';
-import { createTokens, tokenSetDimensions } from '../src/tokens/create.ts';
+import { createTokens, systemTokenToFiles, tokenSetDimensions, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { toColorNames } from '../src/tokens/utils.ts';
@@ -184,7 +183,7 @@ function _makeTokenCommands() {
       }
 
       files.push(
-        ...(await createSystemTokenFiles({
+        ...(await systemTokenToFiles({
           tokenSetDimensions,
           themeNames,
           colorNames,

@@ -1,0 +1,46 @@
+{
+  "name": "@plugin/designsystemet",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Designsystemet Figma plugin",
+  "author": "Designsystemet team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/plugins/designsystemet",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && pnpm run build:ui && pnpm run build:plugin",
+    "types": "tsc --noEmit",
+    "build:ui": "vite build -c ./vite.config.ui.ts",
+    "build:plugin": "vite build -c ./vite.config.plugin.ts",
+    "watch": "pnpm run watch:ui & pnpm run watch:plugin",
+    "watch:ui": "pnpm run build:ui -- --watch --mode=development",
+    "watch:plugin": "pnpm run build:plugin -- --watch --mode=development"
+  },
+  "dependencies": {
+    "@digdir/designsystemet": "workspace:",
+    "@digdir/designsystemet-css": "workspace:",
+    "@digdir/designsystemet-react": "workspace:",
+    "@digdir/designsystemet-types": "workspace:",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.130.0",
+    "@types/node": "24.13.2",
+    "@types/postcss-url": "^10.0.4",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "postcss": "^8.5.15",
+    "postcss-url": "^10.1.4",
+    "rimraf": "6.1.3",
+    "typescript": "5.9.3",
+    "vite": "8.1.0",
+    "vite-plugin-singlefile": "^2.3.3",
+    "zod": "^4.4.3"
+  }
+}
