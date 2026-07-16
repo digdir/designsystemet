@@ -301,7 +301,7 @@ program
       process.exit(1);
     }
 
-    const parsedConfig = parseConfig<RootConfigSchema>(configFile, configFilePath);
+    const parsedConfig = parseConfig<RootConfigSchema>(configFile);
     const defaultConfig = getSchemaDefaults(rootConfig);
     const config = { ...defaultConfig, ...parsedConfig };
 
@@ -330,7 +330,7 @@ program
         }
 
         files.push(
-          ...(await createSystemTokenFiles({
+          ...(await systemTokenToFiles({
             tokenSetDimensions,
             themeNames,
             colorNames,
