@@ -1,7 +1,7 @@
 import { type ParseError, parse as parseJsoncRaw, printParseErrorCode } from 'jsonc-parser';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import { z } from 'zod';
+import type { z } from 'zod';
 import { fromError } from 'zod-validation-error';
 
 export const deprecatedCLIOptions = {
@@ -96,42 +96,6 @@ export function parseJsonc<T>(content: string): T {
 
   return result;
 }
-
-/**
- * Recursively extracts default values from a Zod schema.
- *
- * Fields with `.default()` return their default value, nested objects are
- * traversed recursively, optional/nullable wrappers are unwrapped, and
- * single-value literals return their literal value. Fields without a
- * resolvable default are omitted from the result.
- *
- * @template T - The Zod schema type.
- * @param schema - The Zod schema to extract default values from.
- * @returns The default values described by the schema.
- */
-export function getSchemaDefaults<T extends z.ZodType>(schema: T): Partial<z.infer<T>> {
-  return getDefaultValue(schema) as Partial<z.infer<T>>;
-}
-
-function getDefaultValue(schema: z.ZodType): unknown {
-  if (schema instanceof z.ZodDefault) {
-    return schema.def.defaultValue;
-  }
-  if (schema instanceof z.ZodOptional || schema instanceof z.ZodNullable) {
-    return getDefaultValue(schema.def.innerType as z.ZodType);
-  }
-  if (schema instanceof z.ZodObject) {
-    const entries = Object.entries(schema.shape)
-      .map(([key, value]) => [key, getDefaultValue(value as z.ZodType)] as const)
-      .filter(([, value]) => value !== undefined);
-    return Object.fromEntries(entries);
-  }
-  if (schema instanceof z.ZodLiteral && schema.def.values.length === 1) {
-    return schema.def.values[0];
-  }
-  return undefined;
-}
-
 export function parseConfig<T>(configFile: string): T {
   if (!configFile) {
     return {} as T;
