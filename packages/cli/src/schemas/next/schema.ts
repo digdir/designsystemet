@@ -30,8 +30,11 @@ const outputSchema = z
   .union([outputObjectSchema, outputShorthandSchema])
   .describe('An output file, either as an object or an output type using its default settings');
 
-export const nextConfigSchema = configFileCreateSchema.extend({
-  output: z.array(outputSchema).describe('An array of output files'),
-});
+export const nextConfigSchema = configFileCreateSchema
+  .extend({
+    output: z.array(outputSchema).describe('An array of output files'),
+  })
+  // Omit the `clean` and `outDir` properties from the schema, as they are now handled by the `output` property.
+  .omit({ clean: true, outDir: true });
 
 export type NextConfigSchema = z.infer<typeof nextConfigSchema>;

@@ -20,7 +20,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processe
     $designsystemet = JSON.parse($designsystemetContent) as DesignsystemetObject;
   } catch (_error) {}
 
-  console.log(`\n🏗️ Start building tokens in ${pc.green(tokensDir)}`);
+  console.log(`\n🏗️  Start building tokens in ${pc.green(tokensDir)}`);
 
   const processedBuilds = await processPlatform({
     ...options,

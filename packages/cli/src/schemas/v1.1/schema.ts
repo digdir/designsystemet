@@ -85,10 +85,7 @@ const themeSchema = z
       .meta({ description: 'Defines the colors for this theme' }),
     typography: z
       .object({
-        fontFamily: z
-          .string()
-          .meta({ description: 'Sets the font-family for this theme' })
-          .default(defaultFontFamily),
+        fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }).default(defaultFontFamily),
       })
       .describe('Defines the typography for a given theme')
       .prefault({}),

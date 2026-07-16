@@ -265,7 +265,10 @@ program
     const parsedConfig = parseConfig<NextConfigSchema>(configFile);
     const config = validateConfig<NextConfigSchema>(nextConfigSchema, parsedConfig);
 
-    for (const output of config.output) {
+    // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
+    const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
+
+    for (const output of sortedOutput) {
       const outDir = path.join(dsfs.outDir, output.dir);
 
       if (output.type === 'design-tokens') {
@@ -281,8 +284,8 @@ program
       if (output.type === 'css') {
         console.log(`\n🍱 Generating CSS in ${pc.green(output.dir)}...`);
 
-        // We use parsedConfig to check if user explicitly set tokenDir in their config file because validateConfig will populate defaults.
-        if (!parsedConfig.output.find((o) => o.type === 'css')?.tokenDir) {
+        // Only generate create CSS if no `design-tokens` output is present and no `tokenDir` is explicitly set in the config file. Otherwise, build CSS from existing design tokens.
+        if (isOnlyCssOutput(parsedConfig)) {
           await createCss({
             themes: config.themes,
             outDir: outDir,
@@ -290,18 +293,17 @@ program
             verbose,
             tailwind: output.experimental_tailwind,
           });
-          continue;
+        } else {
+          await buildCss({
+            // Resolve the token directory relative to the config file, like output.dir,
+            // so it matches where a preceding design-tokens output wrote its files.
+            tokensDir: path.join(dsfs.outDir, output.tokenDir),
+            outDir,
+            clean: output.cleanDir,
+            verbose,
+            tailwind: output.experimental_tailwind,
+          });
         }
-
-        await buildCss({
-          // Resolve the token directory relative to the config file, like output.dir,
-          // so it matches where a preceding design-tokens output wrote its files.
-          tokensDir: path.join(dsfs.outDir, output.tokenDir),
-          outDir,
-          clean: output.cleanDir,
-          verbose,
-          tailwind: output.experimental_tailwind,
-        });
       }
     }
   });
@@ -412,12 +414,12 @@ async function buildCss({
     tailwind: tailwind ?? false,
   });
 
-  console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
+  console.log(`\n💾 Writing CSS to ${pc.green(outDir)}`);
 
   await dsfs.mkdir(outDir);
   await dsfs.writeFiles(files, outDir, true);
 
-  console.log(`\n✅ Finished building tokens in ${pc.green(outDir)}`);
+  console.log(`\n✅ Finished building tokens`);
 }
 
 async function createCss({
@@ -453,8 +455,20 @@ async function createCss({
     await dsfs.cleanDir(outDir);
   }
 
+  console.log(`\n💾 Writing CSS to ${pc.green(outDir)}`);
+
   await dsfs.mkdir(outDir);
   await dsfs.writeFiles(files, outDir, true);
 
-  console.log(`\n✅ Finished creating tokens in ${pc.green(outDir)} for themes: ${pc.blue(themeNames.join(', '))}`);
+  console.log(`\n✅ Finished creating CSS`);
+}
+
+function isOnlyCssOutput(config: NextConfigSchema): boolean {
+  // Can be defined using either the shorthand or object syntax, so check for both.
+  const hasDesignTokensOutput =
+    config.output.find((o) => o.type === 'design-tokens') ||
+    config.output.find((o) => o === ('design-tokens' as unknown as NextConfigSchema['output'][number]));
+  const hasCSSTokensDir = config.output.find((o) => o.type === 'css')?.tokenDir;
+
+  return !hasDesignTokensOutput && !hasCSSTokensDir;
 }
