@@ -290,12 +290,14 @@ program
     `Use a custom config file (auto-detects ${DEFAULT_CONFIG_FILEPATHS.map((p) => `"${p}"`).join(' or ')})`,
   )
   .option('--dry [boolean]', 'Dry run - show config without writing files', parseBoolean, false)
+  .option('--verbose', 'Enable verbose output', false)
   .action(async (opts) => {
     console.log(figletAscii);
+    const { verbose, dry } = opts;
 
     const { configFile, configFilePath } = await getConfigFile(opts.config);
 
-    dsfs.init({ dry: opts.dry, outdir: path.dirname(configFilePath) });
+    dsfs.init({ dry, outdir: path.dirname(configFilePath) });
 
     if (!configFile) {
       console.error(pc.redBright(`No config file found. Please create one at ${pc.blue(DEFAULT_CONFIG_FILEPATH)}.`));
@@ -312,7 +314,7 @@ program
 
     for (const output of config.output) {
       if (output.type === 'design-tokens') {
-        console.log(`\nGenerating design tokens in ${pc.green(output.dir)}...`);
+        console.log(`\n🍱 Generating design tokens in ${pc.green(output.dir)}...`);
 
         const files: OutputFile[] = [];
 
@@ -347,17 +349,23 @@ program
       }
 
       if (output.type === 'css') {
-        console.log(`\nGenerating CSS in ${pc.green(output.dir)}...`);
+        console.log(`\n🍱 Generating CSS in ${pc.green(output.dir)}...`);
 
         const outDir = path.join(dsfs.outDir, output.dir);
+
+        await dsfs.mkdir(outDir);
+
+        // Resolve the token directory relative to the config file, like output.dir above,
+        // so it matches where a preceding design-tokens output wrote its files.
+        const tokensDir = path.join(dsfs.outDir, output.tokenDir);
 
         if (output.cleanDir) {
           await dsfs.cleanDir(outDir);
         }
 
         const files = await buildTokens({
-          tokensDir: output.tokenDir,
-          verbose: false,
+          tokensDir,
+          verbose,
           tailwind: output.experimental_tailwind || false,
         });
 

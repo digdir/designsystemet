@@ -40,7 +40,7 @@
     "publish-packages": "pnpm build && changeset publish",
     "chromatic": "pnpm --filter @web/storybook chromatic",
     "update:theme-digdir": "pnpm --filter @internal/digdir update:theme-digdir",
-    "update:theme": "designsystemet tokens create --config designsystemet.config.json && pnpm --filter @digdir/designsystemet-css build:theme",
+    "update:theme": "designsystemet",
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {

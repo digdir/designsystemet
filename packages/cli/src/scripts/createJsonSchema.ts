@@ -13,6 +13,9 @@ writeFile(
   resolve(import.meta.dirname, '../../dist/config.schema.json'),
   JSON.stringify(
     z.toJSONSchema(schema, {
+      // The JSON schema validates what users write in the config file,
+      // i.e. the pre-transform input: defaulted fields are optional.
+      io: 'input',
       unrepresentable: 'any',
     }),
     undefined,

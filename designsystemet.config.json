@@ -2,7 +2,7 @@
   "$schema": "packages/cli/dist/config-next.schema.json",
   "outDir": "design-tokens",
   "clean": true,
-  "output": [{ "type": "design-tokens" }, { "type": "css" }],
+  "output": [{ "type": "css", "dir": "./packages/css/theme" }, "design-tokens"],
   "themes": {
     "designsystemet": {
       "colors": {
@@ -10,10 +10,6 @@
         "brand1": "#0D7A5F",
         "brand2": "#5B3FA0",
         "neutral": "#24272B"
-      },
-      "borderRadius": 4,
-      "typography": {
-        "fontFamily": "Inter"
       }
     }
   }
