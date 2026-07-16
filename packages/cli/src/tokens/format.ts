@@ -45,7 +45,7 @@ export const formatTheme = async (themeConfig: Theme, options: Pick<FormatTokens
  *
  * @param themeConfig - The theme configuration object to be formatted.
  * @param options - Options for formatting, including verbosity and Tailwind CSS generation.
- * @returns A promise that resolves to the generated CSS string.
+ * @returns A promise that resolves to an array of `OutputFile` objects containing the formatted CSS files.
  */
 export const formatThemeCSS = async (
   themeConfig: Theme,
