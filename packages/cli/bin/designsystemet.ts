@@ -54,6 +54,73 @@ const dryOption = (description = 'Dry run - no files will be written') =>
   new Option('--dry [boolean]', description).argParser(parseBoolean).default(false);
 const verboseOption = () => new Option('--verbose', 'Enable verbose output').default(false);
 
+function _makeConfigCommand() {
+  const configCmd = createCommand('config');
+
+  configCmd
+    .description('Parses config file and run Designsystemet commands')
+    .addOption(configOption())
+    .addOption(dryOption())
+    .addOption(verboseOption())
+    .action(async (opts) => {
+      const { verbose, dry } = opts;
+
+      const { configFile, configFilePath } = await getConfigFile(opts.config);
+
+      dsfs.init({ dry, verbose, outdir: path.dirname(configFilePath) });
+
+      if (!configFile) {
+        console.error(pc.redBright(`No config file found. Please create one at ${pc.blue(DEFAULT_CONFIG_FILEPATH)}.`));
+        process.exit(1);
+      }
+
+      const parsedConfig = parseConfig<NextConfigSchema>(configFile);
+      const config = validateConfig<NextConfigSchema>(nextConfigSchema, parsedConfig);
+
+      // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
+      const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
+
+      for (const output of sortedOutput) {
+        const outDir = path.join(dsfs.outDir, output.dir);
+
+        if (output.type === 'design-tokens') {
+          console.log(`\n🍱 Generating design tokens in ${pc.green(output.dir)}...`);
+
+          await createDesignTokens({
+            themes: config.themes,
+            outDir: outDir,
+            clean: output.cleanDir,
+          });
+        }
+
+        if (output.type === 'css') {
+          console.log(`\n🍱 Generating CSS in ${pc.green(output.dir)}...`);
+
+          // Only generate create CSS if no `design-tokens` output is present and no `tokenDir` is explicitly set in the config file. Otherwise, build CSS from existing design tokens.
+          if (isOnlyCssOutput(parsedConfig)) {
+            await createCss({
+              themes: config.themes,
+              outDir: outDir,
+              clean: output.cleanDir,
+              verbose,
+              tailwind: output.experimental_tailwind,
+            });
+          } else {
+            await buildCss({
+              // Resolve the token directory relative to the config file, like output.dir,
+              // so it matches where a preceding design-tokens output wrote its files.
+              tokensDir: path.join(dsfs.outDir, output.tokenDir),
+              outDir,
+              clean: output.cleanDir,
+              verbose,
+              tailwind: output.experimental_tailwind,
+            });
+          }
+        }
+      }
+    });
+}
+
 function _makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
 
@@ -242,71 +309,6 @@ program
   });
 
 program.version(pkg.version, '-v, --version', 'Display version number').helpOption('-h, --help', 'Display help');
-
-program
-  .usage('designsystemet')
-  .command('config', { isDefault: true })
-  .description('Parses config file and run Designsystemet commands')
-  .addOption(configOption())
-  .addOption(dryOption())
-  .addOption(verboseOption())
-  .action(async (opts) => {
-    const { verbose, dry } = opts;
-
-    const { configFile, configFilePath } = await getConfigFile(opts.config);
-
-    dsfs.init({ dry, verbose, outdir: path.dirname(configFilePath) });
-
-    if (!configFile) {
-      console.error(pc.redBright(`No config file found. Please create one at ${pc.blue(DEFAULT_CONFIG_FILEPATH)}.`));
-      process.exit(1);
-    }
-
-    const parsedConfig = parseConfig<NextConfigSchema>(configFile);
-    const config = validateConfig<NextConfigSchema>(nextConfigSchema, parsedConfig);
-
-    // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
-    const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
-
-    for (const output of sortedOutput) {
-      const outDir = path.join(dsfs.outDir, output.dir);
-
-      if (output.type === 'design-tokens') {
-        console.log(`\n🍱 Generating design tokens in ${pc.green(output.dir)}...`);
-
-        await createDesignTokens({
-          themes: config.themes,
-          outDir: outDir,
-          clean: output.cleanDir,
-        });
-      }
-
-      if (output.type === 'css') {
-        console.log(`\n🍱 Generating CSS in ${pc.green(output.dir)}...`);
-
-        // Only generate create CSS if no `design-tokens` output is present and no `tokenDir` is explicitly set in the config file. Otherwise, build CSS from existing design tokens.
-        if (isOnlyCssOutput(parsedConfig)) {
-          await createCss({
-            themes: config.themes,
-            outDir: outDir,
-            clean: output.cleanDir,
-            verbose,
-            tailwind: output.experimental_tailwind,
-          });
-        } else {
-          await buildCss({
-            // Resolve the token directory relative to the config file, like output.dir,
-            // so it matches where a preceding design-tokens output wrote its files.
-            tokensDir: path.join(dsfs.outDir, output.tokenDir),
-            outDir,
-            clean: output.cleanDir,
-            verbose,
-            tailwind: output.experimental_tailwind,
-          });
-        }
-      }
-    }
-  });
 
 await program.parseAsync(process.argv);
 
