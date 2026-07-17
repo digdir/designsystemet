@@ -54,9 +54,9 @@ const dryOption = (description = 'Dry run - no files will be written') =>
   new Option('--dry [boolean]', description).argParser(parseBoolean).default(false);
 const verboseOption = () => new Option('--verbose', 'Enable verbose output').default(false);
 
+/** Disabling this for now temporarily for future testing and assesment */
 function _makeConfigCommand() {
   const configCmd = createCommand('config');
-
   configCmd
     .description('Parses config file and run Designsystemet commands')
     .addOption(configOption())
@@ -119,6 +119,8 @@ function _makeConfigCommand() {
         }
       }
     });
+
+  return configCmd;
 }
 
 function _makeTokenCommands() {
