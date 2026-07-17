@@ -12,7 +12,7 @@ const cssOutputSchema = z.object({
   dir: z.string().default('design-tokens-build').describe('The output directory'),
   cleanDir: z.boolean().default(true).describe('Whether to clean the output directory before generating files'),
   tokenDir: z.string().default('design-tokens').describe('The directory containing the design tokens'),
-  banner: z.string().describe('A banner to include at the top of the CSS file'),
+  banner: z.string().default('').describe('A banner to include at the top of the CSS file'),
   experimental_tailwind: z.boolean().default(true).describe('Whether to enable experimental Tailwind support'),
 });
 
