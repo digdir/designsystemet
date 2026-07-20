@@ -1,20 +1,30 @@
-
 ---
 title: Use tokens to colour graphics
 sidebar_title: Colour graphics
 description: With Designsystemet, you can colour graphics using tokens.
-date: 2026-06-01
+date: 2026-07-20
 category: Theme
 color: red
 icon: PencilLineIcon
 published: true
 order: 200
-search_terms: svg, colouring, symbol
+search_terms: svg, colouring, symbol, graphics, illustration, decorative
 ---
 
 If the graphics should look exactly the same regardless of light or dark mode, and use the colours defined in the design tool, you do not need to follow the guidance below.
 
-However, if you want to control colours and scaling via code (for example using design tokens), graphics should be added as SVGs and structured in a specific way.
+However, if you want to control colours and scaling via code (for example using design tokens), you should be added graphics as SVGs and they should be structured in a specific way.
+
+There are mainly two methods to do this:
+
+- SVG inline in the html
+- `<use>`, coupled with `<symbol>` for reuse
+
+Both works as intended. While `<use>` is preferred when the same graphics is used multiple places without having to duplicate code, inline SVG is often easiest when the grphics is only used once.
+
+Both colour and size is addressable with CSS when SVG is used inline or with `<use>`. For this to work, the SVG need to be set up correctly, for example including `viewBox`.
+
+Other methods for adding graphics, i.e. `<img src="...svg">`, canvas, CSS-drawing or icon fonts, does not give the same colour controll using design tokens, these methods are therefore not included in this guide.
 
 ## Basic setup
 
@@ -40,15 +50,28 @@ The file can then be used in HTML like this:
   <use href="logo.svg#ds-logo"></use>
 </svg>
 ```
+
+<Alert data-color='info'>
+  <h3 class="ds-heading" data-size='xs'>Tip: Scaling SVG</h3>
+  <br />
+  SVG scales easiest when:
+  - viewBox is set on `<symbol>` or `<svg>`
+  - size is controlled using width and height on the wrapping html element
+  <br />
+  If the SVG does not scale as expected, it will often be because:
+  - viewBox is missing
+  - or the proportions is wrong
+</Alert>
+
 ## Practical implementation
 
 What you need to adjust further depends on what you want to achieve.
 
-### Single-colour illustration (typical for certain logos and icons)
+### Single-colour graphics (typical for certain logos and icons)
 
-For a single-colour illustration, you can control the colour either by inheriting the current text colour or by applying a class or id.
+For a single-colour graphics, you can control the colour either by inheriting the current text colour or by applying a class or id.
 
-If you want all SVG illustrations to use the current text colour by default, you can use currentColor. Remove all colour values from the SVG graphics and add a rule for currentColor, so the illustration inherits the surrounding text colour. You may need to do the same for stroke.
+If you want all SVG graphics to use the current text colour by default, you can use currentColor. Remove all colour values from the SVG graphics and add a rule for currentColor, so the illustration inherits the surrounding text colour. You may need to do the same for stroke.
 ```CSS
 svg {
     fill: currentColor;
@@ -67,8 +90,7 @@ If you do not want to apply a global rule, you can instead set currentColor dire
 </svg>
 ```
 
-Test story for currentColor
-<Story story="WithCurrentColor" />
+<Story story="WithCurrentColor" truncateSvg={false} />
 
 If you need more control, you can manage colours via a class or id. Remove all colours from the SVG and add a class to the outer `<svg>` element, for example:
 ```HTML
@@ -87,9 +109,9 @@ With a corresponding token:
 Test story for icon color token
 <Story story="WithIconColor" />
 
-### Multi-colour illustration (typical for brand elements and small illustrations)
+### Multi-colour graphics (typical for brand elements and small illustrations)
 
-For illustrations with multiple colours, you can control colours directly on fill and stroke for each path inside the SVG file.
+For graphics with multiple colours, you can control colours directly on fill and stroke for each path inside the SVG file.
 ```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
   <symbol id="ds-logo" viewBox="0 0 40 40">
@@ -100,8 +122,7 @@ For illustrations with multiple colours, you can control colours directly on fil
   </symbol>
 </svg>
 ```
-
-With corresponding tokens. In this example, the illustration uses greyscale in dark mode:
+With corresponding tokens. In this example, the graphics uses greyscale in dark mode:
 ```CSS
 :root {
     --ds-color-logopart1: #1E98F5;
@@ -116,34 +137,32 @@ With corresponding tokens. In this example, the illustration uses greyscale in d
     }
 }
 ```
-
 You can of course reference colours directly from the design system, or use dedicated tokens if you have defined them for illustrations.
 
-Test story for multicolored illustration
-<Story story="WithMultiColor" />
+<Story story="WithMultiColor" truncateSvg={false} />
 
 ## Accessibility considerations
-To ensure the illustration is accessible, you need to add a few attributes to the outer `<svg>` element.
+To ensure the graphics is accessible, you need to add a few attributes to the outer `<svg>` element.
 
-### Decorative illustration
-Hide the illustration from screen readers by setting its role to presentation and marking it as hidden:
+### Decorative graphics
+Hide the graphic from screen readers by setting its role to presentation and marking it as hidden:
 ```HTML
 <svg height="1rem" width="1rem" class="logocolour" role="presentation" aria-hidden="true">
   <use href="logo.svg#ds-logo"></use>
 </svg>
 ```
 
-### Meaningful illustration
-If the illustration conveys meaning, give it the role of an image and provide a descriptive label:
+### Meaningful graphics
+If the graphic conveys meaning, give it the role of an image and provide a descriptive label:
 ```HTML
 <svg height="1rem" width="1rem" class="logocolour" role="img" aria-label="Design system logo with colours defined via variables">
   <use href="logo.svg#ds-logo"></use>
 </svg>
 ```
-For more complex illustrations, you may need more detailed descriptions. There are also ways to embed such descriptions directly within the SVG, but that is outside the scope of this guide.
+For more complex graphics and illustrations, you may need more detailed descriptions. There are also ways to embed such descriptions directly within the SVG, but that is outside the scope of this guide.
 
 
-## Inline illustration
+## Inline graphics
 
 Using `<use>` allows you to avoid repeating the same SVG code in multiple places. If the illustration is only used once on a page, it is perfectly acceptable to include it inline instead.
 
@@ -156,5 +175,32 @@ Using `<use>` allows you to avoid repeating the same SVG code in multiple places
 </svg>
 ```
 
-Test story for inline multi-colour illustration
-<Story story="WithMultiColorInline" />
+## Vanlige problemer og hva du bør sjekke
+
+Common errors for when the graphics does not look right:
+
+- **SVG does not scale or is the wrong size, check that**
+  - `viewBox` is set
+  - both `width` and `height` is defined on `<svg>` or via CSS
+
+- **Colours does not change, make sure**
+  - the SVG is inline in the DOM (not via `<img>`)
+  - `fill` and `stroke` is not hard coded colour values, like hex
+  - the CSS-variables (`var(...)`) is defined and accessible where the SVG is used
+
+- **Graphics is single coloured when expected to be multicoloured**
+  - check if `currentColor` is used on paths
+  - look for global styles that addresses all SVGs
+
+- **Graphics does not show at all**
+  - Make sure `href` iside `<use>` have the right file path and `id` (i.e. `file.svg#id`)
+  - Check the SVG file for `<symbol>` and the correct `id`
+
+## Sources and further reading
+
+- [SVG: Scalable Vector Graphics (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG)  
+- [\<use> – SVG element (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/use)  
+- [viewBox attribute (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox)  
+- [Fills and strokes (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes)  
+- [SVG 2 specification (W3C)](https://svgwg.org/svg2-draft/)  
+- [6 Common SVG Fails (and How to Fix Them) (CSS‑Tricks)](https://css-tricks.com/6-common-svg-fails-and-how-to-fix-them/)  

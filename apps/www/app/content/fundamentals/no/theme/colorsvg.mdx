@@ -2,13 +2,13 @@
 title: Bruk tokens for å fargelegge grafikk
 sidebar_title: Fargelegg grafikk
 description: Med Designsystemet kan du fargelegge grafikk.
-date: 2026-06-02
+date: 2026-07-20
 category: Tema
 color: red
 icon: PencilLineIcon
 published: true
 order: 200
-search_terms: svg, fargelegge, symbol, grafikk
+search_terms: svg, fargelegge, symbol, grafikk, illustrasjon, dekorativ
 ---
 
 Hvis grafikk skal se helt likt ut uansett lys eller mørk modus, og bruke de fargene som er satt i illustrasjonsverktøyet, trenger du ikke følge guiden under.
@@ -73,13 +73,13 @@ Hva du må tilpasse videre avhenger av hva du ønsker å oppnå.
 For en énsfarget grafikk kan du styre fargene enten ved å peke på gjeldende tekstfarge eller fargelegge via en klasse eller id.
 
 Vil du bruke gjeldende tekstfarge som standard på alle svg-grafikk kan du bruke currentColor som stil. Fjern alle farger i svg-fila og legg til stilregelen for currentColor, da arver grafikken gjeldende tekstfarge. Det kan hende du må gjøre det samme for stroke.
-```css
+```CSS
 svg {
     fill:currentColor;
 }
 ```
 Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette currentColor på fill og/eller stroke path inne i selve svg-fila. I designsystemet blir denne metoden brukt på ikoner, for eksempel i knappene.
-```html
+```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
   <symbol id="ds-logo" viewBox="0 0 40 40">
     <path d="..." fill="currentColor"/>
@@ -93,13 +93,13 @@ Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette c
 <Story story="WithCurrentColor" truncateSvg={false} />
 
 Ønsker du mer kontroll kan du styre fargen med klasse eller id, fjern alle farger fra grafikken og sett inn for ekesmpel en klasse på det omsluttende svg-elementet:
-```html
+```HTML
 <svg height="1rem" width="1rem" class="iconcolor">
   <use href="logo.svg#ds-logo"></use>
 </svg>
 ```
 Med tilhørende token:
-```css
+```CSS
 .iconcolor {
     color: var(--ds-color-text-default);
 }
@@ -122,7 +122,7 @@ For grafikk med flere farger kan du styre fargene direkte i fill og stroke på h
 </svg>
 ```
 Med tilhørende tokens, i eksempelet har illustrasjonen fått gråskala i mørk modus:
-```css
+```CSS
 :root {
     --logo-color-part1:#1E98F5;
     --logo-color-part2:#68707C;
@@ -147,7 +147,7 @@ For å sikre at illustrasjonen er tilgjengelig for alle må du legge til et par 
 ### Grafikk som kun er dekorativ
 
 Skjul grafikken for skjermleser med å sette rolle til presentasjon og at den skal være skjult.
-```html
+```HTML
 <svg height="1rem" width="1rem" class="logocolor" role="presentation" aria-hidden="true">
   <use href="logo.svg#ds-logo"></use>
 </svg>
@@ -156,7 +156,7 @@ Skjul grafikken for skjermleser med å sette rolle til presentasjon og at den sk
 ### Grafikk som er meningsbærende
 
 Gi grafikken rollen for bilde og en beskrivende tekst
-```html
+```HTML
 <svg height="1rem" width="1rem" class="logocolor" role="img" aria-label="Designsystemets logo med farger satt via variabler">
   <use href="logo.svg#ds-logo"></use>
 </svg>
@@ -167,7 +167,7 @@ For mer kompleks grafikk kan du bruke mer detaljerte beskrivelser og det finnes 
 
 Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere steder. Når du uansett kun skal ha grafikken på ett sted på siden din, så kan du gjerne sette den inn inline.
 
-```html
+```HTML
 <svg width="80" height="80" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
   <path d="..." fill="var(--logo-color-part1)"/>
   <path d="..." fill="var(--logo-color-part2)"/>
@@ -197,15 +197,7 @@ Hvis SVG ikke oppfører seg som forventet, er dette de vanligste årsakene:
   - Sjekk at `href` i `<use>` peker til riktig fil og `id` (`file.svg#id`)
   - Sjekk at SVG-fila inneholder et `<symbol>` med riktig `id`
 
-- **Endringer i CSS påvirker ikke SVG**
-  - Sjekk at SVG ikke lastes via `<img>`
-  - Sjekk at CSS-variabler (`var(...)`) er definert i samme DOM
-``
-
-
 ## Kilder og videre lesning
-
-Her finner du lenker til nyttige ressurser dersom du ønsker å forstå SVG bedre, fordype deg i detaljer rundt styling og feilsøking, eller jobbe videre med optimalisering av grafikk.
 
 - [SVG: Scalable Vector Graphics (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG)  
 - [\<use> – SVG element (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/use)  
