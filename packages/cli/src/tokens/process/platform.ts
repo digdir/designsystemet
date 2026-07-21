@@ -19,14 +19,14 @@ type SharedOptions = {
   processed$themes: ProcessedThemeObject[];
   /** Build token format map */
   buildTokenFormats: Record<string, { token: TransformedToken; formatted: string }[]>;
+  /** Tailwind CSS configuration */
+  tailwind?: boolean;
 };
 
 export type BuildOptions = {
   type: 'build';
   /** Design tokens path */
   tokensDir: string;
-  /** Tailwind CSS configuration */
-  tailwind?: boolean;
 } & SharedOptions;
 
 export type FormatOptions = {

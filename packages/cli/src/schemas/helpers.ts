@@ -55,6 +55,8 @@ function makeFriendlyError(err: unknown) {
 /**
  * Validates a configuration object against a provided Zod schema.
  *
+ * Populates default values from the schema and returns the validated configuration object.
+ *
  * @template T - The expected type of the validated configuration.
  * @param schema - A Zod schema used to validate the configuration object.
  * @param unvalidatedConfig - The configuration object to validate.
@@ -96,7 +98,6 @@ export function parseJsonc<T>(content: string): T {
 
   return result;
 }
-
 export function parseConfig<T>(configFile: string): T {
   if (!configFile) {
     return {} as T;
@@ -109,3 +110,12 @@ export function parseConfig<T>(configFile: string): T {
     throw new Error(validationError?.toString());
   }
 }
+
+// export function getDefaults<Schema extends z.ZodObject>(schema: Schema) {
+//   return Object.fromEntries(
+//     Object.entries(schema.shape).map(([key, value]) => {
+//       if (value instanceof z.ZodDefault) return [key, (value.def.defaultValue as () => unknown)()];
+//       return [key, undefined];
+//     }),
+//   );
+// }

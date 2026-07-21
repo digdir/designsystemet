@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { baseColorNames, colorNames } from '../../colors/colorMetadata.ts';
 import { convertToHex } from '../../colors/index.ts';
+import { defaultBorderRadius, defaultFontFamily } from '../defaults.ts';
 
 const hexPatterns = [
   // Hex colors: #000, #0000, #000000, #00000000
@@ -84,11 +85,14 @@ const themeSchema = z
       .meta({ description: 'Defines the colors for this theme' }),
     typography: z
       .object({
-        fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }),
+        fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }).default(defaultFontFamily),
       })
       .describe('Defines the typography for a given theme')
-      .optional(),
-    borderRadius: z.number().meta({ description: 'Defines the border-radius for this theme' }).optional(),
+      .prefault({}),
+    borderRadius: z
+      .number()
+      .meta({ description: 'Defines the border-radius for this theme' })
+      .default(defaultBorderRadius),
     overrides: overridesSchema,
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
@@ -130,12 +134,19 @@ const themesSchema = z
   });
 
 export const commonConfig = z.object({
-  clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
+  clean: z
+    .boolean()
+    .default(false)
+    .meta({ description: 'Delete the output directory before building or creating tokens' })
+    .optional(),
 });
 
 const _configFileCreateSchema = z
   .object({
-    outDir: z.string().meta({ description: 'Path to the output directory for the created design tokens' }),
+    outDir: z
+      .string()
+      .default('design-tokens')
+      .meta({ description: 'Path to the output directory for the created design tokens' }),
     themes: themesSchema,
   })
   .required();
@@ -147,5 +158,7 @@ export const configFileCreateSchema = _configFileCreateSchema.extend(commonConfi
 export type CommonConfigSchema = z.infer<typeof commonConfig>;
 export type BuildConfigSchema = z.infer<typeof commonConfig>;
 export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
+/** The pre-validation shape of the config file, i.e. what users write: defaulted fields are optional. */
+export type CreateConfigSchemaInput = z.input<typeof configFileCreateSchema>;
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
 export type ColorOverrideSchema = z.infer<typeof overridesSchema>;
