@@ -1,7 +1,113 @@
 ---
 title: "Changelog"
-latestVersion: 1.18.0
+latestVersion: 1.19.0
 ---
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.19.0
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Minor Changes
+
+- **cli**: Add support for JSONC config files. Config files may now contain comments and trailing commas, and a `designsystemet.config.jsonc` file is auto-detected in addition to `designsystemet.config.json`. ([#5051](https://github.com/digdir/designsystemet/pull/5051))
+
+#### Patch Changes
+
+- fixed missing types error that might occur for `@tokens-studio/types`. ([#5061](https://github.com/digdir/designsystemet/pull/5061))
+
+- Reduced package size by removing unintended declaration map files being generated. ([#5065](https://github.com/digdir/designsystemet/pull/5065))
+
+- Clarified error message when different theme colors are detected ([#5068](https://github.com/digdir/designsystemet/pull/5068))
+
+- New exports for internal use (not documented). ([#5068](https://github.com/digdir/designsystemet/pull/5068))
+
+- `typography` and `borderRadius` are no longer required in the config file. If omitted, defaults will be used: `typography.fontFamily = "Inter"` and `borderRadius = 4`. ([#5099](https://github.com/digdir/designsystemet/pull/5099))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- - add option `-v` and `--version` for display version number. ([#5098](https://github.com/digdir/designsystemet/pull/5098))
+  - add option `-h` and `--help` for display help.
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.0
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Minor Changes
+
+- **file-upload**: New experimental component. Style with the `ds-file-upload` class. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- fix loading order for popover-polyfill ([#5027](https://github.com/digdir/designsystemet/pull/5027))
+
+- **Chip:** now aligns checkbox, radio and x to top when multi-line text ([#5083](https://github.com/digdir/designsystemet/pull/5083))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.0
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Minor Changes
+
+- **New experimental component**: `FileUpload`. Use it by importing `EXPERIMENTAL_FileUpload` from `@digdir/designsystemet-react`. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#5072](https://github.com/digdir/designsystemet/pull/5072))
+
+- **React types:** allow all values of `data-color` in all components ([#5082](https://github.com/digdir/designsystemet/pull/5082))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- Updated dependencies [[`69e17d0`](https://github.com/digdir/designsystemet/commit/69e17d0688c9cc96a6fbe729d399edb10fdd88e1), [`6182865`](https://github.com/digdir/designsystemet/commit/6182865f1e7a7a93aa7fc99efbfc5f04cd3c5c3c), [`703abc1`](https://github.com/digdir/designsystemet/commit/703abc1ea674c56d256f6981009092bbbfb0ca93), [`6182865`](https://github.com/digdir/designsystemet/commit/6182865f1e7a7a93aa7fc99efbfc5f04cd3c5c3c), [`9434ea7`](https://github.com/digdir/designsystemet/commit/9434ea74b7213f506bcc1f91f010aa9f5c1a0bf9), [`a519003`](https://github.com/digdir/designsystemet/commit/a519003b0321b6058c46107feb2f831969269774), [`a398b3a`](https://github.com/digdir/designsystemet/commit/a398b3ae482c39e53ccb271e90ca7ed12438a33c), [`22bdfeb`](https://github.com/digdir/designsystemet/commit/22bdfeb9ae62ea5fa28c5175bfba295be04b43f9)]:
+  - @digdir/designsystemet-web@1.19.0
+  - @digdir/designsystemet-types@1.19.0
+
+<Divider/>
+
+### @digdir/designsystemet-web
+
+#### Minor Changes
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+#### Patch Changes
+
+- **clickdelegatefor**: Fixes an issue with using `data-clickdelegatefor` inside of `<details>` ([#5074](https://github.com/digdir/designsystemet/pull/5074))
+
+- **Breadcrumbs, Pagination, ToggleGroup:** support `aria-labelledby` ([#5081](https://github.com/digdir/designsystemet/pull/5081))
+
+- **Field:** now scopes internal cache to DSFieldElement class to avoid version conflicts ([#5077](https://github.com/digdir/designsystemet/pull/5077))
+
+- **Tooltip:** allow `data-tooltip` with CSS ID selector like `#id` to retrieve text from another element ([#5081](https://github.com/digdir/designsystemet/pull/5081))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- **clickdelegatefor:** now only skips interactive child elements ([#5080](https://github.com/digdir/designsystemet/pull/5080))
+
+- fix loading order for popover-polyfill ([#5027](https://github.com/digdir/designsystemet/pull/5027))
+
+</div>
 
 <div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",
