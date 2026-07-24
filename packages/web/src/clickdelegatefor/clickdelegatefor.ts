@@ -22,8 +22,6 @@ const handleClickDelegateFor = (event: MouseEvent) => {
   const delegateTarget =
     event.button < 2 && getDelegateTarget(getComposedTarget(event)); // Only accept left or middle clicks
 
-  // console.log(event);
-
   if (!delegateTarget || delegateTarget.contains(event.target as Node)) return; // Only proxy event if delegated target isn't part of the original target
   if (isNewTab && delegateTarget instanceof HTMLAnchorElement)
     return window.open(delegateTarget.href, undefined, delegateTarget.rel); // If middle click or cmd/ctrl click on link, open in new tab
@@ -33,9 +31,9 @@ const handleClickDelegateFor = (event: MouseEvent) => {
 
 let HOVER: Element | null = null;
 let TARGET: EventTarget; // Used to speed up mouseover handling
-const handleMouseOver = (event: Event) => {
+const handleMouseMove = (event: Event) => {
   const target = getComposedTarget(event);
-  if (target === TARGET) return; // Same target, no need to check delegate target again
+  if (!target || target === TARGET) return; // Same target, no need to check delegate target again
   TARGET = target;
   const delegateTarget = getDelegateTarget(target);
   if (HOVER === delegateTarget) return; // No change
@@ -44,9 +42,8 @@ const handleMouseOver = (event: Event) => {
   HOVER = delegateTarget;
 };
 
-const getDelegateTarget = (el: EventTarget) => {
-  const scope =
-    el instanceof Element ? el.closest(SELECTOR_CLICKDELEGATEFOR) : null;
+const getDelegateTarget = (el: Element | null) => {
+  const scope = el?.closest(SELECTOR_CLICKDELEGATEFOR);
   const id = scope?.getAttribute(ATTR_CLICKDELEGATEFOR);
   const target = scope && id ? getRoot(scope).getElementById(id) : null;
   const skip = target && (el as Element).closest(SELECTOR_SKIP); // Ignore if interactive
@@ -57,5 +54,5 @@ const getDelegateTarget = (el: EventTarget) => {
 
 onHotReload('clickdelegatefor', () => [
   on(window, 'click auxclick', handleClickDelegateFor as EventListener, true), // Use capture to ensure we run before other click listeners
-  on(document, 'mousemove', handleMouseOver, QUICK_EVENT), // Use passive for better performance
+  on(document, 'mousemove', handleMouseMove, QUICK_EVENT), // Use passive for better performance
 ]);

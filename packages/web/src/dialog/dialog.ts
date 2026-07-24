@@ -13,21 +13,22 @@ let DOWN_INSIDE = false; // Prevent close if selecting text inside dialog
 const handleClosedbyAny = (event: Event) => {
   const { type, clientX: x = 0, clientY: y = 0 } = event as MouseEvent;
   const el = getComposedTarget(event);
-  if (!(el instanceof Element)) return;
-  if (type === 'pointerdown') {
-    const r = el.closest?.('dialog')?.getBoundingClientRect();
+  if (el && type === 'pointerdown') {
+    const r = el.closest?.('dialog')?.getBoundingClientRect(); // TODO This needs to traverse outside shadow dom
     const isInside =
       r && r.top <= y && y <= r.bottom && r.left <= x && x <= r.right;
 
     DOWN_INSIDE = !!isInside;
   } else {
-    const isDialog = el instanceof HTMLDialogElement;
+    const isDialog = el?.nodeName === 'DIALOG';
     const isClose = isDialog && !DOWN_INSIDE && attr(el, 'closedby') === 'any';
 
     DOWN_INSIDE = false; // Reset on every pointerup
-    if (isClose) requestAnimationFrame(() => el.open && el.close()); // Close if browser did not do it
+    if (isClose) setTimeout(close, 0, el); // Close if browser did not do it
   }
 };
+
+const close = (dialog: HTMLDialogElement) => dialog.open && dialog.close();
 
 // Ensure buttons that trigger a modeal dialog has aria-haspopup="dialog" for better screen reader experience
 const MODAL = 'show-modal';

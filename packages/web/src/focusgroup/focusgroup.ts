@@ -1,303 +1,195 @@
-import { attr, isBrowser, on, onHotReload, QUICK_EVENT } from '../utils/utils';
+import {
+  attr,
+  getComposedTarget,
+  isBrowser,
+  on,
+  onHotReload,
+  QUICK_EVENT,
+} from '../utils/utils';
 
-// TODO: Function do disable polyfill
-
-let IS_TABBING = 0;
-const FOCUS_INDEX_MEMORY = new WeakMap<Element, number>();
-const ATTR_FOCUSSTART = 'focusgroupstart';
-const ATTR_FOCUSGROUP = 'focusgroup';
-const SELECTOR_FOCUSGROUP = `[${ATTR_FOCUSGROUP}]`;
-const SELECTOR_INPUTS = '[contenteditable="true"], select, textarea, input'; // Must end with "input"
-const SELECTOR_FOCUSABLE = `a, button, [tabindex], ${SELECTOR_INPUTS}:not(:disabled)`; // See https://open-ui.org/components/scoped-focusgroup.explainer/#focusgroup-segments
-const SELECTOR_CONFLICTS = `audio, video, ${SELECTOR_INPUTS}:not([type="button"], [type="submit"], [type="reset"], [type="checkbox"], [type="radio"])`; // See https://open-ui.org/components/scoped-focusgroup.explainer/#key-conflict-elements
-const SELECTOR_LAYER = 'dialog, [popover]'; // See https://open-ui.org/components/scoped-focusgroup.explainer/#top-layer-elements
-
-const BEHAVIORS = {
-  toolbar: {
-    axis: 'inline',
-    wrap: false,
-  },
-  tablist: {
-    axis: 'inline',
-    child: 'tab',
-    wrap: true,
-  },
-  radiogroup: {
-    axis: undefined,
-    child: 'radio',
-    wrap: true,
-  },
-  listbox: {
-    axis: 'block',
-    child: 'option',
-    wrap: false,
-  },
-  menu: {
-    axis: 'block',
-    child: 'menuitem',
-    wrap: true,
-  },
-  menubar: {
-    axis: 'inline',
-    child: 'menuitem',
-    wrap: true,
-  },
-  none: null,
+// biome-ignore format:next-line
+const CONFLICT = new Set(['AUDIO', 'VIDEO', 'TEXTAREA', 'SELECT', 'date', 'datetime-local', 'email', 'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'time', 'url', 'week' ]);
+const FOCUS = new WeakMap<Element, Node | null>();
+const ATTR_GROUP = 'data-focusgroup';
+const _ATTR_START = `${ATTR_GROUP}start`;
+let TAB_TIMESTAMP = 0;
+const ROLES = {
+  listbox: { block: true, wrap: false, items: 'option' },
+  menu: { block: true, wrap: true, items: 'menuitem' },
+  menubar: { block: false, wrap: true, items: 'menuitem' },
+  radiogroup: { block: undefined, wrap: true, items: 'radio' },
+  tablist: { block: false, wrap: true, items: 'tab' },
+  toolbar: { block: false, wrap: false, items: undefined },
 };
 
-const IS_SUPPORTED =
-  isBrowser() &&
-  ATTR_FOCUSGROUP in HTMLElement.prototype &&
-  'focusGroup' in HTMLElement.prototype;
+// const IS_SUPPORTED =
+//   isBrowser() &&
+//   (ATTR_GROUP in Element.prototype ||
+//     'focusGroup' in Element.prototype); // Chrome has implemented camel case focusGroup
 
-function handleKeydown(event: Event & Partial<KeyboardEvent>) {
-  if (event.defaultPrevented) return;
-  const key = event.key;
+const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
+  if (e.defaultPrevented || e.altKey || e.metaKey || e.ctrlKey) return;
 
-  if (key === 'Tab') IS_TABBING = Date.now(); // Store last tab timestamp to detect if focus event is caused by tabbing
-  if (key !== 'Home' && key !== 'End' && !key?.startsWith('Arrow')) return; // Only handle navigation keys
+  const isTab = e.key === 'Tab';
+  const isBlock = e.key === 'ArrowUp' || e.key === 'ArrowDown';
+  const isArrow = isBlock || e.key === 'ArrowLeft' || e.key === 'ArrowRight';
+  if (!isTab && !isArrow && e.key !== 'Home' && e.key !== 'End') return;
+  if (isTab) TAB_TIMESTAMP = Date.now(); // So we can check if next focus event is a result of tabbing
 
-  // Make sure the element is in a group, and not opted-out, see https://open-ui.org/components/scoped-focusgroup.explainer/#opting-out
-  const path = event.composedPath() as Element[]; // Get full event path, including Shadow DOM
-  const group = path.find((el) => el.hasAttribute?.(ATTR_FOCUSGROUP));
-  const conflict = group && path.find((el) => el.matches?.(SELECTOR_CONFLICTS)); // See https://open-ui.org/components/scoped-focusgroup.explainer/#key-conflict-elements
-  if (!group || attr(group, ATTR_FOCUSGROUP) === 'none' || conflict) return;
+  const target = getComposedTarget(e);
+  if (isConflict(target)) return; // See https://open-ui.org/components/scoped-focusgroup.explainer/#key-conflict-elements
 
-  // Make sure focusgroup and focused is in the same top layer, see https://open-ui.org/components/scoped-focusgroup.explainer/#top-layer-elements
-  const layer = path.find((el) => el.matches?.(SELECTOR_LAYER));
-  if (layer?.contains(group) === false) return;
+  const group = getGroup(getFullComposedPath(target));
+  if (!group?.role) return; // See https://open-ui.org/components/scoped-focusgroup.explainer/#key-conflict-elements
 
-  if (key?.startsWith('Arrow')) event.preventDefault(); // Stop input[type="radio"] from changing state when using arrow keys
-  navigateLinear(group, path[0], key);
-}
+  const items = getItems(group.el, target); // Include target so we can move from tabindex="-1" as according to spec
+  const last = items.length - 1;
+  let next = 0;
 
-function handleFocus(event: Event) {
-  // TODO autofocus on popover element
-  console.log('focusin', event, IS_TABBING);
-}
+  if (isTab) return setTimeout(setTab, 0, items, null, setTab(items, '-1')); // Make sure next tab stop is outside focusgroup
+  if (!isArrow) next = e.key === 'End' ? last : 0;
+  else if (group.block === undefined || group.block === isBlock) {
+    const { direction, writingMode } = window.getComputedStyle(group.el);
+    const forward =
+      e.key === `Arrow${writingMode.startsWith('vertical') ? 'Up' : 'Down'}` ||
+      e.key === `Arrow${direction === 'rtl' ? 'Left' : 'Right'}`;
 
-function navigateLinear(group: Element, focused: Element, key: string): void {
-  const tokens = parseAttribute(group);
-  const items = getItems(group);
-  const next =
-    FOCUS_INDEX_MEMORY.get(group) ??
-    items.findIndex((el) => el.hasAttribute(ATTR_FOCUSSTART)) ??
-    items.indexOf(focused);
+    next = items.indexOf(target as Element) + (forward ? 1 : -1);
+    if (group.wrap) next = next < 0 ? last : next % items.length;
+    else next = Math.max(0, Math.min(next, last));
+  }
 
-  console.log('navigateLinear', { items, group, focused, key, tokens, next });
+  (items[next] as HTMLElement)?.focus?.(); // TODO: e.preventDefault(); // Prevent scrolling
+};
 
-  // let nextIndex = FOCUS_INDEX_MEMORY.get(el) ?? -1;
-  // if (nextIndex === -1) return;
+let PREV_FOCUS: Node | null; // Used to check if we are still in the same group on next focus event
+const ROOTS = new Map<Node, () => void>(); // Focus events only trigger once when entering a ShadowDOM due to event retargeting, so we need to listen on ShadowRoots as well
+const handleFocus = (e: Event & Partial<FocusEvent>) => {
+  const next = getComposedTarget(e);
+  const path = getFullComposedPath(next);
+  const _prev = PREV_FOCUS;
+  const group = getGroup(path);
+  PREV_FOCUS = next;
 
-  // const items = el.querySelectorAll(SELECTOR_FOCUSABLE);
-  // const lastIndex = items.length - 1;
-  // const tokens = attr(el, ATTR_GROUP)?.split(' ') ?? [];
-  // const inline = tokens.includes('inline');
-  // const block = tokens.includes('block');
-  // const wrap = tokens.includes('wrap');
+  for (const el of path) if (el.nodeType === 11) setTimeout(bindFocus, 0, el); // Bind on with setTimeout to avoid instant triggering
+  for (const [el, off] of ROOTS) if (path.has(el) && ROOTS.delete(el)) off(); // Unbind focus listener on previous roots
 
-  // const style = getComputedStyle(el);
-  // const isRTL = style.direction === 'rtl';
-  // const isVertical = style.writingMode.startsWith('vertical');
+  if (!group?.role) return;
+  const memory = FOCUS.get(group.el);
+  FOCUS.set(group.el, next); // Always store focus in memory
 
-  // let horizontal = false;
-  // let forward = false;
+  if (TAB_TIMESTAMP < Date.now() - 100) return; // If last tab was more than 100ms ago, we assume this focus event is not a result of tabbing
+  const itemsOfSegment = getItems(group.el); // TODO EIRIK // See https://open-ui.org/components/scoped-focusgroup.explainer/#focusgroup-segments
+  // if (!itemsWithPrev.includes(prev as Element)) return; // If previous focus was inside the group, we don't need to move
 
-  // switch (key) {
-  //   case 'ArrowRight':
-  //     horizontal = true;
-  //     forward = !isRTL;
-  //     break;
-  //   case 'ArrowLeft':
-  //     horizontal = true;
-  //     forward = isRTL;
-  //     break;
-  //   case 'ArrowDown':
-  //     horizontal = false;
-  //     forward = !isVertical;
-  //     break; // Assumes horizontal-tb or vertical-rl
-  //   case 'ArrowUp':
-  //     horizontal = false;
-  //     forward = isVertical;
-  //     break;
-  //   case 'Home':
-  //     nextIndex = 0;
-  //     break;
-  //   case 'End':
-  //     nextIndex = lastIndex;
-  //     break;
-  // }
+  console.log(itemsOfSegment, memory);
 
-  // if (key.startsWith('Arrow')) {
-  //   if ((inline && !block && !horizontal) || (block && !inline && horizontal))
-  //     return;
-  //   nextIndex += forward ? 1 : -1;
-  // }
+  // const start =
+  //   (!group?.nomemory && memory) ||
+  //   itemsWithPrev.find((el) => el.hasAttribute(ATTR_START)) ||
+  //   itemsWithPrev[0];
 
-  // if (wrap) {
-  //   if (nextIndex < 0) nextIndex = lastIndex;
-  //   if (nextIndex > lastIndex) nextIndex = 0;
-  // } else {
-  //   nextIndex = Math.max(0, Math.min(nextIndex, lastIndex));
-  // }
-  // console.log(items, nextIndex);
-  // focusItemByIndex(state, nextIndex);
-}
-export function getItems(root: Node): Element[] {
-  const items: Element[] = [];
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, {
-    acceptNode(el: HTMLElement) {
-      const owner = el.closest(SELECTOR_FOCUSGROUP) ?? root;
-      if (el.inert || owner !== root || el.offsetParent === null)
-        return NodeFilter.FILTER_REJECT; // No need to parse children of non-visible, inert, or out-of-scope elements
-      if (el.matches(SELECTOR_FOCUSABLE)) return NodeFilter.FILTER_ACCEPT;
-      if (el.shadowRoot) items.push(...getItems(el.shadowRoot)); // Also look inside SahdowDOM
-      return NodeFilter.FILTER_SKIP;
-    },
-  });
-  while (walker.nextNode()) items.push(walker.currentNode as Element);
+  // const prevIndex = itemsWithPrev.indexOf(prev as Element);
+  // const nextIndex = itemsWithPrev.indexOf(next as Element);
+  // const startIndex = itemsWithPrev.indexOf(start as Element);
+
+  // console.log('maybe move focus to memory or start', {
+  //   nextIndex,
+  //   prevIndex,
+  //   startIndex,
+  // });
+
+  // if (next !== start) (start as Element)?.focus?.(); // Move focus to memory or start if we tab into the group from outside
+};
+
+const bindFocus = (el: Element) =>
+  ROOTS.has(el) || ROOTS.set(el, on(el, 'focus', handleFocus, QUICK_EVENT));
+
+const CACHE = new WeakMap<Element, ReturnType<typeof parseOptions>>();
+export const getGroup = (path: Set<Node>) => {
+  for (const el of path as Set<Element>)
+    if (el.nodeType === 1) {
+      if (isTopLayerElement(el)) return; // See https://open-ui.org/components/scoped-focusgroup.explainer/#top-layer-elements)
+
+      const key = el.getAttribute(ATTR_GROUP);
+      if (key === null) continue;
+
+      let cache = CACHE.get(el);
+      if (cache?.key === key) return cache; // Return cache if attribute is unchanged
+
+      cache = parseOptions(el, key);
+      CACHE.set(el, cache);
+      for (const item of getItems(el)) attr(item, 'role', cache.items);
+      attr(el, 'role', cache.role);
+      return cache;
+    }
+};
+
+const parseOptions = (el: Element, key: string) => {
+  const opts = new Set(key.toLowerCase().split(' '));
+  const role = [...opts].find((t) => t in ROLES) as keyof typeof ROLES;
+  const base = ROLES[role];
+  const wrap = opts.has('wrap') || (opts.has('nowrap') ? false : base?.wrap);
+  const block = opts.has('block') || (opts.has('inline') ? false : base?.block);
+  const memory = !opts.has('nomemory');
+
+  return { key, el, block, memory, role, wrap, items: base?.items };
+};
+
+export const getItems = (
+  root?: Element | null,
+  keep?: EventTarget | null, // See tabindex="-1" under https://open-ui.org/components/scoped-focusgroup.explainer/#focusgroup-concepts
+  items: Element[] = [],
+  isNested = false,
+) => {
+  let el = (root?.shadowRoot || root)?.firstElementChild as HTMLElement;
+  for (; el; el = el.nextElementSibling as HTMLElement) {
+    if (el.inert || el.hidden || !isVisible(el)) continue;
+    isNested ||= el.hasAttribute(ATTR_GROUP);
+    if (el === keep || (!isNested && isFocusable(el))) items.push(el);
+    else getItems(el, keep, items, isNested);
+  }
   return items;
-}
-
-const _getClosestGroup = (el: Element | null, stopAt?: Node) => {
-  while (el && el !== stopAt && !el.hasAttribute(ATTR_FOCUSGROUP))
-    el =
-      el.assignedSlot ||
-      el.parentElement ||
-      (el.getRootNode() as ShadowRoot)?.host;
-  return el || null;
 };
 
-// Ensures not enclosed by a out-out-element, see https://open-ui.org/components/scoped-focusgroup.explainer/#opting-out
-// Ensures enclosed by same top layer, see https://open-ui.org/components/scoped-focusgroup.explainer/#top-layer-elements
-const _getClosestFocusgroup = (el: unknown): Element | null => {
-  const group = el instanceof Element && el.closest(SELECTOR_FOCUSGROUP);
-  return !group ||
-    attr(group, ATTR_FOCUSGROUP) === 'none' ||
-    group.closest(SELECTOR_LAYER) !== el.closest(SELECTOR_LAYER)
-    ? null
-    : group;
+// Return full element path even if listener is bound to a ShadowRoot (unlike event.composedPath())
+const getFullComposedPath = (el: Node | null) => {
+  const path = new Set<Node>();
+  for (; el; el = el.nodeType === 11 ? (el as ShadowRoot).host : el.parentNode)
+    path.add(el);
+  return path;
 };
 
-const _isFocusable = (el: Element): el is HTMLElement => {
-  if (!(el instanceof HTMLElement)) return false;
-  if ((el as HTMLInputElement).disabled || el.hidden || el.closest('[inert]'))
-    return false;
-  if (el.offsetParent === null) return false;
+const isVisible =
+  isBrowser() && typeof Element.prototype.checkVisibility === 'function'
+    ? (el: HTMLElement) => el.checkVisibility()
+    : (el: HTMLElement) => el.offsetParent !== null;
 
-  const style = getComputedStyle(el);
-  if (style.display === 'none' || style.visibility === 'hidden') return false;
+const isTopLayerElement = (el: Element): boolean =>
+  el.nodeName === 'DIALOG' || el.hasAttribute('popover');
 
-  if (el.matches(SELECTOR_FOCUSABLE)) return true;
+export const isFocusable = (el: HTMLElement) =>
+  el.isContentEditable ||
+  (el.tabIndex >= 0 && !(el as HTMLInputElement).disabled);
 
-  const tabIndex = el.getAttribute('tabindex');
-  return tabIndex !== null && parseInt(tabIndex, 10) >= 0;
-};
+export const isConflict = (el: Node | null) =>
+  !el ||
+  (el as HTMLElement).isContentEditable ||
+  CONFLICT.has(el.nodeName) ||
+  (el.nodeName === 'INPUT' && CONFLICT.has((el as HTMLInputElement).type));
 
-function parseAttribute(owner: Element) {
-  const tokens = attr(owner, ATTR_FOCUSGROUP)?.split(' ') || [];
-  const behavior = tokens.find(
-    (token) => BEHAVIORS[token as keyof typeof BEHAVIORS],
-  );
-  const base = behavior
-    ? BEHAVIORS[behavior as keyof typeof BEHAVIORS]
-    : undefined;
+const setTab = (items: Element[], value: string | null) =>
+  Array.from(items, (item) => attr(item, 'tabindex', value));
 
-  let wrap = base?.wrap ?? false;
-  if (tokens.includes('wrap')) wrap = true;
-  else if (tokens.includes('nowrap')) wrap = false;
+// if (!IS_SUPPORTED)
+onHotReload(ATTR_GROUP, () => [
+  on(document, 'keydown', handleKeydown),
+  on(document, 'focus', handleFocus, QUICK_EVENT),
+]);
 
-  const hasInline = tokens.includes('inline');
-  const hasBlock = tokens.includes('block');
-  const axis =
-    hasInline === hasBlock
-      ? hasInline
-        ? undefined
-        : base?.axis
-      : hasInline
-        ? 'inline'
-        : 'block';
-
-  return {
-    behavior,
-    wrap,
-    axis,
-    memory: !tokens.includes('nomemory'),
-  };
-}
-
-export function isKeyboardFocusable(element: HTMLElement, owner: Element) {
-  return (
-    // Is content editable
-    (element.isContentEditable ||
-      // A media element with controls, this check is necessary because
-      // `tabIndex` is `-1` in WebKit in this case
-      element.matches(':is(audio, video)[controls]') ||
-      // Is tabbable
-      element.tabIndex > -1) &&
-    !(
-      // Not disabled
-      (
-        (element as HTMLInputElement).disabled ||
-        element.hasAttribute('disabled') ||
-        // Not an anchor or area without href
-        element.matches(':is(a, area):not([href])') ||
-        // Not inert
-        element.inert ||
-        // Not hidden
-        !checkVisibility(element, owner) ||
-        // Not a media element without controls
-        element.matches(':is(audio, video):not([controls])') ||
-        // Has not been assigned a tabindex by the polyfill
-        element.hasAttribute('DatasetName.AUTHOR_TABINDEX')
-      )
-    )
-  );
-}
-
-function checkVisibility(element: Element, ancestor: Element) {
-  if ('checkVisibility' in Element.prototype) {
-    return element.checkVisibility({
-      visibilityProperty: true,
-      contentVisibilityAuto: true,
-    });
-  }
-
-  if (element.getClientRects().length === 0) {
-    return false;
-  }
-
-  // Walk the ancestry chain checking two properties:
-  // - `visibility: hidden/collapse` — hides the element itself, so check from
-  //   `element` upward.
-  // - `content-visibility: hidden` — hides an element's *content* (descendants,
-  //   not itself), so check from `element`'s parent upward.
-  let current: Element | null = element;
-  while (current) {
-    const { visibility, contentVisibility } = window.getComputedStyle(current);
-    if (['hidden', 'collapse'].includes(visibility)) {
-      return false;
-    }
-    if (current !== element && contentVisibility === 'hidden') {
-      return false;
-    }
-    if (!ancestor || current === ancestor) {
-      break;
-    }
-    current = getParentElement(current);
-  }
-
-  return true;
-}
-
-const getParentElement = (el: Element): Element | null =>
-  (el as Element).assignedSlot || // Element is slotted — its logical parent is the assigned slot.
-  el.parentElement ||
-  (el.getRootNode?.() as ShadowRoot).host || // At the top of a shadow tree — cross into the host.
-  null;
-
-if (!IS_SUPPORTED)
-  onHotReload(ATTR_FOCUSGROUP, () => [
-    on(document, 'keydown', handleKeydown),
-    on(document, 'focus', handleFocus, QUICK_EVENT),
-  ]);
+// TODO: Function to disable polyfill?
+// Intentionally not implemented:
+// - Clearing memory based on attribute changes: https://open-ui.org/components/scoped-focusgroup.explainer/#disabling-focusgroup-memory
+// - Setting roles before focus or keydown occurs (this is too performance consuming, and does not affect a11y much)
+// - Autofocus support inside popover
+// - Checking if  overflow/scroll-container in isFoucsable

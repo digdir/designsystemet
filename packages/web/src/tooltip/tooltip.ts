@@ -81,11 +81,11 @@ const setupText = (el: Element, canAnnounce = true) => {
 };
 
 const handleInterest = (e: Event) => {
-  const target = getComposedTarget(e) as Element | undefined;
-  if (TARGET === target || TIP?.contains(target as Node)) return; // Same target, or allow tooltip to be hovered (following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus)
+  const target = getComposedTarget(e);
+  if (!target || TARGET === target || TIP?.contains(target as Node)) return; // Same target, or allow tooltip to be hovered (following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus)
   TARGET = target;
 
-  const source = target?.closest?.(SELECTOR_TOOLTIP) || undefined;
+  const source = TARGET?.closest?.(SELECTOR_TOOLTIP) || undefined;
   if (SOURCE === source) return; // Same source, no need to update
   if (SOURCE) hide(); // Reset previous tooltip, since we are moving to a new source
   SOURCE = source;

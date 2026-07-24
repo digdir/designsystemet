@@ -19,30 +19,60 @@
 
       <fieldset
         class="ds-toggle-group"
-        focusgroup="toolbar wrap"
+        data-focusgroup="radiogroup"
         aria-label="Tekstjustering"
       >
         <label class="ds-button">
           <input type="radio" name="focusgroup" value="left" checked>
           Venstestilt
         </label>
+        <label class="ds-button">
+          <input type="radio" name="focusgroup" value="center">
+          Midtstilt
+        </label>
+        <label class="ds-button">
+          <input type="radio" name="focusgroup" value="right">
+          Høyrestilt
+        </label>
+        <label class="ds-button" hidden>
+          <input type="radio" name="focusgroup" value="justify">
+          Utfallende
+        </label>
         <my-test>
-          <template shadowrootmode="open">
-            <label class="ds-button">
-              <input type="radio" name="focusgroup" value="center">
-              Midtstilt
-            </label>
-            <label class="ds-button">
-              <input type="radio" name="focusgroup" value="right">
-              Høyrestilt
-            </label>
-            <label class="ds-button" hidden>
-              <input type="radio" name="focusgroup" value="justify">
-              Utfallende
-            </label>
-          </template>
+          <template shadowrootmode="open"> </template>
         </my-test>
       </fieldset>
+
+      <div>
+        <my-test
+          data-focusgroup="radiogroup nomemory"
+          style="display: flex; gap: 2px; padding-block: 1rem"
+        >
+          <template shadowrootmode="open">
+            <my-test>
+              <template shadowrootmode="open">
+                <button type="button" class="ds-button">A in in</button>
+              </template>
+            </my-test>
+            <input type="text" placeholder="In">
+            <button type="button" class="ds-button">B in</button>
+            <my-test>
+              <template shadowrootmode="open">
+                <div data-focusgroup="none">
+                  <button type="button" class="ds-button">C out in</button>
+                </div>
+              </template>
+            </my-test>
+            <button type="button" class="ds-button">D in</button>
+            <button type="button" class="ds-button" data-focusgroupstart>
+              E in
+            </button>
+            <button data-focusgroup="none" type="button" class="ds-button">
+              F out
+            </button>
+          </template>
+        </my-test>
+      </div>
 
       <br>
       <br>
@@ -110,14 +140,14 @@
       <br>
       <br>
 
-      <ds-error-summary class="ds-error-summary">
+      <!-- <ds-error-summary class="ds-error-summary">
         <h2>Oppsummering</h2>
         <ul>
           <li><a href="#none" class="ds-link">Feil 1</a></li>
           <li><a href="#none" class="ds-link">Feil 2</a></li>
           <li><a href="#none" class="ds-link">Feil 3</a></li>
         </ul>
-      </ds-error-summary>
+      </ds-error-summary> -->
 
       <br>
       <br>

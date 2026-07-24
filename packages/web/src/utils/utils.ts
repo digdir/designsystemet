@@ -61,7 +61,7 @@ export const attr = (
   name: string,
   value?: string | null,
 ): string | null => {
-  if (value === undefined) return el.getAttribute(name) ?? null; // Fallback to null only if el is undefined
+  if (value === undefined) return el.getAttribute(name);
   if (value === null) el.removeAttribute(name);
   else if (el.getAttribute(name) !== value) el.setAttribute(name, value);
   return null;
@@ -108,10 +108,13 @@ export const getRoot = (node: Node): Document | ShadowRoot => {
  * getComposedTarget
  * @description Helper to get the composed target of an event, supporting ShadowDOM rendering
  * @param event The event
- * @return The target EventTarget
+ * @return The target Element
  */
-export const getComposedTarget = (event: Event): EventTarget =>
-  event.composedPath?.()?.[0] || event.target; // Fallback to target for browsers that do not support ShadowDOM
+export const getComposedTarget = (e: Event): Element | null => {
+  const el =
+    ((e.target as Element)?.shadowRoot && e.composedPath()[0]) || e.target; // Only use composedPath if the target has a shadowRoot to boost performance
+  return (el as Node)?.nodeType === 1 ? (el as Element) : null;
+};
 
 /**
  * on

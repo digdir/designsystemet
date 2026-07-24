@@ -119,9 +119,9 @@ const handleScrollbar = ({ type }: Event) => {
 onHotReload('popover', () => {
   const attachShadow = HTMLElement.prototype.attachShadow;
   HTMLElement.prototype.attachShadow = function (init) {
-    const shadow = attachShadow.call(this, init);
-    shadow.addEventListener('toggle', handleToggle, QUICK_EVENT); // Native Toggle event does not bubble from shadow DOM, so we need to listen for it on every shadow root
-    return shadow;
+    const root = attachShadow.call(this, init);
+    root.addEventListener('toggle', handleToggle, QUICK_EVENT); // Native Toggle event does not bubble from shadow DOM, so we need to listen for it on every shadow root
+    return root;
   };
 
   return [
