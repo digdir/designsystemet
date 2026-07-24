@@ -13,8 +13,8 @@ import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
-import { getStories } from '../../_utils/get-stories.server';
 import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
+import { getStories } from '../../_utils/get-stories.server';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
