@@ -3,6 +3,7 @@ import {
   ARIA_LABELLEDBY,
   attr,
   attrOrCSS,
+  getComposedTarget,
   on,
   onHotReload,
   onMutation,
@@ -21,18 +22,18 @@ const handleAriaAttributes = () => {
   }
 };
 
-const handleKeydown = (event: Partial<KeyboardEvent>) => {
-  const { key, target: el } = event;
+const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
+  const el = getComposedTarget(e);
   const group =
     el instanceof HTMLInputElement && el.closest(SELECTOR_TOGGLEGROUP);
 
   if (!group) return;
-  if (key === 'Enter') el.click(); // Forward Enter, but no need to listen for space key, as this is handled by the browser
-  if (key?.startsWith('Arrow')) {
-    event.preventDefault?.();
+  if (e.key === 'Enter') el.click(); // Forward Enter, but no need to listen for space key, as this is handled by the browser
+  if (e.key?.startsWith('Arrow')) {
+    e.preventDefault?.();
     const inputs = [...group.getElementsByTagName('input')];
     const index = inputs.indexOf(el);
-    const move = key.match(/Arrow(Right|Down)/) ? 1 : -1;
+    const move = e.key.match(/Arrow(Right|Down)/) ? 1 : -1;
     let nextIndex = index;
 
     for (let i = 0; i < inputs.length; i++) {
@@ -54,3 +55,12 @@ onHotReload('toggle-group', () => [
     subtree: true,
   }),
 ]);
+
+// // Not part of the focusgroup spec, but needed to activate <input type="checkbox|radio"> when pressing Enter
+// onHotReload('toggle-group', () => [
+//   on(document, 'keydown', (event: Event & Partial<KeyboardEvent>) => {
+//     const el = event.key === 'Enter' && getComposedTarget(event);
+//     const isInput = el instanceof HTMLInputElement;
+//     if (isInput && (el.type === 'radio' || el.type === 'checkbox')) el.click();
+//   }),
+// ]);

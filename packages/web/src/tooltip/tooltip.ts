@@ -5,8 +5,8 @@ import {
   announce,
   attr,
   attrOrCSS,
+  getComposedTarget,
   getRoot,
-  isBrowser,
   on,
   onHotReload,
   onMutation,
@@ -16,18 +16,17 @@ import {
 } from '../utils/utils';
 
 let TIP: HTMLElement | undefined;
+let TARGET: Element | undefined; // Used to speed up mousemove handling
 let SOURCE: Element | undefined;
-let IS_HOVERING = false;
-let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
-let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
-const IS_IOS = isBrowser() && /iPad|iPhone|iPod/.test(navigator.userAgent); // Needed to omit DELAY_HOVER since iOS triggers mouseover before click
-const ATTR_TOOLTIP = 'data-tooltip';
+let TIMER: ReturnType<typeof setTimeout> | undefined;
+let LAST_HIDE = 0;
 const ATTR_COLOR = 'data-color';
-const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
-const SELECTOR_TOOLTIP = `[${ATTR_TOOLTIP}]`;
 const ATTR_SCHEME = 'data-color-scheme';
-const SELECTOR_SCHEME = `[${ATTR_SCHEME}]`;
+const ATTR_TOOLTIP = 'data-tooltip';
+const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
 const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
+const SELECTOR_SCHEME = `[${ATTR_SCHEME}]`;
+const SELECTOR_TOOLTIP = `[${ATTR_TOOLTIP}]`;
 const DELAY_HOVER = 300;
 const DELAY_SKIP = 300;
 
@@ -39,100 +38,99 @@ const DELAY_SKIP = 300;
 export const setTooltipElement = (el?: HTMLElement | null) => {
   if (el && !(el instanceof HTMLElement))
     warn('setTooltipElement expects an HTMLElement, got: ', el);
-  clearTimeout(SKIP_TIMER); // Reset when changing source
-  clearTimeout(HOVER_TIMER);
-  SOURCE = undefined;
-  IS_HOVERING = false;
+  hide(); // Reset when changing source
+  LAST_HIDE = 0; // Reset last hide time to re-enable delay
   TIP = el || undefined;
 };
 
-const handleAriaAttributes = () => {
-  for (const el of document.querySelectorAll(SELECTOR_TOOLTIP)) {
-    let text = attrOrCSS(el, ATTR_TOOLTIP);
-
-    // Allow using another element as source.
-    // Note: Only checks on initial mutation, as we do not want to keep checking if the source element is removed or changed,
-    // since this would be a performance issue. If the source element is removed, the tooltip will be empty and not shown.
-    if (text?.[0] === '#')
-      text =
-        getRoot(el).getElementById(text.slice(1))?.textContent?.trim() || null;
-
-    if (!text) continue; // Early return if no tooltip text
-    if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {
-      const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
-      attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
-      attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
-      attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
-      if (!el.matches(SELECTOR_INTERACTIVE))
-        warn('Missing tabindex="0" attribute on: ', el);
-    }
-
-    // If an existing tooltip has changed programmatically, update tooltip text and announce change
-    const isCurrent = el === SOURCE && TIP?.offsetHeight && TIP?.offsetWidth; // Using offsetHeight+Width to check visibility as :popover-open is not well supported by JSDOM
-    const isChanged = isCurrent && text && TIP?.textContent !== text; // Only update if mutation is on source element and tooltip is open to avoid unnecessary updates
-    if (isCurrent && isChanged) {
-      if (TIP) TIP.textContent = text;
-      if (document.activeElement === el) announce(text); // Only announce if focus is on the button
+// Initial run has no MutationRecords, so we set records to [null] to ensure we run the querySelectorAll for any existing elements with data-tooltip
+const handleMutations = (_: Document, records?: MutationRecord[]) => {
+  for (const r of records || [null]) {
+    if (r?.target === TIP) continue; // Ignore mutations on tooltip itself
+    if (r?.attributeName === ATTR_TOOLTIP) setupText(r.target as Element);
+    else if (!r || r.addedNodes.length) {
+      const scope = (r?.target || document) as Element;
+      for (const el of scope.querySelectorAll(SELECTOR_TOOLTIP)) setupText(el);
     }
   }
 };
 
-const handleInterest = (event: Event) => {
-  const { type, target } = event;
-  clearTimeout(HOVER_TIMER);
+const setupText = (el: Element, canAnnounce = true) => {
+  let text = attrOrCSS(el, ATTR_TOOLTIP);
 
-  if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
+  // Allow using another element as source.
+  // Note: Only checks on initial mutation, as we do not want to keep checking if the source element is removed or changed,
+  // since this would be a performance issue. If the source element is removed, the tooltip will be empty and not shown.
+  if (text?.[0] === '#')
+    text =
+      getRoot(el).getElementById(text.slice(1))?.textContent?.trim() || null;
 
-  const source = (target as Element)?.closest?.(SELECTOR_TOOLTIP);
-
-  // This prevents the tooltip from reappearing on mousedown/click
-  if (type === 'blur') {
-    const next = (event as FocusEvent).relatedTarget as Element | null;
-    if (source === SOURCE && !next?.closest?.(SELECTOR_TOOLTIP)) hideTooltip();
-    return;
+  if (!text) return text; // Early return if no tooltip text
+  if (text !== (el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC))) {
+    const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
+    attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
+    attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
+    attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
+    if (!el.matches(SELECTOR_INTERACTIVE))
+      warn('Missing tabindex="0" attribute on: ', el);
   }
-
-  if (type === 'mouseover' && !IS_HOVERING && !IS_IOS) {
-    HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
-    return;
+  if (el === SOURCE && text && TIP?.textContent !== text) {
+    if (TIP) TIP.textContent = text;
+    if (canAnnounce && document.activeElement === el) announce(text); // Only announce if focus is on the source
   }
+};
 
-  if (source === SOURCE) return; // No need to update
-  if (!source) return hideTooltip(); // If no new anchor, cleanup previous autoUpdate
+const handleInterest = (e: Event) => {
+  const target = getComposedTarget(e);
+  if (!target || TARGET === target || TIP?.contains(target as Node)) return; // Same target, or allow tooltip to be hovered (following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus)
+  TARGET = target;
+
+  const source = TARGET?.closest?.(SELECTOR_TOOLTIP) || undefined;
+  if (SOURCE === source) return; // Same source, no need to update
+  if (SOURCE) hide(); // Reset previous tooltip, since we are moving to a new source
+  SOURCE = source;
+
+  if (!source) return; // No source, no need to show tooltip
+  if (e.type === 'focus' || DELAY_SKIP > Date.now() - LAST_HIDE) return show(); // Instantly show if focus or if we just closed a tooltip
+  if (e.type === 'mousemove') TIMER = setTimeout(show, DELAY_HOVER); // Delay mouse showing tooltip if not already shown
+};
+
+const show = () => {
+  if (!SOURCE) return hide(); // If no new anchor, cleanup previous autoUpdate
   if (!TIP) TIP = tag('div', { class: 'ds-tooltip' });
-  if (!TIP.isConnected) document.body.appendChild(TIP); // Ensure connected
+  if (!TIP.isConnected) document.body.appendChild(TIP);
 
-  const color = source.closest(SELECTOR_COLOR); // Match source color of source element
-  const scheme = source.closest(SELECTOR_SCHEME); // Match source color-scheme of source element
+  const color = SOURCE.closest(SELECTOR_COLOR); // Match source color of source element
+  const scheme = SOURCE.closest(SELECTOR_SCHEME); // Match source color-scheme of source element
   const isReset = color !== scheme && color?.contains(scheme as Node); // If data-scheme is closer to target, it will reset data-color
 
-  clearTimeout(SKIP_TIMER);
   attr(TIP, 'popover', 'manual'); // Ensure popover behavior
   attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME) || null); // Fallback to null to reset if not scheme found
   attr(TIP, ATTR_COLOR, (isReset && color?.getAttribute(ATTR_COLOR)) || null); // Fallback to null to reset if not scheme found
-  TIP.textContent = attr(source, ATTR_TOOLTIP);
+  setupText(SOURCE, false); // If mutation observer is not triggered, ensure tooltip text is updated
+  // TIP.textContent = attr(SOURCE, ATTR_TOOLTIP);
   TIP.showPopover();
-  TIP.dispatchEvent(new CustomEvent('ds-toggle-source', { detail: source })); // Since showPopover({ source }) is not supported in all browsers yet
-  IS_HOVERING = true;
-  SOURCE = source;
+  TIP.dispatchEvent(
+    new CustomEvent('ds-toggle-source', {
+      bubbles: true,
+      composed: true, // Enable bubbling out of shadow DOM boundries
+      detail: SOURCE, // Since showPopover({ source }) is not supported in all browsers yet
+    }),
+  );
 };
 
-const hideTooltip = () => TIP?.isConnected && TIP.popover && TIP.hidePopover(); // Only hide if connected and activated
-
-const handleClose = (event?: Partial<ToggleEvent & KeyboardEvent>) => {
-  if (event?.type === 'keydown')
-    return event?.key === 'Escape' && hideTooltip();
-  if (!event) IS_HOVERING = false;
-  else if (event.target === TIP && event.newState === 'closed') {
-    SOURCE = undefined;
-    SKIP_TIMER = setTimeout(handleClose, DELAY_SKIP);
-  }
+const hide = (event?: Partial<KeyboardEvent>) => {
+  if (event?.type === 'keydown' && event?.key !== 'Escape') return;
+  if (SOURCE && TIP?.isConnected && TIP.popover) TIP.hidePopover(); // Only hide if connected and activated
+  if (!event) LAST_HIDE = Date.now(); // If closing with keyboard, do not show next tooltip instantly
+  clearTimeout(TIMER);
+  SOURCE = undefined;
 };
 
 onHotReload('tooltip', () => [
-  on(document, 'blur focus mouseover', handleInterest, QUICK_EVENT),
-  on(document, 'toggle keydown', handleClose, QUICK_EVENT),
-  onMutation(document, handleAriaAttributes, {
+  on(document, 'focus mousemove', handleInterest, QUICK_EVENT),
+  on(document, 'keydown', hide, QUICK_EVENT),
+  onMutation(document, handleMutations, {
     attributeFilter: [ATTR_TOOLTIP],
     attributes: true,
     childList: true,

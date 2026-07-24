@@ -15,7 +15,9 @@ import {
 } from '@oddbird/popover-polyfill/fn';
 import {
   attr,
+  getComposedTarget,
   getCSSProp,
+  getRoot,
   isBrowser,
   on,
   onHotReload,
@@ -38,21 +40,22 @@ const POPOVERS = new Map<HTMLElement, () => void>();
 // Sometimes use "ds-toggle" event while waiting for better support of
 // event.source (https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/source)
 function handleToggle(
-  event: Partial<ToggleEvent> & {
-    detail?: HTMLElement;
-    source?: HTMLElement;
-  },
+  event: Event &
+    Partial<ToggleEvent> & {
+      detail?: HTMLElement;
+      source?: HTMLElement;
+    },
 ) {
-  let { newState, oldState, target: el, source = event.detail } = event;
+  let { newState, oldState, source = event.detail } = event;
+  const el = getComposedTarget(event);
   const isPopover = el instanceof HTMLElement && attr(el, 'popover') !== null;
   const float = isPopover && getCSSProp(el, '--_ds-floating');
 
   if (!float) return;
   if (newState === 'closed') return POPOVERS.get(el)?.(); // Cleanup on close
   if (!source) {
-    const root = el.getRootNode() as Document; // Support shadow DOM
-    const css = `[popovertarget="${el.id}"],[commandfor="${el.id}"]`;
-    source = (el.id && root?.querySelector?.<HTMLElement>(css)) || undefined; // Polyfill ToggleEvent .source for older browsers
+    const css = el.id && `[popovertarget="${el.id}"],[commandfor="${el.id}"]`;
+    source = (css && getRoot(el).querySelector<HTMLElement>(css)) || undefined; // Polyfill ToggleEvent .source for older browsers
   }
   if (!source || source === el || (oldState && oldState === newState)) return; // No need to update
 
@@ -113,10 +116,20 @@ const handleScrollbar = ({ type }: Event) => {
     for (const [popover] of POPOVERS) popover.showPopover(); // Immediately show again to prevent flicker
 };
 
-onHotReload('popover', () => [
-  on(document, 'mousedown scroll mouseup', handleScrollbar, true),
-  on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
-]);
+onHotReload('popover', () => {
+  const attachShadow = HTMLElement.prototype.attachShadow;
+  HTMLElement.prototype.attachShadow = function (init) {
+    const root = attachShadow.call(this, init);
+    root.addEventListener('toggle', handleToggle, QUICK_EVENT); // Native Toggle event does not bubble from shadow DOM, so we need to listen for it on every shadow root
+    return root;
+  };
+
+  return [
+    on(document, 'mousedown scroll mouseup', handleScrollbar, true),
+    on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
+    () => (HTMLElement.prototype.attachShadow = attachShadow), // Restore original attachShadow on hot reload
+  ];
+});
 
 const arrowPseudo = () => ({
   name: 'arrowPseudo',

@@ -15,12 +15,11 @@ const render = () => {
 };
 
 describe('Dialog behavior', () => {
-  it('should set aria-haspopup on show-modal buttons', async () => {
+  it('should set aria-haspopup on focused show-modal buttons', async () => {
     render();
 
     const button = document.querySelector('button') as HTMLButtonElement;
-
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
+    button.focus();
     expect(button).toHaveAttribute('aria-haspopup', 'dialog');
   });
 
