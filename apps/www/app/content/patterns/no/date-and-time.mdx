@@ -30,8 +30,9 @@ Del gjerne datoen opp i separate felt for dag, måned og år. Det gjør det enkl
 
 I eksempelet over bruker vi `inputmode="numeric"` for å gi brukeren numerisk tastatur på mobil og nettbrett. Vi velger bevisst å ikke bruke `type="number"` for dag, måned og år. `type="number"` er utviklet for numeriske verdier som kan økes og reduseres. Det gir funksjonalitet som spinnknapper og automatisk validering. Dette er ikke alltid hensiktsmessig når brukeren skal skrive inn en dato, og kan gi [tilgjengelighetsutfordringer (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility).
 
-## Dato fra et forhåndsdefinert utvalg
+Legg til rette for fleksibilitet i hva brukerne kan skrive inn. Godta for eksempel både «5» og «05» for dag og måned, og både «90» og «1990» for år. Hvis du krever et bestemt format, må dette fremgå tydelig, og feilmeldinger bør forklare nøyaktig hva som er galt. 
 
+## Dato fra et forhåndsdefinert utvalg
 Hvis du vet at brukerne skal velge en dato eller et tidspunkt fra et begrenset utvalg, for eksempel ledige timer den kommende uken, kan det være mer effektivt å tilby disse datoene som ferdige valg.
 
 Når utvalget er svært begrenset, for eksempel noen få datoer eller tidspunkter, kan [`Radio`](/no/components/docs/radio/overview) være et godt valg. Det gjør det raskt og enkelt å velge et alternativ, uten å måtte skrive noe selv.
@@ -46,8 +47,7 @@ Når antall valg øker, kan en [`Select`](/no/components/docs/select/overview) v
 Du bør kun vise valg som har ledige timer. Unngå for eksempel å deaktivere uker som ikke har ledige timer, da det kan skape forvirring. Forklar på forhånd at brukerne kun ser uker med ledige tidspunkt, slik at de forstår hvorfor det er noen uker de ikke kan velge.
 
 ## Konkret dato i nær fremtid eller fortid
-
-Noen ganger når brukerne skal velge en konkret dato tett opp mot dagens dato, kan det være nyttig å gi visuell støtte. En [`Input`](/no/components/docs/input/overview) med `type="date"` lar brukerne enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Dette gir ofte en god balanse mellom fleksibilitet og støtte. Støtten varierer mellom nettlesere og enheter, både når det gjelder funksjonalitet, utseende og interaksjon, men løsningen er ofte mer tilgjengelig og robust enn egenbygde alternativer.
+Noen ganger når brukerne skal velge en konkret dato tett opp mot dagens dato, kan det være nyttig å gi visuell støtte. En [`Input`](/no/components/docs/input/overview) med `type="date"` lar brukerne enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Dette gir ofte en god balanse mellom fleksibilitet og støtte. Støtten varierer mellom nettlesere og enheter, både når det gjelder funksjonalitet, utseende og interaksjon, men løsningen er ofte mer tilgjengelig og robust enn egenbygde alternativer. Hvis du bygger en egen datovelger, må du sørge for at både felt og kalender er fullt tilgjengelige, og at de fungerer godt med tastatur og skjermleser, noe som kan være utfordrende.
 
 <Story story="NearFuturePast" />
 
@@ -60,6 +60,8 @@ Når brukerne skal oppgi en periode, bør startdato og sluttdato vises tydelig s
 Plasser feltene i logisk rekkefølge, og valider at sluttdato ikke er før startdato. Hvis datoene avhenger av hverandre, bør feilmeldinger forklare hva som er galt og hvordan brukerne kan rette det.
 
 <Story story="StartEndDate" />
+
+Noen brukere opplever det som mer effektivt å velge start- og sluttdato i én samlet kalenderkontroll. Siden dette ikke finnes som en innebygd HTML-kontroll, må løsningen utvikles spesielt for formålet. Vær oppmerksom på at en slik løsning kan være vanskeligere å forstå for enkelte brukere. 
 
 ## Klokkeslett – start og slutt
 
