@@ -14,8 +14,6 @@ injectWorkspacePackages: true
 minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - "@u-elements/*"
-  # Renovate security update: postcss@8.5.18
-  - postcss@8.5.18
 packageExtensions:
   "@navikt/aksel-icons":
     peerDependencies:
