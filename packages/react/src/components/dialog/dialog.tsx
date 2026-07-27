@@ -126,11 +126,11 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
           onClose?.(event.nativeEvent); // Backward compatibility: expose native event
         }}
         onClick={(event) => {
-          onClick?.(event);
+          onClick?.(event as React.MouseEvent<HTMLDialogElement>);
           const { currentTarget: dialog, target: el, defaultPrevented } = event;
           const isClose = (el as Element)?.closest?.('[data-command="close"]');
           if (!defaultPrevented && isClose) {
-            dialog.close();
+            (dialog as HTMLDialogElement).close();
 
             if (window.dsWarnings !== false)
               console.log(
