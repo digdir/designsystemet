@@ -100,7 +100,7 @@ export const ReactDropZoneExample = () => {
   return (
     <div style={{ minWidth: '300px' }}>
       {/* When using react-dropzone, it is important to apply the getRootProps to the
-       Field component and not the FileUpload component so screenreaders see the Label.
+        Field component and not the FileUpload component so screenreaders see the Label.
         This should be noted in the docs */}
       <Field {...getRootProps()}>
         <Label>Upload profile picture</Label>
