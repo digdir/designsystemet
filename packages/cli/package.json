@@ -85,7 +85,7 @@
   },
   "devDependencies": {
     "@types/chroma-js": "3.1.2",
-    "@types/node": "24.13.2",
+    "@types/node": "24.13.3",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.32.0",
     "tsdown": "0.22.3",
