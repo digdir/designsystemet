@@ -1,6 +1,6 @@
 import { getComposedTarget, getRoot, on, onHotReload } from '../utils/utils';
 
-const isReadOnly = (el: Element | null): el is Element =>
+const isReadOnly = (el: Element | null): el is HTMLElement =>
   el?.hasAttribute('readonly') || el?.getAttribute('aria-readonly') === 'true';
 
 // Allow tabbing when readonly, and only fix readonly input/select elements (since type select and non-text-inputs do not support readonly)
@@ -21,8 +21,14 @@ const handleKeyDown = (e: Event & Partial<KeyboardEvent>) => {
   }
 };
 
-const handleClick = (e: Event) =>
-  isReadOnly(getComposedTarget(e)) && e.preventDefault();
+const handleClick = (e: Event) => {
+  const target = getComposedTarget(e);
+  const input = (target as Element)?.closest?.('label')?.control || target;
+  if (isReadOnly(input)) {
+    e.preventDefault();
+    input.focus();
+  }
+};
 
 const handleMouseDown = (e: Event) => {
   const el = getComposedTarget(e);

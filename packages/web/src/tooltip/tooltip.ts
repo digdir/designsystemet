@@ -43,15 +43,17 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
   TIP = el || undefined;
 };
 
+export const initTooltips = (scope: Element) => {
+  for (const el of (scope || document).querySelectorAll(SELECTOR_TOOLTIP))
+    setupText(el);
+};
+
 // Initial run has no MutationRecords, so we set records to [null] to ensure we run the querySelectorAll for any existing elements with data-tooltip
 const handleMutations = (_: Document, records?: MutationRecord[]) => {
   for (const r of records || [null]) {
     if (r?.target === TIP) continue; // Ignore mutations on tooltip itself
     if (r?.attributeName === ATTR_TOOLTIP) setupText(r.target as Element);
-    else if (!r || r.addedNodes.length) {
-      const scope = (r?.target || document) as Element;
-      for (const el of scope.querySelectorAll(SELECTOR_TOOLTIP)) setupText(el);
-    }
+    else if (!r || r.addedNodes.length) initTooltips(r?.target as Element);
   }
 };
 

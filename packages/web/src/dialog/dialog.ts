@@ -34,7 +34,7 @@ const close = (dialog: HTMLDialogElement) => dialog.open && dialog.close();
 const MODAL = 'show-modal';
 const NON_MODAL = '--show-non-modal';
 const handleAriaAttributes = (event: Event) => {
-  const el = (getComposedTarget(event) as Element).closest?.('[command]');
+  const el = (getComposedTarget(event) as Element)?.closest?.('[command]');
   if (el && attr(el, 'command') === MODAL) attr(el, 'aria-haspopup', 'dialog');
 };
 

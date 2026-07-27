@@ -19,7 +19,7 @@
 
       <fieldset
         class="ds-toggle-group"
-        data-focusgroup="radiogroup"
+        focusgroup="radiogroup"
         aria-label="Tekstjustering"
       >
         <label class="ds-button">
@@ -45,30 +45,30 @@
 
       <div>
         <my-test
-          data-focusgroup="radiogroup nomemory"
+          focusgroup="radiogroup"
           style="display: flex; gap: 2px; padding-block: 1rem"
         >
           <template shadowrootmode="open">
             <my-test>
               <template shadowrootmode="open">
-                <button type="button" class="ds-button">A in in</button>
+                <button type="button" class="ds-button">A in shadow</button>
               </template>
             </my-test>
             <input type="text" placeholder="In">
             <button type="button" class="ds-button">B in</button>
             <my-test>
               <template shadowrootmode="open">
-                <div data-focusgroup="none">
-                  <button type="button" class="ds-button">C out in</button>
+                <div focusgroup="none">
+                  <button type="button" class="ds-button">C none shadow</button>
                 </div>
               </template>
             </my-test>
             <button type="button" class="ds-button">D in</button>
-            <button type="button" class="ds-button" data-focusgroupstart>
+            <button type="button" class="ds-button" focusgroupstart>
               E in
             </button>
-            <button data-focusgroup="none" type="button" class="ds-button">
-              F out
+            <button focusgroup="none" type="button" class="ds-button">
+              F none
             </button>
           </template>
         </my-test>
