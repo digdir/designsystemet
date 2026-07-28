@@ -34,7 +34,6 @@ const SyncedBox = () => {
       ref={ref}
       style={{
         animation: 'spin 2s linear infinite',
-
         width: '30px',
         height: '30px',
         backgroundColor: 'red',
