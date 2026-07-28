@@ -20,12 +20,12 @@ export const WithCurrentColor = () => {
   );
 };
 
-export const WithIconColor = () => {
-  return <Textfield label='Change to iconcolor token SVG-example' />;
-};
-
-export const WithMultiColor = () => {
-  return <Textfield label='Change to multicolor tokens SVG-example' />;
+export const WithMultiColorUse = () => {
+  return (
+    <svg height='3rem' width='3rem'>
+      <use href='/img/component-graphic.svg#component-icon'></use>
+    </svg>
+  );
 };
 
 export const WithMultiColorInline = () => {
