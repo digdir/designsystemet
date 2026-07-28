@@ -42,14 +42,26 @@ export type ToggleGroupProps = MergeRight<
      * Form element name
      */
     name?: string;
-    /**
-     * Toggle group label for accessibility
-     * @deprecated Use aria-label or aria-labelledby instead.
-     */
-    'data-toggle-group'?: string;
   } & (
-    | { 'aria-label': string; 'aria-labelledby'?: never }
-    | { 'aria-label'?: never; 'aria-labelledby': string }
+    | {
+        /**
+         * Toggle group label for accessibility
+         * @deprecated Use aria-label or aria-labelledby instead.
+         */
+        'data-toggle-group'?: string;
+        'aria-label'?: never;
+        'aria-labelledby'?: never;
+      }
+    | {
+        'data-toggle-group'?: never;
+        'aria-labelledby'?: never;
+        'aria-label': string;
+      }
+    | {
+        'data-toggle-group'?: never;
+        'aria-labelledby': string;
+        'aria-label'?: never;
+      }
   )
 >;
 

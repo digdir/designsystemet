@@ -118,8 +118,8 @@ export const getComposedTarget = (e: Event): Element | null => {
 
 /**
  * getComposedPath
- * @description Helper to get the full composted path even if listener is bound to a ShadowRoot (unlike event.composedPath())
- * @param event The event
+ * @description Helper to get the full composed path even if listener is bound to a ShadowRoot (unlike event.composedPath())
+ * @param el The element to start traversing from
  * @return Set of nodes in the path
  */
 export const getComposedPath = (el: Node | null) => {

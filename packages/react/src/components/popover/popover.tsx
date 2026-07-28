@@ -125,7 +125,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         popover?.dispatchEvent(
           new CustomEvent('ds-toggle-source', {
             bubbles: true,
-            composed: true, // Enable bubbling out of shadow DOM boundries
+            composed: true, // Enable bubbling out of shadow DOM boundaries
             detail: document.querySelector(trigger), // Since togglePopover({ source }) is not supported in all browsers yet
           }),
         );

@@ -123,7 +123,7 @@ const show = () => {
   TIP.dispatchEvent(
     new CustomEvent('ds-toggle-source', {
       bubbles: true,
-      composed: true, // Enable bubbling out of shadow DOM boundries
+      composed: true, // Enable bubbling out of shadow DOM boundaries
       detail: OPEN, // Since showPopover({ source }) is not supported in all browsers yet
     }),
   );

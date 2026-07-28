@@ -76,12 +76,16 @@ export const ToggleGroupItem = forwardRef<
       className={cl('ds-button', className)}
       data-variant='tertiary'
       ref={ref}
+      {...labelProps}
       {...(asChild && {
         'aria-checked': active,
-        onClick: () => toggleGroup.onChange?.(value),
         role: 'radio',
+        onClick: (e) => {
+          if (disabled || ariaDisabled === 'true') return;
+          rest.onClick?.(e as React.MouseEvent<HTMLLabelElement, MouseEvent>);
+          toggleGroup.onChange?.(value);
+        },
       })}
-      {...labelProps}
     >
       {!asChild && (
         <input

@@ -45,7 +45,7 @@ import { initTooltips } from '@digdir/designsystemet-web'
 
 class MyComponent extends HTMLElement {
   connectedCallback() {
-    setTimeout(initTooltips, 0, this.shadowRoot); // Usint setTimeout to let children mount before initializing
+    setTimeout(initTooltips, 0, this.shadowRoot); // Using setTimeout to let children mount before initializing
   }
 } 
 ```

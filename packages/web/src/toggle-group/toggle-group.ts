@@ -25,7 +25,7 @@ const handleMutations = (root: Document, records?: MutationRecord[]) => {
 const deprecate = (el: Element) => {
   const label = attrOrCSS(el, ATTR_TOGGLEGROUP);
   const labelledby = attr(el, ARIA_LABELLEDBY)?.trim();
-  const message = `Please use focusgroup="radiogroup" and ${labelledby ? ARIA_LABELLEDBY : ARIA_LABEL}="${labelledby || label}" insteadof deprecated ${ATTR_TOGGLEGROUP} on:`;
+  const message = `Please use focusgroup="radiogroup" and ${labelledby ? ARIA_LABELLEDBY : ARIA_LABEL}="${labelledby || label}" instead of deprecated ${ATTR_TOGGLEGROUP} on:`;
 
   attr(el, ARIA_LABEL, labelledby ? null : label);
   attr(el, 'focusgroup', 'radiogroup');
