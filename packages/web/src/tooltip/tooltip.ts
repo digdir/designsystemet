@@ -17,22 +17,20 @@ import {
 
 let TIP: HTMLElement | undefined;
 let TARGET: Element | undefined; // Used to speed up mousemove handling
-let SOURCE: Element | undefined;
+let OPEN: Element | undefined;
 let TIMER: ReturnType<typeof setTimeout> | undefined;
 let LAST_HIDE = 0;
 const ATTR_COLOR = 'data-color';
-const ATTR_SIZE = 'data-size';
-const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
-const SELECTOR_SIZE = `[${ATTR_SIZE}]`;
-const SELECTOR_TOOLTIP = `[${ATTR_TOOLTIP}]`;
 const ATTR_SCHEME = 'data-color-scheme';
+const ATTR_SIZE = 'data-size';
 const ATTR_TOOLTIP = 'data-tooltip';
+const DELAY_HOVER = 300;
+const DELAY_SKIP = 300;
 const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
 const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
 const SELECTOR_SCHEME = `[${ATTR_SCHEME}]`;
+const SELECTOR_SIZE = `[${ATTR_SIZE}]`;
 const SELECTOR_TOOLTIP = `[${ATTR_TOOLTIP}]`;
-const DELAY_HOVER = 300;
-const DELAY_SKIP = 300;
 
 /**
  * setTooltipElement
@@ -85,7 +83,7 @@ const setupText = (el: Element, canAnnounce = true) => {
     if (!el.matches(SELECTOR_INTERACTIVE))
       warn('Missing tabindex="0" attribute on: ', el);
   }
-  if (el === SOURCE && text && TIP?.textContent !== text) {
+  if (el === OPEN && text && TIP?.textContent !== text) {
     if (TIP) TIP.textContent = text;
     if (canAnnounce && document.activeElement === el) announce(text); // Only announce if focus is on the source
   }
@@ -97,9 +95,9 @@ const handleInterest = (e: Event) => {
   TARGET = target;
 
   const source = TARGET?.closest?.(SELECTOR_TOOLTIP) || undefined;
-  if (SOURCE === source) return; // Same source, no need to update
-  if (SOURCE) hide(); // Reset previous tooltip, since we are moving to a new source
-  SOURCE = source;
+  if (OPEN === source) return; // Same source, no need to update
+  if (OPEN) hide(); // Reset previous tooltip, since we are moving to a new source
+  OPEN = source;
 
   if (!source) return; // No source, no need to show tooltip
   if (e.type === 'focus' || DELAY_SKIP > Date.now() - LAST_HIDE) return show(); // Instantly show if focus or if we just closed a tooltip
@@ -107,37 +105,36 @@ const handleInterest = (e: Event) => {
 };
 
 const show = () => {
-  if (!SOURCE) return hide(); // If no new anchor, cleanup previous autoUpdate
+  if (!OPEN) return hide(); // If no new anchor, cleanup previous autoUpdate
   if (!TIP) TIP = tag('div', { class: 'ds-tooltip' });
   if (!TIP.isConnected) document.body.appendChild(TIP);
 
-  const color = SOURCE.closest(SELECTOR_COLOR); // Match source color of source element
-  const scheme = SOURCE.closest(SELECTOR_SCHEME); // Match source color-scheme of source element
-  const size = SOURCE.closest(SELECTOR_SIZE); // Match source size of source element
+  const color = OPEN.closest(SELECTOR_COLOR); // Match source color of source element
+  const scheme = OPEN.closest(SELECTOR_SCHEME); // Match source color-scheme of source element
+  const size = OPEN.closest(SELECTOR_SIZE); // Match source size of source element
   const isReset = color !== scheme && color?.contains(scheme as Node); // If data-scheme is closer to target, it will reset data-color
 
   attr(TIP, 'popover', 'manual'); // Ensure popover behavior
   attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME) || null); // Fallback to null to reset if not scheme found
   attr(TIP, ATTR_COLOR, (isReset && color?.getAttribute(ATTR_COLOR)) || null); // Fallback to null to reset if not scheme found
   attr(TIP, ATTR_SIZE, size?.getAttribute(ATTR_SIZE) || null); // Fallback to null to reset if not size found
-  setupText(SOURCE, false); // If mutation observer is not triggered, ensure tooltip text is updated
-  // TIP.textContent = attr(SOURCE, ATTR_TOOLTIP);
+  setupText(OPEN, false); // If mutation observer is not triggered, ensure tooltip text is updated
   TIP.showPopover();
   TIP.dispatchEvent(
     new CustomEvent('ds-toggle-source', {
       bubbles: true,
       composed: true, // Enable bubbling out of shadow DOM boundries
-      detail: SOURCE, // Since showPopover({ source }) is not supported in all browsers yet
+      detail: OPEN, // Since showPopover({ source }) is not supported in all browsers yet
     }),
   );
 };
 
 const hide = (event?: Partial<KeyboardEvent>) => {
   if (event?.type === 'keydown' && event?.key !== 'Escape') return;
-  if (SOURCE && TIP?.isConnected && TIP.popover) TIP.hidePopover(); // Only hide if connected and activated
+  if (OPEN && TIP?.isConnected && TIP.popover) TIP.hidePopover(); // Only hide if connected and activated
   if (!event) LAST_HIDE = Date.now(); // If closing with keyboard, do not show next tooltip instantly
   clearTimeout(TIMER);
-  SOURCE = undefined;
+  OPEN = undefined;
 };
 
 onHotReload('tooltip', () => [
