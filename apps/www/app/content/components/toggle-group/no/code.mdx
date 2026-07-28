@@ -2,6 +2,7 @@
 
 ## Bruk
 Bruker du `@digdir/designsystemet-web` kan du implementere toggle group ved å bruke `focusgroup="radiogroup"` sammen med `aria-label`.
+Merk at `focusgroup` er en [kommende W3C standard](https://open-ui.org/components/scoped-focusgroup.explainer/), foreløpig kun støttet i Chrome. Designsystemet legger automatisk til polyfill for støtte i alle nettlesere.
 
 ```html
 <fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Tekstjustering" data-variant="secondary">
