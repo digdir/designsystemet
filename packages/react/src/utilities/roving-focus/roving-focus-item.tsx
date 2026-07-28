@@ -1,3 +1,4 @@
+'use client';
 // Logic from: https://www.joshuawootonn.com/react-roving-tabindex
 // Inspired by: https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus/src
 

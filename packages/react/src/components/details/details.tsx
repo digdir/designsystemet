@@ -1,3 +1,4 @@
+'use client';
 import cl from 'clsx/lite';
 import type { DetailsHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';

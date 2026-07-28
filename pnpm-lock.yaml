@@ -644,6 +644,9 @@ importers:
       rollup-plugin-copy:
         specifier: 3.5.0
         version: 3.5.0
+      rollup-plugin-preserve-directives:
+        specifier: ^0.4.0
+        version: 0.4.0(rollup@4.62.2)
       storybook:
         specifier: 10.5.3
         version: 10.5.3(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/react@19.2.17)(prettier@3.9.6)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -5503,6 +5506,11 @@ packages:
   rollup-plugin-copy@3.5.0:
     resolution: {integrity: sha512-wI8D5dvYovRMx/YYKtUNt3Yxaw4ORC9xo6Gt9t22kveWz1enG9QrhVlagzwrxSC455xD1dHMKhIJkbsQ7d48BA==}
     engines: {node: '>=8.3'}
+
+  rollup-plugin-preserve-directives@0.4.0:
+    resolution: {integrity: sha512-gx4nBxYm5BysmEQS+e2tAMrtFxrGvk+Pe5ppafRibQi0zlW7VYAbEGk6IKDw9sJGPdFWgVTE0o4BU4cdG0Fylg==}
+    peerDependencies:
+      rollup: 2.x || 3.x || 4.x
 
   rollup@4.62.2:
     resolution: {integrity: sha512-RFnrW4lhXA3s3eqHDZvN654g8OTjzRfqpIRJYczCGB6HzphckVAi/Qh4tbPUbRuDi7s1Llv8g/NspLkttY3gTA==}
@@ -11086,6 +11094,12 @@ snapshots:
       fs-extra: 8.1.0
       globby: 10.0.1
       is-plain-object: 3.0.1
+
+  rollup-plugin-preserve-directives@0.4.0(rollup@4.62.2):
+    dependencies:
+      '@rollup/pluginutils': 5.1.4(rollup@4.62.2)
+      magic-string: 0.30.21
+      rollup: 4.62.2
 
   rollup@4.62.2:
     dependencies:

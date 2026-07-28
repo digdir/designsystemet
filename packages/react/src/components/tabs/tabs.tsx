@@ -1,3 +1,4 @@
+'use client';
 import type { DSTabElement } from '@digdir/designsystemet-web';
 import '@digdir/designsystemet-web'; // Import ds-tabs custom element
 import cl from 'clsx/lite';

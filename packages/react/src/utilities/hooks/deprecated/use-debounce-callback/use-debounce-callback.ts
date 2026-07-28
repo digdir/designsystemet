@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef } from 'react';
 
 type DebounceFunction<T> = (...args: T[]) => void;

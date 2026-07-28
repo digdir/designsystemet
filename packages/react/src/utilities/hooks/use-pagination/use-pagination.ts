@@ -1,3 +1,4 @@
+'use client';
 import { pagination } from '@digdir/designsystemet-web';
 import type { MouseEvent } from 'react';
 import { useMemo } from 'react';

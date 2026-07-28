@@ -1,3 +1,4 @@
+'use client';
 import { Slot } from '@radix-ui/react-slot';
 import type { ComponentPropsWithRef } from 'react';
 import { forwardRef, useContext } from 'react';

@@ -1,3 +1,4 @@
+'use client';
 import type { OptionHTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 import type { DefaultProps } from '../../types';

@@ -1,3 +1,4 @@
+'use client';
 import type { ComboboxProps } from '../Combobox';
 import type { Option } from '../useCombobox';
 import { removePrefix } from '../utilities';

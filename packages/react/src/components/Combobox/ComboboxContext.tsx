@@ -1,3 +1,4 @@
+'use client';
 import type {
   UseFloatingReturn,
   UseListNavigationProps,

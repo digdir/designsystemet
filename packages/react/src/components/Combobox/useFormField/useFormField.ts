@@ -1,3 +1,4 @@
+'use client';
 import type { Size } from '@digdir/designsystemet-types';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';

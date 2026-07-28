@@ -1,3 +1,4 @@
+'use client';
 import type { DSSuggestionElement } from '@digdir/designsystemet-web';
 import cl from 'clsx/lite';
 import {

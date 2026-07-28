@@ -1,3 +1,4 @@
+'use client';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { ButtonHTMLAttributes } from 'react';

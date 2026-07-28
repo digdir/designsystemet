@@ -1,3 +1,4 @@
+'use client';
 import type { UseFloatingReturn } from '@floating-ui/react';
 import {
   autoUpdate,

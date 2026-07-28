@@ -1,3 +1,4 @@
+'use client';
 import type { KeyboardEvent } from 'react';
 import { useDebounceCallback } from '../../utilities';
 import type { ComboboxContextType } from './ComboboxContext';

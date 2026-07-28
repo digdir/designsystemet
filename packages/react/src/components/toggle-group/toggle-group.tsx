@@ -1,3 +1,4 @@
+'use client';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';

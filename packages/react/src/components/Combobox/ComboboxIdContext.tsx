@@ -1,3 +1,4 @@
+'use client';
 import type { Dispatch, ReactNode } from 'react';
 import { createContext, useContext, useReducer } from 'react';
 

@@ -1,3 +1,4 @@
+'use client';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect } from 'react';
 import '@digdir/designsystemet-web'; // Load u-datalist polyfill

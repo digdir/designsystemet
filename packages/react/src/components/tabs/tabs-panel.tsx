@@ -1,3 +1,4 @@
+'use client';
 import type { DSTabPanelElement } from '@digdir/designsystemet-web';
 import type { HTMLAttributes } from 'react';
 import '@digdir/designsystemet-web'; // Import ds-tabpanel custom element

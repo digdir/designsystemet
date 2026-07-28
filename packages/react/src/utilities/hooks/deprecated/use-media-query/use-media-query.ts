@@ -1,3 +1,4 @@
+'use client';
 // from https://usehooks-ts.com/react-hook/use-media-query
 
 import { useState } from 'react';

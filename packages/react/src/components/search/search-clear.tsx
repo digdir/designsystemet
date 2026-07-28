@@ -1,3 +1,4 @@
+'use client';
 import { forwardRef, type MouseEvent } from 'react';
 import { Button, type ButtonProps } from '../button/button';
 import { setReactInputValue } from '../Combobox/utilities';

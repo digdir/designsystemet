@@ -1,3 +1,4 @@
+'use client';
 import cl from 'clsx/lite';
 import type { InputHTMLAttributes } from 'react';
 import { forwardRef } from 'react';

@@ -1,3 +1,4 @@
+'use client';
 // Inspired by Sam Selikoff
 // https://github.com/samselikoff/2022-02-24-use-synchronized-animation/blob/main/src/App.js
 

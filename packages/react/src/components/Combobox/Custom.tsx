@@ -1,3 +1,4 @@
+'use client';
 import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';

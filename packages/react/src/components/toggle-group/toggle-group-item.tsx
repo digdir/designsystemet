@@ -1,3 +1,4 @@
+'use client';
 import cl from 'clsx/lite';
 import {
   forwardRef,

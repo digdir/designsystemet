@@ -1,3 +1,4 @@
+'use client';
 import type { DSTabElement } from '@digdir/designsystemet-web';
 import type { HTMLAttributes, MouseEvent } from 'react';
 import '@digdir/designsystemet-web'; // Import ds-tab custom element

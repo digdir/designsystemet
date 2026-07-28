@@ -1,3 +1,4 @@
+'use client';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import cl from 'clsx/lite';

@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
+import { preserveDirectives } from 'rollup-plugin-preserve-directives';
 import pkg from './package.json';
 
 // These are dependencies, but are not in our package.json
@@ -25,19 +26,20 @@ const dependenciesSubmodules = dependencies.map(
 
 export default [
   {
-    input: './tsc-build/index.js',
+    input: {
+      index: './tsc-build/index.js',
+      server: './tsc-build/server.js',
+    },
     output: [
       {
         dir: './dist/cjs',
         format: 'cjs',
-        banner: "'use client';",
         preserveModules: true,
         preserveModulesRoot: 'tsc-build',
       },
       {
         dir: './dist/esm',
         format: 'es',
-        banner: "'use client';",
         preserveModules: true,
         preserveModulesRoot: 'tsc-build',
       },
@@ -46,6 +48,7 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
+      preserveDirectives(),
       copy({
         targets: [
           {

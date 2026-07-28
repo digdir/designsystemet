@@ -1,3 +1,4 @@
+'use client';
 import cl from 'clsx/lite';
 import type { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 import { forwardRef, isValidElement, memo, useContext, useId } from 'react';

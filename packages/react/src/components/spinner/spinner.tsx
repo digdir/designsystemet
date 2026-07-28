@@ -1,3 +1,4 @@
+'use client';
 import cl from 'clsx/lite';
 import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 import { useSynchronizedAnimation } from '../../utilities';

@@ -1,3 +1,4 @@
+'use client';
 import { useMergeRefs } from '@floating-ui/react';
 import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';

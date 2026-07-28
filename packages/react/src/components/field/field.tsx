@@ -1,3 +1,4 @@
+'use client';
 import type { DSFieldElement } from '@digdir/designsystemet-web';
 import '@digdir/designsystemet-web'; // Import ds-breadcrumbs custom element
 import { Slot } from '@radix-ui/react-slot';

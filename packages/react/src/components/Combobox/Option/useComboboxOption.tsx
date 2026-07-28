@@ -1,3 +1,4 @@
+'use client';
 import { useMergeRefs } from '@floating-ui/react';
 import type { Ref } from 'react';
 import { useContext, useEffect, useId, useMemo } from 'react';

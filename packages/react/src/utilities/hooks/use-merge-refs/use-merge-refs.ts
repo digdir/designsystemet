@@ -1,3 +1,4 @@
+'use client';
 // https://github.com/floating-ui/floating-ui/blob/master/packages/react/src/hooks/useMergeRefs.ts
 
 import type { Ref, RefCallback, RefObject } from 'react';

@@ -1,3 +1,4 @@
+'use client';
 import { forwardRef, useContext, useEffect } from 'react';
 import { Input, type InputProps } from '../input/input';
 import { SuggestionContext } from './suggestion';
