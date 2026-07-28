@@ -20,8 +20,8 @@ export const WithCurrentColor = () => {
 
 export const WithMultiColorUse = () => {
   return (
-    <svg height='3rem' width='3rem'>
-      <use href='/img/component-graphic.svg#component-icon' title='Multi coloured graphic with four colours'></use>
+    <svg height='3rem' width='3rem' title='Multi coloured graphic with four colours'>
+      <use href='/img/component-graphic.svg#component-icon'></use>
     </svg>
   );
 };
