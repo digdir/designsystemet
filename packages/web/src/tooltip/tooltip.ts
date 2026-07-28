@@ -43,17 +43,22 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
   TIP = el || undefined;
 };
 
-export const initTooltips = (scope: Element) => {
-  for (const el of (scope || document).querySelectorAll(SELECTOR_TOOLTIP))
-    setupText(el);
+export const initTooltips = (scope: Element | Document = document) => {
+  for (const el of scope.querySelectorAll(SELECTOR_TOOLTIP)) setupText(el);
 };
 
 // Initial run has no MutationRecords, so we set records to [null] to ensure we run the querySelectorAll for any existing elements with data-tooltip
 const handleMutations = (_: Document, records?: MutationRecord[]) => {
-  for (const r of records || [null]) {
-    if (r?.target === TIP) continue; // Ignore mutations on tooltip itself
-    if (r?.attributeName === ATTR_TOOLTIP) setupText(r.target as Element);
-    else if (!r || r.addedNodes.length) initTooltips(r?.target as Element);
+  if (!records) return initTooltips();
+  for (const r of records) {
+    if (r.target === TIP) continue; // Ignore mutations on tooltip itself
+    if (r.attributeName === ATTR_TOOLTIP) setupText(r.target as Element);
+    else
+      for (const el of r.addedNodes as NodeListOf<Element>) {
+        if (el.nodeType !== 1) continue;
+        if (el.hasAttribute(ATTR_TOOLTIP)) setupText(el);
+        else initTooltips(el); // Check for any child elements with data-tooltip
+      }
   }
 };
 

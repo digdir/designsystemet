@@ -16,7 +16,10 @@ export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
 
 export type ToggleGroupProps = MergeRight<
   DefaultProps &
-    Omit<HTMLAttributes<HTMLFieldSetElement>, 'value' | 'onChange'>,
+    Omit<
+      HTMLAttributes<HTMLFieldSetElement>,
+      'value' | 'onChange' | 'aria-label' | 'aria-labelledby'
+    >,
   {
     /**
      * Specify which variant to use
@@ -41,16 +44,20 @@ export type ToggleGroupProps = MergeRight<
     name?: string;
     /**
      * Toggle group label for accessibility
+     * @deprecated Use aria-label or aria-labelledby instead.
      */
     'data-toggle-group'?: string;
-  }
+  } & (
+    | { 'aria-label': string; 'aria-labelledby'?: never }
+    | { 'aria-label'?: never; 'aria-labelledby': string }
+  )
 >;
 
 /**
  * Display a group of buttons that can be toggled between.
  *
  * @example
- * <ToggleGroup data-toggle-group="Label" onChange={(value) => console.log(value)}>
+ * <ToggleGroup aria-label="Label" onChange={(value) => console.log(value)}>
  *   <ToggleGroup.Item value='1'>Toggle 1</ToggleGroup.Item>
  *   <ToggleGroup.Item value='2'>Toggle 2</ToggleGroup.Item>
  *   <ToggleGroup.Item value='3'>Toggle 3</ToggleGroup.Item>
@@ -59,6 +66,7 @@ export type ToggleGroupProps = MergeRight<
 export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
   function ToggleGroup(
     {
+      'data-toggle-group': label,
       children,
       className,
       defaultValue,
@@ -96,11 +104,13 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
         }}
       >
         <fieldset
+          aria-label={label} // Backwards compatible with data-toggle-group, but aria-label is preferred
           className={cl('ds-toggle-group', className)}
-          data-toggle-group='' // Default to empty string to ensure attribute is present
           data-variant={variant}
-          suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
+          // @ts-expect-error focusgroup is not part of React Typescript definition yet
+          focusgroup='radiogroup'
           ref={ref}
+          suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
           {...rest}
         >
           {children}

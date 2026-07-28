@@ -23,7 +23,7 @@
 - [`readonly`](#readonly)
 - [`<ds-suggestion>`](#ds-suggestion)
 - [`<ds-tabs>`](#ds-tabs)
-- [`data-toggle-group`](#data-toggle-group)
+- [`focusgroup` (polyfill)](#focusgroup)
 - [`data-tooltip`](#data-tooltip)
   
 
@@ -298,25 +298,20 @@ Extends `u-tabs` from u-elements. See documentation for [u-tabs](https://u-eleme
 </ds-tabs>
 ```
 
-## `data-toggle-group`
-This is implemented differently from `ToggleGroup` in the react package.
-
-An observer will look for `data-toggle-group` and add proper arrow navigation plus Enter-key support.
+## `focusgroup`
+An observer will look for `focusgroup` and add proper arrow navigation plus Enter-key support [according to upcoming specification](https://open-ui.org/components/scoped-focusgroup.explainer/).
 
 ```html
-<fieldset class="ds-toggle-group" data-toggle-group="Text alignment" data-variant="secondary">
-  <label>
-    <input type="radio" name="alignment-two" value="left" checked />
+<fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Text alignment" data-variant="secondary">
+  <button type="button" role="radio" aria-checked="true">
     Left aligned
-  </label>
-  <label>
-    <input type="radio" name="alignment-two" value="center" />
+  </button>
+  <button type="button" role="radio" aria-checked="false">
     Center aligned
-  </label>
-  <label>
-    <input type="radio" name="alignment-two" value="right" />
+  </button>
+  <button type="button" role="radio" aria-checked="false">
     Right aligned
-  </label>
+  </button>
 </fieldset>
 ```
 

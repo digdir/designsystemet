@@ -1,52 +1,28 @@
 <Story story="Preview" defaultOpen />
 
 ## Bruk
-Bruker du `@digdir/designsystemet-web` kan du implementere toggle group ved å bruke `data-toggle-group`-attributtet.
+Bruker du `@digdir/designsystemet-web` kan du implementere toggle group ved å bruke `focusgroup="radiogroup"` sammen med `aria-label`.
 
 ```html
-<fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering" data-variant="secondary">
-  <label class="ds-button">
-    <input type="radio" name="alignment-two" value="left" checked />
+<fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Tekstjustering" data-variant="secondary">
+  <button type="button" class="ds-button" role="radio" aria-checked="true">
     Venstestilt
-  </label>
-  <label class="ds-button">
-    <input type="radio" name="alignment-two" value="center" />
+  </button>
+  <button type="button" class="ds-button" role="radio" aria-checked="false">
     Midtstilt
-  </label>
-  <label class="ds-button">
-    <input type="radio" name="alignment-two" value="right" />
+  </button>
+  <button type="button" class="ds-button" role="radio" aria-checked="false">
     Høyrestilt
-  </label>
+  </button>
 </fieldset>
 ```
 
-### Gammel måte med `<button>`
-**Her må du håndtere tastaturnavigasjon og ARIA-roller sjølv.**
+### Automatisk versus manuell aktivering
+Toggle group støtter to aktiveringsmoduser: automatisk (med `<label><input type="radio">`) og manuell (med `<button role="radio" aria-checked="true | false">`).
+Ved bruk av `<label><input type="radio">` aktiveres valg med én gang brukeren navigerer med piltastene, mens med `<button>` må aktiveres valg først ved Enter eller Mellomrom. 
+Automatisk aktivering er standard i React og anbefalt, men manuell kan være nyttig dersom toggle group utløser større operasjoner, som å bytte mellom liste- og kartvisning eller gjøre nye API-kall.
 
-Du kan lese om kva du må gjere for å implementere dette i [tilgjengelighetsdokumentasjonen](/no/components/docs/toggle-group/accessibility).
 
-Klassenavnet `ds-toggle-group` blir lagt på ein `<div>` med `role="radiogroup"`.
-
-Kvar knapp i gruppa er ein `<button>` med klassenavn `ds-button` med `role="radio"` og `aria-checked` som indikerer om knappen er vald eller ikkje.
-
-```html
-<div class="ds-toggle-group" role="radiogroup" data-variant="primary">
-  <button
-    class="ds-button"
-    type="button"
-    id="togglegroup-item-1"
-    aria-checked="true"
-    role="radio"
-  >Innboks</button>
-  <button
-    class="ds-button"
-    type="button"
-    id="togglegroup-item-2"
-    aria-checked="false"
-    role="radio"
-  >Sendt</button>
-</div>
-```
 
 ## CSS variablar og data-attributter
 Størrelsar styrast med [data-size](/no/fundamentals/code/sizes) og fargar med [data-color](/no/fundamentals/code/colors). 
@@ -61,7 +37,7 @@ Komponenten vil arve næraste forelder med desse satt.
 ```tsx
 import { ToggleGroup } from '@digdir/designsystemet-react';
 
-<ToggleGroup data-toggle-group='Alternativer' defaultValue="option1">
+<ToggleGroup aria-label='Alternativer' defaultValue="option1">
   <ToggleGroup.Item value="option1">Alternativ 1</ToggleGroup.Item>
   <ToggleGroup.Item value="option2">Alternativ 2</ToggleGroup.Item>
 </ToggleGroup>

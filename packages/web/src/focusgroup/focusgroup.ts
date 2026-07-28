@@ -1,5 +1,6 @@
 import {
   attr,
+  getComposedPath,
   getComposedTarget,
   isBrowser,
   on,
@@ -28,7 +29,7 @@ const IS_SUPPORTED =
   (ATTR_GROUP in HTMLElement.prototype ||
     ATTR_GROUP.replace('g', 'G') in HTMLElement.prototype); // Chrome has implemented camel case "focusGroup"
 
-const resetIsTab = () => (IS_TAB = false);
+const setIsTab = (state: boolean) => (IS_TAB = state);
 const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
   if (e.defaultPrevented || e.altKey || e.metaKey || e.ctrlKey) return;
 
@@ -36,23 +37,22 @@ const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
   const isBlock = e.key === 'ArrowUp' || e.key === 'ArrowDown';
   const isArrow = isBlock || e.key === 'ArrowLeft' || e.key === 'ArrowRight';
   if (!isTab && !isArrow && e.key !== 'Home' && e.key !== 'End') return;
-  if (isTab) setTimeout(resetIsTab, 100, (IS_TAB = true)); // Reset after event loop so we can check if next focus event is a result of tabbing
+  if (isTab) setTimeout(setIsTab, 100, false, setIsTab(true)); // Reset after event loop so we can check if next focus event is a result of tabbing
 
   const target = getComposedTarget(e) as Element | null;
   if (!target || isConflict(target)) return; // See https://open-ui.org/components/scoped-focusgroup.explainer/#key-conflict-elements
 
-  let group = getGroup(getFullComposedPath(target));
+  let group = getGroup(getComposedPath(target));
 
   if (group?.role && group?.el === target)
-    group = getGroup(getFullComposedPath(group.el.parentNode)); // If focus is on the group itself, check if it is nested inside another group
+    group = getGroup(getComposedPath(group.el.parentNode)); // If focus is on the group itself, check if it is nested inside another group
   if (!group?.role) return; // Ignore invalid parent groups
 
   const items = getItems(group.el, target); // Include target so we can move from tabindex="-1" as according to spec
-  const last = items.length - 1;
   let next = 0;
 
   if (isTab) return setTimeout(setTab, 0, items, setTab(items)); // Make sure next tab stop is outside focusgroup
-  if (!isArrow) next = e.key === 'End' ? last : 0;
+  if (!isArrow) next = e.key === 'End' ? items.length - 1 : 0;
   else {
     const { direction: dir, writingMode: mode } = getComputedStyle(target);
     const isFlipped = mode.startsWith('vertical');
@@ -65,8 +65,8 @@ const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
     if ((group.block ?? moveBlock) !== moveBlock) return; // Ignore if group direction does not match move direction
     next = items.indexOf(target) + (moveForward ? 1 : -1);
 
-    if (group.wrap) next = next < 0 ? last : next % items.length;
-    else next = Math.max(0, Math.min(next, last));
+    if (group.wrap) next = (items.length + next) % items.length;
+    else next = Math.max(0, Math.min(next, items.length - 1));
   }
 
   if (items[next] !== target) e.preventDefault(); // Prevent scrolling if changing item
@@ -75,7 +75,7 @@ const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
 
 const handleFocus = (e: Event & Partial<FocusEvent>) => {
   const target = getComposedTarget(e);
-  const path = getFullComposedPath(target);
+  const path = getComposedPath(target);
 
   for (const [el, off] of ROOTS) if (!path.has(el) && ROOTS.delete(el)) off(); // Remove focus listener on previous roots
   for (const el of path)
@@ -158,16 +158,6 @@ export const getItems = (
   return items;
 };
 
-// Return full element path even if listener is bound to a ShadowRoot (unlike event.composedPath())
-const getFullComposedPath = (el: Node | null) => {
-  const path = new Set<Node>();
-  while (el) {
-    path.add(el);
-    if (el.nodeType === 11) el = (el as ShadowRoot).host;
-    else el = (el as Element).assignedSlot || el.parentNode;
-  }
-  return path;
-};
 // Treats the null returned from getItems as a separator and returns segment containing "item"
 const getSegment = <T>(acc: (T | null)[], item: T) => {
   const at = acc.indexOf(item);

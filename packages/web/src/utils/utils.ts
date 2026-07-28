@@ -117,6 +117,22 @@ export const getComposedTarget = (e: Event): Element | null => {
 };
 
 /**
+ * getComposedPath
+ * @description Helper to get the full composted path even if listener is bound to a ShadowRoot (unlike event.composedPath())
+ * @param event The event
+ * @return Set of nodes in the path
+ */
+export const getComposedPath = (el: Node | null) => {
+  const path = new Set<Node>();
+  while (el) {
+    path.add(el);
+    if (el.nodeType === 11) el = (el as ShadowRoot).host;
+    else el = (el as Element).assignedSlot || el.parentNode;
+  }
+  return path;
+};
+
+/**
  * on
  * @param el The Element to use as EventTarget
  * @param types A space separated string of event types

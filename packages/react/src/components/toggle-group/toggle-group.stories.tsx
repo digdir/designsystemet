@@ -35,7 +35,7 @@ export const Preview = meta.story({
     </ToggleGroup>
   ),
   args: {
-    'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
+    'aria-label': 'Filtrering', // Set aria-label attribute for accessibility
     defaultValue: 'innboks',
     name: 'toggle-group-nuts',
   },
@@ -43,11 +43,7 @@ export const Preview = meta.story({
 
 export const OnlyIcons = meta.story({
   render: (args) => (
-    <ToggleGroup
-      {...args}
-      data-toggle-group='Tekstjustering'
-      defaultValue='option-1'
-    >
+    <ToggleGroup {...args}>
       <Tooltip content='Venstrestilt'>
         <ToggleGroup.Item value='option-1'>
           <AlignLeftIcon aria-hidden />
@@ -65,17 +61,17 @@ export const OnlyIcons = meta.story({
       </Tooltip>
     </ToggleGroup>
   ),
+  args: {
+    'aria-label': 'Tekstjustering', // Set aria-label attribute for accessibility
+    defaultValue: 'option-1',
+  },
 });
 
 export const Kontrollert = meta.story(() => {
   const [value, setValue] = useState<string>('utkast');
   return (
     <>
-      <ToggleGroup
-        data-toggle-group='Filtrering'
-        value={value}
-        onChange={setValue}
-      >
+      <ToggleGroup aria-label='Filtrering' value={value} onChange={setValue}>
         <ToggleGroup.Item value='innboks'>
           <EnvelopeClosedIcon aria-hidden />
           Innboks
@@ -104,7 +100,7 @@ export const Kontrollert = meta.story(() => {
 
 export const Secondary = Preview.extend({
   args: {
-    'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
+    'aria-label': 'Filtrering', // Set aria-label attribute for accessibility
     defaultValue: 'innboks',
     variant: 'secondary',
   },
@@ -112,14 +108,14 @@ export const Secondary = Preview.extend({
 
 export const SecondaryOnlyIcons = OnlyIcons.extend({
   args: {
-    'data-toggle-group': 'Filtrering', // Set data-toggle-group attribute for accessibility
+    'aria-label': 'Filtrering', // Set aria-label attribute for accessibility
     variant: 'secondary',
   },
 });
 
 export const Disabled = meta.story(() => {
   return (
-    <ToggleGroup data-toggle-group='Filtrering'>
+    <ToggleGroup aria-label='Filtrering'>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item disabled value='utkast'>
         Utkast
@@ -135,7 +131,7 @@ export const Disabled = meta.story(() => {
 
 export const AriaDisabled = meta.story(() => {
   return (
-    <ToggleGroup data-toggle-group='Filtrering'>
+    <ToggleGroup aria-label='Filtrering'>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item aria-disabled='true' value='utkast'>
         Utkast
@@ -145,6 +141,30 @@ export const AriaDisabled = meta.story(() => {
       </ToggleGroup.Item>
       <ToggleGroup.Item value='Søppelpost'>Søppelpost</ToggleGroup.Item>
       <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+});
+
+export const ManualActivation = meta.story(() => {
+  return (
+    <ToggleGroup
+      aria-label='Filter'
+      onChange={console.log}
+      defaultValue='inboks'
+      variant='secondary'
+    >
+      <ToggleGroup.Item value='inboks' asChild>
+        <Button>Innboks</Button>
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value='utkast' asChild>
+        <Button>Utkast</Button>
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value='arkiv' asChild>
+        <Button>Arkiv</Button>
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value='sendt' asChild>
+        <Button>Sendt</Button>
+      </ToggleGroup.Item>
     </ToggleGroup>
   );
 });

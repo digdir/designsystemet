@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 const render = () => {
   document.body.innerHTML = `
-    <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering">
+    <fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Tekstjustering">
       <label>
         <input type="radio" name="alignment" value="left" />
         Left
@@ -36,7 +36,7 @@ describe('toggle-group behavior', () => {
   it('respects aria-labelledby and does not set aria-label', async () => {
     document.body.innerHTML = `
       <span id="tg-label">External label</span>
-      <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering" aria-labelledby="tg-label">
+      <fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Tekstjustering" aria-labelledby="tg-label">
         <label>
           <input type="radio" name="alignment" value="left" />
           Left

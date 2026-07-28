@@ -13,7 +13,8 @@ const handleKeyDown = (e: Event & Partial<KeyboardEvent>) => {
     const isModifier = e.altKey || e.ctrlKey || e.metaKey; // Allow modifier keys so native functions like CMD + D to bookmark  etc. still works
     if (isArrow || !isModifier) e.preventDefault(); // Prevent changing <select> value with keyboard, but allow non-arrow modifier keys
     if (isArrow && el.type === 'radio') {
-      const all = getRoot(el).querySelectorAll(`input[name="${el.name}"]`);
+      const selector = `input[type="radio"][name="${CSS.escape(el.name)}"]`;
+      const all = (el.form || getRoot(el)).querySelectorAll(selector);
       const move = e.key?.match(/Arrow(Right|Down)/) ? 1 : -1;
       const next = all.length + [...all].indexOf(el) + move;
       (all[next % all.length] as HTMLElement)?.focus();
