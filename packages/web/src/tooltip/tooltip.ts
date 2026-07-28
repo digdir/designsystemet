@@ -21,6 +21,10 @@ let SOURCE: Element | undefined;
 let TIMER: ReturnType<typeof setTimeout> | undefined;
 let LAST_HIDE = 0;
 const ATTR_COLOR = 'data-color';
+const ATTR_SIZE = 'data-size';
+const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
+const SELECTOR_SIZE = `[${ATTR_SIZE}]`;
+const SELECTOR_TOOLTIP = `[${ATTR_TOOLTIP}]`;
 const ATTR_SCHEME = 'data-color-scheme';
 const ATTR_TOOLTIP = 'data-tooltip';
 const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
@@ -109,11 +113,13 @@ const show = () => {
 
   const color = SOURCE.closest(SELECTOR_COLOR); // Match source color of source element
   const scheme = SOURCE.closest(SELECTOR_SCHEME); // Match source color-scheme of source element
+  const size = SOURCE.closest(SELECTOR_SIZE); // Match source size of source element
   const isReset = color !== scheme && color?.contains(scheme as Node); // If data-scheme is closer to target, it will reset data-color
 
   attr(TIP, 'popover', 'manual'); // Ensure popover behavior
   attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME) || null); // Fallback to null to reset if not scheme found
   attr(TIP, ATTR_COLOR, (isReset && color?.getAttribute(ATTR_COLOR)) || null); // Fallback to null to reset if not scheme found
+  attr(TIP, ATTR_SIZE, size?.getAttribute(ATTR_SIZE) || null); // Fallback to null to reset if not size found
   setupText(SOURCE, false); // If mutation observer is not triggered, ensure tooltip text is updated
   // TIP.textContent = attr(SOURCE, ATTR_TOOLTIP);
   TIP.showPopover();
