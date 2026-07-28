@@ -147,7 +147,7 @@ export const getItems = (
   for (let i = 0, l = children?.length || i; children && i < l; i++) {
     const el = children[i] as HTMLElement;
     if (el.nodeName === 'SLOT') getItems(el, keep, items, isNested);
-    else if (!el.inert && !el.hidden && !isTopLayer(el) && isVisible(el)) {
+    else if (isKeyboardReachable(el) && !isTopLayer(el) && isVisible(el)) {
       const group = el.getAttribute(ATTR_GROUP);
       if (el === keep || (!isNested && group !== 'none' && isFocusable(el)))
         items.push(el);
@@ -164,6 +164,9 @@ const getSegment = <T>(acc: (T | null)[], item: T) => {
   const to = acc.indexOf(null, at);
   return acc.slice(acc.lastIndexOf(null, at) + 1, to === -1 ? undefined : to);
 };
+
+const isKeyboardReachable = (el: HTMLElement) =>
+  !el.inert && !el.hidden && !(el as HTMLInputElement).disabled;
 
 const isTopLayer = (el: Element | null) =>
   el?.nodeName === 'DIALOG' || el?.hasAttribute('popover'); // See https://open-ui.org/components/scoped-focusgroup.explainer/#top-layer-elements)

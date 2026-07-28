@@ -76,7 +76,7 @@ describe('ToggleGroup', () => {
     await act(async () => keydown(item1, 'ArrowRight'));
     expect(item4).toHaveFocus();
 
-    await act(async () => keydown(item4, 'ArrowLEft'));
+    await act(async () => keydown(item4, 'ArrowLeft'));
     expect(item1).toHaveFocus();
   });
 

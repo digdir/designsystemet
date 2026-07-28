@@ -115,7 +115,7 @@ export const SecondaryOnlyIcons = OnlyIcons.extend({
 
 export const Disabled = meta.story(() => {
   return (
-    <ToggleGroup aria-label='Filtrering'>
+    <ToggleGroup aria-label='Filtrering' defaultValue='innboks'>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item disabled value='utkast'>
         Utkast
