@@ -1,8 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getGroup, getItems, isConflict, isFocusable } from './focusgroup.js';
 
-const ATTR_GROUP = 'focusgroup';
-
 describe('getItems', () => {
   beforeEach(() => {
     document.body.innerHTML = '';
@@ -10,7 +8,7 @@ describe('getItems', () => {
 
   it('discovers direct child buttons', () => {
     document.body.innerHTML = `
-      <div id="fg" ${ATTR_GROUP}="toolbar">
+      <div id="fg" focusgroup="toolbar">
         <button>A</button>
         <button>B</button>
         <button>C</button>
@@ -28,7 +26,7 @@ describe('getItems', () => {
 
   it('discovers nested focusable descendants', () => {
     document.body.innerHTML = `
-      <div id="fg" ${ATTR_GROUP}="toolbar">
+      <div id="fg" focusgroup="toolbar">
         <div>
           <button>A</button>
           <div>
@@ -45,7 +43,7 @@ describe('getItems', () => {
 
   it('skips non-focusable elements', () => {
     document.body.innerHTML = `
-      <div id="fg" ${ATTR_GROUP}="toolbar">
+      <div id="fg" focusgroup="toolbar">
         <span>Not focusable</span>
         <button>A</button>
         <div>Not focusable</div>
@@ -59,7 +57,7 @@ describe('getItems', () => {
 
   it('skips disabled elements', () => {
     document.body.innerHTML = `
-      <div id="fg" ${ATTR_GROUP}="toolbar">
+      <div id="fg" focusgroup="toolbar">
         <button>A</button>
         <button disabled>Disabled</button>
         <button>C</button>
@@ -72,7 +70,7 @@ describe('getItems', () => {
 
   it('skips hidden elements', () => {
     document.body.innerHTML = `
-      <div id="fg" ${ATTR_GROUP}="toolbar">
+      <div id="fg" focusgroup="toolbar">
         <button>A</button>
         <button hidden>Hidden</button>
         <button>C</button>
@@ -85,9 +83,9 @@ describe('getItems', () => {
 
   it('skips subtrees with focusgroup="none"', () => {
     document.body.innerHTML = `
-      <div id="fg" ${ATTR_GROUP}="toolbar">
+      <div id="fg" focusgroup="toolbar">
         <button>A</button>
-        <div ${ATTR_GROUP}="none">
+        <div focusgroup="none">
           <button>Excluded</button>
         </div>
         <button>C</button>
@@ -104,9 +102,9 @@ describe('getItems', () => {
 
   it('skips nested focusgroup subtrees', () => {
     document.body.innerHTML = `
-      <div id="fg" ${ATTR_GROUP}="toolbar">
+      <div id="fg" focusgroup="toolbar">
         <button>A</button>
-        <div ${ATTR_GROUP}="menu">
+        <div focusgroup="menu">
           <button>Nested</button>
         </div>
         <button>C</button>
@@ -123,7 +121,7 @@ describe('getItems', () => {
 
   it('includes elements with tabindex="0"', () => {
     document.body.innerHTML = `
-      <div id="fg" ${ATTR_GROUP}="toolbar">
+      <div id="fg" focusgroup="toolbar">
         <div tabindex="0">Focusable div</div>
         <button>A</button>
       </div>
@@ -135,7 +133,7 @@ describe('getItems', () => {
 
   it('returns empty array for empty container', () => {
     document.body.innerHTML = `
-      <div id="fg" ${ATTR_GROUP}="toolbar"></div>
+      <div id="fg" focusgroup="toolbar"></div>
     `;
     const container = document.getElementById('fg');
     const items = getItems(container);

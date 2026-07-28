@@ -26,7 +26,7 @@ const ROLES = {
 const IS_SUPPORTED =
   isBrowser() &&
   (ATTR_GROUP in HTMLElement.prototype ||
-    'focusGroup' in HTMLElement.prototype); // Chrome has implemented camel case focusGroup
+    ATTR_GROUP.replace('g', 'G') in HTMLElement.prototype); // Chrome has implemented camel case "focusGroup"
 
 const resetIsTab = () => (IS_TAB = false);
 const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
@@ -42,9 +42,8 @@ const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
   if (!target || isConflict(target)) return; // See https://open-ui.org/components/scoped-focusgroup.explainer/#key-conflict-elements
 
   let group = getGroup(getFullComposedPath(target));
-  if (!group?.role) return; // Ignore invalid groups
 
-  if (group?.el === target)
+  if (group?.role && group?.el === target)
     group = getGroup(getFullComposedPath(group.el.parentNode)); // If focus is on the group itself, check if it is nested inside another group
   if (!group?.role) return; // Ignore invalid parent groups
 
@@ -137,8 +136,8 @@ const parseGroup = (el: Element, key: string) => {
 export const getItems = (
   root?: Element | null,
   keep?: Element | null, // Provide Element to include, or null to keep segments (https://open-ui.org/components/scoped-focusgroup.explainer/#focusgroup-segments)
-  items: (Element | null)[] = [],
-  isNested = false,
+  items: (Element | null)[] = [], // Used only for recursion
+  isNested = false, // Used only for recursion, to check if allready inside a nested group
 ) => {
   const children =
     root?.nodeName === 'SLOT'
@@ -206,9 +205,8 @@ if (!IS_SUPPORTED)
     on(document, 'focus', handleFocus, QUICK_EVENT),
   ]);
 
-// TODO: Function to disable polyfill?
 // Intentionally not implemented:
 // - Clearing memory based on attribute changes: https://open-ui.org/components/scoped-focusgroup.explainer/#disabling-focusgroup-memory
 // - Setting or preserving roles before focus or keydown occurs (this is too performance consuming, and does not affect a11y much)
-// - Autofocus support inside popover
 // - Checking if  overflow/scroll-container in isFoucsable
+// - Autofocus support inside popover

@@ -25,26 +25,19 @@ const useTab = async (opts?: Parameters<typeof userEvent.tab>[0]) => {
   await userEvent.tab(opts);
   vi.advanceTimersByTime(100);
 };
-const expectRole = async (element: HTMLElement, role: string) => {
-  element.dispatchEvent(new FocusEvent('focus')); // Dispatch focus event to trigger attribute setup
-  await vi.waitFor(() => expect(element).toHaveRole(role));
+const expectRole = async (el: HTMLElement, role: string) => {
+  el.dispatchEvent(new FocusEvent('focus')); // Dispatch focus event to trigger attribute setup
+  await vi.waitFor(() => expect(el).toHaveRole(role));
 };
 
-const expectNoRole = async (element: HTMLElement, role: string) => {
-  element.dispatchEvent(new FocusEvent('focus')); // Dispatch focus event to trigger attribute setup
-  await vi.waitFor(() => expect(element).not.toHaveRole(role));
+const expectNoRole = async (el: HTMLElement, role: string) => {
+  el.dispatchEvent(new FocusEvent('focus')); // Dispatch focus event to trigger attribute setup
+  await vi.waitFor(() => expect(el).not.toHaveRole(role));
 };
 
-const expectAttribute = async (
-  element: HTMLElement,
-  name: string,
-  value: string,
-) => {
-  await vi.waitFor(() => expect(element).toHaveAttribute(name, value));
-};
-
-const expectVisible = async (element: HTMLElement) => {
-  await vi.waitFor(() => expect(element).toBeVisible());
+const expectAttr = async (el: HTMLElement, name: string, value: string) => {
+  el.dispatchEvent(new FocusEvent('focus')); // Dispatch focus event to trigger attribute setup
+  await vi.waitFor(() => expect(el).toHaveAttribute(name, value));
 };
 
 // Use fake timers to allow setTab to run
@@ -2012,18 +2005,6 @@ test('should infer ARIA roles for items', async () => {
   await expectRole(getById('menubar-item-ce'), 'menuitem');
 });
 
-// Not impelemented to simplify polyfill:
-test.skip('owner and items with a non-generic native role do not get inferred roles', async () => {
-  document.body.innerHTML = `
-    <nav id="tablist" focusgroup="tablist">
-      <a href="" id="tab">tab</a>
-    </nav>
-  `;
-
-  await expectNoRole(getById('tablist'), 'tablist');
-  await expectNoRole(getById('tab'), 'tab');
-});
-
 test('top-layer items skip role inference', async () => {
   document.body.innerHTML = `
       <div focusgroup="tablist">
@@ -2988,7 +2969,8 @@ describe('focusgroup with slotted items', () => {
         </my-element>
         <button tabindex="0" id="item2">Two</button>
       </div>
-    `);
+    `,
+    );
   });
 
   test('ArrowRight navigates between shadow and slotted items', async () => {
@@ -3004,1228 +2986,1083 @@ describe('focusgroup with slotted items', () => {
   });
 });
 
-// describe('focusgroup with light and shadow items', () => {
-//   beforeEach(() => {
-//     setupPageWithShadowRoots(
-//       `
-//       <div focusgroup="toolbar inline">
-//         <button tabindex="0" id="item1">One</button>
-//         <span>
-//           <template shadowrootmode="open">
-//             <button tabindex="0" id="item2">Two</button>
-//           </template>
-//         </span>
-//         <button tabindex="0" id="item3">Three</button>
-//       </div>
-//     `,
-//     );
-//   });
-
-//   test('ArrowRight navigates between light and shadow items', async () => {
-//     getById('item1').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-
-//     expect(getById('item2')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-
-//     expect(getById('item3')).toHaveFocus();
-//   });
-// });
-
-// describe('focusgroup with light, shadow, and slotted items', () => {
-//   beforeEach(() => {
-//     setupPageWithShadowRoots(
-//       `
-//       <div focusgroup="toolbar inline">
-//         <button tabindex="0" id="item1">One</button>
-//         <span>
-//           <template shadowrootmode="open">
-//             <button tabindex="0" id="item2">Two</button>
-//             <slot></slot>
-//             <button tabindex="0" id="item4">Four</button>
-//           </template>
-//           <button tabindex="0" id="item3">Three</button>
-//         </span>
-//         <button tabindex="0" id="item5">Five</button>
-//       </div>
-//     `,
-//     );
-//   });
-
-//   test('navigates between light, shadow, and slotted items', async () => {
-//     getById('item1').focus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('item2')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('item3')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('item4')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('item5')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}'); // Make sure the pointer doesn’t overshoot
-//     expect(getById('item5')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('item4')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('item3')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('item2')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('item1')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('item1')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('item2')).toHaveFocus();
-//   });
-// });
-
-// describe('focusgroup with nested group mixed with shadow and slotted children', () => {
-//   beforeEach(() => {
-//     setupPageWithShadowRoots(
-//       `
-//       <div id="before" tabindex="0">before</div>
-//       <div focusgroup="toolbar">
-//         <button tabindex="0" id="item1">item 1</button>
-//         <button tabindex="0" id="item2">item 2</button>
-//         <span>
-//           <template shadowrootmode="open">
-//             <span focusgroup="toolbar wrap">
-//               <button tabindex="0" id="nested-shadow-first">nested shadow first</button>
-//               <slot></slot>
-//               <button tabindex="0" id="nested-shadow-last">nested shadow last</button>
-//             </span>
-//           </template>
-//           <button tabindex="0" id="nested-slotted-1">nested slotted 1</button>
-//           <button tabindex="0" focusgroupstart id="nested-slotted-2">nested slotted 2</button>
-//           <button tabindex="0" id="nested-slotted-3">nested slotted 3</button>
-//         </span>
-//         <button tabindex="0" id="item3">item 3</button>
-//         <button tabindex="0" id="item4">item 4</button>
-//       </div>
-//       <div id="after" tabindex="0">after</div>
-//     `,
-//     );
-//   });
-
-//   test('navigates between parent and nested groups', async () => {
-//     getById('before').focus();
-
-//     await useTab();
-
-//     expect(getById('item1')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     await userEvent.keyboard('{ArrowRight}');
-//     await userEvent.keyboard('{ArrowRight}');
-//     await userEvent.keyboard('{ArrowRight}');
-
-//     expect(getById('item4')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowLeft}');
-//     await userEvent.keyboard('{ArrowLeft}');
-//     await userEvent.keyboard('{ArrowLeft}');
-//     await userEvent.keyboard('{ArrowLeft}');
-
-//     expect(getById('item1')).toHaveFocus();
-
-//     await useTab();
-
-//     expect(getById('nested-slotted-2')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowLeft}');
-//     await userEvent.keyboard('{ArrowLeft}');
-
-//     expect(getById('nested-shadow-first')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowLeft}');
-
-//     expect(getById('nested-shadow-last')).toHaveFocus();
-
-//     await useTab();
-
-//     expect(getById('item3')).toHaveFocus();
-//   });
-// });
-
-// // NOTE: DO NOT add “@shadow” tag to these tests because they need to pass in
-// // shadowless bundle.
-// describe('focusable shadow hosts as focusgroup items', () => {
-//   let before: HTMLElement;
-//   let after: HTMLElement;
-//   let tab1: HTMLElement;
-//   let tab2: HTMLElement;
-//   let tab3: HTMLElement;
-
-//   beforeEach(() => {
-//     setupPageWithShadowRoots(
-//       `
-//     <button tabindex="0" id="before">before</button>
-//     <div focusgroup="tablist">
-//       <template shadowrootmode="open"><slot></slot></template>
-//       <span tabindex="0" id="tab1">
-//         <template shadowrootmode="open"><slot></slot></template>
-//         tab 1
-//       </span>
-//       <span tabindex="0" id="tab2">
-//         <template shadowrootmode="open"><slot></slot></template>
-//         tab 2
-//       </span>
-//       <span tabindex="0" id="tab3">
-//         <template shadowrootmode="open"><slot></slot></template>
-//         tab 3
-//       </span>
-//     </div>
-//     <button tabindex="0" id="after">after</button>
-//   `,
-//     );
-
-//     before = getById('before');
-//     after = getById('after');
-//     tab1 = getById('tab1');
-//     tab2 = getById('tab2');
-//     tab3 = getById('tab3');
-//   });
-
-//   test('should have a single tab stop', async () => {
-//     before.focus();
-//     await useTab();
-
-//     expect(tab1).toHaveFocus();
-
-//     await useTab();
-
-//     expect(after).toHaveFocus();
-//   });
-
-//   test('should gain directional navigation', async () => {
-//     tab2.focus();
-//     await userEvent.keyboard('{ArrowRight}');
-
-//     expect(tab3).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowLeft}');
-//     await userEvent.keyboard('{ArrowLeft}');
-
-//     expect(tab1).toHaveFocus();
-//   });
-// });
-
-// describe('top-layer modal dialog', () => {
-//   test.skip("modal dialog's own focusgroup navigates in both directions while in the top layer", async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="a">A</button>
-//         <dialog id="dlg" focusgroup="toolbar inline">
-//           <button tabindex="0" id="dlg_x">X</button>
-//           <button tabindex="0" id="dlg_y">Y</button>
-//           <button tabindex="0" id="dlg_close">Close</button>
-//         </dialog>
-//         <button tabindex="0" id="b">B</button>
-//       </div>`;
-
-//     (getById('dlg') as HTMLDialogElement).showModal();
-
-//     getById('dlg_x').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('dlg_y')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('dlg_close')).toHaveFocus();
-
-//     getById('dlg_close').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('dlg_y')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('dlg_x')).toHaveFocus();
-//   });
-// });
-
-// describe('top-layer popover excluded from ancestor navigation', () => {
-//   test('arrow navigation skips a shown popover in ancestor focusgroup', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="before_pop">Before</button>
-//         <div id="popover_simple" popover>
-//           <button tabindex="0" id="pop_item">Inside popover</button>
-//         </div>
-//         <button tabindex="0" id="after_pop">After</button>
-//       </div>`;
-
-//     getById('popover_simple').showPopover();
-
-//     getById('before_pop').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('after_pop')).toHaveFocus();
-
-//     getById('after_pop').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('before_pop')).toHaveFocus();
-//   });
-
-//   test.skip('arrow keys do not navigate from inside a top-layer popover without own focusgroup', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="before_pop">Before</button>
-//         <div id="popover_simple" popover>
-//           <button tabindex="0" id="pop_item">Inside popover</button>
-//         </div>
-//         <button tabindex="0" id="after_pop">After</button>
-//       </div>`;
-
-//     getById('popover_simple').showPopover();
-
-//     getById('pop_item').focus();
-//     for (const key of ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp']) {
-//       await userEvent.keyboard(`{${key}}`);
-//       expect(getById('pop_item')).toHaveFocus();
-//     }
-//   });
-
-//   test('popover as the first focusgroup child does not break Home/arrow navigation', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <div id="first_pop" popover>
-//           <button tabindex="0" id="first_pop_inner">Inside popover</button>
-//         </div>
-//         <button tabindex="0" id="first_a">A</button>
-//         <button tabindex="0" id="first_b">B</button>
-//       </div>`;
-
-//     getById('first_pop').showPopover();
-
-//     getById('first_a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('first_b')).toHaveFocus();
-
-//     getById('first_b').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('first_a')).toHaveFocus();
-
-//     getById('first_b').focus();
-//     await userEvent.keyboard('{Home}');
-//     expect(getById('first_a')).toHaveFocus();
-//   });
-
-//   test.skip('open popover splits an ancestor focusgroup into two segments', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="seg_a">A</button>
-//         <button tabindex="0" id="seg_b">B</button>
-//         <div id="seg_pop" popover>
-//           <button tabindex="0" id="seg_x">X</button>
-//         </div>
-//         <button tabindex="0" id="seg_c">C</button>
-//         <button tabindex="0" id="seg_d">D</button>
-//       </div>
-//       <button tabindex="0" id="seg_after">After</button>`;
-
-//     getById('seg_pop').showPopover();
-
-//     getById('seg_a').focus();
-//     await useTab();
-//     expect(getById('seg_x')).toHaveFocus();
-//     await useTab();
-//     expect(getById('seg_c')).toHaveFocus();
-//     await useTab();
-//     expect(getById('seg_after')).toHaveFocus();
-//   });
-
-//   test('popover sibling of focusgroup does not interfere with arrow navigation', async () => {
-//     document.body.innerHTML = `<button tabindex="0" id="sib_before">before</button>
-//       <div focusgroup="tablist nomemory">
-//         <button tabindex="0" id="sib_info">info</button>
-//         <button tabindex="0" id="sib_toggle" commandfor="sib_pop" command="toggle-popover">toggle</button>
-//         <button tabindex="0" id="sib_copy">copy</button>
-//       </div>
-//       <button tabindex="0" id="sib_after">after</button>
-//       <div id="sib_pop" popover focusgroup="none">
-//         <button tabindex="0" id="sib_share">share</button>
-//       </div>`;
-
-//     getById('sib_pop').showPopover();
-
-//     // tablist wraps by default.
-//     getById('sib_info').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('sib_toggle')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('sib_copy')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('sib_info')).toHaveFocus();
-
-//     getById('sib_copy').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('sib_toggle')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('sib_info')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('sib_copy')).toHaveFocus();
-//   });
-
-//   test.skip('focusgroup=none popover inside focusgroup: arrows skip, Tab reaches', async () => {
-//     document.body.innerHTML = `<button tabindex="0" id="none_before">before</button>
-//       <div focusgroup="tablist nomemory">
-//         <button tabindex="0" id="none_info">info</button>
-//         <button tabindex="0" id="none_toggle" commandfor="none_pop" command="toggle-popover">toggle</button>
-//         <div id="none_pop" popover focusgroup="none">
-//           <button tabindex="0" id="none_share">share</button>
-//         </div>
-//         <button tabindex="0" id="none_copy">copy</button>
-//       </div>
-//       <button tabindex="0" id="none_after">after</button>`;
-
-//     getById('none_pop').showPopover();
-
-//     // Arrow keys in the parent focusgroup skip the focusgroup="none" subtree.
-//     getById('none_info').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('none_toggle')).toHaveFocus();
-
-//     getById('none_toggle').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('none_copy')).toHaveFocus();
-
-//     // Arrow keys do not move focus from inside the focusgroup="none" subtree.
-//     getById('none_share').focus();
-//     for (const key of ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp']) {
-//       await userEvent.keyboard(`{${key}}`);
-//       expect(getById('none_share')).toHaveFocus();
-//     }
-
-//     // Tab still reaches share as a normal sequential tab stop.
-//     getById('none_before').focus();
-//     await useTab();
-//     expect(getById('none_info')).toHaveFocus();
-//     await useTab();
-//     expect(getById('none_share')).toHaveFocus();
-//     await useTab();
-//     expect(getById('none_copy')).toHaveFocus();
-//     await useTab();
-//     expect(getById('none_after')).toHaveFocus();
-//   });
-// });
-
-// describe('top-layer element with own focusgroup', () => {
-//   test('popover with own focusgroup is excluded from ancestor arrow navigation', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="outer_a">A</button>
-//         <div id="popover_fg" popover focusgroup="toolbar inline">
-//           <button tabindex="0" id="inner_x">X</button>
-//           <button tabindex="0" id="inner_y">Y</button>
-//         </div>
-//         <button tabindex="0" id="outer_b">B</button>
-//       </div>`;
-
-//     getById('popover_fg').showPopover();
-
-//     getById('outer_a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('outer_b')).toHaveFocus();
-//   });
-
-//   test.skip('inner focusgroup on a shown popover operates independently', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="outer_a">A</button>
-//         <div id="popover_fg" popover focusgroup="toolbar inline">
-//           <button tabindex="0" id="inner_x">X</button>
-//           <button tabindex="0" id="inner_y">Y</button>
-//         </div>
-//         <button tabindex="0" id="outer_b">B</button>
-//       </div>`;
-
-//     getById('popover_fg').showPopover();
-
-//     getById('inner_x').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('inner_y')).toHaveFocus();
-
-//     getById('inner_y').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('inner_x')).toHaveFocus();
-//   });
-
-//   test('focusable top-layer element with own focusgroup is not an outer entry', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="focusable_outer_a">A</button>
-//         <div id="focusable_pop" tabindex="0" popover focusgroup="toolbar inline">
-//           <button tabindex="0" id="focusable_inner_x">X</button>
-//         </div>
-//         <button tabindex="0" id="focusable_outer_b">B</button>
-//       </div>`;
-
-//     getById('focusable_pop').showPopover();
-
-//     getById('focusable_outer_a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('focusable_outer_b')).toHaveFocus();
-
-//     getById('focusable_outer_b').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('focusable_outer_a')).toHaveFocus();
-//   });
-// });
-
-// describe('top-layer exclusion is dynamic', () => {
-//   test('show and hide cycles', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline wrap">
-//         <button tabindex="0" id="a">A</button>
-//         <div id="pop" popover>
-//           <button tabindex="0" id="x">X</button>
-//         </div>
-//         <button tabindex="0" id="b">B</button>
-//       </div>`;
-
-//     // Hidden popover phase.
-//     getById('a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('b')).toHaveFocus();
-
-//     // Shown popover phase.
-//     getById('pop').showPopover();
-//     getById('a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('b')).toHaveFocus();
-
-//     // After hiding.
-//     getById('pop').hidePopover();
-//     getById('a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('b')).toHaveFocus();
-//   });
-
-//   test('wrapping navigation skips shown popover subtree', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline wrap">
-//         <button tabindex="0" id="a">A</button>
-//         <div id="pop" popover>
-//           <button tabindex="0" id="x">X</button>
-//         </div>
-//         <button tabindex="0" id="b">B</button>
-//       </div>`;
-//     getById('pop').showPopover();
-
-//     getById('a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('b')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('a')).toHaveFocus();
-
-//     getById('b').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('a')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('b')).toHaveFocus();
-//   });
-
-//   test('Home and End keys skip shown popover subtree', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline wrap">
-//         <button tabindex="0" id="a">A</button>
-//         <div id="pop" popover>
-//           <button tabindex="0" id="x">X</button>
-//         </div>
-//         <button tabindex="0" id="b">B</button>
-//       </div>`;
-//     getById('pop').showPopover();
-
-//     getById('a').focus();
-//     await userEvent.keyboard('{Home}');
-//     expect(getById('a')).toHaveFocus();
-
-//     getById('a').focus();
-//     await userEvent.keyboard('{End}');
-//     expect(getById('b')).toHaveFocus();
-
-//     getById('b').focus();
-//     await userEvent.keyboard('{Home}');
-//     expect(getById('a')).toHaveFocus();
-//   });
-
-//   test('block-axis navigation skips shown popover subtree', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar block">
-//         <button tabindex="0" id="up">Up</button>
-//         <div id="pop_block" popover>
-//           <button tabindex="0" id="block_inner">Inner</button>
-//         </div>
-//         <button tabindex="0" id="down">Down</button>
-//       </div>`;
-//     getById('pop_block').showPopover();
-
-//     getById('up').focus();
-//     await userEvent.keyboard('{ArrowDown}');
-//     expect(getById('down')).toHaveFocus();
-
-//     getById('down').focus();
-//     await userEvent.keyboard('{ArrowUp}');
-//     expect(getById('up')).toHaveFocus();
-//   });
-
-//   test('arrow navigation skips multiple simultaneously shown popovers', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="m_a">A</button>
-//         <div id="pop_m1" popover>
-//           <button tabindex="0" id="m_x1">X1</button>
-//         </div>
-//         <button tabindex="0" id="m_b">B</button>
-//         <div id="pop_m2" popover>
-//           <button tabindex="0" id="m_x2">X2</button>
-//         </div>
-//         <button tabindex="0" id="m_c">C</button>
-//       </div>`;
-//     getById('pop_m1').showPopover();
-//     getById('pop_m2').showPopover();
-
-//     getById('m_a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('m_b')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('m_c')).toHaveFocus();
-
-//     getById('m_c').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('m_b')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('m_a')).toHaveFocus();
-//   });
-
-//   test.skip('focusgroup memory falls through when the remembered item enters the top layer', async () => {
-//     document.body.innerHTML = `<button tabindex="0" id="mem_before">Before</button>
-//       <div focusgroup="toolbar inline">
-//         <button tabindex="0" id="mem_a">A</button>
-//         <div id="mem_pop">
-//           <button tabindex="0" id="mem_x">X</button>
-//         </div>
-//         <button tabindex="0" id="mem_b">B</button>
-//       </div>
-//       <button tabindex="0" id="mem_after">After</button>`;
-
-//     getById('mem_x').focus();
-//     expect(getById('mem_x')).toHaveFocus();
-
-//     getById('mem_pop').setAttribute('popover', '');
-//     getById('mem_pop').showPopover();
-
-//     getById('mem_before').focus();
-//     await useTab();
-//     expect(getById('mem_a')).toHaveFocus();
-//   });
-// });
-
-// describe('popover invoker inside focusgroup', () => {
-//   test('arrow keys skip a popover opened by a focusgroup-item invoker', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="before">Before</button>
-//         <button tabindex="0" id="invoker" popovertarget="pop">Invoker</button>
-//         <button tabindex="0" id="after">After</button>
-//       </div>
-//       <div id="pop" popover>
-//         <button tabindex="0" id="pop_first">Popover first</button>
-//         <button tabindex="0" id="pop_last">Popover last</button>
-//       </div>
-//       <button tabindex="0" id="outside">Outside</button>`;
-
-//     getById('invoker').focus();
-//     await getById('invoker').click();
-//     await expectVisible(getById('pop'));
-
-//     getById('before').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('invoker')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('after')).toHaveFocus();
-
-//     getById('after').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('invoker')).toHaveFocus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('before')).toHaveFocus();
-//   });
-
-//   test('Tab from a focusgroup-item invoker enters the open popover', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="before">Before</button>
-//         <button tabindex="0" id="invoker" popovertarget="pop">Invoker</button>
-//         <button tabindex="0" id="after">After</button>
-//       </div>
-//       <div id="pop" popover>
-//         <button tabindex="0" id="pop_first">Popover first</button>
-//         <button tabindex="0" id="pop_last">Popover last</button>
-//       </div>
-//       <button tabindex="0" id="outside">Outside</button>`;
-
-//     getById('invoker').focus();
-//     await getById('invoker').click();
-//     await expectVisible(getById('pop'));
-
-//     getById('invoker').focus();
-//     await useTab();
-//     expect(getById('pop_first')).toHaveFocus();
-//     await useTab();
-//     expect(getById('pop_last')).toHaveFocus();
-//     await useTab();
-//     expect(getById('outside')).toHaveFocus();
-//   });
-
-//   test('Shift+Tab from popover content opened by an invoker returns to the invoker', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <button tabindex="0" id="before">Before</button>
-//         <button tabindex="0" id="invoker" popovertarget="pop">Invoker</button>
-//         <button tabindex="0" id="after">After</button>
-//       </div>
-//       <div id="pop" popover>
-//         <button tabindex="0" id="pop_first">Popover first</button>
-//         <button tabindex="0" id="pop_last">Popover last</button>
-//       </div>
-//       <button tabindex="0" id="outside">Outside</button>`;
-
-//     getById('invoker').focus();
-//     await getById('invoker').click();
-//     await expectVisible(getById('pop'));
-
-//     getById('pop_first').focus();
-//     await useTab({ shift: true });
-//     expect(getById('invoker')).toHaveFocus();
-//   });
-
-//   test('Tab and Shift+Tab on a tabindex=-1 popover invoker do not crash', async () => {
-//     document.body.innerHTML = `<button tabindex="0" id="outside">Outside</button>
-//       <div focusgroup="menu">
-//         <button tabindex="0" id="neg_invoker" tabindex="-1"
-//                 commandfor="neg_pop" command="toggle-popover">icecream</button>
-//       </div>
-//       <div id="neg_pop" popover>popover</div>
-//       <button tabindex="0" id="neg_after">bread</button>`;
-
-//     await getById('neg_invoker').click();
-//     await expectVisible(getById('neg_pop'));
-
-//     getById('neg_invoker').focus();
-//     await useTab();
-//     expect(getById('neg_after')).toHaveFocus();
-
-//     getById('neg_after').focus();
-//     await useTab({ shift: true });
-//     expect(getById('outside')).toHaveFocus();
-//   });
-
-//   test('Tab from a popovertarget invoker reaches the popover even when it precedes the invoker', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <div id="pt_pop" popover>
-//           <button tabindex="0" id="pt_pop_first">Popover first</button>
-//         </div>
-//         <button tabindex="0" id="pt_before">Before</button>
-//         <button tabindex="0" id="pt_invoker" popovertarget="pt_pop">Invoker</button>
-//       </div>
-//       <button tabindex="0" id="pt_outside">Outside</button>`;
-
-//     getById('pt_invoker').focus();
-//     await getById('pt_invoker').click();
-//     await expectVisible(getById('pt_pop'));
-
-//     await useTab();
-//     expect(getById('pt_pop_first')).toHaveFocus();
-//   });
-
-//   test('Tab from a commandfor invoker reaches the popover even when it precedes the invoker', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <div id="cf_pop" popover>
-//           <button tabindex="0" id="cf_pop_first">Popover first</button>
-//         </div>
-//         <button tabindex="0" id="cf_before">Before</button>
-//         <button tabindex="0" id="cf_invoker" commandfor="cf_pop" command="toggle-popover">Invoker</button>
-//       </div>
-//       <button tabindex="0" id="cf_outside">Outside</button>`;
-
-//     getById('cf_invoker').focus();
-//     await getById('cf_invoker').click();
-//     await expectVisible(getById('cf_pop'));
-
-//     await useTab();
-//     expect(getById('cf_pop_first')).toHaveFocus();
-//   });
-
-//   test('Tab from a showPopover source invoker reaches the popover even when it precedes the invoker', async () => {
-//     document.body.innerHTML = `<div focusgroup="toolbar inline">
-//         <div id="src_pop" popover>
-//           <button tabindex="0" id="src_pop_first">Popover first</button>
-//         </div>
-//         <button tabindex="0" id="src_before">Before</button>
-//         <button tabindex="0" id="src_invoker">Invoker</button>
-//       </div>
-//       <button tabindex="0" id="src_outside">Outside</button>`;
-
-//     getById('src_invoker').focus();
-//     getById('src_pop').showPopover();
-//     await expectVisible(getById('src_pop'));
-
-//     await useTab();
-//     expect(getById('src_pop_first')).toHaveFocus();
-//   });
-// });
-
-// describe('elements with tabindex=-1 participate in focusgroup navigation when focused, otherwise skipped', () => {
-//   beforeEach(() => {
-//     document.body.innerHTML = `<div focusgroup="toolbar">
-//           <button tabindex="0" id="b1">Button 1</button>
-//           <div id="b2" tabindex="-1">Button 2</div>
-//           <button tabindex="0" id="b3">Button 3</button>
-//         </div>`;
-//   });
-
-//   test('ArrowRight from tabindex=-1 element moves to next item', async () => {
-//     getById('b2').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('b3')).toHaveFocus();
-//   });
-
-//   test('ArrowLeft from tabindex=-1 element moves to previous item', async () => {
-//     getById('b2').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('b1')).toHaveFocus();
-//   });
-
-//   test('ArrowRight from b1 skips b2 (tabindex=-1) and goes to b3', async () => {
-//     getById('b1').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('b3')).toHaveFocus();
-//   });
-
-//   test('ArrowLeft from b3 skips b2 (tabindex=-1) and goes to b1', async () => {
-//     getById('b3').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('b1')).toHaveFocus();
-//   });
-// });
-
-// describe('navigation respects bounds when edges are tabindex=-1', () => {
-//   beforeEach(() => {
-//     document.body.innerHTML = `<div focusgroup="toolbar">
-//         <div id="start" tabindex="-1">Start</div>
-//         <button tabindex="0" id="mid">Mid</button>
-//         <div id="end" tabindex="-1">End</div>
-//       </div>`;
-//   });
-
-//   test('ArrowRight from mid stays at mid when end is tabindex=-1 and no wrap', async () => {
-//     getById('mid').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('mid')).toHaveFocus();
-//   });
-
-//   test('ArrowLeft from mid stays at mid when start is tabindex=-1 and no wrap', async () => {
-//     getById('mid').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('mid')).toHaveFocus();
-//   });
-
-//   test('ArrowRight from start (tabindex=-1) goes to mid', async () => {
-//     getById('start').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('mid')).toHaveFocus();
-//   });
-
-//   test('ArrowLeft from end (tabindex=-1) goes to mid', async () => {
-//     getById('end').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('mid')).toHaveFocus();
-//   });
-// });
-
-// describe('wrapping logic skips items with tabindex=-1', () => {
-//   beforeEach(() => {
-//     document.body.innerHTML = `<div focusgroup="toolbar wrap">
-//         <div id="w1" tabindex="-1">W1</div>
-//         <button tabindex="0" id="w2">W2</button>
-//         <button tabindex="0" id="w3">W3</button>
-//         <div id="w4" tabindex="-1">W4</div>
-//       </div>`;
-//   });
-
-//   test('wrapping forward from last focusable item skips tabindex=-1 ends', async () => {
-//     getById('w3').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('w2')).toHaveFocus();
-//   });
-
-//   test('wrapping backward from first focusable item skips tabindex=-1 ends', async () => {
-//     getById('w2').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('w3')).toHaveFocus();
-//   });
-// });
-
-// describe('Toolbar focusgroup', () => {
-//   beforeEach(
-//     () =>
-//       (document.body.innerHTML = `
-//       <div focusgroup="toolbar">
-//         <button tabindex="0" id="btn-bold" >Bold</button>
-//         <button tabindex="0" id="btn-italic" tabindex="-1">Italic</button>
-//         <button tabindex="0" id="btn-underline" tabindex="-1">Underline</button>
-//       </div>
-//       <div focusgroup="toolbar">
-//         <button tabindex="0" id="nested-a">A</button>
-//         <span><button tabindex="0" id="nested-b">B</button></span>
-//         <button tabindex="0" id="nested-c">C</button>
-//       </div>
-//     `),
-//   );
-
-//   test('ArrowRight moves focus forward', async () => {
-//     getById('btn-bold').focus();
-//     expect(getById('btn-bold')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('btn-italic')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('btn-underline')).toHaveFocus();
-//   });
-
-//   test('ArrowLeft moves focus backward', async () => {
-//     getById('btn-underline').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('btn-italic')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('btn-bold')).toHaveFocus();
-//   });
-
-//   test('ArrowRight at last item without wrap does NOT move', async () => {
-//     getById('btn-underline').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('btn-underline')).toHaveFocus();
-//   });
-
-//   test('ArrowLeft at first item without wrap does NOT move', async () => {
-//     getById('btn-bold').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('btn-bold')).toHaveFocus();
-//   });
-
-//   test('Home moves to first item', async () => {
-//     getById('btn-underline').focus();
-//     await userEvent.keyboard('{Home}');
-//     expect(getById('btn-bold')).toHaveFocus();
-//   });
-
-//   test('End moves to last item', async () => {
-//     getById('btn-bold').focus();
-//     await userEvent.keyboard('{End}');
-//     expect(getById('btn-underline')).toHaveFocus();
-//   });
-
-//   test('roving tabindex: only active item has tabindex=0', async () => {
-//     // After init, first item should have tabindex=0
-//     await expectAttribute(getById('btn-bold'), 'tabindex', '0');
-//     await expectAttribute(getById('btn-italic'), 'tabindex', '-1');
-//     await expectAttribute(getById('btn-underline'), 'tabindex', '-1');
-
-//     // Move focus
-//     getById('btn-bold').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-
-//     await expectAttribute(getById('btn-bold'), 'tabindex', '-1');
-//     await expectAttribute(getById('btn-italic'), 'tabindex', '0');
-//     await expectAttribute(getById('btn-underline'), 'tabindex', '-1');
-//   });
-
-//   test('ArrowDown/ArrowUp do not navigate (inline-only toolbar)', async () => {
-//     getById('btn-bold').focus();
-//     await userEvent.keyboard('{ArrowDown}');
-//     expect(getById('btn-bold')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowUp}');
-//     expect(getById('btn-bold')).toHaveFocus();
-//   });
-
-//   test('navigates through nested DOM structure', async () => {
-//     getById('nested-a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('nested-b')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('nested-c')).toHaveFocus();
-//   });
-// });
-
-// describe('Toolbar with wrap', () => {
-//   beforeEach(
-//     () =>
-//       (document.body.innerHTML = `
-//       <div focusgroup="toolbar wrap">
-//         <button tabindex="0" id="wrap-a">A</button>
-//         <button tabindex="0" id="wrap-b">B</button>
-//         <button tabindex="0" id="wrap-c">C</button>
-//       </div>
-//     `),
-//   );
-
-//   test('wraps from last to first', async () => {
-//     getById('wrap-c').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('wrap-a')).toHaveFocus();
-//   });
-
-//   test('wraps from first to last', async () => {
-//     getById('wrap-a').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('wrap-c')).toHaveFocus();
-//   });
-// });
-
-// describe('Tablist focusgroup', () => {
-//   beforeEach(
-//     () =>
-//       (document.body.innerHTML = `
-//       <div id="tablist" focusgroup="tablist">
-//         <button tabindex="0" id="tab-1">Tab 1</button>
-//         <button tabindex="0" id="tab-2">Tab 2</button>
-//         <button tabindex="0" id="tab-3">Tab 3</button>
-//       </div>
-//     `),
-//   );
-
-//   test('ArrowRight moves between tabs (inline default)', async () => {
-//     getById('tab-1').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('tab-2')).toHaveFocus();
-//   });
-
-//   test('wraps by default (tablist default modifier)', async () => {
-//     getById('tab-3').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('tab-1')).toHaveFocus();
-//   });
-
-//   test('infers role=tablist on container', async () => {
-//     await expectAttribute(getById('tablist'), 'role', 'tablist');
-//   });
-
-//   test('infers role=tab on button children', async () => {
-//     await expectAttribute(getById('tab-1'), 'role', 'tab');
-//     await expectAttribute(getById('tab-2'), 'role', 'tab');
-//     await expectAttribute(getById('tab-3'), 'role', 'tab');
-//   });
-// });
-
-// describe('Menu focusgroup', () => {
-//   beforeEach(
-//     () =>
-//       (document.body.innerHTML = `
-//       <div id="menu" focusgroup="menu">
-//         <button tabindex="0" id="item-cut">Cut</button>
-//         <button tabindex="0" id="item-copy">Copy</button>
-//         <button tabindex="0" id="item-paste">Paste</button>
-//       </div>
-//     `),
-//   );
-
-//   test('ArrowDown moves forward (block default)', async () => {
-//     getById('item-cut').focus();
-//     await userEvent.keyboard('{ArrowDown}');
-//     expect(getById('item-copy')).toHaveFocus();
-//   });
-
-//   test('ArrowUp moves backward', async () => {
-//     getById('item-paste').focus();
-//     await userEvent.keyboard('{ArrowUp}');
-//     expect(getById('item-copy')).toHaveFocus();
-//   });
-
-//   test('wraps by default', async () => {
-//     getById('item-paste').focus();
-//     await userEvent.keyboard('{ArrowDown}');
-//     expect(getById('item-cut')).toHaveFocus();
-//   });
-
-//   test('ArrowLeft/ArrowRight do not navigate (block-only)', async () => {
-//     getById('item-cut').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('item-cut')).toHaveFocus();
-//   });
-
-//   test('infers role=menu and role=menuitem', async () => {
-//     await expectAttribute(getById('menu'), 'role', 'menu');
-//     await expectAttribute(getById('item-cut'), 'role', 'menuitem');
-//   });
-// });
-
-// describe('Memory', () => {
-//   beforeEach(
-//     () =>
-//       (document.body.innerHTML = `
-//       <button tabindex="0" id="middle">Middle</button>
-//       <div focusgroup="toolbar">
-//         <button tabindex="0" id="mem-a">A</button>
-//         <button tabindex="0" id="mem-b">B</button>
-//         <button tabindex="0" id="mem-c">C</button>
-//       </div>
-//       <div focusgroup="toolbar nomemory">
-//         <button tabindex="0" id="nomem-a">A</button>
-//         <button tabindex="0" id="nomem-b" focusgroupstart>B</button>
-//         <button tabindex="0" id="nomem-c">C</button>
-//       </div>
-//       <button tabindex="0" id="after">After</button>
-//     `),
-//   );
-
-//   test('remembers last focused item on re-entry', async () => {
-//     // Focus the toolbar and move to C
-//     getById('mem-a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('mem-c')).toHaveFocus();
-
-//     // Tab away
-//     await useTab();
-//     expect(getById('mem-c')).not.toHaveFocus();
-
-//     // Tab back — should return to C (memory)
-//     await useTab({ shift: true });
-//     expect(getById('mem-c')).toHaveFocus();
-//   });
-
-//   test('focusgroupstart determines initial focus', async () => {
-//     // Tab into the nomemory toolbar — should focus B (focusgroupstart)
-//     getById('middle').focus();
-//     await useTab();
-//     expect(getById('nomem-b')).toHaveFocus();
-//   });
-
-//   test('nomemory always returns to focusgroupstart', async () => {
-//     // Focus B (focusgroupstart), move to C
-//     getById('middle').focus();
-//     await useTab();
-//     expect(getById('nomem-b')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('nomem-c')).toHaveFocus();
-
-//     // Tab away and back — should return to B, not C
-//     await useTab();
-//     await useTab({ shift: true });
-//     expect(getById('nomem-b')).toHaveFocus();
-//   });
-// });
-
-// describe('Nested focusgroups', () => {
-//   beforeEach(
-//     () =>
-//       (document.body.innerHTML = `
-//       <div focusgroup="toolbar">
-//         <button tabindex="0" id="outer-a">Outer A</button>
-//         <button tabindex="0" id="outer-b">Outer B</button>
-//         <div focusgroup="toolbar">
-//           <button tabindex="0" id="inner-a">Inner A</button>
-//           <button tabindex="0" id="inner-b">Inner B</button>
-//           <button tabindex="0" id="inner-c">Inner C</button>
-//         </div>
-//         <button tabindex="0" id="outer-c">Outer C</button>
-//       </div>
-//       <div focusgroup="toolbar">
-//         <button tabindex="0" id="opt-a">A</button>
-//         <button tabindex="0" id="opt-excluded" focusgroup="none">Excluded</button>
-//         <button tabindex="0" id="opt-b">B</button>
-//       </div>
-//     `),
-//   );
-
-//   test('inner focusgroup navigates independently', async () => {
-//     getById('inner-a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('inner-b')).toHaveFocus();
-
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('inner-c')).toHaveFocus();
-//   });
-
-//   test('outer focusgroup does not include inner items', async () => {
-//     getById('outer-a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('outer-b')).toHaveFocus();
-
-//     // Next ArrowRight skips inner focusgroup items and goes to outer-c
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('outer-c')).toHaveFocus();
-
-//     // Continuing right stops at the end (no wrap)
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('outer-c')).toHaveFocus();
-//   });
-
-//   test('focusgroup="none" excludes items from navigation', async () => {
-//     getById('opt-a').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     // Should skip the excluded button and go to opt-b
-//     expect(getById('opt-b')).toHaveFocus();
-//   });
-// });
-
-// describe('RTL support', () => {
-//   beforeEach(() => {
-//     document.body.innerHTML = `
-//       <div dir="rtl" focusgroup="toolbar">
-//         <button tabindex="0" id="rtl-a">A</button>
-//         <button tabindex="0" id="rtl-b">B</button>
-//       </div>
-//     `;
-//   });
-
-//   test('ArrowLeft moves forward in RTL', async () => {
-//     getById('rtl-a').focus();
-//     await userEvent.keyboard('{ArrowLeft}');
-//     expect(getById('rtl-b')).toHaveFocus();
-//   });
-
-//   test('ArrowRight moves backward in RTL', async () => {
-//     getById('rtl-b').focus();
-//     await userEvent.keyboard('{ArrowRight}');
-//     expect(getById('rtl-a')).toHaveFocus();
-//   });
-// });
-
-// describe('Role inference', () => {
-//   beforeEach(() => {
-//     document.body.innerHTML = `
-//       <div id="tablist-no-role" focusgroup="tablist">
-//         <button tabindex="0" id="tab-a">A</button>
-//         <button tabindex="0" id="tab-b">B</button>
-//         <button tabindex="0" id="tab-c" role="link">C</button>
-//       </div>
-//       <nav id="tablist-explicit" role="navigation" focusgroup="tablist"></nav>
-//       <div focusgroup="menu">
-//         <button tabindex="0" id="menu-a">A</button>
-//         <a id="menu-link" href="#">Link</a>
-//       </div>
-//     `;
-//   });
-
-//   test('infers container role when none set', async () => {
-//     await expectAttribute(getById('tablist-no-role'), 'role', 'tablist');
-//   });
-
-//   test('preserves explicit container role', async () => {
-//     await expectAttribute(getById('tablist-explicit'), 'role', 'navigation');
-//   });
-
-//   test('infers child role on buttons without explicit role', async () => {
-//     await expectAttribute(getById('tab-a'), 'role', 'tab');
-//     await expectAttribute(getById('tab-b'), 'role', 'tab');
-//   });
-
-//   test('preserves explicit child role', async () => {
-//     await expectAttribute(getById('tab-c'), 'role', 'link');
-//   });
-
-//   test('infers child role only on buttons (not links)', async () => {
-//     await expectAttribute(getById('menu-a'), 'role', 'menuitem');
-//     // Link should NOT get inferred role
-//     const menuLink = getById('menu-link');
-//     expect(menuLink.getAttribute('role')).toBeNull();
-//   });
-// });
+describe('focusgroup with light and shadow items', () => {
+  test('ArrowRight navigates between light and shadow items', async () => {
+    setupPageWithShadowRoots(
+      `
+      <div focusgroup="toolbar inline">
+        <button tabindex="0" id="item1">One</button>
+        <my-element id="my-elemenet">
+          <template shadowrootmode="open">
+            <button tabindex="0" id="item2">Two</button>
+          </template>
+        </my-element>
+        <button tabindex="0" id="item3">Three</button>
+      </div>
+    `,
+    );
+    const root = getById('my-elemenet')?.shadowRoot as ShadowRoot;
+    const item2 = root.getElementById('item2');
+    getById('item1').focus();
+    await userEvent.keyboard('{ArrowRight}');
+
+    expect(root.activeElement).toBe(item2);
+
+    await userEvent.keyboard('{ArrowRight}');
+
+    expect(getById('item3')).toHaveFocus();
+  });
+});
+
+describe('focusgroup with light, shadow, and slotted items', () => {
+  test('navigates between light, shadow, and slotted items', async () => {
+    setupPageWithShadowRoots(
+      `
+      <div focusgroup="toolbar inline">
+        <button tabindex="0" id="item1">One</button>
+        <my-element id="my-element">
+          <template shadowrootmode="open">
+            <button tabindex="0" id="item2">Two</button>
+            <slot></slot>
+            <button tabindex="0" id="item4">Four</button>
+          </template>
+          <button tabindex="0" id="item3">Three</button>
+        </my-element>
+        <button tabindex="0" id="item5">Five</button>
+      </div>
+    `,
+    );
+
+    const root = getById('my-element')?.shadowRoot as ShadowRoot;
+    const item2 = root.getElementById('item2');
+    const item4 = root.getElementById('item4');
+    getById('item1').focus();
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(root.activeElement).toBe(item2);
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('item3')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(root.activeElement).toBe(item4);
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('item5')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowRight}'); // Make sure the pointer doesn’t overshoot
+    expect(getById('item5')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(root.activeElement).toBe(item4);
+
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('item3')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(root.activeElement).toBe(item2);
+
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('item1')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('item1')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(root.activeElement).toBe(item2);
+  });
+});
+
+describe('focusgroup with nested group mixed with shadow and slotted children', () => {
+  test('navigates between parent and nested groups', async () => {
+    setupPageWithShadowRoots(`
+      <div id="before" tabindex="0">before</div>
+      <div focusgroup="toolbar">
+        <button tabindex="0" id="item1">item 1</button>
+        <button tabindex="0" id="item2">item 2</button>
+        <my-element id="my-element">
+          <template shadowrootmode="open">
+            <span focusgroup="toolbar wrap">
+              <button tabindex="0" id="nested-shadow-first">nested shadow first</button>
+              <slot></slot>
+              <button tabindex="0" id="nested-shadow-last">nested shadow last</button>
+            </span>
+          </template>
+          <button tabindex="0" id="nested-slotted-1">nested slotted 1</button>
+          <button tabindex="0" focusgroupstart id="nested-slotted-2">nested slotted 2</button>
+          <button tabindex="0" id="nested-slotted-3">nested slotted 3</button>
+        </my-element>
+        <button tabindex="0" id="item3">item 3</button>
+        <button tabindex="0" id="item4">item 4</button>
+      </div>
+      <div id="after" tabindex="0">after</div>
+    `);
+
+    const root = getById('my-element')?.shadowRoot as ShadowRoot;
+    const nestedShadowFirst = root.getElementById('nested-shadow-first');
+    const nestedShadowLast = root.getElementById('nested-shadow-last');
+    getById('before').focus();
+
+    await useTab();
+
+    expect(getById('item1')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowRight}');
+    await userEvent.keyboard('{ArrowRight}');
+    await userEvent.keyboard('{ArrowRight}');
+    await userEvent.keyboard('{ArrowRight}');
+
+    expect(getById('item4')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowLeft}');
+    await userEvent.keyboard('{ArrowLeft}');
+    await userEvent.keyboard('{ArrowLeft}');
+    await userEvent.keyboard('{ArrowLeft}');
+
+    expect(getById('item1')).toHaveFocus();
+
+    await useTab();
+
+    expect(getById('nested-slotted-2')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowLeft}');
+    await userEvent.keyboard('{ArrowLeft}');
+
+    expect(root.activeElement).toBe(nestedShadowFirst);
+
+    await userEvent.keyboard('{ArrowLeft}');
+
+    expect(root.activeElement).toBe(nestedShadowLast);
+
+    await useTab();
+
+    expect(getById('item3')).toHaveFocus();
+  });
+});
+
+describe('focusable shadow hosts as focusgroup items', () => {
+  beforeEach(() => {
+    setupPageWithShadowRoots(`
+    <button tabindex="0" id="before">before</button>
+    <my-element id="my-element" focusgroup="tablist">
+      <template shadowrootmode="open"><slot></slot></template>
+      <span tabindex="0" id="tab1">
+        <template shadowrootmode="open"><slot></slot></template>
+        tab 1
+      </span>
+      <span tabindex="0" id="tab2">
+        <template shadowrootmode="open"><slot></slot></template>
+        tab 2
+      </span>
+      <span tabindex="0" id="tab3">
+        <template shadowrootmode="open"><slot></slot></template>
+        tab 3
+      </span>
+    </my-element>
+    <button tabindex="0" id="after">after</button>
+  `);
+  });
+
+  test('should have a single tab stop', async () => {
+    getById('before').focus();
+    await useTab();
+    expect(getById('tab1')).toHaveFocus();
+
+    await useTab();
+    expect(getById('after')).toHaveFocus();
+  });
+
+  test('should gain directional navigation', async () => {
+    getById('tab2').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('tab3')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowLeft}');
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('tab1')).toHaveFocus();
+  });
+});
+
+describe('top-layer modal dialog', () => {
+  test("modal dialog's own focusgroup navigates in both directions while in the top layer", async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <button tabindex="0" id="a">A</button>
+        <dialog id="dlg" focusgroup="toolbar inline">
+          <button tabindex="0" id="dlg_x">X</button>
+          <button tabindex="0" id="dlg_y">Y</button>
+          <button tabindex="0" id="dlg_close">Close</button>
+        </dialog>
+        <button tabindex="0" id="b">B</button>
+      </div>`;
+
+    (getById('dlg') as HTMLDialogElement).showModal();
+
+    getById('dlg_x').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('dlg_y')).toHaveFocus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('dlg_close')).toHaveFocus();
+
+    getById('dlg_close').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('dlg_y')).toHaveFocus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('dlg_x')).toHaveFocus();
+  });
+});
+
+describe('top-layer popover excluded from ancestor navigation', () => {
+  test('arrow navigation skips a shown popover in ancestor focusgroup', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <button tabindex="0" id="before_pop">Before</button>
+        <div id="popover_simple" popover>
+          <button tabindex="0" id="pop_item">Inside popover</button>
+        </div>
+        <button tabindex="0" id="after_pop">After</button>
+      </div>`;
+
+    getById('popover_simple').showPopover();
+
+    getById('before_pop').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('after_pop')).toHaveFocus();
+
+    getById('after_pop').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('before_pop')).toHaveFocus();
+  });
+
+  test('arrow keys do not navigate from inside a top-layer popover without own focusgroup', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <button tabindex="0" id="before_pop">Before</button>
+        <div id="popover_simple" popover>
+          <button tabindex="0" id="pop_item">Inside popover</button>
+        </div>
+        <button tabindex="0" id="after_pop">After</button>
+      </div>`;
+
+    getById('popover_simple').showPopover();
+
+    getById('pop_item').focus();
+    for (const key of ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp']) {
+      await userEvent.keyboard(`{${key}}`);
+      expect(getById('pop_item')).toHaveFocus();
+    }
+  });
+
+  test('popover as the first focusgroup child does not break Home/arrow navigation', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <div id="first_pop" popover>
+          <button tabindex="0" id="first_pop_inner">Inside popover</button>
+        </div>
+        <button tabindex="0" id="first_a">A</button>
+        <button tabindex="0" id="first_b">B</button>
+      </div>`;
+
+    getById('first_pop').showPopover();
+
+    getById('first_a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('first_b')).toHaveFocus();
+
+    getById('first_b').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('first_a')).toHaveFocus();
+
+    getById('first_b').focus();
+    await userEvent.keyboard('{Home}');
+    expect(getById('first_a')).toHaveFocus();
+  });
+
+  test('popover sibling of focusgroup does not interfere with arrow navigation', async () => {
+    document.body.innerHTML = `<button tabindex="0" id="sib_before">before</button>
+      <div focusgroup="tablist nomemory">
+        <button tabindex="0" id="sib_info">info</button>
+        <button tabindex="0" id="sib_toggle" commandfor="sib_pop" command="toggle-popover">toggle</button>
+        <button tabindex="0" id="sib_copy">copy</button>
+      </div>
+      <button tabindex="0" id="sib_after">after</button>
+      <div id="sib_pop" popover focusgroup="none">
+        <button tabindex="0" id="sib_share">share</button>
+      </div>`;
+
+    getById('sib_pop').showPopover();
+
+    // tablist wraps by default.
+    getById('sib_info').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('sib_toggle')).toHaveFocus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('sib_copy')).toHaveFocus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('sib_info')).toHaveFocus();
+
+    getById('sib_copy').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('sib_toggle')).toHaveFocus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('sib_info')).toHaveFocus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('sib_copy')).toHaveFocus();
+  });
+});
+
+describe('top-layer element with own focusgroup', () => {
+  test('popover with own focusgroup is excluded from ancestor arrow navigation', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <button tabindex="0" id="outer_a">A</button>
+        <div id="popover_fg" popover focusgroup="toolbar inline">
+          <button tabindex="0" id="inner_x">X</button>
+          <button tabindex="0" id="inner_y">Y</button>
+        </div>
+        <button tabindex="0" id="outer_b">B</button>
+      </div>`;
+
+    getById('popover_fg').showPopover();
+
+    getById('outer_a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('outer_b')).toHaveFocus();
+  });
+
+  test('inner focusgroup on a shown popover operates independently', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <button tabindex="0" id="outer_a">A</button>
+        <div id="popover_fg" popover focusgroup="toolbar inline">
+          <button tabindex="0" id="inner_x">X</button>
+          <button tabindex="0" id="inner_y">Y</button>
+        </div>
+        <button tabindex="0" id="outer_b">B</button>
+      </div>`;
+
+    getById('popover_fg').showPopover();
+
+    getById('inner_x').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('inner_y')).toHaveFocus();
+
+    getById('inner_y').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('inner_x')).toHaveFocus();
+  });
+
+  test('focusable top-layer element with own focusgroup is not an outer entry', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <button tabindex="0" id="focusable_outer_a">A</button>
+        <div id="focusable_pop" tabindex="0" popover focusgroup="toolbar inline">
+          <button tabindex="0" id="focusable_inner_x">X</button>
+        </div>
+        <button tabindex="0" id="focusable_outer_b">B</button>
+      </div>`;
+
+    getById('focusable_pop').showPopover();
+
+    getById('focusable_outer_a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('focusable_outer_b')).toHaveFocus();
+
+    getById('focusable_outer_b').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('focusable_outer_a')).toHaveFocus();
+  });
+});
+
+describe('top-layer exclusion is dynamic', () => {
+  test('show and hide cycles', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline wrap">
+        <button tabindex="0" id="a">A</button>
+        <div id="pop" popover>
+          <button tabindex="0" id="x">X</button>
+        </div>
+        <button tabindex="0" id="b">B</button>
+      </div>`;
+
+    // Hidden popover phase.
+    getById('a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('b')).toHaveFocus();
+
+    // Shown popover phase.
+    getById('pop').showPopover();
+    getById('a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('b')).toHaveFocus();
+
+    // After hiding.
+    getById('pop').hidePopover();
+    getById('a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('b')).toHaveFocus();
+  });
+
+  test('wrapping navigation skips shown popover subtree', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline wrap">
+        <button tabindex="0" id="a">A</button>
+        <div id="pop" popover>
+          <button tabindex="0" id="x">X</button>
+        </div>
+        <button tabindex="0" id="b">B</button>
+      </div>`;
+    getById('pop').showPopover();
+
+    getById('a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('b')).toHaveFocus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('a')).toHaveFocus();
+
+    getById('b').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('a')).toHaveFocus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('b')).toHaveFocus();
+  });
+
+  test('Home and End keys skip shown popover subtree', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline wrap">
+        <button tabindex="0" id="a">A</button>
+        <div id="pop" popover>
+          <button tabindex="0" id="x">X</button>
+        </div>
+        <button tabindex="0" id="b">B</button>
+      </div>`;
+    getById('pop').showPopover();
+
+    getById('a').focus();
+    await userEvent.keyboard('{Home}');
+    expect(getById('a')).toHaveFocus();
+
+    getById('a').focus();
+    await userEvent.keyboard('{End}');
+    expect(getById('b')).toHaveFocus();
+
+    getById('b').focus();
+    await userEvent.keyboard('{Home}');
+    expect(getById('a')).toHaveFocus();
+  });
+
+  test('block-axis navigation skips shown popover subtree', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar block">
+        <button tabindex="0" id="up">Up</button>
+        <div id="pop_block" popover>
+          <button tabindex="0" id="block_inner">Inner</button>
+        </div>
+        <button tabindex="0" id="down">Down</button>
+      </div>`;
+    getById('pop_block').showPopover();
+
+    getById('up').focus();
+    await userEvent.keyboard('{ArrowDown}');
+    expect(getById('down')).toHaveFocus();
+
+    getById('down').focus();
+    await userEvent.keyboard('{ArrowUp}');
+    expect(getById('up')).toHaveFocus();
+  });
+
+  test('arrow navigation skips multiple simultaneously shown popovers', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <button tabindex="0" id="m_a">A</button>
+        <div id="pop_m1" popover>
+          <button tabindex="0" id="m_x1">X1</button>
+        </div>
+        <button tabindex="0" id="m_b">B</button>
+        <div id="pop_m2" popover>
+          <button tabindex="0" id="m_x2">X2</button>
+        </div>
+        <button tabindex="0" id="m_c">C</button>
+      </div>`;
+    getById('pop_m1').showPopover();
+    getById('pop_m2').showPopover();
+
+    getById('m_a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('m_b')).toHaveFocus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('m_c')).toHaveFocus();
+
+    getById('m_c').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('m_b')).toHaveFocus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('m_a')).toHaveFocus();
+  });
+
+  test('focusgroup memory falls through when the remembered item enters the top layer', async () => {
+    document.body.innerHTML = `<button tabindex="0" id="mem_before">Before</button>
+      <div focusgroup="toolbar inline">
+        <button tabindex="0" id="mem_a">A</button>
+        <div id="mem_pop">
+          <button tabindex="0" id="mem_x">X</button>
+        </div>
+        <button tabindex="0" id="mem_b">B</button>
+      </div>
+      <button tabindex="0" id="mem_after">After</button>`;
+
+    getById('mem_x').focus();
+    expect(getById('mem_x')).toHaveFocus();
+
+    getById('mem_pop').setAttribute('popover', '');
+    getById('mem_pop').showPopover();
+
+    getById('mem_before').focus();
+    await useTab();
+    expect(getById('mem_a')).toHaveFocus();
+  });
+});
+
+describe('popover invoker inside focusgroup', () => {
+  test('arrow keys skip a popover opened by a focusgroup-item invoker', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <button tabindex="0" id="before">Before</button>
+        <button tabindex="0" id="invoker" popovertarget="pop">Invoker</button>
+        <button tabindex="0" id="after">After</button>
+      </div>
+      <div id="pop" popover>
+        <button tabindex="0" id="pop_first">Popover first</button>
+        <button tabindex="0" id="pop_last">Popover last</button>
+      </div>
+      <button tabindex="0" id="outside">Outside</button>`;
+
+    getById('invoker').focus();
+    await userEvent.click(getById('invoker'));
+    await vi.waitFor(() => expect(getById('pop')).toBeVisible());
+
+    getById('before').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('invoker')).toHaveFocus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('after')).toHaveFocus();
+
+    getById('after').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('invoker')).toHaveFocus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('before')).toHaveFocus();
+  });
+
+  test('Tab from a focusgroup-item invoker enters the open popover', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <button tabindex="0" id="before">Before</button>
+        <button tabindex="0" id="invoker" popovertarget="pop">Invoker</button>
+        <button tabindex="0" id="after">After</button>
+      </div>
+      <div id="pop" popover>
+        <button tabindex="0" id="pop_first">Popover first</button>
+        <button tabindex="0" id="pop_last">Popover last</button>
+      </div>
+      <button tabindex="0" id="outside">Outside</button>`;
+
+    getById('invoker').focus();
+    await userEvent.click(getById('invoker'));
+    expect(getById('pop')).toBeVisible();
+
+    getById('invoker').focus();
+    await useTab();
+    expect(getById('pop_first')).toHaveFocus();
+    await useTab();
+    expect(getById('pop_last')).toHaveFocus();
+  });
+
+  test('Shift+Tab from popover content opened by an invoker returns to the invoker', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <button tabindex="0" id="before">Before</button>
+        <button tabindex="0" id="invoker" popovertarget="pop">Invoker</button>
+        <button tabindex="0" id="after">After</button>
+      </div>
+      <div id="pop" popover>
+        <button tabindex="0" id="pop_first">Popover first</button>
+        <button tabindex="0" id="pop_last">Popover last</button>
+      </div>
+      <button tabindex="0" id="outside">Outside</button>`;
+
+    getById('invoker').focus();
+    await userEvent.click(getById('invoker'));
+    expect(getById('pop')).toBeVisible();
+
+    getById('pop_first').focus();
+    await useTab({ shift: true });
+    expect(getById('invoker')).toHaveFocus();
+  });
+
+  test('Tab and Shift+Tab on a tabindex=-1 popover invoker do not crash', async () => {
+    document.body.innerHTML = `<button tabindex="0" id="outside">Outside</button>
+      <div focusgroup="menu">
+        <button tabindex="-1" id="neg_invoker"
+                commandfor="neg_pop" command="toggle-popover">icecream</button>
+      </div>
+      <div id="neg_pop" popover>popover</div>
+      <button tabindex="0" id="neg_after">bread</button>`;
+
+    await userEvent.click(getById('neg_invoker'));
+    expect(getById('neg_pop')).toBeVisible();
+
+    getById('neg_invoker').focus();
+    await useTab();
+    expect(getById('neg_after')).toHaveFocus();
+
+    getById('neg_after').focus();
+    await useTab({ shift: true });
+    expect(getById('outside')).toHaveFocus();
+  });
+
+  test('Tab from a popovertarget invoker reaches the popover even when it precedes the invoker', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <div id="pt_pop" popover>
+          <button tabindex="0" id="pt_pop_first">Popover first</button>
+        </div>
+        <button tabindex="0" id="pt_before">Before</button>
+        <button tabindex="0" id="pt_invoker" popovertarget="pt_pop">Invoker</button>
+      </div>
+      <button tabindex="0" id="pt_outside">Outside</button>`;
+
+    getById('pt_invoker').focus();
+    await userEvent.click(getById('pt_invoker'));
+    expect(getById('pt_pop')).toBeVisible();
+
+    await useTab();
+    expect(getById('pt_pop_first')).toHaveFocus();
+  });
+
+  test('Tab from a commandfor invoker reaches the popover even when it precedes the invoker', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <div id="cf_pop" popover>
+          <button tabindex="0" id="cf_pop_first">Popover first</button>
+        </div>
+        <button tabindex="0" id="cf_before">Before</button>
+        <button tabindex="0" id="cf_invoker" commandfor="cf_pop" command="toggle-popover">Invoker</button>
+      </div>
+      <button tabindex="0" id="cf_outside">Outside</button>`;
+
+    getById('cf_invoker').focus();
+    await userEvent.click(getById('cf_invoker'));
+    expect(getById('cf_pop')).toBeVisible();
+
+    await useTab();
+    expect(getById('cf_pop_first')).toHaveFocus();
+  });
+
+  test('Tab from a showPopover source invoker reaches the popover even when it precedes the invoker', async () => {
+    document.body.innerHTML = `<div focusgroup="toolbar inline">
+        <div id="src_pop" popover>
+          <button tabindex="0" id="src_pop_first">Popover first</button>
+        </div>
+        <button tabindex="0" id="src_before">Before</button>
+        <button tabindex="0" id="src_invoker" popovertarget="src_pop">Invoker</button>
+      </div>
+      <button tabindex="0" id="src_outside">Outside</button>`;
+
+    await userEvent.click(getById('src_invoker'));
+    expect(getById('src_pop')).toBeVisible();
+
+    await useTab();
+    expect(getById('src_pop_first')).toHaveFocus();
+  });
+});
+
+describe('elements with tabindex=-1 participate in focusgroup navigation when focused, otherwise skipped', () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<div focusgroup="toolbar">
+          <button tabindex="0" id="b1">Button 1</button>
+          <div id="b2" tabindex="-1">Button 2</div>
+          <button tabindex="0" id="b3">Button 3</button>
+        </div>`;
+  });
+
+  test('ArrowRight from tabindex=-1 element moves to next item', async () => {
+    getById('b2').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('b3')).toHaveFocus();
+  });
+
+  test('ArrowLeft from tabindex=-1 element moves to previous item', async () => {
+    getById('b2').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('b1')).toHaveFocus();
+  });
+
+  test('ArrowRight from b1 skips b2 (tabindex=-1) and goes to b3', async () => {
+    getById('b1').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('b3')).toHaveFocus();
+  });
+
+  test('ArrowLeft from b3 skips b2 (tabindex=-1) and goes to b1', async () => {
+    getById('b3').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('b1')).toHaveFocus();
+  });
+});
+
+describe('navigation respects bounds when edges are tabindex=-1', () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<div focusgroup="toolbar">
+        <div id="start" tabindex="-1">Start</div>
+        <button tabindex="0" id="mid">Mid</button>
+        <div id="end" tabindex="-1">End</div>
+      </div>`;
+  });
+
+  test('ArrowRight from mid stays at mid when end is tabindex=-1 and no wrap', async () => {
+    getById('mid').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('mid')).toHaveFocus();
+  });
+
+  test('ArrowLeft from mid stays at mid when start is tabindex=-1 and no wrap', async () => {
+    getById('mid').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('mid')).toHaveFocus();
+  });
+
+  test('ArrowRight from start (tabindex=-1) goes to mid', async () => {
+    getById('start').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('mid')).toHaveFocus();
+  });
+
+  test('ArrowLeft from end (tabindex=-1) goes to mid', async () => {
+    getById('end').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('mid')).toHaveFocus();
+  });
+});
+
+describe('wrapping logic skips items with tabindex=-1', () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<div focusgroup="toolbar wrap">
+        <div id="w1" tabindex="-1">W1</div>
+        <button tabindex="0" id="w2">W2</button>
+        <button tabindex="0" id="w3">W3</button>
+        <div id="w4" tabindex="-1">W4</div>
+      </div>`;
+  });
+
+  test('wrapping forward from last focusable item skips tabindex=-1 ends', async () => {
+    getById('w3').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('w2')).toHaveFocus();
+  });
+
+  test('wrapping backward from first focusable item skips tabindex=-1 ends', async () => {
+    getById('w2').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('w3')).toHaveFocus();
+  });
+});
+
+describe('Toolbar focusgroup', () => {
+  beforeEach(
+    () =>
+      (document.body.innerHTML = `
+      <div focusgroup="toolbar">
+        <button tabindex="0" id="btn-bold" >Bold</button>
+        <button tabindex="0" id="btn-italic">Italic</button>
+        <button tabindex="0" id="btn-underline">Underline</button>
+      </div>
+      <div focusgroup="toolbar">
+        <button tabindex="0" id="nested-a">A</button>
+        <span><button tabindex="0" id="nested-b">B</button></span>
+        <button tabindex="0" id="nested-c">C</button>
+      </div>
+    `),
+  );
+
+  test('ArrowRight moves focus forward', async () => {
+    getById('btn-bold').focus();
+    expect(getById('btn-bold')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('btn-italic')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('btn-underline')).toHaveFocus();
+  });
+
+  test('ArrowLeft moves focus backward', async () => {
+    getById('btn-underline').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('btn-italic')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('btn-bold')).toHaveFocus();
+  });
+
+  test('ArrowRight at last item without wrap does NOT move', async () => {
+    getById('btn-underline').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('btn-underline')).toHaveFocus();
+  });
+
+  test('ArrowLeft at first item without wrap does NOT move', async () => {
+    getById('btn-bold').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('btn-bold')).toHaveFocus();
+  });
+
+  test('Home moves to first item', async () => {
+    getById('btn-underline').focus();
+    await userEvent.keyboard('{Home}');
+    expect(getById('btn-bold')).toHaveFocus();
+  });
+
+  test('End moves to last item', async () => {
+    getById('btn-bold').focus();
+    await userEvent.keyboard('{End}');
+    expect(getById('btn-underline')).toHaveFocus();
+  });
+
+  test('ArrowDown/ArrowUp do not navigate (inline-only toolbar)', async () => {
+    getById('btn-bold').focus();
+    await userEvent.keyboard('{ArrowDown}');
+    expect(getById('btn-bold')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowUp}');
+    expect(getById('btn-bold')).toHaveFocus();
+  });
+
+  test('navigates through nested DOM structure', async () => {
+    getById('nested-a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('nested-b')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('nested-c')).toHaveFocus();
+  });
+});
+
+describe('Toolbar with wrap', () => {
+  beforeEach(
+    () =>
+      (document.body.innerHTML = `
+      <div focusgroup="toolbar wrap">
+        <button tabindex="0" id="wrap-a">A</button>
+        <button tabindex="0" id="wrap-b">B</button>
+        <button tabindex="0" id="wrap-c">C</button>
+      </div>
+    `),
+  );
+
+  test('wraps from last to first', async () => {
+    getById('wrap-c').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('wrap-a')).toHaveFocus();
+  });
+
+  test('wraps from first to last', async () => {
+    getById('wrap-a').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('wrap-c')).toHaveFocus();
+  });
+});
+
+describe('Tablist focusgroup', () => {
+  beforeEach(
+    () =>
+      (document.body.innerHTML = `
+      <div id="tablist" focusgroup="tablist">
+        <button tabindex="0" id="tab-1">Tab 1</button>
+        <button tabindex="0" id="tab-2">Tab 2</button>
+        <button tabindex="0" id="tab-3">Tab 3</button>
+      </div>
+    `),
+  );
+
+  test('ArrowRight moves between tabs (inline default)', async () => {
+    getById('tab-1').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('tab-2')).toHaveFocus();
+  });
+
+  test('wraps by default (tablist default modifier)', async () => {
+    getById('tab-3').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('tab-1')).toHaveFocus();
+  });
+
+  test('infers role=tablist on container', async () => {
+    await expectAttr(getById('tablist'), 'role', 'tablist');
+  });
+
+  test('infers role=tab on button children', async () => {
+    await expectAttr(getById('tab-1'), 'role', 'tab');
+    await expectAttr(getById('tab-2'), 'role', 'tab');
+    await expectAttr(getById('tab-3'), 'role', 'tab');
+  });
+});
+
+describe('Menu focusgroup', () => {
+  beforeEach(
+    () =>
+      (document.body.innerHTML = `
+      <div id="menu" focusgroup="menu">
+        <button tabindex="0" id="item-cut">Cut</button>
+        <button tabindex="0" id="item-copy">Copy</button>
+        <button tabindex="0" id="item-paste">Paste</button>
+      </div>
+    `),
+  );
+
+  test('ArrowDown moves forward (block default)', async () => {
+    getById('item-cut').focus();
+    await userEvent.keyboard('{ArrowDown}');
+    expect(getById('item-copy')).toHaveFocus();
+  });
+
+  test('ArrowUp moves backward', async () => {
+    getById('item-paste').focus();
+    await userEvent.keyboard('{ArrowUp}');
+    expect(getById('item-copy')).toHaveFocus();
+  });
+
+  test('wraps by default', async () => {
+    getById('item-paste').focus();
+    await userEvent.keyboard('{ArrowDown}');
+    expect(getById('item-cut')).toHaveFocus();
+  });
+
+  test('ArrowLeft/ArrowRight do not navigate (block-only)', async () => {
+    getById('item-cut').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('item-cut')).toHaveFocus();
+  });
+
+  test('infers role=menu and role=menuitem', async () => {
+    await expectAttr(getById('menu'), 'role', 'menu');
+    await expectAttr(getById('item-cut'), 'role', 'menuitem');
+  });
+});
+
+describe('Memory', () => {
+  beforeEach(
+    () =>
+      (document.body.innerHTML = `
+      <div focusgroup="toolbar">
+        <button tabindex="0" id="mem-a">A</button>
+        <button tabindex="0" id="mem-b">B</button>
+        <button tabindex="0" id="mem-c">C</button>
+      </div>
+      <button tabindex="0" id="middle">Middle</button>
+      <div focusgroup="toolbar nomemory">
+        <button tabindex="0" id="nomem-a">A</button>
+        <button tabindex="0" id="nomem-b" focusgroupstart>B</button>
+        <button tabindex="0" id="nomem-c">C</button>
+      </div>
+      <button tabindex="0" id="after">After</button>
+    `),
+  );
+
+  test('remembers last focused item on re-entry', async () => {
+    // Focus the toolbar and move to C
+    getById('mem-a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('mem-c')).toHaveFocus();
+
+    // Tab away
+    await useTab();
+    expect(getById('mem-c')).not.toHaveFocus();
+
+    // Tab back — should return to C (memory)
+    await useTab({ shift: true });
+    expect(getById('mem-c')).toHaveFocus();
+  });
+
+  test('focusgroupstart determines initial focus', async () => {
+    // Tab into the nomemory toolbar — should focus B (focusgroupstart)
+    getById('middle').focus();
+    await useTab();
+    expect(getById('nomem-b')).toHaveFocus();
+  });
+
+  test('nomemory always returns to focusgroupstart', async () => {
+    // Focus B (focusgroupstart), move to C
+    getById('middle').focus();
+    await useTab();
+    expect(getById('nomem-b')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('nomem-c')).toHaveFocus();
+
+    // Tab away and back — should return to B, not C
+    await useTab();
+    await useTab({ shift: true });
+    expect(getById('nomem-b')).toHaveFocus();
+  });
+});
+
+describe('Nested focusgroups', () => {
+  beforeEach(
+    () =>
+      (document.body.innerHTML = `
+      <div focusgroup="toolbar">
+        <button tabindex="0" id="outer-a">Outer A</button>
+        <button tabindex="0" id="outer-b">Outer B</button>
+        <div focusgroup="toolbar">
+          <button tabindex="0" id="inner-a">Inner A</button>
+          <button tabindex="0" id="inner-b">Inner B</button>
+          <button tabindex="0" id="inner-c">Inner C</button>
+        </div>
+        <button tabindex="0" id="outer-c">Outer C</button>
+      </div>
+      <div focusgroup="toolbar">
+        <button tabindex="0" id="opt-a">A</button>
+        <button tabindex="0" id="opt-excluded" focusgroup="none">Excluded</button>
+        <button tabindex="0" id="opt-b">B</button>
+      </div>
+    `),
+  );
+
+  test('inner focusgroup navigates independently', async () => {
+    getById('inner-a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('inner-b')).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('inner-c')).toHaveFocus();
+  });
+
+  test('outer focusgroup does not include inner items', async () => {
+    getById('outer-a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('outer-b')).toHaveFocus();
+
+    // Next ArrowRight skips inner focusgroup items and goes to outer-c
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('outer-c')).toHaveFocus();
+
+    // Continuing right stops at the end (no wrap)
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('outer-c')).toHaveFocus();
+  });
+
+  test('focusgroup="none" excludes items from navigation', async () => {
+    getById('opt-a').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    // Should skip the excluded button and go to opt-b
+    expect(getById('opt-b')).toHaveFocus();
+  });
+});
+
+describe('RTL support', () => {
+  beforeEach(() => {
+    document.body.innerHTML = `
+      <div dir="rtl" focusgroup="toolbar">
+        <button tabindex="0" id="rtl-a">A</button>
+        <button tabindex="0" id="rtl-b">B</button>
+      </div>
+    `;
+  });
+
+  test('ArrowLeft moves forward in RTL', async () => {
+    getById('rtl-a').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('rtl-b')).toHaveFocus();
+  });
+
+  test('ArrowRight moves backward in RTL', async () => {
+    getById('rtl-b').focus();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(getById('rtl-a')).toHaveFocus();
+  });
+});
