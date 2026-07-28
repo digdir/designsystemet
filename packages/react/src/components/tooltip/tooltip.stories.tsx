@@ -205,3 +205,27 @@ export const WithDynamicCSSTooltipText = meta.story({
     );
   },
 });
+
+export const Sizes = meta.story({
+  render: () => {
+    return (
+      <>
+        <Tooltip content='Kopier'>
+          <Button data-size='sm' icon>
+            <FilesIcon aria-hidden />
+          </Button>
+        </Tooltip>
+        <Tooltip content='Kopier'>
+          <Button data-size='md' icon>
+            <FilesIcon aria-hidden />
+          </Button>
+        </Tooltip>
+        <Tooltip content='Kopier'>
+          <Button data-size='lg' icon>
+            <FilesIcon aria-hidden />
+          </Button>
+        </Tooltip>
+      </>
+    );
+  },
+});
