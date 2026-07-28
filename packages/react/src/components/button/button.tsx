@@ -92,7 +92,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         suppressHydrationWarning // Might get augmented through designsystemet-web with aria-haspopup etc.
         aria-busy={Boolean(loading) || undefined}
         aria-disabled={Boolean(loading) || undefined}
-        className={cl('ds-button', className)}
+        className={cl('ds-button', className?.replace('ds-button', ''))} // Prevent duplicate classnames when using asChild with Button inside ToggleGroupItem
         data-icon={icon || undefined}
         commandfor={commandForVal}
         data-variant={variant}

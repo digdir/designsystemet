@@ -18,11 +18,15 @@ Bruker du `@digdir/designsystemet-web` kan du implementere toggle group ved å b
 ```
 
 ### Automatisk versus manuell aktivering
-Toggle group støtter to aktiveringsmoduser: automatisk (med `<label><input type="radio">`) og manuell (med `<button role="radio" aria-checked="true | false">`).
-Ved bruk av `<label><input type="radio">` aktiveres valg med én gang brukeren navigerer med piltastene, mens med `<button>` må aktiveres valg først ved Enter eller Mellomrom. 
-Automatisk aktivering er standard i React og anbefalt, men manuell kan være nyttig dersom toggle group utløser større operasjoner, som å bytte mellom liste- og kartvisning eller gjøre nye API-kall.
 
+Toggle group støtter to aktiveringsmoduser:
 
+- **Automatisk:** Valg aktiveres umiddelbart når brukeren navigerer med piltastene, og hvert valg kodes med `<label><input type="radio">`
+- **Manuell:** Valg aktiveres først ved `Enter` eller `Mellomrom`, og hvert valg kodes med `<button role="radio" aria-checked="true | false">`
+
+Automatisk aktivering er standard i React og anbefales i de fleste tilfeller, mens manuell kan være bedre når et valg utløser større operasjoner.
+
+<Story story="ManualActivation" language="react" />
 
 ## CSS variablar og data-attributter
 Størrelsar styrast med [data-size](/no/fundamentals/code/sizes) og fargar med [data-color](/no/fundamentals/code/colors). 

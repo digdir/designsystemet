@@ -195,10 +195,10 @@ export const ManualActivationEn = () => {
     <ToggleGroup
       aria-label='Filter'
       onChange={console.log}
-      defaultValue='inboks'
+      defaultValue='inbox'
       variant='secondary'
     >
-      <ToggleGroup.Item value='Inbox' asChild>
+      <ToggleGroup.Item value='inbox' asChild>
         <Button>Inbox</Button>
       </ToggleGroup.Item>
       <ToggleGroup.Item value='drafts' asChild>
