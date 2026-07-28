@@ -1,5 +1,6 @@
 import {
   attr,
+  getComposedPath,
   getComposedTarget,
   on,
   onHotReload,
@@ -14,11 +15,12 @@ const handleClosedbyAny = (event: Event) => {
   const { type, clientX: x = 0, clientY: y = 0 } = event as MouseEvent;
   const el = getComposedTarget(event);
   if (el && type === 'pointerdown') {
-    const r = el.closest?.('dialog')?.getBoundingClientRect(); // TODO This needs to traverse outside shadow dom
-    const isInside =
-      r && r.top <= y && y <= r.bottom && r.left <= x && x <= r.right;
-
-    DOWN_INSIDE = !!isInside;
+    for (const dialog of getComposedPath(el)) {
+      if (dialog.nodeName !== 'DIALOG') continue;
+      const r = (dialog as Element).getBoundingClientRect();
+      DOWN_INSIDE = r.top <= y && y <= r.bottom && r.left <= x && x <= r.right;
+      return; // Stop traversing once we find a dialog
+    }
   } else {
     const isDialog = el?.nodeName === 'DIALOG';
     const isClose = isDialog && !DOWN_INSIDE && attr(el, 'closedby') === 'any';
