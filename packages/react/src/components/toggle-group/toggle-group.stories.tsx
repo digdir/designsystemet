@@ -144,27 +144,3 @@ export const AriaDisabled = meta.story(() => {
     </ToggleGroup>
   );
 });
-
-export const ManualActivation = meta.story(() => {
-  return (
-    <ToggleGroup
-      aria-label='Filter'
-      onChange={console.log}
-      defaultValue='inboks'
-      variant='secondary'
-    >
-      <ToggleGroup.Item value='inboks' asChild>
-        <Button>Innboks</Button>
-      </ToggleGroup.Item>
-      <ToggleGroup.Item value='utkast' asChild>
-        <Button>Utkast</Button>
-      </ToggleGroup.Item>
-      <ToggleGroup.Item value='arkiv' asChild>
-        <Button>Arkiv</Button>
-      </ToggleGroup.Item>
-      <ToggleGroup.Item value='sendt' asChild>
-        <Button>Sendt</Button>
-      </ToggleGroup.Item>
-    </ToggleGroup>
-  );
-});

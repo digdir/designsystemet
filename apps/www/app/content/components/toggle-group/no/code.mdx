@@ -18,16 +18,33 @@ Merk at `focusgroup` er en [kommende W3C standard](https://open-ui.org/component
 </fieldset>
 ```
 
-### Automatisk versus manuell aktivering
+### Gammel måte med `<button>`
+**Her må du håndtere tastaturnavigasjon og ARIA-roller sjølv.**
 
-Toggle group støtter to aktiveringsmoduser:
+Du kan lese om kva du må gjere for å implementere dette i [tilgjengelighetsdokumentasjonen](/no/components/docs/toggle-group/accessibility).
 
-- **Automatisk:** Valg aktiveres umiddelbart når brukeren navigerer med piltastene, og hvert valg kodes med `<label><input type="radio">`
-- **Manuell:** Valg aktiveres først ved `Enter` eller `Mellomrom`, og hvert valg kodes med `<button role="radio" aria-checked="true | false">`
+Klassenavnet `ds-toggle-group` blir lagt på ein `<div>` med `role="radiogroup"`.
 
-Automatisk aktivering er standard i React og anbefales i de fleste tilfeller, mens manuell kan være bedre når et valg utløser større operasjoner.
+Kvar knapp i gruppa er ein `<button>` med klassenavn `ds-button` med `role="radio"` og `aria-checked` som indikerer om knappen er vald eller ikkje.
 
-<Story story="ManualActivation" language="react" />
+```html
+<div class="ds-toggle-group" role="radiogroup" data-variant="primary">
+  <button
+    class="ds-button"
+    type="button"
+    id="togglegroup-item-1"
+    aria-checked="true"
+    role="radio"
+  >Innboks</button>
+  <button
+    class="ds-button"
+    type="button"
+    id="togglegroup-item-2"
+    aria-checked="false"
+    role="radio"
+  >Sendt</button>
+</div>
+```
 
 ## CSS variablar og data-attributter
 Størrelsar styrast med [data-size](/no/fundamentals/code/sizes) og fargar med [data-color](/no/fundamentals/code/colors). 

@@ -21,16 +21,32 @@ Note that focusgroup is a [upcoming W3C standard](https://open-ui.org/components
 </fieldset>
 ```
 
-### Automatic versus manual activation
+### Old way with `<button>`
+**With this approach, you need to handle keyboard navigation and ARIA roles yourself.**
+You can read about what you need to do to implement this in the [accessibility documentation](/en/components/docs/toggle-group/accessibility).
 
-Toggle group supports two activation modes:
+The class name `ds-toggle-group` is placed on a `<div>` with `role="radiogroup"`.
 
-- **Automatic:** Options are activated immediately when the user navigates with the arrow keys, and each option is coded with `<label><input type="radio">`
-- **Manual:** Options are activated only by pressing `Enter` or `Space`, and each option is coded with `<button role="radio" aria-checked="true | false">`
+Each button in the group is a `<button>` with class name `ds-button` with `role="radio"` and `aria-checked` which indicates whether the button is selected or not.
 
-Automatic activation is the default in React and is recommended in most cases, while manual activation may be better when selecting an option triggers larger operations.
-
-<Story story="ManualActivationEn" language="react" />
+```html
+<div class="ds-toggle-group" role="radiogroup" data-variant="primary"> 
+  <button 
+    class="ds-button" 
+    type="button" 
+    id="togglegroup-item-1" 
+    aria-checked="true" 
+    role="radio" 
+  >Inbox</button> 
+  <button 
+    class="ds-button" 
+    type="button" 
+    id="togglegroup-item-2" 
+    aria-checked="false"
+    role="radio" 
+  >Sent</button>
+</div>
+```
 
 ## CSS variables and data attributes
 Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 

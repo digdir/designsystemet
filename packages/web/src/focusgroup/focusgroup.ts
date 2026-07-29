@@ -69,7 +69,11 @@ const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
     else next = Math.max(0, Math.min(next, items.length - 1));
   }
 
-  if (items[next] !== target && target.nodeName !== 'INPUT') e.preventDefault(); // Prevent scrolling if changing item, but allow native radio input navigation
+  // Note: preventDefault() prevents native <input type="radio"> elements from changing checked state with arrow keys.
+  // Although this differs from native behavior, it matches focusgroup="radiogroup" for <button role="radio">.
+  // toggle-group.ts already normalizes this for both <input type="radio"> and <button role="radio">,
+  // meaning the following preventDefault() introduces no inconsistencies:
+  if (items[next] !== target) e.preventDefault(); // Prevent scrolling if changing item
   (items[next] as HTMLElement)?.focus?.();
 };
 
@@ -120,13 +124,10 @@ const parseGroup = (el: Element, key: string) => {
   const opts = new Set(key.toLowerCase().split(' '));
   const role = [...opts].find((t) => t in ROLES) as keyof typeof ROLES;
   const base = ROLES[role];
-  const hasInline = opts.has('inline');
-  const hasBlock = opts.has('block');
+  const x = opts.has('inline');
+  const y = opts.has('block');
   const wrap = opts.has('wrap') || (opts.has('nowrap') ? false : base?.wrap);
-  const block =
-    hasInline && hasBlock
-      ? null
-      : hasBlock || (hasInline ? false : base?.block);
+  const block = x && y ? null : y || (x ? false : base?.block);
   const memory = !opts.has('nomemory');
   const focus = null as Element | null;
 

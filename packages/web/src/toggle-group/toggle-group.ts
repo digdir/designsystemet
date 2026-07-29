@@ -3,11 +3,15 @@ import {
   ARIA_LABELLEDBY,
   attr,
   attrOrCSS,
+  getComposedPath,
+  getComposedTarget,
+  on,
   onHotReload,
   onMutation,
   warn,
 } from '../utils/utils';
 
+const ATTR_FOCUSGROUP = 'focusgroup';
 const ATTR_TOGGLEGROUP = 'data-toggle-group';
 const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
 
@@ -22,6 +26,26 @@ const handleMutations = (root: Document, records?: MutationRecord[]) => {
   }
 };
 
+const handleRadioClick = (e: Event & Partial<PointerEvent>) => {
+  if (e.isTrusted && e.pointerId === -1 && getRadioInFocusGroup(e)) {
+    e.preventDefault(); // Only handle clicks that are a result of keyboard navigation
+    e.stopImmediatePropagation(); // Prevent stopped "click" from reaching React and other listeners
+  }
+};
+
+const handleRadioEnterKey = (e: Event & Partial<KeyboardEvent>) =>
+  e.key === 'Enter' && getRadioInFocusGroup(e)?.click(); // Allow Enter to activate the radio input
+
+const getRadioInFocusGroup = (e: Event) => {
+  const el = getComposedTarget(e) as HTMLInputElement | null;
+  if (el?.nodeName !== 'INPUT' || el.type !== 'radio' || !el.name) return;
+  for (const group of getComposedPath(el) as Set<Element>) {
+    if (group.nodeType !== 1 || !group.hasAttribute(ATTR_FOCUSGROUP)) continue; // Ignore non-group nodes
+    if (!attr(group, ATTR_FOCUSGROUP)?.includes('radiogroup')) return; // Ignore invalid groups
+    return el;
+  }
+};
+
 const deprecate = (el: Element) => {
   const label = attrOrCSS(el, ATTR_TOGGLEGROUP);
   const labelledby = attr(el, ARIA_LABELLEDBY)?.trim();
@@ -33,6 +57,8 @@ const deprecate = (el: Element) => {
 };
 
 onHotReload('toggle-group', () => [
+  on(document, 'click', handleRadioClick, true), // Use capture to ensure we run before React and other listeners
+  on(document, 'keydown', handleRadioEnterKey),
   onMutation(document, handleMutations, {
     attributeFilter: [ATTR_TOGGLEGROUP],
     attributes: true,
