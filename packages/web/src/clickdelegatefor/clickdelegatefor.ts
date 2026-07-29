@@ -9,18 +9,15 @@ import {
   QUICK_EVENT,
 } from '../utils/utils';
 
+// biome-ignore format:next-line
+const SKIP = new Set(['A', 'BUTTON', 'LABEL', 'INPUT', 'SELECT', 'TEXTAREA', 'DETAILS', 'DIALOG']); // Ignore interactive elements, and elements that create a new "context" or "scope"
 const CLASS_HOVER = ':click-delegate-hover';
 const ATTR_CLICKDELEGATEFOR = 'data-clickdelegatefor';
-const SELECTOR_CLICKDELEGATEFOR = `[${ATTR_CLICKDELEGATEFOR}]`;
-const SELECTOR_INACTIVE = `:disabled,[readonly]`;
-const SELECTOR_SKIP =
-  'a,button,label,input,select,textarea,[contenteditable],[role="button"],details,dialog,[popover]';
-// details, dialog and [popover] are added to prevent click delegation inside elements that create a new "context" or "scope"
 
 const handleClickDelegateFor = (event: MouseEvent) => {
   const isNewTab = event.button === 1 || event.metaKey || event.ctrlKey; // Middle click or cmd/ctrl + click should open in new tab
   const target = getComposedTarget(event);
-  const delegateTarget = event.button < 2 && getDelegateTarget(target); // Only accept left or middle clicks
+  const delegateTarget = event.button < 2 && getDelegateTarget(event); // Only accept left or middle clicks
 
   if (!delegateTarget || delegateTarget.contains(target)) return; // Only proxy event if delegated target isn't part of the original target
   if (isNewTab && delegateTarget instanceof HTMLAnchorElement)
@@ -29,27 +26,28 @@ const handleClickDelegateFor = (event: MouseEvent) => {
   delegateTarget.click(); // Forward click to the clickable element
 };
 
-let HOVER: Element | null = null;
+let HOVER: Element | undefined;
 let TARGET: EventTarget; // Used to speed up mouseover handling
 const handleMouseMove = (event: Event) => {
   const target = getComposedTarget(event);
   if (!target || target === TARGET) return; // Same target, no need to check delegate target again
   TARGET = target;
-  const delegateTarget = getDelegateTarget(target);
+  const delegateTarget = getDelegateTarget(event);
   if (HOVER === delegateTarget) return; // No change
   if (HOVER) HOVER.classList.remove(CLASS_HOVER);
   if (delegateTarget) delegateTarget.classList.add(CLASS_HOVER);
   HOVER = delegateTarget;
 };
 
-const getDelegateTarget = (el: Element | null) => {
-  const scope = el?.closest(SELECTOR_CLICKDELEGATEFOR);
-  const id = scope?.getAttribute(ATTR_CLICKDELEGATEFOR);
-  const target = scope && id ? getRoot(scope).getElementById(id) : null;
-  const skip = target && (el as Element).closest(SELECTOR_SKIP); // Ignore if interactive
+const getDelegateTarget = (event: Event) => {
+  for (const el of event.composedPath() as HTMLElement[]) {
+    if (el.nodeType !== 1) continue; // Only check elements
+    if (el.isContentEditable || el.popover || SKIP.has(el.nodeName)) return;
 
-  if (skip && skip !== target && scope?.contains(skip)) return null; // Ignore if interactive and inside the scope
-  return target?.matches(SELECTOR_INACTIVE) ? null : target; // Ignore inactive elements
+    const id = el.getAttribute(ATTR_CLICKDELEGATEFOR);
+    const target = id && (getRoot(el).getElementById(id) as HTMLInputElement);
+    if (target && !target.disabled && !target.readOnly) return target; // Only return if target is not disabled or readonly
+  }
 };
 
 onHotReload('clickdelegatefor', () => [
