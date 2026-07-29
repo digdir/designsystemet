@@ -38,7 +38,6 @@ describe('toggle-group behavior', () => {
     expect(inputs[2]).toHaveFocus();
     expect(inputs[0]).toBeChecked();
 
-
     await userEvent.keyboard('{ArrowRight}');
     expect(inputs[0]).toHaveFocus();
     expect(inputs[0]).toBeChecked();
@@ -56,7 +55,7 @@ describe('toggle-group behavior', () => {
     await userEvent.keyboard('{ArrowRight}');
     expect(inputs[0]).toBeChecked();
     expect(inputs[1]).toHaveFocus();
-    
+
     await userEvent.keyboard('{Enter}');
     expect(inputs[1]).toBeChecked();
     expect(clickSpy).toHaveBeenCalledTimes(1);
