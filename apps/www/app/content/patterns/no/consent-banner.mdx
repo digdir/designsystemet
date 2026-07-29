@@ -4,7 +4,7 @@ sidebar_title: Samtykke til å lagre informasjon
 category: Spør brukerne om...
 description: Slik lager du et samtykkebanner som er forståelig, tilgjengelig og gir brukerne reelle valgmuligheter.
 partners: Digdir, Nav, Skatteetaten, Oslo kommune, Entur, Politiet, Brønnøysundregistrene, Helsedirektoratet, NRK
-search_terms: consent banner, cookie banner, cookies, samtykke, personvern
+search_terms: consent banner, cookie banner, cookies, samtykke, personvern, gdpr
 date: 2026-06-29
 order: 75
 ---
@@ -12,7 +12,7 @@ order: 75
 ## Hvorfor et felles mønster for samtykkebanner? 
 Virksomheter utformer i dag samtykkebannere svært ulikt når det gjelder språkbruk, design, plassering og brukernes faktiske valgmuligheter. Det gjør det vanskelig for brukerne å ta informerte valg. 
 
-Samtidig er de juridiske rammene klare. Samtykket må fylle kravene til et gyldig samtykke etter personvernforordningen og kravene i tilgjengelighetsforskriften.
+Samtidig er de juridiske rammene klare. Samtykket må fylle kravene til et gyldig samtykke etter personvernforordningen og løsningen for å hente inn samtykke må følge kravene i Forskrift om universell utforming av IKT-løsninger.
 
 Et felles mønster gir tydelige rammer for hvordan du kan utforme gode samtykkeløsninger. Når samtykke håndteres likt på tvers av tjenester, blir det enklere for brukerne å forstå valgene sine. Det gir mer forutsigbare brukeropplevelser og reduserer den kognitive belastningen. Samtidig blir det enklere for deg å lage løsninger som bygger på god praksis for brukeropplevelse, tilgjengelighet og personvern. Du må selv vurdere hvilke teknologier du bruker og hvilket rettslig grunnlag som gjelder.
 
@@ -33,7 +33,7 @@ Vurder også hvilke teknologier som er strengt nødvendige og hvilke som er valg
 Bruk av informasjonskapsler og lignende teknologier vil ofte innebære behandling av personopplysninger. Hvis opplysningene kan knyttes til en person, må du også følge [personvernregelverket](https://www.datatilsynet.no/regelverk-og-verktoy/lover-og-regler/).
 
 ### Lagring av samtykke
-Du trenger ikke innhente et eget samtykke for å lagre selve samtykkesvaret. Dette er en strengt nødvendig informasjonskapsel, siden du er pålagt å be om samtykke og det er nødvendig å lagre svaret for å oppfylle dette.
+Du trenger ikke innhente et eget samtykke for å lagre selve samtykkesvaret. Dette er en strengt nødvendig opplysning, siden du er pålagt å be om samtykke og det er nødvendig å lagre svaret for å oppfylle dette.
 
 Utover det bør du lagre så lite som mulig:
 - Lagre minst mulig data, og i kortest mulig tid. For eksempel: data fra en A/B-test trenger ikke lagres etter at testen er avsluttet og retningen er valgt.
@@ -184,7 +184,7 @@ Kod samtykkebanneret som en `<section>` – en avgrenset seksjon på siden som e
 Når samtykkebanneret har flere valg som hører sammen, bruker vi `<fieldset>` og `<legend>` for å gruppere valgene. Legg selve overskriften inni `<legend>`, slik at den både er synlig tittel og tilgjengelig navn for gruppen. Dette unngår at skjermlesere leser opp samme spørsmål to ganger. Se også [GOV.UK om labels, legends og headings](https://design-system.service.gov.uk/get-started/labels-legends-headings/).
 
 ### Knapper og lenker
-Skriv kode for å godta eller avslå skal som knapper (`<button>`), siden de utfører handlinger. Innganger til personvernerklæringen eller mer informasjon om informasjonskapsler koder du ut fra hva som skjer når brukerne aktiverer dem:
+Funksjoner for å godta eller avslå, kodes som knapper (`<button>`), siden de utfører handlinger. Innganger til personvernerklæringen eller mer informasjon om informasjonskapsler koder du ut fra hva som skjer når brukerne aktiverer dem:
 - Lenke (`<a>`) hvis de fører til en ny side.
 - Knapp (`<button>`) hvis de åpner en modal eller lignende innhold på samme side.
 

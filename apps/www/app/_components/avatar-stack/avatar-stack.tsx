@@ -22,6 +22,14 @@ const avatarMap = {
   'oslo kommune': 'oslokommune.svg',
   politiet: 'politiet.svg',
   skatteetaten: 'skatteetaten.svg',
+  'brønnøysund register centre': 'brønnøysundregistrene.svg',
+  'norwegian directorate of health': 'helsedirektoratet.svg',
+  'norwegian tax administration': 'skatteetaten.svg',
+  'oslo municipality': 'oslokommune.svg',
+  'norwegian police service': 'politiet.svg',
+  'city of oslo': 'oslokommune.svg',
+  'the design system': 'designsystemet.svg',
+  'norwegian food safety authority': 'mattilsynet.svg',
 } as const;
 
 type AvatarKey = keyof typeof avatarMap;
