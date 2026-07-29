@@ -299,7 +299,7 @@ Extends `u-tabs` from u-elements. See documentation for [u-tabs](https://u-eleme
 ```
 
 ## `focusgroup`
-An observer will look for `focusgroup` and add proper arrow navigation plus Enter-key support [according to upcoming specification](https://open-ui.org/components/scoped-focusgroup.explainer/).
+`focusgroup` is polyfilled [according to upcoming specification](https://open-ui.org/components/scoped-focusgroup.explainer/).
 
 ```html
 <fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Text alignment" data-variant="secondary">
