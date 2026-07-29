@@ -69,7 +69,7 @@ const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
     else next = Math.max(0, Math.min(next, items.length - 1));
   }
 
-  if (items[next] !== target) e.preventDefault(); // Prevent scrolling if changing item
+  if (items[next] !== target && target.nodeName !== 'INPUT') e.preventDefault(); // Prevent scrolling if changing item, but allow native radio input navigation
   (items[next] as HTMLElement)?.focus?.();
 };
 
