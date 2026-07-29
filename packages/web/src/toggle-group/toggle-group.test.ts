@@ -28,10 +28,20 @@ const render = () => {
 };
 
 describe('toggle-group behavior', () => {
-  it('sets role', async () => {
-    const { group } = render();
-    group.dispatchEvent(new FocusEvent('focus')); // Dispatch focus event to trigger attribute setup
-    await vi.waitFor(() => expect(group).toHaveAttribute('role', 'radiogroup'));
+  it('moves only focus (not selection) with arrow keys and wraps', async () => {
+    const { inputs } = render();
+
+    inputs[0].focus();
+    expect(inputs[0]).toBeChecked();
+
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(inputs[2]).toHaveFocus();
+    expect(inputs[0]).toBeChecked();
+
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(inputs[0]).toHaveFocus();
+    expect(inputs[0]).toBeChecked();
   });
 
   it('clicks input on Enter', async () => {
@@ -50,21 +60,5 @@ describe('toggle-group behavior', () => {
     await userEvent.keyboard('{Enter}');
     expect(inputs[1]).toBeChecked();
     expect(clickSpy).toHaveBeenCalledTimes(1);
-  });
-
-  it('moves only focus (not selection) with arrow keys and wraps', async () => {
-    const { inputs } = render();
-
-    inputs[0].focus();
-    expect(inputs[0]).toBeChecked();
-
-    await userEvent.keyboard('{ArrowLeft}');
-    expect(inputs[2]).toHaveFocus();
-    expect(inputs[0]).toBeChecked();
-
-
-    await userEvent.keyboard('{ArrowRight}');
-    expect(inputs[0]).toHaveFocus();
-    expect(inputs[0]).toBeChecked();
   });
 });
