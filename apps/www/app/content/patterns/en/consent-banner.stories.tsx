@@ -20,7 +20,9 @@ export const ConsentBanner = () => {
           Do you allow us to collect information?
         </Heading>
         <Paragraph>
-          If you consent, we will store and anlyse information that helps us improve the website. You can withdraw your consent at any time at the bottom of the page.{' '}
+          If you consent, we will store and anlyse information that helps us
+          improve the website. You can withdraw your consent at any time at the
+          bottom of the page.{' '}
           <Link href='#more-about-what-we-collect' style={{ color: 'inherit' }}>
             More about what we store and why
           </Link>
@@ -50,7 +52,8 @@ export const ConsentBanner = () => {
           <Link href='#necessary-information' style={{ color: 'inherit' }}>
             We also store necessary information
           </Link>{' '}
-          that cannot be opted out. This makes the website functional and secure.
+          that cannot be opted out. This makes the website functional and
+          secure.
         </Paragraph>
       </section>
       <SkipLink href='#main'>Skip to main content</SkipLink>
@@ -74,7 +77,8 @@ export const ConsentBannerCheckboxes = () => {
               </Heading>
             </Fieldset.Legend>
             <Fieldset.Description>
-              The infomation helps us improve the website and solve issues quicker.
+              The infomation helps us improve the website and solve issues
+              quicker.
             </Fieldset.Description>
             <Checkbox
               label='How the website is used'
@@ -93,7 +97,10 @@ export const ConsentBannerCheckboxes = () => {
             }}
           >
             You can change your choices at any time at the bottom of the page.{' '}
-            <Link href='#more-about-what-we-collect' style={{ color: 'inherit' }}>
+            <Link
+              href='#more-about-what-we-collect'
+              style={{ color: 'inherit' }}
+            >
               More about what we store and why
             </Link>
           </Paragraph>
@@ -125,7 +132,8 @@ export const ConsentBannerCheckboxes = () => {
           <Link href='#necessary-information' style={{ color: 'inherit' }}>
             We also store necessary information
           </Link>{' '}
-          that cannot be opted out from. This makes the website functional and secure.
+          that cannot be opted out from. This makes the website functional and
+          secure.
         </Paragraph>
       </section>
       <SkipLink href='#main'>Skip to main content</SkipLink>

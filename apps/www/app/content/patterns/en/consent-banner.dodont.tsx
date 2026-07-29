@@ -11,14 +11,16 @@ import {
 export const DontNegations = () => {
   return (
     <Paragraph>
-      Do you want us to not store information about you and your usage patterns? 
+      Do you want us to not store information about you and your usage patterns?
     </Paragraph>
   );
 };
 
 export const DoNegations = () => {
   return (
-    <Paragraph>Can we collect information about how the website is used?</Paragraph>
+    <Paragraph>
+      Can we collect information about how the website is used?
+    </Paragraph>
   );
 };
 
@@ -85,7 +87,8 @@ export const DoNecessaryCookiesCheckbox = () => {
       <Link href='#necessary-information' style={{ color: 'inherit' }}>
         We also store necessary information
       </Link>{' '}
-      that cannot be opted out from. This makes the website functional and secure.
+      that cannot be opted out from. This makes the website functional and
+      secure.
     </Paragraph>
   );
 };
