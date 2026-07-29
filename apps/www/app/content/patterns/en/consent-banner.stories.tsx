@@ -52,7 +52,7 @@ export const ConsentBanner = () => {
           <Link href='#necessary-information' style={{ color: 'inherit' }}>
             We also store necessary information
           </Link>{' '}
-          that cannot be opted out. This makes the website functional and
+          that cannot be opted out from. This makes the website functional and
           secure.
         </Paragraph>
       </section>
