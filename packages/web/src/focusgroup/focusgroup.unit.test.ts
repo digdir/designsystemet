@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { getGroup, getItems, isConflict, isFocusable } from './focusgroup.js';
+import { getGroup, getItems, isConflict, isFocusable } from './focusgroup';
 
 describe('getItems', () => {
   beforeEach(() => {

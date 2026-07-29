@@ -86,7 +86,7 @@
 
   @media (hover: hover) and (pointer: fine) {
     /* Only use hover for non-touch devices to prevent sticky-hovering, using :where to prevent adding specificity */
-    &:where(:not(:disabled, [aria-disabled='true'], [aria-busy='true'])):hover {
+    &:where(:not(:disabled, [aria-disabled='true'], [readonly], [aria-readonly='true'], [aria-busy='true'])):hover {
       background: var(--dsc-button-background--hover);
       color: var(--dsc-button-color--hover);
     }
@@ -96,7 +96,7 @@
     cursor: progress;
   }
 
-  &:is(:disabled, [aria-disabled='true']) {
+  &:is(:disabled, [aria-disabled='true'], [readonly], [aria-readonly='true']) {
     cursor: not-allowed;
     opacity: var(--ds-opacity-disabled);
 
@@ -108,7 +108,7 @@
   }
 
   /* Using :where to prevent adding specificity */
-  &:where(:not(:disabled, [aria-disabled='true'], [aria-busy='true'])):active {
+  &:where(:not(:disabled, [aria-disabled='true'], [readonly], [aria-readonly='true'], [aria-busy='true'])):active {
     background: var(--dsc-button-background--active);
     color: var(--dsc-button-color--active);
   }

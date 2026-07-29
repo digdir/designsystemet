@@ -31,6 +31,7 @@ export type ToggleGroupItemProps = {
     | 'formNoValidate'
     | 'value'
     | 'disabled'
+    | 'readOnly'
   >;
 
 /**
@@ -52,7 +53,9 @@ export const ToggleGroupItem = forwardRef<
 
   const {
     'aria-disabled': ariaDisabled,
+    'aria-readonly': ariaReadOnly,
     disabled,
+    readOnly,
     form,
     formAction,
     formEncType,
@@ -70,11 +73,14 @@ export const ToggleGroupItem = forwardRef<
       className={cl('ds-button', className)}
       data-variant='tertiary'
       aria-disabled={ariaDisabled ?? disabled}
+      aria-readonly={ariaReadOnly ?? readOnly}
     >
       <input
         aria-disabled={ariaDisabled}
+        aria-readonly={ariaReadOnly}
         checked={active}
         disabled={disabled}
+        readOnly={readOnly}
         form={form}
         formAction={formAction}
         formEncType={formEncType}
