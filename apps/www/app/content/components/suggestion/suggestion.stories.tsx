@@ -303,9 +303,7 @@ export const Creatable = () => {
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>
-            Ingen treff, trykk enter for å legge til
-          </EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Empty data-empty='Legg til {value}' />
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option key={place}>
               {place}
@@ -334,9 +332,7 @@ export const CreatableEn = () => {
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>
-            No results found, press enter to add
-          </EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Empty data-empty='Add {value}' />
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option key={place}>
               {place}
