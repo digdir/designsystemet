@@ -293,33 +293,6 @@
 }
 
 /**
- * Chevron
- */
-.ds-suggestion > button[aria-expanded]:empty::before {
-  mask-image: var(--dsc-suggestion-toggle-icon-url);
-}
-.ds-suggestion:has(:popover-open) > button[aria-expanded]::before {
-  rotate: 180deg;
-}
-.ds-suggestion:not(:has(> button[aria-expanded])) > input:placeholder-shown {
-  padding-inline-end: 2.4em;
-  background-image:
-    linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
-    linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
-  background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
-  background-size: 0.4em 0.4em;
-  background-repeat: no-repeat;
-
-  :dir(rtl) & {
-    background-position: calc(1.2em - var(--dsc-input-stroke-width)), 0.8em;
-  }
-
-  @media (forced-colors: active) {
-    appearance: auto; /* show chevron */
-  }
-}
-
-/**
  * Input
  */
 .ds-suggestion > input {
@@ -336,7 +309,7 @@
 }
 
 /**
- * Clear button
+ * Clear and chevron
  */
 .ds-suggestion > :is(del[hidden], button[type='reset'][hidden], button[aria-expanded][hidden]),
 .ds-suggestion:has(> input:is(:read-only, :disabled, [aria-disabled='true'])) > :is(del, button[type='reset'], button[aria-expanded]) {
@@ -381,5 +354,28 @@
       background-color: canvastext;
       forced-color-adjust: none; /* To be able to draw check */
     }
+  }
+}
+.ds-suggestion > button[aria-expanded]:empty::before {
+  mask-image: var(--dsc-suggestion-toggle-icon-url);
+}
+.ds-suggestion:has(:popover-open) > button[aria-expanded]::before {
+  rotate: 180deg;
+}
+.ds-suggestion:not(:has(> button[aria-expanded])) > input:placeholder-shown {
+  padding-inline-end: 2.4em;
+  background-image:
+    linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
+    linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
+  background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
+  background-size: 0.4em 0.4em;
+  background-repeat: no-repeat;
+
+  :dir(rtl) & {
+    background-position: calc(1.2em - var(--dsc-input-stroke-width)), 0.8em;
+  }
+
+  @media (forced-colors: active) {
+    appearance: auto; /* show chevron */
   }
 }
