@@ -76,6 +76,11 @@
       "import": "./dist/esm/readonly/readonly.js",
       "require": "./dist/cjs/readonly/readonly.cjs"
     },
+    "./search": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/search/search.js",
+      "require": "./dist/cjs/search/search.cjs"
+    },
     "./ds-suggestion": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/suggestion/suggestion.js",
