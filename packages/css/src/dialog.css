@@ -39,6 +39,7 @@
   padding: var(--dsc-dialog-spacing);
   position: fixed;
   width: 100%;
+  z-index: calc(infinity); /* non-modal dialog has no z-index, but we want a good default here */
 
   &::backdrop {
     animation: ds-dialog-fade-in var(--dsc-dialog-transition-duration) ease-in-out;
