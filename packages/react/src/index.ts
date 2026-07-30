@@ -1,4 +1,6 @@
 'use client';
+import '@digdir/designsystemet-web'; // Import custom elements
+
 export type {
   /** @deprecated This export is deprecated. Use `Size` from `@digdir/designsystemet-types` */
   Size,

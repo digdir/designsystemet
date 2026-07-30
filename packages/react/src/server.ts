@@ -79,6 +79,7 @@ export type {
   FieldDescriptionProps,
 } from './components/field';
 export {
+  Field,
   FieldAffix,
   FieldAffixes,
   FieldCounter,

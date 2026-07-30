@@ -1,12 +1,9 @@
-'use client';
 import type { DSFieldElement } from '@digdir/designsystemet-web';
-import '@digdir/designsystemet-web'; // Import ds-breadcrumbs custom element
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useRef } from 'react';
+import { forwardRef, } from 'react';
 import type { DefaultProps } from '../../types';
-import { useMergeRefs } from '../../utilities/hooks';
 
 export type FieldProps = {
   /**
@@ -39,8 +36,6 @@ export const Field = forwardRef<DSFieldElement, FieldProps>(function Field(
   ref,
 ) {
   const Component = asChild ? Slot : 'ds-field';
-  const fieldRef = useRef<DSFieldElement>(null);
-  const mergedRefs = useMergeRefs([fieldRef, ref]);
 
   return (
     <Component
@@ -49,7 +44,7 @@ export const Field = forwardRef<DSFieldElement, FieldProps>(function Field(
         : { class: cl('ds-field', className) })}
       suppressHydrationWarning // Since <ds-field> adds attributes
       data-position={position}
-      ref={mergedRefs}
+      ref={ref}
       {...rest}
     />
   );
