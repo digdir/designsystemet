@@ -19,7 +19,7 @@ export const DontNegations = () => {
 export const DoNegations = () => {
   return (
     <Paragraph>
-      Can we collect information about how the website is used?
+      Can we collect information about how you use this website?
     </Paragraph>
   );
 };
@@ -68,7 +68,7 @@ export const DontNecessaryCookiesCheckbox = () => {
 
   return (
     <Fieldset>
-      <Fieldset.Legend>What information can we collect?</Fieldset.Legend>
+      <Fieldset.Legend>What information may we collect?</Fieldset.Legend>
       <Checkbox
         label='Necessary Cookies'
         {...getCheckboxProps({
@@ -85,10 +85,9 @@ export const DoNecessaryCookiesCheckbox = () => {
   return (
     <Paragraph>
       <Link href='#necessary-information' style={{ color: 'inherit' }}>
-        We also store necessary information
+        We also collect information that is required
       </Link>{' '}
-      that cannot be opted out from. This makes the website functional and
-      secure.
+      for the website to function properly and securely. This information cannot be opted out of.
     </Paragraph>
   );
 };

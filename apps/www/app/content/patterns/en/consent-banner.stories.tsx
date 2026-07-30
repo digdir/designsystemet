@@ -17,15 +17,13 @@ export const ConsentBanner = () => {
           data-size='md'
           style={{ marginBottom: 'var(--ds-size-2)' }}
         >
-          Do you allow us to collect information?
+          Can we collect information about how you use this website?
         </Heading>
         <Paragraph>
-          If you consent, we will store and anlyse information that helps us
-          improve the website. You can withdraw your consent at any time at the
-          bottom of the page.{' '}
+          If you consent, we will collect and analyse information that helps us improve the website. You can withdraw your consent at any time using the link at the bottom of the page.{' '}
           <Link href='#more-about-what-we-collect' style={{ color: 'inherit' }}>
-            More about what we store and why
-          </Link>
+            Learn more about what information we collect and why
+          </Link>.
         </Paragraph>
         <form
           method='post'
@@ -50,10 +48,9 @@ export const ConsentBanner = () => {
           }}
         >
           <Link href='#necessary-information' style={{ color: 'inherit' }}>
-            We also store necessary information
+            We also collect information that is required
           </Link>{' '}
-          that cannot be opted out from. This makes the website functional and
-          secure.
+          for the website to function properly and securely. This information cannot be opted out of.
         </Paragraph>
       </section>
       <SkipLink href='#main'>Skip to main content</SkipLink>
@@ -73,12 +70,11 @@ export const ConsentBannerCheckboxes = () => {
                 data-size='md'
                 style={{ marginBottom: 'var(--ds-size-2)' }}
               >
-                What information will you allow us to collect?
+                What information may we collect?
               </Heading>
             </Fieldset.Legend>
             <Fieldset.Description>
-              The infomation helps us improve the website and solve issues
-              quicker.
+              The information helps us improve the website and resolve issues more quickly.
             </Fieldset.Description>
             <Checkbox
               label='How the website is used'
@@ -86,7 +82,7 @@ export const ConsentBannerCheckboxes = () => {
               value='usage'
             />
             <Checkbox
-              label='Technical errors that may occour'
+              label='Technical issues that occur'
               name='consent'
               value='technical-errors'
             />
@@ -96,13 +92,13 @@ export const ConsentBannerCheckboxes = () => {
               marginTop: 'var(--ds-size-5)',
             }}
           >
-            You can change your choices at any time at the bottom of the page.{' '}
+            You can change your choices at any time using the link at the bottom of the page.{' '}
             <Link
               href='#more-about-what-we-collect'
               style={{ color: 'inherit' }}
             >
-              More about what we store and why
-            </Link>
+              Learn more about what information we collect and why
+            </Link>.
           </Paragraph>
           <div
             style={{
@@ -130,10 +126,9 @@ export const ConsentBannerCheckboxes = () => {
           }}
         >
           <Link href='#necessary-information' style={{ color: 'inherit' }}>
-            We also store necessary information
+            We also collect information that is required
           </Link>{' '}
-          that cannot be opted out from. This makes the website functional and
-          secure.
+          for the website to function properly and securely. This information cannot be opted out of.
         </Paragraph>
       </section>
       <SkipLink href='#main'>Skip to main content</SkipLink>
