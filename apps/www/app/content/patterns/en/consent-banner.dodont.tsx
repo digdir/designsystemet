@@ -87,7 +87,8 @@ export const DoNecessaryCookiesCheckbox = () => {
       <Link href='#necessary-information' style={{ color: 'inherit' }}>
         We also collect information that is required
       </Link>{' '}
-      for the website to function properly and securely. This information cannot be opted out of.
+      for the website to function properly and securely. This information cannot
+      be opted out of.
     </Paragraph>
   );
 };

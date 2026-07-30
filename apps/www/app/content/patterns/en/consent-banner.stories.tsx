@@ -20,10 +20,13 @@ export const ConsentBanner = () => {
           Can we collect information about how you use this website?
         </Heading>
         <Paragraph>
-          If you consent, we will collect and analyse information that helps us improve the website. You can withdraw your consent at any time using the link at the bottom of the page.{' '}
+          If you consent, we will collect and analyse information that helps us
+          improve the website. You can withdraw your consent at any time using
+          the link at the bottom of the page.{' '}
           <Link href='#more-about-what-we-collect' style={{ color: 'inherit' }}>
             Learn more about what information we collect and why
-          </Link>.
+          </Link>
+          .
         </Paragraph>
         <form
           method='post'
@@ -50,7 +53,8 @@ export const ConsentBanner = () => {
           <Link href='#necessary-information' style={{ color: 'inherit' }}>
             We also collect information that is required
           </Link>{' '}
-          for the website to function properly and securely. This information cannot be opted out of.
+          for the website to function properly and securely. This information
+          cannot be opted out of.
         </Paragraph>
       </section>
       <SkipLink href='#main'>Skip to main content</SkipLink>
@@ -74,7 +78,8 @@ export const ConsentBannerCheckboxes = () => {
               </Heading>
             </Fieldset.Legend>
             <Fieldset.Description>
-              The information helps us improve the website and resolve issues more quickly.
+              The information helps us improve the website and resolve issues
+              more quickly.
             </Fieldset.Description>
             <Checkbox
               label='How the website is used'
@@ -92,13 +97,15 @@ export const ConsentBannerCheckboxes = () => {
               marginTop: 'var(--ds-size-5)',
             }}
           >
-            You can change your choices at any time using the link at the bottom of the page.{' '}
+            You can change your choices at any time using the link at the bottom
+            of the page.{' '}
             <Link
               href='#more-about-what-we-collect'
               style={{ color: 'inherit' }}
             >
               Learn more about what information we collect and why
-            </Link>.
+            </Link>
+            .
           </Paragraph>
           <div
             style={{
@@ -128,7 +135,8 @@ export const ConsentBannerCheckboxes = () => {
           <Link href='#necessary-information' style={{ color: 'inherit' }}>
             We also collect information that is required
           </Link>{' '}
-          for the website to function properly and securely. This information cannot be opted out of.
+          for the website to function properly and securely. This information
+          cannot be opted out of.
         </Paragraph>
       </section>
       <SkipLink href='#main'>Skip to main content</SkipLink>
