@@ -39,7 +39,8 @@
   padding: var(--dsc-dialog-spacing);
   position: fixed;
   width: 100%;
-  z-index: 2147483647; /* Fallback for browsers not supporting infinity calc */ 
+  z-index: 2147483647; /* Fallback for browsers not supporting infinity calc */
+  /* biome-ignore lint/suspicious/noDuplicateProperties: fallback */
   z-index: calc(infinity); /* non-modal dialog has no z-index, but we want a good default here */
 
   &::backdrop {
