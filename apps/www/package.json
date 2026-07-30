@@ -21,7 +21,7 @@
     "compression": "1.8.1",
     "cross-env": "10.1.0",
     "express": "5.2.1",
-    "express-rate-limit": "8.6.0",
+    "express-rate-limit": "8.6.1",
     "gray-matter": "^4.0.3",
     "htmlfy": "1.0.2",
     "i18next": "26.3.6",
