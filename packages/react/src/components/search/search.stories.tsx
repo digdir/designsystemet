@@ -1,24 +1,26 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 
 import { Button, Divider, Field, Label, Paragraph } from '../../';
 
 import { Search } from './';
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Search',
   component: Search,
-} as Meta;
+});
 
-export const Preview: StoryFn<typeof Search> = (args) => (
-  <Search {...args}>
-    <Search.Input aria-label='Søk' />
-    <Search.Clear />
-    <Search.Button />
-  </Search>
-);
+export const Preview = meta.story({
+  render: (args) => (
+    <Search {...args}>
+      <Search.Input aria-label='Søk' />
+      <Search.Clear />
+      <Search.Button />
+    </Search>
+  ),
+});
 
-export const Controlled: StoryFn<typeof Search> = () => {
+export const Controlled = meta.story(() => {
   const [value, setValue] = useState<string>();
   return (
     <>
@@ -40,9 +42,9 @@ export const Controlled: StoryFn<typeof Search> = () => {
       <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
-};
+});
 
-export const Variants: StoryFn<typeof Search> = () => (
+export const Variants = meta.story(() => (
   <>
     <Search>
       <Search.Input aria-label='Søk' />
@@ -65,9 +67,9 @@ export const Variants: StoryFn<typeof Search> = () => (
       <Search.Button variant='secondary' />
     </Search>
   </>
-);
+));
 
-export const WithLabel: StoryFn<typeof Search> = () => (
+export const WithLabel = meta.story(() => (
   <Field>
     <Label>Søk etter katter</Label>
     <Search>
@@ -76,9 +78,9 @@ export const WithLabel: StoryFn<typeof Search> = () => (
       <Search.Button />
     </Search>
   </Field>
-);
+));
 
-export const Form: StoryFn<typeof Search> = () => {
+export const Form = meta.story(() => {
   const [value, setValue] = useState<string>();
   const [submittedValue, setSubmittedValue] = useState<string>();
 
@@ -107,4 +109,4 @@ export const Form: StoryFn<typeof Search> = () => {
       </Paragraph>
     </>
   );
-};
+});

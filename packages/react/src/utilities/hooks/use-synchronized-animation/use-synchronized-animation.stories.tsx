@@ -1,11 +1,11 @@
-import type { Meta } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../../../../apps/storybook/.storybook/preview';
 
 import { Button } from '../../../components';
 
 import { useSynchronizedAnimation } from './use-synchronized-animation';
 
-const meta: Meta = {
+const meta = preview.meta({
   title: 'Utilities/useSynchronizedAnimation',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -18,9 +18,7 @@ const meta: Meta = {
       padding: '20px',
     },
   },
-};
-
-export default meta;
+});
 
 const boxStyle = {
   width: '30px',
@@ -42,7 +40,7 @@ const SyncedBox = () => {
   );
 };
 
-export const TestSync = () => {
+export const TestSync = meta.story(() => {
   const [count, setCount] = useState(1);
 
   return (
@@ -75,4 +73,4 @@ export const TestSync = () => {
       </style>
     </>
   );
-};
+});

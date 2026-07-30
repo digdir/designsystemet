@@ -49,19 +49,18 @@
     "digdir"
   ],
   "scripts": {
-    "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme && postcss ./src/v2/*.css --dir ./dist/src/v2",
-    "build:theme": "pnpm node ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./theme --experimental-tailwind"
+    "build": "rimraf dist && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme && postcss ./src/v2/*.css --dir ./dist/src/v2"
   },
   "dependencies": {
     "@digdir/designsystemet-types": "workspace:"
   },
   "devDependencies": {
-    "autoprefixer": "10.5.2",
+    "autoprefixer": "10.5.4",
     "cssnano": "8.0.2",
-    "postcss": "8.5.16",
+    "postcss": "8.5.18",
     "postcss-cli": "11.0.1",
     "postcss-import": "16.1.1",
-    "postcss-nesting": "14.0.0",
+    "postcss-nesting": "14.0.1",
     "rimraf": "6.1.3"
   }
 }

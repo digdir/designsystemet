@@ -1,7 +1,7 @@
 import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.ts';
-import type { CreateConfigSchema } from '../schemas/v1.1/schema.ts';
+import type { CreateConfigSchemaInput } from '../schemas/v1.1/schema.ts';
 import { dsfs } from '../utils/filesystem.ts';
 
 type TokenValue = {
@@ -195,7 +195,7 @@ type GenerateConfigOptions = {
 /**
  * Generates a config file from existing design tokens
  */
-export async function generateConfigFromTokens(options: GenerateConfigOptions): Promise<CreateConfigSchema> {
+export async function generateConfigFromTokens(options: GenerateConfigOptions): Promise<CreateConfigSchemaInput> {
   const { tokensDir } = options;
 
   console.log(`\nReading tokens from ${pc.blue(tokensDir)}`);
@@ -210,7 +210,7 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
   console.log(`\nFound ${pc.green(String(themes.length))} theme(s): ${themes.map((t) => pc.cyan(t)).join(', ')}`);
 
   // Generate config for each theme
-  const config: CreateConfigSchema = {
+  const config: CreateConfigSchemaInput = {
     outDir: tokensDir,
     themes: {},
   };
