@@ -3,7 +3,7 @@ title: "Migrering til forenklet fargestruktur"
 description: Få hjelp til å migrere Designsystemet til den nye fargestrukturen
 date: 2026-06-26
 author: Designsystemet
-imageSrc: /img/blog/migrate-figma-color.png
+imageSrc: /img/blog/migrate-simpler-color/migrate-figma-color.png
 imageAlt: Illustrasjonsbilde som viser main, support og neutral til venstre, og den nye strukturen med én Color-collection og color mode til høyre.
 imageCaption: Med den nye fargestrukturen samles fargene i én Color-collection i Figma, slik at de fungerer likt som i kode.
 ---
@@ -34,7 +34,7 @@ Du kan sjekke om design tokens er oppdatert ved å se i mappen `semantic/modes`:
 - inneholder den kun `color`, bruker dere den nye strukturen
 
 <Image
-      src='/img/blog/migrate-folders.png'
+      src='/img/blog/migrate-simpler-color/migrate-folders.png'
       alt='Illustrasjon av mappestrukturen før og etter migrering. Hvor den gamle inneholder main og support color, mens den nye kun inneholder color'
       caption='Slik endrer mappestrukturen seg når design tokens migreres til den nye versjonen'
       boxShadow={true}
@@ -48,7 +48,7 @@ Du kan sjekke om design tokens er oppdatert ved å se i mappen `semantic/modes`:
 - Instanser og eksempler vil bli oppdatert til å følge
 
 <Image
-      src='/img/blog/migrationbeforeafter.png'
+      src='/img/blog/migrate-simpler-color/migrationbeforeafter.png'
       alt='Før og etter illustrasjon av hvordan Button komponenten ser ut'
       caption='Button komponenten før og etter migrering'
       boxShadow={true}
@@ -87,7 +87,7 @@ Sørg for at du kan gjenopprette filen hvis noe går galt. Hvis du foretrekker �
 - Gi snapshotet et tydelig navn, for eksempel "before migration"
 
 <ResponsiveIframe
-  src='/img/blog/migrate-steg1.mp4'
+  src='/img/blog/migrate-simpler-color/migrate-steg1.mp4'
   title='Skjermopptak som viser hvordan man legger til et snapshot i versjonshistorikken.'
   frameBorder='0'
   autoPlay={false}
@@ -106,7 +106,7 @@ Oppdater variabelstrukturen før du eksporterer tokens fra Token Studio. Da havn
 4. Trykk på "Prepare variables" hvis pluginen ber deg om å oppdatere strukturen
 
 <ResponsiveIframe
-  src='/img/blog/migrate-steg2.mp4'
+  src='/img/blog/migrate-simpler-color/migrate-steg2.mp4'
   title='Skjermopptak som viser hvordan man bruker pluginen til å endre navn'
   frameBorder='0'
   autoPlay={false}
@@ -114,7 +114,7 @@ Oppdater variabelstrukturen før du eksporterer tokens fra Token Studio. Da havn
 />
 
 <Image
-      src='/img/blog/migrate-steg2variabler.png'
+      src='/img/blog/migrate-simpler-color/migrate-steg2variabler.png'
       alt='Skjermbilde som viser hvordan variablene i Figma skal se ut etter oppdateringen'
       caption='Slik skal variablene se ut etter oppdateringen'
       boxShadow={true}
@@ -131,7 +131,7 @@ Oppdater variabelstrukturen før du eksporterer tokens fra Token Studio. Da havn
     2. Under "Groups" nederst til venstre står det `All/color/main`. Høyreklikk på `color` og velg "Ungroup".
 
     <ResponsiveIframe
-      src='/img/blog/migrate-steg2manuelt.mp4'
+      src='/img/blog/migrate-simpler-color/migrate-steg2manuelt.mp4'
       title='Skjermopptak som viser hvordan man manuelt endrer navn i variabelstrukturen'
       frameBorder='0'
       autoPlay={false}
@@ -170,7 +170,7 @@ Rydd opp etter eksporten. Token Studio sletter ikke `Support color` automatisk, 
 - I oversikten over variabel-collections skal du kun se `Color`, `Semantic`, `Theme`, `Size`, `Color scheme` og `Typography`.
 
 <ResponsiveIframe
-  src='/img/blog/migrate-steg4.mp4'
+  src='/img/blog/migrate-simpler-color/migrate-steg4.mp4'
   title='Skjermopptak som viser hvordan man sletter support color'
   frameBorder='0'
   autoPlay={false}
@@ -207,7 +207,7 @@ Pluginen fjerner gamle varianter og oppdaterer instanser i biblioteksfilen i sam
 4. Trykk på "Run migration"
 
 <ResponsiveIframe
-  src='/img/blog/migrate-steg5.mp4'
+  src='/img/blog/migrate-simpler-color/migrate-steg5.mp4'
   title='Skjermopptak som viser prosessen ved å åpne og kjøre migreringsplugin'
   frameBorder='0'
   autoPlay={false}
