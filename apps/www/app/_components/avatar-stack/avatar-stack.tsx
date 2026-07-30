@@ -30,6 +30,8 @@ const avatarMap = {
   'city of oslo': 'oslokommune.svg',
   'the design system': 'designsystemet.svg',
   'norwegian food safety authority': 'mattilsynet.svg',
+  husbanken: 'husbanken.svg',
+  'housing bank': 'husbanken.svg'
 } as const;
 
 type AvatarKey = keyof typeof avatarMap;
