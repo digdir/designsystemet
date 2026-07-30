@@ -3,7 +3,7 @@ title: "Migrating to the simplified color structure"
 description: Learn how to migrate your Designsystemet Figma library to the new color structure.
 date: 2026-06-26
 author: Designsystemet
-imageSrc: /img/blog/migrate-figma-color.png
+imageSrc: /img/blog/migrate-simpler-color/migrate-figma-color.png
 imageAlt: Illustration showing the previous structure with Main, Support, and Neutral on the left, and the new structure with a single Color collection and color mode on the right.
 imageCaption: The new color structure brings all colors together into a single Color collection in Figma, matching how colors are handled in code.
 ---
@@ -34,7 +34,7 @@ To verify that your design tokens have been updated, check the `semantic/modes` 
 - if it only contains `color`, you're using the new structure
 
 <Image
-      src='/img/blog/migrate-folders.png'
+      src='/img/blog/migrate-simpler-color/migrate-folders.png'
       alt='Illustration showing the folder structure before and after migration. The old structure contains Main color and Support color, while the new structure only contains Color.'
       caption='How the folder structure changes when your design tokens are migrated to the new version.'
       boxShadow={true}
@@ -48,7 +48,7 @@ To verify that your design tokens have been updated, check the `semantic/modes` 
 - Component instances and examples are updated accordingly
 
 <Image
-      src='/img/blog/migrationbeforeafter.png'
+      src='/img/blog/migrate-simpler-color/migrationbeforeafter.png'
       alt='Before and after illustration showing the Button component.'
       caption='The Button component before and after migration.'
       boxShadow={true}
@@ -87,7 +87,7 @@ Create a snapshot so you can restore the file if anything goes wrong. If you pre
 - Give the snapshot a descriptive name, for example **"before migration"**.
 
 <ResponsiveIframe
-  src='/img/blog/migrate-steg1.mp4'
+  src='/img/blog/migrate-simpler-color/migrate-steg1.mp4'
   title='Screen recording showing how to create a snapshot in Figma Version history.'
   frameBorder='0'
   autoPlay={false}
@@ -105,7 +105,7 @@ Update the variable structure before exporting tokens from Token Studio. This en
 4. If prompted, click **Prepare variables**.
 
 <ResponsiveIframe
-  src='/img/blog/migrate-steg2.mp4'
+  src='/img/blog/migrate-simpler-color/migrate-steg2.mp4'
   title='Screen recording showing how to update the variable structure using the plugin.'
   frameBorder='0'
   autoPlay={false}
@@ -113,7 +113,7 @@ Update the variable structure before exporting tokens from Token Studio. This en
 />
 
 <Image
-      src='/img/blog/migrate-steg2variabler.png'
+      src='/img/blog/migrate-simpler-color/migrate-steg2variabler.png'
       alt='Screenshot showing how the variables should look after the update.'
       caption='The variable structure after the update.'
       boxShadow={true}
@@ -130,7 +130,7 @@ Update the variable structure before exporting tokens from Token Studio. This en
     2. Under **Groups** in the lower-left corner, locate `All/color/main`. Right-click `color` and select **Ungroup**.
 
     <ResponsiveIframe
-      src='/img/blog/migrate-steg2manuelt.mp4'
+      src='/img/blog/migrate-simpler-color/migrate-steg2manuelt.mp4'
       title='Screen recording showing how to update the variable structure manually.'
       frameBorder='0'
       autoPlay={false}
@@ -168,7 +168,7 @@ Clean up after the export. Token Studio doesn't remove the `Support color` colle
 - The only variable collections are `Color`, `Semantic`, `Theme`, `Size`, `Color scheme`, and `Typography`.
 
 <ResponsiveIframe
-  src='/img/blog/migrate-steg4.mp4'
+  src='/img/blog/migrate-simpler-color/migrate-steg4.mp4'
   title='Screen recording showing how to delete the Support color collection.'
   frameBorder='0'
   autoPlay={false}
@@ -205,7 +205,7 @@ The plugin removes the old variants and updates all instances in the library fil
 4. Click **Run migration**.
 
 <ResponsiveIframe
-  src='/img/blog/migrate-steg5.mp4'
+  src='/img/blog/migrate-simpler-color/migrate-steg5.mp4'
   title='Screen recording showing how to run the migration plugin.'
   frameBorder='0'
   autoPlay={false}

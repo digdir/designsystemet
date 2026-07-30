@@ -280,7 +280,7 @@ export const AsGridImage = () => {
     >
       <Card.Block style={{ display: 'flex', justifyContent: 'center' }}>
         <img
-          src='/img/blog/miro.png'
+          src='/img/blog/why-we-need-a-common-design-system/miro.png'
           alt='Skjermbilde av et mirobrett med 200 deltakere og mange lapper'
         />
       </Card.Block>
@@ -313,7 +313,7 @@ export const AsGridImageEn = () => {
     >
       <Card.Block style={{ display: 'flex', justifyContent: 'center' }}>
         <img
-          src='/img/blog/miro.png'
+          src='/img/blog/why-we-need-a-common-design-system/miro.png'
           alt='Screenshot of a Miro board with 200 participants and numerous notes'
         />
       </Card.Block>
