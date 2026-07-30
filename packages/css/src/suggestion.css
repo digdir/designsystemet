@@ -17,6 +17,7 @@
   --dsc-suggestion-clear-background--hover: var(--ds-color-surface-hover);
   --dsc-suggestion-clear-background--active: var(--ds-color-surface-active);
   --dsc-suggestion-toggle-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
+  --dsc-suggestion-create-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12.75 5.5a.75.75 0 0 0-1.5 0v5.75H5.5a.75.75 0 0 0 0 1.5h5.75v5.75a.75.75 0 0 0 1.5 0v-5.75h5.75a.75.75 0 0 0 0-1.5h-5.75z'/%3E%3C/svg%3E");
 
   --dsc-suggestion-list-background: var(--ds-color-neutral-surface-default);
   --dsc-suggestion-list-border-radius: var(--ds-border-radius-md);
@@ -49,6 +50,13 @@
     2
   ); /* Distance between edge of input and chip */
 
+  /* Only set default texts if Norwegian */
+  &:is([lang='nb'], [lang='nn'], [lang='no']),
+  :is([lang='nb'], [lang='nn'], [lang='no']) & {
+    --dsc-suggestion-create-text: 'Legg til "{value}"';
+    --dsc-suggestion-empty-text: 'Tomt';
+  }
+
   box-sizing: border-box;
   flex-wrap: wrap;
   gap: var(--ds-size-1);
@@ -73,251 +81,305 @@
     gap: var(--dsc-suggestion-chip-gap);
     max-width: 100%;
   }
+}
 
-  /* NOTE: This styling should be reflected in chip.css */
-  & > data {
-    background: var(--dsc-suggestion-chip-background);
-    border-color: var(--dsc-suggestion-chip-border-color);
-    border-radius: var(--dsc-suggestion-chip-border-radius);
-    border-style: var(--dsc-suggestion-chip-border-style);
-    border-width: var(--dsc-suggestion-chip-border-width);
-    box-sizing: border-box;
-    color: var(--dsc-suggestion-chip-color);
-    cursor: pointer;
-    display: block;
-    font-size: var(--dsc-suggestion-chip-font-size);
-    height: var(--dsc-suggestion-chip-height);
-    line-height: var(--ds-line-height-sm);
-    min-width: 0; /* Allow text-overflow: ellipsis to work when placed inside display: flex */
-    overflow: hidden;
-    padding: var(--dsc-suggestion-chip-padding);
-    padding-block: calc((var(--dsc-suggestion-chip-height) - var(--dsc-suggestion-chip-border-width) - 1lh) / 2);
-    padding-inline-end: calc(var(--dsc-suggestion-chip-spacing) * 2 + var(--dsc-suggestion-chip-icon-size));
-    position: relative;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+/**
+ * Selected items
+ * NOTE: This styling should be reflected in chip.css
+ */
+.ds-suggestion > data {
+  background: var(--dsc-suggestion-chip-background);
+  border-color: var(--dsc-suggestion-chip-border-color);
+  border-radius: var(--dsc-suggestion-chip-border-radius);
+  border-style: var(--dsc-suggestion-chip-border-style);
+  border-width: var(--dsc-suggestion-chip-border-width);
+  box-sizing: border-box;
+  color: var(--dsc-suggestion-chip-color);
+  cursor: pointer;
+  display: block;
+  font-size: var(--dsc-suggestion-chip-font-size);
+  height: var(--dsc-suggestion-chip-height);
+  line-height: var(--ds-line-height-sm);
+  min-width: 0; /* Allow text-overflow: ellipsis to work when placed inside display: flex */
+  overflow: hidden;
+  padding: var(--dsc-suggestion-chip-padding);
+  padding-block: calc((var(--dsc-suggestion-chip-height) - var(--dsc-suggestion-chip-border-width) - 1lh) / 2);
+  padding-inline-end: calc(var(--dsc-suggestion-chip-spacing) * 2 + var(--dsc-suggestion-chip-icon-size));
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
-    &::after {
-      content: '';
-      background: currentcolor;
-      height: var(--dsc-suggestion-chip-icon-size);
-      inset-block-start: 50%;
-      inset-inline-end: var(--dsc-suggestion-chip-spacing);
-      margin-left: var(--dsc-suggestion-chip-gap);
-      mask: center / contain no-repeat var(--dsc-suggestion-chip-icon-url);
-      padding-inline: 0; /*override u-combobox default*/
-      position: absolute;
-      translate: 0 -50%;
-      width: var(--dsc-suggestion-chip-icon-size);
-      @media (forced-colors: active) {
-        background-color: CanvasText;
-        forced-color-adjust: none; /* To be able to draw check */
-      }
+  &::after {
+    content: '';
+    background: currentcolor;
+    height: var(--dsc-suggestion-chip-icon-size);
+    inset-block-start: 50%;
+    inset-inline-end: var(--dsc-suggestion-chip-spacing);
+    margin-left: var(--dsc-suggestion-chip-gap);
+    mask: center / contain no-repeat var(--dsc-suggestion-chip-icon-url);
+    padding-inline: 0; /*override u-combobox default*/
+    position: absolute;
+    translate: 0 -50%;
+    width: var(--dsc-suggestion-chip-icon-size);
+    @media (forced-colors: active) {
+      background-color: CanvasText;
+      forced-color-adjust: none; /* To be able to draw check */
     }
+  }
 
-    @composes ds-print-preserve from './base.css';
-    &:focus {
-      @composes ds-focus--visible from './base.css'; /* Using :focus as focus can also be set by mouse clicking on <data> */
-    }
-    &:hover {
-      background: var(--dsc-suggestion-chip-background--hover);
-    }
+  @composes ds-print-preserve from './base.css';
+  &:focus {
+    @composes ds-focus--visible from './base.css'; /* Using :focus as focus can also be set by mouse clicking on <data> */
+  }
+  &:hover {
+    background: var(--dsc-suggestion-chip-background--hover);
+  }
+}
+
+/**
+ * Datalist
+ */
+.ds-suggestion > u-datalist {
+  @composes ds-floating from './base.css';
+  --_ds-floating: var(--dsc-suggestion-list-placement);
+  --_ds-floating-overscroll: fit;
+  --_ds-floating-arrow-visibility: hidden;
+  --_ds-floating-arrow-size: var(--ds-size-2);
+
+  background: var(--dsc-suggestion-list-background);
+  border-color: var(--dsc-suggestion-border-color);
+  border-radius: var(--dsc-suggestion-list-border-radius);
+  border-style: var(--dsc-suggestion-border-style);
+  border-width: var(--dsc-suggestion-border-width);
+  box-shadow: var(--dsc-suggestion-list-box-shadow);
+  box-sizing: border-box;
+  color: var(--dsc-suggestion-list-color);
+  display: none; /* Hide u-datalist custom element when not initialized yet */
+  inset: 0 auto auto 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--dsc-suggestion-list-padding);
+
+  /* If not using popover for the list */
+  &:not([popover]) {
+    margin-top: var(--dsc-suggestion-list-offset);
+    z-index: 1600;
+    inset: 100% 0 auto 0;
+  }
+
+  &:not([hidden]):not(:empty) {
+    display: grid;
+    align-content: start;
+    gap: var(--dsc-suggestion-list-gap);
   }
 
   /* Hide list before it has been placed by floating-ui. data-is-floating is used as a whitelist and is added by suggestion.ts (web) */
-  & > u-datalist[data-is-floating]:not([style*='translate']) {
+  &[data-is-floating]:not([style*='translate']) {
     opacity: 0;
   }
+}
 
-  & > u-datalist {
-    @composes ds-floating from './base.css';
-    --_ds-floating: var(--dsc-suggestion-list-placement);
-    --_ds-floating-overscroll: fit;
-    --_ds-floating-arrow-visibility: hidden;
-    --_ds-floating-arrow-size: var(--ds-size-2);
+/**
+ * Options
+ */
+.ds-suggestion > u-datalist > u-option {
+  padding: var(--dsc-suggestion-option-padding);
+  border: none;
+  outline: none;
+  border-radius: var(--dsc-suggestion-option-border-radius);
+  cursor: pointer;
+  position: relative;
+  outline-offset: calc(var(--dsc-suggestion-option-activedecendant-outline-width) * -1);
+  line-height: var(--ds-line-height-sm);
 
-    background: var(--dsc-suggestion-list-background);
-    border-color: var(--dsc-suggestion-border-color);
-    border-radius: var(--dsc-suggestion-list-border-radius);
-    border-style: var(--dsc-suggestion-border-style);
-    border-width: var(--dsc-suggestion-border-width);
-    box-shadow: var(--dsc-suggestion-list-box-shadow);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--dsc-suggestion-option-background--hover);
+    }
+  }
+
+  &[selected] {
+    padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));
+    background-color: var(--dsc-suggestion-option-background--selected);
+    &::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: var(--dsc-suggestion-option-padding);
+      mask: var(--dsc-suggestion-option-checkmark-url) center / contain no-repeat;
+      background: currentcolor;
+      width: var(--dsc-suggestion-option-checkmark-size);
+      height: var(--dsc-suggestion-option-checkmark-size);
+      @media (forced-colors: active) {
+        background-color: LinkText;
+        forced-color-adjust: none; /* To be able to draw check */
+      }
+    }
+  }
+
+  /* Use same effect as hover instead of regular focus ring, because we want to render the focus ring inside the u-datalist */
+  &[data-activedescendant] {
+    @composes ds-focus--visible--middle from './base.css';
+  }
+
+  &[data-empty]:not([value]) {
+    display: none; /* Hide empty option before typing has started */
+  }
+}
+
+/**
+ * Multiple
+ */
+.ds-suggestion[data-multiple] > u-datalist > u-option {
+  padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));
+  /*mock checkbox styles copied from input.css*/
+  &::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: var(--dsc-suggestion-option-padding);
+    mask: none;
+    width: var(--dsc-suggestion-option-checkmark-size);
+    height: var(--dsc-suggestion-option-checkmark-size);
+    border-radius: var(--ds-border-radius-sm);
+    outline: var(--dsc-suggestion-option-checkmark-border) solid var(--dsc-suggestion-option-checkmark-border-color);
+    outline-offset: calc(-1 * var(--dsc-suggestion-option-checkmark-border));
+    padding: 0.188rem;
     box-sizing: border-box;
-    color: var(--dsc-suggestion-list-color);
-    display: none; /* Hide u-datalist custom element when not initialized yet */
-    inset: 0 auto auto 0;
-    overflow: auto;
-    overscroll-behavior: contain;
-    padding: var(--dsc-suggestion-list-padding);
+    translate: 0 calc(0.5lh - 50%);
+  }
+  &[selected]::before {
+    background-color: var(--ds-color-base-default);
+    color: var(--ds-color-base-contrast-default);
+    outline: none;
+    --_stroke-width: 0.05em;
+    @composes ds-checkbox--checked from './base.css';
+  }
+}
 
-    /* If not using popover for the list */
-    &:not([popover]) {
-      margin-top: var(--dsc-suggestion-list-offset);
-      z-index: 1600;
-      inset: 100% 0 auto 0;
-    }
+/**
+ * Creatable
+ */
+.ds-suggestion:not([data-creatable]) > u-datalist:has(u-option[aria-hidden='false']:not([data-empty])) > u-option[data-empty] {
+  display: none; /* Hide empty option when there are other visible options */
+}
+.ds-suggestion:not([data-creatable]) > u-datalist > u-option[data-empty] {
+  padding-inline-start: var(--dsc-suggestion-option-padding);
+  background: none;
+  cursor: default;
 
-    &:not([hidden]):not(:empty) {
-      display: grid;
-      align-content: start;
-      gap: var(--dsc-suggestion-list-gap);
-    }
+  &[data-empty]:empty::after {
+    content: var(--dsc-suggestion-empty-text);
+  }
+  &::before {
+    display: none;
+  }
+}
 
-    & > u-option {
-      padding: var(--dsc-suggestion-option-padding);
-      border: none;
-      outline: none;
-      border-radius: var(--dsc-suggestion-option-border-radius);
-      cursor: pointer;
-      position: relative;
-      outline-offset: calc(var(--dsc-suggestion-option-activedecendant-outline-width) * -1);
-      line-height: var(--ds-line-height-sm);
+.ds-suggestion[data-creatable] > u-datalist > u-option[data-empty] {
+  --_ds-data-empty: var(--dsc-suggestion-create-text); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
 
-      @media (hover: hover) and (pointer: fine) {
-        /* Prevent hover on "Tomt/No result found" feedback thats shown in the option list when no options are matched */
-        &:not([data-empty]):where(:hover) {
-          background: var(--dsc-suggestion-option-background--hover);
-        }
-      }
-
-      &[selected] {
-        padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));
-        background-color: var(--dsc-suggestion-option-background--selected);
-        &::before {
-          content: '';
-          position: absolute;
-          inset-inline-start: var(--dsc-suggestion-option-padding);
-          mask: var(--dsc-suggestion-option-checkmark-url) center / contain no-repeat;
-          background: currentcolor;
-          width: var(--dsc-suggestion-option-checkmark-size);
-          height: var(--dsc-suggestion-option-checkmark-size);
-          @media (forced-colors: active) {
-            background-color: LinkText;
-            forced-color-adjust: none; /* To be able to draw check */
-          }
-        }
-      }
-
-      /* Use same effect as hover instead of regular focus ring, because we want to render the focus ring inside the u-datalist */
-      &[data-activedescendant] {
-        @composes ds-focus--visible--middle from './base.css';
-      }
-    }
-    & > u-option[data-creatable]::after {
-      content: 'Legg til ' var(--dsc-suggestion-creatable);
-    }
-
-    [data-multiple] & {
-      & > u-option:not([data-empty]) {
-        padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));
-        /*mock checkbox styles copied from input.css*/
-        &::before {
-          content: '';
-          position: absolute;
-          inset-inline-start: var(--dsc-suggestion-option-padding);
-          mask: none;
-          width: var(--dsc-suggestion-option-checkmark-size);
-          height: var(--dsc-suggestion-option-checkmark-size);
-          border-radius: var(--ds-border-radius-sm);
-          outline: var(--dsc-suggestion-option-checkmark-border) solid var(--dsc-suggestion-option-checkmark-border-color);
-          outline-offset: calc(-1 * var(--dsc-suggestion-option-checkmark-border));
-          padding: 0.188rem;
-          box-sizing: border-box;
-          translate: 0 calc(0.5lh - 50%);
-        }
-        &[selected]::before {
-          background-color: var(--ds-color-base-default);
-          color: var(--ds-color-base-contrast-default);
-          outline: none;
-          --_stroke-width: 0.05em;
-          @composes ds-checkbox--checked from './base.css';
-        }
-      }
-    }
+  &:empty::after {
+    content: attr(data-create);
+  }
+  &::before {
+    display: block;
+    background: currentcolor;
+    color: inherit;
+    mask: var(--dsc-suggestion-create-icon-url) center / contain no-repeat;
   }
 
-  &:not(:has(> button[aria-expanded])) > input:placeholder-shown {
-    padding-inline-end: 2.4em;
-    background-image:
-      linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
-      linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
-    background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
-    background-size: 0.4em 0.4em;
-    background-repeat: no-repeat;
+  &[aria-selected='true']::before {
+    mask: var(--dsc-suggestion-option-checkmark-url) center / contain no-repeat;
+  }
+}
 
-    :dir(rtl) & {
-      background-position: calc(1.2em - var(--dsc-input-stroke-width)), 0.8em;
-    }
+/**
+ * Chevron
+ */
+.ds-suggestion > button[aria-expanded]:empty::before {
+  mask-image: var(--dsc-suggestion-toggle-icon-url);
+}
+.ds-suggestion:has(:popover-open) > button[aria-expanded]::before {
+  rotate: 180deg;
+}
+.ds-suggestion:not(:has(> button[aria-expanded])) > input:placeholder-shown {
+  padding-inline-end: 2.4em;
+  background-image:
+    linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
+    linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
+  background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
+  background-size: 0.4em 0.4em;
+  background-repeat: no-repeat;
 
-    @media (forced-colors: active) {
-      appearance: auto; /* show chevron */
-    }
+  :dir(rtl) & {
+    background-position: calc(1.2em - var(--dsc-input-stroke-width)), 0.8em;
   }
 
+  @media (forced-colors: active) {
+    appearance: auto; /* show chevron */
+  }
+}
+
+/**
+ * Input
+ */
+.ds-suggestion > input {
   /* Hide focus ring when u-combobox temporarily moves focus to input for screen reader purposes */
-  & > input[inputmode='none'] {
+  &[inputmode='none'] {
     box-shadow: none;
     outline: none;
   }
 
-  /**
-   * Clear button
-   */
-  & > :is(del[hidden], button[type='reset'][hidden], button[aria-expanded][hidden]),
-  &:has(> input:is(:read-only, :disabled, [aria-disabled='true'])) > :is(del, button[type='reset'], button[aria-expanded]) {
-    display: none;
-  }
-  &:has(> :is(del, button[type='reset'], button[aria-expanded])) input {
-    padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
-  }
-
   /* Hide x native icon of input type="search" since we have a custom x-component */
-  & > input[type='search']::-webkit-search-cancel-button {
+  &[type='search']::-webkit-search-cancel-button {
     display: none;
   }
-  & > :is(del, button[type='reset'], button[aria-expanded]) {
-    --dsc-button-size: var(--dsc-suggestion-clear-size);
+}
 
-    align-self: center;
-    border-radius: var(--dsc-suggestion-clear-border-radius);
-    box-sizing: border-box;
-    cursor: pointer;
-    display: grid;
-    height: var(--dsc-suggestion-clear-size);
-    margin-inline-start: calc((var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap)) * -1);
-    order: 999; /* Place last */
-    outline: none; /* remove ua outline when button */
-    padding: var(--dsc-suggestion-clear-padding);
-    position: relative;
-    scale: 0.75;
-    width: var(--dsc-suggestion-clear-size);
-    z-index: 2;
+/**
+ * Clear button
+ */
+.ds-suggestion > :is(del[hidden], button[type='reset'][hidden], button[aria-expanded][hidden]),
+.ds-suggestion:has(> input:is(:read-only, :disabled, [aria-disabled='true'])) > :is(del, button[type='reset'], button[aria-expanded]) {
+  display: none;
+}
+&:has(> :is(del, button[type='reset'], button[aria-expanded])) input {
+  padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
+}
+.ds-suggestion > :is(del, button[type='reset'], button[aria-expanded]) {
+  --dsc-button-size: var(--dsc-suggestion-clear-size);
 
-    @composes ds-focus from './base.css';
+  align-self: center;
+  border-radius: var(--dsc-suggestion-clear-border-radius);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: grid;
+  height: var(--dsc-suggestion-clear-size);
+  margin-inline-start: calc((var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap)) * -1);
+  order: 999; /* Place last */
+  outline: none; /* remove ua outline when button */
+  padding: var(--dsc-suggestion-clear-padding);
+  position: relative;
+  scale: 0.75;
+  width: var(--dsc-suggestion-clear-size);
+  z-index: 2;
 
-    &:hover {
-      background: var(--dsc-suggestion-clear-background--hover);
-    }
+  @composes ds-focus from './base.css';
 
-    &:active {
-      background: var(--dsc-suggestion-clear-background--active);
-    }
-
-    &:empty::before {
-      content: '';
-      mask: var(--dsc-suggestion-clear-icon-url) center / contain no-repeat;
-      background: currentcolor;
-      @media (forced-colors: active) {
-        background-color: canvastext;
-        forced-color-adjust: none; /* To be able to draw check */
-      }
-    }
+  &:hover {
+    background: var(--dsc-suggestion-clear-background--hover);
   }
 
-  & > button[aria-expanded]:empty::before {
-    mask-image: var(--dsc-suggestion-toggle-icon-url);
+  &:active {
+    background: var(--dsc-suggestion-clear-background--active);
   }
-  &:has(:popover-open) > button[aria-expanded]::before {
-    rotate: 180deg;
+
+  &:empty::before {
+    content: '';
+    mask: var(--dsc-suggestion-clear-icon-url) center / contain no-repeat;
+    background: currentcolor;
+    @media (forced-colors: active) {
+      background-color: canvastext;
+      forced-color-adjust: none; /* To be able to draw check */
+    }
   }
 }
