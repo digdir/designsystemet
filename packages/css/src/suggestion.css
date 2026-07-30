@@ -342,7 +342,7 @@
 .ds-suggestion:has(> input:is(:read-only, :disabled, [aria-disabled='true'])) > :is(del, button[type='reset'], button[aria-expanded]) {
   display: none;
 }
-&:has(> :is(del, button[type='reset'], button[aria-expanded])) input {
+.ds-suggestion:has(> :is(del, button[type='reset'], button[aria-expanded])) input {
   padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
 }
 .ds-suggestion > :is(del, button[type='reset'], button[aria-expanded]) {

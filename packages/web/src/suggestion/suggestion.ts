@@ -64,7 +64,7 @@ const handleEmpty = ({ currentTarget: self }: Event) => {
 
   for (const opt of options) {
     if (!empty && opt.hasAttribute(ATTR_EMPTY)) empty = opt;
-    else if (!exists && opt.textContent?.toLowerCase() === query) exists = true; // Prevent creating an option that already exists
+    else if (!exists && opt.label?.toLowerCase() === query) exists = true; // Prevent creating an option that already exists
     if (exists && empty) break; // Speed up if both conditions are met
   }
   if (!empty) return;
@@ -76,8 +76,8 @@ const handleEmpty = ({ currentTarget: self }: Event) => {
   if (!creatable || empty.textContent) return;
   const text = attrOrCSS(empty, ATTR_EMPTY);
   if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, empty);
+  else attr(empty, ATTR_EMPTY, text); // Speed up by caching attribute value
   attr(empty, ATTR_CREATE, text?.replace('{value}', value));
-  attr(empty, ATTR_EMPTY, text); // Speed up by caching attribute value
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:
