@@ -1,8 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
+import { userEvent } from 'storybook/test';
 import { ToggleGroup } from './';
-
-const keydown = (el: Element, key: string) =>
-  el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
 describe('ToggleGroup', () => {
   test('has generated name for ToggleGroupItem children', () => {
@@ -43,13 +41,13 @@ describe('ToggleGroup', () => {
     await act(async () => item1.focus());
     expect(item1).toHaveFocus();
 
-    await act(async () => keydown(item1, 'ArrowRight'));
+    await act(async () => userEvent.keyboard('{ArrowRight}'));
     expect(item2).toHaveFocus();
 
-    await act(async () => keydown(item2, 'ArrowRight'));
+    await act(async () => userEvent.keyboard('{ArrowRight}'));
     expect(item3).toHaveFocus();
 
-    await act(async () => keydown(item3, 'ArrowLeft'));
+    await act(async () => userEvent.keyboard('{ArrowLeft}'));
     expect(item2).toHaveFocus();
   });
 
@@ -73,10 +71,10 @@ describe('ToggleGroup', () => {
     await act(async () => item1.focus());
     expect(item1).toHaveFocus();
 
-    await act(async () => keydown(item1, 'ArrowRight'));
+    await act(async () => userEvent.keyboard('{ArrowRight}'));
     expect(item4).toHaveFocus();
 
-    await act(async () => keydown(item4, 'ArrowLeft'));
+    await act(async () => userEvent.keyboard('{ArrowLeft}'));
     expect(item1).toHaveFocus();
   });
 
