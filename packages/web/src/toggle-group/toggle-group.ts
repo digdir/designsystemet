@@ -36,6 +36,7 @@ const handleRadioClick = (e: Event & Partial<PointerEvent>) => {
 const handleRadioEnterKey = (e: Event & Partial<KeyboardEvent>) =>
   e.key === 'Enter' && getRadioInFocusGroup(e)?.click(); // Allow Enter to activate the radio input
 
+// This function does not handle nested focusgroups, but toggle-groups should not be nested so this is not a problem
 const getRadioInFocusGroup = (e: Event) => {
   const el = getComposedTarget(e) as HTMLInputElement | null;
   if (el?.nodeName !== 'INPUT' || el.type !== 'radio' || !el.name) return;

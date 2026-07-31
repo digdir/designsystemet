@@ -28,6 +28,9 @@ if (isBrowser() && !isSupported() && !isPolyfilled())
   polyfillPopover({ layerName: 'ds.base' }); // Load popover polyfill in the ds.base CSS layer to keep cascade order consistent with Designsystemet layers.
 
 declare global {
+  interface Window {
+    _dsPopoverShadows: boolean;
+  }
   interface GlobalEventHandlersEventMap {
     'ds-toggle-source': CustomEvent<Element>;
   }
@@ -116,20 +119,21 @@ const handleScrollbar = ({ type }: Event) => {
     for (const [popover] of POPOVERS) popover.showPopover(); // Immediately show again to prevent flicker
 };
 
-onHotReload('popover', () => {
+// Native Toggle event does not bubble from shadow DOM, so we need to listen for it on every shadow root
+if (isBrowser() && !window._dsPopoverShadows) {
+  window._dsPopoverShadows = true;
   const attachShadow = HTMLElement.prototype.attachShadow;
   HTMLElement.prototype.attachShadow = function (init) {
     const root = attachShadow.call(this, init);
-    root.addEventListener('toggle', handleToggle, QUICK_EVENT); // Native Toggle event does not bubble from shadow DOM, so we need to listen for it on every shadow root
+    on(root, 'toggle', handleToggle, QUICK_EVENT);
     return root;
   };
+}
 
-  return [
-    on(document, 'pointerdown pointerup scroll', handleScrollbar, true),
-    on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
-    () => (HTMLElement.prototype.attachShadow = attachShadow), // Restore original attachShadow on hot reload
-  ];
-});
+onHotReload('popover', () => [
+  on(document, 'pointerdown pointerup scroll', handleScrollbar, true),
+  on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
+]);
 
 const arrowPseudo = () => ({
   name: 'arrowPseudo',
