@@ -8,13 +8,11 @@ import {
   QUICK_EVENT,
 } from '../utils/utils';
 
-// biome-ignore format:next-line
-const IS_CONFLICT = new Set(['AUDIO', 'VIDEO', 'TEXTAREA', 'SELECT', 'date', 'datetime-local', 'email', 'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'time', 'url', 'week' ]);
 const ATTR_GROUP = 'focusgroup';
+const PROP_GROUP = 'focusGroup';
 const ATTR_START = `${ATTR_GROUP}start`;
 const GROUPS = new WeakMap<Element, ReturnType<typeof parseGroup>>();
 const ROOTS = new Map<Node, () => void>(); // ShadowRoots we listen for focus events on, since focus only triggers once on ShadowDOM due to event retargeting
-let IS_TAB = false; // Used to check if focus event is a result of tabbing
 const ROLES = {
   listbox: { block: true, wrap: false, items: 'option' },
   menu: { block: true, wrap: true, items: 'menuitem' },
@@ -23,11 +21,31 @@ const ROLES = {
   tablist: { block: false, wrap: true, items: 'tab' },
   toolbar: { block: false, wrap: false, items: null },
 };
+let IS_TAB = false; // Used to check if focus event is a result of tabbing
+const IS_CONFLICT = new Set([
+  'AUDIO',
+  'VIDEO',
+  'TEXTAREA',
+  'SELECT',
+  'date',
+  'datetime-local',
+  'email',
+  'month',
+  'number',
+  'password',
+  'range',
+  'search',
+  'tel',
+  'text',
+  'time',
+  'url',
+  'week',
+]);
 
+// Chrome has implemented camel case "focusGroup", but several polyfills checks both camel case and kebab case, so we support both for now
 const IS_SUPPORTED =
   isBrowser() &&
-  (ATTR_GROUP in HTMLElement.prototype ||
-    ATTR_GROUP.replace('g', 'G') in HTMLElement.prototype); // Chrome has implemented camel case "focusGroup"
+  (ATTR_GROUP in HTMLElement.prototype || PROP_GROUP in HTMLElement.prototype);
 
 const setIsTab = (state: boolean) => (IS_TAB = state);
 const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
@@ -126,12 +144,17 @@ const parseGroup = (el: Element, key: string) => {
   const base = ROLES[role];
   const x = opts.has('inline');
   const y = opts.has('block');
-  const wrap = opts.has('wrap') || (opts.has('nowrap') ? false : base?.wrap);
-  const block = x && y ? null : y || (x ? false : base?.block);
-  const memory = !opts.has('nomemory');
-  const focus = null as Element | null;
 
-  return { key, el, block, focus, memory, role, wrap, items: base?.items };
+  return {
+    key,
+    el,
+    role,
+    block: x && y ? null : y || (x ? false : base?.block),
+    focus: null as Element | null,
+    items: base?.items,
+    memory: !opts.has('nomemory'),
+    wrap: opts.has('wrap') || (opts.has('nowrap') ? false : base?.wrap),
+  };
 };
 
 export const getItems = (

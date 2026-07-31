@@ -107,12 +107,12 @@ function handleToggle(
   POPOVERS.set(el, () => POPOVERS.delete(el) && unfloat());
 }
 
-// Prevent closing when mouse interacts with scrollbar
+// Prevent closing when pointer interacts with scrollbar
 let IS_SCROLL: boolean | undefined;
 const handleScrollbar = ({ type }: Event) => {
-  if (type === 'mousedown') IS_SCROLL = false;
+  if (type === 'pointerdown') IS_SCROLL = false;
   if (type === 'scroll' && IS_SCROLL === false) IS_SCROLL = true;
-  if (type === 'mouseup' && IS_SCROLL)
+  if (type === 'pointerup' && IS_SCROLL)
     for (const [popover] of POPOVERS) popover.showPopover(); // Immediately show again to prevent flicker
 };
 
@@ -125,7 +125,7 @@ onHotReload('popover', () => {
   };
 
   return [
-    on(document, 'mousedown scroll mouseup', handleScrollbar, true),
+    on(document, 'pointerdown pointerup scroll', handleScrollbar, true),
     on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
     () => (HTMLElement.prototype.attachShadow = attachShadow), // Restore original attachShadow on hot reload
   ];

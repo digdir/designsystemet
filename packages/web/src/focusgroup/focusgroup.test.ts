@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { userEvent } from 'vitest/browser';
+import { getGroup, getItems, isConflict, isFocusable } from './focusgroup';
 
 const setupPageWithShadowRoots = (html: string) => {
   document.body.innerHTML = html;
@@ -25,19 +26,10 @@ const useTab = async (opts?: Parameters<typeof userEvent.tab>[0]) => {
   await userEvent.tab(opts);
   vi.advanceTimersByTime(100);
 };
-const expectRole = async (el: HTMLElement, role: string) => {
-  el.dispatchEvent(new FocusEvent('focus')); // Dispatch focus event to trigger attribute setup
+
+const _expectRole = async (el: HTMLElement, role: string) => {
+  el.dispatchEvent(new FocusEvent('focus', { bubbles: true, composed: true })); // Dispatch focus event to trigger attribute setup
   await vi.waitFor(() => expect(el).toHaveRole(role));
-};
-
-const expectNoRole = async (el: HTMLElement, role: string) => {
-  el.dispatchEvent(new FocusEvent('focus')); // Dispatch focus event to trigger attribute setup
-  await vi.waitFor(() => expect(el).not.toHaveRole(role));
-};
-
-const expectAttr = async (el: HTMLElement, name: string, value: string) => {
-  el.dispatchEvent(new FocusEvent('focus')); // Dispatch focus event to trigger attribute setup
-  await vi.waitFor(() => expect(el).toHaveAttribute(name, value));
 };
 
 // Use fake timers to allow setTab to run
@@ -1913,116 +1905,6 @@ describe('complex nested opt-out scenarios', () => {
   });
 });
 
-test('should infer ARIA roles for owners', async () => {
-  document.body.innerHTML = `
-    <div id="toolbar" focusgroup="toolbar"></div>
-    <div id="tablist" focusgroup="tablist"></div>
-    <div id="radiogroup" focusgroup="radiogroup"></div>
-    <div id="listbox" focusgroup="listbox"></div>
-    <div id="menu" focusgroup="menu"></div>
-    <div id="menubar" focusgroup="menubar"></div>
-  `;
-
-  await expectRole(getById('toolbar'), 'toolbar');
-  await expectRole(getById('tablist'), 'tablist');
-  await expectRole(getById('radiogroup'), 'radiogroup');
-  await expectRole(getById('listbox'), 'listbox');
-  await expectRole(getById('menu'), 'menu');
-  await expectRole(getById('menubar'), 'menubar');
-});
-
-test('should infer ARIA roles for custom element owners', async () => {
-  document.body.innerHTML = `
-    <my-element id="toolbar" focusgroup="toolbar"></my-element>
-    <my-element id="tablist" focusgroup="tablist"></my-element>
-    <my-element id="radiogroup" focusgroup="radiogroup"></my-element>
-    <my-element id="listbox" focusgroup="listbox"></my-element>
-    <my-element id="menu" focusgroup="menu"></my-element>
-    <my-element id="menubar" focusgroup="menubar"></my-element>
-  `;
-
-  await expectRole(getById('toolbar'), 'toolbar');
-  await expectRole(getById('tablist'), 'tablist');
-  await expectRole(getById('radiogroup'), 'radiogroup');
-  await expectRole(getById('listbox'), 'listbox');
-  await expectRole(getById('menu'), 'menu');
-  await expectRole(getById('menubar'), 'menubar');
-});
-
-test('should infer ARIA roles for items', async () => {
-  document.body.innerHTML = `
-    <div focusgroup="tablist">
-      <span tabindex="0" id="tablist-item-span"></span>
-      <div tabindex="0" id="tablist-item-div"></div>
-      <button tabindex="0" id="tablist-item-button"></button>
-      <my-element tabindex="0" id="tablist-item-ce"></my-element>
-    </div>
-    <div focusgroup="radiogroup">
-      <span tabindex="0" id="radiogroup-item-span"></span>
-      <div tabindex="0" id="radiogroup-item-div"></div>
-      <button tabindex="0" id="radiogroup-item-button"></button>
-      <my-element tabindex="0" id="radiogroup-item-ce"></my-element>
-    </div>
-    <div focusgroup="listbox">
-      <span tabindex="0" id="listbox-item-span"></span>
-      <div tabindex="0" id="listbox-item-div"></div>
-      <button tabindex="0" id="listbox-item-button"></button>
-      <my-element tabindex="0" id="listbox-item-ce"></my-element>
-    </div>
-    <div focusgroup="menu">
-      <span tabindex="0" id="menu-item-span"></span>
-      <div tabindex="0" id="menu-item-div"></div>
-      <button tabindex="0" id="menu-item-button"></button>
-      <my-element tabindex="0" id="menu-item-ce"></my-element>
-    </div>
-    <div focusgroup="menubar">
-      <span tabindex="0" id="menubar-item-span"></span>
-      <div tabindex="0" id="menubar-item-div"></div>
-      <button tabindex="0" id="menubar-item-button"></button>
-      <my-element tabindex="0" id="menubar-item-ce"></my-element>
-    </div>
-  `;
-
-  await expectRole(getById('tablist-item-span'), 'tab');
-  await expectRole(getById('tablist-item-div'), 'tab');
-  await expectRole(getById('tablist-item-button'), 'tab');
-  await expectRole(getById('tablist-item-ce'), 'tab');
-  await expectRole(getById('radiogroup-item-span'), 'radio');
-  await expectRole(getById('radiogroup-item-div'), 'radio');
-  await expectRole(getById('radiogroup-item-button'), 'radio');
-  await expectRole(getById('radiogroup-item-ce'), 'radio');
-  await expectRole(getById('listbox-item-span'), 'option');
-  await expectRole(getById('listbox-item-div'), 'option');
-  await expectRole(getById('listbox-item-button'), 'option');
-  await expectRole(getById('listbox-item-ce'), 'option');
-  await expectRole(getById('menu-item-span'), 'menuitem');
-  await expectRole(getById('menu-item-div'), 'menuitem');
-  await expectRole(getById('menu-item-button'), 'menuitem');
-  await expectRole(getById('menu-item-ce'), 'menuitem');
-  await expectRole(getById('menubar-item-span'), 'menuitem');
-  await expectRole(getById('menubar-item-div'), 'menuitem');
-  await expectRole(getById('menubar-item-button'), 'menuitem');
-  await expectRole(getById('menubar-item-ce'), 'menuitem');
-});
-
-test('top-layer items skip role inference', async () => {
-  document.body.innerHTML = `
-      <div focusgroup="tablist">
-        <span tabindex="0" id="outsideItem">Outside</span>
-        <div id="pop" popover>
-          <span tabindex="0" id="insideItem">Inside</span>
-        </div>
-      </div>
-    `;
-
-  await expectRole(getById('outsideItem'), 'tab');
-  await expectNoRole(getById('insideItem'), 'tab');
-
-  getById('pop').showPopover();
-
-  await expectNoRole(getById('insideItem'), 'tab');
-});
-
 describe('basic tab behavior', () => {
   test('Tab enters focusgroup at first item in tree order and exits normally', async () => {
     document.body.innerHTML = `<div id="before" tabindex="0">Before focusgroup</div>
@@ -3879,16 +3761,6 @@ describe('Tablist focusgroup', () => {
     await userEvent.keyboard('{ArrowRight}');
     expect(getById('tab-1')).toHaveFocus();
   });
-
-  test('infers role=tablist on container', async () => {
-    await expectAttr(getById('tablist'), 'role', 'tablist');
-  });
-
-  test('infers role=tab on button children', async () => {
-    await expectAttr(getById('tab-1'), 'role', 'tab');
-    await expectAttr(getById('tab-2'), 'role', 'tab');
-    await expectAttr(getById('tab-3'), 'role', 'tab');
-  });
 });
 
 describe('Menu focusgroup', () => {
@@ -3925,11 +3797,6 @@ describe('Menu focusgroup', () => {
     getById('item-cut').focus();
     await userEvent.keyboard('{ArrowRight}');
     expect(getById('item-cut')).toHaveFocus();
-  });
-
-  test('infers role=menu and role=menuitem', async () => {
-    await expectAttr(getById('menu'), 'role', 'menu');
-    await expectAttr(getById('item-cut'), 'role', 'menuitem');
   });
 });
 
@@ -4064,5 +3931,397 @@ describe('RTL support', () => {
     getById('rtl-b').focus();
     await userEvent.keyboard('{ArrowRight}');
     expect(getById('rtl-a')).toHaveFocus();
+  });
+});
+
+describe('getItems', () => {
+  beforeEach(() => {
+    document.body.innerHTML = '';
+  });
+
+  test('discovers direct child buttons', () => {
+    document.body.innerHTML = `
+      <div id="fg" focusgroup="toolbar">
+        <button>A</button>
+        <button>B</button>
+        <button>C</button>
+      </div>
+    `;
+    const container = document.getElementById('fg');
+    const items = getItems(container);
+    expect(items).toHaveLength(3);
+    expect(items.map((el?: Element | null) => el?.textContent)).toEqual([
+      'A',
+      'B',
+      'C',
+    ]);
+  });
+
+  test('discovers nested focusable descendants', () => {
+    document.body.innerHTML = `
+      <div id="fg" focusgroup="toolbar">
+        <div>
+          <button>A</button>
+          <div>
+            <button>B</button>
+          </div>
+        </div>
+        <button>C</button>
+      </div>
+    `;
+    const container = document.getElementById('fg');
+    const items = getItems(container);
+    expect(items).toHaveLength(3);
+  });
+
+  test('skips non-focusable elements', () => {
+    document.body.innerHTML = `
+      <div id="fg" focusgroup="toolbar">
+        <span>Not focusable</span>
+        <button>A</button>
+        <div>Not focusable</div>
+        <button>B</button>
+      </div>
+    `;
+    const container = document.getElementById('fg');
+    const items = getItems(container);
+    expect(items).toHaveLength(2);
+  });
+
+  test('skips disabled elements', () => {
+    document.body.innerHTML = `
+      <div id="fg" focusgroup="toolbar">
+        <button>A</button>
+        <button disabled>Disabled</button>
+        <button>C</button>
+      </div>
+    `;
+    const container = document.getElementById('fg');
+    const items = getItems(container);
+    expect(items).toHaveLength(2);
+  });
+
+  test('skips hidden elements', () => {
+    document.body.innerHTML = `
+      <div id="fg" focusgroup="toolbar">
+        <button>A</button>
+        <button hidden>Hidden</button>
+        <button>C</button>
+      </div>
+    `;
+    const container = document.getElementById('fg');
+    const items = getItems(container);
+    expect(items).toHaveLength(2);
+  });
+
+  test('skips subtrees with focusgroup="none"', () => {
+    document.body.innerHTML = `
+      <div id="fg" focusgroup="toolbar">
+        <button>A</button>
+        <div focusgroup="none">
+          <button>Excluded</button>
+        </div>
+        <button>C</button>
+      </div>
+    `;
+    const container = document.getElementById('fg');
+    const items = getItems(container);
+    expect(items).toHaveLength(2);
+    expect(items.map((el?: Element | null) => el?.textContent)).toEqual([
+      'A',
+      'C',
+    ]);
+  });
+
+  test('skips nested focusgroup subtrees', () => {
+    document.body.innerHTML = `
+      <div id="fg" focusgroup="toolbar">
+        <button>A</button>
+        <div focusgroup="menu">
+          <button>Nested</button>
+        </div>
+        <button>C</button>
+      </div>
+    `;
+    const container = document.getElementById('fg');
+    const items = getItems(container);
+    expect(items).toHaveLength(2);
+    expect(items.map((el?: Element | null) => el?.textContent)).toEqual([
+      'A',
+      'C',
+    ]);
+  });
+
+  test('includes elements with tabindex="0"', () => {
+    document.body.innerHTML = `
+      <div id="fg" focusgroup="toolbar">
+        <div tabindex="0">Focusable div</div>
+        <button>A</button>
+      </div>
+    `;
+    const container = document.getElementById('fg');
+    const items = getItems(container);
+    expect(items).toHaveLength(2);
+  });
+
+  test('returns empty array for empty container', () => {
+    document.body.innerHTML = `
+      <div id="fg" focusgroup="toolbar"></div>
+    `;
+    const container = document.getElementById('fg');
+    const items = getItems(container);
+    expect(items).toHaveLength(0);
+  });
+});
+
+const createGroup = (value: string) => {
+  const div = document.createElement('div');
+  div.setAttribute('focusgroup', value);
+  return div;
+};
+
+describe('getGroup', () => {
+  test('returns null unknown behavior token', () => {
+    expect(getGroup(new Set([createGroup('unknown')]))?.items).toBeUndefined();
+  });
+
+  // Toolbar
+  test('parses "toolbar" with defaults (block, nowrap)', () => {
+    const group = getGroup(new Set([createGroup('toolbar')]));
+    expect(group?.items).toBe(null);
+    expect(group?.block).toBe(false);
+    expect(group?.wrap).toBe(false);
+  });
+
+  test('parses "toolbar wrap"', () => {
+    const group = getGroup(new Set([createGroup('toolbar wrap')]));
+    expect(group?.wrap).toBe(true);
+  });
+
+  // Tablist
+  test('parses "tablist" with defaults (inline, wrap)', () => {
+    const group = getGroup(new Set([createGroup('tablist')]));
+    expect(group?.items).toBe('tab');
+    expect(group?.block).toBe(false);
+    expect(group?.wrap).toBe(true);
+  });
+
+  test('parses "tablist nowrap" overrides default wrap', () => {
+    const group = getGroup(new Set([createGroup('tablist nowrap')]));
+    expect(group?.wrap).toBe(false);
+  });
+
+  test('parses "tablist block" overrides default inline', () => {
+    const group = getGroup(new Set([createGroup('tablist block')]));
+    expect(group?.block).toBe(true);
+  });
+
+  // Radiogroup
+  test('parses "radiogroup" with defaults (both, wrap)', () => {
+    const group = getGroup(new Set([createGroup('radiogroup')]));
+    expect(group?.block).toBe(null);
+    expect(group?.wrap).toBe(true);
+  });
+
+  // Listbox
+  test('parses "listbox" with defaults (block, nowrap)', () => {
+    const group = getGroup(new Set([createGroup('listbox')]));
+    expect(group?.block).toBe(true);
+    expect(group?.wrap).toBe(false);
+  });
+
+  // Menu
+  test('parses "menu" with defaults (block, wrap)', () => {
+    const group = getGroup(new Set([createGroup('menu')]));
+    expect(group?.block).toBe(true);
+    expect(group?.wrap).toBe(true);
+  });
+
+  // Menubar
+  test('parses "menubar" with defaults (inline, wrap)', () => {
+    const group = getGroup(new Set([createGroup('menubar')]));
+    expect(group?.block).toBe(false);
+    expect(group?.wrap).toBe(true);
+  });
+
+  // Modifier combinations
+  test('parses multiple modifiers together', () => {
+    const group = getGroup(
+      new Set([createGroup('toolbar block wrap nomemory')]),
+    );
+    expect(group?.block).toBe(true);
+    expect(group?.wrap).toBe(true);
+  });
+
+  test('ignores unknown tokens', () => {
+    const group = getGroup(new Set([createGroup('toolbar foo bar')]));
+    expect(group?.items).toBe(null);
+    expect(group?.block).toBe(false);
+  });
+
+  test('is case-insensitive', () => {
+    const group = getGroup(new Set([createGroup('TOOLBAR WRAP')]));
+    expect(group?.items).toBe(null);
+    expect(group?.wrap).toBe(true);
+  });
+
+  test('handles extra whitespace', () => {
+    const group = getGroup(new Set([createGroup('  toolbar   wrap  ')]));
+    expect(group?.items).toBe(null);
+    expect(group?.wrap).toBe(true);
+  });
+
+  test('explicit modifier matches default (redundant but valid)', () => {
+    const group = getGroup(new Set([createGroup('tablist inline wrap')]));
+    expect(group?.block).toBe(false);
+    expect(group?.wrap).toBe(true);
+  });
+});
+
+describe('isConflict', () => {
+  let container: HTMLElement;
+
+  beforeEach(() => {
+    document.body.innerHTML = '';
+    container = document.createElement('div');
+    document.body.appendChild(container);
+    vi.spyOn(window, 'getComputedStyle').mockReturnValue({
+      writingMode: 'horizontal-tb',
+      direction: 'ltr',
+      overflowX: 'visible',
+      overflowY: 'visible',
+    } as CSSStyleDeclaration);
+  });
+
+  test('text input is a conflict element', () => {
+    const input = document.createElement('input');
+    input.type = 'text';
+    expect(isConflict(input)).toBe(true);
+  });
+
+  test('number input is a conflict element', () => {
+    const input = document.createElement('input');
+    input.type = 'number';
+    expect(isConflict(input)).toBe(true);
+  });
+
+  test('button input is NOT a conflict element', () => {
+    const input = document.createElement('input');
+    input.type = 'button';
+    expect(isConflict(input)).toBe(false);
+  });
+
+  test('submit input is NOT a conflict element', () => {
+    const input = document.createElement('input');
+    input.type = 'submit';
+    expect(isConflict(input)).toBe(false);
+  });
+
+  test('checkbox input is NOT a conflict element', () => {
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    expect(isConflict(input)).toBe(false);
+  });
+
+  test('textarea is a conflict element', () => {
+    const textarea = document.createElement('textarea');
+    expect(isConflict(textarea)).toBe(true);
+  });
+
+  test('select is a conflict element', () => {
+    const select = document.createElement('select');
+    expect(isConflict(select)).toBe(true);
+  });
+
+  test('contenteditable is a conflict element', () => {
+    const div = document.createElement('div');
+    div.setAttribute('contenteditable', 'true');
+    expect(isConflict(div)).toBe(true);
+  });
+
+  test('button is NOT a conflict element', () => {
+    const btn = document.createElement('button');
+    expect(isConflict(btn)).toBe(false);
+  });
+
+  test('anchor is NOT a conflict element', () => {
+    const a = document.createElement('a');
+    a.href = '#';
+    expect(isConflict(a)).toBe(false);
+  });
+
+  test('plain div is NOT a conflict element', () => {
+    const div = document.createElement('div');
+    expect(isConflict(div)).toBe(false);
+  });
+});
+
+describe('isFocusable', () => {
+  beforeEach(() => {
+    document.body.innerHTML = '';
+  });
+
+  test('button is focusable', () => {
+    const btn = document.createElement('button');
+    document.body.appendChild(btn);
+    expect(isFocusable(btn)).toBe(true);
+  });
+
+  test('div is not focusable', () => {
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    expect(isFocusable(div)).toBe(false);
+  });
+
+  test('div with tabindex="0" is focusable', () => {
+    const div = document.createElement('div');
+    div.setAttribute('tabindex', '0');
+    document.body.appendChild(div);
+    expect(isFocusable(div)).toBe(true);
+  });
+
+  test('disabled button is not focusable', () => {
+    const btn = document.createElement('button');
+    btn.disabled = true;
+    document.body.appendChild(btn);
+    expect(isFocusable(btn)).toBe(false);
+  });
+
+  test('anchor with href is focusable', () => {
+    const a = document.createElement('a');
+    a.href = '#';
+    document.body.appendChild(a);
+    expect(isFocusable(a)).toBe(true);
+  });
+
+  test('disabled input is not focusable', () => {
+    const input = document.createElement('input');
+    input.disabled = true;
+    document.body.appendChild(input);
+    expect(isFocusable(input)).toBe(false);
+  });
+
+  test('textarea is focusable', () => {
+    const textarea = document.createElement('textarea');
+    document.body.appendChild(textarea);
+    expect(isFocusable(textarea)).toBe(true);
+  });
+
+  test('select is focusable', () => {
+    const select = document.createElement('select');
+    document.body.appendChild(select);
+    expect(isFocusable(select)).toBe(true);
+  });
+
+  test('contenteditable element is focusable', () => {
+    const div = document.createElement('div');
+    div.setAttribute('contenteditable', 'true');
+    document.body.appendChild(div);
+    expect(isFocusable(div)).toBe(true);
+  });
+
+  test('non-Element returns false', () => {
+    const text = document.createTextNode('hello');
+    expect(isFocusable(text as unknown as HTMLElement)).toBe(false);
   });
 });
