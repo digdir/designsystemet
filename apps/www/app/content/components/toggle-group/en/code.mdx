@@ -7,15 +7,15 @@ Note that `focusgroup` is a [upcoming W3C standard](https://open-ui.org/componen
 ```html
 <fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Text alignment" data-variant="secondary">
   <label class="ds-button">
-    <input type="radio" name="alignment-two" value="left" checked />
+    <input type="radio" name="alignment" value="left" checked />
     Leftadjusted
   </label>
   <label class="ds-button">
-    <input type="radio" name="alignment-two" value="center" />
+    <input type="radio" name="alignment" value="center" />
     Centered
   </label>
   <label class="ds-button">
-    <input type="radio" name="alignment-two" value="right" />
+    <input type="radio" name="alignment" value="right" />
     Rightadjusted
   </label>
 </fieldset>
@@ -25,25 +25,23 @@ Note that `focusgroup` is a [upcoming W3C standard](https://open-ui.org/componen
 **With this approach, you need to handle keyboard navigation and ARIA roles yourself.**
 You can read about what you need to do to implement this in the [accessibility documentation](/en/components/docs/toggle-group/accessibility).
 
-The class name `ds-toggle-group` is placed on a `<div>` with `role="radiogroup"`.
+The class name `ds-toggle-group` is placed on a `<div>` with `focusgroup="radiogroup"`.
 
-Each button in the group is a `<button>` with class name `ds-button` with `role="radio"` and `aria-checked` which indicates whether the button is selected or not.
+Each button in the group is a `<button>` with class name `ds-button` and `aria-checked` which indicates whether the button is selected or not.
 
 ```html
-<div class="ds-toggle-group" role="radiogroup" data-variant="primary"> 
+<div class="ds-toggle-group" focusgroup="radiogroup" data-variant="primary"> 
   <button 
     class="ds-button" 
     type="button" 
     id="togglegroup-item-1" 
     aria-checked="true" 
-    role="radio" 
   >Inbox</button> 
   <button 
     class="ds-button" 
     type="button" 
     id="togglegroup-item-2" 
     aria-checked="false"
-    role="radio" 
   >Sent</button>
 </div>
 ```

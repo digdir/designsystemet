@@ -302,16 +302,19 @@ Extends `u-tabs` from u-elements. See documentation for [u-tabs](https://u-eleme
 `focusgroup` is polyfilled [according to upcoming specification](https://open-ui.org/components/scoped-focusgroup.explainer/).
 
 ```html
-<fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Text alignment" data-variant="secondary">
-  <button type="button" role="radio" aria-checked="true">
-    Left aligned
-  </button>
-  <button type="button" role="radio" aria-checked="false">
-    Center aligned
-  </button>
-  <button type="button" role="radio" aria-checked="false">
-    Right aligned
-  </button>
+<fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Tekstjustering" data-variant="secondary">
+  <label class="ds-button">
+    <input type="radio" name="alignment" value="left" checked />
+    Left
+  </label>
+  <label class="ds-button">
+    <input type="radio" name="alignment" value="center" />
+    Center
+  </label>
+  <label class="ds-button">
+    <input type="radio" name="alignment" value="right" />
+    Right
+  </label>
 </fieldset>
 ```
 

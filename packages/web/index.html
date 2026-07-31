@@ -386,36 +386,16 @@
         focusgroup="radiogroup"
         aria-label="Tekstjustering"
       >
-        <button
-          class="ds-button"
-          type="button"
-          role="radio"
-          aria-checked="true"
-        >
+        <button class="ds-button" type="button" aria-checked="true">
           Venstestilt
         </button>
-        <button
-          class="ds-button"
-          type="button"
-          role="radio"
-          aria-checked="false"
-        >
+        <button class="ds-button" type="button" aria-checked="false">
           Midtstilt
         </button>
-        <button
-          class="ds-button"
-          type="button"
-          role="radio"
-          aria-checked="false"
-        >
+        <button class="ds-button" type="button" aria-checked="false">
           Høyrestilt
         </button>
-        <button
-          class="ds-button"
-          type="button"
-          role="radio"
-          aria-checked="false"
-        >
+        <button class="ds-button" type="button" aria-checked="false">
           Utfallende
         </button>
       </div>
@@ -465,36 +445,16 @@
         aria-label="Tekstjustering"
         data-variant="secondary"
       >
-        <button
-          class="ds-button"
-          type="button"
-          role="radio"
-          aria-checked="true"
-        >
+        <button class="ds-button" type="button" aria-checked="true">
           Venstestilt
         </button>
-        <button
-          class="ds-button"
-          type="button"
-          role="radio"
-          aria-checked="false"
-        >
+        <button class="ds-button" type="button" aria-checked="false">
           Midtstilt
         </button>
-        <button
-          class="ds-button"
-          type="button"
-          role="radio"
-          aria-checked="false"
-        >
+        <button class="ds-button" type="button" aria-checked="false">
           Høyrestilt
         </button>
-        <button
-          class="ds-button"
-          type="button"
-          role="radio"
-          aria-checked="false"
-        >
+        <button class="ds-button" type="button" aria-checked="false">
           Utfallende
         </button>
       </div>
@@ -592,30 +552,34 @@
       <br>
       <br>
 
-      <button
-        class="ds-button"
-        id="p-anc"
-        popovertarget="popover"
-        style="margin: 200px"
-      >
-        Open popover
-      </button>
-      <div class="ds-popover" popover id="popover" data-placement="left">
-        This is some popover content. It can be very long, but it will wrap and
-        stay within the viewport.
+      <test-shadow-render style="display: block; margin: 200px">
+        <template shadowrootmode="open">
+          <button class="ds-button" id="p-anc" popovertarget="popover">
+            Open popover
+          </button>
+          <div class="ds-popover" popover id="popover" data-placement="left">
+            This is some popover content. It can be very long, but it will wrap
+            and stay within the viewport.
 
-        <button
-          class="ds-button"
-          popovertarget="p-anc1"
-          data-placement="bottom-end"
-        >
-          Open nested popover
-        </button>
-        <div class="ds-popover" popover id="p-anc1" data-autoplacement="false">
-          This is some nested popover content. It can be very long, but it will
-          wrap and stay within the viewport.
-        </div>
-      </div>
+            <button
+              class="ds-button"
+              popovertarget="p-anc1"
+              data-placement="bottom-end"
+            >
+              Open nested popover
+            </button>
+            <div
+              class="ds-popover"
+              popover
+              id="p-anc1"
+              data-autoplacement="false"
+            >
+              This is some nested popover content. It can be very long, but it
+              will wrap and stay within the viewport.
+            </div>
+          </div>
+        </template>
+      </test-shadow-render>
 
       <br>
       <br>
@@ -762,7 +726,7 @@
       class TestShadowRenderElement extends HTMLElement {
         constructor() {
           super();
-          this.attachShadow({ mode: 'open' });
+          if (!this.shadowRoot) this.attachShadow({ mode: 'open' });
         }
         connectedCallback() {
           if (!this.shadowRoot) return;
@@ -780,7 +744,8 @@
             }),
           ];
 
-          this.shadowRoot.innerHTML = document.getElementById('app')?.innerHTML || '';
+          if (!this.shadowRoot.innerHTML.trim())
+            this.shadowRoot.innerHTML = document.getElementById('app')?.innerHTML || '';
           this.style.outline = '1px solid red';
           this.style.display = 'block';
         }

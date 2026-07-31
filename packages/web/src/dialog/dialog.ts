@@ -36,8 +36,11 @@ const close = (dialog: HTMLDialogElement) => dialog.open && dialog.close();
 const MODAL = 'show-modal';
 const NON_MODAL = '--show-non-modal';
 const handleAriaAttributes = (event: Event) => {
-  const el = (getComposedTarget(event) as Element)?.closest?.('[command]');
-  if (el && attr(el, 'command') === MODAL) attr(el, 'aria-haspopup', 'dialog');
+  for (const el of event.composedPath() as Element[]) {
+    const command = el.nodeType === 1 && attr(el, 'command');
+    if (command === MODAL || command === NON_MODAL)
+      return attr(el, 'aria-haspopup', 'dialog');
+  }
 };
 
 const handleCommand = ({ command, target }: Event & { command?: string }) =>

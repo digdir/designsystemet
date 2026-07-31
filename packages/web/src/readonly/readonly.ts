@@ -20,8 +20,10 @@ const handleClick = (e: Event) => {
       if (isReadOnly(el)) {
         e.stopImmediatePropagation(); // Prevent click from reaching React and other listeners
         e.preventDefault();
+        el[el.nodeName === 'SELECT' ? 'blur' : 'focus'](); // Blur select to prevent opening on mobile, focus input to recreate <label>-click behavior
+        requestAnimationFrame(() => el.isConnected && el.focus()); // Move focus back to select after event has finished bubbling
       }
-      return el.focus();
+      return;
     }
   }
 };
@@ -29,5 +31,5 @@ const handleClick = (e: Event) => {
 onHotReload('readonly', () => [
   on(document, 'keydown', handleKeydown),
   on(document, 'click', handleClick, true), // click needed for <label> and <input type="checkbox|radio">, using capture to ensure we run before React
-  on(document, 'mousedown', handleSelect),
+  on(document, 'mousedown', handleSelect, true), // needed for <select> on desktop
 ]);

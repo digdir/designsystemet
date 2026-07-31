@@ -8,6 +8,12 @@ import {
   QUICK_EVENT,
 } from '../utils/utils';
 
+// Intentionally not implemented:
+// - Clearing memory based on attribute changes: https://open-ui.org/components/scoped-focusgroup.explainer/#disabling-focusgroup-memory
+// - Setting ARIA roles before focus or keydown occurs (this is too performance consuming, and does not affect a11y much)
+// - Checking if overflow/scroll-container in isFocusable
+// - Autofocus support inside popover
+
 const ATTR_GROUP = 'focusgroup';
 const PROP_GROUP = 'focusGroup';
 const ATTR_START = `${ATTR_GROUP}start`;
@@ -55,7 +61,10 @@ const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
   const isBlock = e.key === 'ArrowUp' || e.key === 'ArrowDown';
   const isArrow = isBlock || e.key === 'ArrowLeft' || e.key === 'ArrowRight';
   if (!isTab && !isArrow && e.key !== 'Home' && e.key !== 'End') return;
-  if (isTab) setTimeout(setIsTab, 100, false, setIsTab(true)); // Reset after event loop so we can check if next focus event is a result of tabbing
+  if (isTab) {
+    setIsTab(true);
+    setTimeout(setIsTab, 100, false); // Reset after event loop so we can check if next focus event is a result of tabbing
+  }
 
   const target = getComposedTarget(e) as Element | null;
   if (!target || isConflict(target)) return; // See https://open-ui.org/components/scoped-focusgroup.explainer/#key-conflict-elements
@@ -130,8 +139,9 @@ export const getGroup = (path: Set<Node>) => {
 
       group = parseGroup(el, key);
       GROUPS.set(el, group);
-      for (const item of getItems(el)) item && attr(item, 'role', group.items);
-      attr(el, 'role', group.role);
+      for (const item of getItems(el))
+        if (item && !item.hasAttribute('role')) attr(item, 'role', group.items);
+      if (!el.hasAttribute('role')) attr(el, 'role', group.role);
       return group;
     }
     if (isTopLayer(el)) return;
@@ -220,10 +230,8 @@ if (!IS_SUPPORTED)
   onHotReload(ATTR_GROUP, () => [
     on(document, 'keydown', handleKeydown),
     on(document, 'focus', handleFocus, QUICK_EVENT),
+    () => {
+      for (const [, off] of ROOTS) off(); // Cleanup listeners on ShadowRoots on hot reload
+      ROOTS.clear();
+    },
   ]);
-
-// Intentionally not implemented:
-// - Clearing memory based on attribute changes: https://open-ui.org/components/scoped-focusgroup.explainer/#disabling-focusgroup-memory
-// - Setting or preserving roles before focus or keydown occurs (this is too performance consuming, and does not affect a11y much)
-// - Checking if  overflow/scroll-container in isFoucsable
-// - Autofocus support inside popover

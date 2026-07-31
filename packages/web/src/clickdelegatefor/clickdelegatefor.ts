@@ -2,6 +2,7 @@
 // https://open-ui.org/components/link-area-delegation-explainer/
 // and https://github.com/openui/open-ui/issues/1104#issuecomment-3151387080
 import {
+  attr,
   getComposedTarget,
   getRoot,
   on,
@@ -9,10 +10,18 @@ import {
   QUICK_EVENT,
 } from '../utils/utils';
 
-// biome-ignore format:next-line
-const SKIP = new Set(['A', 'BUTTON', 'LABEL', 'INPUT', 'SELECT', 'TEXTAREA', 'DETAILS', 'DIALOG']); // Ignore interactive elements, and elements that create a new "context" or "scope"
-const CLASS_HOVER = ':click-delegate-hover';
 const ATTR_CLICKDELEGATEFOR = 'data-clickdelegatefor';
+const CLASS_HOVER = ':click-delegate-hover';
+const SKIP = new Set([
+  'A',
+  'BUTTON',
+  'LABEL',
+  'INPUT',
+  'SELECT',
+  'TEXTAREA',
+  'DETAILS',
+  'DIALOG',
+]); // Ignore interactive elements, and elements that create a new "context" or "scope"
 
 const handleClickDelegateFor = (event: MouseEvent) => {
   const isNewTab = event.button === 1 || event.metaKey || event.ctrlKey; // Middle click or cmd/ctrl + click should open in new tab
@@ -42,13 +51,19 @@ const handleMouseMove = (event: Event) => {
 const getDelegateTarget = (event: Event) => {
   for (const el of event.composedPath() as HTMLElement[]) {
     if (el.nodeType !== 1) continue; // Only check elements
-    if (el.isContentEditable || el.popover || SKIP.has(el.nodeName)) return;
+    if (isInteractive(el)) return;
 
     const id = el.getAttribute(ATTR_CLICKDELEGATEFOR);
     const target = id && (getRoot(el).getElementById(id) as HTMLInputElement);
     if (target && !target.disabled && !target.readOnly) return target; // Only return if target is not disabled or readonly
   }
 };
+
+const isInteractive = (el: HTMLElement) =>
+  el.isContentEditable ||
+  el.popover ||
+  SKIP.has(el.nodeName) ||
+  attr(el, 'role') === 'button';
 
 onHotReload('clickdelegatefor', () => [
   on(window, 'click auxclick', handleClickDelegateFor as EventListener, true), // Use capture to ensure we run before other click listeners

@@ -27,6 +27,12 @@ import {
 if (isBrowser() && !isSupported() && !isPolyfilled())
   polyfillPopover({ layerName: 'ds.base' }); // Load popover polyfill in the ds.base CSS layer to keep cascade order consistent with Designsystemet layers.
 
+// NOTE:
+// The native popover event "toggle" is not composed, meaning it does not bubble out of shadow DOM.
+// This means that if a popover is inside a shadow root, the toggle event will not be visible outside of that shadow root.
+// To handle this, we monkey-patch the showPopover and hidePopover methods to manually trigger the toggle-function.
+// We also bind toggle events to shadow roots found during click events, so that we can listen for toggle events on shadow roots as well.
+
 declare global {
   interface Window {
     _dsPopoverShadows: boolean;
@@ -36,21 +42,25 @@ declare global {
   }
 }
 
+const ROOTS = new Map<Node, () => void>();
 const ATTR_PLACE = 'data-placement';
 const ATTR_AUTO = 'data-autoplacement';
 const POPOVERS = new Map<HTMLElement, () => void>();
 
 // Sometimes use "ds-toggle" event while waiting for better support of
 // event.source (https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/source)
-function handleToggle(
-  event: Event &
-    Partial<ToggleEvent> & {
-      detail?: HTMLElement;
-      source?: HTMLElement;
-    },
+
+const handleToggle = (
+  e: Event &
+    Partial<ToggleEvent> & { detail?: HTMLElement; source?: HTMLElement },
+) => toggle(getComposedTarget(e), e.newState, e.oldState, e.source || e.detail);
+
+function toggle(
+  el: Element | null,
+  newState?: string,
+  oldState?: string,
+  source?: HTMLElement,
 ) {
-  let { newState, oldState, source = event.detail } = event;
-  const el = getComposedTarget(event);
   const isPopover = el instanceof HTMLElement && attr(el, 'popover') !== null;
   const float = isPopover && getCSSProp(el, '--_ds-floating');
 
@@ -112,27 +122,60 @@ function handleToggle(
 
 // Prevent closing when pointer interacts with scrollbar
 let IS_SCROLL: boolean | undefined;
-const handleScrollbar = ({ type }: Event) => {
-  if (type === 'pointerdown') IS_SCROLL = false;
-  if (type === 'scroll' && IS_SCROLL === false) IS_SCROLL = true;
-  if (type === 'pointerup' && IS_SCROLL)
+const handleScrollbar = (e: Event) => {
+  if (e.type === 'pointerdown') {
+    IS_SCROLL = false;
+  }
+  if (e.type === 'scroll' && IS_SCROLL === false) IS_SCROLL = true;
+  if (e.type === 'pointerup' && IS_SCROLL)
     for (const [popover] of POPOVERS) popover.showPopover(); // Immediately show again to prevent flicker
 };
 
-// Native Toggle event does not bubble from shadow DOM, so we need to listen for it on every shadow root
+// And add listeners for toggle event on shadowRoots as "toggle" is not a composed event
+const handleClick = (e: Event) => {
+  const root = getRoot(getComposedTarget(e));
+  if (root && !ROOTS.has(root))
+    ROOTS.set(root, on(root, 'toggle', handleToggle, QUICK_EVENT));
+};
+
+// Since toggle event is not composed, we need to trigger it when programatically called inside shadow DOM
 if (isBrowser() && !window._dsPopoverShadows) {
   window._dsPopoverShadows = true;
-  const attachShadow = HTMLElement.prototype.attachShadow;
-  HTMLElement.prototype.attachShadow = function (init) {
-    const root = attachShadow.call(this, init);
-    on(root, 'toggle', handleToggle, QUICK_EVENT);
-    return root;
+  const togglePopover = HTMLElement.prototype.togglePopover;
+  const showPopover = HTMLElement.prototype.showPopover;
+  const hidePopover = HTMLElement.prototype.hidePopover;
+  HTMLElement.prototype.togglePopover = function (opt) {
+    const isOpen = this.matches(':popover-open');
+    const isBool = typeof opt === 'boolean';
+    const prev = isOpen ? 'open' : 'closed';
+    const next = (isBool ? opt : (opt?.force ?? !isOpen)) ? 'open' : 'closed';
+    const source = isBool ? undefined : opt?.source;
+    const result = togglePopover.call(this, opt as TogglePopoverOptions);
+    toggle(this, next, prev, source);
+    return result;
+  };
+  HTMLElement.prototype.showPopover = function (opt) {
+    const prev = this.matches(':popover-open') ? 'open' : 'closed';
+    const result = showPopover.call(this, opt);
+    toggle(this, 'open', prev, opt?.source);
+    return result;
+  };
+  HTMLElement.prototype.hidePopover = function () {
+    const prev = this.matches(':popover-open') ? 'open' : 'closed';
+    const result = hidePopover.call(this);
+    toggle(this, 'closed', prev);
+    return result;
   };
 }
 
 onHotReload('popover', () => [
-  on(document, 'pointerdown pointerup scroll', handleScrollbar, true),
+  on(document, 'click', handleClick, QUICK_EVENT),
+  on(document, 'pointerdown pointerup scroll', handleScrollbar, QUICK_EVENT),
   on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
+  () => {
+    for (const [, off] of ROOTS) off(); // Cleanup listeners on ShadowRoots on hot reload
+    ROOTS.clear();
+  },
 ]);
 
 const arrowPseudo = () => ({

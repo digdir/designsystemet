@@ -27,11 +27,6 @@ const useTab = async (opts?: Parameters<typeof userEvent.tab>[0]) => {
   vi.advanceTimersByTime(100);
 };
 
-const _expectRole = async (el: HTMLElement, role: string) => {
-  el.dispatchEvent(new FocusEvent('focus', { bubbles: true, composed: true })); // Dispatch focus event to trigger attribute setup
-  await vi.waitFor(() => expect(el).toHaveRole(role));
-};
-
 // Use fake timers to allow setTab to run
 beforeEach(() => vi.useFakeTimers());
 afterEach(async () => {
