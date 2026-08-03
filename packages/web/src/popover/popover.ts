@@ -159,14 +159,14 @@ if (isBrowser() && !window._dsPopoverShadows) {
   if (isFunction(showPopover))
     HTMLElement.prototype.showPopover = function (opt) {
       const prev = this.matches(':popover-open') ? 'open' : 'closed';
-      const result = showPopover?.call(this, opt);
+      const result = showPopover.call(this, opt);
       toggle(this, 'open', prev, opt?.source);
       return result;
     };
   if (isFunction(hidePopover))
     HTMLElement.prototype.hidePopover = function () {
       const prev = this.matches(':popover-open') ? 'open' : 'closed';
-      const result = hidePopover?.call(this);
+      const result = hidePopover.call(this);
       toggle(this, 'closed', prev);
       return result;
     };
