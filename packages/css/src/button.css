@@ -86,10 +86,15 @@
 
   @media (hover: hover) and (pointer: fine) {
     /* Only use hover for non-touch devices to prevent sticky-hovering, using :where to prevent adding specificity */
-    &:where(:not(:disabled, [aria-disabled='true'], [readonly], [aria-readonly='true'], [aria-busy='true'])):hover {
+    &:hover {
       background: var(--dsc-button-background--hover);
       color: var(--dsc-button-color--hover);
     }
+  }
+
+  &:active {
+    background: var(--dsc-button-background--active);
+    color: var(--dsc-button-color--active);
   }
 
   &[aria-busy='true'] {
@@ -99,17 +104,13 @@
   &:is(:disabled, [aria-disabled='true'], [readonly], [aria-readonly='true'], label:has(input[readonly])) {
     cursor: not-allowed;
     opacity: var(--ds-opacity-disabled);
+    background: var(--dsc-button-background); /* Prevent :hover and :active change */
+    color: var(--dsc-button-color); /* Prevent :hover and :active change */
 
     /* When both aria-disabled and aria-busy is true, opacity should be 1 and cursor should be progress */
     &[aria-busy='true'] {
       opacity: 1;
       cursor: progress;
     }
-  }
-
-  /* Using :where to prevent adding specificity */
-  &:where(:not(:disabled, [aria-disabled='true'], [readonly], [aria-readonly='true'], [aria-busy='true'])):active {
-    background: var(--dsc-button-background--active);
-    color: var(--dsc-button-color--active);
   }
 }

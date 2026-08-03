@@ -109,6 +109,12 @@
       <dialog id="my-dialog" class="ds-dialog" closedby="any">
         <h2 class="ds-heading">Dialog title</h2>
         <p>Dialog content</p>
+        <ds-field class="ds-card" data-clickdelegatefor="target-inside-dialog">
+          <input id="target-inside-dialog" class="ds-input" type="checkbox">
+          <label>
+            Clicking this card will not toggle or hover due to disabled checkbox
+          </label>
+        </ds-field>
         <button class="ds-button" command="close" commandfor="my-dialog">
           Close
         </button>

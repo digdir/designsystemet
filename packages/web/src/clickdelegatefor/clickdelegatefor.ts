@@ -15,12 +15,12 @@ const CLASS_HOVER = ':click-delegate-hover';
 const SKIP = new Set([
   'A',
   'BUTTON',
-  'LABEL',
-  'INPUT',
-  'SELECT',
-  'TEXTAREA',
   'DETAILS',
   'DIALOG',
+  'INPUT',
+  'LABEL',
+  'SELECT',
+  'TEXTAREA',
 ]); // Ignore interactive elements, and elements that create a new "context" or "scope"
 
 const handleClickDelegateFor = (event: MouseEvent) => {
@@ -32,7 +32,7 @@ const handleClickDelegateFor = (event: MouseEvent) => {
   if (isNewTab && delegateTarget instanceof HTMLAnchorElement)
     return window.open(delegateTarget.href, undefined, delegateTarget.rel); // If middle click or cmd/ctrl click on link, open in new tab
   event.stopImmediatePropagation(); // We'll trigger a new click event anyway, so prevent actions on this one
-  delegateTarget.click(); // Forward click to the clickable element
+  if (delegateTarget.nodeName !== 'LABEL') delegateTarget.click(); // Forward click to the clickable element (labels forwards click natively though)
 };
 
 let HOVER: Element | undefined;
@@ -49,13 +49,18 @@ const handleMouseMove = (event: Event) => {
 };
 
 const getDelegateTarget = (event: Event) => {
-  for (const el of event.composedPath() as HTMLElement[]) {
+  let interactive: Element | undefined;
+  for (let el of event.composedPath() as HTMLElement[]) {
     if (el.nodeType !== 1) continue; // Only check elements
-    if (isInteractive(el)) return;
-
+    if (el.nodeName === 'LABEL') el = (el as HTMLLabelElement).control || el; // If label, return the associated control
     const id = el.getAttribute(ATTR_CLICKDELEGATEFOR);
-    const target = id && (getRoot(el).getElementById(id) as HTMLInputElement);
-    if (target && !target.disabled && !target.readOnly) return target; // Only return if target is not disabled or readonly
+    if (id) {
+      const to = getRoot(el).getElementById(id) as HTMLInputElement;
+      const hasInteractive = interactive && interactive !== to;
+      const isClickable = to && !hasInteractive && !to.disabled && !to.readOnly;
+      return isClickable ? to : undefined; // Only return if target is not disabled or readonly
+    }
+    if (!interactive && isInteractive(el)) interactive = el;
   }
 };
 
