@@ -134,38 +134,42 @@ const handleScrollbar = (e: Event) => {
 // And add listeners for toggle event on shadowRoots as "toggle" is not a composed event
 const handleClick = (e: Event) => {
   const root = getRoot(getComposedTarget(e));
-  if (root && !ROOTS.has(root))
+  if (root instanceof ShadowRoot && !ROOTS.has(root))
     ROOTS.set(root, on(root, 'toggle', handleToggle, QUICK_EVENT));
 };
 
 // Since toggle event is not composed, we need to trigger it when programatically called inside shadow DOM
+const isFunction = (fn: unknown) => typeof fn === 'function';
 if (isBrowser() && !window._dsPopoverShadows) {
   window._dsPopoverShadows = true;
   const togglePopover = HTMLElement.prototype.togglePopover;
   const showPopover = HTMLElement.prototype.showPopover;
   const hidePopover = HTMLElement.prototype.hidePopover;
-  HTMLElement.prototype.togglePopover = function (opt) {
-    const isOpen = this.matches(':popover-open');
-    const isBool = typeof opt === 'boolean';
-    const prev = isOpen ? 'open' : 'closed';
-    const next = (isBool ? opt : (opt?.force ?? !isOpen)) ? 'open' : 'closed';
-    const source = isBool ? undefined : opt?.source;
-    const result = togglePopover.call(this, opt as TogglePopoverOptions);
-    toggle(this, next, prev, source);
-    return result;
-  };
-  HTMLElement.prototype.showPopover = function (opt) {
-    const prev = this.matches(':popover-open') ? 'open' : 'closed';
-    const result = showPopover.call(this, opt);
-    toggle(this, 'open', prev, opt?.source);
-    return result;
-  };
-  HTMLElement.prototype.hidePopover = function () {
-    const prev = this.matches(':popover-open') ? 'open' : 'closed';
-    const result = hidePopover.call(this);
-    toggle(this, 'closed', prev);
-    return result;
-  };
+  if (isFunction(togglePopover))
+    HTMLElement.prototype.togglePopover = function (opt) {
+      const isOpen = this.matches(':popover-open');
+      const isBool = typeof opt === 'boolean';
+      const prev = isOpen ? 'open' : 'closed';
+      const next = (isBool ? opt : (opt?.force ?? !isOpen)) ? 'open' : 'closed';
+      const source = isBool ? undefined : opt?.source;
+      const result = togglePopover.call(this, opt as TogglePopoverOptions);
+      toggle(this, next, prev, source);
+      return result;
+    };
+  if (isFunction(showPopover))
+    HTMLElement.prototype.showPopover = function (opt) {
+      const prev = this.matches(':popover-open') ? 'open' : 'closed';
+      const result = showPopover?.call(this, opt);
+      toggle(this, 'open', prev, opt?.source);
+      return result;
+    };
+  if (isFunction(hidePopover))
+    HTMLElement.prototype.hidePopover = function () {
+      const prev = this.matches(':popover-open') ? 'open' : 'closed';
+      const result = hidePopover?.call(this);
+      toggle(this, 'closed', prev);
+      return result;
+    };
 }
 
 onHotReload('popover', () => [
