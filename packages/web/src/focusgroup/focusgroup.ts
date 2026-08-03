@@ -171,7 +171,7 @@ export const getItems = (
   root?: Element | null,
   keep?: Element | null, // Provide Element to include, or null to keep segments (https://open-ui.org/components/scoped-focusgroup.explainer/#focusgroup-segments)
   items: (Element | null)[] = [], // Used only for recursion
-  isNested = false, // Used only for recursion, to check if allready inside a nested group
+  isNested = false, // Used only for recursion, to check if already inside a nested group
 ) => {
   const children =
     root?.nodeName === 'SLOT'

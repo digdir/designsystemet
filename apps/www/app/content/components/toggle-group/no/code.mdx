@@ -24,13 +24,10 @@ Merk at `focusgroup` er en [kommende W3C standard](https://open-ui.org/component
 ### Gammel måte med `<button>`
 **Her må du håndtere tastaturnavigasjon og ARIA-roller sjølv.**
 Du kan lese om kva du må gjere for å implementere dette i [tilgjengelighetsdokumentasjonen](/no/components/docs/toggle-group/accessibility).
-
-Klassenavnet `ds-toggle-group` blir lagt på ein `<div>` med `role="radiogroup"`.
-
 Kvar knapp i gruppa er ein `<button>` med klassenavn `ds-button` med `aria-checked` som indikerer om knappen er vald eller ikkje.
 
 ```html
-<div class="ds-toggle-group" focusgroup="radiogroup" data-variant="primary">
+<div class="ds-toggle-group" focusgroup="radiogroup" aria-label="Filter" data-variant="primary">
   <button
     class="ds-button"
     type="button"

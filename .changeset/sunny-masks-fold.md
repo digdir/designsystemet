@@ -1,6 +1,6 @@
 ---
-"@digdir/designsystemet-react": patch
-"@digdir/designsystemet-web": patch
+"@digdir/designsystemet-react": minor
+"@digdir/designsystemet-web": minor
 ---
 
-**Togglegroup:** Deprecates `data-toggle-group` in favor of `focusgroup="radiogroup"` with `aria-label`.
+**ToggleGroup:** Deprecates `data-toggle-group` in favor of `focusgroup="radiogroup"` with `aria-label`.

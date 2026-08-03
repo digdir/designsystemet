@@ -24,13 +24,10 @@ Note that `focusgroup` is a [upcoming W3C standard](https://open-ui.org/componen
 ### Old way with `<button>`
 **With this approach, you need to handle keyboard navigation and ARIA roles yourself.**
 You can read about what you need to do to implement this in the [accessibility documentation](/en/components/docs/toggle-group/accessibility).
-
-The class name `ds-toggle-group` is placed on a `<div>` with `focusgroup="radiogroup"`.
-
 Each button in the group is a `<button>` with class name `ds-button` and `aria-checked` which indicates whether the button is selected or not.
 
 ```html
-<div class="ds-toggle-group" focusgroup="radiogroup" data-variant="primary"> 
+<div class="ds-toggle-group" focusgroup="radiogroup" aria-label="Filter" data-variant="primary"> 
   <button 
     class="ds-button" 
     type="button" 

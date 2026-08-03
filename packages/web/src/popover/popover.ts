@@ -64,8 +64,8 @@ function toggle(
   const isPopover = el instanceof HTMLElement && attr(el, 'popover') !== null;
   const float = isPopover && getCSSProp(el, '--_ds-floating');
 
-  if (!float) return;
-  if (newState === 'closed') return POPOVERS.get(el)?.(); // Cleanup on close
+  POPOVERS.get(el as HTMLElement)?.(); // Cleanup if previously bound popover exists to avoid multiple autoUpdate memory leaks
+  if (!float || newState === 'closed') return;
   if (!source) {
     const css = el.id && `[popovertarget="${el.id}"],[commandfor="${el.id}"]`;
     source = (css && getRoot(el).querySelector<HTMLElement>(css)) || undefined; // Polyfill ToggleEvent .source for older browsers
@@ -138,13 +138,13 @@ const handleClick = (e: Event) => {
     ROOTS.set(root, on(root, 'toggle', handleToggle, QUICK_EVENT));
 };
 
-// Since toggle event is not composed, we need to trigger it when programatically called inside shadow DOM
-const isFunction = (fn: unknown) => typeof fn === 'function';
-if (isBrowser() && !window._dsPopoverShadows) {
-  window._dsPopoverShadows = true;
+onHotReload('popover', () => {
+  const isFunction = (fn: unknown) => typeof fn === 'function';
   const togglePopover = HTMLElement.prototype.togglePopover;
   const showPopover = HTMLElement.prototype.showPopover;
   const hidePopover = HTMLElement.prototype.hidePopover;
+
+  // Since toggle event is not composed, we need to trigger it when programatically called inside shadow DOM
   if (isFunction(togglePopover))
     HTMLElement.prototype.togglePopover = function (opt) {
       const isOpen = this.matches(':popover-open');
@@ -170,17 +170,20 @@ if (isBrowser() && !window._dsPopoverShadows) {
       toggle(this, 'closed', prev);
       return result;
     };
-}
 
-onHotReload('popover', () => [
-  on(document, 'click', handleClick, QUICK_EVENT),
-  on(document, 'pointerdown pointerup scroll', handleScrollbar, QUICK_EVENT),
-  on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
-  () => {
-    for (const [, off] of ROOTS) off(); // Cleanup listeners on ShadowRoots on hot reload
-    ROOTS.clear();
-  },
-]);
+  return [
+    on(document, 'click', handleClick, QUICK_EVENT),
+    on(document, 'pointerdown pointerup scroll', handleScrollbar, QUICK_EVENT),
+    on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
+    () => {
+      HTMLElement.prototype.togglePopover = togglePopover; // Restore original methods on hot reload
+      HTMLElement.prototype.showPopover = showPopover;
+      HTMLElement.prototype.hidePopover = hidePopover;
+      for (const [, off] of ROOTS) off(); // Cleanup listeners on ShadowRoots on hot reload
+      ROOTS.clear();
+    },
+  ];
+});
 
 const arrowPseudo = () => ({
   name: 'arrowPseudo',

@@ -4,24 +4,23 @@ import { describe, expect, it } from 'vitest';
 import { userEvent } from 'vitest/browser';
 
 describe('readonly behavior', () => {
-  it('prevents non-Tab keydowns on readonly inputs', () => {
+  it('prevents non-Tab keydowns on readonly select', () => {
     document.body.innerHTML = `<select id="field" readonly><option>a</option><option>b</option></select>`;
 
-    const input = document.getElementById('field') as HTMLInputElement;
-
+    const select = document.getElementById('field') as HTMLInputElement;
     const blocked = new KeyboardEvent('keydown', {
       key: 'a',
       bubbles: true,
       cancelable: true,
     });
-    input.dispatchEvent(blocked);
+    select.dispatchEvent(blocked);
 
     const allowed = new KeyboardEvent('keydown', {
       key: 'Tab',
       bubbles: true,
       cancelable: true,
     });
-    input.dispatchEvent(allowed);
+    select.dispatchEvent(allowed);
 
     expect(blocked.defaultPrevented).toBe(true);
     expect(allowed.defaultPrevented).toBe(false);

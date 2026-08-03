@@ -13,7 +13,7 @@ const render = () => {
 
 describe('Error summary component', () => {
   beforeEach(() => {
-    window.dsWarnings = false; // Prevent warning about missing heading wile testing
+    window.dsWarnings = false; // Prevent warning about missing heading while testing
   });
   afterEach(() => {
     window.dsWarnings = undefined;

@@ -46,8 +46,11 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
   TIP = el || undefined;
 };
 
-export const initTooltips = (scope: Element | Document = document) => {
-  for (const el of scope.querySelectorAll(SELECTOR_TOOLTIP)) setupText(el);
+export const initTooltips = (
+  scope: Element | ShadowRoot | Document | null = document,
+) => {
+  for (const el of scope?.querySelectorAll(SELECTOR_TOOLTIP) || [])
+    setupText(el);
 };
 
 // Initial run has no MutationRecords, so we set records to [null] to ensure we run the querySelectorAll for any existing elements with data-tooltip

@@ -96,7 +96,7 @@
     cursor: progress;
   }
 
-  &:is(:disabled, [aria-disabled='true'], [readonly], [aria-readonly='true']) {
+  &:is(:disabled, [aria-disabled='true'], [readonly], [aria-readonly='true'], label:has(input[readonly])) {
     cursor: not-allowed;
     opacity: var(--ds-opacity-disabled);
 
