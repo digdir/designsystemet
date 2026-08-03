@@ -7,7 +7,7 @@ describe('readonly behavior', () => {
   it('prevents non-Tab keydowns on readonly select', () => {
     document.body.innerHTML = `<select id="field" readonly><option>a</option><option>b</option></select>`;
 
-    const select = document.getElementById('field') as HTMLInputElement;
+    const select = document.getElementById('field') as HTMLSelectElement;
     const blocked = new KeyboardEvent('keydown', {
       key: 'a',
       bubbles: true,

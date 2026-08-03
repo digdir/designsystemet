@@ -22,7 +22,7 @@ const handleClosedbyAny = (event: Event) => {
       return; // Stop traversing once we find a dialog
     }
   } else {
-    const isDialog = el?.nodeName === 'DIALOG';
+    const isDialog = el?.nodeName === 'DIALOG'; // Faster than el instanceof HTMLDialogElement
     const isClose = isDialog && !DOWN_INSIDE && attr(el, 'closedby') === 'any';
 
     DOWN_INSIDE = false; // Reset on every pointerup
