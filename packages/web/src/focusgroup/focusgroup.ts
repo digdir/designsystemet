@@ -79,7 +79,8 @@ const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
   let next = 0;
 
   if (isTab) return setTimeout(setTab, 0, items, setTab(items)); // Make sure next tab stop is outside focusgroup
-  if (!isArrow) next = e.key === 'End' ? items.length - 1 : 0;
+  if (e.key === 'Home') next = 0;
+  else if (e.key === 'End') next = items.length - 1;
   else {
     const { direction: dir, writingMode: mode } = getComputedStyle(target);
     const isFlipped = mode.startsWith('vertical');
