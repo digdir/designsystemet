@@ -56,6 +56,11 @@
       "import": "./dist/esm/fieldset/fieldset.js",
       "require": "./dist/cjs/fieldset/fieldset.cjs"
     },
+    "./focusgroup": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/focusgroup/focusgroup.js",
+      "require": "./dist/cjs/focusgroup/focusgroup.cjs"
+    },
     "./invokers": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/invokers/invokers.js",

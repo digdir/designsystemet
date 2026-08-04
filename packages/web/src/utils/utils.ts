@@ -61,7 +61,7 @@ export const attr = (
   name: string,
   value?: string | null,
 ): string | null => {
-  if (value === undefined) return el.getAttribute(name) ?? null; // Fallback to null only if el is undefined
+  if (value === undefined) return el.getAttribute(name);
   if (value === null) el.removeAttribute(name);
   else if (el.getAttribute(name) !== value) el.setAttribute(name, value);
   return null;
@@ -98,10 +98,38 @@ export const attrOrCSS = (el: Element, name: string) => {
  * @param node The target node
  * @return The shadow root or document
  */
-export const getRoot = (node: Node): Document | ShadowRoot => {
-  const root = node.getRootNode?.() || node.ownerDocument;
+export const getRoot = (node?: Node | null): Document | ShadowRoot => {
+  const root = node?.getRootNode?.() || node?.ownerDocument;
   if (root instanceof Document || root instanceof ShadowRoot) return root;
-  return node.ownerDocument || document;
+  return node?.ownerDocument || document;
+};
+
+/**
+ * getComposedTarget
+ * @description Helper to get the composed target of an event, supporting ShadowDOM rendering
+ * @param event The event
+ * @return The target Element
+ */
+export const getComposedTarget = (e: Event): Element | null => {
+  const el =
+    ((e.target as Element)?.shadowRoot && e.composedPath()[0]) || e.target; // Only use composedPath if the target has a shadowRoot to boost performance
+  return (el as Node)?.nodeType === 1 ? (el as Element) : null;
+};
+
+/**
+ * getComposedPath
+ * @description Helper to get the full composed path even if listener is bound to a ShadowRoot (unlike event.composedPath())
+ * @param el The element to start traversing from
+ * @return Set of nodes in the path
+ */
+export const getComposedPath = (el: Node | null) => {
+  const path = new Set<Node>();
+  while (el) {
+    path.add(el);
+    if (el.nodeType === 11) el = (el as ShadowRoot).host;
+    else el = (el as Element).assignedSlot || el.parentNode;
+  }
+  return path;
 };
 
 /**
