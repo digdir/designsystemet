@@ -1,5 +1,5 @@
 /// <reference types="@testing-library/jest-dom" />
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 const render = () => {
   document.body.innerHTML = `
@@ -12,6 +12,12 @@ const render = () => {
 };
 
 describe('Error summary component', () => {
+  beforeEach(() => {
+    window.dsWarnings = false; // Prevent warning about missing heading while testing
+  });
+  afterEach(() => {
+    window.dsWarnings = undefined;
+  });
   it('should set aria-labelledby, tabindex, and focus', () => {
     render();
 
