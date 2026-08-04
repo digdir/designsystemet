@@ -1,4 +1,4 @@
-import { on, onHotReload } from '../utils/utils';
+import { attr, on, onHotReload } from '../utils/utils';
 
 // Clears and focuses the sibling <input> when the search's reset button is
 // clicked, so Search.Clear works without any framework JS. Bails out if
@@ -6,21 +6,18 @@ import { on, onHotReload } from '../utils/utils';
 // click, to avoid double-handling.
 const handleClick = (event: Event) => {
   if (event.defaultPrevented) return;
-  let button: HTMLButtonElement | undefined;
-
-  for (const el of event.composedPath() as HTMLButtonElement[]) {
+  for (const el of event.composedPath() as Element[])
     if (el.nodeName === 'BUTTON') {
-      if (el.type === 'reset' && !el.textContent.trim()) button = el; // Find empty reset button
-      break;
+      const input =
+        attr(el, 'data-search') === 'clear' && el.previousElementSibling;
+
+      if (input instanceof HTMLInputElement) {
+        event.preventDefault();
+        setInputValue(input, '', 'deleteContentBackward');
+        input.focus();
+      }
+      return; // Always stop iterating if we hit a button
     }
-  }
-
-  const input = button?.previousElementSibling as HTMLInputElement | null;
-  if (!button || input?.nodeName !== 'INPUT' || input.type !== 'search') return; // And ensure it is direct subsequent sibling of a search input
-
-  event.preventDefault();
-  setInputValue(input, '', 'deleteContentBackward');
-  input.focus();
 };
 
 const setInputValue = (

@@ -24,10 +24,10 @@ export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
   function SearchClear({ 'aria-label': label = 'Tøm', ...rest }, ref) {
     return (
       <Button
+        aria-label={label}
+        data-search='clear'
         ref={ref}
         variant='tertiary'
-        type='reset'
-        aria-label={label}
         {...rest}
       />
     );

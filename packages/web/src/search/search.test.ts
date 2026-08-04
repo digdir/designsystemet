@@ -3,11 +3,11 @@
 import { describe, expect, it } from 'vitest';
 
 describe('search behavior', () => {
-  it('clears and focuses the sibling input when the reset button is clicked', () => {
+  it('clears and focuses the sibling input when the clear button is clicked', () => {
     document.body.innerHTML = `
       <div class="ds-search">
         <input type="search" value="Hello" />
-        <button type="reset"></button>
+        <button data-search="clear"></button>
       </div>
     `;
 
@@ -26,7 +26,7 @@ describe('search behavior', () => {
     document.body.innerHTML = `
       <div class="ds-search">
         <input type="search" value="Hello" />
-        <button type="reset"></button>
+        <button data-search="clear"></button>
       </div>
     `;
 
@@ -41,7 +41,7 @@ describe('search behavior', () => {
     expect(input.value).toBe('Hello');
   });
 
-  it('ignores clicks outside .ds-search or on non-reset buttons', () => {
+  it('ignores clicks outside .ds-search or on non-clear buttons', () => {
     document.body.innerHTML = `
       <div class="ds-search">
         <input type="search" value="Hello" />
