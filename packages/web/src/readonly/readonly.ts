@@ -1,41 +1,35 @@
-import { attr, on, onHotReload } from '../utils/utils';
+import { attr, getComposedTarget, on, onHotReload } from '../utils/utils';
 
-const isReadOnly = (el: unknown): el is HTMLInputElement | HTMLSelectElement =>
-  (el instanceof HTMLSelectElement || el instanceof HTMLInputElement) &&
-  (el.hasAttribute('readonly') || attr(el, 'aria-readonly') === 'true');
+const isReadOnly = (el: Element) =>
+  attr(el, 'readonly') !== null || attr(el, 'aria-readonly') === 'true';
 
-// Allow tabbing when readonly, and only fix readonly input/select elements (since type select and non-text-inputs do not support readonly)
-// If radio buttons, move focus without changing checked state
-const handleKeyDown = (e: Event & Partial<KeyboardEvent>) => {
-  if (e.key !== 'Tab' && isReadOnly(e.target)) {
-    const isArrow = e.key?.startsWith('Arrow'); // Always control arrow keys
-    const isModifier = e.altKey || e.ctrlKey || e.metaKey; // Allow modifier keys so native functions like CMD + D to bookmark  etc. still works
+const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
+  const allow = e.key === 'Tab' || e.altKey || e.ctrlKey || e.metaKey; // Allow modifier keys so native functions like CMD + D to bookmark  etc. still works
+  if (!allow || e.key?.startsWith('Arrow')) handleSelect(e);
+};
 
-    if (isArrow || !isModifier) e.preventDefault(); // Prevent changing <select> value with keyboard, but allow non-arrow modifier keys
-    if (isArrow && attr(e.target, 'type') === 'radio') {
-      const all = document.querySelectorAll(`input[name="${e.target.name}"]`);
-      const move = e.key?.match(/Arrow(Right|Down)/) ? 1 : -1;
-      const next = all.length + [...all].indexOf(e.target) + move;
-      (all[next % all.length] as HTMLElement)?.focus();
+const handleSelect = (e: Event) => {
+  const el = getComposedTarget(e) as HTMLSelectElement | null;
+  if (el?.nodeName === 'SELECT' && isReadOnly(el)) e.preventDefault();
+};
+
+const handleClick = (e: Event) => {
+  for (let el of e.composedPath() as HTMLLabelElement[]) {
+    if (el?.nodeName === 'LABEL') el = el.control as HTMLLabelElement;
+    if (el?.nodeName === 'INPUT' || el?.nodeName === 'SELECT') {
+      if (isReadOnly(el)) {
+        e.stopImmediatePropagation(); // Prevent click from reaching React and other listeners
+        e.preventDefault();
+        el[el.nodeName === 'SELECT' ? 'blur' : 'focus'](); // Blur select to prevent opening on mobile, focus input to recreate <label>-click behavior
+        requestAnimationFrame(() => el.isConnected && el.focus()); // Move focus back to select after event has finished bubbling
+      }
+      return;
     }
   }
 };
 
-const handleClick = (e: Event) => {
-  const input = (e.target as Element)?.closest?.('label')?.control || e.target;
-  if (isReadOnly(input)) {
-    e.preventDefault();
-    input.focus();
-  }
-};
-
-const handleMouseDown = (e: Event) => {
-  if (e.target instanceof HTMLSelectElement && isReadOnly(e.target))
-    e.preventDefault();
-};
-
 onHotReload('readonly', () => [
-  on(document, 'keydown', handleKeyDown),
-  on(document, 'click', handleClick), // click needed for <label> and <input>
-  on(document, 'mousedown', handleMouseDown), // mousedown needed for <select>
+  on(document, 'keydown', handleKeydown),
+  on(document, 'click', handleClick, true), // click needed for <label> and <input type="checkbox|radio">, using capture to ensure we run before React
+  on(document, 'mousedown', handleSelect, true), // needed for <select> on desktop
 ]);

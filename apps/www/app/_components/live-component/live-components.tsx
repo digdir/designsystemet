@@ -204,7 +204,7 @@ const Editor = ({
       <ds.ToggleGroup
         className={classes.language}
         variant='secondary'
-        data-toggle-group={t('live-component.language')}
+        aria-label={t('live-component.language')}
         data-size='sm'
         value={showHTML.toString()}
         onChange={(v) => setShowHTML(v === 'true')}

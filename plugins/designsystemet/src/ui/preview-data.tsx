@@ -76,7 +76,7 @@ export function PreviewView({
               <div>
                 <div className='tx-control-label'>Theme</div>
                 <ToggleGroup
-                  data-toggle-group='Toggle between themes'
+                  aria-label='Toggle between themes'
                   value={selectedTheme ?? undefined}
                   onChange={onSelectTheme}
                 >
@@ -92,7 +92,7 @@ export function PreviewView({
               <div>
                 <div className='tx-control-label'>Color scheme</div>
                 <ToggleGroup
-                  data-toggle-group='Toggle between color schemes'
+                  aria-label='Toggle between color schemes'
                   value={selectedScheme ?? undefined}
                   onChange={onSelectScheme}
                 >
