@@ -192,7 +192,7 @@ Functions to accept or reject should be coded as buttons (`<button>`), since the
 ### Landmarks and accessible names
 For screen readers to detect the banner as a landmark, the section must have an accessible name. Use `aria-labelledby` linked to the banner's heading instead of `aria-label`, to avoid the text being read aloud twice:
 
-```
+```html
 <section aria-labelledby="consentbanner-title">
   <h2 id="consentbanner-title">TITLE</h2>
   ...
