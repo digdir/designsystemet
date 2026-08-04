@@ -1,6 +1,6 @@
-import { forwardRef, type MouseEvent } from 'react';
+import '@digdir/designsystemet-web'; // Load search-clear behavior
+import { forwardRef } from 'react';
 import { Button, type ButtonProps } from '../button/button';
-import { setReactInputValue } from '../Combobox/utilities';
 
 /* We omit children since we render the icon with css */
 export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
@@ -21,33 +21,13 @@ export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
  * </Search>
  */
 export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
-  function SearchClear({ 'aria-label': label = 'Tøm', onClick, ...rest }, ref) {
-    const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
-      const target = e.target;
-      let input: HTMLElement | null | undefined = null;
-
-      if (target instanceof HTMLElement)
-        input = target.closest('.ds-search')?.querySelector('input');
-
-      if (!input) throw new Error('Input is missing');
-      /* narrow type to make TS happy */
-      if (!(input instanceof HTMLInputElement))
-        throw new Error('Input is not an input element');
-
-      e.preventDefault();
-      setReactInputValue(input, '');
-      input.focus();
-      onClick?.(e);
-    };
-
+  function SearchClear({ 'aria-label': label = 'Tøm', ...rest }, ref) {
     return (
       <Button
         ref={ref}
         variant='tertiary'
         type='reset'
         aria-label={label}
-        onClick={handleClear}
-        icon={true}
         {...rest}
       />
     );

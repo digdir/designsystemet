@@ -48,29 +48,30 @@
    */
   & > button[type='reset'] {
     --dsc-button-size: var(--dsc-search-clear-size);
-    --_dsc-search-clear: 1; /* Used to recognize element in JS */
 
     grid-area: 1 / 1;
     justify-self: end;
     margin-inline: var(--dsc-search-padding-inline);
     padding: var(--dsc-search-clear-padding);
     scale: 0.75;
+    height: var(--dsc-search-clear-size);
+    width: var(--dsc-search-clear-size);
 
     &::before {
       content: '';
-      height: var(--dsc-search-clear-size);
-      width: var(--dsc-search-clear-size);
+      width: 100%;
+      height: 100%;
       mask: var(--dsc-search-clear-icon-url) center / contain no-repeat;
       background: currentcolor;
     }
   }
 
   /* hide the clear button when input is empty, readonly or disabled */
-  & > input:is(:placeholder-shown, :read-only, :disabled, [aria-disabled='true']) ~ button[type='reset'] {
+  & > input:is(:placeholder-shown, :read-only, :disabled, [aria-disabled='true']) + button[type='reset'] {
     display: none;
   }
 
-  & > input:has(~ button[type='reset']) {
+  & > input:has(+ button[type='reset']) {
     padding-inline-end: calc(var(--dsc-search-clear-size) + var(--dsc-search-padding-inline));
   }
 
