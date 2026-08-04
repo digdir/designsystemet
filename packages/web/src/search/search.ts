@@ -1,9 +1,5 @@
 import { attr, on, onHotReload } from '../utils/utils';
 
-// Clears and focuses the sibling <input> when the search's reset button is
-// clicked, so Search.Clear works without any framework JS. Bails out if
-// something else (e.g. React's client Search.Clear) already handled the
-// click, to avoid double-handling.
 const handleClick = (event: Event) => {
   if (event.defaultPrevented) return;
   for (const el of event.composedPath() as Element[])
