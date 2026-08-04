@@ -2,6 +2,7 @@ import './clickdelegatefor/clickdelegatefor';
 import './details/details';
 import './dialog/dialog';
 import './fieldset/fieldset';
+import './focusgroup/focusgroup';
 import './invokers/invokers';
 import './popover/popover';
 import './readonly/readonly';

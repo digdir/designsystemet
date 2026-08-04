@@ -362,7 +362,7 @@ export const Inverted = meta.story({
       </Demo>
 
       <Demo label='ToggleGroup'>
-        <ToggleGroup data-toggle-group='Filtrering' defaultValue='innboks'>
+        <ToggleGroup aria-label='Filtrering' defaultValue='innboks'>
           <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
           <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
           <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
