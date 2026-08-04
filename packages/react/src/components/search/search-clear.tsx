@@ -27,6 +27,7 @@ export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
         aria-label={label}
         data-search='clear'
         ref={ref}
+        type='reset'
         variant='tertiary'
         {...rest}
       />

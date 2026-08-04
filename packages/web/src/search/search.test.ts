@@ -7,7 +7,7 @@ describe('search behavior', () => {
     document.body.innerHTML = `
       <div class="ds-search">
         <input type="search" value="Hello" />
-        <button data-search="clear"></button>
+        <button type="reset" data-search="clear"></button>
       </div>
     `;
 
@@ -26,7 +26,7 @@ describe('search behavior', () => {
     document.body.innerHTML = `
       <div class="ds-search">
         <input type="search" value="Hello" />
-        <button data-search="clear"></button>
+        <button type="reset" data-search="clear"></button>
       </div>
     `;
 

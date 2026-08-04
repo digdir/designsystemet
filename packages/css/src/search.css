@@ -46,7 +46,7 @@
   /**
    * Clear button
    */
-  & > button[data-search='clear'] {
+  & > button[type='reset'] {
     --dsc-button-size: var(--dsc-search-clear-size);
 
     grid-area: 1 / 1;
@@ -67,18 +67,18 @@
   }
 
   /* hide the clear button when input is empty, readonly or disabled */
-  & > input:is(:placeholder-shown, :read-only, :disabled, [aria-disabled='true']) + button[data-search='clear'] {
+  & > input:is(:placeholder-shown, :read-only, :disabled, [aria-disabled='true']) + button[type='reset'] {
     display: none;
   }
 
-  & > input:has(+ button[data-search='clear']) {
+  & > input:has(+ button[type='reset']) {
     padding-inline-end: calc(var(--dsc-search-clear-size) + var(--dsc-search-padding-inline));
   }
 
   /**
    * Search button
    */
-  & > button:not([data-search='clear']) {
+  & > button:not([type='reset']) {
     border-start-start-radius: 0;
     border-end-start-radius: 0;
 
@@ -86,7 +86,7 @@
       border-inline-start: 0;
     }
   }
-  &:has(button:not([data-search='clear'])) {
+  &:has(button:not([type='reset'])) {
     &::before {
       display: none; /* Hide magnifying glass if search button is present */
     }

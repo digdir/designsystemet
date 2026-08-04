@@ -2,15 +2,16 @@ import { attr, on, onHotReload } from '../utils/utils';
 
 const handleClick = (event: Event) => {
   if (event.defaultPrevented) return;
-  for (const el of event.composedPath() as Element[])
+  for (const el of event.composedPath() as HTMLButtonElement[])
     if (el.nodeName === 'BUTTON') {
-      const input =
-        attr(el, 'data-search') === 'clear' && el.previousElementSibling;
+      if (el.type === 'reset' && attr(el, 'data-search') === 'clear') {
+        const input = el.previousElementSibling;
 
-      if (input instanceof HTMLInputElement) {
-        event.preventDefault();
-        setInputValue(input, '', 'deleteContentBackward');
-        input.focus();
+        if (input instanceof HTMLInputElement) {
+          event.preventDefault();
+          setInputValue(input, '', 'deleteContentBackward');
+          input.focus();
+        }
       }
       return; // Always stop iterating if we hit a button
     }
