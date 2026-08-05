@@ -34,6 +34,20 @@ describe('Dropdown', async () => {
     expect(screen.getByText('Item 2')).toBeInTheDocument();
   });
 
+  it('should not have ds-popover class', async () => {
+    render(
+      <Comp data-testid="dropdown">
+        <Dropdown.Item>
+          <Dropdown.Button>Item 2</Dropdown.Button>
+        </Dropdown.Item>
+      </Comp>,
+    );
+
+    const dropdown = screen.getByRole('button').nextElementSibling;
+    expect(dropdown).not.toHaveClass('ds-popover');
+    expect(dropdown).toHaveClass('ds-dropdown');
+  });
+
   it('should be able to render `Dropdown.Button` as a anchor element using asChild', async () => {
     render(
       <Comp>

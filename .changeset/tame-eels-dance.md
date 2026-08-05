@@ -1,5 +1,6 @@
 ---
 "@digdir/designsystemet-react": patch
+"@digdir/designsystemet-css": patch
 ---
 
-**Popover:** no longer adds the `ds-popover` class when used internally by `Dropdown`.
+**Dropdown:** no longer adds or require the `ds-popover` class.
