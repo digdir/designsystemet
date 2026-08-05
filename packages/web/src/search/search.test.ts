@@ -1,6 +1,5 @@
 /// <reference types="@testing-library/jest-dom" />
 
-import '../suggestion/suggestion';
 import { describe, expect, it } from 'vitest';
 
 describe('search behavior', () => {
