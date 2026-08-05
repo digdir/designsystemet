@@ -119,7 +119,6 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
           aria-label={label} // Backwards compatible with data-toggle-group, but aria-label is preferred
           className={cl('ds-toggle-group', className)}
           data-variant={variant}
-          // @ts-expect-error focusgroup is not part of React Typescript definition yet
           focusgroup='radiogroup'
           ref={ref}
           suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes

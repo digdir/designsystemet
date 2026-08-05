@@ -1,0 +1,88 @@
+---
+title: focusgroup
+sidebar_title: focusgroup
+order: 60
+---
+
+`focusgroup` er en nettleser- attributt som muliggjør tastaturnavigasjon for komponenter som verktøylinjer og menyer.
+Den støttes av Chrome 150 og nyere, og polyfilles automatisk av Designsystemet for nettlesere som ikke støtter den ennå.
+[Se Open UI-forklaringen &rarr;](https://open-ui.org/components/scoped-focusgroup.explainer/)
+
+## Bruk
+
+Legg til `focusgroup`-attributten på et container-element, med en verdi som beskriver ønsket oppførsel. Dette gir containerens fokuserbare barn piltastnavigasjon, ett tab-stopp, og hukommelse for sist fokuserte element.
+
+```html
+<div focusgroup="toolbar wrap">
+  <button>Bold</button>
+  <button>Italic</button>
+  <button>Underline</button>
+</div>
+```
+
+Verdien til `focusgroup` består av følgende tokens:
+
+| Token | Påkrevd? | Hva det gjør |
+| --- | --- | --- |
+| `toolbar`, `tablist`, `radiogroup`, `listbox`, `menu` eller `menubar` | Ja | Setter standard ARIA-roller og [standardverdier for de øvrige tokenene](https://open-ui.org/components/scoped-focusgroup.explainer/#focusgroup-tokens). |
+| `inline` eller `block` | Valgfritt | Begrenser aksen for piltastnavigasjon. |
+| `wrap` eller `nowrap` | Valgfritt | Om fokus skal loope eller stoppe ved kantene. |
+| `nomemory` | Valgfritt | Deaktiverer gjenoppretting av fokus ved gjeninntreden. |
+
+### Når bør jeg bruke `focusgroup`?
+
+Bruk `focusgroup` når du bygger en applikasjon eller widget hvor brukerne forventer piltastnavigasjon, og ett tab-stopp på tvers av et sett med relaterte kontroller.
+
+**Merk:** Foretrekk å bruke [Tabs](/no/components/docs/tabs) fremfor `focusgroup="tablist"` i Designsystemet, ettersom [Tabs](/no/components/docs/tabs) allerede utvider dette mønsteret med fane-aktivering, automatisk kobling av faner til paneler osv.
+
+### Definere focusstart
+
+Du kan markere et spesifikt element som det som skal motta fokus første gang gruppen fokuseres, ved å bruke `focusgroupstart`-attributten:
+
+```html
+<div focusgroup="toolbar">
+  <button>Bold</button>
+  <button focusgroupstart>Italic</button>
+  <button>Underline</button>
+</div>
+```
+
+### Ekskludere fra en focusgroup
+
+Du kan ekskludere et element og dets undertre fra en overordnet focusgroup ved å sette `focusgroup="none"` på det. Elementer inne i det ekskluderte undertreet hoppes over av piltastnavigasjon, men er fortsatt tilgjengelige med Tab.
+
+```html
+<div focusgroup="toolbar wrap">
+  <button>A</button>
+  <span focusgroup="none">
+    <button>Ikke tilgjengelig med piltaster</button>
+  </span>
+  <button>B</button>
+</div>
+```
+
+### Nøstede focusgroups
+
+Du kan nøste en ny `focusgroup`-deklarasjon inne i en annen, for eksempel en `menu` inne i en `menubar`. En nøstet focusgroup oppretter sin egen uavhengige gruppe, og ekskluderes automatisk fra den overordnede gruppens piltastnavigasjon.
+
+```html
+<div focusgroup="menubar">
+  <button popovertarget="fontmenu">Font</button>
+  <div focusgroup="menu" id="fontmenu" popover>
+    <button>Sans-serif</button>
+    <button>Serif</button>
+    <button>Monospace</button>
+  </div>
+</div>
+```
+
+### ARIA-roller
+
+Dersom de fokuserbare elementene ikke har en eksplisitt `role`, vil `focusgroup` automatisk sette opp ARIA-roller for deg, basert på behavior-tokenet.
+
+## Ikke implementert i polyfillen
+
+For å sikre god ytelse i applikasjonen har Designsystemets polyfill noen bevisste, mindre avvik fra spesifikasjonen:
+
+- ARIA-roller settes ved første interaksjon - ikke umiddelbart
+- Memory tømmes ikke ved endring av `disabled`, `hidden` eller `inert`

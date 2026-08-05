@@ -1,21 +1,18 @@
 <Story story="PreviewEn" defaultOpen />
 
 ## Use
-You can use popover in plain HTML by using the `popover` attribute on an element and connecting it to a trigger with `popovertarget`.
-The class name `ds-popover` is applied to the element that is the popover.
+You can use Popover in plain HTML by using the `popover` attribute on an element with the class `ds-popover`, and connecting it to a trigger with `popovertarget="ID-OF-POPOVER-HERE"`.
+Designsystemet automatically adds [popover-polyfill (npmjs.com)](https://www.npmjs.com/package/@oddbird/popover-polyfill) to support the native [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using) in older browsers if needed.
 
-When you use `@digdir/designsystemet-web`, we add a listener that automatically positions the popover correctly using `floating-ui`.
-You can control positioning with attributes on the popover itself.
+You can control positioning with attributes on the popover itself:
 | attribute     | type   | default    | required |
 |---------------|--------|------------|----------|
-| data-placement | string | top        | false    |
+| data-placement | `'top' \| 'top-start' \| 'top-end' \| 'right' \| 'right-start' \| 'right-end' \| 'bottom' \| 'bottom-start' \| 'bottom-end' \| 'left' \| 'left-start' \| 'left-end'` | `'top'`        | false    |
 | data-overscroll | `'contain' \| undefined` | undefined | undefined       | false    |
-| data-autoplacement | boolean | true          | false    |
+| data-autoplacement | `boolean` | `true`          | false    |
 
 
 **If you don't use the class `ds-popover` you need to add the CSS property `--_ds-floating` to the popover element.** This can be `top`, `bottom`, `left` or `right`.
-
-We recommend reading about [popover (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover).
 
 ```html
 <button popovertarget="my-popover">Trigger</button>
