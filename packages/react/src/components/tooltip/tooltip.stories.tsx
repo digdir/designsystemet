@@ -29,6 +29,7 @@ const meta = preview.meta({
     for (const event of [userEvent.hover, fakeFocus])
       for (const tooltipTrigger of Array.from(tooltips)) {
         await event(tooltipTrigger);
+        await new Promise((resolve) => setTimeout(resolve, 300)); // Wait for tooltip to appear
         await waitFor(async () => {
           const text = tooltipTrigger.getAttribute('data-tooltip');
           if (!text) {
