@@ -8,7 +8,7 @@ import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Context } from './popover-trigger-context';
 
-const IS_DROPDOWN = /\bds-dropdown\b/;
+const IS_DROPDOWN = /(?:^|\s)ds-dropdown(?:\s|$)/;
 
 export type PopoverProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
