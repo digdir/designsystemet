@@ -36,7 +36,7 @@ describe('Dropdown', async () => {
 
   it('should not have ds-popover class', async () => {
     render(
-      <Comp data-testid="dropdown">
+      <Comp data-testid='dropdown'>
         <Dropdown.Item>
           <Dropdown.Button>Item 2</Dropdown.Button>
         </Dropdown.Item>
