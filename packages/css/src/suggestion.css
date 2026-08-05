@@ -342,7 +342,7 @@
   & > input {
     padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
   }
-  /* Draw chevron even when input is empty and button[aria-expanded] does not exsist */
+  /* Draw chevron even when input is empty and button[aria-expanded] does not exist */
   &:where(:not(:has(button[aria-expanded], button[type='reset']:not([hidden])))) > input[aria-expanded] {
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
     background-repeat: no-repeat;
