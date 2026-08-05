@@ -1,9 +1,10 @@
+import '@digdir/designsystemet-web'; // Load suggestion behavior
+import type { DSSuggestionElement } from '@digdir/designsystemet-web';
 import cl from 'clsx/lite';
 import { forwardRef, type HTMLAttributes } from 'react';
-
 import type { DefaultProps } from '../../types';
 
-export type SearchProps = DefaultProps & HTMLAttributes<HTMLDivElement>;
+export type SearchProps = DefaultProps & HTMLAttributes<DSSuggestionElement>;
 
 /**
  * Search component, use to display different variations of a search input
@@ -21,9 +22,14 @@ export type SearchProps = DefaultProps & HTMLAttributes<HTMLDivElement>;
  *   <Search.Clear />
  * </Search>
  */
-export const Search = forwardRef<HTMLDivElement, SearchProps>(function Search(
-  { className, ...rest },
-  ref,
-) {
-  return <div ref={ref} className={cl('ds-search', className)} {...rest} />;
-});
+export const Search = forwardRef<DSSuggestionElement, SearchProps>(
+  function Search({ className, ...rest }, ref) {
+    return (
+      <ds-suggestion
+        ref={ref}
+        className={cl('ds-search', className)}
+        {...rest}
+      />
+    );
+  },
+);

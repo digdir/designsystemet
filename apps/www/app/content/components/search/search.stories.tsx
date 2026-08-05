@@ -11,7 +11,7 @@ import { useState } from 'react';
 export const Preview = () => {
   return (
     <Search>
-      <Search.Input aria-label='Søk' />
+      <Search.Input type='text' aria-label='Søk' />
       <Search.Clear />
       <Search.Button />
     </Search>
@@ -21,7 +21,7 @@ export const Preview = () => {
 export const PreviewEn = () => {
   return (
     <Search>
-      <Search.Input aria-label='Søk' />
+      <Search.Input type='text' aria-label='Søk' />
       <Search.Clear />
       <Button>Search</Button>
     </Search>
@@ -33,7 +33,7 @@ export const WithLabel = () => {
     <Field>
       <Label>Søk etter katter</Label>
       <Search>
-        <Search.Input name='cat-search' />
+        <Search.Input type='text' name='cat-search' />
         <Search.Clear />
         <Search.Button />
       </Search>
@@ -46,7 +46,7 @@ export const WithLabelEn = () => {
     <Field>
       <Label>Search for cats</Label>
       <Search>
-        <Search.Input name='cat-search' />
+        <Search.Input type='text' name='cat-search' />
         <Search.Clear />
         <Button>Search</Button>
       </Search>
@@ -65,7 +65,7 @@ export const Variants = () => {
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Search>
-        <Search.Input aria-label='Søk' />
+        <Search.Input type='text' aria-label='Søk' />
         <Search.Clear />
         <Search.Button />
       </Search>
@@ -73,7 +73,7 @@ export const Variants = () => {
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Search>
-        <Search.Input aria-label='Søk' />
+        <Search.Input type='text' aria-label='Søk' />
         <Search.Clear />
         <Search.Button variant='secondary' />
       </Search>
@@ -92,7 +92,7 @@ export const VariantsEn = () => {
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Search>
-        <Search.Input aria-label='Søk' />
+        <Search.Input type='text' aria-label='Søk' />
         <Search.Clear />
         <Button>Search</Button>
       </Search>
@@ -100,7 +100,7 @@ export const VariantsEn = () => {
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Search>
-        <Search.Input aria-label='Søk' />
+        <Search.Input type='text' aria-label='Søk' />
         <Search.Clear />
         <Button variant='secondary'>Search</Button>
       </Search>
@@ -123,6 +123,7 @@ export const Form = () => {
       >
         <Search>
           <Search.Input
+            type='text'
             aria-label='Søk'
             value={value}
             onChange={(e) => setValue(e.target.value)}

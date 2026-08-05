@@ -1,5 +1,7 @@
 ---
 "@digdir/designsystemet-web": minor
+"@digdir/designsystemet-react": minor
+"@digdir/designsystemet-css": minor
 ---
 
-**Search:** new `@digdir/designsystemet-web/search` module clears and focuses the input when a nested `<button data-search="clear">` is clicked.
+**Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React

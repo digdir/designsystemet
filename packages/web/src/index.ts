@@ -6,7 +6,6 @@ import './focusgroup/focusgroup';
 import './invokers/invokers';
 import './popover/popover';
 import './readonly/readonly';
-import './search/search';
 import './toggle-group/toggle-group';
 import './tooltip/tooltip';
 

@@ -1,4 +1,3 @@
-import '@digdir/designsystemet-web'; // Load search-clear behavior
 import { forwardRef } from 'react';
 import { Button, type ButtonProps } from '../button/button';
 
@@ -25,7 +24,6 @@ export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
     return (
       <Button
         aria-label={label}
-        data-search='clear'
         ref={ref}
         type='reset'
         variant='tertiary'

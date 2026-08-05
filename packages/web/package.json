@@ -81,11 +81,6 @@
       "import": "./dist/esm/readonly/readonly.js",
       "require": "./dist/cjs/readonly/readonly.cjs"
     },
-    "./search": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/esm/search/search.js",
-      "require": "./dist/cjs/search/search.cjs"
-    },
     "./ds-suggestion": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/suggestion/suggestion.js",
@@ -121,7 +116,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.8.0",
-    "@u-elements/u-combobox": "^2.1.0",
+    "@u-elements/u-combobox": "^2.1.1",
     "@u-elements/u-datalist": "^2.0.3",
     "@u-elements/u-details": "^1.0.0",
     "@u-elements/u-tabs": "^1.0.4"
