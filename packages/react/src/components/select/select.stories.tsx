@@ -74,7 +74,7 @@ export const ReadOnly = meta.story({
 
   args: {
     'aria-readonly': true,
-    value: 'sogndal',
+    defaultValue: 'sogndal',
   },
 });
 

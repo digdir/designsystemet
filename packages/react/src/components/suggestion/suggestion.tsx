@@ -52,7 +52,6 @@ type Filter = (args: {
 
 type SuggestionContextType = {
   handleFilter: (input?: HTMLInputElement | null) => void;
-  isEmpty?: boolean;
   dsSuggestionRef?: RefObject<DSSuggestionElement | null>;
 };
 
@@ -185,7 +184,6 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
     const selectId = rest.id ? `${rest.id}-select` : genId;
     const isControlled = selected !== undefined;
     const mergedRefs = useMergeRefs([ref, dsSuggestionRef]);
-    const [isEmpty, setIsEmpty] = useState(false);
     const [defaultItems, setDefaultItems] = useState<SuggestionItem[]>(
       sanitizeItems(defaultSelected),
     );
@@ -257,14 +255,10 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
               }) && Boolean(++disabled);
           index++; // Increment index for each <option>
         }
-
-      setIsEmpty(index === disabled);
     }, [filter]);
 
     return (
-      <SuggestionContext.Provider
-        value={{ isEmpty, handleFilter, dsSuggestionRef }}
-      >
+      <SuggestionContext.Provider value={{ handleFilter, dsSuggestionRef }}>
         <ds-suggestion
           data-multiple={multiple || undefined}
           data-creatable={creatable || undefined}
