@@ -344,7 +344,7 @@
     padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
   }
   /* Draw chevron even when input is empty and button[aria-expanded] does not exist */
-  &:where(:not(:has(button[aria-expanded], button[type='reset']:not([hidden])))) > input[aria-expanded] {
+  &:where(:has(u-datalist):not(:has(button[aria-expanded], button[type='reset']:not([hidden])))) > input {
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
     background-repeat: no-repeat;
     background-size: 0.4em 0.4em;
@@ -352,7 +352,7 @@
       linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
       linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
   }
-  & > input[aria-expanded]:dir(rtl) {
+  &:has(u-datalist) > input:dir(rtl) {
     background-position: calc(1.2em - var(--dsc-input-stroke-width)), 0.8em;
   }
   & > input:is(:read-only, :disabled, [aria-disabled='true']) ~ :is(del, button[type='reset'], button[aria-expanded]) {
