@@ -1,0 +1,46 @@
+diff --git a/dist/popover-fn.js b/dist/popover-fn.js
+index 34cad556cad4c8bcece443211feea2d24cf493dc..4decb1a420e4dcc8b21481881e2beaa6527d512a 100644
+--- a/dist/popover-fn.js
++++ b/dist/popover-fn.js
+@@ -517,7 +517,7 @@ function hasLayerSupport() {
+ function getStyles(layerName) {
+   var _a;
+   const useLayer = hasLayerSupport();
+-  const layerNameEscaped = (layerName ?? ((_a = window.POPOVER_POLYFILL_OPTIONS) == null ? void 0 : _a.layerName) ?? DEFAULT_LAYER_NAME).split(".").map(CSS.escape).join(".");
++  const layerNameEscaped = (layerName ?? ((_a = window.POPOVER_POLYFILL_OPTIONS) == null ? void 0 : _a.layerName) ?? DEFAULT_LAYER_NAME).split(".").map((c) => CSS.escape(c)).join(".");
+   return `
+ ${useLayer ? `@layer ${layerNameEscaped} {` : ""}
+   :where([popover]) {
+@@ -601,7 +601,7 @@ function injectStyles(root, layerName) {
+     } else {
+       root.prepend(sheet);
+     }
+-  } else {
++  } else if (root.adoptedStyleSheets) {
+     root.adoptedStyleSheets = [popoverStyleSheet, ...root.adoptedStyleSheets];
+   }
+ }
+@@ -651,6 +651,7 @@ function apply(opts) {
+     showPopover: {
+       enumerable: true,
+       configurable: true,
++      writable: true,
+       // eslint-disable-next-line @typescript-eslint/no-unused-vars
+       value(options = {}) {
+         showPopover(this);
+@@ -659,6 +660,7 @@ function apply(opts) {
+     hidePopover: {
+       enumerable: true,
+       configurable: true,
++      writable: true,
+       value() {
+         hidePopover(this, true, true);
+       }
+@@ -666,6 +668,7 @@ function apply(opts) {
+     togglePopover: {
+       enumerable: true,
+       configurable: true,
++      writable: true,
+       value(options = {}) {
+         if (typeof options === "boolean") {
+           options = { force: options };

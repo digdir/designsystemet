@@ -1,6 +1,7 @@
 // Many of these tests are based on https://github.com/microsoft/polyfills/tree/main/packages/focusgroup
+
+import { userEvent } from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { userEvent } from 'vitest/browser';
 import { getGroup, getItems, isConflict, isFocusable } from './focusgroup';
 
 const setupPageWithShadowRoots = (html: string) => {

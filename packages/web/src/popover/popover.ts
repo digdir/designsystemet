@@ -24,8 +24,17 @@ import {
   QUICK_EVENT,
 } from '../utils/utils';
 
-if (isBrowser() && !isSupported() && !isPolyfilled())
+if (isBrowser() && !isSupported() && !isPolyfilled()) {
+  // console.log({
+  //   CSS: typeof CSS,
+  //   escape: typeof CSS.escape,
+  //   escaped: 'ds.base'
+  //     .split('.')
+  //     .map((css) => CSS.escape(css))
+  //     .join('.'),
+  // });
   polyfillPopover({ layerName: 'ds.base' }); // Load popover polyfill in the ds.base CSS layer to keep cascade order consistent with Designsystemet layers.
+}
 
 // NOTE:
 // The native popover event "toggle" is not composed, meaning it does not bubble out of shadow DOM.
@@ -147,46 +156,79 @@ const handleClick = (e: Event) => {
 };
 
 onHotReload('popover', () => {
-  const isFunction = (fn: unknown) => typeof fn === 'function';
   const togglePopover = HTMLElement.prototype.togglePopover;
   const showPopover = HTMLElement.prototype.showPopover;
   const hidePopover = HTMLElement.prototype.hidePopover;
 
   // Since toggle event is not composed, we need to trigger it when programatically called inside shadow DOM
-  if (isFunction(togglePopover))
-    HTMLElement.prototype.togglePopover = function (opt) {
-      const isOpen = this.matches(':popover-open');
-      const isBool = typeof opt === 'boolean';
-      const prev = isOpen ? 'open' : 'closed';
-      const next = (isBool ? opt : (opt?.force ?? !isOpen)) ? 'open' : 'closed';
-      const source = isBool ? undefined : opt?.source;
-      const result = togglePopover.call(this, opt as TogglePopoverOptions);
-      toggle(this, next, prev, source);
-      return result;
-    };
-  if (isFunction(showPopover))
-    HTMLElement.prototype.showPopover = function (opt) {
-      const prev = this.matches(':popover-open') ? 'open' : 'closed';
-      const result = showPopover.call(this, opt);
-      toggle(this, 'open', prev, opt?.source);
-      return result;
-    };
-  if (isFunction(hidePopover))
-    HTMLElement.prototype.hidePopover = function () {
-      const prev = this.matches(':popover-open') ? 'open' : 'closed';
-      const result = hidePopover.call(this);
-      toggle(this, 'closed', prev);
-      return result;
-    };
+  Object.defineProperties(HTMLElement.prototype, {
+    togglePopover: {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value(opt: TogglePopoverOptions) {
+        const isOpen = this.matches(':popover-open');
+        const isBool = typeof opt === 'boolean';
+        const prev = isOpen ? 'open' : 'closed';
+        const next = (isBool ? opt : (opt?.force ?? !isOpen))
+          ? 'open'
+          : 'closed';
+        const source = isBool ? undefined : opt?.source;
+        const result = togglePopover?.call(this, opt as TogglePopoverOptions);
+        toggle(this, next, prev, source);
+        return result;
+      },
+    },
+    showPopover: {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value(opt: ShowPopoverOptions) {
+        const prev = this.matches(':popover-open') ? 'open' : 'closed';
+        const result = showPopover?.call(this, opt);
+        toggle(this, 'open', prev, opt?.source);
+        return result;
+      },
+    },
+    hidePopover: {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value() {
+        const prev = this.matches(':popover-open') ? 'open' : 'closed';
+        const result = hidePopover?.call(this);
+        toggle(this, 'closed', prev);
+        return result;
+      },
+    },
+  });
 
   return [
     on(document, 'click', handleClick, QUICK_EVENT),
     on(document, 'pointerdown pointerup scroll', handleScrollbar, QUICK_EVENT),
     on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
     () => {
-      HTMLElement.prototype.togglePopover = togglePopover; // Restore original methods on hot reload
-      HTMLElement.prototype.showPopover = showPopover;
-      HTMLElement.prototype.hidePopover = hidePopover;
+      // Restore original methods on hot reload
+      Object.defineProperties(HTMLElement.prototype, {
+        togglePopover: {
+          configurable: true,
+          enumerable: true,
+          value: togglePopover,
+          writable: true,
+        },
+        showPopover: {
+          configurable: true,
+          enumerable: true,
+          value: showPopover,
+          writable: true,
+        },
+        hidePopover: {
+          configurable: true,
+          enumerable: true,
+          value: hidePopover,
+          writable: true,
+        },
+      });
       for (const [, off] of ROOTS) off(); // Cleanup listeners on ShadowRoots on hot reload
       ROOTS.clear();
     },

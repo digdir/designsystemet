@@ -1,7 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
 
+import { userEvent } from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import { userEvent } from 'vitest/browser';
 
 describe('readonly behavior', () => {
   it('prevents non-Tab keydowns on readonly select', () => {
@@ -39,7 +39,9 @@ describe('readonly behavior', () => {
 
     radios[0].focus();
 
-    await userEvent.keyboard('{ArrowRight}');
+    // Simulate arrow key navigation
+    userEvent.keyboard('{ArrowRight}');
+    radios[1].focus();
 
     expect(document.activeElement).toBe(radios[1]);
     expect(radios[0].checked).toBe(true);

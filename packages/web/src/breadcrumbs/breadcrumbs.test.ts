@@ -174,6 +174,8 @@ describe('Breadcrumbs component', () => {
 
     const breadcrumbs = document.querySelector('ds-breadcrumbs');
     const lastLink = [...(breadcrumbs?.querySelectorAll('a') || [])].pop();
+    setOffsetHeight(lastLink, 10); // Ensure non-CSS environments like JSDOM and Happy DOM have a non-zero offsetHeight for the last link
+    await renderAndResize();
     expect(breadcrumbs).toHaveAttribute('role', 'navigation');
 
     setOffsetHeight(lastLink, 0);
