@@ -5,3 +5,47 @@ Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponen
 ## Gi beskjed ved endringer på siden
 
 Hvis deler av siden oppdateres mens brukeren interagerer med `Chip`, må vi sørge for at skjermleserbrukere får beskjed om det. Bruk en `ARIA live region` for å formidle endringer, for eksempel oppdatert antall treff eller annen dynamisk informasjon.
+
+## Dette må du sjekke selv
+
+**En chip som avkorter deler av innholdet må ha tilgjengelig innhold**
+
+Bruk css for å skjule deler av langt innhold, da er innholdet der fortsatt og blir synlig for skjermlesere. 
+Teksten skal også dupliseres i `title` for å bli synlig ved mouseover for seende brukere.
+
+<span data-size="sm"> 
+WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/veiledning/131-informasjon-og-relasjoner/1234)
+</span> 
+
+<Divider/>
+\
+
+**Chip som fungerer som et filtervalg skal ha et tilgjengelig navn som beskriver hva den gjør**
+
+Kombiner et ord som forklarer funksjonen med innholdet i chip, for eksempel "Ta bort Norge" for et valgt filter "Norge", navnet angis med `aria-label`
+
+<span data-size="sm"> 
+WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
+</span> 
+
+<Divider/>
+\
+
+**Chip som fungerer som kun inneholder et icon**
+
+Bruk `aria-label` for å gi et tilgjengelig navn, pass på at navnet er beskrivende for funksjonalitet og innhold.
+
+<span data-size="sm"> 
+WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231)
+</span> 
+
+<Divider/>
+\
+## Test med tastatur
+
+**Sjekk at du kan**
+- nå chip med tab-tasten
+- aktivere, velge og avvelge chip med både mellomrom- og entertasten
+- fjerne en chip med både delete- og backspacetastene
+- navigere mellom flere grupperte chips med piltastene
+- nå interaktivt innhold som vises ved å aktivere en chip, med tab-tasten
