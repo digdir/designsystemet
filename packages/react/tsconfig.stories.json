@@ -3,11 +3,9 @@
   "compilerOptions": {
     "rootDir": "../../",
     "outDir": "./tsc-build",
-    "allowSyntheticDefaultImports": true,
     "composite": true,
     "noEmit": false,
     "emitDeclarationOnly": true,
-    "incremental": true,
     "types": [
       "./declarations.d.ts",
       "./react-types.d.ts",
@@ -19,6 +17,7 @@
     "stories",
     "src/**/*.stories.ts*",
     "src/**/*.chromatic.ts*",
+    "../../apps/storybook/.storybook/**/*.ts*",
     "../../apps/storybook/story-utils/**/*.ts*",
     "../../designsystemet.config.json"
   ],

@@ -11,12 +11,14 @@ import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
+import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import { getStories } from '../../_utils/get-stories.server';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const { '*': file } = params;
+  // RR v8 prerenders HTML with a trailing slash; strip it from the splat param.
+  const file = stripTrailingSlash(params['*']);
 
   // Read the file content
   const fileContent = getFileFromContentDir(
@@ -51,8 +53,8 @@ export async function loader({ params }: Route.LoaderArgs) {
   };
 }
 
-export const meta = ({ data }: Route.MetaArgs) => {
-  if (!data)
+export const meta = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData)
     return [
       {
         title: 'Designsystemet',
@@ -60,7 +62,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
     ];
   const {
     frontmatter: { title, description },
-  } = data;
+  } = loaderData;
   return generateMetadata({
     title,
     description,

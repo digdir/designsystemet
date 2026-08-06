@@ -1,4 +1,3 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
@@ -8,10 +7,6 @@ import type { MergeRight } from '../../utilities';
 export type TagProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
   {
-    /**
-     * Change the color scheme of the tag
-     */
-    'data-color'?: Color | SeverityColors;
     /**
      * The visual variant of the tag
      *

@@ -1,9 +1,8 @@
 import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
-import { baseColors } from '../colors/colorMetadata.js';
-import type { CssColor } from '../index.js';
-import type { Theme, TokenSet } from './types.js';
+import { baseColors } from '../colors/colorMetadata.ts';
+import type { Theme, TokenSet } from './types.ts';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
 
@@ -149,9 +148,9 @@ export function orderBySize(sizes: string[]): string[] {
   return R.sortBy(sizeComparator, sizes);
 }
 
-export function addSeverityColors(colors: Theme['colors']): Record<string, CssColor> {
+export function addSeverityColors(colors: Theme['colors']): Theme['colors'] {
   // Add severity colors if not present
-  return R.mergeDeepLeft(colors, baseColors);
+  return R.mergeDeepLeft<Theme['colors'], Theme['colors']>(colors, baseColors);
 }
 
 export function toColorNames(themeColors: Theme['colors']): string[] {

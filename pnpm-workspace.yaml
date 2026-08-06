@@ -7,7 +7,6 @@ allowBuilds:
   "@biomejs/biome": true
   '@parcel/watcher': false
   '@swc/core': true
-  esbuild: true
   rs-module-lexer: false
   style-dictionary: true
 blockExoticSubdeps: true
@@ -28,4 +27,4 @@ syncInjectedDepsAfterScripts:
   - build:www
   - build:themebuilder
   - build:storybook
-useNodeVersion: "24.16.0"
+useNodeVersion: "24.18.0"

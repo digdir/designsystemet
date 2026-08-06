@@ -1,32 +1,32 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { describe, expect, it } from 'vitest';
+import { userEvent } from 'vitest/browser';
 
 describe('readonly behavior', () => {
-  it('prevents non-Tab keydowns on readonly inputs', () => {
-    document.body.innerHTML = `<input id="field" type="text" readonly />`;
+  it('prevents non-Tab keydowns on readonly select', () => {
+    document.body.innerHTML = `<select id="field" readonly><option>a</option><option>b</option></select>`;
 
-    const input = document.getElementById('field') as HTMLInputElement;
-
+    const select = document.getElementById('field') as HTMLSelectElement;
     const blocked = new KeyboardEvent('keydown', {
       key: 'a',
       bubbles: true,
       cancelable: true,
     });
-    input.dispatchEvent(blocked);
+    select.dispatchEvent(blocked);
 
     const allowed = new KeyboardEvent('keydown', {
       key: 'Tab',
       bubbles: true,
       cancelable: true,
     });
-    input.dispatchEvent(allowed);
+    select.dispatchEvent(allowed);
 
     expect(blocked.defaultPrevented).toBe(true);
     expect(allowed.defaultPrevented).toBe(false);
   });
 
-  it('moves focus on readonly radio arrows without changing checked state', () => {
+  it('moves focus on readonly radio arrows without changing checked state', async () => {
     document.body.innerHTML = `
       <input type="radio" name="group" aria-readonly="true" checked />
       <input type="radio" name="group" aria-readonly="true" />
@@ -39,12 +39,7 @@ describe('readonly behavior', () => {
 
     radios[0].focus();
 
-    const event = new KeyboardEvent('keydown', {
-      key: 'ArrowRight',
-      bubbles: true,
-      cancelable: true,
-    });
-    radios[0].dispatchEvent(event);
+    await userEvent.keyboard('{ArrowRight}');
 
     expect(document.activeElement).toBe(radios[1]);
     expect(radios[0].checked).toBe(true);

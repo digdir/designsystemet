@@ -1,4 +1,3 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -32,10 +31,6 @@ export type PopoverProps = MergeRight<
      * @default 'default'
      */
     variant?: 'default' | 'tinted';
-    /**
-     * Change the color scheme of the popover
-     */
-    'data-color'?: Color | SeverityColors;
     /**
      * Callback when the popover wants to open.
      */
@@ -126,10 +121,14 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       };
 
       popover?.togglePopover?.(controlledOpen);
-      if (controlledOpen) {
-        const options = { detail: document.querySelector(trigger) };
-        popover?.dispatchEvent(new CustomEvent('ds-toggle-source', options)); // Since togglePopover({ source }) is not supported in all browsers yet
-      }
+      if (controlledOpen)
+        popover?.dispatchEvent(
+          new CustomEvent('ds-toggle-source', {
+            bubbles: true,
+            composed: true, // Enable bubbling out of shadow DOM boundaries
+            detail: document.querySelector(trigger), // Since togglePopover({ source }) is not supported in all browsers yet
+          }),
+        );
 
       document.addEventListener('click', handleClick, true); // Use capture to execute before React event API
       document.addEventListener('keydown', handleKeydown);

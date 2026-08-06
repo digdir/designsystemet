@@ -41,9 +41,9 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export const meta = ({ data }: Route.MetaArgs) => {
-  if (!data) return [{ title: 'Designsystemet' }];
-  return data.metadata;
+export const meta = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData) return [{ title: 'Designsystemet' }];
+  return loaderData.metadata;
 };
 
 export default function Intro() {

@@ -1,6 +1,11 @@
+export const ARIA_DESC = 'aria-description';
+export const ARIA_LABEL = 'aria-label';
+export const ARIA_LABELLEDBY = 'aria-labelledby';
 export const QUICK_EVENT = { passive: true, capture: true };
 
-// Using function instead of constant to support evnironments where DOM can be unloaded (like Vitest with jsdom)
+import { version } from '../../package.json' with { type: 'json' };
+
+// Using function instead of constant to support environments where DOM can be unloaded (like Vitest with jsdom)
 export const isBrowser = () =>
   typeof window !== 'undefined' && typeof document !== 'undefined';
 
@@ -56,7 +61,7 @@ export const attr = (
   name: string,
   value?: string | null,
 ): string | null => {
-  if (value === undefined) return el.getAttribute(name) ?? null; // Fallback to null only if el is undefined
+  if (value === undefined) return el.getAttribute(name);
   if (value === null) el.removeAttribute(name);
   else if (el.getAttribute(name) !== value) el.setAttribute(name, value);
   return null;
@@ -84,8 +89,47 @@ export const attrOrCSS = (el: Element, name: string) => {
   let value = attr(el, name);
   if (!value)
     value = getCSSProp(el, `--_ds-${name}`).replace(STRIP_QUOTES, '').trim();
-  if (!value) warn(`Missing ${name} on:`, el);
   return value || null;
+};
+
+/**
+ * getRoot
+ * @description Helper for better compatibility
+ * @param node The target node
+ * @return The shadow root or document
+ */
+export const getRoot = (node?: Node | null): Document | ShadowRoot => {
+  const root = node?.getRootNode?.() || node?.ownerDocument;
+  if (root instanceof Document || root instanceof ShadowRoot) return root;
+  return node?.ownerDocument || document;
+};
+
+/**
+ * getComposedTarget
+ * @description Helper to get the composed target of an event, supporting ShadowDOM rendering
+ * @param event The event
+ * @return The target Element
+ */
+export const getComposedTarget = (e: Event): Element | null => {
+  const el =
+    ((e.target as Element)?.shadowRoot && e.composedPath()[0]) || e.target; // Only use composedPath if the target has a shadowRoot to boost performance
+  return (el as Node)?.nodeType === 1 ? (el as Element) : null;
+};
+
+/**
+ * getComposedPath
+ * @description Helper to get the full composed path even if listener is bound to a ShadowRoot (unlike event.composedPath())
+ * @param el The element to start traversing from
+ * @return Set of nodes in the path
+ */
+export const getComposedPath = (el: Node | null) => {
+  const path = new Set<Node>();
+  while (el) {
+    path.add(el);
+    if (el.nodeType === 11) el = (el as ShadowRoot).host;
+    else el = (el as Element).assignedSlot || el.parentNode;
+  }
+  return path;
 };
 
 /**
@@ -118,9 +162,10 @@ export const off = (
 };
 
 // Used to store cleanup functions for hot-reloading
+const HOT_RELOAD_KEY = `_dsHotReloadCleanup${version}` as const; // Ensure multiple versions of Designsystemet can run on same page
 declare global {
   interface Window {
-    _dsHotReloadCleanup?: Map<string, Array<() => void>>;
+    [HOT_RELOAD_KEY]?: Map<string, Array<() => void>>;
   }
 }
 
@@ -132,10 +177,9 @@ declare global {
  */
 export const onHotReload = (key: string, setup: () => Array<() => void>) => {
   if (!isBrowser()) return; // Skip if not in modern browser environment, but on each call as Vitest might have unloaded jsdom between tests
-  if (!window._dsHotReloadCleanup) window._dsHotReloadCleanup = new Map(); // Hot reload cleanup support supporting all build tools
-
-  window._dsHotReloadCleanup?.get(key)?.map((cleanup) => cleanup()); // Run previous cleanup
-  window._dsHotReloadCleanup?.set(key, setup()); // Store new cleanup
+  if (!window[HOT_RELOAD_KEY]) window[HOT_RELOAD_KEY] = new Map(); // Hot reload cleanup support supporting all build tools
+  for (const cleanup of window[HOT_RELOAD_KEY]?.get(key) || []) cleanup(); // Run previous cleanup
+  window[HOT_RELOAD_KEY]?.set(key, setup()); // Store new cleanup
 };
 
 /**

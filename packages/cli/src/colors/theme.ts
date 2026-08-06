@@ -1,8 +1,8 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
-import { colorMetadata, getColorMetadataByNumber } from './colorMetadata.js';
-import type { Color, ColorNumber, ColorScheme, CssColor, ThemeInfo } from './types.js';
-import { getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
+import { colorMetadata, getColorMetadataByNumber } from './colorMetadata.ts';
+import type { Color, ColorNumber, ColorScheme, CssColor, ThemeInfo } from './types.ts';
+import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
 export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info'];
 

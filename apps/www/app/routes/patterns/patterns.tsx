@@ -47,9 +47,9 @@ export const loader = async ({
   };
 };
 
-export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
-  if (!data) return [{ title: 'Designsystemet' }];
-  return data.metadata;
+export const meta: Route.MetaFunction = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData) return [{ title: 'Designsystemet' }];
+  return loaderData.metadata;
 };
 
 export default function Patterns({

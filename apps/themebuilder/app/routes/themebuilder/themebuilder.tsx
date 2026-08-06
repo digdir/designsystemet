@@ -116,15 +116,15 @@ export const loader = async ({
   };
 };
 
-export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
-  if (!data?.metadata)
+export const meta: Route.MetaFunction = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData?.metadata)
     return [
       {
         title: 'Theme Builder - Designsystemet',
         description: 'Build your own theme for Designsystemet',
       },
     ];
-  return data.metadata;
+  return loaderData.metadata;
 };
 
 export default function Page() {

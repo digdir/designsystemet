@@ -1,16 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
-  "rootDir": "./src",
   "compilerOptions": {
+    "rootDir": "../../",
     "outDir": "./tsc-build",
     "declarationDir": "./dist/types",
     "emitDeclarationOnly": false,
     "composite": false,
     "jsx": "react",
-    "allowSyntheticDefaultImports": true,
     "noEmit": false,
-    "incremental": true,
-    "moduleResolution": "Bundler",
     "types": [
       "@digdir/designsystemet-css/theme",
       "./declarations.d.ts",

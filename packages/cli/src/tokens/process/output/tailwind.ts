@@ -1,4 +1,4 @@
-import type { OutputFile } from '../../types.js';
+import type { OutputFile } from '../../types.ts';
 
 export const createTailwindCSSFiles = (cssFiles: OutputFile[]): OutputFile[] => {
   console.log('\n🍱 Creating Tailwind Config');

@@ -1,6 +1,6 @@
 import { BriefcaseIcon } from '@navikt/aksel-icons';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { cat1Img, cat3Img, cat4Img, cat5Img } from '../../../stories/constants';
 import {
   Avatar,
@@ -10,9 +10,7 @@ import {
   Tooltip,
 } from '../';
 
-type Story = StoryFn<typeof AvatarStack>;
-
-const meta: Meta<typeof AvatarStack> = {
+const meta = preview.meta({
   title: 'Komponenter/AvatarStack',
   component: AvatarStack,
   parameters: {
@@ -21,289 +19,341 @@ const meta: Meta<typeof AvatarStack> = {
   args: {
     'aria-label': 'Test av aria label',
   },
-};
+});
 
-export default meta;
+export const Preview = meta.story({
+  render: (args) => (
+    <AvatarStack {...args} aria-hidden>
+      <Avatar aria-label='Navn'>{cat1Img}</Avatar>
+      <Avatar aria-label='Navn'>
+        <BriefcaseIcon />
+      </Avatar>
+      <Avatar aria-label='Navn' initials='sm' />
+      <Avatar aria-label='Navn'>md</Avatar>
+      <Avatar aria-label='Navn' initials='ON' />
+    </AvatarStack>
+  ),
+});
 
-export const Preview: Story = (args) => (
-  <AvatarStack {...args} aria-hidden>
-    <Avatar aria-label='Navn'>{cat1Img}</Avatar>
-    <Avatar aria-label='Navn'>
-      <BriefcaseIcon />
-    </Avatar>
-    <Avatar aria-label='Navn' initials='sm' />
-    <Avatar aria-label='Navn'>md</Avatar>
-    <Avatar aria-label='Navn' initials='ON' />
-  </AvatarStack>
-);
-
-export const Expandable: Story = (args) => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'row',
-      gap: 'var(--ds-size-4)',
-      flexWrap: 'wrap',
-    }}
-  >
-    <fieldset
-      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+export const Expandable = meta.story({
+  render: (args) => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 'var(--ds-size-4)',
+        flexWrap: 'wrap',
+      }}
     >
-      <legend>expandable</legend>
-      <AvatarStack {...args} expandable>
-        <Avatar aria-label='profile picture a'>{cat1Img}</Avatar>
-        <Avatar aria-label='profile picture b'>{cat1Img}</Avatar>
-        <Avatar aria-label='profile picture c'>{cat3Img}</Avatar>
-        <Avatar aria-label='profile picture d'>{cat4Img}</Avatar>
-      </AvatarStack>
-    </fieldset>
-    <fieldset
-      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
-    >
-      <legend>expandable="fixed"</legend>
-      <AvatarStack {...args} expandable='fixed'>
-        <Avatar aria-label='profile picture a'>{cat1Img}</Avatar>
-        <Avatar aria-label='profile picture b'>{cat1Img}</Avatar>
-        <Avatar aria-label='profile picture c'>{cat3Img}</Avatar>
-        <Avatar aria-label='profile picture d'>{cat4Img}</Avatar>
-      </AvatarStack>
-    </fieldset>
-    <fieldset
-      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
-    >
-      <legend>not expandable</legend>
-      <AvatarStack {...args} aria-hidden>
-        <Avatar aria-label='Navn'>{cat1Img}</Avatar>
-        <Avatar aria-label='Navn'>{cat1Img}</Avatar>
-        <Avatar aria-label='Navn'>{cat3Img}</Avatar>
-      </AvatarStack>
-    </fieldset>
-  </div>
-);
-Expandable.args = {
-  gap: '4px',
-};
-
-export const DataSize: Story = (args) => (
-  <>
-    <fieldset
-      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
-    >
-      <legend>avatarSize='var(--ds-size-12)'</legend>
-      <AvatarStack
-        avatarSize='var(--ds-size-12)'
-        data-size='sm'
-        {...args}
-        aria-hidden
+      <fieldset
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-4)',
+          alignItems: 'center',
+        }}
       >
-        <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
-        </Avatar>
-        <Avatar aria-label='Navn'>sm</Avatar>
-        <Avatar aria-label='Navn' initials='sm' />
-      </AvatarStack>
-      <AvatarStack
-        avatarSize={'var(--ds-size-12)'}
-        data-size='md'
-        {...args}
-        aria-hidden
+        <legend>expandable</legend>
+        <AvatarStack {...args} expandable>
+          <Avatar aria-label='profile picture a'>{cat1Img}</Avatar>
+          <Avatar aria-label='profile picture b'>{cat1Img}</Avatar>
+          <Avatar aria-label='profile picture c'>{cat3Img}</Avatar>
+          <Avatar aria-label='profile picture d'>{cat4Img}</Avatar>
+        </AvatarStack>
+      </fieldset>
+      <fieldset
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-4)',
+          alignItems: 'center',
+        }}
       >
-        <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
-        </Avatar>
-        <Avatar aria-label='Navn'>md</Avatar>
-        <Avatar aria-label='Navn' initials='md' />
-      </AvatarStack>
-      <AvatarStack
-        avatarSize={'var(--ds-size-12)'}
-        data-size='lg'
-        {...args}
-        aria-hidden
+        <legend>expandable="fixed"</legend>
+        <AvatarStack {...args} expandable='fixed'>
+          <Avatar aria-label='profile picture a'>{cat1Img}</Avatar>
+          <Avatar aria-label='profile picture b'>{cat1Img}</Avatar>
+          <Avatar aria-label='profile picture c'>{cat3Img}</Avatar>
+          <Avatar aria-label='profile picture d'>{cat4Img}</Avatar>
+        </AvatarStack>
+      </fieldset>
+      <fieldset
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-4)',
+          alignItems: 'center',
+        }}
       >
-        <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
-        </Avatar>
-        <Avatar aria-label='Navn'>lg</Avatar>
-        <Avatar aria-label='Navn' initials='lg' />
-      </AvatarStack>
-    </fieldset>
-    <fieldset
-      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
-    >
-      <legend>avatarSize='3em'</legend>
-      <AvatarStack avatarSize='3em' data-size='sm' {...args} aria-hidden>
-        <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
-        </Avatar>
-        <Avatar aria-label='Navn'>sm</Avatar>
-        <Avatar aria-label='Navn' initials='sm' />
-      </AvatarStack>
-      <AvatarStack avatarSize='3em' data-size='md' {...args} aria-hidden>
-        <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
-        </Avatar>
-        <Avatar aria-label='Navn'>md</Avatar>
-        <Avatar aria-label='Navn' initials='md' />
-      </AvatarStack>
-      <AvatarStack avatarSize='3em' data-size='lg' {...args} aria-hidden>
-        <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
-        </Avatar>
-        <Avatar aria-label='Navn'>lg</Avatar>
-        <Avatar aria-label='Navn' initials='lg' />
-      </AvatarStack>
-    </fieldset>
-    <fieldset
-      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
-    >
-      <legend>avatarSize='3rem'</legend>
-      <AvatarStack avatarSize='3rem' data-size='sm' {...args} aria-hidden>
-        <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
-        </Avatar>
-        <Avatar aria-label='Navn'>sm</Avatar>
-        <Avatar aria-label='Navn' initials='sm' />
-      </AvatarStack>
-      <AvatarStack avatarSize='3rem' data-size='md' {...args} aria-hidden>
-        <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
-        </Avatar>
-        <Avatar aria-label='Navn'>md</Avatar>
-        <Avatar aria-label='Navn' initials='md' />
-      </AvatarStack>
-      <AvatarStack avatarSize='3rem' data-size='lg' {...args} aria-hidden>
-        <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
-        </Avatar>
-        <Avatar aria-label='Navn'>lg</Avatar>
-        <Avatar aria-label='Navn' initials='lg' />
-      </AvatarStack>
-    </fieldset>
-  </>
-);
-
-export const ShapeVariants: Story = (args) => (
-  <AvatarStack {...args}>
-    <Avatar variant='square' aria-label='variant square' />
-    <Avatar variant='square' aria-label='Ola Nordmann'>
-      {cat5Img}
-    </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordmann'>
-      {cat1Img}
-    </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordmann'>
-      {cat5Img}
-    </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordmann'>
-      {cat5Img}
-    </Avatar>
-  </AvatarStack>
-);
-ShapeVariants.args = {
-  overlap: 50,
-  expandable: 'fixed',
-};
-
-export const WithTooltip: Story = (args) => (
-  <div
-    style={{ display: 'flex', flexDirection: 'row', gap: 'var(--ds-size-4)' }}
-  >
-    <fieldset
-      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
-    >
-      <legend>expandable</legend>
-      <AvatarStack {...args} expandable='fixed'>
-        <Avatar data-tooltip='Ola Nordmann'>{cat1Img}</Avatar>
-        <Avatar data-tooltip='Kari Nordmann'>{cat5Img}</Avatar>
-        <Avatar data-tooltip='Person 2'>Hei</Avatar>
-        <Avatar data-tooltip='Person 3'>{cat5Img}</Avatar>
-      </AvatarStack>
-    </fieldset>
-    <fieldset
-      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
-    >
-      <legend>not expandable</legend>
-      <AvatarStack {...args}>
-        <Tooltip content='Ola Nordmann'>
+        <legend>not expandable</legend>
+        <AvatarStack {...args} aria-hidden>
           <Avatar aria-label='Navn'>{cat1Img}</Avatar>
-        </Tooltip>
-        <Tooltip content='Kari Nordmann'>
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        </Tooltip>
-        <Tooltip content='Person 2'>
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        </Tooltip>
-        <Tooltip content='Person 3'>
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-        </Tooltip>
-      </AvatarStack>
-    </fieldset>
-  </div>
-);
+          <Avatar aria-label='Navn'>{cat1Img}</Avatar>
+          <Avatar aria-label='Navn'>{cat3Img}</Avatar>
+        </AvatarStack>
+      </fieldset>
+    </div>
+  ),
 
-export const WithTooltipAndLink: Story = (args) => (
-  <div
-    style={{ display: 'flex', flexDirection: 'row', gap: 'var(--ds-size-4)' }}
-  >
-    <fieldset
-      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+  args: {
+    gap: '4px',
+  },
+});
+
+export const DataSize = meta.story({
+  render: (args) => (
+    <>
+      <fieldset
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-4)',
+          alignItems: 'center',
+        }}
+      >
+        <legend>avatarSize='var(--ds-size-12)'</legend>
+        <AvatarStack
+          avatarSize='var(--ds-size-12)'
+          data-size='sm'
+          {...args}
+          aria-hidden
+        >
+          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          <Avatar aria-label='Navn'>
+            <BriefcaseIcon />
+          </Avatar>
+          <Avatar aria-label='Navn'>sm</Avatar>
+          <Avatar aria-label='Navn' initials='sm' />
+        </AvatarStack>
+        <AvatarStack
+          avatarSize={'var(--ds-size-12)'}
+          data-size='md'
+          {...args}
+          aria-hidden
+        >
+          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          <Avatar aria-label='Navn'>
+            <BriefcaseIcon />
+          </Avatar>
+          <Avatar aria-label='Navn'>md</Avatar>
+          <Avatar aria-label='Navn' initials='md' />
+        </AvatarStack>
+        <AvatarStack
+          avatarSize={'var(--ds-size-12)'}
+          data-size='lg'
+          {...args}
+          aria-hidden
+        >
+          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          <Avatar aria-label='Navn'>
+            <BriefcaseIcon />
+          </Avatar>
+          <Avatar aria-label='Navn'>lg</Avatar>
+          <Avatar aria-label='Navn' initials='lg' />
+        </AvatarStack>
+      </fieldset>
+      <fieldset
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-4)',
+          alignItems: 'center',
+        }}
+      >
+        <legend>avatarSize='3em'</legend>
+        <AvatarStack avatarSize='3em' data-size='sm' {...args} aria-hidden>
+          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          <Avatar aria-label='Navn'>
+            <BriefcaseIcon />
+          </Avatar>
+          <Avatar aria-label='Navn'>sm</Avatar>
+          <Avatar aria-label='Navn' initials='sm' />
+        </AvatarStack>
+        <AvatarStack avatarSize='3em' data-size='md' {...args} aria-hidden>
+          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          <Avatar aria-label='Navn'>
+            <BriefcaseIcon />
+          </Avatar>
+          <Avatar aria-label='Navn'>md</Avatar>
+          <Avatar aria-label='Navn' initials='md' />
+        </AvatarStack>
+        <AvatarStack avatarSize='3em' data-size='lg' {...args} aria-hidden>
+          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          <Avatar aria-label='Navn'>
+            <BriefcaseIcon />
+          </Avatar>
+          <Avatar aria-label='Navn'>lg</Avatar>
+          <Avatar aria-label='Navn' initials='lg' />
+        </AvatarStack>
+      </fieldset>
+      <fieldset
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-4)',
+          alignItems: 'center',
+        }}
+      >
+        <legend>avatarSize='3rem'</legend>
+        <AvatarStack avatarSize='3rem' data-size='sm' {...args} aria-hidden>
+          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          <Avatar aria-label='Navn'>
+            <BriefcaseIcon />
+          </Avatar>
+          <Avatar aria-label='Navn'>sm</Avatar>
+          <Avatar aria-label='Navn' initials='sm' />
+        </AvatarStack>
+        <AvatarStack avatarSize='3rem' data-size='md' {...args} aria-hidden>
+          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          <Avatar aria-label='Navn'>
+            <BriefcaseIcon />
+          </Avatar>
+          <Avatar aria-label='Navn'>md</Avatar>
+          <Avatar aria-label='Navn' initials='md' />
+        </AvatarStack>
+        <AvatarStack avatarSize='3rem' data-size='lg' {...args} aria-hidden>
+          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          <Avatar aria-label='Navn'>
+            <BriefcaseIcon />
+          </Avatar>
+          <Avatar aria-label='Navn'>lg</Avatar>
+          <Avatar aria-label='Navn' initials='lg' />
+        </AvatarStack>
+      </fieldset>
+    </>
+  ),
+});
+
+export const ShapeVariants = meta.story({
+  render: (args) => (
+    <AvatarStack {...args}>
+      <Avatar variant='square' aria-label='variant square' />
+      <Avatar variant='square' aria-label='Ola Nordmann'>
+        {cat5Img}
+      </Avatar>
+      <Avatar variant='square' aria-label='Ola Nordmann'>
+        {cat1Img}
+      </Avatar>
+      <Avatar variant='square' aria-label='Ola Nordmann'>
+        {cat5Img}
+      </Avatar>
+      <Avatar variant='square' aria-label='Ola Nordmann'>
+        {cat5Img}
+      </Avatar>
+    </AvatarStack>
+  ),
+
+  args: {
+    overlap: 50,
+    expandable: 'fixed',
+  },
+});
+
+export const WithTooltip = meta.story({
+  render: (args) => (
+    <div
+      style={{ display: 'flex', flexDirection: 'row', gap: 'var(--ds-size-4)' }}
     >
-      <legend>Link expandable</legend>
-      <AvatarStack {...args} expandable='fixed'>
-        <Avatar aria-label='profile picture a' asChild>
-          <a href='#'>{cat1Img}</a>
-        </Avatar>
-        <Avatar aria-label='profile picture b' asChild>
-          <a href='#'>{cat1Img}</a>
-        </Avatar>
-        <Avatar aria-label='profile picture c' asChild>
-          <a href='#'>{cat3Img}</a>
-        </Avatar>
-        <Avatar aria-label='profile picture d' asChild>
-          <a href='#'>{cat4Img}</a>
-        </Avatar>
-      </AvatarStack>
-    </fieldset>
-    <fieldset
-      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+      <fieldset
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-4)',
+          alignItems: 'center',
+        }}
+      >
+        <legend>expandable</legend>
+        <AvatarStack {...args} expandable='fixed'>
+          <Avatar data-tooltip='Ola Nordmann'>{cat1Img}</Avatar>
+          <Avatar data-tooltip='Kari Nordmann'>{cat5Img}</Avatar>
+          <Avatar data-tooltip='Person 2'>Hei</Avatar>
+          <Avatar data-tooltip='Person 3'>{cat5Img}</Avatar>
+        </AvatarStack>
+      </fieldset>
+      <fieldset
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-4)',
+          alignItems: 'center',
+        }}
+      >
+        <legend>not expandable</legend>
+        <AvatarStack {...args}>
+          <Tooltip content='Ola Nordmann'>
+            <Avatar aria-label='Navn'>{cat1Img}</Avatar>
+          </Tooltip>
+          <Tooltip content='Kari Nordmann'>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </Tooltip>
+          <Tooltip content='Person 2'>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </Tooltip>
+          <Tooltip content='Person 3'>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </Tooltip>
+        </AvatarStack>
+      </fieldset>
+    </div>
+  ),
+});
+
+export const WithTooltipAndLink = meta.story({
+  render: (args) => (
+    <div
+      style={{ display: 'flex', flexDirection: 'row', gap: 'var(--ds-size-4)' }}
     >
-      <legend>Link + Tooltip</legend>
-      <AvatarStack {...args} overlap={20}>
-        <Tooltip content='Ola Nordmann'>
+      <fieldset
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-4)',
+          alignItems: 'center',
+        }}
+      >
+        <legend>Link expandable</legend>
+        <AvatarStack {...args} expandable='fixed'>
           <Avatar aria-label='profile picture a' asChild>
             <a href='#'>{cat1Img}</a>
           </Avatar>
-        </Tooltip>
-        <Tooltip content='Kari Nordmann'>
           <Avatar aria-label='profile picture b' asChild>
-            <a href='#'>{cat4Img}</a>
+            <a href='#'>{cat1Img}</a>
           </Avatar>
-        </Tooltip>
-        <Tooltip content='Person 2'>
           <Avatar aria-label='profile picture c' asChild>
             <a href='#'>{cat3Img}</a>
           </Avatar>
-        </Tooltip>
-        <Tooltip content='Person 3'>
           <Avatar aria-label='profile picture d' asChild>
-            <a href='#'>BR</a>
+            <a href='#'>{cat4Img}</a>
           </Avatar>
-        </Tooltip>
-      </AvatarStack>
-    </fieldset>
-  </div>
-);
+        </AvatarStack>
+      </fieldset>
+      <fieldset
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-4)',
+          alignItems: 'center',
+        }}
+      >
+        <legend>Link + Tooltip</legend>
+        <AvatarStack {...args} overlap={20}>
+          <Tooltip content='Ola Nordmann'>
+            <Avatar aria-label='profile picture a' asChild>
+              <a href='#'>{cat1Img}</a>
+            </Avatar>
+          </Tooltip>
+          <Tooltip content='Kari Nordmann'>
+            <Avatar aria-label='profile picture b' asChild>
+              <a href='#'>{cat4Img}</a>
+            </Avatar>
+          </Tooltip>
+          <Tooltip content='Person 2'>
+            <Avatar aria-label='profile picture c' asChild>
+              <a href='#'>{cat3Img}</a>
+            </Avatar>
+          </Tooltip>
+          <Tooltip content='Person 3'>
+            <Avatar aria-label='profile picture d' asChild>
+              <a href='#'>BR</a>
+            </Avatar>
+          </Tooltip>
+        </AvatarStack>
+      </fieldset>
+    </div>
+  ),
+});
 
-export const Playground: Story = () => {
+export const Playground = meta.story(() => {
   const [expandable, setExpandable] = useState<undefined | true>(undefined);
   const [square, setSquare] = useState(false);
   const [size, setSize] = useState(64);
@@ -417,4 +467,4 @@ export const Playground: Story = () => {
       </AvatarStack>
     </div>
   );
-};
+});

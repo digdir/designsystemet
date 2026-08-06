@@ -31,7 +31,7 @@ jobs:
       id-token: write
       packages: write
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: pnpm build
@@ -74,8 +74,10 @@ jobs:
             echo "No open PR found for branch $BRANCH, skipping comment."
             exit 0
           fi
+          MARKER="<!-- snapshot-release-comment -->"
           PUBLISHED_AT="$(TZ='Europe/Oslo' date '+%d.%m.%Y %H:%M:%S')"
           {
+            echo "$MARKER"
             echo "### 📦 Snapshot release published"
             echo
             echo "Published at \`$PUBLISHED_AT\` to npm with tag \`$TAG\`:"
@@ -97,7 +99,17 @@ jobs:
               fi
             done
           } > comment.md
-          gh pr comment "$PR" --body-file comment.md
+          # Find an existing snapshot-release comment to update, otherwise create a new one
+          COMMENT_ID=$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" --paginate \
+            --jq "[.[] | select(.body | contains(\"$MARKER\"))] | last | .id // empty")
+          if [ -n "$COMMENT_ID" ]; then
+            echo "Updating existing comment $COMMENT_ID"
+            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}" \
+              -F body=@comment.md > /dev/null
+          else
+            echo "No existing comment found, creating a new one"
+            gh pr comment "$PR" --body-file comment.md
+          fi
 
   release:
     name: Release
@@ -112,7 +124,7 @@ jobs:
     outputs:
       published: ${{ steps.changesets.outputs.published }}
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/gh-setup
       - name: Build Designsystemet CLI
         run: pnpm build:types && pnpm build:cli

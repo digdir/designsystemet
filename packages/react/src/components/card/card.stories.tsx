@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import {
   cat1Img,
   cat5Img,
@@ -8,9 +8,7 @@ import {
 import { Card, Heading, Link, Paragraph } from '../';
 import type { CardProps } from './';
 
-type Story = StoryFn<typeof Card>;
-
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Card',
   component: Card,
   parameters: {
@@ -24,26 +22,31 @@ export default {
       gridTemplateColumns: 'repeat(auto-fit, minmax(280px , 1fr))',
     },
   },
-} satisfies Meta;
+  args: {
+    children: '',
+  },
+});
 
-export const Preview: Story = (args) => (
-  <Card {...args} style={{ maxWidth: '320px' }}>
-    <Heading>Card</Heading>
-    <Paragraph>
-      Most provide as with carried business are much better more the perfected
-      designer. Writing slightly explain desk unable at supposedly about this
-    </Paragraph>
-    <Paragraph data-size='sm'>Footer text</Paragraph>
-  </Card>
-);
+export const Preview = meta.story({
+  render: ({ children, ...args }) => (
+    <Card {...args} style={{ maxWidth: '320px' }}>
+      <Heading>Card</Heading>
+      <Paragraph>
+        Most provide as with carried business are much better more the perfected
+        designer. Writing slightly explain desk unable at supposedly about this
+      </Paragraph>
+      <Paragraph data-size='sm'>Footer text</Paragraph>
+    </Card>
+  ),
 
-Preview.args = {
-  'data-color': 'neutral',
-};
+  args: {
+    'data-color': 'neutral',
+  },
+});
 
 const variants = ['default', 'tinted'];
 
-export const Variants: StoryFn<typeof Card> = () => (
+export const Variants = meta.story(() => (
   <>
     {variants.map((variant) =>
       [...themeColors, ...severityColors].map((color) => (
@@ -61,9 +64,9 @@ export const Variants: StoryFn<typeof Card> = () => (
       )),
     )}
   </>
-);
+));
 
-export const Media: Story = () => (
+export const Media = meta.story(() => (
   <>
     <Card data-color='neutral'>
       <Card.Block>
@@ -97,9 +100,9 @@ export const Media: Story = () => (
       <Card.Block>{cat1Img}</Card.Block>
     </Card>
   </>
-);
+));
 
-export const Video: Story = () => (
+export const Video = meta.story(() => (
   <Card data-color='neutral' style={{ maxWidth: '320px' }}>
     <Card.Block>
       <iframe
@@ -128,110 +131,118 @@ export const Video: Story = () => (
       </Paragraph>
     </Card.Block>
   </Card>
-);
+));
 
-export const WithLink: Story = (args) => (
-  <>
-    <Card {...args}>
-      <Card.Block>{cat5Img}</Card.Block>
-      <Card.Block>
-        <Heading>
-          <a
-            href='https://designsystemet.no'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Link Card
-          </a>
-        </Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
-        </Paragraph>
-        <Paragraph data-size='sm'>Footer text</Paragraph>
-      </Card.Block>
-    </Card>
-    <Card {...args} data-color='neutral'>
-      <Card.Block>
-        <Heading>
-          <Link
-            href='https://designsystemet.no'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Link Card
-          </Link>
-        </Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
-        </Paragraph>
-        <Paragraph data-size='sm'>Footer text</Paragraph>
-      </Card.Block>
-      <Card.Block>{cat5Img}</Card.Block>
-    </Card>
-  </>
-);
-
-export const AsLink: Story = (args) => (
-  <>
-    <Card {...args} asChild>
-      <a
-        href='https://designsystemet.no'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
+export const WithLink = meta.story({
+  render: ({ children, ...args }) => (
+    <>
+      <Card {...args}>
+        <Card.Block>{cat5Img}</Card.Block>
         <Card.Block>
-          <Paragraph>Link card with asChild</Paragraph>
+          <Heading>
+            <a
+              href='https://designsystemet.no'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Link Card
+            </a>
+          </Heading>
+          <Paragraph>
+            Most provide as with carried business are much better more the
+            perfected designer. Writing slightly explain desk unable at
+            supposedly about this
+          </Paragraph>
+          <Paragraph data-size='sm'>Footer text</Paragraph>
         </Card.Block>
-      </a>
-    </Card>
-    <Card {...args} data-color='neutral' asChild>
-      <a
-        href='https://designsystemet.no'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        <Heading>Link Card with asChild</Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer.
-        </Paragraph>
-      </a>
-    </Card>
-  </>
-);
-
-export const AsButton: Story = (args) => (
-  <>
-    <Card {...args} asChild>
-      <button type='button'>
+      </Card>
+      <Card {...args} data-color='neutral'>
         <Card.Block>
-          <Heading>Button Card with blocks</Heading>
+          <Heading>
+            <Link
+              href='https://designsystemet.no'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Link Card
+            </Link>
+          </Heading>
+          <Paragraph>
+            Most provide as with carried business are much better more the
+            perfected designer. Writing slightly explain desk unable at
+            supposedly about this
+          </Paragraph>
+          <Paragraph data-size='sm'>Footer text</Paragraph>
         </Card.Block>
-        <Card.Block>
+        <Card.Block>{cat5Img}</Card.Block>
+      </Card>
+    </>
+  ),
+});
+
+export const AsLink = meta.story({
+  render: ({ children, ...args }) => (
+    <>
+      <Card {...args} asChild>
+        <a
+          href='https://designsystemet.no'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <Card.Block>
+            <Paragraph>Link card with asChild</Paragraph>
+          </Card.Block>
+        </a>
+      </Card>
+      <Card {...args} data-color='neutral' asChild>
+        <a
+          href='https://designsystemet.no'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <Heading>Link Card with asChild</Heading>
           <Paragraph>
             Most provide as with carried business are much better more the
             perfected designer.
           </Paragraph>
-        </Card.Block>
-      </button>
-    </Card>
-  </>
-);
+        </a>
+      </Card>
+    </>
+  ),
+});
 
-export const AsGrid: Story = (args) => (
-  <Card {...args} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-    <Card.Block>
-      <Heading>Button Card with blocks</Heading>
-    </Card.Block>
-    <Card.Block>
-      <Paragraph>
-        Most provide as with carried business are much better more the perfected
-        designer.
-      </Paragraph>
-    </Card.Block>
-  </Card>
-);
+export const AsButton = meta.story({
+  render: ({ children, ...args }) => (
+    <>
+      <Card {...args} asChild>
+        <button type='button'>
+          <Card.Block>
+            <Heading>Button Card with blocks</Heading>
+          </Card.Block>
+          <Card.Block>
+            <Paragraph>
+              Most provide as with carried business are much better more the
+              perfected designer.
+            </Paragraph>
+          </Card.Block>
+        </button>
+      </Card>
+    </>
+  ),
+});
+
+export const AsGrid = meta.story({
+  render: ({ children, ...args }) => (
+    <Card {...args} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+      <Card.Block>
+        <Heading>Button Card with blocks</Heading>
+      </Card.Block>
+      <Card.Block>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer.
+        </Paragraph>
+      </Card.Block>
+    </Card>
+  ),
+});

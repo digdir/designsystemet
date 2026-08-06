@@ -12,10 +12,7 @@ import { Label } from '../label/label';
 import { Textarea, type TextareaProps } from '../textarea/textarea';
 import { ValidationMessage } from '../validation-message/validation-message';
 
-type InputProps_ = Omit<
-  InputProps,
-  'prefix' | 'className' | 'style' | 'data-color' | 'type'
->;
+type InputProps_ = Omit<InputProps, 'prefix' | 'className' | 'style' | 'type'>;
 type TextareaProps_ = Omit<TextareaProps, 'prefix' | 'className' | 'style'>;
 
 type SharedTextfieldProps = {
@@ -54,7 +51,7 @@ type SharedTextfieldProps = {
    */
   counter?: FieldCounterProps | number;
 } & LabelRequired &
-  Omit<DefaultProps, 'data-color'>;
+  DefaultProps;
 
 type TextfieldTextareaProps = {
   /**
@@ -100,6 +97,7 @@ export const Textfield = forwardRef<
     multiline,
     prefix,
     suffix,
+    'data-color': color,
     'data-size': size,
     counter,
     style,
@@ -109,7 +107,12 @@ export const Textfield = forwardRef<
   ref,
 ) {
   return (
-    <Field className={className} data-size={size} style={style}>
+    <Field
+      className={className}
+      data-color={color}
+      data-size={size}
+      style={style}
+    >
       {!!label && <Label>{label}</Label>}
       {!!description && <FieldDescription>{description}</FieldDescription>}
       <FieldAffixes>

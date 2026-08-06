@@ -1,110 +1,123 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 
-import { Chip } from './';
+import { Chip, type ChipButtonProps, type ChipRemovableProps } from './';
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Chip',
   component: Chip.Radio,
   parameters: {
     customStyles: { display: 'flex', gap: 'var(--ds-size-2)' },
   },
-} satisfies Meta;
+});
 
-export const Preview: StoryFn<typeof Chip.Radio> = (args) => (
-  <>
-    <Chip.Radio {...args} name='my-radio' value='nynorsk' defaultChecked>
-      Nynorsk
-    </Chip.Radio>
-    <Chip.Radio {...args} name='my-radio' value='bokmål'>
-      Bokmål
-    </Chip.Radio>
-  </>
-);
+export const Preview = meta.story({
+  render: (args) => (
+    <>
+      <Chip.Radio {...args} name='my-radio' value='nynorsk' defaultChecked>
+        Nynorsk
+      </Chip.Radio>
+      <Chip.Radio {...args} name='my-radio' value='bokmål'>
+        Bokmål
+      </Chip.Radio>
+    </>
+  ),
+});
 
-export const Checkbox: StoryFn<typeof Chip.Checkbox> = (args) => (
-  <Chip.Checkbox {...args}>Nynorsk</Chip.Checkbox>
-);
+export const Checkbox = meta.story({
+  render: (args) => <Chip.Checkbox {...args}>Nynorsk</Chip.Checkbox>,
+});
 
-export const Removable: StoryFn<typeof Chip.Removable> = (args) => (
-  <Chip.Removable {...args}>Norge</Chip.Removable>
-);
+export const Removable = meta.story({
+  render: (args) => (
+    <Chip.Removable {...(args as ChipRemovableProps)}>Norge</Chip.Removable>
+  ),
 
-Removable.args = {
-  'aria-label': 'Slett Norge',
-};
-
-export const Button: StoryFn<typeof Chip.Button> = (args) => (
-  <>
-    <Chip.Button {...args}>Tøm alle filtre</Chip.Button>
-  </>
-);
-
-Button.parameters = {
-  customStyles: {
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+  args: {
+    'aria-label': 'Slett Norge',
   },
-};
+});
 
-export const Nowrap: StoryFn<typeof Chip.Radio> = () => (
-  <>
-    <Chip.Radio name='my-radio' value='nynorsk' defaultChecked>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
-      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
-      sapien.
-    </Chip.Radio>
-    <Chip.Checkbox name='my-checkbox' value='nynorsk' defaultChecked>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
-      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
-      sapien.
-    </Chip.Checkbox>
-    <Chip.Removable>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
-      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
-      sapien.
-    </Chip.Removable>
-    <Chip.Button>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
-      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
-      sapien.
-    </Chip.Button>
-  </>
-);
+export const Button = meta.story({
+  render: (args) => (
+    <Chip.Button {...(args as ChipButtonProps)}>Tøm alle filtre</Chip.Button>
+  ),
 
-Nowrap.parameters = {
-  layout: 'padded',
-};
+  parameters: {
+    customStyles: {
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+    },
+  },
+});
 
-export const Wrap: StoryFn<typeof Chip.Radio> = () => (
-  <>
-    <Chip.Radio data-wrap='wrap' name='my-radio' value='nynorsk' defaultChecked>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
-      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
-      sapien.
-    </Chip.Radio>
-    <Chip.Checkbox
-      data-wrap='wrap'
-      name='my-checkbox'
-      value='nynorsk'
-      defaultChecked
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
-      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
-      sapien.
-    </Chip.Checkbox>
-    <Chip.Removable data-wrap='wrap'>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
-      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
-      sapien.
-    </Chip.Removable>
-    <Chip.Button data-wrap='wrap'>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
-      lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
-      sapien.
-    </Chip.Button>
-  </>
-);
+export const Nowrap = meta.story({
+  render: () => (
+    <>
+      <Chip.Radio name='my-radio' value='nynorsk' defaultChecked>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+        lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+        sapien.
+      </Chip.Radio>
+      <Chip.Checkbox name='my-checkbox' value='nynorsk' defaultChecked>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+        lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+        sapien.
+      </Chip.Checkbox>
+      <Chip.Removable>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+        lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+        sapien.
+      </Chip.Removable>
+      <Chip.Button>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+        lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+        sapien.
+      </Chip.Button>
+    </>
+  ),
 
-Wrap.parameters = {
-  layout: 'padded',
-};
+  parameters: {
+    layout: 'padded',
+  },
+});
+
+export const Wrap = meta.story({
+  render: () => (
+    <>
+      <Chip.Radio
+        data-wrap='wrap'
+        name='my-radio'
+        value='nynorsk'
+        defaultChecked
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+        lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+        sapien.
+      </Chip.Radio>
+      <Chip.Checkbox
+        data-wrap='wrap'
+        name='my-checkbox'
+        value='nynorsk'
+        defaultChecked
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+        lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+        sapien.
+      </Chip.Checkbox>
+      <Chip.Removable data-wrap='wrap'>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+        lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+        sapien.
+      </Chip.Removable>
+      <Chip.Button data-wrap='wrap'>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
+        lobortis eros. Aenean id tellus molestie, semper massa non, ultricies
+        sapien.
+      </Chip.Button>
+    </>
+  ),
+
+  parameters: {
+    layout: 'padded',
+  },
+});

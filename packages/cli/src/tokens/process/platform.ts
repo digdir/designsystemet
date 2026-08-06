@@ -2,9 +2,9 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { TransformedToken } from 'style-dictionary/types';
-import type { BuildConfig, OutputFile, ThemePermutation, TokenSet } from '../types.js';
-import { configs, getConfigsForThemeDimensions } from './configs.js';
-import { getThemeColors, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.js';
+import type { BuildConfig, OutputFile, ThemePermutation, TokenSet } from '../types.ts';
+import { configs, getConfigsForThemeDimensions } from './configs.ts';
+import { getThemeColors, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.ts';
 
 type SharedOptions = {
   /** Enable verbose output */
@@ -19,14 +19,14 @@ type SharedOptions = {
   processed$themes: ProcessedThemeObject[];
   /** Build token format map */
   buildTokenFormats: Record<string, { token: TransformedToken; formatted: string }[]>;
+  /** Tailwind CSS configuration */
+  tailwind?: boolean;
 };
 
 export type BuildOptions = {
   type: 'build';
   /** Design tokens path */
   tokensDir: string;
-  /** Tailwind CSS configuration */
-  tailwind?: boolean;
 } & SharedOptions;
 
 export type FormatOptions = {

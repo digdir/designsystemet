@@ -1,11 +1,9 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { severityColors, themeColors } from '../../../stories/constants';
 
 import { Spinner } from './spinner';
 
-type Story = StoryFn<typeof Spinner>;
-
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Spinner',
   component: Spinner,
   parameters: {
@@ -17,15 +15,15 @@ export default {
       alignItems: 'center',
     },
   },
-} as Meta;
+});
 
-export const Preview: Story = (args) => <Spinner {...args} />;
+export const Preview = meta.story({
+  args: {
+    'aria-label': 'Henter kaffi',
+  },
+});
 
-Preview.args = {
-  'aria-label': 'Henter kaffi',
-};
-
-export const Variants: Story = () => (
+export const Variants = meta.story(() => (
   <>
     {[...themeColors, ...severityColors].map((color) => (
       <Spinner
@@ -36,15 +34,20 @@ export const Variants: Story = () => (
       />
     ))}
   </>
-);
+));
 
-export const Sizes: Story = (args) => (
-  <>
-    <Spinner aria-label='Henter kaffi' {...args} data-size='2xs' />
-    <Spinner aria-label='Henter kaffi' {...args} data-size='xs' />
-    <Spinner aria-label='Henter kaffi' {...args} data-size='sm' />
-    <Spinner aria-label='Henter kaffi' {...args} data-size='md' />
-    <Spinner aria-label='Henter kaffi' {...args} data-size='lg' />
-    <Spinner aria-label='Henter kaffi' {...args} data-size='xl' />
-  </>
-);
+export const Sizes = meta.story({
+  args: {
+    'aria-label': 'Henter kaffi',
+  },
+  render: (args) => (
+    <>
+      <Spinner {...args} data-size='2xs' />
+      <Spinner {...args} data-size='xs' />
+      <Spinner {...args} data-size='sm' />
+      <Spinner {...args} data-size='md' />
+      <Spinner {...args} data-size='lg' />
+      <Spinner {...args} data-size='xl' />
+    </>
+  ),
+});

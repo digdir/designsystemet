@@ -12,34 +12,65 @@ const avatarMap = {
   brønnøysundregistrene: 'brønnøysundregistrene.svg',
   digdir: 'digdir.svg',
   designsystemet: 'designsystemet.svg',
+  entur: 'entur.svg',
+  helsedirektoratet: 'helsedirektoratet.svg',
   'ks digital': 'ksdigital.svg',
   ks: 'ks.png',
   mattilsynet: 'mattilsynet.svg',
   nav: 'nav.svg',
+  nrk: 'nrk.svg',
   'oslo kommune': 'oslokommune.svg',
+  politiet: 'politiet.svg',
   skatteetaten: 'skatteetaten.svg',
+  'brønnøysund register centre': 'brønnøysundregistrene.svg',
+  'norwegian directorate of health': 'helsedirektoratet.svg',
+  'norwegian tax administration': 'skatteetaten.svg',
+  'oslo municipality': 'oslokommune.svg',
+  'norwegian police service': 'politiet.svg',
+  'city of oslo': 'oslokommune.svg',
+  'the design system': 'designsystemet.svg',
+  'norwegian food safety authority': 'mattilsynet.svg',
+  husbanken: 'husbanken.svg',
+  'housing bank': 'husbanken.svg',
 } as const;
 
 type AvatarKey = keyof typeof avatarMap;
 
 export const AvatarStack = ({ authors, expandable }: AvatarStackProps) => {
-  const authorsLowercase = authors.toLowerCase();
+  // Normalize the authors string for matching: lowercase and trim
+  // This avoids case sensitivity issues and allows substring matching
+  const authorsNormalized = authors.toLowerCase().trim();
 
-  // Split authors string on common delimiters
-  const authorWords = authorsLowercase.split(/[\s,/-]+/).filter(Boolean);
+  // Track which avatar images have already been added to avoid duplicates.
+  // Multiple keys in avatarMap can map to the same image file (e.g., 'city of oslo'
+  // and 'oslo municipality' both map to 'oslokommune.svg'). We only want to show
+  // each unique avatar image once.
+  const seenAssets = new Set<string>();
 
+  // Find all avatar keys that match the authors string.
+  // A match occurs when the normalized authors string contains the normalized key as a substring.
+  // This approach avoids the cross-contamination bug where words from different organizations
+  // in the authors string (e.g., "Oslo" from "City of Oslo" and "municipality" from "Lillestrøm municipality")
+  // would incorrectly combine to match a key like "oslo municipality".
   const matchedAvatars = (Object.keys(avatarMap) as AvatarKey[]).filter(
     (key) => {
-      // Split key on delimiters
-      const keyWords = key.split(/[\s-]+/).filter(Boolean);
-      // Check if all words in the key match words in the authors string
-      return keyWords.every((word) =>
-        authorWords.some((authorWord) => authorWord.includes(word)),
-      );
+      const keyNormalized = key.toLowerCase();
+      return authorsNormalized.includes(keyNormalized);
     },
   );
 
-  if (matchedAvatars.length === 0) {
+  // Filter out duplicates: if multiple keys map to the same avatar image,
+  // only keep the first match to avoid showing the same logo multiple times.
+  const uniqueAvatars = matchedAvatars.filter((key) => {
+    const assetPath = avatarMap[key];
+    if (seenAssets.has(assetPath)) {
+      return false;
+    }
+    seenAssets.add(assetPath);
+    return true;
+  });
+
+  if (uniqueAvatars.length === 0) {
     return null;
   }
 
@@ -51,7 +82,7 @@ export const AvatarStack = ({ authors, expandable }: AvatarStackProps) => {
       expandable={expandable}
       overlap={40}
     >
-      {matchedAvatars.map((avatarKey) => (
+      {uniqueAvatars.map((avatarKey) => (
         <Avatar aria-hidden key={avatarKey}>
           <img src={`/img/avatars/${avatarMap[avatarKey]}`} alt='' />
         </Avatar>

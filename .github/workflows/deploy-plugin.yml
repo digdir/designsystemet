@@ -1,0 +1,37 @@
+name: Deploy plugin
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/deploy-plugin.yml
+      - "plugins/designsystemet/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-plugin-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-plugin:
+    name: Build & upload plugin
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: ./.github/actions/gh-setup
+
+      - name: Build plugin (with workspace dependencies)
+        run: pnpm --filter "@plugin/designsystemet..." build
+
+      - name: Upload plugin artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: designsystemet-figma-plugin
+          path: |
+            plugins/designsystemet/manifest.json
+            plugins/designsystemet/dist
+          if-no-files-found: error

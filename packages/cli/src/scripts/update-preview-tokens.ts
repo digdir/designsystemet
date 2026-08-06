@@ -1,13 +1,15 @@
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
-import { generate$Themes } from '../tokens/create/generators/$themes.js';
-import { createTokens, tokenSetDimensions } from '../tokens/create.js';
-import { buildOptions, processPlatform } from '../tokens/process/platform.js';
-import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
-import type { Theme } from '../tokens/types.js';
-import { toColorNames } from '../tokens/utils.js';
-import { dsfs } from '../utils/filesystem.js';
+import { validateConfig } from '../schemas/helpers.ts';
+import { nextConfigSchema } from '../schemas/next/schema.ts';
+import { generate$Themes } from '../tokens/create/generators/$themes.ts';
+import { createTokens, tokenSetDimensions } from '../tokens/create.ts';
+import { buildOptions, processPlatform } from '../tokens/process/platform.ts';
+import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.ts';
+import type { Theme } from '../tokens/types.ts';
+import { toColorNames } from '../tokens/utils.ts';
+import { dsfs } from '../utils/filesystem.ts';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
 
@@ -96,12 +98,15 @@ export const formatTheme = async (themeConfig: Theme) => {
   }
 };
 
+// Parse the config through the schema so defaults (typography, borderRadius) are applied.
+const { themes } = validateConfig(nextConfigSchema, config);
+
 formatTheme({
   name: 'test',
-  borderRadius: config.themes.designsystemet.borderRadius,
+  borderRadius: themes.designsystemet.borderRadius,
   colors: {
-    primary: config.themes.designsystemet.colors.accent as `#${string}`,
-    neutral: config.themes.designsystemet.colors.neutral as `#${string}`,
+    primary: themes.designsystemet.colors.accent,
+    neutral: themes.designsystemet.colors.neutral,
   },
-  typography: config.themes.designsystemet.typography,
+  typography: themes.designsystemet.typography,
 });

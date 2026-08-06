@@ -23,18 +23,6 @@ Avatar stack is under development. If you have feedback or suggestions, please r
 Avatar stack is designed to be flexible enough to cover many different needs and use cases.
 <Story story="Playground" layout='block' />
 
-### Sizes
-The size of avatars in an avatar stack is controlled via `avatarSize` and can be specified in any valid CSS size unit for maximum flexibility.
-<Story story="DataSize" layout='block' />
-
-### Gap
-The visible space between avatars can be customized with `gap` 
-<Story story="Gap" layout='block' />
-
-### Expandable
-In some cases, it may be desirable to expand the stack on hover and focus. This functionality is off by default.
-<Story story="Expandable" layout='block' />
-
 ### Variants
 Avatar stack supports both round and square variants, but only one variant per stack.
 <Story story="ShapeVariants" layout='block' />
@@ -50,7 +38,5 @@ Avatars in avatar stack can have tooltips and be links, but be aware of accessib
 ## Guidelines
 Avatar stack should be used with caution, as it can be challenging for users to identify individual avatars in a tightly packed stack. Ensure that the use of avatar stack makes sense in the context of the user experience and does not compromise accessibility or usability.
 
-Avatar stack does not support wrapping across multiple lines. If there are more avatars than can fit in the stack, you can use `suffix` or an additional avatar with `+xx` to indicate the number of hidden avatars.
-
 ## Text
-`aria-label` or `aria-description` can be used on avatar stack to provide context to screen readers about what the stack represents, for example "Meeting participants" or "Team members".
+Remember to provide context to screen readers about what the stack represents, for example "Meeting participants" or "Team members".
