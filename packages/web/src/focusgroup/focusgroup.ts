@@ -11,8 +11,6 @@ import {
 // Intentionally not implemented:
 // - Clearing memory based on attribute changes: https://open-ui.org/components/scoped-focusgroup.explainer/#disabling-focusgroup-memory
 // - Setting ARIA roles before focus or keydown occurs (this is too performance consuming, and does not affect a11y much)
-// - Checking if overflow/scroll-container in isFocusable
-// - Autofocus support inside popover
 
 const ATTR_GROUP = 'focusgroup';
 const PROP_GROUP = 'focusGroup';
