@@ -1,7 +1,176 @@
 ---
 title: "Changelog"
-latestVersion: 1.18.0
+latestVersion: 1.19.0
 ---
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.19.0
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Minor Changes
+
+- **cli**: Add support for JSONC config files. Config files may now contain comments and trailing commas, and a `designsystemet.config.jsonc` file is auto-detected in addition to `designsystemet.config.json`. ([#5051](https://github.com/digdir/designsystemet/pull/5051))
+
+#### Patch Changes
+
+- Update dependency tsdown to v0.22.14 ([#5102](https://github.com/digdir/designsystemet/pull/5102))
+
+- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+
+- fixed missing types error that might occur for `@tokens-studio/types`. ([#5061](https://github.com/digdir/designsystemet/pull/5061))
+
+- Update dependency colorjs.io to ^0.7.1 ([#5121](https://github.com/digdir/designsystemet/pull/5121))
+
+- Update dependency colorjs.io to ^0.7.0 ([#5108](https://github.com/digdir/designsystemet/pull/5108))
+
+- Reduced package size by removing unintended declaration map files being generated. ([#5065](https://github.com/digdir/designsystemet/pull/5065))
+
+- Clarified error message when different theme colors are detected ([#5068](https://github.com/digdir/designsystemet/pull/5068))
+
+- New exports for internal use (not documented). ([#5068](https://github.com/digdir/designsystemet/pull/5068))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- **Tailwind:** `--experimental-tailwind` now also generates `--shadow-*` and `--opacity-disabled` config ([#5139](https://github.com/digdir/designsystemet/pull/5139))
+
+- `typography` and `borderRadius` are no longer required in the config file. If omitted, defaults will be used: `typography.fontFamily = "Inter"` and `borderRadius = 4`. ([#5099](https://github.com/digdir/designsystemet/pull/5099))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- - add option `-v` and `--version` for display version number. ([#5098](https://github.com/digdir/designsystemet/pull/5098))
+  - add option `-h` and `--help` for display help.
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- Update dependency colorjs.io to ^0.7.1 ([#5121](https://github.com/digdir/designsystemet/pull/5121))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.0
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Minor Changes
+
+- **file-upload**: New experimental component. Style with the `ds-file-upload` class. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+
+- **Dialog:** now applies a `z-index` even when opened in non-modal mode (without a backdrop). ([#5123](https://github.com/digdir/designsystemet/pull/5123))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- **ds-dropdown:** no longer requires the `ds-popover` class added on the same element. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+
+- fix loading order for popover-polyfill ([#5027](https://github.com/digdir/designsystemet/pull/5027))
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+
+- **Chip:** now aligns checkbox, radio and x to top when multi-line text ([#5083](https://github.com/digdir/designsystemet/pull/5083))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.0
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Minor Changes
+
+- **New experimental component**: `FileUpload`. Use it by importing `EXPERIMENTAL_FileUpload` from `@digdir/designsystemet-react`. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+- **ToggleGroup:** Deprecates `data-toggle-group` in favor of `focusgroup="radiogroup"` with `aria-label`. ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+
+- Update npm non-major dependencies ([#5072](https://github.com/digdir/designsystemet/pull/5072))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- **React types:** allow all values of `data-color` in all components ([#5082](https://github.com/digdir/designsystemet/pull/5082))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- **Global types:** added `focusgroup` and `focusgroupstart` to the global HTML attribute types. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+
+- **Dialog:** now adds `aria-haspopup` on focus event to enhance performance and support Shadow DOM rendering ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+
+- Updated dependencies [[`69e17d0`](https://github.com/digdir/designsystemet/commit/69e17d0688c9cc96a6fbe729d399edb10fdd88e1), [`5894236`](https://github.com/digdir/designsystemet/commit/5894236d5baf50aa73b96c33a9da9c14278fd470), [`6182865`](https://github.com/digdir/designsystemet/commit/6182865f1e7a7a93aa7fc99efbfc5f04cd3c5c3c), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`92922af`](https://github.com/digdir/designsystemet/commit/92922af56e4f63d8110e5109a02fc86d5eae88ca), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`74fb48c`](https://github.com/digdir/designsystemet/commit/74fb48c9de0e54f0b7d26a8560d5c6dae645b3ed), [`703abc1`](https://github.com/digdir/designsystemet/commit/703abc1ea674c56d256f6981009092bbbfb0ca93), [`6182865`](https://github.com/digdir/designsystemet/commit/6182865f1e7a7a93aa7fc99efbfc5f04cd3c5c3c), [`99265a3`](https://github.com/digdir/designsystemet/commit/99265a32fb2a829c7fb2559d30810288ce9e57f5), [`9434ea7`](https://github.com/digdir/designsystemet/commit/9434ea74b7213f506bcc1f91f010aa9f5c1a0bf9), [`a519003`](https://github.com/digdir/designsystemet/commit/a519003b0321b6058c46107feb2f831969269774), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`a398b3a`](https://github.com/digdir/designsystemet/commit/a398b3ae482c39e53ccb271e90ca7ed12438a33c), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`22bdfeb`](https://github.com/digdir/designsystemet/commit/22bdfeb9ae62ea5fa28c5175bfba295be04b43f9), [`a685ffd`](https://github.com/digdir/designsystemet/commit/a685ffd670cc691a25652c600550729ff7b9ff88), [`2eb9e66`](https://github.com/digdir/designsystemet/commit/2eb9e666f75ab172e7897a233e8356261e094442)]:
+  - @digdir/designsystemet-web@1.19.0
+  - @digdir/designsystemet-types@1.19.0
+
+<Divider/>
+
+### @digdir/designsystemet-web
+
+#### Minor Changes
+
+- **focusgroup:** is now automatically polyfilled according to [upcoming specification](https://open-ui.org/components/scoped-focusgroup.explainer/) ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- **Web:** All functionality now supports rendering inside Shadow DOM ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- **ToggleGroup:** Deprecates `data-toggle-group` in favor of `focusgroup="radiogroup"` with `aria-label`. ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+#### Patch Changes
+
+- **clickdelegatefor**: Fixes an issue with using `data-clickdelegatefor` inside of `<details>` ([#5074](https://github.com/digdir/designsystemet/pull/5074))
+
+- Update dependency tsdown to v0.22.14 ([#5102](https://github.com/digdir/designsystemet/pull/5102))
+
+- **Breadcrumbs, Pagination, ToggleGroup:** support `aria-labelledby` ([#5081](https://github.com/digdir/designsystemet/pull/5081))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- Update dependency @oddbird/popover-polyfill to v0.7.1 ([#5101](https://github.com/digdir/designsystemet/pull/5101))
+
+- **Field:** now scopes internal cache to DSFieldElement class to avoid version conflicts ([#5077](https://github.com/digdir/designsystemet/pull/5077))
+
+- **Tooltip:** allow `data-tooltip` with CSS ID selector like `#id` to retrieve text from another element ([#5081](https://github.com/digdir/designsystemet/pull/5081))
+
+- **tooltip**: Now inherits nearest `data-size` ([#5119](https://github.com/digdir/designsystemet/pull/5119))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- **clickdelegatefor:** now only skips interactive child elements ([#5080](https://github.com/digdir/designsystemet/pull/5080))
+
+- **Dialog:** now adds `aria-haspopup` on focus event to enhance performance and support Shadow DOM rendering ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- fix loading order for popover-polyfill ([#5027](https://github.com/digdir/designsystemet/pull/5027))
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+
+</div>
 
 <div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",
