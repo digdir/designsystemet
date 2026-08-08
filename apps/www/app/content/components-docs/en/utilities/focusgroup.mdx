@@ -1,0 +1,88 @@
+---
+title: focusgroup
+sidebar_title: focusgroup
+order: 60
+---
+
+`focusgroup` is a browser-native attribute, enabling keyboard navigation for components such as toolbars and menus.
+It is supported by Chrome 150 and later, and automatically polyfilled by Designsystemet for browsers that don't support it yet.
+[See the Open UI explainer &rarr; (open-ui.org)](https://open-ui.org/components/scoped-focusgroup.explainer/)
+
+## Usage
+
+You add the `focusgroup` attribute to a container element, with a value describing the behavior you want. This gives the container's focusable children arrow key navigation, a single tab stop, and memory of the last focused item.
+
+```html
+<div focusgroup="toolbar wrap">
+  <button>Bold</button>
+  <button>Italic</button>
+  <button>Underline</button>
+</div>
+```
+
+The value of `focusgroup` is made up of the following tokens:
+
+| Token | Required? | What it does |
+| --- | --- | --- |
+| `toolbar`, `tablist`, `radiogroup`, `listbox`, `menu` or `menubar` | Yes | Sets default ARIA roles and [defaults for the rest of the tokens (open-ui.org)](https://open-ui.org/components/scoped-focusgroup.explainer/#focusgroup-tokens). |
+| `inline` or `block` | Optional | Restricts axis for arrow key navigation. |
+| `wrap` or `nowrap` | Optional | Whether focus should loop or stop at edges. |
+| `nomemory` | Optional | Disables focus restoration when re-entering. |
+
+### When should I use `focusgroup`?
+
+Use `focusgroup` when you're building an application or widget where users expect arrow key navigation, and a single tab stop across a set of related controls.
+
+**Note:** Prefer using [Tabs](/en/components/docs/tabs) instead of `focusgroup="tablist"` in Designsystemet, as [Tabs](/en/components/docs/tabs) already extends this pattern with tab activation, automatically connecting tabs to their panels etc.
+
+### Defining focus start
+
+You can mark a specific item as the one that should receive focus the first time the group is entered, using the `focusgroupstart` attribute:
+
+```html
+<div focusgroup="toolbar">
+  <button>Bold</button>
+  <button focusgroupstart>Italic</button>
+  <button>Underline</button>
+</div>
+```
+
+### Opting out of a focusgroup
+
+You can exclude an element and its subtree from an ancestor focusgroup by setting `focusgroup="none"` on it. Elements inside the opted-out subtree are skipped by arrow key navigation, but remain reachable with Tab.
+
+```html
+<div focusgroup="toolbar wrap">
+  <button>A</button>
+  <span focusgroup="none">
+    <button>Not reachable with arrow keys</button>
+  </span>
+  <button>B</button>
+</div>
+```
+
+### Nested focusgroups
+
+You can nest a new `focusgroup` declaration inside another one, for example a `menu` inside a `menubar`. A nested focusgroup creates its own independent group and automatically opts out of its ancestor's arrow key navigation.
+
+```html
+<div focusgroup="menubar">
+  <button popovertarget="fontmenu">Font</button>
+  <div focusgroup="menu" id="fontmenu" popover>
+    <button>Sans-serif</button>
+    <button>Serif</button>
+    <button>Monospace</button>
+  </div>
+</div>
+```
+
+### ARIA roles
+
+If the focusable elements do not have an explicit `role`, `focusgroup` will automatically set up ARIA roles for you, based on the behavior token.
+
+## Not implemented in the polyfill
+
+To ensure application performance, the Designsystemet polyfill has some intentional minor discrepancies from the spec:
+
+- ARIA roles are applied on first interaction - not instantly
+- Memory is not cleared on `disabled`, `hidden` or `inert` change
