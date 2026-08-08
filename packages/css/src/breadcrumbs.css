@@ -9,8 +9,7 @@
     display: block; /* Needed for <ds-breadcrumbs> element */
   }
 
-  &:is([lang='nb'], [lang='nn'], [lang='no']),
-  :is([lang='nb'], [lang='nn'], [lang='no']) & {
+  &:lang(no, nb, nn) {
     --dsc-breadcrumbs-label: 'Du er her:'; /* Only set default label if Norwegian */
   }
 

@@ -620,3 +620,30 @@ export const Creatable = meta.story({
     creatable: true,
   },
 });
+
+export const WithoutToggleButton = meta.story({
+  render: (args) => {
+    return (
+      <Field>
+        <Label>Velg eller legg til en destinasjon</Label>
+        <Suggestion {...args}>
+          <Suggestion.Input />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Empty>
+              Ingen treff, trykk enter for å legge til
+            </Suggestion.Empty>
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place}>{place}</Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    );
+  },
+
+  args: {
+    multiple: true,
+    creatable: true,
+  },
+});
