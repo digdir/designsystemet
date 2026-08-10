@@ -9,10 +9,6 @@ Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/
 * <kbd>Enter</kbd> eller <kbd>Space</kbd> velger markert element
 * <kbd>Esc</kbd> lukker menyen
 
-### Tastatur
+### Piltastnavigasjon
 
-På grunn av forskjellige bruksmønstre for `dropdown` har vi ikke innebygd tastaturhåndtering.
-Dersom du lager en meny må du selv implementere tastaturhåndtering for å navigere i menyen.
-Se ["Menu and Menubar Pattern" hos w3c](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/).
-
-Dersom du bruker `dropdown` uten å gjøre noe selv, vil fokuserbare elementer i `dropdown` listen kunne navigeres med tabulator-tasten, og du kan lukke `dropdown` med Escape-tasten.
+Du kan kombinere Dropdown med [focusgroup](/no/components/utilities/focusgroup) for å tilby piltastnavigasjon mellom elementer.

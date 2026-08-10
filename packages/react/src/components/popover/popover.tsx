@@ -8,6 +8,8 @@ import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Context } from './popover-trigger-context';
 
+const IS_DROPDOWN = /(?:^|\s)ds-dropdown(?:\s|$)/;
+
 export type PopoverProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
@@ -73,7 +75,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(
     {
       id,
-      className,
+      className = '',
       onClose,
       onOpen,
       open,
@@ -145,7 +147,10 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
     return (
       <Component
-        className={cl('ds-popover', className)}
+        className={
+          // Prevent double className when using Dropdown component
+          cl(IS_DROPDOWN.test(className) ? undefined : 'ds-popover', className)
+        }
         id={id || popoverId}
         popover='manual'
         data-placement={placement}

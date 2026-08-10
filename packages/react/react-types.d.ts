@@ -28,6 +28,10 @@ declare global {
       // Make React 18 support popover attributes https://github.com/facebook/react/issues/27479
       popovertarget?: string;
       popover?: '' | 'auto' | 'manual' | 'hint';
+
+      // Make React support focusgroup attribute
+      focusgroup?: string;
+      focusgroupstart?: boolean | undefined;
     }
     // Make React support command attributes https://github.com/facebook/react/issues/27479
     interface ButtonHTMLAttributes<T> extends React.HTMLAttributes<T> {

@@ -2,25 +2,15 @@
 
 ## Bruk
 
-Dropdown er bygget på vår [popover-komponent](/no/components/docs/popover/overview), og bruker [native popover-api (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover/code) i HTML.
+Du kan bruke Dropdown i ren HTML ved å bruke `popover`-attributtet på et element med klassen `ds-dropdown`, og koble det til en trigger med `popovertarget="ID-OF-DROPDOWN-HERE"`.
+Designsystemet legger automatisk til [popover-polyfill (npmjs.com)](https://www.npmjs.com/package/@oddbird/popover-polyfill) for å støtte det native [Popover API-et (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using) i eldre nettlesere ved behov.
 
-Merk deg at elementet med `popover="manual"` bruker to klasser, `ds-popover` og `ds-dropdown`.
-Du velger selv om du vil bruke `popover="manual"` eller bare `popover` for å åpne dropdownen.
-
-Når du bruker `@digdir/designsystemet-web` legger vi på en listener som automatisk plasserer popoveren riktig ved hjelp av `floating-ui`. 
-Du kan styre plassering med attributt på selve popoveren.
-| attribute     | type   | default    | required |
-|---------------|--------|------------|----------|
-| data-placement | string | top        | false    |
-| data-overscroll | `'contain' \| undefined` | undefined | undefined       | false    |
-| data-autoplacement | boolean | true          | false    |
-
-[Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using)
-
-### Polyfill
-
-`dropdown` bruker [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover).
-Vi legger automatisk til [popover-polyfill (npmjs.com)](https://www.npmjs.com/package/@oddbird/popover-polyfill) for å støtte eldre nettlesere ved behov.
+Du kan styre plassering med attributt på selve Dropdown:
+| attribute     | type   | default    |
+|---------------|--------|------------|
+| data-placement | `'top' \| 'top-start' \| 'top-end' \| 'right' \| 'right-start' \| 'right-end' \| 'bottom' \| 'bottom-start' \| 'bottom-end' \| 'left' \| 'left-start' \| 'left-end' \| 'none'` | `'bottom'` |
+| data-overscroll | `'contain' \| undefined` | `undefined` |
+| data-autoplacement | `boolean` | `true` |
 
 ## CSS variabler og data-attributter
 
@@ -72,6 +62,9 @@ Merk at vi ikke bruker `onClick` på triggeren, dropdownen håndterer dette inte
 
 <ReactComponentDocs />
 
+### Piltastnavigasjon
+
+Du kan kombinere Dropdown med [focusgroup](/no/components/utilities/focusgroup) for å tilby piltastnavigasjon mellom elementer.
 
 ### Referanser
 
