@@ -1,3 +1,4 @@
 * @mimarz @Barsnes @eirikbacker
 apps/www/app/content @mrosvik @Febakke @mimarz @Barsnes @eirikbacker
+# The next line is purely for Team Sikkerhet and their filtering logic
 /.github/CODEOWNERS @digdir/designsystemet
