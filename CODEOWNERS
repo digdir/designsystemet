@@ -1,4 +1,3 @@
-apps/www/app/content @mrosvik @Febakke
-/.github/CODEOWNERS @digdir/designsystemet
 * @mimarz @Barsnes @eirikbacker
-
+apps/www/app/content @mrosvik @Febakke @mimarz @Barsnes @eirikbacker
+/.github/CODEOWNERS @digdir/designsystemet
