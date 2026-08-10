@@ -29,6 +29,27 @@ You can use the `data-tooltip` attribute with a CSS ID selector to point to anot
 <div id="tooltip-content" class="ds-sr-only">This is the tooltip content.</div>
 ```
 
+## Tooltip inside Shadow DOM / Web component
+When using `data-tooltip` inside a Shadow DOM, you must manually provide an accessible name or description:
+
+- Use `aria-label` when the element contains visuals only (for example, an icon button).
+- Use `aria-description` when the element already contains visible text and the tooltip provides additional information.
+
+This is required because the tooltip `MutationObserver` cannot detect or initialize tooltips inside a Shadow DOM.
+
+Alternatively, you can manually initialize tooltips inside your Shadow DOM by using the `initTooltips` function:
+
+```js
+import { initTooltips } from '@digdir/designsystemet-web'
+
+
+class MyComponent extends HTMLElement {
+  connectedCallback() {
+    setTimeout(initTooltips, 0, this.shadowRoot); // Using setTimeout to let children mount before initializing
+  }
+} 
+```
+
 ## CSS variables and data attributes
 Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
 The component will inherit from the nearest parent with these set.

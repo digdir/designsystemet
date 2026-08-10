@@ -21,12 +21,10 @@ packageExtensions:
     peerDependenciesMeta:
       react:
         optional: true
-patchedDependencies:
-  '@oddbird/popover-polyfill': patches/@oddbird__popover-polyfill.patch
 syncInjectedDepsAfterScripts:
   - build
   - build:all
   - build:www
   - build:themebuilder
   - build:storybook
-useNodeVersion: "24.18.0"
+useNodeVersion: "24.19.0"

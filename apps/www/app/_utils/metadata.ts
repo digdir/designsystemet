@@ -13,7 +13,7 @@ export interface BuiltMetadata {
 }
 
 export const defaultCoverImagePath = '/img/designsystemet-meta.png';
-export const logoPath = '/img/Logotest.svg';
+export const logoPath = '/img/logo.svg';
 
 export const generateMetadata = (metadata: PageMetadata) => {
   const { title, description, siteUrl, pageTitle, image } =

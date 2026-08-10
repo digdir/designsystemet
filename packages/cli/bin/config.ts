@@ -28,27 +28,29 @@ export async function readConfigFile(configFilePath: string, allowFileNotFound =
   return configFile;
 }
 
+/**
+ * Parses and validates the create config file.
+ * Merges the config file with CLI options, with CLI options taking precedence.
+ *
+ * @template T - The expected type of the parsed and validated config.
+ * @param configFile - The content of the config file as a string.
+ * @param options - An object containing the CLI command, theme name, and config file path.
+ * @returns The validated create config schema.
+ */
 export async function parseCreateConfig(
   configFile: string,
   options: { theme: string; cmd: Command<unknown[], OptionValues>; configFilePath: string },
 ): Promise<CreateConfigSchema> {
   const { cmd, theme = 'theme', configFilePath } = options;
 
-  const configParsed: CreateConfigSchema = parseConfig<CreateConfigSchema>(configFile, configFilePath);
+  let configParsed = {} as CreateConfigSchema;
 
-  /*
-   * Check that we're not creating multiple themes with different color names.
-   * For the themes' modes to work in Figma and when building css, the color names must be consistent
-   */
-  const themeColors = Object.values(configParsed?.themes ?? {}).map((x) => new Set(R.keys(x.colors)));
-  if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
-    console.error(pc.redBright(`In config, all themes must have the same custom color names, but we found:`));
-    const themeNames = R.keys(configParsed.themes ?? {});
-    themeColors.forEach((colors, index) => {
-      const colorNames = Array.from(colors);
-      console.log(`  - ${themeNames[index]}: ${colorNames.join(', ')}`);
-    });
-    console.log();
+  try {
+    configParsed = parseConfig<CreateConfigSchema>(configFile);
+  } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred while parsing config file';
+    console.error(pc.redBright(`Failed parsing config  file at ${pc.red(configFilePath)}`));
+    console.error(pc.red(errorMessage));
     process.exit(1);
   }
 
@@ -93,5 +95,16 @@ export async function parseCreateConfig(
         },
   });
 
-  return validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig, configFilePath);
+  let validatedConfig = {} as CreateConfigSchema;
+  try {
+    validatedConfig = validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig);
+  } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred while parsing config file';
+
+    console.error(pc.redBright(`Invalid config  ${pc.red(configFilePath ? 'file at ' + configFilePath : 'string')}`));
+    console.error(pc.red(errorMessage));
+    process.exit(1);
+  }
+
+  return validatedConfig;
 }
