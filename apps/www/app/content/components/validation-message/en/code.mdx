@@ -22,4 +22,7 @@ import { ValidationMessage } from '@digdir/designsystemet-react';
 <ValidationMessage>This is a validation message.</ValidationMessage>
 ```
 
+The component always sets `data-field="validation"`, which will give `aria-invalid="true"` on the associated form field in `<ds-field>`.
+To avoid this, you can set `data-field={null}` on `<ValidationMessage>`.
+
 <ReactComponentDocs />
