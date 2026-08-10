@@ -29,6 +29,28 @@ Du kan bruke `data-tooltip`-attributtet med en CSS-ID-selector, for å peke til 
 <div id="tooltip-content" class="ds-sr-only">Dette er innholdet i tooltipen.</div>
 ```
 
+## Tooltip inne i Shadow DOM / Web-komponent
+
+Når du bruker `data-tooltip` inne i en Shadow DOM, må du manuelt angi et tilgjengelig navn eller en tilgjengelig beskrivelse:
+
+- Bruk `aria-label` når elementet kun inneholder visuelle elementer (for eksempel en ikonknapp).
+- Bruk `aria-description` når elementet allerede inneholder synlig tekst, og tooltipen gir tilleggsinformasjon.
+
+Dette er nødvendig fordi tooltipens `MutationObserver` ikke kan oppdage eller initialisere tooltips inne i en Shadow DOM.
+
+Alternativt kan du manuelt initialisere tooltips inne i din Shadow DOM ved å bruke funksjonen `initTooltips`:
+
+```js
+import { initTooltips } from '@digdir/designsystemet-web'
+
+
+class MyComponent extends HTMLElement {
+  connectedCallback() {
+    setTimeout(initTooltips, 0, this.shadowRoot); // Bruker setTimeout for å la children monteres før initialisering
+  }
+}
+```
+
 ## CSS variablar og data-attributter
 Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med[data-color](/no/fundamentals/code/colors). 
 Komponenten vil arve nærmeste forelder med disse satt.

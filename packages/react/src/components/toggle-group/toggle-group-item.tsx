@@ -31,6 +31,7 @@ export type ToggleGroupItemProps = {
     | 'formNoValidate'
     | 'value'
     | 'disabled'
+    | 'readOnly'
   >;
 
 /**
@@ -53,6 +54,7 @@ export const ToggleGroupItem = forwardRef<
   const {
     'aria-disabled': ariaDisabled,
     disabled,
+    readOnly,
     form,
     formAction,
     formEncType,
@@ -75,6 +77,7 @@ export const ToggleGroupItem = forwardRef<
         aria-disabled={ariaDisabled}
         checked={active}
         disabled={disabled}
+        readOnly={readOnly}
         form={form}
         formAction={formAction}
         formEncType={formEncType}

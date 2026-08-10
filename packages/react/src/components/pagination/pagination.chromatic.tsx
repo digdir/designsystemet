@@ -1,16 +1,15 @@
-import type { Meta } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
 import { Pagination } from './';
 import * as PaginationStories from './pagination.stories';
 
-const meta: Meta = {
+const meta = preview.meta({
   title: 'Chromatic/Pagination',
   component: Pagination,
   tags: ['chromatic'],
   parameters: {
     layout: 'padded',
   },
-};
-export default meta;
+});
 
-export const Snapshots = createSingleStory(PaginationStories, meta);
+export const Snapshots = meta.story(createSingleStory(PaginationStories));

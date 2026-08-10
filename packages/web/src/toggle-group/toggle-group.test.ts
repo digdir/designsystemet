@@ -1,12 +1,13 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { describe, expect, it, vi } from 'vitest';
+import { userEvent } from 'vitest/browser';
 
 const render = () => {
   document.body.innerHTML = `
-    <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering">
+    <fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Tekstjustering">
       <label>
-        <input type="radio" name="alignment" value="left" />
+        <input type="radio" name="alignment" value="left" checked />
         Left
       </label>
       <label>
@@ -27,56 +28,36 @@ const render = () => {
 };
 
 describe('toggle-group behavior', () => {
-  it('sets data-toggle-group from aria-label', async () => {
-    const { group } = render();
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
-    expect(group).toHaveAttribute('aria-label', 'Tekstjustering');
-  });
-
-  it('respects aria-labelledby and does not set aria-label', async () => {
-    document.body.innerHTML = `
-      <span id="tg-label">External label</span>
-      <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering" aria-labelledby="tg-label">
-        <label>
-          <input type="radio" name="alignment" value="left" />
-          Left
-        </label>
-      </fieldset>
-    `;
-    const group = document.querySelector<HTMLFieldSetElement>(
-      '[data-toggle-group]',
-    );
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
-    expect(group).toHaveAttribute('aria-labelledby', 'tg-label');
-    expect(group).not.toHaveAttribute('aria-label');
-  });
-
-  it('clicks input on Enter', () => {
-    const { inputs } = render();
-
-    const clickSpy = vi.spyOn(inputs[0], 'click');
-
-    inputs[0].dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
-    );
-
-    expect(clickSpy).toHaveBeenCalledTimes(1);
-  });
-
-  it('moves focus with arrow keys and wraps', async () => {
+  it('moves only focus (not selection) with arrow keys and wraps', async () => {
     const { inputs } = render();
 
     inputs[0].focus();
-    inputs[0].dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }),
-    );
+    expect(inputs[0]).toBeChecked();
 
-    expect(document.activeElement).toBe(inputs[2]);
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(inputs[2]).toHaveFocus();
+    expect(inputs[0]).toBeChecked();
 
-    inputs[2].dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
-    );
+    await userEvent.keyboard('{ArrowRight}');
+    expect(inputs[0]).toHaveFocus();
+    expect(inputs[0]).toBeChecked();
+  });
 
-    expect(document.activeElement).toBe(inputs[0]);
+  it('clicks input on Enter', async () => {
+    const { inputs } = render();
+
+    const clickSpy = vi.spyOn(inputs[1], 'click');
+
+    inputs[0].focus();
+    expect(inputs[0]).toHaveFocus();
+    expect(inputs[0]).toBeChecked();
+
+    await userEvent.keyboard('{ArrowRight}');
+    expect(inputs[0]).toBeChecked();
+    expect(inputs[1]).toHaveFocus();
+
+    await userEvent.keyboard('{Enter}');
+    expect(inputs[1]).toBeChecked();
+    expect(clickSpy).toHaveBeenCalledTimes(1);
   });
 });

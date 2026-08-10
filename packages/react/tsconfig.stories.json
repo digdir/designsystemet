@@ -17,6 +17,7 @@
     "stories",
     "src/**/*.stories.ts*",
     "src/**/*.chromatic.ts*",
+    "../../apps/storybook/.storybook/**/*.ts*",
     "../../apps/storybook/story-utils/**/*.ts*",
     "../../designsystemet.config.json"
   ],

@@ -1,20 +1,21 @@
 <Story story="Preview" defaultOpen />
 
 ## Bruk
-Bruker du `@digdir/designsystemet-web` kan du implementere toggle group ved å bruke `data-toggle-group`-attributtet.
+Bruker du `@digdir/designsystemet-web` kan du implementere toggle group ved å bruke `focusgroup="radiogroup"` sammen med `aria-label`.
+Merk at `focusgroup` er en [kommende W3C standard](https://open-ui.org/components/scoped-focusgroup.explainer/), foreløpig kun støttet i Chrome. Designsystemet legger automatisk til polyfill for støtte i alle nettlesere.
 
 ```html
-<fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering" data-variant="secondary">
+<fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Tekstjustering" data-variant="secondary">
   <label class="ds-button">
-    <input type="radio" name="alignment-two" value="left" checked />
+    <input type="radio" name="alignment" value="left" checked />
     Venstestilt
   </label>
   <label class="ds-button">
-    <input type="radio" name="alignment-two" value="center" />
+    <input type="radio" name="alignment" value="center" />
     Midtstilt
   </label>
   <label class="ds-button">
-    <input type="radio" name="alignment-two" value="right" />
+    <input type="radio" name="alignment" value="right" />
     Høyrestilt
   </label>
 </fieldset>
@@ -22,28 +23,22 @@ Bruker du `@digdir/designsystemet-web` kan du implementere toggle group ved å b
 
 ### Gammel måte med `<button>`
 **Her må du håndtere tastaturnavigasjon og ARIA-roller sjølv.**
-
 Du kan lese om kva du må gjere for å implementere dette i [tilgjengelighetsdokumentasjonen](/no/components/docs/toggle-group/accessibility).
-
-Klassenavnet `ds-toggle-group` blir lagt på ein `<div>` med `role="radiogroup"`.
-
-Kvar knapp i gruppa er ein `<button>` med klassenavn `ds-button` med `role="radio"` og `aria-checked` som indikerer om knappen er vald eller ikkje.
+Kvar knapp i gruppa er ein `<button>` med klassenavn `ds-button` med `aria-checked` som indikerer om knappen er vald eller ikkje.
 
 ```html
-<div class="ds-toggle-group" role="radiogroup" data-variant="primary">
+<div class="ds-toggle-group" focusgroup="radiogroup" aria-label="Filter" data-variant="primary">
   <button
     class="ds-button"
     type="button"
     id="togglegroup-item-1"
     aria-checked="true"
-    role="radio"
   >Innboks</button>
   <button
     class="ds-button"
     type="button"
     id="togglegroup-item-2"
     aria-checked="false"
-    role="radio"
   >Sendt</button>
 </div>
 ```
@@ -61,7 +56,7 @@ Komponenten vil arve næraste forelder med desse satt.
 ```tsx
 import { ToggleGroup } from '@digdir/designsystemet-react';
 
-<ToggleGroup data-toggle-group='Alternativer' defaultValue="option1">
+<ToggleGroup aria-label='Alternativer' defaultValue="option1">
   <ToggleGroup.Item value="option1">Alternativ 1</ToggleGroup.Item>
   <ToggleGroup.Item value="option2">Alternativ 2</ToggleGroup.Item>
 </ToggleGroup>

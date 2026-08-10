@@ -5,6 +5,16 @@ import type { SizeModes, TokenSetDimensions } from '../../types.ts';
 
 async function createHash(text: string, algo = 'SHA-1') {
   const crypto = globalThis.crypto;
+  if (!crypto?.subtle) {
+    console.warn('Crypto API not available; using deterministic fallback hash. This may still result in collisions.');
+    let hash = 2166136261;
+    for (let i = 0; i < text.length; i++) {
+      hash ^= text.charCodeAt(i);
+      hash = Math.imul(hash, 16777619);
+    }
+    return Promise.resolve(hash.toString(16).padStart(8, '0'));
+  }
+
   return Array.from(new Uint8Array(await crypto.subtle.digest(algo, new TextEncoder().encode(text))), (byte) =>
     byte.toString(16).padStart(2, '0'),
   ).join('');
@@ -12,7 +22,7 @@ async function createHash(text: string, algo = 'SHA-1') {
 
 type ColorSchemes = Array<ColorScheme>;
 
-type ThemeObject_ = ThemeObject & {
+export type ThemeObject_ = ThemeObject & {
   $figmaCollectionId?: string;
   $figmaModeId?: string;
   $figmaVariableReferences?: Record<string, string>;
@@ -37,15 +47,16 @@ export async function generate$Themes(
   tokenSetDimensions: TokenSetDimensions,
   themeNames: string[],
   colorNames: string[],
+  createHashFn: (text: string) => Promise<string> = createHash,
 ): Promise<ThemeObject_[]> {
   const { colorSchemes, sizeModes } = tokenSetDimensions;
   return [
     ...generateSizeGroup(sizeModes),
-    ...(await generateThemesGroup(themeNames)),
+    ...(await generateThemesGroup(themeNames, createHashFn)),
     ...generateTypographyGroup(themeNames),
     ...generateColorSchemesGroup(colorSchemes, themeNames),
     generateSemanticGroup(),
-    ...(await generateColorGroup(colorNames)),
+    ...(await generateColorGroup(colorNames, createHashFn)),
   ];
 }
 
@@ -129,11 +140,14 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[])
   );
 }
 
-async function generateThemesGroup(themes: string[]): Promise<ThemeObject_[]> {
+async function generateThemesGroup(
+  themes: string[],
+  createHashFn: (text: string) => Promise<string> = createHash,
+): Promise<ThemeObject_[]> {
   return Promise.all(
     themes.map(
       async (theme, index): Promise<ThemeObject_> => ({
-        id: await createHash(theme),
+        id: await createHashFn(theme),
         $figmaCollectionId: 'VariableCollectionId:36528:61712',
         $figmaModeId: `40960:${index + 6}`, // Start on 6 in Token Studio and Community file for some reason
         name: theme,
@@ -160,11 +174,14 @@ function generateSemanticGroup(): ThemeObject_ {
   };
 }
 
-async function generateColorGroup(colorNames: string[]): Promise<ThemeObject_[]> {
+async function generateColorGroup(
+  colorNames: string[],
+  createHashFn: (text: string) => Promise<string> = createHash,
+): Promise<ThemeObject_[]> {
   return Promise.all(
     colorNames.map(
       async (color): Promise<ThemeObject_> => ({
-        id: await createHash(color),
+        id: await createHashFn(color),
         name: color,
         selectedTokenSets: {
           [`semantic/color/${color}`]: TokenSetStatus.ENABLED,
