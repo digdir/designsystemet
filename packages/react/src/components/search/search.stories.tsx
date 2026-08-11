@@ -112,3 +112,26 @@ export const Form = meta.story(() => {
     </>
   );
 });
+
+export const DeprecatedMarkup = meta.story({
+  render: () => (
+    <div className='ds-search'>
+      <input
+        className='ds-input'
+        type='search'
+        placeholder=''
+        aria-label='Søk'
+      />
+      <button
+        className='ds-button'
+        data-icon='true'
+        data-variant='tertiary'
+        type='reset'
+        aria-label='Tøm'
+      ></button>
+      <button className='ds-button' type='submit'>
+        Søk
+      </button>
+    </div>
+  ),
+});

@@ -5,7 +5,7 @@
   --dsc-pagination-ellipsis: '\2026';
   --_ds-aria-label: var(--dsc-pagination-label); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
 
-  &:lang(no, nb, nn) {
+  &:is(:lang(no), :lang(nb), :lang(nn)) {
     --dsc-pagination-label: 'Bla i sider'; /* Only set default label if Norwegian */
   }
 
