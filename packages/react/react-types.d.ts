@@ -1,4 +1,5 @@
-import type { Color, ColorScheme, Size } from '@digdir/designsystemet-types';
+import type { ColorScheme } from '@digdir/designsystemet-types';
+import type { DefaultProps } from './types';
 
 declare global {
   namespace React {
@@ -8,14 +9,14 @@ declare global {
        *
        * Select from predefined sizes or define your own size.
        */
-      'data-size'?: Size | (string & {});
+      'data-size'?: DefaultProps['data-size'];
       /**
        * Use `data-color` to change the color for descendant Designsystemet components and variables.
        *
        * Select from predefined colors and colors defined using theme.designsystemet.no.
        * @link https://theme.designsystemet.no
        */
-      'data-color'?: Color | (string & {});
+      'data-color'?: DefaultProps['data-color'];
       /**
        * Use `data-color-scheme` to change the color scheme for descendant Designsystemet components. Select from predefined color schemes.
        * - `'light'`: Use the light color scheme.
