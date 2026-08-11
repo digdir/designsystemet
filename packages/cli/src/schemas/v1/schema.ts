@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { colorNames } from '../../colors/colorMetadata.ts';
 import { convertToHex } from '../../colors/index.ts';
-import { RESERVED_COLORS } from '../../colors/theme.ts';
+import { RESERVED_COLORS } from '../../colors/scale.ts';
 import { severityColorNames } from '../defaults.ts';
 
 const hexPatterns = [
