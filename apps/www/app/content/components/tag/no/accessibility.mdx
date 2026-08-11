@@ -1,60 +1,66 @@
-<Alert data-color="info">
-Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
-</Alert>
-
-Skal du vise flere `Tag` sammen, anbefaler vi å bruke en `<ul>`-liste med én `<li>` per `Tag`. På den måten blir de lest opp som en liste, ikke som én sammenhengende setning, noe som gir en bedre opplevelse for brukere av hjelpemiddelteknologi.
-
 ## Dette må du sjekke selv
 
-**Tag som inneholder et icon**
+**Tag som inneholder et ikon**
 
-Bruk `aria-label` for å gi et tilgjengelig navn, pass på at navnet er beskrivende for taggens status eller betydning. Selve ikonet kan skjules for skjermleser når tag har et tilgjengelig navn.
+Gi taggen et tilgjengelig navn med `aria-label`. Navnet skal beskrive taggens status eller betydning. Skjul ikonet for skjermlesere dersom taggen allerede har et tilgjengelig navn.
 
 <span data-size="sm"> 
-WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231)
+WCAG: [1.1.1 Ikke-tekstlig innhold (uutilsynet)](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231)
 </span> 
 
 <Divider/>
 \
-**Taggens status eller betydning skal kommuniseres med mer enn bare farge.**
+**Taggens status eller betydning skal kommuniseres med mer enn bare farge**
 
-Bruk en tydelig og synlig etikett som beskriver taggens betydning slik at en ikke trenger å kunne se taggens farge eller tolke et ikon.
+Bruk en tydelig og synlig etikett som beskriver taggens betydning. Brukeren skal ikke måtte tolke farge eller ikon alene for å forstå informasjonen.
 
 <span data-size="sm"> 
-WCAG: [1.4.1 Bruk av farge](https://www.uutilsynet.no/wcag-standarden/141-bruk-av-farge-niva/93)
+WCAG: [1.4.1 Bruk av farge (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/141-bruk-av-farge-niva/93)
 </span> 
 
 <Divider/>
 \
-**En gruppe av flere tagger som fungerer i en samlet skal ha et tilgjengelig navn**
+**En gruppe med tagger skal ha et tilgjengelig navn og bør være kodet som en semantisk gruppe**
 
-Gi det omsluttende elementet en passende rolle som for eksempel `group` og et tilhørende navn med `aria-label` eller `aria-labelledby`. Du skal ikke gjenta rollen som en del av navnet. Den enkelte taggen inne i gruppa skal også tilgjengelige navn.
+Viser du flere tag sammen, anbefaler vi å bruke en `ul`-liste med én `li` per tag. Da leser skjermlesere dem opp som en liste i stedet for én sammenhengende tekst.
+
+Gi det omsluttende elementet et tilgjengelig navn med `aria-label` eller `aria-labelledby`. Bruk eventuelt en passende rolle, som `group`, dersom innholdet fungerer som en samlet gruppe. Ikke gjenta rollen som en del av navnet.
+
+Sørg også for at hver enkelt tag har et tilgjengelig navn.
 
 <span data-size="sm"> 
-WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
-WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/veiledning/131-informasjon-og-relasjoner/1234)
+WCAG: [4.1.2 Navn, rolle, verdi (uutilsynet)](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
+</span> 
+<span data-size="sm"> 
+WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/veiledning/131-informasjon-og-relasjoner/1234)
 </span> 
 
 <Divider/>
 \
 **En tag skal ikke ha interaktiv funksjonalitet**
 
-En tag er en innholdsvisning og skal ikke ha annen funksjonalitet eller visuelt se ut som et funksjonelt element, bruk heller chip, button eller annet element for slikt.
+Bruk en tag til å vise informasjon, ikke til å utføre handlinger. Den skal heller ikke se ut som et interaktivt element. Bruk i stedet chip, button eller en annen interaktiv komponent dersom brukeren skal kunne aktivere eller endre noe.
 
 <span data-size="sm"> 
-WCAG: [3.2.4 Konsekvent identifikasjon](https://www.uutilsynet.no/wcag-standarden/324-konsekvent-identifikasjon-niva-aa/115)
+WCAG: [3.2.4 Konsekvent identifikasjon (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/324-konsekvent-identifikasjon-niva-aa/115)
 </span> 
 
 <Divider/>
 \
-**En tag som viser en status som endres dynamisk på bakgrunn av noe brukeren eller systemet gjør, skal endring av status varsles**
+**Statusendringer må varsles når de skjer dynamisk**
 
-Bruk aria-????
+Hvis statusen oppdateres uten at brukeren flytter fokus til den oppdaterte informasjonen, må du også formidle endringen til brukere av skjermleser.
+
+Knytt varslingen til innholdet eller funksjonen som eier statusen, ikke nødvendigvis til taggen som viser den.
+
+For eksempel kan en opplastingsprosess varsle «Opplasting fullført», samtidig som statusen vises med en tag som endrer tekst og utseende.
+
+<span data-size="sm"> 
+WCAG: [4.1.3 Statusbeskjeder (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+</span> 
 
 <Divider/>
-## Designsystemet
+## Designsystemet ivaretar
 
 - Kontrastforhold håndteres av fargesystemet i designsystemet. Dersom du avviker fra anbefalte fargetokens, må du kontrollere at kombinasjonen av tekstfarge og bakgrunnsfarge oppfyller kravene til kontrast for alle varianter av taggen.
-- Størrelse og skalering håndteres av designsystemets størrelsessystem. Dersom du avviker fra dette, må du kontrollere at taggen fungerer ved forstørring av tekst og bruk av skjermforstørrer, uten tap av informasjon eller funksjonalitet.
-
-
+- Størrelse og skalering håndteres av designsystemets størrelsessystem. Dersom du avviker fra dette, må du kontrollere at taggen fungerer ved forstørring av tekst og bruk av skjermforstørrer, uten tap av informasjon.

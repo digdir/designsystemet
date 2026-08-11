@@ -1,7 +1,100 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## Announce changes on the page
 
-## Notify users about changes on the page
+If parts of the page are updated while the user interacts with a chip, screen reader users must be informed about those changes. Use an `ARIA live region` to communicate updates such as an updated result count or other dynamic information.
 
-If parts of the page are updated while the user interacts with a `Chip`, we must ensure that screen reader users are informed. Use an `ARIA live region` to announce updates, such as the number of results or other dynamic changes.
+<span data-size="sm">
+WCAG: [4.1.3 Status Messages (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html)
+</span>
+
+<Divider/>
+
+## What you need to verify yourself
+
+**A chip that truncates part of its content must still provide access to the full content**
+
+Use CSS to visually hide parts of long content. This ensures that the full content remains in the DOM and is still available to screen readers.
+
+The full text should also be duplicated in the `title` attribute so that it is visible on hover for sighted users.
+
+<span data-size="sm">
+WCAG: [1.3.1 Info and Relationships (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships)
+</span>
+
+<Divider/>
+\
+**Chips used as filters must expose their state clearly**
+
+- Use `aria-pressed` (`true`/`false`) for chips acting as toggle buttons.
+- Use `aria-checked` for chips that behave like checkboxes or radio buttons.
+
+<span data-size="sm">
+WCAG: [4.1.2 Name, Role, Value (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+</span>
+
+<Divider/>
+\
+**Removable filter selections must have an accessible name that describes their action**
+
+Give the chip a name that clearly describes what it does. For example, use “Remove Electronics” for a selected filter named “Electronics”. Set the accessible name using `aria-label`.
+
+<span data-size="sm">
+WCAG: [4.1.2 Name, Role, Value (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+</span>
+
+<Divider/>
+\
+**A group of chips that functions as a single control must have an accessible name**
+
+Give the containing element an appropriate role, such as `group`, and provide an accessible name using `aria-label` or `aria-labelledby`. Do not repeat the role as part of the accessible name.
+
+Make sure each chip within the group also has an accessible name.
+
+<span data-size="sm">
+WCAG: [4.1.2 Name, Role, Value (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+</span>
+
+<Divider/>
+\
+**Chip containing an icon**
+
+Give the chip an accessible name using `aria-label`. Make sure the name clearly describes both the chip’s functionality and content.
+
+The icon itself can be hidden from screen readers if the chip already has an accessible name.
+
+<span data-size="sm">
+WCAG: [1.1.1 Non-text Content (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content)
+</span>
+
+<Divider/>
+\
+**Move focus when a chip is removed**
+
+If a chip is removed using the keyboard (`Delete` or `Backspace`), move focus to the previous or next chip. If no chips remain, move focus to the containing element.
+
+<span data-size="sm">
+WCAG: [2.4.3 Focus Order (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html)
+</span>
+
+<Divider/>
+
+## Test with a keyboard
+
+**Verify that you can:**
+
+- reach a chip using the Tab key
+- activate, select, and deselect a chip using both the Space and Enter keys
+- remove a chip using both the Delete and Backspace keys
+- navigate between grouped chips using the Arrow keys
+- reach interactive content revealed by activating a chip using the Tab key
+
+<span data-size="sm">
+WCAG: [2.1.1 Keyboard (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/keyboard)
+</span>
+
+<Divider/>
+
+## Handled by the design system
+
+- The design system includes focus and hover styles. Verify that they are visible when navigating with a keyboard and when hovering with a pointing device.
+- Color contrast is handled by the design system's color system. If you deviate from the recommended color tokens, verify that the combination of text and background colors meets the required contrast ratios for the chip.
+- Sizing and scaling are handled by the design system's sizing system. If you deviate from it, verify that the chip remains usable when text is resized or when screen magnification is used, without loss of information or functionality.
