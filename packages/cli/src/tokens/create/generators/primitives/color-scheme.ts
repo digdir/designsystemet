@@ -1,7 +1,6 @@
 import * as R from 'ramda';
-import { semanticColorSpec } from '../../../../colors/colorMetadata.ts';
-import { generateColorScale } from '../../../../colors/index.ts';
-import type { Color, ColorScheme, CssColor } from '../../../../colors/types.ts';
+import type { Color, ColorScheme, CssColor } from '../../../../colors/index.ts';
+import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
 import { severityColors, visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
 import type { Token, TokenSet } from '../../../types.ts';

@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
-import { getSemanticColorByNumber, semanticColorSpec } from './colorMetadata.ts';
+import { getSemanticColorByNumber, semanticColorSpec } from './specs.ts';
 import type { Color, ColorNumber, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 

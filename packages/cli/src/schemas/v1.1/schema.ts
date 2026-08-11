@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { semanticColorNames } from '../../colors/colorMetadata.ts';
 import { convertToHex } from '../../colors/index.ts';
+import { semanticColorNames } from '../../colors/specs.ts';
 import { defaultBorderRadius, defaultFontFamily, severityColorNames } from '../defaults.ts';
 
 const hexPatterns = [
