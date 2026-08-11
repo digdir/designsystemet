@@ -9,7 +9,7 @@ packageExtensionsChecksum: sha256-IQSNU9cJtri1P9xMWAvG91nRHacWCj8xtjZCK1etLxM=
 
 patchedDependencies:
   '@oddbird/popover-polyfill':
-    hash: b8dba02bbb2999faf4898a4769b974d478373e44942d690d1c21b34594677720
+    hash: 6227913935a153774e0e2569cb889d63767e7a5d572dbc6beeadfb2e77ed5c11
     path: patches/@oddbird__popover-polyfill.patch
 
 importers:
@@ -700,7 +700,7 @@ importers:
         version: 0.11.0(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)
       '@oddbird/popover-polyfill':
         specifier: 0.7.1
-        version: 0.7.1(patch_hash=b8dba02bbb2999faf4898a4769b974d478373e44942d690d1c21b34594677720)
+        version: 0.7.1(patch_hash=6227913935a153774e0e2569cb889d63767e7a5d572dbc6beeadfb2e77ed5c11)
       '@testing-library/dom':
         specifier: 10.4.1
         version: 10.4.1
@@ -7180,7 +7180,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@oddbird/popover-polyfill@0.7.1(patch_hash=b8dba02bbb2999faf4898a4769b974d478373e44942d690d1c21b34594677720)': {}
+  '@oddbird/popover-polyfill@0.7.1(patch_hash=6227913935a153774e0e2569cb889d63767e7a5d572dbc6beeadfb2e77ed5c11)': {}
 
   '@oxc-parser/binding-android-arm-eabi@0.127.0':
     optional: true

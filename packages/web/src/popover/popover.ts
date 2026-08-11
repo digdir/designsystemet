@@ -25,14 +25,6 @@ import {
 } from '../utils/utils';
 
 if (isBrowser() && !isSupported() && !isPolyfilled()) {
-  // console.log({
-  //   CSS: typeof CSS,
-  //   escape: typeof CSS.escape,
-  //   escaped: 'ds.base'
-  //     .split('.')
-  //     .map((css) => CSS.escape(css))
-  //     .join('.'),
-  // });
   polyfillPopover({ layerName: 'ds.base' }); // Load popover polyfill in the ds.base CSS layer to keep cascade order consistent with Designsystemet layers.
 }
 
@@ -48,6 +40,7 @@ declare global {
   }
 }
 
+const PROPS = { configurable: true, enumerable: true, writable: true };
 const ROOTS = new Map<ShadowRoot, () => void>();
 const ATTR_PLACE = 'data-placement';
 const ATTR_AUTO = 'data-autoplacement';
@@ -163,9 +156,7 @@ onHotReload('popover', () => {
   // Since toggle event is not composed, we need to trigger it when programatically called inside shadow DOM
   Object.defineProperties(HTMLElement.prototype, {
     togglePopover: {
-      enumerable: true,
-      configurable: true,
-      writable: true,
+      ...PROPS,
       value(opt: TogglePopoverOptions) {
         const isOpen = this.matches(':popover-open');
         const isBool = typeof opt === 'boolean';
@@ -180,9 +171,7 @@ onHotReload('popover', () => {
       },
     },
     showPopover: {
-      enumerable: true,
-      configurable: true,
-      writable: true,
+      ...PROPS,
       value(opt: ShowPopoverOptions) {
         const prev = this.matches(':popover-open') ? 'open' : 'closed';
         const result = showPopover?.call(this, opt);
@@ -191,9 +180,7 @@ onHotReload('popover', () => {
       },
     },
     hidePopover: {
-      enumerable: true,
-      configurable: true,
-      writable: true,
+      ...PROPS,
       value() {
         const prev = this.matches(':popover-open') ? 'open' : 'closed';
         const result = hidePopover?.call(this);
@@ -210,24 +197,9 @@ onHotReload('popover', () => {
     () => {
       // Restore original methods on hot reload
       Object.defineProperties(HTMLElement.prototype, {
-        togglePopover: {
-          configurable: true,
-          enumerable: true,
-          value: togglePopover,
-          writable: true,
-        },
-        showPopover: {
-          configurable: true,
-          enumerable: true,
-          value: showPopover,
-          writable: true,
-        },
-        hidePopover: {
-          configurable: true,
-          enumerable: true,
-          value: hidePopover,
-          writable: true,
-        },
+        togglePopover: { value: togglePopover, ...PROPS },
+        showPopover: { value: showPopover, ...PROPS },
+        hidePopover: { value: hidePopover, ...PROPS },
       });
       for (const [, off] of ROOTS) off(); // Cleanup listeners on ShadowRoots on hot reload
       ROOTS.clear();

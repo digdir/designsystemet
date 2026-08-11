@@ -18,10 +18,20 @@ const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 // but as of March 2026, this approach provides the best user experience across assistive technologies.
 // This approach is also verified by the chief of accessibility at NRK and the accessibility expert at NAV
 const handleFieldsetMutations = () => {
-  for (const el of FIELDSETS) {
-    if (el.hasAttribute(ARIA_LABELLEDBY)) continue; // Speed up by skipping labelled fieldsets
-    const labelledby = `${useId(el.querySelector('legend'))} ${useId(el.querySelector(':scope > :is([data-field="description"],legend + p)'))}`;
-    attr(el, ARIA_LABELLEDBY, labelledby.trim() || null);
+  for (const fieldset of FIELDSETS) {
+    if (fieldset.hasAttribute(ARIA_LABELLEDBY)) continue; // Speed up by skipping labelled fieldsets
+
+    let labelledby = '';
+    for (const el of fieldset.children) {
+      const name = el.nodeName;
+      const isLegendOrDescription =
+        name === 'LEGEND' ||
+        el.getAttribute('data-field') === 'description' ||
+        (name === 'P' && el.previousElementSibling?.nodeName === 'LEGEND'); // Backwards compatibility
+
+      if (isLegendOrDescription) labelledby += `${useId(el)} `;
+    }
+    attr(fieldset, ARIA_LABELLEDBY, labelledby.trim() || null);
   }
 };
 

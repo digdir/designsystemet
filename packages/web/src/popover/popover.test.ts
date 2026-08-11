@@ -26,10 +26,9 @@ describe('popover floating behavior', () => {
 
     trigger.click();
     await tick();
-
     expect(popover.matches(':popover-open')).toBe(true);
     expect(popover).not.toHaveAttribute('data-floating');
-    expect(popover.style.translate).toBe('');
+    expect(popover.style.translate).toBeFalsy();
   });
 
   it('positions the popover using floating-ui when --_ds-floating is set', async () => {
@@ -89,7 +88,7 @@ describe('popover floating behavior', () => {
 
     const popover = document.getElementById('my-popover') as HTMLElement;
     expect(popover).not.toHaveAttribute('data-floating');
-    expect(popover.style.translate).toBe('');
+    expect(popover.style.translate).toBeFalsy();
   });
 
   it('cleans up positioning (autoUpdate) when the popover closes', async () => {
@@ -192,7 +191,9 @@ describe('popover scrollbar interaction guard', () => {
 });
 
 describe('popover duplicate toggle guard', () => {
-  it('does not run positioning twice when togglePopover() is followed synchronously by a ds-toggle-source event', async () => {
+  it('does not run positioning twice when togglePopover() is followed synchronously by a ds-toggle-source event', {
+    tags: ['browser'], // Only run in browsers as this relies on ResizeObserver
+  }, async () => {
     // Mirrors React's Popover, which calls togglePopover() and then dispatches
     // "ds-toggle-source" right after, to relay the .source in browsers lacking
     // native ToggleEvent.source support. Both trigger this module's toggle().

@@ -1,7 +1,16 @@
 diff --git a/dist/popover-fn.js b/dist/popover-fn.js
-index 34cad556cad4c8bcece443211feea2d24cf493dc..4decb1a420e4dcc8b21481881e2beaa6527d512a 100644
+index 34cad556cad4c8bcece443211feea2d24cf493dc..d0f1f74757ab32d02c5592e9683c89f7f367205b 100644
 --- a/dist/popover-fn.js
 +++ b/dist/popover-fn.js
+@@ -489,7 +489,7 @@ var ShadowRoot2 = globalThis.ShadowRoot || function() {
+ };
+ var DEFAULT_LAYER_NAME = "popover-polyfill";
+ function isSupported() {
+-  return typeof HTMLElement !== "undefined" && typeof HTMLElement.prototype === "object" && "popover" in HTMLElement.prototype;
++  return typeof HTMLElement !== "undefined" && typeof HTMLElement.prototype === "object" && "popover" in HTMLElement.prototype && "showPopover" in HTMLElement.prototype;
+ }
+ function isHintSupported() {
+   const el = document.createElement("div");
 @@ -517,7 +517,7 @@ function hasLayerSupport() {
  function getStyles(layerName) {
    var _a;
@@ -11,15 +20,15 @@ index 34cad556cad4c8bcece443211feea2d24cf493dc..4decb1a420e4dcc8b21481881e2beaa6
    return `
  ${useLayer ? `@layer ${layerNameEscaped} {` : ""}
    :where([popover]) {
-@@ -601,7 +601,7 @@ function injectStyles(root, layerName) {
-     } else {
-       root.prepend(sheet);
+@@ -593,7 +593,7 @@ function injectStyles(root, layerName) {
+       popoverStyleSheet = false;
      }
--  } else {
-+  } else if (root.adoptedStyleSheets) {
-     root.adoptedStyleSheets = [popoverStyleSheet, ...root.adoptedStyleSheets];
    }
- }
+-  if (popoverStyleSheet === false) {
++  if (popoverStyleSheet === false || !root.adoptedStyleSheets) {
+     const sheet = document.createElement("style");
+     sheet.textContent = styles;
+     if (root instanceof Document) {
 @@ -651,6 +651,7 @@ function apply(opts) {
      showPopover: {
        enumerable: true,
@@ -44,3 +53,13 @@ index 34cad556cad4c8bcece443211feea2d24cf493dc..4decb1a420e4dcc8b21481881e2beaa6
        value(options = {}) {
          if (typeof options === "boolean") {
            options = { force: options };
+@@ -803,7 +806,8 @@ function apply(opts) {
+     const key = event.key;
+     const target = event.target;
+     if (!event.defaultPrevented && target && (key === "Escape" || key === "Esc")) {
+-      hideAllPopoversUntil(target.ownerDocument, true, true);
++      const owner = target.ownerDocument || target;
++      hideAllPopoversUntil(owner, true, true);
+     }
+   };
+   const addEventListeners = (root) => {
