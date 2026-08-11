@@ -77,7 +77,6 @@ export const generateColorScheme = (
 
   const visitedLinkColorScale = generateColor(generateColorScale(visitedLinkColor, colorScheme)); // generate the visited link color scale for light and dark mode
   const defaultLinkVisited = visitedLinkColorScale[12];
-  ('');
   const linkOverride: Token | undefined = overrides?.linkVisited?.[colorScheme as 'light' | 'dark']
     ? ({ $type: 'color', $value: overrides.linkVisited[colorScheme as 'light' | 'dark'] } as Token)
     : undefined;
