@@ -19,6 +19,17 @@ WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/veiledning/131
 
 <Divider/>
 \
+**Chip som fungerer som filter skal være merket tydelig**
+
+- `aria-pressed` (true/false) brukes for chip som fungerer som en toggle
+- `aria-checked` bruker for en chip som fungerer som en checkbox eller enkel radio-knapp
+
+<span data-size="sm"> 
+WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
+</span> 
+
+<Divider/>
+\
 **Filtervalg som kan fjernes, skal ha et tilgjengelig navn som beskriver hva den gjør**
 
 Kombiner et ord som forklarer funksjonen med innholdet i chip, for eksempel "Ta bort Norge" for et valgt filter "Norge", navnet angis med `aria-label`
@@ -29,12 +40,32 @@ WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/veiledning/412-navn-r
 
 <Divider/>
 \
-**Chip som kun inneholder et icon**
+**En gruppe av flere Chip som fungerer i en samlet kontroll skal ha et tilgjengelig navn**
 
-Bruk `aria-label` for å gi et tilgjengelig navn, pass på at navnet er beskrivende for funksjonalitet og innhold.
+Gi det omsluttende elementet en passende rolle som for eksempel `group` og et tilhørende navn med `aria-label` eller `aria-labelledby`. Du skal ikke gjenta rollen som en del av navnet. Den enkelte chip inne i gruppa skal også tilgjengelige navn.
+
+<span data-size="sm"> 
+WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
+</span> 
+
+<Divider/>
+\
+**Chip som inneholder et icon**
+
+Bruk `aria-label` for å gi et tilgjengelig navn, pass på at navnet er beskrivende for funksjonalitet og innhold. Selve ikonet kan skjules for skjermleser når chip har et tilgjengelig navn.
 
 <span data-size="sm"> 
 WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231)
+</span> 
+
+<Divider/>
+\
+**Flytt fokus når en chip fjernes**
+
+Fjernes en chip med tastatur (delete eller backspace) skal fokus flyttes til forrige eller neste chip, er det ingen chip igjen skal fokus flyttes til omsluttende kontainer.
+
+<span data-size="sm"> 
+WCAG: [2.4.3 Fokusrekkefølge](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/105)
 </span> 
 
 <Divider/>
@@ -47,3 +78,6 @@ WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/veiledning/111-ikk
 - fjerne en chip med både delete- og backspacetastene
 - navigere mellom flere grupperte chips med piltastene
 - nå interaktivt innhold som vises ved å aktivere en chip, med tab-tasten
+
+**Focus og hover**
+Designsystemet inkluderer stiler for focus og hover, sjekk likevel at disse vises ved henholdsvis tastaturmarkering og musepeker-markering (mouseover)
