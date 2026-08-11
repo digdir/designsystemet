@@ -4,22 +4,20 @@ declare global {
   namespace React {
     interface HTMLAttributes<T> {
       /**
-       * Represents the recommended size options for the Designsystemet variables.
-       * - `'sm'`: Use the small size.
-       * - `'md'`: Use the medium size.
-       * - `'lg'`: Use the large size.
+       * Use `data-size` to change the size for descendant Designsystemet components and variables.
+       *
+       * Select from predefined sizes or define your own size.
        */
       'data-size'?: Size | (string & {});
       /**
-       * Represents the available color options for the Designsystemet variables.
+       * Use `data-color` to change the color for descendant Designsystemet components and variables.
        *
-       * These are augmented based on your theme configuration.
-       *
+       * Select from predefined colors and colors defined using theme.designsystemet.no.
        * @link https://theme.designsystemet.no
        */
       'data-color'?: Color | (string & {});
       /**
-       * Represents the available color scheme options for the Designsystemet variables.
+       * Use `data-color-scheme` to change the color scheme for descendant Designsystemet components. Select from predefined color schemes.
        * - `'light'`: Use the light color scheme.
        * - `'dark'`: Use the dark color scheme.
        * - `'auto'`: Automatically select the color scheme based on system preferences.
