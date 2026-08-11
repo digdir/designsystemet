@@ -3,10 +3,8 @@ import {
   generateColorSchemes,
   type ThemeInfo,
 } from '@digdir/designsystemet';
-import {
-  type SeverityColorNames,
-  severityColors,
-} from '@digdir/designsystemet/color';
+import type { SeverityColorNames } from '@digdir/designsystemet/color';
+import { severityColors } from '@digdir/designsystemet/schemas/defaults.js';
 import { useLoaderData } from 'react-router';
 import { generateColorVars } from '~/_utils/generate-color-vars';
 import type { Route } from '../+types/themebuilder';

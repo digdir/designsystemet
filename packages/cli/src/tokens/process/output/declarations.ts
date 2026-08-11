@@ -1,6 +1,6 @@
 import pc from 'picocolors';
 import pkg from '../../../../package.json' with { type: 'json' };
-import { severityColors } from '../../../colors/colorMetadata.ts';
+import { severityColors } from '../../../schemas/defaults.ts';
 import type { OutputFile } from '../../types.ts';
 import { getThemeColors, type ProcessedThemeObject } from '../utils/getMultidimensionalThemes.ts';
 

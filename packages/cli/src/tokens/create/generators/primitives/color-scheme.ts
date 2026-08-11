@@ -1,7 +1,8 @@
 import * as R from 'ramda';
-import { colorMetadata, dsLinkColor, severityColors } from '../../../../colors/colorMetadata.ts';
+import { colorMetadata } from '../../../../colors/colorMetadata.ts';
 import { generateColorScale } from '../../../../colors/index.ts';
 import type { Color, ColorScheme, CssColor } from '../../../../colors/types.ts';
+import { severityColors, visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
@@ -74,8 +75,9 @@ export const generateColorScheme = (
     severityColorsWithOverrides,
   );
 
-  const linkColor = generateColor(generateColorScale(dsLinkColor, colorScheme));
-  const defaultLinkVisited = linkColor[12];
+  const visitedLinkColorScale = generateColor(generateColorScale(visitedLinkColor, colorScheme)); // generate the visited link color scale for light and dark mode
+  const defaultLinkVisited = visitedLinkColorScale[12];
+  ('');
   const linkOverride: Token | undefined = overrides?.linkVisited?.[colorScheme as 'light' | 'dark']
     ? ({ $type: 'color', $value: overrides.linkVisited[colorScheme as 'light' | 'dark'] } as Token)
     : undefined;

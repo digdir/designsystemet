@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
-import { severityColors } from '../colors/colorMetadata.ts';
+import { severityColors } from '../schemas/defaults.ts';
 import type { Theme, TokenSet } from './types.ts';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);

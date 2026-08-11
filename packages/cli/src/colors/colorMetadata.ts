@@ -1,14 +1,5 @@
 import * as R from 'ramda';
-import type { ColorMetadataByName, ColorNumber, CssColor, SeverityColorNames } from './types.ts';
-
-export const severityColors: Record<SeverityColorNames, CssColor> = {
-  info: '#0A71C0',
-  success: '#068718',
-  warning: '#EA9B1B',
-  danger: '#C01B1B',
-};
-
-export const dsLinkColor = '#663299';
+import type { ColorMetadataByName, ColorNumber } from './types.ts';
 
 export const colorMetadata: ColorMetadataByName = {
   'background-default': {
@@ -260,5 +251,3 @@ export const getColorMetadataByNumber = (number: ColorNumber) => {
 };
 
 export const colorNames = Object.keys(colorMetadata) as Array<keyof typeof colorMetadata>;
-
-export const baseColorNames = Object.keys(severityColors) as Array<keyof typeof severityColors>;
