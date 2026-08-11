@@ -1,5 +1,41 @@
 # Change Log
 
+## 1.19.0
+
+### Minor Changes
+
+- **New experimental component**: `FileUpload`. Use it by importing `EXPERIMENTAL_FileUpload` from `@digdir/designsystemet-react`. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+- **ToggleGroup:** Deprecates `data-toggle-group` in favor of `focusgroup="radiogroup"` with `aria-label`. ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+
+- Update npm non-major dependencies ([#5072](https://github.com/digdir/designsystemet/pull/5072))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- **React types:** allow all values of `data-color` in all components ([#5082](https://github.com/digdir/designsystemet/pull/5082))
+
+- fix component types for `data-color` and `data-size` to behave the same on components as globally ([#5156](https://github.com/digdir/designsystemet/pull/5156))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- **Global types:** added `focusgroup` and `focusgroupstart` to the global HTML attribute types. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+
+- **Dialog:** now adds `aria-haspopup` on focus event to enhance performance and support Shadow DOM rendering ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+
+- Updated dependencies [[`69e17d0`](https://github.com/digdir/designsystemet/commit/69e17d0688c9cc96a6fbe729d399edb10fdd88e1), [`5894236`](https://github.com/digdir/designsystemet/commit/5894236d5baf50aa73b96c33a9da9c14278fd470), [`6182865`](https://github.com/digdir/designsystemet/commit/6182865f1e7a7a93aa7fc99efbfc5f04cd3c5c3c), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`92922af`](https://github.com/digdir/designsystemet/commit/92922af56e4f63d8110e5109a02fc86d5eae88ca), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`74fb48c`](https://github.com/digdir/designsystemet/commit/74fb48c9de0e54f0b7d26a8560d5c6dae645b3ed), [`703abc1`](https://github.com/digdir/designsystemet/commit/703abc1ea674c56d256f6981009092bbbfb0ca93), [`6182865`](https://github.com/digdir/designsystemet/commit/6182865f1e7a7a93aa7fc99efbfc5f04cd3c5c3c), [`99265a3`](https://github.com/digdir/designsystemet/commit/99265a32fb2a829c7fb2559d30810288ce9e57f5), [`9434ea7`](https://github.com/digdir/designsystemet/commit/9434ea74b7213f506bcc1f91f010aa9f5c1a0bf9), [`a519003`](https://github.com/digdir/designsystemet/commit/a519003b0321b6058c46107feb2f831969269774), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`a398b3a`](https://github.com/digdir/designsystemet/commit/a398b3ae482c39e53ccb271e90ca7ed12438a33c), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`22bdfeb`](https://github.com/digdir/designsystemet/commit/22bdfeb9ae62ea5fa28c5175bfba295be04b43f9), [`a685ffd`](https://github.com/digdir/designsystemet/commit/a685ffd670cc691a25652c600550729ff7b9ff88), [`2eb9e66`](https://github.com/digdir/designsystemet/commit/2eb9e666f75ab172e7897a233e8356261e094442)]:
+  - @digdir/designsystemet-web@1.19.0
+  - @digdir/designsystemet-types@1.19.0
+
 ## 1.18.0
 
 ### Minor Changes

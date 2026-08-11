@@ -1,5 +1,47 @@
 # Change Log
 
+## 1.19.0
+
+### Minor Changes
+
+- **cli**: Add support for JSONC config files. Config files may now contain comments and trailing commas, and a `designsystemet.config.jsonc` file is auto-detected in addition to `designsystemet.config.json`. ([#5051](https://github.com/digdir/designsystemet/pull/5051))
+
+### Patch Changes
+
+- Update dependency tsdown to v0.22.14 ([#5102](https://github.com/digdir/designsystemet/pull/5102))
+
+- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+
+- fixed missing types error that might occur for `@tokens-studio/types`. ([#5061](https://github.com/digdir/designsystemet/pull/5061))
+
+- Update dependency colorjs.io to ^0.7.1 ([#5121](https://github.com/digdir/designsystemet/pull/5121))
+
+- Update dependency colorjs.io to ^0.7.0 ([#5108](https://github.com/digdir/designsystemet/pull/5108))
+
+- Reduced package size by removing unintended declaration map files being generated. ([#5065](https://github.com/digdir/designsystemet/pull/5065))
+
+- Clarified error message when different theme colors are detected ([#5068](https://github.com/digdir/designsystemet/pull/5068))
+
+- New exports for internal use (not documented). ([#5068](https://github.com/digdir/designsystemet/pull/5068))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- **Tailwind:** `--experimental-tailwind` now also generates `--shadow-*` and `--opacity-disabled` config ([#5139](https://github.com/digdir/designsystemet/pull/5139))
+
+- `typography` and `borderRadius` are no longer required in the config file. If omitted, defaults will be used: `typography.fontFamily = "Inter"` and `borderRadius = 4`. ([#5099](https://github.com/digdir/designsystemet/pull/5099))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- - add option `-v` and `--version` for display version number. ([#5098](https://github.com/digdir/designsystemet/pull/5098))
+  - add option `-h` and `--help` for display help.
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- Update dependency colorjs.io to ^0.7.1 ([#5121](https://github.com/digdir/designsystemet/pull/5121))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.0
+
 ## 1.18.0
 
 ### Patch Changes
