@@ -24,7 +24,6 @@ export const semanticColorMap = {
 } as const;
 
 export const semanticColorNames = R.keys(semanticColorMap);
-export const semanticColorNumbers = R.values(semanticColorMap);
 
 type SemanticColorMap = typeof semanticColorMap;
 

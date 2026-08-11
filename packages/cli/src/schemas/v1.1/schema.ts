@@ -11,7 +11,7 @@ const hexPatterns = [
   `#[0-9a-fA-F]{8}`,
 ];
 
-export const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
+const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
 
 const colorSchema = z
   .string()
@@ -136,7 +136,7 @@ const themesSchema = z
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
   });
 
-export const commonConfig = z.object({
+const commonConfig = z.object({
   clean: z
     .boolean()
     .default(false)
@@ -158,8 +158,6 @@ const _configFileCreateSchema = z
  * This defines the structure of the final configuration file
  */
 export const configFileCreateSchema = _configFileCreateSchema.extend(commonConfig.shape);
-export type CommonConfigSchema = z.infer<typeof commonConfig>;
-export type BuildConfigSchema = z.infer<typeof commonConfig>;
 export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
 /** The pre-validation shape of the config file, i.e. what users write: defaulted fields are optional. */
 export type CreateConfigSchemaInput = z.input<typeof configFileCreateSchema>;

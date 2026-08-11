@@ -100,7 +100,7 @@ const generateBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
  * @param color color
  * @param type 'default' | 'subtle'
  */
-export const generateColorContrast = (color: CssColor, type: 'default' | 'subtle'): CssColor => {
+const generateColorContrast = (color: CssColor, type: 'default' | 'subtle'): CssColor => {
   if (type === 'default') {
     return chroma.contrast(color, '#ffffff') >= chroma.contrast(color, '#000000') ? '#ffffff' : '#000000';
   }

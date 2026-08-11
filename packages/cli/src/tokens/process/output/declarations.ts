@@ -1,10 +1,8 @@
 import pc from 'picocolors';
-import pkg from '../../../../package.json' with { type: 'json' };
 import { severityColors } from '../../../schemas/defaults.ts';
 import type { OutputFile } from '../../types.ts';
 import { getThemeColors, type ProcessedThemeObject } from '../utils/getMultidimensionalThemes.ts';
-
-export const defaultFileHeader = `build: v${pkg.version}`;
+import { defaultFileHeader } from './theme.ts';
 
 export const createTypeDeclarationFiles = (processed$themes: ProcessedThemeObject[]): OutputFile[] => {
   const colors = getThemeColors(processed$themes);
