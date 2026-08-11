@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "File upload",
+    "subtitle": "File upload er et skjemaelement for å laste opp filer."
+  },
+  "en": {
+    "title": "File upload",
+    "subtitle": "File upload is a form element used to upload files."
+  },
+  "image": "FileUpload.svg",
+  "cssFile": "file-upload.css"
+}

@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
-import { inlineTokens } from '../../../utils.js';
-import { buildOptions } from '../../platform.js';
-import { isInlineTokens } from './size.js';
+import { inlineTokens } from '../../../utils.ts';
+import { buildOptions } from '../../platform.ts';
+import { isInlineTokens } from './size.ts';
 
 export const semantic: Format = {
   name: 'ds/css-semantic',

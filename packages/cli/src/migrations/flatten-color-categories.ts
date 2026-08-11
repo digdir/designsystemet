@@ -1,7 +1,7 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: we have not kept old schema for types, so we need to use any here
 import { applyEdits, modify } from 'jsonc-parser';
 import pc from 'picocolors';
-import { parseJsonc } from '../schemas/helpers.js';
+import { parseJsonc } from '../schemas/helpers.ts';
 
 const formattingOptions = { insertSpaces: true, tabSize: 2 } as const;
 

@@ -6,7 +6,7 @@ import type { DefaultProps, Placement } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type TooltipProps = MergeRight<
-  Omit<DefaultProps, 'data-color'> & HTMLAttributes<HTMLDivElement>,
+  DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**
      * The element or string that triggers the tooltip.

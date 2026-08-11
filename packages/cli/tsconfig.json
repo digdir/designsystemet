@@ -8,6 +8,8 @@
     "noEmit": false,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
     "sourceMap": false,
     "incremental": false
   },

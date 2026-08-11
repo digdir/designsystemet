@@ -1,7 +1,7 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
-import type { ColorScheme } from '../index.js';
-import type { ConfigSchemaTheme } from '../schemas/v1.1/schema.js';
-import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
+import type { ColorScheme } from '../index.ts';
+import type { ConfigSchemaTheme } from '../schemas/v1.1/schema.ts';
+import type { GetStyleDictionaryConfig } from './process/configs/shared.ts';
 
 export type Token =
   | { $value: string | Record<string, string>[]; $type: string }

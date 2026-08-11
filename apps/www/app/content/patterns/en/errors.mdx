@@ -3,7 +3,7 @@ title: User-triggered error messages
 sidebar_title: Error messages
 category: Basic patterns
 description: How to tell users that something has been filled in incorrectly or is missing in a form.
-partners: Digdir, Nav, Skatteetaten ++
+partners: Digdir, Nav, The Norwegian Tax Administration, Norwegian Police Service, City of Oslo, The Brønnøysund Register Centre, KS
 search_terms: validation
 date: 2024-06-28
 order: 30
@@ -26,7 +26,7 @@ Error messages can be related to a single field or to multiple fields. We show a
 We should be able to show error messages with all types of fields in a form. The message should be close to the field that's failing.
 
 <Image
-  src='/img/errormessage-co-1.png'
+  src='/img/patterns/errors/errormessage-co-1.png'
   alt='Screenshot of a form with an error message. The user has entered "fdgdfgfdg" in a national ID number field. The error message states that a national ID number must contain 11 digits.'
   boxShadow={false}
 />
@@ -53,7 +53,7 @@ Make sure that:
 - the error message in the summary includes keywords from the label text
 
 <Image
-  src='/img/errormessage-co-3.png'
+  src='/img/patterns/errors/errormessage-co-3.png'
   alt='Screenshot of a form with an error message. The user has entered "fdgdfgfdg" in a national ID number field. The error message states that a national ID number must contain 11 digits.'
   boxShadow={false}
 />
@@ -116,7 +116,7 @@ If the solution does not include the field name as a variable in error messages,
 When an error occurs in a field, it is important that the field is clearly visible, making it easy for users to see where they need to fill in or correct something.
 
 <Image
-  src='/img/errormessage-design.png'
+  src='/img/patterns/errors/errormessage-design.png'
   alt='A form field showing an error in the information filled out. The visual elements distinguishing it from a regular field are highlighted: The border around the field is thicker, it is colored red, and there is a red text with a corresponding warning icon describing the error in the field.'
   boxShadow={false}
  
@@ -185,7 +185,7 @@ In this example, we have a group of fields where the user may not have all the i
       loop
     >
       <source
-        src='/img/error-message-group-error.mp4'
+        src='/img/patterns/errors/error-message-group-error.mp4'
         type='video/mp4'
       />
     </video>
@@ -193,7 +193,7 @@ In this example, we have a group of fields where the user may not have all the i
     If there had been only one error in the group, the error message would have appeared in the usual way under just one of the fields, without the entire group turning red.
 
     <Image
-      src='/img/errormessage-co-22b.png'
+      src='/img/patterns/errors/errormessage-co-22b.png'
       alt='Screenshot of a form with a group of fields. The user has filled in at least one field but has an error in the input. The error message then appears in the usual way under the specific field.'
       boxShadow={false}
     />
@@ -258,14 +258,14 @@ For error messages that appear dynamically, we must use `aria-live` so that the 
 
 <Contributors
   authors={[
-    'Roy Halvor Frimanslund (Brreg)',
-    'Astrid Eline Øksnes (Politiet)',
-    'Bernard Tommerbakke (Oslo Kommune)',
+    'Roy Halvor Frimanslund (The Brønnøysund Register Centre)',
+    'Astrid Eline Øksnes (Norwegian Police Service)',
+    'Bernard Tommerbakke (City of Oslo)',
     'Kari Breidal (NAV)',
     'Lasse Febakke Straum (Digdir)',
     'Marianne Røsvik (Digdir)',
     'Marianne Nordberg (KS)',
-    'Camilla Orten (SKD)',
+    'Camilla Orten (The Norwegian Tax Administration)',
     'Gørild Døhl (Digdir)',
   ]}
 />

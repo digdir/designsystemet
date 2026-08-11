@@ -1,6 +1,6 @@
 import * as R from 'ramda';
-import { type ColorNames, semanticColorMap } from '../../../../colors/types.js';
-import type { Token, TokenSet } from '../../../types.js';
+import { type ColorNames, semanticColorMap } from '../../../../colors/types.ts';
+import type { Token, TokenSet } from '../../../types.ts';
 
 export function generateSemanticStyle(colorNames: string[]): TokenSet {
   return {

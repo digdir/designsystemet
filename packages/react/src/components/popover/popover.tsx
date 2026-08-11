@@ -1,4 +1,3 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -8,6 +7,8 @@ import type { DefaultProps, Placement } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Context } from './popover-trigger-context';
+
+const IS_DROPDOWN = /(?:^|\s)ds-dropdown(?:\s|$)/;
 
 export type PopoverProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
@@ -32,10 +33,6 @@ export type PopoverProps = MergeRight<
      * @default 'default'
      */
     variant?: 'default' | 'tinted';
-    /**
-     * Change the color scheme of the popover
-     */
-    'data-color'?: Color | SeverityColors;
     /**
      * Callback when the popover wants to open.
      */
@@ -78,7 +75,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(
     {
       id,
-      className,
+      className = '',
       onClose,
       onOpen,
       open,
@@ -126,10 +123,14 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       };
 
       popover?.togglePopover?.(controlledOpen);
-      if (controlledOpen) {
-        const options = { detail: document.querySelector(trigger) };
-        popover?.dispatchEvent(new CustomEvent('ds-toggle-source', options)); // Since togglePopover({ source }) is not supported in all browsers yet
-      }
+      if (controlledOpen)
+        popover?.dispatchEvent(
+          new CustomEvent('ds-toggle-source', {
+            bubbles: true,
+            composed: true, // Enable bubbling out of shadow DOM boundaries
+            detail: document.querySelector(trigger), // Since togglePopover({ source }) is not supported in all browsers yet
+          }),
+        );
 
       document.addEventListener('click', handleClick, true); // Use capture to execute before React event API
       document.addEventListener('keydown', handleKeydown);
@@ -146,7 +147,10 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
     return (
       <Component
-        className={cl('ds-popover', className)}
+        className={
+          // Prevent double className when using Dropdown component
+          cl(IS_DROPDOWN.test(className) ? undefined : 'ds-popover', className)
+        }
         id={id || popoverId}
         popover='manual'
         data-placement={placement}

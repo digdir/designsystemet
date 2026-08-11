@@ -1,7 +1,7 @@
 import type { Size } from '@digdir/designsystemet-types';
 import type { Placement as FloatingUIPlacement } from '@floating-ui/dom';
 import type { ReactNode } from 'react';
-import type { Color } from './colors';
+import type { Color, SeverityColors } from './colors';
 
 export type Placement = FloatingUIPlacement | 'none';
 
@@ -14,7 +14,7 @@ export type DefaultProps = {
    * Changes color for descendant Designsystemet components.
    * Select from predefined colors and colors defined using theme.designsystemet.no.
    */
-  'data-color'?: Color;
+  'data-color'?: Color | SeverityColors;
 };
 
 export type LabelRequired =

@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 import { outputReferencesFilter } from 'style-dictionary/utils';
-import { pathStartsWithOneOf, typeEquals } from '../../utils.js';
-import { formats } from '../formats/css.js';
+import { pathStartsWithOneOf, typeEquals } from '../../utils.ts';
+import { formats } from '../formats/css.ts';
 
-import { basePxFontSize, dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.js';
+import { basePxFontSize, dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.ts';
 
 export const semanticVariables: GetStyleDictionaryConfig = ({ theme }) => {
   const selector = `:root`;

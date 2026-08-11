@@ -1,13 +1,12 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import type { UseRadioGroupProps } from '../../';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Fieldset, Radio, ValidationMessage } from '../';
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Radio',
   component: Radio,
-} as Meta;
+});
 
-export const Preview: StoryObj<typeof Radio> = {
+export const Preview = meta.story({
   args: {
     label: 'Radio',
     description: 'Description',
@@ -16,83 +15,72 @@ export const Preview: StoryObj<typeof Radio> = {
     value: 'value',
     name: 'name',
   },
-};
+});
 
-export const AriaLabel: StoryObj<typeof Radio> = {
+export const AriaLabel = meta.story({
   args: {
     value: 'value',
     'aria-label': 'Radio',
   },
-};
+});
 
-export const Group: StoryFn<UseRadioGroupProps> = () => {
-  return (
-    <Fieldset>
-      <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
-      <Fieldset.Description>
-        Velg din favorittsmak blant alternativene.
-      </Fieldset.Description>
-      <Radio label='Vanilje' value='vanilje' name='icecream' />
-      <Radio
-        label='Jordbær'
-        description='Jordbær er best'
-        value='jordbær'
-        name='icecream'
-      />
-      <Radio label='Sjokolade' value='sjokolade' name='icecream' />
-      <Radio
-        label='Jeg spiser ikke iskrem'
-        value='spiser-ikke-is'
-        name='icecream'
-      />
-    </Fieldset>
-  );
-};
+export const Group = meta.story(() => (
+  <Fieldset>
+    <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
+    <Fieldset.Description>
+      Velg din favorittsmak blant alternativene.
+    </Fieldset.Description>
+    <Radio label='Vanilje' value='vanilje' name='icecream' />
+    <Radio
+      label='Jordbær'
+      description='Jordbær er best'
+      value='jordbær'
+      name='icecream'
+    />
+    <Radio label='Sjokolade' value='sjokolade' name='icecream' />
+    <Radio
+      label='Jeg spiser ikke iskrem'
+      value='spiser-ikke-is'
+      name='icecream'
+    />
+  </Fieldset>
+));
 
-export const WithError: StoryFn<UseRadioGroupProps> = () => {
-  return (
-    <Fieldset>
-      <Fieldset.Legend>Hvilken bydel bor du i?</Fieldset.Legend>
-      <Fieldset.Description>
-        Trondheim er delt inn i fire bydeler
-      </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' aria-invalid='true' />
-      <Radio
-        label='Lerkendal'
-        value='lerkendal'
-        name='city'
-        aria-invalid='true'
-      />
-      <Radio label='Heimdal' value='heimdal' name='city' aria-invalid='true' />
-      <Radio
-        label='Midtbyen'
-        value='midtbyen'
-        name='city'
-        aria-invalid='true'
-      />
-      <ValidationMessage data-color='danger'>
-        Du må velge en bydel før du kan fortsette.
-      </ValidationMessage>
-    </Fieldset>
-  );
-};
+export const WithError = meta.story(() => (
+  <Fieldset>
+    <Fieldset.Legend>Hvilken bydel bor du i?</Fieldset.Legend>
+    <Fieldset.Description>
+      Trondheim er delt inn i fire bydeler
+    </Fieldset.Description>
+    <Radio label='Østbyen' value='ostbyen' name='city' aria-invalid='true' />
+    <Radio
+      label='Lerkendal'
+      value='lerkendal'
+      name='city'
+      aria-invalid='true'
+    />
+    <Radio label='Heimdal' value='heimdal' name='city' aria-invalid='true' />
+    <Radio label='Midtbyen' value='midtbyen' name='city' aria-invalid='true' />
+    <ValidationMessage data-color='danger'>
+      Du må velge en bydel før du kan fortsette.
+    </ValidationMessage>
+  </Fieldset>
+));
 
-export const ReadOnly: StoryFn<UseRadioGroupProps> = () => {
-  return (
-    <Fieldset>
-      <Fieldset.Legend>Hvilken bydel bor du i?</Fieldset.Legend>
-      <Fieldset.Description>
-        Trondheim er delt inn i fire bydeler
-      </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' readOnly />
-      <Radio label='Lerkendal' value='lerkendal' name='city' readOnly />
-      <Radio label='Heimdal' value='heimdal' name='city' readOnly checked />
-      <Radio label='Midtbyen' value='midtbyen' name='city' readOnly />
-    </Fieldset>
-  );
-};
+export const ReadOnly = meta.story(() => (
+  <Fieldset>
+    <Fieldset.Legend>Hvilken bydel bor du i?</Fieldset.Legend>
+    <Fieldset.Description>
+      Trondheim er delt inn i fire bydeler
+    </Fieldset.Description>
+    <Radio label='Østbyen' value='ostbyen' name='city' readOnly />
+    <Radio label='Lerkendal' value='lerkendal' name='city' readOnly />
+    <Radio label='Heimdal' value='heimdal' name='city' readOnly checked />
+    <Radio label='Midtbyen' value='midtbyen' name='city' readOnly />
+  </Fieldset>
+));
 
-export const Inline: StoryFn<typeof Fieldset> = () => (
+export const Inline = meta.story(() => (
   <Fieldset>
     <Fieldset.Legend>Kontaktes på e-post?</Fieldset.Legend>
     <Fieldset.Description>
@@ -103,9 +91,9 @@ export const Inline: StoryFn<typeof Fieldset> = () => (
       <Radio name='my-inline' label='Nei' value='nei' />
     </div>
   </Fieldset>
-);
+));
 
-export const Outline: StoryFn<UseRadioGroupProps> = () => (
+export const Outline = meta.story(() => (
   <>
     <Fieldset>
       <Fieldset.Legend>Using variant="outline"</Fieldset.Legend>
@@ -132,35 +120,28 @@ export const Outline: StoryFn<UseRadioGroupProps> = () => (
       />
     </Fieldset>
   </>
-);
+));
 
-export const End: StoryFn<UseRadioGroupProps> = () => {
-  return (
-    <Fieldset>
-      <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
-      <Fieldset.Description>
-        Velg din favorittsmak blant alternativene.
-      </Fieldset.Description>
-      <Radio position='end' label='Vanilje' value='vanilje' name='icecream' />
-      <Radio
-        position='end'
-        label='Jordbær'
-        description='Jordbær er best'
-        value='jordbær'
-        name='icecream'
-      />
-      <Radio
-        position='end'
-        label='Sjokolade'
-        value='sjokolade'
-        name='icecream'
-      />
-      <Radio
-        position='end'
-        label='Jeg spiser ikke iskrem'
-        value='spiser-ikke-is'
-        name='icecream'
-      />
-    </Fieldset>
-  );
-};
+export const End = meta.story(() => (
+  <Fieldset>
+    <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
+    <Fieldset.Description>
+      Velg din favorittsmak blant alternativene.
+    </Fieldset.Description>
+    <Radio position='end' label='Vanilje' value='vanilje' name='icecream' />
+    <Radio
+      position='end'
+      label='Jordbær'
+      description='Jordbær er best'
+      value='jordbær'
+      name='icecream'
+    />
+    <Radio position='end' label='Sjokolade' value='sjokolade' name='icecream' />
+    <Radio
+      position='end'
+      label='Jeg spiser ikke iskrem'
+      value='spiser-ikke-is'
+      name='icecream'
+    />
+  </Fieldset>
+));

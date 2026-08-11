@@ -1,4 +1,4 @@
-import type { TokenSetDimensions } from '../../types.js';
+import type { TokenSetDimensions } from '../../types.ts';
 
 type Metadata = {
   tokenSetOrder: string[];

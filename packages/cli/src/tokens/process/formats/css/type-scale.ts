@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 import type { Format, TransformedToken } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
-import { basePxFontSize } from '../../configs/shared.js';
-import { buildOptions } from '../../platform.js';
-import { sizingTemplate } from './size.js';
+import { basePxFontSize } from '../../configs/shared.ts';
+import { buildOptions } from '../../platform.ts';
+import { sizingTemplate } from './size.ts';
 
 // Predicate to filter tokens with .path array that includes both typography and fontFamily
 const isTypographyFontFamilyToken = R.allPass([

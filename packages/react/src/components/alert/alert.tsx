@@ -1,21 +1,9 @@
-import type { SeverityColors } from '@digdir/designsystemet-types';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import type { MergeRight } from '../../utilities';
 
-export type AlertProps = MergeRight<
-  DefaultProps & HTMLAttributes<HTMLDivElement>,
-  {
-    /**
-     * Sets color and icon.
-     *
-     * @default 'info'
-     */
-    'data-color'?: SeverityColors;
-  }
->;
+export type AlertProps = DefaultProps & HTMLAttributes<HTMLDivElement>;
 
 /**
  * Alerts are used to inform users about important information, warnings, errors, or success.

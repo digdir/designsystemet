@@ -14,6 +14,7 @@ import {
   useState,
 } from 'react';
 import { renderToString } from 'react-dom/server';
+import { useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 import {
   LiveEditor,
@@ -33,7 +34,6 @@ const SyncedBox = () => {
       ref={ref}
       style={{
         animation: 'spin 2s linear infinite',
-
         width: '30px',
         height: '30px',
         backgroundColor: 'red',
@@ -50,6 +50,7 @@ const scopes = {
   useRef,
   useId,
   SyncedBox,
+  useDropzone,
 };
 
 type Language = 'react' | 'html';
@@ -203,7 +204,7 @@ const Editor = ({
       <ds.ToggleGroup
         className={classes.language}
         variant='secondary'
-        data-toggle-group={t('live-component.language')}
+        aria-label={t('live-component.language')}
         data-size='sm'
         value={showHTML.toString()}
         onChange={(v) => setShowHTML(v === 'true')}

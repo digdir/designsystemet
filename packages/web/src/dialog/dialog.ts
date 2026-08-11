@@ -1,9 +1,9 @@
 import {
   attr,
-  isBrowser,
+  getComposedPath,
+  getComposedTarget,
   on,
   onHotReload,
-  onMutation,
   QUICK_EVENT,
 } from '../utils/utils';
 
@@ -11,47 +11,43 @@ import {
 // Also in Safari 26.2 where `closedBy` property is supported natively,
 // but no corresponding functionality/behavior is implemented.
 let DOWN_INSIDE = false; // Prevent close if selecting text inside dialog
-const handleClosedbyAny = ({
-  type,
-  target: el,
-  clientX: x = 0,
-  clientY: y = 0,
-}: Partial<MouseEvent>) => {
-  if (type === 'pointerdown') {
-    const r = (el as Element)?.closest?.('dialog')?.getBoundingClientRect();
-    const isInside =
-      r && r.top <= y && y <= r.bottom && r.left <= x && x <= r.right;
-
-    DOWN_INSIDE = !!isInside;
+const handleClosedbyAny = (event: Event) => {
+  const { type, clientX: x = 0, clientY: y = 0 } = event as MouseEvent;
+  const el = getComposedTarget(event);
+  if (el && type === 'pointerdown') {
+    for (const dialog of getComposedPath(el)) {
+      if (dialog.nodeName !== 'DIALOG') continue;
+      const r = (dialog as Element).getBoundingClientRect();
+      DOWN_INSIDE = r.top <= y && y <= r.bottom && r.left <= x && x <= r.right;
+      return; // Stop traversing once we find a dialog
+    }
   } else {
-    const isDialog = el instanceof HTMLDialogElement;
+    const isDialog = el?.nodeName === 'DIALOG'; // Faster than el instanceof HTMLDialogElement
     const isClose = isDialog && !DOWN_INSIDE && attr(el, 'closedby') === 'any';
 
     DOWN_INSIDE = false; // Reset on every pointerup
-    if (isClose) requestAnimationFrame(() => el.open && el.close()); // Close if browser did not do it
+    if (isClose) setTimeout(close, 0, el); // Close if browser did not do it
   }
 };
 
+const close = (dialog: HTMLDialogElement) => dialog.open && dialog.close();
+
 // Ensure buttons that trigger a modeal dialog has aria-haspopup="dialog" for better screen reader experience
-const BUTTONS = isBrowser() ? document.getElementsByTagName('button') : [];
-const handleAriaAttributes = () => {
-  for (const btn of BUTTONS)
-    if (btn.getAttribute('command')?.endsWith('-modal'))
-      btn.setAttribute('aria-haspopup', 'dialog'); // Using get/setAttribute for performance
+const MODAL = 'show-modal';
+const NON_MODAL = '--show-non-modal';
+const handleAriaAttributes = (event: Event) => {
+  for (const el of event.composedPath() as Element[]) {
+    const command = el.nodeType === 1 && attr(el, 'command');
+    if (command === MODAL || command === NON_MODAL)
+      return attr(el, 'aria-haspopup', 'dialog');
+  }
 };
 
 const handleCommand = ({ command, target }: Event & { command?: string }) =>
-  command === '--show-non-modal' &&
-  target instanceof HTMLDialogElement &&
-  target.show();
+  command === NON_MODAL && target instanceof HTMLDialogElement && target.show();
 
 onHotReload('dialog', () => [
   on(document, 'command', handleCommand, QUICK_EVENT),
+  on(document, 'focus', handleAriaAttributes, QUICK_EVENT),
   on(document, 'pointerdown pointerup', handleClosedbyAny, QUICK_EVENT),
-  onMutation(document, handleAriaAttributes, {
-    attributeFilter: ['command'],
-    attributes: true,
-    childList: true,
-    subtree: true,
-  }),
 ]);

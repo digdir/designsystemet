@@ -1,9 +1,9 @@
-import type { Meta } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
 import { ToggleGroup } from './';
 import * as ToggleGroupStories from './toggle-group.stories';
 
-const meta: Meta = {
+const meta = preview.meta({
   title: 'Chromatic/ToggleGroup',
   component: ToggleGroup,
   tags: ['chromatic'],
@@ -18,7 +18,6 @@ const meta: Meta = {
       </div>
     ),
   ],
-};
-export default meta;
+});
 
-export const Snapshots = createSingleStory(ToggleGroupStories, meta);
+export const Snapshots = meta.story(createSingleStory(ToggleGroupStories));

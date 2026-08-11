@@ -1,0 +1,44 @@
+---
+search_terms: filopplasting, last opp fil, opplasting, vedlegg, dra og slipp, fileupload, file input, upload, dropzone
+---
+
+<Alert data-color="warning">
+File upload er under utvikling. Har du tilbakemelding eller innspill, meld fra på [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20FileUpload) eller i [Slack](https://designsystemet.no/slack).
+</Alert>
+
+<Story story="Preview" />
+
+File upload er et skjemaelement for å laste opp filer. Komponenten kombinerer et område for å dra og slippe filer med en vanlig filvelger, slik at brukeren kan velge filer enten ved å klikke eller ved å slippe dem i området.
+
+Hvis du trenger avansert filhåndtering med opplastingsstatus per fil, må du selv bygge dette rundt komponenten.
+
+**Bruk file upload når**
+- Brukeren skal laste opp én eller flere filer som en del av et skjema.
+- Du ønsker å støtte både dra-og-slipp og klikk for å velge fil.
+
+**Unngå file upload når**
+- Brukeren kun skal velge fra et forhåndsdefinert sett med alternativer.
+- Du kan hente inn informasjonen på en enklere måte uten at filopplasting er nødvendig.
+
+## Eksempel
+
+### Med beskrivelse
+Du kan gi en mer utfyllende beskrivelse inni opplastingsområdet.
+
+<Story story="FileUploadExample" />
+
+## Retningslinjer
+Be bare om filopplasting når det er nødvendig. Hvis du kan hente inn informasjonen på en enklere måte, bør du gjøre det i stedet.
+
+Pass på at det alltid finnes en synlig label som beskriver hva som skal lastes opp. Fortell også hvilke krav som gjelder for filene. 
+
+Oppgi alltid
+- hvilke filtyper som er tillatt
+- eventuelle begrensninger på filstørrelse
+- hvor mange filer som kan lastes opp
+- hva filene skal brukes til
+
+## Tekst
+Knappeteksten bør være kort og handlingsorientert, f.eks "Velg filer" eller "Velg fil". 
+
+Sørg for at feilmeldinger følger [retningslinjene for feilmeldinger](/no/patterns/errors), og bruk spesifikke feilmeldinger for ulike feilsituasjoner.

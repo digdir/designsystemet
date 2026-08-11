@@ -1,8 +1,8 @@
 import pc from 'picocolors';
 import pkg from '../../../../package.json' with { type: 'json' };
-import { baseColors } from '../../../colors/colorMetadata.js';
-import type { OutputFile } from '../../types.js';
-import { getThemeColors, type ProcessedThemeObject } from '../utils/getMultidimensionalThemes.js';
+import { baseColors } from '../../../colors/colorMetadata.ts';
+import type { OutputFile } from '../../types.ts';
+import { getThemeColors, type ProcessedThemeObject } from '../utils/getMultidimensionalThemes.ts';
 
 export const defaultFileHeader = `build: v${pkg.version}`;
 

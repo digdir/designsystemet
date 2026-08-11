@@ -1,4 +1,4 @@
-import type { OutputFile } from '../../types.js';
+import type { OutputFile } from '../../types.ts';
 
 export const createTailwindCSSFiles = (cssFiles: OutputFile[]): OutputFile[] => {
   console.log('\n🍱 Creating Tailwind Config');
@@ -27,6 +27,10 @@ const generateTailwind = (css: string): string => {
   for (const token of tokens) {
     if (token.startsWith('--ds-color-') && !token.startsWith('--ds-color-focus')) {
       tailwind.push(`--color-${token.replace('--ds-color-', '')}: var(${token})`);
+    } else if (token.startsWith('--ds-opacity-')) {
+      tailwind.push(`--opacity-${token.replace('--ds-opacity-', '')}: var(${token})`); // Sets --ds-opacity-disabled
+    } else if (token.startsWith('--ds-shadow-')) {
+      tailwind.push(`--shadow-${token.replace('--ds-shadow-', '')}: var(${token})`);
     } else if (token.startsWith('--ds-font-weight-')) {
       tailwind.push(`--font-weight-${token.replace('--ds-font-weight-', '')}: var(${token})`);
     } else if (token.match(/--ds-border-radius-(sm|md|lg|xl)/)) {

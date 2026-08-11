@@ -56,6 +56,11 @@
       "import": "./dist/esm/fieldset/fieldset.js",
       "require": "./dist/cjs/fieldset/fieldset.cjs"
     },
+    "./focusgroup": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/focusgroup/focusgroup.js",
+      "require": "./dist/cjs/focusgroup/focusgroup.cjs"
+    },
     "./invokers": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/invokers/invokers.js",
@@ -110,7 +115,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.7.6",
+    "@floating-ui/dom": "^1.8.0",
     "@u-elements/u-combobox": "^2.1.0",
     "@u-elements/u-datalist": "^2.0.3",
     "@u-elements/u-details": "^1.0.0",
@@ -118,15 +123,15 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
-    "@oddbird/popover-polyfill": "0.6.1",
+    "@oddbird/popover-polyfill": "0.7.1",
     "@testing-library/dom": "10.4.1",
-    "@vitest/browser-playwright": "4.1.9",
+    "@vitest/browser-playwright": "4.1.10",
     "custom-element-vs-code-integration": "1.5.0",
     "invokers-polyfill": "1.0.3",
     "rimraf": "6.1.3",
-    "rolldown": "1.1.3",
-    "tsdown": "0.22.2",
-    "vite": "8.1.0",
-    "vitest": "4.1.9"
+    "rolldown": "1.2.2",
+    "tsdown": "0.22.14",
+    "vite": "8.2.0",
+    "vitest": "4.1.10"
   }
 }
