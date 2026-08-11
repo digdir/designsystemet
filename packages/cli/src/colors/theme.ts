@@ -1,7 +1,7 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
-import { colorMetadata, getColorMetadataByNumber } from './colorMetadata.ts';
-import type { Color, ColorNumber, ColorScheme, CssColor, ThemeInfo } from './types.ts';
+import { getColorMetadataByNumber, colorMetadata as semanticColorDefinition } from './colorMetadata.ts';
+import type { Color, ColorMetadataByName, ColorNumber, ColorScheme, CssColor, ThemeInfo } from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
 export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info'];
@@ -11,8 +11,13 @@ export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info
  *
  * @param color The base color that is used to generate the color scale
  * @param colorScheme The color scheme to generate a scale for
+ * @param colorScaleDefinition The color scale definition to use for generating the color scale. Semantic color scale definition is used by default.
  */
-export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): Color[] => {
+export const generateColorScale = (
+  color: CssColor,
+  colorScheme: ColorScheme,
+  colorScaleDefinition: ColorMetadataByName = semanticColorDefinition,
+): Color[] => {
   let interpolationColor = color;
 
   // Reduce saturation in dark mode for the interpolation colors
@@ -22,27 +27,29 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
     interpolationColor = chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
   }
 
-  const colors = R.mapObjIndexed((colorData) => {
-    const luminance = colorData.luminance[colorScheme];
+  const colors = R.mapObjIndexed((step) => {
+    const luminance = step.luminance[colorScheme];
     return {
-      ...colorData,
+      ...step,
       hex: chroma(interpolationColor).luminance(luminance).hex() as CssColor,
     };
-  }, colorMetadata);
+  }, colorScaleDefinition);
 
   // Generate base colors
-  const baseColors = generateBaseColors(color, colorScheme);
-  colors['base-default'] = { ...colors['base-default'], hex: baseColors.default };
-  colors['base-hover'] = { ...colors['base-hover'], hex: baseColors.hover };
-  colors['base-active'] = { ...colors['base-active'], hex: baseColors.active };
-  colors['base-contrast-subtle'] = {
-    ...colors['base-contrast-subtle'],
-    hex: generateColorContrast(baseColors.default, 'subtle'),
-  };
-  colors['base-contrast-default'] = {
-    ...colors['base-contrast-default'],
-    hex: generateColorContrast(baseColors.default, 'default'),
-  };
+  if (colorScaleDefinition['base-default']) {
+    const baseColors = generateBaseColors(color, colorScheme);
+    colors['base-default'] = { ...colors['base-default'], hex: baseColors.default };
+    colors['base-hover'] = { ...colors['base-hover'], hex: baseColors.hover };
+    colors['base-active'] = { ...colors['base-active'], hex: baseColors.active };
+    colors['base-contrast-subtle'] = {
+      ...colors['base-contrast-subtle'],
+      hex: generateColorContrast(baseColors.default, 'subtle'),
+    };
+    colors['base-contrast-default'] = {
+      ...colors['base-contrast-default'],
+      hex: generateColorContrast(baseColors.default, 'default'),
+    };
+  }
 
   return Object.values(colors);
 };
