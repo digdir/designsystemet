@@ -2,6 +2,11 @@ import * as R from 'ramda';
 import type { ColorNumber, SemanticColorSpec } from './types.ts';
 import { semanticColorMap } from './types.ts';
 
+/**
+ * Specification for a semantic color scale.
+ *
+ * Each step in the scale maps to a semantic color and corresponding specification for generating the color at that step.
+ */
 export const semanticColorSpec: SemanticColorSpec = {
   'background-default': {
     number: 1,
