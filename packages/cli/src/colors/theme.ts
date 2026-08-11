@@ -55,7 +55,6 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
 export const generateColorSchemes = (color: CssColor): ThemeInfo => ({
   light: generateColorScale(color, 'light'),
   dark: generateColorScale(color, 'dark'),
-  contrast: generateColorScale(color, 'contrast'),
 });
 
 /**

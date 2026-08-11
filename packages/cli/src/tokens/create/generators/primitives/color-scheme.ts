@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { baseColors, colorMetadata, dsLinkColor } from '../../../../colors/colorMetadata.ts';
+import { colorMetadata, dsLinkColor, severityColors } from '../../../../colors/colorMetadata.ts';
 import { generateColorScale } from '../../../../colors/index.ts';
 import type { Color, ColorScheme, CssColor } from '../../../../colors/types.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
@@ -64,14 +64,14 @@ export const generateColorScheme = (
     return generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName));
   }, colors);
 
-  const baseColorsWithOverrides = {
-    ...baseColors,
+  const severityColorsWithOverrides = {
+    ...severityColors,
     ...overrides?.severity,
   };
 
-  const severityColors = R.mapObjIndexed(
+  const severityColorScales = R.mapObjIndexed(
     (color, colorName) => generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName)),
-    baseColorsWithOverrides,
+    severityColorsWithOverrides,
   );
 
   const linkColor = generateColor(generateColorScale(dsLinkColor, colorScheme));
@@ -90,7 +90,7 @@ export const generateColorScheme = (
   return {
     [themeName]: {
       ...colorScales,
-      ...severityColors,
+      ...severityColorScales,
       link: {
         visited: linkOverride || defaultLinkVisited,
       },

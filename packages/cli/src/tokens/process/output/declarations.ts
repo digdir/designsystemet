@@ -1,6 +1,6 @@
 import pc from 'picocolors';
 import pkg from '../../../../package.json' with { type: 'json' };
-import { baseColors } from '../../../colors/colorMetadata.ts';
+import { severityColors } from '../../../colors/colorMetadata.ts';
 import type { OutputFile } from '../../types.ts';
 import { getThemeColors, type ProcessedThemeObject } from '../utils/getMultidimensionalThemes.ts';
 
@@ -24,8 +24,8 @@ export const createTypeDeclarationFiles = (processed$themes: ProcessedThemeObjec
 function createColorTypeDeclaration(colors: string[]) {
   console.log(`\n🍱 Building ${pc.green('type declarations')}`);
 
-  const severityColors = Object.keys(baseColors);
-  const colorsWithoutSeverity = colors.filter((color) => !severityColors.includes(color));
+  const severityColorNames = Object.keys(severityColors);
+  const colorsWithoutSeverity = colors.filter((color) => !severityColorNames.includes(color));
 
   const typeDeclaration = `
 /* ${defaultFileHeader} */
@@ -37,7 +37,7 @@ declare module '@digdir/designsystemet-types' {
 ${colorsWithoutSeverity.map((color) => `    ${color.includes('-') ? `'${color}'` : color}: never;`).join('\n')}
   }
   export interface SeverityColorDefinitions {
-${severityColors.map((color) => `    ${color}: never;`).join('\n')}
+${severityColorNames.map((color) => `    ${color}: never;`).join('\n')}
   }
 }
 `.trimStart();

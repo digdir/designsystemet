@@ -1,7 +1,7 @@
 import * as R from 'ramda';
-import type { ColorMetadataByName, ColorNumber, CssColor, GlobalColors } from './types.ts';
+import type { ColorMetadataByName, ColorNumber, CssColor, SeverityColorNames } from './types.ts';
 
-export const baseColors: Record<GlobalColors, CssColor> = {
+export const severityColors: Record<SeverityColorNames, CssColor> = {
   info: '#0A71C0',
   success: '#068718',
   warning: '#EA9B1B',
@@ -261,4 +261,4 @@ export const getColorMetadataByNumber = (number: ColorNumber) => {
 
 export const colorNames = Object.keys(colorMetadata) as Array<keyof typeof colorMetadata>;
 
-export const baseColorNames = Object.keys(baseColors) as Array<keyof typeof baseColors>;
+export const baseColorNames = Object.keys(severityColors) as Array<keyof typeof severityColors>;
