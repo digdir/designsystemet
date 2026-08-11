@@ -1,7 +1,6 @@
-import * as R from 'ramda';
 export type ColorScheme = 'light' | 'dark';
 export type ColorNumber = SemanticColorMap[keyof SemanticColorMap];
-export type ColorNames = keyof SemanticColorMap;
+export type SemanticColorNames = keyof SemanticColorMap;
 export type SeverityColorNames = 'danger' | 'info' | 'success' | 'warning';
 
 export const semanticColorMap = {
@@ -23,8 +22,6 @@ export const semanticColorMap = {
   'base-contrast-default': 16,
 } as const;
 
-export const semanticColorNames = R.keys(semanticColorMap);
-
 type SemanticColorMap = typeof semanticColorMap;
 
 type SemanticColorMapping = {
@@ -34,12 +31,12 @@ type SemanticColorMapping = {
   };
 };
 
-export type ColorMetadataByName = {
-  [P in keyof SemanticColorMapping]: SemanticColorMapping[P] & ColorMetadata;
+export type SemanticColorSpec = {
+  [P in keyof SemanticColorMapping]: SemanticColorMapping[P] & ColorScaleStep<SemanticColorNames>;
 };
 
-export type ColorMetadata = {
-  name: ColorNames;
+export type ColorScaleStep<T> = {
+  name: T;
   number: ColorNumber;
   displayName: string;
   description: {
@@ -54,7 +51,7 @@ export type ColorMetadata = {
   };
 };
 
-export type Color = ColorMetadata & {
+export type Color = ColorScaleStep<SemanticColorNames> & {
   hex: CssColor;
 };
 

@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { colorMetadata } from '../../../../colors/colorMetadata.ts';
+import { semanticColorSpec } from '../../../../colors/colorMetadata.ts';
 import { generateColorScale } from '../../../../colors/index.ts';
 import type { Color, ColorScheme, CssColor } from '../../../../colors/types.ts';
 import { severityColors, visitedLinkColor } from '../../../../schemas/defaults.ts';
@@ -37,7 +37,7 @@ export const generateColorScheme = (
 
     // Map semantic token names to color scale positions
     Object.entries(colorOverrides).forEach(([semanticTokenName, modeOverrides]) => {
-      const position = colorMetadata[semanticTokenName as keyof typeof colorMetadata].number;
+      const position = semanticColorSpec[semanticTokenName as keyof typeof semanticColorSpec].number;
       if (position) {
         let overrideValue: string | undefined;
 

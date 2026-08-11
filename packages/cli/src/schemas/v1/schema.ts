@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { colorNames } from '../../colors/colorMetadata.ts';
+import { semanticColorNames } from '../../colors/colorMetadata.ts';
 import { convertToHex } from '../../colors/index.ts';
 import { RESERVED_COLORS } from '../../colors/scale.ts';
 import { severityColorNames } from '../defaults.ts';
@@ -46,7 +46,7 @@ const colorModeOverrideSchema = z
   .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
 
 const colorWeightOverrideSchema = z
-  .partialRecord(z.enum([...colorNames]), colorModeOverrideSchema)
+  .partialRecord(z.enum([...semanticColorNames]), colorModeOverrideSchema)
   .describe('The name of the color to add overrides for, e.g. "accent"');
 
 const semanticColorOverrideSchema = z

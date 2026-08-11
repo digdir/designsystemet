@@ -1,7 +1,8 @@
 import * as R from 'ramda';
-import type { ColorMetadataByName, ColorNumber } from './types.ts';
+import type { ColorNumber, SemanticColorSpec } from './types.ts';
+import { semanticColorMap } from './types.ts';
 
-export const colorMetadata: ColorMetadataByName = {
+export const semanticColorSpec: SemanticColorSpec = {
   'background-default': {
     number: 1,
     name: 'background-default',
@@ -244,10 +245,10 @@ export const colorMetadata: ColorMetadataByName = {
   },
 };
 
-const colorMetadataByNumber = R.indexBy((metadata) => metadata.number, Object.values(colorMetadata));
+const semanticColorByNumber = R.indexBy((metadata) => metadata.number, Object.values(semanticColorSpec));
 
-export const getColorMetadataByNumber = (number: ColorNumber) => {
-  return colorMetadataByNumber[number];
+export const getSemanticColorByNumber = (number: ColorNumber) => {
+  return semanticColorByNumber[number];
 };
 
-export const colorNames = Object.keys(colorMetadata) as Array<keyof typeof colorMetadata>;
+export const semanticColorNames = R.keys(semanticColorMap);

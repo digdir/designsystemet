@@ -1,22 +1,24 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
-import { getColorMetadataByNumber, colorMetadata as semanticColorDefinition } from './colorMetadata.ts';
-import type { Color, ColorMetadataByName, ColorNumber, ColorScheme, CssColor, ThemeInfo } from './types.ts';
+import { getSemanticColorByNumber, semanticColorSpec } from './colorMetadata.ts';
+import type { Color, ColorNumber, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
 export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info'];
+
+type ColorScaleSpec = SemanticColorSpec;
 
 /**
  * Generates a color scale based on a base color and a color mode.
  *
  * @param color The base color that is used to generate the color scale
  * @param colorScheme The color scheme to generate a scale for
- * @param colorScaleDefinition The color scale definition to use for generating the color scale. Semantic color scale definition is used by default.
+ * @param colorScaleSpec The color scale definition to use for generating the color scale. Semantic color scale definition is used by default.
  */
 export const generateColorScale = (
   color: CssColor,
   colorScheme: ColorScheme,
-  colorScaleDefinition: ColorMetadataByName = semanticColorDefinition,
+  colorScaleSpec: ColorScaleSpec = semanticColorSpec,
 ): Color[] => {
   let interpolationColor = color;
 
@@ -33,10 +35,10 @@ export const generateColorScale = (
       ...step,
       hex: chroma(interpolationColor).luminance(luminance).hex() as CssColor,
     };
-  }, colorScaleDefinition);
+  }, colorScaleSpec);
 
   // Generate base colors
-  if (colorScaleDefinition['base-default']) {
+  if (colorScaleSpec['base-default']) {
     const baseColors = generateBaseColors(color, colorScheme);
     colors['base-default'] = { ...colors['base-default'], hex: baseColors.default };
     colors['base-hover'] = { ...colors['base-hover'], hex: baseColors.hover };
@@ -125,5 +127,5 @@ const generateColorContrast = (color: CssColor, type: 'default' | 'subtle'): Css
  * @param colorNumber The number of the color
  */
 export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
-  return `--ds-color-${colorType}-${getColorMetadataByNumber(colorNumber).displayName.toLowerCase().replace(/\s/g, '-')}`;
+  return `--ds-color-${colorType}-${getSemanticColorByNumber(colorNumber).displayName.toLowerCase().replace(/\s/g, '-')}`;
 };
