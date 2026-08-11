@@ -38,19 +38,19 @@ Andre metoder for å bruke grafikk i frontend, som `<img src="...svg">`, canvas,
 ### Grunnleggende oppsett
 For at en SVG-en skal kunne enklest mulig, gjenbrukes og styles:
 
-**Når grafikk settes inn som fil med `use`:**
+**Når grafikk settes inn som fil med `<use>`:**
 - pakke inn grafikken i `<symbol>`
-- gi symbol en id
-- sett inn grafikken med `use`og bruk filbanen + id
+- gi symbol en `id`
+- sett inn grafikken med `<use>`og bruk filbanen + symbol ID
 
 **Både når grafikk settes inline og som fil**
-- gi symbol / svg viewbox verdier
+- gi `<symbol>` eller `<svg>` viewbox verdier
 
 ## Praktiske eksempler
 
 ### Sett inn grafikk med svg-fil og id
 
-Bygg opp grafikken i svg-fila med `symbol` med tilhørende id:
+Bygg opp grafikken i svg-fila med `symbol` med tilhørende `id`:
 ```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
   <symbol id="ds-logo" viewBox="0 0 40 40">
@@ -73,7 +73,7 @@ Tips: Du kan ha flere symboler eller ikoner i samme fil når du pakker hver av d
 
 #### Alternativt sett inn grafikken inline
 
-Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere steder. Når du uansett kun skal ha grafikken på ett sted på siden din, så kan du gjerne sette den inn inline. Grafikken ovenfor når satt inn direkte inline trenger ikke symbol og id
+Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere steder. Når du uansett kun skal ha grafikken på ett sted på siden din, så kan du gjerne sette den inn inline. Grafikken ovenfor når satt inn direkte inline trenger ikke `<symbol>` og id
 ```HTML
 <svg height="1rem" width="1rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
   <path d="..." />
@@ -87,8 +87,8 @@ Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere s
   <h3 class="ds-heading" data-size='xs'>Tips: Skalering av SVG</h3>
   <br />
   SVG skalerer enklest når:
-  - viewBox er satt på `<symbol>` når satt inn som fil, eller på `<svg>` når inline
-  - størrelse styres via width og height på det omsluttende elementet
+  - `viewBox` er satt på `<symbol>` når satt inn som fil, eller på `<svg>` når inline
+  - størrelse styres via `width` og `height` på det omsluttende elementet
   - proporsjoner er satt korrekt
 </Alert>
 
@@ -106,7 +106,7 @@ svg {
     fill:currentColor;
 }
 ```
-Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette currentColor på fill og/eller stroke path inne i selve svg-fila. I designsystemet blir denne metoden brukt på ikoner, for eksempel i knappene.
+Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette currentColor på `fill` og/eller `stroke` inne i selve svg-fila. I designsystemet blir denne metoden brukt på ikoner, for eksempel i knappene.
 ```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
   <symbol id="ds-logo" viewBox="0 0 40 40">
@@ -117,7 +117,7 @@ Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette c
   </symbol>
 </svg>
 ```
-Her er grafikken satt inn inline og fargelagt med 'currentColor':
+Her er grafikken satt inn inline og fargelagt med `currentColor`:
 <Story story="WithCurrentColor" truncateSvg={false} />
 
 #### Ensfarget grafikk med fargetoken
@@ -178,8 +178,8 @@ Koden i SVG-fila i eksempelet over ser slik ut:
 ## Tilgjengelighet
 
 For å sikre at grafikken er tilgjengelig for alle må du legge til et par detaljer i det omsluttende svg-elementet:
-- aria-hidden for dekorativ grafikk
-- aria-label og `role="img"` for meningsbærende grafikk
+- `aria-hidden` for dekorativ grafikk
+- `aria-label` og `role="img"` for meningsbærende grafikk
 
 ### Grafikk som kun er dekorativ
 Skjul grafikken for skjermleser med å sette rolle til presentasjon og at den skal være skjult.
