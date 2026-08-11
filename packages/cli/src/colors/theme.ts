@@ -48,9 +48,9 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
 };
 
 /**
- * Generates color schemes based on a base color. Light, Dark and Contrast scales are included.
+ * Generates dark and light color scale schemes for a given color.
  *
- * @param color The base color that is used to generate the color schemes
+ * @param color The color that is used to generate the color scale schemes
  */
 export const generateColorSchemes = (color: CssColor): ThemeInfo => ({
   light: generateColorScale(color, 'light'),

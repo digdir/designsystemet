@@ -70,3 +70,6 @@ export type ThemeInfo = {
 export type CssColor = HexColor;
 
 export type HexColor = `#${string}`;
+// type Percent = `${number}%`;
+// type Degrees = `${number}deg`;
+// type OkLchColor = `oklch(${Percent} ${number} ${Degrees})`;
