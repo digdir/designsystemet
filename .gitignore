@@ -53,3 +53,4 @@ apps/www/build
 apps/storybook/debug-storybook.log
 CLAUDE.md
 .claude/settings.local.json
+registry
