@@ -73,6 +73,37 @@ describe('popover floating behavior', () => {
     expect(popover).toHaveAttribute('data-floating', 'bottom-end');
   });
 
+  it('defers dimension changes to avoid resizing during ResizeObserver delivery', async () => {
+    const animationFrames: FrameRequestCallback[] = [];
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback) => {
+      animationFrames.push(callback);
+      return animationFrames.length;
+    });
+    render(`
+      <button style="width: 120px" popovertarget="my-popover">Open</button>
+      <div
+        id="my-popover"
+        popover="auto"
+        style="--_ds-floating: top; --_ds-floating-overscroll: fit"
+      >Content</div>
+    `);
+
+    document.querySelector('button')?.click();
+    await tick();
+
+    const popover = document.getElementById('my-popover') as HTMLElement;
+    expect(animationFrames.length).toBeGreaterThan(0);
+    expect(popover.style.width).toBe('');
+    expect(popover.style.maxHeight).toBe('');
+
+    animationFrames.forEach((callback) => {
+      callback(performance.now());
+    });
+
+    expect(popover.style.width).toBe('120px');
+    expect(popover.style.maxHeight).not.toBe('');
+  });
+
   it('does not position when data-placement is "none"', async () => {
     render(`
       <button popovertarget="my-popover">Open</button>
