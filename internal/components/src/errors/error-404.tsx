@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 export const Error404 = () => {
   const { i18n, t } = useTranslation();
-  const lang = i18n.language === 'en' ? 'en' : 'no';
+  const lang = i18n.language;
 
   return (
     <div
