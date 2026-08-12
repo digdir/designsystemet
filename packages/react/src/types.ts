@@ -7,14 +7,18 @@ export type Placement = FloatingUIPlacement | 'none';
 
 export type DefaultProps = {
   /**
-   * Changes size for descendant Designsystemet components. Select from predefined sizes.
+   * Use `data-size` to change the size for descendant Designsystemet components and variables.
+   *
+   * Select from predefined sizes or define your own size.
    */
-  'data-size'?: Size;
+  'data-size'?: Size | (string & {});
   /**
-   * Changes color for descendant Designsystemet components.
+   * Use `data-color` to change the color for descendant Designsystemet components and variables.
+   *
    * Select from predefined colors and colors defined using theme.designsystemet.no.
+   * @link https://theme.designsystemet.no
    */
-  'data-color'?: Color | SeverityColors;
+  'data-color'?: Color | SeverityColors | (string & {});
 };
 
 export type LabelRequired =

@@ -1,5 +1,45 @@
 # Change Log
 
+## 1.19.1
+
+### Patch Changes
+
+- Fix missing tailwind variables (opacity and shadow) in default theme that was introduced in [#5139](https://github.com/digdir/designsystemet/pull/5139) ([#5162](https://github.com/digdir/designsystemet/pull/5162))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.1
+
+## 1.19.0
+
+### Minor Changes
+
+- **file-upload**: New experimental component. Style with the `ds-file-upload` class. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+
+- **Dialog:** now applies a `z-index` even when opened in non-modal mode (without a backdrop). ([#5123](https://github.com/digdir/designsystemet/pull/5123))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- **ds-dropdown:** no longer requires the `ds-popover` class added on the same element. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+
+- fix loading order for popover-polyfill ([#5027](https://github.com/digdir/designsystemet/pull/5027))
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+
+- **Chip:** now aligns checkbox, radio and x to top when multi-line text ([#5083](https://github.com/digdir/designsystemet/pull/5083))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.0
+
 ## 1.18.0
 
 ### Minor Changes
