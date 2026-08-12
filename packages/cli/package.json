@@ -3,6 +3,9 @@
   "version": "1.19.1",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/digdir/designsystemet.git"
