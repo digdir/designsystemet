@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-reduce required engines version to minimum node lts version
+remove minimum `engines` for node version as its no longer needed.
