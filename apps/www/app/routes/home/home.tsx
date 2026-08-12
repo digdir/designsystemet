@@ -125,9 +125,7 @@ export const meta: Route.MetaFunction = ({ loaderData }: Route.MetaArgs) => {
   return loaderData.metadata;
 };
 
-export default function Home({
-  loaderData: { lang, posts },
-}: Route.ComponentProps) {
+export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
   const { t } = useTranslation();
 
   return (
@@ -166,7 +164,7 @@ export default function Home({
                 title={t('frontpage.get-started.title')}
                 description={t('frontpage.get-started.description')}
                 color='blue'
-                url={`/${lang}/fundamentals`}
+                url='fundamentals'
                 icon={<PaletteIcon aria-hidden='true' />}
                 level={2}
               />
