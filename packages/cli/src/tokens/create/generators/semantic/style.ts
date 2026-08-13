@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { type ColorNames, semanticColorMap } from '../../../../colors/types.ts';
+import { type SemanticColorNames, semanticColorMap } from '../../../../colors/types.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
 export function generateSemanticStyle(colorNames: string[]): TokenSet {
@@ -458,8 +458,8 @@ const baseColorTemplate: TokenSet = {
   },
 };
 
-const generateColorScaleTokens = (colorName: string): Record<ColorNames, Token> => {
-  const colorScale = {} as Record<ColorNames, Token>;
+const generateColorScaleTokens = (colorName: string): Record<SemanticColorNames, Token> => {
+  const colorScale = {} as Record<SemanticColorNames, Token>;
 
   for (const [colorSemantic, colorNumber] of R.toPairs(semanticColorMap)) {
     colorScale[colorSemantic] = {

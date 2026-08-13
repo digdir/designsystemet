@@ -1,8 +1,8 @@
 import {
   type Color,
-  type ColorNames,
-  colorMetadata,
-  getColorMetadataByNumber,
+  getSemanticColorByNumber,
+  type SemanticColorNames,
+  semanticColorSpec,
   type ThemeInfo,
 } from '@digdir/designsystemet/color';
 import { RovingFocusItem } from '@digdir/designsystemet-react';
@@ -15,7 +15,7 @@ import classes from './color-group.module.css';
 
 type ColorGroupProps = {
   header: string;
-  colorNames: ColorNames[];
+  colorNames: SemanticColorNames[];
   colorScale: ThemeInfo;
   names?: string[];
   namespace: string;
@@ -45,9 +45,9 @@ export const ColorGroup = ({
       <div className={cl(classes.colors)}>
         {colorNames.map((colorName, index) => {
           const { number, hex } =
-            colorScale[colorScheme][colorMetadata[colorName].number - 1];
+            colorScale[colorScheme][semanticColorSpec[colorName].number - 1];
           const color: Color = {
-            ...getColorMetadataByNumber(number),
+            ...getSemanticColorByNumber(number),
             number,
             hex,
           };

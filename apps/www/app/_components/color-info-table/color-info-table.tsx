@@ -1,4 +1,4 @@
-import { colorMetadata } from '@digdir/designsystemet/color';
+import { semanticColorSpec } from '@digdir/designsystemet/color';
 import { Table } from '@digdir/designsystemet-react';
 
 export const ColorInfoTable = () => {
@@ -17,7 +17,7 @@ export const ColorInfoTable = () => {
         </Table.Row>
       </Table.Head>
       <Table.Body>
-        {Object.values(colorMetadata).map((item) => {
+        {Object.values(semanticColorSpec).map((item) => {
           return (
             <Table.Row key={item.name}>
               <Table.Cell>{item.number + '. ' + item.name}</Table.Cell>

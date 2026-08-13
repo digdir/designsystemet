@@ -16,7 +16,6 @@ export type TokenSet = {
 };
 export type TokenSets = Map<string, TokenSet>;
 
-export type Colors = Theme['colors'];
 export type Typography = Theme['typography'];
 
 export type Theme = {
