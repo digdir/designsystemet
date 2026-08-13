@@ -1,10 +1,10 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.19.0",
+  "version": "1.19.1",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=24.19.0"
+    "node": ">=22.0.0"
   },
   "repository": {
     "type": "git",

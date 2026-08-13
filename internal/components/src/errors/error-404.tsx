@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 
 export const Error404 = () => {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const lang = i18n.language;
 
   return (
     <div
@@ -31,7 +32,7 @@ export const Error404 = () => {
           width: 'fit-content',
         }}
       >
-        <Link to='/'>{t('errors.generic.go-to-homepage')}</Link>
+        <Link to={`/${lang}`}>{t('errors.generic.go-to-homepage')}</Link>
       </Button>
     </div>
   );

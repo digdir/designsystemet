@@ -1,5 +1,7 @@
 # @digdir/designsystemet-web
 
+## 1.19.1
+
 ## 1.19.0
 
 ### Minor Changes
