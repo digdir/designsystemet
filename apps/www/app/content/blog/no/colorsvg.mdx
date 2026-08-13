@@ -9,7 +9,7 @@ imageCaption: Ved å bruke fargetokens kan du fargelegge logoer, ikoner og illus
 search_terms: svg, fargelegge, symbol, grafikk, illustrasjon, dekorativ
 ---
 
-Grafikk er en viktig del av brukeropplevelsen, men blir ofte laget med statiske farger som må oppdateres manuelt når et visuelt uttrykk endres. I tillegg har en ofte samme grafikk i mørk og lys modus, noe som ikke alltid fungerer. Ved å bruke designtokens også i SVG-grafikk kan illustrasjoner, ikoner og andre grafiske elementer følge samme fargesystem som resten av løsningen. Det gjør grafikken enklere å vedlikeholde, sikrer bedre konsistens på tvers av produkter og gjør det lettere å håndtere temaer, profilendringer og universell utforming. I denne artikkelen ser vi litt overordnet på hvorfor det er nyttig å fargelegge grafikk med tokens, og hvordan du kan komme i gang. Metoden ved bruk av symbol inni svg-filer, som nevnes, er også starten på å tilby flere illustrasjoner i samme svg-fil.
+Grafikk er en viktig del av brukeropplevelsen, men blir ofte laget med statiske farger som må oppdateres manuelt når et visuelt uttrykk endres. I tillegg har en ofte samme grafikk i mørk og lys modus, noe som ikke alltid fungerer. Ved å bruke design-tokens også i SVG-grafikk kan illustrasjoner, ikoner og andre grafiske elementer følge samme fargesystem som resten av løsningen. Det gjør grafikken enklere å vedlikeholde, sikrer bedre konsistens på tvers av produkter og gjør det lettere å håndtere temaer, profilendringer og universell utforming. I denne artikkelen ser vi litt overordnet på hvorfor det er nyttig å fargelegge grafikk med tokens, og hvordan du kan komme i gang. Metoden ved bruk av symbol inni svg-filer, som nevnes, er også starten på å tilby flere illustrasjoner i samme svg-fil.
 
 ## Hvorfor bruke tokens for å styre farger i grafikk?
 
@@ -100,13 +100,13 @@ Hva du må tilpasse videre avhenger av hva du ønsker å oppnå.
 For en énsfarget grafikk kan du styre fargene enten ved å peke på gjeldende tekstfarge eller fargelegge via en klasse eller id.
 
 #### Ensfarget grafikk med tekstfarge
-Vil du bruke gjeldende tekstfarge som standard på alle svg-grafikk kan du bruke currentColor som fargestil. Fjern alle farger i svg-fila og legg til stilregelen for currentColor, da arver grafikken gjeldende tekstfarge. Det kan hende du må gjøre det samme for stroke.
+Vil du bruke gjeldende tekstfarge som standard på alle svg-grafikk kan du bruke `currentColor` som fargestil. Fjern alle farger i svg-fila og legg til stilregelen `fill="currentColor"`, da arver grafikken gjeldende tekstfarge. Det kan hende du må gjøre det samme for `stroke`.
 ```CSS
 svg {
     fill:currentColor;
 }
 ```
-Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette currentColor på `fill` og/eller `stroke` inne i selve svg-fila. I designsystemet blir denne metoden brukt på ikoner, for eksempel i knappene.
+Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette `currentColor` på `fill` og/eller `stroke` inne i selve svg-fila. I designsystemet blir denne metoden brukt på ikoner, for eksempel i knappene.
 ```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
   <symbol id="ds-logo" viewBox="0 0 40 40">
