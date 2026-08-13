@@ -103,8 +103,36 @@ function emittedAttrs(src) {
   return [...new Set(src.match(/data-[a-z-]+(?==)/g) ?? [])].sort();
 }
 
+/*
+ * Pattern twins have no code source: they describe how components compose into
+ * a correct whole (e.g. form validation) and are maintained as data in
+ * scripts/twin-patterns/. The generator copies them into the registry and
+ * inverts their component lists, so each component twin also says which
+ * patterns govern it and which components it usually appears with.
+ */
+const PATTERNS_DIR = join(ROOT, 'scripts/twin-patterns');
+const patternFiles = existsSync(PATTERNS_DIR)
+  ? readdirSync(PATTERNS_DIR).filter((f) => f.endsWith('.json'))
+  : [];
+const patterns = patternFiles.map((f) =>
+  JSON.parse(readFileSync(join(PATTERNS_DIR, f), 'utf8')),
+);
+
+function patternsFor(slug) {
+  const governing = [];
+  const companions = new Set();
+  for (const p of patterns) {
+    const refs = (p.components?.value ?? []).map((c) => c.ref ?? c.name).filter(Boolean);
+    if (!refs.includes(slug)) continue;
+    governing.push({ slug: p.slug, name: p.name, docs: p.links?.docs ?? null });
+    for (const other of refs) if (other !== slug) companions.add(other);
+  }
+  return { governing, companions: [...companions].sort() };
+}
+
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(join(OUT, 'components'), { recursive: true });
+mkdirSync(join(OUT, 'patterns'), { recursive: true });
 
 const written = [];
 for (const dir of readdirSync(COMPONENTS, { withFileTypes: true })) {
@@ -136,6 +164,8 @@ for (const dir of readdirSync(COMPONENTS, { withFileTypes: true })) {
         dataAttributes: emittedAttrs(src),
       }),
       tokens: extracted(`packages/css/src/${slug}.css`, tokens(slug)),
+      patterns: extracted('scripts/twin-patterns/*.json (inverted)', patternsFor(slug).governing),
+      usedWith: extracted('scripts/twin-patterns/*.json (inverted)', patternsFor(slug).companions),
 
       a11y: authoredStub(docsUrl(slug, 'overview')),
       relations: authoredStub(docsUrl(slug, 'overview')),
@@ -151,6 +181,10 @@ for (const dir of readdirSync(COMPONENTS, { withFileTypes: true })) {
     );
     written.push(name);
   }
+}
+
+for (const p of patterns) {
+  writeFileSync(join(OUT, 'patterns', `${p.slug}.json`), `${JSON.stringify(p, null, 2)}\n`, 'utf8');
 }
 
 /*
@@ -170,6 +204,10 @@ writeFileSync(
     'all part of the documented setup, and markup that carries the right `ds-*` class names',
     'without the stylesheet behind it looks nothing like Designsystemet:',
     'https://designsystemet.no/en/fundamentals/code/setup',
+    '',
+    '## Patterns',
+    '',
+    ...patterns.map((p) => `- [${p.name}](patterns/${p.slug}.json)${p.links?.docs ? `: ${p.links.docs}` : ''}`),
     '',
     '## Components',
     '',

@@ -1,0 +1,106 @@
+{
+  "$schema": "../../schema/twin.schema.json",
+  "schemaVersion": "0.1.0",
+  "kind": "pattern",
+  "name": "Required and optional form fields",
+  "slug": "required-and-optional-fields",
+  "package": {
+    "name": "@digdir/designsystemet-react",
+    "semver": "1.x"
+  },
+  "generated": {
+    "fromCommit": "n/a — pattern authored from docs + component source",
+    "at": "2026-08-05T20:00:00Z",
+    "generator": "pilot-manual"
+  },
+  "links": {
+    "docs": "https://designsystemet.no/en/patterns/required-and-optional-fields",
+    "md": "./required-and-optional-fields.md"
+  },
+  "summary": {
+    "provenance": "authored",
+    "source": "https://designsystemet.no/en/patterns/required-and-optional-fields",
+    "value": "Tell users which fields are required and which are optional. Where all fields are required, say so once above the form; where the form mixes both, mark each field individually. Never use an asterisk as the marker."
+  },
+  "components": {
+    "provenance": "authored",
+    "source": "packages/react/src/components/index.ts (export barrel) + https://designsystemet.no/en/components/docs/textfield/code",
+    "value": [
+      {
+        "name": "Textfield",
+        "role": "single-line input; carries its own `label` prop"
+      },
+      {
+        "name": "ToggleGroup",
+        "role": "choice between a small set of options; items are ToggleGroup.Item (exported also as ToggleGroupItem)"
+      },
+      {
+        "name": "Tag",
+        "role": "renders the visible 'Required'/'Optional' marker"
+      },
+      {
+        "name": "Fieldset",
+        "role": "groups related controls and gives the group an accessible name via FieldsetLegend"
+      },
+      {
+        "name": "Label",
+        "role": "programmatic label where a component does not carry one"
+      }
+    ]
+  },
+  "composition": {
+    "provenance": "authored",
+    "source": "https://designsystemet.no/en/patterns/required-and-optional-fields",
+    "value": [
+      "All fields required: state it once above the form; do not mark each field.",
+      "Mixed required and optional: mark every field individually so the marking is unambiguous.",
+      "The marker is a word — 'Required' / 'Optional' — rendered as a Tag beside the label.",
+      "ToggleGroup is a group control: wrap it in a Fieldset with a legend, or give it an accessible name directly."
+    ]
+  },
+  "a11y": {
+    "provenance": "authored",
+    "source": "WCAG 3.3.2 (Labels or Instructions), WCAG 1.3.1 (Info and Relationships), packages/react/src/components/toggle-group/index.ts JSDoc",
+    "value": [
+      {
+        "id": "labels-present",
+        "rule": "Every input has a programmatic label — Textfield's `label` prop or a Label component.",
+        "wcag": [
+          "3.3.2"
+        ]
+      },
+      {
+        "id": "group-accessible-name",
+        "rule": "A ToggleGroup carries an accessible name: aria-label/aria-labelledby, or a Fieldset legend. The component's own JSDoc example uses aria-label.",
+        "wcag": [
+          "1.3.1",
+          "3.3.2"
+        ]
+      },
+      {
+        "id": "required-programmatic",
+        "rule": "Required state is conveyed programmatically (`required` or `aria-required`), not by the visible marker alone.",
+        "wcag": [
+          "3.3.2",
+          "4.1.2"
+        ]
+      },
+      {
+        "id": "no-asterisk",
+        "rule": "Do not use an asterisk to indicate required fields — stated by the pattern docs; an unexplained symbol is not an instruction.",
+        "wcag": [
+          "3.3.2"
+        ]
+      }
+    ]
+  },
+  "boundaries": {
+    "provenance": "authored",
+    "source": "https://designsystemet.no/en/patterns/required-and-optional-fields + https://designsystemet.no/en/components/docs/toggle-group/overview",
+    "value": [
+      "This pattern governs MARKING, not validation. Error handling belongs to the errors pattern.",
+      "ToggleGroup is for switching between views or a small set of choices; for a form answer the docs direct you to Radio instead. It is used here because the brief asks for it.",
+      "Do not invent props on ToggleGroup: the documented surface is variant, value, defaultValue, onChange, name (+ ToggleGroup.Item: value, icon)."
+    ]
+  }
+}
