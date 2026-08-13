@@ -16,71 +16,42 @@
  *
  *   node scripts/generate-twins.mjs [--out <dir>]   # default: ./registry
  */
-import {
-  existsSync,
-  mkdirSync,
-  readdirSync,
-  readFileSync,
-  rmSync,
-  writeFileSync,
-} from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const COMPONENTS = join(ROOT, 'packages/react/src/components');
 const CSS_SRC = join(ROOT, 'packages/css/src');
-const PKG = JSON.parse(
-  readFileSync(join(ROOT, 'packages/react/package.json'), 'utf8'),
-);
-const OUT = resolve(
+const PKG = JSON.parse(readFileSync(join(ROOT, 'packages/react/package.json'), 'utf8'));
+const OUT = join(
   ROOT,
-  process.argv.includes('--out')
-    ? process.argv[process.argv.indexOf('--out') + 1]
-    : 'registry',
+  process.argv.includes('--out') ? process.argv[process.argv.indexOf('--out') + 1] : 'registry',
 );
 
 /* Docs links carry /en/: export names and the code agents write are English. */
-const docsUrl = (slug, page) =>
-  `https://designsystemet.no/en/components/docs/${slug}/${page}`;
+const docsUrl = (slug, page) => `https://designsystemet.no/en/components/docs/${slug}/${page}`;
 
-const extracted = (source, value) => ({
-  provenance: 'extracted',
-  source,
-  value,
-});
-const authoredStub = (source) => ({
-  provenance: 'authored',
-  source,
-  value: null,
-});
+const extracted = (source, value) => ({ provenance: 'extracted', source, value });
+const authoredStub = (source) => ({ provenance: 'authored', source, value: null });
 
 /**
  * The exported component name and its JSDoc, matched as one unit: the comment
  * block immediately preceding `export const`. Requiring adjacency keeps an
- * unrelated file-header comment from being read as the component's JSDoc, and
- * requiring the JSDoc at all keeps hooks and internals out of the registry —
- * a documented export is the component's public face.
+ * unrelated file-header comment from being read as the component's JSDoc.
  */
 function exportedComponent(src) {
-  const m = src.match(
-    /\/\*\*((?:(?!\*\/)[\s\S])*?)\*\/\s*export const ([A-Z]\w+)/,
-  );
-  if (!m) return null;
+  const m = src.match(/\/\*\*((?:(?!\*\/)[\s\S])*?)\*\/\s*export const (\w+)/);
+  if (!m) {
+    const bare = src.match(/export const (\w+) = (?:forwardRef|\()/);
+    return bare ? { name: bare[1], description: null, example: null } : null;
+  }
   const lines = m[1].split('\n').map((l) => l.replace(/^\s*\*\s?/, ''));
   const exampleAt = lines.findIndex((l) => l.trim().startsWith('@example'));
   const description =
-    (exampleAt === -1 ? lines : lines.slice(0, exampleAt))
-      .join(' ')
-      .replace(/\s+/g, ' ')
-      .trim() || null;
-  const example =
-    exampleAt === -1
-      ? null
-      : lines
-          .slice(exampleAt + 1)
-          .join('\n')
-          .trim() || null;
+    (exampleAt === -1 ? lines : lines.slice(0, exampleAt)).join(' ').replace(/\s+/g, ' ').trim() ||
+    null;
+  const example = exampleAt === -1 ? null : lines.slice(exampleAt + 1).join('\n').trim() || null;
   return { name: m[2], description, example };
 }
 
@@ -93,9 +64,7 @@ function dsClass(src) {
 function tokens(slug) {
   const file = join(CSS_SRC, `${slug}.css`);
   if (!existsSync(file)) return [];
-  return [
-    ...new Set(readFileSync(file, 'utf8').match(/--dsc?-[a-z0-9-]+/g) ?? []),
-  ].sort();
+  return [...new Set(readFileSync(file, 'utf8').match(/--dsc?-[a-z0-9-]+/g) ?? [])].sort();
 }
 
 /** data-* attributes the render emits, so tooling can recognise them in the DOM. */
@@ -103,46 +72,15 @@ function emittedAttrs(src) {
   return [...new Set(src.match(/data-[a-z-]+(?==)/g) ?? [])].sort();
 }
 
-/*
- * Pattern twins have no code source: they describe how components compose into
- * a correct whole (e.g. form validation) and are maintained as data in
- * scripts/twin-patterns/. The generator copies them into the registry and
- * inverts their component lists, so each component twin also says which
- * patterns govern it and which components it usually appears with.
- */
-const PATTERNS_DIR = join(ROOT, 'scripts/twin-patterns');
-const patternFiles = existsSync(PATTERNS_DIR)
-  ? readdirSync(PATTERNS_DIR).filter((f) => f.endsWith('.json'))
-  : [];
-const patterns = patternFiles.map((f) =>
-  JSON.parse(readFileSync(join(PATTERNS_DIR, f), 'utf8')),
-);
-
-function patternsFor(slug) {
-  const governing = [];
-  const companions = new Set();
-  for (const p of patterns) {
-    const refs = (p.components?.value ?? [])
-      .map((c) => c.ref ?? c.name)
-      .filter(Boolean);
-    if (!refs.includes(slug)) continue;
-    governing.push({ slug: p.slug, name: p.name, docs: p.links?.docs ?? null });
-    for (const other of refs) if (other !== slug) companions.add(other);
-  }
-  return { governing, companions: [...companions].sort() };
-}
-
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(join(OUT, 'components'), { recursive: true });
-mkdirSync(join(OUT, 'patterns'), { recursive: true });
 
 const written = [];
 for (const dir of readdirSync(COMPONENTS, { withFileTypes: true })) {
   if (!dir.isDirectory()) continue;
   const slug = dir.name;
   for (const file of readdirSync(join(COMPONENTS, slug))) {
-    if (!file.endsWith('.tsx') || /\.(stories|test|chromatic)\.tsx$/.test(file))
-      continue;
+    if (!file.endsWith('.tsx') || /\.(stories|test|chromatic)\.tsx$/.test(file)) continue;
     const src = readFileSync(join(COMPONENTS, slug, file), 'utf8');
     const component = exportedComponent(src);
     if (!component) continue;
@@ -161,19 +99,8 @@ for (const dir of readdirSync(COMPONENTS, { withFileTypes: true })) {
       importName: extracted(sourcePath, name),
       summary: extracted(`${sourcePath} (JSDoc)`, description),
       example: extracted(`${sourcePath} (JSDoc @example)`, example),
-      emitted: extracted(sourcePath, {
-        class: dsClass(src),
-        dataAttributes: emittedAttrs(src),
-      }),
+      emitted: extracted(sourcePath, { class: dsClass(src), dataAttributes: emittedAttrs(src) }),
       tokens: extracted(`packages/css/src/${slug}.css`, tokens(slug)),
-      patterns: extracted(
-        'scripts/twin-patterns/*.json (inverted)',
-        patternsFor(slug).governing,
-      ),
-      usedWith: extracted(
-        'scripts/twin-patterns/*.json (inverted)',
-        patternsFor(slug).companions,
-      ),
 
       a11y: authoredStub(docsUrl(slug, 'overview')),
       relations: authoredStub(docsUrl(slug, 'overview')),
@@ -189,14 +116,6 @@ for (const dir of readdirSync(COMPONENTS, { withFileTypes: true })) {
     );
     written.push(name);
   }
-}
-
-for (const p of patterns) {
-  writeFileSync(
-    join(OUT, 'patterns', `${p.slug}.json`),
-    `${JSON.stringify(p, null, 2)}\n`,
-    'utf8',
-  );
 }
 
 /*
@@ -216,13 +135,6 @@ writeFileSync(
     'all part of the documented setup, and markup that carries the right `ds-*` class names',
     'without the stylesheet behind it looks nothing like Designsystemet:',
     'https://designsystemet.no/en/fundamentals/code/setup',
-    '',
-    '## Patterns',
-    '',
-    ...patterns.map(
-      (p) =>
-        `- [${p.name}](patterns/${p.slug}.json)${p.links?.docs ? `: ${p.links.docs}` : ''}`,
-    ),
     '',
     '## Components',
     '',

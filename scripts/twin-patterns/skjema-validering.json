@@ -112,16 +112,12 @@
       {
         "id": "aria-invalid",
         "rule": "Set aria-invalid='true' on every field in an error state.",
-        "wcag": [
-          "3.3.1"
-        ]
+        "wcag": ["3.3.1"]
       },
       {
         "id": "aria-describedby",
         "rule": "Link each field to its ValidationMessage with aria-describedby.",
-        "wcag": [
-          "3.3.1"
-        ]
+        "wcag": ["3.3.1"]
       },
       {
         "id": "no-aria-errormessage",
@@ -130,23 +126,17 @@
       {
         "id": "aria-live",
         "rule": "Errors that appear dynamically live in an aria-live='polite' region.",
-        "wcag": [
-          "4.1.3"
-        ]
+        "wcag": ["4.1.3"]
       },
       {
         "id": "focus-to-error",
         "rule": "Activating an ErrorSummary link moves focus to the field it names.",
-        "wcag": [
-          "2.4.3"
-        ]
+        "wcag": ["2.4.3"]
       },
       {
         "id": "group-with-legend",
         "rule": "Related controls are grouped in a Fieldset with a Legend.",
-        "wcag": [
-          "1.3.1"
-        ]
+        "wcag": ["1.3.1"]
       }
     ]
   },

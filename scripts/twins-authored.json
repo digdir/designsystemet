@@ -2108,30 +2108,22 @@
     "a11y": [
       {
         "rule": "A textfield must always have a label",
-        "wcag": [
-          "1.3.1"
-        ],
+        "wcag": ["1.3.1"],
         "quote": "A textfield must always have a label."
       },
       {
         "rule": "Prefixes and suffixes must not be used without a label",
-        "wcag": [
-          "1.3.1"
-        ],
+        "wcag": ["1.3.1"],
         "quote": "These must **not** be used without a `<label>`, since screen readers will not announce them."
       },
       {
         "rule": "Information in a prefix or suffix must also appear in the label",
-        "wcag": [
-          "1.3.1"
-        ],
+        "wcag": ["1.3.1"],
         "quote": "The information shown in the prefix or suffix must also be reflected in the label text."
       },
       {
         "rule": "Autocomplete is required where a predefined purpose exists",
-        "wcag": [
-          "1.3.5"
-        ],
+        "wcag": ["1.3.5"],
         "quote": "Autocomplete is required in fields where a predefined purpose exists, as defined in 1.3.5"
       }
     ],
@@ -2268,9 +2260,7 @@
     "a11y": [
       {
         "rule": "Messages should be placed close to the field they relate to",
-        "wcag": [
-          "3.3.1"
-        ],
+        "wcag": ["3.3.1"],
         "quote": "Messages should be placed close to the field they relate to, so that both visual users and users of assistive technologies can easily understand the connection."
       }
     ]

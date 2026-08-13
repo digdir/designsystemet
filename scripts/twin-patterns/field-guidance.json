@@ -25,8 +25,14 @@
     "provenance": "authored",
     "source": "https://designsystemet.no/en/components/docs/textfield/overview",
     "value": [
-      {"name": "Textfield", "role": "carries label, description and error in one composition"},
-      {"name": "Field", "role": "links label, description, validation message and counter for assistive technology"}
+      {
+        "name": "Textfield",
+        "role": "carries label, description and error in one composition"
+      },
+      {
+        "name": "Field",
+        "role": "links label, description, validation message and counter for assistive technology"
+      }
     ]
   },
   "a11y": {
