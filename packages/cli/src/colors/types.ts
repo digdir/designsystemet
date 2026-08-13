@@ -1,10 +1,7 @@
-import * as R from 'ramda';
-export type ColorScheme = 'light' | 'dark' | 'contrast';
-export type ContrastMode = 'aa' | 'aaa';
+export type ColorScheme = 'light' | 'dark';
 export type ColorNumber = SemanticColorMap[keyof SemanticColorMap];
-export type ColorNames = keyof SemanticColorMap;
-export type GlobalColors = 'danger' | 'info' | 'success' | 'warning';
-export type ColorError = 'none' | 'decorative' | 'interaction';
+export type SemanticColorNames = keyof SemanticColorMap;
+export type SeverityColorNames = 'danger' | 'info' | 'success' | 'warning';
 
 export const semanticColorMap = {
   'background-default': 1,
@@ -25,9 +22,6 @@ export const semanticColorMap = {
   'base-contrast-default': 16,
 } as const;
 
-export const semanticColorNames = R.keys(semanticColorMap);
-export const semanticColorNumbers = R.values(semanticColorMap);
-
 type SemanticColorMap = typeof semanticColorMap;
 
 type SemanticColorMapping = {
@@ -37,12 +31,12 @@ type SemanticColorMapping = {
   };
 };
 
-export type ColorMetadataByName = {
-  [P in keyof SemanticColorMapping]: SemanticColorMapping[P] & ColorMetadata;
+export type SemanticColorSpec = {
+  [P in keyof SemanticColorMapping]: SemanticColorMapping[P] & ColorScaleStep<SemanticColorNames>;
 };
 
-export type ColorMetadata = {
-  name: ColorNames;
+export type ColorScaleStep<T> = {
+  name: T;
   number: ColorNumber;
   displayName: string;
   description: {
@@ -57,14 +51,13 @@ export type ColorMetadata = {
   };
 };
 
-export type Color = ColorMetadata & {
+export type Color = ColorScaleStep<SemanticColorNames> & {
   hex: CssColor;
 };
 
 export type ThemeInfo = {
   light: Color[];
   dark: Color[];
-  contrast: Color[];
 };
 
 /**
@@ -72,21 +65,7 @@ export type ThemeInfo = {
  */
 export type CssColor = HexColor;
 
-/**
- * Different color formats.
- */
 export type HexColor = `#${string}`;
-// type RgbColor = `rgb(${number} ${number} ${number})`;
-// type HslColor = `hsl(${Degrees} ${Percent} ${Percent})`;
-// type HsvColor = `hsv(${Degrees} ${Percent} ${Percent})`;
-// type HsluvColor = `hsluv(${number} ${number} ${number})`;
-// type LabColor = `lab(${Percent} ${number} ${number})`;
-// type LchColor = `lch(${Percent} ${number} ${Degrees})`;
-// type OkLabColor = `oklab(${Percent} ${number} ${number})`;
-// type OkLchColor = `oklch(${Percent} ${number} ${Degrees})`;
-// type Cam02Color = `jab(${Percent} ${number} ${number})`;
-// type Cam02pColor = `jch(${Percent} ${number} ${Degrees})`;
-// type RgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
-
 // type Percent = `${number}%`;
 // type Degrees = `${number}deg`;
+// type OkLchColor = `oklch(${Percent} ${number} ${Degrees})`;

@@ -1,4 +1,7 @@
-import { colorMetadata, colorNames } from '@digdir/designsystemet/color';
+import {
+  semanticColorNames,
+  semanticColorSpec,
+} from '@digdir/designsystemet/color';
 import {
   Details,
   Field,
@@ -142,7 +145,10 @@ const ColorOverrideInput = ({
     <div className='ds-field'>
       <Label htmlFor={inputId}>
         <span className='ds-sr-only'>{colorName} </span>
-        {colorMetadata[tokenName as keyof typeof colorMetadata].displayName}{' '}
+        {
+          semanticColorSpec[tokenName as keyof typeof semanticColorSpec]
+            .displayName
+        }{' '}
         {mode === 'light' ? 'Light' : 'Dark'}
       </Label>
       <Field.Affixes>
@@ -198,22 +204,22 @@ export default function ColorDetails({ color }: ColorDetailsProps) {
       </Details.Summary>
 
       <div className={classes.tokenList}>
-        {colorNames.map((tokenName) => {
+        {semanticColorNames.map((colorName) => {
           // Get the actual colors from the theme to show preview
           const lightColor = color.colors?.light?.find(
-            (c) => c.name === tokenName,
+            (c) => c.name === colorName,
           );
           const darkColor = color.colors?.dark?.find(
-            (c) => c.name === tokenName,
+            (c) => c.name === colorName,
           );
 
           return (
-            <div key={tokenName} className={classes.tokenRow}>
+            <div key={colorName} className={classes.tokenRow}>
               <div className={classes.tokenInputsWrapper}>
                 <div className={classes.tokenInputGroup}>
                   <ColorOverrideInput
                     colorName={color.name}
-                    tokenName={tokenName}
+                    tokenName={colorName}
                     mode='light'
                     defaultColor={lightColor?.hex}
                   />
@@ -221,7 +227,7 @@ export default function ColorDetails({ color }: ColorDetailsProps) {
                 <div className={classes.tokenInputGroup}>
                   <ColorOverrideInput
                     colorName={color.name}
-                    tokenName={tokenName}
+                    tokenName={colorName}
                     mode='dark'
                     defaultColor={darkColor?.hex}
                   />
