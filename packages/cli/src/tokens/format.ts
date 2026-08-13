@@ -19,7 +19,7 @@ export const formatTokens = async (options: FormatTokensOptions) => {
   return processedBuilds;
 };
 
-export const formatTheme = async (themeConfig: Theme, options: Pick<FormatTokensOptions, 'verbose' | 'tailwind'>) => {
+const formatTheme = async (themeConfig: Theme, options: Pick<FormatTokensOptions, 'verbose' | 'tailwind'>) => {
   const themeNames = [themeConfig.name];
   const colorNames = toColorNames(themeConfig.colors);
 

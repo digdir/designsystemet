@@ -3,7 +3,8 @@ import {
   generateColorSchemes,
   type ThemeInfo,
 } from '@digdir/designsystemet';
-import { baseColors, type GlobalColors } from '@digdir/designsystemet/color';
+import type { SeverityColorNames } from '@digdir/designsystemet/color';
+import { severityColors } from '@digdir/designsystemet/schemas/defaults.js';
 import { useLoaderData } from 'react-router';
 import { generateColorVars } from '~/_utils/generate-color-vars';
 import type { Route } from '../+types/themebuilder';
@@ -20,7 +21,7 @@ export type ColorTheme = {
 };
 
 export type SeverityColorTheme = {
-  name: GlobalColors;
+  name: SeverityColorNames;
   colors: ThemeInfo;
   hex: CssColor;
   isDefault: boolean;
@@ -99,11 +100,9 @@ export function createColorsAndNeutralVariables(color: CssColor) {
 export function createSeverityColorsFromQuery(
   severityParam: string | null,
 ): SeverityColorTheme[] {
-  const severityColors: SeverityColorTheme[] = [];
-  const severityKeys: GlobalColors[] = ['info', 'success', 'warning', 'danger'];
+  const severityThemeColors: SeverityColorTheme[] = [];
 
-  for (const key of severityKeys) {
-    let hex = baseColors[key];
+  for (let [key, hex] of Object.entries(severityColors)) {
     let isDefault = true;
 
     // Check if this severity color is overridden in the query params
@@ -118,8 +117,8 @@ export function createSeverityColorsFromQuery(
     }
 
     const colors = generateColorSchemes(hex);
-    severityColors.push({
-      name: key,
+    severityThemeColors.push({
+      name: key as SeverityColorNames,
       hex,
       colors,
       isDefault,
@@ -130,7 +129,7 @@ export function createSeverityColorsFromQuery(
     });
   }
 
-  return severityColors;
+  return severityThemeColors;
 }
 
 export function parseColorOverrides(
