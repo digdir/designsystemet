@@ -18,48 +18,70 @@ import type { Route } from './+types/plugin-telemetry';
 
 const MAX_BODY_BYTES = 32_768;
 
-const TOP_LEVEL = new Set([
-  'installId',
-  'pluginVersion',
-  'period',
-  'lookups',
-  'guardDenials',
-]);
-const LOOKUP_FIELDS = new Set(['tool', 'query', 'found', 'count']);
-const DENIAL_FIELDS = new Set(['check', 'count']);
+/*
+ * Every field is bound to a concrete type and length; a validator returning
+ * false for any field, or any key outside these maps, rejects the whole
+ * request. Free-text-shaped fields get tight caps on purpose: this endpoint
+ * must stay useless as a place to smuggle code, prompts or paths.
+ */
+type FieldValidators = Record<string, (value: unknown) => boolean>;
+
+const boundedString = (max: number) => (value: unknown) =>
+  typeof value === 'string' && value.length > 0 && value.length <= max;
+const boundedCount = (value: unknown) =>
+  typeof value === 'number' &&
+  Number.isInteger(value) &&
+  value >= 0 &&
+  value <= 1_000_000;
+const bool = (value: unknown) => typeof value === 'boolean';
+
+const TOP_LEVEL: FieldValidators = {
+  installId: boundedString(64),
+  pluginVersion: boundedString(32),
+  period: boundedString(64),
+  lookups: () => true, // shape-checked separately by allowedRows
+  guardDenials: () => true,
+};
+const LOOKUP_FIELDS: FieldValidators = {
+  tool: boundedString(64),
+  query: boundedString(120),
+  found: bool,
+  count: boundedCount,
+};
+const DENIAL_FIELDS: FieldValidators = {
+  check: boundedString(64),
+  count: boundedCount,
+};
+
+const isPlainObject = (value: unknown): value is Record<string, unknown> =>
+  value !== null && typeof value === 'object' && !Array.isArray(value);
+
+const allowedFields = (
+  obj: Record<string, unknown>,
+  fields: FieldValidators,
+  required: string[],
+): boolean =>
+  Object.entries(obj).every(([key, value]) => fields[key]?.(value) === true) &&
+  required.every((key) => key in obj);
 
 const allowedRows = (
   rows: unknown,
-  fields: Set<string>,
+  fields: FieldValidators,
+  required: string[],
   max: number,
 ): boolean =>
   Array.isArray(rows) &&
   rows.length <= max &&
   rows.every(
-    (row) =>
-      row !== null &&
-      typeof row === 'object' &&
-      Object.keys(row).every((key) => fields.has(key)) &&
-      Object.values(row).every(
-        (value) =>
-          typeof value === 'string' ||
-          typeof value === 'number' ||
-          typeof value === 'boolean',
-      ),
+    (row) => isPlainObject(row) && allowedFields(row, fields, required),
   );
 
 function isValidAggregate(body: unknown): boolean {
-  if (body === null || typeof body !== 'object' || Array.isArray(body))
-    return false;
-  const aggregate = body as Record<string, unknown>;
+  if (!isPlainObject(body)) return false;
   return (
-    Object.keys(aggregate).every((key) => TOP_LEVEL.has(key)) &&
-    typeof aggregate.installId === 'string' &&
-    aggregate.installId.length <= 64 &&
-    typeof aggregate.pluginVersion === 'string' &&
-    aggregate.pluginVersion.length <= 32 &&
-    allowedRows(aggregate.lookups ?? [], LOOKUP_FIELDS, 500) &&
-    allowedRows(aggregate.guardDenials ?? [], DENIAL_FIELDS, 100)
+    allowedFields(body, TOP_LEVEL, ['installId', 'pluginVersion']) &&
+    allowedRows(body.lookups ?? [], LOOKUP_FIELDS, ['tool'], 500) &&
+    allowedRows(body.guardDenials ?? [], DENIAL_FIELDS, ['check'], 100)
   );
 }
 
@@ -68,8 +90,12 @@ export async function action({ request }: Route.ActionArgs) {
     return new Response('Method Not Allowed', { status: 405 });
   }
 
+  const declared = Number(request.headers.get('content-length'));
+  if (declared > MAX_BODY_BYTES) {
+    return new Response('Payload Too Large', { status: 413 });
+  }
   const raw = await request.text();
-  if (raw.length > MAX_BODY_BYTES) {
+  if (new TextEncoder().encode(raw).length > MAX_BODY_BYTES) {
     return new Response('Payload Too Large', { status: 413 });
   }
 
