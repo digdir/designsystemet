@@ -16,6 +16,7 @@ import { Error404 } from '@internal/components';
 import { useTranslation } from 'react-i18next';
 import { SiteimproveScript } from './_components/siteimprove-script';
 import { useChangeLanguage } from './_hooks/use-change-language';
+import { useWebMcpNavigate } from './_hooks/use-webmcp-navigate';
 import { designsystemetRedirects } from './_utils/redirects.server';
 
 export const links = () => {
@@ -162,6 +163,7 @@ function Document({ children }: DocumentProps) {
 
 export default function App({ loaderData: { lang } }: Route.ComponentProps) {
   useChangeLanguage(lang);
+  useWebMcpNavigate();
 
   return (
     <Document>

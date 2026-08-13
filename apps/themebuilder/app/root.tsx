@@ -15,6 +15,7 @@ import '@digdir/designsystemet-css';
 import './app.css';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from '~/_hooks/use-change-language';
+import { useWebMcpNavigate } from '~/_hooks/use-webmcp-navigate';
 
 export const links: Route.LinksFunction = () => {
   return [
@@ -146,6 +147,7 @@ function Document({ children }: DocumentProps) {
 
 export default function App({ loaderData: { lang } }: Route.ComponentProps) {
   useChangeLanguage(lang);
+  useWebMcpNavigate();
 
   return (
     <Document>

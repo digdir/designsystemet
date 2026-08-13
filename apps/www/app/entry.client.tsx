@@ -3,9 +3,14 @@ import { StrictMode, startTransition } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import { HydratedRouter } from 'react-router/dom';
+import { registerWebMcpTools } from '~/_utils/webmcp.client';
 import en from '~/locales/en';
 import no from '~/locales/no';
 import i18n from './i18n';
+
+/* Expose the site's WebMCP tools to AI agents as early as possible on page
+ * load, before hydration */
+registerWebMcpTools();
 
 const url = window.location.pathname;
 const lng = url.startsWith('/no') ? 'no' : url.startsWith('/en') ? 'en' : 'no';
