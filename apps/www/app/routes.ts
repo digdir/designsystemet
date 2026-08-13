@@ -16,6 +16,9 @@ export default [
   route('/api/consent', 'routes/consent.tsx', {
     id: 'consent-action',
   }),
+  route('/api/plugin-telemetry', 'routes/plugin-telemetry.tsx', {
+    id: 'api-plugin-telemetry',
+  }),
   ...prefix('/schemas', [
     route('/cli/:version', 'routes/cli-schema.tsx', {
       id: 'schemas-cli',
