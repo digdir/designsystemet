@@ -24,7 +24,7 @@ import {
   rmSync,
   writeFileSync,
 } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -33,7 +33,7 @@ const CSS_SRC = join(ROOT, 'packages/css/src');
 const PKG = JSON.parse(
   readFileSync(join(ROOT, 'packages/react/package.json'), 'utf8'),
 );
-const OUT = join(
+const OUT = resolve(
   ROOT,
   process.argv.includes('--out')
     ? process.argv[process.argv.indexOf('--out') + 1]
