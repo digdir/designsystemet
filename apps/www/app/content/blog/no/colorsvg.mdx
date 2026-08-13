@@ -134,6 +134,13 @@ Med tilhørende token:
 }
 ```
 
+#### Ensfarget grafikk styrt med token og `data-color`
+Noen ganger skal samme grafikk brukes i flere ulike sammenhenger, men samtidig følge fargen som er valgt for den delen av siden den vises i. I slike tilfeller kan du bruke generiske designtokens som arver `data-color` verdi fra nærmeste overordnede element.
+
+I eksempelene her er selve svg-filen kun gitt token `--ds-color-base-default`, mens de omsluttende kortene er gitt henholdsvist fargen suksess sammen med alltid mørk modus og fargen for fare sammen med alltid lys modus.
+<Story story="WithDataColor" truncateSvg={false} />
+
+
 ### Flerfarget grafikk, typisk merkevarebærende symboler og små illustrasjoner
 For grafikk med flere farger kan du styre fargene direkte i fill og stroke på hver path i grafikken inni svg-fila. Du kan selvsagt fargelegge ved å peke direkte til fargene i designsystemet, eller om du har laget tokens for illustrasjoner så bruker du dem.
 
