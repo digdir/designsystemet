@@ -151,45 +151,66 @@ const handleClick = (e: Event) => {
 
 onHotReload('popover', () => {
   const isFunction = (fn: unknown) => typeof fn === 'function';
+  const descriptors = Object.getOwnPropertyDescriptors(HTMLElement.prototype);
   const togglePopover = HTMLElement.prototype.togglePopover;
   const showPopover = HTMLElement.prototype.showPopover;
   const hidePopover = HTMLElement.prototype.hidePopover;
 
   // Since toggle event is not composed, we need to trigger it when programatically called inside shadow DOM
   if (isFunction(togglePopover))
-    HTMLElement.prototype.togglePopover = function (opt) {
-      const isOpen = this.matches(':popover-open');
-      const isBool = typeof opt === 'boolean';
-      const prev = isOpen ? 'open' : 'closed';
-      const next = (isBool ? opt : (opt?.force ?? !isOpen)) ? 'open' : 'closed';
-      const source = isBool ? undefined : opt?.source;
-      const result = togglePopover.call(this, opt as TogglePopoverOptions);
-      toggle(this, next, prev, source);
-      return result;
-    };
+    Object.defineProperty(HTMLElement.prototype, 'togglePopover', {
+      ...descriptors.togglePopover,
+      writable: true,
+      value: function (opt: Parameters<typeof togglePopover>[0]) {
+        const isOpen = this.matches(':popover-open');
+        const isBool = typeof opt === 'boolean';
+        const prev = isOpen ? 'open' : 'closed';
+        const next = (isBool ? opt : (opt?.force ?? !isOpen))
+          ? 'open'
+          : 'closed';
+        const source = isBool ? undefined : opt?.source;
+        const result = togglePopover.call(this, opt as TogglePopoverOptions);
+        toggle(this, next, prev, source);
+        return result;
+      },
+    });
   if (isFunction(showPopover))
-    HTMLElement.prototype.showPopover = function (opt) {
-      const prev = this.matches(':popover-open') ? 'open' : 'closed';
-      const result = showPopover.call(this, opt);
-      toggle(this, 'open', prev, opt?.source);
-      return result;
-    };
+    Object.defineProperty(HTMLElement.prototype, 'showPopover', {
+      ...descriptors.showPopover,
+      writable: true,
+      value: function (opt?: Parameters<typeof showPopover>[0]) {
+        const prev = this.matches(':popover-open') ? 'open' : 'closed';
+        const result = showPopover.call(this, opt);
+        toggle(this, 'open', prev, opt?.source);
+        return result;
+      },
+    });
   if (isFunction(hidePopover))
-    HTMLElement.prototype.hidePopover = function () {
-      const prev = this.matches(':popover-open') ? 'open' : 'closed';
-      const result = hidePopover.call(this);
-      toggle(this, 'closed', prev);
-      return result;
-    };
+    Object.defineProperty(HTMLElement.prototype, 'hidePopover', {
+      ...descriptors.hidePopover,
+      writable: true,
+      value: function () {
+        const prev = this.matches(':popover-open') ? 'open' : 'closed';
+        const result = hidePopover.call(this);
+        toggle(this, 'closed', prev);
+        return result;
+      },
+    });
 
   return [
     on(document, 'click', handleClick, QUICK_EVENT),
     on(document, 'pointerdown pointerup scroll', handleScrollbar, QUICK_EVENT),
     on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
     () => {
-      HTMLElement.prototype.togglePopover = togglePopover; // Restore original methods on hot reload
-      HTMLElement.prototype.showPopover = showPopover;
-      HTMLElement.prototype.hidePopover = hidePopover;
+      for (const name of [
+        'togglePopover',
+        'showPopover',
+        'hidePopover',
+      ] as const) {
+        const descriptor = descriptors[name];
+        if (descriptor)
+          Object.defineProperty(HTMLElement.prototype, name, descriptor); // Restore original methods on hot reload
+      }
       for (const [, off] of ROOTS) off(); // Cleanup listeners on ShadowRoots on hot reload
       ROOTS.clear();
     },
