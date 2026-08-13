@@ -1,5 +1,4 @@
 {
-  "$schema": "../../schema/twin.schema.json",
   "schemaVersion": "0.1.0",
   "kind": "pattern",
   "name": "Required and optional form fields",
@@ -11,11 +10,10 @@
   "generated": {
     "fromCommit": "n/a — pattern authored from docs + component source",
     "at": "2026-08-05T20:00:00Z",
-    "generator": "pilot-manual"
+    "generator": "authored"
   },
   "links": {
-    "docs": "https://designsystemet.no/en/patterns/required-and-optional-fields",
-    "md": "./required-and-optional-fields.md"
+    "docs": "https://designsystemet.no/en/patterns/required-and-optional-fields"
   },
   "summary": {
     "provenance": "authored",
@@ -27,24 +25,24 @@
     "source": "packages/react/src/components/index.ts (export barrel) + https://designsystemet.no/en/components/docs/textfield/code",
     "value": [
       {
-        "name": "Textfield",
-        "role": "single-line input; carries its own `label` prop"
+        "role": "single-line input; carries its own `label` prop",
+        "ref": "textfield"
       },
       {
-        "name": "ToggleGroup",
-        "role": "choice between a small set of options; items are ToggleGroup.Item (exported also as ToggleGroupItem)"
+        "role": "choice between a small set of options; items are ToggleGroup.Item (exported also as ToggleGroupItem)",
+        "ref": "toggle-group"
       },
       {
-        "name": "Tag",
-        "role": "renders the visible 'Required'/'Optional' marker"
+        "role": "renders the visible 'Required'/'Optional' marker",
+        "ref": "tag"
       },
       {
-        "name": "Fieldset",
-        "role": "groups related controls and gives the group an accessible name via FieldsetLegend"
+        "role": "groups related controls and gives the group an accessible name via FieldsetLegend",
+        "ref": "fieldset"
       },
       {
-        "name": "Label",
-        "role": "programmatic label where a component does not carry one"
+        "role": "programmatic label where a component does not carry one",
+        "ref": "label"
       }
     ]
   },
@@ -89,7 +87,7 @@
     "source": "https://designsystemet.no/en/patterns/required-and-optional-fields + https://designsystemet.no/en/components/docs/toggle-group/overview",
     "value": [
       "This pattern governs MARKING, not validation. Error handling belongs to the errors pattern.",
-      "ToggleGroup is for switching between views or a small set of choices; for a form answer the docs direct you to Radio instead. It is used here because the brief asks for it.",
+      "ToggleGroup is for switching between views or a small set of choices; for a form answer the docs direct you to Radio instead.",
       "Do not invent props on ToggleGroup: the documented surface is variant, value, defaultValue, onChange, name (+ ToggleGroup.Item: value, icon)."
     ]
   }

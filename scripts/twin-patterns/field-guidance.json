@@ -1,5 +1,4 @@
 {
-  "$schema": "../../schema/twin.schema.json",
   "schemaVersion": "0.1.0",
   "kind": "pattern",
   "name": "Field guidance — placeholders, descriptions and input purpose",
@@ -11,7 +10,7 @@
   "generated": {
     "fromCommit": "n/a — pattern authored from docs",
     "at": "2026-08-12T00:00:00Z",
-    "generator": "authored (batch 3, from the 2026-08-10 blinded visual check backlog)"
+    "generator": "authored"
   },
   "links": {
     "docs": "https://designsystemet.no/en/best-practices/content-work/questions"
@@ -26,19 +25,19 @@
     "source": "https://designsystemet.no/en/components/docs/textfield/overview",
     "value": [
       {
-        "name": "Textfield",
-        "role": "carries label, description and error in one composition"
+        "role": "carries label, description and error in one composition",
+        "ref": "textfield"
       },
       {
-        "name": "Field",
-        "role": "links label, description, validation message and counter for assistive technology"
+        "role": "links label, description, validation message and counter for assistive technology",
+        "ref": "field"
       }
     ]
   },
   "a11y": {
     "provenance": "authored",
     "source": "https://designsystemet.no/en/best-practices/content-work/questions",
-    "method": "drafted from the docs pages, quote-verified 2026-08-12, human review pending (batch 3)",
+    "method": "drafted from the documentation, quote-verified; human review pending",
     "value": [
       {
         "rule": "Avoid guidance text inside the input itself (placeholders); give all relevant information before the user fills in the field",
@@ -56,7 +55,7 @@
   "composition": {
     "provenance": "authored",
     "source": "https://designsystemet.no/en/best-practices/content-work/questions",
-    "method": "drafted from the docs pages, quote-verified 2026-08-12, human review pending (batch 3)",
+    "method": "drafted from the documentation, quote-verified; human review pending",
     "value": [
       {
         "rule": "Use a description (help text) to explain difficult content — legal terms, specialist language, expected formats",

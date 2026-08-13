@@ -1,5 +1,4 @@
 {
-  "$schema": "../../schema/twin.schema.json",
   "schemaVersion": "0.1.0",
   "kind": "pattern",
   "name": "Skjemavalidering (form validation and errors)",
@@ -11,11 +10,10 @@
   "generated": {
     "fromCommit": "n/a — patterns have no code source; authored from the pattern page",
     "at": "2026-08-03T13:00:00Z",
-    "generator": "pilot-manual"
+    "generator": "authored"
   },
   "links": {
-    "docs": "https://designsystemet.no/en/patterns/errors/",
-    "md": "./skjema-validering.md"
+    "docs": "https://designsystemet.no/en/patterns/errors/"
   },
   "summary": {
     "provenance": "authored",
