@@ -90,6 +90,7 @@ function toggle(
 
   if (placement === 'none') return; // No need to position
 
+  let sized = false; // Only size once per open, so scrolling does not resize the popover
   const options = {
     strategy: 'absolute',
     placement,
@@ -105,6 +106,8 @@ function toggle(
         ? [
             size({
               apply({ availableHeight }) {
+                if (sized) return;
+                sized = true;
                 const width = `${source.offsetWidth}px`; // Use offsetWidth to include padding, matching the width of the source element
                 const maxHeight = `${Math.max(50, availableHeight - padding * 2)}px`;
 

@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.19.1
+
+### Patch Changes
+
+- Fix missing tailwind variables (opacity and shadow) in default theme that was introduced in [#5139](https://github.com/digdir/designsystemet/pull/5139) ([#5162](https://github.com/digdir/designsystemet/pull/5162))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.1
+
 ## 1.19.0
 
 ### Minor Changes
