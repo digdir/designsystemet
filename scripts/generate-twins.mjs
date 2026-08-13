@@ -16,24 +16,44 @@
  *
  *   node scripts/generate-twins.mjs [--out <dir>]   # default: ./registry
  */
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const COMPONENTS = join(ROOT, 'packages/react/src/components');
 const CSS_SRC = join(ROOT, 'packages/css/src');
-const PKG = JSON.parse(readFileSync(join(ROOT, 'packages/react/package.json'), 'utf8'));
+const PKG = JSON.parse(
+  readFileSync(join(ROOT, 'packages/react/package.json'), 'utf8'),
+);
 const OUT = join(
   ROOT,
-  process.argv.includes('--out') ? process.argv[process.argv.indexOf('--out') + 1] : 'registry',
+  process.argv.includes('--out')
+    ? process.argv[process.argv.indexOf('--out') + 1]
+    : 'registry',
 );
 
 /* Docs links carry /en/: export names and the code agents write are English. */
-const docsUrl = (slug, page) => `https://designsystemet.no/en/components/docs/${slug}/${page}`;
+const docsUrl = (slug, page) =>
+  `https://designsystemet.no/en/components/docs/${slug}/${page}`;
 
-const extracted = (source, value) => ({ provenance: 'extracted', source, value });
-const authoredStub = (source) => ({ provenance: 'authored', source, value: null });
+const extracted = (source, value) => ({
+  provenance: 'extracted',
+  source,
+  value,
+});
+const authoredStub = (source) => ({
+  provenance: 'authored',
+  source,
+  value: null,
+});
 
 /**
  * The exported component name and its JSDoc, matched as one unit: the comment
@@ -43,14 +63,24 @@ const authoredStub = (source) => ({ provenance: 'authored', source, value: null 
  * a documented export is the component's public face.
  */
 function exportedComponent(src) {
-  const m = src.match(/\/\*\*((?:(?!\*\/)[\s\S])*?)\*\/\s*export const ([A-Z]\w+)/);
+  const m = src.match(
+    /\/\*\*((?:(?!\*\/)[\s\S])*?)\*\/\s*export const ([A-Z]\w+)/,
+  );
   if (!m) return null;
   const lines = m[1].split('\n').map((l) => l.replace(/^\s*\*\s?/, ''));
   const exampleAt = lines.findIndex((l) => l.trim().startsWith('@example'));
   const description =
-    (exampleAt === -1 ? lines : lines.slice(0, exampleAt)).join(' ').replace(/\s+/g, ' ').trim() ||
-    null;
-  const example = exampleAt === -1 ? null : lines.slice(exampleAt + 1).join('\n').trim() || null;
+    (exampleAt === -1 ? lines : lines.slice(0, exampleAt))
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .trim() || null;
+  const example =
+    exampleAt === -1
+      ? null
+      : lines
+          .slice(exampleAt + 1)
+          .join('\n')
+          .trim() || null;
   return { name: m[2], description, example };
 }
 
@@ -63,7 +93,9 @@ function dsClass(src) {
 function tokens(slug) {
   const file = join(CSS_SRC, `${slug}.css`);
   if (!existsSync(file)) return [];
-  return [...new Set(readFileSync(file, 'utf8').match(/--dsc?-[a-z0-9-]+/g) ?? [])].sort();
+  return [
+    ...new Set(readFileSync(file, 'utf8').match(/--dsc?-[a-z0-9-]+/g) ?? []),
+  ].sort();
 }
 
 /** data-* attributes the render emits, so tooling can recognise them in the DOM. */
@@ -79,7 +111,8 @@ for (const dir of readdirSync(COMPONENTS, { withFileTypes: true })) {
   if (!dir.isDirectory()) continue;
   const slug = dir.name;
   for (const file of readdirSync(join(COMPONENTS, slug))) {
-    if (!file.endsWith('.tsx') || /\.(stories|test|chromatic)\.tsx$/.test(file)) continue;
+    if (!file.endsWith('.tsx') || /\.(stories|test|chromatic)\.tsx$/.test(file))
+      continue;
     const src = readFileSync(join(COMPONENTS, slug, file), 'utf8');
     const component = exportedComponent(src);
     if (!component) continue;
@@ -98,7 +131,10 @@ for (const dir of readdirSync(COMPONENTS, { withFileTypes: true })) {
       importName: extracted(sourcePath, name),
       summary: extracted(`${sourcePath} (JSDoc)`, description),
       example: extracted(`${sourcePath} (JSDoc @example)`, example),
-      emitted: extracted(sourcePath, { class: dsClass(src), dataAttributes: emittedAttrs(src) }),
+      emitted: extracted(sourcePath, {
+        class: dsClass(src),
+        dataAttributes: emittedAttrs(src),
+      }),
       tokens: extracted(`packages/css/src/${slug}.css`, tokens(slug)),
 
       a11y: authoredStub(docsUrl(slug, 'overview')),
