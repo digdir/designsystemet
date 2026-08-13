@@ -26,7 +26,7 @@ const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]
 
 type PreviewToken = { variable: string; value: string };
 
-export const formatTheme = async (themeConfig: Theme) => {
+const formatTheme = async (themeConfig: Theme) => {
   const colorNames = toColorNames(themeConfig.colors);
   const themeNames = [themeConfig.name];
 

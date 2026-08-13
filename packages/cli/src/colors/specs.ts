@@ -1,16 +1,13 @@
 import * as R from 'ramda';
-import type { ColorMetadataByName, ColorNumber, CssColor, GlobalColors } from './types.ts';
+import type { ColorNumber, SemanticColorSpec } from './types.ts';
+import { semanticColorMap } from './types.ts';
 
-export const baseColors: Record<GlobalColors, CssColor> = {
-  info: '#0A71C0',
-  success: '#068718',
-  warning: '#EA9B1B',
-  danger: '#C01B1B',
-};
-
-export const dsLinkColor = '#663299';
-
-export const colorMetadata: ColorMetadataByName = {
+/**
+ * Specification for a semantic color scale.
+ *
+ * Each step in the scale maps to a semantic color and corresponding specification for generating the color at that step.
+ */
+export const semanticColorSpec: SemanticColorSpec = {
   'background-default': {
     number: 1,
     name: 'background-default',
@@ -253,12 +250,10 @@ export const colorMetadata: ColorMetadataByName = {
   },
 };
 
-const colorMetadataByNumber = R.indexBy((metadata) => metadata.number, Object.values(colorMetadata));
+const semanticColorByNumber = R.indexBy((metadata) => metadata.number, Object.values(semanticColorSpec));
 
-export const getColorMetadataByNumber = (number: ColorNumber) => {
-  return colorMetadataByNumber[number];
+export const getSemanticColorByNumber = (number: ColorNumber) => {
+  return semanticColorByNumber[number];
 };
 
-export const colorNames = Object.keys(colorMetadata) as Array<keyof typeof colorMetadata>;
-
-export const baseColorNames = Object.keys(baseColors) as Array<keyof typeof baseColors>;
+export const semanticColorNames = R.keys(semanticColorMap);

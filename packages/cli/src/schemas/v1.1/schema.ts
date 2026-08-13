@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { baseColorNames, colorNames } from '../../colors/colorMetadata.ts';
 import { convertToHex } from '../../colors/index.ts';
-import { defaultBorderRadius, defaultFontFamily } from '../defaults.ts';
+import { semanticColorNames } from '../../colors/specs.ts';
+import { defaultBorderRadius, defaultFontFamily, severityColorNames } from '../defaults.ts';
 
 const hexPatterns = [
   // Hex colors: #000, #0000, #000000, #00000000
@@ -11,7 +11,7 @@ const hexPatterns = [
   `#[0-9a-fA-F]{8}`,
 ];
 
-export const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
+const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
 
 const colorSchema = z
   .string()
@@ -27,7 +27,7 @@ const colorModeOverrideSchema = z
   .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
 
 const colorWeightOverrideSchema = z
-  .partialRecord(z.enum([...colorNames]), colorModeOverrideSchema)
+  .partialRecord(z.enum([...semanticColorNames]), colorModeOverrideSchema)
   .describe('The name of the color to add overrides for, e.g. "accent"');
 
 const semanticColorOverrideSchema = z
@@ -35,7 +35,10 @@ const semanticColorOverrideSchema = z
   .describe('An object with color names as keys');
 
 const severityColorOverrideSchema = z
-  .partialRecord(z.enum(baseColorNames), colorSchema.describe('A hex color, which is used for creating a color scale'))
+  .partialRecord(
+    z.enum(severityColorNames),
+    colorSchema.describe('A hex color, which is used for creating a color scale'),
+  )
   .optional()
   .describe('An object with severity color names as keys');
 
@@ -133,7 +136,7 @@ const themesSchema = z
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
   });
 
-export const commonConfig = z.object({
+const commonConfig = z.object({
   clean: z
     .boolean()
     .default(false)
@@ -155,8 +158,6 @@ const _configFileCreateSchema = z
  * This defines the structure of the final configuration file
  */
 export const configFileCreateSchema = _configFileCreateSchema.extend(commonConfig.shape);
-export type CommonConfigSchema = z.infer<typeof commonConfig>;
-export type BuildConfigSchema = z.infer<typeof commonConfig>;
 export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
 /** The pre-validation shape of the config file, i.e. what users write: defaulted fields are optional. */
 export type CreateConfigSchemaInput = z.input<typeof configFileCreateSchema>;
