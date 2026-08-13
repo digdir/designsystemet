@@ -119,13 +119,6 @@ const colorSchemeDefaults: Record<ColorScheme, ThemeObject_> = {
     $figmaCollectionId: 'VariableCollectionId:34811:5472',
     $figmaModeId: '34811:1',
   },
-  contrast: {
-    name: 'Contrast',
-    selectedTokenSets: {},
-    id: '9ebd8aed52afbffc17e2666e8b4653a53498b123',
-    $figmaCollectionId: 'VariableCollectionId:34811:5472',
-    $figmaModeId: '34811:2',
-  },
 };
 
 function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[]): ThemeObject_[] {

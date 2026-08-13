@@ -1,4 +1,4 @@
-import { colorNames } from '@digdir/designsystemet/color';
+import { semanticColorNames } from '@digdir/designsystemet/color';
 import { Table, type TableProps } from '@digdir/designsystemet-react';
 
 export type ColorScaleTableProps = TableProps;
@@ -12,7 +12,7 @@ export const ColorScaleTable = ({ ...rest }: ColorScaleTableProps) => {
         </Table.Row>
       </Table.Head>
       <Table.Body>
-        {colorNames.map((colorName) => (
+        {semanticColorNames.map((colorName) => (
           <Table.Row key={colorName}>
             <Table.Cell>{colorName}</Table.Cell>
           </Table.Row>

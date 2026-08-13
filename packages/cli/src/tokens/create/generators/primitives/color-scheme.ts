@@ -1,7 +1,7 @@
 import * as R from 'ramda';
-import { baseColors, colorMetadata, dsLinkColor } from '../../../../colors/colorMetadata.ts';
-import { generateColorScale } from '../../../../colors/index.ts';
-import type { Color, ColorScheme, CssColor } from '../../../../colors/types.ts';
+import type { Color, ColorScheme, CssColor } from '../../../../colors/index.ts';
+import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
+import { severityColors, visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
@@ -36,7 +36,7 @@ export const generateColorScheme = (
 
     // Map semantic token names to color scale positions
     Object.entries(colorOverrides).forEach(([semanticTokenName, modeOverrides]) => {
-      const position = colorMetadata[semanticTokenName as keyof typeof colorMetadata].number;
+      const position = semanticColorSpec[semanticTokenName as keyof typeof semanticColorSpec].number;
       if (position) {
         let overrideValue: string | undefined;
 
@@ -64,18 +64,18 @@ export const generateColorScheme = (
     return generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName));
   }, colors);
 
-  const baseColorsWithOverrides = {
-    ...baseColors,
+  const severityColorsWithOverrides = {
+    ...severityColors,
     ...overrides?.severity,
   };
 
-  const severityColors = R.mapObjIndexed(
+  const severityColorScales = R.mapObjIndexed(
     (color, colorName) => generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName)),
-    baseColorsWithOverrides,
+    severityColorsWithOverrides,
   );
 
-  const linkColor = generateColor(generateColorScale(dsLinkColor, colorScheme));
-  const defaultLinkVisited = linkColor[12];
+  const visitedLinkColorScale = generateColor(generateColorScale(visitedLinkColor, colorScheme)); // generate the visited link color scale for light and dark mode
+  const defaultLinkVisited = visitedLinkColorScale[12];
   const linkOverride: Token | undefined = overrides?.linkVisited?.[colorScheme as 'light' | 'dark']
     ? ({ $type: 'color', $value: overrides.linkVisited[colorScheme as 'light' | 'dark'] } as Token)
     : undefined;
@@ -90,7 +90,7 @@ export const generateColorScheme = (
   return {
     [themeName]: {
       ...colorScales,
-      ...severityColors,
+      ...severityColorScales,
       link: {
         visited: linkOverride || defaultLinkVisited,
       },
