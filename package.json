@@ -40,16 +40,16 @@
     "publish-packages": "pnpm build && changeset publish",
     "chromatic": "pnpm --filter @web/storybook chromatic",
     "update:theme-digdir": "pnpm --filter @internal/digdir update:theme-digdir",
-    "update:theme": "designsystemet",
+    "update:theme": "pnpm node packages/cli/bin/designsystemet.ts tokens create --config designsystemet.config.json && pnpm --filter @digdir/designsystemet-css build:theme",
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.6",
+    "@biomejs/biome": "2.5.7",
     "@changesets/cli": "2.31.1",
     "@changesets/get-github-info": "^0.8.0",
     "@changesets/types": "^6.1.0",
     "@digdir/designsystemet": "workspace:^",
-    "@testing-library/jest-dom": "7.0.0",
+    "@testing-library/jest-dom": "7.0.1",
     "@testing-library/user-event": "14.6.1",
     "@types/node": "24.13.3",
     "@vitejs/plugin-react": "6.0.5",
@@ -60,7 +60,7 @@
     "jsdom": "^30.0.1",
     "typescript": "6.0.3",
     "typescript-plugin-css-modules": "5.2.0",
-    "vite": "8.2.0",
+    "vite": "8.2.1",
     "vitest": "4.1.10"
   },
   "dependencies": {}

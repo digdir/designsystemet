@@ -1,10 +1,10 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.19.0",
+  "version": "1.19.1",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=24.19.0"
+    "node": ">=22.0.0"
   },
   "repository": {
     "type": "git",
@@ -61,7 +61,7 @@
     "test:generate-config-from-tokens": "pnpm run designsystemet generate-config-from-tokens -d ../../design-tokens --dry",
     "test": "node -v && pnpm test:tokens-create-and-build-options && pnpm test:generate-config-from-tokens && pnpm test:tokens-create-and-build-config",
     "update:preview-tokens": "pnpm node ./src/scripts/update-preview-tokens.ts",
-    "verify": "pnpm test && pnpm update:template && pnpm --filter @internal/digdir update:theme-digdir"
+    "verify": "pnpm test && pnpm --filter @internal/digdir update:theme-digdir"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",
@@ -77,9 +77,9 @@
     "jsonc-parser": "^3.3.1",
     "object-hash": "^3.0.0",
     "picocolors": "^1.1.1",
-    "postcss": "^8.5.25",
+    "postcss": "^8.5.26",
     "ramda": "^0.32.0",
-    "style-dictionary": "^5.5.0",
+    "style-dictionary": "^5.5.1",
     "zod": "^4.4.3",
     "zod-validation-error": "^5.0.0"
   },
