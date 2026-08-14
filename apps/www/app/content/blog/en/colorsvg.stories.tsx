@@ -68,7 +68,7 @@ export const WithMultiColorUse = () => {
   return (
     <svg height='3rem' width='3rem'>
       <title>Multi coloured graphic with four colours.</title>
-      <use href='/img/component-graphic.svg#component-icon'></use>
+      <use href='/img/blog/colorsvg/component-graphic.svg#component-icon'></use>
     </svg>
   );
 };

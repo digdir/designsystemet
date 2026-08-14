@@ -154,8 +154,6 @@ The SVG file used in the example above looks like this:
 
 ```SVG
 <svg 
-  width='24' 
-  height='24' 
   fill='none' 
   xmlns='http://www.w3.org/2000/svg'
 >
@@ -215,7 +213,7 @@ If your SVG does not behave as expected, these are the most common causes to inv
 
 - **SVG has the wrong size**
   - Check that a `viewBox` attribute is defined
-  - Check that `width` and `height` are defined on the `<svg>` element or set through CSS
+  - Check that `width` and `height` are defined on the HTML element (`use` or if inline `svg`) or set through CSS
 
 - **Colours do not change**
   - Check that the SVG is embedded inline in the DOM and not loaded through `<img>`

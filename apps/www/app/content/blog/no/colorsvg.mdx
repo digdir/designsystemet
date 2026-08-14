@@ -148,8 +148,6 @@ For grafikk med flere farger kan du styre fargene direkte i fill og stroke på h
 Koden i SVG-fila i eksempelet over ser slik ut:
 ```SVG
 <svg 
-  width='24' 
-  height='24' 
   fill='none' 
   xmlns='http://www.w3.org/2000/svg'
 >
@@ -211,7 +209,7 @@ Hvis SVG ikke oppfører seg som forventet, er dette de vanligste årsakene:
 
 - **SVG får feil størrelse**
   - Sjekk at `viewBox` er satt
-  - Sjekk at `width` og `height` er definert på `<svg>` eller via CSS
+  - Sjekk at `width` og `height` er definert på HTML-elementet (`use`eller dersom inline `svg`) eller via CSS
 
 - **Farger endrer seg ikke**
   - Sjekk at SVG ligger inline i DOM (ikke via `<img>`)
