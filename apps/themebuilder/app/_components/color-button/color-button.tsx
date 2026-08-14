@@ -1,4 +1,4 @@
-import type { ColorNames } from '@digdir/designsystemet';
+import type { SemanticColorNames } from '@digdir/designsystemet';
 import { Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import * as R from 'ramda';
@@ -6,7 +6,7 @@ import { forwardRef } from 'react';
 import classes from './color-button.module.css';
 
 type ColorButtonProps = {
-  colorName: ColorNames;
+  colorName: SemanticColorNames;
   color: string;
   featured?: boolean;
 } & Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>;

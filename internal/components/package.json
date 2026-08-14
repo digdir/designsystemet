@@ -19,6 +19,7 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-types": "workspace:^",
+    "@digdir/designsystemet": "workspace:^",
     "@radix-ui/react-slot": "1.3.3",
     "@navikt/aksel-icons": "8.16.1",
     "clsx": "2.1.1",

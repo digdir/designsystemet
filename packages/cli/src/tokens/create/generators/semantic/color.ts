@@ -1,4 +1,4 @@
-import { type ColorNames, semanticColorNames } from '../../../../colors/types.ts';
+import { type SemanticColorNames, semanticColorNames } from '../../../../colors/index.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
 export const generateColorTokens = (colorNames: string[], _themeName: string): Record<string, TokenSet> => {
@@ -12,8 +12,8 @@ export const generateColorTokens = (colorNames: string[], _themeName: string): R
   return colorTokens;
 };
 
-const generateSemanticColorScaleTokens = (colorName: string): Record<ColorNames, Token> => {
-  const colorScale = {} as Record<ColorNames, Token>;
+const generateSemanticColorScaleTokens = (colorName: string): Record<SemanticColorNames, Token> => {
+  const colorScale = {} as Record<SemanticColorNames, Token>;
 
   for (const semanticColorName of semanticColorNames) {
     colorScale[semanticColorName] = {
