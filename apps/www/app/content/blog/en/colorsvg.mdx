@@ -135,6 +135,15 @@ Then use a design token to define the colour:
 }
 ```
 
+#### Single-colour Graphics Controlled by `data-color` and `data-color-scheme`
+
+The same graphic may need to be reused in different contexts. At the same time, it should follow the colour and colour mode defined for the section of the page where it is displayed.
+
+In these situations, you can use generic design tokens that inherit `data-color` and `data-color-scheme` values from the nearest parent element.
+
+In the examples below, the SVG itself only uses the `--ds-color-base-default` token, while the surrounding cards define `data-color` and `data-color-scheme` values that control the graphic's colour and colour mode. This allows the same SVG graphic to be reused in different contexts while automatically adapting to the colour settings of the area in which it is displayed.
+<Story story="WithDataColor" truncateSvg={false} />
+
 ### Multi-colour graphics
 Multi-colour graphics are commonly used for brand assets, illustrations, and other visual elements that rely on more than one colour.
 
