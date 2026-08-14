@@ -20,9 +20,12 @@ declare global {
   }
 }
 
+const ATTR_FIELD = 'data-field';
+const ATTR_LIMIT = 'data-limit';
 const ATTR_INVALID = 'aria-invalid';
 const ATTR_DESCRIBEDBY = 'aria-describedby';
 const ATTR_INDETERMINATE = 'data-indeterminate';
+const SELECTOR_VALIDATION = `:scope > [${ATTR_FIELD}="validation"]`;
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
 const WARNING_MULTIPLE_INPUTS = `Fields should only have one input element. Use <fieldset> to group multiple fields:`;
 
@@ -43,12 +46,12 @@ const handleFieldMutation = (field: DSFieldElement) => {
         warn(WARNING_MULTIPLE_INPUTS, field);
       else field._input = el; // Only register if visible input
     } else {
-      const type = el.getAttribute('data-field'); // Using getAttribute instead of attr for best performance
+      const type = el.getAttribute(ATTR_FIELD); // Using getAttribute instead of attr for best performance
       if (type === 'counter') field._counter = el;
       if (type === 'validation') {
         nextDescs.unshift(useId(el));
         hasValidation = true;
-        invalid = invalid || isInvalid(el);
+        invalid = invalid || isInvalidColor(el);
       } else if (type) nextDescs.push(useId(el)); // Adds both counter and descriptions
     }
   }
@@ -60,12 +63,12 @@ const handleFieldMutation = (field: DSFieldElement) => {
 
   const fieldsetValidation = field
     .closest('fieldset')
-    ?.querySelector<HTMLElement>(':scope > [data-field="validation"]');
+    ?.querySelector<HTMLElement>(SELECTOR_VALIDATION);
 
   // Connect fieldset validation to inputs
   if (fieldsetValidation && !fieldsetValidation?.hidden) {
     hasValidation = true;
-    invalid = invalid || isInvalid(fieldsetValidation);
+    invalid = invalid || isInvalidColor(fieldsetValidation);
     nextDescs.unshift(useId(fieldsetValidation));
   }
 
@@ -87,7 +90,7 @@ const handleFieldMutation = (field: DSFieldElement) => {
   // Only manage aria-invalid when field has validation elements, and aria-invalid does not already exist
   const hadValidation = field._validation;
   if (hasValidation && !hadValidation && !input.hasAttribute(ATTR_INVALID)) {
-    attr(input, ATTR_INVALID, 'true');
+    attr(input, ATTR_INVALID, invalid ? 'true' : null);
     field._validation = true;
   } else if (!hasValidation && hadValidation) {
     attr(input, ATTR_INVALID, null); // Remove aria-invalid
@@ -107,7 +110,10 @@ const debouncedCounterLiveRegion = debounce((input: Element, text: string) => {
   if (document.activeElement === input) announce(text); // Only announce if input is still focused
 }, COUNTER_DEBOUNCE);
 
-const isInvalid = (el: Element) => el.getAttribute('data-color') !== 'success';
+const isInvalidColor = (el: Element) => {
+  const color = el.getAttribute('data-color');
+  return !color || color === 'danger';
+};
 const isInputLike = (el: unknown): el is HTMLInputElement =>
   el instanceof HTMLElement &&
   'validity' in el && // Adds support for custom elements implemeted with attachInternals()
@@ -127,8 +133,8 @@ export class DSFieldElement extends DSElement {
     this._unevents = on(this, 'input', this, QUICK_EVENT);
     this._unmutate = onMutation(this, () => handleFieldMutation(this), {
       attributeFilter: [
-        'data-field',
-        'data-limit',
+        ATTR_FIELD,
+        ATTR_LIMIT,
         'hidden', // Needed to check validation visibility
         'id', // Needed to sync label "for" when ID of input/selec/textarea changes
         'value', // Needed to detect changes in controlled React inputs as they do not trigger input events
@@ -143,7 +149,7 @@ export class DSFieldElement extends DSElement {
     const { _counter, _input } = this;
 
     if (_counter?.isConnected && _input) {
-      const limit = Number(attr(_counter, 'data-limit')) || 0;
+      const limit = Number(attr(_counter, ATTR_LIMIT)) || 0;
       const count = limit - _input.value.length;
       const state = count < 0 ? 'over' : 'under';
       const label = (attrOrCSS(_counter, `data-${state}`) || TEXTS[state]) // Browser translation tools will not pick up dynamic text anyway, so no need to use aria-labelledby here
