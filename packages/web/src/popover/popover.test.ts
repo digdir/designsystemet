@@ -245,6 +245,7 @@ describe('popover overscroll sizing', () => {
     trigger.click();
     await tick();
 
+    await vi.waitFor(() => expect(popover.style.maxHeight).toMatch(/px$/));
     const sizeAtOpen = popover.style.maxHeight;
     expect(sizeAtOpen).toMatch(/px$/);
 
@@ -266,6 +267,7 @@ describe('popover overscroll sizing', () => {
 
     trigger.click();
     await tick();
+    await vi.waitFor(() => expect(popover.style.maxHeight).toMatch(/px$/));
     const sizeAtFirstOpen = popover.style.maxHeight;
 
     trigger.click(); // Close
@@ -274,8 +276,10 @@ describe('popover overscroll sizing', () => {
     trigger.click();
     await tick();
 
+    await vi.waitFor(() =>
+      expect(popover.style.maxHeight).not.toBe(sizeAtFirstOpen),
+    );
     expect(popover.style.maxHeight).toMatch(/px$/);
-    expect(popover.style.maxHeight).not.toBe(sizeAtFirstOpen);
   });
 });
 
