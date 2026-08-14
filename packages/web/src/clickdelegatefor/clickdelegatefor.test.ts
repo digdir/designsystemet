@@ -25,6 +25,53 @@ describe('data-clickdelegatefor', () => {
     targetSpy.mockRestore();
   });
 
+  it('should only activate an input once when clicking its label', () => {
+    document.body.innerHTML = `
+      <ds-field data-clickdelegatefor="target">
+        <input id="target" type="checkbox">
+        <label for="target">
+          <span>Label text</span>
+        </label>
+      </ds-field>
+    `;
+
+    const target = document.getElementById('target') as HTMLInputElement;
+    const label = document.querySelector('label') as HTMLLabelElement;
+    const targetSpy = vi.fn();
+    target.addEventListener('click', targetSpy);
+
+    label.click();
+
+    expect(targetSpy).toHaveBeenCalledTimes(1);
+    expect(target.checked).toBe(true);
+
+    target.removeEventListener('click', targetSpy);
+  });
+
+  it('should not activate an input when clicking a button inside its label', () => {
+    document.body.innerHTML = `
+      <ds-field data-clickdelegatefor="target">
+        <input id="target" type="checkbox">
+        <label for="target">
+          <span>Label text</span>
+          <button type="button">Help text</button>
+        </label>
+      </ds-field>
+    `;
+
+    const target = document.getElementById('target') as HTMLInputElement;
+    const button = document.querySelector('button') as HTMLButtonElement;
+    const targetSpy = vi.fn();
+    target.addEventListener('click', targetSpy);
+
+    button.click();
+
+    expect(targetSpy).not.toHaveBeenCalled();
+    expect(target.checked).toBe(false);
+
+    target.removeEventListener('click', targetSpy);
+  });
+
   it('should ignore interactive elements inside the delegate', () => {
     document.body.innerHTML = `
         <div data-clickdelegatefor="target">

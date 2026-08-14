@@ -28,7 +28,16 @@ const handleClickDelegateFor = (event: MouseEvent) => {
   const target = getComposedTarget(event);
   const delegateTarget = event.button < 2 && getDelegateTarget(event); // Only accept left or middle clicks
 
-  if (!delegateTarget || delegateTarget.contains(target)) return; // Only proxy event if delegated target isn't part of the original target
+  if (
+    !delegateTarget ||
+    delegateTarget.contains(target) ||
+    event
+      .composedPath()
+      .some(
+        (el) => el instanceof HTMLLabelElement && el.control === delegateTarget,
+      )
+  )
+    return; // Only proxy event if delegated target isn't part of the original target or is activated by a label
   if (isNewTab && delegateTarget instanceof HTMLAnchorElement)
     return window.open(delegateTarget.href, undefined, delegateTarget.rel); // If middle click or cmd/ctrl click on link, open in new tab
   event.stopImmediatePropagation(); // We'll trigger a new click event anyway, so prevent actions on this one
