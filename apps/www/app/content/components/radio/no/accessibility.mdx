@@ -7,7 +7,7 @@ Legend, hjelpetekst og feilmeldinger skal være koblet til gruppen slik at de bl
 Du kan bruke [Fieldset](/no/components/docs/fieldset/overview) for å koble sammen legend, hjelpetekst og feilmeldinger.
 
 <span data-size="sm">
-	WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet.no)](https://www.uutilsynet.no/veiledning/131-informasjon-og-relasjoner/1234)
+	WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/veiledning/131-informasjon-og-relasjoner/1234)
 </span>
 
 <Divider/>
@@ -18,7 +18,7 @@ Du kan bruke [Fieldset](/no/components/docs/fieldset/overview) for å koble samm
 Det tilgjengelige navnet skal inneholde den synlige teksten som beskriver feltet. Dette gjør at brukere av talegjenkjenning og skjermlesere kan referere til feltet med samme navn som vises på skjermen.
 
 <span data-size="sm">
-	WCAG: [2.5.3 Ledetekst i navn (uutilsynet.no)](https://www.uutilsynet.no/veiledning/253-ledetekst-i-navn/1256)
+	WCAG: [2.5.3 Ledetekst i navn (uutilsynet)](https://www.uutilsynet.no/veiledning/253-ledetekst-i-navn/1256)
 </span>
 
 <Divider/>
@@ -29,7 +29,7 @@ Det tilgjengelige navnet skal inneholde den synlige teksten som beskriver feltet
 Brukeren skal enkelt kunne forstå hvilke felt som må fylles ut. Følg [mønsteret for obligatoriske og valgfrie skjemafelt](/no/patterns/required-and-optional-fields)
 
 <span data-size="sm">
-	WCAG: [3.3.2 Ledetekster eller instruksjoner (uutilsynet.no)](https://www.uutilsynet.no/veiledning/332-ledetekster-eller-instruksjoner/1263)
+	WCAG: [3.3.2 Ledetekster eller instruksjoner (uutilsynet)](https://www.uutilsynet.no/veiledning/332-ledetekster-eller-instruksjoner/1263)
 </span>
 
 <Divider/>
@@ -42,14 +42,18 @@ Feilmeldingen skal gjøre det klart hvilket felt som inneholder en feil, hva som
 Se [mønsteret for brukerutløste feilmeldinger](/no/patterns/errors) for anbefalinger om når og hvordan feilmeldinger bør vises.
 
 <span data-size="sm">
-	WCAG: [3.3.1 Identifikasjon av feil (uutilsynet.no)](https://www.uutilsynet.no/veiledning/331-identifikasjon-av-feil/1262) og [3.3.3 Forslag ved feil (uutilsynet.no)](https://www.uutilsynet.no/veiledning/333-forslag-ved-feil/1264)
+	WCAG: [3.3.1 Identifikasjon av feil (uutilsynet)](https://www.uutilsynet.no/veiledning/331-identifikasjon-av-feil/1262) og [3.3.3 Forslag ved feil (uutilsynet)](https://www.uutilsynet.no/veiledning/333-forslag-ved-feil/1264)
 </span>
 
-## Tastaturnavigasjon
+<Divider/>
+## Test med tastatur
 Merk at vi bruker piltastene til å velge alternativer i `Radio`-komponenten, ikke Tab-tasten.
 
-- <kbd data-icon>↑</kbd> eller <kbd data-icon>←</kbd> går til forrige valg
-- <kbd data-icon>↓</kbd> eller <kbd data-icon>→</kbd> går til neste valg
-- <kbd>Space</kbd> går til det første alternativet i en gruppe med
-  radioknapper, når gruppa ikke har et forhåndsvalgt alternativ.
-- <kbd>Tab</kbd> går til hele gruppa med alternativer.
+**Sjekk at du kan**
+
+- nå radiogruppens første radio med <kbd>Tab</kbd>
+- se hvilket valg som er valgt når fokus kommer inn i gruppen
+- velge alternativet hvor fokus er, med <kbd>Mellomrom</kbd>
+- bruke <kbd data-icon>↑</kbd> eller <kbd data-icon>←</kbd> (piltastene opp og venstre) går til forrige valg
+- bruke <kbd data-icon>↓</kbd> eller <kbd data-icon>→</kbd> (piltastene ned og høyre) går til neste valg
+- nå ut av gruppen igjen med <kbd>Tab</kbd>

@@ -7,7 +7,7 @@ Screen readers must present the label, help text, and error messages when the fi
 You can use [Field](/en/components/docs/field/overview) to connect the label, description, and error messages.
 
 <span data-size="sm">
-	WCAG: [1.3.1 Info and relationships (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships)
+	WCAG: [1.3.1 Info and relationships (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships)
 </span>
 
 <Divider/>
@@ -18,7 +18,7 @@ You can use [Field](/en/components/docs/field/overview) to connect the label, de
 The accessible name must contain the visible text that describes the field. This allows users of speech recognition and screen readers to refer to the field using the same name shown on screen.
 
 <span data-size="sm">
-	WCAG: [2.5.3 Label in Name (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html)
+	WCAG: [2.5.3 Label in Name (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html)
 </span>
 
 <Divider/>
@@ -29,7 +29,7 @@ The accessible name must contain the visible text that describes the field. This
 Users must easily understand which fields must be filled in. Follow the [pattern for required and optional form fields](/en/patterns/required-and-optional-fields).
 
 <span data-size="sm">
-	WCAG: [3.3.2 Labels or Instructions (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
+	WCAG: [3.3.2 Labels or Instructions (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
 </span>
 
 <Divider/>
@@ -42,12 +42,21 @@ The error message must make it clear which field contains an error, what is wron
 See the [pattern for user-triggered error messages](/en/patterns/errors) for recommendations on when and how error messages should be shown.
 
 <span data-size="sm">
-	WCAG: [3.3.1 Error Identification (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html) and [3.3.3 Error Suggestion (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion.html)
+	WCAG: [3.3.1 Error Identification (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html) and [3.3.3 Error Suggestion (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion.html)
 </span>
+
+<Divider/>
 
 ## role="switch"
 
 We use `role="switch"` to inform screen readers that this is a toggle switch. This allows screen readers to tell the user that it is a switch and that it can be turned on and off. We do not add `aria-checked` because it is not necessary when the switch is an input with `type="checkbox"`.
 
-## Keyboard navigation
-* <kbd>Space</kbd> toggles the switch on and off
+<Divider/>
+
+## Test with a Keyboard
+
+**Verify that you can**
+
+- reach the switch using <kbd>Tab</kbd>
+- turn the switch on and off using both <kbd>Space</kbd> and <kbd>Enter</kbd>
+- move to the next element using <kbd>Tab</kbd>

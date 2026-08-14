@@ -7,7 +7,7 @@ Screen readers must present the label, help text, and error messages when the fi
 You can use [Field](/en/components/docs/field/overview) to connect the label, description, and error messages.
 
 <span data-size="sm">
-	WCAG: [1.3.1 Info and relationships (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships)
+	WCAG: [1.3.1 Info and relationships (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships)
 </span>
 
 <Divider/>
@@ -18,7 +18,7 @@ You can use [Field](/en/components/docs/field/overview) to connect the label, de
 The accessible name must contain the visible text that describes the field. This allows users of speech recognition and screen readers to refer to the field using the same name shown on screen.
 
 <span data-size="sm">
-	WCAG: [2.5.3 Label in Name (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html)
+	WCAG: [2.5.3 Label in Name (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html)
 </span>
 
 <Divider/>
@@ -29,7 +29,7 @@ The accessible name must contain the visible text that describes the field. This
 Users must easily understand which fields must be filled in. Follow the [pattern for required and optional form fields](/en/patterns/required-and-optional-fields).
 
 <span data-size="sm">
-	WCAG: [3.3.2 Labels or Instructions (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
+	WCAG: [3.3.2 Labels or Instructions (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
 </span>
 
 <Divider/>
@@ -42,7 +42,7 @@ The error message must make it clear which field contains an error, what is wron
 See the [pattern for user-triggered error messages](/en/patterns/errors) for recommendations on when and how error messages should be shown.
 
 <span data-size="sm">
-	WCAG: [3.3.1 Error Identification (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html) and [3.3.3 Error Suggestion (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion.html)
+	WCAG: [3.3.1 Error Identification (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html) and [3.3.3 Error Suggestion (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion.html)
 </span>
 
 <Divider/>
@@ -53,7 +53,7 @@ See the [pattern for user-triggered error messages](/en/patterns/errors) for rec
 After users have made a choice, they must still be able to understand the context the choice belongs to. Give the field a clear label, for example “Select country”, and use a description for additional guidance if needed.
 
 <span data-size="sm">
-	WCAG: [3.3.2 Labels or Instructions (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
+	WCAG: [3.3.2 Labels or Instructions (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
 </span>
 
 <Divider/>
@@ -64,17 +64,25 @@ After users have made a choice, they must still be able to understand the contex
 The correct autocomplete makes it easier to fill in forms and is required for fields that concern the user’s own personal information. See [Purpose of input](/en/components/docs/textfield/overview#purpose-of-input) for when and how to use it.
 
 <span data-size="sm">
-	WCAG: [1.3.5 Identify Input Purpose (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html)
+	WCAG: [1.3.5 Identify Input Purpose (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html)
 </span>
 
 ## Do not use a disabled state
 Avoid using the disabled (`disabled`) state. Consider instead whether you need to show the field at all, or whether you can present the information as plain text or use `readOnly`.
 
-## Keyboard navigation
-- <kbd>Space</kbd> opens the list (also selects an option on Mac)
-- <kbd>Enter</kbd> selects an option in the list (also opens the list on Windows)
-- <kbd data-icon>↓</kbd> highlights the next option in the list
-- <kbd data-icon>↑</kbd> highlights the previous option in the list
-- <kbd>Home</kbd> highlights the first option in the list
-- <kbd>End</kbd> highlights the last option in the list
-- Other letters/characters jump to the first option that begins with that letter or character.
+<Divider/>
+
+## Test with a Keyboard
+
+**Verify that you can**
+
+- reach the select using <kbd>Tab</kbd>
+- open the list using <kbd>Space</kbd> on macOS
+- open the list using <kbd>Enter</kbd> on Windows
+- navigate between and highlight options using <kbd data-icon>↓</kbd> and <kbd data-icon>↑</kbd>
+- select an option using either <kbd>Enter</kbd> or <kbd>Space</kbd>
+- move to the first option in the list using <kbd>Home</kbd>
+- move to the last option in the list using <kbd>End</kbd>
+- jump to the first option that starts with a typed character
+- close the list using <kbd>Escape</kbd>
+
