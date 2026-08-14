@@ -1,7 +1,8 @@
 import { z } from 'zod';
-import { baseColorNames, colorNames } from '../../colors/colorMetadata.ts';
 import { convertToHex } from '../../colors/index.ts';
-import { RESERVED_COLORS } from '../../colors/theme.ts';
+import { RESERVED_COLORS } from '../../colors/scale.ts';
+import { semanticColorNames } from '../../colors/specs.ts';
+import { severityColorNames } from '../defaults.ts';
 
 const hexPatterns = [
   // Hex colors: #000, #0000, #000000, #00000000
@@ -45,7 +46,7 @@ const colorModeOverrideSchema = z
   .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
 
 const colorWeightOverrideSchema = z
-  .partialRecord(z.enum([...colorNames]), colorModeOverrideSchema)
+  .partialRecord(z.enum([...semanticColorNames]), colorModeOverrideSchema)
   .describe('The name of the color to add overrides for, e.g. "accent"');
 
 const semanticColorOverrideSchema = z
@@ -53,7 +54,10 @@ const semanticColorOverrideSchema = z
   .describe('An object with color names as keys');
 
 const severityColorOverrideSchema = z
-  .partialRecord(z.enum(baseColorNames), colorSchema.describe('A hex color, which is used for creating a color scale'))
+  .partialRecord(
+    z.enum(severityColorNames),
+    colorSchema.describe('A hex color, which is used for creating a color scale'),
+  )
   .optional()
   .describe('An object with severity color names as keys');
 

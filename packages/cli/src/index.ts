@@ -1,4 +1,5 @@
 export * from './colors/index.ts';
+export { severityColorNames, severityColors } from './schemas/defaults.ts';
 export {
   type CreateConfigSchema as ConfigSchema,
   configFileCreateSchema as configSchema,

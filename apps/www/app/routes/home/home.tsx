@@ -164,7 +164,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 title={t('frontpage.get-started.title')}
                 description={t('frontpage.get-started.description')}
                 color='blue'
-                url='fundamentals/introduction/get-started'
+                url='fundamentals'
                 icon={<PaletteIcon aria-hidden='true' />}
                 level={2}
               />
