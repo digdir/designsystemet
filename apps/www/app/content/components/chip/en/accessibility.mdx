@@ -10,18 +10,6 @@ WCAG: [4.1.3 Status Messages (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/
 
 ## What you need to verify yourself
 
-**A chip that truncates part of its content must still provide access to the full content**
-
-Use CSS to visually hide parts of long content. This ensures that the full content remains in the DOM and is still available to screen readers.
-
-The full text should also be duplicated in the `title` attribute so that it is visible on hover for sighted users.
-
-<span data-size="sm">
-WCAG: [1.3.1 Info and Relationships (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships)
-</span>
-
-<Divider/>
-\
 **Chips used as filters must expose their state clearly**
 
 - Use `aria-pressed` (`true`/`false`) for chips acting as toggle buttons.
@@ -98,3 +86,4 @@ WCAG: [2.1.1 Keyboard (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/keyboar
 - The design system includes focus and hover styles. Verify that they are visible when navigating with a keyboard and when hovering with a pointing device.
 - Color contrast is handled by the design system's color system. If you deviate from the recommended color tokens, verify that the combination of text and background colors meets the required contrast ratios for the chip.
 - Sizing and scaling are handled by the design system's sizing system. If you deviate from it, verify that the chip remains usable when text is resized or when screen magnification is used, without loss of information or functionality.
+- When a chip truncates its content, the design system provides `data-tooltip` to ensure that the full content remains available on hover and to screen reader users. However, both behaviours should still be tested.

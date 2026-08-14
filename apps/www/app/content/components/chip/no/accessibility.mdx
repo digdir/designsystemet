@@ -4,17 +4,6 @@ Hvis deler av siden oppdateres mens brukeren interagerer med chip, må vi sørge
 
 ## Dette må du sjekke selv
 
-**En chip som avkorter deler av innholdet må ha tilgjengelig innhold**
-
-Bruk css for å skjule deler av langt innhold, da er innholdet der fortsatt og blir synlig for skjermlesere. 
-Teksten skal også dupliseres i `title` for å bli synlig ved mouseover for seende brukere.
-
-<span data-size="sm"> 
-WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/veiledning/131-informasjon-og-relasjoner/1234)
-</span> 
-
-<Divider/>
-\
 **Chip som fungerer som filter skal være merket tydelig**
 
 - Bruk `aria-pressed` (true/false) for chip som fungerer som en toggle
@@ -84,3 +73,4 @@ WCAG: [2.1.1 Tastatur (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/21
 - Designsystemet inkluderer stiler for focus og hover, sjekk likevel at disse vises ved henholdsvis tastaturmarkering og musepeker-markering (mouseover).
 - Kontrastforhold håndteres av fargesystemet i designsystemet. Dersom du avviker fra anbefalte fargetokens, må du kontrollere at kombinasjonen av tekstfarge og bakgrunnsfarge oppfyller kravene til kontrast for chipen.
 - Størrelse og skalering håndteres av designsystemets størrelsessystem. Dersom du avviker fra dette, må du kontrollere at chip fungerer ved forstørring av tekst og bruk av skjermforstørrer, uten tap av informasjon eller funksjonalitet.
+- Når chip avkorter innholdet har vi `data-tooltip`for å sikre at innholdet fremdeles er tilgjengelig ved mouseover og for skjermlesere, begge deler bør likevel testes.
