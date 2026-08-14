@@ -40,7 +40,6 @@ declare global {
   }
 }
 
-const PROPS = { configurable: true, enumerable: true, writable: true };
 const ROOTS = new Map<ShadowRoot, () => void>();
 const ATTR_PLACE = 'data-placement';
 const ATTR_AUTO = 'data-autoplacement';
@@ -149,6 +148,7 @@ const handleClick = (e: Event) => {
 };
 
 onHotReload('popover', () => {
+  const descriptors = Object.getOwnPropertyDescriptors(HTMLElement.prototype);
   const togglePopover = HTMLElement.prototype.togglePopover;
   const showPopover = HTMLElement.prototype.showPopover;
   const hidePopover = HTMLElement.prototype.hidePopover;
@@ -156,7 +156,7 @@ onHotReload('popover', () => {
   // Since toggle event is not composed, we need to trigger it when programatically called inside shadow DOM
   Object.defineProperties(HTMLElement.prototype, {
     togglePopover: {
-      ...PROPS,
+      ...descriptors.togglePopover,
       value(opt: TogglePopoverOptions) {
         const isOpen = this.matches(':popover-open');
         const isBool = typeof opt === 'boolean';
@@ -171,7 +171,7 @@ onHotReload('popover', () => {
       },
     },
     showPopover: {
-      ...PROPS,
+      ...descriptors.showPopover,
       value(opt: ShowPopoverOptions) {
         const prev = this.matches(':popover-open') ? 'open' : 'closed';
         const result = showPopover?.call(this, opt);
@@ -180,7 +180,7 @@ onHotReload('popover', () => {
       },
     },
     hidePopover: {
-      ...PROPS,
+      ...descriptors.hidePopover,
       value() {
         const prev = this.matches(':popover-open') ? 'open' : 'closed';
         const result = hidePopover?.call(this);
@@ -197,9 +197,9 @@ onHotReload('popover', () => {
     () => {
       // Restore original methods on hot reload
       Object.defineProperties(HTMLElement.prototype, {
-        togglePopover: { value: togglePopover, ...PROPS },
-        showPopover: { value: showPopover, ...PROPS },
-        hidePopover: { value: hidePopover, ...PROPS },
+        togglePopover: { value: togglePopover, ...descriptors },
+        showPopover: { value: showPopover, ...descriptors },
+        hidePopover: { value: hidePopover, ...descriptors },
       });
       for (const [, off] of ROOTS) off(); // Cleanup listeners on ShadowRoots on hot reload
       ROOTS.clear();
