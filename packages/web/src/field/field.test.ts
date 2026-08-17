@@ -72,10 +72,16 @@ describe('Field component', () => {
     await tick();
     expect(textarea).toBeInTheDocument();
     expect(counter).toBeInTheDocument();
+    expect(textarea?.getAttribute('aria-invalid')).toBe('true');
     expect(counter?.getAttribute('data-label')).toBe('13 tegn for mye');
 
     await tick(counter?.setAttribute('data-limit', '10'));
+    expect(textarea?.getAttribute('aria-invalid')).toBe('true');
     expect(counter?.getAttribute('data-label')).toBe('23 tegn for mye');
+
+    await tick(counter?.setAttribute('data-limit', '40'));
+    expect(textarea?.getAttribute('aria-invalid')).toBeFalsy();
+    expect(counter?.getAttribute('data-label')).toBe('7 tegn igjen');
   });
 
   test('should not override aria-invalid when already set on input', async () => {
