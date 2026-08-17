@@ -8,6 +8,7 @@ const render = () => {
     <ds-suggestion class="ds-suggestion">
       <input type="search" class="ds-input" />
       <u-datalist role="listbox">
+        <u-option data-empty>No results</u-option>
         <u-option value="option-1">Option 1</u-option>
       </u-datalist>
     </ds-suggestion>
@@ -45,5 +46,14 @@ describe('suggestion component', () => {
     suggestion.dispatchEvent(event);
 
     expect(detail).toBe(input);
+  });
+
+  it('hides the empty option initially when selectable options exist', async () => {
+    const suggestion = render();
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
+
+    expect(empty.hidden).toBe(true);
   });
 });
