@@ -1,0 +1,75 @@
+---
+title: KI-assistert utvikling
+description: Gje kodeassistenten din komponent- og mønsterdefinisjonane direkte, i staden for at han gjettar seg fram.
+date: 2026-08-13
+category: Kode
+color: blue
+icon: CodeIcon
+published: true
+order: 5
+search_terms: ai, ki, agent, plugin, mcp, claude, copilot, cursor, kodeassistent
+---
+
+Ein aukande del av koden som byggjer på Designsystemet blir skriven saman med ein
+kodeassistent. Assistentar som les desse sidene som vanlege nettsider får som regel dei
+synlege delane rette, men bommar på tilgjengelegheita — oftast feilhandteringa som WCAG 3.3.1
+krev, der eit felt får feilstatus utan `aria-invalid` eller ei kopla feiloppsummering.
+
+## Før du genererer kode
+
+Installer pakkane. Ikkje lag dei på nytt for hand.
+
+```bash
+npm install @digdir/designsystemet-react @digdir/designsystemet-css
+```
+
+Deretter importerer du CSS-en, importerer eit tema og legg til Inter-fonten — alt saman står på
+[oppsettsida](/no/fundamentals/code/setup). Hoppar du over noko av det, får du markup med rette
+`ds-*` klassenamn og ingenting av designet bak: strukturen ser rett ut, og sida ser ikkje ut som
+Designsystemet i det heile. Handskrivne custom properties driv dessutan frå kvarandre så snart
+temaet blir endra.
+
+Bruk CLI-en i staden for å lage det han genererer på nytt:
+
+| Behov | Kommando |
+|---|---|
+| Lage tema og token | `npx @digdir/designsystemet tokens create` |
+| Byggje token på nytt etter endring | `npx @digdir/designsystemet tokens build` |
+| Oppgradere over ein brytande versjon | `npx @digdir/designsystemet migrate` |
+
+## Pluginen (eksperimentell)
+
+> **Merk:** pluginen er eit eksperimentelt konsept og blir førebels distribuert
+> frå forfattaren sitt eige kodelager, i påvente av ein permanent heim eigd av
+> Digdir. Vurder dette før du installerer.
+
+Pluginen gjev kodeassistenten komponent- og mønsterdefinisjonane direkte, slik at han brukar
+dei verkelege prop-ane, dei verkelege designtokena og den tilgjengelegheitskoplinga som krevst
+— i staden for å utleie dei frå gjengitt dokumentasjon.
+
+```bash
+claude plugin marketplace add sorensensig/ai-corner-store
+claude plugin install designsystemet@ai-corner-store
+```
+
+Fungerer med Claude Code; MCP-serveren som følgjer med, verkar i alle assistentar som støttar MCP. Koden din blir ikkje send til Digdir.
+
+## Kva assistenten får
+
+| | |
+|---|---|
+| `list_twins` | Alle komponentar og mønster som finst |
+| `get_component` | Kontrakten for éin komponent — importnamn, emitterte attributt, design-token, og tilgjengelegheitskrava komponenten ikkje handhevar for deg |
+| `get_pattern` | Eit mønster — kva komponentar det består av, i kva rekkjefølgje, og krava som gjeld |
+| `find_equivalent` | Frå eit framandt komponentnamn til rett komponent i Designsystemet |
+
+## Utan plugin
+
+Assistentar som ikkje kan installere ein plugin — til dømes i ein nettlesar i staden for eit
+kodeverktøy — kan lese den maskinlesbare indeksen direkte:
+
+```
+https://designsystemet.no/llms.txt
+```
+
+Indeksen listar kvar komponent og kvart mønster med lenkje til dokumentasjonen.
