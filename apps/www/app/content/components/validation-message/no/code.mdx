@@ -4,6 +4,12 @@
 
 Bruk klassenavnet `ds-validation-message` for å style en validation message.
 
+## Skjemafelt og status
+
+Validation message vil automatisk kobles til skjemafelt, når den har attributtet `data-field="validation"`, og ligger inni et [field](/no/components/docs/field).
+
+Skjemafeltet får `aria-invalid="true"` når validation message har `data-color="danger"`, eller når `data-color` ikke er angitt.
+
 ## CSS variabler og data-attributter
 
 Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
