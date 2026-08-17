@@ -161,6 +161,23 @@ const nextItems = (
 const defaultFilter: Filter = ({ label, input }) =>
   label.toLowerCase().includes(input.value.trim().toLowerCase());
 
+/**
+ * Suggestion is a filtering combobox: an input where the user types to filter
+ * a list of options and picks one (or several) from it.
+ *
+ * @example
+ * <Field>
+ *   <Label>Velg en destinasjon</Label>
+ *   <Suggestion>
+ *     <Suggestion.Input />
+ *     <Suggestion.Clear />
+ *     <Suggestion.List>
+ *       <Suggestion.Empty>Tomt</Suggestion.Empty>
+ *       <Suggestion.Option value='Oslo'>Oslo</Suggestion.Option>
+ *     </Suggestion.List>
+ *   </Suggestion>
+ * </Field>
+ */
 export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
   function Suggestion(
     {
