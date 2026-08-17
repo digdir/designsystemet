@@ -1,0 +1,75 @@
+---
+title: AI-assisted development
+description: Give your coding assistant the component and pattern definitions directly, instead of letting it infer them.
+date: 2026-08-13
+category: Code
+color: blue
+icon: CodeIcon
+published: true
+order: 5
+search_terms: ai, agent, plugin, mcp, claude, copilot, cursor, coding assistant
+---
+
+An increasing share of the code built on Designsystemet is written with a coding assistant.
+Assistants that read these pages as ordinary web documentation generally get the visible parts
+right and the accessibility parts wrong — most often the error handling required by WCAG 3.3.1,
+where a field enters an error state without `aria-invalid` or a linked error summary.
+
+## Before you generate any code
+
+Install the packages. Do not reproduce them by hand.
+
+```bash
+npm install @digdir/designsystemet-react @digdir/designsystemet-css
+```
+
+Then import the CSS, import a theme, and add the Inter font — all of it is on the
+[setup page](/en/fundamentals/code/setup). Skipping any of it produces markup that carries the
+right `ds-*` class names with none of the design behind it: the structure looks correct and
+the page looks nothing like Designsystemet. Hand-written custom properties also drift the
+moment the theme changes.
+
+Use the CLI rather than reimplementing what it generates:
+
+| Need | Command |
+|---|---|
+| Create a theme and tokens | `npx @digdir/designsystemet tokens create` |
+| Rebuild tokens after a config change | `npx @digdir/designsystemet tokens build` |
+| Upgrade across a breaking version | `npx @digdir/designsystemet migrate` |
+
+## The plugin (experimental)
+
+> **Note:** the plugin is an experimental proof of concept, currently distributed
+> from its author's repository while a permanent, Digdir-owned home is decided.
+> Evaluate it accordingly before installing.
+
+The plugin gives your coding assistant the component and pattern definitions directly, so it
+uses the real props, the real design tokens and the required accessibility wiring — instead of
+inferring them from rendered documentation.
+
+```bash
+claude plugin marketplace add sorensensig/ai-corner-store
+claude plugin install designsystemet@ai-corner-store
+```
+
+Works with Claude Code; the bundled MCP server works in any assistant that speaks MCP. Your code is not sent to Digdir.
+
+## What the assistant gets
+
+| | |
+|---|---|
+| `list_twins` | Every component and pattern available |
+| `get_component` | One component's contract — import name, emitted attributes, design tokens, and the accessibility requirements the component does not enforce for you |
+| `get_pattern` | A pattern — which components compose it, in what order, and the rules that apply |
+| `find_equivalent` | Maps a foreign component name to the right Designsystemet component |
+
+## Without the plugin
+
+Assistants that cannot install a plugin — in a browser rather than a coding tool, for example
+— can read the machine-readable index directly:
+
+```
+https://designsystemet.no/llms.txt
+```
+
+The index lists every component and pattern with a link to its documentation.
