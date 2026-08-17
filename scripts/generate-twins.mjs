@@ -33,12 +33,17 @@ const CSS_SRC = join(ROOT, 'packages/css/src');
 const PKG = JSON.parse(
   readFileSync(join(ROOT, 'packages/react/package.json'), 'utf8'),
 );
-const OUT = resolve(
-  ROOT,
-  process.argv.includes('--out')
-    ? process.argv[process.argv.indexOf('--out') + 1]
-    : 'registry',
-);
+const arg = (flag, fallback) =>
+  process.argv.includes(flag)
+    ? process.argv[process.argv.indexOf(flag) + 1]
+    : fallback;
+
+const OUT = resolve(ROOT, arg('--out', 'registry'));
+/* Where the llms.txt index is written, and the path prefix its links carry.
+ * Serving the registry at a site's /twins/ needs the index at the site root
+ * (/llms.txt per the convention) with links pointing into twins/. */
+const INDEX = arg('--index', null);
+const LINK_PREFIX = arg('--link-prefix', '');
 
 /* Docs links carry /en/: export names and the code agents write are English. */
 const docsUrl = (slug, page) =>
@@ -205,7 +210,7 @@ for (const p of patterns) {
  * commands inside fetched files as prompt injection and refuse them.
  */
 writeFileSync(
-  join(OUT, 'llms.txt'),
+  INDEX ? resolve(ROOT, INDEX) : join(OUT, 'llms.txt'),
   [
     '# Designsystemet — machine-readable index',
     '',
@@ -221,12 +226,14 @@ writeFileSync(
     '',
     ...patterns.map(
       (p) =>
-        `- [${p.name}](patterns/${p.slug}.json)${p.links?.docs ? `: ${p.links.docs}` : ''}`,
+        `- [${p.name}](${LINK_PREFIX}patterns/${p.slug}.json)${p.links?.docs ? `: ${p.links.docs}` : ''}`,
     ),
     '',
     '## Components',
     '',
-    ...written.sort().map((n) => `- [${n}](components/${n}.json)`),
+    ...written
+      .sort()
+      .map((n) => `- [${n}](${LINK_PREFIX}components/${n}.json)`),
     '',
     '## Human documentation',
     '',

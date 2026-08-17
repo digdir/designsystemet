@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router typegen && react-router build",
+    "build": "pnpm twins && react-router typegen && react-router build",
+    "twins": "node ../../scripts/generate-twins.mjs --out apps/www/public/twins --link-prefix twins/ --index apps/www/public/llms.txt && node ../../scripts/merge-authored-twins.mjs --out apps/www/public/twins",
     "dev": "cross-env NODE_ENV=development node server.js",
     "start": "node server.js",
     "types": "react-router typegen && tsc"
