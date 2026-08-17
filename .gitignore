@@ -51,5 +51,8 @@ packages/cli/temp
 .react-router
 apps/www/build
 apps/storybook/debug-storybook.log
+
+# Claude session directory and guidance file
+.claude/
 CLAUDE.md
 .claude/settings.local.json

@@ -1,0 +1,237 @@
+---
+title: Use tokens to colour graphics
+sidebar_title: Colour graphics
+description: With Designsystemet, you can colour graphics using tokens.
+date: 2026-08-10
+author: Designsystemet
+imageSrc: /img/blog/colorsvg/colorsvg-blog-header.webp
+imageAlt: Illustration showing four colour tokens connected to different parts of the design system logo with dashed lines. The tokens control the colours of the four sections of the logo.
+imageCaption: Colour tokens can be used to colour logos, icons, and illustrations. The techniques described in this article provide robust and flexible control over colours in SVG graphics.
+search_terms: svg, colouring, symbol, graphics, illustration, decorative
+---
+
+Graphics are an important part of the user experience, but they are often created with static colors that need to be updated manually whenever the visual identity changes. In addition, the same graphic is frequently used in both light and dark themes, which does not always produce optimal results. By using design tokens in SVG graphics, illustrations, icons, and other graphical elements can follow the same color system as the rest of the solution. This makes graphics easier to maintain, improves consistency across products, and simplifies the management of themes, branding updates, and accessibility requirements. In this article, we take a high-level look at why using tokens to color graphics is beneficial and how you can get started. The approach described here, wrapping the graphics using symbol elements within SVG files, can also serve as a foundation for providing multiple illustrations within a single SVG file.
+
+## Why use tokens to control colours in graphics?
+
+There are three main benefits to using design tokens for color management:
+- Maintaining consistent use of brand colors
+- Supporting both light and dark themes
+- Making graphics easier to maintain over time
+
+The methods described in this article are not relevant if your graphics should look exactly the same in both light and dark themes and use the colors defined in the design tool.
+
+## How to use colour tokens for graphics
+If you want to control colours and scaling through code, for example by using design tokens, your graphics need to be added as SVGs and structured in a way that allows them to be styled with CSS.
+
+There are two main approaches:
+
+- Embedding SVG markup inline in the HTML
+- Referencing SVG graphic with `<use>` and `<symbol>` for reuse
+
+Both approaches work well. Using `<use>` together with `<symbol>` is useful when the same graphic needs to be reused in multiple places without duplicating code, while inline SVG provides full control and is often simpler when the graphic is only used in a single location.
+
+When SVG is used inline or through `<use>`, both colours and sizing can be controlled with CSS. This requires the SVG to be set up correctly, including a `viewBox` attribute.
+
+Other ways of using graphics in frontend applications, such as `<img src="...svg">`, canvas, CSS-generated graphics, or icon fonts, do not provide the same level of control over colours through design tokens. These approaches are therefore outside the scope of this article.
+
+## Basic setup
+For an SVG to be reusable and easy to style, a few prerequisites should be in place.
+
+**When using graphics as an external file with `<use>`:**
+- The graphic should be wrapped in a `<symbol>` element
+- The symbol should have an ID
+- The graphic should be referenced using `<use>` together with the file path and symbol ID
+
+**When using graphics either inline or as an external file:**
+- A viewBox attribute should be defined on the `<svg>` or `<symbol>` element
+
+## Practival examples
+
+### Using SVG Symbols for Reuse
+
+Wrap the graphic in a `<symbol>` element and give it a unique ID:
+```SVG
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ds-logo" viewBox="0 0 40 40">
+    <path d="..." />
+    <path d="..." />
+    <path d="..." />
+    <path d="..." />
+  </symbol>
+</svg>
+```
+The graphic can then be referenced in HTML using `<use>`:
+```HTML
+<svg height="1rem" width="1rem">
+  <use href="logo.svg#ds-logo"></use>
+</svg>
+```
+
+**Tip:** You can store multiple symbols or icons in the same SVG file by wrapping each one in its own `<symbol>` element and assigning a unique ID to each symbol.
+
+#### Alternatively, Embed the Graphic Inline
+
+Using `<use>` makes it possible to reuse the same SVG without duplicating the markup in multiple places. If the graphic is only used once on a page, however, embedding the SVG inline is often the simpler option. When used inline, the example above does not require a `<symbol>` element or an ID:
+```HTML
+<svg height="1rem" width="1rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <path d="..." />
+  <path d="..." />
+  <path d="..." />
+  <path d="..." />
+</svg>
+```
+
+<Alert data-color='info'>
+  <h3 class="ds-heading" data-size='xs'>Tip: Scaling SVGs</h3>
+  <br />
+  SVGs scale most easily when:
+  - A `viewBox` is defined on the `<symbol>` element when referenced as a file, or on the `<svg>` element when embedded inline
+  - The size is controlled through the `width` and `height` attributes of the outer element
+  - The aspect ratio is defined correctly
+</Alert>
+
+<Divider/>
+## Coouring graphics
+What you need to do next depends on the result you want to achieve.
+
+### Single-colour graphics
+Many logos and icons consist of a single colour. For these graphics, colours can either be inherited from the current text colour or controlled through a class or ID.
+
+#### Using the Current Text Colour
+If you want SVG graphics to use the current text colour by default, you can use `currentColor`. Remove any hard-coded colours from the SVG and set `fill="currentColor"`. Depending on the graphic, you may need to do the same for `stroke`.
+```CSS
+svg {
+    fill: currentColor;
+}
+```
+If you do not want to apply this rule to all SVGs, you can instead set currentColor directly on the fill and/or stroke attributes within the SVG. This is the approach used for icons in the design system, for example in buttons.
+```SVG
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ds-logo" viewBox="0 0 40 40">
+    <path d="..." fill="currentColor"/>
+    <path d="..." stroke="currentColor"/>
+    <path d="..." fill="currentColor"/>
+    <path d="..." stroke="currentColor"/>
+  </symbol>
+</svg>
+```
+The example below shows a graphic embedded inline and coloured using currentColor:
+<Story story="WithCurrentColor" truncateSvg={false} />
+
+#### Using a Colour Token
+
+If you need more control over the colour, you can assign a class or ID to the surrounding SVG element. Remove any hard-coded colours from the graphic and add a class to the outer SVG element:
+```HTML
+<svg height="1rem" width="1rem" class="iconcolor">
+  <use href="logo.svg#ds-logo"></use>
+</svg>
+```
+
+Then use a design token to define the colour:
+```CSS
+.iconcolor {
+    color: var(--ds-color-text-default);
+}
+```
+
+#### Single-colour Graphics Controlled by `data-color` and `data-color-scheme`
+
+The same graphic may need to be reused in different contexts. At the same time, it should follow the colour and colour mode defined for the section of the page where it is displayed.
+
+In these situations, you can use generic design tokens that inherit `data-color` and `data-color-scheme` values from the nearest parent element.
+
+In the examples below, the SVG itself only uses the `--ds-color-base-default` token, while the surrounding cards define `data-color` and `data-color-scheme` values that control the graphic's colour and colour mode. This allows the same SVG graphic to be reused in different contexts while automatically adapting to the colour settings of the area in which it is displayed.
+<Story story="WithDataColor" truncateSvg={false} />
+
+### Multi-colour graphics
+Multi-colour graphics are commonly used for brand assets, illustrations, and other visual elements that rely on more than one colour.
+
+For graphics with multiple colours, you can control the colours directly through the fill and stroke attributes of each path in the SVG. These values can reference design system colours directly, or use dedicated illustration tokens if your design system provides them.
+
+<Story story="WithMultiColorUse" truncateSvg={false} />
+The SVG file used in the example above looks like this:
+
+```SVG
+<svg 
+  fill='none' 
+  xmlns='http://www.w3.org/2000/svg'
+>
+  <symbol 
+    id='component-icon'
+    viewBox='0 0 24 24'
+  >
+    <path 
+      d='M11.5265 2.41796C11.8211 2.17765 12.2558 2.19512 12.5304 2.46972L16.0304 5.96972C16.3233 6.26261 16.3233 6.73737 16.0304 7.03027L12.5304 10.5303C12.2375 10.8232 11.7627 10.8232 11.4699 10.5303L7.96985 7.03027C7.67696 6.73737 7.67696 6.26261 7.96985 5.96972L11.4699 2.46972L11.5265 2.41796ZM9.56067 6.49999L12.0001 8.93945L14.4396 6.49999L12.0001 4.06054L9.56067 6.49999Z' 
+      fill='var(--ds-color-success-border-default)'
+    />
+    <path 
+      d='M6.02651 7.91796C6.32109 7.67765 6.75581 7.69512 7.03042 7.96972L10.5304 11.4697C10.8233 11.7626 10.8233 12.2374 10.5304 12.5303L7.03042 16.0303C6.73752 16.3232 6.26276 16.3232 5.96987 16.0303L2.46987 12.5303C2.17698 12.2374 2.17698 11.7626 2.46987 11.4697L5.96987 7.96972L6.02651 7.91796ZM4.06069 12L6.50014 14.4394L8.93959 12L6.50014 9.56054L4.06069 12Z' 
+      fill='var(--ds-color-info-border-default)'
+    />
+    <path 
+      d='M11.5265 13.418C11.8211 13.1779 12.2559 13.1952 12.5304 13.4697L16.0304 16.9697C16.323 17.2626 16.323 17.7374 16.0304 18.0303L12.5304 21.5303C12.2376 21.8231 11.7628 21.8229 11.4699 21.5303L7.96987 18.0303C7.67698 17.7374 7.67698 17.2626 7.96987 16.9697L11.4699 13.4697L11.5265 13.418ZM9.56069 17.5L12.0001 19.9395L14.4396 17.5L12.0001 15.0605L9.56069 17.5Z' 
+      fill='var(--ds-color-danger-border-default)'
+    />
+    <path 
+      d='M17.0265 7.91796C17.3211 7.67765 17.7558 7.69512 18.0304 7.96972L21.5304 11.4697C21.8233 11.7626 21.8233 12.2374 21.5304 12.5303L18.0304 16.0303C17.7375 16.3232 17.2628 16.3232 16.9699 16.0303L13.4699 12.5303C13.177 12.2374 13.177 11.7626 13.4699 11.4697L16.9699 7.96972L17.0265 7.91796ZM15.0607 12L17.5001 14.4394L19.9396 12L17.5001 9.56054L15.0607 12Z' 
+      fill='var(--ds-color-warning-border-default)'
+    />
+  </symbol>
+</svg>
+```
+
+### Multi-colour Graphics Embedded Inline
+The same approach can also be used when embedding the SVG inline rather than referencing it with `<use>`.
+<Story story="WithMultiColorInline" truncateSvg={false} />
+
+<Divider/>
+## Accessibility
+To ensure that graphics are accessible to everyone, a few attributes should be added to the outer `<svg>` element:
+- Use `aria-hidden` for decorative graphics
+- Use `aria-label` together with `role="img"` for meaningful graphics
+
+### Decorative graphics
+If a graphic is purely decorative, it should be hidden from assistive technologies by marking it as presentational and setting it to be hidden.
+```HTML
+<svg height="1rem" width="1rem" class="logocolor" role="presentation" aria-hidden="true">
+  <use href="logo.svg#ds-logo"></use>
+</svg>
+```
+
+### Meaningful graphics
+If a graphic conveys information, it should be given the image role and a descriptive text alternative.
+```HTML
+<svg height="1rem" width="1rem" class="logocolor" role="img" aria-label="Design system logo with colours defined via variables">
+  <use href="logo.svg#ds-logo"></use>
+</svg>
+```
+For more complex graphics, more detailed descriptions may be needed. There are several ways to provide richer descriptions directly within SVG graphics, but those techniques are outside the scope of this article.
+
+## Troubleshooting
+If your SVG does not behave as expected, these are the most common causes to investigate.
+
+- **SVG has the wrong size**
+  - Check that a `viewBox` attribute is defined
+  - Check that `width` and `height` are defined on the HTML element (`use` or if inline `svg`) or set through CSS
+
+- **Colours do not change**
+  - Check that the SVG is embedded inline in the DOM and not loaded through `<img>`
+  - Check that `fill` and `stroke` are not hard-coded to fixed colour values
+  - Check that the CSS variables (`var(...)`) are defined and available where the SVG is used
+
+- **A Multi-colour graphic appears as a single colour**
+  - Check whether `currentColor` is applied to all paths
+  - Check for global CSS rules that affect all SVG elements
+
+- **Graphics does not show at all**
+  - Check that the `href` in `<use>` points to the correct file and symbol ID (`file.svg#id`)
+  - Check that the SVG file contains a `<symbol>` element with the expected ID
+
+## Sources and further reading
+- [SVG: Scalable Vector Graphics (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG)  
+- [\<use> – SVG element (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/use)  
+- [viewBox attribute (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox)  
+- [Fills and strokes (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes)  
+- [SVG 2 specification (W3C)](https://svgwg.org/svg2-draft/)  
+- [6 Common SVG Fails (and How to Fix Them) (CSS‑Tricks)](https://css-tricks.com/6-common-svg-fails-and-how-to-fix-them/)  
