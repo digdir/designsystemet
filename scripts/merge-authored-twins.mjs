@@ -21,7 +21,7 @@
  *
  *   node scripts/merge-authored-twins.mjs [--out <registry-dir>] [--verify]
  */
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -74,12 +74,20 @@ async function pageText(url) {
   try {
     const res = await fetch(url);
     if (!res.ok) return '';
-    const html = (await res.text())
-      .replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '')
+    // Strip <script>/<style> blocks before flattening the rest of the markup.
+    // Case-insensitive so <SCRIPT> is caught too, and repeated until the text
+    // stops changing so a stripped block cannot reveal another one.
+    let html = await res.text();
+    let previous;
+    do {
+      previous = html;
+      html = html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, '');
+    } while (html !== previous);
+    const text = html
       .replace(/<[^>]+>/g, ' ')
       .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
       .replace(/&([a-z]+);/g, (m, e) => ENTITIES[e] ?? m);
-    return normalise(html);
+    return normalise(text);
   } catch {
     return '';
   }
@@ -92,7 +100,13 @@ let reviewed = 0;
 for (const [slug, entry] of Object.entries(AUTHORED)) {
   const { name, reviewedAgainst, ...fields } = entry;
   const twinPath = join(REGISTRY, `${name}.json`);
-  if (!existsSync(twinPath)) {
+  // Read straight away rather than checking existence first: a separate check
+  // would be a check-then-use race, and this reads the file once instead of twice.
+  let twin;
+  try {
+    twin = JSON.parse(readFileSync(twinPath, 'utf8'));
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
     console.warn(
       `  skip ${name}: no generated twin (run generate-twins.mjs first)`,
     );
@@ -129,7 +143,6 @@ for (const [slug, entry] of Object.entries(AUTHORED)) {
     }
   }
 
-  const twin = JSON.parse(readFileSync(twinPath, 'utf8'));
   const method =
     allVerified && reviewedAgainst
       ? `quote-verified against the cited page; human-reviewed against ${reviewedAgainst}`
@@ -164,7 +177,7 @@ if (VERIFY) {
           '|---|---|---|---|',
           ...reviewRows.map(
             (r) =>
-              `| ${r.map((c) => String(c).replace(/\|/g, '\\|').slice(0, 160)).join(' | ')} |`,
+              `| ${r.map((c) => String(c).replace(/\\/g, '\\\\').replace(/\|/g, '\\|').slice(0, 160)).join(' | ')} |`,
           ),
         ]
       : [
