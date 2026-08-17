@@ -207,9 +207,9 @@ onHotReload('popover', () => {
     () => {
       // Restore original methods on hot reload
       Object.defineProperties(HTMLElement.prototype, {
-        togglePopover: { value: togglePopover, ...descriptors },
-        showPopover: { value: showPopover, ...descriptors },
-        hidePopover: { value: hidePopover, ...descriptors },
+        togglePopover: { ...descriptors.togglePopover, value: togglePopover },
+        showPopover: { ...descriptors.showPopover, value: showPopover },
+        hidePopover: { ...descriptors.hidePopover, value: hidePopover },
       });
       for (const [, off] of ROOTS) off(); // Cleanup listeners on ShadowRoots on hot reload
       ROOTS.clear();
