@@ -9,7 +9,7 @@ const tick = async (_?: unknown) =>
 describe('pagination component', () => {
   it('has correct aria attributes', async () => {
     document.body.innerHTML = `
-      <ds-pagination data-id="EIRIK" data-current="2" data-total="5" data-href="/page/%d" aria-label="Pagination">
+      <ds-pagination data-current="2" data-total="5" data-href="/page/%d" aria-label="Pagination">
        <ol>
           <li><a class="ds-button" data-testid="prev" href="#none">prev</a></li>
           <li><a class="ds-button" href="/page/1"></a></li>
