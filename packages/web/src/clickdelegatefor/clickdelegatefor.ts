@@ -3,6 +3,7 @@
 // and https://github.com/openui/open-ui/issues/1104#issuecomment-3151387080
 import {
   attr,
+  getComposedPath,
   getComposedTarget,
   getRoot,
   on,
@@ -29,10 +30,13 @@ const handleClickDelegateFor = (event: MouseEvent) => {
   const delegateTarget = event.button < 2 && getDelegateTarget(event); // Only accept left or middle clicks
 
   if (!delegateTarget || delegateTarget.contains(target)) return; // Only proxy event if delegated target isn't part of the original target
+  for (const el of getComposedPath(target))
+    if ((el as HTMLLabelElement).control === delegateTarget) return; // Let labels forward click natively
+
   if (isNewTab && delegateTarget instanceof HTMLAnchorElement)
     return window.open(delegateTarget.href, undefined, delegateTarget.rel); // If middle click or cmd/ctrl click on link, open in new tab
   event.stopImmediatePropagation(); // We'll trigger a new click event anyway, so prevent actions on this one
-  if (delegateTarget.nodeName !== 'LABEL') delegateTarget.click(); // Forward click to the clickable element (labels forwards click natively though)
+  delegateTarget.click(); // Forward click to the clickable element
 };
 
 let HOVER: Element | undefined;
