@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/vitest';
 import { beforeAll } from 'vitest';
 
 // Polyfill missing HTMLDocument to Document inheritance in HappyDOM
-// TODO: This should be document in a "testing" section for consumers who use HappyDOM to run tests
+// TODO: This should be documented in a "testing" section for consumers who use HappyDOM to run tests
 if (
   typeof HTMLDocument !== 'undefined' &&
   !(HTMLDocument.prototype instanceof Document)
