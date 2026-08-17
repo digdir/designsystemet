@@ -1,33 +1,40 @@
 /**
- * Merge the authored layer into the generated twins, verifying every quote.
+ * Merge the authored layer into the generated twins.
  *
  * The authored layer (scripts/twins-authored.json) carries the rules that exist
  * only as prose on designsystemet.no: accessibility requirements, relations
  * ("use Radio instead"), and composition rules. Each rule cites a verbatim
- * quote from the documentation. This script fetches the cited pages and checks
- * that every quote still appears there, then writes the rules into the twins
- * that `generate-twins.mjs` produced.
+ * quote from the documentation, and carries the result of its last
+ * verification. `reviewedAgainst` records the package version a human
+ * sign-off was made against.
  *
- * Two guards keep a wrong rule out of a twin:
- *   1. mechanical: a quote that no longer appears on the page marks the rule
- *      unverified, the component loses its reviewed status, and the rule lands
- *      on the review sheet (registry/REVIEW.md). This is how documentation
- *      changes surface within a day instead of silently going stale.
- *   2. human: the machine proves the sentence is on the page; it cannot prove
- *      the rule follows from the sentence. `reviewedAgainst` in the data file
- *      records the package version a human sign-off was made against.
+ * Default run is offline and deterministic (safe for site builds): it merges
+ * the rules and their stored verification state into the twins produced by
+ * generate-twins.mjs.
  *
- *   node scripts/merge-authored-twins.mjs   (run after generate-twins.mjs)
+ * `--verify` is the maintenance mode: it fetches every cited docs page,
+ * rechecks that each quote still appears there, and writes the result back
+ * into the data file. A quote that no longer verifies drops the component's
+ * reviewed status and lands on the review sheet (registry/REVIEW.md), so a
+ * documentation change surfaces on the next verify run instead of going
+ * silently stale.
+ *
+ *   node scripts/merge-authored-twins.mjs [--out <registry-dir>] [--verify]
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const REGISTRY = join(ROOT, 'registry/components');
-const AUTHORED = JSON.parse(
-  readFileSync(join(ROOT, 'scripts/twins-authored.json'), 'utf8'),
-);
+const arg = (flag, fallback) =>
+  process.argv.includes(flag)
+    ? process.argv[process.argv.indexOf(flag) + 1]
+    : fallback;
+const REGISTRY = join(ROOT, arg('--out', 'registry'), 'components');
+const VERIFY = process.argv.includes('--verify');
+
+const DATA_PATH = join(ROOT, 'scripts/twins-authored.json');
+const AUTHORED = JSON.parse(readFileSync(DATA_PATH, 'utf8'));
 
 const SUBPAGES = ['overview', 'code', 'accessibility'];
 const docsUrl = (slug, page) =>
@@ -46,9 +53,9 @@ const ENTITIES = {
 };
 
 /**
- * Both the page text and the quotes go through the same normalisation, or a
- * quote containing any transformed character could never match: typographic
- * quotes become ASCII, markdown/formatting characters are stripped, whitespace
+ * The page text and the quotes go through the same normalisation, or a quote
+ * containing any transformed character could never match: typographic quotes
+ * become ASCII, markdown/formatting characters are stripped, whitespace
  * collapses, and the space that tag-stripping strands before punctuation is
  * removed.
  */
@@ -92,33 +99,37 @@ for (const [slug, entry] of Object.entries(AUTHORED)) {
     continue;
   }
 
-  const pages = {};
-  for (const sub of SUBPAGES) pages[sub] = await pageText(docsUrl(slug, sub));
-
-  const twin = JSON.parse(readFileSync(twinPath, 'utf8'));
-  let allVerified = true;
-
-  for (const key of ['a11y', 'relations', 'composition']) {
-    for (const rule of fields[key] ?? []) {
-      const quotes = [rule.quote, rule.quote2].filter(Boolean).map(normalise);
-      const found = SUBPAGES.find((sub) =>
-        quotes.every((q) => pages[sub].includes(q)),
-      );
-      rule.verified = found !== undefined;
-      rule.sourcePage = found ? docsUrl(slug, found) : null;
-      if (!rule.verified) {
-        allVerified = false;
-        reviewRows.push([
-          name,
-          key,
-          rule.rule ?? `${rule.component}: ${rule.note ?? ''}`,
-          rule.quote ?? '',
-        ]);
+  if (VERIFY) {
+    const pages = {};
+    for (const sub of SUBPAGES) pages[sub] = await pageText(docsUrl(slug, sub));
+    for (const key of ['a11y', 'relations', 'composition']) {
+      for (const rule of fields[key] ?? []) {
+        const quotes = [rule.quote, rule.quote2].filter(Boolean).map(normalise);
+        const found = SUBPAGES.find((sub) =>
+          quotes.every((q) => pages[sub].includes(q)),
+        );
+        rule.verified = found !== undefined;
+        rule.sourcePage = found ? docsUrl(slug, found) : null;
       }
     }
   }
 
-  // Stamp after verification, so no field can claim a review the twin loses later.
+  const rules = ['a11y', 'relations', 'composition'].flatMap((k) =>
+    (fields[k] ?? []).map((r) => [k, r]),
+  );
+  const allVerified = rules.every(([, r]) => r.verified === true);
+  for (const [key, rule] of rules) {
+    if (!rule.verified) {
+      reviewRows.push([
+        name,
+        key,
+        rule.rule ?? `${rule.component}: ${rule.note ?? ''}`,
+        rule.quote ?? '',
+      ]);
+    }
+  }
+
+  const twin = JSON.parse(readFileSync(twinPath, 'utf8'));
   const method =
     allVerified && reviewedAgainst
       ? `quote-verified against the cited page; human-reviewed against ${reviewedAgainst}`
@@ -132,37 +143,39 @@ for (const [slug, entry] of Object.entries(AUTHORED)) {
       value: fields[key],
     };
   }
-
   twin.reviewedAgainst = allVerified ? (reviewedAgainst ?? null) : null;
   twin.needsReview = !(allVerified && reviewedAgainst);
   if (!twin.needsReview) reviewed += 1;
   writeFileSync(twinPath, `${JSON.stringify(twin, null, 2)}\n`, 'utf8');
   merged += 1;
-  console.log(`  merged ${name}${twin.needsReview ? '  [needs review]' : ''}`);
 }
 
-const sheet = [
-  '# Authored-layer review sheet',
-  '',
-  'Rules whose quote no longer verifies against the cited documentation page.',
-  'For each row, the question is: does the current documentation still support the rule?',
-  '',
-  ...(reviewRows.length
-    ? [
-        '| Component | Field | Rule | Quote |',
-        '|---|---|---|---|',
-        ...reviewRows.map(
-          (r) =>
-            `| ${r.map((c) => String(c).replace(/\|/g, '\\|').slice(0, 160)).join(' | ')} |`,
-        ),
-      ]
-    : [
-        'Nothing pending: every quote verifies and every component is human-reviewed.',
-      ]),
-  '',
-];
-writeFileSync(join(ROOT, 'registry/REVIEW.md'), sheet.join('\n'));
+if (VERIFY) {
+  writeFileSync(DATA_PATH, `${JSON.stringify(AUTHORED, null, 2)}\n`, 'utf8');
+  const sheet = [
+    '# Authored-layer review sheet',
+    '',
+    'Rules whose quote no longer verifies against the cited documentation page.',
+    'For each row, the question is: does the current documentation still support the rule?',
+    '',
+    ...(reviewRows.length
+      ? [
+          '| Component | Field | Rule | Quote |',
+          '|---|---|---|---|',
+          ...reviewRows.map(
+            (r) =>
+              `| ${r.map((c) => String(c).replace(/\|/g, '\\|').slice(0, 160)).join(' | ')} |`,
+          ),
+        ]
+      : [
+          'Nothing pending: every quote verifies and every component is human-reviewed.',
+        ]),
+    '',
+  ];
+  writeFileSync(join(ROOT, 'registry/REVIEW.md'), sheet.join('\n'));
+}
 
 console.log(
-  `merged ${merged} components: ${reviewed} reviewed, ${reviewRows.length} rules pending review`,
+  `merged ${merged} components: ${reviewed} reviewed, ${reviewRows.length} rules pending review` +
+    (VERIFY ? ' (verification state written back to twins-authored.json)' : ''),
 );
