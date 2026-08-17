@@ -21,14 +21,14 @@ describe('popover floating behavior', () => {
       <div id="my-popover" popover="auto">Content</div>
     `);
 
-    const trigger = document.querySelector('button') as HTMLButtonElement;
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const trigger = document.querySelector('button');
+    const popover = document.getElementById('my-popover');
 
-    trigger.click();
+    trigger?.click();
     await tick();
-    expect(popover.matches(':popover-open')).toBe(true);
+    expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).not.toHaveAttribute('data-floating');
-    expect(popover.style.translate).toBeFalsy();
+    expect(popover?.style.translate).toBeFalsy();
   });
 
   it('positions the popover using floating-ui when --_ds-floating is set', async () => {
@@ -37,19 +37,19 @@ describe('popover floating behavior', () => {
       <div id="my-popover" popover="auto" style="--_ds-floating: top">Content</div>
     `);
 
-    const trigger = document.querySelector('button') as HTMLButtonElement;
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const trigger = document.querySelector('button');
+    const popover = document.getElementById('my-popover');
 
-    trigger.click();
+    trigger?.click();
     await tick();
 
-    expect(popover.matches(':popover-open')).toBe(true);
+    expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).toHaveAttribute('data-floating');
-    expect(popover.style.translate).not.toBe('');
-    expect(popover.style.getPropertyValue('--_ds-floating-arrow-x')).not.toBe(
+    expect(popover?.style.translate).not.toBe('');
+    expect(popover?.style.getPropertyValue('--_ds-floating-arrow-x')).not.toBe(
       '',
     );
-    expect(popover.style.getPropertyValue('--_ds-floating-arrow-y')).not.toBe(
+    expect(popover?.style.getPropertyValue('--_ds-floating-arrow-y')).not.toBe(
       '',
     );
   });
@@ -68,11 +68,14 @@ describe('popover floating behavior', () => {
     document.querySelector('button')?.click();
     await tick();
 
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const popover = document.getElementById('my-popover');
     expect(popover).toHaveAttribute('data-floating', 'bottom-end');
   });
 
-  it('defers dimension changes to avoid resizing during ResizeObserver delivery', async () => {
+  // Only test in browser as it requires ResizeObserver
+  it('defers dimension changes to avoid resizing during ResizeObserver delivery', {
+    tags: ['browser'],
+  }, async () => {
     const animationFrames: FrameRequestCallback[] = [];
     vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback) => {
       animationFrames.push(callback);
@@ -90,17 +93,17 @@ describe('popover floating behavior', () => {
     document.querySelector('button')?.click();
     await tick();
 
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const popover = document.getElementById('my-popover');
     expect(animationFrames.length).toBeGreaterThan(0);
-    expect(popover.style.width).toBe('');
-    expect(popover.style.maxHeight).toBe('');
+    expect(popover?.style.width).toBe('');
+    expect(popover?.style.maxHeight).toBe('');
 
     animationFrames.forEach((callback) => {
       callback(performance.now());
     });
 
-    expect(popover.style.width).toBe('120px');
-    expect(popover.style.maxHeight).not.toBe('');
+    expect(popover?.style.width).toBe('120px');
+    expect(popover?.style.maxHeight).not.toBe('');
   });
 
   it('does not position when data-placement is "none"', async () => {
@@ -117,9 +120,9 @@ describe('popover floating behavior', () => {
     document.querySelector('button')?.click();
     await tick();
 
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const popover = document.getElementById('my-popover');
     expect(popover).not.toHaveAttribute('data-floating');
-    expect(popover.style.translate).toBeFalsy();
+    expect(popover?.style.translate).toBeFalsy();
   });
 
   it('cleans up positioning (autoUpdate) when the popover closes', async () => {
@@ -128,16 +131,16 @@ describe('popover floating behavior', () => {
       <div id="my-popover" popover="auto" style="--_ds-floating: top">Content</div>
     `);
 
-    const trigger = document.querySelector('button') as HTMLButtonElement;
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const trigger = document.querySelector('button');
+    const popover = document.getElementById('my-popover');
 
-    trigger.click();
+    trigger?.click();
     await tick();
-    expect(popover.matches(':popover-open')).toBe(true);
+    expect(popover?.matches(':popover-open')).toBe(true);
 
-    trigger.click(); // Close
+    trigger?.click(); // Close
     await tick();
-    expect(popover.matches(':popover-open')).toBe(false);
+    expect(popover?.matches(':popover-open')).toBe(false);
   });
 
   it('resolves source via [commandfor] when no explicit source is given', async () => {
@@ -149,8 +152,8 @@ describe('popover floating behavior', () => {
     document.querySelector('button')?.click();
     await tick();
 
-    const popover = document.getElementById('my-popover') as HTMLElement;
-    expect(popover.matches(':popover-open')).toBe(true);
+    const popover = document.getElementById('my-popover');
+    expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).toHaveAttribute('data-floating');
   });
 });
@@ -165,15 +168,15 @@ describe('popover shadow DOM support', () => {
       <div id="shadow-popover" popover="auto" style="--_ds-floating: top">Content</div>
     `;
 
-    const trigger = root.querySelector('button') as HTMLButtonElement;
-    const popover = root.getElementById('shadow-popover') as HTMLElement;
+    const trigger = root.querySelector('button');
+    const popover = root.getElementById('shadow-popover');
 
-    trigger.click();
+    trigger?.click();
     await tick();
 
-    expect(popover.matches(':popover-open')).toBe(true);
+    expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).toHaveAttribute('data-floating');
-    expect(popover.style.translate).not.toBe('');
+    expect(popover?.style.translate).not.toBe('');
   });
 });
 
@@ -184,14 +187,14 @@ describe('popover scrollbar interaction guard', () => {
       <div id="my-popover" popover="auto" style="--_ds-floating: top">Content</div>
     `);
 
-    const trigger = document.querySelector('button') as HTMLButtonElement;
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const trigger = document.querySelector('button');
+    const popover = document.getElementById('my-popover');
 
-    trigger.click();
+    trigger?.click();
     await tick();
-    expect(popover.matches(':popover-open')).toBe(true);
+    expect(popover?.matches(':popover-open')).toBe(true);
 
-    const showSpy = vi.spyOn(popover, 'showPopover');
+    const showSpy = vi.spyOn(popover as HTMLElement, 'showPopover');
 
     document.dispatchEvent(new Event('pointerdown', { bubbles: true }));
     document.dispatchEvent(new Event('scroll', { bubbles: true }));
@@ -206,13 +209,13 @@ describe('popover scrollbar interaction guard', () => {
       <div id="my-popover" popover="auto" style="--_ds-floating: top">Content</div>
     `);
 
-    const trigger = document.querySelector('button') as HTMLButtonElement;
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const trigger = document.querySelector('button');
+    const popover = document.getElementById('my-popover');
 
-    trigger.click();
+    trigger?.click();
     await tick();
 
-    const showSpy = vi.spyOn(popover, 'showPopover');
+    const showSpy = vi.spyOn(popover as HTMLElement, 'showPopover');
 
     document.dispatchEvent(new Event('pointerdown', { bubbles: true }));
     document.dispatchEvent(new Event('pointerup', { bubbles: true }));
@@ -235,50 +238,59 @@ describe('popover overscroll sizing', () => {
 
   afterEach(() => window.scrollTo(0, 0));
 
-  it('keeps the max-height calculated at open when scrolling', async () => {
+  // Only test in browser as it requires ResizeObserver
+  it('keeps the max-height calculated at open when scrolling', {
+    tags: ['browser'],
+  }, async () => {
     renderScrollable();
 
-    const trigger = document.querySelector('button') as HTMLButtonElement;
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const trigger = document.querySelector('button');
+    const popover = document.getElementById('my-popover');
 
-    trigger.click();
+    trigger?.click();
     await tick();
 
-    await vi.waitFor(() => expect(popover.style.maxHeight).toMatch(/px$/));
-    const sizeAtOpen = popover.style.maxHeight;
+    await vi.waitFor(() => expect(popover?.style.maxHeight).toMatch(/px$/));
+    const sizeAtOpen = popover?.style.maxHeight;
     expect(sizeAtOpen).toMatch(/px$/);
 
     // Scroll so the available height below the trigger changes, then wait
     // for autoUpdate's recompute (arrowPseudo calls setProperty on each run)
-    const setPropertySpy = vi.spyOn(popover.style, 'setProperty');
+    const setPropertySpy = vi.spyOn(
+      (popover as HTMLElement).style,
+      'setProperty',
+    );
     window.scrollTo(0, 300);
     await vi.waitFor(() => expect(setPropertySpy).toHaveBeenCalled());
-    await new Promise((resolve) => setTimeout(resolve, 50)); // Let the full middleware pass (including size) settle
+    await tick(); // Let the full middleware pass (including size) settle
 
-    expect(popover.style.maxHeight).toBe(sizeAtOpen);
+    expect(popover?.style.maxHeight).toBe(sizeAtOpen);
   });
 
-  it('recalculates the max-height when the popover is re-opened', async () => {
+  // Only test in browser as it requires ResizeObserver
+  it('recalculates the max-height when the popover is re-opened', {
+    tags: ['browser'],
+  }, async () => {
     renderScrollable();
 
-    const trigger = document.querySelector('button') as HTMLButtonElement;
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const trigger = document.querySelector('button');
+    const popover = document.getElementById('my-popover');
 
-    trigger.click();
+    trigger?.click();
     await tick();
-    await vi.waitFor(() => expect(popover.style.maxHeight).toMatch(/px$/));
-    const sizeAtFirstOpen = popover.style.maxHeight;
+    await vi.waitFor(() => expect(popover?.style.maxHeight).toMatch(/px$/));
+    const sizeAtFirstOpen = popover?.style.maxHeight;
 
-    trigger.click(); // Close
+    trigger?.click(); // Close
     await tick();
     window.scrollTo(0, 300); // Trigger is now above the viewport, so available height below it is larger
-    trigger.click();
+    trigger?.click();
     await tick();
 
     await vi.waitFor(() =>
-      expect(popover.style.maxHeight).not.toBe(sizeAtFirstOpen),
+      expect(popover?.style.maxHeight).not.toBe(sizeAtFirstOpen),
     );
-    expect(popover.style.maxHeight).toMatch(/px$/);
+    expect(popover?.style.maxHeight).toMatch(/px$/);
   });
 });
 
@@ -297,8 +309,8 @@ describe('popover duplicate toggle guard', () => {
       <div id="my-popover" popover="manual" style="--_ds-floating: top">Content</div>
     `);
 
-    const trigger = document.getElementById('trigger') as HTMLButtonElement;
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const trigger = document.getElementById('trigger');
+    const popover = document.getElementById('my-popover');
     const OriginalResizeObserver = window.ResizeObserver;
     const resizeObserverSpy = vi
       .spyOn(window, 'ResizeObserver')
@@ -309,8 +321,8 @@ describe('popover duplicate toggle guard', () => {
         return new OriginalResizeObserver(callback); // Delegate to the real observer so autoUpdate() still works
       });
 
-    popover.togglePopover({ force: true, source: trigger });
-    popover.dispatchEvent(
+    popover?.togglePopover({ force: true, source: trigger as HTMLElement });
+    popover?.dispatchEvent(
       new CustomEvent('ds-toggle-source', {
         bubbles: true,
         composed: true,
@@ -319,7 +331,7 @@ describe('popover duplicate toggle guard', () => {
     );
     await tick();
 
-    expect(popover.matches(':popover-open')).toBe(true);
+    expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).toHaveAttribute('data-floating');
     // floating-ui's autoUpdate() creates 2 ResizeObservers (reference + floating
     // element) per call. A regression (positioning running twice) would double this.
@@ -332,11 +344,11 @@ describe('popover duplicate toggle guard', () => {
       <div id="my-popover" popover="manual" style="--_ds-floating: top">Content</div>
     `);
 
-    const trigger = document.getElementById('trigger') as HTMLButtonElement;
-    const popover = document.getElementById('my-popover') as HTMLElement;
+    const trigger = document.getElementById('trigger');
+    const popover = document.getElementById('my-popover');
 
-    popover.togglePopover(true);
-    popover.dispatchEvent(
+    popover?.togglePopover(true);
+    popover?.dispatchEvent(
       new CustomEvent('ds-toggle-source', {
         bubbles: true,
         composed: true,
@@ -344,14 +356,14 @@ describe('popover duplicate toggle guard', () => {
       }),
     );
     await tick();
-    popover.hidePopover();
+    popover?.hidePopover();
     await tick();
 
-    popover.togglePopover(true);
+    popover?.togglePopover(true);
     await tick();
 
-    expect(popover.matches(':popover-open')).toBe(true);
+    expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).toHaveAttribute('data-floating');
-    expect(popover.style.translate).not.toBe('');
+    expect(popover?.style.translate).not.toBe('');
   });
 });
