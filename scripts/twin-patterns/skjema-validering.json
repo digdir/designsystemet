@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "0.1.0",
+  "kind": "pattern",
+  "name": "Skjemavalidering (form validation and errors)",
+  "slug": "skjema-validering",
+  "package": {
+    "name": "@digdir/designsystemet-react",
+    "semver": "1.x"
+  },
+  "generated": {
+    "fromCommit": "n/a — patterns have no code source; authored from the pattern page",
+    "at": "2026-08-03T13:00:00Z",
+    "generator": "authored"
+  },
+  "links": {
+    "docs": "https://designsystemet.no/en/patterns/errors/"
+  },
+  "summary": {
+    "provenance": "authored",
+    "reviewedAgainst": "1.x",
+    "source": "https://designsystemet.no/en/patterns/errors/",
+    "value": "How a validated form reports errors: a per-field ValidationMessage under every invalid field, plus an ErrorSummary listing all errors with links that move focus to the offending field. An Alert is NOT the error mechanism for form validation."
+  },
+  "components": {
+    "provenance": "authored",
+    "reviewedAgainst": "1.x",
+    "source": "https://designsystemet.no/en/patterns/errors/",
+    "value": [
+      {
+        "ref": "error-summary",
+        "role": "Lists every current error; each item links to its field and moves focus there. Required once more than one error can occur."
+      },
+      {
+        "ref": "validation-message",
+        "role": "The error text for a single field, rendered directly under that field."
+      },
+      {
+        "ref": "field",
+        "role": "Wraps label + control + validation message and wires their ids."
+      },
+      {
+        "ref": "fieldset",
+        "role": "Groups related controls under a Legend (e.g. radio/checkbox groups)."
+      },
+      {
+        "ref": "suggestion",
+        "role": "A filtering combobox control; validates like any other field."
+      },
+      {
+        "ref": "alert",
+        "role": "NOT the validation mechanism. Only for page-level info/success messaging around the form."
+      }
+    ]
+  },
+  "composition": {
+    "provenance": "authored",
+    "reviewedAgainst": "1.x",
+    "source": "https://designsystemet.no/en/patterns/errors/",
+    "value": [
+      {
+        "id": "summary-placement",
+        "rule": "Place the ErrorSummary near the Next/Submit button. Page-top placement is the alternative, and only when: the page reloads on submit, users return to the form, or the errors do not prevent progression.",
+        "placement": "adjacent to the submit control (preferred) | top of form (conditional)",
+        "conditions": [
+          "page reloads on submit",
+          "user returns to the form",
+          "errors do not block progression"
+        ]
+      },
+      {
+        "id": "per-field-message",
+        "rule": "Every invalid field gets its own ValidationMessage rendered under the field, inside the same Field wrapper.",
+        "placement": "under the control, inside Field"
+      },
+      {
+        "id": "summary-links-move-focus",
+        "rule": "Each ErrorSummary.Link href targets the id of the invalid control so activating it moves focus to that control.",
+        "placement": "inside ErrorSummary.List > ErrorSummary.Item"
+      },
+      {
+        "id": "summary-completeness",
+        "rule": "The summary must include all applicable errors and entries must disappear as the user fixes them."
+      }
+    ]
+  },
+  "timing": {
+    "provenance": "authored",
+    "reviewedAgainst": "1.x",
+    "source": "https://designsystemet.no/en/patterns/errors/",
+    "value": [
+      {
+        "id": "not-while-typing",
+        "rule": "Never show an error while the user is still filling in a field."
+      },
+      {
+        "id": "on-blur-or-submit",
+        "rule": "Show errors when the user leaves a field, chooses to proceed, or submits."
+      },
+      {
+        "id": "empty-required",
+        "rule": "Empty mandatory fields produce no error until the user tries to proceed."
+      }
+    ]
+  },
+  "a11y": {
+    "provenance": "authored",
+    "reviewedAgainst": "1.x",
+    "source": "https://designsystemet.no/en/patterns/errors/",
+    "value": [
+      {
+        "id": "aria-invalid",
+        "rule": "Set aria-invalid='true' on every field in an error state.",
+        "wcag": ["3.3.1"]
+      },
+      {
+        "id": "aria-describedby",
+        "rule": "Link each field to its ValidationMessage with aria-describedby.",
+        "wcag": ["3.3.1"]
+      },
+      {
+        "id": "no-aria-errormessage",
+        "rule": "Do not use aria-errormessage — assistive-technology support is insufficient."
+      },
+      {
+        "id": "aria-live",
+        "rule": "Errors that appear dynamically live in an aria-live='polite' region.",
+        "wcag": ["4.1.3"]
+      },
+      {
+        "id": "focus-to-error",
+        "rule": "Activating an ErrorSummary link moves focus to the field it names.",
+        "wcag": ["2.4.3"]
+      },
+      {
+        "id": "group-with-legend",
+        "rule": "Related controls are grouped in a Fieldset with a Legend.",
+        "wcag": ["1.3.1"]
+      }
+    ]
+  },
+  "boundaries": {
+    "provenance": "authored",
+    "reviewedAgainst": "1.x",
+    "source": "https://designsystemet.no/en/patterns/errors/",
+    "value": [
+      {
+        "id": "never-disable-submit",
+        "rule": "Never disable the submit button to enforce validation."
+      },
+      {
+        "id": "alert-is-not-validation",
+        "rule": "Never use a lone Alert as the error mechanism for form validation — that is ErrorSummary + ValidationMessage."
+      },
+      {
+        "id": "no-error-while-typing",
+        "rule": "Never validate keystroke-by-keystroke while the field has focus."
+      }
+    ]
+  }
+}
