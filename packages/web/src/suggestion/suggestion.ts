@@ -51,9 +51,10 @@ const render = (self: DSSuggestionElement) => {
     attr(datalist, 'popover', 'manual'); // Ensure popover attribute is set on the list
     attr(datalist, 'data-is-floating', 'true'); // identifier for css to toggle opacity when it is placed by floating-ui.
   }
+  handleEmpty({ currentTarget: self });
 };
 
-const handleEmpty = ({ currentTarget: self }: Event) => {
+const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
   const { creatable, control, options } = self as DSSuggestionElement;
   if (!options) return;
 
