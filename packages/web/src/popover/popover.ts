@@ -90,6 +90,7 @@ function toggle(
 
   if (placement === 'none') return; // No need to position
 
+  let sized = false; // Only size once per open, so scrolling does not resize the popover
   const options = {
     strategy: 'absolute',
     placement,
@@ -105,9 +106,18 @@ function toggle(
         ? [
             size({
               apply({ availableHeight }) {
-                if (overscroll === 'fit')
-                  el.style.width = `${source.offsetWidth}px`; // Use offsetWidth to include padding, matching the width of the source element
-                el.style.maxHeight = `${Math.max(50, availableHeight - padding * 2)}px`;
+                if (sized) return;
+                sized = true;
+                const width = `${source.offsetWidth}px`; // Use offsetWidth to include padding, matching the width of the source element
+                const maxHeight = `${Math.max(50, availableHeight - padding * 2)}px`;
+
+                requestAnimationFrame(() => {
+                  // Avoid changing an observed element during ResizeObserver delivery.
+                  if (overscroll === 'fit' && el.style.width !== width)
+                    el.style.width = width;
+                  if (el.style.maxHeight !== maxHeight)
+                    el.style.maxHeight = maxHeight;
+                });
               },
             }),
           ]

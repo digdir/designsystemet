@@ -73,6 +73,37 @@ describe('popover floating behavior', () => {
     expect(popover).toHaveAttribute('data-floating', 'bottom-end');
   });
 
+  it('defers dimension changes to avoid resizing during ResizeObserver delivery', async () => {
+    const animationFrames: FrameRequestCallback[] = [];
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback) => {
+      animationFrames.push(callback);
+      return animationFrames.length;
+    });
+    render(`
+      <button style="width: 120px" popovertarget="my-popover">Open</button>
+      <div
+        id="my-popover"
+        popover="auto"
+        style="--_ds-floating: top; --_ds-floating-overscroll: fit"
+      >Content</div>
+    `);
+
+    document.querySelector('button')?.click();
+    await tick();
+
+    const popover = document.getElementById('my-popover') as HTMLElement;
+    expect(animationFrames.length).toBeGreaterThan(0);
+    expect(popover.style.width).toBe('');
+    expect(popover.style.maxHeight).toBe('');
+
+    animationFrames.forEach((callback) => {
+      callback(performance.now());
+    });
+
+    expect(popover.style.width).toBe('120px');
+    expect(popover.style.maxHeight).not.toBe('');
+  });
+
   it('does not position when data-placement is "none"', async () => {
     render(`
       <button popovertarget="my-popover">Open</button>
@@ -188,6 +219,67 @@ describe('popover scrollbar interaction guard', () => {
     document.dispatchEvent(new Event('pointerup', { bubbles: true }));
 
     expect(showSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('popover overscroll sizing', () => {
+  const renderScrollable = () =>
+    render(`
+      <button popovertarget="my-popover">Open</button>
+      <div
+        id="my-popover"
+        popover="auto"
+        style="--_ds-floating: bottom; --_ds-floating-overscroll: contain"
+      >Content</div>
+      <div style="height: 3000px"></div>
+    `);
+
+  afterEach(() => window.scrollTo(0, 0));
+
+  it('keeps the max-height calculated at open when scrolling', async () => {
+    renderScrollable();
+
+    const trigger = document.querySelector('button') as HTMLButtonElement;
+    const popover = document.getElementById('my-popover') as HTMLElement;
+
+    trigger.click();
+    await tick();
+
+    await vi.waitFor(() => expect(popover.style.maxHeight).toMatch(/px$/));
+    const sizeAtOpen = popover.style.maxHeight;
+    expect(sizeAtOpen).toMatch(/px$/);
+
+    // Scroll so the available height below the trigger changes, then wait
+    // for autoUpdate's recompute (arrowPseudo calls setProperty on each run)
+    const setPropertySpy = vi.spyOn(popover.style, 'setProperty');
+    window.scrollTo(0, 300);
+    await vi.waitFor(() => expect(setPropertySpy).toHaveBeenCalled());
+    await new Promise((resolve) => setTimeout(resolve, 50)); // Let the full middleware pass (including size) settle
+
+    expect(popover.style.maxHeight).toBe(sizeAtOpen);
+  });
+
+  it('recalculates the max-height when the popover is re-opened', async () => {
+    renderScrollable();
+
+    const trigger = document.querySelector('button') as HTMLButtonElement;
+    const popover = document.getElementById('my-popover') as HTMLElement;
+
+    trigger.click();
+    await tick();
+    await vi.waitFor(() => expect(popover.style.maxHeight).toMatch(/px$/));
+    const sizeAtFirstOpen = popover.style.maxHeight;
+
+    trigger.click(); // Close
+    await tick();
+    window.scrollTo(0, 300); // Trigger is now above the viewport, so available height below it is larger
+    trigger.click();
+    await tick();
+
+    await vi.waitFor(() =>
+      expect(popover.style.maxHeight).not.toBe(sizeAtFirstOpen),
+    );
+    expect(popover.style.maxHeight).toMatch(/px$/);
   });
 });
 
