@@ -159,6 +159,7 @@ export class DSFieldElement extends DSElement {
       attr(_counter, 'data-label', label); // Using attribute to prevent hydration errors, not using aria-label to make axe tests happy
       attr(_counter, 'data-state', state);
       attr(_counter, 'data-color', count < 0 ? 'danger' : null);
+      attr(_input, 'aria-invalid', count < 0 ? 'true' : null); // Toggle aria-invalid of textarea
 
       // Only update live region when user is actually typing
       if (event?.type === 'input' && label)
