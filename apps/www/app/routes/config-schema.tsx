@@ -3,8 +3,8 @@ import { getFileFromContentDir } from '~/_utils/files.server';
 import type { Route } from './+types/config-schema';
 
 export const loader = async ({ params: { version } }: Route.LoaderArgs) => {
-  /* get JSON schema from /content/schemas/cli/{VERSION} */
-  const file = getFileFromContentDir(`schemas/cli/${version}`);
+  /* get JSON schema from /content/schemas/config/{VERSION} */
+  const file = getFileFromContentDir(`schemas/config/${version}`);
 
   if (!file) {
     throw new Response('File not found', { status: 404 });
