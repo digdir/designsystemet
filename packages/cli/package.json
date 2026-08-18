@@ -4,7 +4,7 @@
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.12.0"
   },
   "repository": {
     "type": "git",
@@ -64,14 +64,14 @@
     "verify": "pnpm test && pnpm --filter @internal/digdir update:theme-digdir"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^14.0.0",
+    "@commander-js/extra-typings": "^15.0.0",
     "@digdir/designsystemet-types": "workspace:",
     "@inquirer/confirm": "^6.1.1",
     "@tokens-studio/sd-transforms": "2.0.3",
     "@tokens-studio/types": "0.5.2",
     "chroma-js": "^3.2.0",
     "colorjs.io": "^0.7.1",
-    "commander": "^14.0.3",
+    "commander": "^15.0.0",
     "fast-glob": "^3.3.3",
     "hsluv": "^1.0.2",
     "jsonc-parser": "^3.3.1",
