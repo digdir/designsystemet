@@ -55,7 +55,7 @@ export const useTokenModal = () => {
   const configBuildSnippet = `npx ${packageWithTag} tokens create --config designsystemet.config.json\nnpx ${packageWithTag} tokens build --config designsystemet.config.json`;
 
   const configSnippet = {
-    $schema: 'node_modules/@digdir/designsystemet/dist/config.schema.json',
+    $schema: 'https://designsystemet.no/schemas/cli/latest.json',
     outDir: './design-tokens',
     themes: {
       [theme.name]: {
