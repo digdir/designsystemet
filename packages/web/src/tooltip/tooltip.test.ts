@@ -4,6 +4,8 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { setTooltipElement } from './tooltip';
 
 const DELAY_HOVER = 300;
+const tick = async (_?: unknown) =>
+  await new Promise((resolve) => setTimeout(resolve)); // Let MutationObserver run Loop
 
 afterEach(() => {
   setTooltipElement(null); // Reset tooltip between tests
@@ -15,7 +17,7 @@ describe('tooltip behavior', () => {
     document.body.innerHTML = `<button data-tooltip="Help"></button>`;
 
     const el = document.querySelector('button') as HTMLElement;
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver run
+    await tick(); // Let MutationObserver run
 
     expect(el).toHaveAttribute('aria-label', 'Help');
     expect(el).not.toHaveAttribute('aria-description');
@@ -25,7 +27,7 @@ describe('tooltip behavior', () => {
     document.body.innerHTML = `<button data-tooltip="Help">Label</button>`;
 
     const el = document.querySelector('button') as HTMLElement;
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver run
+    await tick(); // Let MutationObserver run
 
     expect(el).toHaveAttribute('aria-description', 'Help');
     expect(el).not.toHaveAttribute('aria-label');
@@ -40,7 +42,7 @@ describe('tooltip behavior', () => {
     document.body.innerHTML = `<button data-tooltip="More info">Button</button>`;
 
     const button = document.querySelector('button') as HTMLButtonElement;
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
+    await tick(); // Let mutation observer run
 
     let eventSource: Element | undefined;
     tip.addEventListener('ds-toggle-source', (event) => {
@@ -156,7 +158,7 @@ describe('tooltip behavior', () => {
     document.body.innerHTML = `<button data-tooltip="#tip-source"></button><span id="tip-source">Text from element</span>`;
 
     const el = document.querySelector('button') as HTMLElement;
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver run
+    await tick(); // Let MutationObserver run
 
     expect(el).toHaveAttribute('aria-label', 'Text from element');
     expect(el).not.toHaveAttribute('aria-description');
@@ -166,21 +168,26 @@ describe('tooltip behavior', () => {
     const tip = document.createElement('div');
     setTooltipElement(tip);
 
-    document.body.innerHTML = `<button data-testid='hei' data-tooltip="Original">Label</button>`;
+    document.body.innerHTML = `<button data-tooltip="Original">Label</button>`;
 
-    const button = document.querySelector('button') as HTMLButtonElement;
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver run
+    const button = document.querySelector<HTMLButtonElement>('button');
+    await tick(); // Let MutationObserver run
     expect(button).toHaveAttribute('aria-description', 'Original');
     expect(tip.textContent).not.toBe('Original');
 
-    button.focus();
-    expect(tip).toBeVisible();
+    button?.focus();
+    try {
+      expect(tip).toBeVisible();
+    } catch {
+      expect(tip).toHaveClass(':popover-open'); // JSDOM does not correctly parse popover-polyfill CSS
+      // TODO: Should we document this for users who use JSDOM for testing?
+    }
     expect(tip.textContent).toBe('Original');
 
     // Change tooltip text programmatically
     expect(button).toHaveFocus();
-    button.setAttribute('data-tooltip', 'Updated');
-    await new Promise((resolve) => setTimeout(resolve, 100)); // Let MutationObserver run
+    button?.setAttribute('data-tooltip', 'Updated');
+    await tick(); // Let MutationObserver run
     expect(tip.textContent).toBe('Updated');
     expect(button).toHaveAttribute('aria-description', 'Updated');
 

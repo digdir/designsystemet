@@ -65,7 +65,10 @@ describe('data-clickdelegatefor', () => {
     target?.removeEventListener('click', targetSpy);
   });
 
-  it('should not activate an input when clicking a button inside its label', () => {
+  // Requires native browser <label> click handling to correctly dispatch click events
+  it('should not activate an input when clicking a button inside its label', {
+    tags: ['browser'],
+  }, () => {
     document.body.innerHTML = `
       <ds-field data-clickdelegatefor="target">
         <label>

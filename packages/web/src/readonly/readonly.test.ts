@@ -1,7 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
 
+import { userEvent } from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import { userEvent } from 'vitest/browser';
 
 describe('readonly behavior', () => {
   it('prevents non-Tab keydowns on readonly select', () => {
@@ -26,7 +26,10 @@ describe('readonly behavior', () => {
     expect(allowed.defaultPrevented).toBe(false);
   });
 
-  it('moves focus on readonly radio arrows without changing checked state', async () => {
+  // Requires native browser keyboard-to-click handling to correctly dispatch events
+  it('moves focus on readonly radio arrows without changing checked state', {
+    tags: ['browser'],
+  }, async () => {
     document.body.innerHTML = `
       <input type="radio" name="group" aria-readonly="true" checked />
       <input type="radio" name="group" aria-readonly="true" />
@@ -39,6 +42,7 @@ describe('readonly behavior', () => {
 
     radios[0].focus();
 
+    // Simulate arrow key navigation
     await userEvent.keyboard('{ArrowRight}');
 
     expect(document.activeElement).toBe(radios[1]);

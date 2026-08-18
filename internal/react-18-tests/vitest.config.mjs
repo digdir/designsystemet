@@ -3,7 +3,7 @@
 import { resolve } from 'node:path';
 import { defineProject } from 'vitest/config';
 import baseConfig from '../../packages/react/vitest.config.mjs';
-import * as pkgJson from './package.json';
+import pkgJson from './package.json' with { type: 'json' };
 
 const reactRoot = resolve(import.meta.dirname, '../../packages/react');
 const react18 = resolve(import.meta.dirname, 'node_modules');

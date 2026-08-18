@@ -3,6 +3,9 @@
 import { describe, expect, it } from 'vitest';
 import { pagination } from './pagination';
 
+const tick = async (_?: unknown) =>
+  await new Promise((resolve) => setTimeout(resolve)); // Let MutationObserver run Loop
+
 describe('pagination component', () => {
   it('has correct aria attributes', async () => {
     document.body.innerHTML = `
@@ -19,22 +22,17 @@ describe('pagination component', () => {
       </ds-pagination>
     `;
 
-    const paginationEl = document.querySelector('ds-pagination') as HTMLElement;
-    const prev = paginationEl.querySelector(
-      '[data-testid="prev"]',
-    ) as HTMLAnchorElement;
-    const next = paginationEl.querySelector(
-      '[data-testid="next"]',
-    ) as HTMLAnchorElement;
-    const links = [
-      ...paginationEl.querySelectorAll('a'),
-    ] as HTMLAnchorElement[];
+    const paginationEl = document.querySelector('ds-pagination');
+    const prev = paginationEl?.querySelector('[data-testid="prev"]');
+    const next = paginationEl?.querySelector('[data-testid="next"]');
+    const links = paginationEl?.querySelectorAll('a');
 
+    await tick(); // Let mutation observer run
     expect(paginationEl).toHaveAttribute('role', 'navigation');
     expect(prev).toHaveAttribute('aria-label', '1');
     expect(next).toHaveAttribute('aria-label', '3');
-    expect(links[2]).toHaveAttribute('aria-label', '2');
-    expect(links[2]).toHaveAttribute('aria-current', 'true');
+    expect(links?.[2]).toHaveAttribute('aria-label', '2');
+    expect(links?.[2]).toHaveAttribute('aria-current', 'true');
   });
 
   it('respects aria-labelledby and does not set aria-label', async () => {
@@ -70,12 +68,11 @@ describe('pagination component', () => {
       </ds-pagination>
     `;
 
-    const paginationEl = document.querySelector('ds-pagination') as HTMLElement;
-    const links = [
-      ...paginationEl.querySelectorAll('button'),
-    ] as HTMLButtonElement[];
-    const hidden = links[4];
+    const paginationEl = document.querySelector('ds-pagination');
+    const links = paginationEl?.querySelectorAll('button');
+    const hidden = links?.[4];
 
+    await tick(); // Let mutation observer run
     expect(hidden).toHaveAttribute('role', 'none');
     expect(hidden).toHaveAttribute('tabindex', '-1');
     expect(hidden).not.toHaveAttribute('aria-current');

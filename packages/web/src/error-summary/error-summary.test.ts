@@ -11,6 +11,9 @@ const render = () => {
     </ds-error-summary>`;
 };
 
+const tick = async (_?: unknown) =>
+  await new Promise((resolve) => setTimeout(resolve)); // Let MutationObserver run Loop
+
 describe('Error summary component', () => {
   beforeEach(() => {
     window.dsWarnings = false; // Prevent warning about missing heading while testing
@@ -18,15 +21,15 @@ describe('Error summary component', () => {
   afterEach(() => {
     window.dsWarnings = undefined;
   });
-  it('should set aria-labelledby, tabindex, and focus', () => {
+  it('should set aria-labelledby, tabindex, and focus', async () => {
     render();
 
     const errorSummary = document.querySelector('ds-error-summary');
     const heading = document.querySelector('h2');
 
+    await tick(); // Let mutation observer run
     expect(errorSummary).toBeInTheDocument();
     expect(heading).toBeInTheDocument();
-
     expect(heading?.id).not.toBe('');
     expect(errorSummary).toHaveAttribute('aria-labelledby', heading?.id);
     expect(errorSummary).toHaveAttribute('tabindex', '-1');
