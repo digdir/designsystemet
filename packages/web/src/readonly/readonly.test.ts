@@ -26,7 +26,10 @@ describe('readonly behavior', () => {
     expect(allowed.defaultPrevented).toBe(false);
   });
 
-  it('moves focus on readonly radio arrows without changing checked state', async () => {
+  // Requires native browser keyboard-to-click handling to correctly dispatch events
+  it('moves focus on readonly radio arrows without changing checked state', {
+    tags: ['browser'],
+  }, async () => {
     document.body.innerHTML = `
       <input type="radio" name="group" aria-readonly="true" checked />
       <input type="radio" name="group" aria-readonly="true" />
@@ -40,8 +43,7 @@ describe('readonly behavior', () => {
     radios[0].focus();
 
     // Simulate arrow key navigation
-    userEvent.keyboard('{ArrowRight}');
-    radios[1].focus();
+    await userEvent.keyboard('{ArrowRight}');
 
     expect(document.activeElement).toBe(radios[1]);
     expect(radios[0].checked).toBe(true);

@@ -16,6 +16,7 @@ if (
 
 // Polyfill for HTMLDialogElement methods in JSDOM
 beforeAll(() => {
+  if (typeof HTMLDialogElement.prototype.show === 'function') return; // No need to polyfill if supported
   HTMLDialogElement.prototype.show = function mock(this: HTMLDialogElement) {
     this.open = true;
   };
