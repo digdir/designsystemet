@@ -30,8 +30,11 @@ async function main() {
   }
   const src = path.join(CLI_ROOT, 'dist', schemaFile);
   const dst = path.join(SCHEMAS_DIR, `${await getCurrentVersion()}.json`);
+  const latestDst = path.join(SCHEMAS_DIR, 'latest.json');
   await fs.copyFile(src, dst);
   console.log(`Copied schema file to ${dst}`);
+  await fs.copyFile(src, latestDst);
+  console.log(`Copied schema file to ${latestDst}`);
 }
 
 main().catch((err) => {
