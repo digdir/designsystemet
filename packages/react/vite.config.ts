@@ -84,7 +84,7 @@ export default defineConfig(({ mode }) => ({
     sourcemap: false,
     // The clean script empties dist; emptying here would clobber earlier passes
     emptyOutDir: false,
-    rollupOptions: {
+    rolldownOptions: {
       external: [...dependencies, ...dependenciesSubmodules],
       output: {
         format: mode === 'cjs' ? 'cjs' : 'es',
