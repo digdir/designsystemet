@@ -17,6 +17,10 @@ export default [
     id: 'consent-action',
   }),
   ...prefix('/schemas', [
+    route('/config/:version', 'routes/config-schema.tsx', {
+      id: 'schemas-config',
+    }),
+    /* redirects to /schemas/config/:version */
     route('/cli/:version', 'routes/cli-schema.tsx', {
       id: 'schemas-cli',
     }),

@@ -1,19 +1,9 @@
-import { data } from 'react-router';
-import { getFileFromContentDir } from '~/_utils/files.server';
+import { redirect } from 'react-router';
 import type { Route } from './+types/cli-schema';
 
-export const loader = async ({ params: { version } }: Route.LoaderArgs) => {
-  /* get JSON schema from /content/schemas/cli/{VERSION} */
-  const file = getFileFromContentDir(`schemas/cli/${version}`);
-
-  if (!file) {
-    throw new Response('File not found', { status: 404 });
-  }
-
-  return data(JSON.parse(file), {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    status: 200,
+export const loader = ({ params: { version } }: Route.LoaderArgs) => {
+  /* the schema moved to /schemas/config/{VERSION} */
+  return redirect(`/schemas/config/${version}`, {
+    status: 301,
   });
 };
