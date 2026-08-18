@@ -1,12 +1,11 @@
+import { fileURLToPath } from 'node:url';
 import { reactRouter } from '@react-router/dev/vite';
-import { defineConfig, mergeConfig } from 'vite';
-import { defineAppConfig } from '../../vite.config.base.ts';
+import { defineConfig } from 'vite';
 
-/**
- * MDX files are compiled at request time by mdx-bundler rather than going through
- * Vite's module graph, so Vite has no way to know what to invalidate. Reload the
- * whole page instead.
- */
+const internalComponentsDir = fileURLToPath(
+  new URL('../../internal/components', import.meta.url),
+);
+
 function mdxFullReload() {
   return {
     name: 'mdx-full-reload',
@@ -19,27 +18,40 @@ function mdxFullReload() {
   };
 }
 
-export default defineConfig(({ isSsrBuild, command }) =>
-  mergeConfig(
-    defineAppConfig({
-      root: import.meta.dirname,
-      command,
-      isSsrBuild,
-      plugins: [reactRouter(), mdxFullReload()],
-    }),
-    {
-      // Opt out of any PostCSS config found by directory traversal; www ships
-      // plain CSS.
-      css: {
-        postcss: {
-          plugins: [],
-        },
-      },
-      server: {
-        warmup: {
-          clientFiles: ['./app/root.tsx', './app/entry.client.tsx'],
-        },
-      },
+export default defineConfig(({ isSsrBuild, command }) => ({
+  build: {
+    rolldownOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
+  },
+  css: {
+    postcss: {
+      plugins: [],
     },
-  ),
-);
+  },
+  // In dev, resolve @internal/components directly to its source so edits
+  // hot-reload. In build mode, fall back to normal package resolution via
+  // node_modules so peer-dep resolution stays correct.
+  resolve:
+    command === 'serve'
+      ? {
+          alias: { '@internal/components': internalComponentsDir },
+          tsconfigPaths: true,
+        }
+      : { tsconfigPaths: true },
+  plugins: [reactRouter(), mdxFullReload()],
+  ssr: {
+    noExternal: ['@navikt/aksel-icons', 'ramda'],
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router'],
+  },
+  server: {
+    warmup: {
+      clientFiles: ['./app/root.tsx', './app/entry.client.tsx'],
+    },
+  },
+  oxc: {
+    jsx: {
+      runtime: 'automatic',
+    },
+  },
+}));

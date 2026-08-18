@@ -1,6 +1,4 @@
 import { defineConfig } from 'vite';
-import { defineLibConfig } from '../../vite.config.base.ts';
-import pkg from './package.json' with { type: 'json' };
 
 /**
  * A single self-contained bundle for consumers loading the components straight
@@ -10,21 +8,20 @@ import pkg from './package.json' with { type: 'json' };
  * Dependencies are bundled in rather than externalized, since there is no module
  * loader to resolve them at runtime.
  */
-export default defineConfig(
-  defineLibConfig({
-    root: import.meta.dirname,
-    pkg,
-    entry: './src/index.ts',
-    minify: true,
+export default defineConfig({
+  build: {
+    target: 'es2022',
     sourcemap: true,
-    bundleDependencies: true,
-    outputs: [
-      {
-        format: 'umd',
-        dir: 'dist/umd',
-        name: 'Designsystemet',
-        entryFileNames: 'index.js',
-      },
-    ],
-  }),
-);
+    outDir: 'dist/umd',
+    emptyOutDir: false,
+    lib: {
+      entry: './src/index.ts',
+      name: 'Designsystemet',
+      formats: ['umd'],
+      fileName: () => 'index.js',
+    },
+    rolldownOptions: {
+      output: { minify: true },
+    },
+  },
+});
