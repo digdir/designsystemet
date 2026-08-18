@@ -31,8 +31,7 @@ const useClientBanner = (chunk: { fileName: string }) =>
 
 /* Declaration chunks are named `foo.d` — give them .ts/.cts, runtime chunks .js/.cjs */
 const fileNames =
-  (jsExt: 'js' | 'cjs', dtsExt: 'ts' | 'cts') =>
-  (chunk: { name: string }) =>
+  (jsExt: 'js' | 'cjs', dtsExt: 'ts' | 'cts') => (chunk: { name: string }) =>
     chunk.name.endsWith('.d') ? `[name].${dtsExt}` : `[name].${jsExt}`;
 
 /* The `./react-types` export — copied next to the emitted types so its
