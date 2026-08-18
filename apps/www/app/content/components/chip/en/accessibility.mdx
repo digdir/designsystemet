@@ -64,6 +64,18 @@ WCAG: [2.4.3 Focus Order (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/focu
 </span>
 
 <Divider/>
+\
+**Avoid long text strings in chips where possible**
+
+Long text strings can be difficult to read inside a chip. Use short and meaningful labels whenever possible.
+
+If longer text is required, you may need to truncate the visual presentation. Make sure the full content remains available both on hover and to screen reader users.
+
+<span data-size="sm"> 
+WCAG: [2.5.3 Label in Name (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name)
+</span> 
+
+<Divider/>
 
 ## Test with a keyboard
 
@@ -86,4 +98,3 @@ WCAG: [2.1.1 Keyboard (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/keyboar
 - The design system includes focus and hover styles. Verify that they are visible when navigating with a keyboard and when hovering with a pointing device.
 - Color contrast is handled by the design system's color system. If you deviate from the recommended color tokens, verify that the combination of text and background colors meets the required contrast ratios for the chip.
 - Sizing and scaling are handled by the design system's sizing system. If you deviate from it, verify that the chip remains usable when text is resized or when screen magnification is used, without loss of information or functionality.
-- When a chip truncates its content, the design system provides `data-tooltip` to ensure that the full content remains available on hover and to screen reader users. However, both behaviours should still be tested.

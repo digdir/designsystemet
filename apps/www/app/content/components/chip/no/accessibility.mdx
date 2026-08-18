@@ -54,6 +54,19 @@ WCAG: [2.4.3 Fokusrekkefølge (uutilsynet)](https://www.uutilsynet.no/wcag-stand
 </span> 
 
 <Divider/>
+\
+**Unngå lange tekststrenger i chiper når det er mulig**
+
+Lange tekststrenger kan være vanskelige å lese i en chip. Bruk korte og meningsbærende etiketter der det er mulig.
+
+Hvis lengre tekst er nødvendig, kan det være aktuelt å avkorte den visuelle presentasjonen. Sørg for at hele innholdet fortsatt er tilgjengelig både ved mouseover og for brukere av skjermleser.
+
+<span data-size="sm"> 
+WCAG: [2.5.3 Ledetekst i navn (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/150)
+</span> 
+
+<Divider/>
+
 ## Test med tastatur
 
 **Sjekk at du kan**
@@ -73,4 +86,3 @@ WCAG: [2.1.1 Tastatur (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/21
 - Designsystemet inkluderer stiler for focus og hover, sjekk likevel at disse vises ved henholdsvis tastaturmarkering og musepeker-markering (mouseover).
 - Kontrastforhold håndteres av fargesystemet i designsystemet. Dersom du avviker fra anbefalte fargetokens, må du kontrollere at kombinasjonen av tekstfarge og bakgrunnsfarge oppfyller kravene til kontrast for chipen.
 - Størrelse og skalering håndteres av designsystemets størrelsessystem. Dersom du avviker fra dette, må du kontrollere at chip fungerer ved forstørring av tekst og bruk av skjermforstørrer, uten tap av informasjon eller funksjonalitet.
-- Når chip avkorter innholdet har vi `data-tooltip`for å sikre at innholdet fremdeles er tilgjengelig ved mouseover og for skjermlesere, begge deler bør likevel testes.
