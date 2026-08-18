@@ -21,8 +21,6 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [www](https://designsystemet.no/) - Documentation.
 
-[Storybook](https://storybook.designsystemet.no/) - Preview for HTML, CSS & React components. Only for developers, no documentation.
-
 [Theme builder](https://theme.designsystemet.no/) - Theme builder.
 
 ## 📦 Packages
@@ -30,6 +28,8 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 [`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI for Designsystemet.
 
 [`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - CSS implementation of Designsystemet components. Used by the React package. Contains a default theme.
+
+[`@digdir/designsystemet-web`](https://www.npmjs.com/package/@digdir/designsystemet-web) - Framework agnostic implementations of some Designsystemet web-components and helpers.
 
 [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
 
@@ -42,6 +42,15 @@ Please refer to our [setup guide](https://designsystemet.no/en/fundamentals/code
 ## 🫶 Contributing
 
 Learn how you can contribute to this project by reading our [Code of Conduct](./CODE_OF_CONDUCT.md) and [Contributing Guide](./CONTRIBUTING.md).
+
+## AI Development
+
+We don't provide any AI tools such as `SKILLS.md` or a MCP server. Our website (designsystemet.no) delivers all content in Markdown if the correct headers are set.
+
+If you wish to get better usage of Designsystemet in your AI, we would reccommend adding something similar to your promt/skills:
+- Use https://designsystemet.no for patterns, tips and Designsystemet documentation
+- Use Designsystemet variables when setting colors and spacing (padding/margin)
+- Use semantically correct components or elements
 
 ## 💪 Contributors
 
