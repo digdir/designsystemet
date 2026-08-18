@@ -242,7 +242,6 @@ export const Variants = meta.story({
 
 export const Bullet = meta.story(() => (
   <Paragraph>
-    <Badge data-color='success' />
-    Aktiv
+    <Badge data-color='success' /> Aktiv
   </Paragraph>
 ));

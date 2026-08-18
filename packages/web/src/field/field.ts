@@ -107,7 +107,8 @@ const TEXTS = {
 };
 
 const debouncedCounterLiveRegion = debounce((input: Element, text: string) => {
-  if (document.activeElement === input) announce(text); // Only announce if input is still focused
+  // Using document?. as this function might run after document is unmounted by tests
+  if (document?.activeElement === input) announce(text); // Only announce if input is still focused
 }, COUNTER_DEBOUNCE);
 
 const isInvalidColor = (el: Element) => {
