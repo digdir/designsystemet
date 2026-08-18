@@ -6,6 +6,7 @@ import {
   Label,
   Select,
   type TextfieldProps,
+  ValidationMessage,
 } from '@digdir/designsystemet-react';
 import { ArrowRightIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
@@ -36,7 +37,8 @@ export const WithError = () => {
   return (
     <Field>
       <Label>Fødselsnummer</Label>
-      <Input aria-invalid />
+      <Input />
+      <ValidationMessage>Vennligst fyll ut fødselsnummer</ValidationMessage>
     </Field>
   );
 };
@@ -45,7 +47,10 @@ export const WithErrorEn = () => {
   return (
     <Field>
       <Label>Social Security Number</Label>
-      <Input aria-invalid />
+      <Input />
+      <ValidationMessage>
+        Please enter your social security number
+      </ValidationMessage>
     </Field>
   );
 };

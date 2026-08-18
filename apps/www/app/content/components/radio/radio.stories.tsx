@@ -80,20 +80,10 @@ export const WithError = () => {
       <Fieldset.Description>
         Trondheim er delt inn i fire bydeler
       </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' aria-invalid='true' />
-      <Radio
-        label='Lerkendal'
-        value='lerkendal'
-        name='city'
-        aria-invalid='true'
-      />
-      <Radio label='Heimdal' value='heimdal' name='city' aria-invalid='true' />
-      <Radio
-        label='Midtbyen'
-        value='midtbyen'
-        name='city'
-        aria-invalid='true'
-      />
+      <Radio label='Østbyen' value='ostbyen' name='city' />
+      <Radio label='Lerkendal' value='lerkendal' name='city' />
+      <Radio label='Heimdal' value='heimdal' name='city' />
+      <Radio label='Midtbyen' value='midtbyen' name='city' />
       <ValidationMessage data-color='danger'>
         Du må velge en bydel før du kan fortsette.
       </ValidationMessage>
@@ -108,20 +98,10 @@ export const WithErrorEn = () => {
       <Fieldset.Description>
         Trondheim is divided into four districts
       </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' aria-invalid='true' />
-      <Radio
-        label='Lerkendal'
-        value='lerkendal'
-        name='city'
-        aria-invalid='true'
-      />
-      <Radio label='Heimdal' value='heimdal' name='city' aria-invalid='true' />
-      <Radio
-        label='Midtbyen'
-        value='midtbyen'
-        name='city'
-        aria-invalid='true'
-      />
+      <Radio label='Østbyen' value='ostbyen' name='city' />
+      <Radio label='Lerkendal' value='lerkendal' name='city' />
+      <Radio label='Heimdal' value='heimdal' name='city' />
+      <Radio label='Midtbyen' value='midtbyen' name='city' />
       <ValidationMessage data-color='danger'>
         You must choose a district before you can continue.
       </ValidationMessage>
