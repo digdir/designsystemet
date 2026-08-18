@@ -34,7 +34,7 @@
   ],
   "scripts": {
     "build": "pnpm run clean && tsdown",
-    "clean": "rimraf dist && rimraf tsc-build && rimraf --glob \"*.tsbuildinfo\"",
+    "clean": "rimraf dist",
     "types": "tsc --noEmit"
   },
   "peerDependencies": {
