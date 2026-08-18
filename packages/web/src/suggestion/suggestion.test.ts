@@ -18,14 +18,13 @@ const render = () => {
 };
 
 describe('suggestion component', () => {
-  it('sets placeholder, popovertarget, and popover attributes', async () => {
+  it('sets popovertarget, and popover attributes', async () => {
     const suggestion = render();
     const input = suggestion.querySelector('input') as HTMLInputElement;
     const list = suggestion.querySelector('u-datalist') as HTMLElement;
 
     await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
 
-    expect(input).toHaveAttribute('placeholder', ' ');
     expect(list.id).toBeTruthy();
     expect(input).toHaveAttribute('popovertarget', list.id);
     expect(list).toHaveAttribute('popover', 'manual');

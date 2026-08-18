@@ -13,7 +13,7 @@ const meta = preview.meta({
 export const Preview = meta.story({
   render: (args) => (
     <Search {...args}>
-      <Search.Input aria-label='Søk' />
+      <Search.Input aria-label='Søk' type='text' />
       <Search.Clear />
       <Search.Button />
     </Search>
@@ -21,11 +21,12 @@ export const Preview = meta.story({
 });
 
 export const Controlled = meta.story(() => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState('');
   return (
     <>
       <Search>
         <Search.Input
+          type='text'
           aria-label='Søk'
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -54,7 +55,7 @@ export const Variants = meta.story(() => (
     <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
     <Search>
-      <Search.Input aria-label='Søk' />
+      <Search.Input aria-label='Søk' type='text' />
       <Search.Clear />
       <Search.Button />
     </Search>
@@ -62,7 +63,7 @@ export const Variants = meta.story(() => (
     <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
     <Search>
-      <Search.Input aria-label='Søk' />
+      <Search.Input aria-label='Søk' type='text' />
       <Search.Clear />
       <Search.Button variant='secondary' />
     </Search>
@@ -73,7 +74,7 @@ export const WithLabel = meta.story(() => (
   <Field>
     <Label>Søk etter katter</Label>
     <Search>
-      <Search.Input name='cat-search' />
+      <Search.Input name='cat-search' type='text' />
       <Search.Clear />
       <Search.Button />
     </Search>
@@ -95,6 +96,7 @@ export const Form = meta.story(() => {
       >
         <Search>
           <Search.Input
+            type='text'
             aria-label='Søk'
             value={value}
             onChange={(e) => setValue(e.target.value)}
@@ -109,4 +111,27 @@ export const Form = meta.story(() => {
       </Paragraph>
     </>
   );
+});
+
+export const DeprecatedMarkup = meta.story({
+  render: () => (
+    <div className='ds-search'>
+      <input
+        className='ds-input'
+        type='search'
+        placeholder=''
+        aria-label='Søk'
+      />
+      <button
+        className='ds-button'
+        data-icon='true'
+        data-variant='tertiary'
+        type='reset'
+        aria-label='Tøm'
+      ></button>
+      <button className='ds-button' type='submit'>
+        Søk
+      </button>
+    </div>
+  ),
 });
