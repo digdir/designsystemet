@@ -13,6 +13,6 @@
       "./react-types.d.ts"
     ]
   },
-  "include": ["src/**/*.test.ts*"],
-  "references": [{ "path": "tsconfig.lib.json" }]
+  "include": ["src"],
+  "exclude": ["src/**/*.stories.ts*", "src/**/*.chromatic.ts*", "src/**/*.mdx"]
 }
