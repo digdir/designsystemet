@@ -10,7 +10,7 @@ export default defineConfig({
     esm: { outDir: 'dist/esm' },
     cjs: { outDir: 'dist/cjs' },
   },
-  banner: "'use client';",
+  banner: { js: "'use client';" },
   platform: 'browser',
   target: 'baseline-widely-available',
   dts: true,
