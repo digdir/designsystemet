@@ -18,6 +18,13 @@ export default defineMain({
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       include: [path.resolve(dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
+      // Use a tsconfig without project references: with references, TypeScript
+      // resolves imports to referenced projects' declaration outputs, which no
+      // longer exist since tsdown took over declaration emit from tsc.
+      tsconfigPath: path.resolve(
+        dirname,
+        '../../../packages/react/tsconfig.lib.json',
+      ),
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop: PropItem) => {
