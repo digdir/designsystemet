@@ -1,9 +1,9 @@
 import { act, render, screen, waitFor } from '@testing-library/react';
-import { Suggestion, SuggestionItem } from './suggestion';
+import { useState } from 'react';
+import { Suggestion, type SuggestionItem } from './suggestion';
 import { SuggestionInput } from './suggestion-input';
 import { SuggestionList } from './suggestion-list';
 import { SuggestionOption } from './suggestion-option';
-import { useState } from 'react';
 
 const norway = { label: 'Norway', value: 'norway' };
 const norway2 = { label: 'Norway', value: 'norway-2' };
