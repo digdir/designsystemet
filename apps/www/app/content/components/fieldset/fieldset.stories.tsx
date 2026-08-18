@@ -6,6 +6,7 @@ import {
   Label,
   Radio,
   Select,
+  ValidationMessage,
 } from '@digdir/designsystemet-react';
 
 export const Preview = () => {
@@ -50,6 +51,26 @@ export const WithCheckboxEn = () => {
     <Fieldset>
       <Fieldset.Legend>Do you accept the terms?</Fieldset.Legend>
       <Checkbox label='Yes, I accept' value='agree' />
+    </Fieldset>
+  );
+};
+
+export const WithValidation = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Godtar du vilkårene?</Fieldset.Legend>
+      <Checkbox label='Ja, jeg godtar' value='agree' />
+      <ValidationMessage>Du må godta villkårene</ValidationMessage>
+    </Fieldset>
+  );
+};
+
+export const WithValidationEn = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Do you accept the terms?</Fieldset.Legend>
+      <Checkbox label='Yes, I accept' value='agree' />
+      <ValidationMessage>You must accept the terms</ValidationMessage>
     </Fieldset>
   );
 };

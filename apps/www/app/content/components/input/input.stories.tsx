@@ -5,8 +5,8 @@ import {
   Input,
   Label,
   Select,
-  ValidationMessage,
   type TextfieldProps,
+  ValidationMessage,
 } from '@digdir/designsystemet-react';
 import { ArrowRightIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';

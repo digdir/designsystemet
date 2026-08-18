@@ -4,7 +4,7 @@ A good rule of thumb is that **fieldset is a set of fields**
 <Story story="PreviewEn" defaultOpen />
 
 ## Usage
-Use `ds-fieldset` on the `<fieldset>` element.
+Use `ds-fieldset` on the `<fieldset>` element, and place `<legend>` and `<ds-field>` elements inside.
 
 ```html
 <fieldset class="ds-fieldset">
@@ -20,6 +20,13 @@ Use `ds-fieldset` on the `<fieldset>` element.
 Build the group with [checkbox](/en/components/docs/checkbox/code) or [radio](/en/components/docs/radio/code) as children of `<fieldset>`. This also applies when the group has only one element.
 
 <Story story="WithCheckboxEn" />
+
+### With validation message
+
+When a [validation message](/en/components/docs/validation-message/code) with `data-field="validation"` is a child of `<fieldset>`, the containing `<ds-field>` elements will
+automatically be updated to reflect the validation state.
+
+<Story story="WithValidationEn" />
 
 ### Multiple field types
 
