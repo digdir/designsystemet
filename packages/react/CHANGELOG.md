@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.20.0
+
+### Minor Changes
+
+- **Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React ([#5126](https://github.com/digdir/designsystemet/pull/5126))
+
+### Patch Changes
+
+- **Suggestion:** Skip unnecessary matching after clicking option in single mode ([#5207](https://github.com/digdir/designsystemet/pull/5207))
+
+- **ValidationMessage:** Now correctly sets `aria-invalid="true"` only if `danger` color ([#5149](https://github.com/digdir/designsystemet/pull/5149))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+- Updated dependencies [[`22039ea`](https://github.com/digdir/designsystemet/commit/22039ea4851e15c997bcc79c2cb3924fad8babe9), [`6a14e88`](https://github.com/digdir/designsystemet/commit/6a14e8812607c9230f2ec1201842c9aa2c0ab730), [`e9ed8d2`](https://github.com/digdir/designsystemet/commit/e9ed8d241e8861c52ae6865bdd69f6b8e3f53a33), [`e55de64`](https://github.com/digdir/designsystemet/commit/e55de648117fc7f5b4b65e534e2a3191518c859d), [`7fcc452`](https://github.com/digdir/designsystemet/commit/7fcc4527e40bc1172df93b9bcd59fcfee9f8ef5b), [`8208147`](https://github.com/digdir/designsystemet/commit/8208147801e90306b04cd97c2ee70352a2cffea1), [`262f229`](https://github.com/digdir/designsystemet/commit/262f2295e12e8a31d01a2a9acaca16cb3ed04da9), [`9946c52`](https://github.com/digdir/designsystemet/commit/9946c521246a3ac062a987505e841477d4f64b56)]:
+  - @digdir/designsystemet-web@1.20.0
+  - @digdir/designsystemet-types@1.20.0
+
 ## 1.19.1
 
 ### Patch Changes

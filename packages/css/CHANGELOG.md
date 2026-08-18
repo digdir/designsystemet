@@ -1,5 +1,26 @@
 # Change Log
 
+## 1.20.0
+
+### Minor Changes
+
+- **Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React ([#5126](https://github.com/digdir/designsystemet/pull/5126))
+
+### Patch Changes
+
+- **Badge:** now uses `--dsc-badge-size--count` as minimum size when `data-count` is defined ([#5213](https://github.com/digdir/designsystemet/pull/5213))
+
+- **Errorsummary**: Now has consistent padding `--ds-size-7` on all sides ([#5219](https://github.com/digdir/designsystemet/pull/5219))
+
+- **file-upload**: hover does not give solid border anymore ([#5182](https://github.com/digdir/designsystemet/pull/5182))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+- **file-upload**: block padding is now `--ds-size-7` ([#5182](https://github.com/digdir/designsystemet/pull/5182))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.20.0
+
 ## 1.19.1
 
 ### Patch Changes
