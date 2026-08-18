@@ -48,7 +48,7 @@
   "scripts": {
     "designsystemet": "pnpm node ${DESIGNSYSTEMET_BIN:-./bin/designsystemet.ts}",
     "designsystemet:inspect": "pnpm node --inspect-brk ./bin/designsystemet.ts",
-    "build": "tsdown && pnpm build:json-schema",
+    "build": "vite build && pnpm build:json-schema",
     "build:json-schema": "pnpm node ./src/scripts/createJsonSchema.ts && pnpm node ./src/scripts/create-json-schema-next.ts",
     "types": "tsc --noEmit",
     "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./temp/options/design-tokens --theme options --clean",
@@ -88,7 +88,8 @@
     "@types/node": "24.13.3",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.32.0",
-    "tsdown": "0.22.14",
+    "rolldown-plugin-dts": "0.27.13",
+    "vite": "8.2.1",
     "typescript": "6.0.3"
   }
 }

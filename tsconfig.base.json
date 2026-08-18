@@ -12,6 +12,9 @@
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    // Allows vite.config.ts files to import the shared `vite.config.base.ts`
+    // by its real filename, which Vite's native config loader requires.
+    "allowImportingTsExtensions": true,
     // This allows our files to use window. Should be removed when RSC is added
     "lib": ["dom", "es2022"],
     "importHelpers": true,
