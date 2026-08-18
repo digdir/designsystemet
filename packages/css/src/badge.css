@@ -36,7 +36,7 @@
     }
   }
 
-  &[data-count]:not([data-count=""])::before {
+  &[data-count]:not([data-count=''])::before {
     min-height: var(--dsc-badge-size--count);
     min-width: var(--dsc-badge-size--count);
     vertical-align: calc(var(--dsc-badge-size--count) / 2);
