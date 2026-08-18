@@ -45,7 +45,8 @@ Learn how you can contribute to this project by reading our [Code of Conduct](./
 
 ## AI Development
 
-We don't provide any AI tools such as `SKILLS.md` or a MCP server. Our website (designsystemet.no) delivers all content in Markdown if the correct headers are set.
+We don't provide any AI tools such as `SKILLS.md` or an MCP server.
+Our website (designsystemet.no) delivers all content in Markdown if the correct headers are set. (`Accept: text/markdown`)
 
 If you wish to get better usage of Designsystemet in your AI, we would reccommend adding something similar to your promt/skills:
 - Use https://designsystemet.no for patterns, tips and Designsystemet documentation
