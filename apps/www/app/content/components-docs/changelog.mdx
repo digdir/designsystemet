@@ -1,7 +1,105 @@
 ---
 title: "Changelog"
-latestVersion: 1.19.1
+latestVersion: 1.20.0
 ---
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.20.0
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Patch Changes
+
+- Reduce minimum required node version to `>=22.0.0`. ([#5165](https://github.com/digdir/designsystemet/pull/5165))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+- Bump minimum required Node.js version to `>=22.12.0` as required by `commander`. ([#5212](https://github.com/digdir/designsystemet/pull/5212))
+
+- Change url for config schema on www.designsystement.no, from `cli` to `config` to better reflect which file the schema is for. ([#5211](https://github.com/digdir/designsystemet/pull/5211))
+  ```json
+  "$schema": "https://designsystemet.no/schemas/config/[VERSION].json"
+  ```
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.20.0
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Minor Changes
+
+- **Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React ([#5126](https://github.com/digdir/designsystemet/pull/5126))
+
+#### Patch Changes
+
+- **Badge:** now uses `--dsc-badge-size--count` as minimum size when `data-count` is defined ([#5213](https://github.com/digdir/designsystemet/pull/5213))
+
+- **Errorsummary**: Now has consistent padding `--ds-size-7` on all sides ([#5219](https://github.com/digdir/designsystemet/pull/5219))
+
+- **file-upload**: hover does not give solid border anymore ([#5182](https://github.com/digdir/designsystemet/pull/5182))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+- **file-upload**: block padding is now `--ds-size-7` ([#5182](https://github.com/digdir/designsystemet/pull/5182))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.20.0
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Minor Changes
+
+- **Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React ([#5126](https://github.com/digdir/designsystemet/pull/5126))
+
+#### Patch Changes
+
+- **Suggestion:** Skip unnecessary matching after clicking option in single mode ([#5207](https://github.com/digdir/designsystemet/pull/5207))
+
+- **ValidationMessage:** Now correctly sets `aria-invalid="true"` only if `danger` color ([#5149](https://github.com/digdir/designsystemet/pull/5149))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+- Updated dependencies [[`22039ea`](https://github.com/digdir/designsystemet/commit/22039ea4851e15c997bcc79c2cb3924fad8babe9), [`6a14e88`](https://github.com/digdir/designsystemet/commit/6a14e8812607c9230f2ec1201842c9aa2c0ab730), [`e9ed8d2`](https://github.com/digdir/designsystemet/commit/e9ed8d241e8861c52ae6865bdd69f6b8e3f53a33), [`e55de64`](https://github.com/digdir/designsystemet/commit/e55de648117fc7f5b4b65e534e2a3191518c859d), [`7fcc452`](https://github.com/digdir/designsystemet/commit/7fcc4527e40bc1172df93b9bcd59fcfee9f8ef5b), [`8208147`](https://github.com/digdir/designsystemet/commit/8208147801e90306b04cd97c2ee70352a2cffea1), [`262f229`](https://github.com/digdir/designsystemet/commit/262f2295e12e8a31d01a2a9acaca16cb3ed04da9), [`9946c52`](https://github.com/digdir/designsystemet/commit/9946c521246a3ac062a987505e841477d4f64b56)]:
+  - @digdir/designsystemet-web@1.20.0
+  - @digdir/designsystemet-types@1.20.0
+
+<Divider/>
+
+### @digdir/designsystemet-web
+
+#### Minor Changes
+
+- **Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React ([#5126](https://github.com/digdir/designsystemet/pull/5126))
+
+#### Patch Changes
+
+- **Suggestion**: Hide the empty state when options are initially available. ([#5189](https://github.com/digdir/designsystemet/pull/5189))
+
+- **clickdelegatefor**: Now allows native label click, avoiding duplicate input activation. ([#5201](https://github.com/digdir/designsystemet/pull/5201))
+
+- **popover:** Prevent ResizeObserver loop errors when positioning the option list. ([#5164](https://github.com/digdir/designsystemet/pull/5164))
+
+- **popover**: Won't resize overscroll on scroll while open ([#5175](https://github.com/digdir/designsystemet/pull/5175))
+
+- **Suggestion:** Skip unnecessary matching after clicking option in single mode ([#5207](https://github.com/digdir/designsystemet/pull/5207))
+
+- **ValidationMessage:** Now correctly sets `aria-invalid="true"` only if `danger` color ([#5149](https://github.com/digdir/designsystemet/pull/5149))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+</div>
 
 <div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",
