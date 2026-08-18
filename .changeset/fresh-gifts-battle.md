@@ -2,4 +2,4 @@
 "@digdir/designsystemet-web": patch
 ---
 
-Now bundling `esm`,`cjs` and `umd` formats using `tsdown`.
+Now bundling the `ESM`, `CJS`, and `UMD` formats using `tsdown`.
