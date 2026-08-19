@@ -150,7 +150,7 @@ export function orderBySize(sizes: string[]): string[] {
 
 export function addSeverityColors(colors: Theme['colors']): Theme['colors'] {
   // Add severity colors if not present
-  return R.mergeDeepLeft<Theme['colors'], Theme['colors']>(colors, severityColors);
+  return { ...colors, ...severityColors };
 }
 
 export function toColorNames(themeColors: Theme['colors']): string[] {
