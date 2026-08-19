@@ -1,14 +1,14 @@
 import { parseColorValue } from './color';
 import { resolveCompositeValue } from './resolver';
-import type { PreviewData } from './types';
+import type { TokenModel } from './types';
 import { parseNumber } from './utils';
 
 export async function syncEffectStyles(
-  preview: PreviewData,
+  model: TokenModel,
   activeTokenSets: string[],
   logs: string[],
 ): Promise<void> {
-  const desired = preview.flatTokens.filter(
+  const desired = model.flatTokens.filter(
     (token) =>
       token.tokenSet === 'semantic/style' && token.type === 'boxShadow',
   );
@@ -27,7 +27,7 @@ export async function syncEffectStyles(
     const styleName = token.figmaName;
     const resolved = resolveCompositeValue(
       token.value,
-      preview,
+      model,
       activeTokenSets,
     ) as Array<Record<string, unknown>> | null;
 

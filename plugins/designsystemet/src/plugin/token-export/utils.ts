@@ -79,6 +79,16 @@ export function inferVariableName(
   return figmaName;
 }
 
+// Key for one theme/scheme combination in the pre-resolved preview values.
+// Shared between the plugin side (which prepares the values) and the UI
+// (which looks them up).
+export function previewVariantKey(
+  theme: string | null,
+  scheme: string | null,
+): string {
+  return `${theme ?? ''}::${scheme ?? ''}`;
+}
+
 export function formatValue(value: unknown): string {
   if (typeof value === 'string') {
     return value;

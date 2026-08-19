@@ -1,20 +1,34 @@
 import { COLLECTION } from './constants';
-import type { PreviewData } from './types';
+import type { FlatToken, TokenModel } from './types';
 import { figmaNameToPath, parseNumber } from './utils';
 
+// Lookup from `tokenSet::path` to token, built lazily per model. Kept out of
+// the model itself so it never has to be serialized.
+const tokenLookups = new WeakMap<TokenModel, Map<string, FlatToken>>();
+
+function getTokenLookup(model: TokenModel): Map<string, FlatToken> {
+  let lookup = tokenLookups.get(model);
+  if (!lookup) {
+    lookup = new Map();
+    for (const token of model.flatTokens) {
+      lookup.set(token.tokenSet + '::' + token.path, token);
+    }
+    tokenLookups.set(model, lookup);
+  }
+  return lookup;
+}
+
 export function getActiveTokenSets(
-  preview: PreviewData,
+  model: TokenModel,
   selectedTheme: string | null,
   selectedScheme: string | null,
 ): string[] {
   const activeSets = new Set<string>();
-  const semanticMode = preview.themes.find(
+  const semanticMode = model.themes.find(
     (mode) => mode.group === COLLECTION.SEMANTIC,
   );
-  const theme = preview.themeOptions.find(
-    (item) => item.name === selectedTheme,
-  );
-  const scheme = preview.colorSchemeOptions.find(
+  const theme = model.themeOptions.find((item) => item.name === selectedTheme);
+  const scheme = model.colorSchemeOptions.find(
     (item) => item.name === selectedScheme,
   );
 
@@ -29,7 +43,7 @@ export function getActiveTokenSets(
   for (const tokenSet of scheme?.tokenSets ?? []) {
     activeSets.add(tokenSet);
   }
-  for (const set of preview.tokenSets) {
+  for (const set of model.tokenSets) {
     activeSets.add(set.path);
   }
 
@@ -38,7 +52,7 @@ export function getActiveTokenSets(
 
 export function resolveValue(
   value: unknown,
-  preview: PreviewData,
+  model: TokenModel,
   activeTokenSets: string[],
   stack: string[] = [],
 ): unknown {
@@ -52,16 +66,11 @@ export function resolveValue(
 
   const exactReference = value.match(/^\{([^}]+)\}$/);
   if (exactReference) {
-    return resolveTokenValue(
-      exactReference[1],
-      preview,
-      activeTokenSets,
-      stack,
-    );
+    return resolveTokenValue(exactReference[1], model, activeTokenSets, stack);
   }
 
   if (value.includes('{')) {
-    return resolveExpression(value, preview, activeTokenSets, stack);
+    return resolveExpression(value, model, activeTokenSets, stack);
   }
 
   return value;
@@ -69,12 +78,12 @@ export function resolveValue(
 
 export function resolveCompositeValue(
   value: unknown,
-  preview: PreviewData,
+  model: TokenModel,
   activeTokenSets: string[],
 ): unknown {
   if (Array.isArray(value)) {
     return value.map((item) =>
-      resolveCompositeValue(item, preview, activeTokenSets),
+      resolveCompositeValue(item, model, activeTokenSets),
     );
   }
 
@@ -82,25 +91,25 @@ export function resolveCompositeValue(
     return Object.fromEntries(
       Object.entries(value).map(([key, nested]) => [
         key,
-        resolveCompositeValue(nested, preview, activeTokenSets),
+        resolveCompositeValue(nested, model, activeTokenSets),
       ]),
     );
   }
 
-  return resolveValue(value, preview, activeTokenSets, []);
+  return resolveValue(value, model, activeTokenSets, []);
 }
 
 export function findUnresolvedReferences(
-  preview: PreviewData,
+  model: TokenModel,
 ): Array<{ tokenSet: string; path: string; reference: string }> {
-  const available = buildAvailableReferenceNames(preview);
+  const available = buildAvailableReferenceNames(model);
   const unresolved: Array<{
     tokenSet: string;
     path: string;
     reference: string;
   }> = [];
 
-  for (const token of preview.flatTokens) {
+  for (const token of model.flatTokens) {
     for (const reference of token.references) {
       if (
         !available.has(reference) &&
@@ -120,11 +129,12 @@ export function findUnresolvedReferences(
 
 function resolveTokenValue(
   reference: string,
-  preview: PreviewData,
+  model: TokenModel,
   activeTokenSets: string[],
   stack: string[],
 ): unknown {
   const candidates = getReferenceCandidates(reference);
+  const lookup = getTokenLookup(model);
 
   for (const path of candidates) {
     if (stack.includes(path)) {
@@ -132,11 +142,11 @@ function resolveTokenValue(
     }
 
     for (const tokenSet of activeTokenSets) {
-      const token = preview.tokenLookup[tokenSet + '::' + path];
+      const token = lookup.get(tokenSet + '::' + path);
       if (token) {
         return resolveValue(
           token.value,
-          preview,
+          model,
           activeTokenSets,
           stack.concat(path),
         );
@@ -149,13 +159,13 @@ function resolveTokenValue(
 
 function resolveExpression(
   expression: string,
-  preview: PreviewData,
+  model: TokenModel,
   activeTokenSets: string[],
   stack: string[],
 ): unknown {
   let allNumeric = true;
   const replaced = expression.replace(/\{([^}]+)\}/g, (_match, reference) => {
-    const value = resolveTokenValue(reference, preview, activeTokenSets, stack);
+    const value = resolveTokenValue(reference, model, activeTokenSets, stack);
     const number = parseNumber(value);
 
     if (number === null) {
@@ -210,10 +220,10 @@ function getReferenceCandidates(reference: string): string[] {
   return candidates;
 }
 
-function buildAvailableReferenceNames(preview: PreviewData): Set<string> {
+function buildAvailableReferenceNames(model: TokenModel): Set<string> {
   const available = new Set<string>();
 
-  for (const token of preview.flatTokens) {
+  for (const token of model.flatTokens) {
     available.add(token.path);
 
     if (token.path.startsWith('theme.')) {
@@ -221,7 +231,7 @@ function buildAvailableReferenceNames(preview: PreviewData): Set<string> {
     }
   }
 
-  for (const collection of preview.collections) {
+  for (const collection of model.collections) {
     for (const variable of collection.variablePreview) {
       const dottedName = figmaNameToPath(variable.name);
       available.add(dottedName);
