@@ -79,6 +79,8 @@ export default {
     switch: 'Switch',
     primary: 'Primær',
     secondary: 'Sekundær',
+    grid: 'Rutenett',
+    list: 'Liste',
   },
   overview: {
     'login-title': 'Logg inn i portalen',

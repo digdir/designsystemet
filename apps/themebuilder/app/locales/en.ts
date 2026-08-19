@@ -80,6 +80,8 @@ export default {
     switch: 'Switch',
     primary: 'Primary',
     secondary: 'Secondary',
+    grid: 'Grid',
+    list: 'List',
   },
   overview: {
     'login-title': 'Log in to the portal',
