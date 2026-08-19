@@ -20,7 +20,7 @@ header {
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-  padding: 16px 20px;
+  padding: var(--ds-size-4) var(--ds-size-5);
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
   background: var(--ds-color-neutral-background-tinted);
 }
@@ -68,8 +68,8 @@ footer {
 .tx-banner {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  margin: 12px 20px 0;
+  gap: var(--ds-size-3);
+  margin: var(--ds-size-3) var(--ds-size-5) 0;
 }
 
 .tx-banner-body {
@@ -89,7 +89,7 @@ footer {
 .tx-hero {
   display: grid;
   gap: 10px;
-  padding: 18px 20px;
+  padding: 18px var(--ds-size-5);
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
   background: var(--ds-color-neutral-background-tinted);
 }
@@ -98,11 +98,11 @@ footer {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: var(--ds-size-4);
 }
 
 .tx-control-label {
-  margin-bottom: 4px;
+  margin-bottom: var(--ds-size-1);
   color: var(--ds-color-neutral-text-subtle);
 }
 
@@ -133,7 +133,7 @@ footer {
 
 .tx-color-grid {
   display: grid;
-  gap: 4px;
+  gap: var(--ds-size-1);
 }
 
 .tx-color-row {
@@ -159,8 +159,8 @@ footer {
 }
 
 .tx-swatch {
-  width: 32px;
-  height: 32px;
+  width: var(--ds-size-8);
+  height: var(--ds-size-8);
   border-radius: 4px;
   background:
     linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%),
@@ -206,7 +206,7 @@ footer {
 .tx-font-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--ds-size-3);
 }
 
 .tx-font-item {
@@ -232,7 +232,7 @@ footer {
   display: grid;
   min-height: 420px;
   place-items: center;
-  padding: 40px;
+  padding: var(--ds-size-10);
   color: var(--ds-color-neutral-text-subtle);
   text-align: center;
 }
@@ -244,7 +244,7 @@ footer {
   z-index: 30;
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: var(--ds-size-6);
   background: rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(6px);
 }
@@ -252,9 +252,9 @@ footer {
 .tx-overlay-card {
   display: grid;
   justify-items: center;
-  gap: 12px;
+  gap: var(--ds-size-3);
   min-width: 220px;
-  padding: 20px 24px;
+  padding: var(--ds-size-5) var(--ds-size-6);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 8px;
   background: var(--ds-color-neutral-surface-default);
