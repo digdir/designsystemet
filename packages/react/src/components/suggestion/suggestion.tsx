@@ -266,7 +266,11 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
           {...rest}
         >
           {selectedItems.map((item) => (
-            <data key={item.value} value={item.value}>
+            <data
+              key={item.value}
+              value={item.value}
+              suppressHydrationWarning // Since <ds-suggestion> adds attributes
+            >
               {renderSelected(item)}
             </data>
           ))}
