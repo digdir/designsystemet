@@ -1,5 +1,22 @@
 # Change Log
 
+## 1.20.0
+
+### Patch Changes
+
+- Reduce minimum required node version to `>=22.0.0`. ([#5165](https://github.com/digdir/designsystemet/pull/5165))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+- Bump minimum required Node.js version to `>=22.12.0` as required by `commander`. ([#5212](https://github.com/digdir/designsystemet/pull/5212))
+
+- Change url for config schema on www.designsystement.no, from `cli` to `config` to better reflect which file the schema is for. ([#5211](https://github.com/digdir/designsystemet/pull/5211))
+  ```json
+  "$schema": "https://designsystemet.no/schemas/config/[VERSION].json"
+  ```
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.20.0
+
 ## 1.19.1
 
 ### Patch Changes

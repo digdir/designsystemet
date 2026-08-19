@@ -1,5 +1,7 @@
 # @digdir/designsystemet-types
 
+## 1.20.0
+
 ## 1.19.1
 
 ## 1.19.0

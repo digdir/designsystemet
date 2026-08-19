@@ -3,4 +3,4 @@
 "@digdir/designsystemet-web": patch
 ---
 
-**Suggestion:** Skip unnecessary matching after clicking option in single mode
+**Suggestion:** no longer moves focus to chip when clicking inside datalist
