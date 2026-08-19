@@ -15,7 +15,6 @@ export default defineConfig({
   target: 'baseline-widely-available',
   dts: true,
   fixedExtension: false,
-  clean: true,
   // react-types.d.ts imports './types', which must resolve to the emitted
   // dist/esm/types.d.ts — so the copy lives inside dist/esm
   copy: [{ from: './react-types.d.ts', to: './dist/esm' }],
