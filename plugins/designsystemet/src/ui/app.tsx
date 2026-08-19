@@ -235,7 +235,7 @@ function App() {
                 })
               }
             >
-              Upload
+              Preview
             </Button>
           )}
 
