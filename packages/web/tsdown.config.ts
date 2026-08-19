@@ -34,7 +34,6 @@ export default defineConfig([
     entry: ['./src/index.ts'],
     outDir: 'dist',
     format: 'esm',
-    clean: true,
     dts: true,
     fixedExtension: false,
     deps: { onlyBundle: inlinedDeps },
@@ -69,7 +68,6 @@ export default defineConfig([
     sourcemap: true,
     minify: true,
     dts: false,
-    clean: false,
     unbundle: true,
     deps: { onlyBundle: inlinedDeps },
     outputOptions: {
@@ -78,7 +76,6 @@ export default defineConfig([
     },
   },
   // CommonJS build with individual files
-
   {
     entry: ['./src/index.ts'],
     outDir: 'dist/cjs',
@@ -86,7 +83,6 @@ export default defineConfig([
     sourcemap: true,
     minify: true,
     dts: false,
-    clean: false,
     unbundle: true,
     deps: { onlyBundle: inlinedDeps },
     outputOptions: {
@@ -105,7 +101,8 @@ export default defineConfig([
     sourcemap: true,
     minify: true,
     dts: false,
-    clean: false,
+    // Bundles all dependencies, including inlined deps, to avoid issues with UMD builds.
+    // Suppresses warnings about missing peer dependencies, since UMD builds are meant to be used in browsers where peer dependencies may not be available.
     deps: { alwaysBundle: () => true, onlyBundle: false },
     outputOptions: {
       entryFileNames: '[name].js',
