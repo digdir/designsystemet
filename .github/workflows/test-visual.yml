@@ -24,11 +24,6 @@ on:
       - "packages/**/*.stories.tsx?"
       - "apps/storybook/**"
       - "design-tokens/**/*.jsonc?"
-
-concurrency:
-  group: visual-${{ github.event.pull_request.number || github.run_id }}
-  cancel-in-progress: true
-
 permissions:
   contents: write
   pull-requests: write
@@ -37,6 +32,9 @@ permissions:
 
 jobs:
   pr-visual-tests:
+    concurrency:
+      group: visual-${{ github.event.pull_request.number || github.run_id }}
+      cancel-in-progress: true
     if: ${{ github.event_name == 'pull_request' && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     permissions:
