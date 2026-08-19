@@ -106,7 +106,6 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           status: 'success',
           preview: {
             previewData: buildPreviewData(tokenModel),
-            colorNames: Array.from(semanticColorNames),
             themeNames,
           },
           message: `Imported ${files.length} token sets from ${themeNames.length} themes.`,
