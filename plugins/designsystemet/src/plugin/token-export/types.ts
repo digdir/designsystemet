@@ -32,45 +32,52 @@ export type CollectionPreview = {
   }>;
 };
 
-export type SemanticColorScale = {
-  name: string;
-  roles: Array<{
-    name: string;
-    path: string;
-    value: unknown;
-  }>;
-};
-
-export type BorderRadiusPreview = {
-  name: string;
-  path: string;
-  value: unknown;
-};
-
-export type FontFamilyPreview = {
-  name: string;
-  path: string;
-  // A `{reference}` to the token path rather than a copied raw value, so the UI
-  // resolves it against the active token sets and follows the selected theme.
-  value: string;
-};
-
 export type ThemeOption = {
   name: string;
   tokenSets: string[];
 };
 
-export type PreviewData = {
+// Import-side model. Stays on the plugin side (importer, collection specs,
+// text/effect styles, resolver) and is never posted to the UI.
+export type TokenModel = {
   tokenSets: Array<{
     path: string;
   }>;
   flatTokens: FlatToken[];
-  // Plain object (not Map) so it survives figma.ui.postMessage serialization to the UI.
-  tokenLookup: Record<string, FlatToken>;
   themes: ModePreview[];
   collections: CollectionPreview[];
   themeOptions: ThemeOption[];
   colorSchemeOptions: ThemeOption[];
+  warnings: string[];
+};
+
+// UI-side preview model. All values are resolved ahead of time on the plugin
+// side — one entry per theme/scheme combination, keyed by previewVariantKey()
+// — so the UI renders by lookup and needs no token resolver.
+export type SemanticColorRole = {
+  name: string;
+  // CSS color per preview variant; null when the value could not be resolved.
+  color: Record<string, string | null>;
+};
+
+export type SemanticColorScale = {
+  name: string;
+  roles: SemanticColorRole[];
+};
+
+export type BorderRadiusPreview = {
+  name: string;
+  values: Record<string, { px: number | null; label: string }>;
+};
+
+export type FontFamilyPreview = {
+  name: string;
+  values: Record<string, { family: string | null; label: string }>;
+};
+
+export type PreviewData = {
+  themeOptions: string[];
+  colorSchemeOptions: string[];
   semanticColorScales: SemanticColorScale[];
   borderRadii: BorderRadiusPreview[];
   fontFamilies: FontFamilyPreview[];

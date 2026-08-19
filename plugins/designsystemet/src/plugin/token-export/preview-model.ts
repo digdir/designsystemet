@@ -1,24 +1,40 @@
+import { semanticColorMap } from '@digdir/designsystemet/color';
+import { toCssColor } from './color';
 import { COLLECTION } from './constants';
 import { findReferences, flattenTokens } from './parser';
-import { findUnresolvedReferences } from './resolver';
+import {
+  findUnresolvedReferences,
+  getActiveTokenSets,
+  resolveValue,
+} from './resolver';
 import type {
+  BorderRadiusPreview,
   CollectionPreview,
   FlatToken,
+  FontFamilyPreview,
   LoadedFile,
   ModePreview,
   PreviewData,
   SemanticColorScale,
   ThemeOption,
+  TokenModel,
 } from './types';
 import {
   compareByOrder,
+  formatValue,
   inferVariableName,
   isMetaFile,
+  parseNumber,
   pathToFigmaName,
+  previewVariantKey,
 } from './utils';
 import { mapTokenTypeToVariableType } from './variable-values';
 
-export function buildPreview(files: LoadedFile[]): PreviewData {
+const SEMANTIC_ROLE_ORDER = Object.keys(semanticColorMap);
+
+// Builds the import-side model used by the Figma importer and the resolver.
+// This stays on the plugin side; the UI gets buildPreviewData(model) instead.
+export function buildTokenModel(files: LoadedFile[]): TokenModel {
   const warnings: string[] = [];
 
   const fileByTokenSet = new Map<string, LoadedFile>();
@@ -43,19 +59,16 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
     }));
 
   const flatTokens: FlatToken[] = [];
-  const tokenLookup: Record<string, FlatToken> = {};
   for (const set of tokenSets) {
     for (const token of set.tokens) {
-      const flatToken: FlatToken = {
+      flatTokens.push({
         tokenSet: set.path,
         path: token.path,
         figmaName: pathToFigmaName(token.path),
         type: token.type,
         value: token.value,
         references: findReferences(token.value),
-      };
-      flatTokens.push(flatToken);
-      tokenLookup[set.path + '::' + token.path] = flatToken;
+      });
     }
   }
 
@@ -79,10 +92,9 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
     );
   }
 
-  const preview: PreviewData = {
+  const model: TokenModel = {
     tokenSets: tokenSets.map((set) => ({ path: set.path })),
     flatTokens,
-    tokenLookup,
     themes: modePreviews,
     collections,
     themeOptions: buildThemeOptions(
@@ -90,13 +102,10 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
       tokenSets.map((set) => set.path),
     ),
     colorSchemeOptions: buildColorSchemeOptions(modePreviews),
-    semanticColorScales: buildSemanticColorScales(flatTokens, modePreviews),
-    borderRadii: buildBorderRadii(flatTokens),
-    fontFamilies: buildFontFamilies(flatTokens),
     warnings,
   };
 
-  const unresolvedReferences = findUnresolvedReferences(preview);
+  const unresolvedReferences = findUnresolvedReferences(model);
   for (const reference of unresolvedReferences.slice(0, 25)) {
     warnings.push(
       `Unresolved alias: {${reference.reference}} used in ${reference.tokenSet}/${reference.path}`,
@@ -109,7 +118,58 @@ export function buildPreview(files: LoadedFile[]): PreviewData {
     );
   }
 
-  return preview;
+  return model;
+}
+
+// One theme/scheme combination the preview values are prepared for.
+type PreviewVariant = {
+  key: string;
+  activeTokenSets: string[];
+};
+
+// Builds the UI preview from the token model. Every displayed value is
+// resolved here — once per theme/scheme variant — so the UI needs no token
+// lookup or resolver, mirroring how the CLI prepares preview tokens
+// (packages/cli/src/scripts/update-preview-tokens.ts).
+export function buildPreviewData(model: TokenModel): PreviewData {
+  const themeNames = optionNamesOrNull(model.themeOptions);
+  const schemeNames = optionNamesOrNull(model.colorSchemeOptions);
+
+  const variants: PreviewVariant[] = themeNames.flatMap((theme) =>
+    schemeNames.map((scheme) => ({
+      key: previewVariantKey(theme, scheme),
+      activeTokenSets: getActiveTokenSets(model, theme, scheme),
+    })),
+  );
+
+  return {
+    themeOptions: model.themeOptions.map((option) => option.name),
+    colorSchemeOptions: model.colorSchemeOptions.map((option) => option.name),
+    semanticColorScales: buildSemanticColorScales(model, variants),
+    borderRadii: buildBorderRadii(model, variants),
+    fontFamilies: buildFontFamilies(model, variants),
+    warnings: model.warnings,
+  };
+}
+
+// A missing option axis still needs one variant, resolved without that axis.
+function optionNamesOrNull(options: ThemeOption[]): Array<string | null> {
+  return options.length > 0 ? options.map((option) => option.name) : [null];
+}
+
+function prepareValues<T>(
+  model: TokenModel,
+  variants: PreviewVariant[],
+  value: unknown,
+  prepare: (resolved: unknown) => T,
+): Record<string, T> {
+  const values: Record<string, T> = {};
+  for (const variant of variants) {
+    values[variant.key] = prepare(
+      resolveValue(value, model, variant.activeTokenSets, []),
+    );
+  }
+  return values;
 }
 
 function buildModePreview(
@@ -246,14 +306,14 @@ function existingTokenSets(mode: ModePreview): string[] {
 }
 
 function buildSemanticColorScales(
-  flatTokens: FlatToken[],
-  modePreviews: ModePreview[],
+  model: TokenModel,
+  variants: PreviewVariant[],
 ): SemanticColorScale[] {
-  const scales = new Map<string, SemanticColorScale>();
-  const scaleOrder = getSemanticColorScaleOrder(modePreviews);
+  const scales = new Map<string, Array<{ name: string; value: unknown }>>();
+  const scaleOrder = getSemanticColorScaleOrder(model.themes);
 
-  for (const token of flatTokens) {
-    // Each color scale is now its own token set (semantic/color/<name>); the token
+  for (const token of model.flatTokens) {
+    // Each color scale is its own token set (semantic/color/<name>); the token
     // path inside the set is the semantic role (e.g. "background-default").
     const colorSetMatch = /^semantic\/color\/(.+)$/.exec(token.tokenSet);
     if (!colorSetMatch || token.type !== 'color') {
@@ -261,30 +321,30 @@ function buildSemanticColorScales(
     }
 
     const scaleName = colorSetMatch[1];
-    const roleName = token.figmaName;
-
-    if (!scales.has(scaleName)) {
-      scales.set(scaleName, { name: scaleName, roles: [] });
-    }
-
-    scales.get(scaleName)?.roles.push({
-      name: roleName,
-      path: token.path,
-      value: token.value,
-    });
+    const roles = scales.get(scaleName) || [];
+    roles.push({ name: token.figmaName, value: token.value });
+    scales.set(scaleName, roles);
   }
 
-  return Array.from(scales.values())
-    .filter((scale) => scale.name !== 'focus')
-    .map((scale) => ({
-      name: scale.name,
-      roles: scale.roles.sort((a, b) => a.name.localeCompare(b.name)),
+  return Array.from(scales.entries())
+    .filter(([name]) => name !== 'focus')
+    .map(([name, roles]) => ({
+      name,
+      roles: roles
+        .sort((a, b) => compareByOrder(a.name, b.name, SEMANTIC_ROLE_ORDER))
+        .map((role) => ({
+          name: role.name,
+          color: prepareValues(model, variants, role.value, toCssColor),
+        })),
     }))
     .sort((a, b) => compareByOrder(a.name, b.name, scaleOrder));
 }
 
-function buildBorderRadii(flatTokens: FlatToken[]) {
-  return flatTokens
+function buildBorderRadii(
+  model: TokenModel,
+  variants: PreviewVariant[],
+): BorderRadiusPreview[] {
+  return model.flatTokens
     .filter(
       (token) =>
         token.tokenSet === 'semantic/style' &&
@@ -293,23 +353,27 @@ function buildBorderRadii(flatTokens: FlatToken[]) {
     )
     .map((token) => ({
       name: pathToFigmaName(token.path.replace(/^border-radius\./, '')),
-      path: token.path,
-      value: token.value,
+      values: prepareValues(model, variants, token.value, (resolved) => {
+        const number = parseNumber(resolved);
+        return {
+          px: number === null ? null : Math.max(0, number),
+          label: number === null ? formatValue(token.value) : `${number}px`,
+        };
+      }),
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 // The font-family token is defined once per `themes/<name>` set, so the same path shows
-// up in every theme. Dedupe on path and store a `{reference}` instead of any one theme's
-// raw value — resolving the reference against the active token sets picks the selected
-// theme's definition.
-function buildFontFamilies(flatTokens: FlatToken[]) {
-  const byPath = new Map<
-    string,
-    { name: string; path: string; value: string }
-  >();
+// up in every theme. Dedupe on path and resolve a `{reference}` instead of any one
+// theme's raw value — resolving per variant picks the selected theme's definition.
+function buildFontFamilies(
+  model: TokenModel,
+  variants: PreviewVariant[],
+): FontFamilyPreview[] {
+  const byPath = new Map<string, { name: string; value: string }>();
 
-  for (const token of flatTokens) {
+  for (const token of model.flatTokens) {
     if (
       token.type !== 'fontFamilies' ||
       (token.path !== 'font-family' && !token.path.startsWith('font-family.'))
@@ -320,15 +384,23 @@ function buildFontFamilies(flatTokens: FlatToken[]) {
     if (!byPath.has(token.path)) {
       byPath.set(token.path, {
         name: token.figmaName,
-        path: token.path,
         value: `{${token.path}}`,
       });
     }
   }
 
-  return Array.from(byPath.values()).sort((a, b) =>
-    a.name.localeCompare(b.name),
-  );
+  return Array.from(byPath.values())
+    .map((font) => ({
+      name: font.name,
+      values: prepareValues(model, variants, font.value, (resolved) => {
+        const family =
+          typeof resolved === 'string' && resolved.trim() !== ''
+            ? resolved
+            : null;
+        return { family, label: family ?? formatValue(font.value) };
+      }),
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 function getSemanticColorScaleOrder(modePreviews: ModePreview[]): string[] {
