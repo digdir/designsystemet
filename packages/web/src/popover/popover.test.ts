@@ -225,6 +225,10 @@ describe('popover scrollbar interaction guard', () => {
 });
 
 describe('popover overscroll sizing', () => {
+  // Sizing is applied in a requestAnimationFrame (see popover.ts), and frames
+  // can stall well past vi.waitFor's 1s default when parallel test files
+  // compete for the browser's main thread, so wait with a generous timeout
+  const waitForOptions = { timeout: 1500 };
   const renderScrollable = () =>
     render(`
       <button popovertarget="my-popover">Open</button>
@@ -250,7 +254,10 @@ describe('popover overscroll sizing', () => {
     trigger?.click();
     await tick();
 
-    await vi.waitFor(() => expect(popover?.style.maxHeight).toMatch(/px$/));
+    await vi.waitFor(
+      () => expect(popover?.style.maxHeight).toMatch(/px$/),
+      waitForOptions,
+    );
     const sizeAtOpen = popover?.style.maxHeight;
     expect(sizeAtOpen).toMatch(/px$/);
 
@@ -261,7 +268,10 @@ describe('popover overscroll sizing', () => {
       'setProperty',
     );
     window.scrollTo(0, 300);
-    await vi.waitFor(() => expect(setPropertySpy).toHaveBeenCalled());
+    await vi.waitFor(
+      () => expect(setPropertySpy).toHaveBeenCalled(),
+      waitForOptions,
+    );
     await tick(); // Let the full middleware pass (including size) settle
 
     expect(popover?.style.maxHeight).toBe(sizeAtOpen);
@@ -278,7 +288,10 @@ describe('popover overscroll sizing', () => {
 
     trigger?.click();
     await tick();
-    await vi.waitFor(() => expect(popover?.style.maxHeight).toMatch(/px$/));
+    await vi.waitFor(
+      () => expect(popover?.style.maxHeight).toMatch(/px$/),
+      waitForOptions,
+    );
     const sizeAtFirstOpen = popover?.style.maxHeight;
 
     trigger?.click(); // Close
@@ -287,8 +300,9 @@ describe('popover overscroll sizing', () => {
     trigger?.click();
     await tick();
 
-    await vi.waitFor(() =>
-      expect(popover?.style.maxHeight).not.toBe(sizeAtFirstOpen),
+    await vi.waitFor(
+      () => expect(popover?.style.maxHeight).not.toBe(sizeAtFirstOpen),
+      waitForOptions,
     );
     expect(popover?.style.maxHeight).toMatch(/px$/);
   });
