@@ -1,18 +1,18 @@
 import { COLLECTION } from './constants';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
 import { resolveCompositeValue } from './resolver';
-import type { PreviewData } from './types';
+import type { TokenModel } from './types';
 import { parseNumber, pathToFigmaName } from './utils';
 import { findVariable } from './variable-sync';
 
 export async function syncTextStyles(
-  preview: PreviewData,
+  model: TokenModel,
   activeTokenSets: string[],
   variableLookup: Map<string, Variable>,
   fontCache: FontCache,
   logs: string[],
 ): Promise<void> {
-  const desired = preview.flatTokens.filter(
+  const desired = model.flatTokens.filter(
     (token) =>
       token.tokenSet === 'semantic/style' && token.type === 'typography',
   );
@@ -31,7 +31,7 @@ export async function syncTextStyles(
     const styleName = token.figmaName;
     const styleValue = resolveCompositeValue(
       token.value,
-      preview,
+      model,
       activeTokenSets,
     ) as Record<string, unknown> | null;
 

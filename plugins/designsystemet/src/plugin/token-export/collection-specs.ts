@@ -1,6 +1,6 @@
 import { COLLECTION } from './constants';
 import { resolveValue } from './resolver';
-import type { FlatToken, PreviewData } from './types';
+import type { FlatToken, TokenModel } from './types';
 import { inferVariableName, pathToFigmaName } from './utils';
 import {
   convertRawVariableValue,
@@ -31,13 +31,13 @@ export type CollectionSpec = {
 };
 
 export function buildCollectionSpecs(
-  preview: PreviewData,
+  model: TokenModel,
   activeTokenSets: string[],
   logs: string[],
 ): CollectionSpec[] {
   const byGroup = new Map<string, CollectionSpec>();
 
-  for (const mode of preview.themes) {
+  for (const mode of model.themes) {
     if (!byGroup.has(mode.group)) {
       byGroup.set(mode.group, {
         name: mode.group,
@@ -55,7 +55,7 @@ export function buildCollectionSpecs(
     }
     collection.modeNames.push(mode.name);
     const modeActiveTokenSets = getModeActiveTokenSets(
-      preview,
+      model,
       activeTokenSets,
       mode,
     );
@@ -74,13 +74,13 @@ export function buildCollectionSpecs(
         continue;
       }
 
-      const tokens = preview.flatTokens.filter(
+      const tokens = model.flatTokens.filter(
         (token) => token.tokenSet === selected.tokenSet,
       );
 
       for (const token of tokens) {
         const entries = expandVariableEntries(
-          preview,
+          model,
           mode.group,
           mode.name,
           token,
@@ -117,7 +117,7 @@ export function buildCollectionSpecs(
 
           const valueSpec = buildValueSpec(
             token,
-            preview,
+            model,
             modeActiveTokenSets,
             mode.group,
             mode.name,
@@ -140,9 +140,9 @@ export function buildCollectionSpecs(
 }
 
 function getModeActiveTokenSets(
-  preview: PreviewData,
+  model: TokenModel,
   activeTokenSets: string[],
-  mode: PreviewData['themes'][number],
+  mode: TokenModel['themes'][number],
 ): string[] {
   const prioritized = new Set<string>();
 
@@ -156,7 +156,7 @@ function getModeActiveTokenSets(
     prioritized.add(tokenSet);
   }
 
-  for (const item of preview.tokenSets) {
+  for (const item of model.tokenSets) {
     prioritized.add(item.path);
   }
 
@@ -164,13 +164,13 @@ function getModeActiveTokenSets(
 }
 
 function expandVariableEntries(
-  preview: PreviewData,
+  model: TokenModel,
   group: string,
   modeName: string,
   token: FlatToken,
 ): Array<{ name: string }> {
   if (group === COLLECTION.COLOR_SCHEME || group === COLLECTION.TYPOGRAPHY) {
-    const scopedName = inferScopedThemeVariableName(preview, token);
+    const scopedName = inferScopedThemeVariableName(model, token);
     if (scopedName) {
       return [{ name: scopedName }];
     }
@@ -181,7 +181,7 @@ function expandVariableEntries(
 
 function buildValueSpec(
   token: FlatToken,
-  preview: PreviewData,
+  model: TokenModel,
   activeTokenSets: string[],
   group: string,
   modeName: string,
@@ -194,7 +194,7 @@ function buildValueSpec(
       ? null
       : mapReferenceToVariableTarget(
           exactReference[1],
-          preview,
+          model,
           token,
           group,
           modeName,
@@ -209,7 +209,7 @@ function buildValueSpec(
     }
   }
 
-  const resolved = resolveValue(token.value, preview, activeTokenSets, []);
+  const resolved = resolveValue(token.value, model, activeTokenSets, []);
   const rawValue = convertRawVariableValue(token.type, resolved);
 
   if (rawValue === null) {
@@ -232,12 +232,12 @@ function shouldResolveReferenceAsRaw(token: FlatToken, group: string): boolean {
 
 function mapReferenceToVariableTarget(
   reference: string,
-  preview: PreviewData,
+  model: TokenModel,
   token: FlatToken,
   group: string,
   modeName: string,
 ): { collection: string; name: string } | null {
-  const themeScopedSuffix = getThemeScopedSuffix(reference, preview, token);
+  const themeScopedSuffix = getThemeScopedSuffix(reference, model, token);
 
   if (group === COLLECTION.THEME && themeScopedSuffix) {
     if (
@@ -260,7 +260,7 @@ function mapReferenceToVariableTarget(
     const suffix = pathToFigmaName(reference.replace(/^theme\./, ''));
 
     if (group === COLLECTION.COLOR_SCHEME || group === COLLECTION.TYPOGRAPHY) {
-      const themePrefix = preview.themeOptions[0]?.name || 'theme';
+      const themePrefix = model.themeOptions[0]?.name || 'theme';
       return {
         collection: group,
         name: `${themePrefix}/${suffix}`,
@@ -335,7 +335,7 @@ function mapReferenceToVariableTarget(
 
 function getThemeScopedSuffix(
   reference: string,
-  preview: PreviewData,
+  model: TokenModel,
   token: FlatToken,
 ): string | null {
   const parts = reference.split('.');
@@ -345,8 +345,8 @@ function getThemeScopedSuffix(
 
   const knownScopes = new Set<string>([
     'theme',
-    getThemeNameFromTokenSet(preview, token.tokenSet),
-    ...preview.themeOptions.map((option) => option.name),
+    getThemeNameFromTokenSet(model, token.tokenSet),
+    ...model.themeOptions.map((option) => option.name),
   ]);
 
   if (!knownScopes.has(parts[0])) {
@@ -357,7 +357,7 @@ function getThemeScopedSuffix(
 }
 
 function inferScopedThemeVariableName(
-  preview: PreviewData,
+  model: TokenModel,
   token: FlatToken,
 ): string | null {
   const parts = token.path.split('.');
@@ -365,9 +365,9 @@ function inferScopedThemeVariableName(
     return null;
   }
 
-  const themeName = getThemeNameFromTokenSet(preview, token.tokenSet);
+  const themeName = getThemeNameFromTokenSet(model, token.tokenSet);
   const knownThemeNames = new Set(
-    preview.themeOptions.map((option) => option.name),
+    model.themeOptions.map((option) => option.name),
   );
   const first = parts[0];
   const shouldStripPrefix = first === 'theme' || knownThemeNames.has(first);
@@ -380,10 +380,7 @@ function inferScopedThemeVariableName(
   return `${themeName}/${suffix.join('/')}`;
 }
 
-function getThemeNameFromTokenSet(
-  preview: PreviewData,
-  tokenSet: string,
-): string {
+function getThemeNameFromTokenSet(model: TokenModel, tokenSet: string): string {
   const parts = tokenSet.split('/').filter(Boolean);
   const last = parts[parts.length - 1];
   if (last && last !== 'theme') {
@@ -403,5 +400,5 @@ function getThemeNameFromTokenSet(
     }
   }
 
-  return preview.themeOptions[0]?.name || last || 'theme';
+  return model.themeOptions[0]?.name || last || 'theme';
 }
