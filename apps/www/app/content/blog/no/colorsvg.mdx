@@ -69,7 +69,21 @@ Fila brukes deretter slik i html:
 </svg>
 ```
 
-Tips: Du kan ha flere symboler eller ikoner i samme fil når du pakker hver av dem med `<symbol>`og unike ider for hver av dem.
+#### Forhåndsvis SVG med symbol i redaktørverktøy
+
+Mange redaktørverktøy kan ikke angi hvilket `symbol` som skal vises når de forhåndsviser en SVG-fil. Resultatet er ofte at grafikken ser tom ut, selv om SVG-filen er satt opp riktig.
+
+For å gjøre grafikken synlig kan du legge til et `use`-element nederst i SVG-filen:
+```svg
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="symbol-id" viewBox="0 0 64 64">
+    <path d="..." />
+  </symbol>
+  <use href="#symbol-id" />
+</svg>
+```
+
+**Tips:** Du kan ha flere symboler eller ikoner i samme fil når du pakker hver av dem med `<symbol>` og unike ider for hver av dem. Da kan du også bruke metoden ovenfor for å velge et symbol inni fila for forhåndsvisning.
 
 #### Alternativt sett inn grafikken inline
 
