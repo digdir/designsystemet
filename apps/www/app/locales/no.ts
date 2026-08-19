@@ -107,7 +107,7 @@ export default {
     hide: 'Skjul',
     sidebar: 'sidemeny',
     search: {
-      label: 'Søk',
+      label: 'Søk i sidemeny',
       noResults: 'Ingen treff',
     },
   },
