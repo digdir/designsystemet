@@ -12,8 +12,11 @@ import type { infer as ZodInfer } from 'zod';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { importToFigma } from './token-export/importer';
-import { buildPreview } from './token-export/preview-model';
-import type { LoadedFile } from './token-export/types';
+import {
+  buildPreviewData,
+  buildTokenModel,
+} from './token-export/preview-model';
+import type { LoadedFile, TokenModel } from './token-export/types';
 
 function makeLoadedFile(path: string, data: unknown): LoadedFile {
   return {
@@ -28,7 +31,8 @@ function makeLoadedFile(path: string, data: unknown): LoadedFile {
 // kept as-is; shared sets are identical across themes so overwriting is safe.
 const fileMap = new Map<string, LoadedFile>();
 let files: LoadedFile[] = [];
-let previewData: ReturnType<typeof buildPreview> | null = null;
+// Import-side model; only the derived, pre-resolved preview data is posted to the UI.
+let tokenModel: TokenModel | null = null;
 
 // Color names are derived from the generated `semantic/color/<name>` token sets so
 // the auto-generated severity colors (danger, info, success, warning) are included
@@ -97,11 +101,11 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         files.push(makeLoadedFile('$themes.json', systemTokens.$themes));
         files.sort((a, b) => a.path.localeCompare(b.path));
 
-        previewData = buildPreview(files);
+        tokenModel = buildTokenModel(files);
         postMessage('preview-tokens-from-config', {
           status: 'success',
           preview: {
-            previewData,
+            previewData: buildPreviewData(tokenModel),
             colorNames: Array.from(semanticColorNames),
             themeNames,
           },
@@ -128,12 +132,12 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           message: 'Starting export of tokens to Figma variables...',
         });
 
-        if (!previewData) {
-          throw new Error('No preview data available for export.');
+        if (!tokenModel) {
+          throw new Error('No token model available for export.');
         }
 
         const result = await importToFigma({
-          preview: previewData,
+          model: tokenModel,
           selectedTheme: themeNames.length > 0 ? themeNames[0] : null,
           selectedScheme: 'light',
         });
