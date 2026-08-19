@@ -1,6 +1,7 @@
 {
   "name": "@digdir/designsystemet-css",
   "version": "1.20.0",
+  "type": "module",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": {

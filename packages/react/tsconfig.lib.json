@@ -2,7 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "./tsc-build",
+    "outDir": "./dist/types",
+    // Keep the incremental build cache out of `dist`, which is published.
+    "tsBuildInfoFile": "./tsconfig.lib.tsbuildinfo",
     "composite": true,
     "noEmit": false,
     "emitDeclarationOnly": true,

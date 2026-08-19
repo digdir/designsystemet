@@ -1,13 +1,50 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { defineConfig } from 'tsdown';
-import pkg from './package.json' with { type: 'json' };
+import type { Plugin } from 'vite';
 
-const pkgPath = process.cwd();
-const srcPath = path.resolve(pkgPath, 'src');
+/**
+ * Appends framework-specific JSX typings for our `ds-*` custom elements to the
+ * generated declaration file.
+ *
+ * Declaration generators only emit what TypeScript sees in the source. These
+ * augmentations are derived from the `HTMLElementTagNameMap` declarations
+ * instead, so that consumers using React, Preact, Vue, Svelte, Solid or Qwik get
+ * typed `<ds-field>`, `<ds-tabs>` etc. without us hand-writing a matrix of them.
+ */
+export function frameworkTypes({
+  srcDir,
+  dtsFile,
+}: {
+  /** Directory to scan for web component definitions. */
+  srcDir: string;
+  /** Declaration file to append to. */
+  dtsFile: string;
+}): Plugin {
+  return {
+    name: 'designsystemet:framework-types',
+    closeBundle() {
+      const modules = getAllTsFiles(srcDir).map((file) => [
+        path.basename(file),
+        fs.readFileSync(file).toString(),
+      ]);
 
-// Get all .ts files recursively from src (excluding tests)
-const getAllTsFiles = (dir: string): string[] => {
+      const footer = modules.map(getFrameworkTypes).join('');
+      if (!footer) return;
+
+      try {
+        fs.appendFileSync(dtsFile, footer);
+      } catch (error) {
+        // The declaration file is written by a separate build step; if it is not
+        // there yet, there is nothing to augment.
+        if ((error as { code?: string }).code === 'ENOENT') return;
+        throw error;
+      }
+    },
+  };
+}
+
+/** Collects all non-test `.ts` files under `dir`, recursively. */
+function getAllTsFiles(dir: string): string[] {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   return entries.flatMap((entry) => {
     const fullPath = path.join(dir, entry.name);
@@ -16,37 +53,7 @@ const getAllTsFiles = (dir: string): string[] => {
       return [fullPath];
     return [];
   });
-};
-
-export default defineConfig({
-  entry: ['./src/index.ts'],
-  outDir: 'dist',
-  format: 'esm',
-  clean: true,
-  dts: true,
-  fixedExtension: false,
-  async onSuccess() {
-    const dtsPath = path.resolve(pkgPath, pkg.types);
-
-    const modules = getAllTsFiles(srcPath).map((file) => [
-      path.basename(file),
-      fs.readFileSync(file).toString(),
-    ]);
-
-    const footer = modules.map(getFrameworkTypes).join('');
-    if (footer) {
-      try {
-        fs.appendFileSync(dtsPath, footer);
-      } catch (error) {
-        if ((error as { code?: string }).code === 'ENOENT') {
-          // dts file does not exist yet, skip appending
-          return;
-        }
-        throw error;
-      }
-    }
-  },
-});
+}
 
 function getFrameworkTypes([_file, code]: string[], index: number) {
   // Match ds-* tags from HTMLElementTagNameMap declarations: 'ds-field': DSFieldElement

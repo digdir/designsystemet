@@ -2,6 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "noEmit": false,
+    // vite.config.dts.ts imports ./vite/framework-types.ts by its real filename,
+    // which is what Vite's config loader resolves.
+    "allowImportingTsExtensions": true,
     "emitDeclarationOnly": true,
     "outDir": "dist/esm",
     "composite": true
