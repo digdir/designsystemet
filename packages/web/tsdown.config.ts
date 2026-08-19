@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import fs, { globSync } from 'node:fs';
 import path from 'node:path';
 import { defineConfig } from 'tsdown';
 import pkg from './package.json' with { type: 'json' };
@@ -17,16 +17,10 @@ const entryFileNames =
       : `[name].${ext}`;
 
 // Get all .ts files recursively from src (excluding tests)
-const getAllTsFiles = (dir: string): string[] => {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  return entries.flatMap((entry) => {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) return getAllTsFiles(fullPath);
-    if (entry.name.match(/\.ts$/) && !entry.name.match(/\.(spec|test)\.ts$/))
-      return [fullPath];
-    return [];
+const getAllTsFiles = (dir: string): string[] =>
+  globSync(path.join(dir, '**/*.ts'), {
+    exclude: (file) => /\.(spec|test)\.ts$/.test(file),
   });
-};
 
 export default defineConfig([
   // Type declarations with framework types appended
