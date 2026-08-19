@@ -52,16 +52,7 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
   HTMLDivElement,
   AvatarStackProps
 >(function AvatarStack(
-  {
-    className,
-    gap,
-    suffix,
-    avatarSize,
-    overlap,
-    expandable,
-    children,
-    ...rest
-  },
+  { className, gap, suffix, avatarSize, overlap, expandable, ...rest },
   ref,
 ) {
   useEffect(() => {
@@ -89,8 +80,6 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
       data-expandable={expandable}
       data-suffix={suffix}
       {...rest}
-    >
-      {children}
-    </div>
+    />
   );
 });
