@@ -1,21 +1,25 @@
 import cl from 'clsx/lite';
 import type { CSSProperties, HTMLAttributes } from 'react';
-import { Children, forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
+import { warn } from '../../utilities';
 
 export type AvatarStackProps = {
   /**
    *  Adjusts gap-mask between avatars in the stack. Must be a valid css length value (px, em, rem, var(--ds-size-1) etc.)
    *  @default 2px
+   *  @deprecated Please use `style={{ --dsc-avatar-stack-gap: VALUE }}` instead
    */
   gap?: string;
   /**
    *  Control the size of the avatars. Must be a valid css length value (px, em, rem, var(--ds-size-12) etc.)
    *  @default 'var(--ds-size-12)'
+   *  @deprecated Please use `style={{ --dsc-avatar-stack-size: VALUE }}` instead
    */
   avatarSize?: string;
   /**
    *  A number which represents the percentage value of how much avatars should overlap.
    *  @default 50
+   *  @deprecated Please use `style={{ --dsc-avatar-stack-overlap: VALUE }}` instead
    */
   overlap?: number;
   /**
@@ -45,7 +49,7 @@ export type AvatarStackProps = {
  * </EXPERIMENTAL_AvatarStack>
  */
 export const EXPERIMENTAL_AvatarStack = forwardRef<
-  HTMLSpanElement,
+  HTMLDivElement,
   AvatarStackProps
 >(function AvatarStack(
   {
@@ -60,28 +64,33 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
   },
   ref,
 ) {
-  const style = {
-    ...(rest.style || {}),
-    '--dsc-avatar-stack-gap': gap !== undefined ? `${gap}` : undefined,
-    '--dsc-avatar-stack-size': avatarSize ? `${avatarSize}` : undefined,
-    '--dsc-avatar-stack-overlap':
-      overlap !== undefined ? `${overlap}` : undefined,
-    '--dsc-avatar-count':
-      expandable === 'fixed' ? Children.count(children) : undefined,
-  } as CSSProperties;
+  useEffect(() => {
+    for (const [key, value] of Object.entries({ gap, avatarSize, overlap }))
+      if (value)
+        warn(
+          `AvatarStack: "${key}" property is deprecated. Please use style={{ '--dsc-avatar-stack-${key}:' '${value}' } as React.CSSProperties} instead`,
+        );
+  }, [gap, avatarSize, overlap]);
+
   return (
-    <span
-      tabIndex={
-        rest.tabIndex !== undefined ? rest.tabIndex : expandable ? 0 : undefined
-      }
-      ref={ref}
+    <div
       className={cl(`ds-avatar-stack`, className)}
-      style={style}
+      tabIndex={rest.tabIndex ?? (expandable ? 0 : undefined)}
+      ref={ref}
+      style={
+        {
+          ...(rest.style || {}),
+          '--dsc-avatar-stack-gap': gap !== undefined ? `${gap}` : undefined,
+          '--dsc-avatar-stack-size': avatarSize ? `${avatarSize}` : undefined,
+          '--dsc-avatar-stack-overlap':
+            overlap !== undefined ? `${overlap}` : undefined,
+        } as CSSProperties
+      }
       data-expandable={expandable}
       data-suffix={suffix}
       {...rest}
     >
       {children}
-    </span>
+    </div>
   );
 });

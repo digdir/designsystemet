@@ -16,13 +16,16 @@
   --_overlap: calc(((var(--dsc-avatar-stack-size) / 100) * var(--dsc-avatar-stack-overlap)) * -1);
 
   --_ds-captured-length: var(--_overlap); /*registered custom property defined in base.css*/
-  display: flex;
   align-items: center;
   isolation: isolate;
   padding-block: 1px;
   width: max-content;
   margin: 0; /*remove user-agent default for figure*/
   transition: --_ds-captured-length 0.2s ease;
+
+  &:not([hidden]) {
+    display: flex;
+  }
 
   &:focus-visible {
     @composes ds-focus--visible from './base.css';

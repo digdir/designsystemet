@@ -23,7 +23,7 @@ const meta = preview.meta({
 
 export const Preview = meta.story({
   render: (args) => (
-    <AvatarStack {...args} aria-hidden>
+    <AvatarStack {...args}>
       <Avatar aria-label='Navn'>{cat1Img}</Avatar>
       <Avatar aria-label='Navn'>
         <BriefcaseIcon />
@@ -83,7 +83,7 @@ export const Expandable = meta.story({
         }}
       >
         <legend>not expandable</legend>
-        <AvatarStack {...args} aria-hidden>
+        <AvatarStack {...args}>
           <Avatar aria-label='Navn'>{cat1Img}</Avatar>
           <Avatar aria-label='Navn'>{cat1Img}</Avatar>
           <Avatar aria-label='Navn'>{cat3Img}</Avatar>
@@ -93,7 +93,9 @@ export const Expandable = meta.story({
   ),
 
   args: {
-    gap: '4px',
+    style: {
+      '--dsc-avatar-stack-gap': '4px',
+    } as React.CSSProperties,
   },
 });
 
@@ -108,12 +110,7 @@ export const DataSize = meta.story({
         }}
       >
         <legend>avatarSize='var(--ds-size-12)'</legend>
-        <AvatarStack
-          avatarSize='var(--ds-size-12)'
-          data-size='sm'
-          {...args}
-          aria-hidden
-        >
+        <AvatarStack data-size='sm' {...args}>
           <Avatar aria-label='Navn'>{cat5Img}</Avatar>
           <Avatar aria-label='Navn'>
             <BriefcaseIcon />
@@ -121,12 +118,7 @@ export const DataSize = meta.story({
           <Avatar aria-label='Navn'>sm</Avatar>
           <Avatar aria-label='Navn' initials='sm' />
         </AvatarStack>
-        <AvatarStack
-          avatarSize={'var(--ds-size-12)'}
-          data-size='md'
-          {...args}
-          aria-hidden
-        >
+        <AvatarStack data-size='md' {...args}>
           <Avatar aria-label='Navn'>{cat5Img}</Avatar>
           <Avatar aria-label='Navn'>
             <BriefcaseIcon />
@@ -134,12 +126,7 @@ export const DataSize = meta.story({
           <Avatar aria-label='Navn'>md</Avatar>
           <Avatar aria-label='Navn' initials='md' />
         </AvatarStack>
-        <AvatarStack
-          avatarSize={'var(--ds-size-12)'}
-          data-size='lg'
-          {...args}
-          aria-hidden
-        >
+        <AvatarStack data-size='lg' {...args}>
           <Avatar aria-label='Navn'>{cat5Img}</Avatar>
           <Avatar aria-label='Navn'>
             <BriefcaseIcon />
@@ -156,7 +143,15 @@ export const DataSize = meta.story({
         }}
       >
         <legend>avatarSize='3em'</legend>
-        <AvatarStack avatarSize='3em' data-size='sm' {...args} aria-hidden>
+        <AvatarStack
+          {...args}
+          data-size='sm'
+          style={
+            {
+              '--dsc-avatar-stack-size': '3em',
+            } as React.CSSProperties
+          }
+        >
           <Avatar aria-label='Navn'>{cat5Img}</Avatar>
           <Avatar aria-label='Navn'>
             <BriefcaseIcon />
@@ -164,7 +159,15 @@ export const DataSize = meta.story({
           <Avatar aria-label='Navn'>sm</Avatar>
           <Avatar aria-label='Navn' initials='sm' />
         </AvatarStack>
-        <AvatarStack avatarSize='3em' data-size='md' {...args} aria-hidden>
+        <AvatarStack
+          data-size='md'
+          {...args}
+          style={
+            {
+              '--dsc-avatar-stack-size': '3em',
+            } as React.CSSProperties
+          }
+        >
           <Avatar aria-label='Navn'>{cat5Img}</Avatar>
           <Avatar aria-label='Navn'>
             <BriefcaseIcon />
@@ -172,7 +175,15 @@ export const DataSize = meta.story({
           <Avatar aria-label='Navn'>md</Avatar>
           <Avatar aria-label='Navn' initials='md' />
         </AvatarStack>
-        <AvatarStack avatarSize='3em' data-size='lg' {...args} aria-hidden>
+        <AvatarStack
+          data-size='lg'
+          {...args}
+          style={
+            {
+              '--dsc-avatar-stack-size': '3em',
+            } as React.CSSProperties
+          }
+        >
           <Avatar aria-label='Navn'>{cat5Img}</Avatar>
           <Avatar aria-label='Navn'>
             <BriefcaseIcon />
@@ -189,7 +200,15 @@ export const DataSize = meta.story({
         }}
       >
         <legend>avatarSize='3rem'</legend>
-        <AvatarStack avatarSize='3rem' data-size='sm' {...args} aria-hidden>
+        <AvatarStack
+          data-size='sm'
+          {...args}
+          style={
+            {
+              '--dsc-avatar-stack-size': '3rem',
+            } as React.CSSProperties
+          }
+        >
           <Avatar aria-label='Navn'>{cat5Img}</Avatar>
           <Avatar aria-label='Navn'>
             <BriefcaseIcon />
@@ -197,7 +216,15 @@ export const DataSize = meta.story({
           <Avatar aria-label='Navn'>sm</Avatar>
           <Avatar aria-label='Navn' initials='sm' />
         </AvatarStack>
-        <AvatarStack avatarSize='3rem' data-size='md' {...args} aria-hidden>
+        <AvatarStack
+          data-size='md'
+          {...args}
+          style={
+            {
+              '--dsc-avatar-stack-size': '3rem',
+            } as React.CSSProperties
+          }
+        >
           <Avatar aria-label='Navn'>{cat5Img}</Avatar>
           <Avatar aria-label='Navn'>
             <BriefcaseIcon />
@@ -205,7 +232,15 @@ export const DataSize = meta.story({
           <Avatar aria-label='Navn'>md</Avatar>
           <Avatar aria-label='Navn' initials='md' />
         </AvatarStack>
-        <AvatarStack avatarSize='3rem' data-size='lg' {...args} aria-hidden>
+        <AvatarStack
+          data-size='lg'
+          {...args}
+          style={
+            {
+              '--dsc-avatar-stack-size': '3rem',
+            } as React.CSSProperties
+          }
+        >
           <Avatar aria-label='Navn'>{cat5Img}</Avatar>
           <Avatar aria-label='Navn'>
             <BriefcaseIcon />
@@ -238,8 +273,11 @@ export const ShapeVariants = meta.story({
   ),
 
   args: {
-    overlap: 50,
     expandable: 'fixed',
+    style: {
+      '--dsc-avatar-stack-overlap': 50,
+      '--dsc-avatar-stack-size': 'var(--ds-size-12)',
+    } as React.CSSProperties,
   },
 });
 
@@ -326,7 +364,10 @@ export const WithTooltipAndLink = meta.story({
         }}
       >
         <legend>Link + Tooltip</legend>
-        <AvatarStack {...args} overlap={20}>
+        <AvatarStack
+          {...args}
+          style={{ '--dsc-avatar-stack-overlap': 20 } as React.CSSProperties}
+        >
           <Tooltip content='Ola Nordmann'>
             <Avatar aria-label='profile picture a' asChild>
               <a href='#'>{cat1Img}</a>
@@ -443,11 +484,15 @@ export const Playground = meta.story(() => {
       </fieldset>
 
       <AvatarStack
-        overlap={overlap}
-        data-suffix={`+10`}
-        gap={`${gap}px`}
-        avatarSize={`${size}px`}
+        data-suffix='+10'
         expandable={expandable}
+        style={
+          {
+            '--dsc-avatar-stack-gap': `${gap}px`,
+            '--dsc-avatar-stack-size': `${size}px`,
+            '--dsc-avatar-stack-overlap': overlap,
+          } as React.CSSProperties
+        }
       >
         <Avatar aria-label='profile a' variant={square ? 'square' : 'circle'}>
           {cat1Img}
