@@ -45,36 +45,22 @@ export function PreviewView({
         <div className='tx-hero'>
           <div className='tx-control-row'>
             {showThemes && (
-              <div>
-                <div className='tx-control-label'>Theme</div>
-                <ToggleGroup
-                  aria-label='Toggle between themes'
-                  value={selectedTheme ?? undefined}
-                  onChange={onSelectTheme}
-                >
-                  {preview.themeOptions.map((theme) => (
-                    <ToggleGroupItem key={theme} value={theme}>
-                      {theme}
-                    </ToggleGroupItem>
-                  ))}
-                </ToggleGroup>
-              </div>
+              <LabeledToggleGroup
+                label='Theme'
+                ariaLabel='Toggle between themes'
+                options={preview.themeOptions}
+                value={selectedTheme}
+                onChange={onSelectTheme}
+              />
             )}
             {showSchemes && (
-              <div>
-                <div className='tx-control-label'>Color scheme</div>
-                <ToggleGroup
-                  aria-label='Toggle between color schemes'
-                  value={selectedScheme ?? undefined}
-                  onChange={onSelectScheme}
-                >
-                  {preview.colorSchemeOptions.map((scheme) => (
-                    <ToggleGroupItem key={scheme} value={scheme}>
-                      {scheme}
-                    </ToggleGroupItem>
-                  ))}
-                </ToggleGroup>
-              </div>
+              <LabeledToggleGroup
+                label='Color scheme'
+                ariaLabel='Toggle between color schemes'
+                options={preview.colorSchemeOptions}
+                value={selectedScheme}
+                onChange={onSelectScheme}
+              />
             )}
           </div>
         </div>
@@ -104,6 +90,37 @@ function pickOption(options: string[], selected: string | null): string | null {
     return selected;
   }
   return options[0] ?? null;
+}
+
+function LabeledToggleGroup({
+  label,
+  ariaLabel,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  ariaLabel: string;
+  options: string[];
+  value: string | null;
+  onChange: (value: string) => void;
+}): React.JSX.Element {
+  return (
+    <div>
+      <div className='tx-control-label'>{label}</div>
+      <ToggleGroup
+        aria-label={ariaLabel}
+        value={value ?? undefined}
+        onChange={onChange}
+      >
+        {options.map((option) => (
+          <ToggleGroupItem key={option} value={option}>
+            {option}
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
+    </div>
+  );
 }
 
 function ColorScales({
