@@ -1,7 +1,7 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
 import { getSemanticColorByNumber, semanticColorSpec } from './specs.ts';
-import type { Color, ColorNumber, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
+import type { ColorNumber, ColorScale, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
 export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info'];
@@ -19,7 +19,7 @@ export const generateColorScale = (
   color: CssColor,
   colorScheme: ColorScheme,
   colorScaleSpec: ColorScaleSpec = semanticColorSpec,
-): Color[] => {
+): ColorScale => {
   let interpolationColor = color;
 
   // Reduce saturation in dark mode for the interpolation colors
@@ -53,7 +53,7 @@ export const generateColorScale = (
     };
   }
 
-  return Object.values(colors);
+  return colors;
 };
 
 /**

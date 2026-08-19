@@ -1,19 +1,17 @@
 import * as R from 'ramda';
-import type { Color, ColorScheme, CssColor } from '../../../../colors/index.ts';
+import type { ColorScale, ColorScheme, CssColor } from '../../../../colors/index.ts';
 import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
 import { severityColors, visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
-const generateColor = (colorArray: Color[], overrides?: Record<number, string>): TokenSet => {
+const generateColor = (colorScale: ColorScale, overrides?: Record<number, string>): TokenSet => {
   const obj: TokenSet = {};
   const $type = 'color';
-  for (const index in colorArray) {
-    const position = Number(index) + 1;
-    const overrideValue = overrides?.[position];
-    obj[position] = {
+  for (const color of Object.values(colorScale)) {
+    obj[color.number] = {
       $type,
-      $value: overrideValue || colorArray[index].hex,
+      $value: overrides?.[color.number] || color.hex,
     };
   }
   return obj;
