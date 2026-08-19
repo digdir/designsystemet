@@ -108,7 +108,7 @@ export default {
     hide: 'Hide',
     sidebar: 'sidebar',
     search: {
-      label: 'Search',
+      label: 'Search in sidebar',
       noResults: 'No results',
     },
   },
