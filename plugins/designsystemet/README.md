@@ -32,7 +32,19 @@ Used config for testing
       "borderRadius": 4,
       "typography": {
         "fontFamily": "IBM Plex Sans"
-      }
+      },
+      "overrides": {
+        "colors": {
+          "accent": {
+            "border-default": {
+              "light": "#22c33d"
+            },
+            "border-subtle": {
+              "light": "#9ae49f"
+            }
+          }
+        }
+      },
     },
     "theme2": {
       "colors": {
