@@ -76,7 +76,7 @@ Mange redaktørverktøy kan ikke angi hvilket `symbol` som skal vises når de fo
 For å gjøre grafikken synlig kan du legge til et `use`-element nederst i SVG-filen:
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg">
-  <symbol id="symbol-id" viewBox="0 0 64 64">
+  <symbol id="symbol-id" viewBox="0 0 40 40">
     <path d="..." />
   </symbol>
   <use href="#symbol-id" />
@@ -90,9 +90,6 @@ For å gjøre grafikken synlig kan du legge til et `use`-element nederst i SVG-f
 Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere steder. Når du uansett kun skal ha grafikken på ett sted på siden din, så kan du gjerne sette den inn inline. Grafikken ovenfor når satt inn direkte inline trenger ikke `<symbol>` og id
 ```HTML
 <svg height="1rem" width="1rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-  <path d="..." />
-  <path d="..." />
-  <path d="..." />
   <path d="..." />
 </svg>
 ```

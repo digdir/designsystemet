@@ -80,6 +80,7 @@ To make the graphic visible, add a `use` element at the end of the SVG file:
     <path d="..." />
   </symbol>
   <use href="#symbol-id">
+</svg>
 ```
 
 **Tip:** You can include multiple symbols or icons in the same file by wrapping each one in a `symbol` element and giving it a unique ID. You can then use the technique above to choose which symbol should be displayed when previewing the file.
@@ -89,9 +90,6 @@ To make the graphic visible, add a `use` element at the end of the SVG file:
 Using `<use>` makes it possible to reuse the same SVG without duplicating the markup in multiple places. If the graphic is only used once on a page, however, embedding the SVG inline is often the simpler option. When used inline, the example above does not require a `<symbol>` element or an ID:
 ```HTML
 <svg height="1rem" width="1rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-  <path d="..." />
-  <path d="..." />
-  <path d="..." />
   <path d="..." />
 </svg>
 ```
