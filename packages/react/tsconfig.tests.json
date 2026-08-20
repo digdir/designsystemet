@@ -10,7 +10,7 @@
       "@testing-library/jest-dom",
       "vitest/globals",
       "./declarations.d.ts",
-      "./react-types.d.ts"
+      "./src/react-types.d.ts"
     ]
   },
   "include": ["src"],

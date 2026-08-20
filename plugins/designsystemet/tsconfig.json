@@ -5,7 +5,7 @@
     "types": [
       "@figma/plugin-typings",
       "vite/client",
-      "../../packages/react/react-types.d.ts"
+      "../../packages/react/src/react-types.d.ts"
     ]
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx"]
