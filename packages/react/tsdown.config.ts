@@ -17,5 +17,5 @@ export default defineConfig({
   fixedExtension: false,
   // react-types.d.ts imports './types', which must resolve to the emitted
   // dist/esm/types.d.ts — so the copy lives inside dist/esm
-  copy: [{ from: './react-types.d.ts', to: './dist/esm' }],
+  copy: [{ from: './src/react-types.d.ts', to: './dist/esm' }],
 });

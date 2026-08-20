@@ -7,7 +7,7 @@
     "emitDeclarationOnly": true,
     "types": [
       "./declarations.d.ts",
-      "./react-types.d.ts",
+      "./src/react-types.d.ts",
       "@digdir/designsystemet-web"
     ]
   },
