@@ -6,6 +6,7 @@ import {
   Avatar,
   EXPERIMENTAL_AvatarStack as AvatarStack,
   Checkbox,
+  Field,
   Label,
   Tooltip,
 } from '../';
@@ -19,6 +20,19 @@ const meta = preview.meta({
   args: {
     'aria-label': 'Test av aria label',
   },
+  decorators: [
+    (Story) => (
+      <>
+        <style>{`
+          section { display: flex; flex-direction: row; gap: var(--ds-size-4); flex-wrap: wrap }
+          fieldset { display: flex; gap: var(--ds-size-4); align-items: center }
+          input[type="range"] { width: 100% }
+          legend { font-size: 11px }
+      `}</style>
+        <Story />
+      </>
+    ),
+  ],
 });
 
 export const Preview = meta.story({
@@ -37,21 +51,8 @@ export const Preview = meta.story({
 
 export const Expandable = meta.story({
   render: (args) => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        gap: 'var(--ds-size-4)',
-        flexWrap: 'wrap',
-      }}
-    >
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
-      >
+    <section>
+      <fieldset>
         <legend>expandable</legend>
         <AvatarStack {...args} expandable>
           <Avatar aria-label='profile picture a'>{cat1Img}</Avatar>
@@ -60,13 +61,7 @@ export const Expandable = meta.story({
           <Avatar aria-label='profile picture d'>{cat4Img}</Avatar>
         </AvatarStack>
       </fieldset>
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
-      >
+      <fieldset>
         <legend>expandable="fixed"</legend>
         <AvatarStack {...args} expandable='fixed'>
           <Avatar aria-label='profile picture a'>{cat1Img}</Avatar>
@@ -75,40 +70,22 @@ export const Expandable = meta.story({
           <Avatar aria-label='profile picture d'>{cat4Img}</Avatar>
         </AvatarStack>
       </fieldset>
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
-      >
-        <legend>not expandable</legend>
+      <fieldset>
+        <legend>default</legend>
         <AvatarStack {...args}>
           <Avatar aria-label='Navn'>{cat1Img}</Avatar>
           <Avatar aria-label='Navn'>{cat1Img}</Avatar>
           <Avatar aria-label='Navn'>{cat3Img}</Avatar>
         </AvatarStack>
       </fieldset>
-    </div>
+    </section>
   ),
-
-  args: {
-    style: {
-      '--dsc-avatar-stack-gap': '4px',
-    } as React.CSSProperties,
-  },
 });
 
 export const DataSize = meta.story({
   render: (args) => (
     <>
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
-      >
+      <fieldset>
         <legend>avatarSize='var(--ds-size-12)'</legend>
         <AvatarStack data-size='sm' {...args}>
           <Avatar aria-label='Navn'>{cat5Img}</Avatar>
@@ -135,13 +112,7 @@ export const DataSize = meta.story({
           <Avatar aria-label='Navn' initials='lg' />
         </AvatarStack>
       </fieldset>
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
-      >
+      <fieldset>
         <legend>avatarSize='3em'</legend>
         <AvatarStack
           {...args}
@@ -192,13 +163,7 @@ export const DataSize = meta.story({
           <Avatar aria-label='Navn' initials='lg' />
         </AvatarStack>
       </fieldset>
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
-      >
+      <fieldset>
         <legend>avatarSize='3rem'</legend>
         <AvatarStack
           data-size='sm'
@@ -274,25 +239,13 @@ export const ShapeVariants = meta.story({
 
   args: {
     expandable: 'fixed',
-    style: {
-      '--dsc-avatar-stack-overlap': 50,
-      '--dsc-avatar-stack-size': 'var(--ds-size-12)',
-    } as React.CSSProperties,
   },
 });
 
 export const WithTooltip = meta.story({
   render: (args) => (
-    <div
-      style={{ display: 'flex', flexDirection: 'row', gap: 'var(--ds-size-4)' }}
-    >
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
-      >
+    <section>
+      <fieldset>
         <legend>expandable</legend>
         <AvatarStack {...args} expandable='fixed'>
           <Avatar data-tooltip='Ola Nordmann'>{cat1Img}</Avatar>
@@ -301,13 +254,7 @@ export const WithTooltip = meta.story({
           <Avatar data-tooltip='Person 3'>{cat5Img}</Avatar>
         </AvatarStack>
       </fieldset>
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
-      >
+      <fieldset>
         <legend>not expandable</legend>
         <AvatarStack {...args}>
           <Tooltip content='Ola Nordmann'>
@@ -324,22 +271,14 @@ export const WithTooltip = meta.story({
           </Tooltip>
         </AvatarStack>
       </fieldset>
-    </div>
+    </section>
   ),
 });
 
 export const WithTooltipAndLink = meta.story({
   render: (args) => (
-    <div
-      style={{ display: 'flex', flexDirection: 'row', gap: 'var(--ds-size-4)' }}
-    >
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
-      >
+    <section>
+      <fieldset>
         <legend>Link expandable</legend>
         <AvatarStack {...args} expandable='fixed'>
           <Avatar aria-label='profile picture a' asChild>
@@ -356,18 +295,9 @@ export const WithTooltipAndLink = meta.story({
           </Avatar>
         </AvatarStack>
       </fieldset>
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
-      >
+      <fieldset>
         <legend>Link + Tooltip</legend>
-        <AvatarStack
-          {...args}
-          style={{ '--dsc-avatar-stack-overlap': 20 } as React.CSSProperties}
-        >
+        <AvatarStack {...args}>
           <Tooltip content='Ola Nordmann'>
             <Avatar aria-label='profile picture a' asChild>
               <a href='#'>{cat1Img}</a>
@@ -390,60 +320,41 @@ export const WithTooltipAndLink = meta.story({
           </Tooltip>
         </AvatarStack>
       </fieldset>
-    </div>
+    </section>
   ),
 });
 
 export const Playground = meta.story(() => {
   const [expandable, setExpandable] = useState<undefined | true>(undefined);
-  const [square, setSquare] = useState(false);
   const [size, setSize] = useState(64);
-  const [overlap, setOverlap] = useState(50);
+  const [radius, setRadius] = useState(150);
+  const [overlap, setOverlap] = useState(32);
   const [gap, setGap] = useState(2);
-  const labelStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 'var(--ds-size-2)',
-    accentColor: 'var(--ds-color-base-default)',
-  } as const;
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-size-8)',
-        minHeight: '395px',
-      }}
-    >
-      <fieldset
-        style={{
-          display: 'grid',
-          gridTemplateColumns:
-            'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
-          gap: 'var(--ds-size-4)',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            gap: 'var(--ds-size-3)',
-            alignItems: 'center',
-          }}
-        >
-          <Checkbox
-            label='Expandable'
-            checked={expandable !== undefined}
-            onChange={() => setExpandable((prev) => (prev ? undefined : true))}
+    <>
+      <fieldset>
+        <Checkbox
+          label='Expandable'
+          checked={expandable !== undefined}
+          onChange={() => setExpandable((prev) => (prev ? undefined : true))}
+        />
+
+        <Field>
+          <Label>Radius {`${radius}px`}</Label>
+          <input
+            min='0'
+            max='150'
+            step='0.1'
+            type='range'
+            value={radius}
+            onChange={(e) =>
+              setRadius(Number((e.target as HTMLInputElement).value))
+            }
           />
-          <Checkbox
-            label='square'
-            checked={square}
-            onChange={() => setSquare((prev) => !prev)}
-          />
-        </div>
-        <Label style={labelStyle}>
-          Size {`${size}px`}
+        </Field>
+        <Field>
+          <Label>Size {`${size}px`}</Label>
           <input
             min='24'
             max='150'
@@ -454,12 +365,12 @@ export const Playground = meta.story(() => {
               setSize(Number((e.target as HTMLInputElement).value))
             }
           />
-        </Label>
-        <Label style={labelStyle}>
-          Overlap {`${overlap}%`}
+        </Field>
+        <Field>
+          <Label>Overlap {`${overlap}px`}</Label>
           <input
-            min='-10'
-            max='100'
+            min='0'
+            max='150'
             step='1'
             type='range'
             value={overlap}
@@ -467,9 +378,9 @@ export const Playground = meta.story(() => {
               setOverlap(Number((e.target as HTMLInputElement).value))
             }
           />
-        </Label>
-        <Label style={labelStyle}>
-          Gap {`${gap}px`}
+        </Field>
+        <Field>
+          <Label>Gap {`${gap}px`}</Label>
           <input
             min='0'
             max='15'
@@ -480,36 +391,28 @@ export const Playground = meta.story(() => {
               setGap(Number((e.target as HTMLInputElement).value))
             }
           />
-        </Label>
+        </Field>
       </fieldset>
+      <br />
 
       <AvatarStack
-        data-suffix='+10'
         expandable={expandable}
         style={
           {
             '--dsc-avatar-stack-gap': `${gap}px`,
+            '--dsc-avatar-stack-overlap': `${overlap}px`,
+            '--dsc-avatar-stack-radius': `${radius}px`,
             '--dsc-avatar-stack-size': `${size}px`,
-            '--dsc-avatar-stack-overlap': overlap,
           } as React.CSSProperties
         }
       >
-        <Avatar aria-label='profile a' variant={square ? 'square' : 'circle'}>
-          {cat1Img}
-        </Avatar>
-        <Avatar aria-label='profile b' variant={square ? 'square' : 'circle'}>
-          {cat5Img}
-        </Avatar>
-        <Avatar aria-label='profile c' variant={square ? 'square' : 'circle'}>
-          md
-        </Avatar>
-        <Avatar aria-label='profile d' variant={square ? 'square' : 'circle'}>
-          {cat5Img}
-        </Avatar>
-        <Avatar aria-label='profile e' variant={square ? 'square' : 'circle'}>
-          {cat1Img}
-        </Avatar>
+        <Avatar aria-label='profile a'>{cat1Img}</Avatar>
+        <Avatar aria-label='profile b'>{cat5Img}</Avatar>
+        <Avatar aria-label='profile c'>md</Avatar>
+        <Avatar aria-label='profile d'>{cat5Img}</Avatar>
+        <Avatar aria-label='profile e'>{cat1Img}</Avatar>
+        +10
       </AvatarStack>
-    </div>
+    </>
   );
 });
