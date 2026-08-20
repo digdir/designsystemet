@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "./tsc-build",
     "allowSyntheticDefaultImports": true,
     "composite": true,
     "noEmit": false,
@@ -14,6 +13,6 @@
       "./react-types.d.ts"
     ]
   },
-  "include": ["src/**/*.test.ts*"],
-  "references": [{ "path": "tsconfig.lib.json" }]
+  "include": ["src"],
+  "exclude": ["src/**/*.stories.ts*", "src/**/*.chromatic.ts*", "src/**/*.mdx"]
 }

@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "../../",
-    "outDir": "./tsc-build",
     "composite": true,
     "noEmit": false,
     "emitDeclarationOnly": true,
@@ -15,11 +14,10 @@
   },
   "include": [
     "stories",
-    "src/**/*.stories.ts*",
-    "src/**/*.chromatic.ts*",
+    "src",
     "../../apps/storybook/.storybook/**/*.ts*",
     "../../apps/storybook/story-utils/**/*.ts*",
     "../../designsystemet.config.json"
   ],
-  "references": [{ "path": "tsconfig.lib.json" }]
+  "exclude": ["src/**/*.test.ts*", "src/**/*.mdx"]
 }

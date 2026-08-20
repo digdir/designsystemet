@@ -10,26 +10,30 @@
   },
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/react",
   "license": "MIT",
-  "types": "dist/types/index.d.ts",
+  "types": "./dist/esm/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
     },
     "./colors": {
-      "types": "./dist/types/colors.d.ts"
+      "types": "./dist/esm/colors.d.ts"
     },
     "./react-types": {
-      "types": "./dist/react-types.d.ts"
+      "types": "./dist/esm/react-types.d.ts"
     }
   },
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "build": "pnpm run clean && tsc -b tsconfig.lib.json --emitDeclarationOnly false && rollup -c --bundleConfigAsCjs",
-    "clean": "rimraf dist && rimraf tsc-build && rimraf --glob \"*.tsbuildinfo\"",
+    "build": "tsdown",
     "types": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -51,8 +55,6 @@
   },
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
-    "@rollup/plugin-commonjs": "29.0.3",
-    "@rollup/plugin-node-resolve": "16.0.3",
     "@storybook/addon-docs": "10.5.8",
     "@storybook/addon-vitest": "10.5.8",
     "@storybook/react-vite": "10.5.8",
@@ -61,13 +63,11 @@
     "@testing-library/user-event": "14.6.4",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
-    "react-dropzone": "19.3.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "rimraf": "6.1.3",
-    "rollup": "4.62.4",
-    "rollup-plugin-copy": "3.5.0",
+    "react-dropzone": "19.3.0",
     "storybook": "10.5.8",
+    "tsdown": "0.22.14",
     "typescript": "6.0.3"
   }
 }
