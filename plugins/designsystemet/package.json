@@ -29,7 +29,7 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "^1.133.0",
+    "@figma/plugin-typings": "^1.134.0",
     "@types/node": "24.13.3",
     "@types/postcss-url": "^10.0.4",
     "@types/react": "^19.2.18",
