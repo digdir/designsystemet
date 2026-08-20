@@ -1,5 +1,5 @@
 import type { ChangelogFunctions } from '@changesets/types';
-import { getInfo, getInfoFromPullRequest } from '@changesets/get-github-info';
+import { getCommitInfo, getPullRequestInfo } from '@changesets/get-github-info';
 
 const changelogFunctions: ChangelogFunctions = {
 	getDependencyReleaseLine: async (changesets, dependenciesUpdated, options) => {
@@ -9,11 +9,11 @@ const changelogFunctions: ChangelogFunctions = {
 			await Promise.all(
 				changesets.map(async (cs) => {
 					if (cs.commit) {
-						const { links } = await getInfo({
+						const info = await getCommitInfo({
 							repo: options.repo,
 							commit: cs.commit
 						});
-						return links.commit;
+						return info?.commit.markdownLink;
 					}
 				})
 			)
@@ -56,33 +56,30 @@ const changelogFunctions: ChangelogFunctions = {
 
 		const links = await (async () => {
 			if (prFromSummary !== undefined) {
-				let { links } = await getInfoFromPullRequest({
+				const info = await getPullRequestInfo({
 					repo,
 					pull: prFromSummary
 				});
+				let commit = info?.commit?.markdownLink;
 				if (commitFromSummary) {
-					links = {
-						...links,
-						commit: `[\`${commitFromSummary.slice(
-							0,
-							7
-						)}\`](https://github.com/${repo}/commit/${commitFromSummary})`
-					};
+					commit = `[\`${commitFromSummary.slice(
+						0,
+						7
+					)}\`](https://github.com/${repo}/commit/${commitFromSummary})`;
 				}
-				return links;
+				return { pull: info?.pull.markdownLink, commit };
 			}
 			const commitToFetchFrom = commitFromSummary || changeset.commit;
 			if (commitToFetchFrom) {
-				const { links } = await getInfo({
+				const info = await getCommitInfo({
 					repo,
 					commit: commitToFetchFrom
 				});
-				return links;
+				return { pull: info?.pull?.markdownLink, commit: info?.commit.markdownLink };
 			}
 			return {
-				commit: null,
-				pull: null,
-				user: null
+				commit: undefined,
+				pull: undefined
 			};
 		})();
 
