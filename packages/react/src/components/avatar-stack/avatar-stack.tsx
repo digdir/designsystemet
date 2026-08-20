@@ -32,7 +32,7 @@ export type AvatarStackProps = {
    *  @default undefined
    */
   expandable?: 'fixed' | true;
-} & HTMLAttributes<HTMLSpanElement>;
+} & HTMLAttributes<HTMLDivElement>;
 
 /**
  * Use `AvatarStack` to constrain Avatars into a stack.
