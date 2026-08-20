@@ -2,6 +2,7 @@ import {
   Avatar,
   Checkbox,
   EXPERIMENTAL_AvatarStack,
+  Field,
   Label,
   Tooltip,
 } from '@digdir/designsystemet-react';
@@ -23,32 +24,18 @@ export const Preview = () => (
 );
 
 export const Playground = () => {
-  const [expandable, setExpandable] = useState<undefined | true>(undefined);
-  const [square, setSquare] = useState(false);
+  const [expandable, setExpandable] = useState(false);
+  const [overlap, setOverlap] = useState(32);
+  const [radius, setRadius] = useState(32);
   const [size, setSize] = useState(64);
-  const [overlap, setOverlap] = useState(50);
   const [gap, setGap] = useState(2);
-  const labelStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 'var(--ds-size-2)',
-    accentColor: 'var(--ds-color-base-default)',
-  } as const;
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--ds-size-8)',
-        minHeight: '370px',
-      }}
-    >
+    <>
       <fieldset
         style={{
-          display: 'grid',
-          gridTemplateColumns:
-            'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+          display: 'flex',
+          alignItems: 'center',
           gap: 'var(--ds-size-4)',
         }}
       >
@@ -61,80 +48,83 @@ export const Playground = () => {
         >
           <Checkbox
             label='Expandable'
-            checked={expandable !== undefined}
-            onChange={() => setExpandable((prev) => (prev ? undefined : true))}
-          />
-          <Checkbox
-            label='square'
-            checked={square}
-            onChange={() => setSquare((prev) => !prev)}
+            checked={expandable}
+            onChange={() => setExpandable(!expandable)}
           />
         </div>
-        <Label style={labelStyle}>
-          avatarSize {`${size}px`}
+        <Field>
+          <Label>Size {`${size}px`}</Label>
           <input
             min='24'
             max='150'
             step='0.1'
             type='range'
             value={size}
-            onChange={(e) =>
-              setSize(Number((e.target as HTMLInputElement).value))
-            }
+            onChange={(e) => setSize(e.target.valueAsNumber)}
           />
-        </Label>
-        <Label style={labelStyle}>
-          Overlap {`${overlap}`}
+        </Field>
+        <Field>
+          <Label>Overlap {`${overlap}px`}</Label>
           <input
-            min='-10'
+            min='0'
             max='100'
             step='1'
             type='range'
             value={overlap}
-            onChange={(e) =>
-              setOverlap(Number((e.target as HTMLInputElement).value))
-            }
+            onChange={(e) => setOverlap(e.target.valueAsNumber)}
           />
-        </Label>
-        <Label style={labelStyle}>
-          Gap {`${gap}px`}
+        </Field>
+        <Field>
+          <Label>Gap {`${gap}px`}</Label>
           <input
             min='0'
             max='15'
             step='1'
             type='range'
             value={gap}
-            onChange={(e) =>
-              setGap(Number((e.target as HTMLInputElement).value))
-            }
+            onChange={(e) => setGap(e.target.valueAsNumber)}
           />
-        </Label>
+        </Field>
+        <Field>
+          <Label>Radius {`${radius}px`}</Label>
+          <input
+            min='0'
+            max='75'
+            step='1'
+            type='range'
+            value={radius}
+            onChange={(e) => setRadius(e.target.valueAsNumber)}
+          />
+        </Field>
       </fieldset>
-
+      <br />
       <EXPERIMENTAL_AvatarStack
-        overlap={overlap}
-        data-suffix={`+10`}
-        gap={`${gap}px`}
-        avatarSize={`${size}px`}
-        expandable={expandable}
+        data-suffix='+10'
+        expandable={expandable || undefined}
+        style={
+          {
+            '--dsc-avatar-stack-size': `${size}px`,
+            '--dsc-avatar-stack-gap': `${gap}px`,
+            '--dsc-avatar-stack-overlap': `${overlap}px`,
+            '--dsc-avatar-stack-radius': `${radius}px`,
+          } as React.CSSProperties
+        }
       >
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+        <Avatar aria-label=''>
           <img src='/img/component-docs/cats/cat1.webp' alt='' />
         </Avatar>
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+        <Avatar aria-label=''>
           <img src='/img/component-docs/cats/cat6.webp' alt='' />
         </Avatar>
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
-          md
-        </Avatar>
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+        <Avatar aria-label=''>md</Avatar>
+        <Avatar aria-label=''>
           <img src='/img/component-docs/cats/cat1.webp' alt='' />
         </Avatar>
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+        <Avatar aria-label=''>
           <img src='/img/component-docs/cats/cat6.webp' alt='' />
         </Avatar>
       </EXPERIMENTAL_AvatarStack>
-    </div>
+    </>
   );
 };
 
@@ -185,12 +175,7 @@ export const Expandable = () => (
 );
 
 export const ShapeVariants = () => (
-  <EXPERIMENTAL_AvatarStack
-    aria-label='example of square avatars'
-    overlap={40}
-    gap='4px'
-    expandable
-  >
+  <EXPERIMENTAL_AvatarStack aria-label='example of square avatars' expandable>
     <Avatar variant='square' aria-label='variant square' />
     <Avatar variant='square' aria-label='Ola Nordmann'>
       <img src='/img/component-docs/cats/cat1.webp' alt='' />
@@ -208,7 +193,13 @@ export const ShapeVariants = () => (
 );
 
 export const DataSize = () => (
-  <EXPERIMENTAL_AvatarStack avatarSize='clamp(5rem, 1.5rem + 2vw, 10rem)'>
+  <EXPERIMENTAL_AvatarStack
+    style={
+      {
+        '--dsc-avatar-stack-size': 'clamp(5rem, 1.5rem + 2vw, 10rem)',
+      } as React.CSSProperties
+    }
+  >
     <Avatar aria-label=''>
       <img src='/img/component-docs/cats/cat6.webp' alt='' />
     </Avatar>
@@ -225,7 +216,13 @@ export const DataSize = () => (
 );
 
 export const Gap = () => (
-  <EXPERIMENTAL_AvatarStack avatarSize='3rem' gap='6px'>
+  <EXPERIMENTAL_AvatarStack
+    style={
+      {
+        '--dsc-avatar-stack-gap': '6px',
+      } as React.CSSProperties
+    }
+  >
     <Avatar aria-label='' initials='AA' />
     <Avatar aria-label='' initials='BB' />
     <Avatar aria-label='' initials='CC' />
@@ -235,7 +232,7 @@ export const Gap = () => (
 
 export const AdditionalAvatars = () => (
   <>
-    <EXPERIMENTAL_AvatarStack overlap={30}>
+    <EXPERIMENTAL_AvatarStack>
       <Avatar aria-label=''>
         <img src='/img/component-docs/cats/cat1.webp' alt='' />
       </Avatar>
@@ -251,7 +248,7 @@ export const AdditionalAvatars = () => (
         +14
       </Avatar>
     </EXPERIMENTAL_AvatarStack>
-    <EXPERIMENTAL_AvatarStack suffix={'+14'}>
+    <EXPERIMENTAL_AvatarStack suffix='+14'>
       <Avatar aria-label=''>
         <img src='/img/component-docs/cats/cat1.webp' alt='' />
       </Avatar>
@@ -268,7 +265,7 @@ export const WithTooltipAndLink = () => (
   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-size-4)' }}>
     <fieldset>
       <legend>Link + Tooltip</legend>
-      <EXPERIMENTAL_AvatarStack overlap={20} aria-label='contributors'>
+      <EXPERIMENTAL_AvatarStack aria-label='contributors'>
         <Tooltip content='Ola Katt'>
           <Avatar aria-label='' asChild>
             <a href='#'>
@@ -299,11 +296,7 @@ export const WithTooltipAndLink = () => (
     </fieldset>
     <fieldset>
       <legend>Link + Tooltip expandable</legend>
-      <EXPERIMENTAL_AvatarStack
-        overlap={50}
-        expandable='fixed'
-        aria-label='contributors'
-      >
+      <EXPERIMENTAL_AvatarStack expandable='fixed' aria-label='contributors'>
         <Tooltip content='Ola Katt'>
           <Avatar aria-label='' asChild>
             <a href='#'>
