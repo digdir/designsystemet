@@ -2,13 +2,12 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "./tsc-build",
     "composite": true,
     "noEmit": false,
     "emitDeclarationOnly": true,
     "types": [
       "./declarations.d.ts",
-      "./react-types.d.ts",
+      "./src/react-types.d.ts",
       "@digdir/designsystemet-web"
     ]
   },
