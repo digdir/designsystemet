@@ -17,7 +17,7 @@ const meta = preview.meta({
   parameters: {
     layout: 'fullscreen',
   },
-  args: {
+  /* args: {
     'aria-label': 'Test av aria label',
   },
   decorators: [
@@ -32,7 +32,7 @@ const meta = preview.meta({
         <Story />
       </>
     ),
-  ],
+  ], */
 });
 
 export const Preview = meta.story({
