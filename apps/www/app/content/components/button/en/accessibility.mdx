@@ -70,15 +70,3 @@ We avoid using disabled (`disabled`) buttons because they can be difficult to pe
 - If it makes sense that the button should still receive keyboard focus,  
   or if it is important for other reasons to preserve the tab order, use `aria-disabled` instead of `disabled`.  
   Remember to manually prevent callback functions (for example `onClick`) from running.
-
-## Loading and `aria-disabled` do not disable `onClick`
-
-**Note:** Neither `loading="true"` nor `aria-disabled="true"` automatically prevents the button from triggering `onClick`. These attributes only affect appearance and accessibility, not functionality.
-
-If the button should not be able to perform actions while it is loading or disabled, you must add logic yourself to prevent the callback function from running. For example:
-
-```jsx
-function handleClick() {
-  if (isLoading || isDisabled) return;
-  // The rest of the logic
-}

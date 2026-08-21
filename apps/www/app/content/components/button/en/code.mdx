@@ -4,9 +4,9 @@
 The class name `ds-button` is set on `<button>`.
 
 There are three data attributes you can use for customization:
-`data-icon` - add if the button only has an icon.
-`data-variant` - sets the variant of the button (`primary`, `secondary`, `tertiary`).
-`data-fullwidth` - add if the button should be full width.
+- `data-icon` - add if the button only has an icon.
+- `data-variant` - sets the variant of the button (`primary`, `secondary`, `tertiary`).
+- `data-fullwidth` - add if the button should be full width.
 
 ## CSS variables and data attributes
 Sizes are controlled with [`data-size`](/en/fundamentals/code/sizes) and colors with [`data-color`](/en/fundamentals/code/colors). The component will inherit the closest parent where these are set.
@@ -31,10 +31,17 @@ If you only have an icon in the button, you can set `data-icon="true"` to make i
 
 ### Buttons that load
 
-If you want a button that loads, you have to add a loading indicator yourself.
+If you want a button that loads, you have to add a loading indicator and `aria-busy="true"` yourself.
 
-Note: Neither `aria-busy` nor `aria-disabled` automatically prevents the button from triggering `onClick`.
-You must ensure that the callback function does not run when the button is disabled.
+Note: `aria-busy` does not prevent the button from triggering interactions. It only affects appearance and accessibility, not functionality.
+If the button should not be able to perform actions, you must add logic yourself to prevent the callback function from running.
+
+## Disabled buttons
+
+As far as possible, you should [avoid disabled buttons](/en/components/docs/button/accessibility#avoid-using-disabled-buttons).
+If you have a `<button>`, you can disable it with the `disabled` attribute. If you have an `<a>`, you can disable it with the `aria-disabled="true"` attribute.
+Note: `aria-disabled` does not prevent the button from triggering interactions. It only affects appearance and accessibility, not functionality.
+If the button should not be able to perform actions, you must add logic yourself to prevent the callback function from running.
 
 ## React
 In React, we also set `type="button"` by default, to avoid unexpected submits in forms.
@@ -53,7 +60,7 @@ In React, we use `loading={true}` to show that the button is loading something. 
 
 <Story story="LoadingEn" language="react"/>
 
-In the example above, `aria-disabled` is automatically set when `loading={true}`. This is the recommended way to show that a button is disabled. Then the button can still get focus when the user navigates with the keyboard. This way, screen readers and other assistive devices are informed that the button exists, but that it is not active.
+In the example above, `aria-busy="true"` is automatically set when `loading={true}`. This is the recommended way to show that a button is loading.
 
 ### Button as link
 
