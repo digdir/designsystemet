@@ -49,7 +49,7 @@ export const Preview = meta.story({
   ),
 });
 
-export const Expandable = meta.story({
+/* export const Expandable = meta.story({
   render: (args) => (
     <section>
       <fieldset>
@@ -322,7 +322,7 @@ export const WithTooltipAndLink = meta.story({
       </fieldset>
     </section>
   ),
-});
+}); */
 
 /* export const Playground = meta.story(() => {
   const [expandable, setExpandable] = useState<undefined | true>(undefined);
