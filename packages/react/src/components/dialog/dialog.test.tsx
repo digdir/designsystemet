@@ -1,5 +1,5 @@
 import { act, render, screen } from '@testing-library/react';
-
+import { useEffect, useRef, useState } from 'react';
 import type { DialogProps } from './';
 import { Dialog } from './';
 
@@ -111,6 +111,47 @@ describe('Dialog', () => {
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it('should always programmatically close using .close() to keep the page interactive', async () => {
+    const onClose = vi.fn();
+    const handleClose = vi.fn();
+    const ControlledDialog = () => {
+      const [open, setOpen] = useState(false);
+      const dialogRef = useRef<HTMLDialogElement>(null);
+
+      useEffect(() => {
+        const dialog = dialogRef.current;
+        dialog?.addEventListener('close', handleClose);
+        return () => dialog?.removeEventListener('close', handleClose);
+      }, []);
+
+      return (
+        <>
+          <button onClick={() => setOpen(true)}>Open Dialog</button>
+          <Dialog
+            open={open}
+            closeButton={false}
+            onClose={onClose}
+            ref={dialogRef}
+          >
+            <button onClick={() => setOpen(false)}>Close Dialog</button>
+          </Dialog>
+        </>
+      );
+    };
+
+    render(<ControlledDialog />);
+
+    await act(async () =>
+      screen.getByRole('button', { name: 'Open Dialog' }).click(),
+    );
+    await act(async () =>
+      screen.getByRole('button', { name: 'Close Dialog' }).click(),
+    );
+
+    expect(onClose).toHaveBeenCalledTimes(0);
+    expect(handleClose).toHaveBeenCalledTimes(1);
   });
 
   it('should not call onClose on parent when nested dialog closes', async () => {
