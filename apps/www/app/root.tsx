@@ -141,6 +141,9 @@ function Document({ children }: DocumentProps) {
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        {/* Machine-readable documentation index for AI agents, see /llms.txt */}
+        <link rel='alternate' type='text/plain' href='/llms.txt' />
+        <meta name='llms-txt' content='/llms.txt' />
         <Links />
         <Meta />
       </head>

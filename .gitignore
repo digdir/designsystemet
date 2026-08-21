@@ -56,3 +56,6 @@ apps/storybook/debug-storybook.log
 .claude/
 CLAUDE.md
 .claude/settings.local.json
+registry
+apps/www/public/twins
+apps/www/public/llms.txt

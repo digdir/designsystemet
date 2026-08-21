@@ -57,6 +57,10 @@ if (DEVELOPMENT) {
   });
 } else {
   console.log('Starting production server');
+  // Must run before the static/prerender middleware below: those end the
+  // response themselves, so anything mounted after them never touches a
+  // prerendered page. Mounted here, the headers ride on every response.
+  app.use(securityHeaders);
   app.use(
     '/assets',
     express.static('dist/client/assets', { immutable: true, maxAge: '1y' }),
@@ -91,9 +95,7 @@ if (DEVELOPMENT) {
   app.use(express.static('dist/client', { redirect: false }));
 
   // RR v8 emits the server build (not the bundled `server/app.ts`) at
-  // BUILD_PATH, so drive the request handler from it directly. `securityHeaders`
-  // replaces the middleware that the bundled `server/app.ts` used to provide.
-  app.use(securityHeaders);
+  // BUILD_PATH, so drive the request handler from it directly.
   app.use(
     createRequestHandler({
       build: () => import(BUILD_PATH),
