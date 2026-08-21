@@ -1,5 +1,67 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## What you need to verify yourself
 
-If you are displaying several `Tag` components together, we recommend using a `<ul>` list with one `<li>` per `Tag`. This ensures that they are announced as a list rather than as one continuous sentence, providing a better experience for users of assistive technologies.
+**Tag containing an icon**
+
+Give the tag an accessible name using `aria-label`. The name should describe the tag's status or meaning. Hide the icon from screen readers if the tag already has an accessible name.
+
+<span data-size="sm">
+WCAG: [1.1.1 Non-text Content (W3C WAI)](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content)
+</span>
+
+<Divider/>
+\
+**A tag's status or meaning must be communicated using more than color alone**
+
+Use a clear and visible label that describes the tag's meaning. Users should not have to rely solely on color or an icon to understand the information.
+
+<span data-size="sm">
+WCAG: [1.4.1 Use of Color (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html)
+</span>
+
+<Divider/>
+\
+**A group of tags should have an accessible name and should be coded as a semantic group**
+
+If you display multiple tag components together, we recommend using a `ul` list with one `li` element per tag. This allows screen readers to announce them as a list rather than as one continuous piece of text.
+
+Give the surrounding element an accessible name using `aria-label` or `aria-labelledby`. If the content functions as a single group, you may also assign an appropriate role such as `group`. Do not include the role itself as part of the accessible name.
+
+Make sure each individual tag also has an accessible name.
+
+<span data-size="sm">
+WCAG: [4.1.2 Name, Role, Value (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+</span>
+<span data-size="sm">
+WCAG: [1.3.1 Info and Relationships (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships)
+</span>
+
+<Divider/>
+\
+**A tag must not have interactive functionality**
+
+Use a tag to present information, not to trigger actions. It should not appear to be interactive either. Use a chip, button, or another interactive component when users need to activate or change something.
+
+<span data-size="sm">
+WCAG: [3.2.4 Consistent Identification (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification.html)
+</span>
+
+<Divider/>
+\
+**Status changes must be announced when they occur dynamically**
+
+If a status is updated without moving focus to the updated information, the change must also be communicated to screen reader users.
+
+The announcement should normally be tied to the content or functionality that owns the status, not necessarily to the tag that displays it.
+
+For example, an upload process may announce “Upload complete” while the status is simultaneously displayed in a tag whose text and appearance change.
+
+<span data-size="sm">
+WCAG: [4.1.3 Status Messages (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html)
+</span>
+
+<Divider/>
+
+## Handled by the design system
+
+- Color contrast is handled by the design system's color system. If you deviate from the recommended color tokens, verify that the combination of text and background colors meets the required contrast ratios for all tag variants.
+- Sizing and scaling are handled by the design system's sizing system. If you deviate from it, verify that the tag remains usable when text is resized or when screen magnification is used, without loss of information.

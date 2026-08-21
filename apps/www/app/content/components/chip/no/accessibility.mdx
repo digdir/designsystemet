@@ -1,7 +1,88 @@
-<Alert data-color="info">
-Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
-</Alert>
-
 ## Gi beskjed ved endringer på siden
 
-Hvis deler av siden oppdateres mens brukeren interagerer med `Chip`, må vi sørge for at skjermleserbrukere får beskjed om det. Bruk en `ARIA live region` for å formidle endringer, for eksempel oppdatert antall treff eller annen dynamisk informasjon.
+Hvis deler av siden oppdateres mens brukeren interagerer med chip, må vi sørge for at skjermleserbrukere får beskjed om det. Bruk en `ARIA live region` for å formidle endringer, for eksempel oppdatert antall treff eller annen dynamisk informasjon.
+
+## Dette må du sjekke selv
+
+**Chip som fungerer som filter skal være merket tydelig**
+
+- Bruk `aria-pressed` (true/false) for chip som fungerer som en toggle
+- Bruk `aria-checked` for chip som fungerer som en checkbox eller radio-knapp
+
+<span data-size="sm"> 
+WCAG: [4.1.2 Navn, rolle, verdi (uutilsynet)](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
+</span> 
+
+<Divider/>
+\
+**Filtervalg som kan fjernes, skal ha et tilgjengelig navn som beskriver hva den gjør**
+
+Gi chip et navn som tydelig beskriver hva den gjør. For eksempel «Fjern Elektronikk» for et valgt filter «Elektronikk». Angi navnet med `aria-label`
+
+<span data-size="sm"> 
+WCAG: [4.1.2 Navn, rolle, verdi (uutilsynet)](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
+</span> 
+
+<Divider/>
+\
+**En gruppe av flere chip som fungerer i en samlet kontroll skal ha et tilgjengelig navn**
+
+Gi det omsluttende elementet en passende rolle som for eksempel `group` og et tilhørende navn med `aria-label` eller `aria-labelledby`. Du skal ikke gjenta rollen som en del av navnet. Den enkelte chip inne i gruppa skal også tilgjengelige navn.
+
+<span data-size="sm"> 
+WCAG: [4.1.2 Navn, rolle, verdi (uutilsynet)](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
+</span> 
+
+<Divider/>
+\
+**Chip som inneholder et icon**
+
+Bruk `aria-label` for å gi et tilgjengelig navn, pass på at navnet er beskrivende for funksjonalitet og innhold. Selve ikonet kan skjules for skjermleser når chip har et tilgjengelig navn.
+
+<span data-size="sm"> 
+WCAG: [1.1.1 Ikke-tekstlig innhold (uutilsynet)](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231)
+</span> 
+
+<Divider/>
+\
+**Flytt fokus når en chip fjernes**
+
+Fjernes en chip med tastatur (delete eller backspace) skal fokus flyttes til forrige eller neste chip, er det ingen chip igjen skal fokus flyttes til omsluttende kontainer.
+
+<span data-size="sm"> 
+WCAG: [2.4.3 Fokusrekkefølge (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/105)
+</span> 
+
+<Divider/>
+\
+**Unngå lange tekststrenger i chiper når det er mulig**
+
+Lange tekststrenger kan være vanskelige å lese i en chip. Bruk korte og meningsbærende etiketter der det er mulig.
+
+Hvis lengre tekst er nødvendig, kan det være aktuelt å avkorte den visuelle presentasjonen. Sørg for at hele innholdet fortsatt er tilgjengelig både ved mouseover og for brukere av skjermleser.
+
+<span data-size="sm"> 
+WCAG: [2.5.3 Ledetekst i navn (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/150)
+</span> 
+
+<Divider/>
+
+## Test med tastatur
+
+**Sjekk at du kan**
+- nå chip med tab-tasten
+- aktivere, velge og avvelge chip med både mellomrom- og entertasten
+- fjerne en chip med både delete- og backspacetastene
+- navigere mellom flere grupperte chips med piltastene
+- nå interaktivt innhold som vises ved å aktivere en chip, med tab-tasten
+
+<span data-size="sm"> 
+WCAG: [2.1.1 Tastatur (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/211-tastatur-niva/98)
+</span> 
+
+<Divider/>
+## Designsystemet ivaretar
+
+- Designsystemet inkluderer stiler for focus og hover, sjekk likevel at disse vises ved henholdsvis tastaturmarkering og musepeker-markering (mouseover).
+- Kontrastforhold håndteres av fargesystemet i designsystemet. Dersom du avviker fra anbefalte fargetokens, må du kontrollere at kombinasjonen av tekstfarge og bakgrunnsfarge oppfyller kravene til kontrast for chipen.
+- Størrelse og skalering håndteres av designsystemets størrelsessystem. Dersom du avviker fra dette, må du kontrollere at chip fungerer ved forstørring av tekst og bruk av skjermforstørrer, uten tap av informasjon eller funksjonalitet.
