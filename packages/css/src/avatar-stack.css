@@ -40,7 +40,7 @@
     --_s: calc(var(--_r) - 0.5px); /* .5px is used to smooth edges and avoid glitches */
     --_n: calc(var(--_dsc-avatar-stack-overlap) * -1); /* Negative overlap */
 
-    &:not(:last-child) {
+    &:has(+ .ds-avatar) {
       mask:
         linear-gradient(to right, black calc(var(--_x) + 0.5px), transparent calc(var(--_x) + 0.5px)) 0 0 / 100% 100% no-repeat,
         radial-gradient(circle at 100% 100%, transparent var(--_s), black var(--_r)) var(--_x) calc(0% - var(--dsc-avatar-stack-gap)) / var(--_r) var(--_r)
