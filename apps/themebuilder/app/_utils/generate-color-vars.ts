@@ -12,7 +12,7 @@ export const generateColorVars = (
 ) => {
   const style = {} as Record<string, string>;
 
-  for (const color of colors[colorScheme]) {
+  for (const color of Object.values(colors[colorScheme])) {
     style[`--ds-color-${prefix ? `${prefix}-` : ''}${color.name}`] = color.hex;
   }
 

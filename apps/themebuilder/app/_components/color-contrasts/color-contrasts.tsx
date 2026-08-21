@@ -1,7 +1,9 @@
 import {
   type Color,
+  type ColorScale,
   generateColorSchemes,
   getContrastFromHex,
+  type SemanticColorNames,
 } from '@digdir/designsystemet';
 import {
   Field,
@@ -97,8 +99,8 @@ const ColorContrastMapper = ({
   horizontal,
   variant,
 }: {
-  vertical: string[];
-  horizontal: string[];
+  vertical: SemanticColorNames[];
+  horizontal: SemanticColorNames[];
   variant: string;
 }) => {
   const { t } = useTranslation();
@@ -106,9 +108,7 @@ const ColorContrastMapper = ({
     useThemebuilder();
   const [selectedColor, setSelectedColor] = useState('dominant');
 
-  const getMappedTheme = () => {
-    const mappedColors: { [key: string]: Color } = {};
-
+  const getMappedTheme = (): ColorScale => {
     let colorTheme = colors?.[0]?.colors || initialTheme;
 
     if (selectedColor !== 'dominant') {
@@ -130,11 +130,7 @@ const ColorContrastMapper = ({
       }
     }
 
-    for (const [, value] of Object.entries(colorTheme[colorScheme])) {
-      mappedColors[value.name] = value;
-    }
-
-    return mappedColors;
+    return colorTheme[colorScheme];
   };
 
   const mappedTheme = getMappedTheme();
