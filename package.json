@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "vitest",
-    "test:cli": "pnpm --filter @digdir/designsystemet test --verbose",
+    "test:cli": "pnpm --filter @digdir/designsystemet test",
     "test:web": "pnpm --filter @digdir/designsystemet-web test",
     "test:storybook": "pnpm --filter @web/storybook test-storybook",
     "test:coverage": "vitest run --coverage",
