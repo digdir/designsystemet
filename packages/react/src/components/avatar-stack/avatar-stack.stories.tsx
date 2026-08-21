@@ -324,7 +324,7 @@ export const WithTooltipAndLink = meta.story({
   ),
 });
 
-export const Playground = meta.story(() => {
+/* export const Playground = meta.story(() => {
   const [expandable, setExpandable] = useState<undefined | true>(undefined);
   const [size, setSize] = useState(64);
   const [radius, setRadius] = useState(150);
@@ -415,4 +415,4 @@ export const Playground = meta.story(() => {
       </AvatarStack>
     </>
   );
-});
+}); */

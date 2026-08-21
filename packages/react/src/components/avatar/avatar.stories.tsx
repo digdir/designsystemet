@@ -131,7 +131,7 @@ export const InDropdown = meta.story({
   },
 });
 
-/* export const AsLink = meta.story(() => (
+export const AsLink = meta.story(() => (
   <>
     <Avatar aria-label='xs' data-size='xs' asChild>
       <a href='#none'>
@@ -179,4 +179,4 @@ export const AsButton = meta.story(() => (
       </button>
     </Avatar>
   </>
-)); */
+));
