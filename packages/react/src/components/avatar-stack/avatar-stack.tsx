@@ -58,13 +58,13 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
   if (typeof overlap === 'number')
     overlap = `calc(var(--dsc-avatar-stack-size) / 100 * ${overlap})`; // Support backwards compatible integer overlap
 
-  useEffect(() => {
+  /*   useEffect(() => {
     for (const [key, value] of Object.entries({ gap, avatarSize, overlap }))
       if (value)
         warn(
           `AvatarStack: "${key}" property is deprecated. Please use style={{ '--dsc-avatar-stack-${key.replace('avatarSize', 'size')}': '${value}' } as React.CSSProperties} instead`,
         );
-  }, [gap, avatarSize, overlap]);
+  }, [gap, avatarSize, overlap]); */
 
   return (
     <div
