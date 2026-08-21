@@ -17,7 +17,7 @@ const meta = preview.meta({
   parameters: {
     layout: 'fullscreen',
   },
-  /* args: {
+  args: {
     'aria-label': 'Test av aria label',
   },
   decorators: [
@@ -32,7 +32,7 @@ const meta = preview.meta({
         <Story />
       </>
     ),
-  ], */
+  ],
 });
 
 export const Preview = meta.story({
@@ -49,7 +49,7 @@ export const Preview = meta.story({
   ),
 });
 
-/* export const Expandable = meta.story({
+export const Expandable = meta.story({
   render: (args) => (
     <section>
       <fieldset>
@@ -322,9 +322,9 @@ export const WithTooltipAndLink = meta.story({
       </fieldset>
     </section>
   ),
-}); */
+});
 
-/* export const Playground = meta.story(() => {
+export const Playground = meta.story(() => {
   const [expandable, setExpandable] = useState<undefined | true>(undefined);
   const [size, setSize] = useState(64);
   const [radius, setRadius] = useState(150);
@@ -415,4 +415,4 @@ export const WithTooltipAndLink = meta.story({
       </AvatarStack>
     </>
   );
-}); */
+});
