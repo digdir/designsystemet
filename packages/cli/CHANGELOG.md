@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.20.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.20.1
+
 ## 1.20.0
 
 ### Patch Changes
