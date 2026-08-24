@@ -64,7 +64,26 @@ describe('generateColorScheme', () => {
     const theme = result.theme as Record<string, Record<number, { $value: string }>>;
 
     // Position 12 is base-default for colors, so it should match the override
-    expect(theme.danger[12].$value).toBe('#AA0000');
+    expect(theme.danger[12].$value).toBe(overrides?.severity?.danger);
+  });
+
+  it('generates scales from severity defined in colors', () => {
+    const colors = { ...{ info: '#ff00e1' as CssColor }, ...baseColors };
+    const result = generateColorScheme('theme', 'light', colors);
+    const theme = result.theme as Record<string, Record<number, { $value: string }>>;
+
+    // Position 12 is base-default for colors
+    expect(theme.info[12].$value).toBe(colors?.info);
+  });
+
+  it('severity color defined in overrides takes precedent over color', () => {
+    const overrides = { severity: { info: '#AA0000' } } as ColorOverrideSchema;
+    const colors = { ...{ info: '#ff00e1' as CssColor }, ...baseColors };
+    const result = generateColorScheme('theme', 'light', colors, overrides);
+    const theme = result.theme as Record<string, Record<number, { $value: string }>>;
+
+    // Position 12 is base-default for colors
+    expect(theme.info[12].$value).toBe(overrides?.severity?.info);
   });
 
   it('applies color overrides for the matching scheme only', () => {
