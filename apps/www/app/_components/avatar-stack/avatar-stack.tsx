@@ -77,15 +77,14 @@ export const AvatarStack = ({ authors, expandable }: AvatarStackProps) => {
   return (
     <EXPERIMENTAL_AvatarStack
       className={classes.avatarStackOverrides}
-      avatarSize='30px'
-      gap='4px'
       expandable={expandable}
-      overlap={40}
     >
       {uniqueAvatars.map((avatarKey) => (
-        <Avatar aria-hidden key={avatarKey}>
-          <img src={`/img/avatars/${avatarMap[avatarKey]}`} alt='' />
-        </Avatar>
+        <li key={avatarKey}>
+          <Avatar aria-hidden>
+            <img src={`/img/avatars/${avatarMap[avatarKey]}`} alt='' />
+          </Avatar>
+        </li>
       ))}
     </EXPERIMENTAL_AvatarStack>
   );

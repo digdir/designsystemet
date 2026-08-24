@@ -56,7 +56,7 @@
       radial-gradient(circle at 100% 100%, transparent var(--_s), black var(--_r)) var(--_x) calc(0% - var(--dsc-avatar-stack-gap)) / var(--_r) var(--_r)
       no-repeat,
       radial-gradient(circle at 100% 0, transparent var(--_s), black var(--_r)) var(--_x) calc(100% + var(--dsc-avatar-stack-gap)) / var(--_r) var(--_r)
-      no-repeat; /* All props needs NEEDS to be in the shorthand for each gradient here. If we use `mask-repeat: no-repeat;` some Safari versions have issues */
+      no-repeat; /* All properties need to be in the shorthand for each gradient here. If we use `mask-repeat: no-repeat;`, some Safari versions have issues */
   }
 
   /**
