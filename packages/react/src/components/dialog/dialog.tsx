@@ -99,6 +99,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
   ) {
     const contextRef = useContext(Context);
     const dialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the dialog works without a DialogTriggerContext
+    const skipCloseRef = useRef(false); // Needed to skip the onClose event when the dialog is closed programmatically
     const Component = asChild ? Slot : 'dialog';
     const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
     const autoId = useId();
@@ -106,13 +107,11 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
 
     // Toggle open based on prop
     useEffect(() => {
-      if (open === undefined) return; // Uncontrolled if open prop is not provided
-
       const dialog = dialogRef.current;
-      if (dialog) {
-        if (open && !dialog.open) dialog[modal ? 'showModal' : 'show']();
-        else dialog.open = !!open; // Close with prop to prevent close event from firing
-      }
+      if (!dialog || open === undefined || open === dialog.open) return; // No need to change
+      if (open) return dialog[modal ? 'showModal' : 'show']();
+      skipCloseRef.current = true; // Skip the onClose event when closing programmatically
+      dialog.close();
     }, [open, modal]);
 
     return (
@@ -123,7 +122,8 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
         id={usedId}
         onClose={(event) => {
           if (event.target !== event.currentTarget) return; // Ignore close events from nested dialogs
-          onClose?.(event.nativeEvent); // Backward compatibility: expose native event
+          if (!skipCloseRef.current) onClose?.(event.nativeEvent); // Backward compatibility: expose native event
+          skipCloseRef.current = false; // Reset skipCloseRef
         }}
         onClick={(event) => {
           onClick?.(event as React.MouseEvent<HTMLDialogElement>);

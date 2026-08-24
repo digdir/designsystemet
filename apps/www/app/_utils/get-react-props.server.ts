@@ -9,6 +9,17 @@ import {
 
 const require = createRequire(import.meta.url);
 const shouldUseCache = process.env.NODE_ENV === 'production';
+const ignoredProps = [
+  'popovertarget',
+  'data-color',
+  'data-color-scheme',
+  'data-size',
+  'focusgroup',
+  'focusgroupstart',
+  'commandfor',
+  'commandFor',
+  'command',
+];
 
 // Cache the parser as a singleton — withCustomConfig creates a TypeScript program
 // which is very expensive. Reusing it across all component pages saves minutes of build time.
@@ -29,13 +40,7 @@ const getParser = () => {
           const defaultLogicFromStorybook = prop.parent
             ? !/node_modules/.test(prop.parent.fileName)
             : true;
-          return (
-            defaultLogicFromStorybook &&
-            prop.name !== 'popovertarget' &&
-            prop.name !== 'data-color' &&
-            prop.name !== 'data-color-scheme' &&
-            prop.name !== 'data-size'
-          );
+          return defaultLogicFromStorybook && !ignoredProps.includes(prop.name);
         },
       },
     );
@@ -55,13 +60,7 @@ const getParser = () => {
           const defaultLogicFromStorybook = prop.parent
             ? !/node_modules/.test(prop.parent.fileName)
             : true;
-          return (
-            defaultLogicFromStorybook &&
-            prop.name !== 'popovertarget' &&
-            prop.name !== 'data-color' &&
-            prop.name !== 'data-color-scheme' &&
-            prop.name !== 'data-size'
-          );
+          return defaultLogicFromStorybook && !ignoredProps.includes(prop.name);
         },
       },
     );
