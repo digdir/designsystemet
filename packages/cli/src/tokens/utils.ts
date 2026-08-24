@@ -150,10 +150,7 @@ export function orderBySize(sizes: string[]): string[] {
 
 export function addSeverityColors(colors: Theme['colors']): Theme['colors'] {
   // Append default severity colors at the end, keeping user-defined ones untouched
-  const missingSeverityColors = Object.fromEntries(
-    Object.entries(severityColors).filter(([name]) => !(name in colors)),
-  );
-  return { ...colors, ...missingSeverityColors };
+  return { ...colors, ...R.pickBy((_, name) => !(name in colors), severityColors) };
 }
 
 export function toColorNames(themeColors: Theme['colors']): string[] {
