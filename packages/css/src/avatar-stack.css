@@ -66,29 +66,43 @@
     --_dsc-avatar-stack-overlap: 0px;
   }
 
-  /* Needed since sibling-index() has low browser support for now */
-  &[data-expandable='fixed'] > .ds-avatar:nth-child(2) {
-    translate: var(--_n);
+  @supports (width: calc(sibling-index() * 1px)) {
+    &[data-expandable='fixed'] > .ds-avatar {
+      translate: calc(var(--_n) * (sibling-index() - 1));
+    }
   }
-  &[data-expandable='fixed'] > .ds-avatar:nth-child(3) {
+}
+
+/* Compatibility for browsers without sibling-index() support */
+.ds-avatar-stack[data-expandable='fixed'] > .ds-avatar {
+  &:nth-child(3) {
     translate: calc(var(--_n) * 2);
   }
-  &[data-expandable='fixed'] > .ds-avatar:nth-child(4) {
+  &:nth-child(4) {
     translate: calc(var(--_n) * 3);
   }
-  &[data-expandable='fixed'] > .ds-avatar:nth-child(5) {
+  &:nth-child(5) {
     translate: calc(var(--_n) * 4);
   }
-  &[data-expandable='fixed'] > .ds-avatar:nth-child(6) {
+  &:nth-child(6) {
     translate: calc(var(--_n) * 5);
   }
-  &[data-expandable='fixed'] > .ds-avatar:nth-child(7) {
+  &:nth-child(7) {
     translate: calc(var(--_n) * 6);
   }
-  &[data-expandable='fixed'] > .ds-avatar:nth-child(8) {
+  &:nth-child(8) {
     translate: calc(var(--_n) * 7);
   }
-  &[data-expandable='fixed'] > .ds-avatar:nth-child(9) {
+  &:nth-child(9) {
     translate: calc(var(--_n) * 8);
+  }
+  &:nth-child(10) {
+    translate: calc(var(--_n) * 9);
+  }
+  &:nth-child(11) {
+    translate: calc(var(--_n) * 10);
+  }
+  &:nth-child(12) {
+    translate: calc(var(--_n) * 11);
   }
 }

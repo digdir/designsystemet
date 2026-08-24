@@ -23,6 +23,9 @@ Avatar stack uses its own CSS variables to control gap, size and overlap.
 
 ### Expandable
 `data-expandable` animates overlap to 0 on hover or focus. Use `data-expandable="fixed"` to expand with overflow without changing the physical width. `tabindex="0"` should be added, this is automatically added with `expandable` in React.
+
+**Note:** In [browsers that do not support `sibling-index()`](https://caniuse.com/wf-sibling-count), `data-expandable` will not render correctly if it contains more than 12 avatars.
+
 <Story story="Expandable" layout='block' />
 
 ### Indicating avatars not shown
