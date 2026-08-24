@@ -43,7 +43,7 @@ Button kan ha ikon plassert anten til venstre eller til høgre for teksten. Som 
 <Story story="Icons" />
 
 #### Knapp med berre ikon
-Knappar med berre ikon brukar vi kun for godt kjende ikon som "Lukk" og "Slett". Når knappen ikkje har tekst, må vi leggje til ein tilgjengeleg tekst som forklarer kva knappen gjer. Dette kan leggjast i `title`, `aria-label`, eller i ein [`Tooltip`](/no/components/docs/tooltip/overview).
+Knappar med berre ikon brukar vi kun for godt kjende ikon som "Lukk" og "Slett". Når knappen ikkje har tekst, må vi leggje til ein tilgjengeleg tekst som forklarer kva knappen gjer. Dette kan leggjast i `title`, `aria-label`, eller i ein [Tooltip](/no/components/docs/tooltip/overview).
 
 #### Knapp med tekst og ikon
 
@@ -67,9 +67,10 @@ Vi skal halde oss til eitt ikon per knapp.
 </div>
 
 
-### Knapp som lenkje
+### Knapp som lenke
+Ei lenke kan ha utsjånad som ein knapp. Bruk framleis `<a>` når elementet navigerer til ei ny side eller URL. Bruk `<button>` når elementet utfører ei handling på sida.
 
-Lenker kan få utsjånad som ein knapp, men vurder først om det er betre å bruke [`Link`](/no/components/docs/link/overview)-komponenten. 
+Vurder først om ei vanleg lenke er tydelegare og meir føreseieleg for brukaren.
 
 <Story story="AsLink" />
 
@@ -87,8 +88,15 @@ Gje relevant informasjon før brukaren skal trykkje på knappen.
 ### Knapp eller lenke?
 Bruk knapp når brukeren skal utføre en handling. Bruk [lenke](/no/components/docs/link/overview) når brukeren navigeres til en ny URL.
 
+Det er kva elementet **gjer**, ikkje korleis det ser ut, som avgjer om du skal bruke `<button>` eller `<a>`.
+
+Lenker kan ha ulik visuell utforming avhengig av konteksten. Til dømes kan lenker i ein navigasjonsmeny vere utan understreking eller ikon, så lenge det er tydeleg at dei er interaktive og høyrer til navigasjonen.
+
+Ei lenke kan òg sjå ut som ein knapp når ho representerer ei tydeleg navigasjonshandling. Ho skal framleis vere implementert som `<a>`, [sjå eksempelet over](#knapp-som-lenke).
+
 #### Logg inn
-Bruk knapp når «Logg inn» faktisk logger brukeren inn, for eksempel ved å sende inn et innloggingsskjema. Bruk [lenke](/no/components/docs/link/overview) når «Logg inn» sender brukeren til en innloggingsside eller ekstern innloggingstjeneste.
+«Logg inn» kan ha knappeutsjånad uansett kva HTML-element du nyttar.
+Bruk `<button>`-element når «Logg inn» faktisk loggar brukaren inn, til dømes ved å sende inn eit innloggingsskjema. Bruk `<a>`-element når «Logg inn» sender brukaren til ei innloggingsside eller ei ekstern innloggingsteneste.
 
 ### Plassering av knappar
 
@@ -103,7 +111,7 @@ Vi skal tydeleg beskrive kva handling knappen utfører. Ein knapp skal berre ha 
 Vi skal halde oss til éin primærknapp per side. Dersom det er fleire hovudhandlingar, kan brukarane bli usikre på kva dei skal gjere.
 
 ## Tekst
-Alle knappar på same side bør ha unike knappetekstar.
+Alle knappar på same side skal ha unike knappetekstar (med mindre fleire knappar utfører same handling).
 
 Knappeteksten bør vere kort, helst ikkje meir enn tre ord. Tenk på at knappen tydeleg skal beskrive kva som skjer når brukaren klikkar på han.
 

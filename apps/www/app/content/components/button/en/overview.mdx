@@ -31,9 +31,6 @@ More discreet than the secondary button. Often used together with a primary or s
 
 ### Colours
 
-A group of buttons should use the same colour variant.  
-The exception is when you want to highlight an action that cannot be undone, such as “Delete”.  Otherwise, different colour variants should normally not be combined.
-
 The button is available in all colours from your theme.
 
 <Story story="ColorVariants" />
@@ -49,7 +46,7 @@ Button can have an icon placed either to the left or the right of the text. As a
 
 #### Icon-only buttons
 
-Use icon-only buttons only for well-known icons such as “Close” and “Delete”. When the button has no text, you must add an accessible label describing what it does. This can be added via `title`, `aria-label`, or a [`Tooltip`](/en/components/docs/tooltip/overview).
+Use icon-only buttons only for well-known icons such as “Close” and “Delete”. When the button has no text, you must add an accessible label describing what it does. This can be added via `title`, `aria-label`, or a [Tooltip](/en/components/docs/tooltip/overview).
 
 #### Button with text and icon
 
@@ -74,7 +71,9 @@ Use only one icon per button.
 
 ### Button styled as a link
 
-Links can be styled to look like a button, but consider whether the [`Link`](/en/components/docs/link/overview) component is a more appropriate choice.
+A link can look like a button. Still use `<a>` when the element navigates to a new page or URL. Use `<button>` when the element performs an action on the page.
+
+First consider whether a regular link is clearer and more predictable for the user.
 
 <Story story="AsLinkEn" />
 
@@ -92,9 +91,16 @@ Buttons have an important function and are directly tied to an action. They give
 
 Use a button when the user should perform an action. Use a [link](/en/components/docs/link/overview) when the user is navigated to a new URL.
 
+What the element **does**, not how it looks, should determine whether you use `<button>` or `<a>`.
+
+Links can have different visual appearances depending on the context. For example, links in a navigation menu can be without underline or icons, as long as it is clear that they are interactive and belong to the navigation.
+
+A link can also look like a button when it represents a clear navigation action. It should still be implemented as `<a>`, [see the example above](#button-styled-as-a-link).
+
 #### Log in
 
-Use a button when “Log in” actually logs the user in, for example by submitting a login form. Use a [link](/en/components/docs/link/overview) when “Log in” sends the user to a login page or external authentication service.
+“Log in” can look like a button regardless of which HTML element you use.
+Use a `<button>` element when “Log in” actually logs the user in, for example by submitting a login form. Use an `<a>` element when “Log in” sends the user to a login page or an external authentication service.
 
 ### Button placement
 
@@ -109,7 +115,7 @@ Clearly describe what the button does. A button should perform only one action, 
 There should be only one primary button per page. If there are multiple main actions, users may become unsure of what to do.
 
 ## Text
-All buttons on the same page should have unique button text.
+All buttons on the same page must have unique button text (unless multiple buttons perform the same action).
 
 Button text should be short, ideally no more than two, at most three words. The text should clearly describe what happens when the user clicks the button.
 

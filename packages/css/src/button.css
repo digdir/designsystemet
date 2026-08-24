@@ -108,6 +108,7 @@
     color: var(--dsc-button-color); /* Prevent :hover and :active change */
 
     /* When both aria-disabled and aria-busy is true, opacity should be 1 and cursor should be progress */
+    /* Kept for backawards compatibility since we recommended aria-busy + aria-disabled in V1 */
     &[aria-busy='true'] {
       opacity: 1;
       cursor: progress;
