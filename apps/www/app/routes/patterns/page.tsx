@@ -100,9 +100,10 @@ export default function Patterns({
           <div className={classes.meta}>
             {frontmatter.partners && (
               <>
-                <a href='#article-contributors' aria-label={t('contributors')}>
-                  <AvatarStack authors={frontmatter.partners} />
-                </a>
+                <AvatarStack
+                  aria-label={t('contributors')}
+                  authors={frontmatter.partners}
+                />
                 <span className={classes.partners}>{frontmatter.partners}</span>
               </>
             )}
