@@ -1,3 +1,4 @@
+import type { DSSuggestionElement } from '@digdir/designsystemet-web';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import { useState } from 'react';
 import { Suggestion, type SuggestionItem } from './suggestion';
@@ -41,7 +42,10 @@ describe('Suggestion', () => {
     });
     await waitFor(() => expect(input).toHaveValue(norway.label));
 
-    const suggestion = document.querySelector('ds-suggestion');
+    const suggestion =
+      document.querySelector<DSSuggestionElement>('ds-suggestion');
+    await waitFor(() => expect(suggestion?.control).toBe(input));
+    const dispatchInput = vi.spyOn(input, 'dispatchEvent');
     const proposedItem = document.createElement('data');
     proposedItem.value = sweden.value;
     proposedItem.textContent = sweden.label;
@@ -58,6 +62,9 @@ describe('Suggestion', () => {
 
     expect(onSelectedChange).toHaveBeenCalledWith(sweden);
     expect(input).toHaveValue(norway.label);
+    expect(dispatchInput).toHaveBeenCalledWith(
+      expect.objectContaining({ type: 'input', bubbles: true }),
+    );
   });
 
   it('synchronizes the input when the selected prop changes', async () => {
