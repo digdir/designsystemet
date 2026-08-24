@@ -15,15 +15,16 @@ import type { Token, TokenSet } from '../../../types.ts';
 export const groupByScheme = (
   colors: Record<string, Record<string, Record<string, CssColor>>>,
   colorScheme: ColorScheme,
-): Record<string, Partial<ColorScale>> => {
+) => {
   const grouped: Record<string, Partial<ColorScale>> = {};
-  for (const [colorName, colorScale] of Object.entries(colors)) {
+  for (const [colorName, customColorScale] of Object.entries(colors)) {
     const schemeColors: Partial<ColorScale> = {};
-    for (const [tokenName, schemes] of Object.entries(colorScale)) {
+
+    for (const [semanticColorName, schemes] of Object.entries(customColorScale)) {
       if (colorScheme in schemes) {
-        schemeColors[tokenName as keyof ColorScale] = {
+        schemeColors[semanticColorName as keyof ColorScale] = {
           hex: schemes[colorScheme],
-          ...semanticColorSpec[tokenName as SemanticColorNames],
+          ...semanticColorSpec[semanticColorName as SemanticColorNames],
         };
       }
     }
@@ -34,14 +35,14 @@ export const groupByScheme = (
 };
 
 const toColorTokens = (colorScale: ColorScale): TokenSet => {
-  const obj: TokenSet = {};
+  const tokens: TokenSet = {};
   for (const color of Object.values(colorScale)) {
-    obj[color.number] = {
+    tokens[color.number] = {
       $type: 'color',
       $value: color.hex,
     };
   }
-  return obj;
+  return tokens;
 };
 
 const toColorToken = (color: CssColor): Token => ({
@@ -56,32 +57,32 @@ export const generateColorScheme = (
   overrides?: ColorOverrideSchema,
 ): TokenSet => {
   // Merge severity overrides as they are hex values and not color scales, so they need to be merged with the base colors before generating the color scales
-  const colorsWithSeverityOverrides: Record<string, CssColor> = R.mergeRight(colors, overrides?.severity || {});
+  const colorsWithSeverityOverrides: Record<string, CssColor> = { ...colors, ...(overrides?.severity || {}) };
 
   // Group color overrides by color scheme as they are color scales and need to be merged with the generated color scales after they are generated
   const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
 
   // Generate color scales for each color in the colors object, applying any overrides if they exist
-  const colorScales = R.mapObjIndexed((color: CssColor, colorName: string) => {
+  const colorScales: Record<string, ColorScale> = {};
+
+  for (const [colorName, color] of Object.entries(colorsWithSeverityOverrides)) {
     let colorScale = generateColorScale(color, colorScheme);
     const colorOverride = colorOverrides[colorName];
 
     if (colorOverride) {
       colorScale = R.mergeDeepRight(colorScale, colorOverride);
     }
-    return colorScale;
-  }, colorsWithSeverityOverrides);
+    colorScales[colorName] = colorScale;
+  }
 
-  // Generate the visited link color scale and apply any overrides if they exist
-  const visitedLinkColorScale = generateColorScale(visitedLinkColor, colorScheme);
-  const defaultLinkVisitedToken = visitedLinkColorScale['base-default'].hex;
-  const linkOverride = overrides?.linkVisited?.[colorScheme as ColorScheme];
+  const defaultLinkVisitedToken = generateColorScale(visitedLinkColor, colorScheme)['base-default'].hex;
+  const linkOverride = overrides?.linkVisited?.[colorScheme];
 
   const defaultFocusInner = colorScales.neutral['background-default'].hex;
   const defaultFocusOuter = colorScales.neutral['text-default'].hex;
 
-  const focusInnerOverride = overrides?.focus?.inner?.[colorScheme as ColorScheme];
-  const focusOuterOverride = overrides?.focus?.outer?.[colorScheme as ColorScheme];
+  const focusInnerOverride = overrides?.focus?.inner?.[colorScheme];
+  const focusOuterOverride = overrides?.focus?.outer?.[colorScheme];
 
   return {
     [themeName]: {
