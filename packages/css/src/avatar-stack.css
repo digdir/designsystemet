@@ -12,9 +12,13 @@
   --dsc-avatar-stack-size: var(--ds-size-12);
   --dsc-avatar-stack-suffix-gap: var(--ds-size-3);
   --_dsc-avatar-stack-overlap: min(var(--dsc-avatar-stack-overlap), var(--dsc-avatar-stack-size) + var(--dsc-avatar-stack-gap));
+  --_dsc-avatar-stack-negative: calc(var(--_dsc-avatar-stack-overlap) * -1); /* Negative overlap */
 
   align-items: center;
   gap: var(--dsc-avatar-stack-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
   transition: --_dsc-avatar-stack-overlap 0.2s ease;
   width: max-content;
   @composes ds-focus from './base.css';
@@ -23,86 +27,88 @@
     display: flex;
   }
 
-  &[data-suffix]::after {
-    content: attr(data-suffix);
-    font-size: max(1rem, calc(var(--dsc-avatar-stack-size) * 0.4));
+  &:not([data-expandable='fixed']) > li + li {
+    margin-left: var(--_dsc-avatar-stack-negative);
+  }
+  & > li + li:not(:has(.ds-avatar)) {
     margin-left: var(--dsc-avatar-stack-suffix-gap);
-    place-self: center;
   }
 
+  /**
+   * Avatars
+   */
   /* Using :where to let .avatar[data-variant="square"] overwrite radius */
-  & > :where(.ds-avatar) {
+  & > li > :where(.ds-avatar) {
     --dsc-avatar-radius: var(--dsc-avatar-stack-radius);
     --dsc-avatar-size: var(--dsc-avatar-stack-size);
-
+  }
+  & > li > .ds-avatar:focus-visible {
+    @composes ds-focus--visible from './base.css';
+    mask: none;
+    z-index: 1;
+  }
+  & > li:has(+ li > .ds-avatar) > .ds-avatar {
     --_x: calc(var(--dsc-avatar-size) - var(--_dsc-avatar-stack-overlap));
     --_r: calc(min(var(--dsc-avatar-size) / 2, var(--dsc-avatar-radius)) + var(--dsc-avatar-stack-gap)); /* Limit radius to match avatar */
     --_s: calc(var(--_r) - 0.5px); /* .5px is used to smooth edges and avoid glitches */
-    --_n: calc(var(--_dsc-avatar-stack-overlap) * -1); /* Negative overlap */
-
-    &:has(+ .ds-avatar) {
-      /* no-repeat NEEDS to be in the shorthand for each gradient here. If we use `mask-repeat: no-repeat;` some safari versions have issues */
-      mask:
-        linear-gradient(to right, black calc(var(--_x) + 0.5px), transparent calc(var(--_x) + 0.5px)) 0 0 / 100% 100% no-repeat,
-        radial-gradient(circle at 100% 100%, transparent var(--_s), black var(--_r)) var(--_x) calc(0% - var(--dsc-avatar-stack-gap)) / var(--_r) var(--_r)
-        no-repeat,
-        radial-gradient(circle at 100% 0, transparent var(--_s), black var(--_r)) var(--_x) calc(100% + var(--dsc-avatar-stack-gap)) / var(--_r) var(--_r)
-        no-repeat;
-    }
-
-    &:focus-visible {
-      @composes ds-focus--visible from './base.css';
-      mask: none;
-      z-index: 1;
-    }
+    mask:
+      linear-gradient(to right, black calc(var(--_x) + 0.5px), transparent calc(var(--_x) + 0.5px)) 0 0 / 100% 100% no-repeat,
+      radial-gradient(circle at 100% 100%, transparent var(--_s), black var(--_r)) var(--_x) calc(0% - var(--dsc-avatar-stack-gap)) / var(--_r) var(--_r)
+      no-repeat,
+      radial-gradient(circle at 100% 0, transparent var(--_s), black var(--_r)) var(--_x) calc(100% + var(--dsc-avatar-stack-gap)) / var(--_r) var(--_r)
+      no-repeat; /* All props needs NEEDS to be in the shorthand for each gradient here. If we use `mask-repeat: no-repeat;` some Safari versions have issues */
   }
 
-  &:not([data-expandable='fixed']) > .ds-avatar + .ds-avatar {
-    margin-left: var(--_n);
-  }
-
+  /**
+   * Expandable
+   */
   &[data-expandable]:hover,
   &[data-expandable]:focus-visible {
     --_dsc-avatar-stack-overlap: 0px;
   }
-
+  &[data-expandable='fixed'] > li:not(:has(> .ds-avatar)) {
+    transform: translateX(var(--_dsc-avatar-stack-overlap));
+  }
   @supports (width: calc(sibling-index() * 1px)) {
-    &[data-expandable='fixed'] > .ds-avatar {
-      translate: calc(var(--_n) * (sibling-index() - 1));
+    &[data-expandable='fixed'] > li {
+      translate: calc(var(--_dsc-avatar-stack-negative) * (sibling-index() - 1));
     }
   }
 }
 
 /* Compatibility for browsers without sibling-index() support */
-.ds-avatar-stack[data-expandable='fixed'] > .ds-avatar {
+.ds-avatar-stack[data-expandable='fixed'] > li {
+  &:nth-child(2) {
+    translate: var(--_dsc-avatar-stack-negative);
+  }
   &:nth-child(3) {
-    translate: calc(var(--_n) * 2);
+    translate: calc(var(--_dsc-avatar-stack-negative) * 2);
   }
   &:nth-child(4) {
-    translate: calc(var(--_n) * 3);
+    translate: calc(var(--_dsc-avatar-stack-negative) * 3);
   }
   &:nth-child(5) {
-    translate: calc(var(--_n) * 4);
+    translate: calc(var(--_dsc-avatar-stack-negative) * 4);
   }
   &:nth-child(6) {
-    translate: calc(var(--_n) * 5);
+    translate: calc(var(--_dsc-avatar-stack-negative) * 5);
   }
   &:nth-child(7) {
-    translate: calc(var(--_n) * 6);
+    translate: calc(var(--_dsc-avatar-stack-negative) * 6);
   }
   &:nth-child(8) {
-    translate: calc(var(--_n) * 7);
+    translate: calc(var(--_dsc-avatar-stack-negative) * 7);
   }
   &:nth-child(9) {
-    translate: calc(var(--_n) * 8);
+    translate: calc(var(--_dsc-avatar-stack-negative) * 8);
   }
   &:nth-child(10) {
-    translate: calc(var(--_n) * 9);
+    translate: calc(var(--_dsc-avatar-stack-negative) * 9);
   }
   &:nth-child(11) {
-    translate: calc(var(--_n) * 10);
+    translate: calc(var(--_dsc-avatar-stack-negative) * 10);
   }
   &:nth-child(12) {
-    translate: calc(var(--_n) * 11);
+    translate: calc(var(--_dsc-avatar-stack-negative) * 11);
   }
 }

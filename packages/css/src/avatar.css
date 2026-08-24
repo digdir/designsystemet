@@ -29,6 +29,7 @@
   text-decoration: none;
   text-transform: uppercase;
   user-select: none;
+  vertical-align: middle; /* Avoid space under if single child */
   width: var(--dsc-avatar-size);
   @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';

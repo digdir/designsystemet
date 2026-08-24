@@ -38,13 +38,23 @@ const meta = preview.meta({
 export const Preview = meta.story({
   render: (args) => (
     <AvatarStack {...args}>
-      <Avatar aria-label='Navn'>{cat1Img}</Avatar>
-      <Avatar aria-label='Navn'>
-        <BriefcaseIcon />
-      </Avatar>
-      <Avatar aria-label='Navn' initials='sm' />
-      <Avatar aria-label='Navn'>md</Avatar>
-      <Avatar aria-label='Navn' initials='ON' />
+      <li>
+        <Avatar aria-label='Navn'>{cat1Img}</Avatar>
+      </li>
+      <li>
+        <Avatar aria-label='Navn'>
+          <BriefcaseIcon />
+        </Avatar>
+      </li>
+      <li>
+        <Avatar aria-label='Navn' initials='sm' />
+      </li>
+      <li>
+        <Avatar aria-label='Navn'>md</Avatar>
+      </li>
+      <li>
+        <Avatar aria-label='Navn' initials='ON' />
+      </li>
     </AvatarStack>
   ),
 });
@@ -55,27 +65,49 @@ export const Expandable = meta.story({
       <fieldset>
         <legend>expandable</legend>
         <AvatarStack {...args} expandable>
-          <Avatar aria-label='profile picture a'>{cat1Img}</Avatar>
-          <Avatar aria-label='profile picture b'>{cat1Img}</Avatar>
-          <Avatar aria-label='profile picture c'>{cat3Img}</Avatar>
-          <Avatar aria-label='profile picture d'>{cat4Img}</Avatar>
+          <li>
+            <Avatar aria-label='profile picture a'>{cat1Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='profile picture b'>{cat1Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='profile picture c'>{cat3Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='profile picture d'>{cat4Img}</Avatar>
+          </li>
         </AvatarStack>
       </fieldset>
       <fieldset>
         <legend>expandable="fixed"</legend>
         <AvatarStack {...args} expandable='fixed'>
-          <Avatar aria-label='profile picture a'>{cat1Img}</Avatar>
-          <Avatar aria-label='profile picture b'>{cat1Img}</Avatar>
-          <Avatar aria-label='profile picture c'>{cat3Img}</Avatar>
-          <Avatar aria-label='profile picture d'>{cat4Img}</Avatar>
+          <li>
+            <Avatar aria-label='profile picture a'>{cat1Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='profile picture b'>{cat1Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='profile picture c'>{cat3Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='profile picture d'>{cat4Img}</Avatar>
+          </li>
         </AvatarStack>
       </fieldset>
       <fieldset>
         <legend>default</legend>
         <AvatarStack {...args}>
-          <Avatar aria-label='Navn'>{cat1Img}</Avatar>
-          <Avatar aria-label='Navn'>{cat1Img}</Avatar>
-          <Avatar aria-label='Navn'>{cat3Img}</Avatar>
+          <li>
+            <Avatar aria-label='Navn'>{cat1Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>{cat1Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>{cat3Img}</Avatar>
+          </li>
         </AvatarStack>
       </fieldset>
     </section>
@@ -88,28 +120,52 @@ export const DataSize = meta.story({
       <fieldset>
         <legend>avatarSize='var(--ds-size-12)'</legend>
         <AvatarStack data-size='sm' {...args}>
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          <Avatar aria-label='Navn'>
-            <BriefcaseIcon />
-          </Avatar>
-          <Avatar aria-label='Navn'>sm</Avatar>
-          <Avatar aria-label='Navn' initials='sm' />
+          <li>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>
+              <BriefcaseIcon />
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>sm</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn' initials='sm' />
+          </li>
         </AvatarStack>
         <AvatarStack data-size='md' {...args}>
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          <Avatar aria-label='Navn'>
-            <BriefcaseIcon />
-          </Avatar>
-          <Avatar aria-label='Navn'>md</Avatar>
-          <Avatar aria-label='Navn' initials='md' />
+          <li>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>
+              <BriefcaseIcon />
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>md</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn' initials='md' />
+          </li>
         </AvatarStack>
         <AvatarStack data-size='lg' {...args}>
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          <Avatar aria-label='Navn'>
-            <BriefcaseIcon />
-          </Avatar>
-          <Avatar aria-label='Navn'>lg</Avatar>
-          <Avatar aria-label='Navn' initials='lg' />
+          <li>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>
+              <BriefcaseIcon />
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>lg</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn' initials='lg' />
+          </li>
         </AvatarStack>
       </fieldset>
       <fieldset>
@@ -123,12 +179,20 @@ export const DataSize = meta.story({
             } as React.CSSProperties
           }
         >
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          <Avatar aria-label='Navn'>
-            <BriefcaseIcon />
-          </Avatar>
-          <Avatar aria-label='Navn'>sm</Avatar>
-          <Avatar aria-label='Navn' initials='sm' />
+          <li>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>
+              <BriefcaseIcon />
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>sm</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn' initials='sm' />
+          </li>
         </AvatarStack>
         <AvatarStack
           data-size='md'
@@ -139,12 +203,20 @@ export const DataSize = meta.story({
             } as React.CSSProperties
           }
         >
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          <Avatar aria-label='Navn'>
-            <BriefcaseIcon />
-          </Avatar>
-          <Avatar aria-label='Navn'>md</Avatar>
-          <Avatar aria-label='Navn' initials='md' />
+          <li>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>
+              <BriefcaseIcon />
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>md</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn' initials='md' />
+          </li>
         </AvatarStack>
         <AvatarStack
           data-size='lg'
@@ -155,12 +227,20 @@ export const DataSize = meta.story({
             } as React.CSSProperties
           }
         >
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          <Avatar aria-label='Navn'>
-            <BriefcaseIcon />
-          </Avatar>
-          <Avatar aria-label='Navn'>lg</Avatar>
-          <Avatar aria-label='Navn' initials='lg' />
+          <li>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>
+              <BriefcaseIcon />
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>lg</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn' initials='lg' />
+          </li>
         </AvatarStack>
       </fieldset>
       <fieldset>
@@ -174,12 +254,20 @@ export const DataSize = meta.story({
             } as React.CSSProperties
           }
         >
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          <Avatar aria-label='Navn'>
-            <BriefcaseIcon />
-          </Avatar>
-          <Avatar aria-label='Navn'>sm</Avatar>
-          <Avatar aria-label='Navn' initials='sm' />
+          <li>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>
+              <BriefcaseIcon />
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>sm</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn' initials='sm' />
+          </li>
         </AvatarStack>
         <AvatarStack
           data-size='md'
@@ -190,12 +278,20 @@ export const DataSize = meta.story({
             } as React.CSSProperties
           }
         >
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          <Avatar aria-label='Navn'>
-            <BriefcaseIcon />
-          </Avatar>
-          <Avatar aria-label='Navn'>md</Avatar>
-          <Avatar aria-label='Navn' initials='md' />
+          <li>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>
+              <BriefcaseIcon />
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>md</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn' initials='md' />
+          </li>
         </AvatarStack>
         <AvatarStack
           data-size='lg'
@@ -206,12 +302,20 @@ export const DataSize = meta.story({
             } as React.CSSProperties
           }
         >
-          <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          <Avatar aria-label='Navn'>
-            <BriefcaseIcon />
-          </Avatar>
-          <Avatar aria-label='Navn'>lg</Avatar>
-          <Avatar aria-label='Navn' initials='lg' />
+          <li>
+            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>
+              <BriefcaseIcon />
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn'>lg</Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='Navn' initials='lg' />
+          </li>
         </AvatarStack>
       </fieldset>
     </>
@@ -221,19 +325,29 @@ export const DataSize = meta.story({
 export const ShapeVariants = meta.story({
   render: (args) => (
     <AvatarStack {...args}>
-      <Avatar variant='square' aria-label='variant square' />
-      <Avatar variant='square' aria-label='Ola Nordmann'>
-        {cat5Img}
-      </Avatar>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
-        {cat1Img}
-      </Avatar>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
-        {cat5Img}
-      </Avatar>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
-        {cat5Img}
-      </Avatar>
+      <li>
+        <Avatar variant='square' aria-label='variant square' />
+      </li>
+      <li>
+        <Avatar variant='square' aria-label='Ola Nordmann'>
+          {cat5Img}
+        </Avatar>
+      </li>
+      <li>
+        <Avatar variant='square' aria-label='Ola Nordmann'>
+          {cat1Img}
+        </Avatar>
+      </li>
+      <li>
+        <Avatar variant='square' aria-label='Ola Nordmann'>
+          {cat5Img}
+        </Avatar>
+      </li>
+      <li>
+        <Avatar variant='square' aria-label='Ola Nordmann'>
+          {cat5Img}
+        </Avatar>
+      </li>
     </AvatarStack>
   ),
 
@@ -248,27 +362,43 @@ export const WithTooltip = meta.story({
       <fieldset>
         <legend>expandable</legend>
         <AvatarStack {...args} expandable='fixed'>
-          <Avatar data-tooltip='Ola Nordmann'>{cat1Img}</Avatar>
-          <Avatar data-tooltip='Kari Nordmann'>{cat5Img}</Avatar>
-          <Avatar data-tooltip='Person 2'>Hei</Avatar>
-          <Avatar data-tooltip='Person 3'>{cat5Img}</Avatar>
+          <li>
+            <Avatar data-tooltip='Ola Nordmann'>{cat1Img}</Avatar>
+          </li>
+          <li>
+            <Avatar data-tooltip='Kari Nordmann'>{cat5Img}</Avatar>
+          </li>
+          <li>
+            <Avatar data-tooltip='Person 2'>Hei</Avatar>
+          </li>
+          <li>
+            <Avatar data-tooltip='Person 3'>{cat5Img}</Avatar>
+          </li>
         </AvatarStack>
       </fieldset>
       <fieldset>
         <legend>not expandable</legend>
         <AvatarStack {...args}>
-          <Tooltip content='Ola Nordmann'>
-            <Avatar aria-label='Navn'>{cat1Img}</Avatar>
-          </Tooltip>
-          <Tooltip content='Kari Nordmann'>
-            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          </Tooltip>
-          <Tooltip content='Person 2'>
-            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          </Tooltip>
-          <Tooltip content='Person 3'>
-            <Avatar aria-label='Navn'>{cat5Img}</Avatar>
-          </Tooltip>
+          <li>
+            <Tooltip content='Ola Nordmann'>
+              <Avatar aria-label='Navn'>{cat1Img}</Avatar>
+            </Tooltip>
+          </li>
+          <li>
+            <Tooltip content='Kari Nordmann'>
+              <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+            </Tooltip>
+          </li>
+          <li>
+            <Tooltip content='Person 2'>
+              <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+            </Tooltip>
+          </li>
+          <li>
+            <Tooltip content='Person 3'>
+              <Avatar aria-label='Navn'>{cat5Img}</Avatar>
+            </Tooltip>
+          </li>
         </AvatarStack>
       </fieldset>
     </section>
@@ -281,43 +411,59 @@ export const WithTooltipAndLink = meta.story({
       <fieldset>
         <legend>Link expandable</legend>
         <AvatarStack {...args} expandable='fixed'>
-          <Avatar aria-label='profile picture a' asChild>
-            <a href='#'>{cat1Img}</a>
-          </Avatar>
-          <Avatar aria-label='profile picture b' asChild>
-            <a href='#'>{cat1Img}</a>
-          </Avatar>
-          <Avatar aria-label='profile picture c' asChild>
-            <a href='#'>{cat3Img}</a>
-          </Avatar>
-          <Avatar aria-label='profile picture d' asChild>
-            <a href='#'>{cat4Img}</a>
-          </Avatar>
+          <li>
+            <Avatar aria-label='profile picture a' asChild>
+              <a href='#'>{cat1Img}</a>
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='profile picture b' asChild>
+              <a href='#'>{cat1Img}</a>
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='profile picture c' asChild>
+              <a href='#'>{cat3Img}</a>
+            </Avatar>
+          </li>
+          <li>
+            <Avatar aria-label='profile picture d' asChild>
+              <a href='#'>{cat4Img}</a>
+            </Avatar>
+          </li>
         </AvatarStack>
       </fieldset>
       <fieldset>
         <legend>Link + Tooltip</legend>
         <AvatarStack {...args}>
-          <Tooltip content='Ola Nordmann'>
-            <Avatar aria-label='profile picture a' asChild>
-              <a href='#'>{cat1Img}</a>
-            </Avatar>
-          </Tooltip>
-          <Tooltip content='Kari Nordmann'>
-            <Avatar aria-label='profile picture b' asChild>
-              <a href='#'>{cat4Img}</a>
-            </Avatar>
-          </Tooltip>
-          <Tooltip content='Person 2'>
-            <Avatar aria-label='profile picture c' asChild>
-              <a href='#'>{cat3Img}</a>
-            </Avatar>
-          </Tooltip>
-          <Tooltip content='Person 3'>
-            <Avatar aria-label='profile picture d' asChild>
-              <a href='#'>BR</a>
-            </Avatar>
-          </Tooltip>
+          <li>
+            <Tooltip content='Ola Nordmann'>
+              <Avatar aria-label='profile picture a' asChild>
+                <a href='#'>{cat1Img}</a>
+              </Avatar>
+            </Tooltip>
+          </li>
+          <li>
+            <Tooltip content='Kari Nordmann'>
+              <Avatar aria-label='profile picture b' asChild>
+                <a href='#'>{cat4Img}</a>
+              </Avatar>
+            </Tooltip>
+          </li>
+          <li>
+            <Tooltip content='Person 2'>
+              <Avatar aria-label='profile picture c' asChild>
+                <a href='#'>{cat3Img}</a>
+              </Avatar>
+            </Tooltip>
+          </li>
+          <li>
+            <Tooltip content='Person 3'>
+              <Avatar aria-label='profile picture d' asChild>
+                <a href='#'>BR</a>
+              </Avatar>
+            </Tooltip>
+          </li>
         </AvatarStack>
       </fieldset>
     </section>
@@ -345,7 +491,7 @@ export const Playground = meta.story(() => {
           <input
             min='0'
             max='150'
-            step='0.1'
+            step='1'
             type='range'
             value={radius}
             onChange={(e) =>
@@ -358,7 +504,7 @@ export const Playground = meta.story(() => {
           <input
             min='24'
             max='150'
-            step='0.1'
+            step='1'
             type='range'
             value={size}
             onChange={(e) =>
@@ -406,12 +552,22 @@ export const Playground = meta.story(() => {
           } as React.CSSProperties
         }
       >
-        <Avatar aria-label='profile a'>{cat1Img}</Avatar>
-        <Avatar aria-label='profile b'>{cat5Img}</Avatar>
-        <Avatar aria-label='profile c'>md</Avatar>
-        <Avatar aria-label='profile d'>{cat5Img}</Avatar>
-        <Avatar aria-label='profile e'>{cat1Img}</Avatar>
-        +10
+        <li>
+          <Avatar aria-label='profile a'>{cat1Img}</Avatar>
+        </li>
+        <li>
+          <Avatar aria-label='profile b'>{cat5Img}</Avatar>
+        </li>
+        <li>
+          <Avatar aria-label='profile c'>md</Avatar>
+        </li>
+        <li>
+          <Avatar aria-label='profile d'>{cat5Img}</Avatar>
+        </li>
+        <li>
+          <Avatar aria-label='profile e'>{cat1Img}</Avatar>
+        </li>
+        <li>+10</li>
       </AvatarStack>
     </>
   );

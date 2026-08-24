@@ -35,6 +35,7 @@ export type AvatarProps = MergeRight<
      * The shape of the avatar.
      *
      * @default 'circle'
+     * @deprecated Please use `style={{ '--dsc-avatar-stack-radius': VALUE }}` instead
      */
     variant?: 'circle' | 'square';
     /**

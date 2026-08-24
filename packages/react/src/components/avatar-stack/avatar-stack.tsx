@@ -30,8 +30,8 @@ export type AvatarStackProps = {
    *  'fixed': AvatarStack physical width does not change when avatars are expanded.
    *  @default undefined
    */
-  expandable?: 'fixed' | true;
-} & HTMLAttributes<HTMLDivElement>;
+  expandable?: 'fixed' | boolean;
+} & HTMLAttributes<HTMLUListElement>;
 
 /**
  * Use `AvatarStack` to constrain Avatars into a stack.
@@ -48,7 +48,7 @@ export type AvatarStackProps = {
  * </EXPERIMENTAL_AvatarStack>
  */
 export const EXPERIMENTAL_AvatarStack = forwardRef<
-  HTMLDivElement,
+  HTMLUListElement,
   AvatarStackProps
 >(function AvatarStack(
   { className, gap, suffix, avatarSize, overlap, style, expandable, ...rest },
@@ -58,9 +58,9 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
     overlap = `calc(var(--dsc-avatar-stack-size) / 100 * ${overlap})`; // Support backwards compatible integer overlap
 
   return (
-    <div
+    <ul
       className={cl(`ds-avatar-stack`, className)}
-      data-expandable={expandable}
+      data-expandable={expandable || undefined}
       data-suffix={suffix}
       tabIndex={rest.tabIndex ?? (expandable ? 0 : undefined)}
       ref={ref}
