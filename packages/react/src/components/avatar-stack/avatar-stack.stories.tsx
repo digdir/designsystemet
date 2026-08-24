@@ -118,7 +118,7 @@ export const DataSize = meta.story({
   render: (args) => (
     <>
       <fieldset>
-        <legend>avatarSize='var(--ds-size-12)'</legend>
+        <legend>Avatar size default</legend>
         <AvatarStack data-size='sm' {...args}>
           <li>
             <Avatar aria-label='Navn'>{cat5Img}</Avatar>
@@ -169,7 +169,7 @@ export const DataSize = meta.story({
         </AvatarStack>
       </fieldset>
       <fieldset>
-        <legend>avatarSize='3em'</legend>
+        <legend>Avatar size 3em</legend>
         <AvatarStack
           {...args}
           data-size='sm'
@@ -244,7 +244,7 @@ export const DataSize = meta.story({
         </AvatarStack>
       </fieldset>
       <fieldset>
-        <legend>avatarSize='3rem'</legend>
+        <legend>Avatar size 3rem</legend>
         <AvatarStack
           data-size='sm'
           {...args}
@@ -324,29 +324,28 @@ export const DataSize = meta.story({
 
 export const ShapeVariants = meta.story({
   render: (args) => (
-    <AvatarStack {...args}>
+    <AvatarStack
+      {...args}
+      style={
+        {
+          '--dsc-avatar-stack-radius': 'var(--ds-border-radius-sm)',
+        } as React.CSSProperties
+      }
+    >
       <li>
-        <Avatar variant='square' aria-label='variant square' />
+        <Avatar aria-label='variant square' />
       </li>
       <li>
-        <Avatar variant='square' aria-label='Ola Nordmann'>
-          {cat5Img}
-        </Avatar>
+        <Avatar aria-label='Ola Nordmann'>{cat5Img}</Avatar>
       </li>
       <li>
-        <Avatar variant='square' aria-label='Ola Nordmann'>
-          {cat1Img}
-        </Avatar>
+        <Avatar aria-label='Ola Nordmann'>{cat1Img}</Avatar>
       </li>
       <li>
-        <Avatar variant='square' aria-label='Ola Nordmann'>
-          {cat5Img}
-        </Avatar>
+        <Avatar aria-label='Ola Nordmann'>{cat5Img}</Avatar>
       </li>
       <li>
-        <Avatar variant='square' aria-label='Ola Nordmann'>
-          {cat5Img}
-        </Avatar>
+        <Avatar aria-label='Ola Nordmann'>{cat5Img}</Avatar>
       </li>
     </AvatarStack>
   ),
