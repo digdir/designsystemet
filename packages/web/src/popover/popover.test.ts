@@ -14,10 +14,9 @@ const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
 // data-floating is set once computePosition() runs, so wait for it before
 // asserting on positioning results.
 const waitForPositioned = (popover: HTMLElement | null) =>
-  vi.waitFor(
-    () => expect(popover).toHaveAttribute('data-floating'),
-    { timeout: 1500 },
-  );
+  vi.waitFor(() => expect(popover).toHaveAttribute('data-floating'), {
+    timeout: 1500,
+  });
 
 afterEach(() => {
   document.body.innerHTML = '';
@@ -107,10 +106,9 @@ describe('popover floating behavior', () => {
     // translate, which computePosition() sets after running the size
     // middleware - guaranteeing the sizing frame has been scheduled.
     const popover = document.getElementById('my-popover');
-    await vi.waitFor(
-      () => expect(popover?.style.translate).not.toBe(''),
-      { timeout: 1500 },
-    );
+    await vi.waitFor(() => expect(popover?.style.translate).not.toBe(''), {
+      timeout: 1500,
+    });
 
     expect(animationFrames.length).toBeGreaterThan(0);
     expect(popover?.style.width).toBe('');
