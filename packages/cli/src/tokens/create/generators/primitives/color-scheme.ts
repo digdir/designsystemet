@@ -35,6 +35,11 @@ const toColorTokens = (colorScale: ColorScale): TokenSet => {
   return obj;
 };
 
+const toColorToken = (color: CssColor): Token => ({
+  $type: 'color',
+  $value: color,
+});
+
 export const generateColorScheme = (
   themeName: string,
   colorScheme: ColorScheme,
@@ -47,44 +52,37 @@ export const generateColorScheme = (
   // Group color overrides by color scheme as they are color scales and need to be merged with the generated color scales after they are generated
   const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
 
-  const colorScales: Record<string, TokenSet> = R.mapObjIndexed((color: CssColor, colorName: string) => {
+  // Generate color scales for each color in the colors object, applying any overrides if they exist
+  const colorScales = R.mapObjIndexed((color: CssColor, colorName: string) => {
     let colorScale = generateColorScale(color, colorScheme);
     const colorOverride = colorOverrides[colorName];
 
     if (colorOverride) {
       colorScale = R.mergeDeepRight(colorScale, colorOverride);
     }
-    return toColorTokens(colorScale);
+    return colorScale;
   }, colorsWithSeverityOverrides);
 
-  const visitedLinkColorScale = toColorTokens(generateColorScale(visitedLinkColor, colorScheme)); // generate the visited link color scale for light and dark mode
-  const defaultLinkVisited = visitedLinkColorScale[12];
-  const linkOverride: Token | undefined = overrides?.linkVisited?.[colorScheme as 'light' | 'dark']
-    ? ({ $type: 'color', $value: overrides.linkVisited[colorScheme as 'light' | 'dark'] } as Token)
-    : undefined;
+  // Generate the visited link color scale and apply any overrides if they exist
+  const visitedLinkColorScale = generateColorScale(visitedLinkColor, colorScheme);
+  const defaultLinkVisitedToken = visitedLinkColorScale['base-default'].hex;
+  const linkOverride = overrides?.linkVisited?.[colorScheme as ColorScheme];
 
-  /* Default focus-inner is position 1 (background-default), focus-outer is position 11 (text-default) */
-  const defaultFocusInner = colorScales.neutral[1].$value;
-  const defaultFocusOuter = colorScales.neutral[11].$value;
+  const defaultFocusInner = colorScales.neutral['background-default'].hex;
+  const defaultFocusOuter = colorScales.neutral['text-default'].hex;
 
-  const focusInnerOverride = overrides?.focus?.inner?.[colorScheme as 'light' | 'dark'];
-  const focusOuterOverride = overrides?.focus?.outer?.[colorScheme as 'light' | 'dark'];
+  const focusInnerOverride = overrides?.focus?.inner?.[colorScheme as ColorScheme];
+  const focusOuterOverride = overrides?.focus?.outer?.[colorScheme as ColorScheme];
 
   return {
     [themeName]: {
-      ...colorScales,
+      ...R.map(toColorTokens, colorScales),
       link: {
-        visited: linkOverride || defaultLinkVisited,
+        visited: toColorToken(linkOverride || defaultLinkVisitedToken),
       },
       focus: {
-        inner: {
-          $type: 'color',
-          $value: focusInnerOverride || defaultFocusInner,
-        } as Token,
-        outer: {
-          $type: 'color',
-          $value: focusOuterOverride || defaultFocusOuter,
-        } as Token,
+        inner: toColorToken(focusInnerOverride || defaultFocusInner),
+        outer: toColorToken(focusOuterOverride || defaultFocusOuter),
       },
     },
   };
