@@ -5,24 +5,33 @@ import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
-/*
- Group colors by color scheme, returning a record of color scales for the specified scheme.
-*/
+/**
+ * Group colors by color scheme, returning a partial record of color scales for the specified scheme.
+ *
+ * @param colors - A record of color scales, where each color scale is a record of color schemes and their corresponding hex values.
+ * @param colorScheme - The color scheme to group the colors by.
+ * @returns A record of color scales for the specified color scheme.
+ */
 export const groupByScheme = (
   colors: Record<string, Record<string, Record<string, CssColor>>>,
   colorScheme: ColorScheme,
-): Record<string, Partial<ColorScale>> =>
-  R.map(
-    (tokens: Record<string, Record<string, CssColor>>) =>
-      R.mapObjIndexed(
-        (schemes: Record<string, CssColor>, tokenName) => ({
+): Record<string, Partial<ColorScale>> => {
+  const grouped: Record<string, Partial<ColorScale>> = {};
+  for (const [colorName, colorScale] of Object.entries(colors)) {
+    const schemeColors: Partial<ColorScale> = {};
+    for (const [tokenName, schemes] of Object.entries(colorScale)) {
+      if (colorScheme in schemes) {
+        schemeColors[tokenName as keyof ColorScale] = {
           hex: schemes[colorScheme],
           ...semanticColorSpec[tokenName as SemanticColorNames],
-        }),
-        R.filter((schemes: Record<string, CssColor>) => colorScheme in schemes, tokens),
-      ),
-    colors,
-  );
+        };
+      }
+    }
+    grouped[colorName] = schemeColors;
+  }
+
+  return grouped;
+};
 
 const toColorTokens = (colorScale: ColorScale): TokenSet => {
   const obj: TokenSet = {};
