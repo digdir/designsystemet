@@ -1,5 +1,25 @@
 # Change Log
 
+## 1.20.1
+
+### Patch Changes
+
+- **Dialog:** no longer blocks content when controlled and closed programatically ([#5252](https://github.com/digdir/designsystemet/pull/5252))
+
+- **Button**: `loading={true}` no longer sets `aria-disabled="true"` internally ([#5248](https://github.com/digdir/designsystemet/pull/5248))
+
+- Now bundled using `tsdown` instead of `rollup` ([#5215](https://github.com/digdir/designsystemet/pull/5215))
+
+- **Suggestion:** No longer gives hydration warning when `selected` prop is provided ([#5236](https://github.com/digdir/designsystemet/pull/5236))
+
+- Update npm non-major dependencies ([#5242](https://github.com/digdir/designsystemet/pull/5242))
+
+- **Suggestion:** no longer moves focus to chip when clicking inside datalist ([#5216](https://github.com/digdir/designsystemet/pull/5216))
+
+- Updated dependencies [[`a29dcc7`](https://github.com/digdir/designsystemet/commit/a29dcc76e3fad45a7dfff3b3d670f0c14225f1b6), [`89361a6`](https://github.com/digdir/designsystemet/commit/89361a60bc4fb504c2f7d94e10ff24a0d1573e2a), [`96d15d1`](https://github.com/digdir/designsystemet/commit/96d15d1f1e1c8ed723fa66f0ebdd7ba9c1b71f4a)]:
+  - @digdir/designsystemet-web@1.20.1
+  - @digdir/designsystemet-types@1.20.1
+
 ## 1.20.0
 
 ### Minor Changes

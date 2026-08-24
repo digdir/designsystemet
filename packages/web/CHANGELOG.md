@@ -1,5 +1,15 @@
 # @digdir/designsystemet-web
 
+## 1.20.1
+
+### Patch Changes
+
+- Now bundling the `ESM`, `CJS`, and `UMD` formats using `tsdown`. ([#5222](https://github.com/digdir/designsystemet/pull/5222))
+
+- Update npm non-major dependencies ([#5242](https://github.com/digdir/designsystemet/pull/5242))
+
+- **Suggestion:** no longer moves focus to chip when clicking inside datalist ([#5216](https://github.com/digdir/designsystemet/pull/5216))
+
 ## 1.20.0
 
 ### Minor Changes
