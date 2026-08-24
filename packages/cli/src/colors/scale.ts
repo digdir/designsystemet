@@ -1,7 +1,14 @@
 import chroma from 'chroma-js';
-import * as R from 'ramda';
 import { getSemanticColorByNumber, semanticColorSpec } from './specs.ts';
-import type { ColorNumber, ColorScale, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
+import type {
+  ColorNumber,
+  ColorScale,
+  ColorScheme,
+  CssColor,
+  SemanticColorNames,
+  SemanticColorSpec,
+  ThemeInfo,
+} from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
 export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info'];
@@ -29,13 +36,14 @@ export const generateColorScale = (
     interpolationColor = chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
   }
 
-  const colors = R.mapObjIndexed((step) => {
+  const colors = {} as ColorScale;
+  for (const [colorName, step] of Object.entries(colorScaleSpec)) {
     const luminance = step.luminance[colorScheme];
-    return {
+    colors[colorName as SemanticColorNames] = {
       ...step,
       hex: chroma(interpolationColor).luminance(luminance).hex() as CssColor,
     };
-  }, colorScaleSpec);
+  }
 
   // Generate base colors
   if (colorScaleSpec['base-default']) {
