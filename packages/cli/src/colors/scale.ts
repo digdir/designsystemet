@@ -37,7 +37,7 @@ export const generateColorScale = (
     };
   }, colorScaleSpec);
 
-  // Generate base colors
+  // Overwrite with modified base colors for the specified color scheme
   if (colorScaleSpec['base-default']) {
     const baseColors = generateBaseColors(color, colorScheme);
     colors['base-default'] = { ...colors['base-default'], hex: baseColors.default };
