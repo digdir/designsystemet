@@ -29,7 +29,7 @@ Avatar stack bruker egne CSS-variabler for å styre gap, størrelse og overlapp.
 <Story story="Expandable" layout='block' />
 
 ### Indikere avatarer som ikke vises
-Avatar stack støtter ikke "wrapping" over flere linjer. Dersom det er flere avatarer enn det er plass til i stacken, kan man bruke `suffix` for å indikere dette i form av tekst til høyre for stabelen. Denne skalerer seg automatisk med avatar-størrelsen.
+Avatar stack støtter ikke "wrapping" over flere linjer. Dersom det er flere avatarer enn det er plass til i stacken, kan man bruke en avluttende `<li>` med tekst for å indikere f.eks. `+5`.
 
 Det er også mulig å bruke en avatar med `+xx` som `initials` eller child, men da bør du overstyre tekststørrelsen på denne avataren med `--dsc-avatar-font-size` dersom det skal være plass til tosifret eller høyere tall.
 
