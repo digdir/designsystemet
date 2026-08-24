@@ -23,6 +23,7 @@ export type AvatarStackProps = {
   overlap?: number | string;
   /**
    *  Text to the right of the avatars to show a number representing additional avatars not shown such as '+5'".
+   *  @deprecated Please use a trailing `<li>` with text instead
    */
   suffix?: string;
   /**
@@ -51,7 +52,17 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
   HTMLUListElement,
   AvatarStackProps
 >(function AvatarStack(
-  { className, gap, suffix, avatarSize, overlap, style, expandable, ...rest },
+  {
+    className,
+    gap,
+    suffix,
+    children,
+    avatarSize,
+    overlap,
+    style,
+    expandable,
+    ...rest
+  },
   ref,
 ) {
   if (typeof overlap === 'number')
@@ -61,7 +72,6 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
     <ul
       className={cl(`ds-avatar-stack`, className)}
       data-expandable={expandable || undefined}
-      data-suffix={suffix}
       tabIndex={rest.tabIndex ?? (expandable ? 0 : undefined)}
       ref={ref}
       style={
@@ -73,6 +83,9 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
         } as CSSProperties
       }
       {...rest}
-    />
+    >
+      {children}
+      {suffix && <li>{suffix}</li>}
+    </ul>
   );
 });

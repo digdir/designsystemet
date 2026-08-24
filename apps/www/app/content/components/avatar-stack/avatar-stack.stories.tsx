@@ -11,15 +11,25 @@ import { useState } from 'react';
 
 export const Preview = () => (
   <EXPERIMENTAL_AvatarStack>
-    <Avatar aria-label='cat'>
-      <img src='/img/component-docs/cats/cat1.webp' alt='' />
-    </Avatar>
-    <Avatar aria-label='briefcase'>
-      <BriefcaseIcon />
-    </Avatar>
-    <Avatar aria-label='Søren Magnussen'>sm</Avatar>
-    <Avatar aria-label='Mark Downright'>md</Avatar>
-    <Avatar aria-label='Ola Nordman'>on</Avatar>
+    <li>
+      <Avatar aria-label='cat'>
+        <img src='/img/component-docs/cats/cat1.webp' alt='' />
+      </Avatar>
+    </li>
+    <li>
+      <Avatar aria-label='briefcase'>
+        <BriefcaseIcon />
+      </Avatar>
+    </li>
+    <li>
+      <Avatar aria-label='Søren Magnussen'>sm</Avatar>
+    </li>
+    <li>
+      <Avatar aria-label='Mark Downright'>md</Avatar>
+    </li>
+    <li>
+      <Avatar aria-label='Ola Nordman'>on</Avatar>
+    </li>
   </EXPERIMENTAL_AvatarStack>
 );
 
@@ -99,7 +109,6 @@ export const Playground = () => {
       </fieldset>
       <br />
       <EXPERIMENTAL_AvatarStack
-        data-suffix='+10'
         expandable={expandable || undefined}
         style={
           {
@@ -110,19 +119,30 @@ export const Playground = () => {
           } as React.CSSProperties
         }
       >
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>md</Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat1.webp' alt='' />
+          </Avatar>
+        </li>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat6.webp' alt='' />
+          </Avatar>
+        </li>
+        <li>
+          <Avatar aria-label=''>md</Avatar>
+        </li>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat1.webp' alt='' />
+          </Avatar>
+        </li>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat6.webp' alt='' />
+          </Avatar>
+        </li>
+        <li>+10</li>
       </EXPERIMENTAL_AvatarStack>
     </>
   );
@@ -140,35 +160,51 @@ export const Expandable = () => (
     <fieldset>
       <legend>expandable</legend>
       <EXPERIMENTAL_AvatarStack expandable>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat1.webp' alt='' />
+          </Avatar>
+        </li>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat6.webp' alt='' />
+          </Avatar>
+        </li>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat1.webp' alt='' />
+          </Avatar>
+        </li>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat6.webp' alt='' />
+          </Avatar>
+        </li>
       </EXPERIMENTAL_AvatarStack>
     </fieldset>
     <fieldset>
       <legend>expandable="fixed"</legend>
       <EXPERIMENTAL_AvatarStack expandable='fixed'>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat1.webp' alt='' />
-        </Avatar>
-        <Avatar aria-label=''>
-          <img src='/img/component-docs/cats/cat6.webp' alt='' />
-        </Avatar>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat1.webp' alt='' />
+          </Avatar>
+        </li>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat6.webp' alt='' />
+          </Avatar>
+        </li>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat1.webp' alt='' />
+          </Avatar>
+        </li>
+        <li>
+          <Avatar aria-label=''>
+            <img src='/img/component-docs/cats/cat6.webp' alt='' />
+          </Avatar>
+        </li>
       </EXPERIMENTAL_AvatarStack>
     </fieldset>
   </div>
@@ -176,19 +212,29 @@ export const Expandable = () => (
 
 export const ShapeVariants = () => (
   <EXPERIMENTAL_AvatarStack aria-label='example of square avatars' expandable>
-    <Avatar variant='square' aria-label='variant square' />
-    <Avatar variant='square' aria-label='Ola Nordmann'>
-      <img src='/img/component-docs/cats/cat1.webp' alt='' />
-    </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordmann'>
-      <img src='/img/component-docs/cats/cat2.webp' alt='' />
-    </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordmann'>
-      <img src='/img/component-docs/cats/cat3.webp' alt='' />
-    </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordmann'>
-      <img src='/img/component-docs/cats/cat4.webp' alt='' />
-    </Avatar>
+    <li>
+      <Avatar variant='square' aria-label='variant square' />
+    </li>
+    <li>
+      <Avatar variant='square' aria-label='Ola Nordmann'>
+        <img src='/img/component-docs/cats/cat1.webp' alt='' />
+      </Avatar>
+    </li>
+    <li>
+      <Avatar variant='square' aria-label='Ola Nordmann'>
+        <img src='/img/component-docs/cats/cat2.webp' alt='' />
+      </Avatar>
+    </li>
+    <li>
+      <Avatar variant='square' aria-label='Ola Nordmann'>
+        <img src='/img/component-docs/cats/cat3.webp' alt='' />
+      </Avatar>
+    </li>
+    <li>
+      <Avatar variant='square' aria-label='Ola Nordmann'>
+        <img src='/img/component-docs/cats/cat4.webp' alt='' />
+      </Avatar>
+    </li>
   </EXPERIMENTAL_AvatarStack>
 );
 
@@ -200,18 +246,26 @@ export const DataSize = () => (
       } as React.CSSProperties
     }
   >
-    <Avatar aria-label=''>
-      <img src='/img/component-docs/cats/cat6.webp' alt='' />
-    </Avatar>
-    <Avatar aria-label=''>
-      <img src='/img/component-docs/cats/cat1.webp' alt='' />
-    </Avatar>
-    <Avatar aria-label=''>
-      <img src='/img/component-docs/cats/cat6.webp' alt='' />
-    </Avatar>
-    <Avatar aria-label=''>
-      <img src='/img/component-docs/cats/cat1.webp' alt='' />
-    </Avatar>
+    <li>
+      <Avatar aria-label=''>
+        <img src='/img/component-docs/cats/cat6.webp' alt='' />
+      </Avatar>
+    </li>
+    <li>
+      <Avatar aria-label=''>
+        <img src='/img/component-docs/cats/cat1.webp' alt='' />
+      </Avatar>
+    </li>
+    <li>
+      <Avatar aria-label=''>
+        <img src='/img/component-docs/cats/cat6.webp' alt='' />
+      </Avatar>
+    </li>
+    <li>
+      <Avatar aria-label=''>
+        <img src='/img/component-docs/cats/cat1.webp' alt='' />
+      </Avatar>
+    </li>
   </EXPERIMENTAL_AvatarStack>
 );
 
@@ -223,40 +277,65 @@ export const Gap = () => (
       } as React.CSSProperties
     }
   >
-    <Avatar aria-label='' initials='AA' />
-    <Avatar aria-label='' initials='BB' />
-    <Avatar aria-label='' initials='CC' />
-    <Avatar aria-label='' initials='DD' />
+    <li>
+      <Avatar aria-label='' initials='AA' />
+    </li>
+    <li>
+      <Avatar aria-label='' initials='BB' />
+    </li>
+    <li>
+      <Avatar aria-label='' initials='CC' />
+    </li>
+    <li>
+      <Avatar aria-label='' initials='DD' />
+    </li>
   </EXPERIMENTAL_AvatarStack>
 );
 
 export const AdditionalAvatars = () => (
   <>
     <EXPERIMENTAL_AvatarStack>
-      <Avatar aria-label=''>
-        <img src='/img/component-docs/cats/cat1.webp' alt='' />
-      </Avatar>
-      <Avatar aria-label=''>
-        <BriefcaseIcon />
-      </Avatar>
-      <Avatar aria-label='' initials='sm' />
-      <Avatar
-        data-color='neutral'
-        aria-label=''
-        style={{ '--dsc-avatar-font-size': '1.1rem' } as React.CSSProperties}
-      >
-        +14
-      </Avatar>
+      <li>
+        <Avatar aria-label=''>
+          <img src='/img/component-docs/cats/cat1.webp' alt='' />
+        </Avatar>
+      </li>
+      <li>
+        <Avatar aria-label=''>
+          <BriefcaseIcon />
+        </Avatar>
+      </li>
+      <li>
+        <Avatar aria-label='' initials='sm' />
+      </li>
+      <li>
+        <Avatar
+          data-color='neutral'
+          aria-label=''
+          style={{ '--dsc-avatar-font-size': '1.1rem' } as React.CSSProperties}
+        >
+          +14
+        </Avatar>
+      </li>
     </EXPERIMENTAL_AvatarStack>
-    <EXPERIMENTAL_AvatarStack suffix='+14'>
-      <Avatar aria-label=''>
-        <img src='/img/component-docs/cats/cat1.webp' alt='' />
-      </Avatar>
-      <Avatar aria-label=''>
-        <BriefcaseIcon />
-      </Avatar>
-      <Avatar aria-label='' initials='sm' />
-      <Avatar aria-label='' initials='on' />
+    <EXPERIMENTAL_AvatarStack>
+      <li>
+        <Avatar aria-label=''>
+          <img src='/img/component-docs/cats/cat1.webp' alt='' />
+        </Avatar>
+      </li>
+      <li>
+        <Avatar aria-label=''>
+          <BriefcaseIcon />
+        </Avatar>
+      </li>
+      <li>
+        <Avatar aria-label='' initials='sm' />
+      </li>
+      <li>
+        <Avatar aria-label='' initials='on' />
+      </li>
+      <li>+14</li>
     </EXPERIMENTAL_AvatarStack>
   </>
 );
@@ -266,63 +345,79 @@ export const WithTooltipAndLink = () => (
     <fieldset>
       <legend>Link + Tooltip</legend>
       <EXPERIMENTAL_AvatarStack aria-label='contributors'>
-        <Tooltip content='Ola Katt'>
-          <Avatar aria-label='' asChild>
-            <a href='#'>
-              <img src='/img/component-docs/cats/cat1.webp' alt='' />
-            </a>
-          </Avatar>
-        </Tooltip>
-        <Tooltip content='Kari Katt'>
-          <Avatar aria-label='' asChild>
-            <a href='#'>
-              <img src='/img/component-docs/cats/cat6.webp' alt='' />
-            </a>
-          </Avatar>
-        </Tooltip>
-        <Tooltip content='Katt 2'>
-          <Avatar aria-label='' asChild>
-            <a href='#'>
-              <img src='/img/component-docs/cats/cat1.webp' alt='' />
-            </a>
-          </Avatar>
-        </Tooltip>
-        <Tooltip content='Børge Katt'>
-          <Avatar aria-label='' asChild>
-            <a href='#'>BK</a>
-          </Avatar>
-        </Tooltip>
+        <li>
+          <Tooltip content='Ola Katt'>
+            <Avatar aria-label='' asChild>
+              <a href='#'>
+                <img src='/img/component-docs/cats/cat1.webp' alt='' />
+              </a>
+            </Avatar>
+          </Tooltip>
+        </li>
+        <li>
+          <Tooltip content='Kari Katt'>
+            <Avatar aria-label='' asChild>
+              <a href='#'>
+                <img src='/img/component-docs/cats/cat6.webp' alt='' />
+              </a>
+            </Avatar>
+          </Tooltip>
+        </li>
+        <li>
+          <Tooltip content='Katt 2'>
+            <Avatar aria-label='' asChild>
+              <a href='#'>
+                <img src='/img/component-docs/cats/cat1.webp' alt='' />
+              </a>
+            </Avatar>
+          </Tooltip>
+        </li>
+        <li>
+          <Tooltip content='Børge Katt'>
+            <Avatar aria-label='' asChild>
+              <a href='#'>BK</a>
+            </Avatar>
+          </Tooltip>
+        </li>
       </EXPERIMENTAL_AvatarStack>
     </fieldset>
     <fieldset>
       <legend>Link + Tooltip expandable</legend>
       <EXPERIMENTAL_AvatarStack expandable='fixed' aria-label='contributors'>
-        <Tooltip content='Ola Katt'>
-          <Avatar aria-label='' asChild>
-            <a href='#'>
-              <img src='/img/component-docs/cats/cat6.webp' alt='' />
-            </a>
-          </Avatar>
-        </Tooltip>
-        <Tooltip content='Kari Katt'>
-          <Avatar aria-label='' asChild>
-            <a href='#'>
-              <img src='/img/component-docs/cats/cat1.webp' alt='' />
-            </a>
-          </Avatar>
-        </Tooltip>
-        <Tooltip content='Katt 2'>
-          <Avatar aria-label='' asChild>
-            <a href='#'>
-              <img src='/img/component-docs/cats/cat6.webp' alt='' />
-            </a>
-          </Avatar>
-        </Tooltip>
-        <Tooltip content='Børge Katt'>
-          <Avatar aria-label='' asChild>
-            <a href='#'>BK</a>
-          </Avatar>
-        </Tooltip>
+        <li>
+          <Tooltip content='Ola Katt'>
+            <Avatar aria-label='' asChild>
+              <a href='#'>
+                <img src='/img/component-docs/cats/cat6.webp' alt='' />
+              </a>
+            </Avatar>
+          </Tooltip>
+        </li>
+        <li>
+          <Tooltip content='Kari Katt'>
+            <Avatar aria-label='' asChild>
+              <a href='#'>
+                <img src='/img/component-docs/cats/cat1.webp' alt='' />
+              </a>
+            </Avatar>
+          </Tooltip>
+        </li>
+        <li>
+          <Tooltip content='Katt 2'>
+            <Avatar aria-label='' asChild>
+              <a href='#'>
+                <img src='/img/component-docs/cats/cat6.webp' alt='' />
+              </a>
+            </Avatar>
+          </Tooltip>
+        </li>
+        <li>
+          <Tooltip content='Børge Katt'>
+            <Avatar aria-label='' asChild>
+              <a href='#'>BK</a>
+            </Avatar>
+          </Tooltip>
+        </li>
       </EXPERIMENTAL_AvatarStack>
     </fieldset>
   </div>
