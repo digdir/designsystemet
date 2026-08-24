@@ -34,14 +34,16 @@ export const groupByScheme = (
   return grouped;
 };
 
-const toColorTokens = (colorScale: ColorScale): TokenSet => {
+const toColorNumberTokens = (colorScale: ColorScale): TokenSet => {
   const tokens: TokenSet = {};
+
   for (const color of Object.values(colorScale)) {
     tokens[color.number] = {
       $type: 'color',
       $value: color.hex,
     };
   }
+
   return tokens;
 };
 
@@ -56,13 +58,10 @@ export const generateColorScheme = (
   colors: Record<string, CssColor>,
   overrides?: ColorOverrideSchema,
 ): TokenSet => {
-  // Merge severity overrides as they are hex values and not color scales, so they need to be merged with the base colors before generating the color scales
   const colorsWithSeverityOverrides: Record<string, CssColor> = { ...colors, ...(overrides?.severity || {}) };
 
-  // Group color overrides by color scheme as they are color scales and need to be merged with the generated color scales after they are generated
   const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
 
-  // Generate color scales for each color in the colors object, applying any overrides if they exist
   const colorScales: Record<string, ColorScale> = {};
 
   for (const [colorName, color] of Object.entries(colorsWithSeverityOverrides)) {
@@ -86,7 +85,7 @@ export const generateColorScheme = (
 
   return {
     [themeName]: {
-      ...R.map(toColorTokens, colorScales),
+      ...R.map(toColorNumberTokens, colorScales),
       link: {
         visited: toColorToken(linkOverride || defaultLinkVisitedToken),
       },
