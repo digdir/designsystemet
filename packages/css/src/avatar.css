@@ -3,6 +3,7 @@
   --dsc-avatar-background: var(--ds-color-base-default);
   --dsc-avatar-color: var(--ds-color-base-contrast-default);
   --dsc-avatar-size: 2.625em; /* Fallback if not supporting round() */
+  --dsc-avatar-radius: var(--ds-border-radius-full);
   --dsc-avatar-padding: 0.45em; /* Fallback if not supporting round() */
   --dsc-avatar-font-size: 1.3em;
   @supports (width: round(down, 0.1em, 1px)) {
@@ -13,7 +14,7 @@
 
   align-items: center;
   background: var(--dsc-avatar-background);
-  border-radius: var(--ds-border-radius-full);
+  border-radius: var(--dsc-avatar-radius);
   border: 0;
   box-sizing: border-box;
   color: var(--dsc-avatar-color);
@@ -28,6 +29,7 @@
   text-decoration: none;
   text-transform: uppercase;
   user-select: none;
+  vertical-align: middle; /* Avoid space under if single child */
   width: var(--dsc-avatar-size);
   @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';
@@ -72,7 +74,7 @@
   }
 
   &[data-variant='square'] {
-    border-radius: var(--ds-border-radius-sm);
+    --dsc-avatar-radius: var(--ds-border-radius-sm);
   }
 
   @media (forced-colors: active) {

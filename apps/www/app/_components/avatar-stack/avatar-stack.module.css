@@ -1,5 +1,9 @@
 .avatarStackOverrides {
+  --dsc-avatar-stack-gap: var(--ds-size-1);
+  --dsc-avatar-stack-overlap: var(--ds-size-4);
+  --dsc-avatar-stack-size: var(--ds-size-7);
   --outline-color: light-dark(transparent, white);
+
   filter: drop-shadow(0 0 0.5px var(--outline-color)) drop-shadow(0 0 0.5px var(--outline-color)) drop-shadow(0 0 0.5px var(--outline-color));
   > * {
     --dsc-avatar-background: transparent;

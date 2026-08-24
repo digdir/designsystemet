@@ -98,28 +98,19 @@ export default function BestPractices({
               {description}
             </Paragraph>
           )}
-          <Paragraph variant='short' asChild>
-            <div className={classes.meta}>
-              {author && (
-                <>
-                  <a
-                    href='#article-contributors'
-                    aria-label={t('contributors')}
-                  >
-                    <AvatarStack authors={author} />
-                  </a>
-                  <span>{author}</span>
-                </>
-              )}
+          <div className={classes.meta}>
+            {author && (
+              <>
+                <AvatarStack aria-label={t('contributors')} authors={author} />
+                <span>{author}</span>
+              </>
+            )}
 
-              <span className={classes.separator}>·</span>
-              <span>
-                {date && (
-                  <div>{`${t('updated')} ${formatDate(date, lang)}`}</div>
-                )}
-              </span>
-            </div>
-          </Paragraph>
+            <span className={classes.separator}>·</span>
+            <span>
+              {date && <div>{`${t('updated')} ${formatDate(date, lang)}`}</div>}
+            </span>
+          </div>
         </div>
         <TableOfContents items={toc}>
           <div className='toc-feedback'>
