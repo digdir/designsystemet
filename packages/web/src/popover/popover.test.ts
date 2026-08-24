@@ -9,6 +9,15 @@ const render = (html: string) => {
 // Wait a tick for autoUpdate()'s initial computePosition() (a microtask) to resolve
 const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
 
+// The popover "toggle" event is a queued task, so under main-thread contention
+// (parallel test files) positioning may not have run after a single tick.
+// data-floating is set once computePosition() runs, so wait for it before
+// asserting on positioning results.
+const waitForPositioned = (popover: HTMLElement | null) =>
+  vi.waitFor(() => expect(popover).toHaveAttribute('data-floating'), {
+    timeout: 1500,
+  });
+
 afterEach(() => {
   document.body.innerHTML = '';
   vi.restoreAllMocks();
@@ -41,7 +50,7 @@ describe('popover floating behavior', () => {
     const popover = document.getElementById('my-popover');
 
     trigger?.click();
-    await tick();
+    await waitForPositioned(popover);
 
     expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).toHaveAttribute('data-floating');
@@ -66,9 +75,9 @@ describe('popover floating behavior', () => {
     `);
 
     document.querySelector('button')?.click();
-    await tick();
 
     const popover = document.getElementById('my-popover');
+    await waitForPositioned(popover);
     expect(popover).toHaveAttribute('data-floating', 'bottom-end');
   });
 
@@ -91,16 +100,24 @@ describe('popover floating behavior', () => {
     `);
 
     document.querySelector('button')?.click();
-    await tick();
 
+    // The popover "toggle" event is a queued task, so under main-thread
+    // contention positioning may not have run after a single tick. Wait for
+    // translate, which computePosition() sets after running the size
+    // middleware - guaranteeing the sizing frame has been scheduled.
     const popover = document.getElementById('my-popover');
+    await vi.waitFor(() => expect(popover?.style.translate).not.toBe(''), {
+      timeout: 1500,
+    });
+
     expect(animationFrames.length).toBeGreaterThan(0);
     expect(popover?.style.width).toBe('');
     expect(popover?.style.maxHeight).toBe('');
 
-    animationFrames.forEach((callback) => {
-      callback(performance.now());
-    });
+    // Flush frames, including any scheduled while flushing
+    while (animationFrames.length) {
+      animationFrames.shift()?.(performance.now());
+    }
 
     expect(popover?.style.width).toBe('120px');
     expect(popover?.style.maxHeight).not.toBe('');
@@ -150,9 +167,9 @@ describe('popover floating behavior', () => {
     `);
 
     document.querySelector('button')?.click();
-    await tick();
 
     const popover = document.getElementById('my-popover');
+    await waitForPositioned(popover);
     expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).toHaveAttribute('data-floating');
   });
@@ -172,7 +189,7 @@ describe('popover shadow DOM support', () => {
     const popover = root.getElementById('shadow-popover');
 
     trigger?.click();
-    await tick();
+    await waitForPositioned(popover);
 
     expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).toHaveAttribute('data-floating');
@@ -191,7 +208,7 @@ describe('popover scrollbar interaction guard', () => {
     const popover = document.getElementById('my-popover');
 
     trigger?.click();
-    await tick();
+    await waitForPositioned(popover); // Re-show only happens for registered (positioned) popovers
     expect(popover?.matches(':popover-open')).toBe(true);
 
     const showSpy = vi.spyOn(popover as HTMLElement, 'showPopover');
