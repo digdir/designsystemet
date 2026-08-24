@@ -68,8 +68,9 @@ Vi skal halde oss til eitt ikon per knapp.
 
 
 ### Knapp som lenke
+Ei lenke kan ha utsjånad som ein knapp. Bruk framleis `<a>` når elementet navigerer til ei ny side eller URL. Bruk `<button>` når elementet utfører ei handling på sida.
 
-Lenker kan få utsjånad som ein knapp, men vurder først om det er betre å bruke [Link](/no/components/docs/link/overview)-komponenten. 
+Vurder først om ei vanleg lenke er tydelegare og meir føreseieleg for brukaren.
 
 <Story story="AsLink" />
 
@@ -86,6 +87,12 @@ Gje relevant informasjon før brukaren skal trykkje på knappen.
 
 ### Knapp eller lenke?
 Bruk knapp når brukeren skal utføre en handling. Bruk [lenke](/no/components/docs/link/overview) når brukeren navigeres til en ny URL.
+
+Det er kva elementet **gjer**, ikkje korleis det ser ut, som avgjer om du skal bruke `<button>` eller `<a>`.
+
+Lenker kan ha ulik visuell utforming avhengig av konteksten. Til dømes kan lenker i ein navigasjonsmeny vere utan understreking eller ikon, så lenge det er tydeleg at dei er interaktive og høyrer til navigasjonen.
+
+Ei lenke kan òg sjå ut som ein knapp når ho representerer ei tydeleg navigasjonshandling. Ho skal framleis vere implementert som `<a>`, [sjå eksempelet over](#knapp-som-lenke).
 
 #### Logg inn
 «Logg inn» kan ha knappeutsjånad uansett kva HTML-element du nyttar.

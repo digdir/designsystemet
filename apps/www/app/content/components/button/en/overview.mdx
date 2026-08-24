@@ -71,7 +71,9 @@ Use only one icon per button.
 
 ### Button styled as a link
 
-Links can be styled to look like a button, but consider whether the [Link](/en/components/docs/link/overview) component is a more appropriate choice.
+A link can look like a button. Still use `<a>` when the element navigates to a new page or URL. Use `<button>` when the element performs an action on the page.
+
+First consider whether a regular link is clearer and more predictable for the user.
 
 <Story story="AsLinkEn" />
 
@@ -88,6 +90,12 @@ Buttons have an important function and are directly tied to an action. They give
 ### Button or link?
 
 Use a button when the user should perform an action. Use a [link](/en/components/docs/link/overview) when the user is navigated to a new URL.
+
+What the element **does**, not how it looks, determines whether you should use `<button>` or `<a>`.
+
+Links can have different visual appearances depending on the context. For example, links in a navigation menu can be without underline or icons, as long as it is clear that they are interactive and belong to the navigation.
+
+A link can also look like a button when it represents a clear navigation action. It should still be implemented as `<a>`, [see the example above](#button-styled-as-a-link).
 
 #### Log in
 
