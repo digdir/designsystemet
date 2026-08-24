@@ -41,6 +41,14 @@ const redirects: Redirect[] = [
     to: '/no/fundamentals',
   },
   {
+    from: '/grunnleggende/for-utviklere/komposisjon',
+    to: '/no/fundamentals/code/composition',
+  },
+  {
+    from: '/fundamentals/for-developers/composition',
+    to: '/en/fundamentals/code/composition',
+  },
+  {
     from: '/no/fundamentals/introduction/values',
     to: '/no/intro/collaboration#values',
   },
