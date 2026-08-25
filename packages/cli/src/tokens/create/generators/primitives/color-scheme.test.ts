@@ -76,7 +76,7 @@ describe('generateColorScheme', () => {
     expect(theme.info[12].$value).toBe(colors?.info);
   });
 
-  it('severity color defined in overrides takes precedent over color', () => {
+  it('severity color defined in overrides takes precedence over color', () => {
     const overrides = { severity: { info: '#AA0000' } } as ColorOverrideSchema;
     const colors = { ...{ info: '#ff00e1' as CssColor }, ...baseColors };
     const result = generateColorScheme('theme', 'light', colors, overrides);
