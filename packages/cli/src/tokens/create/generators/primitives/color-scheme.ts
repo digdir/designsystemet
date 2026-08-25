@@ -13,19 +13,17 @@ import type { Token, TokenSet } from '../../../types.ts';
  * @returns A record of color scales for the specified color scheme.
  */
 export const groupByScheme = (
-  colors: Record<string, Record<string, Record<string, CssColor>>>,
+  colors: Record<string, Partial<Record<SemanticColorNames, Partial<Record<ColorScheme, CssColor>>>>>,
   colorScheme: ColorScheme,
 ) => {
   const grouped: Record<string, Partial<ColorScale>> = {};
   for (const [colorName, customColorScale] of Object.entries(colors)) {
     const schemeColors: Partial<ColorScale> = {};
 
-    for (const [semanticColorName, schemes] of Object.entries(customColorScale)) {
-      if (colorScheme in schemes) {
-        schemeColors[semanticColorName as keyof ColorScale] = {
-          hex: schemes[colorScheme],
-          ...semanticColorSpec[semanticColorName as SemanticColorNames],
-        };
+    for (const semanticColorName of Object.keys(customColorScale) as SemanticColorNames[]) {
+      const hex = customColorScale[semanticColorName]?.[colorScheme];
+      if (hex) {
+        schemeColors[semanticColorName] = { hex, ...semanticColorSpec[semanticColorName] };
       }
     }
     grouped[colorName] = schemeColors;
