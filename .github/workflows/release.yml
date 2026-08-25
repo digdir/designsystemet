@@ -139,20 +139,29 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        # Forked version of the changesets action that supports aggregated releases
-        uses: dotansimha/changesets-action@069996e9be15531bd598272996fa23853d61590e # v1.5.2
+        uses: changesets/action@8488615a623b1b9c987934bb89eae8af6a946ac1 # v2.1.1
         with:
-          publish: pnpm publish-packages
-          version: pnpm version-packages
-          commit: "chore: new release"
-          title: "chore: new release"
-          createGithubReleases: aggregate
-          githubReleaseName: v${{ steps.release_version.outputs.value }}
-          githubTagName: v${{ steps.release_version.outputs.value }}
-
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          publish-script: pnpm publish-packages
+          version-script: pnpm version-packages
+          commit-message: "chore: new release"
+          pr-title: "chore: new release"
+          # We create one aggregated release + tag (vX.Y.Z) ourselves below
+          # instead of one release/tag per package.
+          create-github-releases: false
+          push-git-tags: false
+      - name: Create aggregated GitHub release
+        if: ${{ steps.changesets.outputs.published == 'true' }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: "" # https://github.com/changesets/changesets/issues/1152#issuecomment-3190884868
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: v${{ steps.release_version.outputs.value }}
+          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.published-packages }}
+        run: |
+          node scripts/aggregate-release-notes.js "$PUBLISHED_PACKAGES" > release-notes.md
+          gh release create "$TAG" \
+            --title "$TAG" \
+            --notes-file release-notes.md \
+            --target "$GITHUB_SHA"
 
   deploy-www:
     permissions:
