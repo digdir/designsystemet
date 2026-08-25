@@ -12,7 +12,7 @@
     }
   },
   "scripts": {
-    "test": "vitest",
+    "test": "vitest --config=./test/vitest.config.mjs",
     "test:cli": "pnpm --filter @digdir/designsystemet test --verbose",
     "test:web": "pnpm --filter @digdir/designsystemet-web test",
     "test:storybook": "pnpm --filter @web/storybook test-storybook",
