@@ -1,4 +1,3 @@
-import * as R from 'ramda';
 import type { ColorScale, ColorScheme, CssColor, SemanticColorNames } from '../../../../colors/index.ts';
 import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
@@ -67,7 +66,7 @@ export const generateColorScheme = (
     const colorOverride = colorOverrides[colorName];
 
     if (colorOverride) {
-      colorScale = R.mergeDeepRight(colorScale, colorOverride);
+      colorScale = { ...colorScale, ...colorOverride };
     }
     colorScales[colorName] = colorScale;
   }
