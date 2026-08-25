@@ -5,6 +5,16 @@ import { getCommitInfo, getPullRequestInfo } from '@changesets/get-github-info';
 const GITHUB_SERVER_URL = process.env.GITHUB_SERVER_URL || 'https://github.com';
 const GITHUB_API_URL = process.env.GITHUB_API_URL || 'https://api.github.com';
 
+/**
+ * GitHub logins of core maintainers. Their changelog entries are written
+ * without the trailing `by @user` author attribution.
+ */
+const SKIP_AUTHOR_LOGINS = new Set(
+	['barsnes', 'mimarz', 'eirikbacker', 'mrosvik', 'unekinn', 'febakke']
+);
+
+const isSkippedAuthor = (login: string) => SKIP_AUTHOR_LOGINS.has(login.toLowerCase());
+
 const firstContributionCache = new Map<string, Promise<boolean>>();
 
 /**
@@ -141,8 +151,9 @@ const changelogFunctions: ChangelogFunctions = {
 
 		// only link PR or merge commit not both
 		const suffix = links.pull ? ` (${links.pull})` : links.commit ? ` (${links.commit})` : '';
-		const authorSuffix = authors.length
-			? ` by ${authors.map((author) => author.markdownLink).join(', ')}`
+		const creditedAuthors = authors.filter((author) => !isSkippedAuthor(author.login));
+		const authorSuffix = creditedAuthors.length
+			? ` by ${creditedAuthors.map((author) => author.markdownLink).join(', ')}`
 			: '';
 
 		const thanksLines = (
