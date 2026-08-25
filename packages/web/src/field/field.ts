@@ -5,6 +5,7 @@ import {
   customElements,
   DSElement,
   debounce,
+  isBrowser,
   isWindows,
   on,
   onMutation,
@@ -107,8 +108,8 @@ const TEXTS = {
 };
 
 const debouncedCounterLiveRegion = debounce((input: Element, text: string) => {
-  // Using document?. as this function might run after document is unmounted by tests
-  if (document?.activeElement === input) announce(text); // Only announce if input is still focused
+  // Using isBrowser() to check if environment still exits and is not unmounted by tests
+  if (isBrowser() && document.activeElement === input) announce(text); // Only announce if input is still focused
 }, COUNTER_DEBOUNCE);
 
 const isInvalidColor = (el: Element) => {
