@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "0.1.0",
+  "kind": "pattern",
+  "name": "Field guidance — placeholders, descriptions and input purpose",
+  "slug": "field-guidance",
+  "package": {
+    "name": "@digdir/designsystemet-react",
+    "semver": "1.x"
+  },
+  "generated": {
+    "fromCommit": "n/a — pattern authored from docs",
+    "at": "2026-08-12T00:00:00Z",
+    "generator": "authored"
+  },
+  "links": {
+    "docs": "https://designsystemet.no/en/best-practices/content-work/questions"
+  },
+  "summary": {
+    "provenance": "authored",
+    "source": "https://designsystemet.no/en/best-practices/content-work/questions",
+    "value": "How a form field tells the user what to enter: guidance before the field, never placeholder-only; descriptions (help text) for difficult content such as expected formats; autocomplete attributes where the field's purpose is predefined."
+  },
+  "components": {
+    "provenance": "authored",
+    "source": "https://designsystemet.no/en/components/docs/textfield/overview",
+    "value": [
+      {
+        "role": "carries label, description and error in one composition",
+        "ref": "textfield"
+      },
+      {
+        "role": "links label, description, validation message and counter for assistive technology",
+        "ref": "field"
+      }
+    ]
+  },
+  "a11y": {
+    "provenance": "authored",
+    "source": "https://designsystemet.no/en/best-practices/content-work/questions",
+    "method": "drafted from the documentation, quote-verified; human review pending",
+    "value": [
+      {
+        "rule": "Avoid guidance text inside the input itself (placeholders); give all relevant information before the user fills in the field",
+        "wcag": null,
+        "quote": "Users should not have to try and fail, so give them all relevant information before they choose an option or fill in a field. Avoid guidance text inside the input itself, also known as placeholders. Placeholders disappear when the field is filled in, and may conflict with accessibility requirements."
+      },
+      {
+        "rule": "Autocomplete is required on fields with a predefined purpose",
+        "wcag": "1.3.5",
+        "quote": "Autocomplete is required in fields where a predefined purpose exists, as defined in 1.3.5",
+        "sourcePage": "https://designsystemet.no/en/components/docs/textfield/overview"
+      }
+    ]
+  },
+  "composition": {
+    "provenance": "authored",
+    "source": "https://designsystemet.no/en/best-practices/content-work/questions",
+    "method": "drafted from the documentation, quote-verified; human review pending",
+    "value": [
+      {
+        "rule": "Use a description (help text) to explain difficult content — legal terms, specialist language, expected formats",
+        "quote": "Sometimes descriptions, also known as help text, are useful for explaining something difficult, such as legal terms or specialist language."
+      },
+      {
+        "rule": "Only use descriptions where needed, to reduce cognitive load",
+        "quote": "Only use descriptions where they are needed, to reduce cognitive load."
+      }
+    ]
+  },
+  "needsReview": true,
+  "reviewedAgainst": null
+}

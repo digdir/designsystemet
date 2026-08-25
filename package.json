@@ -34,6 +34,8 @@
     "build:themebuilder": "pnpm --filter @web/themebuilder build",
     "build:plugin": "pnpm --filter @plugin/designsystemet... build",
     "watch:plugin": "pnpm --filter @plugin/designsystemet watch",
+    "generate:twins": "node scripts/generate-twins.mjs",
+    "merge:twins": "node scripts/merge-authored-twins.mjs",
     "types": "pnpm -r types",
     "types:react": "pnpm --filter @digdir/designsystemet-react types",
     "version-packages": "changeset version && node scripts/sync-changelogs.js && pnpm build:types && pnpm build:cli && node scripts/sync-cli-schema.js && pnpm update:theme && pnpm update:theme-digdir && git add . && git commit -m \"sync www changelogs, schema and tokens\" || true",

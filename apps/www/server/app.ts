@@ -28,12 +28,15 @@ app.use((req, res, next) => {
 
   res.setHeader('Cache-Control', 'max-age');
 
-  /* Add Link headers for agent discovery (RFC 8288 / RFC 9727) on the homepage */
-  if (req.path === '/') {
+  /* Add Link headers for agent discovery (RFC 8288 / RFC 9727) on the homepage.
+   * `/` redirects to a locale root, and clients read headers off the final 200,
+   * so the locale roots must carry them too or agents never see them. */
+  if (/^\/(?:(?:no|en)\/?)?$/.test(req.path)) {
     res.setHeader('Link', [
       '</.well-known/api-catalog>; rel="api-catalog"',
       '</.well-known/security.txt>; rel="disclosure"',
       '</sitemap.xml>; rel="sitemap"',
+      '</llms.txt>; rel="alternate"; type="text/plain"',
     ]);
   }
 
