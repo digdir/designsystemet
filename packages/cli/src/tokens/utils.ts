@@ -154,13 +154,13 @@ export function orderBySize(sizes: string[]): string[] {
  * We do this because we want severity colors to always be last when design-tokens are visualized in Token Studio and Figma Variables.
  */
 export function addSeverityColors(colors: Theme['colors']): Theme['colors'] {
-  const result: Theme['colors'] = { ...colors };
+  const result = new Map(Object.entries(colors));
   for (const [name, value] of Object.entries(severityColors)) {
-    const userValue = result[name];
-    delete result[name]; // Deleting and re-adding moves the key to the end
-    result[name] = userValue ?? value;
+    const userValue = result.get(name);
+    result.delete(name); // Deleting and re-adding moves the key to the end
+    result.set(name, userValue ?? value);
   }
-  return result;
+  return Object.fromEntries(result) as Theme['colors'];
 }
 
 export function toColorNames(themeColors: Theme['colors']): string[] {
