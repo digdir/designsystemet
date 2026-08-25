@@ -83,9 +83,14 @@ export const generateColorScheme = (
   const focusInnerOverride = overrides?.focus?.inner?.[colorScheme];
   const focusOuterOverride = overrides?.focus?.outer?.[colorScheme];
 
+  const colorNumberTokens: Record<string, TokenSet> = {};
+  for (const [colorName, colorScale] of Object.entries(colorScales)) {
+    colorNumberTokens[colorName] = toColorNumberTokens(colorScale);
+  }
+
   return {
     [themeName]: {
-      ...R.map(toColorNumberTokens, colorScales),
+      ...colorNumberTokens,
       link: {
         visited: toColorToken(linkOverride || defaultLinkVisitedToken),
       },
