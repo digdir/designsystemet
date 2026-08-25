@@ -93,17 +93,17 @@ describe('addSeverityColors', () => {
     expect(Object.keys(addSeverityColors(colors))).toEqual(['accent', 'info', 'success', 'warning', 'danger']);
   });
 
-  it('keeps user-defined severity colors and their position', () => {
+  it('keeps user-defined severity color values but moves them to the end', () => {
     const colors = { accent: '#0062BA', danger: '#FF0000', neutral: '#444444' } as Theme['colors'];
     const result = addSeverityColors(colors);
     expect(result.danger).toBe('#FF0000');
-    expect(Object.keys(result)).toEqual(['accent', 'danger', 'neutral', 'info', 'success', 'warning']);
+    expect(Object.keys(result)).toEqual(['accent', 'neutral', 'info', 'success', 'warning', 'danger']);
   });
 });
 
 describe('toColorNames', () => {
-  it('returns user colors followed by missing severity colors', () => {
+  it('returns user colors followed by all severity colors', () => {
     const colors = { accent: '#0062BA', warning: '#EA9B1B' } as Theme['colors'];
-    expect(toColorNames(colors)).toEqual(['accent', 'warning', 'info', 'success', 'danger']);
+    expect(toColorNames(colors)).toEqual(['accent', 'info', 'success', 'warning', 'danger']);
   });
 });
