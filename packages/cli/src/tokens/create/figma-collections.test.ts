@@ -1,7 +1,7 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 import { describe, expect, it, vi } from 'vitest';
 import type { TokenSet, TokenSets } from '../types.ts';
-import { mergeTokenSets, toFigmaCollections } from './figma-collections.ts';
+import { mergeTokenSets, toFigmaCollections, UNGROUPED } from './figma-collections.ts';
 
 const color = (value: string) => ({ $type: 'color', $value: value });
 const dimension = (value: string) => ({ $type: 'dimension', $value: value });
@@ -54,7 +54,23 @@ describe('toFigmaCollections', () => {
     expect(Object.keys(collections)).toEqual(['Size', 'Theme', 'Color scheme', 'Semantic']);
     expect(collections['Color scheme'].map((m) => m.modeName)).toEqual(['Light', 'Dark']);
     expect(collections.Theme).toEqual([
-      { modeName: 'digdir', tokens: { 'font-family': { $type: 'fontFamilies', $value: 'Inter' } } },
+      {
+        id: 'Theme-digdir',
+        modeName: 'digdir',
+        tokenSets: [{ tokenSet: 'themes/digdir', status: TokenSetStatus.ENABLED, exists: true }],
+        tokens: { 'font-family': { $type: 'fontFamilies', $value: 'Inter' } },
+      },
+    ]);
+  });
+
+  it('lists every selected token set with status and existence, regardless of status', () => {
+    const { $themes, tokenSets } = fixture();
+    const semantic = toFigmaCollections($themes, tokenSets).Semantic[0];
+
+    expect(semantic.tokenSets).toEqual([
+      { tokenSet: 'semantic/style', status: TokenSetStatus.ENABLED, exists: true },
+      { tokenSet: 'primitives/globals', status: TokenSetStatus.SOURCE, exists: true },
+      { tokenSet: 'semantic/disabled', status: TokenSetStatus.DISABLED, exists: false },
     ]);
   });
 
@@ -67,7 +83,7 @@ describe('toFigmaCollections', () => {
     });
   });
 
-  it('excludes source sets by default and includes them on request', () => {
+  it('excludes source sets from tokens by default and includes them on request', () => {
     const { $themes, tokenSets } = fixture();
 
     expect(toFigmaCollections($themes, tokenSets).Size[0].tokens).toEqual({
@@ -82,32 +98,36 @@ describe('toFigmaCollections', () => {
     expect(withSource.Semantic[0].tokens).toHaveProperty('border-width');
   });
 
-  it('always skips disabled sets and reports missing ones', () => {
+  it('never merges disabled sets and reports missing ones', () => {
     const { $themes, tokenSets } = fixture();
     const onMissingTokenSet = vi.fn();
 
     const collections = toFigmaCollections($themes, tokenSets, { includeSource: true, onMissingTokenSet });
 
-    expect(onMissingTokenSet).toHaveBeenCalledTimes(1);
-    expect(onMissingTokenSet).toHaveBeenCalledWith(
-      'primitives/modes/color-scheme/dark/altinn',
-      expect.objectContaining({ name: 'Dark' }),
-    );
+    expect(onMissingTokenSet.mock.calls.map(([set, theme]) => [set, theme.name])).toEqual([
+      ['primitives/modes/color-scheme/dark/altinn', 'Dark'],
+      ['semantic/disabled', 'Semantic'],
+    ]);
     expect(collections['Color scheme'][1].tokens).toEqual({ theme: { accent: { 1: color('#000') } } });
+    expect(collections['Color scheme'][1].tokenSets[1]).toEqual({
+      tokenSet: 'primitives/modes/color-scheme/dark/altinn',
+      status: TokenSetStatus.ENABLED,
+      exists: false,
+    });
   });
 
-  it('collects entries without a group under (ungrouped)', () => {
+  it('collects entries without a group under UNGROUPED and tolerates a missing id', () => {
     const collections = toFigmaCollections(
-      [themeObject(undefined, 'loose', { 'themes/digdir': TokenSetStatus.ENABLED })],
+      [{ name: 'loose', selectedTokenSets: { 'themes/digdir': TokenSetStatus.ENABLED } }],
       fixture().tokenSets,
     );
-    expect(Object.keys(collections)).toEqual(['(ungrouped)']);
-    expect(collections['(ungrouped)'][0].modeName).toBe('loose');
+    expect(Object.keys(collections)).toEqual([UNGROUPED]);
+    expect(collections[UNGROUPED][0]).toMatchObject({ id: null, modeName: 'loose' });
   });
 
-  it('produces an empty token set when nothing is selected', () => {
+  it('produces an empty mode when nothing is selected', () => {
     const collections = toFigmaCollections([themeObject('Empty', 'none', {})], new Map());
-    expect(collections.Empty).toEqual([{ modeName: 'none', tokens: {} }]);
+    expect(collections.Empty).toEqual([{ id: 'Empty-none', modeName: 'none', tokenSets: [], tokens: {} }]);
   });
 });
 
