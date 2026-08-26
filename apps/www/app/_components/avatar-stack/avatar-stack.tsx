@@ -36,7 +36,7 @@ const avatarMap = {
 
 type AvatarKey = keyof typeof avatarMap;
 
-export const AvatarStack = ({ authors, expandable }: AvatarStackProps) => {
+export const AvatarStack = ({ authors, ...rest }: AvatarStackProps) => {
   // Normalize the authors string for matching: lowercase and trim
   // This avoids case sensitivity issues and allows substring matching
   const authorsNormalized = authors.toLowerCase().trim();
@@ -77,15 +77,14 @@ export const AvatarStack = ({ authors, expandable }: AvatarStackProps) => {
   return (
     <EXPERIMENTAL_AvatarStack
       className={classes.avatarStackOverrides}
-      avatarSize='30px'
-      gap='4px'
-      expandable={expandable}
-      overlap={40}
+      {...rest}
     >
       {uniqueAvatars.map((avatarKey) => (
-        <Avatar aria-hidden key={avatarKey}>
-          <img src={`/img/avatars/${avatarMap[avatarKey]}`} alt='' />
-        </Avatar>
+        <li key={avatarKey}>
+          <Avatar aria-hidden>
+            <img src={`/img/avatars/${avatarMap[avatarKey]}`} alt='' />
+          </Avatar>
+        </li>
       ))}
     </EXPERIMENTAL_AvatarStack>
   );
