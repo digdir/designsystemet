@@ -1,21 +1,30 @@
 /**
- * Builds the body for an aggregated GitHub release from the CHANGELOG.md of
- * every package that was just published, mirroring the output of the old
- * `createGithubReleases: aggregate` mode from dotansimha/changesets-action.
+ * Aggregates the CHANGELOG.md of every package into a single structure, and
+ * (when run as a CLI) builds the body for an aggregated GitHub release,
+ * mirroring the output of the old `createGithubReleases: aggregate` mode from
+ * dotansimha/changesets-action.
  *
  * Usage:
- *   node scripts/aggregate-release-notes.mjs '<published-packages JSON>' > notes.md
+ *   node scripts/aggregate-release-notes.js '<published-packages JSON>' > notes.md
  *
  * `published-packages` is the output of changesets/action:
  *   [{ "name": "@digdir/designsystemet-react", "version": "1.20.1" }, ...]
+ *
+ * The exported helpers are also used by scripts/sync-changelogs.js to build the
+ * consolidated changelog for www.
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const ROOT = process.cwd();
 const PACKAGE_DIRS = ['packages'];
 
-async function findPackageDirs() {
+/**
+ * Finds every package under PACKAGE_DIRS.
+ * @returns {Promise<Map<string, { name: string, dir: string, version: string }>>} keyed by package name
+ */
+export async function findPackages() {
   const byName = new Map();
   for (const base of PACKAGE_DIRS) {
     let entries = [];
@@ -28,29 +37,71 @@ async function findPackageDirs() {
         const pkg = JSON.parse(
           await fs.readFile(path.join(dir, 'package.json'), 'utf8'),
         );
-        if (pkg.name) byName.set(pkg.name, dir);
+        if (pkg.name)
+          byName.set(pkg.name, { name: pkg.name, dir, version: pkg.version });
       } catch {}
     }
   }
   return byName;
 }
 
-/** Returns the markdown under the `## <version>` heading, without the heading itself. */
-function extractVersionSection(changelog, version) {
+/**
+ * Parses a CHANGELOG.md into its `## <version>` sections, in file order.
+ * @param {string} changelog
+ * @param {{ until?: string }} [options] stop before this version (exclusive) when given
+ * @returns {Map<string, string>} version → markdown body (heading removed, trimmed)
+ */
+export function parseChangelog(changelog, { until } = {}) {
+  const versions = new Map();
   const lines = changelog.split('\n');
-  const start = lines.findIndex((line) => line.trim() === `## ${version}`);
-  if (start === -1) return null;
-  let end = lines.length;
-  for (let i = start + 1; i < lines.length; i++) {
-    if (/^## /.test(lines[i])) {
-      end = i;
-      break;
+  let current = null;
+  let buffer = [];
+
+  const flush = () => {
+    if (current !== null) versions.set(current, buffer.join('\n').trim());
+    buffer = [];
+  };
+
+  for (const line of lines) {
+    const match = /^##\s+(\d+\.\d+\.\d+)\s*$/.exec(line);
+    if (match) {
+      flush();
+      if (until && match[1] === until) return versions;
+      current = match[1];
+      continue;
+    }
+    if (current !== null) buffer.push(line);
+  }
+  flush();
+  return versions;
+}
+
+/** Returns the markdown under the `## <version>` heading, or null if missing. */
+export function extractVersionSection(changelog, version) {
+  return parseChangelog(changelog).get(version) ?? null;
+}
+
+/**
+ * Reads and parses the CHANGELOG.md of every given package and merges them.
+ * @param {Iterable<{ name: string, dir: string }>} pkgs
+ * @param {{ until?: string }} [options] passed on to parseChangelog
+ * @returns {Promise<Map<string, Map<string, string>>>} version → (package name → body)
+ */
+export async function aggregateChangelogs(pkgs, options) {
+  const allVersions = new Map();
+  for (const pkg of pkgs) {
+    let md;
+    try {
+      md = await fs.readFile(path.join(pkg.dir, 'CHANGELOG.md'), 'utf8');
+    } catch {
+      continue;
+    }
+    for (const [version, body] of parseChangelog(md, options)) {
+      if (!allVersions.has(version)) allVersions.set(version, new Map());
+      allVersions.get(version).set(pkg.name, body);
     }
   }
-  return lines
-    .slice(start + 1, end)
-    .join('\n')
-    .trim();
+  return allVersions;
 }
 
 async function main() {
@@ -67,18 +118,18 @@ async function main() {
     process.exit(1);
   }
 
-  const dirs = await findPackageDirs();
+  const pkgs = await findPackages();
   const sections = [];
 
   for (const { name, version } of [...published].sort((a, b) =>
     a.name.localeCompare(b.name),
   )) {
-    const dir = dirs.get(name);
+    const pkg = pkgs.get(name);
     let body = null;
-    if (dir) {
+    if (pkg) {
       try {
         body = extractVersionSection(
-          await fs.readFile(path.join(dir, 'CHANGELOG.md'), 'utf8'),
+          await fs.readFile(path.join(pkg.dir, 'CHANGELOG.md'), 'utf8'),
           version,
         );
       } catch {}
@@ -93,7 +144,12 @@ async function main() {
   process.stdout.write(`${sections.join('\n\n')}\n`);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}
