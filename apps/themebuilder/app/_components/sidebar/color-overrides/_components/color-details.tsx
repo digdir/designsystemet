@@ -206,12 +206,8 @@ export default function ColorDetails({ color }: ColorDetailsProps) {
       <div className={classes.tokenList}>
         {semanticColorNames.map((colorName) => {
           // Get the actual colors from the theme to show preview
-          const lightColor = color.colors?.light?.find(
-            (c) => c.name === colorName,
-          );
-          const darkColor = color.colors?.dark?.find(
-            (c) => c.name === colorName,
-          );
+          const lightColor = color.colors?.light?.[colorName];
+          const darkColor = color.colors?.dark?.[colorName];
 
           return (
             <div key={colorName} className={classes.tokenRow}>

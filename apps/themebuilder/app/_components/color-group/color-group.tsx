@@ -1,9 +1,6 @@
-import {
-  type Color,
-  getSemanticColorByNumber,
-  type SemanticColorNames,
-  semanticColorSpec,
-  type ThemeInfo,
+import type {
+  SemanticColorNames,
+  ThemeInfo,
 } from '@digdir/designsystemet/color';
 import { RovingFocusItem } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
@@ -44,13 +41,8 @@ export const ColorGroup = ({
 
       <div className={cl(classes.colors)}>
         {colorNames.map((colorName, index) => {
-          const { number, hex } =
-            colorScale[colorScheme][semanticColorSpec[colorName].number - 1];
-          const color: Color = {
-            ...getSemanticColorByNumber(number),
-            number,
-            hex,
-          };
+          const color = colorScale[colorScheme][colorName];
+          const { number, hex } = color;
           return (
             <Fragment key={index + 'fragment' + namespace}>
               <RovingFocusItem value={namespace + number} asChild>

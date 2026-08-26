@@ -55,9 +55,11 @@ export type Color = ColorScaleStep<SemanticColorNames> & {
   hex: CssColor;
 };
 
+export type ColorScale = Record<SemanticColorNames, Color>;
+
 export type ThemeInfo = {
-  light: Color[];
-  dark: Color[];
+  light: ColorScale;
+  dark: ColorScale;
 };
 
 /**

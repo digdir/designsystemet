@@ -3,7 +3,10 @@ import {
   generateColorSchemes,
   type ThemeInfo,
 } from '@digdir/designsystemet';
-import type { SeverityColorNames } from '@digdir/designsystemet/color';
+import type {
+  SemanticColorNames,
+  SeverityColorNames,
+} from '@digdir/designsystemet/color';
 import { severityColors } from '@digdir/designsystemet/schemas/defaults.js';
 import { useLoaderData } from 'react-router';
 import { generateColorVars } from '~/_utils/generate-color-vars';
@@ -203,19 +206,13 @@ export function applyOverridesToColors(
       }
 
       for (const [tokenName, override] of Object.entries(colorOverrides)) {
-        if (override.light) {
-          const lightColor = color.colors.light.find(
-            (c) => c.name === tokenName,
-          );
-          if (lightColor) {
-            lightColor.hex = override.light;
-          }
+        const lightColor = color.colors.light[tokenName as SemanticColorNames];
+        if (override.light && lightColor) {
+          lightColor.hex = override.light;
         }
-        if (override.dark) {
-          const darkColor = color.colors.dark.find((c) => c.name === tokenName);
-          if (darkColor) {
-            darkColor.hex = override.dark;
-          }
+        const darkColor = color.colors.dark[tokenName as SemanticColorNames];
+        if (override.dark && darkColor) {
+          darkColor.hex = override.dark;
         }
       }
 
