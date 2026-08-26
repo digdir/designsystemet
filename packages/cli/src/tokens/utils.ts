@@ -148,9 +148,19 @@ export function orderBySize(sizes: string[]): string[] {
   return R.sortBy(sizeComparator, sizes);
 }
 
+/** Non-severity colors first (in user order), then all severity colors at the end in severityColors order.
+ * User-defined severity colors keep their value but are moved to the end.
+ *
+ * We do this because we want severity colors to always be last when design-tokens are visualized in Token Studio and Figma Variables.
+ */
 export function addSeverityColors(colors: Theme['colors']): Theme['colors'] {
-  // Add severity colors if not present
-  return R.mergeDeepLeft<Theme['colors'], Theme['colors']>(colors, severityColors);
+  const result = new Map(Object.entries(colors));
+  for (const [name, value] of Object.entries(severityColors)) {
+    const userValue = result.get(name);
+    result.delete(name); // Deleting and re-adding moves the key to the end
+    result.set(name, userValue ?? value);
+  }
+  return Object.fromEntries(result) as Theme['colors'];
 }
 
 export function toColorNames(themeColors: Theme['colors']): string[] {
