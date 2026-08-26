@@ -156,7 +156,7 @@ You will get a `Error: Validation Failed: {"resource":"PullRequest","code":"cust
 
 When working on new changes we have two ways for testing downstream, choose one depending on features and development needs.
 
-1. Manually trigger [Release Snapshot](https://github.com/digdir/designsystemet/actions/workflows/release-snapshot.yml) to publish new version for testing on (`test` or `next`). (We reccommend this)
+1. Manually trigger [Release Snapshot](https://github.com/digdir/designsystemet/actions/workflows/release-snapshot.yml) to publish new version for testing on (`test` or `next`). (We recommend this)
 2. Use [Changesets prerelease mode](https://github.com/changesets/changesets/blob/main/docs/prereleases.md)
 
 ### Patching older versions
