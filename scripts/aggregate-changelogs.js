@@ -5,7 +5,7 @@
  * dotansimha/changesets-action.
  *
  * Usage:
- *   node scripts/aggregate-release-notes.js '<published-packages JSON>' > notes.md
+ *   node scripts/aggregate-changelogs.js '<published-packages JSON>' > notes.md
  *
  * `published-packages` is the output of changesets/action:
  *   [{ "name": "@digdir/designsystemet-react", "version": "1.20.1" }, ...]
