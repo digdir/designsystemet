@@ -1,20 +1,40 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 import type { Token, TokenSet, TokenSets } from '../types.ts';
 
-/** One mode in a Figma variable collection: the mode name and its merged tokens. */
+/** The subset of a `$themes.json` entry the transformer needs. `id` and `group` are optional. */
+export type ThemeObjectInput = Pick<ThemeObject, 'name' | 'selectedTokenSets'> &
+  Partial<Pick<ThemeObject, 'id' | 'group'>>;
+
+/** A token set selected by a mode in `$themes.json`, and whether it was found in `tokenSets`. */
+export type SelectedTokenSet = {
+  tokenSet: string;
+  status: TokenSetStatus;
+  exists: boolean;
+};
+
+/** One mode in a Figma variable collection. */
 export type FigmaMode = {
+  /** `$themes.json` entry id, when present. */
+  id: string | null;
   modeName: string;
+  /** Every token set the mode selects, in `selectedTokenSets` order, regardless of status. */
+  tokenSets: SelectedTokenSet[];
+  /** Deep-merge of the mode's existing, non-disabled (and, if enabled, `source`) token sets. */
   tokens: TokenSet;
 };
 
 /** Figma collections keyed by `$themes` group name (e.g. "Color scheme"), each a list of modes. */
-export type FigmaCollections = Map<string, FigmaMode[]>;
+export type FigmaCollections = Record<string, FigmaMode[]>;
+
+/** Group used for `$themes` entries that have no `group`. */
+export const UNGROUPED = '(ungrouped)';
 
 export type ToFigmaCollectionsOptions = {
   /**
-   * Include `source` token sets in the mode's tokens.
+   * Include `source` token sets when merging `tokens`.
    * Token Studio uses `source` sets for reference resolution only and does not export
-   * them as variables, so they are excluded by default.
+   * them as variables, so they are excluded by default. They are always listed in
+   * `tokenSets` so callers can still use them for alias resolution.
    * @default false
    */
   includeSource?: boolean;
@@ -22,43 +42,51 @@ export type ToFigmaCollectionsOptions = {
    * Called for every selected token set that has no entry in `tokenSets`.
    * @default () => {} (silently skipped)
    */
-  onMissingTokenSet?: (tokenSet: string, theme: ThemeObject) => void;
+  onMissingTokenSet?: (tokenSet: string, theme: ThemeObjectInput) => void;
 };
 
 /**
  * Groups `$themes.json` entries by their `group` into Figma collections. Every theme entry
- * becomes one mode in its group's collection, with the tokens of its selected token sets
- * deep-merged (in `selectedTokenSets` order, later sets overriding earlier ones).
+ * becomes one mode in its group's collection, carrying its selected token sets (with
+ * status and existence) and the tokens of those sets deep-merged in `selectedTokenSets`
+ * order, later sets overriding earlier ones.
  *
- * Entries without a `group` are collected under `(ungrouped)`.
+ * Entries without a `group` are collected under {@link UNGROUPED}.
  */
 export function toFigmaCollections(
-  $themes: ThemeObject[],
+  $themes: ThemeObjectInput[],
   tokenSets: TokenSets,
   options: ToFigmaCollectionsOptions = {},
 ): FigmaCollections {
   const { includeSource = false, onMissingTokenSet = () => {} } = options;
-  const collections: FigmaCollections = new Map();
+  const collections: FigmaCollections = {};
 
   for (const theme of $themes) {
-    const group = theme.group || '(ungrouped)';
+    const group = theme.group || UNGROUPED;
+    const selected: SelectedTokenSet[] = [];
     let tokens: TokenSet = {};
 
-    for (const [tokenSet, status] of Object.entries(theme.selectedTokenSets)) {
-      if (status === TokenSetStatus.DISABLED) continue;
-      if (status === TokenSetStatus.SOURCE && !includeSource) continue;
-
+    for (const [tokenSet, status] of Object.entries(theme.selectedTokenSets ?? {})) {
       const set = tokenSets.get(tokenSet);
+      selected.push({ tokenSet, status, exists: set !== undefined });
+
       if (!set) {
         onMissingTokenSet(tokenSet, theme);
         continue;
       }
+      if (status === TokenSetStatus.DISABLED) continue;
+      if (status === TokenSetStatus.SOURCE && !includeSource) continue;
+
       tokens = mergeTokenSets(tokens, set);
     }
 
-    if (!collections.has(group)) collections.set(group, []);
-
-    collections.get(group)?.push({ modeName: theme.name, tokens });
+    collections[group] ??= [];
+    collections[group].push({
+      id: theme.id ?? null,
+      modeName: theme.name,
+      tokenSets: selected,
+      tokens,
+    });
   }
 
   return collections;
