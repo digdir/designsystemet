@@ -1,23 +1,53 @@
-import * as R from 'ramda';
-import type { Color, ColorScheme, CssColor } from '../../../../colors/index.ts';
+import type { ColorScale, ColorScheme, CssColor, SemanticColorNames } from '../../../../colors/index.ts';
 import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
-import { severityColors, visitedLinkColor } from '../../../../schemas/defaults.ts';
+import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
-const generateColor = (colorArray: Color[], overrides?: Record<number, string>): TokenSet => {
-  const obj: TokenSet = {};
-  const $type = 'color';
-  for (const index in colorArray) {
-    const position = Number(index) + 1;
-    const overrideValue = overrides?.[position];
-    obj[position] = {
-      $type,
-      $value: overrideValue || colorArray[index].hex,
+/**
+ * Group colors by color scheme, returning a partial record of color scales for the specified scheme.
+ *
+ * @param colors - A record of color scales, where each color scale is a record of color schemes and their corresponding hex values.
+ * @param colorScheme - The color scheme to group the colors by.
+ * @returns A record of color scales for the specified color scheme.
+ */
+export const groupByScheme = (
+  colors: Record<string, Partial<Record<SemanticColorNames, Partial<Record<ColorScheme, CssColor>>>>>,
+  colorScheme: ColorScheme,
+) => {
+  const grouped: Record<string, Partial<ColorScale>> = {};
+  for (const [colorName, customColorScale] of Object.entries(colors)) {
+    const schemeColors: Partial<ColorScale> = {};
+
+    for (const semanticColorName of Object.keys(customColorScale) as SemanticColorNames[]) {
+      const hex = customColorScale[semanticColorName]?.[colorScheme];
+      if (hex) {
+        schemeColors[semanticColorName] = { hex, ...semanticColorSpec[semanticColorName] };
+      }
+    }
+    grouped[colorName] = schemeColors;
+  }
+
+  return grouped;
+};
+
+const toColorNumberTokens = (colorScale: ColorScale): TokenSet => {
+  const tokens: TokenSet = {};
+
+  for (const color of Object.values(colorScale)) {
+    tokens[color.number] = {
+      $type: 'color',
+      $value: color.hex,
     };
   }
-  return obj;
+
+  return tokens;
 };
+
+const toColorToken = (color: CssColor): Token => ({
+  $type: 'color',
+  $value: color,
+});
 
 export const generateColorScheme = (
   themeName: string,
@@ -25,84 +55,45 @@ export const generateColorScheme = (
   colors: Record<string, CssColor>,
   overrides?: ColorOverrideSchema,
 ): TokenSet => {
-  /* Create override mappings for each color */
-  const createColorOverrides = (colorName: string) => {
-    if (!overrides?.colors || !(colorName in overrides.colors)) {
-      return undefined;
+  const colorsWithSeverityOverrides: Record<string, CssColor> = { ...colors, ...(overrides?.severity || {}) };
+
+  const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
+
+  const colorScales: Record<string, ColorScale> = {};
+
+  for (const [colorName, color] of Object.entries(colorsWithSeverityOverrides)) {
+    let colorScale = generateColorScale(color, colorScheme);
+    const colorOverride = colorOverrides[colorName];
+
+    if (colorOverride) {
+      colorScale = { ...colorScale, ...colorOverride };
     }
+    colorScales[colorName] = colorScale;
+  }
 
-    const colorOverrides = overrides.colors[colorName];
-    const positionOverrides: Record<number, string> = {};
+  const defaultLinkVisitedToken = generateColorScale(visitedLinkColor, colorScheme)['base-default'].hex;
+  const linkOverride = overrides?.linkVisited?.[colorScheme];
 
-    // Map semantic token names to color scale positions
-    Object.entries(colorOverrides).forEach(([semanticTokenName, modeOverrides]) => {
-      const position = semanticColorSpec[semanticTokenName as keyof typeof semanticColorSpec].number;
-      if (position) {
-        let overrideValue: string | undefined;
+  const defaultFocusInner = colorScales.neutral['background-default'].hex;
+  const defaultFocusOuter = colorScales.neutral['text-default'].hex;
 
-        if (colorScheme === 'light' && modeOverrides.light) {
-          overrideValue = modeOverrides.light;
-        } else if (colorScheme === 'dark' && modeOverrides.dark) {
-          overrideValue = modeOverrides.dark;
-        }
+  const focusInnerOverride = overrides?.focus?.inner?.[colorScheme];
+  const focusOuterOverride = overrides?.focus?.outer?.[colorScheme];
 
-        if (overrideValue) {
-          positionOverrides[position] = overrideValue;
-        }
-      }
-    });
-
-    return Object.keys(positionOverrides).length > 0 ? positionOverrides : undefined;
-  };
-
-  const colorScales = R.mapObjIndexed((color, colorName) => {
-    if (colorName === 'neutral') {
-      const neutralColorScale = generateColorScale(colors.neutral, colorScheme);
-      return generateColor(neutralColorScale, createColorOverrides('neutral'));
-    }
-
-    return generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName));
-  }, colors);
-
-  const severityColorsWithOverrides = {
-    ...severityColors,
-    ...overrides?.severity,
-  };
-
-  const severityColorScales = R.mapObjIndexed(
-    (color, colorName) => generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName)),
-    severityColorsWithOverrides,
-  );
-
-  const visitedLinkColorScale = generateColor(generateColorScale(visitedLinkColor, colorScheme)); // generate the visited link color scale for light and dark mode
-  const defaultLinkVisited = visitedLinkColorScale[12];
-  const linkOverride: Token | undefined = overrides?.linkVisited?.[colorScheme as 'light' | 'dark']
-    ? ({ $type: 'color', $value: overrides.linkVisited[colorScheme as 'light' | 'dark'] } as Token)
-    : undefined;
-
-  /* Default focus-inner is position 1 (background-default), focus-outer is position 11 (text-default) */
-  const defaultFocusInner = colorScales.neutral[1].$value;
-  const defaultFocusOuter = colorScales.neutral[11].$value;
-
-  const focusInnerOverride = overrides?.focus?.inner?.[colorScheme as 'light' | 'dark'];
-  const focusOuterOverride = overrides?.focus?.outer?.[colorScheme as 'light' | 'dark'];
+  const colorNumberTokens: Record<string, TokenSet> = {};
+  for (const [colorName, colorScale] of Object.entries(colorScales)) {
+    colorNumberTokens[colorName] = toColorNumberTokens(colorScale);
+  }
 
   return {
     [themeName]: {
-      ...colorScales,
-      ...severityColorScales,
+      ...colorNumberTokens,
       link: {
-        visited: linkOverride || defaultLinkVisited,
+        visited: toColorToken(linkOverride || defaultLinkVisitedToken),
       },
       focus: {
-        inner: {
-          $type: 'color',
-          $value: focusInnerOverride || defaultFocusInner,
-        } as Token,
-        outer: {
-          $type: 'color',
-          $value: focusOuterOverride || defaultFocusOuter,
-        } as Token,
+        inner: toColorToken(focusInnerOverride || defaultFocusInner),
+        outer: toColorToken(focusOuterOverride || defaultFocusOuter),
       },
     },
   };
