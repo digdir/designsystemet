@@ -6,14 +6,18 @@ const GITHUB_SERVER_URL = process.env.GITHUB_SERVER_URL || 'https://github.com';
 const GITHUB_API_URL = process.env.GITHUB_API_URL || 'https://api.github.com';
 
 /**
- * GitHub logins of core maintainers. Their changelog entries are written
- * without the trailing `by @user` author attribution.
+ * GitHub logins of core maintainers. Their changelog entries, and those of
+ * bots (renovate, dependabot, ...), are written without the trailing
+ * `by @user` author attribution.
  */
 const SKIP_AUTHOR_LOGINS = new Set(
 	['barsnes', 'mimarz', 'eirikbacker', 'mrosvik', 'unekinn', 'febakke']
 );
 
-const isSkippedAuthor = (login: string) => SKIP_AUTHOR_LOGINS.has(login.toLowerCase());
+const isBot = (login: string) => login.endsWith('[bot]');
+
+const isSkippedAuthor = (login: string) =>
+	isBot(login) || SKIP_AUTHOR_LOGINS.has(login.toLowerCase());
 
 const firstContributionCache = new Map<string, Promise<boolean>>();
 
@@ -27,7 +31,7 @@ const isFirstContribution = (repo: string, login: string): Promise<boolean> => {
 	let result = firstContributionCache.get(login);
 	if (!result) {
 		result = (async () => {
-			if (login.endsWith('[bot]')) return false;
+			if (isBot(login)) return false;
 
 			const query = encodeURIComponent(`repo:${repo} type:pr is:merged author:${login}`);
 			const response = await fetch(`${GITHUB_API_URL}/search/issues?q=${query}&per_page=1`, {
