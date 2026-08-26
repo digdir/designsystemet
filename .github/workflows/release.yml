@@ -157,7 +157,7 @@ jobs:
           TAG: v${{ steps.release_version.outputs.value }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.published-packages }}
         run: |
-          node scripts/aggregate-changelogs.js "$PUBLISHED_PACKAGES" > release-notes.md
+          pnpm node scripts/aggregate-changelogs.js "$PUBLISHED_PACKAGES" > release-notes.md
           gh release create "$TAG" \
             --title "$TAG" \
             --notes-file release-notes.md \
