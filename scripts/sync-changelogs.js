@@ -1,6 +1,6 @@
 /**
  * Builds the consolidated changelog for www from the CHANGELOG.md of every
- * package. Aggregation lives in scripts/aggregate-release-notes.js; this file
+ * package. Aggregation lives in scripts/aggregate-changelogs.js; this file
  * only formats the result as MDX and writes it.
  */
 import { promises as fs } from 'node:fs';
@@ -8,7 +8,7 @@ import path from 'node:path';
 import {
   aggregateChangelogs,
   findPackages,
-} from './aggregate-release-notes.js';
+} from './aggregate-changelogs.js';
 
 const ROOT = process.cwd();
 const WWW = path.join(ROOT, 'apps/www/app/content/components-docs');
