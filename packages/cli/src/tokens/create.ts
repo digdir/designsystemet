@@ -36,6 +36,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     throw new Error(`Theme "${name}" must define at least one typography set`);
   }
 
+  /** Keys here must match the keys in `selectedTokenSets` in `generate$Themes` */
   const tokenSets: TokenSets = new Map([
     ['primitives/globals', generateGlobals(shadow, borderWidth, opacity)],
     ...sizeModes.map((sizeMode): [string, TokenSet] => [
