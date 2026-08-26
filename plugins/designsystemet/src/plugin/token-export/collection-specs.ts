@@ -1,3 +1,4 @@
+import type { FigmaMode } from '@digdir/designsystemet/tokens/create';
 import { COLLECTION } from './constants';
 import { resolveValue } from './resolver';
 import type { FlatToken, TokenModel } from './types';
@@ -35,118 +36,120 @@ export function buildCollectionSpecs(
   activeTokenSets: string[],
   logs: string[],
 ): CollectionSpec[] {
-  const byGroup = new Map<string, CollectionSpec>();
+  const specs: CollectionSpec[] = [];
 
-  for (const mode of model.themes) {
-    if (!byGroup.has(mode.group)) {
-      byGroup.set(mode.group, {
-        name: mode.group,
-        modeNames: [],
-        variables: new Map<string, VariableSpec>(),
-      });
-    }
+  // Collections and their modes come pre-grouped from the CLI (toFigmaCollections).
+  for (const [group, modes] of Object.entries(model.figmaCollections)) {
+    const collection: CollectionSpec = {
+      name: group,
+      modeNames: [],
+      variables: new Map<string, VariableSpec>(),
+    };
+    specs.push(collection);
 
-    const collection = byGroup.get(mode.group);
-    if (!collection) {
-      logs.push(
-        `Collection not found for ${mode.group}/${mode.name} — this should never happen`,
-      );
-      continue;
-    }
-    collection.modeNames.push(mode.name);
-    const modeActiveTokenSets = getModeActiveTokenSets(
-      model,
-      activeTokenSets,
-      mode,
-    );
-
-    for (const selected of mode.selectedTokenSets) {
-      if (!selected.exists) {
-        continue;
-      }
-
-      // `primitives/globals` is a `source` set of raw primitives (border-width, opacity,
-      // shadows). These must not become their own variables (e.g. an opacity variable
-      // literally named "30") — their values are inlined into the semantic tokens that
-      // reference them. They still take part in alias resolution via
-      // getModeActiveTokenSets, so consumers resolve to the correct literal.
-      if (selected.tokenSet === 'primitives/globals') {
-        continue;
-      }
-
-      const tokens = model.flatTokens.filter(
-        (token) => token.tokenSet === selected.tokenSet,
-      );
-
-      for (const token of tokens) {
-        const entries = expandVariableEntries(
-          model,
-          mode.group,
-          mode.name,
-          token,
-        );
-
-        for (const entry of entries) {
-          const variableType = mapTokenTypeToVariableType(token.type);
-          if (!variableType) {
-            continue;
-          }
-
-          // Line-height and letter-spacing are written as static values on the text styles
-          // (Figma can't bind them per our structure) and are never bound to variables, so
-          // we don't emit them as variables. Only font-size is kept from the typography set.
-          if (token.type === 'lineHeights' || token.type === 'letterSpacing') {
-            continue;
-          }
-
-          if (!collection.variables.has(entry.name)) {
-            collection.variables.set(entry.name, {
-              name: entry.name,
-              type: variableType,
-              valuesByMode: new Map<string, ValueSpec>(),
-            });
-          }
-
-          const variable = collection.variables.get(entry.name);
-          if (!variable) {
-            logs.push(
-              `Variable not found for ${mode.group}/${entry.name} (${mode.name})`,
-            );
-            continue;
-          }
-
-          const valueSpec = buildValueSpec(
-            token,
-            model,
-            modeActiveTokenSets,
-            mode.group,
-            mode.name,
-          );
-
-          if (!valueSpec) {
-            logs.push(
-              `Skipped unresolved value for ${mode.group}/${entry.name} (${mode.name})`,
-            );
-            continue;
-          }
-
-          variable.valuesByMode.set(mode.name, valueSpec);
-        }
-      }
+    for (const mode of modes) {
+      collection.modeNames.push(mode.modeName);
+      buildModeVariables(model, activeTokenSets, group, mode, collection, logs);
     }
   }
 
-  return Array.from(byGroup.values());
+  return specs;
+}
+
+function buildModeVariables(
+  model: TokenModel,
+  activeTokenSets: string[],
+  group: string,
+  mode: FigmaMode,
+  collection: CollectionSpec,
+  logs: string[],
+): void {
+  const modeName = mode.modeName;
+  const modeActiveTokenSets = getModeActiveTokenSets(
+    model,
+    activeTokenSets,
+    mode,
+  );
+
+  for (const selected of mode.tokenSets) {
+    if (!selected.exists) {
+      continue;
+    }
+
+    // `primitives/globals` is a `source` set of raw primitives (border-width, opacity,
+    // shadows). These must not become their own variables (e.g. an opacity variable
+    // literally named "30") — their values are inlined into the semantic tokens that
+    // reference them. They still take part in alias resolution via
+    // getModeActiveTokenSets, so consumers resolve to the correct literal.
+    if (selected.tokenSet === 'primitives/globals') {
+      continue;
+    }
+
+    const tokens = model.flatTokens.filter(
+      (token) => token.tokenSet === selected.tokenSet,
+    );
+
+    for (const token of tokens) {
+      const entries = expandVariableEntries(model, group, modeName, token);
+
+      for (const entry of entries) {
+        const variableType = mapTokenTypeToVariableType(token.type);
+        if (!variableType) {
+          continue;
+        }
+
+        // Line-height and letter-spacing are written as static values on the text styles
+        // (Figma can't bind them per our structure) and are never bound to variables, so
+        // we don't emit them as variables. Only font-size is kept from the typography set.
+        if (token.type === 'lineHeights' || token.type === 'letterSpacing') {
+          continue;
+        }
+
+        if (!collection.variables.has(entry.name)) {
+          collection.variables.set(entry.name, {
+            name: entry.name,
+            type: variableType,
+            valuesByMode: new Map<string, ValueSpec>(),
+          });
+        }
+
+        const variable = collection.variables.get(entry.name);
+        if (!variable) {
+          logs.push(
+            `Variable not found for ${group}/${entry.name} (${modeName})`,
+          );
+          continue;
+        }
+
+        const valueSpec = buildValueSpec(
+          token,
+          model,
+          modeActiveTokenSets,
+          group,
+          modeName,
+        );
+
+        if (!valueSpec) {
+          logs.push(
+            `Skipped unresolved value for ${group}/${entry.name} (${modeName})`,
+          );
+          continue;
+        }
+
+        variable.valuesByMode.set(modeName, valueSpec);
+      }
+    }
+  }
 }
 
 function getModeActiveTokenSets(
   model: TokenModel,
   activeTokenSets: string[],
-  mode: TokenModel['themes'][number],
+  mode: FigmaMode,
 ): string[] {
   const prioritized = new Set<string>();
 
-  for (const selected of mode.selectedTokenSets) {
+  for (const selected of mode.tokenSets) {
     if (selected.exists) {
       prioritized.add(selected.tokenSet);
     }
