@@ -11,6 +11,15 @@ import { generateTheme } from './create/generators/themes/theme.ts';
 import type { OutputFile, SizeModes, Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.ts';
 import { addSeverityColors, toColorNames } from './utils.ts';
 
+export {
+  type FigmaCollections,
+  type FigmaMode,
+  mergeTokenSets,
+  type SelectedTokenSet,
+  type ThemeObjectInput,
+  toFigmaCollections,
+  UNGROUPED,
+} from './create/figma-collections.ts';
 export type { ThemeObject_ } from './create/generators/$themes.ts';
 
 export const getTokenSetDimensions = (theme: Pick<Theme, 'size' | 'typography'>): TokenSetDimensions => ({
