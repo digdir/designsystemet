@@ -1,4 +1,11 @@
 import { semanticColorMap } from '@digdir/designsystemet/color';
+import {
+  type FigmaCollections,
+  type FigmaMode,
+  type ThemeObjectInput,
+  toFigmaCollections,
+} from '@digdir/designsystemet/tokens/create';
+import type { TokenSet } from '@digdir/designsystemet/tokens/types';
 import { toCssColor } from './color';
 import { COLLECTION } from './constants';
 import { findReferences, flattenTokens } from './parser';
@@ -37,11 +44,6 @@ const SEMANTIC_ROLE_ORDER = Object.keys(semanticColorMap);
 export function buildTokenModel(files: LoadedFile[]): TokenModel {
   const warnings: string[] = [];
 
-  const fileByTokenSet = new Map<string, LoadedFile>();
-  for (const file of files) {
-    fileByTokenSet.set(file.tokenSetPath, file);
-  }
-
   const themesFile = files.find((file) => file.path.endsWith('$themes.json'));
   const themes = Array.isArray(themesFile?.data) ? themesFile.data : [];
 
@@ -72,21 +74,45 @@ export function buildTokenModel(files: LoadedFile[]): TokenModel {
     }
   }
 
-  const modePreviews = themes.map((theme) =>
-    buildModePreview(
-      theme as Record<string, unknown>,
-      fileByTokenSet,
-      warnings,
-    ),
+  // Grouping of $themes.json into collections/modes is done by the CLI so the
+  // plugin and `designsystemet tokens` agree on it.
+  const tokenSetMap = new Map<string, TokenSet>();
+  for (const file of files) {
+    if (!isMetaFile(file.path)) {
+      tokenSetMap.set(file.tokenSetPath, file.data as TokenSet);
+    }
+  }
+  const missingTokenSets = new Set<string>();
+  const figmaCollections = toFigmaCollections(
+    themes.map(toThemeObjectInput),
+    tokenSetMap,
+    { onMissingTokenSet: (tokenSet) => missingTokenSets.add(tokenSet) },
   );
 
-  const collections = buildCollectionPreview(modePreviews, flatTokens);
-
-  const missingTokenSets = collectMissingTokenSets(
-    themes as Array<Record<string, unknown>>,
-    fileByTokenSet,
+  const modePreviews: ModePreview[] = Object.entries(figmaCollections).flatMap(
+    ([group, modes]) =>
+      modes.map((mode) => ({
+        id: mode.id,
+        name: mode.modeName,
+        group,
+        selectedTokenSets: mode.tokenSets,
+      })),
   );
-  for (const tokenSet of missingTokenSets) {
+
+  for (const mode of modePreviews) {
+    const sourceCount = mode.selectedTokenSets.filter(
+      (item) => item.status === 'source',
+    ).length;
+    if (sourceCount > 1) {
+      warnings.push(
+        `${mode.name}: has ${sourceCount} token sets marked as source.`,
+      );
+    }
+  }
+
+  const collections = buildCollectionPreview(figmaCollections, flatTokens);
+
+  for (const tokenSet of Array.from(missingTokenSets).sort()) {
     warnings.push(
       `Token set is listed in $themes.json but has no file: ${tokenSet}`,
     );
@@ -95,6 +121,7 @@ export function buildTokenModel(files: LoadedFile[]): TokenModel {
   const model: TokenModel = {
     tokenSets: tokenSets.map((set) => ({ path: set.path })),
     flatTokens,
+    figmaCollections,
     themes: modePreviews,
     collections,
     themeOptions: buildThemeOptions(
@@ -172,65 +199,38 @@ function prepareValues<T>(
   return values;
 }
 
-function buildModePreview(
-  theme: Record<string, unknown>,
-  fileByTokenSet: Map<string, LoadedFile>,
-  warnings: string[],
-): ModePreview {
-  const selectedTokenSets = (theme.selectedTokenSets || {}) as Record<
-    string,
-    string
-  >;
-  const selected = Object.keys(selectedTokenSets).map((tokenSet) => ({
-    tokenSet,
-    status: selectedTokenSets[tokenSet],
-    exists: fileByTokenSet.has(tokenSet),
-  }));
-
-  const sourceCount = selected.filter(
-    (item) => item.status === 'source',
-  ).length;
-  if (sourceCount > 1) {
-    warnings.push(
-      `${theme.name}: has ${sourceCount} token sets marked as source.`,
-    );
-  }
-
+// $themes.json is loaded as `unknown`; coerce one entry to what toFigmaCollections
+// expects, keeping the plugin's fallbacks for malformed entries.
+function toThemeObjectInput(theme: unknown): ThemeObjectInput {
+  const raw = (theme ?? {}) as Record<string, unknown>;
   return {
-    id: typeof theme.id === 'string' ? theme.id : null,
-    name: typeof theme.name === 'string' ? theme.name : '(unnamed mode)',
-    group: typeof theme.group === 'string' ? theme.group : '(ungrouped)',
-    selectedTokenSets: selected,
+    id: typeof raw.id === 'string' ? raw.id : undefined,
+    name: typeof raw.name === 'string' ? raw.name : '(unnamed mode)',
+    group: typeof raw.group === 'string' ? raw.group : undefined,
+    selectedTokenSets: (raw.selectedTokenSets ??
+      {}) as ThemeObjectInput['selectedTokenSets'],
   };
 }
 
 function buildCollectionPreview(
-  modePreviews: ModePreview[],
+  figmaCollections: FigmaCollections,
   flatTokens: FlatToken[],
 ): CollectionPreview[] {
-  const byGroup = new Map<string, ModePreview[]>();
-
-  for (const mode of modePreviews) {
-    const current = byGroup.get(mode.group) || [];
-    current.push(mode);
-    byGroup.set(mode.group, current);
-  }
-
-  return Array.from(byGroup.entries()).map(([group, modes]) => ({
-    name: group || '(ungrouped)',
+  return Object.entries(figmaCollections).map(([group, modes]) => ({
+    name: group,
     variablePreview: inferVariablesForGroup(group, modes, flatTokens),
   }));
 }
 
 function inferVariablesForGroup(
   group: string,
-  modes: ModePreview[],
+  modes: FigmaMode[],
   flatTokens: FlatToken[],
 ): Array<{ name: string; type: string }> {
   const names = new Map<string, { name: string; type: string }>();
 
   for (const mode of modes) {
-    for (const selected of mode.selectedTokenSets) {
+    for (const selected of mode.tokenSets) {
       if (!selected.exists) {
         continue;
       }
@@ -239,7 +239,7 @@ function inferVariablesForGroup(
         (token) => token.tokenSet === selected.tokenSet,
       );
       for (const token of tokens) {
-        const variableName = inferVariableName(group, mode.name, token);
+        const variableName = inferVariableName(group, mode.modeName, token);
         if (!names.has(variableName)) {
           names.set(variableName, {
             name: variableName,
@@ -424,27 +424,6 @@ function getSemanticColorScaleOrder(modePreviews: ModePreview[]): string[] {
   }
 
   return Array.from(order);
-}
-
-function collectMissingTokenSets(
-  themes: Array<Record<string, unknown>>,
-  fileByTokenSet: Map<string, LoadedFile>,
-): string[] {
-  const missing = new Set<string>();
-
-  for (const theme of themes) {
-    const selectedTokenSets = (theme.selectedTokenSets || {}) as Record<
-      string,
-      string
-    >;
-    for (const tokenSet of Object.keys(selectedTokenSets)) {
-      if (!fileByTokenSet.has(tokenSet)) {
-        missing.add(tokenSet);
-      }
-    }
-  }
-
-  return Array.from(missing).sort();
 }
 
 function mapTokenType(type: string | null): string {

@@ -1,3 +1,5 @@
+import type { FigmaCollections } from '@digdir/designsystemet/tokens/create';
+
 export type LoadedFile = {
   path: string;
   tokenSetPath: string;
@@ -44,6 +46,10 @@ export type TokenModel = {
     path: string;
   }>;
   flatTokens: FlatToken[];
+  // `$themes.json` grouped into Figma collections by the CLI's toFigmaCollections.
+  // This is the source of truth for collections/modes; `themes` is the same data
+  // flattened for lookups.
+  figmaCollections: FigmaCollections;
   themes: ModePreview[];
   collections: CollectionPreview[];
   themeOptions: ThemeOption[];
