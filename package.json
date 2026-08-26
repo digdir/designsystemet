@@ -13,11 +13,10 @@
     }
   },
   "scripts": {
-    "test": "vitest",
+    "test": "vitest --config=./test/vitest.config.mjs",
     "test:cli": "pnpm --filter @digdir/designsystemet test",
     "test:web": "pnpm --filter @digdir/designsystemet-web test",
     "test:storybook": "pnpm --filter @web/storybook test-storybook",
-    "test:coverage": "vitest run --coverage",
     "test:www-links": "pnpm node scripts/search-broken-links.js",
     "storybook": "pnpm --filter @web/storybook dev",
     "www": "pnpm --filter @web/www dev",
@@ -54,7 +53,6 @@
     "@types/node": "24.13.3",
     "@vitejs/plugin-react": "6.0.5",
     "@vitest/browser-playwright": "4.1.10",
-    "@vitest/coverage-v8": "4.1.10",
     "chromatic": "18.2.0",
     "typescript": "6.0.3",
     "typescript-plugin-css-modules": "5.2.0",

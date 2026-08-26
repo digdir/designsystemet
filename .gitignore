@@ -4,10 +4,6 @@ ignore
 tsc-build
 *.tsbuildinfo
 
-# Yarn stuff; we're not using PnP/Zero installs
-.pnp.*
-yarn-error.log
-
 # Really don't want that
 node_modules
 
@@ -16,8 +12,6 @@ node_modules
 .env.local
 
 # For the AI search
-.ai-env
-
 coverage/
 .eslintcache
 
@@ -30,12 +24,6 @@ coverage/
 
 # Hidden macOS files
 .DS_Store
-
-# Vercel config files
-.vercel/
-
-# Next
-.next
 
 # Typescript
 next-env.d.ts
@@ -55,4 +43,3 @@ apps/storybook/debug-storybook.log
 # Claude session directory and guidance file
 .claude/
 CLAUDE.md
-.claude/settings.local.json
