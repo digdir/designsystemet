@@ -125,14 +125,14 @@
     "@custom-elements-manifest/analyzer": "0.11.0",
     "@oddbird/popover-polyfill": "0.7.1",
     "@testing-library/dom": "10.4.1",
-    "@vitest/browser-playwright": "4.1.10",
+    "@vitest/browser-playwright": "4.1.11",
     "custom-element-vs-code-integration": "1.5.0",
-    "@testing-library/user-event": "14.6.4",
-    "invokers-polyfill": "1.0.3",
+    "@testing-library/user-event": "14.6.6",
+    "invokers-polyfill": "1.0.4",
     "tsdown": "0.22.14",
-    "vite": "8.2.1",
-    "vitest": "4.1.10",
-    "happy-dom": "^20.11.2",
+    "vite": "8.2.2",
+    "vitest": "4.1.11",
+    "happy-dom": "^20.11.6",
     "jsdom": "^30.0.1"
   }
 }

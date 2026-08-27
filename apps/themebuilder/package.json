@@ -22,13 +22,13 @@
     "compression": "1.8.1",
     "cross-env": "10.1.0",
     "express": "5.2.1",
-    "i18next": "26.3.6",
+    "i18next": "26.4.0",
     "isbot": "5.2.1",
     "morgan": "1.11.0",
     "react": "19.2.8",
     "react-color-palette": "7.3.1",
     "react-dom": "19.2.8",
-    "react-i18next": "17.0.11",
+    "react-i18next": "17.0.12",
     "react-router": "8.3.0"
   },
   "devDependencies": {
@@ -39,9 +39,9 @@
     "@types/node": "24.13.3",
     "@types/ramda": "0.32.0",
     "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.4",
+    "@types/react-dom": "19.2.5",
     "ramda": "0.32.0",
     "typescript": "6.0.3",
-    "vite": "8.2.1"
+    "vite": "8.2.2"
   }
 }
