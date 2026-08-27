@@ -24,7 +24,7 @@
     "express-rate-limit": "8.6.2",
     "gray-matter": "^4.0.3",
     "htmlfy": "1.0.2",
-    "i18next": "26.3.6",
+    "i18next": "26.4.0",
     "isbot": "5.2.1",
     "mdx-bundler": "10.1.1",
     "morgan": "1.11.0",
@@ -36,7 +36,7 @@
     "react-docgen-typescript": "2.4.0",
     "react-dom": "19.2.8",
     "react-dropzone": "19.3.0",
-    "react-i18next": "17.0.11",
+    "react-i18next": "17.0.12",
     "react-live": "4.1.8",
     "react-router": "8.3.0",
     "rehype-autolink-headings": "7.1.0",
@@ -52,8 +52,8 @@
     "@types/node": "24.13.3",
     "@types/ramda": "0.32.0",
     "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.4",
+    "@types/react-dom": "19.2.5",
     "typescript": "6.0.3",
-    "vite": "8.2.1"
+    "vite": "8.2.2"
   }
 }
