@@ -19,24 +19,24 @@ Størrelsar styrast med [`data-size`](/no/fundamentals/code/sizes) og fargar med
 
 ### Varianter
 
-`variant` brukast for å endre utsjånad på knappen.
+`data-variant` brukast for å endre utsjånad på knappen.
 
 <Story story="Variants" />
 
 ### Ikon
 
-Dersom du har kun ikon i knappen kan du sette `data-icon="true"` for å få den firkanta. Har du anna innhald, som tekst, vil knappen automatisk få luft rundt ikonet.
+Dersom du kun har ikon i knappen kan du sette `data-icon="true"` for å få den firkanta.
+Har du anna innhald, som tekst, vil knappen automatisk få luft rundt ikonet.
 
 <Story story="Icons" />
 
 ### Knappar som lastar 
-Dersom du skal ha ein knapp som laster, må du sjølv legge til laste-indikator og `aria-busy="true"`.
+Dersom du skal ha ein knapp som lastar må du sjølv legge til laste-indikator og `aria-busy="true"`.
 
 Merk: `aria-busy` hindrar ikkje at knappen utløyser interaksjonar. Den påverkar berre utsjånad og tilgjengelegheit, ikkje funksjonaliteten.
 Dersom knappen ikkje skal kunne utføre handlingar, må du sjølv legge inn logikk som hindrar at callback-funksjonen blir køyrd.
 
-
-## Kanppar som er deaktivert
+## Knappar som er deaktivert
 
 Så godt det lar seg gjerde burde ein [unngå deaktiverte knappar](/no/components/docs/button/accessibility#unngå-å-bruke-deaktiverte-knappar).
 Dersom du har ein `<button>`, kan du deaktivere med attributten `disabled`. Dersom du har ein `<a>`, kan du deaktivere med attributten `aria-disabled="true"`.
