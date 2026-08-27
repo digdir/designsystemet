@@ -36,9 +36,9 @@ const deprecatedFields = ['outDir', 'clean'] as const;
 
 /**
  * The plain object schema. Use this when you need `.shape` (e.g. to generate the
- * JSON schema); use {@link nextConfigSchema} to validate a config.
+ * JSON schema); use {@link configSchema} to validate a config.
  */
-export const nextConfigObjectSchema = configFileCreateSchema.extend({
+export const configObjectSchema = configFileCreateSchema.extend({
   output: z.array(outputSchema).describe('An array of output files'),
   // No `.default()` on the deprecated fields: we need `undefined` when the user did not
   // set them, so we can warn only when they actually did.
@@ -52,7 +52,7 @@ export const nextConfigObjectSchema = configFileCreateSchema.extend({
   }),
 });
 
-export const nextConfigSchema = nextConfigObjectSchema.superRefine((config) => {
+export const configSchema = configObjectSchema.superRefine((config) => {
   // Non-fatal: warn about deprecated fields instead of failing validation.
   for (const key of deprecatedFields) {
     if (config[key] !== undefined) {
@@ -61,4 +61,4 @@ export const nextConfigSchema = nextConfigObjectSchema.superRefine((config) => {
   }
 });
 
-export type NextConfigSchema = z.infer<typeof nextConfigSchema>;
+export type ConfigSchema = z.infer<typeof configSchema>;
