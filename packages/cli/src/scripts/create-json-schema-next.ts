@@ -1,13 +1,13 @@
 import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { z } from 'zod';
-import { nextConfigObjectSchema } from '../schemas/v1.2/schema.ts';
+import { configObjectSchema } from '../schemas/v1.2/schema.ts';
 
 const schema = z
   .object({
     $schema: z.string().optional(),
   })
-  .extend(nextConfigObjectSchema.shape);
+  .extend(configObjectSchema.shape);
 
 writeFile(
   resolve(import.meta.dirname, '../../dist/config-next.schema.json'),
