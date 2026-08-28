@@ -1,5 +1,11 @@
 # @digdir/designsystemet-web
 
+## 1.21.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276)) by [@renovate](https://github.com/apps/renovate)
+
 ## 1.20.1
 
 ### Patch Changes

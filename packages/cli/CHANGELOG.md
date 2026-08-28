@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.21.0
+
+### Patch Changes
+
+- fix color generation for severity colors defined in `colors` which were previously ignored. ([#5239](https://github.com/digdir/designsystemet/pull/5239))
+
+- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276)) by [@renovate](https://github.com/apps/renovate)
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.21.0
+
 ## 1.20.1
 
 ### Patch Changes
