@@ -1,6 +1,10 @@
 .mainContainer {
   overflow-x: clip;
 }
+
+:global([data-color-scheme='light']) .mainContainer {
+  filter: grayscale(1);
+}
 .header {
   margin-top: -6.625rem;
   position: relative;
