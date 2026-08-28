@@ -1,5 +1,27 @@
 # Change Log
 
+## 1.21.0
+
+### Minor Changes
+
+- **Avatar:** Deprecates `variant="square"` prop in favour of CSS `--dsc-avatar-radius` ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+### Patch Changes
+
+- **AvatarStack:** `overlap` and `--dsc-avatar-stack-overlap` property now needs to be a valid [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length) ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276)) by [@renovate](https://github.com/apps/renovate)
+
+- **AvatarStack:** Deprecates `gap`, `overlap` and `avatarSize` props in favour of CSS custom properties ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- **AvatarStack:** No longer needs `suffix` or `data-suffix`; for example, you can place `+10` text directly inside a trailing `<li>`. ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- **AvatarStack:** Now uses `<ul>` and needs `<li>` to wrap each avatar ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- Updated dependencies [[`28eb1b9`](https://github.com/digdir/designsystemet/commit/28eb1b97521fc904740ce1e0b4f1ffc52c4f2182)]:
+  - @digdir/designsystemet-web@1.21.0
+  - @digdir/designsystemet-types@1.21.0
+
 ## 1.20.1
 
 ### Patch Changes
