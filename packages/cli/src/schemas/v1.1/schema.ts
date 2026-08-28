@@ -68,7 +68,7 @@ const focusOverrideSchema = z
   })
   .describe('Overrides for the focus colors');
 
-const overridesSchema = z
+export const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
     severity: severityColorOverrideSchema.optional(),
