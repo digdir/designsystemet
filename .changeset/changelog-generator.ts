@@ -16,6 +16,16 @@ const SKIP_AUTHOR_LOGINS = new Set(
 
 const isBot = (login: string) => login.endsWith('[bot]');
 
+const getRepo = (options: Record<string, unknown> | null): string => {
+	const repo = options?.repo;
+	if (typeof repo !== 'string') {
+		throw new Error(
+			'Please provide a repo to this changelog generator like this:\n"changelog": ["./changelog-generator.ts", { "repo": "org/repo" }]'
+		);
+	}
+	return repo;
+};
+
 const isSkippedAuthor = (login: string) =>
 	isBot(login) || SKIP_AUTHOR_LOGINS.has(login.toLowerCase());
 
@@ -55,13 +65,14 @@ const isFirstContribution = (repo: string, login: string): Promise<boolean> => {
 const changelogFunctions: ChangelogFunctions = {
 	getDependencyReleaseLine: async (changesets, dependenciesUpdated, options) => {
 		if (dependenciesUpdated.length === 0) return '';
+		const repo = getRepo(options);
 
 		const changesetLink = `- Updated dependencies [${(
 			await Promise.all(
 				changesets.map(async (cs) => {
 					if (cs.commit) {
 						const info = await getCommitInfo({
-							repo: options.repo,
+							repo,
 							commit: cs.commit
 						});
 						return info?.commit.markdownLink;
@@ -79,7 +90,7 @@ const changelogFunctions: ChangelogFunctions = {
 		return [changesetLink, ...updatedDependenciesList].join('\n');
 	},
 	getReleaseLine: async (changeset, type, options) => {
-		const repo = options!.repo;
+		const repo = getRepo(options);
 		let prFromSummary: number | undefined;
 		let commitFromSummary: string | undefined;
 		const usersFromSummary: string[] = [];
