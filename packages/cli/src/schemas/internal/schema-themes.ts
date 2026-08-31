@@ -19,122 +19,93 @@ const colorSchema = z
   .transform(convertToHex)
   .describe(`A hex color, which is used for creating a color scale.`);
 
-const _sizeSchema = z
-  .string()
-  .regex(/^\d+(\.\d+)?(px|em|rem|%)$/)
-  .describe(`A size value, which can be in px, em, rem, or % units.`);
+const typographyTokenSchema = (defaults: {
+  fontWeight: string;
+  lineHeight: string;
+  fontSize: string;
+  letterSpacing: string;
+}) =>
+  z
+    .object({
+      fontFamily: z.string().default('{font-family}'),
+      fontWeight: z.string().default(defaults.fontWeight),
+      lineHeight: z.string().default(defaults.lineHeight),
+      fontSize: z.string().default(defaults.fontSize),
+      letterSpacing: z.string().default(defaults.letterSpacing),
+    })
+    .prefault({});
 
-/**
-   * _size: {
-    '0': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 0)',
-    },
-    '1': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 1)',
-    },
-    '2': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 2)',
-    },
-    '3': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 3)',
-    },
-    '4': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 4)',
-    },
-    '5': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 5)',
-    },
-    '6': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 6)',
-    },
-    '7': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 7)',
-    },
-    '8': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 8)',
-    },
-    '9': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 9)',
-    },
-    '10': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 10)',
-    },
-    '11': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 11)',
-    },
-    '12': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 12)',
-    },
-    '13': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 13)',
-    },
-    '14': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 14)',
-    },
-    '15': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 15)',
-    },
-    '18': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 18)',
-    },
-    '22': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 22)',
-    },
-    '26': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 26)',
-    },
-    '30': {
-      $type: 'dimension',
-      $value: 'floor({_size.unit} * 30)',
-    },
-    'mode-font-size': {
-      $type: 'number',
-      $value: '{size._mode-font-size}',
-    },
-    base: {
-      $type: 'number',
-      $value: '{size._base}',
-    },
-    step: {
-      $type: 'number',
-      $value: '{size._step}',
-    },
-    unit: {
-      $type: 'number',
-      $value: '{_size.step} / {_size.base} * {_size.mode-font-size}',
-    },
-  },
-   */
+const headingTokenSchema = (fontSize: number, letterSpacing: number) =>
+  typographyTokenSchema({
+    fontWeight: '{font-weight.medium}',
+    lineHeight: '{line-height.sm}',
+    fontSize: `{font-size.${fontSize}}`,
+    letterSpacing: `{letter-spacing.${letterSpacing}}`,
+  });
 
-const _sizeObjectSchema = z
+const bodyTokenSchema = (lineHeight: string, fontSize: number, letterSpacing: number) =>
+  typographyTokenSchema({
+    fontWeight: '{font-weight.regular}',
+    lineHeight: `{line-height.${lineHeight}}`,
+    fontSize: `{font-size.${fontSize}}`,
+    letterSpacing: `{letter-spacing.${letterSpacing}}`,
+  });
+
+const bodyTokens = (lineHeight: string) => ({
+  xl: bodyTokenSchema(lineHeight, 6, 8),
+  lg: bodyTokenSchema(lineHeight, 5, 8),
+  md: bodyTokenSchema(lineHeight, 4, 8),
+  sm: bodyTokenSchema(lineHeight, 3, 7),
+  xs: bodyTokenSchema(lineHeight, 2, 6),
+});
+
+const typographySchema = z
   .object({
-    steps: z.record(
-      z.string(),
-      z.object({
-        base: z.number().describe('The base value for the size scale'),
-        step: z.number().describe('The scale value between each step of the size scale'),
-        fontSize: z.number().describe('Unitless font size value for the size scale'),
-      }),
-    ),
+    fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }).default(defaultFontFamily),
+    components: z
+      .object({
+        heading: z
+          .object({
+            '2xl': headingTokenSchema(10, 1),
+            xl: headingTokenSchema(9, 1),
+            lg: headingTokenSchema(8, 2),
+            md: headingTokenSchema(7, 3),
+            sm: headingTokenSchema(6, 5),
+            xs: headingTokenSchema(5, 6),
+            '2xs': headingTokenSchema(4, 6),
+          })
+          .meta({ description: 'Typography tokens for headings' })
+          .prefault({}),
+        body: z
+          .object({
+            ...bodyTokens('md'),
+            short: z
+              .object(bodyTokens('sm'))
+              .meta({ description: 'Typography tokens for short body text' })
+              .prefault({}),
+            long: z.object(bodyTokens('lg')).meta({ description: 'Typography tokens for long body text' }).prefault({}),
+          })
+          .meta({ description: 'Typography tokens for body text' })
+          .prefault({}),
+      })
+      .meta({ description: 'Typography tokens for components' })
+      .prefault({}),
+  })
+  .describe('Defines the typography for a given theme')
+  .prefault({});
+
+const sizeObjectSchema = z
+  .object({
+    steps: z
+      .record(
+        z.string(),
+        z.object({
+          base: z.number().describe('The base value for the size scale'),
+          step: z.number().describe('The scale value between each step of the size scale'),
+          fontSize: z.number().describe('Unitless font size value for the size scale'),
+        }),
+      )
+      .meta({ description: 'The steps for the size scale, e.g. "small", "medium", "large", etc.' }),
 
     scale: z.record(z.string(), z.string()).describe('The scale values for the size scale'),
   })
@@ -205,7 +176,7 @@ const borderRadiusObjectSchema = z
       full: '9999',
     },
     base: 4,
-    scale: 4,
+    scale: 4, // TODO rename this to "step" to match the size scale, but this will be a breaking change for existing themes
   });
 
 const themeSchema = z
@@ -216,12 +187,8 @@ const themeSchema = z
         message: 'Theme colors must include a "neutral" color.',
       })
       .meta({ description: 'Defines the colors for this theme' }),
-    typography: z
-      .object({
-        fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }).default(defaultFontFamily),
-      })
-      .describe('Defines the typography for a given theme')
-      .prefault({}),
+    typography: typographySchema,
+    size: sizeObjectSchema,
     borderRadius: z
       .union([borderRadiusNumberSchema, borderRadiusObjectSchema])
       .meta({ description: 'Defines the border-radius for this theme' }),
