@@ -1,5 +1,5 @@
 import { generate$Themes } from './create/generators/$themes.ts';
-import { createTokens, tokenSetDimensions } from './create.ts';
+import { createTokens, getTokenSetDimensions } from './create.ts';
 import { createTailwindCSSFiles } from './process/output/tailwind.ts';
 import { createThemeCSSFiles } from './process/output/theme.ts';
 import { type FormatOptions, processPlatform } from './process/platform.ts';
@@ -23,7 +23,8 @@ const formatTheme = async (themeConfig: Theme, options: Pick<FormatTokensOptions
   const themeNames = [themeConfig.name];
   const colorNames = toColorNames(themeConfig.colors);
 
-  const { tokenSets } = await createTokens(themeConfig);
+  const tokenSetDimensions = getTokenSetDimensions(themeConfig.size);
+  const { tokenSets } = await createTokens(themeConfig, tokenSetDimensions);
   const $themes = await generate$Themes(tokenSetDimensions, themeNames, colorNames);
 
   const processed$themes = $themes.map(processThemeObject);
