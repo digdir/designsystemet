@@ -231,3 +231,5 @@ export const themesSchema = z
     description:
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
   });
+
+export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
