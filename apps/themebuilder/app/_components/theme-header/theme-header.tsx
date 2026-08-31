@@ -21,34 +21,36 @@ export const ThemeHeader = () => {
 
   return (
     <div className={classes.header}>
-      <div className={classes.textContainer}>
-        <Heading data-size='md' level={1}>
-          {t('themeBuilder.title')}
-        </Heading>
-      </div>
-      {/* Tabs that change between overview and */}
-      <div data-size='md' className={classes.tabs}>
-        {tabs.map((themeTab) => (
-          <button
-            key={themeTab.value}
-            className='ds-focus-visible'
-            onClick={() => {
-              setQuery(
-                (prev) => {
-                  prev.set('tab', themeTab.value);
-                  return prev;
-                },
-                {
-                  /* we don't want to prevent scroll here, since we change tabs */
-                  replace: true,
-                },
-              );
-            }}
-            data-active={tab === themeTab.value}
-          >
-            {themeTab.name}
-          </button>
-        ))}
+      <div className={classes.headerContent}>
+        <div className={classes.textContainer}>
+          <Heading data-size='md' level={1}>
+            {t('themeBuilder.title')}
+          </Heading>
+        </div>
+        {/* Tabs that change between overview and */}
+        <div data-size='md' className={classes.tabs}>
+          {tabs.map((themeTab) => (
+            <button
+              key={themeTab.value}
+              className='ds-focus-visible'
+              onClick={() => {
+                setQuery(
+                  (prev) => {
+                    prev.set('tab', themeTab.value);
+                    return prev;
+                  },
+                  {
+                    /* we don't want to prevent scroll here, since we change tabs */
+                    replace: true,
+                  },
+                );
+              }}
+              data-active={tab === themeTab.value}
+            >
+              {themeTab.name}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
