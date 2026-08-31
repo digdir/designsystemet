@@ -12,7 +12,7 @@ import migrations from '../src/migrations/index.ts';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
 import { type ConfigSchema, type CreateConfigSchema, configSchema } from '../src/schemas/internal/schema.ts';
 import { buildTokens } from '../src/tokens/build.ts';
-import { createTokens, systemTokenToFiles, tokenSetDimensions, tokenSetsToFiles } from '../src/tokens/create.ts';
+import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { toColorNames } from '../src/tokens/utils.ts';
@@ -362,11 +362,12 @@ async function createDesignTokens({
 
   const files: OutputFile[] = [];
 
-  // Pick colors from first theme since we have a constraint they should be the same across themes.
+  // Pick colors and size from first theme since we have a constraint they should be the same across themes.
   const colorNames = toColorNames(themes[themeNames[0]]?.colors);
+  const tokenSetDimensions = getTokenSetDimensions(themes[themeNames[0]]?.size);
 
   for (const [name, themeConfig] of Object.entries(themes)) {
-    const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme);
+    const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme, tokenSetDimensions);
     files.push(...tokenSetsToFiles(tokenSets));
   }
 

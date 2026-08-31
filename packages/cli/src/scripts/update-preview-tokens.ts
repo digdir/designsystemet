@@ -4,7 +4,7 @@ import config from './../../../../designsystemet.config.json' with { type: 'json
 import { validateConfig } from '../schemas/helpers.ts';
 import { configSchema } from '../schemas/internal/schema.ts';
 import { generate$Themes } from '../tokens/create/generators/$themes.ts';
-import { createTokens, tokenSetDimensions } from '../tokens/create.ts';
+import { createTokens, getTokenSetDimensions } from '../tokens/create.ts';
 import { buildOptions, processPlatform } from '../tokens/process/platform.ts';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.ts';
 import type { Theme } from '../tokens/types.ts';
@@ -30,7 +30,8 @@ const formatTheme = async (themeConfig: Theme) => {
   const colorNames = toColorNames(themeConfig.colors);
   const themeNames = [themeConfig.name];
 
-  const { tokenSets } = await createTokens(themeConfig);
+  const tokenSetDimensions = getTokenSetDimensions(themeConfig.size);
+  const { tokenSets } = await createTokens(themeConfig, tokenSetDimensions);
   const $themes = await generate$Themes(tokenSetDimensions, themeNames, colorNames);
 
   const processed$themes = $themes.map(processThemeObject);
