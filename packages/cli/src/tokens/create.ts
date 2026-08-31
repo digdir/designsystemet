@@ -8,17 +8,19 @@ import { generateFontSizes, generateTypography } from './create/generators/primi
 import { generateColorTokens } from './create/generators/semantic/color.ts';
 import { generateSemanticStyle } from './create/generators/semantic/style.ts';
 import { generateTheme } from './create/generators/themes/theme.ts';
-import type { OutputFile, Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.ts';
+import type { OutputFile, SizeConfig, SizeModes, Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.ts';
 import { addSeverityColors, toColorNames } from './utils.ts';
 
 export type { ThemeObject_ } from './create/generators/$themes.ts';
 
-export const tokenSetDimensions: TokenSetDimensions = {
+export const getTokenSetDimensions = (size: SizeConfig): TokenSetDimensions => ({
   colorSchemes: ['dark', 'light'],
-  sizeModes: ['small', 'medium', 'large'],
-};
+  // The size modes are defined by the steps in the size configuration.
+  // The typography generator only has font sizes for "small", "medium" and "large".
+  sizeModes: Object.keys(size.steps) as SizeModes[],
+});
 
-export const createTokens = async (theme: Theme) => {
+export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDimensions) => {
   const { typography, name, borderRadius, overrides, size } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
 
