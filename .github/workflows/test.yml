@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - .github/workflows/test.yml
+      - .github/workflows/scripts/free-disk-space.sh
       - "packages/**"
       - "apps/storybook/**"
 

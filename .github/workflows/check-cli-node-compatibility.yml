@@ -8,6 +8,7 @@ on:
       - "packages/cli/**"
       - "pnpm-lock.yaml"
       - ".github/workflows/check-cli-node-compatibility.yml"
+      - ".github/workflows/scripts/remove-pnpm-node-pin.sh"
 
 permissions:
   contents: read
