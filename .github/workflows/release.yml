@@ -82,7 +82,7 @@ jobs:
         shell: bash
       - name: Store release version for changeset
         id: release_version
-        run: echo "VALUE=$(bash ./scripts/print_release_version.sh)" >> $GITHUB_OUTPUT
+        run: echo "VALUE=$(bash ./.github/workflows/scripts/print-release-version.sh)" >> $GITHUB_OUTPUT
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
