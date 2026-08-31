@@ -52,13 +52,15 @@ export const configObjectSchema = configFileCreateSchema.extend({
   }),
 });
 
-export const configSchema = configObjectSchema.superRefine((config) => {
-  // Non-fatal: warn about deprecated fields instead of failing validation.
+// Non-fatal: warn about deprecated fields instead of failing validation.
+export const warnDeprecatedFields = (config: Partial<Record<(typeof deprecatedFields)[number], unknown>>) => {
   for (const key of deprecatedFields) {
     if (config[key] !== undefined) {
       console.warn(pc.yellow(`⚠️  "${key}" is deprecated and ignored; use "output" instead.`));
     }
   }
-});
+};
+
+export const configSchema = configObjectSchema.superRefine(warnDeprecatedFields);
 
 export type ConfigSchema = z.infer<typeof configSchema>;
