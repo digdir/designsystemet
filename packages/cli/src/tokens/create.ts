@@ -19,7 +19,7 @@ export const tokenSetDimensions: TokenSetDimensions = {
 };
 
 export const createTokens = async (theme: Theme) => {
-  const { typography, name, borderRadius, overrides } = theme;
+  const { typography, name, borderRadius, overrides, size } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
 
   const colors = addSeverityColors(theme.colors);
@@ -28,8 +28,11 @@ export const createTokens = async (theme: Theme) => {
 
   const tokenSets: TokenSets = new Map([
     ['primitives/globals', generateGlobals()],
-    ...sizeModes.map((size): [string, TokenSet] => [`primitives/modes/size/${size}`, generateSize(size)]),
-    ['primitives/modes/size/global', generateSizeGlobal()],
+    ...sizeModes.map((sizeMode): [string, TokenSet] => [
+      `primitives/modes/size/${sizeMode}`,
+      generateSize(sizeMode, size),
+    ]),
+    ['primitives/modes/size/global', generateSizeGlobal(size)],
     ...sizeModes.map((size): [string, TokenSet] => [
       `primitives/modes/typography/size/${size}`,
       generateFontSizes(size),
@@ -39,7 +42,10 @@ export const createTokens = async (theme: Theme) => {
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),
-    [`themes/${name}`, generateTheme(colorNames, name, borderRadius)],
+    [
+      `themes/${name}`,
+      generateTheme(colorNames, name, typeof borderRadius === 'number' ? borderRadius : borderRadius.base),
+    ],
     ...colorTokens.map(([colorName, colorSetTokens]): [string, TokenSet] => [
       `semantic/color/${colorName}`,
       colorSetTokens,
