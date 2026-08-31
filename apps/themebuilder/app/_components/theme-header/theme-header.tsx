@@ -1,15 +1,12 @@
 import { Heading } from '@digdir/designsystemet-react';
-import { RRLink } from '@internal/components/src/link';
-import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
-import { useRouteLoaderData, useSearchParams } from 'react-router';
+import { useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import type { ThemebuilderTabs } from '~/routes/themebuilder/themebuilder';
 import classes from './theme-header.module.css';
 
 export const ThemeHeader = () => {
   const { t } = useTranslation();
-  const { lang } = useRouteLoaderData('root');
   const [, setQuery] = useSearchParams();
   const { tab } = useThemebuilder();
 
@@ -25,10 +22,6 @@ export const ThemeHeader = () => {
   return (
     <div className={classes.header}>
       <div className={classes.textContainer}>
-        <RRLink data-size='sm' className={classes.backLink} to={`/${lang}/`}>
-          <ChevronLeftIcon aria-hidden height='1.5rem' width='1.5rem' />
-          {t('header.back-to-home')}
-        </RRLink>
         <Heading data-size='md' level={1}>
           {t('themeBuilder.title')}
         </Heading>

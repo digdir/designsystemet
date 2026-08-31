@@ -9,8 +9,8 @@ import {
 export default [
   layout('./layouts/root/layout.tsx', [
     ...prefix('/:lang', [
-      index('routes/home/home.tsx'),
-      route('/themebuilder', 'routes/themebuilder/themebuilder.tsx'),
+      index('routes/themebuilder/themebuilder.tsx'),
+      route('/themebuilder', 'routes/redirect-themebuilder.tsx'),
     ]),
   ]),
 ] satisfies RouteConfig;

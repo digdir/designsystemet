@@ -36,13 +36,6 @@ export default {
   },
   themeBuilder: {
     title: 'Temabygger',
-    intro: 'Designsystemet sin temabygger',
-    heading: 'Sett i gang med å bygge ditt',
-    'heading-highlight': 'eget tema',
-    description:
-      'Skal du ta i bruk Designsystemet i din egen organisasjon med dine egne profilfarger og preferanser? Temabyggeren hjelper deg i gang.',
-    'build-theme': 'Bygg tema',
-    documentation: 'Dokumentasjon',
   },
   configPaste: {
     title: 'Importer fra konfigurasjonsfil',
@@ -121,10 +114,6 @@ export default {
     'select-color': 'Velg farge',
   },
   themeModal,
-  examples: {
-    'example-1': 'Eksempel 1',
-    'example-2': 'Eksempel 2',
-  },
   colorPane: {
     add: 'Legg til',
     'edit-color': 'Rediger farge',
