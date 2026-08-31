@@ -8,12 +8,6 @@ permissions:
   id-token: write
   contents: read
 
-env:
-  RESOURCE_GROUP: rg-designsystemet-test
-  ACR_NAME: designsystemetacr
-  # Base names of preview apps we want to clean up. Add/remove as needed.
-  PREVIEW_APPS: www themebuilder storybook
-
 jobs:
   cleanup:
     if: ${{ github.repository == 'digdir/designsystemet' && github.event.pull_request.head.repo.full_name == github.repository }}
@@ -31,4 +25,7 @@ jobs:
       - name: Delete preview Container Apps
         env:
           PR_NUMBER: ${{ github.event.number }}
+          RESOURCE_GROUP: rg-designsystemet-test
+          # Base names of preview apps we want to clean up. Add/remove as needed.
+          PREVIEW_APPS: www themebuilder storybook
         run: bash ./.github/workflows/scripts/delete-preview-apps.sh

@@ -76,6 +76,8 @@ jobs:
       - name: get acr creds (masked)
         id: acr
         shell: bash
+        env:
+          ACR_NAME: ${{ env.ACR_NAME }}
         run: bash ./.github/workflows/scripts/get-acr-creds.sh
 
       - name: deploy (no mi; use registry creds)
@@ -95,6 +97,9 @@ jobs:
 
       - name: fetch fqdn
         id: fqdn
+        env:
+          APP_NAME: ${{ env.APP_NAME }}
+          RESOURCE_GROUP: ${{ env.RESOURCE_GROUP }}
         run: bash ./.github/workflows/scripts/get-containerapp-fqdn.sh
 
   update-comment:
