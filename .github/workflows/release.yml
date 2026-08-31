@@ -40,27 +40,17 @@ jobs:
         shell: bash
       - id: snapshot
         name: Set Snapshot Name
-        run: |
-          NAME="${{ github.ref_name }}"
-          NAME="${NAME//\//-}"
-          echo "name=${NAME}" >> $GITHUB_OUTPUT
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: bash ./.github/workflows/scripts/set-snapshot-name.sh
       - id: publish
         name: Create Snapshot Release
-        run: |
-          pnpm changeset version --snapshot "${{ steps.snapshot.outputs.name }}"
-          echo '---'
-          echo 'Detected Changes:'
-          git diff
-          echo '---'
-          pnpm run publish-packages --tag "${{ github.event.inputs.tag }}" --no-git-tag | tee publish.log
-          {
-            echo 'packages<<EOF'
-            (grep -oE '@digdir/[^ ]+@[0-9][^ ]*' publish.log | sort -u || true)
-            echo 'EOF'
-          } >> "$GITHUB_OUTPUT"
+        run: bash ./.github/workflows/scripts/create-snapshot-release.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ""
+          SNAPSHOT_NAME: ${{ steps.snapshot.outputs.name }}
+          TAG: ${{ github.event.inputs.tag }}
       - name: Comment published packages on PR
         if: ${{ steps.publish.outputs.packages != '' }}
         env:
@@ -68,48 +58,7 @@ jobs:
           BRANCH: ${{ github.ref_name }}
           TAG: ${{ github.event.inputs.tag }}
           PACKAGES: ${{ steps.publish.outputs.packages }}
-        run: |
-          PR=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number // empty')
-          if [ -z "$PR" ]; then
-            echo "No open PR found for branch $BRANCH, skipping comment."
-            exit 0
-          fi
-          MARKER="<!-- snapshot-release-comment -->"
-          PUBLISHED_AT="$(TZ='Europe/Oslo' date '+%d.%m.%Y %H:%M:%S')"
-          {
-            echo "$MARKER"
-            echo "### 📦 Snapshot release published"
-            echo
-            echo "Published at \`$PUBLISHED_AT\` to npm with tag \`$TAG\`:"
-            echo
-            echo "$PACKAGES" | while IFS= read -r pkg; do
-              if [ -n "$pkg" ]; then
-                name="${pkg%@*}"
-                version="${pkg##*@}"
-                echo "- [\`$pkg\`](https://www.npmjs.com/package/$name/v/$version)"
-              fi
-            done
-            echo
-            echo "Install with:"
-            echo "$PACKAGES" | while IFS= read -r pkg; do
-              if [ -n "$pkg" ]; then
-                echo '```sh'
-                echo "npm install ${pkg%@*}@$TAG"
-                echo '```'
-              fi
-            done
-          } > comment.md
-          # Find an existing snapshot-release comment to update, otherwise create a new one
-          COMMENT_ID=$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR}/comments" --paginate \
-            --jq "[.[] | select(.body | contains(\"$MARKER\"))] | last | .id // empty")
-          if [ -n "$COMMENT_ID" ]; then
-            echo "Updating existing comment $COMMENT_ID"
-            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}" \
-              -F body=@comment.md > /dev/null
-          else
-            echo "No existing comment found, creating a new one"
-            gh pr comment "$PR" --body-file comment.md
-          fi
+        run: bash ./.github/workflows/scripts/snapshot-release-comment.sh
 
   release:
     name: Release
@@ -156,12 +105,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: v${{ steps.release_version.outputs.value }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.published-packages }}
-        run: |
-          node scripts/aggregate-changelogs.js "$PUBLISHED_PACKAGES" > release-notes.md
-          gh release create "$TAG" \
-            --title "$TAG" \
-            --notes-file release-notes.md \
-            --target "$GITHUB_SHA"
+        run: bash ./.github/workflows/scripts/create-aggregated-release.sh
 
   deploy-www:
     permissions:
