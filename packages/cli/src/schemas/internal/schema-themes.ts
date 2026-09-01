@@ -19,6 +19,11 @@ const colorSchema = z
   .transform(convertToHex)
   .describe(`A hex color, which is used for creating a color scale.`);
 
+const borderWidthSchema = z.object({
+  default: z.string().default('1px').describe('The default border width for components'),
+  focus: z.string().default('3px').describe('The border outline for focus states'),
+});
+
 const typographyTokenSchema = (defaults: {
   fontWeight: string;
   lineHeight: string;
@@ -167,9 +172,7 @@ const borderRadiusSchema = z
   .union([borderRadiusNumberSchema, borderRadiusObjectSchema])
   // Normalize the number shorthand so consumers always get the object form.
   .transform((borderRadius) =>
-    typeof borderRadius === 'number'
-      ? { steps: defaultBorderRadiusSteps, base: borderRadius, scale: 4 }
-      : borderRadius,
+    typeof borderRadius === 'number' ? { steps: defaultBorderRadiusSteps, base: borderRadius, scale: 4 } : borderRadius,
   )
   .meta({ description: 'Defines the border-radius for this theme' });
 
@@ -185,6 +188,7 @@ const themeSchema = z
     size: sizeObjectSchema,
     borderRadius: borderRadiusSchema,
     overrides: overridesSchema,
+    'border-width': borderWidthSchema,
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
