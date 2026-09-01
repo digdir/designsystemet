@@ -139,6 +139,15 @@ const borderRadiusNumberSchema = z
   .meta({ description: 'Defines the border-radius for this theme' })
   .default(defaultBorderRadius);
 
+const defaultBorderRadiusSteps = {
+  sm: 'min({base}*0.5,{scale})',
+  md: 'min({base},{scale}*2)',
+  lg: 'min({base}*2,{scale}*5)',
+  xl: 'min({base}*3,{scale}*7)',
+  default: '{base}',
+  full: '9999',
+};
+
 const borderRadiusObjectSchema = z
   .object({
     steps: z
@@ -149,17 +158,20 @@ const borderRadiusObjectSchema = z
   })
   .meta({ description: 'Defines the border-radius values for this theme' })
   .default({
-    steps: {
-      sm: 'min({base}*0.5,{scale})',
-      md: 'min({base},{scale}*2)',
-      lg: 'min({base}*2,{scale}*5)',
-      xl: 'min({base}*3,{scale}*7)',
-      default: '{base}',
-      full: '9999',
-    },
+    steps: defaultBorderRadiusSteps,
     base: 4,
     scale: 4, // TODO rename this to "step" to match the size scale, but this will be a breaking change for existing themes
   });
+
+const borderRadiusSchema = z
+  .union([borderRadiusNumberSchema, borderRadiusObjectSchema])
+  // Normalize the number shorthand so consumers always get the object form.
+  .transform((borderRadius) =>
+    typeof borderRadius === 'number'
+      ? { steps: defaultBorderRadiusSteps, base: borderRadius, scale: 4 }
+      : borderRadius,
+  )
+  .meta({ description: 'Defines the border-radius for this theme' });
 
 const themeSchema = z
   .object({
@@ -171,9 +183,7 @@ const themeSchema = z
       .meta({ description: 'Defines the colors for this theme' }),
     typography: typographySchema,
     size: sizeObjectSchema,
-    borderRadius: z
-      .union([borderRadiusNumberSchema, borderRadiusObjectSchema])
-      .meta({ description: 'Defines the border-radius for this theme' }),
+    borderRadius: borderRadiusSchema,
     overrides: overridesSchema,
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
