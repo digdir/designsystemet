@@ -94,6 +94,9 @@ const typographySchema = z
   .describe('Defines the typography for a given theme')
   .prefault({});
 
+const sizeScale = (steps: number[]): Record<string, string> =>
+  Object.fromEntries(steps.map((step) => [String(step), `floor({step} / {base} * {fontSize} * ${step})`]));
+
 const sizeObjectSchema = z
   .object({
     steps: z
@@ -111,28 +114,7 @@ const sizeObjectSchema = z
   })
   .meta({ description: 'Defines the size values for this theme' })
   .default({
-    scale: {
-      '0': 'floor({step} / {base} * {fontSize} * 0)',
-      '1': 'floor({step} / {base} * {fontSize} * 1)',
-      '2': 'floor({step} / {base} * {fontSize} * 2)',
-      '3': 'floor({step} / {base} * {fontSize} * 3)',
-      '4': 'floor({step} / {base} * {fontSize} * 4)',
-      '5': 'floor({step} / {base} * {fontSize} * 5)',
-      '6': 'floor({step} / {base} * {fontSize} * 6)',
-      '7': 'floor({step} / {base} * {fontSize} * 7)',
-      '8': 'floor({step} / {base} * {fontSize} * 8)',
-      '9': 'floor({step} / {base} * {fontSize} * 9)',
-      '10': 'floor({step} / {base} * {fontSize} * 10)',
-      '11': 'floor({step} / {base} * {fontSize} * 11)',
-      '12': 'floor({step} / {base} * {fontSize} * 12)',
-      '13': 'floor({step} / {base} * {fontSize} * 13)',
-      '14': 'floor({step} / {base} * {fontSize} * 14)',
-      '15': 'floor({step} / {base} * {fontSize} * 15)',
-      '18': 'floor({step} / {base} * {fontSize} * 18)',
-      '22': 'floor({step} / {base} * {fontSize} * 22)',
-      '26': 'floor({step} / {base} * {fontSize} * 26)',
-      '30': 'floor({step} / {base} * {fontSize} * 30)',
-    },
+    scale: sizeScale([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 22, 26, 30]),
     steps: {
       small: {
         fontSize: 16,
