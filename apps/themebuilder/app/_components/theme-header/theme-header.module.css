@@ -22,7 +22,11 @@
 .textContainer {
   display: flex;
   flex-direction: column;
-  gap: var(--ds-size-10);
+  gap: var(--ds-size-2);
+}
+
+.docsLink {
+  width: fit-content;
 }
 
 .tabs {

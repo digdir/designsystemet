@@ -1,4 +1,4 @@
-import { Heading } from '@digdir/designsystemet-react';
+import { Heading, Link } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
@@ -26,6 +26,12 @@ export const ThemeHeader = () => {
           <Heading data-size='md' level={1}>
             {t('themeBuilder.title')}
           </Heading>
+          <Link
+            className={classes.docsLink}
+            href={`https://designsystemet.no/${t('themeModal.lang')}/fundamentals/start-here/own-theme`}
+          >
+            {t('themeBuilder.documentation-link')}
+          </Link>
         </div>
         {/* Tabs that change between overview and */}
         <div data-size='md' className={classes.tabs}>

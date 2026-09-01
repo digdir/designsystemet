@@ -36,6 +36,7 @@ export default {
   },
   themeBuilder: {
     title: 'Temabygger',
+    'documentation-link': 'Les dokumentasjon om eget tema',
   },
   configPaste: {
     title: 'Importer fra konfigurasjonsfil',

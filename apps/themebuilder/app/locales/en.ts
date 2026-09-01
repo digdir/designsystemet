@@ -37,6 +37,7 @@ export default {
   },
   themeBuilder: {
     title: 'Theme Builder',
+    'documentation-link': 'Read the documentation about custom themes',
   },
   configPaste: {
     title: 'Import from config file',
