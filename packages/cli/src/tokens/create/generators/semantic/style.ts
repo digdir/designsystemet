@@ -1,9 +1,13 @@
 import * as R from 'ramda';
 import { type SemanticColorNames, semanticColorMap } from '../../../../colors/types.ts';
-import type { BorderWidthConfig, Token, TokenSet } from '../../../types.ts';
+import type { BorderRadiusConfig, BorderWidthConfig, Token, TokenSet } from '../../../types.ts';
 import { borderWidthKey } from '../../../utils.ts';
 
-export function generateSemanticStyle(colorNames: string[], borderWidth: BorderWidthConfig): TokenSet {
+export function generateSemanticStyle(
+  colorNames: string[],
+  borderWidth: BorderWidthConfig,
+  borderRadius: BorderRadiusConfig,
+): TokenSet {
   return {
     ...generateColors(colorNames),
     // Each border-width from the config references the primitive keyed by its width, e.g. focus '3px' -> {border-width.3}
@@ -16,32 +20,17 @@ export function generateSemanticStyle(colorNames: string[], borderWidth: BorderW
         },
       ]),
     ),
-    'border-radius': {
-      sm: {
-        $type: 'dimension',
-        $value: '{border-radius.1}',
-      },
-      md: {
-        $type: 'dimension',
-        $value: '{border-radius.2}',
-      },
-      lg: {
-        $type: 'dimension',
-        $value: '{border-radius.3}',
-      },
-      xl: {
-        $type: 'dimension',
-        $value: '{border-radius.4}',
-      },
-      default: {
-        $type: 'dimension',
-        $value: '{border-radius.5}',
-      },
-      full: {
-        $type: 'dimension',
-        $value: '{border-radius.6}',
-      },
-    },
+    // Each border-radius step from the config references the primitive numbered scale by position,
+    // e.g. the first step 'sm' -> {border-radius.1}
+    'border-radius': Object.fromEntries(
+      Object.keys(borderRadius.steps).map((name, index) => [
+        name,
+        {
+          $type: 'dimension',
+          $value: `{border-radius.${index + 1}}`,
+        },
+      ]),
+    ),
     opacity: {
       disabled: {
         $type: 'opacity',
