@@ -44,10 +44,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),
-    [
-      `themes/${name}`,
-      generateTheme(colorNames, name, typeof borderRadius === 'number' ? borderRadius : borderRadius.base),
-    ],
+    [`themes/${name}`, generateTheme(colorNames, name, borderRadius)],
     ...colorTokens.map(([colorName, colorSetTokens]): [string, TokenSet] => [
       `semantic/color/${colorName}`,
       colorSetTokens,
