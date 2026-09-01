@@ -78,15 +78,9 @@ jobs:
       - name: get acr creds (masked)
         id: acr
         shell: bash
-        run: |
-          set -euo pipefail
-          az acr update -n "${ACR_NAME}" --admin-enabled true >/dev/null
-          USER=$(az acr credential show -n "${ACR_NAME}" --query username -o tsv)
-          PASS=$(az acr credential show -n "${ACR_NAME}" --query 'passwords[0].value' -o tsv)
-          echo "::add-mask::${USER}"
-          echo "::add-mask::${PASS}"
-          echo "user=${USER}" >> "$GITHUB_OUTPUT"
-          echo "pass=${PASS}" >> "$GITHUB_OUTPUT"
+        env:
+          ACR_NAME: ${{ env.ACR_NAME }}
+        run: bash ./.github/workflows/scripts/get-acr-creds.sh
 
       - name: deploy (no mi; use registry creds)
         uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703 # v2
@@ -105,9 +99,10 @@ jobs:
 
       - name: fetch fqdn
         id: fqdn
-        run: |
-          FQDN=$(az containerapp show -n "${APP_NAME}" -g "${RESOURCE_GROUP}" --query properties.configuration.ingress.fqdn -o tsv)
-          echo "fqdn=${FQDN}" >> "$GITHUB_OUTPUT"
+        env:
+          APP_NAME: ${{ env.APP_NAME }}
+          RESOURCE_GROUP: ${{ env.RESOURCE_GROUP }}
+        run: bash ./.github/workflows/scripts/get-containerapp-fqdn.sh
 
   update-comment:
     if: ${{ inputs.update_comment }}
