@@ -3,13 +3,14 @@ import { type SemanticColorNames, semanticColorMap } from '../../../../colors/ty
 import type {
   BorderRadiusConfig,
   BorderWidthConfig,
+  OpacityConfig,
   ShadowConfig,
   SizeConfig,
   Token,
   TokenSet,
   Typography,
 } from '../../../types.ts';
-import { borderWidthKey } from '../../../utils.ts';
+import { numericKey } from '../../../utils.ts';
 
 // Wraps each typography value from the config in a design token, recursing into nested groups like body.short
 const generateTypographyTokens = (group: Record<string, unknown>): TokenSet =>
@@ -29,6 +30,7 @@ export function generateSemanticStyle(
   typography: Typography,
   shadow: ShadowConfig,
   size: SizeConfig,
+  opacity: OpacityConfig,
 ): TokenSet {
   return {
     ...generateColors(colorNames),
@@ -38,7 +40,7 @@ export function generateSemanticStyle(
         name,
         {
           $type: 'borderWidth',
-          $value: `{border-width.${borderWidthKey(value)}}`,
+          $value: `{border-width.${numericKey(value)}}`,
         },
       ]),
     ),
@@ -53,12 +55,16 @@ export function generateSemanticStyle(
         },
       ]),
     ),
-    opacity: {
-      disabled: {
-        $type: 'opacity',
-        $value: '{opacity.30}',
-      },
-    },
+    // Each opacity from the config references the primitive keyed by its value, e.g. disabled '30%' -> {opacity.30}
+    opacity: Object.fromEntries(
+      Object.entries(opacity).map(([name, value]) => [
+        name,
+        {
+          $type: 'opacity',
+          $value: `{opacity.${numericKey(value)}}`,
+        },
+      ]),
+    ),
     typography: generateTypographyTokens(typography.components),
     // Each shadow from the config references the primitive numbered scale by position,
     // e.g. the first shadow 'xs' -> {shadow.100}
