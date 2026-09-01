@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - .github/workflows/test.yml
+      - .github/workflows/scripts/free-disk-space.sh
       - "packages/**"
       - "apps/storybook/**"
 
@@ -23,12 +24,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Free up disk space
-        run: |
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /usr/local/share/boost
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          df -h
+        run: bash ./.github/workflows/scripts/free-disk-space.sh
 
       - uses: ./.github/actions/gh-setup
 

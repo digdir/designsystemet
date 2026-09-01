@@ -8,6 +8,10 @@ on:
       - 'internal/components/**'
       - '.github/workflows/azure-preview-themebuilder.yml'
       - '.github/workflows/azure-deploy-themebuilder.yml'
+      - '.github/workflows/preview-comment.yml'
+      - '.github/workflows/scripts/get-acr-creds.sh'
+      - '.github/workflows/scripts/get-containerapp-fqdn.sh'
+      - '.github/workflows/scripts/preview-comment-links.sh'
       - 'Dockerfile'
 
 permissions:

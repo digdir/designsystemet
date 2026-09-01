@@ -23,6 +23,8 @@ jobs:
   update-comment:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
       - name: Find Preview Comment
         uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4.0.0
         id: fc
@@ -61,50 +63,14 @@ jobs:
 
       - name: Set deployment links
         id: links
-        run: |
-          STORYBOOK_EXISTING=$(cat <<< '${{ steps.regex-storybook.outputs.match }}')
-          THEME_EXISTING=$(cat <<< '${{ steps.regex-theme.outputs.match }}')
-          WWW_EXISTING=$(cat <<< '${{ steps.regex-www.outputs.match }}')
-
-          STORYBOOK=""
-          THEME=""
-          WWW=""
-
-          if [ "${{ inputs.deployment_type }}" = "storybook" ]; then
-            STORYBOOK="[storybook](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
-          elif [ "${{ inputs.deployment_type }}" = "theme" ]; then
-            THEME="[themebuilder](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
-          elif [ "${{ inputs.deployment_type }}" = "www" ]; then
-            WWW="[www](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
-          fi
-
-          if [ "${{ inputs.deployment_type }}" != "storybook" ] && [ -n "$STORYBOOK_EXISTING" ]; then
-            STORYBOOK="$STORYBOOK_EXISTING"
-          fi
-          if [ "${{ inputs.deployment_type }}" != "theme" ] && [ -n "$THEME_EXISTING" ]; then
-            THEME="$THEME_EXISTING"
-          fi
-          if [ "${{ inputs.deployment_type }}" != "www" ] && [ -n "$WWW_EXISTING" ]; then
-            WWW="$WWW_EXISTING"
-          fi
-
-          {
-            echo "body<<EOF"
-            echo "**Preview deployments for this pull request:**"
-            if [ -n "$STORYBOOK" ]; then
-              echo ""
-              printf '%s\n' "$STORYBOOK"
-            fi
-            if [ -n "$THEME" ]; then
-              echo ""
-              printf '%s\n' "$THEME"
-            fi
-            if [ -n "$WWW" ]; then
-              echo ""
-              printf '%s\n' "$WWW"
-            fi
-            echo "EOF"
-          } >> $GITHUB_OUTPUT
+        env:
+          DEPLOYMENT_TYPE: ${{ inputs.deployment_type }}
+          DEPLOYMENT_URL: ${{ inputs.deployment_url }}
+          FORMATTED_TIME: ${{ steps.current-time.outputs.formattedTime }}
+          STORYBOOK_EXISTING: ${{ steps.regex-storybook.outputs.match }}
+          THEME_EXISTING: ${{ steps.regex-theme.outputs.match }}
+          WWW_EXISTING: ${{ steps.regex-www.outputs.match }}
+        run: bash ./.github/workflows/scripts/preview-comment-links.sh
 
       - name: Update comment with deployment
         uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5.0.0
