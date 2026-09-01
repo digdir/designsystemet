@@ -168,3 +168,8 @@ export function toColorNames(themeColors: Theme['colors']): string[] {
 
   return Object.keys(colors);
 }
+
+/** Derives the primitive border-width token key from a width value, e.g. '3px' -> '3' */
+export function borderWidthKey(value: string): string {
+  return String(Number.parseFloat(value));
+}

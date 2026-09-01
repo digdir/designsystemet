@@ -22,6 +22,10 @@ export type SizeConfig = Theme['size'];
 
 export type BorderRadiusConfig = Theme['borderRadius'];
 
+export type ShadowConfig = Theme['shadow'];
+
+export type BorderWidthConfig = Theme['border-width'];
+
 export type Theme = {
   name: string;
 } & Required<Omit<ConfigSchemaTheme, 'overrides'>> &
