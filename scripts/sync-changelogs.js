@@ -5,10 +5,7 @@
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import {
-  aggregateChangelogs,
-  findPackages,
-} from './aggregate-changelogs.js';
+import { aggregateChangelogs, findPackages } from './aggregate-changelogs.js';
 
 const ROOT = process.cwd();
 const WWW = path.join(ROOT, 'apps/www/app/content/components-docs');

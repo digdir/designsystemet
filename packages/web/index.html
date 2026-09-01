@@ -789,7 +789,8 @@
           ];
 
           if (!this.shadowRoot.innerHTML.trim())
-            this.shadowRoot.innerHTML = document.getElementById('app')?.innerHTML || '';
+            this.shadowRoot.innerHTML =
+              document.getElementById('app')?.innerHTML || '';
           this.style.outline = '1px solid red';
           this.style.display = 'block';
         }
