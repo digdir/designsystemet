@@ -1,20 +1,21 @@
 import * as R from 'ramda';
 import { type SemanticColorNames, semanticColorMap } from '../../../../colors/types.ts';
-import type { Token, TokenSet } from '../../../types.ts';
+import type { BorderWidthConfig, Token, TokenSet } from '../../../types.ts';
+import { borderWidthKey } from '../../../utils.ts';
 
-export function generateSemanticStyle(colorNames: string[]): TokenSet {
+export function generateSemanticStyle(colorNames: string[], borderWidth: BorderWidthConfig): TokenSet {
   return {
     ...generateColors(colorNames),
-    'border-width': {
-      default: {
-        $type: 'borderWidth',
-        $value: '{border-width.1}',
-      },
-      focus: {
-        $type: 'borderWidth',
-        $value: '{border-width.3}',
-      },
-    },
+    // Each border-width from the config references the primitive keyed by its width, e.g. focus '3px' -> {border-width.3}
+    'border-width': Object.fromEntries(
+      Object.entries(borderWidth).map(([name, value]) => [
+        name,
+        {
+          $type: 'borderWidth',
+          $value: `{border-width.${borderWidthKey(value)}}`,
+        },
+      ]),
+    ),
     'border-radius': {
       sm: {
         $type: 'dimension',

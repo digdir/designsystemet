@@ -111,4 +111,6 @@ formatTheme({
   },
   typography: themes.designsystemet.typography,
   size: themes.designsystemet.size,
+  shadow: themes.designsystemet.shadow,
+  'border-width': themes.designsystemet['border-width'],
 });
