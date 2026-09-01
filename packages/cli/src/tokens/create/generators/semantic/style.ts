@@ -1,6 +1,14 @@
 import * as R from 'ramda';
 import { type SemanticColorNames, semanticColorMap } from '../../../../colors/types.ts';
-import type { BorderRadiusConfig, BorderWidthConfig, ShadowConfig, Token, TokenSet, Typography } from '../../../types.ts';
+import type {
+  BorderRadiusConfig,
+  BorderWidthConfig,
+  ShadowConfig,
+  SizeConfig,
+  Token,
+  TokenSet,
+  Typography,
+} from '../../../types.ts';
 import { borderWidthKey } from '../../../utils.ts';
 
 // Wraps each typography value from the config in a design token, recursing into nested groups like body.short
@@ -20,6 +28,7 @@ export function generateSemanticStyle(
   borderRadius: BorderRadiusConfig,
   typography: Typography,
   shadow: ShadowConfig,
+  size: SizeConfig,
 ): TokenSet {
   return {
     ...generateColors(colorNames),
@@ -62,88 +71,16 @@ export function generateSemanticStyle(
         },
       ]),
     ),
-    size: {
-      '0': {
-        $type: 'dimension',
-        $value: '{_size.0}',
-      },
-      '1': {
-        $type: 'dimension',
-        $value: '{_size.1}',
-      },
-      '2': {
-        $type: 'dimension',
-        $value: '{_size.2}',
-      },
-      '3': {
-        $type: 'dimension',
-        $value: '{_size.3}',
-      },
-      '4': {
-        $type: 'dimension',
-        $value: '{_size.4}',
-      },
-      '5': {
-        $type: 'dimension',
-        $value: '{_size.5}',
-      },
-      '6': {
-        $type: 'dimension',
-        $value: '{_size.6}',
-      },
-      '7': {
-        $type: 'dimension',
-        $value: '{_size.7}',
-      },
-      '8': {
-        $type: 'dimension',
-        $value: '{_size.8}',
-      },
-      '9': {
-        $type: 'dimension',
-        $value: '{_size.9}',
-      },
-      '10': {
-        $type: 'dimension',
-        $value: '{_size.10}',
-      },
-      '11': {
-        $type: 'dimension',
-        $value: '{_size.11}',
-      },
-      '12': {
-        $type: 'dimension',
-        $value: '{_size.12}',
-      },
-      '13': {
-        $type: 'dimension',
-        $value: '{_size.13}',
-      },
-      '14': {
-        $type: 'dimension',
-        $value: '{_size.14}',
-      },
-      '15': {
-        $type: 'dimension',
-        $value: '{_size.15}',
-      },
-      '18': {
-        $type: 'dimension',
-        $value: '{_size.18}',
-      },
-      '22': {
-        $type: 'dimension',
-        $value: '{_size.22}',
-      },
-      '26': {
-        $type: 'dimension',
-        $value: '{_size.26}',
-      },
-      '30': {
-        $type: 'dimension',
-        $value: '{_size.30}',
-      },
-    },
+    // Each size step from the config references the primitive scale by its key, e.g. '4' -> {_size.4}
+    size: Object.fromEntries(
+      Object.keys(size.scale).map((step) => [
+        step,
+        {
+          $type: 'dimension',
+          $value: `{_size.${step}}`,
+        },
+      ]),
+    ),
   } satisfies TokenSet;
 }
 
