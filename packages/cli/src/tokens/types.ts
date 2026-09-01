@@ -20,6 +20,8 @@ export type Typography = Theme['typography'];
 
 export type SizeConfig = Theme['size'];
 
+export type BorderRadiusConfig = Theme['borderRadius'];
+
 export type Theme = {
   name: string;
 } & Required<Omit<ConfigSchemaTheme, 'overrides'>> &
