@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import { type SemanticColorNames, semanticColorMap } from '../../../../colors/types.ts';
-import type { BorderRadiusConfig, BorderWidthConfig, Token, TokenSet, Typography } from '../../../types.ts';
+import type { BorderRadiusConfig, BorderWidthConfig, ShadowConfig, Token, TokenSet, Typography } from '../../../types.ts';
 import { borderWidthKey } from '../../../utils.ts';
 
 // Wraps each typography value from the config in a design token, recursing into nested groups like body.short
@@ -19,6 +19,7 @@ export function generateSemanticStyle(
   borderWidth: BorderWidthConfig,
   borderRadius: BorderRadiusConfig,
   typography: Typography,
+  shadow: ShadowConfig,
 ): TokenSet {
   return {
     ...generateColors(colorNames),
@@ -50,28 +51,17 @@ export function generateSemanticStyle(
       },
     },
     typography: generateTypographyTokens(typography.components),
-    shadow: {
-      xs: {
-        $type: 'boxShadow',
-        $value: '{shadow.100}',
-      },
-      sm: {
-        $type: 'boxShadow',
-        $value: '{shadow.200}',
-      },
-      md: {
-        $type: 'boxShadow',
-        $value: '{shadow.300}',
-      },
-      lg: {
-        $type: 'boxShadow',
-        $value: '{shadow.400}',
-      },
-      xl: {
-        $type: 'boxShadow',
-        $value: '{shadow.500}',
-      },
-    },
+    // Each shadow from the config references the primitive numbered scale by position,
+    // e.g. the first shadow 'xs' -> {shadow.100}
+    shadow: Object.fromEntries(
+      Object.keys(shadow).map((name, index) => [
+        name,
+        {
+          $type: 'boxShadow',
+          $value: `{shadow.${(index + 1) * 100}}`,
+        },
+      ]),
+    ),
     size: {
       '0': {
         $type: 'dimension',
