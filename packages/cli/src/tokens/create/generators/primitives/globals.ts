@@ -1,5 +1,5 @@
-import type { BorderWidthConfig, ShadowConfig, TokenSet } from '../../../types.ts';
-import { borderWidthKey } from '../../../utils.ts';
+import type { BorderWidthConfig, OpacityConfig, ShadowConfig, TokenSet } from '../../../types.ts';
+import { numericKey } from '../../../utils.ts';
 
 // The shadow steps are output as a numbered scale (100, 200, ...), in the order they are defined in the config.
 const generateShadows = (shadow: ShadowConfig): TokenSet =>
@@ -17,7 +17,7 @@ const generateShadows = (shadow: ShadowConfig): TokenSet =>
 const generateBorderWidths = (borderWidth: BorderWidthConfig): TokenSet =>
   Object.fromEntries(
     Object.values(borderWidth).map((value) => [
-      borderWidthKey(value),
+      numericKey(value),
       {
         $type: 'borderWidth',
         $value: value,
@@ -25,13 +25,24 @@ const generateBorderWidths = (borderWidth: BorderWidthConfig): TokenSet =>
     ]),
   );
 
-export const generateGlobals = (shadow: ShadowConfig, borderWidth: BorderWidthConfig): TokenSet => ({
+// The opacity primitives are keyed by their numeric value, e.g. '30%' -> '30'.
+const generateOpacities = (opacity: OpacityConfig): TokenSet =>
+  Object.fromEntries(
+    Object.values(opacity).map((value) => [
+      numericKey(value),
+      {
+        $type: 'opacity',
+        $value: value,
+      },
+    ]),
+  );
+
+export const generateGlobals = (
+  shadow: ShadowConfig,
+  borderWidth: BorderWidthConfig,
+  opacity: OpacityConfig,
+): TokenSet => ({
   'border-width': generateBorderWidths(borderWidth),
   shadow: generateShadows(shadow),
-  opacity: {
-    '30': {
-      $type: 'opacity',
-      $value: '30%',
-    },
-  },
+  opacity: generateOpacities(opacity),
 });
