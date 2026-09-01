@@ -150,11 +150,11 @@ const borderRadiusObjectSchema = z
   .meta({ description: 'Defines the border-radius values for this theme' })
   .default({
     steps: {
-      sm: 'min({borderRadius.base}*0.5,{borderRadius.scale})',
-      md: 'min({borderRadius.base},{borderRadius.scale}*2)',
-      lg: 'min({borderRadius.base}*2,{borderRadius.scale}*5)',
-      xl: 'min({borderRadius.base}*3,{borderRadius.scale}*7)',
-      default: '{borderRadius.base}',
+      sm: 'min({base}*0.5,{scale})',
+      md: 'min({base},{scale}*2)',
+      lg: 'min({base}*2,{scale}*5)',
+      xl: 'min({base}*3,{scale}*7)',
+      default: '{base}',
       full: '9999',
     },
     base: 4,
