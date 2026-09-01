@@ -26,6 +26,8 @@ export type ShadowConfig = Theme['shadow'];
 
 export type BorderWidthConfig = Theme['border-width'];
 
+export type OpacityConfig = Theme['opacity'];
+
 export type Theme = {
   name: string;
 } & Required<Omit<ConfigSchemaTheme, 'overrides'>> &

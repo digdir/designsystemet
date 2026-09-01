@@ -21,7 +21,7 @@ export const getTokenSetDimensions = (size: SizeConfig): TokenSetDimensions => (
 });
 
 export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDimensions) => {
-  const { typography, name, borderRadius, overrides, size, shadow, 'border-width': borderWidth } = theme;
+  const { typography, name, borderRadius, overrides, size, shadow, opacity, 'border-width': borderWidth } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
 
   const colors = addSeverityColors(theme.colors);
@@ -29,7 +29,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
   const colorTokens = Object.entries(generateColorTokens(colorNames, name));
 
   const tokenSets: TokenSets = new Map([
-    ['primitives/globals', generateGlobals(shadow, borderWidth)],
+    ['primitives/globals', generateGlobals(shadow, borderWidth, opacity)],
     ...sizeModes.map((sizeMode): [string, TokenSet] => [
       `primitives/modes/size/${sizeMode}`,
       generateSize(sizeMode, size),
@@ -49,7 +49,10 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
       `semantic/color/${colorName}`,
       colorSetTokens,
     ]),
-    [`semantic/style`, generateSemanticStyle(colorNames, borderWidth, borderRadius, typography, shadow, size)],
+    [
+      `semantic/style`,
+      generateSemanticStyle(colorNames, borderWidth, borderRadius, typography, shadow, size, opacity),
+    ],
   ]);
 
   return { tokenSets };

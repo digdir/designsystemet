@@ -155,6 +155,12 @@ const borderWidthSchema = z
   })
   .prefault({});
 
+const opacitySchema = z
+  .object({
+    disabled: z.string().default('30%').describe('The opacity used for disabled states'),
+  })
+  .prefault({});
+
 const typographyTokenSchema = (defaults: {
   fontWeight: string;
   lineHeight: string;
@@ -321,6 +327,7 @@ const themeSchema = z
     overrides: overridesSchema,
     'border-width': borderWidthSchema,
     shadow: _shadowSchema,
+    opacity: opacitySchema,
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 

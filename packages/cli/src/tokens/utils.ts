@@ -169,7 +169,7 @@ export function toColorNames(themeColors: Theme['colors']): string[] {
   return Object.keys(colors);
 }
 
-/** Derives the primitive border-width token key from a width value, e.g. '3px' -> '3' */
-export function borderWidthKey(value: string): string {
+/** Derives a primitive token key from a value with a unit, e.g. '3px' -> '3', '30%' -> '30' */
+export function numericKey(value: string): string {
   return String(Number.parseFloat(value));
 }
