@@ -1,12 +1,24 @@
 import * as R from 'ramda';
 import { type SemanticColorNames, semanticColorMap } from '../../../../colors/types.ts';
-import type { BorderRadiusConfig, BorderWidthConfig, Token, TokenSet } from '../../../types.ts';
+import type { BorderRadiusConfig, BorderWidthConfig, Token, TokenSet, Typography } from '../../../types.ts';
 import { borderWidthKey } from '../../../utils.ts';
+
+// Wraps each typography value from the config in a design token, recursing into nested groups like body.short
+const generateTypographyTokens = (group: Record<string, unknown>): TokenSet =>
+  Object.fromEntries(
+    Object.entries(group).map(([name, value]) => [
+      name,
+      value !== null && typeof value === 'object' && 'fontFamily' in value
+        ? ({ $type: 'typography', $value: value } as Token)
+        : generateTypographyTokens(value as Record<string, unknown>),
+    ]),
+  );
 
 export function generateSemanticStyle(
   colorNames: string[],
   borderWidth: BorderWidthConfig,
   borderRadius: BorderRadiusConfig,
+  typography: Typography,
 ): TokenSet {
   return {
     ...generateColors(colorNames),
@@ -37,236 +49,7 @@ export function generateSemanticStyle(
         $value: '{opacity.30}',
       },
     },
-    typography: {
-      heading: {
-        '2xl': {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.medium}',
-            lineHeight: '{line-height.sm}',
-            fontSize: '{font-size.10}',
-            letterSpacing: '{letter-spacing.1}',
-          },
-        },
-        xl: {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.medium}',
-            lineHeight: '{line-height.sm}',
-            fontSize: '{font-size.9}',
-            letterSpacing: '{letter-spacing.1}',
-          },
-        },
-        lg: {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.medium}',
-            lineHeight: '{line-height.sm}',
-            fontSize: '{font-size.8}',
-            letterSpacing: '{letter-spacing.2}',
-          },
-        },
-        md: {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.medium}',
-            lineHeight: '{line-height.sm}',
-            fontSize: '{font-size.7}',
-            letterSpacing: '{letter-spacing.3}',
-          },
-        },
-        sm: {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.medium}',
-            lineHeight: '{line-height.sm}',
-            fontSize: '{font-size.6}',
-            letterSpacing: '{letter-spacing.5}',
-          },
-        },
-        xs: {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.medium}',
-            lineHeight: '{line-height.sm}',
-            fontSize: '{font-size.5}',
-            letterSpacing: '{letter-spacing.6}',
-          },
-        },
-        '2xs': {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.medium}',
-            lineHeight: '{line-height.sm}',
-            fontSize: '{font-size.4}',
-            letterSpacing: '{letter-spacing.6}',
-          },
-        },
-      },
-      body: {
-        xl: {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.regular}',
-            lineHeight: '{line-height.md}',
-            fontSize: '{font-size.6}',
-            letterSpacing: '{letter-spacing.8}',
-          },
-        },
-        lg: {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.regular}',
-            lineHeight: '{line-height.md}',
-            fontSize: '{font-size.5}',
-            letterSpacing: '{letter-spacing.8}',
-          },
-        },
-        md: {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.regular}',
-            lineHeight: '{line-height.md}',
-            fontSize: '{font-size.4}',
-            letterSpacing: '{letter-spacing.8}',
-          },
-        },
-        sm: {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.regular}',
-            lineHeight: '{line-height.md}',
-            fontSize: '{font-size.3}',
-            letterSpacing: '{letter-spacing.7}',
-          },
-        },
-        xs: {
-          $type: 'typography',
-          $value: {
-            fontFamily: '{font-family}',
-            fontWeight: '{font-weight.regular}',
-            lineHeight: '{line-height.md}',
-            fontSize: '{font-size.2}',
-            letterSpacing: '{letter-spacing.6}',
-          },
-        },
-        short: {
-          xl: {
-            $type: 'typography',
-            $value: {
-              fontFamily: '{font-family}',
-              fontWeight: '{font-weight.regular}',
-              lineHeight: '{line-height.sm}',
-              fontSize: '{font-size.6}',
-              letterSpacing: '{letter-spacing.8}',
-            },
-          },
-          lg: {
-            $type: 'typography',
-            $value: {
-              fontFamily: '{font-family}',
-              fontWeight: '{font-weight.regular}',
-              lineHeight: '{line-height.sm}',
-              fontSize: '{font-size.5}',
-              letterSpacing: '{letter-spacing.8}',
-            },
-          },
-          md: {
-            $type: 'typography',
-            $value: {
-              fontFamily: '{font-family}',
-              fontWeight: '{font-weight.regular}',
-              lineHeight: '{line-height.sm}',
-              fontSize: '{font-size.4}',
-              letterSpacing: '{letter-spacing.8}',
-            },
-          },
-          sm: {
-            $type: 'typography',
-            $value: {
-              fontFamily: '{font-family}',
-              fontWeight: '{font-weight.regular}',
-              lineHeight: '{line-height.sm}',
-              fontSize: '{font-size.3}',
-              letterSpacing: '{letter-spacing.7}',
-            },
-          },
-          xs: {
-            $type: 'typography',
-            $value: {
-              fontFamily: '{font-family}',
-              fontWeight: '{font-weight.regular}',
-              lineHeight: '{line-height.sm}',
-              fontSize: '{font-size.2}',
-              letterSpacing: '{letter-spacing.6}',
-            },
-          },
-        },
-        long: {
-          xl: {
-            $type: 'typography',
-            $value: {
-              fontFamily: '{font-family}',
-              fontWeight: '{font-weight.regular}',
-              lineHeight: '{line-height.lg}',
-              fontSize: '{font-size.6}',
-              letterSpacing: '{letter-spacing.8}',
-            },
-          },
-          lg: {
-            $type: 'typography',
-            $value: {
-              fontFamily: '{font-family}',
-              fontWeight: '{font-weight.regular}',
-              lineHeight: '{line-height.lg}',
-              fontSize: '{font-size.5}',
-              letterSpacing: '{letter-spacing.8}',
-            },
-          },
-          md: {
-            $type: 'typography',
-            $value: {
-              fontFamily: '{font-family}',
-              fontWeight: '{font-weight.regular}',
-              lineHeight: '{line-height.lg}',
-              fontSize: '{font-size.4}',
-              letterSpacing: '{letter-spacing.8}',
-            },
-          },
-          sm: {
-            $type: 'typography',
-            $value: {
-              fontFamily: '{font-family}',
-              fontWeight: '{font-weight.regular}',
-              lineHeight: '{line-height.lg}',
-              fontSize: '{font-size.3}',
-              letterSpacing: '{letter-spacing.7}',
-            },
-          },
-          xs: {
-            $type: 'typography',
-            $value: {
-              fontFamily: '{font-family}',
-              fontWeight: '{font-weight.regular}',
-              lineHeight: '{line-height.lg}',
-              fontSize: '{font-size.2}',
-              letterSpacing: '{letter-spacing.6}',
-            },
-          },
-        },
-      },
-    },
+    typography: generateTypographyTokens(typography.components),
     shadow: {
       xs: {
         $type: 'boxShadow',
@@ -372,45 +155,6 @@ export function generateSemanticStyle(
       },
     },
   } satisfies TokenSet;
-}
-
-function generateSingleTypographyToken(component: 'heading' | 'body', size: string, variant?: 'short' | 'long'): Token {
-  const prefix = `typography-mapping.${component}${variant ? `.${variant}` : ''}.${size}`;
-  return {
-    $type: 'typography',
-    $value: {
-      fontFamily: `{${prefix}.font-family}`,
-      fontWeight: `{${prefix}.font-weight}`,
-      lineHeight: `{${prefix}.line-height}`,
-      fontSize: `{${prefix}.font-size}`,
-      letterSpacing: `{${prefix}.letter-spacing}`,
-    },
-  };
-}
-
-function _generateTypography() {
-  const headingSizes = ['2xl', 'xl', 'lg', 'md', 'sm', 'xs', '2xs'];
-  const heading = Object.fromEntries(
-    headingSizes.map((size) => [size, generateSingleTypographyToken('heading', size)] as const),
-  );
-  const bodySizes = ['xl', 'lg', 'md', 'sm', 'xs'];
-  const body = Object.fromEntries(
-    bodySizes.map((size) => [size, generateSingleTypographyToken('body', size)] as const),
-  );
-  const bodyShort = Object.fromEntries(
-    bodySizes.map((size) => [size, generateSingleTypographyToken('body', size, 'short')] as const),
-  );
-  const bodyLong = Object.fromEntries(
-    bodySizes.map((size) => [size, generateSingleTypographyToken('body', size, 'long')] as const),
-  );
-  return {
-    heading,
-    body: {
-      ...body,
-      short: bodyShort,
-      long: bodyLong,
-    },
-  };
 }
 
 const generateColors = (colorNames: string[]) => {
