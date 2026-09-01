@@ -102,37 +102,37 @@ const _shadowSchema = z
     ],
     lg: [
       {
-        color: 'rgba(0,0,0,0.14)',
+        color: 'rgba(0,0,0,0.13)',
         x: '0',
         y: '0',
-        blur: '2',
+        blur: '1',
         spread: '0',
       },
       {
-        color: 'rgba(0,0,0,0.12)',
+        color: 'rgba(0,0,0,0.13)',
         x: '0',
-        y: '2',
-        blur: '4',
+        y: '3',
+        blur: '5',
         spread: '0',
       },
       {
         x: '0',
-        y: '4',
-        blur: '8',
+        y: '6',
+        blur: '12',
         spread: '0',
-        color: 'rgba(0,0,0,0.1)',
+        color: 'rgba(0,0,0,0.14)',
       },
     ],
     xl: [
       {
-        color: 'rgba(0,0,0,0.16)',
+        color: 'rgba(0,0,0,0.12)',
         x: '0',
         y: '0',
-        blur: '4',
+        blur: '1',
         spread: '0',
       },
       {
-        color: 'rgba(0,0,0,0.12)',
+        color: 'rgba(0,0,0,0.16)',
         x: '0',
         y: '4',
         blur: '8',
@@ -140,18 +140,20 @@ const _shadowSchema = z
       },
       {
         x: '0',
-        y: '8',
-        blur: '16',
+        y: '12',
+        blur: '24',
         spread: '0',
-        color: 'rgba(0,0,0,0.1)',
+        color: 'rgba(0,0,0,0.16)',
       },
     ],
   });
 
-const borderWidthSchema = z.object({
-  default: z.string().default('1px').describe('The default border width for components'),
-  focus: z.string().default('3px').describe('The border outline for focus states'),
-});
+const borderWidthSchema = z
+  .object({
+    default: z.string().default('1px').describe('The default border width for components'),
+    focus: z.string().default('3px').describe('The border outline for focus states'),
+  })
+  .prefault({});
 
 const typographyTokenSchema = (defaults: {
   fontWeight: string;
