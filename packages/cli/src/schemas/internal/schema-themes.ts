@@ -19,6 +19,135 @@ const colorSchema = z
   .transform(convertToHex)
   .describe(`A hex color, which is used for creating a color scale.`);
 
+const shadowDeclaration = z.array(
+  z.object({
+    color: z.string(),
+    x: z.string(),
+    y: z.string(),
+    blur: z.string(),
+    spread: z.string(),
+  }),
+);
+
+const _shadowSchema = z
+  .object({
+    xs: shadowDeclaration,
+    sm: shadowDeclaration,
+    md: shadowDeclaration,
+    lg: shadowDeclaration,
+    xl: shadowDeclaration,
+  })
+  .default({
+    xs: [
+      {
+        color: 'rgba(0,0,0,0.16)',
+        x: '0',
+        y: '0',
+        blur: '1',
+        spread: '0',
+      },
+      {
+        x: '0',
+        y: '1',
+        blur: '2',
+        spread: '0',
+        color: 'rgba(0,0,0,0.12)',
+      },
+    ],
+    sm: [
+      {
+        color: 'rgba(0,0,0,0.15)',
+        x: '0',
+        y: '0',
+        blur: '1',
+        spread: '0',
+      },
+      {
+        color: 'rgba(0,0,0,0.12)',
+        x: '0',
+        y: '1',
+        blur: '2',
+        spread: '0',
+      },
+      {
+        x: '0',
+        y: '2',
+        blur: '4',
+        spread: '0',
+        color: 'rgba(0,0,0,0.1)',
+      },
+    ],
+    md: [
+      {
+        color: 'rgba(0,0,0,0.14)',
+        x: '0',
+        y: '0',
+        blur: '1',
+        spread: '0',
+      },
+      {
+        color: 'rgba(0,0,0,0.12)',
+        x: '0',
+        y: '2',
+        blur: '4',
+        spread: '0',
+      },
+      {
+        x: '0',
+        y: '4',
+        blur: '8',
+        spread: '0',
+        color: 'rgba(0,0,0,0.12)',
+      },
+    ],
+    lg: [
+      {
+        color: 'rgba(0,0,0,0.14)',
+        x: '0',
+        y: '0',
+        blur: '2',
+        spread: '0',
+      },
+      {
+        color: 'rgba(0,0,0,0.12)',
+        x: '0',
+        y: '2',
+        blur: '4',
+        spread: '0',
+      },
+      {
+        x: '0',
+        y: '4',
+        blur: '8',
+        spread: '0',
+        color: 'rgba(0,0,0,0.1)',
+      },
+    ],
+    xl: [
+      {
+        color: 'rgba(0,0,0,0.16)',
+        x: '0',
+        y: '0',
+        blur: '4',
+        spread: '0',
+      },
+      {
+        color: 'rgba(0,0,0,0.12)',
+        x: '0',
+        y: '4',
+        blur: '8',
+        spread: '0',
+      },
+      {
+        x: '0',
+        y: '8',
+        blur: '16',
+        spread: '0',
+        color: 'rgba(0,0,0,0.1)',
+      },
+    ],
+  });
+
 const borderWidthSchema = z.object({
   default: z.string().default('1px').describe('The default border width for components'),
   focus: z.string().default('3px').describe('The border outline for focus states'),
@@ -189,6 +318,7 @@ const themeSchema = z
     borderRadius: borderRadiusSchema,
     overrides: overridesSchema,
     'border-width': borderWidthSchema,
+    shadow: _shadowSchema,
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
