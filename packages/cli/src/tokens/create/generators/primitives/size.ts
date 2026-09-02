@@ -6,10 +6,10 @@ import type { SizeConfig, SizeModes, TokenSet } from '../../../types.ts';
  * The full unit expression is replaced first so it resolves to `{_size.unit}`.
  */
 const placeholderReplacements: [placeholder: string, tokenReference: string][] = [
-  ['{step} / {base} * {fontSize}', '{_size.unit}'],
+  ['{step} / {base} * {baseFontSize}', '{_size.unit}'],
   ['{step}', '{_size.step}'],
   ['{base}', '{_size.base}'],
-  ['{fontSize}', '{_size.mode-font-size}'],
+  ['{baseFontSize}', '{_size.mode-font-size}'],
 ];
 
 const toTokenFormula = (formula: string): string =>
@@ -27,7 +27,7 @@ export const generateSize = (mode: SizeModes, size: SizeConfig): TokenSet => {
     size: {
       '_mode-font-size': {
         $type: 'dimension',
-        $value: String(step.fontSize),
+        $value: String(step.baseFontSize),
       },
       _base: {
         $type: 'dimension',

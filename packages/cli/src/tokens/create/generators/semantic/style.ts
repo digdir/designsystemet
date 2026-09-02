@@ -10,7 +10,7 @@ import type {
   TokenSet,
   Typography,
 } from '../../../types.ts';
-import { numericKey } from '../../../utils.ts';
+import { numericKey, tokensFromRecord } from '../../../utils.ts';
 
 // Wraps each typography value from the config in a design token, recursing into nested groups like body.short
 const generateTypographyTokens = (group: Record<string, unknown>): TokenSet =>
@@ -35,15 +35,7 @@ export function generateSemanticStyle(
   return {
     ...generateColors(colorNames),
     // Each border-width from the config references the primitive keyed by its width, e.g. focus '3px' -> {border-width.3}
-    'border-width': Object.fromEntries(
-      Object.entries(borderWidth).map(([name, value]) => [
-        name,
-        {
-          $type: 'borderWidth',
-          $value: `{border-width.${numericKey(value)}}`,
-        },
-      ]),
-    ),
+    'border-width': tokensFromRecord(borderWidth, 'borderWidth', (value) => `{border-width.${numericKey(value)}}`),
     // Each border-radius step from the config references the primitive numbered scale by position,
     // e.g. the first step 'sm' -> {border-radius.1}
     'border-radius': Object.fromEntries(
@@ -56,15 +48,7 @@ export function generateSemanticStyle(
       ]),
     ),
     // Each opacity from the config references the primitive keyed by its value, e.g. disabled '30%' -> {opacity.30}
-    opacity: Object.fromEntries(
-      Object.entries(opacity).map(([name, value]) => [
-        name,
-        {
-          $type: 'opacity',
-          $value: `{opacity.${numericKey(value)}}`,
-        },
-      ]),
-    ),
+    opacity: tokensFromRecord(opacity, 'opacity', (value) => `{opacity.${numericKey(value)}}`),
     typography: generateTypographyTokens(typography.components),
     // Each shadow from the config references the primitive numbered scale by position,
     // e.g. the first shadow 'xs' -> {shadow.100}
@@ -78,15 +62,7 @@ export function generateSemanticStyle(
       ]),
     ),
     // Each size step from the config references the primitive scale by its key, e.g. '4' -> {_size.4}
-    size: Object.fromEntries(
-      Object.keys(size.scale).map((step) => [
-        step,
-        {
-          $type: 'dimension',
-          $value: `{_size.${step}}`,
-        },
-      ]),
-    ),
+    size: tokensFromRecord(size.scale, 'dimension', (_, step) => `{_size.${step}}`),
   } satisfies TokenSet;
 }
 
