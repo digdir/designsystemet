@@ -4,7 +4,7 @@ import { generate$Themes } from './create/generators/$themes.ts';
 import { generateColorScheme } from './create/generators/primitives/color-scheme.ts';
 import { generateGlobals } from './create/generators/primitives/globals.ts';
 import { generateSize, generateSizeGlobal } from './create/generators/primitives/size.ts';
-import { generateFontSizes, generateTypography } from './create/generators/primitives/typography.ts';
+import { generateTypography, generateTypographyMode } from './create/generators/primitives/typography.ts';
 import { generateColorTokens } from './create/generators/semantic/color.ts';
 import { generateSemanticStyle } from './create/generators/semantic/style.ts';
 import { generateTheme } from './create/generators/themes/theme.ts';
@@ -26,6 +26,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
   const colors = addSeverityColors(theme.colors);
   const colorNames = toColorNames(colors);
   const colorTokens = Object.entries(generateColorTokens(colorNames, name));
+  const typographyTokenSet = generateTypography(name, typography);
 
   const tokenSets: TokenSets = new Map([
     ['primitives/globals', generateGlobals(shadow, borderWidth, opacity)],
@@ -36,10 +37,10 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     ['primitives/modes/size/global', generateSizeGlobal(size)],
     ...sizeModes.map((sizeMode): [string, TokenSet] => [
       `primitives/modes/typography/size/${sizeMode}`,
-      generateFontSizes(sizeMode, typography, size),
+      generateTypographyMode(sizeMode, typography, size),
     ]),
-    [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
-    [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
+    [`primitives/modes/typography/primary/${name}`, typographyTokenSet],
+    [`primitives/modes/typography/secondary/${name}`, typographyTokenSet],
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),

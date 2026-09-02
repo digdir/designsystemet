@@ -173,3 +173,18 @@ export function toColorNames(themeColors: Theme['colors']): string[] {
 export function numericKey(value: string): string {
   return String(Number.parseFloat(value));
 }
+
+/**
+ * Maps a record of config values to a group of design tokens with the given $type,
+ * keeping the record's keys as token names. An optional `toValue` maps each entry
+ * to its token value, e.g. to produce a reference like `{opacity.30}`.
+ */
+export function tokensFromRecord(
+  values: Record<string, string>,
+  $type: string,
+  toValue: (value: string, name: string) => string = (value) => value,
+): TokenSet {
+  return Object.fromEntries(
+    Object.entries(values).map(([name, value]) => [name, { $type, $value: toValue(value, name) }]),
+  );
+}
