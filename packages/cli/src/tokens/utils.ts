@@ -169,9 +169,32 @@ export function toColorNames(themeColors: Theme['colors']): string[] {
   return Object.keys(colors);
 }
 
-/** Derives a primitive token key from a value with a unit, e.g. '3px' -> '3', '30%' -> '30' */
+/**
+ * Derives a primitive token key from a value with a unit, e.g. '3px' -> '3', '30%' -> '30'.
+ * A decimal point becomes a dash ('1.5px' -> '1-5') so the key never reads as a nested token path.
+ */
 export function numericKey(value: string): string {
-  return String(Number.parseFloat(value));
+  return String(Number.parseFloat(value)).replace('.', '-');
+}
+
+/**
+ * Derives primitive token entries keyed by {@link numericKey} from a record of config values.
+ * Throws when two different values resolve to the same key (e.g. '1px' and '1rem'),
+ * since they would silently overwrite one another's primitive token.
+ */
+export function numericKeyedValues(values: Record<string, string>, tokenGroup: string): [string, string][] {
+  const byKey = new Map<string, string>();
+
+  for (const value of Object.values(values)) {
+    const key = numericKey(value);
+    const existing = byKey.get(key);
+    if (existing !== undefined && existing !== value) {
+      throw new Error(`${tokenGroup} values "${existing}" and "${value}" both resolve to the primitive key "${key}"`);
+    }
+    byKey.set(key, value);
+  }
+
+  return [...byKey.entries()];
 }
 
 /**
