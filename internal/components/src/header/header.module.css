@@ -67,61 +67,6 @@
   }
 }
 
-:global([data-color-scheme='light']) .header {
-  --ds-color-neutral-background-default: #000000;
-  --ds-color-neutral-border-subtle: #ffffff;
-  --ds-color-neutral-border-strong: #ffffff;
-  --ds-color-neutral-text-subtle: #ffffff;
-  --ds-color-neutral-text-default: #ffffff;
-  --ds-color-text-subtle: #ffffff;
-  --ds-color-surface-hover: #ffffff;
-  --ds-color-surface-active: #e5e5e5;
-
-  color: #ffffff;
-  border-bottom-color: #000000;
-  background-color: #000000;
-
-  & :global(.ds-button[data-variant='secondary']),
-  & :global(.ds-button[data-variant='tertiary']) {
-    --dsc-button-color--hover: #000000;
-    --dsc-button-color--active: #000000;
-  }
-
-  & :global(.ds-dropdown) {
-    --dsc-dropdown-background: #000000;
-    --dsc-dropdown-border-color: #ffffff;
-
-    color: #ffffff;
-
-    & :is(a, button, [role='button']) {
-      color: #ffffff;
-
-      &:hover,
-      &:active {
-        color: #000000;
-      }
-    }
-  }
-
-  &.hamburger nav .listContainer {
-    --ds-color-neutral-background-default: #000000;
-    --ds-color-neutral-text-default: #ffffff;
-    --ds-color-text-subtle: #ffffff;
-
-    color: #ffffff;
-
-    & .headerLink {
-      color: #ffffff;
-
-      &:hover,
-      &:focus-visible,
-      &:active {
-        color: #ffffff;
-      }
-    }
-  }
-}
-
 .logoContainer {
   display: flex;
   align-items: center;
@@ -151,7 +96,7 @@
       width: auto;
     }
 
-    & svg :where(path, rect) {
+    & svg [data-text] {
       fill: var(--ds-color-neutral-text-default);
     }
   }
@@ -178,7 +123,7 @@
       width: auto;
     }
 
-    & svg :where(path, rect) {
+    & svg [data-text] {
       fill: var(--ds-color-neutral-text-default);
     }
   }
