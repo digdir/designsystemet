@@ -1,13 +1,18 @@
 import * as R from 'ramda';
 import { type ColorNumber, semanticColorMap } from '../../../../colors/types.ts';
-import type { BorderRadiusConfig, Token, TokenSet } from '../../../types.ts';
+import type { BorderRadiusConfig, Token, TokenSet, Typography } from '../../../types.ts';
 
-export const generateTheme = (colorNames: string[], themeName: string, borderRadius: BorderRadiusConfig) => {
+export const generateTheme = (
+  colorNames: string[],
+  themeName: string,
+  borderRadius: BorderRadiusConfig,
+  typography: Typography,
+) => {
   const themeColorTokens = Object.fromEntries(
     colorNames.map((colorName) => [colorName, generateColorScaleTokens(colorName, themeName)]),
   );
 
-  const { color: themeBaseFileColor, ...remainingThemeFile } = generateBase(themeName, borderRadius);
+  const { color: themeBaseFileColor, ...remainingThemeFile } = generateBase(themeName, borderRadius, typography);
   const themeFile = {
     color: {
       ...themeColorTokens,
@@ -84,26 +89,22 @@ const generateBorderRadius = (borderRadius: BorderRadiusConfig): TokenSet => ({
   },
 });
 
-const generateBase = (themeName: string, borderRadius: BorderRadiusConfig): TokenSet => ({
+const generateBase = (themeName: string, borderRadius: BorderRadiusConfig, typography: Typography): TokenSet => ({
   color: {},
   'font-family': {
     $type: 'fontFamilies',
     $value: `{${themeName}.font-family}`,
   },
-  'font-weight': {
-    medium: {
-      $type: 'fontWeights',
-      $value: `{${themeName}.font-weight.medium}`,
-    },
-    semibold: {
-      $type: 'fontWeights',
-      $value: `{${themeName}.font-weight.semibold}`,
-    },
-    regular: {
-      $type: 'fontWeights',
-      $value: `{${themeName}.font-weight.regular}`,
-    },
-  },
+  // Each font-weight from the config references the theme's font-weight token by the same name
+  'font-weight': Object.fromEntries(
+    Object.keys(typography.fontWeight).map((name) => [
+      name,
+      {
+        $type: 'fontWeights',
+        $value: `{${themeName}.font-weight.${name}}`,
+      },
+    ]),
+  ),
   'border-radius': generateBorderRadius(borderRadius),
 });
 
