@@ -23,7 +23,7 @@ const formatTheme = async (themeConfig: Theme, options: Pick<FormatTokensOptions
   const themeNames = [themeConfig.name];
   const colorNames = toColorNames(themeConfig.colors);
 
-  const tokenSetDimensions = getTokenSetDimensions(themeConfig.size);
+  const tokenSetDimensions = getTokenSetDimensions(themeConfig);
   const { tokenSets } = await createTokens(themeConfig, tokenSetDimensions);
   const $themes = await generate$Themes(tokenSetDimensions, themeNames, colorNames);
 

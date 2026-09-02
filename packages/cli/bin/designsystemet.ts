@@ -364,7 +364,7 @@ async function createDesignTokens({
 
   // Pick colors and size from first theme since we have a constraint they should be the same across themes.
   const colorNames = toColorNames(themes[themeNames[0]]?.colors);
-  const tokenSetDimensions = getTokenSetDimensions(themes[themeNames[0]]?.size);
+  const tokenSetDimensions = getTokenSetDimensions(themes[themeNames[0]]);
 
   for (const [name, themeConfig] of Object.entries(themes)) {
     const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme, tokenSetDimensions);

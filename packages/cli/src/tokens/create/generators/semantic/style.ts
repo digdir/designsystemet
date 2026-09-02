@@ -8,7 +8,7 @@ import type {
   SizeConfig,
   Token,
   TokenSet,
-  Typography,
+  TypographySet,
 } from '../../../types.ts';
 import { numericKey, tokensFromRecord } from '../../../utils.ts';
 
@@ -27,7 +27,7 @@ export function generateSemanticStyle(
   colorNames: string[],
   borderWidth: BorderWidthConfig,
   borderRadius: BorderRadiusConfig,
-  typography: Typography,
+  typography: TypographySet,
   shadow: ShadowConfig,
   size: SizeConfig,
   opacity: OpacityConfig,
