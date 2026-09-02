@@ -63,7 +63,13 @@ const themeSchema = z
         if (typeof value === 'string') {
           for (const [, prefix, key] of value.matchAll(/\{([\w-]+)\.([\w.-]+)\}/g)) {
             const known = availableKeys[prefix];
-            if (known && !known.has(key)) {
+            if (!known) {
+              ctx.addIssue({
+                code: 'custom',
+                path: [...path, name],
+                message: `Unknown reference prefix "{${prefix}.${key}}". Available prefixes: ${Object.keys(availableKeys).join(', ')}.`,
+              });
+            } else if (!known.has(key)) {
               ctx.addIssue({
                 code: 'custom',
                 path: [...path, name],
