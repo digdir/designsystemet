@@ -126,6 +126,8 @@ export const themesSchema = z
   });
 
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
+/** The pre-validation shape of a theme, i.e. what users write: defaulted fields are optional. */
+export type ConfigSchemaThemeInput = z.input<typeof themeSchema>;
 
 export const configObjectSchema = baseConfigObjectSchema.extend({
   themes: themesSchema,
