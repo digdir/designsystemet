@@ -140,4 +140,4 @@ export const configFileCreateSchema = baseConfigFileCreateSchema.extend({
   themes: themesSchema,
 });
 
-export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
+export type CreateConfigSchema = z.input<typeof configFileCreateSchema>;
