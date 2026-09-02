@@ -266,6 +266,9 @@ const typographySchema = z
 const sizeScale = (steps: number[]): Record<string, string> =>
   Object.fromEntries(steps.map((step) => [String(step), `floor({step} / {base} * {fontSize} * ${step})`]));
 
+const fontSizeScale = (sizes: number[]): Record<string, string> =>
+  Object.fromEntries(sizes.map((size, index) => [String(index + 1), String(size)]));
+
 const sizeObjectSchema = z
   .object({
     steps: z
@@ -275,6 +278,9 @@ const sizeObjectSchema = z
           base: z.number().describe('The base value for the size scale'),
           step: z.number().describe('The scale value between each step of the size scale'),
           fontSize: z.number().describe('Unitless font size value for the size scale'),
+          fontSizes: z
+            .record(z.string(), z.string())
+            .describe('The unitless font-size scale for this size step, keyed by scale number'),
         }),
       )
       .meta({ description: 'The steps for the size scale, e.g. "small", "medium", "large", etc.' }),
@@ -289,16 +295,19 @@ const sizeObjectSchema = z
         fontSize: 16,
         base: 18,
         step: 4,
+        fontSizes: fontSizeScale([11, 13, 14, 16, 18, 21, 24, 30, 36, 48]),
       },
       medium: {
         fontSize: 18,
         base: 18,
         step: 4,
+        fontSizes: fontSizeScale([12, 14, 16, 18, 21, 24, 30, 36, 48, 60]),
       },
       large: {
         fontSize: 21,
         base: 18,
         step: 4,
+        fontSizes: fontSizeScale([13, 16, 18, 21, 24, 30, 36, 48, 60, 72]),
       },
     },
   });
