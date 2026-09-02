@@ -2,8 +2,8 @@ import {
   parseConfig,
   validateConfig,
 } from '@digdir/designsystemet/schemas/helpers.js';
-import { configFileCreateSchema } from '@digdir/designsystemet/schemas/internal/schema.js';
-import { configFileCreateSchema as configFileCreateSchemaV11 } from '@digdir/designsystemet/schemas/v1.1/schema.js';
+import { configFileCreateSchema as configFileCreateSchemaInternal } from '@digdir/designsystemet/schemas/internal/schema.js';
+import { configFileCreateSchema } from '@digdir/designsystemet/schemas/v1.1/schema.js';
 import {
   createSystemTokens,
   createTokens,
@@ -38,8 +38,8 @@ const semanticColorNames = new Set<string>();
 
 let themeNames: string[] = [];
 
-type ConfigSchemaInternal = ZodInfer<typeof configFileCreateSchema>;
-type ConfigSchemaInput = ZodInput<typeof configFileCreateSchemaV11>;
+type ConfigSchemaInternal = ZodInfer<typeof configFileCreateSchemaInternal>;
+type ConfigSchemaInput = ZodInput<typeof configFileCreateSchema>;
 
 if (figma.editorType === 'figma') {
   figma.showUI(__html__, {
@@ -62,13 +62,13 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
         // Validate the config against the external schema to ensure it conforms to the expected structure.
         const configInput = validateConfig<ConfigSchemaInput>(
-          configFileCreateSchemaV11,
+          configFileCreateSchema,
           parsedConfig,
         );
 
         // Validate the config against the internal schema to populate default values and ensure it conforms to the expected structure.
         const config = validateConfig<ConfigSchemaInternal>(
-          configFileCreateSchema,
+          configFileCreateSchemaInternal,
           configInput,
         );
 
