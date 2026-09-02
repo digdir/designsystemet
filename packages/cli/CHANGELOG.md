@@ -28,7 +28,7 @@
 
 - Bump minimum required Node.js version to `>=22.12.0` as required by `commander`. ([#5212](https://github.com/digdir/designsystemet/pull/5212))
 
-- Change url for config schema on www.designsystement.no, from `cli` to `config` to better reflect which file the schema is for. ([#5211](https://github.com/digdir/designsystemet/pull/5211))
+- Change url for config schema on www.designsystemet.no, from `cli` to `config` to better reflect which file the schema is for. ([#5211](https://github.com/digdir/designsystemet/pull/5211))
   ```json
   "$schema": "https://designsystemet.no/schemas/config/[VERSION].json"
   ```
