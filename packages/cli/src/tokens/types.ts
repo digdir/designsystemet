@@ -1,6 +1,6 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
 import type { ColorScheme } from '../index.ts';
-import type { ConfigSchemaTheme } from '../schemas/internal/schema-themes.ts';
+import type { ConfigSchemaTheme } from '../schemas/internal/schema.ts';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.ts';
 
 export type Token =
