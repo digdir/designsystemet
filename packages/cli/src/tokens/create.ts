@@ -16,7 +16,6 @@ export type { ThemeObject_ } from './create/generators/$themes.ts';
 export const getTokenSetDimensions = (size: SizeConfig): TokenSetDimensions => ({
   colorSchemes: ['dark', 'light'],
   // The size modes are defined by the steps in the size configuration.
-  // The typography generator only has font sizes for "small", "medium" and "large".
   sizeModes: Object.keys(size.steps) as SizeModes[],
 });
 
@@ -37,7 +36,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     ['primitives/modes/size/global', generateSizeGlobal(size)],
     ...sizeModes.map((sizeMode): [string, TokenSet] => [
       `primitives/modes/typography/size/${sizeMode}`,
-      generateFontSizes(sizeMode, typography),
+      generateFontSizes(sizeMode, typography, size),
     ]),
     [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
     [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
