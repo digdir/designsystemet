@@ -3,12 +3,13 @@ import {
   validateConfig,
 } from '@digdir/designsystemet/schemas/helpers.js';
 import { configFileCreateSchema } from '@digdir/designsystemet/schemas/internal/schema.js';
+import { configFileCreateSchema as configFileCreateSchemaV11 } from '@digdir/designsystemet/schemas/v1.1/schema.js';
 import {
   createSystemTokens,
   createTokens,
   getTokenSetDimensions,
 } from '@digdir/designsystemet/tokens/create';
-import type { infer as ZodInfer } from 'zod';
+import type { infer as ZodInfer, input as ZodInput } from 'zod';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { importToFigma } from './token-export/importer';
@@ -37,7 +38,8 @@ const semanticColorNames = new Set<string>();
 
 let themeNames: string[] = [];
 
-type ConfigSchema = ZodInfer<typeof configFileCreateSchema>;
+type ConfigSchemaInternal = ZodInfer<typeof configFileCreateSchema>;
+type ConfigSchemaInput = ZodInput<typeof configFileCreateSchemaV11>;
 
 if (figma.editorType === 'figma') {
   figma.showUI(__html__, {
@@ -56,11 +58,18 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         fileMap.clear();
         files = [];
 
-        const parsedConfig = parseConfig<ConfigSchema>(msg.config);
+        const parsedConfig = parseConfig<ConfigSchemaInternal>(msg.config);
 
-        const config = validateConfig<ConfigSchema>(
-          configFileCreateSchema,
+        // Validate the config against the external schema to ensure it conforms to the expected structure.
+        const configInput = validateConfig<ConfigSchemaInput>(
+          configFileCreateSchemaV11,
           parsedConfig,
+        );
+
+        // Validate the config against the internal schema to populate default values and ensure it conforms to the expected structure.
+        const config = validateConfig<ConfigSchemaInternal>(
+          configFileCreateSchema,
+          configInput,
         );
 
         themeNames = Object.keys(config.themes ?? {});
@@ -73,7 +82,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
         for (const [themeName, themeConfig] of Object.entries(
           config.themes,
-        ) as [string, ConfigSchema['themes'][string]][]) {
+        ) as [string, ConfigSchemaInternal['themes'][string]][]) {
           const { tokenSets } = await createTokens(
             {
               name: themeName,
