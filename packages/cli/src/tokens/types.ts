@@ -18,6 +18,8 @@ export type TokenSets = Map<string, TokenSet>;
 
 export type Typography = Theme['typography'];
 
+export type TypographySet = Typography[string];
+
 export type SizeConfig = Theme['size'];
 
 export type BorderRadiusConfig = Theme['borderRadius'];
@@ -52,6 +54,7 @@ export type ThemeDimension = keyof ThemePermutation;
 export type TokenSetDimensions = {
   colorSchemes: ColorScheme[];
   sizeModes: SizeModes[];
+  typographies: string[];
 };
 
 export type GetSDConfigOptions = {
