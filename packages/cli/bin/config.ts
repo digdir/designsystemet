@@ -59,6 +59,10 @@ export async function parseCreateConfig(
    */
   const noUndefined = R.reject(R.isNil);
 
+  // Only apply the deprecated --font-family option when explicitly supplied: typography may also be
+  // defined as named sets, and merging the CLI default into that form would produce an invalid config.
+  const suppliedFontFamily = getSuppliedCliOption(cmd, 'fontFamily') as string | undefined;
+
   const getThemeOptions = (optionGetter: OptionGetter) =>
     noUndefined({
       colors: noUndefined({
@@ -66,9 +70,7 @@ export async function parseCreateConfig(
         ...(optionGetter(cmd, 'supportColors') as Record<string, string>),
         neutral: optionGetter(cmd, 'neutralColor') as string,
       }),
-      typography: noUndefined({
-        fontFamily: optionGetter(cmd, 'fontFamily'),
-      }),
+      typography: suppliedFontFamily ? { fontFamily: suppliedFontFamily } : undefined,
       borderRadius: optionGetter(cmd, 'borderRadius'),
       defaultColor: optionGetter(cmd, 'defaultColor'),
     });
