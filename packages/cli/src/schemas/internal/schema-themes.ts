@@ -264,7 +264,7 @@ const typographySchema = z
   .prefault({});
 
 const sizeScale = (steps: number[]): Record<string, string> =>
-  Object.fromEntries(steps.map((step) => [String(step), `floor({step} / {base} * {fontSize} * ${step})`]));
+  Object.fromEntries(steps.map((step) => [String(step), `floor({step} / {base} * {baseFontSize} * ${step})`]));
 
 const fontSizeScale = (sizes: number[]): Record<string, string> =>
   Object.fromEntries(sizes.map((size, index) => [String(index + 1), String(size)]));
@@ -277,7 +277,7 @@ const sizeObjectSchema = z
         z.object({
           base: z.number().describe('The base value for the size scale'),
           step: z.number().describe('The scale value between each step of the size scale'),
-          fontSize: z.number().describe('Unitless font size value for the size scale'),
+          baseFontSize: z.number().describe('Unitless base font size for this size step'),
           fontSizes: z
             .record(z.string(), z.string())
             .describe('The unitless font-size scale for this size step, keyed by scale number'),
@@ -292,19 +292,19 @@ const sizeObjectSchema = z
     scale: sizeScale([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 22, 26, 30]),
     steps: {
       small: {
-        fontSize: 16,
+        baseFontSize: 16,
         base: 18,
         step: 4,
         fontSizes: fontSizeScale([11, 13, 14, 16, 18, 21, 24, 30, 36, 48]),
       },
       medium: {
-        fontSize: 18,
+        baseFontSize: 18,
         base: 18,
         step: 4,
         fontSizes: fontSizeScale([12, 14, 16, 18, 21, 24, 30, 36, 48, 60]),
       },
       large: {
-        fontSize: 21,
+        baseFontSize: 21,
         base: 18,
         step: 4,
         fontSizes: fontSizeScale([13, 16, 18, 21, 24, 30, 36, 48, 60, 72]),
@@ -365,7 +365,46 @@ const themeSchema = z
     shadow: _shadowSchema,
     opacity: opacitySchema,
   })
-  .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
+  .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' })
+  // Validate that token references in typography.components (e.g. '{letter-spacing.3}') point to keys defined in this theme.
+  .superRefine((theme, ctx) => {
+    // font-size references must resolve in every size mode, so only keys present in all steps count.
+    const fontSizeKeys = new Set<string>();
+    const steps = Object.values(theme.size.steps);
+    for (const key of Object.keys(steps[0]?.fontSizes ?? {})) {
+      if (steps.every((step) => key in step.fontSizes)) {
+        fontSizeKeys.add(key);
+      }
+    }
+
+    const availableKeys: Record<string, Set<string>> = {
+      'line-height': new Set(Object.keys(theme.typography.lineHeight)),
+      'font-weight': new Set(Object.keys(theme.typography.fontWeight)),
+      'letter-spacing': new Set(Object.keys(theme.typography.letterSpacing)),
+      'font-size': fontSizeKeys,
+    };
+
+    const checkGroup = (group: Record<string, unknown>, path: (string | number)[]) => {
+      for (const [name, value] of Object.entries(group)) {
+        if (typeof value === 'string') {
+          for (const [, prefix, key] of value.matchAll(/\{([\w-]+)\.([\w.-]+)\}/g)) {
+            const known = availableKeys[prefix];
+            if (known && !known.has(key)) {
+              ctx.addIssue({
+                code: 'custom',
+                path: [...path, name],
+                message: `Unknown ${prefix} reference "{${prefix}.${key}}". Available keys: ${[...known].join(', ')}.`,
+              });
+            }
+          }
+        } else if (value && typeof value === 'object') {
+          checkGroup(value as Record<string, unknown>, [...path, name]);
+        }
+      }
+    };
+
+    checkGroup(theme.typography.components, ['typography', 'components']);
+  });
 
 export const themesSchema = z
   .record(z.string(), themeSchema)
