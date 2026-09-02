@@ -204,6 +204,33 @@ const bodyTokens = (lineHeight: string) => ({
 const typographySchema = z
   .object({
     fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }).default(defaultFontFamily),
+    lineHeight: z
+      .object({
+        sm: z.string().meta({ description: 'Sets the small line-height for this theme' }).default('130%'),
+        md: z.string().meta({ description: 'Sets the medium line-height for this theme' }).default('150%'),
+        lg: z.string().meta({ description: 'Sets the large line-height for this theme' }).default('170%'),
+      })
+      .prefault({}),
+    fontWeight: z
+      .object({
+        medium: z.string().meta({ description: 'Sets the medium font-weight for this theme' }).default('Medium'),
+        semibold: z.string().meta({ description: 'Sets the semibold font-weight for this theme' }).default('Semi bold'),
+        regular: z.string().meta({ description: 'Sets the regular font-weight for this theme' }).default('Regular'),
+      })
+      .prefault({}),
+    letterSpacing: z
+      .object({
+        '1': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('-1%'),
+        '2': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('-0.5%'),
+        '3': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('-0.25%'),
+        '4': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('-0.15%'),
+        '5': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('0%'),
+        '6': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('0.15%'),
+        '7': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('0.25%'),
+        '8': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('0.5%'),
+        '9': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('1.5%'),
+      })
+      .prefault({}),
     components: z
       .object({
         heading: z

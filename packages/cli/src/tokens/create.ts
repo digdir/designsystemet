@@ -35,16 +35,16 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
       generateSize(sizeMode, size),
     ]),
     ['primitives/modes/size/global', generateSizeGlobal(size)],
-    ...sizeModes.map((size): [string, TokenSet] => [
-      `primitives/modes/typography/size/${size}`,
-      generateFontSizes(size),
+    ...sizeModes.map((sizeMode): [string, TokenSet] => [
+      `primitives/modes/typography/size/${sizeMode}`,
+      generateFontSizes(sizeMode, typography),
     ]),
     [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
     [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),
-    [`themes/${name}`, generateTheme(colorNames, name, borderRadius)],
+    [`themes/${name}`, generateTheme(colorNames, name, borderRadius, typography)],
     ...colorTokens.map(([colorName, colorSetTokens]): [string, TokenSet] => [
       `semantic/color/${colorName}`,
       colorSetTokens,
