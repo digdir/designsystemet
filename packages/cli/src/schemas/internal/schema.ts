@@ -140,4 +140,6 @@ export const configFileCreateSchema = baseConfigFileCreateSchema.extend({
   themes: themesSchema,
 });
 
-export type CreateConfigSchema = z.input<typeof configFileCreateSchema>;
+export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
+/** The pre-validation shape of the config file, i.e. what users write: defaulted fields are optional. */
+export type CreateConfigSchemaInput = z.input<typeof configFileCreateSchema>;
