@@ -1,12 +1,12 @@
 import * as R from 'ramda';
 import { type ColorNumber, semanticColorMap } from '../../../../colors/types.ts';
-import type { BorderRadiusConfig, Token, TokenSet, Typography } from '../../../types.ts';
+import type { BorderRadiusConfig, Token, TokenSet, TypographySet } from '../../../types.ts';
 
 export const generateTheme = (
   colorNames: string[],
   themeName: string,
   borderRadius: BorderRadiusConfig,
-  typography: Typography,
+  typography: TypographySet,
 ) => {
   const themeColorTokens = Object.fromEntries(
     colorNames.map((colorName) => [colorName, generateColorScaleTokens(colorName, themeName)]),
@@ -89,7 +89,7 @@ const generateBorderRadius = (borderRadius: BorderRadiusConfig): TokenSet => ({
   },
 });
 
-const generateBase = (themeName: string, borderRadius: BorderRadiusConfig, typography: Typography): TokenSet => ({
+const generateBase = (themeName: string, borderRadius: BorderRadiusConfig, typography: TypographySet): TokenSet => ({
   color: {},
   'font-family': {
     $type: 'fontFamilies',

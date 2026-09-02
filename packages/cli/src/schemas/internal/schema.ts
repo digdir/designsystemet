@@ -42,7 +42,8 @@ const themeSchema = z
     opacity: opacitySchema,
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' })
-  // Validate that token references in typography.components (e.g. '{letter-spacing.3}') point to keys defined in this theme.
+  // Validate that token references in each typography set's components (e.g. '{letter-spacing.3}')
+  // point to keys defined in this theme.
   .superRefine((theme, ctx) => {
     // font-size references must resolve in every size mode, so only keys present in all steps count.
     const fontSizeKeys = new Set<string>();
@@ -53,14 +54,11 @@ const themeSchema = z
       }
     }
 
-    const availableKeys: Record<string, Set<string>> = {
-      'line-height': new Set(Object.keys(theme.typography.lineHeight)),
-      'font-weight': new Set(Object.keys(theme.typography.fontWeight)),
-      'letter-spacing': new Set(Object.keys(theme.typography.letterSpacing)),
-      'font-size': fontSizeKeys,
-    };
-
-    const checkGroup = (group: Record<string, unknown>, path: (string | number)[]) => {
+    const checkGroup = (
+      group: Record<string, unknown>,
+      path: (string | number)[],
+      availableKeys: Record<string, Set<string>>,
+    ) => {
       for (const [name, value] of Object.entries(group)) {
         if (typeof value === 'string') {
           for (const [, prefix, key] of value.matchAll(/\{([\w-]+)\.([\w.-]+)\}/g)) {
@@ -74,12 +72,21 @@ const themeSchema = z
             }
           }
         } else if (value && typeof value === 'object') {
-          checkGroup(value as Record<string, unknown>, [...path, name]);
+          checkGroup(value as Record<string, unknown>, [...path, name], availableKeys);
         }
       }
     };
 
-    checkGroup(theme.typography.components, ['typography', 'components']);
+    for (const [setName, set] of Object.entries(theme.typography)) {
+      const availableKeys: Record<string, Set<string>> = {
+        'line-height': new Set(Object.keys(set.lineHeight)),
+        'font-weight': new Set(Object.keys(set.fontWeight)),
+        'letter-spacing': new Set(Object.keys(set.letterSpacing)),
+        'font-size': fontSizeKeys,
+      };
+
+      checkGroup(set.components, ['typography', setName, 'components'], availableKeys);
+    }
   });
 
 export const themesSchema = z

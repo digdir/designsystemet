@@ -1,7 +1,7 @@
-import type { SizeConfig, SizeModes, TokenSet, Typography } from '../../../types.ts';
+import type { SizeConfig, SizeModes, TokenSet, TypographySet } from '../../../types.ts';
 import { tokensFromRecord } from '../../../utils.ts';
 
-export const generateTypography = (themeName: string, typography: Typography): TokenSet => ({
+export const generateTypography = (themeName: string, typography: TypographySet): TokenSet => ({
   [themeName]: {
     'font-family': {
       $type: 'fontFamilies',
@@ -11,7 +11,7 @@ export const generateTypography = (themeName: string, typography: Typography): T
   },
 });
 
-export const generateTypographyMode = (mode: SizeModes, typography: Typography, size: SizeConfig): TokenSet => {
+export const generateTypographyMode = (mode: SizeModes, typography: TypographySet, size: SizeConfig): TokenSet => {
   const step = size.steps[mode];
   if (!step) {
     throw new Error(`Missing size step "${mode}" in theme size configuration`);

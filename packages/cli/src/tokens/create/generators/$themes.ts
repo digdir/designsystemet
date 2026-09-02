@@ -40,7 +40,7 @@ export type ThemeObject_ = ThemeObject & {
 
 * Omitting these ids results will result in the following bugs:
  - New collections/modes being created which may cause ghost variables in Figma.
- - New collections/modes may cause users hitting the cap on Figma variable modes which is at time of writing 4 (or unlimited for enterprise).
+ - New collections/modes may cause users hitting the cap on Figma variable modes which is at time of writing 10 (or unlimited for enterprise).
 
 */
 export async function generate$Themes(
@@ -49,11 +49,11 @@ export async function generate$Themes(
   colorNames: string[],
   createHashFn: (text: string) => Promise<string> = createHash,
 ): Promise<ThemeObject_[]> {
-  const { colorSchemes, sizeModes } = tokenSetDimensions;
+  const { colorSchemes, sizeModes, typographies } = tokenSetDimensions;
   return [
     ...generateSizeGroup(sizeModes),
     ...(await generateThemesGroup(themeNames, createHashFn)),
-    ...generateTypographyGroup(themeNames),
+    ...(await generateTypographyGroup(themeNames, typographies, createHashFn)),
     ...generateColorSchemesGroup(colorSchemes, themeNames),
     generateSemanticGroup(),
     ...(await generateColorGroup(colorNames, createHashFn)),
@@ -185,27 +185,37 @@ async function generateColorGroup(
   );
 }
 
-function generateTypographyGroup(themes: string[]): ThemeObject_[] {
-  return [
-    {
-      id: '368d753fcac4455f289500eaa42e70dc0a03522f',
-      $figmaCollectionId: 'VariableCollectionId:36248:20769',
-      $figmaModeId: '36248:2',
-      name: 'Primary',
-      selectedTokenSets: Object.fromEntries(
-        themes.map((theme) => [`primitives/modes/typography/primary/${theme}`, TokenSetStatus.ENABLED]),
-      ),
-      group: 'Typography',
-    },
-    {
-      id: '264b8bd1d40b364e1ea3acf09e49795ddd4c513c',
-      $figmaCollectionId: 'VariableCollectionId:36248:20769',
-      $figmaModeId: '36248:3',
-      name: 'Secondary',
-      selectedTokenSets: Object.fromEntries(
-        themes.map((theme) => [`primitives/modes/typography/secondary/${theme}`, TokenSetStatus.ENABLED]),
-      ),
-      group: 'Typography',
-    },
-  ];
+/** Known Figma ids for the default typography sets, see the doc comment on {@link generate$Themes} */
+const typographyGroupDefaults: Record<string, { id: string; $figmaModeId: string }> = {
+  primary: {
+    id: '368d753fcac4455f289500eaa42e70dc0a03522f',
+    $figmaModeId: '36248:2',
+  },
+  secondary: {
+    id: '264b8bd1d40b364e1ea3acf09e49795ddd4c513c',
+    $figmaModeId: '36248:3',
+  },
+};
+
+async function generateTypographyGroup(
+  themes: string[],
+  typographies: string[],
+  createHashFn: (text: string) => Promise<string> = createHash,
+): Promise<ThemeObject_[]> {
+  return Promise.all(
+    typographies.map(async (typography): Promise<ThemeObject_> => {
+      const defaults = typographyGroupDefaults[typography];
+
+      return {
+        id: defaults?.id ?? (await createHashFn(typography)),
+        $figmaCollectionId: 'VariableCollectionId:36248:20769',
+        $figmaModeId: defaults?.$figmaModeId,
+        name: typography.charAt(0).toUpperCase() + typography.slice(1),
+        selectedTokenSets: Object.fromEntries(
+          themes.map((theme) => [`primitives/modes/typography/${typography}/${theme}`, TokenSetStatus.ENABLED]),
+        ),
+        group: 'Typography',
+      };
+    }),
+  );
 }
