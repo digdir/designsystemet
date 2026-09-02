@@ -51,7 +51,7 @@ export async function generate$Themes(
 ): Promise<ThemeObject_[]> {
   const { colorSchemes, sizeModes, typographies } = tokenSetDimensions;
   return [
-    ...generateSizeGroup(sizeModes),
+    ...(await generateSizeGroup(sizeModes, createHashFn)),
     ...(await generateThemesGroup(themeNames, createHashFn)),
     ...(await generateTypographyGroup(themeNames, typographies, createHashFn)),
     ...generateColorSchemesGroup(colorSchemes, themeNames),
@@ -60,48 +60,52 @@ export async function generate$Themes(
   ];
 }
 
-function generateSizeGroup(_sizes: SizeModes[]): ThemeObject_[] {
-  return [
-    {
-      id: '8b2c8cc86611a34b135cb22948666779361fd729',
-      name: 'medium',
-      $figmaStyleReferences: {},
-      selectedTokenSets: {
-        'primitives/modes/size/medium': TokenSetStatus.SOURCE,
-        'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/medium': TokenSetStatus.ENABLED,
-      },
-      $figmaCollectionId: 'VariableCollectionId:36248:20757',
-      $figmaModeId: '41630:1',
-      group: 'Size',
-    },
-    {
-      id: 'd49b9eebeb48a4f165a74b7261733d0a73370f0e',
-      name: 'large',
-      $figmaStyleReferences: {},
-      selectedTokenSets: {
-        'primitives/modes/size/large': TokenSetStatus.SOURCE,
-        'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/large': TokenSetStatus.ENABLED,
-      },
-      $figmaCollectionId: 'VariableCollectionId:36248:20757',
-      $figmaModeId: '41630:2',
-      group: 'Size',
-    },
-    {
-      id: 'fb11567729c298ca37c9da4e3a27716a23480824',
-      name: 'small',
-      $figmaStyleReferences: {},
-      selectedTokenSets: {
-        'primitives/modes/size/small': TokenSetStatus.SOURCE,
-        'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/small': TokenSetStatus.ENABLED,
-      },
-      $figmaCollectionId: 'VariableCollectionId:36248:20757',
-      $figmaModeId: '41630:3',
-      group: 'Size',
-    },
+/** Known Figma ids for the default size modes, see the doc comment on {@link generate$Themes} */
+const sizeGroupDefaults: Record<string, { id: string; $figmaModeId: string }> = {
+  medium: {
+    id: '8b2c8cc86611a34b135cb22948666779361fd729',
+    $figmaModeId: '41630:1',
+  },
+  large: {
+    id: 'd49b9eebeb48a4f165a74b7261733d0a73370f0e',
+    $figmaModeId: '41630:2',
+  },
+  small: {
+    id: 'fb11567729c298ca37c9da4e3a27716a23480824',
+    $figmaModeId: '41630:3',
+  },
+};
+
+async function generateSizeGroup(
+  sizeModes: SizeModes[],
+  createHashFn: (text: string) => Promise<string> = createHash,
+): Promise<ThemeObject_[]> {
+  // Keep the historical order of the default modes, followed by any custom modes in config order.
+  const modes: string[] = sizeModes;
+  const orderedModes = [
+    ...Object.keys(sizeGroupDefaults).filter((mode) => modes.includes(mode)),
+    ...modes.filter((mode) => !(mode in sizeGroupDefaults)),
   ];
+
+  return Promise.all(
+    orderedModes.map(async (mode): Promise<ThemeObject_> => {
+      const defaults = sizeGroupDefaults[mode];
+
+      return {
+        id: defaults?.id ?? (await createHashFn(mode)),
+        name: mode,
+        $figmaStyleReferences: {},
+        selectedTokenSets: {
+          [`primitives/modes/size/${mode}`]: TokenSetStatus.SOURCE,
+          'primitives/modes/size/global': TokenSetStatus.ENABLED,
+          [`primitives/modes/typography/size/${mode}`]: TokenSetStatus.ENABLED,
+        },
+        $figmaCollectionId: 'VariableCollectionId:36248:20757',
+        $figmaModeId: defaults?.$figmaModeId,
+        group: 'Size',
+      };
+    }),
+  );
 }
 
 const colorSchemeDefaults: Record<ColorScheme, ThemeObject_> = {
