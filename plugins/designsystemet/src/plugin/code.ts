@@ -2,11 +2,11 @@ import {
   parseConfig,
   validateConfig,
 } from '@digdir/designsystemet/schemas/helpers.js';
-import { configFileCreateSchema } from '@digdir/designsystemet/schemas/v1.1/schema.js';
+import { configFileCreateSchema } from '@digdir/designsystemet/schemas/internal/schema.js';
 import {
   createSystemTokens,
   createTokens,
-  tokenSetDimensions,
+  getTokenSetDimensions,
 } from '@digdir/designsystemet/tokens/create';
 import type { infer as ZodInfer } from 'zod';
 import { postMessage } from '../common';
@@ -65,13 +65,22 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
         themeNames = Object.keys(config.themes ?? {});
 
+        // The dimensions come from the first theme, mirroring the CLI: size modes and
+        // typography sets are expected to be the same across themes.
+        const tokenSetDimensions = getTokenSetDimensions(
+          config.themes[themeNames[0]],
+        );
+
         for (const [themeName, themeConfig] of Object.entries(
           config.themes,
         ) as [string, ConfigSchema['themes'][string]][]) {
-          const { tokenSets } = await createTokens({
-            name: themeName,
-            ...themeConfig,
-          });
+          const { tokenSets } = await createTokens(
+            {
+              name: themeName,
+              ...themeConfig,
+            },
+            tokenSetDimensions,
+          );
 
           // Collect semantic color names from the token set paths to get severity colors, neutral and other default colors. These will be used to generate system tokens later.
           for (const [tokenSetPath, data] of tokenSets.entries()) {
