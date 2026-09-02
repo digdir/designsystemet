@@ -47,16 +47,15 @@ export async function generate$Themes(
   tokenSetDimensions: TokenSetDimensions,
   themeNames: string[],
   colorNames: string[],
-  createHashFn: (text: string) => Promise<string> = createHash,
 ): Promise<ThemeObject_[]> {
   const { colorSchemes, sizeModes, typographies } = tokenSetDimensions;
   return [
-    ...(await generateSizeGroup(sizeModes, createHashFn)),
-    ...(await generateThemesGroup(themeNames, createHashFn)),
-    ...(await generateTypographyGroup(themeNames, typographies, createHashFn)),
+    ...(await generateSizeGroup(sizeModes)),
+    ...(await generateThemesGroup(themeNames)),
+    ...(await generateTypographyGroup(themeNames, typographies)),
     ...generateColorSchemesGroup(colorSchemes, themeNames),
     generateSemanticGroup(),
-    ...(await generateColorGroup(colorNames, createHashFn)),
+    ...(await generateColorGroup(colorNames)),
   ];
 }
 
@@ -76,10 +75,7 @@ const sizeGroupDefaults: Record<string, { id: string; $figmaModeId: string }> = 
   },
 };
 
-async function generateSizeGroup(
-  sizeModes: SizeModes[],
-  createHashFn: (text: string) => Promise<string> = createHash,
-): Promise<ThemeObject_[]> {
+async function generateSizeGroup(sizeModes: SizeModes[]): Promise<ThemeObject_[]> {
   // Keep the historical order of the default modes, followed by any custom modes in config order.
   const modes: string[] = sizeModes;
   const orderedModes = [
@@ -92,7 +88,7 @@ async function generateSizeGroup(
       const defaults = sizeGroupDefaults[mode];
 
       return {
-        id: defaults?.id ?? (await createHashFn(mode)),
+        id: defaults?.id ?? (await createHash(mode)),
         name: mode,
         $figmaStyleReferences: {},
         selectedTokenSets: {
@@ -137,14 +133,11 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[])
   );
 }
 
-async function generateThemesGroup(
-  themes: string[],
-  createHashFn: (text: string) => Promise<string> = createHash,
-): Promise<ThemeObject_[]> {
+async function generateThemesGroup(themes: string[]): Promise<ThemeObject_[]> {
   return Promise.all(
     themes.map(
       async (theme, index): Promise<ThemeObject_> => ({
-        id: await createHashFn(theme),
+        id: await createHash(theme),
         $figmaCollectionId: 'VariableCollectionId:36528:61712',
         $figmaModeId: `40960:${index + 6}`, // Start on 6 in Token Studio and Community file for some reason
         name: theme,
@@ -171,14 +164,11 @@ function generateSemanticGroup(): ThemeObject_ {
   };
 }
 
-async function generateColorGroup(
-  colorNames: string[],
-  createHashFn: (text: string) => Promise<string> = createHash,
-): Promise<ThemeObject_[]> {
+async function generateColorGroup(colorNames: string[]): Promise<ThemeObject_[]> {
   return Promise.all(
     colorNames.map(
       async (color): Promise<ThemeObject_> => ({
-        id: await createHashFn(color),
+        id: await createHash(color),
         name: color,
         selectedTokenSets: {
           [`semantic/color/${color}`]: TokenSetStatus.ENABLED,
@@ -201,17 +191,13 @@ const typographyGroupDefaults: Record<string, { id: string; $figmaModeId: string
   },
 };
 
-async function generateTypographyGroup(
-  themes: string[],
-  typographies: string[],
-  createHashFn: (text: string) => Promise<string> = createHash,
-): Promise<ThemeObject_[]> {
+async function generateTypographyGroup(themes: string[], typographies: string[]): Promise<ThemeObject_[]> {
   return Promise.all(
     typographies.map(async (typography): Promise<ThemeObject_> => {
       const defaults = typographyGroupDefaults[typography];
 
       return {
-        id: defaults?.id ?? (await createHashFn(typography)),
+        id: defaults?.id ?? (await createHash(typography)),
         $figmaCollectionId: 'VariableCollectionId:36248:20769',
         $figmaModeId: defaults?.$figmaModeId,
         name: typography.charAt(0).toUpperCase() + typography.slice(1),
