@@ -83,7 +83,7 @@ import { Card } from '@digdir/designsystemet-react';
 Dersom kortet skal lenke til en annen side, kan du legge en lenke i kortets tittel.
 Hele kortet blir da automatisk klikkbart, men skjermlesere får en [bedre brukeropplevelse enn dersom hele kortet var en lenke (adrianroselli.com)](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
 
-Når `Card` finner en `<a>` inni heading-elementet vil [data-clickdelegatefor](/no/components/utilities/clickdelegatefor) automatisk bli lagt til på kortet.
+Når `Card` finner en `<a>` inni heading-elementet vil [data-clickdelegatefor](https://designsystemet.no/no/components/utilities/clickdelegatefor) automatisk bli lagt til på kortet.
 Dette er nyttig når `Card` inneholder tekst eller media, og skal navigere til en annen side.
 
 Legg merke til at med tastaturnavigering omfavner fokus-ringen kun teksten i lenken, og ikke hele kortet. Dette er fordi lenkekort også kan inneholde flere klikkbare elementer (sekundærhandlinger), og samtidig er det mindre forvirrende for brukere av assisterende teknologi, som stemmestyring eller skjermlesere, at lenketeksten samsvarer med fokusområdet.
