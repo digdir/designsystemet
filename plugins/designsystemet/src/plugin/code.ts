@@ -9,6 +9,7 @@ import {
   createTokens,
   getTokenSetDimensions,
 } from '@digdir/designsystemet/tokens/create';
+import type { TokenSets } from '@digdir/designsystemet/tokens/types';
 import type { infer as ZodInfer, input as ZodInput } from 'zod';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
@@ -17,21 +18,12 @@ import {
   buildPreviewData,
   buildTokenModel,
 } from './token-export/preview-model';
-import type { LoadedFile, TokenModel } from './token-export/types';
+import type { TokenModel } from './token-export/types';
 
-function makeLoadedFile(path: string, data: unknown): LoadedFile {
-  return {
-    path,
-    tokenSetPath: path.replace(/\.jsonc?$/i, ''),
-    data,
-  };
-}
-
-// Use a Map so that token sets shared across themes (e.g. semantic/color) are only
-// kept once. Theme-specific sets have unique paths (themes/some-org, etc.) and are
-// kept as-is; shared sets are identical across themes so overwriting is safe.
-const fileMap = new Map<string, LoadedFile>();
-let files: LoadedFile[] = [];
+// Token sets from every theme, keyed by token set path. Shared sets (e.g.
+// semantic/color) are identical across themes, so overwriting them is safe;
+// theme-specific sets have unique paths (themes/some-org, etc.).
+const tokenSets: TokenSets = new Map();
 // Import-side model; only the derived, pre-resolved preview data is posted to the UI.
 let tokenModel: TokenModel | null = null;
 
@@ -59,8 +51,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     case 'import-config-and-create-preview-tokens': {
       try {
         semanticColorNames.clear();
-        fileMap.clear();
-        files = [];
+        tokenSets.clear();
 
         const parsedConfig = parseConfig<ConfigSchemaInternal>(msg.config);
 
@@ -87,7 +78,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         for (const [themeName, themeConfig] of Object.entries(
           config.themes,
         ) as [string, ConfigSchemaInternal['themes'][string]][]) {
-          const { tokenSets } = await createTokens(
+          const themeTokens = await createTokens(
             {
               name: themeName,
               ...themeConfig,
@@ -96,9 +87,8 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           );
 
           // Collect semantic color names from the token set paths to get severity colors, neutral and other default colors. These will be used to generate system tokens later.
-          for (const [tokenSetPath, data] of tokenSets.entries()) {
-            const file = makeLoadedFile(`${tokenSetPath}.json`, data);
-            fileMap.set(file.tokenSetPath, file);
+          for (const [tokenSetPath, tokenSet] of themeTokens.tokenSets) {
+            tokenSets.set(tokenSetPath, tokenSet);
 
             const colorMatch = /^semantic\/color\/(.+)$/.exec(tokenSetPath);
             if (colorMatch) {
@@ -113,20 +103,22 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           themeNames,
         };
 
-        const systemTokens = await createSystemTokens(systemTokensOptions);
+        const { $themes } = await createSystemTokens(systemTokensOptions);
 
-        files = Array.from(fileMap.values());
-        files.push(makeLoadedFile('$themes.json', systemTokens.$themes));
-        files.sort((a, b) => a.path.localeCompare(b.path));
-
-        tokenModel = buildTokenModel(files);
+        tokenModel = buildTokenModel({
+          // Sorted by path so the model is stable regardless of theme order.
+          tokenSets: new Map(
+            Array.from(tokenSets).sort(([a], [b]) => a.localeCompare(b)),
+          ),
+          $themes,
+        });
         postMessage('preview-tokens-from-config', {
           status: 'success',
           preview: {
             previewData: buildPreviewData(tokenModel),
             themeNames,
           },
-          message: `Imported ${files.length} token sets from ${themeNames.length} themes.`,
+          message: `Imported ${tokenSets.size} token sets from ${themeNames.length} themes.`,
         });
       } catch (error) {
         const errorMessage =
