@@ -1,7 +1,17 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
+import { severityColors } from '../schemas/defaults.ts';
 import { getSemanticColorByNumber, semanticColorSpec } from './specs.ts';
-import type { ColorNumber, ColorScale, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
+import type {
+  ColorNumber,
+  ColorScale,
+  ColorScheme,
+  CssColor,
+  SemanticColorNames,
+  SemanticColorSpec,
+  SeverityColorNames,
+  ThemeInfo,
+} from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
 export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info'];
@@ -128,4 +138,86 @@ const generateColorContrast = (color: CssColor, type: 'default' | 'subtle'): Css
  */
 export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
   return `--ds-color-${colorType}-${getSemanticColorByNumber(colorNumber).displayName.toLowerCase().replace(/\s/g, '-')}`;
+};
+
+/** Non-severity colors first (in user order), then all severity colors at the end in severityColors order.
+ * User-defined severity colors keep their value but are moved to the end.
+ *
+ * We do this because we want severity colors to always be last when design-tokens are visualized in Token Studio and Figma Variables.
+ */
+export function addSeverityColors(colors: Record<string, CssColor>): Record<string, CssColor> {
+  const result = new Map(Object.entries(colors));
+  for (const [name, value] of Object.entries(severityColors)) {
+    const userValue = result.get(name);
+    result.delete(name); // Deleting and re-adding moves the key to the end
+    result.set(name, userValue ?? value);
+  }
+  return Object.fromEntries(result);
+}
+
+/** Per-color, per-scheme hex overrides for individual steps of a generated color scale. */
+export type ColorScaleOverrides = Record<
+  string,
+  Partial<Record<SemanticColorNames, Partial<Record<ColorScheme, CssColor>>>>
+>;
+
+/** The color-related overrides of a theme config. */
+export type ThemeColorOverrides = {
+  colors?: ColorScaleOverrides;
+  severity?: Partial<Record<SeverityColorNames, CssColor>>;
+};
+
+/**
+ * Group colors by color scheme, returning a partial record of color scales for the specified scheme.
+ *
+ * @param colors - A record of color scales, where each color scale is a record of color schemes and their corresponding hex values.
+ * @param colorScheme - The color scheme to group the colors by.
+ * @returns A record of color scales for the specified color scheme.
+ */
+export const groupByScheme = (colors: ColorScaleOverrides, colorScheme: ColorScheme) => {
+  const grouped: Record<string, Partial<ColorScale>> = {};
+  for (const [colorName, customColorScale] of Object.entries(colors)) {
+    const schemeColors: Partial<ColorScale> = {};
+
+    for (const semanticColorName of Object.keys(customColorScale) as SemanticColorNames[]) {
+      const hex = customColorScale[semanticColorName]?.[colorScheme];
+      if (hex) {
+        schemeColors[semanticColorName] = { hex, ...semanticColorSpec[semanticColorName] };
+      }
+    }
+    grouped[colorName] = schemeColors;
+  }
+
+  return grouped;
+};
+
+/**
+ * Resolves every color scale of a theme for one color scheme: the theme's colors plus the
+ * default severity colors, with `overrides.severity` and `overrides.colors` applied.
+ *
+ * This is what the token generator turns into color-scheme tokens; previews (e.g. the Figma
+ * plugin) use it directly so they show the same colors the tokens end up with.
+ */
+export const getThemeColorScales = (
+  theme: { colors: Record<string, CssColor>; overrides?: ThemeColorOverrides },
+  colorScheme: ColorScheme,
+): Record<string, ColorScale> => {
+  const { overrides } = theme;
+  const colors: Record<string, CssColor> = { ...addSeverityColors(theme.colors), ...(overrides?.severity || {}) };
+
+  const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
+
+  const colorScales: Record<string, ColorScale> = {};
+
+  for (const [colorName, color] of Object.entries(colors)) {
+    let colorScale = generateColorScale(color, colorScheme);
+    const colorOverride = colorOverrides[colorName];
+
+    if (colorOverride) {
+      colorScale = { ...colorScale, ...colorOverride };
+    }
+    colorScales[colorName] = colorScale;
+  }
+
+  return colorScales;
 };
