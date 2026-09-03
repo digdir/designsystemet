@@ -1,11 +1,6 @@
 import { COLLECTION } from './constants';
 import type { FlatToken } from './types';
 
-export function isMetaFile(path: string): boolean {
-  const fileName = path.split('/').pop();
-  return Boolean(fileName?.startsWith('$'));
-}
-
 // Token paths use dots (color.background.default); Figma variable names use
 // slashes (color/background/default).
 export function pathToFigmaName(path: string): string {
