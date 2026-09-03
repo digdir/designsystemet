@@ -1,90 +1,89 @@
+import {
+  type ColorScheme,
+  getThemeColorScales,
+  semanticColorNames,
+} from '@digdir/designsystemet/color';
+import type { CreateConfigSchema } from '@digdir/designsystemet/schemas/internal/schema.js';
 import { ToggleGroup, ToggleGroupItem } from '@digdir/designsystemet-react';
-import type {
-  BorderRadiusPreview,
-  FontFamilyPreview,
-  PreviewData,
-  SemanticColorScale,
-} from '../plugin/token-export/types';
-import { previewVariantKey } from '../plugin/token-export/utils';
+import { useMemo } from 'react';
+import { resolveBorderRadiusSteps } from './border-radius';
 
 type PreviewViewProps = {
-  preview: PreviewData;
+  config: CreateConfigSchema;
   selectedTheme: string | null;
-  selectedScheme: string | null;
+  selectedScheme: string;
   onSelectTheme: (theme: string) => void;
   onSelectScheme: (scheme: string) => void;
 };
 
-// Renders the theme preview (theme/scheme controls + color scales + border radii). All
-// values are resolved ahead of time on the plugin side, keyed per theme/scheme variant —
-// this component only looks them up. Warnings and status live in the header banner, not here.
+type ThemeConfig = CreateConfigSchema['themes'][string];
+
+// Pascal case to match the Figma variable modes ('Light'/'Dark').
+const COLOR_SCHEME_OPTIONS = ['Light', 'Dark'];
+
+// Renders the theme preview (theme/scheme controls + color scales + border radii + fonts)
+// straight from the validated config, using the same CLI helpers the token generator
+// uses, so the preview shows what the tokens end up with. Warnings and status live in
+// the header banner, not here.
 export function PreviewView({
-  preview,
+  config,
   selectedTheme,
   selectedScheme,
   onSelectTheme,
   onSelectScheme,
 }: PreviewViewProps): React.JSX.Element {
-  const variantKey = previewVariantKey(
-    pickOption(preview.themeOptions, selectedTheme),
-    pickOption(preview.colorSchemeOptions, selectedScheme),
-  );
-
-  const showThemes = preview.themeOptions.length > 1;
-  const showSchemes = preview.colorSchemeOptions.length > 1;
+  const themeNames = Object.keys(config.themes);
+  const themeName = pickOption(themeNames, selectedTheme);
+  const theme = themeName ? config.themes[themeName] : null;
+  const scheme: ColorScheme = /dark/i.test(selectedScheme) ? 'dark' : 'light';
 
   // The preview surface follows the selected scheme (not the user's Figma theme) so light
   // colors are read on a light surface and dark colors on a dark one. Keying the surface on
   // the scheme remounts it on scheme change, replaying the reveal animation — but not on
   // theme change.
-  const surface = /dark/i.test(selectedScheme || '') ? 'dark' : 'light';
-
   return (
     <>
-      {(showThemes || showSchemes) && (
+      {(themeNames.length > 1 || COLOR_SCHEME_OPTIONS.length > 1) && (
         <div className='tx-hero'>
           <div className='tx-control-row'>
-            {showThemes && (
+            {themeNames.length > 1 && (
               <LabeledToggleGroup
                 label='Theme'
                 ariaLabel='Toggle between themes'
-                options={preview.themeOptions}
-                value={selectedTheme}
+                options={themeNames}
+                value={themeName}
                 onChange={onSelectTheme}
               />
             )}
-            {showSchemes && (
-              <LabeledToggleGroup
-                label='Color scheme'
-                ariaLabel='Toggle between color schemes'
-                options={preview.colorSchemeOptions}
-                value={selectedScheme}
-                onChange={onSelectScheme}
-              />
-            )}
+            <LabeledToggleGroup
+              label='Color scheme'
+              ariaLabel='Toggle between color schemes'
+              options={COLOR_SCHEME_OPTIONS}
+              value={pickOption(COLOR_SCHEME_OPTIONS, selectedScheme)}
+              onChange={onSelectScheme}
+            />
           </div>
         </div>
       )}
 
-      <div
-        key={selectedScheme ?? 'none'}
-        className={`tx-surface tx-surface--${surface}`}
-      >
+      <div key={scheme} className={`tx-surface tx-surface--${scheme}`}>
         <div className='tx-preview-layout'>
-          <ColorScales
-            scales={preview.semanticColorScales}
-            variantKey={variantKey}
-          />
-          <BorderRadii radii={preview.borderRadii} variantKey={variantKey} />
-          <FontFamilies fonts={preview.fontFamilies} variantKey={variantKey} />
+          {theme ? (
+            <>
+              <ColorScales theme={theme} scheme={scheme} />
+              <BorderRadii theme={theme} />
+              <FontFamilies theme={theme} />
+            </>
+          ) : (
+            <div className='tx-empty'>The config defines no themes.</div>
+          )}
         </div>
       </div>
     </>
   );
 }
 
-// The prepared values only have entries for known option names; fall back to the
-// first option when the selection is missing or stale.
+// Fall back to the first option when the selection is missing or stale.
 function pickOption(options: string[], selected: string | null): string | null {
   if (selected && options.includes(selected)) {
     return selected;
@@ -123,40 +122,40 @@ function LabeledToggleGroup({
   );
 }
 
+// One row per color scale (theme colors followed by the severity colors), one swatch per
+// semantic role in scale order.
 function ColorScales({
-  scales,
-  variantKey,
+  theme,
+  scheme,
 }: {
-  scales: SemanticColorScale[];
-  variantKey: string;
+  theme: ThemeConfig;
+  scheme: ColorScheme;
 }): React.JSX.Element {
+  const scales = useMemo(
+    () => Object.entries(getThemeColorScales(theme, scheme)),
+    [theme, scheme],
+  );
+
   if (scales.length === 0) {
     return <div className='tx-empty'>No semantic color scales found.</div>;
   }
 
   return (
     <div className='tx-color-grid'>
-      {scales.map((scale) => (
-        <div className='tx-color-row' key={scale.name}>
-          <span className='tx-color-row-label' title={scale.name}>
-            {scale.name}
+      {scales.map(([name, scale]) => (
+        <div className='tx-color-row' key={name}>
+          <span className='tx-color-row-label' title={name}>
+            {name}
           </span>
           <div className='tx-swatches'>
-            {scale.roles.map((role) => {
-              const color = role.color[variantKey] ?? null;
-              return (
-                <div
-                  key={role.name}
-                  className={`tx-swatch ${color ? 'has-color' : ''}`}
-                  title={role.name}
-                  style={
-                    color
-                      ? ({ '--swatch': color } as React.CSSProperties)
-                      : undefined
-                  }
-                />
-              );
-            })}
+            {semanticColorNames.map((role) => (
+              <div
+                key={role}
+                className='tx-swatch has-color'
+                title={`${role}: ${scale[role].hex}`}
+                style={{ '--swatch': scale[role].hex } as React.CSSProperties}
+              />
+            ))}
           </div>
         </div>
       ))}
@@ -164,35 +163,29 @@ function ColorScales({
   );
 }
 
-function BorderRadii({
-  radii,
-  variantKey,
-}: {
-  radii: BorderRadiusPreview[];
-  variantKey: string;
-}): React.JSX.Element | null {
-  if (radii.length === 0) {
-    return null;
-  }
+// The border-radius steps in config order, evaluated from their formulas.
+function BorderRadii({ theme }: { theme: ThemeConfig }): React.JSX.Element {
+  const steps = useMemo(
+    () => Object.entries(resolveBorderRadiusSteps(theme.borderRadius)),
+    [theme],
+  );
 
   return (
     <div className='tx-color-row'>
       <span className='tx-color-row-label tx-subtle'>Border radius</span>
       <div className='tx-radius-row'>
-        {radii.map((radius) => {
-          const value = radius.values[variantKey];
-          const cssValue = value?.px ?? 0;
-          const label = value?.label ?? '';
+        {steps.map(([name, px]) => {
+          const label = px === null ? 'invalid' : `${px}px`;
           return (
             <div
               className='tx-radius-item'
-              key={radius.name}
-              title={`${radius.name}: ${label}`}
+              key={name}
+              title={`${name}: ${label}`}
             >
-              <span className='tx-radius-label'>{radius.name}</span>
+              <span className='tx-radius-label'>{name}</span>
               <div
                 className='tx-radius-sample'
-                style={{ '--radius': `${cssValue}px` } as React.CSSProperties}
+                style={{ '--radius': `${px ?? 0}px` } as React.CSSProperties}
               />
             </div>
           );
@@ -202,41 +195,27 @@ function BorderRadii({
   );
 }
 
-function FontFamilies({
-  fonts,
-  variantKey,
-}: {
-  fonts: FontFamilyPreview[];
-  variantKey: string;
-}): React.JSX.Element | null {
-  if (fonts.length === 0) {
-    return null;
-  }
+// One entry per typography set; most themes have a single set.
+function FontFamilies({ theme }: { theme: ThemeConfig }): React.JSX.Element {
+  const fonts = Object.entries(theme.typography);
 
   return (
     <div className='tx-color-row'>
       <span className='tx-color-row-label tx-subtle'>Font family</span>
       <div className='tx-font-row'>
-        {fonts.map((font) => {
-          const value = font.values[variantKey];
-          const family = value?.family ?? null;
-          const label = value?.label ?? '';
-          return (
-            <div
-              className='tx-font-item'
-              key={font.name}
-              title={`${font.name}: ${label}`}
-              style={
-                family ? { fontFamily: `'${family}', sans-serif` } : undefined
-              }
-            >
-              <span className='tx-font-sample' aria-hidden='true'>
-                Aa
-              </span>
-              <span className='tx-font-name'>{label}</span>
-            </div>
-          );
-        })}
+        {fonts.map(([setName, typography]) => (
+          <div
+            className='tx-font-item'
+            key={setName}
+            title={`${setName}: ${typography.fontFamily}`}
+            style={{ fontFamily: `'${typography.fontFamily}', sans-serif` }}
+          >
+            <span className='tx-font-sample' aria-hidden='true'>
+              Aa
+            </span>
+            <span className='tx-font-name'>{typography.fontFamily}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

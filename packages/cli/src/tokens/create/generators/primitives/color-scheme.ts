@@ -1,35 +1,8 @@
-import type { ColorScale, ColorScheme, CssColor, SemanticColorNames } from '../../../../colors/index.ts';
-import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
+import type { ColorScale, ColorScheme, CssColor } from '../../../../colors/index.ts';
+import { generateColorScale, getThemeColorScales } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
 import type { Token, TokenSet } from '../../../types.ts';
-
-/**
- * Group colors by color scheme, returning a partial record of color scales for the specified scheme.
- *
- * @param colors - A record of color scales, where each color scale is a record of color schemes and their corresponding hex values.
- * @param colorScheme - The color scheme to group the colors by.
- * @returns A record of color scales for the specified color scheme.
- */
-export const groupByScheme = (
-  colors: Record<string, Partial<Record<SemanticColorNames, Partial<Record<ColorScheme, CssColor>>>>>,
-  colorScheme: ColorScheme,
-) => {
-  const grouped: Record<string, Partial<ColorScale>> = {};
-  for (const [colorName, customColorScale] of Object.entries(colors)) {
-    const schemeColors: Partial<ColorScale> = {};
-
-    for (const semanticColorName of Object.keys(customColorScale) as SemanticColorNames[]) {
-      const hex = customColorScale[semanticColorName]?.[colorScheme];
-      if (hex) {
-        schemeColors[semanticColorName] = { hex, ...semanticColorSpec[semanticColorName] };
-      }
-    }
-    grouped[colorName] = schemeColors;
-  }
-
-  return grouped;
-};
 
 const toColorNumberTokens = (colorScale: ColorScale): TokenSet => {
   const tokens: TokenSet = {};
@@ -55,21 +28,7 @@ export const generateColorScheme = (
   colors: Record<string, CssColor>,
   overrides?: ColorOverrideSchema,
 ): TokenSet => {
-  const colorsWithSeverityOverrides: Record<string, CssColor> = { ...colors, ...(overrides?.severity || {}) };
-
-  const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
-
-  const colorScales: Record<string, ColorScale> = {};
-
-  for (const [colorName, color] of Object.entries(colorsWithSeverityOverrides)) {
-    let colorScale = generateColorScale(color, colorScheme);
-    const colorOverride = colorOverrides[colorName];
-
-    if (colorOverride) {
-      colorScale = { ...colorScale, ...colorOverride };
-    }
-    colorScales[colorName] = colorScale;
-  }
+  const colorScales = getThemeColorScales({ colors, overrides }, colorScheme);
 
   const defaultLinkVisitedToken = generateColorScale(visitedLinkColor, colorScheme)['base-default'].hex;
   const linkOverride = overrides?.linkVisited?.[colorScheme];

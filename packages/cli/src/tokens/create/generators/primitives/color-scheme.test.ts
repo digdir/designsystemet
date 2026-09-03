@@ -2,33 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { type CssColor, generateColorScale } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
-import { generateColorScheme, groupByScheme } from './color-scheme.ts';
+import { generateColorScheme } from './color-scheme.ts';
 
 const NEUTRAL: CssColor = '#444444';
 const ACCENT: CssColor = '#0062BA';
-
-describe('groupByScheme', () => {
-  const colors: Record<string, Record<string, Record<string, CssColor>>> = {
-    accent: {
-      'background-default': { light: '#1A589F', dark: '#171717' },
-      'text-default': { light: '#333333' },
-    },
-  };
-
-  it('picks the hex for the given scheme and attaches spec metadata', () => {
-    const grouped = groupByScheme(colors, 'light');
-    expect(grouped.accent['background-default']).toMatchObject({
-      hex: '#1A589F',
-      name: 'background-default',
-      number: 1,
-    });
-  });
-
-  it('drops tokens without a value for the scheme', () => {
-    const grouped = groupByScheme(colors, 'dark');
-    expect(Object.keys(grouped.accent)).toEqual(['background-default']);
-  });
-});
 
 describe('generateColorScheme', () => {
   const baseColors = { neutral: NEUTRAL, accent: ACCENT };

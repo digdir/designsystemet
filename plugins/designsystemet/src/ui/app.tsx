@@ -12,11 +12,11 @@ import {
 import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification, UiState } from '../types';
 import './app.css';
-import type { PreviewData } from '../plugin/token-export/types';
+import type { CreateConfigSchema } from '@digdir/designsystemet/schemas/internal/schema.js';
 import { PreviewView } from './preview-view';
 
 const initialState: UiState = {
-  previewData: null,
+  config: null,
   // Pascal case to match the Figma variable modes ('Light'/'Dark').
   selectedScheme: 'Light',
   selectedTheme: null,
@@ -27,8 +27,7 @@ const initialState: UiState = {
 type Action =
   | {
       type: 'set-preview';
-      previewData: PreviewData;
-      theme: string | null;
+      config: CreateConfigSchema;
       scheme: string;
       notification: Notification | null;
     }
@@ -44,13 +43,13 @@ function reducer(state: UiState, action: Action): UiState {
     case 'set-preview':
       return {
         ...state,
-        previewData: action.previewData,
-        selectedTheme: action.theme,
+        config: action.config,
+        selectedTheme: Object.keys(action.config.themes)[0] ?? null,
         selectedScheme: action.scheme,
         notification: action.notification,
       };
     case 'clear-preview':
-      return { ...state, previewData: null, notification: null };
+      return { ...state, config: null, notification: null };
     case 'export-started':
       return { ...state, isImporting: true, notification: null };
     case 'export-finished':
@@ -70,7 +69,7 @@ function reducer(state: UiState, action: Action): UiState {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const view = state.previewData ? 'preview' : 'paste';
+  const view = state.config ? 'preview' : 'paste';
 
   const [value, setValue] = useState('');
 
@@ -86,10 +85,16 @@ function App() {
               }
               dispatch({
                 type: 'set-preview',
-                previewData: msg.preview.previewData,
-                theme: msg.preview.themeNames[0] || null,
+                config: msg.preview.config,
                 scheme: 'Light',
-                notification: null,
+                notification:
+                  msg.preview.warnings.length > 0
+                    ? {
+                        kind: 'warning',
+                        text: 'The tokens were generated with warnings.',
+                        details: msg.preview.warnings,
+                      }
+                    : null,
               });
               break;
             case 'error':
@@ -164,7 +169,7 @@ function App() {
               <Label>Upload config</Label>
               <Field.Description>
                 Paste your designsystemet.config.json content below and click
-                Upload for preview.
+                preview.
               </Field.Description>
               <Textarea
                 id='config-textarea'
@@ -174,9 +179,9 @@ function App() {
             </Field>
           </div>
         )}
-        {state.previewData && (
+        {state.config && (
           <PreviewView
-            preview={state.previewData}
+            config={state.config}
             selectedScheme={state.selectedScheme}
             selectedTheme={state.selectedTheme}
             onSelectScheme={(scheme) =>

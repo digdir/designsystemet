@@ -44,7 +44,7 @@ export type ThemeOption = {
   tokenSets: string[];
 };
 
-// Import-side model. Stays on the plugin side (importer, collection specs,
+// Export-side model. Stays on the plugin side (importer, collection specs,
 // text/effect styles, resolver) and is never posted to the UI.
 export type TokenModel = {
   tokenSets: Array<{
@@ -59,38 +59,5 @@ export type TokenModel = {
   collections: CollectionPreview[];
   themeOptions: ThemeOption[];
   colorSchemeOptions: ThemeOption[];
-  warnings: string[];
-};
-
-// UI-side preview model. All values are resolved ahead of time on the plugin
-// side — one entry per theme/scheme combination, keyed by previewVariantKey()
-// — so the UI renders by lookup and needs no token resolver.
-export type SemanticColorRole = {
-  name: string;
-  // CSS color per preview variant; null when the value could not be resolved.
-  color: Record<string, string | null>;
-};
-
-export type SemanticColorScale = {
-  name: string;
-  roles: SemanticColorRole[];
-};
-
-export type BorderRadiusPreview = {
-  name: string;
-  values: Record<string, { px: number | null; label: string }>;
-};
-
-export type FontFamilyPreview = {
-  name: string;
-  values: Record<string, { family: string | null; label: string }>;
-};
-
-export type PreviewData = {
-  themeOptions: string[];
-  colorSchemeOptions: string[];
-  semanticColorScales: SemanticColorScale[];
-  borderRadii: BorderRadiusPreview[];
-  fontFamilies: FontFamilyPreview[];
   warnings: string[];
 };
