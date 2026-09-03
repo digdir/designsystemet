@@ -1,9 +1,14 @@
-import type { FigmaCollections } from '@digdir/designsystemet/tokens/create';
+import type {
+  FigmaCollections,
+  ThemeObjectInput,
+} from '@digdir/designsystemet/tokens/create';
+import type { TokenSets } from '@digdir/designsystemet/tokens/types';
 
-export type LoadedFile = {
-  path: string;
-  tokenSetPath: string;
-  data: unknown;
+// Input to buildTokenModel: the generated token sets keyed by token set path
+// (e.g. `semantic/color/neutral`) and the `$themes` entries that group them.
+export type TokenInput = {
+  tokenSets: TokenSets;
+  $themes: ThemeObjectInput[];
 };
 
 export type FlatToken = {
