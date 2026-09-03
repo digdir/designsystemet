@@ -11,24 +11,6 @@ export function figmaNameToPath(name: string): string {
   return name.replace(/\//g, '.');
 }
 
-// Sorts by position in `order`; names not in the list go last, alphabetically.
-export function compareByOrder(
-  a: string,
-  b: string,
-  order: readonly string[],
-): number {
-  const indexA = order.indexOf(a);
-  const indexB = order.indexOf(b);
-  const safeA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
-  const safeB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
-
-  if (safeA !== safeB) {
-    return safeA - safeB;
-  }
-
-  return a.localeCompare(b);
-}
-
 export function parseNumber(value: unknown): number | null {
   if (typeof value === 'number' && Number.isFinite(value)) {
     return value;
@@ -72,22 +54,4 @@ export function inferVariableName(
   }
 
   return figmaName;
-}
-
-// Key for one theme/scheme combination in the pre-resolved preview values.
-// Shared between the plugin side (which prepares the values) and the UI
-// (which looks them up).
-export function previewVariantKey(
-  theme: string | null,
-  scheme: string | null,
-): string {
-  return `${theme ?? ''}::${scheme ?? ''}`;
-}
-
-export function formatValue(value: unknown): string {
-  if (typeof value === 'string') {
-    return value;
-  }
-
-  return JSON.stringify(value);
 }
