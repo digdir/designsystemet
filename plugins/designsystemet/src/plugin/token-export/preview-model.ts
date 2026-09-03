@@ -2,10 +2,8 @@ import { semanticColorMap } from '@digdir/designsystemet/color';
 import {
   type FigmaCollections,
   type FigmaMode,
-  type ThemeObjectInput,
   toFigmaCollections,
 } from '@digdir/designsystemet/tokens/create';
-import type { TokenSet } from '@digdir/designsystemet/tokens/types';
 import { toCssColor } from './color';
 import { COLLECTION } from './constants';
 import { findReferences, flattenTokens } from './parser';
@@ -19,18 +17,17 @@ import type {
   CollectionPreview,
   FlatToken,
   FontFamilyPreview,
-  LoadedFile,
   ModePreview,
   PreviewData,
   SemanticColorScale,
   ThemeOption,
+  TokenInput,
   TokenModel,
 } from './types';
 import {
   compareByOrder,
   formatValue,
   inferVariableName,
-  isMetaFile,
   parseNumber,
   pathToFigmaName,
   previewVariantKey,
@@ -41,30 +38,25 @@ const SEMANTIC_ROLE_ORDER = Object.keys(semanticColorMap);
 
 // Builds the import-side model used by the Figma importer and the resolver.
 // This stays on the plugin side; the UI gets buildPreviewData(model) instead.
-export function buildTokenModel(files: LoadedFile[]): TokenModel {
+export function buildTokenModel({
+  tokenSets,
+  $themes,
+}: TokenInput): TokenModel {
   const warnings: string[] = [];
 
-  const themesFile = files.find((file) => file.path.endsWith('$themes.json'));
-  const themes = Array.isArray(themesFile?.data) ? themesFile.data : [];
-
-  if (!themesFile) {
+  if ($themes.length === 0) {
     warnings.push(
-      'Missing $themes.json. Preview cannot group modes from token sets.',
+      'No $themes entries. Preview cannot group modes from token sets.',
     );
   }
 
-  const tokenSets = files
-    .filter((file) => !isMetaFile(file.path))
-    .map((file) => ({
-      path: file.tokenSetPath,
-      tokens: flattenTokens(file.data),
-    }));
+  const tokenSetPaths = Array.from(tokenSets.keys());
 
   const flatTokens: FlatToken[] = [];
-  for (const set of tokenSets) {
-    for (const token of set.tokens) {
+  for (const [tokenSetPath, tokenSet] of tokenSets) {
+    for (const token of flattenTokens(tokenSet)) {
       flatTokens.push({
-        tokenSet: set.path,
+        tokenSet: tokenSetPath,
         path: token.path,
         figmaName: pathToFigmaName(token.path),
         type: token.type,
@@ -74,20 +66,12 @@ export function buildTokenModel(files: LoadedFile[]): TokenModel {
     }
   }
 
-  // Grouping of $themes.json into collections/modes is done by the CLI so the
+  // Grouping of $themes into collections/modes is done by the CLI so the
   // plugin and `designsystemet tokens` agree on it.
-  const tokenSetMap = new Map<string, TokenSet>();
-  for (const file of files) {
-    if (!isMetaFile(file.path)) {
-      tokenSetMap.set(file.tokenSetPath, file.data as TokenSet);
-    }
-  }
   const missingTokenSets = new Set<string>();
-  const figmaCollections = toFigmaCollections(
-    themes.map(toThemeObjectInput),
-    tokenSetMap,
-    { onMissingTokenSet: (tokenSet) => missingTokenSets.add(tokenSet) },
-  );
+  const figmaCollections = toFigmaCollections($themes, tokenSets, {
+    onMissingTokenSet: (tokenSet) => missingTokenSets.add(tokenSet),
+  });
 
   const modePreviews: ModePreview[] = Object.entries(figmaCollections).flatMap(
     ([group, modes]) =>
@@ -114,20 +98,17 @@ export function buildTokenModel(files: LoadedFile[]): TokenModel {
 
   for (const tokenSet of Array.from(missingTokenSets).sort()) {
     warnings.push(
-      `Token set is listed in $themes.json but has no file: ${tokenSet}`,
+      `Token set is listed in $themes but was not generated: ${tokenSet}`,
     );
   }
 
   const model: TokenModel = {
-    tokenSets: tokenSets.map((set) => ({ path: set.path })),
+    tokenSets: tokenSetPaths.map((path) => ({ path })),
     flatTokens,
     figmaCollections,
     themes: modePreviews,
     collections,
-    themeOptions: buildThemeOptions(
-      modePreviews,
-      tokenSets.map((set) => set.path),
-    ),
+    themeOptions: buildThemeOptions(modePreviews, tokenSetPaths),
     colorSchemeOptions: buildColorSchemeOptions(modePreviews),
     warnings,
   };
@@ -197,19 +178,6 @@ function prepareValues<T>(
     );
   }
   return values;
-}
-
-// $themes.json is loaded as `unknown`; coerce one entry to what toFigmaCollections
-// expects, keeping the plugin's fallbacks for malformed entries.
-function toThemeObjectInput(theme: unknown): ThemeObjectInput {
-  const raw = (theme ?? {}) as Record<string, unknown>;
-  return {
-    id: typeof raw.id === 'string' ? raw.id : undefined,
-    name: typeof raw.name === 'string' ? raw.name : '(unnamed mode)',
-    group: typeof raw.group === 'string' ? raw.group : undefined,
-    selectedTokenSets: (raw.selectedTokenSets ??
-      {}) as ThemeObjectInput['selectedTokenSets'],
-  };
 }
 
 function buildCollectionPreview(
