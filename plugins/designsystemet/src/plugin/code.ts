@@ -14,17 +14,14 @@ import type { infer as ZodInfer, input as ZodInput } from 'zod';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { importToFigma } from './token-export/importer';
-import {
-  buildPreviewData,
-  buildTokenModel,
-} from './token-export/preview-model';
+import { buildTokenModel } from './token-export/preview-model';
 import type { TokenModel } from './token-export/types';
 
 // Token sets from every theme, keyed by token set path. Shared sets (e.g.
 // semantic/color) are identical across themes, so overwriting them is safe;
 // theme-specific sets have unique paths (themes/some-org, etc.).
 const tokenSets: TokenSets = new Map();
-// Import-side model; only the derived, pre-resolved preview data is posted to the UI.
+// Export-side model. The UI never sees it; it previews from the validated config.
 let tokenModel: TokenModel | null = null;
 
 // Color names are derived from the generated `semantic/color/<name>` token sets so
@@ -114,10 +111,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         });
         postMessage('preview-tokens-from-config', {
           status: 'success',
-          preview: {
-            previewData: buildPreviewData(tokenModel),
-            themeNames,
-          },
+          preview: { config, warnings: tokenModel.warnings },
           message: `Imported ${tokenSets.size} token sets from ${themeNames.length} themes.`,
         });
       } catch (error) {
