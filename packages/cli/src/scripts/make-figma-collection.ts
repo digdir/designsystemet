@@ -2,11 +2,10 @@ import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
 import { validateConfig } from '../schemas/helpers.ts';
-import { nextConfigSchema } from '../schemas/next/schema.ts';
-import type { CreateConfigSchema } from '../schemas/v1.1/schema.ts';
+import { type CreateConfigSchema, configSchema } from '../schemas/internal/schema.ts';
 import { type FigmaCollections, toFigmaCollections } from '../tokens/create/figma-collections.ts';
 import { generate$Themes } from '../tokens/create/generators/$themes.ts';
-import { createTokens, tokenSetDimensions } from '../tokens/create.ts';
+import { createTokens, getTokenSetDimensions } from '../tokens/create.ts';
 import type { TokenSets } from '../tokens/types.ts';
 import { toColorNames } from '../tokens/utils.ts';
 import { dsfs } from '../utils/filesystem.ts';
@@ -37,11 +36,15 @@ const _toFigmaCollection = async (config: CreateConfigSchema) => {
   console.log('config', config.themes);
   const colorNames = toColorNames(config.themes[themeNames[0]]?.colors); // All themes have the same color names, we take the first theme's colors
 
+  // Dimensions come from the first theme, mirroring the CLI: size modes and typography sets
+  // are expected to be the same across themes.
+  const tokenSetDimensions = getTokenSetDimensions(config.themes[themeNames[0]]);
+
   // Token set keys are theme-qualified where they differ per theme (see createTokens), so all
   // themes can share one flat map — the shared sets (globals, size, semantic) are identical.
   const tokenSets: TokenSets = new Map();
   for (const [themeName, themeConfig] of Object.entries(config.themes)) {
-    const { tokenSets: themeTokenSets } = await createTokens({ name: themeName, ...themeConfig });
+    const { tokenSets: themeTokenSets } = await createTokens({ name: themeName, ...themeConfig }, tokenSetDimensions);
     for (const [key, set] of themeTokenSets) tokenSets.set(key, set);
   }
 
@@ -52,6 +55,7 @@ const _toFigmaCollection = async (config: CreateConfigSchema) => {
       console.warn(pc.yellow(`Token set "${tokenSet}" selected by ${theme.group}/${theme.name} was not generated`)),
   });
 
+  dsfs.init({ outdir: 'temp' });
   dsfs.writeFiles(
     [
       {
@@ -112,6 +116,6 @@ const _toFigmaCollection = async (config: CreateConfigSchema) => {
 };
 
 // Parse the config through the schema so defaults (typography, borderRadius) are applied.
-const validatedConfig = validateConfig(nextConfigSchema, config);
+const validatedConfig = validateConfig(configSchema, config);
 
 _toFigmaCollection({ ...validatedConfig, outDir: '' });
