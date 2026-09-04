@@ -17,7 +17,7 @@ const exampleConfig = configFileCreateSchema.parse({
 });
 
 writeFile(
-  resolve(import.meta.dirname, '../schemas/internal/example-config.json'),
+  resolve(import.meta.dirname, '../../docs/defaults-config.json'),
   `${JSON.stringify(exampleConfig, undefined, 2)}\n`,
   {
     encoding: 'utf-8',
