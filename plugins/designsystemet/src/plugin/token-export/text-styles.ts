@@ -1,4 +1,4 @@
-import { COLLECTION } from './constants';
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/tokens/create';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
@@ -7,7 +7,7 @@ import { findVariable } from './variable-sync';
 
 export async function syncTextStyles(
   model: TokenModel,
-  activeTokenSets: string[],
+  tokenSetOrder: string[],
   variableLookup: Map<string, Variable>,
   fontCache: FontCache,
   logs: string[],
@@ -32,7 +32,7 @@ export async function syncTextStyles(
     const styleValue = resolveCompositeValue(
       token.value,
       model,
-      activeTokenSets,
+      tokenSetOrder,
     ) as Record<string, unknown> | null;
 
     if (!styleValue) {
@@ -82,14 +82,14 @@ export async function syncTextStyles(
 
     style.setBoundVariable(
       'fontFamily',
-      findVariable(variableLookup, COLLECTION.THEME, 'font-family'),
+      findVariable(variableLookup, FIGMA_COLLECTION.THEME, 'font-family'),
     );
     style.setBoundVariable(
       'fontStyle',
       typeof styleValue.fontWeight === 'string'
         ? findVariable(
             variableLookup,
-            COLLECTION.THEME,
+            FIGMA_COLLECTION.THEME,
             `font-weight/${String(styleValue.fontWeight).toLowerCase()}`,
           )
         : null,
@@ -101,7 +101,7 @@ export async function syncTextStyles(
         'fontSize' in token.value
         ? findVariable(
             variableLookup,
-            COLLECTION.SIZE,
+            FIGMA_COLLECTION.SIZE,
             normalizeFontSizeReference(
               (token.value as Record<string, unknown>).fontSize,
             ),
