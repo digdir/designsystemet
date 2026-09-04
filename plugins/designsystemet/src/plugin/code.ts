@@ -139,11 +139,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           throw new Error('No token model available for export.');
         }
 
-        const result = await importToFigma({
-          model: tokenModel,
-          selectedTheme: msg.theme ?? themeNames[0] ?? null,
-          selectedScheme: msg.scheme ?? 'Light',
-        });
+        const result = await importToFigma(tokenModel);
         postMessage('export-tokens-to-figma', {
           status: 'success',
           message: 'Exported tokens to Figma variables successfully.',

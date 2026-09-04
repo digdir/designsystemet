@@ -20,22 +20,21 @@ function getTokenLookup(model: TokenModel): Map<string, FlatToken> {
 
 // The order token sets are searched in when resolving a `{reference}`: the first set
 // that defines the path wins. Every set is included, so this is a priority order, not
-// a filter. Sets whose paths are shared across themes or schemes (`themes/<name>`,
-// `primitives/modes/color-scheme/<scheme>/<name>`) resolve to the selection because
-// the selected theme's and scheme's sets are placed before the rest.
-export function getTokenSetLookupOrder(
-  model: TokenModel,
-  selectedTheme: string | null,
-  selectedScheme: string | null,
-): string[] {
+// a filter.
+//
+// Variables get one value per mode, so they never depend on this order beyond a mode's
+// own sets (see collection-specs). Text and effect styles are not mode-aware, though:
+// a style holds one font family and one shadow colour. Anything they resolve that
+// differs per theme or scheme (`themes/<name>`, the colour-scheme sets) is taken from
+// the first theme in the light scheme, whose sets are placed before the rest here.
+export function getTokenSetLookupOrder(model: TokenModel): string[] {
   const order = new Set<string>();
   const semanticMode = model.themes.find(
     (mode) => mode.group === FIGMA_COLLECTION.SEMANTIC,
   );
-  const theme = model.themeOptions.find((item) => item.name === selectedTheme);
-  const scheme = model.colorSchemeOptions.find(
-    (item) => item.name === selectedScheme,
-  );
+  // themeOptions keep config order; colorSchemeOptions are sorted light first.
+  const theme = model.themeOptions[0];
+  const scheme = model.colorSchemeOptions[0];
 
   for (const item of semanticMode?.selectedTokenSets ?? []) {
     if (item.exists) {
