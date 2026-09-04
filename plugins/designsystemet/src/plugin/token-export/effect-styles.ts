@@ -1,14 +1,16 @@
 import { parseColorValue } from './color';
 import { resolveCompositeValue } from './resolver';
-import type { PreviewData } from './types';
+import type { TokenModel } from './types';
 import { parseNumber } from './utils';
 
+// Figma effect styles are not mode-aware, so scheme-dependent values (the shadow
+// colour) are written for the first theme in the light scheme; see getTokenSetLookupOrder.
 export async function syncEffectStyles(
-  preview: PreviewData,
-  activeTokenSets: string[],
+  model: TokenModel,
+  tokenSetOrder: string[],
   logs: string[],
 ): Promise<void> {
-  const desired = preview.flatTokens.filter(
+  const desired = model.flatTokens.filter(
     (token) =>
       token.tokenSet === 'semantic/style' && token.type === 'boxShadow',
   );
@@ -27,8 +29,8 @@ export async function syncEffectStyles(
     const styleName = token.figmaName;
     const resolved = resolveCompositeValue(
       token.value,
-      preview,
-      activeTokenSets,
+      model,
+      tokenSetOrder,
     ) as Array<Record<string, unknown>> | null;
 
     if (!Array.isArray(resolved)) {
