@@ -26,6 +26,20 @@ export type FigmaMode = {
 /** Figma collections keyed by `$themes` group name (e.g. "Color scheme"), each a list of modes. */
 export type FigmaCollections = Record<string, FigmaMode[]>;
 
+/**
+ * Names of the Figma variable collections, i.e. the `group` values in the generated
+ * `$themes.json`. The Figma plugin keys its import rules on these, so they live here
+ * to keep the generator and the plugin in sync.
+ */
+export const FIGMA_COLLECTION = {
+  THEME: 'Theme',
+  COLOR_SCHEME: 'Color scheme',
+  SEMANTIC: 'Semantic',
+  COLOR: 'Color',
+  SIZE: 'Size',
+  TYPOGRAPHY: 'Typography',
+} as const;
+
 /** Group used for `$themes` entries that have no `group`. */
 export const UNGROUPED = '(ungrouped)';
 

@@ -5,7 +5,7 @@ import { parseNumber } from './utils';
 
 export async function syncEffectStyles(
   model: TokenModel,
-  activeTokenSets: string[],
+  tokenSetOrder: string[],
   logs: string[],
 ): Promise<void> {
   const desired = model.flatTokens.filter(
@@ -28,7 +28,7 @@ export async function syncEffectStyles(
     const resolved = resolveCompositeValue(
       token.value,
       model,
-      activeTokenSets,
+      tokenSetOrder,
     ) as Array<Record<string, unknown>> | null;
 
     if (!Array.isArray(resolved)) {

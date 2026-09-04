@@ -1,7 +1,7 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
-
 import type { ColorScheme } from '../../../colors/types.ts';
 import type { SizeModes, TokenSetDimensions } from '../../types.ts';
+import { FIGMA_COLLECTION } from '../figma-collections.ts';
 
 async function createHash(text: string, algo = 'SHA-1') {
   const crypto = globalThis.crypto;
@@ -98,7 +98,7 @@ async function generateSizeGroup(sizeModes: SizeModes[]): Promise<ThemeObject_[]
         },
         $figmaCollectionId: 'VariableCollectionId:36248:20757',
         $figmaModeId: defaults?.$figmaModeId,
-        group: 'Size',
+        group: FIGMA_COLLECTION.SIZE,
       };
     }),
   );
@@ -128,7 +128,7 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[])
       selectedTokenSets: Object.fromEntries([
         ...themes.map((theme) => [`primitives/modes/color-scheme/${scheme}/${theme}`, TokenSetStatus.ENABLED]),
       ]),
-      group: 'Color scheme',
+      group: FIGMA_COLLECTION.COLOR_SCHEME,
     }),
   );
 }
@@ -144,7 +144,7 @@ async function generateThemesGroup(themes: string[]): Promise<ThemeObject_[]> {
         selectedTokenSets: {
           [`themes/${theme}`]: TokenSetStatus.ENABLED,
         },
-        group: 'Theme',
+        group: FIGMA_COLLECTION.THEME,
       }),
     ),
   );
@@ -160,7 +160,7 @@ function generateSemanticGroup(): ThemeObject_ {
     },
     $figmaCollectionId: 'VariableCollectionId:34811:5976',
     $figmaModeId: '34811:5',
-    group: 'Semantic',
+    group: FIGMA_COLLECTION.SEMANTIC,
   };
 }
 
@@ -173,7 +173,7 @@ async function generateColorGroup(colorNames: string[]): Promise<ThemeObject_[]>
         selectedTokenSets: {
           [`semantic/color/${color}`]: TokenSetStatus.ENABLED,
         },
-        group: `Color`,
+        group: FIGMA_COLLECTION.COLOR,
       }),
     ),
   );
@@ -204,7 +204,7 @@ async function generateTypographyGroup(themes: string[], typographies: string[])
         selectedTokenSets: Object.fromEntries(
           themes.map((theme) => [`primitives/modes/typography/${typography}/${theme}`, TokenSetStatus.ENABLED]),
         ),
-        group: 'Typography',
+        group: FIGMA_COLLECTION.TYPOGRAPHY,
       };
     }),
   );

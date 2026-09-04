@@ -1,5 +1,5 @@
 import type { FigmaMode } from '@digdir/designsystemet/tokens/create';
-import { COLLECTION } from './constants';
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/tokens/create';
 import { resolveValue } from './resolver';
 import type { FlatToken, TokenModel } from './types';
 import { inferVariableName, pathToFigmaName } from './utils';
@@ -33,7 +33,7 @@ export type CollectionSpec = {
 
 export function buildCollectionSpecs(
   model: TokenModel,
-  activeTokenSets: string[],
+  tokenSetOrder: string[],
   logs: string[],
 ): CollectionSpec[] {
   const specs: CollectionSpec[] = [];
@@ -49,7 +49,7 @@ export function buildCollectionSpecs(
 
     for (const mode of modes) {
       collection.modeNames.push(mode.modeName);
-      buildModeVariables(model, activeTokenSets, group, mode, collection, logs);
+      buildModeVariables(model, tokenSetOrder, group, mode, collection, logs);
     }
   }
 
@@ -58,18 +58,14 @@ export function buildCollectionSpecs(
 
 function buildModeVariables(
   model: TokenModel,
-  activeTokenSets: string[],
+  tokenSetOrder: string[],
   group: string,
   mode: FigmaMode,
   collection: CollectionSpec,
   logs: string[],
 ): void {
   const modeName = mode.modeName;
-  const modeActiveTokenSets = getModeActiveTokenSets(
-    model,
-    activeTokenSets,
-    mode,
-  );
+  const modeTokenSetOrder = getModeTokenSetLookupOrder(tokenSetOrder, mode);
 
   for (const selected of mode.tokenSets) {
     if (!selected.exists) {
@@ -80,7 +76,7 @@ function buildModeVariables(
     // shadows). These must not become their own variables (e.g. an opacity variable
     // literally named "30") — their values are inlined into the semantic tokens that
     // reference them. They still take part in alias resolution via
-    // getModeActiveTokenSets, so consumers resolve to the correct literal.
+    // getModeTokenSetLookupOrder, so consumers resolve to the correct literal.
     if (selected.tokenSet === 'primitives/globals') {
       continue;
     }
@@ -124,7 +120,7 @@ function buildModeVariables(
         const valueSpec = buildValueSpec(
           token,
           model,
-          modeActiveTokenSets,
+          modeTokenSetOrder,
           group,
           modeName,
         );
@@ -142,9 +138,11 @@ function buildModeVariables(
   }
 }
 
-function getModeActiveTokenSets(
-  model: TokenModel,
-  activeTokenSets: string[],
+// A mode's own token sets come first so paths shared between modes (e.g. the size
+// sets) resolve to this mode's values; then the selection-based order, which already
+// contains every set.
+function getModeTokenSetLookupOrder(
+  tokenSetOrder: string[],
   mode: FigmaMode,
 ): string[] {
   const prioritized = new Set<string>();
@@ -155,12 +153,8 @@ function getModeActiveTokenSets(
     }
   }
 
-  for (const tokenSet of activeTokenSets) {
+  for (const tokenSet of tokenSetOrder) {
     prioritized.add(tokenSet);
-  }
-
-  for (const item of model.tokenSets) {
-    prioritized.add(item.path);
   }
 
   return Array.from(prioritized);
@@ -172,7 +166,10 @@ function expandVariableEntries(
   modeName: string,
   token: FlatToken,
 ): Array<{ name: string }> {
-  if (group === COLLECTION.COLOR_SCHEME || group === COLLECTION.TYPOGRAPHY) {
+  if (
+    group === FIGMA_COLLECTION.COLOR_SCHEME ||
+    group === FIGMA_COLLECTION.TYPOGRAPHY
+  ) {
     const scopedName = inferScopedThemeVariableName(model, token);
     if (scopedName) {
       return [{ name: scopedName }];
@@ -185,7 +182,7 @@ function expandVariableEntries(
 function buildValueSpec(
   token: FlatToken,
   model: TokenModel,
-  activeTokenSets: string[],
+  tokenSetOrder: string[],
   group: string,
   modeName: string,
 ): ValueSpec | null {
@@ -212,7 +209,7 @@ function buildValueSpec(
     }
   }
 
-  const resolved = resolveValue(token.value, model, activeTokenSets, []);
+  const resolved = resolveValue(token.value, model, tokenSetOrder, []);
   const rawValue = convertRawVariableValue(token.type, resolved);
 
   if (rawValue === null) {
@@ -230,7 +227,9 @@ function shouldResolveReferenceAsRaw(token: FlatToken, group: string): boolean {
   // computed from a math formula. They are the source of truth that other collections
   // (e.g. Semantic) alias back to. Keeping them as aliases here would create a circular
   // reference to a primitive that has no corresponding Figma variable.
-  return group === COLLECTION.THEME && token.path.startsWith('border-radius.');
+  return (
+    group === FIGMA_COLLECTION.THEME && token.path.startsWith('border-radius.')
+  );
 }
 
 function mapReferenceToVariableTarget(
@@ -242,19 +241,19 @@ function mapReferenceToVariableTarget(
 ): { collection: string; name: string } | null {
   const themeScopedSuffix = getThemeScopedSuffix(reference, model, token);
 
-  if (group === COLLECTION.THEME && themeScopedSuffix) {
+  if (group === FIGMA_COLLECTION.THEME && themeScopedSuffix) {
     if (
       themeScopedSuffix === 'font-family' ||
       themeScopedSuffix.startsWith('font-weight/')
     ) {
       return {
-        collection: COLLECTION.TYPOGRAPHY,
+        collection: FIGMA_COLLECTION.TYPOGRAPHY,
         name: `${modeName}/${themeScopedSuffix}`,
       };
     }
 
     return {
-      collection: COLLECTION.COLOR_SCHEME,
+      collection: FIGMA_COLLECTION.COLOR_SCHEME,
       name: `${modeName}/${themeScopedSuffix}`,
     };
   }
@@ -262,7 +261,10 @@ function mapReferenceToVariableTarget(
   if (reference.startsWith('theme.')) {
     const suffix = pathToFigmaName(reference.replace(/^theme\./, ''));
 
-    if (group === COLLECTION.COLOR_SCHEME || group === COLLECTION.TYPOGRAPHY) {
+    if (
+      group === FIGMA_COLLECTION.COLOR_SCHEME ||
+      group === FIGMA_COLLECTION.TYPOGRAPHY
+    ) {
       const themePrefix = model.themeOptions[0]?.name || 'theme';
       return {
         collection: group,
@@ -271,22 +273,22 @@ function mapReferenceToVariableTarget(
     }
 
     return {
-      collection: COLLECTION.THEME,
+      collection: FIGMA_COLLECTION.THEME,
       name: suffix,
     };
   }
 
   if (reference.startsWith('color.')) {
-    if (group === COLLECTION.COLOR) {
+    if (group === FIGMA_COLLECTION.COLOR) {
       return {
-        collection: COLLECTION.SEMANTIC,
+        collection: FIGMA_COLLECTION.SEMANTIC,
         name: pathToFigmaName(reference),
       };
     }
 
-    if (group === COLLECTION.SEMANTIC) {
+    if (group === FIGMA_COLLECTION.SEMANTIC) {
       return {
-        collection: COLLECTION.THEME,
+        collection: FIGMA_COLLECTION.THEME,
         name: pathToFigmaName(reference),
       };
     }
@@ -295,7 +297,8 @@ function mapReferenceToVariableTarget(
   if (reference.startsWith('border-radius.')) {
     const name = pathToFigmaName(reference);
     return {
-      collection: group === COLLECTION.SEMANTIC ? COLLECTION.THEME : group,
+      collection:
+        group === FIGMA_COLLECTION.SEMANTIC ? FIGMA_COLLECTION.THEME : group,
       name,
     };
   }
@@ -305,14 +308,14 @@ function mapReferenceToVariableTarget(
       ? `_size/${reference.replace(/^_size\./, '')}`
       : `_size/${reference.replace(/^size\._/, '')}`;
     return {
-      collection: COLLECTION.SIZE,
+      collection: FIGMA_COLLECTION.SIZE,
       name,
     };
   }
 
   if (reference.startsWith('font-size.')) {
     return {
-      collection: COLLECTION.SIZE,
+      collection: FIGMA_COLLECTION.SIZE,
       name: pathToFigmaName(reference),
     };
   }
@@ -320,11 +323,12 @@ function mapReferenceToVariableTarget(
   if (
     reference.startsWith('font-family') ||
     reference.startsWith('font-weight.') ||
-    (group === COLLECTION.THEME && reference.startsWith('border-width.')) ||
-    (group === COLLECTION.THEME && reference.startsWith('opacity.'))
+    (group === FIGMA_COLLECTION.THEME &&
+      reference.startsWith('border-width.')) ||
+    (group === FIGMA_COLLECTION.THEME && reference.startsWith('opacity.'))
   ) {
     return {
-      collection: COLLECTION.THEME,
+      collection: FIGMA_COLLECTION.THEME,
       name: pathToFigmaName(reference),
     };
   }

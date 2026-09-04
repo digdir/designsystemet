@@ -3,7 +3,14 @@
 // standalone "Code syntax & scoping" plugin (scoper/) — the rules are keyed on
 // (collection name, resolved type, variable name) and are idempotent.
 
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/tokens/create';
+
 type MigrationState = 'pre' | 'post' | 'half' | 'not-library';
+
+// Pre-migration collection names. These no longer exist in the CLI's `$themes`, so they
+// are only known here.
+const LEGACY_MAIN_COLOR = 'Main color';
+const LEGACY_SUPPORT_COLOR = 'Support color';
 
 // The color migration reshapes the variables: pre-migration uses `Main color` +
 // `Support color` collections with variables prefixed `color/main/`; post-migration these
@@ -12,36 +19,56 @@ const LEGACY_COLOR_PREFIX = 'color/main/';
 
 function getSyntaxCollections(state: MigrationState): string[] {
   if (state === 'post') {
-    return ['Color', 'Semantic', 'Size', 'Theme'];
+    return [
+      FIGMA_COLLECTION.COLOR,
+      FIGMA_COLLECTION.SEMANTIC,
+      FIGMA_COLLECTION.SIZE,
+      FIGMA_COLLECTION.THEME,
+    ];
   }
   if (state === 'half') {
     return [
-      'Color',
-      'Main color',
-      'Support color',
-      'Semantic',
-      'Size',
-      'Theme',
+      FIGMA_COLLECTION.COLOR,
+      LEGACY_MAIN_COLOR,
+      LEGACY_SUPPORT_COLOR,
+      FIGMA_COLLECTION.SEMANTIC,
+      FIGMA_COLLECTION.SIZE,
+      FIGMA_COLLECTION.THEME,
     ];
   }
-  return ['Main color', 'Semantic', 'Support color', 'Size', 'Theme'];
+  return [
+    LEGACY_MAIN_COLOR,
+    FIGMA_COLLECTION.SEMANTIC,
+    LEGACY_SUPPORT_COLOR,
+    FIGMA_COLLECTION.SIZE,
+    FIGMA_COLLECTION.THEME,
+  ];
 }
 
 function getScopeCollections(state: MigrationState): string[] {
-  return [...getSyntaxCollections(state), 'Color scheme', 'Typography'];
+  return [
+    ...getSyntaxCollections(state),
+    FIGMA_COLLECTION.COLOR_SCHEME,
+    FIGMA_COLLECTION.TYPOGRAPHY,
+  ];
 }
 
 function detectMigrationState(
   collections: VariableCollection[],
   variablesByCollectionId: Map<string, Variable[]>,
 ): MigrationState {
-  const hasMainColor = collections.some((c) => c.name === 'Main color');
-  const hasSupportColor = collections.some((c) => c.name === 'Support color');
-  const hasColor = collections.some((c) => c.name === 'Color');
+  const hasMainColor = collections.some((c) => c.name === LEGACY_MAIN_COLOR);
+  const hasSupportColor = collections.some(
+    (c) => c.name === LEGACY_SUPPORT_COLOR,
+  );
+  const hasColor = collections.some((c) => c.name === FIGMA_COLLECTION.COLOR);
 
   let prefixedCount = 0;
   for (const collection of collections) {
-    if (collection.name !== 'Main color' && collection.name !== 'Color') {
+    if (
+      collection.name !== LEGACY_MAIN_COLOR &&
+      collection.name !== FIGMA_COLLECTION.COLOR
+    ) {
       continue;
     }
     for (const variable of variablesByCollectionId.get(collection.id) ?? []) {
@@ -80,10 +107,10 @@ function getScopes(
 ): VariableScope[] {
   if (resolvedType === 'COLOR') {
     if (
-      collectionName === 'Semantic' ||
-      collectionName === 'Main color' ||
-      collectionName === 'Support color' ||
-      collectionName === 'Color'
+      collectionName === FIGMA_COLLECTION.SEMANTIC ||
+      collectionName === LEGACY_MAIN_COLOR ||
+      collectionName === LEGACY_SUPPORT_COLOR ||
+      collectionName === FIGMA_COLLECTION.COLOR
     ) {
       // ALL_SCOPES for a COLOR variable covers exactly the color fields (fills, strokes,
       // effects). Cannot be combined with other scopes.
@@ -93,10 +120,13 @@ function getScopes(
   }
 
   if (resolvedType === 'FLOAT') {
-    if (collectionName === 'Size' && fullName.includes('font-size/')) {
+    if (
+      collectionName === FIGMA_COLLECTION.SIZE &&
+      fullName.includes('font-size/')
+    ) {
       return ['FONT_SIZE'];
     }
-    if (collectionName === 'Semantic') {
+    if (collectionName === FIGMA_COLLECTION.SEMANTIC) {
       if (fullName.includes('opacity')) return ['OPACITY'];
       if (fullName.includes('border-width')) return ['STROKE_FLOAT'];
       if (fullName.includes('border-radius')) return ['CORNER_RADIUS'];
@@ -105,7 +135,7 @@ function getScopes(
     return [];
   }
 
-  if (resolvedType === 'STRING' && collectionName === 'Theme') {
+  if (resolvedType === 'STRING' && collectionName === FIGMA_COLLECTION.THEME) {
     if (fullName.includes('font-weight/')) return ['FONT_STYLE'];
     if (fullName === 'font-family') return ['FONT_FAMILY'];
   }
@@ -119,7 +149,7 @@ function getExpectedSyntax(
   fullName: string,
   name: string,
 ): string | null {
-  if (resolvedType === 'COLOR' && collectionName !== 'Theme') {
+  if (resolvedType === 'COLOR' && collectionName !== FIGMA_COLLECTION.THEME) {
     if (fullName === 'link/color/visited') {
       return 'var(--ds-link-color-visited)';
     }
@@ -132,7 +162,7 @@ function getExpectedSyntax(
     // Semantic colors are locked to one color regardless of data-color/mode, so their CSS
     // var always includes the color-group name (read from the path). Color / Main color /
     // Support color stay group-less — the data-color attribute selects the color at runtime.
-    if (collectionName === 'Semantic') {
+    if (collectionName === FIGMA_COLLECTION.SEMANTIC) {
       const [, colorName, ...rest] = fullName.split('/');
       const semanticName =
         [colorName, ...rest].filter(Boolean).join('-') || name;
@@ -141,7 +171,7 @@ function getExpectedSyntax(
     return `var(--ds-color-${name})`;
   }
 
-  if (resolvedType === 'FLOAT' && collectionName !== 'Theme') {
+  if (resolvedType === 'FLOAT' && collectionName !== FIGMA_COLLECTION.THEME) {
     if (fullName.startsWith('_size/')) return null;
     if (fullName.includes('font-size/')) return `var(--ds-font-size-${name})`;
     if (fullName.includes('border-radius'))
@@ -154,7 +184,7 @@ function getExpectedSyntax(
     return `var(--ds-${collectionSlug}-${name})`;
   }
 
-  if (collectionName === 'Theme' && resolvedType === 'STRING') {
+  if (collectionName === FIGMA_COLLECTION.THEME && resolvedType === 'STRING') {
     if (fullName.includes('font-weight/'))
       return `var(--ds-font-weight-${name})`;
     if (fullName === 'font-family') return 'var(--ds-font-family)';

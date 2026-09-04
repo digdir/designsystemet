@@ -13,6 +13,7 @@ import type { OutputFile, SizeModes, Theme, TokenSet, TokenSetDimensions, TokenS
 import { toColorNames } from './utils.ts';
 
 export {
+  FIGMA_COLLECTION,
   type FigmaCollections,
   type FigmaMode,
   mergeTokenSets,
