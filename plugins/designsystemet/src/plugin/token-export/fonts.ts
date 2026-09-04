@@ -1,5 +1,5 @@
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/tokens/create';
 import type { CollectionSpec } from './collection-specs';
-import { COLLECTION } from './constants';
 
 export type FontCache = {
   availableFonts: Font[];
@@ -13,7 +13,10 @@ export async function preloadAllFonts(
   const fontFamilies = new Set<string>();
 
   for (const spec of specs) {
-    if (spec.name !== COLLECTION.THEME && spec.name !== COLLECTION.TYPOGRAPHY) {
+    if (
+      spec.name !== FIGMA_COLLECTION.THEME &&
+      spec.name !== FIGMA_COLLECTION.TYPOGRAPHY
+    ) {
       continue;
     }
 

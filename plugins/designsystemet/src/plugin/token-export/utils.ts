@@ -1,4 +1,4 @@
-import { COLLECTION } from './constants';
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/tokens/create';
 import type { FlatToken } from './types';
 
 // Token paths use dots (color.background.default); Figma variable names use
@@ -31,19 +31,22 @@ export function inferVariableName(
 ): string {
   const figmaName = token.figmaName;
 
-  if (group === COLLECTION.COLOR_SCHEME && figmaName.startsWith('theme/')) {
+  if (
+    group === FIGMA_COLLECTION.COLOR_SCHEME &&
+    figmaName.startsWith('theme/')
+  ) {
     return `${modeName}/${figmaName.replace(/^theme\//, '')}`;
   }
 
-  if (group === COLLECTION.THEME && figmaName.startsWith('theme/')) {
+  if (group === FIGMA_COLLECTION.THEME && figmaName.startsWith('theme/')) {
     return figmaName.replace(/^theme\//, '');
   }
 
-  if (group === COLLECTION.TYPOGRAPHY && figmaName.startsWith('theme/')) {
+  if (group === FIGMA_COLLECTION.TYPOGRAPHY && figmaName.startsWith('theme/')) {
     return `${modeName}/${figmaName.replace(/^theme\//, '')}`;
   }
 
-  if (group === COLLECTION.SIZE) {
+  if (group === FIGMA_COLLECTION.SIZE) {
     if (token.path.startsWith('size._')) {
       return `_size/${token.path.replace(/^size\._/, '')}`;
     }

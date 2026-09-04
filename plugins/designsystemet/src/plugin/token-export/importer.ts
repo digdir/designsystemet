@@ -1,7 +1,7 @@
 import { buildCollectionSpecs } from './collection-specs';
 import { syncEffectStyles } from './effect-styles';
 import { type FontCache, preloadAllFonts } from './fonts';
-import { getActiveTokenSets } from './resolver';
+import { getTokenSetLookupOrder } from './resolver';
 import { applyScopesAndSyntax } from './scope-syntax';
 import { syncTextStyles } from './text-styles';
 import type { TokenModel } from './types';
@@ -17,7 +17,7 @@ export async function importToFigma(
   payload: ImportPayload,
 ): Promise<{ logs: string[] }> {
   const logs: string[] = [];
-  const activeTokenSets = getActiveTokenSets(
+  const tokenSetOrder = getTokenSetLookupOrder(
     payload.model,
     payload.selectedTheme,
     payload.selectedScheme,
@@ -30,7 +30,7 @@ export async function importToFigma(
 
   const collectionSpecs = buildCollectionSpecs(
     payload.model,
-    activeTokenSets,
+    tokenSetOrder,
     logs,
   );
 
@@ -48,12 +48,12 @@ export async function importToFigma(
   );
   await syncTextStyles(
     payload.model,
-    activeTokenSets,
+    tokenSetOrder,
     variableLookup,
     fontCache,
     logs,
   );
-  await syncEffectStyles(payload.model, activeTokenSets, logs);
+  await syncEffectStyles(payload.model, tokenSetOrder, logs);
 
   // Auto-apply correct scopes and CSS code syntax so users get them out of the box.
   // Best-effort: the variables are already written, so a failure here must not fail the

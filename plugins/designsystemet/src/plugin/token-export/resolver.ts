@@ -1,4 +1,4 @@
-import { COLLECTION } from './constants';
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/tokens/create';
 import type { FlatToken, TokenModel } from './types';
 import { figmaNameToPath, parseNumber } from './utils';
 
@@ -18,14 +18,19 @@ function getTokenLookup(model: TokenModel): Map<string, FlatToken> {
   return lookup;
 }
 
-export function getActiveTokenSets(
+// The order token sets are searched in when resolving a `{reference}`: the first set
+// that defines the path wins. Every set is included, so this is a priority order, not
+// a filter. Sets whose paths are shared across themes or schemes (`themes/<name>`,
+// `primitives/modes/color-scheme/<scheme>/<name>`) resolve to the selection because
+// the selected theme's and scheme's sets are placed before the rest.
+export function getTokenSetLookupOrder(
   model: TokenModel,
   selectedTheme: string | null,
   selectedScheme: string | null,
 ): string[] {
-  const activeSets = new Set<string>();
+  const order = new Set<string>();
   const semanticMode = model.themes.find(
-    (mode) => mode.group === COLLECTION.SEMANTIC,
+    (mode) => mode.group === FIGMA_COLLECTION.SEMANTIC,
   );
   const theme = model.themeOptions.find((item) => item.name === selectedTheme);
   const scheme = model.colorSchemeOptions.find(
@@ -34,26 +39,26 @@ export function getActiveTokenSets(
 
   for (const item of semanticMode?.selectedTokenSets ?? []) {
     if (item.exists) {
-      activeSets.add(item.tokenSet);
+      order.add(item.tokenSet);
     }
   }
   for (const tokenSet of theme?.tokenSets ?? []) {
-    activeSets.add(tokenSet);
+    order.add(tokenSet);
   }
   for (const tokenSet of scheme?.tokenSets ?? []) {
-    activeSets.add(tokenSet);
+    order.add(tokenSet);
   }
   for (const set of model.tokenSets) {
-    activeSets.add(set.path);
+    order.add(set.path);
   }
 
-  return Array.from(activeSets);
+  return Array.from(order);
 }
 
 export function resolveValue(
   value: unknown,
   model: TokenModel,
-  activeTokenSets: string[],
+  tokenSetOrder: string[],
   stack: string[] = [],
 ): unknown {
   if (typeof value === 'number') {
@@ -66,11 +71,11 @@ export function resolveValue(
 
   const exactReference = value.match(/^\{([^}]+)\}$/);
   if (exactReference) {
-    return resolveTokenValue(exactReference[1], model, activeTokenSets, stack);
+    return resolveTokenValue(exactReference[1], model, tokenSetOrder, stack);
   }
 
   if (value.includes('{')) {
-    return resolveExpression(value, model, activeTokenSets, stack);
+    return resolveExpression(value, model, tokenSetOrder, stack);
   }
 
   return value;
@@ -79,11 +84,11 @@ export function resolveValue(
 export function resolveCompositeValue(
   value: unknown,
   model: TokenModel,
-  activeTokenSets: string[],
+  tokenSetOrder: string[],
 ): unknown {
   if (Array.isArray(value)) {
     return value.map((item) =>
-      resolveCompositeValue(item, model, activeTokenSets),
+      resolveCompositeValue(item, model, tokenSetOrder),
     );
   }
 
@@ -91,12 +96,12 @@ export function resolveCompositeValue(
     return Object.fromEntries(
       Object.entries(value).map(([key, nested]) => [
         key,
-        resolveCompositeValue(nested, model, activeTokenSets),
+        resolveCompositeValue(nested, model, tokenSetOrder),
       ]),
     );
   }
 
-  return resolveValue(value, model, activeTokenSets, []);
+  return resolveValue(value, model, tokenSetOrder, []);
 }
 
 export function findUnresolvedReferences(
@@ -130,7 +135,7 @@ export function findUnresolvedReferences(
 function resolveTokenValue(
   reference: string,
   model: TokenModel,
-  activeTokenSets: string[],
+  tokenSetOrder: string[],
   stack: string[],
 ): unknown {
   const candidates = getReferenceCandidates(reference);
@@ -141,13 +146,13 @@ function resolveTokenValue(
       continue;
     }
 
-    for (const tokenSet of activeTokenSets) {
+    for (const tokenSet of tokenSetOrder) {
       const token = lookup.get(tokenSet + '::' + path);
       if (token) {
         return resolveValue(
           token.value,
           model,
-          activeTokenSets,
+          tokenSetOrder,
           stack.concat(path),
         );
       }
@@ -160,12 +165,12 @@ function resolveTokenValue(
 function resolveExpression(
   expression: string,
   model: TokenModel,
-  activeTokenSets: string[],
+  tokenSetOrder: string[],
   stack: string[],
 ): unknown {
   let allNumeric = true;
   const replaced = expression.replace(/\{([^}]+)\}/g, (_match, reference) => {
-    const value = resolveTokenValue(reference, model, activeTokenSets, stack);
+    const value = resolveTokenValue(reference, model, tokenSetOrder, stack);
     const number = parseNumber(value);
 
     if (number === null) {
@@ -236,11 +241,11 @@ function buildAvailableReferenceNames(model: TokenModel): Set<string> {
       const dottedName = figmaNameToPath(variable.name);
       available.add(dottedName);
 
-      if (collection.name === COLLECTION.THEME) {
+      if (collection.name === FIGMA_COLLECTION.THEME) {
         available.add('theme.' + dottedName);
       }
 
-      if (collection.name === COLLECTION.COLOR_SCHEME) {
+      if (collection.name === FIGMA_COLLECTION.COLOR_SCHEME) {
         const parts = dottedName.split('.');
         if (parts.length >= 3) {
           available.add('theme.' + parts.slice(1).join('.'));
