@@ -215,7 +215,15 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
           (nextItem as SuggestionItem & SuggestionItem[]) || null,
         );
 
-        if (!isControlled) setDefaultItems(sanitizeItems(nextItem));
+        if (!isControlled) {
+          setDefaultItems(sanitizeItems(nextItem));
+        } else if (!multiple && combobox?.control) {
+          // u-combobox caches the proposed match before this cancellable event. Restore the
+          // controlled selection and refresh that cache so losing focus does not propose it again.
+          const selectedItem = selectedItemsRef.current[0];
+          combobox.control.value = selectedItem?.label ?? '';
+          combobox.control.dispatchEvent(new Event('input', { bubbles: true }));
+        }
       };
 
       combobox?.addEventListener('comboboxbeforeselect', beforeChange);
