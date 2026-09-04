@@ -1,7 +1,7 @@
 ---
 title: Farger
 sidebar_title: Farger
-description: Hvordan fargene er strukturert og hvordan du bruker dem.
+description: Hvordan de semantiske fargene er bygget opp, og hvordan du bruker dem i lys og mørk modus.
 date: 2025-06-30
 category: Tema
 color: red
@@ -12,7 +12,7 @@ search_terms: colors, fargar
 ---
 
 ## Navnestruktur
-Fargene i Designsystemet er organisert etter hva de skal brukes til. Det betyr at du velger farge ut fra hvilken funksjon og bruksområde den har, i stedet for å velge ut fra hvordan fargen ser ut. På den måten blir det enklere å bruke fargene konsekvent i grensesnittet.
+Fargene i designsystemet er semantiske. Du velger ikke farge ut fra hvordan den ser ut, men ut fra hva den skal brukes til. Det gjør det enklere å bruke farger konsekvent på tvers av komponenter, temaer og fargemoduser.
 
 Fargenavnene er delt opp i 3 ledd: Navn på fargeskala, gruppe (bruksområde) og variant. Disse leddene beskriver hvordan fargene er bygget opp og hvordan de skal brukes.
 
@@ -40,15 +40,51 @@ Som standard kommer Designsystemet med fargeskalaene Accent, Neutral, Brand1, Br
 Tinted betyr for eksempel at fargen har et hint av farge i seg, mens Hover betyr at fargen er tenkt brukt for en interaktiv tilstand.
 
 ## Kontrast
-Fargesystemet er strukturert for å ivareta kontrastkrav. Temabyggeren sørger for at kontrastkrav sikres gjennom fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+De fleste semantiske fargene er laget for å oppfylle kontrastkrav automatisk. 
+Det gjelder særlig tekstfarger mot bakgrunns- og surface-farger.
+
+`Base`-fargene er et unntak. Disse fargene er tett knyttet til brandfargen du velger, 
+og du må derfor selv kontrollere at de har god nok kontrast der de brukes.
 
 Eksempler:
 
 - `Text-default` har alltid god nok kontrast mot alle `background` og `surface` farger.
-- `Text-subtle` har alltid god nok kontrast mot alle `background`-farger og `surface-default`.
+- `Text-subtle` har alltid god nok kontrast mot alle `background`-farger, `surface-default` og `surface-hover`.
 - Dette vil gjelde uansett hva du har valgt som base-farge.
 
 `Base-default`-fargen vil alltid være den samme som fargen du har valgt. Dette er for å ivareta brandet ditt best mulig. Du må derfor selv passe på at fargen du velger oppfyller kontrastkravene i forhold til hvor den skal bli brukt. [Designsystemets temagenerator](https://theme.designsystemet.no) vil informere deg om eventuelle kontrastbrudd.
+
+## Lys og mørk modus
+
+Stegene i en fargeskala har samme navn og samme rolle både i lys og mørk modus. Det som endrer seg er fargeverdiene bak tokenene.
+
+Hver fargeskala har derfor samme oppbygning i begge moduser, med de samme gruppene og variantene på hvert steg. 
+Dette gjør mulig å bytte mellom lys og mørk modus uten å måtte endre farger i designet, 
+og det gjør det enklere å bygge komponenter som fungerer i begge moduser.
+
+Fargene er også laget for å følge de samme kontrastprinsippene i begge moduser. 
+Målet er at du skal kunne bruke `Background`, `Surface`, `Border` og `Text` på samme måte, enten grensesnittet er lyst eller mørkt. 
+`Base` er det viktigste unntaket, og omtales derfor særskilt.
+
+I mørk modus justeres fargene også noe ned i metning slik at de fungerer bedre på mørke flater.
+
+### Background og Surface i lys og mørk modus
+I lys modus er både `Background-default` og `Surface-default` hvite, uavhengig av hvilken fargeskala du bruker. 
+Det gjør det mulig å ha hvite flater, som kort og paneler, oppå en hvit bakgrunn.
+
+I mørk modus er verken bakgrunn eller flater helt svarte. 
+I stedet får `Background`- og `Surface`-fargene fargetonen sin fra skalaen som er generert ut fra den valgte `Base`-fargen. 
+`Surface`-fargene blir lysere enn `Background`, slik at de kan bygge opp dybde og hierarki over bakgrunnen.
+I mørk modus er dette særlig viktig, fordi forskjeller mellom bakgrunn og flater i større grad brukes til å skape dybde og tydelig hierarki.
+
+En fargeskala har derfor flere `Background`- og `Surface`-farger per fargeskala. De skal dekke ulike behov i lys modus, og samtidig gi tydelige og jevne overganger i mørk modus.
+
+
+### Base-fargene oppfører seg litt annerledes
+`Base-default` tar utgangspunkt i fargen som velges i temabyggeren. 
+I lys modus brukes denne direkte, mens den i mørk modus justeres automatisk for å fungere bedre på mørke flater.
+
+Se også sidene om [Fargar i kode](/no/fundamentals/code/colors) og [Modes i Figma](/no/fundamentals/figma/modes-in-figma) for hvordan du bytter mellom lys og mørk modus i praksis.
 
 ## Slik bruker du fargene
 Hver fargeskala består av totalt 16 farger, utformet for å dekke ulike behov i designet. Nedenfor finner du en oversikt over de forskjellige fargene og deres tiltenkte bruksområder.
@@ -144,4 +180,6 @@ Kontrastfargene blir enten hvite eller svarte avhengig av lysstyrken til Base-de
   
   caption='Viser bokser med Base-default som bakgrunn og Base-contrast-default som tekstfarge.'
 />
+
+For å enklere forstå hvordan fargene fungerer kan du se hvordan ulike fargeskalaer ser ut i [Temabyggeren](https://theme.designsystemet.no/no/themebuilder) til Designsystemet.
 
