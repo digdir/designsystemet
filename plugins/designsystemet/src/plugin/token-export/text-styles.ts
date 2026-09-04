@@ -5,6 +5,8 @@ import type { TokenModel } from './types';
 import { parseNumber, pathToFigmaName } from './utils';
 import { findVariable } from './variable-sync';
 
+// Figma text styles are not mode-aware, so theme-dependent values (the font family)
+// are written for the first theme; see getTokenSetLookupOrder.
 export async function syncTextStyles(
   model: TokenModel,
   tokenSetOrder: string[],

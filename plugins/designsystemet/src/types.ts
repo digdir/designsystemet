@@ -20,11 +20,6 @@ type PreviewTokensFromConfig = {
 
 type ExportTokensToFigma = {
   type: 'export-tokens-to-figma';
-  // Sent by the UI: the theme and color scheme (mode names, e.g. 'Light') selected in
-  // the preview. Single-value exports (text/effect styles, raw values) resolve for these.
-  theme?: string | null;
-  scheme?: string;
-  // Sent by the plugin.
   status: 'exporting' | 'success' | 'error';
   message: string;
   logs?: string[];

@@ -3,6 +3,8 @@ import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
 import { parseNumber } from './utils';
 
+// Figma effect styles are not mode-aware, so scheme-dependent values (the shadow
+// colour) are written for the first theme in the light scheme; see getTokenSetLookupOrder.
 export async function syncEffectStyles(
   model: TokenModel,
   tokenSetOrder: string[],
