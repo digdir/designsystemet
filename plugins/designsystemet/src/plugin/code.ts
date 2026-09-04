@@ -2,13 +2,14 @@ import {
   parseConfig,
   validateConfig,
 } from '@digdir/designsystemet/schemas/helpers.js';
+import { configFileCreateSchema as configFileCreateSchemaInternal } from '@digdir/designsystemet/schemas/internal/schema.js';
 import { configFileCreateSchema } from '@digdir/designsystemet/schemas/v1.1/schema.js';
 import {
   createSystemTokens,
   createTokens,
-  tokenSetDimensions,
+  getTokenSetDimensions,
 } from '@digdir/designsystemet/tokens/create';
-import type { infer as ZodInfer } from 'zod';
+import type { infer as ZodInfer, input as ZodInput } from 'zod';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { importToFigma } from './token-export/importer';
@@ -37,7 +38,8 @@ const semanticColorNames = new Set<string>();
 
 let themeNames: string[] = [];
 
-type ConfigSchema = ZodInfer<typeof configFileCreateSchema>;
+type ConfigSchemaInternal = ZodInfer<typeof configFileCreateSchemaInternal>;
+type ConfigSchemaInput = ZodInput<typeof configFileCreateSchema>;
 
 if (figma.editorType === 'figma') {
   figma.showUI(__html__, {
@@ -56,22 +58,38 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         fileMap.clear();
         files = [];
 
-        const parsedConfig = parseConfig<ConfigSchema>(msg.config);
+        const parsedConfig = parseConfig<ConfigSchemaInternal>(msg.config);
 
-        const config = validateConfig<ConfigSchema>(
+        // Validate the config against the external schema to ensure it conforms to the expected structure.
+        const configInput = validateConfig<ConfigSchemaInput>(
           configFileCreateSchema,
           parsedConfig,
         );
 
+        // Validate the config against the internal schema to populate default values and ensure it conforms to the expected structure.
+        const config = validateConfig<ConfigSchemaInternal>(
+          configFileCreateSchemaInternal,
+          configInput,
+        );
+
         themeNames = Object.keys(config.themes ?? {});
+
+        // The dimensions come from the first theme, mirroring the CLI: size modes and
+        // typography sets are expected to be the same across themes.
+        const tokenSetDimensions = getTokenSetDimensions(
+          config.themes[themeNames[0]],
+        );
 
         for (const [themeName, themeConfig] of Object.entries(
           config.themes,
-        ) as [string, ConfigSchema['themes'][string]][]) {
-          const { tokenSets } = await createTokens({
-            name: themeName,
-            ...themeConfig,
-          });
+        ) as [string, ConfigSchemaInternal['themes'][string]][]) {
+          const { tokenSets } = await createTokens(
+            {
+              name: themeName,
+              ...themeConfig,
+            },
+            tokenSetDimensions,
+          );
 
           // Collect semantic color names from the token set paths to get severity colors, neutral and other default colors. These will be used to generate system tokens later.
           for (const [tokenSetPath, data] of tokenSets.entries()) {

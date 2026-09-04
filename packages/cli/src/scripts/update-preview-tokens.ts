@@ -2,9 +2,9 @@ import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
 import { validateConfig } from '../schemas/helpers.ts';
-import { configSchema } from '../schemas/v1.2/schema.ts';
+import { configSchema } from '../schemas/internal/schema.ts';
 import { generate$Themes } from '../tokens/create/generators/$themes.ts';
-import { createTokens, tokenSetDimensions } from '../tokens/create.ts';
+import { createTokens, getTokenSetDimensions } from '../tokens/create.ts';
 import { buildOptions, processPlatform } from '../tokens/process/platform.ts';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.ts';
 import type { Theme } from '../tokens/types.ts';
@@ -30,7 +30,8 @@ const formatTheme = async (themeConfig: Theme) => {
   const colorNames = toColorNames(themeConfig.colors);
   const themeNames = [themeConfig.name];
 
-  const { tokenSets } = await createTokens(themeConfig);
+  const tokenSetDimensions = getTokenSetDimensions(themeConfig);
+  const { tokenSets } = await createTokens(themeConfig, tokenSetDimensions);
   const $themes = await generate$Themes(tokenSetDimensions, themeNames, colorNames);
 
   const processed$themes = $themes.map(processThemeObject);
@@ -98,7 +99,7 @@ const formatTheme = async (themeConfig: Theme) => {
   }
 };
 
-// Parse the config through the schema so defaults (typography, borderRadius) are applied.
+// Parse the config through the schema so defaults (typography, borderRadius, size) are applied.
 const { themes } = validateConfig(configSchema, config);
 
 formatTheme({
@@ -109,4 +110,8 @@ formatTheme({
     neutral: themes.designsystemet.colors.neutral,
   },
   typography: themes.designsystemet.typography,
+  size: themes.designsystemet.size,
+  shadow: themes.designsystemet.shadow,
+  'border-width': themes.designsystemet['border-width'],
+  opacity: themes.designsystemet.opacity,
 });
