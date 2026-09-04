@@ -59,5 +59,5 @@ export function configThemeToUrl(
   params.set('appearance', 'light');
   params.set('tab', 'colorsystem');
 
-  return `/${lang}/themebuilder?${params.toString()}`;
+  return `/${lang}?${params.toString()}`;
 }

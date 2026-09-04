@@ -1,11 +1,17 @@
 .header {
   background-color: var(--ds-color-accent-surface-tinted);
+}
+
+.headerContent {
   padding: var(--ds-size-10);
   padding-bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: var(--ds-size-4);
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
 
   @media screen and (max-width: 768px) {
     padding: var(--ds-size-4);
@@ -16,16 +22,11 @@
 .textContainer {
   display: flex;
   flex-direction: column;
-  gap: var(--ds-size-10);
+  gap: var(--ds-size-2);
 }
 
-.backLink {
-  --ds-link-color: var(--ds-color-accent-text-default);
-
-  margin-left: -4px;
-  display: inline-flex;
-  width: auto;
-  align-self: flex-start;
+.docsLink {
+  width: fit-content;
 }
 
 .tabs {
