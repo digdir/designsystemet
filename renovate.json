@@ -10,6 +10,13 @@
       "matchDepTypes": ["engines"],
       "matchDepNames": ["node"],
       "enabled": false
+    },
+    {
+      "description": "Update every Node.js pin (Dockerfile, pnpm-workspace.yaml, package.json engines and runtime) in one PR",
+      "matchDepNames": ["node"],
+      "matchManagers": ["dockerfile", "custom.jsonata", "npm"],
+      "groupName": "node.js",
+      "groupSlug": "node"
     }
   ],
   "customManagers": [
