@@ -216,7 +216,14 @@ function App() {
           )}
 
           {view === 'preview' && (
-            <Button onClick={() => postToPlugin('export-tokens-to-figma')}>
+            <Button
+              onClick={() =>
+                postToPlugin('export-tokens-to-figma', {
+                  theme: state.selectedTheme,
+                  scheme: state.selectedScheme,
+                })
+              }
+            >
               Export to Figma
             </Button>
           )}

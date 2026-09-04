@@ -1,9 +1,9 @@
 import {
+  FIGMA_COLLECTION,
   type FigmaCollections,
   type FigmaMode,
   toFigmaCollections,
 } from '@digdir/designsystemet/tokens/create';
-import { COLLECTION } from './constants';
 import { findReferences, flattenTokens } from './parser';
 import { findUnresolvedReferences } from './resolver';
 import type {
@@ -158,7 +158,7 @@ function buildThemeOptions(
   tokenSetPaths: string[],
 ): ThemeOption[] {
   const themeModes = modePreviews.filter(
-    (mode) => mode.group === COLLECTION.THEME,
+    (mode) => mode.group === FIGMA_COLLECTION.THEME,
   );
 
   if (themeModes.length > 1) {
@@ -189,7 +189,7 @@ function buildColorSchemeOptions(modePreviews: ModePreview[]): ThemeOption[] {
     /Light/i.test(name) ? 0 : /Dark/i.test(name) ? 2 : 1;
 
   return modePreviews
-    .filter((mode) => mode.group === COLLECTION.COLOR_SCHEME)
+    .filter((mode) => mode.group === FIGMA_COLLECTION.COLOR_SCHEME)
     .map((mode) => ({
       name: mode.name,
       tokenSets: existingTokenSets(mode),

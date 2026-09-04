@@ -141,8 +141,8 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
         const result = await importToFigma({
           model: tokenModel,
-          selectedTheme: themeNames.length > 0 ? themeNames[0] : null,
-          selectedScheme: 'light',
+          selectedTheme: msg.theme ?? themeNames[0] ?? null,
+          selectedScheme: msg.scheme ?? 'Light',
         });
         postMessage('export-tokens-to-figma', {
           status: 'success',
