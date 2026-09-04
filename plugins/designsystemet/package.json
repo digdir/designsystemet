@@ -29,18 +29,18 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "^1.134.0",
+    "@figma/plugin-typings": "^1.137.0",
     "@types/node": "24.13.3",
     "@types/postcss-url": "^10.0.4",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
-    "@vitejs/plugin-react": "^6.1.0",
+    "@vitejs/plugin-react": "^6.1.1",
     "postcss": "^8.5.26",
     "postcss-url": "^10.1.4",
     "rimraf": "6.1.3",
     "typescript": "5.9.3",
     "vite": "8.2.2",
     "vite-plugin-singlefile": "^2.3.3",
-    "zod": "^4.4.3"
+    "zod": "^4.5.4"
   }
 }

@@ -5,7 +5,7 @@
   "private": true,
   "packageManager": "pnpm@10.34.5+sha512.a4ee05f2f73658255bd6a89859c065a45c28a57daefae2c893a168ee2b73168c37b91e83e57ea67654ad03f03031746430e8bce38e362e042605fb8abc80192e",
   "engines": {
-    "node": ">=24.19.0",
+    "node": ">=24.20.0",
     "runtime": {
       "name": "node",
       "version": "24.19.0",
@@ -44,16 +44,16 @@
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.10",
+    "@biomejs/biome": "2.5.11",
     "@changesets/cli": "3.0.1",
     "@changesets/get-github-info": "^1.0.0",
     "@changesets/types": "^7.0.0",
     "@digdir/designsystemet": "workspace:^",
     "@testing-library/jest-dom": "7.0.1",
     "@types/node": "24.13.3",
-    "@vitejs/plugin-react": "6.1.0",
+    "@vitejs/plugin-react": "6.1.1",
     "@vitest/browser-playwright": "4.1.11",
-    "chromatic": "18.5.0",
+    "chromatic": "18.7.2",
     "typescript": "6.0.3",
     "typescript-plugin-css-modules": "5.2.0",
     "vite": "8.2.2",
