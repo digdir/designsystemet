@@ -10,9 +10,9 @@ import type { CssColor } from '../src/colors/types.ts';
 import { formatThemeCSS } from '../src/index.ts';
 import migrations from '../src/migrations/index.ts';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
-import type { NextConfigSchema } from '../src/schemas/next/schema.ts';
-import { nextConfigSchema } from '../src/schemas/next/schema.ts';
 import type { CreateConfigSchema } from '../src/schemas/v1.1/schema.ts';
+import type { ConfigSchema } from '../src/schemas/v1.2/schema.ts';
+import { configSchema } from '../src/schemas/v1.2/schema.ts';
 import { buildTokens } from '../src/tokens/build.ts';
 import { createTokens, systemTokenToFiles, tokenSetDimensions, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
@@ -73,8 +73,8 @@ function _makeConfigCommand() {
         process.exit(1);
       }
 
-      const parsedConfig = parseConfig<NextConfigSchema>(configFile);
-      const config = validateConfig<NextConfigSchema>(nextConfigSchema, parsedConfig);
+      const parsedConfig = parseConfig<ConfigSchema>(configFile);
+      const config = validateConfig<ConfigSchema>(configSchema, parsedConfig);
 
       // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
       const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
@@ -466,11 +466,11 @@ async function createCss({
   console.log(`\n✅ Finished creating CSS`);
 }
 
-function isOnlyCssOutput(config: NextConfigSchema): boolean {
+function isOnlyCssOutput(config: ConfigSchema): boolean {
   // Can be defined using either the shorthand or object syntax, so check for both.
   const hasDesignTokensOutput =
     config.output.find((o) => o.type === 'design-tokens') ||
-    config.output.find((o) => o === ('design-tokens' as unknown as NextConfigSchema['output'][number]));
+    config.output.find((o) => o === ('design-tokens' as unknown as ConfigSchema['output'][number]));
   const hasCSSTokensDir = config.output.find((o) => o.type === 'css')?.tokenDir;
 
   return !hasDesignTokensOutput && !hasCSSTokensDir;

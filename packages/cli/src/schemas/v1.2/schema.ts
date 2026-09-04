@@ -1,3 +1,4 @@
+import pc from 'picocolors';
 import { z } from 'zod';
 import { configFileCreateSchema } from '../v1.1/schema.ts';
 
@@ -30,11 +31,34 @@ const outputSchema = z
   .union([outputObjectSchema, outputShorthandSchema])
   .describe('An output file, either as an object or an output type using its default settings');
 
-export const nextConfigSchema = configFileCreateSchema
-  .extend({
-    output: z.array(outputSchema).describe('An array of output files'),
-  })
-  // Omit the `clean` and `outDir` properties from the schema, as they are now handled by the `output` property.
-  .omit({ clean: true, outDir: true });
+/** Fields superseded by `output`. Kept so existing config files keep validating. */
+const deprecatedFields = ['outDir', 'clean'] as const;
 
-export type NextConfigSchema = z.infer<typeof nextConfigSchema>;
+/**
+ * The plain object schema. Use this when you need `.shape` (e.g. to generate the
+ * JSON schema); use {@link configSchema} to validate a config.
+ */
+export const configObjectSchema = configFileCreateSchema.extend({
+  output: z.array(outputSchema).describe('An array of output files'),
+  // No `.default()` on the deprecated fields: we need `undefined` when the user did not
+  // set them, so we can warn only when they actually did.
+  outDir: z.string().optional().meta({
+    deprecated: true,
+    description: 'Deprecated: use `output[].dir` instead. Ignored when `output` is set.',
+  }),
+  clean: z.boolean().optional().meta({
+    deprecated: true,
+    description: 'Deprecated: use `output[].cleanDir` instead. Ignored when `output` is set.',
+  }),
+});
+
+export const configSchema = configObjectSchema.superRefine((config) => {
+  // Non-fatal: warn about deprecated fields instead of failing validation.
+  for (const key of deprecatedFields) {
+    if (config[key] !== undefined) {
+      console.warn(pc.yellow(`⚠️  "${key}" is deprecated and ignored; use "output" instead.`));
+    }
+  }
+});
+
+export type ConfigSchema = z.infer<typeof configSchema>;
