@@ -1,8 +1,8 @@
 import { Link, Paragraph } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { useTranslation } from 'react-i18next';
-import classes from '../token-modal.module.css';
 import { useRouteLoaderData } from 'react-router';
+import classes from '../token-modal.module.css';
 
 export default function Config({
   configSnippet,
