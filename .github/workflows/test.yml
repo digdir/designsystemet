@@ -26,7 +26,7 @@ jobs:
       - name: Free up disk space
         run: bash ./.github/workflows/scripts/free-disk-space.sh
 
-      - uses: ./.github/actions/gh-setup
+      - uses: $/.github/actions/gh-setup
 
       - name: Get Playwright version
         id: playwright-version
