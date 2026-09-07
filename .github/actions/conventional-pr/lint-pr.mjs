@@ -2,7 +2,6 @@
 // CondeNast/conventional-pull-request-action: with a single commit (and unless
 // IGNORE_COMMITS) the commit subject is linted and must equal the PR title, since GitHub
 // pre-fills the merge message from it. Otherwise the PR title is linted.
-import { readFileSync } from 'node:fs';
 import { lintHeader } from './lint-header.mjs';
 
 const isTrue = (value) => String(value ?? '').toLowerCase() === 'true';
@@ -11,14 +10,15 @@ const token = process.env.GITHUB_TOKEN;
 const commitTitleMatch = isTrue(process.env.COMMIT_TITLE_MATCH ?? 'true');
 const ignoreCommits = isTrue(process.env.IGNORE_COMMITS ?? 'false');
 
-const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
-if (!event.pull_request) {
+// The PR number comes from the workflow context via action.yml rather than from the
+// event payload file, and is validated before it is used in a request URL.
+const number = process.env.PR_NUMBER ?? '';
+if (!/^[1-9]\d*$/.test(number)) {
   fail('Pull request not found. Use a pull_request event to trigger this action.');
   process.exit(1);
 }
 
 const repository = process.env.GITHUB_REPOSITORY;
-const number = event.pull_request.number;
 
 const pullRequest = await api(`/repos/${repository}/pulls/${number}`);
 console.log(`Found PR title: ${pullRequest.title}`);

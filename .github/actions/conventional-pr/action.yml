@@ -24,4 +24,6 @@ runs:
         GITHUB_TOKEN: ${{ inputs.github-token }}
         COMMIT_TITLE_MATCH: ${{ inputs.commit-title-match }}
         IGNORE_COMMITS: ${{ inputs.ignore-commits }}
+        # Empty unless the workflow was triggered by a pull_request event.
+        PR_NUMBER: ${{ github.event.pull_request.number }}
       run: node "${{ github.action_path }}/lint-pr.mjs"
