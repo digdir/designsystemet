@@ -1,7 +1,6 @@
 import type no from '../no/theme-modal';
 
 export default {
-  lang: 'en',
   'use-theme': 'Use theme',
   'theme-name': 'Give your theme a name',
   'theme-name-description':

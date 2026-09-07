@@ -2,6 +2,7 @@ import { Link, Paragraph } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { useTranslation } from 'react-i18next';
 import classes from '../token-modal.module.css';
+import { useRouteLoaderData } from 'react-router';
 
 export default function Config({
   configSnippet,
@@ -11,6 +12,7 @@ export default function Config({
   buildSnippet: string;
 }) {
   const { t } = useTranslation();
+  const { lang } = useRouteLoaderData('themebuilder');
 
   return (
     <>
@@ -20,7 +22,7 @@ export default function Config({
           {t('themeModal.config.step-one')}{' '}
           <Link
             target='_blank'
-            href={`https://www.designsystemet.no/${t('themeModal.lang')}/fundamentals/start-here/own-theme`}
+            href={`https://www.designsystemet.no/${t(lang)}/fundamentals/start-here/own-theme`}
           >
             {t('themeModal.own-theme')}
           </Link>

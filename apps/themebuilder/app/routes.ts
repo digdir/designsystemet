@@ -9,7 +9,9 @@ import {
 export default [
   layout('./layouts/root/layout.tsx', [
     ...prefix('/:lang', [
-      index('routes/themebuilder/themebuilder.tsx'),
+      index('routes/themebuilder/themebuilder.tsx', {
+        id: 'themebuilder',
+      }),
       route('/themebuilder', 'routes/redirect-themebuilder.tsx'),
     ]),
   ]),

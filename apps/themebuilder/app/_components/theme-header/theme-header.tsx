@@ -1,6 +1,6 @@
 import { Heading, Link } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router';
+import { useRouteLoaderData, useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import type { ThemebuilderTabs } from '~/routes/themebuilder/themebuilder';
 import classes from './theme-header.module.css';
@@ -9,6 +9,7 @@ export const ThemeHeader = () => {
   const { t } = useTranslation();
   const [, setQuery] = useSearchParams();
   const { tab } = useThemebuilder();
+  const { lang } = useRouteLoaderData('themebuilder');
 
   const tabs: {
     name: string;
@@ -28,7 +29,7 @@ export const ThemeHeader = () => {
           </Heading>
           <Link
             className={classes.docsLink}
-            href={`https://designsystemet.no/${t('themeModal.lang')}/fundamentals/start-here/own-theme`}
+            href={`https://designsystemet.no/${lang}/fundamentals/start-here/own-theme`}
           >
             {t('themeBuilder.documentation-link')}
           </Link>
