@@ -14,7 +14,9 @@ const ignoreCommits = isTrue(process.env.IGNORE_COMMITS ?? 'false');
 // event payload file, and is validated before it is used in a request URL.
 const number = process.env.PR_NUMBER ?? '';
 if (!/^[1-9]\d*$/.test(number)) {
-  fail('Pull request not found. Use a pull_request event to trigger this action.');
+  fail(
+    'Pull request not found. Use a pull_request event to trigger this action.',
+  );
   process.exit(1);
 }
 
