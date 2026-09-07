@@ -100,7 +100,8 @@ function upperFirst(text) {
 // Word splitting close to lodash's, which commitlint uses via es-toolkit/compat.
 function words(text) {
   return (
-    text.match(/[A-Z]{2,}(?=[A-Z][a-z]+\d*|\b)|[A-Z]?[a-z]+\d*|[A-Z]|\d+/g) ?? []
+    text.match(/[A-Z]{2,}(?=[A-Z][a-z]+\d*|\b)|[A-Z]?[a-z]+\d*|[A-Z]|\d+/g) ??
+    []
   );
 }
 

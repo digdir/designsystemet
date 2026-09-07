@@ -13,7 +13,6 @@
     "includes": [
       "**/*",
       "!.vscode",
-      "!.github",
       "!.changeset",
       "!**/design-tokens/*",
       "!**/dist",
