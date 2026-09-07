@@ -33,12 +33,12 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const lang = params.lang;
 
   if (lang === undefined) {
-    return redirect('/no');
+    return redirect(`/no${url.search}`);
   }
 
   /* Redirect from old path to new path, with search params */
   if (lang === 'themebuilder') {
-    return redirect(`/no/themebuilder?${url.searchParams.toString()}`);
+    return redirect(`/no${url.search}`);
   }
 
   if (lang !== 'no' && lang !== 'en') {
