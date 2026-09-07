@@ -67,7 +67,7 @@
   "dependencies": {
     "@commander-js/extra-typings": "^15.0.0",
     "@digdir/designsystemet-types": "workspace:",
-    "@inquirer/confirm": "^6.2.0",
+    "@inquirer/confirm": "^6.3.0",
     "@tokens-studio/sd-transforms": "2.0.3",
     "@tokens-studio/types": "0.5.2",
     "chroma-js": "^3.2.0",
@@ -81,7 +81,7 @@
     "postcss": "^8.5.26",
     "ramda": "^0.32.0",
     "style-dictionary": "^5.5.2",
-    "zod": "^4.4.3",
+    "zod": "^4.5.4",
     "zod-validation-error": "^5.0.0"
   },
   "devDependencies": {
