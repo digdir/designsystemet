@@ -1,0 +1,9 @@
+# Configuration for actionlint, run by .github/workflows/check-github.yml.
+# https://github.com/rhysd/actionlint/blob/main/docs/config.md
+paths:
+  .github/workflows/**/*.{yml,yaml}:
+    ignore:
+      # GitHub's `$/` self-repository syntax for `uses:` (recommended by zizmor) is not
+      # known to actionlint yet: https://github.com/rhysd/actionlint/issues/711
+      - 'specifying action "\$/.+" in invalid format because ref is missing'
+      - 'reusable workflow call "\$/.+" at "uses" is not following the format'
