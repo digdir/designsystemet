@@ -49,7 +49,7 @@ jobs:
           # build the PR HEAD exactly
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
-      - uses: ./.github/actions/gh-setup
+      - uses: $/.github/actions/gh-setup
       - name: Build
         run: pnpm build
       - name: Build storybook
@@ -75,7 +75,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: ./.github/actions/gh-setup
+      - uses: $/.github/actions/gh-setup
       - name: Build
         run: pnpm build
       - name: Build storybook

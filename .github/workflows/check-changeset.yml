@@ -26,7 +26,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: ./.github/actions/gh-setup
+      - uses: $/.github/actions/gh-setup
       - name: Check changeset status
         env:
           BASE_REF: ${{ github.event.pull_request.base.ref }}
