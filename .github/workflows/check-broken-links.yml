@@ -1,25 +1,25 @@
 name: Check broken links
 on:
-    workflow_dispatch:
-    pull_request:
-        paths:
-            - "apps/www/**"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "apps/www/**"
 
 permissions:
-    contents: read
+  contents: read
 
 jobs:
-    checks:
-        name: Check broken links
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-              with:
-                persist-credentials: false
-            - uses: $/.github/actions/gh-setup
-            - name: Build
-              run: pnpm build
-            - name: Build www
-              run: pnpm build:www
-            - name: Check broken links
-              run: pnpm test:www-links
+  checks:
+    name: Check broken links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/gh-setup
+      - name: Build
+        run: pnpm build
+      - name: Build www
+        run: pnpm build:www
+      - name: Check broken links
+        run: pnpm test:www-links

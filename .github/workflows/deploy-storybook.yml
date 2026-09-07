@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   deploy-production:
-    uses: $/.github/workflows/azure-deploy-storybook.yml
+    uses: ./.github/workflows/azure-deploy-storybook.yml
     with:
       environment: ${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
     secrets:
