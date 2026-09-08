@@ -18,7 +18,7 @@ const ATTR_EMPTY = 'data-empty';
 const ATTR_CREATE = 'data-create';
 const EVENTS_EMPTY = 'comboboxafterselect comboboxprogrammaticinput input';
 const REGEX_CREATE = /\{value\}|%s/; // Support both new %s and old {value} syntax
-const SINGULAR = 'data-sr-plural';
+const SINGULAR = 'data-sr-singular';
 const PLURAL = 'data-sr-plural';
 const TEXTS =
   'added,clear,empty,found,invalid,items,of,plural,remove,removed,singular,toggle'
