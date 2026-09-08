@@ -5,7 +5,10 @@ packages:
   - internal/*
 allowBuilds:
   "@biomejs/biome": true
+  '@parcel/watcher': true
   '@swc/core': true
+  esbuild: true
+  rs-module-lexer: true
   style-dictionary: true
 blockExoticSubdeps: true
 injectWorkspacePackages: true
