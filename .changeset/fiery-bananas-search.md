@@ -3,4 +3,4 @@
 "@digdir/designsystemet-web": patch
 ---
 
-**Suggestion:** Now correctly renders clear button state when rendered asynchronously
+**Suggestion:** Now correctly renders clear button state when rendered asynchronously (thanks @stianmorsund)
