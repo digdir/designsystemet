@@ -17,7 +17,6 @@ export * from '@u-elements/u-datalist';
 const ATTR_EMPTY = 'data-empty';
 const ATTR_CREATE = 'data-create';
 const EVENTS_EMPTY = 'comboboxafterselect comboboxprogrammaticinput input';
-const REGEX_EMPTY = /(%s|\{value\})/gi;
 const TEXTS =
   'added,clear,empty,found,invalid,items,of,plural,remove,removed,singular,toggle'
     .split(',')
@@ -34,11 +33,11 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 
   connectedCallback() {
     super.connectedCallback();
+    for (const key of TEXTS) attr(this, key, attrOrCSS(this, key)); // Convert CSS variables to attributes
+
     this._unmutate = onMutation(this, render, { childList: true }); // .control and .list are direct children of the custom element
     on(this, EVENTS_EMPTY, handleEmpty, QUICK_EVENT);
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
-
-    for (const key of TEXTS) attr(this, key, attrOrCSS(this, key)); // Convert CSS variables to attributes
   }
   disconnectedCallback() {
     super.disconnectedCallback();
@@ -55,8 +54,10 @@ const render = (self: DSSuggestionElement) => {
 
   if (control) attr(control, 'popovertarget', list ? useId(list) : null);
   if (datalist) {
-    attr(datalist, 'popover', 'manual'); // Ensure popover attribute is set on the list
     attr(datalist, 'data-is-floating', 'true'); // identifier for css to toggle opacity when it is placed by floating-ui.
+    attr(datalist, 'data-sr-plural', attr(self, 'data-sr-plural')); // Inherit translations from u-combobox to u-datalist
+    attr(datalist, 'data-sr-singular', attr(self, 'data-sr-singular')); // Inherit translations from u-combobox to u-datalist
+    attr(datalist, 'popover', 'manual'); // Ensure popover attribute is set on the list
   }
   handleEmpty({ currentTarget: self });
 };
@@ -85,7 +86,11 @@ const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
   const text = attrOrCSS(empty, ATTR_EMPTY);
   if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, empty);
   else attr(empty, ATTR_EMPTY, text); // Speed up by caching attribute value
-  attr(empty, ATTR_CREATE, text?.replace(REGEX_EMPTY, value)); // Support both new %s and old {value} syntax
+  attr(
+    empty,
+    ATTR_CREATE,
+    text?.replace('{value}', value).replace('%s', value), // Support both new %s and old {value} syntax
+  );
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:
