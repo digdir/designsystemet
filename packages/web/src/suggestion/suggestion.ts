@@ -17,7 +17,7 @@ export * from '@u-elements/u-datalist';
 const ATTR_EMPTY = 'data-empty';
 const ATTR_CREATE = 'data-create';
 const EVENTS_EMPTY = 'comboboxafterselect comboboxprogrammaticinput input';
-const REGEX_CREATE = /(\{value\}|%s)/; // Support both new %s and old {value} syntax
+const REGEX_CREATE = /\{value\}|%s/; // Support both new %s and old {value} syntax
 const SINGULAR = 'data-sr-plural';
 const PLURAL = 'data-sr-plural';
 const TEXTS =
