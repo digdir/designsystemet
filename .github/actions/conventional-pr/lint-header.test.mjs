@@ -1,7 +1,11 @@
 // Run with: node --test .github/actions/conventional-pr/lint-header.test.mjs
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { lintHeader, matchedSubjectCases, parseHeader } from './lint-header.mjs';
+import {
+  lintHeader,
+  matchedSubjectCases,
+  parseHeader,
+} from './lint-header.mjs';
 
 describe('parseHeader', () => {
   it('extracts type, scope and subject', () => {
@@ -17,7 +21,11 @@ describe('parseHeader', () => {
   });
 
   it('returns nulls when the header is not conventional', () => {
-    assert.deepEqual(parseHeader('Update readme'), { type: null, scope: null, subject: null });
+    assert.deepEqual(parseHeader('Update readme'), {
+      type: null,
+      scope: null,
+      subject: null,
+    });
   });
 });
 
@@ -35,11 +43,17 @@ describe('lintHeader', () => {
   }
 
   it('rejects an unknown type', () => {
-    assert.match(lintHeader('feature: add thing').join(), /type must be one of/);
+    assert.match(
+      lintHeader('feature: add thing').join(),
+      /type must be one of/,
+    );
   });
 
   it('rejects an upper-case type', () => {
-    assert.match(lintHeader('Fix: add thing').join(), /type must be lower-case/);
+    assert.match(
+      lintHeader('Fix: add thing').join(),
+      /type must be lower-case/,
+    );
   });
 
   it('rejects a missing type and subject', () => {
@@ -53,11 +67,17 @@ describe('lintHeader', () => {
   });
 
   it('rejects a sentence-case subject', () => {
-    assert.match(lintHeader('fix: Add thing').join(), /subject must not be sentence-case/);
+    assert.match(
+      lintHeader('fix: Add thing').join(),
+      /subject must not be sentence-case/,
+    );
   });
 
   it('rejects a header over 100 characters', () => {
-    assert.match(lintHeader(`fix: ${'a'.repeat(100)}`).join(), /longer than 100/);
+    assert.match(
+      lintHeader(`fix: ${'a'.repeat(100)}`).join(),
+      /longer than 100/,
+    );
   });
 
   it('rejects surrounding whitespace', () => {
@@ -76,8 +96,18 @@ describe('matchedSubjectCases', () => {
   });
 
   it('reports every case that matches', () => {
-    assert.deepEqual(matchedSubjectCases('Add Thing'), ['sentence-case', 'start-case']);
-    assert.deepEqual(matchedSubjectCases('ADD THING'), ['sentence-case', 'start-case', 'upper-case']);
-    assert.deepEqual(matchedSubjectCases('AddThing'), ['sentence-case', 'pascal-case']);
+    assert.deepEqual(matchedSubjectCases('Add Thing'), [
+      'sentence-case',
+      'start-case',
+    ]);
+    assert.deepEqual(matchedSubjectCases('ADD THING'), [
+      'sentence-case',
+      'start-case',
+      'upper-case',
+    ]);
+    assert.deepEqual(matchedSubjectCases('AddThing'), [
+      'sentence-case',
+      'pascal-case',
+    ]);
   });
 });

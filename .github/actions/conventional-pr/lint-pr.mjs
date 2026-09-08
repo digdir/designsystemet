@@ -14,7 +14,9 @@ const ignoreCommits = isTrue(process.env.IGNORE_COMMITS ?? 'false');
 // event payload file, and is validated before it is used in a request URL.
 const number = process.env.PR_NUMBER ?? '';
 if (!/^[1-9]\d*$/.test(number)) {
-  fail('Pull request not found. Use a pull_request event to trigger this action.');
+  fail(
+    'Pull request not found. Use a pull_request event to trigger this action.',
+  );
   process.exit(1);
 }
 
@@ -26,7 +28,9 @@ console.log(`Found PR title: ${pullRequest.title}`);
 let failed = false;
 
 if (!ignoreCommits && pullRequest.commits <= 1) {
-  const [first] = await api(`/repos/${repository}/pulls/${number}/commits?per_page=1`);
+  const [first] = await api(
+    `/repos/${repository}/pulls/${number}/commits?per_page=1`,
+  );
   const subject = first.commit.message.split('\n')[0];
   console.log(`Found commit subject: ${subject}`);
 
@@ -40,14 +44,18 @@ if (!ignoreCommits && pullRequest.commits <= 1) {
   }
 
   if (commitTitleMatch && pullRequest.title !== subject) {
-    fail('COMMIT: PRs with a single commit require the PR title and commit message to match');
+    fail(
+      'COMMIT: PRs with a single commit require the PR title and commit message to match',
+    );
     failed = true;
   }
 } else {
   const errors = lintHeader(pullRequest.title);
   for (const message of errors) error(`PR title: ${message}`);
   if (errors.length > 0) {
-    fail('PULL REQUEST: PR title does not conform to the conventional commit spec');
+    fail(
+      'PULL REQUEST: PR title does not conform to the conventional commit spec',
+    );
     failed = true;
   }
 }
@@ -66,7 +74,9 @@ async function api(path) {
     },
   });
   if (!response.ok) {
-    throw new Error(`GitHub API ${path} failed: ${response.status} ${response.statusText}`);
+    throw new Error(
+      `GitHub API ${path} failed: ${response.status} ${response.statusText}`,
+    );
   }
   return response.json();
 }
