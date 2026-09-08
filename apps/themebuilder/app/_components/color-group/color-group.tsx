@@ -5,6 +5,7 @@ import type {
 import { RovingFocusItem } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useColorModalContext } from '~/_utils/color-modal-context';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { ColorButton } from '../color-button/color-button';
@@ -26,6 +27,7 @@ export const ColorGroup = ({
   namespace,
 }: ColorGroupProps) => {
   const { colorScheme } = useThemebuilder();
+  const { t } = useTranslation();
   const { openColorModal } = useColorModalContext();
 
   return (
@@ -49,7 +51,10 @@ export const ColorGroup = ({
                 <ColorButton
                   color={hex}
                   colorName={colorName}
-                  aria-label={`Se mer om ${namespace} ${color?.displayName}`}
+                  aria-label={t('colorGroup.see-more', {
+                    namespace,
+                    color: color?.displayName,
+                  })}
                   onClick={() => openColorModal(color, namespace)}
                 />
               </RovingFocusItem>

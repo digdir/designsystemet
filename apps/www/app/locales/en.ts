@@ -213,6 +213,10 @@ export default {
       normal: 'Click to enlarge image.',
     },
   },
+  'color-info-table': {
+    name: 'Name',
+    usage: 'Usage',
+  },
   'image-banner': {
     'play-video': 'Play video',
     'pause-video': 'Pause video',
