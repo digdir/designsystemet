@@ -137,6 +137,9 @@ export default {
     'set-to': 'Sett til',
     view: 'visning',
   },
+  colorGroup: {
+    'see-more': 'Se mer om {{namespace}} {{color}}',
+  },
   'color-tokens': {
     title: 'Fargetokens',
     description:

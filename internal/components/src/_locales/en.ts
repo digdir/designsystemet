@@ -1,3 +1,4 @@
+import colorMetadata from './en/color-metadata';
 import type no from './no';
 
 export default {
@@ -33,6 +34,7 @@ export default {
     copy: 'Copy',
     copied: 'Copied',
   },
+  'color-metadata': colorMetadata,
   'color-modal': {
     hexcode: 'Hexcode',
     'css-variable': 'CSS variable',
