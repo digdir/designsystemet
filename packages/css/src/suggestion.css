@@ -81,7 +81,7 @@
     --dsc-suggestion-sr-remove: 'Trykk for å fjerne';
     --dsc-suggestion-sr-removed: 'Fjernet';
     --dsc-suggestion-sr-singular: '%d forslag';
-    --dsc-suggestion-sr-toggle: 'Valg';
+    --dsc-suggestion-sr-toggle: 'Forslag';
   }
 
   /* "proxy" so attrOrCSS works even if changing --ds- prefix */

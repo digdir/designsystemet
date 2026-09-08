@@ -228,7 +228,7 @@ export const ControlledMultiple = meta.story({
     const getChipValues = async () =>
       waitFor(() =>
         within(canvasElement)
-          .getAllByLabelText('Press to remove', { exact: false })
+          .getAllByLabelText('Trykk for å fjerne', { exact: false })
           .filter((el) => el instanceof HTMLDataElement)
           .map((x) => x.value),
       );
