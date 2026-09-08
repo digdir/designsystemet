@@ -29,13 +29,13 @@
     "@types/ramda": "0.32.0",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.5",
-    "@vitest/browser": "4.1.11",
+    "@vitest/browser": "5.0.0",
     "axe-playwright": "2.2.2",
     "playwright": "1.62.1",
     "ramda": "0.32.0",
     "react-docgen-typescript": "2.4.0",
     "storybook": "10.5.10",
     "storybook-addon-pseudo-states": "10.5.10",
-    "vitest": "4.1.11"
+    "vitest": "5.0.0"
   }
 }
