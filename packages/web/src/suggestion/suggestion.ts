@@ -11,6 +11,9 @@ import {
   warn,
 } from '../utils/utils';
 
+// Load and export u-datalist since this is a pure polyfill and not custom Designsystemet elements, should run before suggestion
+export * from '@u-elements/u-datalist';
+
 const ATTR_EMPTY = 'data-empty';
 const ATTR_CREATE = 'data-create';
 
@@ -69,8 +72,8 @@ const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
   if (!empty) return;
 
   empty.hidden = exists;
-  empty.label = value; // Ensures option is not filtered out by <u-combobox>
-  empty.value = creatable ? value : ''; // Ensures clicking option does nothing
+  attr(empty, 'label', value); // Ensures option is not filtered out by <u-combobox>
+  attr(empty, 'value', creatable ? value : ''); // Ensures clicking option does nothing
 
   if (!creatable || empty.textContent) return;
   const text = attrOrCSS(empty, ATTR_EMPTY);
