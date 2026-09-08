@@ -28,7 +28,7 @@ export const ColorModal = ({
   namespace,
   color,
 }: ColorModalProps) => {
-  const { displayName, description, number, hex } = color;
+  const { displayName, name, number, hex } = color;
   const [convertedColor, setConvertedColor] = useState<string>(
     convertColor(hex, 'oklch'),
   );
@@ -56,8 +56,8 @@ export const ColorModal = ({
         style={{ backgroundColor: hex }}
       ></div>
       <Dialog.Block className={classes.modalContent}>
-        <Paragraph data-size='sm' className={classes.description} lang='no'>
-          {description.long}
+        <Paragraph data-size='sm' className={classes.description}>
+          {t(`color-metadata.${name}.long`)}
         </Paragraph>
         <div data-size='sm' className={classes.grid}>
           <Paragraph className={classes.key}>

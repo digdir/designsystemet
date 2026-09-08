@@ -48,6 +48,8 @@ jobs:
       fqdn: ${{ steps.fqdn.outputs.fqdn }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: az login (oidc)
         uses: azure/login@7ddb5af1ef8758cf1353cf3b42f940aee27ba21c # v3.0.2
@@ -105,7 +107,7 @@ jobs:
   update-comment:
     if: ${{ inputs.update_comment }}
     needs: deploy
-    uses: ./.github/workflows/preview-comment.yml
+    uses: $/.github/workflows/preview-comment.yml
     with:
       pr_number: ${{ github.event.number }}
       deployment_type: storybook

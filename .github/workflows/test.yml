@@ -22,15 +22,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Free up disk space
         run: bash ./.github/workflows/scripts/free-disk-space.sh
 
-      - uses: ./.github/actions/gh-setup
+      - uses: $/.github/actions/gh-setup
 
       - name: Get Playwright version
         id: playwright-version
-        run: echo "version=$(pnpm --filter @web/storybook list playwright --depth=0 --json | jq -r '.[0].devDependencies.playwright.version')" >> $GITHUB_OUTPUT
+        run: echo "version=$(pnpm --filter @web/storybook list playwright --depth=0 --json | jq -r '.[0].devDependencies.playwright.version')" >> "$GITHUB_OUTPUT"
 
       - name: Cache Playwright browsers
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
