@@ -64,11 +64,39 @@
   ); /* Distance between edge of input and chip */
 
   /* Only set default texts if Norwegian */
-  &:is([lang|='nb' i], [lang|='nn' i], [lang|='no' i]),
-  :is([lang|='nb' i], [lang|='nn' i], [lang|='no' i]) & {
+  &:lang(no),
+  &:lang(nb),
+  &:lang(nn) {
     --dsc-suggestion-create-text: 'Legg til "{value}"';
     --dsc-suggestion-empty-text: 'Tomt';
+
+    --dsc-suggestion-sr-added: 'La til';
+    --dsc-suggestion-sr-clear: 'Fjern tekst';
+    --dsc-suggestion-sr-empty: 'Ingen valgte';
+    --dsc-suggestion-sr-found: 'Naviger til venstre for å finne %d valgte';
+    --dsc-suggestion-sr-invalid: 'Ugyldig valg';
+    --dsc-suggestion-sr-items: 'Valgte';
+    --dsc-suggestion-sr-of: 'av';
+    --dsc-suggestion-sr-plural: '%d forslag';
+    --dsc-suggestion-sr-remove: 'Trykk for å fjerne';
+    --dsc-suggestion-sr-removed: 'Fjernet';
+    --dsc-suggestion-sr-singular: '%d forslag';
+    --dsc-suggestion-sr-toggle: 'Valg';
   }
+
+  /* "proxy" so attrOrCSS works even if changing --ds- prefix */
+  --_ds-data-sr-added: var(--dsc-suggestion-sr-added);
+  --_ds-data-sr-clear: var(--dsc-suggestion-sr-clear);
+  --_ds-data-sr-empty: var(--dsc-suggestion-sr-empty);
+  --_ds-data-sr-found: var(--dsc-suggestion-sr-found);
+  --_ds-data-sr-invalid: var(--dsc-suggestion-sr-invalid);
+  --_ds-data-sr-items: var(--dsc-suggestion-sr-items);
+  --_ds-data-sr-of: var(--dsc-suggestion-sr-of);
+  --_ds-data-sr-plural: var(--dsc-suggestion-sr-plural);
+  --_ds-data-sr-remove: var(--dsc-suggestion-sr-remove);
+  --_ds-data-sr-removed: var(--dsc-suggestion-sr-removed);
+  --_ds-data-sr-singular: var(--dsc-suggestion-sr-singular);
+  --_ds-data-sr-toggle: var(--dsc-suggestion-sr-toggle);
 
   align-items: center;
   box-sizing: border-box;

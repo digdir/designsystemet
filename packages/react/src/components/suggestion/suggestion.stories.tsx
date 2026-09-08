@@ -463,7 +463,10 @@ export const FetchExternal = meta.story({
           <Suggestion.Input onInput={handleInput} />
           <Suggestion.Toggle />
           <Suggestion.Clear />
-          <Suggestion.List singular='%d country' plural='%d countries'>
+          <Suggestion.List
+            data-sr-singular='%d country'
+            data-sr-plural='%d countries'
+          >
             {value ? (
               <Suggestion.Empty>
                 {options ? (

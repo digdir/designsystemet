@@ -11,13 +11,25 @@ export type SuggestionListProps = MergeRight<
     /**
      * The screen reader announcement for singular Suggestion, where %d is the number of Suggestions
      * @default '%d forslag'
+     * @deprecated Please use `data-sr-singular` instead
      */
     singular?: string;
     /**
      * The screen reader announcement for plural Suggestions, where %d is the number of Suggestions
      * @default '%d forslag'
+     * @deprecated Please use `data-sr-plural` instead
      */
     plural?: string;
+    /**
+     * The screen reader announcement for singular Suggestion, where %d is the number of Suggestions
+     * @default '%d forslag'
+     */
+    'data-sr-singular'?: string;
+    /**
+     * The screen reader announcement for plural Suggestions, where %d is the number of Suggestions
+     * @default '%d forslag'
+     */
+    'data-sr-plural'?: string;
     /**
      * Whether to enable auto placement.
      * @default true

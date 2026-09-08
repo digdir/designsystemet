@@ -16,6 +16,12 @@ export * from '@u-elements/u-datalist';
 
 const ATTR_EMPTY = 'data-empty';
 const ATTR_CREATE = 'data-create';
+const EVENTS_EMPTY = 'comboboxafterselect comboboxprogrammaticinput input';
+const REGEX_EMPTY = /(%s|\{value\})/gi;
+const TEXTS =
+  'added,clear,empty,found,invalid,items,of,plural,remove,removed,singular,toggle'
+    .split(',')
+    .map((key) => `data-sr-${key}`);
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -29,14 +35,16 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
   connectedCallback() {
     super.connectedCallback();
     this._unmutate = onMutation(this, render, { childList: true }); // .control and .list are direct children of the custom element
-    on(this, 'comboboxafterselect input', handleEmpty, QUICK_EVENT);
+    on(this, EVENTS_EMPTY, handleEmpty, QUICK_EVENT);
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
+
+    for (const key of TEXTS) attr(this, key, attrOrCSS(this, key)); // Convert CSS variables to attributes
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this._unmutate?.();
     this._unmutate = undefined;
-    off(this, 'comboboxafterselect input', handleEmpty, QUICK_EVENT);
+    off(this, EVENTS_EMPTY, handleEmpty, QUICK_EVENT);
     off(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
 }
@@ -62,8 +70,6 @@ const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
   let empty: HTMLOptionElement | undefined;
   let exists = !value;
 
-  // TODO Altinn Slack message
-  // TODO Translation Une
   for (const opt of options) {
     if (!empty && opt.hasAttribute(ATTR_EMPTY)) empty = opt;
     else if (!exists && opt.label?.toLowerCase() === query) exists = true; // Prevent creating an option that already exists
@@ -79,7 +85,7 @@ const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
   const text = attrOrCSS(empty, ATTR_EMPTY);
   if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, empty);
   else attr(empty, ATTR_EMPTY, text); // Speed up by caching attribute value
-  attr(empty, ATTR_CREATE, text?.replace(/(%s|\{value\})/gi, value)); // Support both new %s and old {value} syntax
+  attr(empty, ATTR_CREATE, text?.replace(REGEX_EMPTY, value)); // Support both new %s and old {value} syntax
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:
