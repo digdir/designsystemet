@@ -7,7 +7,7 @@ export type SuggestionEmptyProps = DefaultProps &
   OptionHTMLAttributes<HTMLOptionElement> & {
     /**
      * Optionally the text to display when the suggestion list is empty.
-     * If <Suggestion> has `data-creatable`, use `{value}` to replace with the current input value.
+     * If <Suggestion> has `data-creatable`, use `%s` to replace with the current input value.
      **/
     'data-empty'?: string;
   };

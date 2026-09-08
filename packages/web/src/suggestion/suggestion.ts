@@ -59,6 +59,8 @@ const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
   let empty: HTMLOptionElement | undefined;
   let exists = !value;
 
+  // TODO Altinn Slack message
+  // TODO Translation Une
   for (const opt of options) {
     if (!empty && opt.hasAttribute(ATTR_EMPTY)) empty = opt;
     else if (!exists && opt.label?.toLowerCase() === query) exists = true; // Prevent creating an option that already exists
@@ -74,7 +76,7 @@ const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
   const text = attrOrCSS(empty, ATTR_EMPTY);
   if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, empty);
   else attr(empty, ATTR_EMPTY, text); // Speed up by caching attribute value
-  attr(empty, ATTR_CREATE, text?.replace('{value}', value));
+  attr(empty, ATTR_CREATE, text?.replace(/(%s|\{value\})/gi, value)); // Support both new %s and old {value} syntax
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:
