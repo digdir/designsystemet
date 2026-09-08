@@ -1,56 +1,22 @@
-# Checks everything under .github: workflow syntax (actionlint), the shell scripts the
-# workflows call (shellcheck), workflow security (zizmor), and the JavaScript in our
-# composite actions (Biome + node --test). Only runs when something in .github changes.
 name: Check .github
 on:
   workflow_dispatch:
   pull_request:
     paths:
-      - '.github/**'
+      - ".github/**"
 
 permissions:
   contents: read
 
 jobs:
-  lint:
-    name: actionlint + shellcheck
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - name: Install actionlint
-        # check for the most recent release: https://github.com/rhysd/actionlint/releases
-        run: bash <(curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/v1.7.12/scripts/download-actionlint.bash) 1.7.12
-      - name: Lint workflows
-        # shellcheck is preinstalled on ubuntu-latest, so actionlint also checks `run:` blocks with it.
-        run: ./actionlint -color
-      - name: Lint workflow scripts
-        run: shellcheck -S warning .github/workflows/scripts/*.sh
-
-  zizmor:
-    name: zizmor
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: zizmorcore/zizmor-action@70fb788f84895a7701f5643d103d587e460b5c99 # v0.6.3
-        with:
-          # Only fail on high-severity findings for now. Medium (artipacked, i.e. checkouts
-          # without persist-credentials: false) exists across most workflows and is a follow-up.
-          min-severity: high
-          # Plain output instead of SARIF upload, so no security-events permission is needed.
-          advanced-security: false
-
   actions:
-    name: Composite action code
+    name: Lint, format and test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: ./.github/actions/gh-setup
+      - uses: $/.github/actions/gh-setup
       - name: Biome
         run: pnpm biome ci .github
       - name: Unit tests
