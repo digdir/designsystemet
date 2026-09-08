@@ -3,4 +3,4 @@
 "@digdir/designsystemet-web": minor
 ---
 
-**Suggestion:** Now supports setting localization through CSS Custom Properties
+**Suggestion:** Now supports setting localization through CSS Custom Properties (thanks @unekinn)
