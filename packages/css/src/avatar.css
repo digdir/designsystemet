@@ -74,7 +74,7 @@
   }
 
   &[data-variant='square'] {
-    --dsc-avatar-radius: var(--ds-border-radius-sm);
+    --dsc-avatar-radius: var(--ds-border-radius-md);
   }
 
   @media (forced-colors: active) {
