@@ -40,20 +40,24 @@ export default defineConfig([
       ]);
 
       const declarations = modules.map(getFrameworkTypes).join('');
-      // The framework type imports must be added exactly once, and only when at
-      // least one file actually declared web components
-      const footer = declarations && `${frameworkTypeImports}\n${declarations}`;
-      if (footer) {
-        try {
-          fs.appendFileSync(dtsPath, footer);
-        } catch (error) {
-          if ((error as { code?: string }).code === 'ENOENT') {
-            // dts file does not exist yet, skip appending
-            return;
-          }
-          throw error;
+
+      if (!declarations) return;
+
+      let dts: string;
+      try {
+        dts = fs.readFileSync(dtsPath, 'utf8');
+      } catch (error) {
+        if ((error as { code?: string }).code === 'ENOENT') {
+          return;
         }
+        throw error;
       }
+
+      // The framework type imports must be added exactly only once
+      fs.writeFileSync(
+        dtsPath,
+        `${frameworkTypeImports}\n${dts}${declarations}`,
+      );
     },
   },
   // ESM build with individual files
@@ -107,8 +111,7 @@ export default defineConfig([
   },
 ]);
 
-const frameworkTypeImports = `
-import type * as PreactTypes from 'preact'
+const frameworkTypeImports = `import type * as PreactTypes from 'preact'
 import type * as ReactTypes from 'react'
 import type * as SvelteTypes from 'svelte/elements'
 import type * as VueJSX from '@vue/runtime-dom'
