@@ -103,6 +103,8 @@
       width: var(--dsc-chip-icon-size);
       padding-inline: 0; /*override u-combobox default*/
       flex-shrink: 0; /* Prevent shrinking when content is long */
+      font-size: 0; /* Hide label text */
+      white-space: nowrap;
     }
   }
 
