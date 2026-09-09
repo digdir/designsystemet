@@ -1,5 +1,4 @@
 .ds-link {
-  /* TODO: Changeset for visited color and active background and border-radius styling */
   --dsc-link-color: var(--ds-color-text-subtle);
   --dsc-link-color--hover: var(--ds-color-text-default);
   --dsc-link-color--active: var(--ds-color-text-default);

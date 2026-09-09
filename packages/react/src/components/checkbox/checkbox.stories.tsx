@@ -109,7 +109,7 @@ export const WithError = meta.story({
   args: {
     disabled: false,
     name: 'my-error',
-    error: 'Du må velge minst to kontaktalternativ', // TODO: useCheckbox when hook is ready
+    error: 'Du må velge minst to kontaktalternativ',
   },
 });
 type Choices = {

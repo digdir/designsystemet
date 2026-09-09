@@ -122,7 +122,7 @@ const generateColorContrast = (color: CssColor, type: 'default' | 'subtle'): Css
 
 /**
  * Returns the css variable for a color.
- * TODO: deprecate this
+ * TODO: @deprecated this
  * @param colorType The type of color
  * @param colorNumber The number of the color
  */
