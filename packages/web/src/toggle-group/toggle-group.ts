@@ -53,6 +53,7 @@ const getRadioInFocusGroup = (e: Event) => {
   }
 };
 
+// @deprecated message
 const deprecate = (el: Element) => {
   if (el.hasAttribute(ATTR_FOCUSGROUP)) return; // Ignore if already migrated
   const label = attrOrCSS(el, ATTR_TOGGLEGROUP);
