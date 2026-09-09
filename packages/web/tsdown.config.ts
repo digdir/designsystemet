@@ -39,18 +39,25 @@ export default defineConfig([
         fs.readFileSync(file).toString(),
       ]);
 
-      const footer = modules.map(getFrameworkTypes).join('');
-      if (footer) {
-        try {
-          fs.appendFileSync(dtsPath, footer);
-        } catch (error) {
-          if ((error as { code?: string }).code === 'ENOENT') {
-            // dts file does not exist yet, skip appending
-            return;
-          }
-          throw error;
+      const declarations = modules.map(getFrameworkTypes).join('');
+
+      if (!declarations) return;
+
+      let dts: string;
+      try {
+        dts = fs.readFileSync(dtsPath, 'utf8');
+      } catch (error) {
+        if ((error as { code?: string }).code === 'ENOENT') {
+          return;
         }
+        throw error;
       }
+
+      // The framework type imports must be added exactly only once
+      fs.writeFileSync(
+        dtsPath,
+        `${frameworkTypeImports}\n${dts}${declarations}`,
+      );
     },
   },
   // ESM build with individual files
@@ -104,7 +111,14 @@ export default defineConfig([
   },
 ]);
 
-function getFrameworkTypes([_file, code]: string[], index: number) {
+const frameworkTypeImports = `import type * as PreactTypes from 'preact'
+import type * as ReactTypes from 'react'
+import type * as SvelteTypes from 'svelte/elements'
+import type * as VueJSX from '@vue/runtime-dom'
+import type { JSX as QwikJSX } from '@builder.io/qwik/jsx-runtime'
+import type { JSX as SolidJSX } from 'solid-js'`;
+
+function getFrameworkTypes([_file, code]: string[]) {
   // Match ds-* tags from HTMLElementTagNameMap declarations: 'ds-field': DSFieldElement
   const tagRexes = /['"]?(ds-[\w-]+)['"]?:\s*(\w+Element)/gi;
   const tagDefinitions = Array.from(code.matchAll(tagRexes));
@@ -116,17 +130,7 @@ function getFrameworkTypes([_file, code]: string[], index: number) {
   const eventRexes = /['"]?(\S*?)['"]?: (CustomEvent(<[^>]+>)?)/gi;
   const events = Array.from(eventMap.matchAll(eventRexes));
 
-  return `${
-    index
-      ? '' // Only add once for each package, not for every file
-      : `\nimport type * as PreactTypes from 'preact'
-import type * as ReactTypes from 'react'
-import type * as SvelteTypes from 'svelte/elements'
-import type * as VueJSX from '@vue/runtime-dom'
-import type { JSX as QwikJSX } from '@builder.io/qwik/jsx-runtime'
-import type { JSX as SolidJSX } from 'solid-js'`
-  }
-
+  return `
 ${tagDefinitions
   .map(([, tag, domInterface]) => {
     const componentType = tag
