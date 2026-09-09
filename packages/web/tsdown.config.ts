@@ -39,7 +39,10 @@ export default defineConfig([
         fs.readFileSync(file).toString(),
       ]);
 
-      const footer = modules.map(getFrameworkTypes).join('');
+      const declarations = modules.map(getFrameworkTypes).join('');
+      // The framework type imports must be added exactly once, and only when at
+      // least one file actually declared web components
+      const footer = declarations && `${frameworkTypeImports}\n${declarations}`;
       if (footer) {
         try {
           fs.appendFileSync(dtsPath, footer);
@@ -104,7 +107,15 @@ export default defineConfig([
   },
 ]);
 
-function getFrameworkTypes([_file, code]: string[], index: number) {
+const frameworkTypeImports = `
+import type * as PreactTypes from 'preact'
+import type * as ReactTypes from 'react'
+import type * as SvelteTypes from 'svelte/elements'
+import type * as VueJSX from '@vue/runtime-dom'
+import type { JSX as QwikJSX } from '@builder.io/qwik/jsx-runtime'
+import type { JSX as SolidJSX } from 'solid-js'`;
+
+function getFrameworkTypes([_file, code]: string[]) {
   // Match ds-* tags from HTMLElementTagNameMap declarations: 'ds-field': DSFieldElement
   const tagRexes = /['"]?(ds-[\w-]+)['"]?:\s*(\w+Element)/gi;
   const tagDefinitions = Array.from(code.matchAll(tagRexes));
@@ -116,17 +127,7 @@ function getFrameworkTypes([_file, code]: string[], index: number) {
   const eventRexes = /['"]?(\S*?)['"]?: (CustomEvent(<[^>]+>)?)/gi;
   const events = Array.from(eventMap.matchAll(eventRexes));
 
-  return `${
-    index
-      ? '' // Only add once for each package, not for every file
-      : `\nimport type * as PreactTypes from 'preact'
-import type * as ReactTypes from 'react'
-import type * as SvelteTypes from 'svelte/elements'
-import type * as VueJSX from '@vue/runtime-dom'
-import type { JSX as QwikJSX } from '@builder.io/qwik/jsx-runtime'
-import type { JSX as SolidJSX } from 'solid-js'`
-  }
-
+  return `
 ${tagDefinitions
   .map(([, tag, domInterface]) => {
     const componentType = tag
