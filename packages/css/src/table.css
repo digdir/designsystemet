@@ -3,7 +3,7 @@
   --dsc-table-background--zebra: var(--ds-color-surface-tinted);
   --dsc-table-background: transparent;
   --dsc-table-border-color: var(--ds-color-border-subtle);
-  --dsc-table-border-radius: var(--ds-border-radius-md);
+  --dsc-table-border-radius: var(--ds-border-radius-lg);
   --dsc-table-border-style: solid;
   --dsc-table-border-width: var(--ds-border-width-default);
   --dsc-table-color: var(--ds-color-text-default);
