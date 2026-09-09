@@ -14,7 +14,7 @@
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-thickness: var(--dsc-link-text-decoration-thickness);
-  text-underline-offset: 0.27em; /* 5px ish */
+  text-underline-offset: 0.24em;
   border-radius: var(--dsc-link-border-radius);
 
   /* Revert <button> styling */
