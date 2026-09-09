@@ -24,6 +24,12 @@
   --dsc-chip-padding-inline: var(--ds-size-3);
   --dsc-chip-spacing: calc((var(--dsc-chip-height) - var(--dsc-chip-input-size)) / 2); /* Distance between edge of input and chip */
 
+  &:lang(no),
+  &:lang(nb),
+  &:lang(nn) {
+    --dsc-chip-remove-label: 'Trykk for å fjerne'; /* Only set default label if Norwegian */
+  }
+
   background: var(--dsc-chip-background);
   border-color: var(--dsc-chip-border-color);
   border-radius: var(--dsc-chip-border-radius);
@@ -87,7 +93,7 @@
     padding-inline-end: calc(var(--dsc-chip-spacing) * 2 + var(--dsc-chip-icon-size));
 
     &::after {
-      content: '';
+      content: ', ' var(--dsc-chip-remove-label, 'Press to remove');
       position: absolute;
       inset-block-start: calc((var(--dsc-chip-height) - var(--dsc-chip-icon-size)) / 2 - var(--dsc-chip-border-width));
       inset-inline-end: var(--dsc-chip-spacing);

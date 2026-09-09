@@ -31,10 +31,6 @@ export const Removable = meta.story({
   render: (args) => (
     <Chip.Removable {...(args as ChipRemovableProps)}>Norge</Chip.Removable>
   ),
-
-  args: {
-    'aria-label': 'Slett Norge',
-  },
 });
 
 export const Button = meta.story({
