@@ -28,7 +28,8 @@
     text-align: inherit;
   }
 
-  & > :is(img, svg) {
+  /* Style icons, but allow HTML width/height attributes to win over CSS */
+  & > :where(img, svg):not([width]):not([height]) {
     @composes ds-icon from './base.css';
   }
 
