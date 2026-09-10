@@ -11,7 +11,7 @@ const hexPatterns = [
   `#[0-9a-fA-F]{8}`,
 ];
 
-const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
+const colorRegex = new RegExp(`^(${hexPatterns.join('|')})$`);
 
 const colorSchema = z
   .string()
