@@ -663,8 +663,8 @@ importers:
         specifier: ^1.8.0
         version: 1.8.0
       '@u-elements/u-combobox':
-        specifier: ^2.1.3
-        version: 2.1.3
+        specifier: ^2.1.4
+        version: 2.1.4
       '@u-elements/u-datalist':
         specifier: ^2.0.3
         version: 2.0.3
@@ -2511,8 +2511,8 @@ packages:
   '@types/ws@8.18.1':
     resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
-  '@u-elements/u-combobox@2.1.3':
-    resolution: {integrity: sha512-6AoZBFbFSMB9iUoFVPj7bMCsAM1x0CVOjH73b7ZAhqjAWlwtPcuiym6PfxQhirFgItJhDjVZPAe3uweRNiB8ug==}
+  '@u-elements/u-combobox@2.1.4':
+    resolution: {integrity: sha512-zlKAGPtJUOpuKRrraSfpT+08z+cbOBvP3tT6RDlY23oN0bpy1apVBXMdiYIR8lxRzVe2C/siK8yvSO5BA32Rsw==}
 
   '@u-elements/u-datalist@2.0.3':
     resolution: {integrity: sha512-1/N53P9CtmpTQQN/S8fQG0JEQqQmpAmAVhuPTskycrn74DJUdi2lKYdyGW7X4tg6ANsi4iGLn5Bv3NLHoCrzIg==}
@@ -7698,7 +7698,7 @@ snapshots:
     dependencies:
       '@types/node': 24.13.3
 
-  '@u-elements/u-combobox@2.1.3': {}
+  '@u-elements/u-combobox@2.1.4': {}
 
   '@u-elements/u-datalist@2.0.3': {}
 
