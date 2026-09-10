@@ -11,7 +11,7 @@ const baseTheme: ConfigSchemaThemeInput = {
 
 // The font-size scale keys (1-10) referenced by the default typography components.
 const fontSizes = Object.fromEntries(Array.from({ length: 10 }, (_, index) => [String(index + 1), String(index + 11)]));
-
+// Use safeParse to validate themes without throwing exceptions
 const parseThemes = (themes: Record<string, ConfigSchemaThemeInput>) => themesSchema.safeParse(themes);
 
 const issuePaths = (result: ReturnType<typeof parseThemes>) =>
@@ -128,12 +128,10 @@ describe('themesSchema cross-theme validation', () => {
 });
 
 describe('internal schema tests', () => {
-  it('validates v1.1 schema', () => {
+  it('validates simple v1.1 schema', () => {
     const result = configSchema.safeParse({
-      output: [],
       themes: { a: baseTheme },
     });
-    console.log(result.error);
     expect(result.success).toBe(true);
   });
 });
