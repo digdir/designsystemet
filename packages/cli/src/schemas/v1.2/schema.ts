@@ -39,7 +39,7 @@ const deprecatedFields = ['outDir', 'clean'] as const;
  * JSON schema); use {@link configSchema} to validate a config.
  */
 export const configObjectSchema = configFileCreateSchema.extend({
-  output: z.array(outputSchema).describe('An array of output files'),
+  output: z.array(outputSchema).prefault(['design-tokens', 'css']).describe('An array of output files'),
   // No `.default()` on the deprecated fields: we need `undefined` when the user did not
   // set them, so we can warn only when they actually did.
   outDir: z.string().optional().meta({
