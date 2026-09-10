@@ -106,7 +106,7 @@ const typographySetSchema = z
 export type TypographySetSchema = z.infer<typeof typographySetSchema>;
 
 // The shorthand form: only a font-family. Strict, so an object defining named sets never matches it.
-const typographyShorthandSchema = z
+export const typographyShorthandSchema = z
   .strictObject({
     fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }).default(defaultFontFamily),
   })
