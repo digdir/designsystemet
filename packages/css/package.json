@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "1.21.0",
+  "version": "1.21.1",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -56,9 +56,9 @@
     "@digdir/designsystemet-types": "workspace:"
   },
   "devDependencies": {
-    "autoprefixer": "10.5.4",
+    "autoprefixer": "10.5.5",
     "cssnano": "8.0.10",
-    "postcss": "8.5.26",
+    "postcss": "8.5.28",
     "postcss-cli": "11.0.1",
     "postcss-import": "17.0.0",
     "postcss-nesting": "14.0.1",
