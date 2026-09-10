@@ -67,7 +67,7 @@
   "dependencies": {
     "@commander-js/extra-typings": "^15.0.0",
     "@digdir/designsystemet-types": "workspace:",
-    "@inquirer/confirm": "^6.3.0",
+    "@inquirer/confirm": "^6.3.1",
     "@tokens-studio/sd-transforms": "2.0.3",
     "@tokens-studio/types": "0.5.2",
     "chroma-js": "^3.2.0",
@@ -78,9 +78,9 @@
     "jsonc-parser": "^3.3.1",
     "object-hash": "^3.0.0",
     "picocolors": "^1.1.1",
-    "postcss": "^8.5.26",
+    "postcss": "^8.5.28",
     "ramda": "^0.32.0",
-    "style-dictionary": "^5.5.2",
+    "style-dictionary": "^5.5.3",
     "zod": "^4.5.4",
     "zod-validation-error": "^5.0.0"
   },
