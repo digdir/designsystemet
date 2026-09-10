@@ -76,7 +76,10 @@ const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
   const items = getItems(group.el, target); // Include target so we can move from tabindex="-1" as according to spec
   let next = 0;
 
-  if (isTab) return setTimeout(setTab, 0, items, setTab(items)); // Make sure next tab stop is outside focusgroup
+  if (isTab) {
+    const others = items.filter((item) => item !== target); // Keep target tabbable, as Firefox restarts sequential navigation from document start if a mouse-focused element becomes tabindex="-1"
+    return setTimeout(setTab, 0, others, setTab(others)); // Make sure next tab stop is outside focusgroup
+  }
   if (e.key === 'Home') next = 0;
   else if (e.key === 'End') next = items.length - 1;
   else {
