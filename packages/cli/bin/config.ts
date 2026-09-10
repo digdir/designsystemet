@@ -2,7 +2,7 @@ import type { Command, OptionValues } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
-import { type CreateConfigSchema, configFileCreateSchema } from '../src/schemas/internal/schema.ts';
+import { type ConfigSchema, configSchema } from '../src/schemas/internal/schema.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.ts';
 
@@ -40,13 +40,13 @@ export async function readConfigFile(configFilePath: string, allowFileNotFound =
 export async function parseCreateConfig(
   configFile: string,
   options: { theme: string; cmd: Command<unknown[], OptionValues>; configFilePath: string },
-): Promise<CreateConfigSchema> {
+): Promise<ConfigSchema> {
   const { cmd, theme = 'theme', configFilePath } = options;
 
-  let configParsed = {} as CreateConfigSchema;
+  let configParsed = {} as ConfigSchema;
 
   try {
-    configParsed = parseConfig<CreateConfigSchema>(configFile);
+    configParsed = parseConfig<ConfigSchema>(configFile);
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred while parsing config file';
     console.error(pc.redBright(`Failed parsing config  file at ${pc.red(configFilePath)}`));
@@ -97,9 +97,9 @@ export async function parseCreateConfig(
         },
   });
 
-  let validatedConfig = {} as CreateConfigSchema;
+  let validatedConfig = {} as ConfigSchema;
   try {
-    validatedConfig = validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig);
+    validatedConfig = validateConfig<ConfigSchema>(configSchema, unvalidatedConfig);
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred while parsing config file';
 

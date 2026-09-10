@@ -1,14 +1,14 @@
 import * as R from 'ramda';
 import { z } from 'zod';
 import { convertToHex } from '../../colors/index.ts';
-import { configFileCreateSchema as baseConfigFileCreateSchema, overridesSchema } from '../v1.1/schema.ts';
+import { overridesSchema } from '../v1.1/schema.ts';
 import { configObjectSchema as baseConfigObjectSchema, warnDeprecatedFields } from '../v1.2/schema.ts';
 import { borderRadiusSchema } from './schema-border-radius.ts';
 import { borderWidthSchema } from './schema-border-width.ts';
 import { opacitySchema } from './schema-opacity.ts';
 import { shadowSchema } from './schema-shadow.ts';
 import { sizeSchema } from './schema-size.ts';
-import { typographySchema } from './schema-typography.ts';
+import { typographySchema, typographyShorthandSchema } from './schema-typography.ts';
 
 const hexPatterns = [
   // Hex colors: #000, #0000, #000000, #00000000
@@ -26,7 +26,8 @@ const colorSchema = z
   .transform(convertToHex)
   .describe(`A hex color, which is used for creating a color scale.`);
 
-const themeSchema = z
+/** The plain theme object. Use this when you need `.shape` or `.pick()`; use {@link themeSchema} to validate a theme. */
+const themeObjectSchema = z
   .object({
     colors: z
       .record(z.string(), colorSchema)
@@ -42,59 +43,60 @@ const themeSchema = z
     shadow: shadowSchema,
     opacity: opacitySchema,
   })
-  .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' })
-  // Validate that token references in each typography set's components (e.g. '{letter-spacing.3}')
-  // point to keys defined in this theme.
-  .superRefine((theme, ctx) => {
-    // font-size references must resolve in every size mode, so only keys present in all steps count.
-    const fontSizeKeys = new Set<string>();
-    const steps = Object.values(theme.size.steps);
-    for (const key of Object.keys(steps[0]?.fontSizes ?? {})) {
-      if (steps.every((step) => key in step.fontSizes)) {
-        fontSizeKeys.add(key);
+  .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
+
+// Validate that token references in each typography set's components (e.g. '{letter-spacing.3}')
+// point to keys defined in this theme.
+const themeSchema = themeObjectSchema.superRefine((theme, ctx) => {
+  // font-size references must resolve in every size mode, so only keys present in all steps count.
+  const fontSizeKeys = new Set<string>();
+  const steps = Object.values(theme.size.steps);
+  for (const key of Object.keys(steps[0]?.fontSizes ?? {})) {
+    if (steps.every((step) => key in step.fontSizes)) {
+      fontSizeKeys.add(key);
+    }
+  }
+
+  const checkGroup = (
+    group: Record<string, unknown>,
+    path: (string | number)[],
+    availableKeys: Record<string, Set<string>>,
+  ) => {
+    for (const [name, value] of Object.entries(group)) {
+      if (typeof value === 'string') {
+        for (const [, prefix, key] of value.matchAll(/\{([\w-]+)\.([\w.-]+)\}/g)) {
+          const known = availableKeys[prefix];
+          if (!known) {
+            ctx.addIssue({
+              code: 'custom',
+              path: [...path, name],
+              message: `Unknown reference prefix "{${prefix}.${key}}". Available prefixes: ${Object.keys(availableKeys).join(', ')}.`,
+            });
+          } else if (!known.has(key)) {
+            ctx.addIssue({
+              code: 'custom',
+              path: [...path, name],
+              message: `Unknown ${prefix} reference "{${prefix}.${key}}". Available keys: ${[...known].join(', ')}.`,
+            });
+          }
+        }
+      } else if (value && typeof value === 'object') {
+        checkGroup(value as Record<string, unknown>, [...path, name], availableKeys);
       }
     }
+  };
 
-    const checkGroup = (
-      group: Record<string, unknown>,
-      path: (string | number)[],
-      availableKeys: Record<string, Set<string>>,
-    ) => {
-      for (const [name, value] of Object.entries(group)) {
-        if (typeof value === 'string') {
-          for (const [, prefix, key] of value.matchAll(/\{([\w-]+)\.([\w.-]+)\}/g)) {
-            const known = availableKeys[prefix];
-            if (!known) {
-              ctx.addIssue({
-                code: 'custom',
-                path: [...path, name],
-                message: `Unknown reference prefix "{${prefix}.${key}}". Available prefixes: ${Object.keys(availableKeys).join(', ')}.`,
-              });
-            } else if (!known.has(key)) {
-              ctx.addIssue({
-                code: 'custom',
-                path: [...path, name],
-                message: `Unknown ${prefix} reference "{${prefix}.${key}}". Available keys: ${[...known].join(', ')}.`,
-              });
-            }
-          }
-        } else if (value && typeof value === 'object') {
-          checkGroup(value as Record<string, unknown>, [...path, name], availableKeys);
-        }
-      }
+  for (const [setName, set] of Object.entries(theme.typography)) {
+    const availableKeys: Record<string, Set<string>> = {
+      'line-height': new Set(Object.keys(set.lineHeight)),
+      'font-weight': new Set(Object.keys(set.fontWeight)),
+      'letter-spacing': new Set(Object.keys(set.letterSpacing)),
+      'font-size': fontSizeKeys,
     };
 
-    for (const [setName, set] of Object.entries(theme.typography)) {
-      const availableKeys: Record<string, Set<string>> = {
-        'line-height': new Set(Object.keys(set.lineHeight)),
-        'font-weight': new Set(Object.keys(set.fontWeight)),
-        'letter-spacing': new Set(Object.keys(set.letterSpacing)),
-        'font-size': fontSizeKeys,
-      };
-
-      checkGroup(set.components, ['typography', setName, 'components'], availableKeys);
-    }
-  });
+    checkGroup(set.components, ['typography', setName, 'components'], availableKeys);
+  }
+});
 
 type SharedThemeValue = {
   /** Path to the value within a theme, used for the issue path. */
@@ -205,13 +207,31 @@ export const configObjectSchema = baseConfigObjectSchema.extend({
 
 export const configSchema = configObjectSchema.superRefine(warnDeprecatedFields);
 
-export type ConfigSchema = z.infer<typeof configObjectSchema>;
+/** The theme keys that exist in the public v1.2 config. `satisfies` fails to compile if the v1.2 theme keys change. */
+const externalThemeMask = {
+  colors: true,
+  typography: true,
+  borderRadius: true,
+  overrides: true,
+} satisfies Record<keyof z.infer<typeof baseConfigObjectSchema>['themes'][string], true>;
 
-/** The `tokens create` config validated against the internal themes schema. */
-export const configFileCreateSchema = baseConfigFileCreateSchema.extend({
-  themes: themesSchema,
+/**
+ * A theme restricted to the keys and shapes available in the v1.2 config, without the internal-only cross-key refinements.
+ * Typography is limited to the `{ fontFamily }` shorthand, as v1.2 has no named typography sets.
+ */
+const externalThemeSchema = themeObjectSchema.pick(externalThemeMask).extend({
+  typography: typographyShorthandSchema,
 });
 
-export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
-/** The pre-validation shape of the config file, i.e. what users write: defaulted fields are optional. */
-export type CreateConfigSchemaInput = z.input<typeof configFileCreateSchema>;
+/**
+ * The config with themes restricted to the keys available in the v1.2 config.
+ * Use this when exposing the schema externally (e.g. the public JSON schema); use {@link configSchema} to validate a config.
+ */
+export const externalConfigSchema = configObjectSchema.extend({
+  themes: z.record(z.string(), externalThemeSchema).meta({
+    description:
+      'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
+  }),
+});
+
+export type ConfigSchema = z.infer<typeof configObjectSchema>;
