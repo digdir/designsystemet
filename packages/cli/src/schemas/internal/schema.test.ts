@@ -1,8 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { type ConfigSchemaThemeInput, themesSchema } from './schema.ts';
+import { type ConfigSchemaThemeInput, configSchema, themesSchema } from './schema.ts';
 
 const baseTheme: ConfigSchemaThemeInput = {
   colors: { neutral: '#444444', accent: '#0062BA' },
+  typography: {
+    fontFamily: 'Arial',
+  },
+  borderRadius: 8,
 };
 
 // The font-size scale keys (1-10) referenced by the default typography components.
@@ -120,5 +124,16 @@ describe('themesSchema cross-theme validation', () => {
     expect(result.error?.issues[0].message).toBe(
       'All themes must define the same opacities, as they are shared by all themes. Theme "b" does not match theme "a".',
     );
+  });
+});
+
+describe('internal schema tests', () => {
+  it('validates v1.1 schema', () => {
+    const result = configSchema.safeParse({
+      output: [],
+      themes: { a: baseTheme },
+    });
+    console.log(result.error);
+    expect(result.success).toBe(true);
   });
 });
