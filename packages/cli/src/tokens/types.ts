@@ -1,6 +1,6 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
 import type { ColorScheme } from '../index.ts';
-import type { ConfigSchemaTheme } from '../schemas/v1.1/schema.ts';
+import type { ConfigSchemaTheme } from '../schemas/internal/schema.ts';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.ts';
 
 export type Token =
@@ -17,6 +17,18 @@ export type TokenSet = {
 export type TokenSets = Map<string, TokenSet>;
 
 export type Typography = Theme['typography'];
+
+export type TypographySet = Typography[string];
+
+export type SizeConfig = Theme['size'];
+
+export type BorderRadiusConfig = Theme['borderRadius'];
+
+export type ShadowConfig = Theme['shadow'];
+
+export type BorderWidthConfig = Theme['border-width'];
+
+export type OpacityConfig = Theme['opacity'];
 
 export type Theme = {
   name: string;
@@ -42,6 +54,7 @@ export type ThemeDimension = keyof ThemePermutation;
 export type TokenSetDimensions = {
   colorSchemes: ColorScheme[];
   sizeModes: SizeModes[];
+  typographies: string[];
 };
 
 export type GetSDConfigOptions = {

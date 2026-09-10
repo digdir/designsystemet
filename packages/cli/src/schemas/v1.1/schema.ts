@@ -11,7 +11,7 @@ const hexPatterns = [
   `#[0-9a-fA-F]{8}`,
 ];
 
-const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
+const colorRegex = new RegExp(`^(${hexPatterns.join('|')})$`);
 
 const colorSchema = z
   .string()
@@ -68,7 +68,7 @@ const focusOverrideSchema = z
   })
   .describe('Overrides for the focus colors');
 
-const overridesSchema = z
+export const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
     severity: severityColorOverrideSchema.optional(),
