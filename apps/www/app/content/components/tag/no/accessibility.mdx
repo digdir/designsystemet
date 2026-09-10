@@ -1,8 +1,8 @@
 ## Dette må du sjekke selv
 
-**Tag som inneholder et ikon**
+**Tag som inneholder kun et ikon uten synlig tekst**
 
-Gi taggen et tilgjengelig navn med `aria-label`. Navnet skal beskrive taggens status eller betydning. Skjul ikonet for skjermlesere dersom taggen allerede har et tilgjengelig navn.
+Gi ikonet et tilgjengelig navn med `aria-label`. Navnet skal beskrive statusen eller betydningen. Skjul ikonet for skjermlesere med `aria-hidden="true"`dersom taggen allerede har synlig navn.
 
 <span data-size="sm"> 
 WCAG: [1.1.1 Ikke-tekstlig innhold (uutilsynet)](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231)
@@ -24,7 +24,7 @@ WCAG: [1.4.1 Bruk av farge (uutilsynet)](https://www.uutilsynet.no/wcag-standard
 
 Viser du flere tag sammen, anbefaler vi å bruke en `ul`-liste med én `li` per tag. Da leser skjermlesere dem opp som en liste i stedet for én sammenhengende tekst.
 
-Gi det omsluttende elementet et tilgjengelig navn med `aria-label` eller `aria-labelledby`. Bruk eventuelt en passende rolle, som `group`, dersom innholdet fungerer som en samlet gruppe. Ikke gjenta rollen som en del av navnet.
+Gi det omsluttende elementet et tilgjengelig navn med `aria-label` eller `aria-labelledby`.
 
 Sørg også for at hver enkelt tag har et tilgjengelig navn.
 
@@ -37,9 +37,9 @@ WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/v
 
 <Divider/>
 \
-**En tag skal ikke ha interaktiv funksjonalitet**
+**En tag skal ikke utføre en handling**
 
-Bruk en tag til å vise informasjon, ikke til å utføre handlinger. Den skal heller ikke se ut som et interaktivt element. Bruk i stedet chip, button eller en annen interaktiv komponent dersom brukeren skal kunne aktivere eller endre noe.
+Bruk en tag til å vise informasjon, eventuelt lenke til en kategori eller kolleksjon, ikke til å utføre handlinger. Bruk i stedet chip, button eller en annen interaktiv komponent dersom brukeren skal kunne aktivere eller endre noe.
 
 <span data-size="sm"> 
 WCAG: [3.2.4 Konsekvent identifikasjon (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/324-konsekvent-identifikasjon-niva-aa/115)
@@ -47,16 +47,14 @@ WCAG: [3.2.4 Konsekvent identifikasjon (uutilsynet)](https://www.uutilsynet.no/w
 
 <Divider/>
 \
-**Statusendringer må varsles når de skjer dynamisk**
+**Unngå lange tekststrenger i tag når det er mulig**
 
-Hvis statusen oppdateres uten at brukeren flytter fokus til den oppdaterte informasjonen, må du også formidle endringen til brukere av skjermleser.
+Lange tekststrenger kan være vanskelige å lese i en tag. Bruk korte og meningsbærende etiketter der det er mulig.
 
-Knytt varslingen til innholdet eller funksjonen som eier statusen, ikke nødvendigvis til taggen som viser den.
-
-For eksempel kan en opplastingsprosess varsle «Opplasting fullført», samtidig som statusen vises med en tag som endrer tekst og utseende.
+Hvis lengre tekst er nødvendig, kan det være aktuelt å avkorte den visuelle presentasjonen. Sørg for at hele innholdet fortsatt er tilgjengelig, for eksempel via en tilgjengelig tooltip.
 
 <span data-size="sm"> 
-WCAG: [4.1.3 Statusbeskjeder (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+WCAG: [2.5.3 Ledetekst i navn (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/150)
 </span> 
 
 <Divider/>
