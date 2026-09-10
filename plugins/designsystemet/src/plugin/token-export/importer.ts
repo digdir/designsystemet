@@ -1,38 +1,24 @@
 import { buildCollectionSpecs } from './collection-specs';
 import { syncEffectStyles } from './effect-styles';
 import { type FontCache, preloadAllFonts } from './fonts';
-import { getActiveTokenSets } from './resolver';
+import { getTokenSetLookupOrder } from './resolver';
 import { applyScopesAndSyntax } from './scope-syntax';
 import { syncTextStyles } from './text-styles';
-import type { PreviewData } from './types';
+import type { TokenModel } from './types';
 import { syncCollections, syncVariables } from './variable-sync';
 
-type ImportPayload = {
-  preview: PreviewData;
-  selectedTheme: string | null;
-  selectedScheme: string | null;
-};
-
 export async function importToFigma(
-  payload: ImportPayload,
+  model: TokenModel,
 ): Promise<{ logs: string[] }> {
   const logs: string[] = [];
-  const activeTokenSets = getActiveTokenSets(
-    payload.preview,
-    payload.selectedTheme,
-    payload.selectedScheme,
-  );
+  const tokenSetOrder = getTokenSetLookupOrder(model);
 
   const fontCache: FontCache = {
     availableFonts: await figma.listAvailableFontsAsync(),
     loadedFonts: new Set<string>(),
   };
 
-  const collectionSpecs = buildCollectionSpecs(
-    payload.preview,
-    activeTokenSets,
-    logs,
-  );
+  const collectionSpecs = buildCollectionSpecs(model, tokenSetOrder, logs);
 
   // Fonts must be loaded before syncVariables runs. If text styles from a previous
   // import are already bound to font-family variables, Figma will immediately try to
@@ -46,14 +32,8 @@ export async function importToFigma(
     collectionMap,
     logs,
   );
-  await syncTextStyles(
-    payload.preview,
-    activeTokenSets,
-    variableLookup,
-    fontCache,
-    logs,
-  );
-  await syncEffectStyles(payload.preview, activeTokenSets, logs);
+  await syncTextStyles(model, tokenSetOrder, variableLookup, fontCache, logs);
+  await syncEffectStyles(model, tokenSetOrder, logs);
 
   // Auto-apply correct scopes and CSS code syntax so users get them out of the box.
   // Best-effort: the variables are already written, so a failure here must not fail the

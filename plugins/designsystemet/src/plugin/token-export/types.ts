@@ -1,7 +1,14 @@
-export type LoadedFile = {
-  path: string;
-  tokenSetPath: string;
-  data: unknown;
+import type {
+  FigmaCollections,
+  ThemeObjectInput,
+} from '@digdir/designsystemet/tokens/create';
+import type { TokenSets } from '@digdir/designsystemet/tokens/types';
+
+// Input to buildTokenModel: the generated token sets keyed by token set path
+// (e.g. `semantic/color/neutral`) and the `$themes` entries that group them.
+export type TokenInput = {
+  tokenSets: TokenSets;
+  $themes: ThemeObjectInput[];
 };
 
 export type FlatToken = {
@@ -32,47 +39,25 @@ export type CollectionPreview = {
   }>;
 };
 
-export type SemanticColorScale = {
-  name: string;
-  roles: Array<{
-    name: string;
-    path: string;
-    value: unknown;
-  }>;
-};
-
-export type BorderRadiusPreview = {
-  name: string;
-  path: string;
-  value: unknown;
-};
-
-export type FontFamilyPreview = {
-  name: string;
-  path: string;
-  // A `{reference}` to the token path rather than a copied raw value, so the UI
-  // resolves it against the active token sets and follows the selected theme.
-  value: string;
-};
-
 export type ThemeOption = {
   name: string;
   tokenSets: string[];
 };
 
-export type PreviewData = {
+// Export-side model. Stays on the plugin side (importer, collection specs,
+// text/effect styles, resolver) and is never posted to the UI.
+export type TokenModel = {
   tokenSets: Array<{
     path: string;
   }>;
   flatTokens: FlatToken[];
-  // Plain object (not Map) so it survives figma.ui.postMessage serialization to the UI.
-  tokenLookup: Record<string, FlatToken>;
+  // `$themes.json` grouped into Figma collections by the CLI's toFigmaCollections.
+  // This is the source of truth for collections/modes; `themes` is the same data
+  // flattened for lookups.
+  figmaCollections: FigmaCollections;
   themes: ModePreview[];
   collections: CollectionPreview[];
   themeOptions: ThemeOption[];
   colorSchemeOptions: ThemeOption[];
-  semanticColorScales: SemanticColorScale[];
-  borderRadii: BorderRadiusPreview[];
-  fontFamilies: FontFamilyPreview[];
   warnings: string[];
 };

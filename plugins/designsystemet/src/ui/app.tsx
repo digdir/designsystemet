@@ -9,23 +9,17 @@ import {
   Spinner,
   Textarea,
 } from '@digdir/designsystemet-react';
-import { useEffect, useReducer, useRef, useState } from 'react';
-import type {
-  FigmaMessages,
-  Notification,
-  UiColorScheme,
-  UiState,
-} from '../types';
+import { useEffect, useReducer, useState } from 'react';
+import type { FigmaMessages, Notification, UiState } from '../types';
 import './app.css';
-import type { PreviewData } from '../plugin/token-export/types';
-import { PreviewView } from './preview-data';
-
-type View = 'paste' | 'preview';
+import type { CreateConfigSchema } from '@digdir/designsystemet/schemas/internal/schema.js';
+import { PreviewView } from './preview-view';
 
 const initialState: UiState = {
-  previewData: null,
-  selectedTheme: null,
+  config: null,
+  // Pascal case to match the Figma variable modes ('Light'/'Dark').
   selectedScheme: 'Light',
+  selectedTheme: null,
   isImporting: false,
   notification: null,
 };
@@ -33,35 +27,36 @@ const initialState: UiState = {
 type Action =
   | {
       type: 'set-preview';
-      previewData: PreviewData;
-      theme: string | null;
-      scheme: UiColorScheme;
+      config: CreateConfigSchema;
+      scheme: string;
       notification: Notification | null;
     }
   | { type: 'clear-preview' }
-  | { type: 'set-importing'; value: boolean }
+  | { type: 'export-started' }
+  | { type: 'export-finished'; notification: Notification }
   | { type: 'set-notification'; notification: Notification | null }
   | { type: 'select-theme'; theme: string }
-  | { type: 'select-scheme'; scheme: UiColorScheme };
+  | { type: 'select-scheme'; scheme: string };
 
 function reducer(state: UiState, action: Action): UiState {
   switch (action.type) {
     case 'set-preview':
       return {
         ...state,
-        previewData: action.previewData,
-        selectedTheme: action.theme,
+        config: action.config,
+        selectedTheme: Object.keys(action.config.themes)[0] ?? null,
         selectedScheme: action.scheme,
         notification: action.notification,
       };
     case 'clear-preview':
-      return { ...state, previewData: null, notification: null };
-
-    case 'set-importing':
+      return { ...state, config: null, notification: null };
+    case 'export-started':
+      return { ...state, isImporting: true, notification: null };
+    case 'export-finished':
       return {
         ...state,
-        isImporting: action.value,
-        notification: action.value ? null : state.notification,
+        isImporting: false,
+        notification: action.notification,
       };
     case 'set-notification':
       return { ...state, notification: action.notification };
@@ -69,25 +64,14 @@ function reducer(state: UiState, action: Action): UiState {
       return { ...state, selectedTheme: action.theme };
     case 'select-scheme':
       return { ...state, selectedScheme: action.scheme };
-
-    default:
-      return state;
   }
-}
-
-function computeView(state: UiState): View {
-  if (state.previewData) {
-    return 'preview';
-  }
-  return 'paste';
 }
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const view = computeView(state);
+  const view = state.config ? 'preview' : 'paste';
 
-  const [value, setValue] = useState(``);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -101,52 +85,48 @@ function App() {
               }
               dispatch({
                 type: 'set-preview',
-                previewData: msg.preview?.previewData,
-                theme: msg.preview?.themeNames[0] || null,
+                config: msg.preview.config,
                 scheme: 'Light',
-                notification: null,
+                notification:
+                  msg.preview.warnings.length > 0
+                    ? {
+                        kind: 'warning',
+                        text: 'The tokens were generated with warnings.',
+                        details: msg.preview.warnings,
+                      }
+                    : null,
               });
               break;
             case 'error':
               dispatch({
                 type: 'set-notification',
-                notification: {
-                  kind: 'error',
-                  text: msg.message,
-                },
+                notification: { kind: 'error', text: msg.message },
               });
               break;
           }
           break;
         }
         case 'export-tokens-to-figma': {
-          const { status, message: msgMessage } = msg;
-          if (status === 'exporting') {
-            dispatch({
-              type: 'set-importing',
-              value: true,
-            });
-          } else if (status === 'success') {
-            dispatch({
-              type: 'set-importing',
-              value: false,
-            });
-            dispatch({
-              type: 'set-notification',
-              notification: {
-                kind: 'success',
-                text: msgMessage,
-              },
-            });
-          } else if (status === 'error') {
-            dispatch({
-              type: 'set-notification',
-              notification: {
-                kind: 'error',
-                text: msgMessage,
-                details: msg.logs,
-              },
-            });
+          switch (msg.status) {
+            case 'exporting':
+              dispatch({ type: 'export-started' });
+              break;
+            case 'success':
+              dispatch({
+                type: 'export-finished',
+                notification: { kind: 'success', text: msg.message },
+              });
+              break;
+            case 'error':
+              dispatch({
+                type: 'export-finished',
+                notification: {
+                  kind: 'error',
+                  text: msg.message,
+                  details: msg.logs,
+                },
+              });
+              break;
           }
           break;
         }
@@ -160,7 +140,7 @@ function App() {
     };
   }, []);
 
-  const sendMessageOnClick = (
+  const postToPlugin = (
     type: FigmaMessages['type'],
     payload?: Record<string, unknown>,
   ) => {
@@ -189,27 +169,23 @@ function App() {
               <Label>Upload config</Label>
               <Field.Description>
                 Paste your designsystemet.config.json content below and click
-                Upload for preview.
+                preview.
               </Field.Description>
               <Textarea
                 id='config-textarea'
-                ref={textareaRef}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
             </Field>
           </div>
         )}
-        {view === 'preview' && state.previewData && (
+        {state.config && (
           <PreviewView
-            preview={state.previewData}
+            config={state.config}
             selectedScheme={state.selectedScheme}
             selectedTheme={state.selectedTheme}
             onSelectScheme={(scheme) =>
-              dispatch({
-                type: 'select-scheme',
-                scheme: scheme as UiColorScheme,
-              })
+              dispatch({ type: 'select-scheme', scheme })
             }
             onSelectTheme={(theme) => dispatch({ type: 'select-theme', theme })}
           />
@@ -230,19 +206,17 @@ function App() {
           {view === 'paste' && (
             <Button
               onClick={() =>
-                sendMessageOnClick('import-config-and-create-preview-tokens', {
+                postToPlugin('import-config-and-create-preview-tokens', {
                   config: value,
                 })
               }
             >
-              Upload
+              Preview
             </Button>
           )}
 
           {view === 'preview' && (
-            <Button
-              onClick={() => sendMessageOnClick('export-tokens-to-figma')}
-            >
+            <Button onClick={() => postToPlugin('export-tokens-to-figma')}>
               Export to Figma
             </Button>
           )}

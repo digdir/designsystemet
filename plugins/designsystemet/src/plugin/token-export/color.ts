@@ -1,7 +1,4 @@
-// Two color parsers on purpose: parseColorValue produces a Figma RGBA object for
-// variable/effect values, while toCssColor only validates and passes through CSS
-// color strings for the UI preview. They accept slightly different inputs
-// (trimming, rgb() numeric formats, 4-digit hex), so they are not merged.
+// Parses a token color value into a Figma RGBA object for variable/effect values.
 
 export function parseColorValue(value: unknown): RGBA | null {
   if (typeof value !== 'string') {
@@ -44,20 +41,4 @@ export function parseColorValue(value: unknown): RGBA | null {
     b: parseInt(hex.slice(4, 6), 16) / 255,
     a: hex.length === 8 ? parseInt(hex.slice(6, 8), 16) / 255 : 1,
   };
-}
-
-export function toCssColor(value: unknown): string | null {
-  if (typeof value !== 'string') {
-    return null;
-  }
-
-  if (/^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(value)) {
-    return value;
-  }
-
-  if (/^rgba?\(/i.test(value)) {
-    return value;
-  }
-
-  return null;
 }

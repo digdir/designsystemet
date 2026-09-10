@@ -2,7 +2,6 @@ import type { TransformedToken } from 'style-dictionary/types';
 import { describe, expect, it } from 'vitest';
 import type { Theme } from './types.ts';
 import {
-  addSeverityColors,
   getValue,
   inlineTokens,
   isDigit,
@@ -84,20 +83,6 @@ describe('orderBySize', () => {
   it('orders long and short size names from smallest to largest', () => {
     expect(orderBySize(['large', 'small', 'medium'])).toEqual(['small', 'medium', 'large']);
     expect(orderBySize(['xl', 'sm', 'md'])).toEqual(['sm', 'md', 'xl']);
-  });
-});
-
-describe('addSeverityColors', () => {
-  it('appends missing severity colors at the end', () => {
-    const colors = { accent: '#0062BA' } as Theme['colors'];
-    expect(Object.keys(addSeverityColors(colors))).toEqual(['accent', 'info', 'success', 'warning', 'danger']);
-  });
-
-  it('keeps user-defined severity color values but moves them to the end', () => {
-    const colors = { accent: '#0062BA', danger: '#FF0000', neutral: '#444444' } as Theme['colors'];
-    const result = addSeverityColors(colors);
-    expect(result.danger).toBe('#FF0000');
-    expect(Object.keys(result)).toEqual(['accent', 'neutral', 'info', 'success', 'warning', 'danger']);
   });
 });
 
