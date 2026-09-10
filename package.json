@@ -44,9 +44,9 @@
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.11",
-    "@changesets/cli": "3.0.1",
-    "@changesets/get-github-info": "^1.0.0",
+    "@biomejs/biome": "2.5.12",
+    "@changesets/cli": "3.0.2",
+    "@changesets/get-github-info": "^1.0.1",
     "@changesets/types": "^7.0.0",
     "@digdir/designsystemet": "workspace:^",
     "@testing-library/jest-dom": "7.0.1",
