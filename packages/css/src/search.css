@@ -1,2 +1,2 @@
-/* TODO deprecated. This file is kept for backwards compatibility in case someone imports individual files */
+/* @deprecated. This file is kept for backwards compatibility in case someone imports individual files */
 @import url('./suggestion.css') layer(ds.components);

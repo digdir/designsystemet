@@ -40,7 +40,8 @@
   --dsc-suggestion-list-gap: var(--ds-size-1);
   --dsc-suggestion-list-placement: bottom;
   --dsc-suggestion-list-padding: var(--ds-size-3) var(--ds-size-2);
-  --dsc-suggestion-border-width: var(--ds-border-width-default); /* TODO: Should have been prefixed, but kept like this for compatibility */
+  /* TODO: @deprecated Should have been prefixed to `--dsc-suggestion-list-*`, but kept like this for compatibility: */
+  --dsc-suggestion-border-width: var(--ds-border-width-default);
   --dsc-suggestion-border-style: solid;
   --dsc-suggestion-border-color: var(--ds-color-neutral-border-subtle);
 
