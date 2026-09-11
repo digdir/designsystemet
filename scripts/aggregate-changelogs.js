@@ -82,6 +82,22 @@ export function extractVersionSection(changelog, version) {
 }
 
 /**
+ * Placeholder that changesets writes for a package that is bumped (because it
+ * is in a fixed group) without any changesets of its own.
+ */
+const NO_CHANGES_PLACEHOLDER = 'No changes in this release.';
+
+/**
+ * Whether a changelog section body documents any actual changes, i.e. it is
+ * neither empty nor the changesets "no changes" placeholder.
+ * @param {string | null | undefined} body
+ */
+export function hasChanges(body) {
+  const trimmed = body?.trim() ?? '';
+  return trimmed !== '' && trimmed !== NO_CHANGES_PLACEHOLDER;
+}
+
+/**
  * Reads and parses the CHANGELOG.md of every given package and merges them.
  * @param {Iterable<{ name: string, dir: string }>} pkgs
  * @param {{ until?: string }} [options] passed on to parseChangelog
@@ -137,8 +153,17 @@ async function main() {
     if (body === null) {
       console.error(`Warning: no changelog entry found for ${name}@${version}`);
       body = '_No changelog entry found._';
+    } else if (!hasChanges(body)) {
+      // Fixed-group packages are released together even when only some of them
+      // changed. Leave the unchanged ones out of the release notes.
+      console.error(`Skipping ${name}@${version}: no changes in this release`);
+      continue;
     }
     sections.push(`## ${name}@${version}\n\n${body}`);
+  }
+
+  if (sections.length === 0) {
+    sections.push(NO_CHANGES_PLACEHOLDER);
   }
 
   process.stdout.write(`${sections.join('\n\n')}\n`);
