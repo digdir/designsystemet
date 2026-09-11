@@ -92,6 +92,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
     <Component
       aria-label={label || tooltip}
       className={cl('ds-avatar', className)}
+      data-tooltip={tooltip}
       data-variant={variant}
       ref={ref}
       role={asChild ? undefined : 'img'}
