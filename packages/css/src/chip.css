@@ -22,7 +22,14 @@
   --dsc-chip-input-size: var(--ds-size-5);
   --dsc-chip-input-stroke-color: var(--ds-color-base-default);
   --dsc-chip-padding-inline: var(--ds-size-3);
-  --dsc-chip-spacing: calc((var(--dsc-chip-height) - var(--dsc-chip-input-size)) / 2); /* Distance between edge of input and chip */
+  --dsc-chip-spacing: initial; /* "initial" makes var skip to fallback --_dsc-chip-spacing */
+  --_dsc-chip-spacing: calc((var(--dsc-chip-height) - var(--dsc-chip-input-size)) / 2 - var(--dsc-chip-border-width));
+
+  &:lang(no),
+  &:lang(nb),
+  &:lang(nn) {
+    --dsc-chip-remove-label: 'Trykk for å fjerne'; /* Only set default label if Norwegian */
+  }
 
   background: var(--dsc-chip-background);
   border-color: var(--dsc-chip-border-color);
@@ -56,8 +63,8 @@
   @composes ds-focus from './base.css';
 
   & > input {
-    inset-block-start: calc((var(--dsc-chip-height) - var(--dsc-chip-input-size)) / 2 - var(--dsc-chip-border-width));
-    inset-inline-start: var(--dsc-chip-spacing);
+    inset-block-start: var(--_dsc-chip-spacing);
+    inset-inline-start: var(--_dsc-chip-spacing);
     position: absolute;
     --dsc-input-background: transparent;
     --dsc-input-border-color: var(--dsc-chip-input-color);
@@ -84,24 +91,27 @@
   }
 
   &[data-removable] {
-    padding-inline-end: calc(var(--dsc-chip-spacing) * 2 + var(--dsc-chip-icon-size));
+    --_dsc-chip-spacing: calc((var(--dsc-chip-height) - var(--dsc-chip-icon-size)) / 2 - var(--dsc-chip-border-width));
+    padding-inline-end: calc(var(--dsc-chip-spacing, var(--_dsc-chip-spacing)) + var(--dsc-chip-icon-size) + var(--_dsc-chip-spacing));
 
     &::after {
-      content: '';
+      content: ', ' var(--dsc-chip-remove-label, 'Press to remove');
       position: absolute;
-      inset-block-start: calc((var(--dsc-chip-height) - var(--dsc-chip-icon-size)) / 2 - var(--dsc-chip-border-width));
-      inset-inline-end: var(--dsc-chip-spacing);
+      inset-block-start: var(--_dsc-chip-spacing);
+      inset-inline-end: var(--_dsc-chip-spacing);
       background: currentcolor;
       height: var(--dsc-chip-icon-size);
       mask: center / contain no-repeat var(--dsc-chip-icon-url);
       width: var(--dsc-chip-icon-size);
       padding-inline: 0; /*override u-combobox default*/
       flex-shrink: 0; /* Prevent shrinking when content is long */
+      font-size: 0; /* Hide label text */
+      white-space: nowrap;
     }
   }
 
   &:has(input) {
-    padding-inline-start: calc(var(--dsc-chip-spacing) * 2 + var(--dsc-chip-icon-size));
+    padding-inline-start: calc(var(--_dsc-chip-spacing) + var(--dsc-chip-input-size) + var(--dsc-chip-spacing, var(--_dsc-chip-spacing)));
   }
 
   &:has(input[type='checkbox']) {
