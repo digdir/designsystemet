@@ -63,32 +63,11 @@ const isFirstContribution = (repo: string, login: string): Promise<boolean> => {
 };
 
 const changelogFunctions: ChangelogFunctions = {
-	getDependencyReleaseLine: async (changesets, dependenciesUpdated, options) => {
-		if (dependenciesUpdated.length === 0) return '';
-		const repo = getRepo(options);
-
-		const changesetLink = `- Updated dependencies [${(
-			await Promise.all(
-				changesets.map(async (cs) => {
-					if (cs.commit) {
-						const info = await getCommitInfo({
-							repo,
-							commit: cs.commit
-						});
-						return info?.commit.markdownLink;
-					}
-				})
-			)
-		)
-			.filter((_) => _)
-			.join(', ')}]:`;
-
-		const updatedDependenciesList = dependenciesUpdated.map(
-			(dependency) => `  - ${dependency.name}@${dependency.newVersion}`
-		);
-
-		return [changesetLink, ...updatedDependenciesList].join('\n');
-	},
+	// All published packages are in one fixed group (see config.json), so they are
+	// always released together with the same version. An "Updated dependencies"
+	// entry would only ever list sibling packages at the version being released,
+	// which documents nothing useful.
+	getDependencyReleaseLine: async () => '',
 	getReleaseLine: async (changeset, type, options) => {
 		const repo = getRepo(options);
 		let prFromSummary: number | undefined;
