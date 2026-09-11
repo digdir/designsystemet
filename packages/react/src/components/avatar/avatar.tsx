@@ -2,7 +2,7 @@ import type { Size } from '@digdir/designsystemet-types';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { Fragment, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -40,6 +40,7 @@ export type AvatarProps = MergeRight<
     variant?: 'circle' | 'square';
     /**
      * Initials to display inside the avatar.
+     * @deprecated Please use text content as children instead
      */
     initials?: string;
     /**
@@ -85,27 +86,23 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   },
   ref,
 ) {
-  const OuterComponent = asChild ? Slot : 'span';
-  const useSlot = children && typeof children !== 'string';
-  const textChild = children && typeof children === 'string';
-  const Component = useSlot ? Slot : Fragment;
+  const Component = asChild ? Slot : 'span';
+  const label = ariaLabel || dataTooltip;
 
   return (
-    <OuterComponent
+    <Component
       ref={ref}
       className={cl('ds-avatar', className)}
       data-variant={variant}
-      data-initials={initials}
       role={asChild ? undefined : 'img'}
-      aria-label={ariaLabel || dataTooltip}
+      aria-label={label}
+      aria-hidden={label ? undefined : true} // Hide element from screen readers if no label or tooltip
       data-tooltip={dataTooltip}
       tabIndex={dataTooltip ? 0 : undefined} // Tooltips require focusability for accessibility
       {...rest}
     >
-      <Component {...(useSlot && !asChild ? { 'aria-hidden': true } : {})}>
-        {textChild ? <span>{children}</span> : children}
-      </Component>
-    </OuterComponent>
+      {children || initials}
+    </Component>
   );
 });
 

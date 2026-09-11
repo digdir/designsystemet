@@ -21,7 +21,7 @@ Avatar stack bruker egne CSS-variabler for å styre gap, størrelse og overlapp.
 
 ## Eksempel
 
-### Expandable
+### Ekspanderbar
 `data-expandable` animerer overlap til 0 ved hover eller fokus. Bruk `data-expandable="fixed"` for å utvide med overflow uten å endre den fysiske bredden. `tabindex="0"` blir automatisk lagt til med `data-expandable`, men dette kan overstyres.
 
 **Merk:** I [nettlesere som ikke støtter `sibling-index()`](https://caniuse.com/wf-sibling-count) vil `data-expandable="fixed"` ikke tegne riktig hvis den innheholder mer enn 12 avatarer.
@@ -36,7 +36,7 @@ Det er også mulig å bruke en avatar med `+xx` som `initials` eller child, men 
 <Story story="AdditionalAvatars" layout='block' />
 
 ### Størrelser
-Du kan ikke bruke `data-size` for å endre størrelsen på avatarer i en avatar stack. I stedet styres størrelsen med å sette størrelsen på variabelen `--dsc-avatar-stack-size`. 
+Sett størrelsen på avatar stack med `data-size` eller `--dsc-avatar-stack-size`. Størrelsen må settes på avatar stack, ikke på de enkelte avatarene, for at overlappsmaskeringen skal fungere korrekt.
 <Story story="DataSize" layout='block' />
 
 ### Gap
