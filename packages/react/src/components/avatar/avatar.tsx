@@ -2,7 +2,7 @@ import type { Size } from '@digdir/designsystemet-types';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { Fragment, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -40,6 +40,7 @@ export type AvatarProps = MergeRight<
     variant?: 'circle' | 'square';
     /**
      * Initials to display inside the avatar.
+     * @deprecated Please use text content as children instead
      */
     initials?: string;
     /**
@@ -74,8 +75,8 @@ export type AvatarProps = MergeRight<
  */
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
-    'aria-label': ariaLabel,
-    'data-tooltip': dataTooltip,
+    'aria-label': label,
+    'data-tooltip': tooltip,
     variant,
     className,
     children,
@@ -85,41 +86,24 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   },
   ref,
 ) {
-  const OuterComponent = asChild ? Slot : 'span';
-  const useSlot = children && typeof children !== 'string';
-  const textChild = children && typeof children === 'string';
-  const Component = useSlot ? Slot : Fragment;
+  const Component = asChild ? Slot : 'span';
 
   return (
-    <OuterComponent
-      ref={ref}
+    <Component
+      aria-label={label || tooltip}
       className={cl('ds-avatar', className)}
+      data-tooltip={tooltip}
       data-variant={variant}
-      data-initials={initials}
+      ref={ref}
       role={asChild ? undefined : 'img'}
-      aria-label={ariaLabel || dataTooltip}
-      data-tooltip={dataTooltip}
-      tabIndex={dataTooltip ? 0 : undefined} // Tooltips require focusability for accessibility
+      tabIndex={tooltip ? 0 : undefined} // Tooltips require focusability for accessibility
       {...rest}
     >
-      <Component {...(useSlot && !asChild ? { 'aria-hidden': true } : {})}>
-        {textChild ? <span>{children}</span> : children}
-      </Component>
-    </OuterComponent>
+      {!asChild && children && typeof children !== 'string' ? (
+        <Slot aria-hidden='true'>{children}</Slot> // Automatically add aria-hidden="true" if non-string child
+      ) : (
+        children || initials
+      )}
+    </Component>
   );
 });
-
-/**
- * Gets initials using first and last word of a name.
- */
-function _getInitials(name: string | undefined): string | null {
-  // Leaving this function for perhaps later use
-  if (!name) return null;
-  const initials = [];
-  const segments = new Intl.Segmenter(document.documentElement.lang || 'no', {
-    granularity: 'word',
-  }).segment(name);
-  for (const segment of segments)
-    if (segment.isWordLike) initials.push(segment.segment);
-  return `${initials[0][0]}${initials.length > 1 ? initials[initials.length - 1][0] : ''}`;
-}

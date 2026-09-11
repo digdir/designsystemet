@@ -40,7 +40,7 @@
   /* Using :where to let the @deprecated .avatar[data-variant="square"] overwrite radius */
   & > li > :where(.ds-avatar) {
     --dsc-avatar-radius: var(--dsc-avatar-stack-radius);
-    --dsc-avatar-size: var(--dsc-avatar-stack-size);
+    --dsc-avatar-size: var(--dsc-avatar-stack-size); /* Need to overwrite size to mask correctly */
   }
   & > li > .ds-avatar:focus-visible {
     @composes ds-focus--visible from './base.css';

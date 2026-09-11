@@ -34,7 +34,7 @@ You can also use an avatar with `+xx` as `initials` or child, but you should ove
 <Story story="AdditionalAvatars" layout='block' />
 
 ### Sizes
-You cannot use `data-size` to change the size of avatars in an avatar stack. Instead, the size is controlled by setting the `--dsc-avatar-stack-size` variable.
+Set the avatar stack size using `data-size` or `--dsc-avatar-stack-size`. The size must be set on the avatar stack itself, rather than on the individual avatars, to ensure the overlap masking works correctly.
 <Story story="DataSize" layout='block' />
 
 ### Gap
