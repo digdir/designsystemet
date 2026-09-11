@@ -22,7 +22,7 @@ type Author = { login: string; url?: string; markdownLink: string };
  * detect bots by their profile URL, which is always `https://github.com/apps/<name>`.
  */
 const isBot = (author: Author) =>
-	author.login.endsWith('[bot]') || /\/apps\/[^/]+\/?$/.test(author.url ?? '');
+	author.login.endsWith('[bot]') || author.url?.includes('github.com/apps');
 
 const getRepo = (options: Record<string, unknown> | null): string => {
 	const repo = options?.repo;
