@@ -25,22 +25,10 @@ describe('Avatar', () => {
   it('should render children', () => {
     render(
       <Avatar aria-label='Ola Nordmann'>
-        <img src={EMPTY_IMAGE} alt='ola nordmann' data-testid='child-image' />
+        <img src={EMPTY_IMAGE} alt='' data-testid='child-image' />
       </Avatar>,
     );
     /* look for image with correct id */
     expect(screen.getByTestId('child-image')).toBeInTheDocument();
-  });
-
-  it('children should have aria-hidden', () => {
-    render(
-      <Avatar aria-label='Ola Nordmann'>
-        <img src={EMPTY_IMAGE} alt='ola nordmann' data-testid='child-image' />
-      </Avatar>,
-    );
-    expect(screen.getByTestId('child-image')).toHaveAttribute(
-      'aria-hidden',
-      'true',
-    );
   });
 });
