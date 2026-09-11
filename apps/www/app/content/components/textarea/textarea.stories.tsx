@@ -1,42 +1,37 @@
-import {
-  Field,
-  FieldDescription,
-  Label,
-  Textarea,
-} from '@digdir/designsystemet-react';
+import { Field, Label, Textarea } from '@digdir/designsystemet-react';
 
 export const Preview = () => {
   return (
-    <>
-      <Label htmlFor='my-textarea'>Label</Label>
-      <Textarea id='my-textarea' />
-    </>
+    <Field>
+      <Label>Label</Label>
+      <Textarea />
+    </Field>
   );
 };
 
 export const WithRowsEn = () => {
   return (
-    <>
-      <Label htmlFor='my-textarea-rows'>Description</Label>
-      <Textarea id='my-textarea-rows' rows={6} />
-    </>
+    <Field>
+      <Label>Description</Label>
+      <Textarea rows={6} />
+    </Field>
   );
 };
 
 export const WithRows = () => {
   return (
-    <>
-      <Label htmlFor='my-textarea-rows'>Beskrivelse</Label>
-      <Textarea id='my-textarea-rows' rows={6} />
-    </>
+    <Field>
+      <Label>Beskrivelse</Label>
+      <Textarea rows={6} />
+    </Field>
   );
 };
 
 export const Disabled = () => {
   return (
     <>
-      <Label htmlFor='my-textarea-disabled'>Label</Label>
-      <Textarea id='my-textarea-disabled' disabled value='Disabled textarea' />
+      <Label>Label</Label>
+      <Textarea disabled value='Disabled textarea' />
     </>
   );
 };
@@ -44,13 +39,12 @@ export const Disabled = () => {
 export const ReadOnly = () => {
   return (
     <Field>
-      <Label htmlFor='my-textarea-readonly'>Beskrivelse av saken</Label>
-      <FieldDescription>
+      <Label>Beskrivelse av saken</Label>
+      <Field.Description>
         Teksten er lagt inn automatisk basert på det du allerede har sendt inn,
         og kan ikke redigeres.
-      </FieldDescription>
+      </Field.Description>
       <Textarea
-        id='my-textarea-readonly'
         readOnly
         value='Jeg søker om støtte fordi jeg trenger midler til å gjennomføre prosjektet slik det er planlagt.'
       />
@@ -61,13 +55,12 @@ export const ReadOnly = () => {
 export const ReadOnlyEn = () => {
   return (
     <Field>
-      <Label htmlFor='my-textarea-readonly-en'>Case description</Label>
-      <FieldDescription>
+      <Label>Case description</Label>
+      <Field.Description>
         This text has been added automatically based on information you have
         already submitted, and cannot be edited.
-      </FieldDescription>
+      </Field.Description>
       <Textarea
-        id='my-textarea-readonly-en'
         readOnly
         value='I am applying for support because I need funding to carry out the project as planned.'
       />

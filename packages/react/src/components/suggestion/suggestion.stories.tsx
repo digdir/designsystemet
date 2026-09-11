@@ -228,7 +228,7 @@ export const ControlledMultiple = meta.story({
     const getChipValues = async () =>
       waitFor(() =>
         within(canvasElement)
-          .getAllByLabelText('Press to remove', { exact: false })
+          .getAllByLabelText('Trykk for å fjerne', { exact: false })
           .filter((el) => el instanceof HTMLDataElement)
           .map((x) => x.value),
       );
@@ -459,11 +459,16 @@ export const FetchExternal = meta.story({
     return (
       <Field lang='en'>
         <Label>Search for countries (in english)</Label>
-        <Suggestion {...args} filter={false}>
+        <Suggestion
+          {...args}
+          filter={false}
+          data-sr-singular='%d country'
+          data-sr-plural='%d countries'
+        >
           <Suggestion.Input onInput={handleInput} />
           <Suggestion.Toggle />
           <Suggestion.Clear />
-          <Suggestion.List singular='%d country' plural='%d countries'>
+          <Suggestion.List>
             {value ? (
               <Suggestion.Empty>
                 {options ? (

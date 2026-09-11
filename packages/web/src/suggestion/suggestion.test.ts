@@ -18,6 +18,26 @@ const render = () => {
 };
 
 describe('suggestion component', () => {
+  it('propagates CSS screen-reader translations on connect', () => {
+    const suggestion = document.createElement('ds-suggestion');
+    suggestion.innerHTML = `
+      <input type="search" class="ds-input" />
+      <u-datalist role="listbox"></u-datalist>
+    `;
+    suggestion.style.setProperty('--_ds-data-sr-added', 'Lagt til');
+    suggestion.style.setProperty('--_ds-data-sr-singular', 'treff');
+    suggestion.style.setProperty('--_ds-data-sr-plural', 'treff');
+    document.body.appendChild(suggestion);
+
+    const list = suggestion.querySelector('u-datalist') as HTMLElement;
+
+    expect(suggestion).toHaveAttribute('data-sr-added', 'Lagt til');
+    expect(suggestion).toHaveAttribute('data-sr-singular', 'treff');
+    expect(suggestion).toHaveAttribute('data-sr-plural', 'treff');
+    expect(list).toHaveAttribute('data-sr-singular', 'treff');
+    expect(list).toHaveAttribute('data-sr-plural', 'treff');
+  });
+
   it('sets popovertarget, and popover attributes', async () => {
     const suggestion = render();
     const input = suggestion.querySelector('input') as HTMLInputElement;

@@ -39,7 +39,7 @@ describe('Suggestion', () => {
     const input = screen.getByRole<HTMLInputElement>('combobox', {
       name: 'Country',
     });
-    await waitFor(() => expect(input).toHaveValue(norway.label));
+    await waitFor(() => expect(input.value).toBe(norway.label));
 
     const suggestion = document.querySelector('ds-suggestion');
     const proposedItem = document.createElement('data');
@@ -57,7 +57,7 @@ describe('Suggestion', () => {
     );
 
     expect(onSelectedChange).toHaveBeenCalledWith(sweden);
-    expect(input).toHaveValue(norway.label);
+    expect(input.value).toBe(norway.label);
   });
 
   it('synchronizes the input when the selected prop changes', async () => {
@@ -68,7 +68,7 @@ describe('Suggestion', () => {
     const input = screen.getByRole<HTMLInputElement>('combobox', {
       name: 'Country',
     });
-    await waitFor(() => expect(input).toHaveValue(norway.label));
+    await waitFor(() => expect(input.value).toBe(norway.label));
 
     rerender(
       <ControlledSuggestion
@@ -77,7 +77,7 @@ describe('Suggestion', () => {
       />,
     );
 
-    await waitFor(() => expect(input).toHaveValue(sweden.label));
+    await waitFor(() => expect(input.value).toBe(sweden.label));
     expect(onSelectedChange).not.toHaveBeenCalled();
   });
 
@@ -88,7 +88,7 @@ describe('Suggestion', () => {
     }: {
       onSelectedChange: (item: SuggestionItem | null) => void;
     }) => {
-      const [selected, setSelected] = useState<SuggestionItem | null>(norway2);
+      const [selected, setSelected] = useState<SuggestionItem | null>(norway);
       return (
         <Suggestion
           selected={selected}
@@ -114,15 +114,15 @@ describe('Suggestion', () => {
     const input = screen.getByRole<HTMLInputElement>('combobox', {
       name: 'Country',
     });
-    await waitFor(() => expect(input).toHaveValue(norway.label));
+    await waitFor(() => expect(input.value).toBe(norway.label));
 
     input.click();
     screen.getAllByRole('option').at(1)?.click();
-    await waitFor(() => expect(input).toHaveValue(norway2.label));
+    await waitFor(() => expect(input.value).toBe(norway2.label));
     expect(onSelectedChange).toHaveBeenCalledOnce();
 
     input.blur();
-    await waitFor(() => expect(input).toHaveValue(norway2.label));
+    await waitFor(() => expect(input.value).toBe(norway2.label));
     expect(onSelectedChange).toHaveBeenCalledOnce();
   });
 });

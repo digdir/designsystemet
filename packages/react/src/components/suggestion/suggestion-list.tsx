@@ -10,12 +10,12 @@ export type SuggestionListProps = MergeRight<
   {
     /**
      * The screen reader announcement for singular Suggestion, where %d is the number of Suggestions
-     * @default '%d forslag'
+     * @deprecated Please use `data-sr-singular` on `<Suggestion>` instead
      */
     singular?: string;
     /**
      * The screen reader announcement for plural Suggestions, where %d is the number of Suggestions
-     * @default '%d forslag'
+     * @deprecated Please use `data-sr-plural` on `<Suggestion>` instead
      */
     plural?: string;
     /**
@@ -41,14 +41,7 @@ export const SuggestionList = forwardRef<
   HTMLDataListElement,
   SuggestionListProps
 >(function SuggestionList(
-  {
-    singular = '%d forslag',
-    plural = '%d forslag',
-    className,
-    id,
-    autoPlacement = true,
-    ...rest
-  },
+  { singular, plural, className, id, autoPlacement = true, ...rest },
   ref,
 ) {
   const { handleFilter } = useContext(SuggestionContext);
