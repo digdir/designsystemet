@@ -14,7 +14,15 @@ const SKIP_AUTHOR_LOGINS = new Set(
 	['barsnes', 'mimarz', 'eirikbacker', 'mrosvik', 'unekinn', 'febakke']
 );
 
-const isBot = (login: string) => login.endsWith('[bot]');
+type Author = { login: string; url?: string; markdownLink: string };
+
+/**
+ * The GraphQL API used by `@changesets/get-github-info` returns bot logins
+ * without the `[bot]` suffix (e.g. `renovate`, not `renovate[bot]`), so also
+ * detect bots by their profile URL, which is always `https://github.com/apps/<name>`.
+ */
+const isBot = (author: Author) =>
+	author.login.endsWith('[bot]') || author.url?.includes('github.com/apps');
 
 const getRepo = (options: Record<string, unknown> | null): string => {
 	const repo = options?.repo;
@@ -26,8 +34,8 @@ const getRepo = (options: Record<string, unknown> | null): string => {
 	return repo;
 };
 
-const isSkippedAuthor = (login: string) =>
-	isBot(login) || SKIP_AUTHOR_LOGINS.has(login.toLowerCase());
+const isSkippedAuthor = (author: Author) =>
+	isBot(author) || SKIP_AUTHOR_LOGINS.has(author.login.toLowerCase());
 
 const firstContributionCache = new Map<string, Promise<boolean>>();
 
@@ -37,11 +45,12 @@ const firstContributionCache = new Map<string, Promise<boolean>>();
  * released PR is already merged, so a count of 1 means it was their first.
  * Fails open to `false` so a missing token or API hiccup never breaks a release.
  */
-const isFirstContribution = (repo: string, login: string): Promise<boolean> => {
+const isFirstContribution = (repo: string, author: Author): Promise<boolean> => {
+	const { login } = author;
 	let result = firstContributionCache.get(login);
 	if (!result) {
 		result = (async () => {
-			if (isBot(login)) return false;
+			if (isBot(author)) return false;
 
 			const query = encodeURIComponent(`repo:${repo} type:pr is:merged author:${login}`);
 			const response = await fetch(`${GITHUB_API_URL}/search/issues?q=${query}&per_page=1`, {
@@ -134,7 +143,7 @@ const changelogFunctions: ChangelogFunctions = {
 		})();
 
 		// `author:`/`user:` hints in the changeset summary win over the PR/commit author
-		const authors = usersFromSummary.length
+		const authors: Author[] = usersFromSummary.length
 			? usersFromSummary.map((login) => ({
 					login,
 					markdownLink: `[@${login}](${GITHUB_SERVER_URL}/${login})`
@@ -145,7 +154,7 @@ const changelogFunctions: ChangelogFunctions = {
 
 		// only link PR or merge commit not both
 		const suffix = links.pull ? ` (${links.pull})` : links.commit ? ` (${links.commit})` : '';
-		const creditedAuthors = authors.filter((author) => !isSkippedAuthor(author.login));
+		const creditedAuthors = authors.filter((author) => !isSkippedAuthor(author));
 		const authorSuffix = creditedAuthors.length
 			? ` by ${creditedAuthors.map((author) => author.markdownLink).join(', ')}`
 			: '';
@@ -153,7 +162,7 @@ const changelogFunctions: ChangelogFunctions = {
 		const thanksLines = (
 			await Promise.all(
 				authors.map(async (author) =>
-					(await isFirstContribution(repo, author.login))
+					(await isFirstContribution(repo, author))
 						? `\n- 🎉 Thanks ${author.markdownLink} for their first contribution! 🎉`
 						: ''
 				)
