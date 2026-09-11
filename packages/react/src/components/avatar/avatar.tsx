@@ -74,18 +74,28 @@ export type AvatarProps = MergeRight<
  * </Avatar>
  */
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
-  { variant, className, children, initials, asChild, ...rest },
+  {
+    'aria-label': label,
+    'data-tooltip': tooltip,
+    variant,
+    className,
+    children,
+    initials,
+    asChild,
+    ...rest
+  },
   ref,
 ) {
   const Component = asChild ? Slot : 'span';
 
   return (
     <Component
+      aria-label={label || tooltip}
       className={cl('ds-avatar', className)}
       data-variant={variant}
       ref={ref}
       role={asChild ? undefined : 'img'}
-      tabIndex={rest['data-tooltip'] ? 0 : undefined} // Tooltips require focusability for accessibility
+      tabIndex={tooltip ? 0 : undefined} // Tooltips require focusability for accessibility
       {...rest}
     >
       {!asChild && children && typeof children !== 'string' ? (
