@@ -88,22 +88,11 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       tabIndex={rest['data-tooltip'] ? 0 : undefined} // Tooltips require focusability for accessibility
       {...rest}
     >
-      {children || initials}
+      {!asChild && children && typeof children !== 'string' ? (
+        <Slot aria-hidden='true'>{children}</Slot> // Automatically add aria-hidden="true" if non-string child
+      ) : (
+        children || initials
+      )}
     </Component>
   );
 });
-
-/**
- * Gets initials using first and last word of a name.
- */
-function _getInitials(name: string | undefined): string | null {
-  // Leaving this function for perhaps later use
-  if (!name) return null;
-  const initials = [];
-  const segments = new Intl.Segmenter(document.documentElement.lang || 'no', {
-    granularity: 'word',
-  }).segment(name);
-  for (const segment of segments)
-    if (segment.isWordLike) initials.push(segment.segment);
-  return `${initials[0][0]}${initials.length > 1 ? initials[initials.length - 1][0] : ''}`;
-}
