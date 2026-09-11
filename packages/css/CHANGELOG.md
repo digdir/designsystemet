@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.21.2
+
+### Patch Changes
+
+- **Radio:** Fixed tiny rendering glitch gap between hover outline and border at 400% zoom. ([#5341](https://github.com/digdir/designsystemet/pull/5341))
+
 ## 1.21.1
 
 ### Patch Changes
