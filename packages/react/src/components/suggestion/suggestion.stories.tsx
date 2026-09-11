@@ -459,14 +459,16 @@ export const FetchExternal = meta.story({
     return (
       <Field lang='en'>
         <Label>Search for countries (in english)</Label>
-        <Suggestion {...args} filter={false}>
+        <Suggestion
+          {...args}
+          filter={false}
+          data-sr-singular='%d country'
+          data-sr-plural='%d countries'
+        >
           <Suggestion.Input onInput={handleInput} />
           <Suggestion.Toggle />
           <Suggestion.Clear />
-          <Suggestion.List
-            data-sr-singular='%d country'
-            data-sr-plural='%d countries'
-          >
+          <Suggestion.List>
             {value ? (
               <Suggestion.Empty>
                 {options ? (
