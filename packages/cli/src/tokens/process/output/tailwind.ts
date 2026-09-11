@@ -43,25 +43,8 @@ const generateTailwind = (css: string): string => {
     }
   }
 
-  // Make [data-colors] dynamically change also Tailwind colors
-  const dynamicColors = `[data-color] {
-      --color-background-default: var(--ds-color-background-default);
-      --color-background-tinted: var(--ds-color-background-tinted);
-      --color-surface-default: var(--ds-color-surface-default);
-      --color-surface-tinted: var(--ds-color-surface-tinted);
-      --color-surface-hover: var(--ds-color-surface-hover);
-      --color-surface-active: var(--ds-color-surface-active);
-      --color-border-subtle: var(--ds-color-border-subtle);
-      --color-border-default: var(--ds-color-border-default);
-      --color-border-strong: var(--ds-color-border-strong);
-      --color-text-subtle: var(--ds-color-text-subtle);
-      --color-text-default: var(--ds-color-text-default);
-      --color-base-default: var(--ds-color-base-default);
-      --color-base-hover: var(--ds-color-base-hover);
-      --color-base-active: var(--ds-color-base-active);
-      --color-base-contrast-subtle: var(--ds-color-base-contrast-subtle);
-      --color-base-contrast-default: var(--ds-color-base-contrast-default);
-    }`;
-
-  return `@theme {${tailwind.map((str) => `\n  ${str};`).join('')}\n}\n${dynamicColors}`;
+  /**
+   * @see https://tailwindcss.com/docs/theme#referencing-other-variables
+   */
+  return `@theme inline {${tailwind.map((str) => `\n  ${str};`).join('')}\n}\n`;
 };

@@ -1,12 +1,13 @@
 ---
 title: CSS
 description: Get started with CSS including layers, data attributes and helpers.
-date: 2026-01-08
+date: 2026-09-08
 category: Code
 color: blue
 icon: CodeIcon
 published: true
 order: 10
+search_terms: tailwind, tailwindcss, utility classes, css
 ---
 
 ## Layers
@@ -75,3 +76,77 @@ Adds Designsystemet's focus ring around the element _when it gains focus with ke
 
 ### `ds-focus--visible` / `ds-focus--visible--inset`
 Static "always-on" classes that add Designsystemet's focus ring around the element. <span className='ds-focus--visible'>Example.</span>
+
+## Tailwind CSS
+
+<Alert data-color="warning">
+Tailwind support is experimental. Which utilities are generated may change at any time, and will be communicated in the changelog.
+</Alert>
+
+Designsystemet's [command line tool](/en/fundamentals/code/cli-config) can generate a Tailwind theme file next to your regular theme CSS,
+so Tailwind utilities use Designsystemet's design tokens instead of Tailwind's default scales.
+
+Pass `--experimental-tailwind` to `tokens build`, or set `experimental_tailwind` on the `css` output in your config file.
+For every `<theme>.css` you will then also get a `<theme>.tailwind.css`.
+
+### Add the theme to Tailwind
+
+Import the Tailwind theme file after `tailwindcss`. Designsystemet's CSS must be imported before `tailwindcss`,
+so [Preflight](https://tailwindcss.com/docs/preflight) does not override our components.
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab>Custom theme</ds-tab>
+  <ds-tab>Default theme</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+```css
+@import '@digdir/designsystemet-css/index.css';
+@import 'design-tokens-build/<your-theme>.css';
+
+@import 'tailwindcss';
+@import 'design-tokens-build/<your-theme>.tailwind.css';
+```
+  </ds-tabpanel>
+  <ds-tabpanel>
+```css
+@import '@digdir/designsystemet-css/index.css';
+@import '@digdir/designsystemet-css/theme.css';
+
+@import 'tailwindcss';
+@import '@digdir/designsystemet-css/theme/designsystemet.tailwind.css';
+```
+  </ds-tabpanel>
+</ds-tabs>
+
+### What you get
+
+The theme file maps design tokens onto Tailwind's [theme variable namespaces](https://tailwindcss.com/docs/theme#theme-variable-namespaces):
+
+| Tokens | Namespace | Example |
+| ------ | --------- | ------- |
+| `--ds-color-*` | `--color-*` | `bg-accent-base-default`, `text-text-subtle`, `border-border-default` |
+| `--ds-size-*` | `--spacing-*` | `p-4`, `gap-2`, `mt-6` |
+| `--ds-border-radius-*` | `--radius-*` | `rounded-sm`, `rounded-md`, `rounded-lg`, `rounded-xl` |
+| `--ds-shadow-*` | `--shadow-*` | `shadow-xs`, `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-xl` |
+| `--ds-font-weight-*` | `--font-weight-*` | `font-regular`, `font-medium`, `font-semibold` |
+| `--ds-opacity-*` | `--opacity-*` | `opacity-disabled` |
+| `--ds-font-family` | `--font-sans` | `font-sans` |
+
+Focus colours are not included, use the [`ds-focus` helper class](#ds-focus--ds-focus--inset) instead.
+
+Values outside our scale still fall back to Tailwind's own, so `p-4` uses `--ds-size-4` while `p-16` uses Tailwind's default spacing scale.
+
+### Data attributes
+
+The theme file uses [`@theme inline`](https://tailwindcss.com/docs/theme#referencing-other-variables), which makes utilities
+reference the `--ds-*` variables directly. That means our data attributes also change the Tailwind utilities:
+
+```html
+<div data-color="brand1" data-size="sm">
+  <!-- background-color is brand1's base colour, and padding follows the small size mode -->
+  <div class="bg-base-default p-4">…</div>
+</div>
+```
+
+This works for `data-color`, `data-color-scheme` and `data-size`, on any element and at any depth.
