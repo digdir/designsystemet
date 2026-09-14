@@ -94,10 +94,11 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
 ) {
   const Component = asChild ? Slot : 'span';
   const initials = propInitials ?? dataInitials;
-  const hasChildrenSlotted =
+  const hasSlottedChildren =
     asChild &&
     isValidElement<{ children?: ReactNode }>(children) &&
-    children.props.children !== undefined;
+    children.props.children !== undefined &&
+    children.props.children !== null;
 
   return (
     <Component
@@ -113,7 +114,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       {asChild
         ? [
             <Slottable key='slottable'>{children}</Slottable>,
-            hasChildrenSlotted ? null : initials,
+            hasSlottedChildren ? null : initials,
           ]
         : (children ?? initials)}
     </Component>
