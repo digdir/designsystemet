@@ -28,8 +28,10 @@ describe('themesSchema cross-theme validation', () => {
       b: {
         colors: { neutral: '#222222', accent: '#FF0000' },
         typography: {
-          primary: { fontFamily: 'Comic Sans', fontWeight: { regular: '400', medium: '500', semibold: '600' } },
-          secondary: { fontFamily: 'Georgia' },
+          fonts: {
+            primary: { fontFamily: 'Comic Sans', fontWeight: { regular: '400', medium: '500', semibold: '600' } },
+            secondary: { fontFamily: 'Georgia' },
+          },
         },
         // Different base and scale, but the same step names.
         borderRadius: 8,
@@ -88,32 +90,34 @@ describe('themesSchema cross-theme validation', () => {
   it('rejects themes with different typography set names', () => {
     const result = parseThemes({
       a: baseTheme,
-      b: { ...baseTheme, typography: { primary: {}, tertiary: {} } },
+      b: { ...baseTheme, typography: { fonts: { primary: {}, tertiary: {} } } },
     });
 
-    expect(issuePaths(result)).toEqual(['b.typography']);
+    expect(issuePaths(result)).toEqual(['b.typography.fonts']);
   });
 
-  it('rejects themes where the first typography set has different shared values', () => {
+  it('rejects themes where the first typography set or the components have different shared values', () => {
     const result = parseThemes({
       a: baseTheme,
       b: {
         ...baseTheme,
         typography: {
-          primary: {
-            lineHeight: { sm: '120%', md: '140%', lg: '160%' },
-            letterSpacing: { '1': '-2%' },
-            components: { heading: { xl: { fontWeight: '{font-weight.semibold}' } } },
+          fonts: {
+            primary: {
+              lineHeight: { sm: '120%', md: '140%', lg: '160%' },
+              letterSpacing: { '1': '-2%' },
+            },
+            secondary: {},
           },
-          secondary: {},
+          components: { heading: { xl: { fontWeight: '{font-weight.semibold}' } } },
         },
       },
     });
 
     expect(issuePaths(result)).toEqual([
-      'b.typography.primary.lineHeight',
-      'b.typography.primary.letterSpacing',
-      'b.typography.primary.components',
+      'b.typography.fonts.primary.lineHeight',
+      'b.typography.fonts.primary.letterSpacing',
+      'b.typography.components',
     ]);
   });
 

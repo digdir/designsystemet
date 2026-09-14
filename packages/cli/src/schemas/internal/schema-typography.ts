@@ -41,7 +41,7 @@ const bodyTokens = (lineHeight: string) => ({
   xs: bodyTokenSchema(lineHeight, 2, 6),
 });
 
-const typographySetSchema = z
+const typographyFontSchema = z
   .object({
     fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }).default(defaultFontFamily),
     lineHeight: z
@@ -71,6 +71,18 @@ const typographySetSchema = z
         '9': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('1.5%'),
       })
       .prefault({}),
+  })
+  .describe('Defines a named typography set')
+  .prefault({});
+
+export type TypographyFontSchema = z.infer<typeof typographyFontSchema>;
+
+const typographyObjectSchema = z
+  .object({
+    fonts: z
+      .record(z.string(), typographyFontSchema)
+      .meta({ description: 'Named typography sets, e.g. "primary" and "secondary". The key becomes the set name.' })
+      .prefault({ primary: {}, secondary: {} }),
     components: z
       .object({
         heading: z
@@ -97,13 +109,13 @@ const typographySetSchema = z
           .meta({ description: 'Typography tokens for body text' })
           .prefault({}),
       })
-      .meta({ description: 'Typography tokens for components' })
+      .meta({ description: 'Typography tokens for components, shared by all typography sets' })
       .prefault({}),
   })
-  .describe('Defines a named typography set')
+  .describe('Defines the typography sets and component typography for a given theme')
   .prefault({});
 
-export type TypographySetSchema = z.infer<typeof typographySetSchema>;
+export type TypographySchema = z.infer<typeof typographyObjectSchema>;
 
 // The shorthand form: only a font-family. Strict, so an object defining named sets never matches it.
 export const typographyShorthandSchema = z
@@ -111,16 +123,12 @@ export const typographyShorthandSchema = z
     fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }).default(defaultFontFamily),
   })
   .prefault({})
-  // Normalize the shorthand into the default named sets, so consumers always get the record form.
-  .transform(({ fontFamily }): Record<string, TypographySetSchema> => {
-    const set = typographySetSchema.parse({ fontFamily });
-    return { primary: set, secondary: set };
-  });
-
-const typographySetsSchema = z
-  .record(z.string(), typographySetSchema)
-  .meta({ description: 'Named typography sets, e.g. "primary" and "secondary". The key becomes the set name.' });
+  // Normalize the shorthand into the default named sets, so consumers always get the object form.
+  .transform(
+    ({ fontFamily }): TypographySchema =>
+      typographyObjectSchema.parse({ fonts: { primary: { fontFamily }, secondary: { fontFamily } } }),
+  );
 
 export const typographySchema = z
-  .union([typographyShorthandSchema, typographySetsSchema])
+  .union([typographyShorthandSchema, typographyObjectSchema])
   .describe('Defines the typography for a given theme');
