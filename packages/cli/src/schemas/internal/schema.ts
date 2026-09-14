@@ -26,11 +26,20 @@ const colorSchema = z
   .transform(convertToHex)
   .describe(`A hex color, which is used for creating a color scale.`);
 
+// Color names end up in token paths, CSS variables and class names, so they are restricted to
+// lowercase letters, digits and hyphens. Matches the sanitizing done by the theme builder.
+const colorNameSchema = z
+  .string()
+  .regex(/^[a-z0-9-]+$/, {
+    message: 'Color names may only contain lowercase letters (a-z), digits (0-9) and hyphens (-).',
+  })
+  .describe('The name of a color, used in token paths and CSS variables.');
+
 /** The plain theme object. Use this when you need `.shape` or `.pick()`; use {@link themeSchema} to validate a theme. */
 const themeObjectSchema = z
   .object({
     colors: z
-      .record(z.string(), colorSchema)
+      .record(colorNameSchema, colorSchema)
       .refine((c) => typeof (c as Record<string, unknown>).neutral === 'string', {
         message: 'Theme colors must include a "neutral" color.',
       })
