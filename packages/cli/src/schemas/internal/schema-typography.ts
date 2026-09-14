@@ -44,31 +44,11 @@ const bodyTokens = (lineHeight: string) => ({
 const typographyFontSchema = z
   .object({
     fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }).default(defaultFontFamily),
-    lineHeight: z
-      .object({
-        sm: z.string().meta({ description: 'Sets the small line-height for this theme' }).default('130%'),
-        md: z.string().meta({ description: 'Sets the medium line-height for this theme' }).default('150%'),
-        lg: z.string().meta({ description: 'Sets the large line-height for this theme' }).default('170%'),
-      })
-      .prefault({}),
     fontWeight: z
       .object({
         medium: z.string().meta({ description: 'Sets the medium font-weight for this theme' }).default('Medium'),
         semibold: z.string().meta({ description: 'Sets the semibold font-weight for this theme' }).default('Semi bold'),
         regular: z.string().meta({ description: 'Sets the regular font-weight for this theme' }).default('Regular'),
-      })
-      .prefault({}),
-    letterSpacing: z
-      .object({
-        '1': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('-1%'),
-        '2': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('-0.5%'),
-        '3': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('-0.25%'),
-        '4': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('-0.15%'),
-        '5': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('0%'),
-        '6': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('0.15%'),
-        '7': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('0.25%'),
-        '8': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('0.5%'),
-        '9': z.string().meta({ description: 'Sets the letter-spacing for this theme' }).default('1.5%'),
       })
       .prefault({}),
   })
@@ -77,12 +57,58 @@ const typographyFontSchema = z
 
 export type TypographyFontSchema = z.infer<typeof typographyFontSchema>;
 
+const fontSizeScale = (sizes: number[]): Record<string, string> =>
+  Object.fromEntries(sizes.map((size, index) => [String(index + 1), String(size)]));
+
+const letterSpacingDescription = 'Sets the letter-spacing for this size mode';
+
+const typographySizeSchema = z
+  .object({
+    lineHeight: z
+      .object({
+        sm: z.string().meta({ description: 'Sets the small line-height for this size mode' }).default('130%'),
+        md: z.string().meta({ description: 'Sets the medium line-height for this size mode' }).default('150%'),
+        lg: z.string().meta({ description: 'Sets the large line-height for this size mode' }).default('170%'),
+      })
+      .prefault({}),
+    letterSpacing: z
+      .object({
+        '1': z.string().meta({ description: letterSpacingDescription }).default('-1%'),
+        '2': z.string().meta({ description: letterSpacingDescription }).default('-0.5%'),
+        '3': z.string().meta({ description: letterSpacingDescription }).default('-0.25%'),
+        '4': z.string().meta({ description: letterSpacingDescription }).default('-0.15%'),
+        '5': z.string().meta({ description: letterSpacingDescription }).default('0%'),
+        '6': z.string().meta({ description: letterSpacingDescription }).default('0.15%'),
+        '7': z.string().meta({ description: letterSpacingDescription }).default('0.25%'),
+        '8': z.string().meta({ description: letterSpacingDescription }).default('0.5%'),
+        '9': z.string().meta({ description: letterSpacingDescription }).default('1.5%'),
+      })
+      .prefault({}),
+    fontSize: z
+      .record(z.string(), z.string())
+      .meta({ description: 'The unitless font-size scale for this size mode, keyed by scale number' }),
+  })
+  .describe('Defines the line-heights, letter-spacings and font-size scale for a size mode');
+
+export type TypographySizeSchema = z.infer<typeof typographySizeSchema>;
+
 const typographyObjectSchema = z
   .object({
     fonts: z
       .record(z.string(), typographyFontSchema)
       .meta({ description: 'Named typography sets, e.g. "primary" and "secondary". The key becomes the set name.' })
       .prefault({ primary: {}, secondary: {} }),
+    size: z
+      .record(z.string(), typographySizeSchema)
+      .meta({
+        description:
+          'Typography values per size mode, keyed by the step name from `size.steps`. Shared by all typography sets.',
+      })
+      .prefault({
+        small: { fontSize: fontSizeScale([11, 13, 14, 16, 18, 21, 24, 30, 36, 48]) },
+        medium: { fontSize: fontSizeScale([12, 14, 16, 18, 21, 24, 30, 36, 48, 60]) },
+        large: { fontSize: fontSizeScale([13, 16, 18, 21, 24, 30, 36, 48, 60, 72]) },
+      }),
     components: z
       .object({
         heading: z
@@ -112,7 +138,7 @@ const typographyObjectSchema = z
       .meta({ description: 'Typography tokens for components, shared by all typography sets' })
       .prefault({}),
   })
-  .describe('Defines the typography sets and component typography for a given theme')
+  .describe('Defines the typography sets, size-mode typography and component typography for a given theme')
   .prefault({});
 
 export type TypographySchema = z.infer<typeof typographyObjectSchema>;

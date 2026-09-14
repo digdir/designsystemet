@@ -45,17 +45,33 @@ const themeObjectSchema = z
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
-// Validate that token references in each typography set's components (e.g. '{letter-spacing.3}')
-// point to keys defined in this theme.
+// Validate that every size step has typography values, and that token references in the typography
+// components (e.g. '{letter-spacing.3}') point to keys defined in this theme.
 const themeSchema = themeObjectSchema.superRefine((theme, ctx) => {
-  // font-size references must resolve in every size mode, so only keys present in all steps count.
-  const fontSizeKeys = new Set<string>();
-  const steps = Object.values(theme.size.steps);
-  for (const key of Object.keys(steps[0]?.fontSizes ?? {})) {
-    if (steps.every((step) => key in step.fontSizes)) {
-      fontSizeKeys.add(key);
-    }
+  const stepNames = Object.keys(theme.size.steps);
+  const missingSteps = stepNames.filter((step) => !(step in theme.typography.size));
+  if (missingSteps.length > 0) {
+    ctx.addIssue({
+      code: 'custom',
+      path: ['typography', 'size'],
+      message: `Missing typography for size step(s): ${missingSteps.join(', ')}. Every step in "size.steps" needs an entry in "typography.size".`,
+    });
   }
+
+  // References must resolve in every size mode, so only keys present in all modes count.
+  // Steps without typography are reported above and left out here, falling back to all defined modes,
+  // so a missing step does not also flag every reference in the components.
+  const stepModes = stepNames.map((step) => theme.typography.size[step]).filter((mode) => mode !== undefined);
+  const modes = stepModes.length > 0 ? stepModes : Object.values(theme.typography.size);
+  const sharedKeys = (group: 'lineHeight' | 'letterSpacing' | 'fontSize') => {
+    const keys = new Set<string>();
+    for (const key of Object.keys(modes[0]?.[group] ?? {})) {
+      if (modes.every((mode) => key in mode[group])) {
+        keys.add(key);
+      }
+    }
+    return keys;
+  };
 
   const checkGroup = (
     group: Record<string, unknown>,
@@ -86,22 +102,21 @@ const themeSchema = themeObjectSchema.superRefine((theme, ctx) => {
     }
   };
 
-  // The components are shared by all typography sets. Line-heights and letter-spacings come from the first set,
+  // The components and size-mode typography are shared by all typography sets,
   // while each set writes its own font-weights, so only font-weight keys present in every set can be referenced.
   const fonts = Object.values(theme.typography.fonts);
-  const [primaryFont] = fonts;
   const fontWeightKeys = new Set<string>();
-  for (const key of Object.keys(primaryFont?.fontWeight ?? {})) {
+  for (const key of Object.keys(fonts[0]?.fontWeight ?? {})) {
     if (fonts.every((font) => key in font.fontWeight)) {
       fontWeightKeys.add(key);
     }
   }
 
   const availableKeys: Record<string, Set<string>> = {
-    'line-height': new Set(Object.keys(primaryFont?.lineHeight ?? {})),
+    'line-height': sharedKeys('lineHeight'),
     'font-weight': fontWeightKeys,
-    'letter-spacing': new Set(Object.keys(primaryFont?.letterSpacing ?? {})),
-    'font-size': fontSizeKeys,
+    'letter-spacing': sharedKeys('letterSpacing'),
+    'font-size': sharedKeys('fontSize'),
   };
 
   checkGroup(theme.typography.components, ['typography', 'components'], availableKeys);
@@ -124,10 +139,8 @@ type SharedThemeValue = {
  * Otherwise the last theme would silently win, or a size mode present in one theme would be missing in another.
  */
 const getSharedThemeValues = (theme: ConfigSchemaTheme): SharedThemeValue[] => {
-  // The first typography set provides the line-heights and letter-spacings shared by all themes,
-  // and the components are shared by all sets. Font-family and font-weights are written per theme, so they are free to differ.
-  const [primaryFontName = '', primaryFont] = Object.entries(theme.typography.fonts)[0] ?? [];
-
+  // Size-mode typography and components are shared by all typography sets and themes.
+  // Font-family and font-weights are written per theme, so they are free to differ.
   return [
     { path: ['size'], description: 'size configuration', value: theme.size },
     { path: ['shadow'], description: 'shadows', value: theme.shadow },
@@ -140,16 +153,7 @@ const getSharedThemeValues = (theme: ConfigSchemaTheme): SharedThemeValue[] => {
       value: Object.keys(theme.borderRadius.steps),
     },
     { path: ['typography', 'fonts'], description: 'typography set names', value: Object.keys(theme.typography.fonts) },
-    {
-      path: ['typography', 'fonts', primaryFontName, 'lineHeight'],
-      description: 'line-heights in the first typography set',
-      value: primaryFont?.lineHeight,
-    },
-    {
-      path: ['typography', 'fonts', primaryFontName, 'letterSpacing'],
-      description: 'letter-spacings in the first typography set',
-      value: primaryFont?.letterSpacing,
-    },
+    { path: ['typography', 'size'], description: 'size-mode typography', value: theme.typography.size },
     {
       path: ['typography', 'components'],
       description: 'typography components',
