@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "output": {
+      "description": "An array of output files",
+      "default": [
+        "design-tokens",
+        "css"
+      ],
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "design-tokens",
+                    "description": "The type of output file"
+                  },
+                  "dir": {
+                    "default": "design-tokens",
+                    "description": "The output directory",
+                    "type": "string"
+                  },
+                  "cleanDir": {
+                    "default": true,
+                    "description": "Whether to clean the output directory before generating files",
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "css",
+                    "description": "The type of output file"
+                  },
+                  "dir": {
+                    "default": "design-tokens-build",
+                    "description": "The output directory",
+                    "type": "string"
+                  },
+                  "cleanDir": {
+                    "default": true,
+                    "description": "Whether to clean the output directory before generating files",
+                    "type": "boolean"
+                  },
+                  "tokenDir": {
+                    "default": "design-tokens",
+                    "description": "The directory containing the design tokens",
+                    "type": "string"
+                  },
+                  "banner": {
+                    "default": "",
+                    "description": "A banner to include at the top of the CSS file",
+                    "type": "string"
+                  },
+                  "experimental_tailwind": {
+                    "default": true,
+                    "description": "Whether to enable experimental Tailwind support",
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              }
+            ],
+            "description": "An object representing an output file"
+          },
+          {
+            "type": "string",
+            "enum": [
+              "design-tokens",
+              "css"
+            ],
+            "description": "An output type using its default settings"
+          }
+        ],
+        "description": "An output file, either as an object or an output type using its default settings"
+      }
+    },
+    "outDir": {
+      "deprecated": true,
+      "description": "Deprecated: use `output[].dir` instead. Ignored when `output` is set.",
+      "type": "string"
+    },
+    "clean": {
+      "deprecated": true,
+      "description": "Deprecated: use `output[].cleanDir` instead. Ignored when `output` is set.",
+      "type": "boolean"
+    },
+    "themes": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "colors": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$",
+              "description": "The name of a color, used in token paths and CSS variables."
+            },
+            "additionalProperties": {
+              "description": "A hex color, which is used for creating a color scale.",
+              "type": "string",
+              "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+            },
+            "description": "Defines the colors for this theme"
+          },
+          "typography": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "fontFamily": {
+                "default": "Inter",
+                "type": "string",
+                "description": "Sets the font-family for this theme"
+              }
+            },
+            "additionalProperties": false
+          },
+          "borderRadius": {
+            "default": 4,
+            "type": "number",
+            "description": "Defines the border-radius for this theme"
+          },
+          "overrides": {
+            "type": "object",
+            "properties": {
+              "colors": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "object",
+                  "propertyNames": {
+                    "type": "string",
+                    "enum": [
+                      "background-default",
+                      "background-tinted",
+                      "surface-default",
+                      "surface-tinted",
+                      "surface-hover",
+                      "surface-active",
+                      "border-subtle",
+                      "border-default",
+                      "border-strong",
+                      "text-subtle",
+                      "text-default",
+                      "base-default",
+                      "base-hover",
+                      "base-active",
+                      "base-contrast-subtle",
+                      "base-contrast-default"
+                    ]
+                  },
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "light": {
+                        "description": "A hex color that overrides light mode",
+                        "type": "string",
+                        "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                      },
+                      "dark": {
+                        "description": "A hex color that overrides dark mode",
+                        "type": "string",
+                        "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                      }
+                    },
+                    "description": "Override values for semantic color tokens like \"background-subtle\", \"border-default\", etc."
+                  },
+                  "description": "The name of the color to add overrides for, e.g. \"accent\""
+                },
+                "description": "An object with color names as keys"
+              },
+              "severity": {
+                "description": "An object with severity color names as keys",
+                "type": "object",
+                "propertyNames": {
+                  "type": "string",
+                  "enum": [
+                    "info",
+                    "success",
+                    "warning",
+                    "danger"
+                  ]
+                },
+                "additionalProperties": {
+                  "description": "A hex color, which is used for creating a color scale",
+                  "type": "string",
+                  "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                }
+              },
+              "linkVisited": {
+                "type": "object",
+                "properties": {
+                  "light": {
+                    "description": "A hex color that overrides light mode",
+                    "type": "string",
+                    "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                  },
+                  "dark": {
+                    "description": "A hex color that overrides dark mode",
+                    "type": "string",
+                    "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                  }
+                },
+                "description": "Overrides for the \"link-visited\" color"
+              },
+              "focus": {
+                "type": "object",
+                "properties": {
+                  "inner": {
+                    "description": "Overrides for the \"focus-inner\" color",
+                    "type": "object",
+                    "properties": {
+                      "light": {
+                        "description": "A hex color that overrides light mode",
+                        "type": "string",
+                        "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                      },
+                      "dark": {
+                        "description": "A hex color that overrides dark mode",
+                        "type": "string",
+                        "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                      }
+                    }
+                  },
+                  "outer": {
+                    "description": "Overrides for the \"focus-outer\" color",
+                    "type": "object",
+                    "properties": {
+                      "light": {
+                        "description": "A hex color that overrides light mode",
+                        "type": "string",
+                        "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                      },
+                      "dark": {
+                        "description": "A hex color that overrides dark mode",
+                        "type": "string",
+                        "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                      }
+                    }
+                  }
+                },
+                "description": "Overrides for the focus colors"
+              }
+            },
+            "description": "Overrides for generated design tokens. Currently only supports colors defined in your theme"
+          }
+        },
+        "required": [
+          "colors"
+        ],
+        "description": "An object defining a theme. The property name holding the object becomes the theme name."
+      },
+      "description": "An object with one or more themes. Each property defines a theme, and the property name is used as the theme name."
+    }
+  },
+  "required": [
+    "themes"
+  ]
+}

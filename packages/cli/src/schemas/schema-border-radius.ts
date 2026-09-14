@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { defaultBorderRadius } from '../defaults.ts';
+import { defaultBorderRadius } from './defaults.ts';
 
-const borderRadiusNumberSchema = z
+export const borderRadiusNumberSchema = z
   .number()
   .meta({ description: 'Defines the border-radius for this theme' })
   .default(defaultBorderRadius);

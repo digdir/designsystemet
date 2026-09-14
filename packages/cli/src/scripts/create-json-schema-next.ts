@@ -1,7 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { z } from 'zod';
-import { configObjectSchema } from '../schemas/v1.2/schema.ts';
+import { configObjectSchema } from '../schemas/schema.ts';
 
 const schema = z
   .object({

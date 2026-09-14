@@ -1,49 +1,21 @@
 import * as R from 'ramda';
 import { z } from 'zod';
-import { convertToHex } from '../../colors/index.ts';
-import { overridesSchema } from '../v1.1/schema.ts';
-import { configObjectSchema as baseConfigObjectSchema, warnDeprecatedFields } from '../v1.2/schema.ts';
-import { borderRadiusSchema } from './schema-border-radius.ts';
+import { borderRadiusNumberSchema, borderRadiusSchema } from './schema-border-radius.ts';
 import { borderWidthSchema } from './schema-border-width.ts';
+import { colorsSchema } from './schema-color.ts';
 import { opacitySchema } from './schema-opacity.ts';
+import { outputConfigShape, warnDeprecatedFields } from './schema-output.ts';
+import { overridesSchema } from './schema-overrides.ts';
 import { shadowSchema } from './schema-shadow.ts';
 import { sizeSchema } from './schema-size.ts';
 import { typographySchema, typographyShorthandSchema } from './schema-typography.ts';
 
-const hexPatterns = [
-  // Hex colors: #000, #0000, #000000, #00000000
-  `#[0-9a-fA-F]{3}`,
-  `#[0-9a-fA-F]{4}`,
-  `#[0-9a-fA-F]{6}`,
-  `#[0-9a-fA-F]{8}`,
-];
-
-const colorRegex = new RegExp(`^(${hexPatterns.join('|')})$`);
-
-const colorSchema = z
-  .string()
-  .regex(colorRegex)
-  .transform(convertToHex)
-  .describe(`A hex color, which is used for creating a color scale.`);
-
-// Color names end up in token paths, CSS variables and class names, so they are restricted to
-// lowercase letters, digits and hyphens. Matches the sanitizing done by the theme builder.
-const colorNameSchema = z
-  .string()
-  .regex(/^[a-z0-9-]+$/, {
-    message: 'Color names may only contain lowercase letters (a-z), digits (0-9) and hyphens (-).',
-  })
-  .describe('The name of a color, used in token paths and CSS variables.');
+export { type ColorOverrideSchema, overridesSchema } from './schema-overrides.ts';
 
 /** The plain theme object. Use this when you need `.shape` or `.pick()`; use {@link themeSchema} to validate a theme. */
 const themeObjectSchema = z
   .object({
-    colors: z
-      .record(colorNameSchema, colorSchema)
-      .refine((c) => typeof (c as Record<string, unknown>).neutral === 'string', {
-        message: 'Theme colors must include a "neutral" color.',
-      })
-      .meta({ description: 'Defines the colors for this theme' }),
+    colors: colorsSchema,
     typography: typographySchema,
     size: sizeSchema,
     borderRadius: borderRadiusSchema,
@@ -223,37 +195,61 @@ export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
 /** The pre-validation shape of a theme, i.e. what users write: defaulted fields are optional. */
 export type ConfigSchemaThemeInput = z.input<typeof themeSchema>;
 
-export const configObjectSchema = baseConfigObjectSchema.extend({
+/**
+ * The plain config object with every field the CLI understands. Use this when you need `.shape`
+ * (e.g. to generate a JSON schema); use {@link configSchema} to validate a config.
+ */
+export const configObjectSchema = z.object({
+  ...outputConfigShape,
   themes: themesSchema,
 });
 
+/** The full config schema used by the CLI to validate a config file. */
 export const configSchema = configObjectSchema.superRefine(warnDeprecatedFields);
 
-/** The theme keys that exist in the public v1.2 config. `satisfies` fails to compile if the v1.2 theme keys change. */
+export type ConfigSchema = z.infer<typeof configObjectSchema>;
+/** The pre-validation shape of the config, i.e. what users write: defaulted fields are optional. */
+export type ConfigSchemaInput = z.input<typeof configObjectSchema>;
+
+/**
+ * The theme keys that are part of the public config. Everything else in {@link themeObjectSchema} is internal
+ * until it is added here. `pick` fails to compile if a key listed here is removed from the theme.
+ */
 const externalThemeMask = {
   colors: true,
   typography: true,
   borderRadius: true,
   overrides: true,
-} satisfies Record<keyof z.infer<typeof baseConfigObjectSchema>['themes'][string], true>;
+} as const;
 
 /**
- * A theme restricted to the keys and shapes available in the v1.2 config, without the internal-only cross-key refinements.
- * Typography is limited to the `{ fontFamily }` shorthand, as v1.2 has no named typography sets.
+ * A theme restricted to the keys and shapes of the public config, without the internal-only cross-key refinements.
+ * Typography is limited to the `{ fontFamily }` shorthand and border-radius to a number, as the public config
+ * has no named typography sets or border-radius steps.
  */
-const externalThemeSchema = themeObjectSchema.pick(externalThemeMask).extend({
-  typography: typographyShorthandSchema,
-});
+const externalThemeSchema = themeObjectSchema
+  .pick(externalThemeMask)
+  .extend({
+    typography: typographyShorthandSchema,
+    borderRadius: borderRadiusNumberSchema,
+  })
+  .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
 /**
- * The config with themes restricted to the keys available in the v1.2 config.
- * Use this when exposing the schema externally (e.g. the public JSON schema); use {@link configSchema} to validate a config.
+ * The public config: the same config object as {@link configObjectSchema}, with themes restricted to the public keys.
+ * Use this when exposing the schema externally (the public JSON schema, the theme builder and the Figma plugin);
+ * use {@link configSchema} to validate a config in the CLI.
  */
-export const externalConfigSchema = configObjectSchema.extend({
+export const externalConfigObjectSchema = configObjectSchema.extend({
   themes: z.record(z.string(), externalThemeSchema).meta({
     description:
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
   }),
 });
 
-export type ConfigSchema = z.infer<typeof configObjectSchema>;
+export const externalConfigSchema = externalConfigObjectSchema.superRefine(warnDeprecatedFields);
+
+export type ExternalConfigSchema = z.infer<typeof externalConfigObjectSchema>;
+/** The pre-validation shape of the public config, i.e. what users write: defaulted fields are optional. */
+export type ExternalConfigSchemaInput = z.input<typeof externalConfigObjectSchema>;
+export type ExternalConfigSchemaTheme = z.infer<typeof externalThemeSchema>;
