@@ -112,6 +112,6 @@ formatTheme({
   typography: themes.designsystemet.typography,
   size: themes.designsystemet.size,
   shadow: themes.designsystemet.shadow,
-  'border-width': themes.designsystemet['border-width'],
+  borderWidth: themes.designsystemet.borderWidth,
   opacity: themes.designsystemet.opacity,
 });

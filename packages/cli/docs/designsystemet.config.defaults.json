@@ -336,7 +336,7 @@
         "base": 4,
         "scale": 4
       },
-      "border-width": {
+      "borderWidth": {
         "default": "1px",
         "focus": "3px"
       },

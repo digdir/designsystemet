@@ -30,7 +30,7 @@ export type BorderRadiusConfig = Theme['borderRadius'];
 
 export type ShadowConfig = Theme['shadow'];
 
-export type BorderWidthConfig = Theme['border-width'];
+export type BorderWidthConfig = Theme['borderWidth'];
 
 export type OpacityConfig = Theme['opacity'];
 

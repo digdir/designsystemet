@@ -39,7 +39,7 @@ const themeObjectSchema = z
     size: sizeSchema,
     borderRadius: borderRadiusSchema,
     overrides: overridesSchema,
-    'border-width': borderWidthSchema,
+    borderWidth: borderWidthSchema,
     shadow: shadowSchema,
     opacity: opacitySchema,
   })
@@ -144,7 +144,7 @@ const getSharedThemeValues = (theme: ConfigSchemaTheme): SharedThemeValue[] => {
   return [
     { path: ['size'], description: 'size configuration', value: theme.size },
     { path: ['shadow'], description: 'shadows', value: theme.shadow },
-    { path: ['border-width'], description: 'border widths', value: theme['border-width'] },
+    { path: ['borderWidth'], description: 'border widths', value: theme.borderWidth },
     { path: ['opacity'], description: 'opacities', value: theme.opacity },
     // The semantic border-radius tokens reference the steps by name and position, while the values are written per theme.
     {
