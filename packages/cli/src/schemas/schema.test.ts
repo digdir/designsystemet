@@ -24,6 +24,12 @@ describe('themesSchema cross-theme validation', () => {
     expect(parseThemes({ a: baseTheme }).success).toBe(true);
   });
 
+  it('rejects an empty themes object', () => {
+    const result = parseThemes({});
+
+    expect(result.error?.issues.map((issue) => issue.message)).toEqual(['At least one theme must be defined.']);
+  });
+
   it('accepts themes that only differ in theme-scoped values', () => {
     const result = parseThemes({
       a: baseTheme,
@@ -210,6 +216,12 @@ describe('external schema', () => {
 
     expect(result.success).toBe(true);
     expect(result.data?.themes.a).not.toHaveProperty('size');
+  });
+
+  it('rejects an empty themes object', () => {
+    const result = externalConfigObjectSchema.safeParse({ themes: {} });
+
+    expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(['themes']);
   });
 
   it('rejects themes with different color names', () => {
