@@ -86,16 +86,25 @@ const themeSchema = themeObjectSchema.superRefine((theme, ctx) => {
     }
   };
 
-  for (const [setName, set] of Object.entries(theme.typography)) {
-    const availableKeys: Record<string, Set<string>> = {
-      'line-height': new Set(Object.keys(set.lineHeight)),
-      'font-weight': new Set(Object.keys(set.fontWeight)),
-      'letter-spacing': new Set(Object.keys(set.letterSpacing)),
-      'font-size': fontSizeKeys,
-    };
-
-    checkGroup(set.components, ['typography', setName, 'components'], availableKeys);
+  // The components are shared by all typography sets. Line-heights and letter-spacings come from the first set,
+  // while each set writes its own font-weights, so only font-weight keys present in every set can be referenced.
+  const fonts = Object.values(theme.typography.fonts);
+  const [primaryFont] = fonts;
+  const fontWeightKeys = new Set<string>();
+  for (const key of Object.keys(primaryFont?.fontWeight ?? {})) {
+    if (fonts.every((font) => key in font.fontWeight)) {
+      fontWeightKeys.add(key);
+    }
   }
+
+  const availableKeys: Record<string, Set<string>> = {
+    'line-height': new Set(Object.keys(primaryFont?.lineHeight ?? {})),
+    'font-weight': fontWeightKeys,
+    'letter-spacing': new Set(Object.keys(primaryFont?.letterSpacing ?? {})),
+    'font-size': fontSizeKeys,
+  };
+
+  checkGroup(theme.typography.components, ['typography', 'components'], availableKeys);
 });
 
 type SharedThemeValue = {
@@ -115,9 +124,9 @@ type SharedThemeValue = {
  * Otherwise the last theme would silently win, or a size mode present in one theme would be missing in another.
  */
 const getSharedThemeValues = (theme: ConfigSchemaTheme): SharedThemeValue[] => {
-  // The first typography set provides the line-heights, letter-spacings and components shared by all themes.
-  // Font-family and font-weights are written per theme, so they are free to differ.
-  const [primaryTypographyName = '', primaryTypography] = Object.entries(theme.typography)[0] ?? [];
+  // The first typography set provides the line-heights and letter-spacings shared by all themes,
+  // and the components are shared by all sets. Font-family and font-weights are written per theme, so they are free to differ.
+  const [primaryFontName = '', primaryFont] = Object.entries(theme.typography.fonts)[0] ?? [];
 
   return [
     { path: ['size'], description: 'size configuration', value: theme.size },
@@ -130,21 +139,21 @@ const getSharedThemeValues = (theme: ConfigSchemaTheme): SharedThemeValue[] => {
       description: 'border-radius step names',
       value: Object.keys(theme.borderRadius.steps),
     },
-    { path: ['typography'], description: 'typography set names', value: Object.keys(theme.typography) },
+    { path: ['typography', 'fonts'], description: 'typography set names', value: Object.keys(theme.typography.fonts) },
     {
-      path: ['typography', primaryTypographyName, 'lineHeight'],
+      path: ['typography', 'fonts', primaryFontName, 'lineHeight'],
       description: 'line-heights in the first typography set',
-      value: primaryTypography?.lineHeight,
+      value: primaryFont?.lineHeight,
     },
     {
-      path: ['typography', primaryTypographyName, 'letterSpacing'],
+      path: ['typography', 'fonts', primaryFontName, 'letterSpacing'],
       description: 'letter-spacings in the first typography set',
-      value: primaryTypography?.letterSpacing,
+      value: primaryFont?.letterSpacing,
     },
     {
-      path: ['typography', primaryTypographyName, 'components'],
-      description: 'typography components in the first typography set',
-      value: primaryTypography?.components,
+      path: ['typography', 'components'],
+      description: 'typography components',
+      value: theme.typography.components,
     },
   ];
 };
