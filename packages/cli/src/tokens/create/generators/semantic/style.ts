@@ -8,7 +8,7 @@ import type {
   SizeConfig,
   Token,
   TokenSet,
-  TypographySet,
+  TypographyComponents,
 } from '../../../types.ts';
 import { numericKey, tokensFromRecord } from '../../../utils.ts';
 
@@ -27,7 +27,7 @@ export function generateSemanticStyle(
   colorNames: string[],
   borderWidth: BorderWidthConfig,
   borderRadius: BorderRadiusConfig,
-  typography: TypographySet,
+  typographyComponents: TypographyComponents,
   shadow: ShadowConfig,
   size: SizeConfig,
   opacity: OpacityConfig,
@@ -49,7 +49,7 @@ export function generateSemanticStyle(
     ),
     // Each opacity from the config references the primitive keyed by its value, e.g. disabled '30%' -> {opacity.30}
     opacity: tokensFromRecord(opacity, 'opacity', (value) => `{opacity.${numericKey(value)}}`),
-    typography: generateTypographyTokens(typography.components),
+    typography: generateTypographyTokens(typographyComponents),
     // Each shadow from the config references the primitive numbered scale by position,
     // e.g. the first shadow 'xs' -> {shadow.100}
     shadow: Object.fromEntries(

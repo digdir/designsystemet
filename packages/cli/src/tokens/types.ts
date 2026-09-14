@@ -18,7 +18,11 @@ export type TokenSets = Map<string, TokenSet>;
 
 export type Typography = Theme['typography'];
 
-export type TypographySet = Typography[string];
+/** A named typography set, i.e. one entry in `typography.fonts`. */
+export type TypographySet = Typography['fonts'][string];
+
+/** The component typography shared by all typography sets. */
+export type TypographyComponents = Typography['components'];
 
 export type SizeConfig = Theme['size'];
 

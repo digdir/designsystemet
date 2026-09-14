@@ -18,7 +18,7 @@ export const getTokenSetDimensions = (theme: Pick<Theme, 'size' | 'typography'>)
   // The size modes are defined by the steps in the size configuration.
   sizeModes: Object.keys(theme.size.steps) as SizeModes[],
   // The typography sets are defined by the keys in the typography configuration.
-  typographies: Object.keys(theme.typography),
+  typographies: Object.keys(theme.typography.fonts),
 });
 
 export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDimensions) => {
@@ -30,8 +30,8 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
   const colorTokens = Object.entries(generateColorTokens(colorNames, name));
 
   // The first typography set provides the values shared across sets:
-  // size-mode line-heights/letter-spacings, semantic components and theme font-weight references.
-  const primaryTypography = Object.values(typography)[0];
+  // size-mode line-heights/letter-spacings and theme font-weight references.
+  const primaryTypography = Object.values(typography.fonts)[0];
   if (!primaryTypography) {
     throw new Error(`Theme "${name}" must define at least one typography set`);
   }
@@ -47,7 +47,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
       `primitives/modes/typography/size/${sizeMode}`,
       generateTypographyMode(sizeMode, primaryTypography, size),
     ]),
-    ...Object.entries(typography).map(([setName, set]): [string, TokenSet] => [
+    ...Object.entries(typography.fonts).map(([setName, set]): [string, TokenSet] => [
       `primitives/modes/typography/${setName}/${name}`,
       generateTypography(name, set),
     ]),
@@ -61,7 +61,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     ]),
     [
       `semantic/style`,
-      generateSemanticStyle(colorNames, borderWidth, borderRadius, primaryTypography, shadow, size, opacity),
+      generateSemanticStyle(colorNames, borderWidth, borderRadius, typography.components, shadow, size, opacity),
     ],
   ]);
 
