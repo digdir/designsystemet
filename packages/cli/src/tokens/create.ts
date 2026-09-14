@@ -29,8 +29,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
   const colorNames = toColorNames(colors);
   const colorTokens = Object.entries(generateColorTokens(colorNames, name));
 
-  // The first typography set provides the values shared across sets:
-  // size-mode line-heights/letter-spacings and theme font-weight references.
+  // The first typography set provides the theme font-weight references shared across sets.
   const primaryTypography = Object.values(typography.fonts)[0];
   if (!primaryTypography) {
     throw new Error(`Theme "${name}" must define at least one typography set`);
@@ -45,7 +44,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     ['primitives/modes/size/global', generateSizeGlobal(size)],
     ...sizeModes.map((sizeMode): [string, TokenSet] => [
       `primitives/modes/typography/size/${sizeMode}`,
-      generateTypographyMode(sizeMode, primaryTypography, size),
+      generateTypographyMode(sizeMode, typography),
     ]),
     ...Object.entries(typography.fonts).map(([setName, set]): [string, TokenSet] => [
       `primitives/modes/typography/${setName}/${name}`,
