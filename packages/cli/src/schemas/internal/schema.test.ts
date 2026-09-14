@@ -126,6 +126,20 @@ describe('themesSchema cross-theme validation', () => {
   });
 });
 
+describe('themeSchema color validation', () => {
+  it.each(['Accent', 'brand 2', 'brand_2', 'brand.2', 'ærlig'])('rejects the color name "%s"', (colorName) => {
+    const result = parseThemes({ a: { ...baseTheme, colors: { neutral: '#444444', [colorName]: '#0062BA' } } });
+
+    expect(issuePaths(result)).toEqual([`a.colors.${colorName}`]);
+  });
+
+  it.each(['accent', 'brand2', 'brand-2', '2nd-brand'])('accepts the color name "%s"', (colorName) => {
+    const result = parseThemes({ a: { ...baseTheme, colors: { neutral: '#444444', [colorName]: '#0062BA' } } });
+
+    expect(result.success).toBe(true);
+  });
+});
+
 describe('themeSchema typography validation', () => {
   it('rejects a size step without typography values', () => {
     const result = parseThemes({
