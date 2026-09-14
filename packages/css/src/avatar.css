@@ -73,6 +73,7 @@
     }
   }
 
+  /* @deprecated */
   &[data-variant='square'] {
     --dsc-avatar-radius: var(--ds-border-radius-md);
   }

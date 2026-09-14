@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
+# Stores the release version as the step output `value`.
+# Package versions are fixed (see .changeset/config.json), so the CLI package's
+# version is the release version.
+#
+# Do not run `changeset version` here: this runs on the release commit, where the
+# versions are already bumped and no changesets remain. Since @changesets/cli v3,
+# `changeset version` exits 1 in that case, which left the version empty and
+# created a release tagged just "v".
+set -euo pipefail
 
-set -e
+version=$(node -p "require('./packages/cli/package.json').version")
 
-# Running "changeset version" to know the new release version
-pnpm changeset version &>/dev/null
+if [[ -z "$version" || "$version" == "undefined" ]]; then
+  echo "::error::Could not determine release version"
+  exit 1
+fi
 
-# Packages-versions are fixed so we can safely get the bumped version from the cli-package
-release_version=$(node -e "console.log(require('./packages/cli/package.json').version)")
-
-git reset --hard &>/dev/null
-
-echo "$release_version"
+echo "value=${version}" >> "$GITHUB_OUTPUT"

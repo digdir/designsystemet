@@ -72,7 +72,7 @@
     isolation: auto; /* Undo stacking context */
   }
 
-  /* Style active element when primary ToggleGroup with manually set data-variant="tertiary" children - deprecated but kept for compatibility */
+  /* @deprecated: Style active element when primary ToggleGroup with manually set data-variant="tertiary" children - deprecated but kept for compatibility */
   &:not([data-variant='secondary']) > [data-variant='tertiary']:is(label:has(input:checked), button[aria-checked='true'], a[aria-current='true']) {
     --dsc-button-background--active: var(--ds-color-base-active);
     --dsc-button-background--hover: var(--ds-color-base-hover);
