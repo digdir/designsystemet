@@ -9,8 +9,9 @@ const baseTheme: ConfigSchemaThemeInput = {
   borderRadius: 8,
 };
 
-// The font-size scale keys (1-10) referenced by the default typography components.
-const fontSizes = Object.fromEntries(Array.from({ length: 10 }, (_, index) => [String(index + 1), String(index + 11)]));
+// A font-size scale with the keys (1-10) referenced by the default typography components.
+const fontSizeScale = (start: number) =>
+  Object.fromEntries(Array.from({ length: 10 }, (_, index) => [String(index + 1), String(index + start)]));
 // Use safeParse to validate themes without throwing exceptions
 const parseThemes = (themes: Record<string, ConfigSchemaThemeInput>) => themesSchema.safeParse(themes);
 
@@ -57,9 +58,9 @@ describe('themesSchema cross-theme validation', () => {
         ...baseTheme,
         size: {
           scale: { '1': 'floor({step} / {base} * {baseFontSize} * 1)' },
-          // Only one size step, with the font-size keys the default typography components reference.
+          // Only one size step, which has typography values in the default typography.
           steps: {
-            small: { base: 18, step: 4, baseFontSize: 16, fontSizes: fontSizes },
+            small: { base: 18, step: 4, baseFontSize: 16 },
           },
         },
       },
@@ -96,29 +97,23 @@ describe('themesSchema cross-theme validation', () => {
     expect(issuePaths(result)).toEqual(['b.typography.fonts']);
   });
 
-  it('rejects themes where the first typography set or the components have different shared values', () => {
+  it('rejects themes with different shared typography values', () => {
     const result = parseThemes({
       a: baseTheme,
       b: {
         ...baseTheme,
         typography: {
-          fonts: {
-            primary: {
-              lineHeight: { sm: '120%', md: '140%', lg: '160%' },
-              letterSpacing: { '1': '-2%' },
-            },
-            secondary: {},
+          size: {
+            small: { lineHeight: { sm: '120%', md: '140%', lg: '160%' }, fontSize: fontSizeScale(11) },
+            medium: { letterSpacing: { '1': '-2%' }, fontSize: fontSizeScale(12) },
+            large: { fontSize: fontSizeScale(13) },
           },
           components: { heading: { xl: { fontWeight: '{font-weight.semibold}' } } },
         },
       },
     });
 
-    expect(issuePaths(result)).toEqual([
-      'b.typography.fonts.primary.lineHeight',
-      'b.typography.fonts.primary.letterSpacing',
-      'b.typography.components',
-    ]);
+    expect(issuePaths(result)).toEqual(['b.typography.size', 'b.typography.components']);
   });
 
   it('reports which theme does not match the first theme', () => {
@@ -128,6 +123,58 @@ describe('themesSchema cross-theme validation', () => {
     expect(result.error?.issues[0].message).toBe(
       'All themes must define the same opacities, as they are shared by all themes. Theme "b" does not match theme "a".',
     );
+  });
+});
+
+describe('themeSchema typography validation', () => {
+  it('rejects a size step without typography values', () => {
+    const result = parseThemes({
+      a: {
+        ...baseTheme,
+        size: {
+          scale: { '1': 'floor({step} / {base} * {baseFontSize} * 1)' },
+          steps: { compact: { base: 18, step: 4, baseFontSize: 14 } },
+        },
+      },
+    });
+
+    expect(issuePaths(result)).toEqual(['a.typography.size']);
+  });
+
+  it('accepts a custom size step with matching typography values', () => {
+    const result = parseThemes({
+      a: {
+        ...baseTheme,
+        size: {
+          scale: { '1': 'floor({step} / {base} * {baseFontSize} * 1)' },
+          steps: { compact: { base: 18, step: 4, baseFontSize: 14 } },
+        },
+        typography: {
+          size: { compact: { fontSize: fontSizeScale(10) } },
+        },
+      },
+    });
+
+    expect(issuePaths(result)).toEqual([]);
+  });
+
+  it('rejects component references to font-sizes missing from a size step', () => {
+    const result = parseThemes({
+      a: {
+        ...baseTheme,
+        typography: {
+          size: {
+            small: { fontSize: fontSizeScale(11) },
+            medium: { fontSize: fontSizeScale(12) },
+            // Missing font-size 9 and 10 in one mode, so components may not reference them.
+            large: { fontSize: Object.fromEntries(Object.entries(fontSizeScale(13)).slice(0, 8)) },
+          },
+          components: { heading: { xl: { fontSize: '{font-size.9}' } } },
+        },
+      },
+    });
+
+    expect(result.success).toBe(false);
   });
 });
 
