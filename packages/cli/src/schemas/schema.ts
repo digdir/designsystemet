@@ -10,8 +10,6 @@ import { shadowSchema } from './schema-shadow.ts';
 import { sizeSchema } from './schema-size.ts';
 import { typographySchema, typographyShorthandSchema } from './schema-typography.ts';
 
-export { type ColorOverrideSchema, overridesSchema } from './schema-overrides.ts';
-
 /** The plain theme object. Use this when you need `.shape` or `.pick()`; use {@link themeSchema} to validate a theme. */
 const themeObjectSchema = z
   .object({
@@ -208,8 +206,6 @@ export const configObjectSchema = z.object({
 export const configSchema = configObjectSchema.superRefine(warnDeprecatedFields);
 
 export type ConfigSchema = z.infer<typeof configObjectSchema>;
-/** The pre-validation shape of the config, i.e. what users write: defaulted fields are optional. */
-export type ConfigSchemaInput = z.input<typeof configObjectSchema>;
 
 /**
  * The theme keys that are part of the public config. Everything else in {@link themeObjectSchema} is internal
@@ -252,4 +248,3 @@ export const externalConfigSchema = externalConfigObjectSchema.superRefine(warnD
 export type ExternalConfigSchema = z.infer<typeof externalConfigObjectSchema>;
 /** The pre-validation shape of the public config, i.e. what users write: defaulted fields are optional. */
 export type ExternalConfigSchemaInput = z.input<typeof externalConfigObjectSchema>;
-export type ExternalConfigSchemaTheme = z.infer<typeof externalThemeSchema>;
