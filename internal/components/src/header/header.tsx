@@ -235,9 +235,10 @@ const Header = ({
                 className={classes.toggleButton}
                 onClick={() => setLangOpen(!langOpen)}
                 lang='en'
+                aria-label='Language'
               >
                 <LanguageIcon aria-hidden />
-                <span>Language</span>
+                <span aria-hidden>Language</span>
               </Dropdown.Trigger>
 
               <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
