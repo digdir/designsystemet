@@ -2,7 +2,7 @@ import type { Command, OptionValues } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
-import { type ConfigSchema, configSchema } from '../src/schemas/internal/schema.ts';
+import { type ConfigSchema, configSchema } from '../src/schemas/schema.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.ts';
 

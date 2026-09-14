@@ -2,7 +2,7 @@ import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
 import { validateConfig } from '../schemas/helpers.ts';
-import { configSchema } from '../schemas/internal/schema.ts';
+import { configSchema } from '../schemas/schema.ts';
 import { generate$Themes } from '../tokens/create/generators/$themes.ts';
 import { createTokens, getTokenSetDimensions } from '../tokens/create.ts';
 import { buildOptions, processPlatform } from '../tokens/process/platform.ts';

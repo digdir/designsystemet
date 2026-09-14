@@ -10,7 +10,7 @@ import type { CssColor } from '../src/colors/types.ts';
 import { formatThemeCSS } from '../src/index.ts';
 import migrations from '../src/migrations/index.ts';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
-import { type ConfigSchema, configSchema } from '../src/schemas/internal/schema.ts';
+import { type ConfigSchema, configSchema } from '../src/schemas/schema.ts';
 import { buildTokens } from '../src/tokens/build.ts';
 import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
