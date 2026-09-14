@@ -3,15 +3,15 @@ import {
   validateConfig,
 } from '@digdir/designsystemet/schemas/helpers.js';
 import {
-  externalConfigSchema as configFileCreateSchema,
-  configSchema as configFileCreateSchemaInternal,
+  type ConfigSchema,
+  configSchema,
+  externalConfigSchema,
 } from '@digdir/designsystemet/schemas/schema.js';
 import {
   createSystemTokens,
   createTokens,
   getTokenSetDimensions,
 } from '@digdir/designsystemet/tokens/create';
-import type { infer as ZodInfer } from 'zod';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { importToFigma } from './token-export/importer';
@@ -40,8 +40,6 @@ const semanticColorNames = new Set<string>();
 
 let themeNames: string[] = [];
 
-type ConfigSchemaInternal = ZodInfer<typeof configFileCreateSchemaInternal>;
-
 if (figma.editorType === 'figma') {
   figma.showUI(__html__, {
     width: 800,
@@ -59,18 +57,15 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         fileMap.clear();
         files = [];
 
-        const parsedConfig = parseConfig<ConfigSchemaInternal>(msg.config);
+        const parsedConfig = parseConfig<ConfigSchema>(msg.config);
 
-        // Validate the config against the public schema first, so configs using internal-only
+        // Validate the config against the public/external schema first, so configs using non-exposed
         // fields are rejected with a user-facing error. The result is discarded, as the public
-        // schema normalizes shorthands and the internal schema should parse what the user wrote.
-        validateConfig(configFileCreateSchema, parsedConfig);
+        // schema normalizes shorthands and the full schema should parse what the user wrote.
+        validateConfig(externalConfigSchema, parsedConfig);
 
-        // Validate the config against the internal schema to populate default values.
-        const config = validateConfig<ConfigSchemaInternal>(
-          configFileCreateSchemaInternal,
-          parsedConfig,
-        );
+        // Validate the config against the full schema to populate default values.
+        const config = validateConfig<ConfigSchema>(configSchema, parsedConfig);
 
         themeNames = Object.keys(config.themes ?? {});
 
@@ -82,7 +77,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
         for (const [themeName, themeConfig] of Object.entries(
           config.themes,
-        ) as [string, ConfigSchemaInternal['themes'][string]][]) {
+        ) as [string, ConfigSchema['themes'][string]][]) {
           const { tokenSets } = await createTokens(
             {
               name: themeName,
