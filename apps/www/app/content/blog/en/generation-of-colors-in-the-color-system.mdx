@@ -167,7 +167,7 @@ Interpolation is a mathematical method for estimating values between two known d
 It is often used when working with a dataset and wanting to estimate values between existing data points. Color interpolation is about drawing a line between two points in a given color space. The result varies a lot depending on which color space is used, and whether the line is straight or curved. In our case, it was about drawing a line through the RGB color space.
 
 <Image
-  src='/img/blog/generation-of-colors-in-the-color-system/interpolering.png'
+  src='/img/blog/generation-of-colors-in-the-color-system/interpolering.webp'
   alt='Three color circles show how gradients are formed by different lines drawn through the circle: a straight line, a downward curve, and an upward curve. Under each circle, the corresponding gradient is shown, and it changes based on the direction and length of the lines.'
   caption='The image shows a simplified visualization of color interpolation where only hue is included. Here you can see how the gradients change depending on where the line is drawn in the circle.'
   boxShadow={false}
@@ -177,7 +177,7 @@ It is often used when working with a dataset and wanting to estimate values betw
 We already knew that WCAG used relative luminance to calculate the contrast between two colors. To ensure that the contrast between two colors is always the same, the relative luminance must also be the same. Our goal was to find luminance values in the RGB color space by adjusting the colors through "tinting" and "shading" until we achieved the desired luminance. Moving iteratively through a color space in this way is a form of interpolation.
 
  <Image
-  src='/img/blog/generation-of-colors-in-the-color-system/rgb-interpolation.png'
+  src='/img/blog/generation-of-colors-in-the-color-system/rgb-interpolation.webp'
   alt='Shows an example of interpolation of colors in the RGB color space.'
   caption='Shows an example of interpolation of colors in the RGB color space.'
   boxShadow={false}
