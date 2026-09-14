@@ -43,7 +43,7 @@ export const Preview = meta.story({
       </li>
       <li>
         <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
+          <BriefcaseIcon aria-hidden='true' />
         </Avatar>
       </li>
       <li>
@@ -125,7 +125,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -141,7 +141,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -157,7 +157,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -184,7 +184,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -208,7 +208,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -232,7 +232,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -259,7 +259,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -283,7 +283,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -307,7 +307,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>

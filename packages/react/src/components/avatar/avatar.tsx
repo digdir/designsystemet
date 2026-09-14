@@ -1,8 +1,8 @@
 import type { Size } from '@digdir/designsystemet-types';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, isValidElement } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -44,6 +44,11 @@ export type AvatarProps = MergeRight<
      */
     initials?: string;
     /**
+     * Initials to display inside the avatar.
+     * @deprecated Please use text content as children instead
+     */
+    'data-initials'?: string;
+    /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
      */
@@ -77,16 +82,22 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     'aria-label': label,
     'data-tooltip': tooltip,
+    'data-initials': dataInitials,
+    children,
     variant,
     className,
-    children,
-    initials,
+    initials: propInitials,
     asChild,
     ...rest
   },
   ref,
 ) {
   const Component = asChild ? Slot : 'span';
+  const initials = propInitials ?? dataInitials;
+  const hasChildrenSlotted =
+    asChild &&
+    isValidElement<{ children?: ReactNode }>(children) &&
+    children.props.children !== undefined;
 
   return (
     <Component
@@ -99,11 +110,12 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       tabIndex={tooltip ? 0 : undefined} // Tooltips require focusability for accessibility
       {...rest}
     >
-      {!asChild && children && typeof children !== 'string' ? (
-        <Slot aria-hidden='true'>{children}</Slot> // Automatically add aria-hidden="true" if non-string child
-      ) : (
-        children || initials
-      )}
+      {asChild
+        ? [
+            <Slottable key='slottable'>{children}</Slottable>,
+            hasChildrenSlotted ? null : initials,
+          ]
+        : (children ?? initials)}
     </Component>
   );
 });
