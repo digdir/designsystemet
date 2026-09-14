@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { defaultFontFamily } from '../defaults.ts';
+import { defaultFontFamily } from './defaults.ts';
 
 const typographyTokenSchema = (defaults: {
   fontWeight: string;

@@ -1,5 +1,5 @@
 import type { CssColor } from '@digdir/designsystemet/color';
-import type { CreateConfigSchemaInput } from '@digdir/designsystemet/schemas/v1.1/schema.js';
+import type { ExternalConfigSchemaInput } from '@digdir/designsystemet/schemas/schema.js';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
@@ -32,7 +32,7 @@ export const useTokenModal = () => {
     }
   });
 
-  const theme: CreateConfigSchemaInput['themes'][string] = {
+  const theme: ExternalConfigSchemaInput['themes'][string] = {
     colors: colors.reduce(
       (acc, color) => {
         acc[color.name] = color.colors.light['base-default']?.hex || '#';

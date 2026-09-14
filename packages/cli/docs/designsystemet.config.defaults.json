@@ -1,4 +1,19 @@
 {
+  "output": [
+    {
+      "type": "css",
+      "dir": "./packages/css/theme",
+      "cleanDir": true,
+      "tokenDir": "design-tokens",
+      "banner": "",
+      "experimental_tailwind": true
+    },
+    {
+      "type": "design-tokens",
+      "dir": "design-tokens",
+      "cleanDir": true
+    }
+  ],
   "themes": {
     "designsystemet": {
       "colors": {
@@ -454,20 +469,5 @@
         "disabled": "30%"
       }
     }
-  },
-  "output": [
-    {
-      "type": "css",
-      "dir": "./packages/css/theme",
-      "cleanDir": true,
-      "tokenDir": "design-tokens",
-      "banner": "",
-      "experimental_tailwind": true
-    },
-    {
-      "type": "design-tokens",
-      "dir": "design-tokens",
-      "cleanDir": true
-    }
-  ]
+  }
 }

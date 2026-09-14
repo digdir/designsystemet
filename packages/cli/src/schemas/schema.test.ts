@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { type ConfigSchemaThemeInput, configSchema, themesSchema } from './schema.ts';
+import { z } from 'zod';
+import { type ConfigSchemaThemeInput, configSchema, externalConfigObjectSchema, themesSchema } from './schema.ts';
 
 const baseTheme: ConfigSchemaThemeInput = {
   colors: { neutral: '#444444', accent: '#0062BA' },
@@ -198,5 +199,39 @@ describe('internal schema tests', () => {
       themes: { a: baseTheme },
     });
     expect(result.success).toBe(true);
+  });
+});
+
+describe('external schema', () => {
+  it('accepts a public config and strips internal-only theme keys', () => {
+    const result = externalConfigObjectSchema.safeParse({
+      themes: { a: { ...baseTheme, size: { scale: {}, steps: {} } } },
+    });
+
+    expect(result.success).toBe(true);
+    expect(result.data?.themes.a).not.toHaveProperty('size');
+  });
+
+  it('rejects internal-only shapes for public keys', () => {
+    const result = externalConfigObjectSchema.safeParse({
+      themes: {
+        a: { ...baseTheme, typography: { fonts: { primary: {} } }, borderRadius: { base: 4, scale: 4, steps: {} } },
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual([
+      'themes.a.typography',
+      'themes.a.borderRadius',
+    ]);
+  });
+
+  // The public JSON schema is a published contract. Update the snapshot deliberately when the public config changes.
+  it('matches the published JSON schema', async () => {
+    const jsonSchema = z.toJSONSchema(externalConfigObjectSchema, { io: 'input', unrepresentable: 'any' });
+
+    await expect(`${JSON.stringify(jsonSchema, undefined, 2)}\n`).toMatchFileSnapshot(
+      './__snapshots__/config.schema.json',
+    );
   });
 });

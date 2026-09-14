@@ -2,14 +2,16 @@ import {
   parseConfig,
   validateConfig,
 } from '@digdir/designsystemet/schemas/helpers.js';
-import { configSchema as configFileCreateSchemaInternal } from '@digdir/designsystemet/schemas/internal/schema.js';
-import { configFileCreateSchema } from '@digdir/designsystemet/schemas/v1.1/schema.js';
+import {
+  externalConfigSchema as configFileCreateSchema,
+  configSchema as configFileCreateSchemaInternal,
+} from '@digdir/designsystemet/schemas/schema.js';
 import {
   createSystemTokens,
   createTokens,
   getTokenSetDimensions,
 } from '@digdir/designsystemet/tokens/create';
-import type { infer as ZodInfer, input as ZodInput } from 'zod';
+import type { infer as ZodInfer } from 'zod';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { importToFigma } from './token-export/importer';
@@ -39,7 +41,6 @@ const semanticColorNames = new Set<string>();
 let themeNames: string[] = [];
 
 type ConfigSchemaInternal = ZodInfer<typeof configFileCreateSchemaInternal>;
-type ConfigSchemaInput = ZodInput<typeof configFileCreateSchema>;
 
 if (figma.editorType === 'figma') {
   figma.showUI(__html__, {
@@ -60,16 +61,15 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
         const parsedConfig = parseConfig<ConfigSchemaInternal>(msg.config);
 
-        // Validate the config against the external schema to ensure it conforms to the expected structure.
-        const configInput = validateConfig<ConfigSchemaInput>(
-          configFileCreateSchema,
-          parsedConfig,
-        );
+        // Validate the config against the public schema first, so configs using internal-only
+        // fields are rejected with a user-facing error. The result is discarded, as the public
+        // schema normalizes shorthands and the internal schema should parse what the user wrote.
+        validateConfig(configFileCreateSchema, parsedConfig);
 
-        // Validate the config against the internal schema to populate default values and ensure it conforms to the expected structure.
+        // Validate the config against the internal schema to populate default values.
         const config = validateConfig<ConfigSchemaInternal>(
           configFileCreateSchemaInternal,
-          configInput,
+          parsedConfig,
         );
 
         themeNames = Object.keys(config.themes ?? {});

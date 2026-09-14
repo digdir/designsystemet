@@ -1,7 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
-import { configObjectSchema } from '../schemas/internal/schema.ts';
+import { configObjectSchema } from '../schemas/schema.ts';
 
 // Regenerates example-config.json: the internal schema's default state, produced by parsing a
 // minimal config containing only the fields without defaults (theme colors and outDir).
