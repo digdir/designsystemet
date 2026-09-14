@@ -71,7 +71,7 @@ describe('themesSchema cross-theme validation', () => {
 
   it.each<[path: string, override: Partial<ConfigSchemaThemeInput>]>([
     ['shadow', { shadow: { xs: [], sm: [], md: [], lg: [], xl: [] } }],
-    ['border-width', { 'border-width': { default: '2px', focus: '3px' } }],
+    ['borderWidth', { borderWidth: { default: '2px', focus: '3px' } }],
     ['opacity', { opacity: { disabled: '50%' } }],
   ])('rejects themes with different %s', (path, override) => {
     const result = parseThemes({ a: baseTheme, b: { ...baseTheme, ...override } });

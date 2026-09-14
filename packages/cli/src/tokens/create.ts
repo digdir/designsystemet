@@ -22,7 +22,7 @@ export const getTokenSetDimensions = (theme: Pick<Theme, 'size' | 'typography'>)
 });
 
 export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDimensions) => {
-  const { typography, name, borderRadius, overrides, size, shadow, opacity, 'border-width': borderWidth } = theme;
+  const { typography, name, borderRadius, overrides, size, shadow, opacity, borderWidth } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
 
   const colors = addSeverityColors(theme.colors);
