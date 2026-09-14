@@ -2,7 +2,7 @@ import {
   parseConfig,
   validateConfig,
 } from '@digdir/designsystemet/schemas/helpers.js';
-import { configFileCreateSchema as configFileCreateSchemaInternal } from '@digdir/designsystemet/schemas/internal/schema.js';
+import { configSchema as configFileCreateSchemaInternal } from '@digdir/designsystemet/schemas/internal/schema.js';
 import { configFileCreateSchema } from '@digdir/designsystemet/schemas/v1.1/schema.js';
 import {
   createSystemTokens,
