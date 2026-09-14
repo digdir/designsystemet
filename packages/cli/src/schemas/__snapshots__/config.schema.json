@@ -270,7 +270,7 @@
         ],
         "description": "An object defining a theme. The property name holding the object becomes the theme name."
       },
-      "description": "An object with one or more themes. Each property defines a theme, and the property name is used as the theme name."
+      "description": "An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names."
     }
   },
   "required": [

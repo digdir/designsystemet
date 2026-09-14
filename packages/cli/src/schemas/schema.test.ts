@@ -212,6 +212,14 @@ describe('external schema', () => {
     expect(result.data?.themes.a).not.toHaveProperty('size');
   });
 
+  it('rejects themes with different color names', () => {
+    const result = externalConfigObjectSchema.safeParse({
+      themes: { a: baseTheme, b: { ...baseTheme, colors: { neutral: '#444444', brand: '#0062BA' } } },
+    });
+
+    expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(['themes.b.colors']);
+  });
+
   it('rejects internal-only shapes for public keys', () => {
     const result = externalConfigObjectSchema.safeParse({
       themes: {
