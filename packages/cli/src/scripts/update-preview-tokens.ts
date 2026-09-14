@@ -57,7 +57,9 @@ const formatTheme = async (themeConfig: Theme) => {
 
   if (buildOptions?.buildTokenFormats) {
     for (const [destination, tokenFormats] of Object.entries(buildOptions.buildTokenFormats)) {
-      if (destination === 'typography/secondary.css') continue; // Skip secondary typography preview tokens
+      // Only the default typography set is used for preview tokens
+      if (destination.startsWith('typography/') && destination !== `typography/${buildOptions.defaultTypography}.css`)
+        continue;
 
       console.log(`Processing preview tokens for ${pc.green(destination)}`);
 
