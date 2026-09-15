@@ -459,7 +459,7 @@ export const HTMLClickableRows = () => {
 
 export const Scrollable = () => {
   return (
-    <div style={{ overflow: 'auto' }}>
+    <div style={{ overflowX: 'auto' }}>
       <table className='ds-table'>
         <thead>
           <tr style={{ whiteSpace: 'nowrap' }}>
