@@ -1,14 +1,13 @@
 import { fileURLToPath } from 'node:url';
 import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
 
 const internalComponentsDir = fileURLToPath(
   new URL('../../internal/components', import.meta.url),
 );
 
 export default defineConfig(({ isSsrBuild, command }) => ({
-  plugins: [reactRouter(), tsconfigPaths()],
+  plugins: [reactRouter()],
   ssr: {
     noExternal: ['@navikt/aksel-icons', 'ramda'],
   },
@@ -17,15 +16,20 @@ export default defineConfig(({ isSsrBuild, command }) => ({
   // peer-dep resolution stays correct.
   resolve:
     command === 'serve'
-      ? { alias: { '@internal/components': internalComponentsDir } }
-      : undefined,
+      ? {
+          alias: { '@internal/components': internalComponentsDir },
+          tsconfigPaths: true,
+        }
+      : { tsconfigPaths: true },
   build: {
-    rollupOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
+    rolldownOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router'],
-    esbuildOptions: {
-      jsx: 'automatic',
+  },
+  oxc: {
+    jsx: {
+      runtime: 'automatic',
     },
   },
 }));

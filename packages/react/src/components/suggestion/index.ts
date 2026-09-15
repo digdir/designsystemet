@@ -4,6 +4,7 @@ import { SuggestionEmpty } from './suggestion-empty';
 import { SuggestionInput } from './suggestion-input';
 import { SuggestionList } from './suggestion-list';
 import { SuggestionOption } from './suggestion-option';
+import { SuggestionToggle } from './suggestion-toggle';
 
 type Suggestion = typeof SuggestionRoot & {
   /**
@@ -14,6 +15,8 @@ type Suggestion = typeof SuggestionRoot & {
    * @example
    * <Suggestion>
    *   <Suggestion.Input />
+   *   <Suggestion.Toggle />
+   *   <Suggestion.Clear />
    *   <Suggestion.List />
    * </Suggestion>
    */
@@ -26,6 +29,8 @@ type Suggestion = typeof SuggestionRoot & {
    * @example
    * <Suggestion>
    *   <Suggestion.Input />
+   *   <Suggestion.Toggle />
+   *   <Suggestion.Clear />
    *   <Suggestion.List />
    * </Suggestion>
    */
@@ -47,6 +52,8 @@ type Suggestion = typeof SuggestionRoot & {
    * @example
    * <Suggestion>
    *   <Suggestion.Input />
+   *   <Suggestion.Toggle />
+   *   <Suggestion.Clear />
    *   <Suggestion.List>
    *     <Suggestion.Option value='Option 1'>Option 1</Suggestion.Option>
    *     <Suggestion.Option value='Option 2'>Option 2</Suggestion.Option>
@@ -62,11 +69,26 @@ type Suggestion = typeof SuggestionRoot & {
    * @example
    * <Suggestion>
    *   <Suggestion.Input />
+   *   <Suggestion.Toggle />
    *   <Suggestion.Clear />
    *   <Suggestion.List />
    * </Suggestion>
    */
   Clear: typeof SuggestionClear;
+  /**
+   * Component that provides a toggle button for the Suggestion list.
+   *
+   * Place as a descendant of `Suggestion`
+   *
+   * @example
+   * <Suggestion>
+   *   <Suggestion.Input />
+   *   <Suggestion.Toggle />
+   *   <Suggestion.Clear />
+   *   <Suggestion.List />
+   * </Suggestion>
+   */
+  Toggle: typeof SuggestionToggle;
 };
 
 /**
@@ -75,6 +97,7 @@ type Suggestion = typeof SuggestionRoot & {
  * @example
  * <Suggestion>
  *   <Suggestion.Input />
+ *   <Suggestion.Toggle />
  *   <Suggestion.Clear />
  *   <Suggestion.List>
  *     <Suggestion.Empty>Tomt</Suggestion.Empty>
@@ -88,6 +111,7 @@ const EXPERIMENTAL_Suggestion: Suggestion = Object.assign(SuggestionRoot, {
   Input: SuggestionInput,
   Empty: SuggestionEmpty,
   Option: SuggestionOption,
+  Toggle: SuggestionToggle,
   Clear: SuggestionClear,
 });
 
@@ -96,6 +120,7 @@ EXPERIMENTAL_Suggestion.List.displayName = 'EXPERIMENTAL_Suggestion.List';
 EXPERIMENTAL_Suggestion.Input.displayName = 'EXPERIMENTAL_Suggestion.Input';
 EXPERIMENTAL_Suggestion.Empty.displayName = 'EXPERIMENTAL_Suggestion.Empty';
 EXPERIMENTAL_Suggestion.Option.displayName = 'EXPERIMENTAL_Suggestion.Option';
+EXPERIMENTAL_Suggestion.Toggle.displayName = 'EXPERIMENTAL_Suggestion.Toggle';
 EXPERIMENTAL_Suggestion.Clear.displayName = 'EXPERIMENTAL_Suggestion.Clear';
 
 export type {
@@ -109,6 +134,7 @@ export type { SuggestionEmptyProps } from './suggestion-empty';
 export type { SuggestionInputProps } from './suggestion-input';
 export type { SuggestionListProps } from './suggestion-list';
 export type { SuggestionOptionProps } from './suggestion-option';
+export type { SuggestionToggleProps } from './suggestion-toggle';
 export {
   EXPERIMENTAL_Suggestion,
   SuggestionClear as EXPERIMENTAL_SuggestionClear,
@@ -116,4 +142,5 @@ export {
   SuggestionInput as EXPERIMENTAL_SuggestionInput,
   SuggestionList as EXPERIMENTAL_SuggestionList,
   SuggestionOption as EXPERIMENTAL_SuggestionOption,
+  SuggestionToggle as EXPERIMENTAL_SuggestionToggle,
 };

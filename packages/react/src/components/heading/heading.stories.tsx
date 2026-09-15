@@ -1,22 +1,18 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 
 import { Heading } from './heading';
 
-const meta: Meta<typeof Heading> = {
+const meta = preview.meta({
   title: 'Komponenter/Typography/Heading',
   component: Heading,
-};
+});
 
-export default meta;
-
-type Story = StoryObj<typeof Heading>;
-
-export const Preview: Story = {
+export const Preview = meta.story({
   args: {
     children: 'Tittel tekst',
   },
-};
+});
 
 function getComparableComputedStyle(element: HTMLElement) {
   const computed = getComputedStyle(element);
@@ -74,222 +70,228 @@ const Headings = () => (
   </>
 );
 
-export const HeadingsInVariousSizes: StoryFn = () => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 'var(--ds-size-6)',
-      whiteSpace: 'nowrap',
-    }}
-  >
-    <div data-size='sm' data-testid='small'>
-      <div>Size mode small</div>
-      <Headings />
-    </div>
-    <div style={{ display: 'flex', gap: 'var(--ds-size-3)' }}>
-      <div data-testid='implicit-medium'>
-        Implicit size mode medium
-        <Headings />
-      </div>
-      <div data-size='md' data-testid='medium'>
-        Explicit size mode medium
-        <Headings />
-      </div>
-    </div>
-    <div data-size='lg' data-testid='large'>
-      Size mode large
-      <Headings />
-    </div>
-  </div>
-);
-HeadingsInVariousSizes.play = async ({ canvasElement, step }) => {
-  const canvas = within(canvasElement);
-  const small = canvas.getByTestId('small');
-  const implicitMedium = canvas.getByTestId('implicit-medium');
-  const explicitMedium = canvas.getByTestId('medium');
-  const large = canvas.getByTestId('large');
-
-  await step('size mode small: expect bottom margins to be equal', () =>
-    expectEqualBottomMargins(small),
-  );
-  await step(
-    'implicit size mode medium: expect bottom margins to be equal',
-    () => expectEqualBottomMargins(implicitMedium),
-  );
-  await step(
-    'explicit size mode medium: expect bottom margins to be equal',
-    () => expectEqualBottomMargins(explicitMedium),
-  );
-  await step('size mode large: expect bottom margins to be equal', () =>
-    expectEqualBottomMargins(large),
-  );
-
-  await step('medium should be bigger than small', () => {
-    expect(explicitMedium.scrollHeight).toBeGreaterThan(small.scrollHeight);
-  });
-
-  await step('large should be bigger than medium', () => {
-    expect(large.scrollHeight).toBeGreaterThan(explicitMedium.scrollHeight);
-  });
-
-  await step(
-    'size mode medium: headings should be identical whether medium is impicit or explicit',
-    async () => {
-      const implicitHeadings = within(implicitMedium).getAllByRole('heading');
-      const explicitHeadings = within(explicitMedium).getAllByRole('heading');
-      for (let i = 0; i < implicitHeadings.length; i++) {
-        const implicit = implicitHeadings[i];
-        const explicit = explicitHeadings[i];
-        await expect(getComparableComputedStyle(implicit)).toEqual(
-          getComparableComputedStyle(explicit),
-        );
-      }
-    },
-  );
-};
-
-export const NestedSizeModes: StoryFn = () => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 'var(--ds-size-6)',
-      whiteSpace: 'nowrap',
-    }}
-  >
-    {/* Small */}
+export const HeadingsInVariousSizes = meta.story({
+  render: () => (
     <div
-      style={{ display: 'flex', gap: 'var(--ds-size-3)' }}
-      data-testid='small'
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-size-6)',
+        whiteSpace: 'nowrap',
+      }}
     >
-      <div data-size='sm' data-testid='sm'>
-        Small
+      <div data-size='sm' data-testid='small'>
+        <div>Size mode small</div>
         <Headings />
       </div>
-      <div data-size='md'>
-        <div data-size='sm' data-testid='md-sm'>
-          Medium › Small
+      <div style={{ display: 'flex', gap: 'var(--ds-size-3)' }}>
+        <div data-testid='implicit-medium'>
+          Implicit size mode medium
+          <Headings />
+        </div>
+        <div data-size='md' data-testid='medium'>
+          Explicit size mode medium
           <Headings />
         </div>
       </div>
-      <div data-size='lg'>
-        <div data-size='sm' data-testid='lg-sm'>
-          Large › Small
+      <div data-size='lg' data-testid='large'>
+        Size mode large
+        <Headings />
+      </div>
+    </div>
+  ),
+
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const small = canvas.getByTestId('small');
+    const implicitMedium = canvas.getByTestId('implicit-medium');
+    const explicitMedium = canvas.getByTestId('medium');
+    const large = canvas.getByTestId('large');
+
+    await step('size mode small: expect bottom margins to be equal', () =>
+      expectEqualBottomMargins(small),
+    );
+    await step(
+      'implicit size mode medium: expect bottom margins to be equal',
+      () => expectEqualBottomMargins(implicitMedium),
+    );
+    await step(
+      'explicit size mode medium: expect bottom margins to be equal',
+      () => expectEqualBottomMargins(explicitMedium),
+    );
+    await step('size mode large: expect bottom margins to be equal', () =>
+      expectEqualBottomMargins(large),
+    );
+
+    await step('medium should be bigger than small', () => {
+      expect(explicitMedium.scrollHeight).toBeGreaterThan(small.scrollHeight);
+    });
+
+    await step('large should be bigger than medium', () => {
+      expect(large.scrollHeight).toBeGreaterThan(explicitMedium.scrollHeight);
+    });
+
+    await step(
+      'size mode medium: headings should be identical whether medium is impicit or explicit',
+      async () => {
+        const implicitHeadings = within(implicitMedium).getAllByRole('heading');
+        const explicitHeadings = within(explicitMedium).getAllByRole('heading');
+        for (let i = 0; i < implicitHeadings.length; i++) {
+          const implicit = implicitHeadings[i];
+          const explicit = explicitHeadings[i];
+          await expect(getComparableComputedStyle(implicit)).toEqual(
+            getComparableComputedStyle(explicit),
+          );
+        }
+      },
+    );
+  },
+});
+
+export const NestedSizeModes = meta.story({
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-size-6)',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      {/* Small */}
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-size-3)' }}
+        data-testid='small'
+      >
+        <div data-size='sm' data-testid='sm'>
+          Small
           <Headings />
         </div>
-      </div>
-      <div data-size='lg'>
         <div data-size='md'>
-          <div data-size='sm' data-testid='lg-md-sm'>
-            Large › Medium › Small
+          <div data-size='sm' data-testid='md-sm'>
+            Medium › Small
             <Headings />
           </div>
         </div>
-      </div>
-      <div data-size='md'>
         <div data-size='lg'>
-          <div data-size='sm' data-testid='md-lg-sm'>
-            Medium › Large › Small
+          <div data-size='sm' data-testid='lg-sm'>
+            Large › Small
             <Headings />
           </div>
         </div>
-      </div>
-    </div>
-    {/* Medium */}
-    <div
-      style={{ display: 'flex', gap: 'var(--ds-size-3)' }}
-      data-testid='medium'
-    >
-      <div data-size='md' data-testid='md'>
-        Medium
-        <Headings />
-      </div>
-      <div data-size='sm'>
-        <div data-size='md' data-testid='sm-md'>
-          Small › Medium
-          <Headings />
-        </div>
-      </div>
-      <div data-size='lg'>
-        <div data-size='md' data-testid='lg-md'>
-          Large › Medium
-          <Headings />
-        </div>
-      </div>
-      <div data-size='lg'>
-        <div data-size='sm'>
-          <div data-size='md' data-testid='lg-sm-md'>
-            Large › Small › Medium
-            <Headings />
-          </div>
-        </div>
-      </div>
-      <div data-size='sm'>
         <div data-size='lg'>
-          <div data-size='md' data-testid='sm-lg-md'>
-            Small › Large › Medium
-            <Headings />
+          <div data-size='md'>
+            <div data-size='sm' data-testid='lg-md-sm'>
+              Large › Medium › Small
+              <Headings />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    {/* Large */}
-    <div
-      style={{ display: 'flex', gap: 'var(--ds-size-3)' }}
-      data-testid='large'
-    >
-      <div data-size='lg' data-testid='lg'>
-        Large
-        <Headings />
-      </div>
-      <div data-size='sm'>
-        <div data-size='lg' data-testid='sm-lg'>
-          Small › Large
-          <Headings />
-        </div>
-      </div>
-      <div data-size='md'>
-        <div data-size='lg' data-testid='md-lg'>
-          Medium › Large
-          <Headings />
-        </div>
-      </div>
-      <div data-size='sm'>
         <div data-size='md'>
-          <div data-size='lg' data-testid='sm-md-lg'>
-            Small › Medium › Large
-            <Headings />
+          <div data-size='lg'>
+            <div data-size='sm' data-testid='md-lg-sm'>
+              Medium › Large › Small
+              <Headings />
+            </div>
           </div>
         </div>
       </div>
-      <div data-size='md'>
+      {/* Medium */}
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-size-3)' }}
+        data-testid='medium'
+      >
+        <div data-size='md' data-testid='md'>
+          Medium
+          <Headings />
+        </div>
         <div data-size='sm'>
-          <div data-size='lg' data-testid='md-sm-lg'>
-            Small › Large › Medium
+          <div data-size='md' data-testid='sm-md'>
+            Small › Medium
             <Headings />
+          </div>
+        </div>
+        <div data-size='lg'>
+          <div data-size='md' data-testid='lg-md'>
+            Large › Medium
+            <Headings />
+          </div>
+        </div>
+        <div data-size='lg'>
+          <div data-size='sm'>
+            <div data-size='md' data-testid='lg-sm-md'>
+              Large › Small › Medium
+              <Headings />
+            </div>
+          </div>
+        </div>
+        <div data-size='sm'>
+          <div data-size='lg'>
+            <div data-size='md' data-testid='sm-lg-md'>
+              Small › Large › Medium
+              <Headings />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Large */}
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-size-3)' }}
+        data-testid='large'
+      >
+        <div data-size='lg' data-testid='lg'>
+          Large
+          <Headings />
+        </div>
+        <div data-size='sm'>
+          <div data-size='lg' data-testid='sm-lg'>
+            Small › Large
+            <Headings />
+          </div>
+        </div>
+        <div data-size='md'>
+          <div data-size='lg' data-testid='md-lg'>
+            Medium › Large
+            <Headings />
+          </div>
+        </div>
+        <div data-size='sm'>
+          <div data-size='md'>
+            <div data-size='lg' data-testid='sm-md-lg'>
+              Small › Medium › Large
+              <Headings />
+            </div>
+          </div>
+        </div>
+        <div data-size='md'>
+          <div data-size='sm'>
+            <div data-size='lg' data-testid='md-sm-lg'>
+              Small › Large › Medium
+              <Headings />
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-);
-NestedSizeModes.play = async ({ canvasElement, step }) => {
-  const canvas = within(canvasElement);
-  const small = canvas.getByTestId('small');
-  const medium = canvas.getByTestId('medium');
-  const large = canvas.getByTestId('large');
+  ),
 
-  await step(
-    'size mode small: expect equal dimensions for different nested modes',
-    () => expectEqualHeightAndWidth(small),
-  );
-  await step(
-    'size mode medium: expect equal dimensions for different nested modes',
-    () => expectEqualHeightAndWidth(medium),
-  );
-  await step(
-    'size mode large: expect equal dimensions for different nested modes',
-    () => expectEqualHeightAndWidth(large),
-  );
-};
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const small = canvas.getByTestId('small');
+    const medium = canvas.getByTestId('medium');
+    const large = canvas.getByTestId('large');
+
+    await step(
+      'size mode small: expect equal dimensions for different nested modes',
+      () => expectEqualHeightAndWidth(small),
+    );
+    await step(
+      'size mode medium: expect equal dimensions for different nested modes',
+      () => expectEqualHeightAndWidth(medium),
+    );
+    await step(
+      'size mode large: expect equal dimensions for different nested modes',
+      () => expectEqualHeightAndWidth(large),
+    );
+  },
+});

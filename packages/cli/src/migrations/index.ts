@@ -1,6 +1,6 @@
-import betaToV1 from './beta-to-v1.js';
-import colorRenameNext49 from './color-rename-next49.js';
-import flattenColorCategories from './flatten-color-categories.js';
+import betaToV1 from './beta-to-v1.ts';
+import colorRenameNext49 from './color-rename-next49.ts';
+import flattenColorCategories from './flatten-color-categories.ts';
 
 export const automigrations = {
   colorCategoryFlattening: flattenColorCategories,

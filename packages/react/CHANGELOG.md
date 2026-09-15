@@ -1,5 +1,119 @@
 # Change Log
 
+## 1.21.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334))
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302))
+- Updated dependencies [[`d722297`](https://github.com/digdir/designsystemet/commit/d722297deeb90c6a6df17589cd385551622b91b2), [`efad10b`](https://github.com/digdir/designsystemet/commit/efad10bfc66d289ad1aba9794fd986e71249b190), [`58f75a2`](https://github.com/digdir/designsystemet/commit/58f75a255ea0e1656d4c2617f5b3fb3311228f85)]:
+  - @digdir/designsystemet-web@1.21.1
+  - @digdir/designsystemet-types@1.21.1
+
+## 1.21.0
+
+### Minor Changes
+
+- **Avatar:** Deprecates `variant="square"` prop in favour of CSS `--dsc-avatar-radius` ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+### Patch Changes
+
+- **AvatarStack:** `overlap` and `--dsc-avatar-stack-overlap` property now needs to be a valid [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length) ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276)) by [@renovate](https://github.com/apps/renovate)
+
+- **AvatarStack:** Deprecates `gap`, `overlap` and `avatarSize` props in favour of CSS custom properties ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- **AvatarStack:** No longer needs `suffix` or `data-suffix`; for example, you can place `+10` text directly inside a trailing `<li>`. ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- **AvatarStack:** Now uses `<ul>` and needs `<li>` to wrap each avatar ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- Updated dependencies [[`28eb1b9`](https://github.com/digdir/designsystemet/commit/28eb1b97521fc904740ce1e0b4f1ffc52c4f2182)]:
+  - @digdir/designsystemet-web@1.21.0
+  - @digdir/designsystemet-types@1.21.0
+
+## 1.20.1
+
+### Patch Changes
+
+- **Dialog:** no longer blocks content when controlled and closed programatically ([#5252](https://github.com/digdir/designsystemet/pull/5252))
+
+- **Button**: `loading={true}` no longer sets `aria-disabled="true"` internally ([#5248](https://github.com/digdir/designsystemet/pull/5248))
+
+- Now bundled using `tsdown` instead of `rollup` ([#5215](https://github.com/digdir/designsystemet/pull/5215))
+
+- **Suggestion:** No longer gives hydration warning when `selected` prop is provided ([#5236](https://github.com/digdir/designsystemet/pull/5236))
+
+- Update npm non-major dependencies ([#5242](https://github.com/digdir/designsystemet/pull/5242))
+
+- **Suggestion:** no longer moves focus to chip when clicking inside datalist ([#5216](https://github.com/digdir/designsystemet/pull/5216))
+
+- Updated dependencies [[`a29dcc7`](https://github.com/digdir/designsystemet/commit/a29dcc76e3fad45a7dfff3b3d670f0c14225f1b6), [`89361a6`](https://github.com/digdir/designsystemet/commit/89361a60bc4fb504c2f7d94e10ff24a0d1573e2a), [`96d15d1`](https://github.com/digdir/designsystemet/commit/96d15d1f1e1c8ed723fa66f0ebdd7ba9c1b71f4a)]:
+  - @digdir/designsystemet-web@1.20.1
+  - @digdir/designsystemet-types@1.20.1
+
+## 1.20.0
+
+### Minor Changes
+
+- **Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React ([#5126](https://github.com/digdir/designsystemet/pull/5126))
+
+### Patch Changes
+
+- **Suggestion:** Skip unnecessary matching after clicking option in single mode ([#5207](https://github.com/digdir/designsystemet/pull/5207))
+
+- **ValidationMessage:** Now correctly sets `aria-invalid="true"` only if `danger` color ([#5149](https://github.com/digdir/designsystemet/pull/5149))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+- Updated dependencies [[`22039ea`](https://github.com/digdir/designsystemet/commit/22039ea4851e15c997bcc79c2cb3924fad8babe9), [`6a14e88`](https://github.com/digdir/designsystemet/commit/6a14e8812607c9230f2ec1201842c9aa2c0ab730), [`e9ed8d2`](https://github.com/digdir/designsystemet/commit/e9ed8d241e8861c52ae6865bdd69f6b8e3f53a33), [`e55de64`](https://github.com/digdir/designsystemet/commit/e55de648117fc7f5b4b65e534e2a3191518c859d), [`7fcc452`](https://github.com/digdir/designsystemet/commit/7fcc4527e40bc1172df93b9bcd59fcfee9f8ef5b), [`8208147`](https://github.com/digdir/designsystemet/commit/8208147801e90306b04cd97c2ee70352a2cffea1), [`262f229`](https://github.com/digdir/designsystemet/commit/262f2295e12e8a31d01a2a9acaca16cb3ed04da9), [`9946c52`](https://github.com/digdir/designsystemet/commit/9946c521246a3ac062a987505e841477d4f64b56)]:
+  - @digdir/designsystemet-web@1.20.0
+  - @digdir/designsystemet-types@1.20.0
+
+## 1.19.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.1
+  - @digdir/designsystemet-web@1.19.1
+
+## 1.19.0
+
+### Minor Changes
+
+- **New experimental component**: `FileUpload`. Use it by importing `EXPERIMENTAL_FileUpload` from `@digdir/designsystemet-react`. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+- **ToggleGroup:** Deprecates `data-toggle-group` in favor of `focusgroup="radiogroup"` with `aria-label`. ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+
+- Update npm non-major dependencies ([#5072](https://github.com/digdir/designsystemet/pull/5072))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- **React types:** allow all values of `data-color` in all components ([#5082](https://github.com/digdir/designsystemet/pull/5082))
+
+- fix component types for `data-color` and `data-size` to behave the same on components as globally ([#5156](https://github.com/digdir/designsystemet/pull/5156))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- **Global types:** added `focusgroup` and `focusgroupstart` to the global HTML attribute types. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+
+- **Dialog:** now adds `aria-haspopup` on focus event to enhance performance and support Shadow DOM rendering ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+
+- Updated dependencies [[`69e17d0`](https://github.com/digdir/designsystemet/commit/69e17d0688c9cc96a6fbe729d399edb10fdd88e1), [`5894236`](https://github.com/digdir/designsystemet/commit/5894236d5baf50aa73b96c33a9da9c14278fd470), [`6182865`](https://github.com/digdir/designsystemet/commit/6182865f1e7a7a93aa7fc99efbfc5f04cd3c5c3c), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`92922af`](https://github.com/digdir/designsystemet/commit/92922af56e4f63d8110e5109a02fc86d5eae88ca), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`74fb48c`](https://github.com/digdir/designsystemet/commit/74fb48c9de0e54f0b7d26a8560d5c6dae645b3ed), [`703abc1`](https://github.com/digdir/designsystemet/commit/703abc1ea674c56d256f6981009092bbbfb0ca93), [`6182865`](https://github.com/digdir/designsystemet/commit/6182865f1e7a7a93aa7fc99efbfc5f04cd3c5c3c), [`99265a3`](https://github.com/digdir/designsystemet/commit/99265a32fb2a829c7fb2559d30810288ce9e57f5), [`9434ea7`](https://github.com/digdir/designsystemet/commit/9434ea74b7213f506bcc1f91f010aa9f5c1a0bf9), [`a519003`](https://github.com/digdir/designsystemet/commit/a519003b0321b6058c46107feb2f831969269774), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`a398b3a`](https://github.com/digdir/designsystemet/commit/a398b3ae482c39e53ccb271e90ca7ed12438a33c), [`8390111`](https://github.com/digdir/designsystemet/commit/8390111d1fb5e81a71ace09891448c36ff7232b3), [`22bdfeb`](https://github.com/digdir/designsystemet/commit/22bdfeb9ae62ea5fa28c5175bfba295be04b43f9), [`a685ffd`](https://github.com/digdir/designsystemet/commit/a685ffd670cc691a25652c600550729ff7b9ff88), [`2eb9e66`](https://github.com/digdir/designsystemet/commit/2eb9e666f75ab172e7897a233e8356261e094442)]:
+  - @digdir/designsystemet-web@1.19.0
+  - @digdir/designsystemet-types@1.19.0
+
 ## 1.18.0
 
 ### Minor Changes

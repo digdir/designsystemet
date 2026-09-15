@@ -40,7 +40,7 @@
 
   /* Using pure HTML elements in selector to make this work if consumer changes name of .ds-input */
   &:not([hidden]),
-  & :where(label:not([hidden]), .ds-input:not([hidden])) {
+  & :where(label, .ds-input):not([hidden]) {
     display: block; /* Ensure input is not placed on same line as label/description/validation, but respect [hidden] attribute */
   }
 

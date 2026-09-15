@@ -17,7 +17,7 @@ Begrens antall knapper til det brukeren faktisk trenger i situasjonen. Når hver
 Som hovedregel skal knapper som står i en gruppe alltid presenteres i rekkefølgen primærknapp → sekundærknapp → tertiærknapp.
 
 <Image
-  src="/img/patterns/button-order.png"
+  src="/img/patterns/button-placement-and-order/button-order.png"
   alt="Tre knapper plassert horisontalt med rekkefølgen primær, sekundær og tertiær fra venstre mot høyre på en desktop-skjerm, og vertikalt med samme rekkefølge fra topp til bunn på en mobilskjerm."
   boxShadow={false}
   caption='Eksempelet over viser tre knapper i en gruppe, der rekkefølgen primær → sekundær → tertiær følges på både mobil og desktop.'
@@ -27,13 +27,13 @@ Som hovedregel skal knapper som står i en gruppe alltid presenteres i rekkeføl
 Plasserer knapper til venstre i grensesnittet. Da blir de enklere å finne for alle brukere, og særlig for dem med nedsatt synsfelt eller de som bruker skjermforstørrelse.<sup>2</sup>
 
 <Image
-  src="/img/patterns/button-left.png"
+  src="/img/patterns/button-placement-and-order/button-left.png"
   alt="Tre knapper plassert til venstre i grensesnittet."
   boxShadow={false}
   caption='Plasser knapper til venstre. Da er det større sannsynlighet for at brukeren ser dem.'
 />
 <Image
-  src="/img/patterns/button-right.png"
+  src="/img/patterns/button-placement-and-order/button-right.png"
   alt="Tre knapper plassert til høyre i grensesnittet."
   boxShadow={false}
   caption='Unngå å plassere knapper til høyre. Da må brukeren lese mindre viktige alternativer før hen kommer til primærhandlingen. I tillegg kan det gjøre det vanskelig for noen brukere å finne knappene.'
@@ -44,7 +44,7 @@ Plasserer knapper til venstre i grensesnittet. Da blir de enklere å finne for a
 For å skape en forutsigbar opplevelse skal knappene i en modal plasseres og følge samme rekkefølge som ellers. 
 
 <Image
-  src="/img/patterns/button-modal.png"
+  src="/img/patterns/button-placement-and-order/button-modal.png"
   alt="Modal med teksten 'Vil du fortsatt være pålogget?' og to knapper plassert til venstre i rekkefølgen primær 'Hold meg pålogget' og sekundær 'Logg ut'."
   boxShadow={false}
   caption='Eksempel på modal som har knappene plassert til venstre.'
@@ -56,7 +56,7 @@ Lukk-knappen (X) skal være plassert øverst til høyre i modalen. Knappen skal 
 En popover brukes for korte, avgrensede valg eller bekreftelser som krever en umiddelbar handling uten å ta brukeren bort fra konteksten. Knapper i en popover skal følge samme plassering og rekkefølge som ellers.
 
 <Image
-  src="/img/patterns/button-popover.png"
+  src="/img/patterns/button-placement-and-order/button-popover.png"
   alt="Popover med teksten 'Er du sikker på at du vil slette raden? Du kan ikke angre' og to knapper plassert til venstre i rekkefølgen primær 'Ja, slett rad' og sekundær 'Behold rad'."
   boxShadow={true}
   caption='Eksempel på popover som har knappene plassert til venstre.'
@@ -66,7 +66,7 @@ En popover brukes for korte, avgrensede valg eller bekreftelser som krever en um
 I skjemaer der alt fylles ut på én side, vil «Send inn»-knappen som regel være den eneste primærhandlingen. 
 
 <Image
-  src="/img/patterns/button-form-onepage.png"
+  src="/img/patterns/button-placement-and-order/button-form-onepage.png"
   alt="Skjema med et utfyllingsfelt og en primærknapp med teksten 'Send inn', ettefulgt av en sekundærknapp med teksten 'Avbryt'."
   boxShadow={false}
   caption='Eksempel på skjema med kun èn utfyllingsside.'
@@ -76,7 +76,7 @@ I skjemaer der alt fylles ut på én side, vil «Send inn»-knappen som regel v�
 Ikke bruk deaktivert "Forrige"-knapp på første side i et skjema med flere sider.<sup>3</sup>
 
 <Image
-  src="/img/patterns/button-form-firstpage.png"
+  src="/img/patterns/button-placement-and-order/button-form-firstpage.png"
   alt="Skjema med flere sider, der første side har en primærknapp med teksten 'Neste steg' og ingen sekundærknapp."
   boxShadow={false}
   caption='Eksempelet over viser første steg i et skjema, som ikke inneholder "Forrige"-knapp. '
@@ -95,14 +95,14 @@ Har du innsikt om plassering av Neste/Forrige-knapper, del gjerne i pågående [
 </Card>
 
 <Image
-  src="/img/patterns/button-form-secondpage.png"
+  src="/img/patterns/button-placement-and-order/button-form-secondpage.png"
   alt="Side 2 i et skjema som har en primærknapp med teksten 'Neste steg' og en sekundærknapp med teksten 'Forrige steg'. Neste steg ligger først på desktop."
   boxShadow={false}
   caption='Eksempelet over følger hovedregelen om at knapper i en gruppe skal presenteres i rekkefølgen primærknapp → sekundærknapp → tertiærknapp.'
 />
 
 <Image
-  src="/img/patterns/button-form-secondpage-alt2.png"
+  src="/img/patterns/button-placement-and-order/button-form-secondpage-alt2.png"
   alt="Side 2 i et skjema som har en primærknapp med teksten 'Neste steg' og en sekundærknapp med teksten 'Forrige steg'. Forrige steg ligger først på desktop."
   boxShadow={false}
   caption='Her er det gjort et unntak fra regelen på større skjermer.'
@@ -114,7 +114,7 @@ Hvis du gjør unntak her, bør unntaket kun gjøres for større skjermer, ikke s
 På siste steg i et skjema skal det være tydelig at brukeren sender inn skjemaet. “Send inn” er primærknappen. 
 
 <Image
-  src="/img/patterns/button-form-lastpage.png"
+  src="/img/patterns/button-placement-and-order/button-form-lastpage.png"
   alt="Siste steg i et skjema som har en primærknapp med teksten 'Send inn' og en sekundærknapp med teksten 'Forrige steg'."
   boxShadow={false}
   caption='Eksempelet over viser siste steg i et skjema.'
@@ -126,14 +126,14 @@ Tekst i knapper skal alltid beskrive hva som skjer når brukeren trykker. Knappe
 Unngå abstrakte begreper som “Ok“ eller ”Avbryt“ når det finnes alternativer som beskriver nøyaktig hva som skjer. Brukeren skal slippe å tolke knappene. Det skal være åpenbart hva som skjer når man trykker.
 
 <Image
-  src="/img/patterns/button-language-bad.png"
+  src="/img/patterns/button-placement-and-order/button-language-bad.png"
   alt="Unngå: En modal som viser 'Er du sikker på at du vil avbryte?' Og så to knapper med teksten 'Ok' og 'Avbryt'."
   boxShadow={false}
   caption='Spørsmålet og teksten på knappene øker risikoen for at noen velger feil fordi det er uklart hva som skjer når man trykker på knappene.'
 />
 
 <Image
-  src="/img/patterns/button-language-good.png"
+  src="/img/patterns/button-placement-and-order/button-language-good.png"
   alt="Gjør: En modal som viser 'Er du sikker på at du vil avslutte uten å lagre?' Og så to knapper med teksten 'Avslutt uten å lagre' og 'Fortsett redigering'."
   boxShadow={false}
   caption='Gjør det tydelig hva som skjer. Beskriv handlingen og konsekvensen i både tekst og knapp.'

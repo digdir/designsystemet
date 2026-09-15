@@ -108,7 +108,7 @@ export default {
     hide: 'Hide',
     sidebar: 'sidebar',
     search: {
-      label: 'Search',
+      label: 'Search in sidebar',
       noResults: 'No results',
     },
   },
@@ -212,6 +212,10 @@ export default {
       enlarged: 'Click to minimize image.',
       normal: 'Click to enlarge image.',
     },
+  },
+  'color-info-table': {
+    name: 'Name',
+    usage: 'Usage',
   },
   'image-banner': {
     'play-video': 'Play video',

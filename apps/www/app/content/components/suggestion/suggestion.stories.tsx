@@ -15,6 +15,7 @@ export const Preview = () => {
       <Label>Velg en destinasjon</Label>
       <EXPERIMENTAL_Suggestion>
         <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
           <EXPERIMENTAL_Suggestion.Empty>
@@ -43,6 +44,7 @@ export const PreviewEn = () => {
       <Label>Select a destination</Label>
       <EXPERIMENTAL_Suggestion>
         <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
           <EXPERIMENTAL_Suggestion.Empty>
@@ -79,6 +81,7 @@ export const Multiple = () => {
       <Label>Velg en destinasjon</Label>
       <EXPERIMENTAL_Suggestion multiple>
         <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
           <EXPERIMENTAL_Suggestion.Empty>
@@ -110,6 +113,7 @@ export const MultipleEn = () => {
       <Label>Select a destination</Label>
       <EXPERIMENTAL_Suggestion multiple>
         <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
           <EXPERIMENTAL_Suggestion.Empty>
@@ -141,6 +145,7 @@ export const Filter = () => {
       <Label>Skriv inn et tall mellom 1-6</Label>
       <EXPERIMENTAL_Suggestion filter={false}>
         <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
           <EXPERIMENTAL_Suggestion.Empty>
@@ -184,6 +189,7 @@ export const ControlledMultiple = () => {
           }
         >
           <EXPERIMENTAL_Suggestion.Input />
+          <EXPERIMENTAL_Suggestion.Toggle />
           <EXPERIMENTAL_Suggestion.Clear />
           <EXPERIMENTAL_Suggestion.List>
             <EXPERIMENTAL_Suggestion.Empty>
@@ -243,6 +249,7 @@ export const ControlledMultipleEn = () => {
           }
         >
           <EXPERIMENTAL_Suggestion.Input />
+          <EXPERIMENTAL_Suggestion.Toggle />
           <EXPERIMENTAL_Suggestion.Clear />
           <EXPERIMENTAL_Suggestion.List>
             <EXPERIMENTAL_Suggestion.Empty>
@@ -293,11 +300,10 @@ export const Creatable = () => {
       <Label>Velg destinasjon</Label>
       <EXPERIMENTAL_Suggestion creatable multiple>
         <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>
-            Ingen treff, trykk enter for å legge til
-          </EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Empty data-empty='Legg til "{value}"' />
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option key={place}>
               {place}
@@ -323,11 +329,10 @@ export const CreatableEn = () => {
       <Label>Select destination</Label>
       <EXPERIMENTAL_Suggestion creatable multiple>
         <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>
-            No results found, press enter to add
-          </EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Empty data-empty='Add "{value}"' />
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option key={place}>
               {place}

@@ -3,12 +3,13 @@
   --dsc-badge-color: var(--ds-color-base-contrast-default);
   --dsc-badge-padding: 0 calc(var(--ds-size-1) + calc(var(--ds-size-1) / 2));
   --dsc-badge-size: calc(var(--ds-size-3) + calc(var(--ds-size-1) / 2));
+  --dsc-badge-size--count: var(--ds-size-6);
   --dsc-badge-top: inherit;
   --dsc-badge-bottom: inherit;
   --dsc-badge-left: inherit;
   --dsc-badge-right: inherit;
 
-  vertical-align: middle;
+  vertical-align: calc(var(--dsc-badge-size) / 2);
   @composes ds-print-preserve from './base.css';
 
   &:not([hidden]) {
@@ -33,6 +34,12 @@
     @supports (content: attr(data-count, '')) {
       content: attr(data-count, '');
     }
+  }
+
+  &[data-count]:not([data-count=''])::before {
+    min-height: var(--dsc-badge-size--count);
+    min-width: var(--dsc-badge-size--count);
+    vertical-align: calc(var(--dsc-badge-size--count) / 2);
   }
 
   &[data-variant='base'] {

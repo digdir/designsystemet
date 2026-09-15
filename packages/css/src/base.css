@@ -252,5 +252,7 @@ body {
 
 /* Recalculate font-size variable when changing size mode */
 [data-size] {
+  --ds-icon-size: var(--ds-size-6);
+
   font-size: var(--ds-body-md-font-size);
 }

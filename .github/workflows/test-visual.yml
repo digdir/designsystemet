@@ -24,11 +24,6 @@ on:
       - "packages/**/*.stories.tsx?"
       - "apps/storybook/**"
       - "design-tokens/**/*.jsonc?"
-
-concurrency:
-  group: visual-${{ github.event.pull_request.number || github.run_id }}
-  cancel-in-progress: true
-
 permissions:
   contents: write
   pull-requests: write
@@ -37,7 +32,10 @@ permissions:
 
 jobs:
   pr-visual-tests:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.draft == false }}
+    concurrency:
+      group: visual-${{ github.event.pull_request.number || github.run_id }}
+      cancel-in-progress: true
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -45,18 +43,19 @@ jobs:
       actions: write
       checks: write
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           # build the PR HEAD exactly
           ref: ${{ github.event.pull_request.head.sha }}
-      - uses: ./.github/actions/gh-setup
+          persist-credentials: false
+      - uses: $/.github/actions/gh-setup
       - name: Build
         run: pnpm build
       - name: Build storybook
         run: pnpm build:storybook
       - name: Chromatic (visual + interaction)
-        uses: chromaui/action@1db61b73b7919508ee8e62336f04bd0aed6da756 # v17.4.1
+        uses: chromaui/action@2a0b63f30233c48591844a46d451b9cf68128186 # v18.7.2
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
@@ -72,16 +71,17 @@ jobs:
       actions: write
       checks: write
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - uses: ./.github/actions/gh-setup
+          persist-credentials: false
+      - uses: $/.github/actions/gh-setup
       - name: Build
         run: pnpm build
       - name: Build storybook
         run: pnpm build:storybook
       - name: Chromatic (auto-accept on main)
-        uses: chromaui/action@1db61b73b7919508ee8e62336f04bd0aed6da756 # v17.4.1
+        uses: chromaui/action@2a0b63f30233c48591844a46d451b9cf68128186 # v18.7.2
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

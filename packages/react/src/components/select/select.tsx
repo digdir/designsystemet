@@ -5,7 +5,7 @@ import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type SelectProps = MergeRight<
-  Omit<DefaultProps, 'data-color'> &
+  DefaultProps &
     Omit<SelectHTMLAttributes<HTMLSelectElement>, 'multiple' | 'size'>, // Also Omit size as this sets amount of visible options in multiselect
   {
     /**

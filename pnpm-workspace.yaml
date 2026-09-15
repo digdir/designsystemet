@@ -5,10 +5,10 @@ packages:
   - internal/*
 allowBuilds:
   "@biomejs/biome": true
-  '@parcel/watcher': false
+  '@parcel/watcher': true
   '@swc/core': true
   esbuild: true
-  rs-module-lexer: false
+  rs-module-lexer: true
   style-dictionary: true
 blockExoticSubdeps: true
 injectWorkspacePackages: true
@@ -28,4 +28,4 @@ syncInjectedDepsAfterScripts:
   - build:www
   - build:themebuilder
   - build:storybook
-useNodeVersion: "24.16.0"
+nodeVersion: "24.19.0"

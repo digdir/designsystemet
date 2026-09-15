@@ -1,85 +1,56 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
+import preview from '../../../../../../apps/storybook/.storybook/preview';
 import { Pagination } from '../../../components';
 import { type UsePaginationProps, usePagination } from './use-pagination';
 
-const meta: Meta = {
+const UsePagination = (_props: UsePaginationProps) => (
+  <Pagination aria-label='label' />
+);
+
+const meta = preview.meta({
   title: 'Utilities/usePagination',
   parameters: { chromatic: { disableSnapshot: true } },
-  argTypes: {
-    currentPage: {
-      control: {
-        type: 'number',
-      },
-      defaultValue: 1,
-      description: 'The current page number',
-      type: { name: 'number' },
-    },
-    totalPages: {
-      control: {
-        type: 'number',
-      },
-      defaultValue: 1,
-      description: 'The total number of pages',
-      type: { name: 'number' },
-    },
-    showPages: {
-      control: {
-        type: 'number',
-      },
-      defaultValue: 7,
-      description: 'The maximum number of pages to show',
-      type: { name: 'number' },
-    },
-    setCurrentPage: {
-      description: 'Callback to set the current page',
-      type: { name: 'function' },
-    },
-    onChange: {
-      description: 'Callback when the page changes',
-      type: { name: 'function' },
-    },
-  },
-};
+  component: UsePagination,
+});
 
-export default meta;
+export const Preview = meta.story({
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+    const { pages, nextButtonProps, prevButtonProps } = usePagination({
+      ...(args as UsePaginationProps),
+      setCurrentPage: (currentPage) => updateArgs({ currentPage }),
+    });
 
-export const Preview: StoryFn<UsePaginationProps> = (args) => {
-  const [, updateArgs] = useArgs();
-  const { pages, nextButtonProps, prevButtonProps } = usePagination({
-    ...args,
-    setCurrentPage: (currentPage) => updateArgs({ currentPage }),
-  });
-
-  return (
-    <Pagination aria-label='Sidenavigering'>
-      <Pagination.List>
-        <Pagination.Item>
-          <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
-            Forrige
-          </Pagination.Button>
-        </Pagination.Item>
-        {pages.map(({ page, itemKey, buttonProps }) => (
-          <Pagination.Item key={itemKey}>
-            {typeof page === 'number' && (
-              <Pagination.Button aria-label={`Side ${page}`} {...buttonProps}>
-                {page}
-              </Pagination.Button>
-            )}
+    return (
+      <Pagination aria-label='Sidenavigering'>
+        <Pagination.List>
+          <Pagination.Item>
+            <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
+              Forrige
+            </Pagination.Button>
           </Pagination.Item>
-        ))}
-        <Pagination.Item>
-          <Pagination.Button aria-label='Neste side' {...nextButtonProps}>
-            Neste
-          </Pagination.Button>
-        </Pagination.Item>
-      </Pagination.List>
-    </Pagination>
-  );
-};
+          {pages.map(({ page, itemKey, buttonProps }) => (
+            <Pagination.Item key={itemKey}>
+              {typeof page === 'number' && (
+                <Pagination.Button aria-label={`Side ${page}`} {...buttonProps}>
+                  {page}
+                </Pagination.Button>
+              )}
+            </Pagination.Item>
+          ))}
+          <Pagination.Item>
+            <Pagination.Button aria-label='Neste side' {...nextButtonProps}>
+              Neste
+            </Pagination.Button>
+          </Pagination.Item>
+        </Pagination.List>
+      </Pagination>
+    );
+  },
 
-Preview.args = {
-  currentPage: 2,
-  totalPages: 10,
-  showPages: 7,
-};
+  args: {
+    currentPage: 2,
+    totalPages: 10,
+    showPages: 7,
+  },
+});

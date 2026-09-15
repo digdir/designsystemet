@@ -1,7 +1,7 @@
 import { join } from 'node:path';
-import { bundleMDX } from 'mdx-bundler';
 import i18n from '../../i18next.server';
 import { getFileFromContentDir, getFilesFromContentDir } from '../files.server';
+import { getFrontmatter } from '../get-frontmatter.server';
 import { defaultCoverImagePath, type PageMetadata } from '../metadata';
 
 export interface BlogPosts {
@@ -38,28 +38,23 @@ export async function getBlogPosts(lang: string): Promise<BlogPosts> {
     const fileContent = getFileFromContentDir(
       join('blog', lang, file.relativePath),
     );
-    const result = await bundleMDX({
-      source: fileContent,
-    });
+    const frontmatter = getFrontmatter(fileContent);
 
-    const title =
-      result.frontmatter.title || file.relativePath.replace('.mdx', '');
+    const title = frontmatter.title || file.relativePath.replace('.mdx', '');
     const url = file.relativePath.replace('.mdx', '');
     const searchTerms: string[] = [];
-    if (typeof result.frontmatter.search_terms === 'string')
-      result.frontmatter.search_terms
-        .split(',')
-        .map((term) => searchTerms.push(term));
+    if (typeof frontmatter.search_terms === 'string')
+      frontmatter.search_terms.split(',').map((term) => searchTerms.push(term));
 
     posts.push({
       title,
-      author: result.frontmatter.author || 'Unknown Author',
-      description: result.frontmatter.description || 'No description available',
+      author: frontmatter.author || 'Unknown Author',
+      description: frontmatter.description || 'No description available',
       url,
-      date: result.frontmatter.date || '2000-01-01',
+      date: frontmatter.date || '2000-01-01',
       image: {
-        src: result.frontmatter.imageSrc || defaultCoverImagePath,
-        alt: result.frontmatter.imageAlt || t('meta.meta-cover'),
+        src: frontmatter.imageSrc || defaultCoverImagePath,
+        alt: frontmatter.imageAlt || t('meta.meta-cover'),
       },
       searchTerms,
     });

@@ -1,3 +1,5 @@
+import colorMetadata from './no/color-metadata';
+
 export default {
   footer: {
     about: 'Om designsystemet',
@@ -31,6 +33,7 @@ export default {
     copy: 'Kopier',
     copied: 'Kopiert',
   },
+  'color-metadata': colorMetadata,
   'color-modal': {
     hexcode: 'Hexkode',
     'css-variable': 'CSS variabel',

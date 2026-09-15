@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
+const tick = async (_?: unknown) =>
+  await new Promise((resolve) => setTimeout(resolve)); // Let MutationObserver run Loop
+
 describe('Fieldset behavior', () => {
   it('should set aria-labelledby from legend and description', async () => {
     document.body.innerHTML = `
@@ -9,12 +12,11 @@ describe('Fieldset behavior', () => {
 				<label><input type="radio" name="delivery" /> Mail</label>
 			</fieldset>`;
 
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
-
     const fieldset = document.querySelector('fieldset');
-    const legend = document.querySelector('legend');
-    const description = document.querySelector('[data-field="description"]');
+    const legend = fieldset?.querySelector('legend');
+    const description = fieldset?.querySelector('[data-field="description"]');
 
+    await tick(); // Let mutation observer run
     expect(fieldset).toBeInTheDocument();
     expect(legend?.id).toBeTruthy();
     expect(description?.id).toBeTruthy();
@@ -32,12 +34,11 @@ describe('Fieldset behavior', () => {
 				<label><input type="checkbox" /> Email</label>
 			</fieldset>`;
 
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
-
     const fieldset = document.querySelector('fieldset');
     const legend = document.querySelector('legend');
     const fallbackDescription = document.querySelector('legend + p');
 
+    await tick(); // Let mutation observer run
     expect(legend?.id).toBeTruthy();
     expect(fallbackDescription?.id).toBeTruthy();
     expect(fieldset).toHaveAttribute(
@@ -53,7 +54,7 @@ describe('Fieldset behavior', () => {
 				<p data-field="description">Select one</p>
 			</fieldset>`;
 
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
+    await tick(); // Let mutation observer run
 
     const fieldset = document.querySelector('fieldset');
 
@@ -67,11 +68,10 @@ describe('Fieldset behavior', () => {
 				<label><input type="radio" name="address" /> Home</label>
 			</fieldset>`;
 
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
-
     const fieldset = document.querySelector('fieldset');
     const legend = document.querySelector('legend');
 
+    await tick(); // Let mutation observer run
     expect(legend?.id).toBeTruthy();
     expect(fieldset).toHaveAttribute('aria-labelledby', legend?.id);
   });

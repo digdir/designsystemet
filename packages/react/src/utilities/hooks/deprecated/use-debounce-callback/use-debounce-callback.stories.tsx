@@ -1,18 +1,16 @@
-import type { Meta } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../../../../../apps/storybook/.storybook/preview';
 
 import { Paragraph, Textfield } from '../../../../components';
 
 import { useDebounceCallback } from './use-debounce-callback';
 
-const meta: Meta = {
+const meta = preview.meta({
   title: 'Utilities/useDebounceCallback',
   parameters: { chromatic: { disableSnapshot: true } },
-};
+});
 
-export default meta;
-
-export const Default = () => {
+export const Default = meta.story(() => {
   const [value, setValue] = useState('');
   const debouncedCallback = useDebounceCallback((value: string) => {
     setValue(value);
@@ -28,4 +26,4 @@ export const Default = () => {
       <Paragraph>Debounced value: {value}</Paragraph>
     </>
   );
-};
+});

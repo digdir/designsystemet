@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 const ROOT = process.cwd();
-const SCHEMAS_DIR = path.join(ROOT, 'apps/www/app/content/schemas/cli');
+const SCHEMAS_DIR = path.join(ROOT, 'apps/www/app/content/schemas/config');
 const CLI_ROOT = path.join(ROOT, 'packages/cli');
 
 // find the current schema file from dist
@@ -30,8 +30,11 @@ async function main() {
   }
   const src = path.join(CLI_ROOT, 'dist', schemaFile);
   const dst = path.join(SCHEMAS_DIR, `${await getCurrentVersion()}.json`);
+  const latestDst = path.join(SCHEMAS_DIR, 'latest.json');
   await fs.copyFile(src, dst);
   console.log(`Copied schema file to ${dst}`);
+  await fs.copyFile(src, latestDst);
+  console.log(`Copied schema file to ${latestDst}`);
 }
 
 main().catch((err) => {

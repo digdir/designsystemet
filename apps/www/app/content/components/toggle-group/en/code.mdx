@@ -1,20 +1,21 @@
 <Story story="PreviewEn" defaultOpen />
 
 ## Usage
-If you are using `@digdir/designsystemet-web`, you can implement toggle group by using the `data-toggle-group` attribute.
+If you are using `@digdir/designsystemet-web`, you can implement toggle group by using the `focusgroup="radiogroup"` and `aria-label` attributes.
+Note that `focusgroup` is a [upcoming W3C standard](https://open-ui.org/components/scoped-focusgroup.explainer/), currently only supported in Chrome. The design system automatically adds a polyfill to provide support in all browsers.
 
 ```html
-<fieldset class="ds-toggle-group" data-toggle-group="Text alignment" data-variant="secondary">
+<fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="Text alignment" data-variant="secondary">
   <label class="ds-button">
-    <input type="radio" name="alignment-two" value="left" checked />
+    <input type="radio" name="alignment" value="left" checked />
     Leftadjusted
   </label>
   <label class="ds-button">
-    <input type="radio" name="alignment-two" value="center" />
+    <input type="radio" name="alignment" value="center" />
     Centered
   </label>
   <label class="ds-button">
-    <input type="radio" name="alignment-two" value="right" />
+    <input type="radio" name="alignment" value="right" />
     Rightadjusted
   </label>
 </fieldset>
@@ -23,26 +24,21 @@ If you are using `@digdir/designsystemet-web`, you can implement toggle group by
 ### Old way with `<button>`
 **With this approach, you need to handle keyboard navigation and ARIA roles yourself.**
 You can read about what you need to do to implement this in the [accessibility documentation](/en/components/docs/toggle-group/accessibility).
-
-The class name `ds-toggle-group` is placed on a `<div>` with `role="radiogroup"`.
-
-Each button in the group is a `<button>` with class name `ds-button` with `role="radio"` and `aria-checked` which indicates whether the button is selected or not.
+Each button in the group is a `<button>` with class name `ds-button` and `aria-checked` which indicates whether the button is selected or not.
 
 ```html
-<div class="ds-toggle-group" role="radiogroup" data-variant="primary"> 
+<div class="ds-toggle-group" focusgroup="radiogroup" aria-label="Filter" data-variant="primary"> 
   <button 
     class="ds-button" 
     type="button" 
     id="togglegroup-item-1" 
     aria-checked="true" 
-    role="radio" 
   >Inbox</button> 
   <button 
     class="ds-button" 
     type="button" 
     id="togglegroup-item-2" 
     aria-checked="false"
-    role="radio" 
   >Sent</button>
 </div>
 ```
@@ -60,7 +56,7 @@ The component will inherit from the closest parent where these are set.
 ```tsx
 import { ToggleGroup } from '@digdir/designsystemet-react';
 
-<ToggleGroup data-toggle-group='Options' defaultValue="option1">
+<ToggleGroup aria-label='Options' defaultValue="option1">
   <ToggleGroup.Item value="option1">Option 1</ToggleGroup.Item>
   <ToggleGroup.Item value="option2">Option 2</ToggleGroup.Item>
 </ToggleGroup>

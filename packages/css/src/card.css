@@ -48,7 +48,7 @@
       text-decoration-line: underline;
       text-decoration-style: solid;
       text-decoration-thickness: max(1px, 0.0625rem, 0.1025em); /* 2px ish */
-      text-underline-offset: 0.27em; /* 5px ish */
+      text-underline-offset: 0.24em;
 
       & > a {
         text-decoration: none;

@@ -1,3 +1,4 @@
+import { type ParseError, parse as parseJsoncRaw, printParseErrorCode } from 'jsonc-parser';
 import pc from 'picocolors';
 import * as R from 'ramda';
 import type { z } from 'zod';
@@ -19,7 +20,7 @@ export const deprecatedCLIOptions = {
     borderRadius: 'border-radius',
   },
 } as const;
-
+/** @deprecated  options support will be removed */
 function mapPathToOptionName(path: PropertyKey[]) {
   // replace "themes.some-theme-name" with "theme" to match cliOptions object
   const normalisedPath = path[0] === 'themes' ? ['theme', ...R.drop(2, path)] : path;
@@ -39,10 +40,9 @@ function makeFriendlyError(err: unknown) {
             const issuePath = issue.path.join('.');
             const optionName = mapPathToOptionName(issue.path);
 
-            const errorCode = `(error code: ${issue.code})`;
             const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
-            return `  - Error in JSON value ${pc.red(issuePath)}${optionMessage}:
-      ${issue.message} ${pc.dim(errorCode)}`;
+            return `Error in value ${pc.red(issuePath)}${optionMessage}:
+      ${issue.message}`;
           })
           .join('\n'),
     });
@@ -55,41 +55,67 @@ function makeFriendlyError(err: unknown) {
 /**
  * Validates a configuration object against a provided Zod schema.
  *
+ * Populates default values from the schema and returns the validated configuration object.
+ *
  * @template T - The expected type of the validated configuration.
  * @param schema - A Zod schema used to validate the configuration object.
  * @param unvalidatedConfig - The configuration object to validate.
  * @returns The validated configuration object, typed as T.
- * @throws Exits the process with code 1 if validation fails, after logging a friendly error message.
+ * @throws Throws an Error with a friendly, user-facing validation message if validation fails.
  */
-export function validateConfig<T>(
-  schema: z.ZodType<T>,
-  unvalidatedConfig: Record<string, unknown>,
-  configFilePath: string,
-): T {
+export function validateConfig<T>(schema: z.ZodType<T>, unvalidatedConfig: Record<string, unknown>): T {
   try {
     return schema.parse(unvalidatedConfig) as T;
   } catch (err) {
-    console.error(pc.redBright(`Invalid config file at ${pc.red(configFilePath)}`));
-
     const validationError = makeFriendlyError(err);
-    console.error(validationError?.toString());
-    process.exit(1);
+    throw new Error(validationError?.toString());
   }
 }
 
-export function parseConfig<T>(configFile: string, configFilePath: string): T {
+/**
+ * Parses a JSONC string (JSON with comments and trailing commas).
+ *
+ * @template T - The expected type of the parsed value.
+ * @param content - The JSONC string to parse.
+ * @returns The parsed value, typed as T.
+ * @throws SyntaxError if the content contains syntax errors.
+ */
+export function parseJsonc<T>(content: string): T {
+  const errors: ParseError[] = [];
+  const result = parseJsoncRaw(content, errors, { allowTrailingComma: true }) as T;
+
+  if (errors.length > 0) {
+    const message = errors
+      .map((error) => {
+        const before = content.slice(0, error.offset);
+        const line = before.split(/\r?\n/).length;
+        const col = before.length - before.lastIndexOf('\n');
+        return `${printParseErrorCode(error.error)} at ${line}:${col} (offset ${error.offset})`;
+      })
+      .join(', ');
+    throw new SyntaxError(message);
+  }
+
+  return result;
+}
+export function parseConfig<T>(configFile: string): T {
   if (!configFile) {
     return {} as T;
   }
 
   try {
-    return JSON.parse(configFile) as T;
+    return parseJsonc<T>(configFile);
   } catch (err) {
-    console.error(pc.redBright(`Failed parsing config file at ${pc.red(configFilePath)}`));
-
     const validationError = makeFriendlyError(err);
-    console.error(validationError?.toString());
-
-    process.exit(1);
+    throw new Error(validationError?.toString());
   }
 }
+
+// export function getDefaults<Schema extends z.ZodObject>(schema: Schema) {
+//   return Object.fromEntries(
+//     Object.entries(schema.shape).map(([key, value]) => {
+//       if (value instanceof z.ZodDefault) return [key, (value.def.defaultValue as () => unknown)()];
+//       return [key, undefined];
+//     }),
+//   );
+// }

@@ -3,7 +3,13 @@ import type { DefaultProps } from '../../types';
 import { Input } from '../input/input';
 
 export type SearchInputProps = DefaultProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'type'>;
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'type'> & {
+    /**
+     * Type of input, affects if magnifying glass is shown or not. Use 'text' to hide magnifying glass.
+     * @default 'search'
+     */
+    type?: 'text' | 'search';
+  };
 
 /**
  * SearchInput component, used to display a search input within the Search component.
@@ -14,15 +20,7 @@ export type SearchInputProps = DefaultProps &
  * </Search>
  */
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
-  function SearchInput({ ...rest }, ref) {
-    return (
-      <Input
-        ref={ref}
-        type='search'
-        /* We need an empty placeholder for the clear button to be able to show/hide */
-        placeholder=''
-        {...rest}
-      />
-    );
+  function SearchInput({ type = 'search', ...rest }, ref) {
+    return <Input ref={ref} type={type} {...rest} />;
   },
 );

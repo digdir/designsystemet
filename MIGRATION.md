@@ -1,4 +1,4 @@
-<h1>Migration</h1>
+# Migration
 
 - [React](#react)
   - [From version \< 0.52.x to 0.53.0](#from-version--052x-to-0530)

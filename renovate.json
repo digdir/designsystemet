@@ -3,6 +3,22 @@
   "extends": ["local>digdir/renovate-config"],
   "rangeStrategy": "bump",
   "ignoreDeps": ["@floating-ui/react"],
+  "packageRules": [
+    {
+      "description": "Keep engines.node in the CLI package at the minimum required by style-dictionary dependency",
+      "matchFileNames": ["packages/cli/package.json"],
+      "matchDepTypes": ["engines"],
+      "matchDepNames": ["node"],
+      "enabled": false
+    },
+    {
+      "description": "Update every Node.js pin (Dockerfile, pnpm-workspace.yaml, package.json engines and runtime) in one PR",
+      "matchDepNames": ["node"],
+      "matchManagers": ["dockerfile", "custom.jsonata", "npm"],
+      "groupName": "node.js",
+      "groupSlug": "node"
+    }
+  ],
   "customManagers": [
     {
       "customType": "jsonata",

@@ -36,13 +36,7 @@ export default {
   },
   themeBuilder: {
     title: 'Temabygger',
-    intro: 'Designsystemet sin temabygger',
-    heading: 'Sett i gang med å bygge ditt',
-    'heading-highlight': 'eget tema',
-    description:
-      'Skal du ta i bruk Designsystemet i din egen organisasjon med dine egne profilfarger og preferanser? Temabyggeren hjelper deg i gang.',
-    'build-theme': 'Bygg tema',
-    documentation: 'Dokumentasjon',
+    'documentation-link': 'Les dokumentasjon om eget tema',
   },
   configPaste: {
     title: 'Importer fra konfigurasjonsfil',
@@ -79,6 +73,8 @@ export default {
     switch: 'Switch',
     primary: 'Primær',
     secondary: 'Sekundær',
+    grid: 'Rutenett',
+    list: 'Liste',
   },
   overview: {
     'login-title': 'Logg inn i portalen',
@@ -119,10 +115,6 @@ export default {
     'select-color': 'Velg farge',
   },
   themeModal,
-  examples: {
-    'example-1': 'Eksempel 1',
-    'example-2': 'Eksempel 2',
-  },
   colorPane: {
     add: 'Legg til',
     'edit-color': 'Rediger farge',
@@ -144,6 +136,9 @@ export default {
     dark: 'Mørk',
     'set-to': 'Sett til',
     view: 'visning',
+  },
+  colorGroup: {
+    'see-more': 'Se mer om {{namespace}} {{color}}',
   },
   'color-tokens': {
     title: 'Fargetokens',

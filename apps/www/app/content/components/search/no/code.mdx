@@ -2,11 +2,11 @@
 
 ## Bruk
 
-Bruk klassenavnet `ds-search` på et wrapper-element rundt `<input>`.
-Vil du ha en tøm-knapp, legger du til en `<button>` med `type="reset"`.
-Legg til en tom `placeholder` på `<input>` dersom du har tøm-knapp.
+Bruk klassenavnet `ds-search` på en `<ds-suggestion>` rundt `<input>`.
+Vil du ha en tøm-knapp, legger du til en `<button type="reset">` etter `<input>`. Denne vises og skjules automatisk basert på verdien i input.
 
-Du kan endre `variant` på button for å tilpasse visningen. Alternativt kan du fjerne knappen for å bruke et søkefelt med ikon. 
+Du kan endre `variant` på button for å tilpasse visningen.
+Forstørrelsesglass-ikonet vises når `input` har `type="search"`, og skjules når `input` har `type="text"`.
 
 ## CSS variabler og data-attributter
 

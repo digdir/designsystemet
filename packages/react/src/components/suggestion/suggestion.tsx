@@ -52,7 +52,6 @@ type Filter = (args: {
 
 type SuggestionContextType = {
   handleFilter: (input?: HTMLInputElement | null) => void;
-  isEmpty?: boolean;
   dsSuggestionRef?: RefObject<DSSuggestionElement | null>;
 };
 
@@ -185,7 +184,6 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
     const selectId = rest.id ? `${rest.id}-select` : genId;
     const isControlled = selected !== undefined;
     const mergedRefs = useMergeRefs([ref, dsSuggestionRef]);
-    const [isEmpty, setIsEmpty] = useState(false);
     const [defaultItems, setDefaultItems] = useState<SuggestionItem[]>(
       sanitizeItems(defaultSelected),
     );
@@ -210,11 +208,9 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
       const beforeChange = (event: CustomEvent<HTMLDataElement>) => {
         event.preventDefault();
         const multiple = combobox?.multiple;
-        const input = combobox?.control;
         const data = event.detail;
         const nextItem = nextItems(data, selectedItemsRef.current, multiple);
 
-        if (!multiple && input) input.value = data?.textContent || ''; // Sync input value for single selection
         onSelectedChangeRef.current?.(
           (nextItem as SuggestionItem & SuggestionItem[]) || null,
         );
@@ -243,7 +239,7 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
       let disabled = 0;
       let index = 0;
 
-      for (const option of options)
+      for (const option of Array.from(options))
         if (!option.hasAttribute('data-empty')) {
           if (filterFn && input)
             option.disabled =
@@ -257,14 +253,10 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
               }) && Boolean(++disabled);
           index++; // Increment index for each <option>
         }
-
-      setIsEmpty(index === disabled);
     }, [filter]);
 
     return (
-      <SuggestionContext.Provider
-        value={{ isEmpty, handleFilter, dsSuggestionRef }}
-      >
+      <SuggestionContext.Provider value={{ handleFilter, dsSuggestionRef }}>
         <ds-suggestion
           data-multiple={multiple || undefined}
           data-creatable={creatable || undefined}
@@ -274,7 +266,11 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
           {...rest}
         >
           {selectedItems.map((item) => (
-            <data key={item.value} value={item.value}>
+            <data
+              key={item.value}
+              value={item.value}
+              suppressHydrationWarning // Since <ds-suggestion> adds attributes
+            >
               {renderSelected(item)}
             </data>
           ))}

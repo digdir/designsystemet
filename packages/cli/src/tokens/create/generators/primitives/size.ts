@@ -1,4 +1,4 @@
-import type { SizeModes, TokenSet } from '../../../types.js';
+import type { SizeModes, TokenSet } from '../../../types.ts';
 
 const global: TokenSet = {
   _size: {

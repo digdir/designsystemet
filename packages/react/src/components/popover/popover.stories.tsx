@@ -1,11 +1,11 @@
 import { TrashIcon } from '@navikt/aksel-icons';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Button, Paragraph } from '../';
 import { Popover } from './';
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Popover',
   component: Popover,
   parameters: {
@@ -31,86 +31,95 @@ export default {
     await expect(dropdown).toBeInTheDocument();
     await waitFor(() => expect(dropdown).toBeVisible());
   },
-} satisfies Meta;
+});
 
-export const Preview: StoryFn<typeof Popover> = (args) => {
-  return (
-    <Popover.TriggerContext>
-      <Popover.Trigger>Mine varsler</Popover.Trigger>
-      <Popover {...args}>Du har ingen varsler</Popover>
-    </Popover.TriggerContext>
-  );
-};
-
-Preview.args = {
-  placement: 'top',
-};
-Preview.parameters = {
-  customStyles: {
-    paddingTop: '5rem',
+export const Preview = meta.story({
+  render: (args) => {
+    return (
+      <Popover.TriggerContext>
+        <Popover.Trigger>Mine varsler</Popover.Trigger>
+        <Popover {...args}>Du har ingen varsler</Popover>
+      </Popover.TriggerContext>
+    );
   },
-};
 
-export const Interactive: StoryFn<typeof Popover> = () => {
-  return (
-    <Popover.TriggerContext>
-      <Popover.Trigger data-color='danger' aria-label='Slett rad'>
-        <TrashIcon title='Slett rad' />
-      </Popover.Trigger>
-      <Popover data-color='danger'>
-        <Paragraph>
-          Er du sikker på at du vil slette raden? Handlingen kan ikke angres.
-        </Paragraph>
-        <div
-          style={{
-            display: 'flex',
-            gap: 'var(--ds-size-2)',
-            marginTop: 'var(--ds-size-2)',
-          }}
-        >
-          <Button data-size='sm'>Ja, slett den</Button>
-          <Button data-size='sm' variant='tertiary'>
-            Avbryt
-          </Button>
-        </div>
-      </Popover>
-    </Popover.TriggerContext>
-  );
-};
-Interactive.parameters = {
-  customStyles: {
-    padding: '12rem 6rem 1rem',
+  args: {
+    placement: 'top',
   },
-};
 
-export const DottedUnderline: StoryFn<typeof Popover> = () => {
-  return (
-    <Popover.TriggerContext>
-      <Paragraph>
-        Vi bruker <Popover.Trigger inline>design tokens</Popover.Trigger> for å
-        sikre at vi har en konsistent design.
-      </Paragraph>
-      <Popover data-color='neutral'>
-        <Paragraph>
-          <strong
+  parameters: {
+    customStyles: {
+      paddingTop: '5rem',
+    },
+  },
+});
+
+export const Interactive = meta.story({
+  render: () => {
+    return (
+      <Popover.TriggerContext>
+        <Popover.Trigger data-color='danger' aria-label='Slett rad'>
+          <TrashIcon title='Slett rad' />
+        </Popover.Trigger>
+        <Popover data-color='danger'>
+          <Paragraph>
+            Er du sikker på at du vil slette raden? Handlingen kan ikke angres.
+          </Paragraph>
+          <div
             style={{
-              display: 'block',
+              display: 'flex',
+              gap: 'var(--ds-size-2)',
+              marginTop: 'var(--ds-size-2)',
             }}
           >
-            Design tokens
-          </strong>
-          Design tokens er en samling av variabler som definerer designet i et
-          designsystem.
-        </Paragraph>
-      </Popover>
-    </Popover.TriggerContext>
-  );
-};
-DottedUnderline.parameters = {
-  customStyles: {
-    padding: '10rem 6rem 1rem',
+            <Button data-size='sm'>Ja, slett den</Button>
+            <Button data-size='sm' variant='tertiary'>
+              Avbryt
+            </Button>
+          </div>
+        </Popover>
+      </Popover.TriggerContext>
+    );
   },
-};
+
+  parameters: {
+    customStyles: {
+      padding: '12rem 6rem 1rem',
+    },
+  },
+});
+
+export const DottedUnderline = meta.story({
+  render: () => {
+    return (
+      <Popover.TriggerContext>
+        <Paragraph>
+          Vi bruker <Popover.Trigger inline>design tokens</Popover.Trigger> for
+          å sikre at vi har en konsistent design.
+        </Paragraph>
+        <Popover data-color='neutral'>
+          <Paragraph>
+            <strong
+              style={{
+                display: 'block',
+              }}
+            >
+              Design tokens
+            </strong>
+            Design tokens er en samling av variabler som definerer designet i et
+            designsystem.
+          </Paragraph>
+        </Popover>
+      </Popover.TriggerContext>
+    );
+  },
+
+  parameters: {
+    customStyles: {
+      padding: '10rem 6rem 1rem',
+    },
+  },
+});
 
 const VariantsMap: {
   [key: string]: { [key: string]: string };
@@ -145,122 +154,127 @@ const VariantsMap: {
   },
 };
 
-export const Variants: StoryFn<typeof Popover> = () => {
-  const [open, setOpen] = useState(false);
+export const Variants = meta.story({
+  render: () => {
+    const [open, setOpen] = useState(false);
 
-  useEffect(() => setOpen(true), []);
+    useEffect(() => setOpen(true), []);
 
-  return (
-    <>
-      {Object.entries(VariantsMap).map(([key, props], index) => (
-        <Popover.TriggerContext key={key}>
-          <Popover.Trigger>popover</Popover.Trigger>
-          <Popover
-            open={open}
-            placement={index >= 4 ? 'bottom' : 'top'}
-            autoPlacement={false}
-            {...props}
-          >
-            {key}
-          </Popover>
-        </Popover.TriggerContext>
-      ))}
-    </>
-  );
-};
-Variants.parameters = {
-  customStyles: {
-    padding: '5rem 1rem',
+    return (
+      <>
+        {Object.entries(VariantsMap).map(([key, props], index) => (
+          <Popover.TriggerContext key={key}>
+            <Popover.Trigger>popover</Popover.Trigger>
+            <Popover
+              open={open}
+              placement={index >= 4 ? 'bottom' : 'top'}
+              autoPlacement={false}
+              {...props}
+            >
+              {key}
+            </Popover>
+          </Popover.TriggerContext>
+        ))}
+      </>
+    );
   },
-};
-Variants.play = () => {};
-Variants.parameters = {
-  customStyles: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: 'var(--ds-size-2)',
-    height: '100%',
-    width: '100%',
-    placeItems: 'center',
-    padding: '5rem 3rem',
+
+  parameters: {
+    customStyles: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(4, 1fr)',
+      gap: 'var(--ds-size-2)',
+      height: '100%',
+      width: '100%',
+      placeItems: 'center',
+      padding: '5rem 3rem',
+    },
   },
-};
 
-export const Controlled: StoryFn<typeof Popover> = () => {
-  const [open, setOpen] = useState(false);
+  play: () => {},
+});
 
-  return (
-    <Popover.TriggerContext>
-      <Popover.Trigger>Slett</Popover.Trigger>
-      <Popover
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
-        data-color='neutral'
-      >
-        <Paragraph>Er du sikker på at du vil slette?</Paragraph>
-        <div
-          style={{
-            display: 'flex',
-            gap: 'var(--ds-size-2)',
-            marginTop: 'var(--ds-size-2)',
-          }}
+export const Controlled = meta.story({
+  render: () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <Popover.TriggerContext>
+        <Popover.Trigger>Slett</Popover.Trigger>
+        <Popover
+          open={open}
+          onOpen={() => setOpen(true)}
+          onClose={() => setOpen(false)}
+          data-color='neutral'
         >
+          <Paragraph>Er du sikker på at du vil slette?</Paragraph>
+          <div
+            style={{
+              display: 'flex',
+              gap: 'var(--ds-size-2)',
+              marginTop: 'var(--ds-size-2)',
+            }}
+          >
+            <Button
+              data-color='danger'
+              onClick={() => setOpen(false)}
+              data-size='sm'
+            >
+              Slett
+            </Button>
+            <Button
+              data-variant='tertiary'
+              data-color='danger'
+              onClick={() => setOpen(false)}
+              data-size='sm'
+            >
+              Avbryt
+            </Button>
+          </div>
+        </Popover>
+      </Popover.TriggerContext>
+    );
+  },
+
+  parameters: {
+    customStyles: {
+      padding: '8rem 6rem 1rem',
+    },
+  },
+});
+
+export const WithoutContext = meta.story({
+  render: () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <Button popovertarget='my-popover' onClick={() => setOpen(!open)}>
+          My trigger
+        </Button>
+        <Popover
+          id='my-popover'
+          open={open}
+          onClose={() => setOpen(false)}
+          data-color='neutral'
+        >
+          <Paragraph>Er du sikker på at du vil slette?</Paragraph>
           <Button
             data-color='danger'
             onClick={() => setOpen(false)}
             data-size='sm'
+            style={{ marginTop: 'var(--ds-size-2)' }}
           >
             Slett
           </Button>
-          <Button
-            data-variant='tertiary'
-            data-color='danger'
-            onClick={() => setOpen(false)}
-            data-size='sm'
-          >
-            Avbryt
-          </Button>
-        </div>
-      </Popover>
-    </Popover.TriggerContext>
-  );
-};
-Controlled.parameters = {
-  customStyles: {
-    padding: '8rem 6rem 1rem',
+        </Popover>
+      </>
+    );
   },
-};
 
-export const WithoutContext: StoryFn<typeof Popover> = () => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <Button popovertarget='my-popover' onClick={() => setOpen(!open)}>
-        My trigger
-      </Button>
-      <Popover
-        id='my-popover'
-        open={open}
-        onClose={() => setOpen(false)}
-        data-color='neutral'
-      >
-        <Paragraph>Er du sikker på at du vil slette?</Paragraph>
-        <Button
-          data-color='danger'
-          onClick={() => setOpen(false)}
-          data-size='sm'
-          style={{ marginTop: 'var(--ds-size-2)' }}
-        >
-          Slett
-        </Button>
-      </Popover>
-    </>
-  );
-};
-WithoutContext.parameters = {
-  customStyles: {
-    padding: '8rem 6rem 1rem',
+  parameters: {
+    customStyles: {
+      padding: '8rem 6rem 1rem',
+    },
   },
-};
+});

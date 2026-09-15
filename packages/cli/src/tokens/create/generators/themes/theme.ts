@@ -1,6 +1,6 @@
 import * as R from 'ramda';
-import { type ColorNumber, semanticColorMap } from '../../../../colors/types.js';
-import type { Token, TokenSet } from '../../../types.js';
+import { type ColorNumber, semanticColorMap } from '../../../../colors/types.ts';
+import type { Token, TokenSet } from '../../../types.ts';
 
 export const generateTheme = (colorNames: string[], themeName: string, borderRadius: number) => {
   const themeColorTokens = Object.fromEntries(

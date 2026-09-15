@@ -1,13 +1,11 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 
 import { Button, Divider, Label, Paragraph } from '../../';
 
 import { Textarea } from './textarea';
 
-type Story = StoryObj<typeof Textarea>;
-
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Textarea',
   component: Textarea,
   decorators: [
@@ -27,9 +25,9 @@ export default {
       </div>
     ),
   ],
-} satisfies Meta;
+});
 
-export const Preview: Story = {
+export const Preview = meta.story({
   args: {
     disabled: false,
     readOnly: false,
@@ -42,9 +40,9 @@ export const Preview: Story = {
       <Textarea {...args} />
     </>
   ),
-};
+});
 
-export const FullWidth: Story = {
+export const FullWidth = meta.story({
   args: {
     cols: 40,
     id: 'my-textarea',
@@ -58,38 +56,41 @@ export const FullWidth: Story = {
       <Textarea {...args} />
     </>
   ),
-};
+});
 
-export const Controlled: StoryFn<typeof Textarea> = (args) => {
-  const [value, setValue] = useState(`${args.value || ''}`);
+export const Controlled = meta.story({
+  render: (args) => {
+    const [value, setValue] = useState(`${args.value || ''}`);
 
-  return (
-    <>
-      <Label htmlFor={args.id}>Kontroller meg!</Label>
-      <Textarea
-        cols={40}
-        onChange={(e) => setValue(e.target.value)}
-        value={value}
-        {...args}
-      />
+    return (
+      <>
+        <Label htmlFor={args.id}>Kontroller meg!</Label>
+        <Textarea
+          cols={40}
+          onChange={(e) => setValue(e.target.value)}
+          value={value}
+          {...args}
+        />
 
-      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+        <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
-      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-        Du har skrevet inn: {value}
-      </Paragraph>
-      <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
-    </>
-  );
-};
+        <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
+          Du har skrevet inn: {value}
+        </Paragraph>
+        <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
+      </>
+    );
+  },
 
-Controlled.args = {
-  id: 'my-textarea',
-};
-Controlled.parameters = {
-  docs: {
-    source: {
-      type: 'code',
+  args: {
+    id: 'my-textarea',
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        type: 'code',
+      },
     },
   },
-};
+});

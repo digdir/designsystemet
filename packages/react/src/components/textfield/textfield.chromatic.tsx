@@ -1,16 +1,15 @@
-import type { Meta } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
 import { Textfield } from './textfield';
 import * as TextfieldStories from './textfield.stories';
 
-const meta: Meta = {
+const meta = preview.meta({
   title: 'Chromatic/Textfield',
   component: Textfield,
   tags: ['chromatic'],
   parameters: {
     layout: 'padded',
   },
-};
-export default meta;
+});
 
-export const Snapshots = createSingleStory(TextfieldStories, meta);
+export const Snapshots = meta.story(createSingleStory(TextfieldStories));

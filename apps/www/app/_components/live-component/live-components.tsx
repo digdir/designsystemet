@@ -14,6 +14,7 @@ import {
   useState,
 } from 'react';
 import { renderToString } from 'react-dom/server';
+import { useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 import {
   LiveEditor,
@@ -25,6 +26,16 @@ import {
 import { useLocation } from 'react-router';
 import classes from './live-component.module.css';
 
+/* vsLight's attr-name color (rgb(255, 0, 0)) is only 4:1 against white, below the 4.5:1 required for normal text. */
+const accessibleVsLight: typeof themes.vsLight = {
+  ...themes.vsLight,
+  // Appended (not merged into the base entry) so it only ever affects 'attr-name'.
+  styles: [
+    ...themes.vsLight.styles,
+    { types: ['attr-name'], style: { color: '#b81a1a' } },
+  ],
+};
+
 const SyncedBox = () => {
   const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
 
@@ -33,7 +44,6 @@ const SyncedBox = () => {
       ref={ref}
       style={{
         animation: 'spin 2s linear infinite',
-
         width: '30px',
         height: '30px',
         backgroundColor: 'red',
@@ -50,6 +60,7 @@ const scopes = {
   useRef,
   useId,
   SyncedBox,
+  useDropzone,
 };
 
 type Language = 'react' | 'html';
@@ -203,7 +214,7 @@ const Editor = ({
       <ds.ToggleGroup
         className={classes.language}
         variant='secondary'
-        data-toggle-group={t('live-component.language')}
+        aria-label={t('live-component.language')}
         data-size='sm'
         value={showHTML.toString()}
         onChange={(v) => setShowHTML(v === 'true')}
@@ -375,7 +386,7 @@ export const LiveComponent = ({
       code={story}
       scope={scopes}
       noInline
-      theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
+      theme={colorScheme === 'dark' ? themes.vsDark : accessibleVsLight}
     >
       {/* Hidden component that captures SSR HTML using renderToString */}
       <HtmlCaptureWithLive onHtmlCapture={setHtml} />

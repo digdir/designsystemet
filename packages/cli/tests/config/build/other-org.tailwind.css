@@ -167,6 +167,12 @@
   --font-weight-medium: var(--ds-font-weight-medium);
   --font-weight-regular: var(--ds-font-weight-regular);
   --font-weight-semibold: var(--ds-font-weight-semibold);
+  --opacity-disabled: var(--ds-opacity-disabled);
+  --shadow-lg: var(--ds-shadow-lg);
+  --shadow-md: var(--ds-shadow-md);
+  --shadow-sm: var(--ds-shadow-sm);
+  --shadow-xl: var(--ds-shadow-xl);
+  --shadow-xs: var(--ds-shadow-xs);
   --spacing-0: var(--ds-size-0);
   --spacing-1: var(--ds-size-1);
   --spacing-2: var(--ds-size-2);

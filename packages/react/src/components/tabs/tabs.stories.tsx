@@ -6,35 +6,37 @@ import {
   MotorcycleIcon,
   NewspaperIcon,
 } from '@navikt/aksel-icons';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect } from 'storybook/test';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Button, Tooltip } from '../';
 import { Tabs } from './';
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Tabs',
   component: Tabs,
-} as Meta;
+});
 
-export const Preview: StoryFn<typeof Tabs> = (args) => (
-  <Tabs {...args}>
-    <Tabs.List>
-      <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
-      <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
-      <Tabs.Tab value='value3'>Tab 3</Tabs.Tab>
-    </Tabs.List>
-    <Tabs.Panel value='value1'>content 1</Tabs.Panel>
-    <Tabs.Panel value='value2'>content 2</Tabs.Panel>
-    <Tabs.Panel value='value3'>content 3</Tabs.Panel>
-  </Tabs>
-);
+export const Preview = meta.story({
+  render: (args) => (
+    <Tabs {...args}>
+      <Tabs.List>
+        <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
+        <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+        <Tabs.Tab value='value3'>Tab 3</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+      <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+      <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+    </Tabs>
+  ),
 
-Preview.args = {
-  defaultValue: 'value1',
-};
+  args: {
+    defaultValue: 'value1',
+  },
+});
 
-export const IconsOnly: StoryFn<typeof Tabs> = () => (
+export const IconsOnly = meta.story(() => (
   <Tabs defaultValue='car'>
     <Tabs.List>
       <Tooltip content='Dine biler'>
@@ -63,9 +65,9 @@ export const IconsOnly: StoryFn<typeof Tabs> = () => (
       Du har ingen av denne typen registrert hos oss
     </Tabs.Panel>
   </Tabs>
-);
+));
 
-export const IconsWithText: StoryFn<typeof Tabs> = () => (
+export const IconsWithText = meta.story(() => (
   <Tabs defaultValue='car'>
     <Tabs.List>
       <Tabs.Tab value='car'>
@@ -93,9 +95,9 @@ export const IconsWithText: StoryFn<typeof Tabs> = () => (
       Du har ingen av denne typen registrert hos oss
     </Tabs.Panel>
   </Tabs>
-);
+));
 
-export const Controlled: StoryFn<typeof Tabs> = () => {
+export const Controlled = meta.story(() => {
   const [value, setValue] = useState('value1');
 
   return (
@@ -125,47 +127,49 @@ export const Controlled: StoryFn<typeof Tabs> = () => {
       </Tabs>
     </>
   );
-};
+});
 
-export const ControlledStop: StoryFn<typeof Tabs> = () => {
-  return (
-    <Tabs value='value1'>
-      <Tabs.List>
-        <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
-        <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
-      </Tabs.List>
-      <Tabs.Panel value='value1'>Content of tab 1</Tabs.Panel>
-      <Tabs.Panel value='value2'>Content of tab 2</Tabs.Panel>
-    </Tabs>
-  );
-};
+export const ControlledStop = meta.story({
+  render: () => {
+    return (
+      <Tabs value='value1'>
+        <Tabs.List>
+          <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
+          <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value='value1'>Content of tab 1</Tabs.Panel>
+        <Tabs.Panel value='value2'>Content of tab 2</Tabs.Panel>
+      </Tabs>
+    );
+  },
 
-ControlledStop.play = ({ canvasElement }) => {
-  const tab1 = canvasElement.querySelector(
-    '[data-value="value1"]',
-  ) as HTMLElement | null;
-  const tab2 = canvasElement.querySelector(
-    '[data-value="value2"]',
-  ) as HTMLElement | null;
+  play: ({ canvasElement }) => {
+    const tab1 = canvasElement.querySelector(
+      '[data-value="value1"]',
+    ) as HTMLElement | null;
+    const tab2 = canvasElement.querySelector(
+      '[data-value="value2"]',
+    ) as HTMLElement | null;
 
-  if (tab1) {
-    tab1.click();
-  }
+    if (tab1) {
+      tab1.click();
+    }
 
-  if (tab2) {
-    tab2.click();
-  }
+    if (tab2) {
+      tab2.click();
+    }
 
-  // First tab is still active
-  if (tab1) {
-    expect(tab1.getAttribute('aria-selected')).toBe('true');
-  }
-  if (tab2) {
-    expect(tab2.getAttribute('aria-selected')).toBe('false');
-  }
-};
+    // First tab is still active
+    if (tab1) {
+      expect(tab1.getAttribute('aria-selected')).toBe('true');
+    }
+    if (tab2) {
+      expect(tab2.getAttribute('aria-selected')).toBe('false');
+    }
+  },
+});
 
-export const DefaultValue: StoryFn<typeof Tabs> = () => (
+export const DefaultValue = meta.story(() => (
   <Tabs defaultValue='value2'>
     <Tabs.List>
       <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
@@ -176,4 +180,4 @@ export const DefaultValue: StoryFn<typeof Tabs> = () => (
     <Tabs.Panel value='value2'>content 2</Tabs.Panel>
     <Tabs.Panel value='value3'>content 3</Tabs.Panel>
   </Tabs>
-);
+));

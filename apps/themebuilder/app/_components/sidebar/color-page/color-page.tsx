@@ -116,7 +116,7 @@ export const ColorPage = () => {
     index: number,
     type: 'color' | 'neutral',
   ) => {
-    const hexColor = colorTheme.colors.light[11].hex;
+    const hexColor = colorTheme.colors.light['base-default'].hex;
 
     setColor(ColorService.convert('hex', hexColor));
 
@@ -209,7 +209,7 @@ export const ColorPage = () => {
                 colorTheme.name === 'neutral' ? null : (
                   <ColorInput
                     key={index}
-                    color={colorTheme.colors.light[11].hex}
+                    color={colorTheme.colors.light['base-default'].hex}
                     name={colorTheme.name}
                     onClick={() => openColorEditor(colorTheme, index, 'color')}
                   />
@@ -231,7 +231,7 @@ export const ColorPage = () => {
             <div className={classes.group}>
               <div className={classes.colors}>
                 <ColorInput
-                  color={neutralColor.colors.light[11].hex}
+                  color={neutralColor.colors.light['base-default'].hex}
                   name={neutralColor.name}
                   onClick={() =>
                     openColorEditor(neutralColor, neutralIndex, 'neutral')

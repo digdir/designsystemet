@@ -1,32 +1,34 @@
 import { ChevronDownUpIcon, ChevronUpDownIcon } from '@navikt/aksel-icons';
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 
 import { Button, Card, Details, Heading, Link, Paragraph } from '../';
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Details',
   component: Details,
   parameters: {
     layout: 'padded',
   },
-} as Meta;
+});
 
-export const Preview: StoryFn<typeof Details> = (args) => (
-  <Details {...args}>
-    <Details.Summary>
-      Hvem kan registrere seg i Frivillighetsregisteret?
-    </Details.Summary>
-    <Details.Content>
-      For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
-      drive frivillig virksomhet. Det er bare foreninger, stiftelser og
-      aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler til
-      fysiske personer. Virksomheten må ha et styre.
-    </Details.Content>
-  </Details>
-);
+export const Preview = meta.story({
+  render: (args) => (
+    <Details {...args}>
+      <Details.Summary>
+        Hvem kan registrere seg i Frivillighetsregisteret?
+      </Details.Summary>
+      <Details.Content>
+        For å kunne bli registrert i Frivillighetsregisteret, må organisasjonen
+        drive frivillig virksomhet. Det er bare foreninger, stiftelser og
+        aksjeselskap som kan registreres. Virksomheten kan ikke dele ut midler
+        til fysiske personer. Virksomheten må ha et styre.
+      </Details.Content>
+    </Details>
+  ),
+});
 
-export const InCard: StoryFn<typeof Details> = () => (
+export const InCard = meta.story(() => (
   <Card data-color='neutral'>
     <Details>
       <Details.Summary>Vedlegg</Details.Summary>
@@ -44,9 +46,9 @@ export const InCard: StoryFn<typeof Details> = () => (
       </Details.Content>
     </Details>
   </Card>
-);
+));
 
-export const InCardNested: StoryFn<typeof Details> = () => (
+export const InCardNested = meta.story(() => (
   <Card variant='tinted'>
     <Heading>Test-kort</Heading>
     <Card variant='default'>
@@ -56,9 +58,9 @@ export const InCardNested: StoryFn<typeof Details> = () => (
       </Details>
     </Card>
   </Card>
-);
+));
 
-export const InCardWithColor: StoryFn<typeof Details> = () => (
+export const InCardWithColor = meta.story(() => (
   <>
     <Card data-color='accent'>
       <Details>
@@ -106,9 +108,9 @@ export const InCardWithColor: StoryFn<typeof Details> = () => (
       </Details>
     </Card>
   </>
-);
+));
 
-export const Controlled: StoryFn<typeof Details> = () => {
+export const Controlled = meta.story(() => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
@@ -166,13 +168,13 @@ export const Controlled: StoryFn<typeof Details> = () => {
       </Details>
     </>
   );
-};
+});
 
-export const WithDirectContent: StoryFn<typeof Details> = () => (
+export const WithDirectContent = meta.story(() => (
   <Card>
     <Details>
       <Details.Summary>Vedlegg</Details.Summary>
       <Button>Knapp</Button>
     </Details>
   </Card>
-);
+));

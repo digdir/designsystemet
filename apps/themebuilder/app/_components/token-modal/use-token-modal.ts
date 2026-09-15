@@ -1,11 +1,8 @@
-import type { Color, CssColor } from '@digdir/designsystemet/color';
+import type { CssColor } from '@digdir/designsystemet/color';
 import type { CreateTokensOptions } from '@digdir/designsystemet/tokens';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-
-const getBaseDefault = (colorTheme: Color[]) =>
-  colorTheme.find((color) => color.name === 'base-default');
 
 export const useTokenModal = () => {
   const { isProduction } = useLoaderData();
@@ -39,7 +36,7 @@ export const useTokenModal = () => {
     name,
     colors: colors.reduce(
       (acc, color) => {
-        acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
+        acc[color.name] = color.colors.light['base-default']?.hex || '#';
         return acc;
       },
       {} as Record<string, CssColor>,
@@ -55,7 +52,7 @@ export const useTokenModal = () => {
   const configBuildSnippet = `npx ${packageWithTag} tokens create --config designsystemet.config.json\nnpx ${packageWithTag} tokens build --config designsystemet.config.json`;
 
   const configSnippet = {
-    $schema: 'node_modules/@digdir/designsystemet/dist/config.schema.json',
+    $schema: 'https://designsystemet.no/schemas/config/latest.json',
     outDir: './design-tokens',
     themes: {
       [theme.name]: {

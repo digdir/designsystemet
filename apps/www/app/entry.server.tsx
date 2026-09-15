@@ -10,7 +10,6 @@ import { ServerRouter } from 'react-router';
 import en from '~/locales/en';
 import no from '~/locales/no';
 import i18n from './i18n';
-import i18next from './i18next.server';
 
 export const streamTimeout = 5_000;
 
@@ -21,7 +20,6 @@ export default async function handleRequest(
   routerContext: EntryContext,
 ) {
   const instance = createInstance();
-  const ns = i18next.getRouteNamespaces(routerContext);
 
   const url = new URL(request.url);
 
@@ -34,8 +32,6 @@ export default async function handleRequest(
   await instance.use(initReactI18next).init({
     ...i18n,
     lng,
-    ns,
-    showSupportNotice: false,
     resources: {
       en: {
         translation: en,
@@ -44,7 +40,7 @@ export default async function handleRequest(
         translation: no,
       },
     },
-  });
+  } as Parameters<typeof instance.init>[0]);
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;

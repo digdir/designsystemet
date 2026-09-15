@@ -2,9 +2,9 @@ import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
-import { orderBySize, shortSizeName } from '../../../utils.js';
-import { basePxFontSize } from '../../configs/shared.js';
-import { buildOptions } from '../../platform.js';
+import { orderBySize, shortSizeName } from '../../../utils.ts';
+import { basePxFontSize } from '../../configs/shared.ts';
+import { buildOptions } from '../../platform.ts';
 
 const formatBaseSizeToken =
   (size: string) =>

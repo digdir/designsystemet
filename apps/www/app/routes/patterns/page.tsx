@@ -54,8 +54,8 @@ export async function loader({ params }: Route.LoaderArgs) {
   };
 }
 
-export const meta = ({ data }: Route.MetaArgs) => {
-  if (!data)
+export const meta = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData)
     return [
       {
         title: 'Designsystemet',
@@ -63,7 +63,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
     ];
   const {
     frontmatter: { title, description },
-  } = data;
+  } = loaderData;
   return generateMetadata({
     title,
     description,
@@ -97,30 +97,24 @@ export default function Patterns({
               {frontmatter.description}
             </Paragraph>
           )}
-          <Paragraph variant='short' asChild>
-            <div className={classes.meta}>
-              {frontmatter.partners && (
-                <>
-                  <a
-                    href='#article-contributors'
-                    aria-label={t('contributors')}
-                  >
-                    <AvatarStack authors={frontmatter.partners} />
-                  </a>
-                  <span className={classes.partners}>
-                    {frontmatter.partners}
-                  </span>
-                </>
+          <div className={classes.meta}>
+            {frontmatter.partners && (
+              <>
+                <AvatarStack
+                  aria-label={t('contributors')}
+                  authors={frontmatter.partners}
+                />
+                <span className={classes.partners}>{frontmatter.partners}</span>
+              </>
+            )}
+            <span>
+              {frontmatter.date && (
+                <span
+                  className={classes.date}
+                >{`${t('updated')} ${formatDate(frontmatter.date, lang)}`}</span>
               )}
-              <span>
-                {frontmatter.date && (
-                  <span
-                    className={classes.date}
-                  >{`${t('updated')} ${formatDate(frontmatter.date, lang)}`}</span>
-                )}
-              </span>
-            </div>
-          </Paragraph>
+            </span>
+          </div>
         </div>
       </div>
       <TableOfContents title={frontmatter.title} items={toc}>

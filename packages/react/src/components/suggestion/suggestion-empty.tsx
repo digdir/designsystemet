@@ -1,11 +1,16 @@
 import type { OptionHTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
+import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import { SuggestionContext } from './suggestion';
 import '@digdir/designsystemet-web'; // Load u-option polyfill
 
 export type SuggestionEmptyProps = DefaultProps &
-  OptionHTMLAttributes<HTMLOptionElement>;
+  OptionHTMLAttributes<HTMLOptionElement> & {
+    /**
+     * Optionally the text to display when the suggestion list is empty.
+     * If <Suggestion> has `data-creatable`, use `{value}` to replace with the current input value.
+     **/
+    'data-empty'?: string;
+  };
 
 /**
  * Component that provides an empty Suggestion list.
@@ -21,14 +26,12 @@ export const SuggestionEmpty = forwardRef<
   HTMLOptionElement,
   SuggestionEmptyProps
 >(function SuggestionEmpty(rest, ref) {
-  const { isEmpty } = useContext(SuggestionContext);
-  return isEmpty ? (
+  return (
     <u-option
-      data-empty
+      data-empty // Ensures attribute is always present
       ref={ref}
       suppressHydrationWarning // Since <u-option> adds attributes
-      value=''
       {...rest}
     />
-  ) : null;
+  );
 });

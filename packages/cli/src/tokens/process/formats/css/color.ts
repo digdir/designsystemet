@@ -3,8 +3,8 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
 
-import { isSemanticToken } from '../../../utils.js';
-import { buildOptions } from '../../platform.js';
+import { isSemanticToken } from '../../../utils.ts';
+import { buildOptions } from '../../platform.ts';
 
 const prefersColorScheme = (colorScheme: string, content: string) => `
 @media (prefers-color-scheme: ${colorScheme}) {

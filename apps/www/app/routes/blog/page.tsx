@@ -9,12 +9,15 @@ import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import { getStories } from '~/_utils/get-stories.server';
 import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
 export const loader = async ({ params }: Route.LoaderArgs) => {
-  if (!params.file) {
+  const file = params.file;
+
+  if (!file) {
     throw new Response('Not Found', {
       status: 404,
       statusText: 'Not Found',
@@ -23,7 +26,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 
   // Read the file content
   const fileContent = getFileFromContentDir(
-    join('blog', params.lang, `${params.file}.mdx`),
+    join('blog', params.lang, `${file}.mdx`),
   );
 
   if (!fileContent) {
@@ -33,6 +36,10 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     });
   }
 
+  const stories = await getStories({
+    path: join('blog', params.lang, `${file}.stories.tsx`),
+  });
+
   // Generate the MDX content
   const result = await generateFromMdx(fileContent);
 
@@ -41,11 +48,12 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     code: result.code,
     frontmatter: result.frontmatter,
     lang: params.lang,
+    stories,
   };
 };
 
-export const meta = ({ data }: Route.MetaArgs) => {
-  if (!data)
+export const meta = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData)
     return [
       {
         title: 'Designsystemet',
@@ -53,7 +61,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
     ];
   const {
     frontmatter: { title, description, imageSrc },
-  } = data;
+  } = loaderData;
   return generateMetadata({
     title,
     description,
@@ -101,15 +109,11 @@ export default function Blog({
         <Paragraph className={classes.ingress} data-size='lg' variant='long'>
           {description}
         </Paragraph>
-        <Paragraph data-size='sm' className={classes.meta} asChild>
-          <div>
-            <a href='#article-contributors' aria-label={t('contributors')}>
-              <AvatarStack authors={author} />
-            </a>
-            <span className={classes.authors}>{author}</span>
-            <span className={classes.date}>{formatDate(date, lang)}</span>
-          </div>
-        </Paragraph>
+        <div data-size='sm' className={classes.meta}>
+          <AvatarStack aria-label={t('contributors')} authors={author} />
+          <span className={classes.authors}>{author}</span>
+          <span className={classes.date}>{formatDate(date, lang)}</span>
+        </div>
       </div>
       <Image
         className={classes.featuredImage}

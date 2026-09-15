@@ -1,9 +1,8 @@
 import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
-import { baseColors } from '../colors/colorMetadata.js';
-import type { CssColor } from '../index.js';
-import type { Theme, TokenSet } from './types.js';
+import { severityColors } from '../schemas/defaults.ts';
+import type { Theme, TokenSet } from './types.ts';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
 
@@ -149,9 +148,19 @@ export function orderBySize(sizes: string[]): string[] {
   return R.sortBy(sizeComparator, sizes);
 }
 
-export function addSeverityColors(colors: Theme['colors']): Record<string, CssColor> {
-  // Add severity colors if not present
-  return R.mergeDeepLeft(colors, baseColors);
+/** Non-severity colors first (in user order), then all severity colors at the end in severityColors order.
+ * User-defined severity colors keep their value but are moved to the end.
+ *
+ * We do this because we want severity colors to always be last when design-tokens are visualized in Token Studio and Figma Variables.
+ */
+export function addSeverityColors(colors: Theme['colors']): Theme['colors'] {
+  const result = new Map(Object.entries(colors));
+  for (const [name, value] of Object.entries(severityColors)) {
+    const userValue = result.get(name);
+    result.delete(name); // Deleting and re-adding moves the key to the end
+    result.set(name, userValue ?? value);
+  }
+  return Object.fromEntries(result) as Theme['colors'];
 }
 
 export function toColorNames(themeColors: Theme['colors']): string[] {

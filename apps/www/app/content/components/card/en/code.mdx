@@ -83,7 +83,7 @@ import { Card } from '@digdir/designsystemet-react';
 If the card should link to another page, you can place a link in the card's title.
 The entire card then becomes clickable, but screen reader users get a [better experience than if the whole card were a link (adrianroselli.com)](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
 
-When `Card` finds an `<a>` inside the heading element, [data-clickdelegatefor](/en/components/utilities/clickdelegatefor) will automatically be added to the card.
+When `Card` finds an `<a>` inside the heading element, [data-clickdelegatefor](https://designsystemet.no/en/components/utilities/clickdelegatefor) will automatically be added to the card.
 This is useful when `Card` contains text or media and should navigate to another page.
 
 Note that with keyboard navigation, the focus ring only surrounds the text in the link, not the entire card. This is because link cards can also contain multiple clickable elements (secondary actions), and it is less confusing for users of assistive technology, such as voice control or screen readers, if the link text matches the focus area.

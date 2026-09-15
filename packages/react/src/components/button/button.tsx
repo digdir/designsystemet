@@ -1,4 +1,3 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
@@ -19,10 +18,6 @@ export type ButtonProps = MergeRight<
      * @default 'primary'
      */
     variant?: 'primary' | 'secondary' | 'tertiary';
-    /**
-     * Change the color scheme of the button
-     */
-    'data-color'?: Color | Extract<SeverityColors, 'danger'>;
     /**
      * Toggle icon only styling, pass icon as children
      * When combined with loading, the loading-icon will be shown instead of the icon.
@@ -96,7 +91,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Component
         suppressHydrationWarning // Might get augmented through designsystemet-web with aria-haspopup etc.
         aria-busy={Boolean(loading) || undefined}
-        aria-disabled={Boolean(loading) || undefined}
         className={cl('ds-button', className)}
         data-icon={icon || undefined}
         commandfor={commandForVal}

@@ -1,4 +1,4 @@
-import type { SizeModes, TokenSet, Typography } from '../../../types.js';
+import type { SizeModes, TokenSet, Typography } from '../../../types.ts';
 
 export const generateTypography = (themeName: string, { fontFamily }: Typography): TokenSet => ({
   [themeName]: {

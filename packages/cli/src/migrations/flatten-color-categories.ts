@@ -1,5 +1,19 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: we have not kept old schema for types, so we need to use any here
+import { applyEdits, modify } from 'jsonc-parser';
 import pc from 'picocolors';
+import { parseJsonc } from '../schemas/helpers.ts';
+
+const formattingOptions = { insertSpaces: true, tabSize: 2 } as const;
+
+const flattenColors = (colors: any) => {
+  const { main, support, neutral, ...restColors } = colors;
+  return {
+    ...restColors,
+    ...main,
+    ...support,
+    neutral,
+  };
+};
 
 type Automigrate = {
   name: string;
@@ -20,7 +34,7 @@ const isOldColorSchema = (theme: any): boolean => {
 };
 
 const isConfigWithOldColorSchema = (config: any): boolean => {
-  const currentConfig = JSON.parse(config);
+  const currentConfig = parseJsonc<any>(config);
 
   if (!currentConfig.themes) {
     return false;
@@ -30,38 +44,24 @@ const isConfigWithOldColorSchema = (config: any): boolean => {
 };
 
 const yes = (config: string): string => {
-  const currentConfig = JSON.parse(config);
-  const updatedThemes: Record<string, any> = {};
+  const currentConfig = parseJsonc<any>(config);
 
-  if (currentConfig.themes) {
-    for (const [themeName, _] of Object.entries(currentConfig.themes)) {
-      const theme = currentConfig.themes[themeName];
+  if (!currentConfig.themes) {
+    return config;
+  }
 
-      if (isOldColorSchema(theme)) {
-        const { main, support, neutral, ...restColors } = theme.colors;
-
-        const updatedTheme = {
-          ...theme,
-          colors: {
-            ...restColors,
-            ...main,
-            ...support,
-            neutral,
-          },
-        };
-
-        updatedThemes[themeName] = updatedTheme;
-      } else {
-        updatedThemes[themeName] = theme;
-      }
+  // Apply targeted edits to the original text instead of re-serializing the whole
+  // config, so comments, formatting and trailing commas outside the color blocks
+  // are preserved. Each edit replaces only an affected theme's `colors` subtree.
+  let text = config;
+  for (const [themeName, theme] of Object.entries<any>(currentConfig.themes)) {
+    if (isOldColorSchema(theme)) {
+      const edits = modify(text, ['themes', themeName, 'colors'], flattenColors(theme.colors), { formattingOptions });
+      text = applyEdits(text, edits);
     }
   }
-  const migratedConfig = {
-    ...currentConfig,
-    themes: updatedThemes,
-  };
 
-  return JSON.stringify(migratedConfig, null, 2).concat('\n');
+  return text;
 };
 
 const migration: Automigrate = {

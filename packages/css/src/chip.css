@@ -40,7 +40,7 @@
   max-width: fit-content;
   min-width: 0; /* Allow text-overflow: ellipsis to work when placed inside display: flex */
   min-height: var(--dsc-chip-height);
-  padding-block: calc((var(--dsc-chip-height) - var(--dsc-chip-border-width) - 1lh) / 2);
+  padding-block: calc((var(--dsc-chip-height) - 1lh) / 2 - var(--dsc-chip-border-width));
   padding-inline: var(--dsc-chip-padding-inline);
   position: relative;
   text-align: inherit; /* Fix text alignment when removable is <button> */
@@ -56,10 +56,9 @@
   @composes ds-focus from './base.css';
 
   & > input {
-    inset-block-start: 50%;
+    inset-block-start: calc((var(--dsc-chip-height) - var(--dsc-chip-input-size)) / 2 - var(--dsc-chip-border-width));
     inset-inline-start: var(--dsc-chip-spacing);
     position: absolute;
-    translate: 0 -50%;
     --dsc-input-background: transparent;
     --dsc-input-border-color: var(--dsc-chip-input-color);
     --dsc-input-accent-color: var(--dsc-chip-input-accent-color);
@@ -90,9 +89,8 @@
     &::after {
       content: '';
       position: absolute;
-      inset-block-start: 50%;
+      inset-block-start: calc((var(--dsc-chip-height) - var(--dsc-chip-icon-size)) / 2 - var(--dsc-chip-border-width));
       inset-inline-end: var(--dsc-chip-spacing);
-      translate: 0 -50%;
       background: currentcolor;
       height: var(--dsc-chip-icon-size);
       mask: center / contain no-repeat var(--dsc-chip-icon-url);

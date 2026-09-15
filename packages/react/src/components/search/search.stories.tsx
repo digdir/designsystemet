@@ -1,29 +1,32 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 
 import { Button, Divider, Field, Label, Paragraph } from '../../';
 
 import { Search } from './';
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Search',
   component: Search,
-} as Meta;
+});
 
-export const Preview: StoryFn<typeof Search> = (args) => (
-  <Search {...args}>
-    <Search.Input aria-label='Søk' />
-    <Search.Clear />
-    <Search.Button />
-  </Search>
-);
+export const Preview = meta.story({
+  render: (args) => (
+    <Search {...args}>
+      <Search.Input aria-label='Søk' type='text' />
+      <Search.Clear />
+      <Search.Button />
+    </Search>
+  ),
+});
 
-export const Controlled: StoryFn<typeof Search> = () => {
-  const [value, setValue] = useState<string>();
+export const Controlled = meta.story(() => {
+  const [value, setValue] = useState('');
   return (
     <>
       <Search>
         <Search.Input
+          type='text'
           aria-label='Søk'
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -40,9 +43,9 @@ export const Controlled: StoryFn<typeof Search> = () => {
       <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
-};
+});
 
-export const Variants: StoryFn<typeof Search> = () => (
+export const Variants = meta.story(() => (
   <>
     <Search>
       <Search.Input aria-label='Søk' />
@@ -52,7 +55,7 @@ export const Variants: StoryFn<typeof Search> = () => (
     <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
     <Search>
-      <Search.Input aria-label='Søk' />
+      <Search.Input aria-label='Søk' type='text' />
       <Search.Clear />
       <Search.Button />
     </Search>
@@ -60,25 +63,25 @@ export const Variants: StoryFn<typeof Search> = () => (
     <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
     <Search>
-      <Search.Input aria-label='Søk' />
+      <Search.Input aria-label='Søk' type='text' />
       <Search.Clear />
       <Search.Button variant='secondary' />
     </Search>
   </>
-);
+));
 
-export const WithLabel: StoryFn<typeof Search> = () => (
+export const WithLabel = meta.story(() => (
   <Field>
     <Label>Søk etter katter</Label>
     <Search>
-      <Search.Input name='cat-search' />
+      <Search.Input name='cat-search' type='text' />
       <Search.Clear />
       <Search.Button />
     </Search>
   </Field>
-);
+));
 
-export const Form: StoryFn<typeof Search> = () => {
+export const Form = meta.story(() => {
   const [value, setValue] = useState<string>();
   const [submittedValue, setSubmittedValue] = useState<string>();
 
@@ -93,6 +96,7 @@ export const Form: StoryFn<typeof Search> = () => {
       >
         <Search>
           <Search.Input
+            type='text'
             aria-label='Søk'
             value={value}
             onChange={(e) => setValue(e.target.value)}
@@ -107,4 +111,27 @@ export const Form: StoryFn<typeof Search> = () => {
       </Paragraph>
     </>
   );
-};
+});
+
+export const DeprecatedMarkup = meta.story({
+  render: () => (
+    <div className='ds-search'>
+      <input
+        className='ds-input'
+        type='search'
+        placeholder=''
+        aria-label='Søk'
+      />
+      <button
+        className='ds-button'
+        data-icon='true'
+        data-variant='tertiary'
+        type='reset'
+        aria-label='Tøm'
+      ></button>
+      <button className='ds-button' type='submit'>
+        Søk
+      </button>
+    </div>
+  ),
+});

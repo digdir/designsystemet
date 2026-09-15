@@ -114,15 +114,15 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
-  if (!data) {
+export const meta: Route.MetaFunction = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData) {
     return [
       {
         title: 'Designsystemet',
       },
     ];
   }
-  return data.metadata;
+  return loaderData.metadata;
 };
 
 export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
@@ -164,7 +164,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 title={t('frontpage.get-started.title')}
                 description={t('frontpage.get-started.description')}
                 color='blue'
-                url='fundamentals/introduction/get-started'
+                url='fundamentals'
                 icon={<PaletteIcon aria-hidden='true' />}
                 level={2}
               />

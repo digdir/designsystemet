@@ -1,10 +1,10 @@
 import * as R from 'ramda';
 import type {} from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
-import { isDigit, pathStartsWithOneOf } from '../../utils.js';
-import { formats } from '../formats/css.js';
+import { isDigit, pathStartsWithOneOf } from '../../utils.ts';
+import { formats } from '../formats/css.ts';
 
-import { basePxFontSize, dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.js';
+import { basePxFontSize, dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.ts';
 
 export const sizeVariables: GetStyleDictionaryConfig = ({ theme }) => {
   // [data-size] selector ensures --ds-size-* variables are recalculated when --ds-size-mode-font-size changes

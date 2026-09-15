@@ -1,9 +1,9 @@
 import type { Config as StyleDictionaryConfig } from 'style-dictionary/types';
-import { isSemanticColorToken, pathStartsWithOneOf } from '../../utils.js';
-import { formats } from '../formats/css.js';
-import { buildOptions } from '../platform.js';
+import { isSemanticColorToken, pathStartsWithOneOf } from '../../utils.ts';
+import { formats } from '../formats/css.ts';
+import { buildOptions } from '../platform.ts';
 
-import { dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.js';
+import { dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.ts';
 
 export const colorSchemeVariables: GetStyleDictionaryConfig = ({ 'color-scheme': colorScheme = 'light', theme }) => {
   const selector = `${colorScheme === 'light' ? ':root, ' : ''}[data-color-scheme="${colorScheme}"]`;

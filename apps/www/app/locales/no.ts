@@ -107,7 +107,7 @@ export default {
     hide: 'Skjul',
     sidebar: 'sidemeny',
     search: {
-      label: 'Søk',
+      label: 'Søk i sidemeny',
       noResults: 'Ingen treff',
     },
   },
@@ -211,6 +211,10 @@ export default {
       enlarged: 'Klikk for å minimisere bilde.',
       normal: 'Klikk for å forstørre bilde.',
     },
+  },
+  'color-info-table': {
+    name: 'Navn',
+    usage: 'Bruksområde',
   },
   'image-banner': {
     'play-video': 'Spill av video',

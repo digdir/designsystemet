@@ -134,6 +134,9 @@ export type {
 } from './fieldset';
 export { Fieldset, FieldsetDescription, FieldsetLegend } from './fieldset';
 
+export type { FileUploadProps } from './file-upload';
+export { EXPERIMENTAL_FileUpload } from './file-upload';
+
 export type { HeadingProps } from './heading/heading';
 export { Heading } from './heading/heading';
 
@@ -213,6 +216,7 @@ export type {
   SuggestionOptionProps,
   SuggestionProps,
   SuggestionSingleProps,
+  SuggestionToggleProps,
 } from './suggestion';
 export {
   EXPERIMENTAL_Suggestion,
@@ -221,6 +225,7 @@ export {
   EXPERIMENTAL_SuggestionInput,
   EXPERIMENTAL_SuggestionList,
   EXPERIMENTAL_SuggestionOption,
+  EXPERIMENTAL_SuggestionToggle,
 } from './suggestion';
 
 export type { SwitchProps } from './switch/switch';

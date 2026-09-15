@@ -1,36 +1,87 @@
+import process from 'node:process';
 import type { ChangelogFunctions } from '@changesets/types';
-import { getInfo, getInfoFromPullRequest } from '@changesets/get-github-info';
+import { getCommitInfo, getPullRequestInfo } from '@changesets/get-github-info';
+
+const GITHUB_SERVER_URL = process.env.GITHUB_SERVER_URL || 'https://github.com';
+const GITHUB_API_URL = process.env.GITHUB_API_URL || 'https://api.github.com';
+
+/**
+ * GitHub logins of core maintainers. Their changelog entries, and those of
+ * bots (renovate, dependabot, ...), are written without the trailing
+ * `by @user` author attribution.
+ */
+const SKIP_AUTHOR_LOGINS = new Set(
+	['barsnes', 'mimarz', 'eirikbacker', 'mrosvik', 'unekinn', 'febakke']
+);
+
+type Author = { login: string; url?: string; markdownLink: string };
+
+/**
+ * The GraphQL API used by `@changesets/get-github-info` returns bot logins
+ * without the `[bot]` suffix (e.g. `renovate`, not `renovate[bot]`), so also
+ * detect bots by their profile URL, which is always `https://github.com/apps/<name>`.
+ */
+const isBot = (author: Author) =>
+	author.login.endsWith('[bot]') || author.url?.includes('github.com/apps');
+
+const getRepo = (options: Record<string, unknown> | null): string => {
+	const repo = options?.repo;
+	if (typeof repo !== 'string') {
+		throw new Error(
+			'Please provide a repo to this changelog generator like this:\n"changelog": ["./changelog-generator.ts", { "repo": "org/repo" }]'
+		);
+	}
+	return repo;
+};
+
+const isSkippedAuthor = (author: Author) =>
+	isBot(author) || SKIP_AUTHOR_LOGINS.has(author.login.toLowerCase());
+
+const firstContributionCache = new Map<string, Promise<boolean>>();
+
+/**
+ * Checks if this is the author's first merged PR in the repo, by counting
+ * their merged PRs via the GitHub search API. At changelog-generation time the
+ * released PR is already merged, so a count of 1 means it was their first.
+ * Fails open to `false` so a missing token or API hiccup never breaks a release.
+ */
+const isFirstContribution = (repo: string, author: Author): Promise<boolean> => {
+	const { login } = author;
+	let result = firstContributionCache.get(login);
+	if (!result) {
+		result = (async () => {
+			if (isBot(author)) return false;
+
+			const query = encodeURIComponent(`repo:${repo} type:pr is:merged author:${login}`);
+			const response = await fetch(`${GITHUB_API_URL}/search/issues?q=${query}&per_page=1`, {
+				headers: {
+					Accept: 'application/vnd.github+json',
+					...(process.env.GITHUB_TOKEN
+						? { Authorization: `Token ${process.env.GITHUB_TOKEN}` }
+						: {})
+				}
+			});
+			if (!response.ok) return false;
+
+			const data = (await response.json()) as { total_count?: number };
+			return (data.total_count ?? 0) <= 1;
+		})().catch(() => false);
+		firstContributionCache.set(login, result);
+	}
+	return result;
+};
 
 const changelogFunctions: ChangelogFunctions = {
-	getDependencyReleaseLine: async (changesets, dependenciesUpdated, options) => {
-		if (dependenciesUpdated.length === 0) return '';
-
-		const changesetLink = `- Updated dependencies [${(
-			await Promise.all(
-				changesets.map(async (cs) => {
-					if (cs.commit) {
-						const { links } = await getInfo({
-							repo: options.repo,
-							commit: cs.commit
-						});
-						return links.commit;
-					}
-				})
-			)
-		)
-			.filter((_) => _)
-			.join(', ')}]:`;
-
-		const updatedDependenciesList = dependenciesUpdated.map(
-			(dependency) => `  - ${dependency.name}@${dependency.newVersion}`
-		);
-
-		return [changesetLink, ...updatedDependenciesList].join('\n');
-	},
+	// All published packages are in one fixed group (see config.json), so they are
+	// always released together with the same version. An "Updated dependencies"
+	// entry would only ever list sibling packages at the version being released,
+	// which documents nothing useful.
+	getDependencyReleaseLine: async () => '',
 	getReleaseLine: async (changeset, type, options) => {
-		const repo = options!.repo;
+		const repo = getRepo(options);
 		let prFromSummary: number | undefined;
 		let commitFromSummary: string | undefined;
+		const usersFromSummary: string[] = [];
 
 		const replacedChangelog = changeset.summary
 			.replace(/^\s*(?:pr|pull|pull\s+request):\s*#?(\d+)/im, (_, pr) => {
@@ -42,7 +93,10 @@ const changelogFunctions: ChangelogFunctions = {
 				commitFromSummary = commit;
 				return '';
 			})
-			.replace(/^\s*(?:author|user):\s*@?([^\s]+)/gim, '')
+			.replace(/^\s*(?:author|user):\s*@?([^\s]+)/gim, (_, user) => {
+				usersFromSummary.push(user);
+				return '';
+			})
 			.trim();
 
 		// add links to issue hints (fix #123) => (fix [#123](https://....))
@@ -56,40 +110,66 @@ const changelogFunctions: ChangelogFunctions = {
 
 		const links = await (async () => {
 			if (prFromSummary !== undefined) {
-				let { links } = await getInfoFromPullRequest({
+				const info = await getPullRequestInfo({
 					repo,
 					pull: prFromSummary
 				});
+				let commit = info?.commit?.markdownLink;
 				if (commitFromSummary) {
-					links = {
-						...links,
-						commit: `[\`${commitFromSummary.slice(
-							0,
-							7
-						)}\`](https://github.com/${repo}/commit/${commitFromSummary})`
-					};
+					commit = `[\`${commitFromSummary.slice(
+						0,
+						7
+					)}\`](https://github.com/${repo}/commit/${commitFromSummary})`;
 				}
-				return links;
+				return { pull: info?.pull.markdownLink, commit, author: info?.author };
 			}
 			const commitToFetchFrom = commitFromSummary || changeset.commit;
 			if (commitToFetchFrom) {
-				const { links } = await getInfo({
+				const info = await getCommitInfo({
 					repo,
 					commit: commitToFetchFrom
 				});
-				return links;
+				return {
+					pull: info?.pull?.markdownLink,
+					commit: info?.commit.markdownLink,
+					author: info?.author
+				};
 			}
 			return {
-				commit: null,
-				pull: null,
-				user: null
+				commit: undefined,
+				pull: undefined,
+				author: undefined
 			};
 		})();
 
+		// `author:`/`user:` hints in the changeset summary win over the PR/commit author
+		const authors: Author[] = usersFromSummary.length
+			? usersFromSummary.map((login) => ({
+					login,
+					markdownLink: `[@${login}](${GITHUB_SERVER_URL}/${login})`
+				}))
+			: links.author
+				? [links.author]
+				: [];
+
 		// only link PR or merge commit not both
 		const suffix = links.pull ? ` (${links.pull})` : links.commit ? ` (${links.commit})` : '';
+		const creditedAuthors = authors.filter((author) => !isSkippedAuthor(author));
+		const authorSuffix = creditedAuthors.length
+			? ` by ${creditedAuthors.map((author) => author.markdownLink).join(', ')}`
+			: '';
 
-		return `\n- ${firstLine}${suffix}\n${futureLines.map((l) => `  ${l}`).join('\n')}`;
+		const thanksLines = (
+			await Promise.all(
+				authors.map(async (author) =>
+					(await isFirstContribution(repo, author))
+						? `\n- 🎉 Thanks ${author.markdownLink} for their first contribution! 🎉`
+						: ''
+				)
+			)
+		).join('');
+
+		return `${thanksLines}\n- ${firstLine}${suffix}${authorSuffix}\n${futureLines.map((l) => `  ${l}`).join('\n')}`;
 	}
 };
 

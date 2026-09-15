@@ -50,12 +50,12 @@ export const loader = async ({
       tab: DEFAULT_TAB,
     });
 
-    return redirect(`/${lang}/themebuilder?${newParams.toString()}`);
+    return redirect(`/${lang}?${newParams.toString()}`);
   }
 
   if (urlParams.get('tab') === 'overview') {
     urlParams.set('tab', 'examples' as ThemebuilderTabs);
-    return redirect(`/${lang}/themebuilder?${urlParams.toString()}`);
+    return redirect(`/${lang}?${urlParams.toString()}`);
   }
 
   /* Backwards compatibility: merge legacy `main`, `support` and `neutral`
@@ -79,7 +79,7 @@ export const loader = async ({
     urlParams.delete('neutral');
     urlParams.set('colors', legacyColors);
 
-    return redirect(`/${lang}/themebuilder?${urlParams.toString()}`);
+    return redirect(`/${lang}?${urlParams.toString()}`);
   }
 
   const colors = createColorsFromQuery(urlParams.get('colors') || COLORS);
@@ -116,15 +116,15 @@ export const loader = async ({
   };
 };
 
-export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
-  if (!data?.metadata)
+export const meta: Route.MetaFunction = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData?.metadata)
     return [
       {
         title: 'Theme Builder - Designsystemet',
         description: 'Build your own theme for Designsystemet',
       },
     ];
-  return data.metadata;
+  return loaderData.metadata;
 };
 
 export default function Page() {

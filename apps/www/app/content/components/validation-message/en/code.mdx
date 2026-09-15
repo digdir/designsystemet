@@ -4,6 +4,12 @@
 
 Use the class name `ds-validation-message` to style a validation message.
 
+## Form fields and status
+
+Validation message will automatically be connected to form fields, when it has the attribute `data-field="validation"`, and is inside a [field](/en/components/docs/field/code).
+
+The form field gets `aria-invalid="true"` when the validation message has `data-color="danger"`, or when `data-color` is not specified.
+
 ## CSS variables and data attributes
 
 Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.

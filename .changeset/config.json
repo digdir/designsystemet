@@ -26,6 +26,7 @@
     "@web/storybook",
     "@internal/components",
     "@internal/digdir",
-    "@digdir/designsystemet-theme"
+    "@digdir/designsystemet-theme",
+    "@plugin/designsystemet"
   ]
 }

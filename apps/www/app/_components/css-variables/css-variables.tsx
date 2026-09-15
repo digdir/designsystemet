@@ -46,12 +46,14 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {Object.entries(vars).map(([name, value]) => (
-            <Table.Row key={name}>
-              <Table.Cell>{name}</Table.Cell>
-              <Table.Cell>{value}</Table.Cell>
-            </Table.Row>
-          ))}
+          {Object.entries(vars)
+            .sort((a, b) => a[0].localeCompare(b[0]))
+            .map(([name, value]) => (
+              <Table.Row key={name}>
+                <Table.Cell>{name}</Table.Cell>
+                <Table.Cell>{value}</Table.Cell>
+              </Table.Row>
+            ))}
         </Table.Body>
       </Table>
     );
