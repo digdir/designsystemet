@@ -62,10 +62,16 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         // Validate the config against the public/external schema first, so configs using non-exposed
         // fields are rejected with a user-facing error. The result is discarded, as the public
         // schema normalizes shorthands and the full schema should parse what the user wrote.
-const externalConfig = validateConfig(externalConfigSchema, parsedConfig);
+        const externalConfig = validateConfig(
+          externalConfigSchema,
+          parsedConfig,
+        );
 
         // Populate internal defaults from the sanitized public configuration.
-        const config = validateConfig<ConfigSchema>(configSchema, externalConfig);
+        const config = validateConfig<ConfigSchema>(
+          configSchema,
+          externalConfig,
+        );
 
         themeNames = Object.keys(config.themes ?? {});
 

@@ -10,14 +10,19 @@ import type { CssColor } from '../src/colors/types.ts';
 import { formatThemeCSS } from '../src/index.ts';
 import migrations from '../src/migrations/index.ts';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
-import { type ConfigSchema, configSchema } from '../src/schemas/schema.ts';
+import {
+  type ConfigSchema,
+  configSchema,
+  type ExternalConfigSchemaInput,
+  externalConfigSchema,
+} from '../src/schemas/schema.ts';
 import { buildTokens } from '../src/tokens/build.ts';
 import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { toColorNames } from '../src/tokens/utils.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import { deprecatedCLIOptions as cliOptions, parseCreateConfig, readConfigFile } from './config.ts';
+import { deprecatedCLIOptions as cliOptions, parseValidateAndOptsConfig, readConfigFile } from './config.ts';
 
 const figletAscii = `
  _____            _                           _                      _
@@ -71,11 +76,12 @@ function _makeConfigCommand() {
         process.exit(1);
       }
 
-      const parsedConfig = parseConfig<ConfigSchema>(configFile);
-      const config = validateConfig<ConfigSchema>(configSchema, parsedConfig);
+      const parsedConfig = parseConfig<ExternalConfigSchemaInput>(configFile);
+      const externalConfig = validateConfig(externalConfigSchema, parsedConfig);
+      const config = validateConfig(configSchema, externalConfig);
 
       // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
-      const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
+      const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), externalConfig.output);
 
       for (const output of sortedOutput) {
         const outDir = path.join(dsfs.outDir, output.dir);
@@ -94,7 +100,7 @@ function _makeConfigCommand() {
           console.log(`\n🍱 Generating CSS in ${pc.green(output.dir)}...`);
 
           // Only generate create CSS if no `design-tokens` output is present and no `tokenDir` is explicitly set in the config file. Otherwise, build CSS from existing design tokens.
-          if (isOnlyCssOutput(parsedConfig)) {
+          if (isOnlyCssOutput(config)) {
             await createCss({
               themes: config.themes,
               outDir: outDir,
@@ -118,7 +124,7 @@ function _makeConfigCommand() {
     });
 }
 
-function _makeTokenCommands() {
+function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
 
   tokenCmd
@@ -218,7 +224,7 @@ function _makeTokenCommands() {
         ? configFile
         : await checkAutomigrate(configFile, configFilePath, opts.yes);
 
-      const config = await parseCreateConfig(updatedConfigFile || configFile, {
+      const config = await parseValidateAndOptsConfig(updatedConfigFile || configFile, {
         theme: themeName,
         cmd,
         configFilePath,
@@ -236,7 +242,7 @@ function _makeTokenCommands() {
   return tokenCmd;
 }
 
-program.addCommand(_makeTokenCommands());
+program.addCommand(makeTokenCommands());
 /** Disabling this for future testing and assessment */
 // program.addCommand(_makeConfigCommand(), { isDefault: true });
 
