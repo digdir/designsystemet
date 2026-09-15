@@ -1,5 +1,11 @@
 # @digdir/designsystemet-web
 
+## 1.21.2
+
+### Patch Changes
+
+- **Tooltips:** Now only warns about missing `tabindex` if not explicitly set and not if label which has implicit interaction ([#5353](https://github.com/digdir/designsystemet/pull/5353))
+
 ## 1.21.1
 
 ### Patch Changes

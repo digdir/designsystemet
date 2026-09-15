@@ -1,5 +1,22 @@
 # Change Log
 
+## 1.21.2
+
+### Patch Changes
+
+- **Tag:** Now gets accessible focus outline if rendered as interactive element to support tag clouds etc. ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+
+- **Radio:** Fixed tiny rendering glitch gap between hover outline and border at 400% zoom. ([#5341](https://github.com/digdir/designsystemet/pull/5341))
+
+- **Avatar:** Now scales initials text to match avatar size ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+
+- **Chip:** Improve optical spacing between input/icon and text, which leads to slightly slimmer chip width. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
+
+- **Chip:** Removable chips now automatically include screen reader instructions. Customize the instructions using `aria-label` or the new `--dsc-chip-removable-label` CSS custom property. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
+
+- **Avatar:** Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+  - **deprecated**` data-initials` will be removed in next major release.
+
 ## 1.21.1
 
 ### Patch Changes
