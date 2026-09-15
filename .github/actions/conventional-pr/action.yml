@@ -27,4 +27,4 @@ runs:
         # Empty unless the workflow was triggered by a pull_request event.
         PR_NUMBER: ${{ github.event.pull_request.number }}
         ACTION_PATH: ${{ github.action_path }}
-      run: node "${{ env.ACTION_PATH }}/lint-pr.mjs"
+      run: node "$ACTION_PATH/lint-pr.mjs"
