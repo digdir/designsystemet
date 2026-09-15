@@ -2,7 +2,12 @@ import type { Command, OptionValues } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
-import { type ConfigSchema, configSchema } from '../src/schemas/schema.ts';
+import {
+  type ConfigSchema,
+  configSchema,
+  type ExternalConfigSchema,
+  externalConfigSchema,
+} from '../src/schemas/schema.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.ts';
 
@@ -29,15 +34,15 @@ export async function readConfigFile(configFilePath: string, allowFileNotFound =
 }
 
 /**
- * Parses and validates the create config file.
+ * Parses and validates the configuration file.
  * Merges the config file with CLI options, with CLI options taking precedence.
  *
  * @template T - The expected type of the parsed and validated config.
  * @param configFile - The content of the config file as a string.
  * @param options - An object containing the CLI command, theme name, and config file path.
- * @returns The validated create config schema.
+ * @returns The validated configuration schema.
  */
-export async function parseCreateConfig(
+export async function parseValidateAndOptsConfig(
   configFile: string,
   options: { theme: string; cmd: Command<unknown[], OptionValues>; configFilePath: string },
 ): Promise<ConfigSchema> {
@@ -99,7 +104,8 @@ export async function parseCreateConfig(
 
   let validatedConfig = {} as ConfigSchema;
   try {
-    validatedConfig = validateConfig<ConfigSchema>(configSchema, unvalidatedConfig);
+    const externalConfig = validateConfig<ExternalConfigSchema>(externalConfigSchema, unvalidatedConfig);
+    validatedConfig = validateConfig<ConfigSchema>(configSchema, externalConfig);
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred while parsing config file';
 
