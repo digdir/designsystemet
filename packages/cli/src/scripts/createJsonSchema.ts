@@ -1,13 +1,13 @@
 import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { z } from 'zod';
-import { externalConfigObjectSchema } from '../schemas/schema.ts';
+import { externalConfigSchema } from '../schemas/schema.ts';
 
 const schema = z
   .object({
     $schema: z.string().optional(),
   })
-  .extend(externalConfigObjectSchema.shape);
+  .extend(externalConfigSchema.shape);
 
 writeFile(
   resolve(import.meta.dirname, '../../dist/config.schema.json'),
