@@ -10,16 +10,19 @@ import type { CssColor } from '../src/colors/types.ts';
 import { formatThemeCSS } from '../src/index.ts';
 import migrations from '../src/migrations/index.ts';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
-import type { NextConfigSchema } from '../src/schemas/next/schema.ts';
-import { nextConfigSchema } from '../src/schemas/next/schema.ts';
-import type { CreateConfigSchema } from '../src/schemas/v1.1/schema.ts';
+import {
+  type ConfigSchema,
+  configSchema,
+  type ExternalConfigSchemaInput,
+  externalConfigSchema,
+} from '../src/schemas/schema.ts';
 import { buildTokens } from '../src/tokens/build.ts';
-import { createTokens, systemTokenToFiles, tokenSetDimensions, tokenSetsToFiles } from '../src/tokens/create.ts';
+import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { toColorNames } from '../src/tokens/utils.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import { deprecatedCLIOptions as cliOptions, parseCreateConfig, readConfigFile } from './config.ts';
+import { deprecatedCLIOptions as cliOptions, parseValidateAndOptsConfig, readConfigFile } from './config.ts';
 
 const figletAscii = `
  _____            _                           _                      _
@@ -73,8 +76,10 @@ function _makeConfigCommand() {
         process.exit(1);
       }
 
-      const parsedConfig = parseConfig<NextConfigSchema>(configFile);
-      const config = validateConfig<NextConfigSchema>(nextConfigSchema, parsedConfig);
+      const parsedConfig = parseConfig<ExternalConfigSchemaInput>(configFile);
+      // Validate against the public schema first for a user-facing error on unsupported theme fields.
+      validateConfig(externalConfigSchema, parsedConfig);
+      const config = validateConfig(configSchema, parsedConfig);
 
       // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
       const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
@@ -96,7 +101,7 @@ function _makeConfigCommand() {
           console.log(`\n🍱 Generating CSS in ${pc.green(output.dir)}...`);
 
           // Only generate create CSS if no `design-tokens` output is present and no `tokenDir` is explicitly set in the config file. Otherwise, build CSS from existing design tokens.
-          if (isOnlyCssOutput(parsedConfig)) {
+          if (isOnlyCssOutput(config)) {
             await createCss({
               themes: config.themes,
               outDir: outDir,
@@ -120,7 +125,7 @@ function _makeConfigCommand() {
     });
 }
 
-function _makeTokenCommands() {
+function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
 
   tokenCmd
@@ -220,7 +225,7 @@ function _makeTokenCommands() {
         ? configFile
         : await checkAutomigrate(configFile, configFilePath, opts.yes);
 
-      const config = await parseCreateConfig(updatedConfigFile || configFile, {
+      const config = await parseValidateAndOptsConfig(updatedConfigFile || configFile, {
         theme: themeName,
         cmd,
         configFilePath,
@@ -238,7 +243,7 @@ function _makeTokenCommands() {
   return tokenCmd;
 }
 
-program.addCommand(_makeTokenCommands());
+program.addCommand(makeTokenCommands());
 /** Disabling this for future testing and assessment */
 // program.addCommand(_makeConfigCommand(), { isDefault: true });
 
@@ -353,7 +358,7 @@ async function createDesignTokens({
   outDir,
   clean,
 }: {
-  themes: CreateConfigSchema['themes'];
+  themes: ConfigSchema['themes'];
   outDir: string;
   clean?: boolean;
 }) {
@@ -364,11 +369,12 @@ async function createDesignTokens({
 
   const files: OutputFile[] = [];
 
-  // Pick colors from first theme since we have a constraint they should be the same across themes.
+  // Pick colors and size from first theme since we have a constraint they should be the same across themes.
   const colorNames = toColorNames(themes[themeNames[0]]?.colors);
+  const tokenSetDimensions = getTokenSetDimensions(themes[themeNames[0]]);
 
   for (const [name, themeConfig] of Object.entries(themes)) {
-    const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme);
+    const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme, tokenSetDimensions);
     files.push(...tokenSetsToFiles(tokenSets));
   }
 
@@ -432,7 +438,7 @@ async function createCss({
   verbose,
   tailwind,
 }: {
-  themes: CreateConfigSchema['themes'];
+  themes: ConfigSchema['themes'];
   outDir: string;
   clean?: boolean;
   verbose: boolean;
@@ -466,11 +472,11 @@ async function createCss({
   console.log(`\n✅ Finished creating CSS`);
 }
 
-function isOnlyCssOutput(config: NextConfigSchema): boolean {
+function isOnlyCssOutput(config: ConfigSchema): boolean {
   // Can be defined using either the shorthand or object syntax, so check for both.
   const hasDesignTokensOutput =
     config.output.find((o) => o.type === 'design-tokens') ||
-    config.output.find((o) => o === ('design-tokens' as unknown as NextConfigSchema['output'][number]));
+    config.output.find((o) => o === ('design-tokens' as unknown as ConfigSchema['output'][number]));
   const hasCSSTokensDir = config.output.find((o) => o.type === 'css')?.tokenDir;
 
   return !hasDesignTokensOutput && !hasCSSTokensDir;
