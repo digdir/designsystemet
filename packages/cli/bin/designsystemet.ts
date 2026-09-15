@@ -77,11 +77,12 @@ function _makeConfigCommand() {
       }
 
       const parsedConfig = parseConfig<ExternalConfigSchemaInput>(configFile);
-      const externalConfig = validateConfig(externalConfigSchema, parsedConfig);
-      const config = validateConfig(configSchema, externalConfig);
+      // Validate against the public schema first for a user-facing error on unsupported theme fields.
+      validateConfig(externalConfigSchema, parsedConfig);
+      const config = validateConfig(configSchema, parsedConfig);
 
       // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
-      const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), externalConfig.output);
+      const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
 
       for (const output of sortedOutput) {
         const outDir = path.join(dsfs.outDir, output.dir);
