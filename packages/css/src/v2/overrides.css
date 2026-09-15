@@ -6,15 +6,14 @@
  */
 
 @layer ds.base {
-  [data-color-scheme],
+  /** Change from neutral to color */
+  /* [data-color-scheme],
   body {
-    /** Change from neutral to color */
     background: inherit;
     color: inherit;
-  }
-
+  } */
+  /* This needs more work on filled component such as button, or neutral. */
   [data-color] {
-    /* This needs more work on filled component such as button, or neutral. */
     color: var(--ds-color-text-default);
   }
 }
@@ -22,6 +21,14 @@
 @layer ds.components {
   .ds-label {
     font-weight: var(--ds-font-weight-semibold);
+  }
+
+  .ds-field:has(input[type='radio'], input[type='checkbox']) [data-field='description'] {
+    font-size: var(--ds-font-size-minus-1);
+  }
+
+  .ds-link {
+    color: var(--ds-color-text-tinted);
   }
 
   .ds-dialog {
@@ -32,9 +39,21 @@
     --dsc-dialog-border-color: var(--ds-color-border-subtle);
   }
 
+  .ds-button {
+    &[data-variant='secondary'],
+    &[data-variant='tertiary'] {
+      --dsc-button-color: var(--ds-color-text-tinted);
+    }
+  }
+
   .ds-divider {
     /** Change from neutral to color */
     --dsc-divider-border-color: var(--ds-color-border-subtle);
+  }
+
+  .ds-chip {
+    /** Change from neutral to color */
+    --dsc-chip-border-color: var(--ds-color-border-tinted);
   }
 
   .ds-dropdown {
@@ -52,19 +71,19 @@
     --dsc-errorsummary-link-color: var(--ds-color-text-default);
   }
 
-  .ds-field {
+  .ds-field.ds-field.ds-field {
     /** Change from neutral to color */
     --dsc-field-description-color: inherit;
 
     &[data-variant='outline'] {
       /** Change from neutral to color */
-      --dsc-field-border-color: var(--ds-color-border-default);
+      --dsc-field-border-color: var(--ds-color-border-subtle);
     }
   }
 
   .ds-field-affixes {
     /** Change from neutral to color */
-    --dsc-field-affix-border-color: var(--ds-color-border-default);
+    --dsc-field-affix-border-color: var(--ds-color-border-subtle);
     --dsc-field-affix-background: var(--ds-color-surface-tinted);
     --dsc-field-affix-color: inherit;
   }
@@ -77,8 +96,8 @@
   .ds-input {
     /** Change from neutral to color */
     --dsc-input-background: var(--ds-color-surface-default);
-    --dsc-input-border-color: var(--ds-color-border-default);
-    --dsc-input-outline-color--hover: var(--ds-color-border-default);
+    --dsc-input-border-color: var(--ds-color-border-subtle);
+    --dsc-input-outline-color--hover: var(--ds-color-border-hover);
     --dsc-input-color: var(--ds-color-text-default);
   }
 
@@ -96,22 +115,31 @@
 
   .ds-tabs {
     /** Change from neutral to color */
-    --dsc-tabs-tab-color: var(--ds-color-text-subtle);
+    --dsc-tabs-tab-color: var(--ds-color-text-tinted);
+    --dsc-tabs-tab-color--selected: var(--ds-color-text-tinted);
     --dsc-tabs-tab-color--hover: var(--ds-color-text-default);
     --dsc-tabs-list-border-color: var(--ds-color-border-subtle);
 
-    & :is([role='tablist'], & ds-tablist, & u-tablist) {
+    /* & :is([role='tablist'], & ds-tablist, & u-tablist) {
       & > :is([role='tab'], ds-tab, u-tab) {
         &[aria-selected='true'] {
-          font-weight: var(--ds-font-weight-semibold);
+          color: tinted
         }
       }
-    }
+    } */
   }
 
   .ds-tooltip {
     /** Change from neutral to color */
     --dsc-tooltip-background: var(--ds-color-text-default);
     --dsc-tooltip-color: var(--ds-color-background-default);
+  }
+
+  .ds-toggle-group[data-variant='secondary'] {
+    --dsc-togglegroup-border-color: var(--ds-color-border-tinted);
+  }
+
+  .ds-pagination .ds-button:not([aria-current='true']) {
+    --dsc-button-color: var(--ds-color-text-tinted);
   }
 }

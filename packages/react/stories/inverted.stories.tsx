@@ -13,6 +13,7 @@ import {
   Dialog,
   Divider,
   Dropdown,
+  EXPERIMENTAL_FileUpload,
   Field,
   Fieldset,
   Heading,
@@ -171,6 +172,15 @@ export const Inverted = meta.story({
         />
       </Demo>
 
+      <Demo label='Checkbox outline'>
+        <Checkbox
+          label='Checkbox label'
+          variant='outline'
+          description='Description'
+          value='value'
+        />
+      </Demo>
+
       <Demo label='Checkbox group'>
         <Fieldset>
           <Fieldset.Legend>
@@ -276,8 +286,12 @@ export const Inverted = meta.story({
         <Input aria-label='input' type='text' name='inputs' />
       </Demo>
 
-      <Demo label='Textfield'>
+      <Demo label='Textfield fake-readonly'>
         <Textfield label='Label' />
+      </Demo>
+
+      <Demo label='Textfield affixes'>
+        <Textfield label='Label' prefix='Before' suffix='After' />
       </Demo>
 
       <Demo label='Textarea'>
@@ -376,6 +390,19 @@ export const Inverted = meta.story({
         </ToggleGroup>
       </Demo>
 
+      <Demo label='ToggleGroup secondary'>
+        <ToggleGroup
+          aria-label='Filtrering'
+          defaultValue='innboks'
+          variant='secondary'
+        >
+          <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
+          <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
+          <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
+          <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
+        </ToggleGroup>
+      </Demo>
+
       <Demo label='Pagination'>
         <Pagination>
           <Pagination.List>
@@ -457,6 +484,22 @@ export const Inverted = meta.story({
             </Paragraph>
           </Dialog>
         </Dialog.TriggerContext>
+      </Demo>
+
+      <Demo label='Fileupload'>
+        <Field>
+          <Label>Last opp profilbilde</Label>
+          <Field.Description>
+            Filen må være i csv-format og mindre enn 2MB
+          </Field.Description>
+          <EXPERIMENTAL_FileUpload>
+            <Field.Description>Slipp fil her</Field.Description>
+            <Button asChild data-variant='secondary'>
+              <span>Last opp fil</span>
+            </Button>
+            <input type='file' />
+          </EXPERIMENTAL_FileUpload>
+        </Field>
       </Demo>
     </div>
   ),

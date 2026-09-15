@@ -38,3 +38,57 @@
 @import url('./avatar-stack.css') layer(ds.components);
 @import url('./suggestion.css') layer(ds.components);
 @import url('./combobox.css') layer(ds.components);
+
+@import url('./v2/overrides.css');
+
+@layer ds.theme.color {
+  [data-color] {
+    --ds-color-inverted-background-default: #054449;
+    --ds-color-inverted-background-tinted: #ffffff0f;
+    --ds-color-inverted-surface-default: #116e6b;
+    --ds-color-inverted-surface-tinted: #0e5d5d;
+    --ds-color-inverted-surface-hover: #0a4e4f;
+    --ds-color-inverted-surface-active: #054449;
+    --ds-color-inverted-border-tinted: #e2f1df;
+    --ds-color-inverted-border-subtle: #e2f1df6f;
+    --ds-color-inverted-border-default: #e2f1df;
+    --ds-color-inverted-border-strong: #ffffff;
+    --ds-color-inverted-text-subtle: #e2f1df;
+    --ds-color-inverted-text-tinted: #e2f1df;
+    --ds-color-inverted-text-default: #ffffff;
+    --ds-color-inverted-base-default: #e2f1df;
+    --ds-color-inverted-base-hover: #d8eed8;
+    --ds-color-inverted-base-active: #cae8ca;
+    --ds-color-inverted-base-contrast-subtle: #116e6b;
+    --ds-color-inverted-base-contrast-default: #054449;
+
+    --ds-color-border-subtle: #b1b8be;
+    --ds-color-text-subtle: #548bbb;
+    --ds-color-border-tinted: #99c0e3;
+    --ds-color-text-tinted: #0062ba;
+  }
+}
+
+@layer ds.theme.color {
+  [data-color='inverted'],
+  [data-color-scheme][data-color='inverted'] {
+    --ds-color-background-default: var(--ds-color-inverted-background-default);
+    --ds-color-background-tinted: var(--ds-color-inverted-background-tinted);
+    --ds-color-surface-default: var(--ds-color-inverted-surface-default);
+    --ds-color-surface-tinted: var(--ds-color-inverted-surface-tinted);
+    --ds-color-surface-hover: var(--ds-color-inverted-surface-hover);
+    --ds-color-surface-active: var(--ds-color-inverted-surface-active);
+    --ds-color-border-subtle: var(--ds-color-inverted-border-subtle);
+    --ds-color-border-tinted: var(--ds-color-inverted-border-tinted);
+    --ds-color-border-default: var(--ds-color-inverted-border-default);
+    --ds-color-border-strong: var(--ds-color-inverted-border-strong);
+    --ds-color-text-subtle: var(--ds-color-inverted-text-subtle);
+    --ds-color-text-tinted: var(--ds-color-inverted-text-tinted);
+    --ds-color-text-default: var(--ds-color-inverted-text-default);
+    --ds-color-base-default: var(--ds-color-inverted-base-default);
+    --ds-color-base-hover: var(--ds-color-inverted-base-hover);
+    --ds-color-base-active: var(--ds-color-inverted-base-active);
+    --ds-color-base-contrast-subtle: var(--ds-color-inverted-base-contrast-subtle);
+    --ds-color-base-contrast-default: var(--ds-color-inverted-base-contrast-default);
+  }
+}

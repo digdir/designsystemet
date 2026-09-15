@@ -116,6 +116,7 @@ const show = () => {
   const scheme = OPEN.closest(SELECTOR_SCHEME); // Match source color-scheme of source element
   const size = OPEN.closest(SELECTOR_SIZE); // Match source size of source element
   const isReset = color !== scheme && color?.contains(scheme as Node); // If data-scheme is closer to target, it will reset data-color
+  // console.log({ isReset, color, scheme }); // TODO EIRIK
 
   attr(TIP, 'popover', 'manual'); // Ensure popover behavior
   attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME) || null); // Fallback to null to reset if not scheme found
