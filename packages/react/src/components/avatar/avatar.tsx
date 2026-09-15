@@ -55,8 +55,6 @@ export type AvatarProps = MergeRight<
     asChild?: boolean;
     /**
      * Image, icon or initials to display inside the avatar.
-     *
-     * Gets `aria-hidden="true"`
      */
     children?: ReactNode;
   }
