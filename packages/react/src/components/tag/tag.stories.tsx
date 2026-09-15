@@ -150,3 +150,16 @@ export const VariantOutline = meta.story({
     },
   },
 });
+
+export const AsButtonAndLink = meta.story({
+  render: (rest) => (
+    <>
+      <Tag asChild {...rest}>
+        <button type='button'>Button</button>
+      </Tag>{' '}
+      <Tag asChild {...rest}>
+        <a href='#none'>Link</a>
+      </Tag>
+    </>
+  ),
+});
