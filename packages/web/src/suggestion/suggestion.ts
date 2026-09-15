@@ -86,7 +86,7 @@ const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
   attr(emptyOptElement, 'label', value); // Ensures option is not filtered out by <u-combobox>
   attr(emptyOptElement, 'value', creatable ? value : ''); // Ensures clicking option does nothing
 
-  if (!creatable || emptyOptElement.textContent) return; // Only need to adjust text on empty element if createable mode and no text is set
+  if (!creatable || emptyOptElement.textContent) return; // Only need to adjust text on empty element if creatable mode and no text is set
   const text = attrOrCSS(emptyOptElement, ATTR_EMPTY);
   if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, emptyOptElement);
   else attr(emptyOptElement, ATTR_EMPTY, text); // Speed up by caching attribute value
