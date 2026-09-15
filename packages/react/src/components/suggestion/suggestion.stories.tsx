@@ -177,6 +177,54 @@ export const ControlledSingle = meta.story({
   },
 });
 
+export const ControlledCreatable = meta.story({
+  render: (args) => {
+    const [selected, setSelected] = useState<string | undefined>('');
+
+    return (
+      <>
+        <Field>
+          <Label>Velg destinasjon</Label>
+          <Suggestion
+            {...(args as SuggestionSingleProps)}
+            selected={selected}
+            onSelectedChange={(item) => setSelected(item?.value)}
+          >
+            <Suggestion.Input />
+            <Suggestion.Toggle />
+            <Suggestion.Clear />
+            <Suggestion.List>
+              <Suggestion.Empty></Suggestion.Empty>
+              {DATA_PLACES.map((place) => (
+                <Suggestion.Option key={place} label={place} value={place}>
+                  {place}
+                  <div>Kommune</div>
+                </Suggestion.Option>
+              ))}
+            </Suggestion.List>
+          </Suggestion>
+        </Field>
+        <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+
+        <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
+          Valgte reisemål: {selected}
+        </Paragraph>
+
+        <Button
+          onClick={() => {
+            setSelected('Sogndal');
+          }}
+        >
+          Sett reisemål til Sogndal
+        </Button>
+      </>
+    );
+  },
+  args: {
+    creatable: true,
+  },
+});
+
 export const ControlledMultiple = meta.story({
   render: (args) => {
     const [selected, setSelected] = useState<string[]>(['Oslo']);
@@ -228,7 +276,7 @@ export const ControlledMultiple = meta.story({
     const getChipValues = async () =>
       waitFor(() =>
         within(canvasElement)
-          .getAllByLabelText('Press to remove', { exact: false })
+          .getAllByLabelText('Trykk for å fjerne', { exact: false })
           .filter((el) => el instanceof HTMLDataElement)
           .map((x) => x.value),
       );
@@ -459,11 +507,16 @@ export const FetchExternal = meta.story({
     return (
       <Field lang='en'>
         <Label>Search for countries (in english)</Label>
-        <Suggestion {...args} filter={false}>
+        <Suggestion
+          {...args}
+          filter={false}
+          data-sr-singular='%d country'
+          data-sr-plural='%d countries'
+        >
           <Suggestion.Input onInput={handleInput} />
           <Suggestion.Toggle />
           <Suggestion.Clear />
-          <Suggestion.List singular='%d country' plural='%d countries'>
+          <Suggestion.List>
             {value ? (
               <Suggestion.Empty>
                 {options ? (
@@ -645,5 +698,28 @@ export const WithoutToggleButton = meta.story({
   args: {
     multiple: true,
     creatable: true,
+  },
+});
+
+export const WithDeprecatedDel = meta.story({
+  render: (args) => {
+    return (
+      <Field>
+        <Label>Velg eller legg til en destinasjon</Label>
+        <Suggestion {...args}>
+          <Suggestion.Input />
+          {/** biome-ignore lint/a11y/useSemanticElements: deprecated */}
+          <del role='button' aria-label='Tøm' tabIndex={0} />
+          <Suggestion.List>
+            <Suggestion.Empty>
+              Ingen treff, trykk enter for å legge til
+            </Suggestion.Empty>
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place}>{place}</Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    );
   },
 });
