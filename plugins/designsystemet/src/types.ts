@@ -1,4 +1,4 @@
-import type { PreviewData } from './plugin/token-export/types';
+import type { CreateConfigSchema } from '@digdir/designsystemet/schemas/internal/schema.js';
 
 type ImportConfig = {
   type: 'import-config-and-create-preview-tokens';
@@ -10,9 +10,11 @@ type PreviewTokensFromConfig = {
   status: 'success' | 'error';
   message: string;
   preview?: {
-    previewData: PreviewData;
-    colorNames: string[];
-    themeNames: string[];
+    // The config validated against the internal schema, i.e. with all defaults
+    // filled in. The UI renders the preview from this directly.
+    config: CreateConfigSchema;
+    // Warnings from building the export model (unresolved aliases etc.).
+    warnings: string[];
   };
 };
 
@@ -28,13 +30,11 @@ export type FigmaMessages =
   | PreviewTokensFromConfig
   | ExportTokensToFigma;
 
-/** Using a separate type for UI color schemes for now as our main one from CLI is lowercase and needs to be Pascal case to match figma variables import for now */
-export type UiColorScheme = 'Light' | 'Dark';
-
 export type UiState = {
-  previewData: PreviewData | null;
+  config: CreateConfigSchema | null;
   selectedTheme: string | null;
-  selectedScheme: UiColorScheme;
+  /** Pascal case (e.g. 'Light'/'Dark') to match the Figma variables import, unlike the CLI's lowercase schemes */
+  selectedScheme: string;
   isImporting: boolean;
   notification: Notification | null;
 };
