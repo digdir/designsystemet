@@ -35,7 +35,7 @@
       --dsc-button-color--hover: var(--dsc-button-color);
       --dsc-button-color: var(--ds-color-text-subtle);
     }
-    /* Style active element when manually set data-variant="tertiary" button - deprecated but kept for compatibility */
+    /* @deprecated: Style active element when manually set data-variant="tertiary" button - deprecated but kept for compatibility */
     & > li > [data-variant='tertiary'][aria-current='true'] {
       --dsc-button-background--active: var(--ds-color-base-active);
       --dsc-button-background--hover: var(--ds-color-base-hover);

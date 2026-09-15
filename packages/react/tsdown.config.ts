@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsdown';
 
 export default defineConfig({
-  // TODO: remove separate colors.ts entry. Ref. https://github.com/digdir/designsystemet/pull/3867
+  // TODO: @deprecated remove separate colors.ts entry. Ref. https://github.com/digdir/designsystemet/pull/3867
   entry: ['./src/index.ts', './src/colors.ts'],
   unbundle: true,
   sourcemap: false,

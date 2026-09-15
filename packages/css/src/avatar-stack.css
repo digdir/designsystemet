@@ -37,7 +37,7 @@
   /**
    * Avatars
    */
-  /* Using :where to let .avatar[data-variant="square"] overwrite radius */
+  /* Using :where to let the @deprecated .avatar[data-variant="square"] overwrite radius */
   & > li > :where(.ds-avatar) {
     --dsc-avatar-radius: var(--dsc-avatar-stack-radius);
     --dsc-avatar-size: var(--dsc-avatar-stack-size);
