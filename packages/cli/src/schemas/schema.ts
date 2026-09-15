@@ -214,21 +214,15 @@ export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
 /** The pre-validation shape of a theme, i.e. what users write: defaulted fields are optional. */
 export type ConfigSchemaThemeInput = z.input<typeof themeSchema>;
 
-/**
- * The plain config object with every field the CLI understands. Use this when you need `.shape`
- * (e.g. to generate a JSON schema); use {@link configSchema} to validate a config.
- */
-export const configObjectSchema = z.object({
+/** The full config schema with every field the CLI understands, used to validate a config file. */
+export const configSchema = z.object({
   ...outputConfigShape,
   themes: themesSchema,
 });
 
-/** The full config schema used by the CLI to validate a config file. */
-export const configSchema = configObjectSchema;
+export type ConfigSchema = z.infer<typeof configSchema>;
 
-export type ConfigSchema = z.infer<typeof configObjectSchema>;
-
-export type ConfigSchemaInput = z.input<typeof configObjectSchema>;
+export type ConfigSchemaInput = z.input<typeof configSchema>;
 
 /**
  * The theme keys that are part of the public config. Everything else in {@link themeObjectSchema} is internal
@@ -255,19 +249,17 @@ const externalThemeSchema = themeObjectSchema
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
 /**
- * The public config: the same config object as {@link configObjectSchema}, with themes restricted to the public keys.
+ * The public config: {@link configSchema} without `output`, and with themes restricted to the public keys.
  * Use this when exposing the schema externally (the public JSON schema, the theme builder and the Figma plugin);
  * use {@link configSchema} to validate a config in the CLI.
  */
-export const externalConfigObjectSchema = configObjectSchema.omit({ output: true }).extend({
+export const externalConfigSchema = configSchema.omit({ output: true }).extend({
   themes: z.record(z.string(), externalThemeSchema).superRefine(checkThemes).meta({
     description:
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names.',
   }),
 });
 
-export const externalConfigSchema = externalConfigObjectSchema;
-
-export type ExternalConfigSchema = z.infer<typeof externalConfigObjectSchema>;
+export type ExternalConfigSchema = z.infer<typeof externalConfigSchema>;
 /** The pre-validation shape of the public config, i.e. what users write: defaulted fields are optional. */
-export type ExternalConfigSchemaInput = z.input<typeof externalConfigObjectSchema>;
+export type ExternalConfigSchemaInput = z.input<typeof externalConfigSchema>;
