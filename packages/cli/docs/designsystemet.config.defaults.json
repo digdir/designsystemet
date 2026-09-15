@@ -1,17 +1,17 @@
 {
   "output": [
     {
+      "type": "design-tokens",
+      "dir": "design-tokens",
+      "cleanDir": true
+    },
+    {
       "type": "css",
-      "dir": "./packages/css/theme",
+      "dir": "design-tokens-build",
       "cleanDir": true,
       "tokenDir": "design-tokens",
       "banner": "",
       "experimental_tailwind": true
-    },
-    {
-      "type": "design-tokens",
-      "dir": "design-tokens",
-      "cleanDir": true
     }
   ],
   "themes": {
