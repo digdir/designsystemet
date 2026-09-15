@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.21.2
+
+### Patch Changes
+
+- **Tag:** Now supports `asChild` property ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+
+- **Avatar:** Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+  - **deprecated**` data-initials` will be removed in next major release.
+
 ## 1.21.1
 
 ### Patch Changes
