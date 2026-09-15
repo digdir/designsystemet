@@ -1,4 +1,4 @@
-/* TODO: ds-skiplink can be removed in the next major version */
+/* @deprecated: ds-skiplink can be removed in the next major version */
 .ds-skip-link,
 .ds-skiplink {
   --dsc-skiplink-padding: var(--ds-size-4) var(--ds-size-4) var(--ds-size-5) var(--ds-size-4);

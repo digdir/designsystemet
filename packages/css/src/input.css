@@ -69,6 +69,7 @@
     outline-color: var(--dsc-input-outline-color--hover);
     outline-width: var(--dsc-input-outline-width--hover);
     outline-style: var(--dsc-input-outline-style--hover);
+    outline-offset: -0.1px; /* Avoid rendering gap when zoomed, ref. https://github.com/digdir/designsystemet/issues/5323 */
 
     &:is(:checked, :indeterminate:where([type='checkbox'])):not([aria-invalid='true']) {
       outline-color: var(--dsc-input-outline-color--toggle--hover);

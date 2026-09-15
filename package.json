@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.34.5+sha512.a4ee05f2f73658255bd6a89859c065a45c28a57daefae2c893a168ee2b73168c37b91e83e57ea67654ad03f03031746430e8bce38e362e042605fb8abc80192e",
+  "packageManager": "pnpm@12.3.4+sha512.961aa41fb077da3a04a441d9f8e15ebc0c96da8ef710b2eb67bf9ee7cb0610eabd48f1fd85f51cffe73846785fa0f87c56a3a872a1d893f8446741b5cce45457",
   "engines": {
-    "node": ">=24.20.0",
+    "node": ">=24.21.0",
     "runtime": {
       "name": "node",
-      "version": "24.20.0",
+      "version": "24.21.0",
       "onFail": "download"
     }
   },
@@ -44,9 +44,9 @@
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.11",
-    "@changesets/cli": "3.0.1",
-    "@changesets/get-github-info": "^1.0.0",
+    "@biomejs/biome": "2.5.12",
+    "@changesets/cli": "3.0.2",
+    "@changesets/get-github-info": "^1.0.1",
     "@changesets/types": "^7.0.0",
     "@digdir/designsystemet": "workspace:^",
     "@testing-library/jest-dom": "7.0.1",
