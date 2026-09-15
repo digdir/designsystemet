@@ -34,7 +34,7 @@ COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
-CMD [ "pnpm", "start" ]
+CMD [ "node", "server.js" ]
 
 FROM packages AS themebuilder-build
 WORKDIR /usr/src/app
@@ -50,7 +50,7 @@ COPY --from=themebuilder-build /prod/@web/themebuilder /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
-CMD [ "pnpm", "start" ]
+CMD [ "node", "server.js" ]
 
 FROM packages AS storybook-build
 RUN pnpm build:storybook
