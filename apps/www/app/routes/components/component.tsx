@@ -28,6 +28,7 @@ import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
 import { generateMetadata } from '~/_utils/metadata';
 import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
+import i18n from '~/i18next.server';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
 
@@ -43,6 +44,11 @@ const cssCache = new Map<
   }
 >();
 const warnedCssFiles = new Set<string>();
+const componentPages = ['overview', 'code', 'accessibility'] as const;
+type ComponentPage = (typeof componentPages)[number];
+
+const isComponentPage = (page: string): page is ComponentPage =>
+  componentPages.includes(page as ComponentPage);
 
 const getComponentCss = (cssFile: string) => {
   const cached = cssCache.get(cssFile);
@@ -81,7 +87,8 @@ const getComponentCss = (cssFile: string) => {
 export { ErrorBoundary } from '~/root';
 
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
-  const { component, lang } = params;
+  const { component } = params;
+  const lang = params.lang ?? 'no';
 
   if (!component) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
@@ -133,7 +140,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   // requests append a `.data` suffix (e.g. `/accessibility.data`) to request.url.
   // stripTrailingSlash: RR v8 prerenders HTML with a trailing slash, which the
   // splat would otherwise include (e.g. `code/` → reading `code/.mdx`).
-  const compPage = stripTrailingSlash(params['*']);
+  const compPage = stripTrailingSlash(params['*']) ?? '';
 
   const componentDocs = getComponentDocs(component);
 
@@ -155,6 +162,14 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     jsonMetadata.cssFile,
   );
 
+  const t = await i18n.getFixedT(lang);
+  const pageTitleSuffix = isComponentPage(compPage)
+    ? t(`component.${compPage}`)
+    : undefined;
+  const pageTitle = pageTitleSuffix
+    ? `${jsonMetadata[lang].title} ${pageTitleSuffix}`
+    : jsonMetadata[lang].title;
+
   return {
     component,
     stories: storyEntries,
@@ -167,7 +182,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       tabs: jsonMetadata.tabs !== false,
     },
     linkMetadata: generateMetadata({
-      title: jsonMetadata[lang].title,
+      title: pageTitle,
       description: jsonMetadata[lang].subtitle,
     }),
     cssSource,
