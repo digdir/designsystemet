@@ -1,17 +1,45 @@
-<Alert data-color="info">
-Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
-</Alert>
+## Dette må du sjekke selv
 
-* `Tabs` støtter tastaturnavigasjon med piltaster
-* Hver tab må ha en unik tittel
-* Ved bruk av ikoner, sørg for at de er dekorative (`aria-hidden`) eller har beskrivende titler
-* Dersom et tabpanel ikke har fokuserbare elementer, får selve panelet fokus
+**Hver fane skal ha et unikt og tilgjengelig navn**
 
+Pass på at hver enkelt fane har et tydelig, tilgjengelig og meningsbærende navn.
 
-### Tastaturnavigasjon
-* <kbd>Tab</kbd> flytter fokus til neste interaktive element
-* <kbd data-icon>→</kbd> flytter til neste tab
-* <kbd data-icon>←</kbd> flytter til forrige tab
-* <kbd>Home</kbd> flytter til første tab
-* <kbd>End</kbd> flytter til siste tab
-* <kbd>Enter</kbd> eller <kbd>Space</kbd> aktiverer valgt tab
+<span data-size="sm"> 
+WCAG: [3.3.2 Ledetekster eller instruksjoner (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/332-ledetekster-eller-instruksjoner-niva/117)
+</span> 
+<span data-size="sm">
+WCAG: [4.1.2 Navn, rolle, verdi (uutilsynet)](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
+</span> 
+
+<Divider/>
+\
+**Unngå bruk av ikon alene, uten tekst**
+
+Forsøk å unngå bruk av kun ikoner i faner, er det likevel behov for det, så pass på at hver fane har et tilgjengelig meningsbærende navn. Sørg for at innholdet er tilgjengelig for eksempel via en tilgjengelig tooltip. Bruker du ikoner sammen med tekst bør du sørge for at de er markert som dekorative eller har en egen tilgjengelig tittel.
+
+<span data-size="sm"> 
+WCAG: [1.1.1 Ikke-tekstlig innhold (uutilsynet)](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231)
+</span> 
+
+<Divider/>
+## Test med tastatur
+
+**Sjekk at du kan**
+* nå fanegruppen med <kbd>Tab</kbd>
+* bruke piltaster for å navigere mellom fanene
+* flytte markering til første fane med <kbd>Home</kbd>
+* flytte markering til siste fane med <kbd>End</kbd>
+* aktivere fane med både <kbd>Mellomrom</kbd> og <kbd>Enter</kbd>
+* navigere til innhold (`tabpanel`) med <kbd>tab</kbd>
+
+<span data-size="sm"> 
+WCAG: [2.1.1 Tastatur (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/211-tastatur-niva/98)
+</span> 
+
+<Divider/>
+## Designsystemet ivaretar
+- korrekte roller på alle elementer med `role="tab"`, `role="tablist"` og `role="tabpanel"`
+- korrekt status på alle elementer med `aria-selected`
+- korrekt lenking mellom elementer med `aria-controls`og `aria-labelledby`
+- Kontrastforhold håndteres av fargesystemet i designsystemet. Dersom du avviker fra anbefalte fargetokens, må du kontrollere at kombinasjonen av tekstfarge og bakgrunnsfarge oppfyller kravene til kontrast for fanene.
+- Størrelse og skalering håndteres av designsystemets størrelsessystem. Dersom du avviker fra dette, må du kontrollere at fanene fungerer ved forstørring av tekst og bruk av skjermforstørrer, uten tap av informasjon eller funksjonalitet.
