@@ -652,3 +652,26 @@ export const WithoutToggleButton = meta.story({
     creatable: true,
   },
 });
+
+export const WithDeprecatedDel = meta.story({
+  render: (args) => {
+    return (
+      <Field>
+        <Label>Velg eller legg til en destinasjon</Label>
+        <Suggestion {...args}>
+          <Suggestion.Input />
+          {/** biome-ignore lint/a11y/useSemanticElements: deprecated */}
+          <del role='button' aria-label='Tøm' tabIndex={0} />
+          <Suggestion.List>
+            <Suggestion.Empty>
+              Ingen treff, trykk enter for å legge til
+            </Suggestion.Empty>
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place}>{place}</Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    );
+  },
+});

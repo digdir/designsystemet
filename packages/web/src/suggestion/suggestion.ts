@@ -71,25 +71,26 @@ const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
 
   const value = control?.value.trim() || '';
   const query = value.toLowerCase();
-  let empty: HTMLOptionElement | undefined;
-  let exists = !value;
+  let emptyOptElement: HTMLOptionElement | undefined;
+  let hasMatch = false;
 
   for (const opt of options) {
-    if (!empty && opt.hasAttribute(ATTR_EMPTY)) empty = opt;
-    else if (!exists && opt.label?.toLowerCase() === query) exists = true; // Prevent creating an option that already exists
-    if (exists && empty) break; // Speed up if both conditions are met
+    if (!emptyOptElement && opt.hasAttribute(ATTR_EMPTY)) emptyOptElement = opt;
+    else if (!hasMatch && (!query || opt.label?.toLowerCase() === query))
+      hasMatch = true;
+    if (hasMatch && emptyOptElement) break; // Speed up if both conditions are met
   }
-  if (!empty) return;
+  if (!emptyOptElement) return;
 
-  empty.hidden = exists;
-  attr(empty, 'label', value); // Ensures option is not filtered out by <u-combobox>
-  attr(empty, 'value', creatable ? value : ''); // Ensures clicking option does nothing
+  emptyOptElement.hidden = hasMatch; // Hide initial empty state when options exist, or when the query already exists
+  attr(emptyOptElement, 'label', value); // Ensures option is not filtered out by <u-combobox>
+  attr(emptyOptElement, 'value', creatable ? value : ''); // Ensures clicking option does nothing
 
-  if (!creatable || empty.textContent) return;
-  const text = attrOrCSS(empty, ATTR_EMPTY);
-  if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, empty);
-  else attr(empty, ATTR_EMPTY, text); // Speed up by caching attribute value
-  attr(empty, ATTR_CREATE, text?.split(REGEX_CREATE).join(value)); // Using split+join to avoid $' and $& replacements
+  if (!creatable || emptyOptElement.textContent) return; // Only need to adjust text on empty element if createable mode and no text is set
+  const text = attrOrCSS(emptyOptElement, ATTR_EMPTY);
+  if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, emptyOptElement);
+  else attr(emptyOptElement, ATTR_EMPTY, text); // Speed up by caching attribute value
+  attr(emptyOptElement, ATTR_CREATE, text?.split(REGEX_CREATE).join(value)); // Using split+join to avoid $' and $& replacements
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:

@@ -29,10 +29,10 @@ export const WithRows = () => {
 
 export const Disabled = () => {
   return (
-    <>
+    <Field>
       <Label>Label</Label>
       <Textarea disabled value='Disabled textarea' />
-    </>
+    </Field>
   );
 };
 

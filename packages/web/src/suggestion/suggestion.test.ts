@@ -3,6 +3,8 @@
 import { describe, expect, it } from 'vitest';
 import type { DSSuggestionElement } from './suggestion';
 
+const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
+
 const render = () => {
   document.body.innerHTML = `
     <ds-suggestion class="ds-suggestion">
@@ -10,6 +12,19 @@ const render = () => {
       <u-datalist role="listbox">
         <u-option data-empty>No results</u-option>
         <u-option value="option-1">Option 1</u-option>
+      </u-datalist>
+    </ds-suggestion>
+  `;
+
+  return document.querySelector('ds-suggestion') as DSSuggestionElement;
+};
+
+const renderEmptyOnly = () => {
+  document.body.innerHTML = `
+    <ds-suggestion class="ds-suggestion">
+      <input type="search" class="ds-input" />
+      <u-datalist role="listbox">
+        <u-option data-empty>No results</u-option>
       </u-datalist>
     </ds-suggestion>
   `;
@@ -74,5 +89,20 @@ describe('suggestion component', () => {
     await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
 
     expect(empty.hidden).toBe(true);
+  });
+
+  it('keeps the empty option visible when it is the only option', async () => {
+    const suggestion = renderEmptyOnly();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+
+    await tick(); // Let mutation observer run
+
+    expect(empty.hidden).toBe(false);
+
+    input.value = 'missing';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+
+    expect(empty.hidden).toBe(false);
   });
 });
