@@ -22,25 +22,42 @@ describe('Avatar', () => {
     expect(screen.getByText('ON')).toBeInTheDocument();
   });
 
+  it('should render numeric children', () => {
+    render(<Avatar aria-label='Zero'>0</Avatar>);
+    expect(screen.getByText('0')).toBeInTheDocument();
+  });
+
+  it('should render initials when children render empty', () => {
+    render(<Avatar aria-label='Ola Nordmann' initials='ON' />);
+    expect(screen.getByText('ON')).toBeInTheDocument();
+  });
+
   it('should render children', () => {
     render(
       <Avatar aria-label='Ola Nordmann'>
-        <img src={EMPTY_IMAGE} alt='ola nordmann' data-testid='child-image' />
+        <img src={EMPTY_IMAGE} alt='' data-testid='child-image' />
       </Avatar>,
     );
     /* look for image with correct id */
     expect(screen.getByTestId('child-image')).toBeInTheDocument();
   });
 
-  it('children should have aria-hidden', () => {
+  it('should render initials in an empty asChild element', () => {
     render(
-      <Avatar aria-label='Ola Nordmann'>
-        <img src={EMPTY_IMAGE} alt='ola nordmann' data-testid='child-image' />
+      <Avatar asChild aria-label='Ola Nordmann' initials='ON'>
+        <a href='/profile' />
       </Avatar>,
     );
-    expect(screen.getByTestId('child-image')).toHaveAttribute(
-      'aria-hidden',
-      'true',
+    expect(screen.getByRole('link')).toHaveTextContent('ON');
+  });
+
+  it('should not render initials when asChild element has children', () => {
+    render(
+      <Avatar asChild aria-label='Ola Nordmann' initials='ON'>
+        <a href='/profile'>Ola</a>
+      </Avatar>,
     );
+    expect(screen.getByRole('link')).toHaveTextContent('Ola');
+    expect(screen.queryByText('ON')).not.toBeInTheDocument();
   });
 });
