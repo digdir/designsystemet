@@ -29,11 +29,11 @@ import classes from './live-component.module.css';
 /* vsLight's attr-name color (rgb(255, 0, 0)) is only 4:1 against white, below the 4.5:1 required for normal text. */
 const accessibleVsLight: typeof themes.vsLight = {
   ...themes.vsLight,
-  styles: themes.vsLight.styles.map((style) =>
-    style.types.includes('attr-name')
-      ? { ...style, style: { ...style.style, color: '#b81a1a' } }
-      : style,
-  ),
+  // Appended (not merged into the base entry) so it only ever affects 'attr-name'.
+  styles: [
+    ...themes.vsLight.styles,
+    { types: ['attr-name'], style: { color: '#b81a1a' } },
+  ],
 };
 
 const SyncedBox = () => {
