@@ -177,6 +177,54 @@ export const ControlledSingle = meta.story({
   },
 });
 
+export const ControlledCreatable = meta.story({
+  render: (args) => {
+    const [selected, setSelected] = useState<string | undefined>('');
+
+    return (
+      <>
+        <Field>
+          <Label>Velg destinasjon</Label>
+          <Suggestion
+            {...(args as SuggestionSingleProps)}
+            selected={selected}
+            onSelectedChange={(item) => setSelected(item?.value)}
+          >
+            <Suggestion.Input />
+            <Suggestion.Toggle />
+            <Suggestion.Clear />
+            <Suggestion.List>
+              <Suggestion.Empty></Suggestion.Empty>
+              {DATA_PLACES.map((place) => (
+                <Suggestion.Option key={place} label={place} value={place}>
+                  {place}
+                  <div>Kommune</div>
+                </Suggestion.Option>
+              ))}
+            </Suggestion.List>
+          </Suggestion>
+        </Field>
+        <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+
+        <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
+          Valgte reisemål: {selected}
+        </Paragraph>
+
+        <Button
+          onClick={() => {
+            setSelected('Sogndal');
+          }}
+        >
+          Sett reisemål til Sogndal
+        </Button>
+      </>
+    );
+  },
+  args: {
+    creatable: true,
+  },
+});
+
 export const ControlledMultiple = meta.story({
   render: (args) => {
     const [selected, setSelected] = useState<string[]>(['Oslo']);

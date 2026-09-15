@@ -66,7 +66,7 @@ const render = (self: DSSuggestionElement) => {
 };
 
 const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
-  const { creatable, control, options } = self as DSSuggestionElement;
+  const { creatable, control, options, items } = self as DSSuggestionElement;
   if (!options) return;
 
   const value = control?.value.trim() || '';
@@ -90,7 +90,10 @@ const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
   const text = attrOrCSS(emptyOptElement, ATTR_EMPTY);
   if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, emptyOptElement);
   else attr(emptyOptElement, ATTR_EMPTY, text); // Speed up by caching attribute value
-  attr(emptyOptElement, ATTR_CREATE, text?.split(REGEX_CREATE).join(value)); // Using split+join to avoid $' and $& replacements
+
+  const isCreated = items[0]?.value === emptyOptElement.value;
+  const createText = isCreated ? value : text?.split(REGEX_CREATE).join(value); // Only show "Legg til" if not already created
+  attr(emptyOptElement, ATTR_CREATE, createText); // Using split+join to avoid $' and $& replacements
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:
