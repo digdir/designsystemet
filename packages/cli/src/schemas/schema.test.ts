@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { type ConfigSchemaThemeInput, configSchema, externalConfigObjectSchema, themesSchema } from './schema.ts';
+import { type ConfigSchemaThemeInput, configSchema, externalConfigSchema, themesSchema } from './schema.ts';
 
 const baseTheme: ConfigSchemaThemeInput = {
   colors: { neutral: '#444444', accent: '#0062BA' },
@@ -210,7 +210,7 @@ describe('internal schema tests', () => {
 
 describe('external schema', () => {
   it('accepts a public config and strips internal-only theme keys', () => {
-    const result = externalConfigObjectSchema.safeParse({
+    const result = externalConfigSchema.safeParse({
       themes: { a: { ...baseTheme, size: { scale: {}, steps: {} } } },
     });
 
@@ -219,13 +219,13 @@ describe('external schema', () => {
   });
 
   it('rejects an empty themes object', () => {
-    const result = externalConfigObjectSchema.safeParse({ themes: {} });
+    const result = externalConfigSchema.safeParse({ themes: {} });
 
     expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(['themes']);
   });
 
   it('rejects themes with different color names', () => {
-    const result = externalConfigObjectSchema.safeParse({
+    const result = externalConfigSchema.safeParse({
       themes: { a: baseTheme, b: { ...baseTheme, colors: { neutral: '#444444', brand: '#0062BA' } } },
     });
 
@@ -233,7 +233,7 @@ describe('external schema', () => {
   });
 
   it('rejects internal-only shapes for public keys', () => {
-    const result = externalConfigObjectSchema.safeParse({
+    const result = externalConfigSchema.safeParse({
       themes: {
         a: { ...baseTheme, typography: { fonts: { primary: {} } }, borderRadius: { base: 4, scale: 4, steps: {} } },
       },
@@ -248,7 +248,7 @@ describe('external schema', () => {
 
   // The public JSON schema is a published contract. Update the snapshot deliberately when the public config changes.
   it('matches the published JSON schema', async () => {
-    const jsonSchema = z.toJSONSchema(externalConfigObjectSchema, { io: 'input', unrepresentable: 'any' });
+    const jsonSchema = z.toJSONSchema(externalConfigSchema, { io: 'input', unrepresentable: 'any' });
 
     await expect(`${JSON.stringify(jsonSchema, undefined, 2)}\n`).toMatchFileSnapshot(
       './__snapshots__/config.schema.json',
