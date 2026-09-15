@@ -10,7 +10,7 @@ const schema = z
   .extend(configObjectSchema.shape);
 
 writeFile(
-  resolve(import.meta.dirname, '../../dist/config-next.schema.json'),
+  resolve(import.meta.dirname, '../../dist/config-full.schema.json'),
   JSON.stringify(
     z.toJSONSchema(schema, {
       // The JSON schema validates what users write in the config file,
