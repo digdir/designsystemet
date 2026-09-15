@@ -4,7 +4,7 @@ import { borderRadiusNumberSchema, borderRadiusSchema } from './schema-border-ra
 import { borderWidthSchema } from './schema-border-width.ts';
 import { colorsSchema } from './schema-color.ts';
 import { opacitySchema } from './schema-opacity.ts';
-import { outputConfigShape, warnDeprecatedFields } from './schema-output.ts';
+import { outputConfigShape } from './schema-output.ts';
 import { overridesSchema } from './schema-overrides.ts';
 import { shadowSchema } from './schema-shadow.ts';
 import { sizeSchema } from './schema-size.ts';
@@ -224,9 +224,11 @@ export const configObjectSchema = z.object({
 });
 
 /** The full config schema used by the CLI to validate a config file. */
-export const configSchema = configObjectSchema.superRefine(warnDeprecatedFields);
+export const configSchema = configObjectSchema;
 
 export type ConfigSchema = z.infer<typeof configObjectSchema>;
+
+export type ConfigSchemaInput = z.input<typeof configObjectSchema>;
 
 /**
  * The theme keys that are part of the public config. Everything else in {@link themeObjectSchema} is internal
@@ -257,14 +259,14 @@ const externalThemeSchema = themeObjectSchema
  * Use this when exposing the schema externally (the public JSON schema, the theme builder and the Figma plugin);
  * use {@link configSchema} to validate a config in the CLI.
  */
-export const externalConfigObjectSchema = configObjectSchema.extend({
+export const externalConfigObjectSchema = configObjectSchema.omit({ output: true }).extend({
   themes: z.record(z.string(), externalThemeSchema).superRefine(checkThemes).meta({
     description:
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names.',
   }),
 });
 
-export const externalConfigSchema = externalConfigObjectSchema.superRefine(warnDeprecatedFields);
+export const externalConfigSchema = externalConfigObjectSchema;
 
 export type ExternalConfigSchema = z.infer<typeof externalConfigObjectSchema>;
 /** The pre-validation shape of the public config, i.e. what users write: defaulted fields are optional. */
