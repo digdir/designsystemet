@@ -238,7 +238,8 @@ const externalThemeMask = {
 /**
  * A theme restricted to the keys and shapes of the public config, without the internal-only cross-key refinements.
  * Typography is limited to the `{ fontFamily }` shorthand and border-radius to a number, as the public config
- * has no named typography sets or border-radius steps.
+ * has no named typography sets or border-radius steps. Strict, so internal-only and misspelled keys are
+ * rejected instead of silently stripped.
  */
 const externalThemeSchema = themeObjectSchema
   .pick(externalThemeMask)
@@ -246,6 +247,7 @@ const externalThemeSchema = themeObjectSchema
     typography: typographyShorthandSchema,
     borderRadius: borderRadiusNumberSchema,
   })
+  .strict()
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
 /**

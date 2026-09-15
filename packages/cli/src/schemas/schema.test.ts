@@ -209,13 +209,18 @@ describe('internal schema tests', () => {
 });
 
 describe('external schema', () => {
-  it('accepts a public config and strips internal-only theme keys', () => {
+  it('accepts a public config', () => {
+    expect(externalConfigSchema.safeParse({ themes: { a: baseTheme } }).success).toBe(true);
+  });
+
+  it('rejects internal-only and unknown theme keys', () => {
     const result = externalConfigSchema.safeParse({
-      themes: { a: { ...baseTheme, size: { scale: {}, steps: {} } } },
+      themes: { a: { ...baseTheme, size: { scale: {}, steps: {} }, borderRadiuss: 4 } },
     });
 
-    expect(result.success).toBe(true);
-    expect(result.data?.themes.a).not.toHaveProperty('size');
+    expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(['themes.a']);
+    expect(result.error?.issues[0].message).toContain('size');
+    expect(result.error?.issues[0].message).toContain('borderRadiuss');
   });
 
   it('rejects an empty themes object', () => {
