@@ -2,9 +2,9 @@ import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
 import { validateConfig } from '../schemas/helpers.ts';
-import { nextConfigSchema } from '../schemas/next/schema.ts';
+import { configSchema } from '../schemas/schema.ts';
 import { generate$Themes } from '../tokens/create/generators/$themes.ts';
-import { createTokens, tokenSetDimensions } from '../tokens/create.ts';
+import { createTokens, getTokenSetDimensions } from '../tokens/create.ts';
 import { buildOptions, processPlatform } from '../tokens/process/platform.ts';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.ts';
 import type { Theme } from '../tokens/types.ts';
@@ -30,7 +30,8 @@ const formatTheme = async (themeConfig: Theme) => {
   const colorNames = toColorNames(themeConfig.colors);
   const themeNames = [themeConfig.name];
 
-  const { tokenSets } = await createTokens(themeConfig);
+  const tokenSetDimensions = getTokenSetDimensions(themeConfig);
+  const { tokenSets } = await createTokens(themeConfig, tokenSetDimensions);
   const $themes = await generate$Themes(tokenSetDimensions, themeNames, colorNames);
 
   const processed$themes = $themes.map(processThemeObject);
@@ -56,7 +57,9 @@ const formatTheme = async (themeConfig: Theme) => {
 
   if (buildOptions?.buildTokenFormats) {
     for (const [destination, tokenFormats] of Object.entries(buildOptions.buildTokenFormats)) {
-      if (destination === 'typography/secondary.css') continue; // Skip secondary typography preview tokens
+      // Only the default typography set is used for preview tokens
+      if (destination.startsWith('typography/') && destination !== `typography/${buildOptions.defaultTypography}.css`)
+        continue;
 
       console.log(`Processing preview tokens for ${pc.green(destination)}`);
 
@@ -98,8 +101,8 @@ const formatTheme = async (themeConfig: Theme) => {
   }
 };
 
-// Parse the config through the schema so defaults (typography, borderRadius) are applied.
-const { themes } = validateConfig(nextConfigSchema, config);
+// Parse the config through the schema so defaults (typography, borderRadius, size) are applied.
+const { themes } = validateConfig(configSchema, config);
 
 formatTheme({
   name: 'test',
@@ -109,4 +112,8 @@ formatTheme({
     neutral: themes.designsystemet.colors.neutral,
   },
   typography: themes.designsystemet.typography,
+  size: themes.designsystemet.size,
+  shadow: themes.designsystemet.shadow,
+  borderWidth: themes.designsystemet.borderWidth,
+  opacity: themes.designsystemet.opacity,
 });

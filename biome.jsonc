@@ -24,7 +24,8 @@
       "!**/package.json", // changeset wants the files to be formatted differently
       "!**/wc/public",
       "!**/content/schemas/**/*.json",
-      "!**/packages/cli/tests/**/*.css"
+      "!**/packages/cli/tests/**/*.css",
+      "!**/__snapshots__" // vitest file snapshots must keep the exact serialization the test produces
     ]
   },
   "formatter": {
