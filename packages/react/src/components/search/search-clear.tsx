@@ -27,6 +27,7 @@ export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
         ref={ref}
         type='reset'
         variant='tertiary'
+        suppressHydrationWarning // Since <ds-suggestion> adds attributes
         {...rest}
       />
     );

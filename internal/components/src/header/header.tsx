@@ -245,14 +245,24 @@ const Header = ({
                 <Dropdown.List>
                   <Dropdown.Item>
                     <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                      <Link to={langPaths.no} lang='no' hrefLang='no'>
+                      <Link
+                        to={langPaths.no}
+                        lang='no'
+                        hrefLang='no'
+                        aria-current={pathname.startsWith('/no')}
+                      >
                         Norsk
                       </Link>
                     </Dropdown.Button>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                      <Link to={langPaths.en} lang='en' hrefLang='en'>
+                      <Link
+                        to={langPaths.en}
+                        lang='en'
+                        hrefLang='en'
+                        aria-current={pathname.startsWith('/en')}
+                      >
                         English
                       </Link>
                     </Dropdown.Button>
