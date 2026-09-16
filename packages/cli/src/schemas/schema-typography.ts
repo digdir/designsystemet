@@ -94,10 +94,15 @@ export type TypographySizeSchema = z.infer<typeof typographySizeSchema>;
 
 const typographyObjectSchema = z
   .object({
-    fonts: z
-      .record(z.string(), typographyFontSchema)
+fonts: z
+      .record(
+        z.string().refine((name) => name !== 'size', {
+          message: '"size" is reserved for size-mode typography token sets.',
+        }),
+        typographyFontSchema,
+      )
       .meta({ description: 'Named typography sets, e.g. "primary" and "secondary". The key becomes the set name.' })
-      .prefault({ primary: {}, secondary: {} }),
+      .prefault({ primary: {}, secondary: {} })
     size: z
       .record(z.string(), typographySizeSchema)
       .meta({
