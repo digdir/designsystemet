@@ -180,3 +180,17 @@ export const AsButton = meta.story(() => (
     </Avatar>
   </>
 ));
+
+export const SlotAndInitials = meta.story(() => (
+  <>
+    <Avatar aria-label='xs' initials='DS' asChild>
+      <button type='button' />
+    </Avatar>
+    <Avatar aria-label='xs' initials='DS' asChild>
+      <button type='button'>0</button>
+    </Avatar>
+    <Avatar aria-label='xs' initials='DS' asChild>
+      <button type='button'>{cat3Img}</button>
+    </Avatar>
+  </>
+));
