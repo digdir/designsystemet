@@ -261,7 +261,7 @@ aria-current={pathname === '/no' || pathname.startsWith('/no/')}
                         to={langPaths.en}
                         lang='en'
                         hrefLang='en'
-                        aria-current={pathname.startsWith('/en/')}
+aria-current={pathname === '/en' || pathname.startsWith('/en/')}
                       >
                         English
                       </Link>
