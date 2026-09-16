@@ -63,7 +63,6 @@ export const WithIconEn = () => {
 };
 
 export const Neutral = () => {
-  const rand = useId();
   return (
     <Link href={'/no/intro/privacy-policy'} data-color='neutral'>
       Personvernerklæring
@@ -72,7 +71,6 @@ export const Neutral = () => {
 };
 
 export const NeutralEn = () => {
-  const rand = useId();
   return (
     <Link href={'/en/intro/privacy-policy'} data-color='neutral'>
       Privacy Policy

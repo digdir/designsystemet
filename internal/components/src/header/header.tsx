@@ -249,7 +249,7 @@ const Header = ({
                         to={langPaths.no}
                         lang='no'
                         hrefLang='no'
-aria-current={pathname === '/no' || pathname.startsWith('/no/')}
+                        aria-current={pathname.startsWith('/no')}
                       >
                         Norsk
                       </Link>
@@ -261,7 +261,7 @@ aria-current={pathname === '/no' || pathname.startsWith('/no/')}
                         to={langPaths.en}
                         lang='en'
                         hrefLang='en'
-aria-current={pathname === '/en' || pathname.startsWith('/en/')}
+                        aria-current={pathname.startsWith('/en')}
                       >
                         English
                       </Link>
