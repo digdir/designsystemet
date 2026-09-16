@@ -29,6 +29,12 @@ Komponenten vil arve nærmeste forelder med disse satt.
 
 <CssAttributes />
 
+## Validering og feiltilstand
+
+Input får bevisst ikke automatisk feilstyling basert på nettleserens innebygde `:invalid`-tilstand. 
+For å gi deg kontroll over når feiltilstand vises, anbefaler vi heller at du viser og skjuler en tilhørende [Validation message](/no/components/docs/validation-message/overview). 
+Når [Validation message](/no/components/docs/validation-message/overview) og Input ligger i samme [Field](/no/components/docs/field/overview), får Input automatisk `aria-invalid="true"` ved behov.
+
 ## Eksempel
 
 ### ReadOnly

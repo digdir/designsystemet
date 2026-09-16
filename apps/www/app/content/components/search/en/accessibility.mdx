@@ -9,4 +9,8 @@ We are working to improve the accessibility documentation for this component. If
 * <kbd>Enter</kbd> submits the search when the input field has focus.
 
 ### Screen reader support
-Placeholder text should not be used as the only description, as screen readers handle it differently and it can create confusion.
+
+The search field must have a label describing its purpose. The label should be visible, but it can be visually hidden and replaced with `aria-label` or `aria-labelledby` if the search field's purpose is clear from the context.
+
+Note that a placeholder does not replace a label and should only be used for an optional hint or example. Avoid repeating the same text in the label and the placeholder.
+Example: Use "Search" as the label and, optionally, "Search for services, forms, or guidance."
