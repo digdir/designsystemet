@@ -219,6 +219,27 @@ describe('internal schema tests', () => {
     });
     expect(result.success).toBe(true);
   });
+
+  it('rejects an empty set of size steps', () => {
+    const result = parseThemes({ a: { ...baseTheme, size: { scale: {}, steps: {} } } });
+
+    expect(issuePaths(result)).toContain('a.size.steps');
+  });
+
+  it('rejects border widths that are not CSS lengths', () => {
+    expect(parseThemes({ a: { ...baseTheme, borderWidth: { default: '0.5rem', focus: '0' } } }).success).toBe(true);
+
+    const result = parseThemes({ a: { ...baseTheme, borderWidth: { default: 'wide', focus: '-1px' } } });
+    expect(issuePaths(result)).toEqual(['a.borderWidth.default', 'a.borderWidth.focus']);
+  });
+
+  it('rejects opacities outside 0% to 100%', () => {
+    expect(parseThemes({ a: { ...baseTheme, opacity: { disabled: '100%' } } }).success).toBe(true);
+
+    for (const disabled of ['opaque', '150%', '0.3']) {
+      expect(issuePaths(parseThemes({ a: { ...baseTheme, opacity: { disabled } } }))).toEqual(['a.opacity.disabled']);
+    }
+  });
 });
 
 describe('external schema', () => {
