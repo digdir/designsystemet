@@ -133,8 +133,11 @@ All components have their own page in the [component documentation](/en/componen
 It is also recommended that you read through the accessibility page.
 
 - Use `data-color-scheme="light | dark | auto"` to set dark/light mode.
+  - corresponds with `Appearance › Color scheme` in Figma
 - Use `data-size="sm | md | lg"` to set the size of the components.
+  - corresponds with `Appearance › Size` in Figma
 - Use `data-color` to set the color of the components.
+  - corresponds to `Appearance › Color` in Figma
 
 
 <ds-tabs class="ds-tabs" data-wide-content>
@@ -236,3 +239,54 @@ body {
   font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
 }
 ```
+
+## Testing
+
+We aim for the components to function well across various test setups. Designsystemet is tested in JSDOM and HappyDOM, and through Playwright in Chromium, Firefox, and WebKit. However, there will always be frameworks, test environments, and meta-frameworks that handle asynchronous rendering or specific edge cases in different ways.
+
+If you encounter issues with the design system in your test setup, we would very much like to hear about it. Please report them via a [GitHub issue](https://github.com/digdir/designsystemet/issues/new/choose) or ask us in [our open Slack](https://designsystemet.no/slack).
+
+Note that not everything supported by browsers is implemented in environments with an artificial DOM, such as JSDOM and HappyDOM. You may need to add some configuration to your test setup:
+
+<details className="ds-details">
+<summary>HappyDOM setup</summary>
+
+HappyDOM may require support for inheritance between `HTMLDocument` and `Document`:
+
+```ts
+// Polyfill missing HTMLDocument to Document inheritance in HappyDOM
+if (
+  typeof HTMLDocument !== 'undefined' &&
+  !(HTMLDocument.prototype instanceof Document)
+) {
+  try {
+    Object.setPrototypeOf(HTMLDocument.prototype, Document.prototype); 
+  } catch (_) {}
+}
+```
+</details>
+
+<details className="ds-details">
+<summary>JSDOM setup</summary>
+
+JSDOM may lack support for certain methods on `HTMLDialogElement`:
+
+```ts
+// Polyfill missing HTMLDialogElement methods in JSDOM
+if (typeof HTMLDialogElement.prototype.show !== 'function') {
+  HTMLDialogElement.prototype.show = function () {
+    this.open = true;
+  };
+
+  HTMLDialogElement.prototype.showModal = function () {
+    this.open = true;
+  };
+
+  HTMLDialogElement.prototype.close = function (returnValue?: string) {
+    this.open = false;
+    if (returnValue !== undefined) this.returnValue = returnValue;
+    this.dispatchEvent(new Event('close'));
+  };
+}
+```
+</details>

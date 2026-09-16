@@ -29,8 +29,8 @@ export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
       <button
         hidden
         ref={ref}
-        suppressHydrationWarning // Since <ds-suggestion> adds attributes
         type='reset'
+        suppressHydrationWarning // Since <ds-suggestion> adds attributes
         {...rest}
       />
     );

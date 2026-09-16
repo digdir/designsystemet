@@ -43,7 +43,7 @@ export const Preview = meta.story({
       </li>
       <li>
         <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
+          <BriefcaseIcon aria-hidden='true' />
         </Avatar>
       </li>
       <li>
@@ -125,7 +125,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -141,7 +141,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -157,7 +157,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -169,13 +169,13 @@ export const DataSize = meta.story({
         </AvatarStack>
       </fieldset>
       <fieldset>
-        <legend>Avatar size 3em</legend>
+        <legend>Avatar size --ds-size-12</legend>
         <AvatarStack
           {...args}
           data-size='sm'
           style={
             {
-              '--dsc-avatar-stack-size': '3em',
+              '--dsc-avatar-stack-size': 'var(--ds-size-12)',
             } as React.CSSProperties
           }
         >
@@ -184,7 +184,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -199,7 +199,7 @@ export const DataSize = meta.story({
           {...args}
           style={
             {
-              '--dsc-avatar-stack-size': '3em',
+              '--dsc-avatar-stack-size': 'var(--ds-size-12)',
             } as React.CSSProperties
           }
         >
@@ -208,7 +208,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -223,7 +223,7 @@ export const DataSize = meta.story({
           {...args}
           style={
             {
-              '--dsc-avatar-stack-size': '3em',
+              '--dsc-avatar-stack-size': 'var(--ds-size-12)',
             } as React.CSSProperties
           }
         >
@@ -232,7 +232,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -259,7 +259,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -283,7 +283,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
@@ -307,7 +307,7 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
