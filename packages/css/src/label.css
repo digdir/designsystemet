@@ -3,6 +3,11 @@
   line-height: var(--ds-body-md-line-height);
 
   /* @deprecated */
+  &[data-weight='medium'] {
+    font-weight: var(--ds-font-weight-medium);
+  }
+
+  /* @deprecated */
   &[data-weight='semibold'] {
     font-weight: var(--ds-font-weight-semibold);
   }
