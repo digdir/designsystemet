@@ -20,7 +20,8 @@ export default defineProject({
       shouldBeAliased.map((pkg) => [pkg, `${react18}/${pkg}`]),
     ),
   },
-  cacheDir: 'node_modules/.vite/react-18',
+  // Keep the Vite cache next to this package's own node_modules, where the aliases point
+  cacheDir: resolve(import.meta.dirname, 'node_modules/.vite'),
   test: {
     ...baseConfig.test,
     name: 'react-18',
