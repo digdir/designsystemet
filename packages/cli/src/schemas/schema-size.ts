@@ -7,7 +7,9 @@ export const sizeSchema = z
   .object({
     steps: z
       .record(
-        z.string(),
+        z.string().regex(/^[a-z0-9-]+$/, {
+          message: 'Size step names may only contain lowercase letters (a-z), digits (0-9) and hyphens (-).',
+        }),
         z.object({
           base: z.number().describe('The base value for the size scale'),
           step: z.number().describe('The scale value between each step of the size scale'),
