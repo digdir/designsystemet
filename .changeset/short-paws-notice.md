@@ -4,4 +4,4 @@
 "@digdir/designsystemet-css": minor
 ---
 
-**Suggestion:** Now supports setting localization through CSS Custom Properties (thanks @unekinn)
+**Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn)
