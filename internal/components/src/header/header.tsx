@@ -249,7 +249,7 @@ const Header = ({
                         to={langPaths.no}
                         lang='no'
                         hrefLang='no'
-                        aria-current={pathname.startsWith('/no/')}
+aria-current={pathname === '/no' || pathname.startsWith('/no/')}
                       >
                         Norsk
                       </Link>
