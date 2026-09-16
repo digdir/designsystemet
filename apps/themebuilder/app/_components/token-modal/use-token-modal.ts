@@ -1,5 +1,5 @@
 import type { CssColor } from '@digdir/designsystemet/color';
-import type { CreateTokensOptions } from '@digdir/designsystemet/tokens';
+import type { ExternalConfigSchemaInput } from '@digdir/designsystemet/schemas/schema.js';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
@@ -32,8 +32,7 @@ export const useTokenModal = () => {
     }
   });
 
-  const theme: CreateTokensOptions = {
-    name,
+  const theme: ExternalConfigSchemaInput['themes'][string] = {
     colors: colors.reduce(
       (acc, color) => {
         acc[color.name] = color.colors.light['base-default']?.hex || '#';
@@ -55,7 +54,7 @@ export const useTokenModal = () => {
     $schema: 'https://designsystemet.no/schemas/config/latest.json',
     outDir: './design-tokens',
     themes: {
-      [theme.name]: {
+      [name]: {
         colors: theme.colors,
         ...(Object.keys(severityOverrides).length > 0 ||
         Object.keys(colorOverrides).length > 0
