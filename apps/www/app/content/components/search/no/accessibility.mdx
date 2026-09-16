@@ -10,7 +10,7 @@ Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponen
 
 ### Skjermleserstøtte
 
-Søkefeltet skal ha en ledetekst (label) som beskriver hva feltet brukes til. Ledeteksten bør være synlig, men kan skjules visuelt og erstattes med `aria-label` eller `aria-labelledby` dersom formålet med søkefeltet er tydelig fra konteksten.
+Søkefeltet skal ha en ledetekst som beskriver hva feltet brukes til. Ledeteksten bør normalt være synlig; dersom formålet er tydelig fra konteksten, kan du i stedet bruke en visuelt skjult `<label>`, `aria-label` eller `aria-labelledby`.
 
 Merk at placeholder erstatter ikke en ledetekst, og bør kun brukes som et valgfritt hint eller eksempel. Unngå å gjenta samme tekst i ledetekst og placeholder.
 Eksempel: Bruk «Søk» som ledetekst og eventuelt «Søk etter tjenester, skjema eller veiledning».
