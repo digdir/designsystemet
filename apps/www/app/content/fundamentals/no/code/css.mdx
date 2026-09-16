@@ -26,16 +26,29 @@ Dette gjør du ved å først legge reseten din i en layer, og så sortere denne 
 ```
 
 ## Data attributter
+Designsystemet tilbyr flere data attributter for å styre temaet til komponentene og innholdet i CSS custom properties.
+Data attributtene kan settes på et hvilket som helst HTML-element og arves automatisk av alle underliggende elementer.
 
-Vi tilbyr flere data attributter som kan brukes for å endre tema på komponentene.
+### `data-size`
+Tilsvarer `Appearance › Size` i Figma.<br />
+Setter størrelse på komponentene.
+
+### `data-color`
+
+Tilsvarer `Appearance › Color` i Figma.<br />
+Brukes til å endre farges på komponentene. Mulige verdier er definert av ditt tema.
+Du kan lese mer om denne på "[Fargar i kode](/no/fundamentals/code/colors)".
 
 ### `data-color-scheme`
 
+Tilsvarer `Appearance › Color scheme` i Figma.<br />
 Brukes til å endre fargemodus på komponentene. Mulige verdier er `light`, `dark` og `auto`.
+
 Dersom `auto` er valgt, vil fargemodusen endres basert på brukerens preferanser ved hjelp av
 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
 Du kan lese mer om denne på "[Fargar i kode](/no/fundamentals/code/colors)".
+
 
 ### `data-typography`
 

@@ -24,11 +24,21 @@ You do this by first putting your reset in a layer, and then sorting this layer 
 ```
 
 ## Data attributes
+Designsystemet offers several data attributes to control component themes and CSS custom property values.
+These data attributes can be applied to any HTML element and are automatically inherited by all child elements.
 
-We offer several data attributes that can be used to change the theme of the components.
+### `data-size`
+Corresponds with `Appearance › Size` in Figma.<br />
+Sets the size of the components.
+
+### `data-color`
+
+Corresponds with `Appearance › Color` in Figma.<br />
+Used to change the color of the components. Available values ​​are defined by your theme.
+You can read more about this under "[Colors in code](/no/fundamentals/code/colors)".
 
 ### `data-color-scheme`
-
+Corresponds with `Appearance › Color scheme` in Figma.<br />
 Used to change the color mode of the components. Possible values are `light`, `dark` and `auto`.
 
 If `auto` is selected, the color mode will change based on the user's preferences using

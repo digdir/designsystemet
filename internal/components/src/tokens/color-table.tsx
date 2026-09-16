@@ -23,6 +23,7 @@ export const ColorTokensTable = ({
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
+          <Table.HeaderCell>{t('token-preview.table.figma')}</Table.HeaderCell>
           {withPreview && (
             <Table.HeaderCell>
               {t('token-preview.table.preview')}
@@ -35,6 +36,9 @@ export const ColorTokensTable = ({
           <Table.Row key={variable}>
             <Table.Cell>
               <code>{variable}</code>
+            </Table.Cell>
+            <Table.Cell>
+              color/main/{variable.replace('--ds-color-', '')}
             </Table.Cell>
             {withPreview && (
               <Table.Cell>

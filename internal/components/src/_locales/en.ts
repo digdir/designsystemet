@@ -80,6 +80,7 @@ export default {
     'no-results': 'No results found',
     table: {
       name: 'Variable name',
+      figma: 'Figma',
       preview: 'Preview',
       value: 'Value',
     },
