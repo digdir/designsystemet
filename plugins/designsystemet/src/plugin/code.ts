@@ -60,8 +60,8 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         const parsedConfig = parseConfig<ConfigSchema>(msg.config);
 
         // Validate the config against the public/external schema first, so configs using non-exposed
-        // fields are rejected with a user-facing error. The result is discarded, as the public
-        // schema normalizes shorthands and the full schema should parse what the user wrote.
+        // fields are rejected with a user-facing error. The normalized result (shorthands expanded,
+        // public defaults applied) is then passed on to the full schema, which fills in the internal defaults.
         const externalConfig = validateConfig(
           externalConfigSchema,
           parsedConfig,
