@@ -52,14 +52,9 @@
     --dsc-errorsummary-link-color: var(--ds-color-text-default);
   }
 
-  .ds-field {
+  .ds-field[data-variant='outline'] {
     /** Change from neutral to color */
-    --dsc-field-description-color: inherit;
-
-    &[data-variant='outline'] {
-      /** Change from neutral to color */
-      --dsc-field-border-color: var(--ds-color-border-default);
-    }
+    --dsc-field-border-color: var(--ds-color-border-default);
   }
 
   .ds-field-affixes {
@@ -67,11 +62,6 @@
     --dsc-field-affix-border-color: var(--ds-color-border-default);
     --dsc-field-affix-background: var(--ds-color-surface-tinted);
     --dsc-field-affix-color: inherit;
-  }
-
-  .ds-fieldset {
-    /** Change from neutral to color */
-    --dsc-fieldset-description-color: inherit;
   }
 
   .ds-input {

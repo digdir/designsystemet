@@ -1,4 +1,4 @@
-/* .ds-search is kept for backwards compatibility */
+/* @deprecated .ds-search is kept for backwards compatibility */
 .ds-search {
   --dsc-search-padding-inline: var(--dsc-suggestion-clear-gap);
   --dsc-search-clear-padding: var(--dsc-suggestion-clear-padding);

@@ -2,7 +2,8 @@
   --dsc-field-content-spacing: var(--ds-size-2);
   --dsc-field-counter-over: '%d tegn for mye';
   --dsc-field-counter-under: '%d tegn igjen';
-  --dsc-field-description-color: var(--ds-color-neutral-text-subtle);
+  --dsc-field-description-color: inherit;
+  --dsc-field-description-font-size--toggle: var(--ds-font-size-minus-1);
 
   @composes ds-print-preserve from './base.css';
 
@@ -47,11 +48,6 @@
   /**
    * States
    */
-  &:has(.ds-input[aria-disabled='true'], .ds-input:disabled) > * {
-    cursor: not-allowed;
-    opacity: var(--ds-opacity-disabled);
-  }
-
   &:where(:has(.ds-input[aria-readonly='true'], .ds-input[readonly])) label {
     @composes ds-readonly-icon from './base.css'; /* Activate lock icon for label when readonly */
   }
@@ -90,6 +86,11 @@
     & input {
       grid-column: input; /* Always place input in column 1 */
       grid-row: 1; /* Always place input in row 1 */
+    }
+
+    & label + p /* @deprecated Kept for backwards compatibility */,
+    & [data-field='description'] {
+      font-size: var(--dsc-field-description-font-size--toggle);
     }
 
     &:not(:has(.ds-input[readonly], .ds-input[aria-disabled='true'], .ds-input:disabled)) label {
@@ -150,25 +151,10 @@
     &[data-variant='outline']:has(input[aria-invalid='true']) {
       --_dsc-field-border-color: var(--dsc-field-border-color--invalid);
     }
-    &[data-variant='outline']:has(input:disabled, input[aria-disabled='true']) {
-      cursor: not-allowed;
-      opacity: var(--ds-opacity-disabled);
-      --_dsc-field-outline-width: var(--ds-border-width-default);
-      &:has(input:checked) {
-        --_dsc-field-outline-width: var(--dsc-field-border-width--active);
-      }
-
-      & * {
-        opacity: 1; /* Undo default opacity for these children so we can move it out on the tile */
-      }
-    }
-    &[data-variant='outline']:has(input[readonly], input[aria-readonly='true']) {
+    &[data-variant='outline']:has(input:disabled, input[aria-disabled='true'], input[readonly], input[aria-readonly='true']) {
+      cursor: default;
       --_dsc-field-border-color: var(--dsc-field-border-color--readonly);
       --_dsc-field-outline-width: var(--ds-border-width-default);
-      &:has(input:checked) {
-        --_dsc-field-outline-width: var(--dsc-field-border-width--active);
-      }
-      cursor: default;
 
       @media (forced-colors: active) {
         border-color: GrayText;

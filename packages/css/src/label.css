@@ -1,11 +1,13 @@
 .ds-label {
-  font-weight: var(--ds-font-weight-medium);
+  font-weight: var(--ds-font-weight-semibold);
   line-height: var(--ds-body-md-line-height);
 
+  /* @deprecated */
   &[data-weight='semibold'] {
     font-weight: var(--ds-font-weight-semibold);
   }
 
+  /* @deprecated */
   &[data-weight='regular'] {
     font-weight: var(--ds-font-weight-regular);
   }
