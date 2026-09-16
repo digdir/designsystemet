@@ -197,6 +197,19 @@ describe('themeSchema typography validation', () => {
 
     expect(result.success).toBe(false);
   });
+
+  it('accepts the font-family reference but rejects other single-segment references', () => {
+    const valid = parseThemes({
+      a: { ...baseTheme, typography: { components: { heading: { xl: { fontFamily: '{font-family}' } } } } },
+    });
+    expect(issuePaths(valid)).toEqual([]);
+
+    const invalid = parseThemes({
+      a: { ...baseTheme, typography: { components: { heading: { xl: { fontFamily: '{missing-font}' } } } } },
+    });
+    expect(issuePaths(invalid)).toEqual(['a.typography.components.heading.xl.fontFamily']);
+    expect(invalid.error?.issues[0].message).toContain('{missing-font}');
+  });
 });
 
 describe('internal schema tests', () => {

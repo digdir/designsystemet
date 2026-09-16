@@ -59,7 +59,20 @@ const themeSchema = themeObjectSchema.superRefine((theme, ctx) => {
   ) => {
     for (const [name, value] of Object.entries(group)) {
       if (typeof value === 'string') {
-        for (const [, prefix, key] of value.matchAll(/\{([\w-]+)\.([\w.-]+)\}/g)) {
+        for (const [, reference] of value.matchAll(/\{([\w.-]+)\}/g)) {
+          const [prefix, ...rest] = reference.split('.');
+          const key = rest.join('.');
+          if (key === '') {
+            // The only single-segment reference is the theme's own font-family.
+            if (prefix !== 'font-family') {
+              ctx.addIssue({
+                code: 'custom',
+                path: [...path, name],
+                message: `Unknown reference "{${prefix}}". The only single-segment reference is "{font-family}"; other references must be prefixed, e.g. "{font-size.3}". Available prefixes: ${Object.keys(availableKeys).join(', ')}.`,
+              });
+            }
+            continue;
+          }
           const known = availableKeys[prefix];
           if (!known) {
             ctx.addIssue({
