@@ -96,9 +96,14 @@ const typographyObjectSchema = z
   .object({
     fonts: z
       .record(
-        z.string().refine((name) => name !== 'size', {
-          message: '"size" is reserved for size-mode typography token sets.',
-        }),
+        z
+          .string()
+          .regex(/^[a-z0-9-]+$/, {
+            message: 'Typography set names may only contain lowercase letters (a-z), digits (0-9) and hyphens (-).',
+          })
+          .refine((name) => name !== 'size', {
+            message: '"size" is reserved for size-mode typography token sets.',
+          }),
         typographyFontSchema,
       )
       .meta({ description: 'Named typography sets, e.g. "primary" and "secondary". The key becomes the set name.' })
