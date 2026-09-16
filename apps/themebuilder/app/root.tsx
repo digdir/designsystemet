@@ -20,9 +20,9 @@ export const links: Route.LinksFunction = () => {
   return [
     {
       rel: 'stylesheet',
-      href: 'https://altinncdn.no/fonts/inter/v4.1/inter.css',
+      href: 'https://altinncdn.no/fonts/inter/v4.1/inter-latin.css',
       integrity:
-        'sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD',
+        'sha384-dMo4FR/05iqPHBhxdybPejGKOwjCpktk6XnfJDAOP4AyMh7JFC7cCWsnOKLv7tJF',
       crossOrigin: 'anonymous',
     },
   ];
