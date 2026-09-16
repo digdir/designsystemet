@@ -16,11 +16,9 @@
 
   align-items: center;
   gap: var(--dsc-avatar-stack-gap);
-  list-style: none;
-  margin: 0;
-  padding: 0;
   transition: --_dsc-avatar-stack-overlap 0.2s ease;
   width: max-content;
+  @composes ds-list--unstyled from './base.css';
   @composes ds-focus from './base.css';
 
   &:not([hidden]) {
