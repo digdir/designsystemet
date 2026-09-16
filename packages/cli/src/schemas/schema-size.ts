@@ -14,6 +14,9 @@ export const sizeSchema = z
           baseFontSize: z.number().describe('Unitless base font size for this size step'),
         }),
       )
+      // Every size step becomes a size mode in `$themes.json`. Without any, the theme permutations have no size
+      // dimension and `tokens build` fails with an unhelpful error, so require at least one step here.
+      .refine((steps) => Object.keys(steps).length > 0, 'At least one size step is required')
       .meta({
         description:
           'The steps for the size scale, e.g. "small", "medium", "large", etc. Each step needs a matching entry in `typography.size`.',
