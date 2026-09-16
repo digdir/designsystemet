@@ -94,7 +94,7 @@
 }
 
 .links li {
-  list-style: none;
+  list-style-type: '';
   margin-bottom: var(--ds-size-5);
 }
 

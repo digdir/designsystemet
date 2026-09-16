@@ -10,12 +10,10 @@
   }
 
   & :is(ol, ul) {
+    @composes ds-list--unstyled from './base.css';
     align-items: center;
     flex-wrap: wrap;
     gap: var(--dsc-pagination-gap);
-    list-style: none;
-    margin: 0;
-    padding: 0;
 
     &:not([hidden]) {
       display: flex;

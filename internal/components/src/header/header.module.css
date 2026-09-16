@@ -54,7 +54,7 @@
         margin-right: var(--ds-size-14);
 
         li {
-          list-style: none;
+          list-style-type: '';
           margin-left: var(--ds-size-7);
         }
       }
@@ -161,7 +161,7 @@
         & li {
           padding: 20px 0;
           margin-left: 0;
-          list-style: none;
+          list-style-type: '';
 
           & .active {
             display: inline-block;

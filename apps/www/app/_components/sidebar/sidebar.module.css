@@ -44,7 +44,7 @@
 
 .listGroup {
   margin-bottom: var(--ds-size-5);
-  list-style: none;
+  list-style-type: '';
 }
 
 .innerList {
@@ -63,7 +63,7 @@
 }
 
 .listItem {
-  list-style: none;
+  list-style-type: '';
   padding: 0;
 }
 

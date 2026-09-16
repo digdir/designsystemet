@@ -180,6 +180,13 @@ body,
   }
 }
 
+/* Hide list styling, but make sure VoiceOver Safari correctly announce list role */
+.ds-list--unstyled {
+  margin: 0;
+  padding: 0;
+  list-style-type: ''; /* See https://www.matuzo.at/blog/2023/removing-list-styles-without-affecting-semantics */
+}
+
 /**
  * Used to position floating elements like dropdowns, popovers and tooltips
  */
