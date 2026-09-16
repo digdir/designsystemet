@@ -532,7 +532,7 @@ importers:
         specifier: 6.1.3
         version: 6.1.3
 
-  test/react-18-tests:
+  test/react-18:
     dependencies:
       '@floating-ui/react':
         specifier: 0.26.23
