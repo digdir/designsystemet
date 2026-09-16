@@ -1,5 +1,37 @@
 # Change Log
 
+## 1.22.0
+
+### Minor Changes
+
+- **Suggestion.Clear:** `aria-label` prop deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-clear` or attribute `data-sr-clear` on Suggestion. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** `singular` and `plural` props deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-singular` and `--dsc-suggestion-sr-plural` or attributes `data-sr-singular` and `data-sr-plural`. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Search.Clear:** `aria-label` prop deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-clear` or attribute `data-sr-clear` on Search. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+### Patch Changes
+
+- **Utils:** Correctly unescapes quotes in localized CSS custom property texts (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Search:** Now correctly sets state of clear button also when programmatically changing `value` (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders focus ring in Safari (thanks @ssb-cgn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders clear button state when rendered asynchronously (thanks @stianmorsund) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Search:** No longer causes hydration warning when server side rendered. ([#5368](https://github.com/digdir/designsystemet/pull/5368))
+
+- **Tag:** Now supports `asChild` property ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+
+- **Avatar:** Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+  - **deprecated**` data-initials` will be removed in next major release.
+- **Suggestion:** Now correctly handles internal state when preventing a selection (thanks @olemartinorg) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders `data-empty` option when not creatable (thanks @lassopicasso) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
 ## 1.21.1
 
 ### Patch Changes
