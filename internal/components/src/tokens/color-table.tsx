@@ -38,7 +38,7 @@ export const ColorTokensTable = ({
               <code>{variable}</code>
             </Table.Cell>
             <Table.Cell>
-              color/main/{variable.replace('--ds-color-', '')}
+              {variable.replace('--ds-color-', 'color/main/')}
             </Table.Cell>
             {withPreview && (
               <Table.Cell>
