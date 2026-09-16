@@ -271,17 +271,21 @@ if (
 JSDOM kan mangle støtte for enkelte metoder på `HTMLDialogElement`:
 
 ```ts
-// Polyfill for HTMLDialogElement methods in JSDOM
-HTMLDialogElement.prototype.show = function () {
-  this.setAttribute('open', '');
-};
+// Polyfill missing HTMLDialogElement methods in JSDOM
+if (typeof HTMLDialogElement.prototype.show !== 'function') {
+  HTMLDialogElement.prototype.show = function () {
+    this.open = true;
+  };
 
-HTMLDialogElement.prototype.showModal = function () {
-  this.setAttribute('open', '');
-};
+  HTMLDialogElement.prototype.showModal = function () {
+    this.open = true;
+  };
 
-HTMLDialogElement.prototype.close = function () {
-  this.removeAttribute('open');
-};
+  HTMLDialogElement.prototype.close = function (returnValue?: string) {
+    this.open = false;
+    if (returnValue !== undefined) this.returnValue = returnValue;
+    this.dispatchEvent(new Event('close'));
+  };
+}
 ```
 </details>
