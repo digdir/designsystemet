@@ -66,34 +66,37 @@ const render = (self: DSSuggestionElement) => {
 };
 
 const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
-  const { creatable, control, options, items } = self as DSSuggestionElement;
+  const { creatable, control, options, values } = self as DSSuggestionElement;
   if (!options) return;
 
   const value = control?.value.trim() || '';
   const query = value.toLowerCase();
-  let emptyOptElement: HTMLOptionElement | undefined;
+  let emptyOp: HTMLOptionElement | undefined;
   let hasMatch = false;
 
   for (const opt of options) {
-    if (!emptyOptElement && opt.hasAttribute(ATTR_EMPTY)) emptyOptElement = opt;
+    if (!emptyOp && opt.hasAttribute(ATTR_EMPTY)) emptyOp = opt;
     else if (!hasMatch && (!query || opt.label?.toLowerCase() === query))
       hasMatch = true;
-    if (hasMatch && emptyOptElement) break; // Speed up if both conditions are met
+    if (hasMatch && emptyOp) break; // Speed up if both conditions are met
   }
-  if (!emptyOptElement) return;
+  if (!emptyOp) return;
 
-  emptyOptElement.hidden = hasMatch; // Hide initial empty state when options exist, or when the query already exists
-  attr(emptyOptElement, 'label', value); // Ensures option is not filtered out by <u-combobox>
-  attr(emptyOptElement, 'value', creatable ? value : ''); // Ensures clicking option does nothing
+  emptyOp.hidden = hasMatch; // Hide initial empty state when options exist, or when the query already exists
+  attr(emptyOp, 'label', value); // Ensures option is not filtered out by <u-combobox>
+  attr(emptyOp, 'value', creatable ? value : ''); // Ensures clicking option does nothing
 
-  if (!creatable || emptyOptElement.textContent) return; // Only need to adjust text on empty element if creatable mode and no text is set
-  const text = attrOrCSS(emptyOptElement, ATTR_EMPTY);
-  if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, emptyOptElement);
-  else attr(emptyOptElement, ATTR_EMPTY, text); // Speed up by caching attribute value
+  if (creatable) {
+    const found = values.some((val) => val === value); // Only show "Legg til" if not already created
+    const text = attrOrCSS(emptyOp, ATTR_EMPTY);
+    const hint = (!found && text?.replace(REGEX_CREATE, () => value)) || value;
 
-  const isCreated = items[0]?.value === emptyOptElement.value;
-  const createText = isCreated ? value : text?.split(REGEX_CREATE).join(value); // Only show "Legg til" if not already created
-  attr(emptyOptElement, ATTR_CREATE, createText); // Using split+join to avoid $' and $& replacements
+    if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, emptyOp);
+    else attr(emptyOp, ATTR_EMPTY, text); // Speed up by caching attribute value
+
+    attr(emptyOp, 'disabled', found && emptyOp.textContent ? 'true' : null); // Hide permanent hint if created
+    attr(emptyOp, ATTR_CREATE, hint);
+  }
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:

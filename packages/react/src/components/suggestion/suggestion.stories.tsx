@@ -94,7 +94,7 @@ export const Preview = meta.story({
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List id='123'>
-            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            <Suggestion.Empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place} label={place} value={place}>
                 {place}
@@ -125,7 +125,7 @@ export const ControlledSingle = meta.story({
             <Suggestion.Toggle />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty>Tomt</Suggestion.Empty>
+              <Suggestion.Empty />
               {DATA_PLACES.map((place) => (
                 <Suggestion.Option key={place} label={place} value={place}>
                   {place}
@@ -194,7 +194,7 @@ export const ControlledCreatable = meta.story({
             <Suggestion.Toggle />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty></Suggestion.Empty>
+              <Suggestion.Empty />
               {DATA_PLACES.map((place) => (
                 <Suggestion.Option key={place} label={place} value={place}>
                   {place}
@@ -245,7 +245,7 @@ export const ControlledMultiple = meta.story({
             <Suggestion.Toggle />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty>Tomt</Suggestion.Empty>
+              <Suggestion.Empty />
               {DATA_PLACES.map((place) => (
                 <Suggestion.Option key={place} label={place} value={place}>
                   {place}
@@ -322,7 +322,7 @@ export const ControlledIndependentLabelValue = meta.story({
             <Suggestion.Toggle />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty>Tomt</Suggestion.Empty>
+              <Suggestion.Empty />
               {DATA_PEOPLE.map(({ label, value }) => (
                 <Suggestion.Option key={value} label={label} value={value}>
                   {label}
@@ -373,7 +373,7 @@ export const CustomFilterAlt1 = meta.story({
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            <Suggestion.Empty />
             {DATA_PLACES.map((label) => (
               <Suggestion.Option key={label} value={label.toLowerCase()}>
                 {label}
@@ -408,7 +408,7 @@ export const CustomFilterAlt2 = meta.story({
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            <Suggestion.Empty />
             {DATA_PLACES.filter(
               (_, index) => !selected || index === Number(selected) - 1,
             ).map((label) => (
@@ -440,7 +440,7 @@ export const CustomMatching = meta.story({
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            <Suggestion.Empty />
             {DATA_PLACES.map((label) => (
               <Suggestion.Option key={label}>{label}</Suggestion.Option>
             ))}
@@ -468,7 +468,7 @@ export const AlwaysShowAll = meta.story({
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            <Suggestion.Empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place}>{place}</Suggestion.Option>
             ))}
@@ -561,7 +561,7 @@ export const DefaultValue = meta.story({
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            <Suggestion.Empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place}>{place}</Suggestion.Option>
             ))}
@@ -582,7 +582,7 @@ export const Multiple = meta.story({
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            <Suggestion.Empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place}>{place}</Suggestion.Option>
             ))}
@@ -610,7 +610,7 @@ export const InDetails = meta.story({
               <Suggestion.Toggle />
               <Suggestion.Clear />
               <Suggestion.List>
-                <Suggestion.Empty>Tomt</Suggestion.Empty>
+                <Suggestion.Empty />
                 {DATA_PLACES.map((place) => (
                   <Suggestion.Option key={place}>{place}</Suggestion.Option>
                 ))}
@@ -634,7 +634,7 @@ export const AutoPlacementOnXAxis = meta.story({
             <Suggestion.Toggle />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty>Tomt</Suggestion.Empty>
+              <Suggestion.Empty />
               {DATA_PLACES.map((place) => (
                 <Suggestion.Option key={place}>{place}</Suggestion.Option>
               ))}
@@ -656,9 +656,7 @@ export const Creatable = meta.story({
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty>
-              Ingen treff, trykk enter for å legge til
-            </Suggestion.Empty>
+            <Suggestion.Empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place}>{place}</Suggestion.Option>
             ))}
@@ -683,9 +681,7 @@ export const WithoutToggleButton = meta.story({
           <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty>
-              Ingen treff, trykk enter for å legge til
-            </Suggestion.Empty>
+            <Suggestion.Empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place}>{place}</Suggestion.Option>
             ))}
@@ -711,9 +707,7 @@ export const WithDeprecatedDel = meta.story({
           {/** biome-ignore lint/a11y/useSemanticElements: deprecated */}
           <del role='button' aria-label='Tøm' tabIndex={0} />
           <Suggestion.List>
-            <Suggestion.Empty>
-              Ingen treff, trykk enter for å legge til
-            </Suggestion.Empty>
+            <Suggestion.Empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place}>{place}</Suggestion.Option>
             ))}
