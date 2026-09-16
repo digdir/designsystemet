@@ -23,6 +23,7 @@ export default defineProject({
   cacheDir: 'node_modules/.vite/react-18',
   test: {
     ...baseConfig.test,
+    name: 'react-18',
     env: {
       ...baseConfig.test.env,
       VITE_REACT_VERSION: '18',
