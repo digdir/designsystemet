@@ -10,7 +10,7 @@ import { ArrowRightIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 
 export const Preview = () => {
-  return <Textfield label='Label' />;
+  return <Textfield label='Label' description='Description' />;
 };
 
 export const WithRows = () => {
