@@ -1,4 +1,4 @@
-import type { CreateConfigSchema } from '@digdir/designsystemet/schemas/internal/schema.js';
+import type { ConfigSchema } from '@digdir/designsystemet/schemas/schema.js';
 
 type ImportConfig = {
   type: 'import-config-and-create-preview-tokens';
@@ -12,7 +12,7 @@ type PreviewTokensFromConfig = {
   preview?: {
     // The config validated against the internal schema, i.e. with all defaults
     // filled in. The UI renders the preview from this directly.
-    config: CreateConfigSchema;
+    config: ConfigSchema;
     // Warnings from building the export model (unresolved aliases etc.).
     warnings: string[];
   };
@@ -31,7 +31,7 @@ export type FigmaMessages =
   | ExportTokensToFigma;
 
 export type UiState = {
-  config: CreateConfigSchema | null;
+  config: ConfigSchema | null;
   selectedTheme: string | null;
   /** Pascal case (e.g. 'Light'/'Dark') to match the Figma variables import, unlike the CLI's lowercase schemes */
   selectedScheme: string;

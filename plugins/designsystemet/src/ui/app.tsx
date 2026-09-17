@@ -12,7 +12,7 @@ import {
 import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification, UiState } from '../types';
 import './app.css';
-import type { CreateConfigSchema } from '@digdir/designsystemet/schemas/internal/schema.js';
+import type { ConfigSchema } from '@digdir/designsystemet/schemas/schema.js';
 import { PreviewView } from './preview-view';
 
 const initialState: UiState = {
@@ -27,7 +27,7 @@ const initialState: UiState = {
 type Action =
   | {
       type: 'set-preview';
-      config: CreateConfigSchema;
+      config: ConfigSchema;
       scheme: string;
       notification: Notification | null;
     }
@@ -223,8 +223,8 @@ function App() {
         </div>
       </footer>
       {state.isImporting && (
-        <div className='tx-overlay' role='status' aria-live='polite'>
-          <div className='tx-overlay-card'>
+        <div className='overlay' role='status' aria-live='polite'>
+          <div className='overlay-card'>
             <Spinner aria-label='Exporting to Figma…' />
             <span>Exporting to Figma…</span>
           </div>
@@ -244,11 +244,11 @@ function Banner({
   // Notification.kind maps onto Designsystemet severity colors; 'error' is 'danger' there.
   const color = notification.kind === 'error' ? 'danger' : notification.kind;
   return (
-    <Alert data-color={color} className='tx-banner'>
-      <div className='tx-banner-body'>
+    <Alert data-color={color} className='banner'>
+      <div className='banner-body'>
         <span>{notification.text}</span>
         {notification.details && notification.details.length > 0 && (
-          <ul className='tx-banner-details'>
+          <ul className='banner-details'>
             {notification.details.slice(0, 8).map((line, index) => (
               <li key={index}>{line}</li>
             ))}
