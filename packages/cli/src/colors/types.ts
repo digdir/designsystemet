@@ -20,6 +20,9 @@ export const semanticColorMap = {
   'base-active': 14,
   'base-contrast-subtle': 15,
   'base-contrast-default': 16,
+  'surface-muted': 17,
+  'border-muted': 18,
+  'text-muted': 19,
 } as const;
 
 type SemanticColorMap = typeof semanticColorMap;
