@@ -123,15 +123,63 @@ Før brukeren sender inn informasjon, bør de få mulighet til å kontrollere hv
 
 Se også disse relevante WCAG-kriteriene når du skal samle informasjon fra brukere:
 
-- [1.3.1 Informasjon og relasjoner (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
-- [1.3.5 Identifiser formål med inndata (uutilsynet.no)](https://www.uutilsynet.no/veiledning/135-identifiser-formal-med-inndata/1238)
-- [2.4.6 Overskrifter og ledetekster (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
-- [3.2.2 Inndata (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/322-inndata-niva/114)
-- [3.3.1 Identifikasjon av feil (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/331-identifikasjon-av-feil-niva/116)
-- [3.3.2 Ledetekster eller instruksjoner (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/332-ledetekster-eller-instruksjoner-niva/117)
-- [3.3.3 Forslag ved feil (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/333-forslag-ved-feil-niva-aa/118)
-- [3.3.4 Forhindring av feil (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/334-forhindring-av-feil-juridiske-feil-okonomiske-feil-datafeil-niva-aa/119)
-- [4.1.2 Navn, rolle, verdi (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+- **[1.3.1 Informasjon og relasjoner (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90):**  
+  Sikrer at visuelle strukturer og sammenhenger (som ledetekster, instruksjoner og grupperinger med `Fieldset`) også formidles programmatisk til hjelpemiddelteknologi.
+- **[1.3.5 Identifiser formål med inndata (uutilsynet.no)](https://www.uutilsynet.no/veiledning/135-identifiser-formal-med-inndata/1238):**  
+  Gjør at nettleseren automatisk kan foreslå og forhåndsutfylle brukerens egne opplysninger (som navn, adresse og e-post via `autocomplete`), noe som sparer tid og hindrer tastefeil.
+- **[2.4.6 Overskrifter og ledetekster (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108):**  
+  Krever at overskrifter, seksjonstitler og feltetiketter er unike, konsise og beskriver nøyaktig hva som forventes av brukeren.
+- **[3.2.2 Inndata (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/322-inndata-niva/114):**  
+  Endring av verdi i et felt eller valg av en radioknapp skal aldri automatisk sende inn data eller uventet endre sidens kontekst uten at brukeren er varslet på forhånd.
+- **[3.3.1 Identifikasjon av feil (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/331-identifikasjon-av-feil-niva/116):**  
+  Når det oppstår feil i inndata, skal feilen oppdages, beskrives i tekst og peke direkte på feltet det gjelder.
+- **[3.3.2 Ledetekster eller instruksjoner (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/332-ledetekster-eller-instruksjoner-niva/117):**  
+  Alle felt som krever inndata skal ha synlige og forklarende ledetekster eller instruksjoner, inkludert nødvendige formatkrav før utfylling.
+- **[3.3.3 Forslag ved feil (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/333-forslag-ved-feil-niva-aa/118):**  
+  Dersom systemet oppdager feil format eller mangler, skal brukeren få et konkret og forståelig forslag til hvordan feilen kan rettes.
+- **[3.3.4 Forhindring av feil (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/334-forhindring-av-feil-juridiske-feil-okonomiske-feil-datafeil-niva-aa/119):**  
+  Ved innsendinger med juridiske eller økonomiske konsekvenser skal brukeren ha mulighet til å kontrollere og rette opplysningene på en oppsummering før endelig innsending.
+- **[4.1.2 Navn, rolle, verdi (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121):**  
+  Sikrer at alle interaktive komponenter og inndatafelt har riktig navn, rolle og oppdatert tilstand som formidles til skjermlesere og andre hjelpemidler.
+
+## Relevante kilder og regelverk
+
+Dette mønsteret bygger på nasjonale arkitekturprinsipper, digitaliseringsstrategier og etablerte forvaltningsrettslige krav.
+
+### Lover, forskrifter og god forvaltningsskikk
+
+* **[Forvaltningsloven (lovdata.no)](https://lovdata.no/lov/1967-02-10):**
+  * **§ 11 Veiledningsplikt:** Forvaltningen plikter å veilede brukeren innenfor sitt saksområde, slik at innbyggeren kan ivareta sine rettigheter og plikter.
+  * **§ 17 Utredningsplikt:** Forvaltningsorganet skal påse at saken er så godt opplyst som mulig før vedtak treffes, uten å pålegge brukeren unødvendig byrde.
+  * **§ 15 a Elektronisk kommunikasjon:** Legger til rette for sikker elektronisk samhandling mellom innbygger og forvaltning.
+* **[Personvernforordningen (GDPR) art. 5 (lovdata.no)](https://lovdata.no/lov/2018-06-15-38/gdpr/a5):**
+  * **Prinsipper for behandling av personopplysninger:** Særlig prinsippene om *lovlighet og rettferdighet*, *formålsbegrensning*, *dataminimering* (ikke samle inn mer enn nødvendig) og *riktighet*.
+* **[eForvaltningsforskriften (lovdata.no)](https://lovdata.no/forskrift/2004-06-25-988):**
+  * Regulerer krav til elektronisk saksbehandling, trygg autentisering, fullmakter og elektronisk signatur.
+* **[Forskrift om universell utforming av IKT-løsninger (lovdata.no)](https://lovdata.no/forskrift/2013-06-21-732):**
+  * Pålegger offentlige og private virksomheter å følge kravene i WCAG 2.1 på nivå A og AA.
+* **[Arkivlova og arkivforskriften (lovdata.no)](https://lovdata.no/lov/1992-12-04-126):**
+  * Krav til journalføring, sporbarhet og arkivering av innsendte opplysninger og dokumentasjon.
+
+### Strategier og arkitekturprinsipper for offentlig sektor
+
+* **[Overordnede arkitekturprinsipper for digitalisering av offentlig sektor (digdir.no)](https://www.digdir.no/nasjonal-arkitektur/overordnede-arkitekturprinsipper/1066):**
+  * *Ta utgangspunkt i brukernes behov:* Tjenester skal utformes helhetlig og tilpasset brukerens livshendelse eller situasjon.
+  * *Del og gjenbruk data:* Offentlige virksomheter skal dele data seg imellom for å unngå dobbeltrapportering.
+  * *Bygg tillit:* Sikre transparens rundt hvilke opplysninger som hentes inn og hvordan de behandles.
+* **[Nasjonal digitaliseringsstrategi 2024–2030 (regjeringen.no)](https://www.regjeringen.no/no/dokumenter/nasjonal-digitaliseringsstrategi-2024-2030/id3054178/):**
+  * «Fremtidens digitale Norge» setter klare mål om sammenhengende tjenester, økt datadeling og automatisering av prosesser.
+* **«Kun én gang»-prinsippet (Once-Only Principle):**
+  * Innbyggere og virksomheter skal slippe å oppgi samme opplysninger til det offentlige flere ganger dersom opplysningene allerede finnes i autoritative registre.
+
+### Standarder og faglige veiledere
+
+* **[ELMER 3 – Retningslinjer for brukergrensesnitt i offentlige skjema på nett (brukskvalitet.brreg.no)](https://brukskvalitet.brreg.no/):**
+  * Tidligere obligatorisk standard i *Forskrift om IT-standarder i offentlig forvaltning § 11*, hvis prinsipper og anbefalinger videreføres og moderniseres i dette mønsteret.
+* **[Uu-tilsynets veiledning for skjemautfylling (uutilsynet.no)](https://www.uutilsynet.no/veiledning/skjema/38):**
+  * Veiledning for lovpålagte tilgjengelighetskrav til struktur, ledetekster og feilhåndtering.
+* **[Klarspråk i digitale tjenester (sprakradet.no)](https://www.sprakradet.no/Klarsprak/):**
+  * Språkrådets retningslinjer for et klart, brukervennlig og presist språk i offentlige digitale tjenester.
 
 <Contributors
   headingLevel={2}
