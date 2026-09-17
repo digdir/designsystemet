@@ -38,7 +38,7 @@ describe('generateColorScheme', () => {
     const theme = result.theme as Record<string, Record<number, { $type: string; $value: string }>>;
 
     expect(Object.keys(result)).toEqual(['theme']);
-    expect(Object.keys(theme.accent).map(Number)).toEqual(Array.from({ length: 16 }, (_, i) => i + 1));
+    expect(Object.keys(theme.accent).map(Number)).toEqual(Array.from({ length: 19 }, (_, i) => i + 1));
     expect(theme.accent[12]).toEqual({ $type: 'color', $value: ACCENT });
   });
 

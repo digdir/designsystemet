@@ -79,7 +79,10 @@
                       "base-hover",
                       "base-active",
                       "base-contrast-subtle",
-                      "base-contrast-default"
+                      "base-contrast-default",
+                      "surface-muted",
+                      "border-muted",
+                      "text-muted"
                     ]
                   },
                   "additionalProperties": {

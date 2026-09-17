@@ -51,6 +51,9 @@ export const generateColorScale = (
       ...colors['base-contrast-default'],
       hex: generateColorContrast(baseColors.default, 'default'),
     };
+    colors['surface-muted'] = { ...colors['surface-muted'], hex: muteColor(colors['surface-tinted'].hex) };
+    colors['border-muted'] = { ...colors['border-muted'], hex: muteColor(colors['border-default'].hex) };
+    colors['text-muted'] = { ...colors['text-muted'], hex: muteColor(colors['text-subtle'].hex) };
   }
 
   return colors;
@@ -128,4 +131,16 @@ const generateColorContrast = (color: CssColor, type: 'default' | 'subtle'): Css
  */
 export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
   return `--ds-color-${colorType}-${getSemanticColorByNumber(colorNumber).displayName.toLowerCase().replace(/\s/g, '-')}`;
+};
+
+const MUTED_CHROMA_FACTOR = 0.5;
+const MUTED_CHROMA_MAX = 0.03;
+
+const muteColor = (hex: CssColor): CssColor => {
+  const [L, C, H] = chroma(hex).oklch();
+  const chromaValue = Number.isNaN(C) ? 0 : C;
+  const target = Math.min(chromaValue * MUTED_CHROMA_FACTOR, MUTED_CHROMA_MAX);
+  const adjusted = chroma(L, target, Number.isNaN(H) ? 0 : H, 'oklch').hex();
+  // Re-fit luminance so contrast is identical to the source step.
+  return chroma(adjusted).luminance(chroma(hex).luminance()).hex() as CssColor;
 };
