@@ -26,7 +26,12 @@ export const Search = forwardRef<DSSuggestionElement, SearchProps>(
   function Search({ className, ...rest }, ref) {
     // Using "class" since React does not translate className on custom elements
     return (
-      <ds-suggestion ref={ref} class={cl('ds-search', className)} {...rest} />
+      <ds-suggestion
+        ref={ref}
+        class={cl('ds-search', className)}
+        suppressHydrationWarning // Since <ds-suggestion> adds attributes
+        {...rest}
+      />
     );
   },
 );
