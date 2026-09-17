@@ -1,5 +1,5 @@
 {
-  "name": "@internal/react-18-tests",
+  "name": "@test/react-18",
   "type": "module",
   "private": true,
   "dependencies": {
