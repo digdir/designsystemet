@@ -35,11 +35,11 @@ export function PreviewView({
   const themeNames = Object.keys(config.themes);
   const themeName = pickOption(themeNames, selectedTheme);
   const theme = themeName ? config.themes[themeName] : null;
-  const scheme: ColorScheme = /dark/i.test(selectedScheme) ? 'dark' : 'light';
+  const scheme = selectedScheme.toLowerCase() as ColorScheme;
 
   return (
     <>
-      {(themeNames.length > 1 || COLOR_SCHEME_OPTIONS.length > 1) && (
+      {themeNames.length > 1 && (
         <div className='hero'>
           <div className='control-row'>
             {themeNames.length > 1 && (
@@ -55,7 +55,7 @@ export function PreviewView({
               label='Color scheme'
               ariaLabel='Toggle between color schemes'
               options={COLOR_SCHEME_OPTIONS}
-              value={pickOption(COLOR_SCHEME_OPTIONS, selectedScheme)}
+              value={selectedScheme}
               onChange={onSelectScheme}
             />
           </div>
@@ -67,7 +67,7 @@ export function PreviewView({
           {theme ? (
             <>
               <ColorScales theme={theme} scheme={scheme} />
-              <BorderRadii theme={theme} />
+              <BorderRadii theme={theme} scheme={scheme} />
               <FontFamilies theme={theme} />
             </>
           ) : (
@@ -102,7 +102,7 @@ function LabeledToggleGroup({
 }): React.JSX.Element {
   return (
     <div>
-      <div className='control-label'>{label}</div>
+      <div>{label}</div>
       <ToggleGroup
         aria-label={ariaLabel}
         value={value ?? undefined}
@@ -160,7 +160,13 @@ function ColorScales({
 }
 
 // The border-radius steps in config order, evaluated from their formulas.
-function BorderRadii({ theme }: { theme: ThemeConfig }): React.JSX.Element {
+function BorderRadii({
+  theme,
+  scheme,
+}: {
+  theme: ThemeConfig;
+  scheme: ColorScheme;
+}): React.JSX.Element {
   const steps = useMemo(
     () => Object.entries(resolveBorderRadiusSteps(theme.borderRadius)),
     [theme],
@@ -168,7 +174,7 @@ function BorderRadii({ theme }: { theme: ThemeConfig }): React.JSX.Element {
 
   return (
     <div className='labeled-row'>
-      <span className='row-label subtle'>Border radius</span>
+      <span className='row-label'>Border radius</span>
       <div className='radius-row'>
         {steps.map(([name, px]) => {
           const label = px === null ? 'invalid' : `${px}px`;
@@ -176,6 +182,7 @@ function BorderRadii({ theme }: { theme: ThemeConfig }): React.JSX.Element {
             <div className='radius-item' key={name} title={`${name}: ${label}`}>
               <span className='radius-label'>{name}</span>
               <div
+                data-color-scheme={scheme}
                 className='radius-sample'
                 style={{ '--radius': `${px ?? 0}px` } as React.CSSProperties}
               />
@@ -193,7 +200,7 @@ function FontFamilies({ theme }: { theme: ThemeConfig }): React.JSX.Element {
 
   return (
     <div className='labeled-row'>
-      <span className='row-label subtle'>Font family</span>
+      <span className='row-label'>Font family</span>
       <div className='font-row'>
         {fonts.map(([setName, typography]) => (
           <div
