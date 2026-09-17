@@ -3,20 +3,20 @@ import {
   getThemeColorScales,
   semanticColorNames,
 } from '@digdir/designsystemet/color';
-import type { CreateConfigSchema } from '@digdir/designsystemet/schemas/internal/schema.js';
+import type { ConfigSchema } from '@digdir/designsystemet/schemas/schema.js';
 import { ToggleGroup, ToggleGroupItem } from '@digdir/designsystemet-react';
 import { useMemo } from 'react';
 import { resolveBorderRadiusSteps } from './border-radius';
 
 type PreviewViewProps = {
-  config: CreateConfigSchema;
+  config: ConfigSchema;
   selectedTheme: string | null;
   selectedScheme: string;
   onSelectTheme: (theme: string) => void;
   onSelectScheme: (scheme: string) => void;
 };
 
-type ThemeConfig = CreateConfigSchema['themes'][string];
+type ThemeConfig = ConfigSchema['themes'][string];
 
 // Pascal case to match the Figma variable modes ('Light'/'Dark').
 const COLOR_SCHEME_OPTIONS = ['Light', 'Dark'];
@@ -37,15 +37,11 @@ export function PreviewView({
   const theme = themeName ? config.themes[themeName] : null;
   const scheme: ColorScheme = /dark/i.test(selectedScheme) ? 'dark' : 'light';
 
-  // The preview surface follows the selected scheme (not the user's Figma theme) so light
-  // colors are read on a light surface and dark colors on a dark one. Keying the surface on
-  // the scheme remounts it on scheme change, replaying the reveal animation — but not on
-  // theme change.
   return (
     <>
       {(themeNames.length > 1 || COLOR_SCHEME_OPTIONS.length > 1) && (
-        <div className='tx-hero'>
-          <div className='tx-control-row'>
+        <div className='hero'>
+          <div className='control-row'>
             {themeNames.length > 1 && (
               <LabeledToggleGroup
                 label='Theme'
@@ -66,8 +62,8 @@ export function PreviewView({
         </div>
       )}
 
-      <div key={scheme} className={`tx-surface tx-surface--${scheme}`}>
-        <div className='tx-preview-layout'>
+      <div key={scheme} className={`surface surface--${scheme}`}>
+        <div className='preview-layout'>
           {theme ? (
             <>
               <ColorScales theme={theme} scheme={scheme} />
@@ -75,7 +71,7 @@ export function PreviewView({
               <FontFamilies theme={theme} />
             </>
           ) : (
-            <div className='tx-empty'>The config defines no themes.</div>
+            <div className='empty'>The config defines no themes.</div>
           )}
         </div>
       </div>
@@ -106,7 +102,7 @@ function LabeledToggleGroup({
 }): React.JSX.Element {
   return (
     <div>
-      <div className='tx-control-label'>{label}</div>
+      <div className='control-label'>{label}</div>
       <ToggleGroup
         aria-label={ariaLabel}
         value={value ?? undefined}
@@ -137,21 +133,21 @@ function ColorScales({
   );
 
   if (scales.length === 0) {
-    return <div className='tx-empty'>No semantic color scales found.</div>;
+    return <div className='empty'>No semantic color scales found.</div>;
   }
 
   return (
-    <div className='tx-color-grid'>
+    <div className='color-grid'>
       {scales.map(([name, scale]) => (
-        <div className='tx-color-row' key={name}>
-          <span className='tx-color-row-label' title={name}>
+        <div className='labeled-row' key={name}>
+          <span className='row-label' title={name}>
             {name}
           </span>
-          <div className='tx-swatches'>
+          <div className='swatches'>
             {semanticColorNames.map((role) => (
               <div
                 key={role}
-                className='tx-swatch has-color'
+                className='swatch has-color'
                 title={`${role}: ${scale[role].hex}`}
                 style={{ '--swatch': scale[role].hex } as React.CSSProperties}
               />
@@ -171,20 +167,16 @@ function BorderRadii({ theme }: { theme: ThemeConfig }): React.JSX.Element {
   );
 
   return (
-    <div className='tx-color-row'>
-      <span className='tx-color-row-label tx-subtle'>Border radius</span>
-      <div className='tx-radius-row'>
+    <div className='labeled-row'>
+      <span className='row-label subtle'>Border radius</span>
+      <div className='radius-row'>
         {steps.map(([name, px]) => {
           const label = px === null ? 'invalid' : `${px}px`;
           return (
-            <div
-              className='tx-radius-item'
-              key={name}
-              title={`${name}: ${label}`}
-            >
-              <span className='tx-radius-label'>{name}</span>
+            <div className='radius-item' key={name} title={`${name}: ${label}`}>
+              <span className='radius-label'>{name}</span>
               <div
-                className='tx-radius-sample'
+                className='radius-sample'
                 style={{ '--radius': `${px ?? 0}px` } as React.CSSProperties}
               />
             </div>
@@ -195,25 +187,25 @@ function BorderRadii({ theme }: { theme: ThemeConfig }): React.JSX.Element {
   );
 }
 
-// One entry per typography set; most themes have a single set.
+// One entry per typography font; most themes have a single set.
 function FontFamilies({ theme }: { theme: ThemeConfig }): React.JSX.Element {
-  const fonts = Object.entries(theme.typography);
+  const fonts = Object.entries(theme.typography.fonts);
 
   return (
-    <div className='tx-color-row'>
-      <span className='tx-color-row-label tx-subtle'>Font family</span>
-      <div className='tx-font-row'>
+    <div className='labeled-row'>
+      <span className='row-label subtle'>Font family</span>
+      <div className='font-row'>
         {fonts.map(([setName, typography]) => (
           <div
-            className='tx-font-item'
+            className='font-item'
             key={setName}
             title={`${setName}: ${typography.fontFamily}`}
             style={{ fontFamily: `'${typography.fontFamily}', sans-serif` }}
           >
-            <span className='tx-font-sample' aria-hidden='true'>
+            <span className='font-sample' aria-hidden='true'>
               Aa
             </span>
-            <span className='tx-font-name'>{typography.fontFamily}</span>
+            <span className='font-name'>{typography.fontFamily}</span>
           </div>
         ))}
       </div>

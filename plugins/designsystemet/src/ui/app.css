@@ -65,28 +65,28 @@ footer {
 }
 
 /* Banner (Designsystemet Alert) — a dismiss button sits to the right of the message. */
-.tx-banner {
+.banner {
   display: flex;
   align-items: flex-start;
   gap: var(--ds-size-3);
   margin: var(--ds-size-3) var(--ds-size-5) 0;
 }
 
-.tx-banner-body {
+.banner-body {
   flex: 1 1 auto;
 }
 
-.tx-banner-details {
+.banner-details {
   margin: 6px 0 0;
   padding-left: 18px;
 }
 
-.tx-subtle {
+.subtle {
   color: var(--ds-color-neutral-text-subtle);
 }
 
 /* Preview: theme/scheme controls + color scales + border radii. */
-.tx-hero {
+.hero {
   display: grid;
   gap: 10px;
   padding: 18px var(--ds-size-5);
@@ -94,19 +94,19 @@ footer {
   background: var(--ds-color-neutral-background-tinted);
 }
 
-.tx-control-row {
+.control-row {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: var(--ds-size-4);
 }
 
-.tx-control-label {
+.control-label {
   margin-bottom: var(--ds-size-1);
   color: var(--ds-color-neutral-text-subtle);
 }
 
-.tx-preview-layout {
+.preview-layout {
   display: grid;
   gap: var(--ds-size-4);
   padding-inline: var(--ds-size-4);
@@ -115,34 +115,34 @@ footer {
 /* The preview surface follows the selected color scheme rather than Figma's theme. Softened
    light/dark tones (not pure white/black) keep it readable without flashbanging dark-mode
    users. Keyed on the scheme in JSX so it remounts and replays the reveal on scheme switch. */
-.tx-surface {
+.surface {
   display: grid;
   padding-block: var(--ds-size-4);
   margin: 0 auto;
 }
 
-.tx-surface--light {
+.surface--light {
   color: #1e1e1e;
   background: #f4f4f5;
 }
 
-.tx-surface--dark {
+.surface--dark {
   color: #f5f5f6;
   background: #26282c;
 }
 
-.tx-color-grid {
+.color-grid {
   display: grid;
   gap: var(--ds-size-1);
 }
 
-.tx-color-row {
+.labeled-row {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.tx-color-row-label {
+.row-label {
   flex: 0 0 120px;
   overflow: hidden;
   white-space: nowrap;
@@ -153,12 +153,12 @@ footer {
   opacity: 0.75;
 }
 
-.tx-swatches {
+.swatches {
   display: flex;
   gap: 2px;
 }
 
-.tx-swatch {
+.swatch {
   width: var(--ds-size-8);
   height: var(--ds-size-8);
   border-radius: 4px;
@@ -174,23 +174,23 @@ footer {
   background-size: 12px 12px;
 }
 
-.tx-swatch.has-color {
+.swatch.has-color {
   background: var(--swatch);
 }
 
-.tx-radius-row {
+.radius-row {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
-.tx-radius-item {
+.radius-item {
   display: flex;
   align-items: center;
   gap: var(--ds-size-3);
 }
 
-.tx-radius-sample {
+.radius-sample {
   width: var(--ds-size-5);
   height: var(--ds-size-5);
   border: 1px solid currentColor;
@@ -198,18 +198,18 @@ footer {
   opacity: 0.6;
 }
 
-.tx-radius-label {
+.radius-label {
   font-size: var(--ds-font-size-4);
   opacity: 0.75;
 }
 
-.tx-font-row {
+.font-row {
   display: flex;
   flex-wrap: wrap;
   gap: var(--ds-size-3);
 }
 
-.tx-font-item {
+.font-item {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -217,18 +217,18 @@ footer {
 
 /* The sample inherits the surface color; the family itself comes from the theme token.
    If the font isn't available inside the plugin iframe, the sans-serif fallback renders. */
-.tx-font-sample {
+.font-sample {
   font-size: var(--ds-font-size-5);
   line-height: 1;
   opacity: 0.9;
 }
 
-.tx-font-name {
+.font-name {
   font-size: var(--ds-font-size-5);
   opacity: 0.75;
 }
 
-.tx-empty {
+.empty {
   display: grid;
   min-height: 420px;
   place-items: center;
@@ -238,7 +238,7 @@ footer {
 }
 
 /* Busy overlay shown while exporting to Figma. */
-.tx-overlay {
+.overlay {
   position: fixed;
   inset: 0;
   z-index: 30;
@@ -249,7 +249,7 @@ footer {
   backdrop-filter: blur(6px);
 }
 
-.tx-overlay-card {
+.overlay-card {
   display: grid;
   justify-items: center;
   gap: var(--ds-size-3);

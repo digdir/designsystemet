@@ -2,7 +2,7 @@ import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
 import { validateConfig } from '../schemas/helpers.ts';
-import { type CreateConfigSchema, configSchema } from '../schemas/internal/schema.ts';
+import { type ConfigSchema, configSchema } from '../schemas/schema.ts';
 import { type FigmaCollections, toFigmaCollections } from '../tokens/create/figma-collections.ts';
 import { generate$Themes } from '../tokens/create/generators/$themes.ts';
 import { createTokens, getTokenSetDimensions } from '../tokens/create.ts';
@@ -30,7 +30,7 @@ type PreviewToken = { variable: string; value: string };
  * @param config - The configuration object containing theme definitions and token sets.
  * @param themeConfig
  */
-const _toFigmaCollection = async (config: CreateConfigSchema) => {
+const _toFigmaCollection = async (config: ConfigSchema) => {
   const themeNames = Object.keys(config.themes);
 
   console.log('config', config.themes);
