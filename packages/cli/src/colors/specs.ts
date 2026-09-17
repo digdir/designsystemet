@@ -177,6 +177,36 @@ export const semanticColorSpec: SemanticColorSpec = {
     },
     minContrast: [{ ratio: 4.5, against: ['base-default', 'base-hover'] }],
   },
+  'surface-muted': {
+    number: 17,
+    name: 'surface-muted',
+    group: 'surface',
+    displayName: 'Surface Muted',
+    luminance: {
+      light: 1,
+      dark: 1,
+    },
+  },
+  'border-muted': {
+    number: 18,
+    name: 'border-muted',
+    group: 'border',
+    displayName: 'Border Muted',
+    luminance: {
+      light: 1,
+      dark: 1,
+    },
+  },
+  'text-muted': {
+    number: 19,
+    name: 'text-muted',
+    group: 'text',
+    displayName: 'Text Muted',
+    luminance: {
+      light: 1,
+      dark: 1,
+    },
+  },
 };
 
 export const semanticColorNames = Object.keys(semanticColorMap) as SemanticColorNames[];
