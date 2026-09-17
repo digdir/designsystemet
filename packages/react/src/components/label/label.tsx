@@ -7,6 +7,7 @@ import type { DefaultProps } from '../../types';
 export type LabelProps = {
   /**
    * Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset
+   * @deprecated as field now automatically changes font-weight based on input type
    */
   weight?: 'regular' | 'medium' | 'semibold';
   /**

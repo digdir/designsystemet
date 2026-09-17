@@ -148,7 +148,7 @@
     color: inherit;
   }
 
-  /* old selector for backwards compatibility */
+  /* @deprecated old selector for backwards compatibility */
   & > form[method='dialog']:first-child > button:only-child {
     float: inline-end;
     margin-block-start: var(--_dsc-dialog-icon-top-right-margin);

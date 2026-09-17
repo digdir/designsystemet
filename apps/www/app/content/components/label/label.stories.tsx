@@ -1,4 +1,4 @@
-import { Label, Textfield } from '@digdir/designsystemet-react';
+import { Field, Input, Label, Textfield } from '@digdir/designsystemet-react';
 
 export const Preview = () => {
   return <Label>Fødselsnummer (11 sifre)</Label>;
@@ -10,11 +10,16 @@ export const PreviewEn = () => {
 
 export const Weights = () => {
   return (
-    <>
-      <Label weight='regular'>Regular weight</Label>
-      <Label weight='medium'>Medium weight</Label>
-      <Label weight='semibold'>Semibold weight</Label>
-    </>
+    <div style={{ display: 'grid', gap: 'var(--ds-size-8)' }}>
+      <Field>
+        <Label>Label for text input</Label>
+        <Input type='text' />
+      </Field>
+      <Field>
+        <Label>Label for checkbox input</Label>
+        <Input type='checkbox' />
+      </Field>
+    </div>
   );
 };
 

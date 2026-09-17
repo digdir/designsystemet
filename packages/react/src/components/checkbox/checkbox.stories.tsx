@@ -513,7 +513,12 @@ export const Outline = meta.story(() => (
         description='description text'
         value='description'
       />
-      <Checkbox variant='outline' label='Checked' value='checked' checked />
+      <Checkbox
+        variant='outline'
+        label='Checked'
+        value='checked'
+        defaultChecked
+      />
       <Checkbox
         variant='outline'
         label='with error state'
@@ -531,7 +536,7 @@ export const Outline = meta.story(() => (
         disabled
         label='disabled'
         value='disabled'
-        checked
+        defaultChecked
       />
       <Checkbox
         variant='outline'
@@ -544,7 +549,7 @@ export const Outline = meta.story(() => (
         readOnly
         label='readonly checked'
         value='readonly'
-        checked
+        defaultChecked
       />
     </Fieldset>
   </>
