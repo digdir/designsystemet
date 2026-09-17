@@ -1,5 +1,53 @@
 # Change Log
 
+## 1.22.0
+
+### Minor Changes
+
+- **Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+### Patch Changes
+
+- **Tag:** Now gets accessible focus outline if rendered as interactive element to support tag clouds etc. ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+
+- **Radio:** Fixed tiny rendering glitch gap between hover outline and border at 400% zoom. ([#5341](https://github.com/digdir/designsystemet/pull/5341))
+
+- **Avatar:** Now scales initials text to match avatar size ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+
+- **Breadcrumbs:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+- **Chip:** Improve optical spacing between input/icon and text, which leads to slightly slimmer chip width. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
+
+- **Dropdown:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+- **AvatarStack:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+- **Chip:** Removable chips now automatically include screen reader instructions. Customize the instructions using `aria-label` or the new `--dsc-chip-removable-label` CSS custom property. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
+
+- **Avatar:** Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+  - **deprecated**` data-initials` will be removed in next major release.
+- **Link:** Adjusted the default `--dsc-link-text-decoration-thickness` to `0.06em` (from `0.0625em`) and `--dsc-link-text-decoration-thickness--hover` to `0.12em` (from `0.125em`) for slimmer, more consistent underlines across cards, headings, and links. ([#5365](https://github.com/digdir/designsystemet/pull/5365))
+
+- **Card:** Now supports `--dsc-card-link-text-decoration-thickness` and `--dsc-card-link-text-decoration-thickness--hover` aligning underline behaviour with link component ([#5365](https://github.com/digdir/designsystemet/pull/5365))
+
+- **Pagination:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+## 1.21.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334)) by [@renovate](https://github.com/apps/renovate)
+
+- **Avatar:** When `data-variant="square"`, default `border-radius` is adjusted to `--ds-border-radius-md` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
+
+- **Alert, Errorsummary, Table:** Default `border-radius` adjusted to `--ds-border-radius-lg` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
+
+- **Link:** Reduced the default underline offset from 27% to 24% to avoid collisions with character descenders ([#5325](https://github.com/digdir/designsystemet/pull/5325))
+
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302)) by [@renovate](https://github.com/apps/renovate)
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.21.1
+
 ## 1.21.0
 
 ### Patch Changes

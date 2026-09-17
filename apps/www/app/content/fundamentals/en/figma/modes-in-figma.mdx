@@ -31,7 +31,7 @@ Designers can easily switch between different modes in Figma and see information
 Here you can see that information about the selected mode is not visible with view-only access.
 
 <Image
-  src='/img/fundamentals/figma/modes-in-figma/visningstilgang.png'
+  src='/img/fundamentals/figma/modes-in-figma/visningstilgang.webp'
   alt='Screenshot showing how modes appear in Figma for users with view-only access'
   boxShadow={false}
 />
@@ -40,7 +40,7 @@ Here you can see that information about the selected mode is not visible with vi
 When you have editing access, you can see which mode is selected for the entire design.
 
 <Image
-  src='/img/fundamentals/figma/modes-in-figma/redigeringstilgang.png'
+  src='/img/fundamentals/figma/modes-in-figma/redigeringstilgang.webp'
   alt='Screenshot showing how modes appear in Figma for users with editing access'
   boxShadow={false}
 />
@@ -50,7 +50,7 @@ If a mode is set on an entire frame, it is only visible in Dev Mode when the fra
 Dev Mode only shows which mode is set on the element it is applied to, not further down.
 
 <Image
-  src='/img/fundamentals/figma/modes-in-figma/dev-mode-hele-frame.png'
+  src='/img/fundamentals/figma/modes-in-figma/dev-mode-hele-frame.webp'
   alt='Screenshot showing how modes appear in Figma in Dev Mode when the entire frame is selected'
   boxShadow={false}
   caption='This is how it looks when the entire frame is selected in Dev Mode.'
@@ -77,6 +77,8 @@ The video below demonstrates how you can change Theme in Figma:
 *Color scheme mode* lets you switch between *Light* and *Dark* mode.
 You can use this setting on the entire design or just on specific areas, such as a *header* or *footer*. When you change the color scheme of a section, only that part changes, while the rest of the design remains unchanged.
 
+In code, color scheme can be set by using the attribute `data-color-scheme`.
+
 Here's how to switch between Light and Dark mode in Figma:
 <ResponsiveIframe
   src="/img/fundamentals/figma/modes-in-figma/color-scheme.mp4"
@@ -91,7 +93,9 @@ Here's how to switch between Light and Dark mode in Figma:
 ## Color
 To offer the ability to change colors on components, we've created a *Color* mode. It contains all the colors you entered in the theme builder. By selecting a color mode in Figma, you control which of your theme colors is used.
 
- The modes are cascading, so you can set them on the entire design or just on specific frame. This allows you to easily customize the design and adapt it to different contexts and needs.
+The modes are cascading, so you can set them on the entire design or just on specific frame. This allows you to easily customize the design and adapt it to different contexts and needs.
+
+In code, color can be set by using the attribute `data-color`.
 
 Here's how to change the color on a component:
 

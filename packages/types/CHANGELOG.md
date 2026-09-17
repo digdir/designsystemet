@@ -1,5 +1,13 @@
 # @digdir/designsystemet-types
 
+## 1.22.0
+
+No changes in this release.
+
+## 1.21.1
+
+No changes in this release.
+
 ## 1.21.0
 
 ## 1.20.1

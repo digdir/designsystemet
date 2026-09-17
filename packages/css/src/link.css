@@ -1,12 +1,11 @@
 .ds-link {
-  /* TODO: Changeset for visited color and active background and border-radius styling */
   --dsc-link-color: var(--ds-color-text-subtle);
   --dsc-link-color--hover: var(--ds-color-text-default);
   --dsc-link-color--active: var(--ds-color-text-default);
   --dsc-link-color--visited: var(--dsc-link-color);
   --dsc-link-background--active: transparent; /* Kept for backwards compatibility */
-  --dsc-link-text-decoration-thickness--hover: 0.125em; /* 2px ish */
-  --dsc-link-text-decoration-thickness: 0.0625em; /* 1px ish */
+  --dsc-link-text-decoration-thickness--hover: 0.12em; /* 2px ish */
+  --dsc-link-text-decoration-thickness: 0.06em; /* 1px ish */
   --dsc-link-border-radius: 0;
 
   color: var(--dsc-link-color);
@@ -14,7 +13,7 @@
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-thickness: var(--dsc-link-text-decoration-thickness);
-  text-underline-offset: 0.27em; /* 5px ish */
+  text-underline-offset: 0.24em;
   border-radius: var(--dsc-link-border-radius);
 
   /* Revert <button> styling */

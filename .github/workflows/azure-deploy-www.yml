@@ -50,16 +50,20 @@ jobs:
       fqdn: ${{ steps.fqdn.outputs.fqdn }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: az login (oidc)
-        uses: azure/login@7ddb5af1ef8758cf1353cf3b42f940aee27ba21c # v3.0.2
+        uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3.1.0
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: acr login (for docker push)
-        run: az acr login --name ${{ env.ACR_NAME }}
+        env:
+          ACR_NAME: ${{ env.ACR_NAME }}
+        run: az acr login --name "$ACR_NAME"
 
       - name: build & push image
         uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
@@ -107,7 +111,7 @@ jobs:
   update-comment:
     if: ${{ inputs.update_comment }}
     needs: deploy
-    uses: ./.github/workflows/preview-comment.yml
+    uses: $/.github/workflows/preview-comment.yml
     with:
       pr_number: ${{ github.event.number }}
       deployment_type: www

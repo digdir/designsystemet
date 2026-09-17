@@ -32,6 +32,7 @@ next-env.d.ts
 test-report.xml
 __screenshots__
 .vitest-attachments
+.vitest
 
 packages/cli/temp
 

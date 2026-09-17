@@ -2,7 +2,7 @@ ARG PORT
 ARG HOST
 ARG APP_ENV
 # find sha for image on https://hub.docker.com/_/node/tags
-FROM node:24.20.0-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e AS base
+FROM node:24.21.0-slim@sha256:2fe369e969550cde8e867afc3fe370b260140cab4a23d467074295b42163d553 AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ENV CI=true
@@ -34,7 +34,7 @@ COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
-CMD [ "pnpm", "start" ]
+CMD [ "node", "server.js" ]
 
 FROM packages AS themebuilder-build
 WORKDIR /usr/src/app
@@ -50,7 +50,7 @@ COPY --from=themebuilder-build /prod/@web/themebuilder /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
-CMD [ "pnpm", "start" ]
+CMD [ "node", "server.js" ]
 
 FROM packages AS storybook-build
 RUN pnpm build:storybook

@@ -14,6 +14,11 @@
   --dsc-card-padding: var(--ds-size-6);
   --dsc-card-border-radius: var(--ds-border-radius-lg);
 
+  /* Matches link component */
+  --dsc-card-link-text-decoration-thickness--hover: 0.12em;
+  --dsc-card-link-text-decoration-thickness: 0.06em;
+  --dsc-card-link-text-decoration-offset: 0.24em;
+
   background: var(--dsc-card-background);
   border-radius: var(--dsc-card-border-radius);
   border-width: var(--dsc-card-border-width);
@@ -47,8 +52,8 @@
     & > .ds-card__block > :is(h1, h2, h3, h4, h5, h6) {
       text-decoration-line: underline;
       text-decoration-style: solid;
-      text-decoration-thickness: max(1px, 0.0625rem, 0.1025em); /* 2px ish */
-      text-underline-offset: 0.27em; /* 5px ish */
+      text-decoration-thickness: var(--dsc-card-link-text-decoration-thickness);
+      text-underline-offset: var(--dsc-card-link-text-decoration-offset);
 
       & > a {
         text-decoration: none;
@@ -62,6 +67,11 @@
     &:where(a, button, [role='button']):hover,
     &[data-clickdelegatefor]:has(.\:click-delegate-hover) {
       background: var(--dsc-card-background--hover);
+
+      & > :is(h1, h2, h3, h4, h5, h6),
+      & > .ds-card__block > :is(h1, h2, h3, h4, h5, h6) {
+        text-decoration-thickness: var(--dsc-card-link-text-decoration-thickness--hover);
+      }
 
       &:active {
         background: var(--dsc-card-background--active);

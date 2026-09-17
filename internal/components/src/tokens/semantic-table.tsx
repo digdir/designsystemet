@@ -27,6 +27,9 @@ export const SemanticVariablesTable = ({
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
+            <Table.HeaderCell>
+              {t('token-preview.table.figma')}
+            </Table.HeaderCell>
             {withPreview && (
               <>
                 <Table.HeaderCell>
@@ -44,6 +47,11 @@ export const SemanticVariablesTable = ({
             <Table.Row key={variable}>
               <Table.Cell>
                 <code>{variable}</code>
+              </Table.Cell>
+              <Table.Cell style={{ whiteSpace: 'nowrap' }}>
+                {variable.match(/-(base|scale)$/)
+                  ? null // Avoid printing base and scale properties as these are not in Figma
+                  : variable.replace('--ds-', '').replace(/-([^-]+)$/, ' $1')}
               </Table.Cell>
               {withPreview && (
                 <>

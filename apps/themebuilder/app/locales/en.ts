@@ -138,6 +138,9 @@ export default {
     'set-to': 'Set to',
     view: 'view',
   },
+  colorGroup: {
+    'see-more': 'See more about {{namespace}} {{color}}',
+  },
   'color-tokens': {
     title: 'Color Tokens',
     description:

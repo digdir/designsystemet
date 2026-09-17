@@ -9,15 +9,15 @@
     display: block; /* Needed for <ds-breadcrumbs> element */
   }
 
-  &:is(:lang(no), :lang(nb), :lang(nn)) {
+  &:lang(no),
+  &:lang(nb),
+  &:lang(nn) {
     --dsc-breadcrumbs-label: 'Du er her:'; /* Only set default label if Norwegian */
   }
 
   & > :is(ol, ul) {
+    @composes ds-list--unstyled from './base.css';
     flex-wrap: wrap;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
     gap: var(--dsc-breadcrumbs-spacing) 0;
 
     &:not([hidden]) {

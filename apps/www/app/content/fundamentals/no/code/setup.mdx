@@ -131,9 +131,12 @@ Alle komponenter har egen side i [komponent-dokumentasjonen](/no/components), vi
 
 Det er også anbefalt at du leser gjennom tilgjengelighets-sida.
 
-- Bruk `data-color-scheme="light | dark | auto"` for å sette dark/light mode.
-- Bruk `data-size="sm | md | lg"` for å sette størrelse på komponentene.
-- Bruk `data-color` for å sette farge på komponentene som du har definert for ditt tema.
+- Bruk `data-color-scheme="light | dark | auto"` for å sette dark/light mode 
+  - tilsvarer `Appearance › Color scheme` i Figma
+- Bruk `data-size="sm | md | lg"` for å sette størrelse på komponentene
+  - tilsvarer `Appearance › Size` i Figma
+- Bruk `data-color` for å sette farge på komponentene som du har definert for ditt tema
+  - tilsvarer `Appearance › Color` i Figma
 
 
 <ds-tabs class="ds-tabs" data-wide-content>
@@ -235,3 +238,54 @@ body {
   font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
 }
 ```
+
+## Testing
+
+Vi er opptatt av at komponentene skal fungere godt i ulike testoppsett. Designsystemet testes i JSDOM og HappyDOM, og gjennom Playwright i Chromium, Firefox og WebKit. Det vil alltid allikevel finnes rammeverk, testmiljøer og meta-rammeverk som håndterer asynkron uttegning eller enkelte edge cases på forskjellige måter.
+
+Opplever du problemer med Designsystemet i ditt testoppsett, vil vi veldig gjerne høre om det. Meld fra via et [GitHub-issue](https://github.com/digdir/designsystemet/issues/new/choose) eller spør oss i [vår åpne Slack](https://designsystemet.no/slack).
+
+Merk at ikke alt som støttes av nettlesere er implementert i miljøer med en kunstig DOM, som JSDOM og HappyDOM. I noen tilfeller kan du trenge konfigurasjon av testoppsettet ditt:
+
+<details className="ds-details">
+<summary>HappyDOM-oppsett</summary>
+
+HappyDOM kan trenge støtte for arv mellom `HTMLDocument` og `Document`:
+
+```ts
+// Polyfill missing HTMLDocument to Document inheritance in HappyDOM
+if (
+  typeof HTMLDocument !== 'undefined' &&
+  !(HTMLDocument.prototype instanceof Document)
+) {
+  try {
+    Object.setPrototypeOf(HTMLDocument.prototype, Document.prototype);
+  } catch (_) {}
+}
+```
+</details>
+
+<details className="ds-details">
+<summary>JSDOM-oppsett</summary>
+
+JSDOM kan mangle støtte for enkelte metoder på `HTMLDialogElement`:
+
+```ts
+// Polyfill missing HTMLDialogElement methods in JSDOM
+if (typeof HTMLDialogElement.prototype.show !== 'function') {
+  HTMLDialogElement.prototype.show = function () {
+    this.open = true;
+  };
+
+  HTMLDialogElement.prototype.showModal = function () {
+    this.open = true;
+  };
+
+  HTMLDialogElement.prototype.close = function (returnValue?: string) {
+    this.open = false;
+    if (returnValue !== undefined) this.returnValue = returnValue;
+    this.dispatchEvent(new Event('close'));
+  };
+}
+```
+</details>

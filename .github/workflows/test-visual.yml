@@ -48,13 +48,14 @@ jobs:
           fetch-depth: 0
           # build the PR HEAD exactly
           ref: ${{ github.event.pull_request.head.sha }}
-      - uses: ./.github/actions/gh-setup
+          persist-credentials: false
+      - uses: $/.github/actions/gh-setup
       - name: Build
         run: pnpm build
       - name: Build storybook
         run: pnpm build:storybook
       - name: Chromatic (visual + interaction)
-        uses: chromaui/action@2a0b63f30233c48591844a46d451b9cf68128186 # v18.7.2
+        uses: chromaui/action@259eda5f0e44c0c1eab38b672f1c4c967cc969b7 # v18.8.1
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
@@ -73,13 +74,14 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - uses: ./.github/actions/gh-setup
+          persist-credentials: false
+      - uses: $/.github/actions/gh-setup
       - name: Build
         run: pnpm build
       - name: Build storybook
         run: pnpm build:storybook
       - name: Chromatic (auto-accept on main)
-        uses: chromaui/action@2a0b63f30233c48591844a46d451b9cf68128186 # v18.7.2
+        uses: chromaui/action@259eda5f0e44c0c1eab38b672f1c4c967cc969b7 # v18.8.1
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

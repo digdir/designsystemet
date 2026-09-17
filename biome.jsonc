@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.5.11/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.13/schema.json",
   "assist": {
     "actions": { "source": { "organizeImports": "on" } }
   },
@@ -13,7 +13,6 @@
     "includes": [
       "**/*",
       "!.vscode",
-      "!.github",
       "!.changeset",
       "!**/design-tokens/*",
       "!**/dist",
@@ -25,7 +24,8 @@
       "!**/package.json", // changeset wants the files to be formatted differently
       "!**/wc/public",
       "!**/content/schemas/**/*.json",
-      "!**/packages/cli/tests/**/*.css"
+      "!**/packages/cli/tests/**/*.css",
+      "!**/__snapshots__" // vitest file snapshots must keep the exact serialization the test produces
     ]
   },
   "formatter": {

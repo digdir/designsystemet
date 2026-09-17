@@ -212,6 +212,10 @@ export default {
       normal: 'Klikk for å forstørre bilde.',
     },
   },
+  'color-info-table': {
+    name: 'Navn',
+    usage: 'Bruksområde',
+  },
   'image-banner': {
     'play-video': 'Spill av video',
     'pause-video': 'Sett video på pause',

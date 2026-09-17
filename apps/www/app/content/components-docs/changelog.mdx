@@ -1,7 +1,195 @@
 ---
 title: "Changelog"
-latestVersion: 1.21.0
+latestVersion: 1.22.0
 ---
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.22.0
+
+<Divider/>
+
+### @digdir/designsystemet
+
+No changes in this release.
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Minor Changes
+
+- **Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+#### Patch Changes
+
+- **Tag:** Now gets accessible focus outline if rendered as interactive element to support tag clouds etc. ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+
+- **Radio:** Fixed tiny rendering glitch gap between hover outline and border at 400% zoom. ([#5341](https://github.com/digdir/designsystemet/pull/5341))
+
+- **Avatar:** Now scales initials text to match avatar size ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+
+- **Breadcrumbs:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+- **Chip:** Improve optical spacing between input/icon and text, which leads to slightly slimmer chip width. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
+
+- **Dropdown:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+- **AvatarStack:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+- **Chip:** Removable chips now automatically include screen reader instructions. Customize the instructions using `aria-label` or the new `--dsc-chip-removable-label` CSS custom property. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
+
+- **Avatar:** Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+  - **deprecated**` data-initials` will be removed in next major release.
+- **Link:** Adjusted the default `--dsc-link-text-decoration-thickness` to `0.06em` (from `0.0625em`) and `--dsc-link-text-decoration-thickness--hover` to `0.12em` (from `0.125em`) for slimmer, more consistent underlines across cards, headings, and links. ([#5365](https://github.com/digdir/designsystemet/pull/5365))
+
+- **Card:** Now supports `--dsc-card-link-text-decoration-thickness` and `--dsc-card-link-text-decoration-thickness--hover` aligning underline behaviour with link component ([#5365](https://github.com/digdir/designsystemet/pull/5365))
+
+- **Pagination:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Minor Changes
+
+- **Suggestion.Clear:** `aria-label` prop deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-clear` or attribute `data-sr-clear` on Suggestion. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** `singular` and `plural` props deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-singular` and `--dsc-suggestion-sr-plural` or attributes `data-sr-singular` and `data-sr-plural`. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Search.Clear:** `aria-label` prop deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-clear` or attribute `data-sr-clear` on Search. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+#### Patch Changes
+
+- **Utils:** Correctly unescapes quotes in localized CSS custom property texts (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Search:** Now correctly sets state of clear button also when programmatically changing `value` (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders focus ring in Safari (thanks @ssb-cgn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders clear button state when rendered asynchronously (thanks @stianmorsund) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Search:** No longer causes hydration warning when server side rendered. ([#5368](https://github.com/digdir/designsystemet/pull/5368))
+
+- **Tag:** Now supports `asChild` property ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+
+- **Avatar:** Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+  - **deprecated**` data-initials` will be removed in next major release.
+- **Suggestion:** Now correctly handles internal state when preventing a selection (thanks @olemartinorg) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders `data-empty` option when not creatable (thanks @lassopicasso) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+<Divider/>
+
+### @digdir/designsystemet-types
+
+No changes in this release.
+
+<Divider/>
+
+### @digdir/designsystemet-web
+
+#### Minor Changes
+
+- **Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+#### Patch Changes
+
+- **Utils:** Correctly unescapes quotes in localized CSS custom property texts (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Search:** Now correctly sets state of clear button also when programmatically changing `value` (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders focus ring in Safari (thanks @ssb-cgn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders clear button state when rendered asynchronously (thanks @stianmorsund) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Tooltips:** Now only warns about missing `tabindex` if not explicitly set and not if label which has implicit interaction ([#5353](https://github.com/digdir/designsystemet/pull/5353))
+
+- **Suggestion:** Now correctly handles internal state when preventing a selection (thanks @olemartinorg) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders `data-empty` option when not creatable (thanks @lassopicasso) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.21.1
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334)) by [@renovate](https://github.com/apps/renovate)
+
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302)) by [@renovate](https://github.com/apps/renovate)
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.21.1
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334)) by [@renovate](https://github.com/apps/renovate)
+
+- **Avatar:** When `data-variant="square"`, default `border-radius` is adjusted to `--ds-border-radius-md` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
+
+- **Alert, Errorsummary, Table:** Default `border-radius` adjusted to `--ds-border-radius-lg` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
+
+- **Link:** Reduced the default underline offset from 27% to 24% to avoid collisions with character descenders ([#5325](https://github.com/digdir/designsystemet/pull/5325))
+
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302)) by [@renovate](https://github.com/apps/renovate)
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.21.1
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334))
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302))
+- Updated dependencies [[`d722297`](https://github.com/digdir/designsystemet/commit/d722297deeb90c6a6df17589cd385551622b91b2), [`efad10b`](https://github.com/digdir/designsystemet/commit/efad10bfc66d289ad1aba9794fd986e71249b190), [`58f75a2`](https://github.com/digdir/designsystemet/commit/58f75a255ea0e1656d4c2617f5b3fb3311228f85)]:
+  - @digdir/designsystemet-web@1.21.1
+  - @digdir/designsystemet-types@1.21.1
+
+<Divider/>
+
+### @digdir/designsystemet-types
+
+No changes in this release.
+
+<Divider/>
+
+### @digdir/designsystemet-web
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334)) by [@renovate](https://github.com/apps/renovate)
+
+- Restored the framework type imports in `dist/index.d.ts`, so the JSX/element type augmentations for `ds-*` custom elements resolve again ([#5331](https://github.com/digdir/designsystemet/pull/5331))
+
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302)) by [@renovate](https://github.com/apps/renovate)
+
+</div>
 
 <div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",

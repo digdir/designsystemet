@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.22.0
+
+No changes in this release.
+
+## 1.21.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334)) by [@renovate](https://github.com/apps/renovate)
+
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302)) by [@renovate](https://github.com/apps/renovate)
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.21.1
+
 ## 1.21.0
 
 ### Patch Changes

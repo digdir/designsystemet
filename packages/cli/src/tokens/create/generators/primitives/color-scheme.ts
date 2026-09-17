@@ -1,7 +1,7 @@
 import type { ColorScale, ColorScheme, CssColor, SemanticColorNames } from '../../../../colors/index.ts';
 import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
-import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
+import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
 /**

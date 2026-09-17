@@ -205,7 +205,7 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
      */
     useEffect(() => {
       const combobox = dsSuggestionRef.current;
-      const beforeChange = (event: CustomEvent<HTMLDataElement>) => {
+      const beforeSelect = (event: CustomEvent<HTMLDataElement>) => {
         event.preventDefault();
         const multiple = combobox?.multiple;
         const data = event.detail;
@@ -218,9 +218,9 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
         if (!isControlled) setDefaultItems(sanitizeItems(nextItem));
       };
 
-      combobox?.addEventListener('comboboxbeforeselect', beforeChange);
+      combobox?.addEventListener('comboboxbeforeselect', beforeSelect);
       return () =>
-        combobox?.removeEventListener('comboboxbeforeselect', beforeChange);
+        combobox?.removeEventListener('comboboxbeforeselect', beforeSelect);
     }, [isControlled]);
 
     // Before match event listener
