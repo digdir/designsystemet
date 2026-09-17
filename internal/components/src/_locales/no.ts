@@ -78,6 +78,7 @@ export default {
     'no-results': 'Ingen resultater funnet',
     table: {
       name: 'Variabel navn',
+      figma: 'Figma',
       preview: 'Forhåndsvisning',
       value: 'Verdi',
     },

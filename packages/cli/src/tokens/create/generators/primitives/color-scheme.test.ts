@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { type CssColor, generateColorScale } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
-import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
+import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import { generateColorScheme, groupByScheme } from './color-scheme.ts';
 
 const NEUTRAL: CssColor = '#444444';

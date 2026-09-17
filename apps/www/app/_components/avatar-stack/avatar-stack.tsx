@@ -16,6 +16,7 @@ const avatarMap = {
   helsedirektoratet: 'helsedirektoratet.svg',
   'ks digital': 'ksdigital.svg',
   ks: 'ks.png',
+  kystverket: 'kystverket.svg',
   mattilsynet: 'mattilsynet.svg',
   nav: 'nav.svg',
   nrk: 'nrk.svg',

@@ -1,14 +1,18 @@
-import { forwardRef } from 'react';
-import { Button, type ButtonProps } from '../button/button';
+import { type ButtonHTMLAttributes, forwardRef } from 'react';
+import type { DefaultProps } from '../../types';
+import type { MergeRight } from '../../utilities';
 
 /* We omit children since we render the icon with css */
-export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
-  /**
-   * Aria label for the clear button
-   * @default 'Tøm'
-   */
-  'aria-label'?: string;
-};
+export type SearchClearProps = MergeRight<
+  DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
+  {
+    /**
+     * Aria label for the clear button
+     * @deprecated Please use `--dsc-suggestion-sr-clear` or `data-sr-clear` on Suggestion to set label.
+     */
+    'aria-label'?: string;
+  }
+>;
 
 /**
  * SearchClear component, used to display a clear button when the search input is not empty.
@@ -20,13 +24,13 @@ export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
  * </Search>
  */
 export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(
-  function SearchClear({ 'aria-label': label = 'Tøm', ...rest }, ref) {
+  function SearchClear(rest, ref) {
     return (
-      <Button
-        aria-label={label}
+      <button
+        hidden
         ref={ref}
         type='reset'
-        variant='tertiary'
+        suppressHydrationWarning // Since <ds-suggestion> adds attributes
         {...rest}
       />
     );

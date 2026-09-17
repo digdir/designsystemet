@@ -3,6 +3,8 @@
 import { describe, expect, it } from 'vitest';
 import type { DSSuggestionElement } from './suggestion';
 
+const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
+
 const render = () => {
   document.body.innerHTML = `
     <ds-suggestion class="ds-suggestion">
@@ -17,7 +19,40 @@ const render = () => {
   return document.querySelector('ds-suggestion') as DSSuggestionElement;
 };
 
+const renderEmptyOnly = () => {
+  document.body.innerHTML = `
+    <ds-suggestion class="ds-suggestion">
+      <input type="search" class="ds-input" />
+      <u-datalist role="listbox">
+        <u-option data-empty>No results</u-option>
+      </u-datalist>
+    </ds-suggestion>
+  `;
+
+  return document.querySelector('ds-suggestion') as DSSuggestionElement;
+};
+
 describe('suggestion component', () => {
+  it('propagates CSS screen-reader translations on connect', () => {
+    const suggestion = document.createElement('ds-suggestion');
+    suggestion.innerHTML = `
+      <input type="search" class="ds-input" />
+      <u-datalist role="listbox"></u-datalist>
+    `;
+    suggestion.style.setProperty('--_ds-data-sr-added', 'Lagt til');
+    suggestion.style.setProperty('--_ds-data-sr-singular', 'treff');
+    suggestion.style.setProperty('--_ds-data-sr-plural', 'treff');
+    document.body.appendChild(suggestion);
+
+    const list = suggestion.querySelector('u-datalist') as HTMLElement;
+
+    expect(suggestion).toHaveAttribute('data-sr-added', 'Lagt til');
+    expect(suggestion).toHaveAttribute('data-sr-singular', 'treff');
+    expect(suggestion).toHaveAttribute('data-sr-plural', 'treff');
+    expect(list).toHaveAttribute('data-sr-singular', 'treff');
+    expect(list).toHaveAttribute('data-sr-plural', 'treff');
+  });
+
   it('sets popovertarget, and popover attributes', async () => {
     const suggestion = render();
     const input = suggestion.querySelector('input') as HTMLInputElement;
@@ -54,5 +89,20 @@ describe('suggestion component', () => {
     await new Promise((resolve) => setTimeout(resolve, 0)); // Let mutation observer run
 
     expect(empty.hidden).toBe(true);
+  });
+
+  it('keeps the empty option visible when it is the only option', async () => {
+    const suggestion = renderEmptyOnly();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+
+    await tick(); // Let mutation observer run
+
+    expect(empty.hidden).toBe(false);
+
+    input.value = 'missing';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+
+    expect(empty.hidden).toBe(false);
   });
 });

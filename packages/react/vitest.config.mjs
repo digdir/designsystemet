@@ -5,6 +5,7 @@ import { defineProject } from 'vitest/config';
 
 export default defineProject({
   test: {
+    name: 'react-19',
     env: {
       VITE_REACT_VERSION: '19',
     },
