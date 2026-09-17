@@ -53,7 +53,7 @@
     "build:theme": "pnpm node ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./theme --experimental-tailwind"
   },
   "dependencies": {
-    "@digdir/designsystemet-types": "workspace:"
+    "@digdir/designsystemet-types": "workspace:*"
   },
   "devDependencies": {
     "autoprefixer": "10.6.0",

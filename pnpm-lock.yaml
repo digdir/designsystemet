@@ -595,7 +595,7 @@ importers:
         specifier: ^15.0.0
         version: 15.0.0(commander@15.0.0)
       '@digdir/designsystemet-types':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../types
       '@inquirer/confirm':
         specifier: ^6.3.2
@@ -671,7 +671,7 @@ importers:
   packages/css:
     dependencies:
       '@digdir/designsystemet-types':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../types
     devDependencies:
       autoprefixer:
@@ -699,10 +699,10 @@ importers:
   packages/react:
     dependencies:
       '@digdir/designsystemet-types':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../types
       '@digdir/designsystemet-web':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../web
       '@floating-ui/dom':
         specifier: ^1.8.0
@@ -842,16 +842,16 @@ importers:
   plugins/designsystemet:
     dependencies:
       '@digdir/designsystemet':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../../packages/cli
       '@digdir/designsystemet-css':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../../packages/css
       '@digdir/designsystemet-react':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../../packages/react
       '@digdir/designsystemet-types':
-        specifier: 'workspace:'
+        specifier: workspace:*
         version: link:../../packages/types
       react:
         specifier: 19.3.0

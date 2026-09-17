@@ -44,8 +44,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@digdir/designsystemet-types": "workspace:",
-    "@digdir/designsystemet-web": "workspace:",
+    "@digdir/designsystemet-types": "workspace:*",
+    "@digdir/designsystemet-web": "workspace:*",
     "@floating-ui/dom": "^1.8.0",
     "@floating-ui/react": "0.26.23",
     "@navikt/aksel-icons": "^8.16.2",
