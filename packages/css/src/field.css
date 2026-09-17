@@ -77,7 +77,7 @@
     }
 
     & label {
-      font-weight: inherit; /* Match the surrounding weight when used with radio/checkboxe, creating a clear hierarchy relative to the legend */
+      font-weight: inherit; /* Match the surrounding weight when used with radio/checkboxes, creating a clear hierarchy relative to the legend */
     }
     & label::before {
       content: none; /* Hide readonly icon on toggle inputs */
