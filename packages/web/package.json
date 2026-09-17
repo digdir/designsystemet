@@ -129,7 +129,7 @@
     "custom-element-vs-code-integration": "1.5.0",
     "@testing-library/user-event": "14.6.7",
     "invokers-polyfill": "1.0.4",
-    "tsdown": "0.22.14",
+    "tsdown": "0.23.0",
     "vite": "8.2.2",
     "vitest": "5.0.0",
     "happy-dom": "^20.14.0",
