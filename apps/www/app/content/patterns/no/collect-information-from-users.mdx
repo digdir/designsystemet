@@ -1,0 +1,124 @@
+---
+title: Slik samler du informasjon fra brukere
+sidebar_title: Samle informasjon
+category: Grunnleggende mønstre
+description: Lag skjema og flyter som gjør det enkelt for brukerne å gi riktig informasjon.
+partners: Digdir, Brønnøysundregistrene
+search_terms: skjema, brukeropplysninger, innsending, spørsmål, innsamling
+date: 2026-09-16
+order: 1
+---
+
+Når du samler inn informasjon fra brukerne, skal det være lett å forstå hvilke opplysninger de skal gi, hvorfor opplysningene er nødvendige, og hva som skjer videre. En tydelig og forutsigbar prosess hjelper brukerne med å gi riktige opplysninger og fullføre oppgaven uten unødvendige hindringer.
+
+<Card data-color='brand3' variant="tinted">
+  Relevante anbefalinger fra [ELMER 3](https://www.digdir.no/standarder/elmer-enklare-og-meir-effektiv-rapportering/1679) videreføres her, som del av arbeidet med felles mønstre for gode skjema og innsamlingsflyter.
+</Card>
+
+## Avklar behovet før du velger løsning
+
+Før du lager skjemaet eller flyten, bør du avklare hva løsningen skal gjøre og hvordan den skal forvaltes. Det gjør det enklere å velge riktig nivå av veiledning, riktig type felt og riktig rekkefølge på spørsmålene.
+
+- Hva skal brukeren oppnå?
+- Hvilke opplysninger må samles inn?
+- Finnes opplysningene allerede i registre, fagsystemer eller andre kilder dere kan bruke?
+- Hvordan skal brukeren løse oppgaven?
+- Hvordan skal løsningen oppdateres og forvaltes over tid?
+
+## Be bare om informasjonen du trenger
+
+Start med å vurdere hvilken informasjon som faktisk er nødvendig for å løse oppgaven. Unngå å be om informasjon som er “kjekt å ha”, eller som dere allerede har tilgang til fra før.
+
+- Ikke spør om informasjon dere allerede har tilgang til, for eksempel fra åpne registre eller kilder dere har hjemmel til å hente opplysninger fra.
+- Unngå valgfrie felt der det er mulig. Les mer om [obligatoriske og valgfrie skjemafelt](/no/patterns/required-and-optional-fields).
+- Ikke be brukeren skrive inn samme informasjon flere ganger.
+- Forklar hvorfor dere trenger informasjonen hvis det ikke er åpenbart.
+- Samle inn informasjonen så sent som mulig, når den er relevant for brukeren.
+
+## Del oppgaven i forståelige deler
+
+Store skjema blir enklere å fylle ut når spørsmålene er delt inn i logiske deler. Det som ligger på samme side eller i samme seksjon, bør høre tydelig sammen.
+
+- Samle spørsmål som handler om samme tema.
+- Bruk korte og beskrivende overskrifter for hver del.
+- Unngå for mange spørsmål på samme side.
+- Vis hvor brukeren er i prosessen når skjemaet går over flere steg.
+
+Hvis flere felt hører sammen, bør du bruke [Fieldset](/no/components/docs/fieldset/overview) for å gi feltene en felles overskrift og sammenheng.
+
+Sørg også for at skjemaets navn er tydelig på alle sider i flyten. Navnet bør ta utgangspunkt i brukerens mål eller forklare hva slags informasjon som samles inn.
+
+## Skriv spørsmål og ledetekster som brukeren forstår
+
+Bruk ord som er naturlige for brukeren, ikke interne begreper fra systemet eller regelverket. Ledeteksten skal gjøre det klart hva brukeren skal fylle ut.
+
+- Skriv spørsmålet eller ledeteksten som en tydelig instruks.
+- Bruk hjelpetekst når brukeren trenger forklaring, formatkrav eller eksempler.
+- Unngå placeholder-tekst som eneste forklaring.
+- Bruk samme begrep gjennom hele skjemaet.
+
+Les mer om [ledetekster og spørsmål i skjema](/no/best-practices/content-work/questions).
+
+## Velg riktig type felt
+
+Feltet du velger, bør passe til typen informasjon brukeren skal gi. Riktig felt gjør det enklere å forstå hva som forventes og reduserer risikoen for feil.
+
+- Bruk [Textfield](/no/components/docs/textfield/overview) for korte svar.
+- Bruk [Textarea](/no/components/docs/textarea/overview) når brukeren skal skrive lengre fritekst.
+- Bruk [Radio](/no/components/docs/radio/overview) når brukeren skal velge ett alternativ.
+- Bruk [Checkbox](/no/components/docs/checkbox/overview) når brukeren kan velge flere alternativer eller bekrefte noe.
+- Bruk [Select](/no/components/docs/select/overview) med varsomhet. Det kan gjøre det vanskeligere å få oversikt over alternativene.
+- Bruk [FileUpload](/no/components/docs/file-upload/overview) bare når brukeren faktisk må laste opp dokumentasjon.
+
+Hvis informasjon er forhåndsutfylt, skal det være tydelig hvor informasjonen kommer fra, og hvordan brukeren eventuelt kan endre den. Informasjon brukeren ikke kan endre, bør vises som vanlig tekst i stedet for som låste skjemafelt.
+
+## Hjelp brukeren å unngå feil
+
+Det er bedre å forebygge feil enn å rette dem etterpå. Gi brukeren nok informasjon før de fyller ut, og sørg for at systemet tåler vanlige variasjoner i hvordan informasjon skrives inn.
+
+- Vis formatkrav før brukeren fyller ut feltet.
+- Godta vanlige skrivemåter der det er mulig, for eksempel mellomrom i telefonnummer.
+- Bruk autocomplete der feltet gjelder brukerens egne personopplysninger.
+- Vis tegnbegrensning hvis feltet har maks antall tegn.
+- Gi brukeren mulighet til å gå tilbake og endre svar.
+
+Hvis brukeren likevel gjør feil, se mønsteret for [brukerutløste feilmeldinger](/no/patterns/errors).
+
+## Sørg for hjelp, tilgjengelighet og vedlikehold
+
+Brukeren skal kunne få hjelp når de står fast, og løsningen må fungere på skjermene og plattformene målgruppen bruker.
+
+- Gi tilgang til kontaktinformasjon, personvernerklæring og annen viktig bakgrunnsinformasjon.
+- Sørg for at løsningen fungerer på både små og store skjermer.
+- Respekter brukerens innstillinger, for eksempel lys eller mørk modus og redusert bevegelse.
+- Brukertest løsningen med målgruppen.
+- Gå gjennom og oppdater skjemaet ved behov.
+- Sørg for sporbarhet hvis spørsmål, ledetekster eller veiledning endres over tid.
+
+## La brukeren kontrollere før innsending
+
+Før brukeren sender inn informasjon, bør de få mulighet til å kontrollere hva de har fylt ut. Dette er særlig viktig når innsendingen har konsekvenser, eller når skjemaet består av flere steg.
+
+- Vis en oppsummering av svarene før innsending.
+- Gjør det enkelt å gå tilbake og endre informasjon.
+- Skriv tydelig hva som skjer når brukeren sender inn.
+- Bekreft at innsendingen er mottatt, og forklar hva som skjer videre.
+
+## Relevante WCAG-kriterier
+
+Se også disse relevante WCAG-kriteriene når du skal samle informasjon fra brukere:
+
+- [1.3.1 Informasjon og relasjoner (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+- [1.3.5 Identifiser formål med inndata (uutilsynet.no)](https://www.uutilsynet.no/veiledning/135-identifiser-formal-med-inndata/1238)
+- [2.4.6 Overskrifter og ledetekster (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
+- [3.2.2 Inndata (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/322-inndata-niva/114)
+- [3.3.1 Identifikasjon av feil (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/331-identifikasjon-av-feil-niva/116)
+- [3.3.2 Ledetekster eller instruksjoner (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/332-ledetekster-eller-instruksjoner-niva/117)
+- [3.3.3 Forslag ved feil (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/333-forslag-ved-feil-niva-aa/118)
+- [3.3.4 Forhindring av feil (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/334-forhindring-av-feil-juridiske-feil-okonomiske-feil-datafeil-niva-aa/119)
+- [4.1.2 Navn, rolle, verdi (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+
+<Contributors
+  headingLevel={2}
+  authors={['Roy Halvor Frimanslund (Brønnøysundregistrene)', 'Marianne Røsvik (Digdir)']}
+/>
