@@ -1,18 +1,48 @@
-<Alert data-color="info">
-Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
-</Alert>
+## Dette må du sjekke selv
 
-For å sikre at tabeller fungerer optimalt for alle brukere er det viktig å følge disse retningslinjene:
+* **Bruk alltid `caption` som tilgjengelig navn.**  
+  Tabellen skal ha et beskrivende `caption`-element som identifiserer innholdet for hjelpemidler.  
+  WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
 
-- **Enkelt celleinnhold:**
-  Tabellceller bør ikke slås sammen, og hver celle bør inneholde kun ett interaktivt element. Dette bidrar til at brukerne raskt får oversikt over innholdet og lettere kan sammenligne og skanne informasjonen.
-- **Overskrifter:**
-  For at brukerne skal kunne navigere i innholdet med skjermleser, er det viktig å bruke rad- og/eller kolonneoverskrifter (`<Table.HeaderCell>`). Bruk `scope="row"` og `scope="col"` for å angi om overskriften gjelder en rad eller kolonne. Hvis det er behov for å spare plass, kan vi visuelt skjule én eller flere overskrifter.
-- **Caption-element:**
-  Tabeller skal alltid ha et caption-element med kort tekst om hva tabellen viser. Skjermlesere vil lese caption-elementet, og brukerne kan ta stilling til om de vil lese videre i tabellen.
-- **Tomme celler:**
-  Tomme celler skal være `Table.Cell`. Dette er viktig for å sikre at skjermlesere kan navigere riktig i tabellen.
-- **Tastaturnavigering:**
-  Sjekk at du kan velge ulik sortering med tastatur. Test med skjermleser at du hører hva som er sorterbart, typer sortering og at du ikke mister fokus når du endrer sortering.
-- **Tilpasning for mobil:**
-  Det kan være vanskelig å vise tabeller på mobil, siden det ikke finnes et felles design som fungerer i alle sammenhenger. De vanligste alternativene som brukes på mobil er en tabell som ruller horisontalt eller omgjøring til listevisning.
+* **Definer overskrifter med eksplisitt `scope`.**  
+  Bruk `scope="col"` på kolonneoverskrifter og `scope="row"` på radoverskrifter for å sikre riktig celletilknytning. Hvis det er behov for å spare plass visuelt, kan en overskrift skjules visuelt, men den må fortsatt være tilgjengelig for skjermlesere.  
+  WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+
+* **Tomme celler skal alltid rendres.**  
+  Utelat aldri celler selv om de mangler data. En tom celle skal rendres som en tom `Table.Cell` for å bevare tabellens matrise og forhindre at hjelpemidler forskyver koordinatene.  
+  WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+
+* **Unngå sammenslåing av celler (`colspan` / `rowspan`).**  
+  Hold matrisen regulær. Sammenslåtte celler skaper koordinatfeil i skjermleseres tabellnavigasjon.  
+  WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+
+* **Knytt radkontekst til interaktive elementer.**  
+  Knapper, lenker eller avkrysningsbokser i tabellceller må ha et tilgjengelig navn som inkluderer radens identifikator (f.eks. via `aria-label`). Hver celle bør som hovedregel kun inneholde ett interaktivt element.  
+  WCAG: [4.1.2 Navn, rolle, verdi (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/118) og [2.5.3 Ledetekst i navn (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/146)
+
+* **Angi sorteringstilstand og behold fokus.**  
+  Sorterbare kolonner skal eksponere `aria-sort` (`ascending`, `descending`, `none`). Fokus må forbli på utløseren etter omsortering (unngå fokus-tap ved re-render).  
+  WCAG: [4.1.2 Navn, rolle, verdi (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/118) og [2.4.3 Fokusrekkefølge (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/104)
+
+* **Tastaturtilgjengelig rullefelt ved horisontal scroll.**  
+  Hvis tabellen pakkes inn i en rullbar container på små skjermer, skal containeren ha `tabindex="0"`, `role="region"` og et unikt `aria-label`.  
+  WCAG: [2.1.1 Tastatur (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/211-tastatur-niva/99) og [1.4.10 Dynamisk tilpasning (Reflow) (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva/141)
+
+* **Kontroller kontraster og fokusmarkører i eget tema.**  
+  Sjekk at komponentstyling i ditt tema oppfyller minst 3:1 for funksjonelle rammer/skillelinjer og fokusmarkører, og 4.5:1 for tekstinnhold.  
+  WCAG: [1.4.3 Kontrast (minimum) (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/143-kontrast-minimum-niva/95) og [1.4.11 Kontrast for ikke-tekstlig innhold (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/1411-kontrast-ikke-tekstlig-innhold-niva/142)
+
+## Test med tastatur
+
+Sjekk at du kan:
+* nå alle interaktive elementer i tabellen med **Tab** og **Shift + Tab**
+* trigge sortering med **Enter** eller **Mellomrom**, og at fokus forblir på knappen
+* fokusere rullefeltet med **Tab** og panorere med **piltastene** dersom tabellen har horisontal scroll
+
+## Test med skjermleser
+
+Sjekk at:
+* tabellens `caption` og dimensjoner (rader/kolonner) annonseres ved ankomst
+* overskrifter leses opp automatisk når du navigerer celler med tabellkommandoer (**Ctrl + Alt + piltaster** i NVDA/JAWS, **VO + piltaster** i VoiceOver)
+* `aria-sort` annonserer oppdatert retning ved sortering
+* repeterende handlinger i rader leses opp med unik radkontekst
