@@ -1,18 +1,11 @@
 import '@digdir/designsystemet-css/theme';
 import '@digdir/designsystemet-css';
-import {
-  Alert,
-  Button,
-  Field,
-  Heading,
-  Label,
-  Spinner,
-  Textarea,
-} from '@digdir/designsystemet-react';
+import { Alert, Button, Heading, Spinner } from '@digdir/designsystemet-react';
 import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification, UiState } from '../types';
 import './app.css';
 import type { ConfigSchema } from '@digdir/designsystemet/schemas/schema.js';
+import { PasteView } from './paste-view';
 import { PreviewView } from './preview-view';
 
 const initialState: UiState = {
@@ -71,7 +64,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const view = state.config ? 'preview' : 'paste';
 
-  const [value, setValue] = useState('');
+  const [pastedConfig, setPastedConfig] = useState('');
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -164,20 +157,7 @@ function App() {
 
       <main>
         {view === 'paste' && (
-          <div className='padding-inline'>
-            <Field className='padding-block'>
-              <Label>Upload config</Label>
-              <Field.Description>
-                Paste your designsystemet.config.json content below and click
-                preview.
-              </Field.Description>
-              <Textarea
-                id='config-textarea'
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-              />
-            </Field>
-          </div>
+          <PasteView value={pastedConfig} onChange={setPastedConfig} />
         )}
         {state.config && (
           <PreviewView
@@ -207,7 +187,7 @@ function App() {
             <Button
               onClick={() =>
                 postToPlugin('import-config-and-create-preview-tokens', {
-                  config: value,
+                  config: pastedConfig,
                 })
               }
             >

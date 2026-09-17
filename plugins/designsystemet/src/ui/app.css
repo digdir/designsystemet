@@ -22,21 +22,10 @@ header {
   gap: 6px;
   padding: var(--ds-size-4) var(--ds-size-5);
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-  background: var(--ds-color-neutral-background-tinted);
 }
 
-main {
-  background: var(--ds-color-neutral-background-tinted);
-}
-
-.padding-inline {
-  display: grid;
-  padding-inline: var(--ds-size-4);
-}
-
-.padding-block {
-  display: grid;
-  padding-block: var(--ds-size-4);
+.paste-view {
+  padding: var(--ds-size-4);
 }
 
 textarea {
@@ -49,14 +38,7 @@ footer {
   justify-content: space-between;
   gap: var(--ds-size-2);
   padding: var(--ds-size-4);
-
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  background: var(--ds-color-neutral-background-tinted);
-}
-
-.footer-left:empty,
-.footer-right:empty {
-  min-height: 0;
 }
 
 .app {
@@ -81,6 +63,8 @@ footer {
   padding-left: 18px;
 }
 
+/* Dimmed text for the plugin chrome only. The token follows Figma's theme, not the preview scheme,
+   so inside .surface use `color: inherit` + opacity (see .row-label) to stay legible on both surfaces. */
 .subtle {
   color: var(--ds-color-neutral-text-subtle);
 }
@@ -91,7 +75,6 @@ footer {
   gap: 10px;
   padding: 18px var(--ds-size-5);
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-  background: var(--ds-color-neutral-background-tinted);
 }
 
 .control-row {
@@ -99,11 +82,6 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   gap: var(--ds-size-4);
-}
-
-.control-label {
-  margin-bottom: var(--ds-size-1);
-  color: var(--ds-color-neutral-text-subtle);
 }
 
 .preview-layout {
@@ -147,7 +125,7 @@ footer {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-weight: 500;
+  font-weight: var(--ds-font-weight-medium);
   /* Inherit the surface color so labels stay legible on either surface. */
   color: inherit;
   opacity: 0.75;
@@ -161,7 +139,7 @@ footer {
 .swatch {
   width: var(--ds-size-8);
   height: var(--ds-size-8);
-  border-radius: 4px;
+  border-radius: var(--ds-border-radius-sm);
   background:
     linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%),
     linear-gradient(-45deg, transparent 75%, #ccc 75%);
@@ -191,11 +169,12 @@ footer {
 }
 
 .radius-sample {
-  width: var(--ds-size-5);
-  height: var(--ds-size-5);
+  width: var(--ds-size-8);
+  height: var(--ds-size-8);
   border: 1px solid currentColor;
-  border-radius: min(var(--radius, 0px), 50%);
-  opacity: 0.6;
+  border-radius: var(--radius);
+  background: var(--ds-color-surface-default);
+  /* opacity: 0.6; */
 }
 
 .radius-label {
@@ -256,8 +235,8 @@ footer {
   min-width: 220px;
   padding: var(--ds-size-5) var(--ds-size-6);
   border: 1px solid var(--ds-color-neutral-border-subtle);
-  border-radius: 8px;
+  border-radius: var(--ds-border-radius-md);
   background: var(--ds-color-neutral-surface-default);
   color: var(--ds-color-neutral-text-subtle);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--ds-shadow-lg);
 }
