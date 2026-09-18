@@ -1,5 +1,8 @@
 import type { FigmaMode } from '@digdir/designsystemet/internal';
-import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
+import {
+  cssVariableName,
+  FIGMA_COLLECTION,
+} from '@digdir/designsystemet/internal';
 import { resolveValue } from './resolver';
 import type { FlatToken, TokenModel } from './types';
 import { inferVariableName, pathToFigmaName } from './utils';
@@ -22,6 +25,11 @@ export type ValueSpec =
 export type VariableSpec = {
   name: string;
   type: VariableResolvedDataType;
+  /**
+   * WEB code syntax, e.g. `var(--ds-color-background-default)`, or null when the token has no CSS property.
+   * Derived from the same rules as the CLI's `tokens build`, so the two can not drift apart.
+   */
+  codeSyntax: string | null;
   valuesByMode: Map<string, ValueSpec>;
 };
 
@@ -102,9 +110,14 @@ function buildModeVariables(
         }
 
         if (!collection.variables.has(entry.name)) {
+          const cssVariable = cssVariableName(
+            token.path.split('.'),
+            token.tokenSet,
+          );
           collection.variables.set(entry.name, {
             name: entry.name,
             type: variableType,
+            codeSyntax: cssVariable ? `var(${cssVariable})` : null,
             valuesByMode: new Map<string, ValueSpec>(),
           });
         }
