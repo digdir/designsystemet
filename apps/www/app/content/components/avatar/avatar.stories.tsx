@@ -69,7 +69,7 @@ export const Radius = () => (
       aria-label='radius none'
       style={
         {
-          '--dsc-avatar-radius': 'none',
+          '--dsc-avatar-radius': '0',
         } as React.CSSProperties
       }
     >
