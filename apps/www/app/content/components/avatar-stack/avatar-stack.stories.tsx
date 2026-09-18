@@ -213,25 +213,60 @@ export const Expandable = () => (
 export const ShapeVariants = () => (
   <EXPERIMENTAL_AvatarStack aria-label='example of square avatars' expandable>
     <li>
-      <Avatar variant='square' aria-label='variant square' />
+      <Avatar
+        aria-label='variant square'
+        style={
+          {
+            '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
+          } as React.CSSProperties
+        }
+      />
     </li>
     <li>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
+      <Avatar
+        aria-label='Ola Nordmann'
+        style={
+          {
+            '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
+          } as React.CSSProperties
+        }
+      >
         <img src='/img/component-docs/cats/cat1.webp' alt='' />
       </Avatar>
     </li>
     <li>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
+      <Avatar
+        aria-label='Ola Nordmann'
+        style={
+          {
+            '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
+          } as React.CSSProperties
+        }
+      >
         <img src='/img/component-docs/cats/cat2.webp' alt='' />
       </Avatar>
     </li>
     <li>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
+      <Avatar
+        aria-label='Ola Nordmann'
+        style={
+          {
+            '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
+          } as React.CSSProperties
+        }
+      >
         <img src='/img/component-docs/cats/cat3.webp' alt='' />
       </Avatar>
     </li>
     <li>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
+      <Avatar
+        aria-label='Ola Nordmann'
+        style={
+          {
+            '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
+          } as React.CSSProperties
+        }
+      >
         <img src='/img/component-docs/cats/cat4.webp' alt='' />
       </Avatar>
     </li>
@@ -278,16 +313,16 @@ export const Gap = () => (
     }
   >
     <li>
-      <Avatar aria-label='' initials='AA' />
+      <Avatar aria-label=''>AA</Avatar>
     </li>
     <li>
-      <Avatar aria-label='' initials='BB' />
+      <Avatar aria-label=''>BB</Avatar>
     </li>
     <li>
-      <Avatar aria-label='' initials='CC' />
+      <Avatar aria-label=''>CC</Avatar>
     </li>
     <li>
-      <Avatar aria-label='' initials='DD' />
+      <Avatar aria-label=''>DD</Avatar>
     </li>
   </EXPERIMENTAL_AvatarStack>
 );
@@ -306,7 +341,7 @@ export const AdditionalAvatars = () => (
         </Avatar>
       </li>
       <li>
-        <Avatar aria-label='' initials='sm' />
+        <Avatar aria-label=''>sm</Avatar>
       </li>
       <li>
         <Avatar
@@ -330,10 +365,10 @@ export const AdditionalAvatars = () => (
         </Avatar>
       </li>
       <li>
-        <Avatar aria-label='' initials='sm' />
+        <Avatar aria-label=''>sm</Avatar>
       </li>
       <li>
-        <Avatar aria-label='' initials='on' />
+        <Avatar aria-label=''>on</Avatar>
       </li>
       <li>+14</li>
     </EXPERIMENTAL_AvatarStack>

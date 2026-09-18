@@ -31,22 +31,30 @@ export const NoName = meta.story(() => <Avatar aria-label='Ola' />);
 
 export const Sizes = meta.story(() => (
   <>
-    <Avatar data-size='xs' aria-label='extra small' initials='xs' />
+    <Avatar data-size='xs' aria-label='extra small'>
+      xs
+    </Avatar>
     <Avatar data-size='xs' aria-label='extra small' />
     <Avatar data-size='xs' aria-label='extra small'>
       <HeartIcon aria-hidden />
     </Avatar>
-    <Avatar data-size='sm' aria-label='small' initials='sm' />
+    <Avatar data-size='sm' aria-label='small'>
+      sm
+    </Avatar>
     <Avatar data-size='sm' aria-label='small' />
     <Avatar data-size='sm' aria-label='small'>
       <HeartIcon aria-hidden />
     </Avatar>
-    <Avatar data-size='md' aria-label='medium' initials='md' />
+    <Avatar data-size='md' aria-label='medium'>
+      md
+    </Avatar>
     <Avatar data-size='md' aria-label='medium' />
     <Avatar data-size='md' aria-label='medium'>
       <HeartIcon aria-hidden />
     </Avatar>
-    <Avatar data-size='lg' aria-label='large' initials='lg' />
+    <Avatar data-size='lg' aria-label='large'>
+      lg
+    </Avatar>
     <Avatar data-size='lg' aria-label='large' />
     <Avatar data-size='lg' aria-label='large'>
       <HeartIcon aria-hidden />
@@ -68,12 +76,24 @@ export const ColorVariants = meta.story(() => (
 
 export const ShapeVariants = meta.story(() => (
   <>
-    <Avatar variant='circle' aria-label='variant circle' />
-    <Avatar variant='square' aria-label='variant square' />
-    <Avatar variant='circle' aria-label='Ola Nordmann'>
-      ON
-    </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordmann'>
+    <Avatar aria-label='circle' />
+    <Avatar
+      aria-label='square'
+      style={
+        {
+          '--dsc-avatar-border-radius': 'var(--ds-border-radius-md)',
+        } as React.CSSProperties
+      }
+    />
+    <Avatar aria-label='Ola Nordmann'>ON</Avatar>
+    <Avatar
+      aria-label='Ola Nordmann'
+      style={
+        {
+          '--dsc-avatar-border-radius': 'var(--ds-border-radius-md)',
+        } as React.CSSProperties
+      }
+    >
       ON
     </Avatar>
   </>
@@ -183,13 +203,13 @@ export const AsButton = meta.story(() => (
 
 export const SlotAndInitials = meta.story(() => (
   <>
-    <Avatar aria-label='xs' initials='DS' asChild>
-      <button type='button' />
+    <Avatar aria-label='xs' asChild>
+      <button type='button'>DS</button>
     </Avatar>
-    <Avatar aria-label='xs' initials='DS' asChild>
+    <Avatar aria-label='xs' asChild>
       <button type='button'>0</button>
     </Avatar>
-    <Avatar aria-label='xs' initials='DS' asChild>
+    <Avatar aria-label='xs' asChild>
       <button type='button'>{cat3Img}</button>
     </Avatar>
   </>

@@ -47,13 +47,7 @@ export const Preview = meta.story({
         </Avatar>
       </li>
       <li>
-        <Avatar aria-label='Navn' initials='sm' />
-      </li>
-      <li>
         <Avatar aria-label='Navn'>md</Avatar>
-      </li>
-      <li>
-        <Avatar aria-label='Navn' initials='ON' />
       </li>
     </AvatarStack>
   ),
@@ -131,9 +125,6 @@ export const DataSize = meta.story({
           <li>
             <Avatar aria-label='Navn'>sm</Avatar>
           </li>
-          <li>
-            <Avatar aria-label='Navn' initials='sm' />
-          </li>
         </AvatarStack>
         <AvatarStack data-size='md' {...args}>
           <li>
@@ -147,9 +138,6 @@ export const DataSize = meta.story({
           <li>
             <Avatar aria-label='Navn'>md</Avatar>
           </li>
-          <li>
-            <Avatar aria-label='Navn' initials='md' />
-          </li>
         </AvatarStack>
         <AvatarStack data-size='lg' {...args}>
           <li>
@@ -162,9 +150,6 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>lg</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='lg' />
           </li>
         </AvatarStack>
       </fieldset>
@@ -190,9 +175,6 @@ export const DataSize = meta.story({
           <li>
             <Avatar aria-label='Navn'>sm</Avatar>
           </li>
-          <li>
-            <Avatar aria-label='Navn' initials='sm' />
-          </li>
         </AvatarStack>
         <AvatarStack
           data-size='md'
@@ -214,9 +196,6 @@ export const DataSize = meta.story({
           <li>
             <Avatar aria-label='Navn'>md</Avatar>
           </li>
-          <li>
-            <Avatar aria-label='Navn' initials='md' />
-          </li>
         </AvatarStack>
         <AvatarStack
           data-size='lg'
@@ -237,9 +216,6 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>lg</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='lg' />
           </li>
         </AvatarStack>
       </fieldset>
@@ -265,9 +241,6 @@ export const DataSize = meta.story({
           <li>
             <Avatar aria-label='Navn'>sm</Avatar>
           </li>
-          <li>
-            <Avatar aria-label='Navn' initials='sm' />
-          </li>
         </AvatarStack>
         <AvatarStack
           data-size='md'
@@ -289,9 +262,6 @@ export const DataSize = meta.story({
           <li>
             <Avatar aria-label='Navn'>md</Avatar>
           </li>
-          <li>
-            <Avatar aria-label='Navn' initials='md' />
-          </li>
         </AvatarStack>
         <AvatarStack
           data-size='lg'
@@ -312,9 +282,6 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>lg</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='lg' />
           </li>
         </AvatarStack>
       </fieldset>
