@@ -5,90 +5,22 @@
 
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 
-type MigrationState = 'pre' | 'post' | 'half' | 'not-library';
+// Collections whose variables get WEB code syntax. These are expected to be fully covered
+// by the rules below, so unmatched variables in them are reported as naming drift.
+const SYNTAX_COLLECTIONS: string[] = [
+  FIGMA_COLLECTION.COLOR,
+  FIGMA_COLLECTION.SEMANTIC,
+  FIGMA_COLLECTION.SIZE,
+  FIGMA_COLLECTION.THEME,
+];
 
-// Pre-migration collection names. These no longer exist in the CLI's `$themes`, so they
-// are only known here.
-const LEGACY_MAIN_COLOR = 'Main color';
-const LEGACY_SUPPORT_COLOR = 'Support color';
-
-// The color migration reshapes the variables: pre-migration uses `Main color` +
-// `Support color` collections with variables prefixed `color/main/`; post-migration these
-// fold into a single `Color` collection (Support color removed) and the prefix is stripped.
-const LEGACY_COLOR_PREFIX = 'color/main/';
-
-function getSyntaxCollections(state: MigrationState): string[] {
-  if (state === 'post') {
-    return [
-      FIGMA_COLLECTION.COLOR,
-      FIGMA_COLLECTION.SEMANTIC,
-      FIGMA_COLLECTION.SIZE,
-      FIGMA_COLLECTION.THEME,
-    ];
-  }
-  if (state === 'half') {
-    return [
-      FIGMA_COLLECTION.COLOR,
-      LEGACY_MAIN_COLOR,
-      LEGACY_SUPPORT_COLOR,
-      FIGMA_COLLECTION.SEMANTIC,
-      FIGMA_COLLECTION.SIZE,
-      FIGMA_COLLECTION.THEME,
-    ];
-  }
-  return [
-    LEGACY_MAIN_COLOR,
-    FIGMA_COLLECTION.SEMANTIC,
-    LEGACY_SUPPORT_COLOR,
-    FIGMA_COLLECTION.SIZE,
-    FIGMA_COLLECTION.THEME,
-  ];
-}
-
-function getScopeCollections(state: MigrationState): string[] {
-  return [
-    ...getSyntaxCollections(state),
-    FIGMA_COLLECTION.COLOR_SCHEME,
-    FIGMA_COLLECTION.TYPOGRAPHY,
-  ];
-}
-
-function detectMigrationState(
-  collections: VariableCollection[],
-  variablesByCollectionId: Map<string, Variable[]>,
-): MigrationState {
-  const hasMainColor = collections.some((c) => c.name === LEGACY_MAIN_COLOR);
-  const hasSupportColor = collections.some(
-    (c) => c.name === LEGACY_SUPPORT_COLOR,
-  );
-  const hasColor = collections.some((c) => c.name === FIGMA_COLLECTION.COLOR);
-
-  let prefixedCount = 0;
-  for (const collection of collections) {
-    if (
-      collection.name !== LEGACY_MAIN_COLOR &&
-      collection.name !== FIGMA_COLLECTION.COLOR
-    ) {
-      continue;
-    }
-    for (const variable of variablesByCollectionId.get(collection.id) ?? []) {
-      if (variable.name.startsWith(LEGACY_COLOR_PREFIX)) {
-        prefixedCount++;
-      }
-    }
-  }
-
-  if (!hasColor && !hasMainColor && !hasSupportColor) {
-    return 'not-library';
-  }
-  if (hasColor && !hasMainColor && !hasSupportColor && prefixedCount === 0) {
-    return 'post';
-  }
-  if (!hasColor && (hasMainColor || hasSupportColor)) {
-    return 'pre';
-  }
-  return 'half';
-}
+// Collections whose variables get scopes. Color scheme and Typography only get scopes,
+// never code syntax.
+const SCOPE_COLLECTIONS: string[] = [
+  ...SYNTAX_COLLECTIONS,
+  FIGMA_COLLECTION.COLOR_SCHEME,
+  FIGMA_COLLECTION.TYPOGRAPHY,
+];
 
 function getFormattedName(variable: Variable): {
   fullName: string;
@@ -108,8 +40,6 @@ function getScopes(
   if (resolvedType === 'COLOR') {
     if (
       collectionName === FIGMA_COLLECTION.SEMANTIC ||
-      collectionName === LEGACY_MAIN_COLOR ||
-      collectionName === LEGACY_SUPPORT_COLOR ||
       collectionName === FIGMA_COLLECTION.COLOR
     ) {
       // ALL_SCOPES for a COLOR variable covers exactly the color fields (fills, strokes,
@@ -160,8 +90,8 @@ function getExpectedSyntax(
       return 'var(--ds-color-focus-outer)';
     }
     // Semantic colors are locked to one color regardless of data-color/mode, so their CSS
-    // var always includes the color-group name (read from the path). Color / Main color /
-    // Support color stay group-less — the data-color attribute selects the color at runtime.
+    // var always includes the color-group name (read from the path). Color stays
+    // group-less — the data-color attribute selects the color at runtime.
     if (collectionName === FIGMA_COLLECTION.SEMANTIC) {
       const [, colorName, ...rest] = fullName.split('/');
       const semanticName =
@@ -214,16 +144,13 @@ export async function applyScopesAndSyntax(logs: string[]): Promise<void> {
     }
   }
 
-  const state = detectMigrationState(collections, variablesByCollectionId);
-  if (state === 'not-library') {
-    logs.push('Scope/syntax: no color collections found; skipped.');
+  if (!collections.some((c) => c.name === FIGMA_COLLECTION.COLOR)) {
+    logs.push('Scope/syntax: no Color collection found; skipped.');
     return;
   }
 
-  const syntaxCollections = getSyntaxCollections(state);
-  const scopeCollections = getScopeCollections(state);
   const targetCollections = collections.filter((c) =>
-    scopeCollections.includes(c.name),
+    SCOPE_COLLECTIONS.includes(c.name),
   );
 
   let scopeChanged = 0;
@@ -232,7 +159,7 @@ export async function applyScopesAndSyntax(logs: string[]): Promise<void> {
   const noRuleSamples: string[] = [];
 
   for (const collection of targetCollections) {
-    const isSyntaxCollection = syntaxCollections.includes(collection.name);
+    const isSyntaxCollection = SYNTAX_COLLECTIONS.includes(collection.name);
 
     for (const variable of variablesByCollectionId.get(collection.id) ?? []) {
       const { fullName, name } = getFormattedName(variable);
@@ -279,7 +206,7 @@ export async function applyScopesAndSyntax(logs: string[]): Promise<void> {
   }
 
   logs.push(
-    `Scope/syntax (${state}): scopes set on ${scopeChanged}, syntax set on ${syntaxUpdated}, ${noRuleCount} without a matching rule.`,
+    `Scope/syntax: scopes set on ${scopeChanged}, syntax set on ${syntaxUpdated}, ${noRuleCount} without a matching rule.`,
   );
   for (const sample of noRuleSamples) {
     logs.push(`Scope/syntax: no rule matched for ${sample}`);
