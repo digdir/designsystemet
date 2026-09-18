@@ -39,7 +39,7 @@ export function PreviewView({
 
   return (
     <>
-      {themeNames.length > 1 && (
+      {(themeNames.length > 1 || COLOR_SCHEME_OPTIONS.length > 1) && (
         <div className='hero'>
           <div className='control-row'>
             {themeNames.length > 1 && (
