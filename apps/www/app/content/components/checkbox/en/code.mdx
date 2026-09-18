@@ -46,9 +46,11 @@ Use [fieldset](/en/components/docs/fieldset/code) for grouping multiple choices.
 <Story story="OutlineEn" />
 
 ### ReadOnly
-`type="checkbox"` is always `:read-only` and does not support this in the same way as input types you can type into.
+From the web standard, checkbox is always `:read-only` because you cannot type text into it.
 
-If you set `readonly` on checkbox we ensure that it behaves as if it has read-only access by stopping `onClick` and `onChange`.
+The design system ensures that the `readonly` attribute behaves as read-only by preventing `click` and `change`.
+
+Use `input[type="checkbox"][readonly]` as a CSS selector if you need to extend the styling of a checkbox with the readonly attribute.
 
 The user will still be able to focus on the element.
 
