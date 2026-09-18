@@ -20,7 +20,7 @@ export type FlatToken = {
   references: string[];
 };
 
-export type ModePreview = {
+export type CollectionMode = {
   id: string | null;
   name: string;
   group: string;
@@ -31,9 +31,9 @@ export type ModePreview = {
   }>;
 };
 
-export type CollectionPreview = {
+export type CollectionVariables = {
   name: string;
-  variablePreview: Array<{
+  variables: Array<{
     name: string;
     type: string;
   }>;
@@ -55,8 +55,8 @@ export type TokenModel = {
   // This is the source of truth for collections/modes; `themes` is the same data
   // flattened for lookups.
   figmaCollections: FigmaCollections;
-  themes: ModePreview[];
-  collections: CollectionPreview[];
+  themes: CollectionMode[];
+  collections: CollectionVariables[];
   themeOptions: ThemeOption[];
   colorSchemeOptions: ThemeOption[];
   warnings: string[];
