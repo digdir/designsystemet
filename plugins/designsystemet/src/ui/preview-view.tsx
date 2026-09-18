@@ -1,8 +1,8 @@
 import {
   type ColorScheme,
-  getThemeColorScales,
   semanticColorNames,
 } from '@digdir/designsystemet/color';
+import { getThemeColorScales } from '@digdir/designsystemet/internal';
 import type { ConfigSchema } from '@digdir/designsystemet/schemas/schema.js';
 import { ToggleGroup, ToggleGroupItem } from '@digdir/designsystemet-react';
 import { useMemo } from 'react';

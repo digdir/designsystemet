@@ -10,3 +10,4 @@ export {
   toFigmaCollections,
   UNGROUPED,
 } from './figma/collections.ts';
+export { getThemeColorScales } from './tokens/create/generators/primitives/color-scheme.ts';

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { type CssColor, generateColorScale } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
-import { generateColorScheme, groupByScheme } from './color-scheme.ts';
+import { generateColorScheme, getThemeColorScales, groupByScheme } from './color-scheme.ts';
 
 const NEUTRAL: CssColor = '#444444';
 const ACCENT: CssColor = '#0062BA';
@@ -115,5 +115,33 @@ describe('generateColorScheme', () => {
     expect(theme.link.visited.$value).toBe('#123456');
     expect(theme.focus.inner.$value).toBe('#222222');
     expect(theme.focus.outer.$value).toBe('#333333');
+  });
+});
+
+describe('getThemeColorScales', () => {
+  const NEUTRAL: CssColor = '#444444';
+  const ACCENT: CssColor = '#0062BA';
+  const colors = { neutral: NEUTRAL, accent: ACCENT };
+
+  it('adds the default severity colors after the theme colors', () => {
+    const scales = getThemeColorScales({ colors }, 'light');
+
+    expect(Object.keys(scales)).toEqual(['neutral', 'accent', 'info', 'success', 'warning', 'danger']);
+    expect(scales.accent).toEqual(generateColorScale(ACCENT, 'light'));
+  });
+
+  it('applies severity overrides', () => {
+    const scales = getThemeColorScales({ colors, overrides: { severity: { danger: '#FF0000' } } }, 'dark');
+
+    expect(scales.danger).toEqual(generateColorScale('#FF0000', 'dark'));
+  });
+
+  it('applies per-scheme color overrides only to that scheme', () => {
+    const overrides: ColorOverrideSchema = { colors: { accent: { 'background-default': { light: '#1A589F' } } } };
+
+    expect(getThemeColorScales({ colors, overrides }, 'light').accent['background-default'].hex).toBe('#1A589F');
+    expect(getThemeColorScales({ colors, overrides }, 'dark').accent['background-default'].hex).toBe(
+      generateColorScale(ACCENT, 'dark')['background-default'].hex,
+    );
   });
 });
