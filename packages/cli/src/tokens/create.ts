@@ -1,4 +1,3 @@
-import { addSeverityColors } from '../colors/scale.ts';
 import { generate$Designsystemet } from './create/generators/$designsystemet.ts';
 import { generate$Metadata } from './create/generators/$metadata.ts';
 import { generate$Themes } from './create/generators/$themes.ts';
@@ -10,7 +9,7 @@ import { generateColorTokens } from './create/generators/semantic/color.ts';
 import { generateSemanticStyle } from './create/generators/semantic/style.ts';
 import { generateTheme } from './create/generators/themes/theme.ts';
 import type { OutputFile, SizeModes, Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.ts';
-import { toColorNames } from './utils.ts';
+import { addSeverityColors, toColorNames } from './utils.ts';
 
 export type { ThemeObject_ } from './create/generators/$themes.ts';
 
