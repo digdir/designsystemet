@@ -29,31 +29,47 @@ Dette kan gjøres på to måter:
 - ved å bruke SVG inline direkte i HTML
 - ved å bruke `<use>` sammen med `<symbol>` for gjenbruk
 
-Begge metodene fungerer. `<use>` er nyttig når samme grafikk skal brukes flere steder uten å duplisere kode, mens inline SVG gir full kontroll og er ofte enklere når grafikken kun brukes ett sted.
+Begge metodene fungerer godt, men **inline SVG-kode gir full kontroll og er ofte den enkleste og mest direkte løsningen.**
+
+Har du derimot flere symboler i samme SVG-fil (en SVG-sprite), eller behov for å holde SVG-koden adskilt fra HTML-dokumentet, bruker du `<use>`-metoden. Vurder hva som gir minst kompleksitet i din løsning. Vær oppmerksom på at `<use>`-metoden stiller noen konkrete krav til hvordan SVG-filen er bygget opp og refereres i koden.
 
 Når SVG brukes inline eller via `<use>`, kan både farger og størrelse styres via CSS. Dette forutsetter at SVG-en er satt opp riktig, blant annet med `viewBox`.
 
 Andre metoder for å bruke grafikk i frontend, som `<img src="...svg">`, canvas, CSS-tegning eller icon fonts, gir ikke helt de samme mulighet til å styre farger med design tokens, og er derfor ikke dekket i denne artikkelen.
 
 ### Grunnleggende oppsett
-For at en SVG-en skal kunne enklest mulig, gjenbrukes og styles:
+For at en SVG-en skal enklest mulig kunne styles og gjenbrukes:
+
+**Både for inline grafikk og SVG-filer:
+- definer `viewBox` på `<svg>` eller `<symbol>` for korrekt skalering
+- styr bredde og høyde med `width`og `height` (eller CSS) på det omsluttende objektet i HTML
+- sett `fill="none"` på `<svg>` eller `<symbol>` dersom grafikken bruker streker (`stroke`), slik at linjebaserte figurer ikke utilsiktet fylles med farge
 
 **Når grafikk settes inn som fil med `<use>`:**
-- pakke inn grafikken i `<symbol>`
-- gi symbol en `id`
-- sett inn grafikken med `<use>`og bruk filbanen + symbol ID
+- pakk inn grafikken i `<symbol>`
+- gi symbol en unik `id`
+- sett inn grafikken i HTML med `<use>`og referanse til filbane + symbol-ID
 
-**Både når grafikk settes inline og som fil**
-- gi `<symbol>` eller `<svg>` viewbox verdier
 
 ## Praktiske eksempler
 
-### Sett inn grafikk med svg-fil og id
+### 1. Sett inn grafikken inline (enklest)
+Dette er den mest direkte måten å bruke SVG på. Du legger SVG-koden rett inn i HTML-en. Da trenger du verken `<symbol>` eller egne ID-er, kun et `<svg>`-element med `viewBox`, og om nødvendig `fill="none"`:
+
+```HTML
+<svg height="1rem" width="1rem" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="..." />
+</svg>
+```
+
+### 2. Sett inn grafikk fra SVG-fil med `<use>` og ID
+
+Dersom du har flere symboler i samme fil (en SVG-sprite), eller ønsker å gjenbruke samme grafikk flere steder uten å duplisere SVG-koden i HTML-en, kan du legge grafikken i en egen SVG-fil og referere den med `<use>`.
 
 Bygg opp grafikken i svg-fila med `symbol` med tilhørende `id`:
 ```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
-  <symbol id="ds-logo" viewBox="0 0 40 40">
+  <symbol id="ds-logo" viewBox="0 0 40 40" fill="none">
     <path d="..." />
     <path d="..." />
     <path d="..." />
@@ -76,7 +92,7 @@ Mange redaktørverktøy kan ikke angi hvilket `symbol` som skal vises når de fo
 For å gjøre grafikken synlig kan du legge til et `use`-element nederst i SVG-filen:
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg">
-  <symbol id="symbol-id" viewBox="0 0 40 40">
+  <symbol id="symbol-id" viewBox="0 0 40 40" fill="none">
     <path d="..." />
   </symbol>
   <use href="#symbol-id" />
@@ -84,24 +100,6 @@ For å gjøre grafikken synlig kan du legge til et `use`-element nederst i SVG-f
 ```
 
 **Tips:** Du kan ha flere symboler eller ikoner i samme fil når du pakker hver av dem med `<symbol>` og unike ider for hver av dem. Da kan du også bruke metoden ovenfor for å velge et symbol inni fila for forhåndsvisning.
-
-#### Alternativt sett inn grafikken inline
-
-Bruken av `<use>` muliggjør at en ikke trenger å gjenta samme svg-kode flere steder. Når du uansett kun skal ha grafikken på ett sted på siden din, så kan du gjerne sette den inn inline. Grafikken ovenfor når satt inn direkte inline trenger ikke `<symbol>` og id
-```HTML
-<svg height="1rem" width="1rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-  <path d="..." />
-</svg>
-```
-
-<Alert data-color='info'>
-  <h3 class="ds-heading" data-size='xs'>Tips: Skalering av SVG</h3>
-  <br />
-  SVG skalerer enklest når:
-  - `viewBox` er satt på `<symbol>` når satt inn som fil, eller på `<svg>` når inline
-  - størrelse styres via `width` og `height` på det omsluttende elementet
-  - proporsjoner er satt korrekt
-</Alert>
 
 <Divider/>
 ## Fargelegge grafikken
@@ -120,7 +118,7 @@ svg {
 Om du ikke vil sette en standard regel for alle svg-filer, kan du heller sette `currentColor` på `fill` og/eller `stroke` inne i selve svg-fila. I designsystemet blir denne metoden brukt på ikoner, for eksempel i knappene.
 ```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
-  <symbol id="ds-logo" viewBox="0 0 40 40">
+  <symbol id="ds-logo" viewBox="0 0 40 40" fill="none">
     <path d="..." fill="currentColor"/>
     <path d="..." stroke="currentColor"/>
     <path d="..." fill="currentColor"/>
@@ -165,6 +163,7 @@ Koden i SVG-fila i eksempelet over ser slik ut:
   <symbol 
     id='component-icon'
     viewBox='0 0 24 24'
+    fill='none'
   >
     <path 
       d='M11.5265 2.41796C11.8211 2.17765 12.2558 2.19512 12.5304 2.46972L16.0304 5.96972C16.3233 6.26261 16.3233 6.73737 16.0304 7.03027L12.5304 10.5303C12.2375 10.8232 11.7627 10.8232 11.4699 10.5303L7.96985 7.03027C7.67696 6.73737 7.67696 6.26261 7.96985 5.96972L11.4699 2.46972L11.5265 2.41796ZM9.56067 6.49999L12.0001 8.93945L14.4396 6.49999L12.0001 4.06054L9.56067 6.49999Z' 
