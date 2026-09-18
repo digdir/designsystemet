@@ -11,3 +11,4 @@ export {
   UNGROUPED,
 } from './figma/collections.ts';
 export { getThemeColorScales } from './tokens/create/generators/primitives/color-scheme.ts';
+export { cssVariableName } from './tokens/css-variables.ts';

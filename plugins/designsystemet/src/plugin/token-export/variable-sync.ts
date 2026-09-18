@@ -91,6 +91,7 @@ export async function syncVariables(
     }
 
     const createdOrExisting = new Map<string, Variable>();
+    let codeSyntaxUpdated = 0;
 
     for (const desired of spec.variables.values()) {
       let variable = variableByName.get(desired.name);
@@ -112,8 +113,18 @@ export async function syncVariables(
         logs.push(`Created variable ${collection.name}/${desired.name}`);
       }
 
+      if (syncCodeSyntax(variable, desired.codeSyntax)) {
+        codeSyntaxUpdated++;
+      }
+
       createdOrExisting.set(desired.name, variable);
       byCompositeKey.set(`${collection.name}::${desired.name}`, variable);
+    }
+
+    if (codeSyntaxUpdated > 0) {
+      logs.push(
+        `Updated WEB code syntax on ${codeSyntaxUpdated} variables in ${collection.name}`,
+      );
     }
 
     variablesByCollection.set(spec.name, createdOrExisting);
@@ -209,4 +220,19 @@ export function findVariable(
   }
 
   return variableLookup.get(`${collectionName}::${variableName}`) || null;
+}
+
+// Keeps the WEB code syntax equal to the CSS property the token is built as. Idempotent, so an
+// unchanged variable is left alone and a variable that lost its CSS property has the syntax removed.
+function syncCodeSyntax(variable: Variable, expected: string | null): boolean {
+  const current = variable.codeSyntax.WEB?.trim() || null;
+  if (current === expected) {
+    return false;
+  }
+  if (expected) {
+    variable.setVariableCodeSyntax('WEB', expected);
+  } else {
+    variable.removeVariableCodeSyntax('WEB');
+  }
+  return true;
 }
