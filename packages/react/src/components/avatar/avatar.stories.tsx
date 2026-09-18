@@ -22,8 +22,6 @@ const meta = preview.meta({
 export const Preview = meta.story({
   args: {
     'aria-label': 'Ola Nordmann',
-    variant: 'circle',
-    children: '',
   },
 });
 
@@ -76,9 +74,9 @@ export const ColorVariants = meta.story(() => (
 
 export const Radius = meta.story(() => (
   <>
-    <Avatar aria-label='circle' />
+    <Avatar aria-label='radius default' />
     <Avatar
-      aria-label='square'
+      aria-label='radius md 1'
       style={
         {
           '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
@@ -87,7 +85,7 @@ export const Radius = meta.story(() => (
     />
     <Avatar aria-label='Ola Nordmann'>ON</Avatar>
     <Avatar
-      aria-label='Ola Nordmann'
+      aria-label='radius md 2'
       style={
         {
           '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
