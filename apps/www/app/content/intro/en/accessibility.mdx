@@ -16,7 +16,7 @@ Designsystemet provides foundational components that meet [the WCAG requirements
 Accessibility often requires detailed technical and design-related considerations. Many components depend on specific HTML and ARIA attributes, correct focus management, and dynamic announcements to screen readers. It is also necessary to consider how different screen readers and browsers interpret combinations of attributes and elements. These are complex challenges that individual developers and designers should not have to solve on their own. When we solve them once as a community, many can benefit from the same solutions. Any issues or improvements that are identified can be fixed centrally and benefit everyone using the Design System.
 
 ## What does the Design System solve, and what is your responsibility?
-The Design System can help with some of the WCAG requirements covered by accessibility regulations, but compliance also depends on how components are used, the content, and the rest of the solution.
+The Design System can help with some of the WCAG requirements covered by accessibility regulations, but compliance also depends on component usage and content.
 
 ### Designsystemet provides
 - **Focus states:** Clear and visible focus indicators for interactive elements on all backgrounds.
@@ -31,8 +31,8 @@ The Design System can help with some of the WCAG requirements covered by accessi
 - **Semantic HTML:** Use appropriate HTML elements to communicate meaning, structure, and heading hierarchy.
 - **Text alternatives:** Provide descriptive labels and text alternatives for regions and non-text content. Requirements are documented on individual component pages.
 - **Specify the content language:** Set the appropriate language code for the page, for example `<html lang="en">` for English.
-- **Enable dark mode:** Use `<body data-color-scheme="auto">`.
 - **Correct token usage:** Use design tokens for their intended purpose. For example, if a token is named `border`, it should be used for borders and not backgrounds.
+- **Color scheme (optional):** Use `<body data-color-scheme="auto">` to follow the user's system preference.
 
 [In our GitHub Wiki you can find a detailed overview of which WCAG requirements the Design System helps you satisfy.](https://github.com/digdir/designsystemet/wiki/Designsystemet-hjelper-deg-%C3%A5-oppfylla-WCAG%E2%80%90kravane)
 
