@@ -289,7 +289,7 @@ export const DataSize = meta.story({
   ),
 });
 
-export const ShapeVariants = meta.story({
+export const Radius = meta.story({
   render: (args) => (
     <AvatarStack
       {...args}

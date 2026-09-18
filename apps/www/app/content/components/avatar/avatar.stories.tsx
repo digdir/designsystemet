@@ -7,9 +7,9 @@ import {
 } from '@digdir/designsystemet-react';
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 
-export const Preview = () => (
-  <Avatar aria-label='Ola Nordmann' variant='circle' />
-);
+export const Preview = () => <Avatar aria-label='Ola Nordmann' />;
+
+export const Initials = () => <Avatar aria-label='Ola Nordmann'>ON</Avatar>;
 
 export const Sizes = () => (
   <>
@@ -44,23 +44,32 @@ export const ColorVariants = () => {
   );
 };
 
-export const ShapeVariants = () => (
+export const Radius = () => (
   <>
-    <Avatar aria-label='variant circle' />
+    <Avatar aria-label='radius default' />
     <Avatar
-      aria-label='variant square'
+      aria-label='radius 1rem'
       style={
         {
-          '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
+          '--dsc-avatar-radius': '1rem',
         } as React.CSSProperties
       }
     />
-    <Avatar aria-label='Ola Nordmann'>ON</Avatar>
     <Avatar
-      aria-label='Ola Nordmann'
+      aria-label='radius lg'
       style={
         {
-          '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
+          '--dsc-avatar-radius': 'var(--ds-border-radius-lg)',
+        } as React.CSSProperties
+      }
+    >
+      ON
+    </Avatar>
+    <Avatar
+      aria-label='radius none'
+      style={
+        {
+          '--dsc-avatar-radius': 'none',
         } as React.CSSProperties
       }
     >

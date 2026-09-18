@@ -210,7 +210,7 @@ export const Expandable = () => (
   </div>
 );
 
-export const ShapeVariants = () => (
+export const Radius = () => (
   <EXPERIMENTAL_AvatarStack
     aria-label='example of square avatars'
     expandable

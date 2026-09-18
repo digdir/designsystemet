@@ -74,7 +74,7 @@ export const ColorVariants = meta.story(() => (
   </>
 ));
 
-export const ShapeVariants = meta.story(() => (
+export const Radius = meta.story(() => (
   <>
     <Avatar aria-label='circle' />
     <Avatar
