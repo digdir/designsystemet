@@ -35,8 +35,8 @@ let themeNames: string[] = [];
 
 if (figma.editorType === 'figma') {
   figma.showUI(__html__, {
-    width: 800,
-    height: 700,
+    width: 900,
+    height: 800,
     title: 'Designsystemet',
     themeColors: true,
   });
