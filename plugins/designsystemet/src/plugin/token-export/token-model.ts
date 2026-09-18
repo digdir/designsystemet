@@ -7,9 +7,9 @@ import {
 import { findReferences, flattenTokens } from './parser';
 import { findUnresolvedReferences } from './resolver';
 import type {
-  CollectionPreview,
+  CollectionMode,
+  CollectionVariables,
   FlatToken,
-  ModePreview,
   ThemeOption,
   TokenInput,
   TokenModel,
@@ -27,7 +27,7 @@ export function buildTokenModel({
 
   if ($themes.length === 0) {
     warnings.push(
-      'No $themes entries. Preview cannot group modes from token sets.',
+      'No $themes entries. Modes cannot be grouped from token sets.',
     );
   }
 
@@ -54,17 +54,18 @@ export function buildTokenModel({
     onMissingTokenSet: (tokenSet) => missingTokenSets.add(tokenSet),
   });
 
-  const modePreviews: ModePreview[] = Object.entries(figmaCollections).flatMap(
-    ([group, modes]) =>
-      modes.map((mode) => ({
-        id: mode.id,
-        name: mode.modeName,
-        group,
-        selectedTokenSets: mode.tokenSets,
-      })),
+  const collectionModes: CollectionMode[] = Object.entries(
+    figmaCollections,
+  ).flatMap(([group, modes]) =>
+    modes.map((mode) => ({
+      id: mode.id,
+      name: mode.modeName,
+      group,
+      selectedTokenSets: mode.tokenSets,
+    })),
   );
 
-  for (const mode of modePreviews) {
+  for (const mode of collectionModes) {
     const sourceCount = mode.selectedTokenSets.filter(
       (item) => item.status === 'source',
     ).length;
@@ -75,7 +76,7 @@ export function buildTokenModel({
     }
   }
 
-  const collections = buildCollectionPreview(figmaCollections, flatTokens);
+  const collections = buildCollectionVariables(figmaCollections, flatTokens);
 
   for (const tokenSet of Array.from(missingTokenSets).sort()) {
     warnings.push(
@@ -87,10 +88,10 @@ export function buildTokenModel({
     tokenSets: tokenSetPaths.map((path) => ({ path })),
     flatTokens,
     figmaCollections,
-    themes: modePreviews,
+    themes: collectionModes,
     collections,
-    themeOptions: buildThemeOptions(modePreviews, tokenSetPaths),
-    colorSchemeOptions: buildColorSchemeOptions(modePreviews),
+    themeOptions: buildThemeOptions(collectionModes, tokenSetPaths),
+    colorSchemeOptions: buildColorSchemeOptions(collectionModes),
     warnings,
   };
 
@@ -110,13 +111,13 @@ export function buildTokenModel({
   return model;
 }
 
-function buildCollectionPreview(
+function buildCollectionVariables(
   figmaCollections: FigmaCollections,
   flatTokens: FlatToken[],
-): CollectionPreview[] {
+): CollectionVariables[] {
   return Object.entries(figmaCollections).map(([group, modes]) => ({
     name: group,
-    variablePreview: inferVariablesForGroup(group, modes, flatTokens),
+    variables: inferVariablesForGroup(group, modes, flatTokens),
   }));
 }
 
@@ -154,10 +155,10 @@ function inferVariablesForGroup(
 }
 
 function buildThemeOptions(
-  modePreviews: ModePreview[],
+  collectionModes: CollectionMode[],
   tokenSetPaths: string[],
 ): ThemeOption[] {
-  const themeModes = modePreviews.filter(
+  const themeModes = collectionModes.filter(
     (mode) => mode.group === FIGMA_COLLECTION.THEME,
   );
 
@@ -184,11 +185,13 @@ function buildThemeOptions(
     tokenSets: existingTokenSets(mode),
   }));
 }
-function buildColorSchemeOptions(modePreviews: ModePreview[]): ThemeOption[] {
+function buildColorSchemeOptions(
+  collectionModes: CollectionMode[],
+): ThemeOption[] {
   const rank = (name: string) =>
     /Light/i.test(name) ? 0 : /Dark/i.test(name) ? 2 : 1;
 
-  return modePreviews
+  return collectionModes
     .filter((mode) => mode.group === FIGMA_COLLECTION.COLOR_SCHEME)
     .map((mode) => ({
       name: mode.name,
@@ -197,7 +200,7 @@ function buildColorSchemeOptions(modePreviews: ModePreview[]): ThemeOption[] {
     .sort((a, b) => rank(a.name) - rank(b.name));
 }
 
-function existingTokenSets(mode: ModePreview): string[] {
+function existingTokenSets(mode: CollectionMode): string[] {
   return mode.selectedTokenSets
     .filter((item) => item.exists)
     .map((item) => item.tokenSet);

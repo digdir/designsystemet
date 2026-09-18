@@ -16,7 +16,7 @@ import type { TokenSets } from '@digdir/designsystemet/tokens/types';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { importToFigma } from './token-export/importer';
-import { buildTokenModel } from './token-export/preview-model';
+import { buildTokenModel } from './token-export/token-model';
 import type { TokenModel } from './token-export/types';
 
 // Token sets from every theme, keyed by token set path. Shared sets (e.g.

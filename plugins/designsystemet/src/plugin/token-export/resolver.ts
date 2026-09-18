@@ -236,7 +236,7 @@ function buildAvailableReferenceNames(model: TokenModel): Set<string> {
   }
 
   for (const collection of model.collections) {
-    for (const variable of collection.variablePreview) {
+    for (const variable of collection.variables) {
       const dottedName = figmaNameToPath(variable.name);
       available.add(dottedName);
 
