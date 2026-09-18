@@ -4,7 +4,7 @@
  * scripts/date-latest-changelog.js (the newest version, dated at deploy time).
  */
 
-const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+const dateFormatter = new Intl.DateTimeFormat('nb-NO', {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
