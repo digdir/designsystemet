@@ -1,5 +1,5 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
-import type { Token, TokenSet, TokenSets } from '../types.ts';
+import type { Token, TokenSet, TokenSets } from '../tokens/types.ts';
 
 /** The subset of a `$themes.json` entry the transformer needs. `id` and `group` are optional. */
 export type ThemeObjectInput = Pick<ThemeObject, 'name' | 'selectedTokenSets'> &

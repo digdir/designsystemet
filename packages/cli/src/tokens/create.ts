@@ -21,7 +21,7 @@ export {
   type ThemeObjectInput,
   toFigmaCollections,
   UNGROUPED,
-} from './create/figma-collections.ts';
+} from '../figma/collections.ts';
 export type { ThemeObject_ } from './create/generators/$themes.ts';
 
 export const getTokenSetDimensions = (theme: Pick<Theme, 'size' | 'typography'>): TokenSetDimensions => ({

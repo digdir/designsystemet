@@ -1,7 +1,7 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 import { describe, expect, it, vi } from 'vitest';
-import type { TokenSet, TokenSets } from '../types.ts';
-import { mergeTokenSets, toFigmaCollections, UNGROUPED } from './figma-collections.ts';
+import type { TokenSet, TokenSets } from '../tokens/types.ts';
+import { mergeTokenSets, toFigmaCollections, UNGROUPED } from './collections.ts';
 
 const color = (value: string) => ({ $type: 'color', $value: value });
 const dimension = (value: string) => ({ $type: 'dimension', $value: value });
