@@ -3,7 +3,7 @@ import {
   type FigmaCollections,
   type FigmaMode,
   toFigmaCollections,
-} from '@digdir/designsystemet/tokens/create';
+} from '@digdir/designsystemet/internal';
 import { findReferences, flattenTokens } from './parser';
 import { findUnresolvedReferences } from './resolver';
 import type {

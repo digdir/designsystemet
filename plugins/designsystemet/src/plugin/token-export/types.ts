@@ -1,7 +1,7 @@
 import type {
   FigmaCollections,
   ThemeObjectInput,
-} from '@digdir/designsystemet/tokens/create';
+} from '@digdir/designsystemet/internal';
 import type { TokenSets } from '@digdir/designsystemet/tokens/types';
 
 // Input to buildTokenModel: the generated token sets keyed by token set path

@@ -1,4 +1,4 @@
-import { FIGMA_COLLECTION } from '@digdir/designsystemet/tokens/create';
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import type { CollectionSpec } from './collection-specs';
 
 export type FontCache = {

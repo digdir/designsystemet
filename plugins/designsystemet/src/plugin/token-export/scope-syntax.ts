@@ -3,7 +3,7 @@
 // standalone "Code syntax & scoping" plugin (scoper/) — the rules are keyed on
 // (collection name, resolved type, variable name) and are idempotent.
 
-import { FIGMA_COLLECTION } from '@digdir/designsystemet/tokens/create';
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 
 type MigrationState = 'pre' | 'post' | 'half' | 'not-library';
 
