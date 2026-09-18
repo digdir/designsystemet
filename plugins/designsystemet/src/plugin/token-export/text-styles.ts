@@ -1,4 +1,4 @@
-import { FIGMA_COLLECTION } from '@digdir/designsystemet/tokens/create';
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';

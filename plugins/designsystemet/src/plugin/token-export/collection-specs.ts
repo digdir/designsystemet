@@ -1,5 +1,5 @@
-import type { FigmaMode } from '@digdir/designsystemet/tokens/create';
-import { FIGMA_COLLECTION } from '@digdir/designsystemet/tokens/create';
+import type { FigmaMode } from '@digdir/designsystemet/internal';
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import { resolveValue } from './resolver';
 import type { FlatToken, TokenModel } from './types';
 import { inferVariableName, pathToFigmaName } from './utils';
