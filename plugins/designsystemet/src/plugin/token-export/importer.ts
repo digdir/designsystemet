@@ -2,7 +2,6 @@ import { buildCollectionSpecs } from './collection-specs';
 import { syncEffectStyles } from './effect-styles';
 import { type FontCache, preloadAllFonts } from './fonts';
 import { getTokenSetLookupOrder } from './resolver';
-import { applyScopes } from './scopes';
 import { syncTextStyles } from './text-styles';
 import type { TokenModel } from './types';
 import { syncCollections, syncVariables } from './variable-sync';
@@ -34,17 +33,6 @@ export async function importToFigma(
   );
   await syncTextStyles(model, tokenSetOrder, variableLookup, fontCache, logs);
   await syncEffectStyles(model, tokenSetOrder, logs);
-
-  // Auto-apply correct scopes so users get them out of the box (the WEB code syntax is set
-  // when the variables are synced). Best-effort: the variables are already written, so a
-  // failure here must not fail the whole export.
-  try {
-    await applyScopes(logs);
-  } catch (error) {
-    logs.push(
-      `Scope pass failed (import still applied): ${error instanceof Error ? error.message : String(error)}`,
-    );
-  }
 
   return { logs };
 }

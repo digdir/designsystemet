@@ -1,31 +1,25 @@
-// Auto-applies Figma variable scopes after an import, so users get correct scoping out of the
-// box without a separate step. The rules are keyed on (collection name, resolved type, variable
-// name) and are idempotent. WEB code syntax is set when the variables are created, see
-// `collection-specs.ts` and `variable-sync.ts`, from the same naming rules as the CSS build.
+// Figma variable scopes, derived when the variable specs are built (see `collection-specs.ts`)
+// and applied together with the WEB code syntax when the variables are synced. The rules are
+// keyed on (collection name, resolved type, variable name).
 
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 
-// Collections whose variables are expected to be fully covered by the scope rules below, so a
-// variable there with neither a scope nor a code syntax is reported as naming drift.
-const COVERED_COLLECTIONS: string[] = [
+// Collections whose variables are expected to be fully covered by the scope and code syntax
+// rules, so a variable there with neither is reported as naming drift.
+export const COVERED_COLLECTIONS: string[] = [
   FIGMA_COLLECTION.COLOR,
   FIGMA_COLLECTION.SEMANTIC,
   FIGMA_COLLECTION.SIZE,
   FIGMA_COLLECTION.THEME,
 ];
 
-// Color scheme and Typography only get scopes, and empty scopes there are intentional.
-const SCOPE_COLLECTIONS: string[] = [
-  ...COVERED_COLLECTIONS,
-  FIGMA_COLLECTION.COLOR_SCHEME,
-  FIGMA_COLLECTION.TYPOGRAPHY,
-];
-
-function getScopes(
+export function getScopes(
   collectionName: string,
   resolvedType: VariableResolvedDataType,
-  fullName: string,
+  variableName: string,
 ): VariableScope[] {
+  const fullName = variableName.toLowerCase();
+
   if (resolvedType === 'COLOR') {
     if (
       collectionName === FIGMA_COLLECTION.SEMANTIC ||
@@ -62,70 +56,6 @@ function getScopes(
   return [];
 }
 
-function normalizeScopes(scopes: readonly VariableScope[]): string {
+export function normalizeScopes(scopes: readonly VariableScope[]): string {
   return [...scopes].sort().join('|');
-}
-
-// Sets scopes on all relevant local variables. Best-effort and idempotent: safe to run after
-// every import. Appends a short summary to `logs`, plus a few samples of variables in covered
-// collections that matched no scope rule and have no code syntax (naming drift).
-export async function applyScopes(logs: string[]): Promise<void> {
-  const collections = await figma.variables.getLocalVariableCollectionsAsync();
-  const allVariables = await figma.variables.getLocalVariablesAsync();
-
-  if (!collections.some((c) => c.name === FIGMA_COLLECTION.COLOR)) {
-    logs.push('Scopes: no Color collection found; skipped.');
-    return;
-  }
-
-  const variablesByCollectionId = new Map<string, Variable[]>();
-  for (const variable of allVariables) {
-    const existing = variablesByCollectionId.get(variable.variableCollectionId);
-    if (existing) {
-      existing.push(variable);
-    } else {
-      variablesByCollectionId.set(variable.variableCollectionId, [variable]);
-    }
-  }
-
-  const targetCollections = collections.filter((c) =>
-    SCOPE_COLLECTIONS.includes(c.name),
-  );
-
-  let scopeChanged = 0;
-  let noRuleCount = 0;
-  const noRuleSamples: string[] = [];
-
-  for (const collection of targetCollections) {
-    const isCovered = COVERED_COLLECTIONS.includes(collection.name);
-
-    for (const variable of variablesByCollectionId.get(collection.id) ?? []) {
-      const fullName = variable.name.toLowerCase();
-      const scopes = getScopes(
-        collection.name,
-        variable.resolvedType,
-        fullName,
-      );
-      if (normalizeScopes(scopes) !== normalizeScopes(variable.scopes ?? [])) {
-        variable.scopes = scopes;
-        scopeChanged++;
-      }
-
-      if (isCovered && scopes.length === 0 && !variable.codeSyntax.WEB) {
-        noRuleCount++;
-        if (noRuleSamples.length < 10) {
-          noRuleSamples.push(
-            `${collection.name}/${variable.name} (${variable.resolvedType})`,
-          );
-        }
-      }
-    }
-  }
-
-  logs.push(
-    `Scopes: set on ${scopeChanged}, ${noRuleCount} variables without a scope or code syntax.`,
-  );
-  for (const sample of noRuleSamples) {
-    logs.push(`Scopes: no rule matched for ${sample}`);
-  }
 }

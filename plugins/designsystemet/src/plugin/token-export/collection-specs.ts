@@ -4,6 +4,7 @@ import {
   FIGMA_COLLECTION,
 } from '@digdir/designsystemet/internal';
 import { resolveValue } from './resolver';
+import { COVERED_COLLECTIONS, getScopes } from './scopes';
 import type { FlatToken, TokenModel } from './types';
 import { inferVariableName, pathToFigmaName } from './utils';
 import {
@@ -30,6 +31,7 @@ export type VariableSpec = {
    * Derived from the same rules as the CLI's `tokens build`, so the two can not drift apart.
    */
   codeSyntax: string | null;
+  scopes: VariableScope[];
   valuesByMode: Map<string, ValueSpec>;
 };
 
@@ -114,12 +116,26 @@ function buildModeVariables(
             token.path.split('.'),
             token.tokenSet,
           );
+          const scopes = getScopes(group, variableType, entry.name);
           collection.variables.set(entry.name, {
             name: entry.name,
             type: variableType,
             codeSyntax: cssVariable ? `var(${cssVariable})` : null,
+            scopes,
             valuesByMode: new Map<string, ValueSpec>(),
           });
+
+          // A variable in a covered collection that matched neither a scope nor a code syntax
+          // rule is a likely naming-drift signal.
+          if (
+            COVERED_COLLECTIONS.includes(group) &&
+            scopes.length === 0 &&
+            !cssVariable
+          ) {
+            logs.push(
+              `No scope or code syntax rule matched ${group}/${entry.name} (${token.tokenSet} ${token.path})`,
+            );
+          }
         }
 
         const variable = collection.variables.get(entry.name);
