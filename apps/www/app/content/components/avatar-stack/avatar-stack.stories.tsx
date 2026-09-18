@@ -211,62 +211,35 @@ export const Expandable = () => (
 );
 
 export const ShapeVariants = () => (
-  <EXPERIMENTAL_AvatarStack aria-label='example of square avatars' expandable>
+  <EXPERIMENTAL_AvatarStack
+    aria-label='example of square avatars'
+    expandable
+    style={
+      {
+        '--dsc-avatar-stack-radius': 'var(--ds-border-radius-md)',
+      } as React.CSSProperties
+    }
+  >
     <li>
-      <Avatar
-        aria-label='variant square'
-        style={
-          {
-            '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
-          } as React.CSSProperties
-        }
-      />
+      <Avatar aria-label='variant square' />
     </li>
     <li>
-      <Avatar
-        aria-label='Ola Nordmann'
-        style={
-          {
-            '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
-          } as React.CSSProperties
-        }
-      >
+      <Avatar aria-label='Ola Nordmann'>
         <img src='/img/component-docs/cats/cat1.webp' alt='' />
       </Avatar>
     </li>
     <li>
-      <Avatar
-        aria-label='Ola Nordmann'
-        style={
-          {
-            '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
-          } as React.CSSProperties
-        }
-      >
+      <Avatar aria-label='Ola Nordmann'>
         <img src='/img/component-docs/cats/cat2.webp' alt='' />
       </Avatar>
     </li>
     <li>
-      <Avatar
-        aria-label='Ola Nordmann'
-        style={
-          {
-            '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
-          } as React.CSSProperties
-        }
-      >
+      <Avatar aria-label='Ola Nordmann'>
         <img src='/img/component-docs/cats/cat3.webp' alt='' />
       </Avatar>
     </li>
     <li>
-      <Avatar
-        aria-label='Ola Nordmann'
-        style={
-          {
-            '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
-          } as React.CSSProperties
-        }
-      >
+      <Avatar aria-label='Ola Nordmann'>
         <img src='/img/component-docs/cats/cat4.webp' alt='' />
       </Avatar>
     </li>

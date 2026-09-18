@@ -182,8 +182,7 @@ export const ExamplesComponents = ({
                       className={classes.avatar}
                       style={
                         {
-                          '--dsc-avatar-border-radius':
-                            'var(--ds-border-radius-md)',
+                          '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
                         } as React.CSSProperties
                       }
                     >

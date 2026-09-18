@@ -51,7 +51,7 @@ export const ShapeVariants = () => (
       aria-label='variant square'
       style={
         {
-          '--dsc-avatar-border-radius': 'var(--ds-border-radius-md)',
+          '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
         } as React.CSSProperties
       }
     />
@@ -60,7 +60,7 @@ export const ShapeVariants = () => (
       aria-label='Ola Nordmann'
       style={
         {
-          '--dsc-avatar-border-radius': 'var(--ds-border-radius-md)',
+          '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
         } as React.CSSProperties
       }
     >
