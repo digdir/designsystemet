@@ -46,9 +46,11 @@ Use [fieldset](/en/components/docs/fieldset/code) for grouping multiple choices.
 <Story story="OutlineEn" />
 
 ### ReadOnly
-`type="checkbox"` is always `:read-only` and does not support this in the same way as input types you can type into.
+From the web standard, checkbox is always `:read-only` because you cannot type text into it.
 
-If you set `readonly` on checkbox we ensure that it behaves as if it has read-only access by stopping `onClick` and `onChange`.
+Designsystemet ensures that the `readonly` attribute behaves as read-only by preventing `click` and `change`.
+
+Use `input[type="checkbox"][readonly]` as a CSS selector if you need to extend the styling of a checkbox with the readonly attribute.
 
 The user will still be able to focus on the element.
 
@@ -74,7 +76,7 @@ import { Checkbox } from '@digdir/designsystemet-react';
 
 ### Indeterminate checkbox
 
-Use [useCheckboxGroup](/en/components/utilities/use-checkbox-group) to create a parent checkbox that can select or clear all options in the group.
+Use [useCheckboxGroup](/en/components/utilities/use-checkbox-group) to connect a parent checkbox that can select or clear all options in the group.
 
 This activates an additional state, `indeterminate`, alongside `checked` and `unchecked`. It is shown as a horizontal line when one or more checkboxes are selected in the group. It is shown as a regular checkbox when all checkboxes in the group share the same state.
 

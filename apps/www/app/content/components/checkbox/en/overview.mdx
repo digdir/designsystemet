@@ -5,13 +5,13 @@ search_terms: selection, multiselect, option, options, check, tick
 <Story story="Preview" />
 
 **Use checkbox when**
-- the user should be able to select one or more options within the same context
-- the user needs to accept terms and conditions
+- the user should be able to select one or more options
+- the user needs to confirm something, for example that they have read and understood information
 
 **Avoid checkbox when**
-- the user should choose only one option; use a [radio](/en/components/docs/radio/overview) instead
-- the user must choose from more than seven options; use a [select](/en/components/docs/select/overview) or [suggestion](/en/components/docs/suggestion/overview) instead
-- something should be turned on or off; use a [switch](/en/components/docs/switch/overview) instead
+- the user should choose only one of several options; use a [radio](/en/components/docs/radio/overview) instead
+- the user has many options to choose from; use a [select](/en/components/docs/select/overview) or [suggestion](/en/components/docs/suggestion/overview) instead
+- the user should turn a feature or setting on or off; use a [switch](/en/components/docs/switch/overview) instead
 
 ## Example
 
@@ -46,9 +46,9 @@ This can for example be appropriate when:
 
 ### Read-only checkbox
 
-Checkbox supports the `readOnly` attribute to make the field non-editable and gives a visual indication that distinguishes it from editable fields. Although they cannot be changed, fields with `readOnly` are still part of the tab order, and the information is included when the form is submitted.
+Checkbox supports the `readonly` attribute on the `input` element to make the field non-editable and gives a visual indication that distinguishes it from editable fields. Although they cannot be changed, fields with the `readonly` attribute are still part of the tab order, and the information is included when the form is submitted.
 
-We avoid using `readOnly` whenever possible because such fields can be confusing. Not all users will understand why they cannot change the content.
+We avoid using `readonly` whenever possible because such fields can be confusing. Not all users will understand why they cannot change the content.
 
 <Story story="ReadOnly" />
 
@@ -63,15 +63,13 @@ Nav has a helpful explanation of [why disabled states are problematic (nav.no)](
 
 ## Guidelines
 
-Use checkbox when the user can select one or more options.
-
 ### Sort the options
 
 Sort the answer options alphabetically unless there is a good reason to do otherwise. Be careful about placing the most common answer option first if the question is personal or value-based, such as sexual orientation or party affiliation.
 
 ### Placement
 
-Preferably place the response options vertically. This makes it easier to scan the list and read the options. For users who need to enlarge the text, horizontal lists can be challenging.
+Preferably place the response options vertically. This makes it easier to scan the list and read the options. For users who need to enlarge the text, horizontal lists can be challenging. If you need horizontal placement, use [chip with checkbox](/en/components/docs/chip/overview#chip-as-checkbox).
 
 <div className="dodont-row">
   <DoDont story="DoPlacement">
