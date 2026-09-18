@@ -15,7 +15,7 @@ export const RELEASE_DATE_PATTERN = /<time dateTime="(\d{4}-\d{2}-\d{2})">/;
 
 /** @param {string} date `YYYY-MM-DD` */
 export function releaseDateMarkup(date) {
-  return `<Paragraph data-size="sm" style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  return `<p data-size="sm" style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
   <time dateTime="${date}">${dateFormatter.format(new Date(date))}</time>
-</Paragraph>`;
+</p>`;
 }
