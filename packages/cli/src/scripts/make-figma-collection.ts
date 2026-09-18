@@ -1,9 +1,9 @@
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
+import { type FigmaCollections, toFigmaCollections } from '../figma/collections.ts';
 import { validateConfig } from '../schemas/helpers.ts';
 import { type ConfigSchema, configSchema } from '../schemas/schema.ts';
-import { type FigmaCollections, toFigmaCollections } from '../tokens/create/figma-collections.ts';
 import { generate$Themes } from '../tokens/create/generators/$themes.ts';
 import { createTokens, getTokenSetDimensions } from '../tokens/create.ts';
 import type { TokenSets } from '../tokens/types.ts';

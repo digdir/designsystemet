@@ -1,7 +1,7 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 import type { ColorScheme } from '../../../colors/types.ts';
+import { FIGMA_COLLECTION } from '../../../figma/collections.ts';
 import type { SizeModes, TokenSetDimensions } from '../../types.ts';
-import { FIGMA_COLLECTION } from '../figma-collections.ts';
 
 async function createHash(text: string, algo = 'SHA-1') {
   const crypto = globalThis.crypto;
