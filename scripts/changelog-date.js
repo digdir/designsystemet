@@ -8,6 +8,7 @@ const dateFormatter = new Intl.DateTimeFormat('nb-NO', {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
+  timeZone: 'UTC',
 });
 
 /** Matches the markup below, so a version can be checked for an existing date. */
