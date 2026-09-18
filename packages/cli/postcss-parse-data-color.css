@@ -1,0 +1,9 @@
+:is([data-color='danger'], [data-color='warning']) {
+  --ds-color-surface-default: light-dark(white, darkred);
+  --ds-color-surface-tinted: light-dark(tomato, red);
+}
+
+:root {
+  --ds-icon-size: 4rem;
+  --mtds-my-text: 'Close';
+}

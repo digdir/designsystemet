@@ -86,10 +86,14 @@
     "zod-validation-error": "^5.0.0"
   },
   "devDependencies": {
+    "@asamuzakjp/css-color": "^7.0.0",
+    "@csstools/css-color-parser": "^4.2.3",
     "@types/chroma-js": "3.1.2",
     "@types/node": "24.13.4",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.32.0",
+    "postcss-selector-parser": "^7.1.6",
+    "postcss-value-parser": "^4.2.0",
     "tsdown": "0.22.14",
     "typescript": "6.0.3",
     "vitest": "5.0.0"
