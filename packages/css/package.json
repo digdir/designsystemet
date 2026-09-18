@@ -53,11 +53,11 @@
     "build:theme": "pnpm node ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./theme --experimental-tailwind"
   },
   "dependencies": {
-    "@digdir/designsystemet-types": "workspace:"
+    "@digdir/designsystemet-types": "workspace:*"
   },
   "devDependencies": {
-    "autoprefixer": "10.5.5",
-    "cssnano": "8.0.10",
+    "autoprefixer": "10.6.0",
+    "cssnano": "9.0.4",
     "postcss": "8.5.28",
     "postcss-cli": "11.0.1",
     "postcss-import": "17.0.0",

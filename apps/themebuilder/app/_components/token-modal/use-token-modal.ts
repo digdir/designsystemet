@@ -1,4 +1,5 @@
 import type { CssColor } from '@digdir/designsystemet/color';
+import pkg from '@digdir/designsystemet/package.json';
 import type { ExternalConfigSchemaInput } from '@digdir/designsystemet/schemas/schema.js';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router';
@@ -51,7 +52,7 @@ export const useTokenModal = () => {
   const configBuildSnippet = `npx ${packageWithTag} tokens create --config designsystemet.config.json\nnpx ${packageWithTag} tokens build --config designsystemet.config.json`;
 
   const configSnippet = {
-    $schema: 'https://designsystemet.no/schemas/config/latest.json',
+    $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
     outDir: './design-tokens',
     themes: {
       [name]: {

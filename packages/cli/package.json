@@ -40,7 +40,8 @@
     "./schemas/*": {
       "types": "./dist/src/schemas/*",
       "import": "./dist/src/schemas/*"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
@@ -66,8 +67,8 @@
   },
   "dependencies": {
     "@commander-js/extra-typings": "^15.0.0",
-    "@digdir/designsystemet-types": "workspace:",
-    "@inquirer/confirm": "^6.3.1",
+    "@digdir/designsystemet-types": "workspace:*",
+    "@inquirer/confirm": "^6.3.2",
     "@tokens-studio/sd-transforms": "2.0.3",
     "@tokens-studio/types": "0.5.2",
     "chroma-js": "^3.2.0",
@@ -81,12 +82,12 @@
     "postcss": "^8.5.28",
     "ramda": "^0.32.0",
     "style-dictionary": "^5.5.3",
-    "zod": "^4.5.4",
+    "zod": "^4.6.5",
     "zod-validation-error": "^5.0.0"
   },
   "devDependencies": {
     "@types/chroma-js": "3.1.2",
-    "@types/node": "24.13.3",
+    "@types/node": "24.13.4",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.32.0",
     "tsdown": "0.22.14",
