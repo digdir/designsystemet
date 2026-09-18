@@ -45,7 +45,7 @@ export type AvatarStackProps = {
  *   <Avatar aria-label='name'>
  *     <BriefcaseIcon />
  *   </Avatar>
- *   <Avatar aria-label='name' initials='sm' />
+ *   <Avatar aria-label='name'>sm</Avatar>
  * </EXPERIMENTAL_AvatarStack>
  */
 export const EXPERIMENTAL_AvatarStack = forwardRef<

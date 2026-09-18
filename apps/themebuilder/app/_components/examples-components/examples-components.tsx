@@ -179,8 +179,12 @@ export const ExamplesComponents = ({
                   <div className={classes.user} key={user.role}>
                     <Avatar
                       aria-label={user.name}
-                      variant='square'
                       className={classes.avatar}
+                      style={
+                        {
+                          '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
+                        } as React.CSSProperties
+                      }
                     >
                       <img src={user.avatar} alt='' />
                     </Avatar>
