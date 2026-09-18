@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.23.0
+
+### Minor Changes
+
+- **Field:** No longer reduces opacity on label and description when containing a disabled input, improving readability. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5373](https://github.com/digdir/designsystemet/pull/5373))
+
+- **Field:** Radio and checkbox descriptions now use a smaller font size to create better visual hierarchy. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+- **Label:** The default font weight is now `semibold` to better distinguish labels from body text. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+- **Fieldset:** Description text now inherits color instead of using a fixed neutral color, making it easier to swap color palettes. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+- **Field:** Description text now inherits color instead of using a fixed neutral color, making it easier to swap color palettes. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
 ## 1.22.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.23.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5373](https://github.com/digdir/designsystemet/pull/5373))
+
+- **cli**: Color names in `themes.<theme>.colors` are now validated and may only contain lowercase letters (a-z), digits (0-9) and hyphens (-), matching the names produced by the theme builder. ([#5357](https://github.com/digdir/designsystemet/pull/5357))
+
 ## 1.22.0
 
 No changes in this release.
