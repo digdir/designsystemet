@@ -40,7 +40,8 @@
     "./schemas/*": {
       "types": "./dist/src/schemas/*",
       "import": "./dist/src/schemas/*"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
@@ -66,7 +67,7 @@
   },
   "dependencies": {
     "@commander-js/extra-typings": "^15.0.0",
-    "@digdir/designsystemet-types": "workspace:",
+    "@digdir/designsystemet-types": "workspace:*",
     "@inquirer/confirm": "^6.3.2",
     "@tokens-studio/sd-transforms": "2.0.3",
     "@tokens-studio/types": "0.5.2",

@@ -88,7 +88,7 @@
       rotate: 180deg;
     }
 
-    /* Keeping empty-li styling for backwards compatiblity */
+    /* @deprecated Keeping empty-li styling for backwards compatibility */
     & > li:empty::before {
       content: var(--dsc-pagination-ellipsis);
       display: block;
