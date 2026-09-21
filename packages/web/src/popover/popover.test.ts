@@ -82,7 +82,7 @@ describe('popover floating behavior', () => {
   });
 
   // Only test in browser as it requires ResizeObserver
-  it('defers dimension changes to avoid resizing during ResizeObserver delivery', {
+  it('matches the source width before revealing, and defers maxHeight to avoid resizing during ResizeObserver delivery', {
     tags: ['browser'],
   }, async () => {
     const animationFrames: FrameRequestCallback[] = [];
@@ -110,8 +110,12 @@ describe('popover floating behavior', () => {
       timeout: 1500,
     });
 
+    // translate is what reveals the popover, so the width has to be in place by
+    // now - otherwise it is visible for a frame at its own content width.
+    expect(popover?.style.width).toBe('120px');
+
+    // maxHeight depends on the available space, so it stays deferred.
     expect(animationFrames.length).toBeGreaterThan(0);
-    expect(popover?.style.width).toBe('');
     expect(popover?.style.maxHeight).toBe('');
 
     // Flush frames, including any scheduled while flushing
@@ -119,8 +123,35 @@ describe('popover floating behavior', () => {
       animationFrames.shift()?.(performance.now());
     }
 
-    expect(popover?.style.width).toBe('120px');
     expect(popover?.style.maxHeight).not.toBe('');
+  });
+
+  // Only test in browser as it requires ResizeObserver
+  it('keeps the width in sync when the source resizes while open', {
+    tags: ['browser'],
+  }, async () => {
+    render(`
+      <button style="width: 120px" popovertarget="my-popover">Open</button>
+      <div
+        id="my-popover"
+        popover="auto"
+        style="--_ds-floating: top; --_ds-floating-overscroll: fit"
+      >Content</div>
+    `);
+
+    document.querySelector('button')?.click();
+
+    const popover = document.getElementById('my-popover');
+    await vi.waitFor(() => expect(popover?.style.width).toBe('120px'), {
+      timeout: 1500,
+    });
+
+    const trigger = document.querySelector('button');
+    if (trigger) trigger.style.width = '300px';
+
+    await vi.waitFor(() => expect(popover?.style.width).toBe('300px'), {
+      timeout: 1500,
+    });
   });
 
   it('does not position when data-placement is "none"', async () => {
