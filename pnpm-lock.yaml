@@ -165,6 +165,9 @@ settings:
 
 packageExtensionsChecksum: sha256-IQSNU9cJtri1P9xMWAvG91nRHacWCj8xtjZCK1etLxM=
 
+patchedDependencies:
+  '@oddbird/popover-polyfill': 67adf4cdaca4830cbd6d74d403a69603cfe131411707a7546040c0c28546555b
+
 importers:
 
   .:
@@ -807,7 +810,7 @@ importers:
         version: 0.11.0
       '@oddbird/popover-polyfill':
         specifier: 0.7.2
-        version: 0.7.2
+        version: 0.7.2(patch_hash=67adf4cdaca4830cbd6d74d403a69603cfe131411707a7546040c0c28546555b)
       '@testing-library/dom':
         specifier: 10.4.2
         version: 10.4.2
@@ -7063,7 +7066,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@oddbird/popover-polyfill@0.7.2': {}
+  '@oddbird/popover-polyfill@0.7.2(patch_hash=67adf4cdaca4830cbd6d74d403a69603cfe131411707a7546040c0c28546555b)': {}
 
   '@oxc-parser/binding-android-arm-eabi@0.127.0':
     optional: true
@@ -9136,7 +9139,7 @@ snapshots:
 
   happy-dom@20.14.0:
     dependencies:
-      '@types/node': 24.13.3
+      '@types/node': 24.13.4
       '@types/whatwg-mimetype': 3.0.2
       '@types/ws': 8.18.1
       buffer-image-size: 0.6.4
