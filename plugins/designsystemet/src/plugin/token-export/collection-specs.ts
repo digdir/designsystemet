@@ -1,7 +1,7 @@
 import type { FigmaMode } from '@digdir/designsystemet/internal';
 import {
-  cssVariableName,
   FIGMA_COLLECTION,
+  figmaCodeSyntax,
   figmaVariableScopes,
 } from '@digdir/designsystemet/internal';
 import type { ImportLog } from './log';
@@ -28,10 +28,11 @@ export type VariableSpec = {
   name: string;
   type: VariableResolvedDataType;
   /**
-   * WEB code syntax, e.g. `var(--ds-color-background-default)`, or null when the token has no CSS property.
-   * Derived from the same rules as the CLI's `tokens build`, so the two can not drift apart.
+   * WEB code syntax, e.g. `var(--ds-color-background-default)`, or null when the token has no
+   * CSS property. From the CLI's `figmaCodeSyntax`, which names it exactly as `tokens build` does.
    */
   codeSyntax: string | null;
+  /** From the CLI's `figmaVariableScopes`; empty for private tokens and raw theme inputs. */
   scopes: VariableScope[];
   valuesByMode: Map<string, ValueSpec>;
 };
@@ -113,20 +114,17 @@ function buildModeVariables(
         }
 
         if (!collection.variables.has(entry.name)) {
-          const cssVariable = cssVariableName(
-            token.path.split('.'),
-            token.tokenSet,
-          );
+          const path = token.path.split('.');
           const scopeRule = figmaVariableScopes(group, {
-            path: token.path.split('.'),
+            path,
             type: token.type,
           });
           collection.variables.set(entry.name, {
             name: entry.name,
             type: variableType,
-            // Whether a token has a CSS property is decided by the CLI's naming rules, which are
-            // tested against the build output, so a missing code syntax is a fact rather than drift.
-            codeSyntax: cssVariable ? `var(${cssVariable})` : null,
+            // Decided by the CLI's naming rules, which are tested against the build output, so a
+            // missing code syntax is a fact about the token rather than drift.
+            codeSyntax: figmaCodeSyntax({ path, tokenSet: token.tokenSet }),
             scopes: scopeRule ?? [],
             valuesByMode: new Map<string, ValueSpec>(),
           });
