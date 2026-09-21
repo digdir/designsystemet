@@ -11,12 +11,8 @@ export {
   UNGROUPED,
 } from './figma/collections.ts';
 export {
-  type FigmaVariableScope,
-  type FigmaVariableToken,
-  type FigmaVariableType,
   figmaVariableScopes,
   figmaVariableType,
-  isPrivateTokenPath,
 } from './figma/scopes.ts';
 export { getThemeColorScales } from './tokens/create/generators/primitives/color-scheme.ts';
 export { cssVariableName } from './tokens/css-variables.ts';
