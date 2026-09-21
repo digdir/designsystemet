@@ -50,7 +50,7 @@ describe('popover floating behavior', () => {
     const popover = document.getElementById('my-popover');
 
     trigger?.click();
-    await tick();
+    await waitForPositioned(popover);
     expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).toHaveAttribute('data-floating');
     expect(popover?.style.translate).toBeTruthy();
