@@ -15,6 +15,42 @@ import { type ChangeEvent, useRef, useState } from 'react';
 
 export const Preview = () => {
   return (
+    <>
+      <Button command='show-modal' commandfor='my-dialog-preview'>
+        Open Dialog
+      </Button>
+      <Dialog id='my-dialog-preview'>
+        <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Dialog header
+        </Heading>
+        <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+      </Dialog>
+    </>
+  );
+};
+
+export const WithCommand = () => (
+  <>
+    <Button command='show-modal' commandfor='my-dialog-command'>
+      Open Dialog with command
+    </Button>
+    <Dialog id='my-dialog-command'>
+      <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
+        Dialog header
+      </Heading>
+      <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+        doloremque obcaecati assumenda odio ducimus sunt et.
+      </Paragraph>
+    </Dialog>
+  </>
+);
+
+export const TriggerContext = () => {
+  return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
       <Dialog>
@@ -30,23 +66,6 @@ export const Preview = () => {
     </Dialog.TriggerContext>
   );
 };
-
-export const WithCommand = () => (
-  <>
-    <Button command='show-modal' commandfor='my-dialog-commant'>
-      Open Dialog with ref
-    </Button>
-    <Dialog id='my-dialog-commant'>
-      <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-        Dialog header
-      </Heading>
-      <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-        doloremque obcaecati assumenda odio ducimus sunt et.
-      </Paragraph>
-    </Dialog>
-  </>
-);
 
 export const WithRef = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -73,8 +92,10 @@ export const WithRef = () => {
 };
 
 export const ModalDialog = () => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Åpne modal Dialog</Dialog.Trigger>
+  <>
+    <Button command='show-modal' commandfor='my-dialog-modal'>
+      Åpne modal Dialog
+    </Button>
     <Dialog id='my-dialog-modal'>
       <Dialog.Block>
         <Paragraph data-size='sm'>Bekreft endring</Paragraph>
@@ -113,13 +134,15 @@ export const ModalDialog = () => (
         </div>
       </Dialog.Block>
     </Dialog>
-  </Dialog.TriggerContext>
+  </>
 );
 
 export const ModalDialogEn = () => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Open modal dialog</Dialog.Trigger>
-    <Dialog id='my-dialog-modal'>
+  <>
+    <Button command='show-modal' commandfor='my-dialog-modal-en'>
+      Open modal dialog
+    </Button>
+    <Dialog id='my-dialog-modal-en'>
       <Dialog.Block>
         <Paragraph data-size='sm'>Confirm change</Paragraph>
         <Heading>Are you sure you want to change the application?</Heading>
@@ -144,27 +167,30 @@ export const ModalDialogEn = () => (
             variant='primary'
             data-color='danger'
             command='close'
-            commandfor='my-dialog-modal'
+            commandfor='my-dialog-modal-en'
           >
             Yes, change
           </Button>
           <Button
             variant='secondary'
             command='close'
-            commandfor='my-dialog-modal'
+            commandfor='my-dialog-modal-en'
           >
             Cancel
           </Button>
         </div>
       </Dialog.Block>
     </Dialog>
-  </Dialog.TriggerContext>
+  </>
 );
 
 export const NonModalDialog = () => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Åpne ikke-modal Dialog</Dialog.Trigger>
+  <>
+    <Button command='--show-non-modal' commandfor='my-dialog-non-modal'>
+      Åpne ikke-modal Dialog
+    </Button>
     <Dialog
+      id='my-dialog-non-modal'
       modal={false}
       style={{
         zIndex: '10',
@@ -186,13 +212,16 @@ export const NonModalDialog = () => (
       />
       <Button>Send inn</Button>
     </Dialog>
-  </Dialog.TriggerContext>
+  </>
 );
 
 export const NonModalDialogEn = () => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Open non-modal dialog</Dialog.Trigger>
+  <>
+    <Button command='--show-non-modal' commandfor='my-dialog-non-modal-en'>
+      Open non-modal dialog
+    </Button>
     <Dialog
+      id='my-dialog-non-modal-en'
       modal={false}
       style={{
         zIndex: '10',
@@ -214,15 +243,17 @@ export const NonModalDialogEn = () => (
       />
       <Button>Submit</Button>
     </Dialog>
-  </Dialog.TriggerContext>
+  </>
 );
 
 export const WithForm = () => {
   const [input, setInput] = useState('');
 
   return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+    <>
+      <Button command='show-modal' commandfor='my-dialog-form'>
+        Open Dialog with command
+      </Button>
       <Dialog onClose={() => setInput('')} closedby='any' id='my-dialog-form'>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog med skjema
@@ -258,7 +289,7 @@ export const WithForm = () => {
           </Button>
         </div>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   );
 };
 
@@ -266,8 +297,10 @@ export const WithFormEn = () => {
   const [input, setInput] = useState('');
 
   return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>Open dialog</Dialog.Trigger>
+    <>
+      <Button command='show-modal' commandfor='my-dialog-form-en'>
+        Open dialog with command
+      </Button>
       <Dialog
         onClose={() => setInput('')}
         closedby='any'
@@ -309,13 +342,15 @@ export const WithFormEn = () => {
           </Button>
         </div>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   );
 };
 
 export const WithBlocks = () => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+  <>
+    <Button command='show-modal' commandfor='my-dialog-blocks'>
+      Open Dialog with command
+    </Button>
     <Dialog id='my-dialog-blocks'>
       <Dialog.Block>
         <Paragraph data-size='sm'>Dialog subtitle</Paragraph>
@@ -337,16 +372,18 @@ export const WithBlocks = () => (
         </Button>
       </Dialog.Block>
     </Dialog>
-  </Dialog.TriggerContext>
+  </>
 );
 
 export const CloseWithClickOutside = () => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-    <Dialog closedby='any'>
+  <>
+    <Button command='show-modal' commandfor='my-dialog-close-outside'>
+      Open Dialog with command
+    </Button>
+    <Dialog id='my-dialog-close-outside' closedby='any'>
       <Heading>Click outside to close</Heading>
     </Dialog>
-  </Dialog.TriggerContext>
+  </>
 );
 
 export const Drawer = () => {
@@ -383,22 +420,25 @@ export const Drawer = () => {
           <Radio name='drawer' label='Right' value='right' />
         </div>
       </Fieldset>
-      <Dialog.TriggerContext>
-        <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-        <Dialog
-          modal={modal}
-          closedby='any'
-          placement={placement}
-          style={{ zIndex: '10' }}
-        >
-          <Dialog.Block>
-            <Paragraph>
-              This is a {modal ? 'modal' : 'non-modal'} Dialog with{' '}
-              <code>placement="{placement}"</code>
-            </Paragraph>
-          </Dialog.Block>
-        </Dialog>
-      </Dialog.TriggerContext>
+      <Button
+        command={modal ? 'show-modal' : '--show-non-modal'}
+        commandfor='my-dialog-drawer'
+      >
+        Open Dialog with command
+      </Button>
+      <Dialog
+        id='my-dialog-drawer'
+        closedby='any'
+        placement={placement}
+        style={{ zIndex: '10' }}
+      >
+        <Dialog.Block>
+          <Paragraph>
+            This is a {modal ? 'modal' : 'non-modal'} Dialog with{' '}
+            <code>placement="{placement}"</code>
+          </Paragraph>
+        </Dialog.Block>
+      </Dialog>
     </>
   );
 };

@@ -4,12 +4,12 @@ export const Preview = () => {
   return (
     <>
       <Paragraph>
-        For å vise SkipLink, tab til dette eksempelet, eller klikk inni
+        For å vise skip link, tab til dette eksempelet, eller klikk inni
         eksempelet og trykk <kbd>Tab</kbd>.
         <SkipLink href='#main-content'>Hopp til hovedinnhold</SkipLink>
       </Paragraph>
       <main id='main-content' tabIndex={-1}>
-        Region som kan motta fokus fra skiplink.
+        Region som kan motta fokus fra skip link.
       </main>
     </>
   );
@@ -19,7 +19,7 @@ export const PreviewEn = () => {
   return (
     <>
       <Paragraph>
-        To reveal the SkipLink, tab into this example, or click inside the
+        To reveal the skip link, tab into this example, or click inside the
         example and press <kbd>Tab</kbd>.
         <SkipLink href='#main-content'>Skip to main content</SkipLink>
       </Paragraph>

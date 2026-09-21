@@ -6,7 +6,7 @@ import {
   getFilesFromContentDir,
   getFoldersInContentDir,
 } from '~/_utils/files.server';
-import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import { getFrontmatter } from '~/_utils/get-frontmatter.server';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
@@ -31,6 +31,7 @@ export const loader = async ({
       title: string;
       url: string;
       order?: number;
+      keywords?: string;
     }[];
   } = {
     ' ': [],
@@ -46,11 +47,21 @@ export const loader = async ({
 
   // Get all folders in components-docs/{lang}
   const docsFolders = getFoldersInContentDir(join('components-docs', lang));
+  const reactUtilities = new Set([
+    'roving-focus',
+    'use-checkbox-group',
+    'use-pagination',
+    'use-radio-group',
+    'use-synchronized-animation',
+  ]);
 
   // Process each folder as a category
   for (const folder of docsFolders) {
     const categoryKey = folder === 'get-started' ? 'getStarted' : folder;
     cats[categoryKey] = [];
+    if (folder === 'utilities') {
+      cats.utilitiesReact = [];
+    }
 
     // Get all files in this folder
     const filesInFolder = getFilesFromContentDir(
@@ -61,19 +72,27 @@ export const loader = async ({
       const fileContent = getFileFromContentDir(
         join('components-docs', lang, folder, `${file.relativePath}`),
       );
-      const result = await generateFromMdx(fileContent);
+      const frontmatter = getFrontmatter(fileContent);
+      const slug = file.relativePath.replace('.mdx', '');
+      const utilityCategory =
+        folder === 'utilities' && reactUtilities.has(slug)
+          ? 'utilitiesReact'
+          : categoryKey;
 
-      cats[categoryKey].push({
+      cats[utilityCategory].push({
         title:
-          result.frontmatter.sidebar_title ||
-          file.relativePath.replace('.mdx', ''),
-        url: `/${lang}/components/${folder}/${file.relativePath.replace('.mdx', '')}`,
-        order: parseInt(result.frontmatter.order, 10) || 9999,
+          frontmatter.sidebar_title || file.relativePath.replace('.mdx', ''),
+        url: `/${lang}/components/${folder}/${slug}`,
+        order: parseInt(frontmatter.order, 10) || 9999,
+        keywords: frontmatter.search_terms || '',
       });
     }
 
     // Sort items within the category by order
     cats[categoryKey].sort((a, b) => (a.order || 9999) - (b.order || 9999));
+    if (folder === 'utilities') {
+      cats.utilitiesReact.sort((a, b) => (a.order || 9999) - (b.order || 9999));
+    }
   }
 
   /* read all folders in content/components */
@@ -96,10 +115,18 @@ export const loader = async ({
       const parsedMetadata = JSON.parse(metadataJson);
       const category = parsedMetadata.category || 'components';
 
+      const overviewMdx = getFileFromContentDir(
+        join('components', folder, lang, 'overview.mdx'),
+      );
+      const keywords = overviewMdx
+        ? getFrontmatter(overviewMdx).search_terms || ''
+        : '';
+
       return {
         category,
         title: parsedMetadata[lang].title || folder,
         url: `/${lang}/components/docs/${folder}`,
+        keywords,
       };
     }),
   );
@@ -140,10 +167,11 @@ export const loader = async ({
     orderedCats[key] = value;
   });
 
-  const trimmedUrl = request.url.endsWith('/')
-    ? request.url.slice(0, -1).split('/')
-    : request.url.split('/');
-  const compPage = trimmedUrl[trimmedUrl.length - 1];
+  // Derive the current doc page from the pathname. Strip any `.data` suffix so
+  // single-fetch data requests (e.g. `/accessibility.data`) don't leak into the
+  // sidebar links. `filter(Boolean)` drops a trailing-slash empty segment.
+  const pathname = new URL(request.url).pathname.replace(/\.data$/, '');
+  const compPage = pathname.split('/').filter(Boolean).pop();
 
   const isComponentPage = request.url.includes('/components/docs/');
 
@@ -169,6 +197,7 @@ export default function Layout({
         title={'Components'}
         suffix={sidebarSuffix}
         hideCatTitle
+        searchable
       />
       <div className={classes.content} id='main'>
         <Outlet />

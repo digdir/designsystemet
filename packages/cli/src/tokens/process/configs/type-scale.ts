@@ -1,7 +1,7 @@
-import { pathStartsWithOneOf, typeEquals } from '../../utils.js';
-import { formats } from '../formats/css.js';
-import { sizeRem, typographyName } from '../transformers.js';
-import { basePxFontSize, type GetStyleDictionaryConfig, prefix } from './shared.js';
+import { pathStartsWithOneOf, typeEquals } from '../../utils.ts';
+import { formats } from '../formats/css.ts';
+import { sizeRem, typographyName } from '../transformers.ts';
+import { basePxFontSize, type GetStyleDictionaryConfig, isTypographySetPrimitive, prefix } from './shared.ts';
 
 export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme }) => {
   const selector = ':root, [data-size]';
@@ -35,8 +35,8 @@ export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme }) => {
             filter: (token) => {
               const included = typeEquals(['typography', 'dimension', 'fontsize'], token);
 
-              // Remove primitive typgography tokens
-              if (/primitives\/modes\/typography\/(primary|secondary)/.test(token.filePath)) return false;
+              // Remove the typography set primitives, whatever the set is named
+              if (isTypographySetPrimitive(token)) return false;
 
               return (
                 included &&

@@ -7,6 +7,11 @@ type StoryEntry = {
   file: string;
 };
 
+type StoriesCacheEntry = {
+  signature: string;
+  stories: StoryEntry[];
+};
+
 /**
  * Extracts exported functions from a given source code string. It looks for both named and default exports of functions.
  *
@@ -51,10 +56,14 @@ export const extractExportedFunctions = (
 };
 
 // Extract exported story functions from *.stories.tsx and *.dodont.tsx
+const storiesCache = new Map<string, StoriesCacheEntry>();
+
 export const extractStories = (
   componentPath: string,
   dodont?: boolean,
 ): StoryEntry[] => {
+  const cacheKey = `${componentPath}:${dodont ? 'dodont' : 'stories'}`;
+
   try {
     if (!existsSync(componentPath)) return [];
 
@@ -67,7 +76,8 @@ export const extractStories = (
 
     if (stats.isFile()) {
       // If it's a file, check if it matches the variant
-      files = [basename(componentPath)];
+      const file = basename(componentPath);
+      files = file.endsWith(variant) ? [file] : [];
       baseDir = dirname(componentPath);
     } else {
       // If it's a directory, filter for matching files
@@ -77,12 +87,25 @@ export const extractStories = (
 
     if (files.length === 0) return [];
 
-    return files.flatMap((file) => {
+    const signature = files
+      .map((file) => {
+        const full = join(baseDir, file);
+        const fileStats = statSync(full);
+        return `${file}:${fileStats.mtimeMs}:${fileStats.size}`;
+      })
+      .join('|');
+
+    const cached = storiesCache.get(cacheKey);
+    if (cached && cached.signature === signature) return cached.stories;
+
+    const result = files.flatMap((file) => {
       const full = join(baseDir, file);
       const src = readFileSync(full, 'utf-8');
       const fns = extractExportedFunctions(src);
       return fns.map((f) => ({ ...f, file }));
     });
+    storiesCache.set(cacheKey, { signature, stories: result });
+    return result;
   } catch (error) {
     console.error('Error extracting stories:', error);
     return [];

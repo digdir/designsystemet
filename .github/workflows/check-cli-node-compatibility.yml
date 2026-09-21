@@ -4,10 +4,11 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - 'design-tokens/**'
-      - 'packages/cli/**'
-      - 'pnpm-lock.yaml'
-      - '.github/workflows/check-cli-node-compatibility.yml'
+      - "design-tokens/**"
+      - "packages/cli/**"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/check-cli-node-compatibility.yml"
+      - ".github/workflows/scripts/remove-pnpm-node-pin.sh"
 
 permissions:
   contents: read
@@ -17,10 +18,12 @@ jobs:
     name: build (workspace node)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       # no setup-node here; let pnpm's useNodeVersion rule
-      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
         with: { run_install: false }
 
       - name: install (workspace node via useNodeVersion)
@@ -30,7 +33,7 @@ jobs:
         run: pnpm --filter "@digdir/designsystemet..." build
 
       - name: upload dist
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: cli-dist
           path: packages/cli/dist
@@ -42,21 +45,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [20.x, 21.x, 22.x, 23.x, 24.x]
+        node: [22.x, 23.x, 24.x, 25.x, 26.x]
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: neuter pnpm node pin
-        run: |
-          # drop useNodeVersion so pnpm won't hijack
-          sed -i '/^useNodeVersion:/d' pnpm-workspace.yaml || true
-          awk 'BEGIN{skip=0}/^useNodeVersion:/{skip=1;next} skip&&NF==0{skip=0;next}!skip{print}' pnpm-workspace.yaml \
-            > pnpm-workspace.yaml.tmp && mv pnpm-workspace.yaml.tmp pnpm-workspace.yaml
+        run: bash ./.github/workflows/scripts/remove-pnpm-node-pin.sh
 
-      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
         with: { run_install: false }
 
-      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: ${{ matrix.node }}
           cache: pnpm
@@ -77,5 +78,7 @@ jobs:
           name: cli-dist
           path: packages/cli/dist
 
-      - name: test cli
+      - name: test cli (built dist bin)
         run: pnpm --filter "@digdir/designsystemet" test
+        env:
+          DESIGNSYSTEMET_BIN: ./dist/bin/designsystemet.js

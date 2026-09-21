@@ -1,16 +1,15 @@
-import type { Meta } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
 import { Select } from './';
 import * as SelectStories from './select.stories';
 
-const meta: Meta = {
+const meta = preview.meta({
   title: 'Chromatic/Select',
   component: Select,
   tags: ['chromatic'],
   parameters: {
     layout: 'padded',
   },
-};
-export default meta;
+});
 
-export const Snapshots = createSingleStory(SelectStories, meta);
+export const Snapshots = meta.story(createSingleStory(SelectStories));

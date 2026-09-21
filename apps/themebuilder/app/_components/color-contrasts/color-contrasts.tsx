@@ -1,7 +1,9 @@
 import {
   type Color,
+  type ColorScale,
   generateColorSchemes,
   getContrastFromHex,
+  type SemanticColorNames,
 } from '@digdir/designsystemet';
 import {
   Field,
@@ -17,7 +19,6 @@ import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './color-contrasts.module.css';
 
 const initialTheme = generateColorSchemes('#0062BA');
-const colorGroups = ['main', 'neutral', 'support'] as const;
 
 export const ColorContrasts = () => {
   const { t } = useTranslation();
@@ -98,8 +99,8 @@ const ColorContrastMapper = ({
   horizontal,
   variant,
 }: {
-  vertical: string[];
-  horizontal: string[];
+  vertical: SemanticColorNames[];
+  horizontal: SemanticColorNames[];
   variant: string;
 }) => {
   const { t } = useTranslation();
@@ -107,18 +108,14 @@ const ColorContrastMapper = ({
     useThemebuilder();
   const [selectedColor, setSelectedColor] = useState('dominant');
 
-  const getMappedTheme = () => {
-    const mappedColors: { [key: string]: Color } = {};
-
-    let colorTheme = colors?.main[0]?.colors || initialTheme;
+  const getMappedTheme = (): ColorScale => {
+    let colorTheme = colors?.[0]?.colors || initialTheme;
 
     if (selectedColor !== 'dominant') {
-      for (const group of colorGroups) {
-        for (const color of colors[group]) {
-          if (color.name === selectedColor) {
-            colorTheme = color.colors;
-            break;
-          }
+      for (const color of colors) {
+        if (color.name === selectedColor) {
+          colorTheme = color.colors;
+          break;
         }
       }
 
@@ -133,11 +130,7 @@ const ColorContrastMapper = ({
       }
     }
 
-    for (const [, value] of Object.entries(colorTheme[colorScheme])) {
-      mappedColors[value.name] = value;
-    }
-
-    return mappedColors;
+    return colorTheme[colorScheme];
   };
 
   const mappedTheme = getMappedTheme();
@@ -167,13 +160,11 @@ const ColorContrastMapper = ({
           aria-label={t('colorContrasts.select-color')}
           value={selectedColor}
         >
-          {colorGroups.flatMap((group) =>
-            colors[group as keyof typeof colors].map((color, colorIndex) => (
-              <Select.Option key={`${group}-${colorIndex}`} value={color.name}>
-                {color.name}
-              </Select.Option>
-            )),
-          )}
+          {colors.map((color, colorIndex) => (
+            <Select.Option key={`color-${colorIndex}`} value={color.name}>
+              {color.name}
+            </Select.Option>
+          ))}
           {severityEnabled &&
             severityColors.map((color, index) => (
               <Select.Option key={`severity-${index}`} value={color.name}>

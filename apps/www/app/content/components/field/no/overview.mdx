@@ -4,11 +4,11 @@ search_terms: felt, skjemafelt, inputfelt, inndata, input
 
 <Story story="Preview" />
 
-**Bruk `Field` når**
-- du skal sørge for at [`Label`](/no/components/docs/label/overview), `Field.Description`, [`ValidationMessage`](/no/components/docs/validation-message/overview) og `Field.Counter` er riktig koblet til et felt
+**Bruk field når**
+- du skal sørge for at [label](/no/components/docs/label/overview), beskrivelse, [valideringsmelding](/no/components/docs/validation-message/overview) og antall tegn er riktig koblet til et felt
 
-**Unngå `Field` når**
-- du skal semantisk gruppere flere felt - bruk heller [`Fieldset`](/no/components/docs/fieldset/overview)
+**Unngå field når**
+- du skal semantisk gruppere flere felt - bruk heller [fieldset](/no/components/docs/fieldset/overview)
 
 ## Eksempel
 
@@ -20,14 +20,14 @@ Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer in
 
 ### Antall tegn
 
-Bruk `Field.Counter` til å informere om antall tegn brukerne kan skrive i feltet.
+Vis hvor mange tegn brukerne har igjen å skrive.
 
 <Story story="Counter" />
 
 ### Plassering
-Når du bruker `Field` sammen med valgkomponenter som `Switch`, kan du plassere etiketten enten før eller etter kontrollen. Dette gjør det mulig å tilpasse komponenten til sammenhengen.
+Når du bruker field sammen med valgkomponenter som switch, kan du plassere etiketten enten før eller etter kontrollen. Dette gjør det mulig å tilpasse komponenten til sammenhengen.
 
 <Story story="Position" />
 
 ## Retningslinjer
-`Field` hjelper deg med å strukturere skjemafelt på en tilgjengelig og konsistent måte. Den kobler automatisk sammen [`Label`](/no/components/docs/label/overview), `Field.Description`, [`ValidationMessage`](/no/components/docs/validation-message/overview) og `Field.Counter` med det tilhørende feltet via riktige ARIA-attributter.
+Field hjelper deg med å strukturere skjemafelt på en tilgjengelig og konsistent måte. Den kobler automatisk sammen label, beskrivelse, valideringsmelding og antall tegn med det tilhørende feltet, slik at hjelpemiddelteknologi som skjermlesere leser dem som én enhet.

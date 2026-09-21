@@ -1,13 +1,38 @@
-<Story story="Preview" startAsInert />
-<ReactComponentDocs />
+<Story story="Preview" startAsInert defaultOpen/>
 
 ## Bruk
 
-`ErrorSummary` består av flere delkomponenter:
-  - `ErrorSummary.Heading` definerer for overskriften.
-  - `ErrorSummary.List` definerer listen med feil.
-  - Hver feil representeres som en `ErrorSummary.Item` som inneholder en `ErrorSummary.Link`.
-  - Hver `ErrorSummary.Link` må ha en `href` til den unike identifikatoren for et skjemafelt, slik at brukeren kan navigere til riktig sted i skjemaet.
+Klassenavnet `ds-error-summary` brukes på `<ds-error-summary>`-elementet.
+Webkomponenten håndterer fokus når den blir synlig og `aria-labelledby` automatisk.
+
+Vi legger en `<ul class="ds-list">` etter heading som inneholder en liste med feil.
+Hver feil er en `<li>` med en lenke (`<a>`) som har klassen `ds-link` og et `href` til det aktuelle feltet med feil.
+
+For at lenkene skal navigere til feltene med feil, må feltene ha en unik `id` som samsvarer med `href` i lenken.
+
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
+
+## Eksempler
+
+### Flytte fokus
+
+Under er et eksempel som viser hvordan fokus automatisk flyttes til error summary når den blir synlig.
+
+<Story story="ShowHide" layout="column" startAsInert />
+
+## React
+
+Error summary består av flere delkomponenter:
+- `ErrorSummary.Heading` definerer overskriften.
+- `ErrorSummary.List` definerer listen med feil.
+- Hver feil representeres som en `ErrorSummary.Item` som inneholder en `ErrorSummary.Link`.
+- Hver `ErrorSummary.Link` må ha en `href` til den unike identifikatoren for et skjemafelt, slik at brukeren kan navigere til riktig sted i skjemaet.
 
 ```tsx
 import { ErrorSummary } from '@digdir/designsystemet-react';
@@ -22,47 +47,4 @@ import { ErrorSummary } from '@digdir/designsystemet-react';
 </ErrorSummary>
 ```
 
-## Eksempler
-
-### Bruk med tekstfelt
-
-For å at `ErrorSummary.Link` skal navigere til feltene med feil, må feltene ha en unik `id` som samsvarer med `href` i lenken.
-
-<Story story="WithForm" layout="column" startAsInert />
-
-### Flytte fokus
-
-Under er et eksempel som viser hvordan fokus automatisk flyttes til `ErrorSummary` når den blir synlig.
-
-<Story story="ShowHide" layout="column" startAsInert />
-
-## HTML
-
-Klassenavnet `ds-error-summary` brukes på `<ds-error-summary>`-elementet.
-Webkomponenten håndterer fokus når den blir synlig og `aria-labelledby` automatisk.
-
-Vi legger en `<ul class="ds-list">` etter heading som inneholder en liste med feil.
-Hver feil er en `<li>` med en lenke (`<a>`) som har klassen `ds-link` og et `href` til det aktuelle feltet med feil.
-
-```html
-<ds-error-summary class="ds-error-summary">
-  <h2 class="ds-heading">For å gå videre må du rette opp følgende feil:</h2>
-  <ul class="ds-list">
-    <li>
-      <a class="ds-link" data-color="neutral" href="#">Fødselsdato kan ikke være etter år 2005</a>
-    </li>
-    <li>
-      <a class="ds-link" data-color="neutral" href="#">Telefonnummer kan kun inneholde siffer</a>
-    </li>
-    <li>
-      <a class="ds-link" data-color="neutral" href="#">E-post må være gyldig</a>
-    </li>
-  </ul>
-</ds-error-summary>
-```
-
-## CSS variabler og data-attributter
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

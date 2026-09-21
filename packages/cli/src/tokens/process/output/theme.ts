@@ -1,9 +1,9 @@
 import pc from 'picocolors';
 import * as R from 'ramda';
 import pkg from '../../../../package.json' with { type: 'json' };
-import type { OutputFile } from '../../types.js';
-import { sizeComparator } from '../../utils.js';
-import type { ProcessReturn } from '../platform.js';
+import type { OutputFile } from '../../types.ts';
+import { sizeComparator } from '../../utils.ts';
+import { buildOptions, type ProcessReturn } from '../platform.ts';
 
 export const defaultFileHeader = `build: v${pkg.version}`;
 
@@ -59,17 +59,26 @@ export const createThemeCSSFiles = ({
     'size-mode/',
     'type-scale',
     'color-scheme/light',
-    'typography/secondary',
+    'typography/other',
     'size',
     'semantic',
     'color-scheme/dark',
     'color-scheme/contrast',
-    'typography/primary',
+    'typography/default',
     'color/',
   ];
 
+  // Typography sets can have any name, so they are sorted by whether they are the default set
+  // (which also applies to :root) rather than by name.
+  const toSortPath = (filePath: string) => {
+    // Destinations are prefixed with the theme name, e.g. "some-org/typography/primary.css"
+    const typographySet = /(?:^|\/)typography\/([^/]+)\.css$/.exec(filePath)?.[1];
+    if (typographySet === undefined) return filePath;
+    return typographySet === buildOptions?.defaultTypography ? 'typography/default.css' : 'typography/other.css';
+  };
+
   const sortByDefinedOrder = R.sortBy<OutputFile>((file) => {
-    const filePath = file.destination || '';
+    const filePath = toSortPath(file.destination || '');
     const sortIndex = sortOrder.findIndex((sortElement) => {
       if (sortElement.endsWith('/')) {
         return filePath.includes(sortElement);

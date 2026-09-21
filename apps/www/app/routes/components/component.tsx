@@ -1,15 +1,10 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import {
-  Alert,
-  Button,
-  Heading,
-  Paragraph,
-} from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import type { ComponentType, ReactNode } from 'react';
+import type { ComponentType } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
 import { useTranslation } from 'react-i18next';
 import { NavLink, redirect, useRouteLoaderData } from 'react-router';
@@ -21,7 +16,6 @@ import {
   CssVariables,
   getCssVariables,
 } from '~/_components/css-variables/css-variables';
-import { DoDont } from '~/_components/do-dont/do-dont';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { IconFrame } from '~/_components/icon-frame/icon-frame';
 import { LiveComponent } from '~/_components/live-component/live-components';
@@ -33,15 +27,68 @@ import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
 import { generateMetadata } from '~/_utils/metadata';
+import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
+import i18n from '~/i18next.server';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
 
 const require = createRequire(import.meta.url);
 
+// Cache CSS resolution and parsing per cssFile — shared across all pages for the same component
+const cssCache = new Map<
+  string,
+  {
+    cssSource?: string;
+    cssVars: Record<string, string>;
+    cssAttrs: Record<string, string>;
+  }
+>();
+const warnedCssFiles = new Set<string>();
+const componentPages = ['overview', 'code', 'accessibility'] as const;
+type ComponentPage = (typeof componentPages)[number];
+
+const isComponentPage = (page: string): page is ComponentPage =>
+  componentPages.includes(page as ComponentPage);
+
+const getComponentCss = (cssFile: string) => {
+  const cached = cssCache.get(cssFile);
+  if (cached) return cached;
+
+  const emptyResult = {
+    cssSource: undefined,
+    cssVars: {},
+    cssAttrs: {},
+  };
+
+  try {
+    const cssPath = require.resolve(`@digdir/designsystemet-css/${cssFile}`);
+    const cssSource = readFileSync(cssPath, 'utf-8');
+    const result = {
+      cssSource,
+      cssVars: getCssVariables(cssSource),
+      cssAttrs: getAttributes(cssSource),
+    };
+
+    cssCache.set(cssFile, result);
+    return result;
+  } catch (error) {
+    if (!warnedCssFiles.has(cssFile)) {
+      warnedCssFiles.add(cssFile);
+      console.warn(
+        `Failed to resolve or read CSS file "@digdir/designsystemet-css/${cssFile}".`,
+        error,
+      );
+    }
+
+    return emptyResult;
+  }
+};
+
 export { ErrorBoundary } from '~/root';
 
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
-  const { component, lang } = params;
+  const { component } = params;
+  const lang = params.lang ?? 'no';
 
   if (!component) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
@@ -50,6 +97,28 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   if (!existsSync(componentDir)) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
+  }
+
+  const jsonMetadata: {
+    [lang: string]: {
+      title: string;
+      subtitle: string;
+    };
+  } & {
+    image: string;
+    cssFile: string;
+    tabs?: boolean;
+  } = JSON.parse(
+    getFileFromContentDir(join('components', component, 'metadata.json')),
+  );
+
+  /* When tabs are disabled, only the overview page exists */
+  if (
+    jsonMetadata.tabs === false &&
+    !request.url.includes('overview') &&
+    (request.url.includes('code') || request.url.includes('accessibility'))
+  ) {
+    return redirect(`/${lang}/components/docs/${component}/overview`);
   }
 
   if (
@@ -67,10 +136,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  const trimmedUrl = request.url.endsWith('/')
-    ? request.url.slice(0, -1)
-    : request.url;
-  const compPage = trimmedUrl.split('/').pop();
+  // Use the splat route param rather than parsing request.url: single-fetch data
+  // requests append a `.data` suffix (e.g. `/accessibility.data`) to request.url.
+  // stripTrailingSlash: RR v8 prerenders HTML with a trailing slash, which the
+  // splat would otherwise include (e.g. `code/` → reading `code/.mdx`).
+  const compPage = stripTrailingSlash(params['*']) ?? '';
 
   const componentDocs = getComponentDocs(component);
 
@@ -78,18 +148,6 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const storyEntries = extractStories(componentDir);
   // Extract exported dodont functions from *.dodont.tsx
   const doDontEntries = extractStories(componentDir, true);
-
-  const jsonMetadata: {
-    [lang: string]: {
-      title: string;
-      subtitle: string;
-    };
-  } & {
-    image: string;
-    cssFile: string;
-  } = JSON.parse(
-    getFileFromContentDir(join('components', component, 'metadata.json')),
-  );
 
   const mdxSource = getFileFromContentDir(
     join('components', component, lang, `${compPage}.mdx`),
@@ -100,34 +158,17 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     jsonMetadata[lang].subtitle,
   );
 
-  // Resolve raw CSS for this component from @digdir/designsystemet-css
+  const { cssSource, cssVars, cssAttrs } = getComponentCss(
+    jsonMetadata.cssFile,
+  );
 
-  let cssPath: string | undefined;
-
-  try {
-    cssPath = require.resolve(
-      `@digdir/designsystemet-css/${jsonMetadata.cssFile}`,
-    );
-  } catch {
-    console.warn(
-      `Could not resolve CSS file for component ${component}: ${jsonMetadata.cssFile}`,
-    );
-  }
-
-  let cssSource: string | undefined;
-  let cssVars: {
-    [key: string]: string;
-  } = {};
-  let cssAttrs: {
-    [key: string]: string;
-  } = {};
-  if (cssPath) {
-    try {
-      cssSource = readFileSync(cssPath, 'utf-8');
-      cssVars = getCssVariables(cssSource);
-      cssAttrs = getAttributes(cssSource);
-    } catch {}
-  }
+  const t = await i18n.getFixedT(lang);
+  const pageTitleSuffix = isComponentPage(compPage)
+    ? t(`component.${compPage}`)
+    : undefined;
+  const pageTitle = pageTitleSuffix
+    ? `${jsonMetadata[lang].title} ${pageTitleSuffix}`
+    : jsonMetadata[lang].title;
 
   return {
     component,
@@ -138,9 +179,10 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       ...jsonMetadata[lang],
       image: jsonMetadata.image,
       subtitle: subtitleFromMetadata.code,
+      tabs: jsonMetadata.tabs !== false,
     },
     linkMetadata: generateMetadata({
-      title: jsonMetadata[lang].title,
+      title: pageTitle,
       description: jsonMetadata[lang].subtitle,
     }),
     cssSource,
@@ -189,29 +231,33 @@ export default function Components({
             </Heading>
             <MDXComponents code={metadata.subtitle} />
           </div>
-          <IconFrame className={classes.iconFrame} data-color='brand3'>
-            <img
-              src={'/img/component-previews/' + metadata.image}
-              alt={metadata.title}
-              aria-hidden='true'
-            />
-          </IconFrame>
+          {metadata.image && (
+            <IconFrame className={classes.iconFrame} data-color='brand3'>
+              <img
+                src={'/img/component-previews/' + metadata.image}
+                alt={metadata.title}
+                aria-hidden='true'
+              />
+            </IconFrame>
+          )}
         </div>
-        <div className={classes.headerBottom}>
-          <Button asChild variant='tertiary'>
-            <NavLink to={navigation.overviewLink}>
-              {t('component.overview')}
-            </NavLink>
-          </Button>
-          <Button asChild variant='tertiary'>
-            <NavLink to={navigation.codeLink}>{t('component.code')}</NavLink>
-          </Button>
-          <Button asChild variant='tertiary'>
-            <NavLink to={navigation.accessibilityLink}>
-              {t('component.accessibility')}
-            </NavLink>
-          </Button>
-        </div>
+        {metadata.tabs && (
+          <div className={classes.headerBottom}>
+            <Button asChild variant='tertiary'>
+              <NavLink to={navigation.overviewLink}>
+                {t('component.overview')}
+              </NavLink>
+            </Button>
+            <Button asChild variant='tertiary'>
+              <NavLink to={navigation.codeLink}>{t('component.code')}</NavLink>
+            </Button>
+            <Button asChild variant='tertiary'>
+              <NavLink to={navigation.accessibilityLink}>
+                {t('component.accessibility')}
+              </NavLink>
+            </Button>
+          </div>
+        )}
       </div>
       <TableOfContents items={toc} level={3}>
         <div className={'toc-feedback'}>
@@ -229,7 +275,6 @@ export default function Components({
           <MDXComponents
             code={mdxCode}
             components={{
-              DoDont: DoDontComponent as unknown as ComponentType<unknown>,
               ReactComponentDocs:
                 PropsTable as unknown as ComponentType<unknown>,
               CssVariables: CssVars as unknown as ComponentType<unknown>,
@@ -249,35 +294,6 @@ export default function Components({
     </>
   );
 }
-
-const DoDontComponent = ({
-  story,
-  children,
-  layout,
-}: {
-  story: string;
-  layout?: 'row' | 'column' | 'centered';
-  children?: ReactNode;
-}) => {
-  const data =
-    useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
-  if (!data) return null;
-
-  const { dodont } = data;
-
-  const foundStory = dodont.find((s) => s.name === story);
-  if (!foundStory) return <Alert lang='en'>Do/Dont not found: {story}</Alert>;
-  const variant = story.toLowerCase().includes('dont') ? 'dont' : 'do';
-  return (
-    <DoDont
-      layout={layout}
-      variant={variant}
-      code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
-    >
-      {children}
-    </DoDont>
-  );
-};
 
 const PropsTable = () => {
   const data =

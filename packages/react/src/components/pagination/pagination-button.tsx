@@ -21,5 +21,5 @@ export const PaginationButton = forwardRef<
   HTMLButtonElement,
   PaginationButtonProps
 >(function PaginationButton(rest, ref) {
-  return <Button data-variant='tertiary' ref={ref} {...rest} />;
+  return <Button ref={ref} {...rest} />;
 });

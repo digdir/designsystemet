@@ -1,0 +1,13 @@
+{
+  "no": {
+    "title": "Date picker",
+    "subtitle": "Designsystemet tilbyr foreløpig ikke en datovelger. Det er et bevisst valg, fordi en kalender ikke alltid er den beste løsningen når brukerne skal oppgi en dato."
+  },
+  "en": {
+    "title": "Date picker",
+    "subtitle": "Designsystemet does not currently provide a Date picker component. This is a deliberate choice, because a calendar is not always the best solution when users need to provide a date."
+  },
+  "image": "DatePicker.svg",
+  "cssFile": "",
+  "tabs": false
+}

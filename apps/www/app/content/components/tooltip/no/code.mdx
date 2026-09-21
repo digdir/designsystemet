@@ -1,28 +1,6 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen />
 
 ## Bruk
-
-```tsx
-import { Tooltip, Button } from '@digdir/designsystemet-react';
-
-<Tooltip content="Hjelpetekst">
-  <Button>Hover meg</Button>
-</Tooltip>
-```
-
-## Eksempel
-
-### Med tekst
-
-<Story story="WithString" />
-
-### Plassering
-Bruk `placement`-prop'en for å justere plasseringen av `Tooltip`.
-
-<Story story="Placement" />
-
-## HTML
 Bruk pakken `@digdir/designsystemet-web` for å implementere `Tooltip`.
 Du trenger kun å legge på `data-tooltip`-attributtet på elementet som skal trigge tooltipen.
 For tilgjengelighet vil elementet automatisk få `aria-label` eller `aria-description`, avhengig av om det inneholder tekstinnhold.
@@ -43,7 +21,51 @@ myTooltip.className = 'ds-tooltip my-custom-tooltip';
 setTooltipElement(myTooltip);
 ```
 
-## CSS variablar og data-attributter
-<CssVariables />
+## Tekst fra et annet HTML-element
+Du kan bruke `data-tooltip`-attributtet med en CSS-ID-selector, for å peke til et annet element som inneholder tooltip-tekst.
 
+```html
+<button data-tooltip="#tooltip-content" class="ds-button">Knapp</button>
+<div id="tooltip-content" class="ds-sr-only">Dette er innholdet i tooltipen.</div>
+```
+
+## Tooltip inne i Shadow DOM / Web-komponent
+
+Når du bruker `data-tooltip` inne i en Shadow DOM, må du manuelt angi et tilgjengelig navn eller en tilgjengelig beskrivelse:
+
+- Bruk `aria-label` når elementet kun inneholder visuelle elementer (for eksempel en ikonknapp).
+- Bruk `aria-description` når elementet allerede inneholder synlig tekst, og tooltipen gir tilleggsinformasjon.
+
+Dette er nødvendig fordi tooltipens `MutationObserver` ikke kan oppdage eller initialisere tooltips inne i en Shadow DOM.
+
+Alternativt kan du manuelt initialisere tooltips inne i din Shadow DOM ved å bruke funksjonen `initTooltips`:
+
+```js
+import { initTooltips } from '@digdir/designsystemet-web'
+
+
+class MyComponent extends HTMLElement {
+  connectedCallback() {
+    setTimeout(initTooltips, 0, this.shadowRoot); // Bruker setTimeout for å la children monteres før initialisering
+  }
+}
+```
+
+## CSS variablar og data-attributter
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med[data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
 <CssAttributes />
+
+## React
+
+```tsx
+import { Tooltip, Button } from '@digdir/designsystemet-react';
+
+<Tooltip content="Hjelpetekst">
+  <Button>Hover meg</Button>
+</Tooltip>
+```
+
+<ReactComponentDocs />

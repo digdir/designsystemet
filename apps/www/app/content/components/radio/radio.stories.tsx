@@ -1,6 +1,7 @@
 import {
   Fieldset,
   Radio,
+  useRadioGroup,
   ValidationMessage,
 } from '@digdir/designsystemet-react';
 
@@ -9,6 +10,11 @@ export const Preview = () => {
 };
 
 export const Group = () => {
+  const { getRadioProps } = useRadioGroup({
+    name: 'kontakt',
+    value: 'epost',
+  });
+
   return (
     <Fieldset>
       <Fieldset.Legend>Hvordan ønsker du at vi kontakter deg?</Fieldset.Legend>
@@ -19,26 +25,28 @@ export const Group = () => {
       <Radio
         label='E-post'
         description='Vi bruker e-postadressen du har oppgitt tidligere (navn@epost.no)'
-        value='epost'
-        name='kontakt'
+        {...getRadioProps('epost')}
       />
       <Radio
         label='SMS'
         description='Vi bruker telefonnummeret du har oppgitt tidligere (99 99 99 99)'
-        value='sms'
-        name='kontakt'
+        {...getRadioProps('sms')}
       />
       <Radio
         label='Brev'
         description='Levering kan ta 3-5 virkedager, avhengig av posttjenesten.'
-        value='brev'
-        name='kontakt'
+        {...getRadioProps('brev')}
       />
     </Fieldset>
   );
 };
 
 export const GroupEn = () => {
+  const { getRadioProps } = useRadioGroup({
+    name: 'contact',
+    value: 'email',
+  });
+
   return (
     <Fieldset>
       <Fieldset.Legend>How would you like us to contact you?</Fieldset.Legend>
@@ -49,20 +57,17 @@ export const GroupEn = () => {
       <Radio
         label='Email'
         description='We will use the email address you provided earlier (name@example.com)'
-        value='email'
-        name='contact'
+        {...getRadioProps('email')}
       />
       <Radio
         label='SMS'
         description='We will use the phone number you provided earlier (99 99 99 99)'
-        value='sms'
-        name='contact'
+        {...getRadioProps('sms')}
       />
       <Radio
         label='Letter'
         description='Delivery may take 3-5 working days, depending on the postal service.'
-        value='letter'
-        name='contact'
+        {...getRadioProps('letter')}
       />
     </Fieldset>
   );
@@ -75,20 +80,10 @@ export const WithError = () => {
       <Fieldset.Description>
         Trondheim er delt inn i fire bydeler
       </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' aria-invalid='true' />
-      <Radio
-        label='Lerkendal'
-        value='lerkendal'
-        name='city'
-        aria-invalid='true'
-      />
-      <Radio label='Heimdal' value='heimdal' name='city' aria-invalid='true' />
-      <Radio
-        label='Midtbyen'
-        value='midtbyen'
-        name='city'
-        aria-invalid='true'
-      />
+      <Radio label='Østbyen' value='ostbyen' name='city' />
+      <Radio label='Lerkendal' value='lerkendal' name='city' />
+      <Radio label='Heimdal' value='heimdal' name='city' />
+      <Radio label='Midtbyen' value='midtbyen' name='city' />
       <ValidationMessage data-color='danger'>
         Du må velge en bydel før du kan fortsette.
       </ValidationMessage>
@@ -103,53 +98,13 @@ export const WithErrorEn = () => {
       <Fieldset.Description>
         Trondheim is divided into four districts
       </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' aria-invalid='true' />
-      <Radio
-        label='Lerkendal'
-        value='lerkendal'
-        name='city'
-        aria-invalid='true'
-      />
-      <Radio label='Heimdal' value='heimdal' name='city' aria-invalid='true' />
-      <Radio
-        label='Midtbyen'
-        value='midtbyen'
-        name='city'
-        aria-invalid='true'
-      />
+      <Radio label='Østbyen' value='ostbyen' name='city' />
+      <Radio label='Lerkendal' value='lerkendal' name='city' />
+      <Radio label='Heimdal' value='heimdal' name='city' />
+      <Radio label='Midtbyen' value='midtbyen' name='city' />
       <ValidationMessage data-color='danger'>
         You must choose a district before you can continue.
       </ValidationMessage>
-    </Fieldset>
-  );
-};
-
-export const ReadOnly = () => {
-  return (
-    <Fieldset>
-      <Fieldset.Legend>Hvilken bydel bor du i?</Fieldset.Legend>
-      <Fieldset.Description>
-        Trondheim er delt inn i fire bydeler
-      </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' readOnly />
-      <Radio label='Lerkendal' value='lerkendal' name='city' readOnly />
-      <Radio label='Heimdal' value='heimdal' name='city' readOnly checked />
-      <Radio label='Midtbyen' value='midtbyen' name='city' readOnly />
-    </Fieldset>
-  );
-};
-
-export const ReadOnlyEn = () => {
-  return (
-    <Fieldset>
-      <Fieldset.Legend>Which district do you live in?</Fieldset.Legend>
-      <Fieldset.Description>
-        Trondheim is divided into four districts
-      </Fieldset.Description>
-      <Radio label='Østbyen' value='ostbyen' name='city' readOnly />
-      <Radio label='Lerkendal' value='lerkendal' name='city' readOnly />
-      <Radio label='Heimdal' value='heimdal' name='city' readOnly checked />
-      <Radio label='Midtbyen' value='midtbyen' name='city' readOnly />
     </Fieldset>
   );
 };
@@ -187,3 +142,69 @@ export const InlineEn = () => {
     </Fieldset>
   );
 };
+
+export const Outline = () => {
+  const { getRadioProps } = useRadioGroup({
+    name: 'course-level',
+    variant: 'outline',
+  });
+
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Hvilket kursnivå passer deg best?</Fieldset.Legend>
+      <Fieldset.Description>
+        Velg nivået som beskriver din erfaring med temaet.
+      </Fieldset.Description>
+      <Radio
+        label='Nybegynner'
+        description='Passer for deg som er helt ny og ønsker en rolig introduksjon.'
+        {...getRadioProps('beginner')}
+      />
+      <Radio
+        label='Viderekommen'
+        description='Passer for deg som kjenner grunnleggende begreper og vil gå dypere.'
+        {...getRadioProps('intermediate')}
+      />
+      <Radio
+        label='Ekspert'
+        description='Passer for deg som ønsker avanserte temaer og praktiske case.'
+        {...getRadioProps('expert')}
+      />
+    </Fieldset>
+  );
+};
+
+export const OutlineEn = () => {
+  const { getRadioProps } = useRadioGroup({
+    name: 'course-level',
+    variant: 'outline',
+  });
+
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Which course level fits you best?</Fieldset.Legend>
+      <Fieldset.Description>
+        Choose the level that best describes your experience with the topic.
+      </Fieldset.Description>
+      <Radio
+        label='Beginner'
+        description='Best for you if you are completely new and want a gentle introduction.'
+        {...getRadioProps('beginner')}
+      />
+      <Radio
+        label='Intermediate'
+        description='Best for you if you know the basics and want to go deeper.'
+        {...getRadioProps('intermediate')}
+      />
+      <Radio
+        label='Expert'
+        description='Best for you if you want advanced topics and hands-on cases.'
+        {...getRadioProps('expert')}
+      />
+    </Fieldset>
+  );
+};
+
+export const ReadOnly = () => (
+  <Radio label='Radio' value='value' name='name' readOnly />
+);

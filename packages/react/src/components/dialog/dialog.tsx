@@ -99,14 +99,20 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
   ) {
     const contextRef = useContext(Context);
     const dialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the dialog works without a DialogTriggerContext
+    const skipCloseRef = useRef(false); // Needed to skip the onClose event when the dialog is closed programmatically
     const Component = asChild ? Slot : 'dialog';
     const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
-    const showProp = modal ? 'showModal' : 'show';
     const autoId = useId();
     const usedId = id ?? autoId;
 
     // Toggle open based on prop
-    useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]);
+    useEffect(() => {
+      const dialog = dialogRef.current;
+      if (!dialog || open === undefined || open === dialog.open) return; // No need to change
+      if (open) return dialog[modal ? 'showModal' : 'show']();
+      skipCloseRef.current = true; // Skip the onClose event when closing programmatically
+      dialog.close();
+    }, [open, modal]);
 
     return (
       <Component
@@ -114,13 +120,17 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
         data-placement={placement}
         data-modal={modal} // Needed for dialog-trigger.tsx
         id={usedId}
-        onClose={(event) => onClose?.(event.nativeEvent)} // Backward compatibility: expose native event
+        onClose={(event) => {
+          if (event.target !== event.currentTarget) return; // Ignore close events from nested dialogs
+          if (!skipCloseRef.current) onClose?.(event.nativeEvent); // Backward compatibility: expose native event
+          skipCloseRef.current = false; // Reset skipCloseRef
+        }}
         onClick={(event) => {
-          onClick?.(event);
+          onClick?.(event as React.MouseEvent<HTMLDialogElement>);
           const { currentTarget: dialog, target: el, defaultPrevented } = event;
           const isClose = (el as Element)?.closest?.('[data-command="close"]');
           if (!defaultPrevented && isClose) {
-            dialog.close();
+            (dialog as HTMLDialogElement).close();
 
             if (window.dsWarnings !== false)
               console.log(
@@ -129,10 +139,11 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
           }
         }}
         onAnimationEnd={(event: AnimationEvent<HTMLDialogElement>) => {
-          const { currentTarget: dialog } = event;
-          const autofocus = dialog.querySelector<HTMLElement>('[autofocus]');
-          if (document.activeElement !== autofocus) autofocus?.focus(); // Handle autofocus on open
           onAnimationEnd?.(event);
+          if (event.currentTarget !== event.target) return; // Only run if event is from the dialog itself
+          const autofocus =
+            event.currentTarget.querySelector<HTMLElement>('[autofocus]');
+          if (document.activeElement !== autofocus) autofocus?.focus(); // Handle autofocus on open
         }}
         ref={mergedRefs}
         {...rest}

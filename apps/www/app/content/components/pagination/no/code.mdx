@@ -1,11 +1,30 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
 
 ## Bruk
-`Pagination` er en komponent uten state, og du må selv styre hvilke sider som er vist.
 
-Bruk `usePagination` for paginering-logikk sammen med de enkelt del-komponentene.
-[Les mer om `usePagination`](/no/components/utilities/use-pagination).
+Legg klassenavnet `ds-pagination` på `<ds-pagination>`-elementet.
+Webkomponenten fyller automatisk knappene med tekst basert på attributtene `data-current` og `data-total`.
+
+Dersom du ønsker å lage dine egne knapper kan du legge inn `<a>` eller `<button>`-elementer inni `<ds-pagination>`. Dersom du fyller disse med tekst, og ikke sender noen attributter, vil ikke webkomponenten endre på knappene.
+
+### Med lenker
+Du kan bruke pagination med lenker (anchor tags).
+
+<Story story="WithAnchor"/>
+
+## CSS variabler og data-attributter
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
+
+Pagination er en komponent uten state, og du må selv styre hvilke sider som er vist.
+
+Bruk `usePagination` for paginering-logikk sammen med de enkle delkomponentene. [Les mer om `usePagination`](/no/components/utilities/use-pagination).
 
 ```tsx
 import { Pagination } from '@digdir/designsystemet-react';
@@ -40,48 +59,11 @@ import { Pagination } from '@digdir/designsystemet-react';
   </Pagination.List>
 </Pagination>
 ```
-## Eksempler
 
-### Standard
+<ReactComponentDocs />
 
-Eksempelet viser `Pagination` med knapper som ikke er koblet til noen handling.
-Når du trykker vil du ikke navigere til en annen side.
+### Ekstra logikk for å lage paginering med lenker
 
-<Story story="Preview" />
+Under ser du `usePagination` brukt sammen med pagination for å lage paginering med lenker. Du bruker `asChild` for å endre `Pagination.Button` til `<a>`.
 
-### Med lenker
-
-Under ser du `usePagination` brukt sammen med `Pagination` for å lage paginering med lenker.
-Du bruker `asChild` for å endre `Pagination.Button` til `<a>`.
-
-<Story story="WithAnchor" />
-
-### Mobil
-
-Det er ikke noe innebygget mobilstøtte i `Pagination`, men du kan vise færre sider og fjerne tekst for forrige/neste knapper på mobile enheter.
-
-<Story story="Mobile" />
-
-## HTML
-
-Legg klassenavnet `ds-pagination` på `<ds-pagination>` elementet.
-Web komponenten fyller automatisk knappene med tekst basert på attributtene `data-current` og `data-total`.
-
-Dersom du ønsker å lage dine egne knapper kan du legge inn `<a>` eller `<button>` elementer inni `<ds-pagination>`. Dersom du fyller disse med tekst, og ikke sender noen attributter, vil ikke web komponenten endre på knappene.
-
-```html
-<ds-pagination class="ds-pagination" aria-label="Bla i sider:" data-href="?page=%d" data-current="2" data-total="100">
-  <ol>
-    <li><a></a></li>
-    <li><a></a></li>
-    <li><a></a></li>
-    <li><a></a></li>
-  </ol>
-</ds-pagination>
-```
-
-## CSS variabler og data-attributter
-
-<CssVariables />
-
-<CssAttributes />
+<Story story="WithAnchor" language="react" />

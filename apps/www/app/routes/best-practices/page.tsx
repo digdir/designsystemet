@@ -11,11 +11,14 @@ import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
+import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
+import { getStories } from '../../_utils/get-stories.server';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const { '*': file } = params;
+  // RR v8 prerenders HTML with a trailing slash; strip it from the splat param.
+  const file = stripTrailingSlash(params['*']);
 
   // Read the file content
   const fileContent = getFileFromContentDir(
@@ -29,6 +32,14 @@ export async function loader({ params }: Route.LoaderArgs) {
     });
   }
 
+  const stories = await getStories({
+    path: join('best-practices', params.lang, `${file}.stories.tsx`),
+  });
+
+  const dodont = await getStories({
+    path: join('best-practices', params.lang, `${file}.dodont.tsx`),
+  });
+
   // Bundle the MDX content
   const result = await generateFromMdx(fileContent);
 
@@ -37,11 +48,13 @@ export async function loader({ params }: Route.LoaderArgs) {
     frontmatter: result.frontmatter,
     lang: params.lang,
     toc: result.toc,
+    stories,
+    dodont,
   };
 }
 
-export const meta = ({ data }: Route.MetaArgs) => {
-  if (!data)
+export const meta = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData)
     return [
       {
         title: 'Designsystemet',
@@ -49,7 +62,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
     ];
   const {
     frontmatter: { title, description },
-  } = data;
+  } = loaderData;
   return generateMetadata({
     title,
     description,
@@ -85,28 +98,19 @@ export default function BestPractices({
               {description}
             </Paragraph>
           )}
-          <Paragraph variant='short' asChild>
-            <div className={classes.meta}>
-              {author && (
-                <>
-                  <a
-                    href='#article-contributors'
-                    aria-label={t('contributors')}
-                  >
-                    <AvatarStack authors={author} />
-                  </a>
-                  <span>{author}</span>
-                </>
-              )}
+          <div className={classes.meta}>
+            {author && (
+              <>
+                <AvatarStack aria-label={t('contributors')} authors={author} />
+                <span>{author}</span>
+              </>
+            )}
 
-              <span className={classes.separator}>·</span>
-              <span>
-                {date && (
-                  <div>{`${t('updated')} ${formatDate(date, lang)}`}</div>
-                )}
-              </span>
-            </div>
-          </Paragraph>
+            <span className={classes.separator}>·</span>
+            <span>
+              {date && <div>{`${t('updated')} ${formatDate(date, lang)}`}</div>}
+            </span>
+          </div>
         </div>
         <TableOfContents items={toc}>
           <div className='toc-feedback'>

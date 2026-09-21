@@ -3,6 +3,7 @@ import { act, render, screen } from '@testing-library/react';
 import { useState } from 'react';
 
 import { Button } from '../';
+import { Dialog } from '../dialog';
 import { Popover } from './';
 
 const CompControlled = () => {
@@ -69,7 +70,7 @@ describe('Popover', () => {
     expect(screen.getByText(contentText)).toBeVisible();
   });
 
-  it('should close when we click the button twitce', async () => {
+  it('should close when we click the button twice', async () => {
     render(defaultPopover);
     const popoverTrigger = screen.getByRole('button');
 
@@ -102,6 +103,49 @@ describe('Popover', () => {
     const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true });
     await act(async () => popoverTrigger.dispatchEvent(esc));
     expect(screen.getByText(contentText)).not.toBeVisible();
+  });
+
+  it('should not close on ESC when a Dialog is open above the popover', async () => {
+    const onClose = vi.fn();
+    render(
+      <>
+        <Button popovertarget='popover'>popover trigger</Button>
+        <Popover id='popover' onClose={onClose}>
+          {contentText}
+          <Button command='show-modal' commandfor='dialog'>
+            dialog trigger
+          </Button>
+        </Popover>
+        <Dialog
+          id='dialog'
+          closeButton={false}
+          style={{ inset: 0, width: '100vw', height: '100vh', margin: 0 }}
+          aria-label='covering dialog'
+        >
+          dialog content
+        </Dialog>
+      </>,
+    );
+
+    const popoverTrigger = screen.getByRole('button');
+    await act(async () => popoverTrigger.click());
+
+    const dialogTrigger = screen.getByRole('button', {
+      name: 'dialog trigger',
+    });
+    await act(async () => dialogTrigger.click());
+
+    expect(screen.getByText(contentText)).toBeVisible();
+    expect(screen.getByRole('dialog')).toBeVisible();
+
+    const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true });
+    await act(async () => document.body.dispatchEvent(esc));
+
+    expect(onClose).not.toHaveBeenCalled();
+    expect(screen.getByText(contentText)).toBeVisible();
+
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(screen.getByText('dialog content')).not.toBeVisible();
   });
 
   it('should close when we press SPACE', async () => {

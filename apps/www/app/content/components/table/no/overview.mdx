@@ -4,12 +4,12 @@ search_terms: tabell, rader, kolonner, data, sammenligne
 
 <Story story="Preview" />
 
-**Bruk `Table` når**
+**Bruk table når**
 - målet er å gjøre det enkelt for brukerne å sammenligne informasjon
 - data trenger en tydelig struktur i rader og kolonner
 - innholdet består av informasjon som kan sorteres
 
-**Unngå `Table` når**
+**Unngå table når**
 - formålet er å lage layout eller organisere innhold visuelt på en side
 - informasjonen passer bedre i liste- eller kortvisning
 - innholdet er svært begrenset, for eksempel bare én kolonne eller få datapunkter uten behov for sammenligning
@@ -17,40 +17,27 @@ search_terms: tabell, rader, kolonner, data, sammenligne
 
 ## Eksempel
 
-### Zebra striper
-
+### Zebra-striper
+Zebra-striper gjør tabeller lettere å lese ved å skille radene visuelt. Det hjelper brukeren å holde riktig linje.
 <Story story="Zebra" />
 
-### Med border
-Bruk `border` for å legge til en synlig kant rundt tabellen.
-Dette kan hjelpe brukerne med å skille tabellen fra annet innhold på siden, og gir en mer strukturert visning av dataene.
+### Med ramme
+Ramme rundt tabellen kan hjelpe brukerne å skille den fra annet innhold på siden.
 
 <Story story="Border" />
-
-### Sortering
-Du kan vise at tabellen kan sorteres etter innholdet i en kolonne.
-
-- Du kan sortere i 3 retninger:
-  - `"none"` - ingen sortering
-  - `"ascending"` - stigende rekkefølge
-  - `"descending"` - synkende rekkefølge
-
-Dette gir brukeren visuell tilbakemelding på sorteringsstatus og gjør det mulig å implementere egendefinert sorteringslogikk.
-
-<Story story="Sortable" />
-
-### Fast kolonnebredde
-Fast bredde på kolonner er spesielt nyttig i tabeller med paginering eller annen dynamisk oppdatering av innhold, der stabil kolonnebredde gir bedre brukeropplevelse.
-
-<Story story='FixedTable' />
 
 ### Tall i en tabell
 Når det er tall i en tabell som skal sammenlignes, plasser tallene til høyre i tabellfeltet.
 
 <Story story='Numbers' />
 
+### Sortering
+Du kan vise at tabellen kan sorteres etter innholdet i en kolonne. 
+
+<Story story="Sortable" />
+
 ## Retningslinjer
-Bruk `Table` når du skal organisere og vise data strukturert i rader og kolonner.
+Bruk table når du skal organisere og vise data strukturert i rader og kolonner.
 - Innhold i tabeller bør være venstrejustert, med unntak av tall, som bør høyrejusteres for å gjøre det lettere å sammenligne tallverdier.
 - Bruk `<Table.HeaderCell>` i overskriftceller, ikke `<Table.Cell>`. En celle regnes som en overskrift dersom den beskriver innholdet i samme rad eller kolonne.
 - For å spare plass i tabellrader med flere handlinger, kan du bruke en meny dersom handlingene ikke må være synlige hele tiden.

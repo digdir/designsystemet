@@ -1,13 +1,16 @@
 import { FilesIcon } from '@navikt/aksel-icons';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useEffect, useRef, useState } from 'react';
-import { expect, within } from 'storybook/test';
-import { Button } from '../../';
+import { expect, fireEvent, userEvent, waitFor } from 'storybook/test';
+import preview from '../../../../../apps/storybook/.storybook/preview';
+import { Button, Link } from '../../';
 import { Tooltip } from './tooltip';
 
-type Story = StoryObj<typeof Tooltip>;
+function isInViewport(el: Element) {
+  const { height, width } = el.getBoundingClientRect();
+  return height > 1 && width > 1;
+}
 
-export default {
+const meta = preview.meta({
   title: 'Komponenter/Tooltip',
   component: Tooltip,
   parameters: {
@@ -17,42 +20,87 @@ export default {
     },
   },
   play: async (ctx) => {
-    document.querySelector('.ds-tooltip')?.remove(); // Reset to run next test without waiting for tooltip to disappear // <== Må "nullstille"/fjerne tooltip mellom hver test
-    const button =
-      ctx.canvasElement.querySelector<HTMLButtonElement>('[data-tooltip]');
-
-    await new Promise((resolve) => {
-      document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør hover
-      button?.focus();
-    });
-
-    const tooltip = await within(document.body).findByText(ctx.args.content); // <== trenger ikke sjekke toBeInDocument siden denne testen krever det
-    expect(tooltip).toBeVisible();
+    const tooltips =
+      ctx.canvasElement.querySelectorAll<HTMLElement>('[data-tooltip]');
+    const fakeFocus = (e: HTMLElement) => {
+      fireEvent.focus(e); // shows up in interaction log in Storybook
+      e.focus({ focusVisible: true } as Record<string, unknown>); // necessary to get focusVisible styling, but doesn't show up in interaction log
+    };
+    for (const event of [userEvent.hover, fakeFocus])
+      for (const tooltipTrigger of Array.from(tooltips)) {
+        await event(tooltipTrigger);
+        await new Promise((resolve) => setTimeout(resolve, 300)); // Wait for tooltip to appear
+        await waitFor(async () => {
+          const text = tooltipTrigger.getAttribute('data-tooltip');
+          if (!text) {
+            throw new Error('Tooltip trigger has no data-tooltip attribute');
+          }
+          const tooltipRenderer = document.body.querySelector('.ds-tooltip');
+          await expect(tooltipRenderer).toBeVisible();
+          await expect(tooltipRenderer).toSatisfy(isInViewport); // toBeVisible() doesn't check if the element is in the viewport
+          await expect(tooltipRenderer).toHaveTextContent(text);
+          if (tooltipTrigger.textContent.trim()) {
+            await expect(tooltipTrigger).toHaveAttribute(
+              'aria-description',
+              text,
+            );
+          } else {
+            await expect(tooltipTrigger).toHaveAttribute('aria-label', text);
+          }
+        });
+      }
   },
-} satisfies Meta;
+});
 
-export const Preview: StoryFn<typeof Tooltip> = (args) => (
-  <Tooltip {...args}>
-    <Button icon>
-      <FilesIcon aria-hidden />
-    </Button>
-  </Tooltip>
-);
+export const Preview = meta.story({
+  render: ({ children, ...args }) => (
+    <Tooltip {...args}>
+      <Button icon>
+        <FilesIcon aria-hidden />
+      </Button>
+    </Tooltip>
+  ),
 
-Preview.args = {
-  content: 'Kopier',
-  placement: 'top',
-};
+  args: {
+    children: '',
+    content: 'Kopier',
+    placement: 'top',
+  },
+});
 
-export const WithString: Story = {
+export const WithLink = meta.story(() => {
+  return (
+    <Tooltip content='Gå til en annen side...' placement='top'>
+      <Link href='#'>En lenke</Link>
+    </Tooltip>
+  );
+});
+
+export const WithSpan = meta.story(() => {
+  return (
+    <Tooltip content='Innholdet i tooltipen' placement='top'>
+      <span>Tekst med tooltip</span>
+    </Tooltip>
+  );
+});
+
+export const WithPlainText = meta.story(() => {
+  return (
+    <Tooltip content='Innholdet i tooltipen' placement='top'>
+      Tekst med tooltip
+    </Tooltip>
+  );
+});
+
+export const WithString = meta.story({
   args: {
     content: 'Organisasjonsnummer',
     children: 'Org.nr.',
     tabIndex: 0,
   },
-};
+});
 
-export const Placement: Story = {
+export const Placement = meta.story({
   args: {
     content: 'Kopier',
     placement: 'bottom',
@@ -62,36 +110,40 @@ export const Placement: Story = {
       </Button>
     ),
   },
-};
+});
 
-export const Aria: StoryFn<typeof Tooltip> = () => {
-  return (
-    <>
-      <Tooltip content='Eg er aria-description'>
-        <Button>Eg er aria-description</Button>
-      </Tooltip>
-      <Tooltip content='Eg er aria-label'>
-        <Button icon>
-          <FilesIcon aria-hidden />
-        </Button>
-      </Tooltip>
-    </>
-  );
-};
+export const Aria = meta.story({
+  render: () => {
+    return (
+      <>
+        <Tooltip content='Beskrivelse for aria-description'>
+          <Button>Eg er aria-description</Button>
+        </Tooltip>
+        <Tooltip content='Beskrivelse for aria-description'>
+          <Button>
+            <FilesIcon aria-hidden />
+            <span>Eg er også aria-description</span>
+          </Button>
+        </Tooltip>
+        <Tooltip content='Eg er aria-label'>
+          <Button icon>
+            <FilesIcon aria-hidden />
+          </Button>
+        </Tooltip>
+      </>
+    );
+  },
 
-Aria.decorators = [
-  (Story) => (
-    <div
-      style={{ display: 'flex', gap: 'var(--ds-size-2)', alignItems: 'center' }}
-    >
-      <Story />
-    </div>
-  ),
-];
+  parameters: {
+    customStyles: {
+      display: 'flex',
+      gap: 'var(--ds-size-2)',
+      alignItems: 'center',
+    },
+  },
+});
 
-Aria.play = async () => {};
-
-export const WithDynamicTooltipText: Story = {
+export const WithDynamicTooltipText = meta.story({
   args: {
     content: 'Kopier',
   },
@@ -110,9 +162,9 @@ export const WithDynamicTooltipText: Story = {
       </Tooltip>
     );
   },
-};
+});
 
-export const WithCSSTooltipText: Story = {
+export const WithCSSTooltipText = meta.story({
   args: {
     content: 'Kopier',
   },
@@ -123,9 +175,9 @@ export const WithCSSTooltipText: Story = {
       </Button>
     </Tooltip>
   ),
-};
+});
 
-export const WithDynamicCSSTooltipText: Story = {
+export const WithDynamicCSSTooltipText = meta.story({
   args: {
     content: 'Kopier',
   },
@@ -153,4 +205,28 @@ export const WithDynamicCSSTooltipText: Story = {
       </Tooltip>
     );
   },
-};
+});
+
+export const Sizes = meta.story({
+  render: () => {
+    return (
+      <>
+        <Tooltip content='Kopier'>
+          <Button data-size='sm' icon>
+            <FilesIcon aria-hidden />
+          </Button>
+        </Tooltip>
+        <Tooltip content='Kopier'>
+          <Button data-size='md' icon>
+            <FilesIcon aria-hidden />
+          </Button>
+        </Tooltip>
+        <Tooltip content='Kopier'>
+          <Button data-size='lg' icon>
+            <FilesIcon aria-hidden />
+          </Button>
+        </Tooltip>
+      </>
+    );
+  },
+});

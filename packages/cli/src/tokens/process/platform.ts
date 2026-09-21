@@ -2,10 +2,9 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { TransformedToken } from 'style-dictionary/types';
-import type { OutputFile, TokenSet } from '../types.js';
-import { type BuildConfig, colorCategories, type ThemePermutation } from '../types.js';
-import { configs, getConfigsForThemeDimensions } from './configs.js';
-import { getCustomColors, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.js';
+import type { BuildConfig, OutputFile, ThemePermutation, TokenSet } from '../types.ts';
+import { configs, getConfigsForThemeDimensions } from './configs.ts';
+import { getThemeColors, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.ts';
 
 type SharedOptions = {
   /** Enable verbose output */
@@ -16,20 +15,22 @@ type SharedOptions = {
   defaultSize?: string;
   /** Set the available size modes */
   sizeModes?: string[];
+  /** Set the default typography set for ":root" */
+  defaultTypography?: string;
+  /** Set the available typography sets */
+  typographies?: string[];
   /** Token Studio `$themes.json` content */
   processed$themes: ProcessedThemeObject[];
-  /** Color groups */
-  colorGroups?: string[];
   /** Build token format map */
   buildTokenFormats: Record<string, { token: TransformedToken; formatted: string }[]>;
+  /** Tailwind CSS configuration */
+  tailwind?: boolean;
 };
 
 export type BuildOptions = {
   type: 'build';
   /** Design tokens path */
   tokensDir: string;
-  /** Tailwind CSS configuration */
-  tailwind?: boolean;
 } & SharedOptions;
 
 export type FormatOptions = {
@@ -38,7 +39,7 @@ export type FormatOptions = {
   tokenSets: Map<string, TokenSet>;
 } & SharedOptions;
 
-export type ProcessOptions = BuildOptions | FormatOptions;
+type ProcessOptions = BuildOptions | FormatOptions;
 
 type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs, T>;
 
@@ -55,8 +56,7 @@ const initResult: BuildResult = {
   tokens: [],
   permutation: {
     'color-scheme': '',
-    'main-color': '',
-    'support-color': '',
+    color: '',
     semantic: '',
     size: '',
     theme: '',
@@ -81,33 +81,7 @@ const buildConfigs = {
   size: { getConfig: configs.sizeVariables, dimensions: ['semantic'] },
   typeScale: { getConfig: configs.typeScaleVariables, dimensions: ['semantic'] },
   'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
-  'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
-  'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
-  'neutral-color': {
-    getConfig: configs.neutralColorVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }) => `${theme} - neutral`,
-  },
-  'success-color': {
-    getConfig: configs.successColorVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }) => `${theme} - success`,
-  },
-  'danger-color': {
-    getConfig: configs.dangerColorVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }) => `${theme} - danger`,
-  },
-  'warning-color': {
-    getConfig: configs.warningColorVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }) => `${theme} - warning`,
-  },
-  'info-color': {
-    getConfig: configs.infoColorVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }) => `${theme} - info`,
-  },
+  color: { getConfig: configs.colorVariables, dimensions: ['color'] },
   semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
 } satisfies Record<string, BuildConfig>;
 
@@ -126,28 +100,13 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     );
   }
 
-  const UNSAFE_COLOR_GROUPS = Array.from(process.env.UNSAFE_COLOR_GROUPS?.split(',') ?? []);
-  if (UNSAFE_COLOR_GROUPS.length > 0) {
-    console.warn(
-      pc.yellow(
-        `\n⚠️ UNSAFE_COLOR_GROUPS is set to ${pc.blue(`[${UNSAFE_COLOR_GROUPS.join(', ')}]`)}. This will override the default color groups.`,
-      ),
-    );
-  }
-  const colorGroups =
-    UNSAFE_COLOR_GROUPS.length > 0
-      ? UNSAFE_COLOR_GROUPS
-      : [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
-
   /** For sharing build options in other files */
   buildOptions = options;
   buildOptions.defaultColor = UNSAFE_DEFAULT_COLOR;
-  buildOptions.colorGroups = colorGroups;
 
   if (!buildOptions.defaultColor) {
-    const customColors = getCustomColors(processed$themes, colorGroups);
-    const firstMainColor = R.head(customColors);
-    buildOptions.defaultColor = firstMainColor;
+    const customColors = getThemeColors(processed$themes);
+    buildOptions.defaultColor = R.head(customColors);
   }
 
   if (buildOptions.defaultColor) {
@@ -162,6 +121,16 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   }
   if (buildOptions.defaultSize) {
     console.log(`\n📏 Using ${pc.blue(buildOptions.defaultSize)} as default size`);
+  }
+
+  // The typography sets are defined by the Typography group in $themes.json, in the order they were created.
+  const typographies = processed$themes.filter((x) => x.group === 'typography').map((x) => x.name);
+  buildOptions.typographies = typographies;
+  if (!buildOptions.defaultTypography) {
+    buildOptions.defaultTypography = R.head(typographies);
+  }
+  if (buildOptions.defaultTypography) {
+    console.log(`\n🔤 Using ${pc.blue(buildOptions.defaultTypography)} as default typography`);
   }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
@@ -188,13 +157,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
 
   const processedBuilds: ProcessedBuildConfigs<Array<BuildResult>> = {
     'color-scheme': [initResult],
-    'main-color': [initResult],
-    'support-color': [initResult],
-    'neutral-color': [initResult],
-    'success-color': [initResult],
-    'danger-color': [initResult],
-    'warning-color': [initResult],
-    'info-color': [initResult],
+    color: [initResult],
     semantic: [initResult],
     typography: [initResult],
     sizeMode: [initResult],

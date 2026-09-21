@@ -126,3 +126,46 @@ export const RightAligned2En = () => (
     <Divider />
   </div>
 );
+
+export const Outline = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Aktiver varslinger</Fieldset.Legend>
+      <Switch variant='outline' label='Driftsmeldinger' checked />
+      <Switch variant='outline' label='Påminnelser' />
+      <Switch variant='outline' label='Nyhetsoppdateringer' />
+      <Switch
+        label='SMS-varsler'
+        description='Mangler gyldig telefonnummer i profilen'
+        variant='outline'
+        readOnly
+      />
+    </Fieldset>
+  );
+};
+
+export const OutlineEn = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Enable notifications</Fieldset.Legend>
+      <Switch variant='outline' label='Service messages' checked />
+      <Switch variant='outline' label='Reminders' />
+      <Switch variant='outline' label='News updates' />
+      <Switch
+        label='SMS alerts'
+        description='Missing a valid phone number in your profile'
+        variant='outline'
+        readOnly
+      />
+    </Fieldset>
+  );
+};
+
+export const ReadOnly = () => (
+  <Switch
+    label='Flymodus'
+    description='Får ikke kontakt med flymodusenheten'
+    readOnly
+    defaultChecked
+  />
+);

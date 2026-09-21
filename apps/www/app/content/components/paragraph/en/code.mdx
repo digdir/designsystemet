@@ -1,7 +1,24 @@
-<Story story="PreviewEn" />
-<ReactComponentDocs />
+<Story story="PreviewEn" defaultOpen/>
 
 ## Usage
+
+Use the class name `ds-paragraph` on `<p>`.
+
+## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
+
+<CssVariables />
+
+<CssAttributes />
+
+## Example
+
+### Sizes
+
+<Story story="Sizes" layout="column" />
+
+## React
 
 ```tsx
 import { Paragraph } from '@digdir/designsystemet-react';
@@ -9,22 +26,4 @@ import { Paragraph } from '@digdir/designsystemet-react';
 <Paragraph>This is a paragraph.</Paragraph>;
 ```
 
-## Examples
-
-### Sizes
-
-<Story story="Sizes" layout="column" />
-
-## HTML
-
-Use the class name `ds-paragraph` on `<p>`.
-
-```html
-<p class="ds-paragraph">This is a paragraph.</p>
-```
-
-## CSS variables and data attributes
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

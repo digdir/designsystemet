@@ -1,12 +1,15 @@
 import { expandTypesMap } from '@tokens-studio/sd-transforms';
-import { pathStartsWithOneOf, typeEquals } from '../../utils.js';
-import { formats } from '../formats/css.js';
-import { sizeRem, typographyName } from '../transformers.js';
+import { pathStartsWithOneOf, typeEquals } from '../../utils.ts';
+import { formats } from '../formats/css.ts';
+import { buildOptions } from '../platform.ts';
+import { sizeRem, typographyName } from '../transformers.ts';
 
-import { basePxFontSize, type GetStyleDictionaryConfig, prefix } from './shared.js';
+import { basePxFontSize, type GetStyleDictionaryConfig, isTypographySetPrimitive, prefix } from './shared.ts';
 
 export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }) => {
-  const selector = `${typography === 'primary' ? ':root, ' : ''}[data-typography="${typography}"]`;
+  // The default typography set (the first one in $themes.json) also applies to :root
+  const isDefault = typography === buildOptions?.defaultTypography;
+  const selector = `${isDefault ? ':root, ' : ''}[data-typography="${typography}"]`;
   const layer = `ds.theme.typography.${typography}`;
 
   return {
@@ -40,8 +43,8 @@ export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typograph
             filter: (token) => {
               const included = typeEquals(['fontweight', 'fontFamily', 'lineHeight', 'dimension'], token);
 
-              // Remove primitive typgography tokens
-              if (/primitives\/modes\/typography\/(primary|secondary)/.test(token.filePath)) return false;
+              // Remove the typography set primitives, whatever the set is named
+              if (isTypographySetPrimitive(token)) return false;
 
               return (
                 included &&

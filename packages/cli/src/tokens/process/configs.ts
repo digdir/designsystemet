@@ -2,19 +2,19 @@ import { register } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import StyleDictionary, { type Tokens } from 'style-dictionary';
 import type { DesignTokens } from 'style-dictionary/types';
-import type { GetSDConfigOptions, SDConfigForThemePermutation, ThemeDimension } from '../types.js';
-import { traverseObj } from '../utils.js';
-import { colorCategoryVariables, colorSchemeVariables } from './configs/color.js';
-import { semanticVariables } from './configs/semantic.js';
-import type { GetStyleDictionaryConfig } from './configs/shared.js';
-import { sizeVariables } from './configs/size.js';
-import { sizeModeVariables } from './configs/size-mode.js';
-import { typeScaleVariables } from './configs/type-scale.js';
-import { typographyVariables } from './configs/typography.js';
-import { formats } from './formats/css.js';
-import { buildOptions } from './platform.js';
-import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
-import { getMultidimensionalThemes, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.js';
+import type { GetSDConfigOptions, SDConfigForThemePermutation, ThemeDimension } from '../types.ts';
+import { traverseObj } from '../utils.ts';
+import { colorSchemeVariables, colorVariables } from './configs/color.ts';
+import { semanticVariables } from './configs/semantic.ts';
+import type { GetStyleDictionaryConfig } from './configs/shared.ts';
+import { sizeVariables } from './configs/size.ts';
+import { sizeModeVariables } from './configs/size-mode.ts';
+import { typeScaleVariables } from './configs/type-scale.ts';
+import { typographyVariables } from './configs/typography.ts';
+import { formats } from './formats/css.ts';
+import { buildOptions } from './platform.ts';
+import { resolveMath, sizeRem, typographyName, unitless } from './transformers.ts';
+import { getMultidimensionalThemes, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.ts';
 
 void register(StyleDictionary, { withSDBuiltins: false });
 
@@ -29,13 +29,7 @@ for (const format of Object.values(formats)) {
 
 export const configs = {
   colorSchemeVariables,
-  mainColorVariables: colorCategoryVariables({ category: 'main' }),
-  supportColorVariables: colorCategoryVariables({ category: 'support' }),
-  neutralColorVariables: colorCategoryVariables({ category: 'builtin', color: 'neutral' }),
-  successColorVariables: colorCategoryVariables({ category: 'builtin', color: 'success' }),
-  dangerColorVariables: colorCategoryVariables({ category: 'builtin', color: 'danger' }),
-  warningColorVariables: colorCategoryVariables({ category: 'builtin', color: 'warning' }),
-  infoColorVariables: colorCategoryVariables({ category: 'builtin', color: 'info' }),
+  colorVariables,
   sizeModeVariables,
   sizeVariables,
   typographyVariables,

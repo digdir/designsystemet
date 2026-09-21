@@ -1,9 +1,38 @@
-<Story story="PreviewEn" startAsInert />
-<ReactComponentDocs />
+<Story story="PreviewEn" startAsInert defaultOpen/>
 
 ## Usage
 
-`ErrorSummary` consists of several subcomponents:
+The class name `ds-error-summary` is used on the `<ds-error-summary>` element.
+The web component handles focus when it becomes visible and `aria-labelledby` automatically.
+
+We add a `<ul class="ds-list">` after the heading which contains a list of errors.
+Each error is a `<li>` with a link (`<a>`) that has the class `ds-link` and an `href` to the relevant field with the error.
+
+## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
+
+<CssVariables />
+
+<CssAttributes />
+
+## Example
+
+### Use with text fields
+
+In order for `ErrorSummary.Link` to navigate to the fields with errors, the fields must have a unique `id` that matches the `href` in the link.
+
+<Story story="WithFormEn" layout="column" startAsInert />
+
+### Moving focus
+
+Below is an example of how focus is automatically moved to error summary when it becomes visible.
+
+<Story story="ShowHideEn" layout="column" startAsInert />
+
+## React
+
+Error summary consists of several subcomponents:
 - `ErrorSummary.Heading` defines the heading.
 - `ErrorSummary.List` defines the list of errors.
 - Each error is represented as an `ErrorSummary.Item` containing an `ErrorSummary.Link`.
@@ -22,47 +51,4 @@ import { ErrorSummary } from '@digdir/designsystemet-react';
 </ErrorSummary>
 ```
 
-## Examples
-
-### Use with text fields
-
-In order for `ErrorSummary.Link` to navigate to the fields with errors, the fields must have a unique `id` that matches the `href` in the link.
-
-<Story story="WithFormEn" layout="column" startAsInert />
-
-### Moving focus
-
-Below is an example of how focus is automatically moved to `ErrorSummary` when it becomes visible.
-
-<Story story="ShowHideEn" layout="column" startAsInert />
-
-## HTML
-
-The class name `ds-error-summary` is used on the `<ds-error-summary>` element.
-The web component handles focus when it becomes visible and `aria-labelledby` automatically.
-
-We add a `<ul class="ds-list">` after the heading which contains a list of errors.
-Each error is a `<li>` with a link (`<a>`) that has the class `ds-link` and an `href` to the relevant field with the error.
-
-```html
-<ds-error-summary class="ds-error-summary">
-  <h2 class="ds-heading">To continue, you must correct the following errors:</h2>
-  <ul class="ds-list">
-    <li>
-      <a class="ds-link" data-color="neutral" href="#">Date of birth cannot be after 2005</a>
-    </li>
-    <li>
-      <a class="ds-link" data-color="neutral" href="#">Phone number can only contain digits</a>
-    </li>
-    <li>
-      <a class="ds-link" data-color="neutral" href="#">Email must be valid</a>
-    </li>
-  </ul>
-</ds-error-summary>
-```
-
-## CSS variables and data attributes
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

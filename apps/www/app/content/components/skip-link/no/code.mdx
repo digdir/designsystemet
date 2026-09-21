@@ -1,6 +1,17 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" defaultOpen/>
+
 ## Bruk
+Legg klassenavnet `ds-skip-link` på ein `<a>`-tagg som peikar til hovudinnhaldet på sida.
+Målet bør kunne motta fokus med `tabindex="-1"`.
+
+## CSS variabler og data-attributter
+Størrelsar styrast med [data-size](/no/fundamentals/code/sizes) og fargar med [data-color](/no/fundamentals/code/colors). Komponenten vil arve næraste forelder med desse satt.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
 
 ```tsx
 import { SkipLink } from '@digdir/designsystemet-react';
@@ -8,22 +19,5 @@ import { SkipLink } from '@digdir/designsystemet-react';
 <SkipLink href="#main-content">Hopp til hovedinnhold</SkipLink>
 ```
 
-## HTML
 
-Legg klassenavnet `ds-skip-link` på ein `<a>`-tagg som peikar til hovudinnhaldet på sida.
-
-```html
-<a class="ds-skip-link" href="#main-content">Hopp til hovedinnhold</a>
-
-<!--  -->
-
-<main id="main-content" tabindex="-1">
-  Region som kan motta fokus fra skiplink.
-</main>
-```
-
-## CSS variabler og data-attributter
-
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

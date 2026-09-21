@@ -1,35 +1,38 @@
 .ds-tag {
   --dsc-tag-background: var(--ds-color-surface-tinted);
+  --dsc-tag-background--hover: var(--ds-color-surface-hover);
   --dsc-tag-color: var(--ds-color-text-default);
   --dsc-tag-min-height: var(--ds-size-8);
   --dsc-tag-padding: 0 var(--ds-size-2);
+  --dsc-tag-border-radius: var(--ds-border-radius-sm);
   --dsc-tag-border-width: var(--ds-border-width-default);
   --dsc-tag-border-color: transparent;
   --dsc-tag-border-style: solid;
 
-  --_ds-captured-length: 1em;
-
   align-items: center;
   background: var(--dsc-tag-background);
-  border-radius: var(--ds-border-radius-sm);
-  border-width: var(--dsc-tag-border-width);
   border-color: var(--dsc-tag-border-color);
+  border-radius: var(--dsc-tag-border-radius);
   border-style: var(--dsc-tag-border-style);
+  border-width: var(--dsc-tag-border-width);
   box-sizing: border-box;
   color: var(--dsc-tag-color);
-  height: fit-content; /* In case placed in display: flex */
+  flex-shrink: 0; /* If placed inside display: flex */
   font-size: var(--ds-body-sm-font-size);
+  font-weight: normal; /* Ensure no inheritance of font-weight */
+  height: fit-content; /* In case placed in display: flex */
   line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-tag-min-height);
   padding: var(--dsc-tag-padding);
+  text-decoration: none;
+  vertical-align: middle;
   width: max-content;
   word-break: break-word;
   @composes ds-print-preserve from './base.css';
+  @composes ds-focus from './base.css'; /* Add focus outline support in case renderes as <button> or <a> */
 
-  & :where(img, svg) {
-    flex-shrink: 0;
-    /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
-    font-size: calc(var(--_ds-captured-length) * 1.25);
+  & :is(img, svg) {
+    @composes ds-icon from './base.css';
   }
 
   &:not([hidden]) {
@@ -38,6 +41,11 @@
 
   &[data-variant='outline'] {
     --dsc-tag-border-color: var(--ds-color-border-subtle);
+  }
+
+  &:is(button, a, [role='button']):hover {
+    cursor: pointer;
+    background: var(--dsc-tag-background--hover);
   }
 
   @media (forced-colors: active) {

@@ -1,36 +1,20 @@
-<Story story="Preview" />
-<ReactComponentDocs />
+<Story story="Preview" language="html" />
 
 ## Bruk
-```tsx
-import { Alert } from '@digdir/designsystemet-react';
 
-<Alert>You are using the Alert component!</Alert>;
-```
+Bruk attributtet `data-color="info | success | warning | danger"` for å endre type varsel. 
 
-## Eksempel
-
-### Endre varsel
-
-I kode endrer du typen varsel ved å endre `data-color`.
-Ikonet er styrt via CSS.
-
-<Story story="Variants" />
-
-## HTML
-
-For HTML bruker du klassenavnet `ds-alert` og attributtet `data-color` for å endre type varsel.
-Les over for når du skal bruke `role` og `aria-live`.
-
-[Les om `role` og `aria-live` på tilgjengeligheitssiden for `Alert`-komponenten.](/no/components/docs/alert/accessibility#alert-i-live-region)
-
-```html
-<div class="ds-alert" data-color="info">
-  Dette er en info alert.
-</div>
-```
+Bruk `role="alert"` for kritiske meldinger som krever umiddelbar oppmerksomhet.
+Bruk `role="status"` for mindre kritiske meldinger.
 
 ## CSS variabler og data-attributter
 <CssVariables />
 
 <CssAttributes />
+
+
+## React
+
+```jsx
+<Alert data-color="info">Dette er en informasjonsmelding.</Alert>
+```

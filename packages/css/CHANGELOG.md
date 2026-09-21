@@ -1,5 +1,290 @@
 # Change Log
 
+## 1.22.0
+
+### Minor Changes
+
+- **Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+### Patch Changes
+
+- **Tag:** Now gets accessible focus outline if rendered as interactive element to support tag clouds etc. ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+
+- **Radio:** Fixed tiny rendering glitch gap between hover outline and border at 400% zoom. ([#5341](https://github.com/digdir/designsystemet/pull/5341))
+
+- **Avatar:** Now scales initials text to match avatar size ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+
+- **Breadcrumbs:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+- **Chip:** Improve optical spacing between input/icon and text, which leads to slightly slimmer chip width. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
+
+- **Dropdown:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+- **AvatarStack:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+- **Chip:** Removable chips now automatically include screen reader instructions. Customize the instructions using `aria-label` or the new `--dsc-chip-removable-label` CSS custom property. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
+
+- **Avatar:** Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+  - **deprecated**` data-initials` will be removed in next major release.
+- **Link:** Adjusted the default `--dsc-link-text-decoration-thickness` to `0.06em` (from `0.0625em`) and `--dsc-link-text-decoration-thickness--hover` to `0.12em` (from `0.125em`) for slimmer, more consistent underlines across cards, headings, and links. ([#5365](https://github.com/digdir/designsystemet/pull/5365))
+
+- **Card:** Now supports `--dsc-card-link-text-decoration-thickness` and `--dsc-card-link-text-decoration-thickness--hover` aligning underline behaviour with link component ([#5365](https://github.com/digdir/designsystemet/pull/5365))
+
+- **Pagination:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+## 1.21.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334)) by [@renovate](https://github.com/apps/renovate)
+
+- **Avatar:** When `data-variant="square"`, default `border-radius` is adjusted to `--ds-border-radius-md` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
+
+- **Alert, Errorsummary, Table:** Default `border-radius` adjusted to `--ds-border-radius-lg` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
+
+- **Link:** Reduced the default underline offset from 27% to 24% to avoid collisions with character descenders ([#5325](https://github.com/digdir/designsystemet/pull/5325))
+
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302)) by [@renovate](https://github.com/apps/renovate)
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.21.1
+
+## 1.21.0
+
+### Patch Changes
+
+- **AvatarStack:** `overlap` and `--dsc-avatar-stack-overlap` property now needs to be a valid [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length) ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- fix default icon scaling not following sizing defined by `data-size`. (Thanks @Svish) ([#5281](https://github.com/digdir/designsystemet/pull/5281))
+
+- **Avatar:** Now supports `--dsc-avatar-radius` ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276)) by [@renovate](https://github.com/apps/renovate)
+
+- Update dependency postcss-import to v17 ([#5278](https://github.com/digdir/designsystemet/pull/5278)) by [@renovate](https://github.com/apps/renovate)
+
+- **AvatarStack:** Now supports `--dsc-avatar-stack-radius` ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- **AvatarStack:** No longer needs `suffix` or `data-suffix`; for example, you can place `+10` text directly inside a trailing `<li>`. ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- **AvatarStack:** Now uses `<ul>` and needs `<li>` to wrap each avatar ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.21.0
+
+## 1.20.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5242](https://github.com/digdir/designsystemet/pull/5242))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.20.1
+
+## 1.20.0
+
+### Minor Changes
+
+- **Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React ([#5126](https://github.com/digdir/designsystemet/pull/5126))
+
+### Patch Changes
+
+- **Badge:** now uses `--dsc-badge-size--count` as minimum size when `data-count` is defined ([#5213](https://github.com/digdir/designsystemet/pull/5213))
+
+- **Errorsummary**: Now has consistent padding `--ds-size-7` on all sides ([#5219](https://github.com/digdir/designsystemet/pull/5219))
+
+- **file-upload**: hover does not give solid border anymore ([#5182](https://github.com/digdir/designsystemet/pull/5182))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+- **file-upload**: block padding is now `--ds-size-7` ([#5182](https://github.com/digdir/designsystemet/pull/5182))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.20.0
+
+## 1.19.1
+
+### Patch Changes
+
+- Fix missing tailwind variables (opacity and shadow) in default theme that was introduced in [#5139](https://github.com/digdir/designsystemet/pull/5139) ([#5162](https://github.com/digdir/designsystemet/pull/5162))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.1
+
+## 1.19.0
+
+### Minor Changes
+
+- **file-upload**: New experimental component. Style with the `ds-file-upload` class. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+
+- **Dialog:** now applies a `z-index` even when opened in non-modal mode (without a backdrop). ([#5123](https://github.com/digdir/designsystemet/pull/5123))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- **ds-dropdown:** no longer requires the `ds-popover` class added on the same element. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+
+- fix loading order for popover-polyfill ([#5027](https://github.com/digdir/designsystemet/pull/5027))
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+
+- **Chip:** now aligns checkbox, radio and x to top when multi-line text ([#5083](https://github.com/digdir/designsystemet/pull/5083))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.0
+
+## 1.18.0
+
+### Minor Changes
+
+- **Chip:** now by default keeps text on a single line and truncates with ellipsis if needed, but allows text wrapping by adding `data-wrap="wrap"` ([#5040](https://github.com/digdir/designsystemet/pull/5040))
+
+### Patch Changes
+
+- **@charset**: remove redundant `@charset` as this simplifies merging Designsystemet with other CSS files ([#5041](https://github.com/digdir/designsystemet/pull/5041))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.18.0
+
+## 1.17.0
+
+### Patch Changes
+
+- **Avatar:** now scales correctly also when rendered as `<button>` ([#5029](https://github.com/digdir/designsystemet/pull/5029))
+
+- **Field, Fieldset:** `disabled` and `read only` styling is now only affected by form elements with class name set to `ds-input` ([#5028](https://github.com/digdir/designsystemet/pull/5028))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.17.0
+
+## 1.16.1
+
+### Patch Changes
+
+- fix(deps): update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
+
+- **base**: `ds-icon` no longer defines `fill`. Users must make sure their icons inherit color the correct way for their icons. ([#5013](https://github.com/digdir/designsystemet/pull/5013))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.16.1
+
+## 1.16.0
+
+### Minor Changes
+
+- **Root:** Add `--ds-icon-size` variable for easier consistent icon sizing. Size `--ds-size-6` by default. ([#4971](https://github.com/digdir/designsystemet/pull/4971))
+  **Root:** Increased `read-only` icon size from `1.2em` to `6` for consistency and configurable using `--ds-icon-size`
+  **Alert, Chip, Suggestion Chip, Search, IconButton:** Decreased icon size from `7` to `6` for consistency and configurable using `--ds-icon-size`
+  **Dialog:** Add missing `--dsc-dialog-icon-size` variable
+
+### Patch Changes
+
+- **Avatar**: Now fully supports rendering as a `<button>` ([#4968](https://github.com/digdir/designsystemet/pull/4968))
+  **Button, Tabs, Tag**: No longer shrink inside `display: flex`, preventing unintended multi-line text wrapping
+  **Button:** Added missing `--dsc-button-border-radius` CSS custom property
+  **Button**: Added missing `--dsc-button-color--active` CSS custom property
+  **Chip**: Now correctly inherits `text-align` when rendered as a `<button>`
+  **Chip**: Prevents the remove icon (`x`) from shrinking when `data-variant="removable"` contains long text
+  **Dialog**: Now centers correctly when placed inside a `display: flex` container
+  **Field**: Now uses `column-gap` instead of `padding` to create spacing between `radio`/`checkbox` inputs and their labels.
+  **Heading**: Prevents page breaks immediately after headings when printing
+  **Input:** Added missing `--dsc-input-border-radius` CSS custom property
+  **Input**: Placeholder text is now styled using the `--dsc-input-color-placeholder` CSS custom property
+  **Input**: Fixes a [Safari bug](https://stackoverflow.com/q/73896040) where `input[type="date"]` placeholder text could appear cyan
+  **Input**: Enforces a minimum `font-size` of `16px` to prevent mobile browser zooming, and adds `--dsc-input-font-size` for overwriting this
+  **Pagination, ToggleGroup**: Interactive elements are now styled correctly regardless of `data-variant`
+  **ToggleGroup**: Now supports `<a>` elements as interactive controls
+  **ToggleGroup:** Outer edge now uses `outline` instead of `border` in both `primary` and `secondary` variants for consistent rendering
+  **Table**: Added `--dsc-table-vertical-align` CSS custom property
+  **Table**: Prevents page breaks within tables when printing
+  **Tag:** Added missing `--dsc-tag-border-radius` CSS custom property
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.16.0
+
+## 1.15.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+- **Dropdown**: Removed hardcoded `font-weight` on some heading elements. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- Added new export for testing experimental changes. Use this by appending `/experimental_v2` to your package import: `@digdir/designsystemet-css/experimental_v2`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Suggestion**: Added `--dsc-suggestion-option-checkmark-border-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Field**: Added `--dsc-field-description-color`, `--dsc-field-affix-background`, and `--dsc-field-affix-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Fieldset**: Added `--dsc-fieldset-description-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+- **Card**: when using a link in a Card, ensure plain `<a>` tags without `class="ds-link"` also get the correct focus styling. ([#4896](https://github.com/digdir/designsystemet/pull/4896))
+
+- Update npm non-major dependencies ([#4910](https://github.com/digdir/designsystemet/pull/4910))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.15.0
+
+## 1.14.0
+
+### Minor Changes
+
+- **Field / Radio / Checkbox / Switch**: Now supports `data-variant="outline"` for an outlined tile look. ([#4625](https://github.com/digdir/designsystemet/pull/4625))
+
+### Patch Changes
+
+- **Suggestion**: fixed dropdown so it no longer has a brief flash in wrong position ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- Update npm non-major dependencies ([#4809](https://github.com/digdir/designsystemet/pull/4809))
+
+- **Suggestion:** now uses attribute `data-activedescendant` under the hood to add focus styling on option elements ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+- Update npm non-major dependencies ([#4859](https://github.com/digdir/designsystemet/pull/4859))
+
+- **Suggestion**: fixed icons being invisible in forced colors mode ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783))
+
+- **base**: added `.ds-focus--middle` / `.ds-focus--visible--middle` classes for use in the `suggestion` redesign ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- **Suggestion**: changes to design: ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+  - dropdown border and background-color to neutral
+  - new hover styles on items
+  - adjusted spacings
+  - `multiple` now has checkboxes
+  - CSS variables:
+    - Added:
+      - `--dsc-suggestion-option-background--hover`
+      - `--dsc-suggestion-list-padding`
+      - `--dsc-suggestion-list-offset`
+      - `--dsc-suggestion-option-gap`
+    - Removed:
+      - `--dsc-suggestion-option-border-color`
+    - Changed default value:
+      - `--dsc-suggestion-option-background--selected`
+      - `--dsc-suggestion-option-border-radius`
+      - `--dsc-suggestion-option-padding`
+      - `--dsc-suggestion-list-background`
+      - `--dsc-suggestion-list-gap`
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.14.0
+
+## 1.13.3
+
+### Patch Changes
+
+- **card**: use designsystemet focus outline when card itself is a link or button ([#4768](https://github.com/digdir/designsystemet/pull/4768))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.3
+
 ## 1.13.2
 
 ### Patch Changes

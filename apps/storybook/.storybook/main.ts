@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { StorybookConfig } from '@storybook/react-vite';
+import { defineMain } from '@storybook/react-vite/node';
 import type { PropItem } from 'react-docgen-typescript';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -11,13 +11,20 @@ const dirname =
     ? __dirname
     : path.dirname(fileURLToPath(import.meta.url));
 
-const config: StorybookConfig = {
+export default defineMain({
   typescript: {
     check: true,
     /* If in prod, use docgen-typescript, locally use docgen */
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       include: [path.resolve(dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
+      // Use a tsconfig without project references: with references, TypeScript
+      // resolves imports to referenced projects' declaration outputs, which no
+      // longer exist since tsdown took over declaration emit from tsc.
+      tsconfigPath: path.resolve(
+        dirname,
+        '../../../packages/react/tsconfig.lib.json',
+      ),
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop: PropItem) => {
@@ -92,6 +99,4 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
   },
-};
-
-export default config;
+});

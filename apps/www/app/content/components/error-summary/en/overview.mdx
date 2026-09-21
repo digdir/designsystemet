@@ -4,30 +4,30 @@ search_terms: errors, validation, errorlist
 
 <Story story="PreviewEn" startAsInert />
 
-**Use `ErrorSummary` when**
+**Use error summary when**
 - you need to present a clear overview of the errors that must be corrected before a form can be submitted
 - a form contains many fields, making it difficult for users to understand where the errors are located
 
-**Avoid `ErrorSummary` when**
+**Avoid error summary when**
 - the feedback does not prevent submission, such as warnings or recommendations
-- you need to display system-level messages; use [`Alert`](/en/components/docs/alert/overview) instead
+- you need to display system-level messages; use [alert](/en/components/docs/alert/overview) instead
 
 ## Example
 
 ### Use in forms
 
-In the example below, each link in the `ErrorSummary` lets you navigate directly to the field containing an error.
+In the example below, each link in the error summary lets you navigate directly to the field containing an error.
 
 <Story story="WithFormEn" layout="column" startAsInert />
 
 ## Guidelines
 
-`ErrorSummary` is used to display a summary when there are errors or omissions in something the user has done. A summary may include one or several errors.  
-`ErrorSummary` should contain all error messages present on the page, so users can navigate directly to them by clicking the links in the summary.
+Error summary is used to display a summary when there are errors or omissions in something the user has done. A summary may include one or several errors.  
+Error summary should contain all error messages present on the page, so users can navigate directly to them by clicking the links in the summary.
 
 ### Placement
 
-We recommend placing `ErrorSummary` just above the Next/Submit button. This helps users understand the connection between the errors and why they cannot proceed.
+We recommend placing error summary just above the Next/Submit button. This helps users understand the connection between the errors and why they cannot proceed.
 
 In some cases, it may be better to show the summary at the top of the page.  
 You can read more about this in the [article on error messages](/en/patterns/errors).
@@ -36,10 +36,10 @@ You can read more about this in the [article on error messages](/en/patterns/err
 
 The summary should not be visible before the user has taken an action that triggers an error. It should become visible only after the user performs an action that results in errors. The summary automatically receives focus when it becomes visible and when its content changes.
 
-- If validation happens continuously (for example using `onBlur` on each field), wait to show `ErrorSummary` until the user attempts to submit the form.   
+- If validation happens continuously (for example using `onBlur` on each field), wait to show error summary until the user attempts to submit the form.   
 - Error messages must link directly to the relevant field.  
 - If the error applies to several fields, for example when two fields are validated together, link to the first instance of the error.
 
 ## Text
 
-Ensure that the heading “To continue, you must correct the following errors” is used in `ErrorSummary`. The error messages in the summary should be phrased exactly the same as the error messages displayed at the relevant fields.
+Ensure that the heading “To continue, you must correct the following errors” is used in error summary. The error messages in the summary should be phrased exactly the same as the error messages displayed at the relevant fields.

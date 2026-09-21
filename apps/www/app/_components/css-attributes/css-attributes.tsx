@@ -47,12 +47,14 @@ export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {Object.entries(vars).map(([name, value]) => (
-            <Table.Row key={name}>
-              <Table.Cell>data-{name}</Table.Cell>
-              <Table.Cell>{value}</Table.Cell>
-            </Table.Row>
-          ))}
+          {Object.entries(vars)
+            .sort((a, b) => a[0].localeCompare(b[0]))
+            .map(([name, value]) => (
+              <Table.Row key={name}>
+                <Table.Cell>data-{name}</Table.Cell>
+                <Table.Cell>{value}</Table.Cell>
+              </Table.Row>
+            ))}
         </Table.Body>
       </Table>
     );
@@ -66,8 +68,8 @@ export function getAttributes(css: string) {
   const globals = ['color', 'size', 'color-scheme'];
 
   const allAttrs = Array.from(
-    css.matchAll(/\[data-([^=\]]+)(?:=([^\]]+))?\]/g),
-  ).map((matches) => ({ [matches[1]]: matches[2] }));
+    css.matchAll(/\[data-([^=\]|$~*^]+)(?:([|$~*^]?=)([^\]]+))?\]/g),
+  ).map((matches) => ({ [matches[1]]: matches[3] }));
 
   for (const attr of allAttrs) {
     for (const [key, value] of Object.entries(attr)) {

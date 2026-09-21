@@ -2,8 +2,8 @@ import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Link, redirect } from 'react-router';
 import type { Route } from './+types/not-found';
 
-export const meta: Route.MetaFunction = ({ data }) => {
-  const lang = data?.lang || 'no';
+export const meta: Route.MetaFunction = ({ loaderData }) => {
+  const lang = loaderData?.lang || 'no';
   const titles: Record<string, string> = {
     no: 'Feil: Fant ikke siden',
     en: 'Error: Page not found',

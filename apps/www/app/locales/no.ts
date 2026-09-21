@@ -15,19 +15,18 @@ export default {
     },
     components: {
       title: 'Komponenter',
-      description:
-        'Se oversikten over UI-komponentene som er laget i React, CSS og Figma.',
+      description: 'Se oversikten over rammeverkuavhengige UI-komponenter.',
     },
     toolbox: {
       title: 'En felles digital verktøykasse',
       description:
-        'Designsystemet er en felles verktøykasse med UI-komponenter og retningslinjer for utvikling av digitale tjenester. Det er gratis, brukes sammen med virksomhetens egen visuelle profil og bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.',
+        'Designsystemet er en felles verktøykasse med rammeverkuavhengige UI-komponenter og retningslinjer for utvikling av digitale tjenester. Du kan bruke hele verktøykassen, eller plukke ut de delene som gir verdi i din løsning. Det er gratis, brukes sammen med virksomhetens egen visuelle profil og bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.',
       link: 'Les mer om Designsystemet',
     },
     'components-section': {
       title: 'Tilgjengelige og fleksible komponenter',
       description:
-        'Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet og ivaretar krav til universell utforming. Komponentene finnes i egne bibliotek for Figma, CSS og React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre.',
+        'Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet og ivaretar krav til universell utforming. Komponentene finnes for Figma, CSS, en rammeverkuavhengig web-pakke og React. Bruk de komponentene som gir verdi i din løsning, og bygg videre på toppen av dem når du trenger det.',
       link: 'Les mer om universell utforming',
       fallbackImgAlt:
         'Designskisse av en mobiltelefon som har komponenter fra Designsystemet i seg.',
@@ -35,7 +34,7 @@ export default {
     'theme-section': {
       title: 'Bruk egne tema',
       description:
-        'Designsystemet støtter ulike identiteter gjennom tema. På denne måten kan alle ta utgangspunkt i samme designsystem, men tilpasse til ulike avsenderidentiteter.',
+        'Designsystemet støtter ulike identiteter gjennom tema. Du kan bruke Temabyggeren for å komme i gang, og bygge videre på temaet slik at det passer din profil og løsning. På denne måten kan alle ta utgangspunkt i samme designsystem-fundament, men tilpasse det til ulike avsenderidentiteter.',
       link: 'Bygg ditt tema',
       fallbackImgAlt:
         'Designskisse av en nettside som viser hvordan Designsystemet kan tilpasses ulike identiteter.',
@@ -69,7 +68,7 @@ export default {
     tag: 'Bloggen',
     title: 'Bloggen',
     description:
-      'Her finner du historier, erfaringer og oppdateringer fra designsystemet. Et sted for å lære av hverandre og holde deg oppdatert.',
+      'Her finner du historier, erfaringer og oppdateringer fra Designsystemet. Et sted for å lære av hverandre og holde deg oppdatert. Du kan abonnere på bloggen gjennom <0>RSS</0> eller <1>Atom</1>',
     write: {
       title: 'Vil du skrive for bloggen?',
       description:
@@ -93,6 +92,7 @@ export default {
       getStarted: 'Kom i gang',
       typography: 'Typografi',
       utilities: 'Hjelpeverktøy',
+      utilitiesReact: 'Hjelpeverktøy for React',
     },
     items: {
       Introduction: 'Introduksjon',
@@ -106,6 +106,10 @@ export default {
     show: 'Vis',
     hide: 'Skjul',
     sidebar: 'sidemeny',
+    search: {
+      label: 'Søk i sidemeny',
+      noResults: 'Ingen treff',
+    },
   },
   navigation: {
     intro: 'Intro',
@@ -120,17 +124,16 @@ export default {
     'skip-link': 'Hopp til hovedinnhold',
   },
   'consent-banner': {
-    heading: 'Vil du godta at vi samler inn data om bruk av nettsiden?',
-    all: 'Godta',
-    'all-desc':
-      'Hvis du godtar, samler vi også inn data om hvordan nettsiden brukes. Dette hjelper oss å forbedre tjenestene våre.',
-    declaration:
-      'Du kan når som helst endre valget ditt nederst på våre sider.',
-    required: 'Avslå',
-    'required-desc-start': 'Vi bruker noen',
-    'required-desc-link': 'nødvendige informasjonskapsler',
-    'required-desc-end':
-      'for at nettsiden skal fungere. Disse kan ikke velges bort.',
+    heading: 'Får vi samle informasjon om hvordan nettsiden brukes?',
+    approve: 'Ja',
+    decline: 'Nei',
+    'desc-start':
+      'Hvis du svarer ja, lagrer og analyserer vi informasjon som hjelper oss å forbedre nettsiden.',
+    'desc-end': 'Du kan når som helst endre valget ditt nederst på siden.',
+    'desc-link': 'Mer om hva vi lagrer og hvorfor.',
+    'necessary-info-link': 'Vi lagrer også nødvendig informasjon',
+    'necessary-info-end':
+      'som ikke kan velges bort. Dette gjør at nettsiden fungerer og er trygg.',
   },
   errors: {
     default: {
@@ -149,7 +152,7 @@ export default {
   components: {
     title: 'Komponenter',
     description:
-      'Designsystemet inneholder grunnleggende komponenter som kan settes sammen på mange ulike måter og i forskjellige mønstre.',
+      'Designsystemet inneholder grunnleggende komponenter som kan brukes uavhengig av rammeverk, og settes sammen på mange ulike måter og i forskjellige mønstre.',
     changelog: {
       title: 'Endringslogg',
     },
@@ -208,6 +211,10 @@ export default {
       enlarged: 'Klikk for å minimisere bilde.',
       normal: 'Klikk for å forstørre bilde.',
     },
+  },
+  'color-info-table': {
+    name: 'Navn',
+    usage: 'Bruksområde',
   },
   'image-banner': {
     'play-video': 'Spill av video',

@@ -14,11 +14,9 @@ search_terms: setup, oppsett, installasjon, installation, getting started, komme
 Follow these steps to get started with using Designsystemet in code for the first time.
 
 ## 1. Install the packages
+Designsystemet consists of several code packages that you can freely choose from, depending on your needs and preferences. You can use the packages together, or pick only the parts that speed you up, while keeping the freedom to code things yourself where you want to.
 
-Designsystemet consists of several code packages that you can freely choose from, depending on your needs and preferences.
-
-We recommend starting with `@digdir/designsystemet-web` and `@digdir/designsystemet-css` which are the most basic packages to get started.
-
+We recommend starting with `@digdir/designsystemet-web` and `@digdir/designsystemet-css`. You can also use `@digdir/designsystemet-web` without `@digdir/designsystemet-css` if you already have your own styling, or use only the CSS package if you handle interactivity yourself.
 
 <ds-tabs class="ds-tabs" data-wide-content>
   <ds-tablist>
@@ -68,7 +66,7 @@ import { Button } from '@digdir/designsystemet-react';
 
 Import `@digdir/designsystemet-css`.
 
-Read more about [CSS](/no/fundamentals/code/css).
+Read more about [CSS](/en/fundamentals/code/css).
 
 <ds-tabs class="ds-tabs" data-wide-content>
   <ds-tablist>
@@ -102,7 +100,7 @@ This can be easily overridden in your own theme or in your global CSS file.
 
 The Designsystemet is designed to be themable, so it is important to import your theme after importing `@digdir/designsystemet-css`.
 
-[Build your own theme](/no/fundamentals/start-here/own-theme) or use the default theme; `@digdir/designsystemet-css/theme`.
+[Build your own theme](/en/fundamentals/start-here/own-theme) or use the default theme; `@digdir/designsystemet-css/theme`.
 
 
 <ds-tabs class="ds-tabs" data-wide-content>
@@ -130,13 +128,16 @@ The Designsystemet is designed to be themable, so it is important to import your
 You are now ready to use the Designsystemet in code! 
 
 
-All components have their own page in the [component documentation](/no/components), we recommend that you read through these to see how you can use the components.
+All components have their own page in the [component documentation](/en/components), we recommend that you read through these to see how you can use the components.
 
 It is also recommended that you read through the accessibility page.
 
 - Use `data-color-scheme="light | dark | auto"` to set dark/light mode.
+  - corresponds with `Appearance › Color scheme` in Figma
 - Use `data-size="sm | md | lg"` to set the size of the components.
+  - corresponds with `Appearance › Size` in Figma
 - Use `data-color` to set the color of the components.
+  - corresponds to `Appearance › Color` in Figma
 
 
 <ds-tabs class="ds-tabs" data-wide-content>
@@ -239,8 +240,53 @@ body {
 }
 ```
 
+## Testing
 
-## Polyfill
+We aim for the components to function well across various test setups. Designsystemet is tested in JSDOM and HappyDOM, and through Playwright in Chromium, Firefox, and WebKit. However, there will always be frameworks, test environments, and meta-frameworks that handle asynchronous rendering or specific edge cases in different ways.
 
-The design system uses [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) in some components. This api is classified as [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as of April 2024, when Firefox was the last browser to add it. In some cases, you may find that users are locked to older browser versions for various reasons, and then it may be appropriate to add a polyfill to ensure that `popover` works for everyone.
-* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
+If you encounter issues with the design system in your test setup, we would very much like to hear about it. Please report them via a [GitHub issue](https://github.com/digdir/designsystemet/issues/new/choose) or ask us in [our open Slack](https://designsystemet.no/slack).
+
+Note that not everything supported by browsers is implemented in environments with an artificial DOM, such as JSDOM and HappyDOM. You may need to add some configuration to your test setup:
+
+<details className="ds-details">
+<summary>HappyDOM setup</summary>
+
+HappyDOM may require support for inheritance between `HTMLDocument` and `Document`:
+
+```ts
+// Polyfill missing HTMLDocument to Document inheritance in HappyDOM
+if (
+  typeof HTMLDocument !== 'undefined' &&
+  !(HTMLDocument.prototype instanceof Document)
+) {
+  try {
+    Object.setPrototypeOf(HTMLDocument.prototype, Document.prototype); 
+  } catch (_) {}
+}
+```
+</details>
+
+<details className="ds-details">
+<summary>JSDOM setup</summary>
+
+JSDOM may lack support for certain methods on `HTMLDialogElement`:
+
+```ts
+// Polyfill missing HTMLDialogElement methods in JSDOM
+if (typeof HTMLDialogElement.prototype.show !== 'function') {
+  HTMLDialogElement.prototype.show = function () {
+    this.open = true;
+  };
+
+  HTMLDialogElement.prototype.showModal = function () {
+    this.open = true;
+  };
+
+  HTMLDialogElement.prototype.close = function (returnValue?: string) {
+    this.open = false;
+    if (returnValue !== undefined) this.returnValue = returnValue;
+    this.dispatchEvent(new Event('close'));
+  };
+}
+```
+</details>

@@ -63,18 +63,16 @@ export const WithIconEn = () => {
 };
 
 export const Neutral = () => {
-  const rand = useId();
   return (
-    <Link href={'/no/intro/privacy-policy' + rand} data-color='neutral'>
+    <Link href={'/no/intro/privacy-policy'} data-color='neutral'>
       Personvernerklæring
     </Link>
   );
 };
 
 export const NeutralEn = () => {
-  const rand = useId();
   return (
-    <Link href={'/en/intro/privacy-policy' + rand} data-color='neutral'>
+    <Link href={'/en/intro/privacy-policy'} data-color='neutral'>
       Privacy Policy
     </Link>
   );

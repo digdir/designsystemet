@@ -1,11 +1,11 @@
 {
   "no": {
-    "title": "AvatarStack",
-    "subtitle": "`AvatarStack` stabler en samling `Avatar` elementer"
+    "title": "Avatar stack",
+    "subtitle": "Avatar stack stabler en samling avatar-elementer"
   },
   "en": {
-    "title": "AvatarStack",
-    "subtitle": "`AvatarStack` stacks a collection of `Avatar` elements"
+    "title": "Avatar stack",
+    "subtitle": "Avatar stack stacks a collection of avatar elements"
   },
   "image": "AvatarStack.svg",
   "cssFile": "avatar-stack.css"

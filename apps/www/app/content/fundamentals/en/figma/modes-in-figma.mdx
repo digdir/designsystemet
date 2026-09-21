@@ -18,7 +18,7 @@ Modes are predefined settings in [Designsystemet Core UI Kit](https://www.figma.
 In the Core UI Kit you have the following modes:
 * Theme - Choose between different themes
 * Color scheme - Switch between light and dark mode
-* Main and support color - Select which color to use on components
+* Color - Select which color to use on components
 * Typography - Change font type and style
 * Size - Adjust size of components, text, and spacing
 
@@ -31,7 +31,7 @@ Designers can easily switch between different modes in Figma and see information
 Here you can see that information about the selected mode is not visible with view-only access.
 
 <Image
-  src='/img/visningstilgang.png'
+  src='/img/fundamentals/figma/modes-in-figma/visningstilgang.webp'
   alt='Screenshot showing how modes appear in Figma for users with view-only access'
   boxShadow={false}
 />
@@ -40,7 +40,7 @@ Here you can see that information about the selected mode is not visible with vi
 When you have editing access, you can see which mode is selected for the entire design.
 
 <Image
-  src='/img/redigeringstilgang.png'
+  src='/img/fundamentals/figma/modes-in-figma/redigeringstilgang.webp'
   alt='Screenshot showing how modes appear in Figma for users with editing access'
   boxShadow={false}
 />
@@ -50,7 +50,7 @@ If a mode is set on an entire frame, it is only visible in Dev Mode when the fra
 Dev Mode only shows which mode is set on the element it is applied to, not further down.
 
 <Image
-  src='/img/dev-mode-hele-frame.png'
+  src='/img/fundamentals/figma/modes-in-figma/dev-mode-hele-frame.webp'
   alt='Screenshot showing how modes appear in Figma in Dev Mode when the entire frame is selected'
   boxShadow={false}
   caption='This is how it looks when the entire frame is selected in Dev Mode.'
@@ -64,7 +64,7 @@ When you change the theme, the entire design automatically updates, from colors 
 
 The video below demonstrates how you can change Theme in Figma:
 <ResponsiveIframe
-  src="/img/theme.mp4"
+  src="/img/fundamentals/figma/modes-in-figma/theme.mp4"
   title="Screen recording of Figma showing how to switch between different Theme modes."
   frameBorder="0"
   allow="autoplay; fullscreen; picture-in-picture"
@@ -77,9 +77,11 @@ The video below demonstrates how you can change Theme in Figma:
 *Color scheme mode* lets you switch between *Light* and *Dark* mode.
 You can use this setting on the entire design or just on specific areas, such as a *header* or *footer*. When you change the color scheme of a section, only that part changes, while the rest of the design remains unchanged.
 
+In code, color scheme can be set by using the attribute `data-color-scheme`.
+
 Here's how to switch between Light and Dark mode in Figma:
 <ResponsiveIframe
-  src="/img/color-scheme.mp4"
+  src="/img/fundamentals/figma/modes-in-figma/color-scheme.mp4"
   title="Screen recording of Figma showing how to switch between different color schemes like dark mode and light mode."
   frameBorder="0"
   allow="autoplay; fullscreen; picture-in-picture"
@@ -88,13 +90,17 @@ Here's how to switch between Light and Dark mode in Figma:
 />
 
 
-## Main color and Support color
-To offer the ability to change colors on components, we've created two modes called main and support color. These will contain the colors you entered in the theme builder. In main colors and support colors respectively. The components come in either *support* or *main* variants. To change the color of main and support variants, you use modes. Note that the component must be a main or support variant for the option to appear in the modes menu.
+## Color
+To offer the ability to change colors on components, we've created a *Color* mode. It contains all the colors you entered in the theme builder. By selecting a color mode in Figma, you control which of your theme colors is used.
 
-Here's how to change Support Color on a component:
+The modes are cascading, so you can set them on the entire design or just on specific frame. This allows you to easily customize the design and adapt it to different contexts and needs.
+
+In code, color can be set by using the attribute `data-color`.
+
+Here's how to change the color on a component:
 
 <ResponsiveIframe
-  src="/img/support-color.mp4"
+  src="/img/fundamentals/figma/modes-in-figma/support-color.mp4"
   title="Screen recording of Figma showing how to switch between different support colors in a card."
   frameBorder="0"
   allow="autoplay; fullscreen; picture-in-picture"
@@ -107,7 +113,7 @@ In *Typography mode* you can easily change the font type across the entire desig
 
 Here we see how you can change Typography in Figma:
 <ResponsiveIframe
-  src="/img/typography.mp4"
+  src="/img/fundamentals/figma/modes-in-figma/typography.mp4"
   title="Screen recording of Figma showing how to switch between different typography."
   frameBorder="0"
   allow="autoplay; fullscreen; picture-in-picture"
@@ -120,7 +126,7 @@ In *Size mode* you can change the size globally for the entire design or adjust 
 
 Here's how to adjust the size of elements in Figma:
 <ResponsiveIframe
-  src="/img/size.mp4"
+  src="/img/fundamentals/figma/modes-in-figma/size.mp4"
   title="Screen recording of Figma showing how to switch between sizes."
   frameBorder="0"
   allow="autoplay; fullscreen; picture-in-picture"

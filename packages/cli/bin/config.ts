@@ -1,16 +1,17 @@
 import type { Command, OptionValues } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
+import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
 import {
-  type BuildConfigSchema,
-  type CreateConfigSchema,
-  commonConfig,
-  configFileCreateSchema,
-  parseConfig,
-  validateConfig,
-} from '../src/config.js';
-import { dsfs } from '../src/utils/filesystem.js';
-import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
+  type ConfigSchema,
+  configSchema,
+  type ExternalConfigSchema,
+  externalConfigSchema,
+} from '../src/schemas/schema.ts';
+import { dsfs } from '../src/utils/filesystem.ts';
+import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.ts';
+
+export { deprecatedCLIOptions } from '../src/schemas/helpers.ts';
 
 export async function readConfigFile(configFilePath: string, allowFileNotFound = true): Promise<string> {
   let configFile: string;
@@ -32,29 +33,29 @@ export async function readConfigFile(configFilePath: string, allowFileNotFound =
   return configFile;
 }
 
-export async function parseCreateConfig(
+/**
+ * Parses and validates the configuration file.
+ * Merges the config file with CLI options, with CLI options taking precedence.
+ *
+ * @template T - The expected type of the parsed and validated config.
+ * @param configFile - The content of the config file as a string.
+ * @param options - An object containing the CLI command, theme name, and config file path.
+ * @returns The validated configuration schema.
+ */
+export async function parseValidateAndOptsConfig(
   configFile: string,
   options: { theme: string; cmd: Command<unknown[], OptionValues>; configFilePath: string },
-): Promise<CreateConfigSchema> {
+): Promise<ConfigSchema> {
   const { cmd, theme = 'theme', configFilePath } = options;
 
-  const configParsed: CreateConfigSchema = parseConfig<CreateConfigSchema>(configFile, configFilePath);
+  let configParsed = {} as ConfigSchema;
 
-  /*
-   * Check that we're not creating multiple themes with different color names.
-   * For the themes' modes to work in Figma and when building css, the color names must be consistent
-   */
-  const themeColors = Object.values(configParsed?.themes ?? {}).map(
-    (x) => new Set([...R.keys(x.colors.main), ...R.keys(x.colors.support)]),
-  );
-  if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
-    console.error(pc.redBright(`In config, all themes must have the same custom color names, but we found:`));
-    const themeNames = R.keys(configParsed.themes ?? {});
-    themeColors.forEach((colors, index) => {
-      const colorNames = Array.from(colors);
-      console.log(`  - ${themeNames[index]}: ${colorNames.join(', ')}`);
-    });
-    console.log();
+  try {
+    configParsed = parseConfig<ConfigSchema>(configFile);
+  } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred while parsing config file';
+    console.error(pc.redBright(`Failed parsing config  file at ${pc.red(configFilePath)}`));
+    console.error(pc.red(errorMessage));
     process.exit(1);
   }
 
@@ -63,16 +64,18 @@ export async function parseCreateConfig(
    */
   const noUndefined = R.reject(R.isNil);
 
+  // Only apply the deprecated --font-family option when explicitly supplied: typography may also be
+  // defined as named sets, and merging the CLI default into that form would produce an invalid config.
+  const suppliedFontFamily = getSuppliedCliOption(cmd, 'fontFamily') as string | undefined;
+
   const getThemeOptions = (optionGetter: OptionGetter) =>
     noUndefined({
       colors: noUndefined({
-        main: optionGetter(cmd, 'mainColors'),
-        support: optionGetter(cmd, 'supportColors'),
-        neutral: optionGetter(cmd, 'neutralColor'),
+        ...(optionGetter(cmd, 'mainColors') as Record<string, string>),
+        ...(optionGetter(cmd, 'supportColors') as Record<string, string>),
+        neutral: optionGetter(cmd, 'neutralColor') as string,
       }),
-      typography: noUndefined({
-        fontFamily: optionGetter(cmd, 'fontFamily'),
-      }),
+      typography: suppliedFontFamily ? { fontFamily: suppliedFontFamily } : undefined,
       borderRadius: optionGetter(cmd, 'borderRadius'),
       defaultColor: optionGetter(cmd, 'defaultColor'),
     });
@@ -99,14 +102,17 @@ export async function parseCreateConfig(
         },
   });
 
-  return validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig, configFilePath);
-}
+  let validatedConfig = {} as ConfigSchema;
+  try {
+    const externalConfig = validateConfig<ExternalConfigSchema>(externalConfigSchema, unvalidatedConfig);
+    validatedConfig = validateConfig<ConfigSchema>(configSchema, externalConfig);
+  } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred while parsing config file';
 
-export async function parseBuildConfig(
-  configFile: string,
-  { configFilePath }: { configFilePath: string },
-): Promise<BuildConfigSchema> {
-  const configParsed: BuildConfigSchema = parseConfig<BuildConfigSchema>(configFile, configFilePath);
+    console.error(pc.redBright(`Invalid config  ${pc.red(configFilePath ? 'file at ' + configFilePath : 'string')}`));
+    console.error(pc.red(errorMessage));
+    process.exit(1);
+  }
 
-  return validateConfig<BuildConfigSchema>(commonConfig, configParsed, configFilePath);
+  return validatedConfig;
 }

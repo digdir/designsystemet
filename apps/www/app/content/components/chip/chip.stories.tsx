@@ -49,3 +49,13 @@ export const AsButton = () => {
 export const AsButtonEn = () => {
   return <Chip.Button>Clear all filters</Chip.Button>;
 };
+
+export const Wrap = () => {
+  return (
+    <div style={{ maxWidth: 340 }}>
+      <Chip.Button data-wrap='wrap'>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </Chip.Button>
+    </div>
+  );
+};

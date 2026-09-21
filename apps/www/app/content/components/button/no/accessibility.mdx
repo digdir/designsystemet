@@ -1,6 +1,66 @@
-<Alert data-color="info">
-Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
-</Alert>
+## Dette må du sjekke sjølv
+
+**Button-teksten skal tydeleg beskrive kva som skjer når brukaren aktiverer han.**
+
+Unngå generiske tekstar som «Klikk her».
+
+<span data-size="sm">
+
+WCAG: [2.4.4 Formål med lenkje i kontekst (uutilsynet)](https://www.uutilsynet.no/veiledning/244-formal-med-lenke-i-kontekst/1251)
+
+</span>
+
+<Divider/>
+\
+**Det tilgjengelege namnet skal samsvare med den synlege teksten.**
+
+Dersom du bruker `aria-label` eller andre teknikkar som overstyrer det tilgjengelege namnet, må det framleis samsvare med den synlege teksten.
+
+<span data-size="sm">
+
+WCAG: [2.5.3 Ledetekst i namn (uutilsynet)](https://www.uutilsynet.no/veiledning/253-ledetekst-i-navn/1256)
+
+</span>
+
+<Divider/>
+\
+**Ikon i button med tekst skal vere dekorative og skjulast for skjermlesarar.**
+
+Ikonet skal ikkje lesast opp dersom teksten allereie beskriv handlinga.
+
+<span data-size="sm">
+
+WCAG: [1.1.1 Ikkje-tekstleg innhald (uutilsynet)](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231)
+
+</span>
+
+<Divider/>
+\
+**Ikon-knappar skal ha eit tilgjengeleg namn som beskriv handlinga.**
+
+Dette gjeld når button berre består av eit ikon.
+
+<span data-size="sm">
+
+WCAG: [4.1.2 Namn, rolle, verdi (uutilsynet)](https://www.uutilsynet.no/veiledning/412-navn-rolle-verdi/1267)
+
+</span>
+
+<Divider/>
+\
+**Bruk av loader i button skal gi forståeleg tilbakemelding til skjermlesarbrukarar.**
+
+Dersom knappen viser ein lasteindikator, hugs å leggje til `aria-busy="true"` for å indikere at ei handling er i gang.
+
+I tillegg må du vurdere korleis statusen blir kommunisert, til dømes ved å oppdatere teksten.
+
+<span data-size="sm">
+
+WCAG: [4.1.3 Statusmeldingar (uutilsynet)](https://www.uutilsynet.no/veiledning/413-statusbeskjeder/1268)
+
+</span>
+
+<Divider/>
 
 
 ## Unngå å bruke deaktiverte knappar
@@ -14,15 +74,3 @@ Vi unngår å bruke deaktiverte (`disabled`) knappar fordi dei kan vere vanskele
 - Dersom det er fornuftig at knappen framleis kan få fokus med tastatur,  
 eller det av andre grunnar er viktig å bevare tab-rekkjefølgja, bruk `aria-disabled` i staden for `disabled`.  
 Hugs då å sjølv hindre at callback-funksjonar (for eksempel `onClick`) blir køyrde.
-
-## Loading og `aria-disabled` deaktiverer ikkje `onClick`
-
-**Merk:** Verken `loading="true"` eller `aria-disabled="true"` hindrar automatisk at knappen utløyser `onClick`. Desse attributta påverkar berre utsjånad og tilgjengelegheit, ikkje funksjonaliteten.
-
-Dersom knappen ikkje skal kunne utføre handlingar når han lastar eller er deaktivert, må du sjølv legge inn logikk som hindrar at callback-funksjonen blir køyrd. Til dømes:
-
-```jsx
-function handleClick() {
-  if (isLoading || isDisabled) return;
-  // Resten av logikken
-}

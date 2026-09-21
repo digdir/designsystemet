@@ -28,9 +28,9 @@ We recommend that both a developer and a designer take part in the process when 
   "themes": {
     "theme": {
       "colors": {
-        "main": { "primary": "#0062BA" },
+        "primary": "#0062BA",
         "neutral": "#1E2B3C",
-        "support": { "extra1": "#F45F63" }
+        "extra1": "#F45F63"
       },
       "borderRadius": 4
     }
@@ -54,12 +54,12 @@ This will generate Design Tokens based on the configuration file and save them i
 7. Install the plugin [Tokens Studio (figma.com)](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)). This plugin enables synchronisation between Figma and code. You do *not* need a Pro licence.
 
 <Image
-  src='/img/tokenstudio.png'
+  src='/img/fundamentals/start-here/own-theme/tokenstudio.png'
   alt='Screenshot of Figma showing where to find plugins'
   boxShadow={false}
 />
 
-  - In the plugin, set up the connection to your Git repository. See Tokens Studio’s guide “[Sync your Design Tokens with code (tokens.studio)](https://docs.tokens.studio/token-storage-and-sync/sync-provider-overview)” which explains how to do this for different Git providers.
+  - In the plugin, set up the connection to your Git repository. See Tokens Studio’s guide “[Sync your Design Tokens with code (tokens.studio)](https://docs.tokens.studio/token-storage/remote/#sync-providers)” which explains how to do this for different Git providers.
   - Remember to set the “Token storage location” to `design-tokens` (or whatever you have named your Design Tokens folder).
 
 <Alert data-color="info">
@@ -78,7 +78,7 @@ npx @digdir/designsystemet@latest tokens create --config designsystemet.config.j
 9. In Tokens Studio, select the “Pull” icon to fetch the new tokens into Figma.
 
 <Image
-  src='/img/fundamentals/themebuilder/own-theme/tokens-studio-pull-button.png'
+  src='/img/fundamentals/start-here/own-theme/tokens-studio-pull-button.png'
   alt='Screenshot of Tokens Studio showing where to find the pull button'
   boxShadow={false}
 />
@@ -86,7 +86,7 @@ npx @digdir/designsystemet@latest tokens create --config designsystemet.config.j
 Select `Styles & variables` and `Export styles & variables to Figma`.
 
 <Image
-  src='/img/fundamentals/themebuilder/own-theme/tokens-export.png'
+  src='/img/fundamentals/start-here/own-theme/tokens-export.webp'
   alt='Screenshot of Tokens Studio showing where to find the export button'
   boxShadow={false}
 />
@@ -94,7 +94,7 @@ Select `Styles & variables` and `Export styles & variables to Figma`.
 Make sure you have these settings before clicking `Confirm`:
 
 <Image
-  src='/img/fundamentals/themebuilder/own-theme/tokens-export-options.png'
+  src='/img/fundamentals/start-here/own-theme/tokens-export-options.webp'
   alt='Screenshot of Tokens Studio showing which settings to use when exporting tokens to Figma'
   boxShadow={false}
 />
@@ -102,7 +102,7 @@ Make sure you have these settings before clicking `Confirm`:
 Select `Themes`, `Select All`, and `Export to Figma`:
 
 <Image
-  src='/img/fundamentals/themebuilder/own-theme/tokens-export-themes-select.png'
+  src='/img/fundamentals/start-here/own-theme/tokens-export-themes-select.webp'
   alt='Screenshot of Tokens Studio showing that you must select Themes and then Select All'
   boxShadow={false}
 />
@@ -121,17 +121,17 @@ If you want additional themes, you can generate a new theme in the Theme Builder
   "themes": {
     "theme-one": {
       "colors": {
-        "main": { "primary": "#0062BA" },
+        "primary": "#0062BA",
         "neutral": "#1E2B3C",
-        "support": { "extra1": "#F45F63" }
+        "extra1": "#F45F63"
       },
       "borderRadius": 4
     },
     "theme-two": {
       "colors": {
-        "main": { "primary": "#0062BA" },
+        "primary": "#0062BA",
         "neutral": "#1E2B3C",
-        "support": { "extra1": "#F45F63" }
+        "extra1": "#F45F63"
       },
       "borderRadius": 4
     }

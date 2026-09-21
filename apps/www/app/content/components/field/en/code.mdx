@@ -1,80 +1,64 @@
-It is common to get confused between `Fieldset` and `Field`.
-A good rule of thumb is that **`Fieldset` is a set of `Field`**
-
-<Story story="PreviewEn" />
-<ReactComponentDocs />
+<Story story="PreviewEn" defaultOpen />
 
 ## Usage
-`Field` can be used with `Input`, `Textarea` and `Select`. **NOTE**: `Textfield` already has `Field` built in, and therefore cannot be used in a `Field`.
 
-```tsx
-<Field>
-  <Label>Short description</Label>
-  <Field.Description>Description</Field.Description>
-  <Input />
-  <ValidationMessage>Error message</ValidationMessage>
-</Field>
+It is common to get confused between fieldset and field.
+A good rule of thumb is that **fieldset is a set of field**.
+
+Field can be used with input, textarea and select. **NOTE**: textfield already has field built in, and therefore cannot be used inside a field.
+
+Add the class name `ds-field` to the `<ds-field>` element. `<ds-field>` links together label, input, description, validation message and counter.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Last name</label>
+  <div data-field="description">Last name cannot contain spaces</div>
+  <input class="ds-input" type="text" value="Smith Washington" />
+  <p class="ds-validation-message" data-field="validation">
+    You cannot have spaces in your last name
+  </p>
+</ds-field>
 ```
 
 ## Examples
 
 ### Prefix/Suffix
 
-Prefixes and suffixes are useful for displaying units, currency or other types of information relevant to the field. You should **not** use these on their own, as screen readers do not read them out. It is important that the same information displayed in the prefix or suffix is ​​also included in the prompt.
+Prefixes and suffixes are useful for showing units, currency or other types of information relevant to the field. You should **not** use these on their own, as screen readers do not announce them.
 
 <Story story="AffixEn" />
 
-### Number of characters
+### Character count
 
-Use `Field.Counter` to inform about the number of characters users can type in the field.
+Add a `<p>` with the attribute `data-field="counter"` inside the `ds-field` to get a counter on input and textarea.
 
 <Story story="CounterEn" />
 
-### Position
-
-Use `position="end"` when you want to place, for example, a `Switch` to the right of `Label`.
-
-You can change the text by submitting props, which you can see at the top of the page. The language is standard Norwegian Bokmål.
-
-<Story story="PositionEn" layout="column" />
-
-## HTML
-
-Add the class name `ds-field` to the `<ds-field>` element.
-`<ds-field>` links together label, input and validation message.
-
 ```html
 <ds-field class="ds-field">
-  <label class="ds-label">Label</label>
-  <input type="text" placeholder="Placeholder" class="ds-input" />
-  <div class="ds-validation-message" data-field="validation">
-    This is an error message
-  </div>
-</ds-field>
-```
-
-### Number of characters
-
-To get a counter on input and textarea, add a `<p>` with the attribute `data-field="counter"` inside the `ds-field`.
-
-```html
-<ds-field class="ds-field">
-  <label class="ds-label">Label</label>
+  <label class="ds-label">Add a description</label>
   <textarea class="ds-input"></textarea>
   <p class="ds-validation-message" data-field="counter" data-limit="20" data-over="%d characters too many" data-under="%d characters left"></p>
 </ds-field>
 ```
 
 You can control the text in the counter using the following attributes:
-| attribute  | type   | default               | required |
-|------------|--------|-----------------------|----------|
-| data-limit | number | undefined             | true     |
-| data-over  | string | %d tegn for mye       | false    |
-| data-under | string | %d tegn igjen         | false    |
+
+| attribute  | type   | default          | required |
+|------------|--------|------------------|----------|
+| data-limit | number | undefined        | true     |
+| data-over  | string | %d tegn for mye  | false    |
+| data-under | string | %d tegn igjen    | false    |
+
+### Placement
+
+Use `data-position="end"` on `<ds-field>` when you want to place, for example, a switch to the right of the label. The default is `data-position="start"`.
+
+<Story story="PositionEn" layout="column" />
 
 ### Indeterminate
 
-To make a `checkbox` indeterminate, add `data-indeterminate="true"` on the `<input>` element.
+To make a checkbox indeterminate, add `data-indeterminate="true"` on the `<input>` element.
 
 ```html
 <ds-field class="ds-field">
@@ -83,26 +67,25 @@ To make a `checkbox` indeterminate, add `data-indeterminate="true"` on the `<inp
 </ds-field>
 ```
 
-### Position
-
-To change the position of elements in `Field`, such as a `Switch`, you can add `data-position="end|start"` to the same element as `ds-field`.
-
-```html
-<ds-field class="ds-field" data-position="end">
-  <label
-    class="ds-label"
-    data-weight="medium"
-  >Flightmode</label>
-  <input
-    class="ds-input"
-    role="switch"
-    type="checkbox"
-  >
-</ds-field>
-```
-
 ## CSS variables and data attributes
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent that has these set.
 
 <CssVariables />
 
 <CssAttributes />
+
+## React
+
+```tsx
+import { Field, Label, Input, ValidationMessage } from '@digdir/designsystemet-react';
+
+<Field>
+  <Label>Short description</Label>
+  <Field.Description>Description</Field.Description>
+  <Input />
+  <ValidationMessage>Error message</ValidationMessage>
+</Field>
+```
+
+<ReactComponentDocs />

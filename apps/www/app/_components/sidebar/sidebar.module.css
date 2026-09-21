@@ -26,6 +26,17 @@
   margin-bottom: var(--ds-size-5);
 }
 
+.search {
+  margin-bottom: var(--ds-size-7);
+  padding-inline-start: var(--ds-size-4);
+  padding-inline-end: var(--ds-size-5);
+}
+
+.noResults {
+  padding: 0 var(--ds-size-4);
+  color: var(--ds-color-neutral-text-subtle);
+}
+
 .list {
   margin: 0;
   padding: 0;
@@ -33,7 +44,7 @@
 
 .listGroup {
   margin-bottom: var(--ds-size-5);
-  list-style: none;
+  list-style-type: '';
 }
 
 .innerList {
@@ -52,7 +63,7 @@
 }
 
 .listItem {
-  list-style: none;
+  list-style-type: '';
   padding: 0;
 }
 

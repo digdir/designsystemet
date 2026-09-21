@@ -1,6 +1,7 @@
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Link, Paragraph } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { useTranslation } from 'react-i18next';
+import { useRouteLoaderData } from 'react-router';
 import classes from '../token-modal.module.css';
 
 export default function Config({
@@ -11,12 +12,21 @@ export default function Config({
   buildSnippet: string;
 }) {
   const { t } = useTranslation();
+  const { lang } = useRouteLoaderData('themebuilder');
 
   return (
     <>
       <div className={classes.step}>
         <span>1</span>
-        <Paragraph>{t('themeModal.config.step-one')}</Paragraph>
+        <Paragraph>
+          {t('themeModal.config.step-one')}{' '}
+          <Link
+            target='_blank'
+            href={`https://www.designsystemet.no/${t(lang)}/fundamentals/start-here/own-theme`}
+          >
+            {t('themeModal.own-theme')}
+          </Link>
+        </Paragraph>
       </div>
       <div className={classes.snippet}>
         <CodeBlock language='json'>{configSnippet}</CodeBlock>

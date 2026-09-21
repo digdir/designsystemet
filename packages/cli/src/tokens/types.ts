@@ -1,6 +1,7 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
-import type { ConfigSchemaTheme } from '../config.js';
-import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
+import type { ColorScheme } from '../index.ts';
+import type { ConfigSchemaTheme } from '../schemas/schema.ts';
+import type { GetStyleDictionaryConfig } from './process/configs/shared.ts';
 
 export type Token =
   | { $value: string | Record<string, string>[]; $type: string }
@@ -15,22 +16,28 @@ export type TokenSet = {
 };
 export type TokenSets = Map<string, TokenSet>;
 
-export type Colors = Theme['colors'];
 export type Typography = Theme['typography'];
+
+/** A named typography set, i.e. one entry in `typography.fonts`. */
+export type TypographySet = Typography['fonts'][string];
+
+/** The component typography shared by all typography sets. */
+export type TypographyComponents = Typography['components'];
+
+export type SizeConfig = Theme['size'];
+
+export type BorderRadiusConfig = Theme['borderRadius'];
+
+export type ShadowConfig = Theme['shadow'];
+
+export type BorderWidthConfig = Theme['borderWidth'];
+
+export type OpacityConfig = Theme['opacity'];
 
 export type Theme = {
   name: string;
 } & Required<Omit<ConfigSchemaTheme, 'overrides'>> &
   Pick<ConfigSchemaTheme, 'overrides'>;
-
-export const colorCategories = {
-  main: 'main',
-  support: 'support',
-} as const;
-
-export type ColorCategories = keyof typeof colorCategories;
-
-export type BuiltInColors = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
 
 export type SizeModes = 'small' | 'medium' | 'large';
 
@@ -39,8 +46,7 @@ export type SizeModes = 'small' | 'medium' | 'large';
  */
 export type ThemePermutation = {
   'color-scheme': string;
-  'main-color': string;
-  'support-color'?: string;
+  color: string;
   semantic: string;
   size: string;
   theme: string;
@@ -48,6 +54,12 @@ export type ThemePermutation = {
 };
 
 export type ThemeDimension = keyof ThemePermutation;
+
+export type TokenSetDimensions = {
+  colorSchemes: ColorScheme[];
+  sizeModes: SizeModes[];
+  typographies: string[];
+};
 
 export type GetSDConfigOptions = {
   tokensDir?: string;
@@ -60,7 +72,7 @@ export type BuildConfig = {
   name?: string;
   /** Style Dictionary configuration creator */
   getConfig: GetStyleDictionaryConfig;
-  /** Which theme dimensions to include. `theme` (e.g. digdir/altinn) is always included. */
+  /** Which theme dimensions to include. `theme` is always included. */
   dimensions: ThemeDimension[];
   /** Whether the build config is enabled. @default () => true */
   enabled?: () => boolean;

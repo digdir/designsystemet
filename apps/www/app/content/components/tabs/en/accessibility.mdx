@@ -1,16 +1,46 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## What you need to verify yourself
 
-* `Tabs` supports keyboard navigation with arrow keys
-* Each tab must have a unique title
-* When using icons, ensure they are decorative (`aria-hidden`) or have descriptive titles
-* If a tab panel does not contain any focusable elements, the panel itself receives focus
+**Each tab must have a unique and accessible name**
 
-### Keyboard navigation
-* <kbd>Tab</kbd> moves focus to the next interactive element
-* <kbd data-icon>→</kbd> moves to the next tab
-* <kbd data-icon>←</kbd> moves to the previous tab
-* <kbd>Home</kbd> moves to the first tab
-* <kbd>End</kbd> moves to the last tab
-* <kbd>Enter</kbd> or <kbd>Space</kbd> activates the selected tab
+Make sure each individual tab has a clear, accessible, and meaningful name.
+
+<span data-size="sm"> 
+WCAG: [3.3.2 Labels or Instructions (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html)
+</span> 
+<span data-size="sm">
+WCAG: [4.1.2 Name, Role, Value (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+</span> 
+
+<Divider/>
+\
+**Avoid using icons alone without text**
+
+Try to avoid using icon-only tabs. If icon-only tabs are necessary, make sure each tab has an accessible, meaningful name. Ensure that the content is accessible, for example through an accessible tooltip. If you use icons alongside text, ensure they are marked as decorative or have their own accessible title.
+
+<span data-size="sm"> 
+WCAG: [1.1.1 Non-text Content (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content)
+</span> 
+
+<Divider/>
+## Test with a keyboard
+
+**Verify that you can:**
+- reach the tab using <kbd>Tab</kbd>
+- use the arrow keys to navigate between tabs
+- move focus to the first tab using <kbd>Home</kbd>
+- move focus to the last tab using <kbd>End</kbd>
+- activate the tab using both <kbd>Space</kbd> and <kbd>Enter</kbd>
+- navigate to the content (`tabpanel`) using <kbd>Tab</kbd>
+
+<span data-size="sm"> 
+WCAG: [2.1.1 Keyboard (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/keyboard)
+</span> 
+
+<Divider/>
+## Handled by the design system
+
+- Correct roles on all elements with `role="tab"`, `role="tablist"`, and `role="tabpanel"`.
+- Correct state on all elements with `aria-selected`.
+- Correct linking between elements with `aria-controls` and `aria-labelledby`.
+- Color contrast is handled by the design system's color system. If you deviate from the recommended color tokens, verify that the combination of text and background colors meets the contrast requirements for the tabs.
+- Sizing and scaling are handled by the design system's sizing system. If you deviate from it, verify that tabs remain usable when text is resized or when screen magnification is used, without loss of information or functionality.

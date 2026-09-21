@@ -1,48 +1,7 @@
-<Story layout="block" story="PreviewEn" />
-
-<ReactComponentDocs />
+<Story layout="block" story="PreviewEn" defaultOpen />
 
 ## Usage
-```tsx
-/* Without frame */
-import { Details } from '@digdir/designsystemet-react';
-
-<Details> 
-  <Details.Summary>Details heading text</Details.Summary> 
-  <Details.Content>Details content</Details.Content>
-</Details>
-
-/* With frame */
-
-import { Details, Card } from '@digdir/designsystemet-react';
-
-<Card> 
-  <Details> 
-    <Details.Summary>Details heading text</Details.Summary> 
-    <Details.Content>Details content</Details.Content> 
-  </Details>
-</Card>
-```
-
-## Examples
-
-### Frame and variant
-
-If you put `Details` as the only child of `Card`, you get a frame around the whole `Details`.
-You can also use `variant="tinted"` on either `Details` or `Card` to get a lighter background.
-
-<Story layout="block" story="InCardWithColorEn" />
-
-### Controlled
-
-`Details` keeps track of whether it is open or closed, but this can also be controlled externally.
-
-<Story layout="block" story="Controlled" />
-
-## HTML
-
-`Details` is a native `<details>` element.
-
+Details is a native `<details>` element.
 We polyfill a bug in Firefox when used with Android Talkback screen reader to announce state and role correctly.
 
 ```html
@@ -70,6 +29,38 @@ We polyfill a bug in Firefox when used with Android Talkback screen reader to an
 ```
 
 ## CSS variables and data attributes
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
+The component will inherit from the closest parent where these are set.
 <CssVariables />
 
 <CssAttributes />
+
+## React
+
+```tsx
+/* Without frame */
+import { Details } from '@digdir/designsystemet-react';
+
+<Details>
+  <Details.Summary>Details heading text</Details.Summary>
+  <Details.Content>Details content</Details.Content>
+</Details>
+
+/* With frame */
+
+import { Details, Card } from '@digdir/designsystemet-react';
+
+<Card>
+  <Details>
+    <Details.Summary>Details heading text</Details.Summary>
+    <Details.Content>Details content</Details.Content>
+  </Details>
+</Card>
+```
+
+### Controlled example
+Details keeps track of whether it is open or closed, but this can also be controlled externally.
+
+<Story layout="block" story="Controlled" language="react" />
+
+<ReactComponentDocs />

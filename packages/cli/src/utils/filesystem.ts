@@ -2,7 +2,7 @@ import type { CopyOptions, PathLike } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import pc from 'picocolors';
-import type { OutputFile } from '../tokens/types.js';
+import type { OutputFile } from '../tokens/types.ts';
 
 class FileSystem {
   private isInitialized = false;

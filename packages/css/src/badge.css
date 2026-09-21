@@ -3,12 +3,13 @@
   --dsc-badge-color: var(--ds-color-base-contrast-default);
   --dsc-badge-padding: 0 calc(var(--ds-size-1) + calc(var(--ds-size-1) / 2));
   --dsc-badge-size: calc(var(--ds-size-3) + calc(var(--ds-size-1) / 2));
+  --dsc-badge-size--count: var(--ds-size-6);
   --dsc-badge-top: inherit;
   --dsc-badge-bottom: inherit;
   --dsc-badge-left: inherit;
   --dsc-badge-right: inherit;
 
-  vertical-align: middle;
+  vertical-align: calc(var(--dsc-badge-size) / 2);
   @composes ds-print-preserve from './base.css';
 
   &:not([hidden]) {
@@ -35,6 +36,12 @@
     }
   }
 
+  &[data-count]:not([data-count=''])::before {
+    min-height: var(--dsc-badge-size--count);
+    min-width: var(--dsc-badge-size--count);
+    vertical-align: calc(var(--dsc-badge-size--count) / 2);
+  }
+
   &[data-variant='base'] {
     --dsc-badge-background: var(--ds-color-base-default);
     --dsc-badge-color: var(--ds-color-base-contrast-default);
@@ -51,7 +58,6 @@
   position: relative;
   height: fit-content;
   width: fit-content;
-  --_ds-captured-length: 1em;
 
   &:not([hidden]) {
     display: inline-flex;
@@ -66,10 +72,8 @@
     z-index: 1; /*prevent focus-ring overlaying badge in certain cases*/
   }
 
-  > :where(img, svg) {
-    flex-shrink: 0; /* Never shrink icon */
-    /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
-    font-size: calc(var(--_ds-captured-length) * 1.25); /* Auto scale icon based on font-size */
+  & :is(img, svg) {
+    @composes ds-icon from './base.css';
   }
 
   &[data-placement='top-right'] .ds-badge::before {

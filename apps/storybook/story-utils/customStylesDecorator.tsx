@@ -40,7 +40,7 @@ export const customStylesDecorator: Decorator = (Story, ctx) => {
 
   useEffect(() => {
     const stories = document.body.getElementsByClassName('docs-story');
-    for (const story of stories) {
+    for (const story of Array.from(stories)) {
       story.setAttribute(
         'data-color-scheme',
         ctx.globals.colorScheme || 'auto',
@@ -48,7 +48,7 @@ export const customStylesDecorator: Decorator = (Story, ctx) => {
     }
 
     const centeredStories = document.getElementsByClassName('sb-main-centered');
-    for (const story of centeredStories) {
+    for (const story of Array.from(centeredStories)) {
       story.setAttribute(
         'data-color-scheme',
         ctx.globals.colorScheme || 'auto',

@@ -23,11 +23,14 @@ import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
+import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import type { Route } from './+types/text';
 import classes from './component.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const { '*': file, lang } = params;
+  const { lang } = params;
+  // RR v8 prerenders HTML with a trailing slash; strip it from the splat param.
+  const file = stripTrailingSlash(params['*']);
   const dirname = cwd();
   const basePath = join(dirname, './app/content');
 
@@ -62,8 +65,8 @@ export async function loader({ params }: Route.LoaderArgs) {
   };
 }
 
-export const meta = ({ data }: Route.MetaArgs) => {
-  if (!data)
+export const meta = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData)
     return [
       {
         title: 'Designsystemet',
@@ -72,7 +75,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
   const {
     metadata: { title },
     frontmatter,
-  } = data;
+  } = loaderData;
   return generateMetadata({
     title,
     description: frontmatter.description,

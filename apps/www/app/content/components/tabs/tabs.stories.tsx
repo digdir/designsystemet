@@ -164,3 +164,63 @@ export const Controlled = () => {
     </Tabs>
   );
 };
+
+export const PanelReuse = () => {
+  const [selectedTab, setSelectedTab] = useState('Om');
+  const tabs = [
+    ['Om', <div key='about'>Om</div>],
+    ['Timeplan', <div key='timetable'>Timeplan</div>],
+    ['Eksamen', <div key='exam'>Eksamen</div>],
+  ] as const;
+
+  return (
+    <Tabs defaultValue={selectedTab} onChange={setSelectedTab}>
+      <Tabs.List>
+        {tabs.map(([label]) => (
+          <Tabs.Tab
+            key={label}
+            value={label}
+            aria-selected={`${selectedTab === label}`}
+          >
+            {label}
+          </Tabs.Tab>
+        ))}
+      </Tabs.List>
+      {tabs.map(([label, content]) => (
+        <Tabs.Panel key={label} value={label} hidden={selectedTab !== label}>
+          {content}
+        </Tabs.Panel>
+      ))}
+    </Tabs>
+  );
+};
+
+export const PanelReuseEn = () => {
+  const [selectedTab, setSelectedTab] = useState('About');
+  const tabs = [
+    ['About', <div key='about'>About</div>],
+    ['Timetable', <div key='timetable'>Timetable</div>],
+    ['Exam', <div key='exam'>Exam</div>],
+  ] as const;
+
+  return (
+    <Tabs defaultValue={selectedTab} onChange={setSelectedTab}>
+      <Tabs.List>
+        {tabs.map(([label]) => (
+          <Tabs.Tab
+            key={label}
+            value={label}
+            aria-selected={`${selectedTab === label}`}
+          >
+            {label}
+          </Tabs.Tab>
+        ))}
+      </Tabs.List>
+      {tabs.map(([label, content]) => (
+        <Tabs.Panel key={label} value={label} hidden={selectedTab !== label}>
+          {content}
+        </Tabs.Panel>
+      ))}
+    </Tabs>
+  );
+};

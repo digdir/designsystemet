@@ -30,12 +30,7 @@ export const ColorPreview = () => {
     useThemebuilder();
   const [view, setView] = useState<ViewType>(DEFAULT_VIEW);
 
-  const allColors = [
-    ...colors.main,
-    ...colors.neutral,
-    ...colors.support,
-    ...(severityEnabled ? severityColors : []),
-  ];
+  const allColors = [...colors, ...(severityEnabled ? severityColors : [])];
 
   const prepVariables = (variables: Record<string, string>) => {
     const prepped: Record<string, string> = {};
@@ -56,14 +51,16 @@ export const ColorPreview = () => {
         <div className='panelBottom'>
           <div className={classes.label}>{t('colorPreview.view')}</div>
           <ToggleGroup
-            data-toggle-group='Visning'
+            aria-label='Visning'
             data-size='sm'
             defaultValue={DEFAULT_VIEW}
             onChange={(value: string) => setView(value as ViewType)}
           >
-            <ToggleGroup.Item value='grid'>Grid</ToggleGroup.Item>
+            <ToggleGroup.Item value='grid'>
+              {t('colorPreview.grid')}
+            </ToggleGroup.Item>
             <ToggleGroup.Item value='list'>
-              {t('tabs.examples')}
+              {t('colorPreview.list')}
             </ToggleGroup.Item>
           </ToggleGroup>
         </div>
@@ -92,7 +89,7 @@ export const ColorPreview = () => {
 };
 
 type CardProps = {
-  color: ReturnType<typeof useThemebuilder>['colors']['main'][number];
+  color: ReturnType<typeof useThemebuilder>['colors'][number];
   view?: ViewType;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'color'>;
 

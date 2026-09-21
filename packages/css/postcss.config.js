@@ -42,11 +42,19 @@ function postcssComposes() {
 
         cache[resolvedFrom].root.walkRules((fromRule) => {
           if (fromRule.selector.split(/:|\s/)[0] === `.${selector}`) {
-            rule.replaceWith(
-              fromRule.clone({
-                selector: fromRule.selector.replace(`.${selector}`, '&'),
-              }),
-            );
+            const newSelector = fromRule.selector.replace(`.${selector}`, '&');
+
+            // When the source rule's selector is exactly `.${selector}` (no
+            // trailing pseudo-classes/elements), inline its children directly
+            // into the parent of `@composes` instead of wrapping them in a
+            // `& { ... }` rule. This makes `@composes` work inside
+            // pseudo-elements (e.g. `::before`), where postcss-nesting would
+            // otherwise produce an invalid `:is(...::before)` selector.
+            if (newSelector === '&') {
+              rule.replaceWith(fromRule.nodes.map((node) => node.clone()));
+            } else {
+              rule.replaceWith(fromRule.clone({ selector: newSelector }));
+            }
           }
         });
       },

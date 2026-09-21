@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import type { Format, TransformedToken } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
-import { buildOptions } from '../../platform.js';
+import { buildOptions } from '../../platform.ts';
 
 // Predicate to filter tokens with .path array that includes both typography and fontFamily
 const typographyFontFamilyPredicate = R.allPass([

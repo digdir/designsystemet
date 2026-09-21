@@ -1,7 +1,8 @@
 import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
-import { type ColorCategories, colorCategories, type TokenSet } from './types.js';
+import { severityColors } from '../schemas/defaults.ts';
+import type { Theme, TokenSet } from './types.ts';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
 
@@ -12,7 +13,7 @@ const hasAnyTruth = R.any(R.equals(true));
  * @param token Transformed token
  * @returns type
  */
-export const getType = (token: TransformedToken) => ((token.$type ?? token.type) as string) || '';
+const getType = (token: TransformedToken) => ((token.$type ?? token.type) as string) || '';
 
 /**
  * Returns value based on design token format used. Read more:https://v4.styledictionary.com/info/dtcg/
@@ -63,19 +64,6 @@ export function isSemanticToken(token: TransformedToken): boolean {
 
 export function isSemanticColorToken(token: TransformedToken, color: string): boolean {
   return token.filePath.includes('semantic/') && R.startsWith(['color', color], token.path);
-}
-
-export function isGlobalColorToken(token: TransformedToken): boolean {
-  return typeEquals('color', token) && pathStartsWithOneOf(['global'], token);
-}
-
-export function isColorCategoryToken(token: TransformedToken, category?: ColorCategories): boolean {
-  if (!category) {
-    return Object.keys(colorCategories).some((colorCategory) =>
-      isColorCategoryToken(token, colorCategory as ColorCategories),
-    );
-  }
-  return R.startsWith(['color', category], token.path);
 }
 
 export const isDigit = (s: string) => /^\d+$/.test(s);
@@ -158,4 +146,68 @@ export const sizeComparator = (size: string): number => {
 
 export function orderBySize(sizes: string[]): string[] {
   return R.sortBy(sizeComparator, sizes);
+}
+
+/** Non-severity colors first (in user order), then all severity colors at the end in severityColors order.
+ * User-defined severity colors keep their value but are moved to the end.
+ *
+ * We do this because we want severity colors to always be last when design-tokens are visualized in Token Studio and Figma Variables.
+ */
+export function addSeverityColors(colors: Theme['colors']): Theme['colors'] {
+  const result = new Map(Object.entries(colors));
+  for (const [name, value] of Object.entries(severityColors)) {
+    const userValue = result.get(name);
+    result.delete(name); // Deleting and re-adding moves the key to the end
+    result.set(name, userValue ?? value);
+  }
+  return Object.fromEntries(result) as Theme['colors'];
+}
+
+export function toColorNames(themeColors: Theme['colors']): string[] {
+  const colors = addSeverityColors(themeColors);
+
+  return Object.keys(colors);
+}
+
+/**
+ * Derives a primitive token key from a value with a unit, e.g. '3px' -> '3', '30%' -> '30'.
+ * A decimal point becomes a dash ('1.5px' -> '1-5') so the key never reads as a nested token path.
+ */
+export function numericKey(value: string): string {
+  return String(Number.parseFloat(value)).replace('.', '-');
+}
+
+/**
+ * Derives primitive token entries keyed by {@link numericKey} from a record of config values.
+ * Throws when two different values resolve to the same key (e.g. '1px' and '1rem'),
+ * since they would silently overwrite one another's primitive token.
+ */
+export function numericKeyedValues(values: Record<string, string>, tokenGroup: string): [string, string][] {
+  const byKey = new Map<string, string>();
+
+  for (const value of Object.values(values)) {
+    const key = numericKey(value);
+    const existing = byKey.get(key);
+    if (existing !== undefined && existing !== value) {
+      throw new Error(`${tokenGroup} values "${existing}" and "${value}" both resolve to the primitive key "${key}"`);
+    }
+    byKey.set(key, value);
+  }
+
+  return [...byKey.entries()];
+}
+
+/**
+ * Maps a record of config values to a group of design tokens with the given $type,
+ * keeping the record's keys as token names. An optional `toValue` maps each entry
+ * to its token value, e.g. to produce a reference like `{opacity.30}`.
+ */
+export function tokensFromRecord(
+  values: Record<string, string>,
+  $type: string,
+  toValue: (value: string, name: string) => string = (value) => value,
+): TokenSet {
+  return Object.fromEntries(
+    Object.entries(values).map(([name, value]) => [name, { $type, $value: toValue(value, name) }]),
+  );
 }

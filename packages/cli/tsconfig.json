@@ -4,15 +4,14 @@
     "rootDir": "./",
     "outDir": "./dist",
     "composite": false,
-    "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": false,
     "noEmit": false,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
     "sourceMap": false,
     "incremental": false
   },
-  "include": ["./src", "./bin/", "./declarations.d.ts"]
+  "include": ["./src", "./bin/"]
 }

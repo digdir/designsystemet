@@ -1,6 +1,6 @@
 import { createCookie } from 'react-router';
 
-export const CONSENT_VERSION = '2';
+export const CONSENT_VERSION = '3';
 
 const isProduction = process.env.NODE_ENV === 'production';
 

@@ -1,0 +1,263 @@
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--ds-size-4);
+
+  color: var(--figma-color-text);
+  background: var(--ds-color-neutral-background-tinted);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  background: var(--ds-color-neutral-background-tinted);
+}
+
+main {
+  background: var(--ds-color-neutral-background-tinted);
+}
+
+.padding-inline {
+  display: grid;
+  padding-inline: var(--ds-size-4);
+}
+
+.padding-block {
+  display: grid;
+  padding-block: var(--ds-size-4);
+}
+
+textarea {
+  height: 400px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-size-2);
+  padding: var(--ds-size-4);
+
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  background: var(--ds-color-neutral-background-tinted);
+}
+
+.footer-left:empty,
+.footer-right:empty {
+  min-height: 0;
+}
+
+.app {
+  display: grid;
+  height: 100vh;
+}
+
+/* Banner (Designsystemet Alert) — a dismiss button sits to the right of the message. */
+.tx-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 12px 20px 0;
+}
+
+.tx-banner-body {
+  flex: 1 1 auto;
+}
+
+.tx-banner-details {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.tx-subtle {
+  color: var(--ds-color-neutral-text-subtle);
+}
+
+/* Preview: theme/scheme controls + color scales + border radii. */
+.tx-hero {
+  display: grid;
+  gap: 10px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  background: var(--ds-color-neutral-background-tinted);
+}
+
+.tx-control-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.tx-control-label {
+  margin-bottom: 4px;
+  color: var(--ds-color-neutral-text-subtle);
+}
+
+.tx-preview-layout {
+  display: grid;
+  gap: var(--ds-size-4);
+  padding-inline: var(--ds-size-4);
+}
+
+/* The preview surface follows the selected color scheme rather than Figma's theme. Softened
+   light/dark tones (not pure white/black) keep it readable without flashbanging dark-mode
+   users. Keyed on the scheme in JSX so it remounts and replays the reveal on scheme switch. */
+.tx-surface {
+  display: grid;
+  padding-block: var(--ds-size-4);
+  margin: 0 auto;
+}
+
+.tx-surface--light {
+  color: #1e1e1e;
+  background: #f4f4f5;
+}
+
+.tx-surface--dark {
+  color: #f5f5f6;
+  background: #26282c;
+}
+
+.tx-color-grid {
+  display: grid;
+  gap: 4px;
+}
+
+.tx-color-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tx-color-row-label {
+  flex: 0 0 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  /* Inherit the surface color so labels stay legible on either surface. */
+  color: inherit;
+  opacity: 0.75;
+}
+
+.tx-swatches {
+  display: flex;
+  gap: 2px;
+}
+
+.tx-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background:
+    linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%),
+    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-color: #f0f0f0;
+  background-position:
+    0 0,
+    0 6px,
+    6px -6px,
+    -6px 0;
+  background-size: 12px 12px;
+}
+
+.tx-swatch.has-color {
+  background: var(--swatch);
+}
+
+.tx-radius-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tx-radius-item {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-3);
+}
+
+.tx-radius-sample {
+  width: var(--ds-size-5);
+  height: var(--ds-size-5);
+  border: 1px solid currentColor;
+  border-radius: min(var(--radius, 0px), 50%);
+  opacity: 0.6;
+}
+
+.tx-radius-label {
+  font-size: var(--ds-font-size-4);
+  opacity: 0.75;
+}
+
+.tx-font-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tx-font-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* The sample inherits the surface color; the family itself comes from the theme token.
+   If the font isn't available inside the plugin iframe, the sans-serif fallback renders. */
+.tx-font-sample {
+  font-size: var(--ds-font-size-5);
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.tx-font-name {
+  font-size: var(--ds-font-size-5);
+  opacity: 0.75;
+}
+
+.tx-empty {
+  display: grid;
+  min-height: 420px;
+  place-items: center;
+  padding: 40px;
+  color: var(--ds-color-neutral-text-subtle);
+  text-align: center;
+}
+
+/* Busy overlay shown while exporting to Figma. */
+.tx-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+}
+
+.tx-overlay-card {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  min-width: 220px;
+  padding: 20px 24px;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 8px;
+  background: var(--ds-color-neutral-surface-default);
+  color: var(--ds-color-neutral-text-subtle);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}

@@ -406,6 +406,26 @@
       font-size: round(down, 0.8em, 1px);
     }
 
+    & > blockquote {
+      margin: var(--ds-size-2) 0 var(--ds-size-8);
+      padding: var(--ds-size-4) var(--ds-size-6);
+      border-left: 4px solid var(--ds-color-brand1-border-default);
+      background-color: var(--ds-color-neutral-background-tinted);
+      border-radius: 0 var(--ds-border-radius-md) var(--ds-border-radius-md) 0;
+
+      & p {
+        margin: var(--ds-size-4) 0;
+      }
+
+      & > :first-child {
+        margin-top: 0;
+      }
+
+      & > :last-child {
+        margin-bottom: 0;
+      }
+    }
+
     & > .ds-alert {
       margin: var(--ds-size-8) 0;
 

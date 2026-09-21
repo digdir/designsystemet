@@ -47,20 +47,24 @@ jobs:
     outputs:
       fqdn: ${{ steps.fqdn.outputs.fqdn }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: az login (oidc)
-        uses: azure/login@532459ea530d8321f2fb9bb10d1e0bcf23869a43 # v3.0.0
+        uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3.1.0
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: acr login (for docker push)
-        run: az acr login --name ${{ env.ACR_NAME }}
+        env:
+          ACR_NAME: ${{ env.ACR_NAME }}
+        run: az acr login --name "$ACR_NAME"
 
       - name: build & push image
-        uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294 # v7
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
         with:
           context: .
           file: ./Dockerfile
@@ -76,15 +80,9 @@ jobs:
       - name: get acr creds (masked)
         id: acr
         shell: bash
-        run: |
-          set -euo pipefail
-          az acr update -n "${ACR_NAME}" --admin-enabled true >/dev/null
-          USER=$(az acr credential show -n "${ACR_NAME}" --query username -o tsv)
-          PASS=$(az acr credential show -n "${ACR_NAME}" --query 'passwords[0].value' -o tsv)
-          echo "::add-mask::${USER}"
-          echo "::add-mask::${PASS}"
-          echo "user=${USER}" >> "$GITHUB_OUTPUT"
-          echo "pass=${PASS}" >> "$GITHUB_OUTPUT"
+        env:
+          ACR_NAME: ${{ env.ACR_NAME }}
+        run: bash ./.github/workflows/scripts/get-acr-creds.sh
 
       - name: deploy (no mi; use registry creds)
         uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703 # v2
@@ -103,14 +101,15 @@ jobs:
 
       - name: fetch fqdn
         id: fqdn
-        run: |
-          FQDN=$(az containerapp show -n "${APP_NAME}" -g "${RESOURCE_GROUP}" --query properties.configuration.ingress.fqdn -o tsv)
-          echo "fqdn=${FQDN}" >> "$GITHUB_OUTPUT"
+        env:
+          APP_NAME: ${{ env.APP_NAME }}
+          RESOURCE_GROUP: ${{ env.RESOURCE_GROUP }}
+        run: bash ./.github/workflows/scripts/get-containerapp-fqdn.sh
 
   update-comment:
     if: ${{ inputs.update_comment }}
     needs: deploy
-    uses: ./.github/workflows/preview-comment.yml
+    uses: $/.github/workflows/preview-comment.yml
     with:
       pr_number: ${{ github.event.number }}
       deployment_type: storybook

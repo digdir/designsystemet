@@ -9,7 +9,6 @@ import {
   WrenchIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
 import { BlogCard } from '~/_components/blog-card/blog-card';
 import { ImageBanner } from '~/_components/image-banner/image-banner';
@@ -57,27 +56,40 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     };
   }[] = [];
 
-  /* Map over files with mdx parser to get title */
+  /* Map over files to extract frontmatter without full MDX compilation */
   for (const file of mdxFiles) {
     const fileContent = getFileFromContentDir(
       join('blog', lang, file.relativePath),
     );
-    const result = await bundleMDX({
-      source: fileContent,
-    });
 
-    const title =
-      result.frontmatter.title || file.relativePath.replace('.mdx', '');
+    // Parse frontmatter directly — much faster than bundleMDX.
+    const fmMatch = fileContent.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    const frontmatter: Record<string, string> = {};
+    if (fmMatch) {
+      for (const line of fmMatch[1].split('\n')) {
+        const colonIdx = line.indexOf(':');
+        if (colonIdx > 0) {
+          const key = line.slice(0, colonIdx).trim();
+          const val = line
+            .slice(colonIdx + 1)
+            .trim()
+            .replace(/^['"]|['"]$/g, '');
+          frontmatter[key] = val;
+        }
+      }
+    }
+
+    const title = frontmatter.title || file.relativePath.replace('.mdx', '');
     const url = file.relativePath.replace('.mdx', '');
     posts.push({
       title,
-      author: result.frontmatter.author || 'Unknown Author',
-      description: result.frontmatter.description || 'No description available',
+      author: frontmatter.author || 'Unknown Author',
+      description: frontmatter.description || 'No description available',
       url,
-      date: result.frontmatter.date || '2000-01-01',
+      date: frontmatter.date || '2000-01-01',
       image: {
-        src: result.frontmatter.imageSrc || '',
-        alt: result.frontmatter.imageAlt || '',
+        src: frontmatter.imageSrc || '',
+        alt: frontmatter.imageAlt || '',
       },
     });
   }
@@ -102,15 +114,15 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
-  if (!data) {
+export const meta: Route.MetaFunction = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData) {
     return [
       {
         title: 'Designsystemet',
       },
     ];
   }
-  return data.metadata;
+  return loaderData.metadata;
 };
 
 export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
@@ -124,7 +136,10 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
           /* We need this for firefox, because it focuses anything with overflow: hidden */
           tabIndex={-1}
         >
-          <div className={cl('l-content-container', classes.container)}>
+          <div
+            className={cl('l-content-container', classes.container)}
+            id='main'
+          >
             <img
               draggable='false'
               className={classes.decoration}
@@ -149,7 +164,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 title={t('frontpage.get-started.title')}
                 description={t('frontpage.get-started.description')}
                 color='blue'
-                url='fundamentals/introduction/get-started'
+                url='fundamentals'
                 icon={<PaletteIcon aria-hidden='true' />}
                 level={2}
               />

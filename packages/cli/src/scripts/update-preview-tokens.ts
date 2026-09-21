@@ -1,12 +1,15 @@
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
-import { generate$Themes } from '../tokens/create/generators/$themes.js';
-import { createTokens } from '../tokens/create.js';
-import { buildOptions, processPlatform } from '../tokens/process/platform.js';
-import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
-import type { SizeModes, Theme } from '../tokens/types.js';
-import { dsfs } from '../utils/filesystem.js';
+import { validateConfig } from '../schemas/helpers.ts';
+import { configSchema } from '../schemas/schema.ts';
+import { generate$Themes } from '../tokens/create/generators/$themes.ts';
+import { createTokens, getTokenSetDimensions } from '../tokens/create.ts';
+import { buildOptions, processPlatform } from '../tokens/process/platform.ts';
+import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.ts';
+import type { Theme } from '../tokens/types.ts';
+import { toColorNames } from '../tokens/utils.ts';
+import { dsfs } from '../utils/filesystem.ts';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
 
@@ -23,12 +26,14 @@ const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]
 
 type PreviewToken = { variable: string; value: string };
 
-export const formatTheme = async (themeConfig: Theme) => {
-  const { tokenSets } = await createTokens(themeConfig);
+const formatTheme = async (themeConfig: Theme) => {
+  const colorNames = toColorNames(themeConfig.colors);
+  const themeNames = [themeConfig.name];
 
-  const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
+  const tokenSetDimensions = getTokenSetDimensions(themeConfig);
+  const { tokenSets } = await createTokens(themeConfig, tokenSetDimensions);
+  const $themes = await generate$Themes(tokenSetDimensions, themeNames, colorNames);
 
-  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors, sizeModes);
   const processed$themes = $themes.map(processThemeObject);
 
   // We run this to populate the `buildOptions.buildTokenFormats` with transformed tokens
@@ -52,7 +57,9 @@ export const formatTheme = async (themeConfig: Theme) => {
 
   if (buildOptions?.buildTokenFormats) {
     for (const [destination, tokenFormats] of Object.entries(buildOptions.buildTokenFormats)) {
-      if (destination === 'typography/secondary.css') continue; // Skip secondary typography preview tokens
+      // Only the default typography set is used for preview tokens
+      if (destination.startsWith('typography/') && destination !== `typography/${buildOptions.defaultTypography}.css`)
+        continue;
 
       console.log(`Processing preview tokens for ${pc.green(destination)}`);
 
@@ -94,15 +101,19 @@ export const formatTheme = async (themeConfig: Theme) => {
   }
 };
 
+// Parse the config through the schema so defaults (typography, borderRadius, size) are applied.
+const { themes } = validateConfig(configSchema, config);
+
 formatTheme({
   name: 'test',
-  borderRadius: config.themes.designsystemet.borderRadius,
+  borderRadius: themes.designsystemet.borderRadius,
   colors: {
-    main: {
-      primary: config.themes.designsystemet.colors.main.accent as `#${string}`,
-    },
-    support: {},
-    neutral: config.themes.designsystemet.colors.neutral as `#${string}`,
+    primary: themes.designsystemet.colors.accent,
+    neutral: themes.designsystemet.colors.neutral,
   },
-  typography: config.themes.designsystemet.typography,
+  typography: themes.designsystemet.typography,
+  size: themes.designsystemet.size,
+  shadow: themes.designsystemet.shadow,
+  borderWidth: themes.designsystemet.borderWidth,
+  opacity: themes.designsystemet.opacity,
 });

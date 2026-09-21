@@ -14,8 +14,8 @@
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
   "cssvar.files": [
     "packages/theme/src/themes/designsystemet.css",
   ],
@@ -38,6 +38,9 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[svg]": {
     "editor.defaultFormatter": "biomejs.biome"
   }
 }

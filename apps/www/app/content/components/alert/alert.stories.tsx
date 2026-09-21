@@ -124,7 +124,7 @@ export const VariantWarningEn = () => (
 );
 
 export const VariantDanger = () => (
-  <Alert data-color='danger'>
+  <Alert data-color='danger' role='alert'>
     <Heading
       level={2}
       data-size='xs'
@@ -143,7 +143,7 @@ export const VariantDanger = () => (
 );
 
 export const VariantDangerEn = () => (
-  <Alert data-color='danger'>
+  <Alert data-color='danger' role='alert'>
     <Heading
       level={2}
       data-size='xs'
@@ -314,21 +314,3 @@ export const CorrectLiveRegionReactEn = () => {
     </>
   );
 };
-
-export const Variants = () => (
-  <>
-    <Alert data-color='info'>Dette er en info alert</Alert>
-    <Alert data-color='success'>Dette er en success alert</Alert>
-    <Alert data-color='warning'>Dette er en warning alert</Alert>
-    <Alert data-color='danger'>Dette er en danger alert</Alert>
-  </>
-);
-
-export const VariantsEn = () => (
-  <>
-    <Alert data-color='info'>This is an info alert</Alert>
-    <Alert data-color='success'>This is a success alert</Alert>
-    <Alert data-color='warning'>This is a warning alert</Alert>
-    <Alert data-color='danger'>This is a danger alert</Alert>
-  </>
-);

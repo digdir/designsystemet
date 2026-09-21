@@ -1,16 +1,15 @@
-import type { Meta } from '@storybook/react-vite';
+import preview from '../../../../../apps/storybook/.storybook/preview';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
 import { Avatar } from './avatar';
 import * as AvatarStories from './avatar.stories';
 
-const meta: Meta = {
+const meta = preview.meta({
   title: 'Chromatic/Avatar',
   component: Avatar,
   tags: ['chromatic'],
   parameters: {
     layout: 'padded',
   },
-};
-export default meta;
+});
 
-export const Snapshots = createSingleStory(AvatarStories, meta);
+export const Snapshots = meta.story(createSingleStory(AvatarStories));

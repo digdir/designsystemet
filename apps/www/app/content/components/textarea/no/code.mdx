@@ -1,7 +1,32 @@
-<Story story="Preview" layout="column" />
-<ReactComponentDocs />
+<Story story="Preview" layout="column" defaultOpen />
 
 ## Bruk
+Legg klassenavnet `ds-input` på `<textarea>`.
+
+```html
+<textarea class="ds-input"></textarea>
+```
+
+## Eksempel
+
+### Sett høyden
+
+Bruk `rows`-attributtet for å sette antall synlige rader i tekstområdet.
+Dette påvirker kun den initielle høyden på feltet.
+
+<Story story="WithRows" layout="column" />
+
+## CSS variablar og data-attributter
+Textarea får styling fra `ds-input`, og derfor viser vi variabler og data-attributter fra den klassen her.
+
+Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [data-color](/no/fundamentals/code/colors). 
+Komponenten vil arve nærmeste forelder med disse satt.
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
 
 ```tsx
 import { Textarea, Label } from '@digdir/designsystemet-react';
@@ -11,31 +36,4 @@ import { Textarea, Label } from '@digdir/designsystemet-react';
 </>
 ```
 
-## Eksempel
-
-### Med rader
-Bruk `rows`-attributtet for å sette antall synlige rader i tekstområdet.
-Dette påvirker kun den initielle høyden på feltet.
-
-<Story story="WithRows" layout="column" />
-
-### Disabled
-
-<Story story="Disabled" layout="column" />
-
-### ReadOnly
-
-<Story story="ReadOnly" layout="column" />
-
-## HTML
-Legg klassenavnet `ds-input` på `<textarea>`.
-
-```html
-<textarea class="ds-input"></textarea>
-```
-
-## CSS variablar og data-attributter
-`Textarea` får styling fra `ds-input`, og derfor viser vi variabler og data-attributter fra den klassen her.
-<CssVariables />
-
-<CssAttributes />
+<ReactComponentDocs />

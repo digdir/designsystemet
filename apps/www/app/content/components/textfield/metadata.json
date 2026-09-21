@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Textfield",
-    "subtitle": "`Textfield` gir brukere muligheten til å skrive fritekst eller tall. "
+    "subtitle": "Textfield gir brukere muligheten til å skrive fritekst eller tall. "
   },
   "en": {
     "title": "Textfield",
-    "subtitle": "`Textfield` allows users to enter free text or numbers. "
+    "subtitle": "Textfield allows users to enter free text or numbers. "
   },
   "image": "Textfield.svg",
   "cssFile": "input.css"

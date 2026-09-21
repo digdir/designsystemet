@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.10/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.13/schema.json",
   "assist": {
     "actions": { "source": { "organizeImports": "on" } }
   },
@@ -13,7 +13,6 @@
     "includes": [
       "**/*",
       "!.vscode",
-      "!.github",
       "!.changeset",
       "!**/design-tokens/*",
       "!**/dist",
@@ -24,7 +23,9 @@
       "!**/.react-router/",
       "!**/package.json", // changeset wants the files to be formatted differently
       "!**/wc/public",
-      "!**/content/schemas/**/*.json"
+      "!**/content/schemas/**/*.json",
+      "!**/packages/cli/tests/**/*.css",
+      "!**/__snapshots__" // vitest file snapshots must keep the exact serialization the test produces
     ]
   },
   "formatter": {
@@ -38,11 +39,17 @@
   },
   "linter": {
     "enabled": true,
-    "includes": ["**/*"],
+    "includes": [
+      "**/*",
+      "!apps/www/public/**/*",
+      "!apps/themebuilder/public/**/*",
+      "!packages/web/index.html"
+    ],
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "a11y": {
         "noNoninteractiveElementToInteractiveRole": "off",
+        "useAnchorContent": "off",
         "useValidAnchor": "off",
         "useButtonType": "off",
         "useValidAriaRole": "off",
@@ -50,7 +57,8 @@
         "useMediaCaption": "off",
         "useKeyWithClickEvents": "off",
         "noNoninteractiveTabindex": "off",
-        "useAriaPropsForRole": "off"
+        "useAriaPropsForRole": "off",
+        "noAmbiguousAnchorText": "off"
       },
       "correctness": {
         "useUniqueElementIds": "off",

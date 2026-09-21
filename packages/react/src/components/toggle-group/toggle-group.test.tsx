@@ -1,13 +1,11 @@
 import { act, render, screen } from '@testing-library/react';
+import { userEvent } from 'storybook/test';
 import { ToggleGroup } from './';
-
-const keydown = (el: Element, key: string) =>
-  el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
 describe('ToggleGroup', () => {
   test('has generated name for ToggleGroupItem children', () => {
     render(
-      <ToggleGroup data-toggle-group='Label'>
+      <ToggleGroup aria-label='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );
@@ -18,7 +16,7 @@ describe('ToggleGroup', () => {
 
   test('has passed name to ToggleGroupItem children', (): void => {
     render(
-      <ToggleGroup data-toggle-group='Label' name='my name'>
+      <ToggleGroup aria-label='Label' name='my name'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );
@@ -29,7 +27,7 @@ describe('ToggleGroup', () => {
 
   test('can navigate with tab and arrow keys', async () => {
     render(
-      <ToggleGroup data-toggle-group='Label'>
+      <ToggleGroup aria-label='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
         <ToggleGroup.Item value='test3'>test3</ToggleGroup.Item>
@@ -43,19 +41,19 @@ describe('ToggleGroup', () => {
     await act(async () => item1.focus());
     expect(item1).toHaveFocus();
 
-    await act(async () => keydown(item1, 'ArrowRight'));
+    await act(async () => userEvent.keyboard('{ArrowRight}'));
     expect(item2).toHaveFocus();
 
-    await act(async () => keydown(item2, 'ArrowRight'));
+    await act(async () => userEvent.keyboard('{ArrowRight}'));
     expect(item3).toHaveFocus();
 
-    await act(async () => keydown(item3, 'ArrowLeft'));
+    await act(async () => userEvent.keyboard('{ArrowLeft}'));
     expect(item2).toHaveFocus();
   });
 
   test('arrow keys will skip disabled items', async () => {
     render(
-      <ToggleGroup data-toggle-group='Label'>
+      <ToggleGroup aria-label='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
         <ToggleGroup.Item disabled value='test2'>
           test2
@@ -73,10 +71,10 @@ describe('ToggleGroup', () => {
     await act(async () => item1.focus());
     expect(item1).toHaveFocus();
 
-    await act(async () => keydown(item1, 'ArrowRight'));
+    await act(async () => userEvent.keyboard('{ArrowRight}'));
     expect(item4).toHaveFocus();
 
-    await act(async () => keydown(item4, 'ArrowLEft'));
+    await act(async () => userEvent.keyboard('{ArrowLeft}'));
     expect(item1).toHaveFocus();
   });
 
@@ -85,7 +83,7 @@ describe('ToggleGroup', () => {
 
     render(
       <ToggleGroup
-        data-toggle-group='Label'
+        aria-label='Label'
         defaultValue='test1'
         onChange={onChangeMock}
       >
@@ -113,7 +111,7 @@ describe('ToggleGroup', () => {
 
   test('has correct ToggleGroupItem defaultChecked & checked when defaultValue is used', () => {
     render(
-      <ToggleGroup data-toggle-group='Label' defaultValue='test2'>
+      <ToggleGroup aria-label='Label' defaultValue='test2'>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
         <ToggleGroup.Item value='test3'>test3</ToggleGroup.Item>
@@ -129,7 +127,7 @@ describe('ToggleGroup', () => {
     const onChangeMock = vi.fn();
 
     render(
-      <ToggleGroup data-toggle-group='Label' onChange={onChangeMock}>
+      <ToggleGroup aria-label='Label' onChange={onChangeMock}>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2value'>test2</ToggleGroup.Item>
       </ToggleGroup>,
@@ -150,7 +148,7 @@ describe('ToggleGroup', () => {
 
     render(
       <ToggleGroup
-        data-toggle-group='Label'
+        aria-label='Label'
         defaultValue='test1'
         onChange={onChangeMock}
       >
@@ -177,7 +175,7 @@ describe('ToggleGroup', () => {
   test('if we pass a name, we should have a hidden input with that name', () => {
     const name = 'my-name';
     const { container } = render(
-      <ToggleGroup data-toggle-group='Label' name={name}>
+      <ToggleGroup aria-label='Label' name={name}>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );
@@ -189,7 +187,7 @@ describe('ToggleGroup', () => {
   test('if we pass a name, we should have a hidden input with that name and value', () => {
     const name = 'my-name';
     const { container } = render(
-      <ToggleGroup data-toggle-group='Label' name='my-name' defaultValue='test'>
+      <ToggleGroup aria-label='Label' name='my-name' defaultValue='test'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );
@@ -207,11 +205,7 @@ describe('ToggleGroup', () => {
 
       render(
         <form onSubmit={handleSubmit}>
-          <ToggleGroup
-            data-toggle-group='Label'
-            name='test'
-            defaultValue='test2'
-          >
+          <ToggleGroup aria-label='Label' name='test' defaultValue='test2'>
             <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
             <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
           </ToggleGroup>
@@ -229,7 +223,7 @@ describe('ToggleGroup', () => {
 
   test('if we dont pass a name, we should not have a hidden input', () => {
     render(
-      <ToggleGroup data-toggle-group='Label'>
+      <ToggleGroup aria-label='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );

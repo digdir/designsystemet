@@ -1,221 +1,25 @@
-import type { SizeModes, TokenSet, Typography } from '../../../types.js';
+import type { SizeModes, TokenSet, Typography, TypographySet } from '../../../types.ts';
+import { tokensFromRecord } from '../../../utils.ts';
 
-export const generateTypography = (themeName: string, { fontFamily }: Typography): TokenSet => ({
+export const generateTypography = (themeName: string, typography: TypographySet): TokenSet => ({
   [themeName]: {
     'font-family': {
       $type: 'fontFamilies',
-      $value: fontFamily,
+      $value: typography.fontFamily,
     },
-    'font-weight': {
-      medium: {
-        $type: 'fontWeights',
-        $value: 'Medium',
-      },
-      semibold: {
-        $type: 'fontWeights',
-        $value: 'Semi bold',
-      },
-      regular: {
-        $type: 'fontWeights',
-        $value: 'Regular',
-      },
-    },
+    'font-weight': tokensFromRecord(typography.fontWeight, 'fontWeights'),
   },
 });
 
-export const generateFontSizes = (size: SizeModes): TokenSet => fontSizes[size];
+export const generateTypographyMode = (mode: SizeModes, typography: Typography): TokenSet => {
+  const size = typography.size[mode];
+  if (!size) {
+    throw new Error(`Missing typography for size step "${mode}" in theme typography configuration`);
+  }
 
-const lineHeights = {
-  sm: {
-    $type: 'lineHeights',
-    $value: '130%',
-  },
-  md: {
-    $type: 'lineHeights',
-    $value: '150%',
-  },
-  lg: {
-    $type: 'lineHeights',
-    $value: '170%',
-  },
-};
-
-const letterSpacings = {
-  '1': {
-    $type: 'letterSpacing',
-    $value: '-1%',
-  },
-  '2': {
-    $type: 'letterSpacing',
-    $value: '-0.5%',
-  },
-  '3': {
-    $type: 'letterSpacing',
-    $value: '-0.25%',
-  },
-  '4': {
-    $type: 'letterSpacing',
-    $value: '-0.15%',
-  },
-  '5': {
-    $type: 'letterSpacing',
-    $value: '0%',
-  },
-  '6': {
-    $type: 'letterSpacing',
-    $value: '0.15%',
-  },
-  '7': {
-    $type: 'letterSpacing',
-    $value: '0.25%',
-  },
-  '8': {
-    $type: 'letterSpacing',
-    $value: '0.5%',
-  },
-  '9': {
-    $type: 'letterSpacing',
-    $value: '1.5%',
-  },
-};
-
-const fontSizes = {
-  large: {
-    'line-height': lineHeights,
-    'font-size': {
-      '1': {
-        $type: 'fontSizes',
-        $value: '13',
-      },
-      '2': {
-        $type: 'fontSizes',
-        $value: '16',
-      },
-      '3': {
-        $type: 'fontSizes',
-        $value: '18',
-      },
-      '4': {
-        $type: 'fontSizes',
-        $value: '21',
-      },
-      '5': {
-        $type: 'fontSizes',
-        $value: '24',
-      },
-      '6': {
-        $type: 'fontSizes',
-        $value: '30',
-      },
-      '7': {
-        $type: 'fontSizes',
-        $value: '36',
-      },
-      '8': {
-        $type: 'fontSizes',
-        $value: '48',
-      },
-      '9': {
-        $type: 'fontSizes',
-        $value: '60',
-      },
-      '10': {
-        $type: 'fontSizes',
-        $value: '72',
-      },
-    },
-    'letter-spacing': letterSpacings,
-  },
-  medium: {
-    'line-height': lineHeights,
-    'font-size': {
-      '1': {
-        $type: 'fontSizes',
-        $value: '12',
-      },
-      '2': {
-        $type: 'fontSizes',
-        $value: '14',
-      },
-      '3': {
-        $type: 'fontSizes',
-        $value: '16',
-      },
-      '4': {
-        $type: 'fontSizes',
-        $value: '18',
-      },
-      '5': {
-        $type: 'fontSizes',
-        $value: '21',
-      },
-      '6': {
-        $type: 'fontSizes',
-        $value: '24',
-      },
-      '7': {
-        $type: 'fontSizes',
-        $value: '30',
-      },
-      '8': {
-        $type: 'fontSizes',
-        $value: '36',
-      },
-      '9': {
-        $type: 'fontSizes',
-        $value: '48',
-      },
-      '10': {
-        $type: 'fontSizes',
-        $value: '60',
-      },
-    },
-    'letter-spacing': letterSpacings,
-  },
-  small: {
-    'line-height': lineHeights,
-    'font-size': {
-      '1': {
-        $type: 'fontSizes',
-        $value: '11',
-      },
-      '2': {
-        $type: 'fontSizes',
-        $value: '13',
-      },
-      '3': {
-        $type: 'fontSizes',
-        $value: '14',
-      },
-      '4': {
-        $type: 'fontSizes',
-        $value: '16',
-      },
-      '5': {
-        $type: 'fontSizes',
-        $value: '18',
-      },
-      '6': {
-        $type: 'fontSizes',
-        $value: '21',
-      },
-      '7': {
-        $type: 'fontSizes',
-        $value: '24',
-      },
-      '8': {
-        $type: 'fontSizes',
-        $value: '30',
-      },
-      '9': {
-        $type: 'fontSizes',
-        $value: '36',
-      },
-      '10': {
-        $type: 'fontSizes',
-        $value: '48',
-      },
-    },
-    'letter-spacing': letterSpacings,
-  },
+  return {
+    'line-height': tokensFromRecord(size.lineHeight, 'lineHeights'),
+    'font-size': tokensFromRecord(size.fontSize, 'fontSizes'),
+    'letter-spacing': tokensFromRecord(size.letterSpacing, 'letterSpacing'),
+  };
 };

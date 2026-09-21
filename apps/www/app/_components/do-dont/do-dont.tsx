@@ -38,12 +38,12 @@ export const DoDont = ({
       >
         {variant === 'do' ? (
           <>
-            <aksel.CheckmarkCircleFillIcon />
+            <aksel.CheckmarkCircleFillIcon aria-hidden='true' />
             <p className='ds-paragraph'>{t('do')}</p>
           </>
         ) : (
           <>
-            <aksel.XMarkOctagonFillIcon />
+            <aksel.XMarkOctagonFillIcon aria-hidden='true' />
             <p className='ds-paragraph'>{t('dont')}</p>
           </>
         )}

@@ -17,8 +17,11 @@ export async function action({ request }: Route.ActionArgs) {
       maxAge: 0,
     });
   } else {
+    const consentChoice =
+      choice === 'approve' || choice === 'decline' ? choice : 'decline';
+
     cookieHeader = await userConsent.serialize({
-      choice,
+      choice: consentChoice,
       version: CONSENT_VERSION,
     });
   }

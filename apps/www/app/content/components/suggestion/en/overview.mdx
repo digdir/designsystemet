@@ -8,29 +8,25 @@ Suggestion is under development. If you find any issues or missing functionality
 
 <Story story="PreviewEn" />
 
-**Use `Suggestion` when**
+**Use suggestion when**
 - users need to choose one or several options from a large list  
 - it is helpful that the list is filtered based on what the user types  
 - searching is faster than scrolling  
 
-**Avoid `Suggestion` when**
-- users need to choose between only a few options — use [`Radio`](/en/components/docs/radio/overview) or [`Checkbox`](/en/components/docs/checkbox/overview) instead  
+**Avoid suggestion when**
+- users need to choose between only a few options — use [radio](/en/components/docs/radio/overview) or [checkbox](/en/components/docs/checkbox/overview) instead  
 - users expect an operating-system-native experience — in that case, use a native `<select>` element  
 
 ## Example
 
 ### Multiple selection
-You can allow users to select several options. Removable `Chip`s will appear after the `<label>` and before the input field.
+You can allow users to select several options. Removable chips will appear after the `<label>` and before the input field.
 
 <Story story='MultipleEn' />
 
-### Filtering
-Filtering is enabled by default, and it searches based on the text in the input field. You can provide your own filter logic. The example below shows how to turn filtering off entirely.
-
-<Story story='Filter' />
 
 ## Guidelines
-`Suggestion` works best when users need to find the right option within a large list. The strength of the component lies in its ability to filter as the user types, making it easier to navigate many choices.
+Suggestion works best when users need to find the right option within a large list. The strength of the component lies in its ability to filter as the user types, making it easier to navigate many choices.
 
 ## Text
 Use a clear label that explains what the user is expected to choose.

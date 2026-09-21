@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps, LabelRequired } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { Field } from '../field';
+import { Field, type FieldProps } from '../field';
 import { Input, type InputProps } from '../input/input';
 import { Label } from '../label/label';
 import { ValidationMessage } from '../validation-message/validation-message';
@@ -30,6 +30,15 @@ export type RadioProps = MergeRight<
      * Error message for field
      */
     error?: ReactNode;
+    /**
+     * If outline, the radio will have a border.
+     */
+    variant?: 'outline';
+    /**
+     * Position of radio
+     * @default start
+     */
+    position?: FieldProps['position'];
   } & LabelRequired
 >;
 
@@ -42,18 +51,26 @@ export type RadioProps = MergeRight<
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   {
     'data-size': size,
-    className,
-    style,
     children,
-    label,
+    className,
     description,
     error,
+    label,
+    position,
+    style,
+    variant,
     ...rest
   },
   ref,
 ) {
   return (
-    <Field data-size={size} className={className} style={style}>
+    <Field
+      data-size={size}
+      data-variant={variant}
+      data-position={position}
+      className={className}
+      style={style}
+    >
       <Input type='radio' ref={ref} {...rest} />
       {!!label && <Label weight='regular'>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}

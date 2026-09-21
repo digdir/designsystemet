@@ -1,8 +1,8 @@
 import path from 'node:path';
 import pc from 'picocolors';
-import type { CssColor } from '../colors/types.js';
-import type { CreateConfigSchema } from '../config.js';
-import { dsfs } from '../utils/filesystem.js';
+import type { CssColor } from '../colors/types.ts';
+import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
+import { dsfs } from '../utils/filesystem.ts';
 
 type TokenValue = {
   $type: string;
@@ -157,27 +157,17 @@ function extractFontFamilyFromPrimitives(typographyConfig: TokenObject | null, t
 }
 
 /**
- * Categorizes colors into main, support, and neutral based on color names
+ * Extracts colors from the theme tokens, excluding reserved colors and extracting base colors from color scales.
  */
-function categorizeColors(
-  themeTokens: TokenObject,
-  themeName: string,
-): {
-  main: Record<string, CssColor>;
-  support: Record<string, CssColor>;
-  neutral: CssColor | null;
-} {
-  const main: Record<string, CssColor> = {};
-  const support: Record<string, CssColor> = {};
-  let neutral: CssColor | null = null;
+function extractColors(themeTokens: TokenObject, themeName: string): Record<string, CssColor> {
+  const colors: Record<string, CssColor> = {};
 
   // Reserved colors
-  const builtInColors = ['neutral', 'info', 'success', 'warning', 'danger'];
   const specialKeys = ['link'];
 
   const themeColors = themeTokens[themeName] as TokenObject | undefined;
   if (!themeColors) {
-    return { main, support, neutral };
+    return colors;
   }
 
   for (const [colorName, colorValue] of Object.entries(themeColors)) {
@@ -189,24 +179,15 @@ function categorizeColors(
       const baseColor = extractBaseColor(colorValue as TokenObject);
 
       if (baseColor) {
-        if (colorName === 'neutral') {
-          neutral = baseColor as CssColor;
-        } else if (builtInColors.includes(colorName)) {
-        } else if (colorName === 'accent') {
-          // Accent is typically the main color
-          main[colorName] = baseColor as CssColor;
-        } else {
-          // All other colors are support colors (brand1, brand2, etc.)
-          support[colorName] = baseColor as CssColor;
-        }
+        colors[colorName] = baseColor as CssColor;
       }
     }
   }
 
-  return { main, support, neutral };
+  return colors;
 }
 
-export type GenerateConfigOptions = {
+type GenerateConfigOptions = {
   tokensDir: string;
   outFile?: string;
 };
@@ -214,7 +195,7 @@ export type GenerateConfigOptions = {
 /**
  * Generates a config file from existing design tokens
  */
-export async function generateConfigFromTokens(options: GenerateConfigOptions): Promise<CreateConfigSchema> {
+export async function generateConfigFromTokens(options: GenerateConfigOptions): Promise<ExternalConfigSchemaInput> {
   const { tokensDir } = options;
 
   console.log(`\nReading tokens from ${pc.blue(tokensDir)}`);
@@ -229,7 +210,7 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
   console.log(`\nFound ${pc.green(String(themes.length))} theme(s): ${themes.map((t) => pc.cyan(t)).join(', ')}`);
 
   // Generate config for each theme
-  const config: CreateConfigSchema = {
+  const config: ExternalConfigSchemaInput = {
     outDir: tokensDir,
     themes: {},
   };
@@ -243,13 +224,9 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
     const typographyConfig = await readTypographyConfig(tokensDir, themeName);
 
     // Extract colors
-    const { main, support, neutral } = categorizeColors(themeTokens, themeName);
+    const colors = extractColors(themeTokens, themeName);
 
-    if (Object.keys(main).length === 0) {
-      console.warn(pc.yellow(`\nWarning: No main colors found for theme ${themeName}`));
-    }
-
-    if (!neutral) {
+    if (!colors.neutral) {
       console.warn(pc.yellow(`\nWarning: No neutral color found for theme ${themeName}`));
       continue; // Skip this theme as neutral is required
     }
@@ -258,30 +235,19 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
     const fontFamily = extractFontFamily(themeConfig) ?? extractFontFamilyFromPrimitives(typographyConfig, themeName);
 
     config.themes[themeName] = {
-      colors: {
-        main,
-        support,
-        neutral,
-      },
+      colors,
       borderRadius,
       typography: fontFamily ? { fontFamily } : undefined,
     };
 
     console.log(
-      `\n✅ Main colors: ${
-        Object.keys(main)
+      `\n✅ Colors: ${
+        Object.keys(colors)
           .map((c) => pc.cyan(c))
           .join(', ') || pc.dim('none')
       }`,
     );
-    console.log(
-      `\n✅ Support colors: ${
-        Object.keys(support)
-          .map((c) => pc.cyan(c))
-          .join(', ') || pc.dim('none')
-      }`,
-    );
-    console.log(`\n✅ Neutral: ${pc.cyan(neutral)}`);
+
     if (borderRadius !== undefined) {
       console.log(`\n✅ Border radius: ${pc.cyan(String(borderRadius))}`);
     }

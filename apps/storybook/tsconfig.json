@@ -8,5 +8,9 @@
     "./.storybook/**/*",
     "../../packages/css/postcss.config.js",
     "../../vite.config.ts"
+  ],
+  "references": [
+    { "path": "../../packages/react/tsconfig.lib.json" },
+    { "path": "../../packages/react/tsconfig.stories.json" }
   ]
 }

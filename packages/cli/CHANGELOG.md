@@ -1,5 +1,180 @@
 # Change Log
 
+## 1.22.0
+
+No changes in this release.
+
+## 1.21.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334)) by [@renovate](https://github.com/apps/renovate)
+
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302)) by [@renovate](https://github.com/apps/renovate)
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.21.1
+
+## 1.21.0
+
+### Patch Changes
+
+- fix color generation for severity colors defined in `colors` which were previously ignored. ([#5239](https://github.com/digdir/designsystemet/pull/5239))
+
+- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276)) by [@renovate](https://github.com/apps/renovate)
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.21.0
+
+## 1.20.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.20.1
+
+## 1.20.0
+
+### Patch Changes
+
+- Reduce minimum required node version to `>=22.0.0`. ([#5165](https://github.com/digdir/designsystemet/pull/5165))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+- Bump minimum required Node.js version to `>=22.12.0` as required by `commander`. ([#5212](https://github.com/digdir/designsystemet/pull/5212))
+
+- Change url for config schema on www.designsystemet.no, from `cli` to `config` to better reflect which file the schema is for. ([#5211](https://github.com/digdir/designsystemet/pull/5211))
+  ```json
+  "$schema": "https://designsystemet.no/schemas/config/[VERSION].json"
+  ```
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.20.0
+
+## 1.19.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.1
+
+## 1.19.0
+
+### Minor Changes
+
+- **cli**: Add support for JSONC config files. Config files may now contain comments and trailing commas, and a `designsystemet.config.jsonc` file is auto-detected in addition to `designsystemet.config.json`. ([#5051](https://github.com/digdir/designsystemet/pull/5051))
+
+### Patch Changes
+
+- Update dependency tsdown to v0.22.14 ([#5102](https://github.com/digdir/designsystemet/pull/5102))
+
+- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+
+- fixed missing types error that might occur for `@tokens-studio/types`. ([#5061](https://github.com/digdir/designsystemet/pull/5061))
+
+- Update dependency colorjs.io to ^0.7.1 ([#5121](https://github.com/digdir/designsystemet/pull/5121))
+
+- Update dependency colorjs.io to ^0.7.0 ([#5108](https://github.com/digdir/designsystemet/pull/5108))
+
+- Reduced package size by removing unintended declaration map files being generated. ([#5065](https://github.com/digdir/designsystemet/pull/5065))
+
+- Clarified error message when different theme colors are detected ([#5068](https://github.com/digdir/designsystemet/pull/5068))
+
+- New exports for internal use (not documented). ([#5068](https://github.com/digdir/designsystemet/pull/5068))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- **Tailwind:** `--experimental-tailwind` now also generates `--shadow-*` and `--opacity-disabled` config ([#5139](https://github.com/digdir/designsystemet/pull/5139))
+
+- `typography` and `borderRadius` are no longer required in the config file. If omitted, defaults will be used: `typography.fontFamily = "Inter"` and `borderRadius = 4`. ([#5099](https://github.com/digdir/designsystemet/pull/5099))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- - add option `-v` and `--version` for display version number. ([#5098](https://github.com/digdir/designsystemet/pull/5098))
+  - add option `-h` and `--help` for display help.
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- Update dependency colorjs.io to ^0.7.1 ([#5121](https://github.com/digdir/designsystemet/pull/5121))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.19.0
+
+## 1.18.0
+
+### Patch Changes
+
+- Now correctly creates CSS variables when color name has hyphen ([#5044](https://github.com/digdir/designsystemet/pull/5044))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.18.0
+
+## 1.17.0
+
+### Minor Changes
+
+- Removed color categories `main` and `support`. All colors are now defined in config file under `themes.<name>.colors` (just like neutral). ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+- Remove `UNSAFE_COLOR_GROUPS` env variable as its no longer relevant ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+- Added support for auto-migrations which checks files and prompts users about needed migrations. ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+### Patch Changes
+
+- Increased minimum required `node` version 24.16.0. ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.17.0
+
+## 1.16.1
+
+### Patch Changes
+
+- fix(deps): update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.16.1
+
+## 1.16.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.16.0
+
+## 1.15.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+- Add deprecation warning for cli options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme`. Use JSON config file instead. ([#4912](https://github.com/digdir/designsystemet/pull/4912))
+
+- Update npm non-major dependencies ([#4910](https://github.com/digdir/designsystemet/pull/4910))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.15.0
+
+## 1.14.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4809](https://github.com/digdir/designsystemet/pull/4809))
+
+- Update npm non-major dependencies ([#4859](https://github.com/digdir/designsystemet/pull/4859))
+
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.14.0
+
+## 1.13.3
+
+### Patch Changes
+
+- Remove included `/configs` files that were used internally ([#4763](https://github.com/digdir/designsystemet/pull/4763))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.13.3
+
 ## 1.13.2
 
 ### Patch Changes

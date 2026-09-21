@@ -2,7 +2,7 @@ import { checkAndEvaluateMath } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import type { Transform } from 'style-dictionary/types';
 
-import { getValue, pathStartsWithOneOf, typeEquals } from '../utils.js';
+import { getValue, pathStartsWithOneOf, typeEquals } from '../utils.ts';
 
 const isPx = R.test(/\b\d+px\b/g);
 

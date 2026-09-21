@@ -4,7 +4,11 @@ import { isRouteErrorResponse, Outlet } from 'react-router';
 import type { Route } from './+types/layout';
 
 export default function BlogLayout() {
-  return <Outlet />;
+  return (
+    <div id='main'>
+      <Outlet />
+    </div>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

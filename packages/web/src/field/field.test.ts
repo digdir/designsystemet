@@ -1,6 +1,9 @@
 /// <reference types="@testing-library/jest-dom" />
 import { describe, expect, it, test } from 'vitest';
 
+const tick = async (_?: unknown) =>
+  await new Promise((resolve) => setTimeout(resolve)); // Let MutationObserver run Loop
+
 const render = () => {
   document.body.innerHTML = `<ds-field class="ds-field">
       <label>Label</label>
@@ -12,15 +15,15 @@ const render = () => {
 };
 
 describe('Field component', () => {
-  it('should add id and connect label and input', () => {
+  it('should add id and connect label and input', async () => {
     render();
 
     const label = document.querySelector('label');
     const input = document.querySelector('input');
 
+    await tick(); // Let mutation observer run
     expect(input).toBeInTheDocument();
     expect(label).toBeInTheDocument();
-
     expect(label).toHaveAttribute('for', input?.id);
     expect(input).toHaveAttribute(
       'aria-describedby',
@@ -28,16 +31,16 @@ describe('Field component', () => {
     );
   });
 
-  it('should set aria-invalid when validation message is present', () => {
+  it('should set aria-invalid when validation message is present', async () => {
     render();
-
     const input = document.querySelector('input');
 
+    await tick(); // Let mutation observer run
     expect(input).toBeInTheDocument();
     expect(input).toHaveAttribute('aria-invalid', 'true');
   });
 
-  test('should update counter live region', () => {
+  test('should update counter live region', async () => {
     document.body.innerHTML = `<ds-field class="ds-field">
       <label>Label</label>
       <textarea class="ds-input">Dette er ein test som er for lang</textarea>
@@ -46,6 +49,8 @@ describe('Field component', () => {
 
     const textarea = document.querySelector('textarea');
     const counter = document.querySelector('[data-field="counter"]');
+
+    await tick(); // Let mutation observer run
     expect(textarea).toBeInTheDocument();
     expect(counter).toBeInTheDocument();
 
@@ -63,13 +68,49 @@ describe('Field component', () => {
 
     const textarea = document.querySelector('textarea');
     const counter = document.querySelector('[data-field="counter"]');
+
+    await tick();
     expect(textarea).toBeInTheDocument();
     expect(counter).toBeInTheDocument();
+    expect(textarea?.getAttribute('aria-invalid')).toBe('true');
     expect(counter?.getAttribute('data-label')).toBe('13 tegn for mye');
 
-    counter?.setAttribute('data-limit', '10');
-    await new Promise((resolve) => setTimeout(resolve, 0)); // Let MutationObserver in JS Event Loop run
-
+    await tick(counter?.setAttribute('data-limit', '10'));
+    expect(textarea?.getAttribute('aria-invalid')).toBe('true');
     expect(counter?.getAttribute('data-label')).toBe('23 tegn for mye');
+
+    await tick(counter?.setAttribute('data-limit', '40'));
+    expect(textarea?.getAttribute('aria-invalid')).toBeFalsy();
+    expect(counter?.getAttribute('data-label')).toBe('7 tegn igjen');
+  });
+
+  test('should not override aria-invalid when already set on input', async () => {
+    document.body.innerHTML = `<ds-field>
+    <label>Label</label>
+    <input type="text" aria-invalid="false" />
+    <div data-field="validation">
+      Dette er ein feilmelding
+    </div>
+  </ds-field>`;
+
+    const input = document.querySelector('input');
+    const validation = document.querySelector('[data-field="validation"]');
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute('aria-invalid', 'false'); // ds-field must not override the consumer-provided aria-invalid="false"
+
+    input?.removeAttribute('aria-invalid');
+    expect(input).not.toHaveAttribute('aria-invalid');
+
+    await tick(validation?.setAttribute('hidden', ''));
+    await tick(validation?.removeAttribute('hidden'));
+    expect(input).toHaveAttribute('aria-invalid', 'true'); // Validation element should now cause ds-field to set aria-invalid="true"
+
+    await tick(validation?.setAttribute('hidden', ''));
+    expect(input).not.toHaveAttribute('aria-invalid'); // And it should remove aria-invalid when validation element is removed/hidden
+
+    input?.setAttribute('aria-invalid', 'true');
+    await tick(validation?.removeAttribute('hidden'));
+    await tick(validation?.setAttribute('hidden', ''));
+    expect(input).toHaveAttribute('aria-invalid', 'true'); // But it should not remove aria-invalid if it was already set to "true" by the consumer
   });
 });

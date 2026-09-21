@@ -51,7 +51,7 @@ export const DontIcon2 = () => {
 
 export const DoIcon2En = () => {
   return (
-    <Link href='/no/patterns/external-links/'>
+    <Link href='/en/patterns/external-links/'>
       <span>Labelling links</span>
     </Link>
   );
@@ -59,7 +59,7 @@ export const DoIcon2En = () => {
 
 export const DontIcon2En = () => {
   return (
-    <Link href='/no/patterns/external-links/'>
+    <Link href='/en/patterns/external-links/'>
       <span>Read more</span>
     </Link>
   );

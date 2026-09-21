@@ -1,5 +1,185 @@
 # @digdir/designsystemet-web
 
+## 1.22.0
+
+### Minor Changes
+
+- **Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+### Patch Changes
+
+- **Utils:** Correctly unescapes quotes in localized CSS custom property texts (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Search:** Now correctly sets state of clear button also when programmatically changing `value` (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders focus ring in Safari (thanks @ssb-cgn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders clear button state when rendered asynchronously (thanks @stianmorsund) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Tooltips:** Now only warns about missing `tabindex` if not explicitly set and not if label which has implicit interaction ([#5353](https://github.com/digdir/designsystemet/pull/5353))
+
+- **Suggestion:** Now correctly handles internal state when preventing a selection (thanks @olemartinorg) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+- **Suggestion:** Now correctly renders `data-empty` option when not creatable (thanks @lassopicasso) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+## 1.21.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334)) by [@renovate](https://github.com/apps/renovate)
+
+- Restored the framework type imports in `dist/index.d.ts`, so the JSX/element type augmentations for `ds-*` custom elements resolve again ([#5331](https://github.com/digdir/designsystemet/pull/5331))
+
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302)) by [@renovate](https://github.com/apps/renovate)
+
+## 1.21.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276)) by [@renovate](https://github.com/apps/renovate)
+
+## 1.20.1
+
+### Patch Changes
+
+- Now bundling the `ESM`, `CJS`, and `UMD` formats using `tsdown`. ([#5222](https://github.com/digdir/designsystemet/pull/5222))
+
+- Update npm non-major dependencies ([#5242](https://github.com/digdir/designsystemet/pull/5242))
+
+- **Suggestion:** no longer moves focus to chip when clicking inside datalist ([#5216](https://github.com/digdir/designsystemet/pull/5216))
+
+## 1.20.0
+
+### Minor Changes
+
+- **Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React ([#5126](https://github.com/digdir/designsystemet/pull/5126))
+
+### Patch Changes
+
+- **Suggestion**: Hide the empty state when options are initially available. ([#5189](https://github.com/digdir/designsystemet/pull/5189))
+
+- **clickdelegatefor**: Now allows native label click, avoiding duplicate input activation. ([#5201](https://github.com/digdir/designsystemet/pull/5201))
+
+- **popover:** Prevent ResizeObserver loop errors when positioning the option list. ([#5164](https://github.com/digdir/designsystemet/pull/5164))
+
+- **popover**: Won't resize overscroll on scroll while open ([#5175](https://github.com/digdir/designsystemet/pull/5175))
+
+- **Suggestion:** Skip unnecessary matching after clicking option in single mode ([#5207](https://github.com/digdir/designsystemet/pull/5207))
+
+- **ValidationMessage:** Now correctly sets `aria-invalid="true"` only if `danger` color ([#5149](https://github.com/digdir/designsystemet/pull/5149))
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+## 1.19.1
+
+## 1.19.0
+
+### Minor Changes
+
+- **focusgroup:** is now automatically polyfilled according to [upcoming specification](https://open-ui.org/components/scoped-focusgroup.explainer/) ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- **Web:** All functionality now supports rendering inside Shadow DOM ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- **ToggleGroup:** Deprecates `data-toggle-group` in favor of `focusgroup="radiogroup"` with `aria-label`. ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+### Patch Changes
+
+- **clickdelegatefor**: Fixes an issue with using `data-clickdelegatefor` inside of `<details>` ([#5074](https://github.com/digdir/designsystemet/pull/5074))
+
+- Update dependency tsdown to v0.22.14 ([#5102](https://github.com/digdir/designsystemet/pull/5102))
+
+- **Breadcrumbs, Pagination, ToggleGroup:** support `aria-labelledby` ([#5081](https://github.com/digdir/designsystemet/pull/5081))
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+- Update dependency @oddbird/popover-polyfill to v0.7.1 ([#5101](https://github.com/digdir/designsystemet/pull/5101))
+
+- **Field:** now scopes internal cache to DSFieldElement class to avoid version conflicts ([#5077](https://github.com/digdir/designsystemet/pull/5077))
+
+- **Tooltip:** allow `data-tooltip` with CSS ID selector like `#id` to retrieve text from another element ([#5081](https://github.com/digdir/designsystemet/pull/5081))
+
+- **tooltip**: Now inherits nearest `data-size` ([#5119](https://github.com/digdir/designsystemet/pull/5119))
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+- **clickdelegatefor:** now only skips interactive child elements ([#5080](https://github.com/digdir/designsystemet/pull/5080))
+
+- **Dialog:** now adds `aria-haspopup` on focus event to enhance performance and support Shadow DOM rendering ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+- fix loading order for popover-polyfill ([#5027](https://github.com/digdir/designsystemet/pull/5027))
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+
+## 1.18.0
+
+## 1.17.0
+
+### Patch Changes
+
+- **tooltip**: Fixes a bug where tooltip would reappear on mousedown outside trigger ([#5012](https://github.com/digdir/designsystemet/pull/5012))
+
+## 1.16.1
+
+### Patch Changes
+
+- fix(deps): update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
+
+## 1.16.0
+
+### Patch Changes
+
+- **Suggestion:** Updated VoiceOver compatibility - both with and without QuickNav ([#4970](https://github.com/digdir/designsystemet/pull/4970))
+
+- **Popover, Tooltip, Dropdown:** No longer requires arrow to be drawn by `::before` element to correctly calculate arrow size ([#4951](https://github.com/digdir/designsystemet/pull/4951))
+
+- **Popover:** Automatically run Popover API polyfill if needed in older browsers ([#4983](https://github.com/digdir/designsystemet/pull/4983))
+
+## 1.15.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+- **Error summary**: Now only sets `aria-labelledby` based on heading element if `aria-label` or `aria-labelledby` is not already set, and logs a warning if neither of these are set and no heading element is present. ([#4895](https://github.com/digdir/designsystemet/pull/4895))
+
+- **Popover:** now correctly calculates width of source element also in Firefox ([#4921](https://github.com/digdir/designsystemet/pull/4921))
+
+- **Error summary**: Set `role="group"` since the implicit role "generic" does not allow `aria-labelledby`, which is used in the component ([#4895](https://github.com/digdir/designsystemet/pull/4895))
+
+## 1.14.0
+
+### Patch Changes
+
+- **Suggestion:** fixed an issue where value did not properly clear when moving focus between multiple instances ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+- **Suggestion**: fixed dropdown so it no longer has a brief flash in wrong position ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+- Update npm non-major dependencies ([#4809](https://github.com/digdir/designsystemet/pull/4809))
+
+- Update `invokers-polyfill` to 1.0.3 ([#4784](https://github.com/digdir/designsystemet/pull/4784))
+
+- **Tabs:** fix issue where `aria-controls` combined with `aria-selected` was not respected on initial render ([#4821](https://github.com/digdir/designsystemet/pull/4821))
+
+- update dependencies to new major version: ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+  - @u-elements/u-combobox to 2.0.4
+  - @u-elements/u-datalist to 2.0.1
+
+- **Suggestion:** fix to ensure input has role `combobox` (not `textbox`) on first render. ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783))
+
+## 1.13.3
+
+### Patch Changes
+
+- **Tabs:** Has improved synchronous rendering for easier snapshot testing ([#4745](https://github.com/digdir/designsystemet/pull/4745))
+
+- **Field:** Now respects manually set `aria-invalid` attribute ([#4765](https://github.com/digdir/designsystemet/pull/4765))
+
 ## 1.13.2
 
 ### Patch Changes
@@ -97,7 +277,7 @@
   | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
   | `details` & `summary`    | Bugfix for Firefox.                                                                                            |
   | `dialog`                 | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
-  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2).                               |
+  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill).                                       |
 
 ### Patch Changes
 
@@ -133,7 +313,7 @@
   | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
   | `details` & `summary`    | Bugfix for Firefox.                                                                                            |
   | `dialog`                 | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
-  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2).                               |
+  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill).                                       |
 
 ### Patch Changes
 

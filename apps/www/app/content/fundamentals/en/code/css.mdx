@@ -24,11 +24,21 @@ You do this by first putting your reset in a layer, and then sorting this layer 
 ```
 
 ## Data attributes
+Designsystemet offers several data attributes to control component themes and CSS custom property values.
+These attributes can be applied to any HTML element; the CSS custom property values they set are inherited by descendant elements.
 
-We offer several data attributes that can be used to change the theme of the components.
+### `data-size`
+Corresponds with `Appearance › Size` in Figma.<br />
+Sets the size of the components.
+
+### `data-color`
+
+Corresponds with `Appearance › Color` in Figma.<br />
+Used to change the color of the components. Available values ​​are defined by your theme.
+You can read more about this under "[Colors in code](/en/fundamentals/code/colors)".
 
 ### `data-color-scheme`
-
+Corresponds with `Appearance › Color scheme` in Figma.<br />
 Used to change the color mode of the components. Possible values are `light`, `dark` and `auto`.
 
 If `auto` is selected, the color mode will change based on the user's preferences using
@@ -38,7 +48,7 @@ You can read more about this at "[Colors in code](/en/fundamentals/code/colors)"
 
 ### `data-typography`
 
-Used to change the typography of the components. Possible values ​​are `primary` and `secondary`.
+Used to change the typography of the components. Possible values are `primary` and `secondary`.
 
 A common use for this attribute is when you want a monospace font on tables.
 
@@ -71,7 +81,7 @@ Visually hides an element while still being accessible to screen readers.
 Preserves appearance, including background color, in print.
 
 ### `ds-focus` / `ds-focus--inset`
-Adds the design system focus ring around the element _when it gains focus with keyboard navigation_ (`:focus-visible`).
+Adds Designsystemet's focus ring around the element _when it gains focus with keyboard navigation_ (`:focus-visible`).
 
 ### `ds-focus--visible` / `ds-focus--visible--inset`
-Static "always-on" classes that add the design system focus ring around the element. <span className='ds-focus--visible'>Example.</span>
+Static "always-on" classes that add Designsystemet's focus ring around the element. <span className='ds-focus--visible'>Example.</span>

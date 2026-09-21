@@ -2,8 +2,8 @@ import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
-import { inlineTokens, isDigit, pathStartsWithOneOf } from '../../../utils.js';
-import { buildOptions } from '../../platform.js';
+import { inlineTokens, isDigit, pathStartsWithOneOf } from '../../../utils.ts';
+import { buildOptions } from '../../platform.ts';
 
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
 const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['size'], t) && isDigit(t.path[1]);
@@ -18,7 +18,7 @@ export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSi
  * @param tokens - Array of transformed tokens to format.
  * @returns Object with formatted CSS strings for calc and round.
  */
-export const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
+const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
   const [name, value] = format(token).replace(/;$/, '').split(': ');
 
   let calc: string;

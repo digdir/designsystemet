@@ -1,6 +1,6 @@
 .ds-fieldset {
   --dsc-fieldset-gap: var(--ds-size-4);
-  --_dsc-fieldset-gap--half: calc(var(--dsc-fieldset-gap) / 2);
+  --dsc-fieldset-description-color: inherit;
 
   border: 0;
   margin: 0;
@@ -12,7 +12,7 @@
   }
 
   /* Add lock icon to legend when only containing readonly inputs */
-  &:has(input[readonly]):not(:has(input:not([readonly]))) > legend {
+  &:has(.ds-input[readonly]):not(:has(.ds-input:not([readonly]))) > legend {
     @composes ds-readonly-icon from './base.css'; /* Activate lock icon for legend when all inputs are readonly */
   }
 
@@ -21,18 +21,12 @@
     margin-block: var(--dsc-fieldset-gap) 0;
   }
 
-  & > legend + p /* Kept for backwards compatibility */,
+  & > legend + p /* @deprecated Kept for backwards compatibility */,
   & > [data-field='description'] {
-    color: var(--ds-color-neutral-text-subtle);
+    color: var(--dsc-fieldset-description-color);
   }
-  & > legend + p /* Kept for backawrds compatibility */,
+  & > legend + p /* @deprecated Kept for backwards compatibility */,
   & > legend + [data-field='description'] {
     margin-block-start: 0; /* Reset margin for description after legend */
-  }
-
-  &:disabled > legend,
-  &:disabled > legend + p /* Kept for backawrds compatibility */,
-  &:disabled > [data-field='description'] {
-    opacity: var(--ds-opacity-disabled);
   }
 }

@@ -1,13 +1,29 @@
 import { UHTMLComboboxElement } from '@u-elements/u-combobox';
 import {
   attr,
+  attrOrCSS,
   customElements,
   off,
   on,
   onMutation,
   QUICK_EVENT,
   useId,
+  warn,
 } from '../utils/utils';
+
+// Load and export u-datalist since this is a pure polyfill and not custom Designsystemet elements, should run before suggestion
+export * from '@u-elements/u-datalist';
+
+const ATTR_EMPTY = 'data-empty';
+const ATTR_CREATE = 'data-create';
+const EVENTS_EMPTY = 'comboboxafterselect comboboxprogrammaticinput input';
+const REGEX_CREATE = /\{value\}|%s/; // Support both new %s and old {value} syntax
+const SINGULAR = 'data-sr-singular';
+const PLURAL = 'data-sr-plural';
+const TEXTS =
+  'added,clear,empty,found,invalid,items,of,plural,remove,removed,singular,toggle'
+    .split(',')
+    .map((key) => `data-sr-${key}`);
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -16,27 +32,71 @@ declare global {
 }
 
 export class DSSuggestionElement extends UHTMLComboboxElement {
-  _render?: () => void;
   _unmutate?: ReturnType<typeof onMutation>; // Using underscore instead of private fields for backwards compatibility
 
   connectedCallback() {
-    super.connectedCallback();
+    for (const key of TEXTS) attr(this, key, attrOrCSS(this, key)); // Convert CSS variables to data-sr-attributes
+    super.connectedCallback(); // Run after setting data-sr-attributes
+
     this._unmutate = onMutation(this, render, { childList: true }); // .control and .list are direct children of the custom element
+    on(this, EVENTS_EMPTY, handleEmpty, QUICK_EVENT);
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this._unmutate?.();
-    this._unmutate = this._render = undefined;
+    this._unmutate = undefined;
+    off(this, EVENTS_EMPTY, handleEmpty, QUICK_EVENT);
     off(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
 }
 
-// A non-empty placeholder attribute is required to activate the :placeholder-shown pseudo selector used in our chevron styling
-const render = ({ control, list }: DSSuggestionElement) => {
-  if (control && !control.placeholder) attr(control, 'placeholder', ' '); // .control comes from UHTMLComboboxElement
-  if (control) attr(control, 'popovertarget', useId(list) || null);
-  if (list) attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
+const render = (self: DSSuggestionElement) => {
+  let { control, list } = self;
+  if (!list) list = self.querySelector('u-datalist'); // Fallback to u-datalist since React can render the ds-suggestion before u-datalist is connected
+
+  if (control) attr(control, 'popovertarget', list ? useId(list) : null);
+  if (list) {
+    if (!attr(list, PLURAL)) attr(list, PLURAL, attr(self, PLURAL)); // Inherit translations from u-combobox to u-datalist
+    if (!attr(list, SINGULAR)) attr(list, SINGULAR, attr(self, SINGULAR)); // Inherit translations from u-combobox to u-datalist
+    attr(list, 'data-is-floating', 'true'); // identifier for css to toggle opacity when it is placed by floating-ui.
+    attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
+  }
+  handleEmpty({ currentTarget: self });
+};
+
+const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
+  const { creatable, control, options, values } = self as DSSuggestionElement;
+  if (!options) return;
+
+  const value = control?.value.trim() || '';
+  const query = value.toLowerCase();
+  let emptyOp: HTMLOptionElement | undefined;
+  let hasMatch = false;
+
+  for (const opt of options) {
+    if (!emptyOp && opt.hasAttribute(ATTR_EMPTY)) emptyOp = opt;
+    else if (!hasMatch && (!query || opt.label?.toLowerCase() === query))
+      hasMatch = true;
+    if (hasMatch && emptyOp) break; // Speed up if both conditions are met
+  }
+  if (!emptyOp) return;
+
+  emptyOp.hidden = hasMatch; // Hide initial empty state when options exist, or when the query already exists
+  attr(emptyOp, 'label', value); // Ensures option is not filtered out by <u-combobox>
+  attr(emptyOp, 'value', creatable ? value : ''); // Ensures clicking option does nothing
+
+  if (creatable) {
+    const found = values.some((val) => val === value); // Only show "Legg til" if not already created
+    const text = attrOrCSS(emptyOp, ATTR_EMPTY);
+    const hint = (!found && text?.replace(REGEX_CREATE, () => value)) || value;
+
+    if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, emptyOp);
+    else attr(emptyOp, ATTR_EMPTY, text); // Speed up by caching attribute value
+
+    attr(emptyOp, 'disabled', found && emptyOp.textContent ? 'true' : null); // Hide permanent hint if created
+    attr(emptyOp, ATTR_CREATE, hint);
+  }
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:
@@ -45,7 +105,14 @@ const polyfillToggleSource = (event: Partial<ToggleEvent>) => {
   const detail = event.newState === 'open' && self.control; // .control comes from UHTMLComboboxElement
 
   if (detail)
-    self.list?.dispatchEvent(new CustomEvent('ds-toggle-source', { detail }));
+    self.list?.dispatchEvent(
+      new CustomEvent('ds-toggle-source', {
+        bubbles: true,
+        composed: true, // Enable bubbling out of shadow DOM boundaries
+        detail, // Since showPopover({ source }) is not supported in all browsers yet
+      }),
+    );
 };
 
+// Ensure u-datalist is defined before ds-suggestion
 customElements.define('ds-suggestion', DSSuggestionElement);

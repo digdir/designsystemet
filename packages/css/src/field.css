@@ -2,6 +2,8 @@
   --dsc-field-content-spacing: var(--ds-size-2);
   --dsc-field-counter-over: '%d tegn for mye';
   --dsc-field-counter-under: '%d tegn igjen';
+  --dsc-field-description-color: inherit;
+  --dsc-field-description-font-size--toggle: var(--ds-font-size-minus-1);
 
   @composes ds-print-preserve from './base.css';
 
@@ -14,9 +16,7 @@
   }
 
   & [data-field='description'] {
-    color: var(
-      --ds-color-neutral-text-subtle
-    ); /* TODO: Change to opacity or color-mix(currentColor, transparent) to ensure contrast when parent element color changes? */
+    color: var(--dsc-field-description-color);
     margin-top: 0; /* Line-height removes the need for this */
     margin-block: 0;
   }
@@ -41,19 +41,14 @@
 
   /* Using pure HTML elements in selector to make this work if consumer changes name of .ds-input */
   &:not([hidden]),
-  & :is(label, input, select, textarea, .ds-input):where(:not([hidden])) {
+  & :where(label, .ds-input):not([hidden]) {
     display: block; /* Ensure input is not placed on same line as label/description/validation, but respect [hidden] attribute */
   }
 
   /**
    * States
    */
-  &:has([aria-disabled='true']:not(u-option, [role='option'][aria-disabled='true']), :disabled:not(option)) > * {
-    cursor: not-allowed;
-    opacity: var(--ds-opacity-disabled);
-  }
-
-  &:has([aria-readonly='true'], [readonly]) label {
+  &:where(:has(.ds-input[aria-readonly='true'], .ds-input[readonly])) label {
     @composes ds-readonly-icon from './base.css'; /* Activate lock icon for label when readonly */
   }
 
@@ -63,8 +58,7 @@
   &[data-clickdelegatefor] {
     cursor: pointer;
   }
-  &:has(input:is([type='radio'], [type='checkbox'])) {
-    border-radius: var(--ds-border-radius-md);
+  &:has(input[type='radio'], input[type='checkbox']) {
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
@@ -73,16 +67,17 @@
       display: grid;
     }
 
+    &:has(input:not(:only-child)) {
+      column-gap: var(--dsc-field-content-spacing); /* Prevents adding if not needed */
+    }
+
     & > * {
       margin-block: 0; /* Reset "the stack" */
       grid-column: content; /* Only allow input in column 1 */
     }
-    & > *:not(input) {
-      padding-inline-start: var(--dsc-field-content-spacing);
-    }
 
     & label {
-      font-weight: var(--ds-font-weight-regular);
+      font-weight: inherit; /* Match the surrounding weight when used with radio/checkboxes, creating a clear hierarchy relative to the legend */
     }
     & label::before {
       content: none; /* Hide readonly icon on toggle inputs */
@@ -93,7 +88,12 @@
       grid-row: 1; /* Always place input in row 1 */
     }
 
-    &:not(:has([readonly], [aria-disabled='true']:not(u-option), :disabled:not(option))) label {
+    & label + p /* @deprecated Kept for backwards compatibility */,
+    & [data-field='description'] {
+      font-size: var(--dsc-field-description-font-size--toggle);
+    }
+
+    &:not(:has(.ds-input[readonly], .ds-input[aria-disabled='true'], .ds-input:disabled)) label {
       cursor: pointer;
     }
 
@@ -110,9 +110,54 @@
       grid-template-areas: 'content input';
       grid-template-columns: 1fr auto;
       width: auto;
-      & > *:not(input) {
-        padding-inline-start: 0;
-        padding-inline-end: var(--dsc-field-content-spacing);
+    }
+
+    &[data-variant='outline'] {
+      --dsc-field-border-color: var(--ds-color-neutral-border-default);
+      --dsc-field-border-color--checked: var(--ds-color-border-default);
+      --dsc-field-border-color--invalid: var(--ds-color-danger-border-default);
+      --dsc-field-border-color--readonly: var(--ds-color-neutral-border-subtle);
+      --dsc-field-border-radius: var(--ds-border-radius-lg);
+      --dsc-field-border-style: solid;
+      --dsc-field-border-width: var(--ds-border-width-default);
+      --dsc-field-border-width--active: max(2px, 0.125rem);
+      --dsc-field-padding: var(--ds-size-4);
+      --_dsc-field-border-color: var(--dsc-field-border-color); /* Using proxy props to easily change source without overwriting states */
+      --_dsc-field-outline-width: 0;
+
+      border-color: var(--_dsc-field-border-color);
+      border-radius: var(--dsc-field-border-radius);
+      border-style: var(--dsc-field-border-style);
+      border-width: var(--dsc-field-border-width);
+      box-shadow: inset 0 0 0 calc(var(--_dsc-field-outline-width) - var(--dsc-field-border-width)) var(--_dsc-field-border-color);
+      padding: var(--dsc-field-padding);
+      width: auto;
+
+      & > [data-field='validation'] {
+        grid-column: input / content; /* Place validation message in content column */
+      }
+    }
+    &[data-variant='outline']:hover {
+      --_dsc-field-outline-width: var(--dsc-field-border-width--active);
+    }
+    &[data-variant='outline']:has(input:checked) {
+      --_dsc-field-border-color: var(--dsc-field-border-color--checked);
+      --_dsc-field-outline-width: var(--dsc-field-border-width--active);
+
+      @media (forced-colors: active) {
+        border-color: LinkText;
+      }
+    }
+    &[data-variant='outline']:has(input[aria-invalid='true']) {
+      --_dsc-field-border-color: var(--dsc-field-border-color--invalid);
+    }
+    &[data-variant='outline']:has(input:disabled, input[aria-disabled='true'], input[readonly], input[aria-readonly='true']) {
+      cursor: default;
+      --_dsc-field-border-color: var(--dsc-field-border-color--readonly);
+      --_dsc-field-outline-width: var(--ds-border-width-default);
+
+      @media (forced-colors: active) {
+        border-color: GrayText;
       }
     }
   }
@@ -126,11 +171,13 @@
   --dsc-field-affix-border-style: solid;
   --dsc-field-affix-border-color: var(--ds-color-neutral-border-default);
   --dsc-field-affix-padding-inline: var(--ds-size-4);
+  --dsc-field-affix-background: var(--ds-color-neutral-surface-tinted);
+  --dsc-field-affix-color: var(--ds-color-neutral-text-subtle);
 
-  background: var(--ds-color-neutral-surface-tinted);
+  background: var(--dsc-field-affix-background);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--dsc-field-affix-color);
   max-width: 100%;
   white-space: nowrap;
 

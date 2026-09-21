@@ -37,13 +37,7 @@ export default {
   },
   themeBuilder: {
     title: 'Theme Builder',
-    intro: 'Designsystemet Theme Builder',
-    heading: 'Get started building your',
-    'heading-highlight': 'own theme',
-    description:
-      'Are you incorporating Designsystemet into your own organisation with your own brand colours and preferences? The Theme Builder helps you get started.',
-    'build-theme': 'Build theme',
-    documentation: 'Documentation',
+    'documentation-link': 'Read the documentation about custom themes',
   },
   configPaste: {
     title: 'Import from config file',
@@ -80,6 +74,8 @@ export default {
     switch: 'Switch',
     primary: 'Primary',
     secondary: 'Secondary',
+    grid: 'Grid',
+    list: 'List',
   },
   overview: {
     'login-title': 'Log in to the portal',
@@ -120,13 +116,7 @@ export default {
     'select-color': 'Choose colour',
   },
   themeModal,
-  examples: {
-    'example-1': 'Example 1',
-    'example-2': 'Example 2',
-  },
   colorPane: {
-    'main-color': 'main colour',
-    'support-color': 'support colour',
     add: 'Add',
     'edit-color': 'Edit colour',
     save: 'Save',
@@ -147,6 +137,9 @@ export default {
     dark: 'Dark',
     'set-to': 'Set to',
     view: 'view',
+  },
+  colorGroup: {
+    'see-more': 'See more about {{namespace}} {{color}}',
   },
   'color-tokens': {
     title: 'Color Tokens',

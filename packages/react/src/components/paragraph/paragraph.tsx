@@ -28,10 +28,7 @@ export type ParagraphProps = {
  * <Paragraph data-size='lg'>Paragraph</Paragraph>
  */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  function Paragraph(
-    { className, asChild, variant = 'default', ...rest },
-    ref,
-  ) {
+  function Paragraph({ className, asChild, variant, ...rest }, ref) {
     const Component = asChild ? Slot : 'p';
 
     return (

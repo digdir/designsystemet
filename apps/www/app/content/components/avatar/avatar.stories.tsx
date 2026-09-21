@@ -2,29 +2,34 @@ import {
   Avatar,
   type AvatarProps,
   Badge,
+  Button,
   Dropdown,
 } from '@digdir/designsystemet-react';
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 
-export const Preview = () => (
-  <Avatar aria-label='Ola Nordmann' variant='circle' />
-);
+export const Preview = () => <Avatar aria-label='Ola Nordmann' />;
 
-export const NoName = () => {
-  return <Avatar aria-label='Ola' />;
-};
+export const Initials = () => <Avatar aria-label='Ola Nordmann'>ON</Avatar>;
 
 export const Sizes = () => (
   <>
-    <Avatar data-size='xs' aria-label='extra small' initials='xs' />
-    <Avatar data-size='sm' aria-label='small' initials='sm' />
-    <Avatar data-size='md' aria-label='medium' initials='md' />
-    <Avatar data-size='lg' aria-label='large' initials='lg' />
+    <Avatar data-size='xs' aria-label='extra small'>
+      xs
+    </Avatar>
+    <Avatar data-size='sm' aria-label='small'>
+      sm
+    </Avatar>
+    <Avatar data-size='md' aria-label='medium'>
+      md
+    </Avatar>
+    <Avatar data-size='lg' aria-label='large'>
+      lg
+    </Avatar>
   </>
 );
 
 export const ColorVariants = () => {
-  const colors = ['neutral', 'accent', 'brand1', 'brand2', 'brand3'];
+  const colors = ['neutral', 'accent'];
 
   return (
     <>
@@ -39,14 +44,35 @@ export const ColorVariants = () => {
   );
 };
 
-export const ShapeVariants = () => (
+export const Radius = () => (
   <>
-    <Avatar variant='circle' aria-label='variant circle' />
-    <Avatar variant='square' aria-label='variant square' />
-    <Avatar variant='circle' aria-label='Ola Nordmann'>
+    <Avatar aria-label='radius default' />
+    <Avatar
+      aria-label='radius 1rem'
+      style={
+        {
+          '--dsc-avatar-radius': '1rem',
+        } as React.CSSProperties
+      }
+    />
+    <Avatar
+      aria-label='radius lg'
+      style={
+        {
+          '--dsc-avatar-radius': 'var(--ds-border-radius-lg)',
+        } as React.CSSProperties
+      }
+    >
       ON
     </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordmann'>
+    <Avatar
+      aria-label='radius none'
+      style={
+        {
+          '--dsc-avatar-radius': '0',
+        } as React.CSSProperties
+      }
+    >
       ON
     </Avatar>
   </>
@@ -64,14 +90,14 @@ export const WithImageAndIcon = () => (
 );
 
 export const InDropdown = () => (
-  <Dropdown.TriggerContext>
-    <Dropdown.Trigger variant='tertiary'>
+  <>
+    <Button popovertarget='dropdown' variant='tertiary'>
       <Avatar aria-hidden='true' data-size='sm'>
         ON
       </Avatar>
       Ola Nordmann
-    </Dropdown.Trigger>
-    <Dropdown placement='bottom-end' autoPlacement={false} data-size='md'>
+    </Button>
+    <Dropdown id='dropdown' placement='bottom-end' autoPlacement={false}>
       <Dropdown.List>
         <Dropdown.Item>
           <Dropdown.Button>
@@ -94,5 +120,5 @@ export const InDropdown = () => (
         </Dropdown.Item>
       </Dropdown.List>
     </Dropdown>
-  </Dropdown.TriggerContext>
+  </>
 );

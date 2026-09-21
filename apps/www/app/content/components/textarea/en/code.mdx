@@ -1,15 +1,10 @@
-<Story story="Preview" layout="column" />
-<ReactComponentDocs />
+<Story story="Preview" layout="column" defaultOpen />
 
 ## Use
+Apply the class name `ds-input` to `<textarea>`.
 
-```tsx
-import { Textarea, Label } from '@digdir/designsystemet-react';
-
-<>
-  <Label htmlFor="my-textarea">Label</Label>
-  <Textarea id="my-textarea" />
-</>
+```html
+<textarea class="ds-input"></textarea>
 ```
 
 ## Example
@@ -20,23 +15,25 @@ This only affects the initial height of the field.
 
 <Story story="WithRowsEn" layout="column" />
 
-### Disabled
-
-<Story story="Disabled" layout="column" />
-
-### ReadOnly
-
-<Story story="ReadOnlyEn" layout="column" />
-
-## HTML
-Apply the class name `ds-input` to `<textarea>`.
-
-```html
-<textarea class="ds-input"></textarea>
-```
-
 ## CSS variables and data attributes
-`Textarea` gets styling from `ds-input`, so we show variables and data attributes from that class here.
+Textarea gets styling from `ds-input`, so we show variables and data attributes from that class here.
+
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
+The component will inherit from the closest parent where these are set.
+
 <CssVariables />
 
 <CssAttributes />
+
+## React
+
+```tsx
+import { Textarea, Label } from '@digdir/designsystemet-react';
+
+<>
+  <Label htmlFor="my-textarea">Label</Label>
+  <Textarea id="my-textarea" />
+</>
+```
+
+<ReactComponentDocs />

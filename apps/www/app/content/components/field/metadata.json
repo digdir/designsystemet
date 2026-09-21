@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Field",
-    "subtitle": "`Field` er et hjelpemiddel for å automatisk koble et felt sammen med [`Label`](/no/components/docs/label/overview), `Field.Description`, [`ValidationMessage`](/no/components/docs/validation-message/overview) og `Field.Counter`."
+    "subtitle": "Field er et hjelpemiddel for å automatisk koble et felt sammen med [label](/no/components/docs/label/overview), beskrivelse, [validation message](/no/components/docs/validation-message/overview) og antall tegn."
   },
   "en": {
     "title": "Field",
-    "subtitle": "`Field` is a helper component to automatically associate a field with [`Label`](/en/components/docs/label/overview), `Field.Description`, [`ValidationMessage`](/en/components/docs/validation-message/overview) and `Field.Counter`."
+    "subtitle": "Field is a helper component to automatically associate a field with [label](/en/components/docs/label/overview), description, [validation message](/en/components/docs/validation-message/overview) and character count."
   },
   "image": "Field.svg",
   "cssFile": "field.css"

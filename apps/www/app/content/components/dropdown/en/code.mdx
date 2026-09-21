@@ -1,60 +1,45 @@
 <Story story="Preview" />
-<ReactComponentDocs />
 
 ## Usage
 
-`Dropdown` uses [`Popover`](/en/components/docs/popover/code) internally.
+You can use Dropdown in plain HTML by using the `popover` attribute on an element with the class `ds-dropdown`, and connecting it to a trigger with `popovertarget="ID-OF-DROPDOWN-HERE"`.
+Designsystemet automatically adds [popover-polyfill (npmjs.com)](https://www.npmjs.com/package/@oddbird/popover-polyfill) to support the native [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using) in older browsers if needed.
 
-```tsx
-import { Dropdown } from '@digdir/designsystemet-react';
-<>
-{/* with context */}
-<Dropdown.TriggerContext> 
-  <Dropdown.Trigger>Trigger</Dropdown.Trigger> 
-  <Dropdown> 
-    <Dropdown.Heading>Heading</Dropdown.Heading> 
-    <Dropdown.List> 
-      <Dropdown.Item> 
-        <Dropdown.Button>Item</Dropdown.Button> 
-      </Dropdown.Item> 
-    </Dropdown.List> 
-  </Dropdown>
-</Dropdown.TriggerContext>
+You can control positioning with attributes on the dropdown itself:
+| attribute     | type   | default    |
+|---------------|--------|------------|
+| data-placement | `'top' \| 'top-start' \| 'top-end' \| 'right' \| 'right-start' \| 'right-end' \| 'bottom' \| 'bottom-start' \| 'bottom-end' \| 'left' \| 'left-start' \| 'left-end' \| 'none'` | `'bottom'` |
+| data-overscroll | `'contain' \| undefined` | `undefined` |
+| data-autoplacement | `boolean` | `true` |
 
-{/* without context */}
-<Button popovertarget="my-dropdown">Trigger</Button>
-<Dropdown id="my-dropdown"> 
-  <Dropdown.Heading>Heading</Dropdown.Heading> 
-  <Dropdown.List> 
-    <Dropdown.Item> 
-      <Dropdown.Button>Item</Dropdown.Button>
-    </Dropdown.Item> 
-  </Dropdown.List>
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />
+
+## React
+
+```jsx
+<Button popovertarget='dropdown'>Dropdown</Button>
+<Dropdown id='dropdown'>
+    <Dropdown.List>
+        <Dropdown.Item>
+        <Dropdown.Button>Item 1</Dropdown.Button>
+        </Dropdown.Item>
+        <Dropdown.Item>
+        <Dropdown.Button>Item 2</Dropdown.Button>
+        </Dropdown.Item>
+    </Dropdown.List>
 </Dropdown>
-</>
 ```
 
-### React and `popovertarget`
+### `popovertarget`
 
 When you use `popover` without `Dropdown.TriggerContext`, you link yourself trigger and `popover`.
 Then `popovertarget` is used in lowercase, so that all versions of React correctly render the attribute.
 When using `@digdir/designsystemet-react` we extend `@types/react-dom` to accept this.
 
-### Polyfill
-
-`Dropdown` uses the [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). This API is classified as [Baseline:
-Newly available (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as of April 2024,
-with Firefox as the last browser to add it. In some cases, you may find that users are locked to older browser versions for various reasons, and then it may be appropriate to add a [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill) to ensure that `Dropdown` works for everyone.
-
-## Examples
-
-### Controlled
-
-If you submit `open`, then you use `Dropdown` controlled. You can use `onClose` to get notified when `Dropdown` wants to close.
-
-Note that we do not use `onClick` on the trigger, the dropdown handles this internally and sends to `onOpen` and `onClose`.
-
-<Story story="ControlledEn" />
 
 ### Without `TriggerContext`
 
@@ -62,50 +47,25 @@ Note that we do not use `onClick` on the trigger, the dropdown handles this inte
 
 You must then add `popovertarget={id}` to `Dropdown`, and `id` to `Dropdown`.
 
-<Story story="WithoutTrigger" />
+<Story story="WithoutTrigger" language="react"/>
 
-## HTML
+### Controlled
 
-You can use the native popover API directly in HTML.
-This can be used without JavaScript, if you don't want to polyfill.
+If you submit `open`, then you use `Dropdown` controlled. You can use `onClose` to get notified when `Dropdown` wants to close.
 
-Note that the element with `popover="manual"` uses two classes, `ds-popover` and `ds-dropdown`.
+Note that we do not use `onClick` on the trigger, the dropdown handles this internally and sends to `onOpen` and `onClose`.
 
-You choose whether you want to use `popover="manual"` or just `popover` to open the dropdown.
+<Story story="ControlledEn" language="react"/>
 
-[Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using)
+### Props
 
-```html
-<button
-class="ds-button"
-data-variant="primary"
-type="button"
-popovertarget="dropdown"
->Dropdown</button>
-<div
-class="ds-popover ds-dropdown"
-id="dropdown"
-popover="manual"
-data-variant="default"
->
-<ul>
-<li>
-<button
-class="ds-button"
-data-variant="tertiary"
-type="button"
->Item</button>
-</li>
-</ul>
-</div>
+### Dropdown
 
-```
+<ReactComponentDocs />
 
-## CSS variables and data attributes
+### Arrow key navigation
 
-<CssVariables />
-
-<CssAttributes />
+You can combine Dropdown with [focusgroup](/en/components/utilities/focusgroup) to enable arrow navigation between items.
 
 ### References
 

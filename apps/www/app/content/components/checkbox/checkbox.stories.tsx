@@ -25,7 +25,9 @@ export const OneOption = () => (
 );
 
 export const Group = () => {
-  const [value, setValue] = useState<string[]>(['epost']);
+  const { getCheckboxProps } = useCheckboxGroup({
+    value: ['epost'],
+  });
 
   return (
     <Fieldset>
@@ -35,48 +37,17 @@ export const Group = () => {
       <Fieldset.Description>
         Velg alle alternativene som er relevante for deg.
       </Fieldset.Description>
-      <Checkbox
-        label='E-post'
-        value='epost'
-        checked={value.includes('epost')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'epost']);
-          } else {
-            setValue(value.filter((v) => v !== 'epost'));
-          }
-        }}
-      />
-      <Checkbox
-        label='Telefon'
-        value='telefon'
-        checked={value.includes('telefon')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'telefon']);
-          } else {
-            setValue(value.filter((v) => v !== 'telefon'));
-          }
-        }}
-      />
-      <Checkbox
-        label='SMS'
-        value='sms'
-        checked={value.includes('sms')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'sms']);
-          } else {
-            setValue(value.filter((v) => v !== 'sms'));
-          }
-        }}
-      />
+      <Checkbox label='E-post' {...getCheckboxProps('epost')} />
+      <Checkbox label='Telefon' {...getCheckboxProps('telefon')} />
+      <Checkbox label='SMS' {...getCheckboxProps('sms')} />
     </Fieldset>
   );
 };
 
 export const GroupEn = () => {
-  const [value, setValue] = useState<string[]>(['epost']);
+  const { getCheckboxProps } = useCheckboxGroup({
+    value: ['email'],
+  });
 
   return (
     <Fieldset>
@@ -84,42 +55,9 @@ export const GroupEn = () => {
       <Fieldset.Description>
         Select all the options that are relevant to you.
       </Fieldset.Description>
-      <Checkbox
-        label='E-mail'
-        value='email'
-        checked={value.includes('email')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'email']);
-          } else {
-            setValue(value.filter((v) => v !== 'email'));
-          }
-        }}
-      />
-      <Checkbox
-        label='Phone'
-        value='phone'
-        checked={value.includes('phone')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'phone']);
-          } else {
-            setValue(value.filter((v) => v !== 'phone'));
-          }
-        }}
-      />
-      <Checkbox
-        label='Text message'
-        value='text'
-        checked={value.includes('text')}
-        onChange={(e) => {
-          if (e.target.checked) {
-            setValue([...value, 'text']);
-          } else {
-            setValue(value.filter((v) => v !== 'text'));
-          }
-        }}
-      />
+      <Checkbox label='E-mail' {...getCheckboxProps('email')} />
+      <Checkbox label='Phone' {...getCheckboxProps('phone')} />
+      <Checkbox label='Text message' {...getCheckboxProps('text')} />
     </Fieldset>
   );
 };
@@ -177,7 +115,7 @@ export const Disabled = () => {
   );
 };
 
-export const ReadOnly = () => {
+export const ReadOnlyGroup = () => {
   const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
     value: ['epost'],
     readOnly: true,
@@ -349,3 +287,66 @@ export const InTableEn = () => {
     </Table>
   );
 };
+
+export const Outline = () => {
+  const { getCheckboxProps } = useCheckboxGroup({
+    value: ['drift'],
+    variant: 'outline',
+  });
+
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Hvilke varsler vil du motta?</Fieldset.Legend>
+      <Fieldset.Description>
+        Velg hvilke typer varsler som er relevante for deg.
+      </Fieldset.Description>
+      <Checkbox
+        label='Driftsmeldinger'
+        description='Varsler ved planlagt vedlikehold og driftsavvik.'
+        {...getCheckboxProps('drift')}
+      />
+      <Checkbox
+        label='Påminnelser'
+        description='Varsler om frister og oppgaver som krever handling.'
+        {...getCheckboxProps('paminnelse')}
+      />
+    </Fieldset>
+  );
+};
+
+export const OutlineEn = () => {
+  const { getCheckboxProps } = useCheckboxGroup({
+    value: ['operations'],
+    variant: 'outline',
+  });
+
+  return (
+    <Fieldset>
+      <Fieldset.Legend>
+        Which notifications do you want to receive?
+      </Fieldset.Legend>
+      <Fieldset.Description>
+        Choose the notification types that are relevant to you.
+      </Fieldset.Description>
+      <Checkbox
+        label='Service updates'
+        description='Alerts about planned maintenance and service disruptions.'
+        {...getCheckboxProps('operations')}
+      />
+      <Checkbox
+        label='Reminders'
+        description='Alerts about deadlines and tasks that need your attention.'
+        {...getCheckboxProps('reminders')}
+      />
+    </Fieldset>
+  );
+};
+
+export const ReadOnly = () => (
+  <Checkbox
+    label='Checkbox label'
+    description='Description'
+    value='value'
+    readOnly
+  />
+);

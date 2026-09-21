@@ -12,6 +12,11 @@ type ChipBaseProps = {
    * @default false
    */
   asChild?: boolean;
+  /**
+   * Change the text wrapping behavior of the chip. Use `wrap` to allow the chip to wrap text, and `nowrap` to prevent it from wrapping.
+   * @default 'nowrap'
+   */
+  'data-wrap'?: 'nowrap' | 'wrap';
 };
 
 export type ChipRemovableProps = ChipButtonProps;
@@ -69,8 +74,9 @@ export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
       asChild,
       children,
       className,
-      'data-size': size,
       'data-color': color,
+      'data-size': size,
+      'data-wrap': wrap,
       ...rest
     },
     ref,
@@ -82,8 +88,9 @@ export const ChipCheckbox = forwardRef<HTMLLabelElement, ChipCheckboxProps>(
     return (
       <Component
         className={cl('ds-chip', className)}
-        data-size={size}
         data-color={color}
+        data-size={size}
+        data-wrap={wrap}
         ref={ref}
       >
         <Input {...rest} type={inputType} />

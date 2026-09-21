@@ -29,9 +29,9 @@ Har du plassert fila di ein anna plass, eller med eit anna navn, kan du bruke `-
   "themes": {
     "my-theme": {
       "colors": {
-        "main": { "primary": "#0062BA" },
+        "primary": "#0062BA",
         "neutral": "#1E2B3C",
-        "support": { "extra1": "#F45F63" }
+        "extra1": "#F45F63"
       },
       "borderRadius": 4
     }
@@ -40,8 +40,7 @@ Har du plassert fila di ein anna plass, eller med eit anna navn, kan du bruke `-
 ```
 
 Over har me definert eit tema som heiter `my-theme` med nokre fargar og border radius.
-Legg merke til at `neutral` er definert som ein streng, medan `main` og `support` er objekt. 
-Dette er fordi `neutral` berre har ein farge, medan `main` og `support` har fleire.
+Kvar farge er definert direkte under `colors`, der nøkkelen er namnet på fargen og verdien er ein hexkode.
 
 ## Struktur
 
@@ -81,18 +80,15 @@ Viss du inkluderer `typography` i temaet ditt, må `fontFamily` vere definert.
 ### Colors
 | Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
-| main | Objekt | Ja | Hovudfargar for temaet. |
+| "fargeNavn" | Streng | Nei | Ein farge for temaet. |
 | neutral | Streng | Ja | Nøytral farge for temaet. |
-| support | Objekt | Nei | Støttefargar for temaet. Standard er tomt objekt. |
 
-Objektet for main og support inneheld fargar, der nøkkelen er fargen sitt namn og verdien er ein hexkode.
+Fargane blir definert direkte under `colors`, der nøkkelen er fargen sitt namn og verdien er ein hexkode.
 
 ```json
 {
-  "main": {
-    "primary": "#0062BA",
-    "accent": "#1E98F5"
-  },
+  "primary": "#0062BA",
+  "accent": "#1E98F5",
   "neutral": "#1E2B3C"
 }
 ```
@@ -112,7 +108,7 @@ Objektet for main og support inneheld fargar, der nøkkelen er fargen sitt namn 
 
 Overstyringen av `colors` lar deg tilpasse spesifikke semantiske fargetokens for kvar farge som er definert i temaets.
 
-Kvar nøkkel i `colors`-objektet skal samsvare med eit fargenavn frå fargane dine (både `main` og `support` fargar), eller ein av severity-fargane (`success`, `warning`, `danger`, `info`).
+Kvar nøkkel i `colors`-objektet skal samsvare med eit fargenavn frå fargane dine, eller ein av severity-fargane (`success`, `warning`, `danger`, `info`).
 
 For kvar farge kan du overstyre individuelle semantiske tokener som `background-default`, `border-subtle`, `text-default` osv.
 Kvar tokenoverstyring har ein `light` og/eller `dark` verdi som peikar til ein heksadesimal kode.
@@ -169,9 +165,11 @@ Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity
   "themes": {
     "my-theme": {
       "colors": {
-        "main": { "primary": "#0062BA", "accent": "#1E98F5" },
+        "primary": "#0062BA",
+        "accent": "#1E98F5",
+        "extra1": "#F45F63",
         "neutral": "#1E2B3C",
-        "support": { "extra1": "#F45F63", "extra2": "#E5AA20" }
+        "extra2": "#E5AA20"
       },
       "borderRadius": 4,
       "typography": {

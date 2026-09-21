@@ -4,42 +4,43 @@ search_terms: brikke, valbrikke, filterbrikke, valchip, filtervalg, valgindikato
 
 <Story story="Preview" />
 
-**Bruk `Chip` når**
+**Bruk chip når**
 - brukeren skal filtrere informasjon, for eksempel i lister eller tabeller
 - det skal vises hvilke filtre som er aktive
 
-**Unngå `Chip` når**
-- du skal vise status eller tall, bruk heller [`Badge`](/no/components/docs/badge/overview)
-- innhold skal merkes med kategori som ikke er interaktiv, bruk heller [`Tag`](/no/components/docs/tag/overview)
+**Unngå chip når**
+- du skal vise status eller tall, bruk heller [badge](/no/components/docs/badge/overview)
+- innhold skal merkes med kategori som ikke er interaktiv, bruk heller [tag](/no/components/docs/tag/overview)
 - du skal lage menyer eller navigasjonselementer
 
 
 ## Eksempel
 
-### `Chip.Checkbox`
+### Chip som checkbox
 
-`Chip.Checkbox` kan brukes som et alternativ til `Checkbox`.
+Bruk denne varianten når brukeren skal velge ett eller flere alternativ, for eksempel for å filtrere et søk eller en liste.
 
 <Story story="CheckboxVariant" />
 
-### `Chip.Removable`
+### Chip som filtervalg
 
-`Chip.Removable` inneholder et kryss som viser at filteret kan fjernes. 
+Viser et aktivt filter som brukeren kan fjerne. Krysset til høyre indikerer at filteret kan tas bort med ett klikk.
 
 <Story story="Removable" />
 
-### `Chip.Button`
+### Chip som button
 
-`Chip.Button` kan brukes som et alternativ til `Button`.
+Bruk denne varianten når chip skal utløse en handling, for eksempel for å tømme alle aktive filtre.
 
 <Story story="AsButton" />
 
 ## Retningslinjer
 
-`Chip` lar brukerne styre hvordan de vil vise innhold.
+Chip lar brukerne styre hvordan de vil vise innhold.
 
-Unngå å plassere `Chip` i vertikale lister. Skal du vise alternativ under hverandre, bruk heller [`Checkbox`](/no/components/docs/checkbox/overview) eller [`Radio`](/no/components/docs/radio/overview). En gruppe med flere `Chip` kan brytes over flere linjer.
+Unngå å plassere chip i vertikale lister. Skal du vise alternativ under hverandre, bruk heller [checkbox](/no/components/docs/checkbox/overview) eller [radio](/no/components/docs/radio/overview). 
+En gruppe med flere chip kan brytes over flere linjer.
 
 ## Tekst
 
-`Chip` bør ha så få ord som mulig, helst bare ett eller to.
+Chip bør ha så få ord som mulig, helst bare ett eller to.

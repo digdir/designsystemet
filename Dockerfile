@@ -2,10 +2,13 @@ ARG PORT
 ARG HOST
 ARG APP_ENV
 # find sha for image on https://hub.docker.com/_/node/tags
-FROM node:24.14.1-slim@sha256:06e5c9f86bfa0aaa7163cf37a5eaa8805f16b9acb48e3f85645b09d459fc2a9f AS base
+FROM node:24.21.0-slim@sha256:2fe369e969550cde8e867afc3fe370b260140cab4a23d467074295b42163d553 AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+ENV CI=true
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN corepack enable
+RUN corepack install
 
 FROM base AS packages
 COPY . /usr/src/app
@@ -19,6 +22,10 @@ ARG PORT
 ARG HOST
 ARG APP_ENV
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
+# RR v8 prerenders via an in-process Vite preview server over HTTP. Force IPv4
+# localhost resolution so the prerender can connect to it (avoids
+# `ECONNREFUSED 127.0.0.1` when `localhost` resolves to IPv6 in the container).
+ENV NODE_OPTIONS="--dns-result-order=ipv4first"
 RUN pnpm build:www
 RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 
@@ -27,7 +34,7 @@ COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
-CMD [ "pnpm", "start" ]
+CMD [ "node", "server.js" ]
 
 FROM packages AS themebuilder-build
 WORKDIR /usr/src/app
@@ -43,7 +50,7 @@ COPY --from=themebuilder-build /prod/@web/themebuilder /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
-CMD [ "pnpm", "start" ]
+CMD [ "node", "server.js" ]
 
 FROM packages AS storybook-build
 RUN pnpm build:storybook
@@ -54,7 +61,7 @@ ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm deploy --filter=@web/storybook --prod /prod/@web/storybook
 
-FROM nginx:alpine@sha256:645eda1c2477aaa9b879f73909b9222c6f19798dd45be6706268d82a661c6e6d AS storybook
+FROM nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752 AS storybook
 # remove default config
 RUN rm /etc/nginx/conf.d/default.conf
 COPY /apps/storybook/nginx.conf /etc/nginx/conf.d/storybook.conf
