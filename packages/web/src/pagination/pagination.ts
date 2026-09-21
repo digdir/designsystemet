@@ -64,6 +64,9 @@ export class DSPaginationElement extends DSElement {
   }
 }
 
+const needsAriaLabel = (el: Element) =>
+  !el.textContent?.trim() && !attr(el, ARIA_LABELLEDBY);
+
 const render = (self: DSPaginationElement) => {
   const current = Number(attr(self, ATTR_CURRENT));
   const total = Number(attr(self, ATTR_TOTAL));
@@ -75,9 +78,18 @@ const render = (self: DSPaginationElement) => {
     const href = attr(self, ATTR_HREF);
     const { next, prev, pages } = pagination({ current, total, show });
     items.forEach((item, i) => {
-      const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
+      const isStep = i > 0 && !!items[i + 1]; // First is prev, last is next
+      const page = isStep ? pages[i - 1]?.page : i ? next : prev;
       attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
-      attr(item, ARIA_LABEL, `${page ?? 'hidden'}`); // Used for CSS content and to hide if more items than pages, using aria-label to make Axe tests and VoiceOver rotor happy
+
+      if (isStep) {
+        // Also drives CSS content, hides items without a page, and keeps Axe and the VoiceOver rotor happy
+        attr(item, ARIA_LABEL, `${page ?? 'hidden'}`);
+      } else if (needsAriaLabel(item)) {
+        // If prev/next is not named by consumer fallback to CSS-variable in Norwegian
+        attr(item, ARIA_LABEL, attrOrCSS(item, ARIA_LABEL));
+      }
+
       attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
       attr(item, 'tabindex', page ? null : '-1');
       if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);
