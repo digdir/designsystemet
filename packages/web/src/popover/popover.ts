@@ -73,12 +73,10 @@ function toggle(
     source = (css && getRoot(el).querySelector<HTMLElement>(css)) || undefined; // Polyfill ToggleEvent .source for older browsers
   }
   if (!source || source === el || (oldState && oldState === newState)) return; // No need to update
-  const placement =
-    attr(el, ATTR_PLACE) ||
-    attr(source, ATTR_PLACE) ||
-    getCSSProp(el, '--_ds-floating');
+  const dsFloating = getCSSProp(el, '--_ds-floating');
+  const attrPlacement = attr(el, ATTR_PLACE) ?? attr(source, ATTR_PLACE);
 
-  if (!placement && !el.hasAttribute(ATTR_PLACE)) return; // Only take control if --_ds-floating or data-placement attributes is set
+  if (attrPlacement === null && !dsFloating) return; // Only take control if --_ds-floating or data-placement attributes is set
 
   // Use scroll-margin-bottom to measure computed arrow-size property as this does
   // not affect layout or position, makes the browser calculate the pixel value instead
@@ -87,6 +85,7 @@ function toggle(
   el.style.scrollMarginBottom = `var(--_ds-floating-arrow-size)`;
 
   const padding = 10;
+  const placement = attrPlacement || dsFloating || 'top';
   const overscroll = getCSSProp(el, '--_ds-floating-overscroll');
   const auto = attr(el, ATTR_AUTO) || attr(source, ATTR_AUTO);
   const arrowSize = parseFloat(getCSSProp(el, 'scroll-margin-bottom')) || 0;

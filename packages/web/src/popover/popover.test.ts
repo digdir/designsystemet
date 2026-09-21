@@ -40,6 +40,22 @@ describe('popover floating behavior', () => {
     expect(popover?.style.translate).toBeFalsy();
   });
 
+  it('applies floating styles when --_ds-floating is not set, but data-placement exists', async () => {
+    render(`
+      <button popovertarget="my-popover">Open</button>
+      <div id="my-popover" data-placement popover="auto">Content</div>
+    `);
+
+    const trigger = document.querySelector('button');
+    const popover = document.getElementById('my-popover');
+
+    trigger?.click();
+    await tick();
+    expect(popover?.matches(':popover-open')).toBe(true);
+    expect(popover).toHaveAttribute('data-floating');
+    expect(popover?.style.translate).toBeTruthy();
+  });
+
   it('positions the popover using floating-ui when --_ds-floating is set', async () => {
     render(`
       <button popovertarget="my-popover">Open</button>
