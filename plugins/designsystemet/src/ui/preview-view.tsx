@@ -5,7 +5,7 @@ import {
 import { getThemeColorScales } from '@digdir/designsystemet/internal';
 import type { ConfigSchema } from '@digdir/designsystemet/schemas/schema.js';
 import { ToggleGroup, ToggleGroupItem } from '@digdir/designsystemet-react';
-import { useMemo } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { resolveBorderRadiusSteps } from './border-radius';
 
 type PreviewViewProps = {
@@ -176,20 +176,43 @@ function BorderRadii({
     <div className='labeled-row'>
       <span className='row-label'>Border radius</span>
       <div className='radius-row'>
-        {steps.map(([name, px]) => {
-          const label = px === null ? 'invalid' : `${px}px`;
-          return (
-            <div className='radius-item' key={name} title={`${name}: ${label}`}>
-              <span className='radius-label'>{name}</span>
-              <div
-                data-color-scheme={scheme}
-                className='radius-sample'
-                style={{ '--radius': `${px ?? 0}px` } as React.CSSProperties}
-              />
-            </div>
-          );
-        })}
+        {steps.map(([name, step]) => (
+          <RadiusSample key={name} name={name} step={step} scheme={scheme} />
+        ))}
       </div>
+    </div>
+  );
+}
+
+function RadiusSample({
+  name,
+  step,
+  scheme,
+}: {
+  name: string;
+  step: string;
+  scheme: ColorScheme;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [computed, setComputed] = useState<string | null>(null);
+
+  useLayoutEffect(() => {
+    if (ref.current) {
+      setComputed(getComputedStyle(ref.current).borderTopLeftRadius);
+    }
+  }, [step]);
+
+  const value = computed ?? step;
+
+  return (
+    <div className='radius-item' title={`${name}: ${value}`}>
+      <span className='radius-label'>{name}</span>
+      <div
+        ref={ref}
+        className='radius-sample'
+        data-color-scheme={scheme}
+        style={{ '--radius': step } as React.CSSProperties}
+      />
     </div>
   );
 }
