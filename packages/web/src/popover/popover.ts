@@ -63,17 +63,22 @@ function toggle(
   source?: HTMLElement,
 ) {
   const isPopover = el instanceof HTMLElement && attr(el, 'popover') !== null;
-  const float = isPopover && getCSSProp(el, '--_ds-floating');
   const prev = POPOVERS.get(el as HTMLElement);
 
   if (newState === 'open' && prev && prev.source === source) return; // Prevent double binding
   prev?.cleanup(); // Cleanup if previously bound popover exists to avoid multiple autoUpdate memory leaks
-  if (newState === 'closed' || !float) return;
+  if (newState === 'closed' || !isPopover) return;
   if (!source) {
     const css = el.id && `[popovertarget="${el.id}"],[commandfor="${el.id}"]`;
     source = (css && getRoot(el).querySelector<HTMLElement>(css)) || undefined; // Polyfill ToggleEvent .source for older browsers
   }
   if (!source || source === el || (oldState && oldState === newState)) return; // No need to update
+  const placement =
+    attr(el, ATTR_PLACE) ||
+    attr(source, ATTR_PLACE) ||
+    getCSSProp(el, '--_ds-floating');
+
+  if (!placement && !el.hasAttribute(ATTR_PLACE)) return; // Only take control if --_ds-floating or data-placement attributes is set
 
   // Use scroll-margin-bottom to measure computed arrow-size property as this does
   // not affect layout or position, makes the browser calculate the pixel value instead
@@ -83,7 +88,6 @@ function toggle(
 
   const padding = 10;
   const overscroll = getCSSProp(el, '--_ds-floating-overscroll');
-  const placement = attr(el, ATTR_PLACE) || attr(source, ATTR_PLACE) || float;
   const auto = attr(el, ATTR_AUTO) || attr(source, ATTR_AUTO);
   const arrowSize = parseFloat(getCSSProp(el, 'scroll-margin-bottom')) || 0;
   const shiftProp = placement.match(/left|right/gi) ? 'Height' : 'Width';
