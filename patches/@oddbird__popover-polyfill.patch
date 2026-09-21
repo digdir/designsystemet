@@ -1,8 +1,8 @@
 diff --git a/dist/popover-fn.js b/dist/popover-fn.js
-index 103083cb3b077e006938042fcae7a913f1e59ee2..dcef2a4696fc2305a2248148f3e674870c3b5bb3 100644
+index 103083cb3b077e006938042fcae7a913f1e59ee2..a2a05a8482eae5d3b6cda6ee52c8644d94be912d 100644
 --- a/dist/popover-fn.js
 +++ b/dist/popover-fn.js
-@@ -1,16 +1,20 @@
+@@ -1,16 +1,18 @@
  // src/events.ts
 -var ToggleEvent = class extends Event {
 -  oldState;
@@ -16,21 +16,19 @@ index 103083cb3b077e006938042fcae7a913f1e59ee2..dcef2a4696fc2305a2248148f3e67487
 -    this.newState = String(init.newState || "");
 -  }
 -};
-+var ToggleEvent =
-+  typeof window === 'undefined' ?
-+    class {} :
-+    class extends Event {
-+      oldState;
-+      newState;
-+      constructor(type, init = {}) {
-+        const eventInit = Object.assign({}, init);
-+        delete eventInit.oldState;
-+        delete eventInit.newState;
-+        super(type, eventInit);
-+        this.oldState = String(init.oldState || "");
-+        this.newState = String(init.newState || "");
-+      }
-+    };
++var EventClass = globalThis.Event || class {}; // Support SSR environments without Event
++var ToggleEvent = class extends EventClass {
++    oldState;
++    newState;
++    constructor(type, init = {}) {
++      const eventInit = Object.assign({}, init);
++      delete eventInit.oldState;
++      delete eventInit.newState;
++      super(type, eventInit);
++      this.oldState = String(init.oldState || "");
++      this.newState = String(init.newState || "");
++    }
++  };
 +
  var popoverToggleTaskQueue = /* @__PURE__ */ new WeakMap();
  function queuePopoverToggleEventTask(element, oldState, newState) {
