@@ -129,7 +129,8 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
       break;
     }
-    case 'export-tokens-to-figma':
+    case 'export-tokens-to-figma': {
+      const logs: string[] = [];
       try {
         postMessage('export-tokens-to-figma', {
           status: 'exporting',
@@ -140,11 +141,12 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           throw new Error('No token model available for export.');
         }
 
-        const result = await importToFigma(tokenModel);
+        const result = await importToFigma(tokenModel, logs);
         postMessage('export-tokens-to-figma', {
           status: 'success',
           message: 'Exported tokens to Figma variables successfully.',
           logs: result.logs,
+          warnings: result.warnings,
         });
       } catch (error) {
         const errorMessage =
@@ -152,10 +154,12 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         postMessage('export-tokens-to-figma', {
           status: 'error',
           message: `Error exporting tokens: ${errorMessage}`,
+          logs,
         });
         console.error('Error exporting tokens:', error);
       }
 
       break;
+    }
   }
 };

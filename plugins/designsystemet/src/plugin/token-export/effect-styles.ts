@@ -1,4 +1,5 @@
 import { parseColorValue } from './color';
+import { warn } from './log';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
 import { parseNumber } from './utils';
@@ -34,7 +35,8 @@ export async function syncEffectStyles(
     ) as Array<Record<string, unknown>> | null;
 
     if (!Array.isArray(resolved)) {
-      logs.push(
+      warn(
+        logs,
         `Skipped effect style ${styleName} because it could not be resolved`,
       );
       continue;

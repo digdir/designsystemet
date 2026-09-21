@@ -1,4 +1,5 @@
 import type { CollectionSpec } from './collection-specs';
+import { warn } from './log';
 import { normalizeScopes } from './scopes';
 
 export async function syncCollections(
@@ -93,7 +94,9 @@ export async function syncVariables(
 
     const createdOrExisting = new Map<string, Variable>();
     let codeSyntaxUpdated = 0;
+    let codeSyntaxFailed = 0;
     let scopesUpdated = 0;
+    let scopesFailed = 0;
 
     for (const desired of spec.variables.values()) {
       let variable = variableByName.get(desired.name);
@@ -115,24 +118,46 @@ export async function syncVariables(
         logs.push(`Created variable ${collection.name}/${desired.name}`);
       }
 
-      if (syncCodeSyntax(variable, desired.codeSyntax)) {
-        codeSyntaxUpdated++;
+      // Scopes and code syntax are best-effort: Figma rejects some assignments (e.g. an invalid
+      // scope combination), and that must not abort the import before values, aliases and
+      // styles are written. Log the variable and carry on.
+      try {
+        if (syncCodeSyntax(variable, desired.codeSyntax)) {
+          codeSyntaxUpdated++;
+        }
+      } catch (error) {
+        codeSyntaxFailed++;
+        warn(
+          logs,
+          `Could not set code syntax on ${collection.name}/${desired.name}: ${errorMessage(error)}`,
+        );
       }
-      if (
-        normalizeScopes(desired.scopes) !==
-        normalizeScopes(variable.scopes ?? [])
-      ) {
-        variable.scopes = desired.scopes;
-        scopesUpdated++;
+      try {
+        if (syncScopes(variable, desired.scopes)) {
+          scopesUpdated++;
+        }
+      } catch (error) {
+        scopesFailed++;
+        warn(
+          logs,
+          `Could not set scopes on ${collection.name}/${desired.name}: ${errorMessage(error)}`,
+        );
       }
 
       createdOrExisting.set(desired.name, variable);
       byCompositeKey.set(`${collection.name}::${desired.name}`, variable);
     }
 
-    if (codeSyntaxUpdated > 0 || scopesUpdated > 0) {
+    if (codeSyntaxUpdated > 0 || codeSyntaxFailed > 0) {
       logs.push(
-        `Updated WEB code syntax on ${codeSyntaxUpdated} and scopes on ${scopesUpdated} variables in ${collection.name}`,
+        `Code syntax: updated on ${codeSyntaxUpdated} variables in ${collection.name}` +
+          (codeSyntaxFailed > 0 ? `, ${codeSyntaxFailed} failed` : ''),
+      );
+    }
+    if (scopesUpdated > 0 || scopesFailed > 0) {
+      logs.push(
+        `Scopes: updated on ${scopesUpdated} variables in ${collection.name}` +
+          (scopesFailed > 0 ? `, ${scopesFailed} failed` : ''),
       );
     }
 
@@ -202,7 +227,8 @@ export async function syncVariables(
         }
 
         if (!targetVariable) {
-          logs.push(
+          warn(
+            logs,
             `Missing alias target ${valueSpec.collection}/${valueSpec.name} for ${collection.name}/${desired.name}`,
           );
           continue;
@@ -244,4 +270,17 @@ function syncCodeSyntax(variable: Variable, expected: string | null): boolean {
     variable.removeVariableCodeSyntax('WEB');
   }
   return true;
+}
+
+// Keeps the scopes equal to the spec. Idempotent, so an unchanged variable is left alone.
+function syncScopes(variable: Variable, expected: VariableScope[]): boolean {
+  if (normalizeScopes(expected) === normalizeScopes(variable.scopes ?? [])) {
+    return false;
+  }
+  variable.scopes = expected;
+  return true;
+}
+
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }

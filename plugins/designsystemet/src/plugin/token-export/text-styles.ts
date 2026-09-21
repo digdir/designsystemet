@@ -1,5 +1,6 @@
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
+import { warn } from './log';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
 import { parseNumber, pathToFigmaName } from './utils';
@@ -38,7 +39,8 @@ export async function syncTextStyles(
     ) as Record<string, unknown> | null;
 
     if (!styleValue) {
-      logs.push(
+      warn(
+        logs,
         `Skipped text style ${styleName} because it could not be resolved`,
       );
       continue;
@@ -54,7 +56,8 @@ export async function syncTextStyles(
         : 'Regular';
     const fontName = findFontName(fontCache, fontFamily, fontWeight);
     if (!fontName) {
-      logs.push(
+      warn(
+        logs,
         `Skipped text style ${styleName} because font ${fontFamily} ${fontWeight} is unavailable`,
       );
       continue;

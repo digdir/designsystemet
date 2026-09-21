@@ -23,6 +23,8 @@ type ExportTokensToFigma = {
   status: 'exporting' | 'success' | 'error';
   message: string;
   logs?: string[];
+  // Soft failures during a successful export (skipped styles, rejected scopes, ...).
+  warnings?: string[];
 };
 
 export type FigmaMessages =

@@ -1,15 +1,17 @@
 import { buildCollectionSpecs } from './collection-specs';
 import { syncEffectStyles } from './effect-styles';
 import { type FontCache, preloadAllFonts } from './fonts';
+import { getWarnings } from './log';
 import { getTokenSetLookupOrder } from './resolver';
 import { syncTextStyles } from './text-styles';
 import type { TokenModel } from './types';
 import { syncCollections, syncVariables } from './variable-sync';
 
+// `logs` is owned by the caller so it also has the partial log when the import throws.
 export async function importToFigma(
   model: TokenModel,
-): Promise<{ logs: string[] }> {
-  const logs: string[] = [];
+  logs: string[] = [],
+): Promise<{ logs: string[]; warnings: string[] }> {
   const tokenSetOrder = getTokenSetLookupOrder(model);
 
   const fontCache: FontCache = {
@@ -34,5 +36,5 @@ export async function importToFigma(
   await syncTextStyles(model, tokenSetOrder, variableLookup, fontCache, logs);
   await syncEffectStyles(model, tokenSetOrder, logs);
 
-  return { logs };
+  return { logs, warnings: getWarnings(logs) };
 }
