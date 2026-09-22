@@ -22,8 +22,9 @@ type ExportTokensToFigma = {
   type: 'export-tokens-to-figma';
   status: 'exporting' | 'success' | 'error';
   message: string;
-  logs?: string[];
-  // Soft failures during a successful export (skipped styles, rejected scopes, ...).
+  // What the export did (created, renamed, deleted, ...).
+  info?: string[];
+  // What was skipped or could not be applied (skipped styles, rejected scopes, ...).
   warnings?: string[];
 };
 

@@ -1,6 +1,6 @@
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
-import { warn } from './log';
+import type { ImportLog } from './log';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
 import { parseNumber, pathToFigmaName } from './utils';
@@ -13,7 +13,7 @@ export async function syncTextStyles(
   tokenSetOrder: string[],
   variableLookup: Map<string, Variable>,
   fontCache: FontCache,
-  logs: string[],
+  log: ImportLog,
 ): Promise<void> {
   const desired = model.flatTokens.filter(
     (token) =>
@@ -26,7 +26,7 @@ export async function syncTextStyles(
   for (const style of existing) {
     if (style.name.startsWith('typography/') && !desiredNames.has(style.name)) {
       style.remove();
-      logs.push(`Deleted text style ${style.name}`);
+      log.info.push(`Deleted text style ${style.name}`);
     }
   }
 
@@ -39,8 +39,7 @@ export async function syncTextStyles(
     ) as Record<string, unknown> | null;
 
     if (!styleValue) {
-      warn(
-        logs,
+      log.warnings.push(
         `Skipped text style ${styleName} because it could not be resolved`,
       );
       continue;
@@ -56,8 +55,7 @@ export async function syncTextStyles(
         : 'Regular';
     const fontName = findFontName(fontCache, fontFamily, fontWeight);
     if (!fontName) {
-      warn(
-        logs,
+      log.warnings.push(
         `Skipped text style ${styleName} because font ${fontFamily} ${fontWeight} is unavailable`,
       );
       continue;
@@ -73,7 +71,7 @@ export async function syncTextStyles(
     if (!style) {
       style = figma.createTextStyle();
       style.name = styleName;
-      logs.push(`Created text style ${styleName}`);
+      log.info.push(`Created text style ${styleName}`);
     }
 
     style.fontName = fontName;

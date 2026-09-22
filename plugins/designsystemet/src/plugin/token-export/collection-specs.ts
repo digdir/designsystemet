@@ -3,7 +3,7 @@ import {
   cssVariableName,
   FIGMA_COLLECTION,
 } from '@digdir/designsystemet/internal';
-import { warn } from './log';
+import type { ImportLog } from './log';
 import { resolveValue } from './resolver';
 import { getScopes, isPrivateToken } from './scopes';
 import type { FlatToken, TokenModel } from './types';
@@ -45,7 +45,7 @@ export type CollectionSpec = {
 export function buildCollectionSpecs(
   model: TokenModel,
   tokenSetOrder: string[],
-  logs: string[],
+  log: ImportLog,
 ): CollectionSpec[] {
   const specs: CollectionSpec[] = [];
 
@@ -60,7 +60,7 @@ export function buildCollectionSpecs(
 
     for (const mode of modes) {
       collection.modeNames.push(mode.modeName);
-      buildModeVariables(model, tokenSetOrder, group, mode, collection, logs);
+      buildModeVariables(model, tokenSetOrder, group, mode, collection, log);
     }
   }
 
@@ -73,7 +73,7 @@ function buildModeVariables(
   group: string,
   mode: FigmaMode,
   collection: CollectionSpec,
-  logs: string[],
+  log: ImportLog,
 ): void {
   const modeName = mode.modeName;
   const modeTokenSetOrder = getModeTokenSetLookupOrder(tokenSetOrder, mode);
@@ -130,8 +130,7 @@ function buildModeVariables(
 
           // No scope rule for a public variable is a likely naming-drift signal.
           if (scopeRule === null && !isPrivateToken(token.path)) {
-            warn(
-              logs,
+            log.warnings.push(
               `No scope rule matched ${group}/${entry.name} (${token.tokenSet} ${token.path})`,
             );
           }
@@ -139,8 +138,7 @@ function buildModeVariables(
 
         const variable = collection.variables.get(entry.name);
         if (!variable) {
-          warn(
-            logs,
+          log.warnings.push(
             `Variable not found for ${group}/${entry.name} (${modeName})`,
           );
           continue;
@@ -155,8 +153,7 @@ function buildModeVariables(
         );
 
         if (!valueSpec) {
-          warn(
-            logs,
+          log.warnings.push(
             `Skipped unresolved value for ${group}/${entry.name} (${modeName})`,
           );
           continue;

@@ -106,6 +106,7 @@ function App() {
               break;
             case 'success': {
               const warnings = msg.warnings ?? [];
+              // TODO add some kind of verbose option or detailed view for info messages
               dispatch({
                 type: 'export-finished',
                 notification:
@@ -125,7 +126,7 @@ function App() {
                 notification: {
                   kind: 'error',
                   text: msg.message,
-                  details: msg.logs,
+                  details: [...(msg.warnings ?? []), ...(msg.info ?? [])],
                 },
               });
               break;

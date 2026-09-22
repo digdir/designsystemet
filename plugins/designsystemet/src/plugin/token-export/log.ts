@@ -1,15 +1,10 @@
-// Import log lines are plain strings collected in one array. Lines about something that was
-// skipped or could not be applied are prefixed so the UI can surface them as warnings after an
-// otherwise successful import, instead of burying them among the informational lines.
+// The import log has two channels: `info` for what was done (created, renamed, deleted, ...)
+// and `warnings` for what was skipped or could not be applied. The UI shows warnings after an
+// otherwise successful import; both are posted so a hard failure still carries the partial log.
 
-const WARNING_PREFIX = 'Warning: ';
+export type ImportLog = {
+  info: string[];
+  warnings: string[];
+};
 
-export function warn(logs: string[], message: string): void {
-  logs.push(`${WARNING_PREFIX}${message}`);
-}
-
-export function getWarnings(logs: string[]): string[] {
-  return logs
-    .filter((line) => line.startsWith(WARNING_PREFIX))
-    .map((line) => line.slice(WARNING_PREFIX.length));
-}
+export const createImportLog = (): ImportLog => ({ info: [], warnings: [] });

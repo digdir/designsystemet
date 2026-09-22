@@ -1,10 +1,10 @@
 import type { CollectionSpec } from './collection-specs';
-import { warn } from './log';
+import type { ImportLog } from './log';
 import { normalizeScopes } from './scopes';
 
 export async function syncCollections(
   specs: CollectionSpec[],
-  logs: string[],
+  log: ImportLog,
 ): Promise<Map<string, VariableCollection>> {
   const existingCollections =
     await figma.variables.getLocalVariableCollectionsAsync();
@@ -19,10 +19,10 @@ export async function syncCollections(
       figma.variables.createVariableCollection(spec.name);
 
     if (!collectionByName.has(spec.name)) {
-      logs.push(`Created collection: ${spec.name}`);
+      log.info.push(`Created collection: ${spec.name}`);
     }
 
-    await ensureModes(collection, spec.modeNames, logs);
+    await ensureModes(collection, spec.modeNames, log);
     result.set(spec.name, collection);
   }
 
@@ -32,7 +32,7 @@ export async function syncCollections(
 async function ensureModes(
   collection: VariableCollection,
   desiredModeNames: string[],
-  logs: string[],
+  log: ImportLog,
 ): Promise<void> {
   if (desiredModeNames.length === 0) {
     return;
@@ -42,7 +42,7 @@ async function ensureModes(
 
   if (existing.length === 1 && existing[0].name !== desiredModeNames[0]) {
     collection.renameMode(existing[0].modeId, desiredModeNames[0]);
-    logs.push(
+    log.info.push(
       `Renamed mode ${existing[0].name} -> ${desiredModeNames[0]} in ${collection.name}`,
     );
   }
@@ -50,14 +50,14 @@ async function ensureModes(
   for (const modeName of desiredModeNames) {
     if (!collection.modes.some((mode) => mode.name === modeName)) {
       collection.addMode(modeName);
-      logs.push(`Created mode ${modeName} in ${collection.name}`);
+      log.info.push(`Created mode ${modeName} in ${collection.name}`);
     }
   }
 
   for (const mode of collection.modes.slice()) {
     if (!desiredModeNames.includes(mode.name) && collection.modes.length > 1) {
       collection.removeMode(mode.modeId);
-      logs.push(`Deleted mode ${mode.name} from ${collection.name}`);
+      log.info.push(`Deleted mode ${mode.name} from ${collection.name}`);
     }
   }
 }
@@ -65,7 +65,7 @@ async function ensureModes(
 export async function syncVariables(
   specs: CollectionSpec[],
   collectionMap: Map<string, VariableCollection>,
-  logs: string[],
+  log: ImportLog,
 ): Promise<Map<string, Variable>> {
   const allVariables = await figma.variables.getLocalVariablesAsync();
   const byCompositeKey = new Map<string, Variable>();
@@ -88,7 +88,7 @@ export async function syncVariables(
       const desired = spec.variables.get(variable.name);
       if (!desired) {
         variable.remove();
-        logs.push(`Deleted variable ${collection.name}/${variable.name}`);
+        log.info.push(`Deleted variable ${collection.name}/${variable.name}`);
       }
     }
 
@@ -103,7 +103,7 @@ export async function syncVariables(
 
       if (variable && variable.resolvedType !== desired.type) {
         variable.remove();
-        logs.push(
+        log.info.push(
           `Deleted variable ${collection.name}/${desired.name} because type changed to ${desired.type}`,
         );
         variable = undefined;
@@ -115,7 +115,7 @@ export async function syncVariables(
           collection,
           desired.type,
         );
-        logs.push(`Created variable ${collection.name}/${desired.name}`);
+        log.info.push(`Created variable ${collection.name}/${desired.name}`);
       }
 
       // Scopes and code syntax are best-effort: Figma rejects some assignments (e.g. an invalid
@@ -127,8 +127,7 @@ export async function syncVariables(
         }
       } catch (error) {
         codeSyntaxFailed++;
-        warn(
-          logs,
+        log.warnings.push(
           `Could not set code syntax on ${collection.name}/${desired.name}: ${errorMessage(error)}`,
         );
       }
@@ -138,8 +137,7 @@ export async function syncVariables(
         }
       } catch (error) {
         scopesFailed++;
-        warn(
-          logs,
+        log.warnings.push(
           `Could not set scopes on ${collection.name}/${desired.name}: ${errorMessage(error)}`,
         );
       }
@@ -149,13 +147,13 @@ export async function syncVariables(
     }
 
     if (codeSyntaxUpdated > 0 || codeSyntaxFailed > 0) {
-      logs.push(
+      log.info.push(
         `Code syntax: updated on ${codeSyntaxUpdated} variables in ${collection.name}` +
           (codeSyntaxFailed > 0 ? `, ${codeSyntaxFailed} failed` : ''),
       );
     }
     if (scopesUpdated > 0 || scopesFailed > 0) {
-      logs.push(
+      log.info.push(
         `Scopes: updated on ${scopesUpdated} variables in ${collection.name}` +
           (scopesFailed > 0 ? `, ${scopesFailed} failed` : ''),
       );
@@ -227,8 +225,7 @@ export async function syncVariables(
         }
 
         if (!targetVariable) {
-          warn(
-            logs,
+          log.warnings.push(
             `Missing alias target ${valueSpec.collection}/${valueSpec.name} for ${collection.name}/${desired.name}`,
           );
           continue;
