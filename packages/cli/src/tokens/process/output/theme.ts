@@ -174,7 +174,7 @@ ${fileHeader}
     sortByDefinedOrder,
     pickOutputs,
     R.join('\n'),
-    (content) => header + content + forcedColors(),
+    (content) => header + content + forcedColors(), // make sure forced colors are appended at the end
   );
 
   const themeCSSFiles: OutputFile[] = Object.entries(groupedByTheme).map(([theme, files]) => ({
