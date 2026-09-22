@@ -29,6 +29,8 @@ type SystemColorVariables =
   | 'Highlight'
   | 'HighlightText';
 
+const forcedColorsLayer = 'ds.theme.forced-colors';
+
 /** Snippet with forced colors support for high contrast mode using system color variables
  * @link https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors
  * @link https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/*/
@@ -57,7 +59,7 @@ function forcedColors() {
   };
 
   return `
-@layer ds.theme.forced-colors {
+@layer ${forcedColorsLayer} {
   @media (forced-colors: active) {
     :root,
     [data-color],
@@ -156,6 +158,7 @@ order may change due to nondeterminism.`.trim(),
   });
 
   const header = `@charset "UTF-8";
+  @layer ds.theme.color, ${forcedColorsLayer};
 /*
 ${fileHeader}
 */
