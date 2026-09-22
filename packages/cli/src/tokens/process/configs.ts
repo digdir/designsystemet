@@ -13,13 +13,13 @@ import { typeScaleVariables } from './configs/type-scale.ts';
 import { typographyVariables } from './configs/typography.ts';
 import { formats } from './formats/css.ts';
 import { buildOptions } from './platform.ts';
-import { resolveMath, sizeRem, typographyName, unitless } from './transformers.ts';
+import { dsName, resolveMath, sizeRem, unitless } from './transformers.ts';
 import { getMultidimensionalThemes, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.ts';
 
 void register(StyleDictionary, { withSDBuiltins: false });
 
 StyleDictionary.registerTransform(sizeRem);
-StyleDictionary.registerTransform(typographyName);
+StyleDictionary.registerTransform(dsName);
 StyleDictionary.registerTransform(resolveMath);
 StyleDictionary.registerTransform(unitless);
 
