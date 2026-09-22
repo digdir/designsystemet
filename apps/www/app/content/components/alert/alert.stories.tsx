@@ -8,15 +8,17 @@ import {
 import { useState } from 'react';
 
 export const Preview = () => {
-  return <Alert>En beskjed det er viktig at brukeren ser</Alert>;
+  return <Alert role='alert'>En beskjed det er viktig at brukeren ser</Alert>;
 };
 
 export const PreviewEn = () => {
-  return <Alert>A message that is important for the user to see</Alert>;
+  return (
+    <Alert role='alert'>A message that is important for the user to see</Alert>
+  );
 };
 
 export const VariantInfo = () => (
-  <Alert data-color='info'>
+  <Alert role='status' data-color='info'>
     <Heading
       level={2}
       data-size='xs'
@@ -34,7 +36,7 @@ export const VariantInfo = () => (
 );
 
 export const VariantInfoEn = () => (
-  <Alert data-color='info'>
+  <Alert role='status' data-color='info'>
     <Heading
       level={2}
       data-size='xs'
@@ -52,7 +54,7 @@ export const VariantInfoEn = () => (
 );
 
 export const VariantSuccess = () => (
-  <Alert data-color='success'>
+  <Alert role='status' data-color='success'>
     <Heading
       level={2}
       data-size='xs'
@@ -70,7 +72,7 @@ export const VariantSuccess = () => (
 );
 
 export const VariantSuccessEn = () => (
-  <Alert data-color='success'>
+  <Alert role='status' data-color='success'>
     <Heading
       level={2}
       data-size='xs'
@@ -88,7 +90,7 @@ export const VariantSuccessEn = () => (
 );
 
 export const VariantWarning = () => (
-  <Alert data-color='warning'>
+  <Alert role='status' data-color='warning'>
     <Heading
       level={2}
       data-size='xs'
@@ -106,7 +108,7 @@ export const VariantWarning = () => (
 );
 
 export const VariantWarningEn = () => (
-  <Alert data-color='warning'>
+  <Alert role='status' data-color='warning'>
     <Heading
       level={2}
       data-size='xs'
@@ -124,7 +126,7 @@ export const VariantWarningEn = () => (
 );
 
 export const VariantDanger = () => (
-  <Alert data-color='danger' role='alert'>
+  <Alert role='alert' data-color='danger'>
     <Heading
       level={2}
       data-size='xs'
@@ -143,7 +145,7 @@ export const VariantDanger = () => (
 );
 
 export const VariantDangerEn = () => (
-  <Alert data-color='danger' role='alert'>
+  <Alert role='alert' data-color='danger'>
     <Heading
       level={2}
       data-size='xs'
@@ -162,7 +164,7 @@ export const VariantDangerEn = () => (
 );
 
 export const WithHeading = () => (
-  <Alert>
+  <Alert role='status'>
     <Heading
       level={2}
       data-size='xs'
@@ -180,7 +182,7 @@ export const WithHeading = () => (
 );
 
 export const WithHeadingEn = () => (
-  <Alert>
+  <Alert role='status'>
     <Heading
       level={2}
       data-size='xs'
@@ -198,19 +200,19 @@ export const WithHeadingEn = () => (
 );
 
 export const WithOnlyHeading = () => (
-  <Alert data-color='warning'>
+  <Alert role='status' data-color='warning'>
     <Paragraph> Du har 7 dager igjen på å fullføre søknaden.</Paragraph>
   </Alert>
 );
 
 export const WithOnlyHeadingEn = () => (
-  <Alert data-color='warning'>
+  <Alert role='status' data-color='warning'>
     <Paragraph>You have 7 days left to complete the application.</Paragraph>
   </Alert>
 );
 
 export const MedLenke = () => (
-  <Alert data-color='warning'>
+  <Alert role='status' data-color='warning'>
     <Heading
       level={2}
       data-size='xs'
@@ -228,7 +230,7 @@ export const MedLenke = () => (
 );
 
 export const MedLenkeEn = () => (
-  <Alert data-color='warning'>
+  <Alert role='status' data-color='warning'>
     <Heading
       level={2}
       data-size='xs'
@@ -259,7 +261,7 @@ export const CorrectLiveRegionReact = () => {
       {/* Korrekt bruk: role="alert" ligger på elementet der varselet dukker opp */}
       <div role='alert'>
         {showAlert && (
-          <Alert data-color='warning'>
+          <Alert role='status' data-color='warning'>
             <Heading
               level={2}
               data-size='xs'
@@ -294,7 +296,7 @@ export const CorrectLiveRegionReactEn = () => {
       {/* Correct use: role="alert" is placed on the element where the alert appears */}
       <div role='alert'>
         {showAlert && (
-          <Alert data-color='warning'>
+          <Alert role='status' data-color='warning'>
             <Heading
               level={2}
               data-size='xs'
