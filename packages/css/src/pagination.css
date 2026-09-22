@@ -28,10 +28,10 @@
       visibility: hidden;
     }
 
-    & > li:first-child > * {
+    & > li:first-child {
       --_ds-aria-label: var(--dsc-pagination-label-prev);
     }
-    & > li:last-child > * {
+    & > li:last-child {
       --_ds-aria-label: var(--dsc-pagination-label-next);
     }
 
