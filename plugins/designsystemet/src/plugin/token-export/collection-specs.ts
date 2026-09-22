@@ -2,10 +2,10 @@ import type { FigmaMode } from '@digdir/designsystemet/internal';
 import {
   cssVariableName,
   FIGMA_COLLECTION,
+  figmaVariableScopes,
 } from '@digdir/designsystemet/internal';
 import type { ImportLog } from './log';
 import { resolveValue } from './resolver';
-import { getScopes, isPrivateToken } from './scopes';
 import type { FlatToken, TokenModel } from './types';
 import { inferVariableName, pathToFigmaName } from './utils';
 import {
@@ -117,7 +117,10 @@ function buildModeVariables(
             token.path.split('.'),
             token.tokenSet,
           );
-          const scopeRule = getScopes(group, variableType, entry.name);
+          const scopeRule = figmaVariableScopes(group, {
+            path: token.path.split('.'),
+            type: token.type,
+          });
           collection.variables.set(entry.name, {
             name: entry.name,
             type: variableType,
@@ -128,8 +131,8 @@ function buildModeVariables(
             valuesByMode: new Map<string, ValueSpec>(),
           });
 
-          // No scope rule for a public variable is a likely naming-drift signal.
-          if (scopeRule === null && !isPrivateToken(token.path)) {
+          // No scope rule is a naming-drift signal (private tokens are handled by the rules).
+          if (scopeRule === null) {
             log.warnings.push(
               `No scope rule matched ${group}/${entry.name} (${token.tokenSet} ${token.path})`,
             );

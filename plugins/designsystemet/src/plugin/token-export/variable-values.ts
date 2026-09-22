@@ -1,3 +1,4 @@
+import { figmaVariableType } from '@digdir/designsystemet/internal';
 import { parseColorValue } from './color';
 import { parseNumber } from './utils';
 
@@ -7,24 +8,7 @@ import { parseNumber } from './utils';
 export function mapTokenTypeToVariableType(
   type: string | null,
 ): VariableResolvedDataType | null {
-  switch (type) {
-    case 'color':
-      return 'COLOR';
-    case 'dimension':
-    case 'number':
-    case 'borderWidth':
-    case 'opacity':
-    case 'fontSizes':
-    case 'lineHeights':
-    case 'letterSpacing':
-      return 'FLOAT';
-    case 'fontFamilies':
-    case 'fontWeights':
-    case 'text':
-      return 'STRING';
-    default:
-      return null;
-  }
+  return figmaVariableType(type);
 }
 
 export function convertRawVariableValue(
