@@ -3,8 +3,9 @@ import {
   cssVariableName,
   FIGMA_COLLECTION,
 } from '@digdir/designsystemet/internal';
+import type { ImportLog } from './log';
 import { resolveValue } from './resolver';
-import { COVERED_COLLECTIONS, getScopes } from './scopes';
+import { getScopes, isPrivateToken } from './scopes';
 import type { FlatToken, TokenModel } from './types';
 import { inferVariableName, pathToFigmaName } from './utils';
 import {
@@ -44,7 +45,7 @@ export type CollectionSpec = {
 export function buildCollectionSpecs(
   model: TokenModel,
   tokenSetOrder: string[],
-  logs: string[],
+  log: ImportLog,
 ): CollectionSpec[] {
   const specs: CollectionSpec[] = [];
 
@@ -59,7 +60,7 @@ export function buildCollectionSpecs(
 
     for (const mode of modes) {
       collection.modeNames.push(mode.modeName);
-      buildModeVariables(model, tokenSetOrder, group, mode, collection, logs);
+      buildModeVariables(model, tokenSetOrder, group, mode, collection, log);
     }
   }
 
@@ -72,7 +73,7 @@ function buildModeVariables(
   group: string,
   mode: FigmaMode,
   collection: CollectionSpec,
-  logs: string[],
+  log: ImportLog,
 ): void {
   const modeName = mode.modeName;
   const modeTokenSetOrder = getModeTokenSetLookupOrder(tokenSetOrder, mode);
@@ -116,31 +117,28 @@ function buildModeVariables(
             token.path.split('.'),
             token.tokenSet,
           );
-          const scopes = getScopes(group, variableType, entry.name);
+          const scopeRule = getScopes(group, variableType, entry.name);
           collection.variables.set(entry.name, {
             name: entry.name,
             type: variableType,
+            // Whether a token has a CSS property is decided by the CLI's naming rules, which are
+            // tested against the build output, so a missing code syntax is a fact rather than drift.
             codeSyntax: cssVariable ? `var(${cssVariable})` : null,
-            scopes,
+            scopes: scopeRule ?? [],
             valuesByMode: new Map<string, ValueSpec>(),
           });
 
-          // A variable in a covered collection that matched neither a scope nor a code syntax
-          // rule is a likely naming-drift signal.
-          if (
-            COVERED_COLLECTIONS.includes(group) &&
-            scopes.length === 0 &&
-            !cssVariable
-          ) {
-            logs.push(
-              `No scope or code syntax rule matched ${group}/${entry.name} (${token.tokenSet} ${token.path})`,
+          // No scope rule for a public variable is a likely naming-drift signal.
+          if (scopeRule === null && !isPrivateToken(token.path)) {
+            log.warnings.push(
+              `No scope rule matched ${group}/${entry.name} (${token.tokenSet} ${token.path})`,
             );
           }
         }
 
         const variable = collection.variables.get(entry.name);
         if (!variable) {
-          logs.push(
+          log.warnings.push(
             `Variable not found for ${group}/${entry.name} (${modeName})`,
           );
           continue;
@@ -155,7 +153,7 @@ function buildModeVariables(
         );
 
         if (!valueSpec) {
-          logs.push(
+          log.warnings.push(
             `Skipped unresolved value for ${group}/${entry.name} (${modeName})`,
           );
           continue;

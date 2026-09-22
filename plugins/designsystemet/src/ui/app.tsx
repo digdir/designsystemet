@@ -104,19 +104,29 @@ function App() {
             case 'exporting':
               dispatch({ type: 'export-started' });
               break;
-            case 'success':
+            case 'success': {
+              const warnings = msg.warnings ?? [];
+              // TODO add some kind of verbose option or detailed view for info messages
               dispatch({
                 type: 'export-finished',
-                notification: { kind: 'success', text: msg.message },
+                notification:
+                  warnings.length > 0
+                    ? {
+                        kind: 'warning',
+                        text: `Exported tokens to Figma variables, but ${warnings.length} ${warnings.length === 1 ? 'item was' : 'items were'} skipped or could not be applied:`,
+                        details: warnings,
+                      }
+                    : { kind: 'success', text: msg.message },
               });
               break;
+            }
             case 'error':
               dispatch({
                 type: 'export-finished',
                 notification: {
                   kind: 'error',
                   text: msg.message,
-                  details: msg.logs,
+                  details: [...(msg.warnings ?? []), ...(msg.info ?? [])],
                 },
               });
               break;
@@ -214,6 +224,9 @@ function App() {
   );
 }
 
+// Longer lists are cut off with an "and N more" line so the banner stays readable.
+const MAX_DETAILS = 8;
+
 function Banner({
   notification,
   onDismiss,
@@ -229,9 +242,12 @@ function Banner({
         <span>{notification.text}</span>
         {notification.details && notification.details.length > 0 && (
           <ul className='banner-details'>
-            {notification.details.slice(0, 8).map((line, index) => (
+            {notification.details.slice(0, MAX_DETAILS).map((line, index) => (
               <li key={index}>{line}</li>
             ))}
+            {notification.details.length > MAX_DETAILS && (
+              <li>and {notification.details.length - MAX_DETAILS} more</li>
+            )}
           </ul>
         )}
       </div>

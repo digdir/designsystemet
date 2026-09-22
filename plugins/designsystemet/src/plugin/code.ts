@@ -16,6 +16,7 @@ import type { TokenSets } from '@digdir/designsystemet/tokens/types';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { importToFigma } from './token-export/importer';
+import { createImportLog } from './token-export/log';
 import { buildTokenModel } from './token-export/token-model';
 import type { TokenModel } from './token-export/types';
 
@@ -129,7 +130,8 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
       break;
     }
-    case 'export-tokens-to-figma':
+    case 'export-tokens-to-figma': {
+      const log = createImportLog();
       try {
         postMessage('export-tokens-to-figma', {
           status: 'exporting',
@@ -140,11 +142,12 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           throw new Error('No token model available for export.');
         }
 
-        const result = await importToFigma(tokenModel);
+        const result = await importToFigma(tokenModel, log);
         postMessage('export-tokens-to-figma', {
           status: 'success',
           message: 'Exported tokens to Figma variables successfully.',
-          logs: result.logs,
+          info: result.info,
+          warnings: result.warnings,
         });
       } catch (error) {
         const errorMessage =
@@ -152,10 +155,13 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         postMessage('export-tokens-to-figma', {
           status: 'error',
           message: `Error exporting tokens: ${errorMessage}`,
+          info: log.info,
+          warnings: log.warnings,
         });
         console.error('Error exporting tokens:', error);
       }
 
       break;
+    }
   }
 };
