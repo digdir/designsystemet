@@ -17,6 +17,7 @@
 
   &::before {
     background: currentcolor;
+    forced-color-adjust: none; /* Enable drawing with background property */
     content: '';
     height: var(--dsc-validation-message-icon-size);
     margin-inline: calc(
@@ -27,10 +28,6 @@
     position: absolute;
     translate: 0 calc((1lh - var(--dsc-validation-message-icon-size)) / 2); /* Center icon to line height */
     width: var(--dsc-validation-message-icon-size);
-
-    @media (forced-colors: active) {
-      background: CanvasText;
-    }
   }
 
   &[data-color='success'] {

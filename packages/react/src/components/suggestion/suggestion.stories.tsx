@@ -513,7 +513,7 @@ export const FetchExternal = meta.story({
           data-sr-singular='%d country'
           data-sr-plural='%d countries'
         >
-          <Suggestion.Input onInput={handleInput} />
+          <Suggestion.Input type="search" onInput={handleInput} />
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>

@@ -124,6 +124,7 @@
     cursor: pointer;
     display: block;
     font-size: var(--dsc-suggestion-chip-font-size);
+    forced-color-adjust: none; /* Prevent "backplate" behind text, see https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/ */
     height: var(--dsc-suggestion-chip-height);
     line-height: var(--ds-line-height-sm);
     min-width: 0; /* Allow text-overflow: ellipsis to work when placed inside display: flex */
@@ -139,6 +140,7 @@
     &::after {
       content: '';
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       height: var(--dsc-suggestion-chip-icon-size);
       inset-block-start: 50%;
       inset-inline-end: var(--dsc-suggestion-chip-spacing);
@@ -148,10 +150,6 @@
       position: absolute;
       translate: 0 -50%;
       width: var(--dsc-suggestion-chip-icon-size);
-      @media (forced-colors: active) {
-        background-color: CanvasText;
-        forced-color-adjust: none; /* To be able to draw check */
-      }
     }
 
     @composes ds-print-preserve from './base.css';
@@ -236,12 +234,9 @@
         inset-inline-start: var(--dsc-suggestion-option-padding);
         mask: var(--dsc-suggestion-option-checkmark-url) center / contain no-repeat;
         background: currentcolor;
+        forced-color-adjust: none; /* Enable drawing with background property */
         width: var(--dsc-suggestion-option-checkmark-size);
         height: var(--dsc-suggestion-option-checkmark-size);
-        @media (forced-colors: active) {
-          background-color: LinkText;
-          forced-color-adjust: none; /* To be able to draw check */
-        }
       }
     }
 
@@ -322,6 +317,7 @@
     &::before {
       display: block;
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       color: inherit;
       mask: var(--dsc-suggestion-create-icon-url) center / contain no-repeat;
     }
@@ -356,14 +352,11 @@
     margin-inline-start: var(--dsc-suggestion-clear-gap);
     pointer-events: none;
     background: currentcolor;
+    forced-color-adjust: none; /* Enable drawing with background property */
     content: '';
     height: var(--dsc-suggestion-search-icon-size);
     width: var(--dsc-suggestion-search-icon-size);
     mask: var(--dsc-suggestion-search-icon-url) center / contain no-repeat;
-
-    @media (forced-colors: active) {
-      background: CanvasText;
-    }
   }
 
   /**
@@ -419,14 +412,11 @@
     &:empty::before {
       content: '';
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       display: block;
       height: 100%;
       mask: var(--dsc-suggestion-clear-icon-url) center / contain no-repeat;
       width: 100%;
-      @media (forced-colors: active) {
-        background-color: canvastext;
-        forced-color-adjust: none; /* To be able to draw check */
-      }
     }
   }
   & > button[aria-expanded]:empty::before {

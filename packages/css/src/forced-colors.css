@@ -1,0 +1,24 @@
+@media (forced-colors: active) {
+  :root, [data-color], [data-color-scheme] {
+    --ds-color-background-default: Canvas;
+    --ds-color-background-tinted: Canvas;
+    --ds-color-surface-default: Canvas;
+    --ds-color-surface-tinted: ButtonFace;
+    --ds-color-surface-hover: ButtonFace;
+    --ds-color-surface-active: ButtonFace;
+    --ds-color-surface-muted: ButtonFace;
+    --ds-color-border-subtle: ButtonBorder;
+    --ds-color-border-default: ButtonBorder;
+    --ds-color-border-strong: ButtonBorder;
+    --ds-color-border-muted: ButtonBorder;
+    --ds-color-text-tinted: CanvasText;
+    --ds-color-text-subtle: CanvasText;
+    --ds-color-text-default: CanvasText;
+    --ds-color-text-muted: GrayText;
+    --ds-color-base-default: Highlight; /* Using Highlight instead of Accent as Windows contrast mode uses same color for Canvas and Accent */
+    --ds-color-base-hover: Highlight;
+    --ds-color-base-active: Highlight;
+    --ds-color-base-contrast-subtle: HighlightText;
+    --ds-color-base-contrast-default: HighlightText;
+  }
+}

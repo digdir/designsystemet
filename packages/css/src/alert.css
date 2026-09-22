@@ -27,7 +27,8 @@
 
   & > :is(h1, h2, h3, h4, h5, h6):first-child::before /* If Alert starts with Heading, align icon to this */,
   &:not(:has(> :is(h1, h2, h3, h4, h5, h6):first-child))::before /* If there is no Heading, align icon to Alert itself */ {
-    background: var(--dsc-alert-icon-color);
+    background: currentcolor;
+    forced-color-adjust: none; /* Enable drawing with background property */
     content: '';
     height: var(--dsc-alert-icon-size);
     margin-inline: calc(
@@ -39,10 +40,6 @@
     translate: 0 calc((1lh - var(--dsc-alert-icon-size)) / 2); /* Center icon to line height */
     width: var(--dsc-alert-icon-size);
     @composes ds-print-preserve from './base.css';
-
-    @media (forced-colors: active) {
-      background: CanvasText;
-    }
   }
 
   /**

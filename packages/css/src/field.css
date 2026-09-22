@@ -143,10 +143,6 @@
     &[data-variant='outline']:has(input:checked) {
       --_dsc-field-border-color: var(--dsc-field-border-color--checked);
       --_dsc-field-outline-width: var(--dsc-field-border-width--active);
-
-      @media (forced-colors: active) {
-        border-color: LinkText;
-      }
     }
     &[data-variant='outline']:has(input[aria-invalid='true']) {
       --_dsc-field-border-color: var(--dsc-field-border-color--invalid);
@@ -155,10 +151,6 @@
       cursor: default;
       --_dsc-field-border-color: var(--dsc-field-border-color--readonly);
       --_dsc-field-outline-width: var(--ds-border-width-default);
-
-      @media (forced-colors: active) {
-        border-color: GrayText;
-      }
     }
   }
 }
