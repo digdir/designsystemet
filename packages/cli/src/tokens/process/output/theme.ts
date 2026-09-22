@@ -68,7 +68,7 @@ function forcedColors() {
         .map(([key, value]) => `--ds-color-${key}: ${value};`)
         .join('\n    ')}
     }
-    }
+  }
 }
 `;
 }
@@ -157,8 +157,9 @@ order may change due to nondeterminism.`.trim(),
     return sortIndex;
   });
 
+  // Ensure correct order of scheme vs. color vs. forced colors
   const header = `@charset "UTF-8";
-  @layer ds.theme.color, ${forcedColorsLayer};
+@layer ds.theme.color-scheme, ds.theme.color, ${forcedColorsLayer};
 /*
 ${fileHeader}
 */
@@ -177,7 +178,7 @@ ${fileHeader}
     sortByDefinedOrder,
     pickOutputs,
     R.join('\n'),
-    (content) => header + content + forcedColors(), // make sure forced colors are appended at the end
+    (content) => header + content + forcedColors(), // Append forced colors at the end
   );
 
   const themeCSSFiles: OutputFile[] = Object.entries(groupedByTheme).map(([theme, files]) => ({

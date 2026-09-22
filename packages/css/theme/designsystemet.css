@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@layer ds.theme.color-scheme, ds.theme.color, ds.theme.forced-colors;
 /*
 build: v1.22.0
 design-tokens: v1.22.0
@@ -1092,5 +1093,5 @@ design-tokens: v1.22.0
     --ds-color-focus-inner: Canvas;
     --ds-color-focus-outer: CanvasText;
     }
-    }
+  }
 }
