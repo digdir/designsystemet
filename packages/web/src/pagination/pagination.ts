@@ -64,7 +64,7 @@ export class DSPaginationElement extends DSElement {
   }
 }
 
-const needsAriaLabel = (el: Element) =>
+const isNamedByAriaLabel = (el: Element) =>
   !el.textContent?.trim() && !attr(el, ARIA_LABELLEDBY);
 
 const render = (self: DSPaginationElement) => {
@@ -85,7 +85,7 @@ const render = (self: DSPaginationElement) => {
       if (isStep) {
         // Also drives CSS content, hides items without a page, and keeps Axe and the VoiceOver rotor happy
         attr(item, ARIA_LABEL, `${page ?? 'hidden'}`);
-      } else if (needsAriaLabel(item)) {
+      } else if (isNamedByAriaLabel(item)) {
         // If prev/next is not named by consumer fallback to CSS-variable in Norwegian
         attr(item, ARIA_LABEL, attrOrCSS(item, ARIA_LABEL));
       }
