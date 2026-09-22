@@ -9,6 +9,8 @@
   &:lang(nb),
   &:lang(nn) {
     --dsc-pagination-label: 'Bla i sider'; /* Only set default label if Norwegian */
+    --dsc-pagination-label-prev: 'Forrige side';
+    --dsc-pagination-label-next: 'Neste side';
   }
 
   & :is(ol, ul) {
@@ -24,6 +26,13 @@
     & > li:first-child > [aria-hidden='true'],
     & > li:last-child > [aria-hidden='true'] {
       visibility: hidden;
+    }
+
+    & > li:first-child {
+      --_ds-aria-label: var(--dsc-pagination-label-prev);
+    }
+    & > li:last-child {
+      --_ds-aria-label: var(--dsc-pagination-label-next);
     }
 
     /* Recreates button data-variant="tertiary" when not selected */
