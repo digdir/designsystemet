@@ -1,5 +1,6 @@
 /** Export internal utilities for use in other Designsystemet apps */
 
+export { figmaCodeSyntax } from './figma/code-syntax.ts';
 export {
   FIGMA_COLLECTION,
   type FigmaCollections,
