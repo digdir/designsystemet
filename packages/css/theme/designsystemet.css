@@ -1068,7 +1068,7 @@ design-tokens: v1.22.0
 
 }
 
-@layer ds.forced-colors {
+@layer ds.theme.forced-colors {
   @media (forced-colors: active) {
     :root,
     [data-color],

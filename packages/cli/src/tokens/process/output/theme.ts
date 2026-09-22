@@ -56,9 +56,8 @@ function forcedColors() {
     'focus-outer': 'CanvasText',
   };
 
-  // must be separate layer and not subset to ensure forced colors are applied correctly when ordering CSS layers
   return `
-@layer ds.forced-colors {
+@layer ds.theme.forced-colors {
   @media (forced-colors: active) {
     :root,
     [data-color],
