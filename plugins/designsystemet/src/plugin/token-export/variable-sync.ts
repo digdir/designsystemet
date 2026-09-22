@@ -1,4 +1,5 @@
 import type { CollectionSpec } from './collection-specs';
+import { normalizeScopes } from './scopes';
 
 export async function syncCollections(
   specs: CollectionSpec[],
@@ -92,6 +93,7 @@ export async function syncVariables(
 
     const createdOrExisting = new Map<string, Variable>();
     let codeSyntaxUpdated = 0;
+    let scopesUpdated = 0;
 
     for (const desired of spec.variables.values()) {
       let variable = variableByName.get(desired.name);
@@ -116,14 +118,21 @@ export async function syncVariables(
       if (syncCodeSyntax(variable, desired.codeSyntax)) {
         codeSyntaxUpdated++;
       }
+      if (
+        normalizeScopes(desired.scopes) !==
+        normalizeScopes(variable.scopes ?? [])
+      ) {
+        variable.scopes = desired.scopes;
+        scopesUpdated++;
+      }
 
       createdOrExisting.set(desired.name, variable);
       byCompositeKey.set(`${collection.name}::${desired.name}`, variable);
     }
 
-    if (codeSyntaxUpdated > 0) {
+    if (codeSyntaxUpdated > 0 || scopesUpdated > 0) {
       logs.push(
-        `Updated WEB code syntax on ${codeSyntaxUpdated} variables in ${collection.name}`,
+        `Updated WEB code syntax on ${codeSyntaxUpdated} and scopes on ${scopesUpdated} variables in ${collection.name}`,
       );
     }
 
