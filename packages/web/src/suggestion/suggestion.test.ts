@@ -32,6 +32,20 @@ const renderEmptyOnly = () => {
   return document.querySelector('ds-suggestion') as DSSuggestionElement;
 };
 
+const renderMultiple = () => {
+  document.body.innerHTML = `
+    <ds-suggestion class="ds-suggestion" data-multiple>
+      <input type="search" class="ds-input" />
+      <u-datalist role="listbox">
+        <u-option data-empty>No results</u-option>
+        <u-option label="Oslo" value="Osl">Oslo</u-option>
+      </u-datalist>
+    </ds-suggestion>
+  `;
+
+  return document.querySelector('ds-suggestion') as DSSuggestionElement;
+};
+
 describe('suggestion component', () => {
   it('propagates CSS screen-reader translations on connect', () => {
     const suggestion = document.createElement('ds-suggestion');
@@ -104,5 +118,29 @@ describe('suggestion component', () => {
     input.dispatchEvent(new Event('input', { bubbles: true }));
 
     expect(empty.hidden).toBe(false);
+  });
+
+  it('keeps the typed query in the input when selecting with data-multiple', async () => {
+    const suggestion = renderMultiple();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+    const option = suggestion.querySelector(
+      'u-option[value="Osl"]',
+    ) as HTMLElement;
+
+    await tick(); // Let mutation observer run
+
+    input.focus();
+    input.value = 'os';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    await tick();
+
+    option.click();
+    await tick();
+
+    const chip = suggestion.querySelector('data') as HTMLDataElement;
+    expect(chip.value).toBe('Osl');
+    expect(chip.textContent).toBe('Oslo');
+    /* u-combobox 2.1.4 left the option value in the input instead */
+    expect(input.value).toBe('os');
   });
 });
