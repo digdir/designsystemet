@@ -3,4 +3,4 @@
 "@digdir/designsystemet-web": patch
 ---
 
-honour text and aria-label on previous and next buttons
+**Pagination:** Previous and next buttons now preserve their existing `aria-label` attributes.
