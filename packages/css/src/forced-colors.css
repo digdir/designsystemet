@@ -1,24 +1,30 @@
 @media (forced-colors: active) {
-  :root, [data-color], [data-color-scheme] {
+  :root,
+  [data-color],
+  [data-color-scheme] {
     --ds-color-background-default: Canvas;
     --ds-color-background-tinted: Canvas;
     --ds-color-surface-default: Canvas;
     --ds-color-surface-tinted: ButtonFace;
     --ds-color-surface-hover: ButtonFace;
     --ds-color-surface-active: ButtonFace;
-    --ds-color-surface-muted: ButtonFace;
+    --ds-color-surface-muted: ButtonFace; /* Prepare for upcoming muted tokens */
     --ds-color-border-subtle: ButtonBorder;
     --ds-color-border-default: ButtonBorder;
     --ds-color-border-strong: ButtonBorder;
-    --ds-color-border-muted: ButtonBorder;
+    --ds-color-border-muted: ButtonBorder; /* Prepare for upcoming muted tokens */
     --ds-color-text-tinted: CanvasText;
     --ds-color-text-subtle: CanvasText;
     --ds-color-text-default: CanvasText;
-    --ds-color-text-muted: GrayText;
+    --ds-color-text-muted: GrayText; /* Prepare for upcoming muted tokens */
     --ds-color-base-default: Highlight; /* Using Highlight instead of Accent as Windows contrast mode uses same color for Canvas and Accent */
     --ds-color-base-hover: Highlight;
     --ds-color-base-active: Highlight;
     --ds-color-base-contrast-subtle: HighlightText;
     --ds-color-base-contrast-default: HighlightText;
+
+    /* Ensure focus ring colors have high contrast too */
+    --ds-color-focus-inner: Canvas;
+    --ds-color-focus-outer: CanvasText;
   }
 }

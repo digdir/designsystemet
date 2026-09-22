@@ -51,7 +51,8 @@ body,
 }
 
 .ds-readonly-icon::before {
-  background: var(--ds-color-text-default);
+  background: currentcolor;
+  forced-color-adjust: none; /* Enable drawing with background property */
   content: '';
   display: inline-block;
   height: calc(1em * var(--ds-line-height-md)); /* Fallback for browsers not supporting lh unit */

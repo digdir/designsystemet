@@ -9,7 +9,6 @@
   --dsc-validation-message-color: var(--ds-color-danger-text-subtle);
 
   color: var(--dsc-validation-message-color);
-
   position: relative;
   padding-inline-start: calc(var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-spacing));
 
