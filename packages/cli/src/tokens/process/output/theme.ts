@@ -1,6 +1,7 @@
 import pc from 'picocolors';
 import * as R from 'ramda';
 import pkg from '../../../../package.json' with { type: 'json' };
+import type { SemanticColorNames } from '../../../colors/types.ts';
 import type { OutputFile } from '../../types.ts';
 import { sizeComparator } from '../../utils.ts';
 import { buildOptions, type ProcessReturn } from '../platform.ts';
@@ -18,6 +19,58 @@ const getFileNameWithoutExtension = (path: string) => {
   const pathSegments = path.split('/');
   return pathSegments[pathSegments.length - 1].split('.').slice(0, -1).join('.');
 };
+
+type SystemColorVariables =
+  | 'Canvas'
+  | 'ButtonFace'
+  | 'ButtonBorder'
+  | 'CanvasText'
+  | 'GrayText'
+  | 'Highlight'
+  | 'HighlightText';
+
+/** Snippet with forced colors support for high contrast mode using system color variables
+ * @link https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors
+ * @link https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/*/
+function forcedColors() {
+  const forcedColorsVariables: Record<SemanticColorNames | 'focus-inner' | 'focus-outer', SystemColorVariables> = {
+    'background-default': 'Canvas',
+    'background-tinted': 'Canvas',
+    'surface-default': 'Canvas',
+    'surface-tinted': 'ButtonFace',
+    'surface-hover': 'ButtonFace',
+    'surface-active': 'ButtonFace',
+    'border-subtle': 'ButtonBorder',
+    'border-default': 'ButtonBorder',
+    'border-strong': 'ButtonBorder',
+    'text-subtle': 'CanvasText',
+    'text-default': 'CanvasText',
+    'base-default':
+      'Highlight' /* Using Highlight instead of Accent as Windows contrast mode uses same color for Canvas and Accent */,
+    'base-hover': 'Highlight',
+    'base-active': 'Highlight',
+    'base-contrast-subtle': 'HighlightText',
+    'base-contrast-default': 'HighlightText',
+    /* Ensure focus ring colors have high contrast too */
+    'focus-inner': 'Canvas',
+    'focus-outer': 'CanvasText',
+  };
+
+  // must be separate layer and not subset to ensure forced colors are applied correctly when ordering CSS layers
+  return `
+@layer ds.forced-colors {
+  @media (forced-colors: active) {
+    :root,
+    [data-color],
+    [data-color-scheme] {
+      ${Object.entries(forcedColorsVariables)
+        .map(([key, value]) => `--ds-color-${key}: ${value};`)
+        .join('\n    ')}
+    }
+    }
+}
+`;
+}
 
 /**
  * Generates theme-specific CSS files from Style Dictionary build results.
@@ -122,7 +175,7 @@ ${fileHeader}
     sortByDefinedOrder,
     pickOutputs,
     R.join('\n'),
-    (content) => header + content,
+    (content) => header + content + forcedColors(),
   );
 
   const themeCSSFiles: OutputFile[] = Object.entries(groupedByTheme).map(([theme, files]) => ({
