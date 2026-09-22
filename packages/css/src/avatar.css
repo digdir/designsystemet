@@ -61,7 +61,8 @@
     content: '';
     width: 100%;
     height: 100%;
-    background: var(--dsc-avatar-color);
+    background: currentcolor;
+    forced-color-adjust: none; /* Enable drawing with background property */
     mask: var(--dsc-avatar-icon-url) center / contain no-repeat;
   }
 
