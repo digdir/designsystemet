@@ -78,7 +78,7 @@ const render = (self: DSPaginationElement) => {
     const href = attr(self, ATTR_HREF);
     const { next, prev, pages } = pagination({ current, total, show });
     items.forEach((item, i) => {
-      const isStep = i > 0 && !!items[i + 1]; // First is prev, last is next
+      const isStep = i !== 0 && !!items[i + 1]; // First is prev, last is next
       const page = isStep ? pages[i - 1]?.page : i ? next : prev;
       attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
 
