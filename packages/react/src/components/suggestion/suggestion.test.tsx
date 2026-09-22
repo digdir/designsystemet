@@ -100,7 +100,7 @@ async function typeUnknownValue(input: HTMLInputElement, value: string) {
       .filter((option) => option.matches('u-option'));
 
     expect(rest).toHaveLength(0);
-    expect(createOption.hasAttribute('data-create')).toBe(true);
+    expect(createOption).toHaveAttribute('data-create');
     return createOption;
   });
 }
@@ -205,17 +205,17 @@ describe('Suggestion', () => {
     await getInput(placeLabel);
 
     const toggle = screen.getByRole('button', { name: 'Valg' });
-    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
 
     await userEvent.click(toggle);
-    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(toggle).toHaveAttribute('aria-expanded', 'true');
   });
 
   it('renders defaultSelected when uncontrolled', async () => {
     render(<Places defaultSelected='Sogndal' />);
     const input = await getInput(placeLabel);
 
-    await waitFor(() => expect(input.value).toBe('Sogndal'));
+    await waitFor(() => expect(input).toHaveValue('Sogndal'));
   });
 
   it('renders a chip per defaultSelected item when multiple', async () => {
@@ -256,7 +256,7 @@ describe('Suggestion', () => {
     await waitFor(() =>
       expect(getChipValues()).toEqual(['Sogndal', 'Stavanger']),
     );
-    expect(input.value).toBe('');
+    expect(input).toHaveValue('');
   });
 
   it('offers the option to create a value when nothing matches', async () => {
@@ -268,10 +268,8 @@ describe('Suggestion', () => {
 
     /* `data-create` is the `data-empty` text, or its CSS variable, with the
        current input value substituted for `%s` */
-    expect(createOption.getAttribute('data-create')).toBe(
-      'Add «Does not exist»',
-    );
-    expect(createOption.value).toBe('Does not exist');
+    expect(createOption).toHaveAttribute('data-create', 'Add «Does not exist»');
+    expect(createOption).toHaveValue('Does not exist');
   });
 
   it('makes a created value the selected item in single mode', async () => {
@@ -296,7 +294,7 @@ describe('Suggestion', () => {
     await userEvent.click(input);
     await userEvent.click(await typeUnknownValue(input, 'Does not exist'));
 
-    await waitFor(() => expect(input.value).toBe('Does not exist'));
+    await waitFor(() => expect(input).toHaveValue('Does not exist'));
     expect(onSelectedChange).toHaveBeenCalledWith({
       label: 'Does not exist',
       value: 'Does not exist',
@@ -354,7 +352,7 @@ describe('Suggestion', () => {
       screen.getByRole('option', { name: 'Oslo' }),
     );
     await userEvent.click(oslo);
-    await waitFor(() => expect(input.value).toBe('Oslo'));
+    await waitFor(() => expect(input).toHaveValue('Oslo'));
     expect(onSelectedChange).toHaveBeenCalledOnce();
 
     /* In v1.18 and earlier the input was reset to the typed query on blur,
@@ -362,9 +360,9 @@ describe('Suggestion', () => {
        value. Fixed in v1.19 by the u-combobox 2.1.0 upgrade. */
     await userEvent.click(document.body);
     await waitFor(() =>
-      expect(input.getAttribute('aria-expanded')).toBe('false'),
+      expect(input).toHaveAttribute('aria-expanded', 'false'),
     );
-    expect(input.value).toBe('Oslo');
+    expect(input).toHaveValue('Oslo');
     expect(onSelectedChange).toHaveBeenCalledOnce();
   });
 
@@ -402,7 +400,7 @@ describe('Suggestion', () => {
 
     await userEvent.click(input);
 
-    await waitFor(() => expect(input.value).toBe('Sogndal'));
+    await waitFor(() => expect(input).toHaveValue('Sogndal'));
     expect(getOptionStates()).toEqual([
       ['Sogndal', false],
       ['Oslo', false],
