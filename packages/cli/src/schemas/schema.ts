@@ -268,7 +268,7 @@ const externalThemeSchema = themeObjectSchema
  * Use this when exposing the schema externally (the public JSON schema, the theme builder and the Figma plugin);
  * use {@link configSchema} to validate a config in the CLI.
  */
-export const externalConfigSchema = configSchema.omit({ output: true }).extend({
+export const externalConfigSchema = configSchema.extend({
   themes: z.record(z.string(), externalThemeSchema).superRefine(checkThemes).meta({
     description:
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names.',

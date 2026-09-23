@@ -35,19 +35,16 @@ const figletAscii = `
                     |___/           |___/
 `;
 
-program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
-program.hook('preAction', () => console.log(figletAscii));
+
 
 const DEFAULT_TOKENS_CREATE_DIR = './design-tokens';
 const DEFAULT_TOKENS_BUILD_DIR = './design-tokens-build';
 const DEFAULT_FONT = 'Inter';
 const DEFAULT_THEME_NAME = 'theme';
-const DEFAULT_CONFIG_FILEPATH = 'designsystemet.config.json';
 // Default config files to auto-detect when no --config is supplied, in order of precedence.
 const DEFAULT_CONFIG_FILEPATHS = ['designsystemet.config.json', 'designsystemet.config.jsonc'];
+const DEFAULT_CONFIG_FILEPATH = DEFAULT_CONFIG_FILEPATHS[0];
 
-// Options shared by multiple commands. Factories because commander mutates Option instances,
-// so each command needs its own.
 const configOption = () =>
   new Option(
     '-c, --config <filename>',
@@ -57,73 +54,6 @@ const dryOption = (description = 'Dry run - no files will be written') =>
   new Option('--dry [boolean]', description).argParser(parseBoolean).default(false);
 const verboseOption = () => new Option('--verbose', 'Enable verbose output').default(false);
 
-function _makeConfigCommand() {
-  return createCommand('config')
-    .usage('designsystemet')
-    .description('Parses config file and run Designsystemet commands')
-    .addOption(configOption())
-    .addOption(dryOption())
-    .addOption(verboseOption())
-    .action(async (opts) => {
-      const { verbose, dry } = opts;
-
-      const { configFile, configFilePath } = await getConfigFile(opts.config);
-
-      dsfs.init({ dry, verbose, outdir: path.dirname(configFilePath) });
-
-      if (!configFile) {
-        console.error(pc.redBright(`No config file found. Please create one at ${pc.blue(DEFAULT_CONFIG_FILEPATH)}.`));
-        process.exit(1);
-      }
-
-      const parsedConfig = parseConfig<ExternalConfigSchemaInput>(configFile);
-      // Validate against the public schema first for a user-facing error on unsupported theme fields.
-      validateConfig(externalConfigSchema, parsedConfig);
-      const config = validateConfig(configSchema, parsedConfig);
-
-      // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
-      const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
-
-      for (const output of sortedOutput) {
-        const outDir = path.join(dsfs.outDir, output.dir);
-
-        if (output.type === 'design-tokens') {
-          console.log(`\n🍱 Generating design tokens in ${pc.green(output.dir)}...`);
-
-          await createDesignTokens({
-            themes: config.themes,
-            outDir: outDir,
-            clean: output.cleanDir,
-          });
-        }
-
-        if (output.type === 'css') {
-          console.log(`\n🍱 Generating CSS in ${pc.green(output.dir)}...`);
-
-          // Only generate create CSS if no `design-tokens` output is present and no `tokenDir` is explicitly set in the config file. Otherwise, build CSS from existing design tokens.
-          if (isOnlyCssOutput(config)) {
-            await createCss({
-              themes: config.themes,
-              outDir: outDir,
-              clean: output.cleanDir,
-              verbose,
-              tailwind: output.experimental_tailwind,
-            });
-          } else {
-            await buildCss({
-              // Resolve the token directory relative to the config file, like output.dir,
-              // so it matches where a preceding design-tokens output wrote its files.
-              tokensDir: path.join(dsfs.outDir, output.tokenDir),
-              outDir,
-              clean: output.cleanDir,
-              verbose,
-              tailwind: output.experimental_tailwind,
-            });
-          }
-        }
-      }
-    });
-}
 
 function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
@@ -243,9 +173,75 @@ function makeTokenCommands() {
   return tokenCmd;
 }
 
+program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
+program.hook('preAction', () => console.log(figletAscii));
+program.version(pkg.version, '-v, --version', 'Display version number').helpOption('-h, --help', 'Display help');
+
+program.description('Run Designsystemet')
+    .addOption(configOption())
+    .addOption(dryOption())
+    .addOption(verboseOption())
+    .action(async (opts) => {
+      const { verbose, dry } = opts;
+
+      const { configFile, configFilePath } = await getConfigFile(opts.config);
+
+      dsfs.init({ dry, verbose, outdir: path.dirname(configFilePath) });
+
+      if (!configFile) {
+        console.error(pc.redBright(`No config file found. Please create one at ${pc.blue(DEFAULT_CONFIG_FILEPATH)}.`));
+        process.exit(1);
+      }
+
+      const parsedConfig = parseConfig<ExternalConfigSchemaInput>(configFile);
+      // Validate against the public schema first for a user-facing error on unsupported theme fields.
+      validateConfig(externalConfigSchema, parsedConfig);
+      const config = validateConfig(configSchema, parsedConfig);
+
+      // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
+      const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
+
+      for (const output of sortedOutput) {
+        const outDir = path.join(dsfs.outDir, output.dir);
+
+        if (output.type === 'design-tokens') {
+          console.log(`\n🍱 Creating design tokens in ${pc.green(output.dir)}...`);
+
+          await createDesignTokens({
+            themes: config.themes,
+            outDir: outDir,
+            clean: output.cleanDir,
+          });
+        }
+
+        if (output.type === 'css') {
+          console.log(`\n🍱 Creating CSS in ${pc.green(output.dir)}...`);
+
+          // Only generate create CSS if no `design-tokens` output is present and no `tokenDir` is explicitly set in the config file. Otherwise, build CSS from existing design tokens.
+          if (isOnlyCssOutput(config)) {
+            await createCss({
+              themes: config.themes,
+              outDir: outDir,
+              clean: output.cleanDir,
+              verbose,
+              tailwind: output.experimental_tailwind,
+            });
+          } else {
+            await buildCss({
+              // Resolve the token directory relative to the config file, like output.dir,
+              // so it matches where a preceding design-tokens output wrote its files.
+              tokensDir: path.join(dsfs.outDir, output.tokenDir),
+              outDir,
+              clean: output.cleanDir,
+              verbose,
+              tailwind: output.experimental_tailwind,
+            });
+          }
+        }
+      }
+    });
+
 program.addCommand(makeTokenCommands());
-/** Disabling this for future testing and assessment */
-// program.addCommand(_makeConfigCommand(), { isDefault: true });
 
 program
   .command('generate-config-from-tokens')
@@ -314,7 +310,6 @@ program
     }
   });
 
-program.version(pkg.version, '-v, --version', 'Display version number').helpOption('-h, --help', 'Display help');
 
 await program.parseAsync(process.argv);
 
@@ -389,6 +384,9 @@ async function createDesignTokens({
   if (clean) {
     await dsfs.cleanDir(outDir);
   }
+
+  console.log(`\n💾 Writing design tokens to ${pc.green(outDir)}`);
+
 
   await dsfs.mkdir(outDir);
   await dsfs.writeFiles(files, outDir);
