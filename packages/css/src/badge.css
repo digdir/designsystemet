@@ -9,6 +9,7 @@
   --dsc-badge-left: inherit;
   --dsc-badge-right: inherit;
 
+  forced-color-adjust: none; /* Prevent "backplate" behind text, see https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/ */
   vertical-align: calc(var(--dsc-badge-size) / 2);
   @composes ds-print-preserve from './base.css';
 

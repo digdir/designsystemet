@@ -19,7 +19,6 @@
   background: var(--dsc-tooltip-background);
   border: none;
   border-radius: var(--dsc-tooltip-border-radius);
-  border-width: 0;
   box-sizing: border-box;
   color: var(--dsc-tooltip-color);
   line-height: var(--ds-line-height-sm);
@@ -60,9 +59,5 @@
   /* Hide custom tooltip element until acitvated with JS */
   &:not([popover]) {
     display: none;
-  }
-
-  @media (forced-colors: active) {
-    background: CanvasText;
   }
 }

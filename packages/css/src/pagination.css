@@ -75,14 +75,11 @@
     & > li:last-child > ::before {
       content: '';
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       height: var(--dsc-pagination-icon-size);
       mask: center / contain no-repeat var(--dsc-pagination-icon-url);
       width: var(--dsc-pagination-icon-size);
       order: 1;
-
-      @media (forced-colors: active) {
-        background: LinkText;
-      }
     }
 
     & > li:first-child > ::before {
