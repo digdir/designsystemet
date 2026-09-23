@@ -105,6 +105,7 @@
 
       &::after {
         background: currentcolor;
+        forced-color-adjust: none; /* Enable drawing with background property */
         content: '';
         display: inline-block;
         height: var(--dsc-table-sort-size);

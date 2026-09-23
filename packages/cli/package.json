@@ -41,7 +41,11 @@
       "types": "./dist/src/schemas/*",
       "import": "./dist/src/schemas/*"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./internal": {
+      "types": "./dist/src/internal.d.ts",
+      "import": "./dist/src/internal.js"
+    }
   },
   "publishConfig": {
     "access": "public"

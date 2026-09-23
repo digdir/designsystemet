@@ -3,6 +3,7 @@ import { generateColorScale, semanticColorSpec } from '../../../../colors/index.
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import type { Token, TokenSet } from '../../../types.ts';
+import { addSeverityColors } from '../../../utils.ts';
 
 /**
  * Group colors by color scheme, returning a partial record of color scales for the specified scheme.
@@ -31,6 +32,37 @@ export const groupByScheme = (
   return grouped;
 };
 
+/**
+ * Resolves every color scale of a theme for one color scheme: the theme's colors plus the
+ * default severity colors, with `overrides.severity` and `overrides.colors` applied.
+ *
+ * This is what the token generator turns into color-scheme tokens; previews (e.g. the Figma
+ * plugin) use it directly so they show the same colors the tokens end up with.
+ */
+export const getThemeColorScales = (
+  theme: { colors: Record<string, CssColor>; overrides?: ColorOverrideSchema },
+  colorScheme: ColorScheme,
+): Record<string, ColorScale> => {
+  const { overrides } = theme;
+  const colors: Record<string, CssColor> = { ...addSeverityColors(theme.colors), ...(overrides?.severity || {}) };
+
+  const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
+
+  const colorScales: Record<string, ColorScale> = {};
+
+  for (const [colorName, color] of Object.entries(colors)) {
+    let colorScale = generateColorScale(color, colorScheme);
+    const colorOverride = colorOverrides[colorName];
+
+    if (colorOverride) {
+      colorScale = { ...colorScale, ...colorOverride };
+    }
+    colorScales[colorName] = colorScale;
+  }
+
+  return colorScales;
+};
+
 const toColorNumberTokens = (colorScale: ColorScale): TokenSet => {
   const tokens: TokenSet = {};
 
@@ -55,21 +87,7 @@ export const generateColorScheme = (
   colors: Record<string, CssColor>,
   overrides?: ColorOverrideSchema,
 ): TokenSet => {
-  const colorsWithSeverityOverrides: Record<string, CssColor> = { ...colors, ...(overrides?.severity || {}) };
-
-  const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
-
-  const colorScales: Record<string, ColorScale> = {};
-
-  for (const [colorName, color] of Object.entries(colorsWithSeverityOverrides)) {
-    let colorScale = generateColorScale(color, colorScheme);
-    const colorOverride = colorOverrides[colorName];
-
-    if (colorOverride) {
-      colorScale = { ...colorScale, ...colorOverride };
-    }
-    colorScales[colorName] = colorScale;
-  }
+  const colorScales = getThemeColorScales({ colors, overrides }, colorScheme);
 
   const defaultLinkVisitedToken = generateColorScale(visitedLinkColor, colorScheme)['base-default'].hex;
   const linkOverride = overrides?.linkVisited?.[colorScheme];

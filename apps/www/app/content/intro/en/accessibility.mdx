@@ -1,21 +1,42 @@
 ---
 title: Accessibility
 sidebar_title: Accessibility
-description: Designsystemet contributes to increased compliance with accessibility regulations through accessible components and guidance.
-date: 2025-06-27
+description: Designsystemet helps organizations comply with accessibility requirements through accessible components and guidance.
+date: 2026-09-18
 category: Introduction
 color: yellow
 icon: HandHeartIcon
 published: true
 order: 40
+search_terms: accessibility, inclusion, WCAG
 ---
 
-Designsystemet offers foundational components that meet the [WCAG requirements included in Norwegian legislation](https://www.uutilsynet.no/wcag-standarden/wcag-standarden/86). It also provides guidance and recommendations that go beyond legal requirements, to help make digital solutions as user-friendly as possible for everyone—regardless of permanent or temporary impairments.
+Designsystemet provides foundational components that meet [the WCAG requirements included in accessibility regulations](https://www.uutilsynet.no/wcag-standarden/wcag-standarden/86). It also offers guidance and recommendations beyond legal requirements, helping teams create solutions that are highly usable for everyone, regardless of permanent or temporary disabilities
 
-Accessibility often requires detailed technical and design considerations. Many components need specific HTML and ARIA attributes, proper focus handling, and dynamic announcements for screen readers. It’s also important to consider how different screen readers and browsers interpret combinations of attributes and elements. These are complex challenges that no individual developer or designer should have to solve alone. When we solve them together once, everyone can reuse the result. Any issues or improvements that are discovered can be addressed and benefit everyone using Designsystemet.
+Accessibility often requires detailed technical and design-related considerations. Many components depend on specific HTML and ARIA attributes, correct focus management, and dynamic announcements to screen readers. It is also necessary to consider how different screen readers and browsers interpret combinations of attributes and elements. These are complex challenges that individual developers and designers should not have to solve on their own. When we solve them once as a community, many can benefit from the same solutions. Any issues or improvements that are identified can be fixed centrally and benefit everyone using Designsystemet
 
-Accessibility is a part of our entire development process—from the moment we define a component until it is in production. If we discover any issues or limitations that affect a component’s accessibility, the team will prioritize fixing them.
+## What does Designsystemet solve, and what is your responsibility?
+Designsystemet can help with some of the WCAG requirements covered by accessibility regulations, but compliance also depends on component usage and content.
 
-Accessible components are only one part of creating accessible solutions. That’s why we also provide guides and other resources to support teams in using the components as intended.
+### Designsystemet provides
+- **Focus states:** Clear and visible focus indicators for interactive elements on all backgrounds.
+- **Color contrast:** Sufficient contrast and visual distinction for users with low vision or color blindness.
+- **Keyboard accessibility:** All interactive elements can be reached and operated using a keyboard.
+- **Scalable design:** Support for different screen sizes, browser zoom levels, and preferred text sizes.
+- **Roles and states:** Semantic structures and ARIA attributes that support assistive technologies.
+- **Accessible forms:** Correct structure, associations, and validation patterns.
+- **Interactive target size:** Sufficient touch target sizes based on WCAG 2.2 criterion 2.5.8, as guidance beyond the current legally required WCAG 2.1 criteria.
 
-Under [Best practices - Accessibility](/en/best-practices), we will publish articles about how we can make our solutions as accessible as possible.
+### You are responsible for
+- **Semantic HTML:** Use appropriate HTML elements to communicate meaning, structure, and heading hierarchy.
+- **Text alternatives:** Provide descriptive labels and text alternatives for regions and non-text content. Requirements are documented on individual component pages.
+- **Specify the content language:** Set the appropriate language code for the page, for example `<html lang="en">` for English.
+- **Correct token usage:** Use design tokens for their intended purpose. For example, if a token is named `border`, it should be used for borders and not backgrounds.
+- **Color scheme (optional):** Use `<body data-color-scheme="auto">` to follow the user's system preference.
+
+[In our GitHub Wiki you can find a detailed overview of which WCAG requirements Designsystemet helps you satisfy.](https://github.com/digdir/designsystemet/wiki/Designsystemet-hjelper-deg-%C3%A5-oppfylla-WCAG%E2%80%90kravane)
+
+Accessibility is an integral part of our entire process, from the moment a component is specified until it is in production. When we discover issues that affect the accessibility of a component, they are prioritized by the team.
+
+Accessible components are only one part of creating accessible digital services. We will therefore continue to publish guides and supporting resources that help teams use components correctly and achieve their intended accessibility benefits.
+

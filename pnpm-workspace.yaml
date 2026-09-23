@@ -30,3 +30,5 @@ syncInjectedDepsAfterScripts:
   - build:themebuilder
   - build:storybook
 nodeVersion: "24.19.0"
+patchedDependencies:
+  '@oddbird/popover-polyfill': patches/@oddbird__popover-polyfill.patch

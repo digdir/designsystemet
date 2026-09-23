@@ -31,6 +31,7 @@
     --dsc-chip-removable-label: 'Trykk for å fjerne'; /* Only set default label if Norwegian */
   }
 
+  forced-color-adjust: none; /* Prevent "backplate" behind text, see https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/ */
   background: var(--dsc-chip-background);
   border-color: var(--dsc-chip-border-color);
   border-radius: var(--dsc-chip-border-radius);
@@ -100,6 +101,7 @@
       inset-block-start: var(--_dsc-chip-spacing);
       inset-inline-end: var(--_dsc-chip-spacing);
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       height: var(--dsc-chip-icon-size);
       mask: center / contain no-repeat var(--dsc-chip-icon-url);
       width: var(--dsc-chip-icon-size);

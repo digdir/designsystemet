@@ -14,6 +14,7 @@ describe('Avatar', () => {
     render(<Avatar data-size='lg' variant='square' aria-label='ola' />);
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByRole('img')).toHaveAttribute('data-size', 'lg');
+    // @deprecated
     expect(screen.getByRole('img')).toHaveAttribute('data-variant', 'square');
   });
 
@@ -42,6 +43,7 @@ describe('Avatar', () => {
     expect(screen.getByTestId('child-image')).toBeInTheDocument();
   });
 
+  // @deprecated
   it('should render initials in an empty asChild element', () => {
     render(
       <Avatar asChild aria-label='Ola Nordmann' initials='ON'>
@@ -51,6 +53,7 @@ describe('Avatar', () => {
     expect(screen.getByRole('link')).toHaveTextContent('ON');
   });
 
+  // @deprecated
   it('should not render initials when asChild element has children', () => {
     render(
       <Avatar asChild aria-label='Ola Nordmann' initials='ON'>

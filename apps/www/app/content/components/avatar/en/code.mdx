@@ -8,17 +8,17 @@ Avatar uses the class name `ds-avatar` on a `<span>` with `role="img"`.Ensure th
 
 Sizes are controlled with [`data-size`](/en/fundamentals/code/sizes) and colors with [`data-color`](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
 
-<CssAttributes />
+<CssAttributes exclude={['variant', 'initials']} />
 
 <CssVariables />
 
 ## Example
 
-### Variants
+### With initials
 
-Use `data-variant` to determine the shape of the avatar. You can choose between `circle` (default) or `square`.
+Place text inside avatar to show initials.
 
-<Story story="ShapeVariants" />
+<Story story="Initials" />
 
 ### With image or icon
 Avatar displays a user icon by default, but this can be overridden in CSS using the `--dsc-avatar-icon-url` variable. 
@@ -26,6 +26,12 @@ Avatar displays a user icon by default, but this can be overridden in CSS using 
 If you add an image or icon as content inside the avatar, make sure to set `aria-hidden="true"` to avoid duplicate information. You must add an `aria-label` to the avatar yourself to explain who or what the avatar represents.
 
 <Story story="WithImageAndIcon" />
+
+### Shape and radius
+
+Use `--dsc-avatar-radius` CSS custom property to adjust the radius of the avatar.
+
+<Story story="Radius" />
 
 ## React
 
@@ -35,8 +41,6 @@ If you add an image or icon as content inside the avatar, make sure to set `aria
 
 /* With initials */
 <Avatar aria-label="Ola Nordmann">ON</Avatar>
-/* or */
-<Avatar aria-label="Ola Nordmann" data-initials="ON" />
 
 /* With image */
 <Avatar aria-label="Ola Nordmann">

@@ -1,14 +1,17 @@
 import { parseColorValue } from './color';
+import type { ImportLog } from './log';
 import { resolveCompositeValue } from './resolver';
-import type { PreviewData } from './types';
+import type { TokenModel } from './types';
 import { parseNumber } from './utils';
 
+// Figma effect styles are not mode-aware, so scheme-dependent values (the shadow
+// colour) are written for the first theme in the light scheme; see getTokenSetLookupOrder.
 export async function syncEffectStyles(
-  preview: PreviewData,
-  activeTokenSets: string[],
-  logs: string[],
+  model: TokenModel,
+  tokenSetOrder: string[],
+  log: ImportLog,
 ): Promise<void> {
-  const desired = preview.flatTokens.filter(
+  const desired = model.flatTokens.filter(
     (token) =>
       token.tokenSet === 'semantic/style' && token.type === 'boxShadow',
   );
@@ -19,7 +22,7 @@ export async function syncEffectStyles(
   for (const style of existing) {
     if (style.name.startsWith('shadow/') && !desiredNames.has(style.name)) {
       style.remove();
-      logs.push(`Deleted effect style ${style.name}`);
+      log.info.push(`Deleted effect style ${style.name}`);
     }
   }
 
@@ -27,12 +30,12 @@ export async function syncEffectStyles(
     const styleName = token.figmaName;
     const resolved = resolveCompositeValue(
       token.value,
-      preview,
-      activeTokenSets,
+      model,
+      tokenSetOrder,
     ) as Array<Record<string, unknown>> | null;
 
     if (!Array.isArray(resolved)) {
-      logs.push(
+      log.warnings.push(
         `Skipped effect style ${styleName} because it could not be resolved`,
       );
       continue;
@@ -42,7 +45,7 @@ export async function syncEffectStyles(
     if (!style) {
       style = figma.createEffectStyle();
       style.name = styleName;
-      logs.push(`Created effect style ${styleName}`);
+      log.info.push(`Created effect style ${styleName}`);
     }
 
     style.effects = resolved

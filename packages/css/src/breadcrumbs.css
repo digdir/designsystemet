@@ -5,6 +5,8 @@
   --dsc-breadcrumbs-color: var(--ds-color-text-subtle);
   --_ds-aria-label: var(--dsc-breadcrumbs-label); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
 
+  color: var(--dsc-breadcrumbs-color);
+
   &:not([hidden]) {
     display: block; /* Needed for <ds-breadcrumbs> element */
   }
@@ -28,7 +30,8 @@
   /* Draw chevron between items and before back link */
   & li:where(:not(:last-child))::after,
   & > :not(ol, ul)::before {
-    background: var(--dsc-breadcrumbs-color);
+    background: currentcolor;
+    forced-color-adjust: none; /* Enable drawing with background property */
     content: '';
     display: inline-block;
     flex-shrink: 0; /* Prevent shrinking chevron */
@@ -38,10 +41,6 @@
     vertical-align: middle;
     width: var(--dsc-breadcrumbs-icon-size);
     @composes ds-print-preserve from './base.css';
-
-    @media (forced-colors: active) {
-      background: CanvasText;
-    }
   }
 
   & li:last-child a {
