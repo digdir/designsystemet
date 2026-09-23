@@ -1,4 +1,4 @@
-/* This file is deprecated and will be removed in a future release. Use types.d.ts instead */
+/* This file is @deprecated and will be removed in a future release */
 /* build: v1.8.0 */
 import type {} from '@digdir/designsystemet-types';
 
