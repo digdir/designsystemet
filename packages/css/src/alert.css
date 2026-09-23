@@ -27,7 +27,7 @@
 
   & > :is(h1, h2, h3, h4, h5, h6):first-child::before /* If Alert starts with Heading, align icon to this */,
   &:not(:has(> :is(h1, h2, h3, h4, h5, h6):first-child))::before /* If there is no Heading, align icon to Alert itself */ {
-    background: currentcolor;
+    background: var(--dsc-alert-icon-color);
     forced-color-adjust: none; /* Enable drawing with background property */
     content: '';
     height: var(--dsc-alert-icon-size);
