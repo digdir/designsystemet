@@ -1,4 +1,3 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import {
   Button,
   Chip,
@@ -9,6 +8,7 @@ import {
   Skeleton,
   Tag,
 } from '@digdir/designsystemet-react';
+import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import { useDebounceCallback } from '@internal/components';
 import {
   ComponentFillIcon,
