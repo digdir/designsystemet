@@ -12,6 +12,7 @@ import {
   type ExternalConfigSchemaInput,
   externalConfigSchema,
 } from '../src/schemas/schema.ts';
+import { warnDeprecatedFields } from '../src/schemas/schema-output.ts';
 import { buildTokens } from '../src/tokens/build.ts';
 import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { formatThemeCSS } from '../src/tokens/format.ts';
@@ -56,6 +57,7 @@ program
     }
 
     const parsedConfig = parseConfig<ExternalConfigSchemaInput>(configFile);
+    warnDeprecatedFields(parsedConfig);
     // Validate against the public schema first for a user-facing error on unsupported theme fields.
     validateConfig(externalConfigSchema, parsedConfig);
     const config = validateConfig(configSchema, parsedConfig);
