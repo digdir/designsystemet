@@ -386,9 +386,9 @@ export const FetchExternal = () => {
               </EXPERIMENTAL_Suggestion.Option>
             ))
           ) : (
-            <EXPERIMENTAL_Suggestion.Option value=''>
+            <EXPERIMENTAL_Suggestion.Empty>
               {options}
-            </EXPERIMENTAL_Suggestion.Option>
+            </EXPERIMENTAL_Suggestion.Empty>
           )}
         </EXPERIMENTAL_Suggestion.List>
       </EXPERIMENTAL_Suggestion>
