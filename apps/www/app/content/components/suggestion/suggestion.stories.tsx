@@ -353,7 +353,7 @@ export const FetchExternal = () => {
 
   const getRecipes = async (value: string) => {
     if (!value) return setOptions(empty);
-    const api = `https://dummyjson.com/recipes/search?q=${value}`; // TODO FIX
+    const api = `https://dummyjson.com/recipes/search?q=${value}`;
     const data = await (await fetch(api)).json();
     if (latestValue.current !== value) return;
     setOptions(
