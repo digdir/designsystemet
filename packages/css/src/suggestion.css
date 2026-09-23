@@ -21,6 +21,7 @@
 
   --dsc-suggestion-search-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
   --dsc-suggestion-search-icon-size: var(--ds-icon-size);
+  --dsc-suggestion-search-icon-spacing: var(--ds-size-3);
 
   --dsc-suggestion-clear-gap: var(--ds-size-2);
   --dsc-suggestion-clear-padding: var(--ds-size-1);
@@ -346,14 +347,14 @@
   /* Hide x native icon of input type="search" since we have a custom x-component */
 
   & > input[type='search'] {
-    padding-inline-start: calc(var(--dsc-suggestion-search-icon-size) + var(--dsc-suggestion-clear-gap) * 2);
+    padding-inline-start: calc(var(--dsc-suggestion-search-icon-spacing) + var(--dsc-suggestion-search-icon-size) + var(--dsc-suggestion-clear-gap));
   }
   & > input[type='search']::-webkit-search-cancel-button {
     display: none;
   }
   &:has(> input[type='search'])::after {
     grid-area: input;
-    margin-inline-start: var(--dsc-suggestion-clear-gap);
+    margin-inline-start: var(--dsc-suggestion-search-icon-spacing);
     pointer-events: none;
     background: currentcolor;
     content: '';
