@@ -65,30 +65,30 @@ const render = (self: DSSuggestionElement) => {
   handleEmpty({ currentTarget: self });
 };
 
-const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
-  const { creatable, control, options } = self as DSSuggestionElement;
+const handleEmpty = (event: Pick<Event, 'currentTarget'>) => {
+  const self = event.currentTarget as DSSuggestionElement;
+  const { creatable, control, options } = self;
   if (!options) return;
 
   const value = control?.value.trim() || '';
   const query = value.toLowerCase();
   let emptyOpt: HTMLOptionElement | undefined;
-  let hasValue = false;
   let hasLabel = false;
 
   for (const opt of options) {
     if (!emptyOpt && opt.hasAttribute(ATTR_EMPTY)) emptyOpt = opt;
-    if (!hasValue && opt.value === value) hasValue = true;
-    if (!hasLabel && (!query || opt.label?.toLowerCase() === query))
+    else if (!hasLabel && (!query || opt.label?.toLowerCase() === query))
       hasLabel = true;
-    if (hasLabel && hasValue && emptyOpt) break; // Speed up if both conditions are met
+    if (hasLabel && emptyOpt) break; // Speed up if both conditions are met
   }
   if (!emptyOpt) return;
 
-  emptyOpt.hidden = hasLabel; // Hide initial empty state when options exist, or when the query already exists
+  emptyOpt.hidden = hasLabel || (creatable && !value); // Hide initial empty state when options exist, when the query already exists, or for an initially empty creatable input
   attr(emptyOpt, 'label', value); // Ensures option is not filtered out by <u-combobox>
   attr(emptyOpt, 'value', creatable ? value : ''); // Ensures clicking option does nothing
 
   if (creatable) {
+    const hasValue = self.values.includes(value);
     const text = attrOrCSS(emptyOpt, ATTR_EMPTY);
     const hint =
       (!hasValue && text?.replace(REGEX_CREATE, () => value)) || value; // Only show "Legg til" if not already created
