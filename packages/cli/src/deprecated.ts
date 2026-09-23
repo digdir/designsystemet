@@ -1,1 +1,0 @@
-console.warn('This export is deprecated and will be removed in a future release.');

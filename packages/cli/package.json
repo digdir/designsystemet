@@ -25,22 +25,7 @@
     "./types": {
       "import": "./dist/src/types.js"
     },
-    "./package.json": "./package.json",
-    ".": {
-      "import": "./dist/src/deprecated.js"
-    },
-    "./color": {
-      "import": "./dist/src/deprecated.js"
-    },
-    "./tokens": {
-      "import": "./dist/src/deprecated.js"
-    },
-    "./tokens/create": {
-      "import": "./dist/src/deprecated.js"
-    },
-    "./tokens/types": {
-      "import": "./dist/src/deprecated.js"
-    }
+    "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
