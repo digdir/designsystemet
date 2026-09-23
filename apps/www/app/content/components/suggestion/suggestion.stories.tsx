@@ -349,11 +349,13 @@ export const FetchExternal = () => {
   const empty = 'Search for recipes';
   const [options, setOptions] = useState<string[] | string>(empty); // Store results
   const timer = useRef<ReturnType<typeof setTimeout> | number>(0);
+  const latestValue = useRef('');
 
   const getCountries = async (value: string) => {
     if (!value) return setOptions(empty);
     const api = `https://dummyjson.com/recipes/search?q=${value}`; // TODO FIX
     const data = await (await fetch(api)).json();
+    if (latestValue.current !== value) return;
     setOptions(
       Array.isArray(data.recipes)
         ? data.recipes.map(({ name }: { name: string }) => name)
@@ -363,6 +365,7 @@ export const FetchExternal = () => {
 
   const handleInput = (event: React.InputEvent<HTMLInputElement>) => {
     const value = encodeURIComponent(event.currentTarget.value.trim());
+    latestValue.current = value;
     setOptions(value ? 'Loading...' : empty);
     clearTimeout(timer.current);
     timer.current = setTimeout(getCountries, 500, value); // Debounce API call
