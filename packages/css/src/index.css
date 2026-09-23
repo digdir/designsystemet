@@ -1,7 +1,5 @@
 @layer ds.theme, ds.base, ds.components;
 
-@import url('./forced-colors.css') layer(ds.base); /* Place above theme to always win in forced color mode */
-
 /** Import order defines ordinal specificity for layers */
 @import url('./base.css') layer(ds.base);
 @import url('./heading.css') layer(ds.base);
