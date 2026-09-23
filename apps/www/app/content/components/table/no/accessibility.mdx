@@ -18,26 +18,38 @@ WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/w
   Utelat aldri celler selv om de mangler data. En tom celle skal rendres som en tom `Table.Cell` for å bevare tabellens matrise og forhindre at hjelpemidler forskyver koordinatene.  
   WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
 
+<Divider/>
+\
 **Unngå sammenslåing av celler (`colspan` / `rowspan`).**  
   Hold matrisen regulær. Sammenslåtte celler skaper koordinatfeil i skjermleseres tabellnavigasjon.  
   WCAG: [1.3.1 Informasjon og relasjoner (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
 
+<Divider/>
+\
 **Knytt radkontekst til interaktive elementer.**  
   Knapper, lenker eller avkrysningsbokser i tabellceller må ha et tilgjengelig navn som inkluderer radens identifikator (f.eks. via `aria-label`). Hver celle bør som hovedregel kun inneholde ett interaktivt element.  
   WCAG: [4.1.2 Navn, rolle, verdi (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/118) og [2.5.3 Ledetekst i navn (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/146)
 
+<Divider/>
+\
 **Angi sorteringstilstand og behold fokus.**  
   Sorterbare kolonner skal eksponere `aria-sort` (`ascending`, `descending`, `none`). Fokus må forbli på utløseren etter omsortering (unngå fokus-tap ved re-render).  
   WCAG: [4.1.2 Navn, rolle, verdi (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/118) og [2.4.3 Fokusrekkefølge (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/104)
 
+<Divider/>
+\
 **Tastaturtilgjengelig rullefelt ved horisontal scroll.**  
   Hvis tabellen pakkes inn i en rullbar container på små skjermer, skal containeren ha `tabindex="0"`, `role="region"` og et unikt `aria-label`.  
   WCAG: [2.1.1 Tastatur (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/211-tastatur-niva/99) og [1.4.10 Dynamisk tilpasning (Reflow) (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva/141)
 
+<Divider/>
+\
 **Kontroller kontraster og fokusmarkører i eget tema.**  
   Sjekk at komponentstyling i ditt tema oppfyller minst 3:1 for funksjonelle rammer/skillelinjer og fokusmarkører, og 4.5:1 for tekstinnhold.  
   WCAG: [1.4.3 Kontrast (minimum) (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/143-kontrast-minimum-niva/95) og [1.4.11 Kontrast for ikke-tekstlig innhold (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/1411-kontrast-ikke-tekstlig-innhold-niva/142)
 
+<Divider/>
+\
 ## Test med tastatur
 
 Sjekk at du kan:
