@@ -38,7 +38,6 @@ const renderCreatable = () => {
       <input type="search" class="ds-input" />
       <u-datalist role="listbox">
         <u-option data-empty="Add %s">No results</u-option>
-        <u-option value="option-1">Option 1</u-option>
       </u-datalist>
     </ds-suggestion>
   `;
