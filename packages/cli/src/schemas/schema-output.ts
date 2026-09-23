@@ -27,11 +27,14 @@ const outputShorthandSchema = z
 
 const outputSchema = z
   .union([outputObjectSchema, outputShorthandSchema])
-  .describe('An output file, either as an object or an output type using its default settings');
+  .describe('An output file, either as an object or an output type using its default settings.');
 
 /** The output settings of a config. `outDir` and `clean` are used by `tokens create`, `output` by the `config` command. */
 export const outputConfigShape = {
-  output: z.array(outputSchema).prefault(['design-tokens', 'css']).describe('An array of output files'),
+  output: z
+    .array(outputSchema)
+    .prefault(['design-tokens', 'css'])
+    .describe('An array of output types. These are run in the order they are specified.'),
   outDir: z
     .string()
     .default('design-tokens')
