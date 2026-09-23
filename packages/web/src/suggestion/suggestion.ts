@@ -66,35 +66,38 @@ const render = (self: DSSuggestionElement) => {
 };
 
 const handleEmpty = ({ currentTarget: self }: Pick<Event, 'currentTarget'>) => {
-  const { creatable, control, options, values } = self as DSSuggestionElement;
+  const { creatable, control, options } = self as DSSuggestionElement;
   if (!options) return;
 
   const value = control?.value.trim() || '';
   const query = value.toLowerCase();
   let emptyOpt: HTMLOptionElement | undefined;
-  let hasMatch = false;
+  let hasValue = false;
+  let hasLabel = false;
 
   for (const opt of options) {
     if (!emptyOpt && opt.hasAttribute(ATTR_EMPTY)) emptyOpt = opt;
-    else if (!hasMatch && (!query || opt.label?.toLowerCase() === query))
-      hasMatch = true;
-    if (hasMatch && emptyOpt) break; // Speed up if both conditions are met
+    if (!hasValue && opt.value === value) hasValue = true;
+    if (!hasLabel && (!query || opt.label?.toLowerCase() === query))
+      hasLabel = true;
+    if (hasLabel && hasValue && emptyOpt) break; // Speed up if both conditions are met
   }
   if (!emptyOpt) return;
 
-  emptyOpt.hidden = hasMatch || !value; // Hide initial empty state when options exist, or when the query already exists, or when no value
+  emptyOpt.hidden = hasLabel; // Hide initial empty state when options exist, or when the query already exists
   attr(emptyOpt, 'label', value); // Ensures option is not filtered out by <u-combobox>
   attr(emptyOpt, 'value', creatable ? value : ''); // Ensures clicking option does nothing
 
   if (creatable) {
-    const found = values.some((val) => val === value); // Only show "Legg til" if not already created
     const text = attrOrCSS(emptyOpt, ATTR_EMPTY);
-    const hint = (!found && text?.replace(REGEX_CREATE, () => value)) || value;
+    const hint =
+      (!hasValue && text?.replace(REGEX_CREATE, () => value)) || value; // Only show "Legg til" if not already created
 
     if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, emptyOpt);
     else attr(emptyOpt, ATTR_EMPTY, text); // Speed up by caching attribute value
 
-    attr(emptyOpt, 'disabled', found && emptyOpt.textContent ? 'true' : null); // Hide permanent hint if created
+    const disabled = hasValue && emptyOpt.textContent ? 'true' : null;
+    attr(emptyOpt, 'disabled', disabled); // Hide hint if already created
     attr(emptyOpt, ATTR_CREATE, hint);
   }
 };
