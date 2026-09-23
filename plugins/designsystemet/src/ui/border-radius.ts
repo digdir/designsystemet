@@ -1,4 +1,4 @@
-import type { BorderRadiusConfig } from '@digdir/designsystemet/tokens/types';
+import type { BorderRadiusConfig } from '@digdir/designsystemet/internal';
 
 /** Resolves the border-radius aliases into pixel values. */
 export function resolveBorderRadiusSteps(

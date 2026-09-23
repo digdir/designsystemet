@@ -1,4 +1,4 @@
-import type { ColorScheme, CssColor } from '@digdir/designsystemet';
+import type { ColorScheme, CssColor } from '@digdir/designsystemet/internal';
 import {
   Avatar,
   Button,

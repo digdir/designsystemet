@@ -1,18 +1,14 @@
-import {
-  parseConfig,
-  validateConfig,
-} from '@digdir/designsystemet/schemas/helpers.js';
+import type { TokenSets } from '@digdir/designsystemet/internal';
 import {
   type ConfigSchema,
   configSchema,
-  externalConfigSchema,
-} from '@digdir/designsystemet/schemas/schema.js';
-import {
   createSystemTokens,
   createTokens,
+  externalConfigSchema,
   getTokenSetDimensions,
-} from '@digdir/designsystemet/tokens/create';
-import type { TokenSets } from '@digdir/designsystemet/tokens/types';
+  parseConfig,
+  validateConfig,
+} from '@digdir/designsystemet/internal';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { importToFigma } from './token-export/importer';

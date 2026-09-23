@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@digdir/designsystemet": "workspace:^",
+    "@digdir/designsystemet-types": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@internal/components": "workspace:^",

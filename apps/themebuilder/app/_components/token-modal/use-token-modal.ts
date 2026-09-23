@@ -1,6 +1,8 @@
-import type { CssColor } from '@digdir/designsystemet/color';
+import type {
+  CssColor,
+  ExternalConfigSchemaInput,
+} from '@digdir/designsystemet/internal';
 import pkg from '@digdir/designsystemet/package.json';
-import type { ExternalConfigSchemaInput } from '@digdir/designsystemet/schemas/schema.js';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
