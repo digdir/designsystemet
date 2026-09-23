@@ -13,7 +13,6 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/cli",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/src/internal.js",
   "files": [
     "./dist/**"
   ],
