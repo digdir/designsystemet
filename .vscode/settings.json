@@ -17,7 +17,7 @@
   "js/ts.tsdk.path": "node_modules/typescript/lib",
   "js/ts.tsdk.promptToUseWorkspaceVersion": true,
   "cssvar.files": [
-    "packages/theme/src/themes/designsystemet.css",
+    "packages/css/theme/designsystemet.css",
   ],
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
