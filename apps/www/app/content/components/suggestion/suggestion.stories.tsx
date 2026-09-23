@@ -5,7 +5,6 @@ import {
   Field,
   Label,
   Paragraph,
-  Spinner,
   type SuggestionItem,
 } from '@digdir/designsystemet-react';
 import { useRef, useState } from 'react';
