@@ -30,7 +30,6 @@
     "@web/themebuilder",
     "@web/storybook",
     "@internal/components",
-    "@internal/digdir",
-    "@digdir/designsystemet-theme"
+    "@internal/digdir"
   ]
 }
