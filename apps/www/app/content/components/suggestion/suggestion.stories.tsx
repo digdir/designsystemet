@@ -351,7 +351,7 @@ export const FetchExternal = () => {
   const timer = useRef<ReturnType<typeof setTimeout> | number>(0);
   const latestValue = useRef('');
 
-  const getCountries = async (value: string) => {
+  const getRecipes = async (value: string) => {
     if (!value) return setOptions(empty);
     const api = `https://dummyjson.com/recipes/search?q=${value}`; // TODO FIX
     const data = await (await fetch(api)).json();
@@ -368,7 +368,7 @@ export const FetchExternal = () => {
     latestValue.current = value;
     setOptions(value ? 'Loading...' : empty);
     clearTimeout(timer.current);
-    timer.current = setTimeout(getCountries, 500, value); // Debounce API call
+    timer.current = setTimeout(getRecipes, 500, value); // Debounce API call
   };
 
   return (
