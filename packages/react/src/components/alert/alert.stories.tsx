@@ -21,7 +21,7 @@ export const Preview = meta.story({
 
 export const VariantInfo = meta.story({
   render: (args) => (
-    <Alert {...args} data-color='info'>
+    <Alert {...args} role='status' data-color='info'>
       <Heading
         level={2}
         data-size='xs'
@@ -41,7 +41,7 @@ export const VariantInfo = meta.story({
 
 export const VariantSuccess = meta.story({
   render: (args) => (
-    <Alert {...args} data-color='success'>
+    <Alert {...args} role='status' data-color='success'>
       <Heading
         level={2}
         data-size='xs'
@@ -61,7 +61,7 @@ export const VariantSuccess = meta.story({
 
 export const VariantWarning = meta.story({
   render: (args) => (
-    <Alert {...args} data-color='warning'>
+    <Alert {...args} role='status' data-color='warning'>
       <Heading
         level={2}
         data-size='xs'
@@ -81,7 +81,7 @@ export const VariantWarning = meta.story({
 
 export const VariantDanger = meta.story({
   render: (args) => (
-    <Alert {...args} data-color='danger'>
+    <Alert {...args} role='alert' data-color='danger'>
       <Heading
         level={2}
         data-size='xs'
@@ -102,7 +102,7 @@ export const VariantDanger = meta.story({
 
 export const MedHeading = meta.story({
   render: (args) => (
-    <Alert {...args}>
+    <Alert {...args} role='status'>
       <Heading
         level={2}
         data-size='xs'
@@ -122,7 +122,7 @@ export const MedHeading = meta.story({
 
 export const MedKunHeading = meta.story({
   render: (args) => (
-    <Alert {...args} data-color='warning'>
+    <Alert {...args} role='status' data-color='warning'>
       <Paragraph> Du har 7 dager igjen på å fullføre søknaden.</Paragraph>
     </Alert>
   ),
@@ -130,7 +130,7 @@ export const MedKunHeading = meta.story({
 
 export const MedLenke = meta.story({
   render: (args) => (
-    <Alert {...args} data-color='warning'>
+    <Alert {...args} role='status' data-color='warning'>
       <Heading
         level={2}
         data-size='xs'
@@ -150,7 +150,7 @@ export const MedLenke = meta.story({
 
 export const UtenAria = meta.story({
   render: (args) => (
-    <Alert {...args} data-color='warning'>
+    <Alert {...args} role='status' data-color='warning'>
       <Heading
         level={2}
         data-size='xs'
