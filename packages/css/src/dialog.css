@@ -126,48 +126,25 @@
 
   /* Close button */
   & button[command='close']:empty::before,
-  & button[data-command='close']:empty::before {
+  & button[data-command='close']:empty::before,
+  & > form[method='dialog']:first-child > button:only-child::before /* @deprecated old selector for backwards compatibility */ {
     content: '';
     background: currentcolor;
+    forced-color-adjust: none; /* Enable drawing with background property */
     height: var(--dsc-dialog-icon-size);
     width: var(--dsc-dialog-icon-size);
     mask: center / contain no-repeat var(--dsc-dialog-icon-url);
-
-    @media (forced-colors: active) {
-      background: ButtonText;
-    }
   }
 
   & > button[command='close']:first-child,
-  & > button[data-command='close']:first-child {
+  & > button[data-command='close']:first-child,
+  & > form[method='dialog']:first-child > button:only-child /* @deprecated old selector for backwards compatibility */ {
     float: inline-end;
     margin-block-start: var(--_dsc-dialog-icon-top-right-margin);
     margin-block-end: var(--dsc-dialog-icon-spacing);
     margin-inline-start: var(--dsc-dialog-icon-spacing);
     margin-inline-end: var(--_dsc-dialog-icon-top-right-margin);
     color: inherit;
-  }
-
-  /* @deprecated old selector for backwards compatibility */
-  & > form[method='dialog']:first-child > button:only-child {
-    float: inline-end;
-    margin-block-start: var(--_dsc-dialog-icon-top-right-margin);
-    margin-block-end: var(--dsc-dialog-icon-spacing);
-    margin-inline-start: var(--dsc-dialog-icon-spacing);
-    margin-inline-end: var(--_dsc-dialog-icon-top-right-margin);
-    color: inherit;
-
-    &::before {
-      content: '';
-      background: currentcolor;
-      height: var(--ds-size-6);
-      width: var(--ds-size-6);
-      mask: center / contain no-repeat var(--dsc-dialog-icon-url);
-
-      @media (forced-colors: active) {
-        background: ButtonText;
-      }
-    }
   }
 }
 

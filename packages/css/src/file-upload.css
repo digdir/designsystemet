@@ -84,18 +84,12 @@
     height: var(--dsc-file-upload-icon-size);
     margin: 0 auto var(--ds-size-2);
     width: var(--dsc-file-upload-icon-size);
-
-    @media (forced-colors: active) {
-      color: CanvasText;
-    }
   }
   &:not(:has(> svg))::before {
     content: '';
-    background: currentColor;
+    background: currentcolor;
+    forced-color-adjust: none; /* Enable drawing with background property */
     mask: var(--_icon-url) center / contain no-repeat;
-    @media (forced-colors: active) {
-      background: CanvasText;
-    }
   }
   /* First line of text should be currentcolor */
   & > [data-field='description']:not([data-field='description'] + [data-field='description']) {

@@ -52,6 +52,7 @@ body,
 
 .ds-readonly-icon::before {
   background: currentcolor;
+  forced-color-adjust: none; /* Enable drawing with background property */
   content: '';
   display: inline-block;
   height: calc(1em * var(--ds-line-height-md)); /* Fallback for browsers not supporting lh unit */
@@ -62,10 +63,6 @@ body,
   vertical-align: bottom;
   width: var(--ds-readonly-icon-size);
   @composes ds-print-preserve from './base.css';
-
-  @media (forced-colors: active) {
-    background: CanvasText;
-  }
 }
 
 /*
@@ -172,12 +169,7 @@ body,
   background-image:
     linear-gradient(45deg, var(--_diagonal-1), var(--_diagonal-2), var(--_diagonal-3), var(--_diagonal-4)),
     linear-gradient(-45deg, var(--_diagonal-1), var(--_diagonal-2), var(--_diagonal-3), var(--_diagonal-4));
-
-  @media (forced-colors: active) {
-    background-color: LinkText;
-    border-color: LinkText;
-    forced-color-adjust: none; /* To be able to draw check */
-  }
+  forced-color-adjust: none; /* Enable drawing with background property */
 }
 
 /* Hide list styling, but make sure VoiceOver Safari correctly announce list role */

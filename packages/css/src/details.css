@@ -73,20 +73,13 @@
     &::before {
       all: unset;
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       border-radius: var(--ds-border-radius-md);
       content: '';
       flex-shrink: 0;
       height: var(--dsc-details-icon-size);
       mask: 50% / contain no-repeat var(--dsc-details-icon-url);
       width: var(--dsc-details-icon-size);
-    }
-
-    @media (forced-colors: active) {
-      color: ButtonText;
-
-      &::before {
-        background: ButtonText;
-      }
     }
   }
 
