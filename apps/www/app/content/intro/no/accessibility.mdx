@@ -2,7 +2,7 @@
 title: Universell utforming
 sidebar_title: Universell utforming
 description: Designsystemet bidrar til økt etterlevelse av regelverk for universell utforming gjennom tilgjengelige komponenter og veiledning.
-date: 2025-06-27
+date: 2026-09-18
 category: Introduksjon
 color: yellow
 icon: HandHeartIcon
@@ -11,12 +11,34 @@ order: 40
 search_terms: tilgjengelighet, accessibility, inkludering
 ---
 
-Designsystemet tilbyr grunnleggende komponenter som ivaretar [WCAG-kravene som inngår i regelverket](https://www.uutilsynet.no/wcag-standarden/wcag-standarden/86). Designsystemet tilbyr også veiledning og anbefalinger ut over de lovpålagte kravene, for å gjøre løsningene mest mulig brukervennlige for alle, uavhengig av varige eller midlertidig reduserte evner. 
+Designsystemet tilbyr grunnleggende komponenter som ivaretar [WCAG-kravene som inngår i regelverket](https://www.uutilsynet.no/wcag-standarden/wcag-standarden/86). Designsystemet tilbyr også veiledning og anbefalinger ut over de lovpålagte kravene, for å gjøre løsningene mest mulig brukervennlige for alle, uavhengig av varige eller midlertidige funksjonsnedsettelser.
 
 Universell utforming krever ofte detaljerte tekniske og designmessige vurderinger. Flere komponenter krever spesifikke HTML- og ARIA-attributter, korrekt fokushåndtering og dynamisk annonsering til skjermlesere. I tillegg må det tas høyde for hvordan ulike skjermlesere og nettlesere tolker kombinasjoner av attributter og elementer. Dette er komplekse utfordringer den enkelte utvikler eller designer ikke skal måtte løse alene. Når vi løser det én gang i felleskap, kan mange gjenbruke det. Eventuelle feil og forbedringer som oppdages kan rettes opp og komme alle som bruker Designsystemet til gode.
 
-Universell utforming er en del av hele vår arbeidsprosess - fra vi begynner å spesifisere komponenten til den er i produksjon. Når vi oppdager feil eller mangler på komponenten som påvirker om den er universelt utformet vil disse oppgavene bli prioritert av teamet. 
+## Hva løser Designsystemet, og hva må du gjøre selv
+Designsystemet kan hjelpe deg med deler av WCAG-kravene som inngår i regelverket for universell utforming, men etterlevelse avhenger også av komponentbruk og innhold.
+
+### Dette løser Designsystemet:
+
+- **Fokustilstander:** Tydelige og synlige fokustilstander for interaktive elementer på alle bakgrunner.
+- **Fargekontrast:** Tilstrekkelig kontrast og form på innhold for både svaksynte og fargeblinde.
+- **Tastaturtilgjengelighet:** Alle interaktive elementer kan nås og betjenes med tastatur.
+- **Skalerbart design:** Tilpasning til forskjellige skjermstørrelser, zoom or preferert tekststørrelse.
+- **Rolle og tilstand:** Støtte hjelpeteknologi med semantikk og ARIA-attributter.
+- **Tilgjengelige skjema:** Korrekt struktur, sammenknytting og validering.
+- **Interaktiv elementstørrelse:** Tilstrekkelig berøringsflate basert på WCAG 2.2-kriteriet 2.5.8, som er veiledning utover dagens lovpålagte WCAG 2.1-krav.
+
+### Dette må du sørge for selv:
+- **Semantisk HTML:** Bruk passende elementer for å formidle riktig rolle og overskriftshierarki.
+- **Tekstalternativer:** Bruk passende tekstalternativer for ikke-tekstlig innhold. Kravene er dokumentert på de enkelte komponentsidene.
+- **Spesifiser innholdsspråk:** Angi riktig språkkode for siden, for eksempel `<html lang="no">` for norsk.
+- **Korrekt token-bruk:** Dersom en token heter `border` - bruk den til border og ikke background, osv.
+- **Fargemodus (valgfritt):** Bruk `<body data-color-scheme="auto">` for å følge brukerens systempreferanser.
+
+[I Wikien vår på GitHub finner du en detaljert oversikt over hvilke WCAG-krav Designsystemet hjelper deg å oppfylle](https://github.com/digdir/designsystemet/wiki/Designsystemet-hjelper-deg-%C3%A5-oppfylla-WCAG%E2%80%90kravane)
+
+Universell utforming er en del av hele vår arbeidsprosess - fra vi begynner å spesifisere komponenten til den er i produksjon. Når vi oppdager feil eller mangler på komponenten som påvirker om den er universelt utformet vil disse oppgavene bli prioritert av teamet.
 
 Tilgjengelige komponenter er bare en del av det å lage tilgjengelige løsninger. Vi vil derfor også lage guider og andre hjelpemidler slik at teamene får ekstra støtte til å bruke komponentene til det de er ment til.
 
-Under [God praksis - Tilgjengelighet](/no/best-practices#accessibility) kommer vi til å legge ut artikler som handler om hvordan vi kan gjøre løsningene våre mest mulig tilgjengelige.
+

@@ -1,18 +1,21 @@
-import { COLLECTION } from './constants';
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
+import type { ImportLog } from './log';
 import { resolveCompositeValue } from './resolver';
-import type { PreviewData } from './types';
+import type { TokenModel } from './types';
 import { parseNumber, pathToFigmaName } from './utils';
 import { findVariable } from './variable-sync';
 
+// Figma text styles are not mode-aware, so theme-dependent values (the font family)
+// are written for the first theme; see getTokenSetLookupOrder.
 export async function syncTextStyles(
-  preview: PreviewData,
-  activeTokenSets: string[],
+  model: TokenModel,
+  tokenSetOrder: string[],
   variableLookup: Map<string, Variable>,
   fontCache: FontCache,
-  logs: string[],
+  log: ImportLog,
 ): Promise<void> {
-  const desired = preview.flatTokens.filter(
+  const desired = model.flatTokens.filter(
     (token) =>
       token.tokenSet === 'semantic/style' && token.type === 'typography',
   );
@@ -23,7 +26,7 @@ export async function syncTextStyles(
   for (const style of existing) {
     if (style.name.startsWith('typography/') && !desiredNames.has(style.name)) {
       style.remove();
-      logs.push(`Deleted text style ${style.name}`);
+      log.info.push(`Deleted text style ${style.name}`);
     }
   }
 
@@ -31,12 +34,12 @@ export async function syncTextStyles(
     const styleName = token.figmaName;
     const styleValue = resolveCompositeValue(
       token.value,
-      preview,
-      activeTokenSets,
+      model,
+      tokenSetOrder,
     ) as Record<string, unknown> | null;
 
     if (!styleValue) {
-      logs.push(
+      log.warnings.push(
         `Skipped text style ${styleName} because it could not be resolved`,
       );
       continue;
@@ -52,7 +55,7 @@ export async function syncTextStyles(
         : 'Regular';
     const fontName = findFontName(fontCache, fontFamily, fontWeight);
     if (!fontName) {
-      logs.push(
+      log.warnings.push(
         `Skipped text style ${styleName} because font ${fontFamily} ${fontWeight} is unavailable`,
       );
       continue;
@@ -68,7 +71,7 @@ export async function syncTextStyles(
     if (!style) {
       style = figma.createTextStyle();
       style.name = styleName;
-      logs.push(`Created text style ${styleName}`);
+      log.info.push(`Created text style ${styleName}`);
     }
 
     style.fontName = fontName;
@@ -82,14 +85,14 @@ export async function syncTextStyles(
 
     style.setBoundVariable(
       'fontFamily',
-      findVariable(variableLookup, COLLECTION.THEME, 'font-family'),
+      findVariable(variableLookup, FIGMA_COLLECTION.THEME, 'font-family'),
     );
     style.setBoundVariable(
       'fontStyle',
       typeof styleValue.fontWeight === 'string'
         ? findVariable(
             variableLookup,
-            COLLECTION.THEME,
+            FIGMA_COLLECTION.THEME,
             `font-weight/${String(styleValue.fontWeight).toLowerCase()}`,
           )
         : null,
@@ -101,7 +104,7 @@ export async function syncTextStyles(
         'fontSize' in token.value
         ? findVariable(
             variableLookup,
-            COLLECTION.SIZE,
+            FIGMA_COLLECTION.SIZE,
             normalizeFontSizeReference(
               (token.value as Record<string, unknown>).fontSize,
             ),

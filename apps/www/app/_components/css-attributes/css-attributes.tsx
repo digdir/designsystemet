@@ -65,7 +65,15 @@ export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
 export function getAttributes(css: string) {
   const res: { [key: string]: Set<unknown> | string } = {};
   //filter out global attributes referenced locally
-  const globals = ['color', 'size', 'color-scheme'];
+  const globals = [
+    'color',
+    'size',
+    'color-scheme',
+    // Floating UI
+    'is-floating',
+    'floating',
+    'floating-ui-portal',
+  ];
 
   const allAttrs = Array.from(
     css.matchAll(/\[data-([^=\]|$~*^]+)(?:([|$~*^]?=)([^\]]+))?\]/g),
