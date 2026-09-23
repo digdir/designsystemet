@@ -10,7 +10,6 @@
 1. Unknown variables are deleted.
 2. Better placement for notification banner?
 3. Clean up CSS
-4. Use predefined preview model with css variables and values (maybe based on [preview-tokens](../../packages/cli/src/scripts/update-preview-tokens.ts))
 
 ## How to test in Figma
 

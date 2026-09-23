@@ -66,7 +66,6 @@
     "test:tokens-create-and-build-config": "pnpm test:tokens-create-config && pnpm test:tokens-build-config",
     "test:generate-config-from-tokens": "pnpm run designsystemet generate-config-from-tokens -d ../../design-tokens --dry",
     "test": "node -v && pnpm test:tokens-create-and-build-options && pnpm test:generate-config-from-tokens && pnpm test:tokens-create-and-build-config && pnpm test:unit",
-    "update:preview-tokens": "pnpm node ./src/scripts/update-preview-tokens.ts",
     "verify": "pnpm test && pnpm --filter @internal/digdir update:theme-digdir"
   },
   "dependencies": {
