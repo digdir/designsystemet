@@ -81,11 +81,6 @@
         &:focus-visible::after {
           z-index: -1;
         }
-
-        @media (forced-colors: active) {
-          color: CanvasText;
-          border-bottom: 2px solid CanvasText;
-        }
       }
 
       /* We set z-index to make sure the active line does not bleed over the focus indicator */

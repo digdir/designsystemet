@@ -1,8 +1,10 @@
 import type { CollectionSpec } from './collection-specs';
+import type { ImportLog } from './log';
+import { normalizeScopes } from './scopes';
 
 export async function syncCollections(
   specs: CollectionSpec[],
-  logs: string[],
+  log: ImportLog,
 ): Promise<Map<string, VariableCollection>> {
   const existingCollections =
     await figma.variables.getLocalVariableCollectionsAsync();
@@ -17,10 +19,10 @@ export async function syncCollections(
       figma.variables.createVariableCollection(spec.name);
 
     if (!collectionByName.has(spec.name)) {
-      logs.push(`Created collection: ${spec.name}`);
+      log.info.push(`Created collection: ${spec.name}`);
     }
 
-    await ensureModes(collection, spec.modeNames, logs);
+    await ensureModes(collection, spec.modeNames, log);
     result.set(spec.name, collection);
   }
 
@@ -30,7 +32,7 @@ export async function syncCollections(
 async function ensureModes(
   collection: VariableCollection,
   desiredModeNames: string[],
-  logs: string[],
+  log: ImportLog,
 ): Promise<void> {
   if (desiredModeNames.length === 0) {
     return;
@@ -40,7 +42,7 @@ async function ensureModes(
 
   if (existing.length === 1 && existing[0].name !== desiredModeNames[0]) {
     collection.renameMode(existing[0].modeId, desiredModeNames[0]);
-    logs.push(
+    log.info.push(
       `Renamed mode ${existing[0].name} -> ${desiredModeNames[0]} in ${collection.name}`,
     );
   }
@@ -48,14 +50,14 @@ async function ensureModes(
   for (const modeName of desiredModeNames) {
     if (!collection.modes.some((mode) => mode.name === modeName)) {
       collection.addMode(modeName);
-      logs.push(`Created mode ${modeName} in ${collection.name}`);
+      log.info.push(`Created mode ${modeName} in ${collection.name}`);
     }
   }
 
   for (const mode of collection.modes.slice()) {
     if (!desiredModeNames.includes(mode.name) && collection.modes.length > 1) {
       collection.removeMode(mode.modeId);
-      logs.push(`Deleted mode ${mode.name} from ${collection.name}`);
+      log.info.push(`Deleted mode ${mode.name} from ${collection.name}`);
     }
   }
 }
@@ -63,7 +65,7 @@ async function ensureModes(
 export async function syncVariables(
   specs: CollectionSpec[],
   collectionMap: Map<string, VariableCollection>,
-  logs: string[],
+  log: ImportLog,
 ): Promise<Map<string, Variable>> {
   const allVariables = await figma.variables.getLocalVariablesAsync();
   const byCompositeKey = new Map<string, Variable>();
@@ -86,18 +88,22 @@ export async function syncVariables(
       const desired = spec.variables.get(variable.name);
       if (!desired) {
         variable.remove();
-        logs.push(`Deleted variable ${collection.name}/${variable.name}`);
+        log.info.push(`Deleted variable ${collection.name}/${variable.name}`);
       }
     }
 
     const createdOrExisting = new Map<string, Variable>();
+    let codeSyntaxUpdated = 0;
+    let codeSyntaxFailed = 0;
+    let scopesUpdated = 0;
+    let scopesFailed = 0;
 
     for (const desired of spec.variables.values()) {
       let variable = variableByName.get(desired.name);
 
       if (variable && variable.resolvedType !== desired.type) {
         variable.remove();
-        logs.push(
+        log.info.push(
           `Deleted variable ${collection.name}/${desired.name} because type changed to ${desired.type}`,
         );
         variable = undefined;
@@ -109,11 +115,48 @@ export async function syncVariables(
           collection,
           desired.type,
         );
-        logs.push(`Created variable ${collection.name}/${desired.name}`);
+        log.info.push(`Created variable ${collection.name}/${desired.name}`);
+      }
+
+      // Scopes and code syntax are best-effort: Figma rejects some assignments (e.g. an invalid
+      // scope combination), and that must not abort the import before values, aliases and
+      // styles are written. Log the variable and carry on.
+      try {
+        if (syncCodeSyntax(variable, desired.codeSyntax)) {
+          codeSyntaxUpdated++;
+        }
+      } catch (error) {
+        codeSyntaxFailed++;
+        log.warnings.push(
+          `Could not set code syntax on ${collection.name}/${desired.name}: ${errorMessage(error)}`,
+        );
+      }
+      try {
+        if (syncScopes(variable, desired.scopes)) {
+          scopesUpdated++;
+        }
+      } catch (error) {
+        scopesFailed++;
+        log.warnings.push(
+          `Could not set scopes on ${collection.name}/${desired.name}: ${errorMessage(error)}`,
+        );
       }
 
       createdOrExisting.set(desired.name, variable);
       byCompositeKey.set(`${collection.name}::${desired.name}`, variable);
+    }
+
+    if (codeSyntaxUpdated > 0 || codeSyntaxFailed > 0) {
+      log.info.push(
+        `Code syntax: updated on ${codeSyntaxUpdated} variables in ${collection.name}` +
+          (codeSyntaxFailed > 0 ? `, ${codeSyntaxFailed} failed` : ''),
+      );
+    }
+    if (scopesUpdated > 0 || scopesFailed > 0) {
+      log.info.push(
+        `Scopes: updated on ${scopesUpdated} variables in ${collection.name}` +
+          (scopesFailed > 0 ? `, ${scopesFailed} failed` : ''),
+      );
     }
 
     variablesByCollection.set(spec.name, createdOrExisting);
@@ -182,7 +225,7 @@ export async function syncVariables(
         }
 
         if (!targetVariable) {
-          logs.push(
+          log.warnings.push(
             `Missing alias target ${valueSpec.collection}/${valueSpec.name} for ${collection.name}/${desired.name}`,
           );
           continue;
@@ -209,4 +252,32 @@ export function findVariable(
   }
 
   return variableLookup.get(`${collectionName}::${variableName}`) || null;
+}
+
+// Keeps the WEB code syntax equal to the CSS property the token is built as. Idempotent, so an
+// unchanged variable is left alone and a variable that lost its CSS property has the syntax removed.
+function syncCodeSyntax(variable: Variable, expected: string | null): boolean {
+  const current = variable.codeSyntax.WEB?.trim() || null;
+  if (current === expected) {
+    return false;
+  }
+  if (expected) {
+    variable.setVariableCodeSyntax('WEB', expected);
+  } else {
+    variable.removeVariableCodeSyntax('WEB');
+  }
+  return true;
+}
+
+// Keeps the scopes equal to the spec. Idempotent, so an unchanged variable is left alone.
+function syncScopes(variable: Variable, expected: VariableScope[]): boolean {
+  if (normalizeScopes(expected) === normalizeScopes(variable.scopes ?? [])) {
+    return false;
+  }
+  variable.scopes = expected;
+  return true;
+}
+
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }

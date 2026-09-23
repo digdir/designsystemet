@@ -165,6 +165,9 @@ settings:
 
 packageExtensionsChecksum: sha256-IQSNU9cJtri1P9xMWAvG91nRHacWCj8xtjZCK1etLxM=
 
+patchedDependencies:
+  '@oddbird/popover-polyfill': 1f3e1d4b9b98be6ea6d4707fbe7b7ac66be549654cb4bb41ad60295c10c029f8
+
 importers:
 
   .:
@@ -781,19 +784,6 @@ importers:
         specifier: 6.0.3
         version: 6.0.3
 
-  packages/theme:
-    dependencies:
-      '@digdir/designsystemet-types':
-        specifier: workspace:^
-        version: link:../types
-    devDependencies:
-      '@digdir/designsystemet':
-        specifier: workspace:^
-        version: link:../cli
-      rimraf:
-        specifier: 6.1.3
-        version: 6.1.3
-
   packages/types: {}
 
   packages/web:
@@ -819,7 +809,7 @@ importers:
         version: 0.11.0
       '@oddbird/popover-polyfill':
         specifier: 0.7.2
-        version: 0.7.2
+        version: 0.7.2(patch_hash=1f3e1d4b9b98be6ea6d4707fbe7b7ac66be549654cb4bb41ad60295c10c029f8)
       '@testing-library/dom':
         specifier: 10.4.2
         version: 10.4.2
@@ -7119,7 +7109,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@oddbird/popover-polyfill@0.7.2': {}
+  '@oddbird/popover-polyfill@0.7.2(patch_hash=1f3e1d4b9b98be6ea6d4707fbe7b7ac66be549654cb4bb41ad60295c10c029f8)': {}
 
   '@oxc-parser/binding-android-arm-eabi@0.127.0':
     optional: true

@@ -32,6 +32,19 @@ const renderEmptyOnly = () => {
   return document.querySelector('ds-suggestion') as DSSuggestionElement;
 };
 
+const renderCreatable = () => {
+  document.body.innerHTML = `
+    <ds-suggestion data-creatable class="ds-suggestion">
+      <input type="search" class="ds-input" />
+      <u-datalist role="listbox">
+        <u-option data-empty="Add %s">No results</u-option>
+      </u-datalist>
+    </ds-suggestion>
+  `;
+
+  return document.querySelector('ds-suggestion') as DSSuggestionElement;
+};
+
 describe('suggestion component', () => {
   it('propagates CSS screen-reader translations on connect', () => {
     const suggestion = document.createElement('ds-suggestion');
@@ -104,5 +117,30 @@ describe('suggestion component', () => {
     input.dispatchEvent(new Event('input', { bubbles: true }));
 
     expect(empty.hidden).toBe(false);
+  });
+
+  it('hides the empty option initially for a creatable suggestion', async () => {
+    const suggestion = renderCreatable();
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+
+    await tick();
+
+    expect(empty.hidden).toBe(true);
+  });
+
+  it('uses selected values instead of options to detect an existing creatable value', async () => {
+    const suggestion = renderCreatable();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+
+    Object.defineProperty(suggestion, 'values', {
+      configurable: true,
+      value: ['new value'],
+    });
+    input.value = 'new value';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+
+    expect(empty).toHaveAttribute('data-create', 'new value');
+    expect(empty).toHaveAttribute('disabled', 'true');
   });
 });

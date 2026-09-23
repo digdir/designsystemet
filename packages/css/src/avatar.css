@@ -14,6 +14,7 @@
   box-sizing: border-box;
   color: var(--dsc-avatar-color);
   flex-shrink: 0;
+  forced-color-adjust: none; /* Prevent "backplate" behind text, see https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/ */
   font-family: inherit;
   font-size: var(--dsc-avatar-font-size);
   font-weight: var(--ds-font-weight-medium);
@@ -61,22 +62,13 @@
     width: 100%;
     height: 100%;
     background: currentcolor;
+    forced-color-adjust: none; /* Enable drawing with background property */
     mask: var(--dsc-avatar-icon-url) center / contain no-repeat;
-
-    @media (forced-colors: active) {
-      background: CanvasText;
-    }
   }
 
   /* @deprecated */
   &[data-variant='square'] {
     --dsc-avatar-radius: var(--ds-border-radius-md);
-  }
-
-  @media (forced-colors: active) {
-    border-width: var(--ds-size-1);
-    border-style: solid;
-    border-color: CanvasText;
   }
 
   /* @deprecated: backwards compatible data-size="xs" */

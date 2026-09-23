@@ -125,13 +125,13 @@ export const Inverted = meta.story({
       <Demo label='AvatarStack'>
         <AvatarStack aria-label='Tre brukere'>
           <li>
-            <Avatar aria-label='Navn' initials='ON' />
+            <Avatar aria-label='Navn'>ON</Avatar>
           </li>
           <li>
-            <Avatar aria-label='Navn' initials='KN' />
+            <Avatar aria-label='Navn'>KN</Avatar>
           </li>
           <li>
-            <Avatar aria-label='Navn' initials='PN' />
+            <Avatar aria-label='Navn'>PN</Avatar>
           </li>
         </AvatarStack>
       </Demo>

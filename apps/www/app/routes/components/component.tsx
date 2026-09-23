@@ -315,7 +315,7 @@ const CssVars = () => {
   return cssVars ? <CssVariables vars={cssVars} /> : null;
 };
 
-const Attributes = () => {
+const Attributes = ({ exclude = [] }: { exclude?: string[] }) => {
   const { t } = useTranslation();
 
   const data =
@@ -324,9 +324,14 @@ const Attributes = () => {
     return <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>;
 
   const { cssAttrs } = data;
+  const filteredCssAttrs: Record<string, string> = {};
 
-  return cssAttrs ? (
-    <CssAttributes vars={cssAttrs} />
+  // Filter out excluded properties
+  for (const [name, value] of Object.entries(cssAttrs))
+    if (!exclude.includes(name)) filteredCssAttrs[name] = value;
+
+  return Object.entries(filteredCssAttrs).length ? (
+    <CssAttributes vars={filteredCssAttrs} />
   ) : (
     <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>
   );
