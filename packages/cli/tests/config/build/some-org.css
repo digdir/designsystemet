@@ -1,7 +1,8 @@
 @charset "UTF-8";
+@layer ds.theme.color-scheme, ds.theme.color, ds.theme.forced-colors;
 /*
-build: v1.21.1
-design-tokens: v1.21.1
+build: v1.22.0
+design-tokens: v1.22.0
 */
 
 @layer ds.theme.size-mode {
@@ -1152,4 +1153,31 @@ design-tokens: v1.21.1
   --ds-color-base-contrast-default: var(--ds-color-warning-base-contrast-default);
 }
 
+}
+
+@layer ds.theme.forced-colors {
+  @media (forced-colors: active) {
+    :root,
+    [data-color],
+    [data-color-scheme] {
+      --ds-color-background-default: Canvas;
+    --ds-color-background-tinted: Canvas;
+    --ds-color-surface-default: Canvas;
+    --ds-color-surface-tinted: ButtonFace;
+    --ds-color-surface-hover: ButtonFace;
+    --ds-color-surface-active: ButtonFace;
+    --ds-color-border-subtle: ButtonBorder;
+    --ds-color-border-default: ButtonBorder;
+    --ds-color-border-strong: ButtonBorder;
+    --ds-color-text-subtle: CanvasText;
+    --ds-color-text-default: CanvasText;
+    --ds-color-base-default: Highlight;
+    --ds-color-base-hover: Highlight;
+    --ds-color-base-active: Highlight;
+    --ds-color-base-contrast-subtle: HighlightText;
+    --ds-color-base-contrast-default: HighlightText;
+    --ds-color-focus-inner: Canvas;
+    --ds-color-focus-outer: CanvasText;
+    }
+  }
 }
