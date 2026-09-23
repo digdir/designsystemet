@@ -5,7 +5,7 @@ category: Grunnleggende mønstre
 description: Når du samler inn informasjon fra brukerne, skal det være lett å forstå hvilke opplysninger de skal gi, hvorfor opplysningene er nødvendige, og hva som skjer videre. 
 partners: Digdir, Brønnøysundregistrene
 search_terms: skjema, brukeropplysninger, innsending, spørsmål, innsamling
-date: 2026-09-16
+date: 2026-09-23
 order: 1
 ---
 
@@ -13,18 +13,16 @@ order: 1
   Relevante anbefalinger fra [ELMER 3](https://www.digdir.no/standarder/elmer-enklare-og-meir-effektiv-rapportering/1679) fornyes og videreføres her, som del av arbeidet med felles mønstre for gode skjema og innsamlingsflyter.
 </Card>
 
-Ved å bruke de samme prinsippene når vi samler inn informasjon, kan vi gi innbyggerne en mer helhetlig og gjenkjennelig brukeropplevelse på tvers av offentlige tjenester. Det hjelper dem å gi riktige opplysninger og fullføre oppgaven uten unødvendige hindringer.
+For å hente inn informasjon eller be brukeren gjøre noe, må løsningen oppfylle lovkrav til universell utforming, personvern og god forvaltningsskikk. Denne veiledningen viser hva du bør tenke på utover minimumskravene, fra behov og datakilder til utforming og forvaltning. Målet er at brukeren får ivaretatt rettighetene sine og kan fullføre oppgaven på en trygg og forutsigbar måte.
 
-Når du bygger en tjeneste som et skjema, skal det alltid oppfylle lovkravene, som du finner i veiledningen om [skjema hos Uu-tilsynet](https://www.uutilsynet.no/veiledning/skjema/38). I tillegg til kravene i forskriften har vi her samlet noen felles anbefalinger for hele prosessen med å hente inn, bruke og forvalte informasjon.
-
-## Avklar formål, behov og ansvar
+## Forberedelser: Avklar formål, behov og ansvar
 
 Før du lager tjenesten eller flyten, bør du avklare hva løsningen skal gjøre, hvorfor dere trenger informasjonen og hvordan den skal forvaltes. Det gjør det enklere å velge riktig kanal, riktig nivå av veiledning, riktig type felt og riktig rekkefølge på spørsmålene.
 
 - Hva skal brukeren oppnå?
 - Hva er formålet med å samle inn informasjonen?
 - Hvilke opplysninger må samles inn, og hvilken hjemmel har dere for å be om dem?
-- Finnes opplysningene allerede i registre, fagsystemer eller andre kilder dere kan bruke?
+- Finnes opplysningene allerede i registre, fagsystemer eller andre kilder dere kan bruke? 
 - Må oppgaven løses med et skjema, eller kan dere oppfylle hensikten på en annen måte?
 - Kan informasjonen hentes eller sendes inn der brukeren allerede jobber, for eksempel i et fagsystem?
 - Hvem eier løsningen, dataene og videre forvaltning?
@@ -39,16 +37,15 @@ Start med å vurdere hvilken informasjon som faktisk er nødvendig for å løse 
 - Forklar hvorfor dere trenger informasjonen hvis det ikke er åpenbart.
 - Samle inn informasjonen så sent som mulig, når den er relevant for brukeren.
 
-Dette henger sammen med once-only-prinsippet: brukeren skal ikke måtte gi samme opplysninger flere ganger hvis virksomheten kan hente eller gjenbruke dem på en trygg og lovlig måte.
+Dette henger sammen med [kun én gang-prinsippet (digdir.no)](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061): brukeren skal ikke måtte gi samme opplysninger flere ganger hvis virksomheten kan hente eller gjenbruke dem på en trygg og lovlig måte.
 
 ## Tilpass til målgruppen og situasjonen
 
 Ulike brukergrupper kan ha ulike behov for veiledning, fleksibilitet og støtte. Noen skal fylle ut informasjon én gang som privatperson, mens andre gjør samme oppgave ofte som del av en arbeidshverdag.
 
-- Finn ut hvem som skal bruke løsningen, og hvilken situasjon de er i når de samler inn eller sender inn informasjon.
-- Vurder om brukeren trenger en stegvis prosess, en kortere flyt eller støtte i et fagsystem de allerede bruker.
-- Tilpass språk, hjelpetekster og eksempler til målgruppen.
-- Test løsningen med brukere som ligner de faktiske målgruppene.
+Finn ut hvem som skal bruke løsningen, og hvilken situasjon de er i når de samler inn eller sender inn informasjon. Vurder om brukeren trenger en stegvis prosess, en kortere flyt eller støtte i et fagsystem de allerede bruker.
+
+Tilpass språk, hjelpetekster og eksempler til målgruppen. Test løsningen med brukere som ligner de faktiske målgruppene.
 
 ## Del oppgaven i forståelige deler
 
@@ -65,12 +62,9 @@ Sørg også for at skjemaets navn er tydelig på alle sider i flyten. Navnet bø
 
 ## Skriv spørsmål og ledetekster som brukeren forstår
 
-Bruk ord som er naturlige for brukeren, ikke interne begreper fra systemet eller regelverket. Ledeteksten skal gjøre det klart hva brukeren skal fylle ut.
+Bruk ord som er naturlige for brukeren, ikke interne begreper fra systemet eller regelverket. Spørsmål og ledetekster skal gjøre det klart hva brukeren skal fylle ut. Bruk hjelpetekst når brukeren trenger forklaring, formatkrav eller eksempler, og bruk samme begrep gjennom hele skjemaet.
 
-- Skriv spørsmålet eller ledeteksten som en tydelig instruks.
-- Bruk hjelpetekst når brukeren trenger forklaring, formatkrav eller eksempler.
-- Unngå placeholder-tekst som eneste forklaring.
-- Bruk samme begrep gjennom hele skjemaet.
+Unngå placeholder-tekst som eneste forklaring. Den forsvinner når brukeren begynner å skrive, og er ikke nok til å forklare hva feltet handler om.
 
 Les mer om [ledetekster og spørsmål i skjema](/no/best-practices/content-work/questions).
 
@@ -91,6 +85,8 @@ Hvis informasjon er forhåndsutfylt, skal det være tydelig hvor informasjonen k
 
 Det er bedre å forebygge feil enn å rette dem etterpå. Gi brukeren nok informasjon før de fyller ut, og sørg for at systemet tåler vanlige variasjoner i hvordan informasjon skrives inn.
 
+Noen konkrete tiltak kan gjøre det lettere å fylle ut riktig:
+
 - Vis formatkrav før brukeren fyller ut feltet.
 - Godta vanlige skrivemåter der det er mulig, for eksempel mellomrom i telefonnummer.
 - Bruk autocomplete der feltet gjelder brukerens egne personopplysninger.
@@ -101,14 +97,11 @@ Hvis brukeren likevel gjør feil, se mønsteret for [brukerutløste feilmeldinge
 
 ## Sørg for hjelp, tilgjengelighet og vedlikehold
 
-Brukeren skal kunne få hjelp når de står fast, og løsningen må fungere på skjermene og plattformene målgruppen bruker.
+Brukeren skal kunne få hjelp når de står fast. Gi tilgang til kontaktinformasjon, personvernerklæring og annen viktig bakgrunnsinformasjon der brukeren trenger det.
 
-- Gi tilgang til kontaktinformasjon, personvernerklæring og annen viktig bakgrunnsinformasjon.
-- Sørg for at løsningen fungerer på både små og store skjermer.
-- Respekter brukerens innstillinger, for eksempel lys eller mørk modus og redusert bevegelse.
-- Brukertest løsningen med målgruppen.
-- Gå gjennom og oppdater skjemaet ved behov.
-- Sørg for sporbarhet hvis spørsmål, ledetekster eller veiledning endres over tid.
+Løsningen må fungere på skjermene og plattformene målgruppen bruker. Sørg for at den fungerer på både små og store skjermer, og respekter brukerens innstillinger, for eksempel lys eller mørk modus og redusert bevegelse.
+
+Brukertest løsningen med målgruppen, og gå gjennom innholdet ved behov. Sørg for sporbarhet hvis spørsmål, ledetekster eller veiledning endres over tid.
 
 ## La brukeren kontrollere før innsending
 
@@ -167,14 +160,14 @@ Dette mønsteret bygger på nasjonale arkitekturprinsipper, digitaliseringsstrat
   * *Ta utgangspunkt i brukernes behov:* Tjenester skal utformes helhetlig og tilpasset brukerens livshendelse eller situasjon.
   * *Del og gjenbruk data:* Offentlige virksomheter skal dele data seg imellom for å unngå dobbeltrapportering.
   * *Bygg tillit:* Sikre transparens rundt hvilke opplysninger som hentes inn og hvordan de behandles.
-* **[Nasjonal digitaliseringsstrategi 2024–2030 (regjeringen.no)](https://www.regjeringen.no/no/dokumenter/nasjonal-digitaliseringsstrategi-2024-2030/id3054178/):**
+* **[Nasjonal digitaliseringsstrategi 2024-2030 (regjeringen.no)](https://www.regjeringen.no/no/dokumenter/nasjonal-digitaliseringsstrategi-2024-2030/id3054178/):**
   * «Fremtidens digitale Norge» setter klare mål om sammenhengende tjenester, økt datadeling og automatisering av prosesser.
 * **«Kun én gang»-prinsippet (Once-Only Principle):**
   * Innbyggere og virksomheter skal slippe å oppgi samme opplysninger til det offentlige flere ganger dersom opplysningene allerede finnes i autoritative registre.
 
 ### Standarder og faglige veiledere
 
-* **[ELMER 3 – Retningslinjer for brukergrensesnitt i offentlige skjema på nett (brukskvalitet.brreg.no)](https://brukskvalitet.brreg.no/):**
+* **[ELMER 3: Retningslinjer for brukergrensesnitt i offentlige skjema på nett (brukskvalitet.brreg.no)](https://brukskvalitet.brreg.no/):**
   * Tidligere obligatorisk standard i *Forskrift om IT-standarder i offentlig forvaltning § 11*, hvis prinsipper og anbefalinger videreføres og moderniseres i dette mønsteret.
 * **[Uu-tilsynets veiledning for skjemautfylling (uutilsynet.no)](https://www.uutilsynet.no/veiledning/skjema/38):**
   * Veiledning for lovpålagte tilgjengelighetskrav til struktur, ledetekster og feilhåndtering.
