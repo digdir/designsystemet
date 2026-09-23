@@ -8,6 +8,7 @@ import {
   type ExternalConfigSchema,
   externalConfigSchema,
 } from '../src/schemas/schema.ts';
+import { warnDeprecatedFields } from '../src/schemas/schema-output.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.ts';
 
@@ -56,6 +57,7 @@ export async function parseValidateAndOptsConfig(
 
   try {
     configParsed = parseConfig<ConfigSchema>(configFile);
+    warnDeprecatedFields(configParsed);
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred while parsing config file';
     console.error(pc.redBright(`Failed parsing config  file at ${pc.red(configFilePath)}`));
