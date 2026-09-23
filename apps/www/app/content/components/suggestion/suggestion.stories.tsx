@@ -370,7 +370,7 @@ export const FetchExternal = () => {
 
   return (
     <Field lang='en'>
-      <Label>Search for recipes (in english)</Label>
+      <Label>Search for recipes (in English)</Label>
       <EXPERIMENTAL_Suggestion filter={false}>
         <EXPERIMENTAL_Suggestion.Input
           type='search'
