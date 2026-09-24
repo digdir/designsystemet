@@ -4,6 +4,7 @@ import { Argument, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
 import pkg from '../package.json' with { type: 'json' };
+import { checkAutomigrate } from '../src/automigrate.ts';
 import { formatThemeCSS } from '../src/index.ts';
 import migrations from '../src/migrations/index.ts';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
@@ -44,6 +45,8 @@ program
   .addOption(configOption())
   .addOption(dryOption())
   .addOption(verboseOption())
+  .option('--skip-check', 'Skip migration check', false)
+  .option('-y, --yes', 'Skip user prompts', false)
   .action(async (opts) => {
     const { verbose, dry } = opts;
 
@@ -56,7 +59,11 @@ program
       process.exit(1);
     }
 
-    const parsedConfig = parseConfig<ExternalConfigSchemaInput>(configFile);
+    const updatedConfigFile = opts.skipCheck
+      ? configFile
+      : await checkAutomigrate(configFile, configFilePath, opts.yes);
+
+    const parsedConfig = parseConfig<ExternalConfigSchemaInput>(updatedConfigFile);
     warnDeprecatedFields(parsedConfig);
     // Validate against the public schema first for a user-facing error on unsupported theme fields.
     validateConfig(externalConfigSchema, parsedConfig);

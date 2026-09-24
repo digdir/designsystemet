@@ -4,10 +4,6 @@ import { automigrations } from './migrations/index.ts';
 import { dsfs } from './utils/filesystem.ts';
 
 export const checkAutomigrate = async (configFile: string, configFilePath: string, yes: boolean) => {
-  if (!configFile) {
-    return null;
-  }
-  let migratedConfigFile = null;
   const eligibleMigrations = Object.values(automigrations).filter((migration) => {
     try {
       return migration.check(configFile);
@@ -16,9 +12,10 @@ export const checkAutomigrate = async (configFile: string, configFilePath: strin
     }
   });
   if (eligibleMigrations.length === 0) {
-    return null;
+    return configFile;
   }
 
+  let migratedConfigFile = configFile;
   for (const migration of eligibleMigrations) {
     console.log(pc.red(`\n ✋ Automigration detected \n`));
     console.log(
