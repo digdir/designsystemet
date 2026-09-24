@@ -90,7 +90,14 @@ export const migrateToOutputField = (config: string): string => {
   if (!currentConfig.output) {
     const output = toOutput(currentConfig.outDir);
     if (output) {
-      configText = applyEdits(configText, modify(configText, ['output'], output, { formattingOptions }));
+      configText = applyEdits(
+        configText,
+        modify(configText, ['output'], output, {
+          formattingOptions,
+          // Place `output` right after `$schema` if present, otherwise at the top.
+          getInsertionIndex: (properties) => properties.indexOf('$schema') + 1,
+        }),
+      );
     }
   }
 
