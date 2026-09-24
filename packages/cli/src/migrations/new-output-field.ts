@@ -104,14 +104,17 @@ export const migrateToOutputField = (config: string): string => {
 const migration: Automigrate = {
   name: 'New output field',
   check: hasDeprecatedFields,
-  message: `Your config file uses the deprecated ${pc.yellow('outDir')} and ${pc.yellow('clean')} fields. \nThis migration will replace them with an ${pc.yellow('output')} field.\n`,
+  message: `Your config file uses the deprecated ${pc.yellow('outDir')} and ${pc.yellow('clean')} fields. \nThis migration will replace them with a new ${pc.blue('output')} field if necessary.\n`,
   yes: (config: string): string => {
     const migratedConfig = migrateToOutputField(config);
-    console.log(
-      pc.green(
-        `\nConfig file successfully migrated, you now only need to run ${pc.blue('designsystemet')} to generate outputs`,
-      ),
-    );
+    console.log(pc.green(`\nConfig file successfully migrated.`));
+    if (typeof JSON.parse(migratedConfig).output === 'undefined') {
+      console.log(
+        pc.green(
+          `\nNo new output field was added because the deprecated fields matched outputs default values and does not need to be added explicitly.`,
+        ),
+      );
+    }
 
     return migratedConfig;
   },
