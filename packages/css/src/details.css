@@ -72,6 +72,7 @@
 
     &::before {
       all: unset;
+      align-self: start;
       background: currentcolor;
       forced-color-adjust: none; /* Enable drawing with background property */
       border-radius: var(--ds-border-radius-md);
@@ -80,6 +81,7 @@
       height: var(--dsc-details-icon-size);
       mask: 50% / contain no-repeat var(--dsc-details-icon-url);
       width: var(--dsc-details-icon-size);
+      translate: 0 calc(0.5lh - 50%);
     }
   }
 
