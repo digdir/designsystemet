@@ -1,4 +1,4 @@
-import type { CssColor, SeverityColorNames } from '../index.ts';
+import type { CssColor, SeverityColorNames } from '../colors/index.ts';
 
 // Separate const defaults to avoid circular dependency issues with the Theme type
 export const defaultFontFamily = 'Inter';

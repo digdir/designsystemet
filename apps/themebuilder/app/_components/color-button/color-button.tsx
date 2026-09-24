@@ -1,4 +1,4 @@
-import type { SemanticColorNames } from '@digdir/designsystemet';
+import type { SemanticColorNames } from '@digdir/designsystemet/internal';
 import { Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import * as R from 'ramda';

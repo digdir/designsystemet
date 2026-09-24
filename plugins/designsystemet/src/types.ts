@@ -1,4 +1,4 @@
-import type { ConfigSchema } from '@digdir/designsystemet/schemas/schema.js';
+import type { ConfigSchema } from '@digdir/designsystemet/internal';
 
 type ImportConfig = {
   type: 'import-config-and-create-preview-tokens';

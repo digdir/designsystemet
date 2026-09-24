@@ -1,7 +1,7 @@
 import type {
   SemanticColorNames,
   ThemeInfo,
-} from '@digdir/designsystemet/color';
+} from '@digdir/designsystemet/internal';
 import { RovingFocusItem } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { Fragment } from 'react';

@@ -1,13 +1,13 @@
-import {
-  type CssColor,
-  generateColorSchemes,
-  type ThemeInfo,
-} from '@digdir/designsystemet';
 import type {
   SemanticColorNames,
   SeverityColorNames,
-} from '@digdir/designsystemet/color';
-import { severityColors } from '@digdir/designsystemet/schemas/defaults.js';
+} from '@digdir/designsystemet/internal';
+import {
+  type CssColor,
+  generateColorSchemes,
+  severityColors,
+  type ThemeInfo,
+} from '@digdir/designsystemet/internal';
 import { useLoaderData } from 'react-router';
 import { generateColorVars } from '~/_utils/generate-color-vars';
 import type { Route } from '../+types/themebuilder';

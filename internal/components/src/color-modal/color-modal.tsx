@@ -1,9 +1,9 @@
-import type { Color } from '@digdir/designsystemet/color';
+import type { Color } from '@digdir/designsystemet/internal';
 import {
   convertColor,
   getCssVariable,
   getLuminanceFromColor,
-} from '@digdir/designsystemet/color';
+} from '@digdir/designsystemet/internal';
 import {
   Dialog,
   Heading,
