@@ -1,4 +1,3 @@
-// biome-ignore assist/source/organizeImports: <explanation>
 import {
   Alert,
   Badge,
@@ -18,7 +17,6 @@ import {
   type ListUnorderedProps,
   Paragraph,
   type ParagraphProps,
-  Tabs,
   Table,
   TableBody,
   TableCell,
@@ -27,6 +25,7 @@ import {
   TableHeaderCell,
   type TableProps,
   TableRow,
+  Tabs,
 } from '@digdir/designsystemet-react';
 import {
   BorderRadiusVariablesTable,
