@@ -32,3 +32,4 @@ syncInjectedDepsAfterScripts:
 nodeVersion: "24.19.0"
 patchedDependencies:
   '@oddbird/popover-polyfill': patches/@oddbird__popover-polyfill.patch
+  '@u-elements/u-combobox': patches/@u-elements__u-combobox.patch

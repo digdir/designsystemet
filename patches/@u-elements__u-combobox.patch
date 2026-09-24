@@ -1,0 +1,26 @@
+diff --git a/dist/u-combobox.js b/dist/u-combobox.js
+index 62ac4ddc5fa3bb2f98c7777d4e4332ea82f1df46..d93645c6825472dfd6eac2a3e59c32eb62a3caa9 100644
+--- a/dist/u-combobox.js
++++ b/dist/u-combobox.js
+@@ -407,7 +407,7 @@ var onInput = (self, event) => {
+     (_a2 = event.stopImmediatePropagation) == null ? void 0 : _a2.call(event);
+     const value = (control == null ? void 0 : control.value) || null;
+     const match = [...options].find((o) => getValue(o) === value);
+-    syncCachedValue(self, true);
++    if (multiple) syncCachedValue(self, true);
+     if (match) return dispatchSelect(self, match, multiple);
+   } else {
+     syncCachedValue(self);
+@@ -509,8 +509,10 @@ var syncCachedValue = (self, restore = false) => {
+   const control = self.control;
+   const value = (control == null ? void 0 : control.value) || "";
+   clearTimeout(self._valueTimer);
+-  if (!restore) self._valueTimer = setTimeout(() => self._value = value);
+-  else if (control) control.value = self._value || "";
++  self._valueTimer = setTimeout(() => {
++    if (!restore) self._value = value
++    else if (control) control.value = self._value || "";
++  });
+ };
+ var syncItems = (self) => {
+   const { _listbox, _texts, _speak, items, multiple } = self;
