@@ -9,9 +9,6 @@ published: true
 order: 40
 ---
 
-<Alert data-color="warning">
-Note that config is experimental. The config schema may change at any time, and will be communicated in the changelog.
-</Alert>
 
 Using a config file with the CLI gives you more control over your colours and makes it easier to update and maintain them.
 
@@ -21,6 +18,7 @@ The config file can be named whatever you want, but if you use `designsystemet.c
 You can place it anywhere in your project.
 
 If you've placed your file in a different location or with a different name, you can use `--config <path>` in CLI commands.
+Both `designsystemet.config.json` and `designsystemet.config.jsonc` are detected automatically, and both may contain comments and trailing commas.
 
 ```json
 {
@@ -41,14 +39,87 @@ If you've placed your file in a different location or with a different name, you
 Above, we have defined a theme called `my-theme` with some colours and border radius.
 Each colour is defined directly under `colors`, where the key is the colour's name and the value is a hex code.
 
+## Running the CLI
+
+Run the CLI in the same folder as your config file:
+
+```bash
+npx @digdir/designsystemet@latest
+```
+
+This creates design tokens and CSS for all themes, based on the [`output`](#output) field in the config file.
+
+| Option | Description |
+| ------ | ----------- |
+| `-c, --config <path>` | Path to the config file. |
+| `--dry` | Dry run, no files will be written. |
+| `--verbose` | Enable verbose output. |
+| `--skip-check` | Skip the automatic migration check of the config file. |
+| `-y, --yes` | Skip prompts, for example when migrating the config file. |
+
+<Alert data-color="info">
+The `tokens create` and `tokens build` commands are deprecated and will be removed in a future release. Use `designsystemet` with a config file instead.
+</Alert>
+
 ## Structure
 
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
 | $schema | String | No | Path to JSON schema for validation. Recommended: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
+| output | Array | No | What the CLI should create, and where. Defaults to `["design-tokens", "css"]`. See [Output](#output). |
 | themes | Object | Yes | Contains all themes you want to define. Each key is the name of the theme. |
-| outDir | String | Yes | The folder where design tokens should be saved. |
-| clean | Boolean | No | Delete the output directory before creating tokens. Useful for removing deprecated files. |
+| outDir | String | No | **Deprecated:** use `output[].dir` instead. |
+| clean | Boolean | No | **Deprecated:** use `output[].cleanDir` instead. |
+
+### Output
+
+`output` is a list of what the CLI should create. Each item is either the name of an output type, which uses its default settings, or an object with custom settings.
+Design tokens are always created before CSS, since CSS is built from the design tokens.
+
+All paths are relative to the config file.
+
+```json
+{
+  "output": [
+    { "type": "design-tokens", "dir": "./design-tokens" },
+    { "type": "css", "dir": "./css", "tokenDir": "./design-tokens" }
+  ]
+}
+```
+
+#### design-tokens
+
+| Name | Type | Required | Default | Description |
+| ---- | ---- | ------- | ------- | ----------- |
+| type | `"design-tokens"` | Yes | | The output type. |
+| dir | String | No | `design-tokens` | The folder where design tokens should be saved. |
+| cleanDir | Boolean | No | `true` | Delete the folder before creating design tokens. Removes files that are no longer in use. |
+
+#### css
+
+| Name | Type | Required | Default | Description |
+| ---- | ---- | ------- | ------- | ----------- |
+| type | `"css"` | Yes | | The output type. |
+| dir | String | No | `design-tokens-build` | The folder where CSS should be saved. |
+| cleanDir | Boolean | No | `true` | Delete the folder before creating CSS. |
+| tokenDir | String | No | `design-tokens` | The folder containing the design tokens to build CSS from. Should match `dir` of the `design-tokens` output. |
+| experimental_tailwind | Boolean | No | `true` | Also generate Tailwind CSS classes. Experimental. |
+
+### Migrating from outDir and clean
+
+`outDir` and `clean` are replaced by `output`. When you run the CLI with a config file that uses them, it offers to migrate the file for you.
+If you'd rather do it manually, replace `"outDir": "<path>"` with:
+
+```json
+{
+  "output": [
+    { "type": "design-tokens", "dir": "<path>" },
+    { "type": "css", "tokenDir": "<path>" }
+  ]
+}
+```
+
+`clean` can be removed, since `cleanDir` is `true` by default.
 
 ### Themes
 
@@ -170,7 +241,10 @@ The `severity` override allows you to customise the colours used for severity, w
 ```json
 {
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
-  "outDir": "./design-tokens",
+  "output": [
+    { "type": "design-tokens", "dir": "./design-tokens" },
+    { "type": "css", "dir": "./design-tokens-build", "tokenDir": "./design-tokens" }
+  ],
   "themes": {
     "my-theme": {
       "colors": {
