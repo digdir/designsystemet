@@ -58,7 +58,10 @@ Det er vanleg å måtte gjere det på denne måten dersom du har eit repository 
 
 ```json
 {
-  "outDir": "./some-org-dt",
+  "output": [
+    { "type": "design-tokens", "dir": "./some-org-dt" },
+    { "type": "css", "dir": "./some-org-css", "tokenDir": "./some-org-dt" }
+  ],
   "themes": {
     "some-org": {
       "colors": {
@@ -74,7 +77,10 @@ Det er vanleg å måtte gjere det på denne måten dersom du har eit repository 
 
 ```json
 {
-  "outDir": "./other-org-dt",
+  "output": [
+    { "type": "design-tokens", "dir": "./other-org-dt" },
+    { "type": "css", "dir": "./other-org-css", "tokenDir": "./other-org-dt" }
+  ],
   "themes": {
     "other-org": {
       "colors": {
@@ -89,5 +95,5 @@ Det er vanleg å måtte gjere det på denne måten dersom du har eit repository 
 ```
 
 <Alert data-color="info">
-Legg merke til at me har ulik `outDir` i desse to config filene, slik at design tokens for kvart tema blir lagt i kvar si mappe.
+Legg merke til at me har ulike `output`-mapper i desse to config filene, slik at design tokens og CSS for kvart tema blir lagt i kvar sine mapper.
 </Alert>

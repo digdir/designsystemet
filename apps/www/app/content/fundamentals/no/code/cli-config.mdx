@@ -10,9 +10,6 @@ order: 40
 search_terms: konfigurasjon, tokens
 ---
 
-<Alert data-color="warning">
-Merk at config er eksperimentelt. Config skjema kan endre seg når som helst, og vil bli kommunisert i changelog.
-</Alert>
 
 Å bruke config fil med CLI gjer at du kan ha meir kontroll over fargane dine, og kan lettare oppdatere og vedlikehalde dei.
 
@@ -22,6 +19,7 @@ Config fila kan heite det du vil, men bruker du `designsystemet.config.json` vil
 Du kan legge den kor du vil i prosjektet ditt. 
 
 Har du plassert fila di ein anna plass, eller med eit anna navn, kan du bruke `--config <path>` i CLI-kommandoar.
+Både `designsystemet.config.json` og `designsystemet.config.jsonc` blir funne automatisk, og begge kan innehalde kommentarar og avsluttande komma.
 
 ```json
 {
@@ -42,14 +40,87 @@ Har du plassert fila di ein anna plass, eller med eit anna navn, kan du bruke `-
 Over har me definert eit tema som heiter `my-theme` med nokre fargar og border radius.
 Kvar farge er definert direkte under `colors`, der nøkkelen er namnet på fargen og verdien er ein hexkode.
 
+## Køyre CLI
+
+Køyr CLI-et i same mappe som config fila:
+
+```bash
+npx @digdir/designsystemet@latest
+```
+
+Dette lagar design tokens og CSS for alle tema, basert på [`output`](#output)-feltet i config fila.
+
+| Val | Forklaring |
+| --- | ----------- |
+| `-c, --config <path>` | Sti til config fila. |
+| `--dry` | Prøvekøyring, ingen filer blir skrivne. |
+| `--verbose` | Vis meir utfyllande logg. |
+| `--skip-check` | Hopp over automatisk migreringssjekk av config fila. |
+| `-y, --yes` | Hopp over spørsmål, til dømes ved migrering av config fila. |
+
+<Alert data-color="info">
+Kommandoane `tokens create` og `tokens build` er utdaterte og blir fjerna i ein framtidig versjon. Bruk `designsystemet` med ei config fil i staden.
+</Alert>
+
 ## Struktur
 
 | Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
 | $schema | Streng | Nei | Sti til JSON schema for validering. Anbefalt: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
+| output | Liste | Nei | Kva CLI-et skal lage, og kvar. Standard er `["design-tokens", "css"]`. Sjå [Output](#output). |
 | themes | Objekt | Ja | Inneheld alle tema du vil definere. Ny nøkkel er namnet på temaet. |
-| outDir | Streng | Ja | Mappa der design tokens skal lagrast. |
-| clean | Boolean | Nei | Slett utdata-mappa før du lagar tokens. Nyttig for å fjerne utdaterte filer. |
+| outDir | Streng | Nei | **Utdatert:** bruk `output[].dir` i staden. |
+| clean | Boolean | Nei | **Utdatert:** bruk `output[].cleanDir` i staden. |
+
+### Output
+
+`output` er ei liste over kva CLI-et skal lage. Kvart element er anten namnet på ein output-type, som brukar standardinnstillingane, eller eit objekt med eigne innstillingar.
+Design tokens blir alltid laga før CSS, sidan CSS blir bygd frå design tokens.
+
+Alle stiar er relative til config fila.
+
+```json
+{
+  "output": [
+    { "type": "design-tokens", "dir": "./design-tokens" },
+    { "type": "css", "dir": "./css", "tokenDir": "./design-tokens" }
+  ]
+}
+```
+
+#### design-tokens
+
+| Namn | Type | Påkrevd | Standard | Forklaring |
+| ---- | ---- | ------- | -------- | ----------- |
+| type | `"design-tokens"` | Ja | | Output-typen. |
+| dir | Streng | Nei | `design-tokens` | Mappa der design tokens skal lagrast. |
+| cleanDir | Boolean | Nei | `true` | Slett mappa før design tokens blir laga. Fjernar filer som ikkje lenger er i bruk. |
+
+#### css
+
+| Namn | Type | Påkrevd | Standard | Forklaring |
+| ---- | ---- | ------- | -------- | ----------- |
+| type | `"css"` | Ja | | Output-typen. |
+| dir | Streng | Nei | `design-tokens-build` | Mappa der CSS skal lagrast. |
+| cleanDir | Boolean | Nei | `true` | Slett mappa før CSS blir laga. |
+| tokenDir | Streng | Nei | `design-tokens` | Mappa med design tokens som CSS skal byggast frå. Bør vere lik `dir` i `design-tokens`-outputen. |
+| experimental_tailwind | Boolean | Nei | `true` | Lag òg Tailwind CSS-klassar. Eksperimentelt. |
+
+### Migrere frå outDir og clean
+
+`outDir` og `clean` er erstatta av `output`. Når du køyrer CLI-et med ei config fil som brukar dei, tilbyr det å migrere fila for deg.
+Vil du heller gjere det manuelt, byt ut `"outDir": "<sti>"` med:
+
+```json
+{
+  "output": [
+    { "type": "design-tokens", "dir": "<sti>" },
+    { "type": "css", "tokenDir": "<sti>" }
+  ]
+}
+```
+
+`clean` kan fjernast, sidan `cleanDir` er `true` som standard.
 
 ### Themes
 
@@ -161,7 +232,10 @@ Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity
 ```json
 {
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
-  "outDir": "./design-tokens",
+  "output": [
+    { "type": "design-tokens", "dir": "./design-tokens" },
+    { "type": "css", "dir": "./design-tokens-build", "tokenDir": "./design-tokens" }
+  ],
   "themes": {
     "my-theme": {
       "colors": {

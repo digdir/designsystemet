@@ -23,8 +23,6 @@ We recommend that both a developer and a designer take part in the process when 
 
 ```json
 {
-  "outDir": "./design-tokens",
-  "clean": true,
   "themes": {
     "theme": {
       "colors": {
@@ -45,9 +43,9 @@ We recommend that both a developer and a designer take part in the process when 
 
 5. Run the following command in the terminal:
 ```bash
-npx @digdir/designsystemet@latest tokens create --config designsystemet.config.json
+npx @digdir/designsystemet@latest
 ```
-This will generate Design Tokens based on the configuration file and save them in a folder called `design-tokens`. Push the changes to your repository.
+This will generate Design Tokens based on the configuration file and save them in a folder called `design-tokens`, and CSS in a folder called `design-tokens-build`. You can change the folders with the [`output`](/en/fundamentals/code/cli-config#output) field in the configuration file. Push the changes to your repository.
 
 6. Fetch the component library from [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Click “Open in Figma”) into your organisation that has at least a Pro licence. Note that this will be a copy of the component library without any connection to the main file.
 
@@ -70,7 +68,7 @@ We recommend *not* pushing changes to Design Tokens from Tokens Studio, as this 
 
 
 ```bash
-npx @digdir/designsystemet@latest tokens create --config designsystemet.config.json
+npx @digdir/designsystemet@latest --config designsystemet.config.json
 ```
 
 **Remember to run this command every time you make changes to the configuration file.**
@@ -116,8 +114,6 @@ If you want additional themes, you can generate a new theme in the Theme Builder
 
 ```json
 {
-  "outDir": "./design-tokens",
-  "clean": true,
   "themes": {
     "theme-one": {
       "colors": {
@@ -144,13 +140,7 @@ When the Design Tokens are updated in code, you can easily fetch the new values 
 </Alert>
 
 
-10. To generate CSS from your theme, run the following command:
-
-```bash
-npx @digdir/designsystemet@latest tokens build --config designsystemet.config.json
-```
-
-Remember that this must also be done whenever the tokens are updated.
+10. The same command also generates CSS from your theme, in the `design-tokens-build` folder. This CSS is what you use in code.
 
 ### Icons in Figma
 To get icons working in Figma, they need to be connected to a library stored in your organisation. See the guide ["Get icons working in Figma"](/en/fundamentals/theme/icons#get-icons-working-in-figma).

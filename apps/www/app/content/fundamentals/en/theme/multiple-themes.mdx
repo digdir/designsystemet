@@ -57,7 +57,10 @@ It is common to have to do it this way if you have a repository that collects al
 
 ```json
 {
-  "outDir": "./some-org-dt",
+  "output": [
+    { "type": "design-tokens", "dir": "./some-org-dt" },
+    { "type": "css", "dir": "./some-org-css", "tokenDir": "./some-org-dt" }
+  ],
   "themes": {
     "some-org": {
       "colors": {
@@ -73,7 +76,10 @@ It is common to have to do it this way if you have a repository that collects al
 
 ```json
 {
-  "outDir": "./other-org-dt",
+  "output": [
+    { "type": "design-tokens", "dir": "./other-org-dt" },
+    { "type": "css", "dir": "./other-org-css", "tokenDir": "./other-org-dt" }
+  ],
   "themes": {
     "other-org": {
       "colors": {
@@ -88,5 +94,5 @@ It is common to have to do it this way if you have a repository that collects al
 ```
 
 <Alert data-color="info">
-Note that we have different `outDir`s in these two config files, so that the design tokens for each theme are placed in their own folder.
+Note that we have different `output` folders in these two config files, so that the design tokens and CSS for each theme are placed in their own folders.
 </Alert>
