@@ -342,7 +342,13 @@ describe('Suggestion', () => {
 
   it('keeps the clicked option on blur after a substring search', async () => {
     const onSelectedChange = vi.fn();
-    render(<Places creatable onSelectedChange={onSelectedChange} />);
+    render(
+      <Places
+        creatable
+        emptyText='Legg til %s'
+        onSelectedChange={onSelectedChange}
+      />,
+    );
     const input = await getInput(placeLabel);
 
     await userEvent.click(input);

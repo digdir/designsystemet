@@ -167,6 +167,7 @@ packageExtensionsChecksum: sha256-IQSNU9cJtri1P9xMWAvG91nRHacWCj8xtjZCK1etLxM=
 
 patchedDependencies:
   '@oddbird/popover-polyfill': 1f3e1d4b9b98be6ea6d4707fbe7b7ac66be549654cb4bb41ad60295c10c029f8
+  '@u-elements/u-combobox': cc7865a3a670f3261b11237f255f54527999236cdeda0a6d5d3f05fc782a33ec
 
 importers:
 
@@ -784,7 +785,7 @@ importers:
         version: 1.8.0
       '@u-elements/u-combobox':
         specifier: ^2.1.5
-        version: 2.1.5
+        version: 2.1.5(patch_hash=cc7865a3a670f3261b11237f255f54527999236cdeda0a6d5d3f05fc782a33ec)
       '@u-elements/u-datalist':
         specifier: ^2.0.3
         version: 2.0.3
@@ -7912,7 +7913,7 @@ snapshots:
     dependencies:
       '@types/node': 24.13.3
 
-  '@u-elements/u-combobox@2.1.5': {}
+  '@u-elements/u-combobox@2.1.5(patch_hash=cc7865a3a670f3261b11237f255f54527999236cdeda0a6d5d3f05fc782a33ec)': {}
 
   '@u-elements/u-datalist@2.0.3': {}
 
