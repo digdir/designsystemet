@@ -5,7 +5,7 @@ import { ColorModalProvider } from '~/_utils/color-modal-context';
 import { ThemePages } from '../../layouts/themebuilder/layout';
 import classes from './page.module.css';
 import 'react-color-palette/css';
-import type { ColorScheme } from '@digdir/designsystemet';
+import type { ColorScheme } from '@digdir/designsystemet/internal';
 import { parsePath, redirect } from 'react-router';
 import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';

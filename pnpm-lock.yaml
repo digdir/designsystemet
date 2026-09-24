@@ -397,6 +397,9 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
+      '@digdir/designsystemet-types':
+        specifier: workspace:^
+        version: link:../../packages/types
       '@internal/components':
         specifier: workspace:^
         version: link:../../internal/components
@@ -771,19 +774,6 @@ importers:
       typescript:
         specifier: 6.0.3
         version: 6.0.3
-
-  packages/theme:
-    dependencies:
-      '@digdir/designsystemet-types':
-        specifier: workspace:^
-        version: link:../types
-    devDependencies:
-      '@digdir/designsystemet':
-        specifier: workspace:^
-        version: link:../cli
-      rimraf:
-        specifier: 6.1.3
-        version: 6.1.3
 
   packages/types: {}
 

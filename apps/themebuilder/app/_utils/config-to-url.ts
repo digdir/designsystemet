@@ -1,4 +1,4 @@
-import type { ConfigSchema } from '@digdir/designsystemet';
+import type { ExternalConfigSchema as ConfigSchema } from '@digdir/designsystemet/internal';
 
 const QUERY_SEPARATOR = ' ';
 

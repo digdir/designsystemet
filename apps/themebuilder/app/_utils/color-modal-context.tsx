@@ -1,4 +1,4 @@
-import type { Color } from '@digdir/designsystemet';
+import type { Color } from '@digdir/designsystemet/internal';
 import { createContext, useContext } from 'react';
 import { useColorModal } from '~/_hooks/useColorModal';
 

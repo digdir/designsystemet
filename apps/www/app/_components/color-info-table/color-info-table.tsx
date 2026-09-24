@@ -1,4 +1,4 @@
-import { semanticColorSpec } from '@digdir/designsystemet/color';
+import { semanticColorSpec } from '@digdir/designsystemet/internal';
 import { Table } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 

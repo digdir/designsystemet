@@ -1,4 +1,4 @@
-import type { CssColor } from '@digdir/designsystemet';
+import type { CssColor } from '@digdir/designsystemet/internal';
 import { Divider, Field, Label, Select } from '@digdir/designsystemet-react';
 import { ColorTokensTable } from '@internal/components';
 import { useRef, useState } from 'react';

@@ -1,7 +1,7 @@
 import {
   semanticColorNames,
   semanticColorSpec,
-} from '@digdir/designsystemet/color';
+} from '@digdir/designsystemet/internal';
 import {
   Details,
   Field,

@@ -4,7 +4,7 @@ import { Alert, Button, Heading, Spinner } from '@digdir/designsystemet-react';
 import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification, UiState } from '../types';
 import './app.css';
-import type { ConfigSchema } from '@digdir/designsystemet/schemas/schema.js';
+import type { ConfigSchema } from '@digdir/designsystemet/internal';
 import { PasteView } from './paste-view';
 import { PreviewView } from './preview-view';
 

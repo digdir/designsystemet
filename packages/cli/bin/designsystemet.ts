@@ -7,7 +7,6 @@ import pkg from '../package.json' with { type: 'json' };
 import { checkAutomigrate } from '../src/automigrate.ts';
 import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
-import { formatThemeCSS } from '../src/index.ts';
 import migrations from '../src/migrations/index.ts';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
 import {
@@ -18,6 +17,7 @@ import {
 } from '../src/schemas/schema.ts';
 import { buildTokens } from '../src/tokens/build.ts';
 import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
+import { formatThemeCSS } from '../src/tokens/format.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { toColorNames } from '../src/tokens/utils.ts';
