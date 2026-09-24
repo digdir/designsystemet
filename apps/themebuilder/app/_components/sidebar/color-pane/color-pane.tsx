@@ -1,4 +1,4 @@
-import { RESERVED_COLORS } from '@digdir/designsystemet';
+import { RESERVED_COLORS } from '@digdir/designsystemet/internal';
 import {
   Button,
   Heading,

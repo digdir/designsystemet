@@ -1,4 +1,4 @@
-import type { ThemeInfo } from '@digdir/designsystemet/color';
+import type { ThemeInfo } from '@digdir/designsystemet/internal';
 import { RovingFocusRoot } from '@digdir/designsystemet-react';
 import { ColorGroup } from '../color-group/color-group';
 

@@ -1,5 +1,5 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
-import type { ColorScheme } from '../index.ts';
+import type { ColorScheme } from '../colors/index.ts';
 import type { ConfigSchemaTheme } from '../schemas/schema.ts';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.ts';
 

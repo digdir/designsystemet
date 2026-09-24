@@ -1,5 +1,8 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: we have not kept old schema for types, so we need to use any here
-import { type ConfigSchema, configSchema } from '@digdir/designsystemet';
+import {
+  type ExternalConfigSchema as ConfigSchema,
+  externalConfigSchema as configSchema,
+} from '@digdir/designsystemet/internal';
 import {
   Button,
   Paragraph,

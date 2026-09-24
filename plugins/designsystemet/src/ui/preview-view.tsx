@@ -1,9 +1,9 @@
+import type { ConfigSchema } from '@digdir/designsystemet/internal';
 import {
   type ColorScheme,
+  getThemeColorScales,
   semanticColorNames,
-} from '@digdir/designsystemet/color';
-import { getThemeColorScales } from '@digdir/designsystemet/internal';
-import type { ConfigSchema } from '@digdir/designsystemet/schemas/schema.js';
+} from '@digdir/designsystemet/internal';
 import { ToggleGroup, ToggleGroupItem } from '@digdir/designsystemet-react';
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { resolveBorderRadiusSteps } from './border-radius';
