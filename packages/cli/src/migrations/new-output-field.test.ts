@@ -28,6 +28,14 @@ describe('new output field migration', () => {
     });
   });
 
+  it('places output after $schema if present, otherwise at the top', () => {
+    const withSchema = migrateToOutputField('{ "themes": {}, "$schema": "schema.json", "outDir": "tokens" }');
+    expect(Object.keys(parseJsonc(withSchema))).toEqual(['themes', '$schema', 'output']);
+
+    const withoutSchema = migrateToOutputField('{ "themes": {}, "outDir": "tokens" }');
+    expect(Object.keys(parseJsonc(withoutSchema))).toEqual(['output', 'themes']);
+  });
+
   it('does not define output when the deprecated fields have default values', () => {
     expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens", "clean": false }'))).toEqual({});
     expect(parseJsonc(migrateToOutputField('{ "clean": true }'))).toEqual({});
