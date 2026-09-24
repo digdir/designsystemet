@@ -18,32 +18,32 @@ Designsystemet består av flere kodepakker som du fritt kan velge mellom, avheng
 
 Vi anbefaler at du starter med `@digdir/designsystemet-web` og `@digdir/designsystemet-css`. Du kan også bruke `@digdir/designsystemet-web` uten `@digdir/designsystemet-css` hvis du allerede har egen styling, eller bare bruke CSS-pakken hvis du håndterer interaktivitet selv.
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >HTML</ds-tab>
-  <ds-tab >React</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>HTML</Tabs.Tab>
+  <Tabs.Tab>React</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
 ```sh
 npm i @digdir/designsystemet-css @digdir/designsystemet-web 
 ```
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
 ```sh
 npm i @digdir/designsystemet-css @digdir/designsystemet-react
 ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 
 ## 2. Importer Javascript
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >HTML</ds-tab>
-  <ds-tab >React</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>HTML</Tabs.Tab>
+  <Tabs.Tab>React</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
 Importer `@digdir/designsystemet-web` i din hoved JavaScript fil.
 <br/>
 Dette vil registrere alle web-komponenter og observers globalt, så du trenger bare å gjøre dette en gang.
@@ -51,15 +51,15 @@ Dette vil registrere alle web-komponenter og observers globalt, så du trenger b
 ```jsx
 import '@digdir/designsystemet-web';
 ```
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
 Importer `@digdir/designsystemet-react` ved bruk av komponenter.
 
 ```js
 import { Button } from '@digdir/designsystemet-react';
 ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 
 ## 3. Importer CSS
@@ -68,30 +68,31 @@ Importer `@digdir/designsystemet-css`.
 
 Les mer om [CSS](/no/fundamentals/code/css).
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >CSS</ds-tab>
-  <ds-tab >JavaScript</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>CSS</Tabs.Tab>
+  <Tabs.Tab>JavaScript</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
   ```css
   @import '@digdir/designsystemet-css/index.css';
   ```     
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
   ```js
   import '@digdir/designsystemet-css';
   ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 
 <Alert data-color='info'>
-<h3 class="ds-heading" data-size='xs'>Merk: `background` og `color` blir satt på `<body>`</h3>
-<p>
+
+<h3 className="ds-heading" data-size='xs'>Merk: `background` og `color` blir satt på `<body>`</h3>
+
 `background` og `color` blir automatisk definert på `body`-elementet og ellers der `data-color-scheme` blir satt, slik at vi ivaretar [universell utforming (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html) og får samme font og farge på tvers.
 Dette kan lett overstyres i ditt eget tema, eller i din globale CSS fil.
-</p>
+
 </Alert>
 
 
@@ -102,24 +103,24 @@ Designsystemet er laget for å være tematiserbart, og det er derfor viktig at d
 [Bygg ditt eget tema](/no/fundamentals/start-here/own-theme) eller bruke standardtemaet; `@digdir/designsystemet-css/theme`.
 
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >Eget tema</ds-tab>
-  <ds-tab >Standardtema</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>Eget tema</Tabs.Tab>
+  <Tabs.Tab>Standardtema</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
   ```css
   @import '@digdir/designsystemet-css/index.css';
   @import 'design-tokens-build/<ditt-tema>.css';
   ```     
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
   ```js
   import '@digdir/designsystemet-css';
   import '@digdir/designsystemet-css/theme';
   ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 
 ## 5. Bruk
@@ -139,12 +140,12 @@ Det er også anbefalt at du leser gjennom tilgjengelighets-sida.
   - tilsvarer `Appearance › Color` i Figma
 
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >HTML</ds-tab>
-  <ds-tab >React</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>HTML</Tabs.Tab>
+  <Tabs.Tab>React</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
 ```html
 <button class="ds-button" data-variant="secondary">Jeg er en knapp!</button>
 <ds-field class="ds-field">
@@ -152,8 +153,8 @@ Det er også anbefalt at du leser gjennom tilgjengelighets-sida.
     <input class="ds-input">
 </ds-field>
 ```  
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
   ```js
 <Button data-variant="secondary">Jeg er en knapp!</Button>;
 <Field>
@@ -161,8 +162,8 @@ Det er også anbefalt at du leser gjennom tilgjengelighets-sida.
   <Input />
 </Field>
   ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 ## Typescript
 
@@ -174,12 +175,12 @@ Installer type pakken og legg til typefilene i `tsconfig.json` for å få tilgan
 npm i -D @digdir/designsystemet-types
 ```
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >HTML</ds-tab>
-  <ds-tab >React</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>HTML</Tabs.Tab>
+  <Tabs.Tab>React</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
 ```json
 {
   "compilerOptions": {
@@ -191,8 +192,8 @@ npm i -D @digdir/designsystemet-types
   },
 }
 ```
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
 ```json
 {
   "compilerOptions": {
@@ -203,8 +204,8 @@ npm i -D @digdir/designsystemet-types
   },
 }
 ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 
 
@@ -212,6 +213,16 @@ npm i -D @digdir/designsystemet-types
 
 Komponentene er designet og utviklet med [Inter fonten (github.com)](https://github.com/rsms/inter), så variasjoner kan forekomme dersom du bruker en annen font.
 Dersom du velger å installere fonten på en annen måte enn altinncdn.no, husk å inkludere fontvektene `400`, `500` og `600`.
+
+### Tekstskalering som følger systeminnstillinger
+
+I utgangspunktet skalerer de fleste nettlesere tekst basert på zoom og nettleser tekstinstillinger, men ikke systeminnstillinger.
+For å også [respektere systeminnstillinger](https://www.joshtumath.uk/posts/2026-07-02-lets-fix-the-webs-text-size/), legg til denne koden i `<head>`:
+
+```html
+<meta name="text-scale" content="scale">
+```
+
 
 ### Legg til Inter fonten (valgfritt)
 

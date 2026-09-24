@@ -18,32 +18,32 @@ Designsystemet consists of several code packages that you can freely choose from
 
 We recommend starting with `@digdir/designsystemet-web` and `@digdir/designsystemet-css`. You can also use `@digdir/designsystemet-web` without `@digdir/designsystemet-css` if you already have your own styling, or use only the CSS package if you handle interactivity yourself.
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >HTML</ds-tab>
-  <ds-tab >React</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>HTML</Tabs.Tab>
+  <Tabs.Tab>React</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
 ```sh
 npm i @digdir/designsystemet-css @digdir/designsystemet-web 
 ```
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
 ```sh
 npm i @digdir/designsystemet-css @digdir/designsystemet-react
 ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 
 ## 2. Import Javascript
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >HTML</ds-tab>
-  <ds-tab >React</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>HTML</Tabs.Tab>
+  <Tabs.Tab>React</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
 Import `@digdir/designsystemet-web` in your main JavaScript file.
 <br/>
 This will register all web components and observers globally, so you only need to do this once.
@@ -51,15 +51,15 @@ This will register all web components and observers globally, so you only need t
 ```jsx
 import '@digdir/designsystemet-web';
 ```
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
 Import `@digdir/designsystemet-react` when using components.
 
 ```js
 import { Button } from '@digdir/designsystemet-react';
 ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 
 ## 3. Import CSS
@@ -68,31 +68,32 @@ Import `@digdir/designsystemet-css`.
 
 Read more about [CSS](/en/fundamentals/code/css).
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >CSS</ds-tab>
-  <ds-tab >JavaScript</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>CSS</Tabs.Tab>
+  <Tabs.Tab>JavaScript</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
   ```css
   @import '@digdir/designsystemet-css/index.css';
   ```     
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
   ```js
   import '@digdir/designsystemet-css';
   ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 
 <Alert data-color='info'>
-<h3 class="ds-heading" data-size='xs'>Note: `background` and `color` are set on `<body>`</h3>
-<p>
+
+<h3 className="ds-heading" data-size='xs'>Note: `background` and `color` are set on `<body>`</h3>
+
 `background` and `color` are automatically defined on the `body` element and where `data-color-scheme` is set. 
 This is to ensure [universal design (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html) and consistent font and color across the application.
 This can be easily overridden in your own theme or in your global CSS file.
-</p>
+
 </Alert>
 
 
@@ -103,24 +104,24 @@ The Designsystemet is designed to be themable, so it is important to import your
 [Build your own theme](/en/fundamentals/start-here/own-theme) or use the default theme; `@digdir/designsystemet-css/theme`.
 
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >Custom theme</ds-tab>
-  <ds-tab >Default theme</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>Custom theme</Tabs.Tab>
+  <Tabs.Tab>Default theme</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
   ```css
   @import '@digdir/designsystemet-css/index.css';
   @import 'design-tokens-build/<your-theme>.css';
   ```     
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
   ```js
   import '@digdir/designsystemet-css';
   import '@digdir/designsystemet-css/theme';
   ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 
 ## 5. Usage
@@ -140,12 +141,12 @@ It is also recommended that you read through the accessibility page.
   - corresponds to `Appearance › Color` in Figma
 
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >HTML</ds-tab>
-  <ds-tab >React</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>HTML</Tabs.Tab>
+  <Tabs.Tab>React</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
 ```html
 <button class="ds-button" data-variant="secondary">Button</button>
 <ds-field class="ds-field">
@@ -153,8 +154,8 @@ It is also recommended that you read through the accessibility page.
     <input class="ds-input">
 </ds-field>
 ```  
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
   ```js
 <Button data-variant="secondary">Button</Button>;
 <Field>
@@ -162,8 +163,8 @@ It is also recommended that you read through the accessibility page.
   <Input />
 </Field>
   ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 ## Typescript
 
@@ -175,12 +176,12 @@ Install the type package and add the type files to `tsconfig.json` to access the
 npm i -D @digdir/designsystemet-types
 ```
 
-<ds-tabs class="ds-tabs" data-wide-content>
-  <ds-tablist>
-  <ds-tab >HTML</ds-tab>
-  <ds-tab >React</ds-tab>
-  </ds-tablist>
-  <ds-tabpanel>
+<Tabs data-wide-content>
+  <Tabs.List>
+  <Tabs.Tab>HTML</Tabs.Tab>
+  <Tabs.Tab>React</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel>
 ```json
 {
   "compilerOptions": {
@@ -192,8 +193,8 @@ npm i -D @digdir/designsystemet-types
   },
 }
 ```
-  </ds-tabpanel>
-  <ds-tabpanel>
+  </Tabs.Panel>
+  <Tabs.Panel>
 ```json
 {
   "compilerOptions": {
@@ -204,8 +205,8 @@ npm i -D @digdir/designsystemet-types
   },
 }
 ```
-  </ds-tabpanel>
-</ds-tabs>
+  </Tabs.Panel>
+</Tabs>
 
 
 
@@ -213,6 +214,15 @@ npm i -D @digdir/designsystemet-types
 
 The components are designed and developed with the [Inter font (github.com)](https://github.com/rsms/inter), so variations may occur if you use a different font.
 If you choose to install the font in a way other than altinncdn.no, remember to include the font weights `400`, `500`, and `600`.
+
+### Text scaling that follows system settings
+
+By default, most browsers scale text based on zoom and browser text settings, but not system settings.
+To also [respect system settings](https://www.joshtumath.uk/posts/2026-07-02-lets-fix-the-webs-text-size/), add the following code in `<head>`:
+
+```html
+<meta name="text-scale" content="scale">
+```
 
 ### Add the Inter font (optional)
 
