@@ -5,6 +5,10 @@ import {
   Link,
   Paragraph,
 } from '@digdir/designsystemet-react';
+import {
+  ArrowsCirclepathIcon,
+  ExclamationmarkTriangleIcon,
+} from '@navikt/aksel-icons';
 import { useState } from 'react';
 
 export const Preview = () => {
@@ -160,6 +164,50 @@ export const VariantDangerEn = () => (
       Please try again later. If we still cannot show the information you need,
       please contact customer service on telephone 85 44 32 66.
     </Paragraph>
+  </Alert>
+);
+
+export const Closable = () => (
+  <Alert role='alert' data-color='danger'>
+    <Paragraph>
+      Kunne ikke lagre dokumentet på grunn av ustabil nettforbindelse.
+    </Paragraph>
+    <div
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-size-3)',
+        marginTop: 'var(--ds-size-3)',
+      }}
+    >
+      <Button data-variant='primary'>
+        <ArrowsCirclepathIcon /> Prøv igjen
+      </Button>
+      <Button data-variant='tertiary'>
+        <ExclamationmarkTriangleIcon /> Meld feil
+      </Button>
+    </div>
+  </Alert>
+);
+
+export const ClosableEn = () => (
+  <Alert role='alert' data-color='danger'>
+    <Paragraph>
+      Could not save the document due to an unstable internet connection.
+    </Paragraph>
+    <div
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-size-3)',
+        marginTop: 'var(--ds-size-3)',
+      }}
+    >
+      <Button data-variant='primary'>
+        <ArrowsCirclepathIcon /> Try again
+      </Button>
+      <Button data-variant='tertiary'>
+        <ExclamationmarkTriangleIcon /> Report error
+      </Button>
+    </div>
   </Alert>
 );
 
