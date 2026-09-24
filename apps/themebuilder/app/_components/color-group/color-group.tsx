@@ -62,6 +62,18 @@ export const ColorGroup = ({
           );
         })}
       </div>
+      <div
+        className={cl(classes.colors)}
+        style={{ marginTop: 'var(--ds-size-1)' }}
+      >
+        {colorNames.map((colorName, index) => (
+          <ColorButton
+            key={index + 'fragment' + namespace}
+            color={`var(--ds-color-dynamic-${colorName})`}
+            colorName={colorName}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -32,3 +32,184 @@
   display: flex;
   height: var(--ds-size-11);
 }
+
+/*
+ * Dynamic color scale derived from --ds-color-base in pure CSS.
+ * Mirrors packages/cli/src/colors/scale.ts with the luminance targets from specs.ts:
+ * - Every step is placed at its exact target relative luminance (a weighted sum of the srgb-linear channels).
+ * - Dark mode desaturates the base (oklch chroma × 0.7) before the scale is derived.
+ * - HSLuv lightness is CIE L*, a pure function of luminance, so the base-color rules translate directly.
+ *
+ * The --_* properties are macros: token lists substituted inside relative color functions,
+ * where r, g, b and alpha resolve to the channels of that function's origin color. The target
+ * luminance of a step is passed to the macro through the origin's alpha channel.
+ */
+:root {
+  /* Relative luminance of the origin */
+  --_luminance: calc(0.2126 * r + 0.7152 * g + 0.0722 * b);
+
+  /* Luminance-weighted mean of the gamma-2 encoded channels */
+  --_root-mean: calc(0.2126 * sqrt(r) + 0.7152 * sqrt(g) + 0.0722 * sqrt(b));
+
+  /* Tinting: how far to move from the origin toward white along c' = (√c + t·(1 − √c))², a path that bends like
+     the gamma-encoded sRGB interpolation chroma-js uses. Luminance is quadratic in t, solved so it hits alpha exactly.
+     0 when the target is darker than the origin. */
+  --_tint-amount: max(
+    0,
+    (alpha - var(--_luminance)) /
+    max(
+      1e-6,
+      var(--_root-mean) -
+      var(--_luminance) +
+      sqrt(max(0, pow(var(--_root-mean) - var(--_luminance), 2) + (1 - 2 * var(--_root-mean) + var(--_luminance)) * (alpha - var(--_luminance))))
+    )
+  );
+
+  /* Shading: scale toward black to reach alpha (keeps chromaticity). 1 when the target is lighter than the origin. */
+  --_shade-factor: min(1, alpha / max(1e-6, var(--_luminance)));
+
+  /* Move the origin to the relative luminance carried in its alpha channel */
+  --_at-luminance:
+    calc(var(--_shade-factor) * pow(sqrt(r) + var(--_tint-amount) * (1 - sqrt(r)), 2))
+    calc(var(--_shade-factor) * pow(sqrt(g) + var(--_tint-amount) * (1 - sqrt(g)), 2))
+    calc(var(--_shade-factor) * pow(sqrt(b) + var(--_tint-amount) * (1 - sqrt(b)), 2)) / 1;
+
+  /* CIE L* (= HSLuv lightness, 0–100) of the origin: linear below luminance 0.008856, cubic above.
+     And its dark mode counterpart: mirrored, floored at 70 */
+  --_lightness: max(116 * pow(var(--_luminance), 1 / 3) - 16, 903.3 * var(--_luminance) * clamp(0, (0.008856 - var(--_luminance)) * infinity, 1));
+  --_lightness-dark: min(70, 100 - var(--_lightness));
+
+  /* Replace an alpha carrying L* / 100 with the luminance of that L*: linear below L* = 8, cubic above */
+  --_lightness-to-luminance: r g b / max(100 * alpha / 903.3, pow((100 * alpha + 16) / 116, 3) * clamp(0, (100 * alpha - 8) * infinity, 1));
+
+  /* L* step from base-default to base-hover: 8 darker, or 8 lighter when L* ≤ 30 or 49 ≤ L* ≤ 65 */
+  --_hover-step: calc(8 - 16 * clamp(0, max(30 - var(--_lightness), (var(--_lightness) - 49) * (65 - var(--_lightness))) * infinity, 1));
+  --_hover-step-dark: calc(8 - 16 * clamp(0, max(30 - var(--_lightness-dark), (var(--_lightness-dark) - 49) * (65 - var(--_lightness-dark))) * infinity, 1));
+
+  /* 1 when white has the higher WCAG contrast against the origin, else 0 (both are equal at luminance 0.1791) */
+  --_prefers-white: clamp(0, (0.1791 - var(--_luminance)) * infinity, 1);
+
+  /* L* offset for base-contrast-subtle: 60 (50 when 40 < L* < 60), toward the higher-contrast pole */
+  --_contrast-subtle-step: calc((60 - 10 * clamp(0, (var(--_lightness) - 40) * (60 - var(--_lightness)) * infinity, 1)) * (2 * var(--_prefers-white) - 1));
+}
+
+:root,
+[data-color] {
+  /* Base color per scheme, as srgb-linear so later stages need no conversion. Dark mode desaturates it before the
+     scale is derived. Channels are floored at 0: the conversion can leave tiny negative residues that would make sqrt() NaN */
+  --_source-light: color(from var(--ds-color-base) srgb-linear max(0, r) max(0, g) max(0, b));
+  --_source-dark: color(from oklch(from var(--ds-color-base) l calc(c * 0.7) h) srgb-linear max(0, r) max(0, g) max(0, b));
+  --_dark-base: color(
+    from color(from color(from var(--_source-light) srgb-linear r g b / calc(var(--_lightness-dark) / 100)) srgb-linear var(--_lightness-to-luminance))
+      srgb-linear var(--_at-luminance)
+  );
+
+  --ds-color-dynamic-background-default: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 1) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.009) srgb-linear var(--_at-luminance))
+  );
+  --ds-color-dynamic-background-tinted: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 0.9) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.014) srgb-linear var(--_at-luminance))
+  );
+
+  --ds-color-dynamic-surface-default: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 1) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.021) srgb-linear var(--_at-luminance))
+  );
+  --ds-color-dynamic-surface-tinted: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 0.81) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.027) srgb-linear var(--_at-luminance))
+  );
+  --ds-color-dynamic-surface-hover: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 0.7) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.036) srgb-linear var(--_at-luminance))
+  );
+  --ds-color-dynamic-surface-active: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 0.59) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.056) srgb-linear var(--_at-luminance))
+  );
+
+  --ds-color-dynamic-border-subtle: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 0.5) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.08) srgb-linear var(--_at-luminance))
+  );
+  --ds-color-dynamic-border-default: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 0.19) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.22) srgb-linear var(--_at-luminance))
+  );
+  --ds-color-dynamic-border-strong: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 0.11) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.39) srgb-linear var(--_at-luminance))
+  );
+
+  --ds-color-dynamic-text-subtle: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 0.11) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.39) srgb-linear var(--_at-luminance))
+  );
+  --ds-color-dynamic-text-default: light-dark(
+    color(from color(from var(--_source-light) srgb-linear r g b / 0.0245) srgb-linear var(--_at-luminance)),
+    color(from color(from var(--_source-dark) srgb-linear r g b / 0.84) srgb-linear var(--_at-luminance))
+  );
+
+  --ds-color-dynamic-base-default: light-dark(var(--_source-light), var(--_dark-base));
+  --ds-color-dynamic-base-hover: light-dark(
+    color(
+      from
+        color(
+          from color(from var(--_source-light) srgb-linear r g b / calc((var(--_lightness) - var(--_hover-step)) / 100)) srgb-linear
+            var(--_lightness-to-luminance)
+        )
+        srgb-linear var(--_at-luminance)
+    ),
+    color(
+      from
+        color(
+          from color(from var(--_source-light) srgb-linear r g b / calc((var(--_lightness-dark) - var(--_hover-step-dark)) / 100)) srgb-linear
+            var(--_lightness-to-luminance)
+        )
+        srgb-linear var(--_at-luminance)
+    )
+  );
+  --ds-color-dynamic-base-active: light-dark(
+    color(
+      from
+        color(
+          from color(from var(--_source-light) srgb-linear r g b / calc((var(--_lightness) - 2 * var(--_hover-step)) / 100)) srgb-linear
+            var(--_lightness-to-luminance)
+        )
+        srgb-linear var(--_at-luminance)
+    ),
+    color(
+      from
+        color(
+          from color(from var(--_source-light) srgb-linear r g b / calc((var(--_lightness-dark) - 2 * var(--_hover-step-dark)) / 100)) srgb-linear
+            var(--_lightness-to-luminance)
+        )
+        srgb-linear var(--_at-luminance)
+    )
+  );
+
+  --ds-color-dynamic-base-contrast-subtle: light-dark(
+    color(
+      from
+        color(
+          from color(from var(--_source-light) srgb-linear r g b / calc((var(--_lightness) + var(--_contrast-subtle-step)) / 100)) srgb-linear
+            var(--_lightness-to-luminance)
+        )
+        srgb-linear var(--_at-luminance)
+    ),
+    color(
+      from
+        color(
+          from color(from var(--_dark-base) srgb-linear r g b / calc((var(--_lightness) + var(--_contrast-subtle-step)) / 100)) srgb-linear
+            var(--_lightness-to-luminance)
+        )
+        srgb-linear var(--_at-luminance)
+    )
+  );
+  --ds-color-dynamic-base-contrast-default: light-dark(
+    color(from var(--_source-light) srgb-linear var(--_prefers-white) var(--_prefers-white) var(--_prefers-white)),
+    color(from var(--_dark-base) srgb-linear var(--_prefers-white) var(--_prefers-white) var(--_prefers-white))
+  );
+}
