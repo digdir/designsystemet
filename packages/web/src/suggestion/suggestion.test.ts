@@ -155,7 +155,7 @@ describe('suggestion component', () => {
     /* u-combobox 2.1.4 left the option value in the input instead */
     expect(input.value).toBe('os');
   });
-  
+
   it('hides the empty option initially for a creatable suggestion', async () => {
     const suggestion = renderCreatable();
     const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
