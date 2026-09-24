@@ -8,10 +8,15 @@ import {
   type ExternalConfigSchema,
   externalConfigSchema,
 } from '../src/schemas/schema.ts';
+import { warnDeprecatedFields } from '../src/schemas/schema-output.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.ts';
 
 export { deprecatedCLIOptions } from '../src/schemas/helpers.ts';
+
+// Default config files to auto-detect when no --config is supplied, in order of precedence.
+export const DEFAULT_CONFIG_FILEPATHS = ['designsystemet.config.json', 'designsystemet.config.jsonc'];
+export const DEFAULT_CONFIG_FILEPATH = DEFAULT_CONFIG_FILEPATHS[0];
 
 export async function readConfigFile(configFilePath: string, allowFileNotFound = true): Promise<string> {
   let configFile: string;
@@ -52,6 +57,7 @@ export async function parseValidateAndOptsConfig(
 
   try {
     configParsed = parseConfig<ConfigSchema>(configFile);
+    warnDeprecatedFields(configParsed);
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred while parsing config file';
     console.error(pc.redBright(`Failed parsing config  file at ${pc.red(configFilePath)}`));
@@ -115,4 +121,25 @@ export async function parseValidateAndOptsConfig(
   }
 
   return validatedConfig;
+}
+
+export async function getConfigFile(userConfigFilePath: string | undefined) {
+  if (!R.isNil(userConfigFilePath)) {
+    // A config path was supplied explicitly. It's allowed to not exist only if it's one of the defaults.
+    const allowFileNotFound = DEFAULT_CONFIG_FILEPATHS.includes(userConfigFilePath);
+    const configFile = await readConfigFile(userConfigFilePath, allowFileNotFound);
+
+    return { configFile, configFilePath: userConfigFilePath };
+  }
+
+  // No config path supplied: auto-detect the default config files (.json, then .jsonc).
+  for (const configFilePath of DEFAULT_CONFIG_FILEPATHS) {
+    const configFile = await readConfigFile(configFilePath, true);
+    if (configFile) {
+      return { configFile, configFilePath };
+    }
+  }
+
+  // None found - return empty config using the canonical default path for messaging.
+  return { configFile: '', configFilePath: DEFAULT_CONFIG_FILEPATH };
 }
