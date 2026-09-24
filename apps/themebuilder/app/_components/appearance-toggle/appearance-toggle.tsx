@@ -1,4 +1,4 @@
-import type { ColorScheme } from '@digdir/designsystemet/color';
+import type { ColorScheme } from '@digdir/designsystemet/internal';
 import { Button } from '@digdir/designsystemet-react';
 import { MoonIcon, SunIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';

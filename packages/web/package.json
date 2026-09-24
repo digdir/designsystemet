@@ -108,7 +108,8 @@
   "scripts": {
     "start": "vite --config=./vite.config.ts --port=5174",
     "build": "tsdown && cem analyze",
-    "test": "vitest --config=vitest.config.ts"
+    "test": "vitest --config=vitest.config.ts",
+    "types": "tsc --noEmit"
   },
   "customElements": "dist/custom-elements.json",
   "publishConfig": {

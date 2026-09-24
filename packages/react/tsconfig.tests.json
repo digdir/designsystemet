@@ -7,8 +7,8 @@
     "noEmit": false,
     "emitDeclarationOnly": true,
     "types": [
-      "@testing-library/jest-dom",
       "vitest/globals",
+      "./vitest-matchers.d.ts",
       "./declarations.d.ts",
       "./src/react-types.d.ts"
     ]

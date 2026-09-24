@@ -13,11 +13,16 @@
       "@digdir/designsystemet-css",
       "@digdir/designsystemet-types",
       "@digdir/designsystemet-react",
-      "@digdir/designsystemet-web"
+      "@digdir/designsystemet-web",
+      "@plugin/designsystemet"
     ]
   ],
   "linked": [],
   "access": "restricted",
+  "privatePackages": {
+    "version": true,
+    "tag": false
+  },
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
@@ -25,8 +30,6 @@
     "@web/themebuilder",
     "@web/storybook",
     "@internal/components",
-    "@internal/digdir",
-    "@digdir/designsystemet-theme",
-    "@plugin/designsystemet"
+    "@internal/digdir"
   ]
 }

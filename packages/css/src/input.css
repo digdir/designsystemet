@@ -52,6 +52,7 @@
   box-sizing: border-box;
   color: var(--dsc-input-color);
   font-family: inherit;
+  forced-color-adjust: none; /* Enable drawing with background property */
   height: var(--dsc-input-size);
   line-height: var(--dsc-input-line-height);
   max-width: 100%; /* Ensure input does not grow outside bounds even with a high value in size="" or cols="" */
@@ -101,18 +102,6 @@
     }
   }
 
-  @media (forced-colors: active) {
-    border-color: ButtonText;
-    background-color: Canvas;
-
-    &:disabled,
-    &[aria-disabled='true'],
-    &[aria-readonly='true'],
-    &[readonly] {
-      border-color: GrayText;
-    }
-  }
-
   /* Round border-width up to nearest 1px if supported */
   @supports (width: round(down, 0.1em, 1px)) {
     border-width: round(up, var(--dsc-input-border-width), 1px);
@@ -139,10 +128,6 @@
       background-image:
         linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
         linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
-    }
-
-    @media (forced-colors: active) {
-      appearance: auto; /* show chevron */
     }
   }
 
@@ -206,10 +191,6 @@
     background-color: var(--dsc-input-background--readonly);
     border-color: var(--dsc-input-border-color--readonly);
     color: var(--dsc-input-color--readonly);
-
-    @media (forced-colors: active) {
-      border-color: GrayText;
-    }
   }
 
   /**
@@ -230,18 +211,6 @@
     line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
     height: var(--dsc-input-size--toggle);
     width: var(--dsc-input-size--toggle);
-    /* forced-color-adjust: none; */ /* Prevent browser from applying forced colors, since we need the background */
-
-    @media (forced-colors: active) {
-      color: Canvas;
-
-      &:disabled,
-      &[aria-disabled='true'],
-      &[aria-readonly='true'],
-      &[readonly] {
-        border-color: GrayText;
-      }
-    }
   }
 
   &[type='radio'] {
@@ -250,13 +219,6 @@
 
   &[type='radio']:checked {
     background-image: radial-gradient(circle closest-side, currentcolor 45%, transparent 50%);
-
-    @media (forced-colors: active) {
-      background-color: LinkText;
-      border-color: LinkText;
-      color: Canvas;
-      forced-color-adjust: none; /* To be able to draw dot */
-    }
   }
 
   &[type='checkbox'] {
@@ -264,8 +226,8 @@
   }
 
   &[type='checkbox']:checked {
-    --_stroke-width: var(--dsc-input-stroke-width);
     @composes ds-checkbox--checked from './base.css';
+    --_stroke-width: var(--dsc-input-stroke-width);
   }
 
   &[type='checkbox']:indeterminate {
@@ -279,12 +241,6 @@
       currentcolor calc(50% + var(--dsc-input-stroke-width)),
       transparent calc(52% + var(--dsc-input-stroke-width))
     );
-
-    @media (forced-colors: active) {
-      background-color: LinkText;
-      border-color: LinkText;
-      forced-color-adjust: none; /* To be able to draw line */
-    }
   }
 
   /**
@@ -292,7 +248,6 @@
    */
   &[role='switch']:is([type='radio'], [type='checkbox']) {
     --_dsc-input-circle-position: left;
-
     background-image: radial-gradient(circle closest-side, currentcolor 95%, transparent 100%);
     background-origin: content-box;
     background-position: var(--_dsc-input-circle-position);
@@ -305,27 +260,6 @@
 
     &:checked {
       --_dsc-input-circle-position: right;
-
-      @media (forced-colors: active) {
-        color: CanvasText;
-      }
-    }
-
-    @media (forced-colors: active) {
-      color: GrayText;
-
-      forced-color-adjust: none; /* To be able to draw switch */
-      &[aria-readonly='true'],
-      &[readonly] {
-        color: GrayText;
-      }
-
-      &:disabled,
-      &[aria-disabled='true'],
-      &[aria-readonly='true'],
-      &[readonly] {
-        border-color: GrayText;
-      }
     }
   }
 }

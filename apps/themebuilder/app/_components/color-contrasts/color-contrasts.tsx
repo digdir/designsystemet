@@ -4,7 +4,7 @@ import {
   generateColorSchemes,
   getContrastFromHex,
   type SemanticColorNames,
-} from '@digdir/designsystemet';
+} from '@digdir/designsystemet/internal';
 import {
   Field,
   Heading,

@@ -3,7 +3,7 @@ import {
   type CssColor,
   generateColorSchemes,
   type ThemeInfo,
-} from '@digdir/designsystemet';
+} from '@digdir/designsystemet/internal';
 
 export const generateColorVars = (
   colors: ThemeInfo,

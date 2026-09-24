@@ -41,16 +41,5 @@
       height: var(--dsc-togglegroup-button-size);
       width: var(--dsc-togglegroup-button-size);
     }
-
-    @media (forced-colors: active) {
-      &[aria-checked='true'] {
-        background: ButtonText;
-        color: CanvasText;
-
-        & svg {
-          color: CanvasText;
-        }
-      }
-    }
   }
 }
