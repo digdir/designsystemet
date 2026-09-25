@@ -14,7 +14,15 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
   return (
     <div className={classes.themes}>
       <RovingFocusRoot activeValue={namespace + '1'} asChild>
-        <div className={classes.test}>
+        <div
+          className={classes.test}
+          data-dynamic-color
+          style={
+            {
+              '--ds-color-base': colorScale.light['base-default'].hex,
+            } as React.CSSProperties
+          }
+        >
           <ColorGroup
             header={showHeader ? 'Background' : ''}
             colorNames={['background-default', 'background-tinted']}
