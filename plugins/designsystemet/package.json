@@ -1,6 +1,6 @@
 {
   "name": "@plugin/designsystemet",
-  "version": "0.0.1",
+  "version": "1.23.0",
   "private": true,
   "type": "module",
   "description": "Designsystemet Figma plugin",
