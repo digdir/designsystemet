@@ -1,8 +1,9 @@
 <Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+For the details component, we use [u-details (github.io)](https://u-elements.github.io/u-elements/elements/u-details), which builds on the semantic HTML elements `<details>` and `<summary>`.
 </Alert>
 
-For the `Details` component, we use [u-details (github.io)](https://u-elements.github.io/u-elements/elements/u-details), which builds on the semantic HTML elements `<details>` and `<summary>`.
-
 ## Keyboard navigation
-Press <kbd>Space</kbd> or <kbd>Enter</kbd> to open or close the Details.
+Keyboard navigation is handled by Designsystemet. Note that if you use `event.preventDefault()` on a keypress event, you prevent the browser's default behaviour. In that case, you need to test keyboard navigation yourself.
+
+## Handled by Designsystemet
+- The component uses native `<details>` and `<summary>`, so the open and closed state is communicated to assistive technology.

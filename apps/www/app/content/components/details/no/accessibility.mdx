@@ -1,8 +1,10 @@
 <Alert data-color="info">
-Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
+For details-komponenten bruker vi [u-details (github.io)](https://u-elements.github.io/u-elements/elements/u-details) som bygger videre på de semantiske HTML-elementene `<details>` og `<summary>`. 
 </Alert>
 
-For `Details`-komponenten bruker vi [u-details (github.io)](https://u-elements.github.io/u-elements/elements/u-details) som bygger videre på de semantiske HTML-elementene `<details>` og `<summary>`. 
 
-## Tastaturnavigasjon
-<kbd>Space</kbd> eller <kbd>Enter</kbd> åpner og lukker `Details`.
+## Test med tastatur
+Tastaturnavigasjon er ivareteken av Designsystemet. Merk at dersom du bruker `event.preventDefault()` på eit keypress-event, hindrar du standardåtferda i nettlesaren. Då må du teste tastaturnavigasjonen sjølv.
+
+## Designsystemet ivaretek
+- Komponenten bruker native `<details>` og `<summary>`, slik at open og lukka tilstand blir formidla til hjelpemiddelteknologi.

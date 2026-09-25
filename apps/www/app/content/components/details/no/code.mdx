@@ -2,29 +2,13 @@
 
 ## Bruk
 Details er en native `<details>`-tagg.
-Vi polyfyller ein feil i Firefox når den blir brukt saman med Android Talkback skjermlesar for å annonsere tilstand og rolle riktig.
 
-```html
-<!-- uten ramme -->
-<details class="ds-details">
-  <summary>
-    Details heading text
-  </summary>
-  <div>
-    Details content
-  </div>
-</details>
+### Med ramme
 
-<!-- med ramme -->
+Ønsker du å ha en ramme rundt kan du putte den i en `ds-card`.
+```
 <div class="ds-card">
-  <details class="ds-details">
-    <summary>
-      Details heading text
-    </summary>
-    <div>
-      Details content
-    </div>
-  </details>
+  <details class="ds-details">…</details>
 </div>
 ```
 
@@ -35,6 +19,9 @@ Komponenten vil arve næraste forelder med desse satt.
 <CssVariables />
 
 <CssAttributes />
+
+## Polyfill
+I Firefox legg vi automatisk til tilgjengeattributt på `<summary>`, slik at skjermlesaren TalkBack på Android les opp tilstand og rolle rett.
 
 ## React
 
