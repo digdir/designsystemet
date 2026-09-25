@@ -89,7 +89,7 @@ program
         console.log(`\n🍱 Creating CSS in ${pc.green(output.dir)}...`);
 
         // Only generate create CSS if no `design-tokens` output is present and no `tokenDir` is explicitly set in the config file. Otherwise, build CSS from existing design tokens.
-        if (isOnlyCssOutput(config)) {
+        if (isOnlyCssOutput(parsedConfig)) {
           await createCss({
             themes: config.themes,
             outDir: outDir,
@@ -308,12 +308,20 @@ async function createCss({
   console.log(`\n✅ Finished creating CSS`);
 }
 
-function isOnlyCssOutput(config: ConfigSchema): boolean {
-  // Can be defined using either the shorthand or object syntax, so check for both.
-  const hasDesignTokensOutput =
-    config.output.find((o) => o.type === 'design-tokens') ||
-    config.output.find((o) => o === ('design-tokens' as unknown as ConfigSchema['output'][number]));
-  const hasCSSTokensDir = config.output.find((o) => o.type === 'css')?.tokenDir;
+/** Checks the config file as written, since validation adds defaults such as `tokenDir`. */
+function isOnlyCssOutput(config: ExternalConfigSchemaInput): boolean {
+  // No `output` means the default outputs, which include design tokens.
+  if (!config.output) {
+    return false;
+  }
+
+  // Outputs can be defined using either the shorthand or object syntax, so check for both.
+  const hasDesignTokensOutput = config.output.some(
+    (o) => o === 'design-tokens' || (typeof o === 'object' && o.type === 'design-tokens'),
+  );
+  const hasCSSTokensDir = config.output.some(
+    (o) => typeof o === 'object' && o.type === 'css' && o.tokenDir !== undefined,
+  );
 
   return !hasDesignTokensOutput && !hasCSSTokensDir;
 }

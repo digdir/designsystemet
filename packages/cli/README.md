@@ -102,6 +102,8 @@ Use `output` to choose what is created and where. Each item is either an output 
 
 Design tokens are always created before CSS. `tokenDir` should match the `dir` of the `design-tokens` output.
 
+If you only need CSS, use `"output": ["css"]` without `tokenDir`. The CSS is then created directly from the themes, without writing any design tokens.
+
 The `outDir` and `clean` fields are deprecated in favour of `output`. The CLI will offer to migrate your config file automatically.
 
 #### Complex config example
