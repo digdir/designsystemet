@@ -21,6 +21,8 @@ jobs:
   checks:
     name: if changes are made to packages
     runs-on: ubuntu-latest
+    # The changesets release PR consumes (deletes) all changesets, so it never has any
+    if: ${{ github.head_ref != 'changeset-release/main' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
