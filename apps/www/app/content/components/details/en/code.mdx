@@ -2,38 +2,26 @@
 
 ## Usage
 Details is a native `<details>` element.
-We polyfill a bug in Firefox when used with Android Talkback screen reader to announce state and role correctly.
 
-```html
-<!-- without frame -->
-<details class="ds-details">
-  <summary>
-  Details heading text
-  </summary>
-  <div>
-  Details content
-  </div>
-</details>
+### With frame
 
-<!-- with frame -->
+If you want a frame around details, you can put it in a `ds-card`.
+```
 <div class="ds-card">
-  <details class="ds-details">
-    <summary>
-    Details heading text
-    </summary>
-    <div>
-    Details content
-    </div>
-  </details>
+  <details class="ds-details">...</details>
 </div>
 ```
 
 ## CSS variables and data attributes
 Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). 
 The component will inherit from the closest parent where these are set.
+
 <CssVariables />
 
 <CssAttributes />
+
+## Polyfill
+In Firefox, we automatically add accessibility attributes to `<summary>`, so the TalkBack screen reader on Android announces state and role correctly.
 
 ## React
 
