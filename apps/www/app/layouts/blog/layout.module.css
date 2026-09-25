@@ -23,7 +23,6 @@
     text-align: start;
     h1 {
       margin-bottom: var(--ds-size-2);
-      font-size: var(--ds-font-size-6);
     }
     p {
       font-size: var(--ds-font-size-4);
