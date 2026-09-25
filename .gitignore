@@ -41,6 +41,11 @@ packages/cli/temp
 apps/www/build
 apps/storybook/debug-storybook.log
 
+# Chromatic output, must be ignored so it is not hashed as an uncommitted file
+chromatic.log
+chromatic-diagnostics.json
+build-storybook.log
+
 # Claude session directory and guidance file
 .claude/
 CLAUDE.md
