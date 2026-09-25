@@ -29,23 +29,29 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
               'surface-tinted',
               'surface-hover',
               'surface-active',
+              'surface-muted',
             ]}
             colorScale={colorScale}
-            names={['Default', 'Tinted', 'Hover', 'Active']}
+            names={['Default', 'Tinted', 'Hover', 'Active', 'Muted']}
             namespace={namespace}
           />
           <ColorGroup
             header={showHeader ? 'Border' : ''}
-            colorNames={['border-subtle', 'border-default', 'border-strong']}
+            colorNames={[
+              'border-subtle',
+              'border-default',
+              'border-strong',
+              'border-muted',
+            ]}
             colorScale={colorScale}
-            names={['Subtle', 'Default', 'Strong']}
+            names={['Subtle', 'Default', 'Strong', 'Muted']}
             namespace={namespace}
           />
           <ColorGroup
             header={showHeader ? 'Text' : ''}
-            colorNames={['text-subtle', 'text-default']}
+            colorNames={['text-subtle', 'text-default', 'text-muted']}
             colorScale={colorScale}
-            names={['Subtle', 'Default']}
+            names={['Subtle', 'Default', 'Muted']}
             namespace={namespace}
           />
           <ColorGroup
