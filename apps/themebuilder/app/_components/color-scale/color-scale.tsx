@@ -16,7 +16,7 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
       <RovingFocusRoot activeValue={namespace + '1'} asChild>
         <div
           className={classes.test}
-          data-color
+          data-dynamic-color
           style={
             {
               '--ds-color-base': colorScale.light['base-default'].hex,

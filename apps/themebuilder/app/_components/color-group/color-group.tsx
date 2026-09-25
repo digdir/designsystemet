@@ -69,7 +69,7 @@ export const ColorGroup = ({
         {colorNames.map((colorName, index) => (
           <ColorButton
             key={index + 'fragment' + namespace}
-            color={`var(--ds-color-dynamic-${colorName})`}
+            color={`var(--ds-color-${colorName})`}
             colorName={colorName}
           />
         ))}
