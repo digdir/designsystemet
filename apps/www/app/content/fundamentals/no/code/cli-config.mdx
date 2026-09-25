@@ -103,6 +103,8 @@ Alle stiar er relative til config fila.
 | type | `"css"` | Ja | | Output-typen. |
 | dir | Streng | Nei | `design-tokens-build` | Mappa der CSS skal lagrast. |
 | cleanDir | Boolean | Nei | `true` | Slett mappa før CSS blir laga. |
+
+Treng du berre CSS, kan du bruke `"output": ["css"]` utan `tokenDir`. CSS-en blir då laga direkte frå tema, utan at design tokens blir lagra.
 | tokenDir | Streng | Nei | `design-tokens` | Mappa med design tokens som CSS skal byggast frå. Bør vere lik `dir` i `design-tokens`-outputen. |
 | experimental_tailwind | Boolean | Nei | `true` | Lag òg Tailwind CSS-klassar. Eksperimentelt. |
 
