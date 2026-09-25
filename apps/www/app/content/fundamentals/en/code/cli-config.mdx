@@ -102,6 +102,8 @@ All paths are relative to the config file.
 | type | `"css"` | Yes | | The output type. |
 | dir | String | No | `design-tokens-build` | The folder where CSS should be saved. |
 | cleanDir | Boolean | No | `true` | Delete the folder before creating CSS. |
+
+If you only need CSS, you can use `"output": ["css"]` without `tokenDir`. The CSS is then created directly from the themes, without saving any design tokens.
 | tokenDir | String | No | `design-tokens` | The folder containing the design tokens to build CSS from. Should match `dir` of the `design-tokens` output. |
 | experimental_tailwind | Boolean | No | `true` | Also generate Tailwind CSS classes. Experimental. |
 
