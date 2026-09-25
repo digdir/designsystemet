@@ -6,9 +6,12 @@ Bruk klassenavnet `ds-validation-message` for å style en validation message.
 
 ## Skjemafelt og status
 
-Validation message vil automatisk kobles til skjemafelt, når den har attributtet `data-field="validation"`, og ligger inni et [field](/no/components/docs/field/code).
+Valideringsmeldingen kobles automatisk til skjemafelt, når den har attributten `data-field="validation"` og ligger inni et `<ds-field>`.
+Skjemafeltet får automatisk `aria-invalid="true"` når en valideringsmelding vises i standardfargen `danger`.
 
-Skjemafeltet får `aria-invalid="true"` når validation message har `data-color="danger"`, eller når `data-color` ikke er angitt.
+<Alert>
+**Merk:** Bruk `hidden` attributt eller legg til/fjern elementet valideringsmelding, i stedet for å skjule/vise ved hjelp av CSS-klassenavn eller inline styling. Dette sikrer at `<ds-field>` korrekt kan formidle synligheten av valideringsmeldingen til assisterende teknologi.
+</Alert>
 
 ## CSS variabler og data-attributter
 
