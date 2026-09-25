@@ -26,34 +26,49 @@ If you want to control colours and scaling through code, for example by using de
 
 There are two main approaches:
 
-- Embedding SVG markup inline in the HTML
-- Referencing SVG graphic with `<use>` and `<symbol>` for reuse
+- Embedding SVG markup inline directly in HTML
+- Using `<use>` together with `<symbol>` for reuse
 
-Both approaches work well. Using `<use>` together with `<symbol>` is useful when the same graphic needs to be reused in multiple places without duplicating code, while inline SVG provides full control and is often simpler when the graphic is only used in a single location.
+Both approaches work well, but **inline SVG markup provides full control and is often the simplest and most direct solution.**
+
+If, on the other hand, you have multiple symbols in the same SVG file (an SVG sprite), or need to keep the SVG code separate from the HTML document, you should use the `<use>` method. Consider what introduces the least complexity in your project. Keep in mind that the `<use>` method places specific requirements on how the SVG file is structured and referenced in code.
 
 When SVG is used inline or through `<use>`, both colours and sizing can be controlled with CSS. This requires the SVG to be set up correctly, including a `viewBox` attribute.
 
 Other ways of using graphics in frontend applications, such as `<img src="...svg">`, canvas, CSS-generated graphics, or icon fonts, do not provide the same level of control over colours through design tokens. These approaches are therefore outside the scope of this article.
 
-## Basic setup
-For an SVG to be reusable and easy to style, a few prerequisites should be in place.
+### Basic setup
+To make SVG graphics as easy as possible to style, scale, and reuse:
 
-**When using graphics as an external file with `<use>`:**
-- The graphic should be wrapped in a `<symbol>` element
-- The symbol should have an ID
-- The graphic should be referenced using `<use>` together with the file path and symbol ID
+**For both inline graphics and SVG files:**
+- define `viewBox` on `<svg>` or `<symbol>` for proper scaling
+- control width and height using `width` and `height` (or CSS) on the enclosing element in HTML
+- set `fill="none"` on `<svg>` or `<symbol>` if the graphic uses strokes (`stroke`), so that line-based shapes are not unintentionally filled with color
 
-**When using graphics either inline or as an external file:**
-- A viewBox attribute should be defined on the `<svg>` or `<symbol>` element
+**When inserting graphics as a file with `<use>`:**
+- wrap the graphic in a `<symbol>`
+- give the symbol a unique `id`
+- insert the graphic in HTML using `<use>` with a reference to the file path + symbol ID
 
-## Practival examples
+## Practical examples
 
-### Using SVG Symbols for Reuse
+### 1. Embed the graphic inline (simplest)
+This is the most direct way to use SVG. You place the SVG markup directly in your HTML. You don't need `<symbol>` or unique IDs, just an `<svg>` element with a `viewBox` and if needed `fill="none"`:
 
-Wrap the graphic in a `<symbol>` element and give it a unique ID:
+```HTML
+<svg height="1rem" width="1rem" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="..." />
+</svg>
+```
+
+### 2. Insert graphics from an SVG file with `<use>` and ID
+
+If you have multiple symbols in the same file (an SVG sprite), or want to reuse the same graphic in multiple places without duplicating the SVG markup in your HTML, you can place the graphic in a separate SVG file and reference it with `<use>`.
+
+Structure the graphic in the SVG file with `<symbol>` and an associated `id`:
 ```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
-  <symbol id="ds-logo" viewBox="0 0 40 40">
+  <symbol id="ds-logo" viewBox="0 0 40 40" fill="none">
     <path d="..." />
     <path d="..." />
     <path d="..." />
@@ -61,7 +76,8 @@ Wrap the graphic in a `<symbol>` element and give it a unique ID:
   </symbol>
 </svg>
 ```
-The graphic can then be referenced in HTML using `<use>`:
+
+The file is then referenced in HTML like this:
 ```HTML
 <svg height="1rem" width="1rem">
   <use href="logo.svg#ds-logo"></use>
@@ -72,39 +88,21 @@ The graphic can then be referenced in HTML using `<use>`:
 
 Many design and editing tools cannot specify which `symbol` to display when previewing an SVG file. As a result, the graphic may appear empty even though the SVG is set up correctly.
 
-To make the graphic visible, add a `use` element at the end of the SVG file:
+To make the graphic visible, you can add a `use` element at the bottom of the SVG file:
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg">
-  <symbol id="symbol-id" viewBox="0 0 64 64">
+  <symbol id="symbol-id" viewBox="0 0 40 40" fill="none">
     <path d="..." />
   </symbol>
   <use href="#symbol-id" />
 </svg>
 ```
 
-**Tip:** You can include multiple symbols or icons in the same file by wrapping each one in a `symbol` element and giving it a unique ID. You can then use the technique above to choose which symbol should be displayed when previewing the file.
-
-#### Alternatively, Embed the Graphic Inline
-
-Using `<use>` makes it possible to reuse the same SVG without duplicating the markup in multiple places. If the graphic is only used once on a page, however, embedding the SVG inline is often the simpler option. When used inline, the example above does not require a `<symbol>` element or an ID:
-```HTML
-<svg height="1rem" width="1rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-  <path d="..." />
-</svg>
-```
-
-<Alert data-color='info'>
-  <h3 class="ds-heading" data-size='xs'>Tip: Scaling SVGs</h3>
-  <br />
-  SVGs scale most easily when:
-  - A `viewBox` is defined on the `<symbol>` element when referenced as a file, or on the `<svg>` element when embedded inline
-  - The size is controlled through the `width` and `height` attributes of the outer element
-  - The aspect ratio is defined correctly
-</Alert>
+**Tip:** You can include multiple symbols or icons in the same file by wrapping each one in a `<symbol>` with a unique ID. You can then use the technique above to select a symbol within the file for previewing.
 
 <Divider/>
-## Coouring graphics
+## Colouring graphics
 What you need to do next depends on the result you want to achieve.
 
 ### Single-colour graphics
@@ -120,7 +118,7 @@ svg {
 If you do not want to apply this rule to all SVGs, you can instead set currentColor directly on the fill and/or stroke attributes within the SVG. This is the approach used for icons in the design system, for example in buttons.
 ```SVG
 <svg xmlns="http://www.w3.org/2000/svg">
-  <symbol id="ds-logo" viewBox="0 0 40 40">
+  <symbol id="ds-logo" viewBox="0 0 40 40" fill="none">
     <path d="..." fill="currentColor"/>
     <path d="..." stroke="currentColor"/>
     <path d="..." fill="currentColor"/>
@@ -220,8 +218,9 @@ If a graphic conveys information, it should be given the image role and a descri
 ```
 For more complex graphics, more detailed descriptions may be needed. There are several ways to provide richer descriptions directly within SVG graphics, but those techniques are outside the scope of this article.
 
+<Divider/>
 ## Troubleshooting
-If your SVG does not behave as expected, these are the most common causes to investigate.
+If your SVG does not behave as expected, these are the most common causes to investigate:
 
 - **SVG has the wrong size**
   - Check that a `viewBox` attribute is defined
@@ -232,7 +231,7 @@ If your SVG does not behave as expected, these are the most common causes to inv
   - Check that `fill` and `stroke` are not hard-coded to fixed colour values
   - Check that the CSS variables (`var(...)`) are defined and available where the SVG is used
 
-- **A Multi-colour graphic appears as a single colour**
+- **A multi-colour graphic appears as a single colour**
   - Check whether `currentColor` is applied to all paths
   - Check for global CSS rules that affect all SVG elements
 
@@ -240,6 +239,7 @@ If your SVG does not behave as expected, these are the most common causes to inv
   - Check that the `href` in `<use>` points to the correct file and symbol ID (`file.svg#id`)
   - Check that the SVG file contains a `<symbol>` element with the expected ID
 
+<Divider/>
 ## Sources and further reading
 - [SVG: Scalable Vector Graphics (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG)  
 - [\<use> – SVG element (MDN)](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/use)  
