@@ -1,5 +1,33 @@
 # Change Log
 
+## 1.23.0
+
+### Minor Changes
+
+- **Field:** No longer reduces opacity on label and description when containing a disabled input, improving readability. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5373](https://github.com/digdir/designsystemet/pull/5373))
+
+- **Details:** Adjust default `padding-block` from `--ds-size-2` to `--ds-size-4` to match Figma ([#5411](https://github.com/digdir/designsystemet/pull/5411))
+
+- **Field:** Radio and checkbox descriptions now use a smaller font size to create better visual hierarchy. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+- **Label:** The default font weight is now `semibold` to better distinguish labels from body text. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+- **Fieldset:** Description text now inherits color instead of using a fixed neutral color, making it easier to swap color palettes. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+- **Field:** Description text now inherits color instead of using a fixed neutral color, making it easier to swap color palettes. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+- **Details:** The chevron now aligns with the first line of text when the text wraps, matching the Figma design. ([#5421](https://github.com/digdir/designsystemet/pull/5421))
+
+- **CSS:** Color tokens now automatically map to the appropriate CSS system colors when forced-colors mode is enabled, such as Windows High Contrast Mode. ([#5403](https://github.com/digdir/designsystemet/pull/5403))
+
+- **Pagination:** Now supports `--dsc-pagination-label-prev` and `--dsc-pagination-label-next` CSS custom properties for defining prev/next labels. ([#5401](https://github.com/digdir/designsystemet/pull/5401)) by [@stianmorsund](https://github.com/stianmorsund)
+
+- **Suggestion:** Added `--dsc-suggestion-search-icon-spacing`, and increased spacing before search icon from `--ds-size-2` to `--ds-size-3` to match Figma ([#5411](https://github.com/digdir/designsystemet/pull/5411))
+
 ## 1.22.0
 
 ### Minor Changes
