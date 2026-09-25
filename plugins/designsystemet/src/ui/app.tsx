@@ -68,7 +68,9 @@ function App() {
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      const msg = event.data.pluginMessage as FigmaMessages;
+      if (event.origin !== 'https://www.figma.com') return;
+      const msg = event.data?.pluginMessage as FigmaMessages | undefined;
+      if (!msg) return;
       switch (msg.type) {
         case 'preview-tokens-from-config': {
           switch (msg.status) {
