@@ -2,12 +2,19 @@
 
 ## Bruk
 
-Det er vanlig å bli forvirret mellom fieldset og field.
+Field grupperer ledetekst, valgfri beskrivelse, skjemafelt (som input, textarea og select) og valideringsmelding.
+
+Legg klassenavnet `ds-field` på `<ds-field>`-elementet. `<ds-field>` legger automatisk på tilgjengelighets-attributter, og støtte for valgfri telling av antall tegn.
+`<ds-field>` kobler også valideringsmelding på tvers av felt, dersom den ligger inni et [fieldset](/no/components/docs/fieldset/code).
+
+<Alert>
+**Field eller fieldset?**
+
+Field brukes for individuelle skjemafelt, mens [fieldset](/no/components/docs/fieldset/code) brukes for å gruppere flere felt sammen.
 En god huskeregel er at **fieldset er et sett med field**.
+</Alert>
 
-Field kan brukes sammen med input, textarea og select. **OBS**: textfield har allerede field innebygd og kan derfor ikke brukes inni en field.
-
-Legg klassenavnet `ds-field` på `<ds-field>`-elementet. `<ds-field>` kobler sammen label, input, beskrivelse, valideringsmelding og counter.
+**Merk**: React komponenten [textfield](/no/components/docs/textfield/code) har allerede field innebygd og skal derfor ikke settes inn i et field.
 
 ```html
 <ds-field class="ds-field">
