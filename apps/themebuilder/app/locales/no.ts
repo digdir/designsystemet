@@ -1,4 +1,5 @@
 import no from '@internal/components/src/_locales/no';
+import colorModal from './no/color-modal';
 import themeModal from './no/theme-modal';
 
 export default {
@@ -114,6 +115,7 @@ export default {
     'display-mode': 'Visningsmodus',
     'select-color': 'Velg farge',
   },
+  'color-modal': colorModal,
   themeModal,
   colorPane: {
     add: 'Legg til',

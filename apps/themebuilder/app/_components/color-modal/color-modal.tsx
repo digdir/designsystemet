@@ -10,10 +10,10 @@ import {
   Paragraph,
   Select,
 } from '@digdir/designsystemet-react';
+import { ClipboardButton } from '@internal/components';
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ClipboardButton } from '../clipboard-button/clipboard-button';
 import classes from './color-modal.module.css';
 import { capitalizeFirstLetter, getColorCombinations } from './util';
 

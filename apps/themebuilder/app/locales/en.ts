@@ -1,4 +1,5 @@
 import en from '@internal/components/src/_locales/en';
+import colorModal from './en/color-modal';
 import themeModal from './en/theme-modal';
 import type no from './no';
 
@@ -115,6 +116,7 @@ export default {
     'display-mode': 'Display mode',
     'select-color': 'Choose colour',
   },
+  'color-modal': colorModal,
   themeModal,
   colorPane: {
     add: 'Add',
