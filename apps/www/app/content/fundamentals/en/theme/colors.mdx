@@ -1,7 +1,7 @@
 ---
 title: Colors
 sidebar_title: Colors
-description: How the colours are structured and how you use them.
+description: How the semantic colors are structured, and how you use them in light and dark mode.
 date: 2024-05-30
 category: Theme
 color: red
@@ -11,9 +11,7 @@ order: 20
 ---
 
 ## Naming structure
-The colors in Designsystemet are structured with a semantic meaning. 
-This means they are defined by function and use, not just by how they look. 
-This makes it easier to choose the right color because you don't have to evaluate the color tone itself and can focus on what the color should communicate instead.
+The colors in Designsystemet are semantic. You don't choose a color based on how it looks, but based on what it will be used for. This makes it easier to use colors consistently across components, themes, and color modes.
 
 The color names in Designsystemet are divided into 3 parts: Name of the color scale, group (area of use), and variant.
 These parts describe how the colors are built up and how they should be used.
@@ -42,16 +40,52 @@ These groups describe the areas of use for the colors. For example, the Text gro
 For example, Tinted means the color has a hint of color in it, while Hover means the color is intended to be used for an interactive state.
 
 ## Contrast
-The colour system is structured to meet contrast requirements. The Theme Builder ensures that contrast requirements are met through the colours generated from the brand colour. As a result, colours intended for text will always have sufficient contrast against background colours.
+Most of the semantic colors are designed to meet contrast requirements automatically. 
+This applies in particular to text colors against background and surface colors.
+
+The `Base` colors are an exception. These colors are closely tied to the brand color you choose, 
+so you have to check yourself that they have sufficient contrast where they are used.
 
 Examples:
 
 - `Text-default` always has sufficient contrast against all `background` and `surface` colours.
-- `Text-subtle` always has sufficient contrast against all `background` colours and `surface-default`.
+- `Text-subtle` always has sufficient contrast against all `background` colours, `surface-default` and `surface-hover`.
 - This applies regardless of which base colour you have chosen.
 
-The `Base-default` colour will always be the same as the colour you selected. This is to preserve your brand as accurately as possible. You are therefore responsible for ensuring that the colour you choose meets contrast requirements for its intended use. The [Designsystemet theme generator](https://theme.designsystemet.no) will notify you of any contrast issues.
+The `Base-default` colour will always be the same as the colour you selected. This is to preserve your brand as accurately as possible. 
+You are therefore responsible for ensuring that the colour you choose meets contrast requirements for its intended use.
 
+## Light and dark mode
+
+The steps in a color scale have the same names and the same roles in both light and dark mode. What changes is the color values behind the tokens.
+
+Each color scale therefore has the same structure in both modes, with the same groups and variants at each step. 
+This makes it possible to switch between light and dark mode without having to change colors in the design, 
+and it makes it easier to build components that work in both modes.
+
+The colors are also designed to follow the same contrast principles in both modes. 
+The goal is that you can use `Background`, `Surface`, `Border` and `Text` in the same way, whether the interface is light or dark. 
+`Base` is the most important exception, and is therefore covered separately.
+
+In dark mode, the colors are also slightly reduced in saturation so that they work better on dark surfaces.
+
+### Background and Surface in light and dark mode
+In light mode, both `Background-default` and `Surface-default` are white, regardless of which color scale you use. 
+This makes it possible to have white surfaces, such as cards and panels, on top of a white background.
+
+In dark mode, neither the background nor the surfaces are completely black. 
+Instead, the `Background` and `Surface` colors get their hue from the scale generated from the selected `Base` color. 
+The `Surface` colors are lighter than `Background`, so that they can build up depth and hierarchy above the background.
+This is especially important in dark mode, because differences between background and surfaces are used to a greater extent to create depth and clear hierarchy.
+
+A color scale therefore has several `Background` and `Surface` colors. They cover different needs in light mode, while also providing clear and even transitions in dark mode.
+
+
+### The Base colors behave slightly differently
+`Base-default` is based on the color selected in the Theme Builder. 
+In light mode, this color is used directly, while in dark mode it is adjusted automatically to work better on dark surfaces.
+
+See also the pages on [Colors in code](/en/fundamentals/code/colors) and [Modes in Figma](/en/fundamentals/figma/modes-in-figma) for how to switch between light and dark mode in practice.
 
 ## Overview and explanation of colors
 Each color scale consists of a total of 16 colors, designed to cover different needs in the design. 
@@ -144,4 +178,6 @@ The contrast colors become either white or black depending on the brightness of 
   boxShadow={false}
   caption="Shows boxes with Base-default as background and Base-contrast-default as text color."
 />
+
+To better understand how the colors work, you can see how different color scales look in the Designsystemet [Theme Builder](https://theme.designsystemet.no/en/themebuilder).
 
