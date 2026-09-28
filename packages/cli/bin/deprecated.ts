@@ -5,6 +5,7 @@ import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
 import { automigrations } from '../src/migrations/index.ts';
 import type { ConfigSchemaThemes } from '../src/schemas/schema.ts';
+import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
 import {
   deprecatedCLIOptions as cliOptions,
@@ -26,7 +27,7 @@ type TokenCommandDeps = {
     outDir: string;
     clean?: boolean;
     verbose?: boolean;
-    tailwind?: boolean;
+    tailwind?: TailwindVersion | false;
   }) => Promise<void>;
 };
 
@@ -71,7 +72,8 @@ export function makeTokenCommands({ createDesignTokens, buildCss }: TokenCommand
         outDir: dsfs.outDir,
         clean,
         verbose,
-        tailwind: experimentalTailwind,
+        // Tailwind v3 is the only version the deprecated flag has ever generated
+        tailwind: experimentalTailwind && 3,
       });
     });
 

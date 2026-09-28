@@ -1,7 +1,7 @@
 ---
 title: CLI Config
 description: Information on how to use the CLI config file.
-date: 2025-10-29
+date: 2026-09-28
 category: Code
 color: blue
 icon: FileJsonIcon
@@ -106,6 +106,7 @@ All paths are relative to the config file.
 | dir | String | No | `design-tokens-build` | The folder where CSS should be saved. |
 | cleanDir | Boolean | No | `true` | Delete the folder before creating CSS. |
 | tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build CSS from. If neither is set, CSS is created directly from the themes. |
+| tailwind | `3`, `4` or `false` | No | `4` | Also generate a `<theme>.tailwind.css` for this Tailwind version. `false` skips it. |
 
 #### Without design tokens
 

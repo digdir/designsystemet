@@ -12,7 +12,7 @@ Read the Designsystemet [README](https://github.com/digdir/designsystemet) to ge
 
 ### Tailwind
 
-If you are using Tailwind with (Preflight)[https://tailwindcss.com/docs/preflight] make sure to load Designsystemet first.
+If you are using Tailwind with [Preflight](https://tailwindcss.com/docs/preflight) make sure to load Designsystemet first.
 
 #### v4
 
@@ -20,6 +20,20 @@ If you are using Tailwind with (Preflight)[https://tailwindcss.com/docs/prefligh
 @import url('@digdir/designsystemet-css');
 @import url('tailwindcss');
 ```
+
+To make Tailwind utilities use Designsystemet's design tokens, also import the generated Tailwind theme file.
+Set `tailwind` to `4` (default) or `3` on the `css` output in your `@digdir/designsystemet` config file to generate a `<theme>.tailwind.css` next to every `<theme>.css`.
+
+```css
+@import url('@digdir/designsystemet-css');
+@import url('@digdir/designsystemet-css/theme.css');
+
+@import url('tailwindcss');
+@import url('@digdir/designsystemet-css/theme/designsystemet.tailwind.css');
+```
+
+See [Tailwind CSS in the documentation](https://designsystemet.no/en/fundamentals/code/css#tailwind-css) for details.
+
 #### v3 and older
 ```css
 @import url('@digdir/designsystemet-css');
