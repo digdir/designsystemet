@@ -1,6 +1,7 @@
-import type {
-  CssColor,
-  ExternalConfigSchemaInput,
+import {
+  type CssColor,
+  defaultBorderRadius,
+  type ExternalConfigSchemaInput,
 } from '@digdir/designsystemet/internal';
 import pkg from '@digdir/designsystemet/package.json';
 import { useState } from 'react';
@@ -43,19 +44,17 @@ export const useTokenModal = () => {
       },
       {} as Record<string, CssColor>,
     ),
-    borderRadius: baseBorderRadius,
-    typography: {
-      fontFamily: 'Inter',
-    },
+    ...(baseBorderRadius !== defaultBorderRadius && {
+      borderRadius: baseBorderRadius,
+    }),
   };
 
   const packageWithTag = `@digdir/designsystemet${isProduction ? '@latest' : '@next'}`;
 
-  const configBuildSnippet = `npx ${packageWithTag} tokens create --config designsystemet.config.json\nnpx ${packageWithTag} tokens build --config designsystemet.config.json`;
+  const configBuildSnippet = `npx ${packageWithTag}`;
 
   const configSnippet = {
     $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
-    outDir: './design-tokens',
     themes: {
       [name]: {
         colors: theme.colors,
@@ -72,7 +71,9 @@ export const useTokenModal = () => {
               },
             }
           : {}),
-        borderRadius: theme.borderRadius,
+        ...(theme.borderRadius !== undefined && {
+          borderRadius: theme.borderRadius,
+        }),
       },
     },
   };
