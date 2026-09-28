@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @layer ds.theme.color-scheme, ds.theme.color, ds.theme.forced-colors;
 /*
-build: v1.22.0
-design-tokens: v1.22.0
+build: v1.23.0
+design-tokens: v1.23.0
 */
 
 @layer ds.theme.size-mode {
