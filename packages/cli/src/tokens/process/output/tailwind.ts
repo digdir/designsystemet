@@ -1,7 +1,7 @@
 import type { OutputFile } from '../../types.ts';
 
 /** Tailwind CSS major versions a theme file can be generated for. */
-export type TailwindVersion = 3 | 4;
+export type TailwindVersion = 'v3' | 'v4';
 
 /** Tailwind theme namespaces, mapped to their CSS variable prefix */
 const namespaces = {
@@ -17,14 +17,14 @@ const namespaces = {
 type TailwindToken = { namespace: keyof typeof namespaces; key: string; token: string };
 
 export const createTailwindCSSFiles = (cssFiles: OutputFile[], version: TailwindVersion): OutputFile[] => {
-  console.log(`\n🍱 Creating Tailwind v${version} Config`);
+  console.log(`\n🍱 Creating Tailwind ${version} Config`);
   return cssFiles
     .map((file) => {
       if (file.destination) {
         const tokens = scrapeTailwindTokens(file.output);
         const tailwindFile = {
           destination: file.destination.replace('.css', '.tailwind.css'),
-          output: version === 3 ? generateTailwindV3(tokens) : generateTailwindV4(tokens),
+          output: version === 'v3' ? generateTailwindV3(tokens) : generateTailwindV4(tokens),
         };
         return tailwindFile;
       }
