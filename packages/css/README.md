@@ -22,7 +22,7 @@ If you are using Tailwind with [Preflight](https://tailwindcss.com/docs/prefligh
 ```
 
 To make Tailwind utilities use Designsystemet's design tokens, also import the generated Tailwind theme file.
-Set `tailwind` to `4` (default) or `3` on the `css` output in your `@digdir/designsystemet` config file to generate a `<theme>.tailwind.css` next to every `<theme>.css`.
+Set `tailwind` to `"v4"` (default) or `"v3"` on the `css` output in your `@digdir/designsystemet` config file to generate a `<theme>.tailwind.css` next to every `<theme>.css`.
 
 ```css
 @import url('@digdir/designsystemet-css');

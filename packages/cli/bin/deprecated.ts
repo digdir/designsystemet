@@ -73,7 +73,7 @@ export function makeTokenCommands({ createDesignTokens, buildCss }: TokenCommand
         clean,
         verbose,
         // Tailwind v3 is the only version the deprecated flag has ever generated
-        tailwind: experimentalTailwind && 3,
+        tailwind: experimentalTailwind && 'v3',
       });
     });
 

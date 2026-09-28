@@ -92,16 +92,16 @@ Static "always-on" classes that add Designsystemet's focus ring around the eleme
 Designsystemet's [command line tool](/en/fundamentals/code/cli-config) can generate a Tailwind theme file next to your regular theme CSS,
 so Tailwind utilities use Designsystemet's design tokens instead of Tailwind's default scales.
 
-Set `tailwind` on the `css` output in your config file to the Tailwind version you use, `4` (default) or `3`.
+Set `tailwind` on the `css` output in your config file to the Tailwind version you use, `"v4"` (default) or `"v3"`.
 For every `<theme>.css` you will then also get a `<theme>.tailwind.css`. Set `tailwind` to `false` if you do not use Tailwind.
 
 ```json
 {
-  "output": ["design-tokens", { "type": "css", "tailwind": 4 }]
+  "output": ["design-tokens", { "type": "css", "tailwind": "v4" }]
 }
 ```
 
-The default theme in `@digdir/designsystemet-css` is built with `3`.
+The default theme in `@digdir/designsystemet-css` is built with `"v3"`.
 
 ### Add the theme to Tailwind
 
@@ -153,7 +153,7 @@ Values outside our scale still fall back to Tailwind's own, so `p-4` uses `--ds-
 
 ### Data attributes
 
-With `4`, the theme file uses [`@theme inline`](https://tailwindcss.com/docs/theme#referencing-other-variables), which makes utilities
+With `"v4"`, the theme file uses [`@theme inline`](https://tailwindcss.com/docs/theme#referencing-other-variables), which makes utilities
 reference the `--ds-*` variables directly. That means our data attributes also change the Tailwind utilities:
 
 ```html
@@ -164,4 +164,4 @@ reference the `--ds-*` variables directly. That means our data attributes also c
 ```
 
 This works for `data-color`, `data-color-scheme` and `data-size`, on any element and at any depth.
-With `3`, only the colours set by `data-color` follow the data attributes.
+With `"v3"`, only the colours set by `data-color` follow the data attributes.

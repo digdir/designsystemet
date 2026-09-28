@@ -93,16 +93,16 @@ Statiske "alltid på" klasser som legger til Designsystemets fokusring rundt ele
 Designsystemets [kommandolinjeverktøy](/no/fundamentals/code/cli-config) kan generere en Tailwind-temafil ved siden av den vanlige tema-CSS-en,
 slik at Tailwind sine utilities bruker Designsystemets design tokens i stedet for Tailwind sine standardskalaer.
 
-Sett `tailwind` på `css`-outputen i konfigurasjonsfilen din til Tailwind-versjonen du bruker, `4` (standard) eller `3`.
+Sett `tailwind` på `css`-outputen i konfigurasjonsfilen din til Tailwind-versjonen du bruker, `"v4"` (standard) eller `"v3"`.
 For hver `<tema>.css` får du da også en `<tema>.tailwind.css`. Sett `tailwind` til `false` hvis du ikke bruker Tailwind.
 
 ```json
 {
-  "output": ["design-tokens", { "type": "css", "tailwind": 4 }]
+  "output": ["design-tokens", { "type": "css", "tailwind": "v4" }]
 }
 ```
 
-Standardtemaet i `@digdir/designsystemet-css` er bygget med `3`.
+Standardtemaet i `@digdir/designsystemet-css` er bygget med `"v3"`.
 
 ### Legg temaet inn i Tailwind
 
@@ -154,7 +154,7 @@ Verdier utenfor vår skala faller fortsatt tilbake til Tailwind sine egne, så `
 
 ### Dataattributter
 
-Med `4` bruker temafilen [`@theme inline`](https://tailwindcss.com/docs/theme#referencing-other-variables), som gjør at utilities
+Med `"v4"` bruker temafilen [`@theme inline`](https://tailwindcss.com/docs/theme#referencing-other-variables), som gjør at utilities
 refererer direkte til `--ds-*`-variablene. Det betyr at dataattributtene våre også endrer Tailwind sine utilities:
 
 ```html
@@ -165,4 +165,4 @@ refererer direkte til `--ds-*`-variablene. Det betyr at dataattributtene våre o
 ```
 
 Dette fungerer for `data-color`, `data-color-scheme` og `data-size`, på alle elementer og på alle nivåer.
-Med `3` er det bare fargene satt med `data-color` som følger dataattributtene.
+Med `"v3"` er det bare fargene satt med `data-color` som følger dataattributtene.
