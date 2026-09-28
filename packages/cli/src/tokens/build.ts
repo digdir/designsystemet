@@ -43,7 +43,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processe
   files = [...declarationFiles, ...cssFiles];
 
   if (options.tailwind) {
-    const tailwindFiles = createTailwindCSSFiles(cssFiles);
+    const tailwindFiles = createTailwindCSSFiles(cssFiles, options.tailwind);
     files = files.concat(tailwindFiles.filter(Boolean) as OutputFile[]);
   }
 

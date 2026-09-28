@@ -1,14 +1,30 @@
 import type { OutputFile } from '../../types.ts';
 
-export const createTailwindCSSFiles = (cssFiles: OutputFile[]): OutputFile[] => {
-  console.log('\n🍱 Creating Tailwind Config');
+/** Tailwind CSS major versions a theme file can be generated for. */
+export type TailwindVersion = 3 | 4;
+
+/** Tailwind theme namespaces, mapped to their CSS variable prefix */
+const namespaces = {
+  color: '--color-',
+  opacity: '--opacity-',
+  shadow: '--shadow-',
+  fontWeight: '--font-weight-',
+  radius: '--radius-',
+  text: '--text-',
+  spacing: '--spacing-',
+} as const;
+
+type TailwindToken = { namespace: keyof typeof namespaces; key: string; token: string };
+
+export const createTailwindCSSFiles = (cssFiles: OutputFile[], version: TailwindVersion): OutputFile[] => {
+  console.log(`\n🍱 Creating Tailwind v${version} Config`);
   return cssFiles
     .map((file) => {
       if (file.destination) {
-        const tailwindConfig = generateTailwind(file.output);
+        const tokens = scrapeTailwindTokens(file.output);
         const tailwindFile = {
           destination: file.destination.replace('.css', '.tailwind.css'),
-          output: tailwindConfig,
+          output: version === 3 ? generateTailwindV3(tokens) : generateTailwindV4(tokens),
         };
         return tailwindFile;
       }
@@ -17,32 +33,51 @@ export const createTailwindCSSFiles = (cssFiles: OutputFile[]): OutputFile[] => 
     .filter((item) => item !== undefined);
 };
 
-const generateTailwind = (css: string): string => {
-  const tailwind: string[] = ['--font-sans: var(--ds-font-family)'];
+/** Scrapes the tokens relevant for Tailwind from the theme CSS */
+const scrapeTailwindTokens = (css: string): TailwindToken[] => {
+  const tailwind: TailwindToken[] = [];
   const tokens = Array.from(new Set(css.match(/--ds-[^:)]+/g)), (m) => m).sort((a, b) =>
     a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }),
   );
 
-  // Scrape tokens relevant for Tailwind
   for (const token of tokens) {
     if (token.startsWith('--ds-color-') && !token.startsWith('--ds-color-focus')) {
-      tailwind.push(`--color-${token.replace('--ds-color-', '')}: var(${token})`);
+      tailwind.push({ namespace: 'color', key: token.replace('--ds-color-', ''), token });
     } else if (token.startsWith('--ds-opacity-')) {
-      tailwind.push(`--opacity-${token.replace('--ds-opacity-', '')}: var(${token})`); // Sets --ds-opacity-disabled
+      tailwind.push({ namespace: 'opacity', key: token.replace('--ds-opacity-', ''), token }); // Sets --ds-opacity-disabled
     } else if (token.startsWith('--ds-shadow-')) {
-      tailwind.push(`--shadow-${token.replace('--ds-shadow-', '')}: var(${token})`);
+      tailwind.push({ namespace: 'shadow', key: token.replace('--ds-shadow-', ''), token });
     } else if (token.startsWith('--ds-font-weight-')) {
-      tailwind.push(`--font-weight-${token.replace('--ds-font-weight-', '')}: var(${token})`);
+      tailwind.push({ namespace: 'fontWeight', key: token.replace('--ds-font-weight-', ''), token });
     } else if (token.match(/--ds-border-radius-(sm|md|lg|xl)/)) {
       // Not including "full" as this crashes with Tailwind
-      tailwind.push(`--radius-${token.replace('--ds-border-radius-', '')}: var(${token})`);
+      tailwind.push({ namespace: 'radius', key: token.replace('--ds-border-radius-', ''), token });
     } else if (token.match(/--ds-body-(sm|mg|lg)-body-font-size/)) {
-      tailwind.push(`--text-${token.replace('--ds-body-', '').replace('-font-size', '')}: var(${token})`);
+      tailwind.push({ namespace: 'text', key: token.replace('--ds-body-', '').replace('-font-size', ''), token });
     } else if (token.match(/^--ds-size-\d+$/)) {
-      tailwind.push(`--spacing-${token.replace('--ds-size-', '')}: var(${token})`);
+      tailwind.push({ namespace: 'spacing', key: token.replace('--ds-size-', ''), token });
     }
   }
 
+  return tailwind;
+};
+
+const toThemeVariables = (tokens: TailwindToken[]): string =>
+  [
+    '--font-sans: var(--ds-font-family)',
+    ...tokens.map(({ namespace, key, token }) => `${namespaces[namespace]}${key}: var(${token})`),
+  ]
+    .map((str) => `\n  ${str};`)
+    .join('');
+
+/**
+ * `inline` makes utilities reference the `--ds-*` variables directly, so data attributes like `data-color`
+ * also apply to utilities.
+ * @see https://tailwindcss.com/docs/theme#referencing-other-variables
+ */
+const generateTailwindV4 = (tokens: TailwindToken[]): string => `@theme inline {${toThemeVariables(tokens)}\n}\n`;
+
+const generateTailwindV3 = (tokens: TailwindToken[]): string => {
   // Make [data-colors] dynamically change also Tailwind colors
   const dynamicColors = `[data-color] {
       --color-background-default: var(--ds-color-background-default);
@@ -63,5 +98,5 @@ const generateTailwind = (css: string): string => {
       --color-base-contrast-default: var(--ds-color-base-contrast-default);
     }`;
 
-  return `@theme {${tailwind.map((str) => `\n  ${str};`).join('')}\n}\n${dynamicColors}`;
+  return `@theme {${toThemeVariables(tokens)}\n}\n${dynamicColors}`;
 };
