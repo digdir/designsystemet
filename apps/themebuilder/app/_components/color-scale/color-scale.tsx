@@ -19,7 +19,7 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
           data-dynamic-color
           style={
             {
-              '--ds-color-base': colorScale.light['base-default'].hex,
+              '--ds-color': colorScale.light['base-default'].hex,
             } as React.CSSProperties
           }
         >

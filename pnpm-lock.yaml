@@ -655,9 +655,6 @@ importers:
       '@asamuzakjp/css-color':
         specifier: ^7.0.0
         version: 7.0.0
-      '@csstools/css-color-parser':
-        specifier: ^4.2.3
-        version: 4.2.3(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
       '@types/chroma-js':
         specifier: 3.1.2
         version: 3.1.2
@@ -670,9 +667,6 @@ importers:
       '@types/ramda':
         specifier: 0.32.0
         version: 0.32.0
-      postcss-selector-parser:
-        specifier: ^7.1.6
-        version: 7.1.6
       postcss-value-parser:
         specifier: ^4.2.0
         version: 4.2.0
