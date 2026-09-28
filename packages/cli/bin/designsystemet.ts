@@ -36,7 +36,13 @@ const figletAscii = `
                     |___/           |___/
 `;
 
-program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
+program
+  .name('designsystemet')
+  .description('CLI for working with Designsystemet')
+  .showHelpAfterError()
+  // The root command and its subcommands share option names (e.g. --config, --skip-check),
+  // so only parse root options before the subcommand, leaving the rest to the subcommand.
+  .enablePositionalOptions();
 program.hook('preAction', () => console.log(figletAscii));
 program.version(pkg.version, '-v, --version', 'Display version number').helpOption('-h, --help', 'Display help');
 
