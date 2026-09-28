@@ -46,7 +46,7 @@ program
   .addOption(dryOption())
   .addOption(verboseOption())
   .option('--skip-check', 'Skip migration check', false)
-  .option('-y, --yes', 'Skip user prompts', false)
+  .option('-y, --yes', 'Skip migration prompts and auto accept', false)
   .action(async (opts) => {
     const { verbose, dry } = opts;
 
