@@ -117,6 +117,7 @@
         "type": "object",
         "properties": {
           "colors": {
+            "description": "Defines the colors for this theme",
             "type": "object",
             "propertyNames": {
               "type": "string",
@@ -127,8 +128,7 @@
               "description": "A hex color, which is used for creating a color scale.",
               "type": "string",
               "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
-            },
-            "description": "Defines the colors for this theme"
+            }
           },
           "typography": {
             "default": {},

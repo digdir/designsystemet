@@ -19,7 +19,6 @@ import { formatThemeCSS } from '../src/tokens/format.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
 import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
-import { toColorNames } from '../src/tokens/utils.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
 import { isSameOrInside } from '../src/utils/paths.ts';
 import { DEFAULT_CONFIG_FILEPATH, getConfigFile, requireThemes } from './config.ts';
@@ -264,7 +263,7 @@ async function createDesignTokens({
   const files: OutputFile[] = [];
 
   // Pick colors and size from first theme since we have a constraint they should be the same across themes.
-  const colorNames = toColorNames(themes[themeNames[0]]?.colors);
+  const colorNames = Object.keys(themes[themeNames[0]].colors);
   const tokenSetDimensions = getTokenSetDimensions(themes[themeNames[0]]);
 
   for (const [name, themeConfig] of Object.entries(themes)) {
