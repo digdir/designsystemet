@@ -181,7 +181,7 @@ program
         // All themes have the same color names (checked during validation), so the first theme is enough.
         const files =
           tokensDir === undefined
-            ? createTypes(Object.keys(Object.values(config.themes)[0].colors))
+            ? createTypes(Object.keys(Object.values(requireThemes(config))[0].colors))
             : await createTypesFromTokens(path.join(dsfs.outDir, tokensDir));
 
         await dsfs.mkdir(outDir);

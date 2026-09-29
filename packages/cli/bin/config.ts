@@ -20,7 +20,7 @@ export function requireThemes(config: Pick<ConfigSchema, 'themes'>): ConfigSchem
   if (!config.themes) {
     console.error(
       pc.redBright(
-        `No themes found in config file. Add ${pc.blue('themes')}, or set ${pc.blue('tokensDir')} on the ${pc.blue('css')} output to build CSS from existing design tokens.`,
+        `No themes found in config file. Add ${pc.blue('themes')}, or set ${pc.blue('tokensDir')} on the ${pc.blue('css')} or ${pc.blue('types')} outputs to build them from existing design tokens.`,
       ),
     );
     process.exit(1);
