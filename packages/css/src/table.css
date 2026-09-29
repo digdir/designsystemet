@@ -17,7 +17,7 @@
   --dsc-table-padding: var(--ds-size-2) var(--ds-size-3);
   --dsc-table-sort-size: var(--ds-icon-size);
   --dsc-table-vertical-align: middle;
-  --_dsc-table-border-radius--inner: calc(var(--dsc-table-border-radius) - var(--dsc-table-border-width)); /* Shrink border radius to match border-width */
+  --_dsc-table-border-radius--inner: max(0px, var(--dsc-table-border-radius) - var(--dsc-table-border-width)); /* Shrink border radius to match border-width */
 
   border-collapse: separate; /* Using separate mode to enable border-radius */
   border-spacing: 0;
@@ -38,6 +38,28 @@
     border-color: var(--dsc-table-border-color);
     padding: var(--dsc-table-padding);
     text-align: inherit;
+  }
+
+  /* Enable inheriting rounding corners */
+  & > :is(thead, tbody, tfoot) > tr:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    & > :first-child {
+      border-top-left-radius: inherit;
+    }
+    & > :last-child {
+      border-top-right-radius: inherit;
+    }
+  }
+  & > :is(thead, tbody, tfoot) > tr:last-child {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    & > :first-child {
+      border-bottom-left-radius: inherit;
+    }
+    & > :last-child {
+      border-bottom-right-radius: inherit;
+    }
   }
 
   & th {
@@ -86,6 +108,7 @@
       background: none;
       border: 0;
       box-sizing: border-box;
+      border-radius: inherit; /* Inherit border-radius to prevent bleading out of first row with radius */
       color: inherit;
       cursor: pointer;
       font: inherit;
@@ -126,7 +149,7 @@
       mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
     }
 
-    &:not([aria-sort='none']) > button {
+    &:not([aria-sort='none']) {
       background: var(--dsc-table-header-background--sorted);
     }
   }
@@ -140,43 +163,22 @@
     border-style: var(--dsc-table-border-style);
     border-color: var(--dsc-table-border-color);
 
-    & > :last-child > tr:last-child > :is(th, td) {
+    & > tbody:last-of-type > tr:last-child > :is(th, td) {
       border-bottom: none; /* Skip last border-bottom when <table> has border */
     }
 
-    /* Add rounded border to first and last row */
-
-    &
-      > :is(
-        thead:first-of-type /* If first <thead>, but using :first-of-type to support <caption> */,
-        :not(:has(thead)) tbody:first-of-type /* If <tbody> is :first-of-type and not followed by <thead> */
-      )
-      > tr:first-child
-      > :is(th, td) {
-      &:first-child {
-        border-top-left-radius: var(--_dsc-table-border-radius--inner);
-      }
-
-      &:last-child {
-        border-top-right-radius: var(--_dsc-table-border-radius--inner);
-      }
+    /* Add rounding to first row */
+    & > thead:first-of-type /* If first <thead>, but using :first-of-type to support <caption> */,
+    &:not(:has(thead)) > tbody:first-of-type /* If <thead> is present, it will render before <tbody> */ {
+      border-top-left-radius: var(--_dsc-table-border-radius--inner);
+      border-top-right-radius: var(--_dsc-table-border-radius--inner);
     }
 
-    /* Add rounded border to last row (using :last-of-type to suppoert <caption>) */
-    &
-      > :is(
-        tfoot:last-of-type /* If first <thead>, but using :first-of-type to support <caption> */,
-        :not(:has(tfoot)) tbody:last-of-type /* If <tbody> is :first-of-type and not followed by <thead> */
-      )
-      > tr:last-child
-      > :is(th, td) {
-      &:first-child {
-        border-bottom-left-radius: var(--_dsc-table-border-radius--inner);
-      }
-
-      &:last-child {
-        border-bottom-right-radius: var(--_dsc-table-border-radius--inner);
-      }
+    /* Add rounding to last row */
+    & > tfoot:last-of-type /* If last <tfoot>, but using :last-of-type to support <caption> */,
+    &:not(:has(tfoot)) > tbody:last-of-type /* If <tfoot> is present, it will render after <tbody> */ {
+      border-bottom-left-radius: var(--_dsc-table-border-radius--inner);
+      border-bottom-right-radius: var(--_dsc-table-border-radius--inner);
     }
   }
 
@@ -207,7 +209,7 @@
       background: var(--dsc-table-background--hover);
     }
 
-    & > thead > tr > [aria-sort]:hover button {
+    & > thead > tr > [aria-sort]:hover {
       background: var(--dsc-table-header-background--hover);
     }
   }
