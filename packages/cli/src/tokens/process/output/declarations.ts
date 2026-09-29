@@ -1,11 +1,10 @@
 import pc from 'picocolors';
 import { severityColors } from '../../../schemas/defaults.ts';
 import type { OutputFile } from '../../types.ts';
-import { getThemeColors, type ProcessedThemeObject } from '../utils/getMultidimensionalThemes.ts';
 import { defaultFileHeader } from './theme.ts';
 
-export const createTypeDeclarationFiles = (processed$themes: ProcessedThemeObject[]): OutputFile[] => {
-  const colors = getThemeColors(processed$themes);
+/** Creates type declarations for the given color names, e.g. from `getThemeColors` or a validated theme's `colors`. */
+export const createTypes = (colors: string[]): OutputFile[] => {
   const typeDeclaration = createColorTypeDeclaration(colors);
   return [
     {

@@ -23,12 +23,23 @@ const cssOutputSchema = z.object({
     .describe('The Tailwind CSS major version to generate a theme file for, or `false` to not generate one'),
 });
 
+const typesOutputSchema = z.object({
+  type: z.literal('types').describe('The type of output file'),
+  dir: z.string().default('design-tokens-build').describe('The output directory'),
+  tokensDir: z
+    .string()
+    .optional()
+    .describe(
+      'The directory containing the design tokens to build type declarations from. Defaults to `dir` of the `design-tokens` output. If neither is set, type declarations are created directly from the themes',
+    ),
+});
+
 const outputObjectSchema = z
-  .union([designTokensOutputSchema, cssOutputSchema])
+  .union([designTokensOutputSchema, cssOutputSchema, typesOutputSchema])
   .describe('An object representing an output file');
 
 const outputShorthandSchema = z
-  .enum(['design-tokens', 'css'])
+  .enum(['design-tokens', 'css', 'types'])
   .describe('An output type using its default settings')
   .transform((type) => ({ type }))
   .pipe(outputObjectSchema);
@@ -44,7 +55,7 @@ const deprecatedFields = ['outDir', 'clean'] as const;
 export const outputConfigShape = {
   output: z
     .array(outputSchema)
-    .prefault(['design-tokens', 'css'])
+    .prefault(['design-tokens', 'css', 'types'])
     .describe('An array of output types. These are run in the order they are specified.'),
   /** @deprecated Use `output[].dir` instead. */
   outDir: z.string().default('design-tokens').meta({
