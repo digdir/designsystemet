@@ -13,6 +13,6 @@
   --ds-color-base-default--light: tomato;
 }
 
-[data-size='sm'] {
-  --ds-size-step: 0.8;
+[data-size='xs'] {
+  --ds-size: 2;
 }

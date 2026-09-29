@@ -596,79 +596,79 @@
         "syntax": "var(--ds-size-0)"
       },
       "1": {
-        "value": 0,
+        "value": 3,
         "syntax": "var(--ds-size-1)"
       },
       "2": {
-        "value": 1,
+        "value": 6,
         "syntax": "var(--ds-size-2)"
       },
       "3": {
-        "value": 2,
+        "value": 9,
         "syntax": "var(--ds-size-3)"
       },
       "4": {
-        "value": 3,
+        "value": 12,
         "syntax": "var(--ds-size-4)"
       },
       "5": {
-        "value": 4,
+        "value": 15,
         "syntax": "var(--ds-size-5)"
       },
       "6": {
-        "value": 4,
+        "value": 18,
         "syntax": "var(--ds-size-6)"
       },
       "7": {
-        "value": 5,
+        "value": 21,
         "syntax": "var(--ds-size-7)"
       },
       "8": {
-        "value": 6,
+        "value": 24,
         "syntax": "var(--ds-size-8)"
       },
       "9": {
-        "value": 7,
+        "value": 27,
         "syntax": "var(--ds-size-9)"
       },
       "10": {
-        "value": 8,
+        "value": 30,
         "syntax": "var(--ds-size-10)"
       },
       "11": {
-        "value": 8,
+        "value": 33,
         "syntax": "var(--ds-size-11)"
       },
       "12": {
-        "value": 9,
+        "value": 36,
         "syntax": "var(--ds-size-12)"
       },
       "13": {
-        "value": 10,
+        "value": 39,
         "syntax": "var(--ds-size-13)"
       },
       "14": {
-        "value": 11,
+        "value": 42,
         "syntax": "var(--ds-size-14)"
       },
       "15": {
-        "value": 12,
+        "value": 45,
         "syntax": "var(--ds-size-15)"
       },
       "18": {
-        "value": 14,
+        "value": 54,
         "syntax": "var(--ds-size-18)"
       },
       "22": {
-        "value": 17,
+        "value": 66,
         "syntax": "var(--ds-size-22)"
       },
       "26": {
-        "value": 20,
+        "value": 78,
         "syntax": "var(--ds-size-26)"
       },
       "30": {
-        "value": 24,
+        "value": 90,
         "syntax": "var(--ds-size-30)"
       }
     },
@@ -760,79 +760,161 @@
         "syntax": "var(--ds-size-0)"
       },
       "1": {
-        "value": 4,
+        "value": 5,
         "syntax": "var(--ds-size-1)"
       },
       "2": {
-        "value": 9,
+        "value": 10,
         "syntax": "var(--ds-size-2)"
       },
       "3": {
-        "value": 13,
+        "value": 15,
         "syntax": "var(--ds-size-3)"
       },
       "4": {
-        "value": 18,
+        "value": 20,
         "syntax": "var(--ds-size-4)"
       },
       "5": {
-        "value": 23,
+        "value": 25,
         "syntax": "var(--ds-size-5)"
       },
       "6": {
-        "value": 27,
+        "value": 30,
         "syntax": "var(--ds-size-6)"
       },
       "7": {
-        "value": 32,
+        "value": 35,
         "syntax": "var(--ds-size-7)"
       },
       "8": {
-        "value": 37,
+        "value": 40,
         "syntax": "var(--ds-size-8)"
       },
       "9": {
-        "value": 41,
+        "value": 45,
         "syntax": "var(--ds-size-9)"
       },
       "10": {
-        "value": 46,
+        "value": 50,
         "syntax": "var(--ds-size-10)"
       },
       "11": {
-        "value": 51,
+        "value": 55,
         "syntax": "var(--ds-size-11)"
       },
       "12": {
-        "value": 55,
+        "value": 60,
         "syntax": "var(--ds-size-12)"
       },
       "13": {
-        "value": 60,
+        "value": 65,
         "syntax": "var(--ds-size-13)"
       },
       "14": {
-        "value": 65,
+        "value": 70,
         "syntax": "var(--ds-size-14)"
       },
       "15": {
-        "value": 69,
+        "value": 75,
         "syntax": "var(--ds-size-15)"
       },
       "18": {
-        "value": 83,
+        "value": 90,
         "syntax": "var(--ds-size-18)"
       },
       "22": {
-        "value": 102,
+        "value": 110,
         "syntax": "var(--ds-size-22)"
       },
       "26": {
-        "value": 121,
+        "value": 130,
         "syntax": "var(--ds-size-26)"
       },
       "30": {
-        "value": 139,
+        "value": 150,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "xs": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 2,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 4,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 6,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 8,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 10,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 12,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 14,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 16,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 18,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 20,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 22,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 24,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 26,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 28,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 30,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 36,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 44,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 52,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 60,
         "syntax": "var(--ds-size-30)"
       }
     }
