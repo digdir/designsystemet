@@ -24,6 +24,7 @@ describe('new output field migration', () => {
       output: [
         { type: 'design-tokens', dir: 'tokens' },
         { type: 'css', tokensDir: 'tokens' },
+        { type: 'types', tokensDir: 'tokens' },
       ],
     });
   });
@@ -56,21 +57,19 @@ describe('new output field migration', () => {
   });
 
   // `cleanDir` defaults to `true`, so dropping `clean: false` would delete directories the user opted out of cleaning.
-  it('carries an explicit clean: false over as cleanDir: false on every output', () => {
+  it('carries an explicit clean: false over as cleanDir: false on every output that is cleaned', () => {
     expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens", "clean": false }'))).toEqual({
       output: [
         { type: 'design-tokens', dir: 'tokens', cleanDir: false },
         { type: 'css', tokensDir: 'tokens', cleanDir: false },
+        { type: 'types', tokensDir: 'tokens' },
       ],
     });
   });
 
   it('defines output for clean: false even when outDir has its default value', () => {
     const expected = {
-      output: [
-        { type: 'design-tokens', cleanDir: false },
-        { type: 'css', cleanDir: false },
-      ],
+      output: [{ type: 'design-tokens', cleanDir: false }, { type: 'css', cleanDir: false }, { type: 'types' }],
     };
 
     expect(parseJsonc(migrateToOutputField('{ "clean": false }'))).toEqual(expected);
@@ -96,6 +95,7 @@ describe('new output field migration', () => {
       output: [
         { type: 'design-tokens', dir: 'tokens' },
         { type: 'css', tokensDir: 'tokens' },
+        { type: 'types', tokensDir: 'tokens' },
       ],
     });
     expect(parseJsonc(migration.yes('{ /* default */ "outDir": "design-tokens", "themes": {} }'))).toEqual({
@@ -112,6 +112,7 @@ describe('new output field migration', () => {
         output: [
           { type: 'design-tokens', dir: '../tokens' },
           { type: 'css', tokensDir: '../tokens' },
+          { type: 'types', tokensDir: '../tokens' },
         ],
       });
     });
@@ -121,6 +122,7 @@ describe('new output field migration', () => {
         output: [
           { type: 'design-tokens', dir: '../design-tokens' },
           { type: 'css', tokensDir: '../design-tokens' },
+          { type: 'types', tokensDir: '../design-tokens' },
         ],
       });
     });
@@ -130,6 +132,7 @@ describe('new output field migration', () => {
         output: [
           { type: 'design-tokens', dir: 'tokens' },
           { type: 'css', tokensDir: 'tokens' },
+          { type: 'types', tokensDir: 'tokens' },
         ],
       });
     });

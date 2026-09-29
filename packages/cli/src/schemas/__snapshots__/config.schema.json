@@ -6,7 +6,8 @@
       "description": "An array of output types. These are run in the order they are specified.",
       "default": [
         "design-tokens",
-        "css"
+        "css",
+        "types"
       ],
       "type": "array",
       "items": {
@@ -80,6 +81,28 @@
                 "required": [
                   "type"
                 ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "types",
+                    "description": "The type of output file"
+                  },
+                  "dir": {
+                    "default": "design-tokens-build",
+                    "description": "The output directory",
+                    "type": "string"
+                  },
+                  "tokensDir": {
+                    "description": "The directory containing the design tokens to build type declarations from. Defaults to `dir` of the `design-tokens` output. If neither is set, type declarations are created directly from the themes",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type"
+                ]
               }
             ],
             "description": "An object representing an output file"
@@ -88,7 +111,8 @@
             "type": "string",
             "enum": [
               "design-tokens",
-              "css"
+              "css",
+              "types"
             ],
             "description": "An output type using its default settings"
           }

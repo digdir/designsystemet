@@ -118,8 +118,10 @@ export const toOutput = (outDir: string | undefined, { clean }: { clean?: boolea
 
   return [
     { type: 'design-tokens' as const, ...(!isDefaultDir && { dir: outDir }), ...cleanDir },
-    // CSS is built from the design tokens, so it must read them from the same directory.
+    // CSS and types are built from the design tokens, so they must read them from the same directory.
     { type: 'css' as const, ...(!isDefaultDir && { tokensDir: outDir }), ...cleanDir },
+    // `types` outputs are never cleaned, so they have no `cleanDir`.
+    { type: 'types' as const, ...(!isDefaultDir && { tokensDir: outDir }) },
   ];
 };
 
