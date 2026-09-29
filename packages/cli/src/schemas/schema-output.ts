@@ -19,7 +19,7 @@ const cssOutputSchema = z.object({
     ),
   tailwind: z
     .union([z.literal('v3'), z.literal('v4'), z.literal(false)])
-    .default('v4')
+    .default(false)
     .describe('The Tailwind CSS major version to generate a theme file for, or `false` to not generate one'),
 });
 
