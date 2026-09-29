@@ -59,7 +59,7 @@
                     "type": "string"
                   },
                   "tailwind": {
-                    "default": "v4",
+                    "default": false,
                     "description": "The Tailwind CSS major version to generate a theme file for, or `false` to not generate one",
                     "anyOf": [
                       {
