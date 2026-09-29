@@ -9,7 +9,24 @@
  * where r, g, b and alpha resolve to the channels of that function's origin color. The target
  * luminance of a step is passed to the macro through the origin's alpha channel.
  */
+
+/**
+ * Setup border radius
+ */
 :root {
+  --ds-border-radius-base: 0.25rem;
+  --ds-border-radius-scale: 0.25rem;
+  --ds-border-radius-sm: min(var(--ds-border-radius-base) * 0.5, var(--ds-border-radius-scale));
+  --ds-border-radius-md: min(var(--ds-border-radius-base), var(--ds-border-radius-scale) * 2);
+  --ds-border-radius-lg: min(var(--ds-border-radius-base) * 2, var(--ds-border-radius-scale) * 5);
+  --ds-border-radius-xl: min(var(--ds-border-radius-base) * 3, var(--ds-border-radius-scale) * 7);
+}
+
+/**
+ * Setup colors
+ */
+:root,
+[data-color] {
   /* Relative luminance of the origin */
   --_luminance: calc(0.2126 * r + 0.7152 * g + 0.0722 * b);
 
@@ -57,68 +74,6 @@
   /* L* offset for base-contrast-subtle: 60 (50 when 40 < L* < 60), toward the higher-contrast pole */
   --_contrast-subtle-step: calc((60 - 10 * clamp(0, (var(--_lightness) - 40) * (60 - var(--_lightness)) * infinity, 1)) * (2 * var(--_wcag-white) - 1));
 
-  --ds-border-radius-base: 0.25rem;
-  --ds-border-radius-scale: 0.25rem;
-  --ds-border-radius-sm: min(var(--ds-border-radius-base) * 0.5, var(--ds-border-radius-scale));
-  --ds-border-radius-md: min(var(--ds-border-radius-base), var(--ds-border-radius-scale) * 2);
-  --ds-border-radius-lg: min(var(--ds-border-radius-base) * 2, var(--ds-border-radius-scale) * 5);
-  --ds-border-radius-xl: min(var(--ds-border-radius-base) * 3, var(--ds-border-radius-scale) * 7);
-}
-
-:root,
-[data-size] {
-  --ds-size: 1.125;
-  --ds-size-base: 18;
-  --ds-size-step: 4;
-  --ds-size-unit: calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size));
-
-  --ds-size-0: calc(var(--ds-size-unit) * 0);
-  --ds-size-1: calc(var(--ds-size-unit) * 1);
-  --ds-size-2: calc(var(--ds-size-unit) * 2);
-  --ds-size-3: calc(var(--ds-size-unit) * 3);
-  --ds-size-4: calc(var(--ds-size-unit) * 4);
-  --ds-size-5: calc(var(--ds-size-unit) * 5);
-  --ds-size-6: calc(var(--ds-size-unit) * 6);
-  --ds-size-7: calc(var(--ds-size-unit) * 7);
-  --ds-size-8: calc(var(--ds-size-unit) * 8);
-  --ds-size-9: calc(var(--ds-size-unit) * 9);
-  --ds-size-10: calc(var(--ds-size-unit) * 10);
-  --ds-size-11: calc(var(--ds-size-unit) * 11);
-  --ds-size-12: calc(var(--ds-size-unit) * 12);
-  --ds-size-13: calc(var(--ds-size-unit) * 13);
-  --ds-size-14: calc(var(--ds-size-unit) * 14);
-  --ds-size-15: calc(var(--ds-size-unit) * 15);
-  --ds-size-18: calc(var(--ds-size-unit) * 18);
-  --ds-size-22: calc(var(--ds-size-unit) * 22);
-  --ds-size-26: calc(var(--ds-size-unit) * 26);
-  --ds-size-30: calc(var(--ds-size-unit) * 30);
-
-  @supports (width: round(down, 0.1em, 1px)) {
-    --ds-size-0: round(down, calc(var(--ds-size-unit) * 0), 1px);
-    --ds-size-1: round(down, calc(var(--ds-size-unit) * 1), 1px);
-    --ds-size-2: round(down, calc(var(--ds-size-unit) * 2), 1px);
-    --ds-size-3: round(down, calc(var(--ds-size-unit) * 3), 1px);
-    --ds-size-4: round(down, calc(var(--ds-size-unit) * 4), 1px);
-    --ds-size-5: round(down, calc(var(--ds-size-unit) * 5), 1px);
-    --ds-size-6: round(down, calc(var(--ds-size-unit) * 6), 1px);
-    --ds-size-7: round(down, calc(var(--ds-size-unit) * 7), 1px);
-    --ds-size-8: round(down, calc(var(--ds-size-unit) * 8), 1px);
-    --ds-size-9: round(down, calc(var(--ds-size-unit) * 9), 1px);
-    --ds-size-10: round(down, calc(var(--ds-size-unit) * 10), 1px);
-    --ds-size-11: round(down, calc(var(--ds-size-unit) * 11), 1px);
-    --ds-size-12: round(down, calc(var(--ds-size-unit) * 12), 1px);
-    --ds-size-13: round(down, calc(var(--ds-size-unit) * 13), 1px);
-    --ds-size-14: round(down, calc(var(--ds-size-unit) * 14), 1px);
-    --ds-size-15: round(down, calc(var(--ds-size-unit) * 15), 1px);
-    --ds-size-18: round(down, calc(var(--ds-size-unit) * 18), 1px);
-    --ds-size-22: round(down, calc(var(--ds-size-unit) * 22), 1px);
-    --ds-size-26: round(down, calc(var(--ds-size-unit) * 26), 1px);
-    --ds-size-30: round(down, calc(var(--ds-size-unit) * 30), 1px);
-  }
-}
-
-:root,
-[data-color] {
   /* Base color per scheme, as srgb-linear so later stages need no conversion. Dark mode desaturates it before the
      scale is derived. Channels are floored at 0: the conversion can leave tiny negative residues that would make sqrt() NaN */
   --_light: color(from var(--ds-color) srgb-linear max(0, r) max(0, g) max(0, b));
@@ -229,6 +184,73 @@
   --ds-color-base-active: light-dark(var(--ds-color-base-active--light), var(--ds-color-base-active--dark));
   --ds-color-base-contrast-subtle: light-dark(var(--ds-color-base-contrast-subtle--light), var(--ds-color-base-contrast-subtle--dark));
   --ds-color-base-contrast-default: light-dark(var(--ds-color-base-contrast-default--light), var(--ds-color-base-contrast-default--dark));
+}
+
+/* Default colors */
+[data-size='danger'] {
+  --ds-color: #c01b1b;
+}
+[data-size='warning'] {
+  --ds-color: #ea9b1b;
+}
+[data-size='success'] {
+  --ds-color: #068718;
+}
+[data-size='info'] {
+  --ds-color: #0a71c0;
+}
+
+/**
+ * Setup sizes
+ */
+:root,
+[data-size] {
+  --ds-size-size: 4;
+  --ds-size-step: calc(1rem / 16 * var(--ds-size-size));
+
+  --ds-size-0: calc(var(--ds-size-step) * 0);
+  --ds-size-1: calc(var(--ds-size-step) * 1);
+  --ds-size-2: calc(var(--ds-size-step) * 2);
+  --ds-size-3: calc(var(--ds-size-step) * 3);
+  --ds-size-4: calc(var(--ds-size-step) * 4);
+  --ds-size-5: calc(var(--ds-size-step) * 5);
+  --ds-size-6: calc(var(--ds-size-step) * 6);
+  --ds-size-7: calc(var(--ds-size-step) * 7);
+  --ds-size-8: calc(var(--ds-size-step) * 8);
+  --ds-size-9: calc(var(--ds-size-step) * 9);
+  --ds-size-10: calc(var(--ds-size-step) * 10);
+  --ds-size-11: calc(var(--ds-size-step) * 11);
+  --ds-size-12: calc(var(--ds-size-step) * 12);
+  --ds-size-13: calc(var(--ds-size-step) * 13);
+  --ds-size-14: calc(var(--ds-size-step) * 14);
+  --ds-size-15: calc(var(--ds-size-step) * 15);
+  --ds-size-18: calc(var(--ds-size-step) * 18);
+  --ds-size-22: calc(var(--ds-size-step) * 22);
+  --ds-size-26: calc(var(--ds-size-step) * 26);
+  --ds-size-30: calc(var(--ds-size-step) * 30);
+
+  @supports (width: round(down, 0.1em, 1px)) {
+    --ds-size-0: round(down, calc(var(--ds-size-step) * 0), 1px);
+    --ds-size-1: round(down, calc(var(--ds-size-step) * 1), 1px);
+    --ds-size-2: round(down, calc(var(--ds-size-step) * 2), 1px);
+    --ds-size-3: round(down, calc(var(--ds-size-step) * 3), 1px);
+    --ds-size-4: round(down, calc(var(--ds-size-step) * 4), 1px);
+    --ds-size-5: round(down, calc(var(--ds-size-step) * 5), 1px);
+    --ds-size-6: round(down, calc(var(--ds-size-step) * 6), 1px);
+    --ds-size-7: round(down, calc(var(--ds-size-step) * 7), 1px);
+    --ds-size-8: round(down, calc(var(--ds-size-step) * 8), 1px);
+    --ds-size-9: round(down, calc(var(--ds-size-step) * 9), 1px);
+    --ds-size-10: round(down, calc(var(--ds-size-step) * 10), 1px);
+    --ds-size-11: round(down, calc(var(--ds-size-step) * 11), 1px);
+    --ds-size-12: round(down, calc(var(--ds-size-step) * 12), 1px);
+    --ds-size-13: round(down, calc(var(--ds-size-step) * 13), 1px);
+    --ds-size-14: round(down, calc(var(--ds-size-step) * 14), 1px);
+    --ds-size-15: round(down, calc(var(--ds-size-step) * 15), 1px);
+    --ds-size-18: round(down, calc(var(--ds-size-step) * 18), 1px);
+    --ds-size-22: round(down, calc(var(--ds-size-step) * 22), 1px);
+    --ds-size-26: round(down, calc(var(--ds-size-step) * 26), 1px);
+    --ds-size-30: round(down, calc(var(--ds-size-step) * 30), 1px);
+  }
 }
 
 /* Default sizes */

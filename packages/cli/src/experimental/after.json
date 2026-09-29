@@ -262,6 +262,334 @@
     }
   },
   "size": {
+    "danger": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 4,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 8,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 12,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 16,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 20,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 24,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 28,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 32,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 36,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 40,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 44,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 48,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 52,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 56,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 60,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 72,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 88,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 104,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 120,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "warning": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 4,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 8,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 12,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 16,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 20,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 24,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 28,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 32,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 36,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 40,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 44,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 48,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 52,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 56,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 60,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 72,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 88,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 104,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 120,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "success": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 4,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 8,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 12,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 16,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 20,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 24,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 28,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 32,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 36,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 40,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 44,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 48,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 52,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 56,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 60,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 72,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 88,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 104,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 120,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "info": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 4,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 8,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 12,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 16,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 20,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 24,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 28,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 32,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 36,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 40,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 44,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 48,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 52,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 56,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 60,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 72,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 88,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 104,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 120,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
     "sm": {
       "0": {
         "value": 0,
