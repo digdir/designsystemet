@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-**Alert, Errorsummary, Table:** Revert `border-radius` from `--ds-border-radius-lg` to `--ds-border-radius-md` to harmonize with sibling elements
+**Alert, Error summary, Table:** Revert `border-radius` from `--ds-border-radius-lg` to `--ds-border-radius-md` to harmonize with sibling elements
