@@ -1,6 +1,7 @@
 import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.ts';
+import { toOutput } from '../migrations/new-output-field.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { dsfs } from '../utils/filesystem.ts';
 
@@ -189,6 +190,7 @@ function extractColors(themeTokens: TokenObject, themeName: string): Record<stri
 
 type GenerateConfigOptions = {
   tokensDir: string;
+  /** Path of the config file. Paths in the generated config are relative to it. */
   outFile?: string;
 };
 
@@ -196,7 +198,7 @@ type GenerateConfigOptions = {
  * Generates a config file from existing design tokens
  */
 export async function generateConfigFromTokens(options: GenerateConfigOptions): Promise<ExternalConfigSchemaInput> {
-  const { tokensDir } = options;
+  const { tokensDir, outFile } = options;
 
   console.log(`\nReading tokens from ${pc.blue(tokensDir)}`);
 
@@ -210,9 +212,15 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
   console.log(`\nFound ${pc.green(String(themes.length))} theme(s): ${themes.map((t) => pc.cyan(t)).join(', ')}`);
 
   // Generate config for each theme
+  // Paths in a config are relative to the config file, and always use forward slashes so the config works on any OS.
+  const configDir = outFile ? path.dirname(path.resolve(outFile)) : process.cwd();
+  const relativeTokensDir = (path.relative(configDir, path.resolve(tokensDir)) || '.').split(path.sep).join('/');
+
   const configThemes: NonNullable<ExternalConfigSchemaInput['themes']> = {};
+  const output = toOutput(relativeTokensDir);
   const config: ExternalConfigSchemaInput = {
-    outDir: tokensDir,
+    // Omitted when the tokens are in the default directory, since the default `output` covers it.
+    ...(output && { output: [...output] }),
     themes: configThemes,
   };
 
