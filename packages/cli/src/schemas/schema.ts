@@ -221,7 +221,8 @@ export const themesSchema = z
   .meta({
     description:
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names, size configuration, shadows, border widths, opacities, border-radius step names and typography sets.',
-  });
+  })
+  .optional();
 
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
 /** The pre-validation shape of a theme, i.e. what users write: defaulted fields are optional. */
@@ -234,6 +235,9 @@ export const configSchema = z.object({
 });
 
 export type ConfigSchema = z.infer<typeof configSchema>;
+
+/** The themes of a config. `themes` is optional, since it's only needed by outputs that are created from themes. */
+export type ConfigSchemaThemes = NonNullable<ConfigSchema['themes']>;
 
 export type ConfigSchemaInput = z.input<typeof configSchema>;
 
@@ -269,10 +273,14 @@ const externalThemeSchema = themeObjectSchema
  * use {@link configSchema} to validate a config in the CLI.
  */
 export const externalConfigSchema = configSchema.extend({
-  themes: z.record(z.string(), externalThemeSchema).superRefine(checkThemes).meta({
-    description:
-      'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names.',
-  }),
+  themes: z
+    .record(z.string(), externalThemeSchema)
+    .superRefine(checkThemes)
+    .meta({
+      description:
+        'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names.',
+    })
+    .optional(),
 });
 
 export type ExternalConfigSchema = z.infer<typeof externalConfigSchema>;

@@ -4,6 +4,7 @@ import * as R from 'ramda';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
 import {
   type ConfigSchema,
+  type ConfigSchemaThemes,
   configSchema,
   type ExternalConfigSchema,
   externalConfigSchema,
@@ -13,6 +14,20 @@ import { dsfs } from '../src/utils/filesystem.ts';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.ts';
 
 export { deprecatedCLIOptions } from '../src/schemas/helpers.ts';
+
+/** Returns the themes of a validated config, or exits with an error if there are none. */
+export function requireThemes(config: Pick<ConfigSchema, 'themes'>): ConfigSchemaThemes {
+  if (!config.themes) {
+    console.error(
+      pc.redBright(
+        `No themes found in config file. Add ${pc.blue('themes')}, or set ${pc.blue('tokenDir')} on the ${pc.blue('css')} output to build CSS from existing design tokens.`,
+      ),
+    );
+    process.exit(1);
+  }
+
+  return config.themes;
+}
 
 // Default config files to auto-detect when no --config is supplied, in order of precedence.
 export const DEFAULT_CONFIG_FILEPATHS = ['designsystemet.config.json', 'designsystemet.config.jsonc'];

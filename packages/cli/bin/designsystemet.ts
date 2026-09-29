@@ -8,7 +8,7 @@ import { checkAutomigrate } from '../src/automigrate.ts';
 import migrations from '../src/migrations/index.ts';
 import { parseConfig, validateConfig } from '../src/schemas/helpers.ts';
 import {
-  type ConfigSchema,
+  type ConfigSchemaThemes,
   configSchema,
   type ExternalConfigSchemaInput,
   externalConfigSchema,
@@ -21,7 +21,7 @@ import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { toColorNames } from '../src/tokens/utils.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import { DEFAULT_CONFIG_FILEPATH, getConfigFile } from './config.ts';
+import { DEFAULT_CONFIG_FILEPATH, getConfigFile, requireThemes } from './config.ts';
 import { DEFAULT_TOKENS_CREATE_DIR, makeTokenCommands } from './deprecated.ts';
 import { configOption, dryOption, verboseOption } from './options.ts';
 
@@ -85,7 +85,7 @@ program
         console.log(`\n🍱 Creating design tokens in ${pc.green(output.dir)}...`);
 
         await createDesignTokens({
-          themes: config.themes,
+          themes: requireThemes(config),
           outDir: outDir,
           clean: output.cleanDir,
         });
@@ -97,7 +97,7 @@ program
         // Only generate create CSS if no `design-tokens` output is present and no `tokenDir` is explicitly set in the config file. Otherwise, build CSS from existing design tokens.
         if (isOnlyCssOutput(parsedConfig)) {
           await createCss({
-            themes: config.themes,
+            themes: requireThemes(config),
             outDir: outDir,
             clean: output.cleanDir,
             verbose,
@@ -198,7 +198,7 @@ async function createDesignTokens({
   outDir,
   clean,
 }: {
-  themes: ConfigSchema['themes'];
+  themes: ConfigSchemaThemes;
   outDir: string;
   clean?: boolean;
 }) {
@@ -280,7 +280,7 @@ async function createCss({
   verbose,
   tailwind,
 }: {
-  themes: ConfigSchema['themes'];
+  themes: ConfigSchemaThemes;
   outDir: string;
   clean?: boolean;
   verbose: boolean;

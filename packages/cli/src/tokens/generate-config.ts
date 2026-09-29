@@ -210,9 +210,10 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
   console.log(`\nFound ${pc.green(String(themes.length))} theme(s): ${themes.map((t) => pc.cyan(t)).join(', ')}`);
 
   // Generate config for each theme
+  const configThemes: NonNullable<ExternalConfigSchemaInput['themes']> = {};
   const config: ExternalConfigSchemaInput = {
     outDir: tokensDir,
-    themes: {},
+    themes: configThemes,
   };
 
   for (const themeName of themes) {
@@ -234,7 +235,7 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
     const borderRadius = extractBorderRadius(themeConfig);
     const fontFamily = extractFontFamily(themeConfig) ?? extractFontFamilyFromPrimitives(typographyConfig, themeName);
 
-    config.themes[themeName] = {
+    configThemes[themeName] = {
       colors,
       borderRadius,
       typography: fontFamily ? { fontFamily } : undefined,
