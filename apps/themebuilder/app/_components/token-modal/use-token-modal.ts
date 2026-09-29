@@ -36,7 +36,7 @@ export const useTokenModal = () => {
     }
   });
 
-  const theme: ExternalConfigSchemaInput['themes'][string] = {
+  const theme: NonNullable<ExternalConfigSchemaInput['themes']>[string] = {
     colors: colors.reduce(
       (acc, color) => {
         acc[color.name] = color.colors.light['base-default']?.hex || '#';
