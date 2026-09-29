@@ -9,7 +9,7 @@
       "type": "css",
       "dir": "design-tokens-build",
       "cleanDir": true,
-      "tailwind": "v4"
+      "tailwind": false
     }
   ],
   "outDir": "design-tokens",

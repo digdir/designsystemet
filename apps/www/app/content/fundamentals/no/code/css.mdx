@@ -93,8 +93,8 @@ Statiske "alltid på" klasser som legger til Designsystemets fokusring rundt ele
 Designsystemets [kommandolinjeverktøy](/no/fundamentals/code/cli-config) kan generere en Tailwind-temafil ved siden av den vanlige tema-CSS-en,
 slik at Tailwind sine utilities bruker Designsystemets design tokens i stedet for Tailwind sine standardskalaer.
 
-Sett `tailwind` på `css`-outputen i konfigurasjonsfilen din til Tailwind-versjonen du bruker, `"v4"` (standard) eller `"v3"`.
-For hver `<tema>.css` får du da også en `<tema>.tailwind.css`. Sett `tailwind` til `false` hvis du ikke bruker Tailwind.
+Temafilen genereres ikke som standard. Sett `tailwind` på `css`-outputen i konfigurasjonsfilen din til Tailwind-versjonen du bruker, `"v4"` eller `"v3"`.
+For hver `<tema>.css` får du da også en `<tema>.tailwind.css`.
 
 ```json
 {
