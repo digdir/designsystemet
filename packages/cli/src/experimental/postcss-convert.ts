@@ -31,12 +31,13 @@ const REGEX_CSS_VAR_SCHEME = /^--ds-color-(.+--(light|dark))$/;
 const REGEX_MATH =
   /^(calc|min|max|clamp|round|mod|rem|abs|sign|pow|sqrt|hypot|log|exp|sin|cos|tan|asin|acos|atan|atan2)\(|^-?[\d.]+(rem|px|em)?$/i;
 
+type Token = { value: string | number; syntax: string };
 type Color = { prop: string; token: string; scheme: 'light' | 'dark'; value: string };
 
 /** JSON of computed tokens: `color.<scale>.<token>` and `size.<scale>.<step>` for scales, `<group>.<token>` for the rest */
-export type Tokens = Record<string, Record<string, string | number>> & {
-  color: Record<string, Record<string, string>>;
-  size: Record<string, Record<string, number>>;
+export type Tokens = Record<string, Record<string, Token>> & {
+  color: Record<string, Record<string, Token>>;
+  size: Record<string, Record<string, Token>>;
 };
 
 export type TokensMessage = {
@@ -73,7 +74,7 @@ const postcssConvert: PluginCreator<undefined> = () => ({
         const value = toHex(decl?.value ?? color, cssVars);
         decl?.remove(); // Avoid duplicate declaration
         rule.append({ prop, value, raws: { before: rule.last?.raws.before ?? '\n  ' } });
-        tokens.color[scaleName][token] = value; // Keyed like the CSS property: text-default--light
+        tokens.color[scaleName][token] = { value, syntax: toSyntax(prop) }; // Keyed like the CSS property: text-default--light
       });
     });
 
@@ -85,7 +86,7 @@ const postcssConvert: PluginCreator<undefined> = () => ({
         if (!step) continue;
         const computed = computeValue(value, cssVars);
         if (typeof computed !== 'number') throw new Error(`Could not compute ${prop}: ${value} (${computed})`);
-        tokens.size[scaleName][step] = computed;
+        tokens.size[scaleName][step] = { value: computed, syntax: toSyntax(prop) };
       }
     });
 
@@ -96,7 +97,7 @@ const postcssConvert: PluginCreator<undefined> = () => ({
       const key = segments.pop() ?? '';
       const group = segments.join('-') || key;
       tokens[group] ??= {};
-      tokens[group][key] = computeValue(value, globalCssVars);
+      tokens[group][key] = { value: computeValue(value, globalCssVars), syntax: toSyntax(prop) };
     }
 
     result.messages.push({
@@ -167,6 +168,8 @@ const walkSources = (
       eachRule({ rule, cssVars, match });
     });
 };
+
+const toSyntax = (prop: string) => `var(${prop})`;
 
 /** True when the rule is at the root, or directly inside a top-level `@layer` (nested layers do not count) */
 const isTopLevel = ({ parent: p }: Rule) =>
