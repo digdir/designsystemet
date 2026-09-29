@@ -68,7 +68,7 @@
 
   /* @deprecated */
   &[data-variant='square'] {
-    --dsc-avatar-radius: var(--ds-border-radius-md);
+    --dsc-avatar-radius: var(--ds-border-radius-sm);
   }
 
   /* @deprecated: backwards compatible data-size="xs" */
