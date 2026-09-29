@@ -67,7 +67,7 @@ const defaultOutDir = outputConfigShape.outDir.parse(undefined);
  * `clean` never needs to be carried over: its default is covered by the default `output`,
  * and `clean: true` matches the default `cleanDir`.
  */
-const toOutput = (outDir: string | undefined) => {
+export const toOutput = (outDir: string | undefined) => {
   if (outDir === undefined || path.posix.normalize(outDir) === path.posix.normalize(defaultOutDir)) {
     return undefined;
   }
@@ -76,7 +76,7 @@ const toOutput = (outDir: string | undefined) => {
     { type: 'design-tokens', dir: outDir },
     // CSS is built from the design tokens, so it must read them from the same directory.
     { type: 'css', tokenDir: outDir },
-  ];
+  ] as const;
 };
 
 export const migrateToOutputField = (config: string): string => {
