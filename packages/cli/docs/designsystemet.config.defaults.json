@@ -10,7 +10,6 @@
       "dir": "design-tokens-build",
       "cleanDir": true,
       "tokenDir": "design-tokens",
-      "banner": "",
       "experimental_tailwind": true
     }
   ],

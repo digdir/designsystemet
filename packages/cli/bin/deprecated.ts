@@ -3,9 +3,14 @@ import pc from 'picocolors';
 import { checkAutomigrate } from '../src/automigrate.ts';
 import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
-import type { ConfigSchema } from '../src/schemas/schema.ts';
+import type { ConfigSchemaThemes } from '../src/schemas/schema.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import { deprecatedCLIOptions as cliOptions, getConfigFile, parseValidateAndOptsConfig } from './config.ts';
+import {
+  deprecatedCLIOptions as cliOptions,
+  getConfigFile,
+  parseValidateAndOptsConfig,
+  requireThemes,
+} from './config.ts';
 import { configOption, dryOption, parseBoolean, verboseOption } from './options.ts';
 
 export const DEFAULT_TOKENS_CREATE_DIR = './design-tokens';
@@ -14,7 +19,7 @@ const DEFAULT_FONT = 'Inter';
 const DEFAULT_THEME_NAME = 'theme';
 
 type TokenCommandDeps = {
-  createDesignTokens: (options: { themes: ConfigSchema['themes']; outDir: string; clean?: boolean }) => Promise<void>;
+  createDesignTokens: (options: { themes: ConfigSchemaThemes; outDir: string; clean?: boolean }) => Promise<void>;
   buildCss: (options: {
     tokensDir: string;
     outDir: string;
@@ -145,7 +150,7 @@ export function makeTokenCommands({ createDesignTokens, buildCss }: TokenCommand
       dsfs.init({ dry: opts.dry, outdir: config.outDir });
 
       await createDesignTokens({
-        themes: config.themes,
+        themes: requireThemes(config),
         outDir: dsfs.outDir,
         clean: config.clean,
       });

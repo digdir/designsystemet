@@ -104,6 +104,10 @@ const formatTheme = async (themeConfig: Theme) => {
 // Parse the config through the schema so defaults (typography, borderRadius, size) are applied.
 const { themes } = validateConfig(configSchema, config);
 
+if (!themes) {
+  throw new Error('No themes found in designsystemet.config.json');
+}
+
 formatTheme({
   name: 'test',
   borderRadius: themes.designsystemet.borderRadius,
