@@ -41,6 +41,11 @@ body,
   background: var(--ds-color-neutral-background-default);
 }
 
+/* Ensure text color changes when swapping color mode */
+[data-color] {
+  color: var(--ds-color-text-default);
+}
+
 .ds-icon {
   display: inline-block; /* Overwrite Tailwind setting display: block on <svg> */
   flex-shrink: 0;
