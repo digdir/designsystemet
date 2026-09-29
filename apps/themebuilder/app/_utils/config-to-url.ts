@@ -6,7 +6,7 @@ const QUERY_SEPARATOR = ' ';
  * Converts a theme config object to a themebuilder URL with query parameters
  */
 export function configThemeToUrl(
-  theme: ConfigSchema['themes']['default'],
+  theme: NonNullable<ConfigSchema['themes']>[string],
   lang = 'no',
 ): string {
   const params = new URLSearchParams();
