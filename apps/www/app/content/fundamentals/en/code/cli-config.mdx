@@ -69,15 +69,15 @@ The `tokens create` and `tokens build` commands are deprecated and will be remov
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
 | $schema | String | No | Path to JSON schema for validation. Recommended: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
-| output | Array | No | What the CLI should create, and where. Defaults to `["design-tokens", "css"]`. See [Output](#output). |
-| themes | Object | Yes | Contains all themes you want to define. Each key is the name of the theme. |
+| output | Array | No | What the CLI should create, and where. Defaults to `["design-tokens", "css", "types"]`. See [Output](#output). |
+| themes | Object | No | Contains all themes you want to define. Each key is the name of the theme. Required by outputs that are created from themes, see [Building without themes](#building-without-themes). |
 | outDir | String | No | **Deprecated:** use `output[].dir` instead. |
 | clean | Boolean | No | **Deprecated:** use `output[].cleanDir` instead. |
 
 ### Output
 
 `output` is a list of what the CLI should create. Each item is either the name of an output type, which uses its default settings, or an object with custom settings.
-Design tokens are always created before CSS, since CSS is built from the design tokens.
+Outputs are always created in the order `design-tokens`, `css`, whatever order they are listed in. When CSS is built from design tokens (with `tokenDir`), the design tokens must be created first.
 
 All paths are relative to the config file.
 
@@ -106,9 +106,23 @@ All paths are relative to the config file.
 | dir | String | No | `design-tokens-build` | The folder where CSS should be saved. |
 | cleanDir | Boolean | No | `true` | Delete the folder before creating CSS. |
 
-If you only need CSS, you can use `"output": ["css"]` without `tokenDir`. The CSS is then created directly from the themes, without saving any design tokens.
-| tokenDir | String | No | `design-tokens` | The folder containing the design tokens to build CSS from. Should match `dir` of the `design-tokens` output. |
-| experimental_tailwind | Boolean | No | `true` | Also generate Tailwind CSS classes. Experimental. |
+#### Without design tokens
+
+If you only need CSS, you can use for example `"output": ["css"]` without `tokenDir`. They are then created directly from the themes, without saving any design tokens.
+
+#### Building without themes
+
+`themes` is only needed by outputs that are created from themes. If you already have design tokens, you can leave out `themes` and build from them by setting `tokenDir`:
+
+```json
+{
+  "output": [
+    { "type": "css", "tokenDir": "./design-tokens" },
+  ]
+}
+```
+
+If an output needs themes and there are none, the CLI stops with an error.
 
 ### Migrating from outDir and clean
 
@@ -119,7 +133,7 @@ If you'd rather do it manually, replace `"outDir": "<path>"` with:
 {
   "output": [
     { "type": "design-tokens", "dir": "<path>" },
-    { "type": "css", "tokenDir": "<path>" }
+    { "type": "css", "tokenDir": "<path>" },
   ]
 }
 ```

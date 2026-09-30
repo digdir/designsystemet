@@ -9,7 +9,7 @@ Read the Designsystemet [README](https://github.com/digdir/designsystemet) to ge
 
 ## Usage
 
-Use `npx @digdir/designsystemet` to create design tokens and CSS for use with Designsystemet, based on a [config file](#using-a-config-file).
+Use `npx @digdir/designsystemet` to create design tokens, CSS and type declarations for use with Designsystemet, based on a [config file](#using-a-config-file).
 
 This allows you to define themes including custom colors, font-family, and border-radius.
 We recommend using the [Designsystemet theme builder](https://theme.designsystemet.no/) for generating a valid config.
@@ -94,7 +94,7 @@ Use `output` to choose what is created and where. Each item is either an output 
   "output": [
     // defaults: dir "design-tokens", cleanDir true
     { "type": "design-tokens", "dir": "../path/to/design-tokens" },
-    // defaults: dir "design-tokens-build", tokenDir "design-tokens", cleanDir true
+    // defaults: dir "design-tokens-build", tokenDir "design-tokens", cleanDir true, tailwind false
     { "type": "css", "dir": "../path/to/css", "tokenDir": "../path/to/design-tokens" },
   ],
 }
@@ -103,6 +103,17 @@ Use `output` to choose what is created and where. Each item is either an output 
 Design tokens are always created before CSS. `tokenDir` should match the `dir` of the `design-tokens` output.
 
 If you only need CSS, use `"output": ["css"]` without `tokenDir`. The CSS is then created directly from the themes, without writing any design tokens.
+
+`themes` is only needed by outputs that are created from themes. To build CSS and types from existing design tokens, leave out `themes` and set `tokenDir`:
+
+```jsonc
+{
+  "output": [
+    { "type": "css", "tokenDir": "./design-tokens" },
+    { "type": "types", "tokenDir": "./design-tokens" },
+  ],
+}
+```
 
 The `outDir` and `clean` fields are deprecated in favour of `output`. The CLI will offer to migrate your config file automatically.
 
@@ -115,5 +126,7 @@ Have a look at the `*.config.json` files under the `packages/cli` in the Github 
 You can get a minimal config file, meaning without overrides, generated from existing design tokens using the following command:
 
 ```sh
-npx @digdir/designsystemet generate-config-from-tokens --dir <path to design tokens>
+npx @digdir/designsystemet generate-config-from-tokens --dir <path to design tokens> --out <path to config file>
 ```
+
+`--out` defaults to `designsystemet.config.json`. The generated config uses `output`, with the design tokens directory written relative to the config file.
