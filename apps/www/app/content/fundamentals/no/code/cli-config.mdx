@@ -71,14 +71,15 @@ Kommandoane `tokens create` og `tokens build` er utdaterte og blir fjerna i ein 
 | ---- | ---- | ------- | ----------- |
 | $schema | Streng | Nei | Sti til JSON schema for validering. Anbefalt: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
 | output | Liste | Nei | Kva CLI-et skal lage, og kvar. Standard er `["design-tokens", "css"]`. Sjå [Output](#output). |
-| themes | Objekt | Ja | Inneheld alle tema du vil definere. Ny nøkkel er namnet på temaet. |
+| themes | Objekt | Nei | Inneheld alle tema du vil definere. Kvar nøkkel er namnet på temaet. Påkrevd for outputar som blir laga frå tema, sjå [Bygge utan tema](#bygge-utan-tema). |
 | outDir | Streng | Nei | **Utdatert:** bruk `output[].dir` i staden. |
 | clean | Boolean | Nei | **Utdatert:** bruk `output[].cleanDir` i staden. |
 
 ### Output
 
 `output` er ei liste over kva CLI-et skal lage. Kvart element er anten namnet på ein output-type, som brukar standardinnstillingane, eller eit objekt med eigne innstillingar.
-Design tokens blir alltid laga før CSS, sidan CSS blir bygd frå design tokens.
+
+Outputane blir alltid laga i rekkjefølgja `design-tokens`, `css`, same kva rekkjefølgje dei står i. Når CSS-en blir bygd frå design tokens (med `tokenDir`), må design tokens vere laga først.
 
 Alle stiar er relative til config fila.
 
@@ -107,9 +108,23 @@ Alle stiar er relative til config fila.
 | dir | Streng | Nei | `design-tokens-build` | Mappa der CSS skal lagrast. |
 | cleanDir | Boolean | Nei | `true` | Slett mappa før CSS blir laga. |
 
-Treng du berre CSS, kan du bruke `"output": ["css"]` utan `tokenDir`. CSS-en blir då laga direkte frå tema, utan at design tokens blir lagra.
-| tokenDir | Streng | Nei | `design-tokens` | Mappa med design tokens som CSS skal byggast frå. Bør vere lik `dir` i `design-tokens`-outputen. |
-| experimental_tailwind | Boolean | Nei | `true` | Lag òg Tailwind CSS-klassar. Eksperimentelt. |
+#### Utan design tokens
+
+Treng du berre CSS, kan du bruke til dømes `"output": ["css"]` utan `tokenDir`. Dei blir då laga direkte frå tema, utan at design tokens blir lagra.
+
+#### Bygge utan tema
+
+`themes` trengst berre for outputar som blir laga frå tema. Har du alt design tokens, kan du sløyfe `themes` og byggje frå dei ved å setje `tokenDir`:
+
+```json
+{
+  "output": [
+    { "type": "css", "tokenDir": "./design-tokens" }
+  ]
+}
+```
+
+Treng ein output tema og det ikkje finst nokon, stoppar CLI-et med ein feil.
 
 ### Migrere frå outDir og clean
 
@@ -120,7 +135,8 @@ Vil du heller gjere det manuelt, byt ut `"outDir": "<sti>"` med:
 {
   "output": [
     { "type": "design-tokens", "dir": "<sti>" },
-    { "type": "css", "tokenDir": "<sti>" }
+    { "type": "css", "tokenDir": "<sti>" },
+    { "type": "types", "tokenDir": "<sti>" }
   ]
 }
 ```
