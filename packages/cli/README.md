@@ -94,7 +94,7 @@ Use `output` to choose what is created and where. Each item is either an output 
   "output": [
     // defaults: dir "design-tokens", cleanDir true
     { "type": "design-tokens", "dir": "../path/to/design-tokens" },
-    // defaults: dir "design-tokens-build", tokensDir from the design-tokens output, cleanDir true
+    // defaults: dir "design-tokens-build", tokensDir from the design-tokens output, cleanDir true, tailwind false
     { "type": "css", "dir": "../path/to/css", "tokensDir": "../path/to/design-tokens" },
   ],
 }
@@ -113,6 +113,8 @@ If you only need CSS, use `"output": ["css"]` without `tokensDir`. The CSS is th
   ],
 }
 ```
+
+Set `tailwind` on the `css` output to `"v4"` or `"v3"` to also create a `<theme>.tailwind.css` for that Tailwind version. By default (`false`) no Tailwind file is created.
 
 The `outDir` and `clean` fields are deprecated in favour of `output`. The CLI will offer to migrate your config file automatically.
 
