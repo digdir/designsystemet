@@ -1,3 +1,4 @@
+import '../readonly/readonly'; // Load to ensure read only works as users expect
 import {
   announce,
   attr,
