@@ -50,7 +50,7 @@ Run the CLI in the same folder as your config file:
 npx @digdir/designsystemet@latest
 ```
 
-This creates design tokens and CSS for all themes, based on the [`output`](#output) field in the config file.
+This creates design tokens, CSS and type declarations for all themes, based on the [`output`](#output) field in the config file.
 
 | Option | Description |
 | ------ | ----------- |
@@ -69,7 +69,7 @@ The `tokens create` and `tokens build` commands are deprecated and will be remov
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
 | $schema | String | No | Path to JSON schema for validation. Recommended: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
-| output | Array | No | What the CLI should create, and where. Defaults to `["design-tokens", "css"]`. See [Output](#output). |
+| output | Array | No | What the CLI should create, and where. Defaults to `["design-tokens", "css", "types"]`. See [Output](#output). |
 | themes | Object | No | Contains all themes you want to define. Each key is the name of the theme. Required by outputs that are created from themes, see [Building without themes](#building-without-themes). |
 | outDir | String | No | **Deprecated:** use `output[].dir` instead. |
 | clean | Boolean | No | **Deprecated:** use `output[].cleanDir` instead. |
@@ -77,7 +77,7 @@ The `tokens create` and `tokens build` commands are deprecated and will be remov
 ### Output
 
 `output` is a list of what the CLI should create. Each item is either the name of an output type, which uses its default settings, or an object with custom settings.
-Outputs are always created in the order `design-tokens`, `css`, whatever order they are listed in. When CSS is built from design tokens (with `tokensDir`), the design tokens must be created first.
+Outputs are always created in the order `design-tokens`, `css`, `types`, whatever order they are listed in. When CSS and types are built from design tokens (with `tokensDir`), the design tokens must be created first.
 
 All paths are relative to the config file.
 
@@ -85,7 +85,8 @@ All paths are relative to the config file.
 {
   "output": [
     { "type": "design-tokens", "dir": "./design-tokens" },
-    { "type": "css", "dir": "./css", "tokensDir": "./design-tokens" }
+    { "type": "css", "dir": "./css", "tokensDir": "./design-tokens" },
+    { "type": "types", "dir": "./types", "tokensDir": "./design-tokens" }
   ]
 }
 ```
@@ -108,9 +109,22 @@ All paths are relative to the config file.
 | tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build CSS from. If neither is set, CSS is created directly from the themes. |
 | tailwind | `"v3"`, `"v4"` or `false` | No | `false` | Also generate a `<theme>.tailwind.css` for this Tailwind version. `false` skips it. |
 
+#### types
+
+| Name | Type | Required | Default | Description |
+| ---- | ---- | ------- | ------- | ----------- |
+| type | `"types"` | Yes | | The output type. |
+| dir | String | No | `design-tokens-build` | The folder where type declarations should be saved. |
+| tokensDir | String | No | `design-tokens` | The folder containing the design tokens to build type declarations from. Should match `dir` of the `design-tokens` output. |
+
+Creates `types.d.ts`, which adds your theme's colour names to the types in `@digdir/designsystemet-types`, so props like `data-color` only accept your colours.
+The deprecated `colors.d.ts` is also created, and will be removed in a future release.
+
+The `css` output no longer creates type declarations. If you set `output` yourself, include `"types"` to keep getting them.
+
 #### Without design tokens
 
-If you only need CSS, you can use for example `"output": ["css"]` without `tokensDir`. It is then created directly from the themes, without saving any design tokens.
+If you only need CSS and/or types, you can use for example `"output": ["css", "types"]` without `tokensDir`. They are then created directly from the themes, without saving any design tokens.
 
 #### Building without themes
 
@@ -119,7 +133,8 @@ If you only need CSS, you can use for example `"output": ["css"]` without `token
 ```json
 {
   "output": [
-    { "type": "css", "tokensDir": "./design-tokens" }
+    { "type": "css", "tokensDir": "./design-tokens" },
+    { "type": "types", "tokensDir": "./design-tokens" }
   ]
 }
 ```
@@ -135,7 +150,8 @@ If you'd rather do it manually, replace `"outDir": "<path>"` with:
 {
   "output": [
     { "type": "design-tokens", "dir": "<path>" },
-    { "type": "css", "tokensDir": "<path>" }
+    { "type": "css", "tokensDir": "<path>" },
+    { "type": "types", "tokensDir": "<path>" }
   ]
 }
 ```
@@ -264,7 +280,8 @@ The `severity` override allows you to customise the colours used for severity, w
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
   "output": [
     { "type": "design-tokens", "dir": "./design-tokens" },
-    { "type": "css", "dir": "./design-tokens-build", "tokensDir": "./design-tokens" }
+    { "type": "css", "dir": "./design-tokens-build", "tokensDir": "./design-tokens" },
+    { "type": "types", "dir": "./design-tokens-build", "tokensDir": "./design-tokens" }
   ],
   "themes": {
     "my-theme": {

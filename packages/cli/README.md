@@ -9,7 +9,7 @@ Read the Designsystemet [README](https://github.com/digdir/designsystemet) to ge
 
 ## Usage
 
-Use `npx @digdir/designsystemet` to create design tokens and CSS for use with Designsystemet, based on a [config file](#using-a-config-file).
+Use `npx @digdir/designsystemet` to create design tokens, CSS and type declarations for use with Designsystemet, based on a [config file](#using-a-config-file).
 
 This allows you to define themes including custom colors, font-family, and border-radius.
 We recommend using the [Designsystemet theme builder](https://theme.designsystemet.no/) for generating a valid config.
@@ -108,12 +108,13 @@ The `types` output writes `types.d.ts` (and the deprecated `colors.d.ts`), which
 
 If you only need CSS and/or types, use e.g. `"output": ["css", "types"]` without `tokensDir`. They are then created directly from the themes, without writing any design tokens.
 
-`themes` is only needed by outputs that are created from themes. To build CSS from existing design tokens, leave out `themes` and set `tokensDir`:
+`themes` is only needed by outputs that are created from themes. To build CSS and types from existing design tokens, leave out `themes` and set `tokensDir`:
 
 ```jsonc
 {
   "output": [
     { "type": "css", "tokensDir": "./design-tokens" },
+    { "type": "types", "tokensDir": "./design-tokens" },
   ],
 }
 ```
