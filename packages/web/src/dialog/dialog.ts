@@ -1,4 +1,4 @@
-import '../invokers/invokers'; // Make sure to import invokes so command="show-modal" works as expected
+import '../invokers/invokers'; // Make sure to import invokers so command="show-modal" works as expected
 import {
   ARIA_LABEL,
   ARIA_LABELLEDBY,
@@ -53,10 +53,10 @@ const handleCommand = ({ command, target }: Event & { command?: string }) =>
 const handleToggle = ({ target: el, newState }: Partial<ToggleEvent>) => {
   if (el instanceof HTMLDialogElement && newState === 'open') {
     const hasAria = attr(el, ARIA_LABEL) || attr(el, ARIA_LABELLEDBY);
-    const heading = el.querySelector('h1,h2,h3,h4,h5,h6')?.textContent.trim();
+    const heading = el.querySelector('h2,h3,h4,h5,h6')?.textContent.trim();
 
-    if (hasAria) return;
-    if (heading) return attr(el, ARIA_LABEL, heading); // Using aria-label instead of aria-labelleby to avoid need of suppressHydrationWarning on all hD-tags
+    if (hasAria?.trim()) return;
+    if (heading) attr(el, ARIA_LABEL, heading); // Using aria-label instead of aria-labelleby to avoid need of suppressHydrationWarning on all heading elements
     warn(
       'Missing accessible name on:',
       el,

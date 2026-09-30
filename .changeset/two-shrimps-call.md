@@ -3,4 +3,4 @@
 "@digdir/designsystemet-web": patch
 ---
 
-**Dialog:** Automatically uses first heading as accessible name is missing, and warns when neither is provided
+**Dialog:** Automatically uses the first heading as its accessible name if one is missing, and warns when neither is provided.
