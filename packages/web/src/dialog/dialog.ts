@@ -69,5 +69,7 @@ onHotReload('dialog', () => [
   on(document, 'command', handleCommand, QUICK_EVENT),
   on(document, 'focus', handleAriaAttributes, QUICK_EVENT),
   on(document, 'pointerdown pointerup', handleClosedbyAny, QUICK_EVENT),
+  // Using toggle event to augment accessibile name, as this runs both on user open,
+  // and programmatic showModal()/show(), while avoiding mutation observer overhead
   on(document, 'toggle', handleToggle, QUICK_EVENT),
 ]);
