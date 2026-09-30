@@ -78,8 +78,13 @@ Feltet du velger, bør passe til typen informasjon brukeren skal gi. Riktig felt
 - Bruk [Checkbox](/no/components/docs/checkbox/overview) når brukeren kan velge flere alternativer eller bekrefte noe.
 - Bruk [Select](/no/components/docs/select/overview) med varsomhet. Det kan gjøre det vanskeligere å få oversikt over alternativene.
 - Bruk [FileUpload](/no/components/docs/file-upload/overview) bare når brukeren faktisk må laste opp dokumentasjon.
+- Bruk [Switch](/no/components/docs/switch/overview) bare for innstillinger i skjema, ikke for valg og data som skal sendes inn.
 
-Hvis informasjon er forhåndsutfylt, skal det være tydelig hvor informasjonen kommer fra, og hvordan brukeren eventuelt kan endre den. Informasjon brukeren ikke kan endre, bør vises som vanlig tekst i stedet for som låste skjemafelt.
+## Når informasjon forhåndsutfylles eller hentes fra andre kilder
+
+Hvis informasjon er forhåndsutfylt, skal det være tydelig hvor informasjonen kommer fra, og hvordan brukeren eventuelt kan endre den. 
+
+Informasjon brukeren ikke kan endre vises som vanlig tekst, ikke i låste skjemafelt.
 
 ## Hjelp brukeren å unngå feil
 
@@ -88,7 +93,7 @@ Det er bedre å forebygge feil enn å rette dem etterpå. Gi brukeren nok inform
 Noen konkrete tiltak kan gjøre det lettere å fylle ut riktig:
 
 - Vis formatkrav før brukeren fyller ut feltet.
-- Godta vanlige skrivemåter der det er mulig, for eksempel mellomrom i telefonnummer.
+- Godta vanlige skrivemåter der det er mulig, for eksempel mellomrom i telefonnummer eller skråstrek, bindestrek og punktum som skilletegn i datoer.
 - Bruk autocomplete der feltet gjelder brukerens egne personopplysninger.
 - Vis tegnbegrensning hvis feltet har maks antall tegn.
 - Gi brukeren mulighet til å gå tilbake og endre svar.
@@ -110,20 +115,30 @@ Før brukeren sender inn informasjon, bør de få mulighet til å kontrollere hv
 - Vis en oppsummering av svarene før innsending.
 - Gjør det enkelt å gå tilbake og endre informasjon.
 - Skriv tydelig hva som skjer når brukeren sender inn.
-- Bekreft at innsendingen er mottatt, og forklar hva som skjer videre.
+
+## Gi brukeren informasjon etter innsending
+Innsendingen er ikke slutten på tjenesten, men starten på en dialog. Brukeren må få en umiddelbar bekreftelse, vite hva som forventes videre, og enkelt kunne følge saken over tid.
+### Vis informasjonen der brukeren er
+Hovedregelen er at all informasjon, kvitteringer, status og svar skal vises direkte i brukergrensesnittet, enten det er på nettsiden, på Min side eller i et fagsystem. Ikke-webdokumenter (som PDF) bør aldri være den primære måten å formidle informasjon på.
+- **Gi en umiddelbar kvittering i grensesnittet:** Bekreft at innsendingen er mottatt med dato, klokkeslett og en entydig referanse (f.eks. saksnummer eller arkivreferanse).
+- **Vis innsendte opplysninger direkte:** La brukeren se hva som ble sendt inn rett i flaten de befinner seg i. Eventuell nedlasting av dokumenter bør kun være et sekundært tilbud (eller for filer brukeren selv har lastet opp).
+- **Presenter resultatet direkte:** Ved automatisk saksbehandling skal resultatet, vedtaket og begrunnelsen vises direkte i grensesnittet, ikke pakkes inn i vedlagte dokumenter.
+- **Sett tydelige forventninger til videre saksgang:** Ved manuell saksbehandling må du oppgi forventet saksbehandlingstid, hvem som behandler saken, og hvordan brukeren varsles ved oppdateringer.
+- **Gjør det enkelt å ettersende:** Forklar hvordan brukeren kan supplere med ny informasjon eller dokumentasjon, og hvilke frister som gjelder.
+- **Skap en sammenhengende dialog:** Unngå at oppfølgingen stykkes opp i løsrevne brev, e-poster eller meldinger uten kontekst. Bruk gjerne nasjonale fellesløsninger som **[Dialogporten (digdir.no)](https://samarbeid.digdir.no/dataaltinnno/dialogporten/2940)** for å samle status, meldinger, tidslinje og videre handlinger i én strukturert dialogtråd.
 
 ## Relevante WCAG-kriterier
 
 Se også disse relevante WCAG-kriteriene når du skal samle informasjon fra brukere:
 
 - **[1.3.1 Informasjon og relasjoner (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90):**  
-  Sikrer at visuelle strukturer og sammenhenger (som ledetekster, instruksjoner og grupperinger med `Fieldset`) også formidles programmatisk til hjelpemiddelteknologi.
+  Visuelle strukturer og sammenhenger (som ledetekster, instruksjoner og grupperinger med `Fieldset`) skal formidles programmatisk til hjelpemiddelteknologi.
 - **[1.3.5 Identifiser formål med inndata (uutilsynet.no)](https://www.uutilsynet.no/veiledning/135-identifiser-formal-med-inndata/1238):**  
-  Gjør at nettleseren automatisk kan foreslå og forhåndsutfylle brukerens egne opplysninger (som navn, adresse og e-post via `autocomplete`), noe som sparer tid og hindrer tastefeil.
+  Nettleseren skal automatisk kunne foreslå og forhåndsutfylle brukerens egne opplysninger (som navn, adresse og e-post via `autocomplete`), noe som sparer tid og hindrer tastefeil.
 - **[2.4.6 Overskrifter og ledetekster (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108):**  
-  Krever at overskrifter, seksjonstitler og feltetiketter er unike, konsise og beskriver nøyaktig hva som forventes av brukeren.
+  Overskrifter, seksjonstitler og feltetiketter er unike, konsise og beskriver nøyaktig hva som forventes av brukeren.
 - **[3.2.2 Inndata (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/322-inndata-niva/114):**  
-  Endring av verdi i et felt eller valg av en radioknapp skal aldri automatisk sende inn data eller uventet endre sidens kontekst uten at brukeren er varslet på forhånd.
+  Endring av verdi i et felt eller valg av en radioknapp, skal aldri automatisk sende inn data eller uventet endre sidens kontekst uten at brukeren er varslet på forhånd.
 - **[3.3.1 Identifikasjon av feil (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/331-identifikasjon-av-feil-niva/116):**  
   Når det oppstår feil i inndata, skal feilen oppdages, beskrives i tekst og peke direkte på feltet det gjelder.
 - **[3.3.2 Ledetekster eller instruksjoner (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/332-ledetekster-eller-instruksjoner-niva/117):**  
