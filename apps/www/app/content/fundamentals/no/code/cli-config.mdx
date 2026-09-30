@@ -107,10 +107,11 @@ Alle stiar er relative til config fila.
 | type | `"css"` | Ja | | Output-typen. |
 | dir | Streng | Nei | `design-tokens-build` | Mappa der CSS skal lagrast. |
 | cleanDir | Boolean | Nei | `true` | Slett mappa før CSS blir laga. |
+| tokenDir | Streng | Nei | `design-tokens` | Mappa med design tokens som CSS skal byggast frå. Bør vere lik `dir` i `design-tokens`-outputen. |
 
 #### Utan design tokens
 
-Treng du berre CSS, kan du bruke til dømes `"output": ["css"]` utan `tokenDir`. Dei blir då laga direkte frå tema, utan at design tokens blir lagra.
+Treng du berre CSS, kan du bruke til dømes `"output": ["css"]` utan `tokenDir`. CSS-en blir då laga direkte frå tema, utan at design tokens blir lagra.
 
 #### Bygge utan tema
 
@@ -135,8 +136,7 @@ Vil du heller gjere det manuelt, byt ut `"outDir": "<sti>"` med:
 {
   "output": [
     { "type": "design-tokens", "dir": "<sti>" },
-    { "type": "css", "tokenDir": "<sti>" },
-    { "type": "types", "tokenDir": "<sti>" }
+    { "type": "css", "tokenDir": "<sti>" }
   ]
 }
 ```
