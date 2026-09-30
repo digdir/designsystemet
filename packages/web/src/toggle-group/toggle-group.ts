@@ -1,3 +1,5 @@
+import '../readonly/readonly'; // Load to ensure read only works as users expect
+import '../focusgroup/focusgroup'; // Ensure polyfill is loaded
 import {
   ARIA_LABEL,
   ARIA_LABELLEDBY,

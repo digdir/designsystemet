@@ -153,3 +153,113 @@ describe('Dialog closedby="any" Safari polyfill', () => {
     expect(closeSpy).toHaveBeenCalledTimes(1);
   });
 });
+
+describe('Dialog accessible name on toggle', () => {
+  const toggle = (el: Element, newState = 'open') => {
+    // Dispatch a plain Event since jsdom/happy-dom do not implement ToggleEvent
+    const event = new Event('toggle') as Event & { newState?: string };
+    event.newState = newState;
+    el.dispatchEvent(event);
+  };
+
+  const renderDialog = (html: string) => {
+    document.body.innerHTML = html;
+    return document.querySelector('dialog') as HTMLDialogElement;
+  };
+
+  const spyWarn = () =>
+    vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+  it('sets aria-label from the first heading when opened', () => {
+    const dialog = renderDialog(`
+<dialog class="ds-dialog">
+  <h2 class="ds-heading">  Dialog title  </h2>
+  <p>Dialog content</p>
+</dialog>`);
+
+    toggle(dialog);
+
+    expect(dialog).toHaveAttribute('aria-label', 'Dialog title');
+  });
+
+  it('uses the first heading in document order regardless of level', () => {
+    const dialog = renderDialog(`
+<dialog class="ds-dialog">
+  <h3>First heading</h3>
+  <h2>Second heading</h2>
+</dialog>`);
+
+    toggle(dialog);
+
+    expect(dialog).toHaveAttribute('aria-label', 'First heading');
+  });
+
+  it('does not override an existing aria-label', () => {
+    const warnSpy = spyWarn();
+    const dialog = renderDialog(`
+<dialog class="ds-dialog" aria-label="Custom label">
+  <h2>Dialog title</h2>
+</dialog>`);
+
+    toggle(dialog);
+
+    expect(dialog).toHaveAttribute('aria-label', 'Custom label');
+    expect(warnSpy).not.toHaveBeenCalled();
+  });
+
+  it('does not add aria-label when aria-labelledby is present', () => {
+    const warnSpy = spyWarn();
+    const dialog = renderDialog(`
+<dialog class="ds-dialog" aria-labelledby="title">
+  <p id="title">Dialog title</p>
+</dialog>`);
+
+    toggle(dialog);
+
+    expect(dialog).not.toHaveAttribute('aria-label');
+    expect(dialog).toHaveAttribute('aria-labelledby', 'title');
+    expect(warnSpy).not.toHaveBeenCalled();
+  });
+
+  it('warns when no heading, aria-label or aria-labelledby is present', () => {
+    const warnSpy = spyWarn();
+    const dialog = renderDialog(`
+<dialog class="ds-dialog">
+  <p>Dialog content</p>
+</dialog>`);
+
+    toggle(dialog);
+
+    expect(dialog).not.toHaveAttribute('aria-label');
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('Missing accessible name on:'),
+      dialog,
+      expect.stringContaining('aria-label'),
+    );
+  });
+
+  it('warns when the heading is empty', () => {
+    const warnSpy = spyWarn();
+    const dialog = renderDialog(`
+<dialog class="ds-dialog">
+  <h2>   </h2>
+</dialog>`);
+
+    toggle(dialog);
+
+    expect(dialog).not.toHaveAttribute('aria-label');
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('ignores toggle events from non-dialog elements', () => {
+    const warnSpy = spyWarn();
+    document.body.innerHTML = `<div popover id="my-popover">Popover content</div>`;
+    const popover = document.getElementById('my-popover') as HTMLElement;
+
+    toggle(popover);
+
+    expect(popover).not.toHaveAttribute('aria-label');
+    expect(warnSpy).not.toHaveBeenCalled();
+  });
+});
