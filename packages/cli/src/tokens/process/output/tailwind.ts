@@ -52,7 +52,7 @@ const scrapeTailwindTokens = (css: string): TailwindToken[] => {
     } else if (token.match(/--ds-border-radius-(sm|md|lg|xl)/)) {
       // Not including "full" as this crashes with Tailwind
       tailwind.push({ namespace: 'radius', key: token.replace('--ds-border-radius-', ''), token });
-    } else if (token.match(/--ds-body-(sm|mg|lg)-body-font-size/)) {
+    } else if (token.match(/^--ds-body-(sm|md|lg)-font-size$/)) {
       tailwind.push({ namespace: 'text', key: token.replace('--ds-body-', '').replace('-font-size', ''), token });
     } else if (token.match(/^--ds-size-\d+$/)) {
       tailwind.push({ namespace: 'spacing', key: token.replace('--ds-size-', ''), token });
