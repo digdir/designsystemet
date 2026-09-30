@@ -1,6 +1,9 @@
 {
   "$schema": "packages/cli/dist/config.schema.json",
-  "output": [{ "type": "css", "dir": "./packages/css/theme", "tailwind": "v3" }, "design-tokens"],
+  "output": [
+    { "type": "css", "dir": "./packages/css/theme", "tailwind": "v3" },
+    "design-tokens"
+  ],
   "themes": {
     "designsystemet": {
       "colors": {
