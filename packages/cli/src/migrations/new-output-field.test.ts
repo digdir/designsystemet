@@ -68,6 +68,41 @@ describe('new output field migration', () => {
     vi.restoreAllMocks();
   });
 
+  describe('when the config file is not in the directory the CLI was run from', () => {
+    const context = { configFilePath: 'configs/designsystemet.config.json', cwd: '/project' };
+
+    it('rewrites outDir relative to the config file', () => {
+      expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens" }', context))).toEqual({
+        output: [
+          { type: 'design-tokens', dir: '../tokens' },
+          { type: 'css', tokenDir: '../tokens' },
+        ],
+      });
+    });
+
+    it('keeps the default outDir pointing to the same directory', () => {
+      expect(parseJsonc(migrateToOutputField('{ "clean": true }', context))).toEqual({
+        output: [
+          { type: 'design-tokens', dir: '../design-tokens' },
+          { type: 'css', tokenDir: '../design-tokens' },
+        ],
+      });
+    });
+
+    it('rewrites an absolute outDir relative to the config file', () => {
+      expect(parseJsonc(migrateToOutputField('{ "outDir": "/project/configs/tokens" }', context))).toEqual({
+        output: [
+          { type: 'design-tokens', dir: 'tokens' },
+          { type: 'css', tokenDir: 'tokens' },
+        ],
+      });
+    });
+
+    it('does not define output when outDir resolves to the default directory next to the config file', () => {
+      expect(parseJsonc(migrateToOutputField('{ "outDir": "configs/design-tokens" }', context))).toEqual({});
+    });
+  });
+
   it('leaves the config unchanged when declined', () => {
     const config = '{ "outDir": "tokens" }';
 

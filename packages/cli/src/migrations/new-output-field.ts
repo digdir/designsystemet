@@ -9,11 +9,18 @@ const formattingOptions = { insertSpaces: true, tabSize: 2 } as const;
 
 const deprecatedFields = ['outDir', 'clean'] as const;
 
+type MigrationContext = {
+  /** Path of the config file being migrated. */
+  configFilePath?: string;
+  /** Directory the CLI was run from. Defaults to `process.cwd()`. */
+  cwd?: string;
+};
+
 type Automigrate = {
   name: string;
   check: (config: string) => boolean;
   message: string;
-  yes: (config: string) => string;
+  yes: (config: string, context?: MigrationContext) => string;
   no: (config: string) => string;
 };
 
@@ -79,7 +86,23 @@ export const toOutput = (outDir: string | undefined) => {
   ] as const;
 };
 
-export const migrateToOutputField = (config: string): string => {
+/**
+ * `outDir` was resolved from the directory the CLI was run from, while `output` paths are resolved from the
+ * config file's directory. Rewrites `outDir` so it points to the same directory when resolved from the config file.
+ * Paths always use forward slashes, so the config works on any OS.
+ */
+const toConfigRelative = (outDir: string, { configFilePath, cwd = process.cwd() }: MigrationContext): string => {
+  if (!configFilePath) {
+    return outDir;
+  }
+
+  const configDir = path.dirname(path.resolve(cwd, configFilePath));
+  const relative = path.relative(configDir, path.resolve(cwd, outDir)) || '.';
+
+  return relative.split(path.sep).join('/');
+};
+
+export const migrateToOutputField = (config: string, context: MigrationContext = {}): string => {
   const currentConfig = parseJsonc<any>(config);
 
   // Apply targeted edits to the original text instead of re-serializing the whole
@@ -88,7 +111,8 @@ export const migrateToOutputField = (config: string): string => {
 
   // If `output` is already set, the deprecated fields are ignored and can simply be removed.
   if (!currentConfig.output) {
-    const output = toOutput(currentConfig.outDir);
+    // A missing `outDir` meant the default directory, relative to where the CLI was run from.
+    const output = toOutput(toConfigRelative(currentConfig.outDir ?? defaultOutDir, context));
     if (output) {
       configText = applyEdits(
         configText,
@@ -112,8 +136,8 @@ const migration: Automigrate = {
   name: 'New output field',
   check: hasDeprecatedFields,
   message: `Your config file uses the deprecated ${pc.yellow('outDir')} and ${pc.yellow('clean')} fields. \nThis migration will replace them with a new ${pc.blue('output')} field if necessary.\n`,
-  yes: (config: string): string => {
-    const migratedConfig = migrateToOutputField(config);
+  yes: (config: string, context?: MigrationContext): string => {
+    const migratedConfig = migrateToOutputField(config, context);
     console.log(pc.green(`\nConfig file successfully migrated.`));
     if (typeof parseJsonc<any>(migratedConfig).output === 'undefined') {
       console.log(

@@ -35,7 +35,7 @@ export const checkAutomigrate = async (configFile: string, configFilePath: strin
     if (!answer) {
       migratedConfigFile = migration.no(migratedConfigFile ?? configFile);
     } else {
-      migratedConfigFile = migration.yes(migratedConfigFile ?? configFile);
+      migratedConfigFile = migration.yes(migratedConfigFile ?? configFile, { configFilePath });
       await dsfs.writeFile(configFilePath, migratedConfigFile);
     }
   }
