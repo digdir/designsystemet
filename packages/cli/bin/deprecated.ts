@@ -3,6 +3,7 @@ import pc from 'picocolors';
 import { checkAutomigrate } from '../src/automigrate.ts';
 import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
+import { automigrations } from '../src/migrations/index.ts';
 import type { ConfigSchemaThemes } from '../src/schemas/schema.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
 import {
@@ -137,9 +138,20 @@ export function makeTokenCommands({ createDesignTokens, buildCss }: TokenCommand
 
       const { configFile, configFilePath } = await getConfigFile(opts.config);
 
+      if (!opts.skipCheck && automigrations.newOutputField.check(configFile)) {
+        console.warn(
+          pc.yellow(
+            `\n${pc.bold('outDir')} and ${pc.bold('clean')} are deprecated. Run ${pc.blue('designsystemet')} to migrate your config file to ${pc.bold('output')}.\n`,
+          ),
+        );
+      }
+
       const updatedConfigFile = opts.skipCheck
         ? configFile
-        : await checkAutomigrate(configFile, configFilePath, opts.yes);
+        : await checkAutomigrate(configFile, configFilePath, opts.yes, {
+            // `tokens create` only reads `outDir` and `clean`, so migrating them to `output` would make it ignore them.
+            exclude: ['newOutputField'],
+          });
 
       const config = await parseValidateAndOptsConfig(updatedConfigFile || configFile, {
         theme: themeName,
