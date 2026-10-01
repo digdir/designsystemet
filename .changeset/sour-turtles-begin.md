@@ -2,4 +2,4 @@
 "@digdir/designsystemet": minor
 ---
 
-**CLI** New `output[]` will clean `outDir` folders by default.
+**CLI:** Each output in the new `output` field cleans its `dir` before generating files. Set `cleanDir` to `false` on an output to keep existing files.
