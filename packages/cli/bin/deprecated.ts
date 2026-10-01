@@ -138,7 +138,7 @@ export function makeTokenCommands({ createDesignTokens, buildCss }: TokenCommand
 
       const { configFile, configFilePath } = await getConfigFile(opts.config);
 
-      if (!opts.skipCheck && automigrations.newOutputField.check(configFile)) {
+      if (!opts.skipCheck && usesDeprecatedOutputFields(configFile)) {
         console.warn(
           pc.yellow(
             `\n${pc.bold('outDir')} and ${pc.bold('clean')} are deprecated. Run ${pc.blue('designsystemet')} to migrate your config file to ${pc.bold('output')}.\n`,
@@ -175,4 +175,21 @@ function parseColorValues(value: string, previous: Record<string, CssColor> = {}
   const [name, hex] = value.split(':');
   previous[name] = convertToHex(hex);
   return previous;
+}
+
+/**
+ * Whether the config file uses the deprecated `outDir` or `clean` fields. False without a config file, since
+ * `tokens create` can run on CLI options alone, and for a config file that can't be parsed, which is reported
+ * when the config is validated.
+ */
+function usesDeprecatedOutputFields(configFile: string): boolean {
+  if (!configFile) {
+    return false;
+  }
+
+  try {
+    return automigrations.newOutputField.check(configFile);
+  } catch {
+    return false;
+  }
 }
