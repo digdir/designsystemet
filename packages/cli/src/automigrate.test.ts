@@ -55,6 +55,20 @@ describe('checkAutomigrate', () => {
     });
   });
 
+  it('does not offer excluded migrations', async () => {
+    confirm.mockResolvedValue(true);
+
+    const runtimeConfig = parseJsonc<ParsedConfig>(
+      await checkAutomigrate(config, 'designsystemet.config.json', false, { exclude: ['newOutputField'] }),
+    );
+
+    // Only the color categories migration was offered, so `outDir` is kept and no `output` is added.
+    expect(confirm).toHaveBeenCalledTimes(1);
+    expect(runtimeConfig.outDir).toBe('tokens');
+    expect(runtimeConfig.output).toBeUndefined();
+    expect(runtimeConfig.themes.theme.colors).toEqual({ accent: '#0062BA', neutral: '#1E2B3C' });
+  });
+
   it('writes nothing when every migration is declined', async () => {
     confirm.mockResolvedValue(false);
 

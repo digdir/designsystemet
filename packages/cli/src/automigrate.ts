@@ -3,14 +3,25 @@ import pc from 'picocolors';
 import { automigrations } from './migrations/index.ts';
 import { dsfs } from './utils/filesystem.ts';
 
-export const checkAutomigrate = async (configFile: string, configFilePath: string, yes: boolean) => {
-  const eligibleMigrations = Object.values(automigrations).filter((migration) => {
-    try {
-      return migration.check(configFile);
-    } catch {
-      return false;
-    }
-  });
+type AutomigrationName = keyof typeof automigrations;
+
+export const checkAutomigrate = async (
+  configFile: string,
+  configFilePath: string,
+  yes: boolean,
+  /** Migrations not to offer, e.g. ones whose result the calling command can't use. */
+  { exclude = [] }: { exclude?: AutomigrationName[] } = {},
+) => {
+  const eligibleMigrations = (Object.keys(automigrations) as AutomigrationName[])
+    .filter((name) => !exclude.includes(name))
+    .map((name) => automigrations[name])
+    .filter((migration) => {
+      try {
+        return migration.check(configFile);
+      } catch {
+        return false;
+      }
+    });
   if (eligibleMigrations.length === 0) {
     return configFile;
   }
