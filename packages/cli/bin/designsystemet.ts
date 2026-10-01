@@ -181,10 +181,12 @@ program
 
         // Like CSS: build from `tokensDir`, or else from the `design-tokens` output, or else from the themes.
         const tokensDir = output.tokensDir ?? designTokensOutput?.dir;
+        // Like CSS: a dry run doesn't write the design tokens this run creates, so create the types from the themes.
+        const tokensNotWritten = dry && tokensDir !== undefined && regeneratedDirs.includes(resolveDir(tokensDir));
 
         // All themes have the same color names (checked during validation), so the first theme is enough.
         const files =
-          tokensDir === undefined
+          tokensDir === undefined || tokensNotWritten
             ? createTypes(Object.keys(Object.values(requireThemes(config))[0].colors))
             : await createTypesFromTokens(path.join(dsfs.outDir, tokensDir));
 
