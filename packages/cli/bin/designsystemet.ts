@@ -146,8 +146,11 @@ program
         // Build CSS from `tokensDir`, or else from the design tokens created by the `design-tokens` output.
         // With neither, there are no design tokens to build from, so CSS is created directly from the themes.
         const tokensDir = output.tokensDir ?? designTokensOutput?.dir;
+        // A dry run doesn't write the design tokens this run creates, so they can't be read back from disk.
+        // Create the CSS from the themes instead, which gives the same result.
+        const tokensNotWritten = dry && tokensDir !== undefined && regeneratedDirs.includes(resolveDir(tokensDir));
 
-        if (tokensDir === undefined) {
+        if (tokensDir === undefined || tokensNotWritten) {
           await createCss({
             themes: requireThemes(config),
             outDir: outDir,
