@@ -117,7 +117,7 @@ Alle stiar er relative til config fila.
 | ---- | ---- | ------- | -------- | ----------- |
 | type | `"types"` | Ja | | Output-typen. |
 | dir | Streng | Nei | `design-tokens-build` | Mappa der typedeklarasjonane skal lagrast. |
-| tokensDir | Streng | Nei | `design-tokens` | Mappa med design tokens som typedeklarasjonane skal byggast frå. Bør vere lik `dir` i `design-tokens`-outputen. |
+| tokensDir | Streng | Nei | `dir` i `design-tokens`-outputen | Mappa med design tokens som typedeklarasjonane skal byggast frå. Er ingen av dei sette, blir typedeklarasjonane laga direkte frå tema. |
 
 Lagar `types.d.ts`, som legg fargenamna i temaet ditt til typane i `@digdir/designsystemet-types`, slik at til dømes `data-color` berre godtek fargane dine.
 Den utdaterte `colors.d.ts` blir òg laga, og blir fjerna i ein framtidig versjon.
