@@ -55,8 +55,7 @@
                     "type": "boolean"
                   },
                   "tokenDir": {
-                    "default": "design-tokens",
-                    "description": "The directory containing the design tokens",
+                    "description": "The directory containing the design tokens to build CSS from. Defaults to `dir` of the `design-tokens` output. If neither is set, CSS is created directly from the themes",
                     "type": "string"
                   },
                   "experimental_tailwind": {

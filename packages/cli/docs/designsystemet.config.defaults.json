@@ -9,7 +9,6 @@
       "type": "css",
       "dir": "design-tokens-build",
       "cleanDir": true,
-      "tokenDir": "design-tokens",
       "experimental_tailwind": true
     }
   ],

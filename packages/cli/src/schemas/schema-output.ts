@@ -11,7 +11,12 @@ const cssOutputSchema = z.object({
   type: z.literal('css').describe('The type of output file'),
   dir: z.string().default('design-tokens-build').describe('The output directory'),
   cleanDir: z.boolean().default(true).describe('Whether to clean the output directory before generating files'),
-  tokenDir: z.string().default('design-tokens').describe('The directory containing the design tokens'),
+  tokenDir: z
+    .string()
+    .optional()
+    .describe(
+      'The directory containing the design tokens to build CSS from. Defaults to `dir` of the `design-tokens` output. If neither is set, CSS is created directly from the themes',
+    ),
   experimental_tailwind: z.boolean().default(true).describe('Whether to enable experimental Tailwind support'),
 });
 

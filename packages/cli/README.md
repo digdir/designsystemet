@@ -94,13 +94,13 @@ Use `output` to choose what is created and where. Each item is either an output 
   "output": [
     // defaults: dir "design-tokens", cleanDir true
     { "type": "design-tokens", "dir": "../path/to/design-tokens" },
-    // defaults: dir "design-tokens-build", tokenDir "design-tokens", cleanDir true
+    // defaults: dir "design-tokens-build", tokenDir from the design-tokens output, cleanDir true
     { "type": "css", "dir": "../path/to/css", "tokenDir": "../path/to/design-tokens" },
   ],
 }
 ```
 
-Design tokens are always created before CSS. `tokenDir` should match the `dir` of the `design-tokens` output.
+Design tokens are always created before CSS. If `tokenDir` is not set, CSS is built from the `dir` of the `design-tokens` output.
 
 If you only need CSS, use `"output": ["css"]` without `tokenDir`. The CSS is then created directly from the themes, without writing any design tokens.
 
