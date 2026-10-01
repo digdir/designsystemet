@@ -92,9 +92,11 @@ program
     const designTokensOutput = config.output.find((o) => o.type === 'design-tokens');
 
     // Outputs created from themes can't run without them. Check this before cleaning, so nothing is deleted when
-    // themes are missing. Same rule as below: design tokens, and CSS with no design tokens to build from.
+    // themes are missing. Same rule as below: design tokens, and CSS or types with no design tokens to build from.
     const needsThemes = config.output.some(
-      (o) => o.type === 'design-tokens' || (o.type === 'css' && (o.tokensDir ?? designTokensOutput?.dir) === undefined),
+      (o) =>
+        o.type === 'design-tokens' ||
+        ((o.type === 'css' || o.type === 'types') && (o.tokensDir ?? designTokensOutput?.dir) === undefined),
     );
     if (needsThemes) {
       requireThemes(config);
