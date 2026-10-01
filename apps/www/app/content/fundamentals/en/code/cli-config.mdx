@@ -77,7 +77,7 @@ The `tokens create` and `tokens build` commands are deprecated and will be remov
 ### Output
 
 `output` is a list of what the CLI should create. Each item is either the name of an output type, which uses its default settings, or an object with custom settings.
-Outputs are always created in the order `design-tokens`, `css`, whatever order they are listed in. When CSS is built from design tokens (with `tokenDir`), the design tokens must be created first.
+Outputs are always created in the order `design-tokens`, `css`, whatever order they are listed in. When CSS is built from design tokens (with `tokensDir`), the design tokens must be created first.
 
 All paths are relative to the config file.
 
@@ -85,7 +85,7 @@ All paths are relative to the config file.
 {
   "output": [
     { "type": "design-tokens", "dir": "./design-tokens" },
-    { "type": "css", "dir": "./css", "tokenDir": "./design-tokens" }
+    { "type": "css", "dir": "./css", "tokensDir": "./design-tokens" }
   ]
 }
 ```
@@ -105,20 +105,20 @@ All paths are relative to the config file.
 | type | `"css"` | Yes | | The output type. |
 | dir | String | No | `design-tokens-build` | The folder where CSS should be saved. |
 | cleanDir | Boolean | No | `true` | Delete the folder before creating CSS. |
-| tokenDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build CSS from. If neither is set, CSS is created directly from the themes. |
+| tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build CSS from. If neither is set, CSS is created directly from the themes. |
 
 #### Without design tokens
 
-If you only need CSS, you can use for example `"output": ["css"]` without `tokenDir`. It is then created directly from the themes, without saving any design tokens.
+If you only need CSS, you can use for example `"output": ["css"]` without `tokensDir`. It is then created directly from the themes, without saving any design tokens.
 
 #### Building without themes
 
-`themes` is only needed by outputs that are created from themes. If you already have design tokens, you can leave out `themes` and build from them by setting `tokenDir`:
+`themes` is only needed by outputs that are created from themes. If you already have design tokens, you can leave out `themes` and build from them by setting `tokensDir`:
 
 ```json
 {
   "output": [
-    { "type": "css", "tokenDir": "./design-tokens" }
+    { "type": "css", "tokensDir": "./design-tokens" }
   ]
 }
 ```
@@ -134,7 +134,7 @@ If you'd rather do it manually, replace `"outDir": "<path>"` with:
 {
   "output": [
     { "type": "design-tokens", "dir": "<path>" },
-    { "type": "css", "tokenDir": "<path>" }
+    { "type": "css", "tokensDir": "<path>" }
   ]
 }
 ```
@@ -263,7 +263,7 @@ The `severity` override allows you to customise the colours used for severity, w
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
   "output": [
     { "type": "design-tokens", "dir": "./design-tokens" },
-    { "type": "css", "dir": "./design-tokens-build", "tokenDir": "./design-tokens" }
+    { "type": "css", "dir": "./design-tokens-build", "tokensDir": "./design-tokens" }
   ],
   "themes": {
     "my-theme": {

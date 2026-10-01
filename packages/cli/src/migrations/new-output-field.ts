@@ -82,7 +82,7 @@ export const toOutput = (outDir: string | undefined) => {
   return [
     { type: 'design-tokens', dir: outDir },
     // CSS is built from the design tokens, so it must read them from the same directory.
-    { type: 'css', tokenDir: outDir },
+    { type: 'css', tokensDir: outDir },
   ] as const;
 };
 
