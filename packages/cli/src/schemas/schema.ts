@@ -268,7 +268,7 @@ const externalThemeSchema = themeObjectSchema
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
 /**
- * The public config: {@link configSchema} without `output`, and with themes restricted to the public keys.
+ * The public config: {@link configSchema}, including `output`, with themes restricted to the public keys.
  * Use this when exposing the schema externally (the public JSON schema, the theme builder and the Figma plugin);
  * use {@link configSchema} to validate a config in the CLI.
  */
