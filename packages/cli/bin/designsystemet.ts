@@ -79,6 +79,15 @@ program
     const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
     const designTokensOutput = config.output.find((o) => o.type === 'design-tokens');
 
+    // Clean every output directory once, before any output is created. Cleaning as part of each output would
+    // delete what earlier outputs wrote when they share a directory, which makes the outputs depend on their order.
+    const dirsToClean = R.uniq(
+      config.output.filter((o) => 'cleanDir' in o && o.cleanDir).map((o) => path.join(dsfs.outDir, o.dir)),
+    );
+    for (const dir of dirsToClean) {
+      await dsfs.cleanDir(dir);
+    }
+
     for (const output of sortedOutput) {
       const outDir = path.join(dsfs.outDir, output.dir);
 
@@ -88,7 +97,6 @@ program
         await createDesignTokens({
           themes: requireThemes(config),
           outDir: outDir,
-          clean: output.cleanDir,
         });
       }
 
@@ -103,7 +111,6 @@ program
           await createCss({
             themes: requireThemes(config),
             outDir: outDir,
-            clean: output.cleanDir,
             verbose,
             tailwind: output.experimental_tailwind,
           });
@@ -113,7 +120,6 @@ program
             // so it matches where a preceding design-tokens output wrote its files.
             tokensDir: path.join(dsfs.outDir, tokenDir),
             outDir,
-            clean: output.cleanDir,
             verbose,
             tailwind: output.experimental_tailwind,
           });
@@ -280,20 +286,14 @@ async function buildCss({
 async function createCss({
   themes,
   outDir,
-  clean,
   verbose,
   tailwind,
 }: {
   themes: ConfigSchemaThemes;
   outDir: string;
-  clean?: boolean;
   verbose: boolean;
   tailwind: boolean;
 }) {
-  if (clean) {
-    await dsfs.cleanDir(outDir);
-  }
-
   const themeNames = Object.keys(themes);
   if (themeNames.length > 0) {
     console.log(`Using themes from config file: ${pc.blue(themeNames.join(', '))}`);
@@ -304,10 +304,6 @@ async function createCss({
   for (const [name, themeConfig] of Object.entries(themes)) {
     const themeCSSFiles = await formatThemeCSS({ name, ...themeConfig } as Theme, { verbose, tailwind });
     files.push(...themeCSSFiles);
-  }
-
-  if (clean) {
-    await dsfs.cleanDir(outDir);
   }
 
   console.log(`\n💾 Writing CSS to ${pc.green(outDir)}`);
