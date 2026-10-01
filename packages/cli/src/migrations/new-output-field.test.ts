@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { parseJsonc } from '../schemas/helpers.ts';
 import migration, { migrateToOutputField } from './new-output-field.ts';
 
@@ -45,6 +45,27 @@ describe('new output field migration', () => {
     const migrated = migrateToOutputField('{ "outDir": "tokens", "output": ["css"] }');
 
     expect(parseJsonc(migrated)).toEqual({ output: ['css'] });
+  });
+
+  it('migrates JSONC configs with comments and trailing commas', () => {
+    vi.spyOn(console, 'log').mockImplementation(() => {});
+    const config = `{
+  // my output
+  "outDir": "tokens",
+  "themes": {},
+}`;
+
+    expect(parseJsonc(migration.yes(config))).toEqual({
+      themes: {},
+      output: [
+        { type: 'design-tokens', dir: 'tokens' },
+        { type: 'css', tokenDir: 'tokens' },
+      ],
+    });
+    expect(parseJsonc(migration.yes('{ /* default */ "outDir": "design-tokens", "themes": {} }'))).toEqual({
+      themes: {},
+    });
+    vi.restoreAllMocks();
   });
 
   it('leaves the config unchanged when declined', () => {

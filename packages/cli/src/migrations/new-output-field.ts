@@ -115,7 +115,7 @@ const migration: Automigrate = {
   yes: (config: string): string => {
     const migratedConfig = migrateToOutputField(config);
     console.log(pc.green(`\nConfig file successfully migrated.`));
-    if (typeof JSON.parse(migratedConfig).output === 'undefined') {
+    if (typeof parseJsonc<any>(migratedConfig).output === 'undefined') {
       console.log(
         pc.green(
           `\nNo new output field was added because the deprecated fields matched outputs default values and does not need to be added explicitly.`,
