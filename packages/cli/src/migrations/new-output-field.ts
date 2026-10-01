@@ -158,8 +158,9 @@ const migration: Automigrate = {
     return migratedConfig;
   },
   no: (config: string): string => {
-    // The deprecated fields still validate, so the config can be used as-is.
-    console.log(pc.yellow('\nUsing existing config file but migration was skipped.\n'));
+    // The file is left as-is. `designsystemet` stops when `outDir` or `clean` are still set, while `tokens create`
+    // keeps reading them.
+    console.log(pc.yellow('\nMigration was skipped.\n'));
     return config;
   },
 };
