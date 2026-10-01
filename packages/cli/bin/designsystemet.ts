@@ -21,6 +21,7 @@ import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { toColorNames } from '../src/tokens/utils.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
+import { isSameOrInside } from '../src/utils/paths.ts';
 import { DEFAULT_CONFIG_FILEPATH, getConfigFile, requireThemes } from './config.ts';
 import { DEFAULT_TOKENS_CREATE_DIR, makeTokenCommands } from './deprecated.ts';
 import { configOption, dryOption, verboseOption } from './options.ts';
@@ -84,6 +85,19 @@ program
     const dirsToClean = R.uniq(
       config.output.filter((o) => 'cleanDir' in o && o.cleanDir).map((o) => path.join(dsfs.outDir, o.dir)),
     );
+
+    // Check every directory before cleaning any, so nothing is deleted when one of them is unsafe.
+    const configDir = path.dirname(path.resolve(configFilePath));
+    const unsafeDir = dirsToClean.find((dir) => isSameOrInside(configDir, dir));
+    if (unsafeDir) {
+      console.error(
+        pc.redBright(
+          `Output directory ${pc.blue(path.relative(configDir, unsafeDir) || '.')} contains the config file, so cleaning it would delete the config file. Use another ${pc.blue('dir')}, or set ${pc.blue('cleanDir')} to ${pc.blue('false')} for that output.`,
+        ),
+      );
+      process.exit(1);
+    }
+
     for (const dir of dirsToClean) {
       await dsfs.cleanDir(dir);
     }
