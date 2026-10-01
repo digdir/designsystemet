@@ -94,22 +94,22 @@ Use `output` to choose what is created and where. Each item is either an output 
   "output": [
     // defaults: dir "design-tokens", cleanDir true
     { "type": "design-tokens", "dir": "../path/to/design-tokens" },
-    // defaults: dir "design-tokens-build", tokenDir from the design-tokens output, cleanDir true
-    { "type": "css", "dir": "../path/to/css", "tokenDir": "../path/to/design-tokens" },
+    // defaults: dir "design-tokens-build", tokensDir from the design-tokens output, cleanDir true
+    { "type": "css", "dir": "../path/to/css", "tokensDir": "../path/to/design-tokens" },
   ],
 }
 ```
 
-Design tokens are always created before CSS. If `tokenDir` is not set, CSS is built from the `dir` of the `design-tokens` output.
+Design tokens are always created before CSS. If `tokensDir` is not set, CSS is built from the `dir` of the `design-tokens` output.
 
-If you only need CSS, use `"output": ["css"]` without `tokenDir`. The CSS is then created directly from the themes, without writing any design tokens.
+If you only need CSS, use `"output": ["css"]` without `tokensDir`. The CSS is then created directly from the themes, without writing any design tokens.
 
-`themes` is only needed by outputs that are created from themes. To build CSS from existing design tokens, leave out `themes` and set `tokenDir`:
+`themes` is only needed by outputs that are created from themes. To build CSS from existing design tokens, leave out `themes` and set `tokensDir`:
 
 ```jsonc
 {
   "output": [
-    { "type": "css", "tokenDir": "./design-tokens" },
+    { "type": "css", "tokensDir": "./design-tokens" },
   ],
 }
 ```

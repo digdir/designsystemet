@@ -23,7 +23,7 @@ describe('new output field migration', () => {
       themes: {},
       output: [
         { type: 'design-tokens', dir: 'tokens' },
-        { type: 'css', tokenDir: 'tokens' },
+        { type: 'css', tokensDir: 'tokens' },
       ],
     });
   });
@@ -59,7 +59,7 @@ describe('new output field migration', () => {
       themes: {},
       output: [
         { type: 'design-tokens', dir: 'tokens' },
-        { type: 'css', tokenDir: 'tokens' },
+        { type: 'css', tokensDir: 'tokens' },
       ],
     });
     expect(parseJsonc(migration.yes('{ /* default */ "outDir": "design-tokens", "themes": {} }'))).toEqual({
@@ -75,7 +75,7 @@ describe('new output field migration', () => {
       expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens" }', context))).toEqual({
         output: [
           { type: 'design-tokens', dir: '../tokens' },
-          { type: 'css', tokenDir: '../tokens' },
+          { type: 'css', tokensDir: '../tokens' },
         ],
       });
     });
@@ -84,7 +84,7 @@ describe('new output field migration', () => {
       expect(parseJsonc(migrateToOutputField('{ "clean": true }', context))).toEqual({
         output: [
           { type: 'design-tokens', dir: '../design-tokens' },
-          { type: 'css', tokenDir: '../design-tokens' },
+          { type: 'css', tokensDir: '../design-tokens' },
         ],
       });
     });
@@ -93,7 +93,7 @@ describe('new output field migration', () => {
       expect(parseJsonc(migrateToOutputField('{ "outDir": "/project/configs/tokens" }', context))).toEqual({
         output: [
           { type: 'design-tokens', dir: 'tokens' },
-          { type: 'css', tokenDir: 'tokens' },
+          { type: 'css', tokensDir: 'tokens' },
         ],
       });
     });

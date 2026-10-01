@@ -54,7 +54,7 @@
                     "description": "Whether to clean the output directory before generating files",
                     "type": "boolean"
                   },
-                  "tokenDir": {
+                  "tokensDir": {
                     "description": "The directory containing the design tokens to build CSS from. Defaults to `dir` of the `design-tokens` output. If neither is set, CSS is created directly from the themes",
                     "type": "string"
                   },

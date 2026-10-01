@@ -103,11 +103,11 @@ program
       if (output.type === 'css') {
         console.log(`\n🍱 Creating CSS in ${pc.green(output.dir)}...`);
 
-        // Build CSS from `tokenDir`, or else from the design tokens created by the `design-tokens` output.
+        // Build CSS from `tokensDir`, or else from the design tokens created by the `design-tokens` output.
         // With neither, there are no design tokens to build from, so CSS is created directly from the themes.
-        const tokenDir = output.tokenDir ?? designTokensOutput?.dir;
+        const tokensDir = output.tokensDir ?? designTokensOutput?.dir;
 
-        if (tokenDir === undefined) {
+        if (tokensDir === undefined) {
           await createCss({
             themes: requireThemes(config),
             outDir: outDir,
@@ -118,7 +118,7 @@ program
           await buildCss({
             // Resolve the token directory relative to the config file, like output.dir,
             // so it matches where a preceding design-tokens output wrote its files.
-            tokensDir: path.join(dsfs.outDir, tokenDir),
+            tokensDir: path.join(dsfs.outDir, tokensDir),
             outDir,
             verbose,
             tailwind: output.experimental_tailwind,

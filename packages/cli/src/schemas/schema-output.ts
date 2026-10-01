@@ -11,7 +11,7 @@ const cssOutputSchema = z.object({
   type: z.literal('css').describe('The type of output file'),
   dir: z.string().default('design-tokens-build').describe('The output directory'),
   cleanDir: z.boolean().default(true).describe('Whether to clean the output directory before generating files'),
-  tokenDir: z
+  tokensDir: z
     .string()
     .optional()
     .describe(
