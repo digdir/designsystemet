@@ -115,7 +115,7 @@ All paths are relative to the config file.
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"types"` | Yes | | The output type. |
 | dir | String | No | `design-tokens-build` | The folder where type declarations should be saved. |
-| tokensDir | String | No | `design-tokens` | The folder containing the design tokens to build type declarations from. Should match `dir` of the `design-tokens` output. |
+| tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build type declarations from. If neither is set, type declarations are created directly from the themes. |
 
 Creates `types.d.ts`, which adds your theme's colour names to the types in `@digdir/designsystemet-types`, so props like `data-color` only accept your colours.
 The deprecated `colors.d.ts` is also created, and will be removed in a future release.
