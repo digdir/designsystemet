@@ -28,6 +28,19 @@ describe('new output field migration', () => {
     });
   });
 
+  // A comment between a value and its comma used to hide the comma, leaving invalid JSON behind.
+  it.each([
+    ['a block comment before the comma', '{ "outDir": "design-tokens" /* note */, "themes": {} }'],
+    ['a line comment after the comma', '{\n  "clean": true, // note\n  "themes": {}\n}'],
+    ['a line comment before the comma', '{\n  "clean": true // note\n  ,"themes": {}\n}'],
+    ['a comment after the last property', '{ "themes": {}, "clean": true /* last */ }'],
+  ])('removes the deprecated fields and keeps the config valid with %s', (_, config) => {
+    const migrated = migrateToOutputField(config);
+
+    expect(parseJsonc(migrated)).toEqual({ themes: {} });
+    expect(migrated).toMatch(/note|last/);
+  });
+
   it('places output after $schema if present, otherwise at the top', () => {
     const withSchema = migrateToOutputField('{ "themes": {}, "$schema": "schema.json", "outDir": "tokens" }');
     expect(Object.keys(parseJsonc(withSchema))).toEqual(['themes', '$schema', 'output']);

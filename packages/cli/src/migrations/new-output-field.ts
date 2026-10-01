@@ -1,6 +1,6 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: the deprecated fields are no longer in the schema types, so we need to use any here
 import path from 'node:path';
-import { applyEdits, findNodeAtLocation, modify, parseTree } from 'jsonc-parser';
+import { applyEdits, createScanner, findNodeAtLocation, modify, parseTree } from 'jsonc-parser';
 import pc from 'picocolors';
 import { parseJsonc } from '../schemas/helpers.ts';
 import { outputConfigShape } from '../schemas/schema-output.ts';
@@ -25,38 +25,69 @@ type Automigrate = {
 };
 
 /**
+ * The scanner's token kind for a comma. `SyntaxKind` is a `const enum`, which can't be imported with `isolatedModules`,
+ * so it's read from the scanner instead.
+ */
+const COMMA_TOKEN = createScanner(',').scan();
+
+/** Returns the offset of the next token from `offset` that isn't whitespace or a comment, and that token. */
+const nextToken = (text: string, offset: number) => {
+  const scanner = createScanner(text, true);
+  scanner.setPosition(offset);
+  const token = scanner.scan();
+
+  return { token, offset: scanner.getTokenOffset() };
+};
+
+/**
  * Removes a top-level property and its comma, leaving surrounding comments and formatting intact.
  * `modify(text, [key], undefined)` removes everything up to the next property, including comments.
+ *
+ * Comments between the value and its comma are kept, so the comma is found with the JSONC scanner
+ * rather than by looking for whitespace only.
  */
 const removeProperty = (text: string, key: string): string => {
   const tree = parseTree(text);
   const property = tree && findNodeAtLocation(tree, [key])?.parent;
-  if (!property) {
+  if (!property || !tree.children) {
     return text;
   }
 
-  let start = property.offset;
-  let end = property.offset + property.length;
+  const propertyStart = property.offset;
+  const propertyEnd = property.offset + property.length;
 
-  const trailingComma = /^\s*,/.exec(text.slice(end));
-  if (trailingComma) {
-    end += trailingComma[0].length;
+  // Ranges to remove: the property itself, and one comma next to it.
+  const removals: [number, number][] = [[propertyStart, propertyEnd]];
+
+  const after = nextToken(text, propertyEnd);
+  const hasTrailingComma = after.token === COMMA_TOKEN;
+  if (hasTrailingComma) {
+    removals.push([after.offset, after.offset + 1]);
   } else {
-    // Last property: remove the comma before it instead.
-    const leadingComma = /,\s*$/.exec(text.slice(0, start));
-    if (leadingComma) {
-      start -= leadingComma[0].length;
+    // Last property: remove the comma after the previous property instead.
+    const index = tree.children.indexOf(property);
+    const previous = tree.children[index - 1];
+    if (previous) {
+      const comma = nextToken(text, previous.offset + previous.length);
+      if (comma.token === COMMA_TOKEN) {
+        removals.push([comma.offset, comma.offset + 1]);
+      }
     }
   }
 
-  // Remove the whole line when the property is on its own line.
-  const lineStart = text.lastIndexOf('\n', start - 1) + 1;
-  if (trailingComma && /^[ \t]*$/.test(text.slice(lineStart, start)) && text[end] === '\n') {
-    start = lineStart;
-    end += 1;
+  let result = text;
+  for (const [start, end] of removals.sort(([a], [b]) => b - a)) {
+    result = result.slice(0, start) + result.slice(end);
   }
 
-  return text.slice(0, start) + text.slice(end);
+  // Remove the line the property was on when nothing but whitespace is left on it.
+  const lineStart = result.lastIndexOf('\n', propertyStart - 1) + 1;
+  const lineEnd = result.indexOf('\n', propertyStart);
+  if (lineEnd !== -1 && lineStart > 0 && /^[ \t]*$/.test(result.slice(lineStart, lineEnd))) {
+    result = result.slice(0, lineStart) + result.slice(lineEnd + 1);
+  }
+
+  return result;
 };
 
 const hasDeprecatedFields = (config: string): boolean => {
