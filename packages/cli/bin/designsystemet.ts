@@ -80,6 +80,15 @@ program
     const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
     const designTokensOutput = config.output.find((o) => o.type === 'design-tokens');
 
+    // Outputs created from themes can't run without them. Check this before cleaning, so nothing is deleted when
+    // themes are missing. Same rule as below: design tokens, and CSS with no design tokens to build from.
+    const needsThemes = config.output.some(
+      (o) => o.type === 'design-tokens' || (o.type === 'css' && (o.tokensDir ?? designTokensOutput?.dir) === undefined),
+    );
+    if (needsThemes) {
+      requireThemes(config);
+    }
+
     // Clean every output directory once, before any output is created. Cleaning as part of each output would
     // delete what earlier outputs wrote when they share a directory, which makes the outputs depend on their order.
     const dirsToClean = R.uniq(
