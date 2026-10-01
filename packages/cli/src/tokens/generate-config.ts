@@ -4,6 +4,7 @@ import type { CssColor } from '../colors/types.ts';
 import { toOutput } from '../migrations/new-output-field.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { dsfs } from '../utils/filesystem.ts';
+import { isSameOrInside } from '../utils/paths.ts';
 
 type TokenValue = {
   $type: string;
@@ -203,13 +204,8 @@ type GenerateConfigOptions = {
  */
 export const toConfigTokensDir = (tokensDir: string, configDir: string): string => {
   const absoluteTokensDir = path.resolve(tokensDir);
-  const configFromTokensDir = path.relative(absoluteTokensDir, path.resolve(configDir));
-  const configIsInsideTokensDir =
-    configFromTokensDir !== '..' &&
-    !configFromTokensDir.startsWith(`..${path.sep}`) &&
-    !path.isAbsolute(configFromTokensDir);
 
-  if (configIsInsideTokensDir) {
+  if (isSameOrInside(configDir, absoluteTokensDir)) {
     throw new Error(
       `The config file can't be placed inside the design tokens directory ${pc.blue(absoluteTokensDir)}, since running the config would delete that directory. Use ${pc.blue('--out')} to place the config file outside it.`,
     );
