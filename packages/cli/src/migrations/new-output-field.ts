@@ -68,22 +68,28 @@ const hasDeprecatedFields = (config: string): boolean => {
 const defaultOutDir = outputConfigShape.outDir.parse(undefined);
 
 /**
- * Builds an `output` equivalent to the deprecated `outDir` field.
- * Returns `undefined` when `outDir` has its default value, since the default `output` covers it.
+ * Builds an `output` equivalent to the deprecated `outDir` and `clean` fields.
+ * Returns `undefined` when both have default behaviour, since the default `output` covers it.
  *
- * `clean` never needs to be carried over: its default is covered by the default `output`,
- * and `clean: true` matches the default `cleanDir`.
+ * `cleanDir` defaults to `true`, so an explicit `clean: false` is carried over as `cleanDir: false` on every output.
+ * Otherwise the migrated config would delete output directories the user opted out of cleaning.
+ * A missing `clean` or `clean: true` uses the new default.
  */
-export const toOutput = (outDir: string | undefined) => {
-  if (outDir === undefined || path.posix.normalize(outDir) === path.posix.normalize(defaultOutDir)) {
+export const toOutput = (outDir: string | undefined, { clean }: { clean?: boolean } = {}) => {
+  const isDefaultDir = outDir === undefined || path.posix.normalize(outDir) === path.posix.normalize(defaultOutDir);
+  const keepFiles = clean === false;
+
+  if (isDefaultDir && !keepFiles) {
     return undefined;
   }
 
+  const cleanDir = keepFiles ? { cleanDir: false } : {};
+
   return [
-    { type: 'design-tokens', dir: outDir },
+    { type: 'design-tokens' as const, ...(!isDefaultDir && { dir: outDir }), ...cleanDir },
     // CSS is built from the design tokens, so it must read them from the same directory.
-    { type: 'css', tokensDir: outDir },
-  ] as const;
+    { type: 'css' as const, ...(!isDefaultDir && { tokensDir: outDir }), ...cleanDir },
+  ];
 };
 
 /**
@@ -112,7 +118,9 @@ export const migrateToOutputField = (config: string, context: MigrationContext =
   // If `output` is already set, the deprecated fields are ignored and can simply be removed.
   if (!currentConfig.output) {
     // A missing `outDir` meant the default directory, relative to where the CLI was run from.
-    const output = toOutput(toConfigRelative(currentConfig.outDir ?? defaultOutDir, context));
+    const output = toOutput(toConfigRelative(currentConfig.outDir ?? defaultOutDir, context), {
+      clean: currentConfig.clean,
+    });
     if (output) {
       configText = applyEdits(
         configText,

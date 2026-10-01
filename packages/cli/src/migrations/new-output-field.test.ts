@@ -37,8 +37,31 @@ describe('new output field migration', () => {
   });
 
   it('does not define output when the deprecated fields have default values', () => {
-    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens", "clean": false }'))).toEqual({});
+    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens" }'))).toEqual({});
+    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens", "clean": true }'))).toEqual({});
     expect(parseJsonc(migrateToOutputField('{ "clean": true }'))).toEqual({});
+  });
+
+  // `cleanDir` defaults to `true`, so dropping `clean: false` would delete directories the user opted out of cleaning.
+  it('carries an explicit clean: false over as cleanDir: false on every output', () => {
+    expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens", "clean": false }'))).toEqual({
+      output: [
+        { type: 'design-tokens', dir: 'tokens', cleanDir: false },
+        { type: 'css', tokensDir: 'tokens', cleanDir: false },
+      ],
+    });
+  });
+
+  it('defines output for clean: false even when outDir has its default value', () => {
+    const expected = {
+      output: [
+        { type: 'design-tokens', cleanDir: false },
+        { type: 'css', cleanDir: false },
+      ],
+    };
+
+    expect(parseJsonc(migrateToOutputField('{ "clean": false }'))).toEqual(expected);
+    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens", "clean": false }'))).toEqual(expected);
   });
 
   it('only removes deprecated fields when output is already set', () => {
