@@ -77,6 +77,7 @@ program
 
     // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
     const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
+    const designTokensOutput = config.output.find((o) => o.type === 'design-tokens');
 
     for (const output of sortedOutput) {
       const outDir = path.join(dsfs.outDir, output.dir);
@@ -94,8 +95,11 @@ program
       if (output.type === 'css') {
         console.log(`\n🍱 Creating CSS in ${pc.green(output.dir)}...`);
 
-        // Only generate create CSS if no `design-tokens` output is present and no `tokenDir` is explicitly set in the config file. Otherwise, build CSS from existing design tokens.
-        if (isOnlyCssOutput(parsedConfig)) {
+        // Build CSS from `tokenDir`, or else from the design tokens created by the `design-tokens` output.
+        // With neither, there are no design tokens to build from, so CSS is created directly from the themes.
+        const tokenDir = output.tokenDir ?? designTokensOutput?.dir;
+
+        if (tokenDir === undefined) {
           await createCss({
             themes: requireThemes(config),
             outDir: outDir,
@@ -107,7 +111,7 @@ program
           await buildCss({
             // Resolve the token directory relative to the config file, like output.dir,
             // so it matches where a preceding design-tokens output wrote its files.
-            tokensDir: path.join(dsfs.outDir, output.tokenDir),
+            tokensDir: path.join(dsfs.outDir, tokenDir),
             outDir,
             clean: output.cleanDir,
             verbose,
@@ -312,22 +316,4 @@ async function createCss({
   await dsfs.writeFiles(files, outDir, true);
 
   console.log(`\n✅ Finished creating CSS`);
-}
-
-/** Checks the config file as written, since validation adds defaults such as `tokenDir`. */
-function isOnlyCssOutput(config: ExternalConfigSchemaInput): boolean {
-  // No `output` means the default outputs, which include design tokens.
-  if (!config.output) {
-    return false;
-  }
-
-  // Outputs can be defined using either the shorthand or object syntax, so check for both.
-  const hasDesignTokensOutput = config.output.some(
-    (o) => o === 'design-tokens' || (typeof o === 'object' && o.type === 'design-tokens'),
-  );
-  const hasCSSTokensDir = config.output.some(
-    (o) => typeof o === 'object' && o.type === 'css' && o.tokenDir !== undefined,
-  );
-
-  return !hasDesignTokensOutput && !hasCSSTokensDir;
 }
