@@ -105,14 +105,19 @@ program
     );
 
     // Check every directory before cleaning any, so nothing is deleted when one of them is unsafe.
+    // Paths are resolved, so differently written paths to the same directory (`tokens`, `./tokens/`) match.
+    const resolveDir = (dir: string) => path.resolve(dsfs.outDir, dir);
+    const regeneratedDirs = config.output.flatMap((o) => (o.type === 'design-tokens' ? [resolveDir(o.dir)] : []));
     const unsafeCleanError = findUnsafeClean({
       dirsToClean,
       configDir: path.dirname(path.resolve(configFilePath)),
-      // Existing design tokens that `css` outputs build from. Tokens in the `design-tokens` output's directory
+      // Existing design tokens that `css` outputs build from. Tokens in a `design-tokens` output's directory
       // are created again in this run, so cleaning them is safe.
       inputDirs: config.output
-        .flatMap((o) => (o.type === 'css' && o.tokensDir !== undefined ? [path.join(dsfs.outDir, o.tokensDir)] : []))
-        .filter((dir) => !designTokensOutput || dir !== path.join(dsfs.outDir, designTokensOutput.dir)),
+        .flatMap((o) => (o.type === 'css' && o.tokensDir !== undefined ? [resolveDir(o.tokensDir)] : []))
+        .filter((dir) => !regeneratedDirs.includes(dir)),
+      // Directories of outputs that keep their existing files, which another output's cleaning must not delete.
+      keptDirs: config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir === false ? [resolveDir(o.dir)] : [])),
     });
     if (unsafeCleanError) {
       console.error(pc.redBright(unsafeCleanError));
@@ -350,17 +355,19 @@ async function createCss({
 }
 
 /**
- * Returns an error message when cleaning `dirsToClean` would delete something the run needs: the config file,
- * or existing design tokens in `inputDirs` that an output builds from.
+ * Returns an error message when cleaning `dirsToClean` would delete something it shouldn't: the config file,
+ * existing design tokens in `inputDirs` that an output builds from, or files in `keptDirs` that an output keeps.
  */
 function findUnsafeClean({
   dirsToClean,
   configDir,
   inputDirs,
+  keptDirs,
 }: {
   dirsToClean: string[];
   configDir: string;
   inputDirs: string[];
+  keptDirs: string[];
 }): string | undefined {
   const toConfigRelative = (dir: string) => pc.blue(path.relative(configDir, dir) || '.');
   const fix = `Use another ${pc.blue('dir')}, or set ${pc.blue('cleanDir')} to ${pc.blue('false')} for that output.`;
@@ -373,6 +380,11 @@ function findUnsafeClean({
     const inputDir = inputDirs.find((input) => isSameOrInside(input, dir));
     if (inputDir) {
       return `Output directory ${toConfigRelative(dir)} contains the design tokens in ${toConfigRelative(inputDir)}, so cleaning it would delete them before they are used. ${fix}`;
+    }
+
+    const keptDir = keptDirs.find((kept) => isSameOrInside(kept, dir));
+    if (keptDir) {
+      return `Output directory ${toConfigRelative(dir)} contains ${toConfigRelative(keptDir)}, which has ${pc.blue('cleanDir')} set to ${pc.blue('false')}, so cleaning it would delete files that should be kept. Use separate directories, or the same ${pc.blue('cleanDir')} for both outputs.`;
     }
   }
 
