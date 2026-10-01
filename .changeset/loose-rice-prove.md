@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**Togglegroup:** Now allows overwriting `data-variant` on `Togglegroup.Item`
+**ToggleGroup:** Now allows overwriting `data-variant` on `ToggleGroup.Item`
