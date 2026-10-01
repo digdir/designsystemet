@@ -113,10 +113,12 @@ program
     const unsafeCleanError = findUnsafeClean({
       dirsToClean,
       configDir: path.dirname(path.resolve(configFilePath)),
-      // Existing design tokens that `css` outputs build from. Tokens in a `design-tokens` output's directory
-      // are created again in this run, so cleaning them is safe.
+      // Existing design tokens that `css` and `types` outputs build from. Tokens in a `design-tokens` output's
+      // directory are created again in this run, so cleaning them is safe.
       inputDirs: config.output
-        .flatMap((o) => (o.type === 'css' && o.tokensDir !== undefined ? [resolveDir(o.tokensDir)] : []))
+        .flatMap((o) =>
+          (o.type === 'css' || o.type === 'types') && o.tokensDir !== undefined ? [resolveDir(o.tokensDir)] : [],
+        )
         .filter((dir) => !regeneratedDirs.includes(dir)),
       // Directories of outputs that keep their existing files, which another output's cleaning must not delete.
       keptDirs: config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir === false ? [resolveDir(o.dir)] : [])),
