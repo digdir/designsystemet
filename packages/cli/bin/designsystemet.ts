@@ -13,7 +13,6 @@ import {
   type ExternalConfigSchemaInput,
   externalConfigSchema,
 } from '../src/schemas/schema.ts';
-import { warnDeprecatedFields } from '../src/schemas/schema-output.ts';
 import { buildTokens } from '../src/tokens/build.ts';
 import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { formatThemeCSS } from '../src/tokens/format.ts';
@@ -71,7 +70,17 @@ program
       : await checkAutomigrate(configFile, configFilePath, opts.yes);
 
     const parsedConfig = parseConfig<ExternalConfigSchemaInput>(updatedConfigFile);
-    warnDeprecatedFields(parsedConfig);
+
+    // This command only reads `output`. If `outDir` or `clean` are still in the config, because the migration was
+    // declined or skipped, stop before anything is cleaned or written instead of silently ignoring them.
+    if (parsedConfig.outDir !== undefined || parsedConfig.clean !== undefined) {
+      console.error(
+        pc.redBright(
+          `${pc.blue('outDir')} and ${pc.blue('clean')} are not supported by ${pc.blue('designsystemet')}. Run it again and accept the migration, or replace them with ${pc.blue('output')}. To keep using them, run ${pc.blue('designsystemet tokens create')} instead.`,
+        ),
+      );
+      process.exit(1);
+    }
     // Validate against the public schema first for a user-facing error on unsupported theme fields.
     validateConfig(externalConfigSchema, parsedConfig);
     const config = validateConfig(configSchema, parsedConfig);
