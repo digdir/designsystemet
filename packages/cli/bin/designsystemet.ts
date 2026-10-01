@@ -87,14 +87,17 @@ program
     );
 
     // Check every directory before cleaning any, so nothing is deleted when one of them is unsafe.
-    const configDir = path.dirname(path.resolve(configFilePath));
-    const unsafeDir = dirsToClean.find((dir) => isSameOrInside(configDir, dir));
-    if (unsafeDir) {
-      console.error(
-        pc.redBright(
-          `Output directory ${pc.blue(path.relative(configDir, unsafeDir) || '.')} contains the config file, so cleaning it would delete the config file. Use another ${pc.blue('dir')}, or set ${pc.blue('cleanDir')} to ${pc.blue('false')} for that output.`,
-        ),
-      );
+    const unsafeCleanError = findUnsafeClean({
+      dirsToClean,
+      configDir: path.dirname(path.resolve(configFilePath)),
+      // Existing design tokens that `css` outputs build from. Tokens in the `design-tokens` output's directory
+      // are created again in this run, so cleaning them is safe.
+      inputDirs: config.output
+        .flatMap((o) => (o.type === 'css' && o.tokensDir !== undefined ? [path.join(dsfs.outDir, o.tokensDir)] : []))
+        .filter((dir) => !designTokensOutput || dir !== path.join(dsfs.outDir, designTokensOutput.dir)),
+    });
+    if (unsafeCleanError) {
+      console.error(pc.redBright(unsafeCleanError));
       process.exit(1);
     }
 
@@ -326,4 +329,34 @@ async function createCss({
   await dsfs.writeFiles(files, outDir, true);
 
   console.log(`\n✅ Finished creating CSS`);
+}
+
+/**
+ * Returns an error message when cleaning `dirsToClean` would delete something the run needs: the config file,
+ * or existing design tokens in `inputDirs` that an output builds from.
+ */
+function findUnsafeClean({
+  dirsToClean,
+  configDir,
+  inputDirs,
+}: {
+  dirsToClean: string[];
+  configDir: string;
+  inputDirs: string[];
+}): string | undefined {
+  const toConfigRelative = (dir: string) => pc.blue(path.relative(configDir, dir) || '.');
+  const fix = `Use another ${pc.blue('dir')}, or set ${pc.blue('cleanDir')} to ${pc.blue('false')} for that output.`;
+
+  for (const dir of dirsToClean) {
+    if (isSameOrInside(configDir, dir)) {
+      return `Output directory ${toConfigRelative(dir)} contains the config file, so cleaning it would delete the config file. ${fix}`;
+    }
+
+    const inputDir = inputDirs.find((input) => isSameOrInside(input, dir));
+    if (inputDir) {
+      return `Output directory ${toConfigRelative(dir)} contains the design tokens in ${toConfigRelative(inputDir)}, so cleaning it would delete them before they are used. ${fix}`;
+    }
+  }
+
+  return undefined;
 }
