@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.23.1
+
+### Patch Changes
+
+- **ToggleGroup:** Now allows overwriting `data-variant` on `ToggleGroup.Item` ([#5455](https://github.com/digdir/designsystemet/pull/5455))
+
+- **Dialog:** Automatically uses the first heading as its accessible name if one is missing, and warns when neither is provided. ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
 ## 1.23.0
 
 ### Patch Changes
