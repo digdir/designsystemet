@@ -1,6 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import type { DSSuggestionElement } from './suggestion';
 
 const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
@@ -130,6 +130,95 @@ describe('suggestion component', () => {
     input.dispatchEvent(new Event('input', { bubbles: true }));
 
     expect(empty.hidden).toBe(false);
+  });
+
+  it('hides the empty option while a query partially matches other options', async () => {
+    const suggestion = render();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+
+    await tick(); // Let mutation observer run
+
+    input.value = 'ion';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    expect(empty.hidden).toBe(true);
+
+    input.value = 'missing';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    expect(empty.hidden).toBe(false);
+  });
+
+  it('shows the empty option when a data-nofilter list has disabled every other option', async () => {
+    const suggestion = render();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+    const option = suggestion.querySelector(
+      'u-option[value="option-1"]',
+    ) as HTMLOptionElement;
+
+    suggestion.list?.setAttribute('data-nofilter', '');
+    input.value = 'missing';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    expect(empty.hidden).toBe(true); // Not filtered by label with data-nofilter
+
+    option.disabled = true; // Like the filter in React <Suggestion>, which runs after the input event
+    await tick(); // Let mutation observer run
+    expect(empty.hidden).toBe(false);
+  });
+
+  it('hides the empty option when options are added to the list', async () => {
+    const suggestion = renderEmptyOnly();
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+
+    await tick(); // Let mutation observer run
+    expect(empty.hidden).toBe(false);
+
+    suggestion.list?.insertAdjacentHTML(
+      'beforeend',
+      '<u-option value="oslo">Oslo</u-option>',
+    );
+    await tick(); // Let mutation observer run
+    expect(empty.hidden).toBe(true);
+  });
+
+  it('announces a hit count that excludes the hidden empty option', {
+    tags: ['browser'],
+  }, async () => {
+    vi.useFakeTimers();
+    document.body.innerHTML = `
+      <ds-suggestion class="ds-suggestion" data-sr-singular="%d forslag" data-sr-plural="%d forslag">
+        <input type="search" class="ds-input" />
+        <u-datalist>
+          <u-option data-empty>Ingen treff</u-option>
+          <u-option value="Sogndal">Sogndal</u-option>
+          <u-option value="Oslo">Oslo</u-option>
+          <u-option value="Bergen">Bergen</u-option>
+        </u-datalist>
+      </ds-suggestion>
+    `;
+    const input = document.querySelector('input') as HTMLInputElement;
+    const announced: string[] = [];
+    const observer = new MutationObserver((records) => {
+      for (const { target } of records)
+        if (target instanceof Element && target.matches('[aria-live]'))
+          announced.push(target.textContent?.trim() || ''); // trim() also removes the alternating &nbsp; from u-datalist
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    input.focus();
+    input.click(); // Open first, as u-datalist does not announce hits when typing opens the list
+    await vi.advanceTimersByTimeAsync(100);
+
+    input.value = 'ogn';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    await vi.advanceTimersByTimeAsync(600); // u-datalist announces hits 500 ms after the last input
+
+    observer.disconnect();
+    vi.useRealTimers();
+    // Only check hit counts, as u-combobox can announce "Added …" from earlier tests in its own live region
+    expect(announced.filter((text) => text.endsWith('forslag'))).toEqual([
+      '1 forslag',
+    ]);
   });
 
   it('keeps the typed query in the input when selecting with data-multiple', async () => {

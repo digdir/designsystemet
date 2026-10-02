@@ -293,9 +293,6 @@
   /**
    * Creatable
    */
-  &:not([data-creatable]) > u-datalist:has(u-option[aria-hidden='false']:not([data-empty])) > u-option[data-empty] {
-    display: none; /* Hide empty option when there are other visible options */
-  }
   &:not([data-creatable]) > u-datalist > u-option[data-empty] {
     padding-inline-start: var(--dsc-suggestion-option-padding);
     background: none;

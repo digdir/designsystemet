@@ -17,6 +17,12 @@ export * from '@u-elements/u-datalist';
 const ATTR_EMPTY = 'data-empty';
 const ATTR_CREATE = 'data-create';
 const EVENTS_EMPTY = 'comboboxafterselect comboboxprogrammaticinput input';
+const MUTATIONS: MutationObserverInit = {
+  attributeFilter: ['disabled', 'hidden', 'label'], // React <Suggestion> filters by setting disabled on options
+  characterData: true,
+  childList: true,
+  subtree: true,
+};
 const REGEX_CREATE = /\{value\}|%s/; // Support both new %s and old {value} syntax
 const SINGULAR = 'data-sr-singular';
 const PLURAL = 'data-sr-plural';
@@ -38,7 +44,7 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
     for (const key of TEXTS) attr(this, key, attrOrCSS(this, key)); // Convert CSS variables to data-sr-attributes
     super.connectedCallback(); // Run after setting data-sr-attributes
 
-    this._unmutate = onMutation(this, render, { childList: true }); // .control and .list are direct children of the custom element
+    this._unmutate = onMutation(this, render, MUTATIONS); // .control and .list are direct children, and option changes affect the empty option
     on(this, EVENTS_EMPTY, handleEmpty, QUICK_EVENT);
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
@@ -67,23 +73,28 @@ const render = (self: DSSuggestionElement) => {
 
 const handleEmpty = (event: Pick<Event, 'currentTarget'>) => {
   const self = event.currentTarget as DSSuggestionElement;
-  const { creatable, control, options } = self;
+  const { creatable, control, list, options } = self;
   if (!options) return;
 
   const value = control?.value.trim() || '';
   const query = value.toLowerCase();
+  const filter = !list?.hasAttribute('data-nofilter');
   let emptyOpt: HTMLOptionElement | undefined;
-  let hasLabel = false;
+  let hide = creatable && !value; // Hide initial empty state for an empty creatable input
 
   for (const opt of options) {
     if (!emptyOpt && opt.hasAttribute(ATTR_EMPTY)) emptyOpt = opt;
-    else if (!hasLabel && (!query || opt.label?.toLowerCase() === query))
-      hasLabel = true;
-    if (hasLabel && emptyOpt) break; // Speed up if both conditions are met
+    else if (!hide) {
+      const label = opt.label?.toLowerCase() || '';
+      hide = creatable
+        ? label === query // Hide "Legg til" when the query already exists
+        : !opt.disabled && !opt.hidden && (!filter || label.includes(query)); // Hide when <u-datalist> shows another option, so it is not counted in the screen reader hit count
+    }
+    if (hide && emptyOpt) break; // Speed up if both conditions are met
   }
   if (!emptyOpt) return;
 
-  emptyOpt.hidden = hasLabel || (creatable && !value); // Hide initial empty state when options exist, when the query already exists, or for an initially empty creatable input
+  attr(emptyOpt, 'hidden', hide ? '' : null); // Using attr() as setting an unchanged attribute would trigger the MutationObserver again
   attr(emptyOpt, 'label', value); // Ensures option is not filtered out by <u-combobox>
   attr(emptyOpt, 'value', creatable ? value : ''); // Ensures clicking option does nothing
 
