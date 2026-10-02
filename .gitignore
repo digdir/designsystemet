@@ -3,6 +3,7 @@ dist
 ignore
 tsc-build
 *.tsbuildinfo
+plugins/designsystemet/*.zip
 
 # Really don't want that
 node_modules
