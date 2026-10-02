@@ -1,12 +1,28 @@
 .content {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  row-gap: var(--ds-size-4);
 }
 
+/*
+ * Both sections share the rows of .content, so matching parts of the two sections line up: each row takes the height
+ * of the taller of the two (heading, description, step 1, its code block, its download button).
+ * 7 rows fit the config section (heading, description, then step 1, code block and button, and step 2 and its code
+ * block); the CSS section uses the first 5.
+ */
 .leftSection,
 .rightSection {
-  flex-grow: 1;
-  flex-basis: 0;
+  display: grid;
+  grid-row: span 7;
+  grid-template-rows: subgrid;
+  align-content: start;
+  /* Lets the code blocks scroll instead of widening the column. */
+  min-width: 0;
+}
+
+.leftSection > *,
+.rightSection > * {
+  min-width: 0;
 }
 
 .leftSection {
@@ -15,10 +31,12 @@
 }
 
 .rightSection {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ds-size-4);
-  width: 100%;
+  padding-left: var(--ds-size-8);
+}
+
+.leftSection > button,
+.rightSection > button {
+  justify-self: start;
 }
 
 .infoBoxes {
@@ -81,7 +99,7 @@
   display: block;
 }
 
-.snippet-themecss pre {
+.snippet-config pre {
   height: 250px;
 }
 
@@ -106,7 +124,7 @@
 }
 
 .modal {
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
 .step {
@@ -131,7 +149,20 @@
 
 @media (max-width: 1150px) {
   .content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Stacked, there's nothing to align across, so each section just flows. */
+  .leftSection,
+  .rightSection {
+    display: flex;
     flex-direction: column;
+    gap: var(--ds-size-4);
+  }
+
+  .leftSection > button,
+  .rightSection > button {
+    align-self: flex-start;
   }
 
   .leftSection {
@@ -142,6 +173,5 @@
   .rightSection {
     padding: 0;
     margin-top: 32px;
-    width: 100%;
   }
 }
