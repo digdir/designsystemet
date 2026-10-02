@@ -142,7 +142,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     postMessage('export-result', {
       status: 'success',
       message:
-        'Exported tokens to Figma variables successfully. Please check your Figma variables to ensure they are correctly updated.',
+        'Export successfull. Please check your Figma variables to ensure they are correctly updated.',
       info: log.info,
       warnings: log.warnings,
     });
