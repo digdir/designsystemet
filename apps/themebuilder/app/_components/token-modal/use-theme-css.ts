@@ -31,7 +31,14 @@ export const useThemeCss = (
   const themeKey = JSON.stringify(themeConfig);
 
   useEffect(() => {
-    if (!enabled || !name) {
+    if (!enabled) {
+      return;
+    }
+
+    if (!name) {
+      setCss('');
+      setError(null);
+      setIsGenerating(false);
       return;
     }
 
