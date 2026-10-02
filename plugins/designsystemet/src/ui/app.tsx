@@ -1,69 +1,112 @@
 import '@digdir/designsystemet-css/theme';
 import '@digdir/designsystemet-css';
-import { Alert, Button, Heading, Spinner } from '@digdir/designsystemet-react';
+import { Button, Heading } from '@digdir/designsystemet-react';
 import { useEffect, useReducer, useState } from 'react';
-import type { FigmaMessages, Notification, UiState } from '../types';
+import type { FigmaMessages, Notification } from '../types';
 import './app.css';
-import type { ConfigSchema } from '@digdir/designsystemet/internal';
+import { ExportView, type Progress } from './export-view';
+import { FinishedView } from './finished-view';
+import { NotificationsView } from './notifications-view';
 import { PasteView } from './paste-view';
-import { PreviewView } from './preview-view';
+import { postToPlugin } from './post-to-plugin';
+
+// One view is shown at a time, each replacing the main area.
+type View = 'paste' | 'exporting' | 'finished' | 'notifications';
+
+type UiState = {
+  view: View;
+  progress: Progress | null;
+  /** The last export's outcome, shown in the finished view. */
+  result: { status: 'success' | 'error'; message: string } | null;
+  notifications: Notification[];
+};
 
 const initialState: UiState = {
-  config: null,
-  // Pascal case to match the Figma variable modes ('Light'/'Dark').
-  selectedScheme: 'Light',
-  selectedTheme: null,
-  isImporting: false,
-  notification: null,
+  view: 'paste',
+  progress: null,
+  result: null,
+  notifications: [],
 };
 
 type Action =
-  | {
-      type: 'set-preview';
-      config: ConfigSchema;
-      scheme: string;
-      notification: Notification | null;
-    }
-  | { type: 'clear-preview' }
   | { type: 'export-started' }
-  | { type: 'export-finished'; notification: Notification }
-  | { type: 'set-notification'; notification: Notification | null }
-  | { type: 'select-theme'; theme: string }
-  | { type: 'select-scheme'; scheme: string };
+  | { type: 'export-progress'; progress: Progress }
+  | {
+      type: 'export-finished';
+      result: NonNullable<UiState['result']>;
+      notifications: Notification[];
+    }
+  | { type: 'show-notifications' }
+  | { type: 'go-back' };
 
 function reducer(state: UiState, action: Action): UiState {
   switch (action.type) {
-    case 'set-preview':
+    case 'export-started':
       return {
         ...state,
-        config: action.config,
-        selectedTheme: Object.keys(action.config.themes)[0] ?? null,
-        selectedScheme: action.scheme,
-        notification: action.notification,
+        view: 'exporting',
+        progress: null,
+        result: null,
+        notifications: [],
       };
-    case 'clear-preview':
-      return { ...state, config: null, notification: null };
-    case 'export-started':
-      return { ...state, isImporting: true, notification: null };
+    case 'export-progress':
+      return { ...state, progress: action.progress };
     case 'export-finished':
       return {
         ...state,
-        isImporting: false,
-        notification: action.notification,
+        // A failed export has nothing to show in the finished view, so go straight to what went wrong.
+        view: action.result.status === 'success' ? 'finished' : 'notifications',
+        progress: null,
+        result: action.result,
+        notifications: action.notifications,
       };
-    case 'set-notification':
-      return { ...state, notification: action.notification };
-    case 'select-theme':
-      return { ...state, selectedTheme: action.theme };
-    case 'select-scheme':
-      return { ...state, selectedScheme: action.scheme };
+    case 'show-notifications':
+      return { ...state, view: 'notifications' };
+    case 'go-back':
+      // From notifications, go back to the finished view after a successful export, otherwise to the config.
+      return {
+        ...state,
+        view:
+          state.view === 'notifications' && state.result?.status === 'success'
+            ? 'finished'
+            : 'paste',
+      };
   }
+}
+
+/** Turns an export result into notifications: the error, the warnings, and the export log. */
+function toNotifications(
+  msg: Extract<FigmaMessages, { type: 'export-result' }>,
+): Notification[] {
+  const warnings = msg.warnings ?? [];
+  const info = msg.info ?? [];
+  return [
+    ...(msg.status === 'error'
+      ? [{ kind: 'error' as const, text: msg.message }]
+      : []),
+    ...(warnings.length > 0
+      ? [
+          {
+            kind: 'warning' as const,
+            text: `${warnings.length} ${warnings.length === 1 ? 'item was' : 'items were'} skipped or could not be applied:`,
+            details: warnings,
+          },
+        ]
+      : []),
+    ...(info.length > 0
+      ? [
+          {
+            kind: 'info' as const,
+            text: `Export log (${info.length})`,
+            details: info,
+          },
+        ]
+      : []),
+  ];
 }
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const view = state.config ? 'preview' : 'paste';
-
   const [pastedConfig, setPastedConfig] = useState('');
 
   useEffect(() => {
@@ -72,69 +115,19 @@ function App() {
       const msg = event.data?.pluginMessage as FigmaMessages | undefined;
       if (!msg) return;
       switch (msg.type) {
-        case 'preview-tokens-from-config': {
-          switch (msg.status) {
-            case 'success':
-              if (!msg.preview) {
-                return;
-              }
-              dispatch({
-                type: 'set-preview',
-                config: msg.preview.config,
-                scheme: 'Light',
-                notification:
-                  msg.preview.warnings.length > 0
-                    ? {
-                        kind: 'warning',
-                        text: 'The tokens were generated with warnings.',
-                        details: msg.preview.warnings,
-                      }
-                    : null,
-              });
-              break;
-            case 'error':
-              dispatch({
-                type: 'set-notification',
-                notification: { kind: 'error', text: msg.message },
-              });
-              break;
-          }
+        case 'export-progress':
+          dispatch({
+            type: 'export-progress',
+            progress: { step: msg.step, total: msg.total, label: msg.label },
+          });
           break;
-        }
-        case 'export-tokens-to-figma': {
-          switch (msg.status) {
-            case 'exporting':
-              dispatch({ type: 'export-started' });
-              break;
-            case 'success': {
-              const warnings = msg.warnings ?? [];
-              // TODO add some kind of verbose option or detailed view for info messages
-              dispatch({
-                type: 'export-finished',
-                notification:
-                  warnings.length > 0
-                    ? {
-                        kind: 'warning',
-                        text: `Exported tokens to Figma variables, but ${warnings.length} ${warnings.length === 1 ? 'item was' : 'items were'} skipped or could not be applied:`,
-                        details: warnings,
-                      }
-                    : { kind: 'success', text: msg.message },
-              });
-              break;
-            }
-            case 'error':
-              dispatch({
-                type: 'export-finished',
-                notification: {
-                  kind: 'error',
-                  text: msg.message,
-                  details: [...(msg.warnings ?? []), ...(msg.info ?? [])],
-                },
-              });
-              break;
-          }
+        case 'export-result':
+          dispatch({
+            type: 'export-finished',
+            result: { status: msg.status, message: msg.message },
+            notifications: toNotifications(msg),
+          });
           break;
-        }
       }
     };
 
@@ -145,12 +138,14 @@ function App() {
     };
   }, []);
 
-  const postToPlugin = (
-    type: FigmaMessages['type'],
-    payload?: Record<string, unknown>,
-  ) => {
-    parent.postMessage({ pluginMessage: { type, ...payload } }, '*');
+  const exportConfig = () => {
+    dispatch({ type: 'export-started' });
+    postToPlugin('export-config-to-figma', { config: pastedConfig });
   };
+
+  // The number of skipped or failed items, i.e. the lines of the warning notification.
+  const warningCount =
+    state.notifications.find((n) => n.kind === 'warning')?.details?.length ?? 0;
 
   return (
     <div className='app'>
@@ -158,111 +153,57 @@ function App() {
         <Heading>Export theme to Figma</Heading>
       </header>
 
-      {state.notification && (
-        <Banner
-          notification={state.notification}
-          onDismiss={() =>
-            dispatch({ type: 'set-notification', notification: null })
-          }
-        />
-      )}
-
       <main>
-        {view === 'paste' && (
+        {state.view === 'paste' && (
           <PasteView value={pastedConfig} onChange={setPastedConfig} />
         )}
-        {state.config && (
-          <PreviewView
-            config={state.config}
-            selectedScheme={state.selectedScheme}
-            selectedTheme={state.selectedTheme}
-            onSelectScheme={(scheme) =>
-              dispatch({ type: 'select-scheme', scheme })
-            }
-            onSelectTheme={(theme) => dispatch({ type: 'select-theme', theme })}
+        {state.view === 'exporting' && <ExportView progress={state.progress} />}
+        {state.view === 'finished' && state.result && (
+          <FinishedView
+            message={state.result.message}
+            warningCount={warningCount}
           />
+        )}
+        {state.view === 'notifications' && (
+          <NotificationsView notifications={state.notifications} />
         )}
       </main>
       <footer>
         <div className='footer-left'>
-          {view === 'preview' && (
+          {state.view === 'notifications' && (
             <Button
-              onClick={() => dispatch({ type: 'clear-preview' })}
+              onClick={() => dispatch({ type: 'go-back' })}
               variant='tertiary'
             >
               Go back
             </Button>
           )}
-        </div>
-        <div className='footer-right'>
-          {view === 'paste' && (
+          {state.view === 'finished' && (
             <Button
-              onClick={() =>
-                postToPlugin('import-config-and-create-preview-tokens', {
-                  config: pastedConfig,
-                })
-              }
+              onClick={() => dispatch({ type: 'go-back' })}
+              variant='tertiary'
             >
-              Preview
+              Export another config
             </Button>
           )}
-
-          {view === 'preview' && (
-            <Button onClick={() => postToPlugin('export-tokens-to-figma')}>
+        </div>
+        <div className='footer-right'>
+          {state.view === 'paste' && (
+            <Button onClick={exportConfig} disabled={!pastedConfig.trim()}>
               Export to Figma
+            </Button>
+          )}
+          {state.view === 'finished' && state.notifications.length > 0 && (
+            <Button
+              onClick={() => dispatch({ type: 'show-notifications' })}
+              variant='secondary'
+            >
+              Show notifications
             </Button>
           )}
         </div>
       </footer>
-      {state.isImporting && (
-        <div className='overlay' role='status' aria-live='polite'>
-          <div className='overlay-card'>
-            <Spinner aria-label='Exporting to Figma…' />
-            <span>Exporting to Figma…</span>
-          </div>
-        </div>
-      )}
     </div>
-  );
-}
-
-// Longer lists are cut off with an "and N more" line so the banner stays readable.
-const MAX_DETAILS = 8;
-
-function Banner({
-  notification,
-  onDismiss,
-}: {
-  notification: Notification;
-  onDismiss: () => void;
-}): React.JSX.Element {
-  // Notification.kind maps onto Designsystemet severity colors; 'error' is 'danger' there.
-  const color = notification.kind === 'error' ? 'danger' : notification.kind;
-  return (
-    <Alert data-color={color} className='banner'>
-      <div className='banner-body'>
-        <span>{notification.text}</span>
-        {notification.details && notification.details.length > 0 && (
-          <ul className='banner-details'>
-            {notification.details.slice(0, MAX_DETAILS).map((line, index) => (
-              <li key={index}>{line}</li>
-            ))}
-            {notification.details.length > MAX_DETAILS && (
-              <li>and {notification.details.length - MAX_DETAILS} more</li>
-            )}
-          </ul>
-        )}
-      </div>
-      <Button
-        variant='tertiary'
-        data-size='sm'
-        icon
-        onClick={onDismiss}
-        aria-label='Dismiss'
-      >
-        ×
-      </Button>
-    </Alert>
   );
 }
 
