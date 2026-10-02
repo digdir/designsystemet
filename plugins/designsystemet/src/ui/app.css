@@ -43,200 +43,38 @@ footer {
 
 .app {
   display: grid;
+  /* Header and footer keep their size; the current view gets the rest. */
+  grid-template-rows: auto minmax(0, 1fr) auto;
   height: 100vh;
 }
 
-/* Banner (Designsystemet Alert) — a dismiss button sits to the right of the message. */
-.banner {
+/* Export and finished views: a centred status message. */
+.status-view {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: var(--ds-size-3);
-  margin: var(--ds-size-3) var(--ds-size-5) 0;
-}
-
-.banner-body {
-  flex: 1 1 auto;
-}
-
-.banner-details {
-  margin: 6px 0 0;
-  padding-left: 18px;
-}
-
-/* Dimmed text for the plugin chrome only. The token follows Figma's theme, not the preview scheme,
-   so inside .surface use `color: inherit` + opacity (see .row-label) to stay legible on both surfaces. */
-.subtle {
-  color: var(--ds-color-neutral-text-subtle);
-}
-
-/* Preview: theme/scheme controls + color scales + border radii. */
-.hero {
-  display: grid;
-  gap: 10px;
-  padding: 18px var(--ds-size-5);
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-}
-
-.control-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--ds-size-4);
-}
-
-.preview-layout {
-  display: grid;
-  gap: var(--ds-size-4);
-  padding-inline: var(--ds-size-4);
-}
-
-/* The preview surface follows the selected color scheme rather than Figma's theme. Softened
-   light/dark tones (not pure white/black) keep it readable without flashbanging dark-mode
-   users. Keyed on the scheme in JSX so it remounts and replays the reveal on scheme switch. */
-.surface {
-  display: grid;
-  padding-block: var(--ds-size-4);
-  margin: 0 auto;
-}
-
-.surface--light {
-  color: #1e1e1e;
-  background: #f4f4f5;
-}
-
-.surface--dark {
-  color: #f5f5f6;
-  background: #26282c;
-}
-
-.color-grid {
-  display: grid;
-  gap: var(--ds-size-1);
-}
-
-.labeled-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.row-label {
-  flex: 0 0 120px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-weight: var(--ds-font-weight-medium);
-  /* Inherit the surface color so labels stay legible on either surface. */
-  color: inherit;
-  opacity: 0.75;
-}
-
-.swatches {
-  display: flex;
-  gap: 2px;
-}
-
-.swatch {
-  width: var(--ds-size-8);
-  height: var(--ds-size-8);
-  border-radius: var(--ds-border-radius-sm);
-  background:
-    linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%),
-    linear-gradient(-45deg, transparent 75%, #ccc 75%);
-  background-color: #f0f0f0;
-  background-position:
-    0 0,
-    0 6px,
-    6px -6px,
-    -6px 0;
-  background-size: 12px 12px;
-}
-
-.swatch.has-color {
-  background: var(--swatch);
-}
-
-.radius-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.radius-item {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-size-3);
-}
-
-.radius-sample {
-  width: var(--ds-size-8);
-  height: var(--ds-size-8);
-  border: 1px solid currentColor;
-  border-radius: var(--radius);
-  background: var(--ds-color-surface-default);
-  /* opacity: 0.6; */
-}
-
-.radius-label {
-  font-size: var(--ds-font-size-4);
-  opacity: 0.75;
-}
-
-.font-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ds-size-3);
-}
-
-.font-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* The sample inherits the surface color; the family itself comes from the theme token.
-   If the font isn't available inside the plugin iframe, the sans-serif fallback renders. */
-.font-sample {
-  font-size: var(--ds-font-size-5);
-  line-height: 1;
-  opacity: 0.9;
-}
-
-.font-name {
-  font-size: var(--ds-font-size-5);
-  opacity: 0.75;
-}
-
-.empty {
-  display: grid;
-  min-height: 420px;
-  place-items: center;
-  padding: var(--ds-size-10);
-  color: var(--ds-color-neutral-text-subtle);
+  height: 100%;
+  padding: var(--ds-size-8) var(--ds-size-5);
   text-align: center;
 }
 
-/* Busy overlay shown while exporting to Figma. */
-.overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 30;
-  display: grid;
-  place-items: center;
-  padding: var(--ds-size-6);
-  background: rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(6px);
+.progress {
+  width: min(400px, 100%);
+  accent-color: var(--ds-color-accent-base-default);
 }
 
-.overlay-card {
-  display: grid;
-  justify-items: center;
+/* Notifications view: errors and warnings, then the collapsed export log. */
+.notifications-view {
+  display: flex;
+  flex-direction: column;
   gap: var(--ds-size-3);
-  min-width: 220px;
-  padding: var(--ds-size-5) var(--ds-size-6);
-  border: 1px solid var(--ds-color-neutral-border-subtle);
-  border-radius: var(--ds-border-radius-md);
-  background: var(--ds-color-neutral-surface-default);
-  color: var(--ds-color-neutral-text-subtle);
-  box-shadow: var(--ds-shadow-lg);
+  padding: var(--ds-size-4) var(--ds-size-5);
+  overflow-y: auto;
+}
+
+.notification-details {
+  margin: 6px 0 0;
+  padding-left: 18px;
 }
