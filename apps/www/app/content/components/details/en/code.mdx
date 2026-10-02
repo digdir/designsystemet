@@ -21,7 +21,7 @@ The component will inherit from the closest parent where these are set.
 <CssAttributes />
 
 ## Polyfill
-In Firefox, we automatically add accessibility attributes to `<summary>`, so the TalkBack screen reader on Android announces state and role correctly.
+We use [@u-elements/u-details/polyfill](https://u-elements.github.io/u-elements/elements/u-details) to fix missing accessibility state announcement in `<summary>` in Firefox with Android TalkBack screen reader.
 
 ## React
 
