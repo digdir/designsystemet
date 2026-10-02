@@ -9,7 +9,7 @@ Read the Designsystemet [README](https://github.com/digdir/designsystemet) to ge
 
 ## Usage
 
-Use `npx @digdir/designsystemet` to create design tokens and CSS for use with Designsystemet, based on a [config file](#using-a-config-file).
+Use `npx @digdir/designsystemet` to create design tokens, CSS and type declarations for use with Designsystemet, based on a [config file](#using-a-config-file).
 
 This allows you to define themes including custom colors, font-family, and border-radius.
 We recommend using the [Designsystemet theme builder](https://theme.designsystemet.no/) for generating a valid config.
@@ -83,11 +83,11 @@ To generate new design tokens and CSS files, you would then run:
 npx @digdir/designsystemet
 ```
 
-This creates design tokens in `design-tokens` and CSS in `design-tokens-build`, relative to the config file.
+This creates design tokens in `design-tokens`, and CSS and type declarations in `design-tokens-build`, relative to the config file.
 
 #### Output
 
-Use `output` to choose what is created and where. Each item is either an output type (`"design-tokens"` or `"css"`) using its default settings, or an object:
+Use `output` to choose what is created and where. Each item is either an output type (`"design-tokens"`, `"css"` or `"types"`) using its default settings, or an object:
 
 ```jsonc
 {
@@ -96,20 +96,25 @@ Use `output` to choose what is created and where. Each item is either an output 
     { "type": "design-tokens", "dir": "../path/to/design-tokens" },
     // defaults: dir "design-tokens-build", tokensDir from the design-tokens output, cleanDir true, tailwind false
     { "type": "css", "dir": "../path/to/css", "tokensDir": "../path/to/design-tokens" },
+    // defaults: dir "design-tokens-build", tokensDir from the design-tokens output
+    { "type": "types", "dir": "../path/to/types", "tokensDir": "../path/to/design-tokens" },
   ],
 }
 ```
 
-Design tokens are always created before CSS. If `tokensDir` is not set, CSS is built from the `dir` of the `design-tokens` output.
+Design tokens are always created first, then CSS, then types. If `tokensDir` is not set, CSS and types are built from the `dir` of the `design-tokens` output.
 
-If you only need CSS, use `"output": ["css"]` without `tokensDir`. The CSS is then created directly from the themes, without writing any design tokens.
+The `types` output writes `types.d.ts` (and the deprecated `colors.d.ts`), which augment `@digdir/designsystemet-types` with your theme's color names.
 
-`themes` is only needed by outputs that are created from themes. To build CSS from existing design tokens, leave out `themes` and set `tokensDir`:
+If you only need CSS and/or types, use e.g. `"output": ["css", "types"]` without `tokensDir`. They are then created directly from the themes, without writing any design tokens.
+
+`themes` is only needed by outputs that are created from themes. To build CSS and types from existing design tokens, leave out `themes` and set `tokensDir`:
 
 ```jsonc
 {
   "output": [
     { "type": "css", "tokensDir": "./design-tokens" },
+    { "type": "types", "tokensDir": "./design-tokens" },
   ],
 }
 ```

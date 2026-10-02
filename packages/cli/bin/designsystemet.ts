@@ -13,10 +13,11 @@ import {
   type ExternalConfigSchemaInput,
   externalConfigSchema,
 } from '../src/schemas/schema.ts';
-import { buildTokens } from '../src/tokens/build.ts';
+import { buildTokens, createTypesFromTokens } from '../src/tokens/build.ts';
 import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { formatThemeCSS } from '../src/tokens/format.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
+import { createTypes } from '../src/tokens/process/output/declarations.ts';
 import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
@@ -85,14 +86,17 @@ program
     validateConfig(externalConfigSchema, parsedConfig);
     const config = validateConfig(configSchema, parsedConfig);
 
-    // Sort outputs so that design-tokens are generated before CSS, since CSS may depend on the design tokens being present.
-    const sortedOutput = R.sortBy((o) => (o.type === 'design-tokens' ? 0 : 1), config.output);
+    // Sort outputs so that design-tokens are generated first, since CSS and types may be built from the design tokens.
+    const outputOrder = { 'design-tokens': 0, css: 1, types: 2 } as const;
+    const sortedOutput = R.sortBy((o) => outputOrder[o.type], config.output);
     const designTokensOutput = config.output.find((o) => o.type === 'design-tokens');
 
     // Outputs created from themes can't run without them. Check this before cleaning, so nothing is deleted when
-    // themes are missing. Same rule as below: design tokens, and CSS with no design tokens to build from.
+    // themes are missing. Same rule as below: design tokens, and CSS or types with no design tokens to build from.
     const needsThemes = config.output.some(
-      (o) => o.type === 'design-tokens' || (o.type === 'css' && (o.tokensDir ?? designTokensOutput?.dir) === undefined),
+      (o) =>
+        o.type === 'design-tokens' ||
+        ((o.type === 'css' || o.type === 'types') && (o.tokensDir ?? designTokensOutput?.dir) === undefined),
     );
     if (needsThemes) {
       requireThemes(config);
@@ -111,10 +115,12 @@ program
     const unsafeCleanError = findUnsafeClean({
       dirsToClean,
       configDir: path.dirname(path.resolve(configFilePath)),
-      // Existing design tokens that `css` outputs build from. Tokens in a `design-tokens` output's directory
-      // are created again in this run, so cleaning them is safe.
+      // Existing design tokens that `css` and `types` outputs build from. Tokens in a `design-tokens` output's
+      // directory are created again in this run, so cleaning them is safe.
       inputDirs: config.output
-        .flatMap((o) => (o.type === 'css' && o.tokensDir !== undefined ? [resolveDir(o.tokensDir)] : []))
+        .flatMap((o) =>
+          (o.type === 'css' || o.type === 'types') && o.tokensDir !== undefined ? [resolveDir(o.tokensDir)] : [],
+        )
         .filter((dir) => !regeneratedDirs.includes(dir)),
       // Directories of outputs that keep their existing files, which another output's cleaning must not delete.
       keptDirs: config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir === false ? [resolveDir(o.dir)] : [])),
@@ -165,8 +171,27 @@ program
             outDir,
             verbose,
             tailwind: output.tailwind,
+            types: false,
           });
         }
+      }
+
+      if (output.type === 'types') {
+        console.log(`\n🍱 Creating type declarations in ${pc.green(output.dir)}...`);
+
+        // Like CSS: build from `tokensDir`, or else from the `design-tokens` output, or else from the themes.
+        const tokensDir = output.tokensDir ?? designTokensOutput?.dir;
+        // Like CSS: a dry run doesn't write the design tokens this run creates, so create the types from the themes.
+        const tokensNotWritten = dry && tokensDir !== undefined && regeneratedDirs.includes(resolveDir(tokensDir));
+
+        // All themes have the same color names (checked during validation), so the first theme is enough.
+        const files =
+          tokensDir === undefined || tokensNotWritten
+            ? createTypes(Object.keys(Object.values(requireThemes(config))[0].colors))
+            : await createTypesFromTokens(path.join(dsfs.outDir, tokensDir));
+
+        await dsfs.mkdir(outDir);
+        await dsfs.writeFiles(files, outDir, true);
       }
     }
   });
@@ -301,12 +326,14 @@ async function buildCss({
   clean,
   verbose,
   tailwind,
+  types,
 }: {
   tokensDir: string;
   outDir: string;
   clean?: boolean;
   verbose?: boolean;
   tailwind?: TailwindVersion | false;
+  types?: boolean;
 }) {
   if (clean) {
     await dsfs.cleanDir(outDir);
@@ -316,6 +343,7 @@ async function buildCss({
     tokensDir,
     verbose: verbose ?? false,
     tailwind: tailwind ?? false,
+    types,
   });
 
   console.log(`\n💾 Writing CSS to ${pc.green(outDir)}`);
