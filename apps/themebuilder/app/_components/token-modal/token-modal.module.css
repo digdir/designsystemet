@@ -5,23 +5,23 @@
 }
 
 /*
- * Both sections share the rows of .content (heading, description, body), so the description row takes the height
- * of the longest description and the steps in both bodies start at the same height.
+ * Both sections share the rows of .content, so matching parts of the two sections line up: each row takes the height
+ * of the taller of the two (heading, description, step 1, its code block, its download button).
+ * 7 rows fit the config section (heading, description, then step 1, code block and button, and step 2 and its code
+ * block); the CSS section uses the first 5.
  */
 .leftSection,
 .rightSection {
   display: grid;
-  grid-row: span 3;
+  grid-row: span 7;
   grid-template-rows: subgrid;
   align-content: start;
   /* Lets the code blocks scroll instead of widening the column. */
   min-width: 0;
 }
 
-.sectionBody {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ds-size-4);
+.leftSection > *,
+.rightSection > * {
   min-width: 0;
 }
 
@@ -34,8 +34,9 @@
   padding-left: var(--ds-size-8);
 }
 
-.sectionBody > button {
-  align-self: flex-start;
+.leftSection > button,
+.rightSection > button {
+  justify-self: start;
 }
 
 .infoBoxes {
@@ -98,6 +99,7 @@
   display: block;
 }
 
+.snippet-config pre,
 .snippet-themecss pre {
   height: 250px;
 }
@@ -157,6 +159,11 @@
     display: flex;
     flex-direction: column;
     gap: var(--ds-size-4);
+  }
+
+  .leftSection > button,
+  .rightSection > button {
+    align-self: flex-start;
   }
 
   .leftSection {

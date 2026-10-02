@@ -32,7 +32,7 @@ export default function Config({
           </Link>
         </Paragraph>
       </div>
-      <div className={classes.snippet}>
+      <div className={`${classes.snippet} ${classes['snippet-config']}`}>
         <CodeBlock language='json'>{configSnippet}</CodeBlock>
       </div>
       <Button
