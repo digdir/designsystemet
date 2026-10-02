@@ -1,0 +1,18 @@
+@import url('./designsystemet.css');
+
+/* 
+ * Min config
+*/
+:root,
+[data-color='primary'] {
+  --ds-color: #0162ba;
+}
+
+[data-color='danger'] {
+  --ds-color: red;
+  --ds-color-base-default--light: tomato;
+}
+
+[data-size='xs'] {
+  --ds-size: 2;
+}

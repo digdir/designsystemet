@@ -1,0 +1,81 @@
+@import url('./designsystemet.css');
+
+/* 
+ * Min config
+*/
+:root,
+[data-color='primary'] {
+  --ds-color: #0162ba;
+  --ds-color-background-default--light: #ffffff;
+  --ds-color-background-default--dark: #07182c;
+  --ds-color-background-tinted--light: #eff4fa;
+  --ds-color-background-tinted--dark: #0c2038;
+  --ds-color-surface-default--light: #ffffff;
+  --ds-color-surface-default--dark: #102945;
+  --ds-color-surface-tinted--light: #dfeaf5;
+  --ds-color-surface-tinted--dark: #142f4e;
+  --ds-color-surface-hover--light: #cadcef;
+  --ds-color-surface-hover--dark: #18365a;
+  --ds-color-surface-active--light: #b3cde8;
+  --ds-color-surface-active--dark: #1f446f;
+  --ds-color-border-subtle--light: #9dbfe2;
+  --ds-color-border-subtle--dark: #275183;
+  --ds-color-border-default--light: #2f7cc5;
+  --ds-color-border-default--dark: #5d84b3;
+  --ds-color-border-strong--light: #015db1;
+  --ds-color-border-strong--dark: #90aaca;
+  --ds-color-text-subtle--light: #015db1;
+  --ds-color-text-subtle--dark: #90aaca;
+  --ds-color-text-default--light: #002b58;
+  --ds-color-text-default--dark: #e8edf4;
+  --ds-color-base-default--light: #0162ba;
+  --ds-color-base-default--dark: #5290ce;
+  --ds-color-base-hover--light: #014f98;
+  --ds-color-base-hover--dark: #74a6d7;
+  --ds-color-base-active--light: #003d77;
+  --ds-color-base-active--dark: #96bbe0;
+  --ds-color-base-contrast-subtle--light: #dde9f5;
+  --ds-color-base-contrast-subtle--dark: #0a1928;
+  --ds-color-base-contrast-default--light: #ffffff;
+  --ds-color-base-contrast-default--dark: #000000;
+}
+
+[data-color='danger'] {
+  --ds-color: red;
+  --ds-color-background-default--light: #ffffff;
+  --ds-color-background-default--dark: #300b07;
+  --ds-color-background-tinted--light: #fff0f0;
+  --ds-color-background-tinted--dark: #3d100b;
+  --ds-color-surface-default--light: #ffffff;
+  --ds-color-surface-default--dark: #4b1610;
+  --ds-color-surface-tinted--light: #ffe2e2;
+  --ds-color-surface-tinted--dark: #551a13;
+  --ds-color-surface-hover--light: #ffcece;
+  --ds-color-surface-hover--dark: #611f18;
+  --ds-color-surface-active--light: #ffb8b8;
+  --ds-color-surface-active--dark: #78281f;
+  --ds-color-border-subtle--light: #ffa3a3;
+  --ds-color-border-subtle--dark: #8d3127;
+  --ds-color-border-default--light: #f30000;
+  --ds-color-border-default--dark: #df5142;
+  --ds-color-border-strong--light: #be0000;
+  --ds-color-border-strong--dark: #eb8f86;
+  --ds-color-text-subtle--light: #be0000;
+  --ds-color-text-subtle--dark: #eb8f86;
+  --ds-color-text-default--light: #5f0000;
+  --ds-color-text-default--dark: #fbe8e6;
+  --ds-color-base-default--light: #ff6347;
+  --ds-color-base-default--dark: #e00000;
+  --ds-color-base-hover--light: #ff5b5b;
+  --ds-color-base-hover--dark: #bb0000;
+  --ds-color-base-active--light: #ff8585;
+  --ds-color-base-active--dark: #970000;
+  --ds-color-base-contrast-subtle--light: #230000;
+  --ds-color-base-contrast-subtle--dark: #fdf3f3;
+  --ds-color-base-contrast-default--light: #000000;
+  --ds-color-base-contrast-default--dark: #ffffff;
+}
+
+[data-size='xs'] {
+  --ds-size: 2;
+}
