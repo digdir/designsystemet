@@ -116,6 +116,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
 
     return (
       <Component
+        suppressHydrationWarning // Since dialog.ts will add aria-label attribute dynamically
         className={cl('ds-dialog', className)}
         data-placement={placement}
         data-modal={modal} // Needed for dialog-trigger.tsx

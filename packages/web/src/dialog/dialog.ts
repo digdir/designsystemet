@@ -1,10 +1,14 @@
+import '../invokers/invokers'; // Make sure to import invokers so command="show-modal" works as expected
 import {
+  ARIA_LABEL,
+  ARIA_LABELLEDBY,
   attr,
   getComposedPath,
   getComposedTarget,
   on,
   onHotReload,
   QUICK_EVENT,
+  warn,
 } from '../utils/utils';
 
 // Polyfill closedby functionaliy in Safari
@@ -46,8 +50,26 @@ const handleAriaAttributes = (event: Event) => {
 const handleCommand = ({ command, target }: Event & { command?: string }) =>
   command === NON_MODAL && target instanceof HTMLDialogElement && target.show();
 
+const handleToggle = ({ target: el, newState }: Partial<ToggleEvent>) => {
+  if (el instanceof HTMLDialogElement && newState === 'open') {
+    const hasAria = attr(el, ARIA_LABEL) || attr(el, ARIA_LABELLEDBY);
+    const heading = el.querySelector('h2,h3,h4,h5,h6')?.textContent.trim();
+
+    if (hasAria?.trim()) return;
+    if (heading) attr(el, ARIA_LABEL, heading); // Using aria-label instead of aria-labelleby to avoid need of suppressHydrationWarning on all heading elements
+    warn(
+      'Missing accessible name on:',
+      el,
+      `\nAdd a heading (h2-h6), or set ${ARIA_LABEL} or ${ARIA_LABELLEDBY} to provide an accessible name for screen readers.`,
+    );
+  }
+};
+
 onHotReload('dialog', () => [
   on(document, 'command', handleCommand, QUICK_EVENT),
   on(document, 'focus', handleAriaAttributes, QUICK_EVENT),
   on(document, 'pointerdown pointerup', handleClosedbyAny, QUICK_EVENT),
+  // Using toggle event to augment accessibile name, as this runs both on user open,
+  // and programmatic showModal()/show(), while avoiding mutation observer overhead
+  on(document, 'toggle', handleToggle, QUICK_EVENT),
 ]);

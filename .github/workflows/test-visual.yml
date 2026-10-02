@@ -54,6 +54,8 @@ jobs:
         run: pnpm build
       - name: Build storybook
         run: pnpm build:storybook
+      - name: Prepare Chromatic metadata file
+        run: touch apps/storybook/chromatic.log
       - name: Chromatic (visual + interaction)
         uses: chromaui/action@259eda5f0e44c0c1eab38b672f1c4c967cc969b7 # v18.8.1
         with:

@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.23.0
+
+### Patch Changes
+
+- **CLI:** Generated theme CSS now includes forced-colors support for high contrast mode. ([#5403](https://github.com/digdir/designsystemet/pull/5403))
+
+- Update npm non-major dependencies ([#5373](https://github.com/digdir/designsystemet/pull/5373))
+
+- **CLI** Remove internal functions that were exposed by default. ([#5410](https://github.com/digdir/designsystemet/pull/5410))
+
+- **cli**: Color names in `themes.<theme>.colors` are now validated and may only contain lowercase letters (a-z), digits (0-9) and hyphens (-), matching the names produced by the theme builder. ([#5357](https://github.com/digdir/designsystemet/pull/5357))
+
 ## 1.22.0
 
 No changes in this release.
