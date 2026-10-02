@@ -24,7 +24,7 @@ export default {
       'Bruk denne når du skal komme i gang med Figma og generere design-tokens, CSS fil eller andre former for kode.',
     download: 'Last ned {{filename}}',
     'step-one':
-      'Last ned config fila din som "designsystemet.config.json" der du vil at tokens og CSS skal bli generert. Les mer om hvordan du synkroniserer tokens med Figma her:',
+      'Last ned config fila der du vil at tokens og CSS skal bli generert. Les mer om hvordan du synkroniserer tokens med Figma her:',
     'step-two':
       'Åpne terminal i samme mappe som config fila. Kjør kodesnuttene for å generere tokens og CSS variabler til kode.',
   },
