@@ -58,10 +58,23 @@
                     "description": "The directory containing the design tokens to build CSS from. Defaults to `dir` of the `design-tokens` output. If neither is set, CSS is created directly from the themes",
                     "type": "string"
                   },
-                  "experimental_tailwind": {
-                    "default": true,
-                    "description": "Whether to enable experimental Tailwind support",
-                    "type": "boolean"
+                  "tailwind": {
+                    "default": false,
+                    "description": "The Tailwind CSS major version to generate a theme file for, or `false` to not generate one",
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "const": "v3"
+                      },
+                      {
+                        "type": "string",
+                        "const": "v4"
+                      },
+                      {
+                        "type": "boolean",
+                        "const": false
+                      }
+                    ]
                   }
                 },
                 "required": [

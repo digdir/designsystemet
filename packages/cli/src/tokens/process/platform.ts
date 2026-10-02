@@ -4,6 +4,7 @@ import StyleDictionary from 'style-dictionary';
 import type { TransformedToken } from 'style-dictionary/types';
 import type { BuildConfig, OutputFile, ThemePermutation, TokenSet } from '../types.ts';
 import { configs, getConfigsForThemeDimensions } from './configs.ts';
+import type { TailwindVersion } from './output/tailwind.ts';
 import { getThemeColors, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.ts';
 
 type SharedOptions = {
@@ -23,8 +24,8 @@ type SharedOptions = {
   processed$themes: ProcessedThemeObject[];
   /** Build token format map */
   buildTokenFormats: Record<string, { token: TransformedToken; formatted: string }[]>;
-  /** Tailwind CSS configuration */
-  tailwind?: boolean;
+  /** Tailwind CSS major version to generate a theme file for */
+  tailwind?: TailwindVersion | false;
 };
 
 export type BuildOptions = {

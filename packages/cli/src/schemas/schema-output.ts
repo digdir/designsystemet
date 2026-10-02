@@ -17,7 +17,10 @@ const cssOutputSchema = z.object({
     .describe(
       'The directory containing the design tokens to build CSS from. Defaults to `dir` of the `design-tokens` output. If neither is set, CSS is created directly from the themes',
     ),
-  experimental_tailwind: z.boolean().default(true).describe('Whether to enable experimental Tailwind support'),
+  tailwind: z
+    .union([z.literal('v3'), z.literal('v4'), z.literal(false)])
+    .default(false)
+    .describe('The Tailwind CSS major version to generate a theme file for, or `false` to not generate one'),
 });
 
 const outputObjectSchema = z

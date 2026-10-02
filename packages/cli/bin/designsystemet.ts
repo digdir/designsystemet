@@ -17,6 +17,7 @@ import { buildTokens } from '../src/tokens/build.ts';
 import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { formatThemeCSS } from '../src/tokens/format.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
+import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { toColorNames } from '../src/tokens/utils.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
@@ -155,7 +156,7 @@ program
             themes: requireThemes(config),
             outDir: outDir,
             verbose,
-            tailwind: output.experimental_tailwind,
+            tailwind: output.tailwind,
           });
         } else {
           await buildCss({
@@ -164,7 +165,7 @@ program
             tokensDir: path.join(dsfs.outDir, tokensDir),
             outDir,
             verbose,
-            tailwind: output.experimental_tailwind,
+            tailwind: output.tailwind,
           });
         }
       }
@@ -306,7 +307,7 @@ async function buildCss({
   outDir: string;
   clean?: boolean;
   verbose?: boolean;
-  tailwind?: boolean;
+  tailwind?: TailwindVersion | false;
 }) {
   if (clean) {
     await dsfs.cleanDir(outDir);
@@ -335,7 +336,7 @@ async function createCss({
   themes: ConfigSchemaThemes;
   outDir: string;
   verbose: boolean;
-  tailwind: boolean;
+  tailwind: TailwindVersion | false;
 }) {
   const themeNames = Object.keys(themes);
   if (themeNames.length > 0) {
