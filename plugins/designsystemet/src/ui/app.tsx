@@ -88,7 +88,7 @@ function toNotifications(
       ? [
           {
             kind: 'warning' as const,
-            text: `${warnings.length} ${warnings.length === 1 ? 'item was' : 'items were'} skipped or could not be applied:`,
+            text: `${warnings.length} ${warnings.length === 1 ? 'warning' : 'warnings'}:`,
             details: warnings,
           },
         ]
@@ -143,7 +143,7 @@ function App() {
     postToPlugin('export-config-to-figma', { config: pastedConfig });
   };
 
-  // The number of skipped or failed items, i.e. the lines of the warning notification.
+  // The number of warning entries. Not the number of affected items: some entries summarise several.
   const warningCount =
     state.notifications.find((n) => n.kind === 'warning')?.details?.length ?? 0;
 
@@ -168,6 +168,11 @@ function App() {
           <NotificationsView notifications={state.notifications} />
         )}
       </main>
+      {/* Stays mounted across views, so screen readers announce the outcome when the view changes. */}
+      <div className='ds-sr-only' role='status'>
+        {state.result &&
+          `${state.result.status === 'success' ? 'Export finished' : 'Export failed'}. ${state.result.message}`}
+      </div>
       <footer>
         <div className='footer-left'>
           {state.view === 'notifications' && (
