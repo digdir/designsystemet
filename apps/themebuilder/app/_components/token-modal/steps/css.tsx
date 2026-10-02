@@ -1,4 +1,4 @@
-import { Button, Paragraph, Spinner } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '@digdir/designsystemet-react';
 import { DownloadIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { downloadFile } from '../download-file';
