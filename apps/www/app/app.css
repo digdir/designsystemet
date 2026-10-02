@@ -59,6 +59,7 @@
     }
   }
 
+  /* Disable overscroll behavior for fine pointer devices, so they can drag down to refresh */
   @media (pointer: fine) {
     :root {
       overscroll-behavior: none;
