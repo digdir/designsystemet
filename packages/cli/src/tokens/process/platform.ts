@@ -3,7 +3,7 @@ import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { TransformedToken } from 'style-dictionary/types';
 import type { BuildConfig, OutputFile, ThemePermutation, TokenSet } from '../types.ts';
-import { configs, getConfigsForThemeDimensions } from './configs.ts';
+import { configs, getConfigsForThemeDimensions, registerStyleDictionary } from './configs.ts';
 import { getThemeColors, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.ts';
 
 type SharedOptions = {
@@ -70,7 +70,8 @@ export let buildOptions: SharedOptions = {
   buildTokenFormats: {},
 };
 
-const sd = new StyleDictionary();
+/** Created on first use, after the transforms and formats are registered. */
+let sd: StyleDictionary | undefined;
 
 /*
  * Declarative configuration of the build output
@@ -90,6 +91,10 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   const platform = 'css';
   const tokenSets = type === 'format' ? options.tokenSets : undefined;
   const tokensDir = type === 'build' ? options.tokensDir : undefined;
+
+  await registerStyleDictionary();
+  sd ??= new StyleDictionary();
+  const styleDictionary = sd;
 
   const UNSAFE_DEFAULT_COLOR = process.env.UNSAFE_DEFAULT_COLOR ?? '';
   if (UNSAFE_DEFAULT_COLOR) {
@@ -184,7 +189,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
             console.log(logMessage);
 
             const sdOptions = { cache: true };
-            const sdExtended = await sd.extend(config);
+            const sdExtended = await styleDictionary.extend(config);
             const formatted = await sdExtended.formatPlatform(platform, sdOptions);
             const tokens = (await sdExtended.getPlatformTokens(platform, sdOptions)).allTokens;
 
