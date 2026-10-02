@@ -1,5 +1,4 @@
 import { Button, Paragraph, Spinner } from '@digdir/designsystemet-react';
-import { CodeBlock } from '@internal/components';
 import { DownloadIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { downloadFile } from '../download-file';
@@ -25,14 +24,8 @@ export default function Css({
         <span>1</span>
         <Paragraph>{t('themeModal.css.step-one', { filename })}</Paragraph>
       </div>
-      {error ? (
+      {error && (
         <Paragraph data-color='danger'>{t('themeModal.css.error')}</Paragraph>
-      ) : css ? (
-        <div className={`${classes.snippet} ${classes['snippet-themecss']}`}>
-          <CodeBlock language='css'>{css}</CodeBlock>
-        </div>
-      ) : (
-        <Spinner aria-label={t('themeModal.generating-css')} />
       )}
       <Button
         variant='secondary'

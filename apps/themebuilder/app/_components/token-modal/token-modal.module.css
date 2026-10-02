@@ -99,8 +99,7 @@
   display: block;
 }
 
-.snippet-config pre,
-.snippet-themecss pre {
+.snippet-config pre {
   height: 250px;
 }
 
