@@ -20,6 +20,8 @@ const themeCSS = `
   --ds-font-weight-medium: 500;
   --ds-border-radius-md: 4px;
   --ds-border-radius-full: 9999px;
+  --ds-body-md-font-size: 1rem;
+  --ds-body-long-md-font-size: 1rem;
   --ds-size-4: 1rem;
   --ds-size-mode-font-size: 18;
 }
@@ -66,6 +68,7 @@ describe('createTailwindCSSFiles', () => {
       '--shadow-md': '--ds-shadow-md',
       '--font-weight-medium': '--ds-font-weight-medium',
       '--radius-md': '--ds-border-radius-md',
+      '--text-md': '--ds-body-md-font-size',
       '--spacing-4': '--ds-size-4',
     });
   });
