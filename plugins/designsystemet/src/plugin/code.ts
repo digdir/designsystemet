@@ -11,13 +11,13 @@ import {
 } from '@digdir/designsystemet/internal';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
-import { IMPORT_STEPS, importToFigma } from './token-export/importer';
-import { createImportLog } from './token-export/log';
+import { EXPORT_STEPS, exportToFigma } from './token-export/export-to-figma';
+import { createExportLog } from './token-export/log';
 import { buildTokenModel } from './token-export/token-model';
 import type { TokenModel } from './token-export/types';
 
-/** Steps reported to the UI: validating, creating tokens, preparing the export, then the Figma import's own steps. */
-const TOTAL_STEPS = 3 + IMPORT_STEPS;
+/** Steps reported to the UI: validating, creating tokens, preparing the export, then the Figma export's own steps. */
+const TOTAL_STEPS = 3 + EXPORT_STEPS;
 
 /**
  * Validates the pasted config and creates the token model to export. `onStep` is called before each of its 3 steps;
@@ -131,13 +131,13 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     reportProgress();
   };
 
-  const log = createImportLog();
+  const log = createExportLog();
   try {
     const tokenModel = await createTokenModel(msg.config, onStep, onDetail);
     // Warnings from building the model (unresolved aliases etc.) are reported with the export's own warnings.
     log.warnings.push(...tokenModel.warnings);
 
-    await importToFigma(tokenModel, log, onStep);
+    await exportToFigma(tokenModel, log, onStep);
 
     postMessage('export-result', {
       status: 'success',
