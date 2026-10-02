@@ -11,7 +11,8 @@ export function FinishedView({
   return (
     <div className='status-view'>
       <Heading level={2} data-size='sm'>
-        Export finished
+        Export finished. Please check your Figma variables to ensure they are
+        correctly updated.
       </Heading>
       <Paragraph>{message}</Paragraph>
       {warningCount > 0 && (
