@@ -37,7 +37,7 @@ export type FigmaMessages =
   | OpenExternal;
 
 export type Notification = {
-  kind: 'success' | 'error' | 'warning' | 'info';
+  kind: 'error' | 'warning' | 'info';
   text: string;
   // Optional extra lines (e.g. the list of warnings).
   details?: string[];
