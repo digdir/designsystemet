@@ -22,15 +22,7 @@ export default function Config({
     <>
       <div className={classes.step}>
         <span>1</span>
-        <Paragraph>
-          {t('themeModal.config.step-one')}{' '}
-          <Link
-            target='_blank'
-            href={`https://www.designsystemet.no/${t(lang)}/fundamentals/start-here/own-theme`}
-          >
-            {t('themeModal.own-theme')}
-          </Link>
-        </Paragraph>
+        <Paragraph>{t('themeModal.config.step-one')} </Paragraph>
       </div>
       <div className={`${classes.snippet} ${classes['snippet-config']}`}>
         <CodeBlock language='json'>{configSnippet}</CodeBlock>
@@ -55,6 +47,15 @@ export default function Config({
       </div>
       <div className={classes.snippet}>
         <CodeBlock language='bash'>{buildSnippet}</CodeBlock>
+        <Paragraph>
+          {t('themeModal.config.help')}{' '}
+          <Link
+            target='_blank'
+            href={`https://www.designsystemet.no/${t(lang)}/fundamentals/start-here/own-theme`}
+          >
+            {t('themeModal.own-theme')}
+          </Link>
+        </Paragraph>
       </div>
     </>
   );
