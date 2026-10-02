@@ -158,6 +158,9 @@ export default {
     changelog: {
       title: 'Changelog',
     },
+    accessibility: {
+      title: 'Accessibility',
+    },
     'css-variables': {
       caption: 'CSS Variables',
       name: 'Name',
