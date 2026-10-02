@@ -11,7 +11,10 @@ type ThemeConfig = ExternalConfigSchemaInput['themes'][string];
  * Generates the CSS for a theme the same way the CLI does, by validating it like a config file and
  * running it through `formatThemeCSS`.
  */
-export const generateThemeCss = async (name: string, themeConfig: ThemeConfig) => {
+export const generateThemeCss = async (
+  name: string,
+  themeConfig: ThemeConfig,
+) => {
   // Validate against the public schema first, then fill in the internal defaults, like the CLI and Figma plugin.
   const externalConfig = externalConfigSchema.parse({
     themes: { [name]: themeConfig },
