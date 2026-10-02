@@ -13,6 +13,7 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/cli",
   "license": "MIT",
   "type": "module",
+  "sideEffects": false,
   "files": [
     "./dist/**"
   ],
