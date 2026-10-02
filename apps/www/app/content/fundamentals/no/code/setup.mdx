@@ -95,31 +95,6 @@ Dette kan lett overstyres i ditt eget tema, eller i din globale CSS fil.
 
 </Alert>
 
-### 3.2 Bruke tailwind variabler
-
-Dette er mulig gjennom å bygge `css` pakken.
-Først bygg den slik:
-```shell
-cd <root>
-pn install
-pn build
-cd packages/css
-pn build
-pn build:theme
-```
-
-Dette genererer en fil `designsystemet.tailwind.css` som ligger i `theme/designsystemet.tailwind.css`
-
-Importer den i en .css fil slik:
-
-```css
-    @layer base, ds;
-
-    @import url('@digdir/designsystemet-css');
-    @import './designsystemet.tailwind.css';
-    @import 'tailwindcss';
-
-```
 
 ## 4. Importer temaet
 
