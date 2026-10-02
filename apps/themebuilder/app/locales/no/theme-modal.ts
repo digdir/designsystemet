@@ -3,15 +3,8 @@ export default {
   'theme-name': 'Gi temaet ditt et navn',
   'theme-name-description':
     'Navnet bør representere virksomheten eller produktet du skal profilere.',
-  'generate-css': 'Generer CSS',
   'generating-css': 'Genererer CSS...',
-  in: 'i',
-  'core-ui-kit': 'Core UI Kit (åpnes i ny fane)',
-  'to-update':
-    'for å oppdatere et tema direkte i Figma. Les mer om disse alternativene på',
   'own-theme': 'eget tema (åpnes i ny fane)',
-  page: 'siden.',
-  format: 'Formatering for Windows',
   'help-heading': 'Noe som ikke fungerer?',
   'help-description': 'Send oss en melding på',
   slack: 'Slack (åpnes i ny fane)',
