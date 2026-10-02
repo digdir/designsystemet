@@ -16,6 +16,7 @@
     "types": "tsc --noEmit",
     "build:ui": "vite build -c ./vite.config.ui.ts",
     "build:plugin": "vite build -c ./vite.config.plugin.ts",
+    "zip": "pnpm run build && rimraf designsystemet-figma-plugin.zip && zip -r designsystemet-figma-plugin.zip manifest.json dist -x '*.DS_Store'",
     "watch": "pnpm run watch:ui & pnpm run watch:plugin",
     "watch:ui": "pnpm run build:ui --watch -- --mode=development",
     "watch:plugin": "pnpm run build:plugin --watch -- --mode=development"
@@ -24,7 +25,6 @@
     "@digdir/designsystemet": "workspace:*",
     "@digdir/designsystemet-css": "workspace:*",
     "@digdir/designsystemet-react": "workspace:*",
-    "@digdir/designsystemet-types": "workspace:*",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
@@ -40,7 +40,6 @@
     "rimraf": "6.1.3",
     "typescript": "5.9.3",
     "vite": "8.3.0",
-    "vite-plugin-singlefile": "^2.3.3",
-    "zod": "^4.6.5"
+    "vite-plugin-singlefile": "^2.3.3"
   }
 }

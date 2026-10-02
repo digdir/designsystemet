@@ -18,7 +18,7 @@ import { inferVariableName, pathToFigmaName } from './utils';
 import { mapTokenTypeToVariableType } from './variable-values';
 
 // Builds the export-side model used by the Figma importer and the resolver.
-// This stays on the plugin side; the UI previews from the validated config.
+// This stays on the plugin side; the UI only receives the export's progress and result.
 export function buildTokenModel({
   tokenSets,
   $themes,
@@ -104,7 +104,7 @@ export function buildTokenModel({
 
   if (unresolvedReferences.length > 25) {
     warnings.push(
-      `${unresolvedReferences.length - 25} more unresolved aliases hidden from preview.`,
+      `${unresolvedReferences.length - 25} more unresolved aliases not listed.`,
     );
   }
 

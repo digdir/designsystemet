@@ -1,50 +1,44 @@
-import type { ConfigSchema } from '@digdir/designsystemet/internal';
-
-type ImportConfig = {
-  type: 'import-config-and-create-preview-tokens';
+// UI -> plugin: validate the pasted config, create its tokens and export them to Figma.
+type ExportConfigToFigma = {
+  type: 'export-config-to-figma';
   config: string;
 };
 
-type PreviewTokensFromConfig = {
-  type: 'preview-tokens-from-config';
-  status: 'success' | 'error';
-  message: string;
-  preview?: {
-    // The config validated against the internal schema, i.e. with all defaults
-    // filled in. The UI renders the preview from this directly.
-    config: ConfigSchema;
-    // Warnings from building the export model (unresolved aliases etc.).
-    warnings: string[];
-  };
+// Plugin -> UI: sent before each step of the export, so the UI can show progress.
+type ExportProgress = {
+  type: 'export-progress';
+  /** 1-based number of the step that is starting. */
+  step: number;
+  total: number;
+  label: string;
 };
 
-type ExportTokensToFigma = {
-  type: 'export-tokens-to-figma';
-  status: 'exporting' | 'success' | 'error';
+// Plugin -> UI: sent once when the export has finished or failed.
+type ExportResult = {
+  type: 'export-result';
+  status: 'success' | 'error';
   message: string;
   // What the export did (created, renamed, deleted, ...).
   info?: string[];
-  // What was skipped or could not be applied (skipped styles, rejected scopes, ...).
+  // What was skipped or could not be applied (unresolved aliases, skipped styles, rejected scopes, ...).
   warnings?: string[];
 };
 
-export type FigmaMessages =
-  | ImportConfig
-  | PreviewTokensFromConfig
-  | ExportTokensToFigma;
-
-export type UiState = {
-  config: ConfigSchema | null;
-  selectedTheme: string | null;
-  /** Pascal case (e.g. 'Light'/'Dark') to match the Figma variables import, unlike the CLI's lowercase schemes */
-  selectedScheme: string;
-  isImporting: boolean;
-  notification: Notification | null;
+// UI -> plugin: open a URL in the user's browser. Links in the plugin UI can't do this themselves.
+type OpenExternal = {
+  type: 'open-external';
+  url: string;
 };
 
+export type FigmaMessages =
+  | ExportConfigToFigma
+  | ExportProgress
+  | ExportResult
+  | OpenExternal;
+
 export type Notification = {
-  kind: 'success' | 'error' | 'warning' | 'info';
+  kind: 'error' | 'warning' | 'info';
   text: string;
-  // Optional extra lines (e.g. the list of preview warnings).
+  // Optional extra lines (e.g. the list of warnings).
   details?: string[];
 };
