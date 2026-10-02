@@ -42,7 +42,7 @@ export async function preloadAllFonts(
 
   // Load every available style for each font family we will use.
   // This covers styles already on bound text styles (e.g. "Bold" from a previous
-  // import) that Figma will try to re-apply as soon as the font-family variable
+  // export) that Figma will try to re-apply as soon as the font-family variable
   // value is updated.
   for (const family of fontFamilies) {
     const allStyles = fontCache.availableFonts.filter(
