@@ -4,22 +4,26 @@ search_terms: modal, vindu, dialogvindu, bekreftelse, fokus, overlegg, overlay
 
 <Story story="Preview" />
 
+<Card data-color="info">
+  Mange kaller denne komponenten bare for «modal». I Designsystemet bruker vi dialog, som er basert på det innebygde HTML-elementet `<dialog>`, og skiller mellom [modale og ikke-modale dialoger (nngroup.com)](https://www.nngroup.com/articles/modal-nonmodal-dialog/) basert på hvordan de oppfører seg.
+</Card>
+
 **Bruk modal dialog når** 
 - brukerne skal bekrefte en kritisk handling, som å slette noe de ikke kan angre  
 - brukerne skal se en bestemt dialog og må forholde seg til den
 - du skal sikre at brukeren får med seg viktig informasjon
 
-**Unngå modal dialog når**
+**Bruk ikke-modal dialog når** 
+- når brukerne skal kunne fortsette å jobbe samtidig som vinduet er åpent
+- du er helt sikker på at den ikke-modale dialogen ikke dekker over annet innhold - uansett skjermstørrelse
+
+**Unngå modal og ikke-modal dialog når**
 - innholdet er omfattende eller komplekst
 - innholdet er ett av flere steg i en prosess 
-- du skal varsle om noe som ikke krever at brukerne gjør noe, bruk heller [alert](/no/components/docs/alert/overview) eller ikke-modal dialog
+- du skal varsle om noe som ikke krever at brukerne gjør noe, bruk heller [alert](/no/components/docs/alert/overview)
 - du vil gi kort informasjon som brukerne kan velge om de vil se, bruk [popover](/no/components/docs/popover/overview)
 
 Se også [mønsteret om systemvarsler](/no/patterns/systemnotifications#når-bruker-vi-modaler) for mer informasjon om når modal dialog bør brukes.
-
-<Card data-color="info">
-  Mange kaller denne komponenten bare for «modal». I Designsystemet bruker vi dialog, som er basert på det innebygde HTML-elementet `<dialog>`, og skiller mellom [modale og ikke-modale dialoger (nngroup.com)](https://www.nngroup.com/articles/modal-nonmodal-dialog/) basert på hvordan de oppfører seg.
-</Card>
 
 ## Eksempel
 

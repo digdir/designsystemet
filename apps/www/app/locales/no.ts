@@ -156,6 +156,9 @@ export default {
     changelog: {
       title: 'Endringslogg',
     },
+    accessibility: {
+      title: 'Universell utforming',
+    },
     'css-variables': {
       caption: 'CSS-variabler',
       name: 'Navn',

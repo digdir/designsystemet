@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Dialog",
-    "subtitle": "Det er to typer dialoger, en modal og en ikke-modal. En modal dialog tvinger brukerne til å ta stilling til noe før de kan fortsette å bruke siden. En ikke-modal dialog lar brukerne fortsette å bruke siden, selv om dialogen er åpen."
+    "subtitle": "Det er to typer dialoger, en modal og en ikke-modal. Når en modal er åpen, dempes resten av siden, og brukerne kan kun interagere med innhold inni dialogen. En ikke-modal dialog lar brukerne fortsette å bruke siden, selv om dialogen er åpen."
   },
   "en": {
     "title": "Dialog",
-    "subtitle": "There are two types of dialogs: modal and non-modal. A modal dialog requires users to take action before they can continue using the page. A non-modal dialog allows users to continue using the page, even while the dialog is open."
+    "subtitle": "There are two types of dialogs: modal and non-modal. When a modal is open, the rest of the page is dimmed, and users can only interact with content inside the dialog. A non-modal dialog allows users to continue using the page, even while the dialog is open."
   },
   "image": "Dialog.svg",
   "cssFile": "dialog.css"

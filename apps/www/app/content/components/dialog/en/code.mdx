@@ -30,7 +30,8 @@ Dialog has two class names you can use.
 Use `command` and `commandfor` to connect the `<dialog>` element to a trigger.
 Use the values `command="show-modal"` or `command="--show-non-modal"` for a modal with or without background dimming and `commandfor="DIALOG-ID"` to connect the trigger to the dialog.
 
-The attribute `aria-haspopup="dialog"` should be added to the element that opens the dialog to make it clear to screen reader users that it will open a dialog. We do this automatically for you when you use `@digdir/designsystemet-web` or `@digdir/designsystemet-react`.
+Designsystemet automatically adds `aria-haspopup="dialog"` to buttons that open a dialog. If the dialog has a heading, it is used as the dialog's accessible name.
+If the dialog is empty or loads content when it opens, you must give the dialog element an accessible name yourself using `aria-label`.
 
 ```html
 <button type="button" aria-haspopup="dialog" command="show-modal" commandfor="my-dialog" >Open Dialog</button>
