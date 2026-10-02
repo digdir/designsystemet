@@ -1,0 +1,180 @@
+import {
+  type ExternalConfigSchemaInput as Config,
+  externalConfigSchema,
+} from '@digdir/designsystemet/internal';
+import LZString from 'lz-string';
+import { parseColorOverrides } from '../routes/themebuilder/_utils/use-themebuilder';
+import { configThemeToUrl } from './config-to-url';
+
+export type ThemeWorkspace = { config: Config; activeTheme: string };
+
+export function addWorkspaceTheme(
+  workspace: ThemeWorkspace,
+  name: string,
+): ThemeWorkspace {
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name))
+    throw new Error('Invalid theme name');
+  if (Object.hasOwn(workspace.config.themes, name))
+    throw new Error('Theme already exists');
+  return {
+    config: {
+      ...workspace.config,
+      themes: {
+        ...workspace.config.themes,
+        [name]: structuredClone(workspace.config.themes[workspace.activeTheme]),
+      },
+    },
+    activeTheme: name,
+  };
+}
+
+const themeKeys = [
+  'colors',
+  'severity',
+  'severity-enabled',
+  'color-overrides',
+  'border-radius',
+];
+
+export function readWorkspace(params: URLSearchParams): ThemeWorkspace | null {
+  const encoded = params.get('config');
+  if (!params.has('config')) return null;
+  try {
+    const decoded = LZString.decompressFromEncodedURIComponent(encoded || '');
+    if (!decoded || decoded.length > 1_000_000)
+      throw new Error('Invalid config');
+    const config: Config = JSON.parse(decoded);
+    externalConfigSchema.parse(config);
+    const names = Object.keys(config.themes);
+    const activeTheme = params.get('theme') || names[0];
+    if (!activeTheme || !Object.hasOwn(config.themes, activeTheme))
+      throw new Error('Unknown theme');
+    return { config, activeTheme };
+  } catch {
+    throw new Error('Invalid theme workspace URL');
+  }
+}
+
+export function workspaceParams(
+  workspace: ThemeWorkspace,
+  params = new URLSearchParams(),
+) {
+  const next = new URLSearchParams(params);
+  for (const key of themeKeys) {
+    if (key !== 'severity-enabled') next.delete(key);
+  }
+  next.set(
+    'config',
+    LZString.compressToEncodedURIComponent(JSON.stringify(workspace.config)),
+  );
+  next.set('theme', workspace.activeTheme);
+  return next;
+}
+
+export function workspaceToUrl(
+  config: Config,
+  activeTheme: string,
+  lang = 'no',
+) {
+  return `/${lang}?${workspaceParams({ config, activeTheme }, new URLSearchParams({ appearance: 'light', tab: 'colorsystem' }))}`;
+}
+
+export function editorParams(params: URLSearchParams) {
+  const workspace = readWorkspace(params);
+  if (!workspace) return new URLSearchParams(params);
+  const themeParams = new URL(
+    configThemeToUrl(workspace.config.themes[workspace.activeTheme]),
+    'https://themebuilder.local',
+  ).searchParams;
+  const next = new URLSearchParams(params);
+  for (const key of themeKeys) {
+    if (key === 'severity-enabled' && params.has(key)) continue;
+    next.delete(key);
+    const value = themeParams.get(key);
+    if (value !== null) next.set(key, value);
+  }
+  return next;
+}
+
+export function updateWorkspace(
+  params: URLSearchParams,
+  edited: URLSearchParams,
+) {
+  const workspace = readWorkspace(params);
+  if (!workspace) return edited;
+  const previous = workspace.config.themes[workspace.activeTheme];
+  const colors = Object.fromEntries(
+    (edited.get('colors') || '')
+      .split(' ')
+      .filter(Boolean)
+      .map((entry) => entry.split(':')),
+  );
+  const severity = Object.fromEntries(
+    (edited.get('severity') || '')
+      .split(' ')
+      .filter(Boolean)
+      .map((entry) => entry.split(':')),
+  );
+  const overrides = {
+    ...previous.overrides,
+    colors: parseColorOverrides(edited.get('color-overrides')),
+  };
+  delete overrides.severity;
+  if (edited.get('severity-enabled') === 'true' && Object.keys(severity).length)
+    overrides.severity = severity;
+  const active = {
+    ...previous,
+    colors,
+    overrides,
+    borderRadius: Number(edited.get('border-radius') || 4),
+  };
+  const removed = Object.keys(previous.colors).filter(
+    (name) => !Object.hasOwn(colors, name),
+  );
+  const added = Object.keys(colors).filter(
+    (name) => !Object.hasOwn(previous.colors, name),
+  );
+  const renamed =
+    removed.length === 1 &&
+    added.length === 1 &&
+    Object.keys(previous.colors).length === Object.keys(colors).length;
+  const themes = Object.fromEntries(
+    Object.entries(workspace.config.themes).map(([name, theme]) => {
+      if (name !== workspace.activeTheme && !removed.length && !added.length)
+        return [name, theme];
+      const updated: Config['themes'][string] =
+        name === workspace.activeTheme
+          ? active
+          : {
+              ...theme,
+              colors: { ...theme.colors },
+              overrides: {
+                ...theme.overrides,
+                colors: { ...theme.overrides?.colors },
+              },
+            };
+      for (const colorName of added) {
+        if (name !== workspace.activeTheme)
+          updated.colors[colorName] = renamed
+            ? theme.colors[removed[0]]
+            : colors[colorName];
+      }
+      const colorOverrides = updated.overrides?.colors;
+      for (const colorName of removed) {
+        if (renamed && colorOverrides?.[colorName])
+          colorOverrides[added[0]] = colorOverrides[colorName];
+        delete updated.colors[colorName];
+        delete colorOverrides?.[colorName];
+      }
+      if (colorOverrides && Object.keys(colorOverrides).length === 0)
+        delete updated.overrides?.colors;
+      if (updated.overrides && Object.keys(updated.overrides).length === 0)
+        delete updated.overrides;
+      return [name, updated];
+    }),
+  );
+  return workspaceParams(
+    { ...workspace, config: { ...workspace.config, themes } },
+    edited,
+  );
+}

@@ -1,5 +1,6 @@
 import { Button } from '@digdir/designsystemet-react';
 import { PencilIcon } from '@navikt/aksel-icons';
+import { useTranslation } from 'react-i18next';
 
 import classes from './color-input.module.css';
 
@@ -10,6 +11,7 @@ type ColorInputProps = {
 };
 
 export const ColorInput = ({ name, color, onClick }: ColorInputProps) => {
+  const { t } = useTranslation();
   return (
     <div className={classes.component}>
       <div className={classes.name}>{name}</div>
@@ -18,7 +20,8 @@ export const ColorInput = ({ name, color, onClick }: ColorInputProps) => {
         onClick={(e) => onClick(e)}
         variant='secondary'
         data-color='neutral'
-        aria-label={`Endre instillinger ${name}`}
+        aria-label={`${t('colorPane.edit-color')} ${name}, ${color}`}
+        data-color-name={name}
       >
         <span className={classes.leftContent}>
           <span

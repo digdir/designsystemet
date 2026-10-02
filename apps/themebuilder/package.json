@@ -6,6 +6,7 @@
     "build": "react-router build",
     "dev": "cross-env NODE_ENV=development node server.js",
     "start": "node server.js",
+    "test": "vitest run --config vitest.config.ts",
     "types": "react-router typegen && tsc"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "express": "5.2.1",
     "i18next": "26.4.2",
     "isbot": "5.2.2",
+    "lz-string": "1.5.0",
     "morgan": "1.12.1",
     "react": "19.3.0",
     "react-color-palette": "7.3.1",

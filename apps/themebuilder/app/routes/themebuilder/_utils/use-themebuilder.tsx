@@ -46,6 +46,7 @@ export const useThemebuilder = () => {
     baseBorderRadius,
     overrides,
     tab,
+    workspace,
   } = useLoaderData<Route.ComponentProps['loaderData']>();
 
   return {
@@ -56,6 +57,7 @@ export const useThemebuilder = () => {
     baseBorderRadius,
     overrides,
     tab,
+    workspace,
   };
 };
 

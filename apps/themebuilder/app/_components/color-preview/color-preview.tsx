@@ -51,7 +51,7 @@ export const ColorPreview = () => {
         <div className='panelBottom'>
           <div className={classes.label}>{t('colorPreview.view')}</div>
           <ToggleGroup
-            aria-label='Visning'
+            aria-label={t('colorPreview.view')}
             data-size='sm'
             defaultValue={DEFAULT_VIEW}
             onChange={(value: string) => setView(value as ViewType)}

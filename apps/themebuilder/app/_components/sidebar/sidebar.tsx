@@ -4,6 +4,7 @@ import { CogIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { BorderRadiusInput } from '../border-radius-input/border-radius-input';
 import { ConfigPaste } from '../config-paste/config-paste';
 import { TokenModal } from '../token-modal/token-modal';
@@ -12,6 +13,7 @@ import classes from './sidebar.module.css';
 
 export const Sidebar = () => {
   const { t } = useTranslation();
+  const { workspace } = useThemebuilder();
   const configPasteDialogRef = useRef<HTMLDialogElement>(null);
 
   const [activePage, setActivePage] = useState<'colors' | 'dimensions'>(
@@ -51,8 +53,8 @@ export const Sidebar = () => {
             !isMobile && setShowSidebar(!showSidebar);
             isMobile && setModalOpen(true);
           }}
-          aria-label='Toggle sidebar'
-          aria-expanded={showSidebar}
+          aria-label={t('themeBuilder.toggle-editor')}
+          aria-expanded={isMobile ? modalOpen : showSidebar}
         >
           <CogIcon aria-hidden height='1.5rem' width='1.5rem' />
         </button>
@@ -75,10 +77,10 @@ export const Sidebar = () => {
             </Tabs.List>
             <div className={classes.tabContent}>
               <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage />
+                <ColorPage key={workspace?.activeTheme} />
               </Tabs.Panel>
               <Tabs.Panel className={classes.tabPanel} value='dimensions'>
-                <BorderRadiusInput />
+                <BorderRadiusInput key={workspace?.activeTheme} />
               </Tabs.Panel>
             </div>
           </Tabs>
@@ -116,10 +118,10 @@ export const Sidebar = () => {
                 <Tabs.Tab value='dimensions'>{t('tabs.dimensions')}</Tabs.Tab>
               </Tabs.List>
               <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage />
+                <ColorPage key={workspace?.activeTheme} />
               </Tabs.Panel>
               <Tabs.Panel className={classes.tabPanel} value='dimensions'>
-                <BorderRadiusInput />
+                <BorderRadiusInput key={workspace?.activeTheme} />
               </Tabs.Panel>
             </Tabs>
             <div className={classes.modalBottom}>

@@ -7,7 +7,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon, TrashIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ColorPicker, type IColor, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
@@ -19,6 +19,7 @@ type ColorPaneProps = {
   color: IColor;
   setColor: (color: IColor) => void;
   name: string;
+  committedName: string;
   setName: (name: string) => void;
   onCancel: () => void;
   onRemove: () => void;
@@ -31,12 +32,17 @@ export const ColorPane = ({
   color,
   setColor,
   name,
+  committedName,
   onCancel,
   setName,
   onRemove,
   colorType,
 }: ColorPaneProps) => {
   const { t } = useTranslation();
+  const editorRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    editorRef.current?.querySelector<HTMLInputElement>('input')?.focus();
+  }, []);
   const [localColor, setLocalColor] = useColor(color.hex);
 
   const { colors } = useThemebuilder();
@@ -62,6 +68,15 @@ export const ColorPane = ({
       return false;
     }
 
+    if (
+      colors.some(
+        (color) => color.name === nameLower && color.name !== committedName,
+      )
+    ) {
+      setColorError(t('colorPane.name-duplicate-error'));
+      return false;
+    }
+
     setColorError('');
     return true;
   };
@@ -73,6 +88,7 @@ export const ColorPane = ({
 
   return (
     <div
+      ref={editorRef}
       className={cl(classes.colorPage, type.includes('color') && classes.show)}
     >
       <div className={classes.topBtnGroup}>
@@ -115,7 +131,7 @@ export const ColorPane = ({
           }
         >
           {t('colorPane.remove-color')}
-          <TrashIcon title='trash' />
+          <TrashIcon aria-hidden />
         </Button>
       </div>
       <Heading data-size='xs' className={classes.title}>

@@ -1,6 +1,6 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: we have not kept old schema for types, so we need to use any here
 import {
-  type ExternalConfigSchema as ConfigSchema,
+  type ExternalConfigSchemaInput as ConfigSchema,
   externalConfigSchema as configSchema,
 } from '@digdir/designsystemet/internal';
 import {
@@ -13,7 +13,7 @@ import { PencilIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router';
-import { configThemeToUrl } from '~/_utils/config-to-url';
+import { workspaceToUrl } from '~/_utils/theme-workspace';
 import classes from './config-paste.module.css';
 
 export function ConfigPaste() {
@@ -39,7 +39,8 @@ export function ConfigPaste() {
         ? migrateConfigWithOldColorSchema(configText)
         : JSON.parse(configText);
 
-      const validated = configSchema.parse(parsed);
+      configSchema.parse(parsed);
+      const validated: ConfigSchema = parsed;
       setValidatedConfig(validated);
 
       if (!validated.themes || Object.keys(validated.themes).length === 0) {
@@ -97,7 +98,7 @@ export function ConfigPaste() {
 
       {validatedConfig && themes.length > 0 && (
         <>
-          <ValidationMessage data-color='success'>
+          <ValidationMessage data-color='success' role='status'>
             {t('configPaste.validation-success')}
           </ValidationMessage>
           <div>
@@ -133,7 +134,16 @@ export function ConfigPaste() {
                     variant='secondary'
                     aria-label={`${t('configPaste.edit-theme')} ${themeName}`}
                   >
-                    <Link to={configThemeToUrl(themeConfig, lang || 'no')}>
+                    <Link
+                      to={workspaceToUrl(
+                        validatedConfig,
+                        themeName,
+                        lang || 'no',
+                      )}
+                      onClick={(event) => {
+                        event.currentTarget.closest('dialog')?.close();
+                      }}
+                    >
                       <PencilIcon aria-hidden='true' />
                       {t('configPaste.edit-theme')}
                     </Link>

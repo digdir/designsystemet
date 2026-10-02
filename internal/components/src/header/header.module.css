@@ -177,3 +177,21 @@
     display: none;
   }
 }
+
+@media (max-width: 540px) {
+  .header .container {
+    padding-inline: 16px;
+  }
+
+  .hamburger.header .toggleButton {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    padding: 8px;
+
+    & svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

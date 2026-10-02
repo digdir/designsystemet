@@ -18,7 +18,7 @@ import { useTokenModal } from './use-token-modal';
 export const TokenModal = () => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDialogElement>(null);
-  const { themeName, setThemeName, buildSnippet, configSnippet } =
+  const { themeName, setThemeName, buildSnippet, configSnippet, isWorkspace } =
     useTokenModal();
 
   return (
@@ -51,11 +51,14 @@ export const TokenModal = () => {
             <Heading className={classes.modalHeader} data-size='xs' level={3}>
               <Label>{t('themeModal.theme-name')}</Label>
             </Heading>
-            <Field.Description>
-              {t('themeModal.theme-name-description')}
-            </Field.Description>
+            {!isWorkspace && (
+              <Field.Description>
+                {t('themeModal.theme-name-description')}
+              </Field.Description>
+            )}
             <Input
               name='themeName'
+              readOnly={isWorkspace}
               value={themeName}
               onChange={(e) => {
                 const value = e.currentTarget.value

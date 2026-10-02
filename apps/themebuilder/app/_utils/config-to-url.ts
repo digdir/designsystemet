@@ -1,4 +1,4 @@
-import type { ExternalConfigSchema as ConfigSchema } from '@digdir/designsystemet/internal';
+import type { ExternalConfigSchemaInput as ConfigSchema } from '@digdir/designsystemet/internal';
 
 const QUERY_SEPARATOR = ' ';
 
@@ -6,7 +6,10 @@ const QUERY_SEPARATOR = ' ';
  * Converts a theme config object to a themebuilder URL with query parameters
  */
 export function configThemeToUrl(
-  theme: ConfigSchema['themes']['default'],
+  theme: Pick<
+    ConfigSchema['themes'][string],
+    'colors' | 'overrides' | 'borderRadius'
+  >,
   lang = 'no',
 ): string {
   const params = new URLSearchParams();
