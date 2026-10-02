@@ -1,16 +1,27 @@
 .content {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  row-gap: var(--ds-size-4);
 }
 
+/*
+ * Both sections share the rows of .content (heading, description, body), so the description row takes the height
+ * of the longest description and the steps in both bodies start at the same height.
+ */
 .leftSection,
 .rightSection {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  align-content: start;
+  /* Lets the code blocks scroll instead of widening the column. */
+  min-width: 0;
+}
+
+.sectionBody {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  flex-basis: 0;
   gap: var(--ds-size-4);
-  /* Lets the code blocks scroll instead of widening the column. */
   min-width: 0;
 }
 
@@ -23,8 +34,7 @@
   padding-left: var(--ds-size-8);
 }
 
-.leftSection > button,
-.rightSection > button {
+.sectionBody > button {
   align-self: flex-start;
 }
 
@@ -138,7 +148,15 @@
 
 @media (max-width: 1150px) {
   .content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Stacked, there's nothing to align across, so each section just flows. */
+  .leftSection,
+  .rightSection {
+    display: flex;
     flex-direction: column;
+    gap: var(--ds-size-4);
   }
 
   .leftSection {

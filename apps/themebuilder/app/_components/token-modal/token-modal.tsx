@@ -82,17 +82,21 @@ export const TokenModal = () => {
                 {t('themeModal.config.heading')}
               </Heading>
               <Paragraph>{t('themeModal.config.description')}</Paragraph>
-              <Config
-                configSnippet={configSnippet}
-                buildSnippet={buildSnippet.config}
-              />
+              <div className={classes.sectionBody}>
+                <Config
+                  configSnippet={configSnippet}
+                  buildSnippet={buildSnippet.config}
+                />
+              </div>
             </section>
             <section className={classes.rightSection}>
               <Heading data-size='xs' level={3}>
                 {t('themeModal.css.heading')}
               </Heading>
               <Paragraph>{t('themeModal.css.description')}</Paragraph>
-              <Css themeName={themeName} {...themeCss} />
+              <div className={classes.sectionBody}>
+                <Css themeName={themeName} {...themeCss} />
+              </div>
             </section>
           </div>
         </Dialog.Block>
