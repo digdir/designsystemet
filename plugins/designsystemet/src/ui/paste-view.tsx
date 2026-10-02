@@ -1,4 +1,7 @@
-import { Field, Label, Textarea } from '@digdir/designsystemet-react';
+import { Field, Label, Link, Textarea } from '@digdir/designsystemet-react';
+import { postToPlugin } from './post-to-plugin';
+
+const THEME_BUILDER_URL = 'https://theme.designsystemet.no';
 
 type PasteViewProps = {
   value: string;
@@ -15,7 +18,18 @@ export function PasteView({
       <Field>
         <Label>Upload config</Label>
         <Field.Description>
-          Paste your designsystemet.config.json content below and click preview.
+          Paste your config from{' '}
+          <Link
+            href={THEME_BUILDER_URL}
+            onClick={(event) => {
+              // Links in the plugin UI can't open the browser, so the plugin opens it with figma.openExternal.
+              event.preventDefault();
+              postToPlugin('open-external', { url: THEME_BUILDER_URL });
+            }}
+          >
+            theme.designsystemet.no
+          </Link>{' '}
+          below and click Export to Figma.
         </Field.Description>
         <Textarea
           id='config-textarea'
