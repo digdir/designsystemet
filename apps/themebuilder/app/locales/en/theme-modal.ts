@@ -23,10 +23,22 @@ export default {
   'use-config-file':
     'Save your config file as "designsystemet.config.json". If you want to use the schema, install "@digdir/designsystemet"',
   config: {
+    heading: 'Config file',
+    description:
+      'Keep the theme in a config file and generate tokens and CSS with the CLI, so the theme is easy to update.',
+    download: 'Download {{filename}}',
     'step-one':
       'Save your config file as "designsystemet.config.json" where you want the tokens and CSS to be generated. Read more about how to synchronize tokens with Figma here:',
     'step-two':
       'Open a terminal in the same folder as the config file. Run the code snippets to generate tokens and CSS variables for code.',
+  },
+  css: {
+    heading: 'CSS file',
+    description:
+      'Download the CSS for the theme directly. It is not updated with new versions of Designsystemet, so download it again to get updates.',
+    'step-one': 'Download and import it after "@digdir/designsystemet-css"',
+    download: 'Download {{filename}}',
+    error: 'Could not generate CSS for the theme.',
   },
   'severity-colors': 'Severity',
   'severity-colors-switch': 'Activate to override severity colors',

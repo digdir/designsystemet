@@ -5,8 +5,13 @@
 
 .leftSection,
 .rightSection {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
   flex-basis: 0;
+  gap: var(--ds-size-4);
+  /* Lets the code blocks scroll instead of widening the column. */
+  min-width: 0;
 }
 
 .leftSection {
@@ -15,10 +20,12 @@
 }
 
 .rightSection {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ds-size-4);
-  width: 100%;
+  padding-left: var(--ds-size-8);
+}
+
+.leftSection > button,
+.rightSection > button {
+  align-self: flex-start;
 }
 
 .infoBoxes {
@@ -106,7 +113,7 @@
 }
 
 .modal {
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
 .step {
@@ -142,6 +149,5 @@
   .rightSection {
     padding: 0;
     margin-top: 32px;
-    width: 100%;
   }
 }
