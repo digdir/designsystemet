@@ -61,7 +61,7 @@ describe('figmaVariableScopes covers every generated token', () => {
     const config = configSchema.parse({
       themes: { [themeName]: { colors: { neutral: '#444444', brand: '#0062BA' } } },
     });
-    const theme = { name: themeName, ...config.themes[themeName] } as Theme;
+    const theme = { name: themeName, ...config.themes?.[themeName] } as Theme;
     const dimensions = getTokenSetDimensions(theme);
     const { tokenSets } = await createTokens(theme, dimensions);
     const $themes = await generate$Themes(dimensions, [themeName], toColorNames(theme.colors));
