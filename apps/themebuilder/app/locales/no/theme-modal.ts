@@ -21,17 +21,17 @@ export default {
   config: {
     heading: 'Config-fil',
     description:
-      'Lagre temaet i en config-fil og generer tokens og CSS med CLI-et, slik at temaet er enkelt å oppdatere.',
+      'Bruk denne når du skal komme i gang med Figma og generere design-tokens, CSS fil eller andre former for kode.',
     download: 'Last ned {{filename}}',
     'step-one':
-      'Last ned config fila di som "designsystemet.config.json" der du vil at tokens og CSS skal bli generert. Les mer om hvordan du synkroniserer tokens med Figma her:',
+      'Last ned config fila din som "designsystemet.config.json" der du vil at tokens og CSS skal bli generert. Les mer om hvordan du synkroniserer tokens med Figma her:',
     'step-two':
       'Åpne terminal i samme mappe som config fila. Kjør kodesnuttene for å generere tokens og CSS variabler til kode.',
   },
   css: {
     heading: 'CSS-fil',
     description:
-      'Last ned CSS-en for temaet direkte. Den oppdateres ikke med nye versjoner av Designsystemet, så du må laste den ned på nytt for å få oppdateringer.',
+      'Bruk denne når du skal prototype i kode og komme raskt i gang',
     'step-one': 'Last ned og importer etter "@digdir/designsystemet-css".',
     download: 'Last ned {{filename}}',
     error: 'Kunne ikke generere CSS for temaet.',

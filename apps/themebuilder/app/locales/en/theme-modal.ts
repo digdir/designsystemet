@@ -25,18 +25,18 @@ export default {
   config: {
     heading: 'Config file',
     description:
-      'Keep the theme in a config file and generate tokens and CSS with the CLI, so the theme is easy to update.',
+      'Use this when you want to get started with Figma and generate design tokens, a CSS file or other kinds of code.',
     download: 'Download {{filename}}',
     'step-one':
-      'Save your config file as "designsystemet.config.json" where you want the tokens and CSS to be generated. Read more about how to synchronize tokens with Figma here:',
+      'Download your config file as "designsystemet.config.json" where you want the tokens and CSS to be generated. Read more about how to synchronize tokens with Figma here:',
     'step-two':
       'Open a terminal in the same folder as the config file. Run the code snippets to generate tokens and CSS variables for code.',
   },
   css: {
     heading: 'CSS file',
     description:
-      'Download the CSS for the theme directly. It is not updated with new versions of Designsystemet, so download it again to get updates.',
-    'step-one': 'Download and import it after "@digdir/designsystemet-css"',
+      'Use this when you want to prototype in code and get started quickly.',
+    'step-one': 'Download and import it after "@digdir/designsystemet-css".',
     download: 'Download {{filename}}',
     error: 'Could not generate CSS for the theme.',
   },
