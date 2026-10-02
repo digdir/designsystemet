@@ -37,6 +37,8 @@ export const useThemeCss = (
 
     // Ignore results from a generation that a newer theme has replaced.
     let isCurrent = true;
+    setCss('');
+    setError(null);
     setIsGenerating(true);
 
     const timeout = setTimeout(() => {

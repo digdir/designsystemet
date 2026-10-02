@@ -26,7 +26,7 @@ export default {
       'Use this when you want to get started with Figma and generate design tokens, a CSS file or other kinds of code.',
     download: 'Download {{filename}}',
     'step-one':
-      'Download config file to where you want the tokens and CSS to be generated.',
+      'Download the config file to the folder where you want the tokens and CSS to be generated.',
     'step-two':
       'Open a terminal in the same folder as the config file. Run the code snippets to generate tokens and CSS variables for code.',
     help: 'Read more about how to synchronize tokens with Figma here:',

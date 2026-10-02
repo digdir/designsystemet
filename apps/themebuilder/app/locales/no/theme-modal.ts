@@ -21,7 +21,7 @@ export default {
   config: {
     heading: 'Config-fil',
     description:
-      'Bruk denne når du skal komme i gang med Figma og generere design-tokens, CSS fil eller andre former for kode.',
+      'Bruk denne når du skal komme i gang med Figma og generere design-tokens, CSS-fil eller andre former for kode.',
     download: 'Last ned {{filename}}',
     'step-one':
       'Last ned config fila der du vil at tokens og CSS skal bli generert.',
@@ -32,7 +32,7 @@ export default {
   css: {
     heading: 'CSS-fil',
     description:
-      'Bruk denne når du skal prototype i kode og komme raskt i gang',
+      'Bruk denne når du skal prototype i kode og komme raskt i gang.',
     'step-one': 'Last ned og importer etter "@digdir/designsystemet-css".',
     download: 'Last ned {{filename}}',
     error: 'Kunne ikke generere CSS for temaet.',
