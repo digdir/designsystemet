@@ -55,6 +55,7 @@ footer {
   align-items: center;
   justify-content: center;
   gap: var(--ds-size-3);
+  box-sizing: border-box;
   height: 100%;
   padding: var(--ds-size-8) var(--ds-size-5);
   text-align: center;
@@ -70,6 +71,9 @@ footer {
   display: flex;
   flex-direction: column;
   gap: var(--ds-size-3);
+  /* Fill the main row, padding included, so a long list scrolls here instead of overflowing. */
+  box-sizing: border-box;
+  height: 100%;
   padding: var(--ds-size-4) var(--ds-size-5);
   overflow-y: auto;
 }
