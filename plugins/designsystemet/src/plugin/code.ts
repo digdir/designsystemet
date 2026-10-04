@@ -81,7 +81,7 @@ async function createTokenModel(
     }
   }
 
-  onStep('Preparing variables');
+  onStep('Preparing sync');
   const { $themes } = await createSystemTokens({
     tokenSetDimensions,
     colorNames: Array.from(semanticColorNames),

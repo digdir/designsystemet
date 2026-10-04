@@ -1,4 +1,11 @@
-import { Field, Label, Link, Textarea } from '@digdir/designsystemet-react';
+import {
+  Field,
+  Label,
+  Link,
+  List,
+  Paragraph,
+  Textarea,
+} from '@digdir/designsystemet-react';
 import { postToPlugin } from './post-to-plugin';
 
 const THEME_BUILDER_URL = 'https://theme.designsystemet.no';
@@ -15,7 +22,27 @@ export function PasteView({
 }: PasteViewProps): React.JSX.Element {
   return (
     <div className='paste-view'>
-      <Field>
+      {/* Outside the field so the textarea's description stays short for screen readers. */}
+      <div data-size='sm'>
+        <Paragraph>Syncing makes this file match the config:</Paragraph>
+        <List.Unordered>
+          <List.Item>
+            Creates the variable collections, modes, variables, text styles and
+            effect styles in the config.
+          </List.Item>
+          <List.Item>
+            Updates the ones that already exist, matched by name, so layers
+            using them stay connected.
+          </List.Item>
+          <List.Item>
+            Deletes modes and variables in those collections that aren't in the
+            config, including ones added by hand. The same goes for text styles
+            under typography/ and effect styles under shadow/.
+          </List.Item>
+          <List.Item>Leaves other collections and styles alone.</List.Item>
+        </List.Unordered>
+      </div>
+      <Field className='paste-field'>
         <Label>Upload config</Label>
         <Field.Description>
           Paste your config from{' '}
@@ -29,7 +56,7 @@ export function PasteView({
           >
             theme.designsystemet.no
           </Link>{' '}
-          below and click Create variables.
+          below and click Sync to Figma.
         </Field.Description>
         <Textarea
           id='config-textarea'
