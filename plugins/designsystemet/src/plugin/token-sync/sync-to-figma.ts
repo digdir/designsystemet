@@ -1,22 +1,22 @@
 import { buildCollectionSpecs } from './collection-specs';
 import { syncEffectStyles } from './effect-styles';
 import { type FontCache, preloadAllFonts } from './fonts';
-import { createExportLog, type ExportLog } from './log';
+import { createSyncLog, type SyncLog } from './log';
 import { getTokenSetLookupOrder } from './resolver';
 import { syncTextStyles } from './text-styles';
 import type { TokenModel } from './types';
 import { syncCollections, syncVariables } from './variable-sync';
 
-/** The number of times `exportToFigma` calls `onStep`, so callers can include the steps in their progress. */
-export const EXPORT_STEPS = 5;
+/** The number of times `syncToFigma` calls `onStep`, so callers can include the steps in their progress. */
+export const SYNC_STEPS = 5;
 
-// `log` is owned by the caller so it also has the partial log when the export throws.
-export async function exportToFigma(
+// `log` is owned by the caller so it also has the partial log when the sync throws.
+export async function syncToFigma(
   model: TokenModel,
-  log: ExportLog = createExportLog(),
-  /** Called with a label before each step of the export. */
+  log: SyncLog = createSyncLog(),
+  /** Called with a label before each step of the sync. */
   onStep: (label: string) => void = () => {},
-): Promise<ExportLog> {
+): Promise<SyncLog> {
   const tokenSetOrder = getTokenSetLookupOrder(model);
 
   onStep('Loading fonts');
@@ -28,7 +28,7 @@ export async function exportToFigma(
   const collectionSpecs = buildCollectionSpecs(model, tokenSetOrder, log);
 
   // Fonts must be loaded before syncVariables runs. If text styles from a previous
-  // export are already bound to font-family variables, Figma will immediately try to
+  // sync are already bound to font-family variables, Figma will immediately try to
   // apply the new font family with whatever style the text style currently has —
   // which may include styles like "Bold" that are not in our token structure.
   // Loading all variants of every font family we will use prevents this.

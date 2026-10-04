@@ -1,6 +1,6 @@
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 
-// Shown when the export has finished. Warnings and the export log are in the notifications view.
+// Shown when the sync has finished. Warnings and the sync log are in the notifications view.
 export function FinishedView({
   message,
   warningCount,

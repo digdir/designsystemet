@@ -44,7 +44,7 @@ export type ThemeOption = {
   tokenSets: string[];
 };
 
-// Export-side model. Stays on the plugin side (importer, collection specs,
+// The token model used for the sync. Stays on the plugin side (variable sync, collection specs,
 // text/effect styles, resolver) and is never posted to the UI.
 export type TokenModel = {
   tokenSets: Array<{
