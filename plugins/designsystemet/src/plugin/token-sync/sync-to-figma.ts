@@ -34,20 +34,20 @@ export async function syncToFigma(
   // Loading all variants of every font family we will use prevents this.
   await preloadAllFonts(collectionSpecs, fontCache);
 
-  onStep('Creating variable collections');
+  onStep('Syncing variable collections');
   const collectionMap = await syncCollections(collectionSpecs, log);
 
-  onStep('Creating variables');
+  onStep('Syncing variables');
   const variableLookup = await syncVariables(
     collectionSpecs,
     collectionMap,
     log,
   );
 
-  onStep('Creating text styles');
+  onStep('Syncing text styles');
   await syncTextStyles(model, tokenSetOrder, variableLookup, fontCache, log);
 
-  onStep('Creating effect styles');
+  onStep('Syncing effect styles');
   await syncEffectStyles(model, tokenSetOrder, log);
 
   return log;

@@ -17,7 +17,7 @@ export function SyncView({
     <div className='status-view' role='status' aria-live='polite'>
       <Spinner aria-hidden data-size='lg' />
       <Heading level={2} data-size='sm'>
-        Creating variables
+        Syncing to Figma
       </Heading>
       {progress ? (
         <>

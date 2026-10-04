@@ -97,7 +97,7 @@ function toNotifications(
       ? [
           {
             kind: 'info' as const,
-            text: `Log (${info.length})`,
+            text: `Sync log (${info.length})`,
             details: info,
           },
         ]
@@ -150,7 +150,7 @@ function App() {
   return (
     <div className='app'>
       <header>
-        <Heading>Create Figma variables</Heading>
+        <Heading>Sync theme to Figma</Heading>
       </header>
 
       <main>
@@ -171,7 +171,7 @@ function App() {
       {/* Stays mounted across views, so screen readers announce the outcome when the view changes. */}
       <div className='ds-sr-only' role='status'>
         {state.result &&
-          `${state.result.status === 'success' ? 'Variables created' : 'Could not create variables'}. ${state.result.message}`}
+          `${state.result.status === 'success' ? 'Sync finished' : 'Sync failed'}. ${state.result.message}`}
       </div>
       <footer>
         <div className='footer-left'>
@@ -188,14 +188,14 @@ function App() {
               onClick={() => dispatch({ type: 'go-back' })}
               variant='tertiary'
             >
-              Use another config
+              Sync another config
             </Button>
           )}
         </div>
         <div className='footer-right'>
           {state.view === 'paste' && (
             <Button onClick={syncConfig} disabled={!pastedConfig.trim()}>
-              Create variables
+              Sync to Figma
             </Button>
           )}
           {state.view === 'finished' && state.notifications.length > 0 && (
