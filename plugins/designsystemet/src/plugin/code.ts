@@ -81,7 +81,7 @@ async function createTokenModel(
     }
   }
 
-  onStep('Preparing export');
+  onStep('Preparing variables');
   const { $themes } = await createSystemTokens({
     tokenSetDimensions,
     colorNames: Array.from(semanticColorNames),
@@ -144,7 +144,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     postMessage('export-result', {
       status: 'success',
       message:
-        'Export successfull. Please check your Figma variables to ensure they are correctly updated.',
+        'Check your variables and styles in Figma to make sure they were updated correctly.',
       info: log.info,
       warnings: log.warnings,
     });
