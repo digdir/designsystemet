@@ -29,7 +29,7 @@ export function PasteView({
           >
             theme.designsystemet.no
           </Link>{' '}
-          below and click Export to Figma.
+          below and click Create variables.
         </Field.Description>
         <Textarea
           id='config-textarea'

@@ -17,7 +17,7 @@ export function ExportView({
     <div className='status-view' role='status' aria-live='polite'>
       <Spinner aria-hidden data-size='lg' />
       <Heading level={2} data-size='sm'>
-        Exporting to Figma
+        Creating variables
       </Heading>
       {progress ? (
         <>
@@ -32,7 +32,7 @@ export function ExportView({
           </Paragraph>
         </>
       ) : (
-        <Paragraph>Starting export…</Paragraph>
+        <Paragraph>Starting…</Paragraph>
       )}
     </div>
   );

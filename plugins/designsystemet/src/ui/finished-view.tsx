@@ -11,7 +11,7 @@ export function FinishedView({
   return (
     <div className='status-view'>
       <Heading level={2} data-size='sm'>
-        Export finished.
+        Variables created
       </Heading>
       <Paragraph>{message}</Paragraph>
       {warningCount > 0 && (

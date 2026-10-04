@@ -97,7 +97,7 @@ function toNotifications(
       ? [
           {
             kind: 'info' as const,
-            text: `Export log (${info.length})`,
+            text: `Log (${info.length})`,
             details: info,
           },
         ]
@@ -150,7 +150,7 @@ function App() {
   return (
     <div className='app'>
       <header>
-        <Heading>Export theme to Figma</Heading>
+        <Heading>Create Figma variables</Heading>
       </header>
 
       <main>
@@ -171,7 +171,7 @@ function App() {
       {/* Stays mounted across views, so screen readers announce the outcome when the view changes. */}
       <div className='ds-sr-only' role='status'>
         {state.result &&
-          `${state.result.status === 'success' ? 'Export finished' : 'Export failed'}. ${state.result.message}`}
+          `${state.result.status === 'success' ? 'Variables created' : 'Could not create variables'}. ${state.result.message}`}
       </div>
       <footer>
         <div className='footer-left'>
@@ -188,14 +188,14 @@ function App() {
               onClick={() => dispatch({ type: 'go-back' })}
               variant='tertiary'
             >
-              Export another config
+              Use another config
             </Button>
           )}
         </div>
         <div className='footer-right'>
           {state.view === 'paste' && (
             <Button onClick={exportConfig} disabled={!pastedConfig.trim()}>
-              Export to Figma
+              Create variables
             </Button>
           )}
           {state.view === 'finished' && state.notifications.length > 0 && (
