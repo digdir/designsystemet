@@ -7,8 +7,8 @@ export type Progress = {
   label: string;
 };
 
-// Shown during the export: which step is running, and how far along the export is.
-export function ExportView({
+// Shown during the sync: which step is running, and how far along the sync is.
+export function SyncView({
   progress,
 }: {
   progress: Progress | null;

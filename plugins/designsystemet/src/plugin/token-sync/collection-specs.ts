@@ -4,7 +4,7 @@ import {
   figmaCodeSyntax,
   figmaVariableScopes,
 } from '@digdir/designsystemet/internal';
-import type { ExportLog } from './log';
+import type { SyncLog } from './log';
 import { resolveValue } from './resolver';
 import type { FlatToken, TokenModel } from './types';
 import { inferVariableName, pathToFigmaName } from './utils';
@@ -46,7 +46,7 @@ export type CollectionSpec = {
 export function buildCollectionSpecs(
   model: TokenModel,
   tokenSetOrder: string[],
-  log: ExportLog,
+  log: SyncLog,
 ): CollectionSpec[] {
   const specs: CollectionSpec[] = [];
 
@@ -74,7 +74,7 @@ function buildModeVariables(
   group: string,
   mode: FigmaMode,
   collection: CollectionSpec,
-  log: ExportLog,
+  log: SyncLog,
 ): void {
   const modeName = mode.modeName;
   const modeTokenSetOrder = getModeTokenSetLookupOrder(tokenSetOrder, mode);
