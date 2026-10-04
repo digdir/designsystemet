@@ -150,7 +150,7 @@ function App() {
   return (
     <div className='app'>
       <header>
-        <Heading>Sync theme to Figma</Heading>
+        <Heading>Sync Designsystemet to Figma</Heading>
       </header>
 
       <main>
