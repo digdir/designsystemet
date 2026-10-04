@@ -24,12 +24,28 @@ header {
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
+/* Paste view: fills the main row, and the textarea takes the space the text above leaves.
+   Scrolls when the window is too small for the textarea's minimum height. */
 .paste-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+  box-sizing: border-box;
+  height: 100%;
   padding: var(--ds-size-4);
+  overflow-y: auto;
 }
 
-textarea {
-  height: 400px;
+.paste-field {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+
+  & textarea {
+    flex: 1 1 auto;
+    min-height: 160px;
+    resize: none;
+  }
 }
 
 footer {
