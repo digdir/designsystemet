@@ -1,6 +1,6 @@
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
-import type { ExportLog } from './log';
+import type { SyncLog } from './log';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
 import { parseNumber, pathToFigmaName } from './utils';
@@ -13,7 +13,7 @@ export async function syncTextStyles(
   tokenSetOrder: string[],
   variableLookup: Map<string, Variable>,
   fontCache: FontCache,
-  log: ExportLog,
+  log: SyncLog,
 ): Promise<void> {
   const desired = model.flatTokens.filter(
     (token) =>

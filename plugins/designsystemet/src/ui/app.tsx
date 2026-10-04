@@ -4,19 +4,19 @@ import { Button, Heading } from '@digdir/designsystemet-react';
 import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification } from '../types';
 import './app.css';
-import { ExportView, type Progress } from './export-view';
 import { FinishedView } from './finished-view';
 import { NotificationsView } from './notifications-view';
 import { PasteView } from './paste-view';
 import { postToPlugin } from './post-to-plugin';
+import { type Progress, SyncView } from './sync-view';
 
 // One view is shown at a time, each replacing the main area.
-type View = 'paste' | 'exporting' | 'finished' | 'notifications';
+type View = 'paste' | 'syncing' | 'finished' | 'notifications';
 
 type UiState = {
   view: View;
   progress: Progress | null;
-  /** The last export's outcome, shown in the finished view. */
+  /** The last sync's outcome, shown in the finished view. */
   result: { status: 'success' | 'error'; message: string } | null;
   notifications: Notification[];
 };
@@ -29,10 +29,10 @@ const initialState: UiState = {
 };
 
 type Action =
-  | { type: 'export-started' }
-  | { type: 'export-progress'; progress: Progress }
+  | { type: 'sync-started' }
+  | { type: 'sync-progress'; progress: Progress }
   | {
-      type: 'export-finished';
+      type: 'sync-finished';
       result: NonNullable<UiState['result']>;
       notifications: Notification[];
     }
@@ -41,20 +41,20 @@ type Action =
 
 function reducer(state: UiState, action: Action): UiState {
   switch (action.type) {
-    case 'export-started':
+    case 'sync-started':
       return {
         ...state,
-        view: 'exporting',
+        view: 'syncing',
         progress: null,
         result: null,
         notifications: [],
       };
-    case 'export-progress':
+    case 'sync-progress':
       return { ...state, progress: action.progress };
-    case 'export-finished':
+    case 'sync-finished':
       return {
         ...state,
-        // A failed export has nothing to show in the finished view, so go straight to what went wrong.
+        // A failed sync has nothing to show in the finished view, so go straight to what went wrong.
         view: action.result.status === 'success' ? 'finished' : 'notifications',
         progress: null,
         result: action.result,
@@ -63,7 +63,7 @@ function reducer(state: UiState, action: Action): UiState {
     case 'show-notifications':
       return { ...state, view: 'notifications' };
     case 'go-back':
-      // From notifications, go back to the finished view after a successful export, otherwise to the config.
+      // From notifications, go back to the finished view after a successful sync, otherwise to the config.
       return {
         ...state,
         view:
@@ -74,9 +74,9 @@ function reducer(state: UiState, action: Action): UiState {
   }
 }
 
-/** Turns an export result into notifications: the error, the warnings, and the export log. */
+/** Turns a sync result into notifications: the error, the warnings, and the sync log. */
 function toNotifications(
-  msg: Extract<FigmaMessages, { type: 'export-result' }>,
+  msg: Extract<FigmaMessages, { type: 'sync-result' }>,
 ): Notification[] {
   const warnings = msg.warnings ?? [];
   const info = msg.info ?? [];
@@ -115,15 +115,15 @@ function App() {
       const msg = event.data?.pluginMessage as FigmaMessages | undefined;
       if (!msg) return;
       switch (msg.type) {
-        case 'export-progress':
+        case 'sync-progress':
           dispatch({
-            type: 'export-progress',
+            type: 'sync-progress',
             progress: { step: msg.step, total: msg.total, label: msg.label },
           });
           break;
-        case 'export-result':
+        case 'sync-result':
           dispatch({
-            type: 'export-finished',
+            type: 'sync-finished',
             result: { status: msg.status, message: msg.message },
             notifications: toNotifications(msg),
           });
@@ -138,9 +138,9 @@ function App() {
     };
   }, []);
 
-  const exportConfig = () => {
-    dispatch({ type: 'export-started' });
-    postToPlugin('export-config-to-figma', { config: pastedConfig });
+  const syncConfig = () => {
+    dispatch({ type: 'sync-started' });
+    postToPlugin('sync-config-to-figma', { config: pastedConfig });
   };
 
   // The number of warning entries. Not the number of affected items: some entries summarise several.
@@ -157,7 +157,7 @@ function App() {
         {state.view === 'paste' && (
           <PasteView value={pastedConfig} onChange={setPastedConfig} />
         )}
-        {state.view === 'exporting' && <ExportView progress={state.progress} />}
+        {state.view === 'syncing' && <SyncView progress={state.progress} />}
         {state.view === 'finished' && state.result && (
           <FinishedView
             message={state.result.message}
@@ -194,7 +194,7 @@ function App() {
         </div>
         <div className='footer-right'>
           {state.view === 'paste' && (
-            <Button onClick={exportConfig} disabled={!pastedConfig.trim()}>
+            <Button onClick={syncConfig} disabled={!pastedConfig.trim()}>
               Create variables
             </Button>
           )}

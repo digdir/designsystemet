@@ -1,5 +1,5 @@
 import { parseColorValue } from './color';
-import type { ExportLog } from './log';
+import type { SyncLog } from './log';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
 import { parseNumber } from './utils';
@@ -9,7 +9,7 @@ import { parseNumber } from './utils';
 export async function syncEffectStyles(
   model: TokenModel,
   tokenSetOrder: string[],
-  log: ExportLog,
+  log: SyncLog,
 ): Promise<void> {
   const desired = model.flatTokens.filter(
     (token) =>

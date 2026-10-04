@@ -48,7 +48,7 @@ footer {
   height: 100vh;
 }
 
-/* Export and finished views: a centred status message. */
+/* Sync and finished views: a centred status message. */
 .status-view {
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@ footer {
   accent-color: var(--ds-color-accent-base-default);
 }
 
-/* Notifications view: errors and warnings, then the collapsed export log. */
+/* Notifications view: errors and warnings, then the collapsed sync log. */
 .notifications-view {
   display: flex;
   flex-direction: column;

@@ -1,10 +1,10 @@
 import type { CollectionSpec } from './collection-specs';
-import type { ExportLog } from './log';
+import type { SyncLog } from './log';
 import { normalizeScopes } from './scopes';
 
 export async function syncCollections(
   specs: CollectionSpec[],
-  log: ExportLog,
+  log: SyncLog,
 ): Promise<Map<string, VariableCollection>> {
   const existingCollections =
     await figma.variables.getLocalVariableCollectionsAsync();
@@ -32,7 +32,7 @@ export async function syncCollections(
 async function ensureModes(
   collection: VariableCollection,
   desiredModeNames: string[],
-  log: ExportLog,
+  log: SyncLog,
 ): Promise<void> {
   if (desiredModeNames.length === 0) {
     return;
@@ -65,7 +65,7 @@ async function ensureModes(
 export async function syncVariables(
   specs: CollectionSpec[],
   collectionMap: Map<string, VariableCollection>,
-  log: ExportLog,
+  log: SyncLog,
 ): Promise<Map<string, Variable>> {
   const allVariables = await figma.variables.getLocalVariablesAsync();
   const byCompositeKey = new Map<string, Variable>();
@@ -119,7 +119,7 @@ export async function syncVariables(
       }
 
       // Scopes and code syntax are best-effort: Figma rejects some assignments (e.g. an invalid
-      // scope combination), and that must not abort the export before values, aliases and
+      // scope combination), and that must not abort the sync before values, aliases and
       // styles are written. Log the variable and carry on.
       try {
         if (syncCodeSyntax(variable, desired.codeSyntax)) {

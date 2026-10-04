@@ -1,7 +1,7 @@
 import { Alert, Details, Heading } from '@digdir/designsystemet-react';
 import type { Notification } from '../types';
 
-// Lists errors and warnings, followed by the collapsed export log (info), which can be long.
+// Lists errors and warnings, followed by the collapsed sync log (info), which can be long.
 export function NotificationsView({
   notifications,
 }: {

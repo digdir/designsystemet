@@ -11,16 +11,16 @@ import {
 } from '@digdir/designsystemet/internal';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
-import { EXPORT_STEPS, exportToFigma } from './token-export/export-to-figma';
-import { createExportLog } from './token-export/log';
-import { buildTokenModel } from './token-export/token-model';
-import type { TokenModel } from './token-export/types';
+import { createSyncLog } from './token-sync/log';
+import { SYNC_STEPS, syncToFigma } from './token-sync/sync-to-figma';
+import { buildTokenModel } from './token-sync/token-model';
+import type { TokenModel } from './token-sync/types';
 
-/** Steps reported to the UI: validating, creating tokens, preparing the export, then the Figma export's own steps. */
-const TOTAL_STEPS = 3 + EXPORT_STEPS;
+/** Steps reported to the UI: validating, creating tokens, preparing the sync, then the Figma sync's own steps. */
+const TOTAL_STEPS = 3 + SYNC_STEPS;
 
 /**
- * Validates the pasted config and creates the token model to export. `onStep` is called before each of its 3 steps;
+ * Validates the pasted config and creates the token model to sync. `onStep` is called before each of its 3 steps;
  * `onDetail` updates the current step's label, e.g. with the theme being created.
  */
 async function createTokenModel(
@@ -115,14 +115,14 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     return;
   }
 
-  if (msg.type !== 'export-config-to-figma') {
+  if (msg.type !== 'sync-config-to-figma') {
     return;
   }
 
   let step = 0;
   let label = '';
   const reportProgress = () =>
-    postMessage('export-progress', { step, total: TOTAL_STEPS, label });
+    postMessage('sync-progress', { step, total: TOTAL_STEPS, label });
   const onStep = (stepLabel: string) => {
     step += 1;
     label = stepLabel;
@@ -133,15 +133,15 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     reportProgress();
   };
 
-  const log = createExportLog();
+  const log = createSyncLog();
   try {
     const tokenModel = await createTokenModel(msg.config, onStep, onDetail);
-    // Warnings from building the model (unresolved aliases etc.) are reported with the export's own warnings.
+    // Warnings from building the model (unresolved aliases etc.) are reported with the sync's own warnings.
     log.warnings.push(...tokenModel.warnings);
 
-    await exportToFigma(tokenModel, log, onStep);
+    await syncToFigma(tokenModel, log, onStep);
 
-    postMessage('export-result', {
+    postMessage('sync-result', {
       status: 'success',
       message:
         'Check your variables and styles in Figma to make sure they were updated correctly.',
@@ -150,12 +150,12 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
-    postMessage('export-result', {
+    postMessage('sync-result', {
       status: 'error',
       message: `${label ? `${label} failed: ` : ''}${errorMessage}`,
       info: log.info,
       warnings: log.warnings,
     });
-    console.error('Error exporting tokens:', error);
+    console.error('Error syncing tokens:', error);
   }
 };
