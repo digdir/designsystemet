@@ -5,7 +5,7 @@ import {
   formatThemeCSS,
 } from '@digdir/designsystemet/internal';
 
-type ThemeConfig = ExternalConfigSchemaInput['themes'][string];
+type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
 
 /**
  * Generates the CSS for a theme the same way the CLI does, by validating it like a config file and
@@ -20,9 +20,13 @@ export const generateThemeCss = async (
     themes: { [name]: themeConfig },
   });
   const config = configSchema.parse(externalConfig);
+  const theme = config.themes?.[name];
+  if (!theme) {
+    throw new Error(`Theme "${name}" is missing after validation`);
+  }
 
   const files = await formatThemeCSS(
-    { name, ...config.themes[name] } as Parameters<typeof formatThemeCSS>[0],
+    { name, ...theme } as Parameters<typeof formatThemeCSS>[0],
     { verbose: false, tailwind: false },
   );
 
