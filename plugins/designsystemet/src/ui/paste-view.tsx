@@ -26,7 +26,7 @@ export function PasteView({
   return (
     <div className='paste-view'>
       {/* Outside the field so the textarea's description stays short for screen readers. */}
-      <Details data-size='sm' className='sync-details'>
+      <Details data-size='sm'>
         <DetailsSummary>What does syncing do?</DetailsSummary>
         <DetailsContent>
           <Paragraph>Syncing makes this file match the config:</Paragraph>
