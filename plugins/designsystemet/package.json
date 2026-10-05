@@ -25,6 +25,7 @@
     "@digdir/designsystemet": "workspace:*",
     "@digdir/designsystemet-css": "workspace:*",
     "@digdir/designsystemet-react": "workspace:*",
+    "@navikt/aksel-icons": "^8.18.0",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
