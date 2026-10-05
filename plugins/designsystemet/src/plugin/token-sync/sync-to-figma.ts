@@ -2,6 +2,7 @@ import { buildCollectionSpecs } from './collection-specs';
 import { syncEffectStyles } from './effect-styles';
 import { type FontCache, preloadAllFonts } from './fonts';
 import { createSyncLog, type SyncLog } from './log';
+import { createPause } from './pause';
 import { getTokenSetLookupOrder } from './resolver';
 import { syncTextStyles } from './text-styles';
 import type { TokenModel } from './types';
@@ -22,8 +23,11 @@ export async function syncToFigma(
   model: TokenModel,
   log: SyncLog = createSyncLog(),
   onStep: OnStep = async () => {},
+  /** Updates the current step's label, e.g. with how many values have been written. */
+  onDetail: (label: string) => void = () => {},
 ): Promise<SyncLog> {
   const tokenSetOrder = getTokenSetLookupOrder(model);
+  const pause = createPause(onDetail);
 
   await onStep('Loading fonts');
   const fontCache: FontCache = {
@@ -42,7 +46,7 @@ export async function syncToFigma(
 
   // Adding a mode makes Figma fill in a value for every variable already in the collection.
   await onStep('Syncing variable collections', MAY_FREEZE_NOTE);
-  const collectionMap = await syncCollections(collectionSpecs, log);
+  const collectionMap = await syncCollections(collectionSpecs, log, pause);
 
   // Writes every variable's value in every mode in one go.
   await onStep('Syncing variables', MAY_FREEZE_NOTE);
@@ -50,10 +54,18 @@ export async function syncToFigma(
     collectionSpecs,
     collectionMap,
     log,
+    pause,
   );
 
   await onStep('Syncing text styles');
-  await syncTextStyles(model, tokenSetOrder, variableLookup, fontCache, log);
+  await syncTextStyles(
+    model,
+    tokenSetOrder,
+    variableLookup,
+    fontCache,
+    log,
+    pause,
+  );
 
   await onStep('Syncing effect styles');
   await syncEffectStyles(model, tokenSetOrder, log);
