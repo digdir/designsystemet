@@ -100,7 +100,16 @@ footer {
 }
 
 .sync-details {
-  --dsc-details-background: var(--ds-color-neutral-background-tinted);
-  --dsc-details-summary-background: var(--ds-color-neutral-background-tinted);
   --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
+  border-radius: var(--ds-border-radius-md);
+  border: solid 1px var(--dsc-details-border-color);
+
+  > summary,
+  u-summary {
+    border-radius: var(--ds-border-radius-md);
+  }
+
+  &[open] > :is(summary, u-summary) {
+    border-bottom: 1px solid var(--dsc-details-border-color);
+  }
 }
