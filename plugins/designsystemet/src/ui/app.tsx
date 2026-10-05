@@ -122,7 +122,12 @@ function App() {
         case 'sync-progress':
           dispatch({
             type: 'sync-progress',
-            progress: { step: msg.step, total: msg.total, label: msg.label },
+            progress: {
+              step: msg.step,
+              total: msg.total,
+              label: msg.label,
+              note: msg.note,
+            },
           });
           break;
         case 'sync-result':

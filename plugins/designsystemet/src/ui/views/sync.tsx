@@ -5,6 +5,7 @@ export type Progress = {
   step: number;
   total: number;
   label: string;
+  note?: string;
 };
 
 // Shown during the sync: which step is running, and how far along the sync is.
@@ -30,6 +31,9 @@ export function SyncView({
           <Paragraph>
             Step {progress.step} of {progress.total}: {progress.label}
           </Paragraph>
+          {progress.note && (
+            <Paragraph data-color='warning'>{progress.note}</Paragraph>
+          )}
         </>
       ) : (
         <Paragraph>Starting…</Paragraph>

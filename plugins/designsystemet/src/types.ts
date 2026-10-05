@@ -11,6 +11,8 @@ type SyncProgress = {
   step: number;
   total: number;
   label: string;
+  /** Shown with the step, e.g. to warn that Figma may stop responding while it runs. */
+  note?: string;
 };
 
 // Plugin -> UI: sent once when the sync has finished or failed.

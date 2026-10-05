@@ -12,7 +12,11 @@ import {
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { createSyncLog } from './token-sync/log';
-import { SYNC_STEPS, syncToFigma } from './token-sync/sync-to-figma';
+import {
+  type OnStep,
+  SYNC_STEPS,
+  syncToFigma,
+} from './token-sync/sync-to-figma';
 import { buildTokenModel } from './token-sync/token-model';
 import type { TokenModel } from './token-sync/types';
 
@@ -25,10 +29,10 @@ const TOTAL_STEPS = 3 + SYNC_STEPS;
  */
 async function createTokenModel(
   configText: string,
-  onStep: (label: string) => void,
+  onStep: OnStep,
   onDetail: (label: string) => void,
 ): Promise<TokenModel> {
-  onStep('Validating config');
+  await onStep('Validating config');
   const parsedConfig = parseConfig<ConfigSchema>(configText);
 
   // Validate the config against the public/external schema first, so configs using non-exposed
@@ -61,7 +65,7 @@ async function createTokenModel(
   // alongside the user-defined colors and neutral.
   const semanticColorNames = new Set<string>();
 
-  onStep('Creating tokens');
+  await onStep('Creating tokens');
   for (const [index, [themeName, themeConfig]] of themes.entries()) {
     onDetail(
       `Creating tokens for ${themeName} (${index + 1} of ${themes.length})`,
@@ -81,7 +85,7 @@ async function createTokenModel(
     }
   }
 
-  onStep('Preparing sync');
+  await onStep('Preparing sync');
   const { $themes } = await createSystemTokens({
     tokenSetDimensions,
     colorNames: Array.from(semanticColorNames),
@@ -121,12 +125,17 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
   let step = 0;
   let label = '';
+  let note: string | undefined;
   const reportProgress = () =>
-    postMessage('sync-progress', { step, total: TOTAL_STEPS, label });
-  const onStep = (stepLabel: string) => {
+    postMessage('sync-progress', { step, total: TOTAL_STEPS, label, note });
+  const onStep: OnStep = async (stepLabel, stepNote) => {
     step += 1;
     label = stepLabel;
+    note = stepNote;
     reportProgress();
+    // Most steps run synchronous Figma API calls that block Figma until they finish. Wait a moment
+    // so the UI receives and renders the step (and its note) before that happens.
+    await new Promise((resolve) => setTimeout(resolve, 50));
   };
   const onDetail = (detail: string) => {
     label = detail;
