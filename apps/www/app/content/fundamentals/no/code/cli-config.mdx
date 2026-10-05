@@ -1,7 +1,7 @@
 ---
 title: CLI Config
 description: Informasjon om korleis du bruker CLI config fil.
-date: 2025-10-29
+date: 2026-09-28
 category: Kode
 color: blue
 icon: FileJsonIcon
@@ -108,6 +108,7 @@ Alle stiar er relative til config fila.
 | dir | Streng | Nei | `design-tokens-build` | Mappa der CSS skal lagrast. |
 | cleanDir | Boolean | Nei | `true` | Slett mappa før CSS blir laga. |
 | tokensDir | Streng | Nei | `dir` i `design-tokens`-outputen | Mappa med design tokens som CSS skal byggast frå. Er ingen av dei sette, blir CSS-en laga direkte frå tema. |
+| tailwind | `"v3"`, `"v4"` eller `false` | Nei | `false` | Lager ei `<tema>.tailwind.css` for denne Tailwind-versjonen. `false` hoppar over det. |
 
 #### Utan design tokens
 

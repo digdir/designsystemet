@@ -39,7 +39,7 @@ const formatTheme = async (themeConfig: Theme, options: Pick<FormatTokensOptions
 };
 
 /**
- * Formats a theme configuration into CSS strings. This function processes the provided `Theme` configuration, generates the necessary token sets, and creates CSS files based on the processed builds. If the `tailwind` option is enabled, it also generates Tailwind CSS files.
+ * Formats a theme configuration into CSS strings. This function processes the provided `Theme` configuration, generates the necessary token sets, and creates CSS files based on the processed builds. If the `tailwind` option is set, it also generates a Tailwind theme file for that version.
  *
  * This function takes a `Theme` configuration object, processes it using the
  * `formatTheme` function, and then generates CSS using the `createThemeCSS` function.
@@ -56,7 +56,7 @@ export const formatThemeCSS = async (
   let files: OutputFile[] = createThemeCSSFiles({ processedBuilds });
 
   if (options.tailwind) {
-    const tailwindFiles = createTailwindCSSFiles(files);
+    const tailwindFiles = createTailwindCSSFiles(files, options.tailwind);
     files = files.concat(tailwindFiles.filter(Boolean) as OutputFile[]);
   }
 
