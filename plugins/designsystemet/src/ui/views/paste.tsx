@@ -31,11 +31,7 @@ export function PasteView({
           </Link>{' '}
           below and click "Sync to Figma".
         </Field.Description>
-        <Textarea
-          id='config-textarea'
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-        />
+        <Textarea value={value} onChange={(e) => onChange(e.target.value)} />
       </Field>
     </div>
   );
