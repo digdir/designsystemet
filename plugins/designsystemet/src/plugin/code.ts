@@ -140,6 +140,10 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     log.warnings.push(...tokenModel.warnings);
 
     await syncToFigma(tokenModel, log, onStep);
+    // Always give feedback, so a sync that changed nothing still has a log to show.
+    if (log.info.length === 0) {
+      log.info.push('No changes');
+    }
 
     postMessage('sync-result', {
       status: 'success',
