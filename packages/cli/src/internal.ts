@@ -40,4 +40,5 @@ export {
 } from './schemas/schema.ts';
 export { getThemeColorScales } from './tokens/create/generators/primitives/color-scheme.ts';
 export { createSystemTokens, createTokens, getTokenSetDimensions } from './tokens/create.ts';
+export { formatThemeCSS } from './tokens/format.ts';
 export type { BorderRadiusConfig, TokenSets } from './tokens/types.ts';

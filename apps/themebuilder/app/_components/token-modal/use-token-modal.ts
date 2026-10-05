@@ -53,27 +53,29 @@ export const useTokenModal = () => {
 
   const configBuildSnippet = `npx ${packageWithTag} tokens create --config designsystemet.config.json\nnpx ${packageWithTag} tokens build --config designsystemet.config.json`;
 
+  const themeConfig: ExternalConfigSchemaInput['themes'][string] = {
+    colors: theme.colors,
+    ...(Object.keys(severityOverrides).length > 0 ||
+    Object.keys(colorOverrides).length > 0
+      ? {
+          overrides: {
+            ...(Object.keys(severityOverrides).length > 0 && {
+              severity: severityOverrides,
+            }),
+            ...(Object.keys(colorOverrides).length > 0 && {
+              colors: colorOverrides,
+            }),
+          },
+        }
+      : {}),
+    borderRadius: theme.borderRadius,
+  };
+
   const configSnippet = {
     $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
     outDir: './design-tokens',
     themes: {
-      [name]: {
-        colors: theme.colors,
-        ...(Object.keys(severityOverrides).length > 0 ||
-        Object.keys(colorOverrides).length > 0
-          ? {
-              overrides: {
-                ...(Object.keys(severityOverrides).length > 0 && {
-                  severity: severityOverrides,
-                }),
-                ...(Object.keys(colorOverrides).length > 0 && {
-                  colors: colorOverrides,
-                }),
-              },
-            }
-          : {}),
-        borderRadius: theme.borderRadius,
-      },
+      [name]: themeConfig,
     },
   };
 
@@ -81,6 +83,7 @@ export const useTokenModal = () => {
     themeName: name,
     setThemeName: setName,
     theme,
+    themeConfig,
     buildSnippet: {
       config: configBuildSnippet,
     },

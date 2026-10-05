@@ -96,7 +96,9 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   sd ??= new StyleDictionary();
   const styleDictionary = sd;
 
-  const UNSAFE_DEFAULT_COLOR = process.env.UNSAFE_DEFAULT_COLOR ?? '';
+  // `process.env` doesn't exist in the browser, where the theme builder formats themes.
+  const UNSAFE_DEFAULT_COLOR = globalThis.process?.env?.UNSAFE_DEFAULT_COLOR ?? '';
+
   if (UNSAFE_DEFAULT_COLOR) {
     console.warn(
       pc.yellow(
