@@ -5,13 +5,14 @@ import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification } from '../types';
 import './app.css';
 import { postToPlugin } from './post-to-plugin';
+import { AboutView } from './views/about';
 import { FinishedView } from './views/finished';
 import { NotificationsView } from './views/notifications';
 import { PasteView } from './views/paste';
 import { type Progress, SyncView } from './views/sync';
 
 // One view is shown at a time, each replacing the main area.
-type View = 'paste' | 'syncing' | 'finished' | 'notifications';
+type View = 'paste' | 'about' | 'syncing' | 'finished' | 'notifications';
 
 type UiState = {
   view: View;
@@ -37,6 +38,7 @@ type Action =
       notifications: Notification[];
     }
   | { type: 'show-notifications' }
+  | { type: 'show-about' }
   | { type: 'go-back' };
 
 function reducer(state: UiState, action: Action): UiState {
@@ -62,6 +64,8 @@ function reducer(state: UiState, action: Action): UiState {
       };
     case 'show-notifications':
       return { ...state, view: 'notifications' };
+    case 'show-about':
+      return { ...state, view: 'about' };
     case 'go-back':
       // From notifications, go back to the finished view after a successful sync, otherwise to the config.
       return {
@@ -157,6 +161,7 @@ function App() {
         {state.view === 'paste' && (
           <PasteView value={pastedConfig} onChange={setPastedConfig} />
         )}
+        {state.view === 'about' && <AboutView />}
         {state.view === 'syncing' && <SyncView progress={state.progress} />}
         {state.view === 'finished' && state.result && (
           <FinishedView
@@ -180,7 +185,7 @@ function App() {
               Sync to Figma
             </Button>
           )}
-          {state.view === 'notifications' && (
+          {(state.view === 'notifications' || state.view === 'about') && (
             <Button
               onClick={() => dispatch({ type: 'go-back' })}
               variant='tertiary'
@@ -198,12 +203,23 @@ function App() {
           )}
         </div>
         <div className='footer-right'>
+          {state.view === 'paste' && (
+            <Button
+              data-color='neutral'
+              className='ds-button'
+              data-variant='tertiary'
+              onClick={() => dispatch({ type: 'show-about' })}
+            >
+              What does syncing do?
+            </Button>
+          )}
           {state.view === 'finished' && state.notifications.length > 0 && (
             <Button
               onClick={() => dispatch({ type: 'show-notifications' })}
-              variant='secondary'
+              data-color='neutral'
+              variant='tertiary'
             >
-              Show notifications
+              Show sync log
             </Button>
           )}
         </div>

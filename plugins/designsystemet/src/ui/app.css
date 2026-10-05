@@ -59,6 +59,7 @@ details {
   & textarea {
     flex: 1 1 auto;
     min-height: 160px;
+    max-height: 560px;
     resize: none;
   }
 }
@@ -69,7 +70,9 @@ footer {
   justify-content: space-between;
   gap: var(--ds-size-2);
   padding: var(--ds-size-4);
-  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  &:has(button) {
+    border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  }
 }
 
 .app {
@@ -88,17 +91,19 @@ footer {
   gap: var(--ds-size-3);
   box-sizing: border-box;
   height: 100%;
-  padding: var(--ds-size-8) var(--ds-size-5);
+  padding: var(--ds-size-8) var(--ds-size-30);
   text-align: center;
 }
 
 .progress {
   width: min(400px, 100%);
+  height: var(--ds-size-6);
   accent-color: var(--ds-color-accent-base-default);
 }
 
-/* Notifications view: errors and warnings, then the collapsed sync log. */
-.notifications-view {
+/* Notifications view (errors and warnings, then the collapsed sync log) and about view. */
+.notifications-view,
+.about-view {
   display: flex;
   flex-direction: column;
   gap: var(--ds-size-3);
@@ -112,4 +117,10 @@ footer {
 .notification-details {
   margin: 6px 0 0;
   padding-left: 18px;
+}
+
+.finished-icon {
+  height: var(--ds-size-14);
+  width: var(--ds-size-14);
+  color: var(--ds-color-success-base-default);
 }
