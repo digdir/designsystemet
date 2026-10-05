@@ -1,7 +1,7 @@
 import type { ExternalConfigSchemaInput } from '@digdir/designsystemet/internal';
 import { useEffect, useState } from 'react';
 
-type ThemeConfig = ExternalConfigSchemaInput['themes'][string];
+type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
 
 /** Wait for typing in the theme name to settle before generating, as generating the CSS takes a moment. */
 const DEBOUNCE_MS = 300;

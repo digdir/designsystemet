@@ -37,7 +37,7 @@ function reducer(state: UiState, action: Action): UiState {
       return {
         ...state,
         config: action.config,
-        selectedTheme: Object.keys(action.config.themes)[0] ?? null,
+        selectedTheme: Object.keys(action.config.themes ?? {})[0] ?? null,
         selectedScheme: action.scheme,
         notification: action.notification,
       };
