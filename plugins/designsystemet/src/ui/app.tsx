@@ -4,11 +4,11 @@ import { Button, Heading } from '@digdir/designsystemet-react';
 import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification } from '../types';
 import './app.css';
-import { FinishedView } from './finished-view';
-import { NotificationsView } from './notifications-view';
-import { PasteView } from './paste-view';
 import { postToPlugin } from './post-to-plugin';
-import { type Progress, SyncView } from './sync-view';
+import { FinishedView } from './views/finished-view';
+import { NotificationsView } from './views/notifications-view';
+import { PasteView } from './views/paste-view';
+import { type Progress, SyncView } from './views/sync-view';
 
 // One view is shown at a time, each replacing the main area.
 type View = 'paste' | 'syncing' | 'finished' | 'notifications';

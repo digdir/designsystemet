@@ -9,7 +9,7 @@ import {
   Paragraph,
   Textarea,
 } from '@digdir/designsystemet-react';
-import { postToPlugin } from './post-to-plugin';
+import { postToPlugin } from '../post-to-plugin';
 
 const THEME_BUILDER_URL = 'https://theme.designsystemet.no';
 
