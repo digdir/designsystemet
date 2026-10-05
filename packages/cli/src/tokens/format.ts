@@ -5,7 +5,6 @@ import { createThemeCSSFiles } from './process/output/theme.ts';
 import { type FormatOptions, processPlatform } from './process/platform.ts';
 import { processThemeObject } from './process/utils/getMultidimensionalThemes.ts';
 import type { OutputFile, Theme } from './types.ts';
-import { toColorNames } from './utils.ts';
 
 type FormatTokensOptions = Omit<FormatOptions, 'type' | 'buildTokenFormats'>;
 
@@ -21,7 +20,7 @@ export const formatTokens = async (options: FormatTokensOptions) => {
 
 const formatTheme = async (themeConfig: Theme, options: Pick<FormatTokensOptions, 'verbose' | 'tailwind'>) => {
   const themeNames = [themeConfig.name];
-  const colorNames = toColorNames(themeConfig.colors);
+  const colorNames = Object.keys(themeConfig.colors);
 
   const tokenSetDimensions = getTokenSetDimensions(themeConfig);
   const { tokenSets } = await createTokens(themeConfig, tokenSetDimensions);

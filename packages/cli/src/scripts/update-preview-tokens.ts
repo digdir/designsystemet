@@ -3,12 +3,12 @@ import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
 import { validateConfig } from '../schemas/helpers.ts';
 import { configSchema } from '../schemas/schema.ts';
+import { colorsSchema } from '../schemas/schema-color.ts';
 import { generate$Themes } from '../tokens/create/generators/$themes.ts';
 import { createTokens, getTokenSetDimensions } from '../tokens/create.ts';
 import { buildOptions, processPlatform } from '../tokens/process/platform.ts';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.ts';
 import type { Theme } from '../tokens/types.ts';
-import { toColorNames } from '../tokens/utils.ts';
 import { dsfs } from '../utils/filesystem.ts';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
@@ -27,7 +27,7 @@ const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]
 type PreviewToken = { variable: string; value: string };
 
 const formatTheme = async (themeConfig: Theme) => {
-  const colorNames = toColorNames(themeConfig.colors);
+  const colorNames = Object.keys(themeConfig.colors);
   const themeNames = [themeConfig.name];
 
   const tokenSetDimensions = getTokenSetDimensions(themeConfig);
@@ -111,10 +111,11 @@ if (!themes) {
 formatTheme({
   name: 'test',
   borderRadius: themes.designsystemet.borderRadius,
-  colors: {
+  // Parsed so the default severity colors are added, like for a validated config.
+  colors: colorsSchema.parse({
     primary: themes.designsystemet.colors.accent,
     neutral: themes.designsystemet.colors.neutral,
-  },
+  }),
   typography: themes.designsystemet.typography,
   size: themes.designsystemet.size,
   shadow: themes.designsystemet.shadow,
