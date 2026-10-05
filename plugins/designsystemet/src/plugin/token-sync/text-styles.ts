@@ -1,6 +1,7 @@
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
 import { changedFields, type SyncLog } from './log';
+import type { Pause } from './pause';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
 import { parseNumber, pathToFigmaName } from './utils';
@@ -14,6 +15,7 @@ export async function syncTextStyles(
   variableLookup: Map<string, Variable>,
   fontCache: FontCache,
   log: SyncLog,
+  pause: Pause,
 ): Promise<void> {
   const desired = model.flatTokens.filter(
     (token) =>
@@ -30,7 +32,10 @@ export async function syncTextStyles(
     }
   }
 
-  for (const token of desired) {
+  for (const [index, token] of desired.entries()) {
+    await pause(
+      () => `Syncing text styles (${index + 1} of ${desired.length})`,
+    );
     const styleName = token.figmaName;
     const styleValue = resolveCompositeValue(
       token.value,

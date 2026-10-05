@@ -148,7 +148,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     // Warnings from building the model (unresolved aliases etc.) are reported with the sync's own warnings.
     log.warnings.push(...tokenModel.warnings);
 
-    await syncToFigma(tokenModel, log, onStep);
+    await syncToFigma(tokenModel, log, onStep, onDetail);
     // Always give feedback, so a sync that changed nothing still has a log to show.
     if (log.info.length === 0) {
       log.info.push('No changes');
