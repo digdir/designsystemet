@@ -1,6 +1,6 @@
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
-import type { SyncLog } from './log';
+import { changedFields, type SyncLog } from './log';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
 import { parseNumber, pathToFigmaName } from './utils';
@@ -68,6 +68,7 @@ export async function syncTextStyles(
     const letterSpacing = toLetterSpacing(styleValue.letterSpacing);
 
     let style = existing.find((item) => item.name === styleName);
+    const before = style && snapshotTextStyle(style);
     if (!style) {
       style = figma.createTextStyle();
       style.name = styleName;
@@ -113,7 +114,33 @@ export async function syncTextStyles(
     );
     style.setBoundVariable('lineHeight', null);
     style.setBoundVariable('letterSpacing', null);
+
+    if (before) {
+      const changed = changedFields(before, snapshotTextStyle(style));
+      if (changed.length > 0) {
+        log.info.push(`Updated text style ${styleName}: ${changed.join(', ')}`);
+      }
+    }
   }
+}
+
+// The parts of a text style the sync writes, keyed by how they are named in the log.
+function snapshotTextStyle(style: TextStyle): Record<string, unknown> {
+  return {
+    font: style.fontName,
+    'font size': style.fontSize,
+    'line height': style.lineHeight,
+    'letter spacing': style.letterSpacing,
+    'paragraph spacing': style.paragraphSpacing,
+    'paragraph indent': style.paragraphIndent,
+    'text case': style.textCase,
+    'text decoration': style.textDecoration,
+    'font family variable': style.boundVariables?.fontFamily?.id ?? null,
+    'font weight variable': style.boundVariables?.fontStyle?.id ?? null,
+    'font size variable': style.boundVariables?.fontSize?.id ?? null,
+    'line height variable': style.boundVariables?.lineHeight?.id ?? null,
+    'letter spacing variable': style.boundVariables?.letterSpacing?.id ?? null,
+  };
 }
 
 function normalizeFontSizeReference(value: unknown): string | null {
