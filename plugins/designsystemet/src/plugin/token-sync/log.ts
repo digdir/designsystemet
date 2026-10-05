@@ -8,3 +8,15 @@ export type SyncLog = {
 };
 
 export const createSyncLog = (): SyncLog => ({ info: [], warnings: [] });
+
+// Names of the fields that differ between two snapshots of the same Figma object, taken before
+// and after the sync writes to it. Both come from Figma, so unchanged values compare equal.
+export function changedFields(
+  before: Record<string, unknown>,
+  after: Record<string, unknown>,
+): string[] {
+  const names = new Set([...Object.keys(before), ...Object.keys(after)]);
+  return [...names].filter(
+    (name) => JSON.stringify(before[name]) !== JSON.stringify(after[name]),
+  );
+}
