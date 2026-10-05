@@ -27,22 +27,19 @@ export function AboutView(): React.JSX.Element {
         </List.Item>
         <List.Item>Leaves other collections and styles alone.</List.Item>
       </List.Unordered>
-
-      <div>
-        <Paragraph>
-          Need help or have questions? Join our{' '}
-          <Link
-            href={SLACK_URL}
-            onClick={(event) => {
-              event.preventDefault();
-              postToPlugin('open-external', { url: SLACK_URL });
-            }}
-          >
-            Slack
-          </Link>{' '}
-          community.
-        </Paragraph>
-      </div>
+      <Paragraph>
+        Need help or have questions? Join our{' '}
+        <Link
+          href={SLACK_URL}
+          onClick={(event) => {
+            event.preventDefault();
+            postToPlugin('open-external', { url: SLACK_URL });
+          }}
+        >
+          Slack
+        </Link>{' '}
+        community.
+      </Paragraph>
     </div>
   );
 }

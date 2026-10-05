@@ -14,7 +14,7 @@ export function SyncView({
   progress: Progress | null;
 }): React.JSX.Element {
   return (
-    <div className='status-view' role='status' aria-live='polite'>
+    <div className='status-view' role='status'>
       <Spinner aria-hidden data-size='lg' />
       <Heading level={2} data-size='sm'>
         Syncing to Figma
