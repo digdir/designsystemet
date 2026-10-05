@@ -1,5 +1,8 @@
 @theme {
   --font-sans: var(--ds-font-family);
+  --text-lg: var(--ds-body-lg-font-size);
+  --text-md: var(--ds-body-md-font-size);
+  --text-sm: var(--ds-body-sm-font-size);
   --radius-lg: var(--ds-border-radius-lg);
   --radius-md: var(--ds-border-radius-md);
   --radius-sm: var(--ds-border-radius-sm);
