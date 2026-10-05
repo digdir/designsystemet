@@ -7,19 +7,25 @@ import { syncTextStyles } from './text-styles';
 import type { TokenModel } from './types';
 import { syncCollections, syncVariables } from './variable-sync';
 
+/** Called before each step of the sync. Resolves once the UI has had time to show the step. */
+export type OnStep = (label: string, note?: string) => Promise<void>;
+
 /** The number of times `syncToFigma` calls `onStep`, so callers can include the steps in their progress. */
 export const SYNC_STEPS = 5;
+
+// For steps that make many synchronous Figma API calls, which block Figma until they finish.
+const MAY_FREEZE_NOTE =
+  'Figma may stop responding during this step. Keep the plugin open until the sync finishes.';
 
 // `log` is owned by the caller so it also has the partial log when the sync throws.
 export async function syncToFigma(
   model: TokenModel,
   log: SyncLog = createSyncLog(),
-  /** Called with a label before each step of the sync. */
-  onStep: (label: string) => void = () => {},
+  onStep: OnStep = async () => {},
 ): Promise<SyncLog> {
   const tokenSetOrder = getTokenSetLookupOrder(model);
 
-  onStep('Loading fonts');
+  await onStep('Loading fonts');
   const fontCache: FontCache = {
     availableFonts: await figma.listAvailableFontsAsync(),
     loadedFonts: new Set<string>(),
@@ -34,20 +40,22 @@ export async function syncToFigma(
   // Loading all variants of every font family we will use prevents this.
   await preloadAllFonts(collectionSpecs, fontCache);
 
-  onStep('Syncing variable collections');
+  // Adding a mode makes Figma fill in a value for every variable already in the collection.
+  await onStep('Syncing variable collections', MAY_FREEZE_NOTE);
   const collectionMap = await syncCollections(collectionSpecs, log);
 
-  onStep('Syncing variables');
+  // Writes every variable's value in every mode in one go.
+  await onStep('Syncing variables', MAY_FREEZE_NOTE);
   const variableLookup = await syncVariables(
     collectionSpecs,
     collectionMap,
     log,
   );
 
-  onStep('Syncing text styles');
+  await onStep('Syncing text styles');
   await syncTextStyles(model, tokenSetOrder, variableLookup, fontCache, log);
 
-  onStep('Syncing effect styles');
+  await onStep('Syncing effect styles');
   await syncEffectStyles(model, tokenSetOrder, log);
 
   return log;
