@@ -3,13 +3,10 @@
 }
 
 body {
-  min-height: 100vh;
   font-family: 'Inter', sans-serif;
   font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
   margin: 0;
   padding: 0;
-  display: grid;
-  gap: var(--ds-size-4);
 
   color: var(--figma-color-text);
   background: var(--ds-color-neutral-background-tinted);
@@ -19,7 +16,6 @@ header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
   padding: var(--ds-size-4) var(--ds-size-5);
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 }
@@ -29,14 +25,20 @@ details {
   border-radius: var(--ds-border-radius-md);
   border: solid 1px var(--dsc-details-border-color);
 
-  > summary,
-  u-summary {
+  > summary {
     border-radius: var(--ds-border-radius-md);
   }
 
-  &[open] > :is(summary, u-summary) {
+  &[open] > summary {
     border-bottom: 1px solid var(--dsc-details-border-color);
   }
+}
+
+.app {
+  display: grid;
+  /* Header and footer keep their size; the current view gets the rest. */
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100vh;
 }
 
 /* Paste view: fills the main row, and the textarea takes the space the text above leaves.
@@ -73,13 +75,6 @@ footer {
   &:has(button) {
     border-top: 1px solid var(--ds-color-neutral-border-subtle);
   }
-}
-
-.app {
-  display: grid;
-  /* Header and footer keep their size; the current view gets the rest. */
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  height: 100vh;
 }
 
 /* Sync and finished views: a centred status message. */
