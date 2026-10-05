@@ -148,7 +148,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     postMessage('sync-result', {
       status: 'success',
       message:
-        'Check your variables and styles in Figma to make sure they were updated correctly.',
+        'You can now close this window. Check your variables and styles in Figma to make sure they were updated correctly.',
       info: log.info,
       warnings: log.warnings,
     });

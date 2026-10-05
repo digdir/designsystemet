@@ -847,6 +847,9 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:*
         version: link:../../packages/react
+      '@navikt/aksel-icons':
+        specifier: ^8.18.0
+        version: 8.18.0(react@19.3.0)
       react:
         specifier: 19.3.0
         version: 19.3.0
@@ -1592,6 +1595,14 @@ packages:
 
   '@navikt/aksel-icons@8.16.2':
     resolution: {integrity: sha512-d2GWooeIEJYq8NYJIJJhMo84Vac6SyCvLJDFWG6RSj8vcgFanQMnKAram1zd48UO/rjuuZZk99p4UZt4jsD0RA==}
+    peerDependencies:
+      react: '>=18.3.1 || ^19.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+
+  '@navikt/aksel-icons@8.18.0':
+    resolution: {integrity: sha512-pN15b6dQxDiPdJbXcL7W9xJ0sPUHo5GKM5ltAQ8kLb3Mf5is6Mf6gfON1nwft+aB8WlehDrTTseXVwu1BEfmQA==}
     peerDependencies:
       react: '>=18.3.1 || ^19.0.0'
     peerDependenciesMeta:
@@ -7039,6 +7050,10 @@ snapshots:
       react: 18.3.1
 
   '@navikt/aksel-icons@8.16.2(react@19.3.0)':
+    optionalDependencies:
+      react: 19.3.0
+
+  '@navikt/aksel-icons@8.18.0(react@19.3.0)':
     optionalDependencies:
       react: 19.3.0
 
