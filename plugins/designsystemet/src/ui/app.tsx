@@ -150,7 +150,7 @@ function App() {
   return (
     <div className='app'>
       <header>
-        <Heading>Sync Designsystemet to Figma</Heading>
+        <Heading>Sync config to Figma</Heading>
       </header>
 
       <main>
@@ -175,6 +175,11 @@ function App() {
       </div>
       <footer>
         <div className='footer-left'>
+          {state.view === 'paste' && (
+            <Button onClick={syncConfig} disabled={!pastedConfig.trim()}>
+              Sync to Figma
+            </Button>
+          )}
           {state.view === 'notifications' && (
             <Button
               onClick={() => dispatch({ type: 'go-back' })}
@@ -193,11 +198,6 @@ function App() {
           )}
         </div>
         <div className='footer-right'>
-          {state.view === 'paste' && (
-            <Button onClick={syncConfig} disabled={!pastedConfig.trim()}>
-              Sync
-            </Button>
-          )}
           {state.view === 'finished' && state.notifications.length > 0 && (
             <Button
               onClick={() => dispatch({ type: 'show-notifications' })}
