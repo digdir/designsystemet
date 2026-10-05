@@ -195,7 +195,7 @@ function App() {
         <div className='footer-right'>
           {state.view === 'paste' && (
             <Button onClick={syncConfig} disabled={!pastedConfig.trim()}>
-              Sync to Figma
+              Sync
             </Button>
           )}
           {state.view === 'finished' && state.notifications.length > 0 && (
