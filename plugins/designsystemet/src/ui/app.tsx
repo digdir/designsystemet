@@ -179,49 +179,45 @@ function App() {
           `${state.result.status === 'success' ? 'Sync finished' : 'Sync failed'}. ${state.result.message}`}
       </div>
       <footer>
-        <div className='footer-left'>
-          {state.view === 'paste' && (
-            <Button onClick={syncConfig} disabled={!pastedConfig.trim()}>
-              Sync to Figma
-            </Button>
-          )}
-          {(state.view === 'notifications' || state.view === 'about') && (
-            <Button
-              onClick={() => dispatch({ type: 'go-back' })}
-              variant='tertiary'
-            >
-              Go back
-            </Button>
-          )}
-          {state.view === 'finished' && (
-            <Button
-              onClick={() => dispatch({ type: 'go-back' })}
-              variant='tertiary'
-            >
-              Sync another config
-            </Button>
-          )}
-        </div>
-        <div className='footer-right'>
-          {state.view === 'paste' && (
-            <Button
-              data-color='neutral'
-              variant='tertiary'
-              onClick={() => dispatch({ type: 'show-about' })}
-            >
-              What does syncing do?
-            </Button>
-          )}
-          {state.view === 'finished' && state.notifications.length > 0 && (
-            <Button
-              onClick={() => dispatch({ type: 'show-notifications' })}
-              data-color='neutral'
-              variant='tertiary'
-            >
-              Show sync log
-            </Button>
-          )}
-        </div>
+        {state.view === 'paste' && (
+          <Button onClick={syncConfig} disabled={!pastedConfig.trim()}>
+            Sync to Figma
+          </Button>
+        )}
+        {(state.view === 'notifications' || state.view === 'about') && (
+          <Button
+            onClick={() => dispatch({ type: 'go-back' })}
+            variant='tertiary'
+          >
+            Go back
+          </Button>
+        )}
+        {state.view === 'finished' && (
+          <Button
+            onClick={() => dispatch({ type: 'go-back' })}
+            variant='tertiary'
+          >
+            Sync another config
+          </Button>
+        )}
+        {state.view === 'paste' && (
+          <Button
+            data-color='neutral'
+            variant='tertiary'
+            onClick={() => dispatch({ type: 'show-about' })}
+          >
+            What does syncing do?
+          </Button>
+        )}
+        {state.view === 'finished' && state.notifications.length > 0 && (
+          <Button
+            onClick={() => dispatch({ type: 'show-notifications' })}
+            data-color='neutral'
+            variant='tertiary'
+          >
+            Show sync log
+          </Button>
+        )}
       </footer>
     </div>
   );
