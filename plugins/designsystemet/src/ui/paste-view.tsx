@@ -1,4 +1,7 @@
 import {
+  Details,
+  DetailsContent,
+  DetailsSummary,
   Field,
   Label,
   Link,
@@ -23,25 +26,32 @@ export function PasteView({
   return (
     <div className='paste-view'>
       {/* Outside the field so the textarea's description stays short for screen readers. */}
-      <div data-size='sm'>
-        <Paragraph>Syncing makes this file match the config:</Paragraph>
-        <List.Unordered>
-          <List.Item>
-            Creates the variable collections, modes, variables, text styles and
-            effect styles in the config.
-          </List.Item>
-          <List.Item>
-            Updates the ones that already exist, matched by name, so layers
-            using them stay connected.
-          </List.Item>
-          <List.Item>
-            Deletes modes and variables in those collections that aren't in the
-            config, including ones added by hand. The same goes for text styles
-            under typography/ and effect styles under shadow/.
-          </List.Item>
-          <List.Item>Leaves other collections and styles alone.</List.Item>
-        </List.Unordered>
-      </div>
+      <Details data-size='sm' className='sync-details'>
+        <DetailsSummary>
+         What does syncing do?
+        </DetailsSummary>
+        <DetailsContent>
+          <Paragraph>
+            Syncing makes this file match the config:
+          </Paragraph>
+          <List.Unordered>
+            <List.Item>
+              Creates the variable collections, modes, variables, text styles
+              and effect styles in the config.
+            </List.Item>
+            <List.Item>
+              Updates the ones that already exist, matched by name, so layers
+              using them stay connected.
+            </List.Item>
+            <List.Item>
+              Deletes modes and variables in those collections that aren't in
+              the config, including ones added by hand. The same goes for text
+              styles under typography/ and effect styles under shadow/.
+            </List.Item>
+            <List.Item>Leaves other collections and styles alone.</List.Item>
+          </List.Unordered>
+        </DetailsContent>
+      </Details>
       <Field className='paste-field'>
         <Label>Upload config</Label>
         <Field.Description>
