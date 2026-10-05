@@ -24,7 +24,7 @@ export default function Config({
         <span>1</span>
         <Paragraph>{t('themeModal.config.step-one')} </Paragraph>
       </div>
-      <div className={`${classes.snippet} ${classes['snippet-config']}`}>
+      <div className={classes.snippet}>
         <CodeBlock language='json'>{configSnippet}</CodeBlock>
       </div>
       <Button

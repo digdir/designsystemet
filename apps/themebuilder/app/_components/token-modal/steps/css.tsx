@@ -1,4 +1,5 @@
-import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Paragraph, Skeleton } from '@digdir/designsystemet-react';
+import { CodeBlock } from '@internal/components';
 import { DownloadIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { downloadFile } from '../download-file';
@@ -24,8 +25,16 @@ export default function Css({
         <span>1</span>
         <Paragraph>{t('themeModal.css.step-one', { filename })}</Paragraph>
       </div>
-      {error && (
+      {error ? (
         <Paragraph data-color='danger'>{t('themeModal.css.error')}</Paragraph>
+      ) : (
+        <div className={classes.snippet} aria-busy={isGenerating}>
+          {isGenerating && <Skeleton className={classes['snippet-skeleton']} />}
+          {/* The generated CSS is already formatted, and prettifying a whole theme is slow. */}
+          <CodeBlock language='css' prettify={false}>
+            {css}
+          </CodeBlock>
+        </div>
       )}
       <Button
         variant='secondary'
