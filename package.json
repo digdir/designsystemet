@@ -31,7 +31,7 @@
     "build:types": "pnpm --filter @digdir/designsystemet-types build",
     "build:storybook": "pnpm --filter @web/storybook build",
     "build:www": "pnpm --filter @web/www build",
-    "build:themebuilder": "pnpm --filter @web/themebuilder build",
+    "build:themebuilder": "pnpm --filter @web/themebuilder... build",
     "build:plugin": "pnpm --filter @plugin/designsystemet... build",
     "watch:plugin": "pnpm --filter @plugin/designsystemet watch",
     "types": "pnpm -r types",

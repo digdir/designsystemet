@@ -94,12 +94,29 @@
   justify-content: center;
 }
 
+.snippet {
+  position: relative;
+}
+
+/* Covers the code block while it is busy. The code block stays rendered underneath (hidden, so it
+   isn't seen or read out), so it doesn't flicker when the skeleton goes away. */
+.snippet > .snippet-skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  height: auto;
+}
+
+.snippet[aria-busy='true'] > :not(.snippet-skeleton) {
+  visibility: hidden;
+}
+
 .snippet code {
   background-color: transparent;
   display: block;
 }
 
-.snippet-config pre {
+.snippet pre {
   height: 250px;
 }
 
