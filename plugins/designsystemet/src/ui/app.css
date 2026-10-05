@@ -98,3 +98,9 @@ footer {
   margin: 6px 0 0;
   padding-left: 18px;
 }
+
+.sync-details {
+  --dsc-details-background: var(--ds-color-neutral-background-tinted);
+  --dsc-details-summary-background: var(--ds-color-neutral-background-tinted);
+  --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
+}
