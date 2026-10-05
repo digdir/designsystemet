@@ -206,8 +206,7 @@ function App() {
           {state.view === 'paste' && (
             <Button
               data-color='neutral'
-              className='ds-button'
-              data-variant='tertiary'
+              variant='tertiary'
               onClick={() => dispatch({ type: 'show-about' })}
             >
               What does syncing do?
