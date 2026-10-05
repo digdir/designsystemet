@@ -1,5 +1,5 @@
 import type { CollectionSpec } from './collection-specs';
-import type { SyncLog } from './log';
+import { changedFields, type SyncLog } from './log';
 import { normalizeScopes } from './scopes';
 
 export async function syncCollections(
@@ -70,6 +70,11 @@ export async function syncVariables(
   const allVariables = await figma.variables.getLocalVariablesAsync();
   const byCompositeKey = new Map<string, Variable>();
   const variablesByCollection = new Map<string, Map<string, Variable>>();
+  const updateChecks: {
+    variable: Variable;
+    collection: VariableCollection;
+    before: VariableSnapshot;
+  }[] = [];
 
   for (const spec of specs) {
     const collection = collectionMap.get(spec.name);
@@ -93,10 +98,6 @@ export async function syncVariables(
     }
 
     const createdOrExisting = new Map<string, Variable>();
-    let codeSyntaxUpdated = 0;
-    let codeSyntaxFailed = 0;
-    let scopesUpdated = 0;
-    let scopesFailed = 0;
 
     for (const desired of spec.variables.values()) {
       let variable = variableByName.get(desired.name);
@@ -116,27 +117,28 @@ export async function syncVariables(
           desired.type,
         );
         log.info.push(`Created variable ${collection.name}/${desired.name}`);
+      } else {
+        // Snapshot existing variables before anything is written, so they can be logged as updated.
+        updateChecks.push({
+          variable,
+          collection,
+          before: snapshotVariable(variable, collection),
+        });
       }
 
       // Scopes and code syntax are best-effort: Figma rejects some assignments (e.g. an invalid
       // scope combination), and that must not abort the sync before values, aliases and
       // styles are written. Log the variable and carry on.
       try {
-        if (syncCodeSyntax(variable, desired.codeSyntax)) {
-          codeSyntaxUpdated++;
-        }
+        syncCodeSyntax(variable, desired.codeSyntax);
       } catch (error) {
-        codeSyntaxFailed++;
         log.warnings.push(
           `Could not set code syntax on ${collection.name}/${desired.name}: ${errorMessage(error)}`,
         );
       }
       try {
-        if (syncScopes(variable, desired.scopes)) {
-          scopesUpdated++;
-        }
+        syncScopes(variable, desired.scopes);
       } catch (error) {
-        scopesFailed++;
         log.warnings.push(
           `Could not set scopes on ${collection.name}/${desired.name}: ${errorMessage(error)}`,
         );
@@ -144,19 +146,6 @@ export async function syncVariables(
 
       createdOrExisting.set(desired.name, variable);
       byCompositeKey.set(`${collection.name}::${desired.name}`, variable);
-    }
-
-    if (codeSyntaxUpdated > 0 || codeSyntaxFailed > 0) {
-      log.info.push(
-        `Code syntax: updated on ${codeSyntaxUpdated} variables in ${collection.name}` +
-          (codeSyntaxFailed > 0 ? `, ${codeSyntaxFailed} failed` : ''),
-      );
-    }
-    if (scopesUpdated > 0 || scopesFailed > 0) {
-      log.info.push(
-        `Scopes: updated on ${scopesUpdated} variables in ${collection.name}` +
-          (scopesFailed > 0 ? `, ${scopesFailed} failed` : ''),
-      );
     }
 
     variablesByCollection.set(spec.name, createdOrExisting);
@@ -239,7 +228,36 @@ export async function syncVariables(
     }
   }
 
+  for (const { variable, collection, before } of updateChecks) {
+    const changed = changedFields(
+      before,
+      snapshotVariable(variable, collection),
+    );
+    if (changed.length > 0) {
+      log.info.push(
+        `Updated variable ${collection.name}/${variable.name}: ${changed.join(', ')}`,
+      );
+    }
+  }
+
   return byCompositeKey;
+}
+
+type VariableSnapshot = Record<string, unknown>;
+
+// The parts of a variable the sync writes, keyed by how they are named in the log.
+function snapshotVariable(
+  variable: Variable,
+  collection: VariableCollection,
+): VariableSnapshot {
+  const snapshot: VariableSnapshot = {
+    'code syntax': variable.codeSyntax.WEB ?? null,
+    scopes: variable.scopes,
+  };
+  for (const mode of collection.modes) {
+    snapshot[`value in ${mode.name}`] = variable.valuesByMode[mode.modeId];
+  }
+  return snapshot;
 }
 
 export function findVariable(
@@ -256,26 +274,24 @@ export function findVariable(
 
 // Keeps the WEB code syntax equal to the CSS property the token is built as. Idempotent, so an
 // unchanged variable is left alone and a variable that lost its CSS property has the syntax removed.
-function syncCodeSyntax(variable: Variable, expected: string | null): boolean {
+function syncCodeSyntax(variable: Variable, expected: string | null): void {
   const current = variable.codeSyntax.WEB?.trim() || null;
   if (current === expected) {
-    return false;
+    return;
   }
   if (expected) {
     variable.setVariableCodeSyntax('WEB', expected);
   } else {
     variable.removeVariableCodeSyntax('WEB');
   }
-  return true;
 }
 
 // Keeps the scopes equal to the spec. Idempotent, so an unchanged variable is left alone.
-function syncScopes(variable: Variable, expected: VariableScope[]): boolean {
+function syncScopes(variable: Variable, expected: VariableScope[]): void {
   if (normalizeScopes(expected) === normalizeScopes(variable.scopes ?? [])) {
-    return false;
+    return;
   }
   variable.scopes = expected;
-  return true;
 }
 
 function errorMessage(error: unknown): string {

@@ -1,5 +1,5 @@
 import { parseColorValue } from './color';
-import type { SyncLog } from './log';
+import { changedFields, type SyncLog } from './log';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
 import { parseNumber } from './utils';
@@ -42,6 +42,7 @@ export async function syncEffectStyles(
     }
 
     let style = existing.find((item) => item.name === styleName);
+    const before = style && { effects: style.effects };
     if (!style) {
       style = figma.createEffectStyle();
       style.name = styleName;
@@ -51,6 +52,13 @@ export async function syncEffectStyles(
     style.effects = resolved
       .map((shadow) => toShadowEffect(shadow))
       .filter((effect): effect is Effect => effect !== null);
+
+    if (
+      before &&
+      changedFields(before, { effects: style.effects }).length > 0
+    ) {
+      log.info.push(`Updated effect style ${styleName}: effects`);
+    }
   }
 }
 
