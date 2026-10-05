@@ -5,10 +5,10 @@ import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification } from '../types';
 import './app.css';
 import { postToPlugin } from './post-to-plugin';
-import { FinishedView } from './views/finished-view';
-import { NotificationsView } from './views/notifications-view';
-import { PasteView } from './views/paste-view';
-import { type Progress, SyncView } from './views/sync-view';
+import { FinishedView } from './views/finished';
+import { NotificationsView } from './views/notifications';
+import { PasteView } from './views/paste';
+import { type Progress, SyncView } from './views/sync';
 
 // One view is shown at a time, each replacing the main area.
 type View = 'paste' | 'syncing' | 'finished' | 'notifications';
