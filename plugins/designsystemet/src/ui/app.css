@@ -24,6 +24,21 @@ header {
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
+details {
+  --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
+  border-radius: var(--ds-border-radius-md);
+  border: solid 1px var(--dsc-details-border-color);
+
+  > summary,
+  u-summary {
+    border-radius: var(--ds-border-radius-md);
+  }
+
+  &[open] > :is(summary, u-summary) {
+    border-bottom: 1px solid var(--dsc-details-border-color);
+  }
+}
+
 /* Paste view: fills the main row, and the textarea takes the space the text above leaves.
    Scrolls when the window is too small for the textarea's minimum height. */
 .paste-view {
@@ -97,19 +112,4 @@ footer {
 .notification-details {
   margin: 6px 0 0;
   padding-left: 18px;
-}
-
-.sync-details {
-  --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
-  border-radius: var(--ds-border-radius-md);
-  border: solid 1px var(--dsc-details-border-color);
-
-  > summary,
-  u-summary {
-    border-radius: var(--ds-border-radius-md);
-  }
-
-  &[open] > :is(summary, u-summary) {
-    border-bottom: 1px solid var(--dsc-details-border-color);
-  }
 }
