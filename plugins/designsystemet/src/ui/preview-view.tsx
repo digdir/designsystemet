@@ -16,7 +16,7 @@ type PreviewViewProps = {
   onSelectScheme: (scheme: string) => void;
 };
 
-type ThemeConfig = ConfigSchema['themes'][string];
+type ThemeConfig = NonNullable<ConfigSchema['themes']>[string];
 
 // Pascal case to match the Figma variable modes ('Light'/'Dark').
 const COLOR_SCHEME_OPTIONS = ['Light', 'Dark'];
@@ -32,9 +32,10 @@ export function PreviewView({
   onSelectTheme,
   onSelectScheme,
 }: PreviewViewProps): React.JSX.Element {
-  const themeNames = Object.keys(config.themes);
+  const themes = config.themes ?? {};
+  const themeNames = Object.keys(themes);
   const themeName = pickOption(themeNames, selectedTheme);
-  const theme = themeName ? config.themes[themeName] : null;
+  const theme = themeName ? themes[themeName] : null;
   const scheme = selectedScheme.toLowerCase() as ColorScheme;
 
   return (

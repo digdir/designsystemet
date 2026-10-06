@@ -1,8 +1,10 @@
 import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.ts';
+import { toOutput } from '../migrations/new-output-field.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { dsfs } from '../utils/filesystem.ts';
+import { isSameOrInside } from '../utils/paths.ts';
 
 type TokenValue = {
   $type: string;
@@ -189,14 +191,38 @@ function extractColors(themeTokens: TokenObject, themeName: string): Record<stri
 
 type GenerateConfigOptions = {
   tokensDir: string;
+  /** Path of the config file. Paths in the generated config are relative to it. */
   outFile?: string;
+};
+
+/**
+ * Returns `tokensDir` relative to `configDir`, as paths are written in a config: relative to the config file,
+ * with forward slashes so the config works on any OS.
+ *
+ * Throws when `configDir` is the tokens directory or inside it. The generated `design-tokens` output would then
+ * point to the config's own directory or a parent of it, which `cleanDir` deletes before creating design tokens.
+ */
+export const toConfigTokensDir = (tokensDir: string, configDir: string): string => {
+  const absoluteTokensDir = path.resolve(tokensDir);
+
+  if (isSameOrInside(configDir, absoluteTokensDir)) {
+    throw new Error(
+      `The config file can't be placed inside the design tokens directory ${pc.blue(absoluteTokensDir)}, since running the config would delete that directory. Use ${pc.blue('--out')} to place the config file outside it.`,
+    );
+  }
+
+  return path.relative(path.resolve(configDir), absoluteTokensDir).split(path.sep).join('/');
 };
 
 /**
  * Generates a config file from existing design tokens
  */
 export async function generateConfigFromTokens(options: GenerateConfigOptions): Promise<ExternalConfigSchemaInput> {
-  const { tokensDir } = options;
+  const { tokensDir, outFile } = options;
+
+  // Check the paths before reading any tokens, so an unsafe `--out` fails right away.
+  const configDir = outFile ? path.dirname(path.resolve(outFile)) : process.cwd();
+  const relativeTokensDir = toConfigTokensDir(tokensDir, configDir);
 
   console.log(`\nReading tokens from ${pc.blue(tokensDir)}`);
 
@@ -210,9 +236,12 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
   console.log(`\nFound ${pc.green(String(themes.length))} theme(s): ${themes.map((t) => pc.cyan(t)).join(', ')}`);
 
   // Generate config for each theme
+  const configThemes: NonNullable<ExternalConfigSchemaInput['themes']> = {};
+  const output = toOutput(relativeTokensDir);
   const config: ExternalConfigSchemaInput = {
-    outDir: tokensDir,
-    themes: {},
+    // Omitted when the tokens are in the default directory, since the default `output` covers it.
+    ...(output && { output: [...output] }),
+    themes: configThemes,
   };
 
   for (const themeName of themes) {
@@ -234,7 +263,7 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
     const borderRadius = extractBorderRadius(themeConfig);
     const fontFamily = extractFontFamily(themeConfig) ?? extractFontFamilyFromPrimitives(typographyConfig, themeName);
 
-    config.themes[themeName] = {
+    configThemes[themeName] = {
       colors,
       borderRadius,
       typography: fontFamily ? { fontFamily } : undefined,

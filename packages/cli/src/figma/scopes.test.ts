@@ -3,7 +3,6 @@ import { configSchema } from '../schemas/schema.ts';
 import { generate$Themes } from '../tokens/create/generators/$themes.ts';
 import { createTokens, getTokenSetDimensions } from '../tokens/create.ts';
 import type { Theme, TokenSet } from '../tokens/types.ts';
-import { toColorNames } from '../tokens/utils.ts';
 import { FIGMA_COLLECTION, toFigmaCollections } from './collections.ts';
 import { figmaVariableScopes, figmaVariableType, isPrivateTokenPath } from './scopes.ts';
 
@@ -61,10 +60,10 @@ describe('figmaVariableScopes covers every generated token', () => {
     const config = configSchema.parse({
       themes: { [themeName]: { colors: { neutral: '#444444', brand: '#0062BA' } } },
     });
-    const theme = { name: themeName, ...config.themes[themeName] } as Theme;
+    const theme = { name: themeName, ...config.themes?.[themeName] } as Theme;
     const dimensions = getTokenSetDimensions(theme);
     const { tokenSets } = await createTokens(theme, dimensions);
-    const $themes = await generate$Themes(dimensions, [themeName], toColorNames(theme.colors));
+    const $themes = await generate$Themes(dimensions, [themeName], Object.keys(theme.colors));
 
     const unmatched: string[] = [];
     let checked = 0;

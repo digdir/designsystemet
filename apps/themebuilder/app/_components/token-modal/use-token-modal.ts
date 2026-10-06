@@ -1,11 +1,14 @@
-import type {
-  CssColor,
-  ExternalConfigSchemaInput,
+import {
+  type CssColor,
+  defaultBorderRadius,
+  type ExternalConfigSchemaInput,
 } from '@digdir/designsystemet/internal';
 import pkg from '@digdir/designsystemet/package.json';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+
+type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
 
 export const useTokenModal = () => {
   const { isProduction } = useLoaderData();
@@ -36,7 +39,7 @@ export const useTokenModal = () => {
     }
   });
 
-  const theme: ExternalConfigSchemaInput['themes'][string] = {
+  const theme: ThemeConfig = {
     colors: colors.reduce(
       (acc, color) => {
         acc[color.name] = color.colors.light['base-default']?.hex || '#';
@@ -44,37 +47,39 @@ export const useTokenModal = () => {
       },
       {} as Record<string, CssColor>,
     ),
-    borderRadius: baseBorderRadius,
-    typography: {
-      fontFamily: 'Inter',
-    },
+    ...(baseBorderRadius !== defaultBorderRadius && {
+      borderRadius: baseBorderRadius,
+    }),
   };
 
   const packageWithTag = `@digdir/designsystemet${isProduction ? '@latest' : '@next'}`;
 
-  const configBuildSnippet = `npx ${packageWithTag} tokens create --config designsystemet.config.json\nnpx ${packageWithTag} tokens build --config designsystemet.config.json`;
+  const configBuildSnippet = `npx ${packageWithTag}`;
+
+  const themeConfig: ThemeConfig = {
+    colors: theme.colors,
+    ...(Object.keys(severityOverrides).length > 0 ||
+    Object.keys(colorOverrides).length > 0
+      ? {
+          overrides: {
+            ...(Object.keys(severityOverrides).length > 0 && {
+              severity: severityOverrides,
+            }),
+            ...(Object.keys(colorOverrides).length > 0 && {
+              colors: colorOverrides,
+            }),
+          },
+        }
+      : {}),
+    ...(theme.borderRadius !== undefined && {
+      borderRadius: theme.borderRadius,
+    }),
+  };
 
   const configSnippet = {
     $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
-    outDir: './design-tokens',
     themes: {
-      [name]: {
-        colors: theme.colors,
-        ...(Object.keys(severityOverrides).length > 0 ||
-        Object.keys(colorOverrides).length > 0
-          ? {
-              overrides: {
-                ...(Object.keys(severityOverrides).length > 0 && {
-                  severity: severityOverrides,
-                }),
-                ...(Object.keys(colorOverrides).length > 0 && {
-                  colors: colorOverrides,
-                }),
-              },
-            }
-          : {}),
-        borderRadius: theme.borderRadius,
-      },
+      [name]: themeConfig,
     },
   };
 
@@ -83,6 +88,7 @@ export const useTokenModal = () => {
     isWorkspace: Boolean(workspace),
     setThemeName: setName,
     theme,
+    themeConfig,
     buildSnippet: {
       config: configBuildSnippet,
     },

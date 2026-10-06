@@ -4,6 +4,7 @@ import StyleDictionary from 'style-dictionary';
 import type { TransformedToken } from 'style-dictionary/types';
 import type { BuildConfig, OutputFile, ThemePermutation, TokenSet } from '../types.ts';
 import { configs, getConfigsForThemeDimensions, registerStyleDictionary } from './configs.ts';
+import type { TailwindVersion } from './output/tailwind.ts';
 import { getThemeColors, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.ts';
 
 type SharedOptions = {
@@ -23,8 +24,8 @@ type SharedOptions = {
   processed$themes: ProcessedThemeObject[];
   /** Build token format map */
   buildTokenFormats: Record<string, { token: TransformedToken; formatted: string }[]>;
-  /** Tailwind CSS configuration */
-  tailwind?: boolean;
+  /** Tailwind CSS major version to generate a theme file for */
+  tailwind?: TailwindVersion | false;
 };
 
 export type BuildOptions = {
@@ -96,7 +97,9 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   sd ??= new StyleDictionary();
   const styleDictionary = sd;
 
-  const UNSAFE_DEFAULT_COLOR = process.env.UNSAFE_DEFAULT_COLOR ?? '';
+  // `process.env` doesn't exist in the browser, where the theme builder formats themes.
+  const UNSAFE_DEFAULT_COLOR = globalThis.process?.env?.UNSAFE_DEFAULT_COLOR ?? '';
+
   if (UNSAFE_DEFAULT_COLOR) {
     console.warn(
       pc.yellow(

@@ -1,3 +1,4 @@
+import pc from 'picocolors';
 import { z } from 'zod';
 
 const designTokensOutputSchema = z.object({
@@ -10,62 +11,77 @@ const cssOutputSchema = z.object({
   type: z.literal('css').describe('The type of output file'),
   dir: z.string().default('design-tokens-build').describe('The output directory'),
   cleanDir: z.boolean().default(true).describe('Whether to clean the output directory before generating files'),
-  tokenDir: z.string().default('design-tokens').describe('The directory containing the design tokens'),
-  banner: z.string().default('').describe('A banner to include at the top of the CSS file'),
-  experimental_tailwind: z.boolean().default(true).describe('Whether to enable experimental Tailwind support'),
+  tokensDir: z
+    .string()
+    .optional()
+    .describe(
+      'The directory containing the design tokens to build CSS from. Defaults to `dir` of the `design-tokens` output. If neither is set, CSS is created directly from the themes',
+    ),
+  tailwind: z
+    .union([z.literal('v3'), z.literal('v4'), z.literal(false)])
+    .default(false)
+    .describe('The Tailwind CSS major version to generate a theme file for, or `false` to not generate one'),
+});
+
+const typesOutputSchema = z.object({
+  type: z.literal('types').describe('The type of output file'),
+  dir: z.string().default('design-tokens-build').describe('The output directory'),
+  tokensDir: z
+    .string()
+    .optional()
+    .describe(
+      'The directory containing the design tokens to build type declarations from. Defaults to `dir` of the `design-tokens` output. If neither is set, type declarations are created directly from the themes',
+    ),
 });
 
 const outputObjectSchema = z
-  .union([designTokensOutputSchema, cssOutputSchema])
+  .union([designTokensOutputSchema, cssOutputSchema, typesOutputSchema])
   .describe('An object representing an output file');
 
 const outputShorthandSchema = z
-  .enum(['design-tokens', 'css'])
+  .enum(['design-tokens', 'css', 'types'])
   .describe('An output type using its default settings')
   .transform((type) => ({ type }))
   .pipe(outputObjectSchema);
 
 const outputSchema = z
   .union([outputObjectSchema, outputShorthandSchema])
-  .describe('An output file, either as an object or an output type using its default settings');
+  .describe('An output file, either as an object or an output type using its default settings.');
+
+/** Fields superseded by `output`. Kept so existing config files and `tokens create` keep working. */
+const deprecatedFields = ['outDir', 'clean'] as const;
 
 /** The output settings of a config. `outDir` and `clean` are used by `tokens create`, `output` by the `config` command. */
 export const outputConfigShape = {
-  output: z.array(outputSchema).prefault(['design-tokens', 'css']).describe('An array of output files'),
-  outDir: z
-    .string()
-    .default('design-tokens')
-    .meta({ description: 'Path to the output directory for the created design tokens' }),
+  output: z
+    .array(outputSchema)
+    .prefault(['design-tokens', 'css', 'types'])
+    .describe('An array of output types. These are run in the order they are specified.'),
+  /** @deprecated Use `output[].dir` instead. */
+  outDir: z.string().default('design-tokens').meta({
+    deprecated: true,
+    description: 'Deprecated: use `output[].dir` instead. Path to the output directory for the created design tokens',
+  }),
+  /** @deprecated Use `output[].cleanDir` instead. */
   clean: z
     .boolean()
     .default(false)
-    .meta({ description: 'Delete the output directory before building or creating tokens' })
+    .meta({
+      deprecated: true,
+      description: 'Deprecated: use `output[].cleanDir` instead. Delete the output directory before creating tokens',
+    })
     .optional(),
 };
 
-// /** Fields superseded by `output`. Kept so existing config files keep validating. */
-// const deprecatedFields = ['outDir', 'clean'] as const;
-
-// /** The `output` field and the deprecated fields it superseded. */
-// export const outputConfigShape = {
-//   output: z.array(outputSchema).prefault(['design-tokens', 'css']).describe('An array of output files'),
-//   // No `.default()` on the deprecated fields: we need `undefined` when the user did not
-//   // set them, so we can warn only when they actually did.
-//   outDir: z.string().optional().meta({
-//     deprecated: true,
-//     description: 'Deprecated: use `output[].dir` instead. Ignored when `output` is set.',
-//   }),
-//   clean: z.boolean().optional().meta({
-//     deprecated: true,
-//     description: 'Deprecated: use `output[].cleanDir` instead. Ignored when `output` is set.',
-//   }),
-// };
-
-// // Non-fatal: warn about deprecated fields instead of failing validation.
-// export const warnDeprecatedFields = (config: Partial<Record<(typeof deprecatedFields)[number], unknown>>) => {
-//   for (const key of deprecatedFields) {
-//     if (config[key] !== undefined) {
-//       console.warn(pc.yellow(`⚠️  "${key}" is deprecated and ignored; use "output" instead.`));
-//     }
-//   }
-// };
+/** Non-fatal: warn about deprecated fields set in a config file instead of failing validation. */
+export const warnDeprecatedFields = (config: Partial<Record<(typeof deprecatedFields)[number], unknown>>) => {
+  for (const key of deprecatedFields) {
+    if (config[key] !== undefined) {
+      console.warn(
+        pc.yellow(
+          `⚠️  Config field "${key}" is deprecated and will be removed in a future release; use "output" instead.`,
+        ),
+      );
+    }
+  }
+};

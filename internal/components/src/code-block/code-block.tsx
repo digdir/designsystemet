@@ -38,36 +38,45 @@ export type CodeBlockProps = {
     | 'text'
     | 'bash'
     | string;
+  /**
+   * Formats the code with Prettier before showing it, for languages Prettier supports.
+   * Turn it off for code that is already formatted, e.g. generated files, so it shows straight away.
+   *
+   * @default true
+   */
+  prettify?: boolean;
 };
 
-/* This component uses "use", it needs to be wrapped in Suspense */
+/* This component uses "use" when prettifying, so it needs to be wrapped in Suspense */
 const CodeBlockContent = ({
   children,
   className,
   language = 'text',
+  prettify = true,
 }: CodeBlockProps) => {
-  // Initial prettify promise for Suspense (only runs once on mount)
-  const prettifyPromise = useMemo(() => {
-    if (isPrettifySupported(language)) {
-      return prettifyCode(children, language);
-    }
-    return Promise.resolve(children);
-  }, []);
+  const shouldPrettify = prettify && isPrettifySupported(language);
 
-  const initialText = use(prettifyPromise);
+  // Initial prettify promise for Suspense (only runs once on mount). Without prettifying there is
+  // nothing to wait for, so the code shows straight away instead of the Suspense fallback.
+  const prettifyPromise = useMemo(
+    () => (shouldPrettify ? prettifyCode(children, language) : null),
+    [],
+  );
+
+  const initialText = prettifyPromise ? use(prettifyPromise) : children;
 
   const [text, setText] = useState(initialText);
   const [colorScheme, setColorScheme] = useState<string | null>('dark');
 
   useEffect(() => {
-    if (isPrettifySupported(language)) {
+    if (shouldPrettify) {
       prettifyCode(children, language).then((pretty) => {
         setText(pretty);
       });
     } else {
       setText(children);
     }
-  }, [children, language]);
+  }, [children, language, shouldPrettify]);
 
   useEffect(() => {
     // Set initial color scheme
@@ -123,10 +132,15 @@ export const CodeBlock = ({
   children,
   className,
   language = 'text',
+  prettify = true,
 }: CodeBlockProps) => {
   return (
     <Suspense fallback={<Skeleton height={120} />}>
-      <CodeBlockContent className={className} language={language}>
+      <CodeBlockContent
+        className={className}
+        language={language}
+        prettify={prettify}
+      >
         {children}
       </CodeBlockContent>
     </Suspense>
