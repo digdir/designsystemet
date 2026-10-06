@@ -34,8 +34,10 @@ type UiState = {
   extracted: ExtractState | null;
 };
 
+const START_VIEW: View = 'paste';
+
 const initialState: UiState = {
-  view: 'paste',
+  view: START_VIEW,
   progress: null,
   result: null,
   notifications: [],
@@ -218,8 +220,8 @@ function App() {
   const extractedConfig =
     state.extracted?.status === 'success' ? state.extracted.config : null;
 
-  // Every view but the landing view and a running sync has a way back.
-  const canGoBack = state.view !== 'home' && state.view !== 'syncing'; // Can go back if the initial view wasn't the paste view
+  // Every view but the start view and a running sync has a way back.
+  const canGoBack = state.view !== START_VIEW && state.view !== 'syncing';
 
   // The number of warning entries. Not the number of affected items: some entries summarise several.
   const warningCount =
