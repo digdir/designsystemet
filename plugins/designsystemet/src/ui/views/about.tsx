@@ -2,6 +2,7 @@ import { Heading, Link, List, Paragraph } from '@digdir/designsystemet-react';
 import { postToPlugin } from '../post-to-plugin';
 
 const SLACK_URL = 'https://www.designsystemet.no/slack';
+const FIGMA_PRICING_URL = 'https://www.figma.com/pricing/';
 
 // Explains what a sync does to the file. Opened from the paste view.
 export function AboutView(): React.JSX.Element {
@@ -27,6 +28,22 @@ export function AboutView(): React.JSX.Element {
         </List.Item>
         <List.Item>Leaves other collections and styles alone.</List.Item>
       </List.Unordered>
+      <Paragraph>
+        Each theme, color scheme and size becomes a mode in a variable
+        collection. Figma limits how many modes a collection can have depending
+        on your plan, so make sure yours allows enough modes for your config.
+        See{' '}
+        <Link
+          href={FIGMA_PRICING_URL}
+          onClick={(event) => {
+            event.preventDefault();
+            postToPlugin('open-external', { url: FIGMA_PRICING_URL });
+          }}
+        >
+          Figma's plans
+        </Link>
+        .
+      </Paragraph>
       <Paragraph>
         Need help or have questions? Join our{' '}
         <Link
