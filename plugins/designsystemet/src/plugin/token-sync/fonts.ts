@@ -41,8 +41,8 @@ export function collectFontFamilies(specs: CollectionSpec[]): Set<string> {
   return fontFamilies;
 }
 
-// Throws before anything is written, so a font that isn't installed doesn't leave
-// font-family variables pointing at it and text styles skipped.
+// Throws before anything is written, so a font that isn't installed doesn't leave the file
+// half-synced when Figma fails to apply it to a bound text style.
 export function assertFontFamiliesAvailable(
   fontFamilies: Set<string>,
   fontCache: FontCache,
@@ -60,15 +60,41 @@ export function assertFontFamiliesAvailable(
   );
 }
 
+// Font families the file uses now, from font-family variables and text styles. Figma applies
+// each value the sync writes to the text styles bound to it, together with the values not yet
+// written, so the current fonts have to be loaded as well as the new ones.
+export async function collectFontFamiliesInFile(): Promise<Set<string>> {
+  const families = new Set<string>();
+
+  for (const variable of await figma.variables.getLocalVariablesAsync(
+    'STRING',
+  )) {
+    if (!/(^|\/)font-family$/.test(variable.name)) {
+      continue;
+    }
+    for (const value of Object.values(variable.valuesByMode)) {
+      if (typeof value === 'string') {
+        families.add(value);
+      }
+    }
+  }
+
+  for (const style of await figma.getLocalTextStylesAsync()) {
+    families.add(style.fontName.family);
+  }
+
+  return families;
+}
+
 export async function preloadAllFonts(
-  fontFamilies: Set<string>,
+  fontFamilies: Iterable<string>,
   fontCache: FontCache,
 ): Promise<void> {
   // Load every available style for each font family we will use.
   // This covers styles already on bound text styles (e.g. "Bold" from a previous
   // sync) that Figma will try to re-apply as soon as the font-family variable
   // value is updated.
-  for (const family of fontFamilies) {
+  for (const family of new Set(fontFamilies)) {
     const allStyles = fontCache.availableFonts.filter(
       (f) => f.fontName.family === family,
     );
