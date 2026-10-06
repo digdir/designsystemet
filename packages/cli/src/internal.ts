@@ -9,6 +9,7 @@ export {
   type ColorScheme,
   type CssColor,
   convertColor,
+  generateColorScale,
   generateColorSchemes,
   getContrastFromHex,
   getCssVariable,
@@ -29,7 +30,12 @@ export {
   toFigmaCollections,
 } from './figma/collections.ts';
 export { figmaVariableScopes, figmaVariableType } from './figma/scopes.ts';
-export { defaultBorderRadius, severityColors } from './schemas/defaults.ts';
+export {
+  defaultBorderRadius,
+  defaultFontFamily,
+  severityColors,
+  visitedLinkColor,
+} from './schemas/defaults.ts';
 export { parseConfig, validateConfig } from './schemas/helpers.ts';
 export {
   type ConfigSchema,

@@ -5,14 +5,24 @@ import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification } from '../types';
 import './app.css';
 import { postToPlugin } from './post-to-plugin';
+import { copyText, downloadText } from './save-text';
 import { AboutView } from './views/about';
+import { type ExtractState, ExtractView } from './views/extract';
 import { FinishedView } from './views/finished';
+import { HomeView } from './views/home';
 import { NotificationsView } from './views/notifications';
 import { PasteView } from './views/paste';
 import { type Progress, SyncView } from './views/sync';
 
 // One view is shown at a time, each replacing the main area.
-type View = 'paste' | 'about' | 'syncing' | 'finished' | 'notifications';
+type View =
+  | 'home'
+  | 'paste'
+  | 'about'
+  | 'syncing'
+  | 'finished'
+  | 'notifications'
+  | 'extract';
 
 type UiState = {
   view: View;
@@ -20,6 +30,8 @@ type UiState = {
   /** The last sync's outcome, shown in the finished view. */
   result: { status: 'success' | 'error'; message: string } | null;
   notifications: Notification[];
+  /** The config created from this file, shown in the extract view. */
+  extracted: ExtractState | null;
 };
 
 const initialState: UiState = {
@@ -27,6 +39,7 @@ const initialState: UiState = {
   progress: null,
   result: null,
   notifications: [],
+  extracted: null,
 };
 
 type Action =
@@ -37,8 +50,11 @@ type Action =
       result: NonNullable<UiState['result']>;
       notifications: Notification[];
     }
+  | { type: 'show-paste' }
   | { type: 'show-notifications' }
   | { type: 'show-about' }
+  | { type: 'extract-started' }
+  | { type: 'extract-finished'; extracted: ExtractState }
   | { type: 'go-back' };
 
 function reducer(state: UiState, action: Action): UiState {
@@ -62,19 +78,43 @@ function reducer(state: UiState, action: Action): UiState {
         result: action.result,
         notifications: action.notifications,
       };
+    case 'show-paste':
+      return { ...state, view: 'paste' };
     case 'show-notifications':
       return { ...state, view: 'notifications' };
     case 'show-about':
       return { ...state, view: 'about' };
+    case 'extract-started':
+      return { ...state, view: 'extract', extracted: { status: 'loading' } };
+    case 'extract-finished':
+      return { ...state, extracted: action.extracted };
     case 'go-back':
-      // From notifications, go back to the finished view after a successful sync, otherwise to the config.
-      return {
-        ...state,
-        view:
-          state.view === 'notifications' && state.result?.status === 'success'
-            ? 'finished'
-            : 'paste',
-      };
+      return { ...state, view: previousView(state) };
+  }
+}
+
+function previousView(state: UiState): View {
+  switch (state.view) {
+    // The sync views go back to the config, except the log of a successful sync, which goes back to its result.
+    case 'about':
+    case 'finished':
+      return 'paste';
+    case 'notifications':
+      return state.result?.status === 'success' ? 'finished' : 'paste';
+    default:
+      return 'home';
+  }
+}
+
+/** The header title: the flow the current view is part of. */
+function viewTitle(view: View): string {
+  switch (view) {
+    case 'home':
+      return 'Designsystemet';
+    case 'extract':
+      return 'Extract config';
+    default:
+      return 'Sync config to Figma';
   }
 }
 
@@ -112,6 +152,10 @@ function toNotifications(
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [pastedConfig, setPastedConfig] = useState('');
+  // Feedback on the extract view's copy button.
+  const [copyStatus, setCopyStatus] = useState<'copied' | 'failed' | null>(
+    null,
+  );
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -137,6 +181,19 @@ function App() {
             notifications: toNotifications(msg),
           });
           break;
+        case 'extract-config-result':
+          dispatch({
+            type: 'extract-finished',
+            extracted:
+              msg.status === 'success' && msg.config
+                ? {
+                    status: 'success',
+                    config: msg.config,
+                    warnings: msg.warnings ?? [],
+                  }
+                : { status: 'error', message: msg.message ?? 'Unknown error' },
+          });
+          break;
       }
     };
 
@@ -152,6 +209,21 @@ function App() {
     postToPlugin('sync-config-to-figma', { config: pastedConfig });
   };
 
+  const extractConfig = () => {
+    setCopyStatus(null);
+    dispatch({ type: 'extract-started' });
+    postToPlugin('extract-config');
+  };
+
+  const extractedConfig =
+    state.extracted?.status === 'success' ? state.extracted.config : null;
+
+  // Every view but the landing view and a running sync has a way back.
+  const canGoBack =
+    state.view !== 'home' &&
+    state.view !== 'syncing' &&
+    initialState.view !== 'paste'; // Can go back if the initial view wasn't the paste view
+
   // The number of warning entries. Not the number of affected items: some entries summarise several.
   const warningCount =
     state.notifications.find((n) => n.kind === 'warning')?.details?.length ?? 0;
@@ -159,10 +231,16 @@ function App() {
   return (
     <div className='app'>
       <header>
-        <Heading>Sync config to Figma</Heading>
+        <Heading>{viewTitle(state.view)}</Heading>
       </header>
 
       <main>
+        {state.view === 'home' && (
+          <HomeView
+            onSync={() => dispatch({ type: 'show-paste' })}
+            onExtract={extractConfig}
+          />
+        )}
         {state.view === 'paste' && (
           <PasteView value={pastedConfig} onChange={setPastedConfig} />
         )}
@@ -177,42 +255,64 @@ function App() {
         {state.view === 'notifications' && (
           <NotificationsView notifications={state.notifications} />
         )}
+        {state.view === 'extract' && state.extracted && (
+          <ExtractView extracted={state.extracted} />
+        )}
       </main>
       {/* Stays mounted across views, so screen readers announce the outcome when the view changes. */}
       <div className='ds-sr-only' role='status'>
         {state.result &&
           `${state.result.status === 'success' ? 'Sync finished' : 'Sync failed'}. ${state.result.message}`}
       </div>
+      {/* Go back is always on the left, the view's actions on the right. */}
       <footer>
-        {state.view === 'paste' && (
-          <Button onClick={syncConfig} disabled={!pastedConfig.trim()}>
-            Sync to Figma
-          </Button>
-        )}
-        {(state.view === 'notifications' || state.view === 'about') && (
+        {canGoBack && (
           <Button
             onClick={() => dispatch({ type: 'go-back' })}
             variant='tertiary'
           >
-            Go back
-          </Button>
-        )}
-        {state.view === 'finished' && (
-          <Button
-            onClick={() => dispatch({ type: 'go-back' })}
-            variant='tertiary'
-          >
-            Sync another config
+            {state.view === 'finished' ? 'Sync another config' : 'Go back'}
           </Button>
         )}
         {state.view === 'paste' && (
-          <Button
-            data-color='neutral'
-            variant='tertiary'
-            onClick={() => dispatch({ type: 'show-about' })}
-          >
-            What does syncing do?
-          </Button>
+          <div className='footer-actions'>
+            <Button onClick={syncConfig} disabled={!pastedConfig.trim()}>
+              Sync to Figma
+            </Button>
+            <Button
+              data-color='neutral'
+              variant='tertiary'
+              onClick={() => dispatch({ type: 'show-about' })}
+            >
+              What does syncing do?
+            </Button>
+          </div>
+        )}
+        {state.view === 'extract' && extractedConfig && (
+          <div className='footer-actions'>
+            <Button
+              variant='secondary'
+              onClick={() =>
+                copyText(extractedConfig).then(
+                  () => setCopyStatus('copied'),
+                  () => setCopyStatus('failed'),
+                )
+              }
+            >
+              {copyStatus === 'copied'
+                ? 'Copied'
+                : copyStatus === 'failed'
+                  ? 'Copy failed'
+                  : 'Copy'}
+            </Button>
+            <Button
+              onClick={() =>
+                downloadText('designsystemet.config.json', extractedConfig)
+              }
+            >
+              Download
+            </Button>
+          </div>
         )}
         {state.view === 'finished' && state.notifications.length > 0 && (
           <Button

@@ -20,6 +20,17 @@ header {
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-size-2);
+  padding: var(--ds-size-4);
+  &:has(button) {
+    border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  }
+}
+
 details {
   --dsc-details-border-color: var(--ds-color-neutral-border-subtle);
   border-radius: var(--ds-border-radius-md);
@@ -36,13 +47,10 @@ details {
 
 .app {
   display: grid;
-  /* Header and footer keep their size; the current view gets the rest. */
   grid-template-rows: auto minmax(0, 1fr) auto;
   height: 100vh;
 }
 
-/* Paste view: fills the main row, and the textarea takes the space the text above leaves.
-   Scrolls when the window is too small for the textarea's minimum height. */
 .paste-view {
   display: flex;
   flex-direction: column;
@@ -66,18 +74,6 @@ details {
   }
 }
 
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--ds-size-2);
-  padding: var(--ds-size-4);
-  &:has(button) {
-    border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  }
-}
-
-/* Sync and finished views: a centred status message. */
 .status-view {
   display: flex;
   flex-direction: column;
@@ -96,17 +92,58 @@ footer {
   accent-color: var(--ds-color-accent-base-default);
 }
 
-/* Notifications view (errors and warnings, then the collapsed sync log) and about view. */
 .notifications-view,
 .about-view {
   display: flex;
   flex-direction: column;
   gap: var(--ds-size-3);
-  /* Fill the main row, padding included, so a long list scrolls here instead of overflowing. */
   box-sizing: border-box;
   height: 100%;
   padding: var(--ds-size-4) var(--ds-size-5);
   overflow-y: auto;
+}
+
+.home-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-content: center;
+  gap: var(--ds-size-4);
+  box-sizing: border-box;
+  height: 100%;
+  padding: var(--ds-size-6) var(--ds-size-5);
+  overflow-y: auto;
+
+  & .ds-card > .ds-button {
+    margin-top: var(--ds-size-4);
+  }
+}
+
+.footer-actions {
+  display: flex;
+  gap: var(--ds-size-2);
+}
+
+.extract-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-3);
+  box-sizing: border-box;
+  height: 100%;
+  padding: var(--ds-size-4) var(--ds-size-5);
+  overflow-y: auto;
+}
+
+.extract-field {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+
+  & textarea {
+    flex: 1 1 auto;
+    min-height: 160px;
+    font-family: monospace;
+    resize: none;
+  }
 }
 
 .notification-details {
