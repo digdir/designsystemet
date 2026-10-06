@@ -2,13 +2,13 @@ import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { extractConfig } from './config-extract/extract-config';
 import { readCollections } from './config-extract/read-collections';
-import { createTokenModel } from './token-sync/create-token-model';
-import { createSyncLog } from './token-sync/log';
+import { createTokenModel } from './config-sync/create-token-model';
+import { createSyncLog } from './config-sync/log';
 import {
   type OnStep,
   SYNC_STEPS,
   syncToFigma,
-} from './token-sync/sync-to-figma';
+} from './config-sync/sync-to-figma';
 
 /** Steps reported to the UI: validating, creating tokens, preparing the sync, then the Figma sync's own steps. */
 const TOTAL_STEPS = 3 + SYNC_STEPS;
