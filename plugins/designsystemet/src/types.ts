@@ -26,6 +26,23 @@ type SyncResult = {
   warnings?: string[];
 };
 
+// UI -> plugin: create a config from the variables in this file.
+type ExtractConfig = {
+  type: 'extract-config';
+};
+
+// Plugin -> UI: the config created from this file, or why it couldn't be created.
+type ExtractConfigResult = {
+  type: 'extract-config-result';
+  status: 'success' | 'error';
+  /** The config as formatted JSON, on success. */
+  config?: string;
+  /** What went wrong, on error. */
+  message?: string;
+  /** What is in the file but can't be described by the config, and so is left out of it. */
+  warnings?: string[];
+};
+
 // UI -> plugin: open a URL in the user's browser. Links in the plugin UI can't do this themselves.
 type OpenExternal = {
   type: 'open-external';
@@ -36,6 +53,8 @@ export type FigmaMessages =
   | SyncConfigToFigma
   | SyncProgress
   | SyncResult
+  | ExtractConfig
+  | ExtractConfigResult
   | OpenExternal;
 
 export type Notification = {
