@@ -4,6 +4,7 @@ import {
   figmaCodeSyntax,
   figmaVariableScopes,
 } from '@digdir/designsystemet/internal';
+import type { ValueSpec } from '../types';
 import type { SyncLog } from './log';
 import { resolveValue } from './resolver';
 import type { FlatToken, TokenModel } from './types';
@@ -12,17 +13,6 @@ import {
   convertRawVariableValue,
   mapTokenTypeToVariableType,
 } from './variable-values';
-
-export type ValueSpec =
-  | {
-      kind: 'raw';
-      value: VariableValue;
-    }
-  | {
-      kind: 'alias';
-      collection: string;
-      name: string;
-    };
 
 export type VariableSpec = {
   name: string;
