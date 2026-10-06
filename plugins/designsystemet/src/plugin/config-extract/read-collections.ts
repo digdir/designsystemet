@@ -1,4 +1,4 @@
-import type { ValueSpec } from '../config-sync/collection-specs';
+import type { ValueSpec } from '../types';
 import type { CollectionData } from './types';
 
 /**
