@@ -1,4 +1,4 @@
-import type { ValueSpec } from '../token-sync/collection-specs';
+import type { ValueSpec } from '../config-sync/collection-specs';
 
 // The variables in a Figma file as plain data. Extracting a config works on this instead of the
 // Figma API, so it can run (and be tested) without Figma; `readCollections` reads it from Figma.

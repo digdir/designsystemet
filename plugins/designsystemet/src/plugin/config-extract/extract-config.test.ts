@@ -1,9 +1,9 @@
 import { semanticColorSpec } from '@digdir/designsystemet/internal';
 import { describe, expect, it } from 'vitest';
-import { buildCollectionSpecs } from '../token-sync/collection-specs';
-import { createTokenModel } from '../token-sync/create-token-model';
-import { createSyncLog } from '../token-sync/log';
-import { getTokenSetLookupOrder } from '../token-sync/resolver';
+import { buildCollectionSpecs } from '../config-sync/collection-specs';
+import { createTokenModel } from '../config-sync/create-token-model';
+import { createSyncLog } from '../config-sync/log';
+import { getTokenSetLookupOrder } from '../config-sync/resolver';
 import { extractConfig } from './extract-config';
 import type { CollectionData } from './types';
 
