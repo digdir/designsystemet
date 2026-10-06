@@ -3,6 +3,7 @@ import { syncEffectStyles } from './effect-styles';
 import {
   assertFontFamiliesAvailable,
   collectFontFamilies,
+  collectFontFamiliesInFile,
   type FontCache,
   preloadAllFonts,
 } from './fonts';
@@ -48,8 +49,12 @@ export async function syncToFigma(
   // sync are already bound to font-family variables, Figma will immediately try to
   // apply the new font family with whatever style the text style currently has —
   // which may include styles like "Bold" that are not in our token structure.
-  // Loading all variants of every font family we will use prevents this.
-  await preloadAllFonts(fontFamilies, fontCache);
+  // Loading all variants of every font family we will use, and of those the file
+  // uses now, prevents this.
+  await preloadAllFonts(
+    [...fontFamilies, ...(await collectFontFamiliesInFile())],
+    fontCache,
+  );
 
   // Adding a mode makes Figma fill in a value for every variable already in the collection.
   await onStep('Syncing variable collections', MAY_FREEZE_NOTE);
