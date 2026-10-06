@@ -6,10 +6,8 @@ export type FontCache = {
   loadedFonts: Set<string>;
 };
 
-export async function preloadAllFonts(
-  specs: CollectionSpec[],
-  fontCache: FontCache,
-): Promise<void> {
+// The font families the THEME and TYPOGRAPHY collections set as raw font-family values.
+export function collectFontFamilies(specs: CollectionSpec[]): Set<string> {
   const fontFamilies = new Set<string>();
 
   for (const spec of specs) {
@@ -40,6 +38,32 @@ export async function preloadAllFonts(
     }
   }
 
+  return fontFamilies;
+}
+
+// Throws before anything is written, so a font that isn't installed doesn't leave
+// font-family variables pointing at it and text styles skipped.
+export function assertFontFamiliesAvailable(
+  fontFamilies: Set<string>,
+  fontCache: FontCache,
+): void {
+  const available = new Set(
+    fontCache.availableFonts.map((font) => font.fontName.family),
+  );
+  const missing = [...fontFamilies].filter((family) => !available.has(family));
+  if (missing.length === 0) {
+    return;
+  }
+
+  throw new Error(
+    `${missing.length === 1 ? 'Font' : 'Fonts'} not available in Figma: ${missing.join(', ')}. Install or enable the ${missing.length === 1 ? 'font' : 'fonts'}, or change font-family in the config, then sync again.`,
+  );
+}
+
+export async function preloadAllFonts(
+  fontFamilies: Set<string>,
+  fontCache: FontCache,
+): Promise<void> {
   // Load every available style for each font family we will use.
   // This covers styles already on bound text styles (e.g. "Bold" from a previous
   // sync) that Figma will try to re-apply as soon as the font-family variable

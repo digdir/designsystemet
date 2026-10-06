@@ -219,10 +219,7 @@ function App() {
     state.extracted?.status === 'success' ? state.extracted.config : null;
 
   // Every view but the landing view and a running sync has a way back.
-  const canGoBack =
-    state.view !== 'home' &&
-    state.view !== 'syncing' &&
-    initialState.view !== 'paste'; // Can go back if the initial view wasn't the paste view
+  const canGoBack = state.view !== 'home' && state.view !== 'syncing'; // Can go back if the initial view wasn't the paste view
 
   // The number of warning entries. Not the number of affected items: some entries summarise several.
   const warningCount =
