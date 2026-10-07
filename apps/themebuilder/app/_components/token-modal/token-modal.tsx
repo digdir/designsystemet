@@ -35,10 +35,11 @@ export const TokenModal = () => {
   const hasMultipleThemes = themeNames.length > 1;
   // Which theme to show the CSS file for, when the config has several themes
   const [cssThemeName, setCssThemeName] = useState(themeName);
-  const cssTheme =
-    hasMultipleThemes && workspaceThemes?.[cssThemeName]
-      ? { name: cssThemeName, config: workspaceThemes[cssThemeName] }
-      : { name: themeName, config: themeConfig };
+  const selectedThemeName = hasMultipleThemes ? cssThemeName : themeName;
+  const selectedWorkspaceTheme = workspaceThemes?.[selectedThemeName];
+  const cssTheme = selectedWorkspaceTheme
+    ? { name: selectedThemeName, config: selectedWorkspaceTheme }
+    : { name: themeName, config: themeConfig };
   const themeCss = useThemeCss(cssTheme.name, cssTheme.config, isOpen);
 
   return (
