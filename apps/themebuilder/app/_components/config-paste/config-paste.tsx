@@ -70,6 +70,7 @@ export function ConfigPaste() {
           rows={15}
           error={error ? error : undefined}
           autoFocus
+          suppressHydrationWarning
         />
       </div>
 
