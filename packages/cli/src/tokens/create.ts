@@ -9,7 +9,6 @@ import { generateColorTokens } from './create/generators/semantic/color.ts';
 import { generateSemanticStyle } from './create/generators/semantic/style.ts';
 import { generateTheme } from './create/generators/themes/theme.ts';
 import type { OutputFile, SizeModes, Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.ts';
-import { addSeverityColors, toColorNames } from './utils.ts';
 
 export type { ThemeObject_ } from './create/generators/$themes.ts';
 
@@ -25,8 +24,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
   const { typography, name, borderRadius, overrides, size, shadow, opacity, borderWidth } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
 
-  const colors = addSeverityColors(theme.colors);
-  const colorNames = toColorNames(colors);
+  const colorNames = Object.keys(theme.colors);
   const colorTokens = Object.entries(generateColorTokens(colorNames, name));
 
   // The first typography set provides the theme font-weight references shared across sets.
@@ -52,7 +50,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
       generateTypography(name, set),
     ]),
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
-      [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
+      [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, theme.colors, overrides)],
     ]),
     [`themes/${name}`, generateTheme(colorNames, name, borderRadius, primaryTypography)],
     ...colorTokens.map(([colorName, colorSetTokens]): [string, TokenSet] => [

@@ -3,15 +3,8 @@ export default {
   'theme-name': 'Gi temaet ditt et navn',
   'theme-name-description':
     'Navnet bør representere virksomheten eller produktet du skal profilere.',
-  'generate-css': 'Generer CSS',
   'generating-css': 'Genererer CSS...',
-  in: 'i',
-  'core-ui-kit': 'Core UI Kit (åpnes i ny fane)',
-  'to-update':
-    'for å oppdatere et tema direkte i Figma. Les mer om disse alternativene på',
   'own-theme': 'eget tema (åpnes i ny fane)',
-  page: 'siden.',
-  format: 'Formatering for Windows',
   'help-heading': 'Noe som ikke fungerer?',
   'help-description': 'Send oss en melding på',
   slack: 'Slack (åpnes i ny fane)',
@@ -19,10 +12,23 @@ export default {
   'github-issue': 'Github issue (åpnes i ny fane)',
   color: 'Farge',
   config: {
+    heading: 'Config-fil',
+    description:
+      'Bruk denne når du skal komme i gang med Figma og generere design-tokens, CSS-fil eller andre former for kode.',
+    download: 'Last ned {{filename}}',
     'step-one':
-      'Lagre config fila di som "designsystemet.config.json" der du vil at tokens og CSS skal bli generert. Les mer om hvordan du synkroniserer tokens med Figma her:',
+      'Last ned config fila der du vil at tokens og CSS skal bli generert.',
     'step-two':
       'Åpne terminal i samme mappe som config fila. Kjør kodesnuttene for å generere tokens og CSS variabler til kode.',
+    help: 'Les mer om hvordan du synkroniserer tokens med Figma her:',
+  },
+  css: {
+    heading: 'CSS-fil',
+    description:
+      'Bruk denne når du skal prototype i kode og komme raskt i gang.',
+    'step-one': 'Last ned og importer etter "@digdir/designsystemet-css".',
+    download: 'Last ned {{filename}}',
+    error: 'Kunne ikke generere CSS for temaet.',
   },
   'severity-colors': 'Severity',
   'severity-colors-switch': 'Aktiver for å overstyre severity-farger',

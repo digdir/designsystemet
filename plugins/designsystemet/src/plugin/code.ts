@@ -62,17 +62,19 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
           externalConfig,
         );
 
-        themeNames = Object.keys(config.themes ?? {});
+        // `themes` is optional in the config, but the plugin creates everything from themes.
+        const { themes } = config;
+        if (!themes || Object.keys(themes).length === 0) {
+          throw new Error('The config must define at least one theme.');
+        }
+
+        themeNames = Object.keys(themes);
 
         // The dimensions come from the first theme, mirroring the CLI: size modes and
         // typography sets are expected to be the same across themes.
-        const tokenSetDimensions = getTokenSetDimensions(
-          config.themes[themeNames[0]],
-        );
+        const tokenSetDimensions = getTokenSetDimensions(themes[themeNames[0]]);
 
-        for (const [themeName, themeConfig] of Object.entries(
-          config.themes,
-        ) as [string, ConfigSchema['themes'][string]][]) {
+        for (const [themeName, themeConfig] of Object.entries(themes)) {
           const themeTokens = await createTokens(
             {
               name: themeName,

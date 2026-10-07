@@ -29,7 +29,7 @@ export {
   toFigmaCollections,
 } from './figma/collections.ts';
 export { figmaVariableScopes, figmaVariableType } from './figma/scopes.ts';
-export { severityColors } from './schemas/defaults.ts';
+export { defaultBorderRadius, severityColors } from './schemas/defaults.ts';
 export { parseConfig, validateConfig } from './schemas/helpers.ts';
 export {
   type ConfigSchema,
@@ -40,4 +40,5 @@ export {
 } from './schemas/schema.ts';
 export { getThemeColorScales } from './tokens/create/generators/primitives/color-scheme.ts';
 export { createSystemTokens, createTokens, getTokenSetDimensions } from './tokens/create.ts';
+export { formatThemeCSS } from './tokens/format.ts';
 export type { BorderRadiusConfig, TokenSets } from './tokens/types.ts';

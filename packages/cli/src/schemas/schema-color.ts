@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { convertToHex } from '../colors/index.ts';
+import { addSeverityColors } from './defaults.ts';
 
 const hexPatterns = [
   // Hex colors: #000, #0000, #000000, #00000000
@@ -31,4 +32,6 @@ export const colorsSchema = z
   .refine((c) => typeof (c as Record<string, unknown>).neutral === 'string', {
     message: 'Theme colors must include a "neutral" color.',
   })
+  // Adds the default severity colors that are missing, and moves all severity colors last.
+  .transform(addSeverityColors)
   .meta({ description: 'Defines the colors for this theme' });

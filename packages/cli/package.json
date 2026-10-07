@@ -13,6 +13,7 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/cli",
   "license": "MIT",
   "type": "module",
+  "sideEffects": false,
   "files": [
     "./dist/**"
   ],
@@ -37,8 +38,8 @@
     "build:json-schema": "pnpm node ./src/scripts/create-json-schema.ts && pnpm node ./src/scripts/create-full-json-schema.ts && pnpm node ./src/scripts/create-example-config.ts",
     "types": "tsc --noEmit",
     "test:unit": "vitest run",
-    "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./temp/options/design-tokens --theme options --clean",
-    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./tests/test-tokens.config.jsonc",
+    "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./temp/options/design-tokens --theme options --clean --skip-check",
+    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./tests/test-tokens.config.jsonc --skip-check",
     "test:tokens-build-options": "pnpm run designsystemet tokens build -t ./temp/options/design-tokens -o ./temp/options/build --clean --experimental-tailwind",
     "test:tokens-build-config": "pnpm run designsystemet tokens build -t ./tests/config/design-tokens -o ./tests/config/build --clean --experimental-tailwind",
     "test:tokens-build-config:inspect": "pnpm run designsystemet:inspect tokens build -t ./tests/config/design-tokens -o ./tests/config/build --clean",
