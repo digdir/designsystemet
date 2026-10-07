@@ -21,6 +21,7 @@ export {
   semanticColorSpec,
   type ThemeInfo,
 } from './colors/index.ts';
+export { type GeneratedConfigFromCSS, generateConfigFromCSS } from './css/generate-config-from-css.ts';
 export { figmaCodeSyntax } from './figma/code-syntax.ts';
 export {
   FIGMA_COLLECTION,
@@ -53,5 +54,4 @@ export {
 export { getThemeColorScales } from './tokens/create/generators/primitives/color-scheme.ts';
 export { createSystemTokens, createTokens, getTokenSetDimensions } from './tokens/create.ts';
 export { formatThemeCSS } from './tokens/format.ts';
-export { type GeneratedConfigFromCSS, generateConfigFromCSS } from './tokens/generate-config-from-css.ts';
 export type { BorderRadiusConfig, TokenSets } from './tokens/types.ts';

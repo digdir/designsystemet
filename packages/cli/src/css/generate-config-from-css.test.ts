@@ -2,9 +2,9 @@ import { readFileSync } from 'node:fs';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import pkg from '../../package.json' with { type: 'json' };
 import { configSchema, type ExternalConfigSchemaInput } from '../schemas/schema.ts';
-import { formatThemeCSS } from './format.ts';
+import { formatThemeCSS } from '../tokens/format.ts';
+import type { Theme } from '../tokens/types.ts';
 import { generateConfigFromCSS } from './generate-config-from-css.ts';
-import type { Theme } from './types.ts';
 
 type ThemeInput = NonNullable<ExternalConfigSchemaInput['themes']>[string];
 
