@@ -12,21 +12,21 @@ export function HomeView({
     <div className='home-view'>
       <Card data-color='neutral'>
         <Heading level={2} data-size='sm'>
-          Sync config to Figma
+          Sync to Figma
         </Heading>
         <Paragraph>
-          Paste a config from the theme builder to create or update the
+          Paste a config file from the theme builder to create or update the
           variables and styles in this file.
         </Paragraph>
         <Button onClick={onSync}>Sync config</Button>
       </Card>
       <Card data-color='neutral'>
         <Heading level={2} data-size='sm'>
-          Export config from Figma
+          Export from Figma
         </Heading>
         <Paragraph>
-          Create a config from the variables and styles in this file, to keep in
-          your code or sync to another file.
+          Create a config file from the variables and styles in this file, to
+          keep in your code or sync to another file.
         </Paragraph>
         <Button onClick={onExport} variant='secondary'>
           Export config
