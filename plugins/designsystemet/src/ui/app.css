@@ -50,6 +50,7 @@ textarea {
   min-height: 160px;
   font-family: monospace;
   resize: none;
+  field-sizing: fixed;
 }
 
 .app {
