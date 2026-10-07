@@ -9,12 +9,12 @@ import {
   type TokenSets,
   validateConfig,
 } from '@digdir/designsystemet/internal';
-import type { OnStep } from './sync-to-figma';
+import type { OnStep } from './import-to-figma';
 import { buildTokenModel } from './token-model';
 import type { TokenModel } from './types';
 
 /**
- * Validates the pasted config and creates the token model to sync. `onStep` is called before each of its 3 steps;
+ * Validates the pasted config and creates the token model to import. `onStep` is called before each of its 3 steps;
  * `onDetail` updates the current step's label, e.g. with the theme being created.
  */
 export async function createTokenModel(

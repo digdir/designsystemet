@@ -17,7 +17,7 @@ import {
 import pkg from '@digdir/designsystemet/package.json';
 import type { CollectionData, VariableData } from './types';
 
-// Rebuilds a config from the variables a sync created. Each theme is a mode in the Theme collection,
+// Rebuilds a config from the variables an import created. Each theme is a mode in the Theme collection,
 // and its colors are in the Color scheme collection as `<theme>/<color>/<1-16>`. The config holds only
 // each color's base color (`base-default` in Light, which is the input color unchanged); every other step
 // is generated from it. Steps that differ from the generated scale, e.g. ones edited by hand in Figma,
@@ -50,8 +50,8 @@ const FOCUS_INNER = 'focus/inner';
 const FOCUS_OUTER = 'focus/outer';
 
 /**
- * Creates the config that a sync of the given collections came from. Throws if the collections aren't
- * from a sync, or if the result isn't a valid config.
+ * Creates the config that an import of the given collections came from. Throws if the collections aren't
+ * from an import, or if the result isn't a valid config.
  */
 export function exportConfig(collections: CollectionData[]): ExportedConfig {
   const warnings: string[] = [];
@@ -77,7 +77,7 @@ export function exportConfig(collections: CollectionData[]): ExportedConfig {
   for (const collection of collections) {
     if (!KNOWN_COLLECTIONS.has(collection.name)) {
       warnings.push(
-        `Collection "${collection.name}" isn't created by a sync, so it isn't in the config.`,
+        `Collection "${collection.name}" isn't created by an import, so it isn't in the config.`,
       );
     }
   }
@@ -157,7 +157,7 @@ function readThemeColors(
       other.set(name, values);
     } else {
       warnings.push(
-        `Variable "${colorScheme.name}/${variable.name}" isn't created by a sync, so it isn't in the config.`,
+        `Variable "${colorScheme.name}/${variable.name}" isn't created by an import, so it isn't in the config.`,
       );
     }
   }
@@ -331,7 +331,7 @@ function requireCollection(
   const collection = collectionByName.get(name);
   if (!collection) {
     throw new Error(
-      `No "${name}" collection found. A config can only be created from a file that has been synced from a config.`,
+      `No "${name}" collection found. A config can only be created from a file that a config has been imported into.`,
     );
   }
   return collection;

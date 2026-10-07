@@ -4,14 +4,14 @@ import { postToPlugin } from '../post-to-plugin';
 const SLACK_URL = 'https://www.designsystemet.no/slack';
 const FIGMA_PRICING_URL = 'https://www.figma.com/pricing/';
 
-// Explains what a sync does to the file. Opened from the paste view.
+// Explains what an import does to the file. Opened from the paste view.
 export function AboutView(): React.JSX.Element {
   return (
     <div className='about-view'>
       <Heading level={2} data-size='sm'>
-        What does syncing do?
+        What does importing do?
       </Heading>
-      <Paragraph>Syncing makes this file match the config:</Paragraph>
+      <Paragraph>Importing makes this file match the config:</Paragraph>
       <List.Unordered>
         <List.Item>
           Creates the variable collections, modes, variables, text styles and

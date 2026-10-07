@@ -2,16 +2,16 @@ import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { exportConfig } from './config-export/export-config';
 import { readCollections } from './config-export/read-collections';
-import { createTokenModel } from './config-sync/create-token-model';
-import { createSyncLog } from './config-sync/log';
+import { createTokenModel } from './config-import/create-token-model';
 import {
+  IMPORT_STEPS,
+  importToFigma,
   type OnStep,
-  SYNC_STEPS,
-  syncToFigma,
-} from './config-sync/sync-to-figma';
+} from './config-import/import-to-figma';
+import { createImportLog } from './config-import/log';
 
-/** Steps reported to the UI: validating, creating tokens, preparing the sync, then the Figma sync's own steps. */
-const TOTAL_STEPS = 3 + SYNC_STEPS;
+/** Steps reported to the UI: validating, creating tokens, preparing the import, then the Figma import's own steps. */
+const TOTAL_STEPS = 3 + IMPORT_STEPS;
 
 if (figma.editorType === 'figma') {
   figma.showUI(__html__, {
@@ -49,7 +49,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     return;
   }
 
-  if (msg.type !== 'sync-config-to-figma') {
+  if (msg.type !== 'import-config') {
     return;
   }
 
@@ -57,7 +57,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
   let label = '';
   let note: string | undefined;
   const reportProgress = () =>
-    postMessage('sync-progress', { step, total: TOTAL_STEPS, label, note });
+    postMessage('import-progress', { step, total: TOTAL_STEPS, label, note });
   const onStep: OnStep = async (stepLabel, stepNote) => {
     step += 1;
     label = stepLabel;
@@ -72,19 +72,19 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     reportProgress();
   };
 
-  const log = createSyncLog();
+  const log = createImportLog();
   try {
     const tokenModel = await createTokenModel(msg.config, onStep, onDetail);
-    // Warnings from building the model (unresolved aliases etc.) are reported with the sync's own warnings.
+    // Warnings from building the model (unresolved aliases etc.) are reported with the import's own warnings.
     log.warnings.push(...tokenModel.warnings);
 
-    await syncToFigma(tokenModel, log, onStep, onDetail);
-    // Always give feedback, so a sync that changed nothing still has a log to show.
+    await importToFigma(tokenModel, log, onStep, onDetail);
+    // Always give feedback, so an import that changed nothing still has a log to show.
     if (log.info.length === 0) {
       log.info.push('No changes');
     }
 
-    postMessage('sync-result', {
+    postMessage('import-result', {
       status: 'success',
       message:
         'You can now close this window. Check your variables and styles in Figma to make sure they were updated correctly.',
@@ -93,12 +93,12 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
-    postMessage('sync-result', {
+    postMessage('import-result', {
       status: 'error',
       message: `${label ? `${label} failed: ` : ''}${errorMessage}`,
       info: log.info,
       warnings: log.warnings,
     });
-    console.error('Error syncing tokens:', error);
+    console.error('Error importing config:', error);
   }
 };

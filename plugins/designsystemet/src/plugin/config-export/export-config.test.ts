@@ -1,19 +1,19 @@
 import { semanticColorSpec } from '@digdir/designsystemet/internal';
 import { describe, expect, it } from 'vitest';
-import { buildCollectionSpecs } from '../config-sync/collection-specs';
-import { createTokenModel } from '../config-sync/create-token-model';
-import { createSyncLog } from '../config-sync/log';
-import { getTokenSetLookupOrder } from '../config-sync/resolver';
+import { buildCollectionSpecs } from '../config-import/collection-specs';
+import { createTokenModel } from '../config-import/create-token-model';
+import { createImportLog } from '../config-import/log';
+import { getTokenSetLookupOrder } from '../config-import/resolver';
 import { exportConfig } from './export-config';
 import type { CollectionData } from './types';
 
-/** The collections a sync of `themes` creates in Figma, as `readCollections` would read them back. */
+/** The collections an import of `themes` creates in Figma, as `readCollections` would read them back. */
 async function syncedCollections(themes: object): Promise<CollectionData[]> {
   const model = await createTokenModel(JSON.stringify({ themes }));
   const specs = buildCollectionSpecs(
     model,
     getTokenSetLookupOrder(model),
-    createSyncLog(),
+    createImportLog(),
   );
   return specs.map((spec) => ({
     name: spec.name,
@@ -131,7 +131,7 @@ describe('exportConfig', () => {
       },
     };
     const collections = await syncedCollections(themes);
-    // Rename `theme/accent/12` to `theme/accent/base-default`, and so on, as planned for future syncs.
+    // Rename `theme/accent/12` to `theme/accent/base-default`, and so on, as planned for future imports.
     const nameByNumber = new Map(
       Object.values(semanticColorSpec).map((step) => [
         String(step.number),
@@ -152,7 +152,7 @@ describe('exportConfig', () => {
     expect(warnings).toEqual([]);
   });
 
-  it('warns about collections and variables a sync does not create', async () => {
+  it('warns about collections and variables an import does not create', async () => {
     const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
     });
@@ -164,12 +164,12 @@ describe('exportConfig', () => {
     const { warnings } = exportConfig(collections);
 
     expect(warnings).toEqual([
-      `Collection "Spacing" isn't created by a sync, so it isn't in the config.`,
-      `Variable "Color scheme/theme/accent/custom" isn't created by a sync, so it isn't in the config.`,
+      `Collection "Spacing" isn't created by an import, so it isn't in the config.`,
+      `Variable "Color scheme/theme/accent/custom" isn't created by an import, so it isn't in the config.`,
     ]);
   });
 
-  it('throws for a file that was not synced from a config', () => {
+  it('throws for a file that no config was imported into', () => {
     expect(() =>
       exportConfig([{ name: 'Colors', modes: ['Mode 1'], variables: [] }]),
     ).toThrow('No "Theme" collection found');

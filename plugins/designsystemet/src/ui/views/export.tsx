@@ -45,7 +45,7 @@ export function ExportView({
   return (
     <div className='export-view'>
       <Paragraph>
-        This config was created from the variables in this file. Syncing it
+        This config was created from the variables in this file. Importing it
         gives the same themes, including colors that were changed by hand.
       </Paragraph>
       {warnings.length > 0 && (

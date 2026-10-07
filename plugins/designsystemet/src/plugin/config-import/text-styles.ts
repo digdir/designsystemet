@@ -1,6 +1,6 @@
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
-import { changedFields, type SyncLog } from './log';
+import { changedFields, type ImportLog } from './log';
 import type { Pause } from './pause';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
@@ -14,7 +14,7 @@ export async function syncTextStyles(
   tokenSetOrder: string[],
   variableLookup: Map<string, Variable>,
   fontCache: FontCache,
-  log: SyncLog,
+  log: ImportLog,
   pause: Pause,
 ): Promise<void> {
   const desired = model.flatTokens.filter(
@@ -34,7 +34,7 @@ export async function syncTextStyles(
 
   for (const [index, token] of desired.entries()) {
     await pause(
-      () => `Syncing text styles (${index + 1} of ${desired.length})`,
+      () => `Importing text styles (${index + 1} of ${desired.length})`,
     );
     const styleName = token.figmaName;
     const styleValue = resolveCompositeValue(
@@ -129,7 +129,7 @@ export async function syncTextStyles(
   }
 }
 
-// The parts of a text style the sync writes, keyed by how they are named in the log.
+// The parts of a text style the import writes, keyed by how they are named in the log.
 function snapshotTextStyle(style: TextStyle): Record<string, unknown> {
   return {
     font: style.fontName,

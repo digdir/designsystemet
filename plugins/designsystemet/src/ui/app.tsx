@@ -10,16 +10,16 @@ import { AboutView } from './views/about';
 import { type ExportState, ExportView } from './views/export';
 import { FinishedView } from './views/finished';
 import { HomeView } from './views/home';
+import { ImportView, type Progress } from './views/import';
 import { NotificationsView } from './views/notifications';
 import { PasteView } from './views/paste';
-import { type Progress, SyncView } from './views/sync';
 
 // One view is shown at a time, each replacing the main area.
 type View =
   | 'home'
   | 'paste'
   | 'about'
-  | 'syncing'
+  | 'importing'
   | 'finished'
   | 'notifications'
   | 'export';
@@ -27,14 +27,14 @@ type View =
 type UiState = {
   view: View;
   progress: Progress | null;
-  /** The last sync's outcome, shown in the finished view. */
+  /** The last import's outcome, shown in the finished view. */
   result: { status: 'success' | 'error'; message: string } | null;
   notifications: Notification[];
   /** The config created from this file, shown in the export view. */
   exported: ExportState | null;
 };
 
-const START_VIEW: View = 'paste';
+const START_VIEW: View = 'home';
 
 const initialState: UiState = {
   view: START_VIEW,
@@ -45,10 +45,10 @@ const initialState: UiState = {
 };
 
 type Action =
-  | { type: 'sync-started' }
-  | { type: 'sync-progress'; progress: Progress }
+  | { type: 'import-started' }
+  | { type: 'import-progress'; progress: Progress }
   | {
-      type: 'sync-finished';
+      type: 'import-finished';
       result: NonNullable<UiState['result']>;
       notifications: Notification[];
     }
@@ -61,20 +61,20 @@ type Action =
 
 function reducer(state: UiState, action: Action): UiState {
   switch (action.type) {
-    case 'sync-started':
+    case 'import-started':
       return {
         ...state,
-        view: 'syncing',
+        view: 'importing',
         progress: null,
         result: null,
         notifications: [],
       };
-    case 'sync-progress':
+    case 'import-progress':
       return { ...state, progress: action.progress };
-    case 'sync-finished':
+    case 'import-finished':
       return {
         ...state,
-        // A failed sync has nothing to show in the finished view, so go straight to what went wrong.
+        // A failed import has nothing to show in the finished view, so go straight to what went wrong.
         view: action.result.status === 'success' ? 'finished' : 'notifications',
         progress: null,
         result: action.result,
@@ -97,7 +97,7 @@ function reducer(state: UiState, action: Action): UiState {
 
 function previousView(state: UiState): View {
   switch (state.view) {
-    // The sync views go back to the config, except the log of a successful sync, which goes back to its result.
+    // The import views go back to the config, except the log of a successful import, which goes back to its result.
     case 'about':
     case 'finished':
       return 'paste';
@@ -114,15 +114,15 @@ function viewTitle(view: View): string {
     case 'home':
       return 'Designsystemet';
     case 'export':
-      return 'Export config';
+      return 'Export';
     default:
-      return 'Sync config to Figma';
+      return 'Import';
   }
 }
 
-/** Turns a sync result into notifications: the error, the warnings, and the sync log. */
+/** Turns an import result into notifications: the error, the warnings, and the import log. */
 function toNotifications(
-  msg: Extract<FigmaMessages, { type: 'sync-result' }>,
+  msg: Extract<FigmaMessages, { type: 'import-result' }>,
 ): Notification[] {
   const warnings = msg.warnings ?? [];
   const info = msg.info ?? [];
@@ -143,7 +143,7 @@ function toNotifications(
       ? [
           {
             kind: 'info' as const,
-            text: `Sync log (${info.length})`,
+            text: `Import log (${info.length})`,
             details: info,
           },
         ]
@@ -165,9 +165,9 @@ function App() {
       const msg = event.data?.pluginMessage as FigmaMessages | undefined;
       if (!msg) return;
       switch (msg.type) {
-        case 'sync-progress':
+        case 'import-progress':
           dispatch({
-            type: 'sync-progress',
+            type: 'import-progress',
             progress: {
               step: msg.step,
               total: msg.total,
@@ -176,9 +176,9 @@ function App() {
             },
           });
           break;
-        case 'sync-result':
+        case 'import-result':
           dispatch({
-            type: 'sync-finished',
+            type: 'import-finished',
             result: { status: msg.status, message: msg.message },
             notifications: toNotifications(msg),
           });
@@ -206,9 +206,9 @@ function App() {
     };
   }, []);
 
-  const syncConfig = () => {
-    dispatch({ type: 'sync-started' });
-    postToPlugin('sync-config-to-figma', { config: pastedConfig });
+  const importConfig = () => {
+    dispatch({ type: 'import-started' });
+    postToPlugin('import-config', { config: pastedConfig });
   };
 
   const exportConfig = () => {
@@ -220,8 +220,8 @@ function App() {
   const exportedConfig =
     state.exported?.status === 'success' ? state.exported.config : null;
 
-  // Every view but the start view and a running sync has a way back.
-  const canGoBack = state.view !== START_VIEW && state.view !== 'syncing';
+  // Every view but the start view and a running import has a way back.
+  const canGoBack = state.view !== START_VIEW && state.view !== 'importing';
 
   // The number of warning entries. Not the number of affected items: some entries summarise several.
   const warningCount =
@@ -236,7 +236,7 @@ function App() {
       <main>
         {state.view === 'home' && (
           <HomeView
-            onSync={() => dispatch({ type: 'show-paste' })}
+            onImport={() => dispatch({ type: 'show-paste' })}
             onExport={exportConfig}
           />
         )}
@@ -244,7 +244,7 @@ function App() {
           <PasteView value={pastedConfig} onChange={setPastedConfig} />
         )}
         {state.view === 'about' && <AboutView />}
-        {state.view === 'syncing' && <SyncView progress={state.progress} />}
+        {state.view === 'importing' && <ImportView progress={state.progress} />}
         {state.view === 'finished' && state.result && (
           <FinishedView
             message={state.result.message}
@@ -261,7 +261,7 @@ function App() {
       {/* Stays mounted across views, so screen readers announce the outcome when the view changes. */}
       <div className='ds-sr-only' role='status'>
         {state.result &&
-          `${state.result.status === 'success' ? 'Sync finished' : 'Sync failed'}. ${state.result.message}`}
+          `${state.result.status === 'success' ? 'Import finished' : 'Import failed'}. ${state.result.message}`}
       </div>
       {/* Go back is always on the left, the view's actions on the right. */}
       <footer>
@@ -270,20 +270,20 @@ function App() {
             onClick={() => dispatch({ type: 'go-back' })}
             variant='tertiary'
           >
-            {state.view === 'finished' ? 'Sync another config' : 'Go back'}
+            {state.view === 'finished' ? 'Import another config' : 'Go back'}
           </Button>
         )}
         {state.view === 'paste' && (
           <div className='footer-actions'>
-            <Button onClick={syncConfig} disabled={!pastedConfig.trim()}>
-              Sync to Figma
-            </Button>
             <Button
               data-color='neutral'
               variant='tertiary'
               onClick={() => dispatch({ type: 'show-about' })}
             >
-              What does syncing do?
+              What does importing do?
+            </Button>
+            <Button onClick={importConfig} disabled={!pastedConfig.trim()}>
+              Import
             </Button>
           </div>
         )}
@@ -319,7 +319,7 @@ function App() {
             data-color='neutral'
             variant='tertiary'
           >
-            Show sync log
+            Show import log
           </Button>
         )}
       </footer>
