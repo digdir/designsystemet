@@ -56,7 +56,7 @@ const handleToggle = ({ target: el, newState }: Partial<ToggleEvent>) => {
     const heading = el.querySelector('h2,h3,h4,h5,h6')?.textContent.trim();
 
     if (hasAria?.trim()) return;
-    if (heading) attr(el, ARIA_LABEL, heading); // Using aria-label instead of aria-labelleby to avoid need of suppressHydrationWarning on all heading elements
+    if (heading) return attr(el, ARIA_LABEL, heading); // Using aria-label instead of aria-labelleby to avoid need of suppressHydrationWarning on all heading elements
     warn(
       'Missing accessible name on:',
       el,
