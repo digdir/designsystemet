@@ -83,25 +83,34 @@ export function exportConfig(collections: CollectionData[]): ExportedConfig {
   }
 
   const resolve = createResolver(collectionByName);
-  const themes: Record<string, ThemeConfig> = {};
+  // A Map, as theme names are Figma mode names, which could be any name, e.g. `constructor`.
+  // Object.fromEntries below only adds own properties.
+  const themes = new Map<string, ThemeConfig>();
 
   for (const themeName of themeCollection.modes) {
+    // The config schema drops a `__proto__` key, like JSON tools commonly do, so no config can have this theme.
+    if (themeName === '__proto__') {
+      warnings.push(
+        `Theme "${themeName}" isn't in the config, as a config can't have a theme with that name. Rename the mode in the ${FIGMA_COLLECTION.THEME} collection to include it.`,
+      );
+      continue;
+    }
     const { warnings: colorWarnings, ...colors } = configColorsFromValues(
       readThemeColors(themeName, colorScheme, schemeModes, resolve, warnings),
     );
     warnings.push(
       ...colorWarnings.map((warning) => `Theme "${themeName}": ${warning}`),
     );
-    themes[themeName] = {
+    themes.set(themeName, {
       ...colors,
       ...extractTypography(themeName, resolve),
       ...extractBorderRadius(themeName, resolve),
-    };
+    });
   }
 
   const config: ExportedConfig['config'] = {
     $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
-    themes,
+    themes: Object.fromEntries(themes),
   };
 
   // Validate like a pasted config, so the file is one the plugin and the CLI accept.
@@ -202,8 +211,15 @@ function createResolver(
     mode: string,
     depth: number,
   ): VariableValue | undefined => {
-    const value = variablesByCollection.get(collection)?.get(variable)
-      ?.valuesByMode[mode];
+    const valuesByMode = variablesByCollection
+      .get(collection)
+      ?.get(variable)?.valuesByMode;
+    // Own properties only, so a mode named like a property every object has, e.g. `constructor`, isn't found
+    // on a variable without a value for it.
+    const value =
+      valuesByMode && Object.hasOwn(valuesByMode, mode)
+        ? valuesByMode[mode]
+        : undefined;
     // The depth guards against alias loops, which Figma doesn't allow but hand-made data could have.
     if (!value || depth > 10) {
       return undefined;
@@ -249,7 +265,10 @@ function requireMode(collection: CollectionData, name: string): string {
 function toStepName(step: string): SemanticColorNames | undefined {
   return (
     STEP_NAME_BY_NUMBER.get(step) ??
-    (step in semanticColorSpec ? (step as SemanticColorNames) : undefined)
+    // Own properties only, so names every object has, like `constructor`, aren't steps.
+    (Object.hasOwn(semanticColorSpec, step)
+      ? (step as SemanticColorNames)
+      : undefined)
   );
 }
 
