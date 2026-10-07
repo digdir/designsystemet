@@ -5,7 +5,7 @@ import type { ColorScheme, CssColor, SemanticColorNames } from '../colors/types.
 import { defaultBorderRadius, defaultFontFamily } from '../schemas/defaults.ts';
 import { validateConfig } from '../schemas/helpers.ts';
 import { type ExternalConfigSchemaInput, externalConfigSchema } from '../schemas/schema.ts';
-import { configColorsFromValues, type SchemeColors, type ThemeColorValues } from './config-colors.ts';
+import { configColorsFromValues, type SchemeColors, type ThemeColorValues } from '../tokens/config-colors.ts';
 
 type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
 
