@@ -8,18 +8,18 @@ import {
   Textarea,
 } from '@digdir/designsystemet-react';
 
-export type ExtractState =
+export type ExportState =
   | { status: 'loading' }
   | { status: 'success'; config: string; warnings: string[] }
   | { status: 'error'; message: string };
 
 // Shows the config created from this file's variables, with what couldn't be included.
-export function ExtractView({
-  extracted,
+export function ExportView({
+  exported,
 }: {
-  extracted: ExtractState;
+  exported: ExportState;
 }): React.JSX.Element {
-  if (extracted.status === 'loading') {
+  if (exported.status === 'loading') {
     return (
       <div className='status-view' role='status'>
         <Spinner aria-hidden data-size='lg' />
@@ -30,20 +30,20 @@ export function ExtractView({
     );
   }
 
-  if (extracted.status === 'error') {
+  if (exported.status === 'error') {
     return (
-      <div className='extract-view'>
+      <div className='export-view'>
         <Alert data-color='danger'>
-          Could not create a config from this file: {extracted.message}
+          Could not create a config from this file: {exported.message}
         </Alert>
       </div>
     );
   }
 
-  const { config, warnings } = extracted;
+  const { config, warnings } = exported;
 
   return (
-    <div className='extract-view'>
+    <div className='export-view'>
       <Paragraph>
         This config was created from the variables in this file. Syncing it
         gives the same themes, including colors that were changed by hand.
@@ -60,7 +60,7 @@ export function ExtractView({
           </ul>
         </Alert>
       )}
-      <Field className='extract-field'>
+      <Field className='export-field'>
         <Label>designsystemet.config.json</Label>
         <Textarea value={config} readOnly />
       </Field>

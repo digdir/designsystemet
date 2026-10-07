@@ -27,7 +27,7 @@ type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
 type Overrides = NonNullable<ThemeConfig['overrides']>;
 type SchemeColors = Partial<Record<ColorScheme, CssColor>>;
 
-export type ExtractedConfig = {
+export type ExportedConfig = {
   config: ExternalConfigSchemaInput & { $schema: string };
   /** What is in the file but can't be described by the config, and so is left out of it. */
   warnings: string[];
@@ -36,7 +36,7 @@ export type ExtractedConfig = {
 const SCHEMES: ColorScheme[] = ['light', 'dark'];
 const BASE_STEP = semanticColorSpec['base-default'].name;
 // Variables are named by step number today (`<theme>/<color>/12`). Step names (`<theme>/<color>/base-default`)
-// are planned, so both are read, and the extraction itself works with step names.
+// are planned, so both are read, and the export itself works with step names.
 const STEP_NAME_BY_NUMBER = new Map(
   Object.values(semanticColorSpec).map((step) => [
     String(step.number),
@@ -53,7 +53,7 @@ const FOCUS_OUTER = 'focus/outer';
  * Creates the config that a sync of the given collections came from. Throws if the collections aren't
  * from a sync, or if the result isn't a valid config.
  */
-export function extractConfig(collections: CollectionData[]): ExtractedConfig {
+export function exportConfig(collections: CollectionData[]): ExportedConfig {
   const warnings: string[] = [];
   const collectionByName = new Map(collections.map((c) => [c.name, c]));
 
@@ -100,7 +100,7 @@ export function extractConfig(collections: CollectionData[]): ExtractedConfig {
     };
   }
 
-  const config: ExtractedConfig['config'] = {
+  const config: ExportedConfig['config'] = {
     $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
     themes,
   };

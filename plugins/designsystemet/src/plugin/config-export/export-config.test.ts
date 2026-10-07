@@ -4,7 +4,7 @@ import { buildCollectionSpecs } from '../config-sync/collection-specs';
 import { createTokenModel } from '../config-sync/create-token-model';
 import { createSyncLog } from '../config-sync/log';
 import { getTokenSetLookupOrder } from '../config-sync/resolver';
-import { extractConfig } from './extract-config';
+import { exportConfig } from './export-config';
 import type { CollectionData } from './types';
 
 /** The collections a sync of `themes` creates in Figma, as `readCollections` would read them back. */
@@ -44,7 +44,7 @@ function editColor(
   variable.valuesByMode[mode] = { kind: 'raw', value: { r, g, b, a: 1 } };
 }
 
-describe('extractConfig', () => {
+describe('exportConfig', () => {
   it('returns the config the file was synced from', async () => {
     const themes = {
       alpha: {
@@ -68,7 +68,7 @@ describe('extractConfig', () => {
       },
     };
 
-    const { config, warnings } = extractConfig(await syncedCollections(themes));
+    const { config, warnings } = exportConfig(await syncedCollections(themes));
 
     expect(config.themes).toEqual(themes);
     expect(warnings).toEqual([]);
@@ -83,7 +83,7 @@ describe('extractConfig', () => {
       },
     };
 
-    const { config } = extractConfig(await syncedCollections(themes));
+    const { config } = exportConfig(await syncedCollections(themes));
 
     expect(config.themes).toEqual({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
@@ -91,7 +91,7 @@ describe('extractConfig', () => {
   });
 
   it('writes hex codes in lowercase', async () => {
-    const { config } = extractConfig(
+    const { config } = exportConfig(
       await syncedCollections({
         theme: {
           colors: { accent: '#0062BA', neutral: '#24272B' },
@@ -114,7 +114,7 @@ describe('extractConfig', () => {
     });
     editColor(collections, 'theme/accent/3', 'Dark', '#123456');
 
-    const { config } = extractConfig(collections);
+    const { config } = exportConfig(collections);
 
     expect(config.themes?.theme.overrides).toEqual({
       colors: { accent: { 'surface-default': { dark: '#123456' } } },
@@ -146,7 +146,7 @@ describe('extractConfig', () => {
       );
     }
 
-    const { config, warnings } = extractConfig(collections);
+    const { config, warnings } = exportConfig(collections);
 
     expect(config.themes).toEqual(themes);
     expect(warnings).toEqual([]);
@@ -161,7 +161,7 @@ describe('extractConfig', () => {
       .find((c) => c.name === 'Color scheme')
       ?.variables.push({ name: 'theme/accent/custom', valuesByMode: {} });
 
-    const { warnings } = extractConfig(collections);
+    const { warnings } = exportConfig(collections);
 
     expect(warnings).toEqual([
       `Collection "Spacing" isn't created by a sync, so it isn't in the config.`,
@@ -171,7 +171,7 @@ describe('extractConfig', () => {
 
   it('throws for a file that was not synced from a config', () => {
     expect(() =>
-      extractConfig([{ name: 'Colors', modes: ['Mode 1'], variables: [] }]),
+      exportConfig([{ name: 'Colors', modes: ['Mode 1'], variables: [] }]),
     ).toThrow('No "Theme" collection found');
   });
 });

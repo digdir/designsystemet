@@ -7,7 +7,7 @@ import './app.css';
 import { postToPlugin } from './post-to-plugin';
 import { copyText, downloadText } from './save-text';
 import { AboutView } from './views/about';
-import { type ExtractState, ExtractView } from './views/extract';
+import { type ExportState, ExportView } from './views/export';
 import { FinishedView } from './views/finished';
 import { HomeView } from './views/home';
 import { NotificationsView } from './views/notifications';
@@ -22,7 +22,7 @@ type View =
   | 'syncing'
   | 'finished'
   | 'notifications'
-  | 'extract';
+  | 'export';
 
 type UiState = {
   view: View;
@@ -30,8 +30,8 @@ type UiState = {
   /** The last sync's outcome, shown in the finished view. */
   result: { status: 'success' | 'error'; message: string } | null;
   notifications: Notification[];
-  /** The config created from this file, shown in the extract view. */
-  extracted: ExtractState | null;
+  /** The config created from this file, shown in the export view. */
+  exported: ExportState | null;
 };
 
 const START_VIEW: View = 'paste';
@@ -41,7 +41,7 @@ const initialState: UiState = {
   progress: null,
   result: null,
   notifications: [],
-  extracted: null,
+  exported: null,
 };
 
 type Action =
@@ -55,8 +55,8 @@ type Action =
   | { type: 'show-paste' }
   | { type: 'show-notifications' }
   | { type: 'show-about' }
-  | { type: 'extract-started' }
-  | { type: 'extract-finished'; extracted: ExtractState }
+  | { type: 'export-started' }
+  | { type: 'export-finished'; exported: ExportState }
   | { type: 'go-back' };
 
 function reducer(state: UiState, action: Action): UiState {
@@ -86,10 +86,10 @@ function reducer(state: UiState, action: Action): UiState {
       return { ...state, view: 'notifications' };
     case 'show-about':
       return { ...state, view: 'about' };
-    case 'extract-started':
-      return { ...state, view: 'extract', extracted: { status: 'loading' } };
-    case 'extract-finished':
-      return { ...state, extracted: action.extracted };
+    case 'export-started':
+      return { ...state, view: 'export', exported: { status: 'loading' } };
+    case 'export-finished':
+      return { ...state, exported: action.exported };
     case 'go-back':
       return { ...state, view: previousView(state) };
   }
@@ -113,8 +113,8 @@ function viewTitle(view: View): string {
   switch (view) {
     case 'home':
       return 'Designsystemet';
-    case 'extract':
-      return 'Extract config';
+    case 'export':
+      return 'Export config';
     default:
       return 'Sync config to Figma';
   }
@@ -154,7 +154,7 @@ function toNotifications(
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [pastedConfig, setPastedConfig] = useState('');
-  // Feedback on the extract view's copy button.
+  // Feedback on the export view's copy button.
   const [copyStatus, setCopyStatus] = useState<'copied' | 'failed' | null>(
     null,
   );
@@ -183,10 +183,10 @@ function App() {
             notifications: toNotifications(msg),
           });
           break;
-        case 'extract-config-result':
+        case 'export-config-result':
           dispatch({
-            type: 'extract-finished',
-            extracted:
+            type: 'export-finished',
+            exported:
               msg.status === 'success' && msg.config
                 ? {
                     status: 'success',
@@ -211,14 +211,14 @@ function App() {
     postToPlugin('sync-config-to-figma', { config: pastedConfig });
   };
 
-  const extractConfig = () => {
+  const exportConfig = () => {
     setCopyStatus(null);
-    dispatch({ type: 'extract-started' });
-    postToPlugin('extract-config');
+    dispatch({ type: 'export-started' });
+    postToPlugin('export-config');
   };
 
-  const extractedConfig =
-    state.extracted?.status === 'success' ? state.extracted.config : null;
+  const exportedConfig =
+    state.exported?.status === 'success' ? state.exported.config : null;
 
   // Every view but the start view and a running sync has a way back.
   const canGoBack = state.view !== START_VIEW && state.view !== 'syncing';
@@ -237,7 +237,7 @@ function App() {
         {state.view === 'home' && (
           <HomeView
             onSync={() => dispatch({ type: 'show-paste' })}
-            onExtract={extractConfig}
+            onExport={exportConfig}
           />
         )}
         {state.view === 'paste' && (
@@ -254,8 +254,8 @@ function App() {
         {state.view === 'notifications' && (
           <NotificationsView notifications={state.notifications} />
         )}
-        {state.view === 'extract' && state.extracted && (
-          <ExtractView extracted={state.extracted} />
+        {state.view === 'export' && state.exported && (
+          <ExportView exported={state.exported} />
         )}
       </main>
       {/* Stays mounted across views, so screen readers announce the outcome when the view changes. */}
@@ -287,12 +287,12 @@ function App() {
             </Button>
           </div>
         )}
-        {state.view === 'extract' && extractedConfig && (
+        {state.view === 'export' && exportedConfig && (
           <div className='footer-actions'>
             <Button
               variant='secondary'
               onClick={() =>
-                copyText(extractedConfig).then(
+                copyText(exportedConfig).then(
                   () => setCopyStatus('copied'),
                   () => setCopyStatus('failed'),
                 )
@@ -306,7 +306,7 @@ function App() {
             </Button>
             <Button
               onClick={() =>
-                downloadText('designsystemet.config.json', extractedConfig)
+                downloadText('designsystemet.config.json', exportedConfig)
               }
             >
               Download

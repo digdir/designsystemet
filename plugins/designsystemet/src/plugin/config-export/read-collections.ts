@@ -2,7 +2,7 @@ import type { ValueSpec } from '../types';
 import type { CollectionData } from './types';
 
 /**
- * Reads the file's local variable collections as plain data for `extractConfig`. Values are keyed by
+ * Reads the file's local variable collections as plain data for `exportConfig`. Values are keyed by
  * mode name, and aliases name their target by collection and variable name. Aliases to variables
  * outside the file (e.g. from a library) are left out, since the config can't refer to them.
  */

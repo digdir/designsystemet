@@ -1,12 +1,12 @@
 import { Button, Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 
-// The landing view: choose between syncing a config to this file and extracting this file's config.
+// The landing view: choose between syncing a config to this file and exporting this file's config.
 export function HomeView({
   onSync,
-  onExtract,
+  onExport,
 }: {
   onSync: () => void;
-  onExtract: () => void;
+  onExport: () => void;
 }): React.JSX.Element {
   return (
     <div className='home-view'>
@@ -22,14 +22,14 @@ export function HomeView({
       </Card>
       <Card data-color='neutral'>
         <Heading level={2} data-size='sm'>
-          Extract config from Figma
+          Export config from Figma
         </Heading>
         <Paragraph>
           Create a config from the variables and styles in this file, to keep in
           your code or sync to another file.
         </Paragraph>
-        <Button onClick={onExtract} variant='secondary'>
-          Extract config
+        <Button onClick={onExport} variant='secondary'>
+          Export config
         </Button>
       </Card>
     </div>

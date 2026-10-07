@@ -27,13 +27,13 @@ type SyncResult = {
 };
 
 // UI -> plugin: create a config from the variables in this file.
-type ExtractConfig = {
-  type: 'extract-config';
+type ExportConfig = {
+  type: 'export-config';
 };
 
 // Plugin -> UI: the config created from this file, or why it couldn't be created.
-type ExtractConfigResult = {
-  type: 'extract-config-result';
+type ExportConfigResult = {
+  type: 'export-config-result';
   status: 'success' | 'error';
   /** The config as formatted JSON, on success. */
   config?: string;
@@ -53,8 +53,8 @@ export type FigmaMessages =
   | SyncConfigToFigma
   | SyncProgress
   | SyncResult
-  | ExtractConfig
-  | ExtractConfigResult
+  | ExportConfig
+  | ExportConfigResult
   | OpenExternal;
 
 export type Notification = {
