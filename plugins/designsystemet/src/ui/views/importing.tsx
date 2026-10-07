@@ -9,7 +9,7 @@ export type Progress = {
 };
 
 // Shown during the import: which step is running, and how far along the import is.
-export function ImportView({
+export function ImportingView({
   progress,
 }: {
   progress: Progress | null;

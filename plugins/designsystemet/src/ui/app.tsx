@@ -10,14 +10,14 @@ import { AboutView } from './views/about';
 import { type ExportState, ExportView } from './views/export';
 import { FinishedView } from './views/finished';
 import { HomeView } from './views/home';
-import { ImportView, type Progress } from './views/import';
+import { ImportView } from './views/import';
+import { ImportingView, type Progress } from './views/importing';
 import { NotificationsView } from './views/notifications';
-import { PasteView } from './views/paste';
 
 // One view is shown at a time, each replacing the main area.
 type View =
   | 'home'
-  | 'paste'
+  | 'import'
   | 'about'
   | 'importing'
   | 'finished'
@@ -34,7 +34,7 @@ type UiState = {
   exported: ExportState | null;
 };
 
-const START_VIEW: View = 'home';
+const START_VIEW: View = 'import';
 
 const initialState: UiState = {
   view: START_VIEW,
@@ -52,7 +52,7 @@ type Action =
       result: NonNullable<UiState['result']>;
       notifications: Notification[];
     }
-  | { type: 'show-paste' }
+  | { type: 'show-import' }
   | { type: 'show-notifications' }
   | { type: 'show-about' }
   | { type: 'export-started' }
@@ -80,8 +80,8 @@ function reducer(state: UiState, action: Action): UiState {
         result: action.result,
         notifications: action.notifications,
       };
-    case 'show-paste':
-      return { ...state, view: 'paste' };
+    case 'show-import':
+      return { ...state, view: 'import' };
     case 'show-notifications':
       return { ...state, view: 'notifications' };
     case 'show-about':
@@ -100,9 +100,9 @@ function previousView(state: UiState): View {
     // The import views go back to the config, except the log of a successful import, which goes back to its result.
     case 'about':
     case 'finished':
-      return 'paste';
+      return 'import';
     case 'notifications':
-      return state.result?.status === 'success' ? 'finished' : 'paste';
+      return state.result?.status === 'success' ? 'finished' : 'import';
     default:
       return 'home';
   }
@@ -153,7 +153,7 @@ function toNotifications(
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [pastedConfig, setPastedConfig] = useState('');
+  const [configText, setConfigText] = useState('');
   // Feedback on the export view's copy button.
   const [copyStatus, setCopyStatus] = useState<'copied' | 'failed' | null>(
     null,
@@ -208,7 +208,7 @@ function App() {
 
   const importConfig = () => {
     dispatch({ type: 'import-started' });
-    postToPlugin('import-config', { config: pastedConfig });
+    postToPlugin('import-config', { config: configText });
   };
 
   const exportConfig = () => {
@@ -236,15 +236,17 @@ function App() {
       <main>
         {state.view === 'home' && (
           <HomeView
-            onImport={() => dispatch({ type: 'show-paste' })}
+            onImport={() => dispatch({ type: 'show-import' })}
             onExport={exportConfig}
           />
         )}
-        {state.view === 'paste' && (
-          <PasteView value={pastedConfig} onChange={setPastedConfig} />
+        {state.view === 'import' && (
+          <ImportView value={configText} onChange={setConfigText} />
         )}
         {state.view === 'about' && <AboutView />}
-        {state.view === 'importing' && <ImportView progress={state.progress} />}
+        {state.view === 'importing' && (
+          <ImportingView progress={state.progress} />
+        )}
         {state.view === 'finished' && state.result && (
           <FinishedView
             message={state.result.message}
@@ -273,7 +275,7 @@ function App() {
             {state.view === 'finished' ? 'Import again' : 'Go back'}
           </Button>
         )}
-        {state.view === 'paste' && (
+        {state.view === 'import' && (
           <div className='footer-actions'>
             <Button
               data-color='neutral'
@@ -282,7 +284,7 @@ function App() {
             >
               What does importing do?
             </Button>
-            <Button onClick={importConfig} disabled={!pastedConfig.trim()}>
+            <Button onClick={importConfig} disabled={!configText.trim()}>
               Import
             </Button>
           </div>

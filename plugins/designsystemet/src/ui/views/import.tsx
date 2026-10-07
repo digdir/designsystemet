@@ -18,7 +18,7 @@ const THEME_BUILDER_URL = 'https://theme.designsystemet.no';
 const MAX_SIZE = 1_000_000;
 const MAX_SIZE_LABEL = '1 MB';
 
-type PasteViewProps = {
+type ImportViewProps = {
   value: string;
   onChange: (value: string) => void;
 };
@@ -40,10 +40,10 @@ type Source =
 // or paste either into the textarea. Theme CSS isn't mentioned in the UI yet, as it's a hidden feature for now.
 // Uploaded files and pasted CSS end up as a JSON config in the textarea, so it can be checked
 // and edited before importing.
-export function PasteView({
+export function ImportView({
   value,
   onChange,
-}: PasteViewProps): React.JSX.Element {
+}: ImportViewProps): React.JSX.Element {
   const [source, setSource] = useState<Source>(null);
 
   const load = async (files: { text: string; fileName?: string }[]) => {
@@ -138,7 +138,7 @@ export function PasteView({
   };
 
   return (
-    <div className='paste-view'>
+    <div className='import-view'>
       <Field>
         <Label>Upload config</Label>
         <Field.Description>
@@ -155,7 +155,7 @@ export function PasteView({
           </Link>
           , upload the file or paste it below, and click "Import".
         </Field.Description>
-        <FileUpload data-color='neutral' className='paste-upload'>
+        <FileUpload data-color='neutral' className='import-upload'>
           <Field.Description>
             {source?.status === 'converting' && source.fileNames.length > 0
               ? `Reading ${source.fileNames.join(', ')}…`
@@ -189,7 +189,7 @@ export function PasteView({
           </ul>
         </Alert>
       )}
-      <Field className='paste-field'>
+      <Field className='import-field'>
         <Label>Or paste the config</Label>
         <Textarea
           value={value}

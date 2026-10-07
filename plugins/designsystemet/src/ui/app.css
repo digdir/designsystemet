@@ -59,7 +59,7 @@ textarea {
   height: 100vh;
 }
 
-.paste-view {
+.import-view {
   display: flex;
   flex-direction: column;
   gap: var(--ds-size-4);
@@ -70,12 +70,12 @@ textarea {
 }
 
 /* Compact, so the textarea below keeps most of the space. */
-.paste-upload {
+.import-upload {
   --dsc-file-upload-padding: var(--ds-size-4);
   --dsc-file-upload-icon-size: var(--ds-size-6);
 }
 
-.paste-field {
+.import-field {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
