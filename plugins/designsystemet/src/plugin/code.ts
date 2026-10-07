@@ -1,15 +1,15 @@
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
-import { exportConfig } from './config-export/export-config';
-import { readCollections } from './config-export/read-collections';
-import { configFromCss } from './config-import/config-from-css';
-import { createTokenModel } from './config-import/create-token-model';
+import { exportConfig } from './export/export-config';
+import { readCollections } from './export/read-collections';
+import { configFromCss } from './import/config-from-css';
+import { createTokenModel } from './import/create-token-model';
 import {
   IMPORT_STEPS,
   importToFigma,
   type OnStep,
-} from './config-import/import-to-figma';
-import { createImportLog } from './config-import/log';
+} from './import/import-to-figma';
+import { createImportLog } from './import/log';
 
 /** Steps reported to the UI: validating, creating tokens, preparing the import, then the Figma import's own steps. */
 const TOTAL_STEPS = 3 + IMPORT_STEPS;
