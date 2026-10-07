@@ -270,7 +270,7 @@ function App() {
             onClick={() => dispatch({ type: 'go-back' })}
             variant='tertiary'
           >
-            {state.view === 'finished' ? 'Import another config' : 'Go back'}
+            {state.view === 'finished' ? 'Import again' : 'Go back'}
           </Button>
         )}
         {state.view === 'paste' && (
