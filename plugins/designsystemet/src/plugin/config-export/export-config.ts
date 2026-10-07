@@ -1,18 +1,17 @@
 import {
   type ColorScheme,
   type CssColor,
+  configColorsFromValues,
   defaultBorderRadius,
   defaultFontFamily,
   type ExternalConfigSchemaInput,
   externalConfigSchema,
   FIGMA_COLLECTION,
-  generateColorScale,
+  type SchemeColors,
   type SemanticColorNames,
-  type SeverityColorNames,
   semanticColorSpec,
-  severityColors,
+  type ThemeColorValues,
   validateConfig,
-  visitedLinkColor,
 } from '@digdir/designsystemet/internal';
 import pkg from '@digdir/designsystemet/package.json';
 import type { CollectionData, VariableData } from './types';
@@ -22,10 +21,9 @@ import type { CollectionData, VariableData } from './types';
 // each color's base color (`base-default` in Light, which is the input color unchanged); every other step
 // is generated from it. Steps that differ from the generated scale, e.g. ones edited by hand in Figma,
 // become `overrides`. Values that match the defaults are left out, like the theme builder does.
+// The colors are worked out by the CLI's `configColorsFromValues`, which reading theme CSS uses too.
 
 type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
-type Overrides = NonNullable<ThemeConfig['overrides']>;
-type SchemeColors = Partial<Record<ColorScheme, CssColor>>;
 
 export type ExportedConfig = {
   config: ExternalConfigSchemaInput & { $schema: string };
@@ -34,7 +32,6 @@ export type ExportedConfig = {
 };
 
 const SCHEMES: ColorScheme[] = ['light', 'dark'];
-const BASE_STEP = semanticColorSpec['base-default'].name;
 // Variables are named by step number today (`<theme>/<color>/12`). Step names (`<theme>/<color>/base-default`)
 // are planned, so both are read, and the export itself works with step names.
 const STEP_NAME_BY_NUMBER = new Map(
@@ -44,10 +41,12 @@ const STEP_NAME_BY_NUMBER = new Map(
   ]),
 );
 const KNOWN_COLLECTIONS = new Set<string>(Object.values(FIGMA_COLLECTION));
-// Non-numbered colors in each theme's part of the Color scheme collection.
-const LINK_VISITED = 'link/visited';
-const FOCUS_INNER = 'focus/inner';
-const FOCUS_OUTER = 'focus/outer';
+// The colors in each theme's part of the Color scheme collection that aren't steps.
+const OTHER_COLORS: Record<string, keyof Omit<ThemeColorValues, 'scales'>> = {
+  'link/visited': 'linkVisited',
+  'focus/inner': 'focusInner',
+  'focus/outer': 'focusOuter',
+};
 
 /**
  * Creates the config that an import of the given collections came from. Throws if the collections aren't
@@ -86,15 +85,14 @@ export function exportConfig(collections: CollectionData[]): ExportedConfig {
   const themes: Record<string, ThemeConfig> = {};
 
   for (const themeName of themeCollection.modes) {
-    const colorValues = readThemeColors(
-      themeName,
-      colorScheme,
-      schemeModes,
-      resolve,
-      warnings,
+    const { warnings: colorWarnings, ...colors } = configColorsFromValues(
+      readThemeColors(themeName, colorScheme, schemeModes, resolve, warnings),
+    );
+    warnings.push(
+      ...colorWarnings.map((warning) => `Theme "${themeName}": ${warning}`),
     );
     themes[themeName] = {
-      ...extractColors(themeName, colorValues, warnings),
+      ...colors,
       ...extractTypography(themeName, resolve),
       ...extractBorderRadius(themeName, resolve),
     };
@@ -112,13 +110,6 @@ export function exportConfig(collections: CollectionData[]): ExportedConfig {
 }
 
 /** A theme's colors in the Color scheme collection, per color scheme. */
-type ThemeColorValues = {
-  /** Steps per color name, e.g. `accent` → `base-default` → { light, dark }. */
-  steps: Map<string, Map<SemanticColorNames, SchemeColors>>;
-  /** The colors that aren't numbered steps: link and focus. */
-  other: Map<string, SchemeColors>;
-};
-
 function readThemeColors(
   themeName: string,
   colorScheme: CollectionData,
@@ -127,21 +118,20 @@ function readThemeColors(
   warnings: string[],
 ): ThemeColorValues {
   const prefix = `${themeName}/`;
-  const steps = new Map<string, Map<SemanticColorNames, SchemeColors>>();
-  const other = new Map<string, SchemeColors>();
+  const values: ThemeColorValues = { scales: new Map() };
 
   for (const variable of colorScheme.variables) {
     if (!variable.name.startsWith(prefix)) {
       continue;
     }
 
-    const values: SchemeColors = {};
+    const schemeColors: SchemeColors = {};
     for (const scheme of SCHEMES) {
       const hex = toHex(
         resolve(colorScheme.name, variable.name, schemeModes[scheme]),
       );
       if (hex) {
-        values[scheme] = hex;
+        schemeColors[scheme] = hex;
       }
     }
 
@@ -149,12 +139,11 @@ function readThemeColors(
     const [, colorName, step] = /^(.+)\/([^/]+)$/.exec(name) ?? [];
     const stepName = step && toStepName(step);
     if (colorName && stepName) {
-      if (!steps.has(colorName)) {
-        steps.set(colorName, new Map());
-      }
-      steps.get(colorName)?.set(stepName, values);
-    } else if ([LINK_VISITED, FOCUS_INNER, FOCUS_OUTER].includes(name)) {
-      other.set(name, values);
+      const steps = values.scales.get(colorName) ?? new Map();
+      values.scales.set(colorName, steps);
+      steps.set(stepName, schemeColors);
+    } else if (name in OTHER_COLORS) {
+      values[OTHER_COLORS[name]] = schemeColors;
     } else {
       warnings.push(
         `Variable "${colorScheme.name}/${variable.name}" isn't created by an import, so it isn't in the config.`,
@@ -162,86 +151,7 @@ function readThemeColors(
     }
   }
 
-  return { steps, other };
-}
-
-function extractColors(
-  themeName: string,
-  { steps, other }: ThemeColorValues,
-  warnings: string[],
-): Pick<ThemeConfig, 'colors' | 'overrides'> {
-  const colors: Record<string, CssColor> = {};
-  const overrides: Overrides = {};
-
-  for (const [colorName, colorSteps] of steps) {
-    const base = colorSteps.get(BASE_STEP)?.light;
-    if (!base) {
-      warnings.push(
-        `Theme "${themeName}": color "${colorName}" has no base color (${BASE_STEP} in Light), so it isn't in the config.`,
-      );
-      continue;
-    }
-
-    // Severity colors are always generated, so they are only in the config when they aren't the default.
-    if (isSeverityColor(colorName)) {
-      if (!isSameColor(base, severityColors[colorName])) {
-        overrides.severity = { ...overrides.severity, [colorName]: base };
-      }
-    } else {
-      colors[colorName] = base;
-    }
-
-    // Steps that differ from the scale generated from the base color are overrides.
-    for (const scheme of SCHEMES) {
-      const scale = generateColorScale(base, scheme);
-      for (const [stepName, step] of Object.entries(scale) as [
-        SemanticColorNames,
-        (typeof scale)[SemanticColorNames],
-      ][]) {
-        const actual = colorSteps.get(stepName)?.[scheme];
-        if (actual && !isSameColor(actual, step.hex)) {
-          overrides.colors ??= {};
-          overrides.colors[colorName] ??= {};
-          overrides.colors[colorName][stepName] = {
-            ...overrides.colors[colorName][stepName],
-            [scheme]: actual,
-          };
-        }
-      }
-    }
-  }
-
-  const linkVisited = diffFromDefaults(
-    other.get(LINK_VISITED),
-    (scheme) =>
-      generateColorScale(visitedLinkColor, scheme)['base-default'].hex,
-  );
-  if (linkVisited) {
-    overrides.linkVisited = linkVisited;
-  }
-
-  // The focus colors default to neutral's background and text colors, after any overrides,
-  // which are the values already in Figma.
-  const neutral = steps.get('neutral');
-  const focusInner = diffFromDefaults(
-    other.get(FOCUS_INNER),
-    (scheme) => neutral?.get('background-default')?.[scheme],
-  );
-  const focusOuter = diffFromDefaults(
-    other.get(FOCUS_OUTER),
-    (scheme) => neutral?.get('text-default')?.[scheme],
-  );
-  if (focusInner || focusOuter) {
-    overrides.focus = {
-      ...(focusInner && { inner: focusInner }),
-      ...(focusOuter && { outer: focusOuter }),
-    };
-  }
-
-  return {
-    colors,
-    ...(Object.keys(overrides).length > 0 && { overrides }),
-  };
+  return values;
 }
 
 function extractTypography(
@@ -262,22 +172,6 @@ function extractBorderRadius(
   return typeof base === 'number' && base !== defaultBorderRadius
     ? { borderRadius: base }
     : {};
-}
-
-/** The colors that differ from their defaults, or undefined if none do. */
-function diffFromDefaults(
-  values: SchemeColors | undefined,
-  getDefault: (scheme: ColorScheme) => CssColor | undefined,
-): SchemeColors | undefined {
-  const diff: SchemeColors = {};
-  for (const scheme of SCHEMES) {
-    const actual = values?.[scheme];
-    const fallback = getDefault(scheme);
-    if (actual && (!fallback || !isSameColor(actual, fallback))) {
-      diff[scheme] = actual;
-    }
-  }
-  return Object.keys(diff).length > 0 ? diff : undefined;
 }
 
 type Resolve = (
@@ -355,14 +249,6 @@ function toStepName(step: string): SemanticColorNames | undefined {
     STEP_NAME_BY_NUMBER.get(step) ??
     (step in semanticColorSpec ? (step as SemanticColorNames) : undefined)
   );
-}
-
-function isSeverityColor(name: string): name is SeverityColorNames {
-  return name in severityColors;
-}
-
-function isSameColor(a: string, b: string): boolean {
-  return a.toLowerCase() === b.toLowerCase();
 }
 
 /** Figma's 0-1 RGBA as lowercase hex, with the alpha only when the color isn't opaque. */

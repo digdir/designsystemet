@@ -2,6 +2,7 @@ import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { exportConfig } from './config-export/export-config';
 import { readCollections } from './config-export/read-collections';
+import { configFromCss } from './config-import/config-from-css';
 import { createTokenModel } from './config-import/create-token-model';
 import {
   IMPORT_STEPS,
@@ -27,6 +28,24 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     // Only open web pages, so the UI can't be used to open other kinds of URLs.
     if (msg.url.startsWith('https://')) {
       figma.openExternal(msg.url);
+    }
+    return;
+  }
+
+  if (msg.type === 'convert-css') {
+    try {
+      const { config, warnings } = configFromCss(msg.css, msg.fileName);
+      postMessage('convert-css-result', {
+        status: 'success',
+        config,
+        warnings,
+      });
+    } catch (error) {
+      postMessage('convert-css-result', {
+        status: 'error',
+        message: error instanceof Error ? error.message : String(error),
+      });
+      console.error('Error converting CSS:', error);
     }
     return;
   }

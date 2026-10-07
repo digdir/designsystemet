@@ -44,7 +44,14 @@ export {
   type ExternalConfigSchemaInput,
   externalConfigSchema,
 } from './schemas/schema.ts';
+export {
+  type ConfigColors,
+  configColorsFromValues,
+  type SchemeColors,
+  type ThemeColorValues,
+} from './tokens/config-colors.ts';
 export { getThemeColorScales } from './tokens/create/generators/primitives/color-scheme.ts';
 export { createSystemTokens, createTokens, getTokenSetDimensions } from './tokens/create.ts';
 export { formatThemeCSS } from './tokens/format.ts';
+export { type GeneratedConfigFromCSS, generateConfigFromCSS } from './tokens/generate-config-from-css.ts';
 export type { BorderRadiusConfig, TokenSets } from './tokens/types.ts';
