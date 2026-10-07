@@ -29,7 +29,7 @@ export function PasteView({
           >
             theme.designsystemet.no
           </Link>{' '}
-          below and click "Sync to Figma".
+          below and click "Import".
         </Field.Description>
         <Textarea value={value} onChange={(e) => onChange(e.target.value)} />
       </Field>

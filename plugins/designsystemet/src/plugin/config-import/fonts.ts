@@ -42,7 +42,7 @@ export function collectFontFamilies(specs: CollectionSpec[]): Set<string> {
 }
 
 // Throws before anything is written, so a font that isn't installed doesn't leave the file
-// half-synced when Figma fails to apply it to a bound text style.
+// half-imported when Figma fails to apply it to a bound text style.
 export function assertFontFamiliesAvailable(
   fontFamilies: Set<string>,
   fontCache: FontCache,
@@ -56,12 +56,12 @@ export function assertFontFamiliesAvailable(
   }
 
   throw new Error(
-    `${missing.length === 1 ? 'Font' : 'Fonts'} not available in Figma: ${missing.join(', ')}. Install or enable the ${missing.length === 1 ? 'font' : 'fonts'}, or change font-family in the config, then sync again.`,
+    `${missing.length === 1 ? 'Font' : 'Fonts'} not available in Figma: ${missing.join(', ')}. Install or enable the ${missing.length === 1 ? 'font' : 'fonts'}, or change font-family in the config, then import again.`,
   );
 }
 
 // Font families the file uses now, from font-family variables and text styles. Figma applies
-// each value the sync writes to the text styles bound to it, together with the values not yet
+// each value the import writes to the text styles bound to it, together with the values not yet
 // written, so the current fonts have to be loaded as well as the new ones.
 export async function collectFontFamiliesInFile(): Promise<Set<string>> {
   const families = new Set<string>();
@@ -92,7 +92,7 @@ export async function preloadAllFonts(
 ): Promise<void> {
   // Load every available style for each font family we will use.
   // This covers styles already on bound text styles (e.g. "Bold" from a previous
-  // sync) that Figma will try to re-apply as soon as the font-family variable
+  // import) that Figma will try to re-apply as soon as the font-family variable
   // value is updated.
   for (const family of new Set(fontFamilies)) {
     const allStyles = fontCache.availableFonts.filter(

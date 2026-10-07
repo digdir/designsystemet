@@ -1,12 +1,12 @@
-// UI -> plugin: validate the pasted config, create its tokens and sync them to Figma.
-type SyncConfigToFigma = {
-  type: 'sync-config-to-figma';
+// UI -> plugin: validate the pasted config, create its tokens and import them into Figma.
+type ImportConfig = {
+  type: 'import-config';
   config: string;
 };
 
-// Plugin -> UI: sent before each step of the sync, so the UI can show progress.
-type SyncProgress = {
-  type: 'sync-progress';
+// Plugin -> UI: sent before each step of the import, so the UI can show progress.
+type ImportProgress = {
+  type: 'import-progress';
   /** 1-based number of the step that is starting. */
   step: number;
   total: number;
@@ -15,12 +15,12 @@ type SyncProgress = {
   note?: string;
 };
 
-// Plugin -> UI: sent once when the sync has finished or failed.
-type SyncResult = {
-  type: 'sync-result';
+// Plugin -> UI: sent once when the import has finished or failed.
+type ImportResult = {
+  type: 'import-result';
   status: 'success' | 'error';
   message: string;
-  // What the sync did (created, renamed, deleted, ...).
+  // What the import did (created, renamed, deleted, ...).
   info?: string[];
   // What was skipped or could not be applied (unresolved aliases, skipped styles, rejected scopes, ...).
   warnings?: string[];
@@ -50,9 +50,9 @@ type OpenExternal = {
 };
 
 export type FigmaMessages =
-  | SyncConfigToFigma
-  | SyncProgress
-  | SyncResult
+  | ImportConfig
+  | ImportProgress
+  | ImportResult
   | ExportConfig
   | ExportConfigResult
   | OpenExternal;

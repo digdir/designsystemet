@@ -1,4 +1,4 @@
-// Types shared by config-sync and config-export.
+// Types shared by config-import and config-export.
 
 // A Figma variable's value in one mode: a raw value, or an alias to another variable by
 // collection and name.

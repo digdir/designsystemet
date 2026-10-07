@@ -8,8 +8,8 @@ export type Progress = {
   note?: string;
 };
 
-// Shown during the sync: which step is running, and how far along the sync is.
-export function SyncView({
+// Shown during the import: which step is running, and how far along the import is.
+export function ImportView({
   progress,
 }: {
   progress: Progress | null;
@@ -18,7 +18,7 @@ export function SyncView({
     <div className='status-view' role='status'>
       <Spinner aria-hidden data-size='lg' />
       <Heading level={2} data-size='sm'>
-        Syncing to Figma
+        Importing to Figma
       </Heading>
       {progress ? (
         <>

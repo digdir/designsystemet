@@ -1,11 +1,11 @@
 import type { CollectionSpec } from './collection-specs';
-import { changedFields, type SyncLog } from './log';
+import { changedFields, type ImportLog } from './log';
 import type { Pause } from './pause';
 import { normalizeScopes } from './scopes';
 
 export async function syncCollections(
   specs: CollectionSpec[],
-  log: SyncLog,
+  log: ImportLog,
   pause: Pause,
 ): Promise<Map<string, VariableCollection>> {
   const existingCollections =
@@ -34,7 +34,7 @@ export async function syncCollections(
 async function ensureModes(
   collection: VariableCollection,
   desiredModeNames: string[],
-  log: SyncLog,
+  log: ImportLog,
   pause: Pause,
 ): Promise<void> {
   if (desiredModeNames.length === 0) {
@@ -55,7 +55,7 @@ async function ensureModes(
       collection.addMode(modeName);
       log.info.push(`Created mode ${modeName} in ${collection.name}`);
       // Each new mode gets a value for every variable in the collection, so this can be slow.
-      await pause(() => `Syncing modes in ${collection.name}`);
+      await pause(() => `Importing modes in ${collection.name}`);
     }
   }
 
@@ -63,7 +63,7 @@ async function ensureModes(
     if (!desiredModeNames.includes(mode.name) && collection.modes.length > 1) {
       collection.removeMode(mode.modeId);
       log.info.push(`Deleted mode ${mode.name} from ${collection.name}`);
-      await pause(() => `Syncing modes in ${collection.name}`);
+      await pause(() => `Importing modes in ${collection.name}`);
     }
   }
 }
@@ -71,11 +71,11 @@ async function ensureModes(
 export async function syncVariables(
   specs: CollectionSpec[],
   collectionMap: Map<string, VariableCollection>,
-  log: SyncLog,
+  log: ImportLog,
   pause: Pause,
 ): Promise<Map<string, Variable>> {
   const allVariables = await figma.variables.getLocalVariablesAsync();
-  // Counts for the progress label shown while the sync pauses.
+  // Counts for the progress label shown while the import pauses.
   const variableCount = specs.reduce(
     (sum, spec) => sum + spec.variables.size,
     0,
@@ -92,7 +92,7 @@ export async function syncVariables(
   let variablesDone = 0;
   let valuesDone = 0;
   const variablesDetail = () =>
-    `Syncing variables (${variablesDone} of ${variableCount})`;
+    `Importing variables (${variablesDone} of ${variableCount})`;
   const valuesDetail = () => `Writing values (${valuesDone} of ${valueCount})`;
   const byCompositeKey = new Map<string, Variable>();
   const variablesByCollection = new Map<string, Map<string, Variable>>();
@@ -154,7 +154,7 @@ export async function syncVariables(
       }
 
       // Scopes and code syntax are best-effort: Figma rejects some assignments (e.g. an invalid
-      // scope combination), and that must not abort the sync before values, aliases and
+      // scope combination), and that must not abort the import before values, aliases and
       // styles are written. Log the variable and carry on.
       try {
         syncCodeSyntax(variable, desired.codeSyntax);
@@ -279,7 +279,7 @@ export async function syncVariables(
 
 type VariableSnapshot = Record<string, unknown>;
 
-// The parts of a variable the sync writes, keyed by how they are named in the log.
+// The parts of a variable the import writes, keyed by how they are named in the log.
 function snapshotVariable(
   variable: Variable,
   collection: VariableCollection,

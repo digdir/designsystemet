@@ -2,7 +2,7 @@
 // Long loops call the pause function: once `budgetMs` of work has passed it waits briefly,
 // so Figma can redraw and the UI can show progress, and then the loop carries on.
 
-/** Pauses if the sync has been working for a while. `detail` gives the progress label to show. */
+/** Pauses if the import has been working for a while. `detail` gives the progress label to show. */
 export type Pause = (detail?: () => string) => Promise<void>;
 
 export function createPause(

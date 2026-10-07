@@ -17,8 +17,8 @@ import type {
 import { inferVariableName, pathToFigmaName } from './utils';
 import { mapTokenTypeToVariableType } from './variable-values';
 
-// Builds the model used by the Figma sync and the resolver.
-// This stays on the plugin side; the UI only receives the sync's progress and result.
+// Builds the model used by the Figma import and the resolver.
+// This stays on the plugin side; the UI only receives the import's progress and result.
 export function buildTokenModel({
   tokenSets,
   $themes,
