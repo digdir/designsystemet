@@ -42,11 +42,12 @@ const STEP_NAME_BY_NUMBER = new Map(
 );
 const KNOWN_COLLECTIONS = new Set<string>(Object.values(FIGMA_COLLECTION));
 // The colors in each theme's part of the Color scheme collection that aren't steps.
-const OTHER_COLORS: Record<string, keyof Omit<ThemeColorValues, 'scales'>> = {
-  'link/visited': 'linkVisited',
-  'focus/inner': 'focusInner',
-  'focus/outer': 'focusOuter',
-};
+// A Map, so a variable named e.g. `<theme>/constructor` can't match a property every object has.
+const OTHER_COLORS = new Map<string, keyof Omit<ThemeColorValues, 'scales'>>([
+  ['link/visited', 'linkVisited'],
+  ['focus/inner', 'focusInner'],
+  ['focus/outer', 'focusOuter'],
+]);
 
 /**
  * Creates the config that an import of the given collections came from. Throws if the collections aren't
@@ -138,12 +139,13 @@ function readThemeColors(
     const name = variable.name.slice(prefix.length);
     const [, colorName, step] = /^(.+)\/([^/]+)$/.exec(name) ?? [];
     const stepName = step && toStepName(step);
+    const otherColor = OTHER_COLORS.get(name);
     if (colorName && stepName) {
       const steps = values.scales.get(colorName) ?? new Map();
       values.scales.set(colorName, steps);
       steps.set(stepName, schemeColors);
-    } else if (name in OTHER_COLORS) {
-      values[OTHER_COLORS[name]] = schemeColors;
+    } else if (otherColor) {
+      values[otherColor] = schemeColors;
     } else {
       warnings.push(
         `Variable "${colorScheme.name}/${variable.name}" isn't created by an import, so it isn't in the config.`,

@@ -101,6 +101,28 @@ describe('generateConfigFromCSS', () => {
     ]);
   });
 
+  it('refuses color names a config cannot have, so they cannot reach Object.prototype', () => {
+    const css = `
+      @layer ds.theme.color-scheme.light {
+        :root {
+          --ds-color-neutral-base-default: #24272b;
+          --ds-color-__proto__-base-default: #0062ba;
+          --ds-color-__proto__-background-tinted: #ff0000;
+          --ds-color-constructor-base-default: #0d7a5f;
+          constructor: #ffffff;
+        }
+      }
+    `;
+
+    const { config, warnings } = generateConfigFromCSS({ test: css });
+
+    expect(({} as Record<string, unknown>)['background-tinted']).toBeUndefined();
+    expect(config.themes?.test?.colors).toEqual({ neutral: '#24272b', constructor: '#0d7a5f' });
+    expect(warnings).toEqual([
+      'Theme "test": Color "__proto__" isn\'t a valid color name (only a-z, 0-9 and -), so it isn\'t in the config.',
+    ]);
+  });
+
   it('throws for CSS that is not theme CSS', () => {
     expect(() => generateConfigFromCSS({ test: '.button { color: red; }' })).toThrow(
       'Theme "test" isn\'t theme CSS built by Designsystemet: it has no "ds.theme.color-scheme.light" layer.',

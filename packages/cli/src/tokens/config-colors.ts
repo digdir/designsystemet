@@ -2,6 +2,7 @@ import { generateColorScale } from '../colors/scale.ts';
 import type { ColorScheme, CssColor, SemanticColorNames, SeverityColorNames } from '../colors/types.ts';
 import { severityColors, visitedLinkColor } from '../schemas/defaults.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
+import { colorNameSchema } from '../schemas/schema-color.ts';
 
 type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
 type Overrides = NonNullable<ThemeConfig['overrides']>;
@@ -38,10 +39,19 @@ export function configColorsFromValues({
   focusOuter,
 }: ThemeColorValues): ConfigColors {
   const warnings: string[] = [];
-  const colors: Record<string, CssColor> = {};
+  // Maps, as the color names come from the input: assigning them as object keys could reach Object.prototype
+  // through a name like `__proto__`. They become objects with Object.fromEntries, which only adds own properties.
+  const colors = new Map<string, CssColor>();
+  const severity = new Map<SeverityColorNames, CssColor>();
+  const colorOverrides = new Map<string, Map<SemanticColorNames, SchemeColors>>();
   const overrides: Overrides = {};
 
   for (const [colorName, steps] of scales) {
+    if (!colorNameSchema.safeParse(colorName).success) {
+      warnings.push(`Color "${colorName}" isn't a valid color name (only a-z, 0-9 and -), so it isn't in the config.`);
+      continue;
+    }
+
     const base = steps.get('base-default')?.light;
     if (!base) {
       warnings.push(`Color "${colorName}" has no base-default color in light, so it isn't in the config.`);
@@ -51,10 +61,10 @@ export function configColorsFromValues({
     // Severity colors are always generated, so they are only in the config when they aren't the default.
     if (isSeverityColor(colorName)) {
       if (!isSameColor(base, severityColors[colorName])) {
-        overrides.severity = { ...overrides.severity, [colorName]: base };
+        severity.set(colorName, base);
       }
     } else {
-      colors[colorName] = base;
+      colors.set(colorName, base);
     }
 
     for (const scheme of SCHEMES) {
@@ -65,12 +75,21 @@ export function configColorsFromValues({
       ][]) {
         const actual = steps.get(stepName)?.[scheme];
         if (actual && !isSameColor(actual, step.hex)) {
-          overrides.colors ??= {};
-          overrides.colors[colorName] ??= {};
-          overrides.colors[colorName][stepName] = { ...overrides.colors[colorName][stepName], [scheme]: actual };
+          const stepOverrides = colorOverrides.get(colorName) ?? new Map<SemanticColorNames, SchemeColors>();
+          colorOverrides.set(colorName, stepOverrides);
+          stepOverrides.set(stepName, { ...stepOverrides.get(stepName), [scheme]: actual });
         }
       }
     }
+  }
+
+  if (colorOverrides.size > 0) {
+    overrides.colors = Object.fromEntries(
+      [...colorOverrides].map(([colorName, stepOverrides]) => [colorName, Object.fromEntries(stepOverrides)]),
+    );
+  }
+  if (severity.size > 0) {
+    overrides.severity = Object.fromEntries(severity);
   }
 
   const linkVisitedOverride = diffFromDefaults(
@@ -94,7 +113,7 @@ export function configColorsFromValues({
   }
 
   return {
-    colors,
+    colors: Object.fromEntries(colors),
     ...(Object.keys(overrides).length > 0 && { overrides }),
     warnings,
   };
@@ -117,7 +136,8 @@ function diffFromDefaults(
 }
 
 function isSeverityColor(name: string): name is SeverityColorNames {
-  return name in severityColors;
+  // Own properties only, so names every object has, like `constructor`, aren't severity colors.
+  return Object.hasOwn(severityColors, name);
 }
 
 function isSameColor(a: string, b: string): boolean {
