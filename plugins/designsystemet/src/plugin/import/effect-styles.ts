@@ -1,5 +1,11 @@
 import { parseColorValue } from './color';
 import { changedFields, type ImportLog } from './log';
+import {
+  isManaged,
+  keptWarning,
+  markManaged,
+  splitLeftovers,
+} from './ownership';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
 import { parseNumber } from './utils';
@@ -19,11 +25,23 @@ export async function syncEffectStyles(
   const existing = await figma.getLocalEffectStylesAsync();
   const desiredNames = new Set(desired.map((token) => token.figmaName));
 
-  for (const style of existing) {
-    if (style.name.startsWith('shadow/') && !desiredNames.has(style.name)) {
-      style.remove();
-      log.info.push(`Deleted effect style ${style.name}`);
-    }
+  // Only styles the import created are deleted; see ownership.ts.
+  const leftovers = splitLeftovers(
+    existing.filter((style) => style.name.startsWith('shadow/')),
+    desiredNames,
+    { name: (style) => style.name, managed: isManaged },
+  );
+  for (const style of leftovers.remove) {
+    style.remove();
+    log.info.push(`Deleted effect style ${style.name}`);
+  }
+  if (leftovers.keep.length > 0) {
+    log.warnings.push(
+      keptWarning(
+        { one: 'effect style', many: 'effect styles' },
+        leftovers.keep.map((style) => style.name),
+      ),
+    );
   }
 
   for (const token of desired) {
@@ -48,6 +66,8 @@ export async function syncEffectStyles(
       style.name = styleName;
       log.info.push(`Created effect style ${styleName}`);
     }
+    // An existing style with a name from the config becomes the import's too, as it's updated from the config.
+    markManaged(style);
 
     style.effects = resolved
       .map((shadow) => toShadowEffect(shadow))

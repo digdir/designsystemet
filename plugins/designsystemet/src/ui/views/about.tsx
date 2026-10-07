@@ -19,12 +19,16 @@ export function AboutView(): React.JSX.Element {
         </List.Item>
         <List.Item>
           Updates the ones that already exist, matched by name, so layers using
-          them stay connected.
+          them stay connected. Values changed by hand are replaced with the ones
+          in the config.
         </List.Item>
         <List.Item>
-          Deletes modes and variables in those collections that aren't in the
-          config, including ones added by hand. The same goes for text styles
-          under typography/ and effect styles under shadow/.
+          Deletes modes, variables and styles that an earlier import created and
+          that aren't in the config any more.
+        </List.Item>
+        <List.Item>
+          Keeps modes, variables and styles added by hand, and lists the ones
+          that aren't in the config after the import.
         </List.Item>
         <List.Item>Leaves other collections and styles alone.</List.Item>
       </List.Unordered>

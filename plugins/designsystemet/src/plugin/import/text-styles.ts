@@ -1,6 +1,12 @@
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
 import { changedFields, type ImportLog } from './log';
+import {
+  isManaged,
+  keptWarning,
+  markManaged,
+  splitLeftovers,
+} from './ownership';
 import type { Pause } from './pause';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
@@ -25,11 +31,23 @@ export async function syncTextStyles(
   const existing = await figma.getLocalTextStylesAsync();
   const desiredNames = new Set(desired.map((token) => token.figmaName));
 
-  for (const style of existing) {
-    if (style.name.startsWith('typography/') && !desiredNames.has(style.name)) {
-      style.remove();
-      log.info.push(`Deleted text style ${style.name}`);
-    }
+  // Only styles the import created are deleted; see ownership.ts.
+  const leftovers = splitLeftovers(
+    existing.filter((style) => style.name.startsWith('typography/')),
+    desiredNames,
+    { name: (style) => style.name, managed: isManaged },
+  );
+  for (const style of leftovers.remove) {
+    style.remove();
+    log.info.push(`Deleted text style ${style.name}`);
+  }
+  if (leftovers.keep.length > 0) {
+    log.warnings.push(
+      keptWarning(
+        { one: 'text style', many: 'text styles' },
+        leftovers.keep.map((style) => style.name),
+      ),
+    );
   }
 
   for (const [index, token] of desired.entries()) {
@@ -79,6 +97,8 @@ export async function syncTextStyles(
       style.name = styleName;
       log.info.push(`Created text style ${styleName}`);
     }
+    // An existing style with a name from the config becomes the import's too, as it's updated from the config.
+    markManaged(style);
 
     style.fontName = fontName;
     style.fontSize = fontSize;
