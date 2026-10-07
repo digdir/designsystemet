@@ -68,7 +68,7 @@ export function ConfigPaste() {
           onChange={(e) => setConfigText(e.target.value)}
           placeholder={t('configPaste.placeholder')}
           rows={15}
-          error={error ? error : undefined}
+          error={error ? <span lang='en'>{error}</span> : undefined}
           autoFocus
           suppressHydrationWarning
         />
