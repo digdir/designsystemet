@@ -22,11 +22,12 @@ const TYPOGRAPHY_LAYER = /^ds\.theme\.typography\.(.+)$/;
 const HEX_COLOR = /^#([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i;
 // Longest first, so a color's step is matched by its full name.
 const STEP_NAMES = [...semanticColorNames].sort((a, b) => b.length - a.length);
-const OTHER_COLORS: Record<string, keyof Omit<ThemeColorValues, 'scales'>> = {
-  '--ds-link-color-visited': 'linkVisited',
-  '--ds-color-focus-inner': 'focusInner',
-  '--ds-color-focus-outer': 'focusOuter',
-};
+// A Map, so a property like `constructor` in the CSS can't match a property every object has.
+const OTHER_COLORS = new Map<string, keyof Omit<ThemeColorValues, 'scales'>>([
+  ['--ds-link-color-visited', 'linkVisited'],
+  ['--ds-color-focus-inner', 'focusInner'],
+  ['--ds-color-focus-outer', 'focusOuter'],
+]);
 
 /**
  * Creates the config that theme CSS files built by `tokens build` (e.g. `designsystemet.css`) came from.
@@ -120,7 +121,7 @@ function readThemeCSS(themeName: string, css: string): ThemeConfig & { warnings:
 
 /** Adds a color declaration to the values. Returns a warning if it's a color that can't be read. */
 function readColor(values: ThemeColorValues, scheme: ColorScheme, prop: string, value: string): string | undefined {
-  const other = OTHER_COLORS[prop];
+  const other = OTHER_COLORS.get(prop);
   const [, name = ''] = /^--ds-color-(.+)$/.exec(prop) ?? [];
   const step = other ? undefined : STEP_NAMES.find((step) => name.endsWith(`-${step}`));
   if (!other && !step) {
