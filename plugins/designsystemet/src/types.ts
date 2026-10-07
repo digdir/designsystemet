@@ -29,12 +29,17 @@ type ImportResult = {
 // UI -> plugin: create a config from theme CSS built by Designsystemet, e.g. designsystemet.css.
 type ConvertCss = {
   type: 'convert-css';
+  /** One per theme, in the order the themes are in the config. */
+  files: CssFile[];
+};
+
+export type CssFile = {
   css: string;
   /** The uploaded file's name, which names the theme. Left out for pasted CSS. */
   fileName?: string;
 };
 
-// Plugin -> UI: the config created from the CSS, or why it couldn't be created.
+// Plugin -> UI: the config created from the CSS files, or why it couldn't be created.
 type ConvertCssResult = {
   type: 'convert-css-result';
   status: 'success' | 'error';
