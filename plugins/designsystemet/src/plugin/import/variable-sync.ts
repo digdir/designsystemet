@@ -1,5 +1,14 @@
 import type { CollectionSpec } from './collection-specs';
 import { changedFields, type ImportLog } from './log';
+import {
+  isManaged,
+  keptWarning,
+  managedModeIds,
+  markManaged,
+  planModes,
+  setManagedModeIds,
+  splitLeftovers,
+} from './ownership';
 import type { Pause } from './pause';
 import { normalizeScopes } from './scopes';
 
@@ -31,41 +40,51 @@ export async function syncCollections(
   return result;
 }
 
+// Only modes the import created are renamed or deleted; see ownership.ts.
 async function ensureModes(
   collection: VariableCollection,
   desiredModeNames: string[],
   log: ImportLog,
   pause: Pause,
 ): Promise<void> {
-  if (desiredModeNames.length === 0) {
-    return;
-  }
+  const plan = planModes(
+    collection.modes,
+    desiredModeNames,
+    managedModeIds(collection),
+  );
+  const managed = new Set(plan.managed);
 
-  const existing = collection.modes.slice();
-
-  if (existing.length === 1 && existing[0].name !== desiredModeNames[0]) {
-    collection.renameMode(existing[0].modeId, desiredModeNames[0]);
+  if (plan.rename) {
+    collection.renameMode(plan.rename.mode.modeId, plan.rename.to);
     log.info.push(
-      `Renamed mode ${existing[0].name} -> ${desiredModeNames[0]} in ${collection.name}`,
+      `Renamed mode ${plan.rename.mode.name} -> ${plan.rename.to} in ${collection.name}`,
     );
   }
 
-  for (const modeName of desiredModeNames) {
-    if (!collection.modes.some((mode) => mode.name === modeName)) {
-      collection.addMode(modeName);
-      log.info.push(`Created mode ${modeName} in ${collection.name}`);
-      // Each new mode gets a value for every variable in the collection, so this can be slow.
-      await pause(() => `Importing modes in ${collection.name}`);
-    }
+  for (const modeName of plan.add) {
+    managed.add(collection.addMode(modeName));
+    log.info.push(`Created mode ${modeName} in ${collection.name}`);
+    // Each new mode gets a value for every variable in the collection, so this can be slow.
+    await pause(() => `Importing modes in ${collection.name}`);
   }
 
-  for (const mode of collection.modes.slice()) {
-    if (!desiredModeNames.includes(mode.name) && collection.modes.length > 1) {
-      collection.removeMode(mode.modeId);
-      log.info.push(`Deleted mode ${mode.name} from ${collection.name}`);
-      await pause(() => `Importing modes in ${collection.name}`);
-    }
+  for (const mode of plan.remove) {
+    collection.removeMode(mode.modeId);
+    log.info.push(`Deleted mode ${mode.name} from ${collection.name}`);
+    await pause(() => `Importing modes in ${collection.name}`);
   }
+
+  if (plan.keep.length > 0) {
+    log.warnings.push(
+      keptWarning(
+        { one: 'mode', many: 'modes' },
+        plan.keep.map((mode) => mode.name),
+        collection.name,
+      ),
+    );
+  }
+
+  setManagedModeIds(collection, managed);
 }
 
 export async function syncVariables(
@@ -120,13 +139,25 @@ export async function syncVariables(
       existingInCollection.map((item) => [item.name, item]),
     );
 
-    for (const variable of existingInCollection) {
-      const desired = spec.variables.get(variable.name);
-      if (!desired) {
-        variable.remove();
-        log.info.push(`Deleted variable ${collection.name}/${variable.name}`);
-        await pause(variablesDetail);
-      }
+    // Only variables the import created are deleted; see ownership.ts.
+    const leftovers = splitLeftovers(
+      existingInCollection,
+      new Set(spec.variables.keys()),
+      { name: (variable) => variable.name, managed: isManaged },
+    );
+    for (const variable of leftovers.remove) {
+      variable.remove();
+      log.info.push(`Deleted variable ${collection.name}/${variable.name}`);
+      await pause(variablesDetail);
+    }
+    if (leftovers.keep.length > 0) {
+      log.warnings.push(
+        keptWarning(
+          { one: 'variable', many: 'variables' },
+          leftovers.keep.map((variable) => variable.name),
+          collection.name,
+        ),
+      );
     }
 
     const createdOrExisting = new Map<string, Variable>();
@@ -138,6 +169,14 @@ export async function syncVariables(
       let variable = variableByName.get(desired.name);
 
       if (variable && variable.resolvedType !== desired.type) {
+        // A variable made by hand is never replaced, so this one is left out of the import.
+        if (!isManaged(variable)) {
+          log.warnings.push(
+            `Skipped variable ${collection.name}/${desired.name} because a variable with that name, made by hand, is a ${variable.resolvedType} and not a ${desired.type}`,
+          );
+          variablesDone++;
+          continue;
+        }
         variable.remove();
         log.info.push(
           `Deleted variable ${collection.name}/${desired.name} because type changed to ${desired.type}`,
@@ -190,6 +229,9 @@ export async function syncVariables(
         await pause(variablesDetail);
       }
 
+      // Marks a new variable as the import's. An existing one with a name from the config, e.g. from an
+      // import before marking existed, becomes the import's too, as it's updated from the config.
+      markManaged(variable);
       createdOrExisting.set(desired.name, variable);
       byCompositeKey.set(`${collection.name}::${desired.name}`, variable);
       variablesDone++;
