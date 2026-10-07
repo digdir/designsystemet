@@ -16,9 +16,36 @@ async function buildThemeCSS(name: string, input: ThemeInput): Promise<string> {
   return files.map((file) => file.output).join('\n');
 }
 
-beforeAll(() => {
+// A theme with every kind of color override, a font family and a border radius.
+const themeWithOverrides: ThemeInput = {
+  colors: { accent: '#0062ba', 'my-brand': '#5b3fa0', neutral: '#24272b' },
+  typography: { fontFamily: 'IBM Plex Sans' },
+  borderRadius: 8,
+  overrides: {
+    colors: {
+      accent: { 'background-tinted': { light: '#ff0000' } },
+      'my-brand': { 'text-default': { light: '#111111', dark: '#eeeeee' } },
+    },
+    severity: { danger: '#aa0000' },
+    linkVisited: { light: '#123456' },
+    focus: { outer: { dark: '#abcdef' } },
+  },
+};
+// A second theme with the same color names, as every theme in a config needs.
+const plainTheme: ThemeInput = {
+  colors: { accent: '#0d7a5f', 'my-brand': '#8a1c4a', neutral: '#1e2b3c' },
+  borderRadius: 0,
+};
+
+const builtCSS: Record<string, string> = {};
+
+// Building theme CSS takes a few seconds per theme, more on a busy CI runner, so each theme is built once
+// here with a timeout to match, rather than in the tests.
+beforeAll(async () => {
   vi.spyOn(console, 'log').mockImplementation(() => {});
-});
+  builtCSS.withOverrides = await buildThemeCSS('with-overrides', themeWithOverrides);
+  builtCSS.plain = await buildThemeCSS('plain', plainTheme);
+}, 30_000);
 
 describe('generateConfigFromCSS', () => {
   it('reads designsystemet.css back to the config it is built from', () => {
@@ -33,38 +60,20 @@ describe('generateConfigFromCSS', () => {
     expect(warnings).toEqual([]);
   });
 
-  it('reads back a theme with overrides, a font family and a border radius', async () => {
-    const theme: ThemeInput = {
-      colors: { accent: '#0062ba', 'my-brand': '#5b3fa0', neutral: '#24272b' },
-      typography: { fontFamily: 'IBM Plex Sans' },
-      borderRadius: 8,
-      overrides: {
-        colors: {
-          accent: { 'background-tinted': { light: '#ff0000' } },
-          'my-brand': { 'text-default': { light: '#111111', dark: '#eeeeee' } },
-        },
-        severity: { danger: '#aa0000' },
-        linkVisited: { light: '#123456' },
-        focus: { outer: { dark: '#abcdef' } },
-      },
-    };
+  it('reads back a theme with overrides, a font family and a border radius', () => {
+    const { config, warnings } = generateConfigFromCSS({ 'with-overrides': builtCSS.withOverrides });
 
-    const { config, warnings } = generateConfigFromCSS({ test: await buildThemeCSS('test', theme) });
-
-    expect(config.themes).toEqual({ test: theme });
+    expect(config.themes).toEqual({ 'with-overrides': themeWithOverrides });
     expect(warnings).toEqual([]);
   });
 
-  it('reads several themes', async () => {
-    const first: ThemeInput = { colors: { accent: '#0062ba', neutral: '#24272b' } };
-    const second: ThemeInput = { colors: { accent: '#0d7a5f', neutral: '#1e2b3c' }, borderRadius: 0 };
-
+  it('reads several themes', () => {
     const { config } = generateConfigFromCSS({
-      first: await buildThemeCSS('first', first),
-      second: await buildThemeCSS('second', second),
+      'with-overrides': builtCSS.withOverrides,
+      plain: builtCSS.plain,
     });
 
-    expect(config.themes).toEqual({ first, second });
+    expect(config.themes).toEqual({ 'with-overrides': themeWithOverrides, plain: plainTheme });
   });
 
   it('warns about what the config cannot describe', () => {
