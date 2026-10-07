@@ -1,6 +1,6 @@
 import type { ValueSpec } from '../types';
 
-// The variables in a Figma file as plain data. Extracting a config works on this instead of the
+// The variables in a Figma file as plain data. Exporting a config works on this instead of the
 // Figma API, so it can run (and be tested) without Figma; `readCollections` reads it from Figma.
 
 export type CollectionData = {

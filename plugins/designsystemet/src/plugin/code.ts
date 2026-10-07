@@ -1,7 +1,7 @@
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
-import { extractConfig } from './config-extract/extract-config';
-import { readCollections } from './config-extract/read-collections';
+import { exportConfig } from './config-export/export-config';
+import { readCollections } from './config-export/read-collections';
 import { createTokenModel } from './config-sync/create-token-model';
 import { createSyncLog } from './config-sync/log';
 import {
@@ -31,20 +31,20 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     return;
   }
 
-  if (msg.type === 'extract-config') {
+  if (msg.type === 'export-config') {
     try {
-      const { config, warnings } = extractConfig(await readCollections());
-      postMessage('extract-config-result', {
+      const { config, warnings } = exportConfig(await readCollections());
+      postMessage('export-config-result', {
         status: 'success',
         config: `${JSON.stringify(config, null, 2)}\n`,
         warnings,
       });
     } catch (error) {
-      postMessage('extract-config-result', {
+      postMessage('export-config-result', {
         status: 'error',
         message: error instanceof Error ? error.message : String(error),
       });
-      console.error('Error extracting config:', error);
+      console.error('Error exporting config:', error);
     }
     return;
   }
