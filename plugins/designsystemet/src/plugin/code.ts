@@ -15,8 +15,8 @@ const TOTAL_STEPS = 3 + IMPORT_STEPS;
 
 if (figma.editorType === 'figma') {
   figma.showUI(__html__, {
-    width: 900,
-    height: 800,
+    width: 700,
+    height: 700,
     title: 'Designsystemet',
     themeColors: true,
   });
