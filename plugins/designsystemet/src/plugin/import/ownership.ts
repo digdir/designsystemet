@@ -6,7 +6,8 @@
 // marked when the import updates them; the rest are kept and reported, as they can't be shown to be the
 // plugin's.
 
-// Plugin data is private to this plugin, so the keys only need to be unique within it.
+// Plugin data is private to this plugin, so the keys only need to be unique within it. Values are strings,
+// so a variable or style the import manages has `managed` set to 'true'; others have no value ('').
 const MANAGED_KEY = 'managed';
 const MODES_KEY = 'modes';
 // The mode Figma gives a new collection.
@@ -17,12 +18,12 @@ type Mode = { modeId: string; name: string };
 
 /** Whether the import created this variable or style, or took it over from an earlier import. */
 export function isManaged(item: PluginDataItem): boolean {
-  return item.getPluginData(MANAGED_KEY) === '1';
+  return item.getPluginData(MANAGED_KEY) === 'true';
 }
 
 export function markManaged(item: PluginDataItem): void {
   if (!isManaged(item)) {
-    item.setPluginData(MANAGED_KEY, '1');
+    item.setPluginData(MANAGED_KEY, 'true');
   }
 }
 
