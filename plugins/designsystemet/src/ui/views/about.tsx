@@ -4,7 +4,7 @@ import { postToPlugin } from '../post-to-plugin';
 const SLACK_URL = 'https://www.designsystemet.no/slack';
 const FIGMA_PRICING_URL = 'https://www.figma.com/pricing/';
 
-// Explains what an import does to the file. Opened from the paste view.
+// Explains what an import does to the file. Opened from the import view.
 export function AboutView(): React.JSX.Element {
   return (
     <div className='about-view'>
