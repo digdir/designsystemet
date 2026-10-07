@@ -184,7 +184,23 @@ function resolveExpression(
     return null;
   }
 
-  if (!/^[0-9+\-*/().,\sA-Za-z]+$/.test(replaced)) {
+  return evaluateMath(replaced);
+}
+
+// Numbers in token math, e.g. `4`, `0.25`, `.5` and `1e-7`. No two parts can match the same digits,
+// so long input doesn't make the matching slow.
+const MATH_NUMBER = /(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?/gi;
+// What token math is made of once its numbers are replaced with 0: operators, parentheses,
+// commas and the functions passed to it below. No names or property access, so nothing else can run.
+const MATH_WITHOUT_NUMBERS =
+  /^(?:[0+\-*/(),\s]|\b(?:min|max|floor|ceil|round)\b)*$/;
+
+/**
+ * Evaluates token math like `floor(18 / 4 * 2)`, with its references already replaced by numbers. Returns null
+ * for anything else, so text from a config that only looks like math (e.g. a font family) never runs as code.
+ */
+export function evaluateMath(expression: string): number | null {
+  if (!MATH_WITHOUT_NUMBERS.test(expression.replace(MATH_NUMBER, '0'))) {
     return null;
   }
 
@@ -195,7 +211,7 @@ function resolveExpression(
       'floor',
       'ceil',
       'round',
-      `return (${replaced})`,
+      `return (${expression})`,
     ) as (
       min: Math['min'],
       max: Math['max'],
@@ -204,7 +220,10 @@ function resolveExpression(
       round: Math['round'],
     ) => unknown;
 
-    return fn(Math.min, Math.max, Math.floor, Math.ceil, Math.round);
+    const result = fn(Math.min, Math.max, Math.floor, Math.ceil, Math.round);
+    return typeof result === 'number' && Number.isFinite(result)
+      ? result
+      : null;
   } catch {
     return null;
   }

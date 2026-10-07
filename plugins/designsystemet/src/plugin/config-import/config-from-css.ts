@@ -15,22 +15,25 @@ export function configFromCss(files: CssFile[]): {
   config: string;
   warnings: string[];
 } {
-  const themes: Record<string, string> = {};
+  // A Map, so file names like `constructor.css` can't clash with properties every object has.
+  const themes = new Map<string, string>();
   let hasUnnamedTheme = false;
 
   for (const { css, fileName } of files) {
     const fileTheme = themeNameFromFile(fileName);
     hasUnnamedTheme ||= !fileTheme;
     const themeName = fileTheme || UNNAMED_THEME;
-    if (themeName in themes) {
+    if (themes.has(themeName)) {
       throw new Error(
         `More than one file is named for the theme "${themeName}". Each file is one theme, named after the file, so rename the files to tell them apart.`,
       );
     }
-    themes[themeName] = css;
+    themes.set(themeName, css);
   }
 
-  const { config, warnings } = generateConfigFromCSS(themes);
+  const { config, warnings } = generateConfigFromCSS(
+    Object.fromEntries(themes),
+  );
   if (hasUnnamedTheme) {
     warnings.unshift(
       `The CSS doesn't name its theme, so it's called "${UNNAMED_THEME}". Rename it in the config before importing if needed.`,
