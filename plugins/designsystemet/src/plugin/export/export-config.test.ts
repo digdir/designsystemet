@@ -169,6 +169,48 @@ describe('exportConfig', () => {
     ]);
   });
 
+  it('keeps themes named like properties every object has, but warns about __proto__', async () => {
+    const colors = { accent: '#0062ba', neutral: '#24272b' };
+    // Imported with placeholder names, then renamed in the data, as if the theme modes were renamed in Figma.
+    // JSON.parse adds `__proto__` as an own property, like a mode name read from Figma.
+    const collections = JSON.parse(
+      JSON.stringify(
+        await syncedCollections({ 'name-a': { colors }, 'name-b': { colors } }),
+      )
+        .replaceAll('name-a', 'constructor')
+        .replaceAll('name-b', '__proto__'),
+    ) as CollectionData[];
+
+    const { config, warnings } = exportConfig(collections);
+
+    expect(Object.keys(config.themes ?? {})).toEqual(['constructor']);
+    expect(config.themes?.constructor).toEqual({ colors });
+    expect(warnings).toContain(
+      'Theme "__proto__" isn\'t in the config, as a config can\'t have a theme with that name. Rename the mode in the Theme collection to include it.',
+    );
+  });
+
+  it('does not read a variable named like a property every object has as a color step', async () => {
+    const collections = await syncedCollections({
+      alpha: { colors: { accent: '#0062ba', neutral: '#24272b' } },
+    });
+    collections
+      .find((c) => c.name === 'Color scheme')
+      ?.variables.push({
+        name: 'alpha/accent/constructor',
+        valuesByMode: {
+          Light: { kind: 'raw', value: { r: 1, g: 0, b: 0, a: 1 } },
+        },
+      });
+
+    const { config, warnings } = exportConfig(collections);
+
+    expect(config.themes?.alpha?.overrides).toBeUndefined();
+    expect(warnings).toContain(
+      `Variable "Color scheme/alpha/accent/constructor" isn't created by an import, so it isn't in the config.`,
+    );
+  });
+
   it('throws for a file that no config was imported into', () => {
     expect(() =>
       exportConfig([{ name: 'Colors', modes: ['Mode 1'], variables: [] }]),

@@ -36,14 +36,15 @@ export async function readCollections(): Promise<CollectionData[]> {
       variables: variables
         .filter((variable) => variable.variableCollectionId === collection.id)
         .map((variable) => {
-          const valuesByMode: Record<string, ValueSpec> = {};
-          for (const [modeId, value] of Object.entries(variable.valuesByMode)) {
-            const modeName = modeNameById.get(modeId);
-            const spec = toValueSpec(value);
-            if (modeName && spec) {
-              valuesByMode[modeName] = spec;
-            }
-          }
+          // Keyed by mode name with Object.fromEntries, which only adds own properties, so a mode named
+          // e.g. `__proto__` keeps its value.
+          const valuesByMode: Record<string, ValueSpec> = Object.fromEntries(
+            Object.entries(variable.valuesByMode).flatMap(([modeId, value]) => {
+              const modeName = modeNameById.get(modeId);
+              const spec = toValueSpec(value);
+              return modeName && spec ? [[modeName, spec]] : [];
+            }),
+          );
           return { name: variable.name, valuesByMode };
         }),
     };
