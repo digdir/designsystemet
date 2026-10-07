@@ -75,7 +75,7 @@ export async function createTokenModel(
     }
   }
 
-  await onStep('Preparing sync');
+  await onStep('Preparing import');
   const { $themes } = await createSystemTokens({
     tokenSetDimensions,
     colorNames: Array.from(semanticColorNames),

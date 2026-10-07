@@ -26,6 +26,26 @@ type ImportResult = {
   warnings?: string[];
 };
 
+// UI -> plugin: create a config from theme CSS built by Designsystemet, e.g. designsystemet.css.
+type ConvertCss = {
+  type: 'convert-css';
+  css: string;
+  /** The uploaded file's name, which names the theme. Left out for pasted CSS. */
+  fileName?: string;
+};
+
+// Plugin -> UI: the config created from the CSS, or why it couldn't be created.
+type ConvertCssResult = {
+  type: 'convert-css-result';
+  status: 'success' | 'error';
+  /** The config as formatted JSON, on success. */
+  config?: string;
+  /** What went wrong, on error. */
+  message?: string;
+  /** What is in the CSS but can't be described by the config, and so is left out of it. */
+  warnings?: string[];
+};
+
 // UI -> plugin: create a config from the variables in this file.
 type ExportConfig = {
   type: 'export-config';
@@ -53,6 +73,8 @@ export type FigmaMessages =
   | ImportConfig
   | ImportProgress
   | ImportResult
+  | ConvertCss
+  | ConvertCssResult
   | ExportConfig
   | ExportConfigResult
   | OpenExternal;
