@@ -80,20 +80,25 @@ export async function syncVariables(
     (sum, spec) => sum + spec.variables.size,
     0,
   );
-  const valueCount = specs.reduce(
+  const aliasCount = specs.reduce(
     (sum, spec) =>
       sum +
       [...spec.variables.values()].reduce(
-        (modes, variable) => modes + variable.valuesByMode.size,
+        (modes, variable) =>
+          modes +
+          [...variable.valuesByMode.values()].filter(
+            (value) => value.kind === 'alias',
+          ).length,
         0,
       ),
     0,
   );
   let variablesDone = 0;
-  let valuesDone = 0;
+  let aliasesDone = 0;
   const variablesDetail = () =>
     `Importing variables (${variablesDone} of ${variableCount})`;
-  const valuesDetail = () => `Writing values (${valuesDone} of ${valueCount})`;
+  const aliasesDetail = () =>
+    `Writing aliases (${aliasesDone} of ${aliasCount})`;
   const byCompositeKey = new Map<string, Variable>();
   const variablesByCollection = new Map<string, Map<string, Variable>>();
   const updateChecks: {
@@ -125,6 +130,9 @@ export async function syncVariables(
     }
 
     const createdOrExisting = new Map<string, Variable>();
+    const modeIdByName = new Map(
+      collection.modes.map((mode) => [mode.name, mode.modeId]),
+    );
 
     for (const desired of spec.variables.values()) {
       let variable = variableByName.get(desired.name);
@@ -171,6 +179,17 @@ export async function syncVariables(
         );
       }
 
+      // Raw values are written right away. Aliases wait for the pass below, as Figma needs
+      // an alias's target to exist, and it may be a variable that isn't created yet.
+      for (const [modeName, valueSpec] of desired.valuesByMode.entries()) {
+        const modeId = modeIdByName.get(modeName);
+        if (valueSpec.kind !== 'raw' || !modeId) {
+          continue;
+        }
+        variable.setValueForMode(modeId, valueSpec.value);
+        await pause(variablesDetail);
+      }
+
       createdOrExisting.set(desired.name, variable);
       byCompositeKey.set(`${collection.name}::${desired.name}`, variable);
       variablesDone++;
@@ -180,41 +199,7 @@ export async function syncVariables(
     variablesByCollection.set(spec.name, createdOrExisting);
   }
 
-  // Raw values are set before aliases so that every alias target already exists
-  // in Figma when the alias pass runs (Figma requires the target to exist first).
-  for (const spec of specs) {
-    const collection = collectionMap.get(spec.name);
-    const createdOrExisting = variablesByCollection.get(spec.name);
-    if (!collection || !createdOrExisting) {
-      continue;
-    }
-
-    const modeIdByName = new Map(
-      collection.modes.map((mode) => [mode.name, mode.modeId]),
-    );
-    for (const desired of spec.variables.values()) {
-      const variable = createdOrExisting.get(desired.name);
-      if (!variable) {
-        continue;
-      }
-
-      for (const [modeName, valueSpec] of desired.valuesByMode.entries()) {
-        if (valueSpec.kind !== 'raw') {
-          continue;
-        }
-
-        const modeId = modeIdByName.get(modeName);
-        if (!modeId) {
-          continue;
-        }
-
-        variable.setValueForMode(modeId, valueSpec.value);
-        valuesDone++;
-        await pause(valuesDetail);
-      }
-    }
-  }
-
+  // Every variable now exists, so aliases can be written.
   for (const spec of specs) {
     const collection = collectionMap.get(spec.name);
     const createdOrExisting = variablesByCollection.get(spec.name);
@@ -255,8 +240,8 @@ export async function syncVariables(
           modeId,
           figma.variables.createVariableAlias(targetVariable),
         );
-        valuesDone++;
-        await pause(valuesDetail);
+        aliasesDone++;
+        await pause(aliasesDetail);
       }
     }
   }
