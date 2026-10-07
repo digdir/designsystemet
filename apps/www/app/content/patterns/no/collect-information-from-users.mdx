@@ -36,6 +36,9 @@ Start med å vurdere hvilken informasjon som faktisk er nødvendig for å løse 
 - Ikke be brukeren skrive inn samme informasjon flere ganger.
 - Forklar hvorfor dere trenger informasjonen hvis det ikke er åpenbart.
 - Samle inn informasjonen så sent som mulig, når den er relevant for brukeren.
+- Plasser oppfølgingsspørsmål like under valget som utløser dem, eller om nødvendig senere i flyten.
+
+For eksempel, ikke spør om vedlegg før et valg tilsier at det kreves vedlegg, men spør gjerne om vedlegget umiddelbart etter valget som utløser kravet, det er ikke nødvendig å samle opp alle krav til vedlegg til slutt eller at du viser et generelt vedleggssteg før du vet om vedlegg er nødvendig.
 
 Dette henger sammen med [kun én gang-prinsippet (digdir.no)](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061): brukeren skal ikke måtte gi samme opplysninger flere ganger hvis virksomheten kan hente eller gjenbruke dem på en trygg og lovlig måte.
 
@@ -46,6 +49,8 @@ Ulike brukergrupper kan ha ulike behov for veiledning, fleksibilitet og støtte.
 Finn ut hvem som skal bruke løsningen, og hvilken situasjon de er i når de samler inn eller sender inn informasjon. Vurder om brukeren trenger en stegvis prosess, en kortere flyt eller støtte i et fagsystem de allerede bruker.
 
 Tilpass språk, hjelpetekster og eksempler til målgruppen. Test løsningen med brukere som ligner de faktiske målgruppene.
+
+Vis tydelig hvem brukeren er logget inn som og hvem brukeren representerer i kontekst av datainnsamlinger. Følg [mønsteret om om representasjon og innlogging](/no/patterns/representation)
 
 ## Del oppgaven i forståelige deler
 
@@ -58,7 +63,11 @@ Store skjema blir enklere å fylle ut når spørsmålene er delt inn i logiske d
 
 Hvis flere felt hører sammen, bør du bruke [Fieldset](/no/components/docs/fieldset/overview) for å gi feltene en felles overskrift og sammenheng.
 
-Sørg også for at skjemaets navn er tydelig på alle sider i flyten. Navnet bør ta utgangspunkt i brukerens mål eller forklare hva slags informasjon som samles inn.
+Sørg også for at tjenestens navn er tydelig på alle sider i flyten. Navnet bør ta utgangspunkt i brukerens mål eller forklare hva slags informasjon som samles inn. 
+
+### La brukeren ta pauser i lange prosesser
+
+I store eller sammensatte skjema bør en lagre progresjon og inntastede data underveis. Gjør det trygt for brukeren å avbryte, for å hente innformasjon og fortsette utfyllingen senere. Sørg også for at mellomlagring gjøres på en måte som ivaretar muligheten for å fortsette ved uforutsette avbrytelser som strømbrudd.
 
 ## Skriv spørsmål og ledetekster som brukeren forstår
 
@@ -97,6 +106,7 @@ Noen konkrete tiltak kan gjøre det lettere å fylle ut riktig:
 - Bruk autocomplete der feltet gjelder brukerens egne personopplysninger.
 - Vis tegnbegrensning hvis feltet har maks antall tegn.
 - Gi brukeren mulighet til å gå tilbake og endre svar.
+- Advar brukeren ved handlinger og valg som vil slette tidligere utfylt opplysninger, eller hvis de forsøker å navigere bort fra en ufullstendig økt hvor data ikke er mellomlagret.
 
 Hvis brukeren likevel gjør feil, se mønsteret for [brukerutløste feilmeldinger](/no/patterns/errors).
 
@@ -126,6 +136,7 @@ Hovedregelen er at all informasjon, kvitteringer, status og svar skal vises dire
 - **Sett tydelige forventninger til videre saksgang:** Ved manuell saksbehandling må du oppgi forventet saksbehandlingstid, hvem som behandler saken, og hvordan brukeren varsles ved oppdateringer.
 - **Gjør det enkelt å ettersende:** Forklar hvordan brukeren kan supplere med ny informasjon eller dokumentasjon, og hvilke frister som gjelder.
 - **Skap en sammenhengende dialog:** Unngå at oppfølgingen stykkes opp i løsrevne brev, e-poster eller meldinger uten kontekst. Bruk gjerne nasjonale fellesløsninger som **[Dialogporten (digdir.no)](https://samarbeid.digdir.no/dataaltinnno/dialogporten/2940)** for å samle status, meldinger, tidslinje og videre handlinger i én strukturert dialogtråd.
+- **Gi rom for kommentarer:** Gi brukeren mulighet til å å legge til utfyllende kommentar eller opplysninger før innsending hvis saken krever ekstra kontekst. Gi brukeren eventuelt en forklaring på hvordan slike tilleggsopplysninger kan sendes inn etter innsending.
 
 ## Relevante WCAG-kriterier
 
