@@ -17,6 +17,9 @@ const THEME_BUILDER_URL = 'https://theme.designsystemet.no';
 // as reading and importing it could make Figma stop responding.
 const MAX_SIZE = 1_000_000;
 const MAX_SIZE_LABEL = '1 MB';
+// Feature toggle: importing theme CSS built from a config (e.g. designsystemet.css) instead of a JSON config,
+// uploaded as one or more files (a theme per file) or pasted. When off, only a JSON config can be uploaded.
+const FEAT_CSS_IMPORT = false;
 
 type ImportViewProps = {
   value: string;
@@ -50,8 +53,8 @@ export function ImportView({
     const fileNames = files.flatMap(({ fileName }) =>
       fileName ? [fileName] : [],
     );
-    const cssFiles = files.filter(({ text, fileName }) =>
-      isThemeCss(text, fileName),
+    const cssFiles = files.filter(
+      ({ text, fileName }) => FEAT_CSS_IMPORT && isThemeCss(text, fileName),
     );
 
     if (cssFiles.length === 0 && files.length === 1) {
@@ -131,7 +134,7 @@ export function ImportView({
       });
       return;
     }
-    if (isThemeCss(text)) {
+    if (FEAT_CSS_IMPORT && isThemeCss(text)) {
       event.preventDefault();
       void load([{ text }]);
     }
@@ -168,9 +171,13 @@ export function ImportView({
           </Button>
           <input
             type='file'
-            accept='.json,.css,application/json,text/css'
+            accept={
+              FEAT_CSS_IMPORT
+                ? '.json,.css,application/json,text/css'
+                : '.json,application/json'
+            }
             // Several theme CSS files make one config, a theme per file.
-            multiple
+            multiple={FEAT_CSS_IMPORT}
             aria-invalid={source?.status === 'error' || undefined}
             onChange={readFiles}
           />
