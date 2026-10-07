@@ -31,6 +31,7 @@ export default {
     'step-one': 'Download and import it after "@digdir/designsystemet-css".',
     download: 'Download {{filename}}',
     error: 'Could not generate CSS for the theme.',
+    'select-theme': 'Theme',
   },
   'severity-colors': 'Severity',
   'severity-colors-switch': 'Activate to override severity colors',

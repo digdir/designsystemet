@@ -86,6 +86,7 @@ export const useTokenModal = () => {
   return {
     themeName: workspace?.activeTheme || name,
     isWorkspace: Boolean(workspace),
+    workspaceThemes: workspace?.config.themes,
     setThemeName: setName,
     theme,
     themeConfig,

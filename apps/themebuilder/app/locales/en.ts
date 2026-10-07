@@ -39,6 +39,9 @@ export default {
     title: 'Theme Builder',
     'active-theme': 'Theme',
     'toggle-editor': 'Open or close theme editor',
+    'edit-themes': 'Edit themes',
+    'theme-names': 'Theme names',
+    'remove-theme': 'Delete theme {{name}}',
     'add-theme': 'Add theme',
     'theme-name': 'Theme name',
     'invalid-theme-name':

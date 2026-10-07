@@ -89,10 +89,17 @@
   align-items: flex-end;
 }
 
+.themeGroup {
+  display: flex;
+  gap: var(--ds-size-2);
+  align-items: flex-end;
+  flex: 1;
+  min-width: min(100%, 280px);
+  max-width: 360px;
+}
+
 .themeSelector {
   flex: 1;
-  min-width: min(100%, 240px);
-  max-width: 320px;
 
   & select {
     flex: 1;

@@ -8,12 +8,43 @@ import { configThemeToUrl } from './config-to-url';
 
 export type ThemeWorkspace = { config: Config; activeTheme: string };
 
+export const isValidThemeName = (name: string) =>
+  /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name);
+
+/**
+ * Renames, adds and removes themes in a single update.
+ * `from` is the current name of the theme, or `null` for a new theme, which starts as a copy of the active theme.
+ * Themes left out of `entries` are removed. Themes keep their order, and the active theme follows its rename,
+ * or falls back to the first theme when it is removed.
+ */
+export function renameWorkspaceThemes(
+  workspace: ThemeWorkspace,
+  entries: { from: string | null; name: string }[],
+): ThemeWorkspace {
+  const names = entries.map((entry) => entry.name);
+  if (!names.length) throw new Error('A workspace needs at least one theme');
+  if (!names.every(isValidThemeName)) throw new Error('Invalid theme name');
+  if (new Set(names).size !== names.length)
+    throw new Error('Theme already exists');
+  const themes: ThemeWorkspace['config']['themes'] = {};
+  let activeTheme = names[0];
+  for (const { from, name } of entries) {
+    if (from !== null && !Object.hasOwn(workspace.config.themes, from))
+      throw new Error('Unknown theme');
+    themes[name] =
+      from === null
+        ? structuredClone(workspace.config.themes[workspace.activeTheme])
+        : workspace.config.themes[from];
+    if (from === workspace.activeTheme) activeTheme = name;
+  }
+  return { config: { ...workspace.config, themes }, activeTheme };
+}
+
 export function addWorkspaceTheme(
   workspace: ThemeWorkspace,
   name: string,
 ): ThemeWorkspace {
-  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name))
-    throw new Error('Invalid theme name');
+  if (!isValidThemeName(name)) throw new Error('Invalid theme name');
   if (Object.hasOwn(workspace.config.themes, name))
     throw new Error('Theme already exists');
   return {

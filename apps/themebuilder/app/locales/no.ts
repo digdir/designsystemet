@@ -38,6 +38,9 @@ export default {
     title: 'Temabygger',
     'active-theme': 'Tema',
     'toggle-editor': 'Åpne eller lukke temaredigering',
+    'edit-themes': 'Rediger temaer',
+    'theme-names': 'Temanavn',
+    'remove-theme': 'Slett tema {{name}}',
     'add-theme': 'Legg til tema',
     'theme-name': 'Temanavn',
     'invalid-theme-name':

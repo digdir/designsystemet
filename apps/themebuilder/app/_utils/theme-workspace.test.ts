@@ -3,6 +3,7 @@ import {
   addWorkspaceTheme,
   editorParams,
   readWorkspace,
+  renameWorkspaceThemes,
   updateWorkspace,
   workspaceParams,
 } from './theme-workspace';
@@ -35,6 +36,48 @@ describe('compressed theme workspace', () => {
     workspace.config.themes['new-theme'].colors.accent = '#abcdef';
     expect(config.themes.first.colors.accent).toBe('#123456');
     expect(readWorkspace(workspaceParams(workspace))).toEqual(workspace);
+  });
+  it('renames and adds themes in order, keeping the active theme selected', () => {
+    const workspace = renameWorkspaceThemes({ config, activeTheme: 'first' }, [
+      { from: 'second', name: 'dark' },
+      { from: 'first', name: 'light' },
+      { from: null, name: 'extra' },
+    ]);
+    expect(Object.keys(workspace.config.themes)).toEqual([
+      'dark',
+      'light',
+      'extra',
+    ]);
+    expect(workspace.activeTheme).toBe('light');
+    expect(workspace.config.outDir).toBe(config.outDir);
+    expect(workspace.config.themes.light).toEqual(config.themes.first);
+    expect(workspace.config.themes.extra).toEqual(config.themes.first);
+    expect(workspace.config.themes.extra).not.toBe(config.themes.first);
+  });
+  it('removes themes left out, falling back to the first theme when the active one is removed', () => {
+    const workspace = renameWorkspaceThemes({ config, activeTheme: 'first' }, [
+      { from: 'second', name: 'second' },
+    ]);
+    expect(Object.keys(workspace.config.themes)).toEqual(['second']);
+    expect(workspace.activeTheme).toBe('second');
+    expect(() =>
+      renameWorkspaceThemes({ config, activeTheme: 'first' }, []),
+    ).toThrow('A workspace needs at least one theme');
+  });
+  it('rejects invalid or duplicate names when renaming', () => {
+    const workspace = { config, activeTheme: 'first' };
+    expect(() =>
+      renameWorkspaceThemes(workspace, [
+        { from: 'first', name: 'same' },
+        { from: 'second', name: 'same' },
+      ]),
+    ).toThrow('Theme already exists');
+    expect(() =>
+      renameWorkspaceThemes(workspace, [{ from: 'first', name: 'Bad Name' }]),
+    ).toThrow('Invalid theme name');
+    expect(() =>
+      renameWorkspaceThemes(workspace, [{ from: 'missing', name: 'ok' }]),
+    ).toThrow('Unknown theme');
   });
   it('rejects duplicate and invalid theme names without changing the workspace', () => {
     const workspace = { config, activeTheme: 'first' };

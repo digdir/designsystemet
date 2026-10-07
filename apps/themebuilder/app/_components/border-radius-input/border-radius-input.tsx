@@ -63,7 +63,8 @@ export const BorderRadiusInput = () => {
               role='radio'
               aria-checked={checked}
               className={cl('ds-focus', classes.box, checked && classes.active)}
-              focusgroupstart={checked || undefined}
+              // React only renders unknown attributes as strings, so `true` would be dropped
+              {...(checked && { focusgroupstart: '' as unknown as boolean })}
               key={item.value}
               onClick={() => {
                 setBorderRadius(item.value);

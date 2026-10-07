@@ -1,21 +1,13 @@
 .content {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  row-gap: var(--ds-size-4);
 }
 
-/*
- * Both sections share the rows of .content, so matching parts of the two sections line up: each row takes the height
- * of the taller of the two (heading, description, step 1, its code block, its download button).
- * 7 rows fit the config section (heading, description, then step 1, code block and button, and step 2 and its code
- * block); the CSS section uses the first 5.
- */
 .leftSection,
 .rightSection {
-  display: grid;
-  grid-row: span 7;
-  grid-template-rows: subgrid;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
   /* Lets the code blocks scroll instead of widening the column. */
   min-width: 0;
 }
@@ -36,7 +28,7 @@
 
 .leftSection > button,
 .rightSection > button {
-  justify-self: start;
+  align-self: flex-start;
 }
 
 .infoBoxes {
@@ -120,6 +112,17 @@
   height: 250px;
 }
 
+.command {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+}
+
+.command code {
+  background-color: transparent;
+  display: block;
+}
+
 .modalHeader {
   display: flex;
   align-items: center;
@@ -169,19 +172,6 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  /* Stacked, there's nothing to align across, so each section just flows. */
-  .leftSection,
-  .rightSection {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ds-size-4);
-  }
-
-  .leftSection > button,
-  .rightSection > button {
-    align-self: flex-start;
-  }
-
   .leftSection {
     border: none;
     padding: 0;
@@ -189,6 +179,6 @@
 
   .rightSection {
     padding: 0;
-    margin-top: 32px;
+    margin-top: var(--ds-size-8);
   }
 }

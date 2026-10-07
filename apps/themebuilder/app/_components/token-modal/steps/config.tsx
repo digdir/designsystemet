@@ -45,7 +45,7 @@ export default function Config({
         <span>2</span>
         <Paragraph>{t('themeModal.config.step-two')}</Paragraph>
       </div>
-      <div className={classes.snippet}>
+      <div className={classes.command}>
         <CodeBlock language='bash'>{buildSnippet}</CodeBlock>
         <Paragraph>
           {t('themeModal.config.help')}{' '}
