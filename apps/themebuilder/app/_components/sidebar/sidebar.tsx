@@ -67,7 +67,7 @@ export const Sidebar = () => {
         >
           <Tabs
             value={activePage}
-            onChange={(value) =>
+            onChange={(value: string) =>
               setActivePage(value as 'colors' | 'dimensions')
             }
           >

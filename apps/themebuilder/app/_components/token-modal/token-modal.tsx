@@ -19,8 +19,14 @@ import { useTokenModal } from './use-token-modal';
 export const TokenModal = () => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDialogElement>(null);
-  const { themeName, setThemeName, buildSnippet, configSnippet, isWorkspace } =
-    useTokenModal();
+  const {
+    themeName,
+    setThemeName,
+    buildSnippet,
+    configSnippet,
+    isWorkspace,
+    themeConfig,
+  } = useTokenModal();
   // Generating the CSS takes a moment, so only do it while the modal is open.
   const [isOpen, setIsOpen] = useState(false);
   const themeCss = useThemeCss(themeName, themeConfig, isOpen);

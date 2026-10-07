@@ -7,7 +7,7 @@ const QUERY_SEPARATOR = ' ';
  */
 export function configThemeToUrl(
   theme: Pick<
-    ConfigSchema['themes'][string],
+    NonNullable<ConfigSchema['themes']>[string],
     'colors' | 'overrides' | 'borderRadius'
   >,
   lang = 'no',
@@ -36,7 +36,9 @@ export function configThemeToUrl(
     // patterns: <colorname>|<tokenname>|<mode>:<hex>
     const colorOverrides = Object.entries(theme.overrides.colors)
       .map(([colorName, tokenObj]) =>
-        Object.entries(tokenObj)
+        Object.entries(
+          tokenObj as Record<string, { light?: string; dark?: string }>,
+        )
           .map(([tokenname, modeObj]) => {
             let paramStr = `${colorName}|${tokenname}`;
             if (modeObj.light) {

@@ -1,15 +1,18 @@
 .items {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  flex-wrap: wrap;
   margin-bottom: 1.5em;
 }
 
-.item {
-  width: calc(50% - 8px);
-}
-
 .box {
+  appearance: none;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  text-align: start;
+  width: 100%;
+  margin: 0;
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 4px;
   height: 52px;
@@ -45,11 +48,11 @@
 }
 
 .active.box {
-  &:not(:has(:focus-visible)) {
+  border-color: var(--ds-color-neutral-border-default);
+
+  &:not(:focus-visible) {
     outline: 1px solid var(--ds-color-neutral-border-default);
   }
-
-  border-color: var(--ds-color-neutral-border-default);
 }
 
 .heading {

@@ -1,4 +1,4 @@
-import { Heading, Textfield, ToggleGroup } from '@digdir/designsystemet-react';
+import { Heading, Textfield } from '@digdir/designsystemet-react';
 import { useDebounceCallback } from '@internal/components';
 import cl from 'clsx/lite';
 import { useRef } from 'react';
@@ -47,34 +47,41 @@ export const BorderRadiusInput = () => {
       <Heading className={classes.heading} data-size='xs'>
         {t('borderRadius.suggested')}
       </Heading>
-      <ToggleGroup
+      <div
         className={classes.items}
+        role='radiogroup'
         aria-label={t('borderRadius.label')}
-        value={baseBorderRadius.toString()}
-        onChange={(value) => {
-          setBorderRadius(Number(value));
-          if (inputRef.current) inputRef.current.value = value;
-        }}
+        focusgroup='radiogroup wrap'
+        suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
       >
-        {borderRadiusItems.map((item, index) => (
-          <ToggleGroup.Item
-            value={item.value.toString()}
-            className={cl(
-              classes.item,
-              classes.box,
-              baseBorderRadius === item.value && classes.active,
-            )}
-            key={index}
-          >
-            <span className={classes.text}>{item.name}</span>
-            <span
-              className={classes.inner}
-              aria-hidden='true'
-              style={{ borderRadius: item.value }}
-            />
-          </ToggleGroup.Item>
-        ))}
-      </ToggleGroup>
+        {borderRadiusItems.map((item) => {
+          const checked = baseBorderRadius === item.value;
+          return (
+            // biome-ignore lint/a11y/useSemanticElements: focusgroup radiogroup with custom preview content
+            <button
+              type='button'
+              role='radio'
+              aria-checked={checked}
+              className={cl('ds-focus', classes.box, checked && classes.active)}
+              focusgroupstart={checked || undefined}
+              key={item.value}
+              onClick={() => {
+                setBorderRadius(item.value);
+                if (inputRef.current) {
+                  inputRef.current.value = item.value.toString();
+                }
+              }}
+            >
+              <span className={classes.text}>{item.name}</span>
+              <span
+                className={classes.inner}
+                aria-hidden='true'
+                style={{ borderRadius: item.value }}
+              />
+            </button>
+          );
+        })}
+      </div>
       <Heading className={classes.heading} data-size='xs'>
         {t('borderRadius.manual')}
       </Heading>
