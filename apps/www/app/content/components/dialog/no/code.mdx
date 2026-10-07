@@ -29,7 +29,9 @@ Dialog har to klassenavn du kan bruke.
 Bruk `command` og `commandfor` for å koble `<dialog>`-elementet til en trigger. 
 Benytt verdiene `command="show-modal"` eller `command="--show-non-modal"` for modal med eller uten bakgrunnsdimming og `commandfor="DIALOG-ID"` for å koble triggeren til dialogen.
 
-Designsystemet legger automatisk til `aria-haspopup="dialog"` på knapper som åpner en dialog. Hvis dialogen har en overskrift, brukes den som dialogens tilgjengelige navn.
+Designsystemet legger automatisk til `aria-haspopup="dialog"` på knapper som åpner en dialog.
+
+Hvis dialogen har en overskrift, brukes den som dialogens tilgjengelige navn.
 Hvis dialogen er tom eller laster innhold når den åpnes, må du selv gi dialogelementet et tilgjengelig navn med `aria-label`.
 
 ```html
