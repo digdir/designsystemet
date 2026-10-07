@@ -64,4 +64,16 @@ describe('configFromCss', () => {
       ]),
     ).toThrow('More than one file is named for the theme "designsystemet".');
   });
+
+  it('names themes after files whose names every object has a property for', () => {
+    const { config } = configFromCss([
+      { css, fileName: 'constructor.css' },
+      { css, fileName: '__proto__.css' },
+    ]);
+
+    expect(Object.keys(JSON.parse(config).themes)).toEqual([
+      'constructor',
+      '__proto__',
+    ]);
+  });
 });

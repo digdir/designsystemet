@@ -169,7 +169,8 @@ function readBorderRadius(value: string | undefined, warnings: string[]): Pick<T
     return {};
   }
 
-  const [, number, unit] = /^(\d*\.?\d+)(rem|px)?$/.exec(value.trim()) ?? [];
+  // No two parts of the number can match the same digits, so a long value doesn't make the matching slow.
+  const [, number, unit] = /^(\d+(?:\.\d+)?|\.\d+)(rem|px)?$/.exec(value.trim()) ?? [];
   if (number === undefined) {
     warnings.push(
       `--ds-border-radius-base isn't a length the config can describe (${value}), so it isn't in the config.`,

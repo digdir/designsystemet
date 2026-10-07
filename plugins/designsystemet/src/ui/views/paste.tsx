@@ -13,6 +13,10 @@ import { convertCss, isThemeCss } from '../convert-css';
 import { postToPlugin } from '../post-to-plugin';
 
 const THEME_BUILDER_URL = 'https://theme.designsystemet.no';
+// Configs and theme CSS are far smaller (designsystemet.css is about 50 KB). Anything larger is refused,
+// as reading and importing it could make Figma stop responding.
+const MAX_SIZE = 1_000_000;
+const MAX_SIZE_LABEL = '1 MB';
 
 type PasteViewProps = {
   value: string;
@@ -87,6 +91,15 @@ export function PasteView({
     const input = event.currentTarget;
     const files = Array.from(input.files ?? []);
     if (files.length === 0) return;
+    const tooLarge = files.find((file) => file.size > MAX_SIZE);
+    if (tooLarge) {
+      setSource({
+        status: 'error',
+        message: `${tooLarge.name} is larger than ${MAX_SIZE_LABEL}, which is too big for a config.`,
+      });
+      input.value = '';
+      return;
+    }
     try {
       await load(
         await Promise.all(
@@ -107,9 +120,17 @@ export function PasteView({
     input.value = '';
   };
 
-  // Pasted CSS is turned into a config. A pasted JSON config goes into the textarea as usual.
+  // Pasted CSS is turned into a config. A pasted JSON config goes into the textarea as usual, unless it's too large.
   const pasteCss = (event: ClipboardEvent<HTMLTextAreaElement>) => {
     const text = event.clipboardData.getData('text');
+    if (text.length > MAX_SIZE) {
+      event.preventDefault();
+      setSource({
+        status: 'error',
+        message: `The pasted text is larger than ${MAX_SIZE_LABEL}, which is too big for a config.`,
+      });
+      return;
+    }
     if (isThemeCss(text)) {
       event.preventDefault();
       void load([{ text }]);
