@@ -150,6 +150,7 @@
 .step {
   display: flex;
   gap: var(--ds-size-4);
+  margin-block-start: var(--ds-size-4);
   & > span {
     background-color: var(--ds-color-accent-base-default);
     color: var(--ds-color-accent-base-contrast-default);
