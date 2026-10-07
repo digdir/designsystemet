@@ -13,16 +13,15 @@ import { PencilIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router';
-import { workspaceToUrl } from '~/_utils/theme-workspace';
+import { type WorkspaceConfig, workspaceToUrl } from '~/_utils/theme-workspace';
 import classes from './config-paste.module.css';
 
 export function ConfigPaste() {
   const { t } = useTranslation();
   const { lang } = useParams();
   const [configText, setConfigText] = useState('');
-  const [validatedConfig, setValidatedConfig] = useState<ConfigSchema | null>(
-    null,
-  );
+  const [validatedConfig, setValidatedConfig] =
+    useState<WorkspaceConfig | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleValidate = () => {
@@ -41,12 +40,12 @@ export function ConfigPaste() {
 
       configSchema.parse(parsed);
       const validated: ConfigSchema = parsed;
-      setValidatedConfig(validated);
 
       if (!validated.themes || Object.keys(validated.themes).length === 0) {
         setError(t('configPaste.no-themes'));
-        setValidatedConfig(null);
+        return;
       }
+      setValidatedConfig({ ...validated, themes: validated.themes });
     } catch (err) {
       console.error('Config validation error:', err);
       setError(
@@ -55,9 +54,7 @@ export function ConfigPaste() {
     }
   };
 
-  const themes = validatedConfig?.themes
-    ? Object.entries(validatedConfig.themes)
-    : [];
+  const themes = validatedConfig ? Object.entries(validatedConfig.themes) : [];
 
   return (
     <div className={classes.container}>

@@ -44,7 +44,7 @@ export default {
     'add-theme': 'Legg til tema',
     'theme-name': 'Temanavn',
     'invalid-theme-name':
-      'Bruk små bokstaver, tall og enkeltstående bindestreker mellom ord.',
+      'Bruk små bokstaver, tall og bindestreker mellom ord.',
     'duplicate-theme-name': 'Et tema med dette navnet finnes allerede.',
     'documentation-link': 'Les dokumentasjon om eget tema',
   },

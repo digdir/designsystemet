@@ -1,12 +1,21 @@
 import {
-  type ExternalConfigSchemaInput as Config,
+  type ExternalConfigSchemaInput,
   externalConfigSchema,
 } from '@digdir/designsystemet/internal';
 import LZString from 'lz-string';
 import { parseColorOverrides } from '../routes/themebuilder/_utils/use-themebuilder';
 import { configThemeToUrl } from './config-to-url';
 
-export type ThemeWorkspace = { config: Config; activeTheme: string };
+export type WorkspaceTheme = NonNullable<
+  ExternalConfigSchemaInput['themes']
+>[string];
+
+/** A config in the theme builder always has at least one theme, unlike the public config where `themes` is optional. */
+export type WorkspaceConfig = ExternalConfigSchemaInput & {
+  themes: Record<string, WorkspaceTheme>;
+};
+
+export type ThemeWorkspace = { config: WorkspaceConfig; activeTheme: string };
 
 export const isValidThemeName = (name: string) =>
   /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name);
@@ -26,7 +35,7 @@ export function renameWorkspaceThemes(
   if (!names.every(isValidThemeName)) throw new Error('Invalid theme name');
   if (new Set(names).size !== names.length)
     throw new Error('Theme already exists');
-  const themes: ThemeWorkspace['config']['themes'] = {};
+  const themes: WorkspaceConfig['themes'] = {};
   let activeTheme = names[0];
   for (const { from, name } of entries) {
     if (from !== null && !Object.hasOwn(workspace.config.themes, from))
@@ -74,8 +83,9 @@ export function readWorkspace(params: URLSearchParams): ThemeWorkspace | null {
     const decoded = LZString.decompressFromEncodedURIComponent(encoded || '');
     if (!decoded || decoded.length > 1_000_000)
       throw new Error('Invalid config');
-    const config: Config = JSON.parse(decoded);
+    const config: WorkspaceConfig = JSON.parse(decoded);
     externalConfigSchema.parse(config);
+    if (!config.themes) throw new Error('Missing themes');
     const names = Object.keys(config.themes);
     const activeTheme = params.get('theme') || names[0];
     if (!activeTheme || !Object.hasOwn(config.themes, activeTheme))
@@ -103,7 +113,7 @@ export function workspaceParams(
 }
 
 export function workspaceToUrl(
-  config: Config,
+  config: WorkspaceConfig,
   activeTheme: string,
   lang = 'no',
 ) {
@@ -173,7 +183,7 @@ export function updateWorkspace(
     Object.entries(workspace.config.themes).map(([name, theme]) => {
       if (name !== workspace.activeTheme && !removed.length && !added.length)
         return [name, theme];
-      const updated: Config['themes'][string] =
+      const updated: WorkspaceTheme =
         name === workspace.activeTheme
           ? active
           : {
