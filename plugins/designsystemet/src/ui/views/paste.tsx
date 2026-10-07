@@ -21,18 +21,19 @@ type PasteViewProps = {
 
 // Where the config in the textarea came from, when it wasn't typed or pasted as JSON.
 type Source =
-  | { status: 'converting'; fileName?: string }
+  | { status: 'converting'; fileNames: string[] }
   | {
       status: 'loaded';
-      fileName?: string;
+      /** Empty for pasted CSS. */
+      fileNames: string[];
       /** Set when the config was created from theme CSS: what to check before importing. */
       warnings: string[];
     }
   | { status: 'error'; message: string }
   | null;
 
-// The initial view: upload designsystemet.config.json or theme CSS built from a config, or paste either into
-// the textarea. Theme CSS isn't mentioned in the UI yet, as it's a hidden feature for now.
+// The initial view: upload designsystemet.config.json, or theme CSS files built from a config (one per theme),
+// or paste either into the textarea. Theme CSS isn't mentioned in the UI yet, as it's a hidden feature for now.
 // Uploaded files and pasted CSS end up as a JSON config in the textarea, so it can be checked
 // and edited before importing.
 export function PasteView({
@@ -41,36 +42,60 @@ export function PasteView({
 }: PasteViewProps): React.JSX.Element {
   const [source, setSource] = useState<Source>(null);
 
-  const load = async (text: string, fileName?: string) => {
-    if (!isThemeCss(text, fileName)) {
-      onChange(text);
-      setSource({ status: 'loaded', fileName, warnings: [] });
+  const load = async (files: { text: string; fileName?: string }[]) => {
+    const fileNames = files.flatMap(({ fileName }) =>
+      fileName ? [fileName] : [],
+    );
+    const cssFiles = files.filter(({ text, fileName }) =>
+      isThemeCss(text, fileName),
+    );
+
+    if (cssFiles.length === 0 && files.length === 1) {
+      onChange(files[0].text);
+      setSource({ status: 'loaded', fileNames, warnings: [] });
+      return;
+    }
+    // Several files are only read as theme CSS, one file per theme.
+    if (cssFiles.length !== files.length) {
+      setSource({
+        status: 'error',
+        message: 'Upload one config file at a time.',
+      });
       return;
     }
 
-    setSource({ status: 'converting', fileName });
-    const result = await convertCss(text, fileName);
+    setSource({ status: 'converting', fileNames });
+    const result = await convertCss(
+      cssFiles.map(({ text, fileName }) => ({ css: text, fileName })),
+    );
     if (result.status === 'success' && result.config) {
       onChange(result.config);
       setSource({
         status: 'loaded',
-        fileName,
+        fileNames,
         warnings: result.warnings ?? [],
       });
     } else {
       setSource({
         status: 'error',
-        message: `Could not create a config from ${fileName ?? 'the pasted CSS'}: ${result.message ?? 'Unknown error'}`,
+        message: `Could not create a config from ${describeFiles(fileNames)}: ${result.message ?? 'Unknown error'}`,
       });
     }
   };
 
-  const readFile = async (event: ChangeEvent<HTMLInputElement>) => {
+  const readFiles = async (event: ChangeEvent<HTMLInputElement>) => {
     const input = event.currentTarget;
-    const file = input.files?.[0];
-    if (!file) return;
+    const files = Array.from(input.files ?? []);
+    if (files.length === 0) return;
     try {
-      await load(await file.text(), file.name);
+      await load(
+        await Promise.all(
+          files.map(async (file) => ({
+            text: await file.text(),
+            fileName: file.name,
+          })),
+        ),
+      );
     } catch {
       setSource({
         status: 'error',
@@ -78,7 +103,7 @@ export function PasteView({
           'Could not read the file. Try again, or paste the config below.',
       });
     }
-    // Clear the input so choosing the same file again reads it again.
+    // Clear the input so choosing the same files again reads them again.
     input.value = '';
   };
 
@@ -87,7 +112,7 @@ export function PasteView({
     const text = event.clipboardData.getData('text');
     if (isThemeCss(text)) {
       event.preventDefault();
-      void load(text);
+      void load([{ text }]);
     }
   };
 
@@ -111,10 +136,10 @@ export function PasteView({
         </Field.Description>
         <FileUpload data-color='neutral' className='paste-upload'>
           <Field.Description>
-            {source?.status === 'converting' && source.fileName
-              ? `Reading ${source.fileName}…`
-              : source?.status === 'loaded' && source.fileName
-                ? `Loaded ${source.fileName}`
+            {source?.status === 'converting' && source.fileNames.length > 0
+              ? `Reading ${source.fileNames.join(', ')}…`
+              : source?.status === 'loaded' && source.fileNames.length > 0
+                ? `Loaded ${source.fileNames.join(', ')}`
                 : 'Drop designsystemet.config.json here'}
           </Field.Description>
           <Button asChild variant='secondary'>
@@ -123,8 +148,10 @@ export function PasteView({
           <input
             type='file'
             accept='.json,.css,application/json,text/css'
+            // Several theme CSS files make one config, a theme per file.
+            multiple
             aria-invalid={source?.status === 'error' || undefined}
-            onChange={readFile}
+            onChange={readFiles}
           />
         </FileUpload>
         {source?.status === 'error' && (
@@ -155,4 +182,13 @@ export function PasteView({
       </Field>
     </div>
   );
+}
+
+/** Names the files in a message, or the pasted CSS when there are none. */
+function describeFiles(fileNames: string[]): string {
+  return fileNames.length === 0
+    ? 'the pasted CSS'
+    : fileNames.length === 1
+      ? fileNames[0]
+      : `${fileNames.length} files`;
 }

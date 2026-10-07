@@ -1,13 +1,10 @@
-import type { FigmaMessages } from '../types';
+import type { CssFile, FigmaMessages } from '../types';
 import { postToPlugin } from './post-to-plugin';
 
 type ConvertCssResult = Extract<FigmaMessages, { type: 'convert-css-result' }>;
 
-/** Asks the plugin to create a config from theme CSS, and resolves with its reply. */
-export function convertCss(
-  css: string,
-  fileName?: string,
-): Promise<ConvertCssResult> {
+/** Asks the plugin to create a config from theme CSS files, one per theme, and resolves with its reply. */
+export function convertCss(files: CssFile[]): Promise<ConvertCssResult> {
   return new Promise((resolve) => {
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== 'https://www.figma.com') return;
@@ -17,7 +14,7 @@ export function convertCss(
       resolve(msg);
     };
     window.addEventListener('message', handleMessage);
-    postToPlugin('convert-css', { css, fileName });
+    postToPlugin('convert-css', { files });
   });
 }
 

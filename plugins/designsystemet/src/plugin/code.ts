@@ -34,7 +34,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
   if (msg.type === 'convert-css') {
     try {
-      const { config, warnings } = configFromCss(msg.css, msg.fileName);
+      const { config, warnings } = configFromCss(msg.files);
       postMessage('convert-css-result', {
         status: 'success',
         config,
