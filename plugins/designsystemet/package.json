@@ -19,7 +19,8 @@
     "zip": "pnpm run build && rimraf designsystemet-figma-plugin.zip && zip -r designsystemet-figma-plugin.zip manifest.json dist -x '*.DS_Store'",
     "watch": "pnpm run watch:ui & pnpm run watch:plugin",
     "watch:ui": "pnpm run build:ui --watch -- --mode=development",
-    "watch:plugin": "pnpm run build:plugin --watch -- --mode=development"
+    "watch:plugin": "pnpm run build:plugin --watch -- --mode=development",
+    "test": "vitest run"
   },
   "dependencies": {
     "@digdir/designsystemet": "workspace:*",
