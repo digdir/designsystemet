@@ -14,6 +14,10 @@ import {
   validateConfig,
 } from '@digdir/designsystemet/internal';
 import pkg from '@digdir/designsystemet/package.json';
+import { buildCollectionSpecs } from '../import/collection-specs';
+import { createTokenModel } from '../import/create-token-model';
+import { createImportLog } from '../import/log';
+import { getTokenSetLookupOrder } from '../import/resolver';
 import type { CollectionData, VariableData } from './types';
 
 // Rebuilds a config from the variables an import created. Each theme is a mode in the Theme collection,
@@ -51,9 +55,12 @@ const OTHER_COLORS = new Map<string, keyof Omit<ThemeColorValues, 'scales'>>([
 
 /**
  * Creates the config that an import of the given collections came from. Throws if the collections aren't
- * from an import, or if the result isn't a valid config.
+ * from an import, or if the result isn't a valid config. Warns about what's in the file but not in the config,
+ * as importing the config wouldn't bring it back.
  */
-export function exportConfig(collections: CollectionData[]): ExportedConfig {
+export async function exportConfig(
+  collections: CollectionData[],
+): Promise<ExportedConfig> {
   const warnings: string[] = [];
   const collectionByName = new Map(collections.map((c) => [c.name, c]));
 
@@ -96,7 +103,7 @@ export function exportConfig(collections: CollectionData[]): ExportedConfig {
       continue;
     }
     const { warnings: colorWarnings, ...colors } = configColorsFromValues(
-      readThemeColors(themeName, colorScheme, schemeModes, resolve, warnings),
+      readThemeColors(themeName, colorScheme, schemeModes, resolve),
     );
     warnings.push(
       ...colorWarnings.map((warning) => `Theme "${themeName}": ${warning}`),
@@ -115,8 +122,68 @@ export function exportConfig(collections: CollectionData[]): ExportedConfig {
 
   // Validate like a pasted config, so the file is one the plugin and the CLI accept.
   validateConfig(externalConfigSchema, config);
+  warnings.push(...(await findItemsNotInConfig(collections, config)));
 
   return { config, warnings };
+}
+
+/**
+ * The modes and variables in the collections an import manages that an import of the config wouldn't create,
+ * e.g. ones added by hand. Found by building the collections from the config with the import's own code, as most
+ * of them (e.g. Size and Semantic) are generated from the config, not read into it. Collections an import doesn't
+ * create are reported by exportConfig.
+ */
+async function findItemsNotInConfig(
+  collections: CollectionData[],
+  config: ExportedConfig['config'],
+): Promise<string[]> {
+  const model = await createTokenModel(JSON.stringify(config));
+  const specs = new Map(
+    buildCollectionSpecs(
+      model,
+      getTokenSetLookupOrder(model),
+      createImportLog(),
+    ).map((spec) => [spec.name, spec]),
+  );
+
+  const warnings: string[] = [];
+  for (const collection of collections) {
+    const spec = specs.get(collection.name);
+    if (!spec) {
+      continue;
+    }
+    const modeNames = new Set(spec.modeNames);
+    for (const mode of collection.modes) {
+      // A theme named `__proto__` is reported when the themes are read.
+      if (!modeNames.has(mode) && mode !== '__proto__') {
+        warnings.push(
+          `Mode "${collection.name}/${mode}" isn't created by an import, so it isn't in the config.`,
+        );
+      }
+    }
+    for (const variable of collection.variables) {
+      if (!spec.variables.has(toImportedName(collection.name, variable.name))) {
+        warnings.push(
+          `Variable "${collection.name}/${variable.name}" isn't created by an import, so it isn't in the config.`,
+        );
+      }
+    }
+  }
+  return warnings;
+}
+
+/**
+ * The name an import gives a variable. Color scheme steps can be named by step name (`<theme>/<color>/base-default`)
+ * as well as by number, which is what an import names them today (`<theme>/<color>/12`).
+ */
+function toImportedName(collectionName: string, variableName: string): string {
+  if (collectionName !== FIGMA_COLLECTION.COLOR_SCHEME) {
+    return variableName;
+  }
+  const [, prefix, step] = /^(.+\/)([^/]+)$/.exec(variableName) ?? [];
+  return prefix && step && Object.hasOwn(semanticColorSpec, step)
+    ? `${prefix}${semanticColorSpec[step as SemanticColorNames].number}`
+    : variableName;
 }
 
 /** A theme's colors in the Color scheme collection, per color scheme. */
@@ -125,7 +192,6 @@ function readThemeColors(
   colorScheme: CollectionData,
   schemeModes: Record<ColorScheme, string>,
   resolve: Resolve,
-  warnings: string[],
 ): ThemeColorValues {
   const prefix = `${themeName}/`;
   const values: ThemeColorValues = { scales: new Map() };
@@ -155,11 +221,8 @@ function readThemeColors(
       steps.set(stepName, schemeColors);
     } else if (otherColor) {
       values[otherColor] = schemeColors;
-    } else {
-      warnings.push(
-        `Variable "${colorScheme.name}/${variable.name}" isn't created by an import, so it isn't in the config.`,
-      );
     }
+    // Other variables aren't in the config; findItemsNotInConfig reports them.
   }
 
   return values;

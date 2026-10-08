@@ -69,16 +69,23 @@ export function configColorsFromValues({
 
     for (const scheme of SCHEMES) {
       const scale = generateColorScale(base, scheme);
+      const missing: SemanticColorNames[] = [];
       for (const [stepName, step] of Object.entries(scale) as [
         SemanticColorNames,
         (typeof scale)[SemanticColorNames],
       ][]) {
         const actual = steps.get(stepName)?.[scheme];
-        if (actual && !isSameColor(actual, step.hex)) {
+        if (!actual) {
+          missing.push(stepName);
+        } else if (!isSameColor(actual, step.hex)) {
           const stepOverrides = colorOverrides.get(colorName) ?? new Map<SemanticColorNames, SchemeColors>();
           colorOverrides.set(colorName, stepOverrides);
           stepOverrides.set(stepName, { ...stepOverrides.get(stepName), [scheme]: actual });
         }
+      }
+      // A missing step, e.g. a variable deleted in Figma, can't be an override, so the config generates it.
+      if (missing.length > 0) {
+        warnings.push(missingStepsWarning(colorName, scheme, missing, Object.keys(scale).length));
       }
     }
   }
@@ -117,6 +124,22 @@ export function configColorsFromValues({
     ...(Object.keys(overrides).length > 0 && { overrides }),
     warnings,
   };
+}
+
+function missingStepsWarning(
+  colorName: string,
+  scheme: ColorScheme,
+  missing: SemanticColorNames[],
+  stepCount: number,
+): string {
+  const generates = 'so importing the config generates';
+  if (missing.length === stepCount) {
+    return `Color "${colorName}" has no colors in ${scheme}, ${generates} them from the base color.`;
+  }
+  if (missing.length === stepCount - 1 && !missing.includes('base-default')) {
+    return `Color "${colorName}" has only its base color in ${scheme}, ${generates} the rest from it.`;
+  }
+  return `Color "${colorName}" has no ${missing.join(', ')} in ${scheme}, ${generates} ${missing.length === 1 ? 'it' : 'them'} from the base color.`;
 }
 
 /** The colors that differ from their defaults, or undefined if none do. */
