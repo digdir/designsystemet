@@ -41,21 +41,23 @@ export async function syncCollections(
 }
 
 // Only modes the import created are renamed or deleted; see ownership.ts.
-async function ensureModes(
+export async function ensureModes(
   collection: VariableCollection,
   desiredModeNames: string[],
   log: ImportLog,
   pause: Pause,
 ): Promise<void> {
-  const plan = planModes(
-    collection.modes,
-    desiredModeNames,
-    managedModeIds(collection),
-  );
+  const previouslyManaged = managedModeIds(collection);
+  const plan = planModes(collection.modes, desiredModeNames, previouslyManaged);
   const managed = new Set(plan.managed);
+  // Saved after each change, together with the IDs saved before, so if a change fails part way (e.g. at
+  // Figma's mode limit), every mode the import has made or renamed so far is still marked as its own.
+  const saveManaged = () =>
+    setManagedModeIds(collection, [...previouslyManaged, ...managed]);
 
   if (plan.rename) {
     collection.renameMode(plan.rename.mode.modeId, plan.rename.to);
+    saveManaged();
     log.info.push(
       `Renamed mode ${plan.rename.mode.name} -> ${plan.rename.to} in ${collection.name}`,
     );
@@ -63,6 +65,7 @@ async function ensureModes(
 
   for (const modeName of plan.add) {
     managed.add(collection.addMode(modeName));
+    saveManaged();
     log.info.push(`Created mode ${modeName} in ${collection.name}`);
     // Each new mode gets a value for every variable in the collection, so this can be slow.
     await pause(() => `Importing modes in ${collection.name}`);
@@ -84,6 +87,7 @@ async function ensureModes(
     );
   }
 
+  // Every change is done, so the IDs of removed modes can go.
   setManagedModeIds(collection, managed);
 }
 

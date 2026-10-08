@@ -126,7 +126,8 @@ export function planModes(
   }
 
   const existingNames = new Set(names.values());
-  plan.add = desired.filter((name) => !existingNames.has(name));
+  // Without duplicates, as a mode name the config lists twice is still one mode.
+  plan.add = [...new Set(desired)].filter((name) => !existingNames.has(name));
 
   for (const mode of existing) {
     const name = names.get(mode.modeId) ?? mode.name;
