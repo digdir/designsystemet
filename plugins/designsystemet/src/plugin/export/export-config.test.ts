@@ -302,6 +302,55 @@ describe('exportConfig', () => {
     ]);
   });
 
+  it('warns about a value edited by hand that the config does not have', async () => {
+    const collections = await syncedCollections({
+      theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
+    });
+    const size = collections.find((c) => c.name === 'Size');
+    const variable = size?.variables.find((v) =>
+      Object.values(v.valuesByMode).some(
+        (value) => value.kind === 'raw' && typeof value.value === 'number',
+      ),
+    );
+    const [mode, value] =
+      Object.entries(variable?.valuesByMode ?? {}).find(
+        ([, value]) => value.kind === 'raw',
+      ) ?? [];
+    if (!variable || !mode || value?.kind !== 'raw') {
+      throw new Error('No number variable in Size');
+    }
+    variable.valuesByMode[mode] = {
+      kind: 'raw',
+      value: (value.value as number) + 1,
+    };
+
+    const { warnings } = await exportConfig(collections);
+
+    expect(warnings).toEqual([
+      `1 variable in Size has a value the config doesn't have, so importing the config replaces it: ${variable.name} (${mode})`,
+    ]);
+  });
+
+  it('does not warn about values the config keeps, or that differ only by Figma’s precision', async () => {
+    const collections = await syncedCollections({
+      theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
+    });
+    // A color edited by hand becomes an override, so the config keeps it.
+    editColor(collections, 'theme/accent/3', 'Dark', '#123456');
+    // Figma stores numbers as 32-bit floats, so they read back slightly off.
+    for (const variable of collections.flatMap((c) => c.variables)) {
+      for (const value of Object.values(variable.valuesByMode)) {
+        if (value.kind === 'raw' && typeof value.value === 'number') {
+          value.value = Math.fround(value.value);
+        }
+      }
+    }
+
+    const { warnings } = await exportConfig(collections);
+
+    expect(warnings).toEqual([]);
+  });
+
   it('warns about a color step deleted in Figma, which importing the config generates', async () => {
     const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },

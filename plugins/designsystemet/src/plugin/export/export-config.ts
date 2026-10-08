@@ -18,6 +18,7 @@ import { buildCollectionSpecs } from '../import/collection-specs';
 import { createTokenModel } from '../import/create-token-model';
 import { createImportLog } from '../import/log';
 import { getTokenSetLookupOrder } from '../import/resolver';
+import type { ValueSpec } from '../types';
 import type { CollectionData, VariableData } from './types';
 
 // Rebuilds a config from the variables an import created. Each theme is a mode in the Theme collection,
@@ -132,7 +133,7 @@ export async function exportConfig(
 
   // Validate like a pasted config, so the file is one the plugin and the CLI accept.
   validateConfig(externalConfigSchema, config);
-  warnings.push(...(await compareWithImport(collections, config)));
+  warnings.push(...(await compareWithImport(collections, config, resolve)));
 
   return { config, warnings };
 }
@@ -149,6 +150,7 @@ export async function exportConfig(
 async function compareWithImport(
   collections: CollectionData[],
   config: ExportedConfig['config'],
+  resolve: Resolve,
 ): Promise<string[]> {
   const model = await createTokenModel(JSON.stringify(config));
   const specs = buildCollectionSpecs(
@@ -181,14 +183,39 @@ async function compareWithImport(
     }
 
     const variableNames = new Set<string>();
+    // Variables with values the config doesn't have, e.g. edited by hand, with the modes they differ in.
+    const changed: string[] = [];
     for (const variable of collection.variables) {
       const name = toImportedName(collection.name, variable.name);
       variableNames.add(name);
-      if (!spec.variables.has(name)) {
+      const desired = spec.variables.get(name);
+      if (!desired) {
         warnings.push(
           `Variable "${collection.name}/${variable.name}" isn't created by an import, so it isn't in the config.`,
         );
+        continue;
       }
+      const changedModes = [...desired.valuesByMode]
+        .filter(
+          ([mode, expected]) =>
+            // A mode without a value is reported already: it's missing, or an alias outside the file.
+            Object.hasOwn(variable.valuesByMode, mode) &&
+            !isSameValue(
+              variable.valuesByMode[mode],
+              expected,
+              resolve(collection.name, variable.name, mode),
+            ),
+        )
+        .map(([mode]) => mode);
+      if (changedModes.length > 0) {
+        changed.push(`${variable.name} (${changedModes.join(', ')})`);
+      }
+    }
+    if (changed.length > 0) {
+      const one = changed.length === 1;
+      warnings.push(
+        `${changed.length} variable${one ? '' : 's'} in ${collection.name} ${one ? 'has a value' : 'have values'} the config doesn't have, so importing the config replaces ${one ? 'it' : 'them'}: ${changed.join(', ')}`,
+      );
     }
 
     const fileModes = new Set(collection.modes);
@@ -206,6 +233,39 @@ async function compareWithImport(
     }
   }
   return warnings;
+}
+
+/**
+ * Whether a value in the file is the one an import of the config would write. An alias must point at the same
+ * variable. A raw value is compared with the file's value after following its aliases, as the config keeps an
+ * aliased color as an override with the resolved value.
+ */
+function isSameValue(
+  actual: ValueSpec,
+  expected: ValueSpec,
+  resolvedActual: VariableValue | undefined,
+): boolean {
+  if (expected.kind === 'alias') {
+    return (
+      actual.kind === 'alias' &&
+      actual.collection === expected.collection &&
+      toImportedName(actual.collection, actual.name) ===
+        toImportedName(expected.collection, expected.name)
+    );
+  }
+  const a = resolvedActual;
+  const b = expected.value;
+  if (typeof a === 'number' && typeof b === 'number') {
+    // Figma stores numbers as 32-bit floats, so e.g. 0.1 reads back as 0.10000000149.
+    return Math.abs(a - b) <= 1e-4 * Math.max(1, Math.abs(a), Math.abs(b));
+  }
+  // Colors are compared as hex, the precision the config has.
+  const hexA = toHex(a);
+  const hexB = toHex(b);
+  if (hexA || hexB) {
+    return hexA === hexB;
+  }
+  return a === b;
 }
 
 /** E.g. "2 variables in Theme aren't in this file, so importing the config creates them: a, b". */

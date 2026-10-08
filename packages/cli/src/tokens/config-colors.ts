@@ -99,6 +99,18 @@ export function configColorsFromValues({
     overrides.severity = Object.fromEntries(severity);
   }
 
+  // A missing value, e.g. a variable deleted in Figma, can't be an override, so the config uses the default.
+  for (const [label, values] of [
+    ['visited link color', linkVisited],
+    ['inner focus color', focusInner],
+    ['outer focus color', focusOuter],
+  ] as const) {
+    const missing = SCHEMES.filter((scheme) => !values?.[scheme]);
+    if (missing.length > 0) {
+      warnings.push(`The ${label} has no value in ${missing.join(' and ')}, so importing the config uses the default.`);
+    }
+  }
+
   const linkVisitedOverride = diffFromDefaults(
     linkVisited,
     (scheme) => generateColorScale(visitedLinkColor, scheme)['base-default'].hex,
