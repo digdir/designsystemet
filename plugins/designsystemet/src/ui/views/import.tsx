@@ -95,8 +95,7 @@ export function ImportView({
     const files = Array.from(input.files ?? []);
     if (files.length === 0) return;
     const tooLarge = files.find((file) => file.size > MAX_SIZE);
-    const isJson = files.every((file) => file.type === 'application/json');
-    if (!isJson) {
+    if (!files.every(isAcceptedFile)) {
       setSource({
         status: 'error',
         message: `Only JSON files are allowed.`,
@@ -228,4 +227,15 @@ function describeFiles(fileNames: string[]): string {
     : fileNames.length === 1
       ? fileNames[0]
       : `${fileNames.length} files`;
+}
+
+/**
+ * Whether a file can be uploaded: a JSON config, or theme CSS when that feature is on. The extension counts as well
+ * as the MIME type, as some systems report no type (an empty string) for .json files.
+ */
+function isAcceptedFile(file: File): boolean {
+  const name = file.name.toLowerCase();
+  const isJson = file.type === 'application/json' || name.endsWith('.json');
+  const isCss = file.type === 'text/css' || name.endsWith('.css');
+  return isJson || (FEAT_CSS_IMPORT && isCss);
 }

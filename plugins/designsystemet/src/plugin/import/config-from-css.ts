@@ -8,8 +8,8 @@ const UNNAMED_THEME = 'theme';
 /**
  * Creates a config from theme CSS built by Designsystemet (e.g. designsystemet.css), as formatted JSON to import.
  * Each file is one theme. `tokens build` names each theme's CSS file after the theme, so a file's name names
- * its theme. Throws if a file isn't theme CSS, if two files name the same theme, or if the themes don't
- * make a valid config together (e.g. they define different colors).
+ * its theme. Throws if a file isn't theme CSS, if two files name the same theme, if a file names a theme
+ * `__proto__`, or if the themes don't make a valid config together (e.g. they define different colors).
  */
 export function configFromCss(files: CssFile[]): {
   config: string;
@@ -23,6 +23,12 @@ export function configFromCss(files: CssFile[]): {
     const fileTheme = themeNameFromFile(fileName);
     hasUnnamedTheme ||= !fileTheme;
     const themeName = fileTheme || UNNAMED_THEME;
+    // The config schema drops a `__proto__` key, so the import would lose this theme without saying so.
+    if (themeName === '__proto__') {
+      throw new Error(
+        `A theme can't be called "__proto__", as a config can't have a theme with that name. Rename ${fileName ?? 'the file'} to name the theme something else.`,
+      );
+    }
     if (themes.has(themeName)) {
       throw new Error(
         `More than one file is named for the theme "${themeName}". Each file is one theme, named after the file, so rename the files to tell them apart.`,
