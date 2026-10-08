@@ -210,6 +210,15 @@ export function ImportView({
           value={value}
           onPaste={pasteCss}
           onChange={(e) => {
+            // The whole text is checked, as several pastes or edits can add up to more than the limit.
+            // The change is refused, so the textarea keeps the text it had.
+            if (e.target.value.length > MAX_SIZE) {
+              setSource({
+                status: 'error',
+                message: `The config would be larger than ${MAX_SIZE_LABEL}, which is too big to import.`,
+              });
+              return;
+            }
             onChange(e.target.value);
             // Once edited, the text is no longer just what was loaded.
             setSource(null);

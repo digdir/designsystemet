@@ -86,6 +86,16 @@ export async function exportConfig(
       warnings.push(
         `Collection "${collection.name}" isn't created by an import, so it isn't in the config.`,
       );
+      continue;
+    }
+    // The export can't follow these aliases, so it reads these values as missing, and the config may use a
+    // default instead, e.g. for a font family.
+    for (const { name, externalAliasModes } of collection.variables) {
+      if (externalAliasModes) {
+        warnings.push(
+          `Variable "${collection.name}/${name}" refers to a variable outside this file, such as a library, in ${externalAliasModes.join(', ')}, so that value isn't in the config.`,
+        );
+      }
     }
   }
 
@@ -122,54 +132,98 @@ export async function exportConfig(
 
   // Validate like a pasted config, so the file is one the plugin and the CLI accept.
   validateConfig(externalConfigSchema, config);
-  warnings.push(...(await findItemsNotInConfig(collections, config)));
+  warnings.push(...(await compareWithImport(collections, config)));
 
   return { config, warnings };
 }
 
 /**
- * The modes and variables in the collections an import manages that an import of the config wouldn't create,
- * e.g. ones added by hand. Found by building the collections from the config with the import's own code, as most
- * of them (e.g. Size and Semantic) are generated from the config, not read into it. Collections an import doesn't
- * create are reported by exportConfig.
+ * How the file differs from what an import of the config would create. Found by building the collections from the
+ * config with the import's own code, as most of them (e.g. Size and Semantic) are generated from the config, not
+ * read into it. Reports, in the collections an import manages:
+ * - modes and variables an import wouldn't create, e.g. ones added by hand, which the config leaves out.
+ * - collections, modes and variables an import would create that aren't in the file, e.g. ones deleted by hand,
+ *   which importing the config brings back.
+ * Collections an import doesn't create are reported by exportConfig, and missing color steps by the color code.
  */
-async function findItemsNotInConfig(
+async function compareWithImport(
   collections: CollectionData[],
   config: ExportedConfig['config'],
 ): Promise<string[]> {
   const model = await createTokenModel(JSON.stringify(config));
-  const specs = new Map(
-    buildCollectionSpecs(
-      model,
-      getTokenSetLookupOrder(model),
-      createImportLog(),
-    ).map((spec) => [spec.name, spec]),
+  const specs = buildCollectionSpecs(
+    model,
+    getTokenSetLookupOrder(model),
+    createImportLog(),
   );
+  const collectionByName = new Map(collections.map((c) => [c.name, c]));
 
   const warnings: string[] = [];
-  for (const collection of collections) {
-    const spec = specs.get(collection.name);
-    if (!spec) {
+  for (const spec of specs) {
+    const collection = collectionByName.get(spec.name);
+    if (!collection) {
+      warnings.push(
+        `Collection "${spec.name}" isn't in this file, so importing the config creates it.`,
+      );
       continue;
     }
+
     const modeNames = new Set(spec.modeNames);
     for (const mode of collection.modes) {
       // A theme named `__proto__` is reported when the themes are read.
-      if (!modeNames.has(mode) && mode !== '__proto__') {
+      const reported =
+        mode === '__proto__' && collection.name === FIGMA_COLLECTION.THEME;
+      if (!modeNames.has(mode) && !reported) {
         warnings.push(
           `Mode "${collection.name}/${mode}" isn't created by an import, so it isn't in the config.`,
         );
       }
     }
+
+    const variableNames = new Set<string>();
     for (const variable of collection.variables) {
-      if (!spec.variables.has(toImportedName(collection.name, variable.name))) {
+      const name = toImportedName(collection.name, variable.name);
+      variableNames.add(name);
+      if (!spec.variables.has(name)) {
         warnings.push(
           `Variable "${collection.name}/${variable.name}" isn't created by an import, so it isn't in the config.`,
         );
       }
     }
+
+    const fileModes = new Set(collection.modes);
+    const missingModes = spec.modeNames.filter((mode) => !fileModes.has(mode));
+    if (missingModes.length > 0) {
+      warnings.push(missingWarning('mode', missingModes, collection.name));
+    }
+    const missingVariables = [...spec.variables.keys()].filter(
+      (name) => !variableNames.has(name) && !isColorStep(collection.name, name),
+    );
+    if (missingVariables.length > 0) {
+      warnings.push(
+        missingWarning('variable', missingVariables, collection.name),
+      );
+    }
   }
   return warnings;
+}
+
+/** E.g. "2 variables in Theme aren't in this file, so importing the config creates them: a, b". */
+function missingWarning(
+  kind: 'mode' | 'variable',
+  names: string[],
+  collectionName: string,
+): string {
+  const one = names.length === 1;
+  return `${names.length} ${kind}${one ? '' : 's'} in ${collectionName} ${one ? "isn't" : "aren't"} in this file, so importing the config creates ${one ? 'it' : 'them'}: ${names.join(', ')}`;
+}
+
+/** Whether a variable is a numbered color step, e.g. `<theme>/<color>/12` in Color scheme. */
+function isColorStep(collectionName: string, variableName: string): boolean {
+  return (
+    collectionName === FIGMA_COLLECTION.COLOR_SCHEME &&
+    STEP_NAME_BY_NUMBER.has(variableName.split('/').at(-1) ?? '')
+  );
 }
 
 /**
@@ -222,7 +276,7 @@ function readThemeColors(
     } else if (otherColor) {
       values[otherColor] = schemeColors;
     }
-    // Other variables aren't in the config; findItemsNotInConfig reports them.
+    // Other variables aren't in the config; compareWithImport reports them.
   }
 
   return values;

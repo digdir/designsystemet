@@ -233,6 +233,75 @@ describe('exportConfig', () => {
     ]);
   });
 
+  it('warns about collections, modes and variables an import would create that are not in the file', async () => {
+    const collections = await syncedCollections({
+      theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
+    });
+    const byName = (name: string) => {
+      const found = collections.find((c) => c.name === name);
+      if (!found) {
+        throw new Error(`No ${name} collection`);
+      }
+      return found;
+    };
+    // Deleted by hand: a variable, a mode, and a whole collection the export doesn't need.
+    const theme = byName('Theme');
+    theme.variables = theme.variables.filter((v) => v.name !== 'font-family');
+    const deletedMode = byName('Size').modes.pop();
+    const deletedCollection = collections.findIndex(
+      (c) => !['Theme', 'Color scheme', 'Size'].includes(c.name),
+    );
+    const [{ name: deletedCollectionName }] = collections.splice(
+      deletedCollection,
+      1,
+    );
+
+    const { warnings } = await exportConfig(collections);
+
+    expect(warnings).toHaveLength(3);
+    expect(warnings).toEqual(
+      expect.arrayContaining([
+        `Collection "${deletedCollectionName}" isn't in this file, so importing the config creates it.`,
+        `1 mode in Size isn't in this file, so importing the config creates it: ${deletedMode}`,
+        `1 variable in Theme isn't in this file, so importing the config creates it: font-family`,
+      ]),
+    );
+  });
+
+  it('warns about a mode named __proto__ outside the Theme collection', async () => {
+    const collections = await syncedCollections({
+      theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
+    });
+    collections.find((c) => c.name === 'Size')?.modes.push('__proto__');
+
+    const { warnings } = await exportConfig(collections);
+
+    expect(warnings).toEqual([
+      `Mode "Size/__proto__" isn't created by an import, so it isn't in the config.`,
+    ]);
+  });
+
+  it('warns about a value that refers to a variable outside the file', async () => {
+    const collections = await syncedCollections({
+      theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
+    });
+    const fontFamily = collections
+      .find((c) => c.name === 'Theme')
+      ?.variables.find((v) => v.name === 'font-family');
+    if (!fontFamily) {
+      throw new Error('No font-family variable');
+    }
+    // As readCollections leaves it: an alias to a library variable, which has no value here.
+    delete fontFamily.valuesByMode.theme;
+    fontFamily.externalAliasModes = ['theme'];
+
+    const { warnings } = await exportConfig(collections);
+
+    expect(warnings).toEqual([
+      'Variable "Theme/font-family" refers to a variable outside this file, such as a library, in theme, so that value isn\'t in the config.',
+    ]);
+  });
+
   it('warns about a color step deleted in Figma, which importing the config generates', async () => {
     const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
