@@ -23,12 +23,13 @@ export function AboutView(): React.JSX.Element {
           in the config.
         </List.Item>
         <List.Item>
-          Deletes modes, variables and styles that an earlier import created and
-          that aren't in the config any more.
+          Deletes modes, variables and styles from earlier imports that aren't
+          in the config any more. One added by hand with a name from the config
+          counts as the import's from then on.
         </List.Item>
         <List.Item>
-          Keeps modes, variables and styles added by hand, and lists the ones
-          that aren't in the config after the import.
+          Keeps other modes, variables and styles added by hand, and lists the
+          ones that aren't in the config after the import.
         </List.Item>
         <List.Item>Leaves other collections and styles alone.</List.Item>
       </List.Unordered>
