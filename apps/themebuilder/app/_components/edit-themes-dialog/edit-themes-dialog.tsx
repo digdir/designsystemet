@@ -89,7 +89,12 @@ export const EditThemesDialog = ({
           <PencilIcon aria-hidden />
         </Button>
       </Tooltip>
-      <Dialog ref={dialogRef} closedby='any' aria-labelledby={headingId}>
+      <Dialog
+        ref={dialogRef}
+        closedby='any'
+        aria-labelledby={headingId}
+        id='edit-themes-dialog'
+      >
         <Dialog.Block>
           <Heading id={headingId} level={2} data-size='sm'>
             {t('themeBuilder.edit-themes')}
@@ -169,7 +174,8 @@ export const EditThemesDialog = ({
               <Button
                 type='button'
                 variant='secondary'
-                onClick={() => dialogRef.current?.close()}
+                command='close'
+                commandfor='edit-themes-dialog'
               >
                 {t('colorPane.cancel')}
               </Button>

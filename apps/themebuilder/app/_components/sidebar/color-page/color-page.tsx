@@ -467,6 +467,7 @@ export const ColorPage = () => {
         aria-labelledby={`${confirmationId}-heading`}
         aria-describedby={`${confirmationId}-description`}
         onClose={() => setPendingAction(null)}
+        id='color-dialog'
       >
         <Dialog.Block>
           <Heading id={`${confirmationId}-heading`} level={2} data-size='sm'>
@@ -532,7 +533,8 @@ export const ColorPage = () => {
             </Button>
             <Button
               variant='secondary'
-              onClick={() => confirmationRef.current?.close()}
+              command='close'
+              commandfor='color-dialog'
             >
               {t('colorPane.cancel')}
             </Button>
