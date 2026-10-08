@@ -17,7 +17,10 @@ export const Preview = () => {
   return (
     <>
       <Button command='show-modal' commandfor='my-dialog-preview'>
-        Open Dialog
+        Open modal Dialog
+      </Button>
+      <Button command='--show-non-modal' commandfor='my-dialog-preview'>
+        Open non-modal Dialog
       </Button>
       <Dialog id='my-dialog-preview'>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
