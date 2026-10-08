@@ -1,23 +1,30 @@
 import { describe, expect, it } from 'vitest';
+import pkg from '../../../package.json';
 import {
   isManaged,
   keptWarning,
   managedModeIds,
   markManaged,
   planModes,
+  readImportData,
   setManagedModeIds,
   splitLeftovers,
+  updateImportData,
 } from './ownership';
 
 /** A stand-in for a Figma variable, style or collection, which keeps its plugin data in a map. */
 function pluginDataItem(data: Record<string, string> = {}) {
   const store = new Map(Object.entries(data));
-  return {
+  const item = {
+    /** How many times plugin data was written. */
+    writes: 0,
     getPluginData: (key: string) => store.get(key) ?? '',
     setPluginData: (key: string, value: string) => {
       store.set(key, value);
+      item.writes++;
     },
   };
+  return item;
 }
 
 const mode = (modeId: string, name: string) => ({ modeId, name });
@@ -118,13 +125,14 @@ describe('splitLeftovers', () => {
 });
 
 describe('plugin data', () => {
-  it('marks an item as the import’s', () => {
+  it('marks an item as the import’s, with the plugin version', () => {
     const item = pluginDataItem();
     expect(isManaged(item)).toBe(false);
 
     markManaged(item);
 
     expect(isManaged(item)).toBe(true);
+    expect(readImportData(item)).toEqual({ pluginVersion: pkg.version });
   });
 
   it('stores the mode IDs on the collection', () => {
@@ -135,17 +143,48 @@ describe('plugin data', () => {
     expect(managedModeIds(collection)).toEqual(new Set(['1', '2']));
   });
 
-  it('reads mode IDs that are missing or not a list of strings as none', () => {
-    expect(managedModeIds(pluginDataItem())).toEqual(new Set());
-    expect(managedModeIds(pluginDataItem({ modes: 'not json' }))).toEqual(
-      new Set(),
-    );
-    expect(managedModeIds(pluginDataItem({ modes: '{"1":true}' }))).toEqual(
-      new Set(),
-    );
-    expect(managedModeIds(pluginDataItem({ modes: '["1",2]' }))).toEqual(
-      new Set(['1']),
-    );
+  it('keeps fields it does not set, including ones from other plugin versions', () => {
+    const item = pluginDataItem({
+      import: JSON.stringify({
+        pluginVersion: '0.1.0',
+        future: 'kept',
+      }),
+    });
+
+    updateImportData(item, { modes: ['1'] });
+
+    expect(readImportData(item)).toEqual({
+      modes: ['1'],
+      pluginVersion: pkg.version,
+      future: 'kept',
+    });
+  });
+
+  it('only writes when something changed', () => {
+    const item = pluginDataItem();
+
+    markManaged(item);
+    markManaged(item);
+
+    expect(item.writes).toBe(1);
+  });
+
+  it('reads data that is missing or can’t be read as none', () => {
+    for (const data of ['', 'not json', '[1]', 'null', '"text"']) {
+      const item = pluginDataItem({ import: data });
+      expect(readImportData(item)).toEqual({});
+      expect(isManaged(item)).toBe(false);
+      expect(managedModeIds(item)).toEqual(new Set());
+    }
+  });
+
+  it('ignores fields of the wrong type', () => {
+    const item = pluginDataItem({
+      import: JSON.stringify({ pluginVersion: 1, modes: ['1', 2] }),
+    });
+
+    expect(isManaged(item)).toBe(false);
+    expect(managedModeIds(item)).toEqual(new Set(['1']));
   });
 });
 

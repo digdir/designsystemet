@@ -6,46 +6,84 @@
 // marked when the import updates them; the rest are kept and reported, as they can't be shown to be the
 // plugin's.
 
-// Plugin data is private to this plugin, so the keys only need to be unique within it. Values are strings,
-// so a variable or style the import manages has `managed` set to 'true'; others have no value ('').
-const MANAGED_KEY = 'managed';
-const MODES_KEY = 'modes';
+import pkg from '../../../package.json';
+
+/**
+ * What the import stores on a variable, style or collection, as JSON under one plugin data key. More fields can be
+ * added later (e.g. the CSS variable a variable is built as) without new keys. Fields are only ever added: a file
+ * keeps what other plugin versions wrote, so readers check each field and writers keep fields they don't know.
+ */
+export type ImportData = {
+  /**
+   * The version of the plugin that last wrote the item. Set on every write, so a variable or style that has it
+   * was created by the import, or taken over from an earlier import.
+   */
+  pluginVersion?: string;
+  /** On collections: the IDs of the modes the import created, as modes can't hold plugin data. */
+  modes?: string[];
+};
+
+// Plugin data is private to this plugin, so the key only needs to be unique within it.
+const DATA_KEY = 'import';
 // The mode Figma gives a new collection.
 const FIGMA_DEFAULT_MODE = 'Mode 1';
 
 type PluginDataItem = Pick<PluginDataMixin, 'getPluginData' | 'setPluginData'>;
 type Mode = { modeId: string; name: string };
 
-/** Whether the import created this variable or style, or took it over from an earlier import. */
-export function isManaged(item: PluginDataItem): boolean {
-  return item.getPluginData(MANAGED_KEY) === 'true';
+/** The import's data on an item. Empty if it has none, or if it can't be read. */
+export function readImportData(item: PluginDataItem): ImportData {
+  try {
+    const data: unknown = JSON.parse(item.getPluginData(DATA_KEY) || '{}');
+    return typeof data === 'object' && data !== null && !Array.isArray(data)
+      ? (data as ImportData)
+      : {};
+  } catch {
+    return {};
+  }
 }
 
-export function markManaged(item: PluginDataItem): void {
-  if (!isManaged(item)) {
-    item.setPluginData(MANAGED_KEY, 'true');
+/**
+ * Adds fields to the import's data on an item, and stamps it with this plugin's version. Fields that aren't
+ * given are kept, including ones written by other plugin versions. Nothing is written if nothing changed.
+ */
+export function updateImportData(
+  item: PluginDataItem,
+  fields: ImportData,
+): void {
+  const json = JSON.stringify({
+    ...readImportData(item),
+    ...fields,
+    pluginVersion: pkg.version,
+  });
+  if (json !== item.getPluginData(DATA_KEY)) {
+    item.setPluginData(DATA_KEY, json);
   }
+}
+
+/** Whether the import created this variable or style, or took it over from an earlier import. */
+export function isManaged(item: PluginDataItem): boolean {
+  return typeof readImportData(item).pluginVersion === 'string';
+}
+
+/** Marks a variable or style as the import's, by writing its data, which stamps the plugin version. */
+export function markManaged(item: PluginDataItem): void {
+  updateImportData(item, {});
 }
 
 /** The IDs of the collection's modes the import created. */
 export function managedModeIds(collection: PluginDataItem): Set<string> {
-  try {
-    const ids: unknown = JSON.parse(
-      collection.getPluginData(MODES_KEY) || '[]',
-    );
-    return new Set(
-      Array.isArray(ids) ? ids.filter((id) => typeof id === 'string') : [],
-    );
-  } catch {
-    return new Set();
-  }
+  const { modes } = readImportData(collection);
+  return new Set(
+    Array.isArray(modes) ? modes.filter((id) => typeof id === 'string') : [],
+  );
 }
 
 export function setManagedModeIds(
   collection: PluginDataItem,
   ids: Iterable<string>,
 ): void {
-  collection.setPluginData(MODES_KEY, JSON.stringify([...new Set(ids)]));
+  updateImportData(collection, { modes: [...new Set(ids)] });
 }
 
 export type ModePlan = {
