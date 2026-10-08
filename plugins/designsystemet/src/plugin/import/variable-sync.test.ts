@@ -1,8 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import type { CollectionSpec } from './collection-specs';
 import { createImportLog } from './log';
-import { managedModeIds } from './ownership';
+import { isManaged, managedModeIds } from './ownership';
 import type { Pause } from './pause';
-import { ensureModes } from './variable-sync';
+import { ensureModes, syncVariables } from './variable-sync';
 
 const noPause: Pause = async () => {};
 
@@ -73,5 +74,68 @@ describe('ensureModes', () => {
 
     expect(collection.modes.map((m) => m.name)).toEqual(['light']);
     expect(managedModeIds(collection)).toEqual(new Set(['m0']));
+  });
+});
+
+describe('syncVariables', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('marks a new variable before writing its values, so a failed write leaves it marked', async () => {
+    const pluginData = new Map<string, string>();
+    const created = {
+      name: 'size/base',
+      resolvedType: 'FLOAT',
+      variableCollectionId: 'collection',
+      codeSyntax: {},
+      scopes: [],
+      valuesByMode: {},
+      setValueForMode: () => {
+        throw new Error('Figma closed the plugin');
+      },
+      getPluginData: (key: string) => pluginData.get(key) ?? '',
+      setPluginData: (key: string, value: string) => {
+        pluginData.set(key, value);
+      },
+    };
+    vi.stubGlobal('figma', {
+      variables: {
+        getLocalVariablesAsync: async () => [],
+        createVariable: () => created,
+      },
+    });
+    const collection = {
+      id: 'collection',
+      name: 'Size',
+      modes: [{ modeId: 'm0', name: 'medium' }],
+    } as unknown as VariableCollection;
+    const spec: CollectionSpec = {
+      name: 'Size',
+      modeNames: ['medium'],
+      variables: new Map([
+        [
+          'size/base',
+          {
+            name: 'size/base',
+            type: 'FLOAT',
+            codeSyntax: null,
+            scopes: [],
+            valuesByMode: new Map([['medium', { kind: 'raw', value: 18 }]]),
+          },
+        ],
+      ]),
+    };
+
+    await expect(
+      syncVariables(
+        [spec],
+        new Map([['Size', collection]]),
+        createImportLog(),
+        noPause,
+      ),
+    ).rejects.toThrow('Figma closed the plugin');
+
+    expect(isManaged(created)).toBe(true);
   });
 });

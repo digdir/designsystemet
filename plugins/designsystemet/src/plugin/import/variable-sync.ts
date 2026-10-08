@@ -204,6 +204,12 @@ export async function syncVariables(
         });
       }
 
+      // Marks a new variable as the import's. An existing one with a name from the config, e.g. from an
+      // import before marking existed, becomes the import's too, as it's updated from the config.
+      // Marked before anything is written or the import pauses, so a variable the import made is never
+      // left unmarked if it stops part way, and a later import can still delete or replace it.
+      markManaged(variable);
+
       // Scopes and code syntax are best-effort: Figma rejects some assignments (e.g. an invalid
       // scope combination), and that must not abort the import before values, aliases and
       // styles are written. Log the variable and carry on.
@@ -233,9 +239,6 @@ export async function syncVariables(
         await pause(variablesDetail);
       }
 
-      // Marks a new variable as the import's. An existing one with a name from the config, e.g. from an
-      // import before marking existed, becomes the import's too, as it's updated from the config.
-      markManaged(variable);
       createdOrExisting.set(desired.name, variable);
       byCompositeKey.set(`${collection.name}::${desired.name}`, variable);
       variablesDone++;
