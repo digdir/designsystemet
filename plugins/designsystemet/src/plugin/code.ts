@@ -52,7 +52,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
 
   if (msg.type === 'export-config') {
     try {
-      const { config, warnings } = exportConfig(await readCollections());
+      const { config, warnings } = await exportConfig(await readCollections());
       postMessage('export-config-result', {
         status: 'success',
         config: `${JSON.stringify(config, null, 2)}\n`,

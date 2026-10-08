@@ -67,6 +67,18 @@ describe('generateConfigFromCSS', () => {
     expect(warnings).toEqual([]);
   });
 
+  it('warns about a color step missing from the CSS, which importing the config generates', () => {
+    // Removes the first declaration, which is in the light color scheme.
+    const css = builtCSS.withOverrides.replace(/--ds-color-accent-surface-tinted:[^;]*;/, '');
+
+    const { config, warnings } = generateConfigFromCSS({ 'with-overrides': css });
+
+    expect(config.themes).toEqual({ 'with-overrides': themeWithOverrides });
+    expect(warnings).toEqual([
+      'Theme "with-overrides": Color "accent" has no surface-tinted in light, so importing the config generates it from the base color.',
+    ]);
+  });
+
   it('reads several themes', () => {
     const { config } = generateConfigFromCSS({
       'with-overrides': builtCSS.withOverrides,
@@ -96,6 +108,8 @@ describe('generateConfigFromCSS', () => {
     expect(warnings).toEqual([
       'Theme "test": --ds-color-accent-base-default in light isn\'t a hex color (rgb(0 98 186)), so it isn\'t in the config.',
       `Theme "test": The CSS was built with v0.0.1, and this is v${pkg.version}. Colors the two versions generate differently are kept as overrides.`,
+      'Theme "test": Color "neutral" has only its base color in light, so importing the config generates the rest from it.',
+      'Theme "test": Color "neutral" has no colors in dark, so importing the config generates them from the base color.',
       'Theme "test": Typography set "secondary" uses font family Georgia, but the config has one font family for every set, so IBM Plex Sans from "primary" is used.',
       'Theme "test": --ds-border-radius-base isn\'t a length the config can describe (calc(1px * 4)), so it isn\'t in the config.',
     ]);
@@ -118,9 +132,9 @@ describe('generateConfigFromCSS', () => {
 
     expect(({} as Record<string, unknown>)['background-tinted']).toBeUndefined();
     expect(config.themes?.test?.colors).toEqual({ neutral: '#24272b', constructor: '#0d7a5f' });
-    expect(warnings).toEqual([
+    expect(warnings).toContain(
       'Theme "test": Color "__proto__" isn\'t a valid color name (only a-z, 0-9 and -), so it isn\'t in the config.',
-    ]);
+    );
   });
 
   it('throws for CSS that is not theme CSS', () => {

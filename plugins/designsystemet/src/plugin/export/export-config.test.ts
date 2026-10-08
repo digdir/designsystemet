@@ -69,7 +69,9 @@ describe('exportConfig', () => {
       },
     };
 
-    const { config, warnings } = exportConfig(await syncedCollections(themes));
+    const { config, warnings } = await exportConfig(
+      await syncedCollections(themes),
+    );
 
     expect(config.themes).toEqual(themes);
     expect(warnings).toEqual([]);
@@ -84,7 +86,7 @@ describe('exportConfig', () => {
       },
     };
 
-    const { config } = exportConfig(await syncedCollections(themes));
+    const { config } = await exportConfig(await syncedCollections(themes));
 
     expect(config.themes).toEqual({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
@@ -92,7 +94,7 @@ describe('exportConfig', () => {
   });
 
   it('writes hex codes in lowercase', async () => {
-    const { config } = exportConfig(
+    const { config } = await exportConfig(
       await syncedCollections({
         theme: {
           colors: { accent: '#0062BA', neutral: '#24272B' },
@@ -115,7 +117,7 @@ describe('exportConfig', () => {
     });
     editColor(collections, 'theme/accent/3', 'Dark', '#123456');
 
-    const { config } = exportConfig(collections);
+    const { config } = await exportConfig(collections);
 
     expect(config.themes?.theme.overrides).toEqual({
       colors: { accent: { 'surface-default': { dark: '#123456' } } },
@@ -147,7 +149,7 @@ describe('exportConfig', () => {
     text.valuesByMode.Light = alias;
     text.valuesByMode.Dark = alias;
 
-    const { config } = exportConfig(collections);
+    const { config } = await exportConfig(collections);
 
     const toHex = (spec: ValueSpec | undefined) => {
       if (spec?.kind !== 'raw' || typeof spec.value !== 'object') {
@@ -195,26 +197,57 @@ describe('exportConfig', () => {
       );
     }
 
-    const { config, warnings } = exportConfig(collections);
+    const { config, warnings } = await exportConfig(collections);
 
     expect(config.themes).toEqual(themes);
     expect(warnings).toEqual([]);
   });
 
-  it('warns about collections and variables an import does not create', async () => {
+  it('warns about collections, modes and variables an import does not create', async () => {
     const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
     });
+    const collection = (name: string) => {
+      const found = collections.find((c) => c.name === name);
+      if (!found) {
+        throw new Error(`No ${name} collection`);
+      }
+      return found;
+    };
     collections.push({ name: 'Spacing', modes: ['Mode 1'], variables: [] });
-    collections
-      .find((c) => c.name === 'Color scheme')
-      ?.variables.push({ name: 'theme/accent/custom', valuesByMode: {} });
+    collection('Color scheme').variables.push({
+      name: 'theme/accent/custom',
+      valuesByMode: {},
+    });
+    // Added by hand to collections the config is generated into, not read from.
+    collection('Theme').variables.push({ name: 'custom', valuesByMode: {} });
+    collection('Size').modes.push('huge');
 
-    const { warnings } = exportConfig(collections);
+    const { warnings } = await exportConfig(collections);
 
     expect(warnings).toEqual([
       `Collection "Spacing" isn't created by an import, so it isn't in the config.`,
+      `Mode "Size/huge" isn't created by an import, so it isn't in the config.`,
+      `Variable "Theme/custom" isn't created by an import, so it isn't in the config.`,
       `Variable "Color scheme/theme/accent/custom" isn't created by an import, so it isn't in the config.`,
+    ]);
+  });
+
+  it('warns about a color step deleted in Figma, which importing the config generates', async () => {
+    const collections = await syncedCollections({
+      theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
+    });
+    const colorScheme = collections.find((c) => c.name === 'Color scheme');
+    colorScheme?.variables.splice(
+      colorScheme.variables.findIndex((v) => v.name === 'theme/accent/3'),
+      1,
+    );
+
+    const { warnings } = await exportConfig(collections);
+
+    expect(warnings).toEqual([
+      'Theme "theme": Color "accent" has no surface-default in light, so importing the config generates it from the base color.',
+      'Theme "theme": Color "accent" has no surface-default in dark, so importing the config generates it from the base color.',
     ]);
   });
 
@@ -230,7 +263,7 @@ describe('exportConfig', () => {
         .replaceAll('name-b', '__proto__'),
     ) as CollectionData[];
 
-    const { config, warnings } = exportConfig(collections);
+    const { config, warnings } = await exportConfig(collections);
 
     expect(Object.keys(config.themes ?? {})).toEqual(['constructor']);
     expect(config.themes?.constructor).toEqual({ colors });
@@ -252,7 +285,7 @@ describe('exportConfig', () => {
         },
       });
 
-    const { config, warnings } = exportConfig(collections);
+    const { config, warnings } = await exportConfig(collections);
 
     expect(config.themes?.alpha?.overrides).toBeUndefined();
     expect(warnings).toContain(
@@ -260,9 +293,9 @@ describe('exportConfig', () => {
     );
   });
 
-  it('throws for a file that no config was imported into', () => {
-    expect(() =>
+  it('throws for a file that no config was imported into', async () => {
+    await expect(
       exportConfig([{ name: 'Colors', modes: ['Mode 1'], variables: [] }]),
-    ).toThrow('No "Theme" collection found');
+    ).rejects.toThrow('No "Theme" collection found');
   });
 });
