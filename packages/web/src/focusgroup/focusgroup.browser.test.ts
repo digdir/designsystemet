@@ -3066,7 +3066,7 @@ describe('top-layer modal dialog', () => {
   test("modal dialog's own focusgroup navigates in both directions while in the top layer", async () => {
     document.body.innerHTML = `<div focusgroup="toolbar inline">
         <button tabindex="0" id="a">A</button>
-        <dialog id="dlg" focusgroup="toolbar inline">
+        <dialog id="dlg" focusgroup="toolbar inline" aria-label="name">
           <button tabindex="0" id="dlg_x">X</button>
           <button tabindex="0" id="dlg_y">Y</button>
           <button tabindex="0" id="dlg_close">Close</button>

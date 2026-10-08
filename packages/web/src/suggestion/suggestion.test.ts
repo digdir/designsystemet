@@ -138,14 +138,72 @@ describe('suggestion component', () => {
     const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
 
     await tick(); // Let mutation observer run
+    input.focus();
+    input.click();
+    expect(suggestion.list?.hidden).toBe(false);
 
     input.value = 'ion';
     input.dispatchEvent(new Event('input', { bubbles: true }));
+    await tick(); // Let mutation observer run
     expect(empty.hidden).toBe(true);
 
     input.value = 'missing';
     input.dispatchEvent(new Event('input', { bubbles: true }));
+    await tick(); // Let mutation observer run
     expect(empty.hidden).toBe(false);
+  });
+
+  it('toggles the empty option with a custom filter on a data-nofilter list', async () => {
+    document.body.innerHTML = `
+      <ds-suggestion class="ds-suggestion">
+        <input type="search" class="ds-input" />
+        <u-datalist role="listbox" data-nofilter>
+          <u-option data-empty>No results</u-option>
+          <u-option value="option-1">Option 1</u-option>
+          <u-option value="option-2">Option 2</u-option>
+        </u-datalist>
+      </ds-suggestion>
+    `;
+    const suggestion = document.querySelector(
+      'ds-suggestion',
+    ) as DSSuggestionElement;
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+    const options = suggestion.querySelectorAll<HTMLOptionElement>(
+      'u-option:not([data-empty])',
+    );
+
+    // Custom filter: case sensitive match on option.label, since data-nofilter disables the built-in filtering
+    input.addEventListener('input', () => {
+      for (const option of options)
+        option.hidden = !option.label.includes(input.value);
+    });
+
+    await tick(); // Let mutation observer run
+    input.focus();
+    input.click();
+    expect(suggestion.list?.hidden).toBe(false);
+
+    input.value = 'ion';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    await tick(); // Let mutation observer run
+    expect(options[0].hidden).toBe(false);
+    expect(options[1].hidden).toBe(false);
+    expect(empty.hidden).toBe(true);
+
+    input.value = 'ION'; // Would match with the built-in case insensitive filter
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    await tick(); // Let mutation observer run
+    expect(options[0].hidden).toBe(true);
+    expect(options[1].hidden).toBe(true);
+    expect(empty.hidden).toBe(false);
+
+    input.value = 'Option 2';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    await tick(); // Let mutation observer run
+    expect(options[0].hidden).toBe(true);
+    expect(options[1].hidden).toBe(false);
+    expect(empty.hidden).toBe(true);
   });
 
   it('shows the empty option when a data-nofilter list has disabled every other option', async () => {
