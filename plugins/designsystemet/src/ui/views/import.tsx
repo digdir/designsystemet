@@ -95,6 +95,15 @@ export function ImportView({
     const files = Array.from(input.files ?? []);
     if (files.length === 0) return;
     const tooLarge = files.find((file) => file.size > MAX_SIZE);
+    const isJson = files.every((file) => file.type === 'application/json');
+    if (!isJson) {
+      setSource({
+        status: 'error',
+        message: `Only JSON files are allowed.`,
+      });
+      input.value = '';
+      return;
+    }
     if (tooLarge) {
       setSource({
         status: 'error',
@@ -164,7 +173,7 @@ export function ImportView({
               ? `Reading ${source.fileNames.join(', ')}…`
               : source?.status === 'loaded' && source.fileNames.length > 0
                 ? `Loaded ${source.fileNames.join(', ')}`
-                : 'Drop designsystemet.config.json here'}
+                : 'Drop a json file here less than 1 MB in size'}
           </Field.Description>
           <Button asChild variant='secondary'>
             <span>Choose file</span>

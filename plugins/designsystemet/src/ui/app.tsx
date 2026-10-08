@@ -277,16 +277,33 @@ function App() {
         )}
         {state.view === 'import' && (
           <div className='footer-actions'>
-            <Button
-              data-color='neutral'
-              variant='tertiary'
-              onClick={() => dispatch({ type: 'show-about' })}
-            >
-              What does importing do?
-            </Button>
-            <Button onClick={importConfig} disabled={!configText.trim()}>
-              Import
-            </Button>
+            {START_VIEW === 'import' ? (
+              <>
+                <Button onClick={importConfig} disabled={!configText.trim()}>
+                  Import
+                </Button>
+                <Button
+                  data-color='neutral'
+                  variant='tertiary'
+                  onClick={() => dispatch({ type: 'show-about' })}
+                >
+                  What does importing do?
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  data-color='neutral'
+                  variant='tertiary'
+                  onClick={() => dispatch({ type: 'show-about' })}
+                >
+                  What does importing do?
+                </Button>
+                <Button onClick={importConfig} disabled={!configText.trim()}>
+                  Import
+                </Button>
+              </>
+            )}
           </div>
         )}
         {state.view === 'export' && exportedConfig && (
