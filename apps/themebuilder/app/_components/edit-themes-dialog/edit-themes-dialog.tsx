@@ -1,6 +1,7 @@
 import {
   Button,
   Dialog,
+  Divider,
   Fieldset,
   Heading,
   Textfield,
@@ -94,15 +95,21 @@ export const EditThemesDialog = ({
             {t('themeBuilder.edit-themes')}
           </Heading>
         </Dialog.Block>
-        <Dialog.Block>
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              save();
-            }}
-          >
-            <Fieldset data-size='sm'>
+        <Divider style={{ margin: 0 }} />
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            save();
+          }}
+        >
+          <Dialog.Block>
+            <Fieldset data-size='md'>
               <Fieldset.Legend>{t('themeBuilder.theme-names')}</Fieldset.Legend>
+              <Fieldset.Description
+                style={{ marginBlockEnd: 'var(--ds-size-4)' }}
+              >
+                Bruk kun bokstavene a-z, tall og bindestrek
+              </Fieldset.Description>
               <ul className={classes.rows}>
                 {rows.map((row, index) => (
                   <li key={row.id} className={classes.row}>
@@ -122,6 +129,7 @@ export const EditThemesDialog = ({
                     {rows.length > 1 && (
                       <Button
                         variant='tertiary'
+                        data-color='danger'
                         icon
                         aria-label={t('themeBuilder.remove-theme', {
                           name: row.name || index + 1,
@@ -131,6 +139,9 @@ export const EditThemesDialog = ({
                             previous.filter((item) => item.id !== row.id),
                           )
                         }
+                        data-tooltip={t('themeBuilder.remove-theme', {
+                          name: row.name || index + 1,
+                        })}
                       >
                         <TrashIcon aria-hidden />
                       </Button>
@@ -150,7 +161,11 @@ export const EditThemesDialog = ({
               <PlusIcon aria-hidden />
               {t('themeBuilder.add-theme')}
             </Button>
+          </Dialog.Block>
+          <Divider style={{ margin: 0 }} />
+          <Dialog.Block>
             <div className={classes.actions}>
+              <Button type='submit'>{t('colorPane.save')}</Button>
               <Button
                 type='button'
                 variant='secondary'
@@ -158,10 +173,9 @@ export const EditThemesDialog = ({
               >
                 {t('colorPane.cancel')}
               </Button>
-              <Button type='submit'>{t('colorPane.save')}</Button>
             </div>
-          </form>
-        </Dialog.Block>
+          </Dialog.Block>
+        </form>
       </Dialog>
     </>
   );

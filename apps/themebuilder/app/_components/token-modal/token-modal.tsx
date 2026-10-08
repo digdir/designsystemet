@@ -6,7 +6,6 @@ import {
   Label,
   Link,
   Paragraph,
-  Select,
 } from '@digdir/designsystemet-react';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { useRef, useState } from 'react';
@@ -115,24 +114,14 @@ export const TokenModal = () => {
                 {t('themeModal.css.heading')}
               </Heading>
               <Paragraph>{t('themeModal.css.description')}</Paragraph>
-              {hasMultipleThemes && (
-                <Field data-size='sm'>
-                  <Label>{t('themeModal.css.select-theme')}</Label>
-                  <Select
-                    value={cssTheme.name}
-                    onChange={(event) =>
-                      setCssThemeName(event.currentTarget.value)
-                    }
-                  >
-                    {themeNames.map((name) => (
-                      <Select.Option key={name} value={name}>
-                        {name}
-                      </Select.Option>
-                    ))}
-                  </Select>
-                </Field>
-              )}
-              <Css themeName={cssTheme.name} {...themeCss} />
+              <Css
+                themeName={cssTheme.name}
+                hasMultipleThemes={hasMultipleThemes}
+                cssTheme={cssTheme}
+                themeNames={themeNames}
+                setCssThemeName={setCssThemeName}
+                {...themeCss}
+              />
             </section>
           </div>
         </Dialog.Block>

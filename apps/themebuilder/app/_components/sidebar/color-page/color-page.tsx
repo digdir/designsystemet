@@ -496,12 +496,6 @@ export const ColorPage = () => {
           </Paragraph>
           <div className={classes.confirmationActions}>
             <Button
-              variant='secondary'
-              onClick={() => confirmationRef.current?.close()}
-            >
-              {t('colorPane.cancel')}
-            </Button>
-            <Button
               data-color={pendingAction === 'remove' ? 'danger' : 'accent'}
               onClick={() => {
                 confirmationRef.current?.close();
@@ -535,6 +529,12 @@ export const ColorPage = () => {
                     ? 'colorPane.confirm-rename'
                     : 'colorPane.confirm-add',
               )}
+            </Button>
+            <Button
+              variant='secondary'
+              onClick={() => confirmationRef.current?.close()}
+            >
+              {t('colorPane.cancel')}
             </Button>
           </div>
         </Dialog.Block>
