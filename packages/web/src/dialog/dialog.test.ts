@@ -68,7 +68,7 @@ describe('Dialog behavior', () => {
 describe('Dialog closedby="any" Safari polyfill', () => {
   const renderClosedby = (closedby = 'any') => {
     document.body.innerHTML = `
-<dialog id="my-dialog" class="ds-dialog" open closedby="${closedby}">
+<dialog id="my-dialog" class="ds-dialog" open closedby="${closedby}" aria-label="name">
     <p>Dialog content</p>
 </dialog>`;
     return document.getElementById('my-dialog') as HTMLDialogElement;
