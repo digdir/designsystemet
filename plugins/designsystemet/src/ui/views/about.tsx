@@ -25,7 +25,9 @@ export function AboutView(): React.JSX.Element {
         <List.Item>
           Deletes modes, variables and styles from earlier imports that aren't
           in the config any more. One added by hand with a name from the config
-          counts as the import's from then on.
+          counts as the import's from then on. Imports with older versions of
+          this plugin didn't record what they created, so what they left behind
+          is kept and listed instead.
         </List.Item>
         <List.Item>
           Keeps other modes, variables and styles added by hand, including
