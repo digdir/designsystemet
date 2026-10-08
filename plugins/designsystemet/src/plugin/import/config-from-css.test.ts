@@ -65,15 +65,20 @@ describe('configFromCss', () => {
     ).toThrow('More than one file is named for the theme "designsystemet".');
   });
 
-  it('names themes after files whose names every object has a property for', () => {
-    const { config } = configFromCss([
-      { css, fileName: 'constructor.css' },
-      { css, fileName: '__proto__.css' },
-    ]);
+  it('names a theme after a file whose name every object has a property for', () => {
+    const { config } = configFromCss([{ css, fileName: 'constructor.css' }]);
 
-    expect(Object.keys(JSON.parse(config).themes)).toEqual([
-      'constructor',
-      '__proto__',
-    ]);
+    expect(Object.keys(JSON.parse(config).themes)).toEqual(['constructor']);
+  });
+
+  it('refuses a file that names a theme __proto__, which a config cannot have', () => {
+    expect(() =>
+      configFromCss([
+        { css, fileName: 'designsystemet.css' },
+        { css, fileName: '__proto__.css' },
+      ]),
+    ).toThrow(
+      'A theme can\'t be called "__proto__", as a config can\'t have a theme with that name. Rename __proto__.css to name the theme something else.',
+    );
   });
 });
