@@ -191,8 +191,9 @@ type Resolve = (
   mode: string,
 ) => VariableValue | undefined;
 
-// Follows aliases to a raw value. An alias resolves in the target collection's default (first) mode,
-// as Figma does when nothing else sets the mode.
+// Follows aliases to a raw value, resolving modes as Figma does: an alias to a variable in the same collection
+// resolves in the same mode (a Dark alias gives the target's Dark value). An alias to another collection
+// resolves in that collection's default (first) mode, as nothing else sets its mode here.
 function createResolver(
   collectionByName: Map<string, CollectionData>,
 ): Resolve {
@@ -227,9 +228,12 @@ function createResolver(
     if (value.kind === 'raw') {
       return value.value;
     }
-    const defaultMode = collectionByName.get(value.collection)?.modes[0];
-    return defaultMode
-      ? resolve(value.collection, value.name, defaultMode, depth + 1)
+    const targetMode =
+      value.collection === collection
+        ? mode
+        : collectionByName.get(value.collection)?.modes[0];
+    return targetMode
+      ? resolve(value.collection, value.name, targetMode, depth + 1)
       : undefined;
   };
 

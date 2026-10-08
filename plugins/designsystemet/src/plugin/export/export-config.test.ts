@@ -4,6 +4,7 @@ import { buildCollectionSpecs } from '../import/collection-specs';
 import { createTokenModel } from '../import/create-token-model';
 import { createImportLog } from '../import/log';
 import { getTokenSetLookupOrder } from '../import/resolver';
+import type { ValueSpec } from '../types';
 import { exportConfig } from './export-config';
 import type { CollectionData } from './types';
 
@@ -118,6 +119,54 @@ describe('exportConfig', () => {
 
     expect(config.themes?.theme.overrides).toEqual({
       colors: { accent: { 'surface-default': { dark: '#123456' } } },
+    });
+  });
+
+  it('resolves an alias within a collection in the same mode, as Figma does', async () => {
+    const collections = await syncedCollections({
+      alpha: { colors: { accent: '#0062ba', neutral: '#24272b' } },
+    });
+    const colorScheme = collections.find((c) => c.name === 'Color scheme');
+    const variable = (step: keyof typeof semanticColorSpec) =>
+      colorScheme?.variables.find(
+        (v) => v.name === `alpha/accent/${semanticColorSpec[step].number}`,
+      );
+    // background-default is white in Light and dark in Dark, so the mode an alias resolves in shows.
+    const background = variable('background-default');
+    const text = variable('text-default');
+    if (!background || !text) {
+      throw new Error('No accent variables');
+    }
+    // Point text-default at background-default in both modes, as if aliased by hand in Figma. Both, as only
+    // the mode that isn't the collection's first one shows the difference.
+    const alias = {
+      kind: 'alias',
+      collection: 'Color scheme',
+      name: background.name,
+    } as const;
+    text.valuesByMode.Light = alias;
+    text.valuesByMode.Dark = alias;
+
+    const { config } = exportConfig(collections);
+
+    const toHex = (spec: ValueSpec | undefined) => {
+      if (spec?.kind !== 'raw' || typeof spec.value !== 'object') {
+        throw new Error('Not a raw color');
+      }
+      const { r, g, b } = spec.value as RGBA;
+      return `#${[r, g, b]
+        .map((n) =>
+          Math.round(n * 255)
+            .toString(16)
+            .padStart(2, '0'),
+        )
+        .join('')}`;
+    };
+    expect(
+      config.themes?.alpha?.overrides?.colors?.accent?.['text-default'],
+    ).toEqual({
+      light: toHex(background.valuesByMode.Light),
+      dark: toHex(background.valuesByMode.Dark),
     });
   });
 
