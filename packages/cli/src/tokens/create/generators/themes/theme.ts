@@ -2,14 +2,23 @@ import * as R from 'ramda';
 import { type ColorNumber, semanticColorMap } from '../../../../colors/types.ts';
 import type { BorderRadiusConfig, Token, TokenSet, TypographySet } from '../../../types.ts';
 
+/**
+ * @param colorNames Every color in the config, across all themes, so all themes define the same colors.
+ * @param themeColorNames The theme's own colors. A color the theme doesn't have uses the theme's first color instead.
+ */
 export const generateTheme = (
   colorNames: string[],
   themeName: string,
   borderRadius: BorderRadiusConfig,
   typography: TypographySet,
+  themeColorNames: string[] = colorNames,
 ) => {
+  const [fallbackColor] = themeColorNames;
   const themeColorTokens = Object.fromEntries(
-    colorNames.map((colorName) => [colorName, generateColorScaleTokens(colorName, themeName)]),
+    colorNames.map((colorName) => [
+      colorName,
+      generateColorScaleTokens(themeColorNames.includes(colorName) ? colorName : fallbackColor, themeName),
+    ]),
   );
 
   const { color: themeBaseFileColor, ...remainingThemeFile } = generateBase(themeName, borderRadius, typography);
