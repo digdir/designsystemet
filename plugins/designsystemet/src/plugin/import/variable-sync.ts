@@ -67,17 +67,18 @@ export async function ensureModes(
     );
   }
 
+  // Modes are removed before others are added, so replacing a mode works in a collection at Figma's mode limit.
+  for (const mode of plan.remove) {
+    collection.removeMode(mode.modeId);
+    log.info.push(`Deleted mode ${mode.name} from ${collection.name}`);
+    await pause(() => `Importing modes in ${collection.name}`);
+  }
+
   for (const modeName of plan.add) {
     managed.add(collection.addMode(modeName));
     saveManaged();
     log.info.push(`Created mode ${modeName} in ${collection.name}`);
     // Each new mode gets a value for every variable in the collection, so this can be slow.
-    await pause(() => `Importing modes in ${collection.name}`);
-  }
-
-  for (const mode of plan.remove) {
-    collection.removeMode(mode.modeId);
-    log.info.push(`Deleted mode ${mode.name} from ${collection.name}`);
     await pause(() => `Importing modes in ${collection.name}`);
   }
 

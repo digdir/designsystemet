@@ -13,9 +13,10 @@ import {
 } from './ownership';
 
 /** A stand-in for a Figma variable, style or collection, which keeps its plugin data in a map. */
-function pluginDataItem(data: Record<string, string> = {}) {
+function pluginDataItem(data: Record<string, string> = {}, name = 'size/base') {
   const store = new Map(Object.entries(data));
   const item = {
+    name,
     /** How many times plugin data was written. */
     writes: 0,
     getPluginData: (key: string) => store.get(key) ?? '',
@@ -83,6 +84,22 @@ describe('planModes', () => {
     ).toEqual(['dark']);
   });
 
+  it('renames one mode when every mode the import created is replaced, as a collection always has a mode', () => {
+    expect(
+      planModes(
+        [mode('1', 'a'), mode('2', 'b')],
+        ['c', 'd'],
+        new Set(['1', '2']),
+      ),
+    ).toEqual({
+      rename: { mode: mode('1', 'a'), to: 'c' },
+      add: ['d'],
+      remove: [mode('2', 'b')],
+      keep: [],
+      managed: ['1'],
+    });
+  });
+
   it('removes only the modes the import created', () => {
     const plan = planModes(
       [mode('1', 'light'), mode('2', 'old'), mode('3', 'custom')],
@@ -148,7 +165,27 @@ describe('plugin data', () => {
     markManaged(item);
 
     expect(isManaged(item)).toBe(true);
-    expect(readImportData(item)).toEqual({ pluginVersion: pkg.version });
+    expect(readImportData(item)).toEqual({
+      pluginVersion: pkg.version,
+      name: 'size/base',
+    });
+  });
+
+  it('counts an item renamed or duplicated under a new name after the import as made by hand', () => {
+    const item = pluginDataItem();
+    markManaged(item);
+
+    item.name = 'size/base copy';
+
+    expect(isManaged(item)).toBe(false);
+  });
+
+  it('counts an item marked before names were stored as the import’s', () => {
+    const item = pluginDataItem({
+      import: JSON.stringify({ pluginVersion: '1.0.0' }),
+    });
+
+    expect(isManaged(item)).toBe(true);
   });
 
   it('stores the mode IDs on the collection', () => {

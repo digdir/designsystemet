@@ -28,8 +28,9 @@ export function AboutView(): React.JSX.Element {
           counts as the import's from then on.
         </List.Item>
         <List.Item>
-          Keeps other modes, variables and styles added by hand, and lists the
-          ones that aren't in the config after the import.
+          Keeps other modes, variables and styles added by hand, including
+          variables and styles renamed or duplicated after an import, and lists
+          the ones that aren't in the config after the import.
         </List.Item>
         <List.Item>Leaves other collections and styles alone.</List.Item>
       </List.Unordered>

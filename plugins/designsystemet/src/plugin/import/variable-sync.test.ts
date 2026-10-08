@@ -63,6 +63,29 @@ describe('ensureModes', () => {
     expect(managedModeIds(collection)).toEqual(new Set(['m0', 'm1']));
   });
 
+  it.each([
+    { from: ['a', 'b'], to: ['a', 'c'] },
+    { from: ['a', 'b'], to: ['c', 'd'] },
+  ])(
+    'replaces modes in a collection at the mode limit: $from -> $to',
+    async ({ from, to }) => {
+      const collection = fakeCollection(from, 2);
+      collection.setPluginData(
+        'import',
+        JSON.stringify({ pluginVersion: '1.0.0', modes: ['m0', 'm1'] }),
+      );
+
+      await ensureModes(
+        collection as unknown as VariableCollection,
+        to,
+        createImportLog(),
+        noPause,
+      );
+
+      expect(collection.modes.map((m) => m.name)).toEqual(to);
+    },
+  );
+
   it('forgets the modes it removed once every change is done', async () => {
     const collection = fakeCollection(['light', 'old'], 10);
     collection.setPluginData(

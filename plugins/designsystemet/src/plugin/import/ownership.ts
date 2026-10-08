@@ -19,6 +19,11 @@ export type ImportData = {
    * was created by the import, or taken over from an earlier import.
    */
   pluginVersion?: string;
+  /**
+   * On variables and styles: the name the import gave the item. An item renamed after the import, or duplicated
+   * under a new name, counts as made by hand, so people can copy and build on what the import creates.
+   */
+  name?: string;
   /** On collections: the IDs of the modes the import created, as modes can't hold plugin data. */
   modes?: string[];
 };
@@ -27,6 +32,8 @@ export type ImportData = {
 const DATA_KEY = 'import';
 
 type PluginDataItem = Pick<PluginDataMixin, 'getPluginData' | 'setPluginData'>;
+/** A variable or style. */
+type NamedPluginDataItem = PluginDataItem & { name: string };
 type Mode = { modeId: string; name: string };
 
 /** The import's data on an item. Empty if it has none, or if it can't be read. */
@@ -59,14 +66,22 @@ export function updateImportData(
   }
 }
 
-/** Whether the import created this variable or style, or took it over from an earlier import. */
-export function isManaged(item: PluginDataItem): boolean {
-  return typeof readImportData(item).pluginVersion === 'string';
+/**
+ * Whether the import created this variable or style, or took it over from an earlier import, and it still has the
+ * name the import gave it. One renamed since, or a duplicate under a new name, counts as made by hand. Data written
+ * before names were stored has none, and counts as the import's.
+ */
+export function isManaged(item: NamedPluginDataItem): boolean {
+  const { pluginVersion, name } = readImportData(item);
+  return (
+    typeof pluginVersion === 'string' &&
+    (typeof name !== 'string' || name === item.name)
+  );
 }
 
-/** Marks a variable or style as the import's, by writing its data, which stamps the plugin version. */
-export function markManaged(item: PluginDataItem): void {
-  updateImportData(item, {});
+/** Marks a variable or style as the import's, under its current name, and stamps the plugin version. */
+export function markManaged(item: NamedPluginDataItem): void {
+  updateImportData(item, { name: item.name });
 }
 
 /** The IDs of the collection's modes the import created. */
@@ -85,7 +100,10 @@ export function setManagedModeIds(
 }
 
 export type ModePlan = {
-  /** The collection's only mode, renamed to the first mode in the config. */
+  /**
+   * A mode the import created, renamed to a mode the config adds, when every existing mode would be removed
+   * otherwise: a collection always has a mode. Renaming also keeps the values and layers using the mode.
+   */
   rename?: { mode: Mode; to: string };
   /** Mode names to add, in config order. */
   add: string[];
@@ -93,15 +111,15 @@ export type ModePlan = {
   remove: Mode[];
   /** Modes that aren't in the config, but weren't created by the import. */
   keep: Mode[];
-  /** Existing modes the import now manages: the ones in the config, including a renamed mode. */
+  /** Existing modes the import now manages: the ones in the config, and a renamed mode. */
   managed: string[];
 };
 
 /**
- * How to make a collection's modes match the config. Only modes the import created are removed. The only mode
- * of a collection is renamed instead of replaced, so values and layers using it are kept, but only when the import
- * created it, e.g. the mode Figma gives a collection the import creates. A mode made by hand is never renamed,
- * even one called "Mode 1" in a collection made by hand with a name from the config.
+ * How to make a collection's modes match the config. Only modes the import created are removed or renamed, so a
+ * mode made by hand is never touched, even one called "Mode 1" in a collection made by hand with a name from the
+ * config. When every existing mode would be removed, as a collection always has a mode, one is renamed to a mode
+ * the config adds instead, e.g. the mode Figma gives a collection the import creates.
  */
 export function planModes(
   existing: Mode[],
@@ -113,30 +131,27 @@ export function planModes(
     return plan;
   }
 
-  const names = new Map(existing.map((mode) => [mode.modeId, mode.name]));
-  const [only] = existing;
-  if (
-    existing.length === 1 &&
-    !desired.includes(only.name) &&
-    managedIds.has(only.modeId)
-  ) {
-    plan.rename = { mode: only, to: desired[0] };
-    names.set(only.modeId, desired[0]);
-  }
-
-  const existingNames = new Set(names.values());
   // Without duplicates, as a mode name the config lists twice is still one mode.
-  plan.add = [...new Set(desired)].filter((name) => !existingNames.has(name));
-
+  const wanted = [...new Set(desired)];
   for (const mode of existing) {
-    const name = names.get(mode.modeId) ?? mode.name;
-    if (desired.includes(name)) {
+    if (wanted.includes(mode.name)) {
       plan.managed.push(mode.modeId);
     } else if (managedIds.has(mode.modeId)) {
       plan.remove.push(mode);
     } else {
       plan.keep.push(mode);
     }
+  }
+  const existingNames = new Set(existing.map((mode) => mode.name));
+  plan.add = wanted.filter((name) => !existingNames.has(name));
+
+  const [first] = plan.remove;
+  const [to] = plan.add;
+  if (first && to && plan.remove.length === existing.length) {
+    plan.rename = { mode: first, to };
+    plan.remove.shift();
+    plan.add.shift();
+    plan.managed.push(first.modeId);
   }
 
   return plan;

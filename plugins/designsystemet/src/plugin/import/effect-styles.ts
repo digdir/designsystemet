@@ -25,9 +25,13 @@ export async function syncEffectStyles(
   const existing = await figma.getLocalEffectStylesAsync();
   const desiredNames = new Set(desired.map((token) => token.figmaName));
 
-  // Only styles the import created are deleted; see ownership.ts.
+  // Only styles the import created, under the name it gave them, are deleted; see ownership.ts. One renamed or
+  // duplicated by hand counts as the user's and is kept. The import's own styles count wherever they are (e.g. if
+  // the names it gives change); other styles only count under shadow/, where they're kept and reported.
   const leftovers = splitLeftovers(
-    existing.filter((style) => style.name.startsWith('shadow/')),
+    existing.filter(
+      (style) => style.name.startsWith('shadow/') || isManaged(style),
+    ),
     desiredNames,
     { name: (style) => style.name, managed: isManaged },
   );
