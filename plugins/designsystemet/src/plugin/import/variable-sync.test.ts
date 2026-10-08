@@ -3,7 +3,7 @@ import type { CollectionSpec } from './collection-specs';
 import { createImportLog } from './log';
 import { isManaged, managedModeIds } from './ownership';
 import type { Pause } from './pause';
-import { ensureModes, syncVariables } from './variable-sync';
+import { ensureModes, syncCollections, syncVariables } from './variable-sync';
 
 const noPause: Pause = async () => {};
 
@@ -43,6 +43,11 @@ function fakeCollection(modeNames: string[], modeLimit: number) {
 describe('ensureModes', () => {
   it('keeps the modes it made marked when a later change fails', async () => {
     const collection = fakeCollection(['Mode 1'], 2);
+    // As syncCollections marks the mode Figma gives a collection it creates.
+    collection.setPluginData(
+      'import',
+      JSON.stringify({ pluginVersion: '1.0.0', modes: ['m0'] }),
+    );
 
     await expect(
       ensureModes(
@@ -74,6 +79,55 @@ describe('ensureModes', () => {
 
     expect(collection.modes.map((m) => m.name)).toEqual(['light']);
     expect(managedModeIds(collection)).toEqual(new Set(['m0']));
+  });
+});
+
+describe('syncCollections', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  const spec: CollectionSpec = {
+    name: 'Theme',
+    modeNames: ['light', 'dark'],
+    variables: new Map(),
+  };
+
+  it('renames the mode Figma gives a collection it creates', async () => {
+    const created = fakeCollection(['Mode 1'], 10);
+    vi.stubGlobal('figma', {
+      variables: {
+        getLocalVariableCollectionsAsync: async () => [],
+        createVariableCollection: () => created,
+      },
+    });
+
+    await syncCollections([spec], createImportLog(), noPause);
+
+    expect(created.modes.map((m) => m.name)).toEqual(['light', 'dark']);
+    expect(managedModeIds(created)).toEqual(new Set(['m0', 'm1']));
+  });
+
+  it('keeps an unmarked "Mode 1" in a collection made by hand with a name from the config', async () => {
+    const madeByHand = fakeCollection(['Mode 1'], 10);
+    vi.stubGlobal('figma', {
+      variables: {
+        getLocalVariableCollectionsAsync: async () => [madeByHand],
+      },
+    });
+    const log = createImportLog();
+
+    await syncCollections([spec], log, noPause);
+
+    expect(madeByHand.modes.map((m) => m.name)).toEqual([
+      'Mode 1',
+      'light',
+      'dark',
+    ]);
+    expect(managedModeIds(madeByHand)).toEqual(new Set(['m1', 'm2']));
+    expect(log.warnings).toEqual([
+      "Kept 1 mode in Theme that isn't in the config and wasn't created by this plugin: Mode 1",
+    ]);
   });
 });
 
