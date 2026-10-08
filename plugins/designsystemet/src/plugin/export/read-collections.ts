@@ -4,7 +4,8 @@ import type { CollectionData } from './types';
 /**
  * Reads the file's local variable collections as plain data for `exportConfig`. Values are keyed by
  * mode name, and aliases name their target by collection and variable name. Aliases to variables
- * outside the file (e.g. from a library) are left out, since the config can't refer to them.
+ * outside the file (e.g. from a library) are left out, since the config can't refer to them, and their modes
+ * are listed in `externalAliasModes` so the export can say so.
  */
 export async function readCollections(): Promise<CollectionData[]> {
   const collections = await figma.variables.getLocalVariableCollectionsAsync();
@@ -36,16 +37,28 @@ export async function readCollections(): Promise<CollectionData[]> {
       variables: variables
         .filter((variable) => variable.variableCollectionId === collection.id)
         .map((variable) => {
+          const externalAliasModes: string[] = [];
           // Keyed by mode name with Object.fromEntries, which only adds own properties, so a mode named
           // e.g. `__proto__` keeps its value.
           const valuesByMode: Record<string, ValueSpec> = Object.fromEntries(
             Object.entries(variable.valuesByMode).flatMap(([modeId, value]) => {
               const modeName = modeNameById.get(modeId);
+              if (!modeName) {
+                return [];
+              }
               const spec = toValueSpec(value);
-              return modeName && spec ? [[modeName, spec]] : [];
+              if (!spec) {
+                externalAliasModes.push(modeName);
+                return [];
+              }
+              return [[modeName, spec]];
             }),
           );
-          return { name: variable.name, valuesByMode };
+          return {
+            name: variable.name,
+            valuesByMode,
+            ...(externalAliasModes.length > 0 && { externalAliasModes }),
+          };
         }),
     };
   });

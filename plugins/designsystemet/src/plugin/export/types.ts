@@ -14,4 +14,9 @@ export type VariableData = {
   name: string;
   /** Keyed by mode name. Aliases name their target by collection and variable name, as in an import. */
   valuesByMode: Record<string, ValueSpec>;
+  /**
+   * Modes whose value is an alias to a variable outside the file, e.g. from a library. They have no value in
+   * `valuesByMode`, as the config can't refer to such a variable.
+   */
+  externalAliasModes?: string[];
 };
