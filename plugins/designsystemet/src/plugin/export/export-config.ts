@@ -105,17 +105,35 @@ export async function exportConfig(
   // Object.fromEntries below only adds own properties.
   const themes = new Map<string, ThemeConfig>();
 
+  // Theme modes left out of the config, with a warning of their own.
+  const skippedThemes = new Set<string>();
+
   for (const themeName of themeCollection.modes) {
     // The config schema drops a `__proto__` key, like JSON tools commonly do, so no config can have this theme.
     if (themeName === '__proto__') {
       warnings.push(
         `Theme "${themeName}" isn't in the config, as a config can't have a theme with that name. Rename the mode in the ${FIGMA_COLLECTION.THEME} collection to include it.`,
       );
+      skippedThemes.add(themeName);
       continue;
     }
-    const { warnings: colorWarnings, ...colors } = configColorsFromValues(
-      readThemeColors(themeName, colorScheme, schemeModes, resolve),
+    const colorValues = readThemeColors(
+      themeName,
+      colorScheme,
+      schemeModes,
+      resolve,
     );
+    // A Theme mode added by hand has no colors of its own, as an import only creates them for the config's
+    // themes. As a theme, it would make the config invalid, so it's left out.
+    if (colorValues.scales.size === 0) {
+      warnings.push(
+        `Theme "${themeName}" has no colors in the ${FIGMA_COLLECTION.COLOR_SCHEME} collection, e.g. as its mode was added by hand, so it isn't in the config.`,
+      );
+      skippedThemes.add(themeName);
+      continue;
+    }
+    const { warnings: colorWarnings, ...colors } =
+      configColorsFromValues(colorValues);
     warnings.push(
       ...colorWarnings.map((warning) => `Theme "${themeName}": ${warning}`),
     );
@@ -133,7 +151,9 @@ export async function exportConfig(
 
   // Validate like a pasted config, so the file is one the plugin and the CLI accept.
   validateConfig(externalConfigSchema, config);
-  warnings.push(...(await compareWithImport(collections, config, resolve)));
+  warnings.push(
+    ...(await compareWithImport(collections, config, skippedThemes, resolve)),
+  );
 
   return { config, warnings };
 }
@@ -150,6 +170,8 @@ export async function exportConfig(
 async function compareWithImport(
   collections: CollectionData[],
   config: ExportedConfig['config'],
+  /** Theme modes the export left out and already warned about. */
+  skippedThemes: Set<string>,
   resolve: Resolve,
 ): Promise<string[]> {
   const model = await createTokenModel(JSON.stringify(config));
@@ -172,9 +194,8 @@ async function compareWithImport(
 
     const modeNames = new Set(spec.modeNames);
     for (const mode of collection.modes) {
-      // A theme named `__proto__` is reported when the themes are read.
       const reported =
-        mode === '__proto__' && collection.name === FIGMA_COLLECTION.THEME;
+        collection.name === FIGMA_COLLECTION.THEME && skippedThemes.has(mode);
       if (!modeNames.has(mode) && !reported) {
         warnings.push(
           `Mode "${collection.name}/${mode}" isn't created by an import, so it isn't in the config.`,

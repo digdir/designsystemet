@@ -268,6 +268,27 @@ describe('exportConfig', () => {
     );
   });
 
+  it('leaves out a Theme mode added by hand, which the import keeps', async () => {
+    const colors = { accent: '#0062ba', neutral: '#24272b' };
+    const collections = await syncedCollections({ alpha: { colors } });
+    // Added in Figma after the import: Figma gives a new mode the default mode's values.
+    const theme = collections.find((c) => c.name === 'Theme');
+    theme?.modes.push('Custom');
+    for (const variable of theme?.variables ?? []) {
+      const value = variable.valuesByMode.alpha;
+      if (value) {
+        variable.valuesByMode.Custom = value;
+      }
+    }
+
+    const { config, warnings } = await exportConfig(collections);
+
+    expect(config.themes).toEqual({ alpha: { colors } });
+    expect(warnings).toEqual([
+      'Theme "Custom" has no colors in the Color scheme collection, e.g. as its mode was added by hand, so it isn\'t in the config.',
+    ]);
+  });
+
   it('warns about a mode named __proto__ outside the Theme collection', async () => {
     const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
