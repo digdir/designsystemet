@@ -67,6 +67,12 @@ describe('planModes', () => {
     ).toEqual({ add: ['light'], remove: [], keep: [], managed: ['1'] });
   });
 
+  it('adds a mode the config lists twice once', () => {
+    expect(
+      planModes([mode('1', 'light')], ['light', 'dark', 'dark'], new Set()).add,
+    ).toEqual(['dark']);
+  });
+
   it('removes only the modes the import created', () => {
     const plan = planModes(
       [mode('1', 'light'), mode('2', 'old'), mode('3', 'custom')],
