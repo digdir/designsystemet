@@ -1,0 +1,948 @@
+{
+  "color": {
+    "primary": {
+      "background-default--light": {
+        "value": "#ffffff",
+        "syntax": "var(--ds-color-background-default--light)"
+      },
+      "background-default--dark": {
+        "value": "#07182c",
+        "syntax": "var(--ds-color-background-default--dark)"
+      },
+      "background-tinted--light": {
+        "value": "#eff4fa",
+        "syntax": "var(--ds-color-background-tinted--light)"
+      },
+      "background-tinted--dark": {
+        "value": "#0c2038",
+        "syntax": "var(--ds-color-background-tinted--dark)"
+      },
+      "surface-default--light": {
+        "value": "#ffffff",
+        "syntax": "var(--ds-color-surface-default--light)"
+      },
+      "surface-default--dark": {
+        "value": "#102945",
+        "syntax": "var(--ds-color-surface-default--dark)"
+      },
+      "surface-tinted--light": {
+        "value": "#dfeaf5",
+        "syntax": "var(--ds-color-surface-tinted--light)"
+      },
+      "surface-tinted--dark": {
+        "value": "#142f4e",
+        "syntax": "var(--ds-color-surface-tinted--dark)"
+      },
+      "surface-hover--light": {
+        "value": "#cadcef",
+        "syntax": "var(--ds-color-surface-hover--light)"
+      },
+      "surface-hover--dark": {
+        "value": "#18365a",
+        "syntax": "var(--ds-color-surface-hover--dark)"
+      },
+      "surface-active--light": {
+        "value": "#b3cde8",
+        "syntax": "var(--ds-color-surface-active--light)"
+      },
+      "surface-active--dark": {
+        "value": "#1f446f",
+        "syntax": "var(--ds-color-surface-active--dark)"
+      },
+      "border-subtle--light": {
+        "value": "#9dbfe2",
+        "syntax": "var(--ds-color-border-subtle--light)"
+      },
+      "border-subtle--dark": {
+        "value": "#275183",
+        "syntax": "var(--ds-color-border-subtle--dark)"
+      },
+      "border-default--light": {
+        "value": "#2f7cc5",
+        "syntax": "var(--ds-color-border-default--light)"
+      },
+      "border-default--dark": {
+        "value": "#5d84b3",
+        "syntax": "var(--ds-color-border-default--dark)"
+      },
+      "border-strong--light": {
+        "value": "#015db1",
+        "syntax": "var(--ds-color-border-strong--light)"
+      },
+      "border-strong--dark": {
+        "value": "#90aaca",
+        "syntax": "var(--ds-color-border-strong--dark)"
+      },
+      "text-subtle--light": {
+        "value": "#015db1",
+        "syntax": "var(--ds-color-text-subtle--light)"
+      },
+      "text-subtle--dark": {
+        "value": "#90aaca",
+        "syntax": "var(--ds-color-text-subtle--dark)"
+      },
+      "text-default--light": {
+        "value": "#002b58",
+        "syntax": "var(--ds-color-text-default--light)"
+      },
+      "text-default--dark": {
+        "value": "#e8edf4",
+        "syntax": "var(--ds-color-text-default--dark)"
+      },
+      "base-default--light": {
+        "value": "#0162ba",
+        "syntax": "var(--ds-color-base-default--light)"
+      },
+      "base-default--dark": {
+        "value": "#5290ce",
+        "syntax": "var(--ds-color-base-default--dark)"
+      },
+      "base-hover--light": {
+        "value": "#014f98",
+        "syntax": "var(--ds-color-base-hover--light)"
+      },
+      "base-hover--dark": {
+        "value": "#74a6d7",
+        "syntax": "var(--ds-color-base-hover--dark)"
+      },
+      "base-active--light": {
+        "value": "#003d77",
+        "syntax": "var(--ds-color-base-active--light)"
+      },
+      "base-active--dark": {
+        "value": "#96bbe0",
+        "syntax": "var(--ds-color-base-active--dark)"
+      },
+      "base-contrast-subtle--light": {
+        "value": "#dde9f5",
+        "syntax": "var(--ds-color-base-contrast-subtle--light)"
+      },
+      "base-contrast-subtle--dark": {
+        "value": "#0a1928",
+        "syntax": "var(--ds-color-base-contrast-subtle--dark)"
+      },
+      "base-contrast-default--light": {
+        "value": "#ffffff",
+        "syntax": "var(--ds-color-base-contrast-default--light)"
+      },
+      "base-contrast-default--dark": {
+        "value": "#000000",
+        "syntax": "var(--ds-color-base-contrast-default--dark)"
+      }
+    },
+    "danger": {
+      "background-default--light": {
+        "value": "#ffffff",
+        "syntax": "var(--ds-color-background-default--light)"
+      },
+      "background-default--dark": {
+        "value": "#300b07",
+        "syntax": "var(--ds-color-background-default--dark)"
+      },
+      "background-tinted--light": {
+        "value": "#fff0f0",
+        "syntax": "var(--ds-color-background-tinted--light)"
+      },
+      "background-tinted--dark": {
+        "value": "#3d100b",
+        "syntax": "var(--ds-color-background-tinted--dark)"
+      },
+      "surface-default--light": {
+        "value": "#ffffff",
+        "syntax": "var(--ds-color-surface-default--light)"
+      },
+      "surface-default--dark": {
+        "value": "#4b1610",
+        "syntax": "var(--ds-color-surface-default--dark)"
+      },
+      "surface-tinted--light": {
+        "value": "#ffe2e2",
+        "syntax": "var(--ds-color-surface-tinted--light)"
+      },
+      "surface-tinted--dark": {
+        "value": "#551a13",
+        "syntax": "var(--ds-color-surface-tinted--dark)"
+      },
+      "surface-hover--light": {
+        "value": "#ffcece",
+        "syntax": "var(--ds-color-surface-hover--light)"
+      },
+      "surface-hover--dark": {
+        "value": "#611f18",
+        "syntax": "var(--ds-color-surface-hover--dark)"
+      },
+      "surface-active--light": {
+        "value": "#ffb8b8",
+        "syntax": "var(--ds-color-surface-active--light)"
+      },
+      "surface-active--dark": {
+        "value": "#78281f",
+        "syntax": "var(--ds-color-surface-active--dark)"
+      },
+      "border-subtle--light": {
+        "value": "#ffa3a3",
+        "syntax": "var(--ds-color-border-subtle--light)"
+      },
+      "border-subtle--dark": {
+        "value": "#8d3127",
+        "syntax": "var(--ds-color-border-subtle--dark)"
+      },
+      "border-default--light": {
+        "value": "#f30000",
+        "syntax": "var(--ds-color-border-default--light)"
+      },
+      "border-default--dark": {
+        "value": "#df5142",
+        "syntax": "var(--ds-color-border-default--dark)"
+      },
+      "border-strong--light": {
+        "value": "#be0000",
+        "syntax": "var(--ds-color-border-strong--light)"
+      },
+      "border-strong--dark": {
+        "value": "#eb8f86",
+        "syntax": "var(--ds-color-border-strong--dark)"
+      },
+      "text-subtle--light": {
+        "value": "#be0000",
+        "syntax": "var(--ds-color-text-subtle--light)"
+      },
+      "text-subtle--dark": {
+        "value": "#eb8f86",
+        "syntax": "var(--ds-color-text-subtle--dark)"
+      },
+      "text-default--light": {
+        "value": "#5f0000",
+        "syntax": "var(--ds-color-text-default--light)"
+      },
+      "text-default--dark": {
+        "value": "#fbe8e6",
+        "syntax": "var(--ds-color-text-default--dark)"
+      },
+      "base-default--light": {
+        "value": "#ff6347",
+        "syntax": "var(--ds-color-base-default--light)"
+      },
+      "base-default--dark": {
+        "value": "#e00000",
+        "syntax": "var(--ds-color-base-default--dark)"
+      },
+      "base-hover--light": {
+        "value": "#ff5b5b",
+        "syntax": "var(--ds-color-base-hover--light)"
+      },
+      "base-hover--dark": {
+        "value": "#bb0000",
+        "syntax": "var(--ds-color-base-hover--dark)"
+      },
+      "base-active--light": {
+        "value": "#ff8585",
+        "syntax": "var(--ds-color-base-active--light)"
+      },
+      "base-active--dark": {
+        "value": "#970000",
+        "syntax": "var(--ds-color-base-active--dark)"
+      },
+      "base-contrast-subtle--light": {
+        "value": "#230000",
+        "syntax": "var(--ds-color-base-contrast-subtle--light)"
+      },
+      "base-contrast-subtle--dark": {
+        "value": "#fdf3f3",
+        "syntax": "var(--ds-color-base-contrast-subtle--dark)"
+      },
+      "base-contrast-default--light": {
+        "value": "#000000",
+        "syntax": "var(--ds-color-base-contrast-default--light)"
+      },
+      "base-contrast-default--dark": {
+        "value": "#ffffff",
+        "syntax": "var(--ds-color-base-contrast-default--dark)"
+      }
+    }
+  },
+  "size": {
+    "danger": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 4,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 8,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 12,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 16,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 20,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 24,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 28,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 32,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 36,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 40,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 44,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 48,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 52,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 56,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 60,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 72,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 88,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 104,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 120,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "warning": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 4,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 8,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 12,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 16,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 20,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 24,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 28,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 32,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 36,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 40,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 44,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 48,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 52,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 56,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 60,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 72,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 88,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 104,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 120,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "success": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 4,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 8,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 12,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 16,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 20,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 24,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 28,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 32,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 36,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 40,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 44,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 48,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 52,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 56,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 60,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 72,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 88,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 104,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 120,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "info": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 4,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 8,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 12,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 16,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 20,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 24,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 28,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 32,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 36,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 40,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 44,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 48,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 52,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 56,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 60,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 72,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 88,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 104,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 120,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "sm": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 3,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 6,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 9,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 12,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 15,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 18,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 21,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 24,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 27,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 30,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 33,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 36,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 39,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 42,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 45,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 54,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 66,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 78,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 90,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "md": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 4,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 8,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 12,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 16,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 20,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 24,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 28,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 32,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 36,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 40,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 44,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 48,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 52,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 56,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 60,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 72,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 88,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 104,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 120,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "lg": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 5,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 10,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 15,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 20,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 25,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 30,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 35,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 40,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 45,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 50,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 55,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 60,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 65,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 70,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 75,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 90,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 110,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 130,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 150,
+        "syntax": "var(--ds-size-30)"
+      }
+    },
+    "xs": {
+      "0": {
+        "value": 0,
+        "syntax": "var(--ds-size-0)"
+      },
+      "1": {
+        "value": 2,
+        "syntax": "var(--ds-size-1)"
+      },
+      "2": {
+        "value": 4,
+        "syntax": "var(--ds-size-2)"
+      },
+      "3": {
+        "value": 6,
+        "syntax": "var(--ds-size-3)"
+      },
+      "4": {
+        "value": 8,
+        "syntax": "var(--ds-size-4)"
+      },
+      "5": {
+        "value": 10,
+        "syntax": "var(--ds-size-5)"
+      },
+      "6": {
+        "value": 12,
+        "syntax": "var(--ds-size-6)"
+      },
+      "7": {
+        "value": 14,
+        "syntax": "var(--ds-size-7)"
+      },
+      "8": {
+        "value": 16,
+        "syntax": "var(--ds-size-8)"
+      },
+      "9": {
+        "value": 18,
+        "syntax": "var(--ds-size-9)"
+      },
+      "10": {
+        "value": 20,
+        "syntax": "var(--ds-size-10)"
+      },
+      "11": {
+        "value": 22,
+        "syntax": "var(--ds-size-11)"
+      },
+      "12": {
+        "value": 24,
+        "syntax": "var(--ds-size-12)"
+      },
+      "13": {
+        "value": 26,
+        "syntax": "var(--ds-size-13)"
+      },
+      "14": {
+        "value": 28,
+        "syntax": "var(--ds-size-14)"
+      },
+      "15": {
+        "value": 30,
+        "syntax": "var(--ds-size-15)"
+      },
+      "18": {
+        "value": 36,
+        "syntax": "var(--ds-size-18)"
+      },
+      "22": {
+        "value": 44,
+        "syntax": "var(--ds-size-22)"
+      },
+      "26": {
+        "value": 52,
+        "syntax": "var(--ds-size-26)"
+      },
+      "30": {
+        "value": 60,
+        "syntax": "var(--ds-size-30)"
+      }
+    }
+  },
+  "border-radius": {
+    "base": {
+      "value": 4,
+      "syntax": "var(--ds-border-radius-base)"
+    },
+    "scale": {
+      "value": 4,
+      "syntax": "var(--ds-border-radius-scale)"
+    },
+    "sm": {
+      "value": 2,
+      "syntax": "var(--ds-border-radius-sm)"
+    },
+    "md": {
+      "value": 4,
+      "syntax": "var(--ds-border-radius-md)"
+    },
+    "lg": {
+      "value": 8,
+      "syntax": "var(--ds-border-radius-lg)"
+    },
+    "xl": {
+      "value": 12,
+      "syntax": "var(--ds-border-radius-xl)"
+    }
+  }
+}

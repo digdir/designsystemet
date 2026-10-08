@@ -1,38 +1,3 @@
-.colors {
-  display: flex;
-  gap: var(--ds-size-1);
-  border-radius: 0;
-  justify-content: space-between;
-}
-
-.header {
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-  margin-bottom: var(--ds-size-4);
-  padding-bottom: var(--ds-size-4);
-  text-align: center;
-  width: 100%;
-  position: relative;
-  font-size: 16px;
-}
-
-.names {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 17px;
-  gap: var(--ds-size-1);
-}
-
-.names div {
-  font-size: 14px;
-  width: 100%;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  height: var(--ds-size-11);
-}
-
 /*
  * Dynamic color scale derived from --ds-color-base in pure CSS.
  * Mirrors packages/cli/src/colors/scale.ts with the luminance targets from specs.ts:
@@ -44,7 +9,24 @@
  * where r, g, b and alpha resolve to the channels of that function's origin color. The target
  * luminance of a step is passed to the macro through the origin's alpha channel.
  */
+
+/**
+ * Setup border radius
+ */
 :root {
+  --ds-border-radius-base: 0.25rem;
+  --ds-border-radius-scale: 0.25rem;
+  --ds-border-radius-sm: min(var(--ds-border-radius-base) * 0.5, var(--ds-border-radius-scale));
+  --ds-border-radius-md: min(var(--ds-border-radius-base), var(--ds-border-radius-scale) * 2);
+  --ds-border-radius-lg: min(var(--ds-border-radius-base) * 2, var(--ds-border-radius-scale) * 5);
+  --ds-border-radius-xl: min(var(--ds-border-radius-base) * 3, var(--ds-border-radius-scale) * 7);
+}
+
+/**
+ * Setup colors
+ */
+:root,
+[data-color] {
   /* Relative luminance of the origin */
   --_luminance: calc(0.2126 * r + 0.7152 * g + 0.0722 * b);
 
@@ -91,10 +73,7 @@
 
   /* L* offset for base-contrast-subtle: 60 (50 when 40 < L* < 60), toward the higher-contrast pole */
   --_contrast-subtle-step: calc((60 - 10 * clamp(0, (var(--_lightness) - 40) * (60 - var(--_lightness)) * infinity, 1)) * (2 * var(--_wcag-white) - 1));
-}
 
-:root,
-[data-dynamic-color] {
   /* Base color per scheme, as srgb-linear so later stages need no conversion. Dark mode desaturates it before the
      scale is derived. Channels are floored at 0: the conversion can leave tiny negative residues that would make sqrt() NaN */
   --_light: color(from var(--ds-color) srgb-linear max(0, r) max(0, g) max(0, b));
@@ -137,6 +116,8 @@
   --ds-color-text-default--light: color(from color(from var(--_light) srgb-linear r g b / 0.0245) srgb-linear var(--_at-luminance));
   --ds-color-text-default--dark: color(from color(from var(--_dark) srgb-linear r g b / 0.84) srgb-linear var(--_at-luminance));
 
+  --ds-color-base-default--light: var(--_light);
+  --ds-color-base-default--dark: var(--_dark-base);
   --ds-color-base-hover--light: color(
     from
       color(from color(from var(--_light) srgb-linear r g b / calc((var(--_lightness) - var(--_hover-step)) / 100)) srgb-linear var(--_lightness-to-luminance))
@@ -203,4 +184,81 @@
   --ds-color-base-active: light-dark(var(--ds-color-base-active--light), var(--ds-color-base-active--dark));
   --ds-color-base-contrast-subtle: light-dark(var(--ds-color-base-contrast-subtle--light), var(--ds-color-base-contrast-subtle--dark));
   --ds-color-base-contrast-default: light-dark(var(--ds-color-base-contrast-default--light), var(--ds-color-base-contrast-default--dark));
+}
+
+/* Default colors */
+[data-size='danger'] {
+  --ds-color: #c01b1b;
+}
+[data-size='warning'] {
+  --ds-color: #ea9b1b;
+}
+[data-size='success'] {
+  --ds-color: #068718;
+}
+[data-size='info'] {
+  --ds-color: #0a71c0;
+}
+
+/**
+ * Setup sizes
+ */
+:root,
+[data-size] {
+  --_px: 0.0625rem;
+  --ds-size: 4;
+
+  --ds-size-0: 0px;
+  --ds-size-1: calc(var(--_px) * var(--ds-size));
+  --ds-size-2: calc(var(--_px) * var(--ds-size) * 2);
+  --ds-size-3: calc(var(--_px) * var(--ds-size) * 3);
+  --ds-size-4: calc(var(--_px) * var(--ds-size) * 4);
+  --ds-size-5: calc(var(--_px) * var(--ds-size) * 5);
+  --ds-size-6: calc(var(--_px) * var(--ds-size) * 6);
+  --ds-size-7: calc(var(--_px) * var(--ds-size) * 7);
+  --ds-size-8: calc(var(--_px) * var(--ds-size) * 8);
+  --ds-size-9: calc(var(--_px) * var(--ds-size) * 9);
+  --ds-size-10: calc(var(--_px) * var(--ds-size) * 10);
+  --ds-size-11: calc(var(--_px) * var(--ds-size) * 11);
+  --ds-size-12: calc(var(--_px) * var(--ds-size) * 12);
+  --ds-size-13: calc(var(--_px) * var(--ds-size) * 13);
+  --ds-size-14: calc(var(--_px) * var(--ds-size) * 14);
+  --ds-size-15: calc(var(--_px) * var(--ds-size) * 15);
+  --ds-size-18: calc(var(--_px) * var(--ds-size) * 18);
+  --ds-size-22: calc(var(--_px) * var(--ds-size) * 22);
+  --ds-size-26: calc(var(--_px) * var(--ds-size) * 26);
+  --ds-size-30: calc(var(--_px) * var(--ds-size) * 30);
+
+  @supports (width: round(down, 0.1em, 1px)) {
+    --ds-size-1: round(down, calc(var(--_px) * var(--ds-size)), 1px);
+    --ds-size-2: round(down, calc(var(--_px) * var(--ds-size) * 2), 1px);
+    --ds-size-3: round(down, calc(var(--_px) * var(--ds-size) * 3), 1px);
+    --ds-size-4: round(down, calc(var(--_px) * var(--ds-size) * 4), 1px);
+    --ds-size-5: round(down, calc(var(--_px) * var(--ds-size) * 5), 1px);
+    --ds-size-6: round(down, calc(var(--_px) * var(--ds-size) * 6), 1px);
+    --ds-size-7: round(down, calc(var(--_px) * var(--ds-size) * 7), 1px);
+    --ds-size-8: round(down, calc(var(--_px) * var(--ds-size) * 8), 1px);
+    --ds-size-9: round(down, calc(var(--_px) * var(--ds-size) * 9), 1px);
+    --ds-size-10: round(down, calc(var(--_px) * var(--ds-size) * 10), 1px);
+    --ds-size-11: round(down, calc(var(--_px) * var(--ds-size) * 11), 1px);
+    --ds-size-12: round(down, calc(var(--_px) * var(--ds-size) * 12), 1px);
+    --ds-size-13: round(down, calc(var(--_px) * var(--ds-size) * 13), 1px);
+    --ds-size-14: round(down, calc(var(--_px) * var(--ds-size) * 14), 1px);
+    --ds-size-15: round(down, calc(var(--_px) * var(--ds-size) * 15), 1px);
+    --ds-size-18: round(down, calc(var(--_px) * var(--ds-size) * 18), 1px);
+    --ds-size-22: round(down, calc(var(--_px) * var(--ds-size) * 22), 1px);
+    --ds-size-26: round(down, calc(var(--_px) * var(--ds-size) * 26), 1px);
+    --ds-size-30: round(down, calc(var(--_px) * var(--ds-size) * 30), 1px);
+  }
+}
+
+/* Default sizes */
+[data-size='sm'] {
+  --ds-size: 3;
+}
+[data-size='md'] {
+  --ds-size: 4;
+}
+[data-size='lg'] {
+  --ds-size: 5;
 }
