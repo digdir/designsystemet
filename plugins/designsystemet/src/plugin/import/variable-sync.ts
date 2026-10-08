@@ -25,11 +25,15 @@ export async function syncCollections(
   const result = new Map<string, VariableCollection>();
 
   for (const spec of specs) {
-    const collection =
-      collectionByName.get(spec.name) ||
-      figma.variables.createVariableCollection(spec.name);
-
-    if (!collectionByName.has(spec.name)) {
+    let collection = collectionByName.get(spec.name);
+    if (!collection) {
+      collection = figma.variables.createVariableCollection(spec.name);
+      // Figma gives a new collection a mode ("Mode 1"). It's the import's, so it can be renamed to the first
+      // mode in the config. An existing collection's modes are only the import's if they're marked.
+      setManagedModeIds(
+        collection,
+        collection.modes.map((mode) => mode.modeId),
+      );
       log.info.push(`Created collection: ${spec.name}`);
     }
 

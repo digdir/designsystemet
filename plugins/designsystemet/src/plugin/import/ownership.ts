@@ -25,8 +25,6 @@ export type ImportData = {
 
 // Plugin data is private to this plugin, so the key only needs to be unique within it.
 const DATA_KEY = 'import';
-// The mode Figma gives a new collection.
-const FIGMA_DEFAULT_MODE = 'Mode 1';
 
 type PluginDataItem = Pick<PluginDataMixin, 'getPluginData' | 'setPluginData'>;
 type Mode = { modeId: string; name: string };
@@ -101,8 +99,9 @@ export type ModePlan = {
 
 /**
  * How to make a collection's modes match the config. Only modes the import created are removed. The only mode
- * of a collection is renamed instead of replaced, so values and layers using it are kept, but only when it's
- * Figma's default mode or one the import created.
+ * of a collection is renamed instead of replaced, so values and layers using it are kept, but only when the import
+ * created it, e.g. the mode Figma gives a collection the import creates. A mode made by hand is never renamed,
+ * even one called "Mode 1" in a collection made by hand with a name from the config.
  */
 export function planModes(
   existing: Mode[],
@@ -119,7 +118,7 @@ export function planModes(
   if (
     existing.length === 1 &&
     !desired.includes(only.name) &&
-    (only.name === FIGMA_DEFAULT_MODE || managedIds.has(only.modeId))
+    managedIds.has(only.modeId)
   ) {
     plan.rename = { mode: only, to: desired[0] };
     names.set(only.modeId, desired[0]);

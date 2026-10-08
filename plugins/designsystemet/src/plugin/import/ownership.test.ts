@@ -31,14 +31,24 @@ const mode = (modeId: string, name: string) => ({ modeId, name });
 
 describe('planModes', () => {
   it("renames a new collection's default mode and adds the rest", () => {
+    // syncCollections marks the mode Figma gives a collection it creates.
     expect(
-      planModes([mode('1', 'Mode 1')], ['light', 'dark'], new Set()),
+      planModes([mode('1', 'Mode 1')], ['light', 'dark'], new Set(['1'])),
     ).toEqual({
       rename: { mode: mode('1', 'Mode 1'), to: 'light' },
       add: ['dark'],
       remove: [],
       keep: [],
       managed: ['1'],
+    });
+  });
+
+  it('keeps an unmarked "Mode 1", e.g. in a collection made by hand with a name from the config', () => {
+    expect(planModes([mode('1', 'Mode 1')], ['light'], new Set())).toEqual({
+      add: ['light'],
+      remove: [],
+      keep: [mode('1', 'Mode 1')],
+      managed: [],
     });
   });
 
