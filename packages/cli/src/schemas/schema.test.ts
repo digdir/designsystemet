@@ -49,13 +49,14 @@ describe('themesSchema cross-theme validation', () => {
     expect(result.success).toBe(true);
   });
 
-  it('rejects themes with different color names', () => {
+  // A color a theme doesn't have uses the theme's first color, see createTokens.
+  it('accepts themes with different color names', () => {
     const result = parseThemes({
       a: baseTheme,
       b: { colors: { neutral: '#444444', brand: '#0062BA' } },
     });
 
-    expect(issuePaths(result)).toEqual(['b.colors']);
+    expect(issuePaths(result)).toEqual([]);
   });
 
   it('rejects themes with different size steps', () => {
@@ -263,12 +264,12 @@ describe('external schema', () => {
     expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(['themes']);
   });
 
-  it('rejects themes with different color names', () => {
+  it('accepts themes with different color names', () => {
     const result = externalConfigSchema.safeParse({
       themes: { a: baseTheme, b: { ...baseTheme, colors: { neutral: '#444444', brand: '#0062BA' } } },
     });
 
-    expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(['themes.b.colors']);
+    expect(result.success).toBe(true);
   });
 
   it('rejects internal-only shapes for public keys', () => {

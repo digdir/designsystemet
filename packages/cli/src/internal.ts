@@ -52,6 +52,6 @@ export {
   type ThemeColorValues,
 } from './tokens/config-colors.ts';
 export { getThemeColorScales } from './tokens/create/generators/primitives/color-scheme.ts';
-export { createSystemTokens, createTokens, getTokenSetDimensions } from './tokens/create.ts';
+export { createSystemTokens, createTokens, getColorNames, getTokenSetDimensions } from './tokens/create.ts';
 export { formatThemeCSS } from './tokens/format.ts';
 export type { BorderRadiusConfig, TokenSets } from './tokens/types.ts';

@@ -155,47 +155,19 @@ const getSharedThemeValues = (theme: ConfigSchemaTheme): SharedThemeValue[] => {
 };
 
 /**
- * Validate that there is at least one theme, and that all themes define the same color names.
- * The semantic color token sets are generated once and shared by all themes, so a color present
- * in one theme but not another would have no tokens there.
+ * Validate that there is at least one theme. Themes can define different colors: every theme gets tokens for every
+ * color in the config, and a color a theme doesn't have uses the theme's first color (see `createTokens`).
  * Used by both the full and the public `themes` schema.
  */
-const checkThemes = (themes: Record<string, { colors: Record<string, unknown> }>, ctx: z.RefinementCtx) => {
-  const entries = Object.entries(themes);
-  if (entries.length === 0) {
+const checkThemes = (themes: Record<string, unknown>, ctx: z.RefinementCtx) => {
+  if (Object.keys(themes).length === 0) {
     ctx.addIssue({ code: 'custom', message: 'At least one theme must be defined.' });
-    return;
-  }
-  if (entries.length < 2) return;
-
-  const [referenceName, referenceTheme] = entries[0];
-  const referenceKeys = new Set(Object.keys(referenceTheme.colors));
-
-  for (const [themeName, theme] of entries.slice(1)) {
-    const themeKeys = new Set(Object.keys(theme.colors));
-    const missing = [...referenceKeys].filter((key) => !themeKeys.has(key));
-    const extra = [...themeKeys].filter((key) => !referenceKeys.has(key));
-
-    if (missing.length > 0 || extra.length > 0) {
-      const details = [
-        missing.length > 0 ? `missing: ${missing.join(', ')}` : undefined,
-        extra.length > 0 ? `unexpected: ${extra.join(', ')}` : undefined,
-      ]
-        .filter(Boolean)
-        .join('; ');
-
-      ctx.addIssue({
-        code: 'custom',
-        path: [themeName, 'colors'],
-        message: `All themes must define the same color names. Theme "${themeName}" does not match theme "${referenceName}" (${details}).`,
-      });
-    }
   }
 };
 
 export const themesSchema = z
   .record(z.string(), themeSchema)
-  // Validate that all themes have the same color names and the same values for everything that ends up in shared token sets.
+  // Validate that all themes have the same values for everything that ends up in shared token sets.
   // This happens only in runtime i.e. when `validateConfig` is called.
   .superRefine((themes, ctx) => {
     checkThemes(themes, ctx);
@@ -220,7 +192,7 @@ export const themesSchema = z
   })
   .meta({
     description:
-      'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names, size configuration, shadows, border widths, opacities, border-radius step names and typography sets.',
+      'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. Themes can define different colors; a color a theme does not have uses its first color. All themes must define the same size configuration, shadows, border widths, opacities, border-radius step names and typography sets.',
   })
   .optional();
 
@@ -278,7 +250,7 @@ export const externalConfigSchema = configSchema.extend({
     .superRefine(checkThemes)
     .meta({
       description:
-        'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names.',
+        'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. Themes can define different colors; a color a theme does not have uses its first color.',
     })
     .optional(),
 });

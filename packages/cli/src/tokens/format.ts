@@ -18,12 +18,15 @@ export const formatTokens = async (options: FormatTokensOptions) => {
   return processedBuilds;
 };
 
-const formatTheme = async (themeConfig: Theme, options: Pick<FormatTokensOptions, 'verbose' | 'tailwind'>) => {
+const formatTheme = async (
+  themeConfig: Theme,
+  options: Pick<FormatTokensOptions, 'verbose' | 'tailwind'>,
+  colorNames: string[],
+) => {
   const themeNames = [themeConfig.name];
-  const colorNames = Object.keys(themeConfig.colors);
 
   const tokenSetDimensions = getTokenSetDimensions(themeConfig);
-  const { tokenSets } = await createTokens(themeConfig, tokenSetDimensions);
+  const { tokenSets } = await createTokens(themeConfig, tokenSetDimensions, colorNames);
   const $themes = await generate$Themes(tokenSetDimensions, themeNames, colorNames);
 
   const processed$themes = $themes.map(processThemeObject);
@@ -45,13 +48,17 @@ const formatTheme = async (themeConfig: Theme, options: Pick<FormatTokensOptions
  *
  * @param themeConfig - The theme configuration object to be formatted.
  * @param options - Options for formatting, including verbosity and Tailwind CSS generation.
+ * @param colorNames - Every color in the config, across all themes (see `getColorNames`), so the theme's CSS has every
+ * `data-color` the other themes have. A color the theme doesn't have uses the theme's first color. Defaults to the
+ * theme's own colors.
  * @returns A promise that resolves to an array of `OutputFile` objects containing the formatted CSS files.
  */
 export const formatThemeCSS = async (
   themeConfig: Theme,
   options: Pick<FormatTokensOptions, 'verbose' | 'tailwind'>,
+  colorNames: string[] = Object.keys(themeConfig.colors),
 ) => {
-  const processedBuilds = await formatTheme(themeConfig, options);
+  const processedBuilds = await formatTheme(themeConfig, options, colorNames);
   let files: OutputFile[] = createThemeCSSFiles({ processedBuilds });
 
   if (options.tailwind) {
