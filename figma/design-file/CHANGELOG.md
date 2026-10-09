@@ -30,8 +30,6 @@
 
 - **List:** Added a small left padding, so list items align with the text above them ([#5196](https://github.com/digdir/designsystemet/issues/5196))
 
-- **Alert, ErrorSummary, Table:** Reverted the larger border radius, as it was too large in how many teams use these components ([#5437](https://github.com/digdir/designsystemet/issues/5437))
-
 - Updated component descriptions to match the documentation ([#5369](https://github.com/digdir/designsystemet/issues/5369))
 
 ## 1.19.0
