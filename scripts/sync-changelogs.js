@@ -135,6 +135,8 @@ const FIGMA_PAGES = {
 // by. Instead, the date is written in the changelog as a `_Published YYYY-MM-DD_` line under the
 // version heading; see figma/design-file/README.md.
 const PUBLISHED_DATE = /^_Published (\d{4}-\d{2}-\d{2})_\s*$\n*/m;
+// What a package's changelog says for a version that only bumped it with the others.
+const NO_CHANGES = 'No changes in this release.';
 
 async function writeFigmaChangelog() {
   const pkgs = [...(await findPackages(['figma'])).values()];
@@ -146,8 +148,12 @@ async function writeFigmaChangelog() {
     const bodies = new Map();
     for (const [name, body] of packages) {
       date ??= PUBLISHED_DATE.exec(body)?.[1] ?? null;
-      bodies.set(name, body.replace(PUBLISHED_DATE, ''));
+      const content = body.replace(PUBLISHED_DATE, '').trim();
+      if (content && content !== NO_CHANGES) bodies.set(name, content);
     }
+    // The Figma packages are versioned with the code by changesets, so most code releases add a
+    // version without changes to them. Only versions with changes, or that were published, are shown.
+    if (bodies.size === 0 && !date) continue;
     consolidatedContent += formatVersion(version, bodies, date);
   }
 
