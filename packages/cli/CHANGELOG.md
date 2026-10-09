@@ -1,5 +1,27 @@
 # Change Log
 
+## 1.24.0
+
+### Minor Changes
+
+- New `types` output for generating TypeScript declarations for your theme's colors (`types.d.ts`). The `css` output no longer creates type declarations, so add `"types"` to `output` if you define it yourself. ([#5444](https://github.com/digdir/designsystemet/pull/5444))
+
+- **CLI:** New `output` field for defining outputs in config ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+- **CLI:** Each output in the new `output` field cleans its `dir` before generating files. Set `cleanDir` to `false` on an output to keep existing files. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+- New `tailwind` option on the `css` output. Set this to the desired Tailwind version to generate `<theme>.tailwind.css`. Defaults to `false`, which does not generate a Tailwind file. ([#5438](https://github.com/digdir/designsystemet/pull/5438))
+  - `"v3"` generates the same file as before.
+  - `"v4"` uses `@theme inline`, so Tailwind utilities reference the `--ds-*` variables directly and `data-color`, `data-color-scheme` and `data-size` also apply to them, at any depth in the DOM.
+
+### Patch Changes
+
+- Fix `<theme>.tailwind.css` missing variables `--text-sm`, `--text-md` and `--text-lg`, mapped to the body font sizes. Generate a new theme file to get the updated fixed file. ([#5451](https://github.com/digdir/designsystemet/pull/5451))
+
+- **Deprecated:** Commands `token create` and `token build`. Use `designsystemet` with new `output` field in `designsystemet.config.json` to configure outputs. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+- **Deprecated:** `outDir` and `clean` are deprecated in the Config schema, and replaced by `output[].dir` and `output[].cleanDir` for the respective output type. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
 ## 1.23.0
 
 ### Patch Changes

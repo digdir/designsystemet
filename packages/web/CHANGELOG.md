@@ -1,5 +1,17 @@
 # @digdir/designsystemet-web
 
+## 1.24.0
+
+### Patch Changes
+
+- **Suggestion:** No longer counts the hidden empty option in the screen reader hit count when other options are shown ([#5457](https://github.com/digdir/designsystemet/pull/5457))
+
+- **Dialog:** Fixed accessible name warning when heading is present ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+
+- Automatically load relevant helpers when using isolated component files (`dialog` loads `invokers`, `field` loads `readonly`, `togglegroup` loads `readonly` and `focusgroup`) ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
+- **Dialog:** Automatically uses the first heading as its accessible name if one is missing, and warns when neither is provided. ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
 ## 1.23.0
 
 ### Patch Changes
