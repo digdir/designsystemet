@@ -1,0 +1,92 @@
+---
+title: Ny Figma-plugin, og én kommando for temaet ditt
+description: Ny Figma-pluginen til Designsystemet er på vei, og CLI-et lager nå alt til temaet ditt fra én config-fil, med det nye output-feltet.
+date: 2026-10-09
+author: Designsystemet
+imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
+imageAlt: Figma-pluginen til Designsystemet ved siden av en config-fil med det nye output-feltet
+---
+
+Temaet ditt starter som en config-fil, laget i [temabyggeren](https://theme.designsystemet.no). Nå kommer du lenger med den samme filen, både i Figma og i kode: en ny versjon av Figma-pluginen henter den inn i Figma-filen din, og CLI-et lager alt koden din trenger fra den, med én kommando.
+
+## En ny Figma-plugin er på vei
+
+Den nye pluginen importerer config-filen din til en Figma-fil, som variablene og stilene komponentene i Figma-biblioteket til Designsystemet bruker. Last opp config-filen fra temabyggeren, eller lim den inn, og klikk **Import**.
+
+- **Lager alt temaet ditt trenger.** Variabel-collections og modes for temaene, fargemodusene og størrelsene dine, variabler, tekststiler og effektstiler.
+- **Oppdaterer det som allerede finnes.** Variabler og stiler blir koblet på navn, så lagene som bruker dem forblir koblet når du endrer temaet og importerer på nytt.
+- **Beholder det du har laget selv.** Pluginen holder rede på hva den lager, og sletter bare det den har laget selv. Variabler og stiler du har lagt til, eller gitt nytt navn og duplisert fra importen, blir beholdt, og pluginen lister opp de som ikke er i config-filen.
+- **Endrer bare det som er endret.** Når du importerer en oppdatert config-fil, skrives bare det som er annerledes. Det går derfor raskt å importere på nytt, og en uendret config-fil endrer ingenting.
+- **Stemmer med koden.** Hver variabel viser CSS-variabelen den blir bygget som i kode, så utviklere ser riktige navn i Dev Mode. Variablene blir også bare foreslått der de hører hjemme, for eksempel fargevariabler for fyll.
+- **Forteller deg hva som skjedde.** Etter importen får du en liste over hva som ble laget, oppdatert og slettet, og over det som ikke kunne importeres. Hvis en font i config-filen ikke er tilgjengelig i Figma, stopper pluginen før den endrer noe.
+
+Hvert tema, hver fargemodus og hver størrelse blir en mode i Figma, og hvor mange modes en collection kan ha, avhenger av Figma-abonnementet ditt. Sjekk at ditt har nok til config-filen din.
+
+Vi gir beskjed når den nye pluginen er publisert i Figma Community.
+
+## Én kommando for temaet ditt i kode
+
+Til nå har det tatt to kommandoer å få et tema inn i koden, `tokens create` og `tokens build`, med hver sine valg. 
+
+Nå kjører du CLI-et i mappen med `designsystemet.config.json`:
+```bash
+npx @digdir/designsystemet@latest
+```
+
+Dette lager design tokens, CSS og TypeScript-typedeklarasjoner for alle temaene dine. 
+Hva det lager, og hvor, bestemmer du med det nye `output`-feltet i config-filen.
+
+### Output-feltet
+
+`output` er en liste over hva CLI-et skal lage. Hvis du utelater det, får du alt:
+
+```json
+"output": ["design-tokens", "css", "types"]
+```
+
+| Output | Lager | Standardmappe |
+| ------ | ----- | ------------- |
+| `design-tokens` | Design tokens for temaene dine | `design-tokens` |
+| `css` | En CSS-fil for hvert tema | `design-tokens-build` |
+| `types` | Typedeklarasjoner for fargene dine, `types.d.ts` | `design-tokens-build` |
+
+Skriv en output som et objekt i stedet for et navn for å endre innstillingene, for eksempel for å velge mappe med `dir`, eller for å også lage en Tailwind-fil med `tailwind`:
+
+```json
+{
+  "output": [
+    "design-tokens",
+    { "type": "css", "tailwind": "v4" },
+    "types"
+  ],
+  "themes": {
+    "mitt-tema": {
+      "colors": {
+        "accent": "#0062BA",
+        "neutral": "#24272B"
+      }
+    }
+  }
+}
+```
+
+Dette er greit å vite:
+
+- **Hver output tømmer mappen sin** før den lager filene sine. Sett `"cleanDir": false` på en output for å beholde filene som allerede ligger der.
+- **CSS-en har ikke lenger typedeklarasjoner.** Hvis du skriver din egen `output`, ta med `"types"` for å beholde dem.
+- **Med `"tailwind": "v4"`** bruker Tailwind-klassene `--ds-*`-variablene direkte, så `data-color`, `data-color-scheme` og `data-size` gjelder for dem også. `"v3"` lager den samme Tailwind-filen som før.
+- **Du kan utelate design tokens.** Med `"output": ["css", "types"]` blir CSS-en og typene laget direkte fra temaene dine.
+
+Se [dokumentasjonen for CLI-et](/no/fundamentals/code/cli-config#output) for alle innstillingene.
+
+### Fra tokens create og tokens build
+
+`tokens create` og `tokens build` virker fortsatt, men de er utfaset og blir fjernet i en senere versjon. Det samme gjelder feltene `outDir` og `clean` i config-filen, som `output` erstatter.
+
+Du trenger ikke endre config-filen for hånd. Når du kjører `designsystemet` med en config-fil som bruker `outDir` eller `clean`, tilbyr CLI-et å oppdatere den til `output` for deg. For å gjøre det selv, se [migrering fra outDir og clean](/no/fundamentals/code/cli-config#migrere-frå-outdir-og-clean).
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+  ]}
+/>
