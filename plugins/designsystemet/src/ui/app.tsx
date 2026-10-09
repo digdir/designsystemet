@@ -229,10 +229,13 @@ function App() {
 
   return (
     <div className='app'>
-      <header>
-        <Heading>{viewTitle(state.view)}</Heading>
-      </header>
-
+      {START_VIEW === 'home' ? (
+        <header>
+          <Heading>{viewTitle(state.view)}</Heading>
+        </header>
+      ) : (
+        <span></span> // to keep the layout consistent
+      )}
       <main>
         {state.view === 'home' && (
           <HomeView
