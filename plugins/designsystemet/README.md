@@ -1,85 +1,67 @@
 # Designsystemet Figma plugin
 
-**⚠️ Experimental ⚠️**
+Imports a Designsystemet config, e.g. from [the theme builder](https://theme.designsystemet.no), into a Figma file as variable collections, variables, text styles and effect styles.
 
-**This plugin does not support main and support color schema.**
-[Figma design](https://www.figma.com/design/trNNkbj9vNueZ8wRXjYpnh/Figma-Plugin?node-id=9-46&t=KRKRa4lkcS2rsFAl-1)
+[Design of the plugin in Figma](https://www.figma.com/design/trNNkbj9vNueZ8wRXjYpnh/Figma-Plugin?node-id=9-46&t=KRKRa4lkcS2rsFAl-1)
 
-## Known issues and TODO
+## What an import does
 
-1. Unknown variables are deleted.
-2. Better placement for notification banner?
-3. Clean up CSS
-4. Use predefined preview model with css variables and values (maybe based on [preview-tokens](../../packages/cli/src/scripts/update-preview-tokens.ts))
+An import makes the file match the config:
 
-## How to test in Figma
+- Creates the collections, modes, variables, text styles and effect styles in the config, and updates the ones that already exist, matched by name.
+- Only writes what has changed, so importing the same config again changes nothing.
+- Deletes modes, variables and styles from earlier imports that are no longer in the config. What the import creates is marked with plugin data, so modes, variables and styles added by hand are kept (see [ownership.ts](./src/plugin/import/ownership.ts)).
+- Leaves other collections and styles alone.
 
-In Figma menu: Plugins -> Development -> Import from manifest...
+After the import, the plugin shows what it did, what it skipped, and how long each step took.
 
-Used config for testing
-```json
-{
-  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
-  "outDir": "./design-tokens",
-  "themes": {
-    "theme": {
-      "colors": {
-        "accent": "#ba4000",
-        "test1": "#180d7a",
-        "test2": "#56a03f",
-        "neutral": "#24272B"
-      },
-      "borderRadius": 4,
-      "typography": {
-        "fontFamily": "IBM Plex Sans"
-      },
-      "overrides": {
-        "colors": {
-          "accent": {
-            "border-default": {
-              "light": "#22c33d"
-            },
-            "border-subtle": {
-              "light": "#9ae49f"
-            }
-          }
-        }
-      },
-    },
-    "theme2": {
-      "colors": {
-        "accent": "#0062BA",
-        "test1": "#0D7A5F",
-        "test2": "#5B3FA0", // test
-        "neutral": "#24272B"
-      },
-      "borderRadius": 0,
-      "typography": {
-        "fontFamily": "Times New Roman"
-      }
-    }
-  }
-}
+The plugin explains this to users in [the about view](./src/ui/views/about.tsx). Keep the two in sync.
+
+### Limitations
+
+- Each theme, color scheme and size is a mode, and Figma limits how many modes a collection can have depending on the plan.
+- Text and effect styles can't have modes, so they get the values of the first theme, in the light color scheme.
+- The fonts in the config must be available in Figma. The import stops before writing anything if one isn't.
+
+### Features that are turned off
+
+- **Export:** creates a config from the variables and styles in the file. Set `START_VIEW` to `'home'` in [app.tsx](./src/ui/app.tsx) to choose between import and export when the plugin opens.
+- **Import from CSS:** creates a config from theme CSS built by Designsystemet, e.g. `designsystemet.css`. Set `FEAT_CSS_IMPORT` to `true` in [import.tsx](./src/ui/views/import.tsx).
+
+## Development
+
+Build the plugin and rebuild it on changes, from the root of the repository:
+
+```sh
+pnpm watch:plugin
 ```
 
-### Check variables and modes
+Then load it in the Figma desktop app: **Plugins → Development → Import plugin from manifest…**, and choose [manifest.json](./manifest.json) in this folder. Figma uses the files in `dist`, so run the plugin again after a rebuild to get the changes.
 
-1. Make sure all collections are present
-2. Make sure there are no broken variable references
+Other scripts, run in this folder:
 
-### Check scopes
+| Script | Does |
+| --- | --- |
+| `pnpm build` | Builds the plugin to `dist` |
+| `pnpm test` | Runs the tests |
+| `pnpm types` | Type checks |
+| `pnpm zip` | Builds the plugin and zips it with the manifest, as `designsystemet-figma-plugin.zip` |
 
-1. Draw a rectangle
-2. Set background color, verify that semantic color variables are available in dropdown.
-3. Set border radius, verify that semantic color variables are available in dropdown.
+### Code
 
-### Check Typography
+- [src/plugin](./src/plugin): runs in Figma and reads and writes the file. [code.ts](./src/plugin/code.ts) handles the messages from the UI.
+  - [import](./src/plugin/import): builds tokens from the config with the CLI, and writes them to the file.
+  - [export](./src/plugin/export): reads the file and creates a config.
+- [src/ui](./src/ui): the plugin window, in React with Designsystemet. It's built into one HTML file, as Figma requires.
+- [src/types.ts](./src/types.ts): the messages between the UI and the plugin.
 
-1. Check all typography styles are imported/modified
-2. Check that a specific typography style has the correct typography variables assigned to each of its values (font-family, font-size, font-weight etc)
+## Testing in Figma
 
-### Code syntax
+Import a config into an empty file, and into a file that has had an earlier import. The configs in the root of the repository, e.g. [designsystemet.config.json](../../designsystemet.config.json), work for this. Then check:
 
-1. "edit variable" in semantic collection and check if code syntax for web is defined correct.
-
-
+1. **Variables:** all collections and modes are there, and no variable refers to one that's missing.
+2. **Scopes:** draw a rectangle. The semantic color variables are suggested for the fill, and the border radius variables for the corner radius.
+3. **Text styles:** every typography style is there, and its font family, font weight and font size are bound to variables.
+4. **Effect styles:** every shadow is there.
+5. **Code syntax:** edit a variable in the Semantic collection. Its code syntax for Web is the CSS variable, e.g. `var(--ds-color-background-default)`.
+6. **Importing again:** import the same config again. The import log says "No changes", and Timings says no variable values were written.
