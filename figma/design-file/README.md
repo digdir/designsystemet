@@ -1,10 +1,37 @@
-This the the starter theme used for our Figma design file: https://www.figma.com/community/file/1322138390374166141
+This package is used for resources related to the Figma design file: https://www.figma.com/community/file/1322138390374166141
 
-## Publishing a new version
+- [designsystemet.config.json](./designsystemet.config.json): the starter theme used in the Figma file
+- [CHANGELOG.md](./CHANGELOG.md): what changed in each version of the Figma file
 
-The Figma file is published to Figma Community by hand. Its changelog is shown on designsystemet.no, under Fundamentals → Figma → Changelog, and is updated as part of publishing:
+## Changelog and versions
 
-1. Add the new version at the top of [CHANGELOG.md](./CHANGELOG.md), in the same format as the versions below it. Write the date you publish on under the version heading, as `_Published YYYY-MM-DD_`:
+The Figma file has the same version as the code packages: changesets versions `@figma/design-file` together with them (see `fixed` in `.changeset/config.json`). Its changelog is shown on designsystemet.no, under Fundamentals → Figma → Changelog.
+
+### Documenting changes
+
+Add a changeset for `@figma/design-file` for changes to the Figma file, the same way as for the code packages.
+
+Run `pnpm changeset`, select `@figma/design-file`, and leave the summary empty. Then write the changes in the file it creates in `.changeset/`, as the prompt only takes a single line.
+
+```md
+---
+"@figma/design-file": patch
+---
+
+**Component:** What changed
+```
+
+When the next release is made, changesets adds the changes to [CHANGELOG.md](./CHANGELOG.md) under the new version, and the changelog page on the website is updated with it.
+
+Most releases bump the version of the Figma file without changes to it. Those versions are left out of the changelog page.
+
+### Publishing a new version
+
+The Figma file is published to Figma Community by hand, after the release that has its changes:
+
+1. Publish the file with the version in [package.json](./package.json), which is the version its changes are listed under in [CHANGELOG.md](./CHANGELOG.md).
+
+2. Write the date you published on under the version heading in [CHANGELOG.md](./CHANGELOG.md), as `_Published YYYY-MM-DD_`:
 
    ```md
    ## 1.24.0
@@ -12,13 +39,9 @@ The Figma file is published to Figma Community by hand. Its changelog is shown o
    _Published 2026-11-20_
 
    ### Minor Changes
-
-   - **Component:** What changed ([#1234](https://github.com/digdir/designsystemet/issues/1234))
    ```
 
-   A version without a `_Published_` line is shown without a date, so you can add it before the file is published and fill in the date when it is.
-
-2. Set `version` in [package.json](./package.json) to the new version.
+   A version without a `_Published_` line is shown without a date.
 
 3. Update the changelog page on the website by running this from the root of the repository:
 
