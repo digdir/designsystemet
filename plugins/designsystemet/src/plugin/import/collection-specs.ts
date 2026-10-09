@@ -4,6 +4,7 @@ import {
   figmaCodeSyntax,
   figmaVariableScopes,
 } from '@digdir/designsystemet/internal';
+import type { ValueSpec } from '../types';
 import type { ImportLog } from './log';
 import { resolveValue } from './resolver';
 import type { FlatToken, TokenModel } from './types';
@@ -12,17 +13,6 @@ import {
   convertRawVariableValue,
   mapTokenTypeToVariableType,
 } from './variable-values';
-
-export type ValueSpec =
-  | {
-      kind: 'raw';
-      value: VariableValue;
-    }
-  | {
-      kind: 'alias';
-      collection: string;
-      name: string;
-    };
 
 export type VariableSpec = {
   name: string;
@@ -157,6 +147,17 @@ function buildModeVariables(
           log.warnings.push(
             `Skipped unresolved value for ${group}/${entry.name} (${modeName})`,
           );
+          continue;
+        }
+
+        // Two tokens can share a variable, e.g. size._base (the mode's value) and _size.base (an alias to it).
+        // The alias then points at its own variable, which Figma ignores, so it would replace the mode's value
+        // with nothing. It's left out.
+        if (
+          valueSpec.kind === 'alias' &&
+          valueSpec.collection === group &&
+          valueSpec.name === entry.name
+        ) {
           continue;
         }
 

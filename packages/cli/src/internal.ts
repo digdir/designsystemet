@@ -9,6 +9,7 @@ export {
   type ColorScheme,
   type CssColor,
   convertColor,
+  generateColorScale,
   generateColorSchemes,
   getContrastFromHex,
   getCssVariable,
@@ -20,6 +21,7 @@ export {
   semanticColorSpec,
   type ThemeInfo,
 } from './colors/index.ts';
+export { type GeneratedConfigFromCSS, generateConfigFromCSS } from './css/generate-config-from-css.ts';
 export { figmaCodeSyntax } from './figma/code-syntax.ts';
 export {
   FIGMA_COLLECTION,
@@ -29,7 +31,12 @@ export {
   toFigmaCollections,
 } from './figma/collections.ts';
 export { figmaVariableScopes, figmaVariableType } from './figma/scopes.ts';
-export { defaultBorderRadius, severityColors } from './schemas/defaults.ts';
+export {
+  defaultBorderRadius,
+  defaultFontFamily,
+  severityColors,
+  visitedLinkColor,
+} from './schemas/defaults.ts';
 export { parseConfig, validateConfig } from './schemas/helpers.ts';
 export {
   type ConfigSchema,
@@ -38,6 +45,12 @@ export {
   type ExternalConfigSchemaInput,
   externalConfigSchema,
 } from './schemas/schema.ts';
+export {
+  type ConfigColors,
+  configColorsFromValues,
+  type SchemeColors,
+  type ThemeColorValues,
+} from './tokens/config-colors.ts';
 export { getThemeColorScales } from './tokens/create/generators/primitives/color-scheme.ts';
 export { createSystemTokens, createTokens, getTokenSetDimensions } from './tokens/create.ts';
 export { formatThemeCSS } from './tokens/format.ts';
