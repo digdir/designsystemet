@@ -15,6 +15,7 @@ import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import { getStories } from '../../_utils/get-stories.server';
+import changelogClasses from '../components/component.module.css';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
@@ -115,7 +116,14 @@ export default function Fundamentals({
           </Button>
         </div>
       </TableOfContents>
-      <div className={cl(classes.content, 'u-rich-text')}>
+      <div
+        className={cl(
+          classes.content,
+          // Generated changelogs (e.g. figma/changelog) get the components changelog's heading spacing.
+          frontmatter.changelog && changelogClasses.changelog,
+          'u-rich-text',
+        )}
+      >
         <MDXComponents
           code={code}
           components={{

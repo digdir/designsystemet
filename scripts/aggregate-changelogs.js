@@ -21,12 +21,13 @@ const ROOT = process.cwd();
 const PACKAGE_DIRS = ['packages'];
 
 /**
- * Finds every package under PACKAGE_DIRS.
+ * Finds every package in the given folders, by default PACKAGE_DIRS.
+ * @param {string[]} [dirs] folders, relative to the root, whose subfolders are packages
  * @returns {Promise<Map<string, { name: string, dir: string, version: string }>>} keyed by package name
  */
-export async function findPackages() {
+export async function findPackages(dirs = PACKAGE_DIRS) {
   const byName = new Map();
-  for (const base of PACKAGE_DIRS) {
+  for (const base of dirs) {
     let entries = [];
     try {
       entries = await fs.readdir(path.join(ROOT, base));
