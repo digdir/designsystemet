@@ -14,7 +14,8 @@
       "@digdir/designsystemet-types",
       "@digdir/designsystemet-react",
       "@digdir/designsystemet-web",
-      "@plugin/designsystemet"
+      "@plugin/designsystemet",
+      "@figma/design-file"
     ]
   ],
   "linked": [],
