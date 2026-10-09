@@ -1,0 +1,506 @@
+---
+title: Endringslogg for Figma
+sidebar_title: Endringslogg
+description: Hva som er endret i hver versjon av Figma-filen til Designsystemet.
+category: Figma
+color: yellow
+icon: ClockDashedIcon
+published: true
+order: 50
+search_terms: changelog
+changelog: true
+---
+
+<Alert lang='no'>Endringslogger er kun tilgjengelige på engelsk</Alert>
+
+<div lang="en">
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.23.0
+
+<small style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  <time dateTime="2026-10-02">2. oktober 2026</time>
+</small>
+
+<Divider/>
+
+### @figma/design-file
+
+#### Minor Changes
+
+- **Select:** Published in Figma, with a simple list in place of the browser's own dropdown, which looks different in every browser ([#4436](https://github.com/digdir/designsystemet/issues/4436))
+
+- **Chip:** Long labels are now truncated with an ellipsis, as in code ([#5049](https://github.com/digdir/designsystemet/issues/5049))
+
+- **Tag:** Added examples with the `outline` variant ([#4482](https://github.com/digdir/designsystemet/issues/4482))
+
+#### Patch Changes
+
+- **Checkbox, Radio, Select, Suggestion, Switch, Textfield, Textarea:** Only the input itself is shown as disabled, not the label and description, which can still be relevant to read ([#5306](https://github.com/digdir/designsystemet/issues/5306))
+
+- **LinkCard:** The title underline now behaves like `Link`, with 6% thickness by default and 12% on hover and active ([#5284](https://github.com/digdir/designsystemet/issues/5284))
+
+- **Form components:** Labels are now semibold and descriptions use `text-default`, to make them easier to tell apart ([#3913](https://github.com/digdir/designsystemet/issues/3913))
+
+- **ErrorSummary:** Padding is now `size-7` on all sides, and the list has `size-1` left padding to align with code ([#5195](https://github.com/digdir/designsystemet/issues/5195))
+
+- **Suggestion:** The chevron now points the right way when the list is open ([#5198](https://github.com/digdir/designsystemet/issues/5198))
+
+- **Search:** Left padding without a search icon is now `size-3`, as in code ([#5197](https://github.com/digdir/designsystemet/issues/5197), [#5402](https://github.com/digdir/designsystemet/issues/5402))
+
+- **Textfield:** Left padding is now `size-3`, as in code ([#5402](https://github.com/digdir/designsystemet/issues/5402))
+
+- **Button:** Icon size in icon buttons now matches code ([#5192](https://github.com/digdir/designsystemet/issues/5192))
+
+- **List:** Added a small left padding, so list items align with the text above them ([#5196](https://github.com/digdir/designsystemet/issues/5196))
+
+- Updated component descriptions to match the documentation ([#5369](https://github.com/digdir/designsystemet/issues/5369))
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.19.0
+
+<small style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  <time dateTime="2026-08-18">18. august 2026</time>
+</small>
+
+<Divider/>
+
+### @figma/design-file
+
+#### Minor Changes
+
+- **FileUpload:** New component ([#1236](https://github.com/digdir/designsystemet/issues/1236))
+
+#### Patch Changes
+
+- **Button:** Text in secondary and tertiary buttons no longer changes color on hover and active, as in code ([#5132](https://github.com/digdir/designsystemet/issues/5132))
+
+- **ToggleGroup:** Icons now use `text-default` instead of `text-subtle`, as in code ([#5158](https://github.com/digdir/designsystemet/issues/5158))
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.17.0
+
+<small style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  <time dateTime="2026-06-26">26. juni 2026</time>
+</small>
+
+<Divider/>
+
+### @figma/design-file
+
+#### Minor Changes
+
+- **Color:** The **Main color** and **Support color** collections are merged into one **Color** collection, and colors are chosen with color modes, as in code. The `main`, `support` and `neutral` component variants are removed ([#4545](https://github.com/digdir/designsystemet/issues/4545))
+
+- **ButtonGroup:** Removed, as it isn't a component in code. Spacing between buttons is a layout decision for each team ([#5024](https://github.com/digdir/designsystemet/issues/5024))
+
+- **ChipGroup:** Removed, as it isn't a component in code. Spacing between chips is a layout decision for each team ([#5025](https://github.com/digdir/designsystemet/issues/5025))
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.14.0
+
+<small style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  <time dateTime="2026-05-08">8. mai 2026</time>
+</small>
+
+<Divider/>
+
+### @figma/design-file
+
+#### Minor Changes
+
+- **AvatarStack:** New component for showing a group of avatars ([#2305](https://github.com/digdir/designsystemet/issues/2305))
+
+- **Checkbox, Radio:** New outline variant, which shows the input and its label as a tile ([#526](https://github.com/digdir/designsystemet/issues/526))
+
+- **Dialog:** Added a drawer version ([#4354](https://github.com/digdir/designsystemet/issues/4354))
+
+- **Suggestion:** Redesigned ([#4661](https://github.com/digdir/designsystemet/issues/4661), [#4664](https://github.com/digdir/designsystemet/issues/4664))
+
+- **Dropdown:** Option buttons support the `danger` variant ([#4266](https://github.com/digdir/designsystemet/issues/4266))
+
+- Added a guide to setting up your own icon library ([#4097](https://github.com/digdir/designsystemet/issues/4097))
+
+#### Patch Changes
+
+- **Checkbox:** The checkmark now scales correctly ([#4493](https://github.com/digdir/designsystemet/issues/4493))
+
+- **Checkbox:** Added the missing stroke when checked and indeterminate ([#4880](https://github.com/digdir/designsystemet/issues/4880))
+
+- **Checkbox, Chip:** Fixed wrong color variables on Checkbox and the radio Chip ([#4559](https://github.com/digdir/designsystemet/issues/4559))
+
+- **Card:** Moved the top padding from `_content` to the paragraph, so content in the slot doesn't get an extra 8px at the top ([#4796](https://github.com/digdir/designsystemet/issues/4796))
+
+- **Dialog:** Fixed an upside-down icon ([#4603](https://github.com/digdir/designsystemet/issues/4603))
+
+- **Pagination:** Buttons now scale correctly with size modes ([#4717](https://github.com/digdir/designsystemet/issues/4717))
+
+- **Popover:** Fixed contrast in the HelpText example ([#4894](https://github.com/digdir/designsystemet/issues/4894))
+
+- **Skeleton, Spinner:** Moved to separate pages, as on the website ([#4364](https://github.com/digdir/designsystemet/issues/4364))
+
+- **Textfield:** Prefix and suffix now hug their content ([#4815](https://github.com/digdir/designsystemet/issues/4815))
+
+- **Textfield:** Removed an unused base component ([#4385](https://github.com/digdir/designsystemet/issues/4385))
+
+- **ToggleGroup:** Fixed icon and background colors ([#4818](https://github.com/digdir/designsystemet/issues/4818))
+
+- **ToggleGroup:** Fixed the name of a subcomponent ([#4632](https://github.com/digdir/designsystemet/issues/4632))
+
+- **Typography:** Removed a duplicate `secondary` mode. `Secondary` is kept ([#4523](https://github.com/digdir/designsystemet/issues/4523))
+
+- Padding set to 0 is now connected to the `0` variable, so Figma suggests related variables ([#4081](https://github.com/digdir/designsystemet/issues/4081))
+
+- Fixed invalid `0` variables in components ([#4902](https://github.com/digdir/designsystemet/issues/4902))
+
+- Cleaned up the "Base components" page and removed unused components ([#4312](https://github.com/digdir/designsystemet/issues/4312))
+
+- Cleaned up the test page and the focus page
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.8.0
+
+<small style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  <time dateTime="2025-12-12">12. desember 2025</time>
+</small>
+
+<Divider/>
+
+### @figma/design-file
+
+#### Minor Changes
+
+- **Tag:** New `outline` variant, for tags on `surface-tinted` components and surfaces ([#3478](https://github.com/digdir/designsystemet/issues/3478))
+
+- **Paragraph:** Renamed the "Body" component to "Paragraph", as in code ([#4273](https://github.com/digdir/designsystemet/issues/4273))
+
+- **Tabs:** Added a neutral version ([#4198](https://github.com/digdir/designsystemet/issues/4198))
+
+- **Tabs:** Added a property for choosing the icon when "Show icon" is on ([#4249](https://github.com/digdir/designsystemet/issues/4249))
+
+#### Patch Changes
+
+- **Card:** Fixed wrong typography variables and styles ([#4108](https://github.com/digdir/designsystemet/issues/4108))
+
+- **Chip:** The x icon in removable chips now uses a variable ([#4163](https://github.com/digdir/designsystemet/issues/4163))
+
+- **Form components:** Adjusted line height and spacing between label and description ([#4136](https://github.com/digdir/designsystemet/issues/4136))
+
+- **List:** In list items that are links, each line of text is now underlined, not only the text block as a whole ([#2763](https://github.com/digdir/designsystemet/issues/2763))
+
+- **Popover:** `Popover.Trigger` now looks like in code ([#3445](https://github.com/digdir/designsystemet/issues/3445))
+
+- **Switch:** Added the missing variant and fixed double opacity when disabled ([#4306](https://github.com/digdir/designsystemet/issues/4306))
+
+- **Table:** Added a property for swapping the content of cells ([#4253](https://github.com/digdir/designsystemet/issues/4253))
+
+- **Table:** Cell subcomponents no longer have `/` in their names ([#4255](https://github.com/digdir/designsystemet/issues/4255))
+
+- **Table:** Fixed the cell with a checkbox ([#4256](https://github.com/digdir/designsystemet/issues/4256))
+
+- **Table:** Cells with icons now have the same height as cells with only text, in all sizes ([#4252](https://github.com/digdir/designsystemet/issues/4252))
+
+- Removed missing libraries, from components and styles copied from other files ([#4247](https://github.com/digdir/designsystemet/issues/4247))
+
+- Fixed missing components, mostly in examples ([#4305](https://github.com/digdir/designsystemet/issues/4305))
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.6.0
+
+<small style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  <time dateTime="2025-10-01">1. oktober 2025</time>
+</small>
+
+<Divider/>
+
+### @figma/design-file
+
+#### Minor Changes
+
+- **Select:** Added a page with examples and information ([#4025](https://github.com/digdir/designsystemet/issues/4025))
+
+- **ToggleGroup:** New `secondary` variant, and design changes ([#3553](https://github.com/digdir/designsystemet/issues/3553))
+
+- **Tag:** Icons can now be added ([#1884](https://github.com/digdir/designsystemet/issues/1884))
+
+- **List:** Bullet points are now instances that can be swapped ([#3915](https://github.com/digdir/designsystemet/issues/3915))
+
+- **Suggestion:** Multisuggestion is now part of the Suggestion page, as in code ([#3932](https://github.com/digdir/designsystemet/issues/3932))
+
+- **Suggestion:** The list now has up to 10 options instead of 5 ([#4083](https://github.com/digdir/designsystemet/issues/4083))
+
+- **Form components:** Added an option to show the required tag ([#3958](https://github.com/digdir/designsystemet/issues/3958))
+
+- **Table:** Added a guide to building your own table with the cell components ([#3914](https://github.com/digdir/designsystemet/issues/3914))
+
+#### Patch Changes
+
+- **Alert:** Removed the max width on the text, so it spans the full width ([#3892](https://github.com/digdir/designsystemet/issues/3892))
+
+- **Card:** All variants now have the same structure ([#3982](https://github.com/digdir/designsystemet/issues/3982))
+
+- **Card:** Fixed tag colors in the tag group ([#3716](https://github.com/digdir/designsystemet/issues/3716))
+
+- **Card:** The title and the tag group no longer overlap in large cards ([#3983](https://github.com/digdir/designsystemet/issues/3983))
+
+- **Card, LinkCard:** Headings now have the same font size ([#3898](https://github.com/digdir/designsystemet/issues/3898))
+
+- **Checkbox:** Fixed a wrong token ([#3813](https://github.com/digdir/designsystemet/issues/3813))
+
+- **Checkbox:** Removed the ghost variable `border-width/highlight` ([#4031](https://github.com/digdir/designsystemet/issues/4031))
+
+- **Dropdown:** Renamed variant properties, and text changes to `text-default` on hover and pressed, as in code ([#3912](https://github.com/digdir/designsystemet/issues/3912))
+
+- **Dropdown:** Buttons and headers in the neutral dropdown no longer look the same ([#3672](https://github.com/digdir/designsystemet/issues/3672))
+
+- **Link:** Added a hover style to the underline ([#3934](https://github.com/digdir/designsystemet/issues/3934))
+
+- **Link:** The focus style is now the same as on other components, instead of a background fill ([#4042](https://github.com/digdir/designsystemet/issues/4042))
+
+- **Tooltip:** Fixed missing arrows and arrows with the wrong color in the examples ([#4024](https://github.com/digdir/designsystemet/issues/4024))
+
+- Swapping a component no longer adds a border to the swapped element ([#3928](https://github.com/digdir/designsystemet/issues/3928))
+
+- Updated outdated links on the intro page ([#4082](https://github.com/digdir/designsystemet/issues/4082))
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.0.8
+
+<small style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  <time dateTime="2025-06-04">4. juni 2025</time>
+</small>
+
+<Divider/>
+
+### @figma/design-file
+
+#### Minor Changes
+
+- Variables now have Designsystemet's CSS syntax, so Dev Mode shows CSS variables that exist ([#3690](https://github.com/digdir/designsystemet/issues/3690))
+
+#### Patch Changes
+
+- **Body:** Fixed the font size of medium weight text ([#3566](https://github.com/digdir/designsystemet/issues/3566))
+
+- **Chip:** Fixed the base component in active radio chips ([#3642](https://github.com/digdir/designsystemet/issues/3642))
+
+- **Dropdown:** Items are now centered horizontally, and the small icon is 24px ([#3464](https://github.com/digdir/designsystemet/issues/3464))
+
+- **Dropdown:** Fixed a wrong variable in the neutral dropdown ([#3636](https://github.com/digdir/designsystemet/issues/3636))
+
+- **Link:** The icon is now centered vertically in the large variant ([#3538](https://github.com/digdir/designsystemet/issues/3538))
+
+- **LinkCard:** Now responsive with long titles ([#3481](https://github.com/digdir/designsystemet/issues/3481))
+
+- **LinkCard:** Changed the order of the state options to default, hover, active
+
+- **Multisuggestion:** Uses a checkmark instead of a checkbox ([#3678](https://github.com/digdir/designsystemet/issues/3678))
+
+- **Multisuggestion:** Chips are moved up, between the label and the field ([#3677](https://github.com/digdir/designsystemet/issues/3677))
+
+- **Pagination:** Removed disabled buttons from the example, to align with [#3454](https://github.com/digdir/designsystemet/issues/3454)
+
+- **Radio:** Added a variable on the legend in the horizontal variant ([#3573](https://github.com/digdir/designsystemet/issues/3573))
+
+- **Search:** Fixed the position of the focus indicator ([#3523](https://github.com/digdir/designsystemet/issues/3523))
+
+- **Suggestion:** Removed the padding in the list, as in code ([#3689](https://github.com/digdir/designsystemet/issues/3689))
+
+- **Switch:** Fixed a wrong variable on the neutral switch knob ([#3652](https://github.com/digdir/designsystemet/issues/3652))
+
+- **Textarea:** Removed an unused base container
+
+- Removed some ghost variables
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.0.3
+
+<small style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  <time dateTime="2025-04-07">7. april 2025</time>
+</small>
+
+<Divider/>
+
+### @figma/design-file
+
+#### Minor Changes
+
+- **Multisuggestion:** Renamed from Multiselect, as in code
+
+- **Typography:** Heading size7 is renamed to xxlarge, and sizes are named sm, md and lg
+
+#### Patch Changes
+
+- **Button:** Now styled as in code, with a `size-2` gap and no horizontal padding on the text ([#3401](https://github.com/digdir/designsystemet/issues/3401))
+
+- **Card:** Fixed the background token ([#3335](https://github.com/digdir/designsystemet/issues/3335))
+
+- **Tabs:** Removed an invisible line, and the text element now has a bottom border, closer to code
+
+- **Tabs:** Fixed wrong variables in examples
+
+- **ToggleGroup:** Updated with the visual changes from code ([#3399](https://github.com/digdir/designsystemet/issues/3399))
+
+- **ToggleGroup:** Fixed wrong variables
+
+- **Tooltip:** Fixed the color of hidden arrows
+
+- Components use surface variables instead of background variables, which can behave oddly in dark mode ([#3353](https://github.com/digdir/designsystemet/issues/3353))
+
+- Components use the Divider component
+
+- Removed a blue color from Radio on the example page
+
+- Example pages hug their content in height
+
+- Fixed ghost variables in examples
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.0.0
+
+<small style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  <time dateTime="2025-02-28">28. februar 2025</time>
+</small>
+
+<Divider/>
+
+### @figma/design-file
+
+#### Minor Changes
+
+- **Divider:** New component ([#3047](https://github.com/digdir/designsystemet/issues/3047))
+
+- **Dialog:** Added a backdrop
+
+- **Details:** Added a component property for the slot component
+
+- **Typography:** Added Heading XXL
+
+- Renamed the `ds-disabled-opacity` token to `ds-opacity-disabled` ([#3204](https://github.com/digdir/designsystemet/issues/3204))
+
+- Components are aligned with code in naming, properties and use of tokens ([#3160](https://github.com/digdir/designsystemet/issues/3160))
+
+#### Patch Changes
+
+- **Badge:** Flexible width
+
+- **Card, Details:** The slot component uses the full width
+
+- **Checkbox:** The danger variant uses `neutral-background` instead of `danger-background`, and `danger-text-subtle` instead of a border, as in code
+
+- **Checkbox:** Read-only uses `text-default` instead of `text-subtle` on the check and line, as in code
+
+- **Chip:** Added size variables to the x icon
+
+- **IconToggleGroup:** Uses main instead of accent
+
+- **Radio:** Uses main instead of accent
+
+- **Radio:** The danger variant uses `neutral-background` instead of `danger-background`, and `danger-text-subtle` instead of a border, as in code
+
+- **Radio:** Read-only uses `text-default` instead of `text-subtle` on the inner circle, as in code
+
+- **Radio:** Fixed table examples
+
+- **Switch:** Border color changed from `border-strong` to `border-default`
+
+- **Switch:** Fixed the disabled look, which used a gray background
+
+- **Switch:** The dot in read-only changed from `subtle` to `text-default`
+
+- **Tooltip:** Simplified
+
+- The example themes use the color names "primary" and "accent" for main, and "extra1" and "extra2" for support
+
+- Added extra typography to the "Etat1" and "Etat2" examples, for testing a switch to another typography
+
+- The Button, Card, Details and Tag pages use the default theme instead of a specific one
+
+- Fixed wrong icon colors on the example pages
+
+- Fixed broken table examples
+
+- Removed missing variables
+
+</div>
+
+</div>
