@@ -68,6 +68,6 @@
     "react-dropzone": "19.3.0",
     "storybook": "10.6.0",
     "tsdown": "0.22.14",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   }
 }
