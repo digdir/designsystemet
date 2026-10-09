@@ -120,12 +120,13 @@ function viewTitle(view: View): string {
   }
 }
 
-/** Turns an import result into notifications: the error, the warnings, and the import log. */
+/** Turns an import result into notifications: the error, the warnings, the import log, and the timings. */
 function toNotifications(
   msg: Extract<FigmaMessages, { type: 'import-result' }>,
 ): Notification[] {
   const warnings = msg.warnings ?? [];
   const info = msg.info ?? [];
+  const timings = msg.timings ?? [];
   return [
     ...(msg.status === 'error'
       ? [{ kind: 'error' as const, text: msg.message }]
@@ -147,6 +148,9 @@ function toNotifications(
             details: info,
           },
         ]
+      : []),
+    ...(timings.length > 0
+      ? [{ kind: 'info' as const, text: 'Timings', details: timings }]
       : []),
   ];
 }

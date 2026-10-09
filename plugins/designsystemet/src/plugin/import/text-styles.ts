@@ -1,5 +1,10 @@
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
-import { ensureFontLoaded, type FontCache, findFontName } from './fonts';
+import {
+  ensureFontLoaded,
+  type FontCache,
+  findFontName,
+  preloadAllFonts,
+} from './fonts';
 import { changedFields, type ImportLog } from './log';
 import {
   isManaged,
@@ -88,8 +93,6 @@ export async function syncTextStyles(
       continue;
     }
 
-    await ensureFontLoaded(fontCache, fontName);
-
     const fontSize = parseNumber(styleValue.fontSize) || 16;
     const lineHeight = toLineHeight(styleValue.lineHeight, fontSize);
     const letterSpacing = toLetterSpacing(styleValue.letterSpacing);
@@ -104,34 +107,53 @@ export async function syncTextStyles(
     // An existing style with a name from the config becomes the import's too, as it's updated from the config.
     markManaged(style);
 
-    style.fontName = fontName;
-    style.fontSize = fontSize;
-    style.lineHeight = lineHeight;
-    style.letterSpacing = letterSpacing;
-    style.paragraphSpacing = parseNumber(styleValue.paragraphSpacing) || 0;
-    style.paragraphIndent = parseNumber(styleValue.paragraphIndent) || 0;
-    style.textCase = toTextCase(styleValue.textCase);
-    style.textDecoration = toTextDecoration(styleValue.textDecoration);
+    // Figma needs a text style's current font, and the one it gets, loaded before anything on it is written.
+    // Loading can take seconds, so it's only done once something on the style changes. A style that changes
+    // font family goes through the new family with the current font style when the variables are bound, so
+    // every style of both families is loaded then, as preloadAllFonts does.
+    let fontsLoaded = false;
+    const beforeWrite = async (): Promise<void> => {
+      if (fontsLoaded) {
+        return;
+      }
+      fontsLoaded = true;
+      const current = style.fontName;
+      if (current.family !== fontName.family) {
+        await preloadAllFonts([current.family, fontName.family], fontCache);
+        return;
+      }
+      if (
+        fontCache.availableFonts.some(
+          (font) =>
+            font.fontName.family === current.family &&
+            font.fontName.style === current.style,
+        )
+      ) {
+        await ensureFontLoaded(fontCache, {
+          family: current.family,
+          style: current.style,
+        });
+      }
+      await ensureFontLoaded(fontCache, fontName);
+    };
 
-    style.setBoundVariable(
-      'fontFamily',
-      findVariable(variableLookup, FIGMA_COLLECTION.THEME, 'font-family'),
+    const fontFamilyVariable = findVariable(
+      variableLookup,
+      FIGMA_COLLECTION.THEME,
+      'font-family',
     );
-    style.setBoundVariable(
-      'fontStyle',
+    const fontStyleVariable =
       typeof styleValue.fontWeight === 'string'
         ? findVariable(
             variableLookup,
             FIGMA_COLLECTION.THEME,
             `font-weight/${String(styleValue.fontWeight).toLowerCase()}`,
           )
-        : null,
-    );
-    style.setBoundVariable(
-      'fontSize',
+        : null;
+    const fontSizeVariable =
       typeof token.value === 'object' &&
-        token.value &&
-        'fontSize' in token.value
+      token.value &&
+      'fontSize' in token.value
         ? findVariable(
             variableLookup,
             FIGMA_COLLECTION.SIZE,
@@ -139,10 +161,48 @@ export async function syncTextStyles(
               (token.value as Record<string, unknown>).fontSize,
             ),
           )
-        : null,
+        : null;
+
+    // A value bound to a variable comes from the variable, so the raw value is only written when there's
+    // no variable. Writing it anyway unbinds the variable, which is then bound again, on every import.
+    if (!fontFamilyVariable || !fontStyleVariable) {
+      await writeIfChanged(style, 'fontName', fontName, beforeWrite);
+    }
+    if (!fontSizeVariable) {
+      await writeIfChanged(style, 'fontSize', fontSize, beforeWrite);
+    }
+    await writeIfChanged(style, 'lineHeight', lineHeight, beforeWrite);
+    await writeIfChanged(style, 'letterSpacing', letterSpacing, beforeWrite);
+    await writeIfChanged(
+      style,
+      'paragraphSpacing',
+      parseNumber(styleValue.paragraphSpacing) || 0,
+      beforeWrite,
     );
-    style.setBoundVariable('lineHeight', null);
-    style.setBoundVariable('letterSpacing', null);
+    await writeIfChanged(
+      style,
+      'paragraphIndent',
+      parseNumber(styleValue.paragraphIndent) || 0,
+      beforeWrite,
+    );
+    await writeIfChanged(
+      style,
+      'textCase',
+      toTextCase(styleValue.textCase),
+      beforeWrite,
+    );
+    await writeIfChanged(
+      style,
+      'textDecoration',
+      toTextDecoration(styleValue.textDecoration),
+      beforeWrite,
+    );
+
+    await bindIfChanged(style, 'fontFamily', fontFamilyVariable, beforeWrite);
+    await bindIfChanged(style, 'fontStyle', fontStyleVariable, beforeWrite);
+    await bindIfChanged(style, 'fontSize', fontSizeVariable, beforeWrite);
+    await bindIfChanged(style, 'lineHeight', null, beforeWrite);
+    await bindIfChanged(style, 'letterSpacing', null, beforeWrite);
 
     if (before) {
       const changed = changedFields(before, snapshotTextStyle(style));
@@ -151,6 +211,63 @@ export async function syncTextStyles(
       }
     }
   }
+}
+
+// Figma does work for every write to a text style, even when the value is the same as before,
+// which made re-importing an unchanged config take tens of seconds. So only what differs is written.
+type TextStyleField =
+  | 'fontName'
+  | 'fontSize'
+  | 'lineHeight'
+  | 'letterSpacing'
+  | 'paragraphSpacing'
+  | 'paragraphIndent'
+  | 'textCase'
+  | 'textDecoration';
+
+async function writeIfChanged<K extends TextStyleField>(
+  style: TextStyle,
+  field: K,
+  value: TextStyle[K],
+  beforeWrite: () => Promise<void>,
+): Promise<void> {
+  if (!sameValue(style[field], value)) {
+    await beforeWrite();
+    style[field] = value;
+  }
+}
+
+async function bindIfChanged(
+  style: TextStyle,
+  field: VariableBindableTextField,
+  variable: Variable | null,
+  beforeWrite: () => Promise<void>,
+): Promise<void> {
+  if ((style.boundVariables?.[field]?.id ?? null) !== (variable?.id ?? null)) {
+    await beforeWrite();
+    style.setBoundVariable(field, variable);
+  }
+}
+
+// Whether the current value already has what the import would write, for plain values like { unit, value }.
+// Only the fields the import writes are compared, as Figma adds some of its own (e.g. variationSettings on
+// fontName). Numbers only need to be close, as Figma may store them with less precision than they were written.
+function sameValue(current: unknown, desired: unknown): boolean {
+  if (typeof current === 'number' && typeof desired === 'number') {
+    return Math.abs(current - desired) < 1e-4;
+  }
+  if (
+    !current ||
+    !desired ||
+    typeof current !== 'object' ||
+    typeof desired !== 'object'
+  ) {
+    return current === desired;
+  }
+  const currentRecord = current as Record<string, unknown>;
+  return Object.entries(desired).every(([key, value]) =>
+    sameValue(currentRecord[key], value),
+  );
 }
 
 // The parts of a text style the import writes, keyed by how they are named in the log.

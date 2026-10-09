@@ -77,7 +77,35 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
   let note: string | undefined;
   const reportProgress = () =>
     postMessage('import-progress', { step, total: TOTAL_STEPS, label, note });
+
+  const log = createImportLog();
+
+  // How long each step takes, sent with the result and logged to the console. Measured from after the
+  // wait below, so it's the step's own work (including its pauses).
+  const stepTimings: Array<{ step: string; ms: number }> = [];
+  let timedStep = '';
+  let stepStarted = 0;
+  const endTiming = () => {
+    if (timedStep) {
+      stepTimings.push({ step: timedStep, ms: Date.now() - stepStarted });
+      timedStep = '';
+    }
+  };
+  // Ends the last step's timing, and returns the steps' timings, their total, and the details the import logged.
+  const finishTimings = (): string[] => {
+    endTiming();
+    const total = stepTimings.reduce((sum, timing) => sum + timing.ms, 0);
+    const timings = [
+      ...stepTimings.map((timing) => `${timing.step}: ${timing.ms} ms`),
+      `Total: ${total} ms`,
+      ...log.timings,
+    ];
+    console.log(['Import timings:', ...timings].join('\n  '));
+    return timings;
+  };
+
   const onStep: OnStep = async (stepLabel, stepNote) => {
+    endTiming();
     step += 1;
     label = stepLabel;
     note = stepNote;
@@ -85,13 +113,14 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
     // Most steps run synchronous Figma API calls that block Figma until they finish. Wait a moment
     // so the UI receives and renders the step (and its note) before that happens.
     await new Promise((resolve) => setTimeout(resolve, 50));
+    timedStep = stepLabel;
+    stepStarted = Date.now();
   };
   const onDetail = (detail: string) => {
     label = detail;
     reportProgress();
   };
 
-  const log = createImportLog();
   try {
     const tokenModel = await createTokenModel(msg.config, onStep, onDetail);
     // Warnings from building the model (unresolved aliases etc.) are reported with the import's own warnings.
@@ -109,6 +138,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         'You can now close this window. Check your variables and styles in Figma to make sure they were updated correctly.',
       info: log.info,
       warnings: log.warnings,
+      timings: finishTimings(),
     });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
@@ -117,6 +147,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
       message: `${label ? `${label} failed: ` : ''}${errorMessage}`,
       info: log.info,
       warnings: log.warnings,
+      timings: finishTimings(),
     });
     console.error('Error importing config:', error);
   }

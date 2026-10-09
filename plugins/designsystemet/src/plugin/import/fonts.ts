@@ -1,5 +1,5 @@
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
-import type { CollectionSpec } from './collection-specs';
+import type { CollectionSpec, VariableSpec } from './collection-specs';
 
 export type FontCache = {
   availableFonts: Font[];
@@ -84,6 +84,108 @@ export async function collectFontFamiliesInFile(): Promise<Set<string>> {
   }
 
   return families;
+}
+
+// Whether the import will write a new value to a variable that text styles take their font from. Figma applies
+// such a value to the text styles bound to it straight away, which needs their fonts loaded (see preloadAllFonts),
+// and loading them can take seconds. Errs towards true when it can't tell.
+export async function willChangeFontVariables(
+  specs: CollectionSpec[],
+): Promise<boolean> {
+  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  const variables = await figma.variables.getLocalVariablesAsync();
+  const collectionByName = new Map(
+    collections.map((item) => [item.name, item]),
+  );
+  const collectionNameById = new Map(
+    collections.map((item) => [item.id, item.name]),
+  );
+  const variableByKey = new Map(
+    variables.map((variable) => [
+      `${collectionNameById.get(variable.variableCollectionId)}::${variable.name}`,
+      variable,
+    ]),
+  );
+  const variableById = new Map(
+    variables.map((variable) => [variable.id, variable]),
+  );
+  const specByKey = new Map<
+    string,
+    { spec: CollectionSpec; variable: VariableSpec }
+  >();
+  for (const spec of specs) {
+    for (const variable of spec.variables.values()) {
+      specByKey.set(`${spec.name}::${variable.name}`, { spec, variable });
+    }
+  }
+
+  // The font variables, and the variables they alias to, as the text styles get their values through them.
+  const pending = [...specByKey.keys()].filter((key) =>
+    /(^|\/)font-(family|weight|size)(\/|$)/.test(key.split('::')[1]),
+  );
+  const checked = new Set<string>();
+  for (let key = pending.pop(); key !== undefined; key = pending.pop()) {
+    if (checked.has(key)) {
+      continue;
+    }
+    checked.add(key);
+    const desired = specByKey.get(key);
+    if (!desired) {
+      continue;
+    }
+    const { spec, variable: variableSpec } = desired;
+
+    const collection = collectionByName.get(spec.name);
+    const variable = variableByKey.get(key);
+    // No text style can be bound to a variable that doesn't exist yet.
+    if (!collection || !variable) {
+      continue;
+    }
+    // Adding, removing or reordering modes can change which value the text styles get.
+    if (
+      collection.modes.map((mode) => mode.name).join('\n') !==
+      spec.modeNames.join('\n')
+    ) {
+      return true;
+    }
+    if (variable.resolvedType !== variableSpec.type) {
+      return true;
+    }
+
+    for (const mode of collection.modes) {
+      const valueSpec = variableSpec.valuesByMode.get(mode.name);
+      if (!valueSpec) {
+        continue;
+      }
+      const current = variable.valuesByMode[mode.modeId];
+      if (valueSpec.kind === 'alias') {
+        pending.push(`${valueSpec.collection}::${valueSpec.name}`);
+        const target =
+          typeof current === 'object' &&
+          current &&
+          'type' in current &&
+          current.type === 'VARIABLE_ALIAS'
+            ? variableById.get(current.id)
+            : undefined;
+        if (
+          !target ||
+          target.name !== valueSpec.name ||
+          collectionNameById.get(target.variableCollectionId) !==
+            valueSpec.collection
+        ) {
+          return true;
+        }
+      } else if (
+        typeof current === 'number' && typeof valueSpec.value === 'number'
+          ? Math.abs(current - valueSpec.value) >= 1e-4
+          : current !== valueSpec.value
+      ) {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 export async function preloadAllFonts(

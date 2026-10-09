@@ -24,6 +24,8 @@ type ImportResult = {
   info?: string[];
   // What was skipped or could not be applied (unresolved aliases, skipped styles, rejected scopes, ...).
   warnings?: string[];
+  // How long each step, and some parts of steps, took. For debugging slow imports.
+  timings?: string[];
 };
 
 // UI -> plugin: create a config from theme CSS built by Designsystemet, e.g. designsystemet.css.
