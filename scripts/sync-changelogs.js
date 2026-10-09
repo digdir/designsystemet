@@ -58,11 +58,9 @@ function getReleaseDate(version) {
 /**
  * @param {string} version
  * @param {Map<string, string>} packages package name → changelog body
- * @param {{ dated?: boolean }} [options] whether to show the release date. The Figma packages
- *   aren't released with the code, so getReleaseDate would give them the code's dates.
+ * @param {string | null} date the release date as `YYYY-MM-DD`, or null to leave the version undated
  */
-function formatVersion(version, packages, { dated = true } = {}) {
-  const date = dated ? getReleaseDate(version) : null;
+function formatVersion(version, packages, date) {
   let out = `<div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",
   borderRadius: "var(--ds-border-radius-md)",
@@ -91,7 +89,11 @@ async function writeComponentsChangelog() {
 
   let consolidatedContent = '';
   for (const [version, packages] of allVersions) {
-    consolidatedContent += formatVersion(version, packages);
+    consolidatedContent += formatVersion(
+      version,
+      packages,
+      getReleaseDate(version),
+    );
   }
 
   const latestVersion = pkgs[0]?.version;
@@ -129,13 +131,24 @@ const FIGMA_PAGES = {
   },
 };
 
+// The Figma file is published by hand, not with the code, so its versions have no tags to date them
+// by. Instead, the date is written in the changelog as a `_Published YYYY-MM-DD_` line under the
+// version heading; see figma/design-file/README.md.
+const PUBLISHED_DATE = /^_Published (\d{4}-\d{2}-\d{2})_\s*$\n*/m;
+
 async function writeFigmaChangelog() {
   const pkgs = [...(await findPackages(['figma'])).values()];
   const allVersions = await aggregateChangelogs(pkgs);
 
   let consolidatedContent = '';
   for (const [version, packages] of allVersions) {
-    consolidatedContent += formatVersion(version, packages, { dated: false });
+    let date = null;
+    const bodies = new Map();
+    for (const [name, body] of packages) {
+      date ??= PUBLISHED_DATE.exec(body)?.[1] ?? null;
+      bodies.set(name, body.replace(PUBLISHED_DATE, ''));
+    }
+    consolidatedContent += formatVersion(version, bodies, date);
   }
 
   for (const [lang, { frontmatter, intro }] of Object.entries(FIGMA_PAGES)) {

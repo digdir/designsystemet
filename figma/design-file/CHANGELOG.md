@@ -2,6 +2,8 @@
 
 ## 1.23.0
 
+_Published 2026-10-02_
+
 ### Minor Changes
 
 - **Select:** Published in Figma, with a simple list in place of the browser's own dropdown, which looks different in every browser ([#4436](https://github.com/digdir/designsystemet/issues/4436))
@@ -34,6 +36,8 @@
 
 ## 1.19.0
 
+_Published 2026-08-18_
+
 ### Minor Changes
 
 - **FileUpload:** New component ([#1236](https://github.com/digdir/designsystemet/issues/1236))
@@ -46,6 +50,8 @@
 
 ## 1.17.0
 
+_Published 2026-06-26_
+
 ### Minor Changes
 
 - **Color:** The **Main color** and **Support color** collections are merged into one **Color** collection, and colors are chosen with color modes, as in code. The `main`, `support` and `neutral` component variants are removed ([#4545](https://github.com/digdir/designsystemet/issues/4545))
@@ -55,6 +61,8 @@
 - **ChipGroup:** Removed, as it isn't a component in code. Spacing between chips is a layout decision for each team ([#5025](https://github.com/digdir/designsystemet/issues/5025))
 
 ## 1.14.0
+
+_Published 2026-05-08_
 
 ### Minor Changes
 
@@ -108,6 +116,8 @@
 
 ## 1.8.0
 
+_Published 2025-12-12_
+
 ### Minor Changes
 
 - **Tag:** New `outline` variant, for tags on `surface-tinted` components and surfaces ([#3478](https://github.com/digdir/designsystemet/issues/3478))
@@ -145,6 +155,8 @@
 - Fixed missing components, mostly in examples ([#4305](https://github.com/digdir/designsystemet/issues/4305))
 
 ## 1.6.0
+
+_Published 2025-10-01_
 
 ### Minor Changes
 
@@ -196,6 +208,8 @@
 
 ## 1.0.8
 
+_Published 2025-06-04_
+
 ### Minor Changes
 
 - Variables now have Designsystemet's CSS syntax, so Dev Mode shows CSS variables that exist ([#3690](https://github.com/digdir/designsystemet/issues/3690))
@@ -236,6 +250,8 @@
 
 ## 1.0.3
 
+_Published 2025-04-07_
+
 ### Minor Changes
 
 - **Multisuggestion:** Renamed from Multiselect, as in code
@@ -269,6 +285,8 @@
 - Fixed ghost variables in examples
 
 ## 1.0.0
+
+_Published 2025-02-28_
 
 ### Minor Changes
 
