@@ -2,6 +2,7 @@ packages:
   - packages/*
   - apps/*
   - plugins/*
+  - figma/*
   - internal/*
   - test/*
 allowBuilds:
