@@ -53,9 +53,11 @@ Examples:
 `Base-default` is an exception. In light mode, it is always the same as the color you selected, to preserve your brand as accurately as possible. 
 We therefore can't guarantee that it has sufficient contrast against the background it is placed on.
 
-`Base-default` is used semantically to show state, for example an active switch or a checked checkbox. 
-The color then needs a contrast of at least **3:1** against the `background` or `surface` color it is placed on. 
-If the color you choose has lower contrast than this, many users will find it hard to see the state of the component.
+`Base-default` is used semantically to show state, for example as the fill color of an active switch or a checked checkbox. 
+The color then needs a contrast of at least **3:1** against the `background` or `surface` color it is placed on, as required by [1.4.11 Non-text Contrast (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html).
+
+`Base-contrast-default` and `Base-contrast-subtle` always have sufficient contrast against `Base-default`, but that doesn't help if the component itself disappears into the background. 
+If you choose white as `Base-default`, for example, an active switch becomes white on a white background. Only the black circle is visible, and it becomes hard to see that it is a switch and whether it is on.
 
 ## Light and dark mode
 
