@@ -1,4 +1,4 @@
-# Change Log
+# @figma/design-file
 
 ## 1.23.0
 
