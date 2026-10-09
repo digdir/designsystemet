@@ -40,27 +40,30 @@ Som standard kommer Designsystemet med fargeskalaene Accent, Neutral, Brand1, Br
 Tinted betyr for eksempel at fargen har et hint av farge i seg, mens Hover betyr at fargen er tenkt brukt for en interaktiv tilstand.
 
 ## Kontrast
-De fleste semantiske fargene er laget for å oppfylle kontrastkrav automatisk. 
-Det gjelder særlig tekstfarger mot bakgrunns- og surface-farger.
-
-`Base`-fargene er et unntak. Disse fargene er tett knyttet til brandfargen du velger, 
-og du må derfor selv kontrollere at de har god nok kontrast der de brukes.
+Som standard er de fleste semantiske fargene laget for å oppfylle kontrastkrav automatisk, uansett hvilken base-farge du har valgt. 
+Det gjelder særlig tekstfarger mot background- og surface-farger.
 
 Eksempler:
 
-- `Text-default` har alltid god nok kontrast mot alle `background` og `surface` farger.
+- `Text-default` har alltid god nok kontrast mot alle `background`- og `surface`-farger.
 - `Text-subtle` har alltid god nok kontrast mot alle `background`-farger, `surface-default` og `surface-hover`.
-- Dette vil gjelde uansett hva du har valgt som base-farge.
+- `Base-contrast-default` og `Base-contrast-subtle` har alltid god nok kontrast mot `Base-default`.
 
-`Base-default`-fargen vil alltid være den samme som fargen du har valgt. Dette er for å ivareta brandet ditt best mulig. 
-Du må derfor selv passe på at fargen du velger oppfyller kontrastkravene i forhold til hvor den skal bli brukt.
+### Kontrasten til Base-default må du sjekke selv
+`Base-default` er et unntak. I lys modus er fargen alltid den samme som fargen du har valgt, for å ivareta brandet ditt best mulig. 
+Derfor kan vi ikke garantere at den har god nok kontrast mot bakgrunnen den plasseres på.
+
+`Base-default` brukes semantisk for å vise tilstand, for eksempel en aktiv switch eller en avkrysset checkbox. 
+Da må fargen ha minst **3:1** kontrast mot `background`- eller `surface`-fargen den står på. 
+Har fargen du velger lavere kontrast enn dette, blir det vanskelig for mange å se tilstanden til komponenten.
 
 ## Lys og mørk modus
 
-Stegene i en fargeskala har samme navn og samme rolle både i lys og mørk modus, men endrer fargeverdiene bak tokenene.
+Her beskriver vi hvordan fargene genereres som standard. 
+Du kan [overstyre enkeltfarger](/no/fundamentals/code/cli-config#overrides) for lys og mørk modus, og da må du selv passe på at de fungerer og har god nok kontrast.
 
-Hver fargeskala har derfor samme oppbygning i begge moduser, med de samme gruppene og variantene på hvert steg. 
-Dette gjør mulig å bytte mellom lys og mørk modus uten å måtte endre farger i designet, 
+Stegene i en fargeskala har samme navn og samme rolle både i lys og mørk modus, men endrer fargeverdiene bak tokenene. 
+Dette gjør det mulig å bytte mellom lys og mørk modus uten å måtte endre farger i designet, 
 og det gjør det enklere å bygge komponenter som fungerer i begge moduser.
 
 Fargene er også laget for å følge de samme kontrastprinsippene i begge moduser. 
