@@ -38,7 +38,6 @@
   align-items: center;
   gap: var(--ds-size-2);
   & > button {
-    border-radius: 50%;
     margin-block: calc(var(--ds-size-6) * -1);
   }
 }

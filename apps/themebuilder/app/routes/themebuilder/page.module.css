@@ -83,8 +83,43 @@
 
 .toolbar {
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--ds-size-4);
+  justify-content: flex-start;
   align-items: flex-end;
+}
+
+.themeGroup {
+  display: flex;
+  gap: var(--ds-size-2);
+  align-items: flex-end;
+  flex: 1;
+  min-width: min(100%, 280px);
+  max-width: 360px;
+}
+
+.themeSelector {
+  flex: 1;
+
+  & select {
+    flex: 1;
+    width: 0;
+    text-overflow: ellipsis;
+  }
+}
+
+.themeControls {
+  display: flex;
+  gap: var(--ds-size-2);
+  align-items: center;
+}
+
+.dialogActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--ds-size-3);
+  margin-top: var(--ds-size-5);
 }
 
 @media screen and (max-width: 1900px) {

@@ -8,6 +8,7 @@
   --_mw: calc(var(--max-content-width, var(--_max-content-width)) + (var(--content-inline-padding, var(--_content-inline-padding)) * 2));
   --_pi: var(--content-inline-padding, var(--_content-inline-padding));
   color: var(--text-muted);
+  overflow-wrap: anywhere;
 }
 
 .container {
@@ -20,6 +21,11 @@
   padding-inline: var(--_pi);
   padding-block: 64px 50px;
   margin: 0 auto;
+
+  > * {
+    min-width: 0;
+    max-width: 100%;
+  }
 }
 
 .bottom {
@@ -27,12 +33,14 @@
 }
 .bottomContainer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   max-width: var(--_mw);
   padding-inline: var(--_pi);
   margin: 0 auto;
   padding-block: 21px;
   > * {
+    min-width: 0;
     padding-inline: 23px;
     position: relative;
     &::after {
@@ -59,12 +67,14 @@
 
 .logo {
   margin-bottom: var(--ds-size-3);
+  max-width: 100%;
   & g {
     fill: var(--text);
   }
 }
 .copyright {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--ds-size-3);
 }

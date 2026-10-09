@@ -1,6 +1,6 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: we have not kept old schema for types, so we need to use any here
 import {
-  type ExternalConfigSchema as ConfigSchema,
+  type ExternalConfigSchemaInput as ConfigSchema,
   externalConfigSchema as configSchema,
 } from '@digdir/designsystemet/internal';
 import {
@@ -13,16 +13,15 @@ import { PencilIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router';
-import { configThemeToUrl } from '~/_utils/config-to-url';
+import { type WorkspaceConfig, workspaceToUrl } from '~/_utils/theme-workspace';
 import classes from './config-paste.module.css';
 
 export function ConfigPaste() {
   const { t } = useTranslation();
   const { lang } = useParams();
   const [configText, setConfigText] = useState('');
-  const [validatedConfig, setValidatedConfig] = useState<ConfigSchema | null>(
-    null,
-  );
+  const [validatedConfig, setValidatedConfig] =
+    useState<WorkspaceConfig | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleValidate = () => {
@@ -39,13 +38,14 @@ export function ConfigPaste() {
         ? migrateConfigWithOldColorSchema(configText)
         : JSON.parse(configText);
 
-      const validated = configSchema.parse(parsed);
-      setValidatedConfig(validated);
+      configSchema.parse(parsed);
+      const validated: ConfigSchema = parsed;
 
       if (!validated.themes || Object.keys(validated.themes).length === 0) {
         setError(t('configPaste.no-themes'));
-        setValidatedConfig(null);
+        return;
       }
+      setValidatedConfig({ ...validated, themes: validated.themes });
     } catch (err) {
       console.error('Config validation error:', err);
       setError(
@@ -54,9 +54,7 @@ export function ConfigPaste() {
     }
   };
 
-  const themes = validatedConfig?.themes
-    ? Object.entries(validatedConfig.themes)
-    : [];
+  const themes = validatedConfig ? Object.entries(validatedConfig.themes) : [];
 
   return (
     <div className={classes.container}>
@@ -70,8 +68,9 @@ export function ConfigPaste() {
           onChange={(e) => setConfigText(e.target.value)}
           placeholder={t('configPaste.placeholder')}
           rows={15}
-          error={error ? error : undefined}
+          error={error ? <span lang='en'>{error}</span> : undefined}
           autoFocus
+          suppressHydrationWarning
         />
       </div>
 
@@ -97,7 +96,7 @@ export function ConfigPaste() {
 
       {validatedConfig && themes.length > 0 && (
         <>
-          <ValidationMessage data-color='success'>
+          <ValidationMessage data-color='success' role='status'>
             {t('configPaste.validation-success')}
           </ValidationMessage>
           <div>
@@ -133,7 +132,16 @@ export function ConfigPaste() {
                     variant='secondary'
                     aria-label={`${t('configPaste.edit-theme')} ${themeName}`}
                   >
-                    <Link to={configThemeToUrl(themeConfig, lang || 'no')}>
+                    <Link
+                      to={workspaceToUrl(
+                        validatedConfig,
+                        themeName,
+                        lang || 'no',
+                      )}
+                      onClick={(event) => {
+                        event.currentTarget.closest('dialog')?.close();
+                      }}
+                    >
                       <PencilIcon aria-hidden='true' />
                       {t('configPaste.edit-theme')}
                     </Link>

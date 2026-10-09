@@ -151,11 +151,10 @@ const CopyButton = ({ text }: { text: string }) => {
   const { t } = useTranslation();
   const [copied, setCopied] = useState('');
 
-  const onButtonClick = () => {
+  const onButtonClick = async () => {
+    setCopied('');
+    await navigator.clipboard.writeText(text);
     setCopied(classes.copied);
-    navigator.clipboard.writeText(text).catch((reason) => {
-      throw Error(String(reason));
-    });
   };
   return (
     <>
@@ -172,8 +171,11 @@ const CopyButton = ({ text }: { text: string }) => {
           <FilesIcon aria-hidden />
           <ClipboardCheckmarkIcon aria-hidden />
         </span>
-        {t('live-component.copy', 'Copy')}
+        {t('clipboard-button.copy', 'Copy')}
       </Button>
+      <span role='status' className='ds-sr-only'>
+        {copied ? t('clipboard-button.copied', 'Copied') : ''}
+      </span>
     </>
   );
 };

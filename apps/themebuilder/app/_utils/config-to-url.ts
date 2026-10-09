@@ -1,4 +1,4 @@
-import type { ExternalConfigSchema as ConfigSchema } from '@digdir/designsystemet/internal';
+import type { ExternalConfigSchemaInput as ConfigSchema } from '@digdir/designsystemet/internal';
 
 const QUERY_SEPARATOR = ' ';
 
@@ -6,7 +6,10 @@ const QUERY_SEPARATOR = ' ';
  * Converts a theme config object to a themebuilder URL with query parameters
  */
 export function configThemeToUrl(
-  theme: NonNullable<ConfigSchema['themes']>[string],
+  theme: Pick<
+    NonNullable<ConfigSchema['themes']>[string],
+    'colors' | 'overrides' | 'borderRadius'
+  >,
   lang = 'no',
 ): string {
   const params = new URLSearchParams();
@@ -33,7 +36,9 @@ export function configThemeToUrl(
     // patterns: <colorname>|<tokenname>|<mode>:<hex>
     const colorOverrides = Object.entries(theme.overrides.colors)
       .map(([colorName, tokenObj]) =>
-        Object.entries(tokenObj)
+        Object.entries(
+          tokenObj as Record<string, { light?: string; dark?: string }>,
+        )
           .map(([tokenname, modeObj]) => {
             let paramStr = `${colorName}|${tokenname}`;
             if (modeObj.light) {

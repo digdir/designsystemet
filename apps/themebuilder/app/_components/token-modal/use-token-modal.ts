@@ -12,7 +12,8 @@ type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
 
 export const useTokenModal = () => {
   const { isProduction } = useLoaderData();
-  const { colors, severityColors, baseBorderRadius } = useThemebuilder();
+  const { colors, severityColors, baseBorderRadius, workspace } =
+    useThemebuilder();
 
   const [name, setName] = useState('theme');
 
@@ -83,13 +84,15 @@ export const useTokenModal = () => {
   };
 
   return {
-    themeName: name,
+    themeName: workspace?.activeTheme || name,
+    isWorkspace: Boolean(workspace),
+    workspaceThemes: workspace?.config.themes,
     setThemeName: setName,
     theme,
     themeConfig,
     buildSnippet: {
       config: configBuildSnippet,
     },
-    configSnippet: JSON.stringify(configSnippet, null, 2),
+    configSnippet: JSON.stringify(workspace?.config || configSnippet, null, 2),
   };
 };

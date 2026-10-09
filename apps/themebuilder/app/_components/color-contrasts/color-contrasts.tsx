@@ -173,7 +173,15 @@ const ColorContrastMapper = ({
             ))}
         </Select>
       </Field>
-      <div className={classes.tableContainer}>
+      <section
+        className={cl(classes.tableContainer, 'ds-focus')}
+        tabIndex={0}
+        aria-label={
+          variant === 'base-colors'
+            ? t('colorContrasts.base-colors')
+            : t('colorContrasts.text-vs-background')
+        }
+      >
         <table className={classes.table}>
           <tbody>
             <tr>
@@ -197,7 +205,7 @@ const ColorContrastMapper = ({
             ))}
           </tbody>
         </table>
-      </div>
+      </section>
     </>
   );
 };

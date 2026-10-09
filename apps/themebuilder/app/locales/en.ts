@@ -37,6 +37,16 @@ export default {
   },
   themeBuilder: {
     title: 'Theme Builder',
+    'active-theme': 'Theme',
+    'toggle-editor': 'Open or close theme editor',
+    'edit-themes': 'Edit themes',
+    'theme-names': 'Theme names',
+    'remove-theme': 'Delete theme {{name}}',
+    'add-theme': 'Add theme',
+    'theme-name': 'Theme name',
+    'invalid-theme-name':
+      'Use lowercase letters, numbers, and single hyphens between words.',
+    'duplicate-theme-name': 'A theme with this name already exists.',
     'documentation-link': 'Read the documentation about custom themes',
   },
   configPaste: {
@@ -107,6 +117,20 @@ export default {
   'color-modal': colorModal,
   themeModal,
   colorPane: {
+    'token-overrides': 'Token overrides',
+    'confirm-add-title': 'Add a color to all themes?',
+    'confirm-add-description':
+      'This adds a color with the same starting value to all {{count}} themes. Each theme can then have its own color value.',
+    'confirm-add': 'Add to all themes',
+    'confirm-remove-title': 'Delete a color from all themes?',
+    'confirm-remove-description':
+      'This deletes "{{name}}" and its token overrides from all {{count}} themes. This cannot be undone.',
+    'confirm-remove': 'Delete from all themes',
+    'confirm-rename-title': 'Rename a color in all themes?',
+    'confirm-rename-description':
+      'This renames "{{from}}" to "{{to}}" in all {{count}} themes, including its token overrides. Existing color values are preserved.',
+    'confirm-rename': 'Rename in all themes',
+    'name-duplicate-error': 'A color with this name already exists',
     add: 'Add',
     'edit-color': 'Edit colour',
     save: 'Save',
@@ -123,6 +147,7 @@ export default {
     color: 'Colour',
   },
   appearanceToggle: {
+    label: 'Appearance',
     light: 'Light',
     dark: 'Dark',
     'set-to': 'Set to',
@@ -157,6 +182,7 @@ export default {
     'select-color': 'Select colour to see contrasts',
   },
   borderRadius: {
+    label: 'Border radius',
     suggested: 'Suggested base border radius',
     manual: 'Manual base border radius',
     'define-value': 'Define the base value for border radius',

@@ -19,11 +19,27 @@ import { useTokenModal } from './use-token-modal';
 export const TokenModal = () => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDialogElement>(null);
-  const { themeName, setThemeName, buildSnippet, configSnippet, themeConfig } =
-    useTokenModal();
+  const {
+    themeName,
+    setThemeName,
+    buildSnippet,
+    configSnippet,
+    isWorkspace,
+    workspaceThemes,
+    themeConfig,
+  } = useTokenModal();
   // Generating the CSS takes a moment, so only do it while the modal is open.
   const [isOpen, setIsOpen] = useState(false);
-  const themeCss = useThemeCss(themeName, themeConfig, isOpen);
+  const themeNames = Object.keys(workspaceThemes ?? {});
+  const hasMultipleThemes = themeNames.length > 1;
+  // Which theme to show the CSS file for, when the config has several themes
+  const [cssThemeName, setCssThemeName] = useState(themeName);
+  const selectedThemeName = hasMultipleThemes ? cssThemeName : themeName;
+  const selectedWorkspaceTheme = workspaceThemes?.[selectedThemeName];
+  const cssTheme = selectedWorkspaceTheme
+    ? { name: selectedThemeName, config: selectedWorkspaceTheme }
+    : { name: themeName, config: themeConfig };
+  const themeCss = useThemeCss(cssTheme.name, cssTheme.config, isOpen);
 
   return (
     <Dialog.TriggerContext>
@@ -31,6 +47,7 @@ export const TokenModal = () => {
         className={classes.trigger}
         onClick={() => {
           setIsOpen(true);
+          setCssThemeName(themeName);
           return modalRef.current?.showModal();
         }}
       >
@@ -52,28 +69,33 @@ export const TokenModal = () => {
             </span>
           </Heading>
         </Dialog.Block>
-        <Dialog.Block>
-          <Field>
-            <Heading className={classes.modalHeader} data-size='xs' level={3}>
-              <Label>{t('themeModal.theme-name')}</Label>
-            </Heading>
-            <Field.Description>
-              {t('themeModal.theme-name-description')}
-            </Field.Description>
-            <Input
-              name='themeName'
-              value={themeName}
-              onChange={(e) => {
-                const value = e.currentTarget.value
-                  .replace(/\s+/g, '-')
-                  .replace(/[^A-Z0-9-]+/gi, '')
-                  .toLowerCase();
+        {!hasMultipleThemes && (
+          <Dialog.Block>
+            <Field>
+              <Heading className={classes.modalHeader} data-size='xs' level={3}>
+                <Label>{t('themeModal.theme-name')}</Label>
+              </Heading>
+              {!isWorkspace && (
+                <Field.Description>
+                  {t('themeModal.theme-name-description')}
+                </Field.Description>
+              )}
+              <Input
+                name='themeName'
+                readOnly={isWorkspace}
+                value={themeName}
+                onChange={(e) => {
+                  const value = e.currentTarget.value
+                    .replace(/\s+/g, '-')
+                    .replace(/[^A-Z0-9-]+/gi, '')
+                    .toLowerCase();
 
-                setThemeName(value);
-              }}
-            />
-          </Field>
-        </Dialog.Block>
+                  setThemeName(value);
+                }}
+              />
+            </Field>
+          </Dialog.Block>
+        )}
         <Dialog.Block>
           {/* Two ways to use the theme, side by side: a config file for the CLI, or the generated CSS file. */}
           <div className={classes.content}>
@@ -92,7 +114,14 @@ export const TokenModal = () => {
                 {t('themeModal.css.heading')}
               </Heading>
               <Paragraph>{t('themeModal.css.description')}</Paragraph>
-              <Css themeName={themeName} {...themeCss} />
+              <Css
+                themeName={cssTheme.name}
+                hasMultipleThemes={hasMultipleThemes}
+                cssTheme={cssTheme}
+                themeNames={themeNames}
+                setCssThemeName={setCssThemeName}
+                {...themeCss}
+              />
             </section>
           </div>
         </Dialog.Block>

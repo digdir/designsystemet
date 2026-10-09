@@ -29,6 +29,7 @@ export default {
     'step-one': 'Last ned og importer etter "@digdir/designsystemet-css".',
     download: 'Last ned {{filename}}',
     error: 'Kunne ikke generere CSS for temaet.',
+    'select-theme': 'Velg tema',
   },
   'severity-colors': 'Severity',
   'severity-colors-switch': 'Aktiver for å overstyre severity-farger',
