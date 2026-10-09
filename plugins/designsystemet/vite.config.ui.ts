@@ -1,6 +1,5 @@
 import path from 'node:path';
 import react from '@vitejs/plugin-react';
-import postcssUrl from 'postcss-url';
 import { defineConfig } from 'vite';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 
@@ -19,11 +18,6 @@ export default defineConfig(({ mode }) => ({
       output: {
         codeSplitting: false,
       },
-    },
-  },
-  css: {
-    postcss: {
-      plugins: [postcssUrl({ url: 'inline' })],
     },
   },
 }));
