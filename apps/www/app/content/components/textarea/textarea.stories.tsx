@@ -27,6 +27,26 @@ export const WithRows = () => {
   );
 };
 
+export const WithCounter = () => {
+  return (
+    <Field>
+      <Label>Med tegn-teller</Label>
+      <Textarea rows={6} />
+      <Field.Counter limit={200} />
+    </Field>
+  );
+};
+
+export const WithCounterEn = () => {
+  return (
+    <Field>
+      <Label>With counter</Label>
+      <Textarea rows={6} />
+      <Field.Counter limit={200} />
+    </Field>
+  );
+};
+
 export const Disabled = () => {
   return (
     <Field>
