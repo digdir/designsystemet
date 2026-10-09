@@ -15,7 +15,7 @@ import {
 import type { Pause } from './pause';
 import { resolveCompositeValue } from './resolver';
 import type { TokenModel } from './types';
-import { parseNumber, pathToFigmaName } from './utils';
+import { parseNumber, pathToFigmaName, sameValue } from './utils';
 import { findVariable } from './variable-sync';
 
 // Figma text styles are not mode-aware, so theme-dependent values (the font family)
@@ -247,27 +247,6 @@ async function bindIfChanged(
     await beforeWrite();
     style.setBoundVariable(field, variable);
   }
-}
-
-// Whether the current value already has what the import would write, for plain values like { unit, value }.
-// Only the fields the import writes are compared, as Figma adds some of its own (e.g. variationSettings on
-// fontName). Numbers only need to be close, as Figma may store them with less precision than they were written.
-function sameValue(current: unknown, desired: unknown): boolean {
-  if (typeof current === 'number' && typeof desired === 'number') {
-    return Math.abs(current - desired) < 1e-4;
-  }
-  if (
-    !current ||
-    !desired ||
-    typeof current !== 'object' ||
-    typeof desired !== 'object'
-  ) {
-    return current === desired;
-  }
-  const currentRecord = current as Record<string, unknown>;
-  return Object.entries(desired).every(([key, value]) =>
-    sameValue(currentRecord[key], value),
-  );
 }
 
 // The parts of a text style the import writes, keyed by how they are named in the log.

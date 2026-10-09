@@ -26,29 +26,3 @@ export function convertRawVariableValue(
       return null;
   }
 }
-
-/**
- * Whether a variable's current value in a mode is already the value the import would write. Colors and aliases
- * are compared by the fields the import writes, so e.g. an RGB color matches the RGBA Figma stores with alpha 1.
- * Numbers only need to be close, as Figma may store them with less precision than they were written with.
- */
-export function sameVariableValue(
-  current: VariableValue | undefined,
-  desired: VariableValue,
-): boolean {
-  if (typeof current === 'number' && typeof desired === 'number') {
-    return Math.abs(current - desired) < 1e-4;
-  }
-  if (
-    typeof current !== 'object' ||
-    current === null ||
-    typeof desired !== 'object' ||
-    desired === null
-  ) {
-    return current === desired;
-  }
-  const currentRecord = current as unknown as Record<string, VariableValue>;
-  return Object.entries(desired).every(([key, value]) =>
-    sameVariableValue(currentRecord[key], value as VariableValue),
-  );
-}

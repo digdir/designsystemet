@@ -11,7 +11,7 @@ import {
 } from './ownership';
 import type { Pause } from './pause';
 import { normalizeScopes } from './scopes';
-import { sameVariableValue } from './variable-values';
+import { sameValue } from './utils';
 
 export async function syncCollections(
   specs: CollectionSpec[],
@@ -132,7 +132,7 @@ export async function syncVariables(
     modeId: string,
     value: VariableValue,
   ): void => {
-    if (sameVariableValue(variable.valuesByMode[modeId], value)) {
+    if (sameValue(variable.valuesByMode[modeId], value)) {
       valuesUnchanged++;
       return;
     }
