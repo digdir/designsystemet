@@ -11,6 +11,7 @@ import {
 } from './ownership';
 import type { Pause } from './pause';
 import { normalizeScopes } from './scopes';
+import { sameVariableValue } from './variable-values';
 
 export async function syncCollections(
   specs: CollectionSpec[],
@@ -123,6 +124,22 @@ export async function syncVariables(
   );
   let variablesDone = 0;
   let aliasesDone = 0;
+  // Values are only written when they differ from what the variable has, so an unchanged value is left alone.
+  let valuesWritten = 0;
+  let valuesUnchanged = 0;
+  const writeValue = (
+    variable: Variable,
+    modeId: string,
+    value: VariableValue,
+  ): void => {
+    if (sameVariableValue(variable.valuesByMode[modeId], value)) {
+      valuesUnchanged++;
+      return;
+    }
+    variable.setValueForMode(modeId, value);
+    valuesWritten++;
+  };
+  const started = Date.now();
   const variablesDetail = () =>
     `Importing variables (${variablesDone} of ${variableCount})`;
   const aliasesDetail = () =>
@@ -240,7 +257,7 @@ export async function syncVariables(
         if (valueSpec.kind !== 'raw' || !modeId) {
           continue;
         }
-        variable.setValueForMode(modeId, valueSpec.value);
+        writeValue(variable, modeId, valueSpec.value);
         await pause(variablesDetail);
       }
 
@@ -290,7 +307,8 @@ export async function syncVariables(
           continue;
         }
 
-        variable.setValueForMode(
+        writeValue(
+          variable,
           modeId,
           figma.variables.createVariableAlias(targetVariable),
         );
@@ -299,6 +317,10 @@ export async function syncVariables(
       }
     }
   }
+
+  log.timings.push(
+    `Variable values: ${valuesWritten} written, ${valuesUnchanged} unchanged (${Date.now() - started} ms)`,
+  );
 
   for (const { variable, collection, before } of updateChecks) {
     const changed = changedFields(

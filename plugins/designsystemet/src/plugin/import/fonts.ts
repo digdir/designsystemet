@@ -1,5 +1,6 @@
 import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
 import type { CollectionSpec, VariableSpec } from './collection-specs';
+import { sameVariableValue } from './variable-values';
 
 export type FontCache = {
   availableFonts: Font[];
@@ -175,11 +176,7 @@ export async function willChangeFontVariables(
         ) {
           return true;
         }
-      } else if (
-        typeof current === 'number' && typeof valueSpec.value === 'number'
-          ? Math.abs(current - valueSpec.value) >= 1e-4
-          : current !== valueSpec.value
-      ) {
+      } else if (!sameVariableValue(current, valueSpec.value)) {
         return true;
       }
     }
