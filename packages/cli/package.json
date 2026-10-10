@@ -53,7 +53,7 @@
   "dependencies": {
     "@commander-js/extra-typings": "^15.0.0",
     "@digdir/designsystemet-types": "workspace:*",
-    "@inquirer/confirm": "^6.3.2",
+    "@inquirer/confirm": "^6.3.3",
     "@tokens-studio/sd-transforms": "2.0.3",
     "@tokens-studio/types": "0.5.2",
     "chroma-js": "^3.2.0",
@@ -64,19 +64,19 @@
     "jsonc-parser": "^3.3.1",
     "object-hash": "^3.0.0",
     "picocolors": "^1.1.1",
-    "postcss": "^8.5.28",
+    "postcss": "^8.5.29",
     "ramda": "^0.32.0",
-    "style-dictionary": "^5.5.3",
+    "style-dictionary": "^5.6.0",
     "zod": "^4.6.5",
     "zod-validation-error": "^5.0.0"
   },
   "devDependencies": {
     "@types/chroma-js": "3.1.2",
-    "@types/node": "24.13.4",
+    "@types/node": "24.19.1",
     "@types/object-hash": "3.0.6",
     "@types/ramda": "0.32.0",
     "tsdown": "0.22.14",
     "typescript": "6.0.3",
-    "vitest": "5.0.0"
+    "vitest": "5.0.3"
   }
 }
