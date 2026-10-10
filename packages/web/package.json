@@ -126,14 +126,14 @@
     "@custom-elements-manifest/analyzer": "0.11.0",
     "@oddbird/popover-polyfill": "0.7.2",
     "@testing-library/dom": "10.4.2",
-    "@vitest/browser-playwright": "5.0.0",
+    "@vitest/browser-playwright": "5.0.3",
     "custom-element-vs-code-integration": "1.5.0",
     "@testing-library/user-event": "14.6.7",
     "invokers-polyfill": "1.0.4",
     "tsdown": "0.22.14",
-    "vite": "8.3.0",
-    "vitest": "5.0.0",
+    "vite": "8.3.3",
+    "vitest": "5.0.3",
     "happy-dom": "^20.14.5",
-    "jsdom": "^30.0.1"
+    "jsdom": "^30.1.2"
   }
 }
