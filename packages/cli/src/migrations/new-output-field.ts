@@ -100,7 +100,8 @@ const defaultOutDir = outputConfigShape.outDir.parse(undefined);
 
 /**
  * Builds an `output` equivalent to the deprecated `outDir` and `clean` fields.
- * Returns `undefined` when both have default behaviour, since the default `output` covers it.
+ * Always includes a `design-tokens` output, also for the default directory: the deprecated fields
+ * created design tokens, and the default `output` doesn't.
  *
  * `cleanDir` defaults to `true`, so an explicit `clean: false` is carried over as `cleanDir: false` on every output.
  * Otherwise the migrated config would delete output directories the user opted out of cleaning.
@@ -109,11 +110,6 @@ const defaultOutDir = outputConfigShape.outDir.parse(undefined);
 export const toOutput = (outDir: string | undefined, { clean }: { clean?: boolean } = {}) => {
   const isDefaultDir = outDir === undefined || path.posix.normalize(outDir) === path.posix.normalize(defaultOutDir);
   const keepFiles = clean === false;
-
-  if (isDefaultDir && !keepFiles) {
-    return undefined;
-  }
-
   const cleanDir = keepFiles ? { cleanDir: false } : {};
 
   return [
@@ -154,16 +150,14 @@ export const migrateToOutputField = (config: string, context: MigrationContext =
     const output = toOutput(toConfigRelative(currentConfig.outDir ?? defaultOutDir, context), {
       clean: currentConfig.clean,
     });
-    if (output) {
-      configText = applyEdits(
-        configText,
-        modify(configText, ['output'], output, {
-          formattingOptions,
-          // Place `output` right after `$schema` if present, otherwise at the top.
-          getInsertionIndex: (properties) => properties.indexOf('$schema') + 1,
-        }),
-      );
-    }
+    configText = applyEdits(
+      configText,
+      modify(configText, ['output'], output, {
+        formattingOptions,
+        // Place `output` right after `$schema` if present, otherwise at the top.
+        getInsertionIndex: (properties) => properties.indexOf('$schema') + 1,
+      }),
+    );
   }
 
   for (const key of deprecatedFields) {

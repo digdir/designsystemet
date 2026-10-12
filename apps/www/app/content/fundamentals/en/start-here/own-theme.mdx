@@ -23,6 +23,7 @@ We recommend that both a developer and a designer take part in the process when 
 
 ```json
 {
+  "output": ["design-tokens", "css", "types"],
   "themes": {
     "theme": {
       "colors": {
@@ -45,7 +46,7 @@ We recommend that both a developer and a designer take part in the process when 
 ```bash
 npx @digdir/designsystemet@latest
 ```
-This will generate Design Tokens based on the configuration file and save them in a folder called `design-tokens`, and CSS in a folder called `design-tokens-build`. You can change the folders with the [`output`](/en/fundamentals/code/cli-config#output) field in the configuration file. Push the changes to your repository.
+This will generate Design Tokens based on the configuration file and save them in a folder called `design-tokens`, and CSS in a folder called `design-tokens-build`. The Design Tokens are saved because `output` includes `"design-tokens"`; without it, the CLI only creates CSS and types. You can change the folders with the [`output`](/en/fundamentals/code/cli-config#output) field in the configuration file. Push the changes to your repository.
 
 6. Fetch the component library from [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Click “Open in Figma”) into your organisation that has at least a Pro licence. Note that this will be a copy of the component library without any connection to the main file.
 
@@ -64,7 +65,7 @@ This will generate Design Tokens based on the configuration file and save them i
 We recommend *not* pushing changes to Design Tokens from Tokens Studio, as this may cause you to lose your overrides when updating.
 </Alert>
 
-8. Go to the [Theme Builder](https://theme.designsystemet.no) and generate colour scales based on your brand colours. Click “Apply theme”. Copy the configuration file and paste it into the `designsystemet.config.json` file in your repository. Run the command below and push the changes.
+8. Go to the [Theme Builder](https://theme.designsystemet.no) and generate colour scales based on your brand colours. Click “Apply theme”. Copy the configuration file and paste it into the `designsystemet.config.json` file in your repository. Keep the `output` field from step 1, so the Design Tokens are still saved. Run the command below and push the changes.
 
 
 ```bash
@@ -114,6 +115,7 @@ If you want additional themes, you can generate a new theme in the Theme Builder
 
 ```json
 {
+  "output": ["design-tokens", "css", "types"],
   "themes": {
     "theme-one": {
       "colors": {

@@ -38,7 +38,10 @@ describe('new output field migration', () => {
   ])('removes the deprecated fields and keeps the config valid with %s', (_, config) => {
     const migrated = migrateToOutputField(config);
 
-    expect(parseJsonc(migrated)).toEqual({ themes: {} });
+    expect(parseJsonc(migrated)).toEqual({
+      output: [{ type: 'design-tokens' }, { type: 'css' }, { type: 'types' }],
+      themes: {},
+    });
     expect(migrated).toMatch(/note|last/);
   });
 
@@ -50,10 +53,13 @@ describe('new output field migration', () => {
     expect(Object.keys(parseJsonc(withoutSchema))).toEqual(['output', 'themes']);
   });
 
-  it('does not define output when the deprecated fields have default values', () => {
-    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens" }'))).toEqual({});
-    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens", "clean": true }'))).toEqual({});
-    expect(parseJsonc(migrateToOutputField('{ "clean": true }'))).toEqual({});
+  // The deprecated fields created design tokens, and the default `output` doesn't, so it's always defined.
+  it('defines output with design tokens when the deprecated fields have default values', () => {
+    const expected = { output: [{ type: 'design-tokens' }, { type: 'css' }, { type: 'types' }] };
+
+    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens" }'))).toEqual(expected);
+    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens", "clean": true }'))).toEqual(expected);
+    expect(parseJsonc(migrateToOutputField('{ "clean": true }'))).toEqual(expected);
   });
 
   // `cleanDir` defaults to `true`, so dropping `clean: false` would delete directories the user opted out of cleaning.
@@ -99,6 +105,7 @@ describe('new output field migration', () => {
       ],
     });
     expect(parseJsonc(migration.yes('{ /* default */ "outDir": "design-tokens", "themes": {} }'))).toEqual({
+      output: [{ type: 'design-tokens' }, { type: 'css' }, { type: 'types' }],
       themes: {},
     });
     vi.restoreAllMocks();
@@ -137,8 +144,10 @@ describe('new output field migration', () => {
       });
     });
 
-    it('does not define output when outDir resolves to the default directory next to the config file', () => {
-      expect(parseJsonc(migrateToOutputField('{ "outDir": "configs/design-tokens" }', context))).toEqual({});
+    it('defines output without directories when outDir resolves to the default directory next to the config file', () => {
+      expect(parseJsonc(migrateToOutputField('{ "outDir": "configs/design-tokens" }', context))).toEqual({
+        output: [{ type: 'design-tokens' }, { type: 'css' }, { type: 'types' }],
+      });
     });
   });
 

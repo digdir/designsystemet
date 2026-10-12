@@ -50,7 +50,7 @@ Run the CLI in the same folder as your config file:
 npx @digdir/designsystemet@latest
 ```
 
-This creates design tokens, CSS and type declarations for all themes, based on the [`output`](#output) field in the config file.
+This creates CSS and type declarations for all themes, based on the [`output`](#output) field in the config file. Design tokens are only saved if you add a `design-tokens` output.
 
 | Option | Description |
 | ------ | ----------- |
@@ -69,7 +69,7 @@ The `tokens create` and `tokens build` commands are deprecated and will be remov
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
 | $schema | String | No | Path to JSON schema for validation. Recommended: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
-| output | Array | No | What the CLI should create, and where. Defaults to `["design-tokens", "css", "types"]`. See [Output](#output). |
+| output | Array | No | What the CLI should create, and where. Defaults to `["css", "types"]`. See [Output](#output). |
 | themes | Object | No | Contains all themes you want to define. Each key is the name of the theme. Required by outputs that are created from themes, see [Building without themes](#building-without-themes). |
 | outDir | String | No | **Deprecated:** use `output[].dir` instead. |
 | clean | Boolean | No | **Deprecated:** use `output[].cleanDir` instead. |
@@ -124,7 +124,7 @@ The `css` output no longer creates type declarations. If you set `output` yourse
 
 #### Without design tokens
 
-If you only need CSS and/or types, you can use for example `"output": ["css", "types"]` without `tokensDir`. They are then created directly from the themes, without saving any design tokens.
+By default, `output` is `["css", "types"]`. Without a `design-tokens` output or `tokensDir`, CSS and types are created directly from the themes, without saving any design tokens. Add `"design-tokens"` to `output` to save them as well.
 
 #### Building without themes
 

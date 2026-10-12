@@ -55,7 +55,7 @@ const deprecatedFields = ['outDir', 'clean'] as const;
 export const outputConfigShape = {
   output: z
     .array(outputSchema)
-    .prefault(['design-tokens', 'css', 'types'])
+    .prefault(['css', 'types'])
     .describe('An array of output types. These are run in the order they are specified.'),
   /** @deprecated Use `output[].dir` instead. */
   outDir: z.string().default('design-tokens').meta({

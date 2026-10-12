@@ -237,10 +237,8 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
 
   // Generate config for each theme
   const configThemes: NonNullable<ExternalConfigSchemaInput['themes']> = {};
-  const output = toOutput(relativeTokensDir);
   const config: ExternalConfigSchemaInput = {
-    // Omitted when the tokens are in the default directory, since the default `output` covers it.
-    ...(output && { output: [...output] }),
+    output: toOutput(relativeTokensDir),
     themes: configThemes,
   };
 
