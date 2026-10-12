@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - .github/workflows/deploy-plugin.yml
-      - "plugins/designsystemet/**"
+      - "figma/plugin/**"
 
 permissions:
   contents: read
@@ -27,13 +27,13 @@ jobs:
       - uses: $/.github/actions/gh-setup
 
       - name: Build plugin (with workspace dependencies)
-        run: pnpm --filter "@plugin/designsystemet..." build
+        run: pnpm --filter "figma-plugin..." build
 
       - name: Upload plugin artifact
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: designsystemet-figma-plugin
           path: |
-            plugins/designsystemet/manifest.json
-            plugins/designsystemet/dist
+            figma/plugin/manifest.json
+            figma/plugin/dist
           if-no-files-found: error

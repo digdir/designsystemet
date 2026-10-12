@@ -65,3 +65,7 @@ Import a config into an empty file, and into a file that has had an earlier impo
 4. **Effect styles:** every shadow is there.
 5. **Code syntax:** edit a variable in the Semantic collection. Its code syntax for Web is the CSS variable, e.g. `var(--ds-color-background-default)`.
 6. **Importing again:** import the same config again. The import log says "No changes", and Timings says no variable values were written.
+
+## Versions and publishing
+
+The plugin is versioned with the code packages and published to Figma Community together with the design file. See [the Figma README](../README.md) for how to document changes and publish a new version.

@@ -1,5 +1,5 @@
 {
-  "name": "@plugin/designsystemet",
+  "name": "figma-plugin",
   "version": "1.23.0",
   "private": true,
   "type": "module",
@@ -9,7 +9,7 @@
     "type": "git",
     "url": "git+https://github.com/digdir/designsystemet.git"
   },
-  "homepage": "https://github.com/digdir/designsystemet/tree/main/plugins/designsystemet",
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/figma/plugin",
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && pnpm run build:ui && pnpm run build:plugin",
