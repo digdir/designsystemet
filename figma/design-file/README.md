@@ -41,7 +41,7 @@ The Figma file is published to Figma Community by hand, after the release that h
    ### Minor Changes
    ```
 
-   Once the plugin is in `figma/plugin`, write the same line under the version heading in its changelog too.
+   Write the same line under the version heading in [the plugin's changelog](../plugin/CHANGELOG.md) too.
 
    A version without a `_Published_` line is shown without a date.
 

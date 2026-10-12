@@ -3,7 +3,7 @@
 What Designsystemet publishes to Figma Community:
 
 - [design-file](./design-file): the Figma design file, [Designsystemet - Core UI Kit](https://www.figma.com/community/file/1322138390374166141)
-- `plugin`: the Designsystemet Figma plugin. It's in [plugins/designsystemet](../plugins/designsystemet) until it's moved to `figma/plugin`.
+- [plugin](./plugin): the Designsystemet Figma plugin
 
 ## Versions and publishing
 

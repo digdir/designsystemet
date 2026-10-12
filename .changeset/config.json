@@ -14,7 +14,7 @@
       "@digdir/designsystemet-types",
       "@digdir/designsystemet-react",
       "@digdir/designsystemet-web",
-      "@plugin/designsystemet",
+      "figma-plugin",
       "figma-design-file"
     ]
   ],

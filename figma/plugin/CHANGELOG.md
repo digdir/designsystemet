@@ -1,4 +1,4 @@
-# @plugin/designsystemet
+# figma-plugin
 
 ## 1.23.0
 
