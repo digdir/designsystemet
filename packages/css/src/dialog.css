@@ -18,6 +18,12 @@
   --dsc-dialog-placement-block-max-width: 100%; /*max-width when placement="top | bottom"*/
   --dsc-dialog-transition-duration: 300ms;
 
+  &:lang(no),
+  &:lang(nb),
+  &:lang(nn) {
+    --dsc-dialog-close: 'Lukk'; /* Only set default label if Norwegian */
+  }
+
   /* Internal */
   --_dsc-dialog-icon-top-right-margin: calc(var(--dsc-dialog-spacing) * -1 + var(--dsc-dialog-icon-spacing));
 
@@ -128,7 +134,7 @@
   & button[command='close']:empty::before,
   & button[data-command='close']:empty::before,
   & > form[method='dialog']:first-child > button:only-child::before /* @deprecated old selector for backwards compatibility */ {
-    content: '';
+    content: var(--dsc-dialog-close);
     background: currentcolor;
     forced-color-adjust: none; /* Enable drawing with background property */
     height: var(--dsc-dialog-icon-size);
