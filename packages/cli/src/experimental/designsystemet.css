@@ -187,16 +187,16 @@
 }
 
 /* Default colors */
-[data-size='danger'] {
+[data-color='danger'] {
   --ds-color: #c01b1b;
 }
-[data-size='warning'] {
+[data-color='warning'] {
   --ds-color: #ea9b1b;
 }
-[data-size='success'] {
+[data-color='success'] {
   --ds-color: #068718;
 }
-[data-size='info'] {
+[data-color='info'] {
   --ds-color: #0a71c0;
 }
 
