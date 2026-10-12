@@ -102,7 +102,7 @@ export function workspaceParams(
 ) {
   const next = new URLSearchParams(params);
   for (const key of themeKeys) {
-    if (key !== 'severity-enabled') next.delete(key);
+    next.delete(key);
   }
   next.set(
     'config',
@@ -129,7 +129,6 @@ export function editorParams(params: URLSearchParams) {
   ).searchParams;
   const next = new URLSearchParams(params);
   for (const key of themeKeys) {
-    if (key === 'severity-enabled' && params.has(key)) continue;
     next.delete(key);
     const value = themeParams.get(key);
     if (value !== null) next.set(key, value);
@@ -161,8 +160,7 @@ export function updateWorkspace(
     colors: parseColorOverrides(edited.get('color-overrides')),
   };
   delete overrides.severity;
-  if (edited.get('severity-enabled') === 'true' && Object.keys(severity).length)
-    overrides.severity = severity;
+  if (Object.keys(severity).length) overrides.severity = severity;
   const active = {
     ...previous,
     colors,

@@ -11,14 +11,11 @@ type ColorOverridesProps = {
 };
 
 export const ColorOverrides = ({ triggerButton }: ColorOverridesProps) => {
-  const { colors, severityColors, severityEnabled } = useThemebuilder();
+  const { colors, severityColors } = useThemebuilder();
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const allColors: ColorTheme[] = [
-    ...colors,
-    ...(severityEnabled ? (severityColors as ColorTheme[]) : []),
-  ];
+  const allColors: ColorTheme[] = [...colors, ...severityColors];
 
   return (
     <Dialog.TriggerContext>
