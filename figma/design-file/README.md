@@ -5,17 +5,17 @@ This package is used for resources related to the Figma design file: https://www
 
 ## Changelog and versions
 
-The Figma file has the same version as the code packages: changesets versions `@figma/design-file` together with them (see `fixed` in `.changeset/config.json`). Its changelog is shown on designsystemet.no, under Fundamentals → Figma → Changelog.
+The Figma file has the same version as the code packages: changesets versions `figma-design-file` together with them (see `fixed` in `.changeset/config.json`). Its changelog is shown on designsystemet.no, under Fundamentals → Figma → Changelog.
 
 ### Documenting changes
 
-Add a changeset for `@figma/design-file` for changes to the Figma file, the same way as for the code packages.
+Add a changeset for `figma-design-file` for changes to the Figma file, the same way as for the code packages.
 
-Run `pnpm changeset`, select `@figma/design-file`, and leave the summary empty. Then write the changes in the file it creates in `.changeset/`, as the prompt only takes a single line.
+Run `pnpm changeset`, select `figma-design-file`, and leave the summary empty. Then write the changes in the file it creates in `.changeset/`, as the prompt only takes a single line.
 
 ```md
 ---
-"@figma/design-file": patch
+"figma-design-file": patch
 ---
 
 **Component:** What changed

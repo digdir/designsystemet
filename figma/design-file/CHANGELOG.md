@@ -1,4 +1,4 @@
-# @figma/design-file
+# figma-design-file
 
 ## 1.23.0
 
