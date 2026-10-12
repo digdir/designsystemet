@@ -27,9 +27,9 @@ Most releases bump the version of the Figma file without changes to it. Those ve
 
 ### Publishing a new version
 
-The Figma file is published to Figma Community by hand, after the release that has its changes:
+The Figma file is published to Figma Community by hand, after the release that has its changes. It's always published together with the plugin, on the same day (see [the Figma README](../README.md)):
 
-1. Publish the file with the version in [package.json](./package.json), which is the version its changes are listed under in [CHANGELOG.md](./CHANGELOG.md).
+1. Publish the file and the plugin with the version in [package.json](./package.json), which is the version their changes are listed under in their changelogs.
 
 2. Write the date you published on under the version heading in [CHANGELOG.md](./CHANGELOG.md), as `_Published YYYY-MM-DD_`:
 
@@ -40,6 +40,8 @@ The Figma file is published to Figma Community by hand, after the release that h
 
    ### Minor Changes
    ```
+
+   Once the plugin is in `figma/plugin`, write the same line under the version heading in its changelog too.
 
    A version without a `_Published_` line is shown without a date.
 
