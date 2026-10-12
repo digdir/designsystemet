@@ -1,7 +1,7 @@
 import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.ts';
-import { toOutput } from '../migrations/new-output-field.ts';
+import { legacyBuildDir, toOutput } from '../migrations/new-output-field.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { dsfs } from '../utils/filesystem.ts';
 import { isSameOrInside } from '../utils/paths.ts';
@@ -237,8 +237,10 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
 
   // Generate config for each theme
   const configThemes: NonNullable<ExternalConfigSchemaInput['themes']> = {};
+  // Tokens were built with `tokens build`, which saved CSS and types in `design-tokens-build` where it was run.
+  const buildDir = path.relative(configDir, path.resolve(legacyBuildDir)).split(path.sep).join('/');
   const config: ExternalConfigSchemaInput = {
-    output: toOutput(relativeTokensDir),
+    output: toOutput(relativeTokensDir, { buildDir }),
     themes: configThemes,
   };
 

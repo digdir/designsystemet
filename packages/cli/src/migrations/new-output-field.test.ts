@@ -23,8 +23,8 @@ describe('new output field migration', () => {
       themes: {},
       output: [
         { type: 'design-tokens', dir: 'tokens' },
-        { type: 'css', tokensDir: 'tokens' },
-        { type: 'types', tokensDir: 'tokens' },
+        { type: 'css', dir: 'design-tokens-build', tokensDir: 'tokens' },
+        { type: 'types', dir: 'design-tokens-build', tokensDir: 'tokens' },
       ],
     });
   });
@@ -39,7 +39,11 @@ describe('new output field migration', () => {
     const migrated = migrateToOutputField(config);
 
     expect(parseJsonc(migrated)).toEqual({
-      output: [{ type: 'design-tokens' }, { type: 'css' }, { type: 'types' }],
+      output: [
+        { type: 'design-tokens' },
+        { type: 'css', dir: 'design-tokens-build' },
+        { type: 'types', dir: 'design-tokens-build' },
+      ],
       themes: {},
     });
     expect(migrated).toMatch(/note|last/);
@@ -55,7 +59,13 @@ describe('new output field migration', () => {
 
   // The deprecated fields created design tokens, and the default `output` doesn't, so it's always defined.
   it('defines output with design tokens when the deprecated fields have default values', () => {
-    const expected = { output: [{ type: 'design-tokens' }, { type: 'css' }, { type: 'types' }] };
+    const expected = {
+      output: [
+        { type: 'design-tokens' },
+        { type: 'css', dir: 'design-tokens-build' },
+        { type: 'types', dir: 'design-tokens-build' },
+      ],
+    };
 
     expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens" }'))).toEqual(expected);
     expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens", "clean": true }'))).toEqual(expected);
@@ -67,15 +77,19 @@ describe('new output field migration', () => {
     expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens", "clean": false }'))).toEqual({
       output: [
         { type: 'design-tokens', dir: 'tokens', cleanDir: false },
-        { type: 'css', tokensDir: 'tokens', cleanDir: false },
-        { type: 'types', tokensDir: 'tokens' },
+        { type: 'css', dir: 'design-tokens-build', tokensDir: 'tokens', cleanDir: false },
+        { type: 'types', dir: 'design-tokens-build', tokensDir: 'tokens' },
       ],
     });
   });
 
   it('defines output for clean: false even when outDir has its default value', () => {
     const expected = {
-      output: [{ type: 'design-tokens', cleanDir: false }, { type: 'css', cleanDir: false }, { type: 'types' }],
+      output: [
+        { type: 'design-tokens', cleanDir: false },
+        { type: 'css', dir: 'design-tokens-build', cleanDir: false },
+        { type: 'types', dir: 'design-tokens-build' },
+      ],
     };
 
     expect(parseJsonc(migrateToOutputField('{ "clean": false }'))).toEqual(expected);
@@ -100,12 +114,16 @@ describe('new output field migration', () => {
       themes: {},
       output: [
         { type: 'design-tokens', dir: 'tokens' },
-        { type: 'css', tokensDir: 'tokens' },
-        { type: 'types', tokensDir: 'tokens' },
+        { type: 'css', dir: 'design-tokens-build', tokensDir: 'tokens' },
+        { type: 'types', dir: 'design-tokens-build', tokensDir: 'tokens' },
       ],
     });
     expect(parseJsonc(migration.yes('{ /* default */ "outDir": "design-tokens", "themes": {} }'))).toEqual({
-      output: [{ type: 'design-tokens' }, { type: 'css' }, { type: 'types' }],
+      output: [
+        { type: 'design-tokens' },
+        { type: 'css', dir: 'design-tokens-build' },
+        { type: 'types', dir: 'design-tokens-build' },
+      ],
       themes: {},
     });
     vi.restoreAllMocks();
@@ -118,8 +136,8 @@ describe('new output field migration', () => {
       expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens" }', context))).toEqual({
         output: [
           { type: 'design-tokens', dir: '../tokens' },
-          { type: 'css', tokensDir: '../tokens' },
-          { type: 'types', tokensDir: '../tokens' },
+          { type: 'css', dir: '../design-tokens-build', tokensDir: '../tokens' },
+          { type: 'types', dir: '../design-tokens-build', tokensDir: '../tokens' },
         ],
       });
     });
@@ -128,8 +146,8 @@ describe('new output field migration', () => {
       expect(parseJsonc(migrateToOutputField('{ "clean": true }', context))).toEqual({
         output: [
           { type: 'design-tokens', dir: '../design-tokens' },
-          { type: 'css', tokensDir: '../design-tokens' },
-          { type: 'types', tokensDir: '../design-tokens' },
+          { type: 'css', dir: '../design-tokens-build', tokensDir: '../design-tokens' },
+          { type: 'types', dir: '../design-tokens-build', tokensDir: '../design-tokens' },
         ],
       });
     });
@@ -138,15 +156,19 @@ describe('new output field migration', () => {
       expect(parseJsonc(migrateToOutputField('{ "outDir": "/project/configs/tokens" }', context))).toEqual({
         output: [
           { type: 'design-tokens', dir: 'tokens' },
-          { type: 'css', tokensDir: 'tokens' },
-          { type: 'types', tokensDir: 'tokens' },
+          { type: 'css', dir: '../design-tokens-build', tokensDir: 'tokens' },
+          { type: 'types', dir: '../design-tokens-build', tokensDir: 'tokens' },
         ],
       });
     });
 
     it('defines output without directories when outDir resolves to the default directory next to the config file', () => {
       expect(parseJsonc(migrateToOutputField('{ "outDir": "configs/design-tokens" }', context))).toEqual({
-        output: [{ type: 'design-tokens' }, { type: 'css' }, { type: 'types' }],
+        output: [
+          { type: 'design-tokens' },
+          { type: 'css', dir: '../design-tokens-build' },
+          { type: 'types', dir: '../design-tokens-build' },
+        ],
       });
     });
   });

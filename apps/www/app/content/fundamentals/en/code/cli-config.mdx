@@ -104,7 +104,7 @@ All paths are relative to the config file.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"css"` | Yes | | The output type. |
-| dir | String | No | `design-tokens-build` | The folder where CSS should be saved. |
+| dir | String | No | `designsystemet-theme` | The folder where CSS should be saved. |
 | cleanDir | Boolean | No | `true` | Delete the folder before creating CSS. |
 | tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build CSS from. If neither is set, CSS is created directly from the themes. |
 | tailwind | `"v3"`, `"v4"` or `false` | No | `false` | Also generate a `<theme>.tailwind.css` for this Tailwind version. `false` skips it. |
@@ -114,7 +114,7 @@ All paths are relative to the config file.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"types"` | Yes | | The output type. |
-| dir | String | No | `design-tokens-build` | The folder where type declarations should be saved. |
+| dir | String | No | `designsystemet-theme` | The folder where type declarations should be saved. |
 | tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build type declarations from. If neither is set, type declarations are created directly from the themes. |
 
 Creates `types.d.ts`, which adds your theme's colour names to the types in `@digdir/designsystemet-types`, so props like `data-color` only accept your colours.
@@ -150,11 +150,13 @@ If you'd rather do it manually, replace `"outDir": "<path>"` with:
 {
   "output": [
     { "type": "design-tokens", "dir": "<path>" },
-    { "type": "css", "tokensDir": "<path>" },
-    { "type": "types", "tokensDir": "<path>" }
+    { "type": "css", "dir": "design-tokens-build", "tokensDir": "<path>" },
+    { "type": "types", "dir": "design-tokens-build", "tokensDir": "<path>" }
   ]
 }
 ```
+
+`design-tokens-build` is where `tokens build` saved CSS by default, so your imports keep working. Use the folder you gave `tokens build` with `--out-dir` if you set one.
 
 `clean` can be removed, since `cleanDir` is `true` by default. If you had `"clean": false`, add `"cleanDir": false` to each output instead, so the folders are not deleted.
 
@@ -280,8 +282,8 @@ The `severity` override allows you to customise the colours used for severity, w
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
   "output": [
     { "type": "design-tokens", "dir": "./design-tokens" },
-    { "type": "css", "dir": "./design-tokens-build", "tokensDir": "./design-tokens" },
-    { "type": "types", "dir": "./design-tokens-build", "tokensDir": "./design-tokens" }
+    { "type": "css", "dir": "./designsystemet-theme", "tokensDir": "./design-tokens" },
+    { "type": "types", "dir": "./designsystemet-theme", "tokensDir": "./design-tokens" }
   ],
   "themes": {
     "my-theme": {

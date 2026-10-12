@@ -2,13 +2,13 @@
   "output": [
     {
       "type": "css",
-      "dir": "design-tokens-build",
+      "dir": "designsystemet-theme",
       "cleanDir": true,
       "tailwind": false
     },
     {
       "type": "types",
-      "dir": "design-tokens-build"
+      "dir": "designsystemet-theme"
     }
   ],
   "outDir": "design-tokens",

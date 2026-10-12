@@ -45,7 +45,7 @@
                     "description": "The type of output file"
                   },
                   "dir": {
-                    "default": "design-tokens-build",
+                    "default": "designsystemet-theme",
                     "description": "The output directory",
                     "type": "string"
                   },
@@ -90,7 +90,7 @@
                     "description": "The type of output file"
                   },
                   "dir": {
-                    "default": "design-tokens-build",
+                    "default": "designsystemet-theme",
                     "description": "The output directory",
                     "type": "string"
                   },

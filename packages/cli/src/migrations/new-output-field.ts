@@ -97,6 +97,8 @@ const hasDeprecatedFields = (config: string): boolean => {
 };
 
 const defaultOutDir = outputConfigShape.outDir.parse(undefined);
+/** Where `tokens build` saved CSS and type declarations by default, relative to where the CLI was run from. */
+export const legacyBuildDir = 'design-tokens-build';
 
 /**
  * Builds an `output` equivalent to the deprecated `outDir` and `clean` fields.
@@ -106,8 +108,14 @@ const defaultOutDir = outputConfigShape.outDir.parse(undefined);
  * `cleanDir` defaults to `true`, so an explicit `clean: false` is carried over as `cleanDir: false` on every output.
  * Otherwise the migrated config would delete output directories the user opted out of cleaning.
  * A missing `clean` or `clean: true` uses the new default.
+ *
+ * CSS and types are saved in `buildDir`, where `tokens build` saved them, so imports of the built files keep working.
+ * Their default directory is different.
  */
-export const toOutput = (outDir: string | undefined, { clean }: { clean?: boolean } = {}) => {
+export const toOutput = (
+  outDir: string | undefined,
+  { clean, buildDir = legacyBuildDir }: { clean?: boolean; buildDir?: string } = {},
+) => {
   const isDefaultDir = outDir === undefined || path.posix.normalize(outDir) === path.posix.normalize(defaultOutDir);
   const keepFiles = clean === false;
   const cleanDir = keepFiles ? { cleanDir: false } : {};
@@ -115,9 +123,9 @@ export const toOutput = (outDir: string | undefined, { clean }: { clean?: boolea
   return [
     { type: 'design-tokens' as const, ...(!isDefaultDir && { dir: outDir }), ...cleanDir },
     // CSS and types are built from the design tokens, so they must read them from the same directory.
-    { type: 'css' as const, ...(!isDefaultDir && { tokensDir: outDir }), ...cleanDir },
+    { type: 'css' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...cleanDir },
     // `types` outputs are never cleaned, so they have no `cleanDir`.
-    { type: 'types' as const, ...(!isDefaultDir && { tokensDir: outDir }) },
+    { type: 'types' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }) },
   ];
 };
 
@@ -149,6 +157,7 @@ export const migrateToOutputField = (config: string, context: MigrationContext =
     // A missing `outDir` meant the default directory, relative to where the CLI was run from.
     const output = toOutput(toConfigRelative(currentConfig.outDir ?? defaultOutDir, context), {
       clean: currentConfig.clean,
+      buildDir: toConfigRelative(legacyBuildDir, context),
     });
     configText = applyEdits(
       configText,
