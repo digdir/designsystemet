@@ -10,7 +10,7 @@ An import makes the file match the config:
 
 - Creates the collections, modes, variables, text styles and effect styles in the config, and updates the ones that already exist, matched by name.
 - Only writes what has changed, so importing the same config again changes nothing.
-- Deletes modes, variables and styles from earlier imports that are no longer in the config. What the import creates is marked with plugin data, so modes, variables and styles added by hand are kept (see [ownership.ts](./src/plugin/import/ownership.ts)).
+- Deletes modes, variables and styles from earlier imports that are no longer in the config. What the import creates is marked with plugin data, so items added by hand are kept unless an import adopts them by updating an item with a matching name; items renamed or duplicated after an import are also kept (see [ownership.ts](./src/plugin/import/ownership.ts)).
 - Leaves other collections and styles alone.
 
 After the import, the plugin shows what it did, what it skipped, and how long each step took.
