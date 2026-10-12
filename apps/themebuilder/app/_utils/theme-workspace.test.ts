@@ -214,31 +214,30 @@ describe('compressed theme workspace', () => {
       expect(theme.overrides?.severity).toEqual({ danger: '#ab1234' });
     }
   });
-  it('preserves per-theme overrides and enabled default severity colors', () => {
+  it('preserves per-theme overrides regardless of the legacy severity flag', () => {
     const params = workspaceParams({ config, activeTheme: 'first' });
     const edited = editorParams(params);
     edited.set(
       'color-overrides',
       'accent|text-default|light:#abcdef|dark:#fedcba',
     );
-    edited.set('severity-enabled', 'true');
     const next = updateWorkspace(params, edited);
-    expect(editorParams(next).get('severity-enabled')).toBe('true');
     expect(editorParams(next).get('color-overrides')).toBe(
       edited.get('color-overrides'),
     );
     const severity = editorParams(next);
+    severity.set('severity-enabled', 'false');
     severity.set('severity', 'danger:#ab1234');
     const overridden = updateWorkspace(next, severity);
     expect(
       readWorkspace(overridden)?.config.themes.first.overrides?.severity,
     ).toEqual({ danger: '#ab1234' });
+    expect(overridden.has('severity-enabled')).toBe(false);
     const disabled = editorParams(overridden);
     disabled.delete('severity');
-    disabled.delete('severity-enabled');
+    const disabledWorkspace = updateWorkspace(overridden, disabled);
     expect(
-      readWorkspace(updateWorkspace(overridden, disabled))?.config.themes.first
-        .overrides?.severity,
+      readWorkspace(disabledWorkspace)?.config.themes.first.overrides?.severity,
     ).toBeUndefined();
     expect(readWorkspace(overridden)?.config.themes.second).toEqual(
       config.themes.second,

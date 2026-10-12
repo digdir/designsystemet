@@ -28,7 +28,6 @@ export function configThemeToUrl(
       .map(([name, hex]) => `${name}:${hex}`)
       .join(QUERY_SEPARATOR);
     params.set('severity', severityColors);
-    params.set('severity-enabled', 'true');
   }
 
   // Convert color overrides to URL params

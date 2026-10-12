@@ -9,8 +9,7 @@ import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 export const ColorVariables = () => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
-  const { colors, colorScheme, severityEnabled, severityColors } =
-    useThemebuilder();
+  const { colors, colorScheme, severityColors } = useThemebuilder();
 
   const neutralColor = colors?.find((c) => c.name === 'neutral')?.hex || '';
   const [previewColor, setPreviewColor] = useState(colors?.[0] || '');
@@ -20,10 +19,7 @@ export const ColorVariables = () => {
     ...styleColorVars(previewColor.hex as CssColor, colorScheme),
   };
 
-  const allColors = [
-    ...(colors ?? []),
-    ...(severityEnabled ? severityColors : []),
-  ];
+  const allColors = [...(colors ?? []), ...severityColors];
 
   return (
     <>
