@@ -68,4 +68,4 @@ Import a config into an empty file, and into a file that has had an earlier impo
 
 ## Versions and publishing
 
-The plugin is versioned with the code packages and published to Figma Community together with the design file. See [the Figma README](../README.md) for how to document changes and publish a new version.
+The plugin is versioned with the code packages and published to Figma Community together with the UI kit. See [the Figma README](../README.md) for how to document changes and publish a new version.
