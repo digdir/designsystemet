@@ -20,7 +20,7 @@ Vi anbefaler at både utvikler og designer er med i prosessen når dere setter o
 
 ## Slik går du frem:
 
-1. Bruk [Designsystemets Temabygger](https://theme.designsystemet.no) til å sette opp temaet ditt, eller bruk eksempelet under som utgangspunkt. Du kan sette opp flere temaer i den samme config-filen under **Rediger temaer**.
+1. Bruk [Designsystemets Temabygger](https://theme.designsystemet.no) til å sette opp temaet ditt. Du kan sette opp flere temaer i den samme config-filen under **Rediger temaer**.
 
 2. Klikk **Ta i bruk tema**, og last ned eller kopier config-filen. Lagre den som en `json`-fil, vi anbefaler f.eks. `designsystemet.config.json` eller `<din-organisasjon>.config.json`.
 
@@ -39,9 +39,9 @@ Vi anbefaler at både utvikler og designer er med i prosessen når dere setter o
 
 ### I kode
 
-5. Finn et Git repository du kan lagre temaet ditt i. Legg `designsystemet.config.json`-fila i roten av repoet.
+5. Legg `designsystemet.config.json` i prosjektet ditt, i mappen der du vil ha filene til temaet.
 
-6. Pass på at du har Node.js installert, versjon 20 eller høyere. Åpne en terminal i repoet, og kjør:
+6. Pass på at du har Node.js `22.12.0` eller høyere installert. Åpne en terminal i den mappen, og kjør:
 
 ```bash
 npx @digdir/designsystemet@latest
@@ -53,8 +53,8 @@ Dette lager CSS for temaene dine, direkte fra config-filen, i en mappe som heter
 
 Oppdater config-filen i Temabyggeren: klikk **Importer config** og lim inn config-filen din for å fortsette der du slapp. Deretter:
 
-- I Figma importerer du den nye config-filen med pluginen. Den endrer bare det som er endret, og komponenter som bruker variablene og stilene, forblir koblet.
-- I koden bytter du ut `designsystemet.config.json` med den nye filen og kjører kommandoen på nytt.
+- **I Figma** importerer du den nye config-filen med pluginen. Den endrer bare det som er endret, og komponenter som bruker variablene og stilene, forblir koblet.
+- **I kode** bytter du ut `designsystemet.config.json` med den nye filen og kjører kommandoen på nytt.
 
 ### Ikoner i Figma
 For å få ikoner til å fungere i Figma, må de kobles til et bibliotek som er lagret på deres organisasjon. Se guiden ["Få ikoner til å fungere i Figma"](/no/fundamentals/theme/icons#få-ikoner-til-å-fungere-i-figma).
