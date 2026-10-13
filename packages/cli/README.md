@@ -29,7 +29,7 @@ We recommend using the [Designsystemet theme builder](https://theme.designsystem
 #### Update tokens and CSS
 
 Whenever a new version of the CLI is released, or you have done changes, re-run `npx @digdir/designsystemet`.
-Output directories are cleaned by default (`cleanDir`), which removes any deprecated or unneeded files.
+Output directories are cleaned by default (`cleanDir`), which removes any deprecated or unneeded files. Directories inside them that are built from (`tokensDir`), or that belong to an output with `cleanDir: false`, are kept.
 
 > ⚠️ **WARNING** ⚠️  
 > The design tokens created by this tool are considered an implementation detail, and is subject

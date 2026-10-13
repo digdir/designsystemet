@@ -105,7 +105,7 @@ All paths are relative to the config file.
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"css"` | Yes | | The output type. |
 | dir | String | No | `designsystemet` | The folder where CSS should be saved. |
-| cleanDir | Boolean | No | `true` | Delete the folder before creating CSS. |
+| cleanDir | Boolean | No | `true` | Delete the files in the folder before creating CSS. Folders inside it with design tokens that are built from, such as `designsystemet/design-tokens`, are kept. |
 | tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build CSS from. If neither is set, CSS is created directly from the themes. |
 | tailwind | `"v3"`, `"v4"` or `false` | No | `false` | Also generate a `<theme>.tailwind.css` for this Tailwind version. `false` skips it. |
 

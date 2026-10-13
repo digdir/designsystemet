@@ -3,6 +3,30 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import pc from 'picocolors';
 import type { OutputFile } from '../tokens/types.ts';
+import { isSameOrInside } from './paths.ts';
+
+/**
+ * Deletes everything in `dir` except the directories in `keep`, which can be anywhere inside it. Directories that
+ * contain a kept directory are kept too, and are cleaned the same way.
+ */
+export async function removeAllExcept(dir: string, keep: string[]): Promise<void> {
+  let entries: string[];
+  try {
+    entries = await fs.readdir(dir);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return;
+    throw error;
+  }
+
+  await Promise.all(
+    entries.map(async (name) => {
+      const entry = path.join(dir, name);
+      if (keep.some((kept) => path.resolve(kept) === path.resolve(entry))) return;
+      if (keep.some((kept) => isSameOrInside(kept, entry))) return removeAllExcept(entry, keep);
+      await fs.rm(entry, { recursive: true, force: true });
+    }),
+  );
+}
 
 class FileSystem {
   private isInitialized = false;
@@ -94,15 +118,20 @@ class FileSystem {
     return fs.copyFile(src, dest);
   };
 
-  cleanDir = async (dir: string) => {
+  /** Deletes `dir`, or only what's in it except the directories in `keep` when there are any. */
+  cleanDir = async (dir: string, keep: string[] = []) => {
+    const keeping = keep.length > 0 ? `, keeping ${keep.map((kept) => pc.blue(kept)).join(', ')}` : '';
     if (this.dry) {
-      console.log(`${pc.blue('cleanDir')} ${dir}`);
+      console.log(`${pc.blue('cleanDir')} ${dir}${keeping}`);
       return Promise.resolve();
     }
 
-    console.log(`\n🔥 Cleaning dir ${pc.red(`${dir.trim()}`)} `);
+    console.log(`\n🔥 Cleaning dir ${pc.red(`${dir.trim()}`)}${keeping}`);
 
-    return fs.rm(dir, { recursive: true, force: true });
+    if (keep.length === 0) {
+      return fs.rm(dir, { recursive: true, force: true });
+    }
+    return removeAllExcept(dir, keep);
   };
 
   readFile = async (path: PathLike, allowFileNotFound?: boolean) => {
