@@ -34,6 +34,8 @@ Den nye pluginen importerer config-filen din til en Figma-fil, som variablene og
 
 Hvert tema, hver fargemodus og hver størrelse blir en mode i Figma, og hvor mange modes en collection kan ha, avhenger av Figma-abonnementet ditt. Sjekk at ditt har nok til config-filen din.
 
+Pluginen importerer det som står i config-filen. Hvis du har endret design tokens på måter config-filen ikke kan beskrive, kan ikke pluginen hente de endringene inn i Figma. Da kan du i stedet [synkronisere design tokens med Tokens Studio](/no/fundamentals/figma/tokens-studio).
+
 Vi gir beskjed når den nye pluginen er publisert i Figma Community.
 
 ## Én kommando for temaet ditt i kode
@@ -83,7 +85,7 @@ Skriv en output som et objekt i stedet for et navn for å endre innstillingene, 
 
 Dette er greit å vite:
 
-- **Design tokens er valgfrie.** Du trenger dem ikke for å få temaet ditt inn i Figma, siden pluginen importerer config-filen direkte. Legg til `"design-tokens"` i `output` hvis du har endret design tokens på måter config-filen ikke kan beskrive, eller synkroniserer dem med Tokens Studio. CSS-en og typene blir da bygget fra design tokens.
+- **Design tokens er valgfrie.** Du trenger dem ikke for å få temaet ditt inn i Figma, siden pluginen importerer config-filen direkte. Legg til `"design-tokens"` i `output` hvis du har endret design tokens på måter config-filen ikke kan beskrive, eller [synkroniserer dem med Tokens Studio](/no/fundamentals/figma/tokens-studio). CSS-en og typene blir da bygget fra design tokens.
 - **Hver output tømmer mappen sin** før den lager filene sine. Sett `"cleanDir": false` på en output for å beholde filene som allerede ligger der.
 - **CSS-en har ikke lenger typedeklarasjoner.** Hvis du skriver din egen `output`, ta med `"types"` for å beholde dem.
 - **Med `"tailwind": "v4"`** bruker Tailwind-klassene `--ds-*`-variablene direkte, så `data-color`, `data-color-scheme` og `data-size` gjelder for dem også. `"v3"` lager den samme Tailwind-filen som før.
