@@ -1,0 +1,101 @@
+---
+title: Sync Design Tokens with Tokens Studio
+sidebar_title: Tokens Studio
+description: If you've changed the Design Tokens in ways the configuration file can't describe, sync them with Figma using Tokens Studio instead of the Designsystemet plugin.
+date: 2026-10-13
+category: Figma
+color: yellow
+icon: ArrowsCirclepathIcon
+published: true
+order: 45
+search_terms: tokens studio, design tokens, sync
+---
+
+If you've changed the Design Tokens in ways the configuration file can't describe, the Designsystemet plugin can't bring those changes into Figma. Then you can save the Design Tokens in your repository and sync them with Figma using the Tokens Studio plugin instead.
+
+This builds on [Build your theme](/en/fundamentals/start-here/own-theme), with your configuration file in a Git repository.
+
+## How to set it up
+
+1. Add `"design-tokens"` to `output` in the configuration file:
+
+```json
+{
+  "output": ["design-tokens", "css", "types"],
+  "themes": {
+    "theme": {
+      "colors": {
+        "primary": "#0062BA",
+        "neutral": "#1E2B3C",
+        "extra1": "#F45F63"
+      },
+      "borderRadius": 4
+    }
+  }
+}
+```
+
+2. Run the CLI in the folder with your configuration file:
+
+```bash
+npx @digdir/designsystemet@latest
+```
+
+This saves the Design Tokens in a folder called `design-tokens`, and builds the CSS and types from them. Push the changes to your repository.
+
+**Remember to run this command every time you make changes to the configuration file.** Keep the `output` field when you replace the configuration file with a new one from the Theme Builder.
+
+3. Install the plugin [Tokens Studio (figma.com)](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)). This plugin enables synchronisation between Figma and code. You do *not* need a Pro licence.
+
+<Image
+  src='/img/fundamentals/start-here/own-theme/tokenstudio.png'
+  alt='Screenshot of Figma showing where to find plugins'
+  boxShadow={false}
+/>
+
+  - In the plugin, set up the connection to your Git repository. See Tokens Studio’s guide “[Sync your Design Tokens with code (tokens.studio)](https://docs.tokens.studio/token-storage/remote/#sync-providers)” which explains how to do this for different Git providers.
+  - Remember to set the “Token storage location” to `design-tokens` (or whatever you have named your Design Tokens folder).
+
+<Alert data-color="info">
+We recommend *not* pushing changes to Design Tokens from Tokens Studio, as this may cause you to lose your overrides when updating.
+</Alert>
+
+4. In Tokens Studio, select the “Pull” icon to fetch the tokens into Figma.
+
+<Image
+  src='/img/fundamentals/start-here/own-theme/tokens-studio-pull-button.png'
+  alt='Screenshot of Tokens Studio showing where to find the pull button'
+  boxShadow={false}
+/>
+
+Select `Styles & variables` and `Export styles & variables to Figma`.
+
+<Image
+  src='/img/fundamentals/start-here/own-theme/tokens-export.webp'
+  alt='Screenshot of Tokens Studio showing where to find the export button'
+  boxShadow={false}
+/>
+
+Make sure you have these settings before clicking `Confirm`:
+
+<Image
+  src='/img/fundamentals/start-here/own-theme/tokens-export-options.webp'
+  alt='Screenshot of Tokens Studio showing which settings to use when exporting tokens to Figma'
+  boxShadow={false}
+/>
+
+Select `Themes`, `Select All`, and `Export to Figma`:
+
+<Image
+  src='/img/fundamentals/start-here/own-theme/tokens-export-themes-select.webp'
+  alt='Screenshot of Tokens Studio showing that you must select Themes and then Select All'
+  boxShadow={false}
+/>
+
+You should now see all components using your brand colours in Figma.
+
+**Note:** Token Studio does not delete existing modes during export. After export, check the Theme and Color collections, and remove any default themes that may still remain from the community file.
+
+<Alert data-color="info">
+When the Design Tokens are updated in code, you can easily fetch the new values into Figma by using the “Pull” button in Tokens Studio again.
+</Alert>

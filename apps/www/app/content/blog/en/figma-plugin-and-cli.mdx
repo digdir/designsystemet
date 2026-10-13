@@ -34,6 +34,8 @@ The new plugin imports your config into a Figma file, as the variables and style
 
 Each theme, color scheme and size is a mode in Figma, and how many modes a collection can have depends on your Figma plan. Check that yours allows enough for your config.
 
+The plugin imports what's in the config file. If you've changed the design tokens in ways the config can't describe, the plugin can't bring those changes into Figma. Then you can [sync the design tokens with Tokens Studio](/en/fundamentals/figma/tokens-studio) instead.
+
 We'll let you know when the new plugin is published in Figma Community.
 
 ## One command for your theme in code
@@ -82,7 +84,7 @@ Write an output as an object instead of a name to change its settings, for examp
 
 A few things to know:
 
-- **Design tokens are optional.** You don't need them to get your theme into Figma, since the plugin imports the config directly. Add `"design-tokens"` to `output` if you've changed the design tokens in ways the config can't describe, or sync them with Tokens Studio. The CSS and types are then built from the design tokens.
+- **Design tokens are optional.** You don't need them to get your theme into Figma, since the plugin imports the config directly. Add `"design-tokens"` to `output` if you've changed the design tokens in ways the config can't describe, or [sync them with Tokens Studio](/en/fundamentals/figma/tokens-studio). The CSS and types are then built from the design tokens.
 - **Each output empties its folder** before creating its files. Set `"cleanDir": false` on an output to keep the files that are already there.
 - **The CSS no longer includes type declarations.** If you write your own `output`, include `"types"` to keep them.
 - **With `"tailwind": "v4"`**, Tailwind's utility classes use the `--ds-*` variables directly, so `data-color`, `data-color-scheme` and `data-size` apply to them too. `"v3"` creates the same Tailwind file as before.
