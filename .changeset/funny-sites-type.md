@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-**Breadcrumbs, Chip, Dialog, Pagination, Suggestion:** Added english translations of CSS texts
+**Breadcrumbs, Chip, Dialog, Pagination, Suggestion:** Added English translations of CSS texts
