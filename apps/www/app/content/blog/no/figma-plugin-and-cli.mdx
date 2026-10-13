@@ -1,6 +1,6 @@
 ---
 title: Ny Figma-plugin, og én kommando for temaet ditt
-description: Temabyggeren håndterer nå flere temaer i én config, ny Figma-plugin til Designsystemet er på vei, og CLI-et lager CSS og typer for temaet ditt med én kommando.
+description: Temabyggeren håndterer nå flere temaer i én config, ny Figma-plugin til Designsystemet er på vei, og CLI-et lager CSS for temaet ditt med én kommando.
 date: 2026-10-09
 author: Designsystemet
 imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
@@ -47,15 +47,15 @@ Nå kjører du CLI-et i mappen med `designsystemet.config.json`:
 npx @digdir/designsystemet@latest
 ```
 
-Dette lager CSS og TypeScript-typedeklarasjoner for alle temaene dine, direkte fra config-filen. 
+Dette lager CSS for alle temaene dine, direkte fra config-filen. 
 Hva det lager, og hvor, bestemmer du med det nye `output`-feltet i config-filen.
 
 ### Output-feltet
 
-`output` er en liste over hva CLI-et skal lage. Hvis du utelater det, får du CSS og typer:
+`output` er en liste over hva CLI-et skal lage. Hvis du utelater det, får du CSS:
 
 ```json
-"output": ["css", "types"]
+"output": ["css"]
 ```
 
 | Output | Lager | Standardmappe |
@@ -87,7 +87,7 @@ Dette er greit å vite:
 
 - **Design tokens er valgfrie.** Du trenger dem ikke for å få temaet ditt inn i Figma, siden pluginen importerer config-filen direkte. Legg til `"design-tokens"` i `output` hvis du har endret design tokens på måter config-filen ikke kan beskrive, eller [synkroniserer dem med Tokens Studio](/no/fundamentals/figma/tokens-studio). CSS-en og typene blir da bygget fra design tokens.
 - **Hver output tømmer mappen sin** før den lager filene sine. Sett `"cleanDir": false` på en output for å beholde filene som allerede ligger der.
-- **CSS-en har ikke lenger typedeklarasjoner.** Hvis du skriver din egen `output`, ta med `"types"` for å beholde dem.
+- **CSS-en har ikke lenger typedeklarasjoner.** Legg til `"types"` i `output` for å få dem, som i eksempelet over.
 - **Med `"tailwind": "v4"`** bruker Tailwind-klassene `--ds-*`-variablene direkte, så `data-color`, `data-color-scheme` og `data-size` gjelder for dem også. `"v3"` lager den samme Tailwind-filen som før.
 
 Se [dokumentasjonen for CLI-et](/no/fundamentals/code/cli-config#output) for alle innstillingene.
