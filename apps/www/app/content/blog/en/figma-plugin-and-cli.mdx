@@ -1,13 +1,25 @@
 ---
 title: A new Figma plugin, and one command for your theme
-description: A new version of the Designsystemet Figma plugin is on its way, and the CLI now creates everything for your theme from one config file, with a new output field.
+description: The theme builder now handles several themes in one config, a new version of the Designsystemet Figma plugin is on its way, and the CLI creates your theme's CSS and types with one command.
 date: 2026-10-09
 author: Designsystemet
 imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
-imageAlt: The Designsystemet Figma plugin next to a config file with the new output field
+imageAlt: The Designsystemet logo, with an arrow to a plugin window showing colors, text samples and an Import button, and on to the Figma logo
 ---
 
-Your theme starts as a config file, made in the [theme builder](https://theme.designsystemet.no). That same file now goes further, both in Figma and in code: a new version of the Figma plugin brings it into your Figma file, and the CLI creates everything your code needs from it with a single command.
+Your theme starts as a config file, made in the [theme builder](https://theme.designsystemet.no). That file now goes further: the theme builder can manage all your themes in it, a new version of the Figma plugin brings it into your Figma file, and the CLI creates everything your code needs from it with a single command.
+
+## Several themes in the theme builder
+
+Many organisations need more than one theme, for example for different services or brands. The theme builder now lets you work on all of them in one config:
+
+- **Import your config.** Click **Import config**, paste your config file, and choose the theme to start with. The other themes come along.
+- **Switch between themes** with the **Theme** menu in the toolbar.
+- **Add, rename and delete themes** under **Edit themes**. A new theme starts as a copy of the one you're on.
+- **Keep the colors in step.** Adding, renaming or deleting a color does it in all your themes, while each theme keeps its own color values.
+- **Get one config for all your themes.** **Use theme** gives you the config with every theme, ready for the Figma plugin and the CLI, and you choose which theme's CSS to view or download.
+
+Your themes are kept in the page's address, so you can bookmark the page or share it to continue later.
 
 ## A new Figma plugin is on its way
 
@@ -32,21 +44,21 @@ Until now, getting a theme into code took two commands, `tokens create` and `tok
 npx @digdir/designsystemet@latest
 ```
 
-This creates design tokens, CSS and TypeScript type declarations for all your themes. What it creates, and where, is set by the new `output` field in the config file.
+This creates CSS and TypeScript type declarations for all your themes, directly from the config file. What it creates, and where, is set by the new `output` field in the config file.
 
 ### The output field
 
-`output` is a list of what the CLI should create. If you leave it out, you get everything:
+`output` is a list of what the CLI should create. If you leave it out, you get CSS and types:
 
 ```json
-"output": ["design-tokens", "css", "types"]
+"output": ["css", "types"]
 ```
 
 | Output | Creates | Default folder |
 | ------ | ------- | -------------- |
+| `css` | A CSS file for each theme | `designsystemet-theme` |
+| `types` | Type declarations for your colors, `types.d.ts` | `designsystemet-theme` |
 | `design-tokens` | Design tokens for your themes | `design-tokens` |
-| `css` | A CSS file for each theme | `design-tokens-build` |
-| `types` | Type declarations for your colors, `types.d.ts` | `design-tokens-build` |
 
 Write an output as an object instead of a name to change its settings, for example to choose its folder with `dir`, or to also create a Tailwind file with `tailwind`:
 
@@ -54,7 +66,6 @@ Write an output as an object instead of a name to change its settings, for examp
 {
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
   "output": [
-    "design-tokens",
     { "type": "css", "tailwind": "v4" },
     "types"
   ],
@@ -71,10 +82,10 @@ Write an output as an object instead of a name to change its settings, for examp
 
 A few things to know:
 
+- **Design tokens are optional.** You don't need them to get your theme into Figma, since the plugin imports the config directly. Add `"design-tokens"` to `output` if you've changed the design tokens in ways the config can't describe, or sync them with Tokens Studio. The CSS and types are then built from the design tokens.
 - **Each output empties its folder** before creating its files. Set `"cleanDir": false` on an output to keep the files that are already there.
 - **The CSS no longer includes type declarations.** If you write your own `output`, include `"types"` to keep them.
 - **With `"tailwind": "v4"`**, Tailwind's utility classes use the `--ds-*` variables directly, so `data-color`, `data-color-scheme` and `data-size` apply to them too. `"v3"` creates the same Tailwind file as before.
-- **You can leave out the design tokens.** With `"output": ["css", "types"]`, the CSS and types are created directly from your themes.
 
 See [the CLI documentation](/en/fundamentals/code/cli-config#output) for all the settings.
 
@@ -83,6 +94,8 @@ See [the CLI documentation](/en/fundamentals/code/cli-config#output) for all the
 `tokens create` and `tokens build` still work, but they are deprecated and will be removed in a future version. So are the `outDir` and `clean` fields in the config, which `output` replaces.
 
 You don't have to change your config by hand. When you run `designsystemet` with a config file that uses `outDir` or `clean`, the CLI offers to update it to `output` for you. To do it yourself, see [migrating from outDir and clean](/en/fundamentals/code/cli-config#migrating-from-outdir-and-clean).
+
+The updated config works the same as before: it still creates design tokens, and saves CSS and types in `design-tokens-build`, so your imports keep working. Once you've checked that you don't need the design tokens, you can remove `"design-tokens"` from `output`.
 
 <Contributors
   authors={[
