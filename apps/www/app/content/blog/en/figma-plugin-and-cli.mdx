@@ -58,9 +58,9 @@ This creates CSS for all your themes, directly from the config file. What it cre
 
 | Output | Creates | Default folder |
 | ------ | ------- | -------------- |
-| `css` | A CSS file for each theme | `designsystemet-theme` |
-| `types` | Type declarations for your colors, `types.d.ts` | `designsystemet-theme` |
-| `design-tokens` | Design tokens for your themes | `design-tokens` |
+| `css` | A CSS file for each theme | `designsystemet` |
+| `types` | Type declarations for your colors, `types.d.ts` | `designsystemet` |
+| `design-tokens` | Design tokens for your themes | `designsystemet/design-tokens` |
 
 Write an output as an object instead of a name to change its settings, for example to choose its folder with `dir`, or to also create a Tailwind file with `tailwind`:
 
@@ -84,7 +84,7 @@ Write an output as an object instead of a name to change its settings, for examp
 
 A few things to know:
 
-- **Design tokens are optional.** You don't need them to get your theme into Figma, since the plugin imports the config directly. Add `"design-tokens"` to `output` if you've changed the design tokens in ways the config can't describe, or [sync them with Tokens Studio](/en/fundamentals/figma/tokens-studio). The CSS and types are then built from the design tokens.
+- **Design tokens are optional.** You don't need them to get your theme into Figma, since the plugin imports the config directly. Add `"design-tokens"` to `output` to also save them, and the CSS and types are then built from them. If you've changed the design tokens in ways the config can't describe, build the CSS from them with `tokensDir` and [sync them with Tokens Studio](/en/fundamentals/figma/tokens-studio).
 - **Each output empties its folder** before creating its files. Set `"cleanDir": false` on an output to keep the files that are already there.
 - **The CSS no longer includes type declarations.** Add `"types"` to `output` to get them, as in the example above.
 - **With `"tailwind": "v4"`**, Tailwind's utility classes use the `--ds-*` variables directly, so `data-color`, `data-color-scheme` and `data-size` apply to them too. `"v3"` creates the same Tailwind file as before.

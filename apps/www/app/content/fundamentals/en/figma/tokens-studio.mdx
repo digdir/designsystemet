@@ -17,7 +17,7 @@ This builds on [Build your theme](/en/fundamentals/start-here/own-theme), with y
 
 ## How to set it up
 
-1. Add `"design-tokens"` to `output` in the configuration file:
+1. Create the Design Tokens once: add `"design-tokens"` to `output` in the configuration file, and run the CLI in the folder with it.
 
 ```json
 {
@@ -35,15 +35,24 @@ This builds on [Build your theme](/en/fundamentals/start-here/own-theme), with y
 }
 ```
 
-2. Run the CLI in the folder with your configuration file:
-
 ```bash
 npx @digdir/designsystemet@latest
 ```
 
-This saves the Design Tokens in a folder called `design-tokens`, and builds the CSS and types from them. Push the changes to your repository.
+This saves the Design Tokens in a folder called `designsystemet/design-tokens`. This is where you make your changes to them.
 
-**Remember to run this command every time you make changes to the configuration file.** Keep the `output` field when you replace the configuration file with a new one from the Theme Builder.
+2. Build the CSS and types from your Design Tokens, instead of creating the Design Tokens again from the configuration file. Change `output` to:
+
+```json
+"output": [
+  { "type": "css", "tokensDir": "designsystemet/design-tokens" },
+  { "type": "types", "tokensDir": "designsystemet/design-tokens" }
+]
+```
+
+Run the CLI again. It builds the CSS and types from your Design Tokens, and leaves the Design Tokens as they are. Push the changes to your repository.
+
+**Remember to run the CLI every time you change the Design Tokens.**
 
 3. Install the plugin [Tokens Studio (figma.com)](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)). This plugin enables synchronisation between Figma and code. You do *not* need a Pro licence.
 
@@ -54,10 +63,10 @@ This saves the Design Tokens in a folder called `design-tokens`, and builds the 
 />
 
   - In the plugin, set up the connection to your Git repository. See Tokens Studio’s guide “[Sync your Design Tokens with code (tokens.studio)](https://docs.tokens.studio/token-storage/remote/#sync-providers)” which explains how to do this for different Git providers.
-  - Remember to set the “Token storage location” to `design-tokens` (or whatever you have named your Design Tokens folder).
+  - Remember to set the “Token storage location” to `designsystemet/design-tokens` (or whatever you have named your Design Tokens folder).
 
 <Alert data-color="info">
-We recommend *not* pushing changes to Design Tokens from Tokens Studio, as this may cause you to lose your overrides when updating.
+You can change the Design Tokens in your repository, or in Tokens Studio and push them. Run the CLI afterwards to build the CSS from them.
 </Alert>
 
 4. In Tokens Studio, select the “Pull” icon to fetch the tokens into Figma.
@@ -99,3 +108,7 @@ You should now see all components using your brand colours in Figma.
 <Alert data-color="info">
 When the Design Tokens are updated in code, you can easily fetch the new values into Figma by using the “Pull” button in Tokens Studio again.
 </Alert>
+
+## When you change your theme
+
+Creating the Design Tokens again from the configuration file replaces your changes to them. To bring in changes from the Theme Builder, such as new colours, add `"design-tokens"` back to `output` and run the CLI. Then make your changes to the Design Tokens again, for example by restoring them with Git, and change `output` back as in step 2.
