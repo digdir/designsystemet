@@ -96,7 +96,7 @@ All paths are relative to the config file.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"design-tokens"` | Yes | | The output type. |
-| dir | String | No | `design-tokens` | The folder where design tokens should be saved. |
+| dir | String | No | `designsystemet/design-tokens` | The folder where design tokens should be saved. |
 | cleanDir | Boolean | No | `true` | Delete the folder before creating design tokens. Removes files that are no longer in use. |
 
 #### css
@@ -104,7 +104,7 @@ All paths are relative to the config file.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"css"` | Yes | | The output type. |
-| dir | String | No | `designsystemet-theme` | The folder where CSS should be saved. |
+| dir | String | No | `designsystemet` | The folder where CSS should be saved. |
 | cleanDir | Boolean | No | `true` | Delete the folder before creating CSS. |
 | tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build CSS from. If neither is set, CSS is created directly from the themes. |
 | tailwind | `"v3"`, `"v4"` or `false` | No | `false` | Also generate a `<theme>.tailwind.css` for this Tailwind version. `false` skips it. |
@@ -114,7 +114,7 @@ All paths are relative to the config file.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"types"` | Yes | | The output type. |
-| dir | String | No | `designsystemet-theme` | The folder where type declarations should be saved. |
+| dir | String | No | `designsystemet` | The folder where type declarations should be saved. |
 | tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build type declarations from. If neither is set, type declarations are created directly from the themes. |
 
 Creates `types.d.ts`, which adds your theme's colour names to the types in `@digdir/designsystemet-types`, so props like `data-color` only accept your colours.
@@ -281,9 +281,9 @@ The `severity` override allows you to customise the colours used for severity, w
 {
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
   "output": [
-    { "type": "design-tokens", "dir": "./design-tokens" },
-    { "type": "css", "dir": "./designsystemet-theme", "tokensDir": "./design-tokens" },
-    { "type": "types", "dir": "./designsystemet-theme", "tokensDir": "./design-tokens" }
+    { "type": "design-tokens", "dir": "./designsystemet/design-tokens" },
+    { "type": "css", "dir": "./designsystemet", "tokensDir": "./designsystemet/design-tokens" },
+    { "type": "types", "dir": "./designsystemet", "tokensDir": "./designsystemet/design-tokens" }
   ],
   "themes": {
     "my-theme": {

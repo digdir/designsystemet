@@ -2,7 +2,7 @@
   "output": [
     {
       "type": "css",
-      "dir": "designsystemet-theme",
+      "dir": "designsystemet",
       "cleanDir": true,
       "tailwind": false
     }

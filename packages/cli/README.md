@@ -83,7 +83,7 @@ To generate new design tokens and CSS files, you would then run:
 npx @digdir/designsystemet
 ```
 
-This creates CSS in `designsystemet-theme`, relative to the config file, directly from the themes. Add `"types"` to `output` to also create type declarations, and `"design-tokens"` to also save the design tokens.
+This creates CSS in `designsystemet`, relative to the config file, directly from the themes. Add `"types"` to `output` to also create type declarations, and `"design-tokens"` to also save the design tokens.
 
 #### Output
 
@@ -92,11 +92,11 @@ Use `output` to choose what is created and where. Each item is either an output 
 ```jsonc
 {
   "output": [
-    // defaults: dir "design-tokens", cleanDir true
+    // defaults: dir "designsystemet/design-tokens", cleanDir true
     { "type": "design-tokens", "dir": "../path/to/design-tokens" },
-    // defaults: dir "designsystemet-theme", tokensDir from the design-tokens output, cleanDir true, tailwind false
+    // defaults: dir "designsystemet", tokensDir from the design-tokens output, cleanDir true, tailwind false
     { "type": "css", "dir": "../path/to/css", "tokensDir": "../path/to/design-tokens" },
-    // defaults: dir "designsystemet-theme", tokensDir from the design-tokens output
+    // defaults: dir "designsystemet", tokensDir from the design-tokens output
     { "type": "types", "dir": "../path/to/types", "tokensDir": "../path/to/design-tokens" },
   ],
 }

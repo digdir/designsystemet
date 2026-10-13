@@ -109,8 +109,9 @@ export const legacyBuildDir = 'design-tokens-build';
  * Otherwise the migrated config would delete output directories the user opted out of cleaning.
  * A missing `clean` or `clean: true` uses the new default.
  *
- * CSS and types are saved in `buildDir`, where `tokens build` saved them, so imports of the built files keep working.
- * Their default directory is different.
+ * Design tokens are saved in `outDir`, and CSS and types in `buildDir`, where `tokens build` saved them, so existing
+ * design tokens and imports of the built files keep working. Their default directories are different, so `dir` is
+ * always set.
  */
 export const toOutput = (
   outDir: string | undefined,
@@ -121,7 +122,7 @@ export const toOutput = (
   const cleanDir = keepFiles ? { cleanDir: false } : {};
 
   return [
-    { type: 'design-tokens' as const, ...(!isDefaultDir && { dir: outDir }), ...cleanDir },
+    { type: 'design-tokens' as const, dir: isDefaultDir ? defaultOutDir : outDir, ...cleanDir },
     // CSS and types are built from the design tokens, so they must read them from the same directory.
     { type: 'css' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...cleanDir },
     // `types` outputs are never cleaned, so they have no `cleanDir`.

@@ -40,7 +40,7 @@ describe('new output field migration', () => {
 
     expect(parseJsonc(migrated)).toEqual({
       output: [
-        { type: 'design-tokens' },
+        { type: 'design-tokens', dir: 'design-tokens' },
         { type: 'css', dir: 'design-tokens-build' },
         { type: 'types', dir: 'design-tokens-build' },
       ],
@@ -61,7 +61,7 @@ describe('new output field migration', () => {
   it('defines output with design tokens when the deprecated fields have default values', () => {
     const expected = {
       output: [
-        { type: 'design-tokens' },
+        { type: 'design-tokens', dir: 'design-tokens' },
         { type: 'css', dir: 'design-tokens-build' },
         { type: 'types', dir: 'design-tokens-build' },
       ],
@@ -86,7 +86,7 @@ describe('new output field migration', () => {
   it('defines output for clean: false even when outDir has its default value', () => {
     const expected = {
       output: [
-        { type: 'design-tokens', cleanDir: false },
+        { type: 'design-tokens', dir: 'design-tokens', cleanDir: false },
         { type: 'css', dir: 'design-tokens-build', cleanDir: false },
         { type: 'types', dir: 'design-tokens-build' },
       ],
@@ -120,7 +120,7 @@ describe('new output field migration', () => {
     });
     expect(parseJsonc(migration.yes('{ /* default */ "outDir": "design-tokens", "themes": {} }'))).toEqual({
       output: [
-        { type: 'design-tokens' },
+        { type: 'design-tokens', dir: 'design-tokens' },
         { type: 'css', dir: 'design-tokens-build' },
         { type: 'types', dir: 'design-tokens-build' },
       ],
@@ -165,7 +165,7 @@ describe('new output field migration', () => {
     it('defines output without directories when outDir resolves to the default directory next to the config file', () => {
       expect(parseJsonc(migrateToOutputField('{ "outDir": "configs/design-tokens" }', context))).toEqual({
         output: [
-          { type: 'design-tokens' },
+          { type: 'design-tokens', dir: 'design-tokens' },
           { type: 'css', dir: '../design-tokens-build' },
           { type: 'types', dir: '../design-tokens-build' },
         ],
