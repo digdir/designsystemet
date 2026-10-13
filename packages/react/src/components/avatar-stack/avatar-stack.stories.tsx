@@ -2,14 +2,7 @@ import { BriefcaseIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { cat1Img, cat3Img, cat4Img, cat5Img } from '../../../stories/constants';
-import {
-  Avatar,
-  EXPERIMENTAL_AvatarStack as AvatarStack,
-  Checkbox,
-  Field,
-  Label,
-  Tooltip,
-} from '../';
+import { Avatar, AvatarStack, Checkbox, Field, Label, Tooltip } from '../';
 
 const meta = preview.meta({
   title: 'Komponenter/AvatarStack',
