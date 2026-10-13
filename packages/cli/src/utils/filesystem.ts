@@ -7,7 +7,8 @@ import { isSameOrInside } from './paths.ts';
 
 /**
  * Deletes everything in `dir` except the directories in `keep`, which can be anywhere inside it. Directories that
- * contain a kept directory are kept too, and are cleaned the same way.
+ * contain a kept directory are kept too, and are cleaned the same way. Symlinks are never followed: a symlink that
+ * a kept directory is below is kept as it is, so nothing outside `dir` is deleted.
  */
 export async function removeAllExcept(dir: string, keep: string[]): Promise<void> {
   let entries: string[];
@@ -22,7 +23,10 @@ export async function removeAllExcept(dir: string, keep: string[]): Promise<void
     entries.map(async (name) => {
       const entry = path.join(dir, name);
       if (keep.some((kept) => path.resolve(kept) === path.resolve(entry))) return;
-      if (keep.some((kept) => isSameOrInside(kept, entry))) return removeAllExcept(entry, keep);
+      if (keep.some((kept) => isSameOrInside(kept, entry))) {
+        if ((await fs.lstat(entry)).isSymbolicLink()) return;
+        return removeAllExcept(entry, keep);
+      }
       await fs.rm(entry, { recursive: true, force: true });
     }),
   );

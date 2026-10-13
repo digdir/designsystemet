@@ -39,6 +39,40 @@ describe('removeAllExcept', () => {
     expect(await files()).toEqual(['design-tokens/semantic/color.json', 'nested/kept/tokens.json']);
   });
 
+  // A kept directory can be below a symlink by path. Following the symlink would delete files outside `dir`.
+  it('does not follow a symlink that a kept directory is below', async () => {
+    const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
+    try {
+      await fs.mkdir(path.join(outside, 'tokens'));
+      await fs.writeFile(path.join(outside, 'sibling.css'), '');
+      await fs.symlink(outside, path.join(dir, 'link'), 'dir');
+      await write('theme.css');
+
+      await removeAllExcept(dir, [path.join(dir, 'link/tokens')]);
+
+      expect((await fs.lstat(path.join(dir, 'link'))).isSymbolicLink()).toBe(true);
+      expect((await fs.readdir(outside)).sort()).toEqual(['sibling.css', 'tokens']);
+      expect(await files()).toEqual([]);
+    } finally {
+      await fs.rm(outside, { recursive: true, force: true });
+    }
+  });
+
+  it('deletes symlinks without following them when nothing below them is kept', async () => {
+    const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
+    try {
+      await fs.writeFile(path.join(outside, 'sibling.css'), '');
+      await fs.symlink(outside, path.join(dir, 'link'), 'dir');
+
+      await removeAllExcept(dir, []);
+
+      await expect(fs.lstat(path.join(dir, 'link'))).rejects.toThrow();
+      expect(await fs.readdir(outside)).toEqual(['sibling.css']);
+    } finally {
+      await fs.rm(outside, { recursive: true, force: true });
+    }
+  });
+
   it('deletes everything when nothing is kept', async () => {
     await write('theme.css');
     await write('old/file.css');
