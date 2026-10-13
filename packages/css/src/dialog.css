@@ -21,10 +21,10 @@
   &:lang(no),
   &:lang(nb),
   &:lang(nn) {
-    --dsc-dialog-close: 'Lukk';
+    --dsc-dialog-close-label: 'Lukk';
   }
   &:lang(en) {
-    --dsc-dialog-close: 'Close';
+    --dsc-dialog-close-label: 'Close';
   }
 
   /* Internal */
@@ -137,7 +137,7 @@
   & button[command='close']:empty::before,
   & button[data-command='close']:empty::before,
   & > form[method='dialog']:first-child > button:only-child::before /* @deprecated old selector for backwards compatibility */ {
-    content: var(--dsc-dialog-close, '');
+    content: var(--dsc-dialog-close-label, '');
     background: currentcolor;
     forced-color-adjust: none; /* Enable drawing with background property */
     height: var(--dsc-dialog-icon-size);
