@@ -2,8 +2,6 @@
 
 Imports a Designsystemet config, e.g. from [the theme builder](https://theme.designsystemet.no), into a Figma file as variable collections, variables, text styles and effect styles.
 
-[Design of the plugin in Figma](https://www.figma.com/design/trNNkbj9vNueZ8wRXjYpnh/Figma-Plugin?node-id=9-46&t=KRKRa4lkcS2rsFAl-1)
-
 ## What an import does
 
 An import makes the file match the config:
