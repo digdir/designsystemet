@@ -7,19 +7,19 @@ What Designsystemet publishes to Figma Community:
 
 ## Versions
 
-The design file (`figma-design-file`) and the plugin (`figma-plugin`) have the same version as the code packages: changesets versions them together (see `fixed` in `.changeset/config.json`).
+The design file (`figma-ui-kit`) and the plugin (`figma-plugin`) have the same version as the code packages: changesets versions them together (see `fixed` in `.changeset/config.json`).
 
 Their changelogs, [design-file/CHANGELOG.md](./design-file/CHANGELOG.md) and [plugin/CHANGELOG.md](./plugin/CHANGELOG.md), are shown together on designsystemet.no, under Fundamentals → Figma → Changelog. Most releases bump their versions without changes to them. Those versions are left out of the changelog page.
 
 ## Documenting changes
 
-Add a changeset for `figma-design-file` or `figma-plugin` for changes to the Figma file or the plugin, the same way as for the code packages.
+Add a changeset for `figma-ui-kit` or `figma-plugin` for changes to the Figma file or the plugin, the same way as for the code packages.
 
 Run `pnpm changeset`, select the package, and leave the summary empty. Then write the changes in the file it creates in `.changeset/`, as the prompt only takes a single line.
 
 ```md
 ---
-"figma-design-file": patch
+"figma-ui-kit": patch
 ---
 
 **Component:** What changed
