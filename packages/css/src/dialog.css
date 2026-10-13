@@ -137,7 +137,7 @@
   & button[command='close']:empty::before,
   & button[data-command='close']:empty::before,
   & > form[method='dialog']:first-child > button:only-child::before /* @deprecated old selector for backwards compatibility */ {
-    content: var(--dsc-dialog-close);
+    content: var(--dsc-dialog-close, '');
     background: currentcolor;
     forced-color-adjust: none; /* Enable drawing with background property */
     height: var(--dsc-dialog-icon-size);
