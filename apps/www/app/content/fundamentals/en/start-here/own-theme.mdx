@@ -1,8 +1,8 @@
 ---
 title: Build your theme
 sidebar_title: Build your theme
-description: How to set up your theme in Designsystemet with Design Tokens for design and code.
-date: 2026-01-07
+description: How to set up your theme in Designsystemet for design and code.
+date: 2026-10-13
 category: Start here
 color: yellow
 icon: PencilBoardIcon
@@ -10,7 +10,7 @@ published: true
 order: 10
 ---
 
-Designsystemet is designed to be used with your own visual identity, including colours and other preferences. With the [Designsystemet Theme Builder](https://theme.designsystemet.no), you can set up your theme and generate Design Tokens that can be used both in design tools and in code. Design Tokens ensure that both design and code use the same values.
+Designsystemet is designed to be used with your own visual identity, including colours and other preferences. With the [Designsystemet Theme Builder](https://theme.designsystemet.no), you set up your theme in a configuration file. The same file is used in Figma, with the Designsystemet plugin, and in code, with the CLI, so design and code use the same values.
 
 <Alert data-color="info">
 We recommend that both a developer and a designer take part in the process when setting up your theme.
@@ -18,8 +18,9 @@ We recommend that both a developer and a designer take part in the process when 
 
 ## How to get started:
 
-1. Use [Designsystemets Themebuilder](https://theme.designsystemet.no) to set up your theme and get started, or use the example below as a starting point. 
- - The config file must be saved as a `json` file, we recommend e.g. `designsystemet.config.json` or `<your-organization>.config.json`.
+1. Use the [Designsystemet Theme Builder](https://theme.designsystemet.no) to set up your theme, or use the example below as a starting point. You can set up several themes in the same configuration file under **Edit themes**.
+
+2. Click **Use theme**, and download or copy the configuration file. Save it as a `json` file, we recommend e.g. `designsystemet.config.json` or `<your-organization>.config.json`.
 
 ```json
 {
@@ -35,21 +36,74 @@ We recommend that both a developer and a designer take part in the process when 
   }
 }
 ```
-2. Find a Git repository where you can store your Design Tokens. Place the `designsystemet.config.json` file in the root of the repository.
 
-3. Clone the repository locally to your machine, open a terminal, and navigate to the folder containing the repository.
+### In Figma
 
-4. Make sure you have Node.js installed, version 20 or higher.
+3. Fetch the component library from [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Click “Open in Figma”) into your organisation that has at least a Pro licence. Note that this will be a copy of the component library without any connection to the main file.
 
-5. Run the following command in the terminal:
+4. In your copy, open the Designsystemet plugin. Upload the configuration file under **Upload config**, or paste it under **Or paste the config**, and click **Import**.
+
+   The plugin creates the variables and styles for your themes, and you should now see all components using your brand colours.
+
+   - Each theme, colour scheme and size is a mode in Figma, and how many modes a collection can have depends on your Figma plan.
+   - The fonts in your theme must be available in Figma.
+   - The plugin keeps variables, styles and modes it didn't create, such as the example themes from the Community file, and lists them after the import. Delete the ones you don't need.
+
+### In code
+
+5. Find a Git repository where you can store your theme. Place the `designsystemet.config.json` file in the root of the repository.
+
+6. Make sure you have Node.js installed, version 20 or higher. Open a terminal in the repository, and run:
+
 ```bash
 npx @digdir/designsystemet@latest
 ```
-This will generate Design Tokens based on the configuration file and save them in a folder called `design-tokens`, and CSS in a folder called `design-tokens-build`. You can change the folders with the [`output`](/en/fundamentals/code/cli-config#output) field in the configuration file. Push the changes to your repository.
 
-6. Fetch the component library from [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Click “Open in Figma”) into your organisation that has at least a Pro licence. Note that this will be a copy of the component library without any connection to the main file.
+This generates CSS and type declarations for your themes, directly from the configuration file, in a folder called `designsystemet-theme`. You can change what is generated, and where, with the [`output`](/en/fundamentals/code/cli-config#output) field in the configuration file. See [Setup](/en/fundamentals/code/setup) for how to use the CSS in your code.
 
-7. Install the plugin [Tokens Studio (figma.com)](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)). This plugin enables synchronisation between Figma and code. You do *not* need a Pro licence.
+### When you change your theme
+
+Update the configuration file in the Theme Builder: click **Import config** and paste your configuration file to continue where you left off. Then:
+
+- In Figma, import the new configuration file with the plugin. It only changes what has changed, and components using the variables and styles stay connected.
+- In code, replace `designsystemet.config.json` with the new file and run the command again.
+
+### Icons in Figma
+To get icons working in Figma, they need to be connected to a library stored in your organisation. See the guide ["Get icons working in Figma"](/en/fundamentals/theme/icons#get-icons-working-in-figma).
+
+## Alternative: Design Tokens and Tokens Studio
+
+If you've changed the Design Tokens in ways the configuration file can't describe, the plugin can't bring those changes into Figma. Then you can save the Design Tokens in your repository and sync them with Figma using the Tokens Studio plugin instead.
+
+1. Add `"design-tokens"` to `output` in the configuration file:
+
+```json
+{
+  "output": ["design-tokens", "css", "types"],
+  "themes": {
+    "theme": {
+      "colors": {
+        "primary": "#0062BA",
+        "neutral": "#1E2B3C",
+        "extra1": "#F45F63"
+      },
+      "borderRadius": 4
+    }
+  }
+}
+```
+
+2. Run the command again:
+
+```bash
+npx @digdir/designsystemet@latest
+```
+
+This saves the Design Tokens in a folder called `design-tokens`, and builds the CSS and types from them. Push the changes to your repository.
+
+**Remember to run this command every time you make changes to the configuration file.** Keep the `output` field when you replace the configuration file with a new one from the Theme Builder.
+
+3. Install the plugin [Tokens Studio (figma.com)](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)). This plugin enables synchronisation between Figma and code. You do *not* need a Pro licence.
 
 <Image
   src='/img/fundamentals/start-here/own-theme/tokenstudio.png'
@@ -64,16 +118,7 @@ This will generate Design Tokens based on the configuration file and save them i
 We recommend *not* pushing changes to Design Tokens from Tokens Studio, as this may cause you to lose your overrides when updating.
 </Alert>
 
-8. Go to the [Theme Builder](https://theme.designsystemet.no) and generate colour scales based on your brand colours. Click “Apply theme”. Copy the configuration file and paste it into the `designsystemet.config.json` file in your repository. Run the command below and push the changes.
-
-
-```bash
-npx @digdir/designsystemet@latest --config designsystemet.config.json
-```
-
-**Remember to run this command every time you make changes to the configuration file.**
-
-9. In Tokens Studio, select the “Pull” icon to fetch the new tokens into Figma.
+4. In Tokens Studio, select the “Pull” icon to fetch the tokens into Figma.
 
 <Image
   src='/img/fundamentals/start-here/own-theme/tokens-studio-pull-button.png'
@@ -107,40 +152,8 @@ Select `Themes`, `Select All`, and `Export to Figma`:
 
 You should now see all components using your brand colours in Figma.
 
-**Note:** Token Studio does not delete existing modes during export. After export, check Theme, Main color, and Support color, and remove any default themes that may still remain from the community file.
-
-If you want additional themes, you can generate a new theme in the Theme Builder and update the configuration file in your repository. Run the command again to generate new Design Tokens, push the changes, and use the “Pull” button in Tokens Studio to fetch the new themes into Figma.
-
-
-```json
-{
-  "themes": {
-    "theme-one": {
-      "colors": {
-        "primary": "#0062BA",
-        "neutral": "#1E2B3C",
-        "extra1": "#F45F63"
-      },
-      "borderRadius": 4
-    },
-    "theme-two": {
-      "colors": {
-        "primary": "#0062BA",
-        "neutral": "#1E2B3C",
-        "extra1": "#F45F63"
-      },
-      "borderRadius": 4
-    }
-  }
-}
-```
+**Note:** Token Studio does not delete existing modes during export. After export, check the Theme and Color collections, and remove any default themes that may still remain from the community file.
 
 <Alert data-color="info">
 When the Design Tokens are updated in code, you can easily fetch the new values into Figma by using the “Pull” button in Tokens Studio again.
 </Alert>
-
-
-10. The same command also generates CSS from your theme, in the `design-tokens-build` folder. This CSS is what you use in code.
-
-### Icons in Figma
-To get icons working in Figma, they need to be connected to a library stored in your organisation. See the guide ["Get icons working in Figma"](/en/fundamentals/theme/icons#get-icons-working-in-figma).
