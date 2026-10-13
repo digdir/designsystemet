@@ -51,7 +51,7 @@ Køyr CLI-et i same mappe som config fila:
 npx @digdir/designsystemet@latest
 ```
 
-Dette lagar CSS og typedeklarasjonar for alle tema, basert på [`output`](#output)-feltet i config fila. Design tokens blir berre lagra om du legg til ein `design-tokens`-output.
+Dette lagar CSS for alle tema, basert på [`output`](#output)-feltet i config fila. Typedeklarasjonar og design tokens blir berre laga om du legg til ein `types`- eller `design-tokens`-output.
 
 | Val | Forklaring |
 | --- | ----------- |
@@ -70,7 +70,7 @@ Kommandoane `tokens create` og `tokens build` er utdaterte og blir fjerna i ein 
 | Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
 | $schema | Streng | Nei | Sti til JSON schema for validering. Anbefalt: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
-| output | Liste | Nei | Kva CLI-et skal lage, og kvar. Standard er `["css", "types"]`. Sjå [Output](#output). |
+| output | Liste | Nei | Kva CLI-et skal lage, og kvar. Standard er `["css"]`. Sjå [Output](#output). |
 | themes | Objekt | Nei | Inneheld alle tema du vil definere. Kvar nøkkel er namnet på temaet. Påkrevd for outputar som blir laga frå tema, sjå [Bygge utan tema](#bygge-utan-tema). |
 | outDir | Streng | Nei | **Utdatert:** bruk `output[].dir` i staden. |
 | clean | Boolean | Nei | **Utdatert:** bruk `output[].cleanDir` i staden. |
@@ -122,11 +122,11 @@ Alle stiar er relative til config fila.
 Lagar `types.d.ts`, som legg fargenamna i temaet ditt til typane i `@digdir/designsystemet-types`, slik at til dømes `data-color` berre godtek fargane dine.
 Den utdaterte `colors.d.ts` blir òg laga, og blir fjerna i ein framtidig versjon.
 
-`css`-outputen lagar ikkje lenger typedeklarasjonar. Set du `output` sjølv, må du ta med `"types"` for å framleis få dei.
+`css`-outputen lagar ikkje lenger typedeklarasjonar. Legg til `"types"` i `output` for å få dei.
 
 #### Utan design tokens
 
-Som standard er `output` `["css", "types"]`. Utan ein `design-tokens`-output eller `tokensDir` blir CSS og typar laga direkte frå tema, utan at design tokens blir lagra. Legg til `"design-tokens"` i `output` for å lagre dei òg.
+Som standard er `output` `["css"]`. Utan ein `design-tokens`-output eller `tokensDir` blir CSS og typar laga direkte frå tema, utan at design tokens blir lagra. Legg til `"design-tokens"` i `output` for å lagre dei òg.
 
 #### Bygge utan tema
 

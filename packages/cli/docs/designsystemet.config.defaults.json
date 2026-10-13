@@ -5,10 +5,6 @@
       "dir": "designsystemet-theme",
       "cleanDir": true,
       "tailwind": false
-    },
-    {
-      "type": "types",
-      "dir": "designsystemet-theme"
     }
   ],
   "outDir": "design-tokens",

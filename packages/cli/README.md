@@ -83,7 +83,7 @@ To generate new design tokens and CSS files, you would then run:
 npx @digdir/designsystemet
 ```
 
-This creates CSS and type declarations in `designsystemet-theme`, relative to the config file, directly from the themes. Add `"design-tokens"` to `output` to also save the design tokens.
+This creates CSS in `designsystemet-theme`, relative to the config file, directly from the themes. Add `"types"` to `output` to also create type declarations, and `"design-tokens"` to also save the design tokens.
 
 #### Output
 
@@ -106,7 +106,7 @@ Design tokens are always created first, then CSS, then types. If `tokensDir` is 
 
 The `types` output writes `types.d.ts` (and the deprecated `colors.d.ts`), which augment `@digdir/designsystemet-types` with your theme's color names.
 
-Without a `design-tokens` output or `tokensDir`, CSS and types are created directly from the themes, without writing any design tokens. This is the default, `"output": ["css", "types"]`.
+Without a `design-tokens` output or `tokensDir`, CSS and types are created directly from the themes, without writing any design tokens. The default, `"output": ["css"]`, creates only CSS this way.
 
 `themes` is only needed by outputs that are created from themes. To build CSS and types from existing design tokens, leave out `themes` and set `tokensDir`:
 

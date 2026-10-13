@@ -5,8 +5,7 @@
     "output": {
       "description": "An array of output types. These are run in the order they are specified.",
       "default": [
-        "css",
-        "types"
+        "css"
       ],
       "type": "array",
       "items": {
