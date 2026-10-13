@@ -88,7 +88,7 @@
     --dsc-suggestion-empty-text: 'Empty';
     --dsc-suggestion-sr-added: 'Added';
     --dsc-suggestion-sr-clear: 'Clear text';
-    --dsc-suggestion-sr-empty: 'No selected';
+    --dsc-suggestion-sr-empty: 'None selected';
     --dsc-suggestion-sr-found: 'Navigate left to find %d selected';
     --dsc-suggestion-sr-invalid: 'Invalid value';
     --dsc-suggestion-sr-items: 'Selected';
