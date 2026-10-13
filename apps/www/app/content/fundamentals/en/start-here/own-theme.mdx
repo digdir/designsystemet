@@ -18,7 +18,7 @@ We recommend that both a developer and a designer take part in the process when 
 
 ## How to get started:
 
-1. Use the [Designsystemet Theme Builder](https://theme.designsystemet.no) to set up your theme, or use the example below as a starting point. You can set up several themes in the same configuration file under **Edit themes**.
+1. Use the [Designsystemet Theme Builder](https://theme.designsystemet.no) to set up your theme. You can set up several themes in the same configuration file under **Edit themes**.
 
 2. Click **Use theme**, and download or copy the configuration file. Save it as a `json` file, we recommend e.g. `designsystemet.config.json` or `<your-organization>.config.json`.
 
@@ -36,9 +36,9 @@ We recommend that both a developer and a designer take part in the process when 
 
 ### In code
 
-5. Find a Git repository where you can store your theme. Place the `designsystemet.config.json` file in the root of the repository.
+5. Place `designsystemet.config.json` in your project, in the folder where you want the theme's files.
 
-6. Make sure you have Node.js installed, version 20 or higher. Open a terminal in the repository, and run:
+6. Make sure you have Node.js `22.12.0` or higher installed. Open a terminal in that folder, and run:
 
 ```bash
 npx @digdir/designsystemet@latest
@@ -50,8 +50,8 @@ This generates CSS for your themes, directly from the configuration file, in a f
 
 Update the configuration file in the Theme Builder: click **Import config** and paste your configuration file to continue where you left off. Then:
 
-- In Figma, import the new configuration file with the plugin. It only changes what has changed, and components using the variables and styles stay connected.
-- In code, replace `designsystemet.config.json` with the new file and run the command again.
+- **In Figma**, import the new configuration file with the plugin. It only changes what has changed, and components using the variables and styles stay connected.
+- **In code**, replace `designsystemet.config.json` with the new file and run the command again.
 
 ### Icons in Figma
 To get icons working in Figma, they need to be connected to a library stored in your organisation. See the guide ["Get icons working in Figma"](/en/fundamentals/theme/icons#get-icons-working-in-figma).
