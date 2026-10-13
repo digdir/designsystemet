@@ -4,6 +4,20 @@ import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { removeAllExcept } from './filesystem.ts';
 
+// Whether the temporary directory's file system ignores letter case, as on Windows and macOS by default.
+const caseInsensitive = await (async () => {
+  const probe = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-case-'));
+  try {
+    await fs.writeFile(path.join(probe, 'a'), '');
+    return await fs
+      .access(path.join(probe, 'A'))
+      .then(() => true)
+      .catch(() => false);
+  } finally {
+    await fs.rm(probe, { recursive: true, force: true });
+  }
+})();
+
 describe('removeAllExcept', () => {
   let dir: string;
 
@@ -89,6 +103,24 @@ describe('removeAllExcept', () => {
     } finally {
       await fs.rm(outside, { recursive: true, force: true });
     }
+  });
+
+  // `designsystemet/Design-Tokens` in a config is the same directory as `designsystemet/design-tokens` on disk there.
+  it.runIf(caseInsensitive)('keeps a kept directory written with other letter case than on disk', async () => {
+    await write('theme.css');
+    await write('nested/design-tokens/semantic/color.json');
+
+    await removeAllExcept(dir, [path.join(dir, 'Nested/Design-Tokens')]);
+
+    expect(await files()).toEqual(['nested/design-tokens/semantic/color.json']);
+  });
+
+  it.runIf(caseInsensitive)('keeps everything when the directory is a kept directory itself', async () => {
+    await write('tokens/color.json');
+
+    await removeAllExcept(path.join(dir, 'tokens'), [path.join(dir, 'Tokens')]);
+
+    expect(await files()).toEqual(['tokens/color.json']);
   });
 
   it('deletes everything when nothing is kept', async () => {

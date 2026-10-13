@@ -135,8 +135,10 @@ program
     // Design tokens and kept outputs inside a cleaned directory, e.g. `designsystemet/design-tokens` inside the
     // `css` output's `designsystemet`, are left alone, and everything else in the directory is deleted.
     for (const dir of dirsToClean) {
-      const keep = [...inputDirs, ...keptDirs].filter(
-        (protectedDir) => protectedDir !== path.resolve(dir) && isSameOrInside(protectedDir, dir),
+      // Letter case is ignored here, so no directory is missed on case-insensitive file systems. `cleanDir` matches
+      // the directories on disk, so a directory that only looks the same here is not kept on case-sensitive ones.
+      const keep = [...inputDirs, ...keptDirs].filter((protectedDir) =>
+        isSameOrInside(path.resolve(protectedDir).toLowerCase(), path.resolve(dir).toLowerCase()),
       );
       await dsfs.cleanDir(dir, keep);
     }

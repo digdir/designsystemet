@@ -1,21 +1,56 @@
-import type { CopyOptions, PathLike } from 'node:fs';
+import type { BigIntStats, CopyOptions, PathLike } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import pc from 'picocolors';
 import type { OutputFile } from '../tokens/types.ts';
-import { isSameOrInside } from './paths.ts';
+
+/** Identifies a file or directory on disk, however its path is written: letter case, `..`, or a symlink to it. */
+const fileId = (stats: BigIntStats) => `${stats.dev}:${stats.ino}`;
+
+const statId = async (file: string): Promise<string | undefined> => {
+  try {
+    return fileId(await fs.stat(file, { bigint: true }));
+  } catch {
+    return undefined;
+  }
+};
 
 /**
  * Deletes everything in `dir` except the directories in `keep`, which can be anywhere inside it. Directories that
  * contain a kept directory are kept too, and are cleaned the same way. Symlinks are never followed: a symlink that
  * a kept directory is below is kept as it is, so nothing outside `dir` is deleted.
+ *
+ * Directories are matched by what they are on disk, not by their paths, so a kept directory is found also when its
+ * path is written with other letter case than on disk, on case-insensitive file systems such as on Windows and macOS.
  */
 export async function removeAllExcept(dir: string, keep: string[]): Promise<void> {
+  const keptIds = new Set<string>();
+  const containingIds = new Set<string>();
+  for (const kept of keep) {
+    const id = await statId(kept);
+    // A kept directory that doesn't exist has nothing to keep.
+    if (!id) continue;
+    keptIds.add(id);
+    for (
+      let parent = path.dirname(path.resolve(kept));
+      parent !== path.dirname(parent);
+      parent = path.dirname(parent)
+    ) {
+      const parentId = await statId(parent);
+      if (parentId) containingIds.add(parentId);
+    }
+  }
+
+  await removeEntriesExcept(dir, keptIds, containingIds);
+}
+
+async function removeEntriesExcept(dir: string, keptIds: Set<string>, containingIds: Set<string>): Promise<void> {
   let entries: string[];
   try {
     // `dir` is the output directory, or a directory in it that a kept directory is below. Reading a symlink would
-    // follow it, so a symlink is kept as it is.
-    if ((await fs.lstat(dir)).isSymbolicLink()) return;
+    // follow it, so a symlink is kept as it is. So is `dir` when it is a kept directory itself.
+    const stats = await fs.lstat(dir, { bigint: true });
+    if (stats.isSymbolicLink() || keptIds.has(fileId(stats))) return;
     entries = await fs.readdir(dir);
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') return;
@@ -25,8 +60,9 @@ export async function removeAllExcept(dir: string, keep: string[]): Promise<void
   await Promise.all(
     entries.map(async (name) => {
       const entry = path.join(dir, name);
-      if (keep.some((kept) => path.resolve(kept) === path.resolve(entry))) return;
-      if (keep.some((kept) => isSameOrInside(kept, entry))) return removeAllExcept(entry, keep);
+      const id = await statId(entry);
+      if (id && keptIds.has(id)) return;
+      if (id && containingIds.has(id)) return removeEntriesExcept(entry, keptIds, containingIds);
       await fs.rm(entry, { recursive: true, force: true });
     }),
   );
