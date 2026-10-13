@@ -58,6 +58,24 @@ describe('removeAllExcept', () => {
     }
   });
 
+  // The output directory itself can be a symlink. Reading it would follow it and delete files outside it.
+  it('does not follow the directory itself when it is a symlink', async () => {
+    const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
+    try {
+      await fs.mkdir(path.join(outside, 'tokens'));
+      await fs.writeFile(path.join(outside, 'sibling.css'), '');
+      const link = path.join(dir, 'output');
+      await fs.symlink(outside, link, 'dir');
+
+      await removeAllExcept(link, [path.join(link, 'tokens')]);
+
+      expect((await fs.lstat(link)).isSymbolicLink()).toBe(true);
+      expect((await fs.readdir(outside)).sort()).toEqual(['sibling.css', 'tokens']);
+    } finally {
+      await fs.rm(outside, { recursive: true, force: true });
+    }
+  });
+
   it('deletes symlinks without following them when nothing below them is kept', async () => {
     const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
     try {

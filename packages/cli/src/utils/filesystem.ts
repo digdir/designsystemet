@@ -13,6 +13,9 @@ import { isSameOrInside } from './paths.ts';
 export async function removeAllExcept(dir: string, keep: string[]): Promise<void> {
   let entries: string[];
   try {
+    // `dir` is the output directory, or a directory in it that a kept directory is below. Reading a symlink would
+    // follow it, so a symlink is kept as it is.
+    if ((await fs.lstat(dir)).isSymbolicLink()) return;
     entries = await fs.readdir(dir);
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') return;
@@ -23,10 +26,7 @@ export async function removeAllExcept(dir: string, keep: string[]): Promise<void
     entries.map(async (name) => {
       const entry = path.join(dir, name);
       if (keep.some((kept) => path.resolve(kept) === path.resolve(entry))) return;
-      if (keep.some((kept) => isSameOrInside(kept, entry))) {
-        if ((await fs.lstat(entry)).isSymbolicLink()) return;
-        return removeAllExcept(entry, keep);
-      }
+      if (keep.some((kept) => isSameOrInside(kept, entry))) return removeAllExcept(entry, keep);
       await fs.rm(entry, { recursive: true, force: true });
     }),
   );
