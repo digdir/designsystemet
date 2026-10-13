@@ -60,9 +60,9 @@ Hva det lager, og hvor, bestemmer du med det nye `output`-feltet i config-filen.
 
 | Output | Lager | Standardmappe |
 | ------ | ----- | ------------- |
-| `css` | En CSS-fil for hvert tema | `designsystemet-theme` |
-| `types` | Typedeklarasjoner for fargene dine, `types.d.ts` | `designsystemet-theme` |
-| `design-tokens` | Design tokens for temaene dine | `design-tokens` |
+| `css` | En CSS-fil for hvert tema | `designsystemet` |
+| `types` | Typedeklarasjoner for fargene dine, `types.d.ts` | `designsystemet` |
+| `design-tokens` | Design tokens for temaene dine | `designsystemet/design-tokens` |
 
 Skriv en output som et objekt i stedet for et navn for å endre innstillingene, for eksempel for å velge mappe med `dir`, eller for å også lage en Tailwind-fil med `tailwind`:
 
@@ -85,7 +85,7 @@ Skriv en output som et objekt i stedet for et navn for å endre innstillingene, 
 
 Dette er greit å vite:
 
-- **Design tokens er valgfrie.** Du trenger dem ikke for å få temaet ditt inn i Figma, siden pluginen importerer config-filen direkte. Legg til `"design-tokens"` i `output` hvis du har endret design tokens på måter config-filen ikke kan beskrive, eller [synkroniserer dem med Tokens Studio](/no/fundamentals/figma/tokens-studio). CSS-en og typene blir da bygget fra design tokens.
+- **Design tokens er valgfrie.** Du trenger dem ikke for å få temaet ditt inn i Figma, siden pluginen importerer config-filen direkte. Legg til `"design-tokens"` i `output` for også å lagre dem, så blir CSS-en og typene bygget fra dem. Hvis du har endret design tokens på måter config-filen ikke kan beskrive, bygger du CSS-en fra dem med `tokensDir` og [synkroniserer dem med Tokens Studio](/no/fundamentals/figma/tokens-studio).
 - **Hver output tømmer mappen sin** før den lager filene sine. Sett `"cleanDir": false` på en output for å beholde filene som allerede ligger der.
 - **CSS-en har ikke lenger typedeklarasjoner.** Legg til `"types"` i `output` for å få dem, som i eksempelet over.
 - **Med `"tailwind": "v4"`** bruker Tailwind-klassene `--ds-*`-variablene direkte, så `data-color`, `data-color-scheme` og `data-size` gjelder for dem også. `"v3"` lager den samme Tailwind-filen som før.
