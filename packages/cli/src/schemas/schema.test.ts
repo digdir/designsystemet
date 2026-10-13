@@ -59,6 +59,34 @@ describe('themesSchema cross-theme validation', () => {
     expect(issuePaths(result)).toEqual([]);
   });
 
+  it("rejects color overrides for a color the theme doesn't have", () => {
+    const result = parseThemes({
+      a: baseTheme,
+      b: {
+        colors: { neutral: '#444444', brand: '#0062BA' },
+        overrides: { colors: { accent: { 'background-default': { light: '#ffffff' } } } },
+      },
+    });
+
+    expect(issuePaths(result)).toEqual(['b.overrides.colors.accent']);
+  });
+
+  it("accepts color overrides for the theme's own colors and the severity colors", () => {
+    const result = parseThemes({
+      a: {
+        ...baseTheme,
+        overrides: {
+          colors: {
+            accent: { 'background-default': { light: '#ffffff' } },
+            info: { 'background-default': { light: '#ffffff' } },
+          },
+        },
+      },
+    });
+
+    expect(issuePaths(result)).toEqual([]);
+  });
+
   it('rejects themes with different size steps', () => {
     const result = parseThemes({
       a: baseTheme,
@@ -270,6 +298,22 @@ describe('external schema', () => {
     });
 
     expect(result.success).toBe(true);
+  });
+
+  it("rejects color overrides for a color the theme doesn't have", () => {
+    const result = externalConfigSchema.safeParse({
+      themes: {
+        a: baseTheme,
+        b: {
+          ...baseTheme,
+          colors: { neutral: '#444444', brand: '#0062BA' },
+          overrides: { colors: { accent: { 'background-default': { light: '#ffffff' } } } },
+        },
+      },
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(['themes.b.overrides.colors.accent']);
   });
 
   it('rejects internal-only shapes for public keys', () => {

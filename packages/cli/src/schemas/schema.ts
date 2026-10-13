@@ -157,11 +157,28 @@ const getSharedThemeValues = (theme: ConfigSchemaTheme): SharedThemeValue[] => {
 /**
  * Validate that there is at least one theme. Themes can define different colors: every theme gets tokens for every
  * color in the config, and a color a theme doesn't have uses the theme's first color (see `createTokens`).
+ * Color overrides must be for one of the theme's own colors, as overrides for a color it uses the first color for
+ * would otherwise be ignored without notice.
  * Used by both the full and the public `themes` schema.
  */
-const checkThemes = (themes: Record<string, unknown>, ctx: z.RefinementCtx) => {
+const checkThemes = (
+  themes: Record<string, { colors: Record<string, unknown>; overrides?: { colors?: Record<string, unknown> } }>,
+  ctx: z.RefinementCtx,
+) => {
   if (Object.keys(themes).length === 0) {
     ctx.addIssue({ code: 'custom', message: 'At least one theme must be defined.' });
+  }
+
+  for (const [themeName, theme] of Object.entries(themes)) {
+    for (const colorName of Object.keys(theme.overrides?.colors ?? {})) {
+      if (!Object.hasOwn(theme.colors, colorName)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: [themeName, 'overrides', 'colors', colorName],
+          message: `Theme "${themeName}" has overrides for the color "${colorName}", which it doesn't have. Add "${colorName}" to the theme's colors, or remove its overrides.`,
+        });
+      }
+    }
   }
 };
 

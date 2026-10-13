@@ -4,6 +4,7 @@ import {
   createSystemTokens,
   createTokens,
   externalConfigSchema,
+  getColorNames,
   getTokenSetDimensions,
   parseConfig,
   type TokenSets,
@@ -45,15 +46,14 @@ export async function createTokenModel(
   // typography sets are expected to be the same across themes.
   const tokenSetDimensions = getTokenSetDimensions(themes[0][1]);
 
+  // Every color across the themes, mirroring the CLI. Themes can have different colors: every theme gets tokens
+  // for all of them, and a color a theme doesn't have uses the theme's first color.
+  const colorNames = getColorNames(config.themes);
+
   // Token sets from every theme, keyed by token set path. Shared sets (e.g.
   // semantic/color) are identical across themes, so overwriting them is safe;
   // theme-specific sets have unique paths (themes/some-org, etc.).
   const tokenSets: TokenSets = new Map();
-
-  // Color names are derived from the generated `semantic/color/<name>` token sets so
-  // the auto-generated severity colors (danger, info, success, warning) are included
-  // alongside the user-defined colors and neutral.
-  const semanticColorNames = new Set<string>();
 
   await onStep('Creating tokens');
   for (const [index, [themeName, themeConfig]] of themes.entries()) {
@@ -63,22 +63,18 @@ export async function createTokenModel(
     const themeTokens = await createTokens(
       { name: themeName, ...themeConfig },
       tokenSetDimensions,
+      colorNames,
     );
 
     for (const [tokenSetPath, tokenSet] of themeTokens.tokenSets) {
       tokenSets.set(tokenSetPath, tokenSet);
-
-      const colorMatch = /^semantic\/color\/(.+)$/.exec(tokenSetPath);
-      if (colorMatch) {
-        semanticColorNames.add(colorMatch[1]);
-      }
     }
   }
 
   await onStep('Preparing import');
   const { $themes } = await createSystemTokens({
     tokenSetDimensions,
-    colorNames: Array.from(semanticColorNames),
+    colorNames,
     themeNames,
   });
 
