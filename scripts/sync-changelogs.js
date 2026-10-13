@@ -1,7 +1,7 @@
 /**
  * Builds the consolidated changelogs for www from the CHANGELOG.md of every
  * package: one for the code packages, and one for the Figma packages (the
- * design file, and later the plugin). Aggregation lives in
+ * UI kit and the plugin). Aggregation lives in
  * scripts/aggregate-changelogs.js; this file only formats the result as MDX
  * and writes it.
  */
@@ -133,7 +133,7 @@ const FIGMA_PAGES = {
 
 // The Figma file is published by hand, not with the code, so its versions have no tags to date them
 // by. Instead, the date is written in the changelog as a `_Published YYYY-MM-DD_` line under the
-// version heading; see figma/design-file/README.md.
+// version heading; see figma/README.md.
 const PUBLISHED_DATE = /^_Published (\d{4}-\d{2}-\d{2})_\s*$\n*/m;
 // What a package's changelog says for a version that only bumped it with the others.
 const NO_CHANGES = 'No changes in this release.';

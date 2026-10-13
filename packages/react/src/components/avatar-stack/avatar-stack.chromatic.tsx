@@ -1,6 +1,6 @@
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
-import { EXPERIMENTAL_AvatarStack as AvatarStack } from './avatar-stack';
+import { AvatarStack } from './avatar-stack';
 import * as AvatarStackStories from './avatar-stack.stories';
 
 const meta = preview.meta({
