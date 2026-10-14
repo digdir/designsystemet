@@ -5,6 +5,23 @@ import type { DSSuggestionElement } from './suggestion';
 
 const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
 
+const type = (input: HTMLInputElement, value: string) => {
+  input.focus();
+  input.value = value;
+  input.dispatchEvent(new Event('input', { bubbles: true }));
+};
+
+const pressEnter = (input: HTMLInputElement) =>
+  input.dispatchEvent(
+    new KeyboardEvent('keydown', { bubbles: true, key: 'Enter' }),
+  );
+
+const getItems = (suggestion: DSSuggestionElement) =>
+  Array.from(suggestion.querySelectorAll('data'), ({ value, textContent }) => ({
+    value,
+    label: textContent,
+  }));
+
 const render = () => {
   document.body.innerHTML = `
     <ds-suggestion class="ds-suggestion">
@@ -301,6 +318,82 @@ describe('suggestion component', () => {
     expect(chip.textContent).toBe('Oslo');
     /* u-combobox 2.1.4 left the option value in the input instead */
     expect(input.value).toBe('os');
+  });
+
+  /* With u-combobox 2.1.5, Enter matches the empty option, which gets the typed
+     text as label, and selects the typed text with an empty value */
+  it('selects nothing on Enter when the typed text matches no option', async () => {
+    const suggestion = render();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+
+    await tick(); // Let mutation observer run
+    type(input, 'missing');
+    await tick();
+    pressEnter(input);
+    await tick();
+
+    expect(getItems(suggestion)).toEqual([]);
+  });
+
+  /* With u-combobox 2.1.5, a second Enter removes that item again, as items are
+     toggled by value */
+  it('selects nothing on Enter when the typed text matches no option with data-multiple', async () => {
+    const suggestion = renderMultiple();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+
+    await tick(); // Let mutation observer run
+    type(input, 'missing');
+    await tick();
+    pressEnter(input);
+    await tick();
+
+    expect(getItems(suggestion)).toEqual([]);
+  });
+
+  /* With u-combobox 2.1.5, Enter matches the empty option, which comes first,
+     instead of the option with that label. Real typing in single mode avoids
+     this through a match on trusted input events, which synthetic events skip */
+  it('selects the option with the typed label on Enter', async () => {
+    const suggestion = render();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+
+    await tick(); // Let mutation observer run
+    type(input, 'Option 1');
+    await tick();
+    pressEnter(input);
+    await tick();
+
+    expect(getItems(suggestion)).toEqual([
+      { value: 'option-1', label: 'Option 1' },
+    ]);
+  });
+
+  it('selects the option with the typed label on Enter with data-multiple', async () => {
+    const suggestion = renderMultiple();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+
+    await tick(); // Let mutation observer run
+    type(input, 'Oslo');
+    await tick();
+    pressEnter(input);
+    await tick();
+
+    expect(getItems(suggestion)).toEqual([{ value: 'Osl', label: 'Oslo' }]);
+  });
+
+  /* u-combobox 2.1.5 only selects on blur from what it matched while typing,
+     before the empty option gets the typed text as label */
+  it('selects nothing on blur when the typed text matches no option', async () => {
+    const suggestion = render();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+
+    await tick(); // Let mutation observer run
+    type(input, 'missing');
+    await tick();
+    input.blur();
+    await tick(); // u-combobox handles blur in a zero-delay timeout, which runs first
+
+    expect(getItems(suggestion)).toEqual([]);
   });
 
   it('hides the empty option initially for a creatable suggestion', async () => {
