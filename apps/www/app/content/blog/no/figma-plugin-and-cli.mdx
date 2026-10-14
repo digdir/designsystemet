@@ -7,11 +7,11 @@ imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
 imageAlt: Logoen til Designsystemet, med en pil til et plugin-vindu med farger, teksteksempler og en importknapp, og videre til Figma-logoen
 ---
 
-Temaet ditt starter som en config-fil, laget i [temabyggeren](https://theme.designsystemet.no). Nå kommer du lenger med den samme filen: en ny versjon av Figma-pluginen henter den inn i Figma-filen din, temabyggeren kan håndtere alle temaene dine i den, og CLI-et lager alt koden din trenger fra den, med én kommando.
+Temaet ditt starter som en config-fil, laget i [temabyggeren](https://theme.designsystemet.no). Nå kommer du lenger med den samme filen: den nye Figma-pluginen henter den inn i Figma-filen din, temabyggeren kan håndtere alle temaene dine i den, og CLI-et lager alt koden din trenger fra den, med én kommando.
 
 ## En ny Figma-plugin er på vei
 
-Få temaet ditt inn i Figma i én operasjon. Last opp config-filen fra temabyggeren til den nye Designsystemet-pluginen, så lager den alle variablene og stilene komponentene i Figma-biblioteket til Designsystemet bruker. Når temaet endres, importerer du det på nytt: bare det som er endret blir oppdatert, lagene som bruker det forblir koblet, og det du har laget selv blir beholdt.
+Få temaet ditt inn i Figma i én operasjon. Last opp config-filen fra temabyggeren til den nye Designsystemet-pluginen, så lager den alle variablene og stilene som komponentene i Figma-biblioteket til Designsystemet bruker. Når temaet endres, importerer du det på nytt: bare det som er endret blir oppdatert, lagene som bruker det forblir koblet, og det du har laget selv blir beholdt.
 
 Les mer om [hva Figma-pluginen gjør, og hva den ikke kan importere ennå](/no/fundamentals/figma/plugin). Vi gir beskjed når den er publisert i Figma Community.
 
@@ -31,17 +31,17 @@ Temaene dine ligger i adressen til siden, så du kan lagre siden som bokmerke el
 
 Til nå har det tatt to kommandoer å få et tema inn i koden, `tokens create` og `tokens build`, med hver sine valg. 
 
-Nå kjører du CLI-et i mappen med `designsystemet.config.json`:
+Nå holder det med én kommando, i mappen med `designsystemet.config.json`:
 ```bash
 npx @digdir/designsystemet@latest
 ```
 
-Dette lager CSS for alle temaene dine, direkte fra config-filen. 
+Dette lager CSS for alle temaene dine, direkte fra config-filen, uten å lage design tokens først.
 Hva det lager, og hvor, bestemmer du med det nye `output`-feltet i config-filen.
 
 ### Output-feltet
 
-`output` er en liste over hva CLI-et skal lage. Hvis du utelater det, får du CSS:
+`output` er en liste over hva CLI-et skal lage. Hvis du utelater det, får du CSS som standard:
 
 ```json
 "output": ["css"]
@@ -72,9 +72,10 @@ Skriv en output som et objekt i stedet for et navn for å endre innstillingene, 
 }
 ```
 
-Dette er greit å vite:
+Greit å vite:
 
-- **Design tokens er valgfrie.** Du trenger dem ikke for å få temaet ditt inn i Figma, siden pluginen importerer config-filen direkte. Legg til `"design-tokens"` i `output` for også å lagre dem, så blir CSS-en og typene bygget fra dem. Hvis du har endret design tokens på måter config-filen ikke kan beskrive, bygger du CSS-en fra dem med `tokensDir` og [synkroniserer dem med Tokens Studio](/no/fundamentals/figma/tokens-studio).
+- **Design tokens er valgfrie.** Du trenger dem ikke for å få temaet ditt inn i Figma, siden den nye pluginen importerer temaene dine direkte fra config-filen. Legg til `"design-tokens"` i `output` for også å lage dem, så blir CSS-en og typene bygget fra dem.
+- **Har du endret design tokens** på måter config-filen ikke kan beskrive, bygger du CSS-en fra dem med `tokensDir` og [synkroniserer dem med Tokens Studio](/no/fundamentals/figma/tokens-studio).
 - **Hver output tømmer mappen sin** før den lager filene sine. Sett `"cleanDir": false` på en output for å beholde filene som allerede ligger der.
 - **CSS-en har ikke lenger typedeklarasjoner.** Legg til `"types"` i `output` for å få dem, som i eksempelet over.
 - **Med `"tailwind": "v4"`** bruker Tailwind-klassene `--ds-*`-variablene direkte, så `data-color`, `data-color-scheme` og `data-size` gjelder for dem også. `"v3"` lager den samme Tailwind-filen som før.

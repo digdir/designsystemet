@@ -7,7 +7,7 @@ imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
 imageAlt: The Designsystemet logo, with an arrow to a plugin window showing colors, text samples and an Import button, and on to the Figma logo
 ---
 
-Your theme starts as a config file, made in the [theme builder](https://theme.designsystemet.no). That file now goes further: a new version of the Figma plugin brings it into your Figma file, the theme builder can manage all your themes in it, and the CLI creates everything your code needs from it with a single command.
+Your theme starts as a config file, made in the [theme builder](https://theme.designsystemet.no). That file now goes further: the new Figma plugin brings it into your Figma file, the theme builder can manage all your themes in it, and the CLI creates everything your code needs from it with a single command.
 
 ## A new Figma plugin is on its way
 
@@ -29,17 +29,17 @@ Your themes are kept in the page's address, so you can bookmark the page or shar
 
 ## One command for your theme in code
 
-Until now, getting a theme into code took two commands, `tokens create` and `tokens build`, each with its own options. Now you run the CLI in the folder with your `designsystemet.config.json`:
+Until now, getting a theme into code took two commands, `tokens create` and `tokens build`, each with its own options. Now one command is enough, in the folder with your `designsystemet.config.json`:
 
 ```bash
 npx @digdir/designsystemet@latest
 ```
 
-This creates CSS for all your themes, directly from the config file. What it creates, and where, is set by the new `output` field in the config file.
+This creates CSS for all your themes, directly from the config file, without creating design tokens first. What it creates, and where, is set by the new `output` field in the config file.
 
 ### The output field
 
-`output` is a list of what the CLI should create. If you leave it out, you get CSS:
+`output` is a list of what the CLI should create. If you leave it out, you get CSS by default:
 
 ```json
 "output": ["css"]
@@ -71,9 +71,10 @@ Write an output as an object instead of a name to change its settings, for examp
 }
 ```
 
-A few things to know:
+Good to know:
 
-- **Design tokens are optional.** You don't need them to get your theme into Figma, since the plugin imports the config directly. Add `"design-tokens"` to `output` to also save them, and the CSS and types are then built from them. If you've changed the design tokens in ways the config can't describe, build the CSS from them with `tokensDir` and [sync them with Tokens Studio](/en/fundamentals/figma/tokens-studio).
+- **Design tokens are optional.** You don't need them to get your theme into Figma, since the new plugin imports your themes directly from the config file. Add `"design-tokens"` to `output` to also create them, and the CSS and types are then built from them.
+- **If you've changed the design tokens** in ways the config can't describe, build the CSS from them with `tokensDir` and [sync them with Tokens Studio](/en/fundamentals/figma/tokens-studio).
 - **Each output empties its folder** before creating its files. Set `"cleanDir": false` on an output to keep the files that are already there.
 - **The CSS no longer includes type declarations.** Add `"types"` to `output` to get them, as in the example above.
 - **With `"tailwind": "v4"`**, Tailwind's utility classes use the `--ds-*` variables directly, so `data-color`, `data-color-scheme` and `data-size` apply to them too. `"v3"` creates the same Tailwind file as before.
