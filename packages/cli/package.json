@@ -59,7 +59,6 @@
     "chroma-js": "^3.2.0",
     "colorjs.io": "^0.7.1",
     "commander": "^15.0.0",
-    "fast-glob": "^3.3.3",
     "hsluv": "^1.0.2",
     "jsonc-parser": "^3.3.1",
     "object-hash": "^3.0.0",
