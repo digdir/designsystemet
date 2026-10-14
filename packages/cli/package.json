@@ -59,7 +59,6 @@
     "chroma-js": "^3.2.0",
     "colorjs.io": "^0.7.1",
     "commander": "^15.0.0",
-    "fast-glob": "^3.3.3",
     "hsluv": "^1.0.2",
     "jsonc-parser": "^3.3.1",
     "object-hash": "^3.0.0",
@@ -67,6 +66,7 @@
     "postcss": "^8.5.29",
     "ramda": "^0.32.0",
     "style-dictionary": "^5.6.0",
+    "tinyglobby": "^0.2.17",
     "zod": "^4.6.5",
     "zod-validation-error": "^5.0.0"
   },

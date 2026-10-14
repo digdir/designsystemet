@@ -1,6 +1,6 @@
-import glob from 'fast-glob';
 import type { AcceptedPlugin } from 'postcss';
 import postcss from 'postcss';
+import { glob } from 'tinyglobby';
 import { dsfs } from '../../../../src/utils/filesystem.ts';
 
 type CssCodemodProps = {

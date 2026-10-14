@@ -676,9 +676,6 @@ importers:
       commander:
         specifier: ^15.0.0
         version: 15.0.0
-      fast-glob:
-        specifier: ^3.3.3
-        version: 3.3.3
       hsluv:
         specifier: ^1.0.2
         version: 1.0.2
@@ -700,6 +697,9 @@ importers:
       style-dictionary:
         specifier: ^5.6.0
         version: 5.6.0
+      tinyglobby:
+        specifier: ^0.2.17
+        version: 0.2.17
       zod:
         specifier: ^4.6.5
         version: 4.6.5
@@ -4684,10 +4684,6 @@ packages:
   picomatch@2.3.2:
     resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
     engines: {node: '>=8.6'}
-
-  picomatch@4.0.5:
-    resolution: {integrity: sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==}
-    engines: {node: '>=12'}
 
   picomatch@4.0.7:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
@@ -9825,8 +9821,6 @@ snapshots:
   picocolors@1.1.1: {}
 
   picomatch@2.3.2: {}
-
-  picomatch@4.0.5: {}
 
   picomatch@4.0.7: {}
 
