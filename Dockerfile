@@ -61,10 +61,8 @@ ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm deploy --filter=@web/storybook --prod /prod/@web/storybook
 
-FROM nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752 AS storybook
-# remove default config
-RUN rm /etc/nginx/conf.d/default.conf
-COPY /apps/storybook/nginx.conf /etc/nginx/conf.d/storybook.conf
+FROM cgr.dev/chainguard/nginx:latest@sha256:d74ba9e5cf9f6b049807e27a5a14a8cd2550ac428143b7d15ea3dbad282f4ed1 AS storybook
+# distroless image (no shell), so replace the default config by overwriting it
+COPY /apps/storybook/nginx.conf /etc/nginx/conf.d/nginx.default.conf
 COPY --from=storybook-build /prod/@web/storybook/dist /usr/share/nginx/html
 EXPOSE 6006
-CMD ["nginx", "-g", "daemon off;"]

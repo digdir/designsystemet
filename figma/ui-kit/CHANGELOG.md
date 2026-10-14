@@ -1,4 +1,4 @@
-# figma-design-file
+# figma-ui-kit
 
 ## 1.23.0
 
