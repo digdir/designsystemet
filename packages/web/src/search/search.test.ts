@@ -3,7 +3,7 @@
 import { describe, expect, it } from 'vitest';
 
 describe('search behavior', () => {
-  it('clears and focuses the sibling input when the clear button is clicked', () => {
+  it('clears and focuses the sibling input when the clear button is clicked', async () => {
     document.body.innerHTML = `
       <ds-suggestion class="ds-search">
         <input type="search" value="Hello" />
@@ -19,7 +19,7 @@ describe('search behavior', () => {
 
     expect(click.defaultPrevented).toBe(true);
     expect(input.value).toBe('');
-    expect(document.activeElement).toBe(input);
+    await expect.poll(() => document.activeElement).toBe(input); // Poll since Firefox can apply focus late on busy CI runners
   });
 
   it('ignores clicks outside .ds-search or on non-clear buttons', () => {
