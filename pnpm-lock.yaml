@@ -854,8 +854,8 @@ importers:
         specifier: 0.11.0
         version: 0.11.0
       '@oddbird/popover-polyfill':
-        specifier: 0.7.2
-        version: 0.7.2(patch_hash=1f3e1d4b9b98be6ea6d4707fbe7b7ac66be549654cb4bb41ad60295c10c029f8)
+        specifier: 0.7.3
+        version: 0.7.3(patch_hash=1f3e1d4b9b98be6ea6d4707fbe7b7ac66be549654cb4bb41ad60295c10c029f8)
       '@testing-library/dom':
         specifier: 10.4.2
         version: 10.4.2
@@ -1598,8 +1598,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@oddbird/popover-polyfill@0.7.2':
-    resolution: {integrity: sha512-f9R6XrZEshs/5qugqNH8wAqVzwuXLsnJW+iFQnPzX+/5pEr13b5bmxDVbJWj1U+E7LKJMcSu+IFif49mgacbYQ==}
+  '@oddbird/popover-polyfill@0.7.3':
+    resolution: {integrity: sha512-uOY7RLqS1M12u+EzZHQ8vPSh3NjwDlb4qwJ1WDzQ0inZ14+47Vv0NNs+1Lh4PtX1nLiiCbfJyIxPRHsgBTvhvg==}
 
   '@oxc-parser/binding-android-arm-eabi@0.127.0':
     resolution: {integrity: sha512-0LC7ye4hvqbIKxAzThzvswgHLFu2AURKzYLeSVvLdu2TBOYWQDmHnTqPLeA597BcUCxiLqLsS4CJ5uoI5WYWCQ==}
@@ -4685,10 +4685,6 @@ packages:
     resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
     engines: {node: '>=8.6'}
 
-  picomatch@4.0.5:
-    resolution: {integrity: sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==}
-    engines: {node: '>=12'}
-
   picomatch@4.0.7:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
@@ -6796,7 +6792,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@oddbird/popover-polyfill@0.7.2(patch_hash=1f3e1d4b9b98be6ea6d4707fbe7b7ac66be549654cb4bb41ad60295c10c029f8)': {}
+  '@oddbird/popover-polyfill@0.7.3(patch_hash=1f3e1d4b9b98be6ea6d4707fbe7b7ac66be549654cb4bb41ad60295c10c029f8)': {}
 
   '@oxc-parser/binding-android-arm-eabi@0.127.0':
     optional: true
@@ -9825,8 +9821,6 @@ snapshots:
   picocolors@1.1.1: {}
 
   picomatch@2.3.2: {}
-
-  picomatch@4.0.5: {}
 
   picomatch@4.0.7: {}
 
