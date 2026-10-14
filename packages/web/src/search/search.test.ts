@@ -19,7 +19,11 @@ describe('search behavior', () => {
 
     expect(click.defaultPrevented).toBe(true);
     expect(input.value).toBe('');
-    await expect.poll(() => document.activeElement).toBe(input); // Poll since Firefox can apply focus late on busy CI runners
+    await expect
+      .poll(() => document.activeElement, {
+        timeout: 2000,
+      })
+      .toBe(input); // Poll since Firefox can apply focus late on busy CI runners
   });
 
   it('ignores clicks outside .ds-search or on non-clear buttons', () => {
