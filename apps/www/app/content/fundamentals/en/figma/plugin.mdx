@@ -1,0 +1,48 @@
+---
+title: Designsystemet Figma plugin
+sidebar_title: Figma plugin
+description: Import your theme from the Theme Builder into Figma, as the variables and styles that the components in Designsystemet's Figma library use.
+date: 2026-10-14
+category: Figma
+color: yellow
+icon: PuzzlePieceIcon
+published: true
+order: 10
+search_terms: plugin, import, theme, variables, styles
+---
+
+<Alert data-color="info">
+The plugin isn't published in Figma Community yet. We'll let you know when it is.
+</Alert>
+
+The Designsystemet plugin imports your theme into a Figma file, as the variables and styles that the components in Designsystemet's Figma library use. It uses the same configuration file as the CLI, so design and code get the same values.
+
+## How to use it
+
+1. Set up your theme in the [Theme Builder](https://theme.designsystemet.no), click **Use theme**, and download or copy the configuration file.
+2. Open your copy of the [Designsystemet Figma library](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit), and open the Designsystemet plugin.
+3. Upload the configuration file under **Upload config**, or paste it under **Or paste the config**, and click **Import**.
+
+When you change your theme, import the new configuration file the same way. See [Build your theme](/en/fundamentals/start-here/own-theme) for the whole process, in Figma and in code.
+
+## What the plugin does
+
+- **Creates everything your theme needs.** Variable collections and modes for your themes, colour schemes and sizes, variables, text styles and effect styles.
+- **Updates what's already there.** Variables and styles are matched by name, so the layers that use them stay connected when you change your theme and import again.
+- **Keeps what you've made.** The plugin keeps track of what it creates, and only deletes what it created itself. Variables and styles you've added, or renamed and duplicated from the import, are kept, and the plugin lists the ones that aren't in the configuration file.
+- **Only changes what has changed.** Importing an updated configuration file only writes what's different, so importing again is quick, and an unchanged configuration file changes nothing.
+- **Matches your code.** Each variable shows the CSS variable it's built as in code, so developers see the right names in Dev Mode. Variables are also only suggested where they belong, such as colour variables for fills.
+- **Tells you what happened.** After the import, you get a list of what was created, updated and deleted, and of anything that couldn't be imported.
+
+## Good to know
+
+- Each theme, colour scheme and size is a mode in Figma, and how many modes a collection can have depends on your Figma plan. Check that yours allows enough for your configuration file.
+- The fonts in your theme must be available in Figma. If one isn't, the plugin stops before changing anything.
+- Text styles and effect styles can't have modes in Figma, so they get the values of the first theme, in the light colour scheme.
+- The plugin keeps variables, styles and modes it didn't create, such as the example themes from the Community file, and lists them after the import. Delete the ones you don't need.
+
+## Limitations
+
+The plugin imports what's in the configuration file: your colours and colour overrides, font family and border radius. Changes made directly in the Design Tokens can't be imported, since the plugin creates the variables from the configuration file.
+
+If you've changed the Design Tokens in ways the configuration file can't describe, you can [sync the Design Tokens with Tokens Studio](/en/fundamentals/figma/tokens-studio) instead.
