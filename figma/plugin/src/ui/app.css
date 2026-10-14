@@ -114,6 +114,12 @@ textarea {
   overflow-y: auto;
 }
 
+/* The plugin's version, last on the about view. */
+.about-version {
+  margin-top: auto;
+  color: var(--ds-color-neutral-text-subtle);
+}
+
 .home-view {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
