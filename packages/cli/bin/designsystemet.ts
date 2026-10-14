@@ -21,7 +21,7 @@ import { createTypes } from '../src/tokens/process/output/declarations.ts';
 import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import { isSameOrInside, realPath } from '../src/utils/paths.ts';
+import { isSameOrInside, protectedDirsInside, type ResolvedDir, realPath } from '../src/utils/paths.ts';
 import { DEFAULT_CONFIG_FILEPATH, getConfigFile, requireThemes } from './config.ts';
 import { DEFAULT_TOKENS_CREATE_DIR, makeTokenCommands } from './deprecated.ts';
 import { configOption, dryOption, verboseOption } from './options.ts';
@@ -113,6 +113,10 @@ program
     // `./tokens/`, or a path through a symlink) match.
     const resolveDir = (dir: string) => path.resolve(dsfs.outDir, dir);
     const resolveRealDir = (dir: string) => realPath(resolveDir(dir));
+    const resolveBothDir = async (dir: string): Promise<ResolvedDir> => ({
+      written: resolveDir(dir),
+      real: await resolveRealDir(dir),
+    });
     const regeneratedDirs = await Promise.all(
       config.output.flatMap((o) => (o.type === 'design-tokens' ? [resolveRealDir(o.dir)] : [])),
     );
@@ -121,21 +125,21 @@ program
     const inputDirs = (
       await Promise.all(
         config.output.flatMap((o) =>
-          (o.type === 'css' || o.type === 'types') && o.tokensDir !== undefined ? [resolveRealDir(o.tokensDir)] : [],
+          (o.type === 'css' || o.type === 'types') && o.tokensDir !== undefined ? [resolveBothDir(o.tokensDir)] : [],
         ),
       )
-    ).filter((dir) => !regeneratedDirs.includes(dir));
+    ).filter((dir) => !regeneratedDirs.includes(dir.real));
     // Directories of outputs that keep their existing files, which another output's cleaning must not delete.
     const keptDirs = await Promise.all(
-      config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir === false ? [resolveRealDir(o.dir)] : [])),
+      config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir === false ? [resolveBothDir(o.dir)] : [])),
     );
-    // Each directory to clean, with the path it is compared by.
-    const realDirsToClean = await Promise.all(dirsToClean.map(async (dir) => ({ dir, real: await realPath(dir) })));
+    // Each directory to clean, as written and with symlinks resolved.
+    const resolvedDirsToClean = await Promise.all(dirsToClean.map(resolveBothDir));
     const unsafeCleanError = findUnsafeClean({
-      dirsToClean: realDirsToClean.map(({ real }) => real),
+      dirsToClean: resolvedDirsToClean.map(({ real }) => real),
       configDir: await realPath(path.dirname(path.resolve(configFilePath))),
-      inputDirs,
-      keptDirs,
+      inputDirs: inputDirs.map(({ real }) => real),
+      keptDirs: keptDirs.map(({ real }) => real),
     });
     if (unsafeCleanError) {
       console.error(pc.redBright(unsafeCleanError));
@@ -144,13 +148,8 @@ program
 
     // Design tokens and kept outputs inside a cleaned directory, e.g. `designsystemet/design-tokens` inside the
     // `css` output's `designsystemet`, are left alone, and everything else in the directory is deleted.
-    for (const { dir, real } of realDirsToClean) {
-      // Letter case is ignored here, so no directory is missed on case-insensitive file systems. `cleanDir` matches
-      // the directories on disk, so a directory that only looks the same here is not kept on case-sensitive ones.
-      const keep = [...inputDirs, ...keptDirs].filter((protectedDir) =>
-        isSameOrInside(protectedDir.toLowerCase(), real.toLowerCase()),
-      );
-      await dsfs.cleanDir(dir, keep);
+    for (const dir of resolvedDirsToClean) {
+      await dsfs.cleanDir(dir.written, protectedDirsInside(dir, [...inputDirs, ...keptDirs]));
     }
 
     for (const output of sortedOutput) {

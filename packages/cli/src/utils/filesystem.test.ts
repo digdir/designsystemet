@@ -72,6 +72,24 @@ describe('removeAllExcept', () => {
     }
   });
 
+  // `designsystemet/design-tokens` can be a symlink to tokens outside `designsystemet`. The tokens are read through it.
+  it('keeps a kept directory that is a symlink, and what it points to', async () => {
+    const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
+    try {
+      await fs.writeFile(path.join(outside, 'color.json'), '');
+      await fs.symlink(outside, path.join(dir, 'design-tokens'), 'dir');
+      await write('theme.css');
+
+      await removeAllExcept(dir, [path.join(dir, 'design-tokens')]);
+
+      expect((await fs.lstat(path.join(dir, 'design-tokens'))).isSymbolicLink()).toBe(true);
+      expect(await fs.readdir(outside)).toEqual(['color.json']);
+      expect(await files()).toEqual([]);
+    } finally {
+      await fs.rm(outside, { recursive: true, force: true });
+    }
+  });
+
   // The output directory itself can be a symlink. Reading it would follow it and delete files outside it.
   it('does not follow the directory itself when it is a symlink', async () => {
     const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
