@@ -21,7 +21,7 @@ import { createTypes } from '../src/tokens/process/output/declarations.ts';
 import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import { isSameOrInside } from '../src/utils/paths.ts';
+import { isSameOrInside, realPath } from '../src/utils/paths.ts';
 import { DEFAULT_CONFIG_FILEPATH, getConfigFile, requireThemes } from './config.ts';
 import { DEFAULT_TOKENS_CREATE_DIR, makeTokenCommands } from './deprecated.ts';
 import { configOption, dryOption, verboseOption } from './options.ts';
@@ -109,21 +109,31 @@ program
     );
 
     // Check every directory before cleaning any, so nothing is deleted when one of them is unsafe.
-    // Paths are resolved, so differently written paths to the same directory (`tokens`, `./tokens/`) match.
+    // Paths are compared with symlinks resolved, so differently written paths to the same directory (`tokens`,
+    // `./tokens/`, or a path through a symlink) match.
     const resolveDir = (dir: string) => path.resolve(dsfs.outDir, dir);
-    const regeneratedDirs = config.output.flatMap((o) => (o.type === 'design-tokens' ? [resolveDir(o.dir)] : []));
+    const resolveRealDir = (dir: string) => realPath(resolveDir(dir));
+    const regeneratedDirs = await Promise.all(
+      config.output.flatMap((o) => (o.type === 'design-tokens' ? [resolveRealDir(o.dir)] : [])),
+    );
     // Existing design tokens that `css` and `types` outputs build from. Tokens in a `design-tokens` output's
     // directory are created again in this run, so cleaning them is safe.
-    const inputDirs = config.output
-      .flatMap((o) =>
-        (o.type === 'css' || o.type === 'types') && o.tokensDir !== undefined ? [resolveDir(o.tokensDir)] : [],
+    const inputDirs = (
+      await Promise.all(
+        config.output.flatMap((o) =>
+          (o.type === 'css' || o.type === 'types') && o.tokensDir !== undefined ? [resolveRealDir(o.tokensDir)] : [],
+        ),
       )
-      .filter((dir) => !regeneratedDirs.includes(dir));
+    ).filter((dir) => !regeneratedDirs.includes(dir));
     // Directories of outputs that keep their existing files, which another output's cleaning must not delete.
-    const keptDirs = config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir === false ? [resolveDir(o.dir)] : []));
+    const keptDirs = await Promise.all(
+      config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir === false ? [resolveRealDir(o.dir)] : [])),
+    );
+    // Each directory to clean, with the path it is compared by.
+    const realDirsToClean = await Promise.all(dirsToClean.map(async (dir) => ({ dir, real: await realPath(dir) })));
     const unsafeCleanError = findUnsafeClean({
-      dirsToClean,
-      configDir: path.dirname(path.resolve(configFilePath)),
+      dirsToClean: realDirsToClean.map(({ real }) => real),
+      configDir: await realPath(path.dirname(path.resolve(configFilePath))),
       inputDirs,
       keptDirs,
     });
@@ -134,11 +144,11 @@ program
 
     // Design tokens and kept outputs inside a cleaned directory, e.g. `designsystemet/design-tokens` inside the
     // `css` output's `designsystemet`, are left alone, and everything else in the directory is deleted.
-    for (const dir of dirsToClean) {
+    for (const { dir, real } of realDirsToClean) {
       // Letter case is ignored here, so no directory is missed on case-insensitive file systems. `cleanDir` matches
       // the directories on disk, so a directory that only looks the same here is not kept on case-sensitive ones.
       const keep = [...inputDirs, ...keptDirs].filter((protectedDir) =>
-        isSameOrInside(path.resolve(protectedDir).toLowerCase(), path.resolve(dir).toLowerCase()),
+        isSameOrInside(protectedDir.toLowerCase(), real.toLowerCase()),
       );
       await dsfs.cleanDir(dir, keep);
     }
@@ -163,7 +173,8 @@ program
         const tokensDir = output.tokensDir ?? designTokensOutput?.dir;
         // A dry run doesn't write the design tokens this run creates, so they can't be read back from disk.
         // Create the CSS from the themes instead, which gives the same result.
-        const tokensNotWritten = dry && tokensDir !== undefined && regeneratedDirs.includes(resolveDir(tokensDir));
+        const tokensNotWritten =
+          dry && tokensDir !== undefined && regeneratedDirs.includes(await resolveRealDir(tokensDir));
 
         if (tokensDir === undefined || tokensNotWritten) {
           await createCss({
@@ -191,7 +202,8 @@ program
         // Like CSS: build from `tokensDir`, or else from the `design-tokens` output, or else from the themes.
         const tokensDir = output.tokensDir ?? designTokensOutput?.dir;
         // Like CSS: a dry run doesn't write the design tokens this run creates, so create the types from the themes.
-        const tokensNotWritten = dry && tokensDir !== undefined && regeneratedDirs.includes(resolveDir(tokensDir));
+        const tokensNotWritten =
+          dry && tokensDir !== undefined && regeneratedDirs.includes(await resolveRealDir(tokensDir));
 
         // All themes have the same color names (checked during validation), so the first theme is enough.
         const files =
