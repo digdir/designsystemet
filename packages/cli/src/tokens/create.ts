@@ -1,3 +1,4 @@
+import { severityColorNames } from '../schemas/defaults.ts';
 import { generate$Designsystemet } from './create/generators/$designsystemet.ts';
 import { generate$Metadata } from './create/generators/$metadata.ts';
 import { generate$Themes } from './create/generators/$themes.ts';
@@ -20,11 +21,33 @@ export const getTokenSetDimensions = (theme: Pick<Theme, 'size' | 'typography'>)
   typographies: Object.keys(theme.typography.fonts),
 });
 
-export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDimensions) => {
+/**
+ * Every color in the config, across all themes: each theme's colors in config order, then the severity colors last,
+ * as in each theme. Themes can have different colors; every theme still gets tokens for all of them, see
+ * {@link createTokens}.
+ */
+export const getColorNames = (themes: Record<string, Pick<Theme, 'colors'>>): string[] => {
+  const names = new Set(Object.values(themes).flatMap((theme) => Object.keys(theme.colors)));
+  const isSeverity = (name: string) => (severityColorNames as string[]).includes(name);
+  return [...[...names].filter((name) => !isSeverity(name)), ...[...names].filter(isSeverity)];
+};
+
+/**
+ * Creates a theme's token sets.
+ *
+ * @param colorNames Every color in the config, across all themes (see {@link getColorNames}). The shared token sets
+ * (`semantic/color/*`, `semantic/style`) and the theme's `themes/<name>` set get every one of them, so themes can
+ * be switched with modes in Figma and with `data-color` in CSS. A color the theme doesn't have uses the theme's
+ * first color instead. Defaults to the theme's own colors.
+ */
+export const createTokens = async (
+  theme: Theme,
+  tokenSetDimensions: TokenSetDimensions,
+  colorNames: string[] = Object.keys(theme.colors),
+) => {
   const { typography, name, borderRadius, overrides, size, shadow, opacity, borderWidth } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
 
-  const colorNames = Object.keys(theme.colors);
   const colorTokens = Object.entries(generateColorTokens(colorNames, name));
 
   // The first typography set provides the theme font-weight references shared across sets.
@@ -52,7 +75,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, theme.colors, overrides)],
     ]),
-    [`themes/${name}`, generateTheme(colorNames, name, borderRadius, primaryTypography)],
+    [`themes/${name}`, generateTheme(colorNames, name, borderRadius, primaryTypography, Object.keys(theme.colors))],
     ...colorTokens.map(([colorName, colorSetTokens]): [string, TokenSet] => [
       `semantic/color/${colorName}`,
       colorSetTokens,

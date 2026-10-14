@@ -14,7 +14,13 @@ import {
   externalConfigSchema,
 } from '../src/schemas/schema.ts';
 import { buildTokens, createTypesFromTokens } from '../src/tokens/build.ts';
-import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
+import {
+  createTokens,
+  getColorNames,
+  getTokenSetDimensions,
+  systemTokenToFiles,
+  tokenSetsToFiles,
+} from '../src/tokens/create.ts';
 import { formatThemeCSS } from '../src/tokens/format.ts';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
 import { createTypes } from '../src/tokens/process/output/declarations.ts';
@@ -287,12 +293,13 @@ async function createDesignTokens({
 
   const files: OutputFile[] = [];
 
-  // Pick colors and size from first theme since we have a constraint they should be the same across themes.
-  const colorNames = Object.keys(themes[themeNames[0]].colors);
+  // Every color across the themes, which can have different colors. Size comes from the first theme,
+  // since it must be the same across themes.
+  const colorNames = getColorNames(themes);
   const tokenSetDimensions = getTokenSetDimensions(themes[themeNames[0]]);
 
   for (const [name, themeConfig] of Object.entries(themes)) {
-    const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme, tokenSetDimensions);
+    const { tokenSets } = await createTokens({ name, ...themeConfig } as Theme, tokenSetDimensions, colorNames);
     files.push(...tokenSetsToFiles(tokenSets));
   }
 
@@ -371,9 +378,11 @@ async function createCss({
   }
 
   const files: OutputFile[] = [];
+  // Every color across the themes, so each theme's CSS has every data-color, with fallbacks for its missing ones.
+  const colorNames = getColorNames(themes);
 
   for (const [name, themeConfig] of Object.entries(themes)) {
-    const themeCSSFiles = await formatThemeCSS({ name, ...themeConfig } as Theme, { verbose, tailwind });
+    const themeCSSFiles = await formatThemeCSS({ name, ...themeConfig } as Theme, { verbose, tailwind }, colorNames);
     files.push(...themeCSSFiles);
   }
 
