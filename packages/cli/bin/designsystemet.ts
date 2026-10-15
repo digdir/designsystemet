@@ -473,9 +473,11 @@ async function findUnsafeClean({
       return `Output directory ${show(dir)} is the ${pc.blue('tokensDir')} ${show(inputDir.dir)} that design tokens are read from, so cleaning it would delete them before they are used. ${fix}`;
     }
 
-    const keptDir = keptDirs.find((kept) => isSameExistingDir(kept, location));
+    // Checked also before the directory exists, since the config itself is contradictory, not just this run.
+    const keptDir = keptDirs.find((kept) => isSameLocation(kept.location, location));
     if (keptDir) {
-      return `Output directory ${show(dir)} is also ${show(keptDir.dir)}, used by an output with ${pc.blue('cleanDir')} set to ${pc.blue('false')}, so cleaning it would delete files that should be kept. Use separate directories, or the same ${pc.blue('cleanDir')} for both outputs.`;
+      const also = keptDir.dir === dir ? '' : ` (${show(keptDir.dir)})`;
+      return `Output directory ${show(dir)} is also used${also} by an output with ${pc.blue('cleanDir')} set to ${pc.blue('false')}, so cleaning it would delete files that should be kept. Use separate directories, or the same ${pc.blue('cleanDir')} for both outputs.`;
     }
 
     for (const other of [...inputDirs, ...keptDirs, ...outputDirs]) {

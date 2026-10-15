@@ -73,12 +73,12 @@ describe('new output field migration', () => {
   });
 
   // `cleanDir` defaults to `true`, so dropping `clean: false` would delete directories the user opted out of cleaning.
-  it('carries an explicit clean: false over as cleanDir: false on every output that is cleaned', () => {
+  it('carries an explicit clean: false over as cleanDir: false on every output', () => {
     expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens", "clean": false }'))).toEqual({
       output: [
         { type: 'design-tokens', dir: 'tokens', cleanDir: false },
         { type: 'css', dir: 'design-tokens-build', tokensDir: 'tokens', cleanDir: false },
-        { type: 'types', dir: 'design-tokens-build', tokensDir: 'tokens' },
+        { type: 'types', dir: 'design-tokens-build', tokensDir: 'tokens', cleanDir: false },
       ],
     });
   });
@@ -88,7 +88,7 @@ describe('new output field migration', () => {
       output: [
         { type: 'design-tokens', dir: 'design-tokens', cleanDir: false },
         { type: 'css', dir: 'design-tokens-build', cleanDir: false },
-        { type: 'types', dir: 'design-tokens-build' },
+        { type: 'types', dir: 'design-tokens-build', cleanDir: false },
       ],
     };
 
@@ -174,14 +174,14 @@ describe('new output field migration', () => {
   });
 
   // Cleaning `design-tokens-build` would delete the config file in it, which the CLI refuses to do.
-  it("doesn't clean the CSS directory when the config file is in it", () => {
+  it("doesn't clean the CSS and types directory when the config file is in it", () => {
     const context = { configFilePath: 'design-tokens-build/designsystemet.config.json', cwd: '/project' };
 
     expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens" }', context))).toEqual({
       output: [
         { type: 'design-tokens', dir: '../tokens' },
         { type: 'css', dir: '.', tokensDir: '../tokens', cleanDir: false },
-        { type: 'types', dir: '.', tokensDir: '../tokens' },
+        { type: 'types', dir: '.', tokensDir: '../tokens', cleanDir: false },
       ],
     });
   });

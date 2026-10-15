@@ -26,6 +26,7 @@ const cssOutputSchema = z.object({
 const typesOutputSchema = z.object({
   type: z.literal('types').describe('The type of output file'),
   dir: z.string().default('designsystemet').describe('The output directory'),
+  cleanDir: z.boolean().default(true).describe('Whether to clean the output directory before generating files'),
   tokensDir: z
     .string()
     .optional()

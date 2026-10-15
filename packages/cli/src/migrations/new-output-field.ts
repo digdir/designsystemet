@@ -123,14 +123,14 @@ export const toOutput = (
 
   // When the config file is in `buildDir`, or below it, cleaning `buildDir` would delete the config file.
   const buildDirHasConfig = buildDir.split('/').every((part) => part === '.' || part === '..');
-  const cssCleanDir = keepFiles || buildDirHasConfig ? { cleanDir: false } : {};
+  // CSS and types share `buildDir`, so they must clean it the same way.
+  const buildCleanDir = keepFiles || buildDirHasConfig ? { cleanDir: false } : {};
 
   return [
     { type: 'design-tokens' as const, dir: isDefaultDir ? defaultOutDir : outDir, ...cleanDir },
     // CSS and types are built from the design tokens, so they must read them from the same directory.
-    { type: 'css' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...cssCleanDir },
-    // `types` outputs are never cleaned, so they have no `cleanDir`.
-    { type: 'types' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }) },
+    { type: 'css' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...buildCleanDir },
+    { type: 'types' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...buildCleanDir },
   ];
 };
 

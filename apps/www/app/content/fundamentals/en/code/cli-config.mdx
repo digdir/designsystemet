@@ -115,6 +115,7 @@ All paths are relative to the config file.
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"types"` | Yes | | The output type. |
 | dir | String | No | `designsystemet` | The folder where type declarations should be saved. |
+| cleanDir | Boolean | No | `true` | Delete the files in the folder before creating type declarations. See [Cleaning](#cleaning). |
 | tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build type declarations from. If neither is set, type declarations are created directly from the themes. |
 
 Creates `types.d.ts`, which adds your theme's colour names to the types in `@digdir/designsystemet-types`, so props like `data-color` only accept your colours.
@@ -175,7 +176,7 @@ If you'd rather do it manually, replace `"outDir": "<path>"` with:
 
 `design-tokens-build` is where `tokens build` saved CSS by default, so your imports keep working. Use the folder you gave `tokens build` with `--out-dir` if you set one. Paths in `output` are relative to the config file, while `tokens build` used paths relative to where it was run, so adjust them if those are different folders.
 
-`clean` can be removed, since `cleanDir` is `true` by default. If you had `"clean": false`, add `"cleanDir": false` to the `design-tokens` and `css` outputs instead, so the folders are not deleted. The `types` output never cleans its folder.
+`clean` can be removed, since `cleanDir` is `true` by default. If you had `"clean": false`, add `"cleanDir": false` to each output instead, so the folders are not deleted.
 
 A config file without `outDir` and `clean` isn't migrated. It gets the new defaults: only CSS, in `designsystemet`. To keep creating design tokens, CSS and types in the same folders as `tokens create` and `tokens build` did, add the `output` above with `design-tokens` as `<path>`.
 

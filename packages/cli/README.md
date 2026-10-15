@@ -96,7 +96,7 @@ Use `output` to choose what is created and where. Each item is either an output 
     { "type": "design-tokens", "dir": "../path/to/design-tokens" },
     // defaults: dir "designsystemet", tokensDir from the design-tokens output, cleanDir true, tailwind false
     { "type": "css", "dir": "../path/to/css", "tokensDir": "../path/to/design-tokens" },
-    // defaults: dir "designsystemet", tokensDir from the design-tokens output
+    // defaults: dir "designsystemet", tokensDir from the design-tokens output, cleanDir true
     { "type": "types", "dir": "../path/to/types", "tokensDir": "../path/to/design-tokens" },
   ],
 }

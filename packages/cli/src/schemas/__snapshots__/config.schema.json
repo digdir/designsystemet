@@ -93,6 +93,11 @@
                     "description": "The output directory",
                     "type": "string"
                   },
+                  "cleanDir": {
+                    "default": true,
+                    "description": "Whether to clean the output directory before generating files",
+                    "type": "boolean"
+                  },
                   "tokensDir": {
                     "description": "The directory containing the design tokens to build type declarations from. Defaults to `dir` of the `design-tokens` output. If neither is set, type declarations are created directly from the themes",
                     "type": "string"

@@ -117,6 +117,7 @@ Alle stiar er relative til config fila.
 | ---- | ---- | ------- | -------- | ----------- |
 | type | `"types"` | Ja | | Output-typen. |
 | dir | Streng | Nei | `designsystemet` | Mappa der typedeklarasjonane skal lagrast. |
+| cleanDir | Boolean | Nei | `true` | Slett filene i mappa før typedeklarasjonane blir laga. Sjå [Rydding](#rydding). |
 | tokensDir | Streng | Nei | `dir` i `design-tokens`-outputen | Mappa med design tokens som typedeklarasjonane skal byggast frå. Er ingen av dei sette, blir typedeklarasjonane laga direkte frå tema. |
 
 Lagar `types.d.ts`, som legg fargenamna i temaet ditt til typane i `@digdir/designsystemet-types`, slik at til dømes `data-color` berre godtek fargane dine.
@@ -177,7 +178,7 @@ Vil du heller gjere det manuelt, byt ut `"outDir": "<sti>"` med:
 
 `design-tokens-build` er der `tokens build` lagra CSS som standard, så importane dine held fram med å verke. Bruk mappa du gav `tokens build` med `--out-dir` om du sette ei. Stiar i `output` er relative til config-fila, medan `tokens build` brukte stiar relative til der det blei køyrt, så juster dei om det er ulike mapper.
 
-`clean` kan fjernast, sidan `cleanDir` er `true` som standard. Hadde du `"clean": false`, legg du i staden til `"cleanDir": false` på `design-tokens`- og `css`-outputen, slik at mappene ikkje blir sletta. `types`-outputen ryddar aldri mappa si.
+`clean` kan fjernast, sidan `cleanDir` er `true` som standard. Hadde du `"clean": false`, legg du i staden til `"cleanDir": false` på kvar output, slik at mappene ikkje blir sletta.
 
 Ei config-fil utan `outDir` og `clean` blir ikkje migrert. Ho får dei nye standardverdiane: berre CSS, i `designsystemet`. For å halde fram med å lage design tokens, CSS og typar i dei same mappene som `tokens create` og `tokens build` gjorde, legg til `output` over med `design-tokens` som `<sti>`.
 
