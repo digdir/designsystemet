@@ -78,8 +78,8 @@ Skriv en output som et objekt i stedet for et navn for å endre innstillingene, 
 Greit å vite:
 
 - **Design tokens er valgfrie.** Du trenger dem ikke for å få temaet ditt inn i Figma, siden den nye pluginen importerer temaene dine direkte fra config-filen. Legg til `"design-tokens"` i `output` for også å lage dem, så blir CSS-en og typene bygget fra dem.
-- **Har du endret design tokens** på måter config-filen ikke kan beskrive, bygger du CSS-en fra dem med `tokensDir` og [synkroniserer dem med Tokens Studio](/no/fundamentals/figma/tokens-studio).
-- **Hver output tømmer mappen sin** før den lager filene sine. Sett `"cleanDir": false` på en output for å beholde filene som allerede ligger der.
+- **Vil du konfigurere Designsystemet på måter config-filen ikke støtter ennå**, kan du endre hva du vil i Designsystemet ved å redigere design tokens. Bygg CSS-en fra dem med `tokensDir`, og [synkroniser dem med Figma med Tokens Studio](/no/fundamentals/figma/tokens-studio).
+- **Ingenting blir slettet som standard.** Filer som allerede ligger i mappen til en output, blir beholdt. Sett `"cleanDir": true` på en output der mappen bare har filer CLI-et lager, for også å fjerne filer det ikke lenger lager.
 - **CSS-en har ikke lenger typedeklarasjoner.** Legg til `"types"` i `output` for å få dem, som i eksempelet over.
 - **Med `"tailwind": "v4"`** bruker Tailwind-klassene `--ds-*`-variablene direkte, så `data-color`, `data-color-scheme` og `data-size` gjelder for dem også. `"v3"` lager den samme Tailwind-filen som før.
 
@@ -91,7 +91,7 @@ Se [dokumentasjonen for CLI-et](/no/fundamentals/code/cli-config#output) for all
 
 Du trenger ikke endre config-filen for hånd. Når du kjører `designsystemet` med en config-fil som bruker `outDir` eller `clean`, tilbyr CLI-et å oppdatere den til `output` for deg. For å gjøre det selv, se [migrering fra outDir og clean](/no/fundamentals/code/cli-config#migrere-frå-outdir-og-clean).
 
-Den oppdaterte config-filen virker som før: den lager fortsatt design tokens, og lagrer CSS og typer i `design-tokens-build`, så importene dine fortsetter å virke. Når du har sjekket at du ikke trenger design tokens, kan du fjerne `"design-tokens"` fra `output`.
+Den oppdaterte config-filen virker som før: den lager fortsatt design tokens, rydder mappen deres hvis du hadde `"clean": true`, og lagrer CSS og typer i `design-tokens-build`, så importene dine fortsetter å virke. Når du har sjekket at du ikke trenger design tokens, kan du fjerne `"design-tokens"` fra `output`.
 
 <Contributors
   authors={[

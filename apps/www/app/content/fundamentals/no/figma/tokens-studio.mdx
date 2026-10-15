@@ -1,7 +1,7 @@
 ---
 title: Synkroniser Design Tokens med Tokens Studio
 sidebar_title: Tokens Studio
-description: Hvis du har endret Design Tokens på måter config-filen ikke kan beskrive, synkroniserer du dem med Figma med Tokens Studio i stedet for Designsystemet-pluginen.
+description: Hvis du vil konfigurere Designsystemet på måter config-filen ikke støtter ennå, endrer du Design Tokens og synkroniserer dem med Figma med Tokens Studio.
 date: 2026-10-13
 category: Figma
 color: yellow
@@ -11,7 +11,7 @@ order: 45
 search_terms: tokens studio, design tokens, synkronisering
 ---
 
-Hvis du har endret Design Tokens på måter config-filen ikke kan beskrive, kan ikke [Designsystemet-pluginen](/no/fundamentals/figma/plugin) hente de endringene inn i Figma. Da kan du i stedet lagre Design Tokens i repoet ditt og synkronisere dem med Figma med pluginen Tokens Studio.
+Hvis du vil konfigurere Designsystemet på måter config-filen ikke støtter ennå, kan du endre hva du vil i Designsystemet ved å redigere Design Tokens. [Designsystemet-pluginen](/no/fundamentals/figma/plugin) kan ikke hente de endringene inn i Figma, så da synkroniserer du Design Tokens med Figma med pluginen Tokens Studio i stedet.
 
 Dette bygger på [Bygg ditt tema](/no/fundamentals/start-here/own-theme), med config-filen din i et Git repository.
 
@@ -21,7 +21,7 @@ Dette bygger på [Bygg ditt tema](/no/fundamentals/start-here/own-theme), med co
 
 ```json
 {
-  "output": ["design-tokens", "css", "types"],
+  "output": ["design-tokens", "css"],
   "themes": {
     "theme": {
       "colors": {
@@ -41,16 +41,15 @@ npx @digdir/designsystemet@latest
 
 Dette lagrer Design Tokens i en mappe som heter `designsystemet/design-tokens`. Det er her du gjør endringene dine i dem.
 
-2. Bygg CSS-en og typene fra Design Tokens dine, i stedet for å lage Design Tokens på nytt fra config-filen. Endre `output` til:
+2. Bygg CSS-en fra Design Tokens dine, i stedet for å lage Design Tokens på nytt fra config-filen. Endre `output` til:
 
 ```json
 "output": [
-  { "type": "css", "tokensDir": "designsystemet/design-tokens" },
-  { "type": "types", "tokensDir": "designsystemet/design-tokens" }
+  { "type": "css", "tokensDir": "designsystemet/design-tokens" }
 ]
 ```
 
-Kjør CLI-et på nytt. Det bygger CSS-en og typene fra Design Tokens dine, og lar Design Tokens være som de er. Push endringene til ditt repo.
+Kjør CLI-et på nytt. Det bygger CSS-en fra Design Tokens dine, og lar Design Tokens være som de er. Push endringene til ditt repo.
 
 **Husk å kjøre CLI-et hver gang du endrer Design Tokens.**
 
@@ -111,4 +110,13 @@ Når Design Tokens oppdateres i koden, kan du enkelt hente de nye verdiene inn i
 
 ## Når du endrer temaet
 
-Når du lager Design Tokens på nytt fra config-filen, blir endringene dine i dem erstattet. For å hente inn endringer fra Temabyggeren, som nye farger, legger du `"design-tokens"` tilbake i `output` og kjører CLI-et. Deretter gjør du endringene dine i Design Tokens på nytt, for eksempel ved å gjenopprette dem med Git, og endrer `output` tilbake som i steg 2.
+Når du lager Design Tokens på nytt fra config-filen, blir endringene dine i dem erstattet. For å hente inn endringer fra Temabyggeren, som nye farger, legger du `design-tokens`-outputen tilbake i `output`, med `cleanDir` satt til `true`, og kjører CLI-et:
+
+```json
+"output": [
+  { "type": "design-tokens", "cleanDir": true },
+  { "type": "css", "tokensDir": "designsystemet/design-tokens" }
+]
+```
+
+`cleanDir` fjerner Design Tokens for farger du har fjernet. Deretter gjør du endringene dine i Design Tokens på nytt, for eksempel ved å gjenopprette dem med Git, og endrer `output` tilbake som i steg 2.
