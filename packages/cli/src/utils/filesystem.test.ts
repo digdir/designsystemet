@@ -90,22 +90,34 @@ describe('removeAllExcept', () => {
     }
   });
 
-  // The output directory itself can be a symlink. Reading it would follow it and delete files outside it.
-  it('does not follow the directory itself when it is a symlink', async () => {
+  // The output directory itself can be a symlink, to where the output is wanted. That is the directory to clean.
+  it('cleans the directory that the directory itself points to when it is a symlink', async () => {
     const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
     try {
       await fs.mkdir(path.join(outside, 'tokens'));
-      await fs.writeFile(path.join(outside, 'sibling.css'), '');
+      await fs.writeFile(path.join(outside, 'old.css'), '');
       const link = path.join(dir, 'output');
       await fs.symlink(outside, link, 'dir');
 
       await removeAllExcept(link, [path.join(link, 'tokens')]);
 
       expect((await fs.lstat(link)).isSymbolicLink()).toBe(true);
-      expect((await fs.readdir(outside)).sort()).toEqual(['sibling.css', 'tokens']);
+      expect(await fs.readdir(outside)).toEqual(['tokens']);
     } finally {
       await fs.rm(outside, { recursive: true, force: true });
     }
+  });
+
+  // `tokens` links to `output/nested/tokens`. The directories on the way to it on disk are kept too.
+  it('keeps a kept directory written as a path through a symlink outside the directory', async () => {
+    await write('output/nested/tokens/color.json');
+    await write('output/nested/old.css');
+    await write('output/theme.css');
+    await fs.symlink(path.join(dir, 'output/nested/tokens'), path.join(dir, 'tokens'), 'dir');
+
+    await removeAllExcept(path.join(dir, 'output'), [path.join(dir, 'tokens')]);
+
+    expect(await files()).toEqual(['output/nested/tokens/color.json']);
   });
 
   it('deletes symlinks without following them when nothing below them is kept', async () => {

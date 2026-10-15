@@ -21,7 +21,7 @@ import { createTypes } from '../src/tokens/process/output/declarations.ts';
 import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import { isSameOrInside, protectedDirsInside, type ResolvedDir, realPath } from '../src/utils/paths.ts';
+import { isReachedThrough, isSameLocation, type Location, locate } from '../src/utils/paths.ts';
 import { DEFAULT_CONFIG_FILEPATH, getConfigFile, requireThemes } from './config.ts';
 import { DEFAULT_TOKENS_CREATE_DIR, makeTokenCommands } from './deprecated.ts';
 import { configOption, dryOption, verboseOption } from './options.ts';
@@ -102,44 +102,43 @@ program
       requireThemes(config);
     }
 
+    // Directories are compared by what they are on disk, not by how their paths are written (see `locate`). So
+    // `tokens`, `./tokens/`, `Tokens` on a case-insensitive file system, and a path through a symlink all match.
+    const resolveDir = (dir: string) => path.resolve(dsfs.outDir, dir);
+    const locateDir = async (dir: string): Promise<LocatedDir> => {
+      const resolved = resolveDir(dir);
+      return { dir: resolved, location: await locate(resolved) };
+    };
+    const regeneratedDirs = await Promise.all(
+      config.output.flatMap((o) => (o.type === 'design-tokens' ? [locate(resolveDir(o.dir))] : [])),
+    );
+    const isRegenerated = (location: Location) => regeneratedDirs.some((dir) => isSameLocation(dir, location));
+
     // Clean every output directory once, before any output is created. Cleaning as part of each output would
     // delete what earlier outputs wrote when they share a directory, which makes the outputs depend on their order.
-    const dirsToClean = R.uniq(
-      config.output.filter((o) => 'cleanDir' in o && o.cleanDir).map((o) => path.join(dsfs.outDir, o.dir)),
-    );
-
-    // Check every directory before cleaning any, so nothing is deleted when one of them is unsafe.
-    // Paths are compared with symlinks resolved, so differently written paths to the same directory (`tokens`,
-    // `./tokens/`, or a path through a symlink) match.
-    const resolveDir = (dir: string) => path.resolve(dsfs.outDir, dir);
-    const resolveRealDir = (dir: string) => realPath(resolveDir(dir));
-    const resolveBothDir = async (dir: string): Promise<ResolvedDir> => ({
-      written: resolveDir(dir),
-      real: await resolveRealDir(dir),
-    });
-    const regeneratedDirs = await Promise.all(
-      config.output.flatMap((o) => (o.type === 'design-tokens' ? [resolveRealDir(o.dir)] : [])),
-    );
+    const dirsToClean = (
+      await Promise.all(config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir ? [locateDir(o.dir)] : [])))
+    ).filter((dir, i, dirs) => dirs.findIndex((other) => isSameLocation(other.location, dir.location)) === i);
     // Existing design tokens that `css` and `types` outputs build from. Tokens in a `design-tokens` output's
     // directory are created again in this run, so cleaning them is safe.
     const inputDirs = (
       await Promise.all(
         config.output.flatMap((o) =>
-          (o.type === 'css' || o.type === 'types') && o.tokensDir !== undefined ? [resolveBothDir(o.tokensDir)] : [],
+          (o.type === 'css' || o.type === 'types') && o.tokensDir !== undefined ? [locateDir(o.tokensDir)] : [],
         ),
       )
-    ).filter((dir) => !regeneratedDirs.includes(dir.real));
+    ).filter((dir) => !isRegenerated(dir.location));
     // Directories of outputs that keep their existing files, which another output's cleaning must not delete.
     const keptDirs = await Promise.all(
-      config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir === false ? [resolveBothDir(o.dir)] : [])),
+      config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir === false ? [locateDir(o.dir)] : [])),
     );
-    // Each directory to clean, as written and with symlinks resolved.
-    const resolvedDirsToClean = await Promise.all(dirsToClean.map(resolveBothDir));
-    const unsafeCleanError = findUnsafeClean({
-      dirsToClean: resolvedDirsToClean.map(({ real }) => real),
-      configDir: await realPath(path.dirname(path.resolve(configFilePath))),
-      inputDirs: inputDirs.map(({ real }) => real),
-      keptDirs: keptDirs.map(({ real }) => real),
+
+    // Check every directory before cleaning any, so nothing is deleted when one of them is unsafe.
+    const unsafeCleanError = await findUnsafeClean({
+      dirsToClean,
+      configFile: path.resolve(configFilePath),
+      inputDirs,
+      keptDirs,
     });
     if (unsafeCleanError) {
       console.error(pc.redBright(unsafeCleanError));
@@ -148,8 +147,12 @@ program
 
     // Design tokens and kept outputs inside a cleaned directory, e.g. `designsystemet/design-tokens` inside the
     // `css` output's `designsystemet`, are left alone, and everything else in the directory is deleted.
-    for (const dir of resolvedDirsToClean) {
-      await dsfs.cleanDir(dir.written, protectedDirsInside(dir, [...inputDirs, ...keptDirs]));
+    for (const { dir, location } of dirsToClean) {
+      const keep: string[] = [];
+      for (const protectedDir of [...inputDirs, ...keptDirs]) {
+        if (await isReachedThrough(protectedDir.dir, location)) keep.push(protectedDir.dir);
+      }
+      await dsfs.emptyDir(dir, keep);
     }
 
     for (const output of sortedOutput) {
@@ -172,8 +175,7 @@ program
         const tokensDir = output.tokensDir ?? designTokensOutput?.dir;
         // A dry run doesn't write the design tokens this run creates, so they can't be read back from disk.
         // Create the CSS from the themes instead, which gives the same result.
-        const tokensNotWritten =
-          dry && tokensDir !== undefined && regeneratedDirs.includes(await resolveRealDir(tokensDir));
+        const tokensNotWritten = dry && tokensDir !== undefined && isRegenerated(await locate(resolveDir(tokensDir)));
 
         if (tokensDir === undefined || tokensNotWritten) {
           await createCss({
@@ -201,8 +203,7 @@ program
         // Like CSS: build from `tokensDir`, or else from the `design-tokens` output, or else from the themes.
         const tokensDir = output.tokensDir ?? designTokensOutput?.dir;
         // Like CSS: a dry run doesn't write the design tokens this run creates, so create the types from the themes.
-        const tokensNotWritten =
-          dry && tokensDir !== undefined && regeneratedDirs.includes(await resolveRealDir(tokensDir));
+        const tokensNotWritten = dry && tokensDir !== undefined && isRegenerated(await locate(resolveDir(tokensDir)));
 
         // All themes have the same color names (checked during validation), so the first theme is enough.
         const files =
@@ -405,38 +406,43 @@ async function createCss({
   console.log(`\n✅ Finished creating CSS`);
 }
 
+/** A directory as an absolute path, and where it is on disk. */
+type LocatedDir = { dir: string; location: Location };
+
 /**
  * Returns an error message when cleaning `dirsToClean` would delete something it shouldn't: the config file,
  * existing design tokens in `inputDirs` that an output builds from, or files in `keptDirs` that an output keeps.
  * Design tokens and kept directories inside a cleaned directory are skipped when it's cleaned, so only a cleaned
- * directory that is one of them is unsafe.
+ * directory that is one of them is unsafe. The config file is found however it is reached, also through a symlink.
  */
-function findUnsafeClean({
+async function findUnsafeClean({
   dirsToClean,
-  configDir,
+  configFile,
   inputDirs,
   keptDirs,
 }: {
-  dirsToClean: string[];
-  configDir: string;
-  inputDirs: string[];
-  keptDirs: string[];
-}): string | undefined {
+  dirsToClean: LocatedDir[];
+  configFile: string;
+  inputDirs: LocatedDir[];
+  keptDirs: LocatedDir[];
+}): Promise<string | undefined> {
+  const configDir = path.dirname(configFile);
   const toConfigRelative = (dir: string) => pc.blue(path.relative(configDir, dir) || '.');
   const fix = `Use another ${pc.blue('dir')}, or set ${pc.blue('cleanDir')} to ${pc.blue('false')} for that output.`;
+  // A directory that doesn't exist yet has no files to delete.
+  const isSameExistingDir = (dir: LocatedDir, location: Location) =>
+    dir.location.missing.length === 0 && isSameLocation(dir.location, location);
 
-  for (const dir of dirsToClean) {
-    if (isSameOrInside(configDir, dir)) {
+  for (const { dir, location } of dirsToClean) {
+    if (await isReachedThrough(configFile, location)) {
       return `Output directory ${toConfigRelative(dir)} contains the config file, so cleaning it would delete the config file. ${fix}`;
     }
 
-    const inputDir = inputDirs.find((input) => path.resolve(input) === path.resolve(dir));
-    if (inputDir) {
+    if (inputDirs.some((input) => isSameExistingDir(input, location))) {
       return `Output directory ${toConfigRelative(dir)} has the design tokens that are built from, so cleaning it would delete them before they are used. ${fix}`;
     }
 
-    const keptDir = keptDirs.find((kept) => path.resolve(kept) === path.resolve(dir));
-    if (keptDir) {
+    if (keptDirs.some((kept) => isSameExistingDir(kept, location))) {
       return `Output directory ${toConfigRelative(dir)} is also used by an output with ${pc.blue('cleanDir')} set to ${pc.blue('false')}, so cleaning it would delete files that should be kept. Use separate directories, or the same ${pc.blue('cleanDir')} for both outputs.`;
     }
   }
