@@ -209,6 +209,38 @@ describe('removeAllExcept', () => {
     expect(await files()).toEqual(['tokens/color.json']);
   });
 
+  // `output/link` points into `locked`, which can't be read. Whether the kept `output/link` is reached through it
+  // can't be known, so nothing is deleted.
+  it.skipIf(process.platform === 'win32' || process.getuid?.() === 0)(
+    "stops without deleting anything when a path can't be looked up",
+    async () => {
+      await fs.mkdir(path.join(dir, 'locked/tokens'), { recursive: true });
+      await write('output/theme.css');
+      await fs.symlink(path.join(dir, 'locked/tokens'), path.join(dir, 'output/link'), 'dir');
+      await fs.chmod(path.join(dir, 'locked'), 0o000);
+      try {
+        await expect(removeAllExcept(path.join(dir, 'output'), [path.join(dir, 'output/link')])).rejects.toThrow(
+          /EACCES/,
+        );
+        expect((await fs.lstat(path.join(dir, 'output/link'))).isSymbolicLink()).toBe(true);
+        expect((await fs.stat(path.join(dir, 'output/theme.css'))).isFile()).toBe(true);
+      } finally {
+        await fs.chmod(path.join(dir, 'locked'), 0o755);
+      }
+    },
+  );
+
+  it('deletes symlinks that point nowhere or to each other', async () => {
+    await fs.mkdir(path.join(dir, 'output'));
+    await fs.symlink(path.join(dir, 'missing'), path.join(dir, 'output/dangling'), 'dir');
+    await fs.symlink(path.join(dir, 'output/b'), path.join(dir, 'output/a'), 'dir');
+    await fs.symlink(path.join(dir, 'output/a'), path.join(dir, 'output/b'), 'dir');
+
+    await removeAllExcept(path.join(dir, 'output'), [path.join(dir, 'output/a/tokens')]);
+
+    expect(await fs.readdir(path.join(dir, 'output'))).toEqual([]);
+  });
+
   it('deletes everything when nothing is kept', async () => {
     await write('theme.css');
     await write('old/file.css');

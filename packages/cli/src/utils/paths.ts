@@ -15,12 +15,23 @@ export const isSameOrInside = (dir: string, parent: string): boolean => {
 /** Identifies a file or directory on disk, however its path is written: letter case, `..`, or a symlink to it. */
 export const fileId = (stats: BigIntStats) => `${stats.dev}:${stats.ino}`;
 
+/**
+ * Whether `error` means that a path doesn't exist: it, or a directory on the way to it, is missing, a part of the way
+ * is a file, or the way is a cycle of symlinks that leads nowhere. Other errors, such as missing permissions, mean
+ * that what is there can't be known. Those are thrown, so cleaning stops instead of deleting what it should keep.
+ */
+export const isNotFound = (error: unknown): boolean => {
+  const code = (error as NodeJS.ErrnoException).code;
+  return code === 'ENOENT' || code === 'ENOTDIR' || code === 'ELOOP';
+};
+
 /** The identity of `file` on disk, following symlinks, or `undefined` when it doesn't exist. */
 export const statId = async (file: string): Promise<string | undefined> => {
   try {
     return fileId(await fs.stat(file, { bigint: true }));
-  } catch {
-    return undefined;
+  } catch (error) {
+    if (isNotFound(error)) return undefined;
+    throw error;
   }
 };
 
@@ -46,7 +57,8 @@ export async function locate(file: string): Promise<Location> {
   while (real === undefined) {
     try {
       real = await fs.realpath(existing);
-    } catch {
+    } catch (error) {
+      if (!isNotFound(error)) throw error;
       const parent = path.dirname(existing);
       if (parent === existing) return { ids: [], missing };
       missing.unshift(path.basename(existing).toLowerCase());
@@ -117,8 +129,9 @@ export async function entriesOnTheWay(file: string): Promise<string[]> {
         continue;
       }
       target = await fs.readlink(entry);
-    } catch {
-      break;
+    } catch (error) {
+      if (isNotFound(error)) break;
+      throw error;
     }
     if (++symlinks > MAX_SYMLINKS) break;
 

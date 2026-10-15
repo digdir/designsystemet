@@ -148,7 +148,9 @@ program
     // Design tokens and kept outputs inside a cleaned directory, e.g. `designsystemet/design-tokens` inside the
     // `css` output's `designsystemet`, are left alone, and everything else in the directory is deleted. For other
     // outputs, the symlinks on the way to them are left alone, so they are still created where the symlinks point.
+    // Everything is looked up before anything is deleted, so nothing is deleted when a path can't be looked up.
     const outputDirs = await Promise.all(config.output.map((o) => locateDir(o.dir)));
+    const cleaning: { dir: string; keep: string[]; keepWayTo: string[] }[] = [];
     for (const { dir, location } of dirsToClean) {
       const keep: string[] = [];
       for (const other of [...inputDirs, ...keptDirs]) {
@@ -159,6 +161,9 @@ program
         if (isSameLocation(other.location, location) || keep.includes(other.dir)) continue;
         if (await isReachedThrough(other.dir, location)) keepWayTo.push(other.dir);
       }
+      cleaning.push({ dir, keep, keepWayTo });
+    }
+    for (const { dir, keep, keepWayTo } of cleaning) {
       await dsfs.emptyDir(dir, keep, keepWayTo);
     }
 

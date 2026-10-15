@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import pc from 'picocolors';
 import type { OutputFile } from '../tokens/types.ts';
-import { entriesOnTheWay, fileId, statId } from './paths.ts';
+import { entriesOnTheWay, fileId, isNotFound, statId } from './paths.ts';
 
 /**
  * Deletes everything in `dir` except the directories in `keep`, and the directories they are in. Those are cleaned
@@ -41,7 +41,7 @@ export async function removeAllExcept(dir: string, keep: string[], keepWayTo: st
   try {
     realDir = await fs.realpath(dir);
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return;
+    if (isNotFound(error)) return;
     throw error;
   }
   await removeEntriesExcept(realDir, keptIds, containingIds);
@@ -52,16 +52,24 @@ async function removeEntriesExcept(dir: string, keptIds: Set<string>, containing
   // Reading a symlink would follow it, so a symlink is kept as it is. So is `dir` when it is a kept directory itself.
   const stats = await fs.lstat(dir, { bigint: true });
   if (stats.isSymbolicLink() || keptIds.has(fileId(stats))) return;
-  const entries = await fs.readdir(dir);
-
-  await Promise.all(
-    entries.map(async (name) => {
+  const entries = await Promise.all(
+    (await fs.readdir(dir)).map(async (name) => {
       const entry = path.join(dir, name);
-      const id = await statId(entry);
-      if (id && keptIds.has(id)) return;
-      if (id && containingIds.has(id)) return removeEntriesExcept(entry, keptIds, containingIds);
-      await fs.rm(entry, { recursive: true, force: true });
+      return { entry, id: await statId(entry) };
     }),
+  );
+
+  // Every entry is looked up, and every directory below is cleaned, before anything here is deleted. So when one
+  // can't be looked up, e.g. without permission to read it, cleaning stops before deleting what it should keep.
+  await Promise.all(
+    entries.flatMap(({ entry, id }) =>
+      id && !keptIds.has(id) && containingIds.has(id) ? [removeEntriesExcept(entry, keptIds, containingIds)] : [],
+    ),
+  );
+  await Promise.all(
+    entries.flatMap(({ entry, id }) =>
+      id && (keptIds.has(id) || containingIds.has(id)) ? [] : [fs.rm(entry, { recursive: true, force: true })],
+    ),
   );
 }
 
