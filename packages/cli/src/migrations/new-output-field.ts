@@ -105,9 +105,9 @@ export const legacyBuildDir = 'design-tokens-build';
  * Always includes a `design-tokens` output, also for the default directory: the deprecated fields
  * created design tokens, and the default `output` doesn't.
  *
- * `cleanDir` defaults to `true`, so an explicit `clean: false` is carried over as `cleanDir: false` on every output.
- * Otherwise the migrated config would delete output directories the user opted out of cleaning.
- * A missing `clean` or `clean: true` uses the new default.
+ * `clean` only cleaned the design tokens directory, and defaulted to `false` like `cleanDir`. So `clean: true` is
+ * carried over as `cleanDir: true` on the `design-tokens` output. `tokens build` didn't clean by default either, so
+ * CSS and types use the default.
  *
  * Design tokens are saved in `outDir`, and CSS and types in `buildDir`, where `tokens build` saved them, so existing
  * design tokens and imports of the built files keep working. Their default directories are different, so `dir` is
@@ -118,19 +118,13 @@ export const toOutput = (
   { clean, buildDir = legacyBuildDir }: { clean?: boolean; buildDir?: string } = {},
 ) => {
   const isDefaultDir = outDir === undefined || path.posix.normalize(outDir) === path.posix.normalize(defaultOutDir);
-  const keepFiles = clean === false;
-  const cleanDir = keepFiles ? { cleanDir: false } : {};
-
-  // When the config file is in `buildDir`, or below it, cleaning `buildDir` would delete the config file.
-  const buildDirHasConfig = buildDir.split('/').every((part) => part === '.' || part === '..');
-  // CSS and types share `buildDir`, so they must clean it the same way.
-  const buildCleanDir = keepFiles || buildDirHasConfig ? { cleanDir: false } : {};
+  const cleanDir = clean === true ? { cleanDir: true } : {};
 
   return [
     { type: 'design-tokens' as const, dir: isDefaultDir ? defaultOutDir : outDir, ...cleanDir },
     // CSS and types are built from the design tokens, so they must read them from the same directory.
-    { type: 'css' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...buildCleanDir },
-    { type: 'types' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...buildCleanDir },
+    { type: 'css' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }) },
+    { type: 'types' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }) },
   ];
 };
 

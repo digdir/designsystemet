@@ -22,7 +22,7 @@ describe('new output field migration', () => {
     expect(parseJsonc(migrated)).toEqual({
       themes: {},
       output: [
-        { type: 'design-tokens', dir: 'tokens' },
+        { type: 'design-tokens', dir: 'tokens', cleanDir: true },
         { type: 'css', dir: 'design-tokens-build', tokensDir: 'tokens' },
         { type: 'types', dir: 'design-tokens-build', tokensDir: 'tokens' },
       ],
@@ -32,9 +32,9 @@ describe('new output field migration', () => {
   // A comment between a value and its comma used to hide the comma, leaving invalid JSON behind.
   it.each([
     ['a block comment before the comma', '{ "outDir": "design-tokens" /* note */, "themes": {} }'],
-    ['a line comment after the comma', '{\n  "clean": true, // note\n  "themes": {}\n}'],
-    ['a line comment before the comma', '{\n  "clean": true // note\n  ,"themes": {}\n}'],
-    ['a comment after the last property', '{ "themes": {}, "clean": true /* last */ }'],
+    ['a line comment after the comma', '{\n  "clean": false, // note\n  "themes": {}\n}'],
+    ['a line comment before the comma', '{\n  "clean": false // note\n  ,"themes": {}\n}'],
+    ['a comment after the last property', '{ "themes": {}, "clean": false /* last */ }'],
   ])('removes the deprecated fields and keeps the config valid with %s', (_, config) => {
     const migrated = migrateToOutputField(config);
 
@@ -68,32 +68,26 @@ describe('new output field migration', () => {
     };
 
     expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens" }'))).toEqual(expected);
-    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens", "clean": true }'))).toEqual(expected);
-    expect(parseJsonc(migrateToOutputField('{ "clean": true }'))).toEqual(expected);
+    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens", "clean": false }'))).toEqual(expected);
+    expect(parseJsonc(migrateToOutputField('{ "clean": false }'))).toEqual(expected);
   });
 
-  // `cleanDir` defaults to `true`, so dropping `clean: false` would delete directories the user opted out of cleaning.
-  it('carries an explicit clean: false over as cleanDir: false on every output', () => {
-    expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens", "clean": false }'))).toEqual({
+  // `clean` only cleaned the design tokens, and `tokens build` didn't clean CSS and types by default.
+  it('carries clean: true over as cleanDir: true on the design-tokens output', () => {
+    expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens", "clean": true }'))).toEqual({
       output: [
-        { type: 'design-tokens', dir: 'tokens', cleanDir: false },
-        { type: 'css', dir: 'design-tokens-build', tokensDir: 'tokens', cleanDir: false },
-        { type: 'types', dir: 'design-tokens-build', tokensDir: 'tokens', cleanDir: false },
+        { type: 'design-tokens', dir: 'tokens', cleanDir: true },
+        { type: 'css', dir: 'design-tokens-build', tokensDir: 'tokens' },
+        { type: 'types', dir: 'design-tokens-build', tokensDir: 'tokens' },
       ],
     });
-  });
-
-  it('defines output for clean: false even when outDir has its default value', () => {
-    const expected = {
+    expect(parseJsonc(migrateToOutputField('{ "clean": true }'))).toEqual({
       output: [
-        { type: 'design-tokens', dir: 'design-tokens', cleanDir: false },
-        { type: 'css', dir: 'design-tokens-build', cleanDir: false },
-        { type: 'types', dir: 'design-tokens-build', cleanDir: false },
+        { type: 'design-tokens', dir: 'design-tokens', cleanDir: true },
+        { type: 'css', dir: 'design-tokens-build' },
+        { type: 'types', dir: 'design-tokens-build' },
       ],
-    };
-
-    expect(parseJsonc(migrateToOutputField('{ "clean": false }'))).toEqual(expected);
-    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens", "clean": false }'))).toEqual(expected);
+    });
   });
 
   it('only removes deprecated fields when output is already set', () => {
@@ -145,7 +139,7 @@ describe('new output field migration', () => {
     it('keeps the default outDir pointing to the same directory', () => {
       expect(parseJsonc(migrateToOutputField('{ "clean": true }', context))).toEqual({
         output: [
-          { type: 'design-tokens', dir: '../design-tokens' },
+          { type: 'design-tokens', dir: '../design-tokens', cleanDir: true },
           { type: 'css', dir: '../design-tokens-build', tokensDir: '../design-tokens' },
           { type: 'types', dir: '../design-tokens-build', tokensDir: '../design-tokens' },
         ],
@@ -170,19 +164,6 @@ describe('new output field migration', () => {
           { type: 'types', dir: '../design-tokens-build' },
         ],
       });
-    });
-  });
-
-  // Cleaning `design-tokens-build` would delete the config file in it, which the CLI refuses to do.
-  it("doesn't clean the CSS and types directory when the config file is in it", () => {
-    const context = { configFilePath: 'design-tokens-build/designsystemet.config.json', cwd: '/project' };
-
-    expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens" }', context))).toEqual({
-      output: [
-        { type: 'design-tokens', dir: '../tokens' },
-        { type: 'css', dir: '.', tokensDir: '../tokens', cleanDir: false },
-        { type: 'types', dir: '.', tokensDir: '../tokens', cleanDir: false },
-      ],
     });
   });
 

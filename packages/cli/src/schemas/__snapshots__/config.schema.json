@@ -26,8 +26,8 @@
                     "type": "string"
                   },
                   "cleanDir": {
-                    "default": true,
-                    "description": "Whether to clean the output directory before generating files",
+                    "default": false,
+                    "description": "Whether to delete the files in the output directory before generating files",
                     "type": "boolean"
                   }
                 },
@@ -49,8 +49,8 @@
                     "type": "string"
                   },
                   "cleanDir": {
-                    "default": true,
-                    "description": "Whether to clean the output directory before generating files",
+                    "default": false,
+                    "description": "Whether to delete the files in the output directory before generating files",
                     "type": "boolean"
                   },
                   "tokensDir": {
@@ -94,8 +94,8 @@
                     "type": "string"
                   },
                   "cleanDir": {
-                    "default": true,
-                    "description": "Whether to clean the output directory before generating files",
+                    "default": false,
+                    "description": "Whether to delete the files in the output directory before generating files",
                     "type": "boolean"
                   },
                   "tokensDir": {

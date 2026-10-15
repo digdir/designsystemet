@@ -29,7 +29,7 @@ We recommend using the [Designsystemet theme builder](https://theme.designsystem
 #### Update tokens and CSS
 
 Whenever a new version of the CLI is released, or you have done changes, re-run `npx @digdir/designsystemet`.
-Output directories are cleaned by default (`cleanDir`), which removes any deprecated or unneeded files. Directories inside them that are built from (`tokensDir`), or that belong to an output with `cleanDir: false`, are kept. Before deleting anything, the CLI stops with an error if a directory it would clean contains the config file, is one of those directories, is a symlink, or has a symlink on the way to one of them or to another output. Symlinks are deleted, never followed.
+Set `cleanDir: true` on an output to delete the files in its directory before creating new ones, which removes any deprecated or unneeded files. It is `false` by default. Directories inside a cleaned directory that are built from (`tokensDir`), or that belong to an output with `cleanDir: false`, are kept. Before deleting anything, the CLI stops with an error if a directory it would clean contains the config file, is one of those directories, is a symlink, or has a symlink on the way to one of them or to another output. Symlinks are deleted, never followed.
 
 > ⚠️ **WARNING** ⚠️  
 > The design tokens created by this tool are considered an implementation detail, and is subject
@@ -92,11 +92,11 @@ Use `output` to choose what is created and where. Each item is either an output 
 ```jsonc
 {
   "output": [
-    // defaults: dir "designsystemet/design-tokens", cleanDir true
+    // defaults: dir "designsystemet/design-tokens", cleanDir false
     { "type": "design-tokens", "dir": "../path/to/design-tokens" },
-    // defaults: dir "designsystemet", tokensDir from the design-tokens output, cleanDir true, tailwind false
+    // defaults: dir "designsystemet", tokensDir from the design-tokens output, cleanDir false, tailwind false
     { "type": "css", "dir": "../path/to/css", "tokensDir": "../path/to/design-tokens" },
-    // defaults: dir "designsystemet", tokensDir from the design-tokens output, cleanDir true
+    // defaults: dir "designsystemet", tokensDir from the design-tokens output, cleanDir false
     { "type": "types", "dir": "../path/to/types", "tokensDir": "../path/to/design-tokens" },
   ],
 }
