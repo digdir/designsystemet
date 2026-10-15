@@ -9,7 +9,7 @@ Read the Designsystemet [README](https://github.com/digdir/designsystemet) to ge
 
 ## Usage
 
-Use `npx @digdir/designsystemet` to create design tokens, CSS and type declarations for use with Designsystemet, based on a [config file](#using-a-config-file).
+Use `npx @digdir/designsystemet` to create CSS for use with Designsystemet, based on a [config file](#using-a-config-file). It can also create type declarations and design tokens.
 
 This allows you to define themes including custom colors, font-family, and border-radius.
 We recommend using the [Designsystemet theme builder](https://theme.designsystemet.no/) for generating a valid config.
@@ -29,7 +29,7 @@ We recommend using the [Designsystemet theme builder](https://theme.designsystem
 #### Update tokens and CSS
 
 Whenever a new version of the CLI is released, or you have done changes, re-run `npx @digdir/designsystemet`.
-Output directories are cleaned by default (`cleanDir`), which removes any deprecated or unneeded files. Directories inside them that are built from (`tokensDir`), or that belong to an output with `cleanDir: false`, are kept.
+Output directories are cleaned by default (`cleanDir`), which removes any deprecated or unneeded files. Directories inside them that are built from (`tokensDir`), or that belong to an output with `cleanDir: false`, are kept. Before deleting anything, the CLI stops with an error if a directory it would clean contains the config file, is one of those directories, is a symlink, or has a symlink on the way to one of them or to another output. Symlinks are deleted, never followed.
 
 > ⚠️ **WARNING** ⚠️  
 > The design tokens created by this tool are considered an implementation detail, and is subject
@@ -77,7 +77,7 @@ In editors which support JSON Schema, the `$schema` will then  give you editor h
   }
 }
 ```
-To generate new design tokens and CSS files, you would then run:
+To generate the CSS, you would then run:
 
 ```
 npx @digdir/designsystemet
@@ -135,4 +135,4 @@ You can get a minimal config file, meaning without overrides, generated from exi
 npx @digdir/designsystemet generate-config-from-tokens --dir <path to design tokens> --out <path to config file>
 ```
 
-`--out` defaults to `designsystemet.config.json`. The generated config uses `output`, with the design tokens directory written relative to the config file.
+`--out` defaults to `designsystemet.config.json`. The generated config uses `output`, with the design tokens directory written relative to the config file. CSS and types are saved in `design-tokens-build` in the directory the command was run from, where `tokens build` saved them.

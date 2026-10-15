@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import fs from 'node:fs/promises';
 import path from 'node:path';
 import { Argument, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
@@ -21,7 +22,7 @@ import { createTypes } from '../src/tokens/process/output/declarations.ts';
 import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import { isReachedThrough, isSameLocation, type Location, locate } from '../src/utils/paths.ts';
+import { entriesIn, isReachedThrough, isSameLocation, isSymlink, type Location, locate } from '../src/utils/paths.ts';
 import { DEFAULT_CONFIG_FILEPATH, getConfigFile, requireThemes } from './config.ts';
 import { DEFAULT_TOKENS_CREATE_DIR, makeTokenCommands } from './deprecated.ts';
 import { configOption, dryOption, verboseOption } from './options.ts';
@@ -104,6 +105,7 @@ program
 
     // Directories are compared by what they are on disk, not by how their paths are written (see `locate`). So
     // `tokens`, `./tokens/`, `Tokens` on a case-insensitive file system, and a path through a symlink all match.
+    // Every path in the config is resolved the same way, for checking, cleaning, reading and writing.
     const resolveDir = (dir: string) => path.resolve(dsfs.outDir, dir);
     const locateDir = async (dir: string): Promise<LocatedDir> => {
       const resolved = resolveDir(dir);
@@ -116,9 +118,9 @@ program
 
     // Clean every output directory once, before any output is created. Cleaning as part of each output would
     // delete what earlier outputs wrote when they share a directory, which makes the outputs depend on their order.
-    const dirsToClean = (
-      await Promise.all(config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir ? [locateDir(o.dir)] : [])))
-    ).filter((dir, i, dirs) => dirs.findIndex((other) => isSameLocation(other.location, dir.location)) === i);
+    const cleanedDirs = await Promise.all(
+      config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir ? [locateDir(o.dir)] : [])),
+    );
     // Existing design tokens that `css` and `types` outputs build from. Tokens in a `design-tokens` output's
     // directory are created again in this run, so cleaning them is safe.
     const inputDirs = (
@@ -134,11 +136,14 @@ program
     );
 
     // Check every directory before cleaning any, so nothing is deleted when one of them is unsafe.
+    const outputDirs = await Promise.all(config.output.map((o) => locateDir(o.dir)));
     const unsafeCleanError = await findUnsafeClean({
-      dirsToClean,
-      configFile: path.resolve(configFilePath),
+      cleanedDirs,
+      // As written, since the config file may be reached through symlinks that `path.resolve` would skip.
+      configFile: configFilePath,
       inputDirs,
       keptDirs,
+      outputDirs,
     });
     if (unsafeCleanError) {
       console.error(pc.redBright(unsafeCleanError));
@@ -146,29 +151,25 @@ program
     }
 
     // Design tokens and kept outputs inside a cleaned directory, e.g. `designsystemet/design-tokens` inside the
-    // `css` output's `designsystemet`, are left alone, and everything else in the directory is deleted. For other
-    // outputs, the symlinks on the way to them are left alone, so they are still created where the symlinks point.
-    // Everything is looked up before anything is deleted, so nothing is deleted when a path can't be looked up.
-    const outputDirs = await Promise.all(config.output.map((o) => locateDir(o.dir)));
-    const cleaning: { dir: string; keep: string[]; keepWayTo: string[] }[] = [];
+    // `css` output's `designsystemet`, are left alone, and everything else in the directory is deleted. Everything
+    // is looked up before anything is deleted, so nothing is deleted when a path can't be looked up.
+    const dirsToClean = cleanedDirs.filter(
+      (dir, i, dirs) => dirs.findIndex((other) => isSameLocation(other.location, dir.location)) === i,
+    );
+    const cleaning: { dir: string; keep: string[] }[] = [];
     for (const { dir, location } of dirsToClean) {
       const keep: string[] = [];
       for (const other of [...inputDirs, ...keptDirs]) {
         if (await isReachedThrough(other.dir, location)) keep.push(other.dir);
       }
-      const keepWayTo: string[] = [];
-      for (const other of outputDirs) {
-        if (isSameLocation(other.location, location) || keep.includes(other.dir)) continue;
-        if (await isReachedThrough(other.dir, location)) keepWayTo.push(other.dir);
-      }
-      cleaning.push({ dir, keep, keepWayTo });
+      cleaning.push({ dir, keep });
     }
-    for (const { dir, keep, keepWayTo } of cleaning) {
-      await dsfs.emptyDir(dir, keep, keepWayTo);
+    for (const { dir, keep } of cleaning) {
+      await dsfs.emptyDir(dir, keep);
     }
 
     for (const output of sortedOutput) {
-      const outDir = path.join(dsfs.outDir, output.dir);
+      const outDir = resolveDir(output.dir);
 
       if (output.type === 'design-tokens') {
         console.log(`\n🍱 Creating design tokens in ${pc.green(output.dir)}...`);
@@ -200,7 +201,7 @@ program
           await buildCss({
             // Resolve the token directory relative to the config file, like output.dir,
             // so it matches where a preceding design-tokens output wrote its files.
-            tokensDir: path.join(dsfs.outDir, tokensDir),
+            tokensDir: resolveDir(tokensDir),
             outDir,
             verbose,
             tailwind: output.tailwind,
@@ -221,7 +222,7 @@ program
         const files =
           tokensDir === undefined || tokensNotWritten
             ? createTypes(Object.keys(Object.values(requireThemes(config))[0].colors))
-            : await createTypesFromTokens(path.join(dsfs.outDir, tokensDir));
+            : await createTypesFromTokens(resolveDir(tokensDir));
 
         await dsfs.mkdir(outDir);
         await dsfs.writeFiles(files, outDir, true);
@@ -422,40 +423,68 @@ async function createCss({
 type LocatedDir = { dir: string; location: Location };
 
 /**
- * Returns an error message when cleaning `dirsToClean` would delete something it shouldn't: the config file,
- * existing design tokens in `inputDirs` that an output builds from, or files in `keptDirs` that an output keeps.
- * Design tokens and kept directories inside a cleaned directory are skipped when it's cleaned, so only a cleaned
- * directory that is one of them is unsafe. The config file is found however it is reached, also through a symlink.
+ * Returns an error message when cleaning `cleanedDirs` would delete something it shouldn't, before anything is
+ * deleted. Design tokens in `inputDirs` that an output builds from, and directories in `keptDirs` that an output
+ * keeps, are skipped when a directory they are in is cleaned. So cleaning is unsafe when:
+ *
+ * - The cleaned directory is a symlink, which would delete files where it points, or a file.
+ * - It has the config file, or a symlink on the way to it.
+ * - It is one of `inputDirs` or `keptDirs`.
+ * - It has a symlink on the way to one of `inputDirs`, `keptDirs` or `outputDirs`. Cleaning deletes symlinks, so the
+ *   design tokens would be gone, or the output would be created in another place than where the symlink points.
+ *
+ * Symlinks are refused rather than handled, so that what cleaning deletes is easy to tell: everything in the
+ * directory, except design tokens and kept outputs in it.
  */
 async function findUnsafeClean({
-  dirsToClean,
+  cleanedDirs,
   configFile,
   inputDirs,
   keptDirs,
+  outputDirs,
 }: {
-  dirsToClean: LocatedDir[];
+  cleanedDirs: LocatedDir[];
   configFile: string;
   inputDirs: LocatedDir[];
   keptDirs: LocatedDir[];
+  outputDirs: LocatedDir[];
 }): Promise<string | undefined> {
-  const configDir = path.dirname(configFile);
-  const toConfigRelative = (dir: string) => pc.blue(path.relative(configDir, dir) || '.');
+  const configDir = path.dirname(path.resolve(configFile));
+  const show = (dir: string) => pc.blue(path.relative(configDir, dir) || '.');
   const fix = `Use another ${pc.blue('dir')}, or set ${pc.blue('cleanDir')} to ${pc.blue('false')} for that output.`;
   // A directory that doesn't exist yet has no files to delete.
   const isSameExistingDir = (dir: LocatedDir, location: Location) =>
     dir.location.missing.length === 0 && isSameLocation(dir.location, location);
 
-  for (const { dir, location } of dirsToClean) {
+  for (const { dir, location } of cleanedDirs) {
+    if (await isSymlink(dir)) {
+      return `Output directory ${show(dir)} is a symlink, so cleaning it would delete the files where it points. Set ${pc.blue('dir')} to the directory it points to, or set ${pc.blue('cleanDir')} to ${pc.blue('false')} for that output.`;
+    }
+    if (location.missing.length === 0 && !(await fs.stat(dir)).isDirectory()) {
+      return `Output directory ${show(dir)} is a file, not a directory. Move or delete the file, or use another ${pc.blue('dir')}.`;
+    }
+
     if (await isReachedThrough(configFile, location)) {
-      return `Output directory ${toConfigRelative(dir)} contains the config file, so cleaning it would delete the config file. ${fix}`;
+      return `Output directory ${show(dir)} contains the config file, or a symlink to it, so cleaning it would delete the config file. ${fix}`;
     }
 
-    if (inputDirs.some((input) => isSameExistingDir(input, location))) {
-      return `Output directory ${toConfigRelative(dir)} has the design tokens that are built from, so cleaning it would delete them before they are used. ${fix}`;
+    const inputDir = inputDirs.find((input) => isSameExistingDir(input, location));
+    if (inputDir) {
+      return `Output directory ${show(dir)} is the ${pc.blue('tokensDir')} ${show(inputDir.dir)} that design tokens are read from, so cleaning it would delete them before they are used. ${fix}`;
     }
 
-    if (keptDirs.some((kept) => isSameExistingDir(kept, location))) {
-      return `Output directory ${toConfigRelative(dir)} is also used by an output with ${pc.blue('cleanDir')} set to ${pc.blue('false')}, so cleaning it would delete files that should be kept. Use separate directories, or the same ${pc.blue('cleanDir')} for both outputs.`;
+    const keptDir = keptDirs.find((kept) => isSameExistingDir(kept, location));
+    if (keptDir) {
+      return `Output directory ${show(dir)} is also ${show(keptDir.dir)}, used by an output with ${pc.blue('cleanDir')} set to ${pc.blue('false')}, so cleaning it would delete files that should be kept. Use separate directories, or the same ${pc.blue('cleanDir')} for both outputs.`;
+    }
+
+    for (const other of [...inputDirs, ...keptDirs, ...outputDirs]) {
+      for (const entry of await entriesIn(other.dir, location)) {
+        if (await isSymlink(entry)) {
+          const onTheWay = entry === other.dir ? '' : ` on the way to ${show(other.dir)}`;
+          return `Output directory ${show(dir)} has the symlink ${show(entry)}${onTheWay}, so cleaning it would delete the symlink. Write the path to where the symlink points, or set ${pc.blue('cleanDir')} to ${pc.blue('false')} for that output.`;
+        }
+      }
     }
   }
 

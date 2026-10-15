@@ -53,59 +53,35 @@ describe('removeAllExcept', () => {
     expect(await files()).toEqual(['design-tokens/semantic/color.json', 'nested/kept/tokens.json']);
   });
 
-  // A kept directory can be below a symlink by path. Following the symlink would delete files outside `dir`.
-  it('does not follow a symlink that a kept directory is below', async () => {
+  // The CLI refuses to clean when a kept directory is reached through a symlink in the directory, since the symlink
+  // is deleted. Either way, the symlink is never followed, so nothing outside the directory is deleted.
+  it('deletes symlinks without following them, also when a kept directory is reached through them', async () => {
     const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
     try {
       await fs.mkdir(path.join(outside, 'tokens'));
       await fs.writeFile(path.join(outside, 'sibling.css'), '');
       await fs.symlink(outside, path.join(dir, 'link'), 'dir');
+      await fs.symlink(path.join(outside, 'tokens'), path.join(dir, 'design-tokens'), 'dir');
       await write('theme.css');
 
-      await removeAllExcept(dir, [path.join(dir, 'link/tokens')]);
+      await removeAllExcept(dir, [path.join(dir, 'link/tokens'), path.join(dir, 'design-tokens')]);
 
-      expect((await fs.lstat(path.join(dir, 'link'))).isSymbolicLink()).toBe(true);
+      expect(await fs.readdir(dir)).toEqual([]);
       expect((await fs.readdir(outside)).sort()).toEqual(['sibling.css', 'tokens']);
-      expect(await files()).toEqual([]);
     } finally {
       await fs.rm(outside, { recursive: true, force: true });
     }
   });
 
-  // `designsystemet/design-tokens` can be a symlink to tokens outside `designsystemet`. The tokens are read through it.
-  it('keeps a kept directory that is a symlink, and what it points to', async () => {
-    const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
-    try {
-      await fs.writeFile(path.join(outside, 'color.json'), '');
-      await fs.symlink(outside, path.join(dir, 'design-tokens'), 'dir');
-      await write('theme.css');
+  // The CLI refuses to clean an output directory that is a symlink, since that would delete files where it points.
+  it('refuses to clean a directory that is a symlink', async () => {
+    await write('outside/old.css');
+    const link = path.join(dir, 'output');
+    await fs.symlink(path.join(dir, 'outside'), link, 'dir');
 
-      await removeAllExcept(dir, [path.join(dir, 'design-tokens')]);
+    await expect(removeAllExcept(link, [])).rejects.toThrow(/isn't a directory/);
 
-      expect((await fs.lstat(path.join(dir, 'design-tokens'))).isSymbolicLink()).toBe(true);
-      expect(await fs.readdir(outside)).toEqual(['color.json']);
-      expect(await files()).toEqual([]);
-    } finally {
-      await fs.rm(outside, { recursive: true, force: true });
-    }
-  });
-
-  // The output directory itself can be a symlink, to where the output is wanted. That is the directory to clean.
-  it('cleans the directory that the directory itself points to when it is a symlink', async () => {
-    const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
-    try {
-      await fs.mkdir(path.join(outside, 'tokens'));
-      await fs.writeFile(path.join(outside, 'old.css'), '');
-      const link = path.join(dir, 'output');
-      await fs.symlink(outside, link, 'dir');
-
-      await removeAllExcept(link, [path.join(link, 'tokens')]);
-
-      expect((await fs.lstat(link)).isSymbolicLink()).toBe(true);
-      expect(await fs.readdir(outside)).toEqual(['tokens']);
-    } finally {
-      await fs.rm(outside, { recursive: true, force: true });
-    }
+    expect(await files()).toEqual(['outside/old.css']);
   });
 
   // `tokens` links to `output/nested/tokens`. The directories on the way to it on disk are kept too.
@@ -118,62 +94,6 @@ describe('removeAllExcept', () => {
     await removeAllExcept(path.join(dir, 'output'), [path.join(dir, 'tokens')]);
 
     expect(await files()).toEqual(['output/nested/tokens/color.json']);
-  });
-
-  // `tokens` links to `output/link`, which links to `../shared/tokens`. The symlink in `output` is kept.
-  it('keeps a symlink in the directory that a kept directory is reached through in a chain of symlinks', async () => {
-    await write('shared/tokens/color.json');
-    await write('output/theme.css');
-    await fs.symlink('../shared/tokens', path.join(dir, 'output/link'), 'dir');
-    await fs.symlink('output/link', path.join(dir, 'tokens'), 'dir');
-
-    await removeAllExcept(path.join(dir, 'output'), [path.join(dir, 'tokens')]);
-
-    expect((await fs.lstat(path.join(dir, 'output/link'))).isSymbolicLink()).toBe(true);
-    expect(await files()).toEqual(['shared/tokens/color.json']);
-  });
-
-  // `tokens` links to `output/a/tokens`, and `output/a` links to `../shared`.
-  it('keeps a symlink in the directory that is a part of the way to a kept directory', async () => {
-    await write('shared/tokens/color.json');
-    await write('output/theme.css');
-    await fs.symlink('../shared', path.join(dir, 'output/a'), 'dir');
-    await fs.symlink('output/a/tokens', path.join(dir, 'tokens'), 'dir');
-
-    await removeAllExcept(path.join(dir, 'output'), [path.join(dir, 'tokens')]);
-
-    expect((await fs.lstat(path.join(dir, 'output/a'))).isSymbolicLink()).toBe(true);
-    expect(await files()).toEqual(['shared/tokens/color.json']);
-  });
-
-  // `output/link` points outside, and a kept output uses `output/link/tokens`, which isn't created yet.
-  it("keeps the symlinks on the way to a kept directory that doesn't exist yet", async () => {
-    await fs.mkdir(path.join(dir, 'shared'));
-    await write('output/theme.css');
-    await fs.symlink(path.join(dir, 'shared'), path.join(dir, 'output/link'), 'dir');
-
-    await removeAllExcept(path.join(dir, 'output'), [path.join(dir, 'output/link/tokens')]);
-
-    expect((await fs.lstat(path.join(dir, 'output/link'))).isSymbolicLink()).toBe(true);
-    expect(await files()).toEqual([]);
-  });
-
-  it('keeps only the symlinks on the way to the directories in keepWayTo', async () => {
-    await fs.mkdir(path.join(dir, 'shared'));
-    await write('shared/old.d.ts');
-    await write('output/types/old.d.ts');
-    await write('output/theme.css');
-    await fs.symlink(path.join(dir, 'shared'), path.join(dir, 'output/link'), 'dir');
-
-    await removeAllExcept(
-      path.join(dir, 'output'),
-      [],
-      [path.join(dir, 'output/link/types'), path.join(dir, 'output/types')],
-    );
-
-    expect((await fs.lstat(path.join(dir, 'output/link'))).isSymbolicLink()).toBe(true);
-    expect((await fs.stat(path.join(dir, 'output/types'))).isDirectory()).toBe(true);
-    expect(await files()).toEqual(['shared/old.d.ts']);
   });
 
   it('deletes symlinks without following them when nothing below them is kept', async () => {
@@ -209,8 +129,7 @@ describe('removeAllExcept', () => {
     expect(await files()).toEqual(['tokens/color.json']);
   });
 
-  // `output/link` points into `locked`, which can't be read. Whether the kept `output/link` is reached through it
-  // can't be known, so nothing is deleted.
+  // The kept `output/link` points into `locked`, which can't be read. What it is can't be known, so nothing is deleted.
   it.skipIf(process.platform === 'win32' || process.getuid?.() === 0)(
     "stops without deleting anything when a path can't be looked up",
     async () => {

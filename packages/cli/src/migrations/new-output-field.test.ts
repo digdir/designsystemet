@@ -173,6 +173,19 @@ describe('new output field migration', () => {
     });
   });
 
+  // Cleaning `design-tokens-build` would delete the config file in it, which the CLI refuses to do.
+  it("doesn't clean the CSS directory when the config file is in it", () => {
+    const context = { configFilePath: 'design-tokens-build/designsystemet.config.json', cwd: '/project' };
+
+    expect(parseJsonc(migrateToOutputField('{ "outDir": "tokens" }', context))).toEqual({
+      output: [
+        { type: 'design-tokens', dir: '../tokens' },
+        { type: 'css', dir: '.', tokensDir: '../tokens', cleanDir: false },
+        { type: 'types', dir: '.', tokensDir: '../tokens' },
+      ],
+    });
+  });
+
   it('leaves the config unchanged when declined', () => {
     const config = '{ "outDir": "tokens" }';
 

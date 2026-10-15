@@ -25,7 +25,6 @@ Config filen må være lagret som en `json` fil, vi anbfaler f.eks `designsystem
 
 ```json
 {
-  "output": ["design-tokens", "css", "types"],
   "themes": {
     "theme": {
       "colors": {
@@ -49,7 +48,7 @@ Config filen må være lagret som en `json` fil, vi anbfaler f.eks `designsystem
 ```bash
 npx @digdir/designsystemet@latest
 ```
-Dette vil generere Design Tokens basert på config-fila og lagre dem i en mappe som heter `designsystemet/design-tokens`, og CSS i en mappe som heter `designsystemet`. Design Tokens blir lagret fordi `output` inneholder `"design-tokens"`. Uten den lager CLI-et bare CSS og typer. Du kan endre mappene med [`output`](/no/fundamentals/code/cli-config#output)-feltet i config-fila. Push endringene til ditt repo.
+Dette vil generere Design Tokens basert på config-fila og lagre dem i en mappe som heter `design-tokens`, og CSS i en mappe som heter `design-tokens-build`. Du kan endre mappene med [`output`](/no/fundamentals/code/cli-config#output)-feltet i config-fila. Push endringene til ditt repo.
 
 6. Hent komponentbiblioteket fra [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma") til din organisasjon som har mimimum pro-lisens. Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen. 
 
@@ -62,13 +61,13 @@ Dette vil generere Design Tokens basert på config-fila og lagre dem i en mappe 
 />
 
   - I pluginen skal du nå sette opp kobling til ditt Git repo. Se Tokens Studio sin guide "[Sync your Design Tokens with code (tokens.studio)](https://docs.tokens.studio/token-storage/remote/#sync-providers)" som forklarer hvordan du gjør dette for ulike Git Providers. 
-  - Husk å sette "Token storage location" til `designsystemet/design-tokens` (eller det du har valgt å kalle mappen din med Design Tokens).
+  - Husk å sette "Token storage location" til `design-tokens` (eller det du har valgt å kalle mappen din med Design Tokens).
 
 <Alert data-color="info">
 Vi anbefaler å *ikke* pushe endringer i Design Tokens via Tokens Studio, da dette kan føre til at du mister overstyringene dine når du oppdatererer.
 </Alert>
 
-8. Gå til [Temabyggeren](https://theme.designsystemet.no) og generer fargeskalaer ut fra dine profilfarger. Klikk "Ta i bruk tema". Kopier config-filen og lim inn i `designsystemet.config.json`-fila i ditt repo. Behold `output`-feltet fra steg 1, så Design Tokens fortsatt blir lagret. Kjør kommandoen under og push endringene.
+8. Gå til [Temabyggeren](https://theme.designsystemet.no) og generer fargeskalaer ut fra dine profilfarger. Klikk "Ta i bruk tema". Kopier config-filen og lim inn i `designsystemet.config.json`-fila i ditt repo. Kjør kommandoen under og push endringene.
 
 ```bash
 npx @digdir/designsystemet@latest --config designsystemet.config.json
@@ -116,7 +115,6 @@ Nå skal du se alle komponentene med dine egne profilfarger i Figma.
 
 ```json
 {
-  "output": ["design-tokens", "css", "types"],
   "themes": {
     "theme-one": {
       "colors": {
@@ -142,7 +140,7 @@ Nå skal du se alle komponentene med dine egne profilfarger i Figma.
 Når Design Tokens oppdateres i koden, kan du enkelt hente de nye verdiene inn i Figma ved å bruke "Pull"-knappen i Tokens Studio igjen.
 </Alert>
 
-10. Den samme kommandoen genererer også CSS fra temaet ditt, i mappen `designsystemet`. Det er denne CSS-en du bruker i koden.
+10. Den samme kommandoen genererer også CSS fra temaet ditt, i mappen `design-tokens-build`. Det er denne CSS-en du bruker i koden.
 
 ### Ikoner i Figma
 For å få ikoner til å fungere i Figma, må de kobles til et bibliotek som er lagret på deres organisasjon. Se guiden ["Få ikoner til å fungere i Figma"](/no/fundamentals/theme/icons#få-ikoner-til-å-fungere-i-figma). 

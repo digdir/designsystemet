@@ -151,14 +151,29 @@ export async function entriesOnTheWay(file: string): Promise<string[]> {
 }
 
 /**
- * Whether cleaning `dir` deletes `file`, or a directory or symlink on the way to it (see `entriesOnTheWay`). That is
- * when any of them is in `dir`, or in a directory inside it, on disk. So it is found however `file` and `dir` are
- * written, also through chains of symlinks.
+ * The entries on the way to `file` (see `entriesOnTheWay`) that are in `dir`, or in a directory inside it, on disk:
+ * the ones that cleaning `dir` would delete. So `file` is found however it and `dir` are written, also through chains
+ * of symlinks.
  */
-export async function isReachedThrough(file: string, dir: Location): Promise<boolean> {
+export async function entriesIn(file: string, dir: Location): Promise<string[]> {
+  const inDir: string[] = [];
   for (const entry of await entriesOnTheWay(file)) {
-    if (isSameOrInsideLocation(await locate(path.dirname(entry)), dir)) return true;
+    if (isSameOrInsideLocation(await locate(path.dirname(entry)), dir)) inDir.push(entry);
   }
 
-  return false;
+  return inDir;
 }
+
+/** Whether cleaning `dir` deletes `file`, or a directory or symlink on the way to it. */
+export const isReachedThrough = async (file: string, dir: Location): Promise<boolean> =>
+  (await entriesIn(file, dir)).length > 0;
+
+/** Whether `file` is a symlink itself, not following it. `false` when it doesn't exist. */
+export const isSymlink = async (file: string): Promise<boolean> => {
+  try {
+    return (await fs.lstat(file)).isSymbolicLink();
+  } catch (error) {
+    if (isNotFound(error)) return false;
+    throw error;
+  }
+};
