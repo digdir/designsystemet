@@ -120,6 +120,32 @@ describe('removeAllExcept', () => {
     expect(await files()).toEqual(['output/nested/tokens/color.json']);
   });
 
+  // `tokens` links to `output/link`, which links to `../shared/tokens`. The symlink in `output` is kept.
+  it('keeps a symlink in the directory that a kept directory is reached through in a chain of symlinks', async () => {
+    await write('shared/tokens/color.json');
+    await write('output/theme.css');
+    await fs.symlink('../shared/tokens', path.join(dir, 'output/link'), 'dir');
+    await fs.symlink('output/link', path.join(dir, 'tokens'), 'dir');
+
+    await removeAllExcept(path.join(dir, 'output'), [path.join(dir, 'tokens')]);
+
+    expect((await fs.lstat(path.join(dir, 'output/link'))).isSymbolicLink()).toBe(true);
+    expect(await files()).toEqual(['shared/tokens/color.json']);
+  });
+
+  // `tokens` links to `output/a/tokens`, and `output/a` links to `../shared`.
+  it('keeps a symlink in the directory that is a part of the way to a kept directory', async () => {
+    await write('shared/tokens/color.json');
+    await write('output/theme.css');
+    await fs.symlink('../shared', path.join(dir, 'output/a'), 'dir');
+    await fs.symlink('output/a/tokens', path.join(dir, 'tokens'), 'dir');
+
+    await removeAllExcept(path.join(dir, 'output'), [path.join(dir, 'tokens')]);
+
+    expect((await fs.lstat(path.join(dir, 'output/a'))).isSymbolicLink()).toBe(true);
+    expect(await files()).toEqual(['shared/tokens/color.json']);
+  });
+
   it('deletes symlinks without following them when nothing below them is kept', async () => {
     const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
     try {

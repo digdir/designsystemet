@@ -2,7 +2,14 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { isReachedThrough, isSameLocation, isSameOrInside, isSameOrInsideLocation, locate } from './paths.ts';
+import {
+  entriesOnTheWay,
+  isReachedThrough,
+  isSameLocation,
+  isSameOrInside,
+  isSameOrInsideLocation,
+  locate,
+} from './paths.ts';
 
 // Whether the temporary directory's file system ignores letter case, as on Windows and macOS by default.
 const caseInsensitive = await (async () => {
@@ -43,7 +50,8 @@ describe('on disk', () => {
   let dir: string;
 
   beforeEach(async () => {
-    dir = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-paths-'));
+    // The temporary directory can itself be behind a symlink, e.g. /tmp on macOS.
+    dir = await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-paths-')));
   });
 
   afterEach(async () => {
@@ -96,6 +104,58 @@ describe('on disk', () => {
     });
   });
 
+  describe('entriesOnTheWay', () => {
+    it('lists each part of the path', async () => {
+      await write('designsystemet/tokens/color.json');
+
+      expect(await entriesOnTheWay(at('designsystemet/tokens'))).toEqual(
+        expect.arrayContaining([at('designsystemet'), at('designsystemet/tokens')]),
+      );
+    });
+
+    // `config.json` links to `output/link.json`, which links to `../shared/config.json`.
+    it('follows every symlink in a chain, also with relative targets', async () => {
+      await write('shared/config.json');
+      await fs.mkdir(at('output'));
+      await fs.symlink('../shared/config.json', at('output/link.json'), 'file');
+      await fs.symlink('output/link.json', at('config.json'), 'file');
+
+      const entries = await entriesOnTheWay(at('config.json'));
+
+      expect(entries.slice(-5)).toEqual([
+        at('config.json'),
+        at('output'),
+        at('output/link.json'),
+        at('shared'),
+        at('shared/config.json'),
+      ]);
+    });
+
+    // On Windows, `..` is resolved from the path as written instead.
+    it.skipIf(process.platform === 'win32')(
+      'goes to the parent on disk of where a symlink points for `..`',
+      async () => {
+        await fs.mkdir(at('a/b'), { recursive: true });
+        await write('a/config.json');
+        await fs.symlink(at('a/b'), at('link'), 'dir');
+
+        // Written out, since `path.join` would remove `link/..`.
+        expect((await entriesOnTheWay(`${dir}/link/../config.json`)).at(-1)).toBe(at('a/config.json'));
+      },
+    );
+
+    it('stops at a cycle of symlinks', async () => {
+      await fs.symlink(at('b'), at('a'), 'dir');
+      await fs.symlink(at('a'), at('b'), 'dir');
+
+      expect((await entriesOnTheWay(at('a/config.json'))).length).toBeGreaterThan(0);
+    });
+
+    it("stops at a part that doesn't exist", async () => {
+      expect((await entriesOnTheWay(at('missing/config.json'))).at(-1)).toBe(at('missing'));
+    });
+  });
+
   describe('isReachedThrough', () => {
     it('is true for a file in the directory', async () => {
       await write('designsystemet/designsystemet.config.json');
@@ -118,6 +178,18 @@ describe('on disk', () => {
       await fs.symlink(at('designsystemet/real.config.json'), at('designsystemet.config.json'), 'file');
 
       expect(await isReachedThrough(at('designsystemet.config.json'), await locate(at('designsystemet')))).toBe(true);
+    });
+
+    // `designsystemet.config.json` links to `output/config-link.json`, which links to `shared/config.json`. Cleaning
+    // `output` would delete `config-link.json`, so the config could no longer be read.
+    it('is true for a file reached through a chain of symlinks with one in the directory', async () => {
+      await write('shared/config.json');
+      await fs.mkdir(at('output'));
+      await fs.symlink('../shared/config.json', at('output/config-link.json'), 'file');
+      await fs.symlink('output/config-link.json', at('designsystemet.config.json'), 'file');
+
+      expect(await isReachedThrough(at('designsystemet.config.json'), await locate(at('output')))).toBe(true);
+      expect(await isReachedThrough(at('designsystemet.config.json'), await locate(at('other')))).toBe(false);
     });
 
     // `designsystemet/design-tokens` links to tokens outside `designsystemet`. Cleaning would delete the symlink.

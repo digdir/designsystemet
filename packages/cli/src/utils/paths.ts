@@ -78,19 +78,71 @@ export const isSameOrInsideLocation = (child: Location, parent: Location): boole
   return hasSameExisting(child, parent) && parent.missing.every((name, i) => name === child.missing[i]);
 };
 
+/** As many symlinks as Linux follows for one path, after which it stops with `ELOOP`. */
+const MAX_SYMLINKS = 40;
+
 /**
- * Whether cleaning `dir` deletes `file`, or a symlink that `file` is reached through. That is when `file`, or a
- * directory or symlink on the way to it, is in `dir` or in a directory inside it on disk. The way to `file` is
- * checked both as written and with symlinks resolved, so it is found however `file` and `dir` are written.
+ * Every file, directory and symlink on the way to `file`, in the order they are reached: each part of the path, and
+ * when a part is a symlink, each part of where it points, until `file` itself. This is how the operating system
+ * follows a path, so every symlink in a chain of symlinks is found, also with relative targets. The way stops at a
+ * part that doesn't exist, and after too many symlinks, such as in a cycle of symlinks.
+ *
+ * `..` after a symlink is the parent on disk of where the symlink points, except on Windows, where `..` is resolved
+ * from the path as written, like Windows does.
+ */
+export async function entriesOnTheWay(file: string): Promise<string[]> {
+  const windows = process.platform === 'win32';
+  const split = (p: string) => p.split(windows ? /[\\/]+/ : '/').filter(Boolean);
+  // Elsewhere, the path is kept as written, since `path.resolve` would remove `..` without following symlinks.
+  const start = windows ? path.resolve(file) : path.isAbsolute(file) ? file : `${process.cwd()}${path.sep}${file}`;
+
+  const entries: string[] = [];
+  let dir = path.parse(start).root;
+  const rest = split(start.slice(dir.length));
+  let symlinks = 0;
+  while (rest.length > 0) {
+    const name = rest.shift() as string;
+    if (name === '.') continue;
+    if (name === '..') {
+      dir = path.dirname(dir);
+      continue;
+    }
+
+    const entry = path.join(dir, name);
+    entries.push(entry);
+    let target: string;
+    try {
+      if (!(await fs.lstat(entry)).isSymbolicLink()) {
+        dir = entry;
+        continue;
+      }
+      target = await fs.readlink(entry);
+    } catch {
+      break;
+    }
+    if (++symlinks > MAX_SYMLINKS) break;
+
+    // Follow the symlink: go on from where it points, relative to the directory it is in.
+    if (windows || path.isAbsolute(target)) {
+      const resolved = path.resolve(dir, target);
+      dir = path.parse(resolved).root;
+      rest.unshift(...split(resolved.slice(dir.length)));
+    } else {
+      rest.unshift(...split(target));
+    }
+  }
+
+  return entries;
+}
+
+/**
+ * Whether cleaning `dir` deletes `file`, or a directory or symlink on the way to it (see `entriesOnTheWay`). That is
+ * when any of them is in `dir`, or in a directory inside it, on disk. So it is found however `file` and `dir` are
+ * written, also through chains of symlinks.
  */
 export async function isReachedThrough(file: string, dir: Location): Promise<boolean> {
-  const written = path.resolve(file);
-  const real = await fs.realpath(written).catch(() => written);
-
-  for (const start of new Set([written, real])) {
-    for (let entry = start; path.dirname(entry) !== entry; entry = path.dirname(entry)) {
-      if (isSameOrInsideLocation(await locate(path.dirname(entry)), dir)) return true;
-    }
+  for (const entry of await entriesOnTheWay(file)) {
+    if (isSameOrInsideLocation(await locate(path.dirname(entry)), dir)) return true;
   }
 
   return false;

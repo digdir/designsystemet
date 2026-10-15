@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import pc from 'picocolors';
 import type { OutputFile } from '../tokens/types.ts';
-import { fileId, locate, statId } from './paths.ts';
+import { entriesOnTheWay, fileId, statId } from './paths.ts';
 
 /**
  * Deletes everything in `dir` except the directories in `keep`, and the directories they are in. Those are cleaned
@@ -13,7 +13,7 @@ import { fileId, locate, statId } from './paths.ts';
  *
  * Directories are matched by what they are on disk, not by their paths. So a kept directory is found however its
  * path is written: with other letter case on case-insensitive file systems such as on Windows and macOS, or through
- * a symlink, either inside `dir` or outside it. Kept directories that aren't in `dir` are ignored.
+ * symlinks, also chains of them, either inside `dir` or outside it. Kept directories that aren't in `dir` are ignored.
  */
 export async function removeAllExcept(dir: string, keep: string[]): Promise<void> {
   const keptIds = new Set<string>();
@@ -23,13 +23,12 @@ export async function removeAllExcept(dir: string, keep: string[]): Promise<void
     // A kept directory that doesn't exist has nothing to keep.
     if (!id) continue;
     keptIds.add(id);
-    // The directories on the way to the kept directory, both as written and on disk with symlinks resolved.
-    for (let parent = path.dirname(path.resolve(kept)); ; parent = path.dirname(parent)) {
-      const parentId = await statId(parent);
-      if (parentId) containingIds.add(parentId);
-      if (path.dirname(parent) === parent) break;
+    // The directories and symlinks on the way to the kept directory, following every symlink, so the ones in `dir`
+    // are kept too.
+    for (const entry of (await entriesOnTheWay(kept)).slice(0, -1)) {
+      const entryId = await statId(entry);
+      if (entryId) containingIds.add(entryId);
     }
-    for (const parentId of (await locate(kept)).ids.slice(1)) containingIds.add(parentId);
   }
 
   let realDir: string;
