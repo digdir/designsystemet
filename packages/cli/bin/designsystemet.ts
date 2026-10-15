@@ -22,7 +22,15 @@ import { createTypes } from '../src/tokens/process/output/declarations.ts';
 import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import { entriesIn, isReachedThrough, isSameLocation, isSymlink, type Location, locate } from '../src/utils/paths.ts';
+import {
+  entriesIn,
+  isReachedThrough,
+  isSameLocation,
+  isSymlink,
+  type LocateCache,
+  type Location,
+  locate,
+} from '../src/utils/paths.ts';
 import { DEFAULT_CONFIG_FILEPATH, getConfigFile, requireThemes } from './config.ts';
 import { DEFAULT_TOKENS_CREATE_DIR, makeTokenCommands } from './deprecated.ts';
 import { configOption, dryOption, verboseOption } from './options.ts';
@@ -107,20 +115,20 @@ program
     // `tokens`, `./tokens/`, `Tokens` on a case-insensitive file system, and a path through a symlink all match.
     // Every path in the config is resolved the same way, for checking, cleaning, reading and writing.
     const resolveDir = (dir: string) => path.resolve(dsfs.outDir, dir);
+    // Nothing on disk changes until cleaning starts, so each directory is only looked up once until then.
+    const lookups: LocateCache = new Map();
     const locateDir = async (dir: string): Promise<LocatedDir> => {
       const resolved = resolveDir(dir);
-      return { dir: resolved, location: await locate(resolved) };
+      return { dir: resolved, location: await locate(resolved, lookups) };
     };
     const regeneratedDirs = await Promise.all(
-      config.output.flatMap((o) => (o.type === 'design-tokens' ? [locate(resolveDir(o.dir))] : [])),
+      config.output.flatMap((o) => (o.type === 'design-tokens' ? [locate(resolveDir(o.dir), lookups)] : [])),
     );
     const isRegenerated = (location: Location) => regeneratedDirs.some((dir) => isSameLocation(dir, location));
 
     // Clean every output directory once, before any output is created. Cleaning as part of each output would
     // delete what earlier outputs wrote when they share a directory, which makes the outputs depend on their order.
-    const cleanedDirs = await Promise.all(
-      config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir ? [locateDir(o.dir)] : [])),
-    );
+    const cleanedDirs = await Promise.all(config.output.flatMap((o) => (o.cleanDir ? [locateDir(o.dir)] : [])));
     // Existing design tokens that `css` and `types` outputs build from. Tokens in a `design-tokens` output's
     // directory are created again in this run, so cleaning them is safe.
     const inputDirs = (
@@ -131,9 +139,7 @@ program
       )
     ).filter((dir) => !isRegenerated(dir.location));
     // Directories of outputs that keep their existing files, which another output's cleaning must not delete.
-    const keptDirs = await Promise.all(
-      config.output.flatMap((o) => ('cleanDir' in o && o.cleanDir === false ? [locateDir(o.dir)] : [])),
-    );
+    const keptDirs = await Promise.all(config.output.flatMap((o) => (o.cleanDir === false ? [locateDir(o.dir)] : [])));
 
     // Check every directory before cleaning any, so nothing is deleted when one of them is unsafe.
     const outputDirs = await Promise.all(config.output.map((o) => locateDir(o.dir)));
@@ -144,6 +150,7 @@ program
       inputDirs,
       keptDirs,
       outputDirs,
+      lookups,
     });
     if (unsafeCleanError) {
       console.error(pc.redBright(unsafeCleanError));
@@ -160,7 +167,7 @@ program
     for (const { dir, location } of dirsToClean) {
       const keep: string[] = [];
       for (const other of [...inputDirs, ...keptDirs]) {
-        if (await isReachedThrough(other.dir, location)) keep.push(other.dir);
+        if (await isReachedThrough(other.dir, location, lookups)) keep.push(other.dir);
       }
       cleaning.push({ dir, keep });
     }
@@ -442,12 +449,14 @@ async function findUnsafeClean({
   inputDirs,
   keptDirs,
   outputDirs,
+  lookups,
 }: {
   cleanedDirs: LocatedDir[];
   configFile: string;
   inputDirs: LocatedDir[];
   keptDirs: LocatedDir[];
   outputDirs: LocatedDir[];
+  lookups: LocateCache;
 }): Promise<string | undefined> {
   const configDir = path.dirname(path.resolve(configFile));
   const show = (dir: string) => pc.blue(path.relative(configDir, dir) || '.');
@@ -464,7 +473,7 @@ async function findUnsafeClean({
       return `Output directory ${show(dir)} is a file, not a directory. Move or delete the file, or use another ${pc.blue('dir')}.`;
     }
 
-    if (await isReachedThrough(configFile, location)) {
+    if (await isReachedThrough(configFile, location, lookups)) {
       return `Output directory ${show(dir)} contains the config file, or a symlink to it, so cleaning it would delete the config file. ${fix}`;
     }
 
@@ -480,8 +489,9 @@ async function findUnsafeClean({
       return `Output directory ${show(dir)} is also used${also} by an output with ${pc.blue('cleanDir')} set to ${pc.blue('false')}, so cleaning it would delete files that should be kept. Use separate directories, or the same ${pc.blue('cleanDir')} for both outputs.`;
     }
 
-    for (const other of [...inputDirs, ...keptDirs, ...outputDirs]) {
-      for (const entry of await entriesIn(other.dir, location)) {
+    // `keptDirs` are output directories too, so they are checked with `outputDirs`.
+    for (const other of [...inputDirs, ...outputDirs]) {
+      for (const entry of await entriesIn(other.dir, location, lookups)) {
         if (await isSymlink(entry)) {
           const onTheWay = entry === other.dir ? '' : ` on the way to ${show(other.dir)}`;
           return `Output directory ${show(dir)} has the symlink ${show(entry)}${onTheWay}, so cleaning it would delete the symlink. Write the path to where the symlink points, or set ${pc.blue('cleanDir')} to ${pc.blue('false')} for that output.`;

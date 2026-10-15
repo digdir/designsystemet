@@ -2,14 +2,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import {
-  entriesOnTheWay,
-  isReachedThrough,
-  isSameLocation,
-  isSameOrInside,
-  isSameOrInsideLocation,
-  locate,
-} from './paths.ts';
+import { entriesOnTheWay, isReachedThrough, isSameLocation, isSameOrInsideLocation, locate } from './paths.ts';
 
 // Whether the temporary directory's file system ignores letter case, as on Windows and macOS by default.
 const caseInsensitive = await (async () => {
@@ -24,27 +17,6 @@ const caseInsensitive = await (async () => {
     await fs.rm(probe, { recursive: true, force: true });
   }
 })();
-
-describe('isSameOrInside', () => {
-  it('is true for the directory itself and anything inside it', () => {
-    expect(isSameOrInside('/project', '/project')).toBe(true);
-    expect(isSameOrInside('/project/configs', '/project')).toBe(true);
-    expect(isSameOrInside('/project/a/b', '/project')).toBe(true);
-  });
-
-  it('is false for parents and siblings', () => {
-    expect(isSameOrInside('/project', '/project/configs')).toBe(false);
-    expect(isSameOrInside('/project/other', '/project/configs')).toBe(false);
-  });
-
-  it('does not treat a sibling whose name starts with the directory name as inside it', () => {
-    expect(isSameOrInside('/project/tokens-config', '/project/tokens')).toBe(false);
-  });
-
-  it('resolves relative paths', () => {
-    expect(isSameOrInside('configs/..', '.')).toBe(true);
-  });
-});
 
 describe('on disk', () => {
   let dir: string;
@@ -90,6 +62,19 @@ describe('on disk', () => {
 
       expect(isSameLocation(await locate(at('link/New/Tokens')), await locate(at('new/tokens')))).toBe(true);
       expect(isSameLocation(await locate(at('new/tokens')), await locate(at('new/other')))).toBe(false);
+    });
+
+    it('gives the same result with a cache, and looks each path up once', async () => {
+      await fs.mkdir(at('designsystemet/tokens'), { recursive: true });
+      await fs.symlink(at('designsystemet'), at('link'), 'dir');
+      const cache = new Map();
+
+      for (const file of ['designsystemet/tokens', 'link/tokens', 'new/Tokens']) {
+        expect(await locate(at(file), cache)).toEqual(await locate(at(file)));
+      }
+      const cached = cache.get(at('designsystemet'));
+      await locate(at('designsystemet'), cache);
+      expect(cache.get(at('designsystemet'))).toBe(cached);
     });
 
     it('finds a directory inside another on disk', async () => {

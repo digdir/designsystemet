@@ -12,11 +12,9 @@ describe('toConfigTokensDir', () => {
     expect(toConfigTokensDir('/project/tokens', '/project/tokens-config')).toBe('../tokens');
   });
 
-  // The generated `design-tokens` output would point to `.` or `..`, which `cleanDir` would delete.
-  it.each([
-    ['the tokens directory', '/project/design-tokens'],
-    ['a subdirectory of the tokens directory', '/project/design-tokens/configs'],
-  ])('rejects a config file in %s', (_, configDir) => {
-    expect(() => toConfigTokensDir('/project/design-tokens', configDir)).toThrow(/inside the design tokens directory/);
+  // `cleanDir` is `false` by default, so the generated config doesn't delete the design tokens next to it.
+  it('allows a config file in the tokens directory or below it', () => {
+    expect(toConfigTokensDir('/project/design-tokens', '/project/design-tokens')).toBe('.');
+    expect(toConfigTokensDir('/project/design-tokens', '/project/design-tokens/configs')).toBe('..');
   });
 });

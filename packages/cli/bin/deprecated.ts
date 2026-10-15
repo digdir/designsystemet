@@ -4,6 +4,7 @@ import { checkAutomigrate } from '../src/automigrate.ts';
 import { convertToHex } from '../src/colors/index.ts';
 import type { CssColor } from '../src/colors/types.ts';
 import { automigrations } from '../src/migrations/index.ts';
+import { legacyBuildDir } from '../src/migrations/new-output-field.ts';
 import type { ConfigSchemaThemes } from '../src/schemas/schema.ts';
 import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
@@ -16,7 +17,7 @@ import {
 import { configOption, dryOption, parseBoolean, verboseOption } from './options.ts';
 
 export const DEFAULT_TOKENS_CREATE_DIR = './design-tokens';
-const DEFAULT_TOKENS_BUILD_DIR = './design-tokens-build';
+const DEFAULT_TOKENS_BUILD_DIR = legacyBuildDir;
 const DEFAULT_FONT = 'Inter';
 const DEFAULT_THEME_NAME = 'theme';
 

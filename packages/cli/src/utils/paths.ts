@@ -2,16 +2,6 @@ import type { BigIntStats } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-/**
- * Whether `dir` is `parent` itself or somewhere inside it, by the paths as they are written. Use `locate` to compare
- * directories by what they are on disk.
- */
-export const isSameOrInside = (dir: string, parent: string): boolean => {
-  const fromParent = path.relative(path.resolve(parent), path.resolve(dir));
-
-  return fromParent !== '..' && !fromParent.startsWith(`..${path.sep}`) && !path.isAbsolute(fromParent);
-};
-
 /** Identifies a file or directory on disk, however its path is written: letter case, `..`, or a symlink to it. */
 export const fileId = (stats: BigIntStats) => `${stats.dev}:${stats.ino}`;
 
@@ -50,31 +40,39 @@ export type Location = {
   missing: string[];
 };
 
-export async function locate(file: string): Promise<Location> {
-  const missing: string[] = [];
-  let existing = path.resolve(file);
-  let real: string | undefined;
-  while (real === undefined) {
-    try {
-      real = await fs.realpath(existing);
-    } catch (error) {
-      if (!isNotFound(error)) throw error;
-      const parent = path.dirname(existing);
-      if (parent === existing) return { ids: [], missing };
-      missing.unshift(path.basename(existing).toLowerCase());
-      existing = parent;
-    }
+/**
+ * Remembers where paths are, to look up the same directories only once while nothing on disk changes, e.g. while
+ * checking what cleaning would delete. Use a new one after files are deleted or created.
+ */
+export type LocateCache = Map<string, Promise<Location>>;
+
+export function locate(file: string, cache?: LocateCache): Promise<Location> {
+  const resolved = path.resolve(file);
+  const cached = cache?.get(resolved);
+  if (cached) return cached;
+
+  const location = locateResolved(resolved, cache);
+  cache?.set(resolved, location);
+  return location;
+}
+
+async function locateResolved(resolved: string, cache?: LocateCache): Promise<Location> {
+  const parent = path.dirname(resolved);
+  let real: string;
+  try {
+    real = await fs.realpath(resolved);
+  } catch (error) {
+    if (!isNotFound(error)) throw error;
+    if (parent === resolved) return { ids: [], missing: [] };
+    const { ids, missing } = await locate(parent, cache);
+    return { ids, missing: [...missing, path.basename(resolved).toLowerCase()] };
   }
 
   // The parents of the real path are the parents on disk, wherever symlinks on the way to it point.
-  const ids: string[] = [];
-  for (let dir = real; ; dir = path.dirname(dir)) {
-    const id = await statId(dir);
-    if (id) ids.push(id);
-    if (path.dirname(dir) === dir) break;
-  }
-
-  return { ids, missing };
+  const id = await statId(real);
+  const realParent = path.dirname(real);
+  const parentIds = realParent === real ? [] : (await locate(realParent, cache)).ids;
+  return { ids: id ? [id, ...parentIds] : parentIds, missing: [] };
 }
 
 const hasSameExisting = (a: Location, b: Location) => a.ids.length > 0 && a.ids[0] === b.ids[0];
@@ -155,18 +153,18 @@ export async function entriesOnTheWay(file: string): Promise<string[]> {
  * the ones that cleaning `dir` would delete. So `file` is found however it and `dir` are written, also through chains
  * of symlinks.
  */
-export async function entriesIn(file: string, dir: Location): Promise<string[]> {
+export async function entriesIn(file: string, dir: Location, cache?: LocateCache): Promise<string[]> {
   const inDir: string[] = [];
   for (const entry of await entriesOnTheWay(file)) {
-    if (isSameOrInsideLocation(await locate(path.dirname(entry)), dir)) inDir.push(entry);
+    if (isSameOrInsideLocation(await locate(path.dirname(entry), cache), dir)) inDir.push(entry);
   }
 
   return inDir;
 }
 
 /** Whether cleaning `dir` deletes `file`, or a directory or symlink on the way to it. */
-export const isReachedThrough = async (file: string, dir: Location): Promise<boolean> =>
-  (await entriesIn(file, dir)).length > 0;
+export const isReachedThrough = async (file: string, dir: Location, cache?: LocateCache): Promise<boolean> =>
+  (await entriesIn(file, dir, cache)).length > 0;
 
 /** Whether `file` is a symlink itself, not following it. `false` when it doesn't exist. */
 export const isSymlink = async (file: string): Promise<boolean> => {
