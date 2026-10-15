@@ -1,4 +1,4 @@
-import type { BigIntStats, CopyOptions, PathLike } from 'node:fs';
+import { type BigIntStats, type CopyOptions, constants as fsConstants, type PathLike } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import pc from 'picocolors';
@@ -23,8 +23,10 @@ export type CleanDir = { dir: string; keep: string[] };
  * Deletes everything in each `dir` except the directories in its `keep`, and the directories they are in, which are
  * cleaned the same way. Symlinks are deleted and never followed, so nothing outside `dir` is deleted.
  *
- * Everything to delete in every directory is found first, and nothing is deleted until that has succeeded. So when a
- * path can't be looked up, e.g. without permission to read it, cleaning stops before deleting anything.
+ * Everything to delete in every directory is found first, including everything in the directories that are deleted,
+ * and nothing is deleted until that has succeeded. So when something can't be read or deleted, e.g. without
+ * permission, cleaning stops before deleting anything. Only changes made to the files by something else while the
+ * CLI runs can still stop it halfway.
  *
  * Directories are matched by what they are on disk, not by their paths. So a kept directory is found however its
  * path is written: with other letter case on case-insensitive file systems such as on Windows and macOS, or through
@@ -92,9 +94,26 @@ async function findEntriesToDelete(dir: string, keptIds: Set<string>, containing
       isContaining(entry) && !isKept(entry) ? [findEntriesToDelete(entry.entry, keptIds, containingIds)] : [],
     ),
   );
-  const here = entries.filter((entry) => !isKept(entry) && !isContaining(entry)).map(({ entry }) => entry);
+  const here = entries.filter((entry) => !isKept(entry) && !isContaining(entry));
+  if (here.length > 0) await assertCanChange(dir);
+  await Promise.all(here.flatMap((entry) => (entry.isDirectory ? [assertCanDeleteAll(entry.entry)] : [])));
 
-  return [...here, ...below.flat()];
+  return [...here.map(({ entry }) => entry), ...below.flat()];
+}
+
+/** Throws when what is in `dir` can't be deleted, e.g. without permission to change it. */
+const assertCanChange = (dir: string) => fs.access(dir, fsConstants.W_OK | fsConstants.X_OK);
+
+/**
+ * Throws when something in `dir`, which is deleted with everything in it, can't be deleted: when a directory in it
+ * can't be read or changed. Symlinks are not followed.
+ */
+async function assertCanDeleteAll(dir: string): Promise<void> {
+  await assertCanChange(dir);
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  await Promise.all(
+    entries.flatMap((entry) => (entry.isDirectory() ? [assertCanDeleteAll(path.join(dir, entry.name))] : [])),
+  );
 }
 
 class FileSystem {

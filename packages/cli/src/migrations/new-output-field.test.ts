@@ -90,6 +90,17 @@ describe('new output field migration', () => {
     });
   });
 
+  // Outputs that share a directory must clean it the same way, or the CLI stops with an error.
+  it('cleans CSS and types too when the design tokens are in the same directory', () => {
+    expect(parseJsonc(migrateToOutputField('{ "outDir": "./design-tokens-build", "clean": true }'))).toEqual({
+      output: [
+        { type: 'design-tokens', dir: './design-tokens-build', cleanDir: true },
+        { type: 'css', dir: 'design-tokens-build', tokensDir: './design-tokens-build', cleanDir: true },
+        { type: 'types', dir: 'design-tokens-build', tokensDir: './design-tokens-build', cleanDir: true },
+      ],
+    });
+  });
+
   it('only removes deprecated fields when output is already set', () => {
     const migrated = migrateToOutputField('{ "outDir": "tokens", "output": ["css"] }');
 

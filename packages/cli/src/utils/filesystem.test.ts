@@ -192,6 +192,49 @@ describe('removeAllExcept', () => {
     },
   );
 
+  // `types/locked` is deleted with everything in it, but can't be read, so nothing is deleted, also not in `css`.
+  it.skipIf(process.platform === 'win32' || process.getuid?.() === 0)(
+    "deletes nothing when a directory to delete can't be read",
+    async () => {
+      await write('css/stale.css');
+      await write('types/locked/stale.d.ts');
+      await fs.chmod(path.join(dir, 'types/locked'), 0o111);
+      try {
+        await expect(
+          cleanDirs([
+            { dir: path.join(dir, 'css'), keep: [] },
+            { dir: path.join(dir, 'types'), keep: [] },
+          ]),
+        ).rejects.toThrow(/EACCES/);
+      } finally {
+        await fs.chmod(path.join(dir, 'types/locked'), 0o755);
+      }
+
+      expect(await files()).toEqual(['css/stale.css', 'types/locked/stale.d.ts']);
+    },
+  );
+
+  it.skipIf(process.platform === 'win32' || process.getuid?.() === 0)(
+    "deletes nothing when files in a directory to clean can't be deleted",
+    async () => {
+      await write('css/stale.css');
+      await write('types/stale.d.ts');
+      await fs.chmod(path.join(dir, 'types'), 0o555);
+      try {
+        await expect(
+          cleanDirs([
+            { dir: path.join(dir, 'css'), keep: [] },
+            { dir: path.join(dir, 'types'), keep: [] },
+          ]),
+        ).rejects.toThrow(/EACCES/);
+      } finally {
+        await fs.chmod(path.join(dir, 'types'), 0o755);
+      }
+
+      expect(await files()).toEqual(['css/stale.css', 'types/stale.d.ts']);
+    },
+  );
+
   it('cleans directories that are inside each other', async () => {
     await write('out/stale.css');
     await write('out/sub/stale.css');

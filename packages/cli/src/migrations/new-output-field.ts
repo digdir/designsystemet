@@ -119,12 +119,16 @@ export const toOutput = (
 ) => {
   const isDefaultDir = outDir === undefined || path.posix.normalize(outDir) === path.posix.normalize(defaultOutDir);
   const cleanDir = clean === true ? { cleanDir: true } : {};
+  const tokensDir = isDefaultDir ? defaultOutDir : outDir;
+  // When the design tokens are in `buildDir` too, `clean` cleaned the CSS and types with them, and outputs that share
+  // a directory must clean it the same way.
+  const buildCleanDir = path.posix.normalize(tokensDir) === path.posix.normalize(buildDir) ? cleanDir : {};
 
   return [
-    { type: 'design-tokens' as const, dir: isDefaultDir ? defaultOutDir : outDir, ...cleanDir },
+    { type: 'design-tokens' as const, dir: tokensDir, ...cleanDir },
     // CSS and types are built from the design tokens, so they must read them from the same directory.
-    { type: 'css' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }) },
-    { type: 'types' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }) },
+    { type: 'css' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...buildCleanDir },
+    { type: 'types' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...buildCleanDir },
   ];
 };
 
