@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { removeAllExcept } from './filesystem.ts';
+import { cleanDirs, removeAllExcept } from './filesystem.ts';
 
 // Whether the temporary directory's file system ignores letter case, as on Windows and macOS by default.
 const caseInsensitive = await (async () => {
@@ -148,6 +148,61 @@ describe('removeAllExcept', () => {
       }
     },
   );
+
+  // `b` can be entered but not read, so what is in it can't be known. Nothing is deleted, also not in `a`.
+  it.skipIf(process.platform === 'win32' || process.getuid?.() === 0)(
+    "deletes nothing when a directory to clean can't be read",
+    async () => {
+      await write('a/stale.css');
+      await write('a/keep/tokens.json');
+      await write('b/stale.css');
+      await write('b/keep/tokens.json');
+      await fs.chmod(path.join(dir, 'b'), 0o111);
+      try {
+        await expect(removeAllExcept(dir, [path.join(dir, 'a/keep'), path.join(dir, 'b/keep')])).rejects.toThrow(
+          /EACCES/,
+        );
+      } finally {
+        await fs.chmod(path.join(dir, 'b'), 0o755);
+      }
+
+      expect(await files()).toEqual(['a/keep/tokens.json', 'a/stale.css', 'b/keep/tokens.json', 'b/stale.css']);
+    },
+  );
+
+  it.skipIf(process.platform === 'win32' || process.getuid?.() === 0)(
+    "deletes nothing in any directory when another directory to clean can't be read",
+    async () => {
+      await write('css/stale.css');
+      await write('types/keep/tokens.json');
+      await write('types/stale.d.ts');
+      await fs.chmod(path.join(dir, 'types'), 0o111);
+      try {
+        await expect(
+          cleanDirs([
+            { dir: path.join(dir, 'css'), keep: [] },
+            { dir: path.join(dir, 'types'), keep: [path.join(dir, 'types/keep')] },
+          ]),
+        ).rejects.toThrow(/EACCES/);
+      } finally {
+        await fs.chmod(path.join(dir, 'types'), 0o755);
+      }
+
+      expect(await files()).toEqual(['css/stale.css', 'types/keep/tokens.json', 'types/stale.d.ts']);
+    },
+  );
+
+  it('cleans directories that are inside each other', async () => {
+    await write('out/stale.css');
+    await write('out/sub/stale.css');
+
+    await cleanDirs([
+      { dir: path.join(dir, 'out/sub'), keep: [] },
+      { dir: path.join(dir, 'out'), keep: [] },
+    ]);
+
+    expect(await fs.readdir(path.join(dir, 'out'))).toEqual([]);
+  });
 
   it('deletes symlinks that point nowhere or to each other', async () => {
     await fs.mkdir(path.join(dir, 'output'));

@@ -16,9 +16,15 @@ const lstatEntry = async (file: string): Promise<{ id: string; isDirectory: bool
   }
 };
 
+/** A directory to clean, and the directories in it to keep. */
+export type CleanDir = { dir: string; keep: string[] };
+
 /**
- * Deletes everything in `dir` except the directories in `keep`, and the directories they are in, which are cleaned
- * the same way. Symlinks in `dir` are deleted and never followed, so nothing outside `dir` is deleted.
+ * Deletes everything in each `dir` except the directories in its `keep`, and the directories they are in, which are
+ * cleaned the same way. Symlinks are deleted and never followed, so nothing outside `dir` is deleted.
+ *
+ * Everything to delete in every directory is found first, and nothing is deleted until that has succeeded. So when a
+ * path can't be looked up, e.g. without permission to read it, cleaning stops before deleting anything.
  *
  * Directories are matched by what they are on disk, not by their paths. So a kept directory is found however its
  * path is written: with other letter case on case-insensitive file systems such as on Windows and macOS, or through
@@ -27,7 +33,19 @@ const lstatEntry = async (file: string): Promise<{ id: string; isDirectory: bool
  * `dir` can't be a symlink, and a kept directory can't be reached through a symlink in `dir`, since that symlink
  * would be deleted. The CLI checks both before cleaning, and stops with an error instead.
  */
-export async function removeAllExcept(dir: string, keep: string[]): Promise<void> {
+export async function cleanDirs(dirs: CleanDir[]): Promise<void> {
+  const toDelete = await Promise.all(dirs.map(({ dir, keep }) => findToDelete(dir, keep)));
+  // One directory at a time, since one can be inside another, and its files are then already deleted.
+  for (const paths of toDelete) {
+    await Promise.all(paths.map((file) => fs.rm(file, { recursive: true, force: true })));
+  }
+}
+
+/** Deletes everything in `dir` except the directories in `keep`. See `cleanDirs`. */
+export const removeAllExcept = (dir: string, keep: string[]): Promise<void> => cleanDirs([{ dir, keep }]);
+
+/** The files, directories and symlinks that cleaning `dir` deletes, without deleting anything. */
+export async function findToDelete(dir: string, keep: string[]): Promise<string[]> {
   const keptIds = new Set<string>();
   const containingIds = new Set<string>();
   for (const kept of keep) {
@@ -46,16 +64,16 @@ export async function removeAllExcept(dir: string, keep: string[]): Promise<void
   try {
     stats = await fs.lstat(dir, { bigint: true });
   } catch (error) {
-    if (isNotFound(error)) return;
+    if (isNotFound(error)) return [];
     throw error;
   }
   if (!stats.isDirectory()) throw new Error(`Can't clean ${dir}, since it isn't a directory.`);
-  if (keptIds.has(fileId(stats))) return;
+  if (keptIds.has(fileId(stats))) return [];
 
-  await removeEntriesExcept(dir, keptIds, containingIds);
+  return findEntriesToDelete(dir, keptIds, containingIds);
 }
 
-async function removeEntriesExcept(dir: string, keptIds: Set<string>, containingIds: Set<string>): Promise<void> {
+async function findEntriesToDelete(dir: string, keptIds: Set<string>, containingIds: Set<string>): Promise<string[]> {
   const entries = await Promise.all(
     (await fs.readdir(dir)).map(async (name) => {
       const entry = path.join(dir, name);
@@ -63,24 +81,20 @@ async function removeEntriesExcept(dir: string, keptIds: Set<string>, containing
     }),
   );
 
-  // Every entry is looked up, and every directory below is cleaned, before anything here is deleted. So when one
-  // can't be looked up, e.g. without permission to read it, cleaning stops before deleting what it should keep.
   // Only directories are kept or cleaned. A symlink is not a directory itself, so it is deleted and never followed.
   const isKept = ({ id, isDirectory }: { id?: string; isDirectory?: boolean }) =>
     isDirectory === true && id !== undefined && keptIds.has(id);
   const isContaining = ({ id, isDirectory }: { id?: string; isDirectory?: boolean }) =>
     isDirectory === true && id !== undefined && containingIds.has(id);
 
-  await Promise.all(
+  const below = await Promise.all(
     entries.flatMap((entry) =>
-      isContaining(entry) && !isKept(entry) ? [removeEntriesExcept(entry.entry, keptIds, containingIds)] : [],
+      isContaining(entry) && !isKept(entry) ? [findEntriesToDelete(entry.entry, keptIds, containingIds)] : [],
     ),
   );
-  await Promise.all(
-    entries.flatMap((entry) =>
-      isKept(entry) || isContaining(entry) ? [] : [fs.rm(entry.entry, { recursive: true, force: true })],
-    ),
-  );
+  const here = entries.filter((entry) => !isKept(entry) && !isContaining(entry)).map(({ entry }) => entry);
+
+  return [...here, ...below.flat()];
 }
 
 class FileSystem {
@@ -184,17 +198,24 @@ class FileSystem {
     return fs.rm(dir, { recursive: true, force: true });
   };
 
-  /** Deletes what's in `dir`, except the directories in `keep`. See `removeAllExcept`. */
-  emptyDir = async (dir: string, keep: string[] = []) => {
-    const keeping = keep.length > 0 ? `, keeping ${keep.map((kept) => pc.blue(kept)).join(', ')}` : '';
-    if (this.dry) {
-      console.log(`${pc.blue('emptyDir')} ${dir}${keeping}`);
-      return Promise.resolve();
+  /**
+   * Deletes what's in each `dir`, except the directories in its `keep`. Nothing is deleted until everything to delete
+   * has been found, also in a dry run, so that a dry run stops with the same errors. See `cleanDirs`.
+   */
+  cleanDirs = async (dirs: CleanDir[]) => {
+    for (const { dir, keep } of dirs) {
+      const keeping = keep.length > 0 ? `, keeping ${keep.map((kept) => pc.blue(kept)).join(', ')}` : '';
+      console.log(
+        this.dry ? `${pc.blue('cleanDir')} ${dir}${keeping}` : `\n🔥 Cleaning dir ${pc.red(dir.trim())}${keeping}`,
+      );
     }
 
-    console.log(`\n🔥 Cleaning dir ${pc.red(`${dir.trim()}`)}${keeping}`);
+    if (this.dry) {
+      await Promise.all(dirs.map(({ dir, keep }) => findToDelete(dir, keep)));
+      return;
+    }
 
-    return removeAllExcept(dir, keep);
+    return cleanDirs(dirs);
   };
 
   readFile = async (path: PathLike, allowFileNotFound?: boolean) => {

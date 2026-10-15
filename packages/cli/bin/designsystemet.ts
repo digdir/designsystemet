@@ -21,7 +21,7 @@ import { generateConfigFromTokens } from '../src/tokens/generate-config.ts';
 import { createTypes } from '../src/tokens/process/output/declarations.ts';
 import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import type { OutputFile, Theme } from '../src/tokens/types.ts';
-import { dsfs } from '../src/utils/filesystem.ts';
+import { type CleanDir, dsfs } from '../src/utils/filesystem.ts';
 import {
   entriesIn,
   isReachedThrough,
@@ -163,7 +163,7 @@ program
     const dirsToClean = cleanedDirs.filter(
       (dir, i, dirs) => dirs.findIndex((other) => isSameLocation(other.location, dir.location)) === i,
     );
-    const cleaning: { dir: string; keep: string[] }[] = [];
+    const cleaning: CleanDir[] = [];
     for (const { dir, location } of dirsToClean) {
       const keep: string[] = [];
       for (const other of [...inputDirs, ...keptDirs]) {
@@ -171,9 +171,7 @@ program
       }
       cleaning.push({ dir, keep });
     }
-    for (const { dir, keep } of cleaning) {
-      await dsfs.emptyDir(dir, keep);
-    }
+    await dsfs.cleanDirs(cleaning);
 
     for (const output of sortedOutput) {
       const outDir = resolveDir(output.dir);
