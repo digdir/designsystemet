@@ -122,12 +122,14 @@ export async function entriesOnTheWay(file: string): Promise<string[]> {
     }
     if (++symlinks > MAX_SYMLINKS) break;
 
-    // Follow the symlink: go on from where it points, relative to the directory it is in.
-    if (windows || path.isAbsolute(target)) {
+    // Follow the symlink: go on from where it points, relative to the directory it is in. Like the path itself, the
+    // target is kept as written except on Windows, so `..` in it is followed on disk.
+    if (windows) {
       const resolved = path.resolve(dir, target);
       dir = path.parse(resolved).root;
       rest.unshift(...split(resolved.slice(dir.length)));
     } else {
+      if (path.isAbsolute(target)) dir = path.parse(target).root;
       rest.unshift(...split(target));
     }
   }

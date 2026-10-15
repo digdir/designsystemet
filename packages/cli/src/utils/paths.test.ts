@@ -144,6 +144,17 @@ describe('on disk', () => {
       },
     );
 
+    // `bridge` points to `output/sub`, and `config.json` points to `<dir>/bridge/../config.json`, which is in `output`.
+    it.skipIf(process.platform === 'win32')('follows `..` after a symlink in an absolute symlink target', async () => {
+      await fs.mkdir(at('output/sub'), { recursive: true });
+      await write('output/config.json');
+      await fs.symlink(at('output/sub'), at('bridge'), 'dir');
+      await fs.symlink(`${dir}/bridge/../config.json`, at('config.json'), 'file');
+
+      expect((await entriesOnTheWay(at('config.json'))).at(-1)).toBe(at('output/config.json'));
+      expect(await isReachedThrough(at('config.json'), await locate(at('output')))).toBe(true);
+    });
+
     it('stops at a cycle of symlinks', async () => {
       await fs.symlink(at('b'), at('a'), 'dir');
       await fs.symlink(at('a'), at('b'), 'dir');

@@ -146,6 +146,36 @@ describe('removeAllExcept', () => {
     expect(await files()).toEqual(['shared/tokens/color.json']);
   });
 
+  // `output/link` points outside, and a kept output uses `output/link/tokens`, which isn't created yet.
+  it("keeps the symlinks on the way to a kept directory that doesn't exist yet", async () => {
+    await fs.mkdir(path.join(dir, 'shared'));
+    await write('output/theme.css');
+    await fs.symlink(path.join(dir, 'shared'), path.join(dir, 'output/link'), 'dir');
+
+    await removeAllExcept(path.join(dir, 'output'), [path.join(dir, 'output/link/tokens')]);
+
+    expect((await fs.lstat(path.join(dir, 'output/link'))).isSymbolicLink()).toBe(true);
+    expect(await files()).toEqual([]);
+  });
+
+  it('keeps only the symlinks on the way to the directories in keepWayTo', async () => {
+    await fs.mkdir(path.join(dir, 'shared'));
+    await write('shared/old.d.ts');
+    await write('output/types/old.d.ts');
+    await write('output/theme.css');
+    await fs.symlink(path.join(dir, 'shared'), path.join(dir, 'output/link'), 'dir');
+
+    await removeAllExcept(
+      path.join(dir, 'output'),
+      [],
+      [path.join(dir, 'output/link/types'), path.join(dir, 'output/types')],
+    );
+
+    expect((await fs.lstat(path.join(dir, 'output/link'))).isSymbolicLink()).toBe(true);
+    expect((await fs.stat(path.join(dir, 'output/types'))).isDirectory()).toBe(true);
+    expect(await files()).toEqual(['shared/old.d.ts']);
+  });
+
   it('deletes symlinks without following them when nothing below them is kept', async () => {
     const outside = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-outside-'));
     try {

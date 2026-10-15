@@ -13,22 +13,28 @@ import { entriesOnTheWay, fileId, statId } from './paths.ts';
  *
  * Directories are matched by what they are on disk, not by their paths. So a kept directory is found however its
  * path is written: with other letter case on case-insensitive file systems such as on Windows and macOS, or through
- * symlinks, also chains of them, either inside `dir` or outside it. Kept directories that aren't in `dir` are ignored.
+ * symlinks, also chains of them, either inside `dir` or outside it. Kept directories that aren't in `dir` are ignored,
+ * and ones that don't exist yet only keep the symlinks on the way to them.
+ *
+ * For the directories in `keepWayTo`, only the symlinks on the way to them are kept, so they are created or written
+ * where the symlinks point. Everything else in them is deleted.
  */
-export async function removeAllExcept(dir: string, keep: string[]): Promise<void> {
+export async function removeAllExcept(dir: string, keep: string[], keepWayTo: string[] = []): Promise<void> {
   const keptIds = new Set<string>();
   const containingIds = new Set<string>();
-  for (const kept of keep) {
-    const id = await statId(kept);
-    // A kept directory that doesn't exist has nothing to keep.
-    if (!id) continue;
-    keptIds.add(id);
+  for (const kept of [...keep, ...keepWayTo]) {
     // The directories and symlinks on the way to the kept directory, following every symlink, so the ones in `dir`
-    // are kept too.
-    for (const entry of (await entriesOnTheWay(kept)).slice(0, -1)) {
+    // are kept too. Also when the kept directory doesn't exist yet: a symlink on the way to it decides where it is
+    // created.
+    for (const entry of await entriesOnTheWay(kept)) {
       const entryId = await statId(entry);
       if (entryId) containingIds.add(entryId);
     }
+  }
+  for (const kept of keep) {
+    // The kept directory itself is checked before the ones containing it, so it is kept as it is.
+    const id = await statId(kept);
+    if (id) keptIds.add(id);
   }
 
   let realDir: string;
@@ -160,8 +166,8 @@ class FileSystem {
     return fs.rm(dir, { recursive: true, force: true });
   };
 
-  /** Deletes what's in `dir`, except the directories in `keep`. See `removeAllExcept`. */
-  emptyDir = async (dir: string, keep: string[] = []) => {
+  /** Deletes what's in `dir`, except the directories in `keep`, and the symlinks on the way to `keepWayTo`. See `removeAllExcept`. */
+  emptyDir = async (dir: string, keep: string[] = [], keepWayTo: string[] = []) => {
     const keeping = keep.length > 0 ? `, keeping ${keep.map((kept) => pc.blue(kept)).join(', ')}` : '';
     if (this.dry) {
       console.log(`${pc.blue('emptyDir')} ${dir}${keeping}`);
@@ -170,7 +176,7 @@ class FileSystem {
 
     console.log(`\n🔥 Cleaning dir ${pc.red(`${dir.trim()}`)}${keeping}`);
 
-    return removeAllExcept(dir, keep);
+    return removeAllExcept(dir, keep, keepWayTo);
   };
 
   readFile = async (path: PathLike, allowFileNotFound?: boolean) => {
