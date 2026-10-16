@@ -1,5 +1,29 @@
 # Change Log
 
+## 1.24.0
+
+### Patch Changes
+
+- Fix `<theme>.tailwind.css` missing variables `--text-sm`, `--text-md` and `--text-lg`, mapped to the body font sizes. Generate a new theme file to get the updated fixed file. ([#5451](https://github.com/digdir/designsystemet/pull/5451))
+
+- Update npm non-major dependencies ([#5506](https://github.com/digdir/designsystemet/pull/5506))
+
+- **data-color:** Sets `color` to `--ds-color-text-default` so text color updates when the color mode changes. ([#5419](https://github.com/digdir/designsystemet/pull/5419))
+
+- **Suggestion:** No longer counts the hidden empty option in the screen reader hit count when other options are shown ([#5457](https://github.com/digdir/designsystemet/pull/5457))
+
+- **Breadcrumbs, Chip, Dialog, Pagination, Suggestion:** Added English translations of the default labels set in CSS custom properties. ([#5501](https://github.com/digdir/designsystemet/pull/5501))
+
+- **Table:** No longer causes sort buttons to overflow border-radius (thanks @ericbstie) ([#5441](https://github.com/digdir/designsystemet/pull/5441))
+
+- **Alert, Error summary, Table:** Revert `border-radius` from `--ds-border-radius-lg` to `--ds-border-radius-md` to harmonize with sibling elements ([#5440](https://github.com/digdir/designsystemet/pull/5440))
+
+- Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479))
+
+- **Table**: Applies hover and sorted background to `th[aria-sort]` instead of nested `<button>` ([#5441](https://github.com/digdir/designsystemet/pull/5441))
+
+- **Dialog:** Added a default label through the CSS custom property `--dsc-dialog-close-label` for the close button. ([#5501](https://github.com/digdir/designsystemet/pull/5501))
+
 ## 1.23.0
 
 ### Minor Changes
