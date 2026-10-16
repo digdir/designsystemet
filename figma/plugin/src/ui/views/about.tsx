@@ -1,4 +1,5 @@
 import { Heading, Link, List, Paragraph } from '@digdir/designsystemet-react';
+import { version } from '../../../package.json';
 import { postToPlugin } from '../post-to-plugin';
 
 const SLACK_URL = 'https://www.designsystemet.no/slack';
@@ -64,6 +65,9 @@ export function AboutView(): React.JSX.Element {
           Slack
         </Link>{' '}
         community.
+      </Paragraph>
+      <Paragraph data-size='sm' className='about-version'>
+        Version {version}
       </Paragraph>
     </div>
   );
