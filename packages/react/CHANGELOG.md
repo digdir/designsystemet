@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.24.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5506](https://github.com/digdir/designsystemet/pull/5506))
+
+- Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479))
+
+- **Dialog:** Fixed accessible name warning when heading is present ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+
+- **ToggleGroup:** Now allows overwriting `data-variant` on `ToggleGroup.Item` ([#5455](https://github.com/digdir/designsystemet/pull/5455))
+
+- **AvatarStack:** Now stable, please switch from `EXPERIMENTAL_AvatarStack` to `AvatarStack` ([#5496](https://github.com/digdir/designsystemet/pull/5496))
+
+- **Dialog:** Automatically uses the first heading as its accessible name if one is missing, and warns when neither is provided. ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
+- **Textarea:** Fixed hydration warning ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+
 ## 1.23.0
 
 ### Patch Changes
