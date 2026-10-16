@@ -1,0 +1,122 @@
+---
+title: Synkroniser Design Tokens med Tokens Studio
+sidebar_title: Tokens Studio
+description: Hvis du vil konfigurere Designsystemet på måter config-filen ikke støtter ennå, endrer du Design Tokens og synkroniserer dem med Figma med Tokens Studio.
+date: 2026-10-13
+category: Figma
+color: yellow
+icon: ArrowsCirclepathIcon
+published: true
+order: 45
+search_terms: tokens studio, design tokens, synkronisering
+---
+
+Hvis du vil konfigurere Designsystemet på måter config-filen ikke støtter ennå, kan du endre hva du vil i Designsystemet ved å redigere Design Tokens. [Designsystemet-pluginen](/no/fundamentals/figma/plugin) kan ikke importere de endringene til Figma, så da synkroniserer du Design Tokens med Figma med pluginen Tokens Studio i stedet.
+
+Dette bygger på [Bygg ditt tema](/no/fundamentals/start-here/own-theme), med config-filen din i et Git repository.
+
+## Slik setter du det opp
+
+1. Lag Design Tokens én gang: legg til `"design-tokens"` i `output` i config-filen, og kjør CLI-et i mappen med den.
+
+```json
+{
+  "output": ["design-tokens", "css"],
+  "themes": {
+    "theme": {
+      "colors": {
+        "primary": "#0062BA",
+        "neutral": "#1E2B3C",
+        "extra1": "#F45F63"
+      },
+      "borderRadius": 4
+    }
+  }
+}
+```
+
+```bash
+npx @digdir/designsystemet@latest
+```
+
+Dette lagrer Design Tokens i en mappe som heter `designsystemet/design-tokens`. Det er her du gjør endringene dine i dem.
+
+2. Bygg CSS-en fra Design Tokens dine, i stedet for å lage Design Tokens på nytt fra config-filen. Endre `output` til:
+
+```json
+"output": [
+  { "type": "css", "tokensDir": "designsystemet/design-tokens" }
+]
+```
+
+Kjør CLI-et på nytt. Det bygger CSS-en fra Design Tokens dine, og lar Design Tokens være som de er. Push endringene til ditt repo.
+
+**Husk å kjøre CLI-et hver gang du endrer Design Tokens.**
+
+3. Installer pluginen [Tokens Studio (figma.com)](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)). Den sørger for kobling mellom Figma og kode. Du trenger *ikke* pro-lisens.
+
+<Image
+  src='/img/fundamentals/start-here/own-theme/tokenstudio.png'
+  alt='Skjermbilde av Figma som vise hvor du finner plugins'
+  boxShadow={false}
+/>
+
+  - I pluginen skal du nå sette opp kobling til ditt Git repo. Se Tokens Studio sin guide "[Sync your Design Tokens with code (tokens.studio)](https://docs.tokens.studio/token-storage/remote/#sync-providers)" som forklarer hvordan du gjør dette for ulike Git Providers.
+  - Husk å sette "Token storage location" til `designsystemet/design-tokens` (eller det du har valgt å kalle mappen din med Design Tokens).
+
+<Alert data-color="info">
+Du kan endre Design Tokens i repoet ditt, eller i Tokens Studio og pushe dem. Kjør CLI-et etterpå for å bygge CSS-en fra dem.
+</Alert>
+
+4. I Tokens Studio velg "Pull"-ikonet for å hente tokenene inn i Figma.
+
+<Image
+  src='/img/fundamentals/start-here/own-theme/tokens-studio-pull-button.png'
+  alt='Skjermbilde av Tokens Studio og hvor du finner pull knappen'
+  boxShadow={false}
+/>
+
+Velg `Styles & variables` og `Export styles & variables to Figma`.
+
+<Image
+  src='/img/fundamentals/start-here/own-theme/tokens-export.webp'
+  alt='Skjermbilde av Tokens Studio og hvor du finner export knappen'
+  boxShadow={false}
+/>
+
+Pass på at du har disse innstillingene før du trykker `Confirm`:
+
+<Image
+  src='/img/fundamentals/start-here/own-theme/tokens-export-options.webp'
+  alt='Skjermbilde av Tokens Studio og hvilke innstillinger du skal bruke når du eksporterer tokens til Figma'
+  boxShadow={false}
+/>
+
+Velg `Themes`, `Select All` og `Export to Figma`:
+
+<Image
+  src='/img/fundamentals/start-here/own-theme/tokens-export-themes-select.webp'
+  alt='Skjermbilde av Tokens Studio som viser at du må velge Themes og deretter Select All'
+  boxShadow={false}
+/>
+
+Nå skal du se alle komponentene med dine egne profilfarger i Figma.
+
+**Obs:** Token Studio sletter ikke eksisterende modes ved eksport. Etter eksport: kontroller collectionene Theme og Color, og fjern eventuelle standardtemaer som fortsatt ligger igjen fra community filen.
+
+<Alert data-color="info">
+Når Design Tokens oppdateres i koden, kan du enkelt hente de nye verdiene inn i Figma ved å bruke "Pull"-knappen i Tokens Studio igjen.
+</Alert>
+
+## Når du endrer temaet
+
+Når du lager Design Tokens på nytt fra config-filen, blir endringene dine i dem erstattet. For å hente inn endringer fra Temabyggeren, som nye farger, legger du `design-tokens`-outputen tilbake i `output`, med `cleanDir` satt til `true`, og kjører CLI-et:
+
+```json
+"output": [
+  { "type": "design-tokens", "cleanDir": true },
+  { "type": "css", "tokensDir": "designsystemet/design-tokens" }
+]
+```
+
+`cleanDir` fjerner Design Tokens for farger du har fjernet. Deretter gjør du endringene dine i Design Tokens på nytt, for eksempel ved å gjenopprette dem med Git, og endrer `output` tilbake som i steg 2.
