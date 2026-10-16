@@ -3,14 +3,20 @@ import { z } from 'zod';
 
 const designTokensOutputSchema = z.object({
   type: z.literal('design-tokens').describe('The type of output file'),
-  dir: z.string().default('design-tokens').describe('The output directory'),
-  cleanDir: z.boolean().default(true).describe('Whether to clean the output directory before generating files'),
+  dir: z.string().default('designsystemet/design-tokens').describe('The output directory'),
+  cleanDir: z
+    .boolean()
+    .default(false)
+    .describe('Whether to delete the files in the output directory before generating files'),
 });
 
 const cssOutputSchema = z.object({
   type: z.literal('css').describe('The type of output file'),
-  dir: z.string().default('design-tokens-build').describe('The output directory'),
-  cleanDir: z.boolean().default(true).describe('Whether to clean the output directory before generating files'),
+  dir: z.string().default('designsystemet').describe('The output directory'),
+  cleanDir: z
+    .boolean()
+    .default(false)
+    .describe('Whether to delete the files in the output directory before generating files'),
   tokensDir: z
     .string()
     .optional()
@@ -25,7 +31,11 @@ const cssOutputSchema = z.object({
 
 const typesOutputSchema = z.object({
   type: z.literal('types').describe('The type of output file'),
-  dir: z.string().default('design-tokens-build').describe('The output directory'),
+  dir: z.string().default('designsystemet').describe('The output directory'),
+  cleanDir: z
+    .boolean()
+    .default(false)
+    .describe('Whether to delete the files in the output directory before generating files'),
   tokensDir: z
     .string()
     .optional()
@@ -55,7 +65,7 @@ const deprecatedFields = ['outDir', 'clean'] as const;
 export const outputConfigShape = {
   output: z
     .array(outputSchema)
-    .prefault(['design-tokens', 'css', 'types'])
+    .prefault(['css'])
     .describe('An array of output types. These are run in the order they are specified.'),
   /** @deprecated Use `output[].dir` instead. */
   outDir: z.string().default('design-tokens').meta({

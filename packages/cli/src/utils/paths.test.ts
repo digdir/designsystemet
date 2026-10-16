@@ -1,23 +1,222 @@
-import { describe, expect, it } from 'vitest';
-import { isSameOrInside } from './paths.ts';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { entriesOnTheWay, isReachedThrough, isSameLocation, isSameOrInsideLocation, locate } from './paths.ts';
 
-describe('isSameOrInside', () => {
-  it('is true for the directory itself and anything inside it', () => {
-    expect(isSameOrInside('/project', '/project')).toBe(true);
-    expect(isSameOrInside('/project/configs', '/project')).toBe(true);
-    expect(isSameOrInside('/project/a/b', '/project')).toBe(true);
+// Whether the temporary directory's file system ignores letter case, as on Windows and macOS by default.
+const caseInsensitive = await (async () => {
+  const probe = await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-case-'));
+  try {
+    await fs.writeFile(path.join(probe, 'a'), '');
+    return await fs
+      .access(path.join(probe, 'A'))
+      .then(() => true)
+      .catch(() => false);
+  } finally {
+    await fs.rm(probe, { recursive: true, force: true });
+  }
+})();
+
+describe('on disk', () => {
+  let dir: string;
+
+  beforeEach(async () => {
+    // The temporary directory can itself be behind a symlink, e.g. /tmp on macOS.
+    dir = await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(), 'designsystemet-paths-')));
   });
 
-  it('is false for parents and siblings', () => {
-    expect(isSameOrInside('/project', '/project/configs')).toBe(false);
-    expect(isSameOrInside('/project/other', '/project/configs')).toBe(false);
+  afterEach(async () => {
+    await fs.rm(dir, { recursive: true, force: true });
   });
 
-  it('does not treat a sibling whose name starts with the directory name as inside it', () => {
-    expect(isSameOrInside('/project/tokens-config', '/project/tokens')).toBe(false);
+  const at = (file: string) => path.join(dir, file);
+  const write = async (file: string) => {
+    await fs.mkdir(path.dirname(at(file)), { recursive: true });
+    await fs.writeFile(at(file), '');
+  };
+
+  describe('locate', () => {
+    it('finds the same directory however its path is written', async () => {
+      await fs.mkdir(at('designsystemet/tokens'), { recursive: true });
+      await fs.symlink(at('designsystemet'), at('link'), 'dir');
+      const tokens = await locate(at('designsystemet/tokens'));
+
+      expect(isSameLocation(await locate(at('designsystemet/tokens/')), tokens)).toBe(true);
+      expect(isSameLocation(await locate(at('designsystemet/other/../tokens')), tokens)).toBe(true);
+      expect(isSameLocation(await locate(at('link/tokens')), tokens)).toBe(true);
+      expect(isSameLocation(await locate(at('designsystemet')), tokens)).toBe(false);
+    });
+
+    it.runIf(caseInsensitive)('finds the same directory written with other letter case', async () => {
+      await fs.mkdir(at('designsystemet/tokens'), { recursive: true });
+
+      expect(isSameLocation(await locate(at('Designsystemet/Tokens')), await locate(at('designsystemet/tokens')))).toBe(
+        true,
+      );
+    });
+
+    // Before the first run, nothing on disk tells whether `Tokens` and `tokens` will be the same directory.
+    it("ignores letter case in the part of the path that doesn't exist yet", async () => {
+      await fs.symlink(dir, at('link'), 'dir');
+
+      expect(isSameLocation(await locate(at('link/New/Tokens')), await locate(at('new/tokens')))).toBe(true);
+      expect(isSameLocation(await locate(at('new/tokens')), await locate(at('new/other')))).toBe(false);
+    });
+
+    it('gives the same result with a cache, and looks each path up once', async () => {
+      await fs.mkdir(at('designsystemet/tokens'), { recursive: true });
+      await fs.symlink(at('designsystemet'), at('link'), 'dir');
+      const cache = new Map();
+
+      for (const file of ['designsystemet/tokens', 'link/tokens', 'new/Tokens']) {
+        expect(await locate(at(file), cache)).toEqual(await locate(at(file)));
+      }
+      const cached = cache.get(at('designsystemet'));
+      await locate(at('designsystemet'), cache);
+      expect(cache.get(at('designsystemet'))).toBe(cached);
+    });
+
+    it('finds a directory inside another on disk', async () => {
+      await fs.mkdir(at('designsystemet/tokens'), { recursive: true });
+      await fs.symlink(at('designsystemet/tokens'), at('tokens'), 'dir');
+      const designsystemet = await locate(at('designsystemet'));
+
+      expect(isSameOrInsideLocation(await locate(at('tokens')), designsystemet)).toBe(true);
+      expect(isSameOrInsideLocation(await locate(at('tokens/new')), designsystemet)).toBe(true);
+      expect(isSameOrInsideLocation(designsystemet, await locate(at('tokens')))).toBe(false);
+      expect(isSameOrInsideLocation(await locate(at('new/tokens')), await locate(at('New')))).toBe(true);
+    });
   });
 
-  it('resolves relative paths', () => {
-    expect(isSameOrInside('configs/..', '.')).toBe(true);
+  describe('entriesOnTheWay', () => {
+    it('lists each part of the path', async () => {
+      await write('designsystemet/tokens/color.json');
+
+      expect(await entriesOnTheWay(at('designsystemet/tokens'))).toEqual(
+        expect.arrayContaining([at('designsystemet'), at('designsystemet/tokens')]),
+      );
+    });
+
+    // `config.json` links to `output/link.json`, which links to `../shared/config.json`.
+    it('follows every symlink in a chain, also with relative targets', async () => {
+      await write('shared/config.json');
+      await fs.mkdir(at('output'));
+      await fs.symlink('../shared/config.json', at('output/link.json'), 'file');
+      await fs.symlink('output/link.json', at('config.json'), 'file');
+
+      const entries = await entriesOnTheWay(at('config.json'));
+
+      expect(entries.slice(-5)).toEqual([
+        at('config.json'),
+        at('output'),
+        at('output/link.json'),
+        at('shared'),
+        at('shared/config.json'),
+      ]);
+    });
+
+    // On Windows, `..` is resolved from the path as written instead.
+    it.skipIf(process.platform === 'win32')(
+      'goes to the parent on disk of where a symlink points for `..`',
+      async () => {
+        await fs.mkdir(at('a/b'), { recursive: true });
+        await write('a/config.json');
+        await fs.symlink(at('a/b'), at('link'), 'dir');
+
+        // Written out, since `path.join` would remove `link/..`.
+        expect((await entriesOnTheWay(`${dir}/link/../config.json`)).at(-1)).toBe(at('a/config.json'));
+      },
+    );
+
+    // `bridge` points to `output/sub`, and `config.json` points to `<dir>/bridge/../config.json`, which is in `output`.
+    it.skipIf(process.platform === 'win32')('follows `..` after a symlink in an absolute symlink target', async () => {
+      await fs.mkdir(at('output/sub'), { recursive: true });
+      await write('output/config.json');
+      await fs.symlink(at('output/sub'), at('bridge'), 'dir');
+      await fs.symlink(`${dir}/bridge/../config.json`, at('config.json'), 'file');
+
+      expect((await entriesOnTheWay(at('config.json'))).at(-1)).toBe(at('output/config.json'));
+      expect(await isReachedThrough(at('config.json'), await locate(at('output')))).toBe(true);
+    });
+
+    it('stops at a cycle of symlinks', async () => {
+      await fs.symlink(at('b'), at('a'), 'dir');
+      await fs.symlink(at('a'), at('b'), 'dir');
+
+      expect((await entriesOnTheWay(at('a/config.json'))).length).toBeGreaterThan(0);
+    });
+
+    it("stops at a part that doesn't exist", async () => {
+      expect((await entriesOnTheWay(at('missing/config.json'))).at(-1)).toBe(at('missing'));
+    });
+  });
+
+  describe('isReachedThrough', () => {
+    it('is true for a file in the directory', async () => {
+      await write('designsystemet/designsystemet.config.json');
+
+      expect(
+        await isReachedThrough(at('designsystemet/designsystemet.config.json'), await locate(at('designsystemet'))),
+      ).toBe(true);
+    });
+
+    it('is false for a file outside the directory', async () => {
+      await write('designsystemet.config.json');
+      await fs.mkdir(at('designsystemet'));
+
+      expect(await isReachedThrough(at('designsystemet.config.json'), await locate(at('designsystemet')))).toBe(false);
+    });
+
+    // `designsystemet.config.json` links to the config file in `designsystemet`, which cleaning would delete.
+    it('is true for a symlink to a file in the directory', async () => {
+      await write('designsystemet/real.config.json');
+      await fs.symlink(at('designsystemet/real.config.json'), at('designsystemet.config.json'), 'file');
+
+      expect(await isReachedThrough(at('designsystemet.config.json'), await locate(at('designsystemet')))).toBe(true);
+    });
+
+    // `designsystemet.config.json` links to `output/config-link.json`, which links to `shared/config.json`. Cleaning
+    // `output` would delete `config-link.json`, so the config could no longer be read.
+    it('is true for a file reached through a chain of symlinks with one in the directory', async () => {
+      await write('shared/config.json');
+      await fs.mkdir(at('output'));
+      await fs.symlink('../shared/config.json', at('output/config-link.json'), 'file');
+      await fs.symlink('output/config-link.json', at('designsystemet.config.json'), 'file');
+
+      expect(await isReachedThrough(at('designsystemet.config.json'), await locate(at('output')))).toBe(true);
+      expect(await isReachedThrough(at('designsystemet.config.json'), await locate(at('other')))).toBe(false);
+    });
+
+    // `designsystemet/design-tokens` links to tokens outside `designsystemet`. Cleaning would delete the symlink.
+    it('is true for a file reached through a symlink in the directory', async () => {
+      await write('shared/tokens/color.json');
+      await fs.mkdir(at('designsystemet'));
+      await fs.symlink(at('shared/tokens'), at('designsystemet/design-tokens'), 'dir');
+
+      expect(await isReachedThrough(at('designsystemet/design-tokens'), await locate(at('designsystemet')))).toBe(true);
+    });
+
+    // The directory to clean is a symlink to the directory with the config file.
+    it('is true when the directory is written as a symlink to where the file is', async () => {
+      await write('project/designsystemet.config.json');
+      await fs.symlink(at('project'), at('output'), 'dir');
+
+      expect(await isReachedThrough(at('project/designsystemet.config.json'), await locate(at('output')))).toBe(true);
+    });
+
+    it.runIf(caseInsensitive)('is true for a file written with other letter case', async () => {
+      await write('designsystemet/designsystemet.config.json');
+
+      expect(
+        await isReachedThrough(at('Designsystemet/designsystemet.config.json'), await locate(at('designsystemet'))),
+      ).toBe(true);
+    });
+
+    it("is false when the directory doesn't exist", async () => {
+      await write('designsystemet.config.json');
+
+      expect(await isReachedThrough(at('designsystemet.config.json'), await locate(at('designsystemet')))).toBe(false);
+    });
   });
 });

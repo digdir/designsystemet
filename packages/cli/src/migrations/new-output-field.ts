@@ -97,31 +97,38 @@ const hasDeprecatedFields = (config: string): boolean => {
 };
 
 const defaultOutDir = outputConfigShape.outDir.parse(undefined);
+/** Where `tokens build` saved CSS and type declarations by default, relative to where the CLI was run from. */
+export const legacyBuildDir = 'design-tokens-build';
 
 /**
  * Builds an `output` equivalent to the deprecated `outDir` and `clean` fields.
- * Returns `undefined` when both have default behaviour, since the default `output` covers it.
+ * Always includes a `design-tokens` output, also for the default directory: the deprecated fields
+ * created design tokens, and the default `output` doesn't.
  *
- * `cleanDir` defaults to `true`, so an explicit `clean: false` is carried over as `cleanDir: false` on every output.
- * Otherwise the migrated config would delete output directories the user opted out of cleaning.
- * A missing `clean` or `clean: true` uses the new default.
+ * `clean` only cleaned the design tokens directory, and defaulted to `false` like `cleanDir`. So `clean: true` is
+ * carried over as `cleanDir: true` on the `design-tokens` output. `tokens build` didn't clean by default either, so
+ * CSS and types use the default.
+ *
+ * Design tokens are saved in `outDir`, and CSS and types in `buildDir`, where `tokens build` saved them, so existing
+ * design tokens and imports of the built files keep working. Their default directories are different, so `dir` is
+ * always set.
  */
-export const toOutput = (outDir: string | undefined, { clean }: { clean?: boolean } = {}) => {
+export const toOutput = (
+  outDir: string | undefined,
+  { clean, buildDir = legacyBuildDir }: { clean?: boolean; buildDir?: string } = {},
+) => {
   const isDefaultDir = outDir === undefined || path.posix.normalize(outDir) === path.posix.normalize(defaultOutDir);
-  const keepFiles = clean === false;
-
-  if (isDefaultDir && !keepFiles) {
-    return undefined;
-  }
-
-  const cleanDir = keepFiles ? { cleanDir: false } : {};
+  const cleanDir = clean === true ? { cleanDir: true } : {};
+  const tokensDir = isDefaultDir ? defaultOutDir : outDir;
+  // When the design tokens are in `buildDir` too, `clean` cleaned the CSS and types with them, and outputs that share
+  // a directory must clean it the same way.
+  const buildCleanDir = path.posix.normalize(tokensDir) === path.posix.normalize(buildDir) ? cleanDir : {};
 
   return [
-    { type: 'design-tokens' as const, ...(!isDefaultDir && { dir: outDir }), ...cleanDir },
+    { type: 'design-tokens' as const, dir: tokensDir, ...cleanDir },
     // CSS and types are built from the design tokens, so they must read them from the same directory.
-    { type: 'css' as const, ...(!isDefaultDir && { tokensDir: outDir }), ...cleanDir },
-    // `types` outputs are never cleaned, so they have no `cleanDir`.
-    { type: 'types' as const, ...(!isDefaultDir && { tokensDir: outDir }) },
+    { type: 'css' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...buildCleanDir },
+    { type: 'types' as const, dir: buildDir, ...(!isDefaultDir && { tokensDir: outDir }), ...buildCleanDir },
   ];
 };
 
@@ -130,7 +137,7 @@ export const toOutput = (outDir: string | undefined, { clean }: { clean?: boolea
  * config file's directory. Rewrites `outDir` so it points to the same directory when resolved from the config file.
  * Paths always use forward slashes, so the config works on any OS.
  */
-const toConfigRelative = (outDir: string, { configFilePath, cwd = process.cwd() }: MigrationContext): string => {
+export const toConfigRelative = (outDir: string, { configFilePath, cwd = process.cwd() }: MigrationContext): string => {
   if (!configFilePath) {
     return outDir;
   }
@@ -153,17 +160,16 @@ export const migrateToOutputField = (config: string, context: MigrationContext =
     // A missing `outDir` meant the default directory, relative to where the CLI was run from.
     const output = toOutput(toConfigRelative(currentConfig.outDir ?? defaultOutDir, context), {
       clean: currentConfig.clean,
+      buildDir: toConfigRelative(legacyBuildDir, context),
     });
-    if (output) {
-      configText = applyEdits(
-        configText,
-        modify(configText, ['output'], output, {
-          formattingOptions,
-          // Place `output` right after `$schema` if present, otherwise at the top.
-          getInsertionIndex: (properties) => properties.indexOf('$schema') + 1,
-        }),
-      );
-    }
+    configText = applyEdits(
+      configText,
+      modify(configText, ['output'], output, {
+        formattingOptions,
+        // Place `output` right after `$schema` if present, otherwise at the top.
+        getInsertionIndex: (properties) => properties.indexOf('$schema') + 1,
+      }),
+    );
   }
 
   for (const key of deprecatedFields) {

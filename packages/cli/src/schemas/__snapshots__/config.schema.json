@@ -5,9 +5,7 @@
     "output": {
       "description": "An array of output types. These are run in the order they are specified.",
       "default": [
-        "design-tokens",
-        "css",
-        "types"
+        "css"
       ],
       "type": "array",
       "items": {
@@ -23,13 +21,13 @@
                     "description": "The type of output file"
                   },
                   "dir": {
-                    "default": "design-tokens",
+                    "default": "designsystemet/design-tokens",
                     "description": "The output directory",
                     "type": "string"
                   },
                   "cleanDir": {
-                    "default": true,
-                    "description": "Whether to clean the output directory before generating files",
+                    "default": false,
+                    "description": "Whether to delete the files in the output directory before generating files",
                     "type": "boolean"
                   }
                 },
@@ -46,13 +44,13 @@
                     "description": "The type of output file"
                   },
                   "dir": {
-                    "default": "design-tokens-build",
+                    "default": "designsystemet",
                     "description": "The output directory",
                     "type": "string"
                   },
                   "cleanDir": {
-                    "default": true,
-                    "description": "Whether to clean the output directory before generating files",
+                    "default": false,
+                    "description": "Whether to delete the files in the output directory before generating files",
                     "type": "boolean"
                   },
                   "tokensDir": {
@@ -91,9 +89,14 @@
                     "description": "The type of output file"
                   },
                   "dir": {
-                    "default": "design-tokens-build",
+                    "default": "designsystemet",
                     "description": "The output directory",
                     "type": "string"
+                  },
+                  "cleanDir": {
+                    "default": false,
+                    "description": "Whether to delete the files in the output directory before generating files",
+                    "type": "boolean"
                   },
                   "tokensDir": {
                     "description": "The directory containing the design tokens to build type declarations from. Defaults to `dir` of the `design-tokens` output. If neither is set, type declarations are created directly from the themes",

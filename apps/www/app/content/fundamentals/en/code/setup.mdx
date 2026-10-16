@@ -112,7 +112,7 @@ The Designsystemet is designed to be themable, so it is important to import your
   <Tabs.Panel>
   ```css
   @import '@digdir/designsystemet-css/index.css';
-  @import 'design-tokens-build/<your-theme>.css';
+  @import 'designsystemet/<your-theme>.css';
   ```     
   </Tabs.Panel>
   <Tabs.Panel>
@@ -188,7 +188,7 @@ npm i -D @digdir/designsystemet-types
     "types": [
       "@digdir/designsystemet-web",
       "@digdir/designsystemet-types",
-      "@digdir/designsystemet-css/theme" /* or your theme type file, design-tokens-build/types.d.ts */
+      "@digdir/designsystemet-css/theme" /* or your theme type file, designsystemet/types.d.ts */
       ]
   },
 }
@@ -200,7 +200,7 @@ npm i -D @digdir/designsystemet-types
   "compilerOptions": {
     "types": [
       "@digdir/designsystemet-react/react-types", /** imports @digdir/designsystemet-types for you */
-      "@digdir/designsystemet-css/theme" /* or your theme type file, design-tokens-build/types.d.ts */
+      "@digdir/designsystemet-css/theme" /* or your theme type file, designsystemet/types.d.ts */
       ]
   },
 }

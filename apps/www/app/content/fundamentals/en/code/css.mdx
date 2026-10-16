@@ -97,7 +97,7 @@ For every `<theme>.css` you will then also get a `<theme>.tailwind.css`.
 
 ```json
 {
-  "output": ["design-tokens", { "type": "css", "tailwind": "v4" }]
+  "output": [{ "type": "css", "tailwind": "v4" }, "types"]
 }
 ```
 
@@ -116,10 +116,10 @@ so [Preflight](https://tailwindcss.com/docs/preflight) does not override our com
   <ds-tabpanel>
 ```css
 @import '@digdir/designsystemet-css/index.css';
-@import 'design-tokens-build/<your-theme>.css';
+@import 'designsystemet/<your-theme>.css';
 
 @import 'tailwindcss';
-@import 'design-tokens-build/<your-theme>.tailwind.css';
+@import 'designsystemet/<your-theme>.tailwind.css';
 ```
   </ds-tabpanel>
   <ds-tabpanel>

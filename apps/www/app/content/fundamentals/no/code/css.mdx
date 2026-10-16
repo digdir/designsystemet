@@ -98,7 +98,7 @@ For hver `<tema>.css` får du da også en `<tema>.tailwind.css`.
 
 ```json
 {
-  "output": ["design-tokens", { "type": "css", "tailwind": "v4" }]
+  "output": [{ "type": "css", "tailwind": "v4" }, "types"]
 }
 ```
 
@@ -117,10 +117,10 @@ slik at [Preflight](https://tailwindcss.com/docs/preflight) ikke overstyrer komp
   <ds-tabpanel>
 ```css
 @import '@digdir/designsystemet-css/index.css';
-@import 'design-tokens-build/<ditt-tema>.css';
+@import 'designsystemet/<ditt-tema>.css';
 
 @import 'tailwindcss';
-@import 'design-tokens-build/<ditt-tema>.tailwind.css';
+@import 'designsystemet/<ditt-tema>.tailwind.css';
 ```
   </ds-tabpanel>
   <ds-tabpanel>

@@ -111,7 +111,7 @@ Designsystemet er laget for å være tematiserbart, og det er derfor viktig at d
   <Tabs.Panel>
   ```css
   @import '@digdir/designsystemet-css/index.css';
-  @import 'design-tokens-build/<ditt-tema>.css';
+  @import 'designsystemet/<ditt-tema>.css';
   ```     
   </Tabs.Panel>
   <Tabs.Panel>
@@ -187,7 +187,7 @@ npm i -D @digdir/designsystemet-types
     "types": [
       "@digdir/designsystemet-web",
       "@digdir/designsystemet-types",
-      "@digdir/designsystemet-css/theme" /* eller din tema typefil, design-tokens-build/types.d.ts */
+      "@digdir/designsystemet-css/theme" /* eller din tema typefil, designsystemet/types.d.ts */
       ]
   },
 }
@@ -199,7 +199,7 @@ npm i -D @digdir/designsystemet-types
   "compilerOptions": {
     "types": [
       "@digdir/designsystemet-react/react-types", /** importerer @digdir/designsystemet-types for deg */
-      "@digdir/designsystemet-css/theme" /* eller din tema typefil, design-tokens-build/types.d.ts */
+      "@digdir/designsystemet-css/theme" /* eller din tema typefil, designsystemet/types.d.ts */
       ]
   },
 }

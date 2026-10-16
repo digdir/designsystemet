@@ -50,7 +50,7 @@ Run the CLI in the same folder as your config file:
 npx @digdir/designsystemet@latest
 ```
 
-This creates design tokens, CSS and type declarations for all themes, based on the [`output`](#output) field in the config file.
+This creates CSS for all themes, based on the [`output`](#output) field in the config file. Type declarations and design tokens are only created if you add a `types` or `design-tokens` output.
 
 | Option | Description |
 | ------ | ----------- |
@@ -69,7 +69,7 @@ The `tokens create` and `tokens build` commands are deprecated and will be remov
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
 | $schema | String | No | Path to JSON schema for validation. Recommended: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
-| output | Array | No | What the CLI should create, and where. Defaults to `["design-tokens", "css", "types"]`. See [Output](#output). |
+| output | Array | No | What the CLI should create, and where. Defaults to `["css"]`. See [Output](#output). |
 | themes | Object | No | Contains all themes you want to define. Each key is the name of the theme. Required by outputs that are created from themes, see [Building without themes](#building-without-themes). |
 | outDir | String | No | **Deprecated:** use `output[].dir` instead. |
 | clean | Boolean | No | **Deprecated:** use `output[].cleanDir` instead. |
@@ -96,16 +96,16 @@ All paths are relative to the config file.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"design-tokens"` | Yes | | The output type. |
-| dir | String | No | `design-tokens` | The folder where design tokens should be saved. |
-| cleanDir | Boolean | No | `true` | Delete the folder before creating design tokens. Removes files that are no longer in use. |
+| dir | String | No | `designsystemet/design-tokens` | The folder where design tokens should be saved. |
+| cleanDir | Boolean | No | `false` | Delete the files in the folder before creating design tokens. Removes files that are no longer in use. See [Cleaning](#cleaning). |
 
 #### css
 
 | Name | Type | Required | Default | Description |
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"css"` | Yes | | The output type. |
-| dir | String | No | `design-tokens-build` | The folder where CSS should be saved. |
-| cleanDir | Boolean | No | `true` | Delete the folder before creating CSS. |
+| dir | String | No | `designsystemet` | The folder where CSS should be saved. |
+| cleanDir | Boolean | No | `false` | Delete the files in the folder before creating CSS. See [Cleaning](#cleaning). |
 | tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build CSS from. If neither is set, CSS is created directly from the themes. |
 | tailwind | `"v3"`, `"v4"` or `false` | No | `false` | Also generate a `<theme>.tailwind.css` for this Tailwind version. `false` skips it. |
 
@@ -114,17 +114,37 @@ All paths are relative to the config file.
 | Name | Type | Required | Default | Description |
 | ---- | ---- | ------- | ------- | ----------- |
 | type | `"types"` | Yes | | The output type. |
-| dir | String | No | `design-tokens-build` | The folder where type declarations should be saved. |
+| dir | String | No | `designsystemet` | The folder where type declarations should be saved. |
+| cleanDir | Boolean | No | `false` | Delete the files in the folder before creating type declarations. See [Cleaning](#cleaning). |
 | tokensDir | String | No | `dir` of the `design-tokens` output | The folder containing the design tokens to build type declarations from. If neither is set, type declarations are created directly from the themes. |
 
 Creates `types.d.ts`, which adds your theme's colour names to the types in `@digdir/designsystemet-types`, so props like `data-color` only accept your colours.
 The deprecated `colors.d.ts` is also created, and will be removed in a future release.
 
-The `css` output no longer creates type declarations. If you set `output` yourself, include `"types"` to keep getting them.
+The `css` output no longer creates type declarations. Add `"types"` to `output` to get them.
+
+#### Cleaning
+
+`cleanDir` is `false` by default, so files already in an output's folder are kept. Set `cleanDir: true` on an output whose folder only has files the CLI creates, to also remove files it no longer creates, such as the CSS for a theme you have removed.
+
+Before creating any files, the CLI deletes everything in the folder of each output with `cleanDir: true`, except:
+
+- the design tokens CSS and types are built from (`tokensDir`), unless a `design-tokens` output creates them again in the same run.
+- the folders of outputs with `cleanDir: false`.
+
+So with `{ "type": "css", "cleanDir": true, "tokensDir": "designsystemet/design-tokens" }`, the design tokens in `designsystemet/design-tokens` are kept. With a `design-tokens` output, they are deleted and created again, so changes made to them by hand are lost.
+
+To avoid deleting files it shouldn't, the CLI stops with an error, before deleting anything, if a folder it would clean:
+
+- contains the config file.
+- is the `tokensDir`, or the folder of an output with `cleanDir: false`.
+- is a symlink, or has a symlink on the way to the design tokens or to another output's folder. Cleaning deletes symlinks, and never follows them.
+
+Use another `dir`, or set `cleanDir` to `false` for that output.
 
 #### Without design tokens
 
-If you only need CSS and/or types, you can use for example `"output": ["css", "types"]` without `tokensDir`. They are then created directly from the themes, without saving any design tokens.
+By default, `output` is `["css"]`. Without a `design-tokens` output or `tokensDir`, CSS and types are created directly from the themes, without saving any design tokens. Add `"design-tokens"` to `output` to save them as well.
 
 #### Building without themes
 
@@ -150,13 +170,17 @@ If you'd rather do it manually, replace `"outDir": "<path>"` with:
 {
   "output": [
     { "type": "design-tokens", "dir": "<path>" },
-    { "type": "css", "tokensDir": "<path>" },
-    { "type": "types", "tokensDir": "<path>" }
+    { "type": "css", "dir": "design-tokens-build", "tokensDir": "<path>" },
+    { "type": "types", "dir": "design-tokens-build", "tokensDir": "<path>" }
   ]
 }
 ```
 
-`clean` can be removed, since `cleanDir` is `true` by default. If you had `"clean": false`, add `"cleanDir": false` to each output instead, so the folders are not deleted.
+`design-tokens-build` is where `tokens build` saved CSS by default, so your imports keep working. Use the folder you gave `tokens build` with `--out-dir` if you set one. Paths in `output` are relative to the config file, while `tokens build` used paths relative to where it was run, so adjust them if those are different folders.
+
+`cleanDir` is `false` by default, like `clean` was. If you had `"clean": true`, add `"cleanDir": true` to the `design-tokens` output instead, since `clean` only cleaned the design tokens.
+
+A config file without `outDir` and `clean` isn't migrated. It gets the new defaults: only CSS, in `designsystemet`. To keep creating design tokens, CSS and types in the same folders as `tokens create` and `tokens build` did, add the `output` above with `design-tokens` as `<path>`.
 
 ### Themes
 
@@ -279,9 +303,9 @@ The `severity` override allows you to customise the colours used for severity, w
 {
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
   "output": [
-    { "type": "design-tokens", "dir": "./design-tokens" },
-    { "type": "css", "dir": "./design-tokens-build", "tokensDir": "./design-tokens" },
-    { "type": "types", "dir": "./design-tokens-build", "tokensDir": "./design-tokens" }
+    { "type": "design-tokens", "dir": "./designsystemet/design-tokens" },
+    { "type": "css", "dir": "./designsystemet", "tokensDir": "./designsystemet/design-tokens" },
+    { "type": "types", "dir": "./designsystemet", "tokensDir": "./designsystemet/design-tokens" }
   ],
   "themes": {
     "my-theme": {

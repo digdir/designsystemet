@@ -1,10 +1,9 @@
 import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.ts';
-import { toOutput } from '../migrations/new-output-field.ts';
+import { legacyBuildDir, toConfigRelative, toOutput } from '../migrations/new-output-field.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { dsfs } from '../utils/filesystem.ts';
-import { isSameOrInside } from '../utils/paths.ts';
 
 type TokenValue = {
   $type: string;
@@ -198,21 +197,9 @@ type GenerateConfigOptions = {
 /**
  * Returns `tokensDir` relative to `configDir`, as paths are written in a config: relative to the config file,
  * with forward slashes so the config works on any OS.
- *
- * Throws when `configDir` is the tokens directory or inside it. The generated `design-tokens` output would then
- * point to the config's own directory or a parent of it, which `cleanDir` deletes before creating design tokens.
  */
-export const toConfigTokensDir = (tokensDir: string, configDir: string): string => {
-  const absoluteTokensDir = path.resolve(tokensDir);
-
-  if (isSameOrInside(configDir, absoluteTokensDir)) {
-    throw new Error(
-      `The config file can't be placed inside the design tokens directory ${pc.blue(absoluteTokensDir)}, since running the config would delete that directory. Use ${pc.blue('--out')} to place the config file outside it.`,
-    );
-  }
-
-  return path.relative(path.resolve(configDir), absoluteTokensDir).split(path.sep).join('/');
-};
+export const toConfigTokensDir = (tokensDir: string, configDir: string): string =>
+  (path.relative(path.resolve(configDir), path.resolve(tokensDir)) || '.').split(path.sep).join('/');
 
 /**
  * Generates a config file from existing design tokens
@@ -220,7 +207,6 @@ export const toConfigTokensDir = (tokensDir: string, configDir: string): string 
 export async function generateConfigFromTokens(options: GenerateConfigOptions): Promise<ExternalConfigSchemaInput> {
   const { tokensDir, outFile } = options;
 
-  // Check the paths before reading any tokens, so an unsafe `--out` fails right away.
   const configDir = outFile ? path.dirname(path.resolve(outFile)) : process.cwd();
   const relativeTokensDir = toConfigTokensDir(tokensDir, configDir);
 
@@ -237,10 +223,10 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
 
   // Generate config for each theme
   const configThemes: NonNullable<ExternalConfigSchemaInput['themes']> = {};
-  const output = toOutput(relativeTokensDir);
+  // Tokens were built with `tokens build`, which saved CSS and types in `design-tokens-build` where it was run.
+  const buildDir = toConfigRelative(legacyBuildDir, { configFilePath: outFile });
   const config: ExternalConfigSchemaInput = {
-    // Omitted when the tokens are in the default directory, since the default `output` covers it.
-    ...(output && { output: [...output] }),
+    output: toOutput(relativeTokensDir, { buildDir }),
     themes: configThemes,
   };
 
