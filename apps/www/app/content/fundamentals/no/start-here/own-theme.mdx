@@ -2,7 +2,7 @@
 title: Bygg ditt tema
 sidebar_title: Bygg ditt tema
 description: Slik setter du opp ditt tema i Designsystemet for design og kode.
-date: 2026-10-13
+date: 2026-10-16
 category: Start her
 color: yellow
 icon: PencilBoardIcon
@@ -11,25 +11,20 @@ order: 10
 search_terms: theming, get-started, temaer, tokens
 ---
 
-Designsystemet er laget for å kunne brukes sammen med din egen visuelle profil - inkludert farger og andre preferanser. Med [Designsystemets Temabygger](https://theme.designsystemet.no) setter du opp temaet ditt i en config-fil. Den samme filen brukes i Figma, med Designsystemet-pluginen, og i kode, med CLI-et, så design og kode bruker de samme verdiene.
-
-<Alert data-color="info">
-Vi anbefaler at både utvikler og designer er med i prosessen når dere setter opp deres eget tema.
-</Alert>
-
+Designsystemet er laget for å kunne brukes sammen med din egen visuelle profil - inkludert farger og andre preferanser. Med Designsystemets Temabygger setter du opp temaet ditt i en config-fil. Den samme filen brukes i Figma, med Designsystemet-pluginen, og i kode, med CLI-et, så design og kode bruker de samme verdiene.
 
 ## Slik går du frem:
 
-1. Bruk [Designsystemets Temabygger](https://theme.designsystemet.no) til å sette opp temaet ditt. Du kan sette opp flere temaer i den samme config-filen under **Rediger temaer**.
+1. Bruk [temabyggeren](https://theme.designsystemet.no) til å sette opp temaet ditt. Du kan sette opp flere temaer i den samme config-filen under **Rediger temaer**.
 
-2. Klikk **Ta i bruk tema**, og last ned eller kopier config-filen. Lagre den som en `json`-fil, vi anbefaler f.eks. `designsystemet.config.json` eller `<din-organisasjon>.config.json`.
+2. Klikk **Ta i bruk tema**, og last ned eller kopier config-filen.
 
 
 ### I Figma
 
-3. Hent komponentbiblioteket fra [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma") til din organisasjon som har minimum pro-lisens. Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen.
+- Hent komponentbiblioteket fra [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma") til din organisasjon som har minimum pro-lisens. Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen.
 
-4. Åpne [Designsystemet-pluginen](/no/fundamentals/figma/plugin) i kopien din. Last opp config-filen under **Upload config**, eller lim den inn under **Or paste the config**, og klikk **Import**.
+- Åpne [Designsystemet-pluginen](/no/fundamentals/figma/plugin) i kopien din. Last opp config-filen under **Upload config**, eller lim den inn under **Or paste the config**, og klikk **Import**.
 
    Pluginen lager variablene og stilene for temaene dine, og nå skal du se alle komponentene med dine egne profilfarger.
 
@@ -39,9 +34,9 @@ Vi anbefaler at både utvikler og designer er med i prosessen når dere setter o
 
 ### I kode
 
-5. Legg `designsystemet.config.json` i prosjektet ditt, i mappen der du vil ha filene til temaet.
+- Legg `designsystemet.config.json` i prosjektet ditt, i mappen der du vil ha filene til temaet.
 
-6. Pass på at du har Node.js `22.12.0` eller høyere installert. Åpne en terminal i den mappen, og kjør:
+- Pass på at du har Node.js `22.12.0` eller høyere installert. Åpne en terminal i den mappen, og kjør:
 
 ```bash
 npx @digdir/designsystemet@latest
@@ -61,4 +56,4 @@ For å få ikoner til å fungere i Figma, må de kobles til et bibliotek som er 
 
 ## Alternativ: Design Tokens og Tokens Studio
 
-Hvis du har endret Design Tokens på måter config-filen ikke kan beskrive, kan ikke pluginen hente de endringene inn i Figma. Se [Synkroniser Design Tokens med Tokens Studio](/no/fundamentals/figma/tokens-studio) for hvordan du synkroniserer dem med Figma i stedet.
+Hvis du har endret Design Tokens på måter config-filen ikke støttes, kan ikke pluginen hente de endringene inn i Figma. Se [Synkroniser Design Tokens med Tokens Studio](/no/fundamentals/figma/tokens-studio) for hvordan du synkroniserer dem med Figma i stedet.

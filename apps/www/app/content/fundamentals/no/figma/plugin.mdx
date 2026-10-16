@@ -11,19 +11,34 @@ order: 10
 search_terms: plugin, import, tema, variabler, stiler
 ---
 
-<Alert data-color="info">
-Pluginen er ikke publisert i Figma Community ennå. Vi gir beskjed når den er det.
-</Alert>
+import { ArrowRightIcon } from '@navikt/aksel-icons';
 
 Designsystemet-pluginen importerer temaet ditt til en Figma-fil, som variablene og stilene komponentene i Figma-biblioteket til Designsystemet bruker. Den bruker den samme config-filen som CLI-et, så design og kode får de samme verdiene.
 
-## Slik bruker du den
+{/* ## Slik bruker du den
 
 1. Sett opp temaet ditt i [Temabyggeren](https://theme.designsystemet.no), klikk **Ta i bruk tema**, og last ned eller kopier config-filen.
 2. Åpne kopien din av [Figma-biblioteket til Designsystemet](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit), og åpne Designsystemet-pluginen.
 3. Last opp config-filen under **Upload config**, eller lim den inn under **Or paste the config**, og klikk **Import**.
 
-Når du endrer temaet, importerer du den nye config-filen på samme måte. Se [Bygg ditt tema](/no/fundamentals/start-here/own-theme) for hele prosessen, i Figma og i kode.
+Når du endrer temaet, importerer du den nye config-filen på samme måte. Se [Bygg ditt tema](/no/fundamentals/start-here/own-theme) for hele prosessen, i Figma og i kode. */}
+
+
+<Card data-color='success' variant="tinted" asChild>
+    <Link href='/no/fundamentals/start-here/own-theme#slik-går-du-frem' style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "0.75rem",
+      textDecoration: 'underline',
+      marginBottom: "1.5rem"
+    }}>
+      <ArrowRightIcon style={{"--ds-icon-size": "2em;"}} />
+      <span data-size='lg' data-color='success' style={{
+      marginTop: "0", 
+    }}>Slik setter du opp tema med pluginen</span>
+    </Link>
+</Card>
+
 
 ## Hva pluginen gjør
 
