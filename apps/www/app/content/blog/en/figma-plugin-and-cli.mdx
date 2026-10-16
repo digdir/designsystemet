@@ -1,21 +1,26 @@
 ---
-title: A new Figma plugin, and one command for your theme
-description: A new version of the Designsystemet Figma plugin is on its way, the theme builder now handles several themes in one config, and the CLI creates your theme's CSS with one command.
+title: Your theme in Figma, without Tokens Studio
+description: Our own Figma plugin is on its way. The theme builder also handles several themes in one config, and the CLI creates your CSS with one command.
 date: 2026-10-09
 author: Designsystemet
 imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
 imageAlt: The Designsystemet logo, with an arrow to a plugin window showing colors, text samples and an Import button, and on to the Figma logo
 ---
 
-We've made several improvements that make it easier to use Designsystemet in your projects: a new Figma plugin is on its way, the theme builder handles several themes, and the CLI creates your theme's CSS with one command. You no longer need to wrestle with Tokens Studio, Git repositories and access tokens to get your theme into Figma.
+Getting your theme into Figma has meant setting up Tokens Studio, a Git repository and access tokens. A Figma plugin of our own has been one of the things you've asked for most, and now it's on its way: upload the config file from the theme builder, and the plugin creates your theme in Figma.
 
-{/* Your theme starts as a config file, made in the [theme builder](https://theme.designsystemet.no). That file now goes further: the new Figma plugin brings it into your Figma file, the theme builder can manage all your themes in it, and the CLI creates everything your code needs from it with a single command. */}
+We've also made two quality-of-life improvements: the theme builder now handles several themes in one config, and the CLI creates your CSS with one command.
 
-## A new Figma plugin is on its way
+## Your theme in Figma, in one go
 
-Bring your theme into Figma in one go. Upload the config from the theme builder to the new Designsystemet plugin, and it creates all the variables and styles that the components in Designsystemet's Figma library use. When your theme changes, import it again: only what has changed is updated, the layers using it stay connected, and what you've made yourself is kept.
+Set up your theme in the [theme builder](https://theme.designsystemet.no), and upload the config file to the Designsystemet plugin. It creates all the variables and styles that the components in Designsystemet's Figma library use. No Tokens Studio, no Git repository, no access tokens.
 
-Read more about [what the Figma plugin does, and what it can't import yet](/en/fundamentals/figma/plugin). We'll let you know when it's published in Figma Community.
+- **Import again when your theme changes.** Only what has changed is updated, and the layers that use your variables and styles stay connected.
+- **What you've made is kept.** The plugin only deletes what it created itself, so your own variables and styles stay.
+- **Design and code get the same values.** The plugin uses the same config file as the CLI, and each variable shows the name of its CSS variable, so developers see the right names in Dev Mode.
+- **You see what happened.** After an import, you get a list of what was created, updated and deleted.
+
+We'll let you know when the plugin is published in Figma Community. Until then, you can get your config file ready in the theme builder. Read more about [what the plugin does, and what it can't import yet](/en/fundamentals/figma/plugin).
 
 ## Several themes in the theme builder
 
@@ -37,59 +42,13 @@ Until now, getting a theme into code took two commands, `tokens create` and `tok
 npx @digdir/designsystemet@latest
 ```
 
-This creates CSS for all your themes, directly from the config file, without creating design tokens first. What it creates, and where, is set by the new `output` field in the config file.
+This creates CSS for all your themes, directly from the config file, in a folder called `designsystemet`. With the new `output` field in the config file, you choose what the CLI creates, and where: CSS, type declarations, design tokens and Tailwind files. The CSS no longer includes type declarations, so add `"types"` to `output` to get them. See [the CLI documentation](/en/fundamentals/code/cli-config#output) for all the settings.
 
-### The output field
+Design tokens are now optional, since the plugin imports your themes directly from the config file. If you want to configure Designsystemet in ways the config doesn't support yet, you can still change anything you want in Designsystemet by editing the design tokens, and [sync them with Figma using Tokens Studio](/en/fundamentals/figma/tokens-studio).
 
-`output` is a list of what the CLI should create. If you leave it out, you get CSS by default:
+### Already using tokens create and tokens build?
 
-```json
-"output": ["css"]
-```
-
-| Output | Creates | Default folder |
-| ------ | ------- | -------------- |
-| `css` | A CSS file for each theme | `designsystemet` |
-| `types` | Type declarations for your colors, `types.d.ts` | `designsystemet` |
-| `design-tokens` | Design tokens for your themes | `designsystemet/design-tokens` |
-
-Write an output as an object instead of a name to change its settings, for example to choose its folder with `dir`, or to also create a Tailwind file with `tailwind`:
-
-```json
-{
-  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
-  "output": [
-    { "type": "css", "tailwind": "v4" },
-    "types"
-  ],
-  "themes": {
-    "my-theme": {
-      "colors": {
-        "accent": "#0062BA",
-        "neutral": "#24272B"
-      }
-    }
-  }
-}
-```
-
-Good to know:
-
-- **Design tokens are optional.** You don't need them to get your theme into Figma, since the new plugin imports your themes directly from the config file. Add `"design-tokens"` to `output` to also create them, and the CSS and types are then built from them.
-- **If you want to configure Designsystemet in ways the config doesn't support yet**, you can change anything you want in Designsystemet by editing the design tokens. Build the CSS from them with `tokensDir`, and [sync them with Figma using Tokens Studio](/en/fundamentals/figma/tokens-studio).
-- **Nothing is deleted by default.** Files already in an output's folder are kept. Set `"cleanDir": true` on an output whose folder only has files the CLI creates, to also remove files it no longer creates.
-- **The CSS no longer includes type declarations.** Add `"types"` to `output` to get them, as in the example above.
-- **With `"tailwind": "v4"`**, Tailwind's utility classes use the `--ds-*` variables directly, so `data-color`, `data-color-scheme` and `data-size` apply to them too. `"v3"` creates the same Tailwind file as before.
-
-See [the CLI documentation](/en/fundamentals/code/cli-config#output) for all the settings.
-
-### Moving from tokens create and tokens build
-
-`tokens create` and `tokens build` still work, but they are deprecated and will be removed in a future version. So are the `outDir` and `clean` fields in the config, which `output` replaces.
-
-You don't have to change your config by hand. When you run `designsystemet` with a config file that uses `outDir` or `clean`, the CLI offers to update it to `output` for you. To do it yourself, see [migrating from outDir and clean](/en/fundamentals/code/cli-config#migrating-from-outdir-and-clean).
-
-The updated config works the same as before: it still creates design tokens, cleans their folder if you had `"clean": true`, and saves CSS and types in `design-tokens-build`, so your imports keep working. Once you've checked that you don't need the design tokens, you can remove `"design-tokens"` from `output`.
+`tokens create` and `tokens build` still work, but they are deprecated and will be removed in a future version. You don't have to change your config by hand: when you run `designsystemet` with a config file that uses the old `outDir` or `clean` fields, the CLI offers to update it for you. Once you've checked that you don't need the design tokens, you can remove `"design-tokens"` from `output`. Read more about [migrating from outDir and clean](/en/fundamentals/code/cli-config#migrating-from-outdir-and-clean).
 
 <Contributors
   authors={[

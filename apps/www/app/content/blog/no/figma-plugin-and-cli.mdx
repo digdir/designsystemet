@@ -1,22 +1,33 @@
 ---
-title: Ny Figma-plugin, og én kommando for temaet ditt
-description: Ny Figma-plugin til Designsystemet er på vei, temabyggeren håndterer nå flere temaer i én config, og CLI-et lager CSS for temaet ditt med én kommando.
+title: Temaet ditt i Figma, uten Tokens Studio
+description: Vår egen Figma-plugin er på vei. I tillegg håndterer temabyggeren flere temaer i én config, og CLI-et lager CSS-en din med én kommando.
 date: 2026-10-09
 author: Designsystemet
 imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
 imageAlt: Logoen til Designsystemet, med en pil til et plugin-vindu med farger, teksteksempler og en importknapp, og videre til Figma-logoen
 ---
 
+{/* Forslag 3 */}
+Å få temaet ditt inn i Figma har betydd å sette opp Tokens Studio, et Git-repo og access tokens. En egen Figma-plugin fra oss har vært noe av det dere har ønsket dere mest, og nå er den på vei: last opp config-filen fra temabyggeren, så lager pluginen temaet ditt i Figma.
 
-Vi har gjort flere forbedringer som gjør det enklere å ta i bruk Designsystemet i prosjektene dine: en ny Figma-plugin er på vei, temabyggeren håndterer flere temaer, og CLI-et lager CSS for temaet ditt med én kommando. Du trenger ikke lenger knote med Tokens Studio, Git-repoer og access tokens for å få temaet ditt inn i Figma.
+Vi har også gjort to forbedringer som gjør hverdagen enklere: temabyggeren håndterer nå flere temaer i én config, og CLI-et lager CSS-en din med én kommando.
 
+{/* Forslag 2 */}
+{ /* Vi har gjort flere forbedringer som gjør det enklere å ta i bruk Designsystemet i prosjektene dine: en ny Figma-plugin er på vei, temabyggeren håndterer flere temaer, og CLI-et lager CSS for temaet ditt med én kommando. Du trenger ikke lenger knote med Tokens Studio, Git-repoer og access tokens for å få temaet ditt inn i Figma. */}
+
+{/* Forslag 1 */}
 {/* Temaet ditt starter som en config-fil, laget i [temabyggeren](https://theme.designsystemet.no). Nå kommer du lenger med den samme filen: den nye Figma-pluginen henter den inn i Figma-filen din, temabyggeren kan håndtere alle temaene dine i den, og CLI-et lager alt koden din trenger fra den, med én kommando. */}
 
-## En ny Figma-plugin er på vei
+## Temaet ditt i Figma i én operasjon
 
-Få temaet ditt inn i Figma i én operasjon. Last opp config-filen fra temabyggeren til den nye Designsystemet-pluginen, så lager den alle variablene og stilene som komponentene i Figma-biblioteket til Designsystemet bruker. Når temaet endres, importerer du det på nytt: bare det som er endret blir oppdatert, lagene som bruker det forblir koblet, og det du har laget selv blir beholdt.
+Sett opp temaet ditt i [temabyggeren](https://theme.designsystemet.no), og last opp config-filen til Designsystemet-pluginen. Den lager alle variablene og stilene som komponentene i Figma-biblioteket til Designsystemet bruker. Uten Tokens Studio, Git-repo eller access tokens.
 
-Les mer om [hva Figma-pluginen gjør, og hva den ikke kan importere ennå](/no/fundamentals/figma/plugin). Vi gir beskjed når den er publisert i Figma Community.
+- **Importer på nytt når temaet endres.** Bare det som er endret, blir oppdatert, og lagene som bruker variablene og stilene dine, forblir koblet.
+- **Det du har laget selv, blir beholdt.** Pluginen sletter bare det den har laget selv, så dine egne variabler og stiler blir værende.
+- **Design og kode får de samme verdiene.** Pluginen bruker den samme config-filen som CLI-et, og hver variabel viser navnet på CSS-variabelen sin, så utviklere ser riktige navn i Dev Mode.
+- **Du ser hva som skjedde.** Etter en import får du en liste over hva som ble laget, oppdatert og slettet.
+
+Vi gir beskjed når pluginen er publisert i Figma Community. Fram til da kan du gjøre config-filen din klar i temabyggeren. Les mer om [hva Figma-pluginen gjør, og hva den ikke kan importere ennå](/no/fundamentals/figma/plugin).
 
 ## Flere temaer i temabyggeren
 
@@ -32,66 +43,19 @@ Temaene dine ligger i adressen til siden, så du kan lagre siden som bokmerke el
 
 ## Én kommando for temaet ditt i kode
 
-Til nå har det tatt to kommandoer å få et tema inn i koden, `tokens create` og `tokens build`, med hver sine valg. 
+Til nå har det tatt to kommandoer å få et tema inn i koden, `tokens create` og `tokens build`, med hver sine valg. Nå holder det med én kommando, i mappen med `designsystemet.config.json`:
 
-Nå holder det med én kommando, i mappen med `designsystemet.config.json`:
 ```bash
 npx @digdir/designsystemet@latest
 ```
 
-Dette lager CSS for alle temaene dine, direkte fra config-filen, uten å lage design tokens først.
-Hva det lager, og hvor, bestemmer du med det nye `output`-feltet i config-filen.
+Dette lager CSS for alle temaene dine, direkte fra config-filen, i en mappe som heter `designsystemet`. Med det nye `output`-feltet i config-filen velger du hva CLI-et lager, og hvor: CSS, typedeklarasjoner, design tokens og Tailwind-filer. Se [dokumentasjonen for CLI-et](/no/fundamentals/code/cli-config#output) for alle innstillingene.
 
-### Output-feltet
+Design tokens er nå valgfrie, siden pluginen henter temaene dine direkte fra config-filen. Vil du konfigurere Designsystemet på måter config-filen ikke støtter ennå, kan du fortsatt endre hva du vil i Designsystemet ved å redigere design tokens, og [synkronisere dem med Figma med Tokens Studio](/no/fundamentals/figma/tokens-studio).
 
-`output` er en liste over hva CLI-et skal lage. Hvis du utelater det, får du CSS som standard:
+### Bruker du tokens create og tokens build i dag?
 
-```json
-"output": ["css"]
-```
-
-| Output | Lager | Standardmappe |
-| ------ | ----- | ------------- |
-| `css` | En CSS-fil for hvert tema | `designsystemet` |
-| `types` | Typedeklarasjoner for fargene dine, `types.d.ts` | `designsystemet` |
-| `design-tokens` | Design tokens for temaene dine | `designsystemet/design-tokens` |
-
-Skriv en output som et objekt i stedet for et navn for å endre innstillingene, for eksempel for å velge mappe med `dir`, eller for å også lage en Tailwind-fil med `tailwind`:
-
-```json
-{
-  "output": [
-    { "type": "css", "tailwind": "v4" },
-    "types"
-  ],
-  "themes": {
-    "mitt-tema": {
-      "colors": {
-        "accent": "#0062BA",
-        "neutral": "#24272B"
-      }
-    }
-  }
-}
-```
-
-Greit å vite:
-
-- **Design tokens er valgfrie.** Du trenger dem ikke for å få temaet ditt inn i Figma, siden den nye pluginen importerer temaene dine direkte fra config-filen. Legg til `"design-tokens"` i `output` for også å lage dem, så blir CSS-en og typene bygget fra dem.
-- **Vil du konfigurere Designsystemet på måter config-filen ikke støtter ennå**, kan du endre hva du vil i Designsystemet ved å redigere design tokens. Bygg CSS-en fra dem med `tokensDir`, og [synkroniser dem med Figma med Tokens Studio](/no/fundamentals/figma/tokens-studio).
-- **Ingenting blir slettet som standard.** Filer som allerede ligger i mappen til en output, blir beholdt. Sett `"cleanDir": true` på en output der mappen bare har filer CLI-et lager, for også å fjerne filer det ikke lenger lager.
-- **CSS-en har ikke lenger typedeklarasjoner.** Legg til `"types"` i `output` for å få dem, som i eksempelet over.
-- **Med `"tailwind": "v4"`** bruker Tailwind-klassene `--ds-*`-variablene direkte, så `data-color`, `data-color-scheme` og `data-size` gjelder for dem også. `"v3"` lager den samme Tailwind-filen som før.
-
-Se [dokumentasjonen for CLI-et](/no/fundamentals/code/cli-config#output) for alle innstillingene.
-
-### Fra tokens create og tokens build
-
-`tokens create` og `tokens build` virker fortsatt, men de er utfaset og blir fjernet i en senere versjon. Det samme gjelder feltene `outDir` og `clean` i config-filen, som `output` erstatter.
-
-Du trenger ikke endre config-filen for hånd. Når du kjører `designsystemet` med en config-fil som bruker `outDir` eller `clean`, tilbyr CLI-et å oppdatere den til `output` for deg. For å gjøre det selv, se [migrering fra outDir og clean](/no/fundamentals/code/cli-config#migrere-frå-outdir-og-clean).
-
-Den oppdaterte config-filen virker som før: den lager fortsatt design tokens, rydder mappen deres hvis du hadde `"clean": true`, og lagrer CSS og typer i `design-tokens-build`, så importene dine fortsetter å virke. Når du har sjekket at du ikke trenger design tokens, kan du fjerne `"design-tokens"` fra `output`.
+`tokens create` og `tokens build` virker fortsatt, men de er utfaset og blir fjernet i en senere versjon. Du trenger ikke endre config-filen for hånd: når du kjører `designsystemet` med en config-fil som bruker de gamle feltene `outDir` eller `clean`, tilbyr CLI-et å oppdatere den for deg. Når du har sjekket at du ikke trenger design tokens, kan du fjerne `"design-tokens"` fra `output`. Les mer om [migrering fra outDir og clean](/no/fundamentals/code/cli-config#migrere-frå-outdir-og-clean).
 
 <Contributors
   authors={[
