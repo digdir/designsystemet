@@ -32,5 +32,4 @@ export default {
     'select-theme': 'Velg tema',
   },
   'severity-colors': 'Severity',
-  'severity-colors-switch': 'Aktiver for å overstyre severity-farger',
 };

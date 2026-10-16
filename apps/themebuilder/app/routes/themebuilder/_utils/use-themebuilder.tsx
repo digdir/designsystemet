@@ -41,7 +41,6 @@ export const useThemebuilder = () => {
   const {
     colors,
     severityColors,
-    severityEnabled,
     colorScheme,
     baseBorderRadius,
     overrides,
@@ -52,7 +51,6 @@ export const useThemebuilder = () => {
   return {
     colors,
     severityColors,
-    severityEnabled,
     colorScheme,
     baseBorderRadius,
     overrides,

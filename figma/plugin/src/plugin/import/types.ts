@@ -1,0 +1,63 @@
+import type {
+  FigmaCollections,
+  ThemeObjectInput,
+  TokenSets,
+} from '@digdir/designsystemet/internal';
+
+// Input to buildTokenModel: the generated token sets keyed by token set path
+// (e.g. `semantic/color/neutral`) and the `$themes` entries that group them.
+export type TokenInput = {
+  tokenSets: TokenSets;
+  $themes: ThemeObjectInput[];
+};
+
+export type FlatToken = {
+  tokenSet: string;
+  path: string;
+  figmaName: string;
+  type: string | null;
+  value: unknown;
+  references: string[];
+};
+
+export type CollectionMode = {
+  id: string | null;
+  name: string;
+  group: string;
+  selectedTokenSets: Array<{
+    tokenSet: string;
+    status: string;
+    exists: boolean;
+  }>;
+};
+
+export type CollectionVariables = {
+  name: string;
+  variables: Array<{
+    name: string;
+    type: string;
+  }>;
+};
+
+export type ThemeOption = {
+  name: string;
+  tokenSets: string[];
+};
+
+// The token model used for the import. Stays on the plugin side (variable sync, collection specs,
+// text/effect styles, resolver) and is never posted to the UI.
+export type TokenModel = {
+  tokenSets: Array<{
+    path: string;
+  }>;
+  flatTokens: FlatToken[];
+  // `$themes.json` grouped into Figma collections by the CLI's toFigmaCollections.
+  // This is the source of truth for collections/modes; `themes` is the same data
+  // flattened for lookups.
+  figmaCollections: FigmaCollections;
+  themes: CollectionMode[];
+  collections: CollectionVariables[];
+  themeOptions: ThemeOption[];
+  colorSchemeOptions: ThemeOption[];
+  warnings: string[];
+};

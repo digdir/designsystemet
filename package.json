@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@12.4.1",
+  "packageManager": "pnpm@12.11.2",
   "engines": {
     "node": ">=24.21.0",
     "runtime": {
@@ -22,7 +22,7 @@
     "www": "pnpm --filter @web/www dev",
     "web": "pnpm --filter @digdir/designsystemet-web start",
     "themebuilder": "pnpm --filter @web/themebuilder dev",
-    "build": "pnpm --filter @digdir/* build && pnpm --filter @plugin/* build",
+    "build": "pnpm --filter @digdir/* build && pnpm --filter figma-plugin build",
     "build:all": "pnpm -r build",
     "build:react": "pnpm --filter @digdir/designsystemet-react build",
     "build:css": "pnpm --filter @digdir/designsystemet-css build",
@@ -32,8 +32,8 @@
     "build:storybook": "pnpm --filter @web/storybook build",
     "build:www": "pnpm --filter @web/www build",
     "build:themebuilder": "pnpm --filter @web/themebuilder... build",
-    "build:plugin": "pnpm --filter @plugin/designsystemet... build",
-    "watch:plugin": "pnpm --filter @plugin/designsystemet watch",
+    "build:plugin": "pnpm --filter figma-plugin... build",
+    "watch:plugin": "pnpm --filter figma-plugin watch",
     "types": "pnpm -r types",
     "types:react": "pnpm --filter @digdir/designsystemet-react types",
     "version-packages": "changeset version && node scripts/sync-changelogs.js && pnpm build:types && pnpm build:cli && node scripts/sync-cli-schema.js && pnpm update:theme && pnpm update:theme-digdir && git add . && git commit -m \"sync www changelogs, schema and tokens\" || true",
@@ -44,20 +44,20 @@
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.13",
-    "@changesets/cli": "3.0.2",
+    "@biomejs/biome": "2.5.15",
+    "@changesets/cli": "3.0.3",
     "@changesets/get-github-info": "^1.0.1",
     "@changesets/types": "^7.0.0",
     "@digdir/designsystemet": "workspace:^",
     "@testing-library/jest-dom": "7.0.1",
-    "@types/node": "24.13.4",
-    "@vitejs/plugin-react": "6.1.1",
-    "@vitest/browser-playwright": "5.0.0",
-    "chromatic": "18.8.1",
+    "@types/node": "24.19.2",
+    "@vitejs/plugin-react": "6.1.2",
+    "@vitest/browser-playwright": "5.0.3",
+    "chromatic": "18.12.0",
     "typescript": "6.0.3",
     "typescript-plugin-css-modules": "5.2.0",
-    "vite": "8.3.0",
-    "vitest": "5.0.0"
+    "vite": "8.3.4",
+    "vitest": "5.0.3"
   },
   "dependencies": {}
 }

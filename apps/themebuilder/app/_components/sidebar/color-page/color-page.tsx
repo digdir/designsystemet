@@ -4,7 +4,6 @@ import {
   Divider,
   Heading,
   Paragraph,
-  Switch,
 } from '@digdir/designsystemet-react';
 import { PencilIcon, PlusIcon, TrashIcon } from '@navikt/aksel-icons';
 import { useEffect, useId, useRef, useState } from 'react';
@@ -37,14 +36,12 @@ const DEFAULT_COLOR = '#0062ba';
 
 export const ColorPage = () => {
   const { t } = useTranslation();
-  const { colors, severityColors, severityEnabled, workspace } =
-    useThemebuilder();
+  const { colors, severityColors, workspace } = useThemebuilder();
   const [query, setQuery] = useThemeSearchParams();
   const confirmationRef = useRef<HTMLDialogElement>(null);
   const confirmationId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const returnFocusName = useRef<string | null>(null);
-  const severityId = useId();
   const [pendingAction, setPendingAction] = useState<
     'add' | 'remove' | 'rename' | null
   >(null);
@@ -222,17 +219,6 @@ export const ColorPage = () => {
     });
   };
 
-  const toggleSeverityColors = (enabled: boolean) => {
-    const updatedParams = new URLSearchParams(query);
-    if (enabled) {
-      updatedParams.set('severity-enabled', 'true');
-    } else {
-      updatedParams.delete('severity-enabled');
-      updatedParams.delete('severity'); // Also remove any severity color overrides
-    }
-    setQuery(updatedParams, { replace: true, preventScrollReset: true });
-  };
-
   return (
     <div className={classes.container} ref={containerRef}>
       {editorState.activePanel === 'none' && (
@@ -285,47 +271,20 @@ export const ColorPage = () => {
           <Divider />
           <div className={classes.group}>
             <div className={classes.groupHeader}>
-              <Heading data-size='2xs' id={`${severityId}-heading`}>
+              <Heading data-size='2xs'>
                 {t('themeModal.severity-colors')}
               </Heading>
-              <Switch
-                name='severity-colors-switch'
-                data-size='sm'
-                checked={severityEnabled}
-                onChange={(e) => toggleSeverityColors(e.target.checked)}
-                aria-labelledby={`${severityId}-heading`}
-                aria-describedby={
-                  severityEnabled ? undefined : `${severityId}-description`
-                }
-              />
             </div>
-            {!severityEnabled && (
-              <Paragraph
-                id={`${severityId}-description`}
-                data-size='sm'
-                style={{
-                  marginTop: '-4px',
-                  marginBottom: '8px',
-                  color: 'var(--ds-color-neutral-text-subtle)',
-                }}
-              >
-                {t('themeModal.severity-colors-switch')}
-              </Paragraph>
-            )}
-            {severityEnabled && (
-              <div className={classes.colors}>
-                {severityColors.map((severityColor, index) => (
-                  <ColorInput
-                    key={severityColor.name}
-                    color={severityColor.hex}
-                    name={severityColor.name}
-                    onClick={() =>
-                      openSeverityColorEditor(severityColor, index)
-                    }
-                  />
-                ))}
-              </div>
-            )}
+            <div className={classes.colors}>
+              {severityColors.map((severityColor, index) => (
+                <ColorInput
+                  key={severityColor.name}
+                  color={severityColor.hex}
+                  name={severityColor.name}
+                  onClick={() => openSeverityColorEditor(severityColor, index)}
+                />
+              ))}
+            </div>
           </div>
           <Divider />
           <div className={classes.overridesSection}>

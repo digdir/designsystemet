@@ -3,6 +3,7 @@ dist
 ignore
 tsc-build
 *.tsbuildinfo
+figma/plugin/*.zip
 
 # Really don't want that
 node_modules

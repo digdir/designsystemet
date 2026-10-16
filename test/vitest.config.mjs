@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     projects: [
-      '{packages,test}/*/vitest.config.mjs',
+      '{packages,figma,test}/*/vitest.config.mjs',
       'apps/themebuilder/vitest.config.ts',
     ],
     css: {

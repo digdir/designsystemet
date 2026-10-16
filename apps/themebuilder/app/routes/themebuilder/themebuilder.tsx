@@ -115,8 +115,6 @@ export const loader = async ({
     urlParams.get('severity'),
   );
 
-  const severityEnabled = urlParams.get('severity-enabled') === 'true';
-
   return {
     workspace,
     colors: colorsWithOverrides,
@@ -124,7 +122,6 @@ export const loader = async ({
       severityColors,
       overridesMap,
     ) as SeverityColorTheme[],
-    severityEnabled,
     overrides: overridesMap,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),

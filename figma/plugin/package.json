@@ -1,0 +1,44 @@
+{
+  "name": "figma-plugin",
+  "version": "1.23.0",
+  "private": true,
+  "type": "module",
+  "description": "Designsystemet Figma plugin",
+  "author": "Designsystemet team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/figma/plugin",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && pnpm run build:ui && pnpm run build:plugin",
+    "types": "tsc --noEmit",
+    "build:ui": "vite build -c ./vite.config.ui.ts",
+    "build:plugin": "vite build -c ./vite.config.plugin.ts",
+    "zip": "pnpm run build && rimraf designsystemet-figma-plugin.zip && zip -r designsystemet-figma-plugin.zip manifest.json dist -x '*.DS_Store'",
+    "watch": "pnpm run watch:ui & pnpm run watch:plugin",
+    "watch:ui": "pnpm run build:ui --watch -- --mode=development",
+    "watch:plugin": "pnpm run build:plugin --watch -- --mode=development",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@digdir/designsystemet": "workspace:*",
+    "@digdir/designsystemet-css": "workspace:*",
+    "@digdir/designsystemet-react": "workspace:*",
+    "@navikt/aksel-icons": "^8.19.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.141.0",
+    "@types/node": "24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "rimraf": "6.1.3",
+    "typescript": "5.9.3",
+    "vite": "8.3.4",
+    "vite-plugin-singlefile": "^2.3.3"
+  }
+}

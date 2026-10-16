@@ -38,7 +38,7 @@ export type AvatarStackProps = {
  * Use `AvatarStack` to constrain Avatars into a stack.
  *
  * @example
- * <EXPERIMENTAL_AvatarStack>
+ * <AvatarStack>
  *   <Avatar aria-label='name'>
  *     <img src={cat1} alt='' />
  *   </Avatar>
@@ -46,46 +46,50 @@ export type AvatarStackProps = {
  *     <BriefcaseIcon />
  *   </Avatar>
  *   <Avatar aria-label='name'>sm</Avatar>
- * </EXPERIMENTAL_AvatarStack>
+ * </AvatarStack>
  */
-export const EXPERIMENTAL_AvatarStack = forwardRef<
-  HTMLUListElement,
-  AvatarStackProps
->(function AvatarStack(
-  {
-    className,
-    gap,
-    suffix,
-    children,
-    avatarSize,
-    overlap,
-    style,
-    expandable,
-    ...rest
-  },
-  ref,
-) {
-  if (typeof overlap === 'number')
-    overlap = `calc(var(--dsc-avatar-stack-size) / 100 * ${overlap})`; // Support backwards compatible integer overlap
+export const AvatarStack = forwardRef<HTMLUListElement, AvatarStackProps>(
+  function AvatarStack(
+    {
+      className,
+      gap,
+      suffix,
+      children,
+      avatarSize,
+      overlap,
+      style,
+      expandable,
+      ...rest
+    },
+    ref,
+  ) {
+    if (typeof overlap === 'number')
+      overlap = `calc(var(--dsc-avatar-stack-size) / 100 * ${overlap})`; // Support backwards compatible integer overlap
 
-  return (
-    <ul
-      className={cl(`ds-avatar-stack`, className)}
-      data-expandable={expandable || undefined}
-      tabIndex={rest.tabIndex ?? (expandable ? 0 : undefined)}
-      ref={ref}
-      style={
-        {
-          '--dsc-avatar-stack-gap': gap,
-          '--dsc-avatar-stack-size': avatarSize,
-          '--dsc-avatar-stack-overlap': overlap,
-          ...style,
-        } as CSSProperties
-      }
-      {...rest}
-    >
-      {children}
-      {suffix && <li>{suffix}</li>}
-    </ul>
-  );
-});
+    return (
+      <ul
+        className={cl(`ds-avatar-stack`, className)}
+        data-expandable={expandable || undefined}
+        tabIndex={rest.tabIndex ?? (expandable ? 0 : undefined)}
+        ref={ref}
+        style={
+          {
+            '--dsc-avatar-stack-gap': gap,
+            '--dsc-avatar-stack-size': avatarSize,
+            '--dsc-avatar-stack-overlap': overlap,
+            ...style,
+          } as CSSProperties
+        }
+        {...rest}
+      >
+        {children}
+        {suffix && <li>{suffix}</li>}
+      </ul>
+    );
+  },
+);
+
+/**
+ * @deprecated `AvatarStack` is no longer experimental. Use `AvatarStack` instead.
+ */
+export const EXPERIMENTAL_AvatarStack = AvatarStack;

@@ -34,5 +34,4 @@ export default {
     'select-theme': 'Theme',
   },
   'severity-colors': 'Severity',
-  'severity-colors-switch': 'Activate to override severity colors',
 } as typeof no;

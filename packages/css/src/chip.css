@@ -28,7 +28,10 @@
   &:lang(no),
   &:lang(nb),
   &:lang(nn) {
-    --dsc-chip-removable-label: 'Trykk for å fjerne'; /* Only set default label if Norwegian */
+    --dsc-chip-removable-label: 'Trykk for å fjerne';
+  }
+  &:lang(en) {
+    --dsc-chip-removable-label: 'Press to remove';
   }
 
   forced-color-adjust: none; /* Prevent "backplate" behind text, see https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/ */
