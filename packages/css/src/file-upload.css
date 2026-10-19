@@ -1,5 +1,5 @@
 .ds-file-upload {
-  --dsc-file-upload-background: var(--ds-color-surface-default);
+  --dsc-file-upload-background: transparent;
   --dsc-file-upload-background--hover: var(--ds-color-surface-tinted);
   --dsc-file-upload-icon-color: var(--ds-color-text-subtle);
   --dsc-file-upload-border-color: var(--ds-color-border-default);
@@ -14,14 +14,15 @@
   --dsc-file-upload-icon-url--readonly: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M5.098 5.114A9.72 9.72 0 0 0 2.25 12c0 5.385 4.365 9.75 9.75 9.75s9.75-4.365 9.75-9.75S17.385 2.25 12 2.25a9.72 9.72 0 0 0-6.886 2.848l-.008.008zm1.623.546a8.25 8.25 0 0 1 11.62 11.62zM5.66 6.72l11.62 11.62A8.25 8.25 0 0 1 5.66 6.72" clip-rule="evenodd"/></svg>');
 
   --_icon-url: var(--dsc-file-upload-icon-url);
-  position: relative;
-  border: var(--dsc-file-upload-border-width) var(--dsc-file-upload-border-style) var(--dsc-file-upload-border-color);
-  border-radius: var(--dsc-file-upload-border-radius);
-  padding: var(--dsc-file-upload-padding);
   background: var(--dsc-file-upload-background);
-  user-select: none;
+  border-radius: var(--dsc-file-upload-border-radius);
+  border: var(--dsc-file-upload-border-width) var(--dsc-file-upload-border-style) var(--dsc-file-upload-border-color);
+  color: var(--dsc-file-upload-color);
   outline: none; /* Hide outline when react-dropzone adds tabindex="0" */
+  padding: var(--dsc-file-upload-padding);
+  position: relative;
   text-align: center;
+  user-select: none;
   @composes ds-print-preserve from './base.css';
 
   /* React-dropzone puts tabindex="0" on whatever gets {...getRootProps()} and set tabindex="-1" on input.. */
@@ -33,39 +34,18 @@
     @composes ds-focus--visible from './base.css';
   }
 
-  &:hover {
+  &:not(:has([readonly], [aria-readonly='true'])):hover {
     border-style: var(--dsc-file-upload-border-style--hover);
     background-color: var(--dsc-file-upload-background--hover);
     cursor: pointer;
   }
-  &:has(:is([readonly], [aria-readonly='true'])) {
+  &:has([readonly], [aria-readonly='true']) {
     cursor: not-allowed;
     pointer-events: none;
     --_icon-url: var(--dsc-file-upload-icon-url--readonly);
     --dsc-file-upload-color: var(--ds-color-text-muted);
     --dsc-file-upload-icon-color: var(--ds-color-text-muted);
     --dsc-file-upload-border-color: var(--ds-color-border-muted);
-    --dsc-file-upload-background: var(--ds-color-surface-muted);
-    --dsc-file-upload-background--hover: var(--ds-color-surface-muted);
-    /* TODO EIRIK BUTTON IN READONLY */
-
-    /* Override entire color scale to neutral as a catch-all*/
-    /* --ds-color-background-default: var(--ds-color-neutral-background-default);
-    --ds-color-background-tinted: var(--ds-color-neutral-background-tinted);
-    --ds-color-surface-default: var(--ds-color-neutral-surface-default);
-    --ds-color-surface-tinted: var(--ds-color-neutral-surface-tinted);
-    --ds-color-surface-hover: var(--ds-color-neutral-surface-hover);
-    --ds-color-surface-active: var(--ds-color-neutral-surface-active);
-    --ds-color-border-subtle: var(--ds-color-neutral-border-subtle);
-    --ds-color-border-default: var(--ds-color-neutral-border-default);
-    --ds-color-border-strong: var(--ds-color-neutral-border-strong);
-    --ds-color-text-subtle: var(--ds-color-neutral-text-subtle);
-    --ds-color-text-default: var(--ds-color-neutral-text-default);
-    --ds-color-base-default: var(--ds-color-neutral-base-default);
-    --ds-color-base-hover: var(--ds-color-neutral-base-hover);
-    --ds-color-base-active: var(--ds-color-neutral-base-active);
-    --ds-color-base-contrast-subtle: var(--ds-color-neutral-base-contrast-subtle);
-    --ds-color-base-contrast-default: var(--ds-color-neutral-base-contrast-default); */
   }
   &:has([aria-invalid='true']) {
     border-color: var(--ds-color-danger-border-default);
