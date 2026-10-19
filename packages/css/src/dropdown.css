@@ -7,10 +7,10 @@
   --dsc-dropdown-padding: var(--ds-size-3) var(--ds-size-2);
   --dsc-dropdown-item-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-dropdown-item-size: var(--ds-size-12);
-  --dsc-dropdown-background: var(--ds-color-neutral-surface-default);
+  --dsc-dropdown-background: var(--ds-color-surface-default);
   --dsc-dropdown-border-width: var(--ds-border-width-default);
   --dsc-dropdown-border-style: solid;
-  --dsc-dropdown-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-dropdown-border-color: var(--ds-color-border-muted);
   --dsc-dropdown-box-shadow: var(--ds-shadow-md);
   --dsc-dropdown-placement: bottom;
   --dsc-dropdown-arrow-size: var(--ds-size-2);
@@ -29,7 +29,6 @@
   & > :is(h2, h3, h4, h5, h6) {
     align-items: center;
     box-sizing: border-box;
-    color: var(--ds-color-neutral-text-default);
     font-size: inherit;
     margin: 0;
     min-height: var(--dsc-dropdown-item-size);
