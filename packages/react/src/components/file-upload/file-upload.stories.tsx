@@ -60,9 +60,6 @@ export const ReadOnly = meta.story(() => (
     <Field.Description>description text</Field.Description>
     <FileUpload>
       <Field.Description>Upload limit reached</Field.Description>
-      <Button asChild data-variant='secondary'>
-        <span>Upload file</span>
-      </Button>
       <input type='file' readOnly={true} />
     </FileUpload>
   </Field>
