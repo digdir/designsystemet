@@ -1,7 +1,7 @@
 ---
 title: Sync Design Tokens with Tokens Studio
 sidebar_title: Tokens Studio
-description: If you want to configure Designsystemet in ways the configuration file doesn't support yet, change the Design Tokens and sync them with Figma using Tokens Studio.
+description: Change values in Designsystemet by editing the Design Tokens and syncing them with Figma using Tokens Studio.
 date: 2026-10-13
 category: Figma
 color: yellow
@@ -11,7 +11,7 @@ order: 45
 search_terms: tokens studio, design tokens, sync
 ---
 
-If you want to configure Designsystemet in ways the configuration file doesn't support yet, you can change anything you want in Designsystemet by editing the Design Tokens. The [Designsystemet plugin](/en/fundamentals/figma/plugin) can't import those changes into Figma, so you then sync the Design Tokens with Figma using the Tokens Studio plugin instead.
+If you want to change values the configuration file doesn't support yet, you can edit the Design Tokens directly. The [Designsystemet plugin](/en/fundamentals/figma/plugin) can't import these changes into Figma, so you sync the Design Tokens with Figma using the Tokens Studio plugin instead.
 
 This builds on [Build your theme](/en/fundamentals/start-here/own-theme), with your configuration file in a Git repository.
 
@@ -72,7 +72,7 @@ You can change the Design Tokens in your repository, or in Tokens Studio and pus
 
 <Image
   src='/img/fundamentals/start-here/own-theme/tokens-studio-pull-button.png'
-  alt='Screenshot of Tokens Studio showing where to find the pull button'
+  alt='Screenshot of Tokens Studio showing where to find the Pull button'
   boxShadow={false}
 />
 
@@ -80,7 +80,7 @@ Select `Styles & variables` and `Export styles & variables to Figma`.
 
 <Image
   src='/img/fundamentals/start-here/own-theme/tokens-export.webp'
-  alt='Screenshot of Tokens Studio showing where to find the export button'
+  alt='Screenshot of Tokens Studio showing where to find the Export button'
   boxShadow={false}
 />
 
@@ -102,7 +102,7 @@ Select `Themes`, `Select All`, and `Export to Figma`:
 
 You should now see all components using your brand colours in Figma.
 
-**Note:** Token Studio does not delete existing modes during export. After export, check the Theme and Color collections, and remove any default themes that may still remain from the community file.
+**Note:** Tokens Studio does not delete existing modes during export. After export, check the Theme and Color collections, and remove any default themes that may still remain from the Community file.
 
 <Alert data-color="info">
 When the Design Tokens are updated in code, you can easily fetch the new values into Figma by using the “Pull” button in Tokens Studio again.
