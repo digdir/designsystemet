@@ -19,6 +19,7 @@
     display: block;
   }
 
+  /* @deprecated: User should use ds-heading instead */
   & :is(h1, h2, h3, h4, h5, h6) {
     color: var(--dsc-errorsummary-heading-color);
     font-size: var(--ds-font-size-plus-1);
@@ -26,9 +27,10 @@
   }
 
   & a {
-    color: var(--dsc-errorsummary-link-color);
+    color: var(--dsc-errorsummary-link-color); /* @deprecated */
   }
 
+  /* @deprecated: User should use ds-list instead */
   & li:last-of-type {
     margin-bottom: 0;
   }
