@@ -15,42 +15,38 @@ import { ArrowRightIcon } from '@navikt/aksel-icons';
 
 Designsystemet-pluginen importerer temaet ditt til en Figma-fil, som variabler og stiler komponentene i Figma-biblioteket til Designsystemet bruker. Den bruker den samme config-filen som CLI-et, så design og kode får de samme verdiene. Hent den fra [Figma Community (figma.com)](https://www.figma.com/community/plugin/1687841992393312960/designsystemet).
 
-
-<Card data-color='success' variant="tinted" asChild>
+<Card data-color='success' variant='tinted' asChild>
     <Link href='/no/fundamentals/start-here/own-theme#slik-går-du-frem' style={{
-      display: "flex",
-      alignItems: "center",
-      gap: "0.75rem",
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.75rem',
       textDecoration: 'underline',
-      marginBottom: "1.5rem"
+      marginBottom: '1.5rem'
     }}>
-      <ArrowRightIcon style={{"--ds-icon-size": "2em;"}} />
-      <span data-size='lg' data-color='success' style={{
-      marginTop: "0", 
-    }}>Slik setter du opp tema med pluginen</span>
+      <ArrowRightIcon style={{ '--ds-icon-size': '2em' }} />
+      <span data-size='lg' data-color='success' style={{ marginTop: '0' }}>Slik setter du opp tema med pluginen</span>
     </Link>
 </Card>
-
 
 ## Hva pluginen gjør
 
 - **Lager alt temaet ditt trenger.** Variabel-collections og modes for temaene, fargemodusene og størrelsene dine, variabler, tekststiler og effektstiler.
-- **Oppdaterer det som allerede finnes.** Variabler og stiler blir koblet på navn, så lagene som bruker dem forblir koblet når du endrer temaet og importerer på nytt.
-- **Beholder det du har laget selv.** Pluginen holder rede på hva den lager, og sletter bare det den har laget selv. Variabler og stiler du har lagt til, eller gitt nytt navn og duplisert fra importen, blir beholdt, og pluginen lister opp de som ikke er i config-filen.
+- **Oppdaterer det som allerede finnes.** Variabler og stiler blir gjenkjent på navnet, så lagene som bruker dem, forblir koblet når du endrer temaet og importerer på nytt.
+- **Beholder det du har laget selv.** Pluginen holder rede på hva den lager, og sletter bare det den har laget selv. Variabler og stiler du har lagt til, eller gitt nytt navn eller duplisert fra importen, blir beholdt, og pluginen lister opp dem som ikke er i config-filen.
 - **Endrer bare det som er endret.** Når du importerer en oppdatert config-fil, skrives bare det som er annerledes. Det går derfor raskt å importere på nytt, og en uendret config-fil endrer ingenting.
-- **Stemmer med koden.** Hver variabel viser CSS-variabelen den blir bygget som i kode, så utviklere ser riktige navn i Dev Mode. Variablene blir også bare foreslått der de hører hjemme, for eksempel fargevariabler for fyll.
+- **Stemmer med koden.** Hver variabel viser navnet på CSS-variabelen den tilsvarer i koden, så utviklere ser riktige navn i Dev Mode. Variablene blir også bare foreslått der de hører hjemme, for eksempel fargevariabler for fyll.
 - **Forteller deg hva som skjedde.** Etter importen får du en liste over hva som ble laget, oppdatert og slettet, og over det som ikke kunne importeres.
 
 ## Greit å vite
 
-- Hvert tema, hver fargemodus og hver størrelse blir en mode i Figma, og hvor mange modes en collection kan ha, avhenger av Figma-abonnementet ditt. Sjekk at ditt har nok til config-filen din.
-- Fontene i temaet ditt må være tilgjengelige i Figma. Hvis en ikke er det, stopper pluginen før den endrer noe.
+- Hvert tema, hver fargemodus og hver størrelse blir en mode i Figma, og hvor mange modes en collection kan ha, avhenger av Figma-abonnementet ditt. Sjekk at abonnementet ditt har nok modes for config-filen din.
+- Fontene i temaet ditt må være tilgjengelige i Figma. Hvis én ikke er det, stopper pluginen før den endrer noe.
 - Tekststiler og effektstiler kan ikke ha modes i Figma, så de får verdiene til det første temaet, i lys fargemodus.
-- Pluginen beholder variabler, stiler og modes den ikke har laget selv, som eksempeltemaene fra Community-filen, og lister dem opp etter importen. Slett de du ikke trenger.
+- Pluginen beholder variabler, stiler og modes den ikke har laget selv, som eksempeltemaene fra Community-filen, og lister dem opp etter importen. Slett dem du ikke trenger.
 - Pluginen merker det den lager, med [setPluginData](https://developers.figma.com/docs/plugins/api/properties/nodes-setplugindata/), slik at den kan oppdatere og slette riktig neste gang du importerer. Den lagrer bare versjonsnummeret sitt, navnet den ga variabelen eller stilen, og ID-ene til modes den har laget. Bare Designsystemet-pluginen kan lese disse dataene.
 
 ## Begrensninger
 
 Pluginen importerer det som står i config-filen: fargene og fargeoverstyringene dine, font og border radius. Endringer gjort direkte i Design Tokens kan ikke importeres, siden pluginen lager variablene fra config-filen.
 
-Hvis du vil konfigurere Designsystemet på måter config-filen ikke støtter ennå, kan du i stedet redigere Design Tokens og [synkronisere dem med Tokens Studio](/no/fundamentals/figma/tokens-studio).
+Hvis du vil endre verdier som config-filen ikke støtter ennå, kan du i stedet redigere Design Tokens og [synkronisere dem med Tokens Studio](/no/fundamentals/figma/tokens-studio).
