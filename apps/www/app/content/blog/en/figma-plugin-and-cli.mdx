@@ -7,16 +7,18 @@ imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
 imageAlt: The Designsystemet logo, with an arrow to a plugin window showing colors, text samples and an Import button, and on to the Figma logo
 ---
 
-Using Designsystemet just got easier. Designsystemet is launching its own Figma plugin, so now you get your theme into Figma with one upload. We've also made two quality-of-life improvements: the theme builder now handles several themes in one config, and the CLI creates your CSS with one command.
+Since the summer, we've been working on some of the challenges users have had getting started with Designsystemet. This is the first round of improvements, and more are coming.
+
+We're launching our own Figma plugin, so now you get your theme into Figma with one upload. We've also made two quality-of-life improvements: the theme builder now handles several themes in one config, and the CLI creates your CSS with one command.
 
 ## Your theme in Figma, in one go
 
 Set up your theme in the [theme builder](https://theme.designsystemet.no), and upload the config file to the [Designsystemet plugin](https://www.figma.com/community/plugin/1687841992393312960/designsystemet). It creates all the variables and styles that the components in Designsystemet's Figma library use.
 
-- **Import again when your theme changes.** Only what has changed is updated, and the layers that use your variables and styles stay connected.
-- **What you've made is kept.** The plugin only deletes what it created itself, so your own variables and styles stay.
-- **Design and code get the same values.** The plugin uses the same config file as the CLI, and each variable shows the name of its CSS variable, so developers see the right names in Dev Mode.
-- **You see what happened.** After an import, you get a list of what was created, updated and deleted.
+- Import again when your theme changes. Only what has changed is updated, so you can iterate on your theme in Figma quickly. The layers that use the variables and styles stay connected.
+- The plugin only deletes what it created itself, so your own variables and styles stay.
+- Each variable gets the name of its CSS variable as its code syntax, so developers see the right names in Dev Mode.
+- After an import, you get a list of what was created, updated and deleted.
 
 Get the [Designsystemet plugin in Figma Community](https://www.figma.com/community/plugin/1687841992393312960/designsystemet), and read more about [the plugin here](/en/fundamentals/figma/plugin).
 
@@ -24,23 +26,23 @@ Get the [Designsystemet plugin in Figma Community](https://www.figma.com/communi
 
 Many organisations need more than one theme, for example for different services or brands. The theme builder now lets you work on all of them in one config:
 
-- **Import your config.** Click **Import config**, paste your config file, and choose the theme to start with. The other themes come along.
-- **Switch between themes** with the **Theme** menu in the toolbar.
-- **Add, rename and delete themes** under **Edit themes**. A new theme starts as a copy of the one you're on.
-- **Keep the colors in step.** Adding, renaming or deleting a color does it in all your themes, while each theme keeps its own color values.
-- **Get one config for all your themes.** **Use theme** gives you the config with every theme, ready for the Figma plugin and the CLI, and you choose which theme's CSS to view or download.
+- Click **Import config**, paste your config file, and choose the theme to start with. The other themes come along.
+- Switch between themes with the **Theme** menu in the toolbar.
+- Add, rename and delete themes under **Edit themes**. A new theme starts as a copy of the one you're on.
+- Adding, renaming or deleting a color does it in all your themes, while each theme keeps its own color values.
+- **Use theme** gives you the config with every theme, ready for the Figma plugin and the CLI, and you choose which theme's CSS to view or download.
 
 Your themes are kept in the page's address, so you can bookmark the page or share it to continue later.
 
 ## One command for your theme in code
 
-Until now, getting a theme into code took two commands, `tokens create` and `tokens build`, each with its own options. Now one command is enough, in the folder with your `designsystemet.config.json`:
+Until now, getting a theme into code took two commands, `tokens create` and `tokens build`, each with its own options. Now one command is enough. Run it in the folder with your `designsystemet.config.json`:
 
 ```bash
 npx @digdir/designsystemet@latest
 ```
 
-This creates CSS for all your themes, directly from the config file, in a folder called `designsystemet`. With the new `output` field in the config file, you choose what the CLI creates, and where: CSS, type declarations, design tokens and Tailwind files. The CSS no longer includes type declarations, so add `"types"` to `output` to get them. See [the CLI documentation](/en/fundamentals/code/cli-config#output) for all the settings.
+This creates CSS for all the themes in your config file, in a folder called `designsystemet`. With the new `output` field in the config file, you choose what the CLI creates, and where: CSS, type declarations, design tokens and Tailwind files. The CSS no longer includes type declarations, so add `"types"` to `output` to get them. See [the CLI documentation](/en/fundamentals/code/cli-config#output) for all the options.
 
 Design tokens are now optional, since the plugin imports your themes directly from the config file. If you want to configure Designsystemet in ways the config doesn't support yet, you can still change anything you want in Designsystemet by editing the design tokens, and [sync them with Figma using Tokens Studio](/en/fundamentals/figma/tokens-studio).
 
