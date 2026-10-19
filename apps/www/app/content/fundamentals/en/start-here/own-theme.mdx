@@ -13,16 +13,15 @@ search_terms: theming, get-started, themes, tokens
 
 Designsystemet is designed to be used with your own visual identity, including colours and other preferences. With the Designsystemet Theme Builder, you set up your theme in a configuration file. The same file is used in Figma, with the Designsystemet plugin, and in code, with the CLI, so design and code use the same values.
 
-## How to get started:
+## How to get started
 
 1. Use the [Designsystemet Theme Builder](https://theme.designsystemet.no) to set up your theme. You can set up several themes in the same configuration file under **Edit themes**.
 
 2. Click **Use theme**, and download or copy the configuration file.
 
-
 ### In Figma
 
-- Fetch the component library from [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Click “Open in Figma”) into your organisation that has at least a Pro licence. Note that this will be a copy of the component library without any connection to the main file.
+- Fetch the component library from [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (click “Open in Figma”) into your organisation, which needs at least a Pro licence. This will be a copy of the component library, without any connection to the main file.
 
 - In your copy, open the [Designsystemet plugin (figma.com)](https://www.figma.com/community/plugin/1687841992393312960/designsystemet). Upload the configuration file under **Upload config**, or paste it under **Or paste the config**, and click **Import**.
 
@@ -36,7 +35,7 @@ Designsystemet is designed to be used with your own visual identity, including c
 
 - Place `designsystemet.config.json` in your project, in the folder where you want the theme's files.
 
-- Make sure you have Node.js `22.12.0` or higher installed. Open a terminal in that folder, and run:
+- Make sure you have Node.js `22.12.0` or later installed. Open a terminal in that folder, and run:
 
 ```bash
 npx @digdir/designsystemet@latest
@@ -52,8 +51,9 @@ Update the configuration file in the Theme Builder: click **Import config** and 
 - **In code**, replace `designsystemet.config.json` with the new file and run the command again.
 
 ### Icons in Figma
+
 To get icons working in Figma, they need to be connected to a library stored in your organisation. See the guide ["Get icons working in Figma"](/en/fundamentals/theme/icons#get-icons-working-in-figma).
 
 ## Alternative: Design Tokens and Tokens Studio
 
-If you want to change values the configuration file doesn't support yet, you can generate Design Tokens with [the CLI](/en/fundamentals/code/cli-config#output) and edit all the values in them. The plugin can't import those changes into Figma, so you then sync them with Tokens Studio. See [Sync Design Tokens with Tokens Studio](/en/fundamentals/figma/tokens-studio) for how.
+If you want to change values the configuration file doesn't support yet, you can generate Design Tokens with [the CLI](/en/fundamentals/code/cli-config#output) and edit all the values in them. The plugin can't import those changes into Figma, so you then sync them with Tokens Studio. See how in [Sync Design Tokens with Tokens Studio](/en/fundamentals/figma/tokens-studio).

@@ -1,7 +1,7 @@
 ---
 title: Bygg ditt tema
 sidebar_title: Bygg ditt tema
-description: Slik setter du opp ditt tema i Designsystemet for design og kode.
+description: Slik setter du opp temaet ditt i Designsystemet for design og kode.
 date: 2026-10-16
 category: Start her
 color: yellow
@@ -11,18 +11,17 @@ order: 10
 search_terms: theming, get-started, temaer, tokens
 ---
 
-Designsystemet er laget for å kunne brukes sammen med din egen visuelle profil - inkludert farger og andre preferanser. Med Designsystemets Temabygger setter du opp temaet ditt i en config-fil. Den samme filen brukes i Figma, med Designsystemet-pluginen, og i kode, med CLI-et, så design og kode bruker de samme verdiene.
+Designsystemet er laget for å kunne brukes sammen med din egen visuelle profil – inkludert farger og andre preferanser. Med Temabyggeren til Designsystemet setter du opp temaet ditt i en config-fil. Den samme filen brukes i Figma, med Designsystemet-pluginen, og i kode, med CLI-et, så design og kode bruker de samme verdiene.
 
-## Slik går du frem:
+## Slik går du frem
 
-1. Bruk [temabyggeren](https://theme.designsystemet.no) til å sette opp temaet ditt. Du kan sette opp flere temaer i den samme config-filen under **Rediger temaer**.
+1. Bruk [Temabyggeren](https://theme.designsystemet.no) til å sette opp temaet ditt. Du kan sette opp flere temaer i den samme config-filen under **Rediger temaer**.
 
 2. Klikk **Ta i bruk tema**, og last ned eller kopier config-filen.
 
-
 ### I Figma
 
-- Hent komponentbiblioteket fra [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma") til din organisasjon som har minimum pro-lisens. Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen.
+- Hent komponentbiblioteket fra [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (trykk "Open in Figma") til organisasjonen din, som må ha minst Pro-lisens. Dette blir en kopi av komponentbiblioteket, uten kobling til hovedfilen.
 
 - Åpne [Designsystemet-pluginen (figma.com)](https://www.figma.com/community/plugin/1687841992393312960/designsystemet) i kopien din. Last opp config-filen under **Upload config**, eller lim den inn under **Or paste the config**, og klikk **Import**.
 
@@ -30,13 +29,13 @@ Designsystemet er laget for å kunne brukes sammen med din egen visuelle profil 
 
    - Hvert tema, hver fargemodus og hver størrelse blir en mode i Figma, og hvor mange modes en collection kan ha, avhenger av Figma-abonnementet ditt.
    - Fontene i temaet ditt må være tilgjengelige i Figma.
-   - Pluginen beholder variabler, stiler og modes den ikke har laget selv, som eksempeltemaene fra Community-filen, og lister dem opp etter importen. Slett de du ikke trenger.
+   - Pluginen beholder variabler, stiler og modes den ikke har laget selv, som eksempeltemaene fra Community-filen, og lister dem opp etter importen. Slett dem du ikke trenger.
 
 ### I kode
 
 - Legg `designsystemet.config.json` i prosjektet ditt, i mappen der du vil ha filene til temaet.
 
-- Pass på at du har Node.js `22.12.0` eller høyere installert. Åpne en terminal i den mappen, og kjør:
+- Pass på at du har Node.js `22.12.0` eller nyere installert. Åpne en terminal i den mappen, og kjør:
 
 ```bash
 npx @digdir/designsystemet@latest
@@ -52,8 +51,9 @@ Oppdater config-filen i Temabyggeren: klikk **Importer config** og lim inn confi
 - **I kode** bytter du ut `designsystemet.config.json` med den nye filen og kjører kommandoen på nytt.
 
 ### Ikoner i Figma
-For å få ikoner til å fungere i Figma, må de kobles til et bibliotek som er lagret på deres organisasjon. Se guiden ["Få ikoner til å fungere i Figma"](/no/fundamentals/theme/icons#få-ikoner-til-å-fungere-i-figma).
+
+For å få ikoner til å fungere i Figma, må de kobles til et bibliotek som er lagret i organisasjonen din. Se guiden ["Få ikoner til å fungere i Figma"](/no/fundamentals/theme/icons#få-ikoner-til-å-fungere-i-figma).
 
 ## Alternativ: Design Tokens og Tokens Studio
 
-Ønsker du å endre verdier som config-filen ikke støtter ennå, kan du generere Design Tokens med [CLI-et](/no/fundamentals/code/cli-config#output) og redigere alle verdiene i dem. Pluginen kan ikke importere endringene i Design Tokens til Figma, så da synkroniserer du dem med Tokens Studio. Se [Synkroniser Design Tokens med Tokens Studio](/no/fundamentals/figma/tokens-studio) for hvordan.
+Ønsker du å endre verdier som config-filen ikke støtter ennå, kan du generere Design Tokens med [CLI-et](/no/fundamentals/code/cli-config#output) og redigere alle verdiene i dem. Pluginen kan ikke importere endringene i Design Tokens til Figma, så da synkroniserer du dem med Tokens Studio. Se hvordan i [Synkroniser Design Tokens med Tokens Studio](/no/fundamentals/figma/tokens-studio).
