@@ -2,7 +2,7 @@
   --dsc-field-content-spacing: var(--ds-size-2);
   --dsc-field-counter-over: '%d tegn for mye';
   --dsc-field-counter-under: '%d tegn igjen';
-  --dsc-field-description-color: inherit;
+  --dsc-field-description-color: currentColor;
   --dsc-field-description-font-size--toggle: var(--ds-font-size-minus-1);
 
   @composes ds-print-preserve from './base.css';
@@ -113,7 +113,7 @@
     }
 
     &[data-variant='outline'] {
-      --dsc-field-border-color: var(--ds-color-border-default);
+      --dsc-field-border-color: var(--ds-color-border-muted);
       --dsc-field-border-color--checked: var(--ds-color-border-default);
       --dsc-field-border-color--invalid: var(--ds-color-danger-border-default);
       --dsc-field-border-color--readonly: var(--ds-color-border-muted);
