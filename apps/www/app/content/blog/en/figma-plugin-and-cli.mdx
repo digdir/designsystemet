@@ -1,6 +1,6 @@
 ---
 title: Using Designsystemet just got easier
-description: From theme builder to Figma in one upload! The theme builder also handles several themes in one config, and the CLI creates your CSS with one command.
+description: From the Theme Builder to Figma in one upload! The Theme Builder also handles several themes in one config, and the CLI creates your CSS with one command.
 date: 2026-10-09
 author: Designsystemet
 imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
@@ -9,22 +9,22 @@ imageAlt: The Designsystemet logo, with an arrow to a plugin window showing colo
 
 Feedback from the community has given us a better understanding of what makes it hard to get started with Designsystemet. The first improvements are now in place, and more are coming.
 
-With a brand-new Figma plugin, you can get your theme into Figma with one upload. We've also made it easier to work with themes in the theme builder and in code: you can now work on several themes in one config, and the CLI creates your CSS with one command.
+With a brand-new Figma plugin, you can get your theme into Figma with one upload. We've also made it easier to work with themes in the Theme Builder and in code: you can now have several themes in one config, and the CLI creates your CSS with one command.
 
 ## Your theme in Figma, in one go
 
-Set up your theme in the [theme builder](https://theme.designsystemet.no), and upload the config file to the [Designsystemet plugin](https://www.figma.com/community/plugin/1687841992393312960/designsystemet). It creates all the variables and styles that the components in Designsystemet's Figma library use.
+Set up your theme in the [Theme Builder](https://theme.designsystemet.no), and upload the config file to the [Designsystemet plugin](https://www.figma.com/community/plugin/1687841992393312960/designsystemet). It creates all the variables and styles that the components in Designsystemet's Figma library use.
 
 - Import again when your theme changes. Only what has changed is updated, so you can iterate on your theme in Figma quickly. The layers that use the variables and styles stay connected.
 - The plugin only deletes what it created itself, so your own variables and styles stay.
 - Each variable gets the name of its CSS variable as its code syntax, so developers see the right names in Dev Mode.
 - After an import, you get a list of what was created, updated and deleted.
 
-Get the [Designsystemet plugin in Figma Community](https://www.figma.com/community/plugin/1687841992393312960/designsystemet), and read more about [the plugin here](/en/fundamentals/figma/plugin).
+Get the [Designsystemet plugin in Figma Community](https://www.figma.com/community/plugin/1687841992393312960/designsystemet), and read more in [the plugin documentation](/en/fundamentals/figma/plugin).
 
-## Several themes in the theme builder
+## Several themes in the Theme Builder
 
-Many organisations need more than one theme, for example for different services or brands. The theme builder now lets you work on all of them in one config:
+Many organisations need more than one theme, for example for different services or brands. The Theme Builder now lets you work on all of them in one config:
 
 - Click **Import config**, paste your config file, and choose the theme to start with. The other themes come along.
 - Switch between themes with the **Theme** menu in the toolbar.
@@ -42,13 +42,13 @@ Until now, getting a theme into code took two commands, `tokens create` and `tok
 npx @digdir/designsystemet@latest
 ```
 
-This creates CSS for all the themes in your config file, in a folder called `designsystemet`. With the new `output` field in the config file, you choose what the CLI creates, and where: CSS, type declarations, design tokens and Tailwind files. The CSS no longer includes type declarations, so add `"types"` to `output` to get them. See [the CLI documentation](/en/fundamentals/code/cli-config#output) for all the options.
+This creates CSS for all the themes in your config file, in a folder called `designsystemet`. With the new `output` field in the config file, you choose what the CLI creates, and where: CSS, type declarations, Design Tokens and Tailwind files. The CSS no longer includes type declarations, so add `"types"` to `output` to get them. See [the CLI documentation](/en/fundamentals/code/cli-config#output) for all the options.
 
-Design tokens are now optional, since the plugin imports your themes directly from the config file. If you want to configure Designsystemet in ways the config doesn't support yet, you can still change anything you want in Designsystemet by editing the design tokens, and [sync them with Figma using Tokens Studio](/en/fundamentals/figma/tokens-studio).
+Design Tokens are now optional, since the plugin imports your themes directly from the config file. If you want to change values the config file doesn't support yet, you can still edit the Design Tokens and [sync them with Figma using Tokens Studio](/en/fundamentals/figma/tokens-studio).
 
 ### Already using tokens create and tokens build?
 
-`tokens create` and `tokens build` still work, but they are deprecated and will be removed in a future version. You don't have to change your config by hand: when you run `designsystemet` with a config file that uses the old `outDir` or `clean` fields, the CLI offers to update it for you. Once you've checked that you don't need the design tokens, you can remove `"design-tokens"` from `output`. Read more about [migrating from outDir and clean](/en/fundamentals/code/cli-config#migrating-from-outdir-and-clean).
+`tokens create` and `tokens build` still work, but they are deprecated and will be removed in a future version. You don't have to change your config by hand: when you run `designsystemet` with a config file that uses the old `outDir` or `clean` fields, the CLI offers to update it for you. Once you've checked that you don't need the Design Tokens, you can remove `"design-tokens"` from `output`. Read more about [migrating from outDir and clean](/en/fundamentals/code/cli-config#migrating-from-outdir-and-clean).
 
 <Contributors
   authors={[
