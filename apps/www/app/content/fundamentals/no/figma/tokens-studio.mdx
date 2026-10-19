@@ -21,7 +21,7 @@ Dette bygger på [Bygg ditt tema](/no/fundamentals/start-here/own-theme), med co
 
 ```json
 {
-  "output": ["design-tokens", "css"],
+  "output": ["design-tokens"],
   "themes": {
     "theme": {
       "colors": {
@@ -39,7 +39,7 @@ Dette bygger på [Bygg ditt tema](/no/fundamentals/start-here/own-theme), med co
 npx @digdir/designsystemet@latest
 ```
 
-Dette lagrer Design Tokens i en mappe som heter `designsystemet/design-tokens`. Det er her du gjør endringene dine i dem.
+Dette lager Design Tokens i en mappe som heter `designsystemet/design-tokens`. Det er her du gjør endringene dine i dem.
 
 2. Bygg CSS-en fra Design Tokens dine, i stedet for å lage Design Tokens på nytt fra config-filen. Endre `output` til:
 
@@ -110,13 +110,33 @@ Når Design Tokens oppdateres i koden, kan du enkelt hente de nye verdiene inn i
 
 ## Når du endrer temaet
 
-Når du lager Design Tokens på nytt fra config-filen, blir endringene dine i dem erstattet. For å hente inn endringer fra Temabyggeren, som nye farger, legger du `design-tokens`-outputen tilbake i `output`, med `cleanDir` satt til `true`, og kjører CLI-et:
+Når du lager Design Tokens på nytt fra config-filen, blir endringene dine i dem erstattet. For å hente inn endringer fra Temabyggeren, som nye farger, og samtidig beholde endringene dine, kan du dele config-filen i to og kjøre et script mellom dem som gjør endringene dine i Design Tokens på nytt.
+
+`create-tokens.json` lager Design Tokens fra temaene dine. `cleanDir` fjerner Design Tokens for farger du har fjernet.
 
 ```json
-"output": [
-  { "type": "design-tokens", "cleanDir": true },
-  { "type": "css", "tokensDir": "designsystemet/design-tokens" }
-]
+{
+  "output": [{ "type": "design-tokens", "cleanDir": true }],
+  "themes": {
+    // Temaene dine fra Temabyggeren
+  }
+}
 ```
 
-`cleanDir` fjerner Design Tokens for farger du har fjernet. Deretter gjør du endringene dine i Design Tokens på nytt, for eksempel ved å gjenopprette dem med Git, og endrer `output` tilbake som i steg 2.
+`build-tokens.json` bygger CSS-en fra Design Tokens. Den trenger ingen temaer, siden den bare bruker Design Tokens.
+
+```json
+{
+  "output": [{ "type": "css", "tokensDir": "designsystemet/design-tokens" }]
+}
+```
+
+Kjør dem etter hverandre, med scriptet ditt imellom:
+
+```bash
+npx @digdir/designsystemet@latest --config create-tokens.json &&
+node update-tokens.js &&
+npx @digdir/designsystemet@latest --config build-tokens.json
+```
+
+`update-tokens.js` er ditt eget script som gjør endringene dine i Design Tokens. Har du ikke et script, kan du gjøre endringene på nytt for hånd, eller hente dem tilbake med Git, før du bygger CSS-en.

@@ -47,6 +47,7 @@ Designsystemet-pluginen importerer temaet ditt til en Figma-fil, som variabler o
 - Fontene i temaet ditt må være tilgjengelige i Figma. Hvis en ikke er det, stopper pluginen før den endrer noe.
 - Tekststiler og effektstiler kan ikke ha modes i Figma, så de får verdiene til det første temaet, i lys fargemodus.
 - Pluginen beholder variabler, stiler og modes den ikke har laget selv, som eksempeltemaene fra Community-filen, og lister dem opp etter importen. Slett de du ikke trenger.
+- Pluginen merker det den lager, med [setPluginData](https://developers.figma.com/docs/plugins/api/properties/nodes-setplugindata/), slik at den kan oppdatere og slette riktig neste gang du importerer. Den lagrer bare versjonsnummeret sitt, navnet den ga variabelen eller stilen, og ID-ene til modes den har laget. Bare Designsystemet-pluginen kan lese disse dataene.
 
 ## Begrensninger
 

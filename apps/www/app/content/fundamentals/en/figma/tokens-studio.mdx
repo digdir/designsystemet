@@ -21,7 +21,7 @@ This builds on [Build your theme](/en/fundamentals/start-here/own-theme), with y
 
 ```json
 {
-  "output": ["design-tokens", "css"],
+  "output": ["design-tokens"],
   "themes": {
     "theme": {
       "colors": {
@@ -39,7 +39,7 @@ This builds on [Build your theme](/en/fundamentals/start-here/own-theme), with y
 npx @digdir/designsystemet@latest
 ```
 
-This saves the Design Tokens in a folder called `designsystemet/design-tokens`. This is where you make your changes to them.
+This creates the Design Tokens in a folder called `designsystemet/design-tokens`. This is where you make your changes to them.
 
 2. Build the CSS from your Design Tokens, instead of creating the Design Tokens again from the configuration file. Change `output` to:
 
@@ -110,13 +110,33 @@ When the Design Tokens are updated in code, you can easily fetch the new values 
 
 ## When you change your theme
 
-Creating the Design Tokens again from the configuration file replaces your changes to them. To bring in changes from the Theme Builder, such as new colours, add the `design-tokens` output back to `output`, with `cleanDir` set to `true`, and run the CLI:
+Creating the Design Tokens again from the configuration file replaces your changes to them. To bring in changes from the Theme Builder, such as new colours, and keep your changes, you can split the configuration file in two and run a script between them that makes your changes to the Design Tokens again.
+
+`create-tokens.json` creates the Design Tokens from your themes. `cleanDir` removes the Design Tokens of colours you have removed.
 
 ```json
-"output": [
-  { "type": "design-tokens", "cleanDir": true },
-  { "type": "css", "tokensDir": "designsystemet/design-tokens" }
-]
+{
+  "output": [{ "type": "design-tokens", "cleanDir": true }],
+  "themes": {
+    // Your themes from the Theme Builder
+  }
+}
 ```
 
-`cleanDir` removes the Design Tokens of colours you have removed. Then make your changes to the Design Tokens again, for example by restoring them with Git, and change `output` back as in step 2.
+`build-tokens.json` builds the CSS from the Design Tokens. It doesn't need any themes, since it only uses the Design Tokens.
+
+```json
+{
+  "output": [{ "type": "css", "tokensDir": "designsystemet/design-tokens" }]
+}
+```
+
+Run them one after the other, with your script in between:
+
+```bash
+npx @digdir/designsystemet@latest --config create-tokens.json &&
+node update-tokens.js &&
+npx @digdir/designsystemet@latest --config build-tokens.json
+```
+
+`update-tokens.js` is your own script that makes your changes to the Design Tokens. If you don't have a script, you can make the changes again by hand, or restore them with Git, before you build the CSS.
