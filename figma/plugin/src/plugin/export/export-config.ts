@@ -14,6 +14,11 @@ import {
   validateConfig,
 } from '@digdir/designsystemet/internal';
 import pkg from '@digdir/designsystemet/package.json';
+import {
+  isColorScaleName,
+  STEP_NAME_BY_NUMBER,
+  toNamedColorStep,
+} from '../color-steps';
 import { buildCollectionSpecs } from '../import/collection-specs';
 import { createTokenModel } from '../import/create-token-model';
 import { createImportLog } from '../import/log';
@@ -37,14 +42,6 @@ export type ExportedConfig = {
 };
 
 const SCHEMES: ColorScheme[] = ['light', 'dark'];
-// Variables are named by step number today (`<theme>/<color>/12`). Step names (`<theme>/<color>/base-default`)
-// are planned, so both are read, and the export itself works with step names.
-const STEP_NAME_BY_NUMBER = new Map(
-  Object.values(semanticColorSpec).map((step) => [
-    String(step.number),
-    step.name,
-  ]),
-);
 const KNOWN_COLLECTIONS = new Set<string>(Object.values(FIGMA_COLLECTION));
 // The colors in each theme's part of the Color scheme collection that aren't steps.
 // A Map, so a variable named e.g. `<theme>/constructor` can't match a property every object has.
@@ -210,6 +207,15 @@ async function compareWithImport(
       const name = toImportedName(collection.name, variable.name);
       variableNames.add(name);
       const desired = spec.variables.get(name);
+      // Imports before the color scales moved to Theme made them in Semantic too. They aren't config, and the next
+      // import removes them, so they aren't reported one by one.
+      if (
+        !desired &&
+        collection.name === FIGMA_COLLECTION.SEMANTIC &&
+        isColorScaleName(variable.name)
+      ) {
+        continue;
+      }
       if (!desired) {
         warnings.push(
           `Variable "${collection.name}/${variable.name}" isn't created by an import, so it isn't in the config.`,
@@ -299,26 +305,24 @@ function missingWarning(
   return `${names.length} ${kind}${one ? '' : 's'} in ${collectionName} ${one ? "isn't" : "aren't"} in this file, so importing the config creates ${one ? 'it' : 'them'}: ${names.join(', ')}`;
 }
 
-/** Whether a variable is a numbered color step, e.g. `<theme>/<color>/12` in Color scheme. */
+/** Whether a variable is a color step, e.g. `<theme>/<color>/base-default` (or `12`) in Color scheme. */
 function isColorStep(collectionName: string, variableName: string): boolean {
   return (
     collectionName === FIGMA_COLLECTION.COLOR_SCHEME &&
-    STEP_NAME_BY_NUMBER.has(variableName.split('/').at(-1) ?? '')
+    toStepName(variableName.split('/').at(-1) ?? '') !== undefined
   );
 }
 
 /**
- * The name an import gives a variable. Color scheme steps can be named by step name (`<theme>/<color>/base-default`)
- * as well as by number, which is what an import names them today (`<theme>/<color>/12`).
+ * The name an import gives a variable. An import names color steps by step name, `<theme>/<color>/base-default` in
+ * Color scheme and `color/<color>/base-default` in Theme, but files imported before that have them by number.
  */
 function toImportedName(collectionName: string, variableName: string): string {
-  if (collectionName !== FIGMA_COLLECTION.COLOR_SCHEME) {
-    return variableName;
-  }
-  const [, prefix, step] = /^(.+\/)([^/]+)$/.exec(variableName) ?? [];
-  return prefix && step && Object.hasOwn(semanticColorSpec, step)
-    ? `${prefix}${semanticColorSpec[step as SemanticColorNames].number}`
-    : variableName;
+  const isColorStep =
+    collectionName === FIGMA_COLLECTION.COLOR_SCHEME ||
+    (collectionName === FIGMA_COLLECTION.THEME &&
+      variableName.startsWith('color/'));
+  return (isColorStep && toNamedColorStep(variableName)) || variableName;
 }
 
 /** A theme's colors in the Color scheme collection, per color scheme. */

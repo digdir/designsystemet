@@ -1,3 +1,5 @@
+import { FIGMA_COLLECTION } from '@digdir/designsystemet/internal';
+import { toNamedColorStep } from '../color-steps';
 import type { CollectionSpec } from './collection-specs';
 import { changedFields, type ImportLog } from './log';
 import {
@@ -6,6 +8,7 @@ import {
   managedModeIds,
   markManaged,
   planModes,
+  readImportData,
   setManagedModeIds,
   splitLeftovers,
 } from './ownership';
@@ -164,6 +167,13 @@ export async function syncVariables(
     const variableByName = new Map(
       existingInCollection.map((item) => [item.name, item]),
     );
+
+    if (
+      collection.name === FIGMA_COLLECTION.COLOR_SCHEME ||
+      collection.name === FIGMA_COLLECTION.THEME
+    ) {
+      renameNumberedColorSteps(existingInCollection, spec, variableByName, log);
+    }
 
     // Only variables the import created are deleted; see ownership.ts.
     const leftovers = splitLeftovers(
@@ -341,6 +351,38 @@ export async function syncVariables(
 type VariableSnapshot = Record<string, unknown>;
 
 // The parts of a variable the import writes, keyed by how they are named in the log.
+/**
+ * Imports before color steps were named by step named them by number, `<theme>/<color>/12` in Color scheme and
+ * `color/<color>/12` in Theme. Those are renamed to their step name (`.../base-default`) instead of being replaced,
+ * so they keep their ID and what is bound to them stays connected. Only names the import creates are used. One the import made, or from an import before marking existed, is renamed;
+ * one renamed or duplicated by hand is left alone, as is one whose new name is taken.
+ */
+function renameNumberedColorSteps(
+  variables: Variable[],
+  spec: CollectionSpec,
+  variableByName: Map<string, Variable>,
+  log: ImportLog,
+): void {
+  for (const variable of variables) {
+    const from = variable.name;
+    const to = toNamedColorStep(from);
+    const unmarked = readImportData(variable).pluginVersion === undefined;
+    if (
+      !to ||
+      !spec.variables.has(to) ||
+      variableByName.has(to) ||
+      !(isManaged(variable) || unmarked)
+    ) {
+      continue;
+    }
+    variable.name = to;
+    markManaged(variable);
+    variableByName.delete(from);
+    variableByName.set(to, variable);
+    log.info.push(`Renamed variable ${spec.name}/${from} to ${to}`);
+  }
+}
+
 function snapshotVariable(
   variable: Variable,
   collection: VariableCollection,

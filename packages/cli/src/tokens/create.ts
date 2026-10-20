@@ -57,10 +57,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
       `semantic/color/${colorName}`,
       colorSetTokens,
     ]),
-    [
-      `semantic/style`,
-      generateSemanticStyle(colorNames, borderWidth, borderRadius, typography.components, shadow, size, opacity),
-    ],
+    [`semantic/style`, generateSemanticStyle(borderWidth, borderRadius, typography.components, shadow, size, opacity)],
   ]);
 
   return { tokenSets };

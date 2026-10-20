@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { type CssColor, generateColorScale } from '../../../../colors/index.ts';
+import { type CssColor, generateColorScale, semanticColorNames } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import { colorsSchema } from '../../../../schemas/schema-color.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
@@ -36,11 +36,11 @@ describe('generateColorScheme', () => {
 
   it('nests token sets for each color under the theme name', () => {
     const result = generateColorScheme('theme', 'light', baseColors);
-    const theme = result.theme as Record<string, Record<number, { $type: string; $value: string }>>;
+    const theme = result.theme as Record<string, Record<string, { $type: string; $value: string }>>;
 
     expect(Object.keys(result)).toEqual(['theme']);
-    expect(Object.keys(theme.accent).map(Number)).toEqual(Array.from({ length: 16 }, (_, i) => i + 1));
-    expect(theme.accent[12]).toEqual({ $type: 'color', $value: ACCENT });
+    expect(Object.keys(theme.accent)).toEqual(semanticColorNames);
+    expect(theme.accent['base-default']).toEqual({ $type: 'color', $value: ACCENT });
   });
 
   it('defaults focus tokens to neutral positions 1 and 11', () => {
@@ -62,29 +62,29 @@ describe('generateColorScheme', () => {
   it('generates scales from severity override hexes', () => {
     const overrides = { severity: { danger: '#AA0000' } } as ColorOverrideSchema;
     const result = generateColorScheme('theme', 'light', baseColors, overrides);
-    const theme = result.theme as Record<string, Record<number, { $value: string }>>;
+    const theme = result.theme as Record<string, Record<string, { $value: string }>>;
 
-    // Position 12 is base-default for colors, so it should match the override
-    expect(theme.danger[12].$value).toBe(overrides?.severity?.danger);
+    // base-default is the input color, so it should match the override
+    expect(theme.danger['base-default'].$value).toBe(overrides?.severity?.danger);
   });
 
   it('generates scales from severity defined in colors', () => {
     const colors = { ...{ info: '#ff00e1' as CssColor }, ...baseColors };
     const result = generateColorScheme('theme', 'light', colors);
-    const theme = result.theme as Record<string, Record<number, { $value: string }>>;
+    const theme = result.theme as Record<string, Record<string, { $value: string }>>;
 
-    // Position 12 is base-default for colors
-    expect(theme.info[12].$value).toBe(colors?.info);
+    // base-default is the input color
+    expect(theme.info['base-default'].$value).toBe(colors?.info);
   });
 
   it('severity color defined in overrides takes precedence over color', () => {
     const overrides = { severity: { info: '#AA0000' } } as ColorOverrideSchema;
     const colors = { ...{ info: '#ff00e1' as CssColor }, ...baseColors };
     const result = generateColorScheme('theme', 'light', colors, overrides);
-    const theme = result.theme as Record<string, Record<number, { $value: string }>>;
+    const theme = result.theme as Record<string, Record<string, { $value: string }>>;
 
-    // Position 12 is base-default for colors
-    expect(theme.info[12].$value).toBe(overrides?.severity?.info);
+    // base-default is the input color
+    expect(theme.info['base-default'].$value).toBe(overrides?.severity?.info);
   });
 
   it('applies color overrides for the matching scheme only', () => {
@@ -94,15 +94,15 @@ describe('generateColorScheme', () => {
 
     const light = generateColorScheme('theme', 'light', baseColors, overrides).theme as Record<
       string,
-      Record<number, { $value: string }>
+      Record<string, { $value: string }>
     >;
     const dark = generateColorScheme('theme', 'dark', baseColors, overrides).theme as Record<
       string,
-      Record<number, { $value: string }>
+      Record<string, { $value: string }>
     >;
 
-    expect(light.accent[1].$value).toBe('#111111');
-    expect(dark.accent[1].$value).toBe(generateColorScale(ACCENT, 'dark')['background-default'].hex);
+    expect(light.accent['background-default'].$value).toBe('#111111');
+    expect(dark.accent['background-default'].$value).toBe(generateColorScale(ACCENT, 'dark')['background-default'].hex);
   });
 
   it('lets linkVisited and focus overrides win over the defaults', () => {

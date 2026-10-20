@@ -1,5 +1,3 @@
-import * as R from 'ramda';
-import { type SemanticColorNames, semanticColorMap } from '../../../../colors/types.ts';
 import type {
   BorderRadiusConfig,
   BorderWidthConfig,
@@ -24,7 +22,6 @@ const generateTypographyTokens = (group: Record<string, unknown>): TokenSet =>
   );
 
 export function generateSemanticStyle(
-  colorNames: string[],
   borderWidth: BorderWidthConfig,
   borderRadius: BorderRadiusConfig,
   typographyComponents: TypographyComponents,
@@ -33,7 +30,7 @@ export function generateSemanticStyle(
   opacity: OpacityConfig,
 ): TokenSet {
   return {
-    ...generateColors(colorNames),
+    ...baseColorTemplate,
     // Each border-width from the config references the primitive keyed by its width, e.g. focus '3px' -> {border-width.3}
     'border-width': tokensFromRecord(borderWidth, 'borderWidth', (value) => `{border-width.${numericKey(value)}}`),
     // Each border-radius step from the config references the primitive numbered scale by position,
@@ -66,18 +63,6 @@ export function generateSemanticStyle(
   } satisfies TokenSet;
 }
 
-const generateColors = (colorNames: string[]) => {
-  const semanticColorTokens = colorNames.map((colorName) => [colorName, generateColorScaleTokens(colorName)]);
-
-  return {
-    ...baseColorTemplate,
-    color: {
-      ...Object.fromEntries(semanticColorTokens),
-      ...baseColorTemplate.color,
-    },
-  };
-};
-
 const baseColorTemplate: TokenSet = {
   color: {
     focus: {
@@ -99,17 +84,4 @@ const baseColorTemplate: TokenSet = {
       },
     },
   },
-};
-
-const generateColorScaleTokens = (colorName: string): Record<SemanticColorNames, Token> => {
-  const colorScale = {} as Record<SemanticColorNames, Token>;
-
-  for (const [colorSemantic, colorNumber] of R.toPairs(semanticColorMap)) {
-    colorScale[colorSemantic] = {
-      $type: 'color',
-      $value: `{color.${colorName}.${colorNumber}}`,
-    };
-  }
-
-  return colorScale;
 };
