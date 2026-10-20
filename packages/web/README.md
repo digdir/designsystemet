@@ -23,10 +23,9 @@
 - [`readonly`](#readonly)
 - [`<ds-suggestion>`](#ds-suggestion)
 - [`<ds-tabs>`](#ds-tabs)
-- [`focusgroup` (polyfill)](#focusgroup)
+- [`focusgroup` (polyfill)](#focusgroup-polyfill)
 - [`data-tooltip`](#data-tooltip)
   
-
 
 ## Get started
 
@@ -56,12 +55,14 @@ For example, you can:
 The package supports sub-path exports which means you can import individual parts of the package if needed.
 
 ```
+import '@digdir/designsystemet-web/ds-breadcrumbs';
 import '@digdir/designsystemet-web/clickdelegatefor';
 import '@digdir/designsystemet-web/details';
 import '@digdir/designsystemet-web/dialog';
 import '@digdir/designsystemet-web/ds-error-summary';
 import '@digdir/designsystemet-web/ds-field';
 import '@digdir/designsystemet-web/fieldset';
+import '@digdir/designsystemet-web/focusgroup';
 import '@digdir/designsystemet-web/invokers';
 import '@digdir/designsystemet-web/ds-pagination';
 import '@digdir/designsystemet-web/popover';
@@ -92,8 +93,6 @@ import '@digdir/designsystemet-web';
 if (typeof window !== 'undefined' && isProduction()) window.dsWarnings = false;
 ```
 
-
-
 ## `<ds-breadcrumbs>`
 Automatically hides/shows `aria-label` on desktop/mobile and `aria-current="page"` on last link in list. No API.
 
@@ -110,17 +109,6 @@ Automatically hides/shows `aria-label` on desktop/mobile and `aria-current="page
 </ds-breadcrumbs>
 ```
 
-### `details` and `summary`
-Use native elements. We polyfill a bug in Firefox when combined with Android Talkback screen reader to announce state and role properly.
-
-```html
-<details class="ds-details">
-  <summary>More info</summary>
-  <div>Lorem ipsum dolor sit amet.</div>
-</details>
-```
-
-
 ## `data-clickdelegatefor`
 Used for delegating click event. For example, you can use this to delegate click events from a parent element to child elements that are added dynamically.
 
@@ -131,9 +119,17 @@ Used for delegating click event. For example, you can use this to delegate click
 </div>
 ```
 
+## `details` and `summary` (accessibility polyfill)
+Use native elements. We polyfill a bug in Firefox when combined with Android Talkback screen reader to announce state and role properly.
 
+```html
+<details class="ds-details">
+  <summary>More info</summary>
+  <div>Lorem ipsum dolor sit amet.</div>
+</details>
+```
 
-### `<dialog>`
+## `<dialog>` (`closedby` polyfill)
 Use the native `<dialog>` element. We polyfill support for [`closedby="any"`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). 
 
 ```html
@@ -142,9 +138,9 @@ my dialog
 </dialog>
 ```
 
-#### open & close
+### Open and close
 
-Use invokers  `command` and `commandfor`, to open and close dialog.
+Use invokers `command` and `commandfor`, to open and close dialog.
 ```html
 <button class="ds-button" type="button" command="show-modal" commandfor="my-dialog">
   Open dialog
@@ -198,13 +194,9 @@ You can add a counter to inputs and textareas by adding the `data-field="counter
 | data-over  | string | %d tegn for mye       | false    |
 | data-under | string | %d tegn igjen         | false    |
 
-### invokers (`command` polyfill)
-We automatically attach [invokers-polyfill](https://www.npmjs.com/package/invokers-polyfill), which means that you get support for `command` and `commandfor`.
-
-
 ## `fieldset`
 
-An observer will look on `fieldset` element, add an id to combine children element with `data-field="description"` and `legend` into `aria-labeledby` on `fieldset`.
+An observer will look on `fieldset` element, add an id to combine children element with `data-field="description"` and `legend` into `aria-labelledby` on `fieldset`.
 
 ```html
 <fieldset>
@@ -212,6 +204,9 @@ An observer will look on `fieldset` element, add an id to combine children eleme
     <p data-field="description">Choose one option</p>
 </fieldset>
 ```
+
+## invokers (`command` polyfill)
+We automatically attach [invokers-polyfill](https://www.npmjs.com/package/invokers-polyfill), which means that you get support for `command` and `commandfor`.
 
 ## `<ds-pagination>`
 Implements pagination, fills buttons with text.
@@ -230,8 +225,7 @@ If you don't pass any attributes you can implement your own logic for current pa
 </ds-pagination>
 ```
 
-
-### `popover`
+## `popover`
 We use native popover functionality, but we attach an event listener that fixes placement of designsystem components.
 
 ```html
@@ -245,11 +239,10 @@ We use native popover functionality, but we attach an event listener that fixes 
 | attribute     | type   | default    | required |
 |---------------|--------|------------|----------|
 | data-placement | string | top        | false    |
-| data-overscroll | 'contain' | undefined | undefined       | false    |
+| data-overscroll | 'contain' \| undefined | undefined | false    |
 | data-autoplacement | boolean | true          | false    |
 
 **If you don't use the class `ds-popover` you need to add the CSS property `--_ds-floating` to the popover element.** This can be `top`, `bottom`, `left` or `right`.
-
 
 ## `readonly`
 Used for fixing `readonly` support on `select` and `input` elements. Add `aria-readonly="true"` to make the element behave as readonly, which means that it will not be editable by the user or call any change events.
@@ -261,7 +254,6 @@ Used for fixing `readonly` support on `select` and `input` elements. Add `aria-r
   <option value="3">Option 3</option>
 </select>
 ```
-
 
 ## `<ds-suggestion>`
 Extends `u-combobox` from u-elements. See documentation for [u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
@@ -281,7 +273,6 @@ Extends `u-combobox` from u-elements. See documentation for [u-combobox](https:/
 </ds-field>
 ```
 
-
 ## `<ds-tabs>`
 Extends `u-tabs` from u-elements. See documentation for [u-tabs](https://u-elements.github.io/u-elements/elements/u-tabs).
 
@@ -298,7 +289,7 @@ Extends `u-tabs` from u-elements. See documentation for [u-tabs](https://u-eleme
 </ds-tabs>
 ```
 
-## `focusgroup`
+## `focusgroup` (polyfill)
 `focusgroup` is polyfilled [according to upcoming specification](https://open-ui.org/components/scoped-focusgroup.explainer/).
 
 ```html
@@ -318,6 +309,8 @@ Extends `u-tabs` from u-elements. See documentation for [u-tabs](https://u-eleme
 </fieldset>
 ```
 
+Radio inputs in a `focusgroup="radiogroup"`, like the toggle group above, are handled by `toggle-group`: the arrow keys move focus without selecting, and Enter selects. It also migrates the deprecated `data-toggle-group` attribute to `focusgroup="radiogroup"`, with a warning.
+
 ## `data-tooltip`
 Using a single element for rendering next to elements with `data-tooltip` attribute.
 Also automatically sets `aria-label` or `aria-description` as needed.
@@ -326,6 +319,3 @@ Uses native popover functionality with our [`popover`](#popover) polyfill.
 ```html
 <button data-placement="left" data-tooltip="left" class="ds-button">left</button>
 ```
-
-
-
