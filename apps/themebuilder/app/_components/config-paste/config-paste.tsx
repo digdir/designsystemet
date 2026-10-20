@@ -84,11 +84,13 @@ export function ConfigPaste() {
             autoFocus
             suppressHydrationWarning
           />
-          {errors.map((message) => (
-            <ValidationMessage key={message} lang='en'>
-              {message}
-            </ValidationMessage>
-          ))}
+          <ul>
+            {errors.map((message) => (
+              <ValidationMessage key={message} lang='en' asChild>
+                <li>{message}</li>
+              </ValidationMessage>
+            ))}
+          </ul>
         </Field>
       </div>
 
