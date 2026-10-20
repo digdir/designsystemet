@@ -11,14 +11,17 @@ order: 1
 search_terms: multibrand, multiple, theming, themes
 ---
 
-Det er mogleg å ha fleire tema i same prosjekt dersom du bruker [config fil](/no/fundamentals/code/cli-config).
-Under vil vi gå gjennom to måter å gjere det på.
+Det er mogleg å ha fleire tema i same prosjekt dersom du bruker ei [config-fil](/no/fundamentals/code/cli-config).
+Under går vi gjennom to måtar å gjere det på.
 
-**Denne sida føreset at du har lest "[Bygg ditt tema](/no/fundamentals/start-here/own-theme)".**
+**Denne sida føreset at du har lese "[Bygg ditt tema](/no/fundamentals/start-here/own-theme)".**
 
-## Same fargenavn
-Dersom du har to tema som skal bytast mellom i eit og same grensesnitt, vil du nok bruke same fargenamn i begge tema.
-Dette betyr at du kan legge begge inn i èi config fil, og få ut design tokens som kan bytast mellom i Figma, og som genererer to CSS-filer.
+## Same fargenamn
+
+Dersom du har to tema som skal bytast mellom i eitt og same grensesnitt, må du bruke same fargenamn i begge tema.
+Då kan du legge begge inn i éi config-fil, som genererer to CSS-filer, éi per tema.
+
+Til dømes:
 
 ```json
 {
@@ -37,31 +40,26 @@ Dette betyr at du kan legge begge inn i èi config fil, og få ut design tokens 
         "first": "#abcdef",
         "second": "#123456",
         "neutral": "#c05030"
-      },
+      }
     }
   }
 }
 ```
 
-Config fila over blir ikkje generert frå temabyggaren, og det er lurt å ha med seg ein utviklar i prosessen når ein lagar slike config filer.
-
-Det er mogleg å validere config fila i temabyggaren. Bruk knappen "Fortsett fra konfigurasjonsfil" på framsida.
-Denne valideringen vil ikkje gi deg feil dersom fargenamna er ulike, så det er viktig å dobbeltsjekke dette manuelt.
+Du kan validere config-fila i temabyggaren. Klikk **Importer config** og lim inn config-fila.
 
 ## Ulike fargenamn
 
-Dersom du har ulike fargenamn vil ikkje dette funke i design tokens og Figma.
-I dette tilfellet må du lage to config filer, ein for kvart tema.
-Du kan då køyre bygg-kommandoen to gonger, ein gong for kvar config fil.
+Dersom temaa har ulike fargenamn, kan dei ikkje liggje i same config-fil. CLI-et godtek det ikkje, og Figma kan ikkje byte mellom dei med modes på grunn av avgrensingar i korleis Figma handterer modes.
+I dette tilfellet må du lage éi config-fil for kvart tema, og køyre kommandoen éin gong for kvar config-fil.
 
-Det er vanleg å måtte gjere det på denne måten dersom du har eit repository som samlar alle design tokens og CSS for fleire applikasjonar.
+Det er vanleg å måtte gjere det slik dersom du har eit repository som samlar alle temaa for fleire merkevarer.
+
+`some-org.config.json`:
 
 ```json
 {
-  "output": [
-    { "type": "design-tokens", "dir": "./some-org-dt" },
-    { "type": "css", "dir": "./some-org-css", "tokensDir": "./some-org-dt" }
-  ],
+  "output": [{ "type": "css", "dir": "./some-org-css" }],
   "themes": {
     "some-org": {
       "colors": {
@@ -70,17 +68,16 @@ Det er vanleg å måtte gjere det på denne måten dersom du har eit repository 
         "second": "#E5AA20",
         "neutral": "#303030"
       }
-    },
+    }
   }
 }
 ```
 
+`other-org.config.json`:
+
 ```json
 {
-  "output": [
-    { "type": "design-tokens", "dir": "./other-org-dt" },
-    { "type": "css", "dir": "./other-org-css", "tokensDir": "./other-org-dt" }
-  ],
+  "output": [{ "type": "css", "dir": "./other-org-css" }],
   "themes": {
     "other-org": {
       "colors": {
@@ -89,11 +86,18 @@ Det er vanleg å måtte gjere det på denne måten dersom du har eit repository 
         "brand2": "#E5AA20",
         "neutral": "#303030"
       }
-    },
+    }
   }
 }
 ```
 
+Køyr dei etter kvarandre:
+
+```bash
+npx @digdir/designsystemet@latest --config some-org.config.json &&
+npx @digdir/designsystemet@latest --config other-org.config.json
+```
+
 <Alert data-color="info">
-Legg merke til at me har ulike `output`-mapper i desse to config filene, slik at design tokens og CSS for kvart tema blir lagt i kvar sine mapper.
+Legg merke til at vi har ulike `output`-mapper i dei to config-filene, slik at CSS-en for kvart tema blir lagd i si eiga mappe.
 </Alert>
