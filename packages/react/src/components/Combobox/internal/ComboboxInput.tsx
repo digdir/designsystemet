@@ -152,8 +152,9 @@ const ComboboxInput = ({
         {/* Clear button if we are in multiple mode and have at least one active value */}
         {showClearButton && <ComboboxClearButton ref={clearButtonRef} />}
         {/* Arrow for combobox. Click is handled by the wrapper */}
-        <div className={`ds-combobox__arrow ds-combobox__arrow--${open ? 'open' : 'closed'}`}>
-        </div>
+        <div
+          className={`ds-combobox__arrow ds-combobox__arrow--${open ? 'open' : 'closed'}`}
+        ></div>
       </div>
     </Paragraph>
   );
