@@ -18,22 +18,27 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ## 🔗 Links
 
+[designsystemet.no](https://designsystemet.no/) - Documentation.
 
-[www](https://designsystemet.no/) - Documentation.
-
-[Theme builder](https://theme.designsystemet.no/) - Theme builder.
+[Theme Builder](https://theme.designsystemet.no/) - Create your theme and get a config file for Figma and code.
 
 ## 📦 Packages
 
-[`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI for Designsystemet.
+[`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI that creates CSS for your theme from the config file.
 
 [`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - CSS implementation of Designsystemet components. Used by the React package. Contains a default theme.
 
-[`@digdir/designsystemet-web`](https://www.npmjs.com/package/@digdir/designsystemet-web) - Framework agnostic implementations of some Designsystemet web-components and helpers.
+[`@digdir/designsystemet-web`](https://www.npmjs.com/package/@digdir/designsystemet-web) - Framework-agnostic implementations of some Designsystemet web components and helpers.
 
 [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
 
 [`@digdir/designsystemet-types`](https://www.npmjs.com/package/@digdir/designsystemet-types) - Types for Designsystemet.
+
+## 🎨 Figma
+
+[Core UI Kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) - The component library for Figma.
+
+[Designsystemet plugin](https://www.figma.com/community/plugin/1687841992393312960/designsystemet) - Import your theme into Figma.
 
 ## 🚀 Get started
 
@@ -43,22 +48,22 @@ Please refer to our [setup guide](https://designsystemet.no/en/fundamentals/code
 
 Learn how you can contribute to this project by reading our [Code of Conduct](./CODE_OF_CONDUCT.md) and [Contributing Guide](./CONTRIBUTING.md).
 
-## AI Development
+## 🤖 AI Development
 
 We don't provide any AI tools such as `SKILLS.md` or an MCP server.
-Our website (designsystemet.no) delivers all content in Markdown if the correct headers are set. (`Accept: text/markdown`)
+Our website, designsystemet.no, delivers all content as Markdown when you request it with the `Accept: text/markdown` header.
 
-If you wish to get better usage of Designsystemet in your AI, we would reccommend adding something similar to your promt/skills:
+If you want your AI to make better use of Designsystemet, we recommend adding something like this to your prompt or skills:
 - Use https://designsystemet.no for patterns, tips and Designsystemet documentation
 - Use Designsystemet variables when setting colors and spacing (padding/margin)
 - Use semantically correct components or elements
 
 ## 💪 Contributors
 
-We are lucky to have a great group of people who have contributed to Designsystemet
+We are lucky to have a great group of people who have contributed to Designsystemet.
 
 <a style="margin-top: 32px; display: block;" href="https://github.com/digdir/designsystemet/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=digdir/designsystem" />
+  <img alt="Contributors to Designsystemet" src="https://contrib.rocks/image?repo=digdir/designsystemet" />
 </a>
 
 <br />
