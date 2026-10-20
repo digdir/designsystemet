@@ -40,7 +40,7 @@ These groups describe the areas of use for the colors. For example, the Text gro
 For example, Tinted means the color has a hint of color in it, while Hover means the color is intended to be used for an interactive state.
 
 ## Contrast
-By default, most of the semantic colors are designed to meet contrast requirements automatically, regardless of which base color you have chosen. 
+By default, the semantic colors are designed to meet contrast requirements, regardless of which base color you have chosen. 
 This applies in particular to text colors against background and surface colors.
 
 Examples:
@@ -58,9 +58,6 @@ The color then needs a contrast of at least **3:1** against the background or su
 
 The [Theme Builder](https://theme.designsystemet.no/en/themebuilder) checks this for you. Under "Contrasts between colours" you can see the contrast between `base-default` and the background and surface colors. 
 If you already have a theme, you can import your config file in the Theme Builder and have the contrasts checked there.
-
-`base-contrast-default` and `base-contrast-subtle` always have sufficient contrast against `base-default`, but that doesn't help if the component itself disappears into the background. 
-If you choose white as `base-default`, for example, an active switch becomes white on a white background. Only the black circle is visible, and it becomes hard to see that it is a switch and whether it is on.
 
 ## Light and dark mode
 
