@@ -12,10 +12,7 @@
 
 .textarea {
   resize: vertical;
-
-  & > textarea {
-    font-family: monospace;
-  }
+  font-family: monospace;
 }
 
 .actions {

@@ -5,8 +5,10 @@ import {
 } from '@digdir/designsystemet/internal';
 import {
   Button,
+  Field,
+  Label,
   Paragraph,
-  Textfield,
+  Textarea,
   ValidationMessage,
 } from '@digdir/designsystemet-react';
 import { PencilIcon } from '@navikt/aksel-icons';
@@ -22,14 +24,14 @@ export function ConfigPaste() {
   const [configText, setConfigText] = useState('');
   const [validatedConfig, setValidatedConfig] =
     useState<WorkspaceConfig | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [errors, setErrors] = useState<string[]>([]);
 
   const handleValidate = () => {
-    setError(null);
+    setErrors([]);
     setValidatedConfig(null);
 
     if (!configText.trim()) {
-      setError(t('configPaste.validation-error'));
+      setErrors([t('configPaste.validation-error')]);
       return;
     }
 
@@ -38,19 +40,29 @@ export function ConfigPaste() {
         ? migrateConfigWithOldColorSchema(configText)
         : JSON.parse(configText);
 
-      configSchema.parse(parsed);
+      const result = configSchema.safeParse(parsed);
+      if (!result.success) {
+        setErrors(
+          result.error.issues.map((issue) =>
+            issue.path.length > 0
+              ? `${issue.path.join('.')}: ${issue.message}`
+              : issue.message,
+          ),
+        );
+        return;
+      }
       const validated: ConfigSchema = parsed;
 
       if (!validated.themes || Object.keys(validated.themes).length === 0) {
-        setError(t('configPaste.no-themes'));
+        setErrors([t('configPaste.no-themes')]);
         return;
       }
       setValidatedConfig({ ...validated, themes: validated.themes });
     } catch (err) {
       console.error('Config validation error:', err);
-      setError(
+      setErrors([
         err instanceof Error ? err.message : t('configPaste.validation-error'),
-      );
+      ]);
     }
   };
 
@@ -59,19 +71,25 @@ export function ConfigPaste() {
   return (
     <div className={classes.container}>
       <div className={classes.textareaWrapper}>
-        <Textfield
-          multiline
-          label={t('configPaste.title')}
-          description={t('configPaste.description')}
-          className={classes.textarea}
-          value={configText}
-          onChange={(e) => setConfigText(e.target.value)}
-          placeholder={t('configPaste.placeholder')}
-          rows={15}
-          error={error ? <span lang='en'>{error}</span> : undefined}
-          autoFocus
-          suppressHydrationWarning
-        />
+        <Field>
+          <Label>{t('configPaste.title')}</Label>
+          <Field.Description>{t('configPaste.description')}</Field.Description>
+          <Textarea
+            className={classes.textarea}
+            value={configText}
+            onChange={(e) => setConfigText(e.target.value)}
+            placeholder={t('configPaste.placeholder')}
+            rows={15}
+            aria-invalid={errors.length > 0 || undefined}
+            autoFocus
+            suppressHydrationWarning
+          />
+          {errors.map((message) => (
+            <ValidationMessage key={message} lang='en'>
+              {message}
+            </ValidationMessage>
+          ))}
+        </Field>
       </div>
 
       <div className={classes.actions}>
@@ -83,7 +101,7 @@ export function ConfigPaste() {
             onClick={(event) => {
               setConfigText('');
               setValidatedConfig(null);
-              setError(null);
+              setErrors([]);
               event.currentTarget.closest('dialog')?.close();
             }}
             variant='secondary'
