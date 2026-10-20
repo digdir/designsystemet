@@ -8,14 +8,18 @@
 
 .textareaWrapper {
   position: relative;
+
+  & ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-block-start: var(--dsc-field-content-spacing);
+  }
 }
 
 .textarea {
   resize: vertical;
-
-  & > textarea {
-    font-family: monospace;
-  }
+  font-family: monospace;
 }
 
 .actions {
