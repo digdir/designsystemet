@@ -19,19 +19,14 @@ Designsystemet er laget for å kunne brukes sammen med din egen visuelle profil 
 
 2. Klikk **Ta i bruk tema**, og last ned eller kopier config-filen.
 
-### I Figma
+<Tabs>
+<Tabs.List>
+  <Tabs.Tab value="kode">Kode</Tabs.Tab>
+  <Tabs.Tab value="figma">Figma</Tabs.Tab>
+</Tabs.List>
+<Tabs.Panel value="kode">
 
-- Hent komponentbiblioteket fra [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (trykk "Open in Figma") til organisasjonen din, som må ha minst Pro-lisens. Dette blir en kopi av komponentbiblioteket, uten kobling til hovedfilen.
-
-- Åpne [Designsystemet-pluginen (figma.com)](https://www.figma.com/community/plugin/1687841992393312960/designsystemet) i kopien din. Last opp config-filen under **Upload config**, eller lim den inn under **Or paste the config**, og klikk **Import**.
-
-   Pluginen lager variablene og stilene for temaene dine, og nå skal du se alle komponentene med dine egne profilfarger.
-
-   - Hvert tema, hver fargemodus og hver størrelse blir en mode i Figma, og hvor mange modes en collection kan ha, avhenger av Figma-abonnementet ditt. Les mer i [Modes i Figma](/no/fundamentals/figma/modes-in-figma).
-   - Fontene i temaet ditt må være tilgjengelige i Figma før import.
-   - Pluginen beholder variabler, stiler og modes den ikke har laget selv og lister dem opp etter importen.
-
-### I kode
+3. Generer CSS for temaene dine
 
 - Legg `designsystemet.config.json` i prosjektet ditt, i mappen der du vil ha filene til temaet.
 
@@ -45,14 +40,33 @@ Dette lager CSS for temaene dine, direkte fra config-filen, i en mappe som heter
 
 ### Når du endrer temaet
 
-Oppdater config-filen i Temabyggeren: klikk **Importer config** og lim inn config-filen din for å fortsette der du slapp. Deretter:
+Oppdater config-filen direkte i koden, eller i Temabyggeren: klikk **Importer config** og lim inn config-filen din for å fortsette der du slapp, og bytt ut `designsystemet.config.json` med den nye filen etterpå. Kjør deretter kommandoen på nytt.
 
-- **I Figma** importerer du den nye config-filen med pluginen. Den endrer bare det som er endret, og komponenter som bruker variablene og stilene, forblir koblet.
-- **I kode** bytter du ut `designsystemet.config.json` med den nye filen og kjører kommandoen på nytt.
+</Tabs.Panel>
+<Tabs.Panel value="figma">
 
-### Ikoner i Figma
+3. Sett opp temaet i Figma
+
+- Hent komponentbiblioteket fra [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (trykk "Open in Figma") til organisasjonen din, som må ha minst Pro-lisens. Dette blir en kopi av komponentbiblioteket, uten kobling til hovedfilen.
+
+- Åpne [Designsystemet-pluginen (figma.com)](https://www.figma.com/community/plugin/1687841992393312960/designsystemet) i kopien din. Last opp config-filen under **Upload config**, eller lim den inn under **Or paste the config**, og klikk **Import**.
+
+   Pluginen lager variablene og stilene for temaene dine, og nå skal du se alle komponentene med dine egne profilfarger.
+
+   - Hvert tema, hver fargemodus og hver størrelse blir en mode i Figma, og hvor mange modes en collection kan ha, avhenger av Figma-abonnementet ditt. Les mer i [Modes i Figma](/no/fundamentals/figma/modes-in-figma).
+   - Fontene i temaet ditt må være tilgjengelige i Figma før import.
+   - Pluginen beholder variabler, stiler og modes den ikke har laget selv og lister dem opp etter importen.
+
+### Når du endrer temaet
+
+Oppdater config-filen i Temabyggeren: klikk **Importer config** og lim inn config-filen din for å fortsette der du slapp. Importer deretter den nye config-filen med pluginen. Den endrer bare det som er endret, og komponenter som bruker variablene og stilene, forblir koblet.
+
+### Ikoner
 
 For å få ikoner til å fungere i Figma, må de kobles til et bibliotek som er lagret i organisasjonen din. Se guiden ["Få ikoner til å fungere i Figma"](/no/fundamentals/theme/icons#få-ikoner-til-å-fungere-i-figma).
+
+</Tabs.Panel>
+</Tabs>
 
 ## Alternativ: Design Tokens og Tokens Studio
 
