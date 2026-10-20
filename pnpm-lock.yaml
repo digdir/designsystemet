@@ -767,9 +767,6 @@ importers:
       '@floating-ui/react':
         specifier: 0.26.23
         version: 0.26.23(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      '@navikt/aksel-icons':
-        specifier: ^8.19.1
-        version: 8.19.1(react@19.3.0)
       '@radix-ui/react-slot':
         specifier: ^1.5.0
         version: 1.5.0(@types/react@19.3.0)(react@19.3.0)
@@ -783,6 +780,9 @@ importers:
       '@digdir/designsystemet-css':
         specifier: workspace:^
         version: link:../css
+      '@navikt/aksel-icons':
+        specifier: ^8.19.1
+        version: 8.19.1(react@19.3.0)
       '@storybook/addon-docs':
         specifier: 10.6.1
         version: 10.6.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(storybook@10.6.1(@types/react@19.3.0)(prettier@3.9.10)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))
