@@ -18,7 +18,6 @@ const ComboboxLabel = ({
   description,
   hideLabel,
   size,
-  readOnly,
   formFieldProps,
 }: ComboboxLabelProps) => {
   return (
