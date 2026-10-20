@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**Combobox:** Replaced `@navikt/aksel-icons` with inline CSS icons to reduce dependencies.
+**Combobox:** Removed `@navikt/aksel-icons` as a dependency - now using inline CSS icons.
