@@ -16,13 +16,13 @@ Designsystemet is a suite of tools used to create design systems.
 
 Our goal is to create consistent and user-friendly experiences in digital solutions for public services, making them more efficient and reliable.
 
-## 🔗 Links
+## Links
 
 [designsystemet.no](https://designsystemet.no/) - Documentation.
 
 [Theme Builder](https://theme.designsystemet.no/) - Create your theme and get a config file for Figma and code.
 
-## 📦 Packages
+## Packages
 
 [`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI that creates CSS and optionally design tokens for your theme from the config file.
 
@@ -35,21 +35,21 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 [`@digdir/designsystemet-types`](https://www.npmjs.com/package/@digdir/designsystemet-types) - Types for Designsystemet.
 
 
-## 🚀 Get started
+## Get started
 
 Please refer to our [setup guide](https://designsystemet.no/en/fundamentals/code/setup) for getting started in code.
 
-## 🎨 Figma
+## Figma
 
 [Core UI Kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) - The component library for Figma.
 
 [Designsystemet plugin](https://www.figma.com/community/plugin/1687841992393312960/designsystemet) - Import your theme into Figma.
 
-## 🫶 Contributing
+## Contributing
 
 Learn how you can contribute to this project by reading our [Code of Conduct](./CODE_OF_CONDUCT.md) and [Contributing Guide](./CONTRIBUTING.md).
 
-## 🤖 AI Development
+## AI Development
 
 We don't provide any AI tools such as `SKILLS.md` or an MCP server.
 Our website, designsystemet.no, delivers all content as Markdown when you request it with the `Accept: text/markdown` header.
@@ -59,7 +59,7 @@ If you want your AI to make better use of Designsystemet, we recommend adding so
 - Use Designsystemet variables when setting colors and spacing (padding/margin)
 - Use semantically correct components or elements
 
-## 💪 Contributors
+## Contributors
 
 We are lucky to have a great group of people who have contributed to Designsystemet.
 
