@@ -247,9 +247,27 @@
   cursor: pointer;
 }
 
+.ds-combobox__arrow::before {
+  @composes ds-icon from './base.css';
+  content: '';
+  background: currentcolor;
+  forced-color-adjust: none; /* Enable drawing with background property */
+  mask:
+    center / contain no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
+}
+
+.ds-combobox__arrow--open::before {
+  rotate: 180deg;
+}
+
 .ds-combobox__input__wrapper.ds-combobox--readonly {
-  background: var(--ds-color-base-default);
-  border-color: var(--ds-color-base-default);
+  background: var(--ds-color-neutral-surface-tinted);
+  border-color: var(--ds-color-neutral-border-default);
+}
+
+.ds-combobox:has(.ds-combobox--readonly) .ds-combobox__label {
+  @composes ds-readonly-icon from './base.css'; /* Activate lock icon for label when readonly */
 }
 
 .ds-combobox__label {
@@ -279,6 +297,16 @@
   height: 29px;
   width: 29px;
   aspect-ratio: 1;
+}
+
+.ds-combobox__clear-button::before {
+  @composes ds-icon from './base.css';
+  content: '';
+  background: currentcolor;
+  forced-color-adjust: none; /* Enable drawing with background property */
+  mask:
+    center / contain no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'/%3E%3C/svg%3E");
 }
 
 .ds-combobox--sm .ds-combobox__clear-button {
@@ -427,28 +455,16 @@
 .ds-combobox__option__icon-wrapper.ds-combobox__option__icon-wrapper--selected {
   border-color: var(--ds-color-base-default);
   background-color: var(--ds-color-base-default);
+  color: var(--ds-color-base-contrast-default);
 }
-
-.ds-combobox__option__icon-wrapper__icon {
-  box-sizing: border-box;
-  padding-top: 0.2em;
-  transform: scale(1.4);
-  stroke: var(--ds-color-neutral-text-default);
-  color: var(--ds-color-neutral-text-default);
-}
-
-.ds-combobox__option__icon-wrapper .ds-combobox__option__icon-wrapper__icon {
-  padding-top: 0;
-}
-
-.ds-combobox__option--active .ds-combobox__option__icon-wrapper__icon {
-  stroke: var(--ds-color-text-default);
-  color: var(--ds-color-text-default);
-}
-
-.ds-combobox__option__icon-wrapper.ds-combobox__option__icon-wrapper--selected .ds-combobox__option__icon-wrapper__icon {
-  color: white;
-  stroke: white;
+.ds-combobox__option__icon-wrapper.ds-combobox__option__icon-wrapper--selected::before {
+  @composes ds-icon from './base.css';
+  content: '';
+  background: currentcolor;
+  forced-color-adjust: none; /* Enable drawing with background property */
+  mask:
+    center / contain no-repeat
+    url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221em%22%20height%3D%221em%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20focusable%3D%22false%22%20role%3D%22img%22%3E%3Cpath%20fill%3D%22currentColor%22%20fill-rule%3D%22evenodd%22%20d%3D%22M18.998%206.94a.75.75%200%200%201%20.063%201.058l-8%209a.75.75%200%200%201-1.091.032l-5-5a.75.75%200%201%201%201.06-1.06l4.438%204.437%207.471-8.405A.75.75%200%200%201%2019%206.939%22%20clip-rule%3D%22evenodd%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
 }
 
 .ds-combobox__option__description {

@@ -48,13 +48,13 @@
     "@digdir/designsystemet-web": "workspace:*",
     "@floating-ui/dom": "^1.8.0",
     "@floating-ui/react": "0.26.23",
-    "@navikt/aksel-icons": "^8.19.1",
     "@radix-ui/react-slot": "^1.5.0",
     "@tanstack/react-virtual": "^3.14.15",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
+    "@navikt/aksel-icons": "^8.19.1",
     "@storybook/addon-docs": "10.6.1",
     "@storybook/addon-vitest": "10.6.1",
     "@storybook/react-vite": "10.6.1",

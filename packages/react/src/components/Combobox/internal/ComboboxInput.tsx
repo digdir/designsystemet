@@ -1,5 +1,4 @@
 import { useMergeRefs } from '@floating-ui/react';
-import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type {
   ChangeEvent,
@@ -153,13 +152,9 @@ const ComboboxInput = ({
         {/* Clear button if we are in multiple mode and have at least one active value */}
         {showClearButton && <ComboboxClearButton ref={clearButtonRef} />}
         {/* Arrow for combobox. Click is handled by the wrapper */}
-        <div className={'ds-combobox__arrow'}>
-          {open ? (
-            <ChevronUpIcon title='arrow up' height='1.5em' width='1.5em' />
-          ) : (
-            <ChevronDownIcon title='arrow down' height='1.5em' width='1.5em' />
-          )}
-        </div>
+        <div
+          className={`ds-combobox__arrow ds-combobox__arrow--${open ? 'open' : 'closed'}`}
+        ></div>
       </div>
     </Paragraph>
   );
