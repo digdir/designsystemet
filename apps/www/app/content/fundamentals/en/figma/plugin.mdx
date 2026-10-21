@@ -13,7 +13,7 @@ search_terms: plugin, import, theme, variables, styles
 
 import { ArrowRightIcon } from '@navikt/aksel-icons';
 
-The Designsystemet plugin creates the variables and styles that the components in the Figma library use. The plugin uses the same configuration file as the CLI, so design and code get the same values when you use both.
+The Designsystemet plugin creates the variables and styles that the components in the Designsystemet Figma file use. The plugin uses the same configuration file as the CLI, so design and code get the same values when you use both.
 
 Get the plugin from [Figma Community (figma.com)](https://www.figma.com/community/plugin/1687841992393312960/designsystemet).
 
@@ -44,7 +44,7 @@ Get the plugin from [Figma Community (figma.com)](https://www.figma.com/communit
 - Each theme, colour scheme and size is a mode in Figma, and how many modes a collection can have depends on your Figma plan. Check that yours allows enough for your configuration file.
 - The fonts in your theme must be available in Figma. If one isn't, the plugin stops before changing anything.
 - Text styles and effect styles can't have modes in Figma, so they get the values of the first theme, in the light colour scheme.
-- The plugin keeps variables, styles and modes it didn't create, such as the example themes from the Community file, and lists them after the import. Delete the ones you don't need.
+- The plugin keeps variables, styles and modes it didn't create, such as the example themes in the Figma file, and lists them after the import. Delete the ones you don't need.
 - The plugin marks what it creates with [setPluginData](https://developers.figma.com/docs/plugins/api/properties/nodes-setplugindata/), so it can update and delete the right things the next time you import. It only stores its version number, the name it gave the variable or style, and the IDs of the modes it created. Only the Designsystemet plugin can read this data.
 
 ## Limitations

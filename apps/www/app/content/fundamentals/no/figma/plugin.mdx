@@ -13,7 +13,7 @@ search_terms: plugin, import, tema, variabler, stiler
 
 import { ArrowRightIcon } from '@navikt/aksel-icons';
 
-Designsystemet-pluginen lager variablene og stilene som komponentene i Figma-biblioteket bruker. Pluginen bruker samme config-fil som CLI-et, slik at design og kode får de samme verdiene når du bruker begge deler.
+Designsystemet-pluginen lager variablene og stilene som komponentene i Figma-filen til Designsystemet bruker. Pluginen bruker samme config-fil som CLI-et, slik at design og kode får de samme verdiene når du bruker begge deler.
 
 Hent pluginen fra [Figma Community (figma.com)](https://www.figma.com/community/plugin/1687841992393312960/designsystemet).
 
@@ -44,7 +44,7 @@ Hent pluginen fra [Figma Community (figma.com)](https://www.figma.com/community/
 - Hvert tema, hver fargemodus og hver størrelse blir en mode i Figma, og hvor mange modes en collection kan ha, avhenger av Figma-abonnementet ditt. Sjekk at abonnementet ditt har nok modes for config-filen din.
 - Fontene i temaet ditt må være tilgjengelige i Figma. Hvis én ikke er det, stopper pluginen før den endrer noe.
 - Tekststiler og effektstiler kan ikke ha modes i Figma, så de får verdiene til det første temaet, i lys fargemodus.
-- Pluginen beholder variabler, stiler og modes den ikke har laget selv, som eksempeltemaene fra Community-filen, og lister dem opp etter importen. Slett dem du ikke trenger.
+- Pluginen beholder variabler, stiler og modes den ikke har laget selv, som eksempeltemaene i Figma-filen, og lister dem opp etter importen. Slett dem du ikke trenger.
 - Pluginen merker det den lager, med [setPluginData](https://developers.figma.com/docs/plugins/api/properties/nodes-setplugindata/), slik at den kan oppdatere og slette riktig neste gang du importerer. Den lagrer bare versjonsnummeret sitt, navnet den ga variabelen eller stilen, og ID-ene til modes den har laget. Bare Designsystemet-pluginen kan lese disse dataene.
 
 ## Begrensninger
