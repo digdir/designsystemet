@@ -5,7 +5,7 @@ React implementation of the Designsystemet components
 - Uses `@digdir/designsystemet-css` for styling.
 - Use this with your theme CSS file generated with `npx @digdir/designsystemet`. 
   - Build your own theme on https://theme.designsystemet.no/en
-  - Alternative you can use the default starter theme under  `@digdir/designsystemet-css/theme`.
+  - Alternatively you can use the default starter theme under  `@digdir/designsystemet-css/theme`.
 - All components support `ref`.
 - All components support SSR.
   - Use full component name, e.g. `CardBlock` instead of `Card.Block`
