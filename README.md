@@ -24,7 +24,7 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ## 📦 Packages
 
-[`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI that creates CSS for your theme from the config file.
+[`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI that creates CSS and optionally design tokens for your theme from the config file.
 
 [`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - CSS implementation of Designsystemet components. Used by the React package. Contains a default theme.
 
