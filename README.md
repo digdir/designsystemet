@@ -12,7 +12,7 @@
 </div>
 <br />
 
-Designsystemet is a suite of tools used to create design systems.
+Designsystemet is a set of building blocks for making better web solutions and creating design systems.
 
 Our goal is to create consistent and user-friendly experiences in digital solutions for public services, making them more efficient and reliable.
 
