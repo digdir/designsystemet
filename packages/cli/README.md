@@ -32,16 +32,19 @@ Whenever a new version of the CLI is released, or you have done changes, re-run 
 Set `cleanDir: true` on an output to delete the files in its directory before creating new ones, which removes any deprecated or unneeded files. It is `false` by default. Directories inside a cleaned directory that are built from (`tokensDir`), or that belong to an output with `cleanDir: false`, are kept. Before deleting anything, the CLI stops with an error if a directory it would clean contains the config file, is one of those directories, is a symlink, or has a symlink on the way to one of them or to another output. Symlinks are deleted, never followed.
 
 > ⚠️ **WARNING** ⚠️  
-> The design tokens created by this tool are considered an implementation detail, and is subject
-> to change at any time without being considered a breaking change. We **only** support customisations
-> done through the config. Direct editing of the design tokens are **not** supported.
+> The design tokens created by this tool are considered an implementation detail, and are subject
+> to change at any time without being considered a breaking change. Make your customisations through
+> the config where you can. You can edit the design tokens directly to change what the config doesn't
+> support yet, see [Sync Design Tokens with Tokens Studio](https://designsystemet.no/en/fundamentals/figma/tokens-studio),
+> but you do so at your own risk: your edits may need to be redone or adjusted when you upgrade.
 >
 > The CSS files created by this tool are considered build artifacts. They should **not** be
 > edited directly. While the CSS will not change unexpectedly, new variables may be added at any
 > time.
 >
 > Therefore, it is necessary to routinely re-run this command when upgrading the libraries.
-> This will remove any direct edits to the design tokens and CSS.
+> Creating the design tokens again replaces any direct edits to them, and creating the CSS again
+> replaces any direct edits to it.
 
 ### Using a config file
 
