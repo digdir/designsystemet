@@ -54,8 +54,6 @@ export const ExamplesComponents = ({
   const ref = useRef<HTMLDivElement>(null);
   const { colors } = useThemebuilder();
 
-  const neutralColor =
-    colors?.find((c) => c.name === 'neutral')?.hex || '#F5F7FA';
   const [previewColor, setPreviewColor] = useState(colors?.[0]?.hex || color);
 
   useEffect(() => {
@@ -73,15 +71,13 @@ export const ExamplesComponents = ({
 
   useEffect(() => {
     if (!colors) return;
-    const allColors = colors.filter((c) => c.name !== 'neutral');
     /* if select colors is gone, set to default */
-    if (!allColors.find((c) => c.hex === previewColor)) {
+    if (!colors.find((c) => c.hex === previewColor)) {
       setPreviewColor(color);
     }
   }, [colors]);
 
   const style = {
-    ...styleColorVars(neutralColor as CssColor, colorScheme, 'neutral'),
     ...styleColorVars(previewColor as CssColor, colorScheme),
     ...styleBorderRadiusVars,
   };
@@ -96,24 +92,21 @@ export const ExamplesComponents = ({
               value={previewColor}
               onChange={(v) => {
                 if (!colors) return;
-                const allColors = colors.filter((c) => c.name !== 'neutral');
                 /* find the selected color */
-                let selected = allColors.find(
+                let selected = colors.find(
                   (c) => c.hex === v.target.value,
                 )?.hex;
                 if (!selected) {
-                  selected = allColors[0]?.hex;
+                  selected = colors[0]?.hex;
                 }
                 setPreviewColor(selected as CssColor);
               }}
             >
-              {colors
-                .filter((c) => c.name !== 'neutral')
-                .map((color) => (
-                  <Select.Option key={color.name} value={color.hex}>
-                    {color.name}
-                  </Select.Option>
-                ))}
+              {colors.map((color) => (
+                <Select.Option key={color.name} value={color.hex}>
+                  {color.name}
+                </Select.Option>
+              ))}
             </Select>
           </Field>
 

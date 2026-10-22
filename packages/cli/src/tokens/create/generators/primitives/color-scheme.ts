@@ -1,6 +1,6 @@
 import type { ColorScale, ColorScheme, CssColor, SemanticColorNames } from '../../../../colors/index.ts';
 import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
-import { visitedLinkColor } from '../../../../schemas/defaults.ts';
+import { getFocusColorName, visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
@@ -91,8 +91,9 @@ export const generateColorScheme = (
   const defaultLinkVisitedToken = generateColorScale(visitedLinkColor, colorScheme)['base-default'].hex;
   const linkOverride = overrides?.linkVisited?.[colorScheme];
 
-  const defaultFocusInner = colorScales.neutral['background-default'].hex;
-  const defaultFocusOuter = colorScales.neutral['text-default'].hex;
+  const focusColorScale = colorScales[getFocusColorName(Object.keys(colors)) as string];
+  const defaultFocusInner = focusColorScale['background-default'].hex;
+  const defaultFocusOuter = focusColorScale['text-default'].hex;
 
   const focusInnerOverride = overrides?.focus?.inner?.[colorScheme];
   const focusOuterOverride = overrides?.focus?.outer?.[colorScheme];
