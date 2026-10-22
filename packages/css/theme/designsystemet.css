@@ -149,25 +149,6 @@ design-tokens: v1.23.0
   --ds-color-brand2-surface-muted: #e9e8ee;
   --ds-color-brand2-border-muted: #7b7789;
   --ds-color-brand2-text-muted: #5f5b6d;
-  --ds-color-neutral-background-default: #ffffff;
-  --ds-color-neutral-background-tinted: #f3f3f4;
-  --ds-color-neutral-surface-default: #ffffff;
-  --ds-color-neutral-surface-tinted: #e8e8e9;
-  --ds-color-neutral-surface-hover: #d9dadb;
-  --ds-color-neutral-surface-active: #c9cacb;
-  --ds-color-neutral-border-subtle: #bbbcbd;
-  --ds-color-neutral-border-default: #77797b;
-  --ds-color-neutral-border-strong: #5b5d60;
-  --ds-color-neutral-text-subtle: #5b5d60;
-  --ds-color-neutral-text-default: #292c30;
-  --ds-color-neutral-base-default: #24272B;
-  --ds-color-neutral-base-hover: #36383c;
-  --ds-color-neutral-base-active: #484a4e;
-  --ds-color-neutral-base-contrast-subtle: #b9babb;
-  --ds-color-neutral-base-contrast-default: #ffffff;
-  --ds-color-neutral-surface-muted: #e8e8e9;
-  --ds-color-neutral-border-muted: #78797a;
-  --ds-color-neutral-text-muted: #5c5d5e;
   --ds-color-info-background-default: #ffffff;
   --ds-color-info-background-tinted: #edf5fa;
   --ds-color-info-surface-default: #ffffff;
@@ -245,7 +226,7 @@ design-tokens: v1.23.0
   --ds-color-danger-border-muted: #8a7371;
   --ds-color-danger-text-muted: #6d5955;
   --ds-color-focus-inner: #ffffff;
-  --ds-color-focus-outer: #292c30;
+  --ds-color-focus-outer: #002c54;
   --ds-link-color-visited: #663299;
 
   color-scheme: light;
@@ -310,25 +291,6 @@ design-tokens: v1.23.0
   --ds-color-brand2-surface-muted: #e9e8ee;
   --ds-color-brand2-border-muted: #7b7789;
   --ds-color-brand2-text-muted: #5f5b6d;
-  --ds-color-neutral-background-default: #ffffff;
-  --ds-color-neutral-background-tinted: #f3f3f4;
-  --ds-color-neutral-surface-default: #ffffff;
-  --ds-color-neutral-surface-tinted: #e8e8e9;
-  --ds-color-neutral-surface-hover: #d9dadb;
-  --ds-color-neutral-surface-active: #c9cacb;
-  --ds-color-neutral-border-subtle: #bbbcbd;
-  --ds-color-neutral-border-default: #77797b;
-  --ds-color-neutral-border-strong: #5b5d60;
-  --ds-color-neutral-text-subtle: #5b5d60;
-  --ds-color-neutral-text-default: #292c30;
-  --ds-color-neutral-base-default: #24272B;
-  --ds-color-neutral-base-hover: #36383c;
-  --ds-color-neutral-base-active: #484a4e;
-  --ds-color-neutral-base-contrast-subtle: #b9babb;
-  --ds-color-neutral-base-contrast-default: #ffffff;
-  --ds-color-neutral-surface-muted: #e8e8e9;
-  --ds-color-neutral-border-muted: #78797a;
-  --ds-color-neutral-text-muted: #5c5d5e;
   --ds-color-info-background-default: #ffffff;
   --ds-color-info-background-tinted: #edf5fa;
   --ds-color-info-surface-default: #ffffff;
@@ -406,7 +368,7 @@ design-tokens: v1.23.0
   --ds-color-danger-border-muted: #8a7371;
   --ds-color-danger-text-muted: #6d5955;
   --ds-color-focus-inner: #ffffff;
-  --ds-color-focus-outer: #292c30;
+  --ds-color-focus-outer: #002c54;
   --ds-link-color-visited: #663299;
 
   color-scheme: light;
@@ -636,25 +598,6 @@ design-tokens: v1.23.0
   --ds-color-brand2-surface-muted: #2f2b3c;
   --ds-color-brand2-border-muted: #837f93;
   --ds-color-brand2-text-muted: #a9a5b5;
-  --ds-color-neutral-background-default: #17181a;
-  --ds-color-neutral-background-tinted: #1e2022;
-  --ds-color-neutral-surface-default: #26282b;
-  --ds-color-neutral-surface-tinted: #2c2e31;
-  --ds-color-neutral-surface-hover: #343538;
-  --ds-color-neutral-surface-active: #414346;
-  --ds-color-neutral-border-subtle: #4e5052;
-  --ds-color-neutral-border-default: #808183;
-  --ds-color-neutral-border-strong: #a7a8a9;
-  --ds-color-neutral-text-subtle: #a7a8a9;
-  --ds-color-neutral-text-default: #ececec;
-  --ds-color-neutral-base-default: #aaabad;
-  --ds-color-neutral-base-hover: #959698;
-  --ds-color-neutral-base-active: #7f8184;
-  --ds-color-neutral-base-contrast-subtle: #1b1b1b;
-  --ds-color-neutral-base-contrast-default: #000000;
-  --ds-color-neutral-surface-muted: #2d2e2f;
-  --ds-color-neutral-border-muted: #808182;
-  --ds-color-neutral-text-muted: #a7a8a8;
   --ds-color-info-background-default: #0d1925;
   --ds-color-info-background-tinted: #112130;
   --ds-color-info-surface-default: #15293d;
@@ -731,8 +674,8 @@ design-tokens: v1.23.0
   --ds-color-danger-surface-muted: #3d2927;
   --ds-color-danger-border-muted: #947c79;
   --ds-color-danger-text-muted: #bba2a0;
-  --ds-color-focus-inner: #17181a;
-  --ds-color-focus-outer: #ececec;
+  --ds-color-focus-inner: #0c1927;
+  --ds-color-focus-outer: #e7edf4;
   --ds-link-color-visited: #b49acd;
 
   color-scheme: dark;
@@ -797,25 +740,6 @@ design-tokens: v1.23.0
   --ds-color-brand2-surface-muted: #2f2b3c;
   --ds-color-brand2-border-muted: #837f93;
   --ds-color-brand2-text-muted: #a9a5b5;
-  --ds-color-neutral-background-default: #17181a;
-  --ds-color-neutral-background-tinted: #1e2022;
-  --ds-color-neutral-surface-default: #26282b;
-  --ds-color-neutral-surface-tinted: #2c2e31;
-  --ds-color-neutral-surface-hover: #343538;
-  --ds-color-neutral-surface-active: #414346;
-  --ds-color-neutral-border-subtle: #4e5052;
-  --ds-color-neutral-border-default: #808183;
-  --ds-color-neutral-border-strong: #a7a8a9;
-  --ds-color-neutral-text-subtle: #a7a8a9;
-  --ds-color-neutral-text-default: #ececec;
-  --ds-color-neutral-base-default: #aaabad;
-  --ds-color-neutral-base-hover: #959698;
-  --ds-color-neutral-base-active: #7f8184;
-  --ds-color-neutral-base-contrast-subtle: #1b1b1b;
-  --ds-color-neutral-base-contrast-default: #000000;
-  --ds-color-neutral-surface-muted: #2d2e2f;
-  --ds-color-neutral-border-muted: #808182;
-  --ds-color-neutral-text-muted: #a7a8a8;
   --ds-color-info-background-default: #0d1925;
   --ds-color-info-background-tinted: #112130;
   --ds-color-info-surface-default: #15293d;
@@ -892,8 +816,8 @@ design-tokens: v1.23.0
   --ds-color-danger-surface-muted: #3d2927;
   --ds-color-danger-border-muted: #947c79;
   --ds-color-danger-text-muted: #bba2a0;
-  --ds-color-focus-inner: #17181a;
-  --ds-color-focus-outer: #ececec;
+  --ds-color-focus-inner: #0c1927;
+  --ds-color-focus-outer: #e7edf4;
   --ds-link-color-visited: #b49acd;
 
   color-scheme: dark;
@@ -1110,31 +1034,6 @@ design-tokens: v1.23.0
   --ds-color-surface-muted: var(--ds-color-info-surface-muted);
   --ds-color-border-muted: var(--ds-color-info-border-muted);
   --ds-color-text-muted: var(--ds-color-info-text-muted);
-}
-
-}
-
-@layer ds.theme.color {
-[data-color="neutral"], [data-color-scheme][data-color="neutral"] {
-  --ds-color-background-default: var(--ds-color-neutral-background-default);
-  --ds-color-background-tinted: var(--ds-color-neutral-background-tinted);
-  --ds-color-surface-default: var(--ds-color-neutral-surface-default);
-  --ds-color-surface-tinted: var(--ds-color-neutral-surface-tinted);
-  --ds-color-surface-hover: var(--ds-color-neutral-surface-hover);
-  --ds-color-surface-active: var(--ds-color-neutral-surface-active);
-  --ds-color-border-subtle: var(--ds-color-neutral-border-subtle);
-  --ds-color-border-default: var(--ds-color-neutral-border-default);
-  --ds-color-border-strong: var(--ds-color-neutral-border-strong);
-  --ds-color-text-subtle: var(--ds-color-neutral-text-subtle);
-  --ds-color-text-default: var(--ds-color-neutral-text-default);
-  --ds-color-base-default: var(--ds-color-neutral-base-default);
-  --ds-color-base-hover: var(--ds-color-neutral-base-hover);
-  --ds-color-base-active: var(--ds-color-neutral-base-active);
-  --ds-color-base-contrast-subtle: var(--ds-color-neutral-base-contrast-subtle);
-  --ds-color-base-contrast-default: var(--ds-color-neutral-base-contrast-default);
-  --ds-color-surface-muted: var(--ds-color-neutral-surface-muted);
-  --ds-color-border-muted: var(--ds-color-neutral-border-muted);
-  --ds-color-text-muted: var(--ds-color-neutral-text-muted);
 }
 
 }
