@@ -24,7 +24,7 @@
   padding: 0 var(--ds-size-3);
   border: solid 1px var(--ds-color-border-muted);
   background: var(--ds-color-surface-default);
-  color: var(--ds-color-text-muted);
+  color: var(--ds-color-text-default);
   border-radius: var(--ds-border-radius-md);
 }
 
