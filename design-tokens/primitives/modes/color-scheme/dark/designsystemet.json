@@ -64,6 +64,18 @@
       "16": {
         "$type": "color",
         "$value": "#000000"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "#242f3d"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "#758393"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "#9ba9b9"
       }
     },
     "brand1": {
@@ -130,6 +142,18 @@
       "16": {
         "$type": "color",
         "$value": "#000000"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "#25302c"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "#6f867e"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "#9baca6"
       }
     },
     "brand2": {
@@ -196,6 +220,18 @@
       "16": {
         "$type": "color",
         "$value": "#000000"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "#2f2b3c"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "#837f93"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "#a9a5b5"
       }
     },
     "neutral": {
@@ -262,6 +298,18 @@
       "16": {
         "$type": "color",
         "$value": "#000000"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "#2d2e2f"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "#808182"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "#a7a8a8"
       }
     },
     "info": {
@@ -328,6 +376,18 @@
       "16": {
         "$type": "color",
         "$value": "#000000"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "#242f39"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "#738392"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "#99a9b9"
       }
     },
     "success": {
@@ -394,6 +454,18 @@
       "16": {
         "$type": "color",
         "$value": "#000000"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "#243124"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "#778576"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "#9bac9b"
       }
     },
     "warning": {
@@ -460,6 +532,18 @@
       "16": {
         "$type": "color",
         "$value": "#ffffff"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "#342d24"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "#8d7f70"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "#b5a694"
       }
     },
     "danger": {
@@ -526,6 +610,18 @@
       "16": {
         "$type": "color",
         "$value": "#000000"
+      },
+      "17": {
+        "$type": "color",
+        "$value": "#3d2927"
+      },
+      "18": {
+        "$type": "color",
+        "$value": "#947c79"
+      },
+      "19": {
+        "$type": "color",
+        "$value": "#bba2a0"
       }
     },
     "link": {
