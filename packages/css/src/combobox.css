@@ -261,8 +261,8 @@
 }
 
 .ds-combobox__input__wrapper.ds-combobox--readonly {
-  background: var(--ds-color-neutral-surface-tinted);
-  border-color: var(--ds-color-neutral-border-default);
+  background: var(--ds-color-surface-muted);
+  border-color: var(--ds-color-border-muted);
 }
 
 .ds-combobox:has(.ds-combobox--readonly) .ds-combobox__label {
