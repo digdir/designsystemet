@@ -16,6 +16,8 @@ injectWorkspacePackages: true
 minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - "@u-elements/*"
+  # Renovate security update: @vitest/browser@5.0.5
+  - "@vitest/browser@5.0.5"
 packageExtensions:
   "@navikt/aksel-icons":
     peerDependencies:
