@@ -70,10 +70,7 @@ export function createColorsFromQuery(colors: string | null): ColorTheme[] {
         name,
         hex,
         overrides: {},
-        // The neutral color uses a dedicated variable namespace
-        ...(name === 'neutral'
-          ? createColorsAndNeutralVariables(hex as CssColor)
-          : createColorsAndVariables(hex as CssColor)),
+        ...createColorsAndVariables(hex as CssColor),
       };
     });
 }
@@ -85,17 +82,6 @@ export function createColorsAndVariables(color: CssColor) {
     variables: {
       light: generateColorVars(colors, 'light'),
       dark: generateColorVars(colors, 'dark'),
-    },
-  };
-}
-
-export function createColorsAndNeutralVariables(color: CssColor) {
-  const colors = generateColorSchemes(color);
-  return {
-    colors,
-    variables: {
-      light: generateColorVars(colors, 'light', 'neutral'),
-      dark: generateColorVars(colors, 'dark', 'neutral'),
     },
   };
 }

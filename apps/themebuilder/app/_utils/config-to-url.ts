@@ -14,7 +14,7 @@ export function configThemeToUrl(
 ): string {
   const params = new URLSearchParams();
 
-  // Convert colors (a flat record of name -> hex, including the reserved `neutral`)
+  // Convert colors (a flat record of name -> hex)
   if (theme.colors && Object.keys(theme.colors).length > 0) {
     const colors = Object.entries(theme.colors)
       .map(([name, hex]) => `${name}:${hex}`)

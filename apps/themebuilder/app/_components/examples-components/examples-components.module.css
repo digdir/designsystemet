@@ -16,7 +16,7 @@
 .itemsContainer {
   margin-top: 12px;
   padding: var(--ds-size-6) 0;
-  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  border-top: 1px solid var(--ds-color-border-muted);
 }
 
 .itemName {
@@ -39,8 +39,8 @@
 
 .card {
   border-radius: var(--ds-border-radius-md);
-  background-color: var(--ds-color-neutral-surface-default);
-  border: 1px solid var(--ds-color-neutral-border-subtle);
+  background-color: var(--ds-color-surface-default);
+  border: 1px solid var(--ds-color-border-muted);
   padding: 24px;
   gap: 20px;
   display: flex;
@@ -83,7 +83,7 @@
 }
 
 .imgDesc {
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--ds-color-text-muted);
   font-size: 16px;
 }
 
@@ -95,7 +95,7 @@
 .user {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  border-bottom: 1px solid var(--ds-color-border-muted);
   gap: 16px;
   padding-bottom: 16px;
   margin-bottom: 16px;
@@ -110,7 +110,7 @@
 .userRole {
   font-size: 15px;
   font-weight: 500;
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--ds-color-text-muted);
   margin-bottom: -1px;
 }
 
@@ -122,7 +122,7 @@
 }
 
 .userRole {
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--ds-color-text-muted);
   font-size: 16px;
 }
 

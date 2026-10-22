@@ -1,6 +1,6 @@
 import { generateColorScale } from '../colors/scale.ts';
 import type { ColorScheme, CssColor, SemanticColorNames, SeverityColorNames } from '../colors/types.ts';
-import { severityColors, visitedLinkColor } from '../schemas/defaults.ts';
+import { getFocusColorName, severityColors, visitedLinkColor } from '../schemas/defaults.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { colorNameSchema } from '../schemas/schema-color.ts';
 
@@ -119,11 +119,11 @@ export function configColorsFromValues({
     overrides.linkVisited = linkVisitedOverride;
   }
 
-  // The focus colors default to neutral's background and text colors, after any overrides,
-  // which are the values already in the scales.
-  const neutral = scales.get('neutral');
-  const focusInnerOverride = diffFromDefaults(focusInner, (scheme) => neutral?.get('background-default')?.[scheme]);
-  const focusOuterOverride = diffFromDefaults(focusOuter, (scheme) => neutral?.get('text-default')?.[scheme]);
+  // The focus colors default to the background and text colors of neutral, or the first color without it,
+  // after any overrides, which are the values already in the scales.
+  const focusColor = scales.get(getFocusColorName([...colors.keys()]) ?? '');
+  const focusInnerOverride = diffFromDefaults(focusInner, (scheme) => focusColor?.get('background-default')?.[scheme]);
+  const focusOuterOverride = diffFromDefaults(focusOuter, (scheme) => focusColor?.get('text-default')?.[scheme]);
   if (focusInnerOverride || focusOuterOverride) {
     overrides.focus = {
       ...(focusInnerOverride && { inner: focusInnerOverride }),

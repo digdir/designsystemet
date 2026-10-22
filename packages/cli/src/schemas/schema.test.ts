@@ -134,6 +134,21 @@ describe('themesSchema cross-theme validation', () => {
 });
 
 describe('themeSchema color validation', () => {
+  it('accepts colors without neutral', () => {
+    const result = parseThemes({ a: { ...baseTheme, colors: { accent: '#0062BA' } } });
+
+    expect(result.success).toBe(true);
+  });
+
+  it.each<Record<string, string>>([{}, { danger: '#C01B1B' }])(
+    'rejects colors with only severity colors: %o',
+    (colors) => {
+      const result = parseThemes({ a: { ...baseTheme, colors } });
+
+      expect(issuePaths(result)).toEqual(['a.colors']);
+    },
+  );
+
   it.each(['Accent', 'brand 2', 'brand_2', 'brand.2', 'ærlig'])('rejects the color name "%s"', (colorName) => {
     const result = parseThemes({ a: { ...baseTheme, colors: { neutral: '#444444', [colorName]: '#0062BA' } } });
 
