@@ -226,7 +226,7 @@ design-tokens: v1.23.0
   --ds-color-danger-border-muted: #8a7371;
   --ds-color-danger-text-muted: #6d5955;
   --ds-color-focus-inner: #ffffff;
-  --ds-color-focus-outer: #002c54;
+  --ds-color-focus-outer: #292c30;
   --ds-link-color-visited: #663299;
 
   color-scheme: light;
@@ -368,7 +368,7 @@ design-tokens: v1.23.0
   --ds-color-danger-border-muted: #8a7371;
   --ds-color-danger-text-muted: #6d5955;
   --ds-color-focus-inner: #ffffff;
-  --ds-color-focus-outer: #002c54;
+  --ds-color-focus-outer: #292c30;
   --ds-link-color-visited: #663299;
 
   color-scheme: light;
@@ -674,8 +674,8 @@ design-tokens: v1.23.0
   --ds-color-danger-surface-muted: #3d2927;
   --ds-color-danger-border-muted: #947c79;
   --ds-color-danger-text-muted: #bba2a0;
-  --ds-color-focus-inner: #0c1927;
-  --ds-color-focus-outer: #e7edf4;
+  --ds-color-focus-inner: #17181a;
+  --ds-color-focus-outer: #ececec;
   --ds-link-color-visited: #b49acd;
 
   color-scheme: dark;
@@ -816,8 +816,8 @@ design-tokens: v1.23.0
   --ds-color-danger-surface-muted: #3d2927;
   --ds-color-danger-border-muted: #947c79;
   --ds-color-danger-text-muted: #bba2a0;
-  --ds-color-focus-inner: #0c1927;
-  --ds-color-focus-outer: #e7edf4;
+  --ds-color-focus-inner: #17181a;
+  --ds-color-focus-outer: #ececec;
   --ds-link-color-visited: #b49acd;
 
   color-scheme: dark;
