@@ -24,7 +24,7 @@
     "@storybook/addon-a11y": "10.6.1",
     "@storybook/addon-docs": "10.6.1",
     "@storybook/addon-themes": "10.6.1",
-    "@storybook/addon-vitest": "10.6.1",
+    "@storybook/addon-vitest": "10.6.2",
     "@storybook/react-vite": "10.6.1",
     "@types/ramda": "0.32.0",
     "@types/react": "19.3.0",
