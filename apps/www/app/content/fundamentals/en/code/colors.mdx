@@ -45,8 +45,8 @@ but with a dark footer. You can then set `data-color-scheme="dark"` on the foote
 /*@digdir/designsystemet-css*/
 body,
 [data-color-scheme] {
-  color: var(--ds-color-neutral-text-default);
-  background: var(--ds-color-neutral-background-default);
+  color: var(--ds-color-text-default);
+  background: var(--ds-color-background-default);
 }
 ```
 
@@ -57,8 +57,8 @@ You can override this by setting custom values for `color` and `background-color
 This data attribute is used to change the color of a component. You can use all colors that exist in your theme.
 
 ```html
-<div data-color="neutral">
-  <!-- Content here will have neutral color -->
+<div data-color="accent">
+  <!-- Content here will have accent color -->
 </div>
 ```
 
@@ -67,9 +67,8 @@ This means you don't need to use `data-color` on all components in a hierarchy i
 
 ## How components are affected
 
-We divide components into 3 groups for color:
+We divide components into 2 groups for color:
 - Explicit
-- Neutral
 - Cascading
 
 ### Explicit
@@ -82,29 +81,26 @@ These are components like:
 - `ValidationMessage`
 - `ErrorSummary`
 
-### Neutral
-
-These are components that should always be neutral and are not affected by inherited color or direct `data-color`. These are components like `Modal` and `Tooltip`.
-They always use the `neutral` color.
-
 ### Cascading
 
 This group contains the rest of the components and will inherit color from the nearest parent with `data-color` set. 
+This also applies to components like `Dialog` and `Tooltip`.
+For quiet surfaces, borders and text, components use the muted variants of the inherited color, such as `--ds-color-border-muted`.
 
 ```html
-<div data-color="neutral">
+<div data-color="brand1">
   <Chip>
-    This Chip has neutral color.
+    This Chip has brand1 color.
   </Chip>
 </div>
 
-<Button data-color="neutral">
-  I have neutral color.
+<Button data-color="brand1">
+  I have brand1 color.
 </Button>
 
-<div data-color="neutral">
+<div data-color="brand1">
   <Alert>
-    I don't have neutral color.
+    I don't have brand1 color.
   </Alert>
 </div>
 ```
@@ -116,17 +112,17 @@ You can use `data-color-scheme` and `data-color` together to change both the col
 `data-color` sets variables that are reset by `data-color-scheme`. If you change the color mode, you must set `data-color` again.
 
 ```html
-<div data-color="neutral">
-  <!-- Content here will have neutral color -->
+<div data-color="brand1">
+  <!-- Content here will have brand1 color -->
 </div>
 
-<div data-color="neutral" data-color-scheme="dark">
-  <!-- Content here will have neutral color and dark color mode -->
+<div data-color="brand1" data-color-scheme="dark">
+  <!-- Content here will have brand1 color and dark color mode -->
 </div>
 
-<div data-color="neutral">
+<div data-color="brand1">
   <div data-color-scheme="dark">
-    <!-- Content here will not have neutral color -->
+    <!-- Content here will not have brand1 color -->
   </div>
 </div>
 ```

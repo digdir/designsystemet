@@ -24,7 +24,7 @@ Fargenavnene er delt opp i 3 ledd: Navn på fargeskala, gruppe (bruksområde) og
 />
 
 * `Navn` Det første leddet og navnet på fargeskalaen. 
-Som standard kommer Designsystemet med fargeskalaene Accent, Neutral, Brand1, Brand2, Brand3, Success, Danger, Warning og Info. Flere skalaer kan legges til eller fjernes ved hjelp av [Temabyggeren](https://theme.designsystemet.no/). Du kan også velge dine egne navn på fargene, kanskje du vil bruke fargeskalaer som "Sjøgrønn", "Solgul" eller "Lavendel"?
+Som standard kommer Designsystemet med fargeskalaene Success, Danger, Warning og Info. Dine egne skalaer, som for eksempel Accent, Neutral, Brand1 og Brand2, kan legges til eller fjernes ved hjelp av [Temabyggeren](https://theme.designsystemet.no/). Du kan også velge dine egne navn på fargene, kanskje du vil bruke fargeskalaer som "Sjøgrønn", "Solgul" eller "Lavendel"?
 
 * `Gruppe` Hver fargeskala er delt inn i gruppene Background, Surface, Border, Text og Base. Disse gruppene beskriver bruksområdene til fargene. Text-gruppen skal for eksempel brukes på tekst og ikoner.
 
@@ -51,7 +51,7 @@ Eksempler:
 `Base-default`-fargen vil alltid være den samme som fargen du har valgt. Dette er for å ivareta brandet ditt best mulig. Du må derfor selv passe på at fargen du velger oppfyller kontrastkravene i forhold til hvor den skal bli brukt. [Designsystemets temagenerator](https://theme.designsystemet.no) vil informere deg om eventuelle kontrastbrudd.
 
 ## Slik bruker du fargene
-Hver fargeskala består av totalt 16 farger, utformet for å dekke ulike behov i designet. Nedenfor finner du en oversikt over de forskjellige fargene og deres tiltenkte bruksområder.
+Hver fargeskala består av totalt 19 farger, utformet for å dekke ulike behov i designet. Nedenfor finner du en oversikt over de forskjellige fargene og deres tiltenkte bruksområder.
 
 <Image
   src='/img/fundamentals/theme/colors/color-tokens.png'
@@ -71,12 +71,13 @@ Background-fargene brukes for å fargelegge store flater og er ofte det bakerste
 ### Surface
 Surface-fargene brukes til å fargelegge elementer som ligger over background-fargene, som for eksempel paneler eller kort (cards).
 Disse fargene fungerer som forgrunnsfarger og bidrar til å skape dybde i designet ved å skille elementer fra bakgrunnen.
-I mørk modus blir disse fire fargene gradvis lysere, med Surface-active som den lyseste.
+I mørk modus blir Surface-default, Surface-tinted, Surface-hover og Surface-active gradvis lysere, med Surface-active som den lyseste.
 
 * `Surface-default` er helt hvit i lys modus og brukes som standard bakgrunnsfarge på elementer.
 * `Surface-tinted` får et hint av farge i seg og kan brukes for å skille elementer fra bakgrunnen.
 * `Surface-hover` kan brukes til hover-tilstander for elementer eller til å skape visuelle hierarkier i Surface-laget når den kombineres med Surface-tinted og Surface-active.
 * `Surface-active` kan brukes til active-tilstander for elementer eller til å forsterke hierarkiet i Surface-laget sammen med Surface-tinted og Surface-hover.
+* `Surface-muted` er en versjon av Surface-tinted med lav fargemetning (chroma) og samme kontrast. Den kan brukes til dempede flater uten at du trenger en egen nøytral fargeskala.
 
 <Image
   src='/img/fundamentals/theme/colors/color-surface.png'
@@ -95,6 +96,7 @@ Fargen bør ikke være den eneste visuelle indikatoren på at et element er inte
 * `Border-default` brukes på skjemakomponenter eller på andre meningsbærende rammer. 
 Fargen har god kontrast (over 3:1) mot alle background-fargene, Surface-default og Surface-tinted.
 * `Border-strong` har god kontrast (over 3:1) mot alle background- og surface-fargene og kan brukes på rammer for å gjøre elementer ekstra synlige.
+* `Border-muted` er en versjon av Border-default med lav fargemetning (chroma) og samme kontrast. Den kan brukes til dempede rammer uten at du trenger en egen nøytral fargeskala.
 
 <Image
   src='/img/fundamentals/theme/colors/color-border.png'
@@ -112,8 +114,9 @@ Den forsøker også å bevare mest mulig av fargemetningen fra den opprinnelige 
 Fargen har god kontrast (**4.5:1**) mot alle background-fargene, Surface-default og Surface-tinted.
 * `Text-default` er en tekstfarge med høy kontrast, optimal for lesbarhet. 
 Den bør brukes på hovedinnholdet og den primære teksten på en side.
-Denne fargen i Neutral varianten kan være en fin farge å bruke på mesteparten av teksten.
+Hvis temaet ditt har en Neutral-fargeskala, kan denne fargen fra den være en fin farge å bruke på mesteparten av teksten.
 Fargen har god kontrast (**4.5:1**) mot alle background- og surface-fargene.
+* `Text-muted` er en versjon av Text-subtle med lav fargemetning (chroma) og samme kontrast. Den kan brukes til dempet tekst uten at du trenger en egen nøytral fargeskala.
 
 <Image
   src='/img/fundamentals/theme/colors/color-text.png'

@@ -11,13 +11,9 @@ export const ColorVariables = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { colors, colorScheme, severityColors } = useThemebuilder();
 
-  const neutralColor = colors?.find((c) => c.name === 'neutral')?.hex || '';
   const [previewColor, setPreviewColor] = useState(colors?.[0] || '');
 
-  const style = {
-    ...styleColorVars(neutralColor as CssColor, colorScheme, 'neutral'),
-    ...styleColorVars(previewColor.hex as CssColor, colorScheme),
-  };
+  const style = styleColorVars(previewColor.hex as CssColor, colorScheme);
 
   const allColors = [...(colors ?? []), ...severityColors];
 

@@ -4,7 +4,7 @@ import { getSemanticColorByNumber, semanticColorSpec } from './specs.ts';
 import type { ColorNumber, ColorScale, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
-export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info'];
+export const RESERVED_COLORS = ['success', 'warning', 'danger', 'info'];
 
 type ColorScaleSpec = SemanticColorSpec;
 

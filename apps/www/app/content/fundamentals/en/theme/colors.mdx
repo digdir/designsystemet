@@ -25,8 +25,8 @@ These parts describe how the colors are built up and how they should be used.
 />
 
 * `Name` The first part and the name of the color scale. 
-By default, Designsystemet comes with the color scales Success, Danger, Warning, Info, and Neutral.
-More scales can be added using the [Theme Builder](https://theme.designsystemet.no/en).
+By default, Designsystemet comes with the color scales Success, Danger, Warning, and Info.
+Your own scales, such as Accent or Neutral, can be added using the [Theme Builder](https://theme.designsystemet.no/en).
 
 * `Group` Each color scale is divided into the groups Background, Surface, Border, Text, and Base. 
 These groups describe the areas of use for the colors. For example, the Text group should be used for text and icons.
@@ -54,7 +54,7 @@ The `Base-default` colour will always be the same as the colour you selected. Th
 
 
 ## Overview and explanation of colors
-Each color scale consists of a total of 16 colors, designed to cover different needs in the design. 
+Each color scale consists of a total of 19 colors, designed to cover different needs in the design. 
 Below you'll find an overview of the different colors and their intended uses.
 
 <Image
@@ -75,12 +75,13 @@ Background colors are used to color large surfaces and are often the back layer 
 ### Surface
 Surface colors are used to color elements that sit above the background colors, such as panels or cards.
 These colors serve as foreground colors and help create depth in the design by separating elements from the background.
-In dark mode, these four colors become gradually lighter, with Surface-active being the lightest.
+In dark mode, Surface-default, Surface-tinted, Surface-hover and Surface-active become gradually lighter, with Surface-active being the lightest.
 
 * `Surface-default` is completely white in light mode and is used as the standard background color for elements.
 * `Surface-tinted` gets a hint of color in it and can be used to distinguish elements from the background.
 * `Surface-hover` can be used for hover states for elements or to create visual hierarchies in the Surface layer when combined with Surface-tinted and Surface-active.
 * `Surface-active` can be used for active states for elements or to strengthen the hierarchy in the Surface layer together with Surface-tinted and Surface-hover.
+* `Surface-muted` is a low-chroma version of Surface-tinted with the same contrast. It can be used for quiet surfaces without needing a separate neutral color scale.
 
 <Image
   src="/img/fundamentals/theme/colors/color-surface.png"
@@ -98,6 +99,7 @@ The color should not be the only visual indicator that an element is interactive
 * `Border-default` is used on form components or on other meaningful frames. 
 The color has good contrast (over 3:1) against all background colors, Surface-default, and Surface-tinted.
 * `Border-strong` has good contrast (over 3:1) against all background and surface colors and can be used on frames to make elements extra visible.
+* `Border-muted` is a low-chroma version of Border-default with the same contrast. It can be used for quiet borders without needing a separate neutral color scale.
 
 <Image
   src="/img/fundamentals/theme/colors/color-border.png"
@@ -114,8 +116,9 @@ It also tries to preserve as much of the color saturation from the original colo
 The color has good contrast (**4.5:1**) against all background colors, Surface-default, and Surface-tinted.
 * `Text-default` is a text color with high contrast, optimal for readability. 
 It should be used for the main content and the primary text on a page.
-This color in the Neutral variant can be a nice color to use for most of the text.
+If your theme has a Neutral color scale, this color from it can be a nice color to use for most of the text.
 The color has good contrast (**4.5:1**) against all background and surface colors.
+* `Text-muted` is a low-chroma version of Text-subtle with the same contrast. It can be used for quiet text without needing a separate neutral color scale.
 
 <Image
   src="/img/fundamentals/theme/colors/color-text.png"
