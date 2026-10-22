@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { type CssColor, generateColorScale } from '../../../../colors/index.ts';
-import { visitedLinkColor } from '../../../../schemas/defaults.ts';
+import { focusColor, visitedLinkColor } from '../../../../schemas/defaults.ts';
 import { colorsSchema } from '../../../../schemas/schema-color.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import { generateColorScheme, getThemeColorScales, groupByScheme } from './color-scheme.ts';
@@ -43,22 +43,13 @@ describe('generateColorScheme', () => {
     expect(theme.accent[12]).toEqual({ $type: 'color', $value: ACCENT });
   });
 
-  it('defaults focus tokens to neutral positions 1 and 11', () => {
-    const result = generateColorScheme('theme', 'light', baseColors);
-    const theme = result.theme as Record<string, Record<string, { $value: string }>>;
-    const neutralScale = generateColorScale(NEUTRAL, 'light');
-
-    expect(theme.focus.inner.$value).toBe(neutralScale['background-default'].hex);
-    expect(theme.focus.outer.$value).toBe(neutralScale['text-default'].hex);
-  });
-
-  it('defaults focus tokens to the first color without neutral', () => {
+  it('defaults focus tokens to the focus color scale positions 1 and 11', () => {
     const result = generateColorScheme('theme', 'light', colorsSchema.parse({ accent: ACCENT }));
     const theme = result.theme as Record<string, Record<string, { $value: string }>>;
-    const accentScale = generateColorScale(ACCENT, 'light');
+    const focusScale = generateColorScale(focusColor, 'light');
 
-    expect(theme.focus.inner.$value).toBe(accentScale['background-default'].hex);
-    expect(theme.focus.outer.$value).toBe(accentScale['text-default'].hex);
+    expect(theme.focus.inner.$value).toBe(focusScale['background-default'].hex);
+    expect(theme.focus.outer.$value).toBe(focusScale['text-default'].hex);
   });
 
   it('defaults link.visited to the visited-link scale position 12', () => {

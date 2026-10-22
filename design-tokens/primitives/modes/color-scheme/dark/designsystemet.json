@@ -555,11 +555,11 @@
     "focus": {
       "inner": {
         "$type": "color",
-        "$value": "#0c1927"
+        "$value": "#17181a"
       },
       "outer": {
         "$type": "color",
-        "$value": "#e7edf4"
+        "$value": "#ececec"
       }
     }
   }
