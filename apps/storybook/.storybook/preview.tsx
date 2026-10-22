@@ -34,11 +34,9 @@ const DocsContainerWithWrapper: typeof DocsContainer = ({
   ...props
 }) => {
   return (
-    <div className='custom-docs-wrapper'>
-      <DocsContainer context={context} {...props}>
-        {children}
-      </DocsContainer>
-    </div>
+    <DocsContainer context={context} {...props}>
+      {children}
+    </DocsContainer>
   );
 };
 
