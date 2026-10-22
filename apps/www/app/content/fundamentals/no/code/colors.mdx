@@ -46,8 +46,8 @@ men med ei mørk botnlinje (footer). Du kan då setje `data-color-scheme="dark"`
 /*@digdir/designsystemet-css*/
 body,
 [data-color-scheme] {
-  color: var(--ds-color-neutral-text-default);
-  background: var(--ds-color-neutral-background-default);
+  color: var(--ds-color-text-default);
+  background: var(--ds-color-background-default);
 }
 ```
 
@@ -58,8 +58,8 @@ Du kan overstyra dette med å sette eigne verdiar for `color` og `background-col
 Dette data-attributtet blir brukt for å endre fargen til ein komponent. Du kan bruke alle fargane som finst i temaet ditt.
 
 ```html
-<div data-color="neutral">
-  <!-- Innholdet her vil ha neutral farge -->
+<div data-color="accent">
+  <!-- Innholdet her vil ha accent farge -->
 </div>
 ```
 
@@ -68,9 +68,8 @@ Dette betyr at du ikkje treng å bruke `data-color` på alle komponentane i eit 
 
 ## Korleis komponentar blir påverka
 
-Me delar komponentar inn i 3 grupper for farge:
+Me delar komponentar inn i 2 grupper for farge:
 - Eksplisitt
-- Nøytral
 - Cascading
 
 ### Eksplisitt
@@ -83,29 +82,26 @@ Dette er komponentar som
 - `ValidationMessage`
 - `ErrorSummary`
 
-### Nøytral
-
-Dette er komponentar som alltid skal være nøytrale, og blir verken påverka av arva farge eller direkte `data-color`. Dette er komponentar som `Modal` og `Tooltip`.
-Desse brukar alltid `neutral` fargen.
-
 ### Cascading
 
 Denne gruppa inneheld resten av komponentane, og vil arve farge frå næraste forelder med `data-color` satt. 
+Dette gjeld òg komponentar som `Dialog` og `Tooltip`.
+For dempa flater, kantlinjer og tekst brukar komponentane dei dempa (muted) variantane av den arva fargen, til dømes `--ds-color-border-muted`.
 
 ```html
-<div data-color="neutral">
+<div data-color="brand1">
   <Chip>
-    Denne Chip'en har neutral farge.
+    Denne Chip'en har brand1 farge.
   </Chip>
 </div>
 
-<Button data-color="neutral">
-  Eg har neutral farge.
+<Button data-color="brand1">
+  Eg har brand1 farge.
 </Button>
 
-<div data-color="neutral">
+<div data-color="brand1">
   <Alert>
-    Eg har ikkje neutral farge.
+    Eg har ikkje brand1 farge.
   </Alert>
 </div>
 ```
@@ -117,17 +113,17 @@ Du kan bruke `data-color-scheme` og `data-color` saman for å endre både fargem
 `data-color` set variablar som blir resatt av `data-color-scheme`. Dersom du endrar fargemodus, må du setje `data-color` på nytt.
 
 ```html
-<div data-color="neutral">
-  <!-- Innholdet her vil ha neutral farge -->
+<div data-color="brand1">
+  <!-- Innholdet her vil ha brand1 farge -->
 </div>
 
-<div data-color="neutral" data-color-scheme="dark">
-  <!-- Innholdet her vil ha neutral farge og mørkt fargemodus -->
+<div data-color="brand1" data-color-scheme="dark">
+  <!-- Innholdet her vil ha brand1 farge og mørkt fargemodus -->
 </div>
 
-<div data-color="neutral">
+<div data-color="brand1">
   <div data-color-scheme="dark">
-    <!-- Innholdet her vil ikkje ha neutral farge -->
+    <!-- Innholdet her vil ikkje ha brand1 farge -->
   </div>
 </div>
 ```

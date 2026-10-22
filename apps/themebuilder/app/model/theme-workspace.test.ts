@@ -1,6 +1,7 @@
 import { externalConfigSchema } from '@digdir/designsystemet/internal';
 import { describe, expect, it } from 'vitest';
 import {
+  canRemoveColor,
   canRenameColor,
   colorNameError,
   defaultWorkspace,
@@ -213,14 +214,21 @@ describe('theme workspace', () => {
       expect(theme.overrides).toEqual({ severity: { danger: '#ab1234' } });
     }
   });
-  it('ignores a name taken by another color, and does not rename neutral', () => {
+  it('ignores a name taken by another color, and treats neutral like any other color', () => {
     const theme = config.themes.first;
 
     expect(setThemeColor(theme, 'accent', 'neutral', '#000000')).toBe(theme);
-    expect(setThemeColor(theme, 'neutral', 'grey', '#000000')).toBe(theme);
+    expect(
+      Object.entries(setThemeColor(theme, 'neutral', 'grey', '#000000').colors),
+    ).toEqual([
+      ['accent', '#123456'],
+      ['grey', '#000000'],
+    ]);
     expect(setThemeColor(theme, 'gone', 'gone', '#000000')).toBe(theme);
     expect(setThemeColor(theme, 'gone', 'other', '#000000')).toBe(theme);
-    expect(removeThemeColor(theme, 'neutral')).toBe(theme);
+    expect(removeThemeColor(theme, 'neutral').colors).toEqual({
+      accent: '#123456',
+    });
     expect(setThemeColor(theme, 'accent', 'danger', '#000000').colors).toEqual({
       danger: '#000000',
       neutral: '#333333',
@@ -236,7 +244,6 @@ describe('theme workspace', () => {
     expect(colorNameError('', names, 'accent')).toBe('empty');
     for (const name of ['-', 'my-', '-my', 'my--brand'])
       expect(colorNameError(name, names, 'accent')).toBe('invalid');
-    expect(colorNameError('neutral', names, 'accent')).toBe('reserved');
     expect(colorNameError('color-1', names, 'accent')).toBe('duplicate');
     expect(colorNameError('accent', names, 'accent')).toBeNull();
     expect(colorNameError('brand', names, 'accent')).toBeNull();
@@ -326,7 +333,7 @@ describe('theme workspace', () => {
     };
 
     expect(canRenameColor('danger')).toBe(false);
-    expect(canRenameColor('neutral')).toBe(false);
+    expect(canRenameColor('neutral')).toBe(true);
     expect(canRenameColor('accent')).toBe(true);
     expect(setThemeColor(theme, 'danger', 'error', '#C01B1B')).toBe(theme);
     expect(
@@ -335,6 +342,20 @@ describe('theme workspace', () => {
     expect(removeThemeColor(theme, 'danger').colors).toEqual({
       accent: '#123456',
       neutral: '#333333',
+    });
+  });
+
+  it('keeps the last color that is not a severity color, since the CLI needs one', () => {
+    const theme = { colors: { accent: '#123456', danger: '#C01B1B' } };
+
+    expect(canRemoveColor(['accent', 'danger'], 'accent')).toBe(false);
+    expect(canRemoveColor(['accent', 'danger'], 'danger')).toBe(true);
+    expect(canRemoveColor(['accent', 'neutral', 'danger'], 'accent')).toBe(
+      true,
+    );
+    expect(removeThemeColor(theme, 'accent')).toBe(theme);
+    expect(removeThemeColor(theme, 'danger').colors).toEqual({
+      accent: '#123456',
     });
   });
 

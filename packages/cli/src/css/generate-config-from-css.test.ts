@@ -36,6 +36,10 @@ const plainTheme: ThemeInput = {
   colors: { accent: '#0d7a5f', 'my-brand': '#8a1c4a', neutral: '#1e2b3c' },
   borderRadius: 0,
 };
+// A theme without neutral, where the focus colors default to the first color.
+const noNeutralTheme: ThemeInput = {
+  colors: { accent: '#0062ba' },
+};
 
 const builtCSS: Record<string, string> = {};
 
@@ -45,6 +49,7 @@ beforeAll(async () => {
   vi.spyOn(console, 'log').mockImplementation(() => {});
   builtCSS.withOverrides = await buildThemeCSS('with-overrides', themeWithOverrides);
   builtCSS.plain = await buildThemeCSS('plain', plainTheme);
+  builtCSS.noNeutral = await buildThemeCSS('no-neutral', noNeutralTheme);
 }, 30_000);
 
 describe('generateConfigFromCSS', () => {
@@ -64,6 +69,13 @@ describe('generateConfigFromCSS', () => {
     const { config, warnings } = generateConfigFromCSS({ 'with-overrides': builtCSS.withOverrides });
 
     expect(config.themes).toEqual({ 'with-overrides': themeWithOverrides });
+    expect(warnings).toEqual([]);
+  });
+
+  it('reads back a theme without neutral, without focus overrides', () => {
+    const { config, warnings } = generateConfigFromCSS({ 'no-neutral': builtCSS.noNeutral });
+
+    expect(config.themes).toEqual({ 'no-neutral': noNeutralTheme });
     expect(warnings).toEqual([]);
   });
 

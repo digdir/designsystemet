@@ -52,6 +52,15 @@ describe('generateColorScheme', () => {
     expect(theme.focus.outer.$value).toBe(neutralScale['text-default'].hex);
   });
 
+  it('defaults focus tokens to the first color without neutral', () => {
+    const result = generateColorScheme('theme', 'light', colorsSchema.parse({ accent: ACCENT }));
+    const theme = result.theme as Record<string, Record<string, { $value: string }>>;
+    const accentScale = generateColorScale(ACCENT, 'light');
+
+    expect(theme.focus.inner.$value).toBe(accentScale['background-default'].hex);
+    expect(theme.focus.outer.$value).toBe(accentScale['text-default'].hex);
+  });
+
   it('defaults link.visited to the visited-link scale position 12', () => {
     const result = generateColorScheme('theme', 'light', baseColors);
     const theme = result.theme as Record<string, Record<string, { $value: string }>>;

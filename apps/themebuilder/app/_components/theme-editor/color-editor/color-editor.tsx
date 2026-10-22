@@ -9,11 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ColorPicker, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
 import { useThemeStore } from '~/model/theme-store';
-import {
-  colorNameError,
-  REQUIRED_COLOR,
-  sanitizeColorName,
-} from '~/model/theme-workspace';
+import { colorNameError, sanitizeColorName } from '~/model/theme-workspace';
 import classes from './color-editor.module.css';
 
 type ColorEditorProps = {
@@ -39,7 +35,6 @@ type ColorEditorProps = {
 const nameErrors = {
   empty: 'colorEditor.name-empty-error',
   invalid: 'colorEditor.name-invalid-error',
-  reserved: 'colorEditor.name-reserved-error',
   duplicate: 'colorEditor.name-duplicate-error',
 } as const;
 
@@ -67,10 +62,6 @@ export const ColorEditor = ({
   /* The picker keeps its own color while it is dragged, and the theme gets it when the drag ends */
   const [pickerColor, setPickerColor] = useColor(hex);
   const [nameError, setNameError] = useState('');
-
-  const themeColorCount = colors.filter(
-    (color) => color.name !== REQUIRED_COLOR,
-  ).length;
 
   const checkName = () => {
     const error = canRename
@@ -112,7 +103,7 @@ export const ColorEditor = ({
           data-color='danger'
           onClick={onRemove}
           className={classes.removeBtn}
-          hidden={!canRemove || themeColorCount <= 1}
+          hidden={!canRemove}
         >
           {t('colorEditor.remove-color')}
           <TrashIcon aria-hidden />
