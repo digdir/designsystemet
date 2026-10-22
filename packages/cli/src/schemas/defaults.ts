@@ -4,6 +4,8 @@ import type { CssColor, SeverityColorNames } from '../colors/index.ts';
 export const defaultFontFamily = 'Inter';
 export const defaultBorderRadius = 4;
 export const visitedLinkColor = '#663299';
+/** The color whose background and text are the default focus colors. */
+export const focusColor = '#24272B';
 
 export const severityColors: Record<SeverityColorNames, CssColor> = {
   info: '#0A71C0',
@@ -13,15 +15,6 @@ export const severityColors: Record<SeverityColorNames, CssColor> = {
 };
 
 export const severityColorNames = Object.keys(severityColors) as Array<keyof typeof severityColors>;
-
-/** The color whose background and text are the default focus colors: `neutral` when the theme has it, otherwise
- * the theme's first color that isn't a severity color. */
-export function getFocusColorName(colorNames: string[]): string | undefined {
-  if (colorNames.includes('neutral')) {
-    return 'neutral';
-  }
-  return colorNames.find((name) => !(severityColorNames as string[]).includes(name)) ?? colorNames[0];
-}
 
 /** Non-severity colors first (in user order), then all severity colors at the end in severityColors order.
  * User-defined severity colors keep their value but are moved to the end.

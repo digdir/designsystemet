@@ -36,7 +36,7 @@ const plainTheme: ThemeInput = {
   colors: { accent: '#0d7a5f', 'my-brand': '#8a1c4a', neutral: '#1e2b3c' },
   borderRadius: 0,
 };
-// A theme without neutral, where the focus colors default to the first color.
+// A theme without neutral, with the default focus colors.
 const noNeutralTheme: ThemeInput = {
   colors: { accent: '#0062ba' },
 };
