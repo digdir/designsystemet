@@ -37,8 +37,8 @@
 /* Set default background and color on <body> (not :root) to align with best practice */
 body,
 [data-color-scheme] {
-  color: var(--ds-color-neutral-text-default);
-  background: var(--ds-color-neutral-background-default);
+  color: var(--ds-color-text-default);
+  background: var(--ds-color-background-default);
 }
 
 /* Ensure text color changes when swapping color mode */

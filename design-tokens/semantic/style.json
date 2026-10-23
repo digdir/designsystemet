@@ -64,6 +64,18 @@
       "base-contrast-default": {
         "$type": "color",
         "$value": "{color.accent.16}"
+      },
+      "surface-muted": {
+        "$type": "color",
+        "$value": "{color.accent.17}"
+      },
+      "border-muted": {
+        "$type": "color",
+        "$value": "{color.accent.18}"
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "{color.accent.19}"
       }
     },
     "brand1": {
@@ -130,6 +142,18 @@
       "base-contrast-default": {
         "$type": "color",
         "$value": "{color.brand1.16}"
+      },
+      "surface-muted": {
+        "$type": "color",
+        "$value": "{color.brand1.17}"
+      },
+      "border-muted": {
+        "$type": "color",
+        "$value": "{color.brand1.18}"
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "{color.brand1.19}"
       }
     },
     "brand2": {
@@ -196,72 +220,18 @@
       "base-contrast-default": {
         "$type": "color",
         "$value": "{color.brand2.16}"
-      }
-    },
-    "neutral": {
-      "background-default": {
-        "$type": "color",
-        "$value": "{color.neutral.1}"
       },
-      "background-tinted": {
+      "surface-muted": {
         "$type": "color",
-        "$value": "{color.neutral.2}"
+        "$value": "{color.brand2.17}"
       },
-      "surface-default": {
+      "border-muted": {
         "$type": "color",
-        "$value": "{color.neutral.3}"
+        "$value": "{color.brand2.18}"
       },
-      "surface-tinted": {
+      "text-muted": {
         "$type": "color",
-        "$value": "{color.neutral.4}"
-      },
-      "surface-hover": {
-        "$type": "color",
-        "$value": "{color.neutral.5}"
-      },
-      "surface-active": {
-        "$type": "color",
-        "$value": "{color.neutral.6}"
-      },
-      "border-subtle": {
-        "$type": "color",
-        "$value": "{color.neutral.7}"
-      },
-      "border-default": {
-        "$type": "color",
-        "$value": "{color.neutral.8}"
-      },
-      "border-strong": {
-        "$type": "color",
-        "$value": "{color.neutral.9}"
-      },
-      "text-subtle": {
-        "$type": "color",
-        "$value": "{color.neutral.10}"
-      },
-      "text-default": {
-        "$type": "color",
-        "$value": "{color.neutral.11}"
-      },
-      "base-default": {
-        "$type": "color",
-        "$value": "{color.neutral.12}"
-      },
-      "base-hover": {
-        "$type": "color",
-        "$value": "{color.neutral.13}"
-      },
-      "base-active": {
-        "$type": "color",
-        "$value": "{color.neutral.14}"
-      },
-      "base-contrast-subtle": {
-        "$type": "color",
-        "$value": "{color.neutral.15}"
-      },
-      "base-contrast-default": {
-        "$type": "color",
-        "$value": "{color.neutral.16}"
+        "$value": "{color.brand2.19}"
       }
     },
     "info": {
@@ -328,6 +298,18 @@
       "base-contrast-default": {
         "$type": "color",
         "$value": "{color.info.16}"
+      },
+      "surface-muted": {
+        "$type": "color",
+        "$value": "{color.info.17}"
+      },
+      "border-muted": {
+        "$type": "color",
+        "$value": "{color.info.18}"
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "{color.info.19}"
       }
     },
     "success": {
@@ -394,6 +376,18 @@
       "base-contrast-default": {
         "$type": "color",
         "$value": "{color.success.16}"
+      },
+      "surface-muted": {
+        "$type": "color",
+        "$value": "{color.success.17}"
+      },
+      "border-muted": {
+        "$type": "color",
+        "$value": "{color.success.18}"
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "{color.success.19}"
       }
     },
     "warning": {
@@ -460,6 +454,18 @@
       "base-contrast-default": {
         "$type": "color",
         "$value": "{color.warning.16}"
+      },
+      "surface-muted": {
+        "$type": "color",
+        "$value": "{color.warning.17}"
+      },
+      "border-muted": {
+        "$type": "color",
+        "$value": "{color.warning.18}"
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "{color.warning.19}"
       }
     },
     "danger": {
@@ -526,6 +532,18 @@
       "base-contrast-default": {
         "$type": "color",
         "$value": "{color.danger.16}"
+      },
+      "surface-muted": {
+        "$type": "color",
+        "$value": "{color.danger.17}"
+      },
+      "border-muted": {
+        "$type": "color",
+        "$value": "{color.danger.18}"
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "{color.danger.19}"
       }
     },
     "focus": {

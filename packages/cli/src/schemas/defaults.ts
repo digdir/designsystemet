@@ -4,6 +4,8 @@ import type { CssColor, SeverityColorNames } from '../colors/index.ts';
 export const defaultFontFamily = 'Inter';
 export const defaultBorderRadius = 4;
 export const visitedLinkColor = '#663299';
+/** The color whose background and text are the default focus colors. */
+export const focusColor = '#24272B';
 
 export const severityColors: Record<SeverityColorNames, CssColor> = {
   info: '#0A71C0',
