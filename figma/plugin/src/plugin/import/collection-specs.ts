@@ -308,9 +308,10 @@ function mapReferenceToVariableTarget(
   }
 
   if (reference.startsWith('color.')) {
+    // The Color collection's modes reference the theme's color scales, e.g. `{color.accent.background-default}`.
     if (group === FIGMA_COLLECTION.COLOR) {
       return {
-        collection: FIGMA_COLLECTION.SEMANTIC,
+        collection: FIGMA_COLLECTION.THEME,
         name: pathToFigmaName(reference),
       };
     }

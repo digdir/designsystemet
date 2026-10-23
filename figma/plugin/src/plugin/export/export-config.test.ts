@@ -115,7 +115,7 @@ describe('exportConfig', () => {
     const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
     });
-    editColor(collections, 'theme/accent/3', 'Dark', '#123456');
+    editColor(collections, 'theme/accent/surface-default', 'Dark', '#123456');
 
     const { config } = await exportConfig(collections);
 
@@ -130,9 +130,7 @@ describe('exportConfig', () => {
     });
     const colorScheme = collections.find((c) => c.name === 'Color scheme');
     const variable = (step: keyof typeof semanticColorSpec) =>
-      colorScheme?.variables.find(
-        (v) => v.name === `alpha/accent/${semanticColorSpec[step].number}`,
-      );
+      colorScheme?.variables.find((v) => v.name === `alpha/accent/${step}`);
     // background-default is white in Light and dark in Dark, so the mode an alias resolves in shows.
     const background = variable('background-default');
     const text = variable('text-default');
@@ -172,7 +170,7 @@ describe('exportConfig', () => {
     });
   });
 
-  it('reads steps named by step name as well as by number', async () => {
+  it('reads steps named by number, as in files imported before steps were named', async () => {
     const themes = {
       theme: {
         colors: { accent: '#0062ba', neutral: '#24272b' },
@@ -182,20 +180,47 @@ describe('exportConfig', () => {
       },
     };
     const collections = await syncedCollections(themes);
-    // Rename `theme/accent/12` to `theme/accent/base-default`, and so on, as planned for future imports.
-    const nameByNumber = new Map(
-      Object.values(semanticColorSpec).map((step) => [
-        String(step.number),
-        step.name,
-      ]),
-    );
-    for (const variable of collections.find((c) => c.name === 'Color scheme')
-      ?.variables ?? []) {
-      variable.name = variable.name.replace(
-        /\/(\d+)$/,
-        (_match, number) => `/${nameByNumber.get(number) ?? number}`,
+    // Rename `theme/accent/base-default` in Color scheme and `color/accent/base-default` in Theme to
+    // `.../12`, and so on, and the aliases to them, as earlier imports named them.
+    const toNumbered = (name: string) =>
+      name.replace(/\/([^/]+)$/, (match, step: string) =>
+        Object.hasOwn(semanticColorSpec, step)
+          ? `/${semanticColorSpec[step as keyof typeof semanticColorSpec].number}`
+          : match,
       );
+    const isNumbered = (collection: string, name: string) =>
+      collection === 'Color scheme' ||
+      (collection === 'Theme' && name.startsWith('color/'));
+    for (const collection of collections) {
+      for (const variable of collection.variables) {
+        if (isNumbered(collection.name, variable.name)) {
+          variable.name = toNumbered(variable.name);
+        }
+        for (const [mode, value] of Object.entries(variable.valuesByMode)) {
+          if (
+            value.kind === 'alias' &&
+            isNumbered(value.collection, value.name)
+          ) {
+            variable.valuesByMode[mode] = {
+              ...value,
+              name: toNumbered(value.name),
+            };
+          }
+        }
+      }
     }
+    // Earlier imports also made the color scales in Semantic, where the Color collection aliased them.
+    const semantic = collections.find((c) => c.name === 'Semantic');
+    semantic?.variables.push({
+      name: 'color/accent/base-default',
+      valuesByMode: {
+        Semantic: {
+          kind: 'alias',
+          collection: 'Theme',
+          name: 'color/accent/12',
+        },
+      },
+    });
 
     const { config, warnings } = await exportConfig(collections);
 
@@ -357,7 +382,7 @@ describe('exportConfig', () => {
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
     });
     // A color edited by hand becomes an override, so the config keeps it.
-    editColor(collections, 'theme/accent/3', 'Dark', '#123456');
+    editColor(collections, 'theme/accent/surface-default', 'Dark', '#123456');
     // Figma stores numbers as 32-bit floats, so they read back slightly off.
     for (const variable of collections.flatMap((c) => c.variables)) {
       for (const value of Object.values(variable.valuesByMode)) {
@@ -378,7 +403,9 @@ describe('exportConfig', () => {
     });
     const colorScheme = collections.find((c) => c.name === 'Color scheme');
     colorScheme?.variables.splice(
-      colorScheme.variables.findIndex((v) => v.name === 'theme/accent/3'),
+      colorScheme.variables.findIndex(
+        (v) => v.name === 'theme/accent/surface-default',
+      ),
       1,
     );
 

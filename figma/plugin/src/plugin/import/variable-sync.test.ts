@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import type { CollectionSpec } from './collection-specs';
+import type { CollectionSpec, VariableSpec } from './collection-specs';
 import { createImportLog } from './log';
-import { isManaged, managedModeIds } from './ownership';
+import { isManaged, managedModeIds, markManaged } from './ownership';
 import type { Pause } from './pause';
 import { ensureModes, syncCollections, syncVariables } from './variable-sync';
 
@@ -214,5 +214,94 @@ describe('syncVariables', () => {
     ).rejects.toThrow('Figma closed the plugin');
 
     expect(isManaged(created)).toBe(true);
+  });
+  it('renames Color scheme steps named by number instead of replacing them, unless renamed by hand', async () => {
+    const fakeVariable = (name: string) => {
+      const pluginData = new Map<string, string>();
+      const variable = {
+        id: name,
+        name,
+        resolvedType: 'COLOR',
+        variableCollectionId: 'collection',
+        codeSyntax: {},
+        scopes: [],
+        valuesByMode: {} as Record<string, VariableValue>,
+        setValueForMode: (modeId: string, value: VariableValue) => {
+          variable.valuesByMode[modeId] = value;
+        },
+        remove: vi.fn(),
+        getPluginData: (key: string) => pluginData.get(key) ?? '',
+        setPluginData: (key: string, value: string) => {
+          pluginData.set(key, value);
+        },
+      };
+      return variable;
+    };
+    // Made by an import that named steps by number.
+    const imported = fakeVariable('theme/accent/12');
+    markManaged(imported as unknown as Variable);
+    // From an import before variables were marked.
+    const unmarked = fakeVariable('theme/accent/1');
+    // Made by an import, then renamed by hand.
+    const renamedByHand = fakeVariable('theme/accent/old');
+    markManaged(renamedByHand as unknown as Variable);
+    renamedByHand.name = 'theme/accent/11';
+    const created: ReturnType<typeof fakeVariable>[] = [];
+    vi.stubGlobal('figma', {
+      variables: {
+        getLocalVariablesAsync: async () => [imported, unmarked, renamedByHand],
+        createVariable: (name: string) => {
+          const variable = fakeVariable(name);
+          created.push(variable);
+          return variable;
+        },
+      },
+    });
+    const collection = {
+      id: 'collection',
+      name: 'Color scheme',
+      modes: [{ modeId: 'm0', name: 'Light' }],
+    } as unknown as VariableCollection;
+    const black = { r: 0, g: 0, b: 0, a: 1 };
+    const step = (name: string): [string, VariableSpec] => [
+      name,
+      {
+        name,
+        type: 'COLOR',
+        codeSyntax: null,
+        scopes: [],
+        valuesByMode: new Map([['Light', { kind: 'raw', value: black }]]),
+      },
+    ];
+    const spec: CollectionSpec = {
+      name: 'Color scheme',
+      modeNames: ['Light'],
+      variables: new Map([
+        step('theme/accent/background-default'),
+        step('theme/accent/text-default'),
+        step('theme/accent/base-default'),
+      ]),
+    };
+    const log = createImportLog();
+
+    await syncVariables(
+      [spec],
+      new Map([['Color scheme', collection]]),
+      log,
+      noPause,
+    );
+
+    expect(imported.name).toBe('theme/accent/base-default');
+    expect(unmarked.name).toBe('theme/accent/background-default');
+    expect(isManaged(imported as unknown as Variable)).toBe(true);
+    expect(isManaged(unmarked as unknown as Variable)).toBe(true);
+    expect(renamedByHand.name).toBe('theme/accent/11');
+    expect(renamedByHand.remove).not.toHaveBeenCalled();
+    expect(created.map((variable) => variable.name)).toEqual([
+      'theme/accent/text-default',
+    ]);
+    expect(log.info).toContain(
+      'Renamed variable Color scheme/theme/accent/12 to theme/accent/base-default',
+    );
   });
 });

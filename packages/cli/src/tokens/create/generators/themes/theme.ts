@@ -1,5 +1,4 @@
-import * as R from 'ramda';
-import { type ColorNumber, semanticColorMap } from '../../../../colors/types.ts';
+import { type SemanticColorNames, semanticColorNames } from '../../../../colors/index.ts';
 import type { BorderRadiusConfig, Token, TokenSet, TypographySet } from '../../../types.ts';
 
 export const generateTheme = (
@@ -108,13 +107,15 @@ const generateBase = (themeName: string, borderRadius: BorderRadiusConfig, typog
   'border-radius': generateBorderRadius(borderRadius),
 });
 
-const generateColorScaleTokens = (colorName: string, themeName: string): Record<ColorNumber, Token> => {
-  const colorScale = {} as Record<ColorNumber, Token>;
+// Each step references the color scheme primitive with the same name, e.g. `color.accent.base-default` ->
+// `{<theme>.accent.base-default}`.
+const generateColorScaleTokens = (colorName: string, themeName: string): Record<SemanticColorNames, Token> => {
+  const colorScale = {} as Record<SemanticColorNames, Token>;
 
-  for (const [_, colorNumber] of R.toPairs(semanticColorMap)) {
-    colorScale[colorNumber] = {
+  for (const stepName of semanticColorNames) {
+    colorScale[stepName] = {
       $type: 'color',
-      $value: `{${themeName}.${colorName}.${colorNumber}}`,
+      $value: `{${themeName}.${colorName}.${stepName}}`,
     };
   }
 

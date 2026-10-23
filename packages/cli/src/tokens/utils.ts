@@ -1,6 +1,7 @@
 import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
+import { isColorScaleToken } from './css-variables.ts';
 import type { TokenSet } from './types.ts';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
@@ -61,8 +62,14 @@ export function isSemanticToken(token: TransformedToken): boolean {
   return token.filePath.includes('semantic/');
 }
 
+/** Whether a token is a step of the theme's color scale, e.g. `color.accent.base-default`. */
+export function isThemeColorScaleToken(token: TransformedToken): boolean {
+  return isColorScaleToken(token.path, token.filePath);
+}
+
+/** Whether a token is a step of the given color's scale, e.g. `color.accent.base-default` for `accent`. */
 export function isSemanticColorToken(token: TransformedToken, color: string): boolean {
-  return token.filePath.includes('semantic/') && R.startsWith(['color', color], token.path);
+  return isThemeColorScaleToken(token) && token.path[1] === color;
 }
 
 export const isDigit = (s: string) => /^\d+$/.test(s);
