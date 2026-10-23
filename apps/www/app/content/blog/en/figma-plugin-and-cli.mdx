@@ -1,0 +1,56 @@
+---
+title: New Figma plugin and one command for your theme
+description: From the Theme Builder to Figma in one upload! The Theme Builder also handles several themes in one config, and the CLI creates your CSS with one command.
+date: 2026-10-20
+author: Designsystemet
+imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
+imageAlt: The Designsystemet logo, with an arrow to a plugin window showing colors, text samples and an Import button, and on to the Figma logo
+---
+
+
+With the new Figma plugin, you can import your theme into Figma with a single upload. Working with themes in the Theme Builder and in code is now easier too: you can include multiple themes in one config file, and the CLI generates your CSS with just one command.
+
+## Your theme in Figma, in one go
+
+Set up your theme in the [Theme Builder](https://theme.designsystemet.no), and upload the config file to the Designsystemet plugin. It creates all the variables and styles that the components in Designsystemet's Figma library use.
+
+- Import again when your theme changes. Only what has changed is updated, so you can iterate on your theme in Figma quickly. The layers that use the variables and styles stay connected.
+- The plugin only changes what it created itself, so your own variables and styles stay.
+- Variables in Figma show developers the correct CSS variable in Dev Mode.
+- After an import, you get a list of what was created, updated and deleted.
+
+Get the plugin in [Figma Community](https://www.figma.com/community/plugin/1687841992393312960/designsystemet), and read more in [the plugin documentation](/en/fundamentals/figma/plugin).
+
+## Several themes in the Theme Builder
+
+Many organisations need more than one theme, for example for different services or brands. The Theme Builder now lets you work on all of them in one config:
+
+- Click **Import config**, paste your config file, and choose the theme to start with. The other themes come along.
+- Switch between themes with the **Theme** menu in the toolbar.
+- Add, rename and delete themes under **Edit themes**. A new theme starts as a copy of the one you're on.
+- Adding, renaming or deleting a color does it in all your themes, while each theme keeps its own color values.
+- **Use theme** gives you the config with every theme, ready for the Figma plugin and the CLI, and you choose which theme's CSS to view or download.
+
+Your themes are kept in the page's address, so you can bookmark the page or share it to continue later.
+
+## One command for your theme in code
+
+Until now, getting a theme into code took two commands, `tokens create` and `tokens build`, each with its own options. Now one command is enough. Run it in the folder with your `designsystemet.config.json`:
+
+```bash
+npx @digdir/designsystemet@latest
+```
+
+This creates CSS for all the themes in your config file, in a folder called `designsystemet`. With the new `output` field in the config file, you choose what the CLI creates, and where: CSS, type declarations, Design Tokens and Tailwind files. The CSS no longer includes type declarations, so add `"types"` to `output` to get them. See [the CLI documentation](/en/fundamentals/code/cli-config#output) for all the options.
+
+Design Tokens are now optional, since the plugin imports your themes directly from the config file. If you want to change values the config file doesn't support yet, you can still edit the Design Tokens and [sync them with Figma using Tokens Studio](/en/fundamentals/figma/tokens-studio).
+
+### Already using tokens create and tokens build?
+
+`tokens create` and `tokens build` still work, but they are deprecated and will be removed in a future version. You don't have to change your config by hand: when you run `designsystemet` with a config file that uses the old `outDir` or `clean` fields, the CLI offers to update it for you. Once you've checked that you don't need the Design Tokens, you can remove `"design-tokens"` from `output`. Read more about [migrating from outDir and clean](/en/fundamentals/code/cli-config#migrating-from-outdir-and-clean).
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+  ]}
+/>
