@@ -19,7 +19,7 @@ const typographyTokenSchema = (defaults: {
 
 const headingTokenSchema = (fontSize: number, letterSpacing: number) =>
   typographyTokenSchema({
-    fontWeight: '{font-weight.medium}',
+    fontWeight: '{font-weight.semibold}',
     lineHeight: '{line-height.sm}',
     fontSize: `{font-size.${fontSize}}`,
     letterSpacing: `{letter-spacing.${letterSpacing}}`,
