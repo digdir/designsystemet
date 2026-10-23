@@ -57,10 +57,10 @@
   },
   "devDependencies": {
     "autoprefixer": "10.6.1",
-    "cssnano": "9.6.0",
-    "postcss": "8.5.29",
+    "cssnano": "9.9.0",
+    "postcss": "8.5.31",
     "postcss-cli": "12.0.0",
-    "postcss-import": "17.0.0",
+    "postcss-import": "17.0.1",
     "postcss-nesting": "14.0.3",
     "rimraf": "6.1.3"
   }
