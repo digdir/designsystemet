@@ -118,9 +118,16 @@ const defaultComponents = {
     },
   }) => {
     return (
-      <CodeBlock language={className.replace('language-', '')}>
-        {children}
-      </CodeBlock>
+      <>
+        <div data-documentation-code-block>
+          <pre hidden>
+            <code className={className}>{children}</code>
+          </pre>
+        </div>
+        <CodeBlock language={className.replace('language-', '')}>
+          {children}
+        </CodeBlock>
+      </>
     );
   },
   table: (props: TableProps) => (

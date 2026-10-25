@@ -48,6 +48,11 @@ export const DoDont = ({
           </>
         )}
       </div>
+      <div data-documentation-code-block hidden>
+        <pre>
+          <code className='language-tsx'>{code}</code>
+        </pre>
+      </div>
       <LiveProvider code={code} scope={scopes} noInline disabled>
         <div className={classes.preview}>
           <LivePreview

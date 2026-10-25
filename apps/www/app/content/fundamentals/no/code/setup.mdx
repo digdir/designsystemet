@@ -165,6 +165,25 @@ Det er også anbefalt at du leser gjennom tilgjengelighets-sida.
   </Tabs.Panel>
 </Tabs>
 
+## Bruke KI-assistanse
+
+Du trenger ingen MCP-server eller verktøyspesifikk ferdighet.
+Start med [dokumentasjonsoversikten vår](/llms.txt), som lenker til komponenter, CSS, tilgjengelighet og [mønstre](/no/patterns).
+
+Legg til `.md` på URL-en til en dokumentasjonsside for å få Markdown uten spesielle headere, for eksempel [denne oppsettsveiledningen](/no/fundamentals/code/setup.md).
+Vanlige sideadresser støtter også `Accept: text/markdown`.
+Dette fungerer for både norsk og engelsk dokumentasjon.
+
+Du kan kopiere denne eksempel prompten til KI-verktøyet ditt:
+
+> Bruk https://designsystemet.no/llms.txt for å finne dokumentasjon om Designsystemet.
+> Sjekk prosjektets installerte pakkeversjoner og rammeverk først. Nettsiden beskriver siste release.
+> Følg prosjektets eksisterende oppsett. Bruk HTML-eksempler for web/CSS og React-eksempler for React. Ikke finn på komponenter, importer, attributter eller variabler.
+> Les mønstre før du setter sammen et grensesnitt. Bruk dokumenterte Designsystemet-variabler for farger og avstander. Bevar semantisk HTML, ledetekster, tastaturbetjening, fokushåndtering og validering.
+
+Test generert kode som annen kode.
+Sjekk tastaturnavigasjon og om løsningen følger gode mønstre, ikke bare om den ser riktig ut.
+
 ## Typescript
 
 Designsystemet tilbyr typesikkerhet for flere data-attributter.
