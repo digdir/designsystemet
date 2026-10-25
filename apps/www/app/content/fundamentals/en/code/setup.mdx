@@ -1,7 +1,7 @@
 ---
 title: Setup
 description: Get started with the Designsystemet in code
-date: 2026-02-27
+date: 2026-10-25
 category: Code
 color: blue
 icon: CodeIcon
@@ -11,112 +11,95 @@ search_terms: setup, oppsett, installasjon, installation, getting started, komme
 ---
 
 
-Follow these steps to get started with using Designsystemet in code for the first time.
+Here is how to add Designsystemet to your project.
+The examples use npm and a build tool such as Vite.
 
 ## 1. Install the packages
-Designsystemet consists of several code packages that you can freely choose from, depending on your needs and preferences.
-You can use the packages together, or pick only the parts that speed you up, while keeping the freedom to code things yourself where you want to.
 
-We recommend starting with `@digdir/designsystemet-web` and `@digdir/designsystemet-css`. You can also use `@digdir/designsystemet-web` without `@digdir/designsystemet-css` if you already have your own styling, or use only the CSS package if you handle interactivity yourself.
+The CSS package provides the look. The web and React packages add component behaviour.
+Choose HTML for plain HTML or frameworks such as Vue, Angular and Svelte, or choose React.
 
-<Tabs data-wide-content>
+<Tabs defaultValue="html" data-wide-content>
   <Tabs.List>
-  <Tabs.Tab>HTML</Tabs.Tab>
-  <Tabs.Tab>React</Tabs.Tab>
+  <Tabs.Tab value="html">HTML</Tabs.Tab>
+  <Tabs.Tab value="react">React</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Panel>
+  <Tabs.Panel value="html">
+
+**HTML and other frameworks**
+
 ```sh
-npm i @digdir/designsystemet-css @digdir/designsystemet-web 
+npm i @digdir/designsystemet-css @digdir/designsystemet-web
 ```
   </Tabs.Panel>
-  <Tabs.Panel>
+  <Tabs.Panel value="react">
+
+**React**
+
 ```sh
 npm i @digdir/designsystemet-css @digdir/designsystemet-react
 ```
+
+You also need React and React DOM 18.3.1 or newer.
+
   </Tabs.Panel>
 </Tabs>
 
+You can also use the web package with your own CSS, or use CSS alone if you handle the behaviour yourself.
 
-## 2. Import Javascript
+## 2. Import JavaScript
 
-<Tabs data-wide-content>
+<Tabs defaultValue="html" data-wide-content>
   <Tabs.List>
-  <Tabs.Tab>HTML</Tabs.Tab>
-  <Tabs.Tab>React</Tabs.Tab>
+  <Tabs.Tab value="html">HTML</Tabs.Tab>
+  <Tabs.Tab value="react">React</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Panel>
-Import `@digdir/designsystemet-web` in your main JavaScript file.
-<br/>
-This will register all web components and observers globally, so you only need to do this once.
+  <Tabs.Panel value="html">
 
-```jsx
+**HTML and other frameworks**
+
+Add this once in your main JavaScript file. It needs to run in the browser.
+
+```js
 import '@digdir/designsystemet-web';
 ```
   </Tabs.Panel>
-  <Tabs.Panel>
-Import `@digdir/designsystemet-react` when using components.
+  <Tabs.Panel value="react">
 
-```js
+**React**
+
+Import the components you use. You do not need a separate import of the web package.
+
+```tsx
 import { Button } from '@digdir/designsystemet-react';
 ```
   </Tabs.Panel>
 </Tabs>
 
 
-## 3. Import CSS
+## 3. Add CSS and a theme
 
-Import `@digdir/designsystemet-css`.
+The theme sets colors, sizes and fonts. Start with the default theme below.
+Add these imports once, either in your main CSS file or through JavaScript. Keep them in this order.
 
-Read more about [CSS](/en/fundamentals/code/css).
-
-<Tabs data-wide-content>
+<Tabs defaultValue="css" data-wide-content>
   <Tabs.List>
-  <Tabs.Tab>CSS</Tabs.Tab>
-  <Tabs.Tab>JavaScript</Tabs.Tab>
+  <Tabs.Tab value="css">CSS</Tabs.Tab>
+  <Tabs.Tab value="javascript">JavaScript</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Panel>
+  <Tabs.Panel value="css">
+
+**CSS**
+
   ```css
   @import '@digdir/designsystemet-css/index.css';
-  ```     
-  </Tabs.Panel>
-  <Tabs.Panel>
-  ```js
-  import '@digdir/designsystemet-css';
+  @import '@digdir/designsystemet-css/theme.css';
   ```
   </Tabs.Panel>
-</Tabs>
+  <Tabs.Panel value="javascript">
 
+**JavaScript**
 
-<Alert data-color='info'>
-
-<h3 className="ds-heading" data-size='xs'>Note: `background` and `color` are set on `<body>`</h3>
-
-`background` and `color` are automatically defined on the `body` element and where `data-color-scheme` is set. 
-This is to ensure [universal design (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html) and consistent font and color across the application.
-This can be easily overridden in your own theme or in your global CSS file.
-
-</Alert>
-
-
-## 4. Import the theme
-
-The Designsystemet is designed to be themable, so it is important to import your theme after importing `@digdir/designsystemet-css`.
-
-[Build your own theme](/en/fundamentals/start-here/own-theme) or use the default theme; `@digdir/designsystemet-css/theme`.
-
-
-<Tabs data-wide-content>
-  <Tabs.List>
-  <Tabs.Tab>Custom theme</Tabs.Tab>
-  <Tabs.Tab>Default theme</Tabs.Tab>
-  </Tabs.List>
-  <Tabs.Panel>
-  ```css
-  @import '@digdir/designsystemet-css/index.css';
-  @import 'designsystemet/<your-theme>.css';
-  ```     
-  </Tabs.Panel>
-  <Tabs.Panel>
   ```js
   import '@digdir/designsystemet-css';
   import '@digdir/designsystemet-css/theme';
@@ -124,121 +107,142 @@ The Designsystemet is designed to be themable, so it is important to import your
   </Tabs.Panel>
 </Tabs>
 
+Want your own colors and fonts? [Create your own theme](/en/fundamentals/start-here/own-theme).
 
-## 5. Usage
+<details className="ds-details">
+<summary>Use your own theme</summary>
 
-You are now ready to use the Designsystemet in code! 
+Replace the default theme import with your generated CSS file:
 
+```css
+@import '@digdir/designsystemet-css/index.css';
+@import './designsystemet/my-theme.css';
+```
 
-All components have their own page in the [component documentation](/en/components), we recommend that you read through these to see how you can use the components.
+Replace `my-theme.css` with your filename and adjust the path to match your project.
 
-It is also recommended that you read through the accessibility page.
+</details>
 
-- Use `data-color-scheme="light | dark | auto"` to set dark/light mode.
-  - corresponds with `Appearance › Color scheme` in Figma
-- Use `data-size="sm | md | lg"` to set the size of the components.
-  - corresponds with `Appearance › Size` in Figma
-- Use `data-color` to set the color of the components.
-  - corresponds to `Appearance › Color` in Figma
+CSS also sets the text and background colors on `body`.
+See the [CSS guide](/en/fundamentals/code/css) if you use Tailwind, a CSS reset or want to change these defaults.
 
+## 4. Use the components
 
-<Tabs data-wide-content>
+Here is a field and a button to get you started:
+
+<Tabs defaultValue="html" data-wide-content>
   <Tabs.List>
-  <Tabs.Tab>HTML</Tabs.Tab>
-  <Tabs.Tab>React</Tabs.Tab>
+  <Tabs.Tab value="html">HTML</Tabs.Tab>
+  <Tabs.Tab value="react">React</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Panel>
+  <Tabs.Panel value="html">
+
+**HTML and other frameworks**
+
 ```html
-<button class="ds-button" data-variant="secondary">Button</button>
-<ds-field class="ds-field">
-    <label>Label</label>
-    <input class="ds-input">
-</ds-field>
-```  
+<div data-color-scheme="auto" data-size="md">
+  <ds-field class="ds-field">
+    <label class="ds-label" for="name">Name</label>
+    <input class="ds-input" id="name" name="name" type="text" />
+  </ds-field>
+  <button class="ds-button" data-variant="secondary" type="button">
+    Continue
+  </button>
+</div>
+```
   </Tabs.Panel>
-  <Tabs.Panel>
-  ```js
-<Button data-variant="secondary">Button</Button>;
-<Field>
-  <Label>Label</Label>
-  <Input />
-</Field>
-  ```
+  <Tabs.Panel value="react">
+
+**React**
+
+```tsx
+import { Button, Field, Input, Label } from '@digdir/designsystemet-react';
+
+export function Example() {
+  return (
+    <div data-color-scheme='auto' data-size='md'>
+      <Field>
+        <Label>Name</Label>
+        <Input name='name' type='text' />
+      </Field>
+      <Button variant='secondary'>Continue</Button>
+    </div>
+  );
+}
+```
   </Tabs.Panel>
 </Tabs>
 
+You can set colors and sizes on a component or a surrounding element:
+
+- `data-color-scheme="auto"` follows the user's light or dark mode. You can also choose `light` or `dark`.
+- `data-size="md"` sets the size. You can also choose `sm` or `lg`.
+- `data-color="accent"` sets the color. Available colors depend on your theme.
+
+See [components](/en/components) for more examples, and [patterns](/en/patterns) for help putting them together.
+Each component also has an accessibility page.
+
 ## Using AI assistance
 
-No MCP server or tool-specific skill is required.
-Start with [our documentation index](/llms.txt), which links to components, CSS guidance, accessibility and [patterns](/en/patterns).
+Give your AI tool [our documentation index](/llms.txt).
+Pages are also available as Markdown: add `.md` to the URL, as in [setup.md](/en/fundamentals/code/setup.md), or request `Accept: text/markdown`.
 
-Append `.md` to any documentation page URL to get Markdown without special headers, for example [this setup guide](/en/fundamentals/code/setup.md).
-Normal page URLs also support `Accept: text/markdown`.
-Both English and Norwegian documentation support these formats.
+Ask it to use your project's package versions and follow our [patterns](/en/patterns).
+Review and test the result as you would other code.
 
-You can copy this example prompt into your AI tool:
+## TypeScript
 
-> Use https://designsystemet.no/llms.txt to find Designsystemet documentation.
-> Check this project's installed package versions and framework first; website documentation describes the latest release.
-> Follow the existing project setup. Use HTML examples for web/CSS and React examples for React; do not invent components, imports, attributes or tokens.
-> Read the relevant pattern before composing a UI. Use documented Designsystemet tokens for custom colors and spacing, and preserve semantic HTML, labels, keyboard interaction, focus management and validation behaviour.
+The packages include types. To add support for web components or React data attributes and theme colors, add these entries to `compilerOptions.types` in `tsconfig.json`.
+Keep any entries you already have.
 
-Review and test generated code as you would other code.
-Check keyboard interaction and whether the result follows the relevant pattern, not just whether it looks right.
-
-## Typescript
-
-Designsystemet provides type safety for its data attributes.
-
-Install the type package and add the type files to `tsconfig.json` to access them.
-
-```sh
-npm i -D @digdir/designsystemet-types
-```
-
-<Tabs data-wide-content>
+<Tabs defaultValue="html" data-wide-content>
   <Tabs.List>
-  <Tabs.Tab>HTML</Tabs.Tab>
-  <Tabs.Tab>React</Tabs.Tab>
+  <Tabs.Tab value="html">HTML</Tabs.Tab>
+  <Tabs.Tab value="react">React</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Panel>
+  <Tabs.Panel value="html">
+
+**HTML and other frameworks**
+
 ```json
 {
   "compilerOptions": {
     "types": [
       "@digdir/designsystemet-web",
-      "@digdir/designsystemet-types",
-      "@digdir/designsystemet-css/theme" /* or your theme type file, designsystemet/types.d.ts */
-      ]
-  },
+      "@digdir/designsystemet-css/theme"
+    ]
+  }
 }
 ```
   </Tabs.Panel>
-  <Tabs.Panel>
+  <Tabs.Panel value="react">
+
+**React**
+
 ```json
 {
   "compilerOptions": {
     "types": [
-      "@digdir/designsystemet-react/react-types", /** imports @digdir/designsystemet-types for you */
-      "@digdir/designsystemet-css/theme" /* or your theme type file, designsystemet/types.d.ts */
-      ]
-  },
+      "@digdir/designsystemet-react/react-types",
+      "@digdir/designsystemet-css/theme"
+    ]
+  }
 }
 ```
   </Tabs.Panel>
 </Tabs>
 
-
+For your own theme, replace `@digdir/designsystemet-css/theme` with the path to its types, for example `./designsystemet/types.d.ts`.
+See [how to generate theme types](/en/fundamentals/code/cli-config#output).
 
 ## Font
 
-The components are designed and developed with the [Inter font (github.com)](https://github.com/rsms/inter), so variations may occur if you use a different font.
-If you choose to install the font in a way other than altinncdn.no, remember to include the font weights `400`, `500`, and `600`.
+The default theme uses [Inter](https://github.com/rsms/inter). You can use another font with your own theme.
+Include font weights `400`, `500` and `600`.
 
 ### Text scaling that follows system settings
 
-By default, most browsers scale text based on zoom and browser text settings, but not system settings.
-To also [respect system settings](https://www.joshtumath.uk/posts/2026-07-02-lets-fix-the-webs-text-size/), add the following code in `<head>`:
+Add this to `<head>` to let browsers that support it [follow the user's text size settings](https://www.joshtumath.uk/posts/2026-07-02-lets-fix-the-webs-text-size/):
 
 ```html
 <meta name="text-scale" content="scale">
@@ -246,9 +250,7 @@ To also [respect system settings](https://www.joshtumath.uk/posts/2026-07-02-let
 
 ### Add the Inter font (optional)
 
-Add the `<link>` tag below in the `<head>`, and set `font-family` to `Inter` in your global CSS file.
-
-You can use this code to add the font in `<head>`:
+To load Inter from Altinn CDN, add this to `<head>`:
 
 ```html
 <link
@@ -258,10 +260,11 @@ You can use this code to add the font in `<head>`:
   crossorigin="anonymous"
 />
 ```
-### Font configuration
 
-We strongly recommend adding the following to your global CSS file.
-`font-feature-settings` adds a tail to lowercase `l`s.
+### Use the font
+
+Add this to your main CSS file to use your theme's font.
+`font-feature-settings` gives lowercase `l` a tail, making it easier to tell apart from uppercase `I`.
 
 ```css
 body {
@@ -272,11 +275,8 @@ body {
 
 ## Testing
 
-We aim for the components to function well across various test setups. Designsystemet is tested in JSDOM and HappyDOM, and through Playwright in Chromium, Firefox, and WebKit. However, there will always be frameworks, test environments, and meta-frameworks that handle asynchronous rendering or specific edge cases in different ways.
-
-If you encounter issues with the design system in your test setup, we would very much like to hear about it. Please report them via a [GitHub issue](https://github.com/digdir/designsystemet/issues/new/choose) or ask us in [our open Slack](https://designsystemet.no/slack).
-
-Note that not everything supported by browsers is implemented in environments with an artificial DOM, such as JSDOM and HappyDOM. You may need to add some configuration to your test setup:
+We test with JSDOM, HappyDOM and real browsers.
+JSDOM and HappyDOM do not support everything a browser does, so your tests may need the adjustments below.
 
 <details className="ds-details">
 <summary>HappyDOM setup</summary>
@@ -287,11 +287,12 @@ HappyDOM may require support for inheritance between `HTMLDocument` and `Documen
 // Polyfill missing HTMLDocument to Document inheritance in HappyDOM
 if (
   typeof HTMLDocument !== 'undefined' &&
+  typeof Document !== 'undefined' &&
+  HTMLDocument.prototype !== Document.prototype &&
+  !(Document.prototype instanceof HTMLDocument) &&
   !(HTMLDocument.prototype instanceof Document)
 ) {
-  try {
-    Object.setPrototypeOf(HTMLDocument.prototype, Document.prototype); 
-  } catch (_) {}
+  Object.setPrototypeOf(HTMLDocument.prototype, Document.prototype);
 }
 ```
 </details>
@@ -299,19 +300,23 @@ if (
 <details className="ds-details">
 <summary>JSDOM setup</summary>
 
-JSDOM may lack support for certain methods on `HTMLDialogElement`:
+JSDOM may lack dialog methods. If your version does, add only the missing mocks in your test setup:
 
 ```ts
-// Polyfill missing HTMLDialogElement methods in JSDOM
+// Minimal test mocks, not browser-equivalent dialog behaviour.
 if (typeof HTMLDialogElement.prototype.show !== 'function') {
   HTMLDialogElement.prototype.show = function () {
     this.open = true;
   };
+}
 
+if (typeof HTMLDialogElement.prototype.showModal !== 'function') {
   HTMLDialogElement.prototype.showModal = function () {
     this.open = true;
   };
+}
 
+if (typeof HTMLDialogElement.prototype.close !== 'function') {
   HTMLDialogElement.prototype.close = function (returnValue?: string) {
     this.open = false;
     if (returnValue !== undefined) this.returnValue = returnValue;
@@ -320,3 +325,6 @@ if (typeof HTMLDialogElement.prototype.show !== 'function') {
 }
 ```
 </details>
+
+Use a real browser to check keyboard navigation, focus, dialogs and popovers. The mocks above cannot check these for you.
+Need help? Ask in [Slack](https://designsystemet.no/slack) or [report an issue](https://github.com/digdir/designsystemet/issues/new/choose).
