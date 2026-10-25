@@ -1,3 +1,4 @@
+/** This file is largely AI-generated, but checked and modified by humans when needed */
 import { NodeHtmlMarkdown } from 'node-html-markdown';
 import { parse } from 'node-html-parser';
 
@@ -34,7 +35,7 @@ function extractDescription(root) {
  * promoted to proper <pre><code> blocks so they render as fenced code
  * in the final Markdown.
  */
-function extractMainContent(html) {
+function extractMainContent(html, pageUrl) {
   const root = parse(html);
 
   const title = extractTitle(root);
@@ -160,11 +161,53 @@ function extractMainContent(html) {
     el.remove();
   }
 
+  for (const link of content.querySelectorAll('a[href]')) {
+    const href = link.getAttribute('href');
+    if (
+      !href ||
+      /^[#?]/.test(href) ||
+      link.hasAttribute('download') ||
+      !URL.canParse(href, pageUrl)
+    ) {
+      continue;
+    }
+
+    const target = new URL(href, pageUrl);
+    if (
+      ![
+        pageUrl.origin,
+        'https://designsystemet.no',
+        'https://www.designsystemet.no',
+        'http://designsystemet.no',
+        'http://www.designsystemet.no',
+      ].includes(target.origin) ||
+      (target.pathname !== '/' && !/^\/(?:en|no)(?:\/|$)/.test(target.pathname))
+    ) {
+      continue;
+    }
+
+    const pathname = markdownPath(target.pathname);
+    if (pathname === target.pathname) continue;
+
+    target.pathname = pathname;
+    link.setAttribute(
+      'href',
+      /^[a-z][a-z\d+.-]*:|^\/\//i.test(href)
+        ? target.href
+        : `${target.pathname}${target.search}${target.hash}`,
+    );
+  }
+
   return { cleanedHtml: content.innerHTML, title, description, lang };
 }
 
 function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function markdownPath(pathname) {
+  const path = pathname.replace(/\/+$/, '') || '/';
+  return path.split('/').pop()?.includes('.') ? pathname : `${path}.md`;
 }
 
 function markdownLocation(location, req) {
@@ -177,7 +220,7 @@ function markdownLocation(location, req) {
     return location;
   }
 
-  target.pathname = `${target.pathname.replace(/\/+$/, '') || '/'}.md`;
+  target.pathname = markdownPath(target.pathname);
   return location.startsWith('/')
     ? `${target.pathname}${target.search}${target.hash}`
     : target.href;
@@ -269,8 +312,14 @@ export function markdownNegotiation(req, res, next) {
 
     if (chunks.length > 0 || req.method === 'HEAD') {
       const html = Buffer.concat(chunks).toString('utf-8');
-      const { cleanedHtml, title, description, lang } =
-        extractMainContent(html);
+      const pageUrl = new URL(
+        canonicalUrl,
+        `${req.protocol}://${req.get('host')}`,
+      );
+      const { cleanedHtml, title, description, lang } = extractMainContent(
+        html,
+        pageUrl,
+      );
 
       const markdown = nhm.translate(cleanedHtml).trim();
 

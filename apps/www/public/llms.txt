@@ -2,7 +2,7 @@
 
 > Designsystemet is a framework-independent component library and usage guidance for accessible public services.
 
-Append `.md` to documentation page URLs to retrieve Markdown without browser JavaScript or special headers. The normal page URL also supports `Accept: text/markdown`. Both formats come from the same website content.
+Append `.md` to documentation page URLs to retrieve Markdown without browser JavaScript or special headers. The normal page URL also supports `Accept: text/markdown`. Links to other documentation pages stay in Markdown. Both formats come from the same website content.
 
 Check the consuming project's installed package versions and framework before writing code. Website documentation describes the current release; use matching release documentation and types when working with an older version. Do not invent components, imports, attributes, or design tokens.
 
@@ -15,7 +15,7 @@ Check the consuming project's installed package versions and framework before wr
 - [Colors](https://designsystemet.no/en/fundamentals/code/colors.md): Theme colors and color schemes.
 - [Sizes](https://designsystemet.no/en/fundamentals/code/sizes.md): Component sizing and spacing.
 - [React](https://designsystemet.no/en/fundamentals/code/react.md): React-specific usage.
-- [Components](https://designsystemet.no/en/components.md): Find component overview, code and accessibility pages. Append `.md` to linked documentation URLs.
+- [Components](https://designsystemet.no/en/components.md): Find component overview, code and accessibility pages.
 - [Accessibility](https://designsystemet.no/en/components/accessibility.md): General accessibility guidance.
 - [Changelog](https://designsystemet.no/en/components/changelog.md): Changes between releases.
 
