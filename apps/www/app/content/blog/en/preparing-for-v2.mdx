@@ -1,0 +1,71 @@
+---
+title: Get ready for Designsystemet v2
+description: The next major version of Designsystemet removes everything marked as deprecated in v1. Here is how to prepare now.
+date: 2026-10-26
+author: Designsystemet
+---
+
+The next major version of Designsystemet is on its way. The most important change in v2 is that we remove everything marked as deprecated in v1. Throughout 1.x we have replaced a number of props, classes, attributes and exports with better solutions, but kept the old ones so nothing would break for you. In v2 we clean this up.
+
+If you don't use any of the deprecated features, upgrading will be easy.
+
+## How to prepare
+
+1. **Upgrade to the latest 1.x version** of all `@digdir/designsystemet*` packages.
+2. **Look for warnings.** TypeScript strikes through deprecated props and exports in your editor. The React and web packages log warnings in the console, and the CLI prints warnings in the terminal.
+3. **Switch to the replacements** in the list below. Everything in the list already works in v1, so you can make the changes now and upgrade to v2 without further changes.
+
+## What is removed in v2
+
+### React (`@digdir/designsystemet-react`)
+
+**Components and utilities**
+
+- `Combobox`: use [`Suggestion`](/en/components/docs/suggestion/overview).
+- `RovingFocusRoot` and `RovingFocusItem`: use the [`focusgroup`](/en/components/utilities/focusgroup) attribute.
+- `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` and the `MergeRight` type: use a utility library or write your own function.
+- The `Size` type from the React package and the `@digdir/designsystemet-react/colors` module: use `@digdir/designsystemet-types`.
+
+**Props**
+
+- **Avatar:** `variant="square"` is replaced by the CSS variable `--dsc-avatar-radius`. `initials` and `data-initials` are replaced by text as children.
+- **AvatarStack:** `gap`, `avatarSize` and `overlap` are replaced by the CSS variables `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` and `--dsc-avatar-stack-overlap`. `suffix` is replaced by a trailing `<li>` with text.
+- **Dialog:** `asChild` is removed. `data-command="close"` is replaced by `command="close"` and `commandfor="DIALOG-ID"`.
+- **Field, ErrorSummary and Pagination:** `asChild` is removed.
+- **Field.Counter:** `hint` is removed.
+- **Label:** `weight` is removed. Field sets the right font weight automatically.
+- **Select:** `readOnly` is replaced by `aria-readonly`.
+- **Skeleton:** `characters` is removed. Use `width` or text as children.
+- **Suggestion and Search:** `aria-label` on `Suggestion.Clear` and `Search.Clear` is replaced by `data-sr-clear`. `singular` and `plural` on `Suggestion.List` are replaced by `data-sr-singular` and `data-sr-plural` on `Suggestion`.
+- **ToggleGroup:** `data-toggle-group` is replaced by `aria-label` or `aria-labelledby`. `icon` on `ToggleGroup.Item` is removed.
+- **Tooltip:** `open` is removed, use a [`Popover`](/en/components/docs/popover/overview) instead. `type` is removed because it has no effect.
+
+### CSS (`@digdir/designsystemet-css`)
+
+- `.ds-skiplink` is replaced by `.ds-skip-link`, and `.ds-togglegroup` is replaced by `.ds-toggle-group`.
+- `.ds-search` and the individual `search.css` file are replaced by `.ds-suggestion` and `suggestion.css`.
+- **Avatar:** `data-initials`, `data-variant="square"` and `data-size="xs"` are removed.
+- **Label:** `data-weight` is removed.
+- **Details:** The misspelled variable `--dsc-details-border-block-wdith` is replaced by `--dsc-details-border-block-width`.
+- **Field and Fieldset:** A `<p>` directly after a `<label>` or `<legend>` is no longer styled as a description. Use `data-field="description"`.
+- **Dialog:** The close button must use `command="close"`. The older `<form method="dialog">` variant is removed.
+- **Pagination and ToggleGroup:** The active element no longer gets its own styling when you set `data-variant="tertiary"` manually.
+
+### Web (`@digdir/designsystemet-web`)
+
+- `data-toggle-group` is replaced by `focusgroup="radiogroup"` with `aria-label`.
+
+### CLI and types (`@digdir/designsystemet`)
+
+- The CLI options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme` are removed. Use a [config file](/en/fundamentals/start-here/own-theme).
+- `@digdir/designsystemet/types` is replaced by `@digdir/designsystemet-types`.
+
+## Questions?
+
+Reach out to us on [Slack](https://designsystemet.no/slack) or open an issue on [GitHub (github.com)](https://github.com/digdir/designsystemet/issues) if you get stuck or think we have missed something.
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+  ]}
+/>

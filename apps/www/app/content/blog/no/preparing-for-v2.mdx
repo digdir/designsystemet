@@ -1,0 +1,71 @@
+---
+title: Gjør deg klar for Designsystemet v2
+description: Neste hovedversjon av Designsystemet fjerner alt som er markert som utgått i v1. Slik forbereder du deg allerede nå.
+date: 2026-10-26
+author: Designsystemet
+---
+
+Neste hovedversjon av Designsystemet er på vei. Den viktigste endringen i v2 er at vi fjerner alt som er markert som utgått (deprecated) i v1. Gjennom 1.x har vi erstattet en rekke props, klasser, attributter og eksporter med bedre løsninger, men beholdt de gamle for å ikke ødelegge noe for deg. I v2 rydder vi opp i dette.
+
+Bruker du ingen av de utgåtte løsningene, blir oppgraderingen enkel.
+
+## Slik forbereder du deg
+
+1. **Oppgrader til siste 1.x-versjon** av alle `@digdir/designsystemet*`-pakkene.
+2. **Se etter advarsler.** TypeScript stryker over utgåtte props og eksporter i editoren din. React- og web-pakken skriver advarsler i konsollen, og CLI-en skriver advarsler i terminalen.
+3. **Bytt til erstatningene** i listen under. Alt du ser i listen fungerer allerede i v1, så du kan gjøre endringene nå og oppgradere til v2 uten flere endringer.
+
+## Dette fjernes i v2
+
+### React (`@digdir/designsystemet-react`)
+
+**Komponenter og hjelpefunksjoner**
+
+- `Combobox`: bruk [`Suggestion`](/no/components/docs/suggestion/overview).
+- `RovingFocusRoot` og `RovingFocusItem`: bruk attributtet [`focusgroup`](/no/components/utilities/focusgroup).
+- `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` og typen `MergeRight`: bruk et eget hjelpebibliotek eller lag din egen funksjon.
+- Typen `Size` fra React-pakken og modulen `@digdir/designsystemet-react/colors`: bruk `@digdir/designsystemet-types`.
+
+**Props**
+
+- **Avatar:** `variant="square"` erstattes av CSS-variabelen `--dsc-avatar-radius`. `initials` og `data-initials` erstattes av tekst som barn.
+- **AvatarStack:** `gap`, `avatarSize` og `overlap` erstattes av CSS-variablene `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` og `--dsc-avatar-stack-overlap`. `suffix` erstattes av en `<li>` med tekst til slutt.
+- **Dialog:** `asChild` fjernes. `data-command="close"` erstattes av `command="close"` og `commandfor="DIALOG-ID"`.
+- **Field, ErrorSummary og Pagination:** `asChild` fjernes.
+- **Field.Counter:** `hint` fjernes.
+- **Label:** `weight` fjernes. Field setter riktig tekstvekt automatisk.
+- **Select:** `readOnly` erstattes av `aria-readonly`.
+- **Skeleton:** `characters` fjernes. Bruk `width` eller tekst som barn.
+- **Suggestion og Search:** `aria-label` på `Suggestion.Clear` og `Search.Clear` erstattes av `data-sr-clear`. `singular` og `plural` på `Suggestion.List` erstattes av `data-sr-singular` og `data-sr-plural` på `Suggestion`.
+- **ToggleGroup:** `data-toggle-group` erstattes av `aria-label` eller `aria-labelledby`. `icon` på `ToggleGroup.Item` fjernes.
+- **Tooltip:** `open` fjernes, bruk [`Popover`](/no/components/docs/popover/overview) i stedet. `type` fjernes, fordi den ikke har noen effekt.
+
+### CSS (`@digdir/designsystemet-css`)
+
+- `.ds-skiplink` erstattes av `.ds-skip-link`, og `.ds-togglegroup` erstattes av `.ds-toggle-group`.
+- `.ds-search` og enkeltfilen `search.css` erstattes av `.ds-suggestion` og `suggestion.css`.
+- **Avatar:** `data-initials`, `data-variant="square"` og `data-size="xs"` fjernes.
+- **Label:** `data-weight` fjernes.
+- **Details:** Den feilstavede variabelen `--dsc-details-border-block-wdith` erstattes av `--dsc-details-border-block-width`.
+- **Field og Fieldset:** En `<p>` rett etter `<label>` eller `<legend>` blir ikke lenger stilt som beskrivelse. Bruk `data-field="description"`.
+- **Dialog:** Lukkeknappen må bruke `command="close"`. Den eldre `<form method="dialog">`-varianten fjernes.
+- **Pagination og ToggleGroup:** Aktivt element får ikke lenger egen stil når du setter `data-variant="tertiary"` manuelt.
+
+### Web (`@digdir/designsystemet-web`)
+
+- `data-toggle-group` erstattes av `focusgroup="radiogroup"` med `aria-label`.
+
+### CLI og typer (`@digdir/designsystemet`)
+
+- CLI-valgene `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` og `--theme` fjernes. Bruk en [konfigurasjonsfil](/no/fundamentals/start-here/own-theme).
+- `@digdir/designsystemet/types` erstattes av `@digdir/designsystemet-types`.
+
+## Spørsmål?
+
+Ta kontakt med oss på [Slack](https://designsystemet.no/slack) eller opprett en sak på [GitHub (github.com)](https://github.com/digdir/designsystemet/issues) hvis du står fast eller mener vi har glemt noe.
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+  ]}
+/>
