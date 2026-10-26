@@ -8,6 +8,8 @@ Check the consuming project's installed package versions and framework before wr
 
 `@digdir/designsystemet-css` provides styles and needs a theme. `@digdir/designsystemet-web` provides framework-independent behaviour and can be used with or without our CSS. `@digdir/designsystemet-react` provides React components. Follow the project's existing setup rather than installing all packages.
 
+The component index links to each component's overview. Component pages include links to their available Overview, Code and Accessibility pages, including in Markdown. Follow Code for APIs and implementation details, and Accessibility for requirements and checks before implementing a component. Some components have only an overview; follow the provided links rather than guessing URLs.
+
 ## Start here
 
 - [Setup](https://designsystemet.no/en/fundamentals/code/setup.md): Installation, JavaScript imports, CSS and theme setup.

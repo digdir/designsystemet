@@ -116,6 +116,18 @@ function extractMainContent(html, pageUrl) {
     el.remove();
   }
 
+  for (const navigation of content.querySelectorAll(
+    '[class*="headerBottom"]',
+  )) {
+    const links = navigation.querySelectorAll('a[href]');
+    for (const link of links) {
+      link.removeAttribute('class');
+    }
+    navigation.replaceWith(
+      `<ul>${links.map((link) => `<li>${link.outerHTML}</li>`).join('')}</ul>`,
+    );
+  }
+
   for (const grid of content.querySelectorAll('[data-is-main="true"]')) {
     const links = grid.querySelectorAll('a[href]');
     if (links.length > 0) {
@@ -160,13 +172,7 @@ function extractMainContent(html, pageUrl) {
     }
   }
 
-  // Remove overview/code/accessibility tab navigation links.
   for (const el of content.querySelectorAll('a.ds-button')) {
-    el.remove();
-  }
-
-  // Remove the header wrapper divs that are now empty after stripping.
-  for (const el of content.querySelectorAll('[class*="headerBottom"]')) {
     el.remove();
   }
 
