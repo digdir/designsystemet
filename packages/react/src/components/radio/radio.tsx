@@ -72,7 +72,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
       style={style}
     >
       <Input type='radio' ref={ref} {...rest} />
-      {!!label && <Label weight='regular'>{label}</Label>}
+      {!!label && <Label>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}
       {!!error && <ValidationMessage>{error}</ValidationMessage>}
     </Field>

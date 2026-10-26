@@ -1,4 +1,3 @@
-.ds-togglegroup,
 .ds-toggle-group {
   --dsc-togglegroup-background: var(--ds-color-surface-default);
   --dsc-togglegroup-border-width: var(--ds-border-width-default);
@@ -8,8 +7,6 @@
   --dsc-togglegroup-spacing: 0;
   --dsc-togglegroup-border-radius: var(--ds-border-radius-default);
   --dsc-togglegroup-button-size: var(--ds-size-12);
-  --dsc-togglegroup-label: '';
-  --_ds-data-toggle-group: var(--dsc-togglegroup-label); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
 
   background: var(--dsc-togglegroup-background);
   border-radius: var(--dsc-togglegroup-border-radius);
@@ -60,16 +57,6 @@
     --dsc-button-color--hover: var(--ds-color-text-default);
     --dsc-button-color: inherit; /* NB: This does not align with data-variant="tertiary" */
     isolation: auto; /* Undo stacking context */
-  }
-
-  /* @deprecated: Style active element when primary ToggleGroup with manually set data-variant="tertiary" children - deprecated but kept for compatibility */
-  &:not([data-variant='secondary']) > [data-variant='tertiary']:is(label:has(input:checked), button[aria-checked='true'], a[aria-current='true']) {
-    --dsc-button-background--active: var(--ds-color-base-active);
-    --dsc-button-background--hover: var(--ds-color-base-hover);
-    --dsc-button-background: var(--ds-color-base-default);
-    --dsc-button-color--active: var(--dsc-button-color);
-    --dsc-button-color--hover: var(--dsc-button-color);
-    --dsc-button-color: var(--ds-color-base-contrast-default);
   }
 
   /* Move focusring inside to avoid clipping */

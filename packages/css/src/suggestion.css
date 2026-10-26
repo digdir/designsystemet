@@ -1,12 +1,3 @@
-/* @deprecated .ds-search is kept for backwards compatibility */
-.ds-search {
-  --dsc-search-padding-inline: var(--dsc-suggestion-clear-gap);
-  --dsc-search-clear-padding: var(--dsc-suggestion-clear-padding);
-  --dsc-search-clear-size: var(--dsc-suggestion-clear-size);
-  --dsc-search-clear-icon-url: var(--dsc-suggestion-clear-icon-url);
-  --dsc-search-magnifying-icon-url: var(--dsc-suggestion-search-icon-url);
-  --dsc-search-magnifying-icon-size: var(--dsc-suggestion-search-icon-size);
-}
 .ds-search,
 .ds-suggestion {
   --dsc-suggestion-option-background--hover: var(--ds-color-surface-hover);
@@ -378,8 +369,7 @@
     padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
   }
   /* Draw chevron even when input is empty and button[aria-expanded] does not exist */
-  /* @deprecated del:not([hidden]) supports old <del> element from u-combobox */
-  &:where(:has(u-datalist):not(:has(button[aria-expanded], button[type='reset']:not([hidden]), del:not([hidden])))) > input {
+  &:where(:has(u-datalist):not(:has(button[aria-expanded], button[type='reset']:not([hidden])))) > input {
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
     background-repeat: no-repeat;
     background-size: 0.4em 0.4em;
@@ -390,12 +380,10 @@
   &:has(u-datalist) > input:dir(rtl) {
     background-position: calc(1.2em - var(--dsc-input-stroke-width)), 0.8em;
   }
-  /* @deprecated del supports old <del> element from u-combobox */
-  & > input:is(:read-only, :disabled, [aria-disabled='true']) ~ :is(del, button[type='reset'], button[aria-expanded]) {
+  & > input:is(:read-only, :disabled, [aria-disabled='true']) ~ :is(button[type='reset'], button[aria-expanded]) {
     display: none;
   }
-  /* @deprecated del supports old <del> element from u-combobox */
-  & > :is(del, button[type='reset'], button[aria-expanded]) {
+  & > :is(button[type='reset'], button[aria-expanded]) {
     --dsc-button-size: var(--dsc-suggestion-clear-size);
 
     grid-area: input;

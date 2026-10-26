@@ -29,19 +29,6 @@ export type TooltipProps = MergeRight<
      * @default true
      */
     autoPlacement?: boolean;
-    /**
-     * Whether the tooltip is open or not.
-     * This overrides the internal state of the tooltip.
-     *
-     * @deprecated This should not be used on Tooltip. Use a Popover instead
-     * @TODO Look at this prop
-     */
-    open?: boolean;
-    /**
-     * @deprecated This prop has no effect. The tooltip will be set as `aria-description`
-     * if the component already contains accessible text, and `aria-label` otherwise.
-     */
-    type?: 'describedby' | 'labelledby';
   }
 >;
 

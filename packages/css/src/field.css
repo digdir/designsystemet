@@ -88,7 +88,6 @@
       grid-row: 1; /* Always place input in row 1 */
     }
 
-    & label + p /* @deprecated Kept for backwards compatibility */,
     & [data-field='description'] {
       font-size: var(--dsc-field-description-font-size--toggle);
     }

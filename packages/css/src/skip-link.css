@@ -1,6 +1,4 @@
-/* @deprecated: ds-skiplink can be removed in the next major version */
-.ds-skip-link,
-.ds-skiplink {
+.ds-skip-link {
   --dsc-skiplink-padding: var(--ds-size-4) var(--ds-size-4) var(--ds-size-5) var(--ds-size-4);
   --dsc-skiplink-background: var(--ds-color-surface-hover);
   --dsc-skiplink-color: var(--ds-color-text-default);
@@ -8,8 +6,7 @@
   @composes ds-sr-only from './base.css';
 }
 
-.ds-skip-link:focus,
-.ds-skiplink:focus {
+.ds-skip-link:focus {
   place-items: center;
   outline: 0;
   position: static;

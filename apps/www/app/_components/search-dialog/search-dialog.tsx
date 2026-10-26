@@ -21,7 +21,7 @@ import {
 } from '@navikt/aksel-icons';
 import cl from 'clsx';
 import type { ChangeEvent, CSSProperties, ReactNode } from 'react';
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { highlightText } from '~/_utils/highlight';
 import { RRLink as Link } from '../link';
@@ -50,6 +50,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   const [resultAnnounce, setresultAnnounce] = useState('');
   const latestQueryRef = useRef<string>('');
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const dialogId = useId();
 
   const performSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) {
@@ -178,6 +179,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   return (
     <Dialog
       ref={dialogRef}
+      id={dialogId}
       closedby='any'
       open={open}
       onClose={handleDialogClose}
@@ -189,7 +191,8 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
         data-color='neutral'
         icon
         variant='tertiary'
-        data-command='close'
+        command='close'
+        commandfor={dialogId}
       />
       <div className={classes.aboveScroll}>
         <Dialog.Block className={classes.searchBlock}>

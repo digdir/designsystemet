@@ -68,7 +68,6 @@
 }
 
 .link {
-  --dsc-link-background--active: var(--ds-color-neutral-surface-tinted);
   color: inherit;
   text-decoration: none;
   padding: var(--ds-size-1) var(--ds-size-4);
@@ -81,7 +80,7 @@
     outline-offset: calc(-1 * var(--ds-border-width-focus));
   }
   &:hover {
-    background-color: var(--dsc-link-background--active);
+    background-color: var(--ds-color-neutral-surface-tinted);
   }
 
   &[aria-current='page'] {

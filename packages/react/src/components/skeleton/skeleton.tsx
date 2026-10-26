@@ -23,8 +23,6 @@ export type SkeletonProps = {
    * @default false
    */
   asChild?: boolean;
-  /** @deprecated This prop has no effect. Use `width` or supply text as children instead */
-  characters?: number;
 } & HTMLAttributes<HTMLSpanElement>;
 
 /**

@@ -9,12 +9,6 @@ export type SelectProps = MergeRight<
     Omit<SelectHTMLAttributes<HTMLSelectElement>, 'multiple' | 'size'>, // Also Omit size as this sets amount of visible options in multiselect
   {
     /**
-     * Defines if the select is readOnly
-     * @deprecated Use `aria-readonly` instead.
-     * @default false
-     */
-    readOnly?: boolean;
-    /**
      * Defines the width of Select, where "auto" matches the content width.
      * @default full
      */
@@ -32,14 +26,10 @@ export type SelectProps = MergeRight<
  * </Select>
  */
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  function Select(
-    { className, onKeyDown, onMouseDown, width, readOnly, ...rest },
-    ref,
-  ) {
+  function Select({ className, onKeyDown, onMouseDown, width, ...rest }, ref) {
     return (
       <select
         className={cl('ds-input', className)}
-        aria-readonly={rest['aria-readonly'] ?? readOnly}
         suppressHydrationWarning // Since <ds-field> adds attributes
         data-width={width}
         ref={ref}

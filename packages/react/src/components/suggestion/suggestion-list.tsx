@@ -9,16 +9,6 @@ export type SuggestionListProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDataListElement>,
   {
     /**
-     * The screen reader announcement for singular Suggestion, where %d is the number of Suggestions
-     * @deprecated Please use `data-sr-singular` on `<Suggestion>` instead
-     */
-    singular?: string;
-    /**
-     * The screen reader announcement for plural Suggestions, where %d is the number of Suggestions
-     * @deprecated Please use `data-sr-plural` on `<Suggestion>` instead
-     */
-    plural?: string;
-    /**
      * Whether to enable auto placement.
      * @default true
      */
@@ -41,7 +31,7 @@ export const SuggestionList = forwardRef<
   HTMLDataListElement,
   SuggestionListProps
 >(function SuggestionList(
-  { singular, plural, className, id, autoPlacement = true, ...rest },
+  { className, id, autoPlacement = true, ...rest },
   ref,
 ) {
   const { handleFilter } = useContext(SuggestionContext);
@@ -52,8 +42,6 @@ export const SuggestionList = forwardRef<
     <u-datalist
       class={className} // Using "class" since React does not translate className on custom elements
       data-nofilter
-      data-sr-plural={plural}
-      data-sr-singular={singular}
       popover='manual'
       ref={ref}
       role='listbox' // Is also set by <ds-suggestion> but nice to have to please tests

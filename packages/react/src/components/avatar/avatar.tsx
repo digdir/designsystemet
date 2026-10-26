@@ -1,8 +1,8 @@
 import type { Size } from '@digdir/designsystemet-types';
-import { Slot, Slottable } from '@radix-ui/react-slot';
+import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { forwardRef, isValidElement } from 'react';
+import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -30,24 +30,7 @@ export type AvatarProps = MergeRight<
     /**
      * The size of the avatar.
      */
-    'data-size'?: 'xs' | Size;
-    /**
-     * The shape of the avatar.
-     *
-     * @default 'circle'
-     * @deprecated Please use `style={{ '--dsc-avatar-radius': VALUE }}` instead
-     */
-    variant?: 'circle' | 'square';
-    /**
-     * Initials to display inside the avatar.
-     * @deprecated Please use text content as children instead
-     */
-    initials?: string;
-    /**
-     * Initials to display inside the avatar.
-     * @deprecated Please use text content as children instead
-     */
-    'data-initials'?: string;
+    'data-size'?: Size;
     /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
@@ -77,45 +60,20 @@ export type AvatarProps = MergeRight<
  * </Avatar>
  */
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
-  {
-    'aria-label': label,
-    'data-tooltip': tooltip,
-    'data-initials': dataInitials,
-    children,
-    variant,
-    className,
-    initials: propInitials,
-    asChild,
-    ...rest
-  },
+  { 'aria-label': label, 'data-tooltip': tooltip, className, asChild, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'span';
-  const initials = propInitials ?? dataInitials;
-  const hasSlottedChildren =
-    asChild &&
-    isValidElement<{ children?: ReactNode }>(children) &&
-    children.props.children !== undefined &&
-    children.props.children !== null;
 
   return (
     <Component
       aria-label={label || tooltip}
       className={cl('ds-avatar', className)}
-      data-initials={initials}
       data-tooltip={tooltip}
-      data-variant={variant}
       ref={ref}
       role={asChild ? undefined : 'img'}
       tabIndex={tooltip ? 0 : undefined} // Tooltips require focusability for accessibility
       {...rest}
-    >
-      {asChild
-        ? [
-            <Slottable key='slottable'>{children}</Slottable>,
-            hasSlottedChildren ? null : initials,
-          ]
-        : (children ?? initials)}
-    </Component>
+    />
   );
 });

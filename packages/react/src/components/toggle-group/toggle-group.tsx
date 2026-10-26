@@ -44,21 +44,10 @@ export type ToggleGroupProps = MergeRight<
     name?: string;
   } & (
     | {
-        /**
-         * Toggle group label for accessibility
-         * @deprecated Use aria-label or aria-labelledby instead.
-         */
-        'data-toggle-group'?: string;
-        'aria-label'?: never;
-        'aria-labelledby'?: never;
-      }
-    | {
-        'data-toggle-group'?: never;
         'aria-labelledby'?: never;
         'aria-label': string;
       }
     | {
-        'data-toggle-group'?: never;
         'aria-labelledby': string;
         'aria-label'?: never;
       }
@@ -78,7 +67,6 @@ export type ToggleGroupProps = MergeRight<
 export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
   function ToggleGroup(
     {
-      'data-toggle-group': label,
       children,
       className,
       defaultValue,
@@ -116,7 +104,6 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
         }}
       >
         <fieldset
-          aria-label={label} // Backwards compatible with data-toggle-group, but aria-label is preferred
           className={cl('ds-toggle-group', className)}
           data-variant={variant}
           focusgroup='radiogroup'

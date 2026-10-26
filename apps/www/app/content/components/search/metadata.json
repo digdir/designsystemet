@@ -8,5 +8,5 @@
     "subtitle": "Search allows users to quickly find relevant content on a website or in an application. The component consists of a search field, with or without a search button."
   },
   "image": "Search.svg",
-  "cssFile": "search.css"
+  "cssFile": "suggestion.css"
 }

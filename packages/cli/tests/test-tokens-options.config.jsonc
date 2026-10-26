@@ -1,0 +1,13 @@
+{
+  // Used by `test:tokens-create-options`, which sets the output directory and `clean` with CLI options.
+  "$schema": "../dist/config.schema.json",
+  "themes": {
+    "options": {
+      "colors": {
+        "dominant": "#007682",
+        "neutral": "#003333"
+      },
+      "borderRadius": 99
+    }
+  }
+}

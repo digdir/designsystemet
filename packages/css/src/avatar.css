@@ -52,28 +52,12 @@
     height: 100%;
   }
 
-  /* @deprecated: data-initials is no longer needed since we can place text as direct child of avatar */
-  &[data-initials]:empty::before {
-    content: attr(data-initials);
-  }
-
-  &:not([data-initials]):empty::before {
+  &:empty::before {
     content: '';
     width: 100%;
     height: 100%;
     background: currentcolor;
     forced-color-adjust: none; /* Enable drawing with background property */
     mask: var(--dsc-avatar-icon-url) center / contain no-repeat;
-  }
-
-  /* @deprecated */
-  &[data-variant='square'] {
-    --dsc-avatar-radius: var(--ds-border-radius-sm);
-  }
-
-  /* @deprecated: backwards compatible data-size="xs" */
-  &[data-size='xs'] {
-    --ds-size: var(--ds-size--md);
-    --dsc-avatar-size: var(--ds-size-9);
   }
 }

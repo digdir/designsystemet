@@ -6,11 +6,6 @@ import type { DefaultProps } from '../../types';
 
 export type LabelProps = {
   /**
-   * Adjusts font weight. Use this when you have a label hierarchy, such as checkboxes/radios in a fieldset
-   * @deprecated as field now automatically changes font-weight based on input type
-   */
-  weight?: 'regular' | 'medium' | 'semibold';
-  /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
    */
@@ -22,10 +17,10 @@ export type LabelProps = {
  * Use `Label` for labels. Renders a native `label` element.
  *
  * @example
- * <Label data-size='lg' weight='medium'>Label</Label>
+ * <Label data-size='lg'>Label</Label>
  */
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
-  { className, weight, asChild, ...rest },
+  { className, asChild, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'label';
@@ -35,7 +30,6 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
       ref={ref}
       className={cl('ds-label', className)}
       suppressHydrationWarning // Since <ds-field> will add for attribute dynamically
-      data-weight={weight}
       {...rest}
     />
   );

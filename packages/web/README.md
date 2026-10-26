@@ -85,7 +85,7 @@ Add the package to your `types` for types:
 
 ### Warnings:
 
-`@digdir/designsystemet-web` will warn you about deprecations and missing attributes.
+`@digdir/designsystemet-web` will warn you about missing attributes.
 This can come in handy while developing, but can also easily be hidden, for example in production:
 
 ```ts
@@ -263,7 +263,7 @@ Extends `u-combobox` from u-elements. See documentation for [u-combobox](https:/
   <label>Label</label>
   <ds-suggestion class="ds-suggestion">
     <input type="search" class="ds-input" />
-    <del aria-label="Fjern innhold"></del>
+    <button type="reset" aria-label="Fjern innhold"></button>
     <u-datalist>
       <u-option value="option-1">Option 1</u-option>
       <u-option value="option-2">Option 2</u-option>
@@ -309,7 +309,7 @@ Extends `u-tabs` from u-elements. See documentation for [u-tabs](https://u-eleme
 </fieldset>
 ```
 
-Radio inputs in a `focusgroup="radiogroup"`, like the toggle group above, are handled by `toggle-group`: the arrow keys move focus without selecting, and Enter selects. It also migrates the deprecated `data-toggle-group` attribute to `focusgroup="radiogroup"`, with a warning.
+Radio inputs in a `focusgroup="radiogroup"`, like the toggle group above, are handled by `toggle-group`: the arrow keys move focus without selecting, and Enter selects.
 
 ## `data-tooltip`
 Using a single element for rendering next to elements with `data-tooltip` attribute.

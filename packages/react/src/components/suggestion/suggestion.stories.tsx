@@ -1,7 +1,6 @@
-import { type InputEventHandler, useState } from 'react';
+import { type InputEventHandler, useRef, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import preview from '../../../../../apps/storybook/.storybook/preview';
-import { useDebounceCallback } from '../../utilities';
 import {
   Button,
   Details,
@@ -502,7 +501,11 @@ export const FetchExternal = meta.story({
       );
     };
 
-    const debounced = useDebounceCallback(apiCall, 500);
+    const timeout = useRef<ReturnType<typeof setTimeout>>(undefined);
+    const debounced = (value: string) => {
+      clearTimeout(timeout.current);
+      timeout.current = setTimeout(() => apiCall(value), 500);
+    };
 
     return (
       <Field lang='en'>
@@ -694,26 +697,5 @@ export const WithoutToggleButton = meta.story({
   args: {
     multiple: true,
     creatable: true,
-  },
-});
-
-export const WithDeprecatedDel = meta.story({
-  render: (args) => {
-    return (
-      <Field>
-        <Label>Velg eller legg til en destinasjon</Label>
-        <Suggestion {...args}>
-          <Suggestion.Input />
-          {/** biome-ignore lint/a11y/useSemanticElements: deprecated */}
-          <del role='button' aria-label='Tøm' tabIndex={0} />
-          <Suggestion.List>
-            <Suggestion.Empty />
-            {DATA_PLACES.map((place) => (
-              <Suggestion.Option key={place}>{place}</Suggestion.Option>
-            ))}
-          </Suggestion.List>
-        </Suggestion>
-      </Field>
-    );
   },
 });

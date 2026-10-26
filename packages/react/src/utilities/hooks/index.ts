@@ -1,6 +1,3 @@
-export { useDebounceCallback } from './deprecated/use-debounce-callback/use-debounce-callback';
-export { useIsomorphicLayoutEffect } from './deprecated/use-isomorphic-layout-effect/use-isomorphic-layout-effect';
-export { useMediaQuery } from './deprecated/use-media-query/use-media-query';
 export type { UseCheckboxGroupProps } from './use-checkbox-group/use-checkbox-group';
 export { useCheckboxGroup } from './use-checkbox-group/use-checkbox-group';
 export { useMergeRefs } from './use-merge-refs/use-merge-refs';

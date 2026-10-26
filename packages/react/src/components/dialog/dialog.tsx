@@ -1,4 +1,3 @@
-import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { AnimationEvent, DialogHTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useId, useRef } from 'react';
@@ -46,13 +45,6 @@ export type DialogProps = MergeRight<
      * Callback that is called when the dialog is closed.
      */
     onClose?: (event: Event) => void;
-    /**
-     * Change the default rendered element for the one passed as a child, merging their props and behavior.
-     * @default false
-     *
-     * @deprecated Will be removed in the next major version. Should always be a `<dialog>` element
-     */
-    asChild?: boolean;
   }
 >;
 
@@ -82,14 +74,12 @@ export type DialogProps = MergeRight<
 export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
   function Dialog(
     {
-      asChild,
       children,
       className,
       closeButton = 'Lukk dialogvindu',
       id,
       modal = true,
       onAnimationEnd,
-      onClick,
       onClose,
       open,
       placement = 'center',
@@ -100,7 +90,6 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     const contextRef = useContext(Context);
     const dialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the dialog works without a DialogTriggerContext
     const skipCloseRef = useRef(false); // Needed to skip the onClose event when the dialog is closed programmatically
-    const Component = asChild ? Slot : 'dialog';
     const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
     const autoId = useId();
     const usedId = id ?? autoId;
@@ -115,7 +104,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     }, [open, modal]);
 
     return (
-      <Component
+      <dialog
         suppressHydrationWarning // Since dialog.ts will add aria-label attribute dynamically
         className={cl('ds-dialog', className)}
         data-placement={placement}
@@ -125,19 +114,6 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
           if (event.target !== event.currentTarget) return; // Ignore close events from nested dialogs
           if (!skipCloseRef.current) onClose?.(event.nativeEvent); // Backward compatibility: expose native event
           skipCloseRef.current = false; // Reset skipCloseRef
-        }}
-        onClick={(event) => {
-          onClick?.(event as React.MouseEvent<HTMLDialogElement>);
-          const { currentTarget: dialog, target: el, defaultPrevented } = event;
-          const isClose = (el as Element)?.closest?.('[data-command="close"]');
-          if (!defaultPrevented && isClose) {
-            (dialog as HTMLDialogElement).close();
-
-            if (window.dsWarnings !== false)
-              console.log(
-                'Designsystemet: data-command="close" is deprecated. Use command="close" and commandfor="DIALOG-ID" instead.',
-              );
-          }
         }}
         onAnimationEnd={(event: AnimationEvent<HTMLDialogElement>) => {
           onAnimationEnd?.(event);
@@ -160,7 +136,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
           />
         )}
         {children}
-      </Component>
+      </dialog>
     );
   },
 );

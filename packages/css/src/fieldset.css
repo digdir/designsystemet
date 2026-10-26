@@ -21,11 +21,9 @@
     margin-block: var(--dsc-fieldset-gap) 0;
   }
 
-  & > legend + p /* @deprecated Kept for backwards compatibility */,
   & > [data-field='description'] {
     color: var(--dsc-fieldset-description-color);
   }
-  & > legend + p /* @deprecated Kept for backwards compatibility */,
   & > legend + [data-field='description'] {
     margin-block-start: 0; /* Reset margin for description after legend */
   }
