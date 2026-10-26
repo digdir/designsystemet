@@ -2,50 +2,58 @@
 
 We currently use [changesets](https://github.com/changesets/changesets) and [Changeset bot](https://github.com/apps/changeset-bot) for tracking changes, generating changelogs, and publishing releases.
 
-## 1. Publish new package version
+## Publishing a new package version
 
-***Make sure there are not changeset for `private:true` or ignored `packages/apps` as this will break changesets publish.***
-You will get a `Error: Validation Failed: {"resource":"PullRequest","code":"custom","message":"No commits between main and changeset-release/main"}` error in the Github action.
+***Make sure there are no changesets for `private: true` or ignored packages/apps, as this will break changesets publish.***
+Otherwise you will get an `Error: Validation Failed: {"resource":"PullRequest","code":"custom","message":"No commits between main and changeset-release/main"}` error in the GitHub action.
 
-1. The [Changeset bot](https://github.com/apps/changeset-bot) should pickup changesets (inside `.changeset/`) and generate a PR with bumped version and changelog one a changeset is in `main`.
+1. Once a changeset is in `main`, the [Release workflow](https://github.com/digdir/designsystemet/actions/workflows/release.yml) picks up the changesets (inside `.changeset/`) and opens a PR with bumped versions and changelogs.
 
 2. Approve and merge the PR.
 
-3. The [Changeset bot](https://github.com/apps/changeset-bot) will now publish new a package version to npmjs and create [github releases](https://github.com/digdir/designsystemet/releases). After packages have been published, new version of `www`, `themebuilder` and `storybook` will be published.
+3. The Release workflow will now publish the new package versions to npm and create a [GitHub release](https://github.com/digdir/designsystemet/releases). After the packages have been published, new versions of `www`, `themebuilder` and `storybook` will be published.
 
-4. Verify that new version is available in [npmjs](https://www.npmjs.com/package/@digdir/designsystemet) (under `latest` tag) and on [github releases](https://github.com/digdir/designsystemet/releases)
+4. Verify that the new version is available on [npm](https://www.npmjs.com/package/@digdir/designsystemet) (under the `latest` tag) and on [GitHub releases](https://github.com/digdir/designsystemet/releases).
 
-## Publishing pre-releases
+## Publishing snapshots
 
-When working on new changes we have two ways for testing downstream, choose one depending on features and development needs.
+When working on new changes, you can publish a snapshot of your branch to npm for testing downstream.
 
-1. Manually trigger [Release Snapshot](https://github.com/digdir/designsystemet/actions/workflows/release-snapshot.yml) to publish new version for testing on (`test` or `next`). (We recommend this)
-2. Use [Changesets prerelease mode](https://github.com/changesets/changesets/blob/main/docs/prereleases.md)
+1. Make sure your branch has at least one changeset. Snapshots are versioned from changesets, so nothing is published without one.
+
+2. Manually trigger the [Release workflow](https://github.com/digdir/designsystemet/actions/workflows/release.yml): select your branch under "Use workflow from", keep "Create snapshot release" checked, and choose the npm tag `test` (default) or `next`.
+
+3. The packages are published as `0.0.0-<branch>-<timestamp>` under the chosen tag (slashes in the branch name become dashes). If the branch has an open PR, the workflow comments the published versions on it. Install with, for example, `npm install @digdir/designsystemet-react@test`.
 
 ## Patching older versions
 Backporting a fix to an earlier version is rarely necessary and should generally be avoided. However, if required, the following steps outline how to proceed.
 
-### Backporting Workflow
-Say we have released `1.1.0` and `2.0.0` on main, and we want to backport a patch to the 1.1.x version.
+### Backporting
+Say we have released `1.1.0` and `2.0.0` on `main`, and we want to backport a patch to 1.1.x.
 
-1. Checkout the target version: `git checkout tags/v1.1.0`
+1. Fetch the latest tags: `git fetch --tags`
 
-2. Create a branch for the backport. For clarity, name the branch after the current tagged versions on the form `backport/major.minor.x`. `git checkout -b backport/1.1.x`
+2. Create a branch for the backport from the target version's tag. For clarity, name the branch after the tagged version in the form `backport/major.minor.x`:
+   ```sh
+   git switch -c backport/1.1.x v1.1.0
+   ```
 
-3. Apply your changes by cherry-picking from the future or make new commits. Commits added can only be `fix`, `chore`, or `docs`. This ensures that the backport triggers a patch release and avoids any unintended major or minor version bumps.
+3. Apply your changes by making new commits or cherry-picking commits from `main`. If you changed versioned code (the published packages):
+   1. Generate a changeset: `pnpm changeset`
+   2. Verify that the changeset is a patch bump.
 
-4. Generate a changeset: `pnpm changeset`
+4. Push: `git push origin backport/1.1.x`
 
-5. Verify that Changesets has made a patch release
+5. Release or deploy your changes:
+   - **If you changed versioned code:** Trigger the [Release workflow](https://github.com/digdir/designsystemet/actions/workflows/release.yml) manually on your branch (`backport/1.1.x` in this example) with "Create snapshot release" unchecked, both to open the release PR and again after merging it to publish. This also deploys `www`, `themebuilder` and `storybook`.
+   - **If you only changed unversioned code:** Skip the release and deploy only what you changed. Trigger [Deploy www](https://github.com/digdir/designsystemet/actions/workflows/deploy-www.yml), [Deploy themebuilder](https://github.com/digdir/designsystemet/actions/workflows/deploy-themebuilder.yml) or [Deploy storybook](https://github.com/digdir/designsystemet/actions/workflows/deploy-storybook.yml) manually on your branch with the environment set to `production`.
 
-6. Push: `git push origin backport/1.1.x`
-
-7. Manually trigger the [Release workflow](https://github.com/digdir/designsystemet/actions/workflows/release.yml) on your branch, (`backport/1.1.x` in this example).
-
-8. Continue making patches, if needed. You can continue to work on the branch if you need to make new patches to 1.1.x.
+6. Continue making patches if needed. You can keep working on the branch if you need to make new patches to 1.1.x.
 
 ### Should I merge the backport into main?
-Usually not. Backported fixes are meant for older versions and might be incompatible with main (which may already have breaking changes). Instead:
+It depends. Changes to parts that are not versioned, such as blog posts or patterns, may also be needed on `main`, so review whether they should be merged.
 
-- Ensure the original fix exists in main before backporting.
-- If main is missing the fix, apply it separately in a way that aligns with new changes.
+Fixes to versioned code are usually not merged, because they are meant for older versions and might be incompatible with `main` (which may already have breaking changes). Instead:
+
+- Ensure the original fix exists in `main` before backporting.
+- If `main` is missing the fix, apply it separately in a way that aligns with the new changes.
