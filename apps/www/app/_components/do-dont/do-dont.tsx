@@ -1,8 +1,9 @@
 import * as ds from '@digdir/designsystemet-react';
 import * as aksel from '@navikt/aksel-icons';
-import type { HTMLAttributes, ReactNode } from 'react';
+import { type HTMLAttributes, type ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LiveError, LivePreview, LiveProvider } from 'react-live';
+import { renderStoryHtml } from '~/_utils/render-story';
 import classes from './do-dont.module.css';
 
 const scopes = {
@@ -25,6 +26,7 @@ export const DoDont = ({
   ...rest
 }: doDontProps) => {
   const { t } = useTranslation();
+  const [html] = useState(() => renderStoryHtml(code, scopes));
   return (
     <div
       className={classes.dodont}
@@ -51,6 +53,11 @@ export const DoDont = ({
       <div data-documentation-code-block hidden>
         <pre>
           <code className='language-tsx'>{code}</code>
+        </pre>
+      </div>
+      <div data-documentation-code-block hidden>
+        <pre>
+          <code className='language-html'>{html}</code>
         </pre>
       </div>
       <LiveProvider code={code} scope={scopes} noInline disabled>
