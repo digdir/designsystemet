@@ -116,6 +116,15 @@ function extractMainContent(html, pageUrl) {
     el.remove();
   }
 
+  for (const grid of content.querySelectorAll('[data-is-main="true"]')) {
+    const links = grid.querySelectorAll('a[href]');
+    if (links.length > 0) {
+      grid.replaceWith(
+        `<ul>${links.map((link) => `<li>${link.outerHTML}</li>`).join('')}</ul>`,
+      );
+    }
+  }
+
   // ── Remove UI chrome ──────────────────────────────────────────────
   const removeSelectors = [
     'nav',
