@@ -92,11 +92,7 @@ export const TableCard = () => {
                       gap: '12px',
                     }}
                   >
-                    <Avatar
-                      aria-label={user.name}
-                      variant='circle'
-                      className={classes.avatar}
-                    >
+                    <Avatar aria-label={user.name} className={classes.avatar}>
                       <img src={user.avatar} alt='' />
                     </Avatar>
                     {user.name}
