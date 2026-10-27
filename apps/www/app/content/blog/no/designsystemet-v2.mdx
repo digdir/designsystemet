@@ -1,0 +1,68 @@
+---
+title: Designsystemet v2 er her
+description: En ny Figma-plugin, én kommando for temaet ditt i kode, dempede farger, og en opprydding i alt som ble utfaset i v1.
+date: 2026-10-27
+author: Designsystemet
+---
+
+Designsystemet v2 gjør det enklere å få temaet ditt fra Temabyggeren inn i Figma og kode. I tillegg får alle fargeskalaer nye dempede farger, og alt som er markert som utgått i v1, blir fjernet.
+
+## Temaet ditt i Figma med én opplasting
+
+Sett opp temaet ditt i [Temabyggeren](https://theme.designsystemet.no), og last opp config-filen til den nye Designsystemet-pluginen. Den lager alle variablene og stilene som komponentene i Figma-filen til Designsystemet bruker.
+
+- Importer på nytt når temaet endres. Bare det som er endret, blir oppdatert, og lagene som bruker variablene og stilene, forblir koblet.
+- Pluginen endrer bare det den har laget selv, så dine egne variabler og stiler blir værende.
+- Variabler i Figma viser korrekt CSS-variabel for utviklere i Dev Mode.
+
+Hent pluginen i [Figma Community](https://www.figma.com/community/plugin/1687841992393312960/designsystemet), og les mer i [dokumentasjonen for Figma-pluginen](/no/fundamentals/figma/plugin).
+
+## Flere temaer i én config
+
+I Temabyggeren kan du nå jobbe med flere temaer i én config-fil, for eksempel for ulike tjenester eller merkevarer. Bytt mellom dem med **Tema**-menyen, og legg til, gi nytt navn til eller slett temaer under **Rediger temaer**. **Ta i bruk tema** gir deg config-filen med alle temaene, klar for Figma-pluginen og CLI-et.
+
+## Én kommando for temaet ditt i kode
+
+Kjør denne i mappen med `designsystemet.config.json`:
+
+```bash
+npx @digdir/designsystemet@latest
+```
+
+Dette lager CSS for alle temaene i config-filen. Med `output`-feltet i config-filen velger du selv hva CLI-et lager, og hvor: CSS, typedeklarasjoner, Design Tokens og Tailwind-filer. Se [dokumentasjonen for CLI-et](/no/fundamentals/code/cli-config#output) for alle valgmuligheter.
+
+Les mer om pluginen, Temabyggeren og CLI-et i [Ny Figma-plugin, og én kommando for temaet ditt](/no/blog/figma-plugin-and-cli).
+
+## Dempede farger
+
+Alle fargeskalaer har fått tre nye farger, og har nå 19 i stedet for 16:
+
+- `surface-muted`: en versjon av `surface-tinted` med lav fargemetning
+- `border-muted`: en versjon av `border-default` med lav fargemetning
+- `text-muted`: en versjon av `text-subtle` med lav fargemetning
+
+De dempede fargene har samme kontrast som fargene de bygger på, men med bare et hint av farge. Slik får du dempede flater, rammer og tekst i samme fargetone som resten av komponenten, uten at du trenger en egen nøytral fargeskala.
+
+Komponentene bruker nå de dempede fargene der de før brukte `neutral`. Det betyr at:
+
+- `neutral` ikke lenger er påkrevd i temaet ditt. Et tema må ha minst én farge som ikke er en severity-farge (`success`, `warning`, `danger` eller `info`).
+- komponenter som `Dialog` og `Tooltip` nå følger `data-color` som de andre komponentene, i stedet for å alltid være nøytrale.
+
+Les mer om fargene i [dokumentasjonen for farger](/no/fundamentals/theme/colors).
+
+## Oppgradere til v2
+
+1. **Fjern utgått kode.** v2 fjerner alt som er markert som utgått i v1. Se [Gjør deg klar for Designsystemet v2](/no/blog/preparing-for-v2) for hele listen og erstatningene.
+2. **Oppgrader** alle `@digdir/designsystemet*`-pakkene til v2.
+3. **Lag temaet ditt på nytt** med `npx @digdir/designsystemet@latest`, så CSS-en din får med de dempede fargene som komponentene bruker.
+4. **Importer temaet ditt på nytt** med Figma-pluginen for å få de dempede fargene i Figma.
+
+## Spørsmål?
+
+Ta kontakt med oss på [Slack](https://designsystemet.no/slack) eller opprett en sak på [GitHub (github.com)](https://github.com/digdir/designsystemet/issues) hvis du står fast eller mener vi har glemt noe.
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+  ]}
+/>
