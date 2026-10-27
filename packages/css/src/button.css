@@ -11,6 +11,7 @@
   --dsc-button-color: var(--ds-color-base-contrast-default);
   --dsc-button-gap: var(--ds-size-2);
   --dsc-button-loading-icon-color: currentColor;
+  --dsc-button-loading-icon-display: block;
   --dsc-button-loading-icon-url: var(--ds-icon-spinner);
   --dsc-button-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-button-size: var(--ds-size-12);
@@ -104,6 +105,7 @@
     cursor: progress;
   }
   &[aria-busy='true']::before {
+    display: var(--dsc-button-loading-icon-display); /* Allowing the consumer to set --dsc-button-loading-icon-display: none to hide spinner */
     @composes ds-icon from './base.css';
     forced-color-adjust: none;
     background: var(--dsc-button-loading-icon-color);
