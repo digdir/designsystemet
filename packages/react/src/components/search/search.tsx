@@ -28,7 +28,7 @@ export const Search = forwardRef<DSSuggestionElement, SearchProps>(
     return (
       <ds-suggestion
         ref={ref}
-        class={cl('ds-suggestion', className)}
+        class={cl('ds-search', className)}
         suppressHydrationWarning // Since <ds-suggestion> adds attributes
         {...rest}
       />
