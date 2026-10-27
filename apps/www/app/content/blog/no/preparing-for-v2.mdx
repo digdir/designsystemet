@@ -15,9 +15,9 @@ Bruker du ingen av de utgåtte løsningene, blir oppgraderingen enkel.
 2. **Se etter advarsler.** TypeScript stryker over utgåtte props og eksporter i editoren din. React- og web-pakken skriver advarsler i konsollen, og CLI-en skriver advarsler i terminalen.
 3. **Bytt til erstatningene** i listen under. Alt du ser i listen fungerer allerede i v1, så du kan gjøre endringene nå og oppgradere til v2 uten flere endringer. Eneste unntak er `AvatarStack`, som får nytt navn i v2.
 
-## Dette fjernes i v2
+## Dette endres i v2
 
-### React (`@digdir/designsystemet-react`)
+### `@digdir/designsystemet-react`
 
 **Komponenter og hjelpefunksjoner**
 
@@ -41,7 +41,7 @@ Bruker du ingen av de utgåtte løsningene, blir oppgraderingen enkel.
 - **ToggleGroup:** `data-toggle-group` erstattes av `aria-label` eller `aria-labelledby`. `icon` på `ToggleGroup.Item` fjernes.
 - **Tooltip:** `open` fjernes, bruk [`Popover`](/no/components/docs/popover/overview) i stedet. `type` fjernes, fordi den ikke har noen effekt.
 
-### CSS (`@digdir/designsystemet-css`)
+### `@digdir/designsystemet-css`
 
 - `.ds-skiplink` erstattes av `.ds-skip-link`, og `.ds-togglegroup` erstattes av `.ds-toggle-group`.
 - Enkeltfilen `search.css` erstattes av `suggestion.css`, og `--dsc-search-*`-variablene erstattes av tilsvarende `--dsc-suggestion-*`-variabler.
@@ -55,11 +55,11 @@ Bruker du ingen av de utgåtte løsningene, blir oppgraderingen enkel.
 - **Dialog:** Lukkeknappen må bruke `command="close"`. Den eldre `<form method="dialog">`-varianten fjernes.
 - **Pagination og ToggleGroup:** Aktivt element får ikke lenger egen stil når du setter `data-variant="tertiary"` manuelt.
 
-### Web (`@digdir/designsystemet-web`)
+### `@digdir/designsystemet-web`
 
 - `data-toggle-group` erstattes av `focusgroup="radiogroup"` med `aria-label`.
 
-### CLI og typer (`@digdir/designsystemet`)
+### `@digdir/designsystemet`
 
 - CLI-valgene `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` og `--theme` fjernes. Bruk en [konfigurasjonsfil](/no/fundamentals/start-here/own-theme).
 - `@digdir/designsystemet/types` erstattes av `@digdir/designsystemet-types`.

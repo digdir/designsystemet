@@ -15,9 +15,9 @@ If you don't use any of the deprecated features, upgrading will be easy.
 2. **Look for warnings.** TypeScript strikes through deprecated props and exports in your editor. The React and web packages log warnings in the console, and the CLI prints warnings in the terminal.
 3. **Switch to the replacements** in the list below. Everything in the list already works in v1, so you can make the changes now and upgrade to v2 without further changes. The only exception is `AvatarStack`, which gets its new name in v2.
 
-## What is removed in v2
+## What changes in v2
 
-### React (`@digdir/designsystemet-react`)
+### `@digdir/designsystemet-react`
 
 **Components and utilities**
 
@@ -41,7 +41,7 @@ If you don't use any of the deprecated features, upgrading will be easy.
 - **ToggleGroup:** `data-toggle-group` is replaced by `aria-label` or `aria-labelledby`. `icon` on `ToggleGroup.Item` is removed.
 - **Tooltip:** `open` is removed, use a [`Popover`](/en/components/docs/popover/overview) instead. `type` is removed because it has no effect.
 
-### CSS (`@digdir/designsystemet-css`)
+### `@digdir/designsystemet-css`
 
 - `.ds-skiplink` is replaced by `.ds-skip-link`, and `.ds-togglegroup` is replaced by `.ds-toggle-group`.
 - The individual `search.css` file is replaced by `suggestion.css`, and the `--dsc-search-*` variables are replaced by the matching `--dsc-suggestion-*` variables.
@@ -55,11 +55,11 @@ If you don't use any of the deprecated features, upgrading will be easy.
 - **Dialog:** The close button must use `command="close"`. The older `<form method="dialog">` variant is removed.
 - **Pagination and ToggleGroup:** The active element no longer gets its own styling when you set `data-variant="tertiary"` manually.
 
-### Web (`@digdir/designsystemet-web`)
+### `@digdir/designsystemet-web`
 
 - `data-toggle-group` is replaced by `focusgroup="radiogroup"` with `aria-label`.
 
-### CLI and types (`@digdir/designsystemet`)
+### `@digdir/designsystemet`
 
 - The CLI options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme` are removed. Use a [config file](/en/fundamentals/start-here/own-theme).
 - `@digdir/designsystemet/types` is replaced by `@digdir/designsystemet-types`.
