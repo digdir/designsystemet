@@ -105,11 +105,11 @@
     cursor: progress;
   }
   &[aria-busy='true']::before {
-    display: var(--dsc-button-loading-icon-display); /* Allowing the consumer to set --dsc-button-loading-icon-display: none to hide spinner */
     @composes ds-icon from './base.css';
-    forced-color-adjust: none;
     background: var(--dsc-button-loading-icon-color);
     content: '';
+    display: var(--dsc-button-loading-icon-display); /* Allowing the consumer to set --dsc-button-loading-icon-display: none to hide spinner */
+    forced-color-adjust: none;
     mask: center / contain no-repeat var(--dsc-button-loading-icon-url);
   }
   &[aria-busy='true'][data-icon] > * {
