@@ -20,3 +20,4 @@ export const Text = stories.Text.extend(forcedColors);
 export const Checkbox = stories.Checkbox.extend(forcedColors);
 export const Switch = stories.Switch.extend(forcedColors);
 export const Radio = stories.Radio.extend(forcedColors);
+export const Range = stories.Range.extend(forcedColors);
