@@ -10,6 +10,8 @@
   --dsc-button-color--hover: var(--dsc-button-color);
   --dsc-button-color: var(--ds-color-base-contrast-default);
   --dsc-button-gap: var(--ds-size-2);
+  --dsc-button-loading-icon-color: currentColor;
+  --dsc-button-loading-icon-url: var(--ds-icon-spinner);
   --dsc-button-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-button-size: var(--ds-size-12);
 
@@ -100,6 +102,16 @@
 
   &[aria-busy='true'] {
     cursor: progress;
+  }
+  &[aria-busy='true']::before {
+    @composes ds-icon from './base.css';
+    forced-color-adjust: none;
+    background: var(--dsc-button-loading-icon-color);
+    content: '';
+    mask: center / contain no-repeat var(--dsc-button-loading-icon-url);
+  }
+  &[aria-busy='true'][data-icon] > * {
+    @composes ds-sr-only from './base.css'; /* Hide content when icon-button with spinner */
   }
 
   &:is(:disabled, [aria-disabled='true'], [readonly], [aria-readonly='true'], label:has(input[readonly])) {
