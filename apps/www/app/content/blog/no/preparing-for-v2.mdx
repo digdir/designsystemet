@@ -13,7 +13,7 @@ Bruker du ingen av de utgåtte løsningene, blir oppgraderingen enkel.
 
 1. **Oppgrader til siste 1.x-versjon** av alle `@digdir/designsystemet*`-pakkene.
 2. **Se etter advarsler.** TypeScript stryker over utgåtte props og eksporter i editoren din. React- og web-pakken skriver advarsler i konsollen, og CLI-en skriver advarsler i terminalen.
-3. **Bytt til erstatningene** i listen under. Alt du ser i listen fungerer allerede i v1, så du kan gjøre endringene nå og oppgradere til v2 uten flere endringer.
+3. **Bytt til erstatningene** i listen under. Alt du ser i listen fungerer allerede i v1, så du kan gjøre endringene nå og oppgradere til v2 uten flere endringer. Eneste unntak er `AvatarStack`, som får nytt navn i v2.
 
 ## Dette fjernes i v2
 
@@ -21,6 +21,7 @@ Bruker du ingen av de utgåtte løsningene, blir oppgraderingen enkel.
 
 **Komponenter og hjelpefunksjoner**
 
+- `EXPERIMENTAL_AvatarStack` får nytt navn, `AvatarStack`, fordi komponenten ikke lenger er eksperimentell. Endre importen når du oppgraderer til v2.
 - `Combobox`: bruk [`Suggestion`](/no/components/docs/suggestion/overview).
 - `RovingFocusRoot` og `RovingFocusItem`: bruk attributtet [`focusgroup`](/no/components/utilities/focusgroup).
 - `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` og typen `MergeRight`: bruk et eget hjelpebibliotek eller lag din egen funksjon.
@@ -43,11 +44,14 @@ Bruker du ingen av de utgåtte løsningene, blir oppgraderingen enkel.
 ### CSS (`@digdir/designsystemet-css`)
 
 - `.ds-skiplink` erstattes av `.ds-skip-link`, og `.ds-togglegroup` erstattes av `.ds-toggle-group`.
-- `.ds-search` og enkeltfilen `search.css` erstattes av `.ds-suggestion` og `suggestion.css`.
+- Enkeltfilen `search.css` erstattes av `suggestion.css`, og `--dsc-search-*`-variablene erstattes av tilsvarende `--dsc-suggestion-*`-variabler.
 - **Avatar:** `data-initials`, `data-variant="square"` og `data-size="xs"` fjernes.
 - **Label:** `data-weight` fjernes.
 - **Details:** Den feilstavede variabelen `--dsc-details-border-block-wdith` erstattes av `--dsc-details-border-block-width`.
 - **Field og Fieldset:** En `<p>` rett etter `<label>` eller `<legend>` blir ikke lenger stilt som beskrivelse. Bruk `data-field="description"`.
+- **Link:** Variabelen `--dsc-link-background--active` fjernes.
+- **Suggestion:** Det gamle `<del>`-elementet for tømming støttes ikke lenger. Bruk `<button type="reset">` (`Suggestion.Clear` i React).
+- **ToggleGroup:** Variabelen `--dsc-togglegroup-label` fjernes. Bruk `aria-label` eller `aria-labelledby`.
 - **Dialog:** Lukkeknappen må bruke `command="close"`. Den eldre `<form method="dialog">`-varianten fjernes.
 - **Pagination og ToggleGroup:** Aktivt element får ikke lenger egen stil når du setter `data-variant="tertiary"` manuelt.
 

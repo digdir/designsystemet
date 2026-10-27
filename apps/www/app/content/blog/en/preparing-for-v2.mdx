@@ -13,7 +13,7 @@ If you don't use any of the deprecated features, upgrading will be easy.
 
 1. **Upgrade to the latest 1.x version** of all `@digdir/designsystemet*` packages.
 2. **Look for warnings.** TypeScript strikes through deprecated props and exports in your editor. The React and web packages log warnings in the console, and the CLI prints warnings in the terminal.
-3. **Switch to the replacements** in the list below. Everything in the list already works in v1, so you can make the changes now and upgrade to v2 without further changes.
+3. **Switch to the replacements** in the list below. Everything in the list already works in v1, so you can make the changes now and upgrade to v2 without further changes. The only exception is `AvatarStack`, which gets its new name in v2.
 
 ## What is removed in v2
 
@@ -21,6 +21,7 @@ If you don't use any of the deprecated features, upgrading will be easy.
 
 **Components and utilities**
 
+- `EXPERIMENTAL_AvatarStack` is renamed to `AvatarStack`, because the component is no longer experimental. Change the import when you upgrade to v2.
 - `Combobox`: use [`Suggestion`](/en/components/docs/suggestion/overview).
 - `RovingFocusRoot` and `RovingFocusItem`: use the [`focusgroup`](/en/components/utilities/focusgroup) attribute.
 - `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` and the `MergeRight` type: use a utility library or write your own function.
@@ -43,11 +44,14 @@ If you don't use any of the deprecated features, upgrading will be easy.
 ### CSS (`@digdir/designsystemet-css`)
 
 - `.ds-skiplink` is replaced by `.ds-skip-link`, and `.ds-togglegroup` is replaced by `.ds-toggle-group`.
-- `.ds-search` and the individual `search.css` file are replaced by `.ds-suggestion` and `suggestion.css`.
+- The individual `search.css` file is replaced by `suggestion.css`, and the `--dsc-search-*` variables are replaced by the matching `--dsc-suggestion-*` variables.
 - **Avatar:** `data-initials`, `data-variant="square"` and `data-size="xs"` are removed.
 - **Label:** `data-weight` is removed.
 - **Details:** The misspelled variable `--dsc-details-border-block-wdith` is replaced by `--dsc-details-border-block-width`.
 - **Field and Fieldset:** A `<p>` directly after a `<label>` or `<legend>` is no longer styled as a description. Use `data-field="description"`.
+- **Link:** The variable `--dsc-link-background--active` is removed.
+- **Suggestion:** The old `<del>` element for clearing is no longer supported. Use `<button type="reset">` (`Suggestion.Clear` in React).
+- **ToggleGroup:** The variable `--dsc-togglegroup-label` is removed. Use `aria-label` or `aria-labelledby`.
 - **Dialog:** The close button must use `command="close"`. The older `<form method="dialog">` variant is removed.
 - **Pagination and ToggleGroup:** The active element no longer gets its own styling when you set `data-variant="tertiary"` manually.
 
