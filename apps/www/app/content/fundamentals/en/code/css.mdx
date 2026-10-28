@@ -1,7 +1,7 @@
 ---
 title: CSS
 description: Get started with CSS including layers, data attributes and helpers.
-date: 2026-09-28
+date: 2026-10-20
 category: Code
 color: blue
 icon: CodeIcon
@@ -53,8 +53,7 @@ Used to change the typography of the components. Possible values are `primary` a
 
 A common use for this attribute is when you want a monospace font on tables.
 
-Which typography is associated with `primary` or `secondary` must be defined in the team, using [Tokens Studio](https://tokens.studio/)
-(with the Designsystemet design-tokens) or [Theme Builder](https://theme.designsystemet.no/en).
+The config file sets one font, used for both `primary` and `secondary`. To use a different font for `secondary`, edit the Design Tokens and sync them with Figma using Tokens Studio. See [Sync Design Tokens with Tokens Studio](/en/fundamentals/figma/tokens-studio).
 
 If you are going to use this attribute, you must remember to define `font-family` to use the `--ds-font-family` CSS variable.
 
