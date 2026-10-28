@@ -1,6 +1,5 @@
 import type { ColorScale, ColorScheme, CssColor, SemanticColorNames } from '../../../../colors/index.ts';
 import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
-import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
@@ -88,9 +87,6 @@ export const generateColorScheme = (
 ): TokenSet => {
   const colorScales = getThemeColorScales({ colors, overrides }, colorScheme);
 
-  const defaultLinkVisitedToken = generateColorScale(visitedLinkColor, colorScheme)['base-default'].hex;
-  const linkOverride = overrides?.linkVisited?.[colorScheme];
-
   const defaultFocusInner = colorScales.neutral['background-default'].hex;
   const defaultFocusOuter = colorScales.neutral['text-default'].hex;
 
@@ -105,9 +101,6 @@ export const generateColorScheme = (
   return {
     [themeName]: {
       ...colorNumberTokens,
-      link: {
-        visited: toColorToken(linkOverride || defaultLinkVisitedToken),
-      },
       focus: {
         inner: toColorToken(focusInnerOverride || defaultFocusInner),
         outer: toColorToken(focusOuterOverride || defaultFocusOuter),

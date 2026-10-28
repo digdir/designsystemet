@@ -60,7 +60,6 @@ describe('exportConfig', () => {
             },
             danger: { 'text-subtle': { light: '#8a1c1c' } },
           },
-          linkVisited: { light: '#551a8b' },
           focus: { outer: { dark: '#ffffff' } },
         },
       },

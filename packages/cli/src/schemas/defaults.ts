@@ -3,7 +3,6 @@ import type { CssColor, SeverityColorNames } from '../colors/index.ts';
 // Separate const defaults to avoid circular dependency issues with the Theme type
 export const defaultFontFamily = 'Inter';
 export const defaultBorderRadius = 4;
-export const visitedLinkColor = '#663299';
 
 export const severityColors: Record<SeverityColorNames, CssColor> = {
   info: '#0A71C0',
