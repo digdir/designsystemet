@@ -1,0 +1,54 @@
+---
+title: Ny Figma-plugin, og én kommando for temaet ditt
+description: Fra Temabyggeren til Figma med én opplasting! I tillegg håndterer Temabyggeren flere temaer i én config, og CLI-et lager CSS-en din med én kommando.
+date: 2026-10-20
+author: Designsystemet
+imageSrc: /img/blog/figma-plugin-and-cli/figma-plugin-and-cli.webp
+imageAlt: Logoen til Designsystemet, med en pil til et plugin-vindu med farger, teksteksempler og en importknapp, og videre til Figma-logoen
+---
+
+
+Med en helt ny Figma-plugin kan du få temaet ditt inn i Figma med én opplasting. I tillegg har det blitt enklere å jobbe med temaer i Temabyggeren og i kode: Du kan nå ha flere temaer i én config, og CLI-et lager CSS-en din med én kommando.
+
+## Temaet ditt i Figma med én opplasting
+
+Sett opp temaet ditt i [Temabyggeren](https://theme.designsystemet.no), og last opp config-filen til Designsystemet-pluginen. Den lager alle variablene og stilene som komponentene i Figma-filen til Designsystemet bruker.
+
+- Importer på nytt når temaet endres. Bare det som er endret, blir oppdatert, så du raskt kan prøve deg fram med temaet ditt i Figma. Lagene som bruker variablene og stilene, forblir koblet.
+- Pluginen endrer bare det den har laget selv, så dine egne variabler og stiler blir værende.
+- Variabler i Figma viser korrekt CSS-variabel for utviklere i Dev Mode.
+- Etter en import får du en liste over hva som ble laget, oppdatert og slettet.
+
+Hent pluginen i [Figma Community](https://www.figma.com/community/plugin/1687841992393312960/designsystemet), og les mer i [dokumentasjonen for Figma-pluginen](/no/fundamentals/figma/plugin).
+
+## Flere temaer i Temabyggeren
+
+Mange virksomheter trenger mer enn ett tema, for eksempel for ulike tjenester eller merkevarer. Nå kan du jobbe med alle i én config i Temabyggeren:
+
+- Klikk **Importer config**, lim inn config-filen, og velg temaet du vil starte med. De andre temaene blir med.
+- Bytt mellom temaer med **Tema**-menyen i verktøylinjen.
+- Legg til, gi nytt navn til og slett temaer under **Rediger temaer**. Et nytt tema starter som en kopi av det du står i.
+- Når du legger til, gir nytt navn til eller sletter en farge, skjer det i alle temaene, mens hvert tema beholder sine egne fargeverdier.
+- **Ta i bruk tema** gir deg config-filen med alle temaene, klar for Figma-pluginen og CLI-et, og du velger hvilket tema du vil se eller laste ned CSS-en for.
+
+## Én kommando for temaet ditt i kode
+
+Til nå har det tatt to kommandoer å få et tema inn i koden, `tokens create` og `tokens build`, med hver sine valg. Nå holder det med én kommando. Kjør den i mappen med `designsystemet.config.json`:
+
+```bash
+npx @digdir/designsystemet@latest
+```
+
+Dette lager CSS for alle temaene i config-filen, i en mappe som heter `designsystemet`. Med det nye `output`-feltet i config-filen velger du selv hva CLI-et lager, og hvor: CSS, typedeklarasjoner, Design Tokens og Tailwind-filer. Se [dokumentasjonen for CLI-et](/no/fundamentals/code/cli-config#output) for alle valgmuligheter.
+
+Design Tokens er nå valgfrie, siden pluginen henter temaene dine direkte fra config-filen. Vil du endre verdier som config-filen ikke støtter ennå, kan du fortsatt redigere Design Tokens og [synkronisere dem med Figma ved hjelp av Tokens Studio](/no/fundamentals/figma/tokens-studio).
+
+### Bruker du tokens create og tokens build i dag?
+
+`tokens create` og `tokens build` virker fortsatt, men de er utfaset og blir fjernet i en senere versjon. Du trenger ikke endre config-filen for hånd: når du kjører `designsystemet` med en config-fil som bruker de gamle feltene `outDir` eller `clean`, tilbyr CLI-et å oppdatere den for deg. Når du har sjekket at du ikke trenger Design Tokens, kan du fjerne `"design-tokens"` fra `output`. Les mer om [migrering fra outDir og clean](/no/fundamentals/code/cli-config#migrere-frå-outdir-og-clean).
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+  ]}
+/>
