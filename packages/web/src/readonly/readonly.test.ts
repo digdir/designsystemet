@@ -87,4 +87,48 @@ describe('readonly behavior', () => {
 
     expect(event.defaultPrevented).toBe(true);
   });
+
+  it('prevents keyboard, mousedown and touchstart on readonly range', () => {
+    document.body.innerHTML = `<input id="range" type="range" readonly />`;
+
+    const range = document.getElementById('range') as HTMLInputElement;
+    const events = [
+      new KeyboardEvent('keydown', {
+        key: 'ArrowRight',
+        bubbles: true,
+        cancelable: true,
+      }),
+      new MouseEvent('mousedown', { bubbles: true, cancelable: true }),
+      new Event('touchstart', { bubbles: true, cancelable: true }),
+    ];
+    for (const event of events) range.dispatchEvent(event);
+
+    const tab = new KeyboardEvent('keydown', {
+      key: 'Tab',
+      bubbles: true,
+      cancelable: true,
+    });
+    range.dispatchEvent(tab);
+
+    expect(events.map((event) => event.defaultPrevented)).toEqual([
+      true,
+      true,
+      true,
+    ]);
+    expect(tab.defaultPrevented).toBe(false);
+    expect(document.activeElement).toBe(range);
+  });
+
+  it('does not prevent interaction on editable range', () => {
+    document.body.innerHTML = `<input id="range" type="range" />`;
+
+    const range = document.getElementById('range') as HTMLInputElement;
+    const event = new MouseEvent('mousedown', {
+      bubbles: true,
+      cancelable: true,
+    });
+    range.dispatchEvent(event);
+
+    expect(event.defaultPrevented).toBe(false);
+  });
 });

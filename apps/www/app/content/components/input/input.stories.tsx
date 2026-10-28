@@ -194,6 +194,7 @@ export const InputType = () => {
           <Select.Option value='time'>time</Select.Option>
           <Select.Option value='url'>url</Select.Option>
           <Select.Option value='week'>week</Select.Option>
+          <Select.Option value='range'>range</Select.Option>
         </Select>
       </Field>
       <ArrowRightIcon aria-hidden width='3rem' height='3rem' />
