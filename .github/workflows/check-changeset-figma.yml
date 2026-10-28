@@ -1,0 +1,80 @@
+# Changes made in the Figma UI kit aren't in git, so nothing else reminds us to add a changeset for them.
+# PRs labeled "🎨 figma" must have a figma-ui-kit changeset. Other PRs that change component styles or
+# tokens get a comment asking whether Figma needs the same change.
+name: Has Figma changeset
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+
+permissions:
+  contents: read
+  pull-requests: write
+
+env:
+  FIGMA_LABEL: 🎨 figma
+  COMMENT_MARKER: <!-- figma-changeset-reminder -->
+
+jobs:
+  checks:
+    name: if changes are made in Figma
+    runs-on: ubuntu-latest
+    # The changesets release PR consumes (deletes) all changesets, so it never has any
+    if: ${{ github.head_ref != 'changeset-release/main' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Look for a figma-ui-kit changeset
+        id: check
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+        run: bash ./.github/workflows/scripts/check-changeset-figma.sh
+
+      - name: Require a figma-ui-kit changeset
+        if: ${{ contains(github.event.pull_request.labels.*.name, env.FIGMA_LABEL) && steps.check.outputs.has-changeset != 'true' }}
+        run: |
+          echo "::error::This PR is labeled \"$FIGMA_LABEL\", but has no changeset for figma-ui-kit. Run \`pnpm changeset\` and select figma-ui-kit to describe the change in Figma, or remove the label."
+          exit 1
+
+      # PRs from forks can't comment, as their token is read-only
+      - name: Find reminder comment
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4.0.0
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: github-actions[bot]
+          body-includes: ${{ env.COMMENT_MARKER }}
+
+      - name: Remind about Figma
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository && steps.check.outputs.changes-styles == 'true' && steps.check.outputs.has-changeset != 'true' && !contains(github.event.pull_request.labels.*.name, env.FIGMA_LABEL) }}
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5.0.0
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            ${{ env.COMMENT_MARKER }}
+            🎨 **Does this need the same change in Figma?**
+
+            This PR changes component styles or tokens. If the Figma UI kit needs the same change, make it in Figma, run `pnpm changeset` and select `figma-ui-kit` to describe it, and add the `${{ env.FIGMA_LABEL }}` label.
+
+            If Figma doesn't need a change, you can ignore this comment.
+
+      - name: Resolve reminder
+        if: ${{ steps.fc.outputs.comment-id != '' && steps.check.outputs.has-changeset == 'true' }}
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5.0.0
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            ${{ env.COMMENT_MARKER }}
+            🎨 ✅ This PR has a changeset for `figma-ui-kit`.
