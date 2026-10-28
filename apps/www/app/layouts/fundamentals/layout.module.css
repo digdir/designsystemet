@@ -33,10 +33,20 @@
     margin-bottom: var(--ds-size-3);
     margin-top: var(--ds-size-10);
   }
-  > p {
+
+  > p,
+  ds-tabs ul,
+  ds-tabs li,
+  ds-tabs p {
     margin-bottom: var(--ds-size-4);
     &:empty {
       display: none;
     }
+  }
+  ds-tabs h3 {
+    margin-bottom: var(--ds-size-3);
+  }
+  ds-tabs > ds-tabpanel {
+    padding-inline: 0;
   }
 }
