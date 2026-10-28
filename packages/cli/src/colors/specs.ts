@@ -168,7 +168,7 @@ export const semanticColorSpec: SemanticColorSpec = {
       short: 'Tekst- og ikonfarge med høy kontrast og god synlighet.',
     },
     luminance: {
-      light: 0.0245,
+      light: 0.01,
       dark: 0.84,
       contrast: 0.86,
     },

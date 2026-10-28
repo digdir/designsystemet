@@ -124,6 +124,14 @@
     "group": "Color"
   },
   {
+    "id": "e7fb41a6a0544d8a8aa178232034311f9d725555",
+    "name": "neutral",
+    "selectedTokenSets": {
+      "semantic/color/neutral": "enabled"
+    },
+    "group": "Color"
+  },
+  {
     "id": "59bd0a3ff43b32849b319e645d4798d8a5d1e889",
     "name": "info",
     "selectedTokenSets": {
