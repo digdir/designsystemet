@@ -24,7 +24,6 @@ const HEX_COLOR = /^#([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i;
 const STEP_NAMES = [...semanticColorNames].sort((a, b) => b.length - a.length);
 // A Map, so a property like `constructor` in the CSS can't match a property every object has.
 const OTHER_COLORS = new Map<string, keyof Omit<ThemeColorValues, 'scales'>>([
-  ['--ds-link-color-visited', 'linkVisited'],
   ['--ds-color-focus-inner', 'focusInner'],
   ['--ds-color-focus-outer', 'focusOuter'],
 ]);

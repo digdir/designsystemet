@@ -11,7 +11,7 @@ const CSS_DECLARATION = /^\s*(--ds-[a-z0-9-]+)\s*:/gm;
 describe('cssVariableName', () => {
   it('names semantic tokens by their path', () => {
     expect(cssVariableName(['border-radius', 'sm'], 'semantic/style')).toBe('--ds-border-radius-sm');
-    expect(cssVariableName(['link', 'color', 'visited'], 'semantic/style')).toBe('--ds-link-color-visited');
+    expect(cssVariableName(['opacity', 'disabled'], 'semantic/style')).toBe('--ds-opacity-disabled');
     expect(cssVariableName(['color', 'accent', 'background-default'], 'semantic/style')).toBe(
       '--ds-color-accent-background-default',
     );
