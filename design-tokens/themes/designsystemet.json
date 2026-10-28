@@ -528,12 +528,6 @@
         "$value": "{designsystemet.danger.16}"
       }
     },
-    "link": {
-      "visited": {
-        "$type": "color",
-        "$value": "{designsystemet.link.visited}"
-      }
-    },
     "focus": {
       "inner-color": {
         "$type": "color",

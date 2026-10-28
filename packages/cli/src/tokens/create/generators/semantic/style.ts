@@ -91,14 +91,6 @@ const baseColorTemplate: TokenSet = {
       },
     },
   },
-  link: {
-    color: {
-      visited: {
-        $type: 'color',
-        $value: '{color.link.visited}',
-      },
-    },
-  },
 };
 
 const generateColorScaleTokens = (colorName: string): Record<SemanticColorNames, Token> => {

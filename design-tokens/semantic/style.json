@@ -539,14 +539,6 @@
       }
     }
   },
-  "link": {
-    "color": {
-      "visited": {
-        "$type": "color",
-        "$value": "{color.link.visited}"
-      }
-    }
-  },
   "border-width": {
     "default": {
       "$type": "borderWidth",

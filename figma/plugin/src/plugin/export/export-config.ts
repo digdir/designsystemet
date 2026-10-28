@@ -49,7 +49,6 @@ const KNOWN_COLLECTIONS = new Set<string>(Object.values(FIGMA_COLLECTION));
 // The colors in each theme's part of the Color scheme collection that aren't steps.
 // A Map, so a variable named e.g. `<theme>/constructor` can't match a property every object has.
 const OTHER_COLORS = new Map<string, keyof Omit<ThemeColorValues, 'scales'>>([
-  ['link/visited', 'linkVisited'],
   ['focus/inner', 'focusInner'],
   ['focus/outer', 'focusOuter'],
 ]);

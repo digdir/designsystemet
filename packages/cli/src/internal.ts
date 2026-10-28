@@ -35,7 +35,6 @@ export {
   defaultBorderRadius,
   defaultFontFamily,
   severityColors,
-  visitedLinkColor,
 } from './schemas/defaults.ts';
 export { parseConfig, validateConfig } from './schemas/helpers.ts';
 export {

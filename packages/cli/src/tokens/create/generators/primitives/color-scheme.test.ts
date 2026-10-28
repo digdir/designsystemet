@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import { type CssColor, generateColorScale } from '../../../../colors/index.ts';
-import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import { colorsSchema } from '../../../../schemas/schema-color.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import { generateColorScheme, getThemeColorScales, groupByScheme } from './color-scheme.ts';
@@ -52,13 +51,6 @@ describe('generateColorScheme', () => {
     expect(theme.focus.outer.$value).toBe(neutralScale['text-default'].hex);
   });
 
-  it('defaults link.visited to the visited-link scale position 12', () => {
-    const result = generateColorScheme('theme', 'light', baseColors);
-    const theme = result.theme as Record<string, Record<string, { $value: string }>>;
-
-    expect(theme.link.visited.$value).toBe(generateColorScale(visitedLinkColor, 'light')['base-default'].hex);
-  });
-
   it('generates scales from severity override hexes', () => {
     const overrides = { severity: { danger: '#AA0000' } } as ColorOverrideSchema;
     const result = generateColorScheme('theme', 'light', baseColors, overrides);
@@ -105,15 +97,13 @@ describe('generateColorScheme', () => {
     expect(dark.accent[1].$value).toBe(generateColorScale(ACCENT, 'dark')['background-default'].hex);
   });
 
-  it('lets linkVisited and focus overrides win over the defaults', () => {
+  it('lets focus overrides win over the defaults', () => {
     const overrides = {
-      linkVisited: { light: '#123456' },
       focus: { inner: { light: '#222222' }, outer: { light: '#333333' } },
     } as ColorOverrideSchema;
     const result = generateColorScheme('theme', 'light', baseColors, overrides);
     const theme = result.theme as Record<string, Record<string, { $value: string }>>;
 
-    expect(theme.link.visited.$value).toBe('#123456');
     expect(theme.focus.inner.$value).toBe('#222222');
     expect(theme.focus.outer.$value).toBe('#333333');
   });

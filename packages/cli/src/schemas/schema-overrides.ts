@@ -26,13 +26,6 @@ const severityColorOverrideSchema = z
   .optional()
   .describe('An object with severity color names as keys');
 
-const linkVisitedOverrideSchema = z
-  .object({
-    light: colorSchema.optional().describe('A hex color that overrides light mode'),
-    dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
-  })
-  .describe('Overrides for the "link-visited" color');
-
 const focusOverrideSchema = z
   .object({
     inner: z
@@ -56,7 +49,6 @@ export const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
     severity: severityColorOverrideSchema.optional(),
-    linkVisited: linkVisitedOverrideSchema.optional(),
     focus: focusOverrideSchema.optional(),
   })
   .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')

@@ -243,22 +243,6 @@
                   "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
                 }
               },
-              "linkVisited": {
-                "type": "object",
-                "properties": {
-                  "light": {
-                    "description": "A hex color that overrides light mode",
-                    "type": "string",
-                    "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
-                  },
-                  "dark": {
-                    "description": "A hex color that overrides dark mode",
-                    "type": "string",
-                    "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
-                  }
-                },
-                "description": "Overrides for the \"link-visited\" color"
-              },
               "focus": {
                 "type": "object",
                 "properties": {
