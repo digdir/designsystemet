@@ -62,11 +62,12 @@ export const getThemeColorScales = (
   return colorScales;
 };
 
-const toColorNumberTokens = (colorScale: ColorScale): TokenSet => {
+/** A color scale as tokens named by step, e.g. `base-default`. */
+const toColorStepTokens = (colorScale: ColorScale): TokenSet => {
   const tokens: TokenSet = {};
 
   for (const color of Object.values(colorScale)) {
-    tokens[color.number] = {
+    tokens[color.name] = {
       $type: 'color',
       $value: color.hex,
     };
@@ -97,14 +98,14 @@ export const generateColorScheme = (
   const focusInnerOverride = overrides?.focus?.inner?.[colorScheme];
   const focusOuterOverride = overrides?.focus?.outer?.[colorScheme];
 
-  const colorNumberTokens: Record<string, TokenSet> = {};
+  const colorStepTokens: Record<string, TokenSet> = {};
   for (const [colorName, colorScale] of Object.entries(colorScales)) {
-    colorNumberTokens[colorName] = toColorNumberTokens(colorScale);
+    colorStepTokens[colorName] = toColorStepTokens(colorScale);
   }
 
   return {
     [themeName]: {
-      ...colorNumberTokens,
+      ...colorStepTokens,
       link: {
         visited: toColorToken(linkOverride || defaultLinkVisitedToken),
       },

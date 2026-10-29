@@ -4,7 +4,7 @@ import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
 
 import { cssVariableName } from '../../../css-variables.ts';
-import { isSemanticToken } from '../../../utils.ts';
+import { isSemanticToken, isThemeColorScaleToken } from '../../../utils.ts';
 import { buildOptions } from '../../platform.ts';
 
 const prefersColorScheme = (colorScheme: string, content: string) => `
@@ -35,8 +35,9 @@ export const colorScheme: Format = {
     const filteredAllTokens = allTokens.filter(
       R.allPass([
         R.anyPass([
-          // Include semantic tokens in the output
+          // Include semantic tokens and the theme's color scales in the output
           isSemanticToken,
+          isThemeColorScaleToken,
         ]),
       ]),
     );

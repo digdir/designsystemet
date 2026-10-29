@@ -15,7 +15,10 @@ describe('figmaVariableScopes', () => {
     expect(figmaVariableScopes(SEMANTIC, { path: ['color', 'accent', 'base-default'], type: 'color' })).toEqual([
       'ALL_SCOPES',
     ]);
-    expect(figmaVariableScopes(THEME, { path: ['color', 'accent', '1'], type: 'color' })).toEqual([]);
+    expect(figmaVariableScopes(THEME, { path: ['color', 'accent', 'base-default'], type: 'color' })).toEqual([
+      'ALL_SCOPES',
+    ]);
+    expect(figmaVariableScopes(THEME, { path: ['color', 'link', 'visited'], type: 'color' })).toEqual([]);
     expect(figmaVariableScopes(COLOR_SCHEME, { path: ['test', 'accent', '1'], type: 'color' })).toEqual([]);
   });
 

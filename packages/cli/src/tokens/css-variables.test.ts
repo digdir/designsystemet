@@ -12,13 +12,18 @@ describe('cssVariableName', () => {
   it('names semantic tokens by their path', () => {
     expect(cssVariableName(['border-radius', 'sm'], 'semantic/style')).toBe('--ds-border-radius-sm');
     expect(cssVariableName(['link', 'color', 'visited'], 'semantic/style')).toBe('--ds-link-color-visited');
-    expect(cssVariableName(['color', 'accent', 'background-default'], 'semantic/style')).toBe(
+  });
+
+  it('names the color scales in the theme, but not the colors they are made from', () => {
+    expect(cssVariableName(['color', 'accent', 'background-default'], 'themes/my-theme')).toBe(
       '--ds-color-accent-background-default',
     );
+    expect(cssVariableName(['color', 'link', 'visited'], 'themes/my-theme')).toBeNull();
+    expect(cssVariableName(['color', 'focus', 'inner-color'], 'themes/my-theme')).toBeNull();
   });
 
   it('leaves the color name out inside a data-color scope', () => {
-    expect(cssVariableName(['color', 'my-brand', 'base-default'], 'semantic/style', { colorScoped: true })).toBe(
+    expect(cssVariableName(['color', 'my-brand', 'base-default'], 'themes/my-theme', { colorScoped: true })).toBe(
       '--ds-color-base-default',
     );
     expect(cssVariableName(['background-default'], 'semantic/color/accent')).toBe('--ds-color-background-default');

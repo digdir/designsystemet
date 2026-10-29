@@ -1,3 +1,4 @@
+import { isColorScalePath } from '../tokens/css-variables.ts';
 import { FIGMA_COLLECTION } from './collections.ts';
 
 /**
@@ -74,7 +75,9 @@ export function figmaVariableScopes(collection: string, token: FigmaVariableToke
     case 'COLOR':
       // ALL_SCOPES for a COLOR variable covers exactly the color fields (fills, strokes, effects).
       if (collection === SEMANTIC || collection === COLOR) return ['ALL_SCOPES'];
-      // The raw color scales and their per-scheme values are only referenced by other variables.
+      // The theme's color scales, e.g. `color/accent/base-default`, are used directly like the Color collection's.
+      if (collection === THEME && isColorScalePath(token.path)) return ['ALL_SCOPES'];
+      // The per-scheme values, and the theme's link and focus colors, are only referenced by other variables.
       if (collection === THEME || collection === COLOR_SCHEME) return [];
       return null;
 

@@ -1,3 +1,4 @@
+import { semanticColorMap } from '../colors/types.ts';
 import { kebabCase } from './process/utils/kebab-case.ts';
 
 /**
@@ -14,7 +15,7 @@ export type CssVariableNameOptions = {
   /**
    * Name the token as it is output inside a `[data-color="<name>"]` scope, where the color name is left out:
    * `color.accent.background-default` becomes `--ds-color-background-default` instead of
-   * `--ds-color-accent-background-default`. Only meaningful for `semantic/style` color tokens.
+   * `--ds-color-accent-background-default`. Only meaningful for the color scales in `themes/<theme>`.
    */
   colorScoped?: boolean;
 };
@@ -40,6 +41,17 @@ const normalizeTokenSet = (tokenSet: string) => tokenSet.replaceAll('\\', '/').r
  * Joins name segments the way Style Dictionary's `name/kebab` transform does, so `_size`, `2xl` and `fontSize`
  * come out as `size`, `2xl` and `font-size`. See `kebab-case.test.ts` for the parity cases.
  */
+/** A step of a color scale, e.g. `['color', 'accent', 'base-default']`. */
+export const isColorScalePath = (path: readonly string[]): boolean =>
+  path.length === 3 && path[0] === 'color' && Object.hasOwn(semanticColorMap, path[2]);
+
+/**
+ * Whether a token is a step of a theme's color scale, e.g. `color.accent.base-default` in `themes/<theme>`. These are
+ * output as `--ds-color-accent-base-default`, and as `--ds-color-base-default` inside `[data-color="accent"]`.
+ */
+export const isColorScaleToken = (path: readonly string[], tokenSet: string): boolean =>
+  TOKEN_SET.theme.test(normalizeTokenSet(tokenSet)) && isColorScalePath(path);
+
 export const toCssVariableSegments = (segments: readonly string[]): string => kebabCase(segments.join(' '));
 
 /**
@@ -65,8 +77,6 @@ export function cssVariableName(
       // Typography components are expanded per property, and the group is left out of the name:
       // `typography.heading.xl.fontSize` -> `--ds-heading-xl-font-size`. The font-family is never output.
       segments = path.at(-1) === 'fontFamily' ? null : path.slice(1);
-    } else if (group === 'color' && colorScoped && path.length > 2) {
-      segments = ['color', ...path.slice(2)];
     } else {
       segments = path;
     }
@@ -75,9 +85,13 @@ export function cssVariableName(
     // is what `--ds-color-background-default` resolves to inside `[data-color="<name>"]`.
     segments = ['color', ...path];
   } else if (TOKEN_SET.theme.test(set)) {
-    // The numbered border-radius steps are inlined into the semantic tokens that reference them.
-    const isInlinedStep = group === 'border-radius' && /^\d+$/.test(path[1] ?? '');
-    segments = THEME_GROUPS.includes(group) && !isInlinedStep ? path : null;
+    if (isColorScalePath(path)) {
+      segments = colorScoped ? ['color', ...path.slice(2)] : path;
+    } else {
+      // The numbered border-radius steps are inlined into the semantic tokens that reference them.
+      const isInlinedStep = group === 'border-radius' && /^\d+$/.test(path[1] ?? '');
+      segments = THEME_GROUPS.includes(group) && !isInlinedStep ? path : null;
+    }
   } else if (TOKEN_SET.sizeGlobal.test(set)) {
     segments = path; // `_size.4` -> `--ds-size-4`
   } else if (TOKEN_SET.typographySize.test(set)) {

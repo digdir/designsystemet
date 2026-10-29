@@ -27,13 +27,17 @@ async function readJsonFile(filePath: string): Promise<TokenObject> {
 }
 
 /**
- * Extract the base hex color from a color scale (color.12)
+ * Extract the base hex color from a color scale: `base-default`, or `12` in design tokens created before the
+ * color scheme primitives were named by step.
  */
 function extractBaseColor(colorScale: TokenObject): string | null {
-  if ('12' in colorScale && typeof colorScale['12'] === 'object' && '$value' in colorScale['12']) {
-    const token = colorScale['12'] as TokenValue;
-    if (token.$type === 'color') {
-      return token.$value;
+  for (const step of ['base-default', '12']) {
+    const token = colorScale[step];
+    if (typeof token === 'object' && token !== null && '$value' in token) {
+      const { $type, $value } = token as TokenValue;
+      if ($type === 'color') {
+        return $value;
+      }
     }
   }
   return null;
