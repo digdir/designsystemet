@@ -1,3 +1,4 @@
+/** This file is largely AI-generated, but checked and modified by humans when needed */
 import { NodeHtmlMarkdown } from 'node-html-markdown';
 import { parse } from 'node-html-parser';
 
@@ -34,7 +35,7 @@ function extractDescription(root) {
  * promoted to proper <pre><code> blocks so they render as fenced code
  * in the final Markdown.
  */
-function extractMainContent(html) {
+function extractMainContent(html, pageUrl) {
   const root = parse(html);
 
   const title = extractTitle(root);
@@ -47,14 +48,25 @@ function extractMainContent(html) {
     return { cleanedHtml: html, title, description, lang };
   }
 
+  // Static source remains available even when the highlighted UI suspends.
+  for (const block of content.querySelectorAll(
+    '[data-documentation-code-block]',
+  )) {
+    const pre = block.querySelector('pre');
+    const code = pre && parse(pre.innerHTML).querySelector('code');
+    if (code) {
+      block.replaceWith(`<pre>${code.outerHTML}</pre>`);
+    }
+  }
+
   // ── Promote code examples before stripping ────────────────────────
   // Each live-component pair is: a [data-live="true"] preview container
   // followed by a <section hidden> containing editors.
-  // We replace the pair with a clean <pre><code> of the React source.
+  // Keep both React source and the server-rendered HTML.
   for (const section of content.querySelectorAll('section[aria-label]')) {
-    // Prefer the tsx (React) live-editor source code.
     const reactEditor = section.querySelector('.live-editor pre');
     const htmlEditor = section.querySelector('pre.prism-code.language-html');
+    if (!reactEditor && !htmlEditor) continue;
 
     const blocks = [];
 
@@ -62,7 +74,11 @@ function extractMainContent(html) {
       // node-html-parser treats <pre> contents as raw text;
       // re-parse the innerHTML to strip the prism <span> wrappers.
       const code = parse(reactEditor.innerHTML).textContent.trim();
-      if (code && code !== 'Unable to parse html') {
+      if (
+        code &&
+        code !== 'Unable to parse html' &&
+        code !== 'Unable to render HTML'
+      ) {
         blocks.push(
           `<pre><code class="language-tsx">${escapeHtml(code)}</code></pre>`,
         );
@@ -71,7 +87,11 @@ function extractMainContent(html) {
 
     if (htmlEditor) {
       const code = parse(htmlEditor.innerHTML).textContent.trim();
-      if (code && code !== 'Unable to parse html') {
+      if (
+        code &&
+        code !== 'Unable to parse html' &&
+        code !== 'Unable to render HTML'
+      ) {
         blocks.push(
           `<pre><code class="language-html">${escapeHtml(code)}</code></pre>`,
         );
@@ -96,6 +116,27 @@ function extractMainContent(html) {
     el.remove();
   }
 
+  for (const navigation of content.querySelectorAll(
+    '[class*="headerBottom"]',
+  )) {
+    const links = navigation.querySelectorAll('a[href]');
+    for (const link of links) {
+      link.removeAttribute('class');
+    }
+    navigation.replaceWith(
+      `<ul>${links.map((link) => `<li>${link.outerHTML}</li>`).join('')}</ul>`,
+    );
+  }
+
+  for (const grid of content.querySelectorAll('[data-is-main="true"]')) {
+    const links = grid.querySelectorAll('a[href]');
+    if (links.length > 0) {
+      grid.replaceWith(
+        `<ul>${links.map((link) => `<li>${link.outerHTML}</li>`).join('')}</ul>`,
+      );
+    }
+  }
+
   // ── Remove UI chrome ──────────────────────────────────────────────
   const removeSelectors = [
     'nav',
@@ -107,6 +148,8 @@ function extractMainContent(html) {
     'svg',
     '.l-sidebar-left',
     '[data-toggle-group]',
+    '[role="tablist"]',
+    'ds-tablist',
     '[aria-live="polite"]',
     'aside', // table-of-contents sidebar
     '.toc-feedback', // "Har du innspill" feedback section
@@ -129,14 +172,45 @@ function extractMainContent(html) {
     }
   }
 
-  // Remove overview/code/accessibility tab navigation links.
   for (const el of content.querySelectorAll('a.ds-button')) {
     el.remove();
   }
 
-  // Remove the header wrapper divs that are now empty after stripping.
-  for (const el of content.querySelectorAll('[class*="headerBottom"]')) {
-    el.remove();
+  for (const link of content.querySelectorAll('a[href]')) {
+    const href = link.getAttribute('href');
+    if (
+      !href ||
+      /^[#?]/.test(href) ||
+      link.hasAttribute('download') ||
+      !URL.canParse(href, pageUrl)
+    ) {
+      continue;
+    }
+
+    const target = new URL(href, pageUrl);
+    if (
+      ![
+        pageUrl.origin,
+        'https://designsystemet.no',
+        'https://www.designsystemet.no',
+        'http://designsystemet.no',
+        'http://www.designsystemet.no',
+      ].includes(target.origin) ||
+      (target.pathname !== '/' && !/^\/(?:en|no)(?:\/|$)/.test(target.pathname))
+    ) {
+      continue;
+    }
+
+    const pathname = markdownPath(target.pathname);
+    if (pathname === target.pathname) continue;
+
+    target.pathname = pathname;
+    link.setAttribute(
+      'href',
+      /^[a-z][a-z\d+.-]*:|^\/\//i.test(href)
+        ? target.href
+        : `${target.pathname}${target.search}${target.hash}`,
+    );
   }
 
   return { cleanedHtml: content.innerHTML, title, description, lang };
@@ -146,43 +220,82 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-/**
- * Remove residual UI text that survives DOM-level stripping.
- */
-function cleanMarkdown(md) {
-  return md
-    .replace(/^.*Unable to parse html.*$/gm, '')
-    .replace(/^.*Unable to render HTML.*$/gm, '')
-    .replace(/^React$/gm, '') // stray language label
-    .replace(/^HTML$/gm, '') // stray language label
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
+function markdownPath(pathname) {
+  const path = pathname.replace(/\/+$/, '') || '/';
+  return path.split('/').pop()?.includes('.') ? pathname : `${path}.md`;
+}
+
+function markdownLocation(location, req) {
+  const origin = `${req.protocol}://${req.get('host')}`;
+  const target = new URL(location, origin);
+  if (
+    target.origin !== origin ||
+    target.pathname.split('/').pop()?.includes('.')
+  ) {
+    return location;
+  }
+
+  target.pathname = markdownPath(target.pathname);
+  return location.startsWith('/')
+    ? `${target.pathname}${target.search}${target.hash}`
+    : target.href;
 }
 
 /**
  * Express middleware that converts HTML responses to Markdown
- * when the request includes `Accept: text/markdown`.
+ * when requested through a .md URL or Accept: text/markdown.
  *
  * The output strips site chrome (header, footer, sidebar navigation)
  * and interactive controls, keeping only the documentation content
  * with YAML front-matter metadata.
  */
 export function markdownNegotiation(req, res, next) {
-  const accept = req.headers.accept || '';
-  if (!accept.includes('text/markdown')) {
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
     return next();
   }
 
+  const url = new URL(req.url, 'http://localhost');
+  const markdownUrl = /\.md\/?$/.test(url.pathname);
+  if (markdownUrl) {
+    url.pathname = url.pathname.replace(/\.md\/?$/, '') || '/';
+    req.url = `${url.pathname}${url.search}`;
+    // React Router's Express adapter builds its request from originalUrl.
+    req.originalUrl = req.url;
+  }
+  const canonicalUrl = req.url;
+
+  // HTML responses must vary too, otherwise caches can mix the representations.
+  res.vary('Accept');
+  if (
+    !markdownUrl &&
+    req.accepts(['html', 'text/markdown']) !== 'text/markdown'
+  ) {
+    return next();
+  }
+
+  req.headers.accept = 'text/markdown';
+  // Static-file validators describe HTML bytes, not the Markdown representation.
+  delete req.headers['if-none-match'];
+  delete req.headers['if-modified-since'];
+  delete req.headers.range;
+  delete req.headers['if-range'];
+
   const chunks = [];
+  const originalWrite = res.write;
   const originalEnd = res.end;
 
   res.write = (chunk, ...args) => {
+    if (!res.getHeader('content-type')?.toString().includes('text/html')) {
+      return originalWrite.call(res, chunk, ...args);
+    }
     const encoding = args.find((a) => typeof a === 'string') || 'utf-8';
     const callback = args.find((a) => typeof a === 'function');
 
     if (chunk != null) {
       chunks.push(
-        Buffer.isBuffer(chunk) ? chunk : Buffer.from(String(chunk), encoding),
+        typeof chunk === 'string'
+          ? Buffer.from(chunk, encoding)
+          : Buffer.from(chunk),
       );
     }
 
@@ -191,33 +304,47 @@ export function markdownNegotiation(req, res, next) {
   };
 
   res.end = (chunk, ...args) => {
+    const location = res.getHeader('location');
+    if (markdownUrl && location) {
+      res.setHeader('Location', markdownLocation(location.toString(), req));
+    }
+
+    const contentType = (res.getHeader('content-type') || '').toString();
+    if (!contentType.includes('text/html')) {
+      return originalEnd.call(res, chunk, ...args);
+    }
+
     const encoding = args.find((a) => typeof a === 'string') || 'utf-8';
     const callback = args.find((a) => typeof a === 'function');
 
     if (chunk != null && typeof chunk !== 'function') {
       chunks.push(
-        Buffer.isBuffer(chunk) ? chunk : Buffer.from(String(chunk), encoding),
+        typeof chunk === 'string'
+          ? Buffer.from(chunk, encoding)
+          : Buffer.from(chunk),
       );
     }
 
-    const contentType = (res.getHeader('content-type') || '').toString();
-
-    if (contentType.includes('text/html') && chunks.length > 0) {
+    if (chunks.length > 0 || req.method === 'HEAD') {
       const html = Buffer.concat(chunks).toString('utf-8');
-      const url = req.originalUrl || req.url;
-      const { cleanedHtml, title, description, lang } =
-        extractMainContent(html);
+      const pageUrl = new URL(
+        canonicalUrl,
+        `${req.protocol}://${req.get('host')}`,
+      );
+      const { cleanedHtml, title, description, lang } = extractMainContent(
+        html,
+        pageUrl,
+      );
 
-      let markdown = nhm.translate(cleanedHtml);
-      markdown = cleanMarkdown(markdown);
+      const markdown = nhm.translate(cleanedHtml).trim();
 
       // Prepend YAML front-matter so consumers get structured metadata.
       const frontmatter = [
         '---',
-        `title: "${title}"`,
-        description ? `description: "${description}"` : null,
-        `url: ${url}`,
-        lang ? `language: ${lang}` : null,
+        `title: ${JSON.stringify(title)}`,
+        description ? `description: ${JSON.stringify(description)}` : null,
+        `url: ${JSON.stringify(canonicalUrl)}`,
+        lang ? `language: ${JSON.stringify(lang)}` : null,
         '---',
       ]
         .filter(Boolean)
@@ -227,9 +354,16 @@ export function markdownNegotiation(req, res, next) {
       const tokens = estimateTokens(fullMarkdown);
 
       res.removeHeader('content-length');
+      res.removeHeader('etag');
+      res.removeHeader('last-modified');
       res.setHeader('Content-Type', 'text/markdown; charset=utf-8');
-      res.setHeader('x-markdown-tokens', String(tokens));
-      res.setHeader('Content-Signal', 'ai-train=no, search=yes, ai-input=no');
+      if (req.method !== 'HEAD') {
+        res.setHeader('x-markdown-tokens', String(tokens));
+      }
+      res.setHeader(
+        'Content-Signal',
+        `ai-train=${process.env.APP_ENV === 'production' ? 'yes' : 'no'}, search=yes, ai-input=yes`,
+      );
 
       const existingVary = res.getHeader('vary');
       if (existingVary) {
@@ -244,7 +378,12 @@ export function markdownNegotiation(req, res, next) {
         res.setHeader('Vary', 'Accept');
       }
 
-      return originalEnd.call(res, fullMarkdown, 'utf-8', callback);
+      return originalEnd.call(
+        res,
+        req.method === 'HEAD' ? undefined : fullMarkdown,
+        'utf-8',
+        callback,
+      );
     }
 
     const body = chunks.length > 0 ? Buffer.concat(chunks) : undefined;

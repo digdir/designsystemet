@@ -332,6 +332,10 @@
       margin-block: var(--ds-size-8);
     }
 
+    & > details {
+      margin-block-end: var(--ds-size-6);
+    }
+
     & > ul,
     & > ol {
       padding-left: var(--ds-size-5);
