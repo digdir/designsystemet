@@ -1,7 +1,6 @@
-import type { Size } from '@digdir/designsystemet-types';
+import type { Color, SeverityColors, Size } from '@digdir/designsystemet-types';
 import type { Placement as FloatingUIPlacement } from '@floating-ui/dom';
 import type { ReactNode } from 'react';
-import type { Color, SeverityColors } from './colors';
 
 export type Placement = FloatingUIPlacement | 'none';
 

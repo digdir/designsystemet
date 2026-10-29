@@ -1,6 +1,5 @@
 import type { DSPaginationElement } from '@digdir/designsystemet-web';
 import '@digdir/designsystemet-web'; // Import ds-breadcrumbs custom element
-import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
@@ -23,13 +22,6 @@ export type PaginationProps = MergeRight<
      * Total number of pages
      */
     'data-total'?: string;
-    /**
-     * Change the default rendered element for the one passed as a child, merging their props and behavior.
-     * @default false
-     *
-     * @deprecated This is not supported anymore, as the element needs to be `ds-pagination`
-     */
-    asChild?: boolean;
   }
 >;
 
@@ -52,14 +44,10 @@ export type PaginationProps = MergeRight<
  * </Pagination>
  */
 export const Pagination = forwardRef<DSPaginationElement, PaginationProps>(
-  function Pagination({ asChild, className, ...rest }, ref) {
-    const Component = asChild ? Slot : 'ds-pagination';
-
+  function Pagination({ className, ...rest }, ref) {
     return (
-      <Component
-        {...(asChild
-          ? { className: cl('ds-pagination', className) }
-          : { class: cl('ds-pagination', className) })}
+      <ds-pagination
+        class={cl('ds-pagination', className)}
         suppressHydrationWarning // Since ds-pagination will change aria-label and role after hydration
         ref={ref}
         {...rest}

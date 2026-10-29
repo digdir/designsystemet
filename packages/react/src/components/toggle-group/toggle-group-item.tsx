@@ -15,10 +15,6 @@ export type ToggleGroupItemProps = {
    * Generates a random value if not set.
    **/
   value?: string;
-  /**
-   * @deprecated Icon prop is deprecated
-   **/
-  icon?: boolean;
 } & DefaultProps &
   LabelHTMLAttributes<HTMLLabelElement> &
   Pick<
@@ -43,7 +39,7 @@ export const ToggleGroupItem = forwardRef<
   HTMLLabelElement,
   ToggleGroupItemProps
 >(function ToggleGroupItem(
-  { className, children, icon, value: rawValue, ...rest },
+  { className, children, value: rawValue, ...rest },
   ref,
 ) {
   const genValue = useId();
@@ -70,7 +66,6 @@ export const ToggleGroupItem = forwardRef<
       ref={ref}
       aria-disabled={ariaDisabled ?? disabled}
       className={cl('ds-button', className)}
-      data-variant='tertiary' // @deprecated No need to set data-variant, just kept for backwards compatibility
       {...labelProps}
     >
       <input

@@ -172,24 +172,4 @@ describe('Dialog', () => {
     expect(innerOnClose).toHaveBeenCalledTimes(1);
     expect(outerOnClose).not.toHaveBeenCalled();
   });
-
-  it('a custom data-command=close button should close the dialog', async () => {
-    const onClose = vi.fn();
-    window.dsWarnings = false; // Suppress warnings about data-command being deprecated
-
-    render(
-      <Comp onClose={onClose} closeButton={false}>
-        <Dialog.Block>
-          <button data-command='close' data-testid='closebutton'>
-            Close
-          </button>
-        </Dialog.Block>
-      </Comp>,
-    );
-
-    screen.getByRole('button', { name: OPEN_Dialog }).click();
-    await act(async () => screen.getByTestId('closebutton').click());
-    expect(onClose).toHaveBeenCalledTimes(1);
-    window.dsWarnings = true; // Re-enable warnings after test
-  });
 });

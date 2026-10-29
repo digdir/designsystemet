@@ -73,7 +73,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         style={style}
       >
         <Input type='checkbox' ref={ref} {...rest} />
-        {!!label && <Label weight='regular'>{label}</Label>}
+        {!!label && <Label>{label}</Label>}
         {!!description && <div data-field='description'>{description}</div>}
         {!!error && <ValidationMessage>{error}</ValidationMessage>}
       </Field>

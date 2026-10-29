@@ -11,11 +11,9 @@ describe('Avatar', () => {
   });
 
   it('should render correctly with custom props', () => {
-    render(<Avatar data-size='lg' variant='square' aria-label='ola' />);
+    render(<Avatar data-size='lg' aria-label='ola' />);
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByRole('img')).toHaveAttribute('data-size', 'lg');
-    // @deprecated
-    expect(screen.getByRole('img')).toHaveAttribute('data-variant', 'square');
   });
 
   it('should render initials when aria-label is set', () => {
@@ -28,11 +26,6 @@ describe('Avatar', () => {
     expect(screen.getByText('0')).toBeInTheDocument();
   });
 
-  it('should render initials when children render empty', () => {
-    render(<Avatar aria-label='Ola Nordmann' initials='ON' />);
-    expect(screen.getByText('ON')).toBeInTheDocument();
-  });
-
   it('should render children', () => {
     render(
       <Avatar aria-label='Ola Nordmann'>
@@ -43,24 +36,12 @@ describe('Avatar', () => {
     expect(screen.getByTestId('child-image')).toBeInTheDocument();
   });
 
-  // @deprecated
-  it('should render initials in an empty asChild element', () => {
+  it('should render the asChild element with its children', () => {
     render(
-      <Avatar asChild aria-label='Ola Nordmann' initials='ON'>
-        <a href='/profile' />
+      <Avatar asChild aria-label='Ola Nordmann'>
+        <a href='/profile'>ON</a>
       </Avatar>,
     );
     expect(screen.getByRole('link')).toHaveTextContent('ON');
-  });
-
-  // @deprecated
-  it('should not render initials when asChild element has children', () => {
-    render(
-      <Avatar asChild aria-label='Ola Nordmann' initials='ON'>
-        <a href='/profile'>Ola</a>
-      </Avatar>,
-    );
-    expect(screen.getByRole('link')).toHaveTextContent('Ola');
-    expect(screen.queryByText('ON')).not.toBeInTheDocument();
   });
 });

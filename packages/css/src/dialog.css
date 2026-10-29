@@ -134,9 +134,7 @@
   }
 
   /* Close button */
-  & button[command='close']:empty::before,
-  & button[data-command='close']:empty::before,
-  & > form[method='dialog']:first-child > button:only-child::before /* @deprecated old selector for backwards compatibility */ {
+  & button[command='close']:empty::before {
     content: var(--dsc-dialog-close-label, '');
     background: currentcolor;
     forced-color-adjust: none; /* Enable drawing with background property */
@@ -145,9 +143,7 @@
     mask: center / contain no-repeat var(--dsc-dialog-icon-url);
   }
 
-  & > button[command='close']:first-child,
-  & > button[data-command='close']:first-child,
-  & > form[method='dialog']:first-child > button:only-child /* @deprecated old selector for backwards compatibility */ {
+  & > button[command='close']:first-child {
     float: inline-end;
     margin-block-start: var(--_dsc-dialog-icon-top-right-margin);
     margin-block-end: var(--dsc-dialog-icon-spacing);

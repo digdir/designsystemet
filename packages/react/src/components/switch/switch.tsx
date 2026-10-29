@@ -66,7 +66,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
       style={style}
     >
       <Input type='checkbox' role='switch' ref={ref} {...rest} />
-      {!!label && <Label weight='regular'>{label}</Label>}
+      {!!label && <Label>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}
     </Field>
   );

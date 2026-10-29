@@ -11,9 +11,7 @@ import {
 } from '../src/schemas/schema.ts';
 import { warnDeprecatedFields } from '../src/schemas/schema-output.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.ts';
-
-export { deprecatedCLIOptions } from '../src/schemas/helpers.ts';
+import { getCliOption } from './options.ts';
 
 /** Returns the themes of a validated config, or exits with an error if there are none. */
 export function requireThemes(config: Pick<ConfigSchema, 'themes'>): ConfigSchemaThemes {
@@ -54,19 +52,18 @@ export async function readConfigFile(configFilePath: string, allowFileNotFound =
 }
 
 /**
- * Parses and validates the configuration file.
- * Merges the config file with CLI options, with CLI options taking precedence.
+ * Parses and validates the configuration file for `tokens create`.
+ * `outDir` and `clean` fall back to the `--out-dir` and `--clean` CLI options when the config file doesn't set them.
  *
- * @template T - The expected type of the parsed and validated config.
  * @param configFile - The content of the config file as a string.
- * @param options - An object containing the CLI command, theme name, and config file path.
+ * @param options - An object containing the CLI command and config file path.
  * @returns The validated configuration schema.
  */
 export async function parseValidateAndOptsConfig(
   configFile: string,
-  options: { theme: string; cmd: Command<unknown[], OptionValues>; configFilePath: string },
+  options: { cmd: Command<unknown[], OptionValues>; configFilePath: string },
 ): Promise<ConfigSchema> {
-  const { cmd, theme = 'theme', configFilePath } = options;
+  const { cmd, configFilePath } = options;
 
   let configParsed = {} as ConfigSchema;
 
@@ -80,47 +77,10 @@ export async function parseValidateAndOptsConfig(
     process.exit(1);
   }
 
-  /*
-   * Create final config from JSON config file and command-line options
-   */
-  const noUndefined = R.reject(R.isNil);
-
-  // Only apply the deprecated --font-family option when explicitly supplied: typography may also be
-  // defined as named sets, and merging the CLI default into that form would produce an invalid config.
-  const suppliedFontFamily = getSuppliedCliOption(cmd, 'fontFamily') as string | undefined;
-
-  const getThemeOptions = (optionGetter: OptionGetter) =>
-    noUndefined({
-      colors: noUndefined({
-        ...(optionGetter(cmd, 'mainColors') as Record<string, string>),
-        ...(optionGetter(cmd, 'supportColors') as Record<string, string>),
-        neutral: optionGetter(cmd, 'neutralColor') as string,
-      }),
-      typography: suppliedFontFamily ? { fontFamily: suppliedFontFamily } : undefined,
-      borderRadius: optionGetter(cmd, 'borderRadius'),
-      defaultColor: optionGetter(cmd, 'defaultColor'),
-    });
-
-  const unvalidatedConfig = noUndefined({
+  const unvalidatedConfig = R.reject(R.isNil, {
     outDir: configParsed?.outDir ?? getCliOption(cmd, 'outDir'),
     clean: configParsed?.clean ?? getCliOption(cmd, 'clean'),
-    themes: configParsed?.themes
-      ? R.map((jsonThemeValues) => {
-          // For each theme specified in the JSON config, we resolve the option values in the following order:
-          // - default value
-          // - config value
-          // - CLI value
-          // With later values overriding earlier values
-          const defaultThemeValues = getThemeOptions(getDefaultCliOption);
-          const cliThemeValues = getThemeOptions(getSuppliedCliOption);
-          const mergedConfigs = R.mergeDeepRight(defaultThemeValues, R.mergeDeepRight(jsonThemeValues, cliThemeValues));
-          return mergedConfigs;
-        }, configParsed.themes)
-      : // If there are no themes specified in the JSON config, we use both explicit
-        // and default theme options from the CLI.
-        {
-          [theme]: getThemeOptions(getCliOption),
-        },
+    themes: configParsed?.themes,
   });
 
   let validatedConfig = {} as ConfigSchema;

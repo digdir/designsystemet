@@ -1,5 +1,4 @@
 import { forwardRef } from 'react';
-import { warn } from '../../utilities';
 import {
   ValidationMessage,
   type ValidationMessageProps,
@@ -21,10 +20,6 @@ export type FieldCounterProps = {
    */
   under?: string;
   /**
-   * @deprecated The hint attribute is deprecated.
-   */
-  hint?: string;
-  /**
    * The maximum allowed characters.
    *
    * @default undefined
@@ -41,8 +36,7 @@ export type FieldCounterProps = {
  * </Field>
  */
 export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
-  function FieldCounter({ limit, under, over, hint, ...rest }, _ref) {
-    if (hint) warn('hint attribute is deprecated on Field.Counter');
+  function FieldCounter({ limit, under, over, ...rest }, _ref) {
     return (
       <ValidationMessage
         suppressHydrationWarning // Since <ds-field> adds attributes

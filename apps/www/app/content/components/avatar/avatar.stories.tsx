@@ -13,9 +13,6 @@ export const Initials = () => <Avatar aria-label='Ola Nordmann'>ON</Avatar>;
 
 export const Sizes = () => (
   <>
-    <Avatar data-size='xs' aria-label='extra small'>
-      xs
-    </Avatar>
     <Avatar data-size='sm' aria-label='small'>
       sm
     </Avatar>
@@ -103,7 +100,7 @@ export const InDropdown = () => (
           <Dropdown.Button>
             <Badge.Position overlap='circle'>
               <Badge data-color='danger' data-size='sm'></Badge>
-              <Avatar aria-hidden='true' data-size='xs'>
+              <Avatar aria-hidden='true' data-size='sm'>
                 ON
               </Avatar>
             </Badge.Position>
@@ -112,7 +109,7 @@ export const InDropdown = () => (
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Button>
-            <Avatar aria-hidden='true' data-size='xs'>
+            <Avatar aria-hidden='true' data-size='sm'>
               <BriefcaseIcon />
             </Avatar>
             Sogndal kommune

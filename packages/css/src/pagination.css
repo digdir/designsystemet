@@ -49,15 +49,6 @@
       --dsc-button-color--hover: var(--dsc-button-color);
       --dsc-button-color: var(--ds-color-text-subtle);
     }
-    /* @deprecated: Style active element when manually set data-variant="tertiary" button - deprecated but kept for compatibility */
-    & > li > [data-variant='tertiary'][aria-current='true'] {
-      --dsc-button-background--active: var(--ds-color-base-active);
-      --dsc-button-background--hover: var(--ds-color-base-hover);
-      --dsc-button-background: var(--ds-color-base-default);
-      --dsc-button-color--active: var(--dsc-button-color);
-      --dsc-button-color--hover: var(--dsc-button-color);
-      --dsc-button-color: var(--ds-color-base-contrast-default);
-    }
 
     & > li:has([aria-label='hidden']) {
       display: none; /* Hide list item if no page is linkable */
@@ -97,14 +88,6 @@
     }
     :dir(rtl) & > li:last-child > ::before {
       rotate: 180deg;
-    }
-
-    /* @deprecated Keeping empty-li styling for backwards compatibility */
-    & > li:empty::before {
-      content: var(--dsc-pagination-ellipsis);
-      display: block;
-      text-align: center;
-      min-width: var(--ds-size-12);
     }
   }
 }

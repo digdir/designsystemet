@@ -3,7 +3,6 @@
   --dsc-link-color--hover: var(--ds-color-text-default);
   --dsc-link-color--active: var(--ds-color-text-default);
   --dsc-link-color--visited: var(--dsc-link-color);
-  --dsc-link-background--active: transparent; /* @deprecated Kept for backwards compatibility */
   --dsc-link-text-decoration-thickness--hover: 0.12em; /* 2px ish */
   --dsc-link-text-decoration-thickness: 0.06em; /* 1px ish */
   --dsc-link-border-radius: 0;
@@ -68,7 +67,6 @@
   @composes ds-focus from './base.css';
 
   &:where(:active) {
-    background: var(--dsc-link-background--active);
     color: var(--dsc-link-color--active);
   }
 }

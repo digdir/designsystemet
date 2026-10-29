@@ -56,7 +56,6 @@ export const loader = async ({
   // Get all folders in components-docs/{lang}
   const docsFolders = getFoldersInContentDir(join('components-docs', lang));
   const reactUtilities = new Set([
-    'roving-focus',
     'use-checkbox-group',
     'use-pagination',
     'use-radio-group',

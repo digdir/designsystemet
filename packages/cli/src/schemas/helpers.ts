@@ -1,35 +1,7 @@
 import { type ParseError, parse as parseJsoncRaw, printParseErrorCode } from 'jsonc-parser';
 import pc from 'picocolors';
-import * as R from 'ramda';
 import type { z } from 'zod';
 import { fromError } from 'zod-validation-error';
-
-export const deprecatedCLIOptions = {
-  outDir: 'out-dir',
-  clean: 'clean',
-  tailwind: 'tailwind',
-  theme: {
-    colors: {
-      main: 'main-colors',
-      support: 'support-colors',
-      neutral: 'neutral-color',
-    },
-    typography: {
-      fontFamily: 'font-family',
-    },
-    borderRadius: 'border-radius',
-  },
-} as const;
-/** @deprecated  options support will be removed */
-function mapPathToOptionName(path: PropertyKey[]) {
-  // replace "themes.some-theme-name" with "theme" to match cliOptions object
-  const normalisedPath = path[0] === 'themes' ? ['theme', ...R.drop(2, path)] : path;
-  const option = R.path(normalisedPath as Array<string | number>, deprecatedCLIOptions);
-  if (typeof option !== 'string') {
-    return;
-  }
-  return option;
-}
 
 function makeFriendlyError(err: unknown) {
   try {
@@ -38,10 +10,7 @@ function makeFriendlyError(err: unknown) {
         issues
           .map((issue) => {
             const issuePath = issue.path.join('.');
-            const optionName = mapPathToOptionName(issue.path);
-
-            const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
-            return `Error in value ${pc.red(issuePath)}${optionMessage}:
+            return `Error in value ${pc.red(issuePath)}:
       ${issue.message}`;
           })
           .join('\n'),

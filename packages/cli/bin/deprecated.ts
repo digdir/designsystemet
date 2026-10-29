@@ -1,25 +1,16 @@
 import { createCommand } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import { checkAutomigrate } from '../src/automigrate.ts';
-import { convertToHex } from '../src/colors/index.ts';
-import type { CssColor } from '../src/colors/types.ts';
 import { automigrations } from '../src/migrations/index.ts';
 import { legacyBuildDir } from '../src/migrations/new-output-field.ts';
 import type { ConfigSchemaThemes } from '../src/schemas/schema.ts';
 import type { TailwindVersion } from '../src/tokens/process/output/tailwind.ts';
 import { dsfs } from '../src/utils/filesystem.ts';
-import {
-  deprecatedCLIOptions as cliOptions,
-  getConfigFile,
-  parseValidateAndOptsConfig,
-  requireThemes,
-} from './config.ts';
+import { getConfigFile, parseValidateAndOptsConfig, requireThemes } from './config.ts';
 import { configOption, dryOption, parseBoolean, verboseOption } from './options.ts';
 
 export const DEFAULT_TOKENS_CREATE_DIR = './design-tokens';
 const DEFAULT_TOKENS_BUILD_DIR = legacyBuildDir;
-const DEFAULT_FONT = 'Inter';
-const DEFAULT_THEME_NAME = 'theme';
 
 type TokenCommandDeps = {
   createDesignTokens: (options: { themes: ConfigSchemaThemes; outDir: string; clean?: boolean }) => Promise<void>;
@@ -56,7 +47,7 @@ export function makeTokenCommands({ createDesignTokens, buildCss }: TokenCommand
       `Output directory for built ${pc.blue('design-tokens')}`,
       DEFAULT_TOKENS_BUILD_DIR,
     )
-    .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before building tokens', parseBoolean, false)
+    .option('--clean [boolean]', 'Clean output directory before building tokens', parseBoolean, false)
     .addOption(dryOption(`Dry run for built ${pc.blue('design-tokens')}`))
     .addOption(verboseOption())
     .addOption(configOption())
@@ -82,62 +73,19 @@ export function makeTokenCommands({ createDesignTokens, buildCss }: TokenCommand
     .command('create')
     .description('[deprecated] Create Designsystemet tokens')
     .addOption(configOption())
-    .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
+    .option('--clean [boolean]', 'Clean output directory before creating tokens', parseBoolean, false)
     .addOption(dryOption(`Dry run for created ${pc.blue('design-tokens')}`))
     .option('--skip-check', 'Skip migration check', false) // TODO -- will be moved to global option in the future, since it applies to all commands, not just create
     .option('-y, --yes', 'Skip user prompts', false) // TODO -- will be moved to global option in the future, since it applies to all commands, not just create
-    /** Deprecated options */
     .option(
-      `-m, --${cliOptions.theme.colors.main} <name:hex...>`,
-      `Main colors (deprecated, use JSON config file instead)`,
-      parseColorValues,
-    )
-    .option(
-      `-s, --${cliOptions.theme.colors.support} <name:hex...>`,
-      `Support colors (deprecated, use JSON config file instead)`,
-      parseColorValues,
-    )
-    .option(
-      `-n, --${cliOptions.theme.colors.neutral} <hex>`,
-      `Neutral hex color (deprecated, use JSON config file instead)`,
-      convertToHex,
-    )
-    .option(
-      `-o, --${cliOptions.outDir} <string>`,
+      '-o, --out-dir <string>',
       `Output directory for created ${pc.blue('design-tokens')}`,
       DEFAULT_TOKENS_CREATE_DIR,
     )
-    .option(
-      `-f, --${cliOptions.theme.typography.fontFamily} <string>`,
-      `Font family (experimental, deprecated, use JSON config file instead)`,
-      DEFAULT_FONT,
-    )
-    .option(
-      `-b, --${cliOptions.theme.borderRadius} <number>`,
-      `Unitless base border-radius in px (deprecated, use JSON config file instead)`,
-      (radiusAsString) => Number(radiusAsString),
-      4,
-    )
-    .option('--theme <string>', 'Theme name (deprecated, use JSON config file instead)', DEFAULT_THEME_NAME)
     .action(async (opts, cmd) => {
-      if (
-        opts.mainColors ||
-        opts.supportColors ||
-        opts.neutralColor ||
-        (opts.borderRadius && opts.borderRadius !== 4) ||
-        (opts.theme && opts.theme !== DEFAULT_THEME_NAME) ||
-        (opts.fontFamily && opts.fontFamily !== DEFAULT_FONT)
-      ) {
-        console.warn(
-          pc.yellow(`\n ⚠️  Using CLI options for ${pc.bold(`colors, border radius, theme, or font family is deprecated`)} and will be removed in a future release.
-           \n ⚠️  Please use a JSON config file instead.`),
-        );
-      }
-
       if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
       }
-      const themeName = opts.theme;
 
       const { configFile, configFilePath } = await getConfigFile(opts.config);
 
@@ -157,7 +105,6 @@ export function makeTokenCommands({ createDesignTokens, buildCss }: TokenCommand
           });
 
       const config = await parseValidateAndOptsConfig(updatedConfigFile || configFile, {
-        theme: themeName,
         cmd,
         configFilePath,
       });
@@ -174,16 +121,9 @@ export function makeTokenCommands({ createDesignTokens, buildCss }: TokenCommand
   return tokenCmd;
 }
 
-function parseColorValues(value: string, previous: Record<string, CssColor> = {}): Record<string, CssColor> {
-  const [name, hex] = value.split(':');
-  previous[name] = convertToHex(hex);
-  return previous;
-}
-
 /**
- * Whether the config file uses the deprecated `outDir` or `clean` fields. False without a config file, since
- * `tokens create` can run on CLI options alone, and for a config file that can't be parsed, which is reported
- * when the config is validated.
+ * Whether the config file uses the deprecated `outDir` or `clean` fields. False without a config file, and for a
+ * config file that can't be parsed, which is reported when the config is validated.
  */
 function usesDeprecatedOutputFields(configFile: string): boolean {
   if (!configFile) {

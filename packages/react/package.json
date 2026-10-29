@@ -22,9 +22,6 @@
         "default": "./dist/cjs/index.cjs"
       }
     },
-    "./colors": {
-      "types": "./dist/esm/colors.d.ts"
-    },
     "./react-types": {
       "types": "./dist/esm/react-types.d.ts"
     }
@@ -47,9 +44,7 @@
     "@digdir/designsystemet-types": "workspace:*",
     "@digdir/designsystemet-web": "workspace:*",
     "@floating-ui/dom": "^1.8.0",
-    "@floating-ui/react": "0.26.23",
     "@radix-ui/react-slot": "^1.5.0",
-    "@tanstack/react-virtual": "^3.14.21",
     "clsx": "^2.1.1"
   },
   "devDependencies": {

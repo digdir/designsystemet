@@ -7,10 +7,7 @@ export type { AvatarProps } from './avatar/avatar';
 export { Avatar } from './avatar/avatar';
 
 export type { AvatarStackProps } from './avatar-stack/avatar-stack';
-export {
-  AvatarStack,
-  EXPERIMENTAL_AvatarStack,
-} from './avatar-stack/avatar-stack';
+export { AvatarStack } from './avatar-stack/avatar-stack';
 
 export type { BadgePositionProps, BadgeProps } from './badge';
 export { Badge, BadgePosition } from './badge';
@@ -30,14 +27,6 @@ export {
 
 export type { ButtonProps } from './button/button';
 export { Button } from './button/button';
-
-/* TODO: Remove this in the next major version */
-export type {
-  ComboboxEmptyProps,
-  ComboboxOptionProps,
-  ComboboxProps,
-} from './Combobox';
-export { Combobox, ComboboxEmpty, ComboboxOption } from './Combobox';
 
 export type { CardBlockProps, CardProps } from './card';
 export { Card, CardBlock } from './card';

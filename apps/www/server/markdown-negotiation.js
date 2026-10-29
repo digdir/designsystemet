@@ -106,7 +106,7 @@ function extractMainContent(html) {
     'style',
     'svg',
     '.l-sidebar-left',
-    '[data-toggle-group]',
+    '.ds-toggle-group',
     '[aria-live="polite"]',
     'aside', // table-of-contents sidebar
     '.toc-feedback', // "Har du innspill" feedback section

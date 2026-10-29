@@ -29,13 +29,6 @@ export const NoName = meta.story(() => <Avatar aria-label='Ola' />);
 
 export const Sizes = meta.story(() => (
   <>
-    <Avatar data-size='xs' aria-label='extra small'>
-      xs
-    </Avatar>
-    <Avatar data-size='xs' aria-label='extra small' />
-    <Avatar data-size='xs' aria-label='extra small'>
-      <HeartIcon aria-hidden />
-    </Avatar>
     <Avatar data-size='sm' aria-label='small'>
       sm
     </Avatar>
@@ -121,7 +114,7 @@ export const InDropdown = meta.story({
             <Dropdown.Button>
               <Badge.Position overlap='circle'>
                 <Badge data-color='danger' data-size='sm'></Badge>
-                <Avatar aria-hidden={true} data-size='xs'>
+                <Avatar aria-hidden={true} data-size='sm'>
                   ON
                 </Avatar>
               </Badge.Position>
@@ -130,7 +123,7 @@ export const InDropdown = meta.story({
           </Dropdown.Item>
           <Dropdown.Item>
             <Dropdown.Button>
-              <Avatar aria-hidden data-size='xs'>
+              <Avatar aria-hidden data-size='sm'>
                 <BriefcaseIcon />
               </Avatar>
               Sogndal kommune
@@ -151,11 +144,6 @@ export const InDropdown = meta.story({
 
 export const AsLink = meta.story(() => (
   <>
-    <Avatar aria-label='xs' data-size='xs' asChild>
-      <a href='#none'>
-        <HeartIcon aria-hidden />
-      </a>
-    </Avatar>
     <Avatar aria-label='sm' data-size='sm' asChild>
       <a href='#none'>
         <HeartIcon aria-hidden />
@@ -176,11 +164,6 @@ export const AsLink = meta.story(() => (
 
 export const AsButton = meta.story(() => (
   <>
-    <Avatar aria-label='xs' data-size='xs' asChild>
-      <button type='button'>
-        <HeartIcon aria-hidden />
-      </button>
-    </Avatar>
     <Avatar aria-label='sm' data-size='sm' asChild>
       <button type='button'>
         <HeartIcon aria-hidden />
