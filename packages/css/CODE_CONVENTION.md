@@ -1,12 +1,14 @@
 # CSS Code Convention
 
 ## Naming and classes
+
 - To the best of our abilities, use only one class
 - Use DOM structure and attributes to target other elements
 - Use `ds-` prefix for all classes
 - Use kebab-case for class names
 
 ## CSS Properties
+
 - Use `var(--ds-color-X)` where we want `data-color` to cascade
 - Only use `background` not `background-color`
 - Avoid using shorthands (`font:`, `border:`)
@@ -23,11 +25,13 @@
   - See [MDN's article on logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties)
 
 ## Structure
+
 - Custom properties should be set in the root element
 - Properties should come right after the custom properties
 - Use CSS nesting
 
 ## Other
+
 - Icons should be data-uri encoded, and set in custom properties ending in `-icon`
   - We place the icons using pseudo elements with `mask`
 - When using duplicate code, try to use `@composes`

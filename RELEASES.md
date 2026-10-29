@@ -4,7 +4,7 @@ We currently use [changesets](https://github.com/changesets/changesets) and [Cha
 
 ## Publishing a new package version
 
-***Make sure there are no changesets for `private: true` or ignored packages/apps, as this will break changesets publish.***
+_**Make sure there are no changesets for `private: true` or ignored packages/apps, as this will break changesets publish.**_
 Otherwise you will get an `Error: Validation Failed: {"resource":"PullRequest","code":"custom","message":"No commits between main and changeset-release/main"}` error in the GitHub action.
 
 1. Once a changeset is in `main`, the [Release workflow](https://github.com/digdir/designsystemet/actions/workflows/release.yml) picks up the changesets (inside `.changeset/`) and opens a PR with bumped versions and changelogs.
@@ -26,14 +26,17 @@ When working on new changes, you can publish a snapshot of your branch to npm fo
 3. The packages are published as `0.0.0-<branch>-<timestamp>` under the chosen tag (slashes in the branch name become dashes). If the branch has an open PR, the workflow comments the published versions on it. Install with, for example, `npm install @digdir/designsystemet-react@test`.
 
 ## Patching older versions
+
 Backporting a fix to an earlier version is rarely necessary and should generally be avoided. However, if required, the following steps outline how to proceed.
 
 ### Backporting
+
 Say we have released `1.1.0` and `2.0.0` on `main`, and we want to backport a patch to 1.1.x.
 
 1. Fetch the latest tags: `git fetch --tags`
 
 2. Create a branch for the backport from the target version's tag. For clarity, name the branch after the tagged version in the form `backport/major.minor.x`:
+
    ```sh
    git switch -c backport/1.1.x v1.1.0
    ```
@@ -51,6 +54,7 @@ Say we have released `1.1.0` and `2.0.0` on `main`, and we want to backport a pa
 6. Continue making patches if needed. You can keep working on the branch if you need to make new patches to 1.1.x.
 
 ### Should I merge the backport into main?
+
 It depends. Changes to parts that are not versioned, such as blog posts or patterns, may also be needed on `main`, so review whether they should be merged.
 
 Fixes to versioned code are usually not merged, because they are meant for older versions and might be incompatible with `main` (which may already have breaking changes). Instead:

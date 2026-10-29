@@ -28,12 +28,7 @@
       "!pnpm-lock.yaml",
       "!pnpm-workspace.yaml",
       "!**/README.md",
-      "!**/MIGRATION.md",
-      "!**/CONTRIBUTING.md",
-      "!**/CHANGELOG.md",
-      "!**/CODE_CONVENTION.md",
-      "!**/SECURITY.md",
-      "!**/RELEASES.md"
+      "!**/CHANGELOG.md"
     ]
   },
   "formatter": {
