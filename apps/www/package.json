@@ -15,7 +15,7 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@internal/components": "workspace:^",
     "@internal/digdir": "workspace:^",
-    "@navikt/aksel-icons": "8.19.2",
+    "@navikt/aksel-icons": "8.20.0",
     "@react-router/express": "8.5.0",
     "@react-router/node": "8.5.0",
     "clsx": "2.1.1",
@@ -25,7 +25,7 @@
     "express-rate-limit": "8.7.1",
     "gray-matter": "^4.0.3",
     "htmlfy": "1.1.0",
-    "i18next": "26.5.3",
+    "i18next": "26.5.11",
     "isbot": "5.2.2",
     "mdx-bundler": "10.1.1",
     "morgan": "1.12.1",
@@ -37,7 +37,7 @@
     "react-docgen-typescript": "2.4.0",
     "react-dom": "19.3.1",
     "react-dropzone": "20.1.4",
-    "react-i18next": "17.1.0",
+    "react-i18next": "17.1.9",
     "react-live": "4.1.8",
     "react-router": "8.5.0",
     "rehype-autolink-headings": "7.1.0",
@@ -55,6 +55,6 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "typescript": "6.0.3",
-    "vite": "8.3.4"
+    "vite": "8.3.5"
   }
 }
