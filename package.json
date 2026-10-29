@@ -50,7 +50,7 @@
     "@changesets/types": "^7.0.0",
     "@digdir/designsystemet": "workspace:^",
     "@testing-library/jest-dom": "7.0.1",
-    "@types/node": "24.19.2",
+    "@types/node": "26.6.5",
     "@vitejs/plugin-react": "6.1.2",
     "@vitest/browser-playwright": "5.0.5",
     "chromatic": "18.13.0",
