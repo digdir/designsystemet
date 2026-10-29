@@ -24,7 +24,16 @@
       "!**/wc/public",
       "!**/content/schemas/**/*.json",
       "!**/packages/cli/tests/**/*.css",
-      "!**/__snapshots__" // vitest file snapshots must keep the exact serialization the test produces
+      "!**/__snapshots__", // vitest file snapshots must keep the exact serialization the test produces
+      "!pnpm-lock.yaml",
+      "!pnpm-workspace.yaml",
+      "!**/README.md",
+      "!**/MIGRATION.md",
+      "!**/CONTRIBUTING.md",
+      "!**/CHANGELOG.md",
+      "!**/CODE_CONVENTION.md",
+      "!**/SECURITY.md",
+      "!**/RELEASES.md"
     ]
   },
   "formatter": {
@@ -62,6 +71,7 @@
       "correctness": {
         "useUniqueElementIds": "off",
         "useExhaustiveDependencies": "off",
+        "noComponentHookFactories": "off",
         "noUnusedImports": {
           "options": {},
           "level": "warn",

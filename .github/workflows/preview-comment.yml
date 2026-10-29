@@ -5,15 +5,15 @@ on:
       pr_number:
         required: true
         type: string
-        description: 'PR number for the comment'
+        description: "PR number for the comment"
       deployment_type:
         required: true
         type: string
-        description: 'Type of deployment (www, theme, storybook)'
+        description: "Type of deployment (www, theme, storybook)"
       deployment_url:
         required: true
         type: string
-        description: 'The deployment URL'
+        description: "The deployment URL"
 
 permissions:
   contents: read
