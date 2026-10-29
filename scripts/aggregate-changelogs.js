@@ -6,9 +6,15 @@
  *
  * Usage:
  *   node scripts/aggregate-changelogs.js '<published-packages JSON>' > notes.md
+ *   node scripts/aggregate-changelogs.js --current > RELEASE_NOTES.md
  *
  * `published-packages` is the output of changesets/action:
  *   [{ "name": "@digdir/designsystemet-react", "version": "1.20.1" }, ...]
+ *
+ * `--current` uses every package at the version in its package.json, and starts
+ * the notes with a `<!-- release: vX.Y.Z -->` marker. `pnpm version-packages`
+ * writes RELEASE_NOTES.md this way, so the notes can be edited in the release
+ * pull request before they are published.
  *
  * The exported helpers are also used by scripts/sync-changelogs.js to build the
  * consolidated changelog for www.
@@ -107,20 +113,35 @@ export async function aggregateChangelogs(pkgs, options) {
 
 async function main() {
   const raw = process.argv[2] ?? '';
+  const current = raw === '--current';
+  const pkgs = await findPackages();
   let published = [];
-  try {
-    published = JSON.parse(raw || '[]');
-  } catch {
-    console.error('Could not parse published packages JSON:', raw);
-    process.exit(1);
+  if (current) {
+    published = [...pkgs.values()].map(({ name, version }) => ({
+      name,
+      version,
+    }));
+  } else {
+    try {
+      published = JSON.parse(raw || '[]');
+    } catch {
+      console.error('Could not parse published packages JSON:', raw);
+      process.exit(1);
+    }
   }
   if (!Array.isArray(published) || published.length === 0) {
     console.error('No published packages given.');
     process.exit(1);
   }
 
-  const pkgs = await findPackages();
   const sections = [];
+  if (current) {
+    // Package versions are fixed (see .changeset/config.json), so any package's version is the release version
+    const version = published[0].version;
+    sections.push(
+      `<!-- release: v${version} -->\n<!-- The GitHub release notes for v${version}. Edit them here in the release pull request. They are created again from the changelogs whenever the release pull request is updated, which replaces any edits. -->`,
+    );
+  }
 
   for (const { name, version } of [...published].sort((a, b) =>
     a.name.localeCompare(b.name),
