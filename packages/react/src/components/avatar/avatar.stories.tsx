@@ -2,7 +2,7 @@ import { BriefcaseIcon, HeartIcon } from '@navikt/aksel-icons';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { cat3Img, themeColors } from '../../../stories/constants';
 
-import { Avatar, type AvatarProps, Badge, Dropdown } from '../';
+import { Avatar, type AvatarProps, Badge, Button, Dropdown } from '../';
 
 const meta = preview.meta({
   title: 'Komponenter/Avatar',
@@ -103,14 +103,15 @@ export const WithImage = meta.story(() => (
 
 export const InDropdown = meta.story({
   render: () => (
-    <Dropdown.TriggerContext>
-      <Dropdown.Trigger variant='tertiary'>
+    <>
+      <Button variant='tertiary' popovertarget='avatar-dropdown'>
         <Avatar aria-label='Ola Nordmann' data-size='sm'>
           ON
         </Avatar>
         Velg Profil
-      </Dropdown.Trigger>
+      </Button>
       <Dropdown
+        id='avatar-dropdown'
         placement='bottom-end'
         autoPlacement={false}
         data-size='md'
@@ -138,7 +139,7 @@ export const InDropdown = meta.story({
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.TriggerContext>
+    </>
   ),
 
   parameters: {
