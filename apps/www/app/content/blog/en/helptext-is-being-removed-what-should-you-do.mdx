@@ -31,7 +31,7 @@ We're working on clarifying when and how help text should be integrated into int
 
 ## Code
 
-You can use the code below to compose your own `HelpText` component. The CSS snippet includes an icon; the class should be added to `Popover.Trigger`.
+You can use the code below to compose your own `HelpText` component. The CSS snippet includes an icon; the class should be added to the `Button` that opens the `Popover`.
 
 ### CSS
 
@@ -103,19 +103,22 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
     { placement = "right", children, ...rest },
     ref
   ) {
+    const popoverId = useId();
+
     return (
-      <Popover.TriggerContext>
-        <Popover.Trigger
+      <>
+        <Button
           className="ds-helptext"
           ref={ref}
           variant="tertiary"
           data-color="info"
+          popovertarget={popoverId}
           {...rest}
         />
-        <Popover placement={placement} data-color="info">
+        <Popover id={popoverId} placement={placement} data-color="info">
           {children}
         </Popover>
-      </Popover.TriggerContext>
+      </>
     );
   }
 );

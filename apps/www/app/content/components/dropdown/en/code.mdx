@@ -36,18 +36,10 @@ You can control positioning with attributes on the dropdown itself:
 
 ### `popovertarget`
 
-When you use `popover` without `Dropdown.TriggerContext`, you link yourself trigger and `popover`.
-Then `popovertarget` is used in lowercase, so that all versions of React correctly render the attribute.
+You connect the trigger and `Dropdown` yourself with `id` and `popovertarget`.
+`popovertarget` is used in lowercase, so that all versions of React correctly render the attribute.
 When using `@digdir/designsystemet-react` we extend `@types/react-dom` to accept this.
 
-
-### Without `TriggerContext`
-
-`Dropdown` uses the popover API, so you can use `Dropdown` without `Dropdown.Trigger`.
-
-You must then add `popovertarget={id}` to `Dropdown`, and `id` to `Dropdown`.
-
-<Story story="WithoutTrigger" language="react"/>
 
 ### Controlled
 

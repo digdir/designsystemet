@@ -88,12 +88,13 @@ export const Controlled = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Dropdown.TriggerContext>
-      <Dropdown.Trigger>
+    <>
+      <Button popovertarget='dropdown-controlled'>
         Dropdown
         {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
-      </Dropdown.Trigger>
+      </Button>
       <Dropdown
+        id='dropdown-controlled'
         open={open}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
@@ -111,7 +112,7 @@ export const Controlled = () => {
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.TriggerContext>
+    </>
   );
 };
 
@@ -119,12 +120,17 @@ export const ControlledEn = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Dropdown.TriggerContext>
-      <Dropdown.Trigger onClick={() => setOpen(!open)}>
+    <>
+      <Button popovertarget='dropdown-controlled-en'>
         Dropdown
         {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
-      </Dropdown.Trigger>
-      <Dropdown open={open} onClose={() => setOpen(false)}>
+      </Button>
+      <Dropdown
+        id='dropdown-controlled-en'
+        open={open}
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+      >
         <Dropdown.List>
           <Dropdown.Item>
             <Dropdown.Button onClick={() => setOpen(false)}>
@@ -138,24 +144,6 @@ export const ControlledEn = () => {
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.TriggerContext>
-  );
-};
-
-export const TriggerContext = () => {
-  return (
-    <Dropdown.TriggerContext>
-      <Dropdown.Trigger>Trigger</Dropdown.Trigger>
-      <Dropdown>
-        <Dropdown.List>
-          <Dropdown.Item>
-            <Dropdown.Button>Item 1</Dropdown.Button>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Dropdown.Button>Item 2</Dropdown.Button>
-          </Dropdown.Item>
-        </Dropdown.List>
-      </Dropdown>
-    </Dropdown.TriggerContext>
+    </>
   );
 };
