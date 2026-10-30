@@ -62,7 +62,7 @@ jobs:
           edit-mode: replace
           body: |
             ${{ env.COMMENT_MARKER }}
-            🎨 **Does this need the same change in Figma?**
+            **Does this need the same change in Figma?**
 
             This PR changes component styles or tokens. If the Figma UI kit needs the same change, make it in Figma, run `pnpm changeset` and select `figma-ui-kit` to describe it, and add the `${{ env.FIGMA_LABEL }}` label.
 
