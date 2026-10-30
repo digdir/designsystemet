@@ -228,48 +228,51 @@ const Header = ({
             {searchConfig && (
               <SearchTrigger onClick={searchConfig.onSearchClick} />
             )}
-            <Dropdown.TriggerContext>
-              <Dropdown.Trigger
-                variant='tertiary'
-                data-color='neutral'
-                className={classes.toggleButton}
-                onClick={() => setLangOpen(!langOpen)}
-                lang='en'
-                aria-label='Language'
-              >
-                <LanguageIcon aria-hidden />
-                <span aria-hidden>Language</span>
-              </Dropdown.Trigger>
+            <Button
+              variant='tertiary'
+              data-color='neutral'
+              className={classes.toggleButton}
+              onClick={() => setLangOpen(!langOpen)}
+              lang='en'
+              aria-label='Language'
+              commandfor='dropdown-lang'
+            >
+              <LanguageIcon aria-hidden />
+              <span aria-hidden>Language</span>
+            </Button>
 
-              <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
-                <Dropdown.List>
-                  <Dropdown.Item>
-                    <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                      <Link
-                        to={langPaths.no}
-                        lang='no'
-                        hrefLang='no'
-                        aria-current={pathname.startsWith('/no')}
-                      >
-                        Norsk
-                      </Link>
-                    </Dropdown.Button>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                      <Link
-                        to={langPaths.en}
-                        lang='en'
-                        hrefLang='en'
-                        aria-current={pathname.startsWith('/en')}
-                      >
-                        English
-                      </Link>
-                    </Dropdown.Button>
-                  </Dropdown.Item>
-                </Dropdown.List>
-              </Dropdown>
-            </Dropdown.TriggerContext>
+            <Dropdown
+              id='dropdown-lang'
+              open={langOpen}
+              onClose={() => setLangOpen(false)}
+            >
+              <Dropdown.List>
+                <Dropdown.Item>
+                  <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                    <Link
+                      to={langPaths.no}
+                      lang='no'
+                      hrefLang='no'
+                      aria-current={pathname.startsWith('/no')}
+                    >
+                      Norsk
+                    </Link>
+                  </Dropdown.Button>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                    <Link
+                      to={langPaths.en}
+                      lang='en'
+                      hrefLang='en'
+                      aria-current={pathname.startsWith('/en')}
+                    >
+                      English
+                    </Link>
+                  </Dropdown.Button>
+                </Dropdown.Item>
+              </Dropdown.List>
+            </Dropdown>
             {themeSwitcher && (
               <Tooltip
                 content={t('header.theme-toggle', {
