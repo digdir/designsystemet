@@ -7,8 +7,8 @@
   --_ds-floating: var(--dsc-tooltip-placement); /* "proxy" so popover.ts works even if changing --ds- prefix */
   --_ds-floating-arrow-size: var(--dsc-tooltip-arrow-size);
 
-  --dsc-tooltip-background: var(--ds-color-neutral-text-default);
-  --dsc-tooltip-color: var(--ds-color-neutral-background-default);
+  --dsc-tooltip-background: var(--ds-color-text-default);
+  --dsc-tooltip-color: var(--ds-color-background-default);
   --dsc-tooltip-border-radius: var(--ds-border-radius-default);
   --dsc-tooltip-padding: var(--ds-size-1) var(--ds-size-2);
   --dsc-tooltip-arrow-size: var(--ds-size-2);

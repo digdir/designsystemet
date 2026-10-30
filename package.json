@@ -22,7 +22,7 @@
     "www": "pnpm --filter @web/www dev",
     "web": "pnpm --filter @digdir/designsystemet-web start",
     "themebuilder": "pnpm --filter @web/themebuilder dev",
-    "build": "pnpm --filter @digdir/* build && pnpm --filter figma-plugin build",
+    "build": "pnpm --filter @digdir/* build && pnpm build:plugin",
     "build:all": "pnpm -r build",
     "build:react": "pnpm --filter @digdir/designsystemet-react build",
     "build:css": "pnpm --filter @digdir/designsystemet-css build",

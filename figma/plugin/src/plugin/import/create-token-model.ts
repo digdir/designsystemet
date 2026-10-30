@@ -52,7 +52,7 @@ export async function createTokenModel(
 
   // Color names are derived from the generated `semantic/color/<name>` token sets so
   // the auto-generated severity colors (danger, info, success, warning) are included
-  // alongside the user-defined colors and neutral.
+  // alongside the user-defined colors.
   const semanticColorNames = new Set<string>();
 
   await onStep('Creating tokens');

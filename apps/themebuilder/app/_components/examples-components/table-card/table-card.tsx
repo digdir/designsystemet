@@ -69,7 +69,7 @@ export const TableCard = () => {
         }}
       >
         {' '}
-        <Table data-size='sm' border data-color='neutral'>
+        <Table data-size='sm' border>
           <Table.Head>
             <Table.Row>
               <Table.HeaderCell onClick={function Ya() {}} sort='none'>
