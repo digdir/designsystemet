@@ -27,7 +27,7 @@ Dialog har to klassenavn du kan bruke.
 
 ### Åpne og lukke dialogen
 Bruk `command` og `commandfor` for å koble `<dialog>`-elementet til en trigger. 
-Benytt verdiene `command="show-modal"` eller `command="--show-non-modal"` for modal med eller uten bakgrunnsdimming og `commandfor="DIALOG-ID"` for å koble triggeren til dialogen.
+Benytt verdiene `command="show-modal"` eller `command="--show-non-modal"` for modal med eller uten bakgrunnsdimming og `commandfor="dialog-id"` for å koble triggeren til dialogen.
 
 Designsystemet legger automatisk til `aria-haspopup="dialog"` på knapper som åpner en dialog.
 
@@ -96,30 +96,15 @@ Dersom knappen er direkte barn av dialogen og første element, vil den flyte til
 ```tsx
 import { Button, Dialog } from '@digdir/designsystemet-react';
 
-/* med context */
-<Dialog.TriggerContext>
-  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-  <Dialog>
-    Dialog content
-  </Dialog>
-</Dialog.TriggerContext>
-
-/* uten context */
 <Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
 <Dialog id="my-dialog">
   Dialog content
 </Dialog>
 ```
 
-### `TriggerContext`
+### Med ref
 
-Bruk `Dialog.TriggerContext` og `Dialog.Trigger` sammen, så kan `Dialog` kommunisere uten å måtte bruke `id` og `commandfor`.
-
-<Story story="TriggerContext" language="react" />
-
-### Med ref og uten context
-
-Dersom du ikke vil bruke `Dialog.TriggerContext`, kan du bruke `ref` for å åpne dialogen fra en ekstern trigger.
+Du kan også bruke `ref` for å åpne dialogen fra en ekstern trigger.
 Du bruker da native metoder på `<dialog>`-elementet, som `showModal()` eller `show()`.
 
 <Story story="WithRef" language="react" />

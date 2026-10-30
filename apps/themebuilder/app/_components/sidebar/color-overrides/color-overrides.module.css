@@ -130,3 +130,7 @@
   border: none;
   border-radius: var(--ds-border-radius-xs);
 }
+
+.overridesBtn {
+  width: 100%;
+}

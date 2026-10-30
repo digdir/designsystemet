@@ -10,6 +10,8 @@ export type DialogTriggerProps = ComponentPropsWithRef<typeof Button>;
 /**
  * DialogTrigger component, used within a Dialog.TriggerContext to open a dialog.
  *
+ * @deprecated Will be removed in the next major version. Use a `Button` with `command="show-modal"` (or `command="--show-non-modal"`) and `commandfor` set to the dialog's `id` instead.
+ *
  * @example
  * <Dialog.TriggerContext>
  *   <Dialog.Trigger>Open Dialog</Dialog.Trigger>

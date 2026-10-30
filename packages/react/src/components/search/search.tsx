@@ -9,6 +9,8 @@ export type SearchProps = DefaultProps & HTMLAttributes<DSSuggestionElement>;
 /**
  * Search component, use to display different variations of a search input
  *
+ * @deprecated Will be removed in the next major version. Use `Input` with `type="search"` in a `Field` instead, or `EXPERIMENTAL_Suggestion` if you need a clear button.
+ *
  * @example with button
  * <Search>
  *   <Search.Input aria-label='Søk' />

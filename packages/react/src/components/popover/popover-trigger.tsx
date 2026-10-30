@@ -34,6 +34,8 @@ export type PopoverTriggerProps =
 /**
  * PopoverTrigger component, used to trigger a popover.
  *
+ * @deprecated Will be removed in the next major version. Use a `Button` with `popovertarget` set to the popover's `id` instead. For an inline trigger, use a `<button>` with `data-popover="inline"`.
+ *
  * @example
  * <PopoverTriggerContext>
  *   <PopoverTrigger>Open Popover</PopoverTrigger>
