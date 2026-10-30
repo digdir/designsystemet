@@ -77,4 +77,4 @@ jobs:
           edit-mode: replace
           body: |
             ${{ env.COMMENT_MARKER }}
-            🎨 ✅ This PR has a changeset for `figma-ui-kit`.
+            ✅ This PR has a changeset for `figma-ui-kit`.
