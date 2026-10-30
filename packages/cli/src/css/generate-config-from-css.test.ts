@@ -27,7 +27,6 @@ const themeWithOverrides: ThemeInput = {
       'my-brand': { 'text-default': { light: '#111111', dark: '#eeeeee' } },
     },
     severity: { danger: '#aa0000' },
-    linkVisited: { light: '#123456' },
     focus: { outer: { dark: '#abcdef' } },
   },
 };
@@ -121,7 +120,6 @@ describe('generateConfigFromCSS', () => {
       `Theme "test": The CSS was built with v0.0.1, and this is v${pkg.version}. Colors the two versions generate differently are kept as overrides.`,
       'Theme "test": Color "neutral" has only its base color in light, so importing the config generates the rest from it.',
       'Theme "test": Color "neutral" has no colors in dark, so importing the config generates them from the base color.',
-      'Theme "test": The visited link color has no value in light and dark, so importing the config uses the default.',
       'Theme "test": The inner focus color has no value in light and dark, so importing the config uses the default.',
       'Theme "test": The outer focus color has no value in light and dark, so importing the config uses the default.',
       'Theme "test": Typography set "secondary" uses font family Georgia, but the config has one font family for every set, so IBM Plex Sans from "primary" is used.',
