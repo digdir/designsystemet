@@ -52,7 +52,7 @@ type Dialog = typeof DialogParent & {
 };
 
 /**
- * Dialog component, used to display a Dialog dialog.
+ * Dialog component, used to display a dialog.
  *
  * @example
  * <Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
