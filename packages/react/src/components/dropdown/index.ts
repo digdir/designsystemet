@@ -10,6 +10,8 @@ type Dropdown = typeof DropdownRoot & {
   /**
    * Dropdown.TriggerContext enables use of the `.Trigger` for the Dropdown component.
    *
+   * @deprecated Will be removed in the next major version. Connect a `Button` to the dropdown with `popovertarget` set to the dropdown's `id` instead.
+   *
    * @example
    * <Dropdown.TriggerContext>
    *  <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
@@ -26,6 +28,8 @@ type Dropdown = typeof DropdownRoot & {
   TriggerContext: typeof DropdownTriggerContext;
   /**
    * Dropdown.Trigger component, used within a Dropdown.TriggerContext to open a Dropdown.
+   *
+   * @deprecated Will be removed in the next major version. Use a `Button` with `popovertarget` set to the dropdown's `id` instead.
    *
    * @example
    * <Dropdown.TriggerContext>
@@ -94,20 +98,7 @@ type Dropdown = typeof DropdownRoot & {
 /**
  * Dropdown component, used to display a list of options.
  *
- * @example with TriggerContext
- * <Dropdown.TriggerContext>
- *   <Dropdown.Trigger>Dropdown trigger</Dropdown.Trigger>
- *   <Dropdown placement='bottom-end'>
- *     <Dropdown.Heading>Dropdown</Dropdown.Heading>
- *     <Dropdown.List>
- *       <Dropdown.Item>
- *         <Dropdown.Button>Option</Dropdown.Button>
- *       </Dropdown.Item>
- *     </Dropdown.List>
- *   </Dropdown>
- * </Dropdown.TriggerContext>
- *
- * @example without TriggerContext
+ * @example
  * <Button popovertarget="my-dropdown">Trigger</Button>
  * <Dropdown id="my-dropdown">
  *   <Dropdown.Heading>Heading</Dropdown.Heading>

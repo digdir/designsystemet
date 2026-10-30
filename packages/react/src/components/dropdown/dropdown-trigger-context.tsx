@@ -8,6 +8,8 @@ export type DropdownTriggerContextProps = {
 /**
  * DropdownTriggerContext enables use of the `.Trigger` for the Dropdown component.
  *
+ * @deprecated Will be removed in the next major version. Connect a `Button` to the dropdown with `popovertarget` set to the dropdown's `id` instead.
+ *
  * @example
  * <DropdownTriggerContext>
  *  <DropdownTrigger>Dropdown</DropdownTrigger>

@@ -12,6 +12,8 @@ export type DialogTriggerContextProps = { children: ReactNode };
 /**
  * DialogTriggerContext component, used to provide a context for a dialog trigger.
  *
+ * @deprecated Will be removed in the next major version. Connect a `Button` to the dialog with `command="show-modal"` and `commandfor` set to the dialog's `id` instead.
+ *
  * @example
  * <Dialog.TriggerContext>
  *   <Dialog.Trigger>Open Dialog</Dialog.Trigger>
