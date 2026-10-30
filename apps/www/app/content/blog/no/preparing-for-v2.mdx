@@ -17,49 +17,52 @@ Bruker du ingen av de utgåtte løsningene, blir oppgraderingen enkel.
 
 ## Dette endres i v2
 
-### `@digdir/designsystemet-react`
+Endringene er gruppert etter hvem de gjelder for. **HTML og React** gjelder både når du bruker CSS- og web-pakken direkte og når du bruker React-komponentene. **React** gjelder bare `@digdir/designsystemet-react`. Endringer merket **kun visuelt** påvirker hvordan ting ser ut, men ikke hvordan de fungerer.
 
-**Komponenter og hjelpefunksjoner**
+### Fjernet fra React
 
-- `EXPERIMENTAL_AvatarStack` får nytt navn, `AvatarStack`, fordi komponenten ikke lenger er eksperimentell. Endre importen når du oppgraderer til v2.
-- `Combobox`: bruk [`Suggestion`](/no/components/docs/suggestion/overview).
-- `RovingFocusRoot` og `RovingFocusItem`: bruk attributtet [`focusgroup`](/no/components/utilities/focusgroup).
-- `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` og typen `MergeRight`: bruk et eget hjelpebibliotek eller lag din egen funksjon.
-- Typen `Size` fra React-pakken og modulen `@digdir/designsystemet-react/colors`: bruk `@digdir/designsystemet-types`.
+- **AvatarStack:** `EXPERIMENTAL_AvatarStack` får nytt navn, `AvatarStack`, fordi komponenten ikke lenger er eksperimentell. Endre importen når du oppgraderer til v2.
+- **Combobox:** Bruk [`Suggestion`](/no/components/docs/suggestion/overview).
+- **Dialog, Dropdown og Popover:** `TriggerContext` og `Trigger` fjernes. Koble til en `Button` med `popovertarget` satt til `id`-en til dropdownen eller popoveren, eller med `command="show-modal"` og `commandfor` satt til `id`-en til dialogen.
+- **RovingFocusRoot og RovingFocusItem:** Bruk attributtet [`focusgroup`](/no/components/utilities/focusgroup).
+- **Search:** `Search`, `Search.Input`, `Search.Clear` og `Search.Button` fjernes. Bruk [`Input`](/no/components/docs/input/overview) med `type="search"` i en `Field`, eller `Suggestion` med `Suggestion.Clear` hvis du trenger en tøm-knapp.
+- **Hjelpefunksjoner:** `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` og typen `MergeRight` fjernes. Bruk et eget hjelpebibliotek eller lag din egen funksjon.
+- **Typer:** Typen `Size` og modulen `@digdir/designsystemet-react/colors` fjernes. Bruk `@digdir/designsystemet-types`.
 
-**Props**
+### HTML og React: endrer oppførsel
 
-- **Avatar:** `variant="square"` erstattes av CSS-variabelen `--dsc-avatar-radius`. `initials` og `data-initials` erstattes av tekst som barn.
-- **AvatarStack:** `gap`, `avatarSize` og `overlap` erstattes av CSS-variablene `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` og `--dsc-avatar-stack-overlap`. `suffix` erstattes av en `<li>` med tekst til slutt.
-- **Dialog:** `asChild` fjernes. `data-command="close"` erstattes av `command="close"` og `commandfor="DIALOG-ID"`.
-- **Field, ErrorSummary og Pagination:** `asChild` fjernes.
-- **Field.Counter:** `hint` fjernes.
-- **Label:** `weight` fjernes. Field setter riktig tekstvekt automatisk.
+- **Avatar:** `initials` og `data-initials` erstattes av tekst som barn.
+- **AvatarStack:** `suffix` erstattes av en `<li>` med tekst til slutt.
+- **Dialog:** `data-command="close"` erstattes av `command="close"` og `commandfor="DIALOG-ID"`.
+- **Field.Counter:** `hint` fjernes. Den har ikke hatt noen effekt på en stund.
+- **Field og Fieldset:** En `<p>` rett etter `<label>` eller `<legend>` blir ikke lenger stilt som beskrivelse. Bruk `data-field="description"`.
+- **SkipLink:** `.ds-skiplink` og `skiplink.css` erstattes av `.ds-skip-link` og `skip-link.css`.
+- **Suggestion og Search:** `.ds-search`, `search.css` og `--dsc-search-*`-variablene erstattes av `.ds-suggestion`, `suggestion.css` og tilsvarende `--dsc-suggestion-*`-variabler. Det gamle `<del>`-elementet for tømming støttes ikke lenger. Bruk `<button type="reset">` (`Suggestion.Clear` i React). `aria-label` på `Suggestion.Clear` erstattes av `data-sr-clear`, og `singular` og `plural` på `Suggestion.List` erstattes av `data-sr-singular` og `data-sr-plural` på `Suggestion`.
+- **ToggleGroup:** `.ds-togglegroup` og `togglegroup.css` erstattes av `.ds-toggle-group` og `toggle-group.css`. `data-toggle-group` og variabelen `--dsc-togglegroup-label` erstattes av `aria-label` eller `aria-labelledby`. Uten React bruker du `focusgroup="radiogroup"` med `aria-label`.
+
+### React: endrer oppførsel
+
+- **Dialog, Field, ErrorSummary og Pagination:** `asChild` fjernes.
+- **Pagination:** Aktivt element får ikke lenger egen stil når du setter `data-variant="tertiary"` manuelt.
 - **Select:** `readOnly` erstattes av `aria-readonly`.
-- **Skeleton:** `characters` fjernes. Bruk `width` eller tekst som barn.
-- **Suggestion og Search:** `aria-label` på `Suggestion.Clear` og `Search.Clear` erstattes av `data-sr-clear`. `singular` og `plural` på `Suggestion.List` erstattes av `data-sr-singular` og `data-sr-plural` på `Suggestion`.
-- **ToggleGroup:** `data-toggle-group` erstattes av `aria-label` eller `aria-labelledby`. `icon` på `ToggleGroup.Item` fjernes.
+- **ToggleGroup:** `icon` på `ToggleGroup.Item` fjernes. Barn med `data-variant="tertiary"` satt manuelt får ikke lenger egen stil når de er aktive.
 - **Tooltip:** `open` fjernes, bruk [`Popover`](/no/components/docs/popover/overview) i stedet. `type` fjernes, fordi den ikke har noen effekt.
 
-### `@digdir/designsystemet-css`
+### HTML og React: kun visuelt
 
-- `.ds-skiplink` erstattes av `.ds-skip-link`, og `.ds-togglegroup` erstattes av `.ds-toggle-group`.
-- Enkeltfilen `search.css` erstattes av `suggestion.css`, og `--dsc-search-*`-variablene erstattes av tilsvarende `--dsc-suggestion-*`-variabler.
-- **Avatar:** `data-initials`, `data-variant="square"` og `data-size="xs"` fjernes.
-- **Label:** `data-weight` fjernes.
+- **Avatar:** `variant="square"` og `data-variant="square"` erstattes av CSS-variabelen `--dsc-avatar-radius`. `data-size="xs"` fjernes.
+- **AvatarStack:** Firkantede avatarer i stabelen overstyrer ikke lenger radiusen til stabelen. Bruk CSS-variabelen `--dsc-avatar-stack-radius`.
 - **Details:** Den feilstavede variabelen `--dsc-details-border-block-wdith` erstattes av `--dsc-details-border-block-width`.
-- **Field og Fieldset:** En `<p>` rett etter `<label>` eller `<legend>` blir ikke lenger stilt som beskrivelse. Bruk `data-field="description"`.
-- **Link:** Variabelen `--dsc-link-background--active` fjernes.
-- **Suggestion:** Det gamle `<del>`-elementet for tømming støttes ikke lenger. Bruk `<button type="reset">` (`Suggestion.Clear` i React).
-- **ToggleGroup:** Variabelen `--dsc-togglegroup-label` fjernes. Bruk `aria-label` eller `aria-labelledby`.
 - **Dialog:** Lukkeknappen må bruke `command="close"`. Den eldre `<form method="dialog">`-varianten fjernes.
-- **Pagination og ToggleGroup:** Aktivt element får ikke lenger egen stil når du setter `data-variant="tertiary"` manuelt.
+- **Label:** `weight` og `data-weight` fjernes. Field setter riktig tekstvekt automatisk.
+- **Link:** Variabelen `--dsc-link-background--active` fjernes.
 
-### `@digdir/designsystemet-web`
+### React: kun visuelt
 
-- `data-toggle-group` erstattes av `focusgroup="radiogroup"` med `aria-label`.
+- **AvatarStack:** `gap`, `avatarSize` og `overlap` erstattes av CSS-variablene `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` og `--dsc-avatar-stack-overlap`.
+- **Skeleton:** `characters` fjernes. Bruk `width` eller tekst som barn.
 
-### `@digdir/designsystemet`
+### CLI
 
 - CLI-valgene `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` og `--theme` fjernes. Bruk en [konfigurasjonsfil](/no/fundamentals/start-here/own-theme).
 - `@digdir/designsystemet/types` erstattes av `@digdir/designsystemet-types`.
