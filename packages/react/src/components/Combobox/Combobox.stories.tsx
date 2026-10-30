@@ -315,9 +315,11 @@ export const InDialog = meta.story({
     const [value, setValue] = useState<string[]>([]);
 
     return (
-      <Dialog.TriggerContext>
-        <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-        <Dialog style={{ overflow: 'visible' }}>
+      <>
+        <Button command='show-modal' commandfor='combobox-dialog'>
+          Open Dialog
+        </Button>
+        <Dialog id='combobox-dialog' style={{ overflow: 'visible' }}>
           <Heading data-size='xs' style={{ marginBottom: 'var(--ds-size-2)' }}>
             Combobox i Dialog
           </Heading>
@@ -340,7 +342,7 @@ export const InDialog = meta.story({
             ))}
           </Combobox>
         </Dialog>
-      </Dialog.TriggerContext>
+      </>
     );
   },
 

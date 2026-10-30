@@ -2,8 +2,8 @@ import {
   Avatar,
   Button,
   Heading,
-  Search,
   Select,
+  EXPERIMENTAL_Suggestion as Suggestion,
   Table,
 } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
@@ -54,13 +54,14 @@ export const TableCard = () => {
           </Button>
         </div>
         <div className={classes.toolbarRight}>
-          <Search data-size='sm'>
-            <Search.Input
+          <Suggestion data-size='sm'>
+            <Suggestion.Input
+              type='search'
               aria-label={t('overview.search')}
               placeholder={t('overview.search-user')}
             />
-            <Search.Clear />
-          </Search>
+            <Suggestion.Clear />
+          </Suggestion>
         </div>
       </div>
       <div
