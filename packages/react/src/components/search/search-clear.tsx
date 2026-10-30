@@ -17,6 +17,8 @@ export type SearchClearProps = MergeRight<
 /**
  * SearchClear component, used to display a clear button when the search input is not empty.
  *
+ * @deprecated Will be removed in the next major version. Use `Suggestion` with `Suggestion.Clear` instead.
+ *
  * @example
  * <Search>
  *   <SearchInput aria-label='Søk' />
