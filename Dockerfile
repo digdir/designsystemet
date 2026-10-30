@@ -21,7 +21,9 @@ WORKDIR /usr/src/app
 ARG PORT
 ARG HOST
 ARG APP_ENV
+ARG DOCUMENTATION_VERSION
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
+ENV DOCUMENTATION_VERSION=$DOCUMENTATION_VERSION
 # RR v8 prerenders via an in-process Vite preview server over HTTP. Force IPv4
 # localhost resolution so the prerender can connect to it (avoids
 # `ECONNREFUSED 127.0.0.1` when `localhost` resolves to IPv6 in the container).
@@ -32,6 +34,8 @@ RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 FROM base AS www
 COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
+ARG DOCUMENTATION_VERSION
+ENV DOCUMENTATION_VERSION=$DOCUMENTATION_VERSION
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
 CMD [ "node", "server.js" ]

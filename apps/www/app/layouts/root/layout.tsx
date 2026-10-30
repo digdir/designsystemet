@@ -10,6 +10,7 @@ import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
 import { SearchDialog } from '~/_components/search-dialog';
+import { VersionBanner } from '~/_components/version-banner/version-banner';
 import { useChangeLanguage } from '~/_hooks/use-change-language';
 import { useShowConsentBanner } from '~/_hooks/use-show-consent-banner';
 import i18n from '~/i18n';
@@ -72,6 +73,7 @@ export default function RootLayout() {
   return (
     <>
       <div>
+        <VersionBanner />
         {showBanner && <ConsentBanner lang={lang} />}
         <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
       </div>
@@ -123,7 +125,10 @@ const ErrorWrapperRoot = ({
 
   return (
     <>
-      <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
+      <div>
+        <VersionBanner />
+        <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
+      </div>
       <Header
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}

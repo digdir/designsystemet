@@ -9,6 +9,10 @@ on:
         options:
           - production
           - next
+      documentation_version:
+        type: string
+        required: false
+        description: "Archived major version (e.g. v1); select production. Leave empty for the current site."
 
 permissions:
   id-token: write
@@ -20,6 +24,7 @@ jobs:
     uses: $/.github/workflows/azure-deploy-www.yml
     with:
       environment: ${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
+      documentation_version: ${{ inputs.documentation_version }}
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}

@@ -1,0 +1,7 @@
+.banner {
+  --dsc-alert-padding-block: var(--ds-size-3);
+  --dsc-alert-padding-inline-end: var(--content-inline-padding);
+  --dsc-alert-border-radius: 0;
+
+  border-width: 0 0 var(--ds-border-width-default);
+}
