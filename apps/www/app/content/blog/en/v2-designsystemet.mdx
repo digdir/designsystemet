@@ -1,0 +1,68 @@
+---
+title: Designsystemet v2 is here
+description: A new Figma plugin, one command for your theme in code, muted colors, and a cleanup of everything deprecated in v1.
+date: 2026-10-27
+author: Designsystemet
+imageSrc: /img/blog/v2-designsystemet/v2-designsystemet.webp
+imageAlt: The Designsystemet logo, with an arrow to a plugin window showing colors, text samples and an Import button, and on to the Figma logo
+---
+
+Designsystemet v2 makes it easier to get your theme from the Theme Builder into Figma and code. It also adds muted colors to every color scale, and removes everything marked as deprecated in v1.
+
+## Your theme in Figma with one upload
+
+Set up your theme in the [Theme Builder](https://theme.designsystemet.no), and upload the config file to the new Designsystemet plugin. It creates all the variables and styles that the components in the Designsystemet Figma file use.
+
+- Import again when your theme changes. Only what has changed is updated, and the layers that use the variables and styles stay connected.
+- The plugin only changes what it created itself, so your own variables and styles stay.
+- Variables in Figma show developers the correct CSS variable in Dev Mode.
+
+Get the plugin in [Figma Community](https://www.figma.com/community/plugin/1687841992393312960/designsystemet), and read more in [the plugin documentation](/en/fundamentals/figma/plugin).
+
+## Several themes in one config
+
+The Theme Builder now lets you work on several themes in one config file, for example for different services or brands. Switch between them with the **Theme** menu, and add, rename or delete themes under **Edit themes**. **Use theme** gives you the config with every theme, ready for the Figma plugin and the CLI.
+
+## One command for your theme in code
+
+Run this in the folder with your `designsystemet.config.json`:
+
+```bash
+npx @digdir/designsystemet@latest
+```
+
+This creates CSS for all the themes in your config file. With the `output` field in the config file, you choose what the CLI creates, and where: CSS, type declarations, Design Tokens and Tailwind files. See [the CLI documentation](/en/fundamentals/code/cli-config#output) for all the options.
+
+## Muted colors
+
+Every color scale now has three new colors, so it has 19 instead of 16:
+
+- `surface-muted`: a low-chroma version of `surface-tinted`
+- `border-muted`: a low-chroma version of `border-default`
+- `text-muted`: a low-chroma version of `text-subtle`
+
+The muted colors have the same contrast as the colors they are based on, but with only a hint of the color. This gives you quiet surfaces, borders and text in the same hue as the rest of the component, without needing a separate neutral color scale.
+
+The components now use the muted colors where they used to use `neutral`. This means:
+
+- `neutral` is no longer required in your theme. A theme needs at least one color that isn't a severity color (`success`, `warning`, `danger` or `info`).
+- Components like `Dialog` and `Tooltip` now follow `data-color` like the other components, instead of always being neutral.
+
+Read more about the colors in [the color documentation](/en/fundamentals/theme/colors).
+
+## Upgrading to v2
+
+1. **Remove deprecated code.** v2 removes everything marked as deprecated in v1. See [Get ready for Designsystemet v2](/en/blog/preparing-for-v2) for the full list and the replacements.
+2. **Upgrade** all `@digdir/designsystemet*` packages to v2.
+3. **Generate your theme again** with `npx @digdir/designsystemet@latest`, so your CSS includes the muted colors the components use.
+4. **Import your theme again** with the Figma plugin to get the muted colors in Figma.
+
+## Questions?
+
+Reach out to us on [Slack](https://designsystemet.no/slack) or open an issue on [GitHub (github.com)](https://github.com/digdir/designsystemet/issues) if you get stuck or think we have missed something.
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+  ]}
+/>
