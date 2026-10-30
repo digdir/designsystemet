@@ -1,0 +1,78 @@
+---
+title: Gjør deg klar for Designsystemet v2
+description: Neste hovedversjon av Designsystemet fjerner alt som er markert som utgått i v1. Slik forbereder du deg allerede nå.
+date: 2026-10-26
+author: Designsystemet
+---
+
+Neste hovedversjon av Designsystemet er på vei. Den viktigste endringen i v2 er at vi fjerner alt som er markert som utgått (deprecated) i v1. Gjennom 1.x har vi erstattet en rekke props, klasser, attributter og eksporter med bedre løsninger, men beholdt de gamle for å ikke ødelegge noe for deg. I v2 rydder vi opp i dette.
+
+Bruker du ingen av de utgåtte løsningene, blir oppgraderingen enkel.
+
+## Slik forbereder du deg
+
+1. **Oppgrader til siste 1.x-versjon** av alle `@digdir/designsystemet*`-pakkene.
+2. **Se etter advarsler.** TypeScript stryker over utgåtte props og eksporter i editoren din. React- og web-pakken skriver advarsler i konsollen, og CLI-en skriver advarsler i terminalen.
+3. **Bytt til erstatningene** i listen under. Alt du ser i listen fungerer allerede i v1, så du kan gjøre endringene nå og oppgradere til v2 uten flere endringer. Eneste unntak er `AvatarStack`, som får nytt navn i v2.
+
+## Dette endres i v2
+
+Endringene er gruppert etter hvem de gjelder for. **HTML og React** gjelder både når du bruker CSS- og web-pakken direkte og når du bruker React-komponentene. **React** gjelder bare `@digdir/designsystemet-react`. Endringer merket **kun visuelt** påvirker hvordan ting ser ut, men ikke hvordan de fungerer.
+
+### Fjernet fra React
+
+- **AvatarStack:** `EXPERIMENTAL_AvatarStack` får nytt navn, `AvatarStack`, fordi komponenten ikke lenger er eksperimentell. Endre importen når du oppgraderer til v2.
+- **Combobox:** Bruk [`Suggestion`](/no/components/docs/suggestion/overview).
+- **Dialog, Dropdown og Popover:** `TriggerContext` og `Trigger` fjernes. Koble til en `Button` med `popovertarget` satt til `id`-en til dropdownen eller popoveren, eller med `command="show-modal"` og `commandfor` satt til `id`-en til dialogen.
+- **RovingFocusRoot og RovingFocusItem:** Bruk attributtet [`focusgroup`](/no/components/utilities/focusgroup).
+- **Search:** `Search`, `Search.Input`, `Search.Clear` og `Search.Button` fjernes. Bruk [`Input`](/no/components/docs/input/overview) med `type="search"` i en `Field`, eller `Suggestion` med `Suggestion.Clear` hvis du trenger en tøm-knapp.
+- **Hjelpefunksjoner:** `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` og typen `MergeRight` fjernes. Bruk et eget hjelpebibliotek eller lag din egen funksjon.
+- **Typer:** Typen `Size` og modulen `@digdir/designsystemet-react/colors` fjernes. Bruk `@digdir/designsystemet-types`.
+
+### HTML og React: endrer oppførsel
+
+- **Avatar:** `initials` og `data-initials` erstattes av tekst som barn.
+- **AvatarStack:** `suffix` erstattes av en `<li>` med tekst til slutt.
+- **Dialog:** `data-command="close"` erstattes av `command="close"` og `commandfor="DIALOG-ID"`.
+- **Field.Counter:** `hint` fjernes. Den har ikke hatt noen effekt på en stund.
+- **Field og Fieldset:** En `<p>` rett etter `<label>` eller `<legend>` blir ikke lenger stilt som beskrivelse. Bruk `data-field="description"`.
+- **SkipLink:** `.ds-skiplink` og `skiplink.css` erstattes av `.ds-skip-link` og `skip-link.css`.
+- **Suggestion og Search:** `.ds-search`, `search.css` og `--dsc-search-*`-variablene erstattes av `.ds-suggestion`, `suggestion.css` og tilsvarende `--dsc-suggestion-*`-variabler. Det gamle `<del>`-elementet for tømming støttes ikke lenger. Bruk `<button type="reset">` (`Suggestion.Clear` i React). `aria-label` på `Suggestion.Clear` erstattes av `data-sr-clear`, og `singular` og `plural` på `Suggestion.List` erstattes av `data-sr-singular` og `data-sr-plural` på `Suggestion`.
+- **ToggleGroup:** `.ds-togglegroup` og `togglegroup.css` erstattes av `.ds-toggle-group` og `toggle-group.css`. `data-toggle-group` og variabelen `--dsc-togglegroup-label` erstattes av `aria-label` eller `aria-labelledby`. Uten React bruker du `focusgroup="radiogroup"` med `aria-label`.
+
+### React: endrer oppførsel
+
+- **Dialog, Field, ErrorSummary og Pagination:** `asChild` fjernes.
+- **Pagination:** Aktivt element får ikke lenger egen stil når du setter `data-variant="tertiary"` manuelt.
+- **Select:** `readOnly` erstattes av `aria-readonly`.
+- **ToggleGroup:** `icon` på `ToggleGroup.Item` fjernes. Barn med `data-variant="tertiary"` satt manuelt får ikke lenger egen stil når de er aktive.
+- **Tooltip:** `open` fjernes, bruk [`Popover`](/no/components/docs/popover/overview) i stedet. `type` fjernes, fordi den ikke har noen effekt.
+
+### HTML og React: kun visuelt
+
+- **Avatar:** `variant="square"` og `data-variant="square"` erstattes av CSS-variabelen `--dsc-avatar-radius`. `data-size="xs"` fjernes.
+- **AvatarStack:** Firkantede avatarer i stabelen overstyrer ikke lenger radiusen til stabelen. Bruk CSS-variabelen `--dsc-avatar-stack-radius`.
+- **Details:** Den feilstavede variabelen `--dsc-details-border-block-wdith` erstattes av `--dsc-details-border-block-width`.
+- **Dialog:** Lukkeknappen må bruke `command="close"`. Den eldre `<form method="dialog">`-varianten fjernes.
+- **Label:** `weight` og `data-weight` fjernes. Field setter riktig tekstvekt automatisk.
+- **Link:** Variabelen `--dsc-link-background--active` fjernes.
+
+### React: kun visuelt
+
+- **AvatarStack:** `gap`, `avatarSize` og `overlap` erstattes av CSS-variablene `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` og `--dsc-avatar-stack-overlap`.
+- **Skeleton:** `characters` fjernes. Bruk `width` eller tekst som barn.
+
+### CLI
+
+- CLI-valgene `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` og `--theme` fjernes. Bruk en [konfigurasjonsfil](/no/fundamentals/start-here/own-theme).
+- `@digdir/designsystemet/types` erstattes av `@digdir/designsystemet-types`.
+
+## Spørsmål?
+
+Ta kontakt med oss på [Slack](https://designsystemet.no/slack) eller opprett en sak på [GitHub (github.com)](https://github.com/digdir/designsystemet/issues) hvis du står fast eller mener vi har glemt noe.
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+  ]}
+/>
