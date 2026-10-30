@@ -1,5 +1,5 @@
 import { Button, Dropdown } from '@digdir/designsystemet-react';
-import { LinkIcon } from '@navikt/aksel-icons';
+import { ChevronDownIcon, ChevronUpIcon, LinkIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 
 export const Preview = () => {
@@ -91,7 +91,11 @@ export const Controlled = () => {
     <>
       <Button popovertarget='dropdown-controlled'>
         Dropdown
-        {open ? ' åpen' : ' lukket'}
+        {open ? (
+          <ChevronUpIcon aria-hidden='true' />
+        ) : (
+          <ChevronDownIcon aria-hidden='true' />
+        )}
       </Button>
       <Dropdown
         id='dropdown-controlled'
@@ -123,7 +127,11 @@ export const ControlledEn = () => {
     <>
       <Button popovertarget='dropdown-controlled-en'>
         Dropdown
-        {open ? ' open' : ' closed'}
+        {open ? (
+          <ChevronUpIcon aria-hidden='true' />
+        ) : (
+          <ChevronDownIcon aria-hidden='true' />
+        )}
       </Button>
       <Dropdown
         id='dropdown-controlled-en'
