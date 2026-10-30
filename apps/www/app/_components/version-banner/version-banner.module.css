@@ -1,7 +1,7 @@
 .banner {
-  background-color: var(--ds-color-warning-surface-tinted);
-  color: var(--ds-color-warning-text-default);
-  border-bottom: 1px solid var(--ds-color-warning-border-subtle);
-  padding: var(--ds-size-4) var(--content-inline-padding);
-  text-align: center;
+  --dsc-alert-padding-block: var(--ds-size-3);
+  --dsc-alert-padding-inline-end: var(--content-inline-padding);
+  --dsc-alert-border-radius: 0;
+
+  border-width: 0 0 var(--ds-border-width-default);
 }
