@@ -1,4 +1,5 @@
 import { Button, Dropdown } from '@digdir/designsystemet-react';
+import { LinkIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 
 export const Preview = () => {
