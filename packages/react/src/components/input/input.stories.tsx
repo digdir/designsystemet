@@ -157,6 +157,57 @@ export const Text = meta.story({
   },
 });
 
+export const Range = meta.story({
+  render: (args) => {
+    const states = [
+      { label: 'Default', props: {} },
+      { label: 'Disabled', props: { disabled: true } },
+      { label: 'Invalid', props: { 'aria-invalid': true } },
+      { label: 'Read-only', props: { readOnly: true } },
+    ];
+
+    return (
+      <div>
+        {sizes.map((size) => (
+          <div
+            key={size}
+            data-size={size}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '1rem',
+              maxWidth: '90vw',
+            }}
+          >
+            <Heading data-size='2xs' style={{ gridColumn: '1 / -1' }}>
+              {sizenames[size]}
+            </Heading>
+            {states.map((state) => (
+              <Field key={state.label}>
+                <Label>{state.label}</Label>
+                <Input
+                  {...args}
+                  name={`${size}-range-${state.label.toLowerCase()}`}
+                  {...state.props}
+                  data-size={size}
+                />
+                {state.label === 'Invalid' && (
+                  <ValidationMessage>Feilmelding</ValidationMessage>
+                )}
+              </Field>
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  },
+
+  args: {
+    type: 'range',
+    defaultValue: 40,
+  },
+});
+
 export const Radio = meta.story({
   render: (args) => {
     const states = [

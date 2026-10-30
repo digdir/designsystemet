@@ -65,7 +65,7 @@
   @composes ds-focus from './base.css';
 
   /* only hover effect on input, but with label if it is a radio or checkbox */
-  :has(label):not(:has(label:hover)) &:not(:focus-visible, :disabled, [readonly], [aria-readonly='true']):hover,
+  :has(label):not(:has(label:hover)) &:not(:focus-visible, :disabled, [readonly], [aria-readonly='true'], [type='range']):hover,
   &:is([type='radio'], [type='checkbox']):not(:focus-visible, :disabled, [readonly], [aria-readonly='true']):where(:hover, .\:click-delegate-hover) {
     outline-color: var(--dsc-input-outline-color--hover);
     outline-width: var(--dsc-input-outline-width--hover);
@@ -260,6 +260,35 @@
 
     &:checked {
       --_dsc-input-circle-position: right;
+    }
+  }
+
+  /**
+   * Range, also known as slider
+   */
+  &[type='range'] {
+    accent-color: var(--dsc-input-accent-color);
+    appearance: auto;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    height: var(--dsc-input-size--toggle);
+    padding: 0;
+
+    &[aria-invalid='true'] {
+      accent-color: var(--dsc-input-accent-color--invalid);
+    }
+
+    &:disabled,
+    &[aria-disabled='true'] {
+      cursor: not-allowed;
+    }
+
+    /* Native readonly is ignored on range, interaction is blocked by @digdir/designsystemet-web */
+    &[readonly],
+    &[aria-readonly='true'] {
+      accent-color: var(--ds-color-neutral-text-subtle);
+      cursor: default;
     }
   }
 }
