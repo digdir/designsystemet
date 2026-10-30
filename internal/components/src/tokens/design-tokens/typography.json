@@ -135,7 +135,7 @@
         "fontWeight"
       ],
       "variable": "--ds-heading-2xl-font-weight",
-      "value": "500"
+      "value": "600"
     },
     {
       "path": [
@@ -165,7 +165,7 @@
         "fontWeight"
       ],
       "variable": "--ds-heading-xl-font-weight",
-      "value": "500"
+      "value": "600"
     },
     {
       "path": [
@@ -195,7 +195,7 @@
         "fontWeight"
       ],
       "variable": "--ds-heading-lg-font-weight",
-      "value": "500"
+      "value": "600"
     },
     {
       "path": [
@@ -225,7 +225,7 @@
         "fontWeight"
       ],
       "variable": "--ds-heading-md-font-weight",
-      "value": "500"
+      "value": "600"
     },
     {
       "path": [
@@ -255,7 +255,7 @@
         "fontWeight"
       ],
       "variable": "--ds-heading-sm-font-weight",
-      "value": "500"
+      "value": "600"
     },
     {
       "path": [
@@ -285,7 +285,7 @@
         "fontWeight"
       ],
       "variable": "--ds-heading-xs-font-weight",
-      "value": "500"
+      "value": "600"
     },
     {
       "path": [
@@ -315,7 +315,7 @@
         "fontWeight"
       ],
       "variable": "--ds-heading-2xs-font-weight",
-      "value": "500"
+      "value": "600"
     },
     {
       "path": [
