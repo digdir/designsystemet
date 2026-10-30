@@ -17,49 +17,52 @@ If you don't use any of the deprecated features, upgrading will be easy.
 
 ## What changes in v2
 
-### `@digdir/designsystemet-react`
+The changes are grouped by who they affect. **HTML and React** applies whether you use the CSS and web packages directly or the React components. **React** applies only to `@digdir/designsystemet-react`. Changes marked **visual only** affect how things look, but not how they work.
 
-**Components and utilities**
+### Removed from React
 
-- `EXPERIMENTAL_AvatarStack` is renamed to `AvatarStack`, because the component is no longer experimental. Change the import when you upgrade to v2.
-- `Combobox`: use [`Suggestion`](/en/components/docs/suggestion/overview).
-- `RovingFocusRoot` and `RovingFocusItem`: use the [`focusgroup`](/en/components/utilities/focusgroup) attribute.
-- `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` and the `MergeRight` type: use a utility library or write your own function.
-- The `Size` type from the React package and the `@digdir/designsystemet-react/colors` module: use `@digdir/designsystemet-types`.
+- **AvatarStack:** `EXPERIMENTAL_AvatarStack` is renamed to `AvatarStack`, because the component is no longer experimental. Change the import when you upgrade to v2.
+- **Combobox:** Use [`Suggestion`](/en/components/docs/suggestion/overview).
+- **Dialog, Dropdown and Popover:** `TriggerContext` and `Trigger` are removed. Connect a `Button` with `popovertarget` set to the `id` of the dropdown or popover, or with `command="show-modal"` and `commandfor` set to the `id` of the dialog.
+- **RovingFocusRoot and RovingFocusItem:** Use the [`focusgroup`](/en/components/utilities/focusgroup) attribute.
+- **Search:** `Search`, `Search.Input`, `Search.Clear` and `Search.Button` are removed. Use [`Input`](/en/components/docs/input/overview) with `type="search"` in a `Field`, or `Suggestion` with `Suggestion.Clear` if you need a clear button.
+- **Utilities:** `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` and the `MergeRight` type are removed. Use a utility library or write your own function.
+- **Types:** The `Size` type and the `@digdir/designsystemet-react/colors` module are removed. Use `@digdir/designsystemet-types`.
 
-**Props**
+### HTML and React: changes behaviour
 
-- **Avatar:** `variant="square"` is replaced by the CSS variable `--dsc-avatar-radius`. `initials` and `data-initials` are replaced by text as children.
-- **AvatarStack:** `gap`, `avatarSize` and `overlap` are replaced by the CSS variables `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` and `--dsc-avatar-stack-overlap`. `suffix` is replaced by a trailing `<li>` with text.
-- **Dialog:** `asChild` is removed. `data-command="close"` is replaced by `command="close"` and `commandfor="DIALOG-ID"`.
-- **Field, ErrorSummary and Pagination:** `asChild` is removed.
-- **Field.Counter:** `hint` is removed.
-- **Label:** `weight` is removed. Field sets the right font weight automatically.
+- **Avatar:** `initials` and `data-initials` are replaced by text as children.
+- **AvatarStack:** `suffix` is replaced by a trailing `<li>` with text.
+- **Dialog:** `data-command="close"` is replaced by `command="close"` and `commandfor="DIALOG-ID"`.
+- **Field.Counter:** `hint` is removed. It has had no effect for a while.
+- **Field and Fieldset:** A `<p>` directly after a `<label>` or `<legend>` is no longer styled as a description. Use `data-field="description"`.
+- **SkipLink:** `.ds-skiplink` and `skiplink.css` are replaced by `.ds-skip-link` and `skip-link.css`.
+- **Suggestion and Search:** `.ds-search`, `search.css` and the `--dsc-search-*` variables are replaced by `.ds-suggestion`, `suggestion.css` and the matching `--dsc-suggestion-*` variables. The old `<del>` element for clearing is no longer supported. Use `<button type="reset">` (`Suggestion.Clear` in React). `aria-label` on `Suggestion.Clear` is replaced by `data-sr-clear`, and `singular` and `plural` on `Suggestion.List` are replaced by `data-sr-singular` and `data-sr-plural` on `Suggestion`.
+- **ToggleGroup:** `.ds-togglegroup` and `togglegroup.css` are replaced by `.ds-toggle-group` and `toggle-group.css`. `data-toggle-group` and the `--dsc-togglegroup-label` variable are replaced by `aria-label` or `aria-labelledby`. Without React, use `focusgroup="radiogroup"` with `aria-label`.
+
+### React: changes behaviour
+
+- **Dialog, Field, ErrorSummary and Pagination:** `asChild` is removed.
+- **Pagination:** The active element no longer gets its own styling when you set `data-variant="tertiary"` manually.
 - **Select:** `readOnly` is replaced by `aria-readonly`.
-- **Skeleton:** `characters` is removed. Use `width` or text as children.
-- **Suggestion and Search:** `aria-label` on `Suggestion.Clear` and `Search.Clear` is replaced by `data-sr-clear`. `singular` and `plural` on `Suggestion.List` are replaced by `data-sr-singular` and `data-sr-plural` on `Suggestion`.
-- **ToggleGroup:** `data-toggle-group` is replaced by `aria-label` or `aria-labelledby`. `icon` on `ToggleGroup.Item` is removed.
+- **ToggleGroup:** `icon` on `ToggleGroup.Item` is removed. Children with a manually set `data-variant="tertiary"` no longer get their own active styling.
 - **Tooltip:** `open` is removed, use a [`Popover`](/en/components/docs/popover/overview) instead. `type` is removed because it has no effect.
 
-### `@digdir/designsystemet-css`
+### HTML and React: visual only
 
-- `.ds-skiplink` is replaced by `.ds-skip-link`, and `.ds-togglegroup` is replaced by `.ds-toggle-group`.
-- The individual `search.css` file is replaced by `suggestion.css`, and the `--dsc-search-*` variables are replaced by the matching `--dsc-suggestion-*` variables.
-- **Avatar:** `data-initials`, `data-variant="square"` and `data-size="xs"` are removed.
-- **Label:** `data-weight` is removed.
+- **Avatar:** `variant="square"` and `data-variant="square"` are replaced by the CSS variable `--dsc-avatar-radius`. `data-size="xs"` is removed.
+- **AvatarStack:** Square avatars in the stack no longer override the stack's radius. Use the CSS variable `--dsc-avatar-stack-radius`.
 - **Details:** The misspelled variable `--dsc-details-border-block-wdith` is replaced by `--dsc-details-border-block-width`.
-- **Field and Fieldset:** A `<p>` directly after a `<label>` or `<legend>` is no longer styled as a description. Use `data-field="description"`.
-- **Link:** The variable `--dsc-link-background--active` is removed.
-- **Suggestion:** The old `<del>` element for clearing is no longer supported. Use `<button type="reset">` (`Suggestion.Clear` in React).
-- **ToggleGroup:** The variable `--dsc-togglegroup-label` is removed. Use `aria-label` or `aria-labelledby`.
 - **Dialog:** The close button must use `command="close"`. The older `<form method="dialog">` variant is removed.
-- **Pagination and ToggleGroup:** The active element no longer gets its own styling when you set `data-variant="tertiary"` manually.
+- **Label:** `weight` and `data-weight` are removed. Field sets the right font weight automatically.
+- **Link:** The variable `--dsc-link-background--active` is removed.
 
-### `@digdir/designsystemet-web`
+### React: visual only
 
-- `data-toggle-group` is replaced by `focusgroup="radiogroup"` with `aria-label`.
+- **AvatarStack:** `gap`, `avatarSize` and `overlap` are replaced by the CSS variables `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` and `--dsc-avatar-stack-overlap`.
+- **Skeleton:** `characters` is removed. Use `width` or text as children.
 
-### `@digdir/designsystemet`
+### CLI
 
 - The CLI options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme` are removed. Use a [config file](/en/fundamentals/start-here/own-theme).
 - `@digdir/designsystemet/types` is replaced by `@digdir/designsystemet-types`.
