@@ -146,7 +146,7 @@ function searchBrokenLinks() {
       foundLinks.add(link);
 
       // Check if link exists in sitemap
-      if (!sitemapUrls.has(link)) {
+      if (!sitemapUrls.has(link.replace(/\.md$/, ''))) {
         if (!brokenLinks.has(link)) {
           brokenLinks.set(link, []);
         }
