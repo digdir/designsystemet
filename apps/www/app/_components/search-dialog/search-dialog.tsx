@@ -59,6 +59,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   };
 
   const performSearch = async (searchQuery: string) => {
+    latestQueryRef.current = searchQuery;
     if (!searchQuery.trim()) {
       setQuickResults([]);
       setIsQuickLoading(false);
@@ -66,7 +67,6 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
       return;
     }
 
-    latestQueryRef.current = searchQuery;
     await handleSearch(searchQuery);
   };
 
@@ -88,9 +88,12 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   };
 
   const handleClear = () => {
+    // Ignore responses for searches that are still in flight
+    latestQueryRef.current = '';
     setQuery('');
     setQuickResults([]);
     setIsQuickLoading(false);
+    debouncedAnnounce('');
   };
 
   const handleClose = () => {
@@ -102,9 +105,8 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   };
 
   const handleDialogClose = () => {
-    setInputValue('');
-    setQuickResults([]);
-    setIsQuickLoading(false);
+    if (inputRef.current) inputRef.current.value = '';
+    handleClear();
     onClose();
   };
 
@@ -117,6 +119,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
         { signal: controller.signal },
       );
       const data = await response.json();
+      if (latestQueryRef.current !== query) return;
       setQuickResults(data.results || []);
       debouncedAnnounce(
         `${t('search.srA')} ${data.results.length} ${t('search.srB')} ${query}`,
@@ -211,7 +214,6 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
               autoFocus={true}
               aria-label={t('search.label')}
               placeholder={t('search.placeholder')}
-              value={query}
               onInput={handleInputChange}
             />
             <Suggestion.Clear onClick={handleClear} />

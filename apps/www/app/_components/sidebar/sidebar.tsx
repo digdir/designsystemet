@@ -142,7 +142,6 @@ export const Sidebar = ({
             <Suggestion.Input
               type='search'
               aria-label={t('sidebar.search.label', 'Search')}
-              value={query}
               onInput={(e) => setQuery(e.currentTarget.value)}
             />
             <Suggestion.Clear onClick={() => setQuery('')} />
