@@ -1,5 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 import { useEffect, useRef, useState } from 'react';
+import { Button } from '../button/button';
 import type { DialogProps } from './';
 import { Dialog } from './';
 
@@ -8,10 +9,12 @@ const HEADER_TITLE = 'Dialog header title';
 const OPEN_Dialog = 'Open Dialog';
 
 const Comp = (args: Partial<DialogProps>) => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>{OPEN_Dialog}</Dialog.Trigger>
-    <Dialog {...args} />
-  </Dialog.TriggerContext>
+  <>
+    <Button command='show-modal' commandfor='test-dialog'>
+      {OPEN_Dialog}
+    </Button>
+    <Dialog id='test-dialog' {...args} />
+  </>
 );
 
 describe('Dialog', () => {
@@ -98,7 +101,7 @@ describe('Dialog', () => {
     await act(async () =>
       screen.getByRole('button', { name: CLOSE_LABEL }).click(),
     );
-    vi.waitFor(
+    await vi.waitFor(
       () => expect(onClose).toHaveBeenCalledTimes(1), // Let native <dialog> close trigger
     );
   });
@@ -191,5 +194,22 @@ describe('Dialog', () => {
     await act(async () => screen.getByTestId('closebutton').click());
     expect(onClose).toHaveBeenCalledTimes(1);
     window.dsWarnings = true; // Re-enable warnings after test
+  });
+
+  /* Deprecated, remove with TriggerContext in the next major version */
+  it('should open the Dialog with TriggerContext', async () => {
+    render(
+      <Dialog.TriggerContext>
+        <Dialog.Trigger>{OPEN_Dialog}</Dialog.Trigger>
+        <Dialog>{HEADER_TITLE}</Dialog>
+      </Dialog.TriggerContext>,
+    );
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+
+    await act(async () =>
+      screen.getByRole('button', { name: OPEN_Dialog }).click(),
+    );
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
   });
 });
