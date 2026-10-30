@@ -4,8 +4,8 @@ import {
   Dialog,
   Heading,
   Paragraph,
-  Search,
   Skeleton,
+  EXPERIMENTAL_Suggestion as Suggestion,
   Tag,
 } from '@digdir/designsystemet-react';
 import type { Color, SeverityColors } from '@digdir/designsystemet-types';
@@ -20,7 +20,7 @@ import {
   TasklistIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx';
-import type { ChangeEvent, CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, InputEvent, ReactNode } from 'react';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { highlightText } from '~/_utils/highlight';
@@ -50,6 +50,13 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   const [resultAnnounce, setresultAnnounce] = useState('');
   const latestQueryRef = useRef<string>('');
   const dialogRef = useRef<HTMLDialogElement>(null);
+  // The input isn't controlled, as Suggestion manages its value
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const setInputValue = (value: string) => {
+    if (inputRef.current) inputRef.current.value = value;
+    setQuery(value);
+  };
 
   const performSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) {
@@ -73,8 +80,8 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
     setresultAnnounce(value);
   }, 1000);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const handleInputChange = (e: InputEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
     setIsTyping(true);
     setQuery(value);
     debouncedCallback(value);
@@ -95,7 +102,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   };
 
   const handleDialogClose = () => {
-    setQuery('');
+    setInputValue('');
     setQuickResults([]);
     setIsQuickLoading(false);
     onClose();
@@ -196,17 +203,19 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
           <Heading data-size='sm' className={classes.title}>
             {t('search.title')}
           </Heading>
-          <Search>
-            <Search.Input
+          <Suggestion>
+            <Suggestion.Input
+              ref={inputRef}
+              type='search'
               className={classes.input}
               autoFocus={true}
               aria-label={t('search.label')}
               placeholder={t('search.placeholder')}
               value={query}
-              onChange={handleInputChange}
+              onInput={handleInputChange}
             />
-            <Search.Clear onClick={handleClear} />
-          </Search>
+            <Suggestion.Clear onClick={handleClear} />
+          </Suggestion>
           <div
             className='ds-sr-only'
             aria-live='assertive'
@@ -293,7 +302,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
             <div className={classes.suggestionsList}>
               <Chip.Button
                 onClick={() => {
-                  setQuery('Button');
+                  setInputValue('Button');
                   performSearch('Button');
                 }}
               >
@@ -302,7 +311,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
 
               <Chip.Button
                 onClick={() => {
-                  setQuery('Design tokens');
+                  setInputValue('Design tokens');
                   performSearch('Design tokens');
                 }}
               >
@@ -311,7 +320,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
 
               <Chip.Button
                 onClick={() => {
-                  setQuery(t('search.suggestions.1'));
+                  setInputValue(t('search.suggestions.1'));
                   performSearch(t('search.suggestions.1'));
                 }}
               >
@@ -319,7 +328,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
               </Chip.Button>
               <Chip.Button
                 onClick={() => {
-                  setQuery(t('search.suggestions.2'));
+                  setInputValue(t('search.suggestions.2'));
                   performSearch(t('search.suggestions.2'));
                 }}
               >

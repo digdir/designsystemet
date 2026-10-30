@@ -7,7 +7,7 @@ type Search = typeof SearchRoot & {
   /**
    * Search.Clear component, used to display a clear button when the search input is not empty.
    *
-   * @deprecated Will be removed in the next major version. Use `Suggestion` with `Suggestion.Clear` instead.
+   * @deprecated Will be removed in the next major version. Use `EXPERIMENTAL_Suggestion` with `EXPERIMENTAL_Suggestion.Clear` instead.
    *
    * @example
    * <Search>
@@ -44,7 +44,7 @@ type Search = typeof SearchRoot & {
 /**
  * Search component, use to display different variations of a search input
  *
- * @deprecated Will be removed in the next major version. Use `Input` with `type="search"` in a `Field` instead, or `Suggestion` if you need a clear button.
+ * @deprecated Will be removed in the next major version. Use `Input` with `type="search"` in a `Field` instead, or `EXPERIMENTAL_Suggestion` if you need a clear button.
  *
  * @example with button
  * <Search>

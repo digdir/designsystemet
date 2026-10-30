@@ -52,24 +52,6 @@ export const WithCommand = () => (
   </>
 );
 
-export const TriggerContext = () => {
-  return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog>
-        <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-          Dialog header
-        </Heading>
-        <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-          doloremque obcaecati assumenda odio ducimus sunt et.
-        </Paragraph>
-        <Paragraph data-size='sm'>Dialog footer</Paragraph>
-      </Dialog>
-    </Dialog.TriggerContext>
-  );
-};
-
 export const WithRef = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 

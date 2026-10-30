@@ -26,10 +26,6 @@ Vi legger automatisk til [popover-polyfill (npmjs.com)](https://www.npmjs.com/pa
 
 ## Eksempler
 
-### Uten TriggerContext
-Du kan også bruke Popover uten TriggerContext ved å bruke `popovertarget`:
-<Story story="WithoutContext" />
-
 ### Inline popover
 
 Dersom du vil ha triggeren inline i tekst må du fortsatt bruke `<button>`, men du kan legge på `data-popover="inline"` for å få riktig styling.
@@ -63,27 +59,20 @@ Komponenten vil arve fra nærmeste forelder med disse satt.
 ## React 
 
 ```tsx
-import { Popover } from '@digdir/designsystemet-react';
+import { Button, Popover } from '@digdir/designsystemet-react';
 
-// med context
-<Popover.TriggerContext>
-  <Popover.Trigger>Trigger</Popover.Trigger>
-  <Popover>Content</Popover>
-</Popover.TriggerContext>
-
-// uten context med egen trigger
 <Button popovertarget="my-popover">Trigger</Button>
 <Popover id="my-popover">Content</Popover>
 ```
 ### React og `popovertarget`
-Når du bruker popover uten `TriggerContext`, kobler du selv sammen utløseren og popover.
-Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
+Du kobler selv sammen utløseren og popover med `id` og `popovertarget`.
+`popovertarget` brukes i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
 Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
 
 ### Eksempel på kontrollert
 Du kan kontrollere når popover er åpen eller lukket.
 
-Merk at vi ikke bruker `onClick` på triggeren, dropdownen håndterer dette internt on sendet til `onOpen` og `onClose`.
+Merk at vi ikke bruker `onClick` på triggeren, popoveren håndterer dette internt og sender det til `onOpen` og `onClose`.
 
 <Story story="Controlled" language="react" />
 

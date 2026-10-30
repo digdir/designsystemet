@@ -98,30 +98,15 @@ If the button is a direct child of the dialog and the first element, it will flo
 ```tsx
 import { Button, Dialog } from '@digdir/designsystemet-react';
 
-/* with context */
-<Dialog.TriggerContext>
-  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-  <Dialog>
-    Dialog content
-  </Dialog>
-</Dialog.TriggerContext>
-
-/* without context */
 <Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
 <Dialog id="my-dialog">
   Dialog content
 </Dialog>
 ```
 
-### `TriggerContext`
+### With ref
 
-Use `Dialog.TriggerContext` and `Dialog.Trigger` together, so `Dialog` can communicate without having to use `id` and `commandfor`.
-
-<Story story="TriggerContext" language="react" />
-
-### With ref and without context
-
-If you don't want to use `Dialog.TriggerContext`, you can use `ref` to open the dialog from an external trigger.
+You can also use `ref` to open the dialog from an external trigger.
 You then use native methods on the `<dialog>` element, such as `showModal()` or `show()`.
 
 <Story story="WithRef" language="react" />
