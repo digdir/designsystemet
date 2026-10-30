@@ -56,14 +56,16 @@ const meta = preview.meta({
 
 export const Preview = meta.story({
   render: (args) => (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger
+    <>
+      <Button
+        command='show-modal'
+        commandfor='dialog-preview'
         data-color={args['data-color']}
         data-size={args['data-size']}
       >
         Open Dialog
-      </Dialog.Trigger>
-      <Dialog {...args} onClose={console.log}>
+      </Button>
+      <Dialog {...args} id='dialog-preview' onClose={console.log}>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog header
         </Heading>
@@ -73,11 +75,11 @@ export const Preview = meta.story({
         </Paragraph>
         <Paragraph data-size='sm'>Dialog footer</Paragraph>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   ),
 });
 
-export const WithoutDialogTriggerContext = meta.story({
+export const WithRef = meta.story({
   render: (args) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -100,6 +102,29 @@ export const WithoutDialogTriggerContext = meta.story({
       </>
     );
   },
+});
+
+export const DeprecatedTriggerContext = meta.story({
+  render: (args) => (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger
+        data-color={args['data-color']}
+        data-size={args['data-size']}
+      >
+        Open Dialog
+      </Dialog.Trigger>
+      <Dialog {...args} onClose={console.log}>
+        <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Dialog header
+        </Heading>
+        <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+        <Paragraph data-size='sm'>Dialog footer</Paragraph>
+      </Dialog>
+    </Dialog.TriggerContext>
+  ),
 });
 
 export const DialogWithOpenProp = meta.story({
@@ -131,9 +156,11 @@ export const BackdropClosedbyAny = meta.story(() => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog ref={dialogRef} closedby='any'>
+    <>
+      <Button command='show-modal' commandfor='dialog-closedby-any'>
+        Open Dialog
+      </Button>
+      <Dialog id='dialog-closedby-any' ref={dialogRef} closedby='any'>
         <Heading>
           Dialog med <code>closedby="any"</code> og en veldig lang tittel
         </Heading>
@@ -143,14 +170,16 @@ export const BackdropClosedbyAny = meta.story(() => {
         </Paragraph>
         <Paragraph data-size='sm'>Dialog footer</Paragraph>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   );
 });
 
 export const WithHeaderAndFooter = meta.story(() => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-    <Dialog>
+  <>
+    <Button command='show-modal' commandfor='dialog-header-footer'>
+      Open Dialog
+    </Button>
+    <Dialog id='dialog-header-footer'>
       <Dialog.Block>
         <Paragraph data-size='sm'>Her er det også divider</Paragraph>
         <Heading>Vi kan legge divider under header</Heading>
@@ -181,7 +210,7 @@ export const WithHeaderAndFooter = meta.story(() => (
       </Dialog.Block>
       <Dialog.Block>Og over footer</Dialog.Block>
     </Dialog>
-  </Dialog.TriggerContext>
+  </>
 ));
 
 export const DialogWithForm = meta.story(() => {
@@ -189,13 +218,15 @@ export const DialogWithForm = meta.story(() => {
   const [input, setInput] = useState('');
 
   return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+    <>
+      <Button command='show-modal' commandfor='dialog-with-form'>
+        Open Dialog
+      </Button>
       <Dialog
         ref={dialogRef}
         onClose={() => setInput('')}
         closedby='any'
-        id='my-dialog'
+        id='dialog-with-form'
       >
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog med skjema
@@ -222,19 +253,25 @@ export const DialogWithForm = meta.story(() => {
           >
             Send inn skjema
           </Button>
-          <Button variant='secondary' command='close' commandfor='my-dialog'>
+          <Button
+            variant='secondary'
+            command='close'
+            commandfor='dialog-with-form'
+          >
             Avbryt
           </Button>
         </div>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   );
 });
 
 export const DialogWithMaxWidth = meta.story(() => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-    <Dialog style={{ maxWidth: 1200 }}>
+  <>
+    <Button command='show-modal' commandfor='dialog-max-width'>
+      Open Dialog
+    </Button>
+    <Dialog id='dialog-max-width' style={{ maxWidth: 1200 }}>
       <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
         Dialog med en veldig lang bredde
       </Heading>
@@ -243,7 +280,7 @@ export const DialogWithMaxWidth = meta.story(() => (
         doloremque obcaecati assumenda odio ducimus sunt et.
       </Paragraph>
     </Dialog>
-  </Dialog.TriggerContext>
+  </>
 ));
 
 const DATA_PLACES = [
@@ -261,9 +298,15 @@ export const DialogWithSuggestion = meta.story({
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     return (
-      <Dialog.TriggerContext>
-        <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-        <Dialog style={{ overflow: 'visible' }} ref={dialogRef} id='my-dialog'>
+      <>
+        <Button command='show-modal' commandfor='dialog-with-suggestion'>
+          Open Dialog
+        </Button>
+        <Dialog
+          style={{ overflow: 'visible' }}
+          ref={dialogRef}
+          id='dialog-with-suggestion'
+        >
           <Dialog.Block>
             <Heading>Dialog med suggestion</Heading>
           </Dialog.Block>
@@ -286,12 +329,16 @@ export const DialogWithSuggestion = meta.story({
             </Field>
           </Dialog.Block>
           <Dialog.Block>
-            <Button variant='secondary' command='close' commandfor='my-dialog'>
+            <Button
+              variant='secondary'
+              command='close'
+              commandfor='dialog-with-suggestion'
+            >
               Avbryt
             </Button>
           </Dialog.Block>
         </Dialog>
-      </Dialog.TriggerContext>
+      </>
     );
   },
 
@@ -333,22 +380,6 @@ export const DialogNonModal = meta.story({
   },
 });
 
-export const DialogNonModalTrigger = meta.story(() => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Open non-modal dialog</Dialog.Trigger>
-    <Dialog modal={false}>
-      <Heading style={{ marginBottom: 'var(--ds-size-4)' }}>
-        Let us know
-      </Heading>
-      <Paragraph style={{ marginBottom: 'var(--ds-size-4)' }}>
-        We’d love to hear your feedback on our new design system. Please let us
-        know what you think!
-      </Paragraph>
-      <Button variant='primary'>Give feedback</Button>
-    </Dialog>
-  </Dialog.TriggerContext>
-));
-
 export const DialogNonModalRef = meta.story(() => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -368,52 +399,60 @@ export const DialogNonModalRef = meta.story(() => {
 
 export const DialogPlacementTop = meta.story(() => {
   return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog placement='top'>
+    <>
+      <Button command='show-modal' commandfor='dialog-placement-top'>
+        Open Dialog
+      </Button>
+      <Dialog id='dialog-placement-top' placement='top'>
         <Dialog.Block>
           <Paragraph>This is a Dialog with placement="top"</Paragraph>
         </Dialog.Block>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   );
 });
 
 export const DialogPlacementBottom = meta.story(() => {
   return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog placement='bottom'>
+    <>
+      <Button command='show-modal' commandfor='dialog-placement-bottom'>
+        Open Dialog
+      </Button>
+      <Dialog id='dialog-placement-bottom' placement='bottom'>
         <Dialog.Block>
           <Paragraph>This is a Dialog with placement="bottom"</Paragraph>
         </Dialog.Block>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   );
 });
 
 export const DialogPlacementLeft = meta.story(() => {
   return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog placement='left'>
+    <>
+      <Button command='show-modal' commandfor='dialog-placement-left'>
+        Open Dialog
+      </Button>
+      <Dialog id='dialog-placement-left' placement='left'>
         <Dialog.Block>
           <Paragraph>This is a Dialog with placement="left"</Paragraph>
         </Dialog.Block>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   );
 });
 
 export const DialogPlacementRight = meta.story(() => {
   return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog placement='left'>
+    <>
+      <Button command='show-modal' commandfor='dialog-placement-right'>
+        Open Dialog
+      </Button>
+      <Dialog id='dialog-placement-right' placement='right'>
         <Dialog.Block>
           <Paragraph>This is a Dialog with placement="right"</Paragraph>
         </Dialog.Block>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   );
 });
