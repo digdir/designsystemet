@@ -13,7 +13,6 @@ import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import ColorDetails from './_components/color-details';
 import classes from './color-overrides.module.css';
 
-
 export const ColorOverrides = () => {
   const { colors, severityColors } = useThemebuilder();
   const { t } = useTranslation();
