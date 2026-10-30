@@ -7,6 +7,7 @@ import {
   type SuggestionMultipleProps,
   type SuggestionSingleProps,
 } from './suggestion';
+import { SuggestionClear } from './suggestion-clear';
 import { SuggestionEmpty } from './suggestion-empty';
 import { SuggestionInput } from './suggestion-input';
 import { SuggestionList } from './suggestion-list';
@@ -412,5 +413,45 @@ describe('Suggestion', () => {
       ['Oslo', false],
       ['Stavanger', false],
     ]);
+  });
+
+  describe('as a search field with a clear button', () => {
+    const SearchField = () => (
+      <Suggestion>
+        <SuggestionInput type='search' aria-label='Søk' />
+        <SuggestionClear data-testid='button' />
+      </Suggestion>
+    );
+
+    it('should clear input when clear button is clicked', async () => {
+      render(<SearchField />);
+
+      const input = screen.getByLabelText<HTMLInputElement>('Søk');
+      const clearButton = screen.getByTestId('button');
+
+      expect(input).toHaveValue('');
+
+      await act(async () => input.focus());
+      input.value = 'Hello, World!';
+      expect(input).toHaveValue('Hello, World!');
+
+      await act(async () => clearButton.click());
+      expect(input).toHaveValue('');
+    });
+
+    it('toggles clear button visibility for programmatic input changes', async () => {
+      render(<SearchField />);
+
+      const input = screen.getByLabelText<HTMLInputElement>('Søk');
+      const clearButton = screen.getByTestId('button');
+
+      await waitFor(() => expect(clearButton).not.toBeVisible());
+
+      input.value = 'Hello, World!';
+      await waitFor(() => expect(clearButton).toBeVisible());
+
+      input.value = '';
+      await waitFor(() => expect(clearButton).not.toBeVisible());
+    });
   });
 });
