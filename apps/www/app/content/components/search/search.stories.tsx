@@ -71,16 +71,27 @@ export const WithLabelEn = () => {
   );
 };
 
-export const Variants = () => {
+export const WithClear = () => {
+  return (
+    <EXPERIMENTAL_Suggestion>
+      <EXPERIMENTAL_Suggestion.Input type='search' aria-label='Søk' />
+      <EXPERIMENTAL_Suggestion.Clear />
+    </EXPERIMENTAL_Suggestion>
+  );
+};
+
+export const WithClearEn = () => {
+  return (
+    <EXPERIMENTAL_Suggestion>
+      <EXPERIMENTAL_Suggestion.Input type='search' aria-label='Search' />
+      <EXPERIMENTAL_Suggestion.Clear />
+    </EXPERIMENTAL_Suggestion>
+  );
+};
+
+export const WithSearchButton = () => {
   return (
     <>
-      <EXPERIMENTAL_Suggestion>
-        <EXPERIMENTAL_Suggestion.Input type='search' aria-label='Søk' />
-        <EXPERIMENTAL_Suggestion.Clear />
-      </EXPERIMENTAL_Suggestion>
-
-      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
-
       <EXPERIMENTAL_Suggestion>
         <EXPERIMENTAL_Suggestion.Input type='text' aria-label='Søk' />
         <EXPERIMENTAL_Suggestion.Clear />
@@ -100,16 +111,9 @@ export const Variants = () => {
   );
 };
 
-export const VariantsEn = () => {
+export const WithSearchButtonEn = () => {
   return (
     <>
-      <EXPERIMENTAL_Suggestion>
-        <EXPERIMENTAL_Suggestion.Input type='search' aria-label='Search' />
-        <EXPERIMENTAL_Suggestion.Clear />
-      </EXPERIMENTAL_Suggestion>
-
-      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
-
       <EXPERIMENTAL_Suggestion>
         <EXPERIMENTAL_Suggestion.Input type='text' aria-label='Search' />
         <EXPERIMENTAL_Suggestion.Clear />
