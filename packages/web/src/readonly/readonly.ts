@@ -5,7 +5,7 @@ const isReadOnly = (el: Element) =>
 
 // Native readonly is ignored on <select> and <input type="range">, so we block interaction ourselves
 const isReadOnlyIgnored = (el: HTMLElement | null): el is HTMLElement =>
-  !!el?.matches('select, input[type="range"]') && isReadOnly(el);
+  isReadOnly(el) && !!el?.matches('select, input[type="range"]');
 
 const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
   const allow = e.key === 'Tab' || e.altKey || e.ctrlKey || e.metaKey; // Allow modifier keys so native functions like CMD + D to bookmark  etc. still works
@@ -38,8 +38,5 @@ onHotReload('readonly', () => [
   on(document, 'keydown', handleKeydown),
   on(document, 'click', handleClick, true), // click needed for <label> and <input type="checkbox|radio">, using capture to ensure we run before React
   on(document, 'mousedown', preventIfReadOnly, true), // needed for <select> and <input type="range"> on desktop
-  on(document, 'touchstart', preventIfReadOnly, {
-    capture: true,
-    passive: false,
-  }), // needed for <input type="range"> on touch devices
+  on(document, 'touchstart', preventIfReadOnly, true), // needed for <input type="range"> on touch devices, using capture to run before frameworks
 ]);
