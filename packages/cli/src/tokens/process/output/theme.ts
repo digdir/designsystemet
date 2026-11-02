@@ -162,6 +162,10 @@ order may change due to nondeterminism.`.trim(),
 @layer ds.theme.color-scheme, ds.theme.color, ${forcedColorsLayer};
 /*
 ${fileHeader}
+
+Import after @digdir/designsystemet-css.
+All styles are in the "ds" layer. Put your own layers, like a CSS reset, before it:
+@layer my-reset, ds;
 */
 
 `;

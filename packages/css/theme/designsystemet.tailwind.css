@@ -1,3 +1,10 @@
+/*
+Import after 'tailwindcss', with Designsystemet's CSS before it:
+@import '@digdir/designsystemet-css/index.css';
+@import '<theme>.css';
+@import 'tailwindcss';
+@import '<theme>.tailwind.css';
+*/
 @theme {
   --font-sans: var(--ds-font-family);
   --text-lg: var(--ds-body-lg-font-size);

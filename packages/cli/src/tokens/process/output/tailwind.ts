@@ -3,6 +3,16 @@ import type { OutputFile } from '../../types.ts';
 /** Tailwind CSS major versions a theme file can be generated for. */
 export type TailwindVersion = 'v3' | 'v4';
 
+/** Usage banner prepended to the generated Tailwind file */
+const banner = `/*
+Import after 'tailwindcss', with Designsystemet's CSS before it:
+@import '@digdir/designsystemet-css/index.css';
+@import '<theme>.css';
+@import 'tailwindcss';
+@import '<theme>.tailwind.css';
+*/
+`;
+
 /** Tailwind theme namespaces, mapped to their CSS variable prefix */
 const namespaces = {
   color: '--color-',
@@ -24,7 +34,7 @@ export const createTailwindCSSFiles = (cssFiles: OutputFile[], version: Tailwind
         const tokens = scrapeTailwindTokens(file.output);
         const tailwindFile = {
           destination: file.destination.replace('.css', '.tailwind.css'),
-          output: version === 'v3' ? generateTailwindV3(tokens) : generateTailwindV4(tokens),
+          output: banner + (version === 'v3' ? generateTailwindV3(tokens) : generateTailwindV4(tokens)),
         };
         return tailwindFile;
       }
