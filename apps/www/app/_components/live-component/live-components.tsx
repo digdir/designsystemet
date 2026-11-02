@@ -270,7 +270,7 @@ const Editor = ({
         </div>
         <HighlightedCode
           className={classes.htmlEditor}
-          hidden={!showHTML}
+          hidden={hidden || !showHTML}
           language='html'
         >
           {rawHtml}

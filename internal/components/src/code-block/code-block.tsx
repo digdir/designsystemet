@@ -4,7 +4,7 @@ import cl from 'clsx/lite';
 import { Suspense, use, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import classes from './code-block.module.css';
-import { scheduleCodeHighlight } from './highlight';
+import { observeCodeVisibility, scheduleCodeHighlight } from './highlight';
 import { isPrettifySupported, prettifyCode } from './prettify';
 
 export type CodeBlockProps = {
@@ -116,10 +116,13 @@ export const HighlightedCode = ({
 }: Pick<CodeBlockProps, 'children' | 'language' | 'className'> & {
   hidden?: boolean;
 }) => {
+  useEffect(observeCodeVisibility, []);
+
   useEffect(() => {
+    if (hidden) return;
     scheduleCodeHighlight();
     return scheduleCodeHighlight;
-  }, [children, language]);
+  }, [children, language, hidden]);
 
   return (
     <pre
