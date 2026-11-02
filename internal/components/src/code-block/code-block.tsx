@@ -73,19 +73,17 @@ const CodeBlockContent = ({
     }
   }, [children, language, shouldPrettify]);
 
-  useEffect(() => {
-    scheduleCodeHighlight();
-    return scheduleCodeHighlight;
-  }, [text, language]);
-
   return (
     <div className={classes.codeBlockWrapper}>
       <div className={classes.toolbar}>
         <CopyButton text={text} />
       </div>
-      <pre className={cl(classes.codeBlock, className)} data-code-block>
-        <code data-language={language}>{text}</code>
-      </pre>
+      <HighlightedCode
+        className={cl(classes.codeBlock, className)}
+        language={language}
+      >
+        {text}
+      </HighlightedCode>
     </div>
   );
 };
@@ -106,6 +104,33 @@ export const CodeBlock = ({
         {children}
       </CodeBlockContent>
     </Suspense>
+  );
+};
+
+/** Read-only syntax highlighting without formatting or toolbar controls. */
+export const HighlightedCode = ({
+  children,
+  language = 'text',
+  className,
+  hidden,
+}: Pick<CodeBlockProps, 'children' | 'language' | 'className'> & {
+  hidden?: boolean;
+}) => {
+  useEffect(() => {
+    scheduleCodeHighlight();
+    return scheduleCodeHighlight;
+  }, [children, language]);
+
+  return (
+    <pre
+      className={cl(classes.highlightedCode, className)}
+      data-code-block
+      data-language={language}
+      data-syntax-theme='github'
+      hidden={hidden}
+    >
+      <code data-language={language}>{children}</code>
+    </pre>
   );
 };
 

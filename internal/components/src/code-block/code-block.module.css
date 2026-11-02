@@ -1,3 +1,5 @@
+@import 'microlighter/themes/github.css' layer(codeblock);
+
 @layer codeblock {
   .codeBlock {
     max-width: 100%;
@@ -7,8 +9,6 @@
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
     height: fit-content;
-    background-color: var(--ds-color-neutral-background-default);
-    color: var(--ds-color-neutral-text-default);
     font-family: monospace;
     margin-block: 0;
     line-height: 1.5;
@@ -16,49 +16,21 @@
     border-top: initial;
     scrollbar-color: var(--ds-color-neutral-border-default) transparent;
 
-    & code::highlight(comment) {
-      color: light-dark(#008000, #6a9955);
-    }
-    & code::highlight(keyword),
-    & code::highlight(storage),
-    & code::highlight(doctype),
-    & code::highlight(at-rule) {
-      color: light-dark(#0000ff, #569cd6);
-    }
-    & code::highlight(string),
-    & code::highlight(attribute-value),
-    & code::highlight(regexp),
-    & code::highlight(inserted) {
-      color: light-dark(rgb(0, 0, 169), #ce9178);
-    }
-    & code::highlight(numeric),
-    & code::highlight(constant),
-    & code::highlight(boolean) {
-      color: light-dark(#098658, #b5cea8);
-    }
-    & code::highlight(tag),
-    & code::highlight(selector),
-    & code::highlight(deleted) {
-      color: light-dark(#d60000, #569cd6);
-    }
-    & code::highlight(attribute-name),
-    & code::highlight(property),
-    & code::highlight(key),
-    & code::highlight(variable) {
-      color: light-dark(#3a0000, #9cdcfe);
-    }
-    & code::highlight(function),
-    & code::highlight(support) {
-      color: light-dark(#795e26, #dcdcaa);
-    }
-    & code::highlight(type),
-    & code::highlight(class),
-    & code::highlight(entity),
-    & code::highlight(character-entity) {
-      color: light-dark(#267f99, #4ec9b0);
-    }
     code {
       font-size: min(0.8em, 14px);
+    }
+  }
+
+  .highlightedCode {
+    background-color: var(--syntax-background);
+    color: var(--syntax-foreground);
+    /* Follow the app's selected scheme instead of the theme's system preference. */
+    color-scheme: inherit;
+    :global([data-color-scheme='light']) & {
+      color-scheme: light;
+    }
+    :global([data-color-scheme='dark']) & {
+      color-scheme: dark;
     }
   }
 
