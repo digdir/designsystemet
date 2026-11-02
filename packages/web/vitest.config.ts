@@ -24,8 +24,7 @@ export default defineConfig({
             // https://vitest.dev/config/browser/playwright
             instances: [
               { browser: 'chromium' },
-              // Firefox only gives focus to one page at a time, so focus tests in parallel files steal focus from each other
-              { browser: 'firefox', fileParallelism: false },
+              { browser: 'firefox' },
               { browser: 'webkit' },
             ],
           },
