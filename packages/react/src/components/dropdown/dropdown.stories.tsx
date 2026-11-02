@@ -159,7 +159,7 @@ export const Controlled = meta.story(() => {
     <>
       <Button popovertarget='dropdown-controlled'>
         Dropdown
-        {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
+        {open ? <ChevronUpIcon aria-hidden /> : <ChevronDownIcon aria-hidden />}
       </Button>
       <Dropdown
         id='dropdown-controlled'

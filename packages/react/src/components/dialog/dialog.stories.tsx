@@ -58,7 +58,7 @@ export const Preview = meta.story({
   render: (args) => (
     <>
       <Button
-        command='show-modal'
+        command={args.modal === false ? '--show-non-modal' : 'show-modal'}
         commandfor='dialog-preview'
         data-color={args['data-color']}
         data-size={args['data-size']}

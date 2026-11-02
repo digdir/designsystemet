@@ -232,10 +232,9 @@ const Header = ({
               variant='tertiary'
               data-color='neutral'
               className={classes.toggleButton}
-              onClick={() => setLangOpen(!langOpen)}
               lang='en'
               aria-label='Language'
-              commandfor='dropdown-lang'
+              popovertarget='dropdown-lang'
             >
               <LanguageIcon aria-hidden />
               <span aria-hidden>Language</span>
@@ -245,6 +244,7 @@ const Header = ({
               id='dropdown-lang'
               open={langOpen}
               onClose={() => setLangOpen(false)}
+              onOpen={() => setLangOpen(true)}
             >
               <Dropdown.List>
                 <Dropdown.Item>
