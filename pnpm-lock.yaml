@@ -494,9 +494,6 @@ importers:
         specifier: 4.0.1
         version: 4.0.1
     devDependencies:
-      '@fontsource/inter':
-        specifier: ^5.3.0
-        version: 5.3.0
       '@react-router/dev':
         specifier: 8.5.0
         version: 8.5.0(react-router@8.5.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(typescript@6.0.3)(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.0)(less@4.9.1)(sass@1.106.1)(stylus@0.62.0)(tsx@4.22.4)(yaml@2.9.0))
@@ -1454,9 +1451,6 @@ packages:
 
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
-
-  '@fontsource/inter@5.3.0':
-    resolution: {integrity: sha512-RofMylZmjlJEfELXeNHFWBRcSs75rGU/6bV2S2jfnvv/3rPXPGe0LgUJTklcHZ9lM4OZmAVFhcJPnACfb91A3g==}
 
   '@github/catalyst@1.8.0':
     resolution: {integrity: sha512-uLpi/D/mKfylYaFLfzNuloXNENi0AlcM0Z7hwYLH8Z030jBCr+ueMdX2xLxCzpMH/keYXKh0uPrHSMfcbxU6KA==}
@@ -6644,8 +6638,6 @@ snapshots:
       tabbable: 6.2.0
 
   '@floating-ui/utils@0.2.12': {}
-
-  '@fontsource/inter@5.3.0': {}
 
   '@github/catalyst@1.8.0': {}
 

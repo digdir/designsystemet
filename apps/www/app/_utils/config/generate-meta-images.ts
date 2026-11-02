@@ -18,11 +18,7 @@ export async function generateMetaImages(paths: string[], clientDir: string) {
     ([400, 700] as const).map(async (weight) => ({
       name: 'Inter',
       data: await readFile(
-        fileURLToPath(
-          import.meta.resolve(
-            `@fontsource/inter/files/inter-latin-${weight}-normal.woff`,
-          ),
-        ),
+        fileURLToPath(new URL(`./fonts/inter-${weight}.woff`, import.meta.url)),
       ),
       weight,
       style: 'normal' as const,
