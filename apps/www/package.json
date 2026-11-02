@@ -45,7 +45,6 @@
     "remark-gfm": "4.0.1"
   },
   "devDependencies": {
-    "@fontsource/inter": "^5.3.0",
     "@react-router/dev": "8.5.0",
     "@types/express": "5.0.6",
     "@types/express-serve-static-core": "5.1.3",
