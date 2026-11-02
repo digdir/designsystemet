@@ -3,6 +3,7 @@
 CSS implementation of the Designsystemet components
 
 - Uses [@layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `ds`
+  - Import it before your theme, so the order of our layers (`@layer ds.theme, ds.base, ds.components`) is set first.
 - Use this with your theme generated with `npx @digdir/designsystemet` or from [Themebuilder](https://theme.designsystemet.no/)
   - Alternative you can use a default starter theme under `/theme`.
 
