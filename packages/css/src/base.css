@@ -105,7 +105,7 @@ body,
   @composes ds-focus--visible from './base.css';
 
   /* remove focus from element that has real focus */
-  &:focus-visible {
+  & :focus-visible {
     box-shadow: none;
     outline: none;
     outline-offset: 0;
