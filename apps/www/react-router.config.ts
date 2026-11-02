@@ -33,8 +33,8 @@ const config: Config = {
     const robotsPath = join(dirname, 'public', 'robots.txt');
     const robotsContent =
       process.env.APP_ENV === 'production'
-        ? `User-agent: *\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAllow: /\nSitemap: https://designsystemet.no/sitemap.xml`
-        : `User-agent: *\nContent-Signal: ai-train=no, search=yes, ai-input=no\nDisallow: /\nSitemap: https://designsystemet.no/sitemap.xml`;
+        ? `User-agent: *\nContent-Signal: ai-train=yes, search=yes, ai-input=yes\nAllow: /\nSitemap: https://designsystemet.no/sitemap.xml`
+        : `User-agent: *\nContent-Signal: ai-train=no, search=yes, ai-input=yes\nDisallow: /\nSitemap: https://designsystemet.no/sitemap.xml`;
 
     console.log(`Writing robots.txt to ${robotsPath}`);
     try {

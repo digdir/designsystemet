@@ -57,7 +57,7 @@ jobs:
       - name: Prepare Chromatic metadata file
         run: touch apps/storybook/chromatic.log
       - name: Chromatic (visual + interaction)
-        uses: chromaui/action@38afd264ef2241136f12d039093c2724748bec08 # v18.11.0
+        uses: chromaui/action@5bcadb5104b09e360e210c54f95a7437c2d82bab # v18.13.3
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
@@ -83,7 +83,7 @@ jobs:
       - name: Build storybook
         run: pnpm build:storybook
       - name: Chromatic (auto-accept on main)
-        uses: chromaui/action@38afd264ef2241136f12d039093c2724748bec08 # v18.11.0
+        uses: chromaui/action@5bcadb5104b09e360e210c54f95a7437c2d82bab # v18.13.3
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

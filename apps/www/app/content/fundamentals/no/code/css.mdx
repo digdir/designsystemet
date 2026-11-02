@@ -1,7 +1,7 @@
 ---
 title: CSS
 description: Kom i gang med CSS, layers, dataattributter og hjelpeklasser.
-date: 2026-10-20
+date: 2026-09-28
 category: Kode
 color: blue
 icon: CodeIcon
@@ -55,7 +55,8 @@ Du kan lese mer om denne på "[Fargar i kode](/no/fundamentals/code/colors)".
 Brukes til å endre typografien på komponentene. Mulige verdier er `primary` og `secondary`.
 Et vanlig bruksområde for denne attributten er når du ønsker en monospace font på tabeller.
 
-Config-filen setter én font, som brukes for både `primary` og `secondary`. Vil du ha en annen font for `secondary`, redigerer du Design Tokens og synkroniserer dem med Figma ved hjelp av Tokens Studio. Se [Synkroniser Design Tokens med Tokens Studio](/no/fundamentals/figma/tokens-studio).
+Hvilken typografi som er tilknyttet `primary` eller `secondary` må defineres i teamet, ved hjelp av [Tokens Studio](https://tokens.studio/)
+(med Designsystemet design-tokens) eller [Temabyggeren](https://theme.designsystemet.no/).
 
 Dersom du skal bruke denne attributten må du huske å definere `font-family` til å bruke `--ds-font-family` CSS variabelen.
 Dette kan løses ved å f.eks bruke [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) i CSS.

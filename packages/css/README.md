@@ -8,6 +8,8 @@ CSS implementation of the Designsystemet components
 
 Read the Designsystemet [README](https://github.com/digdir/designsystemet) to get started.
 
+See our [CSS documentation](https://designsystemet.no/en/fundamentals/code/css) and [patterns](https://designsystemet.no/en/patterns) for more guidance. Pages are also available as Markdown by appending `.md` to the URL or requesting `Accept: text/markdown`.
+
 ## Q&A
 
 ### Tailwind

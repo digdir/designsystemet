@@ -1,7 +1,7 @@
 ---
 title: Farger
 sidebar_title: Farger
-description: Hvordan fargene er strukturert og hvordan du bruker dem.
+description: Hvordan de semantiske fargene er bygget opp, og hvordan du bruker dem i lys og mørk modus.
 date: 2025-06-30
 category: Tema
 color: red
@@ -12,7 +12,7 @@ search_terms: colors, fargar
 ---
 
 ## Navnestruktur
-Fargene i Designsystemet er organisert etter hva de skal brukes til. Det betyr at du velger farge ut fra hvilken funksjon og bruksområde den har, i stedet for å velge ut fra hvordan fargen ser ut. På den måten blir det enklere å bruke fargene konsekvent i grensesnittet.
+Fargene i designsystemet er semantiske. Du velger ikke farge ut fra hvordan den ser ut, men ut fra hva den skal brukes til. Det gjør det enklere å bruke farger konsekvent på tvers av komponenter, temaer og fargemoduser.
 
 Fargenavnene er delt opp i 3 ledd: Navn på fargeskala, gruppe (bruksområde) og variant. Disse leddene beskriver hvordan fargene er bygget opp og hvordan de skal brukes.
 
@@ -23,10 +23,10 @@ Fargenavnene er delt opp i 3 ledd: Navn på fargeskala, gruppe (bruksområde) og
   
 />
 
-* `Navn` Det første leddet og navnet på fargeskalaen. 
+* **Navn** Det første leddet og navnet på fargeskalaen. 
 Som standard kommer Designsystemet med fargeskalaene Accent, Neutral, Brand1, Brand2, Brand3, Success, Danger, Warning og Info. Flere skalaer kan legges til eller fjernes ved hjelp av [Temabyggeren](https://theme.designsystemet.no/). Du kan også velge dine egne navn på fargene, kanskje du vil bruke fargeskalaer som "Sjøgrønn", "Solgul" eller "Lavendel"?
 
-* `Gruppe` Hver fargeskala er delt inn i gruppene Background, Surface, Border, Text og Base. Disse gruppene beskriver bruksområdene til fargene. Text-gruppen skal for eksempel brukes på tekst og ikoner.
+* **Gruppe** Hver fargeskala er delt inn i gruppene Background, Surface, Border, Text og Base. Disse gruppene beskriver bruksområdene til fargene. Text-gruppen skal for eksempel brukes på tekst og ikoner.
 
 <Image
   src='/img/fundamentals/theme/colors/fargeskala-success.png'
@@ -36,19 +36,61 @@ Som standard kommer Designsystemet med fargeskalaene Accent, Neutral, Brand1, Br
   caption='Viser en fargeskala og de 5 gruppene som fargene er delt inn i.'
 />
 
-* `Variant` Inne i hver gruppe finnes det varianter som beskriver hvordan fargene ser ut eller skal brukes. 
+* **Variant** Inne i hver gruppe finnes det varianter som beskriver hvordan fargene ser ut eller skal brukes. 
 Tinted betyr for eksempel at fargen har et hint av farge i seg, mens Hover betyr at fargen er tenkt brukt for en interaktiv tilstand.
 
 ## Kontrast
-Fargesystemet er strukturert for å ivareta kontrastkrav. Temabyggeren sørger for at kontrastkrav sikres gjennom fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+Som standard er de semantiske fargene laget for å oppfylle kontrastkrav, uansett hvilken base-farge du har valgt. 
+Det gjelder særlig tekstfarger mot background- og surface-farger.
 
 Eksempler:
 
-- `Text-default` har alltid god nok kontrast mot alle `background` og `surface` farger.
-- `Text-subtle` har alltid god nok kontrast mot alle `background`-farger og `surface-default`.
-- Dette vil gjelde uansett hva du har valgt som base-farge.
+- `text-default` har alltid god nok kontrast mot alle background- og surface-farger.
+- `text-subtle` har alltid god nok kontrast mot alle background-farger, `surface-default` og `surface-hover`.
+- `base-contrast-default` og `base-contrast-subtle` har alltid god nok kontrast mot `base-default`.
 
-`Base-default`-fargen vil alltid være den samme som fargen du har valgt. Dette er for å ivareta brandet ditt best mulig. Du må derfor selv passe på at fargen du velger oppfyller kontrastkravene i forhold til hvor den skal bli brukt. [Designsystemets temagenerator](https://theme.designsystemet.no) vil informere deg om eventuelle kontrastbrudd.
+### Kontrasten til `base-default` må du sjekke selv
+`base-default` er et unntak. I lys modus er fargen alltid den samme som fargen du har valgt, for å ivareta brandet ditt best mulig. 
+Derfor kan vi ikke garantere at den har god nok kontrast mot bakgrunnen den plasseres på.
+
+`base-default` brukes semantisk for å vise tilstand, for eksempel som fyllfarge på en aktiv switch eller en avkrysset checkbox. 
+Da må fargen ha minst **3:1** kontrast mot background- eller surface-fargen den står på, slik [1.4.11 kontrast for ikke-tekstlig innhold (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/1411-kontrast-ikke-tekstlig-innhold-niva-aa/145) krever.
+
+[Temabyggeren](https://theme.designsystemet.no/no/themebuilder) sjekker dette for deg. Under «Kontraster mellom farger» ser du kontrasten mellom `base-default` og background- og surface-fargene. 
+Har du allerede et tema, kan du importere config-filen din i temabyggeren og få kontrastene sjekket der.
+
+## Lys og mørk modus
+
+Her beskriver vi hvordan fargene genereres som standard. 
+Du kan [overstyre enkeltfarger](/no/fundamentals/code/cli-config#overrides) for lys og mørk modus, og da må du selv passe på at de fungerer og har god nok kontrast.
+
+Stegene i en fargeskala har samme navn og samme rolle både i lys og mørk modus, men endrer fargeverdiene bak tokenene. 
+Dette gjør det mulig å bytte mellom lys og mørk modus uten å måtte endre farger i designet, 
+og det gjør det enklere å bygge komponenter som fungerer i begge moduser.
+
+Fargene er også laget for å følge de samme kontrastprinsippene i begge moduser. 
+Målet er at du skal kunne bruke Background, Surface, Border og Text på samme måte, enten grensesnittet er lyst eller mørkt. 
+Base er det viktigste unntaket, og omtales derfor særskilt.
+
+I mørk modus justeres fargene også noe ned i metning slik at de fungerer bedre på mørke flater.
+
+### Background og Surface i lys og mørk modus
+I lys modus er både `background-default` og `surface-default` hvite, uavhengig av hvilken fargeskala du bruker. 
+Det gjør det mulig å ha hvite flater, som kort og paneler, oppå en hvit bakgrunn.
+
+I mørk modus er verken bakgrunn eller flater helt svarte. 
+I stedet får Background- og Surface-fargene fargetonen sin fra skalaen som er generert ut fra den valgte Base-fargen. 
+Surface-fargene blir lysere enn Background, slik at de kan bygge opp dybde og hierarki over bakgrunnen.
+I mørk modus er dette særlig viktig, fordi forskjeller mellom bakgrunn og flater i større grad brukes til å skape dybde og tydelig hierarki.
+
+En fargeskala har derfor flere Background- og Surface-farger per fargeskala. De skal dekke ulike behov i lys modus, og samtidig gi tydelige og jevne overganger i mørk modus.
+
+
+### Base-fargene oppfører seg litt annerledes
+`base-default` tar utgangspunkt i fargen som velges i temabyggeren. 
+I lys modus brukes denne direkte, mens den i mørk modus justeres automatisk for å fungere bedre på mørke flater.
+
+Se også sidene om [Fargar i kode](/no/fundamentals/code/colors) og [Modes i Figma](/no/fundamentals/figma/modes-in-figma) for hvordan du bytter mellom lys og mørk modus i praksis.
 
 ## Slik bruker du fargene
 Hver fargeskala består av totalt 16 farger, utformet for å dekke ulike behov i designet. Nedenfor finner du en oversikt over de forskjellige fargene og deres tiltenkte bruksområder.
@@ -65,18 +107,18 @@ Hver fargeskala består av totalt 16 farger, utformet for å dekke ulike behov i
 ### Background
 Background-fargene brukes for å fargelegge store flater og er ofte det bakerste laget på en nettside. Det er vanlig å bruke disse fargene på body-elementet.
 
-* `Background-default` er den lyseste og mest nøytrale bakgrunnsfargen.
-* `Background-tinted` får et hint av farge i seg og kan brukes for å skape variasjon i bakgrunnslaget. 
+* `background-default` er den lyseste og mest nøytrale bakgrunnsfargen.
+* `background-tinted` får et hint av farge i seg og kan brukes for å skape variasjon i bakgrunnslaget. 
 
 ### Surface
 Surface-fargene brukes til å fargelegge elementer som ligger over background-fargene, som for eksempel paneler eller kort (cards).
 Disse fargene fungerer som forgrunnsfarger og bidrar til å skape dybde i designet ved å skille elementer fra bakgrunnen.
-I mørk modus blir disse fire fargene gradvis lysere, med Surface-active som den lyseste.
+I mørk modus blir disse fire fargene gradvis lysere, med `surface-active` som den lyseste.
 
-* `Surface-default` er helt hvit i lys modus og brukes som standard bakgrunnsfarge på elementer.
-* `Surface-tinted` får et hint av farge i seg og kan brukes for å skille elementer fra bakgrunnen.
-* `Surface-hover` kan brukes til hover-tilstander for elementer eller til å skape visuelle hierarkier i Surface-laget når den kombineres med Surface-tinted og Surface-active.
-* `Surface-active` kan brukes til active-tilstander for elementer eller til å forsterke hierarkiet i Surface-laget sammen med Surface-tinted og Surface-hover.
+* `surface-default` er helt hvit i lys modus og brukes som standard bakgrunnsfarge på elementer.
+* `surface-tinted` får et hint av farge i seg og kan brukes for å skille elementer fra bakgrunnen.
+* `surface-hover` kan brukes til hover-tilstander for elementer eller til å skape visuelle hierarkier i Surface-laget når den kombineres med `surface-tinted` og `surface-active`.
+* `surface-active` kan brukes til active-tilstander for elementer eller til å forsterke hierarkiet i Surface-laget sammen med `surface-tinted` og `surface-hover`.
 
 <Image
   src='/img/fundamentals/theme/colors/color-surface.png'
@@ -89,12 +131,12 @@ I mørk modus blir disse fire fargene gradvis lysere, med Surface-active som den
 ### Border
 Border-fargene brukes for å fargelegge rammer (strokes) til elementer.
 
-* `Border-subtle` har lav kontrast mot background- og surface-fargene og bør kun brukes til dekorative formål. 
+* `border-subtle` har lav kontrast mot background- og surface-fargene og bør kun brukes til dekorative formål. 
 Vanlige bruksområder er skillelinjer og dekorative rammer.
 Fargen bør ikke være den eneste visuelle indikatoren på at et element er interaktivt.
-* `Border-default` brukes på skjemakomponenter eller på andre meningsbærende rammer. 
-Fargen har god kontrast (over 3:1) mot alle background-fargene, Surface-default og Surface-tinted.
-* `Border-strong` har god kontrast (over 3:1) mot alle background- og surface-fargene og kan brukes på rammer for å gjøre elementer ekstra synlige.
+* `border-default` brukes på skjemakomponenter eller på andre meningsbærende rammer. 
+Fargen har god kontrast (over 3:1) mot alle background-fargene, `surface-default` og `surface-tinted`.
+* `border-strong` har god kontrast (over 3:1) mot alle background- og surface-fargene og kan brukes på rammer for å gjøre elementer ekstra synlige.
 
 <Image
   src='/img/fundamentals/theme/colors/color-border.png'
@@ -107,10 +149,10 @@ Fargen har god kontrast (over 3:1) mot alle background-fargene, Surface-default 
 ### Text
 Text-fargene brukes på tekst og ikoner.
 
-* `Text-subtle` er en lys tekstfarge som kan brukes for å skape variasjon i typografien eller for å indikere hierarkiske nivåer av viktighet.
+* `text-subtle` er en lys tekstfarge som kan brukes for å skape variasjon i typografien eller for å indikere hierarkiske nivåer av viktighet.
 Den forsøker også å bevare mest mulig av fargemetningen fra den opprinnelige fargen valgt i Temabyggeren. 
-Fargen har god kontrast (**4.5:1**) mot alle background-fargene, Surface-default og Surface-tinted.
-* `Text-default` er en tekstfarge med høy kontrast, optimal for lesbarhet. 
+Fargen har god kontrast (**4.5:1**) mot alle background-fargene, `surface-default` og `surface-tinted`.
+* `text-default` er en tekstfarge med høy kontrast, optimal for lesbarhet. 
 Den bør brukes på hovedinnholdet og den primære teksten på en side.
 Denne fargen i Neutral varianten kan være en fin farge å bruke på mesteparten av teksten.
 Fargen har god kontrast (**4.5:1**) mot alle background- og surface-fargene.
@@ -128,14 +170,14 @@ Base-fargene brukes for å fargelegge solide bakgrunner, som for eksempel knappe
 Fargene bidrar til å lede oppmerksomheten mot viktige designelementer og etablere et visuelt hierarki i forhold til mindre fremtredende elementer. 
 Samtidig skaper de kontrast mot background- og surface-fargene, noe som forsterker lesbarhet og visuell tydelighet.
 
-Base-hover og Base-active fargene genereres ut fra lysheten eller mørkheten til Base-default fargen for å skape jevne visuelle overganger mellom tilstandene. 
-Kontrastfargene blir enten hvite eller svarte avhengig av lysstyrken til Base-default fargen for å sikre god kontrast og lesbarhet.
+`base-hover`- og `base-active`-fargene genereres ut fra lysheten eller mørkheten til `base-default`-fargen for å skape jevne visuelle overganger mellom tilstandene. 
+Kontrastfargene blir enten hvite eller svarte avhengig av lysstyrken til `base-default`-fargen for å sikre god kontrast og lesbarhet.
 
-* `Base-default` kan brukes for å fargelegge solide bakgrunner til elementer. Fargen (hex-koden) som blir valgt i temabyggeren blir plassert under Base-default.
-* `Base-hover` kan brukes til hover-tilstander for solide elementer eller til å skape visuelle hierarkier i Base-laget når den kombineres med Base-default og Base-active.
-* `Base-active` kan brukes til active-tilstander for solide elementer eller til å forsterke hierarkiet i Base-laget sammen med Base-default og Base-hover.
-* `Base-contrast-subtle` har god kontrast (**4.5:1**) mot Base-default fargen fra samme fargeskala og kan trygt brukes som tekst-farge mot denne.
-* `Base-contrast-default` har god kontrast (**4.5:1**) mot Base-default og Base-hover fargene fra samme fargeskala, og kan trygt brukes som en tekst-farge mot disse.
+* `base-default` kan brukes for å fargelegge solide bakgrunner til elementer. Fargen (hex-koden) som blir valgt i temabyggeren blir plassert under `base-default`.
+* `base-hover` kan brukes til hover-tilstander for solide elementer eller til å skape visuelle hierarkier i Base-laget når den kombineres med `base-default` og `base-active`.
+* `base-active` kan brukes til active-tilstander for solide elementer eller til å forsterke hierarkiet i Base-laget sammen med `base-default` og `base-hover`.
+* `base-contrast-subtle` har god kontrast (**4.5:1**) mot `base-default`-fargen fra samme fargeskala og kan trygt brukes som tekst-farge mot denne.
+* `base-contrast-default` har god kontrast (**4.5:1**) mot `base-default`- og `base-hover`-fargene fra samme fargeskala, og kan trygt brukes som en tekst-farge mot disse.
 
 <Image
   src='/img/fundamentals/theme/colors/color-base.png'
@@ -144,4 +186,6 @@ Kontrastfargene blir enten hvite eller svarte avhengig av lysstyrken til Base-de
   
   caption='Viser bokser med Base-default som bakgrunn og Base-contrast-default som tekstfarge.'
 />
+
+For å enklere forstå hvordan fargene fungerer kan du se hvordan ulike fargeskalaer ser ut i [Temabyggeren](https://theme.designsystemet.no/no/themebuilder) til Designsystemet.
 
