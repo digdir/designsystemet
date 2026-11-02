@@ -103,6 +103,13 @@ body,
  */
 .ds-focus--within:focus-within {
   @composes ds-focus--visible from './base.css';
+
+  /* remove focus from element that has real focus */
+  &:focus-visible {
+    box-shadow: none;
+    outline: none;
+    outline-offset: 0;
+  }
 }
 
 /**
