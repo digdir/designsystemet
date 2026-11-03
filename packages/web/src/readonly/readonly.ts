@@ -38,5 +38,8 @@ onHotReload('readonly', () => [
   on(document, 'keydown', handleKeydown),
   on(document, 'click', handleClick, true), // click needed for <label> and <input type="checkbox|radio">, using capture to ensure we run before React
   on(document, 'mousedown', preventIfReadOnly, true), // needed for <select> and <input type="range"> on desktop
-  on(document, 'touchstart', preventIfReadOnly, true), // needed for <input type="range"> on touch devices, using capture to run before frameworks
+  on(document, 'touchstart', preventIfReadOnly, {
+    capture: true, // Using capture to run before frameworks
+    passive: false, // Browsers default touchstart on document to passive, which ignores preventDefault
+  }), // needed for <input type="range"> on touch devices
 ]);
