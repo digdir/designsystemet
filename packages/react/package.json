@@ -49,15 +49,15 @@
     "@floating-ui/dom": "^1.8.0",
     "@floating-ui/react": "0.26.23",
     "@radix-ui/react-slot": "^1.5.0",
-    "@tanstack/react-virtual": "^3.14.21",
+    "@tanstack/react-virtual": "^3.14.22",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
-    "@navikt/aksel-icons": "^8.19.2",
-    "@storybook/addon-docs": "10.6.2",
-    "@storybook/addon-vitest": "10.6.2",
-    "@storybook/react-vite": "10.6.2",
+    "@navikt/aksel-icons": "^8.20.0",
+    "@storybook/addon-docs": "10.6.3",
+    "@storybook/addon-vitest": "10.6.3",
+    "@storybook/react-vite": "10.6.3",
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.3",
     "@testing-library/user-event": "14.6.8",
@@ -66,7 +66,7 @@
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "react-dropzone": "20.1.4",
-    "storybook": "10.6.2",
+    "storybook": "10.6.3",
     "tsdown": "0.23.1",
     "typescript": "6.0.3"
   }

@@ -24,6 +24,7 @@ import {
   withLive,
 } from 'react-live';
 import { useLocation } from 'react-router';
+import { renderStoryHtml } from '~/_utils/render-story';
 import classes from './live-component.module.css';
 
 /* vsLight's attr-name color (rgb(255, 0, 0)) is only 4:1 against white, below the 4.5:1 required for normal text. */
@@ -341,7 +342,7 @@ export const LiveComponent = ({
     'light',
   );
   const [useInverted, setUseInverted] = useState(false);
-  const [html, setHtml] = useState<string>('');
+  const [html, setHtml] = useState(() => renderStoryHtml(story, scopes));
   const previewColorScheme = useInverted ? invertedColorScheme : colorScheme;
   const editorId = useId();
 

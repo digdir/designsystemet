@@ -1,7 +1,7 @@
 ---
 title: Oppsett
 description: Kom i gang med Designsystemet i kode
-date: 2026-02-27
+date: 2026-10-25
 category: Kode
 color: blue
 icon: CodeIcon
@@ -11,110 +11,97 @@ search_terms: setup, oppsett, installasjon, installation, getting started, komme
 ---
 
 
-Følg disse stegene for å komme i gang med bruk av Designsystemet i kode første gang.
+Her viser vi hvordan du legger til Designsystemet i prosjektet ditt.
+Eksemplene bruker npm og et byggeverktøy som Vite.
 
 ## 1. Installer pakkene
-Designsystemet består av flere kodepakker som du fritt kan velge mellom, avhengig av behov og preferanser. Du kan bruke pakkene sammen, eller bare plukke ut de delene som gir deg fart, samtidig som du beholder friheten til å kode selv der du ønsker det.
 
-Vi anbefaler at du starter med `@digdir/designsystemet-web` og `@digdir/designsystemet-css`. Du kan også bruke `@digdir/designsystemet-web` uten `@digdir/designsystemet-css` hvis du allerede har egen styling, eller bare bruke CSS-pakken hvis du håndterer interaktivitet selv.
+CSS-pakken gir deg utseendet.
+Web- og React-pakkene gir noen komponenter funksjonene sine.
+Velg HTML for vanlig HTML eller rammeverk som Vue, Angular og Svelte, eller velg React.
 
-<Tabs data-wide-content>
+<Tabs defaultValue="html" data-wide-content>
   <Tabs.List>
-  <Tabs.Tab>HTML</Tabs.Tab>
-  <Tabs.Tab>React</Tabs.Tab>
+  <Tabs.Tab value="html">HTML</Tabs.Tab>
+  <Tabs.Tab value="react">React</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Panel>
+  <Tabs.Panel value="html">
+
+**HTML og andre rammeverk**
+
 ```sh
-npm i @digdir/designsystemet-css @digdir/designsystemet-web 
+npm i @digdir/designsystemet-css @digdir/designsystemet-web
 ```
   </Tabs.Panel>
-  <Tabs.Panel>
+  <Tabs.Panel value="react">
+
+**React**
+
 ```sh
 npm i @digdir/designsystemet-css @digdir/designsystemet-react
 ```
+
+Du trenger også React og React DOM 18.3.1 eller nyere.
+
   </Tabs.Panel>
 </Tabs>
 
+Du kan også bruke web-pakken med egen CSS, eller bare CSS-pakken hvis du tar hånd om funksjonene selv.
 
-## 2. Importer Javascript
+## 2. Importer JavaScript
 
-<Tabs data-wide-content>
+<Tabs defaultValue="html" data-wide-content>
   <Tabs.List>
-  <Tabs.Tab>HTML</Tabs.Tab>
-  <Tabs.Tab>React</Tabs.Tab>
+  <Tabs.Tab value="html">HTML</Tabs.Tab>
+  <Tabs.Tab value="react">React</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Panel>
-Importer `@digdir/designsystemet-web` i din hoved JavaScript fil.
-<br/>
-Dette vil registrere alle web-komponenter og observers globalt, så du trenger bare å gjøre dette en gang.
+  <Tabs.Panel value="html">
 
-```jsx
+**HTML og andre rammeverk**
+
+Legg til denne importen én gang i hovedfilen for JavaScript. Den må kjøres i nettleseren.
+
+```js
 import '@digdir/designsystemet-web';
 ```
   </Tabs.Panel>
-  <Tabs.Panel>
-Importer `@digdir/designsystemet-react` ved bruk av komponenter.
+  <Tabs.Panel value="react">
 
-```js
+**React**
+
+Importer komponentene du bruker. Du trenger ikke å installere eller importere web-pakken i tillegg.
+
+```tsx
 import { Button } from '@digdir/designsystemet-react';
 ```
   </Tabs.Panel>
 </Tabs>
 
 
-## 3. Importer CSS
+## 3. Legg til CSS og tema
 
-Importer `@digdir/designsystemet-css`.
+Temaet bestemmer farger, størrelser og fonter.
+Start gjerne med standardtemaet nedenfor.
+Legg til importene én gang, enten i hovedfilen for CSS eller gjennom JavaScript.
 
-Les mer om [CSS](/no/fundamentals/code/css).
-
-<Tabs data-wide-content>
+<Tabs defaultValue="css" data-wide-content>
   <Tabs.List>
-  <Tabs.Tab>CSS</Tabs.Tab>
-  <Tabs.Tab>JavaScript</Tabs.Tab>
+  <Tabs.Tab value="css">CSS</Tabs.Tab>
+  <Tabs.Tab value="javascript">JavaScript</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Panel>
+  <Tabs.Panel value="css">
+
+**CSS**
+
   ```css
   @import '@digdir/designsystemet-css/index.css';
-  ```     
-  </Tabs.Panel>
-  <Tabs.Panel>
-  ```js
-  import '@digdir/designsystemet-css';
+  @import '@digdir/designsystemet-css/theme.css';
   ```
   </Tabs.Panel>
-</Tabs>
+  <Tabs.Panel value="javascript">
 
+**JavaScript**
 
-<Alert data-color='info'>
-
-<h3 className="ds-heading" data-size='xs'>Merk: `background` og `color` blir satt på `<body>`</h3>
-
-`background` og `color` blir automatisk definert på `body`-elementet og ellers der `data-color-scheme` blir satt, slik at vi ivaretar [universell utforming (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html) og får samme font og farge på tvers.
-Dette kan lett overstyres i ditt eget tema, eller i din globale CSS fil.
-
-</Alert>
-
-
-## 4. Importer temaet
-
-Designsystemet er laget for å være tematiserbart, og det er derfor viktig at du importerer ditt tema etter at du har importert `@digdir/designsystemet-css`.
-
-[Bygg ditt eget tema](/no/fundamentals/start-here/own-theme) eller bruke standardtemaet; `@digdir/designsystemet-css/theme`.
-
-
-<Tabs data-wide-content>
-  <Tabs.List>
-  <Tabs.Tab>Eget tema</Tabs.Tab>
-  <Tabs.Tab>Standardtema</Tabs.Tab>
-  </Tabs.List>
-  <Tabs.Panel>
-  ```css
-  @import '@digdir/designsystemet-css/index.css';
-  @import 'designsystemet/<ditt-tema>.css';
-  ```     
-  </Tabs.Panel>
-  <Tabs.Panel>
   ```js
   import '@digdir/designsystemet-css';
   import '@digdir/designsystemet-css/theme';
@@ -122,102 +109,143 @@ Designsystemet er laget for å være tematiserbart, og det er derfor viktig at d
   </Tabs.Panel>
 </Tabs>
 
+Vil du bruke egne farger og fonter? [Lag ditt eget tema](/no/fundamentals/start-here/own-theme).
 
-## 5. Bruk
+<Details>
+<Details.Summary>Bruk ditt eget tema</Details.Summary>
+<Details.Content> 
+Erstatt importen av standardtemaet med CSS-filen du har laget:
 
-Nå er du klar til å bruke Designsystemet i kode! 
+```css
+@import '@digdir/designsystemet-css/index.css';
+@import './designsystemet/my-theme.css';
+```
 
+Bytt ut `my-theme.css` med filnavnet ditt, og tilpass stien til prosjektet.
 
-Alle komponenter har egen side i [komponent-dokumentasjonen](/no/components), vi anbefaler at du leser gjennom disse for å se hvordan du kan bruke komponentene.
+</Details.Content>
+</Details>
 
-Det er også anbefalt at du leser gjennom tilgjengelighets-sida.
+CSS-en setter også tekst- og bakgrunnsfarge på `body`.
+Se [CSS-veiledningen](/no/fundamentals/code/css) hvis du bruker Tailwind, en CSS-reset eller vil endre standardverdiene.
 
-- Bruk `data-color-scheme="light | dark | auto"` for å sette dark/light mode 
-  - tilsvarer `Appearance › Color scheme` i Figma
-- Bruk `data-size="sm | md | lg"` for å sette størrelse på komponentene
-  - tilsvarer `Appearance › Size` i Figma
-- Bruk `data-color` for å sette farge på komponentene som du har definert for ditt tema
-  - tilsvarer `Appearance › Color` i Figma
+## 4. Bruk komponentene
 
+Her er et felt og en knapp du kan starte med:
 
-<Tabs data-wide-content>
+<Tabs defaultValue="html" data-wide-content>
   <Tabs.List>
-  <Tabs.Tab>HTML</Tabs.Tab>
-  <Tabs.Tab>React</Tabs.Tab>
+  <Tabs.Tab value="html">HTML</Tabs.Tab>
+  <Tabs.Tab value="react">React</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Panel>
+  <Tabs.Panel value="html">
+
+**HTML og andre rammeverk**
+
 ```html
-<button class="ds-button" data-variant="secondary">Jeg er en knapp!</button>
-<ds-field class="ds-field">
-    <label>Alternativ 1</label>
-    <input class="ds-input">
-</ds-field>
-```  
+<div data-color-scheme="auto" data-size="md">
+  <ds-field class="ds-field">
+    <label class="ds-label">Navn</label>
+    <input class="ds-input" type="text" />
+  </ds-field>
+  <button class="ds-button" data-variant="secondary" type="button">
+    Fortsett
+  </button>
+</div>
+```
   </Tabs.Panel>
-  <Tabs.Panel>
-  ```js
-<Button data-variant="secondary">Jeg er en knapp!</Button>;
-<Field>
-  <Label>Alternativ 1</Label>
-  <Input />
-</Field>
-  ```
+  <Tabs.Panel value="react">
+
+**React**
+
+```tsx
+import { Button, Field, Input, Label } from '@digdir/designsystemet-react';
+
+export function Example() {
+  return (
+    <div data-color-scheme='auto' data-size='md'>
+      <Field>
+        <Label>Navn</Label>
+        <Input type='text' />
+      </Field>
+      <Button variant='secondary'>Fortsett</Button>
+    </div>
+  );
+}
+```
   </Tabs.Panel>
 </Tabs>
 
-## Typescript
+Du kan sette farger og størrelser på en komponent eller et element rundt den:
 
-Designsystemet tilbyr typesikkerhet for flere data-attributter.
+- `data-color-scheme="auto"` følger brukerens preferanse. Du kan også velge `light` eller `dark`.
+- `data-size="md"` setter størrelsen. Du kan også velge `sm` eller `lg`.
+- `data-color="accent"` setter fargen. Hvilke farger du kan velge, avhenger av temaet.
 
-Installer type pakken og legg til typefilene i `tsconfig.json` for å få tilgang til disse.
 
-```sh
-npm i -D @digdir/designsystemet-types
-```
+## Bruke KI-assistanse
 
-<Tabs data-wide-content>
+Gi KI-verktøyet ditt lenken til [dokumentasjonsoversikten vår](/llms.txt).
+Sidene finnes også som Markdown: legg til `.md` på URL-en, som i [setup.md](/no/fundamentals/code/setup.md), eller bruk `Accept: text/markdown`.
+
+Be verktøyet bruke prosjektets pakkeversjoner og følge [mønstrene våre](/no/patterns).
+Se gjennom og test resultatet som annen kode.
+
+## TypeScript
+
+Typene følger med pakkene.
+For å få støtte for webkomponenter eller React-attributter og temafarger, legg til disse oppføringene i `compilerOptions.types` i `tsconfig.json`.
+Behold oppføringene du allerede har.
+
+<Tabs defaultValue="html" data-wide-content>
   <Tabs.List>
-  <Tabs.Tab>HTML</Tabs.Tab>
-  <Tabs.Tab>React</Tabs.Tab>
+  <Tabs.Tab value="html">HTML</Tabs.Tab>
+  <Tabs.Tab value="react">React</Tabs.Tab>
   </Tabs.List>
-  <Tabs.Panel>
+  <Tabs.Panel value="html">
+
+**HTML og andre rammeverk**
+
 ```json
 {
   "compilerOptions": {
     "types": [
       "@digdir/designsystemet-web",
-      "@digdir/designsystemet-types",
-      "@digdir/designsystemet-css/theme" /* eller din tema typefil, designsystemet/types.d.ts */
-      ]
-  },
+      "@digdir/designsystemet-css/theme"
+    ]
+  }
 }
 ```
   </Tabs.Panel>
-  <Tabs.Panel>
+  <Tabs.Panel value="react">
+
+**React**
+
 ```json
 {
   "compilerOptions": {
     "types": [
-      "@digdir/designsystemet-react/react-types", /** importerer @digdir/designsystemet-types for deg */
-      "@digdir/designsystemet-css/theme" /* eller din tema typefil, designsystemet/types.d.ts */
-      ]
-  },
+      "@digdir/designsystemet-react/react-types",
+      "@digdir/designsystemet-css/theme"
+    ]
+  }
 }
 ```
   </Tabs.Panel>
 </Tabs>
 
-
+For ditt eget tema erstatter du `@digdir/designsystemet-css/theme` med stien til de genererte typene, for eksempel `./designsystemet/types.d.ts`.
+Se [hvordan du lager tematyper](/no/fundamentals/code/cli-config#output).
 
 ## Font
 
-Komponentene er designet og utviklet med [Inter fonten (github.com)](https://github.com/rsms/inter), så variasjoner kan forekomme dersom du bruker en annen font.
-Dersom du velger å installere fonten på en annen måte enn altinncdn.no, husk å inkludere fontvektene `400`, `500` og `600`.
+Standardtemaet bruker [Inter](https://github.com/rsms/inter).
+Du kan bruke en annen font i ditt eget tema.
+Ta med fontvektene `400`, `500` og `600`.
 
 ### Tekstskalering som følger systeminnstillinger
 
-I utgangspunktet skalerer de fleste nettlesere tekst basert på zoom og nettleser tekstinstillinger, men ikke systeminnstillinger.
-For å også [respektere systeminnstillinger](https://www.joshtumath.uk/posts/2026-07-02-lets-fix-the-webs-text-size/), legg til denne koden i `<head>`:
+Legg dette i `<head>` for å la nettlesere som støtter det [følge brukerens tekststørrelse](https://www.joshtumath.uk/posts/2026-07-02-lets-fix-the-webs-text-size/):
 
 ```html
 <meta name="text-scale" content="scale">
@@ -226,9 +254,7 @@ For å også [respektere systeminnstillinger](https://www.joshtumath.uk/posts/20
 
 ### Legg til Inter fonten (valgfritt)
 
-Legg til `<link>` taggen under i `<head>`, og sett `font-family` til `Inter` i din globale css fil.
-
-Du kan bruke denne koden for å legge til fonten i `<head>`:
+For å laste Inter legger du dette i `<head>`:
 
 ```html
 <link
@@ -238,10 +264,11 @@ Du kan bruke denne koden for å legge til fonten i `<head>`:
   crossorigin="anonymous"
 />
 ```
-### Konfigurasjon av fonten
 
-Vi anbefaler sterkt at du legger til følgende i din globale CSS fil.
-`font-feature-settings` legger til en hale på små `L`'er.
+### Bruk fonten
+
+Legg dette i hovedfilen for CSS for å bruke fonten fra temaet.
+`font-feature-settings` gir liten `l` en hale, så den blir lettere å skille fra stor `I`.
 
 ```css
 body {
@@ -252,46 +279,48 @@ body {
 
 ## Testing
 
-Vi er opptatt av at komponentene skal fungere godt i ulike testoppsett. Designsystemet testes i JSDOM og HappyDOM, og gjennom Playwright i Chromium, Firefox og WebKit. Det vil alltid allikevel finnes rammeverk, testmiljøer og meta-rammeverk som håndterer asynkron uttegning eller enkelte edge cases på forskjellige måter.
+Vi tester med JSDOM, HappyDOM og ekte nettlesere.
+JSDOM og HappyDOM støtter ikke alt en nettleser gjør, så testene dine kan trenge tilpasning.
 
-Opplever du problemer med Designsystemet i ditt testoppsett, vil vi veldig gjerne høre om det. Meld fra via et [GitHub-issue](https://github.com/digdir/designsystemet/issues/new/choose) eller spør oss i [vår åpne Slack](https://designsystemet.no/slack).
+<Details>
+<Details.Summary>HappyDOM-oppsett</Details.Summary>
 
-Merk at ikke alt som støttes av nettlesere er implementert i miljøer med en kunstig DOM, som JSDOM og HappyDOM. I noen tilfeller kan du trenge konfigurasjon av testoppsettet ditt:
-
-<details className="ds-details">
-<summary>HappyDOM-oppsett</summary>
-
-HappyDOM kan trenge støtte for arv mellom `HTMLDocument` og `Document`:
+Legg dette i testoppsettet hvis HappyDOM ikke kjenner igjen `HTMLDocument` som `Document`:
 
 ```ts
 // Polyfill missing HTMLDocument to Document inheritance in HappyDOM
 if (
   typeof HTMLDocument !== 'undefined' &&
+  typeof Document !== 'undefined' &&
+  HTMLDocument.prototype !== Document.prototype &&
+  !(Document.prototype instanceof HTMLDocument) &&
   !(HTMLDocument.prototype instanceof Document)
 ) {
-  try {
-    Object.setPrototypeOf(HTMLDocument.prototype, Document.prototype);
-  } catch (_) {}
+  Object.setPrototypeOf(HTMLDocument.prototype, Document.prototype);
 }
 ```
-</details>
+</Details>
 
-<details className="ds-details">
-<summary>JSDOM-oppsett</summary>
+<Details>
+<Details.Summary>JSDOM-oppsett</Details.Summary>
 
-JSDOM kan mangle støtte for enkelte metoder på `HTMLDialogElement`:
+Hvis dialogtestene feiler fordi JSDOM mangler `show`, `showModal` eller `close`, kan du legge til dette i testoppsettet:
 
 ```ts
-// Polyfill missing HTMLDialogElement methods in JSDOM
+// Minimal test mocks, not browser-equivalent dialog behaviour.
 if (typeof HTMLDialogElement.prototype.show !== 'function') {
   HTMLDialogElement.prototype.show = function () {
     this.open = true;
   };
+}
 
+if (typeof HTMLDialogElement.prototype.showModal !== 'function') {
   HTMLDialogElement.prototype.showModal = function () {
     this.open = true;
   };
+}
 
+if (typeof HTMLDialogElement.prototype.close !== 'function') {
   HTMLDialogElement.prototype.close = function (returnValue?: string) {
     this.open = false;
     if (returnValue !== undefined) this.returnValue = returnValue;
@@ -299,4 +328,8 @@ if (typeof HTMLDialogElement.prototype.show !== 'function') {
   };
 }
 ```
-</details>
+</Details>
+
+Bruk en ekte nettleser for å sjekke tastaturnavigasjon, fokus, dialoger og popovers.
+Koden ovenfor kan ikke sjekke dette for deg.
+Trenger du hjelp? Spør i [Slack](https://designsystemet.no/slack) eller [meld fra om en feil](https://github.com/digdir/designsystemet/issues/new/choose).
