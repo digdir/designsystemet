@@ -16,7 +16,7 @@ We use [css layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) to 
 This means that you can easily override it with your own styling.
 
 All our layers are under the layer group `ds`.
-Import `@digdir/designsystemet-css` before your theme, so the order of our layers (`@layer ds.theme, ds.base, ds.components`) is set first.
+Import `@digdir/designsystemet-css` before your theme, so the order of our layers (`@layer ds`) is set first.
 
 For example, if you have a css reset, this will override parts of what we have done. We recommend putting this in a layer and sorting this first.
 You do this by first putting your reset in a layer, and then sorting this layer first:
