@@ -22,9 +22,12 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   return getBlogPosts(lang);
 };
 
-export const meta: Route.MetaFunction = ({ loaderData }) => {
+export const meta: Route.MetaFunction = ({ loaderData, location }) => {
   if (!loaderData) return [{ title: 'Designsystemet' }];
-  return generateMetadata(loaderData.metadata);
+  return generateMetadata({
+    ...loaderData.metadata,
+    pathname: location.pathname,
+  });
 };
 
 export const links: Route.LinksFunction = () => [
