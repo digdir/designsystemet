@@ -5,7 +5,7 @@ const isReadOnly = (el: Element) =>
 
 // Native readonly is ignored on <select> and <input type="range">, so we block interaction ourselves
 const isReadOnlyIgnored = (el: HTMLElement | null): el is HTMLElement =>
-  isReadOnly(el) && !!el?.matches('select, input[type="range"]');
+  el !== null && isReadOnly(el) && el.matches('select, input[type="range"]');
 
 const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
   const allow = e.key === 'Tab' || e.altKey || e.ctrlKey || e.metaKey; // Allow modifier keys so native functions like CMD + D to bookmark  etc. still works
