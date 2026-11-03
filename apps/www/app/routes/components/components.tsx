@@ -13,7 +13,7 @@ import {
   getFileFromContentDir,
   getFoldersInContentDir,
 } from '~/_utils/files.server';
-import { generateMetadata } from '~/_utils/metadata';
+import { generateMetadata, withMetaImage } from '~/_utils/metadata';
 import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/components';
@@ -81,14 +81,14 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export const meta = ({ loaderData }: Route.MetaArgs) => {
+export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   if (!loaderData)
     return [
       {
         title: 'Designsystemet',
       },
     ];
-  return loaderData.metadata;
+  return withMetaImage(loaderData.metadata, location.pathname);
 };
 
 export default function Components({
