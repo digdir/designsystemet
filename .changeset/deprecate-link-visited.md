@@ -2,5 +2,5 @@
 "@digdir/designsystemet": patch
 "@digdir/designsystemet-css": patch
 ---
+Deprecated unused design token `link.color.visited`, CSS custom property `--ds-link-color-visited` and config option `overrides.linkVisited`. Use `--dsc-link-color--visited` on `.ds-link` if you want to style visited links.
 
-Deprecate unused `link.color.visited` token (`--ds-link-color-visited`) and the `overrides.linkVisited` config option. Set `--dsc-link-color--visited` on `.ds-link` to style visited links. Configs that still have `overrides.linkVisited` are valid; the option is ignored.
