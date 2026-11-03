@@ -118,10 +118,6 @@
   --dsc-link-color--hover: var(--text);
   --dsc-link-color: var(--text-muted);
 
-  &:visited {
-    color: var(--text-muted);
-  }
-
   & svg {
     height: 1.5rem;
     width: auto;
