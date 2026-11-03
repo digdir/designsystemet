@@ -1,71 +1,84 @@
 ---
-title: Gjør deg klar for Designsystemet v2
-description: Neste hovedversjon av Designsystemet fjerner alt som er markert som utgått i v1. Slik forbereder du deg allerede nå.
+title: Et ryddigere designsystemet.no v2 er på vei - slik blir du klar
+description: V2 er ikke en drastisk omskriving, men en opprydding og enda bedre utnyttelse av webstandarder. Det gir deg mindre å vedlikeholde, bedre ytelse og økt rammeverkkompatibilitet.
 date: 2026-10-26
-author: Designsystemet
+author: designsystemet.no
 ---
 
-Neste hovedversjon av Designsystemet er på vei. Den viktigste endringen i v2 er at vi fjerner alt som er markert som utgått (deprecated) i v1. Gjennom 1.x har vi erstattet en rekke props, klasser, attributter og eksporter med bedre løsninger, men beholdt de gamle for å ikke ødelegge noe for deg. I v2 rydder vi opp i dette.
+Da `@digdir/designsystemet-web` ble lansert i februar, tok designsystemet.no et viktig steg i retning av prosjektets visjon: å tilby små, robuste byggeklosser basert på webstandarder, som er enkle å bruke og bygge videre på for alle.
 
-Bruker du ingen av de utgåtte løsningene, blir oppgraderingen enkel.
+I v2 vil deprecated kode og noen gamle React-løsninger fjernes til fordel for funksjonalitet innebygd i nettleseren. Eksempelvis kan 
+[`focusgroup`](/no/components/utilities/focusgroup) attributt erstatte `RovingFocus`, [`command`](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) attributt kan erstatte
+`TriggerContext`-komponenter og CSS kan gjøre enda mer.
+
+Vi vet at breaking changes kan ta tid. 
+Derfor lanserer vi blant annet ny funksjonalitet som "experimental", og lar deprecations leve en stund.
+Når vi nå gjør en opprydding, er også viktig for oss at overgangen blir smidig.
+Her er noen tips til hvordan du allerede nå kan bli klar for v2:
 
 ## Slik forbereder du deg
 
-1. **Oppgrader til siste 1.x-versjon** av alle `@digdir/designsystemet*`-pakkene.
-2. **Se etter advarsler.** TypeScript stryker over utgåtte props og eksporter i editoren din. React- og web-pakken skriver advarsler i konsollen, og CLI-en skriver advarsler i terminalen.
-3. **Bytt til erstatningene** i listen under. Alt du ser i listen fungerer allerede i v1, så du kan gjøre endringene nå og oppgradere til v2 uten flere endringer. Eneste unntak er `AvatarStack`, som får nytt navn i v2.
+1. **Bruk siste 1.x-versjon** av `@digdir/designsystemet*`-pakkene
+2. **Se etter advarsler:** TypeScript markerer utgåtte props i editoren, React- og web-pakken skriver advarsler i konsoll, og CLI varsler i terminal.
+3. **Gå gjennom justeringer** i tabellene under:
 
-## Dette endres i v2
+<div data-size="sm" style={{ gridColumn: 'content-page-start / content-page-end', marginInline: 'auto', maxWidth: 1200 }}>
 
-Endringene er gruppert etter hvem de gjelder for. **HTML og React** gjelder både når du bruker CSS- og web-pakken direkte og når du bruker React-komponentene. **React** gjelder bare `@digdir/designsystemet-react`. Endringer merket **kun visuelt** påvirker hvordan ting ser ut, men ikke hvordan de fungerer.
+| Komponent | Gå vekk fra dette (allerede deprecated) | Konsekvens hvis du ikke endrer | Gjør dette (virker i både v1 og v2) |
+| --- | --- | --- | --- |
+| **Label** | `weight` eller `data-weight` | <Tag data-color="success">Ingen</Tag> | Fjern attributt - vekt settes automatisk |
+| **Avatar** | `initials="AB"` eller <br /> `data-initials="AB"` | <Tag data-color="info">Lav</Tag> Ikon vises i stedet for initialer | `<Avatar>AB</Avatar>` |
+| **Avatar** | `variant="square"` eller <br />`data-variant="square"` | <Tag data-color="info">Lav</Tag> Rund avatar | Style `--dsc-avatar-radius: …` |
+| **Link** | `--dsc-link-background--active` | <Tag data-color="info">Lav</Tag> Active uten bakgrunn er ny standard | Style `.ds-link:active` hvis du vil |
+| **Suggestion** | `<del>` som tøm-knapp | <Tag data-color="info">Lav</Tag> Tøm-knapp skjules | `<button type="reset">` |
+| **ToggleGroup** | `data-toggle-group="Tekstjustering"` | <Tag data-color="info">Lav</Tag> Skjermleser sier ikke label | `focusgroup="radiogroup" aria-label="Tekstjustering"` |
+| **Avatar** | `data-size="xs"`<br />(`sm`/`md`/`lg` virker fortsatt) | <Tag data-color="warning">Medium</Tag> Større avatar | Style `--dsc-avatar-size: …` |
+| **Details** | `--dsc-details-border-block-wdith` (skrivefeil i `wdith`) | <Tag data-color="warning">Medium</Tag> Kantbredde endres | Style `--dsc-details-border-block-width` |
+| **Dialog** | `<form method="dialog"><button>` for å lage lukke-knapp | <Tag data-color="warning">Medium</Tag> Lukk-knapp mister styling | `<button command="close" commandfor="DIALOG-ID">` |
+| **Field** + **Fieldset** | `<p>` for beskrivelse | <Tag data-color="warning">Medium</Tag> Skjermleser mister input-kobling | `<p data-field="description">` |
+| **Search** | `.ds-search`, `search.css`, `--dsc-search-*` | <Tag data-color="danger">Høy</Tag> Komponenten mister styling | `input[type="search"]` og eventuelt suggesion rundt for lukkeknapp |
+| **SkipLink** | `.ds-skiplink`, `skiplink.css` | <Tag data-color="danger">Høy</Tag> Komponenten mister styling | `.ds-skip-link`, `skip-link.css` |
+| **ToggleGroup** | `.ds-togglegroup`, `togglegroup.css` | <Tag data-color="danger">Høy</Tag> Komponenten mister styling | `.ds-toggle-group`, `toggle-group.css` |
 
-### Fjernet fra React
+</div>
 
-- **AvatarStack:** `EXPERIMENTAL_AvatarStack` får nytt navn, `AvatarStack`, fordi komponenten ikke lenger er eksperimentell. Endre importen når du oppgraderer til v2.
-- **Combobox:** Bruk [`Suggestion`](/no/components/docs/suggestion/overview).
-- **Dialog, Dropdown og Popover:** `TriggerContext` og `Trigger` fjernes. Koble til en `Button` med `popovertarget` satt til `id`-en til dropdownen eller popoveren, eller med `command="show-modal"` og `commandfor` satt til `id`-en til dialogen.
-- **RovingFocusRoot og RovingFocusItem:** Bruk attributtet [`focusgroup`](/no/components/utilities/focusgroup).
-- **Search:** `Search`, `Search.Input`, `Search.Clear` og `Search.Button` fjernes. Bruk [`Input`](/no/components/docs/input/overview) med `type="search"` i en `Field`, eller `Suggestion` med `Suggestion.Clear` hvis du trenger en tøm-knapp.
-- **Hjelpefunksjoner:** `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` og typen `MergeRight` fjernes. Bruk et eget hjelpebibliotek eller lag din egen funksjon.
-- **Typer:** Typen `Size` og modulen `@digdir/designsystemet-react/colors` fjernes. Bruk `@digdir/designsystemet-types`.
+### Endringer bare for React
 
-### HTML og React: endrer oppførsel
+Disse endringene gjelder bare `@digdir/designsystemet-react`.
 
-- **Avatar:** `initials` og `data-initials` erstattes av tekst som barn.
-- **AvatarStack:** `suffix` erstattes av en `<li>` med tekst til slutt.
-- **Dialog:** `data-command="close"` erstattes av `command="close"` og `commandfor="DIALOG-ID"`.
-- **Field.Counter:** `hint` fjernes. Den har ikke hatt noen effekt på en stund.
-- **Field og Fieldset:** En `<p>` rett etter `<label>` eller `<legend>` blir ikke lenger stilt som beskrivelse. Bruk `data-field="description"`.
-- **SkipLink:** `.ds-skiplink` og `skiplink.css` erstattes av `.ds-skip-link` og `skip-link.css`.
-- **Suggestion og Search:** `.ds-search`, `search.css` og `--dsc-search-*`-variablene erstattes av `.ds-suggestion`, `suggestion.css` og tilsvarende `--dsc-suggestion-*`-variabler. Det gamle `<del>`-elementet for tømming støttes ikke lenger. Bruk `<button type="reset">` (`Suggestion.Clear` i React). `aria-label` på `Suggestion.Clear` erstattes av `data-sr-clear`, og `singular` og `plural` på `Suggestion.List` erstattes av `data-sr-singular` og `data-sr-plural` på `Suggestion`.
-- **ToggleGroup:** `.ds-togglegroup` og `togglegroup.css` erstattes av `.ds-toggle-group` og `toggle-group.css`. `data-toggle-group` og variabelen `--dsc-togglegroup-label` erstattes av `aria-label` eller `aria-labelledby`. Uten React bruker du `focusgroup="radiogroup"` med `aria-label`.
+<div data-size="sm" style={{ gridColumn: 'content-page-start / content-page-end', marginInline: 'auto', maxWidth: 1200 }}>
 
-### React: endrer oppførsel
 
-- **Dialog, Field, ErrorSummary og Pagination:** `asChild` fjernes.
-- **Pagination:** Aktivt element får ikke lenger egen stil når du setter `data-variant="tertiary"` manuelt.
-- **Select:** `readOnly` erstattes av `aria-readonly`.
-- **ToggleGroup:** `icon` på `ToggleGroup.Item` fjernes. Barn med `data-variant="tertiary"` satt manuelt får ikke lenger egen stil når de er aktive.
-- **Tooltip:** `open` fjernes, bruk [`Popover`](/no/components/docs/popover/overview) i stedet. `type` fjernes, fordi den ikke har noen effekt.
+| Komponent | Gå vekk fra dette (allerede deprecated) | Konsekvens | Gjør dette (virker i både v1 og v2) |
+| --- | --- | --- | --- |
+| **Tooltip** | `type` | <Tag data-color="success">Ingen</Tag> Type er automatisert | Fjern propen |
+| **ToggleGroup** | `icon` på `ToggleGroup.Item` **TODO EIRIK** | <Tag data-color="success">Ingen</Tag> Icon har ikke gjort noe på en stund | Fjern propen |
+| **Suggestion.List** | `singular` og `plural` | <Tag data-color="info">Lav</Tag> Automatiske standardtekster | `--dsc-suggestion-sr-singluar` og `--dsc-suggestion-sr-plural` for tekstendring |
+| **Field.Counter** | `hint` | <Tag data-color="info">Lav</Tag> Automatiske standardtekster | `--dsc-field-counter-over` og `--dsc-field-counter-under` for tekstendring |
+| **Tooltip** | `open` | <Tag data-color="info">Lav</Tag> Typescript klager | Bruk [`Popover`](/no/components/docs/popover/overview) for programmatisk åpning  |
+| **Skeleton** | `characters={10}` | <Tag data-color="info">Lav</Tag> Typescript klager | `width` eller tekst som barn |
+| **Typer** | `@digdir/designsystemet-react/colors` og `@digdir/designsystemet/types` |  <Tag data-color="info">Lav</Tag> Typescript klager | Importer typer fra `@digdir/designsystemet-types`|
+| **Dialog**, **Field**, **ErrorSummary** + **Pagination** | `asChild` | <Tag data-color="info">Lav</Tag> Typescript klager | Fjern propen|
+| **AvatarStack** | `gap`, `avatarSize` og `overlap` | <Tag data-color="warning">Medium</Tag> Avstand og størrelse endrer seg | `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` og `--dsc-avatar-stack-overlap` |
+| **Pagination** | `data-variant` på knappene | <Tag data-color="warning">Medium</Tag> Styling av `data-variant` slutter dette å virke | Style basert på `ara-current` |
+**ToggleGroup** | `data-variant` på knappene | <Tag data-color="warning">Medium</Tag> Styling av `data-variant` slutter dette å virke | Style basert på `checked` |
+| **AvatarStack** | `suffix="+3"` | <Tag data-color="warning">Medium</Tag> +3 vises ikke | `<li>+3</li>` sist i stabelen |
+| **Dialog** | `<button data-command="close">` | <Tag data-color="danger">Høy</Tag> Lukk-knapp slutter å virke | `<button command="close" commandfor="min-dialog">` |
+| **Select** | `readOnly`| <Tag data-color="danger">Høy</Tag> Feltet kan redigeres | `aria-readonly` |
+| **Dialog** | `<Dialog.TriggerContext>` og `<Dialog.Trigger>` | <Tag data-color="danger">Høy</Tag> Bygg feiler | `<Button command="show-modal" commandfor="min-dialog">` |
+| **Dropdown** + **Popover** | `<Popover.TriggerContext>` og `<Popover.Trigger>` |  <Tag data-color="danger">Høy</Tag> Bygg feiler | `<Button popovertarget="min-popover">` |
+| **RovingFocus** | `<RovingFocusRoot>` og `<RovingFocusItem>` | <Tag data-color="danger">Høy</Tag> Bygg feiler | `<div focusgroup="toolbar">` |
+| **AvatarStack** | `EXPERIMENTAL_AvatarStack` | <Tag data-color="danger">Høy</Tag> Bygg feiler | `AvatarStack` | 
+| **Combobox** | `<Combobox>` | <Tag data-color="danger">Høy</Tag> Bygg feiler | [`<Suggestion>`](/no/components/docs/suggestion/overview) |
+| **Search** | `<Search>` med `Search.Input`, `Search.Clear` og `Search.Button` | <Tag data-color="danger">Høy</Tag> Bygg feiler |  `<Field><Input type="search" /></Field>`, eller `Suggestion` med `Suggestion.Clear` for tøm-knapp |
+| **Hjelpefunksjoner** | `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` og `MergeRight` | <Tag data-color="danger">Høy</Tag> Bygg feiler | Et eget hjelpebibliotek eller egen funksjon |
 
-### HTML og React: kun visuelt
+</div>
 
-- **Avatar:** `variant="square"` og `data-variant="square"` erstattes av CSS-variabelen `--dsc-avatar-radius`. `data-size="xs"` fjernes.
-- **AvatarStack:** Firkantede avatarer i stabelen overstyrer ikke lenger radiusen til stabelen. Bruk CSS-variabelen `--dsc-avatar-stack-radius`.
-- **Details:** Den feilstavede variabelen `--dsc-details-border-block-wdith` erstattes av `--dsc-details-border-block-width`.
-- **Dialog:** Lukkeknappen må bruke `command="close"`. Den eldre `<form method="dialog">`-varianten fjernes.
-- **Label:** `weight` og `data-weight` fjernes. Field setter riktig tekstvekt automatisk.
-- **Link:** Variabelen `--dsc-link-background--active` fjernes.
+## Endringer i CLI
 
-### React: kun visuelt
-
-- **AvatarStack:** `gap`, `avatarSize` og `overlap` erstattes av CSS-variablene `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` og `--dsc-avatar-stack-overlap`.
-- **Skeleton:** `characters` fjernes. Bruk `width` eller tekst som barn.
-
-### CLI
-
-- CLI-valgene `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` og `--theme` fjernes. Bruk en [konfigurasjonsfil](/no/fundamentals/start-here/own-theme).
-- `@digdir/designsystemet/types` erstattes av `@digdir/designsystemet-types`.
+CLI vil ikke lengre støtte at parameter `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` og `--theme`.
+Bruk heller en [konfigurasjonsfil](/no/fundamentals/start-here/own-theme).
 
 ## Spørsmål?
 
@@ -76,3 +89,5 @@ Ta kontakt med oss på [Slack](https://designsystemet.no/slack) eller opprett en
     'Michael Marszalek',
   ]}
 />
+
+<style>{`.u-rich-text table { max-width: none; table-layout: fixed; position: relative; z-index: 2; background: var(--ds-color-background-default) } .u-rich-text th:first-child { width: 9em } `}</style>

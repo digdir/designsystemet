@@ -26,6 +26,7 @@ import {
   type TableProps,
   TableRow,
   Tabs,
+  Tag,
 } from '@digdir/designsystemet-react';
 import {
   BorderRadiusVariablesTable,
@@ -65,6 +66,7 @@ const defaultComponents = {
   Card,
   CardBlock,
   Divider,
+  Tag,
   Tabs,
   Table: (props: TableProps) => (
     <div className={classes.tableWrapper}>
