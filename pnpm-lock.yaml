@@ -608,21 +608,18 @@ importers:
       clsx:
         specifier: 2.1.1
         version: 2.1.1
+      microlighter:
+        specifier: 2.2.0
+        version: 2.2.0
       prettier:
         specifier: 3.9.10
         version: 3.9.10
-      prism-react-renderer:
-        specifier: 2.4.1
-        version: 2.4.1(react@19.3.1)
       ramda:
         specifier: 0.32.0
         version: 0.32.0
       react:
         specifier: 19.3.1
         version: 19.3.1
-      react-code-block:
-        specifier: 1.1.3
-        version: 1.1.3(prism-react-renderer@2.4.1(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react-dom:
         specifier: 19.3.1
         version: 19.3.1(react@19.3.1)
@@ -4431,6 +4428,10 @@ packages:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
 
+  microlighter@2.2.0:
+    resolution: {integrity: sha512-XFUHmKclX4taKWVpYkqJ/GlfUS27FzQTCph1u3v9OwkmQJGXry3Pk1e7SivLz6xGOCxRVyi3DSrztF3e460jrg==}
+    engines: {node: '>=18'}
+
   micromark-core-commonmark@2.0.3:
     resolution: {integrity: sha512-RDBrHEMSxVFLg6xvnXmb1Ayr2WzLAWjeSATAoxwKYJV94TeNavgoIdA0a9ytzDSVzBy2YKFK+emCPOEibLeCrg==}
 
@@ -5100,13 +5101,6 @@ packages:
   raw-body@3.0.2:
     resolution: {integrity: sha512-K5zQjDllxWkf7Z5xJdV0/B0WTNqx6vxG70zJE4N0kBs4LovmEYWJzQGxC9bS9RAKu3bgM40lrd5zoLJ12MQ5BA==}
     engines: {node: '>= 0.10'}
-
-  react-code-block@1.1.3:
-    resolution: {integrity: sha512-XfSb9BkJWt4j7FvcVMmgQxIs61g81R0y0bxoemrVPo6/v0kS61PL3S1MWWtHl2g67aRPJeoTqPa4D91v/DzMdQ==}
-    peerDependencies:
-      prism-react-renderer: ^2
-      react: '>=18.0.0'
-      react-dom: '>=18.0.0'
 
   react-color-palette@7.3.1:
     resolution: {integrity: sha512-O8eTbogOKExVbhFOCaQ6WACQtGznymLqbd95i4C42PZd8im9OwL1NjuGxswk2JxJR5jfcTu7KQzl7VbpU48m+g==}
@@ -9410,6 +9404,8 @@ snapshots:
 
   merge2@1.4.1: {}
 
+  microlighter@2.2.0: {}
+
   micromark-core-commonmark@2.0.3:
     dependencies:
       decode-named-character-reference: 1.1.0
@@ -10118,12 +10114,6 @@ snapshots:
       http-errors: 2.0.1
       iconv-lite: 0.7.3
       unpipe: 1.0.0
-
-  react-code-block@1.1.3(prism-react-renderer@2.4.1(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
-    dependencies:
-      prism-react-renderer: 2.4.1(react@19.3.1)
-      react: 19.3.1
-      react-dom: 19.3.1(react@19.3.1)
 
   react-color-palette@7.3.1(react@19.3.1):
     dependencies:
