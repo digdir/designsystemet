@@ -24,6 +24,6 @@
   }
 
   &:visited {
-    color: var(--dsc-link-color--visited);
+    color: var(--ds-color-neutral-text-subtle);
   }
 }
