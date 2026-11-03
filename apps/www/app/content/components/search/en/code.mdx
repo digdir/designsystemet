@@ -2,7 +2,7 @@
 
 ## Usage
 
-Use the class name `ds-search` on a `<ds-suggestion>` around `<input>`.
+Use the class name `ds-suggestion` on a `<ds-suggestion>` around `<input>`.
 If you want a clear button, add a `<button type="reset">` after the `<input>`. It is automatically shown and hidden based on the input's value.
 
 You can change the `variant` on the button to adjust its appearance.
@@ -18,9 +18,15 @@ Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors wi
 
 ## Examples
 
+### With `Input`
+
+In most cases, an `Input` with `type="search"` in a `Field` is enough.
+
+<Story story="WithInputEn" />
+
 ### With label
 
-If you want a label on the search field, add a label that you connect with `Search.Input`. In the example, we have used field to get a connection between label and `Search.Input`.
+If you want a label on the search field, add a label that you connect with `Suggestion.Input`. In the example, we have used `Field` to connect the label and `Suggestion.Input`.
 
 <Story story="WithLabelEn" />
 
@@ -30,14 +36,29 @@ If you want a label on the search field, add a label that you connect with `Sear
 
 ## React
 
-```tsx
-import { Search } from '@digdir/designsystemet-react';
+`Search` is deprecated and will be removed in the next major version. Use `Input` with `type="search"` in a `Field` instead, or `Suggestion` if you need a clear button.
 
-<Search>
-  <Search.Input aria-label="Search" />
-  <Search.Clear />
-  <Search.Button />
-</Search>
+```tsx
+import {
+  Button,
+  EXPERIMENTAL_Suggestion as Suggestion,
+  Field,
+  Input,
+  Label,
+} from '@digdir/designsystemet-react';
+
+// Search field
+<Field>
+  <Label>Search</Label>
+  <Input type="search" />
+</Field>
+
+// With clear button and search button
+<Suggestion>
+  <Suggestion.Input type="search" aria-label="Search" />
+  <Suggestion.Clear />
+  <Button type="submit">Search</Button>
+</Suggestion>
 ```
 
 <ReactComponentDocs />

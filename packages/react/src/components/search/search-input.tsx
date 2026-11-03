@@ -14,6 +14,8 @@ export type SearchInputProps = DefaultProps &
 /**
  * SearchInput component, used to display a search input within the Search component.
  *
+ * @deprecated Will be removed in the next major version. Use `Input` with `type="search"` in a `Field` instead.
+ *
  * @example
  * <Search>
  *   <SearchInput aria-label='Søk' />

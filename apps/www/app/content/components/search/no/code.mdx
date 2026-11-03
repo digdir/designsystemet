@@ -2,7 +2,7 @@
 
 ## Bruk
 
-Bruk klassenavnet `ds-search` på en `<ds-suggestion>` rundt `<input>`.
+Bruk klassenavnet `ds-suggestion` på en `<ds-suggestion>` rundt `<input>`.
 Vil du ha en tøm-knapp, legger du til en `<button type="reset">` etter `<input>`. Denne vises og skjules automatisk basert på verdien i input.
 
 Du kan endre `variant` på button for å tilpasse visningen.
@@ -18,9 +18,15 @@ Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [d
 
 ## Eksempel
 
+### Med `Input`
+
+I de fleste tilfeller holder det med en `Input` med `type="search"` i en `Field`.
+
+<Story story="WithInput" />
+
 ### Med label
 
-Dersom du vil ha label på søkefeltet, må du legge til label som du kobler sammen med `Search.Input`. I eksempelet har vi brukt field for å få oppkobling mellom label og `Search.Input`.
+Dersom du vil ha label på søkefeltet, må du legge til label som du kobler sammen med `Suggestion.Input`. I eksempelet har vi brukt `Field` for å koble sammen label og `Suggestion.Input`.
 
 <Story story="WithLabel" />
 
@@ -30,14 +36,29 @@ Dersom du vil ha label på søkefeltet, må du legge til label som du kobler sam
 
 ## React
 
-```tsx
-import { Search } from '@digdir/designsystemet-react';
+`Search` er avviklet og blir fjernet i neste hovedversjon. Bruk `Input` med `type="search"` i en `Field` i stedet, eller `Suggestion` hvis du trenger en tøm-knapp.
 
-<Search>
-  <Search.Input aria-label="Søk" />
-  <Search.Clear />
-  <Search.Button />
-</Search>
+```tsx
+import {
+  Button,
+  EXPERIMENTAL_Suggestion as Suggestion,
+  Field,
+  Input,
+  Label,
+} from '@digdir/designsystemet-react';
+
+// Søkefelt
+<Field>
+  <Label>Søk</Label>
+  <Input type="search" />
+</Field>
+
+// Med tøm-knapp og søkeknapp
+<Suggestion>
+  <Suggestion.Input type="search" aria-label="Søk" />
+  <Suggestion.Clear />
+  <Button type="submit">Søk</Button>
+</Suggestion>
 ```
 
 <ReactComponentDocs />

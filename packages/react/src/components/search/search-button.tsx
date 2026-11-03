@@ -22,6 +22,8 @@ export type SearchButtonProps = MergeRight<
 /**
  * SearchButton component, used to display a search button within a Search component.
  *
+ * @deprecated Will be removed in the next major version. Use a `Button` with `type="submit"` instead.
+ *
  * @example
  * <Search>
  *   <SearchInput aria-label='Søk' />
