@@ -15,6 +15,7 @@ const handleKeydown = (e: Event & Partial<KeyboardEvent>) => {
 const preventIfReadOnly = (e: Event) => {
   const el = getComposedTarget(e) as HTMLElement | null;
   if (!isReadOnlyIgnored(el)) return;
+  if (e.type === 'touchstart' && el.nodeName === 'SELECT') return;
   e.preventDefault();
   if (e.type !== 'keydown' && el.nodeName === 'INPUT') el.focus(); // Preventing mousedown/touchstart also prevents focus on range, so restore it
 };
