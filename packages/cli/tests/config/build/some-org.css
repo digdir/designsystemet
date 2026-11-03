@@ -238,7 +238,7 @@ design-tokens: v1.23.0
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #00ff00;
   --ds-color-focus-outer: #ffff00;
-  --ds-link-color-visited: #ff1234; /** Deprecated: style a:visited or .ds-link:visited instead. */
+  --ds-link-color-visited: #ff1234; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
 }
@@ -391,7 +391,7 @@ design-tokens: v1.23.0
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #00ff00;
   --ds-color-focus-outer: #ffff00;
-  --ds-link-color-visited: #ff1234; /** Deprecated: style a:visited or .ds-link:visited instead. */
+  --ds-link-color-visited: #ff1234; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
 }
@@ -709,7 +709,7 @@ design-tokens: v1.23.0
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #00ffff;
   --ds-color-focus-outer: #ff00aa;
-  --ds-link-color-visited: #1234ff; /** Deprecated: style a:visited or .ds-link:visited instead. */
+  --ds-link-color-visited: #1234ff; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
 }
@@ -862,7 +862,7 @@ design-tokens: v1.23.0
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #00ffff;
   --ds-color-focus-outer: #ff00aa;
-  --ds-link-color-visited: #1234ff; /** Deprecated: style a:visited or .ds-link:visited instead. */
+  --ds-link-color-visited: #1234ff; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
 }

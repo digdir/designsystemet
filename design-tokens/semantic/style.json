@@ -544,8 +544,8 @@
       "visited": {
         "$type": "color",
         "$value": "{color.link.visited}",
-        "$deprecated": "Style a:visited or .ds-link:visited instead.",
-        "$description": "Deprecated: style a:visited or .ds-link:visited instead."
+        "$deprecated": "Style .ds-link:visited instead.",
+        "$description": "Deprecated: style .ds-link:visited instead."
       }
     }
   },
