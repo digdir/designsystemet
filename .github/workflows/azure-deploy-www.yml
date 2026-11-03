@@ -7,6 +7,10 @@ on:
         required: true
         type: string
         description: "Deployment environment (production, preview)"
+      documentation_version:
+        required: false
+        type: string
+        description: "Archived major version (e.g. v1); only for manual production deployments"
       pr_number:
         required: false
         type: string
@@ -32,15 +36,16 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: azure-www-prod-deploy-${{ inputs.environment == 'production' && 'production' || inputs.pr_number || 'preview' }}
+  group: azure-www-prod-deploy-${{ inputs.documentation_version || (inputs.environment == 'production' && 'production' || inputs.pr_number || 'preview') }}
   cancel-in-progress: true
 
 env:
   RESOURCE_GROUP: ${{ inputs.environment == 'production' && 'rg-designsystemet-prod' || 'rg-designsystemet-test' }}
   CONTAINERAPPS_ENV: ${{ inputs.environment == 'production' && 'www-prod-ca' || 'www-test-ca' }}
   ACR_NAME: designsystemetacr
-  APP_NAME: ${{ inputs.environment == 'production' && 'www-prod' || format('www-pr-{0}', inputs.pr_number) }}
-  IMAGE: ${{ inputs.pr_number && format('{0}-{1}', inputs.pr_number, github.sha) || format('{0}-{1}', github.run_id, github.sha) }}
+  APP_NAME: ${{ inputs.documentation_version && format('www-{0}', inputs.documentation_version) || (inputs.environment == 'production' && 'www-prod' || format('www-pr-{0}', inputs.pr_number)) }}
+  IMAGE: ${{ inputs.documentation_version && format('{0}-{1}-{2}', inputs.documentation_version, github.run_id, github.sha) || (inputs.pr_number && format('{0}-{1}', inputs.pr_number, github.sha) || format('{0}-{1}', github.run_id, github.sha)) }}
+  DOCUMENTATION_VERSION: ${{ inputs.documentation_version }}
   PORT: 8000
 
 jobs:
@@ -49,6 +54,23 @@ jobs:
     outputs:
       fqdn: ${{ steps.fqdn.outputs.fqdn }}
     steps:
+      - name: Validate documentation version
+        shell: bash
+        env:
+          DEPLOYMENT_ENVIRONMENT: ${{ inputs.environment }}
+          DEPLOYMENT_EVENT: ${{ github.event_name }}
+        run: |
+          if [[ -n "$DOCUMENTATION_VERSION" ]]; then
+            if [[ ! "$DOCUMENTATION_VERSION" =~ ^v[1-9][0-9]*$ ]]; then
+              echo "::error::Documentation version must be a major version such as v1 or v2."
+              exit 1
+            fi
+            if [[ "$DEPLOYMENT_ENVIRONMENT" != "production" || "$DEPLOYMENT_EVENT" != "workflow_dispatch" ]]; then
+              echo "::error::Archived documentation requires a manual production deployment."
+              exit 1
+            fi
+          fi
+
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
@@ -85,6 +107,7 @@ jobs:
             PORT=${{ env.PORT }}
             HOST=0.0.0.0
             APP_ENV=${{ inputs.environment }}
+            DOCUMENTATION_VERSION=${{ env.DOCUMENTATION_VERSION }}
 
       - name: get acr creds (masked)
         id: acr
@@ -105,7 +128,7 @@ jobs:
           registryPassword: ${{ steps.acr.outputs.pass }}
           targetPort: ${{ env.PORT }}
           ingress: external
-          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }} SLACK_INVITE_URL=${{ secrets.SLACK_INVITE_URL }}"
+          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }} SLACK_INVITE_URL=${{ secrets.SLACK_INVITE_URL }} DOCUMENTATION_VERSION=${{ env.DOCUMENTATION_VERSION }}"
           location: "norwayeast"
 
       - name: fetch fqdn
