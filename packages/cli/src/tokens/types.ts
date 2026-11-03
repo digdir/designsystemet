@@ -4,7 +4,12 @@ import type { ConfigSchemaTheme } from '../schemas/schema.ts';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.ts';
 
 export type Token =
-  | { $value: string | Record<string, string>[]; $type: string }
+  | {
+      $value: string | Record<string, string>[];
+      $type: string;
+      $description?: string;
+      $deprecated?: string;
+    }
   | { $type: 'boxShadow'; $value: Record<'x' | 'y' | 'blur' | 'spread' | 'color', string>[] }
   | {
       $type: 'typography';
