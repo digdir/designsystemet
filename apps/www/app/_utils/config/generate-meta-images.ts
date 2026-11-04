@@ -3,10 +3,13 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'node-html-parser';
 import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import satori from 'satori';
 import sharp from 'sharp';
+import { DsFullLogo } from '../../_components/logos/designsystemet';
 import { defaultCoverImagePath, getMetaImagePath } from '../metadata';
 
+/* @TODO: Dont use hardcoded colors, @mimarz has an idea here later on */
 const colors = {
   brand1: { background: '#fef0f1', foreground: '#4b1d1e', icon: '#f45f63' },
   brand2: { background: '#fbf3df', foreground: '#382908', icon: '#e5aa20' },
@@ -24,10 +27,7 @@ export async function generateMetaImages(paths: string[], clientDir: string) {
       style: 'normal' as const,
     })),
   );
-  const logo = await sharp(await readFile(join(clientDir, 'img/logo.svg')))
-    .resize(64, 56)
-    .png()
-    .toBuffer();
+  const logoSvg = parse(renderToStaticMarkup(createElement(DsFullLogo)));
   const sections = new Map<
     string,
     {
@@ -35,6 +35,7 @@ export async function generateMetaImages(paths: string[], clientDir: string) {
       background: string;
       foreground: string;
       artwork: string;
+      logo: { src: string; width: number; height: number };
     }
   >();
 
@@ -56,6 +57,13 @@ export async function generateMetaImages(paths: string[], clientDir: string) {
       const banner = index.querySelector('h1')?.closest('[data-color]');
       const color = banner?.getAttribute('data-color');
       const palette = colors[color as keyof typeof colors] ?? colors.brand1;
+      logoSvg
+        .querySelector('[data-text]')
+        ?.setAttribute('fill', palette.foreground);
+      const logo = await sharp(Buffer.from(logoSvg.toString()))
+        .resize({ height: 48 })
+        .png()
+        .toBuffer({ resolveWithObject: true });
       const icon = banner?.querySelector('svg');
       if (icon) {
         icon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -79,6 +87,11 @@ export async function generateMetaImages(paths: string[], clientDir: string) {
             ?.getAttribute('content') ?? 'Designsystemet',
         ...palette,
         artwork: `data:image/png;base64,${artwork.toString('base64')}`,
+        logo: {
+          src: `data:image/png;base64,${logo.data.toString('base64')}`,
+          width: logo.info.width,
+          height: logo.info.height,
+        },
       };
       sections.set(sectionPath, section);
     }
@@ -102,27 +115,16 @@ export async function generateMetaImages(paths: string[], clientDir: string) {
             overflow: 'hidden',
           },
         },
-        createElement(
-          'div',
-          {
-            style: {
-              display: 'flex',
-              alignItems: 'center',
-              gap: 16,
-              fontSize: 32,
-              fontWeight: 700,
-              position: 'absolute',
-              left: 56,
-              top: 56,
-            },
+        createElement('img', {
+          src: section.logo.src,
+          width: section.logo.width,
+          height: section.logo.height,
+          style: {
+            position: 'absolute',
+            left: 60,
+            top: 60,
           },
-          createElement('img', {
-            src: `data:image/png;base64,${logo.toString('base64')}`,
-            width: 64,
-            height: 56,
-          }),
-          'Designsystemet',
-        ),
+        }),
         createElement(
           'div',
           {
@@ -130,10 +132,10 @@ export async function generateMetaImages(paths: string[], clientDir: string) {
               display: 'flex',
               alignItems: 'center',
               position: 'absolute',
-              left: 56,
+              left: 60,
               top: 156,
-              width: 700,
-              height: 362,
+              width: 650,
+              height: 318,
             },
           },
           createElement(
@@ -142,12 +144,12 @@ export async function generateMetaImages(paths: string[], clientDir: string) {
               style: {
                 display: 'flex',
                 flexDirection: 'column',
-                width: 700,
+                width: 650,
                 gap: 24,
               },
             },
             title !== section.title
-              ? createElement('div', { style: { fontSize: 26 } }, section.title)
+              ? createElement('div', { style: { fontSize: 39 } }, section.title)
               : null,
             createElement(
               'div',
@@ -178,7 +180,12 @@ export async function generateMetaImages(paths: string[], clientDir: string) {
         createElement(
           'div',
           {
-            style: { fontSize: 24, position: 'absolute', left: 56, bottom: 56 },
+            style: {
+              fontSize: 36,
+              position: 'absolute',
+              left: 60,
+              bottom: 60,
+            },
           },
           'designsystemet.no',
         ),
