@@ -10,7 +10,7 @@ import {
 } from '~/_components/banner/banner';
 import { FundamentalsCard } from '~/_components/fundamentals-card/fundamentals-card';
 import { Grid } from '~/_components/grid/grid';
-import { generateMetadata } from '~/_utils/metadata';
+import { generateMetadata, withMetaImage } from '~/_utils/metadata';
 import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';
 import type { Route as LayoutRoute } from '../../layouts/fundamentals/+types/layout';
@@ -42,9 +42,9 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export const meta = ({ loaderData }: Route.MetaArgs) => {
+export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   if (!loaderData) return [{ title: 'Designsystemet' }];
-  return loaderData.metadata;
+  return withMetaImage(loaderData.metadata, location.pathname);
 };
 
 export default function Fundamentals() {

@@ -22,9 +22,13 @@ export default defineConfig(({ isSsrBuild, command }) => ({
         }
       : { tsconfigPaths: true },
   build: {
+    dynamicImportVarsOptions: {
+      exclude: [/node_modules\/(?!.*microlighter)/],
+    },
     rolldownOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
   },
   optimizeDeps: {
+    exclude: ['microlighter'],
     include: ['react', 'react-dom', 'react-router'],
   },
   oxc: {

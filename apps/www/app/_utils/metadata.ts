@@ -2,6 +2,7 @@ export interface PageMetadata {
   title: string;
   description: string;
   image?: string;
+  pathname?: string;
 }
 
 export interface BuiltMetadata {
@@ -14,6 +15,18 @@ export interface BuiltMetadata {
 
 export const defaultCoverImagePath = '/img/designsystemet-meta.png';
 export const logoPath = '/img/logo.svg';
+
+export const getMetaImagePath = (pathname: string) => {
+  const path = pathname.replace(/\/+$/, '');
+  if (
+    /^\/(no|en)\/blog\//.test(path) ||
+    !/^\/(no|en)\/(intro|fundamentals|components|patterns|best-practices|blog)(\/|$)/.test(
+      path,
+    )
+  )
+    return defaultCoverImagePath;
+  return `/img/meta${path}.png`;
+};
 
 export const generateMetadata = (metadata: PageMetadata) => {
   const { title, description, siteUrl, pageTitle, image } =
@@ -61,10 +74,26 @@ export const generateMetadata = (metadata: PageMetadata) => {
   ];
 };
 
+export const withMetaImage = (
+  metadata: ReturnType<typeof generateMetadata>,
+  pathname: string,
+) =>
+  metadata.map((entry) =>
+    entry.property === 'og:image' || entry.property === 'twitter:image'
+      ? {
+          ...entry,
+          content: `https://designsystemet.no${getMetaImagePath(pathname)}`,
+        }
+      : entry,
+  );
+
 export const buildMetadata = ({
   title,
   description,
-  image = defaultCoverImagePath,
+  pathname,
+  image = pathname
+    ? `https://designsystemet.no${getMetaImagePath(pathname)}`
+    : defaultCoverImagePath,
 }: PageMetadata): BuiltMetadata => ({
   pageTitle: `${title} - Designsystemet`,
   title,

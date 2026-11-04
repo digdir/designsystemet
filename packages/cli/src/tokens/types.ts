@@ -3,13 +3,22 @@ import type { ColorScheme } from '../colors/index.ts';
 import type { ConfigSchemaTheme } from '../schemas/schema.ts';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.ts';
 
-export type Token =
-  | { $value: string | Record<string, string>[]; $type: string }
-  | { $type: 'boxShadow'; $value: Record<'x' | 'y' | 'blur' | 'spread' | 'color', string>[] }
-  | {
-      $type: 'typography';
-      $value: Record<'fontFamily' | 'fontWeight' | 'lineHeight' | 'fontSize' | 'letterSpacing', string>;
-    };
+type TokenMetadata = {
+  /** @see https://www.designtokens.org/tr/2025.10/format/#description */
+  $description?: string;
+  /** @see https://www.designtokens.org/tr/2025.10/format/#deprecated */
+  $deprecated?: string;
+};
+
+export type Token = TokenMetadata &
+  (
+    | { $type: string; $value: string | Record<string, string>[] }
+    | { $type: 'boxShadow'; $value: Record<'x' | 'y' | 'blur' | 'spread' | 'color', string>[] }
+    | {
+        $type: 'typography';
+        $value: Record<'fontFamily' | 'fontWeight' | 'lineHeight' | 'fontSize' | 'letterSpacing', string>;
+      }
+  );
 
 export type TokenSet = {
   [key: string]: Token | TokenSet;

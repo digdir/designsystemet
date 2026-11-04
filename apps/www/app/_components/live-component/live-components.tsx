@@ -1,5 +1,6 @@
 import * as ds from '@digdir/designsystemet-react';
 import { useSynchronizedAnimation } from '@digdir/designsystemet-react';
+import { HighlightedCode } from '@internal/components';
 import * as aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { prettify } from 'htmlfy';
@@ -184,7 +185,7 @@ const Editor = ({
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Tab') {
+    if (showHTML || event.key === 'Tab') {
       return;
     }
 
@@ -267,12 +268,13 @@ const Editor = ({
           <kbd>{t('live-component.activateB')}</kbd>{' '}
           {t('live-component.activateC')}
         </div>
-        <LiveEditor
-          className={cl(classes.editor, !showHTML && classes.hidden)}
-          disabled
-          code={rawHtml}
+        <HighlightedCode
+          className={classes.htmlEditor}
+          hidden={hidden || !showHTML}
           language='html'
-        />
+        >
+          {rawHtml}
+        </HighlightedCode>
         <LiveEditor
           key={resetCount}
           onChange={live.onChange}
