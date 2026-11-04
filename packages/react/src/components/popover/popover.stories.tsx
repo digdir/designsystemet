@@ -190,6 +190,13 @@ const VariantsMap: {
 
 export const Variants = meta.story({
   render: () => {
+    const popoverRefs = useRef<HTMLDivElement[]>([]);
+
+    // Open after mount, since Popover closes itself in its own mount effect
+    useEffect(() => {
+      for (const popover of popoverRefs.current) popover.togglePopover(true);
+    }, []);
+
     return (
       <>
         {Object.entries(VariantsMap).map(([key, props], index) => (
@@ -198,7 +205,7 @@ export const Variants = meta.story({
             <Popover
               id={`popover-${key}`}
               ref={(popover) => {
-                popover?.togglePopover(true);
+                if (popover) popoverRefs.current[index] = popover;
               }}
               placement={index >= 4 ? 'bottom' : 'top'}
               autoPlacement={false}
