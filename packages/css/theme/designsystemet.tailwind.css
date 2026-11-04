@@ -1,9 +1,6 @@
 /*
-Import after 'tailwindcss', with Designsystemet's CSS before it:
-@import '@digdir/designsystemet-css/index.css';
-@import '<theme>.css';
-@import 'tailwindcss';
-@import '<theme>.tailwind.css';
+For Tailwind v3, use @tailwind directives and place its base reset in a layer before ds.
+See https://github.com/digdir/designsystemet/blob/main/packages/css/README.md#v3-and-older for setup.
 */
 @theme {
   --font-sans: var(--ds-font-family);

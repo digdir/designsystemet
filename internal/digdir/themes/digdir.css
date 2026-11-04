@@ -5,8 +5,8 @@ build: v1.23.0
 design-tokens: v1.23.0
 
 Import after @digdir/designsystemet-css.
-All styles are in the "ds" layer. Put your own layers, like a CSS reset, before it:
-@layer my-reset, ds;
+All styles are in the "ds" layer. Put layers like a CSS reset, before it, and your own customizations after:
+@layer my-reset, ds, my-customization;
 */
 
 @layer ds.theme.size-mode {
@@ -242,7 +242,7 @@ All styles are in the "ds" layer. Put your own layers, like a CSS reset, before 
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #1f2c3d;
-  --ds-link-color-visited: #663299;
+  --ds-link-color-visited: #663299; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
 }
@@ -395,7 +395,7 @@ All styles are in the "ds" layer. Put your own layers, like a CSS reset, before 
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #1f2c3d;
-  --ds-link-color-visited: #663299;
+  --ds-link-color-visited: #663299; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
 }
@@ -713,7 +713,7 @@ All styles are in the "ds" layer. Put your own layers, like a CSS reset, before 
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #13181f;
   --ds-color-focus-outer: #ebeced;
-  --ds-link-color-visited: #b49acd;
+  --ds-link-color-visited: #b49acd; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
 }
@@ -866,7 +866,7 @@ All styles are in the "ds" layer. Put your own layers, like a CSS reset, before 
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #13181f;
   --ds-color-focus-outer: #ebeced;
-  --ds-link-color-visited: #b49acd;
+  --ds-link-color-visited: #b49acd; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
 }
