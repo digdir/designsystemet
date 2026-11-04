@@ -43,6 +43,23 @@
   --_dsc-input-diagonal-4: transparent calc(52% + var(--dsc-input-stroke-width));
   --_dsc-input-spacing--toggle: calc(var(--ds-size-1) / 2);
 
+  /* range */
+  --dsc-input-range-track-size: var(--ds-size-3);
+  --dsc-input-range-track-color: var(--ds-color-neutral-surface-tinted); /* this will be muted color */
+  --dsc-input-range-track-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-input-range-thumb-size: var(--dsc-input-size--toggle);
+  --dsc-input-range-thumb-background: var(--dsc-input-background);
+  --dsc-input-range-thumb-border-width: calc(var(--dsc-input-border-width--toggle) * 2);
+  --dsc-input-range-thumb-color--hover: var(--ds-color-base-hover);
+  --dsc-input-range-thumb-color--active: var(--ds-color-base-active);
+  --_dsc-input-range-accent: var(--dsc-input-accent-color);
+  --_dsc-input-range-direction: to right;
+  --_dsc-input-range-track: linear-gradient(
+    var(--_dsc-input-range-direction),
+    var(--_dsc-input-range-accent) var(--_ds-range-value, 0px),
+    var(--dsc-input-range-track-color) 0
+  );
+
   appearance: none;
   background: var(--dsc-input-background);
   border-color: var(--dsc-input-border-color);
@@ -265,18 +282,25 @@
 
   /**
    * Range, also known as slider
+   * Fill is drawn with a gradient from --_ds-range-value, set by @digdir/designsystemet-web.
+   * Without it, the track renders without fill.
    */
   &[type='range'] {
-    accent-color: var(--dsc-input-accent-color);
-    appearance: auto;
     background: transparent;
     border: 0;
+    border-radius: var(--ds-border-radius-full);
     cursor: pointer;
-    height: var(--dsc-input-size--toggle);
+    height: var(--dsc-input-range-thumb-size);
     padding: 0;
 
+    &:dir(rtl) {
+      --_dsc-input-range-direction: to left;
+    }
+
     &[aria-invalid='true'] {
-      accent-color: var(--dsc-input-accent-color--invalid);
+      --_dsc-input-range-accent: var(--dsc-input-accent-color--invalid);
+      --dsc-input-range-thumb-color--hover: var(--dsc-input-accent-color--invalid);
+      --dsc-input-range-thumb-color--active: var(--dsc-input-accent-color--invalid);
     }
 
     &:disabled,
@@ -287,8 +311,62 @@
     /* Native readonly is ignored on range, interaction is blocked by @digdir/designsystemet-web */
     &[readonly],
     &[aria-readonly='true'] {
-      accent-color: var(--ds-color-neutral-text-subtle);
+      --_dsc-input-range-accent: var(--ds-color-neutral-text-subtle);
+      --dsc-input-range-thumb-color--hover: var(--_dsc-input-range-accent);
+      --dsc-input-range-thumb-color--active: var(--_dsc-input-range-accent);
       cursor: default;
+    }
+
+    /* Vendor pseudo-elements can not be grouped, as an unknown selector invalidates the whole rule */
+    &::-webkit-slider-runnable-track {
+      background: var(--_dsc-input-range-track);
+      border: var(--dsc-input-border-width) solid var(--dsc-input-range-track-border-color);
+      border-radius: var(--ds-border-radius-full);
+      box-sizing: border-box;
+      height: var(--dsc-input-range-track-size);
+    }
+    &::-moz-range-track {
+      background: var(--_dsc-input-range-track);
+      border: var(--dsc-input-border-width) solid var(--dsc-input-range-track-border-color);
+      border-radius: var(--ds-border-radius-full);
+      box-sizing: border-box;
+      height: var(--dsc-input-range-track-size);
+    }
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      background: var(--dsc-input-range-thumb-background);
+      border: var(--dsc-input-range-thumb-border-width) solid var(--_dsc-input-range-accent);
+      border-radius: var(--ds-border-radius-full);
+      box-sizing: border-box;
+      height: var(--dsc-input-range-thumb-size);
+      margin-top: calc(
+        (var(--dsc-input-range-track-size) - var(--dsc-input-range-thumb-size)) /
+        2 -
+        var(--dsc-input-border-width)
+      ); /* Center thumb on track in WebKit, which positions it inside the track border */
+      width: var(--dsc-input-range-thumb-size);
+    }
+    &::-moz-range-thumb {
+      background: var(--dsc-input-range-thumb-background);
+      border: var(--dsc-input-range-thumb-border-width) solid var(--_dsc-input-range-accent);
+      border-radius: var(--ds-border-radius-full);
+      box-sizing: border-box;
+      height: var(--dsc-input-range-thumb-size);
+      width: var(--dsc-input-range-thumb-size);
+    }
+
+    &:not(:disabled, [aria-disabled='true']):hover::-webkit-slider-thumb {
+      border-color: var(--dsc-input-range-thumb-color--hover);
+    }
+    &:not(:disabled, [aria-disabled='true']):hover::-moz-range-thumb {
+      border-color: var(--dsc-input-range-thumb-color--hover);
+    }
+    &:not(:disabled, [aria-disabled='true']):active::-webkit-slider-thumb {
+      border-color: var(--dsc-input-range-thumb-color--active);
+    }
+    &:not(:disabled, [aria-disabled='true']):active::-moz-range-thumb {
+      border-color: var(--dsc-input-range-thumb-color--active);
     }
   }
 }
