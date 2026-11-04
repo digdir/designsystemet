@@ -27,7 +27,7 @@
       "customType": "jsonata",
       "fileFormat": "yaml",
       "managerFilePatterns": ["/pnpm-workspace.yaml$/"],
-      "matchStrings": ["{ 'currentValue': useNodeVersion }"],
+      "matchStrings": ["{ 'currentValue': nodeVersion }"],
       "datasourceTemplate": "node-version",
       "depNameTemplate": "node"
     },
