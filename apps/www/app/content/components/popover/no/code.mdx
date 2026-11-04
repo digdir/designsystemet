@@ -74,6 +74,8 @@ Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til 
 ### Kontrollert eksempel
 Du kan styre når popoveren åpnes og lukkes med React state. Bruk [`togglePopover()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover) for å åpne og lukke den, og `onToggle` for å oppdatere state når popoveren åpnes eller lukkes på andre måter, for eksempel med knappen, `Esc` eller et klikk utenfor.
 
+I React 18 kjøres ikke `onToggle` for popovere. Lytt heller etter [`toggle`-eventet](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event) med `addEventListener`.
+
 <Story story="Controlled" language="react" />
 
 <ReactComponentDocs />

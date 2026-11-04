@@ -317,7 +317,7 @@ describe('Popover', () => {
       expect(popover).toBeVisible();
     });
 
-    it('should support React state with togglePopover and onToggle', async () => {
+    it('should support React state with togglePopover and toggle event', async () => {
       const CompNativeControlled = () => {
         const popoverRef = useRef<HTMLDivElement>(null);
         const [open, setOpen] = useState(false);
@@ -326,14 +326,20 @@ describe('Popover', () => {
           popoverRef.current?.togglePopover(open);
         }, [open]);
 
+        // Using addEventListener since React 18 does not support onToggle on popovers
+        useEffect(() => {
+          const popover = popoverRef.current;
+          const handleToggle = (event: Event) =>
+            setOpen((event as ToggleEvent).newState === 'open');
+
+          popover?.addEventListener('toggle', handleToggle);
+          return () => popover?.removeEventListener('toggle', handleToggle);
+        }, []);
+
         return (
           <>
             <Button popovertarget='popover'>{open ? 'open' : 'closed'}</Button>
-            <Popover
-              ref={popoverRef}
-              id='popover'
-              onToggle={(event) => setOpen(event.newState === 'open')}
-            >
+            <Popover ref={popoverRef} id='popover'>
               {contentText}
               <Button onClick={() => setOpen(false)}>close</Button>
             </Popover>

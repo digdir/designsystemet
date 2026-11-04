@@ -47,6 +47,8 @@ Når du legger til `@digdir/designsystemet-react/react-types.d.ts` i ditt prosje
 
 Du kan styre når dropdownen åpnes og lukkes med React state. Bruk [`togglePopover()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover) for å åpne og lukke den, og `onToggle` for å oppdatere state når dropdownen åpnes eller lukkes på andre måter, for eksempel med knappen, `Esc` eller et klikk utenfor.
 
+I React 18 kjøres ikke `onToggle` for popovere. Lytt heller etter [`toggle`-eventet](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event) med `addEventListener`.
+
 <Story story="Controlled" language="react" />
 
 ### Props
