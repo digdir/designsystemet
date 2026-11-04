@@ -521,13 +521,9 @@ export const EmailSuggestionsEn = () => {
   );
 };
 
-export const Search = () => {
-  const DATA_PLACES = ['Sogndal', 'Oslo', 'Brønnøysund'];
+export const SearchWithClear = () => {
   return (
-    <form
-      // Prevent navigation from Storybook
-      onSubmit={(event) => event.preventDefault()}
-    >
+    <form onSubmit={(event) => event.preventDefault()}>
       <EXPERIMENTAL_Suggestion>
         <EXPERIMENTAL_Suggestion.Input
           type='search'
@@ -535,25 +531,12 @@ export const Search = () => {
           aria-label='Søk'
         />
         <EXPERIMENTAL_Suggestion.Clear />
-        <EXPERIMENTAL_Suggestion.List>
-          {DATA_PLACES.map((place) => (
-            <EXPERIMENTAL_Suggestion.Option
-              key={place}
-              label={place}
-              value={place}
-            >
-              {place}
-            </EXPERIMENTAL_Suggestion.Option>
-          ))}
-        </EXPERIMENTAL_Suggestion.List>
-        <Button type='submit'>Søk</Button>
       </EXPERIMENTAL_Suggestion>
     </form>
   );
 };
 
-export const SearchEn = () => {
-  const DATA_PLACES = ['Sogndal', 'Oslo', 'Brønnøysund'];
+export const SearchWithClearEn = () => {
   return (
     <form
       // Prevent navigation from Storybook
@@ -566,18 +549,6 @@ export const SearchEn = () => {
           aria-label='Search'
         />
         <EXPERIMENTAL_Suggestion.Clear />
-        <EXPERIMENTAL_Suggestion.List>
-          {DATA_PLACES.map((place) => (
-            <EXPERIMENTAL_Suggestion.Option
-              key={place}
-              label={place}
-              value={place}
-            >
-              {place}
-            </EXPERIMENTAL_Suggestion.Option>
-          ))}
-        </EXPERIMENTAL_Suggestion.List>
-        <Button type='submit'>Search</Button>
       </EXPERIMENTAL_Suggestion>
     </form>
   );
