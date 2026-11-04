@@ -3,7 +3,7 @@ import { getComposedTarget, on, onHotReload, onMutation } from '../utils/utils';
 const CSS_VALUE = '--_ds-range-value';
 const SELECTOR_RANGE = 'input[type="range"]';
 
-/** Expose value as percentage, so CSS can draw the filled part of the track */
+/** Expose value as percentage, so CSS can draw the filled part of the track  */
 const setValue = (el: HTMLInputElement) => {
   const min = Number(el.min) || 0;
   const parsedMax = Number(el.max);
