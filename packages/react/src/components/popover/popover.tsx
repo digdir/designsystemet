@@ -132,6 +132,16 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       };
     }, [controlledOpen]);
 
+    // Keep internal state in sync when using the native Popover API, e.g. `showPopover()` or `hidePopover()`
+    useEffect(() => {
+      const popover = popoverRef.current;
+      const handleToggle = (event: Event) =>
+        setInternalOpen((event as ToggleEvent).newState === 'open');
+
+      popover?.addEventListener('toggle', handleToggle);
+      return () => popover?.removeEventListener('toggle', handleToggle);
+    }, []);
+
     // Update context with id
     useEffect(() => {
       if (id) setPopoverId?.(id);

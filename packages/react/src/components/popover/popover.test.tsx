@@ -1,7 +1,7 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '../';
 import { Dialog } from '../dialog';
@@ -266,6 +266,103 @@ describe('Popover', () => {
 
     await act(async () => popoverTrigger.click());
     expect(onOpen).toHaveBeenCalledTimes(1);
+  });
+
+  describe('with native Popover API', () => {
+    const showPopover = (popover: HTMLElement) =>
+      act(
+        () =>
+          new Promise((resolve) => {
+            popover.addEventListener('toggle', resolve, { once: true });
+            popover.showPopover();
+          }),
+      );
+
+    it('should close on trigger-click when opened with showPopover', async () => {
+      render(defaultPopover);
+      const popover = screen.getByText(contentText);
+
+      await showPopover(popover);
+      expect(popover).toBeVisible();
+
+      await act(async () => screen.getByRole('button').click());
+      expect(popover).not.toBeVisible();
+    });
+
+    it('should close when we click outside after showPopover', async () => {
+      render(defaultPopover);
+      const popover = screen.getByText(contentText);
+
+      await showPopover(popover);
+      await act(async () => document.body.click());
+      expect(popover).not.toBeVisible();
+    });
+
+    it('should open on trigger-click after hidePopover', async () => {
+      render(defaultPopover);
+      const popover = screen.getByText(contentText);
+      const popoverTrigger = screen.getByRole('button');
+
+      await act(async () => popoverTrigger.click());
+      await act(
+        () =>
+          new Promise((resolve) => {
+            popover.addEventListener('toggle', resolve, { once: true });
+            popover.hidePopover();
+          }),
+      );
+      expect(popover).not.toBeVisible();
+
+      await act(async () => popoverTrigger.click());
+      expect(popover).toBeVisible();
+    });
+
+    it('should support React state with togglePopover and onToggle', async () => {
+      const CompNativeControlled = () => {
+        const popoverRef = useRef<HTMLDivElement>(null);
+        const [open, setOpen] = useState(false);
+
+        useEffect(() => {
+          popoverRef.current?.togglePopover(open);
+        }, [open]);
+
+        return (
+          <>
+            <Button popovertarget='popover'>{open ? 'open' : 'closed'}</Button>
+            <Popover
+              ref={popoverRef}
+              id='popover'
+              onToggle={(event) => setOpen(event.newState === 'open')}
+            >
+              {contentText}
+              <Button onClick={() => setOpen(false)}>close</Button>
+            </Popover>
+          </>
+        );
+      };
+      render(<CompNativeControlled />);
+      const popover = screen.getByText(contentText);
+      const popoverTrigger = screen.getByRole('button', { name: 'closed' });
+
+      await act(async () => popoverTrigger.click());
+      await vi.waitFor(() => expect(popoverTrigger).toHaveTextContent('open'));
+      expect(popover).toBeVisible();
+
+      await act(async () =>
+        screen.getByRole('button', { name: 'close' }).click(),
+      );
+      await vi.waitFor(() =>
+        expect(popoverTrigger).toHaveTextContent('closed'),
+      );
+      expect(popover).not.toBeVisible();
+
+      await act(async () => popoverTrigger.click());
+      await vi.waitFor(() => expect(popoverTrigger).toHaveTextContent('open'));
+      await act(async () => document.body.click());
+      await vi.waitFor(() =>
+        expect(popoverTrigger).toHaveTextContent('closed'),
+      );
+    });
   });
 
   describe('with controlled state', () => {
