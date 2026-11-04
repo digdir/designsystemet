@@ -114,6 +114,10 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         }
       };
 
+      // Keep internal state in sync when using the native Popover API, e.g. `showPopover()` or `hidePopover()`
+      const handleToggle = (event: Event) =>
+        setInternalOpen((event as ToggleEvent).newState === 'open');
+
       popover?.togglePopover?.(controlledOpen);
       if (controlledOpen)
         popover?.dispatchEvent(
@@ -124,23 +128,15 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           }),
         );
 
+      popover?.addEventListener('toggle', handleToggle);
       document.addEventListener('click', handleClick, true); // Use capture to execute before React event API
       document.addEventListener('keydown', handleKeydown);
       return () => {
+        popover?.removeEventListener('toggle', handleToggle);
         document.removeEventListener('click', handleClick, true);
         document.removeEventListener('keydown', handleKeydown);
       };
     }, [controlledOpen]);
-
-    // Keep internal state in sync when using the native Popover API, e.g. `showPopover()` or `hidePopover()`
-    useEffect(() => {
-      const popover = popoverRef.current;
-      const handleToggle = (event: Event) =>
-        setInternalOpen((event as ToggleEvent).newState === 'open');
-
-      popover?.addEventListener('toggle', handleToggle);
-      return () => popover?.removeEventListener('toggle', handleToggle);
-    }, []);
 
     // Update context with id
     useEffect(() => {
