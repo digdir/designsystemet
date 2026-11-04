@@ -1,0 +1,171 @@
+---
+title: Search is being removed, what should you do?
+description: We are removing Search from Designsystemet. Why, and how can you build your own search field with a few lines of CSS?
+date: 2026-11-04
+author: Designsystemet
+imageSrc: /img/blog/search-is-being-removed-what-should-you-do/search.webp
+imageAlt: Illustration of a search field with a magnifying glass icon.
+search_terms: search, search field, searchfield
+---
+
+`Search` is deprecated and will be removed in the next major version of Designsystemet. Your code still works for now, but your editor will mark the component as deprecated.
+
+Why are we doing this? And what should you do if you're using it?
+
+At the bottom of this article, you'll find code you can copy to make your own search field.
+
+## Why are we removing `Search`?
+
+A search field looks simple, but there are many ways to make one. Some services want a search button, others only an icon. Some search as you type, others when you press <kbd>Enter</kbd>. Some show suggestions, others go straight to the results. And a search field in a header often looks quite different from one in a form.
+
+`Search` made many of these choices for you. It decided where the icon goes, how the clear button behaves, and how the search button is attached to the field. When your needs were different, you ended up working against the component instead of with it.
+
+We think these choices belong to you. You know your users and your content best. So instead of one component with fixed behaviour, we'd rather give you the building blocks:
+
+- **`Input` with `type="search"`** gives you a search field that screen readers announce as a search field, and that shows a search key on mobile keyboards.
+- **`Button`** to submit the search.
+- **`Suggestion`** if you need a clear button or want to show suggestions while the user types.
+
+## What should you do if you're using it?
+
+You don't need to change anything right away, but you should switch before the next major version.
+
+In many cases, all you need is an `Input` with `type="search"` and a label:
+
+```tsx
+<Field>
+  <Label>Search</Label>
+  <Input type="search" />
+</Field>
+```
+
+If you want a search button or a search icon in the field, you'll find the code at the bottom of this article. It's a small amount of CSS that you can copy and change to suit your needs.
+
+If you need a clear button or want to show suggestions, use `Suggestion`. See the example [Search with suggestions](/en/components/docs/suggestion/code#search-with-suggestions) in the Suggestion documentation.
+
+| Before          | After                                          |
+| --------------- | ---------------------------------------------- |
+| `Search`        | A `<form>` or `<div>` with your own class name |
+| `Search.Input`  | `Input` with `type="search"`                   |
+| `Search.Button` | `Button` with `type="submit"`                  |
+| `Search.Clear`  | `Suggestion` with `Suggestion.Clear`           |
+
+## Code
+
+The examples below use the `ds-input` and `ds-button` classes from Designsystemet, so the search field looks like the rest of your interface and follows `data-size`. The class names `search-with-button` and `search-with-icon` are just examples, so feel free to use names that fit your project.
+
+Remember that the search field needs a name. A visible label is best, but `aria-label` is fine when it's obvious what the field is for, like a search field in the header.
+
+### Search field with button
+
+The button is placed right next to the field, and the rounded corners are removed where the two meet.
+
+```css
+.search-with-button {
+  display: flex;
+
+  & > .ds-input {
+    flex: 1;
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+  }
+
+  & > .ds-button {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+
+  /* Avoid a double border between the field and a secondary button */
+  & > .ds-button[data-variant='secondary']:not(:focus-visible) {
+    border-inline-start: 0;
+  }
+}
+```
+
+```html
+<search>
+  <form class="search-with-button" action="/search">
+    <input class="ds-input" type="search" name="q" aria-label="Search" />
+    <button class="ds-button" type="submit">Search</button>
+  </form>
+</search>
+```
+
+The `<search>` element tells screen readers that this is a search area, so their users can jump straight to it.
+
+### Search field with icon
+
+The icon is drawn with CSS on an element around the field, so you don't need an icon in your HTML. It uses `currentcolor`, so it follows the text colour, including in dark mode.
+
+```css
+.search-with-icon {
+  --search-icon-size: var(--ds-size-6);
+  --search-icon-spacing: var(--ds-size-3);
+  --search-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
+
+  align-items: center;
+  display: grid;
+
+  /* Place the field and the icon on top of each other */
+  & > .ds-input,
+  &::after {
+    grid-area: 1 / 1;
+  }
+
+  /* Make room for the icon */
+  & > .ds-input {
+    padding-inline-start: calc(var(--search-icon-spacing) * 2 + var(--search-icon-size));
+  }
+
+  &::after {
+    content: '';
+    background: currentcolor;
+    height: var(--search-icon-size);
+    margin-inline-start: var(--search-icon-spacing);
+    mask: var(--search-icon-url) center / contain no-repeat;
+    pointer-events: none;
+    width: var(--search-icon-size);
+    z-index: 1;
+  }
+}
+```
+
+```html
+<div class="search-with-icon">
+  <input class="ds-input" type="search" name="q" aria-label="Search" />
+</div>
+```
+
+With a visible label:
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Search for cats</label>
+  <div class="search-with-icon">
+    <input class="ds-input" type="search" name="q" />
+  </div>
+</ds-field>
+```
+
+### In React
+
+The CSS is the same. Use `Input` and `Button` in place of the HTML elements:
+
+```tsx
+<search>
+  <form className="search-with-button" action="/search">
+    <Input type="search" name="q" aria-label="Search" />
+    <Button type="submit">Search</Button>
+  </form>
+</search>
+
+<div className="search-with-icon">
+  <Input type="search" name="q" aria-label="Search" />
+</div>
+```
+
+## Questions?
+
+If you have questions or need help switching, get in touch on [Slack](/slack) or create an issue on [GitHub (github.com)](https://github.com/digdir/designsystemet/issues/new).
+
+<Contributors authors={['Michael Marszalek']} />

@@ -89,6 +89,27 @@ Legg til en knapp med `type="button" aria-expanded="false"` og `aria-label` for 
 
 <Story story='ClickToNavigate' />
 
+### Søk med forslag
+
+Bruk `type="search"` på input for å vise et forstørrelsesglass. Legg til en knapp med `type="reset"` for å la brukeren tømme feltet, og en `<button type="submit">` for å sende søket. Søkeknappen plasseres automatisk ved siden av feltet.
+
+<Story story='Search' />
+
+```html
+<form action="/search">
+  <ds-suggestion class="ds-suggestion">
+    <input class="ds-input" type="search" name="search" aria-label="Søk" />
+    <button type="reset" aria-label="Tøm"></button>
+    <u-datalist>
+      <u-option label="Sogndal" value="Sogndal">Sogndal</u-option>
+      <u-option label="Oslo" value="Oslo">Oslo</u-option>
+      <u-option label="Brønnøysund" value="Brønnøysund">Brønnøysund</u-option>
+    </u-datalist>
+    <button class="ds-button" type="submit">Søk</button>
+  </ds-suggestion>
+</form>
+```
+
 
 ## React
 

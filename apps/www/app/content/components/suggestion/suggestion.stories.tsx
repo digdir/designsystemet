@@ -520,3 +520,65 @@ export const EmailSuggestionsEn = () => {
     </Field>
   );
 };
+
+export const Search = () => {
+  const DATA_PLACES = ['Sogndal', 'Oslo', 'Brønnøysund'];
+  return (
+    <form
+      // Prevent navigation from Storybook
+      onSubmit={(event) => event.preventDefault()}
+    >
+      <EXPERIMENTAL_Suggestion>
+        <EXPERIMENTAL_Suggestion.Input
+          type='search'
+          name='search'
+          aria-label='Søk'
+        />
+        <EXPERIMENTAL_Suggestion.Clear />
+        <EXPERIMENTAL_Suggestion.List>
+          {DATA_PLACES.map((place) => (
+            <EXPERIMENTAL_Suggestion.Option
+              key={place}
+              label={place}
+              value={place}
+            >
+              {place}
+            </EXPERIMENTAL_Suggestion.Option>
+          ))}
+        </EXPERIMENTAL_Suggestion.List>
+        <Button type='submit'>Søk</Button>
+      </EXPERIMENTAL_Suggestion>
+    </form>
+  );
+};
+
+export const SearchEn = () => {
+  const DATA_PLACES = ['Sogndal', 'Oslo', 'Brønnøysund'];
+  return (
+    <form
+      // Prevent navigation from Storybook
+      onSubmit={(event) => event.preventDefault()}
+    >
+      <EXPERIMENTAL_Suggestion>
+        <EXPERIMENTAL_Suggestion.Input
+          type='search'
+          name='search'
+          aria-label='Search'
+        />
+        <EXPERIMENTAL_Suggestion.Clear />
+        <EXPERIMENTAL_Suggestion.List>
+          {DATA_PLACES.map((place) => (
+            <EXPERIMENTAL_Suggestion.Option
+              key={place}
+              label={place}
+              value={place}
+            >
+              {place}
+            </EXPERIMENTAL_Suggestion.Option>
+          ))}
+        </EXPERIMENTAL_Suggestion.List>
+        <Button type='submit'>Search</Button>
+      </EXPERIMENTAL_Suggestion>
+    </form>
+  );
+};

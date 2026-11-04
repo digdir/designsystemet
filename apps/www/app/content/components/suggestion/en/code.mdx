@@ -91,6 +91,27 @@ Add a button with `type="button" aria-expanded="false"` and `aria-label` to allo
 
 <Story story='ClickToNavigateEn' />
 
+### Search with suggestions
+
+Use `type="search"` on the input to show a magnifying glass icon. Add a button with `type="reset"` to let users clear the field, and a `<button type="submit">` to submit the search. The submit button is placed next to the field automatically.
+
+<Story story='SearchEn' />
+
+```html
+<form action="/search">
+  <ds-suggestion class="ds-suggestion">
+    <input class="ds-input" type="search" name="search" aria-label="Search" />
+    <button type="reset" aria-label="Clear"></button>
+    <u-datalist>
+      <u-option label="Sogndal" value="Sogndal">Sogndal</u-option>
+      <u-option label="Oslo" value="Oslo">Oslo</u-option>
+      <u-option label="Brønnøysund" value="Brønnøysund">Brønnøysund</u-option>
+    </u-datalist>
+    <button class="ds-button" type="submit">Search</button>
+  </ds-suggestion>
+</form>
+```
+
 
 ## React
 
