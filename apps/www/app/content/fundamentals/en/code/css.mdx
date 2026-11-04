@@ -16,6 +16,7 @@ We use [css layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) to 
 This means that you can easily override it with your own styling.
 
 All our layers are under the layer group `ds`.
+Import `@digdir/designsystemet-css` before your theme, so the order of our layers (`@layer ds`) is set first.
 
 For example, if you have a css reset, this will override parts of what we have done. We recommend putting this in a layer and sorting this first.
 You do this by first putting your reset in a layer, and then sorting this layer first:
@@ -83,6 +84,9 @@ Preserves appearance, including background color, in print.
 
 ### `ds-focus` / `ds-focus--inset`
 Adds Designsystemet's focus ring around the element _when it gains focus with keyboard navigation_ (`:focus-visible`).
+
+### `ds-focus--within`
+Adds Designsystemet's focus ring around the element _when it or any of its descendants have focus_ (`:focus-within`). Focus rings on descendants are hidden, so only the outer ring is shown.
 
 ### `ds-focus--visible` / `ds-focus--visible--inset`
 Static "always-on" classes that add Designsystemet's focus ring around the element. <span className='ds-focus--visible'>Example.</span>

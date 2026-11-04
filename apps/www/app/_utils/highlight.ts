@@ -15,9 +15,8 @@ export const highlightText = (query: string, scope: HTMLElement) => {
     return;
   }
 
-  // Clear the HighlightRegistry to remove the
-  // previous search results.
-  CSS.highlights.clear();
+  // Remove only search results, preserving syntax highlights.
+  CSS.highlights.delete('custom-highlight');
 
   // Clean-up the search query and bail-out if
   // if it's empty.
