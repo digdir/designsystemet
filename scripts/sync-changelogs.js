@@ -8,7 +8,11 @@
 import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { aggregateChangelogs, findPackages } from './aggregate-changelogs.js';
+import {
+  aggregateChangelogs,
+  findPackages,
+  NO_CHANGES,
+} from './aggregate-changelogs.js';
 import { releaseDateMarkup } from './changelog-date.js';
 
 const ROOT = process.cwd();
@@ -135,8 +139,6 @@ const FIGMA_PAGES = {
 // by. Instead, the date is written in the changelog as a `_Published YYYY-MM-DD_` line under the
 // version heading; see figma/README.md.
 const PUBLISHED_DATE = /^_Published (\d{4}-\d{2}-\d{2})_\s*$\n*/m;
-// What a package's changelog says for a version that only bumped it with the others.
-const NO_CHANGES = 'No changes in this release.';
 
 async function writeFigmaChangelog() {
   const pkgs = [...(await findPackages(['figma'])).values()];
