@@ -10,6 +10,45 @@
 .textPageHeader {
   margin-bottom: var(--ds-size-5);
 }
+.changelogFilters {
+  display: grid;
+  gap: var(--ds-size-6);
+  padding-block: var(--ds-size-5) var(--ds-size-8);
+  margin-bottom: var(--ds-size-6);
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+}
+.changelogVersion {
+  width: 100%;
+  max-width: 20rem;
+}
+.changelogPagination {
+  margin-block: var(--ds-size-4);
+  ul {
+    flex-wrap: wrap;
+  }
+}
+.changelogCheckboxes {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--ds-size-6);
+  row-gap: var(--ds-size-2);
+  overflow-wrap: anywhere;
+}
+.changelogRelease {
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: var(--ds-border-radius-md);
+  padding: var(--ds-size-5);
+  margin-bottom: var(--ds-size-4);
+  overflow-wrap: anywhere;
+}
+.changelogPackage {
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  margin-top: var(--ds-size-6);
+  padding-top: var(--ds-size-6);
+  h3:first-child {
+    margin-top: 0;
+  }
+}
 /*needs spacings for nested headings*/
 .changelog {
   h2,

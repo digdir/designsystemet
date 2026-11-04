@@ -28,6 +28,7 @@
     color: inherit;
     &:focus-visible {
       outline: none;
+      box-shadow: none;
     }
   }
 }

@@ -10,14 +10,15 @@
   scrollbar-color: var(--ds-color-neutral-border-subtle) transparent;
   /*counter the padding to align with logo while not breaking the active style*/
   margin-left: calc(var(--ds-size-4) * -1);
-
   overscroll-behavior: contain;
+
   > nav {
     margin-bottom: var(--header-height);
   }
   @media screen and (max-width: 958px) {
     border-right: initial;
     position: static;
+    overflow-y: initial;
   }
 }
 

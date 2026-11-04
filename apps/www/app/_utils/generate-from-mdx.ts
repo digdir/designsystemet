@@ -6,26 +6,34 @@ import remarkGfm from 'remark-gfm';
 import type { TableOfContentsItem, VFile } from './extract-toc';
 import { extractToc } from './extract-toc';
 
+type MdxTransform = (tree: Root) => void;
+
 // Cache MDX compilation results by source content to avoid recompiling identical files
 const mdxCache = new Map<
-  string,
-  {
-    code: string;
-    // biome-ignore lint/suspicious/noExplicitAny: this is how frontmatter is typed in mdx-bundler
-    frontmatter: { [key: string]: any };
-    toc: TableOfContentsItem[];
-  }
+  MdxTransform | undefined,
+  Map<
+    string,
+    {
+      code: string;
+      // biome-ignore lint/suspicious/noExplicitAny: this is how frontmatter is typed in mdx-bundler
+      frontmatter: { [key: string]: any };
+      toc: TableOfContentsItem[];
+    }
+  >
 >();
 
 export const generateFromMdx = async (
   fileContent: string,
+  transform?: MdxTransform,
 ): Promise<{
   code: string;
   // biome-ignore lint/suspicious/noExplicitAny: this is how frontmatter is typed in mdx-bundler
   frontmatter: { [key: string]: any };
   toc: TableOfContentsItem[];
 }> => {
-  const cached = mdxCache.get(fileContent);
+  const cache = mdxCache.get(transform) ?? new Map();
+  mdxCache.set(transform, cache);
+  const cached = cache.get(fileContent);
   if (cached) return cached;
 
   let tocData: TableOfContentsItem[] = [];
@@ -36,6 +44,7 @@ export const generateFromMdx = async (
       options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
+        () => (tree: Root) => transform?.(tree),
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: 'append' }],
         () => (tree: Root, file: VFile) => {
@@ -52,6 +61,6 @@ export const generateFromMdx = async (
     ...result,
     toc: tocData,
   };
-  mdxCache.set(fileContent, output);
+  cache.set(fileContent, output);
   return output;
 };

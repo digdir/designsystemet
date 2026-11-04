@@ -161,6 +161,14 @@ export default {
       'Designsystemet contains basic components that can be used independently of framework, and combined in many different ways and in various patterns.',
     changelog: {
       title: 'Changelog',
+      version: 'Version',
+      'all-versions': 'All versions',
+      packages: 'Packages',
+      'no-packages': 'No packages selected.',
+      pagination: 'Changelog pages',
+      'previous-page': 'Previous page',
+      'next-page': 'Next page',
+      page: 'Page {{page}}',
     },
     accessibility: {
       title: 'Accessibility',

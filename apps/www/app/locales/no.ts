@@ -159,6 +159,14 @@ export default {
       'Designsystemet inneholder grunnleggende komponenter som kan brukes uavhengig av rammeverk, og settes sammen på mange ulike måter og i forskjellige mønstre.',
     changelog: {
       title: 'Endringslogg',
+      version: 'Versjon',
+      'all-versions': 'Alle versjoner',
+      packages: 'Pakker',
+      'no-packages': 'Ingen pakker valgt.',
+      pagination: 'Sider i endringsloggen',
+      'previous-page': 'Forrige side',
+      'next-page': 'Neste side',
+      page: 'Side {{page}}',
     },
     accessibility: {
       title: 'Universell utforming',
