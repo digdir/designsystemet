@@ -164,8 +164,9 @@ order may change due to nondeterminism.`.trim(),
 ${fileHeader}
 
 Import after @digdir/designsystemet-css.
-All styles are in the "ds" layer. Put layers like a CSS reset, before it, and your own customizations after:
-@layer my-reset, ds, my-customization;
+All designsystemet.no styles are in the "ds" layer. Declare the layer order before importing,
+with layers like a CSS reset before "ds" and your own customizations after it:
+@layer my-reset, ds, my-customizations;
 */
 
 `;

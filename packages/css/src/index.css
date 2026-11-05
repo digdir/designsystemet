@@ -1,4 +1,4 @@
-@layer base, ds.theme, ds.base, ds.components; /* Setting base first, so Tailwind preflight is stacked before designsystemet.no */
+@layer ds.theme, ds.base, ds.components;
 
 /** Import order defines ordinal specificity for layers */
 @import url('./base.css') layer(ds.base);
