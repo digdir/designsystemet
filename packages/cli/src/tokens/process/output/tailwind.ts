@@ -35,14 +35,7 @@ export const createTailwindCSSFiles = (cssFiles: OutputFile[], version: Tailwind
         const tokens = scrapeTailwindTokens(file.output);
         const tailwindFile = {
           destination: file.destination.replace('.css', '.tailwind.css'),
-          output:
-            (version === 'v3'
-              ? `/*
-For Tailwind v3, use @tailwind directives and place its base reset in a layer before ds.
-See https://github.com/digdir/designsystemet/blob/main/packages/css/README.md#v3-and-older for setup.
-*/
-`
-              : banner) + (version === 'v3' ? generateTailwindV3(tokens) : generateTailwindV4(tokens)),
+          output: banner + (version === 'v3' ? generateTailwindV3(tokens) : generateTailwindV4(tokens)),
         };
         return tailwindFile;
       }
