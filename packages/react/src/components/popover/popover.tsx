@@ -14,7 +14,7 @@ export type PopoverProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**
-     * id to connect the trigger with the popover - required when not using Popover.Context.
+     * id to connect the trigger with the popover, using `popovertarget` on the trigger.
      */
     id?: string;
     /**

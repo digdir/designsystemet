@@ -298,6 +298,21 @@ describe('Popover', () => {
       expect(popover).not.toBeVisible();
     });
 
+    it('should close when we press ESC after showPopover', async () => {
+      render(defaultPopover);
+      const popover = screen.getByText(contentText);
+
+      await showPopover(popover);
+      expect(popover).toBeVisible();
+
+      const esc = new KeyboardEvent('keydown', {
+        key: 'Escape',
+        bubbles: true,
+      });
+      await act(async () => document.body.dispatchEvent(esc));
+      expect(popover).not.toBeVisible();
+    });
+
     it('should not override native source when opened with showPopover', async () => {
       render(defaultPopover);
       const popover = screen.getByText(contentText);

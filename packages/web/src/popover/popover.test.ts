@@ -487,4 +487,48 @@ describe('popover duplicate toggle guard', () => {
     expect(observers.length).toBeGreaterThan(0);
     for (const spy of disconnectSpies) expect(spy).not.toHaveBeenCalled();
   });
+
+  it('cleans up positioning on a coalesced closed to closed toggle event', {
+    tags: ['browser'], // Only run in browsers as this relies on ResizeObserver
+  }, async () => {
+    // When a popover opens and closes before the queued "toggle" event fires,
+    // the browser coalesces both into one event with oldState and newState
+    // "closed". That event must still drop the positioning subscription.
+    render(`
+      <button id="trigger" popovertarget="my-popover">Open</button>
+      <div id="my-popover" popover="manual" style="--_ds-floating: top">Content</div>
+    `);
+
+    const trigger = document.getElementById('trigger');
+    const popover = document.getElementById('my-popover');
+    const OriginalResizeObserver = window.ResizeObserver;
+    const observers: ResizeObserver[] = [];
+    const resizeObserverSpy = vi
+      .spyOn(window, 'ResizeObserver')
+      .mockImplementation(function (
+        this: unknown,
+        callback: ResizeObserverCallback,
+      ) {
+        const observer = new OriginalResizeObserver(callback); // Delegate to the real observer so autoUpdate() still works
+        observers.push(observer);
+        return observer;
+      });
+
+    popover?.togglePopover({ force: true, source: trigger as HTMLElement });
+    await tick();
+    resizeObserverSpy.mockRestore();
+
+    const disconnectSpies = observers.map((observer) =>
+      vi.spyOn(observer, 'disconnect'),
+    );
+    popover?.dispatchEvent(
+      Object.assign(new Event('toggle'), {
+        oldState: 'closed',
+        newState: 'closed',
+      }),
+    );
+
+    expect(observers.length).toBeGreaterThan(0);
+    for (const spy of disconnectSpies) expect(spy).toHaveBeenCalled();
+  });
 });

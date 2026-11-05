@@ -192,7 +192,7 @@ export const Variants = meta.story({
   render: () => {
     const popoverRefs = useRef<HTMLDivElement[]>([]);
 
-    // Open after mount, since Popover closes itself in its own mount effect
+    // Open from an effect, since refs are not set during render. Child effects run first, so Popover is already in sync with the closed DOM
     useEffect(() => {
       for (const popover of popoverRefs.current) popover.togglePopover(true);
     }, []);
