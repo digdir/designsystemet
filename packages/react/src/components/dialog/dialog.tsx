@@ -57,19 +57,9 @@ export type DialogProps = MergeRight<
 >;
 
 /**
- * Dialog component, used to display a dialog dialog.
+ * Dialog component, used to display a dialog.
  *
- * @example with TriggerContext
- * <Dialog.TriggerContext>
- *   <Dialog.Trigger>Open Dialog</Dialog.Trigger>
- *   <Dialog>
- *     <Dialog.Block>
- *       Content
- *     </Dialog.Block>
- *   </Dialog>
- * </Dialog.TriggerContext>
- *
- * @example without TriggerContext
+ * @example
  * const dialogRef = useRef<HTMLDialogElement>(null);
  *
  * ...

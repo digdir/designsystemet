@@ -60,10 +60,6 @@
   margin-bottom: 8px;
 }
 
-.overridesBtn {
-  width: 100%;
-}
-
 .confirmationActions {
   display: flex;
   flex-wrap: wrap;

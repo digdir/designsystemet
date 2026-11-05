@@ -57,15 +57,7 @@ export type PopoverProps = MergeRight<
 /**
  * Popover component, used to display content in a popover over an element.
  *
- * @example with TriggerContext
- * <Popover.TriggerContext>
- *   <Popover.Trigger>Open Popover</Popover.Trigger>
- *   <Popover>
- *     Content
- *   </Popover>
- * </Popover.TriggerContext>
- *
- * @example without TriggerContext
+ * @example
  * <Button popovertarget="my-popover">Open Popover</Button>
  * <Popover id="my-popover">
  *   Content

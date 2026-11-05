@@ -7,6 +7,8 @@ type Dialog = typeof DialogParent & {
   /**
    * DialogTriggerContext component, used to provide a context for a dialog trigger.
    *
+   * @deprecated Will be removed in the next major version. Connect a `Button` to the dialog with `command="show-modal"` and `commandfor` set to the dialog's `id` instead.
+   *
    * @example
    * <Dialog.TriggerContext>
    *   <Dialog.Trigger>Open Dialog</Dialog.Trigger>
@@ -18,6 +20,8 @@ type Dialog = typeof DialogParent & {
   TriggerContext: typeof DialogTriggerContext;
   /**
    * DialogTrigger component, used within a Dialog.TriggerContext to open a dialog.
+   *
+   * @deprecated Will be removed in the next major version. Use a `Button` with `command="show-modal"` (or `command="--show-non-modal"`) and `commandfor` set to the dialog's `id` instead.
    *
    * @example
    * <Dialog.TriggerContext>
@@ -48,17 +52,15 @@ type Dialog = typeof DialogParent & {
 };
 
 /**
- * Dialog component, used to display a Dialog dialog.
+ * Dialog component, used to display a dialog.
  *
  * @example
- * <Dialog.TriggerContext>
- *   <Dialog.Trigger>Open Dialog</Dialog.Trigger>
- *   <Dialog>
- *     <Dialog.Block>
- *       Content
- *     </Dialog.Block>
- *   </Dialog>
- * </Dialog.TriggerContext>
+ * <Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
+ * <Dialog id="my-dialog">
+ *   <Dialog.Block>
+ *     Content
+ *   </Dialog.Block>
+ * </Dialog>
  */
 const DialogComponent: Dialog = Object.assign(DialogParent, {
   Block: DialogBlock,

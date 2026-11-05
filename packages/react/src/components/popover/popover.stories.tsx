@@ -1,5 +1,5 @@
 import { TrashIcon } from '@navikt/aksel-icons';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Button, Paragraph } from '../';
@@ -36,6 +36,29 @@ const meta = preview.meta({
 export const Preview = meta.story({
   render: (args) => {
     return (
+      <>
+        <Button popovertarget='popover-preview'>Mine varsler</Button>
+        <Popover {...args} id='popover-preview'>
+          Du har ingen varsler
+        </Popover>
+      </>
+    );
+  },
+
+  args: {
+    placement: 'top',
+  },
+
+  parameters: {
+    customStyles: {
+      paddingTop: '5rem',
+    },
+  },
+});
+
+export const DeprecatedTriggerContext = meta.story({
+  render: (args) => {
+    return (
       <Popover.TriggerContext>
         <Popover.Trigger>Mine varsler</Popover.Trigger>
         <Popover {...args}>Du har ingen varsler</Popover>
@@ -57,11 +80,15 @@ export const Preview = meta.story({
 export const Interactive = meta.story({
   render: () => {
     return (
-      <Popover.TriggerContext>
-        <Popover.Trigger data-color='danger' aria-label='Slett rad'>
+      <>
+        <Button
+          popovertarget='popover-interactive'
+          data-color='danger'
+          aria-label='Slett rad'
+        >
           <TrashIcon title='Slett rad' />
-        </Popover.Trigger>
-        <Popover data-color='danger'>
+        </Button>
+        <Popover id='popover-interactive' data-color='danger'>
           <Paragraph>
             Er du sikker på at du vil slette raden? Handlingen kan ikke angres.
           </Paragraph>
@@ -78,7 +105,7 @@ export const Interactive = meta.story({
             </Button>
           </div>
         </Popover>
-      </Popover.TriggerContext>
+      </>
     );
   },
 
@@ -92,12 +119,19 @@ export const Interactive = meta.story({
 export const DottedUnderline = meta.story({
   render: () => {
     return (
-      <Popover.TriggerContext>
+      <>
         <Paragraph>
-          Vi bruker <Popover.Trigger inline>design tokens</Popover.Trigger> for
-          å sikre at vi har en konsistent design.
+          Vi bruker{' '}
+          <button
+            type='button'
+            data-popover='inline'
+            popovertarget='popover-dotted-underline'
+          >
+            design tokens
+          </button>{' '}
+          for å sikre at vi har en konsistent design.
         </Paragraph>
-        <Popover data-color='neutral'>
+        <Popover id='popover-dotted-underline' data-color='neutral'>
           <Paragraph>
             <strong
               style={{
@@ -110,7 +144,7 @@ export const DottedUnderline = meta.story({
             designsystem.
           </Paragraph>
         </Popover>
-      </Popover.TriggerContext>
+      </>
     );
   },
 
@@ -163,9 +197,10 @@ export const Variants = meta.story({
     return (
       <>
         {Object.entries(VariantsMap).map(([key, props], index) => (
-          <Popover.TriggerContext key={key}>
-            <Popover.Trigger>popover</Popover.Trigger>
+          <Fragment key={key}>
+            <Button popovertarget={`popover-${key}`}>popover</Button>
             <Popover
+              id={`popover-${key}`}
               open={open}
               placement={index >= 4 ? 'bottom' : 'top'}
               autoPlacement={false}
@@ -173,7 +208,7 @@ export const Variants = meta.story({
             >
               {key}
             </Popover>
-          </Popover.TriggerContext>
+          </Fragment>
         ))}
       </>
     );
@@ -199,9 +234,10 @@ export const Controlled = meta.story({
     const [open, setOpen] = useState(false);
 
     return (
-      <Popover.TriggerContext>
-        <Popover.Trigger>Slett</Popover.Trigger>
+      <>
+        <Button popovertarget='popover-controlled'>Slett</Button>
         <Popover
+          id='popover-controlled'
           open={open}
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
@@ -231,42 +267,6 @@ export const Controlled = meta.story({
               Avbryt
             </Button>
           </div>
-        </Popover>
-      </Popover.TriggerContext>
-    );
-  },
-
-  parameters: {
-    customStyles: {
-      padding: '8rem 6rem 1rem',
-    },
-  },
-});
-
-export const WithoutContext = meta.story({
-  render: () => {
-    const [open, setOpen] = useState(false);
-
-    return (
-      <>
-        <Button popovertarget='my-popover' onClick={() => setOpen(!open)}>
-          My trigger
-        </Button>
-        <Popover
-          id='my-popover'
-          open={open}
-          onClose={() => setOpen(false)}
-          data-color='neutral'
-        >
-          <Paragraph>Er du sikker på at du vil slette?</Paragraph>
-          <Button
-            data-color='danger'
-            onClick={() => setOpen(false)}
-            data-size='sm'
-            style={{ marginTop: 'var(--ds-size-2)' }}
-          >
-            Slett
-          </Button>
         </Popover>
       </>
     );
