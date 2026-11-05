@@ -1,6 +1,6 @@
 import { Button, Paragraph, Popover } from '@digdir/designsystemet-react';
 import { TrashIcon } from '@navikt/aksel-icons';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const Preview = () => {
   return (
@@ -152,16 +152,20 @@ export const DottedUnderlineEn = () => {
 };
 
 export const Controlled = () => {
+  const popoverRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    popoverRef.current?.togglePopover(open);
+  }, [open]);
 
   return (
     <>
       <Button popovertarget='popover-controlled'>Slett</Button>
       <Popover
+        ref={popoverRef}
         id='popover-controlled'
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
+        onToggle={(event) => setOpen(event.newState === 'open')}
         data-color='danger'
       >
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
@@ -193,16 +197,20 @@ export const Controlled = () => {
 };
 
 export const ControlledEn = () => {
+  const popoverRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    popoverRef.current?.togglePopover(open);
+  }, [open]);
 
   return (
     <>
       <Button popovertarget='popover-controlled-en'>Delete</Button>
       <Popover
+        ref={popoverRef}
         id='popover-controlled-en'
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
+        onToggle={(event) => setOpen(event.newState === 'open')}
         data-color='danger'
       >
         <Paragraph>Are you sure you want to delete this?</Paragraph>

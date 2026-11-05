@@ -1,5 +1,5 @@
 import { TrashIcon } from '@navikt/aksel-icons';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Button, Paragraph } from '../';
@@ -190,9 +190,12 @@ const VariantsMap: {
 
 export const Variants = meta.story({
   render: () => {
-    const [open, setOpen] = useState(false);
+    const popoverRefs = useRef<HTMLDivElement[]>([]);
 
-    useEffect(() => setOpen(true), []);
+    // Open from an effect, since refs are not set during render. Child effects run first, so Popover is already in sync with the closed DOM
+    useEffect(() => {
+      for (const popover of popoverRefs.current) popover.togglePopover(true);
+    }, []);
 
     return (
       <>
@@ -201,7 +204,9 @@ export const Variants = meta.story({
             <Button popovertarget={`popover-${key}`}>popover</Button>
             <Popover
               id={`popover-${key}`}
-              open={open}
+              ref={(popover) => {
+                if (popover) popoverRefs.current[index] = popover;
+              }}
               placement={index >= 4 ? 'bottom' : 'top'}
               autoPlacement={false}
               {...props}
@@ -231,16 +236,20 @@ export const Variants = meta.story({
 
 export const Controlled = meta.story({
   render: () => {
+    const popoverRef = useRef<HTMLDivElement>(null);
     const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+      popoverRef.current?.togglePopover(open);
+    }, [open]);
 
     return (
       <>
         <Button popovertarget='popover-controlled'>Slett</Button>
         <Popover
+          ref={popoverRef}
           id='popover-controlled'
-          open={open}
-          onOpen={() => setOpen(true)}
-          onClose={() => setOpen(false)}
+          onToggle={(event) => setOpen(event.newState === 'open')}
           data-color='neutral'
         >
           <Paragraph>Er du sikker på at du vil slette?</Paragraph>

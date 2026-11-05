@@ -1,5 +1,5 @@
 import { ChevronDownIcon, ChevronUpIcon, LinkIcon } from '@navikt/aksel-icons';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Button, Dialog } from '../';
@@ -153,7 +153,12 @@ export const Icons = meta.story({
 });
 
 export const Controlled = meta.story(() => {
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    dropdownRef.current?.togglePopover(open);
+  }, [open]);
 
   return (
     <>
@@ -162,10 +167,9 @@ export const Controlled = meta.story(() => {
         {open ? <ChevronUpIcon aria-hidden /> : <ChevronDownIcon aria-hidden />}
       </Button>
       <Dropdown
+        ref={dropdownRef}
         id='dropdown-controlled'
-        open={open}
-        onClose={() => setOpen(false)}
-        onOpen={() => setOpen(true)}
+        onToggle={(event) => setOpen(event.newState === 'open')}
       >
         <Dropdown.List>
           <Dropdown.Item>
@@ -177,28 +181,6 @@ export const Controlled = meta.story(() => {
             <Dropdown.Button onClick={() => setOpen(false)}>
               Eg lukker også
             </Dropdown.Button>
-          </Dropdown.Item>
-        </Dropdown.List>
-      </Dropdown>
-    </>
-  );
-});
-
-export const ControlledExternalTrigger = meta.story(() => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <Button popovertarget='dropdown-controlled-external'>Dropdown</Button>
-      <Dropdown
-        id='dropdown-controlled-external'
-        open={open}
-        onClose={() => setOpen(false)}
-        onOpen={() => setOpen(true)}
-      >
-        <Dropdown.List>
-          <Dropdown.Item>
-            <Dropdown.Button>Item</Dropdown.Button>
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>

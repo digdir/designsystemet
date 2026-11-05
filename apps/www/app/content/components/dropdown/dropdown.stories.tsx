@@ -1,6 +1,6 @@
 import { Button, Dropdown } from '@digdir/designsystemet-react';
 import { ChevronDownIcon, ChevronUpIcon, LinkIcon } from '@navikt/aksel-icons';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const Preview = () => {
   return (
@@ -85,7 +85,12 @@ export const Headings = () => {
 };
 
 export const Controlled = () => {
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    dropdownRef.current?.togglePopover(open);
+  }, [open]);
 
   return (
     <>
@@ -98,10 +103,9 @@ export const Controlled = () => {
         )}
       </Button>
       <Dropdown
+        ref={dropdownRef}
         id='dropdown-controlled'
-        open={open}
-        onClose={() => setOpen(false)}
-        onOpen={() => setOpen(true)}
+        onToggle={(event) => setOpen(event.newState === 'open')}
       >
         <Dropdown.List>
           <Dropdown.Item>
@@ -121,7 +125,12 @@ export const Controlled = () => {
 };
 
 export const ControlledEn = () => {
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    dropdownRef.current?.togglePopover(open);
+  }, [open]);
 
   return (
     <>
@@ -134,10 +143,9 @@ export const ControlledEn = () => {
         )}
       </Button>
       <Dropdown
+        ref={dropdownRef}
         id='dropdown-controlled-en'
-        open={open}
-        onClose={() => setOpen(false)}
-        onOpen={() => setOpen(true)}
+        onToggle={(event) => setOpen(event.newState === 'open')}
       >
         <Dropdown.List>
           <Dropdown.Item>

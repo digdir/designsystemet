@@ -45,9 +45,9 @@ Når du legger til `@digdir/designsystemet-react/react-types.d.ts` i ditt prosje
 
 ### Kontrollert
 
-Dersom du sender inn `open`, så bruker du `Dropdown` kontrollert. Du kan bruke `onClose` for å få beskjed når `Dropdown` vil lukkes.
+Du kan styre når dropdownen åpnes og lukkes med React state. Bruk [`togglePopover()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover) for å åpne og lukke den, og `onToggle` for å oppdatere state når dropdownen åpnes eller lukkes på andre måter, for eksempel med knappen, `Esc` eller et klikk utenfor.
 
-Merk at vi ikke bruker `onClick` på triggeren, dropdownen håndterer dette internt og sender det til `onOpen` og `onClose`.
+I React 18 kjøres ikke `onToggle` for popovere. Lytt heller etter [`toggle`-eventet](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event) med `addEventListener`.
 
 <Story story="Controlled" language="react" />
 

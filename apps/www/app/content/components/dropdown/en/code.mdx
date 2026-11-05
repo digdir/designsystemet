@@ -45,9 +45,9 @@ When using `@digdir/designsystemet-react` we extend `@types/react-dom` to accept
 
 ### Controlled
 
-If you submit `open`, then you use `Dropdown` controlled. You can use `onClose` to get notified when `Dropdown` wants to close.
+You can use React state to control when the dropdown opens and closes. Use [`togglePopover()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover) to open and close it, and `onToggle` to update the state when the dropdown opens or closes in other ways, such as with the button, `Esc` or a click outside.
 
-Note that we do not use `onClick` on the trigger, the dropdown handles this internally and calls `onOpen` and `onClose`.
+In React 18, `onToggle` does not fire for popovers. Listen for the [`toggle` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event) with `addEventListener` instead.
 
 <Story story="ControlledEn" language="react"/>
 
