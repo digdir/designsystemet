@@ -18,6 +18,7 @@
   --ds-readonly-icon-size: var(--ds-icon-size);
   --ds-readonly-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 2.25A4.75 4.75 0 0 0 7.25 7v2.25H7A1.75 1.75 0 0 0 5.25 11v9c0 .41.34.75.75.75h12a.75.75 0 0 0 .75-.75v-9A1.75 1.75 0 0 0 17 9.25h-.25V7A4.75 4.75 0 0 0 12 2.25m3.25 7V7a3.25 3.25 0 0 0-6.5 0v2.25zM12 13a1.5 1.5 0 0 0-.75 2.8V17a.75.75 0 0 0 1.5 0v-1.2A1.5 1.5 0 0 0 12 13'/%3E%3C/svg%3E");
   --ds-icon-size: var(--ds-size-6);
+  --ds-icon-spinner: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' fill='none' stroke='currentcolor' stroke-width='5' stroke-linecap='round'%3E%3Cstyle%3E @keyframes rotate %7B to %7B rotate:360deg %7D %7D @keyframes stroke %7B 50%25 %7Bstroke-dasharray:100,200;stroke-dashoffset:-15;transform:rotate(0deg)%7D to %7Bstroke-dasharray:1,200;stroke-dashoffset:-120;transform:rotate(15deg)%7D %7D circle:last-child%7Banimation:stroke ease-in-out infinite 2s,rotate linear infinite 2s;transform-origin:center%7D%3C/style%3E%3Ccircle cx='25' cy='25' r='20' opacity='.1'%3E%3C/circle%3E%3Ccircle cx='25' cy='25' r='20' stroke-dasharray='1, 200'%3E%3C/circle%3E%3C/svg%3E");
 
   /* font-size adjustments if supporting round() */
   @supports (width: round(down, 0.1em, 1px)) {
