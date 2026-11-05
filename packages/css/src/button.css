@@ -59,7 +59,7 @@
   }
 
   & :is(img, svg) {
-    @composes ds-icon from './base.css';
+    @composes ds-icon from './utils.css';
   }
 
   &:focus-visible {

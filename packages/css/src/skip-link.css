@@ -5,7 +5,7 @@
   --dsc-skiplink-background: var(--ds-color-surface-hover);
   --dsc-skiplink-color: var(--ds-color-text-default);
 
-  @composes ds-sr-only from './base.css';
+  @composes ds-sr-only from './utils.css';
 }
 
 .ds-skip-link:focus,

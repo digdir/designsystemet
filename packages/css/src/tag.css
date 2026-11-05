@@ -32,7 +32,7 @@
   @composes ds-focus from './utils.css'; /* Add focus outline support in case renderes as <button> or <a> */
 
   & :is(img, svg) {
-    @composes ds-icon from './base.css';
+    @composes ds-icon from './utils.css';
   }
 
   &:not([hidden]) {
