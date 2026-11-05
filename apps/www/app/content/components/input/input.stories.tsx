@@ -157,6 +157,24 @@ export const ReadOnlyCheckAndRadioEn = () => {
   );
 };
 
+export const TypeRange = () => {
+  return (
+    <Field>
+      <Label>Velg verdi</Label>
+      <Input type='range' />
+    </Field>
+  );
+};
+
+export const TypeRangeEn = () => {
+  return (
+    <Field>
+      <Label>Choose value</Label>
+      <Input type='range' />
+    </Field>
+  );
+};
+
 export const InputType = () => {
   const [type, setType] = useState<TextfieldProps['type']>('text');
 
