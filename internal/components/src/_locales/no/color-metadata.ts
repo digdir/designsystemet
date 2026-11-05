@@ -69,4 +69,16 @@ export default {
     long: 'Contrast Default brukes som en viktig meningsbærende farge oppå alle Base fargene.',
     short: 'Farge med god kontrast mot Base-default og Base-hover.',
   },
+  'surface-muted': {
+    long: 'Surface Muted brukes som en dempet bakgrunn på overflater.',
+    short: 'Dempet bakgrunn for overflater.',
+  },
+  'border-muted': {
+    long: 'Border Muted brukes som en dempet kantlinje.',
+    short: 'Dempet kantlinje.',
+  },
+  'text-muted': {
+    long: 'Text Muted brukes som en dempet tekstfarge.',
+    short: 'Dempet tekstfarge.',
+  },
 };

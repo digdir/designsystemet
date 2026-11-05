@@ -72,8 +72,7 @@ In editors which support JSON Schema, the `$schema` will then  give you editor h
   "themes": {
     "theme": {
       "colors": {
-        "accent": "#1E98F5",
-        "neutral": "#1E2B3C",
+        "accent": "#1E98F5"
       },
       "borderRadius": 4
     }

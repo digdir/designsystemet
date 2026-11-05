@@ -114,7 +114,6 @@ formatTheme({
   // Parsed so the default severity colors are added, like for a validated config.
   colors: colorsSchema.parse({
     primary: themes.designsystemet.colors.accent,
-    neutral: themes.designsystemet.colors.neutral,
   }),
   typography: themes.designsystemet.typography,
   size: themes.designsystemet.size,

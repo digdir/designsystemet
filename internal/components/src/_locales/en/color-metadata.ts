@@ -70,4 +70,16 @@ export default {
     long: 'Contrast Default is used as an important, meaningful color on top of all the Base colors.',
     short: 'Color with good contrast against Base-default and Base-hover.',
   },
+  'surface-muted': {
+    long: 'Surface Muted is used as a muted background on surfaces.',
+    short: 'Muted background for surfaces.',
+  },
+  'border-muted': {
+    long: 'Border Muted is used as a muted border.',
+    short: 'Muted border.',
+  },
+  'text-muted': {
+    long: 'Text Muted is used as a muted text color.',
+    short: 'Muted text color.',
+  },
 } satisfies typeof no;

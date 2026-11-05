@@ -25,7 +25,7 @@ import classes from './color-page.module.css';
 
 type ColorEditorState = {
   activePanel: 'add-color' | 'edit-color' | 'edit-severity' | 'none';
-  colorType: 'color' | 'neutral' | 'severity';
+  colorType: 'color' | 'severity';
   index: number;
   name: string;
   initialName: string;
@@ -76,9 +76,7 @@ export const ColorPage = () => {
     returnFocusName.current = null;
   }, [editorState.activePanel]);
 
-  const neutralIndex = colors.findIndex((c) => c.name === 'neutral');
-  const neutralColor = neutralIndex >= 0 ? colors[neutralIndex] : undefined;
-  const themeColorCount = colors.filter((c) => c.name !== 'neutral').length;
+  const themeColorCount = colors.length;
   const committedName =
     colors[editorState.index]?.name || editorState.initialName;
 
@@ -92,7 +90,7 @@ export const ColorPage = () => {
 
     const updatedParams = new URLSearchParams(query);
 
-    if (type === 'color' || type === 'neutral') {
+    if (type === 'color') {
       const colorParam = query.get('colors') || '';
       const colorArray = colorParam.split(QUERY_SEPARATOR).filter(Boolean);
 
@@ -139,18 +137,14 @@ export const ColorPage = () => {
     }
   };
 
-  const openColorEditor = (
-    colorTheme: ColorTheme,
-    index: number,
-    type: 'color' | 'neutral',
-  ) => {
+  const openColorEditor = (colorTheme: ColorTheme, index: number) => {
     const hexColor = colorTheme.colors.light['base-default'].hex;
 
     setColor(ColorService.convert('hex', hexColor));
 
     setEditorState({
       activePanel: 'edit-color',
-      colorType: type,
+      colorType: 'color',
       index: index,
       name: colorTheme.name,
       initialName: colorTheme.name,
@@ -225,16 +219,14 @@ export const ColorPage = () => {
         <>
           <div className={classes.group}>
             <div className={classes.colors}>
-              {colors.map((colorTheme, index) =>
-                colorTheme.name === 'neutral' ? null : (
-                  <ColorInput
-                    key={index}
-                    color={colorTheme.colors.light['base-default'].hex}
-                    name={colorTheme.name}
-                    onClick={() => openColorEditor(colorTheme, index, 'color')}
-                  />
-                ),
-              )}
+              {colors.map((colorTheme, index) => (
+                <ColorInput
+                  key={index}
+                  color={colorTheme.colors.light['base-default'].hex}
+                  name={colorTheme.name}
+                  onClick={() => openColorEditor(colorTheme, index)}
+                />
+              ))}
               <Button
                 data-action='add-color'
                 variant='secondary'
@@ -254,20 +246,6 @@ export const ColorPage = () => {
               </Button>
             </div>
           </div>
-          <Divider />
-          {neutralColor && (
-            <div className={classes.group}>
-              <div className={classes.colors}>
-                <ColorInput
-                  color={neutralColor.colors.light['base-default'].hex}
-                  name={neutralColor.name}
-                  onClick={() =>
-                    openColorEditor(neutralColor, neutralIndex, 'neutral')
-                  }
-                />
-              </div>
-            </div>
-          )}
           <Divider />
           <div className={classes.group}>
             <div className={classes.groupHeader}>
@@ -365,11 +343,7 @@ export const ColorPage = () => {
               );
             }
           }}
-          colorType={
-            editorState.colorType === 'severity'
-              ? 'neutral'
-              : editorState.colorType
-          }
+          colorType={editorState.colorType}
         />
       )}
 

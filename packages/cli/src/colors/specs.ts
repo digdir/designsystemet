@@ -168,7 +168,7 @@ export const semanticColorSpec: SemanticColorSpec = {
       short: 'Tekst- og ikonfarge med høy kontrast og god synlighet.',
     },
     luminance: {
-      light: 0.0245,
+      light: 0.01,
       dark: 0.84,
       contrast: 0.86,
     },
@@ -241,6 +241,51 @@ export const semanticColorSpec: SemanticColorSpec = {
     description: {
       long: 'Contrast Default brukes som en viktig meningsbærende farge oppå alle Base fargane.',
       short: 'Farge med god kontrast mot Base-default og Base-hover.',
+    },
+    luminance: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+  },
+  'surface-muted': {
+    number: 17,
+    name: 'surface-muted',
+    group: 'surface',
+    displayName: 'Surface Muted',
+    description: {
+      long: 'Surface Muted brukes som en dempet bakgrunn på overflater.',
+      short: 'Dempet bakgrunn for overflater.',
+    },
+    luminance: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+  },
+  'border-muted': {
+    number: 18,
+    name: 'border-muted',
+    group: 'border',
+    displayName: 'Border Muted',
+    description: {
+      long: 'Border Muted brukes som en dempet kantlinje.',
+      short: 'Dempet kantlinje.',
+    },
+    luminance: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+  },
+  'text-muted': {
+    number: 19,
+    name: 'text-muted',
+    group: 'text',
+    displayName: 'Text Muted',
+    description: {
+      long: 'Text Muted brukes som en dempet tekstfarge.',
+      short: 'Dempet tekstfarge.',
     },
     luminance: {
       light: 1,

@@ -8,8 +8,6 @@ export const Colors = () => {
     <div className={classes.rows}>
       <ThemeColors />
       <Divider />
-      <NeutralColor />
-      <Divider />
       <SeverityColors />
     </div>
   );
@@ -20,35 +18,16 @@ const ThemeColors = () => {
 
   return (
     <div className={classes.rows}>
-      {colors
-        .filter((c) => c.name !== 'neutral')
-        .map((color, index) => (
-          <div key={index} className={classes.row}>
-            <div className={classes.scaleLabel}>{color.name}</div>
-            <Scale
-              colorScale={color.colors}
-              showHeader={index === 0}
-              namespace={color.name}
-            />
-          </div>
-        ))}
-    </div>
-  );
-};
-
-const NeutralColor = () => {
-  const { colors } = useThemebuilder();
-
-  return (
-    <div className={classes.rows}>
-      {colors
-        .filter((c) => c.name === 'neutral')
-        .map((color, index) => (
-          <div key={index} className={classes.row}>
-            <div className={classes.scaleLabel}>{color.name}</div>
-            <Scale colorScale={color.colors} namespace={color.name} />
-          </div>
-        ))}
+      {colors.map((color, index) => (
+        <div key={index} className={classes.row}>
+          <div className={classes.scaleLabel}>{color.name}</div>
+          <Scale
+            colorScale={color.colors}
+            showHeader={index === 0}
+            namespace={color.name}
+          />
+        </div>
+      ))}
     </div>
   );
 };

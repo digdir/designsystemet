@@ -43,13 +43,6 @@
     }
   }
 
-  /* What do we do here? */
-  &[data-color='neutral'] {
-    --dsc-link-color--active: var(--ds-color-neutral-text-subtle);
-    --dsc-link-color--hover: var(--ds-color-neutral-text-subtle);
-    --dsc-link-color: var(--ds-color-neutral-text-default);
-  }
-
   /**
    * States (using :where to allow all components to easily overwrite)
    */

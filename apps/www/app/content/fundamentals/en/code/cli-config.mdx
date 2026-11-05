@@ -216,9 +216,10 @@ Note that typography is experimental. The config schema may change at any time.
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
 | "colorName" | String | No | A colour for the theme. |
-| neutral | String | Yes | Neutral colour for the theme. |
 
 Colours are defined directly under `colors`, where the key is the colour's name and the value is a hex code.
+Colour names may only contain lowercase letters (a-z), digits (0-9) and hyphens (-).
+`colors` must contain at least one colour that is not a severity colour (`success`, `warning`, `danger`, `info`). The severity colours are added automatically.
 
 ```json
 {
@@ -290,6 +291,8 @@ The `severity` override allows you to customise the colours used for severity, w
 | ---- | ---- | ------- | ----------- |
 | inner | Object | No | Contains colours for inner focus |
 | outer | Object | No | Contains colours for outer focus |
+
+Without overrides, inner focus uses `background-default` and outer focus uses `text-default` from `neutral` if the theme has it, otherwise from the theme's first colour that is not a severity colour.
 
 ##### overrides.focus.(inner|outer)
 | Name | Type | Required | Description |

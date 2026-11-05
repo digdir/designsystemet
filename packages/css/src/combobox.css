@@ -5,11 +5,11 @@
 }
 
 .ds-textfield__adornment {
-  color: var(--ds-color-neutral-text-subtle);
-  background: var(--ds-color-neutral-surface-tinted);
+  color: var(--ds-color-text-muted);
+  background: var(--ds-color-surface-muted);
   padding: 9px var(--ds-size-4);
   border-radius: var(--ds-border-radius-md);
-  border: solid 1px var(--ds-color-neutral-border-default);
+  border: solid 1px var(--ds-color-border-muted);
   box-sizing: border-box;
   display: inline-block;
 }
@@ -22,9 +22,9 @@
   width: 100%;
   appearance: none;
   padding: 0 var(--ds-size-3);
-  border: solid 1px var(--ds-color-neutral-border-default);
-  background: var(--ds-color-neutral-surface-default);
-  color: var(--ds-color-neutral-text-default);
+  border: solid 1px var(--ds-color-border-muted);
+  background: var(--ds-color-surface-default);
+  color: var(--ds-color-text-default);
   border-radius: var(--ds-border-radius-md);
 }
 
@@ -33,8 +33,8 @@
 }
 
 .ds-textfield--readonly .ds-textfield__input {
-  background: var(--ds-color-neutral-surface-tinted);
-  border-color: var(--ds-color-neutral-border-strong);
+  background: var(--ds-color-surface-muted);
+  border-color: var(--ds-color-border-muted);
 }
 
 .ds-textfield__field {
@@ -98,7 +98,6 @@
 }
 
 .ds-textfield__description {
-  color: var(--ds-color-neutral-text-subtle);
   margin-top: calc(var(--ds-size-2) * -1);
 }
 
@@ -166,13 +165,13 @@
 
 .ds-combobox__options-wrapper {
   padding: var(--ds-size-2);
-  background: var(--ds-color-neutral-surface-default);
-  color: var(--ds-color-neutral-text-default);
+  background: var(--ds-color-surface-default);
+  color: var(--ds-color-text-default);
   overflow-y: auto;
   z-index: 1600;
   border-radius: var(--ds-border-radius-md);
   box-shadow: var(--ds-shadow-md);
-  border: 1px solid var(--ds-color-neutral-border-default);
+  border: 1px solid var(--ds-color-border-muted);
 }
 
 .ds-combobox--readonly .ds-combobox__input {
@@ -200,7 +199,7 @@
   appearance: none;
   border: none;
   background-color: transparent;
-  color: var(--ds-color-neutral-text-default);
+  color: var(--ds-color-text-default);
   box-sizing: border-box;
   font-family: inherit;
   font-size: inherit;
@@ -262,8 +261,8 @@
 }
 
 .ds-combobox__input__wrapper.ds-combobox--readonly {
-  background: var(--ds-color-neutral-surface-tinted);
-  border-color: var(--ds-color-neutral-border-default);
+  background: var(--ds-color-surface-muted);
+  border-color: var(--ds-color-border-muted);
 }
 
 .ds-combobox:has(.ds-combobox--readonly) .ds-combobox__label {
@@ -281,7 +280,7 @@
 }
 
 .ds-combobox__description {
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--ds-color-text-subtle);
   margin-top: calc(var(--ds-size-2) * -1);
 }
 
@@ -290,7 +289,7 @@
   place-items: center;
   cursor: pointer;
   background-color: transparent;
-  color: var(--ds-color-neutral-text-default);
+  color: var(--ds-color-text-default);
   border: none;
   padding: 0;
   border-radius: var(--ds-border-radius-sm);
@@ -325,7 +324,7 @@
 }
 
 .ds-combobox__clear-button:not(:disabled):hover {
-  background-color: var(--ds-color-neutral-surface-tinted);
+  background-color: var(--ds-color-surface-tinted);
 }
 
 .ds-combobox__disabled {
@@ -367,7 +366,7 @@
 }
 
 .ds-combobox__input__wrapper:focus-within:hover {
-  border-color: var(--ds-color-neutral-border-default);
+  border-color: var(--ds-color-border-default);
 }
 
 .ds-combobox__empty {
@@ -419,7 +418,7 @@
   flex-wrap: wrap;
   cursor: pointer;
   gap: var(--ds-size-1);
-  color: var(--ds-color-neutral-text-default);
+  color: var(--ds-color-text-default);
 }
 
 .ds-combobox__option--active .ds-combobox__option__label {
@@ -429,9 +428,9 @@
 .ds-combobox__option__icon-wrapper {
   width: var(--ds-size-6);
   aspect-ratio: 1 / 1;
-  border: 2px solid var(--ds-color-neutral-border-default);
+  border: 2px solid var(--ds-color-border-muted);
   border-radius: var(--ds-border-radius-sm);
-  background-color: var(--ds-color-neutral-surface-default);
+  background-color: var(--ds-color-surface-muted);
   display: grid;
   place-items: center;
 }
@@ -472,6 +471,6 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: var(--ds-size-1);
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--ds-color-text-subtle);
   font-weight: 400;
 }

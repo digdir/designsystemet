@@ -3,7 +3,7 @@
   --dsc-togglegroup-background: var(--ds-color-surface-default);
   --dsc-togglegroup-border-width: var(--ds-border-width-default);
   --dsc-togglegroup-border-style: solid;
-  --dsc-togglegroup-border-color: var(--ds-color-neutral-border-default);
+  --dsc-togglegroup-border-color: var(--ds-color-border-muted);
   --dsc-togglegroup-spacing: 0;
   --dsc-togglegroup-border-radius: var(--ds-border-radius-md);
   --dsc-togglegroup-button-size: var(--ds-size-12);

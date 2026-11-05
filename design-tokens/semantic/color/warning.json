@@ -62,5 +62,17 @@
   "base-contrast-default": {
     "$type": "color",
     "$value": "{color.warning.base-contrast-default}"
+  },
+  "surface-muted": {
+    "$type": "color",
+    "$value": "{color.warning.surface-muted}"
+  },
+  "border-muted": {
+    "$type": "color",
+    "$value": "{color.warning.border-muted}"
+  },
+  "text-muted": {
+    "$type": "color",
+    "$value": "{color.warning.text-muted}"
   }
 }

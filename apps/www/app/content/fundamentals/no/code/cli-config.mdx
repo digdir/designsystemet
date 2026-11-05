@@ -214,9 +214,10 @@ Viss du inkluderer `typography` i temaet ditt, må `fontFamily` vere definert.
 | Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
 | "fargeNavn" | Streng | Nei | Ein farge for temaet. |
-| neutral | Streng | Ja | Nøytral farge for temaet. |
 
 Fargane blir definert direkte under `colors`, der nøkkelen er fargen sitt namn og verdien er ein hexkode.
+Fargenamn kan berre innehalde små bokstavar (a-z), tal (0-9) og bindestrek (-).
+`colors` må innehalde minst éin farge som ikkje er ein severity-farge (`success`, `warning`, `danger`, `info`). Severity-fargane blir lagt til automatisk.
 
 ```json
 {
@@ -282,6 +283,8 @@ Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity
 | ---- | ---- | ------- | ----------- |
 | inner | Objekt | Nei | Inneheld fargar for indre fokus |
 | outer | Objekt | Nei | Inneheld fargar for ytre fokus |
+
+Utan overskrivingar brukar indre fokus `background-default` og ytre fokus `text-default` frå `neutral` dersom temaet har den, elles frå den første fargen i temaet som ikkje er ein severity-farge.
 
 ##### overrides.focus.(inner|outer)
 | Namn | Type | Påkrevd | Forklaring |
