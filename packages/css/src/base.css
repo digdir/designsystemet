@@ -99,19 +99,6 @@ body,
 }
 
 /**
- * Apply a focus outline on an element when it or any of its descendants are focused
- */
-.ds-focus--within:focus-within {
-  @composes ds-focus--visible from './base.css';
-
-  /* remove focus from element that has real focus */
-  & :focus-visible {
-    outline: none;
-    --dsc-focus-boxShadow: none;
-  }
-}
-
-/**
  * Focus outline that can be composed if it needs a specific selector
  */
 .ds-focus--visible {
