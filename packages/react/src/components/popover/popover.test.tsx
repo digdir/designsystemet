@@ -313,7 +313,7 @@ describe('Popover', () => {
       expect(popover).not.toBeVisible();
     });
 
-    it('should not override native source when opened with showPopover', async () => {
+    it('should not dispatch ds-toggle-source when already opened with showPopover', async () => {
       render(defaultPopover);
       const popover = screen.getByText(contentText);
       const onToggleSource = vi.fn();
