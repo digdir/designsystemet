@@ -6,11 +6,10 @@ export type TailwindVersion = 'v3' | 'v4';
 /** Usage banner prepended to the generated Tailwind file */
 const banner = `/*
 Import after 'tailwindcss', with Designsystemet's CSS before it:
-@layer theme, base, ds, components, utilities;
-@import '@digdir/designsystemet-css/index.css';
-@import '<theme>.css';
+@import '@digdir/designsystemet-css';
+@import '<your-designsystemet-theme>.css';
+@import '<your-designsystemet-theme>.tailwind.css';
 @import 'tailwindcss';
-@import '<theme>.tailwind.css';
 */
 `;
 

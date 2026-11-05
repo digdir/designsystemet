@@ -3,6 +3,7 @@
   --dsc-list-margin-top: var(--ds-size-3);
   --dsc-list-margin-top-nested: var(--ds-size-2);
 
+  list-style: revert; /* Overwrite Tailwind ul,ol { list-style: none } */
   margin: 0;
   padding-inline: var(--dsc-list-padding-inline);
 
