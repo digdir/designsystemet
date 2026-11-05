@@ -1,4 +1,27 @@
 /**
+ * Visually hide an element, but leave it available for screen readers
+ */
+.ds-sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.ds-icon {
+  display: inline-block; /* Overwrite Tailwind setting display: block on <svg> */
+  flex-shrink: 0;
+  font-size: 1em;
+  height: var(--ds-icon-size);
+  vertical-align: middle;
+  width: var(--ds-icon-size);
+}
+
+/**
  * Apply a focus outline on an element when it is focused with keyboard
  */
 .ds-focus:focus-visible {

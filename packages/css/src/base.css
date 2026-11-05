@@ -1,17 +1,3 @@
-/**
- * Visually hide an element, but leave it available for screen readers
- */
-.ds-sr-only {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
 :root {
   --ds-font-size-minus-1: max(0.9em, 0.875rem); /* Default to 90% of font-size, but minimum 14px */
   --ds-font-size-plus-1: 1.1em; /* Default to 110% */
@@ -44,15 +30,6 @@ body,
 /* Ensure text color changes when swapping color mode */
 [data-color] {
   color: var(--ds-color-text-default);
-}
-
-.ds-icon {
-  display: inline-block; /* Overwrite Tailwind setting display: block on <svg> */
-  flex-shrink: 0;
-  font-size: 1em;
-  height: var(--ds-icon-size);
-  vertical-align: middle;
-  width: var(--ds-icon-size);
 }
 
 .ds-readonly-icon::before {
