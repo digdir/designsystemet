@@ -5,7 +5,6 @@ import './fieldset/fieldset';
 import './focusgroup/focusgroup';
 import './invokers/invokers';
 import './popover/popover';
-import './range/range';
 import './readonly/readonly';
 import './toggle-group/toggle-group';
 import './tooltip/tooltip';
