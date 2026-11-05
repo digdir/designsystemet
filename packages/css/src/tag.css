@@ -29,7 +29,7 @@
   width: max-content;
   word-break: break-word;
   @composes ds-print-preserve from './base.css';
-  @composes ds-focus from './base.css'; /* Add focus outline support in case renderes as <button> or <a> */
+  @composes ds-focus from './utils.css'; /* Add focus outline support in case renderes as <button> or <a> */
 
   & :is(img, svg) {
     @composes ds-icon from './base.css';

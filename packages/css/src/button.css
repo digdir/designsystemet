@@ -39,7 +39,7 @@
   width: fit-content; /* If button placed inside display: flex */
 
   @composes ds-print-preserve from './base.css';
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 
   &[data-variant='secondary'],
   &[data-variant='tertiary'] {

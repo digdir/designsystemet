@@ -31,7 +31,7 @@
   white-space: nowrap;
   width: var(--dsc-avatar-size);
   @composes ds-print-preserve from './base.css';
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 
   &:not([hidden]) {
     display: inline-flex;
