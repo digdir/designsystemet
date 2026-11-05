@@ -298,6 +298,19 @@ describe('Popover', () => {
       expect(popover).not.toBeVisible();
     });
 
+    it('should not override native source when opened with showPopover', async () => {
+      render(defaultPopover);
+      const popover = screen.getByText(contentText);
+      const onToggleSource = vi.fn();
+
+      document.addEventListener('ds-toggle-source', onToggleSource);
+      await showPopover(popover);
+      document.removeEventListener('ds-toggle-source', onToggleSource);
+
+      expect(popover).toBeVisible();
+      expect(onToggleSource).not.toHaveBeenCalled();
+    });
+
     it('should open on trigger-click after hidePopover', async () => {
       render(defaultPopover);
       const popover = screen.getByText(contentText);

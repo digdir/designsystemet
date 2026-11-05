@@ -118,15 +118,18 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       const handleToggle = (event: Event) =>
         setInternalOpen((event as ToggleEvent).newState === 'open');
 
-      popover?.togglePopover?.(controlledOpen);
-      if (controlledOpen)
-        popover?.dispatchEvent(
-          new CustomEvent('ds-toggle-source', {
-            bubbles: true,
-            composed: true, // Enable bubbling out of shadow DOM boundaries
-            detail: document.querySelector(trigger), // Since togglePopover({ source }) is not supported in all browsers yet
-          }),
-        );
+      // Skip if DOM already matches, e.g. after `showPopover({ source })`, to preserve the native source
+      if (popover && isPopoverOpen(popover) !== controlledOpen) {
+        popover.togglePopover?.(controlledOpen);
+        if (controlledOpen)
+          popover.dispatchEvent(
+            new CustomEvent('ds-toggle-source', {
+              bubbles: true,
+              composed: true, // Enable bubbling out of shadow DOM boundaries
+              detail: document.querySelector(trigger), // Since togglePopover({ source }) is not supported in all browsers yet
+            }),
+          );
+      }
 
       popover?.addEventListener('toggle', handleToggle);
       document.addEventListener('click', handleClick, true); // Use capture to execute before React event API
@@ -160,6 +163,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     );
   },
 );
+
+const isPopoverOpen = (el: Element) =>
+  el.classList.contains(':popover-open') || el.matches(':popover-open'); // Polyfill || native support
 
 // NOTE: This is not able to check if the popover is the most recently added #topLayer,
 // so we need another method in time, or remove the controlled popover="manual" in a v2
