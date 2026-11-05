@@ -43,23 +43,6 @@
   --_dsc-input-diagonal-4: transparent calc(52% + var(--dsc-input-stroke-width));
   --_dsc-input-spacing--toggle: calc(var(--ds-size-1) / 2);
 
-  /* range */
-  --dsc-input-range-track-size: var(--ds-size-3);
-  --dsc-input-range-track-color: var(--ds-color-neutral-surface-tinted); /* this will be muted color */
-  --dsc-input-range-track-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-input-range-thumb-size: var(--dsc-input-size--toggle);
-  --dsc-input-range-thumb-background: var(--dsc-input-background);
-  --dsc-input-range-thumb-border-width: calc(var(--dsc-input-border-width--toggle) * 2);
-  --dsc-input-range-thumb-color--hover: var(--ds-color-base-hover);
-  --dsc-input-range-thumb-color--active: var(--ds-color-base-active);
-  --_dsc-input-range-accent: var(--dsc-input-accent-color);
-  --_dsc-input-range-direction: to right;
-  --_dsc-input-range-track: linear-gradient(
-    var(--_dsc-input-range-direction),
-    var(--_dsc-input-range-accent) var(--_ds-range-value, 0px),
-    var(--dsc-input-range-track-color) 0
-  );
-
   appearance: none;
   background: var(--dsc-input-background);
   border-color: var(--dsc-input-border-color);
@@ -286,21 +269,43 @@
    * Without it, the track renders without fill.
    */
   &[type='range'] {
+    --dsc-input-range-track-height: var(--dsc-input-size--toggle);
+    --dsc-input-range-track-color: var(--ds-color-neutral-surface-tinted); /* this will be muted color */
+    --dsc-input-range-track-border-radius: var(--ds-border-radius-full);
+    --dsc-input-range-track-border-color: var(--ds-color-neutral-border-subtle);
+    --dsc-input-range-thumb-size: calc(var(--dsc-input-size--toggle) - 2px);
+    --dsc-input-range-thumb-background: var(--dsc-input-background);
+    --dsc-input-range-thumb-border-radius: var(--ds-border-radius-full);
+    --dsc-input-range-thumb-border-width: calc(var(--dsc-input-border-width--toggle) * 2);
+    --dsc-input-accent-color--hover: var(--ds-color-base-hover);
+    --dsc-input-accent-color--active: var(--ds-color-base-active);
+    --dsc-input-accent-color--readonly: var(--ds-color-neutral-text-subtle);
+
     background: transparent;
+    border-radius: var(--dsc-input-range-track-border-radius); /* Styles the radius of the focus ring */
     border: 0;
-    border-radius: var(--ds-border-radius-full);
+    color: var(--dsc-input-accent-color);
     cursor: pointer;
-    height: var(--dsc-input-range-thumb-size);
+    height: max(var(--dsc-input-range-thumb-size), var(--dsc-input-range-track-height));
     padding: 0;
 
+    /* Offset currentcolor so it stops at thumb center and not edges of track */
+    --_offset: calc(var(--_ds-range-value) * 1% + var(--dsc-input-range-thumb-size) * (var(--_ds-range-value) * -0.01 + 0.5));
+    --_track: linear-gradient(var(--_dir), currentcolor var(--_offset, 0px), var(--dsc-input-range-track-color) 0);
+    --_dir: to right;
+
     &:dir(rtl) {
-      --_dsc-input-range-direction: to left;
+      --_dir: to left;
+    }
+    &:hover {
+      color: var(--dsc-input-accent-color--hover);
+    }
+    &:active {
+      color: var(--dsc-input-accent-color--active);
     }
 
     &[aria-invalid='true'] {
-      --_dsc-input-range-accent: var(--dsc-input-accent-color--invalid);
-      --dsc-input-range-thumb-color--hover: var(--dsc-input-accent-color--invalid);
-      --dsc-input-range-thumb-color--active: var(--dsc-input-accent-color--invalid);
+      color: var(--dsc-input-accent-color--invalid);
     }
 
     &:disabled,
@@ -311,62 +316,45 @@
     /* Native readonly is ignored on range, interaction is blocked by @digdir/designsystemet-web */
     &[readonly],
     &[aria-readonly='true'] {
-      --_dsc-input-range-accent: var(--ds-color-neutral-text-subtle);
-      --dsc-input-range-thumb-color--hover: var(--_dsc-input-range-accent);
-      --dsc-input-range-thumb-color--active: var(--_dsc-input-range-accent);
+      color: var(--dsc-input-accent-color--readonly);
       cursor: default;
     }
 
     /* Vendor pseudo-elements can not be grouped, as an unknown selector invalidates the whole rule */
     &::-webkit-slider-runnable-track {
-      background: var(--_dsc-input-range-track);
-      border: var(--dsc-input-border-width) solid var(--dsc-input-range-track-border-color);
-      border-radius: var(--ds-border-radius-full);
+      background: var(--_track);
+      border-radius: var(--dsc-input-range-track-border-radius);
+      border: var(--dsc-input-border-width) var(--dsc-input-border-style) var(--dsc-input-range-track-border-color);
       box-sizing: border-box;
-      height: var(--dsc-input-range-track-size);
+      height: var(--dsc-input-range-track-height);
     }
     &::-moz-range-track {
-      background: var(--_dsc-input-range-track);
-      border: var(--dsc-input-border-width) solid var(--dsc-input-range-track-border-color);
-      border-radius: var(--ds-border-radius-full);
+      background: var(--_track);
+      border-radius: var(--dsc-input-range-track-border-radius);
+      border: var(--dsc-input-border-width) var(--dsc-input-border-style) var(--dsc-input-range-track-border-color);
       box-sizing: border-box;
-      height: var(--dsc-input-range-track-size);
+      height: var(--dsc-input-range-track-height);
     }
 
     &::-webkit-slider-thumb {
       appearance: none;
       background: var(--dsc-input-range-thumb-background);
-      border: var(--dsc-input-range-thumb-border-width) solid var(--_dsc-input-range-accent);
-      border-radius: var(--ds-border-radius-full);
+      border-radius: var(--dsc-input-range-thumb-border-radius);
+      border: var(--dsc-input-range-thumb-border-width) var(--dsc-input-border-style);
       box-sizing: border-box;
       height: var(--dsc-input-range-thumb-size);
-      margin-top: calc(
-        (var(--dsc-input-range-track-size) - var(--dsc-input-range-thumb-size)) /
-        2 -
-        var(--dsc-input-border-width)
-      ); /* Center thumb on track in WebKit, which positions it inside the track border */
+      position: relative;
+      top: 50%;
+      translate: 0 -50%; /* Center thumb on track */
       width: var(--dsc-input-range-thumb-size);
     }
     &::-moz-range-thumb {
       background: var(--dsc-input-range-thumb-background);
-      border: var(--dsc-input-range-thumb-border-width) solid var(--_dsc-input-range-accent);
-      border-radius: var(--ds-border-radius-full);
+      border-radius: var(--dsc-input-range-thumb-border-radius);
+      border: var(--dsc-input-range-thumb-border-width) var(--dsc-input-border-style);
       box-sizing: border-box;
       height: var(--dsc-input-range-thumb-size);
       width: var(--dsc-input-range-thumb-size);
-    }
-
-    &:not(:disabled, [aria-disabled='true']):hover::-webkit-slider-thumb {
-      border-color: var(--dsc-input-range-thumb-color--hover);
-    }
-    &:not(:disabled, [aria-disabled='true']):hover::-moz-range-thumb {
-      border-color: var(--dsc-input-range-thumb-color--hover);
-    }
-    &:not(:disabled, [aria-disabled='true']):active::-webkit-slider-thumb {
-      border-color: var(--dsc-input-range-thumb-color--active);
-    }
-    &:not(:disabled, [aria-disabled='true']):active::-moz-range-thumb {
-      border-color: var(--dsc-input-range-thumb-color--active);
     }
   }
 }
