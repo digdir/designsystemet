@@ -74,9 +74,9 @@ You connect the trigger and popover yourself with `id` and `popovertarget`.
 When you use `@digdir/designsystemet-react` we extend `@types/react-dom` to accept this.
 
 ### Controlled example
-You can control when the popover is opened or closed.
+You can use React state to control when the popover opens and closes. Use [`togglePopover()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover) to open and close it, and `onToggle` to update the state when the popover opens or closes in other ways, such as with the button, `Esc` or a click outside.
 
-Note that we do not use `onClick` on the trigger, the popover handles this internally and calls `onOpen` and `onClose`.
+In React 18, `onToggle` does not fire for popovers. Listen for the [`toggle` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event) with `addEventListener` instead.
 
 <Story story="ControlledEn" language="react" />
 

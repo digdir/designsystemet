@@ -91,7 +91,7 @@ const Header = ({
   const langPaths = getNewLangPaths();
   const [isHamburger, setIsHamburger] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
-  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLUListElement>(null);
   const hamburgerMenu = useRef<HTMLDivElement>(null);
   const closeMenuRef = useRef<HTMLButtonElement>(null);
@@ -240,15 +240,13 @@ const Header = ({
               <span aria-hidden>Language</span>
             </Button>
 
-            <Dropdown
-              id='dropdown-lang'
-              open={langOpen}
-              onClose={() => setLangOpen(false)}
-              onOpen={() => setLangOpen(true)}
-            >
+            <Dropdown ref={langRef} id='dropdown-lang'>
               <Dropdown.List>
                 <Dropdown.Item>
-                  <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                  <Dropdown.Button
+                    asChild
+                    onClick={() => langRef.current?.hidePopover()}
+                  >
                     <Link
                       to={langPaths.no}
                       lang='no'
@@ -260,7 +258,10 @@ const Header = ({
                   </Dropdown.Button>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                  <Dropdown.Button
+                    asChild
+                    onClick={() => langRef.current?.hidePopover()}
+                  >
                     <Link
                       to={langPaths.en}
                       lang='en'

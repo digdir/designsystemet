@@ -7,7 +7,7 @@ type Dialog = typeof DialogParent & {
   /**
    * DialogTriggerContext component, used to provide a context for a dialog trigger.
    *
-   * @deprecated Will be removed in the next major version. Connect a `Button` to the dialog with `command="show-modal"` and `commandfor` set to the dialog's `id` instead.
+   * @deprecated Will be removed in the next major version. Connect a `Button` to the dialog with `command="show-modal"` (or `command="--show-non-modal"`) and `commandfor` set to the dialog's `id` instead.
    *
    * @example
    * <Dialog.TriggerContext>
