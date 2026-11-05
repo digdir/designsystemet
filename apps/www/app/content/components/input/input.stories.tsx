@@ -157,6 +157,24 @@ export const ReadOnlyCheckAndRadioEn = () => {
   );
 };
 
+export const TypeRange = () => {
+  return (
+    <Field>
+      <Label>Velg verdi</Label>
+      <Input type='range' />
+    </Field>
+  );
+};
+
+export const TypeRangeEn = () => {
+  return (
+    <Field>
+      <Label>Choose value</Label>
+      <Input type='range' />
+    </Field>
+  );
+};
+
 export const InputType = () => {
   const [type, setType] = useState<TextfieldProps['type']>('text');
 
@@ -194,6 +212,7 @@ export const InputType = () => {
           <Select.Option value='time'>time</Select.Option>
           <Select.Option value='url'>url</Select.Option>
           <Select.Option value='week'>week</Select.Option>
+          <Select.Option value='range'>range</Select.Option>
         </Select>
       </Field>
       <ArrowRightIcon aria-hidden width='3rem' height='3rem' />

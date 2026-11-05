@@ -36,6 +36,10 @@
   --dsc-input-accent-color: var(--ds-color-base-default);
   --dsc-input-accent-color--invalid: var(--ds-color-danger-text-subtle);
 
+  /* Range */
+  --dsc-input-range-thumb-border-width: var(--dsc-input-border-width--toggle);
+  --dsc-input-range-border-radius: var(--ds-border-radius-full);
+
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
   --_dsc-input-diagonal-1: transparent calc(48% - var(--dsc-input-stroke-width));
   --_dsc-input-diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke-width));
@@ -65,7 +69,7 @@
   @composes ds-focus from './base.css';
 
   /* only hover effect on input, but with label if it is a radio or checkbox */
-  :has(label):not(:has(label:hover)) &:not(:focus-visible, :disabled, [readonly], [aria-readonly='true']):hover,
+  :has(label):not(:has(label:hover)) &:not(:focus-visible, :disabled, [readonly], [aria-readonly='true'], [type='range']):hover,
   &:is([type='radio'], [type='checkbox']):not(:focus-visible, :disabled, [readonly], [aria-readonly='true']):where(:hover, .\:click-delegate-hover) {
     outline-color: var(--dsc-input-outline-color--hover);
     outline-width: var(--dsc-input-outline-width--hover);
@@ -260,6 +264,67 @@
 
     &:checked {
       --_dsc-input-circle-position: right;
+    }
+  }
+
+  /**
+   * Range, also known as slider
+   * Fill is drawn with a gradient from --_ds-range-value, set by @digdir/designsystemet-web.
+   * Without it, the track renders without fill.
+   */
+  &[type='range'] {
+    background: var(--ds-color-neutral-surface-tinted); /* this will be muted color */
+    border-radius: var(--dsc-input-range-border-radius);
+    border: 0; /* Use box-shadow for border to render border behind filled track */
+    box-shadow: inset 0 0 0 var(--dsc-input-border-width) var(--dsc-input-border-color);
+    box-sizing: border-box;
+    color: var(--dsc-input-accent-color);
+    container-type: size; /* Used to calculate spread */
+    cursor: pointer;
+    height: var(--dsc-input-size--toggle);
+    overflow: hidden;
+    padding: 0;
+    vertical-align: middle; /* Align when placed next to text */
+
+    --_dir: 1; /* Left to right */
+    --_fill: calc((var(--_dir) * -100cqw) - (var(--_dir) * var(--dsc-input-size--toggle) / 2)) 0 0 100cqw;
+
+    &:dir(rtl) {
+      --_dir: -1;
+    }
+    &[aria-invalid='true'] {
+      color: var(--dsc-input-accent-color--invalid);
+    }
+
+    &:disabled,
+    &[aria-disabled='true'] {
+      cursor: not-allowed;
+    }
+
+    &[readonly],
+    &[aria-readonly='true'] {
+      color: var(--dsc-input-accent-color--readonly);
+      cursor: default; /* readonly interaction is blocked by @digdir/designsystemet-web */
+    }
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      background: var(--dsc-input-stroke-color);
+      border-radius: var(--dsc-input-range-border-radius);
+      border: var(--dsc-input-range-thumb-border-width) solid;
+      box-shadow: var(--_fill);
+      box-sizing: border-box;
+      height: var(--dsc-input-size--toggle);
+      width: var(--dsc-input-size--toggle);
+    }
+    &::-moz-range-thumb {
+      background: var(--dsc-input-stroke-color);
+      border-radius: var(--dsc-input-range-border-radius);
+      border: var(--dsc-input-range-thumb-border-width) solid;
+      box-shadow: var(--_fill);
+      box-sizing: border-box;
+      height: var(--dsc-input-size--toggle);
+      width: var(--dsc-input-size--toggle);
     }
   }
 }

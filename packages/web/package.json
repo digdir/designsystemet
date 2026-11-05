@@ -76,6 +76,11 @@
       "import": "./dist/esm/popover/popover.js",
       "require": "./dist/cjs/popover/popover.cjs"
     },
+    "./range": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/range/range.js",
+      "require": "./dist/cjs/range/range.cjs"
+    },
     "./readonly": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/readonly/readonly.js",
