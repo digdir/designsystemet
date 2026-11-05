@@ -54,7 +54,7 @@ export async function loader({ params }: Route.LoaderArgs) {
   };
 }
 
-export const meta = ({ loaderData }: Route.MetaArgs) => {
+export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   if (!loaderData)
     return [
       {
@@ -67,6 +67,7 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
   return generateMetadata({
     title,
     description,
+    pathname: location.pathname,
   });
 };
 

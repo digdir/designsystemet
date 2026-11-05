@@ -10,7 +10,7 @@ import {
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
-import { generateMetadata } from '~/_utils/metadata';
+import { generateMetadata, withMetaImage } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/patterns';
 
@@ -47,9 +47,12 @@ export const loader = async ({
   };
 };
 
-export const meta: Route.MetaFunction = ({ loaderData }: Route.MetaArgs) => {
+export const meta: Route.MetaFunction = ({
+  loaderData,
+  location,
+}: Route.MetaArgs) => {
   if (!loaderData) return [{ title: 'Designsystemet' }];
-  return loaderData.metadata;
+  return withMetaImage(loaderData.metadata, location.pathname);
 };
 
 export default function Patterns({

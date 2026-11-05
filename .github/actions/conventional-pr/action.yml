@@ -10,11 +10,11 @@ inputs:
   commit-title-match:
     description: For PRs with a single commit, require the commit subject to equal the PR title
     required: false
-    default: 'true'
+    default: "true"
   ignore-commits:
     description: Only lint the PR title, never the commits (use when squash merging with the PR title)
     required: false
-    default: 'false'
+    default: "false"
 runs:
   using: composite
   steps:

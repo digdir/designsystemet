@@ -39,6 +39,8 @@ This will register all web components and observers globally, so you only need t
 import '@digdir/designsystemet-web';
 ```
 
+See our [documentation](https://designsystemet.no/en/fundamentals/code/setup) and [patterns](https://designsystemet.no/en/patterns) for more guidance. Pages are also available as Markdown by appending `.md` to the URL or requesting `Accept: text/markdown`.
+
 ### Pick the parts you need
 
 Designsystemet packages are meant to be used like a toolbox. You can use the full package, or only the parts that speed up your project.

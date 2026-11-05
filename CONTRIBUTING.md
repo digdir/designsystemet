@@ -50,7 +50,7 @@ Do the same for smaller feature requests. We cannot guarantee that the new featu
 
 #### New features
 
-Your team needs a new component or a new feature that doesn't exist? 
+Your team needs a new component or a new feature that doesn't exist?
 Great news! We have created a process to handle just this use case!
 
 1. Submit a [feature request](https://github.com/digdir/designsystemet/issues/new/choose) detailing your requirements, and indicate your interest in contributing to the development.
@@ -58,6 +58,7 @@ Great news! We have created a process to handle just this use case!
 3. If the feature fits within the scope of Designsystemet we will follow you up from there.
 
 ##### New components
+
 Developing a new components for Designsystemet requires a lot research and work, in addition to deep understand of accessibility and Designsystemets inner workings to provide all of its features (theming, cli, tokens etc.). This is a process that requires a lot of time and if you are interested in contributing this way we encourage you to become part of the team during this time. We will invite you to participate in our daily check-ins throughout the development process to ensure that the component adheres to our coding standards and seamlessly integrates with our design system.
 
 ### Using AI
@@ -70,7 +71,7 @@ Though it's not neccessary, we appreciate being told in the PR description if pa
 
 ### Getting started with development
 
-Follow these steps to get up and running with Storybook, Storefront (www.designsystemet.no) or Themebuilder. 
+Follow these steps to get up and running with Storybook, Storefront (www.designsystemet.no) or Themebuilder.
 
 Run the commands from the root of your project. Make sure you clone the `main` branch, this is where we do development.
 
@@ -95,10 +96,11 @@ When creating a pull request for Designsystemet, there are a few things to keep 
 - Make sure the PR is pointing to the `main` branch.
 
 ### Changesets
+
 We use [Changesets](https://github.com/changesets/changesets) to manage versioning and changelogs.
 
 Changes in `/packages/*`, will flag a need for adding a changeset to document changes.
-We recommend you look at previous releases and what wording has been used there to describe changes. 
+We recommend you look at previous releases and what wording has been used there to describe changes.
 At a minimum, a prefix for which part or component the changes apply to.
 
 To do this, run the following command in the root of the repository:
