@@ -407,5 +407,64 @@ describe('Popover', () => {
       await act(async () => popoverTrigger.click());
       expect(onOpen).toHaveBeenCalledTimes(0);
     });
+
+    it('should call onClose and open on next trigger-click after hidePopover', async () => {
+      const onClose = vi.fn();
+      const onOpen = vi.fn();
+      render(
+        <CompControlledWithButton
+          isInitiallyOpen
+          onClose={onClose}
+          onOpen={onOpen}
+        />,
+      );
+      const popover = screen.getByText(contentText);
+      const popoverTrigger = screen.getByRole('button');
+
+      await act(
+        () =>
+          new Promise((resolve) => {
+            popover.addEventListener('toggle', resolve, { once: true });
+            popover.hidePopover();
+          }),
+      );
+      expect(popover).not.toBeVisible();
+      expect(onClose).toHaveBeenCalledTimes(1);
+
+      await act(async () => popoverTrigger.click());
+      expect(onOpen).toHaveBeenCalledTimes(1);
+      expect(popover).toBeVisible();
+    });
+  });
+
+  it('should call onOpen and onClose once with native Popover API', async () => {
+    const onOpen = vi.fn();
+    const onClose = vi.fn();
+    render(
+      <>
+        <Button popovertarget='popover'>trigger</Button>
+        <Popover id='popover' onOpen={onOpen} onClose={onClose}>
+          {contentText}
+        </Popover>
+      </>,
+    );
+    const popover = screen.getByText(contentText);
+    const toggle = (fn: () => void) =>
+      act(
+        () =>
+          new Promise((resolve) => {
+            popover.addEventListener('toggle', resolve, { once: true });
+            fn();
+          }),
+      );
+
+    await toggle(() => popover.showPopover());
+    await toggle(() => popover.hidePopover());
+    expect(onOpen).toHaveBeenCalledTimes(1);
+    expect(onClose).toHaveBeenCalledTimes(1);
+
+    await act(async () => screen.getByRole('button').click()); // Trigger-click should not fire callbacks twice
+    await vi.waitFor(() => expect(popover).toBeVisible());
+    expect(onOpen).toHaveBeenCalledTimes(2);
   });
 });

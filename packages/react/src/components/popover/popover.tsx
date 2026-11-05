@@ -114,9 +114,12 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         }
       };
 
-      // Keep internal state in sync when using the native Popover API, e.g. `showPopover()` or `hidePopover()`
-      const handleToggle = (event: Event) =>
-        setInternalOpen((event as ToggleEvent).newState === 'open');
+      // Keep state in sync when using the native Popover API, e.g. `showPopover()` or `hidePopover()`
+      const handleToggle = (event: Partial<ToggleEvent>) => {
+        const isOpen = event.newState === 'open';
+        setInternalOpen(isOpen);
+        if (isOpen !== controlledOpen) (isOpen ? onOpen : onClose)?.(); // Skip toggle events caused by this effect
+      };
 
       // Skip if DOM already matches, e.g. after `showPopover({ source })`, to preserve the native source
       if (popover && isPopoverOpen(popover) !== controlledOpen) {
