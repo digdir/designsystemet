@@ -12,7 +12,7 @@ search_terms: søk, søkefelt, search
 
 Hvorfor gjør vi dette? Og hva gjør du hvis du bruker den?
 
-Nederst i artikkelen finner du kode du kan kopiere for å lage ditt eget søkefelt.
+Nederst i artikkelen finner du eksempler du kan kopiere for å lage ditt eget søkefelt.
 
 ## Hvorfor fjerner vi `Search`?
 
@@ -24,145 +24,33 @@ Vi mener disse valgene hører hjemme hos deg. Du kjenner brukerne og innholdet d
 
 - **`Input` med `type="search"`** gir deg et søkefelt som skjermlesere leser opp som et søkefelt, og som viser en søketast på tastaturet på mobil.
 - **`Button`** for å sende søket.
-- **`Suggestion`** hvis du trenger en tømmeknapp eller vil vise forslag mens brukeren skriver.
 
 ## Hva gjør du hvis du bruker den?
 
 Du trenger ikke endre noe med en gang, men du bør bytte før neste hovedversjon.
 
-I mange tilfeller er en `Input` med `type="search"` og en ledetekst alt du trenger:
+I mange tilfeller er en `Input` med `type="search"` i et `Field` med en `Label` alt du trenger.
 
-```tsx
-<Field>
-  <Label>Søk</Label>
-  <Input type="search" />
-</Field>
-```
-
-Vil du ha en søkeknapp eller et søkeikon i feltet, finner du koden nederst i artikkelen. Det er litt CSS som du kan kopiere og tilpasse etter behov.
-
-Trenger du en tømmeknapp eller vil vise forslag, bruker du `Suggestion`. Se eksempelet [Søk med forslag](/no/components/docs/suggestion/code#søk-med-forslag) i dokumentasjonen for Suggestion.
+Vil du ha en søkeknapp, et søkeikon eller en tømmeknapp i feltet, finner du eksempler nederst i artikkelen. Det er litt CSS som du kan kopiere og tilpasse etter behov.
 
 | Før             | Etter                                         |
 | --------------- | --------------------------------------------- |
 | `Search`        | En `<form>` eller `<div>` med eget klassenavn |
 | `Search.Input`  | `Input` med `type="search"`                   |
 | `Search.Button` | `Button` med `type="submit"`                  |
-| `Search.Clear`  | `Suggestion` med `Suggestion.Clear`           |
+| `Search.Clear`  | `<button>` med `type="reset"`                 |
 
-## Kode
+## Eksempler
 
-Eksemplene under bruker klassene `ds-input` og `ds-button` fra Designsystemet, slik at søkefeltet ser ut som resten av grensesnittet og følger `data-size`. Klassenavnene `search-with-button` og `search-with-icon` er bare eksempler, så bruk gjerne navn som passer prosjektet ditt.
+I [denne CodeSandboxen (codesandbox.io)](https://codesandbox.io/p/sandbox/9jhssd) finner du eksempler på søkefelt laget med React-komponentene våre: med søkeikon, med synlig ledetekst, med søkeknapp og med tømmeknapp.
 
-Husk at søkefeltet trenger et navn. En synlig ledetekst er best, men `aria-label` holder når det er tydelig hva feltet er til, for eksempel et søkefelt i headeren.
+Stilene ligger i filen `search.css` i sandboxen. Den har alt `Search` gjorde, i én fil. Slik bruker du den:
 
-### Søkefelt med knapp
+1. Kopier `search.css` inn i prosjektet ditt, og importer den etter `@digdir/designsystemet-css`.
+2. Legg klassen `search` på en `<form>` eller `<div>` rundt `Input` og `Button`. Klassenavnet er bare et eksempel, så bruk gjerne et som passer prosjektet ditt.
+3. Gi søkefeltet et navn. En synlig ledetekst er best, men `aria-label` holder når det er tydelig hva feltet er til, for eksempel et søkefelt i headeren.
 
-Knappen plasseres rett ved siden av feltet, og de runde hjørnene fjernes der de møtes.
-
-```css
-.search-with-button {
-  display: flex;
-
-  & > .ds-input {
-    flex: 1;
-    border-start-end-radius: 0;
-    border-end-end-radius: 0;
-  }
-
-  & > .ds-button {
-    border-start-start-radius: 0;
-    border-end-start-radius: 0;
-  }
-
-  /* Unngå dobbel kantlinje mellom feltet og en sekundærknapp */
-  & > .ds-button[data-variant='secondary']:not(:focus-visible) {
-    border-inline-start: 0;
-  }
-}
-```
-
-```html
-<search>
-  <form class="search-with-button" action="/search">
-    <input class="ds-input" type="search" name="q" aria-label="Søk" />
-    <button class="ds-button" type="submit">Søk</button>
-  </form>
-</search>
-```
-
-`<search>`-elementet forteller skjermlesere at dette er et søkeområde, slik at brukerne deres kan hoppe rett dit.
-
-### Søkefelt med ikon
-
-Ikonet tegnes med CSS på et element rundt feltet, så du trenger ikke et ikon i HTML-en. Det bruker `currentcolor`, så det følger tekstfargen, også i mørk modus.
-
-```css
-.search-with-icon {
-  --search-icon-size: var(--ds-size-6);
-  --search-icon-spacing: var(--ds-size-3);
-  --search-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
-
-  align-items: center;
-  display: grid;
-
-  /* Legg feltet og ikonet oppå hverandre */
-  & > .ds-input,
-  &::after {
-    grid-area: 1 / 1;
-  }
-
-  /* Gi plass til ikonet */
-  & > .ds-input {
-    padding-inline-start: calc(var(--search-icon-spacing) * 2 + var(--search-icon-size));
-  }
-
-  &::after {
-    content: '';
-    background: currentcolor;
-    height: var(--search-icon-size);
-    margin-inline-start: var(--search-icon-spacing);
-    mask: var(--search-icon-url) center / contain no-repeat;
-    pointer-events: none;
-    width: var(--search-icon-size);
-    z-index: 1;
-  }
-}
-```
-
-```html
-<div class="search-with-icon">
-  <input class="ds-input" type="search" name="q" aria-label="Søk" />
-</div>
-```
-
-Med synlig ledetekst:
-
-```html
-<ds-field class="ds-field">
-  <label class="ds-label">Søk etter katter</label>
-  <div class="search-with-icon">
-    <input class="ds-input" type="search" name="q" />
-  </div>
-</ds-field>
-```
-
-### I React
-
-CSS-en er den samme. Bruk `Input` og `Button` i stedet for HTML-elementene:
-
-```tsx
-<search>
-  <form className="search-with-button" action="/search">
-    <Input type="search" name="q" aria-label="Søk" />
-    <Button type="submit">Søk</Button>
-  </form>
-</search>
-
-<div className="search-with-icon">
-  <Input type="search" name="q" aria-label="Søk" />
-</div>
-```
+Vil du ha en tømmeknapp, bruker du en `<button type="reset">` inne i en `<form>`, og gir feltet en `placeholder`. Du kan bruke `placeholder=" "` hvis du ikke vil ha noen plassholdertekst. Kommentaren øverst i `search.css` forklarer resten.
 
 ## Spørsmål?
 
