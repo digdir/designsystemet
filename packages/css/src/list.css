@@ -13,27 +13,4 @@
   & > li > :is(ol, ul) > li + li {
     margin-top: var(--dsc-list-margin-top-nested); /* Shrink spacing a bit when nested */
   }
-
-  /* Fix Tailwind ul,ol { list-style: none } */
-  &:where(ul) {
-    list-style-type: disc;
-  }
-  &:where(ol) {
-    list-style-type: decimal;
-  }
-  &[type='1'] {
-    list-style-type: decimal;
-  }
-  &[type='a'] {
-    list-style-type: lower-alpha;
-  }
-  &[type='A'] {
-    list-style-type: upper-alpha;
-  }
-  &[type='i'] {
-    list-style-type: lower-roman;
-  }
-  &[type='I'] {
-    list-style-type: upper-roman;
-  }
 }
