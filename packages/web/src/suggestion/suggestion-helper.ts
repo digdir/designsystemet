@@ -4,7 +4,7 @@ type Select = Partial<GlobalEventHandlersEventMap['comboboxbeforeselect']>;
 type Render<R> = (item: SuggestionItem, index: number) => R;
 
 /**
- * Helper to sanitize, update or render selected suggestion value, for easier controlled <ds-suggestion> in frameworks.
+ * Framework independent helper to sanitize, update or render selected suggestion value, for easier controlled <ds-suggestion>.
  * - No action: Returns the value sanitized to `{ label, value }` (non-empty strings become `{ label: string, value: string }`)
  * - Action comboboxbeforeselect: Prevents event and returns modified value
  * - Action function: Calls the function with each sanitized item and returns the results
