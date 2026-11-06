@@ -120,8 +120,7 @@ describe('pagination component', () => {
     const hidden = links?.[4];
 
     await tick(); // Let mutation observer run
-    expect(hidden).toHaveAttribute('role', 'none');
-    expect(hidden).toHaveAttribute('tabindex', '-1');
+    expect(hidden).not.toBeVisible();
     expect(hidden).not.toHaveAttribute('aria-current');
   });
 });

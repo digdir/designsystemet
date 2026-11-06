@@ -81,17 +81,16 @@ const render = (self: DSPaginationElement) => {
       const isStep = i !== 0 && !!items[i + 1]; // First is prev, last is next
       const page = isStep ? pages[i - 1]?.page : i ? next : prev;
       attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
+      attr(item, 'hidden', page ? null : '');
 
       if (isStep) {
         // Also drives CSS content, hides items without a page, and keeps Axe and the VoiceOver rotor happy
-        attr(item, ARIA_LABEL, `${page ?? 'hidden'}`);
+        attr(item, ARIA_LABEL, page ? `${page}` : null);
       } else if (isNamedByAriaLabel(item)) {
         // If prev/next is not named by consumer fallback to CSS-variable in Norwegian
         attr(item, ARIA_LABEL, attrOrCSS(item, ARIA_LABEL));
       }
 
-      attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
-      attr(item, 'tabindex', page ? null : '-1');
       if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);
       if (href && item instanceof HTMLAnchorElement)
         attr(item, 'href', href.replace('%d', `${page}`));
