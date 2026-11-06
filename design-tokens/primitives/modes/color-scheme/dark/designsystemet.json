@@ -528,12 +528,6 @@
         "$value": "#000000"
       }
     },
-    "link": {
-      "visited": {
-        "$type": "color",
-        "$value": "#b49acd"
-      }
-    },
     "focus": {
       "inner": {
         "$type": "color",

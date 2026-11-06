@@ -231,7 +231,6 @@ Fargane blir definert direkte under `colors`, der nøkkelen er fargen sitt namn 
 | ---- | ---- | ------- | ----------- |
 | colors | Objekt | Nei | Inneheld overskrivingar for individuelle fargesteg |
 | severity | Objekt | Nei | Inneheld overskrivingar for severity-fargar |
-| linkVisited | Objekt | Nei | Inneheld overskrivingar for farge på besøkte lenker |
 | focus | Objekt | Nei | Inneheld overskrivingar for fokus fargar |
 
 #### overrides.colors
@@ -270,12 +269,6 @@ Kvar tokenoverstyring har ein `light` og/eller `dark` verdi som peikar til ein h
 | "fargeNavn" | Streng | Nei | Hex-farge som skal settast som base |
 
 Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity, som er `success`, `warning`, `danger` og `info`.
-
-#### overrides.linkVisited
-| Namn | Type | Påkrevd | Forklaring |
-| ---- | ---- | ------- | ----------- |
-| light | Streng | Nei | Hex-farge for besøkte lenker i lyst tema |
-| dark | Streng | Nei | Hex-farge for besøkte lenker i mørkt tema |
 
 #### overrides.focus
 | Namn | Type | Påkrevd | Forklaring |
@@ -330,10 +323,6 @@ Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity
           "warning": "#ffc107",
           "danger": "#dc3545",
           "info": "#17a2b8"
-        },
-        "linkVisited": {
-          "light": "#ff1234",
-          "dark": "#1234ff"
         }
       }
     }

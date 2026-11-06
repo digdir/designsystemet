@@ -233,7 +233,6 @@ Colours are defined directly under `colors`, where the key is the colour's name 
 | ---- | ---- | ------- | ----------- |
 | colors | Object | No | Contains overrides for individual colour tokens |
 | severity | Object | No | Contains overrides for severity colours |
-| linkVisited | Object | No | Contains overrides for visited link colour |
 | focus | Object | No | Contains overrides for focus colours |
 
 #### overrides.colors
@@ -278,12 +277,6 @@ Each token override has a `light` and/or `dark` value that points to a hex code.
 | "colorName" | String | No | Hex colour to set as base |
 
 The `severity` override allows you to customise the colours used for severity, which are `success`, `warning`, `danger`, and `info`.
-
-#### overrides.linkVisited
-| Name | Type | Required | Description |
-| ---- | ---- | ------- | ----------- |
-| light | String | No | Hex colour for visited links in light theme |
-| dark | String | No | Hex colour for visited links in dark theme |
 
 #### overrides.focus
 | Name | Type | Required | Description |
@@ -338,10 +331,6 @@ The `severity` override allows you to customise the colours used for severity, w
           "warning": "#ffc107",
           "danger": "#dc3545",
           "info": "#17a2b8"
-        },
-        "linkVisited": {
-          "light": "#ff1234",
-          "dark": "#1234ff"
         }
       }
     }
