@@ -1,4 +1,5 @@
-import { type InputEventHandler, useState } from 'react';
+import { suggestion } from '@digdir/designsystemet-react';
+import { useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { useDebounceCallback } from '../../utilities';
@@ -11,13 +12,8 @@ import {
   Paragraph,
   Spinner,
 } from '../';
-import {
-  EXPERIMENTAL_Suggestion as Suggestion,
-  type SuggestionItem,
-  type SuggestionMultipleProps,
-  type SuggestionProps,
-  type SuggestionSingleProps,
-} from './';
+import type { SuggestionProps } from './';
+import { EXPERIMENTAL_Suggestion as Suggestion } from './';
 
 const meta = preview.meta({
   title: 'Komponenter/Suggestion',
@@ -86,15 +82,25 @@ const DATA_PEOPLE = [
 
 export const Preview = meta.story({
   render: (args) => {
+    const [selected, setSelected] = useState(suggestion(null));
+
     return (
       <Field>
         <Label>Velg en destinasjon</Label>
-        <Suggestion {...args}>
+        <Suggestion
+          {...args}
+          oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+        >
+          {suggestion(selected, ({ label, value }) => (
+            <data key={value} value={value}>
+              {label}
+            </data>
+          ))}
           <Suggestion.Input />
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List id='123'>
-            <Suggestion.Empty />
+            <Suggestion.Option data-empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place} label={place} value={place}>
                 {place}
@@ -110,22 +116,26 @@ export const Preview = meta.story({
 
 export const ControlledSingle = meta.story({
   render: (args) => {
-    const [selected, setSelected] = useState<string | undefined>('');
+    const [selected, setSelected] = useState(suggestion(''));
 
     return (
       <>
         <Field>
           <Label>Velg destinasjon</Label>
           <Suggestion
-            {...(args as SuggestionSingleProps)}
-            selected={selected}
-            onSelectedChange={(item) => setSelected(item?.value)}
+            {...args}
+            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
           >
+            {suggestion(selected, ({ label, value }) => (
+              <data key={value} value={value}>
+                {label}
+              </data>
+            ))}
             <Suggestion.Input />
             <Suggestion.Toggle />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty />
+              <Suggestion.Option data-empty />
               {DATA_PLACES.map((place) => (
                 <Suggestion.Option key={place} label={place} value={place}>
                   {place}
@@ -138,12 +148,12 @@ export const ControlledSingle = meta.story({
         <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
         <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-          Valgte reisemål: {selected}
+          Valgte reisemål: {suggestion(selected, ({ label }) => label)}
         </Paragraph>
 
         <Button
           onClick={() => {
-            setSelected('Sogndal');
+            setSelected(suggestion('Sogndal'));
           }}
         >
           Sett reisemål til Sogndal
@@ -179,22 +189,27 @@ export const ControlledSingle = meta.story({
 
 export const ControlledCreatable = meta.story({
   render: (args) => {
-    const [selected, setSelected] = useState<string | undefined>('');
+    const [selected, setSelected] = useState(suggestion(''));
 
     return (
       <>
         <Field>
           <Label>Velg destinasjon</Label>
           <Suggestion
-            {...(args as SuggestionSingleProps)}
-            selected={selected}
-            onSelectedChange={(item) => setSelected(item?.value)}
+            {...args}
+            data-creatable
+            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
           >
+            {suggestion(selected, ({ label, value }) => (
+              <data key={value} value={value}>
+                {label}
+              </data>
+            ))}
             <Suggestion.Input />
             <Suggestion.Toggle />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty />
+              <Suggestion.Option data-empty />
               {DATA_PLACES.map((place) => (
                 <Suggestion.Option key={place} label={place} value={place}>
                   {place}
@@ -207,12 +222,12 @@ export const ControlledCreatable = meta.story({
         <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
         <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-          Valgte reisemål: {selected}
+          Valgte reisemål: {suggestion(selected, ({ label }) => label)}
         </Paragraph>
 
         <Button
           onClick={() => {
-            setSelected('Sogndal');
+            setSelected(suggestion('Sogndal'));
           }}
         >
           Sett reisemål til Sogndal
@@ -220,32 +235,31 @@ export const ControlledCreatable = meta.story({
       </>
     );
   },
-  args: {
-    creatable: true,
-  },
 });
 
 export const ControlledMultiple = meta.story({
   render: (args) => {
-    const [selected, setSelected] = useState<string[]>(['Oslo']);
+    const [selected, setSelected] = useState(suggestion(['Oslo']));
 
     return (
       <>
         <Field>
           <Label>Velg destinasjoner</Label>
           <Suggestion
-            {...(args as SuggestionMultipleProps)}
-            multiple
-            selected={selected}
-            onSelectedChange={(items) =>
-              setSelected(items.map((item) => item.value))
-            }
+            {...args}
+            data-multiple
+            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
           >
+            {suggestion(selected, ({ label, value }) => (
+              <data key={value} value={value}>
+                {label}
+              </data>
+            ))}
             <Suggestion.Input />
             <Suggestion.Toggle />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty />
+              <Suggestion.Option data-empty />
               {DATA_PLACES.map((place) => (
                 <Suggestion.Option key={place} label={place} value={place}>
                   {place}
@@ -258,12 +272,13 @@ export const ControlledMultiple = meta.story({
         <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
         <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-          Valgte reisemål: {selected.join(', ')}
+          Valgte reisemål:{' '}
+          {suggestion(selected, ({ label }) => label).join(', ')}
         </Paragraph>
 
         <Button
           onClick={() => {
-            setSelected(['Sogndal', 'Stavanger']);
+            setSelected(suggestion(['Sogndal', 'Stavanger']));
           }}
         >
           Sett reisemål til Sogndal, Stavanger
@@ -306,23 +321,26 @@ export const ControlledMultiple = meta.story({
 
 export const ControlledIndependentLabelValue = meta.story({
   render: (args) => {
-    const [item, setItem] = useState<SuggestionItem | null>(DATA_PEOPLE[0]);
+    const [selected, setSelected] = useState(suggestion(DATA_PEOPLE[0]));
 
     return (
       <>
         <Field>
           <Label>Velg person</Label>
           <Suggestion
-            {...(args as SuggestionSingleProps)}
-            selected={item}
-            onSelectedChange={setItem}
-            filter={false}
+            {...args}
+            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
           >
+            {suggestion(selected, ({ label, value }) => (
+              <data key={value} value={value}>
+                {label}
+              </data>
+            ))}
             <Suggestion.Input />
             <Suggestion.Toggle />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty />
+              <Suggestion.Option data-empty />
               {DATA_PEOPLE.map(({ label, value }) => (
                 <Suggestion.Option key={value} label={label} value={value}>
                   {label}
@@ -342,15 +360,11 @@ export const ControlledIndependentLabelValue = meta.story({
               whiteSpace: 'pre-wrap',
             }}
           >
-            {JSON.stringify(item)}
+            {JSON.stringify(selected)}
           </pre>
         </div>
 
-        <Button
-          onClick={() => {
-            setItem(DATA_PEOPLE[2]);
-          }}
-        >
+        <Button onClick={() => setSelected(suggestion(DATA_PEOPLE[2]))}>
           Sett Nina
         </Button>
       </>
@@ -358,23 +372,21 @@ export const ControlledIndependentLabelValue = meta.story({
   },
 });
 
-export const CustomFilterAlt1 = meta.story({
+export const CustomFilter = meta.story({
   render: (args) => {
+    const [value, setValue] = useState('');
     return (
       <Field>
         <Label>Skriv inn et tall mellom 1-6</Label>
-        <Suggestion
-          {...args}
-          filter={({ index, input }) =>
-            !input.value || index === Number(input.value) - 1
-          }
-        >
-          <Suggestion.Input />
+        <Suggestion {...args}>
+          <Suggestion.Input onInput={(e) => setValue(e.currentTarget.value)} />
           <Suggestion.Toggle />
           <Suggestion.Clear />
-          <Suggestion.List>
-            <Suggestion.Empty />
-            {DATA_PLACES.map((label) => (
+          <Suggestion.List data-nofilter>
+            <Suggestion.Option data-empty />
+            {DATA_PLACES.filter((_, index) => {
+              return !value || index === Number(value) - 1;
+            }).map((label) => (
               <Suggestion.Option key={label} value={label.toLowerCase()}>
                 {label}
               </Suggestion.Option>
@@ -384,7 +396,6 @@ export const CustomFilterAlt1 = meta.story({
       </Field>
     );
   },
-
   parameters: {
     docs: {
       source: {
@@ -394,53 +405,29 @@ export const CustomFilterAlt1 = meta.story({
   },
 });
 
-export const CustomFilterAlt2 = meta.story({
-  render: (args) => {
-    const [selected, setSelected] = useState('');
-
-    return (
-      <Field>
-        <Label>Skriv inn et tall mellom 1-6</Label>
-        <Suggestion {...args} filter={false}>
-          <Suggestion.Input
-            onInput={({ currentTarget }) => setSelected(currentTarget.value)}
-          />
-          <Suggestion.Toggle />
-          <Suggestion.Clear />
-          <Suggestion.List>
-            <Suggestion.Empty />
-            {DATA_PLACES.filter(
-              (_, index) => !selected || index === Number(selected) - 1,
-            ).map((label) => (
-              <Suggestion.Option key={label}>{label}</Suggestion.Option>
-            ))}
-          </Suggestion.List>
-        </Suggestion>
-      </Field>
-    );
-  },
-});
-
 export const CustomMatching = meta.story({
   render: (args) => {
-    const handleBeforeMatch: SuggestionProps['onBeforeMatch'] = (event) => {
-      event.preventDefault(); // Prevent default matching
-      const { list, control } = event.currentTarget;
+    const handleBeforeMatch: SuggestionProps['oncomboboxbeforematch'] = (e) => {
+      e.preventDefault(); // Prevent default matching
+      const { list, control } = e.currentTarget;
       const value = control?.value.toLowerCase() || '';
 
-      for (const option of Array.from(list?.options || []))
+      for (const option of list?.options || [])
         option.selected = option.value.toLowerCase().startsWith(value); // Setting selected indicates a match
     };
 
     return (
       <Field>
         <Label>Matcher fra første bokstav</Label>
-        <Suggestion {...args} onBeforeMatch={handleBeforeMatch}>
+        <Field.Description>
+          Prøv å skriv <strong>t</strong> og trykk Enter
+        </Field.Description>
+        <Suggestion {...args} oncomboboxbeforematch={handleBeforeMatch}>
           <Suggestion.Input />
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty />
+            <Suggestion.Option data-empty />
             {DATA_PLACES.map((label) => (
               <Suggestion.Option key={label}>{label}</Suggestion.Option>
             ))}
@@ -453,22 +440,25 @@ export const CustomMatching = meta.story({
 
 export const AlwaysShowAll = meta.story({
   render: (args) => {
-    const [selected, setSelected] = useState<string | undefined>('Sogndal');
+    const [selected, setSelected] = useState(suggestion('Sogndal'));
 
     return (
       <Field>
         <Label>Viser alle options også når valgt</Label>
         <Suggestion
-          {...(args as SuggestionSingleProps)}
-          selected={selected}
-          filter={false}
-          onSelectedChange={(item) => setSelected(item?.value)}
+          {...args}
+          oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
         >
+          {suggestion(selected, ({ label, value }) => (
+            <data key={value} value={value}>
+              {label}
+            </data>
+          ))}
           <Suggestion.Input />
           <Suggestion.Toggle />
           <Suggestion.Clear />
-          <Suggestion.List>
-            <Suggestion.Empty />
+          <Suggestion.List data-nofilter>
+            <Suggestion.Option data-empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place}>{place}</Suggestion.Option>
             ))}
@@ -484,41 +474,40 @@ export const FetchExternal = meta.story({
     const [value, setValue] = useState('');
     const [options, setOptions] = useState<string[] | null>(null);
 
-    const handleInput: InputEventHandler<HTMLInputElement> = (event) => {
+    const handleInput: React.InputEventHandler<HTMLInputElement> = (event) => {
+      console.log(event);
       const value = encodeURIComponent(event.currentTarget.value.trim());
       setValue(event.currentTarget.value);
       setOptions(null); // Clear options
-
-      if (!value) return;
-
-      debounced(value);
+      if (value) debounced(value);
     };
 
     const apiCall = async (value: string) => {
-      const api = `https://restcountries.com/v2/name/${value}?fields=name`;
-      const countries = await (await fetch(api)).json();
-      setOptions(
-        Array.isArray(countries) ? countries.map(({ name }) => name) : [],
-      );
+      const api = `https://dummyjson.com/recipes/search?q=${value}`;
+      const data = await (await fetch(api)).json();
+      setOptions(data.recipes.map(({ name }: Record<string, string>) => name));
     };
 
     const debounced = useDebounceCallback(apiCall, 500);
 
     return (
       <Field lang='en'>
-        <Label>Search for countries (in english)</Label>
+        <Label>Search for a recipe (in english)</Label>
         <Suggestion
           {...args}
-          filter={false}
-          data-sr-singular='%d country'
-          data-sr-plural='%d countries'
+          style={
+            {
+              '--sr-plural': '%d country',
+              '--sr-singular': '%d countries',
+            } as React.CSSProperties
+          }
         >
           <Suggestion.Input type='search' onInput={handleInput} />
           <Suggestion.Toggle />
           <Suggestion.Clear />
-          <Suggestion.List>
+          <Suggestion.List data-nofilter>
             {value ? (
-              <Suggestion.Empty>
+              <Suggestion.Option data-empty>
                 {options ? (
                   'Ingen treff'
                 ) : (
@@ -528,7 +517,7 @@ export const FetchExternal = meta.story({
                     <Spinner aria-hidden='true' data-size='sm' /> Laster...
                   </span>
                 )}
-              </Suggestion.Empty>
+              </Suggestion.Option>
             ) : null}
             {options?.map((option) => (
               <Suggestion.Option key={option}>{option}</Suggestion.Option>
@@ -538,7 +527,6 @@ export const FetchExternal = meta.story({
       </Field>
     );
   },
-
   parameters: {
     docs: {
       source: {
@@ -548,41 +536,17 @@ export const FetchExternal = meta.story({
   },
 });
 
-export const DefaultValue = meta.story({
-  render: (args) => {
-    return (
-      <Field>
-        <Label>Velg en destinasjon</Label>
-        <Suggestion
-          {...(args as SuggestionSingleProps)}
-          defaultSelected={'Sogndal'}
-        >
-          <Suggestion.Input />
-          <Suggestion.Toggle />
-          <Suggestion.Clear />
-          <Suggestion.List>
-            <Suggestion.Empty />
-            {DATA_PLACES.map((place) => (
-              <Suggestion.Option key={place}>{place}</Suggestion.Option>
-            ))}
-          </Suggestion.List>
-        </Suggestion>
-      </Field>
-    );
-  },
-});
-
 export const Multiple = meta.story({
   render: (args) => {
     return (
       <Field>
         <Label>Velg en destinasjon</Label>
-        <Suggestion {...args}>
+        <Suggestion {...args} data-multiple>
           <Suggestion.Input />
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty />
+            <Suggestion.Option data-empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place}>{place}</Suggestion.Option>
             ))}
@@ -590,10 +554,6 @@ export const Multiple = meta.story({
         </Suggestion>
       </Field>
     );
-  },
-
-  args: {
-    multiple: true,
   },
 });
 
@@ -605,12 +565,12 @@ export const InDetails = meta.story({
         <Details.Content>
           <Field>
             <Label>Velg en destinasjon</Label>
-            <Suggestion {...args} autoFocus>
-              <Suggestion.Input />
+            <Suggestion {...args}>
+              <Suggestion.Input autoFocus />
               <Suggestion.Toggle />
               <Suggestion.Clear />
               <Suggestion.List>
-                <Suggestion.Empty />
+                <Suggestion.Option data-empty />
                 {DATA_PLACES.map((place) => (
                   <Suggestion.Option key={place}>{place}</Suggestion.Option>
                 ))}
@@ -634,7 +594,7 @@ export const AutoPlacementOnXAxis = meta.story({
             <Suggestion.Toggle />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty />
+              <Suggestion.Option data-empty />
               {DATA_PLACES.map((place) => (
                 <Suggestion.Option key={place}>{place}</Suggestion.Option>
               ))}
@@ -651,12 +611,12 @@ export const Creatable = meta.story({
     return (
       <Field>
         <Label>Velg eller legg til en destinasjon</Label>
-        <Suggestion {...args}>
+        <Suggestion {...args} data-multiple data-creatable>
           <Suggestion.Input />
           <Suggestion.Toggle />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty />
+            <Suggestion.Option data-empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place}>{place}</Suggestion.Option>
             ))}
@@ -664,11 +624,6 @@ export const Creatable = meta.story({
         </Suggestion>
       </Field>
     );
-  },
-
-  args: {
-    multiple: true,
-    creatable: true,
   },
 });
 
@@ -677,37 +632,11 @@ export const WithoutToggleButton = meta.story({
     return (
       <Field>
         <Label>Velg eller legg til en destinasjon</Label>
-        <Suggestion {...args}>
+        <Suggestion {...args} data-multiple>
           <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
-            <Suggestion.Empty />
-            {DATA_PLACES.map((place) => (
-              <Suggestion.Option key={place}>{place}</Suggestion.Option>
-            ))}
-          </Suggestion.List>
-        </Suggestion>
-      </Field>
-    );
-  },
-
-  args: {
-    multiple: true,
-    creatable: true,
-  },
-});
-
-export const WithDeprecatedDel = meta.story({
-  render: (args) => {
-    return (
-      <Field>
-        <Label>Velg eller legg til en destinasjon</Label>
-        <Suggestion {...args}>
-          <Suggestion.Input />
-          {/** biome-ignore lint/a11y/useSemanticElements: deprecated */}
-          <del role='button' aria-label='Tøm' tabIndex={0} />
-          <Suggestion.List>
-            <Suggestion.Empty />
+            <Suggestion.Option data-empty />
             {DATA_PLACES.map((place) => (
               <Suggestion.Option key={place}>{place}</Suggestion.Option>
             ))}

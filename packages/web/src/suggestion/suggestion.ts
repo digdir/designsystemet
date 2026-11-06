@@ -11,27 +11,21 @@ import {
   warn,
 } from '../utils/utils';
 
-// Load and export u-datalist since this is a pure polyfill and not custom Designsystemet elements, should run before suggestion
-export * from '@u-elements/u-datalist';
+export * from '@u-elements/u-datalist'; // Load and export u-datalist since this is a pure polyfill and not custom Designsystemet elements, should run before suggestion
+export * from './suggestion-helper';
 
 const ARIA_HIDDEN = 'aria-hidden';
 const ATTR_CREATE = 'data-create';
 const ATTR_EMPTY = 'data-empty';
-const TRUE = 'true';
 const EVENTS_EMPTY = 'comboboxafterselect input';
+const REGEX_CREATE = /\{value\}|%s/; // Support both new %s and old {value} syntax
+const TRUE = 'true';
 const MUTATIONS: MutationObserverInit = {
   attributeFilter: ['disabled', 'hidden', 'label'], // React <Suggestion> filters by setting disabled on options
   characterData: true,
   childList: true,
   subtree: true,
 };
-const REGEX_CREATE = /\{value\}|%s/; // Support both new %s and old {value} syntax
-const SINGULAR = 'data-sr-singular';
-const PLURAL = 'data-sr-plural';
-const TEXTS =
-  'added,clear,empty,found,invalid,items,of,plural,remove,removed,singular,toggle'
-    .split(',')
-    .map((key) => `data-sr-${key}`);
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -43,9 +37,7 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
   _unmutate?: ReturnType<typeof onMutation>; // Using underscore instead of private fields for backwards compatibility
 
   connectedCallback() {
-    for (const key of TEXTS) attr(this, key, attrOrCSS(this, key)); // Convert CSS variables to data-sr-attributes
     super.connectedCallback(); // Run after setting data-sr-attributes
-
     this._unmutate = onMutation(this, onMutations, MUTATIONS); // .control and .list are direct children, and option changes affect the empty option
     on(this, EVENTS_EMPTY, handleEmpty, QUICK_EVENT);
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
@@ -61,12 +53,10 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 
 const onMutations = (self: DSSuggestionElement) => {
   let { control, list } = self;
-  if (!list) list = self.querySelector('u-datalist'); // Fallback to u-datalist since React can render the ds-suggestion before u-datalist is connected
 
   if (control) attr(control, 'popovertarget', list ? useId(list) : null);
+  if (!list) list = self.querySelector('u-datalist'); // Fallback to u-datalist since React can render the ds-suggestion before u-datalist is connected
   if (list) {
-    if (!attr(list, PLURAL)) attr(list, PLURAL, attr(self, PLURAL)); // Inherit translations from u-combobox to u-datalist
-    if (!attr(list, SINGULAR)) attr(list, SINGULAR, attr(self, SINGULAR)); // Inherit translations from u-combobox to u-datalist
     attr(list, 'data-is-floating', TRUE); // identifier for css to toggle opacity when it is placed by floating-ui.
     attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
   }
