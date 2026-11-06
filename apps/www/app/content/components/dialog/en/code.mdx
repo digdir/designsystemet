@@ -28,7 +28,7 @@ Dialog has two class names you can use.
 ### Open and close the dialog
 
 Use `command` and `commandfor` to connect the `<dialog>` element to a trigger.
-Use the values `command="show-modal"` or `command="--show-non-modal"` for a modal with or without background dimming and `commandfor="DIALOG-ID"` to connect the trigger to the dialog.
+Use the values `command="show-modal"` or `command="--show-non-modal"` for a modal with or without background dimming and `commandfor="dialog-id"` to connect the trigger to the dialog.
 
 Designsystemet automatically adds `aria-haspopup="dialog"` to buttons that open a dialog. If the dialog has a heading, it is used as the dialog's accessible name.
 If the dialog is empty or loads content when it opens, you must give the dialog element an accessible name yourself using `aria-label`.
@@ -98,30 +98,15 @@ If the button is a direct child of the dialog and the first element, it will flo
 ```tsx
 import { Button, Dialog } from '@digdir/designsystemet-react';
 
-/* with context */
-<Dialog.TriggerContext>
-  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-  <Dialog>
-    Dialog content
-  </Dialog>
-</Dialog.TriggerContext>
-
-/* without context */
 <Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
 <Dialog id="my-dialog">
   Dialog content
 </Dialog>
 ```
 
-### `TriggerContext`
+### With ref
 
-Use `Dialog.TriggerContext` and `Dialog.Trigger` together, so `Dialog` can communicate without having to use `id` and `commandfor`.
-
-<Story story="TriggerContext" language="react" />
-
-### With ref and without context
-
-If you don't want to use `Dialog.TriggerContext`, you can use `ref` to open the dialog from an external trigger.
+You can also use `ref` to open the dialog from an external trigger.
 You then use native methods on the `<dialog>` element, such as `showModal()` or `show()`.
 
 <Story story="WithRef" language="react" />

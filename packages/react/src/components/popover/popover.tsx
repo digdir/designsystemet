@@ -14,7 +14,7 @@ export type PopoverProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**
-     * id to connect the trigger with the popover - required when not using Popover.Context.
+     * id to connect the trigger with the popover, using `popovertarget` on the trigger.
      */
     id?: string;
     /**
@@ -57,15 +57,7 @@ export type PopoverProps = MergeRight<
 /**
  * Popover component, used to display content in a popover over an element.
  *
- * @example with TriggerContext
- * <Popover.TriggerContext>
- *   <Popover.Trigger>Open Popover</Popover.Trigger>
- *   <Popover>
- *     Content
- *   </Popover>
- * </Popover.TriggerContext>
- *
- * @example without TriggerContext
+ * @example
  * <Button popovertarget="my-popover">Open Popover</Button>
  * <Popover id="my-popover">
  *   Content
@@ -122,19 +114,31 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         }
       };
 
-      popover?.togglePopover?.(controlledOpen);
-      if (controlledOpen)
-        popover?.dispatchEvent(
-          new CustomEvent('ds-toggle-source', {
-            bubbles: true,
-            composed: true, // Enable bubbling out of shadow DOM boundaries
-            detail: document.querySelector(trigger), // Since togglePopover({ source }) is not supported in all browsers yet
-          }),
-        );
+      // Keep state in sync when using the native Popover API, e.g. `showPopover()` or `hidePopover()`
+      const handleToggle = (event: Partial<ToggleEvent>) => {
+        const isOpen = event.newState === 'open';
+        setInternalOpen(isOpen);
+        if (isOpen !== controlledOpen) (isOpen ? onOpen : onClose)?.(); // Skip toggle events caused by this effect
+      };
 
+      // Skip if DOM already matches, e.g. after `showPopover({ source })`, to preserve the native source
+      if (popover && isPopoverOpen(popover) !== controlledOpen) {
+        popover.togglePopover?.(controlledOpen);
+        if (controlledOpen)
+          popover.dispatchEvent(
+            new CustomEvent('ds-toggle-source', {
+              bubbles: true,
+              composed: true, // Enable bubbling out of shadow DOM boundaries
+              detail: document.querySelector(trigger), // Since togglePopover({ source }) is not supported in all browsers yet
+            }),
+          );
+      }
+
+      popover?.addEventListener('toggle', handleToggle);
       document.addEventListener('click', handleClick, true); // Use capture to execute before React event API
       document.addEventListener('keydown', handleKeydown);
       return () => {
+        popover?.removeEventListener('toggle', handleToggle);
         document.removeEventListener('click', handleClick, true);
         document.removeEventListener('keydown', handleKeydown);
       };
@@ -162,6 +166,9 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     );
   },
 );
+
+const isPopoverOpen = (el: Element) =>
+  el.classList.contains(':popover-open') || el.matches(':popover-open'); // Polyfill || native support
 
 // NOTE: This is not able to check if the popover is the most recently added #topLayer,
 // so we need another method in time, or remove the controlled popover="manual" in a v2
