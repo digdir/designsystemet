@@ -2,6 +2,10 @@
 search_terms: søk, søkefelt
 ---
 
+<Alert data-color="warning">
+`Search` er avviklet og fjernes i neste hovedversjon. Les [Search fjernes, hva gjør du?](/no/blog/search-is-being-removed-what-should-you-do) for å se hvordan du kan lage ditt eget søkefelt.
+</Alert>
+
 <Story story="Preview" />
 
 **Bruk search når**
@@ -14,10 +18,15 @@ search_terms: søk, søkefelt
 
 ## Eksempel
 
-### Varianter
-Eksemplene nedenfor viser varianter som inkluderer ikon, primær- og sekundærknapp.
+### Med tøm-knapp
+Bruk `Suggestion` med `Suggestion.Clear` når brukerne trenger en knapp for å tømme søkefeltet. Knappen vises når feltet har en verdi.
 
-<Story story="Variants" />
+<Story story="WithClear" />
+
+### Med søkeknapp
+Legg til en søkeknapp etter feltet når søket skal sendes med en knapp. Knappen kan være primær eller sekundær.
+
+<Story story="WithSearchButton" />
 
 ## Retningslinjer 
 
