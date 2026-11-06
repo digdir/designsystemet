@@ -65,7 +65,9 @@ function extractMainContent(html, pageUrl) {
   // Keep both React source and the server-rendered HTML.
   for (const section of content.querySelectorAll('section[aria-label]')) {
     const reactEditor = section.querySelector('.live-editor pre');
-    const htmlEditor = section.querySelector('pre.prism-code.language-html');
+    const htmlEditor = section.querySelector(
+      'pre[data-code-block][data-language="html"], pre.prism-code.language-html',
+    );
     if (!reactEditor && !htmlEditor) continue;
 
     const blocks = [];

@@ -3,6 +3,11 @@
 /*
 build: v1.23.0
 design-tokens: v1.23.0
+
+Import after @digdir/designsystemet-css.
+All designsystemet.no styles are in the "ds" layer. Declare the layer order before importing,
+with layers like a CSS reset before "ds" and your own customizations after it:
+@layer my-reset, ds, my-customizations;
 */
 
 @layer ds.theme.size-mode {

@@ -1,4 +1,5 @@
 import {
+  Button,
   Dialog,
   Field,
   Heading,
@@ -42,9 +43,10 @@ export const TokenModal = () => {
   const themeCss = useThemeCss(cssTheme.name, cssTheme.config, isOpen);
 
   return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger
+    <>
+      <Button
         className={classes.trigger}
+        aria-haspopup='dialog'
         onClick={() => {
           setIsOpen(true);
           setCssThemeName(themeName);
@@ -53,7 +55,7 @@ export const TokenModal = () => {
       >
         <StarIcon aria-hidden height='auto' />
         {t('themeModal.use-theme')}
-      </Dialog.Trigger>
+      </Button>
       <Dialog
         className={classes.modal}
         style={{ maxWidth: 1200 }}
@@ -154,6 +156,6 @@ export const TokenModal = () => {
           </div>
         </Dialog.Block>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   );
 };

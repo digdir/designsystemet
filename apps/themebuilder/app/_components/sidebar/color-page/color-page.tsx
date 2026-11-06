@@ -288,18 +288,7 @@ export const ColorPage = () => {
           </div>
           <Divider />
           <div className={classes.overridesSection}>
-            <ColorOverrides
-              triggerButton={
-                <Button
-                  variant='secondary'
-                  data-size='sm'
-                  className={classes.overridesBtn}
-                >
-                  <PencilIcon aria-hidden />
-                  {t('colorPane.token-overrides')}
-                </Button>
-              }
-            />
+            <ColorOverrides />
           </div>
         </>
       )}

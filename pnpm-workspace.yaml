@@ -16,8 +16,6 @@ injectWorkspacePackages: true
 minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - "@u-elements/*"
-  # Renovate security update: storybook@10.6.2
-  - storybook@10.6.2
 packageExtensions:
   "@navikt/aksel-icons":
     peerDependencies:
@@ -31,6 +29,6 @@ syncInjectedDepsAfterScripts:
   - build:www
   - build:themebuilder
   - build:storybook
-nodeVersion: "24.19.0"
+nodeVersion: "24.22.2"
 patchedDependencies:
   '@u-elements/u-combobox': patches/@u-elements__u-combobox.patch

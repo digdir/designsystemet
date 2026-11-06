@@ -24,7 +24,6 @@ import {
   Paragraph,
   Popover,
   Radio,
-  Search,
   Select,
   Skeleton,
   SkipLink,
@@ -286,11 +285,11 @@ export const Inverted = meta.story({
       </Demo>
 
       <Demo label='Search'>
-        <Search>
-          <Search.Input aria-label='Søk' />
-          <Search.Clear />
-          <Search.Button />
-        </Search>
+        <Suggestion>
+          <Suggestion.Input type='search' aria-label='Søk' />
+          <Suggestion.Clear />
+          <Button type='submit'>Søk</Button>
+        </Suggestion>
       </Demo>
 
       <Demo label='Select'>
@@ -423,40 +422,38 @@ export const Inverted = meta.story({
       </Demo>
 
       <Demo label='Dropdown'>
-        <Dropdown.TriggerContext>
-          <Dropdown.Trigger>Meny</Dropdown.Trigger>
-          <Dropdown>
-            <Dropdown.List>
-              <Dropdown.Item>
-                <Dropdown.Button>Valg 1</Dropdown.Button>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Dropdown.Button>Valg 2</Dropdown.Button>
-              </Dropdown.Item>
-            </Dropdown.List>
-          </Dropdown>
-        </Dropdown.TriggerContext>
+        <Button popovertarget='inverted-dropdown'>Meny</Button>
+        <Dropdown id='inverted-dropdown'>
+          <Dropdown.List>
+            <Dropdown.Item>
+              <Dropdown.Button>Valg 1</Dropdown.Button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>Valg 2</Dropdown.Button>
+            </Dropdown.Item>
+          </Dropdown.List>
+        </Dropdown>
       </Demo>
 
       <Demo label='Popover'>
-        <Popover.TriggerContext>
-          <Popover.Trigger>Mine varsler</Popover.Trigger>
-          <Popover placement='top'>Du har ingen varsler</Popover>
-        </Popover.TriggerContext>
+        <Button popovertarget='inverted-popover'>Mine varsler</Button>
+        <Popover id='inverted-popover' placement='top'>
+          Du har ingen varsler
+        </Popover>
       </Demo>
 
       <Demo label='Dialog'>
-        <Dialog.TriggerContext>
-          <Dialog.Trigger>Åpne dialog</Dialog.Trigger>
-          <Dialog>
-            <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-              Dialog header
-            </Heading>
-            <Paragraph>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            </Paragraph>
-          </Dialog>
-        </Dialog.TriggerContext>
+        <Button command='show-modal' commandfor='inverted-dialog'>
+          Åpne dialog
+        </Button>
+        <Dialog id='inverted-dialog'>
+          <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
+            Dialog header
+          </Heading>
+          <Paragraph>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          </Paragraph>
+        </Dialog>
       </Demo>
     </div>
   ),
