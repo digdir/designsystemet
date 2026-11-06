@@ -26,7 +26,7 @@ export const colorSchemeVariables: GetStyleDictionaryConfig = ({ 'color-scheme':
           {
             destination: `color-scheme/${colorScheme}.css`,
             format: formats.colorScheme.name,
-            filter: (token) => pathStartsWithOneOf(['color'], token) || token.path[1] === 'color', // link-visited tokens have "color" as the second segment of their path, e.g. "ds.color.link-visited"
+            filter: (token) => pathStartsWithOneOf(['color'], token),
           },
         ],
         options: {
