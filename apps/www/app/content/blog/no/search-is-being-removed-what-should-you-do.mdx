@@ -22,7 +22,7 @@ Et søkefelt ser enkelt ut, men det finnes mange måter å lage det på. Noen tj
 
 Vi mener disse valgene hører hjemme hos deg. Du kjenner brukerne og innholdet ditt best. Derfor gir vi deg heller byggeklossene enn én komponent med fast oppførsel:
 
-- **`Input` med `type="search"`** gir deg et søkefelt som skjermlesere leser opp som et søkefelt, og som viser en søketast på tastaturet på mobil.
+- **`Input` med `type="search"`** gir deg et søkefelt som skjermlesere leser opp som et søkefelt. Legg til `enterkeyhint="search"` hvis du vil at tastaturet på mobil skal vise en søketast.
 - **`Button`** for å sende søket.
 
 ## Hva gjør du hvis du bruker den?
@@ -50,7 +50,9 @@ Stilene ligger i filen `search.css` i sandboxen. Den har alt `Search` gjorde, i 
 2. Legg klassen `search` på en `<form>` eller `<div>` rundt `Input` og `Button`. Klassenavnet er bare et eksempel, så bruk gjerne et som passer prosjektet ditt.
 3. Gi søkefeltet et navn. En synlig ledetekst er best, men `aria-label` holder når det er tydelig hva feltet er til, for eksempel et søkefelt i headeren.
 
-Vil du ha en tømmeknapp, bruker du en `<button type="reset">` inne i en `<form>`, og gir feltet en `placeholder`. Du kan bruke `placeholder=" "` hvis du ikke vil ha noen plassholdertekst. Kommentaren øverst i `search.css` forklarer resten.
+Vil du ha en tømmeknapp, bruker du en `<button type="reset">` inne i en `<form>`, og gir feltet en `placeholder`. Du kan bruke `placeholder=" "` hvis du ikke vil ha noen plassholdertekst. Knappen viser bare et ikon, så gi den en `aria-label`, for eksempel «Tøm». Kommentaren øverst i `search.css` forklarer resten.
+
+En reset-knapp tilbakestiller alle feltene i skjemaet, ikke bare søkefeltet. Den gjør heller ingenting hvis du styrer feltet med `value` og `onChange` i React. Da tømmer du tilstanden din i knappens `onClick` i stedet.
 
 ## Spørsmål?
 

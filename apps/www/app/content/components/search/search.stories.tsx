@@ -5,26 +5,15 @@ import {
   Field,
   Input,
   Label,
-  Paragraph,
 } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 
 export const Preview = () => {
-  return (
-    // TODO update to <Input> after input.css is updated with input[type="search"] styles
-    <EXPERIMENTAL_Suggestion>
-      <EXPERIMENTAL_Suggestion.Input type='search' aria-label='Søk' />
-    </EXPERIMENTAL_Suggestion>
-  );
+  return <Input type='search' aria-label='Søk' />;
 };
 
 export const PreviewEn = () => {
-  return (
-    // TODO update to <Input> after input.css is updated with input[type="search"] styles
-    <EXPERIMENTAL_Suggestion>
-      <EXPERIMENTAL_Suggestion.Input type='search' aria-label='Search' />
-    </EXPERIMENTAL_Suggestion>
-  );
+  return <Input type='search' aria-label='Search' />;
 };
 
 export const WithInput = () => {

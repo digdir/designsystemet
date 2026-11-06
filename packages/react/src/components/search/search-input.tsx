@@ -2,6 +2,7 @@ import { forwardRef, type InputHTMLAttributes } from 'react';
 import type { DefaultProps } from '../../types';
 import { Input } from '../input/input';
 
+/** @deprecated Will be removed in the next major version. */
 export type SearchInputProps = DefaultProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'type'> & {
     /**

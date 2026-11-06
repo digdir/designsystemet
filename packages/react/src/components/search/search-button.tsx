@@ -3,6 +3,7 @@ import { forwardRef, type ReactNode } from 'react';
 import type { MergeRight } from '../../utilities';
 import { Button, type ButtonProps } from '../button/button';
 
+/** @deprecated Will be removed in the next major version. */
 export type SearchButtonProps = MergeRight<
   ButtonProps,
   {

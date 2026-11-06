@@ -3,6 +3,7 @@ import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 /* We omit children since we render the icon with css */
+/** @deprecated Will be removed in the next major version. */
 export type SearchClearProps = MergeRight<
   DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
   {
@@ -17,7 +18,7 @@ export type SearchClearProps = MergeRight<
 /**
  * SearchClear component, used to display a clear button when the search input is not empty.
  *
- * @deprecated Will be removed in the next major version. Use `EXPERIMENTAL_Suggestion` with `EXPERIMENTAL_Suggestion.Clear` instead.
+ * @deprecated Will be removed in the next major version. Use a `<button type="reset">` with an `aria-label` inside a `<form>` instead. See {@link https://designsystemet.no/en/blog/search-is-being-removed-what-should-you-do | Search is being removed, what should you do?}.
  *
  * @example
  * <Search>
