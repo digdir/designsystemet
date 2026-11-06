@@ -10,15 +10,11 @@ search_terms: search, search field, searchfield
 
 `Search` is deprecated and will be removed in the next major version of Designsystemet. Your code still works for now, but your editor will mark the component as deprecated.
 
-Why are we doing this? And what should you do if you're using it?
-
-At the bottom of this article, you'll find examples you can copy to make your own search field.
-
 ## Why are we removing `Search`?
 
 A search field looks simple, but there are many ways to make one. Some services want a search button, others only an icon. Some search as you type, others when you press <kbd>Enter</kbd>. Some show suggestions, others go straight to the results. And a search field in a header often looks quite different from one in a form.
 
-`Search` made many of these choices for you. It decided where the icon goes, how the clear button behaves, and how the search button is attached to the field. When your needs were different, you ended up working against the component instead of with it.
+The `Search` component supported some situations, but not all. It also made some choices for you that don't necessarily suit everyone. For example, it decided where the icon goes and how the search button is attached to the field. If your needs were different, you had to work against the component instead of with it.
 
 We think these choices belong to you. You know your users and your content best. So instead of one component with fixed behaviour, we'd rather give you the building blocks:
 
