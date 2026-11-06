@@ -372,6 +372,60 @@ export const ControlledIndependentLabelValue = meta.story({
   },
 });
 
+export const ControlledIndependentLabelValueMultiple = meta.story({
+  render: (args) => {
+    const [selected, setSelected] = useState(suggestion([DATA_PEOPLE[0]]));
+
+    return (
+      <>
+        <Field>
+          <Label>Velg person</Label>
+          <Suggestion
+            {...args}
+            data-multiple
+            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+          >
+            {suggestion(selected, ({ label, value }) => (
+              <data key={value} value={value}>
+                {label}
+              </data>
+            ))}
+            <Suggestion.Input />
+            <Suggestion.Toggle />
+            <Suggestion.Clear />
+            <Suggestion.List>
+              <Suggestion.Option data-empty />
+              {DATA_PEOPLE.map(({ label, value }) => (
+                <Suggestion.Option key={value} label={label} value={value}>
+                  {label}
+                </Suggestion.Option>
+              ))}
+            </Suggestion.List>
+          </Suggestion>
+        </Field>
+        <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+
+        <div style={{ margin: 'var(--ds-size-2) 0' }}>
+          Valgt person:
+          <pre
+            style={{
+              fontSize: 14,
+              height: 100,
+              whiteSpace: 'pre-wrap',
+            }}
+          >
+            {JSON.stringify(selected)}
+          </pre>
+        </div>
+
+        <Button onClick={() => setSelected(suggestion([DATA_PEOPLE[2]]))}>
+          Sett Nina
+        </Button>
+      </>
+    );
+  },
+});
+
 export const CustomFilter = meta.story({
   render: (args) => {
     const [value, setValue] = useState('');
