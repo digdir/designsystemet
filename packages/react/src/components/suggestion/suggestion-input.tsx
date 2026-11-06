@@ -1,6 +1,5 @@
-import { forwardRef, useContext, useEffect } from 'react';
+import { forwardRef } from 'react';
 import { Input, type InputProps } from '../input/input';
-import { SuggestionContext } from './suggestion';
 
 export type SuggestionInputProps = Omit<
   InputProps,
@@ -37,9 +36,6 @@ export const SuggestionInput = forwardRef<
   HTMLInputElement,
   SuggestionInputProps
 >(function SuggestionList({ value, onInput, onChange, ...rest }, ref) {
-  const { handleFilter } = useContext(SuggestionContext);
-
-  useEffect(handleFilter, [value]); // Filter if controlled value
   if (onChange)
     console.warn(
       'SuggestionInput: Avoid using onChange, as Suggestion controls the Input. Use onSelectedChange on Suggestion instead, or onInput if fetching API results',
@@ -51,12 +47,12 @@ export const SuggestionInput = forwardRef<
 
   return (
     <Input
-      placeholder='' // We need an empty placeholder for the clear button to be able to show/hide
       ref={ref}
-      onInput={(event) => {
-        onInput?.(event); // Should run first
-        handleFilter?.(); // Filter if uncontrolled value
-      }}
+      // placeholder='' // We need an empty placeholder for the clear button to be able to show/hide
+      // onInput={(event) => {
+      //   onInput?.(event); // Should run first
+      //   handleFilter?.(); // Filter if uncontrolled value
+      // }}
       suppressHydrationWarning // Since <ds-suggestion> adds attributes
       {...rest}
     />

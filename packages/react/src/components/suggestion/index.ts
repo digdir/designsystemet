@@ -40,6 +40,7 @@ type Suggestion = typeof SuggestionRoot & {
    *
    * Place as a descendant of `Suggestion.List`
    *
+   * @deprecated Use `Suggestion.Option` with data-empty instead
    * @example
    * <Suggestion.List>
    *   <Suggestion.Empty>Tomt</Suggestion.Empty>

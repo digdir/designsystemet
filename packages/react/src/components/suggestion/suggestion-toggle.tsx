@@ -1,17 +1,8 @@
 import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import type { MergeRight } from '../../utilities';
 
-export type SuggestionToggleProps = MergeRight<
-  DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
-  {
-    /**
-     * Aria label for the toggle button
-     * @default 'Valg'
-     */
-    'aria-label'?: string;
-  }
->;
+export type SuggestionToggleProps = DefaultProps &
+  ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
  * Component that provides a toggle button for the Suggestion list.
@@ -29,11 +20,10 @@ export type SuggestionToggleProps = MergeRight<
 export const SuggestionToggle = forwardRef<
   HTMLButtonElement,
   SuggestionToggleProps
->(function SuggestionToggle({ 'aria-label': label = 'Valg', ...rest }, ref) {
+>(function SuggestionToggle(rest, ref) {
   return (
     <button
       aria-expanded='false'
-      aria-label={label}
       ref={ref}
       suppressHydrationWarning // Since <ds-suggestion> adds attributes
       type='button'

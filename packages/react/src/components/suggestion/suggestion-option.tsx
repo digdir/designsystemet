@@ -4,7 +4,13 @@ import type { DefaultProps } from '../../types';
 import '@digdir/designsystemet-web'; // Load u-option polyfill
 
 export type SuggestionOptionProps = OptionHTMLAttributes<HTMLOptionElement> &
-  DefaultProps;
+  DefaultProps & {
+    /**
+     * Optionally the text to display when the suggestion list is empty.
+     * If <Suggestion> has `data-creatable`, use `%s` to replace with the current input value.
+     **/
+    'data-empty'?: string | boolean;
+  };
 
 /**
  * A component for rendering individual options in the Suggestion list.

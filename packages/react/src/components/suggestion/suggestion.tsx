@@ -1,84 +1,56 @@
-import type { DSSuggestionElement } from '@digdir/designsystemet-web';
+import type {
+  DSSuggestionElement,
+  SuggestionItem,
+} from '@digdir/designsystemet-web';
 import cl from 'clsx/lite';
-import {
-  createContext,
-  forwardRef,
-  type HTMLAttributes,
-  type ReactNode,
-  type RefObject,
-  useCallback,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 import { useMergeRefs } from '../../utilities/hooks';
 
-export type SuggestionItem = { label: string; value: string };
+/* @deprecated props */
+export type { SuggestionItem } from '@digdir/designsystemet-web';
+export type SuggestionSingleProps = SuggestionProps;
+export type SuggestionMultipleProps = SuggestionProps;
 
-type EventBeforeMatch = Omit<
-  CustomEvent<HTMLOptionElement | undefined>,
-  'currentTarget'
-> & {
-  currentTarget: DSSuggestionElement;
-};
+// type Filter = (args: {
+//   /**
+//    * Index of the `option`
+//    */
+//   index: number;
+//   /**
+//    * Label content of the `option`
+//    */
+//   label: string;
+//   /**
+//    * Text content of the `option`
+//    */
+//   text: string;
+//   /**
+//    * Value of the `option`
+//    */
+//   value: string;
+//   /**
+//    * The DOM element of the `option`
+//    */
+//   optionElement: HTMLOptionElement;
+//   /**
+//    * The DOM element of the `input`
+//    */
+//   input: HTMLInputElement;
+// }) => boolean;
 
-type Filter = (args: {
-  /**
-   * Index of the `option`
-   */
-  index: number;
-  /**
-   * Label content of the `option`
-   */
-  label: string;
-  /**
-   * Text content of the `option`
-   */
-  text: string;
-  /**
-   * Value of the `option`
-   */
-  value: string;
-  /**
-   * The DOM element of the `option`
-   */
-  optionElement: HTMLOptionElement;
-  /**
-   * The DOM element of the `input`
-   */
-  input: HTMLInputElement;
-}) => boolean;
-
-type SuggestionContextType = {
-  handleFilter: (input?: HTMLInputElement | null) => void;
-  dsSuggestionRef?: RefObject<DSSuggestionElement | null>;
-};
-
-type SuggestionValue<T extends { multiple: boolean }> =
-  T['multiple'] extends true
-    ? Array<string | SuggestionItem>
-    : string | SuggestionItem;
-
-type SuggestionBaseProps = {
-  /**
-   * Filter options; boolean or a custom callback.
-   *
-   * See {@link Filter} for the callback signature.
-   *
-   * @default true
-   */
-  filter?: boolean | Filter;
+export type SuggestionProps = {
   /**
    * Allows the user to create new items
    *
    * @default false
    */
-  creatable?: boolean;
+  'data-creatable'?: boolean;
   /**
-   * Callback when matching input value against options
+   * Allows the user to select multiple items
+   *
+   * @default false
    */
-  onBeforeMatch?: (event: EventBeforeMatch) => void;
+  'data-multiple'?: boolean;
   /**
    * The name of the associated form control
    *
@@ -86,205 +58,111 @@ type SuggestionBaseProps = {
    */
   name?: string;
   /**
-   * Change how the selected options are rendered inside the `Chip`.
-   *
-   * @default ({ label }) => label
-   */
-  renderSelected?: (args: { label: string; value: string }) => ReactNode;
-} & Omit<HTMLAttributes<DSSuggestionElement>, 'defaultValue'>;
-
-type SuggestionValueProps<T extends { multiple: boolean }> = {
-  /**
-   * Allows the user to select multiple items
-   *
-   * @default false
-   */
-  multiple?: T['multiple'];
-  /**
    * The selected item of the Suggestion.
    *
    * If `label` and `value` are the same, each item can be a `string`. Otherwise, each item must be a `SuggestionItem`.
    *
    * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
    */
-  selected?: SuggestionValue<T> | null;
+  selected?: SuggestionItem | null;
   /**
-   * Default selected item when uncontrolled
+   * Change how the selected options are rendered inside the `Chip`.
+   *
+   * @default ({ label }) => label
    */
-  defaultSelected?: SuggestionValue<T>;
-  /**
-   * Callback when selected items changes
-   */
-  onSelectedChange?: (
-    value: T['multiple'] extends true
-      ? SuggestionItem[]
-      : SuggestionItem | null,
+  renderSelected?: (args: { label: string; value: string }) => React.ReactNode;
+
+  oncomboboxafterselect?: (event: CustomEvent<HTMLDataElement>) => void;
+  oncomboboxbeforeselect?: (event: CustomEvent<HTMLDataElement>) => void;
+  oncomboboxbeforematch?: (
+    event: CustomEvent<HTMLOptionElement | undefined>,
   ) => void;
-};
+} & Omit<React.HTMLAttributes<DSSuggestionElement>, 'defaultValue'>;
 
-export type SuggestionSingleProps = SuggestionBaseProps &
-  SuggestionValueProps<{ multiple: false }>;
+// type SuggestionSelected =
+//   | string
+//   | SuggestionItem
+//   | Array<string | SuggestionItem>;
 
-export type SuggestionMultipleProps = SuggestionBaseProps &
-  SuggestionValueProps<{ multiple: true }> & { multiple: true }; // ensures multiple: true is never inferred from other props
+// const text = (el: Element): string => el.textContent?.trim() || '';
+// const sanitizeItems = (values: SuggestionSelected = []): SuggestionItem[] =>
+//   typeof values === 'string'
+//     ? [{ label: values, value: values }]
+//     : !Array.isArray(values)
+//       ? [values]
+//       : values.map((value) =>
+//           typeof value === 'string' ? { label: value, value } : value,
+//         );
 
-export type SuggestionProps = SuggestionSingleProps | SuggestionMultipleProps;
+// const _nextItems = (
+//   data: HTMLDataElement,
+//   prev?: SuggestionSelected,
+//   multiple?: boolean,
+// ) => {
+//   const item: SuggestionItem = { label: text(data), value: data.value };
 
-type SuggestionSelected =
-  | string
-  | SuggestionItem
-  | Array<string | SuggestionItem>;
-
-const text = (el: Element): string => el.textContent?.trim() || '';
-const sanitizeItems = (values: SuggestionSelected = []): SuggestionItem[] =>
-  typeof values === 'string'
-    ? [{ label: values, value: values }]
-    : !Array.isArray(values)
-      ? [values]
-      : values.map((value) =>
-          typeof value === 'string' ? { label: value, value } : value,
-        );
-
-const nextItems = (
-  data: HTMLDataElement,
-  prev?: SuggestionSelected,
-  multiple?: boolean,
-) => {
-  const item: SuggestionItem = { label: text(data), value: data.value };
-
-  if (!multiple) return data.isConnected ? undefined : item;
-  return data.isConnected
-    ? sanitizeItems(prev).filter(({ value }) => value !== item.value)
-    : [...sanitizeItems(prev), item];
-};
-
-const defaultFilter: Filter = ({ label, input }) =>
-  label.toLowerCase().includes(input.value.trim().toLowerCase());
+//   if (!multiple) return data.isConnected ? undefined : item;
+//   return data.isConnected
+//     ? sanitizeItems(prev).filter(({ value }) => value !== item.value)
+//     : [...sanitizeItems(prev), item];
+// };
 
 export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
   function Suggestion(
     {
       children,
       className,
-      creatable = false,
-      defaultSelected,
-      filter = true,
-      multiple = false,
       name,
-      onBeforeMatch,
-      onSelectedChange,
-      renderSelected = ({ label }) => label,
-      selected,
+      oncomboboxafterselect,
+      oncomboboxbeforematch,
+      oncomboboxbeforeselect,
       ...rest
     },
     ref,
   ) {
-    const dsSuggestionRef = useRef<DSSuggestionElement>(null);
-    const genId = useId();
-    const selectId = rest.id ? `${rest.id}-select` : genId;
-    const isControlled = selected !== undefined;
-    const mergedRefs = useMergeRefs([ref, dsSuggestionRef]);
-    const [defaultItems, setDefaultItems] = useState<SuggestionItem[]>(
-      sanitizeItems(defaultSelected),
-    );
-    const selectedItems = selected ? sanitizeItems(selected) : defaultItems;
-    const onSelectedChangeRef = useRef(onSelectedChange);
-    const selectedItemsRef = useRef(selectedItems);
+    const suggestionRef = useRef<DSSuggestionElement>(null);
+    const onAfterSelectRef = useRef(oncomboboxafterselect);
+    const onBeforeSelectRef = useRef(oncomboboxbeforeselect);
+    const onBeforeMatchRef = useRef(oncomboboxbeforematch);
+    const mergedRefs = useMergeRefs([ref, suggestionRef]);
 
-    // Keep the ref updated with the latest callback
+    // Support React 18
     useEffect(() => {
-      onSelectedChangeRef.current = onSelectedChange;
-    }, [onSelectedChange]);
+      const self = suggestionRef.current;
+      const after = onAfterSelectRef.current;
+      const before = onBeforeSelectRef.current;
+      const match = onBeforeMatchRef.current;
 
-    useEffect(() => {
-      selectedItemsRef.current = selectedItems;
-    }, [selectedItems]);
-
-    /**
-     * Listerners and handling of adding/removing
-     */
-    useEffect(() => {
-      const combobox = dsSuggestionRef.current;
-      const beforeSelect = (event: CustomEvent<HTMLDataElement>) => {
-        event.preventDefault();
-        const multiple = combobox?.multiple;
-        const data = event.detail;
-        const nextItem = nextItems(data, selectedItemsRef.current, multiple);
-
-        onSelectedChangeRef.current?.(
-          (nextItem as SuggestionItem & SuggestionItem[]) || null,
-        );
-
-        if (!isControlled) setDefaultItems(sanitizeItems(nextItem));
+      if (after) self?.addEventListener('comboboxafterselect', after);
+      if (before) self?.addEventListener('comboboxbeforeselect', before);
+      if (match) self?.addEventListener('comboboxbeforematch', match);
+      return () => {
+        if (after) self?.removeEventListener('comboboxafterselect', after);
+        if (before) self?.removeEventListener('comboboxbeforeselect', before);
+        if (match) self?.removeEventListener('comboboxbeforematch', match);
       };
-
-      combobox?.addEventListener('comboboxbeforeselect', beforeSelect);
-      return () =>
-        combobox?.removeEventListener('comboboxbeforeselect', beforeSelect);
-    }, [isControlled]);
-
-    // Before match event listener
-    useEffect(() => {
-      const combobox = dsSuggestionRef.current;
-      const beforeMatch = (e: Event) => onBeforeMatch?.(e as EventBeforeMatch);
-
-      combobox?.addEventListener('comboboxbeforematch', beforeMatch);
-      return () =>
-        combobox?.removeEventListener('comboboxbeforematch', beforeMatch);
-    }, [onBeforeMatch]);
-
-    const handleFilter = useCallback(() => {
-      const { control: input, options = [] } = dsSuggestionRef?.current || {};
-      const filterFn = filter === true ? defaultFilter : filter;
-      let disabled = 0;
-      let index = 0;
-
-      for (const option of Array.from(options))
-        if (!option.hasAttribute('data-empty')) {
-          if (filterFn && input)
-            option.disabled =
-              !filterFn({
-                index,
-                input,
-                label: option.label,
-                optionElement: option,
-                text: option.text,
-                value: option.value,
-              }) && Boolean(++disabled);
-          index++; // Increment index for each <option>
-        }
-    }, [filter]);
+    }, []);
 
     return (
-      <SuggestionContext.Provider value={{ handleFilter, dsSuggestionRef }}>
-        <ds-suggestion
-          data-multiple={multiple || undefined}
-          data-creatable={creatable || undefined}
-          class={cl('ds-suggestion', className)} // Using "class" since React does not translate className on custom elements
-          ref={mergedRefs}
-          suppressHydrationWarning // Since <ds-suggestion> adds attributes
-          {...rest}
-        >
-          {selectedItems.map((item) => (
-            <data
-              key={item.value}
-              value={item.value}
-              suppressHydrationWarning // Since <ds-suggestion> adds attributes
-            >
-              {renderSelected(item)}
-            </data>
-          ))}
-          {children}
-          {/* Hidden select so it will be sent with a form */}
-          {!!name && (
-            <select name={name} multiple hidden id={selectId}></select>
-          )}
-        </ds-suggestion>
-      </SuggestionContext.Provider>
+      <ds-suggestion
+        class={cl('ds-suggestion', className)} // Using "class" since React does not translate className on custom elements
+        ref={mergedRefs}
+        suppressHydrationWarning // Since <ds-suggestion> adds attributes
+        {...rest}
+      >
+        {/* {selectedItems.map((item) => (
+          <data
+            key={item.value}
+            value={item.value}
+            suppressHydrationWarning // Since <ds-suggestion> adds attributes
+          >
+            {renderSelected(item)}
+          </data>
+        ))} */}
+        {children}
+        {/* Hidden select so it will be sent with a form */}
+        {!!name && <select name={name} multiple hidden></select>}
+      </ds-suggestion>
     );
   },
 );
-
-export const SuggestionContext = createContext<SuggestionContextType>({
-  handleFilter: () => undefined,
-});
