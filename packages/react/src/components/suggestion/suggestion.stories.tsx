@@ -33,13 +33,6 @@ const meta = preview.meta({
     a11y: {
       config: {
         rules: [
-          // Axe can't find listbox inside shadow-dom, and thus thinks <data> elements
-          // (chips for selected items) don't have an appropriate parent element
-          {
-            id: 'aria-required-parent',
-            matches: (element: Element) =>
-              !(element instanceof HTMLDataElement),
-          },
           {
             // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.
             id: 'aria-allowed-role',
@@ -89,7 +82,9 @@ export const Preview = meta.story({
         <Label>Velg en destinasjon</Label>
         <Suggestion
           {...args}
-          oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+          oncomboboxbeforeselect={(e) =>
+            setSelected((prev) => suggestion(prev, e))
+          }
         >
           {suggestion(selected, ({ label, value }) => (
             <data key={value} value={value}>
@@ -124,7 +119,9 @@ export const ControlledSingle = meta.story({
           <Label>Velg destinasjon</Label>
           <Suggestion
             {...args}
-            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+            oncomboboxbeforeselect={(e) =>
+              setSelected((prev) => suggestion(prev, e))
+            }
           >
             {suggestion(selected, ({ label, value }) => (
               <data key={value} value={value}>
@@ -198,7 +195,9 @@ export const ControlledCreatable = meta.story({
           <Suggestion
             {...args}
             data-creatable
-            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+            oncomboboxbeforeselect={(e) =>
+              setSelected((prev) => suggestion(prev, e))
+            }
           >
             {suggestion(selected, ({ label, value }) => (
               <data key={value} value={value}>
@@ -248,7 +247,9 @@ export const ControlledMultiple = meta.story({
           <Suggestion
             {...args}
             data-multiple
-            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+            oncomboboxbeforeselect={(e) =>
+              setSelected((prev) => suggestion(prev, e))
+            }
           >
             {suggestion(selected, ({ label, value }) => (
               <data key={value} value={value}>
@@ -291,7 +292,7 @@ export const ControlledMultiple = meta.story({
     const getChipValues = async () =>
       waitFor(() =>
         within(canvasElement)
-          .getAllByLabelText('Trykk for å fjerne', { exact: false })
+          .getAllByRole('option')
           .filter((el) => el instanceof HTMLDataElement)
           .map((x) => x.value),
       );
@@ -329,7 +330,9 @@ export const ControlledIndependentLabelValue = meta.story({
           <Label>Velg person</Label>
           <Suggestion
             {...args}
-            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+            oncomboboxbeforeselect={(e) =>
+              setSelected((prev) => suggestion(prev, e))
+            }
           >
             {suggestion(selected, ({ label, value }) => (
               <data key={value} value={value}>
@@ -383,7 +386,9 @@ export const ControlledIndependentLabelValueMultiple = meta.story({
           <Suggestion
             {...args}
             data-multiple
-            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+            oncomboboxbeforeselect={(e) =>
+              setSelected((prev) => suggestion(prev, e))
+            }
           >
             {suggestion(selected, ({ label, value }) => (
               <data key={value} value={value}>
@@ -501,7 +506,9 @@ export const AlwaysShowAll = meta.story({
         <Label>Viser alle options også når valgt</Label>
         <Suggestion
           {...args}
-          oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+          oncomboboxbeforeselect={(e) =>
+            setSelected((prev) => suggestion(prev, e))
+          }
         >
           {suggestion(selected, ({ label, value }) => (
             <data key={value} value={value}>

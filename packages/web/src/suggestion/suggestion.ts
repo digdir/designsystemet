@@ -52,7 +52,7 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 }
 
 const onMutations = (self: DSSuggestionElement) => {
-  let { control, list } = self;
+  let { _listbox, control, list } = self;
 
   if (control) attr(control, 'popovertarget', list ? useId(list) : null);
   if (!list) list = self.querySelector('u-datalist'); // Fallback to u-datalist since React can render the ds-suggestion before u-datalist is connected
