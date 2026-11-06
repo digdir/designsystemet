@@ -5,6 +5,7 @@ import {
   Field,
   Input,
   Label,
+  Paragraph,
 } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 
