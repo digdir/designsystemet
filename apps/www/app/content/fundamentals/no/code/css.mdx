@@ -109,7 +109,7 @@ For hver `<tema>.css` får du da også en `<tema>.tailwind.css`.
 ### Legg temaet inn i Tailwind
 
 Importer Tailwind-temafilen først, deretter Designsystemets CSS, og `tailwindcss` til slutt.
-Temafilen starter med `@layer base, ds;`, som legger [Preflight](https://tailwindcss.com/docs/preflight) før komponentene våre, slik at den ikke overstyrer dem.
+Temafilen starter med `@layer base, tailwind-base, ds;`, som legger [Preflight](https://tailwindcss.com/docs/preflight) før komponentene våre, slik at den ikke overstyrer dem.
 Bruk `@import '…'` og ikke `@import url('…')`, siden Tailwind bare samler importer skrevet som vanlige strenger.
 
 <ds-tabs class="ds-tabs" data-wide-content>
