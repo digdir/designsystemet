@@ -23,10 +23,10 @@ export const SuggestionToggle = forwardRef<
 >(function SuggestionToggle(rest, ref) {
   return (
     <button
-      aria-expanded='false'
-      ref={ref}
-      suppressHydrationWarning // Since <ds-suggestion> adds attributes
       type='button'
+      aria-expanded='false'
+      suppressHydrationWarning // Since <ds-suggestion> adds attributes
+      ref={ref}
       {...rest}
     />
   );

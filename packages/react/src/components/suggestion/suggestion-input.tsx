@@ -35,25 +35,20 @@ declare global {
 export const SuggestionInput = forwardRef<
   HTMLInputElement,
   SuggestionInputProps
->(function SuggestionList({ value, onInput, onChange, ...rest }, ref) {
-  if (onChange)
+>(function SuggestionList(rest, ref) {
+  if (rest.onChange)
     console.warn(
       'SuggestionInput: Avoid using onChange, as Suggestion controls the Input. Use onSelectedChange on Suggestion instead, or onInput if fetching API results',
     );
-  if (value)
+  if (rest.value)
     console.warn(
       'SuggestionInput: Avoid using value, as Suggestion controls the Input. Use selected on Suggestion instead.',
     );
 
   return (
     <Input
-      ref={ref}
-      // placeholder='' // We need an empty placeholder for the clear button to be able to show/hide
-      // onInput={(event) => {
-      //   onInput?.(event); // Should run first
-      //   handleFilter?.(); // Filter if uncontrolled value
-      // }}
       suppressHydrationWarning // Since <ds-suggestion> adds attributes
+      ref={ref}
       {...rest}
     />
   );

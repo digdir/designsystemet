@@ -3,6 +3,8 @@ export { useIsomorphicLayoutEffect } from './deprecated/use-isomorphic-layout-ef
 export { useMediaQuery } from './deprecated/use-media-query/use-media-query';
 export type { UseCheckboxGroupProps } from './use-checkbox-group/use-checkbox-group';
 export { useCheckboxGroup } from './use-checkbox-group/use-checkbox-group';
+export type { CustomEventHandlers } from './use-custom-events/use-custom-events';
+export { useCustomEvents } from './use-custom-events/use-custom-events';
 export { useMergeRefs } from './use-merge-refs/use-merge-refs';
 export type { UsePaginationProps } from './use-pagination/use-pagination';
 export { usePagination } from './use-pagination/use-pagination';

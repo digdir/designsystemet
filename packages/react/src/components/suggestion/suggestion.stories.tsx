@@ -1,27 +1,19 @@
-// import { type InputEventHandler, useState } from 'react';
-// import { expect, userEvent, waitFor, within } from 'storybook/test';
-
-import { suggestion } from '@digdir/designsystemet-web';
+import { suggestion } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import preview from '../../../../../apps/storybook/.storybook/preview';
-// import { useDebounceCallback } from '../../utilities';
+import { useDebounceCallback } from '../../utilities';
 import {
   Button,
-  // Details,
+  Details,
   Divider,
   Field,
   Label,
   Paragraph,
-  // Spinner,
+  Spinner,
 } from '../';
-import {
-  EXPERIMENTAL_Suggestion as Suggestion,
-  // type SuggestionItem,
-  // type SuggestionMultipleProps,
-  // type SuggestionProps,
-  // type SuggestionSingleProps,
-} from './';
+import type { SuggestionProps } from './';
+import { EXPERIMENTAL_Suggestion as Suggestion } from './';
 
 const meta = preview.meta({
   title: 'Komponenter/Suggestion',
@@ -81,7 +73,7 @@ const DATA_PLACES = [
   'Lillestrøm',
 ];
 
-const _DATA_PEOPLE = [
+const DATA_PEOPLE = [
   { label: 'Lars', value: '#004' },
   { label: 'James', value: '#007' },
   { label: 'Nina', value: '#113' },
@@ -96,9 +88,8 @@ export const Preview = meta.story({
       <Field>
         <Label>Velg en destinasjon</Label>
         <Suggestion
-          selected={selected ?? undefined}
-          oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
           {...args}
+          oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
         >
           {suggestion(selected, ({ label, value }) => (
             <data key={value} value={value}>
@@ -328,416 +319,330 @@ export const ControlledMultiple = meta.story({
   },
 });
 
-// export const ControlledIndependentLabelValue = meta.story({
-//   render: (args) => {
-//     const [item, setItem] = useState<SuggestionItem | null>(DATA_PEOPLE[0]);
+export const ControlledIndependentLabelValue = meta.story({
+  render: (args) => {
+    const [selected, setSelected] = useState(suggestion(DATA_PEOPLE[0]));
 
-//     return (
-//       <>
-//         <Field>
-//           <Label>Velg person</Label>
-//           <Suggestion
-//             {...(args as SuggestionSingleProps)}
-//             selected={item}
-//             onSelectedChange={setItem}
-//             filter={false}
-//           >
-//             <Suggestion.Input />
-//             <Suggestion.Toggle />
-//             <Suggestion.Clear />
-//             <Suggestion.List>
-//               <Suggestion.Option data-empty />
-//               {DATA_PEOPLE.map(({ label, value }) => (
-//                 <Suggestion.Option key={value} label={label} value={value}>
-//                   {label}
-//                 </Suggestion.Option>
-//               ))}
-//             </Suggestion.List>
-//           </Suggestion>
-//         </Field>
-//         <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+    return (
+      <>
+        <Field>
+          <Label>Velg person</Label>
+          <Suggestion
+            {...args}
+            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+          >
+            {suggestion(selected, ({ label, value }) => (
+              <data key={value} value={value}>
+                {label}
+              </data>
+            ))}
+            <Suggestion.Input />
+            <Suggestion.Toggle />
+            <Suggestion.Clear />
+            <Suggestion.List>
+              <Suggestion.Option data-empty />
+              {DATA_PEOPLE.map(({ label, value }) => (
+                <Suggestion.Option key={value} label={label} value={value}>
+                  {label}
+                </Suggestion.Option>
+              ))}
+            </Suggestion.List>
+          </Suggestion>
+        </Field>
+        <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
-//         <div style={{ margin: 'var(--ds-size-2) 0' }}>
-//           Valgt person:
-//           <pre
-//             style={{
-//               fontSize: 14,
-//               height: 100,
-//               whiteSpace: 'pre-wrap',
-//             }}
-//           >
-//             {JSON.stringify(item)}
-//           </pre>
-//         </div>
+        <div style={{ margin: 'var(--ds-size-2) 0' }}>
+          Valgt person:
+          <pre
+            style={{
+              fontSize: 14,
+              height: 100,
+              whiteSpace: 'pre-wrap',
+            }}
+          >
+            {JSON.stringify(selected)}
+          </pre>
+        </div>
 
-//         <Button
-//           onClick={() => {
-//             setItem(DATA_PEOPLE[2]);
-//           }}
-//         >
-//           Sett Nina
-//         </Button>
-//       </>
-//     );
-//   },
-// });
+        <Button onClick={() => setSelected(suggestion(DATA_PEOPLE[2]))}>
+          Sett Nina
+        </Button>
+      </>
+    );
+  },
+});
 
-// export const CustomFilterAlt1 = meta.story({
-//   render: (args) => {
-//     return (
-//       <Field>
-//         <Label>Skriv inn et tall mellom 1-6</Label>
-//         <Suggestion
-//           {...args}
-//           filter={({ index, input }) =>
-//             !input.value || index === Number(input.value) - 1
-//           }
-//         >
-//           <Suggestion.Input />
-//           <Suggestion.Toggle />
-//           <Suggestion.Clear />
-//           <Suggestion.List>
-//             <Suggestion.Option data-empty />
-//             {DATA_PLACES.map((label) => (
-//               <Suggestion.Option key={label} value={label.toLowerCase()}>
-//                 {label}
-//               </Suggestion.Option>
-//             ))}
-//           </Suggestion.List>
-//         </Suggestion>
-//       </Field>
-//     );
-//   },
+export const CustomFilter = meta.story({
+  render: (args) => {
+    const [value, setValue] = useState('');
+    return (
+      <Field>
+        <Label>Skriv inn et tall mellom 1-6</Label>
+        <Suggestion {...args}>
+          <Suggestion.Input onInput={(e) => setValue(e.currentTarget.value)} />
+          <Suggestion.Toggle />
+          <Suggestion.Clear />
+          <Suggestion.List data-nofilter>
+            <Suggestion.Option data-empty />
+            {DATA_PLACES.filter((_, index) => {
+              return !value || index === Number(value) - 1;
+            }).map((label) => (
+              <Suggestion.Option key={label} value={label.toLowerCase()}>
+                {label}
+              </Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    );
+  },
+  parameters: {
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  },
+});
 
-//   parameters: {
-//     docs: {
-//       source: {
-//         type: 'code',
-//       },
-//     },
-//   },
-// });
+export const CustomMatching = meta.story({
+  render: (args) => {
+    const handleBeforeMatch: SuggestionProps['oncomboboxbeforematch'] = (e) => {
+      e.preventDefault(); // Prevent default matching
+      const { list, control } = e.currentTarget;
+      const value = control?.value.toLowerCase() || '';
 
-// export const CustomFilterAlt2 = meta.story({
-//   render: (args) => {
-//     const [selected, setSelected] = useState('');
+      for (const option of list?.options || [])
+        option.selected = option.value.toLowerCase().startsWith(value); // Setting selected indicates a match
+    };
 
-//     return (
-//       <Field>
-//         <Label>Skriv inn et tall mellom 1-6</Label>
-//         <Suggestion {...args} filter={false}>
-//           <Suggestion.Input
-//             onInput={({ currentTarget }) => setSelected(currentTarget.value)}
-//           />
-//           <Suggestion.Toggle />
-//           <Suggestion.Clear />
-//           <Suggestion.List>
-//             <Suggestion.Option data-empty />
-//             {DATA_PLACES.filter(
-//               (_, index) => !selected || index === Number(selected) - 1,
-//             ).map((label) => (
-//               <Suggestion.Option key={label}>{label}</Suggestion.Option>
-//             ))}
-//           </Suggestion.List>
-//         </Suggestion>
-//       </Field>
-//     );
-//   },
-// });
+    return (
+      <Field>
+        <Label>Matcher fra første bokstav</Label>
+        <Field.Description>
+          Prøv å skriv <strong>t</strong> og trykk Enter
+        </Field.Description>
+        <Suggestion {...args} oncomboboxbeforematch={handleBeforeMatch}>
+          <Suggestion.Input />
+          <Suggestion.Toggle />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Option data-empty />
+            {DATA_PLACES.map((label) => (
+              <Suggestion.Option key={label}>{label}</Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    );
+  },
+});
 
-// export const CustomMatching = meta.story({
-//   render: (args) => {
-//     const handleBeforeMatch: SuggestionProps['onBeforeMatch'] = (event) => {
-//       event.preventDefault(); // Prevent default matching
-//       const { list, control } = event.currentTarget;
-//       const value = control?.value.toLowerCase() || '';
+export const AlwaysShowAll = meta.story({
+  render: (args) => {
+    const [selected, setSelected] = useState(suggestion('Sogndal'));
 
-//       for (const option of Array.from(list?.options || []))
-//         option.selected = option.value.toLowerCase().startsWith(value); // Setting selected indicates a match
-//     };
+    return (
+      <Field>
+        <Label>Viser alle options også når valgt</Label>
+        <Suggestion
+          {...args}
+          oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+        >
+          {suggestion(selected, ({ label, value }) => (
+            <data key={value} value={value}>
+              {label}
+            </data>
+          ))}
+          <Suggestion.Input />
+          <Suggestion.Toggle />
+          <Suggestion.Clear />
+          <Suggestion.List data-nofilter>
+            <Suggestion.Option data-empty />
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place}>{place}</Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    );
+  },
+});
 
-//     return (
-//       <Field>
-//         <Label>Matcher fra første bokstav</Label>
-//         <Suggestion {...args} onBeforeMatch={handleBeforeMatch}>
-//           <Suggestion.Input />
-//           <Suggestion.Toggle />
-//           <Suggestion.Clear />
-//           <Suggestion.List>
-//             <Suggestion.Option data-empty />
-//             {DATA_PLACES.map((label) => (
-//               <Suggestion.Option key={label}>{label}</Suggestion.Option>
-//             ))}
-//           </Suggestion.List>
-//         </Suggestion>
-//       </Field>
-//     );
-//   },
-// });
+export const FetchExternal = meta.story({
+  render: (args) => {
+    const [value, setValue] = useState('');
+    const [options, setOptions] = useState<string[] | null>(null);
 
-// export const AlwaysShowAll = meta.story({
-//   render: (args) => {
-//     const [selected, setSelected] = useState<string | undefined>('Sogndal');
+    const handleInput: React.InputEventHandler<HTMLInputElement> = (event) => {
+      console.log(event);
+      const value = encodeURIComponent(event.currentTarget.value.trim());
+      setValue(event.currentTarget.value);
+      setOptions(null); // Clear options
+      if (value) debounced(value);
+    };
 
-//     return (
-//       <Field>
-//         <Label>Viser alle options også når valgt</Label>
-//         <Suggestion
-//           {...(args as SuggestionSingleProps)}
-//           selected={selected}
-//           filter={false}
-//           onSelectedChange={(item) => setSelected(item?.value)}
-//         >
-//           <Suggestion.Input />
-//           <Suggestion.Toggle />
-//           <Suggestion.Clear />
-//           <Suggestion.List>
-//             <Suggestion.Option data-empty />
-//             {DATA_PLACES.map((place) => (
-//               <Suggestion.Option key={place}>{place}</Suggestion.Option>
-//             ))}
-//           </Suggestion.List>
-//         </Suggestion>
-//       </Field>
-//     );
-//   },
-// });
+    const apiCall = async (value: string) => {
+      const api = `https://dummyjson.com/recipes/search?q=${value}`;
+      const data = await (await fetch(api)).json();
+      setOptions(data.recipes.map(({ name }: Record<string, string>) => name));
+    };
 
-// export const FetchExternal = meta.story({
-//   render: (args) => {
-//     const [value, setValue] = useState('');
-//     const [options, setOptions] = useState<string[] | null>(null);
+    const debounced = useDebounceCallback(apiCall, 500);
 
-//     const handleInput: InputEventHandler<HTMLInputElement> = (event) => {
-//       const value = encodeURIComponent(event.currentTarget.value.trim());
-//       setValue(event.currentTarget.value);
-//       setOptions(null); // Clear options
+    return (
+      <Field lang='en'>
+        <Label>Search for a recipe (in english)</Label>
+        <Suggestion
+          {...args}
+          style={
+            {
+              '--sr-plural': '%d country',
+              '--sr-singular': '%d countries',
+            } as React.CSSProperties
+          }
+        >
+          <Suggestion.Input type='search' onInput={handleInput} />
+          <Suggestion.Toggle />
+          <Suggestion.Clear />
+          <Suggestion.List data-nofilter>
+            {value ? (
+              <Suggestion.Option data-empty>
+                {options ? (
+                  'Ingen treff'
+                ) : (
+                  <span
+                    style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+                  >
+                    <Spinner aria-hidden='true' data-size='sm' /> Laster...
+                  </span>
+                )}
+              </Suggestion.Option>
+            ) : null}
+            {options?.map((option) => (
+              <Suggestion.Option key={option}>{option}</Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    );
+  },
+  parameters: {
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  },
+});
 
-//       if (!value) return;
+export const Multiple = meta.story({
+  render: (args) => {
+    return (
+      <Field>
+        <Label>Velg en destinasjon</Label>
+        <Suggestion {...args} data-multiple>
+          <Suggestion.Input />
+          <Suggestion.Toggle />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Option data-empty />
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place}>{place}</Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    );
+  },
+});
 
-//       debounced(value);
-//     };
+export const InDetails = meta.story({
+  render: (args) => {
+    return (
+      <Details>
+        <Details.Summary>Åpne details som har overflow: clip;</Details.Summary>
+        <Details.Content>
+          <Field>
+            <Label>Velg en destinasjon</Label>
+            <Suggestion {...args}>
+              <Suggestion.Input autoFocus />
+              <Suggestion.Toggle />
+              <Suggestion.Clear />
+              <Suggestion.List>
+                <Suggestion.Option data-empty />
+                {DATA_PLACES.map((place) => (
+                  <Suggestion.Option key={place}>{place}</Suggestion.Option>
+                ))}
+              </Suggestion.List>
+            </Suggestion>
+          </Field>
+        </Details.Content>
+      </Details>
+    );
+  },
+});
 
-//     const apiCall = async (value: string) => {
-//       const api = `https://restcountries.com/v2/name/${value}?fields=name`;
-//       const countries = await (await fetch(api)).json();
-//       setOptions(
-//         Array.isArray(countries) ? countries.map(({ name }) => name) : [],
-//       );
-//     };
+export const AutoPlacementOnXAxis = meta.story({
+  render: (args) => {
+    return (
+      <div style={{ paddingTop: '700px' }}>
+        <Field>
+          <Label>Velg en destinasjon</Label>
+          <Suggestion {...args} autoFocus>
+            <Suggestion.Input />
+            <Suggestion.Toggle />
+            <Suggestion.Clear />
+            <Suggestion.List>
+              <Suggestion.Option data-empty />
+              {DATA_PLACES.map((place) => (
+                <Suggestion.Option key={place}>{place}</Suggestion.Option>
+              ))}
+            </Suggestion.List>
+          </Suggestion>
+        </Field>
+      </div>
+    );
+  },
+});
 
-//     const debounced = useDebounceCallback(apiCall, 500);
+export const Creatable = meta.story({
+  render: (args) => {
+    return (
+      <Field>
+        <Label>Velg eller legg til en destinasjon</Label>
+        <Suggestion {...args} data-multiple data-creatable>
+          <Suggestion.Input />
+          <Suggestion.Toggle />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Option data-empty />
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place}>{place}</Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    );
+  },
+});
 
-//     return (
-//       <Field lang='en'>
-//         <Label>Search for countries (in english)</Label>
-//         <Suggestion
-//           {...args}
-//           filter={false}
-//           data-sr-singular='%d country'
-//           data-sr-plural='%d countries'
-//         >
-//           <Suggestion.Input type='search' onInput={handleInput} />
-//           <Suggestion.Toggle />
-//           <Suggestion.Clear />
-//           <Suggestion.List>
-//             {value ? (
-//               <Suggestion.Option data-empty>
-//                 {options ? (
-//                   'Ingen treff'
-//                 ) : (
-//                   <span
-//                     style={{ display: 'flex', alignItems: 'center', gap: 8 }}
-//                   >
-//                     <Spinner aria-hidden='true' data-size='sm' /> Laster...
-//                   </span>
-//                 )}
-//               </Suggestion.Option>
-//             ) : null}
-//             {options?.map((option) => (
-//               <Suggestion.Option key={option}>{option}</Suggestion.Option>
-//             ))}
-//           </Suggestion.List>
-//         </Suggestion>
-//       </Field>
-//     );
-//   },
-
-//   parameters: {
-//     docs: {
-//       source: {
-//         type: 'code',
-//       },
-//     },
-//   },
-// });
-
-// export const DefaultValue = meta.story({
-//   render: (args) => {
-//     return (
-//       <Field>
-//         <Label>Velg en destinasjon</Label>
-//         <Suggestion
-//           {...(args as SuggestionSingleProps)}
-//           defaultSelected={'Sogndal'}
-//         >
-//           <Suggestion.Input />
-//           <Suggestion.Toggle />
-//           <Suggestion.Clear />
-//           <Suggestion.List>
-//             <Suggestion.Option data-empty />
-//             {DATA_PLACES.map((place) => (
-//               <Suggestion.Option key={place}>{place}</Suggestion.Option>
-//             ))}
-//           </Suggestion.List>
-//         </Suggestion>
-//       </Field>
-//     );
-//   },
-// });
-
-// export const Multiple = meta.story({
-//   render: (args) => {
-//     return (
-//       <Field>
-//         <Label>Velg en destinasjon</Label>
-//         <Suggestion {...args}>
-//           <Suggestion.Input />
-//           <Suggestion.Toggle />
-//           <Suggestion.Clear />
-//           <Suggestion.List>
-//             <Suggestion.Option data-empty />
-//             {DATA_PLACES.map((place) => (
-//               <Suggestion.Option key={place}>{place}</Suggestion.Option>
-//             ))}
-//           </Suggestion.List>
-//         </Suggestion>
-//       </Field>
-//     );
-//   },
-
-//   args: {
-//     multiple: true,
-//   },
-// });
-
-// export const InDetails = meta.story({
-//   render: (args) => {
-//     return (
-//       <Details>
-//         <Details.Summary>Åpne details som har overflow: clip;</Details.Summary>
-//         <Details.Content>
-//           <Field>
-//             <Label>Velg en destinasjon</Label>
-//             <Suggestion {...args} autoFocus>
-//               <Suggestion.Input />
-//               <Suggestion.Toggle />
-//               <Suggestion.Clear />
-//               <Suggestion.List>
-//                 <Suggestion.Option data-empty />
-//                 {DATA_PLACES.map((place) => (
-//                   <Suggestion.Option key={place}>{place}</Suggestion.Option>
-//                 ))}
-//               </Suggestion.List>
-//             </Suggestion>
-//           </Field>
-//         </Details.Content>
-//       </Details>
-//     );
-//   },
-// });
-
-// export const AutoPlacementOnXAxis = meta.story({
-//   render: (args) => {
-//     return (
-//       <div style={{ paddingTop: '700px' }}>
-//         <Field>
-//           <Label>Velg en destinasjon</Label>
-//           <Suggestion {...args} autoFocus>
-//             <Suggestion.Input />
-//             <Suggestion.Toggle />
-//             <Suggestion.Clear />
-//             <Suggestion.List>
-//               <Suggestion.Option data-empty />
-//               {DATA_PLACES.map((place) => (
-//                 <Suggestion.Option key={place}>{place}</Suggestion.Option>
-//               ))}
-//             </Suggestion.List>
-//           </Suggestion>
-//         </Field>
-//       </div>
-//     );
-//   },
-// });
-
-// export const Creatable = meta.story({
-//   render: (args) => {
-//     return (
-//       <Field>
-//         <Label>Velg eller legg til en destinasjon</Label>
-//         <Suggestion {...args}>
-//           <Suggestion.Input />
-//           <Suggestion.Toggle />
-//           <Suggestion.Clear />
-//           <Suggestion.List>
-//             <Suggestion.Option data-empty />
-//             {DATA_PLACES.map((place) => (
-//               <Suggestion.Option key={place}>{place}</Suggestion.Option>
-//             ))}
-//           </Suggestion.List>
-//         </Suggestion>
-//       </Field>
-//     );
-//   },
-
-//   args: {
-//     multiple: true,
-//     creatable: true,
-//   },
-// });
-
-// export const WithoutToggleButton = meta.story({
-//   render: (args) => {
-//     return (
-//       <Field>
-//         <Label>Velg eller legg til en destinasjon</Label>
-//         <Suggestion {...args}>
-//           <Suggestion.Input />
-//           <Suggestion.Clear />
-//           <Suggestion.List>
-//             <Suggestion.Option data-empty />
-//             {DATA_PLACES.map((place) => (
-//               <Suggestion.Option key={place}>{place}</Suggestion.Option>
-//             ))}
-//           </Suggestion.List>
-//         </Suggestion>
-//       </Field>
-//     );
-//   },
-
-//   args: {
-//     multiple: true,
-//     creatable: true,
-//   },
-// });
-
-// export const WithDeprecatedDel = meta.story({
-//   render: (args) => {
-//     return (
-//       <Field>
-//         <Label>Velg eller legg til en destinasjon</Label>
-//         <Suggestion {...args}>
-//           <Suggestion.Input />
-//           {/** biome-ignore lint/a11y/useSemanticElements: deprecated */}
-//           <del role='button' aria-label='Tøm' tabIndex={0} />
-//           <Suggestion.List>
-//             <Suggestion.Option data-empty />
-//             {DATA_PLACES.map((place) => (
-//               <Suggestion.Option key={place}>{place}</Suggestion.Option>
-//             ))}
-//           </Suggestion.List>
-//         </Suggestion>
-//       </Field>
-//     );
-//   },
-// });
+export const WithoutToggleButton = meta.story({
+  render: (args) => {
+    return (
+      <Field>
+        <Label>Velg eller legg til en destinasjon</Label>
+        <Suggestion {...args} data-multiple>
+          <Suggestion.Input />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Option data-empty />
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place}>{place}</Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    );
+  },
+});

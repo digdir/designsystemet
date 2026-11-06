@@ -124,12 +124,11 @@ EXPERIMENTAL_Suggestion.Option.displayName = 'EXPERIMENTAL_Suggestion.Option';
 EXPERIMENTAL_Suggestion.Toggle.displayName = 'EXPERIMENTAL_Suggestion.Toggle';
 EXPERIMENTAL_Suggestion.Clear.displayName = 'EXPERIMENTAL_Suggestion.Clear';
 
-export type {
-  SuggestionItem,
-  SuggestionMultipleProps,
-  SuggestionProps,
-  SuggestionSingleProps,
-} from './suggestion';
+// Re-exports for ease of use
+export type { SuggestionItem } from '@digdir/designsystemet-web';
+export { suggestion } from '@digdir/designsystemet-web';
+
+export type { SuggestionProps } from './suggestion';
 export type { SuggestionClearProps } from './suggestion-clear';
 export type { SuggestionEmptyProps } from './suggestion-empty';
 export type { SuggestionInputProps } from './suggestion-input';

@@ -3,9 +3,6 @@ export type SuggestionValue = SuggestionItem | string | null | undefined;
 type Select = Partial<GlobalEventHandlersEventMap['comboboxbeforeselect']>;
 type Render<R> = (item: SuggestionItem, index: number) => R;
 
-const toItem = (v: SuggestionValue): SuggestionItem | null =>
-  typeof v === 'string' ? (v ? { label: v, value: v } : null) : v || null;
-
 /**
  * Helper to sanitize, update or render selected suggestion value, for easier controlled <ds-suggestion> in frameworks.
  * - No action: Returns the value sanitized to `{ label, value }` (non-empty strings become `{ label: string, value: string }`)
@@ -58,7 +55,9 @@ export function suggestion<R>(
   const item = { label, value: data || label }; // <data> without value attribute uses its text as value
 
   if (!Array.isArray(items)) return isConnected ? null : item;
-  console.log({ items, item });
   const rest = items.filter(({ value }) => value !== item.value); // Also prevents duplicates if state is out of sync
   return isConnected ? rest : [...rest, item];
 }
+
+const toItem = (v: SuggestionValue): SuggestionItem | null =>
+  typeof v === 'string' ? (v ? { label: v, value: v } : null) : v || null;

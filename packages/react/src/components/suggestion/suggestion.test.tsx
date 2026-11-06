@@ -1,12 +1,8 @@
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
-import {
-  Suggestion,
-  type SuggestionItem,
-  type SuggestionMultipleProps,
-  type SuggestionSingleProps,
-} from './suggestion';
+import type { SuggestionItem, SuggestionProps } from './suggestion';
+import { Suggestion } from './suggestion';
 import { SuggestionEmpty } from './suggestion-empty';
 import { SuggestionInput } from './suggestion-input';
 import { SuggestionList } from './suggestion-list';
@@ -46,11 +42,11 @@ function Places({
   children,
   emptyText = 'No matches',
   ...rest
-}: (SuggestionSingleProps | SuggestionMultipleProps) & {
+}: SuggestionProps & {
   emptyText?: string;
 }) {
   return (
-    <Suggestion {...(rest as SuggestionSingleProps)}>
+    <Suggestion {...rest}>
       <SuggestionInput aria-label={placeLabel} />
       <SuggestionToggle />
       <SuggestionList>
