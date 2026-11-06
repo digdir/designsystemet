@@ -159,7 +159,7 @@ body {
   font-size: var(--ds-body-md-font-size);
 }
 
-/* @TODO: remove from this file in v2, it also exists in utils.css - where it should live */
+/* @deprecated will be removed in v2, it also exists in utils.css - where it should live */
 /**
  * Visually hide an element, but leave it available for screen readers
  */
