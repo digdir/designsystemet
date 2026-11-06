@@ -106,12 +106,11 @@ For hver `<tema>.css` får du da også en `<tema>.tailwind.css`.
 }
 ```
 
-Standardtemaet i `@digdir/designsystemet-css` er bygget med `"v3"`.
-
 ### Legg temaet inn i Tailwind
 
-Importer Tailwind-temafilen etter `tailwindcss`. Designsystemets CSS må importeres før `tailwindcss`,
-slik at [Preflight](https://tailwindcss.com/docs/preflight) ikke overstyrer komponentene våre.
+Importer Tailwind-temafilen først, deretter Designsystemets CSS, og `tailwindcss` til slutt.
+Temafilen starter med `@layer base, tailwind-base, ds;`, som legger [Preflight](https://tailwindcss.com/docs/preflight) før komponentene våre, slik at den ikke overstyrer dem.
+Bruk `@import '…'` og ikke `@import url('…')`, siden Tailwind bare samler importer skrevet som vanlige strenger.
 
 <ds-tabs class="ds-tabs" data-wide-content>
   <ds-tablist>
@@ -120,20 +119,18 @@ slik at [Preflight](https://tailwindcss.com/docs/preflight) ikke overstyrer komp
   </ds-tablist>
   <ds-tabpanel>
 ```css
-@import '@digdir/designsystemet-css/index.css';
-@import 'designsystemet/<ditt-tema>.css';
-
-@import 'tailwindcss';
 @import 'designsystemet/<ditt-tema>.tailwind.css';
+@import '@digdir/designsystemet-css';
+@import 'designsystemet/<ditt-tema>.css';
+@import 'tailwindcss';
 ```
   </ds-tabpanel>
   <ds-tabpanel>
 ```css
-@import '@digdir/designsystemet-css/index.css';
-@import '@digdir/designsystemet-css/theme.css';
-
-@import 'tailwindcss';
 @import '@digdir/designsystemet-css/theme/designsystemet.tailwind.css';
+@import '@digdir/designsystemet-css';
+@import '@digdir/designsystemet-css/theme.css';
+@import 'tailwindcss';
 ```
   </ds-tabpanel>
 </ds-tabs>
