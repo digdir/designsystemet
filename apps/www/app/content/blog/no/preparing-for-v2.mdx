@@ -1,0 +1,93 @@
+---
+title: Et ryddigere designsystemet.no v2 er på vei - slik blir du klar
+description: V2 er ikke en drastisk omskriving, men en opprydding og enda bedre utnyttelse av webstandarder. Det gir deg mindre å vedlikeholde, bedre ytelse og økt rammeverkkompatibilitet.
+date: 2026-10-26
+author: designsystemet.no
+---
+
+Da `@digdir/designsystemet-web` ble lansert i februar, tok designsystemet.no et viktig steg i retning av prosjektets visjon: å tilby små, robuste byggeklosser basert på webstandarder, som er enkle å bruke og bygge videre på for alle.
+
+I v2 vil deprecated kode og noen gamle React-løsninger fjernes til fordel for funksjonalitet innebygd i nettleseren. Eksempelvis kan 
+[`focusgroup`](/no/components/utilities/focusgroup) attributt erstatte `RovingFocus`, [`command`](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) attributt kan erstatte
+`TriggerContext`-komponenter og CSS kan gjøre enda mer.
+
+Vi vet at breaking changes kan ta tid. 
+Derfor lanserer vi blant annet ny funksjonalitet som "experimental", og lar deprecations leve en stund.
+Når vi nå gjør en opprydding, er også viktig for oss at overgangen blir smidig.
+Her er noen tips til hvordan du allerede nå kan bli klar for v2:
+
+## Slik forbereder du deg
+
+1. **Bruk siste 1.x-versjon** av `@digdir/designsystemet*`-pakkene
+2. **Se etter advarsler:** TypeScript markerer utgåtte props i editoren, React- og web-pakken skriver advarsler i konsoll, og CLI varsler i terminal.
+3. **Gå gjennom justeringer** i tabellene under:
+
+<div data-size="sm" style={{ gridColumn: 'content-page-start / content-page-end', marginInline: 'auto', maxWidth: 1200 }}>
+
+| Komponent | Gå vekk fra dette (allerede deprecated) | Konsekvens hvis du ikke endrer | Gjør dette (virker i både v1 og v2) |
+| --- | --- | --- | --- |
+| **Label** | `weight` eller `data-weight` | <Tag data-color="success">Ingen</Tag> | Fjern attributt - vekt settes automatisk |
+| **Avatar** | `initials="AB"` eller <br /> `data-initials="AB"` | <Tag data-color="info">Lav</Tag> Ikon vises i stedet for initialer | `<Avatar>AB</Avatar>` |
+| **Avatar** | `variant="square"` eller <br />`data-variant="square"` | <Tag data-color="info">Lav</Tag> Rund avatar | Style `--dsc-avatar-radius: …` |
+| **Link** | `--dsc-link-background--active` | <Tag data-color="info">Lav</Tag> Active uten bakgrunn er ny standard | Style `.ds-link:active` hvis du vil |
+| **Suggestion** | `<del>` som tøm-knapp | <Tag data-color="info">Lav</Tag> Tøm-knapp skjules | `<button type="reset">` |
+| **ToggleGroup** | `data-toggle-group="Tekstjustering"` | <Tag data-color="info">Lav</Tag> Skjermleser sier ikke label | `focusgroup="radiogroup" aria-label="Tekstjustering"` |
+| **Avatar** | `data-size="xs"`<br />(`sm`/`md`/`lg` virker fortsatt) | <Tag data-color="warning">Medium</Tag> Større avatar | Style `--dsc-avatar-size: …` |
+| **Details** | `--dsc-details-border-block-wdith` (skrivefeil i `wdith`) | <Tag data-color="warning">Medium</Tag> Kantbredde endres | Style `--dsc-details-border-block-width` |
+| **Dialog** | `<form method="dialog"><button>` for å lage lukke-knapp | <Tag data-color="warning">Medium</Tag> Lukk-knapp mister styling | `<button command="close" commandfor="DIALOG-ID">` |
+| **Field** + **Fieldset** | `<p>` for beskrivelse | <Tag data-color="warning">Medium</Tag> Skjermleser mister input-kobling | `<p data-field="description">` |
+| **Search** | `.ds-search`, `search.css`, `--dsc-search-*` | <Tag data-color="danger">Høy</Tag> Komponenten mister styling | `input[type="search"]` og eventuelt suggesion rundt for lukkeknapp |
+| **SkipLink** | `.ds-skiplink`, `skiplink.css` | <Tag data-color="danger">Høy</Tag> Komponenten mister styling | `.ds-skip-link`, `skip-link.css` |
+| **ToggleGroup** | `.ds-togglegroup`, `togglegroup.css` | <Tag data-color="danger">Høy</Tag> Komponenten mister styling | `.ds-toggle-group`, `toggle-group.css` |
+
+</div>
+
+### Endringer bare for React
+
+Disse endringene gjelder bare `@digdir/designsystemet-react`.
+
+<div data-size="sm" style={{ gridColumn: 'content-page-start / content-page-end', marginInline: 'auto', maxWidth: 1200 }}>
+
+
+| Komponent | Gå vekk fra dette (allerede deprecated) | Konsekvens | Gjør dette (virker i både v1 og v2) |
+| --- | --- | --- | --- |
+| **Tooltip** | `type` | <Tag data-color="success">Ingen</Tag> Type er automatisert | Fjern propen |
+| **ToggleGroup** | `icon` på `ToggleGroup.Item` **TODO EIRIK** | <Tag data-color="success">Ingen</Tag> Icon har ikke gjort noe på en stund | Fjern propen |
+| **Suggestion.List** | `singular` og `plural` | <Tag data-color="info">Lav</Tag> Automatiske standardtekster | `--dsc-suggestion-sr-singluar` og `--dsc-suggestion-sr-plural` for tekstendring |
+| **Field.Counter** | `hint` | <Tag data-color="info">Lav</Tag> Automatiske standardtekster | `--dsc-field-counter-over` og `--dsc-field-counter-under` for tekstendring |
+| **Tooltip** | `open` | <Tag data-color="info">Lav</Tag> Typescript klager | Bruk [`Popover`](/no/components/docs/popover/overview) for programmatisk åpning  |
+| **Skeleton** | `characters={10}` | <Tag data-color="info">Lav</Tag> Typescript klager | `width` eller tekst som barn |
+| **Typer** | `@digdir/designsystemet-react/colors` og `@digdir/designsystemet/types` |  <Tag data-color="info">Lav</Tag> Typescript klager | Importer typer fra `@digdir/designsystemet-types`|
+| **Dialog**, **Field**, **ErrorSummary** + **Pagination** | `asChild` | <Tag data-color="info">Lav</Tag> Typescript klager | Fjern propen|
+| **AvatarStack** | `gap`, `avatarSize` og `overlap` | <Tag data-color="warning">Medium</Tag> Avstand og størrelse endrer seg | `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` og `--dsc-avatar-stack-overlap` |
+| **Pagination** | `data-variant` på knappene | <Tag data-color="warning">Medium</Tag> Styling av `data-variant` slutter dette å virke | Style basert på `ara-current` |
+**ToggleGroup** | `data-variant` på knappene | <Tag data-color="warning">Medium</Tag> Styling av `data-variant` slutter dette å virke | Style basert på `checked` |
+| **AvatarStack** | `suffix="+3"` | <Tag data-color="warning">Medium</Tag> +3 vises ikke | `<li>+3</li>` sist i stabelen |
+| **Dialog** | `<button data-command="close">` | <Tag data-color="danger">Høy</Tag> Lukk-knapp slutter å virke | `<button command="close" commandfor="min-dialog">` |
+| **Select** | `readOnly`| <Tag data-color="danger">Høy</Tag> Feltet kan redigeres | `aria-readonly` |
+| **Dialog** | `<Dialog.TriggerContext>` og `<Dialog.Trigger>` | <Tag data-color="danger">Høy</Tag> Bygg feiler | `<Button command="show-modal" commandfor="min-dialog">` |
+| **Dropdown** + **Popover** | `<Popover.TriggerContext>` og `<Popover.Trigger>` |  <Tag data-color="danger">Høy</Tag> Bygg feiler | `<Button popovertarget="min-popover">` |
+| **RovingFocus** | `<RovingFocusRoot>` og `<RovingFocusItem>` | <Tag data-color="danger">Høy</Tag> Bygg feiler | `<div focusgroup="toolbar">` |
+| **AvatarStack** | `EXPERIMENTAL_AvatarStack` | <Tag data-color="danger">Høy</Tag> Bygg feiler | `AvatarStack` | 
+| **Combobox** | `<Combobox>` | <Tag data-color="danger">Høy</Tag> Bygg feiler | [`<Suggestion>`](/no/components/docs/suggestion/overview) |
+| **Search** | `<Search>` med `Search.Input`, `Search.Clear` og `Search.Button` | <Tag data-color="danger">Høy</Tag> Bygg feiler |  `<Field><Input type="search" /></Field>`, eller `Suggestion` med `Suggestion.Clear` for tøm-knapp |
+| **Hjelpefunksjoner** | `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` og `MergeRight` | <Tag data-color="danger">Høy</Tag> Bygg feiler | Et eget hjelpebibliotek eller egen funksjon |
+
+</div>
+
+## Endringer i CLI
+
+CLI vil ikke lengre støtte at parameter `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` og `--theme`.
+Bruk heller en [konfigurasjonsfil](/no/fundamentals/start-here/own-theme).
+
+## Spørsmål?
+
+Ta kontakt med oss på [Slack](https://designsystemet.no/slack) eller opprett en sak på [GitHub (github.com)](https://github.com/digdir/designsystemet/issues) hvis du står fast eller mener vi har glemt noe.
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+  ]}
+/>
+
+<style>{`.u-rich-text table { max-width: none; table-layout: fixed; position: relative; z-index: 2; background: var(--ds-color-background-default) } .u-rich-text th:first-child { width: 9em } `}</style>
