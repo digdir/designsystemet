@@ -520,36 +520,3 @@ export const EmailSuggestionsEn = () => {
     </Field>
   );
 };
-
-export const SearchWithClear = () => {
-  return (
-    <form onSubmit={(event) => event.preventDefault()}>
-      <EXPERIMENTAL_Suggestion>
-        <EXPERIMENTAL_Suggestion.Input
-          type='search'
-          name='search'
-          aria-label='Søk'
-        />
-        <EXPERIMENTAL_Suggestion.Clear />
-      </EXPERIMENTAL_Suggestion>
-    </form>
-  );
-};
-
-export const SearchWithClearEn = () => {
-  return (
-    <form
-      // Prevent navigation from Storybook
-      onSubmit={(event) => event.preventDefault()}
-    >
-      <EXPERIMENTAL_Suggestion>
-        <EXPERIMENTAL_Suggestion.Input
-          type='search'
-          name='search'
-          aria-label='Search'
-        />
-        <EXPERIMENTAL_Suggestion.Clear />
-      </EXPERIMENTAL_Suggestion>
-    </form>
-  );
-};
