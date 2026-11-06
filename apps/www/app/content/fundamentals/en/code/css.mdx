@@ -108,7 +108,7 @@ For every `<theme>.css` you will then also get a `<theme>.tailwind.css`.
 ### Add the theme to Tailwind
 
 Import the Tailwind theme file first, then Designsystemet's CSS, and `tailwindcss` last.
-The Tailwind theme file starts with `@layer base, ds;`, which puts [Preflight](https://tailwindcss.com/docs/preflight) before our components, so it does not override them.
+The Tailwind theme file starts with `@layer base, tailwind-base, ds;`, which puts [Preflight](https://tailwindcss.com/docs/preflight) before our components, so it does not override them.
 Use `@import '…'` and not `@import url('…')`, as Tailwind only bundles plain string imports.
 
 <ds-tabs class="ds-tabs" data-wide-content>
