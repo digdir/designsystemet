@@ -3,6 +3,22 @@ import type { OutputFile } from '../../types.ts';
 /** Tailwind CSS major versions a theme file can be generated for. */
 export type TailwindVersion = 'v3' | 'v4';
 
+/**
+ * Usage banner prepended to the generated Tailwind file.
+ * The `@layer` statement orders Tailwind's Preflight (`base`) before Designsystemet (`ds`),
+ * so it only takes effect when this file is imported before any other CSS.
+ */
+const banner = `/*
+Requires Tailwind CSS {version}. Import this file first, before designsystemet.no and Tailwind:
+@import '<your-designsystemet-theme>.tailwind.css';
+@import '@digdir/designsystemet-css';
+@import '<your-designsystemet-theme>.css';
+@import 'tailwindcss';
+*/
+
+@layer base, tailwind-base, ds;
+`;
+
 /** Tailwind theme namespaces, mapped to their CSS variable prefix */
 const namespaces = {
   color: '--color-',
@@ -24,7 +40,9 @@ export const createTailwindCSSFiles = (cssFiles: OutputFile[], version: Tailwind
         const tokens = scrapeTailwindTokens(file.output);
         const tailwindFile = {
           destination: file.destination.replace('.css', '.tailwind.css'),
-          output: version === 'v3' ? generateTailwindV3(tokens) : generateTailwindV4(tokens),
+          output:
+            banner.replace('{version}', version) +
+            (version === 'v3' ? generateTailwindV3(tokens) : generateTailwindV4(tokens)),
         };
         return tailwindFile;
       }

@@ -6,7 +6,7 @@ import { createTailwindCSSFiles, type TailwindVersion } from './tailwind.ts';
 
 // The `@theme` (v3) or `@theme inline` (v4) block, and the variable declarations in it,
 // e.g. `  --color-text-default: var(--ds-color-text-default);`
-const THEME_BLOCK = /^@theme(?: inline)? \{([^}]*)\}/;
+const THEME_BLOCK = /^@theme(?: inline)? \{([^}]*)\}/m;
 const THEME_VARIABLE = /^\s*(--[a-z0-9-]+): var\((--ds-[a-z0-9-]+)\);$/gm;
 
 const themeCSS = `
@@ -76,14 +76,14 @@ describe('createTailwindCSSFiles', () => {
   it('uses @theme inline for v4, so utilities follow data attributes without a [data-color] block', () => {
     const [file] = generate('v4');
 
-    expect(file.output.startsWith('@theme inline {')).toBe(true);
+    expect(file.output).toMatch(/^@theme inline \{/m);
     expect(file.output).not.toContain('[data-color]');
   });
 
   it('uses @theme and a [data-color] block for v3', () => {
     const [file] = generate('v3');
 
-    expect(file.output.startsWith('@theme {')).toBe(true);
+    expect(file.output).toMatch(/^@theme \{/m);
     expect(file.output).toContain('[data-color] {');
   });
 });
