@@ -68,8 +68,8 @@
   &:lang(no),
   &:lang(nb),
   &:lang(nn) {
-    --dsc-suggestion-create-text: 'Legg til "{value}"';
-    --dsc-suggestion-empty-text: 'Tomt';
+    --dsc-suggestion-create-text: 'Legg til "' var(--value) '"';
+    --dsc-suggestion-empty-text: 'Ingen søketreff';
     --dsc-suggestion-sr-added: 'La til';
     --dsc-suggestion-sr-clear: 'Fjern tekst';
     --dsc-suggestion-sr-empty: 'Ingen valgte';
@@ -84,8 +84,8 @@
     --dsc-suggestion-sr-toggle: 'Forslag';
   }
   &:lang(en) {
-    --dsc-suggestion-create-text: 'Add "{value}"';
-    --dsc-suggestion-empty-text: 'Empty';
+    --dsc-suggestion-create-text: 'Add "' var(--value) '"';
+    --dsc-suggestion-empty-text: 'No hits';
     --dsc-suggestion-sr-added: 'Added';
     --dsc-suggestion-sr-clear: 'Clear text';
     --dsc-suggestion-sr-empty: 'None selected';
@@ -213,9 +213,8 @@
       gap: var(--dsc-suggestion-list-gap);
     }
 
-    /* Hide list before it has been placed by floating-ui. data-is-floating is used as a whitelist and is added by suggestion.ts (web) */
-    &[data-is-floating]:not([style*='translate']) {
-      opacity: 0;
+    &:not([style*='translate']) {
+      opacity: 0; /* Hide list before it has been placed by floating-ui */
     }
   }
 
@@ -256,10 +255,6 @@
     /* Use same effect as hover instead of regular focus ring, because we want to render the focus ring inside the u-datalist */
     &[data-activedescendant] {
       @composes ds-focus--visible--middle from './base.css';
-    }
-
-    &[data-empty]:not([value]) {
-      display: none; /* Hide empty option before typing has started */
     }
   }
 
@@ -303,26 +298,29 @@
   }
 
   /**
-   * Creatable
+   * data-empty
    */
-  &:not([data-creatable]) > u-datalist > u-option[data-empty] {
-    padding-inline-start: var(--dsc-suggestion-option-padding);
-    background: none;
-    cursor: default;
-
-    &[data-empty]:empty::after {
+  & > u-datalist > u-option[data-empty] {
+    &:empty::after {
       content: var(--dsc-suggestion-empty-text);
     }
     &::before {
       display: none;
     }
   }
+  &:is([data-creatable='false'], :not([data-creatable])) > u-datalist:not(:has(> u-option[aria-hidden='false']:not([data-empty]))) > u-option[data-empty] {
+    background: none;
+    cursor: default;
+    display: block; /* Show only when no matching filter */
+    padding-inline-start: var(--dsc-suggestion-option-padding); /* Only remove padding when non-creatable */
+  }
 
-  &[data-creatable] > u-datalist > u-option[data-empty] {
-    --_ds-data-empty: var(--dsc-suggestion-create-text); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
-
+  &[data-creatable]:not([data-creatable='false']) > u-datalist > u-option[data-empty] {
     &:empty::after {
-      content: attr(data-create);
+      content: var(--dsc-suggestion-create-text);
+    }
+    &[aria-selected='true']:empty::after {
+      content: var(--value);
     }
     &::before {
       display: block;
@@ -343,19 +341,11 @@
   & > input {
     grid-area: input;
   }
-  /* Hide focus ring when u-combobox temporarily moves focus to input for screen reader purposes */
-  & > input[inputmode='none'] {
-    box-shadow: none;
-    outline: none;
-  }
-
-  /* Hide x native icon of input type="search" since we have a custom x-component */
-
   & > input[type='search'] {
     padding-inline-start: calc(var(--dsc-suggestion-search-icon-spacing) + var(--dsc-suggestion-search-icon-size) + var(--dsc-suggestion-clear-gap));
   }
   & > input[type='search']::-webkit-search-cancel-button {
-    display: none;
+    display: none; /* Hide x native icon of input type="search" since we have a custom x-component */
   }
   &:has(> input[type='search'])::after {
     grid-area: input;
@@ -432,7 +422,7 @@
   & > button[aria-expanded]:empty::before {
     mask-image: var(--dsc-suggestion-toggle-icon-url);
   }
-  & > input[aria-expanded='true'] ~ button[aria-expanded]::before {
+  & > button[aria-expanded='true']::before {
     rotate: 180deg;
   }
 

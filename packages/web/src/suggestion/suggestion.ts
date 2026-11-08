@@ -1,25 +1,20 @@
 import { UHTMLComboboxElement } from '@u-elements/u-combobox';
 import {
   attr,
-  attrOrCSS,
   customElements,
   off,
   on,
   onMutation,
   QUICK_EVENT,
-  useId,
-  warn,
 } from '../utils/utils';
+
+import './u-datalist'; // TODO EIRIK REMOVE WHEN DONE TESTING
 
 export * from '@u-elements/u-datalist'; // Load and export u-datalist since this is a pure polyfill and not custom Designsystemet elements, should run before suggestion
 export * from './suggestion-helper';
 
-const ARIA_HIDDEN = 'aria-hidden';
-const ATTR_CREATE = 'data-create';
 const ATTR_EMPTY = 'data-empty';
 const EVENTS_EMPTY = 'comboboxafterselect input';
-const REGEX_CREATE = /\{value\}|%s/; // Support both new %s and old {value} syntax
-const TRUE = 'true';
 const MUTATIONS: MutationObserverInit = {
   attributeFilter: ['disabled', 'hidden', 'label'], // React <Suggestion> filters by setting disabled on options
   characterData: true,
@@ -52,24 +47,18 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 }
 
 const onMutations = (self: DSSuggestionElement) => {
-  let { _listbox, control, list } = self;
-
-  if (control) attr(control, 'popovertarget', list ? useId(list) : null);
-  if (!list) list = self.querySelector('u-datalist'); // Fallback to u-datalist since React can render the ds-suggestion before u-datalist is connected
-  if (list) {
-    attr(list, 'data-is-floating', TRUE); // identifier for css to toggle opacity when it is placed by floating-ui.
-    attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
-  }
+  const { list } = self;
+  if (list) attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
   handleEmpty({ currentTarget: self });
 };
 
 const isHidden = (opt: HTMLOptionElement) =>
-  opt.disabled || opt.hidden || opt.getAttribute(ARIA_HIDDEN) === TRUE;
+  opt.disabled || opt.hidden || opt.getAttribute('aria-hidden') === 'true';
 
 const handleEmpty = (event: Partial<Event>) => {
   const self = event.currentTarget as DSSuggestionElement;
   const { creatable, control, options } = self;
-  if (!options) return;
+  if (!creatable || !options) return;
 
   const value = control?.value.trim() || '';
   const query = value.toLowerCase();
@@ -87,23 +76,10 @@ const handleEmpty = (event: Partial<Event>) => {
   }
   if (!emptyOpt) return;
 
-  attr(emptyOpt, 'hidden', hide ? '' : null); // Using attr() as setting an unchanged attribute would trigger the MutationObserver again
+  attr(emptyOpt, 'hidden', !hide && value ? null : ''); // Using attr() as setting an unchanged attribute would trigger the MutationObserver again
   attr(emptyOpt, 'label', value); // Ensures option is not filtered out by <u-combobox>
   attr(emptyOpt, 'value', creatable ? value : ''); // Ensures clicking option does nothing
-
-  if (creatable) {
-    const hasValue = self.values.includes(value);
-    const text = attrOrCSS(emptyOpt, ATTR_EMPTY);
-    const hint =
-      (!hasValue && text?.replace(REGEX_CREATE, () => value)) || value; // Only show "Legg til" if not already created
-
-    if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, emptyOpt);
-    else attr(emptyOpt, ATTR_EMPTY, text); // Speed up by caching attribute value
-
-    const disabled = hasValue && emptyOpt.textContent ? TRUE : null;
-    attr(emptyOpt, 'disabled', disabled); // Hide hint if already created
-    attr(emptyOpt, ATTR_CREATE, hint);
-  }
+  self.style.setProperty('--value', value ? JSON.stringify(value) : '');
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:
