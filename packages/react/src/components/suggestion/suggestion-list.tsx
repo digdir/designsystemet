@@ -15,11 +15,6 @@ export type SuggestionListProps = MergeRight<
      * Whether to enable auto placement.
      */
     'data-autoplacement'?: boolean;
-    /**
-     * Whether to enable auto placement.
-     * @deprecated Please use `data-autoplacement` instead
-     */
-    autoPlacement?: boolean;
   }
 >;
 
@@ -37,11 +32,10 @@ export type SuggestionListProps = MergeRight<
 export const SuggestionList = forwardRef<
   HTMLDataListElement,
   SuggestionListProps
->(function SuggestionList({ autoPlacement, className, ...rest }, ref) {
+>(function SuggestionList({ className, ...rest }, ref) {
   return (
     <u-datalist
       class={className} // Using "class" since React does not translate className on custom elements
-      data-autoplacement={autoPlacement || undefined}
       suppressHydrationWarning // Since <u-datalist> adds attributes
       ref={ref}
       {...rest}

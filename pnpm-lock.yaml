@@ -834,11 +834,11 @@ importers:
         specifier: ^1.8.0
         version: 1.8.0
       '@u-elements/u-combobox':
+        specifier: ^3.0.3
+        version: 3.0.3
+      '@u-elements/u-datalist':
         specifier: ^3.0.2
         version: 3.0.2
-      '@u-elements/u-datalist':
-        specifier: ^3.0.0
-        version: 3.0.0
       '@u-elements/u-details':
         specifier: ^1.0.0
         version: 1.0.0
@@ -2703,11 +2703,11 @@ packages:
   '@types/ws@8.18.1':
     resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
-  '@u-elements/u-combobox@3.0.2':
-    resolution: {integrity: sha512-HyRDXRSI7T/KoUfbiitpBeDv01/O5zfoC7jnM+tfSfbKokiG0O11Yr12Tm+XRFQy+a4cAvyS2SbdT5jB7lYFcg==}
+  '@u-elements/u-combobox@3.0.3':
+    resolution: {integrity: sha512-hNV1Z52xdzcKpgQeVGtTftcva4FELTk8RIvzMUV/pD22GkbQXNKhP4T5eacZwdaDWtkMGCDfUBYjzZ3Rc/HTGA==}
 
-  '@u-elements/u-datalist@3.0.0':
-    resolution: {integrity: sha512-Om9FoDbVYQ69eIBxKTrAUUtaT3lttbXv4BQiQEO6p0gbYzKvVHlPKzcfzBOB1NQtWFEfC1lt37hjxfg5Z34qEg==}
+  '@u-elements/u-datalist@3.0.2':
+    resolution: {integrity: sha512-GLwGElVif6CWBAvptiC6/+NirmxxkbaZRxQw5jCSKWIwav36OjMwYbbhTMYw7XFB8m1KMnaq+NvVMyTi+U6dwg==}
 
   '@u-elements/u-details@1.0.0':
     resolution: {integrity: sha512-CA0w0VTH/vWWouFWEw7XIws3RUCBm2dh7ity+sbDXgpc6yz5NkoMpeDTdB/DHpI+/YInULz0XLOTrw8b7KX3Qg==}
@@ -7574,9 +7574,9 @@ snapshots:
     dependencies:
       '@types/node': 24.19.2
 
-  '@u-elements/u-combobox@3.0.2': {}
+  '@u-elements/u-combobox@3.0.3': {}
 
-  '@u-elements/u-datalist@3.0.0': {}
+  '@u-elements/u-datalist@3.0.2': {}
 
   '@u-elements/u-details@1.0.0': {}
 

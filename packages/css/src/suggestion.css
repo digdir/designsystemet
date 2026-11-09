@@ -68,7 +68,7 @@
   &:lang(no),
   &:lang(nb),
   &:lang(nn) {
-    --dsc-suggestion-create-text: 'Legg til "' var(--value) '"';
+    --dsc-suggestion-create-text: 'Legg til';
     --dsc-suggestion-empty-text: 'Ingen søketreff';
     --dsc-suggestion-sr-added: 'La til';
     --dsc-suggestion-sr-clear: 'Fjern tekst';
@@ -84,7 +84,7 @@
     --dsc-suggestion-sr-toggle: 'Forslag';
   }
   &:lang(en) {
-    --dsc-suggestion-create-text: 'Add "' var(--value) '"';
+    --dsc-suggestion-create-text: 'Add';
     --dsc-suggestion-empty-text: 'No hits';
     --dsc-suggestion-sr-added: 'Added';
     --dsc-suggestion-sr-clear: 'Clear text';
@@ -106,6 +106,7 @@
   --sr-found: var(--dsc-suggestion-sr-found);
   --sr-invalid: var(--dsc-suggestion-sr-invalid);
   --sr-items: var(--dsc-suggestion-sr-items);
+  --sr-of: var(--dsc-suggestion-sr-of);
   --sr-plural: var(--dsc-suggestion-sr-plural);
   --sr-remove: var(--dsc-suggestion-sr-remove);
   --sr-removed: var(--dsc-suggestion-sr-removed);
@@ -200,13 +201,6 @@
     overscroll-behavior: contain;
     padding: var(--dsc-suggestion-list-padding);
 
-    /* If not using popover for the list */
-    &:not([popover]) {
-      margin-top: var(--dsc-suggestion-list-offset);
-      z-index: 1600;
-      inset: 100% 0 auto 0;
-    }
-
     &:not([hidden]):not(:empty) {
       display: grid;
       align-content: start;
@@ -261,46 +255,51 @@
   /**
    * Multiple
    */
-  &[data-multiple]:has(data) {
-    row-gap: var(--ds-size-1);
-  }
-  /* ::part(items) comes from u-combobox */
-  &[data-multiple]::part(items) {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--dsc-suggestion-chip-gap);
-    max-width: 100%;
-  }
-  &[data-multiple] > u-datalist > u-option {
-    padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));
-    /*mock checkbox styles copied from input.css*/
-    &::before {
-      content: '';
-      position: absolute;
-      inset-inline-start: var(--dsc-suggestion-option-padding);
-      mask: none;
-      width: var(--dsc-suggestion-option-checkmark-size);
-      height: var(--dsc-suggestion-option-checkmark-size);
-      border-radius: var(--ds-border-radius-sm);
-      outline: var(--dsc-suggestion-option-checkmark-border) solid var(--dsc-suggestion-option-checkmark-border-color);
-      outline-offset: calc(-1 * var(--dsc-suggestion-option-checkmark-border));
-      padding: 0.188rem;
-      box-sizing: border-box;
-      translate: 0 calc(0.5lh - 50%);
+  &[data-multiple]:not([data-multiple='false']) {
+    &:has(data) {
+      row-gap: var(--ds-size-1);
     }
-    &[selected]::before {
-      background-color: var(--ds-color-base-default);
-      color: var(--ds-color-base-contrast-default);
-      outline: none;
-      --_stroke-width: 0.05em;
-      @composes ds-checkbox--checked from './base.css';
+    /* ::part(items) comes from u-combobox */
+    &::part(items) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--dsc-suggestion-chip-gap);
+      max-width: 100%;
+    }
+    & > u-datalist > u-option {
+      padding-inline-start: calc(var(--dsc-suggestion-option-padding) + var(--dsc-suggestion-option-checkmark-size) + var(--dsc-suggestion-option-gap));
+      /*mock checkbox styles copied from input.css*/
+      &::before {
+        content: '';
+        position: absolute;
+        inset-inline-start: var(--dsc-suggestion-option-padding);
+        mask: none;
+        width: var(--dsc-suggestion-option-checkmark-size);
+        height: var(--dsc-suggestion-option-checkmark-size);
+        border-radius: var(--ds-border-radius-sm);
+        outline: var(--dsc-suggestion-option-checkmark-border) solid var(--dsc-suggestion-option-checkmark-border-color);
+        outline-offset: calc(-1 * var(--dsc-suggestion-option-checkmark-border));
+        padding: 0.188rem;
+        box-sizing: border-box;
+        translate: 0 calc(0.5lh - 50%);
+      }
+      &[selected]::before {
+        background-color: var(--ds-color-base-default);
+        color: var(--ds-color-base-contrast-default);
+        outline: none;
+        --_stroke-width: 0.05em;
+        @composes ds-checkbox--checked from './base.css';
+      }
     }
   }
 
   /**
    * data-empty
    */
-  & > u-datalist > u-option[data-empty] {
+  & > u-datalist > u-option[data-empty]:not([data-empty='false']) {
+    &:not([value]) {
+      display: none; /* Hide empty option before typing has started */
+    }
     &:empty::after {
       content: var(--dsc-suggestion-empty-text);
     }
@@ -308,19 +307,15 @@
       display: none;
     }
   }
-  &:is([data-creatable='false'], :not([data-creatable])) > u-datalist:not(:has(> u-option[aria-hidden='false']:not([data-empty]))) > u-option[data-empty] {
+  &:is(:not([data-creatable]), [data-creatable='false']) > u-datalist > u-option[data-empty]:not([data-empty='false']) {
     background: none;
     cursor: default;
-    display: block; /* Show only when no matching filter */
     padding-inline-start: var(--dsc-suggestion-option-padding); /* Only remove padding when non-creatable */
   }
 
-  &[data-creatable]:not([data-creatable='false']) > u-datalist > u-option[data-empty] {
+  &[data-creatable]:not([data-creatable='false']) > u-datalist > u-option[data-empty]:not([data-empty='false']) {
     &:empty::after {
-      content: var(--dsc-suggestion-create-text);
-    }
-    &[aria-selected='true']:empty::after {
-      content: var(--value);
+      content: var(--dsc-suggestion-create-text) ' "' attr(label) '"';
     }
     &::before {
       display: block;
@@ -329,7 +324,9 @@
       color: inherit;
       mask: var(--dsc-suggestion-create-icon-url) center / contain no-repeat;
     }
-
+    &[aria-selected='true']:empty::after {
+      content: attr(label);
+    }
     &[aria-selected='true']::before {
       mask: var(--dsc-suggestion-option-checkmark-url) center / contain no-repeat;
     }

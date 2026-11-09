@@ -6,10 +6,9 @@ import '@digdir/designsystemet-web'; // Load u-option polyfill
 export type SuggestionOptionProps = OptionHTMLAttributes<HTMLOptionElement> &
   DefaultProps & {
     /**
-     * Optionally the text to display when the suggestion list is empty.
-     * If <Suggestion> has `data-creatable`, use `%s` to replace with the current input value.
+     * Set true to show if no other option is visible
      **/
-    'data-empty'?: string | boolean;
+    'data-empty'?: boolean;
   };
 
 /**

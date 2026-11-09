@@ -1,3 +1,5 @@
+import { attr } from '../utils/utils';
+
 export type SuggestionItem = { label: string; value: string };
 export type SuggestionValue = SuggestionItem | string | null | undefined;
 type Select = Partial<GlobalEventHandlersEventMap['comboboxbeforeselect']>;
@@ -50,9 +52,11 @@ export function suggestion<R>(
   }
 
   action.preventDefault?.(); // Let the framework do rendering
-  const { isConnected, textContent = '', value: data } = action.detail || {};
+  if (!action.detail) return items;
+  const { isConnected, textContent = '' } = action.detail;
   const label = textContent.trim();
-  const item = { label, value: data || label }; // <data> without value attribute uses its text as value
+  const data = attr(action.detail, 'value') ?? label; // Only <data> without value attribute uses its text as value, keeping value=""
+  const item = { label, value: data };
 
   if (!Array.isArray(items)) return isConnected ? null : item;
   const rest = items.filter(({ value }) => value !== item.value); // Also prevents duplicates if state is out of sync

@@ -44,12 +44,10 @@ function Countries({
 
 function Places({
   children,
-  emptyText = 'No matches',
   nofilter,
   options = places,
   ...rest
 }: SuggestionProps & {
-  emptyText?: string;
   nofilter?: boolean;
   options?: string[];
 }) {
@@ -59,7 +57,7 @@ function Places({
       <SuggestionInput aria-label={placeLabel} />
       <SuggestionToggle />
       <SuggestionList data-nofilter={nofilter || undefined}>
-        <SuggestionOption data-empty={emptyText} />
+        <SuggestionOption data-empty />
         {options.map((place) => (
           <SuggestionOption key={place} label={place} value={place}>
             {place}
@@ -139,9 +137,9 @@ const getOptionStates = () =>
  * Types a value matching no option, leaving the option for creating a new value
  * as the only one in the list.
  *
- * The create option is the empty option with `data-create` added, and chips for
- * selected items also have `role="option"`, so narrow down to `u-option`.
- * Options not matching the input are `aria-hidden` and thus already left out.
+ * The create option is the empty option with the typed value in `label`,
+ * and chips for selected items also have `role="option"`, so narrow down to
+ * `u-option`. Options not matching the input are `aria-hidden` and thus already left out.
  */
 async function typeUnknownValue(input: HTMLInputElement, value: string) {
   await userEvent.clear(input);
@@ -153,7 +151,7 @@ async function typeUnknownValue(input: HTMLInputElement, value: string) {
       .filter((option) => option.matches('u-option'));
 
     expect(rest).toHaveLength(0);
-    expect(createOption).toHaveAttribute('data-create');
+    expect(createOption).toHaveAttribute('label', value);
     return createOption;
   });
 }
@@ -238,10 +236,11 @@ describe('Suggestion', () => {
     render(<Places />);
     await getInput(placeLabel);
 
-    /* The toggle name is CSS content in shadow DOM, which testing-library can not compute */
-    const toggle = screen.getByRole('button', { expanded: false });
+    /* u-combobox sets aria-hidden on the toggle, as the input is the combobox for assistive technology */
+    const toggle = document.querySelector('button[aria-expanded]');
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
 
-    await userEvent.click(toggle);
+    await userEvent.click(toggle as Element);
     expect(toggle).toHaveAttribute('aria-expanded', 'true');
   });
 
@@ -295,16 +294,34 @@ describe('Suggestion', () => {
   });
 
   it('offers the option to create a value when nothing matches', async () => {
-    render(<Places data-creatable emptyText='Add «%s»' />);
+    render(<Places data-creatable />);
     const input = await getInput(placeLabel);
 
     await userEvent.click(input);
     const createOption = await typeUnknownValue(input, 'Does not exist');
 
-    /* `data-create` is the `data-empty` text, or its CSS variable, with the
-       current input value substituted for `%s` */
-    expect(createOption).toHaveAttribute('data-create', 'Add «Does not exist»');
+    /* `label` holds the typed value, and CSS prefixes it with --dsc-suggestion-create-text */
+    expect(createOption).toHaveAttribute('label', 'Does not exist');
     expect(createOption).toHaveValue('Does not exist');
+  });
+
+  it('removes an already created value when choosing its create option again', async () => {
+    render(<ControlledPlaces data-creatable initial={['Oslo']} />);
+    const input = await getInput(placeLabel);
+
+    await userEvent.click(input);
+    await userEvent.click(await typeUnknownValue(input, 'Does not exist'));
+    await waitFor(() =>
+      expect(getChipValues()).toEqual(['Oslo', 'Does not exist']),
+    );
+
+    const createOption = await typeUnknownValue(input, 'Does not exist');
+    await waitFor(() =>
+      expect(createOption).toHaveAttribute('aria-selected', 'true'),
+    );
+    await userEvent.click(createOption);
+
+    await waitFor(() => expect(getChipValues()).toEqual(['Oslo']));
   });
 
   it('makes a created value the selected item in single mode', async () => {
@@ -349,13 +366,7 @@ describe('Suggestion', () => {
 
   it('keeps the clicked option on blur after a substring search', async () => {
     const onAfterSelect = vi.fn();
-    render(
-      <Places
-        data-creatable
-        emptyText='Legg til %s'
-        oncomboboxafterselect={onAfterSelect}
-      />,
-    );
+    render(<Places data-creatable oncomboboxafterselect={onAfterSelect} />);
     const input = await getInput(placeLabel);
 
     await userEvent.click(input);
