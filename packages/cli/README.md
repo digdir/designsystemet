@@ -48,9 +48,6 @@ Set `cleanDir: true` on an output to delete the files in its directory before cr
 
 ### Using a config file
 
-> ⚠️ **WARNING** ⚠️  
-> The typography feature is experimental. The config schema may change at any time.
-
 The CLI will auto-detect a `designsystemet.config.json` or `designsystemet.config.jsonc` file in the current directory. You can also use the `--config <path>` option to supply a different config name and location.
 
 Both `.json` and `.jsonc` files may contain comments and trailing commas (JSONC).
