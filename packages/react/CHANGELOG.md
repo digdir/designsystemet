@@ -1,5 +1,41 @@
 # Change Log
 
+## 1.24.0
+
+### Patch Changes
+
+- **Dialog:** Deprecates `TriggerContext` and `Trigger`, which will be removed in the next major version. Use native [Invokers Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) on `Button` with `command="show-modal"` (or `command="--show-non-modal"`) and `commandfor` set to the dialog's `id`. ([#5580](https://github.com/digdir/designsystemet/pull/5580))
+
+- **Dropdown, Popover:** Deprecates `TriggerContext` and `Trigger`, which will be removed in the next major version. Use native [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using) on `Button` with `popovertarget` set to the popover's or dropdown's `id`. ([#5580](https://github.com/digdir/designsystemet/pull/5580))
+
+- **Search:** Deprecates `Search`, `Search.Input`, `Search.Clear` and `Search.Button`, which will be removed in the next major version. Read [Search is being removed, what should you do?](https://designsystemet.no/en/blog/search-is-being-removed-what-should-you-do) for how to add a search button, search icon or clear button. ([#5579](https://github.com/digdir/designsystemet/pull/5579))
+
+- Update npm non-major dependencies ([#5506](https://github.com/digdir/designsystemet/pull/5506))
+
+- **Combobox:** Removed inline SVGs, now using inline CSS icons ([#5514](https://github.com/digdir/designsystemet/pull/5514))
+
+- Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479))
+
+- **Dialog:** Fixed accessible name warning when heading is present ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+
+- **ToggleGroup:** Now allows overwriting `data-variant` on `ToggleGroup.Item` ([#5455](https://github.com/digdir/designsystemet/pull/5455))
+
+- Update npm non-major dependencies ([#5553](https://github.com/digdir/designsystemet/pull/5553))
+
+- Remove `@navikt/aksel-icons` as a dependency ([#5514](https://github.com/digdir/designsystemet/pull/5514))
+
+- **AvatarStack:** Now stable, please switch from `EXPERIMENTAL_AvatarStack` to `AvatarStack` ([#5496](https://github.com/digdir/designsystemet/pull/5496))
+
+- **Popover, Dropdown:** Now stay in sync when opened or closed with the native Popover API, such as `showPopover()`, `hidePopover()` or `togglePopover()`, when not using `open`. Before, the next click on the trigger could do nothing, and `Esc` or a click outside would not close it. ([#5582](https://github.com/digdir/designsystemet/pull/5582))
+
+- Update npm non-major dependencies ([#5588](https://github.com/digdir/designsystemet/pull/5588))
+
+- Update npm non-major dependencies ([#5521](https://github.com/digdir/designsystemet/pull/5521))
+
+- **Dialog:** Automatically uses the first heading as its accessible name if one is missing, and warns when neither is provided. ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
+- **Textarea:** Fixed hydration warning ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+
 ## 1.23.0
 
 ### Patch Changes
