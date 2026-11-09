@@ -5,8 +5,21 @@ import { createTokenModel } from '../import/create-token-model';
 import { createImportLog } from '../import/log';
 import { getTokenSetLookupOrder } from '../import/resolver';
 import type { ValueSpec } from '../types';
-import { exportConfig } from './export-config';
+import { type ExportedConfig, exportConfig } from './export-config';
 import type { CollectionData } from './types';
+
+/** A color in the exported config, which is written as its steps. */
+function colorSteps(
+  config: ExportedConfig['config'],
+  themeName: string,
+  colorName: string,
+) {
+  const color = config.themes?.[themeName]?.colors[colorName];
+  if (typeof color !== 'object') {
+    throw new Error(`${themeName}/${colorName} isn't written as its steps`);
+  }
+  return color;
+}
 
 /** The collections an import of `themes` creates in Figma, as `readCollections` would read them back. */
 async function syncedCollections(themes: object): Promise<CollectionData[]> {
@@ -46,7 +59,7 @@ function editColor(
 }
 
 describe('exportConfig', () => {
-  it('returns the config the file was synced from', async () => {
+  it('returns a config that syncs to the same file', async () => {
     const themes = {
       alpha: {
         colors: { accent: '#0062ba', brand: '#5b3fa0', neutral: '#24272b' },
@@ -69,12 +82,36 @@ describe('exportConfig', () => {
       },
     };
 
-    const { config, warnings } = await exportConfig(
-      await syncedCollections(themes),
+    const collections = await syncedCollections(themes);
+
+    const { config, warnings } = await exportConfig(collections);
+
+    expect(await syncedCollections(config.themes ?? {})).toEqual(collections);
+    expect(warnings).toEqual([]);
+    expect(config.themes?.alpha).toMatchObject({
+      typography: { fontFamily: 'Roboto' },
+      borderRadius: 8,
+      // Colors are written as their steps, so only the overrides that aren't colors are left.
+      overrides: {
+        linkVisited: { light: '#551a8b' },
+        focus: { outer: { dark: '#ffffff' } },
+      },
+    });
+    expect(config.themes?.alpha?.overrides).not.toHaveProperty('colors');
+    expect(config.themes?.alpha?.overrides).not.toHaveProperty('severity');
+  });
+
+  it('writes a color whose steps are all generated as its base color', async () => {
+    const { config } = await exportConfig(
+      await syncedCollections({
+        theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
+      }),
     );
 
-    expect(config.themes).toEqual(themes);
-    expect(warnings).toEqual([]);
+    expect(config.themes?.theme?.colors).toEqual({
+      accent: '#0062ba',
+      neutral: '#24272b',
+    });
   });
 
   it('leaves out values that are the defaults', async () => {
@@ -88,8 +125,31 @@ describe('exportConfig', () => {
 
     const { config } = await exportConfig(await syncedCollections(themes));
 
-    expect(config.themes).toEqual({
+    // No severity colors, typography, border radius or overrides.
+    expect(Object.keys(config.themes?.theme ?? {})).toEqual(['colors']);
+    expect(Object.keys(config.themes?.theme?.colors ?? {})).toEqual([
+      'accent',
+      'neutral',
+    ]);
+  });
+
+  it('includes a severity color when a step differs from the default', async () => {
+    const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
+    });
+    editColor(collections, 'theme/info/3', 'Dark', '#123456');
+
+    const { config } = await exportConfig(collections);
+
+    expect(Object.keys(config.themes?.theme?.colors ?? {})).toEqual([
+      'accent',
+      'neutral',
+      'info',
+    ]);
+    // Only the edited step, and the base color.
+    expect(colorSteps(config, 'theme', 'info')).toEqual({
+      'surface-default': { dark: '#123456' },
+      'base-default': { light: expect.any(String) },
     });
   });
 
@@ -103,15 +163,12 @@ describe('exportConfig', () => {
       }),
     );
 
-    expect(config.themes).toEqual({
-      theme: {
-        colors: { accent: '#0062ba', neutral: '#24272b' },
-        overrides: { severity: { danger: '#b00020' } },
-      },
-    });
+    expect(config.themes?.theme?.colors.accent).toBe('#0062ba');
+    expect(config.themes?.theme?.colors.danger).toBe('#b00020');
+    expect(JSON.stringify(config.themes)).not.toMatch(/#[0-9a-f]*[A-F]/);
   });
 
-  it('turns colors edited in Figma into overrides', async () => {
+  it('keeps colors edited in Figma in the color steps', async () => {
     const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
     });
@@ -119,9 +176,10 @@ describe('exportConfig', () => {
 
     const { config } = await exportConfig(collections);
 
-    expect(config.themes?.theme.overrides).toEqual({
-      colors: { accent: { 'surface-default': { dark: '#123456' } } },
-    });
+    expect(colorSteps(config, 'theme', 'accent')['surface-default']?.dark).toBe(
+      '#123456',
+    );
+    expect(config.themes?.theme?.overrides).toBeUndefined();
   });
 
   it('resolves an alias within a collection in the same mode, as Figma does', async () => {
@@ -164,9 +222,7 @@ describe('exportConfig', () => {
         )
         .join('')}`;
     };
-    expect(
-      config.themes?.alpha?.overrides?.colors?.accent?.['text-default'],
-    ).toEqual({
+    expect(colorSteps(config, 'alpha', 'accent')['text-default']).toEqual({
       light: toHex(background.valuesByMode.Light),
       dark: toHex(background.valuesByMode.Dark),
     });
@@ -182,6 +238,9 @@ describe('exportConfig', () => {
       },
     };
     const collections = await syncedCollections(themes);
+    const { config: expected } = await exportConfig(
+      structuredClone(collections),
+    );
     // Rename `theme/accent/12` to `theme/accent/base-default`, and so on, as planned for future imports.
     const nameByNumber = new Map(
       Object.values(semanticColorSpec).map((step) => [
@@ -199,7 +258,7 @@ describe('exportConfig', () => {
 
     const { config, warnings } = await exportConfig(collections);
 
-    expect(config.themes).toEqual(themes);
+    expect(config).toEqual(expected);
     expect(warnings).toEqual([]);
   });
 
@@ -283,7 +342,7 @@ describe('exportConfig', () => {
 
     const { config, warnings } = await exportConfig(collections);
 
-    expect(config.themes).toEqual({ alpha: { colors } });
+    expect(Object.keys(config.themes ?? {})).toEqual(['alpha']);
     expect(warnings).toEqual([
       'Theme "Custom" has no colors in the Color scheme collection, e.g. as its mode was added by hand, so it isn\'t in the config.',
     ]);
@@ -356,7 +415,7 @@ describe('exportConfig', () => {
     const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
     });
-    // A color edited by hand becomes an override, so the config keeps it.
+    // A color edited by hand is in the color's steps, so the config keeps it.
     editColor(collections, 'theme/accent/3', 'Dark', '#123456');
     // Figma stores numbers as 32-bit floats, so they read back slightly off.
     for (const variable of collections.flatMap((c) => c.variables)) {
@@ -372,7 +431,7 @@ describe('exportConfig', () => {
     expect(warnings).toEqual([]);
   });
 
-  it('warns about a color step deleted in Figma, which importing the config generates', async () => {
+  it('leaves out a color step deleted in Figma, which importing the config generates', async () => {
     const collections = await syncedCollections({
       theme: { colors: { accent: '#0062ba', neutral: '#24272b' } },
     });
@@ -382,11 +441,13 @@ describe('exportConfig', () => {
       1,
     );
 
-    const { warnings } = await exportConfig(collections);
+    const { config, warnings } = await exportConfig(collections);
 
+    // Its other steps are all generated, so it's written as its base color.
+    expect(config.themes?.theme?.colors.accent).toBe('#0062ba');
     expect(warnings).toEqual([
-      'Theme "theme": Color "accent" has no surface-default in light, so importing the config generates it from the base color.',
-      'Theme "theme": Color "accent" has no surface-default in dark, so importing the config generates it from the base color.',
+      'Theme "theme": Color "accent" has no surface-default in light, so it\'s left out of the config, and importing the config generates it from the base color.',
+      'Theme "theme": Color "accent" has no surface-default in dark, so it\'s left out of the config, and importing the config generates it from the base color.',
     ]);
   });
 
@@ -405,7 +466,10 @@ describe('exportConfig', () => {
     const { config, warnings } = await exportConfig(collections);
 
     expect(Object.keys(config.themes ?? {})).toEqual(['constructor']);
-    expect(config.themes?.constructor).toEqual({ colors });
+    expect(Object.hasOwn(config.themes ?? {}, 'constructor')).toBe(true);
+    expect(config.themes?.['constructor' as string]?.colors.accent).toBe(
+      colors.accent,
+    );
     expect(warnings).toContain(
       'Theme "__proto__" isn\'t in the config, as a config can\'t have a theme with that name. Rename the mode in the Theme collection to include it.',
     );
@@ -427,6 +491,7 @@ describe('exportConfig', () => {
     const { config, warnings } = await exportConfig(collections);
 
     expect(config.themes?.alpha?.overrides).toBeUndefined();
+    expect(config.themes?.alpha?.colors.accent).toBe('#0062ba');
     expect(warnings).toContain(
       `Variable "Color scheme/alpha/accent/constructor" isn't created by an import, so it isn't in the config.`,
     );

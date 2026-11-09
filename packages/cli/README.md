@@ -85,6 +85,33 @@ npx @digdir/designsystemet
 
 This creates CSS in `designsystemet`, relative to the config file, directly from the themes. Add `"types"` to `output` to also create type declarations, and `"design-tokens"` to also save the design tokens.
 
+#### Colors
+
+Each color in `themes.<theme>.colors` is either a hex color, which the whole color scale is generated from, or an object with the steps of the scale, which lets you set each step in light and dark mode:
+
+```jsonc
+{
+  "colors": {
+    "accent": {
+      "base-default": { "light": "#0062BA", "dark": "#4D9BE0" },
+      "border-default": { "light": "#5A8BC4" },
+      "background-tinted": { "light": "#E8F1FB", "dark": "#0B1D30" },
+    },
+    "neutral": "#1E2B3C",
+  },
+}
+```
+
+The keys are the step names of the color scale: `background-default`, `background-tinted`, `surface-default`, `surface-tinted`, `surface-hover`, `surface-active`, `border-subtle`, `border-default`, `border-strong`, `text-subtle`, `text-default`, `base-default`, `base-hover`, `base-active`, `base-contrast-subtle` and `base-contrast-default`.
+`base-default.light` is required. It is the base color, the same as the hex color you would otherwise give the color, and every step or mode you leave out is generated from it.
+The theme builder exports the colors you have adjusted in this form, with only the steps you changed. Other colors are exported as hex colors.
+
+Severity colors (`info`, `success`, `warning`, `danger`) are set the same way, directly in `colors`. Any you leave out get the default severity colors.
+
+> ⚠️ **DEPRECATED** ⚠️  
+> `overrides.colors` and `overrides.severity` are deprecated. Set the steps on the color in `colors`, and put severity colors in `colors`, instead.
+> They still work, and if a config has both, `overrides` wins. `overrides.focus` is not deprecated.
+
 #### Output
 
 Use `output` to choose what is created and where. Each item is either an output type (`"design-tokens"`, `"css"` or `"types"`) using its default settings, or an object:

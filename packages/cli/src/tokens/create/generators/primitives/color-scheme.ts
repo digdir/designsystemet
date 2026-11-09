@@ -1,6 +1,7 @@
 import type { ColorScale, ColorScheme, CssColor, SemanticColorNames } from '../../../../colors/index.ts';
 import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
+import { type ColorDefinition, getBaseColor, getColorSteps } from '../../../../schemas/schema-color.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
@@ -33,30 +34,39 @@ export const groupByScheme = (
 
 /**
  * Resolves every color scale of a theme for one color scheme: the theme's colors plus the
- * default severity colors, with `overrides.severity` and `overrides.colors` applied.
+ * default severity colors. Each scale is generated from the color's base color, then the steps
+ * the color sets itself are applied, then the deprecated `overrides.severity` and `overrides.colors`.
  *
  * This is what the token generator turns into color-scheme tokens; previews (e.g. the Figma
  * plugin) use it directly so they show the same colors the tokens end up with.
  */
 export const getThemeColorScales = (
-  theme: { colors: Record<string, CssColor>; overrides?: ColorOverrideSchema },
+  theme: { colors: Record<string, ColorDefinition | CssColor>; overrides?: ColorOverrideSchema },
   colorScheme: ColorScheme,
 ): Record<string, ColorScale> => {
   const { overrides } = theme;
-  const colors: Record<string, CssColor> = { ...theme.colors, ...(overrides?.severity || {}) };
+  // Deprecated: `overrides.severity` replaces the whole color, including any steps it sets.
+  const colors: Record<string, ColorDefinition | CssColor> = { ...theme.colors, ...(overrides?.severity || {}) };
 
+  const colorSteps = groupByScheme(
+    Object.fromEntries(
+      Object.entries(colors).flatMap(([name, color]) => {
+        const steps = getColorSteps(color);
+        return steps ? [[name, steps]] : [];
+      }),
+    ),
+    colorScheme,
+  );
   const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
 
   const colorScales: Record<string, ColorScale> = {};
 
   for (const [colorName, color] of Object.entries(colors)) {
-    let colorScale = generateColorScale(color, colorScheme);
-    const colorOverride = colorOverrides[colorName];
-
-    if (colorOverride) {
-      colorScale = { ...colorScale, ...colorOverride };
-    }
-    colorScales[colorName] = colorScale;
+    colorScales[colorName] = {
+      ...generateColorScale(getBaseColor(color), colorScheme),
+      ...colorSteps[colorName],
+      ...colorOverrides[colorName],
+    };
   }
 
   return colorScales;
@@ -83,7 +93,7 @@ const toColorToken = (color: CssColor): Token => ({
 export const generateColorScheme = (
   themeName: string,
   colorScheme: ColorScheme,
-  colors: Record<string, CssColor>,
+  colors: Record<string, ColorDefinition | CssColor>,
   overrides?: ColorOverrideSchema,
 ): TokenSet => {
   const colorScales = getThemeColorScales({ colors, overrides }, colorScheme);

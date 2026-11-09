@@ -1,4 +1,7 @@
-import { generateConfigFromCSS } from '@digdir/designsystemet/internal';
+import {
+  generateConfigFromCSS,
+  stringifyConfig,
+} from '@digdir/designsystemet/internal';
 import pkg from '@digdir/designsystemet/package.json';
 import type { CssFile } from '../../types';
 
@@ -47,14 +50,10 @@ export function configFromCss(files: CssFile[]): {
   }
 
   return {
-    config: `${JSON.stringify(
-      {
-        $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
-        ...config,
-      },
-      null,
-      2,
-    )}\n`,
+    config: `${stringifyConfig({
+      $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
+      ...config,
+    })}\n`,
     warnings,
   };
 }

@@ -33,9 +33,9 @@ const OTHER_COLORS = new Map<string, keyof Omit<ThemeColorValues, 'scales'>>([
  * Creates the config that theme CSS files built by `tokens build` (e.g. `designsystemet.css`) came from.
  * Each file is one theme, keyed by theme name, which is the file name without `.css`.
  *
- * Only what the public config can describe is read: the colors (each color's base color, with steps that differ
- * from the generated scale as overrides), the font family and the border radius. Values that match the defaults
- * are left out, like the theme builder does. Throws if a file isn't theme CSS, or if the config isn't valid.
+ * Only what the public config can describe is read: the colors (each color's base color, or its steps with only
+ * the steps that differ from the generated scale), the font family and the border radius. Values that match the defaults are left out, like the theme builder
+ * does. Throws if a file isn't theme CSS, or if the config isn't valid.
  */
 export function generateConfigFromCSS(themes: Record<string, string>): GeneratedConfigFromCSS {
   const warnings: string[] = [];
@@ -103,7 +103,7 @@ function readThemeCSS(themeName: string, css: string): ThemeConfig & { warnings:
 
   if (buildVersion && buildVersion !== pkg.version) {
     warnings.push(
-      `The CSS was built with v${buildVersion}, and this is v${pkg.version}. Colors the two versions generate differently are kept as overrides.`,
+      `The CSS was built with v${buildVersion}, and this is v${pkg.version}. The config keeps the colors from the CSS, but building it with this version may change other values.`,
     );
   }
 

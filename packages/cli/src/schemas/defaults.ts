@@ -19,8 +19,8 @@ export const severityColorNames = Object.keys(severityColors) as Array<keyof typ
  *
  * We do this because we want severity colors to always be last when design-tokens are visualized in Token Studio and Figma Variables.
  */
-export function addSeverityColors<T extends Record<string, string>>(colors: T): T {
-  const result = new Map(Object.entries(colors));
+export function addSeverityColors<T extends Record<string, unknown>>(colors: T): T {
+  const result = new Map<string, unknown>(Object.entries(colors));
   for (const [name, value] of Object.entries(severityColors)) {
     const userValue = result.get(name);
     result.delete(name); // Deleting and re-adding moves the key to the end

@@ -1,7 +1,9 @@
 // biome-ignore-all lint/suspicious/noExplicitAny: we have not kept old schema for types, so we need to use any here
 import {
+  type ColorDefinition,
   type ExternalConfigSchemaInput as ConfigSchema,
   externalConfigSchema as configSchema,
+  getBaseColor,
 } from '@digdir/designsystemet/internal';
 import {
   Button,
@@ -136,6 +138,10 @@ export function ConfigPaste() {
                       {themeConfig.colors &&
                         Object.values(themeConfig.colors)
                           .slice(0, 7)
+                          // A color is a hex color or its color steps
+                          .map((color) =>
+                            getBaseColor(color as ColorDefinition),
+                          )
                           .map((color, idx) => (
                             <div
                               key={idx}

@@ -152,9 +152,299 @@
               "description": "The name of a color, used in token paths and CSS variables."
             },
             "additionalProperties": {
-              "description": "A hex color, which is used for creating a color scale.",
-              "type": "string",
-              "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+              "anyOf": [
+                {
+                  "description": "A hex color, which is used for creating a color scale.",
+                  "type": "string",
+                  "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "background-default": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "background-tinted": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "surface-default": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "surface-tinted": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "surface-hover": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "surface-active": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "border-subtle": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "border-default": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "border-strong": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "text-subtle": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "text-default": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "base-default": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode. Also the base color the steps that are left out are generated from.",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "required": [
+                        "light"
+                      ],
+                      "additionalProperties": false,
+                      "description": "The hex colors of the \"base-default\" step in light and dark mode. Its light color is the base color the steps that are left out are generated from."
+                    },
+                    "base-hover": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "base-active": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "base-contrast-subtle": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    },
+                    "base-contrast-default": {
+                      "type": "object",
+                      "properties": {
+                        "light": {
+                          "description": "A hex color for light mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        },
+                        "dark": {
+                          "description": "A hex color for dark mode",
+                          "type": "string",
+                          "pattern": "^(#[0-9a-fA-F]{3}|#[0-9a-fA-F]{4}|#[0-9a-fA-F]{6}|#[0-9a-fA-F]{8})$"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "The hex colors of this step in light and dark mode. A mode that is left out is generated."
+                    }
+                  },
+                  "required": [
+                    "base-default"
+                  ],
+                  "additionalProperties": false,
+                  "description": "The color steps of a color scale, e.g. \"background-default\" or \"base-default\", each with a hex color for light and dark mode. \"base-default\" with a light color is required, as it is the base color; every step or mode that is left out is generated from it."
+                }
+              ],
+              "description": "A color. Either a hex color, which the whole color scale is generated from, or an object with the color steps of the scale, which lets you set each step in light and dark mode."
             }
           },
           "typography": {
@@ -223,10 +513,14 @@
                   },
                   "description": "The name of the color to add overrides for, e.g. \"accent\""
                 },
-                "description": "An object with color names as keys"
+                "description": "Deprecated: set the color steps on the color in \"colors\" instead, e.g. \"accent\": { \"base-default\": { \"light\": \"#0062BA\" }, \"border-default\": { \"dark\": \"#...\" } }. An object with color names as keys",
+                "deprecated": true,
+                "deprecationMessage": "Set the color steps on the color in \"colors\" instead."
               },
               "severity": {
-                "description": "An object with severity color names as keys",
+                "description": "Deprecated: set the severity color in \"colors\" instead, e.g. \"danger\": \"#C01B1B\". An object with severity color names as keys",
+                "deprecated": true,
+                "deprecationMessage": "Set the severity color in \"colors\" instead.",
                 "type": "object",
                 "propertyNames": {
                   "type": "string",

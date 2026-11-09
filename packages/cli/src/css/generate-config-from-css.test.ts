@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import pkg from '../../package.json' with { type: 'json' };
 import { configSchema, type ExternalConfigSchemaInput } from '../schemas/schema.ts';
+import { generateColorScheme } from '../tokens/create/generators/primitives/color-scheme.ts';
 import { formatThemeCSS } from '../tokens/format.ts';
 import type { Theme } from '../tokens/types.ts';
 import { generateConfigFromCSS } from './generate-config-from-css.ts';
@@ -39,6 +40,24 @@ const plainTheme: ThemeInput = {
 
 const builtCSS: Record<string, string> = {};
 
+/** The colors building a theme gives, in light and dark: every scale, the visited link color and the focus colors. */
+function builtColors(input: ThemeInput) {
+  const theme = configSchema.parse({ themes: { theme: input } }).themes?.theme;
+  if (!theme) {
+    throw new Error('No theme');
+  }
+  return {
+    light: generateColorScheme('theme', 'light', theme.colors, theme.overrides),
+    dark: generateColorScheme('theme', 'dark', theme.colors, theme.overrides),
+  };
+}
+
+/** What a read back theme has besides its colors, which are compared by the colors they build. */
+function withoutColors({ colors: _colors, overrides, ...theme }: ThemeInput) {
+  const { colors: _overrideColors, severity: _severity, ...otherOverrides } = overrides ?? {};
+  return { ...theme, ...(Object.keys(otherOverrides).length > 0 && { overrides: otherOverrides }) };
+}
+
 // Building theme CSS takes a few seconds per theme, more on a busy CI runner, so each theme is built once
 // here with a timeout to match, rather than in the tests.
 beforeAll(async () => {
@@ -48,34 +67,60 @@ beforeAll(async () => {
 }, 30_000);
 
 describe('generateConfigFromCSS', () => {
-  it('reads designsystemet.css back to the config it is built from', () => {
+  it('reads designsystemet.css back to a config that builds the same colors', () => {
     const css = readFileSync(new URL('../../../css/theme/designsystemet.css', import.meta.url), 'utf8');
     const rootConfig = JSON.parse(
       readFileSync(new URL('../../../../designsystemet.config.json', import.meta.url), 'utf8'),
     ) as ExternalConfigSchemaInput;
+    const rootTheme = rootConfig.themes?.designsystemet as ThemeInput;
 
     const { config, warnings } = generateConfigFromCSS({ designsystemet: css });
+    const theme = config.themes?.designsystemet as ThemeInput;
 
-    expect(config.themes).toEqual(rootConfig.themes);
+    // Compared after parsing, which adds the default severity colors, as the read back config leaves them out.
+    const colorNames = (input: ThemeInput) =>
+      Object.keys(configSchema.parse({ themes: { theme: input } }).themes?.theme.colors ?? {});
+    expect(colorNames(theme)).toEqual(colorNames(rootTheme));
+    expect(builtColors(theme)).toEqual(builtColors(rootTheme));
+    expect(withoutColors(theme)).toEqual(withoutColors(rootTheme));
     expect(warnings).toEqual([]);
   });
 
   it('reads back a theme with overrides, a font family and a border radius', () => {
     const { config, warnings } = generateConfigFromCSS({ 'with-overrides': builtCSS.withOverrides });
+    const theme = config.themes?.['with-overrides'] as ThemeInput;
 
-    expect(config.themes).toEqual({ 'with-overrides': themeWithOverrides });
+    expect(builtColors(theme)).toEqual(builtColors(themeWithOverrides));
+    expect(withoutColors(theme)).toEqual(withoutColors(themeWithOverrides));
     expect(warnings).toEqual([]);
   });
 
-  it('warns about a color step missing from the CSS, which importing the config generates', () => {
+  it('writes each color as its base color, with only the steps that differ, without color or severity overrides', () => {
+    const { config } = generateConfigFromCSS({ 'with-overrides': builtCSS.withOverrides });
+    const theme = config.themes?.['with-overrides'] as ThemeInput;
+
+    // The default severity colors are left out; danger isn't the default, so it's in the colors.
+    expect(theme.colors).toEqual({
+      accent: { 'background-tinted': { light: '#ff0000' }, 'base-default': { light: '#0062ba' } },
+      'my-brand': { 'text-default': { light: '#111111', dark: '#eeeeee' }, 'base-default': { light: '#5b3fa0' } },
+      neutral: '#24272b',
+      danger: '#aa0000',
+    });
+    expect(Object.keys(theme.colors.accent)).toEqual(['background-tinted', 'base-default']);
+    expect(theme.overrides).toEqual({ linkVisited: { light: '#123456' }, focus: { outer: { dark: '#abcdef' } } });
+  });
+
+  it('leaves a color step missing from the CSS out of the color, so importing the config generates it', () => {
     // Removes the first declaration, which is in the light color scheme.
     const css = builtCSS.withOverrides.replace(/--ds-color-accent-surface-tinted:[^;]*;/, '');
 
     const { config, warnings } = generateConfigFromCSS({ 'with-overrides': css });
+    const accent = config.themes?.['with-overrides']?.colors.accent;
 
-    expect(config.themes).toEqual({ 'with-overrides': themeWithOverrides });
+    expect(accent).not.toHaveProperty('surface-tinted');
+    expect(accent).toHaveProperty(['background-tinted', 'light'], '#ff0000');
     expect(warnings).toEqual([
-      'Theme "with-overrides": Color "accent" has no surface-tinted in light, so importing the config generates it from the base color.',
+      'Theme "with-overrides": Color "accent" has no surface-tinted in light, so it\'s left out of the config, and importing the config generates it from the base color.',
     ]);
   });
 
@@ -96,7 +141,9 @@ describe('generateConfigFromCSS', () => {
       plain: builtCSS.plain,
     });
 
-    expect(config.themes).toEqual({ 'with-overrides': themeWithOverrides, plain: plainTheme });
+    expect(Object.keys(config.themes ?? {})).toEqual(['with-overrides', 'plain']);
+    expect(builtColors(config.themes?.plain as ThemeInput)).toEqual(builtColors(plainTheme));
+    expect(withoutColors(config.themes?.plain as ThemeInput)).toEqual(withoutColors(plainTheme));
   });
 
   it('warns about what the config cannot describe', () => {
@@ -118,9 +165,9 @@ describe('generateConfigFromCSS', () => {
     expect(config.themes?.test?.typography).toEqual({ fontFamily: 'IBM Plex Sans' });
     expect(warnings).toEqual([
       'Theme "test": --ds-color-accent-base-default in light isn\'t a hex color (rgb(0 98 186)), so it isn\'t in the config.',
-      `Theme "test": The CSS was built with v0.0.1, and this is v${pkg.version}. Colors the two versions generate differently are kept as overrides.`,
-      'Theme "test": Color "neutral" has only its base color in light, so importing the config generates the rest from it.',
-      'Theme "test": Color "neutral" has no colors in dark, so importing the config generates them from the base color.',
+      `Theme "test": The CSS was built with v0.0.1, and this is v${pkg.version}. The config keeps the colors from the CSS, but building it with this version may change other values.`,
+      'Theme "test": Color "neutral" has only its base color in light, so the other steps are left out of the config, and importing the config generates them from the base color.',
+      'Theme "test": Color "neutral" has no colors in dark, so they\'re left out of the config, and importing the config generates them from the base color.',
       'Theme "test": The visited link color has no value in light and dark, so importing the config uses the default.',
       'Theme "test": The inner focus color has no value in light and dark, so importing the config uses the default.',
       'Theme "test": The outer focus color has no value in light and dark, so importing the config uses the default.',
@@ -145,7 +192,10 @@ describe('generateConfigFromCSS', () => {
     const { config, warnings } = generateConfigFromCSS({ test: css });
 
     expect(({} as Record<string, unknown>)['background-tinted']).toBeUndefined();
-    expect(config.themes?.test?.colors).toEqual({ neutral: '#24272b', constructor: '#0d7a5f' });
+    expect(config.themes?.test?.colors).toEqual({
+      neutral: '#24272b',
+      constructor: '#0d7a5f',
+    });
     expect(warnings).toContain(
       'Theme "test": Color "__proto__" isn\'t a valid color name (only a-z, 0-9 and -), so it isn\'t in the config.',
     );

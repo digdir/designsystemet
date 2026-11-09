@@ -5,6 +5,7 @@ import {
 import LZString from 'lz-string';
 import { parseColorOverrides } from '../routes/themebuilder/_utils/use-themebuilder';
 import { configThemeToUrl } from './config-to-url';
+import { compactConfigColors, isSeverityColorName } from './theme-colors';
 
 export type WorkspaceTheme = NonNullable<
   ExternalConfigSchemaInput['themes']
@@ -112,12 +113,16 @@ export function workspaceParams(
   return next;
 }
 
+/**
+ * The URL for editing a config, e.g. one that is pasted in. Its colors are compacted to the base colors and
+ * only the steps that differ from the generated scales, so a config with full color scales doesn't make the URL long.
+ */
 export function workspaceToUrl(
   config: WorkspaceConfig,
   activeTheme: string,
   lang = 'no',
 ) {
-  return `/${lang}?${workspaceParams({ config, activeTheme }, new URLSearchParams({ appearance: 'light', tab: 'colorsystem' }))}`;
+  return `/${lang}?${workspaceParams({ config: compactConfigColors(config), activeTheme }, new URLSearchParams({ appearance: 'light', tab: 'colorsystem' }))}`;
 }
 
 export function editorParams(params: URLSearchParams) {
@@ -167,16 +172,18 @@ export function updateWorkspace(
     overrides,
     borderRadius: Number(edited.get('border-radius') || 4),
   };
-  const removed = Object.keys(previous.colors).filter(
-    (name) => !Object.hasOwn(colors, name),
+  // Severity colors are edited separately, so they are never added, removed or renamed
+  const previousNames = Object.keys(previous.colors).filter(
+    (name) => !isSeverityColorName(name),
   );
+  const removed = previousNames.filter((name) => !Object.hasOwn(colors, name));
   const added = Object.keys(colors).filter(
-    (name) => !Object.hasOwn(previous.colors, name),
+    (name) => !previousNames.includes(name),
   );
   const renamed =
     removed.length === 1 &&
     added.length === 1 &&
-    Object.keys(previous.colors).length === Object.keys(colors).length;
+    previousNames.length === Object.keys(colors).length;
   const themes = Object.fromEntries(
     Object.entries(workspace.config.themes).map(([name, theme]) => {
       if (name !== workspace.activeTheme && !removed.length && !added.length)

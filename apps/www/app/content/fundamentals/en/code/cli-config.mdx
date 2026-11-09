@@ -37,7 +37,7 @@ Both `designsystemet.config.json` and `designsystemet.config.jsonc` are detected
 ```
 
 Above, we have defined a theme called `my-theme` with some colours and border radius.
-Each colour is defined directly under `colors`, where the key is the colour's name and the value is a hex code.
+Each colour is defined directly under `colors`, where the key is the colour's name and the value is a hex code, or an object with colour steps. See [Colors](#colors).
 
 ## Running the CLI
 
@@ -194,7 +194,7 @@ You can have multiple themes, and each theme can have its own colours, border ra
 | colors | Object | Yes | Contains all colours for the theme. |
 | borderRadius | Number | No | Base border radius for the theme. |
 | typography | Object | No | Contains typography settings for the theme. |
-| overrides | Object | No | Contains overrides for colours and severity colours. |
+| overrides | Object | No | Contains overrides for focus colours. Overriding colours and severity colours here is deprecated, see [Overrides](#overrides). |
 
 ### Typography
 | Name | Type | Required | Description |
@@ -208,51 +208,95 @@ If you include `typography` in your theme, `fontFamily` must be defined.
 ### Colors
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
-| "colorName" | String | No | A colour for the theme. |
-| neutral | String | Yes | Neutral colour for the theme. |
+| "colorName" | String or Object | No | A colour for the theme. |
+| neutral | String or Object | Yes | Neutral colour for the theme. |
+| success, warning, danger, info | String or Object | No | Severity colours. The default severity colours are used for those you leave out. |
 
-Colours are defined directly under `colors`, where the key is the colour's name and the value is a hex code.
+Colours are defined directly under `colors`, where the key is the colour's name. The value is either:
+
+- a hex code. The whole colour scale is generated from it.
+- an object with [colour steps](#colour-steps), where you can set each step in the scale in light and dark mode.
 
 ```json
 {
   "primary": "#0062BA",
   "accent": "#1E98F5",
-  "neutral": "#1E2B3C"
+  "neutral": "#1E2B3C",
+  "danger": "#C01B1B"
 }
 ```
+
+#### Colour steps
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| base-default | Object | Yes | The `base-default` step. Its `light` value is required, and is the base colour of the scale. |
+| "stepName" | Object | No | One of the other steps in the colour scale, see [Colour names](#colour-names). |
+
+Each step has a `light` and/or `dark` value that is a hex code.
+
+```json
+{
+  "accent": {
+    "base-default": { "light": "#0062BA", "dark": "#4D9BE0" },
+    "border-default": { "light": "#5A8BC4" },
+    "background-tinted": { "light": "#E8F1FB", "dark": "#0B1D30" }
+  }
+}
+```
+
+`base-default.light` is the base colour, the same as the hex code you would otherwise give the colour. Every step and mode you leave out is generated from it.
+Above, `accent` gets the scale generated from `#0062BA`, except for the values that are set. `border-default` in dark mode, for example, is still generated.
+Setting `base-default.dark` only changes that step in dark mode. The other steps in dark mode are still generated from `base-default.light`.
+
+The [Theme Builder](https://theme.designsystemet.no/en) exports the colours you have adjusted in this form, with only the steps you changed. Other colours are exported as hex codes.
+
+Severity colours (`success`, `warning`, `danger`, `info`) are set in the same way, directly under `colors`.
+
+<Alert data-color="warning">
+Colours you set yourself are not adjusted to meet contrast requirements. Make sure yourself that they work, and have sufficient contrast, in both light and dark mode. See [Contrast](/en/fundamentals/theme/colors#contrast).
+</Alert>
+
+##### Colour names
+
+<ColorScaleTable />
 
 ### Overrides
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
-| colors | Object | No | Contains overrides for individual colour tokens |
-| severity | Object | No | Contains overrides for severity colours |
-| linkVisited | Object | No | Contains overrides for visited link colour |
+| colors | Object | No | **Deprecated:** set the [colour steps](#colour-steps) on the colour in `colors` instead. |
+| severity | Object | No | **Deprecated:** set the severity colour in [`colors`](#colors) instead. |
+| linkVisited | Object | No | **Deprecated:** style `.ds-link:visited` instead. |
 | focus | Object | No | Contains overrides for focus colours |
+
+`overrides.colors` and `overrides.severity` still work. If a colour is set both in `colors` and in `overrides`, `overrides` wins.
 
 #### overrides.colors
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
 | "colorName" | Object | No | Overrides for a specific colour |
 
+<Alert data-color="warning">
+`overrides.colors` is deprecated. Set the [colour steps](#colour-steps) on the colour in `colors` instead.
+</Alert>
+
 The `colors` override allows you to customise specific semantic colour tokens for any colour defined in your theme.
 
 Each key in the `colors` object should match a colour name from your colours, or one of the severity colours (`success`, `warning`, `danger`, `info`).
 
 For each colour, you can override individual semantic tokens like `background-default`, `border-subtle`, `text-default`, etc.
-Each token override has a `light` and/or `dark` value that points to a hex code.
+Each token override has a `light` and/or `dark` value that points to a hex code. See [Colour names](#colour-names).
 
 ```json
 {
+  "colors": {
+    "primary": "#0062BA"
+  },
   "overrides": {
     "colors": {
       "primary": {
         "background-default": {
           "light": "#ff0000",
           "dark": "#000fff"
-        },
-        "text-subtle": {
-          "light": "#333333",
-          "dark": "#cccccc"
         }
       }
     }
@@ -260,15 +304,28 @@ Each token override has a `light` and/or `dark` value that points to a hex code.
 }
 ```
 
-##### Colour names
+To move this to `colors`, replace the hex code with colour steps, and put the hex code in `base-default.light`:
 
-<ColorScaleTable />
+```json
+{
+  "colors": {
+    "primary": {
+      "base-default": { "light": "#0062BA" },
+      "background-default": { "light": "#ff0000", "dark": "#000fff" }
+    }
+  }
+}
+```
 
 #### overrides.severity
 
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
 | "colorName" | String | No | Hex colour to set as base |
+
+<Alert data-color="warning">
+`overrides.severity` is deprecated. Set the severity colour directly in `colors` instead, for example `"danger": "#C01B1B"`.
+</Alert>
 
 The `severity` override allows you to customise the colours used for severity, which are `success`, `warning`, `danger`, and `info`.
 
@@ -303,39 +360,23 @@ The `severity` override allows you to customise the colours used for severity, w
   "themes": {
     "my-theme": {
       "colors": {
-        "primary": "#0062BA",
+        "primary": {
+          "base-default": { "light": "#0062BA", "dark": "#4D9BE0" },
+          "border-default": { "light": "#5A8BC4" },
+          "background-tinted": { "light": "#E8F1FB", "dark": "#0B1D30" }
+        },
         "accent": "#1E98F5",
         "neutral": "#1E2B3C",
         "extra1": "#F45F63",
-        "extra2": "#E5AA20"
+        "extra2": "#E5AA20",
+        "success": "#28a745",
+        "warning": "#ffc107",
+        "danger": "#dc3545",
+        "info": "#17a2b8"
       },
       "borderRadius": 4,
       "typography": {
         "fontFamily": "Inter"
-      },
-      "overrides": {
-        "colors": {
-          "primary": {
-            "background-default": {
-              "light": "#ff0000",
-              "dark": "#000fff"
-            },
-            "text-default": {
-              "light": "#00ff00",
-              "dark": "#00ffff"
-            }
-          }
-        },
-        "severity": {
-          "success":  "#28a745",
-          "warning": "#ffc107",
-          "danger": "#dc3545",
-          "info": "#17a2b8"
-        },
-        "linkVisited": {
-          "light": "#ff1234",
-          "dark": "#1234ff"
-        }
       }
     }
   }

@@ -45,6 +45,13 @@ export {
   externalConfigSchema,
 } from './schemas/schema.ts';
 export {
+  type ColorDefinition,
+  type ColorSteps,
+  colorDefinitionSchema,
+  getBaseColor,
+  getColorSteps,
+} from './schemas/schema-color.ts';
+export {
   type ConfigColors,
   configColorsFromValues,
   type SchemeColors,
@@ -54,3 +61,4 @@ export { getThemeColorScales } from './tokens/create/generators/primitives/color
 export { createSystemTokens, createTokens, getTokenSetDimensions } from './tokens/create.ts';
 export { formatThemeCSS } from './tokens/format.ts';
 export type { BorderRadiusConfig, TokenSets } from './tokens/types.ts';
+export { stringifyConfig } from './utils/stringify-config.ts';

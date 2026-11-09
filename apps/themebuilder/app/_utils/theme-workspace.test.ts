@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { exportConfigColors } from './theme-colors';
 import {
   addWorkspaceTheme,
   editorParams,
@@ -6,6 +7,7 @@ import {
   renameWorkspaceThemes,
   updateWorkspace,
   workspaceParams,
+  workspaceToUrl,
 } from './theme-workspace';
 
 const config = {
@@ -213,6 +215,79 @@ describe('compressed theme workspace', () => {
       expect(theme.overrides?.colors).toBeUndefined();
       expect(theme.overrides?.severity).toEqual({ danger: '#ab1234' });
     }
+  });
+  it('keeps a pasted exported config compact in the URL', () => {
+    const exported = exportConfigColors({
+      ...config,
+      themes: {
+        ...config.themes,
+        first: {
+          ...config.themes.first,
+          overrides: {
+            colors: { accent: { 'text-default': { dark: '#112233' } } },
+            severity: { danger: '#ab1234' },
+          },
+        },
+      },
+    });
+    expect(exported.themes.first.overrides).toBeUndefined();
+    const url = new URL(
+      workspaceToUrl(exported, 'first'),
+      'https://themebuilder.local',
+    );
+    expect(url.search.length).toBeLessThan(500);
+    const workspace = readWorkspace(url.searchParams);
+    expect(workspace?.config.themes.first).toEqual({
+      ...config.themes.first,
+      overrides: {
+        colors: { accent: { 'text-default': { dark: '#112233' } } },
+        severity: { danger: '#ab1234' },
+      },
+    });
+    expect(workspace?.config.themes.second).toEqual(config.themes.second);
+    const edited = editorParams(url.searchParams);
+    expect(edited.get('colors')).toBe('accent:#123456 neutral:#333333');
+    expect(edited.get('severity')).toBe('danger:#ab1234');
+    expect(edited.get('color-overrides')).toBe(
+      'accent|text-default|dark:#112233',
+    );
+  });
+  it('edits a theme with color steps and severity colors in its colors without touching other themes', () => {
+    const withSteps = {
+      ...config,
+      themes: {
+        ...config.themes,
+        first: {
+          colors: {
+            accent: {
+              'base-default': { light: '#123456' },
+              'text-default': { dark: '#112233' },
+            },
+            neutral: '#333333',
+            danger: '#ab1234',
+          },
+        },
+        second: {
+          ...config.themes.second,
+          colors: { ...config.themes.second.colors, danger: '#cd5678' },
+        },
+      },
+    };
+    const params = workspaceParams({ config: withSteps, activeTheme: 'first' });
+    const edited = editorParams(params);
+    expect(edited.get('colors')).toBe('accent:#123456 neutral:#333333');
+    expect(edited.get('severity')).toBe('danger:#ab1234');
+    edited.set('border-radius', '12');
+    const next = readWorkspace(updateWorkspace(params, edited));
+    expect(next?.config.themes.first).toEqual({
+      colors: { accent: '#123456', neutral: '#333333' },
+      overrides: {
+        colors: { accent: { 'text-default': { dark: '#112233' } } },
+        severity: { danger: '#ab1234' },
+      },
+      borderRadius: 12,
+    });
+    expect(next?.config.themes.second).toEqual(withSteps.themes.second);
   });
   it('preserves per-theme overrides regardless of the legacy severity flag', () => {
     const params = workspaceParams({ config, activeTheme: 'first' });
