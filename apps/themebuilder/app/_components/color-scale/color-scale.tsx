@@ -1,4 +1,5 @@
 import type { ThemeInfo } from '@digdir/designsystemet/internal';
+import { useTranslation } from 'react-i18next';
 import { ColorGroup } from '../color-group/color-group';
 
 import classes from './color-scale.module.css';
@@ -10,9 +11,17 @@ type ScaleProps = {
 };
 
 export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className={classes.themes}>
-      <div className={classes.test} focusgroup='menu inline'>
+      {/* toolbar (not menu): keeps the color inputs and info buttons' own roles, and one tab stop per scale with arrow keys between steps */}
+      <div
+        className={classes.test}
+        focusgroup='toolbar inline'
+        role='toolbar'
+        aria-label={t('colorGroup.scale', { namespace })}
+      >
         <ColorGroup
           header={showHeader ? 'Background' : ''}
           colorNames={['background-default', 'background-tinted']}

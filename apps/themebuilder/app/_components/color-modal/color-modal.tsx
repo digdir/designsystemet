@@ -1,53 +1,83 @@
-import type { Color } from '@digdir/designsystemet/internal';
+import type {
+  CssColor,
+  SemanticColorNames,
+} from '@digdir/designsystemet/internal';
 import {
   convertColor,
+  generateColorSchemes,
   getCssVariable,
   getLuminanceFromColor,
 } from '@digdir/designsystemet/internal';
 import {
+  Button,
   Dialog,
   Heading,
   Paragraph,
   Select,
 } from '@digdir/designsystemet-react';
 import { ClipboardButton } from '@internal/components';
-import type { ChangeEvent } from 'react';
-import { useState } from 'react';
+import { ArrowRightIcon, ArrowUndoIcon } from '@navikt/aksel-icons';
+import { useId, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useColorOverride } from '~/_hooks/use-color-override';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './color-modal.module.css';
 import { capitalizeFirstLetter, getColorCombinations } from './util';
 
 type ColorModalProps = {
   colorModalRef: React.Ref<HTMLDialogElement> | null;
+  /** Color name, e.g. `accent` */
   namespace: string;
-  color: Color;
+  /** Semantic token name of the step, e.g. `background-default` */
+  tokenName: SemanticColorNames;
 };
 
 export const ColorModal = ({
   colorModalRef,
   namespace,
-  color,
+  tokenName,
 }: ColorModalProps) => {
-  const { displayName, name, number, hex } = color;
-  const [convertedColor, setConvertedColor] = useState<string>(
-    convertColor(hex, 'oklch'),
-  );
   const { t } = useTranslation();
+  const headingId = useId();
+  const overrideRef = useRef<HTMLDivElement>(null);
+  const [colorFormat, setColorFormat] = useState('oklch');
+  const { colors, severityColors, colorScheme } = useThemebuilder();
+  const { isOverridden, resetOverride } = useColorOverride(
+    namespace,
+    tokenName,
+  );
 
-  const handleColorFormat = (event: ChangeEvent<HTMLSelectElement>) => {
-    setConvertedColor(convertColor(hex, event.target.value));
-  };
+  /* Look up the step from loader data on every render so overrides are reflected */
+  const colorTheme = [...colors, ...severityColors].find(
+    (theme) => theme.name === namespace,
+  );
+  const color = colorTheme?.colors[colorScheme][tokenName];
+
+  if (!color) return null;
+
+  const { displayName, name, number, hex } = color;
+
+  /* The loader replaces the generated hex with the override, so regenerate
+     the scale from the base color (same as the loader) to show the original */
+  const generatedHex =
+    isOverridden && colorTheme?.hex
+      ? generateColorSchemes(colorTheme.hex as CssColor)[colorScheme][tokenName]
+          .hex
+      : undefined;
+  const convertedColor = convertColor(hex, colorFormat);
+  const cssVariable = getCssVariable(namespace, number);
 
   return (
     <Dialog
       ref={colorModalRef}
       closedby='any'
+      aria-labelledby={headingId}
       style={{
         maxWidth: '650px',
       }}
     >
       <Dialog.Block>
-        <Heading data-size='xs'>
+        <Heading id={headingId} data-size='xs'>
           {`${capitalizeFirstLetter(namespace)} ${displayName}`}
         </Heading>
       </Dialog.Block>
@@ -59,6 +89,61 @@ export const ColorModal = ({
         <Paragraph data-size='sm' className={classes.description}>
           {t(`color-metadata.${name}.long`)}
         </Paragraph>
+        <div
+          ref={overrideRef}
+          tabIndex={-1}
+          aria-live='polite'
+          className={classes.override}
+          data-overridden={isOverridden || undefined}
+        >
+          {isOverridden ? (
+            <>
+              <div className={classes.overrideText}>
+                <Paragraph data-size='sm'>
+                  {t(`color-modal.override.overridden-${colorScheme}`)}{' '}
+                  {t('color-modal.override.check-contrast')}
+                </Paragraph>
+                {generatedHex && (
+                  <Paragraph data-size='sm' className={classes.fromTo}>
+                    <span className='ds-sr-only'>
+                      {t('color-modal.override.from')}
+                    </span>
+                    <span
+                      className={classes.fromToSwatch}
+                      style={{ backgroundColor: generatedHex }}
+                    />
+                    <code>{generatedHex}</code>
+                    <ArrowRightIcon aria-hidden />
+                    <span className='ds-sr-only'>
+                      {t('color-modal.override.to')}
+                    </span>
+                    <span
+                      className={classes.fromToSwatch}
+                      style={{ backgroundColor: hex }}
+                    />
+                    <code>{hex}</code>
+                  </Paragraph>
+                )}
+              </div>
+              <Button
+                variant='secondary'
+                data-size='sm'
+                onClick={() => {
+                  resetOverride();
+                  /* The button disappears after reset, keep focus in the section */
+                  overrideRef.current?.focus();
+                }}
+              >
+                <ArrowUndoIcon aria-hidden />
+                {t('color-modal.override.reset')}
+              </Button>
+            </>
+          ) : (
+            <Paragraph data-size='sm'>
+              {t(`color-modal.override.hint-${colorScheme}`)}
+            </Paragraph>
+          )}
+        </div>
         <div data-size='sm' className={classes.grid}>
           <Paragraph className={classes.key}>
             {t('color-modal.hexcode')}
@@ -69,7 +154,10 @@ export const ColorModal = ({
               <ClipboardButton value={hex} />
             </div>
           </Paragraph>
-          <Select defaultValue='oklch' onChange={handleColorFormat}>
+          <Select
+            value={colorFormat}
+            onChange={(event) => setColorFormat(event.target.value)}
+          >
             <Select.Option value='hct'>HCT</Select.Option>
             <Select.Option value='hsluv'>HSLUV</Select.Option>
             <hr />
@@ -88,8 +176,8 @@ export const ColorModal = ({
             {t('color-modal.css-variable')}
           </Paragraph>
           <Paragraph className={classes.value}>
-            <code>{getCssVariable(namespace, number)}</code>
-            <ClipboardButton value={getCssVariable(namespace, number)} />
+            <code>{cssVariable}</code>
+            <ClipboardButton value={cssVariable} />
           </Paragraph>
           <Paragraph className={classes.key}>
             {t('color-modal.relative-luminance')}

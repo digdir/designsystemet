@@ -5,6 +5,42 @@
   justify-content: space-between;
 }
 
+/* One color step: the swatch with its info button in the top-right corner */
+.step {
+  position: relative;
+}
+
+/* Only shown while the step is hovered or something in it has focus,
+   so the grid stays calm. Always shown on devices without hover. */
+.info {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
+}
+
+.step:hover .info,
+.step:focus-within .info {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (hover: none) {
+  .info {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .info {
+    transition: none;
+  }
+}
+
 .header {
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
   margin-bottom: var(--ds-size-4);

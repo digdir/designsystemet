@@ -2,12 +2,9 @@ import type {
   SemanticColorNames,
   ThemeInfo,
 } from '@digdir/designsystemet/internal';
-import cl from 'clsx/lite';
-import { Fragment } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useColorModalContext } from '~/_utils/color-modal-context';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { ColorButton } from '../color-button/color-button';
+import { ColorInfoButton } from '../color-info-button/color-info-button';
 import classes from './color-group.module.css';
 
 type ColorGroupProps = {
@@ -26,12 +23,10 @@ export const ColorGroup = ({
   namespace,
 }: ColorGroupProps) => {
   const { colorScheme } = useThemebuilder();
-  const { t } = useTranslation();
-  const { openColorModal } = useColorModalContext();
 
   return (
     <div>
-      {header && <div className={cl(classes.header)}>{header}</div>}
+      {header && <div className={classes.header}>{header}</div>}
       {header && names && (
         <div className={classes.names}>
           {names.map((name, index) => (
@@ -40,22 +35,22 @@ export const ColorGroup = ({
         </div>
       )}
 
-      <div className={cl(classes.colors)}>
-        {colorNames.map((colorName, index) => {
+      <div className={classes.colors}>
+        {colorNames.map((colorName) => {
           const color = colorScale[colorScheme][colorName];
-          const { hex } = color;
           return (
-            <Fragment key={index + 'fragment' + namespace}>
+            <div key={colorName} className={classes.step}>
               <ColorButton
-                color={hex}
+                namespace={namespace}
                 colorName={colorName}
-                aria-label={t('colorGroup.see-more', {
-                  namespace,
-                  color: color?.displayName,
-                })}
-                onClick={() => openColorModal(color, namespace)}
+                color={color}
               />
-            </Fragment>
+              <ColorInfoButton
+                color={color}
+                namespace={namespace}
+                className={classes.info}
+              />
+            </div>
           );
         })}
       </div>

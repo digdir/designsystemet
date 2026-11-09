@@ -1,0 +1,12 @@
+/* `[data-variant]` to win over the tertiary variant's transparent background */
+.button[data-variant] {
+  --dsc-button-size: var(--ds-size-6);
+  --dsc-button-border-radius: var(--ds-border-radius-full);
+  --dsc-button-background: var(--ds-color-neutral-background-default);
+  --dsc-button-background--hover: var(--ds-color-neutral-surface-hover);
+  --dsc-button-background--active: var(--ds-color-neutral-surface-active);
+  --dsc-button-color: var(--ds-color-neutral-text-default);
+  --ds-icon-size: var(--ds-size-5);
+
+  box-shadow: 0 0 0 1px var(--ds-color-neutral-border-subtle);
+}

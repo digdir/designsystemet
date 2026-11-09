@@ -117,7 +117,8 @@ export default {
   'color-modal': colorModal,
   themeModal,
   colorPane: {
-    'token-overrides': 'Token overrides',
+    'override-hint':
+      'Click a color step in the color scale to override it with your own color.',
     'confirm-add-title': 'Add a color to all themes?',
     'confirm-add-description':
       'This adds a color with the same starting value to all {{count}} themes. Each theme can then have its own color value.',
@@ -154,7 +155,9 @@ export default {
     view: 'view',
   },
   colorGroup: {
-    'see-more': 'See more about {{namespace}} {{color}}',
+    override: 'Override {{namespace}} {{color}}',
+    overridden: 'Overridden',
+    scale: 'Color scale for {{namespace}}',
   },
   'color-tokens': {
     title: 'Color Tokens',
@@ -191,10 +194,5 @@ export default {
     medium: 'Medium',
     large: 'Large',
     full: 'Full',
-  },
-  overrides: {
-    heading: 'Color Overrides',
-    description:
-      'Override specific token colors for light and dark modes. Make sure to check contrasts after changes.',
   },
 } satisfies typeof no;

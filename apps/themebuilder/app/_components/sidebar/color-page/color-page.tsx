@@ -19,7 +19,6 @@ import {
   useThemebuilder,
 } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { ColorInput } from '../../color-input/color-input';
-import { ColorOverrides } from '../color-overrides/color-overrides';
 import { ColorPane } from '../color-pane/color-pane';
 import classes from './color-page.module.css';
 
@@ -287,9 +286,9 @@ export const ColorPage = () => {
             </div>
           </div>
           <Divider />
-          <div className={classes.overridesSection}>
-            <ColorOverrides />
-          </div>
+          <Paragraph data-size='sm' className={classes.overrideHint}>
+            {t('colorPane.override-hint')}
+          </Paragraph>
         </>
       )}
 

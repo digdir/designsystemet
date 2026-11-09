@@ -54,10 +54,9 @@
   font-weight: 500;
 }
 
-.overridesSection {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 8px;
+.overrideHint {
+  color: var(--ds-color-neutral-text-subtle);
+  margin-bottom: var(--ds-size-2);
 }
 
 .confirmationActions {

@@ -116,7 +116,8 @@ export default {
   'color-modal': colorModal,
   themeModal,
   colorPane: {
-    'token-overrides': 'Tokenoverstyringer',
+    'override-hint':
+      'Klikk på et fargesteg i fargeskalaen for å overstyre det med din egen farge.',
     'confirm-add-title': 'Legg til en farge i alle temaer?',
     'confirm-add-description':
       'Dette legger til en farge med samme startverdi i alle {{count}} temaer. Hvert tema kan deretter ha sin egen fargeverdi.',
@@ -153,7 +154,9 @@ export default {
     view: 'visning',
   },
   colorGroup: {
-    'see-more': 'Se mer om {{namespace}} {{color}}',
+    override: 'Overstyr {{namespace}} {{color}}',
+    overridden: 'Overstyrt',
+    scale: 'Fargeskala for {{namespace}}',
   },
   'color-tokens': {
     title: 'Fargetokens',
@@ -190,10 +193,5 @@ export default {
     medium: 'Middels',
     large: 'Stor',
     full: 'Maksimal',
-  },
-  overrides: {
-    heading: 'Fargeoverstyringer',
-    description:
-      'Overstyr spesifikke tokenfarger for lys og mørk modus. Sørg for å sjekke kontraster etter endringer.',
   },
 };

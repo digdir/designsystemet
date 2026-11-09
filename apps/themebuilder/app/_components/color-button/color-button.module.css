@@ -1,14 +1,34 @@
-.box {
+.swatch {
+  position: relative;
+  display: block;
   height: 46px;
   width: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-weight: 400;
+}
+
+.box {
+  appearance: none;
+  display: block;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 4px;
   cursor: pointer;
+}
+
+/* Hide the native swatch; the background-color shows the exact step color */
+.box::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.box::-webkit-color-swatch {
+  opacity: 0;
+}
+
+.box::-moz-color-swatch {
+  opacity: 0;
 }
 
 .box:hover:not(:focus-visible) {
@@ -17,55 +37,16 @@
   outline-offset: 1px;
 }
 
-.boxContainer {
-  border-radius: 4px;
-  background-image:
-    linear-gradient(45deg, var(--ds-color-neutral-background-subtle) 26%, transparent 26%),
-    linear-gradient(135deg, var(--ds-color-neutral-background-subtle) 26%, transparent 26%),
-    linear-gradient(45deg, transparent 75%, var(--ds-color-neutral-background-subtle) 75%),
-    linear-gradient(135deg, transparent 75%, var(--ds-color-neutral-background-subtle) 75%);
-  background-size: 24px 24px; /* Must be a square */
-  background-position:
-    0 0,
-    12px 0,
-    12px -12px,
-    0px 12px; /* Must be half of one side of the square */
-}
-
-.featured {
-  border: 5px solid black;
-  font-weight: 600;
-}
-
-.whiteText {
-  color: white !important;
-}
-
-.colorTest {
-  height: 15px;
-  width: 15px;
+/* Marks a step that has a color override in the current color scheme */
+.marker {
+  position: absolute;
+  /* top-left: the info button appears in the top-right corner */
+  top: 5px;
+  left: 5px;
+  height: 8px;
+  width: 8px;
   border-radius: 50%;
-  border: 1px solid #a0a0a0;
-}
-
-.contrast {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  gap: 6px;
-  margin-top: 12px;
-}
-
-.lightness {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  gap: 6px;
-  margin-left: -2px;
-  margin-top: 12px;
-}
-
-.hex {
-  font-size: 15px;
-  margin-top: 12px;
+  background: var(--ds-color-neutral-text-default);
+  box-shadow: 0 0 0 1.5px var(--ds-color-neutral-background-default);
+  pointer-events: none;
 }
