@@ -42,7 +42,7 @@ export const SuggestionInput = forwardRef<
     );
   if (rest.value)
     console.warn(
-      'SuggestionInput: Avoid using value, as Suggestion <data> elements controls the Input.',
+      'SuggestionInput: Avoid using value, as the Input is controlled by the <data> elements in Suggestion. Use oncomboboxbeforeselect on Suggestion with the suggestion() helper instead.',
     );
 
   return (

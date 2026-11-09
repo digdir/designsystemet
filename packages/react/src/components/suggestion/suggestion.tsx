@@ -6,7 +6,7 @@ import { useEventListener, useMergeRefs } from '../../utilities/hooks';
 
 /* Props removed from Suggestion, and what to use instead */
 const WARNED = new Set<string>(); // Warn only once per prop, even with many instances
-const REMOVED_PROPS = Object.entries({
+const REMOVED_PROPS = {
   selected: 'render <data> children and use oncomboboxbeforeselect',
   defaultSelected: 'render the initial <data> as children',
   onSelectedChange: 'use oncomboboxbeforeselect with the suggestion() helper',
@@ -15,7 +15,10 @@ const REMOVED_PROPS = Object.entries({
   creatable: 'use data-creatable',
   filter: 'use data-nofilter on Suggestion.List',
   onBeforeMatch: 'use oncomboboxbeforematch',
-});
+};
+
+/* Internal only, so removed props can be picked out of rest without widening its type */
+type RemovedProps = { [K in keyof typeof REMOVED_PROPS]?: unknown };
 
 type SuggestionEvent<T> = CustomEvent<T> & {
   currentTarget: DSSuggestionElement;
@@ -69,7 +72,7 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
       filter,
       onBeforeMatch,
       ...rest
-    }: SuggestionProps & Record<string, unknown>,
+    }: SuggestionProps & RemovedProps,
     ref,
   ) {
     const selfRef = useRef<DSSuggestionElement>(null);
@@ -82,9 +85,21 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
 
     // Warn about removed props, as they are silently ignored
     useEffect(() => {
-      for (const [prop, fix] of REMOVED_PROPS)
-        if (prop in rest && !WARNED.has(prop) && WARNED.add(prop))
-          warn(`Suggestion: "${prop}" is removed, ${fix}.`);
+      const removed: Required<Record<keyof RemovedProps, unknown>> = {
+        selected,
+        defaultSelected,
+        onSelectedChange,
+        renderSelected,
+        multiple,
+        creatable,
+        filter,
+        onBeforeMatch,
+      };
+      for (const [prop, value] of Object.entries(removed))
+        if (value !== undefined && !WARNED.has(prop) && WARNED.add(prop))
+          warn(
+            `Suggestion: "${prop}" is removed, ${REMOVED_PROPS[prop as keyof RemovedProps]}.`,
+          );
     }, []);
 
     return (

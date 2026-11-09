@@ -64,24 +64,21 @@
     2
   ); /* Distance between edge of input and chip */
 
-  &:lang(no),
-  &:lang(nb),
-  &:lang(nn) {
-    --dsc-suggestion-create-text: 'Legg til';
-    --dsc-suggestion-empty-text: 'Ingen søketreff';
-    --dsc-suggestion-sr-added: 'La til';
-    --dsc-suggestion-sr-clear: 'Fjern tekst';
-    --dsc-suggestion-sr-empty: 'Ingen valgte';
-    --dsc-suggestion-sr-found: 'Naviger til venstre for å finne %d valgte';
-    --dsc-suggestion-sr-invalid: 'Ugyldig valg';
-    --dsc-suggestion-sr-items: 'Valgte';
-    --dsc-suggestion-sr-of: 'av';
-    --dsc-suggestion-sr-plural: '%d forslag';
-    --dsc-suggestion-sr-remove: 'Trykk for å fjerne';
-    --dsc-suggestion-sr-removed: 'Fjernet';
-    --dsc-suggestion-sr-singular: '%d forslag';
-    --dsc-suggestion-sr-toggle: 'Forslag';
-  }
+  --dsc-suggestion-create-text: 'Legg til';
+  --dsc-suggestion-empty-text: 'Ingen søketreff';
+  --dsc-suggestion-sr-added: 'La til';
+  --dsc-suggestion-sr-clear: 'Fjern tekst';
+  --dsc-suggestion-sr-empty: 'Ingen valgte';
+  --dsc-suggestion-sr-found: 'Naviger til venstre for å finne %d valgte';
+  --dsc-suggestion-sr-invalid: 'Ugyldig valg';
+  --dsc-suggestion-sr-items: 'Valgte';
+  --dsc-suggestion-sr-of: 'av';
+  --dsc-suggestion-sr-plural: '%d forslag';
+  --dsc-suggestion-sr-remove: 'Trykk for å fjerne';
+  --dsc-suggestion-sr-removed: 'Fjernet';
+  --dsc-suggestion-sr-singular: '%d forslag';
+  --dsc-suggestion-sr-toggle: 'Forslag';
+
   &:lang(en) {
     --dsc-suggestion-create-text: 'Add';
     --dsc-suggestion-empty-text: 'No hits';

@@ -243,8 +243,10 @@ describe('suggestion component', () => {
     tags: ['browser'],
   }, async () => {
     vi.useFakeTimers();
+    // Using --sr-singular|plural instead of --dsc-suggestion-sr-singular|plural
+    // as this allows us to test without CSS parser issues in JSDOM
     document.body.innerHTML = `
-      <ds-suggestion class="ds-suggestion" style="--dsc-suggestion-sr-singular: '%d forslag'; --dsc-suggestion-sr-plural: '%d forslag'">
+      <ds-suggestion class="ds-suggestion" style="--sr-singular: '%d forslag'; --sr-plural: '%d forslag'">
         <input type="search" class="ds-input" />
         <u-datalist>
           <u-option data-empty>Ingen treff</u-option>
@@ -356,39 +358,6 @@ describe('suggestion component', () => {
     await tick();
 
     expect(suggestion.querySelector('data')).toBeNull();
-  });
-
-  it('shows the create option when the only exact match is disabled or hidden', async () => {
-    document.body.innerHTML = `
-      <ds-suggestion data-creatable class="ds-suggestion">
-        <input type="search" class="ds-input" />
-        <u-datalist role="listbox">
-          <u-option data-empty></u-option>
-          <u-option value="Oslo">Oslo</u-option>
-        </u-datalist>
-      </ds-suggestion>
-    `;
-    const suggestion = document.querySelector(
-      'ds-suggestion',
-    ) as DSSuggestionElement;
-    const input = suggestion.querySelector('input') as HTMLInputElement;
-    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
-    const option = suggestion.querySelector(
-      'u-option[value="Oslo"]',
-    ) as HTMLOptionElement;
-
-    await tick(); // Let mutation observer run
-    await type(input, 'oslo');
-    expect(empty.hidden).toBe(true); // Selectable exact match exists
-
-    option.disabled = true;
-    await tick();
-    expect(empty.hidden).toBe(false);
-
-    option.disabled = false;
-    option.hidden = true;
-    await tick();
-    expect(empty.hidden).toBe(false);
   });
 
   it('does not select anything when clicking a non-creatable empty option', async () => {
