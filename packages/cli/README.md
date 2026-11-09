@@ -110,7 +110,8 @@ Severity colors (`info`, `success`, `warning`, `danger`) are set the same way, d
 
 > ⚠️ **DEPRECATED** ⚠️  
 > `overrides.colors` and `overrides.severity` are deprecated. Set the steps on the color in `colors`, and put severity colors in `colors`, instead.
-> They still work, and if a config has both, `overrides` wins. `overrides.focus` is not deprecated.
+> They still work, and if a config has both, `overrides` wins. `overrides.focus` is not deprecated.  
+> The CLI will offer to migrate your config file automatically, giving the same colors.
 
 #### Output
 
