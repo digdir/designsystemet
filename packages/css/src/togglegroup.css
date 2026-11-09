@@ -31,7 +31,7 @@
     min-height: var(--dsc-togglegroup-button-size);
     min-width: fit-content;
 
-    @composes ds-focus--inset from './base.css';
+    @composes ds-focus--inset from './utils.css';
 
     &:focus-visible {
       border-radius: var(--dsc-togglegroup-border-radius);

@@ -62,7 +62,7 @@
   vertical-align: middle; /* Remove space under when display: inline-block */
 
   @composes ds-print-preserve from './base.css';
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 
   /* only hover effect on input, but with label if it is a radio or checkbox */
   :has(label):not(:has(label:hover)) &:not(:focus-visible, :disabled, [readonly], [aria-readonly='true']):hover,

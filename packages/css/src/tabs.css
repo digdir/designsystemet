@@ -11,7 +11,7 @@
   & :is([role='tabpanel'], & ds-tabpanel, & u-tabpanel) {
     padding: var(--dsc-tabs-content-padding);
 
-    @composes ds-focus from './base.css';
+    @composes ds-focus from './utils.css';
   }
 
   & :is([role='tablist'], & ds-tablist, & u-tablist) {
@@ -46,7 +46,7 @@
       text-align: center;
       white-space: nowrap;
 
-      @composes ds-focus--inset from './base.css';
+      @composes ds-focus--inset from './utils.css';
 
       &:not([hidden]) {
         display: flex;
@@ -57,7 +57,7 @@
       }
 
       & :is(img, svg) {
-        @composes ds-icon from './base.css';
+        @composes ds-icon from './utils.css';
       }
 
       &::after {
