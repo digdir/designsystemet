@@ -1,7 +1,7 @@
 ---
 title: CSS
 description: Get started with CSS including layers, data attributes and helpers.
-date: 2026-09-28
+date: 2026-10-20
 category: Code
 color: blue
 icon: CodeIcon
@@ -54,8 +54,7 @@ Used to change the typography of the components. Possible values are `primary` a
 
 A common use for this attribute is when you want a monospace font on tables.
 
-Which typography is associated with `primary` or `secondary` must be defined in the team, using [Tokens Studio](https://tokens.studio/)
-(with the Designsystemet design-tokens) or [Theme Builder](https://theme.designsystemet.no/en).
+The config file sets one font, used for both `primary` and `secondary`. To use a different font for `secondary`, edit the Design Tokens and sync them with Figma using Tokens Studio. See [Sync Design Tokens with Tokens Studio](/en/fundamentals/figma/tokens-studio).
 
 If you are going to use this attribute, you must remember to define `font-family` to use the `--ds-font-family` CSS variable.
 
@@ -105,12 +104,11 @@ For every `<theme>.css` you will then also get a `<theme>.tailwind.css`.
 }
 ```
 
-The default theme in `@digdir/designsystemet-css` is built with `"v3"`.
-
 ### Add the theme to Tailwind
 
-Import the Tailwind theme file after `tailwindcss`. Designsystemet's CSS must be imported before `tailwindcss`,
-so [Preflight](https://tailwindcss.com/docs/preflight) does not override our components.
+Import the Tailwind theme file first, then Designsystemet's CSS, and `tailwindcss` last.
+The Tailwind theme file starts with `@layer base, tailwind-base, ds;`, which puts [Preflight](https://tailwindcss.com/docs/preflight) before our components, so it does not override them.
+Use `@import '…'` and not `@import url('…')`, as Tailwind only bundles plain string imports.
 
 <ds-tabs class="ds-tabs" data-wide-content>
   <ds-tablist>
@@ -119,20 +117,18 @@ so [Preflight](https://tailwindcss.com/docs/preflight) does not override our com
   </ds-tablist>
   <ds-tabpanel>
 ```css
-@import '@digdir/designsystemet-css/index.css';
-@import 'designsystemet/<your-theme>.css';
-
-@import 'tailwindcss';
 @import 'designsystemet/<your-theme>.tailwind.css';
+@import '@digdir/designsystemet-css';
+@import 'designsystemet/<your-theme>.css';
+@import 'tailwindcss';
 ```
   </ds-tabpanel>
   <ds-tabpanel>
 ```css
-@import '@digdir/designsystemet-css/index.css';
-@import '@digdir/designsystemet-css/theme.css';
-
-@import 'tailwindcss';
 @import '@digdir/designsystemet-css/theme/designsystemet.tailwind.css';
+@import '@digdir/designsystemet-css';
+@import '@digdir/designsystemet-css/theme.css';
+@import 'tailwindcss';
 ```
   </ds-tabpanel>
 </ds-tabs>

@@ -2,7 +2,7 @@
 title: Forberedelser
 sidebar_title: Forberedelser
 description: Dette bør du tenke på når du skal ta Designsystemet i bruk i organisasjonen og løsningene dine.
-date: 2026-01-07
+date: 2026-10-20
 category: Start her
 color: yellow
 icon: HikingTrailSignIcon
@@ -35,7 +35,7 @@ Designsystemet kan brukes direkte i dine løsninger ved å ta i bruk komponentbi
 
 Slik kommer du i gang: 
 - Start med å [bygge ditt tema](/no/fundamentals/start-here/own-theme) og legg det i et repo.
-- Trenger du Figma, kan du bruke [Designsystemet - Core UI Kit](https://www.figma.com/@designsystemet), hent variabler fra ditt tema, publiser filen.
+- Trenger du Figma, kan du bruke [Figma-filen til Designsystemet](https://www.figma.com/@designsystemet), importere temaet ditt med [Designsystemet-pluginen](/no/fundamentals/figma/plugin) og publisere filen.
 - Følg [oppsettet for kodepakkene](/no/fundamentals/code/setup) og velg CSS, web-pakken eller React ut fra behovet i prosjektet.
 - Importer og bruk komponentene i dine løsninger sammen med ditt tema.
 
@@ -51,7 +51,7 @@ For å lykkes trenger dere:
 Under beskriver vi en anbefalt tilnærming basert på erfaringer fra etater som allerede har bygget egne systemer på toppen av Designsystemet.
 
 ### Tema
-Begynn med å få på plass temaet som skal brukes i kode og Figma. Temaet definerer farger, typografi, spacing og andre visuelle egenskaper. [Temabyggeren](/no/fundamentals/start-here/own-theme) hjelper deg å få opp en semantisk tokenstruktur, og du kan tilpasse den deres profil.
+Begynn med å få på plass temaet som skal brukes i kode og Figma. Temaet definerer farger, typografi, spacing og andre visuelle egenskaper. Med [Temabyggeren](/no/fundamentals/start-here/own-theme) lager dere en config-fil med temaet, som brukes både i Figma og i kode.
 
 ### Kode
 En anbefalt modell er:
@@ -65,10 +65,10 @@ Da vil oppgraderinger av Designsystemet kunne gjøres direkte via versjonsoppdat
 For å unngå at det blir for omfattende å rulle det ut i organisasjonen, er det lurt å lansere komponentene gradvis og utvide etter hvert.
 
 ### Figma
-Designsystemet deles som en [community-fil i Figma](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit). Den kopieres inn i deres miljø og blir et startpunkt for deres eget bibliotek.
+Figma-filen til Designsystemet deles i [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit). Den kopieres inn i deres miljø og blir et startpunkt for deres eget bibliotek.
 
 Vær klar over at:
-- Det finnes ingen direkte teknisk kobling tilbake til originalfila. Nye versjoner av community-filen kan ikke merges automatisk.  
+- Det finnes ingen direkte teknisk kobling tilbake til originalfila. Nye versjoner av Figma-filen kan ikke merges automatisk.  
 - Endringer dere ønsker å ta inn må overføres manuelt. I praksis skjer dette sjelden og er håndterbart, særlig hvis dere har gjort begrensede visuelle tilpasninger.
 
 En anbefalt praksis er:

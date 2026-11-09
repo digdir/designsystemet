@@ -164,7 +164,7 @@
 
     @composes ds-print-preserve from './base.css';
     &:focus {
-      @composes ds-focus--visible from './base.css'; /* Using :focus as focus can also be set by mouse clicking on <data> */
+      @composes ds-focus--visible from './utils.css'; /* Using :focus as focus can also be set by mouse clicking on <data> */
       z-index: 2; /* Place focus ring on top */
     }
     &:hover {
@@ -244,7 +244,7 @@
 
     /* Use same effect as hover instead of regular focus ring, because we want to render the focus ring inside the u-datalist */
     &[data-activedescendant] {
-      @composes ds-focus--visible--middle from './base.css';
+      @composes ds-focus--visible--middle from './utils.css';
     }
   }
 
@@ -390,7 +390,7 @@
     scale: 0.75;
     width: var(--dsc-suggestion-clear-size);
 
-    @composes ds-focus from './base.css';
+    @composes ds-focus from './utils.css';
 
     &:hover {
       background: var(--dsc-suggestion-clear-background--hover);

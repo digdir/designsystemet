@@ -1,8 +1,9 @@
 import { act, render, screen, waitFor } from '@testing-library/react';
 import { Search } from './';
 
+/* Search is deprecated, remove these tests with it in the next major version */
 describe('Search', () => {
-  it('should clear input when clear button is clickd', async () => {
+  it('should clear input when clear button is clicked', async () => {
     render(
       <Search>
         <Search.Input aria-label='Søk' />

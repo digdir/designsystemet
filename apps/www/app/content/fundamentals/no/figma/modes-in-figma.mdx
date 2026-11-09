@@ -1,7 +1,7 @@
 ---
 title: Modes i Figma
 description: Hvordan modes i Figma fungerer og hvordan du raskt justerer størrelser, farger og typografi. 
-date: 2025-02-15
+date: 2026-10-20
 category: Figma
 color: yellow
 icon: ThemeIcon
@@ -16,7 +16,7 @@ I Figma kan du bruke *modes* for raskt å justere størrelse, farger og typograf
 Modes er forhåndsdefinerte innstillinger i Designsystemet som lar deg enkelt bytte mellom ulike temaer, farger, størrelser og typografi. Dette gjør det enklere å tilpasse designet uten tidkrevende manuelle justeringer.
 
 <br/>
-I [Core UI Kit](https://www.figma.com/community/file/1322138390374166141) har du følgende modes:
+I [Figma-filen til Designsystemet](https://www.figma.com/community/file/1322138390374166141) har du følgende modes:
 * Theme - Velg mellom ulike tema
 * Color scheme - Bytt mellom lys og mørk modus
 * Color - Velg hvilken farge som skal brukes på komponenter
@@ -61,7 +61,7 @@ Dev mode ser kun hvilken mode som er satt på elementet det er satt, ikke lenger
 
 ## Theme
 I *Theme mode* velger du hvilket tema designet skal bruke.
-Når du bytter theme, oppdateres hele designet seg automatisk, fra farger og typografi til øvrige designelementer, uten at du trenger å justere hver komponent manuelt. Dette gir deg muligheten til raskt å tilpasse designet etter organisasjonens visuelle identitet og spesifikke behov. For noen organisasjoner holder det med ett tema, mens andre trenger flere. Temaene som vises avhenger av hvilke tema som er satt opp for din organisasjon. Temaer kan bygges i [Designsystemets temabygger](https://theme.designsystemet.no/).
+Når du bytter theme, oppdateres hele designet seg automatisk, fra farger og typografi til øvrige designelementer, uten at du trenger å justere hver komponent manuelt. Dette gir deg muligheten til raskt å tilpasse designet etter organisasjonens visuelle identitet og spesifikke behov. For noen organisasjoner holder det med ett tema, mens andre trenger flere. Temaene som vises avhenger av hvilke tema som er satt opp for din organisasjon. Temaene lages i [Temabyggeren](https://theme.designsystemet.no/) og importeres med [Designsystemet-pluginen](/no/fundamentals/figma/plugin), som lager én mode per tema.
 
 Videoen under demonstrerer hvordan du kan endre Theme i Figma:
 <ResponsiveIframe
@@ -92,7 +92,7 @@ Slik bytter du mellom Light og Dark mode i Figma:
 
 
 ## Color
-For å tilby muligheten til å endre farger på komponentene har vi laget en *Color* mode. Den inneholder alle fargene du la inn i temabyggeren, med én mode per farge. Ved å velge en fargemodus i Figma bestemmer du hvilken av temaets farger som er i bruk. 
+For å tilby muligheten til å endre farger på komponentene har vi laget en *Color* mode. Den inneholder alle fargene du la inn i Temabyggeren, med én mode per farge. Fargemodene deles av alle temaene, så alle temaene må ha de samme fargenavnene. Les mer i [Flere tema](/no/fundamentals/theme/multiple-themes). Ved å velge en fargemodus i Figma bestemmer du hvilken av temaets farger som er i bruk. 
 
 Modusene arves av alle underliggende lag, så du kan sette dem på hele designet eller enkelt områder. Dette lar deg enkelt tilpasse designet og tilpasse det til forskjellige kontekster og behov.
 
@@ -135,5 +135,5 @@ Slik justerer du størrelsen på elementer i Figma:
   aspectRatio='16-9'
 />
 
-## Tilpass farger og preferanser i temabyggeren
-I temabyggeren kan du definere farger og andre visuelle innstillinger for designet ditt. Se guiden [Bruk designsystemet med eget tema](/no/fundamentals/start-here/own-theme) for å komme i gang. 
+## Tilpass farger og preferanser i Temabyggeren
+I Temabyggeren kan du definere farger og andre visuelle innstillinger for designet ditt. Se guiden [Bygg ditt tema](/no/fundamentals/start-here/own-theme) for å komme i gang. 

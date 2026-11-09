@@ -24,7 +24,6 @@ import {
   Paragraph,
   Popover,
   Radio,
-  Search,
   Select,
   Skeleton,
   SkipLink,
@@ -297,11 +296,11 @@ export const Inverted = meta.story({
       </Demo>
 
       <Demo label='Search'>
-        <Search>
-          <Search.Input aria-label='Søk' />
-          <Search.Clear />
-          <Search.Button />
-        </Search>
+        <Suggestion>
+          <Suggestion.Input type='search' aria-label='Søk' />
+          <Suggestion.Clear />
+          <Button type='submit'>Søk</Button>
+        </Suggestion>
       </Demo>
 
       <Demo label='Select'>
