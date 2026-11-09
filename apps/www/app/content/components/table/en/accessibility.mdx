@@ -1,23 +1,95 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## What you need to check
 
-To ensure that tables work well for all users, it is important to follow these guidelines:
+**Always use a caption as the accessible name or description.** 
 
-- **Simple cell content:**  
-  Table cells should not be merged, and each cell should contain only one interactive element. This helps users quickly get an overview of the content and makes it easier to compare and scan information.
+The table should include a descriptive caption element that identifies its content for assistive technologies.
 
-- **Headings:**  
-  For screen reader users to navigate the content, it is important to use row and/or column headers (`<Table.HeaderCell>`). Use `scope="row"` and `scope="col"` to indicate whether the header applies to a row or a column. If space is limited, you may visually hide one or more headers.
+<span data-size="sm">
+WCAG: [1.3.1 Information and Relationships (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+</span>
 
-- **Caption element:**  
-  Tables must always include a caption element that provides a brief description of what the table shows. Screen readers will read the caption, allowing users to decide whether they want to continue reading the table.
+<Divider/>
+\
+**Define headers with explicit `scope`.**
 
-- **Empty cells:**  
-  Empty cells must use `Table.Cell`. This is important to ensure that screen readers can navigate the table correctly.
+Use `scope="col"` for column headers and `scope="row"` for row headers to ensure correct cell assosiations. If visual space is limited, a header may be visually hidden, but it must remain available to screen reader users.
 
-- **Keyboard navigation:**  
-  Make sure you can change the sorting using the keyboard. Test with a screen reader to verify that you hear what is sortable, the sorting types, and that focus is not lost when sorting changes.
+<span data-size="sm"> 
+WCAG: [1.3.1 Information and Relationships (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+</span>
 
-- **Mobile adaptation:**  
-  Tables can be challenging on mobile, as there is no universal design that works well in all contexts. The most common approaches are a table that scrolls horizontally or converting the table into a list view.
+<Divider/>
+\
+**Always render empty cells.**
+
+Never omit cells when data is missing. An empty cell should still be rendered as an empty `Table.Cell` to preserve the table matrix and prevent assistive technologies from misaligning coordinates.
+
+<span data-size="sm"> 
+WCAG: [1.3.1 Information and relationships (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+</span>
+
+<Divider/>
+\
+**Avoid merged cells (`colspan` / `rowspan`).**
+
+Merged cells can cause coordinate errors when screen reader users navigate tables.
+
+<span data-size="sm"> 
+WCAG: [1.3.1 Information and relationships (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+</span>
+
+<Divider/>
+\
+**Provide row context for interactive elements.**
+
+Buttons, links, and checkboxes within table cells must have an accessible name that includes the row identifier (for example through `aria-label`). As a general rule, each cell should contain only one interactive element.
+
+<span data-size="sm"> 
+WCAG: [4.1.2 Name, Role, Value (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/118) og [2.5.3 Label in Name (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/146)
+</span>
+
+<Divider/>
+\
+**Expose sort state and retain focus.**
+
+Sortable columns must expose `aria-sort` (`ascending`, `descending`, `none`). Focus should remain on the triggering control after sorting (avoid focus loss caused by re-rendering).
+
+<span data-size="sm"> 
+WCAG: [4.1.2 Name, role, value (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/118) og [2.4.3 Fokusrekkefølge (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/104)
+</span>
+
+<Divider/>
+\
+**Ensure keyboard-accessible scrolling for horizontal overflow.**
+
+If the table is wrapped in a scrollable container on small screens, the container should have `tabindex="0"`, `role="region"` and a unique `aria-label`.
+
+<span data-size="sm"> 
+WCAG: [2.1.1 Keyboard (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/211-tastatur-niva/99) og [1.4.10 Reflow (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva/141)
+</span>
+
+<Divider/>
+\
+**Verify contrast ratios and focus indicators in your theme.**
+
+Ensure that your theme's component styling meets at least a 3:1 contrast ratio for functional borders, dividers, and focus indicators, and at least 4.5:1 for text content.
+
+<span data-size="sm"> 
+WCAG: [1.4.3 Contrast (Minimum) (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/143-kontrast-minimum-niva/95) and [1.4.11 Non-text Contrast (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/1411-kontrast-ikke-tekstlig-innhold-niva/142)
+</span>
+
+<Divider/>
+## Test with a keyboard
+
+Verify that you can:
+* reach all interactive elements in the table using <kbd>Tab</kbd> og <kbd>Shift + Tab</kbd>
+* trigger sorting with <kbd>Enter</kbd> or <kbd>Space</kbd>, and that focus remains on the button afterwards
+* focus the scroll container using <kbd>Tab</kbd> and pan with the **arrows** if the table has horizontal scrolling.
+
+## Test with a screen reader
+
+Verify that:
+* the table's `caption` and dimensions (rows and columns) are announced when entering the table
+* headers are automatically announced when navigating cells using table navigation commands (**Ctrl + Alt + arrows** in NVDA/JAWS, **VO + arrows** in VoiceOver)
+* `aria-sort` announces the updated sort direction when sorting
+* recurring row actions are announced with unique row context.
