@@ -11,7 +11,7 @@
   padding: var(--dsc-errorsummary-padding);
   animation: _is-visible 0ms; /* Used in JS to detect visibility */
 
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 
   &:not([hidden]) {
     display: block;

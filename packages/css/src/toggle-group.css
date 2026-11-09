@@ -74,7 +74,7 @@
 
   /* Move focusring inside to avoid clipping */
   & :is(a:focus-visible, button:focus-visible, label:has(input:focus-visible)) {
-    @composes ds-focus--visible--inset from './base.css';
+    @composes ds-focus--visible--inset from './utils.css';
   }
 
   &[data-variant='secondary'] {

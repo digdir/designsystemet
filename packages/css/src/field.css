@@ -98,7 +98,7 @@
     }
 
     &:has(input:focus-visible) {
-      @composes ds-focus--visible from './base.css';
+      @composes ds-focus--visible from './utils.css';
     }
 
     /* Using .ds-input to ensure it's only our component */

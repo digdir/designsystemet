@@ -116,7 +116,7 @@
       text-align: inherit;
       width: 100%;
 
-      @composes ds-focus from './base.css';
+      @composes ds-focus from './utils.css';
 
       &:not([hidden]) {
         display: block;

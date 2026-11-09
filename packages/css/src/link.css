@@ -28,7 +28,7 @@
   }
 
   & > :is(img, svg) {
-    @composes ds-icon from './base.css';
+    @composes ds-icon from './utils.css';
   }
 
   /*
@@ -66,7 +66,7 @@
     }
   }
 
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 
   &:where(:active) {
     background: var(--dsc-link-background--active);
