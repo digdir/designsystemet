@@ -46,5 +46,5 @@
     display: inline;
   }
 
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 }
