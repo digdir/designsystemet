@@ -437,4 +437,60 @@ describe('Suggestion', () => {
       ['Stavanger', false],
     ]);
   });
+
+  describe('removed props', () => {
+    // Each test uses different props, since each prop only warns once per page
+    const getWarnings = (spy: { mock: { calls: unknown[][] } }) =>
+      spy.mock.calls.map(([message]) => String(message));
+
+    it('warns once per removed prop, even with several instances', () => {
+      const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const removed = { selected: ['Oslo'], onSelectedChange: () => {} };
+
+      render(
+        <>
+          <Suggestion {...(removed as SuggestionProps)} />
+          <Suggestion {...(removed as SuggestionProps)} />
+        </>,
+      );
+
+      expect(getWarnings(spy)).toEqual([
+        'Designsystemet: Suggestion: "selected" is removed, render <data> children and use oncomboboxbeforeselect.',
+        'Designsystemet: Suggestion: "onSelectedChange" is removed, use oncomboboxbeforeselect with the suggestion() helper.',
+      ]);
+      spy.mockRestore();
+    });
+
+    it('does not warn for the props that replace them', () => {
+      const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+      render(
+        <Suggestion
+          data-multiple
+          data-creatable
+          oncomboboxbeforeselect={() => {}}
+          oncomboboxbeforematch={() => {}}
+        />,
+      );
+
+      expect(getWarnings(spy)).toEqual([]);
+      spy.mockRestore();
+    });
+
+    it('does not pass removed props on to <ds-suggestion>', () => {
+      const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const removed = { multiple: true, creatable: true, filter: false };
+
+      const { container } = render(
+        <Suggestion {...(removed as SuggestionProps)} />,
+      );
+      const el = container.querySelector('ds-suggestion') as HTMLElement;
+
+      expect(el).not.toHaveAttribute('data-multiple'); // React 19 would set .multiple
+      expect(el).not.toHaveAttribute('data-creatable'); // React 19 would set .creatable
+      expect(el).not.toHaveAttribute('multiple');
+      expect(el).not.toHaveAttribute('filter');
+      spy.mockRestore();
+    });
+  });
 });

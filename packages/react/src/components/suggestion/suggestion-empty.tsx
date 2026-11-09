@@ -12,7 +12,7 @@ export type SuggestionEmptyProps = SuggestionOptionProps;
  * @deprecated Use `Suggestion.Option` with data-empty instead
  * @example
  * <Suggestion.List>
- *   <Suggestion.Empty>Tomt</Suggestion.Empty>
+ *   <Suggestion.Option data-empty>Tomt</Suggestion.Option>
  * </Suggestion.List>
  */
 export const SuggestionEmpty = forwardRef<

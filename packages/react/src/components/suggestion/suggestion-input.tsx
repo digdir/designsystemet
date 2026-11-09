@@ -35,14 +35,14 @@ declare global {
 export const SuggestionInput = forwardRef<
   HTMLInputElement,
   SuggestionInputProps
->(function SuggestionList(rest, ref) {
+>(function SuggestionInput(rest, ref) {
   if (rest.onChange)
     console.warn(
-      'SuggestionInput: Avoid using onChange, as Suggestion controls the Input. Use onSelectedChange on Suggestion instead, or onInput if fetching API results',
+      'SuggestionInput: Avoid using onChange, as Suggestion controls the Input. Use oncomboboxbeforeselect on Suggestion instead, or onInput if fetching API results',
     );
   if (rest.value)
     console.warn(
-      'SuggestionInput: Avoid using value, as Suggestion controls the Input. Use selected on Suggestion instead.',
+      'SuggestionInput: Avoid using value, as Suggestion <data> elements controls the Input.',
     );
 
   return (

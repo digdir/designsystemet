@@ -15,7 +15,7 @@ const ATTR_EMPTY = 'data-empty';
 const EVENTS_EMPTY = 'comboboxafterselect input';
 const FALSE = 'false';
 const MUTATIONS: MutationObserverInit = {
-  attributeFilter: ['disabled', 'hidden', 'label'],
+  attributeFilter: ['aria-hidden', 'disabled', 'hidden', 'label'],
   characterData: true,
   childList: true,
   subtree: true,
@@ -66,15 +66,14 @@ const handleEmpty = (event: Partial<Event>) => {
 
   for (const opt of options) {
     if ((opt.getAttribute(ATTR_EMPTY) ?? FALSE) !== FALSE) emptyOpt = opt;
-    else if (!hide) {
-      hide = creatable
-        ? opt.label?.toLowerCase() === query // Hide "Legg til" when the query already exists
-        : !isHidden(opt); // Hide when <u-datalist> shows another option, so it is not counted in the screen reader hit count
+    else if (!hide && !isHidden(opt)) {
+      // Hide when <u-datalist> shows another option, so it is not counted in the screen reader hit count
+      hide = !creatable || opt.label?.toLowerCase() === query; // Hide "Legg til" when a selectable option already has the query as label
     }
     if (hide && emptyOpt) break; // Speed up if both conditions are met
   }
   if (!emptyOpt) return;
-  // Note: isHidden() can read stale aria-hidden as this runs before <u-datalist> filters, but the label change below re-triggers onMutations after filtering
+  // Note: isHidden() can read stale aria-hidden as this runs before <u-datalist> filters, but MUTATIONS observes aria-hidden, so this runs again after filtering
   attr(emptyOpt, 'hidden', hide ? '' : null); // Using attr() as setting an unchanged attribute would trigger the MutationObserver again
   attr(emptyOpt, 'label', value); // Ensures option is not filtered out, and CSS can read text
   attr(emptyOpt, 'value', creatable ? value : ''); // Ensures clicking option does nothing

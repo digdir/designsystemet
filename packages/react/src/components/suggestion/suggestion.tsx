@@ -1,7 +1,21 @@
 import type { DSSuggestionElement } from '@digdir/designsystemet-web';
 import cl from 'clsx/lite';
-import { forwardRef, useRef } from 'react';
-import { useCustomEvents, useMergeRefs } from '../../utilities/hooks';
+import { forwardRef, useEffect, useRef } from 'react';
+import { warn } from '../../utilities';
+import { useEventListener, useMergeRefs } from '../../utilities/hooks';
+
+/* Props removed from Suggestion, and what to use instead */
+const WARNED = new Set<string>(); // Warn only once per prop, even with many instances
+const REMOVED_PROPS = Object.entries({
+  selected: 'render <data> children and use oncomboboxbeforeselect',
+  defaultSelected: 'render the initial <data> as children',
+  onSelectedChange: 'use oncomboboxbeforeselect with the suggestion() helper',
+  renderSelected: 'render the content of each <data> yourself',
+  multiple: 'use data-multiple',
+  creatable: 'use data-creatable',
+  filter: 'use data-nofilter on Suggestion.List',
+  onBeforeMatch: 'use oncomboboxbeforematch',
+});
 
 type SuggestionEvent<T> = CustomEvent<T> & {
   currentTarget: DSSuggestionElement;
@@ -44,19 +58,34 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
       oncomboboxafterselect,
       oncomboboxbeforematch,
       oncomboboxbeforeselect,
+
+      // Removed properties
+      selected,
+      defaultSelected,
+      onSelectedChange,
+      renderSelected,
+      multiple,
+      creatable,
+      filter,
+      onBeforeMatch,
       ...rest
-    },
+    }: SuggestionProps & Record<string, unknown>,
     ref,
   ) {
-    const suggestionRef = useRef<DSSuggestionElement>(null);
-    const mergedRefs = useMergeRefs([ref, suggestionRef]);
+    const selfRef = useRef<DSSuggestionElement>(null);
+    const mergedRefs = useMergeRefs([ref, selfRef]);
 
     // Support React 18
-    useCustomEvents(suggestionRef, {
-      comboboxafterselect: oncomboboxafterselect,
-      comboboxbeforematch: oncomboboxbeforematch,
-      comboboxbeforeselect: oncomboboxbeforeselect,
-    });
+    useEventListener('comboboxafterselect', oncomboboxafterselect, selfRef);
+    useEventListener('comboboxbeforematch', oncomboboxbeforematch, selfRef);
+    useEventListener('comboboxbeforeselect', oncomboboxbeforeselect, selfRef);
+
+    // Warn about removed props, as they are silently ignored
+    useEffect(() => {
+      for (const [prop, fix] of REMOVED_PROPS)
+        if (prop in rest && !WARNED.has(prop) && WARNED.add(prop))
+          warn(`Suggestion: "${prop}" is removed, ${fix}.`);
+    }, []);
 
     return (
       <ds-suggestion

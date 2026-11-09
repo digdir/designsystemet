@@ -60,9 +60,9 @@ export const DoIcon = () => {
         <EXPERIMENTAL_Suggestion.Input />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Option data-empty>
             Ingen treff
-          </EXPERIMENTAL_Suggestion.Empty>
+          </EXPERIMENTAL_Suggestion.Option>
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option
               key={place}

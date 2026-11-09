@@ -325,7 +325,7 @@ export const Inverted = meta.story({
             <Suggestion.Input />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty>Tomt</Suggestion.Empty>
+              <Suggestion.Option data-empty>Tomt</Suggestion.Option>
               <Suggestion.Option value='Sogndal'>Sogndal</Suggestion.Option>
               <Suggestion.Option value='Oslo'>Oslo</Suggestion.Option>
             </Suggestion.List>

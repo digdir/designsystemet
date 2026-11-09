@@ -14,6 +14,8 @@ type Render<R> = (item: SuggestionItem, index: number) => R;
  * @param value Selected item(s). Pass an array in multiple mode, or a single item, string or null in single mode
  * @param [action] Optional comboboxbeforeselect event to apply, or function to render each item
  * @returns Array when `value` is an array, otherwise a single result or null when there is no item
+ * Note: Pass the event directly, not inside a state updater like `setSelected(prev => suggestion(prev, event))`,
+ * as `event.preventDefault()` must be called while the event is dispatched.
  * @example
  * const [selected, setSelected] = useState(suggestion([]));
  * <Suggestion data-multiple oncomboboxbeforeselect={(event) => setSelected(suggestion(selected, event))}>

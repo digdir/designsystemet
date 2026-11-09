@@ -5,7 +5,8 @@ import {
   Field,
   Label,
   Paragraph,
-  type SuggestionItem,
+  type SuggestionProps,
+  suggestion,
 } from '@digdir/designsystemet-react';
 import { useRef, useState } from 'react';
 
@@ -19,9 +20,9 @@ export const Preview = () => {
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Option data-empty>
             Ingen treff
-          </EXPERIMENTAL_Suggestion.Empty>
+          </EXPERIMENTAL_Suggestion.Option>
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option
               key={place}
@@ -48,9 +49,9 @@ export const PreviewEn = () => {
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Option data-empty>
             No results found
-          </EXPERIMENTAL_Suggestion.Empty>
+          </EXPERIMENTAL_Suggestion.Option>
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option
               key={place}
@@ -80,14 +81,14 @@ export const Multiple = () => {
   return (
     <Field>
       <Label>Velg en destinasjon</Label>
-      <EXPERIMENTAL_Suggestion multiple>
+      <EXPERIMENTAL_Suggestion data-multiple>
         <EXPERIMENTAL_Suggestion.Input />
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Option data-empty>
             Ingen treff
-          </EXPERIMENTAL_Suggestion.Empty>
+          </EXPERIMENTAL_Suggestion.Option>
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option key={place}>
               {place}
@@ -112,14 +113,14 @@ export const MultipleEn = () => {
   return (
     <Field>
       <Label>Select a destination</Label>
-      <EXPERIMENTAL_Suggestion multiple>
+      <EXPERIMENTAL_Suggestion data-multiple>
         <EXPERIMENTAL_Suggestion.Input />
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Option data-empty>
             No results found
-          </EXPERIMENTAL_Suggestion.Empty>
+          </EXPERIMENTAL_Suggestion.Option>
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option key={place}>
               {place}
@@ -141,18 +142,24 @@ export const Filter = () => {
     'Bergen',
     'Lillestrøm',
   ];
+  const [value, setValue] = useState('');
+
   return (
     <Field>
-      <Label>Skriv inn et tall mellom 1-6</Label>
-      <EXPERIMENTAL_Suggestion filter={false}>
-        <EXPERIMENTAL_Suggestion.Input />
+      <Label>Skriv inn et tall mellom 1-7</Label>
+      <EXPERIMENTAL_Suggestion>
+        <EXPERIMENTAL_Suggestion.Input
+          onInput={(event) => setValue(event.currentTarget.value)} // Note: using onInput, not onChange
+        />
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
-        <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>
+        <EXPERIMENTAL_Suggestion.List data-nofilter>
+          <EXPERIMENTAL_Suggestion.Option data-empty>
             Ingen treff
-          </EXPERIMENTAL_Suggestion.Empty>
-          {DATA_PLACES.map((label) => (
+          </EXPERIMENTAL_Suggestion.Option>
+          {DATA_PLACES.filter(
+            (_, index) => !value || index === Number(value) - 1,
+          ).map((label) => (
             <EXPERIMENTAL_Suggestion.Option
               key={label}
               value={label.toLowerCase()}
@@ -176,26 +183,30 @@ export const ControlledMultiple = () => {
     'Bergen',
     'Lillestrøm',
   ];
-  const [selected, setSelected] = useState<string[]>(['Oslo']);
+  const [selected, setSelected] = useState(suggestion(['Oslo']));
 
   return (
     <>
       <Field>
         <Label>Velg destinasjoner</Label>
         <EXPERIMENTAL_Suggestion
-          multiple
-          selected={selected}
-          onSelectedChange={(items) =>
-            setSelected(items.map((item) => item.value))
+          data-multiple
+          oncomboboxbeforeselect={(event) =>
+            setSelected(suggestion(selected, event))
           }
         >
+          {suggestion(selected, ({ label, value }) => (
+            <data key={value} value={value}>
+              {label}
+            </data>
+          ))}
           <EXPERIMENTAL_Suggestion.Input />
           <EXPERIMENTAL_Suggestion.Toggle />
           <EXPERIMENTAL_Suggestion.Clear />
           <EXPERIMENTAL_Suggestion.List>
-            <EXPERIMENTAL_Suggestion.Empty>
+            <EXPERIMENTAL_Suggestion.Option data-empty>
               Ingen treff
-            </EXPERIMENTAL_Suggestion.Empty>
+            </EXPERIMENTAL_Suggestion.Option>
             {DATA_PLACES.map((place) => (
               <EXPERIMENTAL_Suggestion.Option
                 key={place}
@@ -212,12 +223,12 @@ export const ControlledMultiple = () => {
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-        Valgte reisemål: {selected.join(', ')}
+        Valgte reisemål: {suggestion(selected, ({ label }) => label).join(', ')}
       </Paragraph>
 
       <Button
         onClick={() => {
-          setSelected(['Sogndal', 'Stavanger']);
+          setSelected(suggestion(['Sogndal', 'Stavanger']));
         }}
       >
         Sett reisemål til Sogndal, Stavanger
@@ -236,26 +247,30 @@ export const ControlledMultipleEn = () => {
     'Bergen',
     'Lillestrøm',
   ];
-  const [selected, setSelected] = useState<string[]>(['Oslo']);
+  const [selected, setSelected] = useState(suggestion(['Oslo']));
 
   return (
     <>
       <Field>
         <Label>Select destinations</Label>
         <EXPERIMENTAL_Suggestion
-          multiple
-          selected={selected}
-          onSelectedChange={(items) =>
-            setSelected(items.map((item) => item.value))
+          data-multiple
+          oncomboboxbeforeselect={(event) =>
+            setSelected(suggestion(selected, event))
           }
         >
+          {suggestion(selected, ({ label, value }) => (
+            <data key={value} value={value}>
+              {label}
+            </data>
+          ))}
           <EXPERIMENTAL_Suggestion.Input />
           <EXPERIMENTAL_Suggestion.Toggle />
           <EXPERIMENTAL_Suggestion.Clear />
           <EXPERIMENTAL_Suggestion.List>
-            <EXPERIMENTAL_Suggestion.Empty>
+            <EXPERIMENTAL_Suggestion.Option data-empty>
               No results found
-            </EXPERIMENTAL_Suggestion.Empty>
+            </EXPERIMENTAL_Suggestion.Option>
             {DATA_PLACES.map((place) => (
               <EXPERIMENTAL_Suggestion.Option
                 key={place}
@@ -272,12 +287,13 @@ export const ControlledMultipleEn = () => {
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-        Selected destinations: {selected.join(', ')}
+        Selected destinations:{' '}
+        {suggestion(selected, ({ label }) => label).join(', ')}
       </Paragraph>
 
       <Button
         onClick={() => {
-          setSelected(['Sogndal', 'Stavanger']);
+          setSelected(suggestion(['Sogndal', 'Stavanger']));
         }}
       >
         Set destinations to Sogndal, Stavanger
@@ -299,12 +315,12 @@ export const Creatable = () => {
   return (
     <Field>
       <Label>Velg destinasjon</Label>
-      <EXPERIMENTAL_Suggestion creatable multiple>
+      <EXPERIMENTAL_Suggestion data-creatable data-multiple>
         <EXPERIMENTAL_Suggestion.Input />
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty data-empty='Legg til "%s"' />
+          <EXPERIMENTAL_Suggestion.Option data-empty />
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option key={place}>
               {place}
@@ -328,12 +344,12 @@ export const CreatableEn = () => {
   return (
     <Field>
       <Label>Select destination</Label>
-      <EXPERIMENTAL_Suggestion creatable multiple>
+      <EXPERIMENTAL_Suggestion data-creatable data-multiple>
         <EXPERIMENTAL_Suggestion.Input />
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty data-empty='Add "%s"' />
+          <EXPERIMENTAL_Suggestion.Option data-empty />
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option key={place}>
               {place}
@@ -374,14 +390,14 @@ export const FetchExternal = () => {
   return (
     <Field lang='en'>
       <Label>Search for recipes (in English)</Label>
-      <EXPERIMENTAL_Suggestion filter={false}>
+      <EXPERIMENTAL_Suggestion>
         <EXPERIMENTAL_Suggestion.Input
           type='search'
           onInput={handleInput} // Note: using onInput, not onChange
         />
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
-        <EXPERIMENTAL_Suggestion.List>
+        <EXPERIMENTAL_Suggestion.List data-nofilter>
           {Array.isArray(options) ? (
             options.map((option) => (
               <EXPERIMENTAL_Suggestion.Option key={option}>
@@ -389,9 +405,9 @@ export const FetchExternal = () => {
               </EXPERIMENTAL_Suggestion.Option>
             ))
           ) : (
-            <EXPERIMENTAL_Suggestion.Empty>
+            <EXPERIMENTAL_Suggestion.Option data-empty>
               {options}
-            </EXPERIMENTAL_Suggestion.Empty>
+            </EXPERIMENTAL_Suggestion.Option>
           )}
         </EXPERIMENTAL_Suggestion.List>
       </EXPERIMENTAL_Suggestion>
@@ -400,15 +416,15 @@ export const FetchExternal = () => {
 };
 
 export const ClickToNavigate = () => {
-  const handleSelect = (item: SuggestionItem | null) => {
-    const href = item?.value;
+  const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (event) => {
+    const href = suggestion(null, event)?.value; // Also prevents rendering the selected item
     if (href) window.location.href = href;
   };
 
   return (
     <Field>
       <Label>Klikk for å navigere</Label>
-      <EXPERIMENTAL_Suggestion onSelectedChange={handleSelect}>
+      <EXPERIMENTAL_Suggestion oncomboboxbeforeselect={handleSelect}>
         <EXPERIMENTAL_Suggestion.Input />
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
@@ -429,15 +445,15 @@ export const ClickToNavigate = () => {
 };
 
 export const ClickToNavigateEn = () => {
-  const handleSelect = (item: SuggestionItem | null) => {
-    const href = item?.value;
+  const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (event) => {
+    const href = suggestion(null, event)?.value; // Also prevents rendering the selected item
     if (href) window.location.href = href;
   };
 
   return (
     <Field>
       <Label>Click to navigate</Label>
-      <EXPERIMENTAL_Suggestion onSelectedChange={handleSelect}>
+      <EXPERIMENTAL_Suggestion oncomboboxbeforeselect={handleSelect}>
         <EXPERIMENTAL_Suggestion.Input />
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
@@ -470,14 +486,14 @@ export const EmailSuggestions = () => {
   return (
     <Field>
       <Label>Fyll inn din e-post</Label>
-      <EXPERIMENTAL_Suggestion creatable>
+      <EXPERIMENTAL_Suggestion data-creatable>
         <EXPERIMENTAL_Suggestion.Input
           onInput={handleInput} // Note: using onInput, not onChange
         />
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty />
+          <EXPERIMENTAL_Suggestion.Option data-empty />
           {options.map((option) => (
             <EXPERIMENTAL_Suggestion.Option key={option} value={option}>
               {option}
@@ -502,14 +518,14 @@ export const EmailSuggestionsEn = () => {
   return (
     <Field>
       <Label>Enter your email</Label>
-      <EXPERIMENTAL_Suggestion creatable>
+      <EXPERIMENTAL_Suggestion data-creatable>
         <EXPERIMENTAL_Suggestion.Input
           onInput={handleInput} // Note: using onInput, not onChange
         />
         <EXPERIMENTAL_Suggestion.Toggle />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty />
+          <EXPERIMENTAL_Suggestion.Option data-empty />
           {options.map((option) => (
             <EXPERIMENTAL_Suggestion.Option key={option} value={option}>
               {option}

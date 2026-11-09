@@ -37,7 +37,6 @@
   --dsc-suggestion-list-border-radius: var(--ds-border-radius-md);
   --dsc-suggestion-list-box-shadow: var(--ds-shadow-md);
   --dsc-suggestion-list-color: var(--ds-color-text-default);
-  --dsc-suggestion-list-offset: var(--ds-size-1);
   --dsc-suggestion-list-gap: var(--ds-size-1);
   --dsc-suggestion-list-placement: bottom;
   --dsc-suggestion-list-padding: var(--ds-size-3) var(--ds-size-2);
@@ -97,7 +96,7 @@
     --dsc-suggestion-sr-remove: 'Press to remove';
     --dsc-suggestion-sr-removed: 'Removed';
     --dsc-suggestion-sr-singular: '%d suggestion';
-    --dsc-suggestion-sr-toggle: 'Suggesions';
+    --dsc-suggestion-sr-toggle: 'Suggestions';
   }
 
   --sr-added: var(--dsc-suggestion-sr-added);
@@ -296,21 +295,19 @@
   /**
    * data-empty
    */
-  & > u-datalist > u-option[data-empty]:not([data-empty='false']) {
-    &:not([value]) {
-      display: none; /* Hide empty option before typing has started */
-    }
+  & > u-datalist > u-option[data-empty]:not([data-empty='false'], [value]) {
+    display: none; /* Hide empty option before component is connected */
+  }
+  &:is(:not([data-creatable]), [data-creatable='false']) > u-datalist > u-option[data-empty]:not([data-empty='false']) {
+    background: none;
+    cursor: default;
+    padding-inline-start: var(--dsc-suggestion-option-padding); /* Only remove padding when non-creatable */
     &:empty::after {
       content: var(--dsc-suggestion-empty-text);
     }
     &::before {
       display: none;
     }
-  }
-  &:is(:not([data-creatable]), [data-creatable='false']) > u-datalist > u-option[data-empty]:not([data-empty='false']) {
-    background: none;
-    cursor: default;
-    padding-inline-start: var(--dsc-suggestion-option-padding); /* Only remove padding when non-creatable */
   }
 
   &[data-creatable]:not([data-creatable='false']) > u-datalist > u-option[data-empty]:not([data-empty='false']) {

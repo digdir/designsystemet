@@ -76,14 +76,13 @@ const DATA_PEOPLE = [
 export const Preview = meta.story({
   render: (args) => {
     const [selected, setSelected] = useState(suggestion(null));
+    const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (e) =>
+      setSelected(suggestion(selected, e));
 
     return (
       <Field>
         <Label>Velg en destinasjon</Label>
-        <Suggestion
-          {...args}
-          oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
-        >
+        <Suggestion {...args} oncomboboxbeforeselect={handleSelect}>
           {suggestion(selected, ({ label, value }) => (
             <data key={value} value={value}>
               {label}
@@ -110,15 +109,14 @@ export const Preview = meta.story({
 export const ControlledSingle = meta.story({
   render: (args) => {
     const [selected, setSelected] = useState(suggestion(''));
+    const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (e) =>
+      setSelected(suggestion(selected, e));
 
     return (
       <>
         <Field>
           <Label>Velg destinasjon</Label>
-          <Suggestion
-            {...args}
-            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
-          >
+          <Suggestion {...args} oncomboboxbeforeselect={handleSelect}>
             {suggestion(selected, ({ label, value }) => (
               <data key={value} value={value}>
                 {label}
@@ -183,6 +181,8 @@ export const ControlledSingle = meta.story({
 export const ControlledCreatable = meta.story({
   render: (args) => {
     const [selected, setSelected] = useState(suggestion(''));
+    const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (e) =>
+      setSelected(suggestion(selected, e));
 
     return (
       <>
@@ -191,7 +191,7 @@ export const ControlledCreatable = meta.story({
           <Suggestion
             {...args}
             data-creatable
-            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+            oncomboboxbeforeselect={handleSelect}
           >
             {suggestion(selected, ({ label, value }) => (
               <data key={value} value={value}>
@@ -233,6 +233,8 @@ export const ControlledCreatable = meta.story({
 export const ControlledMultiple = meta.story({
   render: (args) => {
     const [selected, setSelected] = useState(suggestion(['Oslo']));
+    const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (e) =>
+      setSelected(suggestion(selected, e));
 
     return (
       <>
@@ -241,7 +243,7 @@ export const ControlledMultiple = meta.story({
           <Suggestion
             {...args}
             data-multiple
-            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+            oncomboboxbeforeselect={handleSelect}
           >
             {suggestion(selected, ({ label, value }) => (
               <data key={value} value={value}>
@@ -315,15 +317,14 @@ export const ControlledMultiple = meta.story({
 export const ControlledIndependentLabelValue = meta.story({
   render: (args) => {
     const [selected, setSelected] = useState(suggestion(DATA_PEOPLE[0]));
+    const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (e) =>
+      setSelected(suggestion(selected, e));
 
     return (
       <>
         <Field>
           <Label>Velg person</Label>
-          <Suggestion
-            {...args}
-            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
-          >
+          <Suggestion {...args} oncomboboxbeforeselect={handleSelect}>
             {suggestion(selected, ({ label, value }) => (
               <data key={value} value={value}>
                 {label}
@@ -368,6 +369,8 @@ export const ControlledIndependentLabelValue = meta.story({
 export const ControlledIndependentLabelValueMultiple = meta.story({
   render: (args) => {
     const [selected, setSelected] = useState(suggestion([DATA_PEOPLE[0]]));
+    const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (e) =>
+      setSelected(suggestion(selected, e));
 
     return (
       <>
@@ -376,7 +379,7 @@ export const ControlledIndependentLabelValueMultiple = meta.story({
           <Suggestion
             {...args}
             data-multiple
-            oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
+            oncomboboxbeforeselect={handleSelect}
           >
             {suggestion(selected, ({ label, value }) => (
               <data key={value} value={value}>
@@ -488,14 +491,13 @@ export const CustomMatching = meta.story({
 export const AlwaysShowAll = meta.story({
   render: (args) => {
     const [selected, setSelected] = useState(suggestion('Sogndal'));
+    const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (e) =>
+      setSelected(suggestion(selected, e));
 
     return (
       <Field>
         <Label>Viser alle options også når valgt</Label>
-        <Suggestion
-          {...args}
-          oncomboboxbeforeselect={(e) => setSelected(suggestion(selected, e))}
-        >
+        <Suggestion {...args} oncomboboxbeforeselect={handleSelect}>
           {suggestion(selected, ({ label, value }) => (
             <data key={value} value={value}>
               {label}
@@ -544,8 +546,8 @@ export const FetchExternal = meta.story({
           {...args}
           style={
             {
-              '--sr-plural': '%d countries',
-              '--sr-singular': '%d country',
+              '--dsc-suggestion-sr-plural': '%d countries',
+              '--dsc-suggestion-sr-singular': '%d country',
             } as React.CSSProperties
           }
         >
