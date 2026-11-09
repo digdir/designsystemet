@@ -159,9 +159,9 @@ body {
   font-size: var(--ds-body-md-font-size);
 }
 
-/* @deprecated will be removed in v2, it also exists in utils.css - where it should live */
 /**
  * Visually hide an element, but leave it available for screen readers
+ * @deprecated Use the equivalent class in utils.css instead.
  */
 .ds-sr-only {
   border: 0;
@@ -174,6 +174,9 @@ body {
   width: 1px;
 }
 
+/**
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
 .ds-icon {
   display: inline-block; /* Overwrite Tailwind setting display: block on <svg> */
   flex-shrink: 0;
@@ -185,6 +188,7 @@ body {
 
 /**
  * Apply a focus outline on an element when it is focused with keyboard
+ * @deprecated Use the equivalent class in utils.css instead.
  */
 .ds-focus:focus-visible {
   @composes ds-focus--visible from './utils.css';
@@ -192,6 +196,7 @@ body {
 
 /**
  * Apply a focus outline that is inset on an element when it is focused with keyboard
+ * @deprecated Use the equivalent class in utils.css instead.
  */
 .ds-focus--inset:focus-visible {
   @composes ds-focus--visible--inset from './utils.css';
@@ -199,6 +204,7 @@ body {
 
 /**
  * Apply a focus outline where the inner segment is inset and the outer segment is not ("middle" between ds-focus and ds-focus--inset)
+ * @deprecated Use the equivalent class in utils.css instead.
  */
 .ds-focus--middle:focus-visible {
   @composes ds-focus--visible--middle from './utils.css';
@@ -206,6 +212,7 @@ body {
 
 /**
  * Focus outline that can be composed if it needs a specific selector
+ * @deprecated Use the equivalent class in utils.css instead.
  */
 .ds-focus--visible {
   /**
@@ -227,6 +234,7 @@ body {
 
 /**
  * Focus outline on the inside that can be composed if it needs a specific selector
+ * @deprecated Use the equivalent class in utils.css instead.
  */
 .ds-focus--visible--inset {
   /**
@@ -245,6 +253,9 @@ body {
     --_ds--focus: ;
   }
 }
+/**
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
 .ds-focus--visible--middle {
   /**
    * We use both box-shadow and outline to ensure that the focus style is visible,
@@ -265,6 +276,7 @@ body {
 
 /**
  * Apply a focus outline on an element when it or any of its descendants are focused
+ * @deprecated Use the equivalent class in utils.css instead.
  */
 .ds-focus--within:focus-within {
   @composes ds-focus--visible from './utils.css';
