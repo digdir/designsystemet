@@ -1,6 +1,7 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
 import { type ConfigSchemaThemeInput, configSchema, externalConfigSchema, themesSchema } from './schema.ts';
+import { warnDeprecatedOverrides } from './schema-overrides.ts';
 
 const baseTheme: ConfigSchemaThemeInput = {
   colors: { neutral: '#444444', accent: '#0062BA' },
@@ -144,6 +145,92 @@ describe('themeSchema color validation', () => {
     const result = parseThemes({ a: { ...baseTheme, colors: { neutral: '#444444', [colorName]: '#0062BA' } } });
 
     expect(result.success).toBe(true);
+  });
+});
+
+describe('themeSchema color steps', () => {
+  const colorsWith = (accent: unknown, neutral: unknown = '#444444') =>
+    ({ neutral, accent }) as ConfigSchemaThemeInput['colors'];
+
+  it('accepts a hex color', () => {
+    const result = parseThemes({ a: { ...baseTheme, colors: colorsWith('#0062BA') } });
+
+    expect(result.success).toBe(true);
+    expect(typeof result.data?.a.colors.accent).toBe('string');
+  });
+
+  it('accepts a color as its steps in light and dark', () => {
+    const accent = {
+      'base-default': { light: '#0062BA', dark: '#4C91CF' },
+      'background-default': { dark: '#000000' },
+      'text-subtle': { light: '#111111' },
+    };
+
+    const result = parseThemes({ a: { ...baseTheme, colors: colorsWith(accent) } });
+
+    expect(result.success).toBe(true);
+    expect(result.data?.a.colors.accent).toEqual(accent);
+    expect(
+      externalConfigSchema.safeParse({ themes: { a: { ...baseTheme, colors: colorsWith(accent) } } }).success,
+    ).toBe(true);
+  });
+
+  it.each([
+    ['no base-default', { 'background-default': { light: '#ffffff' } }],
+    ['no light base-default', { 'base-default': { dark: '#4C91CF' } }],
+    ['an unknown step', { 'base-default': { light: '#0062BA' }, 'base-defualt': { light: '#0062BA' } }],
+    ['an unknown mode', { 'base-default': { light: '#0062BA', dim: '#0062BA' } }],
+    ['a step that is not a hex color', { 'base-default': { light: '#0062BA' }, 'text-default': { light: 'red' } }],
+  ])('rejects a color with %s', (_, accent) => {
+    const result = parseThemes({ a: { ...baseTheme, colors: colorsWith(accent) } });
+
+    expect(result.success).toBe(false);
+    expect(issuePaths(result).every((path) => path.startsWith('a.colors.accent'))).toBe(true);
+  });
+
+  it('accepts neutral as its steps', () => {
+    const result = parseThemes({
+      a: { ...baseTheme, colors: colorsWith('#0062BA', { 'base-default': { light: '#444444' } }) },
+    });
+
+    expect(result.success).toBe(true);
+  });
+
+  it('still requires neutral', () => {
+    const result = parseThemes({ a: { ...baseTheme, colors: { accent: { 'base-default': { light: '#0062BA' } } } } });
+
+    expect(result.success).toBe(false);
+  });
+});
+
+describe('warnDeprecatedOverrides', () => {
+  it('warns once per deprecated color override, naming the themes that use it', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    warnDeprecatedOverrides({
+      themes: {
+        a: { overrides: { colors: {}, linkVisited: {} } },
+        b: { overrides: { colors: {}, severity: {} } },
+        c: {},
+      },
+    });
+
+    expect(warn.mock.calls.map(([message]) => String(message))).toEqual([
+      expect.stringContaining('"overrides.colors" (in themes "a", "b") is deprecated'),
+      expect.stringContaining('"overrides.severity" (in theme "b") is deprecated'),
+    ]);
+    warn.mockRestore();
+  });
+
+  it('does not warn without color overrides, or about a config that is not an object yet', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    warnDeprecatedOverrides({ themes: { a: { overrides: { focus: {} } }, b: null } });
+    warnDeprecatedOverrides({ themes: 'not themes' });
+    warnDeprecatedOverrides({});
+
+    expect(warn).not.toHaveBeenCalled();
+    warn.mockRestore();
   });
 });
 

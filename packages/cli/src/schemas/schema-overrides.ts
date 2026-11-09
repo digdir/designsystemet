@@ -1,3 +1,4 @@
+import pc from 'picocolors';
 import { z } from 'zod';
 import { semanticColorNames } from '../colors/specs.ts';
 import { severityColorNames } from './defaults.ts';
@@ -14,9 +15,13 @@ const colorWeightOverrideSchema = z
   .partialRecord(z.enum([...semanticColorNames]), colorModeOverrideSchema)
   .describe('The name of the color to add overrides for, e.g. "accent"');
 
-const semanticColorOverrideSchema = z
-  .record(z.string(), colorWeightOverrideSchema)
-  .describe('An object with color names as keys');
+const semanticColorOverrideSchema = z.record(z.string(), colorWeightOverrideSchema).meta({
+  description:
+    'Deprecated: set the color steps on the color in "colors" instead, e.g. "accent": { "base-default": { "light": "#0062BA" }, "border-default": { "dark": "#..." } }. An object with color names as keys',
+  deprecated: true,
+  // Non-standard JSON schema keyword, shown by VS Code instead of a generic deprecation warning
+  deprecationMessage: 'Set the color steps on the color in "colors" instead.',
+});
 
 const severityColorOverrideSchema = z
   .partialRecord(
@@ -24,7 +29,12 @@ const severityColorOverrideSchema = z
     colorSchema.describe('A hex color, which is used for creating a color scale'),
   )
   .optional()
-  .describe('An object with severity color names as keys');
+  .meta({
+    description:
+      'Deprecated: set the severity color in "colors" instead, e.g. "danger": "#C01B1B". An object with severity color names as keys',
+    deprecated: true,
+    deprecationMessage: 'Set the severity color in "colors" instead.',
+  });
 
 const linkVisitedOverrideSchema = z
   .object({
@@ -68,3 +78,25 @@ export const overridesSchema = z
   .optional();
 
 export type ColorOverrideSchema = z.infer<typeof overridesSchema>;
+
+const deprecatedOverrides = {
+  colors: 'set the color steps on the color in "colors" instead',
+  severity: 'set the severity color in "colors" instead',
+} as const;
+
+/** Non-fatal: warn about the deprecated `overrides.colors` and `overrides.severity` in a config file's themes. */
+export const warnDeprecatedOverrides = (config: { themes?: unknown }) => {
+  const themes = typeof config.themes === 'object' && config.themes !== null ? Object.entries(config.themes) : [];
+  for (const [key, instead] of Object.entries(deprecatedOverrides)) {
+    const themeNames = themes
+      .filter(([, theme]) => (theme as { overrides?: Record<string, unknown> } | null)?.overrides?.[key] !== undefined)
+      .map(([name]) => `"${name}"`);
+    if (themeNames.length > 0) {
+      console.warn(
+        pc.yellow(
+          `⚠️  Config field "overrides.${key}" (in theme${themeNames.length > 1 ? 's' : ''} ${themeNames.join(', ')}) is deprecated and will be removed in a future release; ${instead}.`,
+        ),
+      );
+    }
+  }
+};

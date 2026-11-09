@@ -22,10 +22,11 @@ import type { ValueSpec } from '../types';
 import type { CollectionData, VariableData } from './types';
 
 // Rebuilds a config from the variables an import created. Each theme is a mode in the Theme collection,
-// and its colors are in the Color scheme collection as `<theme>/<color>/<1-16>`. The config holds only
-// each color's base color (`base-default` in Light, which is the input color unchanged); every other step
-// is generated from it. Steps that differ from the generated scale, e.g. ones edited by hand in Figma,
-// become `overrides`. Values that match the defaults are left out, like the theme builder does.
+// and its colors are in the Color scheme collection as `<theme>/<color>/<1-16>`. The config holds each
+// color as its base color (`base-default` in Light), or, when steps were edited by hand in Figma, as its
+// steps with the base color and only the steps that differ from the generated scale. A step that's missing,
+// e.g. deleted in Figma, is left out, and importing the config generates it from the base color. Values that
+// match the defaults are left out, like the theme builder does, e.g. default severity colors.
 // The colors are worked out by the CLI's `configColorsFromValues`, which reading theme CSS uses too.
 
 type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
@@ -259,7 +260,7 @@ async function compareWithImport(
 /**
  * Whether a value in the file is the one an import of the config would write. An alias must point at the same
  * variable. A raw value is compared with the file's value after following its aliases, as the config keeps an
- * aliased color as an override with the resolved value.
+ * aliased color step as the resolved value.
  */
 function isSameValue(
   actual: ValueSpec,

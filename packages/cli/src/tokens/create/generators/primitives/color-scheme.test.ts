@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { type CssColor, generateColorScale } from '../../../../colors/index.ts';
+import { type CssColor, generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import { colorsSchema } from '../../../../schemas/schema-color.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
@@ -145,5 +145,81 @@ describe('getThemeColorScales', () => {
     expect(getThemeColorScales({ colors, overrides }, 'dark').accent['background-default'].hex).toBe(
       generateColorScale(ACCENT, 'dark')['background-default'].hex,
     );
+  });
+
+  describe('a color as its steps', () => {
+    const stepColors = colorsSchema.parse({
+      neutral: NEUTRAL,
+      accent: {
+        'base-default': { light: ACCENT, dark: '#4C91CF' },
+        'background-default': { dark: '#000000' },
+        'text-subtle': { light: '#111111', dark: '#EEEEEE' },
+      },
+    });
+
+    it('applies each step to its scheme', () => {
+      const light = getThemeColorScales({ colors: stepColors }, 'light').accent;
+      const dark = getThemeColorScales({ colors: stepColors }, 'dark').accent;
+
+      expect(light['base-default'].hex).toBe(ACCENT);
+      expect(light['text-subtle'].hex).toBe('#111111');
+      expect(dark['base-default'].hex).toBe('#4C91CF');
+      expect(dark['background-default'].hex).toBe('#000000');
+      expect(dark['text-subtle'].hex).toBe('#EEEEEE');
+      // A step keeps its spec metadata, like a generated one.
+      expect(dark['text-subtle']).toMatchObject({
+        name: 'text-subtle',
+        number: semanticColorSpec['text-subtle'].number,
+      });
+    });
+
+    it('generates the steps and schemes it leaves out from the base color', () => {
+      for (const scheme of ['light', 'dark'] as const) {
+        const scale = getThemeColorScales({ colors: stepColors }, scheme).accent;
+        const generated = generateColorScale(ACCENT, scheme);
+
+        expect(scale['surface-default']).toEqual(generated['surface-default']);
+        expect(scale['border-strong']).toEqual(generated['border-strong']);
+      }
+      // background-default only sets dark, so light is generated.
+      expect(getThemeColorScales({ colors: stepColors }, 'light').accent['background-default']).toEqual(
+        generateColorScale(ACCENT, 'light')['background-default'],
+      );
+    });
+
+    it('generates the whole scale from base-default in light when it is the only step', () => {
+      const onlyBase = colorsSchema.parse({ neutral: NEUTRAL, accent: { 'base-default': { light: ACCENT } } });
+
+      for (const scheme of ['light', 'dark'] as const) {
+        expect(getThemeColorScales({ colors: onlyBase }, scheme).accent).toEqual(generateColorScale(ACCENT, scheme));
+      }
+    });
+
+    it('applies the deprecated color overrides after the steps', () => {
+      const overrides: ColorOverrideSchema = {
+        colors: { accent: { 'text-subtle': { dark: '#222222' }, 'border-subtle': { dark: '#333333' } } },
+      };
+
+      const dark = getThemeColorScales({ colors: stepColors, overrides }, 'dark').accent;
+
+      expect(dark['text-subtle'].hex).toBe('#222222');
+      expect(dark['border-subtle'].hex).toBe('#333333');
+      expect(dark['background-default'].hex).toBe('#000000');
+    });
+
+    it('replaces a severity color with steps by the deprecated severity override', () => {
+      const severityColors = colorsSchema.parse({
+        neutral: NEUTRAL,
+        accent: ACCENT,
+        danger: { 'base-default': { light: '#C01B1B' }, 'text-subtle': { light: '#111111' } },
+      });
+
+      const light = getThemeColorScales(
+        { colors: severityColors, overrides: { severity: { danger: '#FF0000' } } },
+        'light',
+      );
+
+      expect(light.danger).toEqual(generateColorScale('#FF0000', 'light'));
+    });
   });
 });

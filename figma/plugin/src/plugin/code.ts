@@ -1,3 +1,4 @@
+import { stringifyConfig } from '@digdir/designsystemet/internal';
 import { postMessage } from '../common';
 import type { FigmaMessages } from '../types';
 import { exportConfig } from './export/export-config';
@@ -55,7 +56,7 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
       const { config, warnings } = await exportConfig(await readCollections());
       postMessage('export-config-result', {
         status: 'success',
-        config: `${JSON.stringify(config, null, 2)}\n`,
+        config: `${stringifyConfig(config)}\n`,
         warnings,
       });
     } catch (error) {
