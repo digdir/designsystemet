@@ -546,8 +546,8 @@ export const FetchExternal = meta.story({
           {...args}
           style={
             {
-              '--dsc-suggestion-sr-plural': '%d countries',
-              '--dsc-suggestion-sr-singular': '%d country',
+              '--dsc-suggestion-sr-plural': '%d recipes',
+              '--dsc-suggestion-sr-singular': '%d recipe',
             } as React.CSSProperties
           }
         >
