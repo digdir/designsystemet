@@ -50,7 +50,7 @@ const renderCreatable = () => {
     <ds-suggestion data-creatable class="ds-suggestion">
       <input type="search" class="ds-input" />
       <u-datalist role="listbox">
-        <u-option data-empty="Add %s">No results</u-option>
+        <u-option data-empty></u-option>
       </u-datalist>
     </ds-suggestion>
   `;
@@ -58,27 +58,27 @@ const renderCreatable = () => {
   return document.querySelector('ds-suggestion') as DSSuggestionElement;
 };
 
-describe('suggestion component', () => {
-  it('propagates CSS screen-reader translations on connect', () => {
-    const suggestion = document.createElement('ds-suggestion');
-    suggestion.innerHTML = `
+const renderCreatableMultiple = () => {
+  document.body.innerHTML = `
+    <ds-suggestion data-creatable data-multiple class="ds-suggestion">
+      <data value="new value">new value</data>
       <input type="search" class="ds-input" />
-      <u-datalist role="listbox"></u-datalist>
-    `;
-    suggestion.style.setProperty('--_ds-data-sr-added', 'Lagt til');
-    suggestion.style.setProperty('--_ds-data-sr-singular', 'treff');
-    suggestion.style.setProperty('--_ds-data-sr-plural', 'treff');
-    document.body.appendChild(suggestion);
+      <u-datalist role="listbox">
+        <u-option data-empty></u-option>
+      </u-datalist>
+    </ds-suggestion>
+  `;
 
-    const list = suggestion.querySelector('u-datalist') as HTMLElement;
+  return document.querySelector('ds-suggestion') as DSSuggestionElement;
+};
 
-    expect(suggestion).toHaveAttribute('data-sr-added', 'Lagt til');
-    expect(suggestion).toHaveAttribute('data-sr-singular', 'treff');
-    expect(suggestion).toHaveAttribute('data-sr-plural', 'treff');
-    expect(list).toHaveAttribute('data-sr-singular', 'treff');
-    expect(list).toHaveAttribute('data-sr-plural', 'treff');
-  });
+const type = async (input: HTMLInputElement, value: string) => {
+  input.value = value;
+  input.dispatchEvent(new Event('input', { bubbles: true }));
+  await tick(); // Let mutation observers run
+};
 
+describe('suggestion component', () => {
   it('sets popovertarget, and popover attributes', async () => {
     const suggestion = render();
     const input = suggestion.querySelector('input') as HTMLInputElement;
@@ -219,7 +219,7 @@ describe('suggestion component', () => {
     input.dispatchEvent(new Event('input', { bubbles: true }));
     expect(empty.hidden).toBe(true); // Not filtered by label with data-nofilter
 
-    option.disabled = true; // Like the filter in React <Suggestion>, which runs after the input event
+    option.disabled = true; // Like a custom filter that runs after the input event
     await tick(); // Let mutation observer run
     expect(empty.hidden).toBe(false);
   });
@@ -243,8 +243,10 @@ describe('suggestion component', () => {
     tags: ['browser'],
   }, async () => {
     vi.useFakeTimers();
+    // Using --sr-singular|plural instead of --dsc-suggestion-sr-singular|plural
+    // as this allows us to test without CSS parser issues in JSDOM
     document.body.innerHTML = `
-      <ds-suggestion class="ds-suggestion" data-sr-singular="%d forslag" data-sr-plural="%d forslag">
+      <ds-suggestion class="ds-suggestion" style="--sr-singular: '%d forslag'; --sr-plural: '%d forslag'">
         <input type="search" class="ds-input" />
         <u-datalist>
           <u-option data-empty>Ingen treff</u-option>
@@ -312,19 +314,67 @@ describe('suggestion component', () => {
     expect(empty.hidden).toBe(true);
   });
 
-  it('uses selected values instead of options to detect an existing creatable value', async () => {
+  it('reflects the typed value in label and value on the create option', async () => {
     const suggestion = renderCreatable();
     const input = suggestion.querySelector('input') as HTMLInputElement;
     const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
 
-    Object.defineProperty(suggestion, 'values', {
-      configurable: true,
-      value: ['new value'],
-    });
-    input.value = 'new value';
-    input.dispatchEvent(new Event('input', { bubbles: true }));
+    await tick(); // Let mutation observer run
+    await type(input, '  new value  ');
 
-    expect(empty).toHaveAttribute('data-create', 'new value');
-    expect(empty).toHaveAttribute('disabled', 'true');
+    expect(empty).toHaveAttribute('label', 'new value'); // Trimmed
+    expect(empty).toHaveAttribute('value', 'new value');
+    expect(empty.hidden).toBe(false);
+
+    await type(input, '');
+    expect(empty.hidden).toBe(true);
+  });
+
+  it('marks the create option as selected when the typed value is already selected', async () => {
+    const suggestion = renderCreatableMultiple();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+
+    await tick(); // Let mutation observer run
+    await type(input, 'new value');
+
+    expect(empty.hidden).toBe(false);
+    expect(empty).toHaveAttribute('label', 'new value');
+    expect(empty).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it('removes an already selected value when clicking its create option', async () => {
+    const suggestion = renderCreatableMultiple();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+
+    await tick(); // Let mutation observer run
+    input.focus();
+    input.click();
+    await type(input, 'new value');
+    expect(suggestion.querySelector('data')).not.toBeNull();
+
+    empty.click();
+    await tick();
+
+    expect(suggestion.querySelector('data')).toBeNull();
+  });
+
+  it('does not select anything when clicking a non-creatable empty option', async () => {
+    const suggestion = render();
+    const input = suggestion.querySelector('input') as HTMLInputElement;
+    const empty = suggestion.querySelector('[data-empty]') as HTMLElement;
+
+    await tick(); // Let mutation observer run
+    input.focus();
+    input.click();
+    await type(input, 'missing');
+    expect(empty.hidden).toBe(false);
+    expect(empty).toHaveAttribute('value', ''); // Even with text content, so it can not be selected
+
+    empty.click();
+    await tick();
+
+    expect(suggestion.querySelector('data')).toBeNull();
   });
 });

@@ -1,14 +1,9 @@
+import type { SuggestionItem } from '@digdir/designsystemet-web';
+import { suggestion } from '@digdir/designsystemet-web';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
-import {
-  Suggestion,
-  type SuggestionItem,
-  type SuggestionMultipleProps,
-  type SuggestionSingleProps,
-} from './suggestion';
-import { SuggestionClear } from './suggestion-clear';
-import { SuggestionEmpty } from './suggestion-empty';
+import { Suggestion, type SuggestionProps } from './suggestion';
 import { SuggestionInput } from './suggestion-input';
 import { SuggestionList } from './suggestion-list';
 import { SuggestionOption } from './suggestion-option';
@@ -21,22 +16,26 @@ const sweden = { label: 'Sweden', value: 'sweden' };
 const places = ['Sogndal', 'Oslo', 'Stavanger'];
 const placeLabel = 'Place';
 
-function ControlledSuggestion({
-  selected = norway,
-  onSelectedChange,
-}: {
-  selected?: typeof norway;
-  onSelectedChange: (item: typeof norway | null) => void;
-}) {
+/* Renders the selected item(s) as <data> elements, as done when controlling Suggestion */
+const renderData = ({ label, value }: SuggestionItem) => (
+  <data key={value} value={value}>
+    {label}
+  </data>
+);
+
+function Countries({
+  selected,
+  ...rest
+}: SuggestionProps & { selected: SuggestionItem | null }) {
   return (
-    <Suggestion
-      filter={false}
-      selected={selected}
-      onSelectedChange={onSelectedChange}
-    >
+    <Suggestion {...rest}>
+      {suggestion(selected, renderData)}
       <SuggestionInput aria-label='Country' />
-      <SuggestionList>
+      <SuggestionList data-nofilter>
         <SuggestionOption value={norway.value}>{norway.label}</SuggestionOption>
+        <SuggestionOption value={norway2.value}>
+          {norway2.label}
+        </SuggestionOption>
         <SuggestionOption value={sweden.value}>{sweden.label}</SuggestionOption>
       </SuggestionList>
     </Suggestion>
@@ -45,25 +44,76 @@ function ControlledSuggestion({
 
 function Places({
   children,
-  emptyText = 'No matches',
+  nofilter,
+  options = places,
   ...rest
-}: (SuggestionSingleProps | SuggestionMultipleProps) & {
-  emptyText?: string;
+}: SuggestionProps & {
+  nofilter?: boolean;
+  options?: string[];
 }) {
   return (
-    <Suggestion {...(rest as SuggestionSingleProps)}>
+    <Suggestion {...rest}>
+      {children}
       <SuggestionInput aria-label={placeLabel} />
       <SuggestionToggle />
-      <SuggestionList>
-        <SuggestionEmpty data-empty={emptyText} />
-        {places.map((place) => (
+      <SuggestionList data-nofilter={nofilter || undefined}>
+        <SuggestionOption data-empty />
+        {options.map((place) => (
           <SuggestionOption key={place} label={place} value={place}>
             {place}
           </SuggestionOption>
         ))}
       </SuggestionList>
-      {children}
     </Suggestion>
+  );
+}
+
+function ControlledPlace({
+  initial = null,
+  onSelect,
+  ...rest
+}: SuggestionProps & {
+  initial?: string | null;
+  onSelect?: (item: SuggestionItem | null) => void;
+}) {
+  const [selected, setSelected] = useState(suggestion(initial));
+  return (
+    <Places
+      {...rest}
+      oncomboboxbeforeselect={(event) => {
+        const next = suggestion(selected, event);
+        onSelect?.(next);
+        setSelected(next);
+      }}
+    >
+      {suggestion(selected, renderData)}
+    </Places>
+  );
+}
+
+function ControlledPlaces({
+  initial = [],
+  ...rest
+}: SuggestionProps & { initial?: string[] }) {
+  const [selected, setSelected] = useState(suggestion(initial));
+  return (
+    <>
+      <Places
+        {...rest}
+        data-multiple
+        oncomboboxbeforeselect={(event) =>
+          setSelected(suggestion(selected, event))
+        }
+      >
+        {suggestion(selected, renderData)}
+      </Places>
+      <button
+        type='button'
+        onClick={() => setSelected(suggestion(['Sogndal', 'Stavanger']))}
+      >
+        Set places
+      </button>
+    </>
   );
 }
 
@@ -71,7 +121,7 @@ function Places({
 const getInput = (name: string) =>
   waitFor(() => screen.getByRole<HTMLInputElement>('combobox', { name }));
 
-/* Chips for the selected items are rendered as <data> by Suggestion */
+/* Chips for the selected items are the <data> elements in Suggestion */
 const getChipValues = () =>
   Array.from(
     document.querySelectorAll<HTMLDataElement>('ds-suggestion > data'),
@@ -87,9 +137,9 @@ const getOptionStates = () =>
  * Types a value matching no option, leaving the option for creating a new value
  * as the only one in the list.
  *
- * The create option is the empty option with `data-create` added, and chips for
- * selected items also have `role="option"`, so narrow down to `u-option`.
- * Options not matching the input are `aria-hidden` and thus already left out.
+ * The create option is the empty option with the typed value in `label`,
+ * and chips for selected items also have `role="option"`, so narrow down to
+ * `u-option`. Options not matching the input are `aria-hidden` and thus already left out.
  */
 async function typeUnknownValue(input: HTMLInputElement, value: string) {
   await userEvent.clear(input);
@@ -101,28 +151,31 @@ async function typeUnknownValue(input: HTMLInputElement, value: string) {
       .filter((option) => option.matches('u-option'));
 
     expect(rest).toHaveLength(0);
-    expect(createOption).toHaveAttribute('data-create');
+    expect(createOption).toHaveAttribute('label', value);
     return createOption;
   });
 }
 
 describe('Suggestion', () => {
-  it('keeps the input synchronized with the selected prop when a change is not accepted', async () => {
-    const onSelectedChange = vi.fn();
-    render(<ControlledSuggestion onSelectedChange={onSelectedChange} />);
+  it('keeps the input synchronized with the selected item when a change is not accepted', async () => {
+    const onSelect = vi.fn();
+    render(
+      <Countries
+        selected={norway}
+        oncomboboxbeforeselect={(event) => onSelect(suggestion(norway, event))}
+      />,
+    );
 
-    const input = screen.getByRole<HTMLInputElement>('combobox', {
-      name: 'Country',
-    });
+    const input = await getInput('Country');
     await waitFor(() => expect(input.value).toBe(norway.label));
 
-    const suggestion = document.querySelector('ds-suggestion');
+    const self = document.querySelector('ds-suggestion');
     const proposedItem = document.createElement('data');
     proposedItem.value = sweden.value;
     proposedItem.textContent = sweden.label;
 
     await act(async () =>
-      suggestion?.dispatchEvent(
+      self?.dispatchEvent(
         new CustomEvent('comboboxbeforeselect', {
           bubbles: true,
           cancelable: true,
@@ -131,124 +184,104 @@ describe('Suggestion', () => {
       ),
     );
 
-    expect(onSelectedChange).toHaveBeenCalledWith(sweden);
+    expect(onSelect).toHaveBeenCalledWith(sweden);
     expect(input.value).toBe(norway.label);
   });
 
-  it('synchronizes the input when the selected prop changes', async () => {
-    const onSelectedChange = vi.fn();
+  it('synchronizes the input when the selected item changes', async () => {
+    const onSelect = vi.fn();
     const { rerender } = render(
-      <ControlledSuggestion onSelectedChange={onSelectedChange} />,
+      <Countries selected={norway} oncomboboxbeforeselect={onSelect} />,
     );
-    const input = screen.getByRole<HTMLInputElement>('combobox', {
-      name: 'Country',
-    });
+    const input = await getInput('Country');
     await waitFor(() => expect(input.value).toBe(norway.label));
 
-    rerender(
-      <ControlledSuggestion
-        selected={sweden}
-        onSelectedChange={onSelectedChange}
-      />,
-    );
+    rerender(<Countries selected={sweden} oncomboboxbeforeselect={onSelect} />);
 
     await waitFor(() => expect(input.value).toBe(sweden.label));
-    expect(onSelectedChange).not.toHaveBeenCalled();
+    expect(onSelect).not.toHaveBeenCalled();
   });
 
   it('keeps the clicked option despite same label on blur in single mode', async () => {
-    const onSelectedChange = vi.fn();
-    const Comp = ({
-      onSelectedChange,
-    }: {
-      onSelectedChange: (item: SuggestionItem | null) => void;
-    }) => {
-      const [selected, setSelected] = useState<SuggestionItem | null>(norway);
+    const onSelect = vi.fn();
+    const Comp = () => {
+      const [selected, setSelected] = useState(suggestion(norway));
       return (
-        <Suggestion
+        <Countries
           selected={selected}
-          onSelectedChange={(selected) => {
-            onSelectedChange(selected);
-            setSelected(selected);
+          oncomboboxbeforeselect={(event) => {
+            const next = suggestion(selected, event);
+            onSelect(next);
+            setSelected(next);
           }}
-        >
-          <SuggestionInput aria-label='Country' />
-          <SuggestionList>
-            <SuggestionOption value={norway.value}>
-              {norway.label}
-            </SuggestionOption>
-            <SuggestionOption value={norway2.value}>
-              {norway2.label}
-            </SuggestionOption>
-          </SuggestionList>
-        </Suggestion>
+        />
       );
     };
 
-    render(<Comp onSelectedChange={onSelectedChange} />);
-    const input = screen.getByRole<HTMLInputElement>('combobox', {
-      name: 'Country',
-    });
+    render(<Comp />);
+    const input = await getInput('Country');
     await waitFor(() => expect(input.value).toBe(norway.label));
 
     input.click();
     screen.getAllByRole('option').at(1)?.click();
     await waitFor(() => expect(input.value).toBe(norway2.label));
-    expect(onSelectedChange).toHaveBeenCalledOnce();
+    expect(onSelect).toHaveBeenCalledExactlyOnceWith(norway2);
 
     input.blur();
     await waitFor(() => expect(input.value).toBe(norway2.label));
-    expect(onSelectedChange).toHaveBeenCalledOnce();
+    expect(onSelect).toHaveBeenCalledOnce();
   });
 
   it('opens the list when clicking the toggle button', async () => {
     render(<Places />);
     await getInput(placeLabel);
 
-    const toggle = screen.getByRole('button', { name: 'Valg' });
+    /* u-combobox sets aria-hidden on the toggle, as the input is the combobox for assistive technology */
+    const toggle = document.querySelector('button[aria-expanded]');
     expect(toggle).toHaveAttribute('aria-expanded', 'false');
 
-    await userEvent.click(toggle);
+    await userEvent.click(toggle as Element);
     expect(toggle).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('renders defaultSelected when uncontrolled', async () => {
-    render(<Places defaultSelected='Sogndal' />);
+  it('renders initial <data> when uncontrolled', async () => {
+    render(
+      <Places>
+        <data value='Sogndal'>Sogndal</data>
+      </Places>,
+    );
     const input = await getInput(placeLabel);
 
     await waitFor(() => expect(input).toHaveValue('Sogndal'));
   });
 
-  it('renders a chip per defaultSelected item when multiple', async () => {
-    render(<Places multiple defaultSelected={['Sogndal', 'Oslo']} />);
+  it('renders a chip per initial <data> when multiple', async () => {
+    render(
+      <Places data-multiple>
+        <data value='Sogndal'>Sogndal</data>
+        <data value='Oslo'>Oslo</data>
+      </Places>,
+    );
     await getInput(placeLabel);
 
     expect(getChipValues()).toEqual(['Sogndal', 'Oslo']);
   });
 
-  it('keeps the chips synchronized with the selected prop when multiple', async () => {
-    const Comp = () => {
-      const [selected, setSelected] = useState(['Oslo']);
-      return (
-        <>
-          <Places
-            multiple
-            selected={selected}
-            onSelectedChange={(items) =>
-              setSelected(items.map(({ value }) => value))
-            }
-          />
-          <button
-            type='button'
-            onClick={() => setSelected(['Sogndal', 'Stavanger'])}
-          >
-            Set places
-          </button>
-        </>
-      );
-    };
+  it('adds more than two chips when controlled and multiple', async () => {
+    render(<ControlledPlaces initial={['Oslo']} />);
+    const input = await getInput(placeLabel);
 
-    render(<Comp />);
+    await userEvent.click(input);
+    await userEvent.click(screen.getByRole('option', { name: 'Sogndal' }));
+    await userEvent.click(screen.getByRole('option', { name: 'Stavanger' }));
+
+    await waitFor(() =>
+      expect(getChipValues()).toEqual(['Oslo', 'Sogndal', 'Stavanger']),
+    );
+  });
+
+  it('keeps the chips synchronized with the selected items when multiple', async () => {
+    render(<ControlledPlaces initial={['Oslo']} />);
     const input = await getInput(placeLabel);
     expect(getChipValues()).toEqual(['Oslo']);
 
@@ -261,63 +294,53 @@ describe('Suggestion', () => {
   });
 
   it('offers the option to create a value when nothing matches', async () => {
-    render(<Places creatable emptyText='Add «%s»' />);
+    render(<Places data-creatable />);
     const input = await getInput(placeLabel);
 
     await userEvent.click(input);
     const createOption = await typeUnknownValue(input, 'Does not exist');
 
-    /* `data-create` is the `data-empty` text, or its CSS variable, with the
-       current input value substituted for `%s` */
-    expect(createOption).toHaveAttribute('data-create', 'Add «Does not exist»');
+    /* `label` holds the typed value, and CSS prefixes it with --dsc-suggestion-create-text */
+    expect(createOption).toHaveAttribute('label', 'Does not exist');
     expect(createOption).toHaveValue('Does not exist');
   });
 
-  it('makes a created value the selected item in single mode', async () => {
-    const onSelectedChange = vi.fn();
-    const Comp = () => {
-      const [selected, setSelected] = useState('');
-      return (
-        <Places
-          creatable
-          selected={selected}
-          onSelectedChange={(item) => {
-            onSelectedChange(item);
-            setSelected(item?.value ?? '');
-          }}
-        />
-      );
-    };
+  it('removes an already created value when choosing its create option again', async () => {
+    render(<ControlledPlaces data-creatable initial={['Oslo']} />);
+    const input = await getInput(placeLabel);
 
-    render(<Comp />);
+    await userEvent.click(input);
+    await userEvent.click(await typeUnknownValue(input, 'Does not exist'));
+    await waitFor(() =>
+      expect(getChipValues()).toEqual(['Oslo', 'Does not exist']),
+    );
+
+    const createOption = await typeUnknownValue(input, 'Does not exist');
+    await waitFor(() =>
+      expect(createOption).toHaveAttribute('aria-selected', 'true'),
+    );
+    await userEvent.click(createOption);
+
+    await waitFor(() => expect(getChipValues()).toEqual(['Oslo']));
+  });
+
+  it('makes a created value the selected item in single mode', async () => {
+    const onSelect = vi.fn();
+    render(<ControlledPlace data-creatable onSelect={onSelect} />);
     const input = await getInput(placeLabel);
 
     await userEvent.click(input);
     await userEvent.click(await typeUnknownValue(input, 'Does not exist'));
 
     await waitFor(() => expect(input).toHaveValue('Does not exist'));
-    expect(onSelectedChange).toHaveBeenCalledWith({
+    expect(onSelect).toHaveBeenCalledWith({
       label: 'Does not exist',
       value: 'Does not exist',
     });
   });
 
   it('keeps the already selected items when a value is created in multiple mode', async () => {
-    const Comp = () => {
-      const [selected, setSelected] = useState(['Oslo']);
-      return (
-        <Places
-          creatable
-          multiple
-          selected={selected}
-          onSelectedChange={(items) =>
-            setSelected(items.map(({ value }) => value))
-          }
-        />
-      );
-    };
-
-    render(<Comp />);
+    render(<ControlledPlaces data-creatable initial={['Oslo']} />);
     const input = await getInput(placeLabel);
 
     await userEvent.click(input);
@@ -329,7 +352,7 @@ describe('Suggestion', () => {
   });
 
   it('renders a chip for each created value in multiple mode', async () => {
-    render(<Places creatable multiple />);
+    render(<Places data-creatable data-multiple />);
     const input = await getInput(placeLabel);
 
     await userEvent.click(input);
@@ -342,14 +365,8 @@ describe('Suggestion', () => {
   });
 
   it('keeps the clicked option on blur after a substring search', async () => {
-    const onSelectedChange = vi.fn();
-    render(
-      <Places
-        creatable
-        emptyText='Legg til %s'
-        onSelectedChange={onSelectedChange}
-      />,
-    );
+    const onAfterSelect = vi.fn();
+    render(<Places data-creatable oncomboboxafterselect={onAfterSelect} />);
     const input = await getInput(placeLabel);
 
     await userEvent.click(input);
@@ -360,27 +377,36 @@ describe('Suggestion', () => {
     );
     await userEvent.click(oslo);
     await waitFor(() => expect(input).toHaveValue('Oslo'));
-    expect(onSelectedChange).toHaveBeenCalledOnce();
+    expect(onAfterSelect).toHaveBeenCalledOnce();
 
     /* In v1.18 and earlier the input was reset to the typed query on blur,
-       and onSelectedChange fired again with the query as both label and
-       value. Fixed in v1.19 by the u-combobox 2.1.0 upgrade. */
+       and a new item was selected with the query as both label and value.
+       Fixed in v1.19 by the u-combobox 2.1.0 upgrade. */
     await userEvent.click(document.body);
     await waitFor(() =>
       expect(input).toHaveAttribute('aria-expanded', 'false'),
     );
     expect(input).toHaveValue('Oslo');
-    expect(onSelectedChange).toHaveBeenCalledOnce();
+    expect(onAfterSelect).toHaveBeenCalledOnce();
   });
 
-  it('disables the options rejected by a custom filter', async () => {
-    render(
-      <Places
-        filter={({ index, input }) =>
-          !input.value || index === Number(input.value) - 1
-        }
-      />,
-    );
+  it('renders only the options matched by custom filtering', async () => {
+    const Comp = () => {
+      const [value, setValue] = useState('');
+      return (
+        <Places
+          nofilter
+          options={places.filter(
+            (_, index) => !value || index === Number(value) - 1,
+          )}
+          onInput={(event) =>
+            setValue((event.target as HTMLInputElement).value)
+          }
+        />
+      );
+    };
+
+    render(<Comp />);
     const input = await getInput(placeLabel);
 
     await userEvent.click(input);
@@ -390,19 +416,16 @@ describe('Suggestion', () => {
       ['Stavanger', false],
     ]);
 
-    /* The empty option is not counted, so index 1 is the second place */
     await userEvent.type(input, '2');
-    await waitFor(() =>
-      expect(getOptionStates()).toEqual([
-        ['Sogndal', true],
-        ['Oslo', false],
-        ['Stavanger', true],
-      ]),
-    );
+    await waitFor(() => expect(getOptionStates()).toEqual([['Oslo', false]]));
   });
 
-  it('keeps every option enabled when filter is false', async () => {
-    render(<Places filter={false} defaultSelected='Sogndal' />);
+  it('keeps every option enabled when data-nofilter is set', async () => {
+    render(
+      <Places nofilter>
+        <data value='Sogndal'>Sogndal</data>
+      </Places>,
+    );
     const input = await getInput(placeLabel);
 
     await userEvent.click(input);
@@ -415,43 +438,59 @@ describe('Suggestion', () => {
     ]);
   });
 
-  describe('as a search field with a clear button', () => {
-    const SearchField = () => (
-      <Suggestion>
-        <SuggestionInput type='search' aria-label='Søk' />
-        <SuggestionClear data-testid='button' />
-      </Suggestion>
-    );
+  describe('removed props', () => {
+    // Each test uses different props, since each prop only warns once per page
+    const getWarnings = (spy: { mock: { calls: unknown[][] } }) =>
+      spy.mock.calls.map(([message]) => String(message));
 
-    it('should clear input when clear button is clicked', async () => {
-      render(<SearchField />);
+    it('warns once per removed prop, even with several instances', () => {
+      const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const removed = { selected: ['Oslo'], onSelectedChange: () => {} };
 
-      const input = screen.getByLabelText<HTMLInputElement>('Søk');
-      const clearButton = screen.getByTestId('button');
+      render(
+        <>
+          <Suggestion {...(removed as SuggestionProps)} />
+          <Suggestion {...(removed as SuggestionProps)} />
+        </>,
+      );
 
-      expect(input).toHaveValue('');
-
-      await act(async () => input.focus());
-      input.value = 'Hello, World!';
-      expect(input).toHaveValue('Hello, World!');
-
-      await act(async () => clearButton.click());
-      expect(input).toHaveValue('');
+      expect(getWarnings(spy)).toEqual([
+        'Designsystemet: Suggestion: "selected" is removed, render <data> children and use oncomboboxbeforeselect.',
+        'Designsystemet: Suggestion: "onSelectedChange" is removed, use oncomboboxbeforeselect with the suggestion() helper.',
+      ]);
+      spy.mockRestore();
     });
 
-    it('toggles clear button visibility for programmatic input changes', async () => {
-      render(<SearchField />);
+    it('does not warn for the props that replace them', () => {
+      const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
-      const input = screen.getByLabelText<HTMLInputElement>('Søk');
-      const clearButton = screen.getByTestId('button');
+      render(
+        <Suggestion
+          data-multiple
+          data-creatable
+          oncomboboxbeforeselect={() => {}}
+          oncomboboxbeforematch={() => {}}
+        />,
+      );
 
-      await waitFor(() => expect(clearButton).not.toBeVisible());
+      expect(getWarnings(spy)).toEqual([]);
+      spy.mockRestore();
+    });
 
-      input.value = 'Hello, World!';
-      await waitFor(() => expect(clearButton).toBeVisible());
+    it('does not pass removed props on to <ds-suggestion>', () => {
+      const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const removed = { multiple: true, creatable: true, filter: false };
 
-      input.value = '';
-      await waitFor(() => expect(clearButton).not.toBeVisible());
+      const { container } = render(
+        <Suggestion {...(removed as SuggestionProps)} />,
+      );
+      const el = container.querySelector('ds-suggestion') as HTMLElement;
+
+      expect(el).not.toHaveAttribute('data-multiple'); // React 19 would set .multiple
+      expect(el).not.toHaveAttribute('data-creatable'); // React 19 would set .creatable
+      expect(el).not.toHaveAttribute('multiple');
+      expect(el).not.toHaveAttribute('filter');
+      spy.mockRestore();
     });
   });
 });

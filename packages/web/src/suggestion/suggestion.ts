@@ -1,37 +1,25 @@
 import { UHTMLComboboxElement } from '@u-elements/u-combobox';
 import {
   attr,
-  attrOrCSS,
   customElements,
   off,
   on,
   onMutation,
   QUICK_EVENT,
-  useId,
-  warn,
 } from '../utils/utils';
 
-// Load and export u-datalist since this is a pure polyfill and not custom Designsystemet elements, should run before suggestion
-export * from '@u-elements/u-datalist';
+export * from '@u-elements/u-datalist'; // Load and export u-datalist since this is a pure polyfill and not custom Designsystemet elements, should run before suggestion
+export * from './suggestion-helper';
 
-const ARIA_HIDDEN = 'aria-hidden';
-const ATTR_CREATE = 'data-create';
 const ATTR_EMPTY = 'data-empty';
-const TRUE = 'true';
 const EVENTS_EMPTY = 'comboboxafterselect input';
+const FALSE = 'false';
 const MUTATIONS: MutationObserverInit = {
-  attributeFilter: ['disabled', 'hidden', 'label'], // React <Suggestion> filters by setting disabled on options
+  attributeFilter: ['aria-hidden', 'disabled', 'hidden', 'label'],
   characterData: true,
   childList: true,
   subtree: true,
 };
-const REGEX_CREATE = /\{value\}|%s/; // Support both new %s and old {value} syntax
-const SINGULAR = 'data-sr-singular';
-const PLURAL = 'data-sr-plural';
-const TEXTS =
-  'added,clear,empty,found,invalid,items,of,plural,remove,removed,singular,toggle'
-    .split(',')
-    .map((key) => `data-sr-${key}`);
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -43,9 +31,7 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
   _unmutate?: ReturnType<typeof onMutation>; // Using underscore instead of private fields for backwards compatibility
 
   connectedCallback() {
-    for (const key of TEXTS) attr(this, key, attrOrCSS(this, key)); // Convert CSS variables to data-sr-attributes
-    super.connectedCallback(); // Run after setting data-sr-attributes
-
+    super.connectedCallback();
     this._unmutate = onMutation(this, onMutations, MUTATIONS); // .control and .list are direct children, and option changes affect the empty option
     on(this, EVENTS_EMPTY, handleEmpty, QUICK_EVENT);
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
@@ -60,21 +46,13 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 }
 
 const onMutations = (self: DSSuggestionElement) => {
-  let { control, list } = self;
-  if (!list) list = self.querySelector('u-datalist'); // Fallback to u-datalist since React can render the ds-suggestion before u-datalist is connected
-
-  if (control) attr(control, 'popovertarget', list ? useId(list) : null);
-  if (list) {
-    if (!attr(list, PLURAL)) attr(list, PLURAL, attr(self, PLURAL)); // Inherit translations from u-combobox to u-datalist
-    if (!attr(list, SINGULAR)) attr(list, SINGULAR, attr(self, SINGULAR)); // Inherit translations from u-combobox to u-datalist
-    attr(list, 'data-is-floating', TRUE); // identifier for css to toggle opacity when it is placed by floating-ui.
-    attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
-  }
+  const { list } = self;
+  if (list) attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
   handleEmpty({ currentTarget: self });
 };
 
 const isHidden = (opt: HTMLOptionElement) =>
-  opt.disabled || opt.hidden || opt.getAttribute(ARIA_HIDDEN) === TRUE;
+  opt.disabled || opt.hidden || opt.getAttribute('aria-hidden') === 'true';
 
 const handleEmpty = (event: Partial<Event>) => {
   const self = event.currentTarget as DSSuggestionElement;
@@ -87,48 +65,28 @@ const handleEmpty = (event: Partial<Event>) => {
   let hide = creatable && !value; // Hide initial empty state for an empty creatable input
 
   for (const opt of options) {
-    if (opt.hasAttribute(ATTR_EMPTY)) emptyOpt = opt;
-    else if (!hide) {
-      hide = creatable
-        ? opt.label?.toLowerCase() === query // Hide "Legg til" when the query already exists
-        : !isHidden(opt); // Hide when <u-datalist> shows another option, so it is not counted in the screen reader hit count
+    if ((opt.getAttribute(ATTR_EMPTY) ?? FALSE) !== FALSE) emptyOpt = opt;
+    else if (!hide && !isHidden(opt)) {
+      // Hide when <u-datalist> shows another option, so it is not counted in the screen reader hit count
+      hide = !creatable || opt.label?.toLowerCase() === query; // Hide "Legg til" when a selectable option already has the query as label
     }
     if (hide && emptyOpt) break; // Speed up if both conditions are met
   }
   if (!emptyOpt) return;
-
+  // Note: isHidden() can read stale aria-hidden as this runs before <u-datalist> filters, but MUTATIONS observes aria-hidden, so this runs again after filtering
   attr(emptyOpt, 'hidden', hide ? '' : null); // Using attr() as setting an unchanged attribute would trigger the MutationObserver again
-  attr(emptyOpt, 'label', value); // Ensures option is not filtered out by <u-combobox>
+  attr(emptyOpt, 'label', value); // Ensures option is not filtered out, and CSS can read text
   attr(emptyOpt, 'value', creatable ? value : ''); // Ensures clicking option does nothing
-
-  if (creatable) {
-    const hasValue = self.values.includes(value);
-    const text = attrOrCSS(emptyOpt, ATTR_EMPTY);
-    const hint =
-      (!hasValue && text?.replace(REGEX_CREATE, () => value)) || value; // Only show "Legg til" if not already created
-
-    if (!text) warn(`Missing ${ATTR_EMPTY} value on:`, emptyOpt);
-    else attr(emptyOpt, ATTR_EMPTY, text); // Speed up by caching attribute value
-
-    const disabled = hasValue && emptyOpt.textContent ? TRUE : null;
-    attr(emptyOpt, 'disabled', disabled); // Hide hint if already created
-    attr(emptyOpt, ATTR_CREATE, hint);
-  }
 };
 
 // Since showPopover({ source }) is not supported in all browsers yet:
 const polyfillToggleSource = (event: Partial<ToggleEvent>) => {
   const self = event.currentTarget as DSSuggestionElement;
   const detail = event.newState === 'open' && self.control; // .control comes from UHTMLComboboxElement
+  const data = { bubbles: true, composed: true, detail };
 
   if (detail)
-    self.list?.dispatchEvent(
-      new CustomEvent('ds-toggle-source', {
-        bubbles: true,
-        composed: true, // Enable bubbling out of shadow DOM boundaries
-        detail, // Since showPopover({ source }) is not supported in all browsers yet
-      }),
-    );
+    self.list?.dispatchEvent(new CustomEvent('ds-toggle-source', data));
 };
 
 // Ensure u-datalist is defined before ds-suggestion

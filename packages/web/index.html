@@ -21,6 +21,24 @@
       <br>
       <br>
 
+      <ds-field class="ds-field" style="width: 200px">
+        <label>Label</label>
+        <ds-suggestion class="ds-suggestion" data-multiple>
+          <input type="search" class="ds-input">
+          <button type="button" aria-expanded="false"></button>
+          <button type="reset"></button>
+          <u-datalist>
+            <u-option data-empty></u-option>
+            <u-option value="option-1">Option 1</u-option>
+            <u-option value="option-2">Option 2</u-option>
+            <u-option value="option-3">Option 3</u-option>
+          </u-datalist>
+        </ds-suggestion>
+      </ds-field>
+
+      <br>
+      <br>
+
       <ds-suggestion class="ds-suggestion">
         <input class="ds-input" type="search" placeholder="" aria-label="Søk">
         <button
@@ -336,28 +354,6 @@
           <label>Alternativ 3</label>
         </ds-field>
       </fieldset>
-
-      <br>
-      <br>
-
-      <ds-field class="ds-field" style="width: 200px">
-        <label>Label</label>
-        <ds-suggestion class="ds-suggestion" data-multiple>
-          <input type="search" class="ds-input">
-          <button
-            type="button"
-            aria-expanded="false"
-            aria-label="Valg"
-          ></button>
-          <button type="reset" aria-label="Tøm"></button>
-          <u-datalist>
-            <u-option data-empty></u-option>
-            <u-option value="option-1">Option 1</u-option>
-            <u-option value="option-2">Option 2</u-option>
-            <u-option value="option-3">Option 3</u-option>
-          </u-datalist>
-        </ds-suggestion>
-      </ds-field>
 
       <br>
       <br>

@@ -30,5 +30,3 @@ syncInjectedDepsAfterScripts:
   - build:themebuilder
   - build:storybook
 nodeVersion: "24.22.2"
-patchedDependencies:
-  '@u-elements/u-combobox': patches/@u-elements__u-combobox.patch
