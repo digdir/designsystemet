@@ -140,6 +140,10 @@
     & > tfoot > tr > :is(th, td) {
       display: block;
     }
+    & > tfoot > tr > :is(th, td) {
+      color: var(--dsc-chart-label-color);
+      font-size: var(--dsc-chart-label-font-size);
+    }
 
     /**
      * Values are transparent rather than removed when not shown, to always be available for screen readers
