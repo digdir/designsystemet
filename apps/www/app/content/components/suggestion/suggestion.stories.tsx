@@ -196,7 +196,7 @@ export const ControlledMultiple = () => {
           }
         >
           {suggestion(selected, ({ label, value }) => (
-            <data key={value} value={value}>
+            <data suppressHydrationWarning key={value} value={value}>
               {label}
             </data>
           ))}
@@ -260,7 +260,7 @@ export const ControlledMultipleEn = () => {
           }
         >
           {suggestion(selected, ({ label, value }) => (
-            <data key={value} value={value}>
+            <data suppressHydrationWarning key={value} value={value}>
               {label}
             </data>
           ))}

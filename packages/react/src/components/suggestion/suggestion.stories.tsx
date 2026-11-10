@@ -84,7 +84,7 @@ export const Preview = meta.story({
         <Label>Velg en destinasjon</Label>
         <Suggestion {...args} oncomboboxbeforeselect={handleSelect}>
           {suggestion(selected, ({ label, value }) => (
-            <data key={value} value={value}>
+            <data suppressHydrationWarning key={value} value={value}>
               {label}
             </data>
           ))}
@@ -118,7 +118,7 @@ export const ControlledSingle = meta.story({
           <Label>Velg destinasjon</Label>
           <Suggestion {...args} oncomboboxbeforeselect={handleSelect}>
             {suggestion(selected, ({ label, value }) => (
-              <data key={value} value={value}>
+              <data suppressHydrationWarning key={value} value={value}>
                 {label}
               </data>
             ))}
@@ -194,7 +194,7 @@ export const ControlledCreatable = meta.story({
             oncomboboxbeforeselect={handleSelect}
           >
             {suggestion(selected, ({ label, value }) => (
-              <data key={value} value={value}>
+              <data suppressHydrationWarning key={value} value={value}>
                 {label}
               </data>
             ))}
@@ -246,7 +246,7 @@ export const ControlledMultiple = meta.story({
             oncomboboxbeforeselect={handleSelect}
           >
             {suggestion(selected, ({ label, value }) => (
-              <data key={value} value={value}>
+              <data suppressHydrationWarning key={value} value={value}>
                 {label}
               </data>
             ))}
@@ -326,7 +326,7 @@ export const ControlledIndependentLabelValue = meta.story({
           <Label>Velg person</Label>
           <Suggestion {...args} oncomboboxbeforeselect={handleSelect}>
             {suggestion(selected, ({ label, value }) => (
-              <data key={value} value={value}>
+              <data suppressHydrationWarning key={value} value={value}>
                 {label}
               </data>
             ))}
@@ -382,7 +382,7 @@ export const ControlledIndependentLabelValueMultiple = meta.story({
             oncomboboxbeforeselect={handleSelect}
           >
             {suggestion(selected, ({ label, value }) => (
-              <data key={value} value={value}>
+              <data suppressHydrationWarning key={value} value={value}>
                 {label}
               </data>
             ))}
@@ -499,7 +499,7 @@ export const AlwaysShowAll = meta.story({
         <Label>Viser alle options også når valgt</Label>
         <Suggestion {...args} oncomboboxbeforeselect={handleSelect}>
           {suggestion(selected, ({ label, value }) => (
-            <data key={value} value={value}>
+            <data suppressHydrationWarning key={value} value={value}>
               {label}
             </data>
           ))}
