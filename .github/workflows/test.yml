@@ -34,14 +34,17 @@ jobs:
 
       - name: Get Playwright version
         id: playwright-version
-        run: echo "version=$(pnpm --filter @web/storybook list playwright --depth=0 --json | jq -r '.[0].devDependencies.playwright.version')" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "version=$(pnpm --filter @web/storybook list playwright --depth=0 --json | jq -r '.[0].devDependencies.playwright.version')" >> "$GITHUB_OUTPUT"
+          echo "image=$ImageOS" >> "$GITHUB_OUTPUT"
 
       - name: Cache Playwright browsers
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-bust2
+          # Include the runner image (e.g. ubuntu24), as Playwright downloads browser builds per OS version
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.image }}-${{ steps.playwright-version.outputs.version }}
 
       - name: Install Playwright browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
