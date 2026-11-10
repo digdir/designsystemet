@@ -107,6 +107,27 @@ describe('ds-chart', () => {
     expect(css(chart, 'max-chars')).toBe('5');
   });
 
+  it('formats axis with the decimals needed', async () => {
+    const axis = async (a: string, b: string) => {
+      const { chart, css } = await render(
+        '',
+        `<tr><th>A</th><td>${a}</td><td>${b}</td></tr>`,
+      );
+      return css(chart, 'axis');
+    };
+
+    expect(await axis('0,5', '1')).toBe(
+      '"1,0\\a 0,8\\a 0,6\\a 0,4\\a 0,2\\a 0,0"',
+    );
+    expect(await axis('0,01', '0,09')).toBe(
+      '"0,10\\a 0,08\\a 0,06\\a 0,04\\a 0,02\\a 0,00"',
+    );
+    expect(await axis('12,4', '3,1')).toBe('"15\\a 10\\a 5\\a 0"');
+    expect(await axis('0', '0')).toBe(
+      '"1,0\\a 0,8\\a 0,6\\a 0,4\\a 0,2\\a 0,0"',
+    );
+  });
+
   it('keeps table semantics', async () => {
     const { table, cells } = await render();
 

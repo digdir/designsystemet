@@ -151,11 +151,11 @@ const render = (self: DSChartElement) => {
   }
 
   // data-min and data-max can only extend the axis, as values outside the axis would be drawn outside the chart
-  const { min, max, ticks } = chartScale(
+  const { min, max, step, ticks } = chartScale(
     Math.min(lo, getNumber(self, ATTR_MIN, lo)),
     Math.max(hi, getNumber(self, ATTR_MAX, hi)),
   );
-  const format = getNumberFormat(self, ticks);
+  const format = getNumberFormat(self, step);
   const scale = (value: number) =>
     `${Math.round(((value - min) / (max - min)) * 1e4) / 1e4}`; // Round to avoid long decimals in DOM
 
@@ -260,12 +260,11 @@ const getLocale = (el: Element) => {
   }
 };
 
-const getNumberFormat = (el: Element, ticks: number[]) => {
-  const digits = ticks.map((tick) => tick.toFixed(20).replace(/\.?0+$/, '')); // Using toFixed to avoid exponent notation of small numbers
-  const decimals = digits.map((tick) => tick.split('.')[1]?.length || 0);
+const getNumberFormat = (el: Element, step: number) => {
+  const decimals = Math.min(20, Math.max(0, Math.ceil(-Math.log10(step)))) || 0; // Same amount of decimals for all ticks, based on distance between them
   const { format } = new Intl.NumberFormat(getLocale(el), {
-    maximumFractionDigits: 20,
-    minimumFractionDigits: Math.min(20, Math.max(0, ...decimals)), // Same amount of decimals for all ticks
+    maximumFractionDigits: decimals,
+    minimumFractionDigits: decimals,
   });
   return format;
 };

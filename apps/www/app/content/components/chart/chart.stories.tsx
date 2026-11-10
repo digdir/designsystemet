@@ -1,9 +1,11 @@
 import {
   EXPERIMENTAL_Chart,
   Paragraph,
+  Switch,
   Table,
   ToggleGroup,
 } from '@digdir/designsystemet-react';
+import { useEffect, useState } from 'react';
 
 // Example data is inspired by the kind of statistics published on ssb.no, but all numbers are made up
 
@@ -650,3 +652,129 @@ export const SixSeriesEn = () => (
     </Table>
   </EXPERIMENTAL_Chart>
 );
+
+export const Live = () => {
+  const [live, setLive] = useState(true);
+  const [rows, setRows] = useState<[string, number, number][]>([]);
+
+  useEffect(() => {
+    if (!live) return;
+    let frames = 0;
+    let moves = 0;
+    let frame = requestAnimationFrame(function count() {
+      frames++;
+      frame = requestAnimationFrame(count);
+    });
+    const onMove = () => moves++;
+    const timer = setInterval(() => {
+      const time = new Date().toLocaleTimeString('nb');
+      setRows((rows) => [...rows.slice(-7), [time, frames, moves]]); // Keep the last 8 seconds
+      frames = moves = 0;
+    }, 1000);
+
+    document.addEventListener('pointermove', onMove);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearInterval(timer);
+      document.removeEventListener('pointermove', onMove);
+    };
+  }, [live]);
+
+  return (
+    <EXPERIMENTAL_Chart data-variant='line'>
+      <Switch
+        checked={live}
+        label='Oppdater hvert sekund'
+        onChange={(event) => setLive(event.target.checked)}
+      />
+      <ToggleGroup
+        aria-label='Visning'
+        data-chart='variant'
+        defaultValue='line'
+      >
+        <ToggleGroup.Item value='line'>Diagram</ToggleGroup.Item>
+        <ToggleGroup.Item value='table'>Tabell</ToggleGroup.Item>
+      </ToggleGroup>
+      <Table>
+        <caption>Aktivitet i nettleseren din de siste sekundene</caption>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell scope='col'>Klokkeslett</Table.HeaderCell>
+            <Table.HeaderCell scope='col'>Bilder tegnet</Table.HeaderCell>
+            <Table.HeaderCell scope='col'>Pekerbevegelser</Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          {rows.map(([time, frames, moves]) => (
+            <Table.Row key={time}>
+              <Table.HeaderCell scope='row'>{time}</Table.HeaderCell>
+              <Table.Cell>{frames}</Table.Cell>
+              <Table.Cell>{moves}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    </EXPERIMENTAL_Chart>
+  );
+};
+
+export const LiveEn = () => {
+  const [live, setLive] = useState(true);
+  const [rows, setRows] = useState<[string, number, number][]>([]);
+
+  useEffect(() => {
+    if (!live) return;
+    let frames = 0;
+    let moves = 0;
+    let frame = requestAnimationFrame(function count() {
+      frames++;
+      frame = requestAnimationFrame(count);
+    });
+    const onMove = () => moves++;
+    const timer = setInterval(() => {
+      const time = new Date().toLocaleTimeString('en-GB');
+      setRows((rows) => [...rows.slice(-7), [time, frames, moves]]); // Keep the last 8 seconds
+      frames = moves = 0;
+    }, 1000);
+
+    document.addEventListener('pointermove', onMove);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearInterval(timer);
+      document.removeEventListener('pointermove', onMove);
+    };
+  }, [live]);
+
+  return (
+    <EXPERIMENTAL_Chart data-variant='line'>
+      <Switch
+        checked={live}
+        label='Update every second'
+        onChange={(event) => setLive(event.target.checked)}
+      />
+      <ToggleGroup aria-label='View' data-chart='variant' defaultValue='line'>
+        <ToggleGroup.Item value='line'>Chart</ToggleGroup.Item>
+        <ToggleGroup.Item value='table'>Table</ToggleGroup.Item>
+      </ToggleGroup>
+      <Table>
+        <caption>Activity in your browser the last seconds</caption>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell scope='col'>Time</Table.HeaderCell>
+            <Table.HeaderCell scope='col'>Frames drawn</Table.HeaderCell>
+            <Table.HeaderCell scope='col'>Pointer movements</Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          {rows.map(([time, frames, moves]) => (
+            <Table.Row key={time}>
+              <Table.HeaderCell scope='row'>{time}</Table.HeaderCell>
+              <Table.Cell>{frames}</Table.Cell>
+              <Table.Cell>{moves}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    </EXPERIMENTAL_Chart>
+  );
+};

@@ -1,7 +1,13 @@
 import type { CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import type { ChartProps } from '../../';
-import { EXPERIMENTAL_Chart as Chart, Table, ToggleGroup } from '../../';
+import {
+  EXPERIMENTAL_Chart as Chart,
+  Switch,
+  Table,
+  ToggleGroup,
+} from '../../';
 
 const meta = preview.meta({
   title: 'Komponenter/Chart',
@@ -243,4 +249,79 @@ export const CustomColors = meta.story({
       <DataTable {...energy} />
     </Chart>
   ),
+});
+
+/**
+ * The chart follows the table, so updating the table updates the chart.
+ * Shows real measurements from your browser: frames drawn and pointer movements per second.
+ * Content that updates automatically must be possible to pause (WCAG 2.2.2).
+ */
+const LiveChart = () => {
+  const [live, setLive] = useState(true);
+  const [rows, setRows] = useState<[string, number, number][]>([]);
+
+  useEffect(() => {
+    if (!live) return;
+    let frames = 0;
+    let moves = 0;
+    let frame = requestAnimationFrame(function count() {
+      frames++;
+      frame = requestAnimationFrame(count);
+    });
+    const onMove = () => moves++;
+    const timer = setInterval(() => {
+      const time = new Date().toLocaleTimeString('nb');
+      setRows((rows) => [...rows.slice(-7), [time, frames, moves]]); // Keep the last 8 seconds
+      frames = moves = 0;
+    }, 1000);
+
+    document.addEventListener('pointermove', onMove);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearInterval(timer);
+      document.removeEventListener('pointermove', onMove);
+    };
+  }, [live]);
+
+  return (
+    <Chart data-variant='line'>
+      <Switch
+        checked={live}
+        label='Oppdater hvert sekund'
+        onChange={(event) => setLive(event.target.checked)}
+      />
+      <ToggleGroup
+        aria-label='Visning'
+        data-chart='variant'
+        defaultValue='line'
+      >
+        <ToggleGroup.Item value='line'>Diagram</ToggleGroup.Item>
+        <ToggleGroup.Item value='table'>Tabell</ToggleGroup.Item>
+      </ToggleGroup>
+      <Table>
+        <caption>Aktivitet i nettleseren din de siste sekundene</caption>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell scope='col'>Klokkeslett</Table.HeaderCell>
+            <Table.HeaderCell scope='col'>Bilder tegnet</Table.HeaderCell>
+            <Table.HeaderCell scope='col'>Pekerbevegelser</Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          {rows.map(([time, frames, moves]) => (
+            <Table.Row key={time}>
+              <Table.HeaderCell scope='row'>{time}</Table.HeaderCell>
+              <Table.Cell>{frames}</Table.Cell>
+              <Table.Cell>{moves}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    </Chart>
+  );
+};
+
+export const LiveData = meta.story({
+  render: () => <LiveChart />,
+  parameters: { chromatic: { disableSnapshot: true } }, // Changes every second
 });
