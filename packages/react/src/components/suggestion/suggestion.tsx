@@ -1,6 +1,6 @@
 import type { DSSuggestionElement } from '@digdir/designsystemet-web';
 import cl from 'clsx/lite';
-import { forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 import { warn } from '../../utilities';
 import { useEventListener, useMergeRefs } from '../../utilities/hooks';
 
@@ -75,13 +75,13 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
     }: SuggestionProps & RemovedProps,
     ref,
   ) {
-    const selfRef = useRef<DSSuggestionElement>(null);
-    const mergedRefs = useMergeRefs([ref, selfRef]);
-
     // Support React 18
-    useEventListener('comboboxafterselect', oncomboboxafterselect, selfRef);
-    useEventListener('comboboxbeforematch', oncomboboxbeforematch, selfRef);
-    useEventListener('comboboxbeforeselect', oncomboboxbeforeselect, selfRef);
+    const listenRef = useEventListener({
+      comboboxafterselect: oncomboboxafterselect,
+      comboboxbeforematch: oncomboboxbeforematch,
+      comboboxbeforeselect: oncomboboxbeforeselect,
+    });
+    const mergedRefs = useMergeRefs([ref, listenRef]);
 
     // Warn about removed props, as they are silently ignored
     useEffect(() => {
