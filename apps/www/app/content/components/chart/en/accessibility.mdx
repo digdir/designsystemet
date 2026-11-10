@@ -1,0 +1,22 @@
+<Alert data-color="warning">
+Chart is under development and has not yet been tested with users of assistive technology. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
+Charts are hard to make accessible, because the information is in the shapes. Chart solves this by never replacing the table. The chart you see is the table, only drawn differently.
+
+## What the component does
+
+- **Screen readers:** The chart is read as a table, with the title, column headers and row headers. `<ds-chart>` adds table roles to the elements, since some browsers have dropped table semantics when the layout of a table is changed with CSS.
+- **Keyboard:** Nothing in the chart needs hover or focus. Values can be shown on hover, but are always available in the table.
+- **Color:** Series are never told apart by color alone. Columns and bars have their own patterns, and lines have their own point shapes and dashes. The default colors have at least 3:1 contrast against the background.
+- **Without JavaScript:** The table is shown as a regular table until the web component is loaded.
+- **Contrast modes and print:** The chart uses system colors in forced colors mode, and keeps its colors when printed.
+
+## What you must do
+
+- **Title:** Always use `<caption>`, or `aria-label` on the table. Screen readers read the title first, so users can decide whether they want to read the table.
+- **Headers:** Use `<th scope="row">` for the category in each row, and `<th>` in `<thead>` for each series. Without these, the numbers have no meaning for screen reader users.
+- **Describe the message:** A table gives access to the numbers, not to the conclusion. Write the most important finding as text next to the chart ([WCAG 1.1.1 Non-text Content (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)).
+- **Offer the table:** Let users switch to table when the exact numbers matter. This also helps users who zoom, and users who find charts hard to read.
+- **Your own colors:** If you change colors or remove patterns, make sure the series have at least 3:1 contrast against the background ([WCAG 1.4.11 Non-text Contrast (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)), and that they can be told apart without color ([WCAG 1.4.1 Use of Color (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)).
+- **Small screens:** Test with your own data at 320 pixels width. Use `bar` or fewer categories if the labels do not fit.

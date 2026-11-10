@@ -26,6 +26,11 @@
       "import": "./dist/esm/breadcrumbs/breadcrumbs.js",
       "require": "./dist/cjs/breadcrumbs/breadcrumbs.cjs"
     },
+    "./ds-chart": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/chart/chart.js",
+      "require": "./dist/cjs/chart/chart.cjs"
+    },
     "./clickdelegatefor": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/clickdelegatefor/clickdelegatefor.js",

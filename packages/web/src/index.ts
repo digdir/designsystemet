@@ -10,6 +10,7 @@ import './toggle-group/toggle-group';
 import './tooltip/tooltip';
 
 export * from './breadcrumbs/breadcrumbs';
+export * from './chart/chart';
 export * from './error-summary/error-summary';
 export * from './field/field';
 export * from './pagination/pagination';

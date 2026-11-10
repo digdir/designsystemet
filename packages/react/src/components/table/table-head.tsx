@@ -15,6 +15,12 @@ export type TableHeadProps = HTMLAttributes<HTMLTableSectionElement>;
  */
 export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
   function TableHead(rest, ref) {
-    return <thead ref={ref} {...rest} />;
+    return (
+      <thead
+        ref={ref}
+        suppressHydrationWarning /* Since <ds-chart> adds attributes */
+        {...rest}
+      />
+    );
   },
 );

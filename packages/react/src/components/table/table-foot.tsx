@@ -15,6 +15,12 @@ export type TableFootProps = HTMLAttributes<HTMLTableSectionElement>;
  */
 export const TableFoot = forwardRef<HTMLTableSectionElement, TableFootProps>(
   function TableFoot(rest, ref) {
-    return <tfoot ref={ref} {...rest} />;
+    return (
+      <tfoot
+        ref={ref}
+        suppressHydrationWarning /* Since <ds-chart> adds attributes */
+        {...rest}
+      />
+    );
   },
 );

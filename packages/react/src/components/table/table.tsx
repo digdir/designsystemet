@@ -72,6 +72,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
       data-sticky-header={stickyHeader || undefined}
       data-zebra={zebra || undefined}
       ref={ref}
+      suppressHydrationWarning // Since <ds-chart> adds attributes
       {...rest}
     >
       {children}

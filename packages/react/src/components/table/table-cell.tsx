@@ -10,6 +10,12 @@ export type TableCellProps = TdHTMLAttributes<HTMLTableCellElement>;
  */
 export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
   function TableCell(rest, ref) {
-    return <td ref={ref} {...rest} />;
+    return (
+      <td
+        ref={ref}
+        suppressHydrationWarning /* Since <ds-chart> adds attributes */
+        {...rest}
+      />
+    );
   },
 );

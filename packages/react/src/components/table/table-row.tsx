@@ -13,6 +13,12 @@ export type TableRowProps = HTMLAttributes<HTMLTableRowElement>;
  */
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
   function TableRow(rest, ref) {
-    return <tr ref={ref} {...rest} />;
+    return (
+      <tr
+        ref={ref}
+        suppressHydrationWarning /* Since <ds-chart> adds attributes */
+        {...rest}
+      />
+    );
   },
 );

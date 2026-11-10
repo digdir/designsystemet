@@ -20,7 +20,12 @@ export const TableHeaderCell = forwardRef<
   TableHeaderCellProps
 >(function TableHeaderCell({ sort, children, ...rest }, ref) {
   return (
-    <th aria-sort={sort} ref={ref} {...rest}>
+    <th
+      aria-sort={sort}
+      ref={ref}
+      suppressHydrationWarning // Since <ds-chart> adds attributes
+      {...rest}
+    >
       {sort ? <button type='button'>{children}</button> : children}
     </th>
   );

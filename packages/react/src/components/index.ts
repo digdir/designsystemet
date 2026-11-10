@@ -42,6 +42,9 @@ export { Combobox, ComboboxEmpty, ComboboxOption } from './Combobox';
 export type { CardBlockProps, CardProps } from './card';
 export { Card, CardBlock } from './card';
 
+export type { ChartProps } from './chart';
+export { EXPERIMENTAL_Chart } from './chart';
+
 export type { CheckboxProps } from './checkbox/checkbox';
 export { Checkbox } from './checkbox/checkbox';
 

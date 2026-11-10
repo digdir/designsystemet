@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Chart",
+    "subtitle": "Chart tegner en tabell som et søyle-, stolpe- eller linjediagram. Tabellen er alltid kilden, og er tilgjengelig for alle som trenger de nøyaktige tallene."
+  },
+  "en": {
+    "title": "Chart",
+    "subtitle": "Chart draws a table as a column, bar or line chart. The table is always the source, and stays available for everyone who needs the exact numbers."
+  },
+  "image": "Chart.svg",
+  "cssFile": "chart.css"
+}

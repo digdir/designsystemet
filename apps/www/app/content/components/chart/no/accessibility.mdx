@@ -1,0 +1,22 @@
+<Alert data-color="warning">
+Chart er under utvikling, og er ennå ikke testet med brukere av hjelpemidler. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
+</Alert>
+
+Diagrammer er vanskelige å gjøre tilgjengelige, fordi informasjonen ligger i formene. Chart løser dette ved å aldri erstatte tabellen. Diagrammet du ser er tabellen, bare tegnet på en annen måte.
+
+## Dette gjør komponenten
+
+- **Skjermlesere:** Diagrammet leses som en tabell, med tittel, kolonneoverskrifter og radoverskrifter. `<ds-chart>` legger tabellroller på elementene, siden noen nettlesere har fjernet tabellsemantikken når utseendet til en tabell endres med CSS.
+- **Tastatur:** Ingenting i diagrammet krever hover eller fokus. Verdier kan vises ved hover, men er alltid tilgjengelige i tabellen.
+- **Farge:** Serier skilles aldri fra hverandre kun med farge. Søyler og stolper har egne mønstre, og linjer har egne punktformer og streker. Standardfargene har minst 3:1 kontrast mot bakgrunnen.
+- **Uten JavaScript:** Tabellen vises som en vanlig tabell fram til webkomponenten er lastet.
+- **Kontrastmoduser og utskrift:** Diagrammet bruker systemfarger i forced colors-modus, og beholder fargene ved utskrift.
+
+## Dette må du gjøre
+
+- **Tittel:** Bruk alltid `<caption>`, eller `aria-label` på tabellen. Skjermlesere leser tittelen først, slik at brukerne kan avgjøre om de vil lese tabellen.
+- **Overskrifter:** Bruk `<th scope="row">` for kategorien i hver rad, og `<th>` i `<thead>` for hver serie. Uten disse gir ikke tallene mening for skjermleserbrukere.
+- **Beskriv budskapet:** En tabell gir tilgang til tallene, ikke til konklusjonen. Skriv det viktigste funnet som tekst ved siden av diagrammet ([WCAG 1.1.1 Ikke-tekstlig innhold (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)).
+- **Tilby tabellen:** La brukerne bytte til tabell når de nøyaktige tallene er viktige. Det hjelper også brukere som forstørrer, og brukere som synes diagrammer er vanskelige å lese.
+- **Egne farger:** Hvis du endrer farger eller fjerner mønstre, må du sørge for at seriene har minst 3:1 kontrast mot bakgrunnen ([WCAG 1.4.11 Kontrast for ikke-tekstlig innhold (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)), og at de kan skilles fra hverandre uten farge ([WCAG 1.4.1 Bruk av farge (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)).
+- **Små skjermer:** Test med dine egne data på 320 piksler bredde. Bruk `bar` eller færre kategorier hvis ledetekstene ikke får plass.

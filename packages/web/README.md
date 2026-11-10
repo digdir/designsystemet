@@ -10,6 +10,7 @@
   - [Types](#types)
   - [Warnings:](#warnings)
 - [`<ds-breadcrumbs>`](#ds-breadcrumbs)
+- [`<ds-chart>`](#ds-chart)
 - [`data-clickdelegatefor`](#data-clickdelegatefor)
 - [`details` and `summary` (accessibility polyfill)](#details-and-summary-accessibility-polyfill)
 - [`<dialog>` (`closedby` polyfill)](#dialog-closedby-polyfill)
@@ -58,6 +59,7 @@ The package supports sub-path exports which means you can import individual part
 
 ```
 import '@digdir/designsystemet-web/ds-breadcrumbs';
+import '@digdir/designsystemet-web/ds-chart';
 import '@digdir/designsystemet-web/clickdelegatefor';
 import '@digdir/designsystemet-web/details';
 import '@digdir/designsystemet-web/dialog';
@@ -109,6 +111,61 @@ Automatically hides/shows `aria-label` on desktop/mobile and `aria-current="page
     <li><a href="#none">Level 3</a></li>
   </ol>
 </ds-breadcrumbs>
+```
+
+## `<ds-chart>`
+Draws a `<table>` as a chart. The table is the data, the legend and the accessible alternative – it is never replaced, only styled.
+`<ds-chart>` reads the numbers in the table and exposes them as CSS custom properties, and `@digdir/designsystemet-css` does the drawing. No elements are added to the DOM.
+
+- The first column is the category (use `<th scope="row">`), the following columns are one series each
+- `<thead>` is used as legend, and `<caption>` as title
+- Numbers are parsed from the cell text based on closest `lang` attribute. Use `data-value` on the `<td>` if the text is not a plain number
+- Until the JavaScript is loaded, and when `data-variant="table"`, the table is shown as a regular table
+
+```html
+<ds-chart class="ds-chart" data-variant="column">
+  <table class="ds-table">
+    <caption>Applications per year</caption>
+    <thead>
+      <tr><th>Year</th><th>Granted</th><th>Rejected</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">2024</th><td>1 310</td><td>420</td></tr>
+      <tr><th scope="row">2025</th><td>1 720</td><td>380</td></tr>
+    </tbody>
+  </table>
+</ds-chart>
+```
+
+| attribute        | type                                     | default                  | required |
+|------------------|------------------------------------------|--------------------------|----------|
+| data-variant     | 'column' \| 'bar' \| 'line' \| 'table'   | column                   | false    |
+| data-stacked     | boolean                                  | false                    | false    |
+| data-show-values | boolean                                  | false                    | false    |
+| data-min         | number                                   | 0                        | false    |
+| data-max         | number                                   | highest value in table   | false    |
+
+### Let users switch to table
+Radios or selects with `data-chart="variant"` (or inside an element with the attribute) will update `data-variant` with their value:
+
+```html
+<ds-chart class="ds-chart" data-variant="column">
+  <fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="View" data-chart="variant">
+    <label class="ds-button"><input type="radio" name="view" value="column" checked />Chart</label>
+    <label class="ds-button"><input type="radio" name="view" value="table" />Table</label>
+  </fieldset>
+  <table class="ds-table">...</table>
+</ds-chart>
+```
+
+### Custom rendering
+Colors, patterns, shapes and sizes are changed with the `--dsc-chart-*` CSS custom properties.
+`<ds-chart>` sets `--_ds-chart-axis`, `--_ds-chart-steps`, `--_ds-chart-series` and `--_ds-chart-zero` on itself, and `--_ds-chart-value`, `--_ds-chart-from`, `--_ds-chart-to` and `--_ds-chart-next` (all between 0 and 1) on each `<td>`, which you can use to draw your own chart types.
+The scale logic is also exported, if you want to calculate the properties server side:
+
+```ts
+import { chartScale } from '@digdir/designsystemet-web';
+chartScale(0, 1720); // { min: 0, max: 2000, step: 500, ticks: [2000, 1500, 1000, 500, 0] }
 ```
 
 ## `data-clickdelegatefor`

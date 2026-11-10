@@ -21,6 +21,105 @@
       <br>
       <br>
 
+      <h2 class="ds-heading">Chart</h2>
+      <br>
+      <ds-chart class="ds-chart" id="chart" data-variant="column">
+        <fieldset
+          class="ds-toggle-group"
+          focusgroup="radiogroup"
+          aria-label="Visning"
+        >
+          <label class="ds-button"
+            ><input
+              type="radio"
+              name="chart"
+              value="column"
+              data-chart="variant"
+              checked
+            >Søyle</label
+          >
+          <label class="ds-button"
+            ><input
+              type="radio"
+              name="chart"
+              value="bar"
+              data-chart="variant"
+            >Stolpe</label
+          >
+          <label class="ds-button"
+            ><input
+              type="radio"
+              name="chart"
+              value="line"
+              data-chart="variant"
+            >Linje</label
+          >
+          <label class="ds-button"
+            ><input
+              type="radio"
+              name="chart"
+              value="table"
+              data-chart="variant"
+            >Tabell</label
+          >
+        </fieldset>
+        <table class="ds-table">
+          <caption>
+            Søknader per år
+          </caption>
+          <thead>
+            <tr>
+              <th>År</th>
+              <th>Innvilget</th>
+              <th>Avslått</th>
+              <th>Trukket</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">2022</th>
+              <td>1 240</td>
+              <td>310</td>
+              <td>95</td>
+            </tr>
+            <tr>
+              <th scope="row">2023</th>
+              <td>1 480</td>
+              <td>290</td>
+              <td>120</td>
+            </tr>
+            <tr>
+              <th scope="row">2024</th>
+              <td>1 310</td>
+              <td>420</td>
+              <td>80</td>
+            </tr>
+            <tr>
+              <th scope="row">2025</th>
+              <td>1 720</td>
+              <td>380</td>
+              <td>140</td>
+            </tr>
+          </tbody>
+        </table>
+      </ds-chart>
+      <br>
+      <label
+        ><input
+          type="checkbox"
+          onchange="chart.toggleAttribute('data-stacked', this.checked)"
+        >
+        data-stacked</label
+      >
+      <label
+        ><input
+          type="checkbox"
+          onchange="chart.toggleAttribute('data-show-values', this.checked)"
+        >
+        data-show-values</label
+      >
+      <br>
+      <br>
       <ds-suggestion class="ds-suggestion">
         <input class="ds-input" type="search" placeholder="" aria-label="Søk">
         <button

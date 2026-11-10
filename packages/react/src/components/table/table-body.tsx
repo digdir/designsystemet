@@ -15,6 +15,12 @@ export type TableBodyProps = HTMLAttributes<HTMLTableSectionElement>;
  */
 export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
   function TableBody(rest, ref) {
-    return <tbody ref={ref} {...rest} />;
+    return (
+      <tbody
+        ref={ref}
+        suppressHydrationWarning /* Since <ds-chart> adds attributes */
+        {...rest}
+      />
+    );
   },
 );
