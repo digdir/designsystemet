@@ -1,22 +1,33 @@
 <Alert data-color="warning">
-Chart is under development and has not yet been tested with users of assistive technology. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+Chart is under development and has not yet been tested with screen readers or other assistive technology. We can therefore not yet say that it meets the requirements. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
 </Alert>
 
-Charts are hard to make accessible, because the information is in the shapes. Chart solves this by never replacing the table. The chart you see is the table, only drawn differently.
+Charts are hard to make accessible, because the information is in the shapes. Chart never replaces the table, so the chart you see is the table, only drawn differently. This gives screen reader users access to all the numbers, but you still have to make sure everyone else gets the exact numbers and the message of the chart.
 
-## What the component does
+### What you need to check
 
-- **Screen readers:** The chart is read as a table, with the title, column headers and row headers. `<ds-chart>` adds table roles to the elements, since some browsers have dropped table semantics when the layout of a table is changed with CSS.
-- **Keyboard:** Nothing in the chart needs hover or focus. Values can be shown on hover, but are always available in the table.
-- **Color:** Series are never told apart by color alone. Columns and bars have their own patterns, and lines have their own point shapes and dashes. The default colors have at least 3:1 contrast against the background.
-- **Without JavaScript:** The table is shown as a regular table until the web component is loaded.
-- **Contrast modes and print:** The chart uses system colors in forced colors mode, and keeps its colors when printed.
+- **Let everyone get the numbers:** A chart only shows approximate values. Add a control to [switch between chart and table](/en/components/docs/chart/code), show the values with `data-show-values`, or show the same table elsewhere on the page. Without this, the exact values are only available to screen reader users. WCAG: [1.4.1 Use of Color](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html) and [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html)
+- **Describe the message:** A table gives access to the numbers, not to the conclusion. Write the most important finding as text next to the chart, and connect it to the table with `aria-describedby`. WCAG: [1.1.1 Non-text Content](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html)
+- **Title:** Always use `<caption>`. Screen readers read the title first, so users can decide whether they want to read the table.
+- **Headers:** Use `<th scope="row">` for the category in each row, and `<th scope="col">` in `<thead>` for each series. The first header in `<thead>` is visually hidden, but must still have text. WCAG: [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- **Language:** Set `lang` on the page. It decides how the numbers in the table are read and how the axis is formatted.
+- **Your own colors:** If you change colors or patterns, make sure every series has at least 3:1 contrast against the background, and that series can be told apart without color. WCAG: [1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html)
+- **Many series:** Series that share a color are told apart by pattern or shape only. This gets harder to see the more series you have and the smaller the columns are. Use as few series as possible.
+- **Small screens and zoom:** Test with your own data at 320 pixels width and at 200 % zoom. Values and category names can overlap or be hidden when there is too little space. Use `bar`, fewer categories or the table if they do not fit.
 
-## What you must do
+### Handled by the design system
 
-- **Title:** Always use `<caption>`, or `aria-label` on the table. Screen readers read the title first, so users can decide whether they want to read the table.
-- **Headers:** Use `<th scope="row">` for the category in each row, and `<th>` in `<thead>` for each series. Without these, the numbers have no meaning for screen reader users.
-- **Describe the message:** A table gives access to the numbers, not to the conclusion. Write the most important finding as text next to the chart ([WCAG 1.1.1 Non-text Content (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)).
-- **Offer the table:** Let users switch to table when the exact numbers matter. This also helps users who zoom, and users who find charts hard to read.
-- **Your own colors:** If you change colors or remove patterns, make sure the series have at least 3:1 contrast against the background ([WCAG 1.4.11 Non-text Contrast (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)), and that they can be told apart without color ([WCAG 1.4.1 Use of Color (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)).
-- **Small screens:** Test with your own data at 320 pixels width. Use `bar` or fewer categories if the labels do not fit.
+- The table is kept as a table for screen readers, with title, column headers and row headers. Table roles are added to the elements, since browsers have removed table semantics when the layout of a table is changed with CSS
+- Nothing in the chart requires mouse, hover or focus
+- The two default colors have at least 3:1 contrast against each other and against the background in all themes, and so do the grid lines
+- Series with the same color have different patterns in columns and bars, and different point shapes and dashes in lines
+- Values inside stacked segments have their own background, and are hidden if they do not fit
+- The table is shown as a regular table until the JavaScript is loaded
+- Missing title or headers give a warning in the console
+
+### Not yet verified
+
+- Screen readers: NVDA, JAWS, VoiceOver and TalkBack have not been tested
+- Firefox and Safari have not been tested
+- Forced colors mode (Windows contrast themes) and print have rules, but have not been tested
+- Text spacing and zoom have not been tested systematically

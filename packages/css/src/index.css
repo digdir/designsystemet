@@ -20,7 +20,6 @@
 @import url('./dialog.css') layer(ds.components);
 @import url('./list.css') layer(ds.components);
 @import url('./card.css') layer(ds.components);
-@import url('./chart.css') layer(ds.components);
 @import url('./dropdown.css') layer(ds.components);
 @import url('./chip.css') layer(ds.components);
 @import url('./divider.css') layer(ds.components);
@@ -33,6 +32,7 @@
 @import url('./tooltip.css') layer(ds.components);
 @import url('./spinner.css') layer(ds.components);
 @import url('./table.css') layer(ds.components);
+@import url('./chart.css') layer(ds.components);
 @import url('./breadcrumbs.css') layer(ds.components);
 @import url('./badge.css') layer(ds.components);
 @import url('./avatar.css') layer(ds.components);

@@ -1,5 +1,6 @@
 import {
   EXPERIMENTAL_Chart,
+  Paragraph,
   Table,
   ToggleGroup,
 } from '@digdir/designsystemet-react';
@@ -8,14 +9,22 @@ import {
 
 export const Preview = () => (
   <EXPERIMENTAL_Chart data-variant='column'>
-    <Table>
+    <ToggleGroup
+      aria-label='Visning'
+      data-chart='variant'
+      defaultValue='column'
+    >
+      <ToggleGroup.Item value='column'>Diagram</ToggleGroup.Item>
+      <ToggleGroup.Item value='table'>Tabell</ToggleGroup.Item>
+    </ToggleGroup>
+    <Table aria-describedby='chart-summary'>
       <caption>Nye personbiler etter drivstoff</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>År</Table.HeaderCell>
-          <Table.HeaderCell>Elbil</Table.HeaderCell>
-          <Table.HeaderCell>Ladbar hybrid</Table.HeaderCell>
-          <Table.HeaderCell>Bensin og diesel</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>År</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Elbil</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Ladbar hybrid</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Bensin og diesel</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -52,6 +61,10 @@ export const Preview = () => (
         </Table.Row>
       </Table.Foot>
     </Table>
+    <Paragraph id='chart-summary'>
+      Elbiler utgjør en stadig større andel av nye personbiler, mens salget av
+      ladbare hybrider og biler med bensin- og dieselmotor faller hvert år.
+    </Paragraph>
   </EXPERIMENTAL_Chart>
 );
 
@@ -61,10 +74,10 @@ export const Line = () => (
       <caption>Arbeidsledige etter alder, prosent av arbeidsstyrken</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>År</Table.HeaderCell>
-          <Table.HeaderCell>15–24 år</Table.HeaderCell>
-          <Table.HeaderCell>25–54 år</Table.HeaderCell>
-          <Table.HeaderCell>55–74 år</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>År</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>15–24 år</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>25–54 år</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>55–74 år</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -109,9 +122,9 @@ export const Bar = () => (
       <caption>Jobber etter næring, i tusen</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>Næring</Table.HeaderCell>
-          <Table.HeaderCell>Kvinner</Table.HeaderCell>
-          <Table.HeaderCell>Menn</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Næring</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Kvinner</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Menn</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -155,10 +168,10 @@ export const Stacked = () => (
       <caption>Kollektivreiser etter transportmiddel, millioner</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>År</Table.HeaderCell>
-          <Table.HeaderCell>Buss</Table.HeaderCell>
-          <Table.HeaderCell>T-bane og trikk</Table.HeaderCell>
-          <Table.HeaderCell>Tog</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>År</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Buss</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>T-bane og trikk</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Tog</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -197,9 +210,9 @@ export const ShowValues = () => (
       <caption>Overnattinger om sommeren, millioner</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>Måned</Table.HeaderCell>
-          <Table.HeaderCell>Hotell</Table.HeaderCell>
-          <Table.HeaderCell>Camping</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Måned</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Hotell</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Camping</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -237,10 +250,10 @@ export const TableToggle = () => (
       <caption>Fullførte boliger etter bygningstype</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>År</Table.HeaderCell>
-          <Table.HeaderCell>Enebolig</Table.HeaderCell>
-          <Table.HeaderCell>Rekkehus</Table.HeaderCell>
-          <Table.HeaderCell>Blokk</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>År</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Enebolig</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Rekkehus</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Blokk</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -275,14 +288,18 @@ export const TableToggle = () => (
 
 export const PreviewEn = () => (
   <EXPERIMENTAL_Chart data-variant='column'>
-    <Table>
+    <ToggleGroup aria-label='View' data-chart='variant' defaultValue='column'>
+      <ToggleGroup.Item value='column'>Chart</ToggleGroup.Item>
+      <ToggleGroup.Item value='table'>Table</ToggleGroup.Item>
+    </ToggleGroup>
+    <Table aria-describedby='chart-summary-en'>
       <caption>New passenger cars by fuel type</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>Year</Table.HeaderCell>
-          <Table.HeaderCell>Electric</Table.HeaderCell>
-          <Table.HeaderCell>Plug-in hybrid</Table.HeaderCell>
-          <Table.HeaderCell>Petrol and diesel</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Year</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Electric</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Plug-in hybrid</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Petrol and diesel</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -319,6 +336,10 @@ export const PreviewEn = () => (
         </Table.Row>
       </Table.Foot>
     </Table>
+    <Paragraph id='chart-summary-en'>
+      Electric cars make up a growing share of new passenger cars, while sales
+      of plug-in hybrids and petrol and diesel cars fall every year.
+    </Paragraph>
   </EXPERIMENTAL_Chart>
 );
 
@@ -328,10 +349,10 @@ export const LineEn = () => (
       <caption>Unemployment by age, per cent of the labour force</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>Year</Table.HeaderCell>
-          <Table.HeaderCell>15–24 years</Table.HeaderCell>
-          <Table.HeaderCell>25–54 years</Table.HeaderCell>
-          <Table.HeaderCell>55–74 years</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Year</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>15–24 years</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>25–54 years</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>55–74 years</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -376,9 +397,9 @@ export const BarEn = () => (
       <caption>Jobs by industry, in thousands</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>Industry</Table.HeaderCell>
-          <Table.HeaderCell>Women</Table.HeaderCell>
-          <Table.HeaderCell>Men</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Industry</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Women</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Men</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -420,10 +441,10 @@ export const StackedEn = () => (
       <caption>Public transport journeys by mode, millions</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>Year</Table.HeaderCell>
-          <Table.HeaderCell>Bus</Table.HeaderCell>
-          <Table.HeaderCell>Metro and tram</Table.HeaderCell>
-          <Table.HeaderCell>Train</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Year</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Bus</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Metro and tram</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Train</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -462,9 +483,9 @@ export const ShowValuesEn = () => (
       <caption>Guest nights in summer, millions</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>Month</Table.HeaderCell>
-          <Table.HeaderCell>Hotels</Table.HeaderCell>
-          <Table.HeaderCell>Camping</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Month</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Hotels</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Camping</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -498,10 +519,10 @@ export const TableToggleEn = () => (
       <caption>Completed dwellings by type of building</caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>Year</Table.HeaderCell>
-          <Table.HeaderCell>Detached house</Table.HeaderCell>
-          <Table.HeaderCell>Row house</Table.HeaderCell>
-          <Table.HeaderCell>Block of flats</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Year</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Detached house</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Row house</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Block of flats</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -528,6 +549,102 @@ export const TableToggleEn = () => (
           <Table.Cell>4,300</Table.Cell>
           <Table.Cell>4,100</Table.Cell>
           <Table.Cell>10,400</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </EXPERIMENTAL_Chart>
+);
+
+export const SixSeries = () => (
+  <EXPERIMENTAL_Chart data-variant='column'>
+    <Table>
+      <caption>Husholdningsavfall per innbygger etter materiale, kg</caption>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell scope='col'>År</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Restavfall</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Matavfall</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Papir</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Glass</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Plast</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Metall</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2022</Table.HeaderCell>
+          <Table.Cell>172</Table.Cell>
+          <Table.Cell>62</Table.Cell>
+          <Table.Cell>48</Table.Cell>
+          <Table.Cell>19</Table.Cell>
+          <Table.Cell>12</Table.Cell>
+          <Table.Cell>9</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2023</Table.HeaderCell>
+          <Table.Cell>165</Table.Cell>
+          <Table.Cell>68</Table.Cell>
+          <Table.Cell>44</Table.Cell>
+          <Table.Cell>20</Table.Cell>
+          <Table.Cell>14</Table.Cell>
+          <Table.Cell>9</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2024</Table.HeaderCell>
+          <Table.Cell>158</Table.Cell>
+          <Table.Cell>74</Table.Cell>
+          <Table.Cell>41</Table.Cell>
+          <Table.Cell>21</Table.Cell>
+          <Table.Cell>17</Table.Cell>
+          <Table.Cell>10</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </EXPERIMENTAL_Chart>
+);
+
+export const SixSeriesEn = () => (
+  <EXPERIMENTAL_Chart data-variant='column'>
+    <Table>
+      <caption>Household waste per inhabitant by material, kg</caption>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell scope='col'>Year</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Residual waste</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Food waste</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Paper</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Glass</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Plastic</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Metal</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2022</Table.HeaderCell>
+          <Table.Cell>172</Table.Cell>
+          <Table.Cell>62</Table.Cell>
+          <Table.Cell>48</Table.Cell>
+          <Table.Cell>19</Table.Cell>
+          <Table.Cell>12</Table.Cell>
+          <Table.Cell>9</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2023</Table.HeaderCell>
+          <Table.Cell>165</Table.Cell>
+          <Table.Cell>68</Table.Cell>
+          <Table.Cell>44</Table.Cell>
+          <Table.Cell>20</Table.Cell>
+          <Table.Cell>14</Table.Cell>
+          <Table.Cell>9</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2024</Table.HeaderCell>
+          <Table.Cell>158</Table.Cell>
+          <Table.Cell>74</Table.Cell>
+          <Table.Cell>41</Table.Cell>
+          <Table.Cell>21</Table.Cell>
+          <Table.Cell>17</Table.Cell>
+          <Table.Cell>10</Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table>

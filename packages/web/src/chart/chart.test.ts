@@ -1,6 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { chartScale } from './chart';
 
 const tick = async (_?: unknown) =>
@@ -52,6 +52,19 @@ describe('chartScale', () => {
     expect(chartScale(0, 0).max).toBeGreaterThan(0);
     expect(chartScale(5, 5).ticks.length).toBeGreaterThan(1);
   });
+
+  it('handles extreme input', () => {
+    expect(chartScale(Number.NaN, 5).ticks).toEqual([5, 4, 3, 2, 1, 0]);
+    expect(chartScale(0, Number.POSITIVE_INFINITY).max).toBe(1);
+    expect(chartScale(0, 100, 1e6).ticks.length).toBeLessThan(30);
+    expect(chartScale(0, 100, Number.NaN).ticks).toEqual([
+      100, 80, 60, 40, 20, 0,
+    ]);
+    expect(chartScale(0, 0.3).max).toBe(0.3);
+    expect(Object.is(chartScale(-100, 0).max, 0)).toBe(true); // Not negative zero
+    expect(chartScale(0, 1e-101).ticks.length).toBeGreaterThan(1);
+    expect(chartScale(1e17, 1e17).ticks.every(Number.isFinite)).toBe(true);
+  });
 });
 
 describe('ds-chart', () => {
@@ -80,6 +93,18 @@ describe('ds-chart', () => {
       '',
       '',
     ]);
+  });
+
+  it('tells CSS how many characters each value has', async () => {
+    const { chart, cells, css } = await render();
+
+    expect(cells.map((cell) => css(cell, 'chars'))).toEqual([
+      '5',
+      '3',
+      '5',
+      '3',
+    ]);
+    expect(css(chart, 'max-chars')).toBe('5');
   });
 
   it('keeps table semantics', async () => {
@@ -140,6 +165,122 @@ describe('ds-chart', () => {
     expect(en.css(en.cells[0], 'to')).toBe('0.6173');
   });
 
+  it('parses formatted numbers', async () => {
+    // Compares the cell with a sibling having the expected number as data-value
+    const parses = async (lang: string, text: string, expected: number) => {
+      const { chart, cells, css } = await render(
+        '',
+        `<tr><th>A</th><td>${text}</td><td data-value="${expected}"></td></tr>`,
+      );
+      chart.setAttribute('lang', lang);
+      await tick();
+      return css(cells[0], 'value') === css(cells[1], 'value');
+    };
+
+    expect(await parses('nb', '1.500', 1500)).toBe(true); // Period is thousand separator in Norwegian
+    expect(await parses('nb', '1.234.567', 1234567)).toBe(true);
+    expect(await parses('nb', '1.5', 1.5)).toBe(true);
+    expect(await parses('en', '1,500', 1500)).toBe(true);
+    expect(await parses('en', '1,5', 1.5)).toBe(true);
+    expect(await parses('de', '1.234,5', 1234.5)).toBe(true);
+    expect(await parses('de-CH', '1’234.5', 1234.5)).toBe(true);
+    expect(await parses('nb', '1 500<sup>1</sup>', 1500)).toBe(true); // Footnotes are skipped
+    expect(await parses('nb', '250 <a href="#note">2)</a>', 250)).toBe(true);
+    expect(await parses('nb', '<span hidden>999</span>5', 5)).toBe(true);
+    expect(await parses('nb', 'ca. 12,5 %', 12.5)).toBe(true);
+    expect(await parses('nb', '.5', 0.5)).toBe(true);
+    expect(await parses('nb', '-kr 50', -50)).toBe(true);
+    expect(await parses('en', '-$5.00', -5)).toBe(true);
+    expect(await parses('nb', '‑5', -5)).toBe(true); // Non-breaking hyphen
+    expect(await parses('nb', '10–20', 10)).toBe(true); // First number of a range
+    expect(await parses('nb', '1.500', 1.5)).toBe(false);
+
+    const { cells, css } = await render('', `<tr><th>A</th><td>–</td></tr>`);
+    expect(css(cells[0], 'value')).toBe(''); // Dash is missing value, not minus
+  });
+
+  it('never uses browser language when lang is unsupported or missing', async () => {
+    for (const lang of ['nn', 'se', 'nb_NO', ' nb ', 'x', '']) {
+      const { chart, cells, css } = await render(
+        '',
+        `<tr><th>A</th><td>1 234,5</td></tr>`,
+      );
+      chart.setAttribute('lang', lang);
+      await tick();
+      expect(css(chart, 'axis')).toContain('"1 500');
+      expect(css(cells[0], 'to')).toBe('0.823');
+    }
+  });
+
+  it('updates when lang changes', async () => {
+    const { chart, css } = await render();
+    chart.setAttribute('lang', 'en');
+    expect(css(chart, 'axis')).toContain('"2,000');
+  });
+
+  it('ignores invalid data-value', async () => {
+    const { cells, css } = await render(
+      '',
+      `<tr><th>A</th><td data-value="">50</td><td data-value="abc">100</td><td data-value="1,5">100</td><td>100</td></tr>`,
+    );
+    expect(css(cells[0], 'to')).toBe('0.5'); // Empty data-value falls back to text
+    expect(css(cells[1], 'to')).toBe('');
+    expect(css(cells[2], 'to')).toBe('');
+  });
+
+  it('does not draw lines between tbody elements', async () => {
+    const { cells, css } = await render(
+      'data-variant="line"',
+      `<tr><th>A</th><td>1</td></tr><tr><th>B</th><td>2</td></tr></tbody>
+       <tbody><tr><th>C</th><td>3</td></tr>`,
+    );
+    expect(css(cells[0], 'next')).toBe('0.6667');
+    expect(css(cells[1], 'next')).toBe('');
+  });
+
+  it('stacks negative values separately', async () => {
+    const { chart, cells, css } = await render(
+      'data-stacked',
+      `<tr><th>A</th><td>50</td><td>-50</td><td>50</td><td>-50</td><td>0</td></tr>`,
+    );
+    expect(css(chart, 'zero')).toBe('0.5');
+    expect(
+      cells.map((cell) => `${css(cell, 'from')}-${css(cell, 'to')}`),
+    ).toEqual(['0.5-0.75', '0.25-0.5', '0.75-1', '0-0.25', '1-1']);
+  });
+
+  it('uses th-only rows as column headers and respects scope', async () => {
+    const { table } = await render(
+      '',
+      `<tr><th>Year</th><th scope="ROW">B</th></tr><tr><th>2024</th><td>1</td></tr>`,
+    );
+    const [, header, row] = Array.from(table?.querySelectorAll('tr') || []);
+    expect(header.children[0]).toHaveAttribute('role', 'columnheader');
+    expect(header.children[1]).toHaveAttribute('role', 'rowheader');
+    expect(row.children[0]).toHaveAttribute('role', 'rowheader');
+  });
+
+  it('keeps existing roles', async () => {
+    const { cells } = await render(
+      '',
+      `<tr><th>A</th><td role="gridcell">1</td></tr>`,
+    );
+    expect(cells[0]).toHaveAttribute('role', 'gridcell');
+  });
+
+  it('warns once about missing caption and headers', async () => {
+    const log = vi.spyOn(console, 'log').mockImplementation(() => {});
+    document.body.innerHTML = `<ds-chart><table><tbody><tr><td>2024</td><td>1</td></tr></tbody></table></ds-chart>`;
+    await tick();
+    const cell = document.querySelector('td') as HTMLElement;
+    cell.textContent = '2';
+    await tick();
+    cell.textContent = '3';
+    await tick();
+    expect(log).toHaveBeenCalledTimes(2); // One for caption and one for headers
+    log.mockRestore();
+  });
+
   it('respects data-min and data-max', async () => {
     const { chart, cells, css } = await render(
       'data-max="4000" data-min="-1000"',
@@ -149,6 +290,19 @@ describe('ds-chart', () => {
     expect(css(chart, 'axis')).toContain('\u22121 000"'); // Norwegian uses minus sign, not hyphen
     expect(css(chart, 'zero')).toBe('0.2');
     expect(css(cells[2], 'to')).toBe('0.6');
+  });
+
+  it('only lets data-min and data-max extend the axis', async () => {
+    const { chart, cells, css } = await render(
+      'data-max="1000" data-min="500"',
+    );
+
+    expect(css(chart, 'axis')).toContain('"2 000');
+    expect(css(chart, 'zero')).toBe('0');
+    expect(css(cells[2], 'to')).toBe('1'); // Never outside the chart
+
+    chart.setAttribute('data-max', '1 000 000'); // Not a machine readable number
+    expect(css(chart, 'axis')).toContain('"2 000');
   });
 
   it('updates when table content changes', async () => {
@@ -170,5 +324,42 @@ describe('ds-chart', () => {
 
     radio?.click();
     expect(chart).toHaveAttribute('data-variant', 'table');
+  });
+
+  it('only switches variant from radios and selects of its own', async () => {
+    const { chart } = await render('data-variant="line"');
+    const group = chart.querySelector('fieldset') as HTMLElement;
+    const change = (html: string, action: (el: HTMLInputElement) => void) => {
+      group.insertAdjacentHTML('beforeend', html);
+      const el = group.lastElementChild as HTMLInputElement;
+      action(el);
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+      return chart.getAttribute('data-variant');
+    };
+
+    expect(change('<input type="text" />', (el) => (el.value = 'hello'))).toBe(
+      'line',
+    );
+    expect(
+      change(
+        '<input type="checkbox" value="table" />',
+        (el) => (el.checked = true),
+      ),
+    ).toBe('line');
+    expect(
+      change('<input type="radio" name="x" />', (el) => (el.checked = true)),
+    ).toBe(null); // No value removes the variant
+    expect(
+      change('<select><option value="bar">Bar</option></select>', () => {}),
+    ).toBe('bar');
+    expect(
+      change(
+        '<ds-chart><select data-chart="variant"><option value="table">Table</option></select></ds-chart>',
+        (el) =>
+          el.firstElementChild?.dispatchEvent(
+            new Event('change', { bubbles: true }),
+          ),
+      ),
+    ).toBe('bar'); // Nested chart does not change parent
   });
 });

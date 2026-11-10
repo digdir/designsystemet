@@ -1,22 +1,33 @@
 <Alert data-color="warning">
-Chart er under utvikling, og er ennå ikke testet med brukere av hjelpemidler. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
+Chart er under utvikling, og er ennå ikke testet med skjermlesere eller andre hjelpemidler. Vi kan derfor ikke si at komponenten oppfyller kravene ennå. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
 </Alert>
 
-Diagrammer er vanskelige å gjøre tilgjengelige, fordi informasjonen ligger i formene. Chart løser dette ved å aldri erstatte tabellen. Diagrammet du ser er tabellen, bare tegnet på en annen måte.
+Diagrammer er vanskelige å gjøre tilgjengelige, fordi informasjonen ligger i formene. Chart erstatter aldri tabellen, så diagrammet du ser er tabellen, bare tegnet på en annen måte. Det gir skjermleserbrukere tilgang til alle tallene, men du må fortsatt sørge for at alle andre får de nøyaktige tallene og budskapet i diagrammet.
 
-## Dette gjør komponenten
+### Dette må du sjekke selv
 
-- **Skjermlesere:** Diagrammet leses som en tabell, med tittel, kolonneoverskrifter og radoverskrifter. `<ds-chart>` legger tabellroller på elementene, siden noen nettlesere har fjernet tabellsemantikken når utseendet til en tabell endres med CSS.
-- **Tastatur:** Ingenting i diagrammet krever hover eller fokus. Verdier kan vises ved hover, men er alltid tilgjengelige i tabellen.
-- **Farge:** Serier skilles aldri fra hverandre kun med farge. Søyler og stolper har egne mønstre, og linjer har egne punktformer og streker. Standardfargene har minst 3:1 kontrast mot bakgrunnen.
-- **Uten JavaScript:** Tabellen vises som en vanlig tabell fram til webkomponenten er lastet.
-- **Kontrastmoduser og utskrift:** Diagrammet bruker systemfarger i forced colors-modus, og beholder fargene ved utskrift.
+- **La alle få tallene:** Et diagram viser bare omtrentlige verdier. Legg til en kontroll for å [bytte mellom diagram og tabell](/no/components/docs/chart/code), vis verdiene med `data-show-values`, eller vis den samme tabellen et annet sted på siden. Uten dette er de nøyaktige verdiene bare tilgjengelige for skjermleserbrukere. WCAG: [1.4.1 Bruk av farge](https://www.uutilsynet.no/wcag-standarden/141-bruk-av-farge-niva/93) og [2.1.1 Tastatur](https://www.uutilsynet.no/wcag-standarden/211-tastatur-niva/98)
+- **Beskriv budskapet:** En tabell gir tilgang til tallene, ikke til konklusjonen. Skriv det viktigste funnet som tekst ved siden av diagrammet, og koble teksten til tabellen med `aria-describedby`. WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231)
+- **Tittel:** Bruk alltid `<caption>`. Skjermlesere leser tittelen først, slik at brukerne kan avgjøre om de vil lese tabellen.
+- **Overskrifter:** Bruk `<th scope="row">` for kategorien i hver rad, og `<th scope="col">` i `<thead>` for hver serie. Den første overskriften i `<thead>` er visuelt skjult, men må likevel ha tekst. WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/veiledning/131-informasjon-og-relasjoner/1234)
+- **Språk:** Sett `lang` på siden. Det avgjør hvordan tallene i tabellen leses og hvordan aksen formateres.
+- **Egne farger:** Hvis du endrer farger eller mønstre, må du sørge for at hver serie har minst 3:1 kontrast mot bakgrunnen, og at seriene kan skilles fra hverandre uten farge. WCAG: [1.4.11 Kontrast for ikke-tekstlig innhold](https://www.uutilsynet.no/veiledning/1411-kontrast-ikke-tekstlig-innhold/1241)
+- **Mange serier:** Serier som deler farge, skilles bare fra hverandre med mønster eller form. Det blir vanskeligere å se jo flere serier du har og jo smalere søylene er. Bruk så få serier som mulig.
+- **Små skjermer og forstørring:** Test med dine egne data med 320 pikslers bredde og med 200 % forstørring. Verdier og kategorinavn kan overlappe eller bli skjult når det er for liten plass. Bruk `bar`, færre kategorier eller tabellen hvis de ikke får plass.
 
-## Dette må du gjøre
+### Designsystemet ivaretar
 
-- **Tittel:** Bruk alltid `<caption>`, eller `aria-label` på tabellen. Skjermlesere leser tittelen først, slik at brukerne kan avgjøre om de vil lese tabellen.
-- **Overskrifter:** Bruk `<th scope="row">` for kategorien i hver rad, og `<th>` i `<thead>` for hver serie. Uten disse gir ikke tallene mening for skjermleserbrukere.
-- **Beskriv budskapet:** En tabell gir tilgang til tallene, ikke til konklusjonen. Skriv det viktigste funnet som tekst ved siden av diagrammet ([WCAG 1.1.1 Ikke-tekstlig innhold (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)).
-- **Tilby tabellen:** La brukerne bytte til tabell når de nøyaktige tallene er viktige. Det hjelper også brukere som forstørrer, og brukere som synes diagrammer er vanskelige å lese.
-- **Egne farger:** Hvis du endrer farger eller fjerner mønstre, må du sørge for at seriene har minst 3:1 kontrast mot bakgrunnen ([WCAG 1.4.11 Kontrast for ikke-tekstlig innhold (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)), og at de kan skilles fra hverandre uten farge ([WCAG 1.4.1 Bruk av farge (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)).
-- **Små skjermer:** Test med dine egne data på 320 piksler bredde. Bruk `bar` eller færre kategorier hvis ledetekstene ikke får plass.
+- Tabellen beholdes som en tabell for skjermlesere, med tittel, kolonneoverskrifter og radoverskrifter. Tabellroller legges på elementene, siden nettlesere har fjernet tabellsemantikken når layouten til en tabell endres med CSS
+- Ingenting i diagrammet krever mus, hover eller fokus
+- De to standardfargene har minst 3:1 kontrast mot hverandre og mot bakgrunnen i alle temaer, og det samme har rutenettet
+- Serier med samme farge har ulike mønstre i søyler og stolper, og ulike punktformer og stipling i linjer
+- Verdier inni stablede segmenter har sin egen bakgrunn, og skjules hvis de ikke får plass
+- Tabellen vises som en vanlig tabell fram til JavaScript er lastet
+- Manglende tittel eller overskrifter gir en advarsel i konsollen
+
+### Ennå ikke verifisert
+
+- Skjermlesere: NVDA, JAWS, VoiceOver og TalkBack er ikke testet
+- Firefox og Safari er ikke testet
+- Modus for tvungne farger (kontrasttemaer i Windows) og utskrift har egne regler, men er ikke testet
+- Tekstavstand og forstørring er ikke testet systematisk

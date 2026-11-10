@@ -115,11 +115,13 @@ Automatically hides/shows `aria-label` on desktop/mobile and `aria-current="page
 
 ## `<ds-chart>`
 Draws a `<table>` as a chart. The table is the data, the legend and the accessible alternative – it is never replaced, only styled.
-`<ds-chart>` reads the numbers in the table and exposes them as CSS custom properties, and `@digdir/designsystemet-css` does the drawing. No elements are added to the DOM.
+`<ds-chart>` reads the numbers in the table and exposes them as CSS custom properties, and `@digdir/designsystemet-css` does the drawing. No elements are added to the DOM, but `role` and `style` attributes are added to the elements of the table.
 
+- The `<table>` must be a direct child of `<ds-chart>`
 - The first column is the category (use `<th scope="row">`), the following columns are one series each
-- `<thead>` is used as legend, and `<caption>` as title
-- Numbers are parsed from the cell text based on closest `lang` attribute. Use `data-value` on the `<td>` if the text is not a plain number
+- `<thead>` is used as legend (use `<th scope="col">`), `<caption>` as title and `<tfoot>` as text below the chart
+- The first number in the text of each `<td>` is used. A single comma or period is read as decimal separator based on closest `lang` attribute, falling back to Norwegian. Use `data-value` on the `<td>` if the text is not a plain number
+- `rowspan` and `colspan` in `<tbody>` are not supported
 - Until the JavaScript is loaded, and when `data-variant="table"`, the table is shown as a regular table
 
 ```html
@@ -127,32 +129,35 @@ Draws a `<table>` as a chart. The table is the data, the legend and the accessib
   <table class="ds-table">
     <caption>Applications per year</caption>
     <thead>
-      <tr><th>Year</th><th>Granted</th><th>Rejected</th></tr>
+      <tr><th scope="col">Year</th><th scope="col">Granted</th><th scope="col">Rejected</th></tr>
     </thead>
     <tbody>
-      <tr><th scope="row">2024</th><td>1 310</td><td>420</td></tr>
-      <tr><th scope="row">2025</th><td>1 720</td><td>380</td></tr>
+      <tr><th scope="row">2024</th><td>1,310</td><td>420</td></tr>
+      <tr><th scope="row">2025</th><td>1,720</td><td>380</td></tr>
     </tbody>
   </table>
 </ds-chart>
 ```
 
-| attribute        | type                                     | default                  | required |
-|------------------|------------------------------------------|--------------------------|----------|
-| data-variant     | 'column' \| 'bar' \| 'line' \| 'table'   | column                   | false    |
-| data-stacked     | boolean                                  | false                    | false    |
-| data-show-values | boolean                                  | false                    | false    |
-| data-min         | number                                   | 0                        | false    |
-| data-max         | number                                   | highest value in table   | false    |
+| attribute        | type                                     | default                                  | required |
+|------------------|------------------------------------------|------------------------------------------|----------|
+| data-variant     | 'column' \| 'bar' \| 'line' \| 'table'   | column                                   | false    |
+| data-stacked     | boolean                                  | false                                    | false    |
+| data-show-values | boolean                                  | false                                    | false    |
+| data-min         | number                                   | 0, or lowest value if negative           | false    |
+| data-max         | number                                   | highest value, or highest sum if stacked | false    |
+
+`data-min` and `data-max` can only extend the axis, which always includes zero and all values.
 
 ### Let users switch to table
-Radios or selects with `data-chart="variant"` (or inside an element with the attribute) will update `data-variant` with their value:
+A chart only shows approximate values, so always let users switch to the table unless `data-show-values` is used.
+Radios and selects with `data-chart="variant"` (or inside an element with the attribute) will update `data-variant` with their value:
 
 ```html
 <ds-chart class="ds-chart" data-variant="column">
   <fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="View" data-chart="variant">
-    <label class="ds-button"><input type="radio" name="view" value="column" checked />Chart</label>
-    <label class="ds-button"><input type="radio" name="view" value="table" />Table</label>
+    <label class="ds-button"><input type="radio" name="view" value="column" autocomplete="off" checked />Chart</label>
+    <label class="ds-button"><input type="radio" name="view" value="table" autocomplete="off" />Table</label>
   </fieldset>
   <table class="ds-table">...</table>
 </ds-chart>
@@ -160,8 +165,8 @@ Radios or selects with `data-chart="variant"` (or inside an element with the att
 
 ### Custom rendering
 Colors, patterns, shapes and sizes are changed with the `--dsc-chart-*` CSS custom properties.
-`<ds-chart>` sets `--_ds-chart-axis`, `--_ds-chart-steps`, `--_ds-chart-series` and `--_ds-chart-zero` on itself, and `--_ds-chart-value`, `--_ds-chart-from`, `--_ds-chart-to` and `--_ds-chart-next` (all between 0 and 1) on each `<td>`, which you can use to draw your own chart types.
-The scale logic is also exported, if you want to calculate the properties server side:
+`<ds-chart>` sets `--_ds-chart-axis`, `--_ds-chart-steps`, `--_ds-chart-series`, `--_ds-chart-zero` and `--_ds-chart-max-chars` on itself, and `--_ds-chart-value`, `--_ds-chart-from`, `--_ds-chart-to`, `--_ds-chart-next` (all between 0 and 1) and `--_ds-chart-chars` on each `<td>`, which you can use to draw your own chart types.
+The scale logic is also exported, if you want to calculate the properties server side. You must then also add the table roles (`table`, `rowgroup`, `row`, `columnheader`, `rowheader` and `cell`) yourself:
 
 ```ts
 import { chartScale } from '@digdir/designsystemet-web';

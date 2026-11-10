@@ -5,6 +5,7 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { ChartContext } from './chart-context';
 
 export type ChartProps = MergeRight<
   DefaultProps & HTMLAttributes<DSChartElement>,
@@ -13,7 +14,7 @@ export type ChartProps = MergeRight<
      * How to draw the table. Use `table` to show the plain table.
      * @default 'column'
      */
-    'data-variant'?: 'column' | 'bar' | 'line' | 'table';
+    'data-variant'?: 'column' | 'bar' | 'line' | 'table' | (string & {});
     /**
      * Stack the values of each row on top of each other. Only for `column` and `bar`.
      * @default false
@@ -25,12 +26,12 @@ export type ChartProps = MergeRight<
      */
     'data-show-values'?: boolean;
     /**
-     * Lowest value on the axis. Is rounded down to a nice number, and never above 0.
+     * Extend the axis down to this value. Is rounded down to a nice number, and never above 0 or the lowest value in the table.
      * @default 0
      */
     'data-min'?: number | string;
     /**
-     * Highest value on the axis. Is rounded up to a nice number.
+     * Extend the axis up to this value. Is rounded up to a nice number, and never below the highest value in the table.
      * @default Highest value in the table
      */
     'data-max'?: number | string;
@@ -69,13 +70,15 @@ export const Chart = forwardRef<DSChartElement, ChartProps>(function Chart(
   ref,
 ) {
   return (
-    <ds-chart
-      class={cl('ds-chart', className)}
-      data-show-values={showValues || undefined}
-      data-stacked={stacked || undefined}
-      ref={ref}
-      suppressHydrationWarning // Since ds-chart adds style attribute
-      {...rest}
-    />
+    <ChartContext.Provider value={true}>
+      <ds-chart
+        class={cl('ds-chart', className)}
+        data-show-values={showValues || undefined}
+        data-stacked={stacked || undefined}
+        ref={ref}
+        suppressHydrationWarning // Since <ds-chart> adds style attribute
+        {...rest}
+      />
+    </ChartContext.Provider>
   );
 });

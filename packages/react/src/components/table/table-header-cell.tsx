@@ -1,5 +1,6 @@
 import type { AriaAttributes } from 'react';
-import { forwardRef, type ThHTMLAttributes } from 'react';
+import { forwardRef, type ThHTMLAttributes, useContext } from 'react';
+import { ChartContext } from '../chart/chart-context';
 
 export type TableHeaderCellProps = {
   /**
@@ -19,11 +20,12 @@ export const TableHeaderCell = forwardRef<
   HTMLTableCellElement,
   TableHeaderCellProps
 >(function TableHeaderCell({ sort, children, ...rest }, ref) {
+  const inChart = useContext(ChartContext);
   return (
     <th
       aria-sort={sort}
       ref={ref}
-      suppressHydrationWarning // Since <ds-chart> adds attributes
+      suppressHydrationWarning={inChart} // Only inside Chart, as always having it on hides wrong text for all tables. See chart-context.ts
       {...rest}
     >
       {sort ? <button type='button'>{children}</button> : children}

@@ -8,18 +8,18 @@ Chart is under development. If you have feedback or suggestions, please report t
 
 <Story story="PreviewEn" layout="block" />
 
-Chart draws a regular [table](/en/components/docs/table/overview) as a column, bar or line chart. You write the table, and the chart is drawn from the numbers in it. The table is never replaced, so the same numbers are available to screen readers, and to everyone else if you let them switch to the table.
+Chart draws a regular [table](/en/components/docs/table/overview) as a column, bar or line chart. You write the table, and the chart is drawn from the numbers in it. The table is never replaced, so screen readers read the chart as a table. Let everyone else switch to the table as well, as in the example above.
 
 Chart is meant for simple charts with a few series. It is a foundation you can build on, not a full charting library.
 
 **Use chart when**
-- You want to show a trend or a comparison that is hard to see in a table.
-- You have a small data set that also makes sense as a table.
+- you want to show a trend or a comparison that is hard to see in a table
+- you have a small data set that also makes sense as a table
 
 **Avoid chart when**
-- Users need to read or compare exact numbers. Use a [table](/en/components/docs/table/overview) instead.
-- You need pie charts, maps, zooming or other advanced visualizations.
-- You have more than six series, or so many categories that the labels no longer fit.
+- users mainly need to read or compare exact numbers, use a [table](/en/components/docs/table/overview) instead
+- you need pie charts, maps, zooming or other advanced visualizations
+- you have more than six series, or so many categories that the category names no longer fit
 
 ## Examples
 
@@ -29,12 +29,12 @@ Use `line` to show development over time. Each series has its own point shape, s
 <Story story="LineEn" layout="block" />
 
 ### Bar
-Use `bar` when the category names are long, or when there are many categories. Horizontal bars always show the value at the end of the bar.
+Use `bar` when the category names are long, or when there are many categories. Horizontal bars always show the value, at the end of the bar or inside each segment when stacked.
 
 <Story story="BarEn" layout="block" />
 
 ### Stacked
-Use `data-stacked` to show how each category is divided into parts. Stacked charts make it easy to compare totals, but harder to compare the individual parts.
+Use `data-stacked` to show how each category is divided into parts. Stacked charts make it easy to compare totals, but harder to compare the individual parts. Combine with `data-show-values` to show the value inside each segment. Values that do not fit inside their segment are hidden.
 
 <Story story="StackedEn" layout="block" />
 
@@ -43,8 +43,13 @@ Use `data-show-values` to always show the values in the chart. This works best w
 
 <Story story="ShowValuesEn" layout="block" />
 
+### Six series
+Chart has six combinations of color, pattern and shape, so six series is the most a chart can show before the combinations repeat. Use this many only when you have few categories, and consider a table or several smaller charts instead.
+
+<Story story="SixSeriesEn" layout="block" />
+
 ### Switch between chart and table
-Let users choose to see the numbers as a table. This helps everyone who needs the exact numbers, and users who find charts hard to read.
+Always let users choose to see the numbers as a table, unless the values are shown in the chart or the same table is shown elsewhere on the page. Exact values are otherwise only available to screen reader users.
 
 <Story story="TableToggleEn" layout="block" />
 
@@ -54,8 +59,8 @@ A chart should have one clear message. Start with what you want users to underst
 - Always give the chart a title with `<caption>` that says what the chart shows.
 - Write the most important finding as text next to the chart. Do not make users work out the conclusion themselves.
 - Use as few series as possible. Charts with more than three or four series quickly become hard to read.
-- The axis always starts at zero, so that differences are not exaggerated.
-- Give users the option to see the numbers as a table when the exact numbers matter.
+- The axis always includes zero, so that differences are not exaggerated.
+- Give users the option to see the numbers as a table, as the chart itself only shows approximate values.
 - State the source of the numbers, for example in a `<tfoot>` or in the text next to the chart.
 
 ## Text

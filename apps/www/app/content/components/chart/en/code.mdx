@@ -6,15 +6,15 @@ Chart is under development. If you have feedback or suggestions, please report t
 
 ## Usage
 
-Add the class name `ds-chart` to a `<ds-chart>` element that contains a `<table>`.
-The web component reads the numbers in the table and passes them to the CSS as custom properties. It does not add or remove any elements, and the CSS does all the drawing.
+Add the class name `ds-chart` to a `<ds-chart>` element with a `<table>` as a direct child.
+The web component reads the numbers in the table and passes them to the CSS as CSS variables, and the CSS does all the drawing. No elements are added or removed, but `role` and `style` attributes are added to the elements of the table.
 
 ```html
 <ds-chart class="ds-chart" data-variant="column">
   <table class="ds-table">
     <caption>Applications per year</caption>
     <thead>
-      <tr><th>Year</th><th>Granted</th><th>Rejected</th></tr>
+      <tr><th scope="col">Year</th><th scope="col">Granted</th><th scope="col">Rejected</th></tr>
     </thead>
     <tbody>
       <tr><th scope="row">2024</th><td>1,310</td><td>420</td></tr>
@@ -25,14 +25,26 @@ The web component reads the numbers in the table and passes them to the CSS as c
 ```
 
 - The first column is the category. Use `<th scope="row">`.
-- Each of the following columns is a series, and `<thead>` is used as the legend.
+- Each of the following columns is a series, and `<thead>` is used as the legend. Use `<th scope="col">`.
 - `<caption>` is the title of the chart.
+- A `<tfoot>` is shown as text below the chart, and can be used for the source of the numbers.
+- Cells spanning several rows or columns (`rowspan` and `colspan`) in `<tbody>` are not supported.
+- Do not use sortable headers or other interactive elements in the table, as the first header in `<thead>` is visually hidden when drawn as a chart.
+- Set `data-size` and `data-color` on `<ds-chart>`, not on the `<table>`.
 - Until the JavaScript is loaded, the table is shown as a regular table.
 
-Use `data-variant` to choose between `column`, `bar`, `line` and `table`. `table` shows the table as it is.
+| Attribute | Values | Default | Description |
+|---|---|---|---|
+| `data-variant` | `column`, `bar`, `line`, `table` | `column` | How the table is drawn. `table` shows the table as it is. |
+| `data-stacked` | boolean | off | Stacks the values of each row. Only for `column` and `bar`. |
+| `data-show-values` | boolean | off | Always shows the values in the chart. `bar` always shows values. |
+| `data-min` | number | `0` | Extends the axis down to this value. Can not be higher than zero or the lowest value in the table. |
+| `data-max` | number | highest value | Extends the axis up to this value, for example to give several charts the same scale. Can not be lower than the highest value in the table. |
 
 ### Numbers
-Numbers are read from the text in each `<td>`, based on the closest `lang` attribute. This means `1 234,5` is understood in Norwegian and `1,234.5` in English, and units such as `kr` and `%` are ignored.
+The first number in the text of each `<td>` is used. Spaces, periods, commas and apostrophes are understood as thousand separators, units such as `kr` and `%` are ignored, and so is content inside `<sup>`, `<sub>` and hidden elements, such as footnotes.
+
+When a number has a single comma or period, the closest `lang` attribute decides if it is a decimal separator: `1,5` is one and a half in Norwegian, and `1.5` in English. Numbers are read as Norwegian if `lang` is missing. Always set `lang` on your page.
 
 Use `data-value` if the text is not a plain number:
 
@@ -40,58 +52,63 @@ Use `data-value` if the text is not a plain number:
 <td data-value="1500000">1.5 million</td>
 ```
 
-Cells without a number are skipped.
-
-### Axis
-The axis is calculated from the numbers, rounded to human friendly values and always includes zero. Use `data-min` and `data-max` on `<ds-chart>` to extend the axis, for example to give several charts the same scale.
+Cells without a number are skipped. The axis is calculated from the numbers, rounded to human friendly values, and always includes zero.
 
 ### Switch between chart and table
-Radio buttons and selects with `data-chart="variant"` will update `data-variant` with their value. The attribute can also be placed on a parent element, such as the `<fieldset>` of a [toggle group](/en/components/docs/toggle-group/code).
+Radio buttons and `<select>` elements with `data-chart="variant"` will update `data-variant` with their value. The attribute can also be placed on a parent element, such as the `<fieldset>` of a [toggle group](/en/components/docs/toggle-group/code).
 
 ```html
 <ds-chart class="ds-chart" data-variant="column">
   <fieldset class="ds-toggle-group" focusgroup="radiogroup" aria-label="View" data-chart="variant">
-    <label class="ds-button"><input type="radio" name="view" value="column" checked />Chart</label>
-    <label class="ds-button"><input type="radio" name="view" value="table" />Table</label>
+    <label class="ds-button"><input type="radio" name="view" value="column" autocomplete="off" checked />Chart</label>
+    <label class="ds-button"><input type="radio" name="view" value="table" autocomplete="off" />Table</label>
   </fieldset>
   <table class="ds-table">...</table>
 </ds-chart>
 ```
 
+Use `autocomplete="off"` to prevent browsers from restoring the selection when the page is reloaded, as this can make the control show another value than the chart. If you have several charts on the same page, give each group a unique name, for example "View of applications per year".
+
 You can also change `data-variant` yourself.
 
 ## CSS variables and data attributes
 
-Colors are controlled with [data-color](/en/fundamentals/code/colors). Each series has its own `--dsc-chart-color-*`, `--dsc-chart-pattern-*` (used on columns and bars) and `--dsc-chart-shape-*` (used on points in lines). The default colors only use the current color, since themes do not share the same color names, so override them if you want to use more of your theme:
+Colors are controlled with [`data-color`](/en/fundamentals/code/colors). The six series alternate between two colors that have at least 3:1 contrast against each other and the background in all themes. Series with the same color are told apart by `--dsc-chart-pattern-*` on columns and bars, and by `--dsc-chart-shape-*` on points in lines.
+
+Patterns are [mask images](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image), where black is drawn and transparent is not. Use `linear-gradient(#000 0 0)` for a solid fill, and `none` to only draw the outline.
 
 ```css
 .ds-chart {
-  --dsc-chart-color-2: var(--ds-color-brand1-base-default);
-  --dsc-chart-pattern-3: none;
+  --dsc-chart-color-1: var(--ds-color-brand1-border-default);
+  --dsc-chart-color-2: var(--ds-color-brand1-text-default);
+  --dsc-chart-color-3: var(--ds-color-brand2-border-default);
+  --dsc-chart-pattern-2: none;
   --dsc-chart-size: 20rem;
 }
 ```
 
-Make sure the series can still be told apart without color if you remove a pattern.
+If you change the colors, you must make sure that each color has at least 3:1 contrast against the background, and that series next to each other can be told apart without color. `border-default` and `text-default` from the same color have this in all themes.
 
 <CssVariables />
 
-<CssAttributes />
+<CssAttributes exclude={['variant', 'stacked', 'show-values']} />
 
 ### Draw your own chart
-`<ds-chart>` sets the following custom properties, which you can use to draw other chart types with your own CSS. All values on `<td>` are between `0` and `1`.
+`<ds-chart>` sets the following CSS variables, which you can use to draw other chart types with your own CSS. All values on `<td>` are between `0` and `1`.
 
-| Element | Property | Description |
+| Element | Variable | Description |
 |---|---|---|
-| `<ds-chart>` | `--_ds-chart-axis` | The axis labels as a string, from highest to lowest |
+| `<ds-chart>` | `--_ds-chart-axis` | The axis labels from highest to lowest, as a CSS string with `\a` between each label: `"2 000\a 1 000\a 0"` |
 | `<ds-chart>` | `--_ds-chart-steps` | Number of steps on the axis |
 | `<ds-chart>` | `--_ds-chart-series` | Number of series |
 | `<ds-chart>` | `--_ds-chart-zero` | Where zero is on the axis |
+| `<ds-chart>` | `--_ds-chart-max-chars` | Number of characters in the longest value |
 | `<td>` | `--_ds-chart-value` | Where the value is on the axis |
-| `<td>` | `--_ds-chart-from` and `--_ds-chart-to` | Where the column or bar starts and ends, also when stacked |
+| `<td>` | `--_ds-chart-from`, `--_ds-chart-to` | Where the column or bar starts and ends, also when stacked |
 | `<td>` | `--_ds-chart-next` | The value of the next row in the same series, used to draw lines |
+| `<td>` | `--_ds-chart-chars` | Number of characters in the value, used to hide values that do not fit |
 
-If you do not want to use JavaScript, you can set the same properties on the server and use `<div class="ds-chart">`. The scale logic is exported to help with this:
+If you do not want to use JavaScript, you can set the same CSS variables on the server and use `<div class="ds-chart">`. You must then also add the roles `<ds-chart>` adds: `role="table"` on `<table>`, `rowgroup` on `<thead>`, `<tbody>` and `<tfoot>`, `row` on `<tr>`, `columnheader` and `rowheader` on `<th>`, and `cell` on `<td>`. This ensures the chart is read as a table in all browsers. The scale logic is exported to help with the calculations:
 
 ```ts
 import { chartScale } from '@digdir/designsystemet-web';
@@ -101,7 +118,7 @@ chartScale(0, 1720); // { min: 0, max: 2000, step: 500, ticks: [2000, 1500, 1000
 
 ## React
 
-`Chart` only renders `<ds-chart>`, and is used together with [Table](/en/components/docs/table/code).
+`Chart` only renders `<ds-chart>`, and is used together with [Table](/en/components/docs/table/code). If you use `<table>` elements directly instead of `Table`, React will warn about hydration mismatches during development, since `<ds-chart>` adds attributes to the table.
 
 ```tsx
 import { EXPERIMENTAL_Chart as Chart, Table } from '@digdir/designsystemet-react';
@@ -111,8 +128,8 @@ import { EXPERIMENTAL_Chart as Chart, Table } from '@digdir/designsystemet-react
     <caption>Applications per year</caption>
     <Table.Head>
       <Table.Row>
-        <Table.HeaderCell>Year</Table.HeaderCell>
-        <Table.HeaderCell>Granted</Table.HeaderCell>
+        <Table.HeaderCell scope='col'>Year</Table.HeaderCell>
+        <Table.HeaderCell scope='col'>Granted</Table.HeaderCell>
       </Table.Row>
     </Table.Head>
     <Table.Body>
@@ -124,5 +141,21 @@ import { EXPERIMENTAL_Chart as Chart, Table } from '@digdir/designsystemet-react
   </Table>
 </Chart>
 ```
+
+To switch between chart and table, either use `data-chart="variant"` as shown above and do not change `data-variant` from React, or keep the variant in state yourself:
+
+```tsx
+const [variant, setVariant] = useState('column');
+
+<Chart data-variant={variant}>
+  <ToggleGroup aria-label='View' value={variant} onChange={setVariant}>
+    <ToggleGroup.Item value='column'>Chart</ToggleGroup.Item>
+    <ToggleGroup.Item value='table'>Table</ToggleGroup.Item>
+  </ToggleGroup>
+  <Table>...</Table>
+</Chart>
+```
+
+Do not combine the two, as React does not know when `<ds-chart>` has changed `data-variant`.
 
 <ReactComponentDocs />

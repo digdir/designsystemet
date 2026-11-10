@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import type { ChartProps } from '../../';
 import { EXPERIMENTAL_Chart as Chart, Table, ToggleGroup } from '../../';
@@ -101,6 +102,16 @@ const energy: Data = {
   ],
 };
 
+const waste: Data = {
+  caption: 'Husholdningsavfall per innbygger etter materiale, kg',
+  head: ['År', 'Restavfall', 'Matavfall', 'Papir', 'Glass', 'Plast', 'Metall'],
+  rows: [
+    ['2022', 172, 62, 48, 19, 12, 9],
+    ['2023', 165, 68, 44, 20, 14, 9],
+    ['2024', 158, 74, 41, 21, 17, 10],
+  ],
+};
+
 const number = new Intl.NumberFormat('nb');
 
 const DataTable = ({ caption, head, rows, foot }: Data) => (
@@ -109,7 +120,9 @@ const DataTable = ({ caption, head, rows, foot }: Data) => (
     <Table.Head>
       <Table.Row>
         {head.map((name) => (
-          <Table.HeaderCell key={name}>{name}</Table.HeaderCell>
+          <Table.HeaderCell key={name} scope='col'>
+            {name}
+          </Table.HeaderCell>
         ))}
       </Table.Row>
     </Table.Head>
@@ -200,17 +213,32 @@ export const WithTableToggle = meta.story({
   ),
 });
 
+/**
+ * Chart has six combinations of color, pattern and shape, so six series is the
+ * most a chart can show before the combinations repeat.
+ */
+export const SixSeries = meta.story({
+  args: { 'data-variant': 'column' },
+  render: (args: ChartProps) => (
+    <Chart {...args}>
+      <DataTable {...waste} />
+    </Chart>
+  ),
+});
+
 export const CustomColors = meta.story({
   args: { 'data-variant': 'bar', 'data-stacked': true },
   render: (args: ChartProps) => (
     <Chart
       {...args}
-      style={{
-        // @ts-expect-error CSS custom properties are not part of CSSProperties
-        '--dsc-chart-color-2': 'var(--ds-color-brand1-base-default)',
-        '--dsc-chart-color-3': 'var(--ds-color-brand2-base-default)',
-        '--dsc-chart-pattern-3': 'none',
-      }}
+      style={
+        {
+          '--dsc-chart-color-1': 'var(--ds-color-brand1-border-default)',
+          '--dsc-chart-color-2': 'var(--ds-color-brand1-text-default)',
+          '--dsc-chart-color-3': 'var(--ds-color-brand2-border-default)',
+          '--dsc-chart-size': '20rem',
+        } as CSSProperties
+      }
     >
       <DataTable {...energy} />
     </Chart>

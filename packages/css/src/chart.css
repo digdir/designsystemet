@@ -4,6 +4,19 @@
  * <ds-chart> from @digdir/designsystemet-web calculates the --_ds-chart-* properties,
  * but these can also be set server side on a <div class="ds-chart"> if not wanting JavaScript.
  */
+
+/* Registered as lengths to make browsers resolve units before using them to calculate the angle of lines */
+@property --_dsc-chart-rise {
+  inherits: false;
+  initial-value: 0px;
+  syntax: '<length>';
+}
+@property --_dsc-chart-run {
+  inherits: false;
+  initial-value: 0px;
+  syntax: '<length>';
+}
+
 .ds-chart {
   --dsc-chart-axis-color: var(--ds-color-neutral-border-strong);
   --dsc-chart-bar-border-radius: var(--ds-border-radius-sm);
@@ -11,27 +24,38 @@
   --dsc-chart-bar-size: var(--ds-size-6);
   --dsc-chart-category-gap: var(--ds-size-4);
   --dsc-chart-gap: var(--ds-size-4);
-  --dsc-chart-grid-color: var(--ds-color-neutral-border-subtle);
+  --dsc-chart-grid-color: var(--ds-color-neutral-border-default); /* Grid lines are needed to read values, and must have 3:1 contrast */
   --dsc-chart-label-color: var(--ds-color-neutral-text-subtle);
   --dsc-chart-label-font-size: var(--ds-font-size-2);
   --dsc-chart-line-size: max(2px, 0.125rem);
   --dsc-chart-point-size: var(--ds-size-3);
   --dsc-chart-size: calc(var(--ds-size-30) * 2);
-  --dsc-chart-value-spacing: 4em; /* Room reserved for the value after a horizontal bar */
+  --dsc-chart-value-background: var(--ds-color-neutral-surface-default);
+  --dsc-chart-value-color: var(--ds-color-neutral-text-default);
+  --dsc-chart-value-spacing: calc(
+    var(--_ds-chart-max-chars, 6) *
+    1ch +
+    var(--ds-size-4)
+  ); /* Room reserved for the value after a horizontal bar, based on the longest value */
 
-  /* Series are never told apart by color alone: every series has its own combination of color, pattern and shape, and colors all have 3:1 contrast */
-  --dsc-chart-color-1: var(--ds-color-base-default);
+  /**
+   * Series are never told apart by color alone:
+   * The two colors have 3:1 contrast against each other and the background in all themes,
+   * and series using the same color have different patterns (columns and bars) and shapes (lines).
+   * Patterns are masks, where black is drawn and transparent is not. Use "none" to only draw the outline.
+   */
+  --dsc-chart-color-1: var(--ds-color-border-default);
   --dsc-chart-color-2: var(--ds-color-text-default);
   --dsc-chart-color-3: var(--dsc-chart-color-1);
   --dsc-chart-color-4: var(--dsc-chart-color-2);
   --dsc-chart-color-5: var(--dsc-chart-color-1);
   --dsc-chart-color-6: var(--dsc-chart-color-2);
-  --dsc-chart-pattern-1: none;
-  --dsc-chart-pattern-2: none;
-  --dsc-chart-pattern-3: repeating-linear-gradient(135deg, #000 0 0.25em, transparent 0.25em 0.4em);
-  --dsc-chart-pattern-4: repeating-linear-gradient(135deg, #000 0 0.25em, transparent 0.25em 0.4em);
-  --dsc-chart-pattern-5: repeating-linear-gradient(90deg, #000 0 0.125em, transparent 0.125em 0.25em);
-  --dsc-chart-pattern-6: repeating-linear-gradient(90deg, #000 0 0.125em, transparent 0.125em 0.25em);
+  --dsc-chart-pattern-1: linear-gradient(#000 0 0);
+  --dsc-chart-pattern-2: linear-gradient(#000 0 0);
+  --dsc-chart-pattern-3: repeating-linear-gradient(135deg, #000 0 var(--ds-size-1), transparent var(--ds-size-1) calc(var(--ds-size-1) * 1.75));
+  --dsc-chart-pattern-4: repeating-linear-gradient(45deg, #000 0 var(--ds-size-1), transparent var(--ds-size-1) calc(var(--ds-size-1) * 1.75));
+  --dsc-chart-pattern-5: repeating-linear-gradient(90deg, #000 0 var(--ds-size-1), transparent var(--ds-size-1) calc(var(--ds-size-1) * 1.75));
+  --dsc-chart-pattern-6: repeating-linear-gradient(0deg, #000 0 var(--ds-size-1), transparent var(--ds-size-1) calc(var(--ds-size-1) * 1.75));
   --dsc-chart-shape-1: circle(50%);
   --dsc-chart-shape-2: inset(8%);
   --dsc-chart-shape-3: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
@@ -45,17 +69,28 @@
   @media (forced-colors: active) {
     --dsc-chart-axis-color: CanvasText;
     --dsc-chart-color-1: CanvasText;
-    --dsc-chart-color-2: Highlight;
+    --dsc-chart-color-2: CanvasText;
     --dsc-chart-grid-color: GrayText;
     --dsc-chart-label-color: CanvasText;
+    --dsc-chart-pattern-2: none; /* Only outline, as system colors can not be relied on to tell series apart */
+    --dsc-chart-value-background: Canvas;
+    --dsc-chart-value-color: CanvasText;
   }
 
   /* Only draw as chart when <ds-chart> is defined, so the table is shown as a regular table until JavaScript is loaded */
   &:defined:not([data-variant='table']) > table {
-    border-spacing: 0;
+    /* Solid outline around patterns, to keep the shape of columns and bars clear */
+    --_dsc-chart-outline:
+      linear-gradient(#000 0 0) top / 100% var(--dsc-chart-line-size) no-repeat, linear-gradient(#000 0 0) bottom / 100% var(--dsc-chart-line-size) no-repeat,
+      linear-gradient(#000 0 0) left / var(--dsc-chart-line-size) 100% no-repeat, linear-gradient(#000 0 0) right / var(--dsc-chart-line-size) 100% no-repeat;
+
+    border-radius: 0; /* Reset border, overflow and position from .ds-table with data-border or data-sticky-header */
+    border-width: 0;
     display: grid;
     gap: var(--dsc-chart-gap);
     inline-size: 100%;
+    overflow: visible;
+    position: static;
 
     & :is(th, td):nth-child(6n + 2) {
       --_dsc-chart-color: var(--dsc-chart-color-1);
@@ -92,10 +127,14 @@
       display: block;
       text-align: start;
     }
+    & > colgroup {
+      display: none;
+    }
 
     /* Reset anything coming from .ds-table, as the same <table> can be toggled between table and chart */
     & > :is(thead, tbody, tfoot) > tr > :is(th, td) {
       background: none;
+      border-radius: 0;
       border-width: 0;
       font-weight: inherit;
       padding: 0;
@@ -128,7 +167,7 @@
       flex-shrink: 0;
       forced-color-adjust: none; /* Enable drawing with background property */
       inline-size: 0.75em;
-      mask-image: var(--_dsc-chart-pattern);
+      mask: var(--_dsc-chart-outline), var(--_dsc-chart-pattern);
       print-color-adjust: exact;
     }
 
@@ -154,16 +193,17 @@
       overflow-wrap: anywhere;
     }
     & > tbody > tr > td {
+      /* Only round the end of columns and bars pointing away from zero */
+      --_dsc-chart-radius-from: calc(var(--dsc-chart-bar-border-radius) * clamp(0, (var(--_ds-chart-zero, 0) - var(--_ds-chart-from, 0)) * 9999, 1));
+      --_dsc-chart-radius-to: calc(var(--dsc-chart-bar-border-radius) * clamp(0, (var(--_ds-chart-to, 0) - var(--_ds-chart-zero, 0)) * 9999, 1));
+
       color: transparent;
       font-size: var(--dsc-chart-label-font-size);
       font-variant-numeric: tabular-nums;
       forced-color-adjust: none; /* Prevent forced colors from making hidden values visible */
       line-height: 0;
-      white-space: nowrap;
-    }
-    & > tbody > tr > td::before,
-    & > tbody > tr > td::after {
       print-color-adjust: exact;
+      white-space: nowrap;
     }
   }
 
@@ -171,21 +211,26 @@
    * Column (default) and line
    */
   &:defined:not([data-variant='table'], [data-variant='bar']) > table {
-    --_dsc-chart-step: calc(var(--dsc-chart-size) / var(--_ds-chart-steps, 1));
+    --_dsc-chart-step: round(
+      down,
+      calc(var(--dsc-chart-size) / var(--_ds-chart-steps, 1)),
+      1px
+    ); /* Whole pixels keeps grid lines sharp and aligned with axis */
+    --_dsc-chart-size: calc(var(--_dsc-chart-step) * var(--_ds-chart-steps, 1));
 
     & > tbody {
       display: grid;
       grid-auto-columns: minmax(0, 1fr);
       grid-auto-flow: column;
       grid-template-columns: auto;
-      grid-template-rows: var(--dsc-chart-size) auto;
+      grid-template-rows: var(--_dsc-chart-size) auto;
       margin-block-start: calc(var(--dsc-chart-label-font-size) / 2); /* Room for half of the top axis label */
     }
 
     /* Axis labels are a single multiline string, where line-height places each label next to its grid line */
     & > tbody::before {
       color: var(--dsc-chart-label-color);
-      content: var(--_ds-chart-axis, '') / '';
+      content: var(--_ds-chart-axis, '');
       font-size: var(--dsc-chart-label-font-size);
       font-variant-numeric: tabular-nums;
       grid-column: 1;
@@ -195,21 +240,29 @@
       padding-inline-end: var(--ds-size-2);
       text-align: end;
       white-space: pre;
+
+      /* Hide axis from screen readers when supported, as values are read from the table */
+      @supports (content: 'x' / '') {
+        content: var(--_ds-chart-axis, '') / '';
+      }
     }
 
     & > tbody > tr {
       background:
-        linear-gradient(var(--dsc-chart-axis-color) 0 0) 0 calc((1 - var(--_ds-chart-zero, 0)) * var(--dsc-chart-size)) / 100% 1px no-repeat,
+        linear-gradient(var(--dsc-chart-axis-color) 0 0) 0 calc((1 - var(--_ds-chart-zero, 0)) * var(--_dsc-chart-size)) / 100% 1px no-repeat,
         repeating-linear-gradient(to bottom, var(--dsc-chart-grid-color) 0 1px, transparent 1px var(--_dsc-chart-step)) 0 0 / 100%
-        calc(var(--dsc-chart-size) + 1px) no-repeat;
+        calc(var(--_dsc-chart-size) + 1px) no-repeat;
       column-gap: var(--dsc-chart-bar-gap);
       display: grid;
+      forced-color-adjust: none; /* Enable drawing grid with background property */
       grid-row: span 2;
       grid-template-columns: repeat(var(--_ds-chart-series, 1), minmax(0, 1fr));
       grid-template-rows: subgrid;
-      padding-inline: calc(var(--dsc-chart-category-gap) / 2);
+      padding-inline: min(calc(var(--dsc-chart-category-gap) / 2), 12.5%); /* Never let gap take all space from narrow columns */
+      print-color-adjust: exact;
     }
     & > tbody > tr > th {
+      forced-color-adjust: auto;
       grid-column: 1 / -1;
       grid-row: 2;
       padding-block-start: var(--ds-size-2);
@@ -220,16 +273,19 @@
       display: flex;
       flex-direction: column;
       grid-row: 1;
-      margin-block-end: calc(var(--_ds-chart-from, 0) * var(--dsc-chart-size));
+      margin-block-end: calc(var(--_ds-chart-from, 0) * var(--_dsc-chart-size));
+      overflow-x: clip; /* Prevent hidden values from causing horizontal scroll */
       text-align: center;
     }
     & > tbody > tr > td::after {
       background: var(--_dsc-chart-color);
-      block-size: calc((var(--_ds-chart-to, 0) - var(--_ds-chart-from, 0)) * var(--dsc-chart-size));
-      border-start-end-radius: var(--dsc-chart-bar-border-radius);
-      border-start-start-radius: var(--dsc-chart-bar-border-radius);
+      block-size: calc((var(--_ds-chart-to, 0) - var(--_ds-chart-from, 0)) * var(--_dsc-chart-size));
+      border-end-end-radius: var(--_dsc-chart-radius-from);
+      border-end-start-radius: var(--_dsc-chart-radius-from);
+      border-start-end-radius: var(--_dsc-chart-radius-to);
+      border-start-start-radius: var(--_dsc-chart-radius-to);
       content: '';
-      mask-image: var(--_dsc-chart-pattern);
+      mask: var(--_dsc-chart-outline), var(--_dsc-chart-pattern);
     }
   }
 
@@ -239,19 +295,18 @@
   &:defined[data-variant='line'] > table {
     & > thead > tr > :not(:first-child)::before {
       clip-path: var(--_dsc-chart-shape);
-      mask-image: none;
+      mask: none;
     }
     & > tbody > tr {
       grid-template-columns: minmax(0, 1fr);
       padding-inline: 0;
     }
     & > tbody > tr > td {
-      --_dsc-chart-rise: calc((var(--_ds-chart-next) - var(--_ds-chart-value)) * var(--dsc-chart-size));
-
       container-type: inline-size; /* Enables measuring distance to next point with cqi */
       display: block;
       grid-column: 1;
-      margin-block-end: calc(var(--_ds-chart-value, 0) * var(--dsc-chart-size));
+      margin-block-end: calc(var(--_ds-chart-value, 0) * var(--_dsc-chart-size));
+      overflow-x: visible;
       padding-block-end: calc(var(--dsc-chart-point-size) / 2 + var(--ds-size-1));
       position: relative;
     }
@@ -273,11 +328,23 @@
     }
     /* Line to next point: Size is invalid, and thus hidden, when there is no next value */
     & > tbody > tr > td::after {
+      --_dsc-chart-rise: calc((var(--_ds-chart-next) - var(--_ds-chart-value)) * var(--_dsc-chart-size));
+      --_dsc-chart-run: 100cqi;
+
       block-size: var(--dsc-chart-line-size);
-      inline-size: hypot(100cqi, var(--_dsc-chart-rise));
-      rotate: atan2(calc(var(--_dsc-chart-rise) * -1), 100cqi);
+      inline-size: calc(var(--_ds-chart-next) * 0px + hypot(var(--_dsc-chart-run), var(--_dsc-chart-rise)));
+      mask: var(--_dsc-chart-pattern); /* Pattern makes the line dashed */
+      rotate: atan2(calc(var(--_dsc-chart-rise) * -1), var(--_dsc-chart-run));
       transform-origin: 0 50%;
       translate: 0 50%;
+    }
+    /* Transforms are not logical, and must be mirrored when direction is right to left */
+    &:dir(rtl) > tbody > tr > td::before {
+      translate: 50% 50%;
+    }
+    &:dir(rtl) > tbody > tr > td::after {
+      rotate: atan2(var(--_dsc-chart-rise), var(--_dsc-chart-run));
+      transform-origin: 100% 50%;
     }
   }
 
@@ -287,7 +354,7 @@
   &:defined[data-variant='bar'] > table {
     & > tbody {
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-columns: fit-content(40%) minmax(0, 1fr); /* Prevent long labels from taking all space from the bars */
       row-gap: var(--dsc-chart-category-gap);
     }
     & > tbody > tr {
@@ -296,7 +363,6 @@
       display: grid;
       grid-column: 1 / -1;
       grid-template-columns: subgrid;
-      row-gap: var(--dsc-chart-bar-gap);
     }
     & > tbody > tr > th {
       grid-column: 1;
@@ -305,21 +371,28 @@
     }
     & > tbody > tr > td {
       align-items: center;
+      background:
+        linear-gradient(var(--dsc-chart-axis-color) 0 0) calc(var(--_ds-chart-zero, 0) * (100% - var(--dsc-chart-value-spacing))) 0 / 1px 100% no-repeat; /* Line at zero */
       color: var(--dsc-chart-label-color);
       display: flex;
       gap: var(--ds-size-2);
       grid-column: 2;
       line-height: inherit;
-      margin-inline-start: calc(var(--_ds-chart-from, 0) * (100% - var(--dsc-chart-value-spacing)));
+      padding-block: calc(var(--dsc-chart-bar-gap) / 2); /* Using padding instead of gap between bars to not break the line at zero */
     }
+    /* Offset is on the bar, as offset on the cell would shrink what the size of the bar is relative to */
     & > tbody > tr > td::before {
       background: var(--_dsc-chart-color);
       block-size: var(--dsc-chart-bar-size);
-      border-end-end-radius: var(--dsc-chart-bar-border-radius);
-      border-start-end-radius: var(--dsc-chart-bar-border-radius);
+      border-end-end-radius: var(--_dsc-chart-radius-to);
+      border-end-start-radius: var(--_dsc-chart-radius-from);
+      border-start-end-radius: var(--_dsc-chart-radius-to);
+      border-start-start-radius: var(--_dsc-chart-radius-from);
       content: '';
-      flex: 0 0 calc((var(--_ds-chart-to, 0) - var(--_ds-chart-from, 0)) * (100% - var(--dsc-chart-value-spacing)));
-      mask-image: var(--_dsc-chart-pattern);
+      flex-basis: calc((var(--_ds-chart-to, 0) - var(--_ds-chart-from, 0)) * (100% - var(--dsc-chart-value-spacing)));
+      flex-shrink: 0;
+      margin-inline-start: calc(var(--_ds-chart-from, 0) * (100% - var(--dsc-chart-value-spacing)));
+      mask: var(--_dsc-chart-outline), var(--_dsc-chart-pattern);
     }
   }
 
@@ -332,26 +405,46 @@
       row-gap: 0;
     }
     & > tbody > tr > td {
-      background: var(--_dsc-chart-color);
-      background-clip: padding-box;
-      border: 0 solid transparent; /* Transparent border as gap to work on all surfaces */
+      background: none;
+      border-color: transparent; /* Transparent border as gap to work on all surfaces */
+      border-style: solid;
+      border-width: 0;
       box-sizing: border-box;
-      display: grid;
+      display: block;
       grid-column: 1;
       isolation: isolate;
-      line-height: 1;
-      mask-image: var(--_dsc-chart-pattern);
-      overflow: hidden;
-      place-items: center;
-      print-color-adjust: exact;
+      line-height: max(0px, var(--_dsc-chart-segment)); /* Center value */
+      overflow: clip;
+      padding: 0;
+      position: relative;
+      text-align: center;
+
+      /* Move value out of segments that are too small, as a partly visible value can be read as another value */
+      text-indent: clamp(
+        0px,
+        calc(max(var(--dsc-chart-label-font-size) * 1.5 - var(--_dsc-chart-segment), var(--_ds-chart-chars, 1) * 1ch + var(--ds-size-1) - 100%) * 999),
+        999em
+      );
     }
-    & > tbody > tr > td::before,
-    & > tbody > tr > td::after {
+    & > tbody > tr > td::before {
       content: none;
+    }
+    /* Segment is drawn behind the value, to prevent pattern from making value unreadable */
+    & > tbody > tr > td::after {
+      background: var(--_dsc-chart-color);
+      block-size: auto;
+      border-radius: 0;
+      content: '';
+      inset: 0;
+      mask: var(--_dsc-chart-outline), var(--_dsc-chart-pattern);
+      position: absolute;
+      z-index: -1;
     }
   }
   &:defined[data-stacked]:not([data-stacked='false'], [data-variant='table'], [data-variant='bar'], [data-variant='line']) > table > tbody > tr > td {
-    block-size: calc((var(--_ds-chart-to, 0) - var(--_ds-chart-from, 0)) * var(--dsc-chart-size));
+    --_dsc-chart-segment: calc((var(--_ds-chart-to, 0) - var(--_ds-chart-from, 0)) * var(--_dsc-chart-size) - var(--dsc-chart-bar-gap));
+
+    block-size: calc((var(--_ds-chart-to, 0) - var(--_ds-chart-from, 0)) * var(--_dsc-chart-size));
     border-block-start-width: var(--dsc-chart-bar-gap);
   }
   &:defined[data-stacked][data-variant='bar']:not([data-stacked='false']) > table {
@@ -362,9 +455,10 @@
       grid-row: 1;
     }
     & > tbody > tr > td {
+      --_dsc-chart-segment: var(--dsc-chart-bar-size);
+
       block-size: var(--dsc-chart-bar-size);
       border-inline-end-width: var(--dsc-chart-bar-gap);
-      color: oklch(from var(--_dsc-chart-color) calc((0.6 - l) * 999) 0 0); /* Black or white text based on lightness of the segment */
       grid-column: 2;
       grid-row: 1;
       inline-size: calc((var(--_ds-chart-to, 0) - var(--_ds-chart-from, 0)) * 100%);
@@ -373,24 +467,40 @@
   }
 
   /**
-   * Show values, always or on hover
+   * Show values. Values are never shown on hover only, as this would not be available for keyboard and touch users
    */
   &:defined[data-show-values]:not([data-show-values='false'], [data-variant='table']) > table > tbody > tr > td {
     color: var(--dsc-chart-label-color);
     line-height: inherit;
+    overflow-x: visible;
   }
-  &:defined[data-show-values][data-stacked]:not([data-show-values='false'], [data-stacked='false'], [data-variant='table'], [data-variant='line'])
+  /* Values on top of lines and segments have their own background, to have sufficient contrast on all colors and patterns */
+  &:defined[data-show-values][data-variant='line']:not([data-show-values='false']) > table > tbody > tr > td,
+  &:defined[data-stacked]:is([data-show-values]:not([data-show-values='false']), [data-variant='bar']):not(
+      [data-stacked='false'],
+      [data-variant='table'],
+      [data-variant='line']
+    )
     > table
     > tbody
     > tr
     > td {
-    color: oklch(from var(--_dsc-chart-color) calc((0.6 - l) * 999) 0 0);
-    line-height: 1;
-  }
-  @media (hover: hover) and (pointer: fine) {
-    &:defined:not([data-variant='table'], [data-variant='bar'], [data-stacked]) > table > tbody > tr > td:hover {
-      color: var(--dsc-chart-label-color);
-      line-height: inherit;
+    color: var(--dsc-chart-value-color);
+
+    &::first-line {
+      background: var(--dsc-chart-value-background);
     }
+  }
+  &:defined[data-stacked]:is([data-show-values]:not([data-show-values='false']), [data-variant='bar']):not(
+      [data-stacked='false'],
+      [data-variant='table'],
+      [data-variant='line']
+    )
+    > table
+    > tbody
+    > tr
+    > td {
+    line-height: max(0px, var(--_dsc-chart-segment));
+    overflow: clip;
   }
 }

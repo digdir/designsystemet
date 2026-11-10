@@ -35,6 +35,7 @@
               name="chart"
               value="column"
               data-chart="variant"
+              autocomplete="off"
               checked
             >Søyle</label
           >
@@ -44,6 +45,7 @@
               name="chart"
               value="bar"
               data-chart="variant"
+              autocomplete="off"
             >Stolpe</label
           >
           <label class="ds-button"
@@ -52,6 +54,7 @@
               name="chart"
               value="line"
               data-chart="variant"
+              autocomplete="off"
             >Linje</label
           >
           <label class="ds-button"
@@ -60,6 +63,7 @@
               name="chart"
               value="table"
               data-chart="variant"
+              autocomplete="off"
             >Tabell</label
           >
         </fieldset>
@@ -69,10 +73,10 @@
           </caption>
           <thead>
             <tr>
-              <th>År</th>
-              <th>Innvilget</th>
-              <th>Avslått</th>
-              <th>Trukket</th>
+              <th scope="col">År</th>
+              <th scope="col">Innvilget</th>
+              <th scope="col">Avslått</th>
+              <th scope="col">Trukket</th>
             </tr>
           </thead>
           <tbody>
@@ -105,17 +109,11 @@
       </ds-chart>
       <br>
       <label
-        ><input
-          type="checkbox"
-          onchange="chart.toggleAttribute('data-stacked', this.checked)"
-        >
+        ><input type="checkbox" data-toggle="data-stacked">
         data-stacked</label
       >
       <label
-        ><input
-          type="checkbox"
-          onchange="chart.toggleAttribute('data-show-values', this.checked)"
-        >
+        ><input type="checkbox" data-toggle="data-show-values">
         data-show-values</label
       >
       <br>
@@ -864,6 +862,13 @@
     import '../css/src/index.css';
     import '../css/theme/designsystemet.css';
     import './src/index.ts';
+
+    // Toggle attributes on the chart demo
+    document.addEventListener('change', ({ target }) => {
+      const name = target.getAttribute?.('data-toggle');
+      if (name)
+        document.getElementById('chart')?.toggleAttribute(name, target.checked);
+    });
     </script>
     <!-- biome-ignore format:next-line -->
     <script type="module">

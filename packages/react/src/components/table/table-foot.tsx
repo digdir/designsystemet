@@ -1,4 +1,5 @@
-import { forwardRef, type HTMLAttributes } from 'react';
+import { forwardRef, type HTMLAttributes, useContext } from 'react';
+import { ChartContext } from '../chart/chart-context';
 
 export type TableFootProps = HTMLAttributes<HTMLTableSectionElement>;
 
@@ -15,10 +16,11 @@ export type TableFootProps = HTMLAttributes<HTMLTableSectionElement>;
  */
 export const TableFoot = forwardRef<HTMLTableSectionElement, TableFootProps>(
   function TableFoot(rest, ref) {
+    const inChart = useContext(ChartContext);
     return (
       <tfoot
         ref={ref}
-        suppressHydrationWarning /* Since <ds-chart> adds attributes */
+        suppressHydrationWarning={inChart} // Only inside Chart, as always having it on hides wrong text for all tables. See chart-context.ts
         {...rest}
       />
     );

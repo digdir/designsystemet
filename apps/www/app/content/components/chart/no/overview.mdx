@@ -8,18 +8,18 @@ Chart er under utvikling. Har du tilbakemelding eller innspill, meld fra på [Gi
 
 <Story story="Preview" layout="block" />
 
-Chart tegner en vanlig [tabell](/no/components/docs/table/overview) som et søyle-, stolpe- eller linjediagram. Du skriver tabellen, og diagrammet tegnes ut fra tallene i den. Tabellen blir aldri erstattet, så de samme tallene er tilgjengelige for skjermlesere, og for alle andre hvis du lar dem bytte til tabellvisning.
+Chart tegner en vanlig [tabell](/no/components/docs/table/overview) som et søyle-, stolpe- eller linjediagram. Du skriver tabellen, og diagrammet tegnes ut fra tallene i den. Tabellen blir aldri erstattet, så skjermlesere leser diagrammet som en tabell. La alle andre også få bytte til tabellvisning, slik som i eksempelet over.
 
 Chart er ment for enkle diagrammer med få serier. Det er et fundament du kan bygge videre på, ikke et fullverdig diagrambibliotek.
 
 **Bruk chart når**
-- Du vil vise en utvikling eller en sammenligning som er vanskelig å se i en tabell.
-- Du har et lite datasett som også gir mening som tabell.
+- du vil vise en utvikling eller en sammenligning som er vanskelig å se i en tabell
+- du har et lite datasett som også gir mening som tabell
 
 **Unngå chart når**
-- Brukerne skal lese eller sammenligne nøyaktige tall. Bruk heller en [tabell](/no/components/docs/table/overview).
-- Du trenger kakediagram, kart, zooming eller andre avanserte visualiseringer.
-- Du har flere enn seks serier, eller så mange kategorier at ledetekstene ikke får plass.
+- brukerne først og fremst skal lese eller sammenligne nøyaktige tall, bruk heller en [tabell](/no/components/docs/table/overview)
+- du trenger kakediagram, kart, zooming eller andre avanserte visualiseringer
+- du har flere enn seks serier, eller så mange kategorier at kategorinavnene ikke får plass
 
 ## Eksempel
 
@@ -29,22 +29,27 @@ Bruk `line` for å vise utvikling over tid. Hver serie har sin egen punktform, s
 <Story story="Line" layout="block" />
 
 ### Stolpe
-Bruk `bar` når kategorinavnene er lange, eller når det er mange kategorier. Liggende stolper viser alltid verdien i enden av stolpen.
+Bruk `bar` når kategorinavnene er lange, eller når det er mange kategorier. Liggende stolper viser alltid verdien, i enden av stolpen eller inni hvert segment når de er stablet.
 
 <Story story="Bar" layout="block" />
 
 ### Stablet
-Bruk `data-stacked` for å vise hvordan hver kategori er delt opp. Stablede diagrammer gjør det lett å sammenligne totaler, men vanskeligere å sammenligne de enkelte delene.
+Bruk `data-stacked` for å vise hvordan hver kategori er delt opp. Stablede diagrammer gjør det lett å sammenligne totaler, men vanskeligere å sammenligne de enkelte delene. Kombiner med `data-show-values` for å vise verdien inni hvert segment. Verdier som ikke får plass i segmentet sitt, skjules.
 
 <Story story="Stacked" layout="block" />
 
 ### Vis verdier
-Bruk `data-show-values` for å alltid vise verdiene i diagrammet. Dette fungerer best med få serier.
+Bruk `data-show-values` slik at verdiene alltid vises i diagrammet. Dette fungerer best med få serier.
 
 <Story story="ShowValues" layout="block" />
 
+### Seks serier
+Chart har seks kombinasjoner av farge, mønster og form, så seks serier er det meste et diagram kan vise før kombinasjonene gjentas. Bruk så mange kun når du har få kategorier, og vurder heller en tabell eller flere mindre diagrammer.
+
+<Story story="SixSeries" layout="block" />
+
 ### Bytt mellom diagram og tabell
-La brukerne velge å se tallene som tabell. Det hjelper alle som trenger de nøyaktige tallene, og brukere som synes diagrammer er vanskelige å lese.
+La alltid brukerne velge å se tallene som tabell, med mindre verdiene vises i diagrammet eller den samme tabellen vises et annet sted på siden. Ellers er de nøyaktige verdiene bare tilgjengelige for skjermleserbrukere.
 
 <Story story="TableToggle" layout="block" />
 
@@ -52,10 +57,10 @@ La brukerne velge å se tallene som tabell. Det hjelper alle som trenger de nøy
 Et diagram bør ha ett tydelig budskap. Start med hva du vil at brukerne skal forstå, og velg den varianten som viser det best.
 
 - Gi alltid diagrammet en tittel med `<caption>` som sier hva diagrammet viser.
-- Skriv det viktigste funnet som tekst ved siden av diagrammet. Ikke la brukerne måtte finne konklusjonen selv.
+- Skriv det viktigste funnet som tekst ved siden av diagrammet. Brukerne skal ikke måtte trekke konklusjonen selv.
 - Bruk så få serier som mulig. Diagrammer med flere enn tre–fire serier blir fort vanskelige å lese.
-- Aksen starter alltid på null, slik at forskjeller ikke overdrives.
-- Gi brukerne mulighet til å se tallene som tabell når de nøyaktige tallene er viktige.
+- Aksen inkluderer alltid null, slik at forskjeller ikke overdrives.
+- Gi brukerne mulighet til å se tallene som tabell, siden diagrammet i seg selv bare viser omtrentlige verdier.
 - Oppgi kilden til tallene, for eksempel i en `<tfoot>` eller i teksten ved siden av diagrammet.
 
 ## Tekst
