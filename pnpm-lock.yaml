@@ -843,8 +843,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@u-elements/u-tabs':
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^1.0.4
+        version: 1.0.4
     devDependencies:
       '@custom-elements-manifest/analyzer':
         specifier: 0.11.0
@@ -2712,8 +2712,8 @@ packages:
   '@u-elements/u-details@1.0.0':
     resolution: {integrity: sha512-CA0w0VTH/vWWouFWEw7XIws3RUCBm2dh7ity+sbDXgpc6yz5NkoMpeDTdB/DHpI+/YInULz0XLOTrw8b7KX3Qg==}
 
-  '@u-elements/u-tabs@2.0.0':
-    resolution: {integrity: sha512-DBeLiBS8Pld8WQLR97xWL7UcOrlH2bnSRIAqrRpjSPb5d8VyRoWkFk0IozD07ROq7Pd9CMCO9Ddp/+ND972uCQ==}
+  '@u-elements/u-tabs@1.0.4':
+    resolution: {integrity: sha512-F0CoSaiFnUInfTSiftufZARi6bvC0Ucb+aVaVfO65a0GWeIsTjTZupXh313POqN7SkvH4lQ+4+X33uhwBMAiww==}
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
@@ -7580,7 +7580,7 @@ snapshots:
 
   '@u-elements/u-details@1.0.0': {}
 
-  '@u-elements/u-tabs@2.0.0': {}
+  '@u-elements/u-tabs@1.0.4': {}
 
   '@ungap/structured-clone@1.3.0': {}
 

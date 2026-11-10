@@ -356,25 +356,10 @@
   & > input {
     padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
   }
-  /* Draw chevron even when input is empty and button[aria-expanded] does not exist */
-  /* @deprecated del:not([hidden]) supports old <del> element from u-combobox */
-  &:where(:has(u-datalist):not(:has(button[aria-expanded], button[type='reset']:not([hidden]), del:not([hidden])))) > input {
-    background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
-    background-repeat: no-repeat;
-    background-size: 0.4em 0.4em;
-    background-image:
-      linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
-      linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
-  }
   &:has(u-datalist) > input:dir(rtl) {
     background-position: calc(1.2em - var(--dsc-input-stroke-width)), 0.8em;
   }
-  /* @deprecated del supports old <del> element from u-combobox */
-  & > input:is(:read-only, :disabled, [aria-disabled='true']) ~ :is(del, button[type='reset'], button[aria-expanded]) {
-    display: none;
-  }
-  /* @deprecated del supports old <del> element from u-combobox */
-  & > :is(del, button[type='reset'], button[aria-expanded]) {
+  & > :is(button[type='reset'], button[aria-expanded]) {
     --dsc-button-size: var(--dsc-suggestion-clear-size);
 
     grid-area: input;
@@ -401,7 +386,7 @@
     }
 
     &:empty::before {
-      content: '';
+      content: '' / var(--dsc-suggestion-sr-clear);
       background: currentcolor;
       forced-color-adjust: none; /* Enable drawing with background property */
       display: block;
