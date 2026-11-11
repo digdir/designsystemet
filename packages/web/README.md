@@ -122,6 +122,8 @@ Draws a `<table>` as a chart. The table is the data, the legend and the accessib
 - `<thead>` is used as legend (use `<th scope="col">`), `<caption>` as title and `<tfoot>` as text below the chart
 - The first number in the text of each `<td>` is used. A single comma or period is read as decimal separator based on closest `lang` attribute, falling back to Norwegian. Use `data-value` on the `<td>` if the text is not a plain number
 - `rowspan` and `colspan` in `<tbody>` are not supported
+- `data-variant="pie"` and `"donut"` draw the first value of each row as a slice, and show the table as legend. Use six rows at most
+- `data-variant="area"` is always stacked
 - Until the JavaScript is loaded, and when `data-variant="table"`, the table is shown as a regular table
 
 ```html
@@ -141,7 +143,7 @@ Draws a `<table>` as a chart. The table is the data, the legend and the accessib
 
 | attribute        | type                                     | default                                  | required |
 |------------------|------------------------------------------|------------------------------------------|----------|
-| data-variant     | 'column' \| 'bar' \| 'line' \| 'table'   | column                                   | false    |
+| data-variant     | 'column' \| 'bar' \| 'line' \| 'area' \| 'pie' \| 'donut' \| 'table' | column                                   | false    |
 | data-stacked     | boolean                                  | false                                    | false    |
 | data-show-values | boolean                                  | false                                    | false    |
 | data-min         | number                                   | 0, or lowest value if negative           | false    |
@@ -165,7 +167,7 @@ Radios and selects with `data-chart="variant"` (or inside an element with the at
 
 ### Custom rendering
 Colors, patterns, shapes and sizes are changed with the `--dsc-chart-*` CSS custom properties.
-`<ds-chart>` sets `--_ds-chart-axis`, `--_ds-chart-steps`, `--_ds-chart-series`, `--_ds-chart-zero` and `--_ds-chart-max-chars` on itself, and `--_ds-chart-value`, `--_ds-chart-from`, `--_ds-chart-to`, `--_ds-chart-next` (all between 0 and 1) and `--_ds-chart-chars` on each `<td>`, which you can use to draw your own chart types.
+`<ds-chart>` sets `--_ds-chart-axis`, `--_ds-chart-steps`, `--_ds-chart-series`, `--_ds-chart-zero` and `--_ds-chart-max-chars` on itself, and `--_ds-chart-value`, `--_ds-chart-from`, `--_ds-chart-to`, `--_ds-chart-next`, `--_ds-chart-next-from` (all between 0 and 1) and `--_ds-chart-chars` on each `<td>`, which you can use to draw your own chart types.
 The scale logic is also exported, if you want to calculate the properties server side. You must then also add the table roles (`table`, `rowgroup`, `row`, `columnheader`, `rowheader` and `cell`) yourself:
 
 ```ts

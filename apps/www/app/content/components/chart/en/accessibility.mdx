@@ -20,7 +20,9 @@ Charts are hard to make accessible, because the information is in the shapes. Ch
 - The table is kept as a table for screen readers, with title, column headers and row headers. Table roles are added to the elements, since browsers have removed table semantics when the layout of a table is changed with CSS
 - Nothing in the chart requires mouse, hover or focus
 - The two default colors have at least 3:1 contrast against each other and against the background in all themes, and so do the grid lines
-- Series with the same color have different patterns in columns and bars, and different point shapes and dashes in lines
+- Areas are always stacked, so no series is hidden behind another
+- Series with the same color have different patterns in columns, bars and areas, and different point shapes and dashes in lines
+- Pie and donut charts always show the table as a legend with the values, and slices next to each other never look the same when there are six rows or fewer
 - Values inside stacked segments have their own background, and are hidden if they do not fit
 - The table is shown as a regular table until the JavaScript is loaded
 - Missing title or headers give a warning in the console

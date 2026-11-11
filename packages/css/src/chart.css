@@ -24,6 +24,7 @@
   --dsc-chart-bar-size: var(--ds-size-6);
   --dsc-chart-category-gap: var(--ds-size-4);
   --dsc-chart-gap: var(--ds-size-4);
+  --dsc-chart-hole-size: 55%; /* Size of the hole in donut, relative to the size of the donut */
   --dsc-chart-grid-color: var(--ds-color-neutral-border-default); /* Grid lines are needed to read values, and must have 3:1 contrast */
   --dsc-chart-label-color: var(--ds-color-neutral-text-subtle);
   --dsc-chart-label-font-size: var(--ds-font-size-2);
@@ -210,7 +211,7 @@
   /**
    * Column (default) and line
    */
-  &:defined:not([data-variant='table'], [data-variant='bar']) > table {
+  &:defined:not([data-variant='table'], [data-variant='bar'], [data-variant='pie'], [data-variant='donut']) > table {
     --_dsc-chart-step: round(
       down,
       calc(var(--dsc-chart-size) / var(--_ds-chart-steps, 1)),
@@ -290,13 +291,9 @@
   }
 
   /**
-   * Line
+   * Line and area
    */
-  &:defined[data-variant='line'] > table {
-    & > thead > tr > :not(:first-child)::before {
-      clip-path: var(--_dsc-chart-shape);
-      mask: none;
-    }
+  &:defined:is([data-variant='line'], [data-variant='area']) > table {
     & > tbody > tr {
       grid-template-columns: minmax(0, 1fr);
       padding-inline: 0;
@@ -319,13 +316,6 @@
       inset-inline-start: 50%;
       position: absolute;
     }
-    /* Point: Size is invalid, and thus hidden, when cell does not have a value */
-    & > tbody > tr > td::before {
-      block-size: calc(var(--_ds-chart-value) * 0px + var(--dsc-chart-point-size));
-      clip-path: var(--_dsc-chart-shape);
-      inline-size: calc(var(--_ds-chart-value) * 0px + var(--dsc-chart-point-size));
-      translate: -50% 50%;
-    }
     /* Line to next point: Size is invalid, and thus hidden, when there is no next value */
     & > tbody > tr > td::after {
       --_dsc-chart-rise: calc((var(--_ds-chart-next) - var(--_ds-chart-value)) * var(--_dsc-chart-size));
@@ -339,12 +329,55 @@
       translate: 0 50%;
     }
     /* Transforms are not logical, and must be mirrored when direction is right to left */
-    &:dir(rtl) > tbody > tr > td::before {
-      translate: 50% 50%;
-    }
     &:dir(rtl) > tbody > tr > td::after {
       rotate: atan2(var(--_dsc-chart-rise), var(--_dsc-chart-run));
       transform-origin: 100% 50%;
+    }
+  }
+  &:defined[data-variant='line'] > table {
+    & > thead > tr > :not(:first-child)::before {
+      clip-path: var(--_dsc-chart-shape);
+      mask: none;
+    }
+    /* Point: Size is invalid, and thus hidden, when cell does not have a value */
+    & > tbody > tr > td::before {
+      block-size: calc(var(--_ds-chart-value) * 0px + var(--dsc-chart-point-size));
+      clip-path: var(--_dsc-chart-shape);
+      inline-size: calc(var(--_ds-chart-value) * 0px + var(--dsc-chart-point-size));
+      translate: -50% 50%;
+    }
+    &:dir(rtl) > tbody > tr > td::before {
+      translate: 50% 50%;
+    }
+  }
+  &:defined[data-variant='area'] > table {
+    & > tbody > tr > td {
+      padding-block-end: var(--ds-size-1);
+    }
+    /* Area to next value, covering the height of the chart and cut to where this and next value starts and ends. Size is invalid, and thus hidden, when there is no next value */
+    & > tbody > tr > td::before {
+      block-size: var(--_dsc-chart-size);
+      clip-path: polygon(
+        0 calc((1 - var(--_ds-chart-to)) * 100%),
+        100% calc((1 - var(--_ds-chart-next)) * 100%),
+        100% calc((1 - var(--_ds-chart-next-from)) * 100%),
+        0 calc((1 - var(--_ds-chart-from)) * 100%)
+      );
+      inline-size: calc(var(--_ds-chart-next) * 0px + 100cqi + 1px); /* Overlapping next area with a pixel to avoid visible seams */
+      inset-block-end: calc(var(--_ds-chart-value, 0) * var(--_dsc-chart-size) * -1);
+      mask: var(--_dsc-chart-pattern);
+    }
+    &:dir(rtl) > tbody > tr > td::before {
+      clip-path: polygon(
+        100% calc((1 - var(--_ds-chart-to)) * 100%),
+        0 calc((1 - var(--_ds-chart-next)) * 100%),
+        0 calc((1 - var(--_ds-chart-next-from)) * 100%),
+        100% calc((1 - var(--_ds-chart-from)) * 100%)
+      );
+    }
+    /* Solid line on top of each area keeps the shape clear also when the area has a pattern */
+    & > tbody > tr > td::after {
+      mask: none;
     }
   }
 
@@ -397,9 +430,134 @@
   }
 
   /**
+   * Pie and donut, where each row is a slice and the table is shown as legend with values
+   */
+  &:defined:is([data-variant='pie'], [data-variant='donut']) > table {
+    column-gap: var(--ds-size-6);
+    grid-template-columns: fit-content(60%) repeat(var(--_ds-chart-series, 1), max-content) 1fr; /* Last column takes remaining space, so a long caption does not stretch the legend */
+
+    /* Colors and patterns follows rows instead of columns */
+    & > tbody > tr:nth-child(6n + 1) > :is(th, td) {
+      --_dsc-chart-color: var(--dsc-chart-color-1);
+      --_dsc-chart-pattern: var(--dsc-chart-pattern-1);
+    }
+    & > tbody > tr:nth-child(6n + 2) > :is(th, td) {
+      --_dsc-chart-color: var(--dsc-chart-color-2);
+      --_dsc-chart-pattern: var(--dsc-chart-pattern-2);
+    }
+    & > tbody > tr:nth-child(6n + 3) > :is(th, td) {
+      --_dsc-chart-color: var(--dsc-chart-color-3);
+      --_dsc-chart-pattern: var(--dsc-chart-pattern-3);
+    }
+    & > tbody > tr:nth-child(6n + 4) > :is(th, td) {
+      --_dsc-chart-color: var(--dsc-chart-color-4);
+      --_dsc-chart-pattern: var(--dsc-chart-pattern-4);
+    }
+    & > tbody > tr:nth-child(6n + 5) > :is(th, td) {
+      --_dsc-chart-color: var(--dsc-chart-color-5);
+      --_dsc-chart-pattern: var(--dsc-chart-pattern-5);
+    }
+    & > tbody > tr:nth-child(6n + 6) > :is(th, td) {
+      --_dsc-chart-color: var(--dsc-chart-color-6);
+      --_dsc-chart-pattern: var(--dsc-chart-pattern-6);
+    }
+
+    & > caption,
+    & > tfoot {
+      grid-column: 1 / -1;
+    }
+    & > thead,
+    & > tbody,
+    & > :is(thead, tbody) > tr {
+      display: grid;
+      gap: var(--ds-size-1) var(--ds-size-6);
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
+    }
+    & > thead > tr > :is(th, td) {
+      color: var(--dsc-chart-label-color);
+      font-size: var(--dsc-chart-label-font-size);
+      justify-content: end;
+    }
+    & > thead > tr > :nth-child(2) {
+      grid-column-start: 2; /* First header is visually hidden */
+    }
+    & > thead > tr > :not(:first-child)::before {
+      content: none;
+    }
+    & > tbody {
+      padding-block-end: calc(var(--dsc-chart-size) + var(--dsc-chart-gap)); /* Room for the pie below the legend */
+      position: relative;
+    }
+    & > tbody > tr > th {
+      align-items: center;
+      color: inherit;
+      display: flex;
+      font-size: inherit;
+      gap: var(--ds-size-2);
+      text-align: start;
+    }
+    & > tbody > tr > th::before {
+      background: var(--_dsc-chart-color);
+      block-size: 0.75em;
+      content: '';
+      flex-shrink: 0;
+      forced-color-adjust: none; /* Enable drawing with background property */
+      inline-size: 0.75em;
+      mask: var(--_dsc-chart-outline), var(--_dsc-chart-pattern);
+      print-color-adjust: exact;
+    }
+    /* Values are always shown, as slices can not be read from an axis */
+    & > tbody > tr > td {
+      color: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      text-align: end;
+    }
+    /* Slice: Background is invalid, and thus hidden, when row does not have a positive value */
+    & > tbody > tr > td:nth-child(2)::before {
+      aspect-ratio: 1;
+      background: conic-gradient(
+        from calc(var(--_ds-chart-from) * 1turn),
+        var(--_dsc-chart-color) 0 max(0turn, calc((var(--_ds-chart-to) - var(--_ds-chart-from)) * 1turn - 0.004turn)),
+        transparent 0
+      ); /* Subtracting from each slice leaves a gap to the next */
+      border-radius: var(--ds-border-radius-full);
+      content: '';
+      inline-size: min(var(--dsc-chart-size), 100%);
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      /* Hole is cut from the solid outlines and the pattern */
+      mask:
+        radial-gradient(closest-side, transparent var(--_dsc-chart-hole, 0%), #000 0) intersect,
+        radial-gradient(closest-side, transparent calc(100% - var(--dsc-chart-line-size)), #000 0),
+        radial-gradient(
+          closest-side,
+          transparent var(--_dsc-chart-hole, 0%),
+          #000 0 calc(var(--_dsc-chart-hole, 0%) + var(--dsc-chart-line-size)),
+          transparent 0
+        ),
+        var(--_dsc-chart-pattern);
+      position: absolute;
+    }
+  }
+
+  &:defined[data-variant='donut'] > table {
+    --_dsc-chart-hole: var(--dsc-chart-hole-size);
+  }
+
+  /**
    * Stacked column and bar, where values are placed inside each segment
    */
-  &:defined[data-stacked]:not([data-stacked='false'], [data-variant='table'], [data-variant='line']) > table {
+  &:defined[data-stacked]:not(
+      [data-stacked='false'],
+      [data-variant='table'],
+      [data-variant='line'],
+      [data-variant='area'],
+      [data-variant='pie'],
+      [data-variant='donut']
+    )
+    > table {
     & > tbody > tr {
       grid-template-columns: minmax(0, 1fr);
       row-gap: 0;
@@ -441,7 +599,19 @@
       z-index: -1;
     }
   }
-  &:defined[data-stacked]:not([data-stacked='false'], [data-variant='table'], [data-variant='bar'], [data-variant='line']) > table > tbody > tr > td {
+  &:defined[data-stacked]:not(
+      [data-stacked='false'],
+      [data-variant='table'],
+      [data-variant='bar'],
+      [data-variant='line'],
+      [data-variant='area'],
+      [data-variant='pie'],
+      [data-variant='donut']
+    )
+    > table
+    > tbody
+    > tr
+    > td {
     --_dsc-chart-segment: calc((var(--_ds-chart-to, 0) - var(--_ds-chart-from, 0)) * var(--_dsc-chart-size) - var(--dsc-chart-bar-gap));
 
     block-size: calc((var(--_ds-chart-to, 0) - var(--_ds-chart-from, 0)) * var(--_dsc-chart-size));
@@ -475,11 +645,14 @@
     overflow-x: visible;
   }
   /* Values on top of lines and segments have their own background, to have sufficient contrast on all colors and patterns */
-  &:defined[data-show-values][data-variant='line']:not([data-show-values='false']) > table > tbody > tr > td,
+  &:defined[data-show-values]:is([data-variant='line'], [data-variant='area']):not([data-show-values='false']) > table > tbody > tr > td,
   &:defined[data-stacked]:is([data-show-values]:not([data-show-values='false']), [data-variant='bar']):not(
       [data-stacked='false'],
       [data-variant='table'],
-      [data-variant='line']
+      [data-variant='line'],
+      [data-variant='area'],
+      [data-variant='pie'],
+      [data-variant='donut']
     )
     > table
     > tbody
@@ -494,7 +667,10 @@
   &:defined[data-stacked]:is([data-show-values]:not([data-show-values='false']), [data-variant='bar']):not(
       [data-stacked='false'],
       [data-variant='table'],
-      [data-variant='line']
+      [data-variant='line'],
+      [data-variant='area'],
+      [data-variant='pie'],
+      [data-variant='donut']
     )
     > table
     > tbody

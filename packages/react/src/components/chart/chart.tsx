@@ -14,9 +14,17 @@ export type ChartProps = MergeRight<
      * How to draw the table. Use `table` to show the plain table.
      * @default 'column'
      */
-    'data-variant'?: 'column' | 'bar' | 'line' | 'table' | (string & {});
+    'data-variant'?:
+      | 'column'
+      | 'bar'
+      | 'line'
+      | 'area'
+      | 'pie'
+      | 'donut'
+      | 'table'
+      | (string & {});
     /**
-     * Stack the values of each row on top of each other. Only for `column` and `bar`.
+     * Stack the values of each row on top of each other. Only for `column` and `bar`, as `area` is always stacked.
      * @default false
      */
     'data-stacked'?: boolean;

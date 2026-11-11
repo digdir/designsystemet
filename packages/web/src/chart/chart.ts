@@ -25,6 +25,7 @@ const CSS_CHARS = '--_ds-chart-chars';
 const CSS_FROM = '--_ds-chart-from';
 const CSS_MAX_CHARS = '--_ds-chart-max-chars';
 const CSS_NEXT = '--_ds-chart-next';
+const CSS_NEXT_FROM = '--_ds-chart-next-from';
 const CSS_SERIES = '--_ds-chart-series';
 const CSS_STEPS = '--_ds-chart-steps';
 const CSS_TO = '--_ds-chart-to';
@@ -135,9 +136,12 @@ const render = (self: DSChartElement) => {
   );
   const cells = rows.map((row) => Array.from(row.children).filter(isData));
   const values = cells.map((row) => row.map(parse));
-  const isLine = attr(self, ATTR_VARIANT) === 'line';
+  const variant = attr(self, ATTR_VARIANT);
+  const isArea = variant === 'area'; // Areas are always stacked, as areas on top of each other would hide values
+  const isPie = variant === 'pie' || variant === 'donut';
   const isStacked =
-    !isLine && (attr(self, ATTR_STACKED) ?? 'false') !== 'false';
+    isArea ||
+    (variant !== 'line' && (attr(self, ATTR_STACKED) ?? 'false') !== 'false');
 
   // Find the extremes, where stacked charts needs the sum of each row
   let hi = 0; // Always include 0 as charts not starting at zero are easily misread
@@ -156,8 +160,8 @@ const render = (self: DSChartElement) => {
     Math.max(hi, getNumber(self, ATTR_MAX, hi)),
   );
   const format = getNumberFormat(self, step);
-  const scale = (value: number) =>
-    `${Math.round(((value - min) / (max - min)) * 1e4) / 1e4}`; // Round to avoid long decimals in DOM
+  const round = (value: number) => `${Math.round(value * 1e4) / 1e4}`; // Round to avoid long decimals in DOM
+  const scale = (value: number) => round((value - min) / (max - min));
 
   // Using CSS strings so axis can be rendered without changing the DOM, "\a" is new line in CSS
   setStyle(self, CSS_AXIS, `"${ticks.map(format).join('\\a ')}"`);
@@ -165,29 +169,67 @@ const render = (self: DSChartElement) => {
   setStyle(self, CSS_SERIES, `${Math.max(1, ...cells.map((c) => c.length))}`);
   setStyle(self, CSS_ZERO, scale(Math.min(max, Math.max(min, 0))));
 
+  // Pie draws the first value of each row as a slice of the total. Negative values can not be drawn as slices
+  const slices = values.map(([value]) => (isPie && value > 0 ? value : 0));
+  const total = sum(slices);
+  let turn = 0;
   let maxChars = 1;
+
+  // Where each value starts and ends, where stacked values starts where the previous value in the row ended
+  const extents = values.map((row) => {
+    let pos = 0;
+    let neg = 0;
+    return row.map((value) => {
+      if (!isValid(value)) return null;
+      const base = isStacked ? (value < 0 ? neg : pos) : 0;
+      if (value > 0) pos += value;
+      if (value < 0) neg += value;
+      return {
+        from: Math.min(base, base + value),
+        to: Math.max(base, base + value),
+      };
+    });
+  });
 
   cells.forEach((row, rowIndex) => {
     const isSameBody =
-      rows[rowIndex].parentNode === rows[rowIndex + 1]?.parentNode; // Lines are never drawn between <tbody> elements
-    let pos = 0;
-    let neg = 0;
-    row.forEach((cell, index) => {
-      const value = values[rowIndex][index];
-      const next = isSameBody ? values[rowIndex + 1][index] : Number.NaN;
-      const base = isStacked ? (value < 0 ? neg : pos) : 0;
-      const ok = isValid(value);
+      rows[rowIndex].parentNode === rows[rowIndex + 1]?.parentNode; // Lines and areas are never drawn between <tbody> elements
 
-      if (ok && value > 0) pos += value;
-      if (ok && value < 0) neg += value;
+    row.forEach((cell, index) => {
       const chars = cell.textContent?.trim().length || 0; // Lets CSS know how much room the value needs
+      const value = values[rowIndex][index];
+      const extent = extents[rowIndex][index];
+      const next =
+        (isSameBody && extent && extents[rowIndex + 1][index]) || null;
 
       maxChars = Math.max(maxChars, chars);
       setStyle(cell, CSS_CHARS, `${chars}`);
-      setStyle(cell, CSS_VALUE, ok ? scale(value) : null);
-      setStyle(cell, CSS_FROM, ok ? scale(Math.min(base, base + value)) : null);
-      setStyle(cell, CSS_TO, ok ? scale(Math.max(base, base + value)) : null);
-      setStyle(cell, CSS_NEXT, ok && isValid(next) ? scale(next) : null);
+
+      if (isPie) {
+        const share = index ? 0 : slices[rowIndex] / total || 0;
+        setStyle(cell, CSS_VALUE, share ? round(share) : null);
+        setStyle(cell, CSS_FROM, share ? round(turn) : null);
+        turn += share;
+        setStyle(cell, CSS_TO, share ? round(turn) : null);
+        setStyle(cell, CSS_NEXT, null);
+        setStyle(cell, CSS_NEXT_FROM, null);
+        return;
+      }
+
+      // Areas use the stacked values, as the line on top of each area follows the stack
+      setStyle(
+        cell,
+        CSS_VALUE,
+        extent ? scale(isArea ? extent.to : value) : null,
+      );
+      setStyle(cell, CSS_FROM, extent ? scale(extent.from) : null);
+      setStyle(cell, CSS_TO, extent ? scale(extent.to) : null);
+      setStyle(
+        cell,
+        CSS_NEXT,
+        next ? scale(isArea ? next.to : values[rowIndex + 1][index]) : null,
+      );
+      setStyle(cell, CSS_NEXT_FROM, next && isArea ? scale(next.from) : null);
     });
   });
 
@@ -220,6 +262,11 @@ const render = (self: DSChartElement) => {
 
   if (!isNamed && !table.querySelector(':scope > caption'))
     warn(`Missing <caption>, ${ARIA_LABEL} or ${ARIA_LABELLEDBY} on:`, table);
+  if (isPie && rows.length > 6)
+    warn(
+      'Pie only has six combinations of color and pattern, use fewer rows in:',
+      table,
+    );
   if (isMissingHeaders)
     warn(
       'Missing <thead>, or <th scope="row"> as first cell in rows of:',

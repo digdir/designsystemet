@@ -35,8 +35,8 @@ Webkomponenten leser tallene i tabellen og sender dem videre til CSS-en som CSS-
 
 | Attributt | Verdier | Standard | Beskrivelse |
 |---|---|---|---|
-| `data-variant` | `column`, `bar`, `line`, `table` | `column` | Hvordan tabellen tegnes. `table` viser tabellen slik den er. |
-| `data-stacked` | boolsk | av | Stabler verdiene i hver rad. Kun for `column` og `bar`. |
+| `data-variant` | `column`, `bar`, `line`, `area`, `pie`, `donut`, `table` | `column` | Hvordan tabellen tegnes. `table` viser tabellen slik den er. |
+| `data-stacked` | boolsk | av | Stabler verdiene i hver rad. Kun for `column` og `bar`, siden `area` alltid er stablet. |
 | `data-show-values` | boolsk | av | Viser alltid verdiene i diagrammet. `bar` viser alltid verdier. |
 | `data-min` | tall | `0` | Utvider aksen ned til denne verdien. Kan ikke være høyere enn null eller den laveste verdien i tabellen. |
 | `data-max` | tall | høyeste verdi | Utvider aksen opp til denne verdien, for eksempel for å gi flere diagrammer samme skala. Kan ikke være lavere enn den høyeste verdien i tabellen. |
@@ -103,9 +103,9 @@ Hvis du endrer fargene, må du selv sørge for at hver farge har minst 3:1 kontr
 | `<ds-chart>` | `--_ds-chart-series` | Antall serier |
 | `<ds-chart>` | `--_ds-chart-zero` | Hvor null er på aksen |
 | `<ds-chart>` | `--_ds-chart-max-chars` | Antall tegn i den lengste verdien |
-| `<td>` | `--_ds-chart-value` | Hvor verdien er på aksen |
-| `<td>` | `--_ds-chart-from`, `--_ds-chart-to` | Hvor søylen eller stolpen starter og slutter, også når den er stablet |
-| `<td>` | `--_ds-chart-next` | Verdien til neste rad i samme serie, brukes til å tegne linjer |
+| `<td>` | `--_ds-chart-value` | Hvor verdien er på aksen. For `area`, hvor den stablede verdien er, og for `pie` og `donut`, andelen av totalen |
+| `<td>` | `--_ds-chart-from`, `--_ds-chart-to` | Hvor søylen eller stolpen starter og slutter, også når den er stablet. For `pie` og `donut`, hvor kakestykket starter og slutter |
+| `<td>` | `--_ds-chart-next` | Verdien til neste rad i samme serie, brukes til å tegne linjer. For `area` settes også `--_ds-chart-next-from` |
 | `<td>` | `--_ds-chart-chars` | Antall tegn i verdien, brukes til å skjule verdier som ikke får plass |
 
 Hvis du ikke vil bruke JavaScript, kan du sette de samme CSS-variablene på serveren og bruke `<div class="ds-chart">`. Da må du også legge på rollene som `<ds-chart>` legger på: `role="table"` på `<table>`, `rowgroup` på `<thead>`, `<tbody>` og `<tfoot>`, `row` på `<tr>`, `columnheader` og `rowheader` på `<th>`, og `cell` på `<td>`. Dette sikrer at diagrammet leses som en tabell i alle nettlesere. Logikken for skalaen er eksportert for å hjelpe med utregningene:

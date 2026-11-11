@@ -128,6 +128,69 @@ describe('ds-chart', () => {
     );
   });
 
+  it('draws first value of each row as slices when pie', async () => {
+    const { cells, css } = await render(
+      'data-variant="pie"',
+      `<tr><th>A</th><td>50</td><td>999</td></tr>
+       <tr><th>B</th><td>-10</td><td>999</td></tr>
+       <tr><th>C</th><td>–</td><td>999</td></tr>
+       <tr><th>D</th><td>150</td><td>999</td></tr>`,
+    );
+    const slice = (cell: HTMLElement) =>
+      `${css(cell, 'from')}-${css(cell, 'to')}`;
+
+    expect(slice(cells[0])).toBe('0-0.25');
+    expect(slice(cells[2])).toBe('-'); // Negative values can not be slices
+    expect(slice(cells[4])).toBe('-'); // Missing values are skipped
+    expect(slice(cells[6])).toBe('0.25-1');
+    expect(css(cells[6], 'value')).toBe('0.75'); // Share of total
+    expect(slice(cells[1])).toBe('-'); // Only first value is drawn
+    expect(cells[1]).toHaveAttribute('role', 'cell');
+  });
+
+  it('draws donut as pie', async () => {
+    const { cells, css } = await render(
+      'data-variant="donut"',
+      `<tr><th>A</th><td>1</td></tr><tr><th>B</th><td>3</td></tr>`,
+    );
+    expect(css(cells[1], 'from')).toBe('0.25');
+    expect(css(cells[1], 'to')).toBe('1');
+  });
+
+  it('always stacks area, and tells where next value starts and ends', async () => {
+    const { chart, cells, css } = await render(
+      'data-variant="area"',
+      `<tr><th>A</th><td>100</td><td>100</td></tr>
+       <tr><th>B</th><td>50</td><td>150</td></tr>
+       <tr><th>C</th><td>–</td><td>100</td></tr>`,
+    );
+    const area = (cell: HTMLElement) =>
+      ['value', 'from', 'to', 'next-from', 'next']
+        .map((name) => css(cell, name))
+        .join(' ');
+
+    expect(css(chart, 'axis')).toContain('"200'); // Highest sum
+    expect(area(cells[0])).toBe('0.5 0 0.5 0 0.25');
+    expect(area(cells[1])).toBe('1 0.5 1 0.25 1');
+    expect(area(cells[2])).toBe('0.25 0 0.25  '); // Next value is missing
+    expect(area(cells[3])).toBe('1 0.25 1 0 0.5');
+    expect(area(cells[5])).toBe('0.5 0 0.5  '); // Last row
+
+    chart.setAttribute('data-variant', 'line');
+    expect(area(cells[1])).toBe('0.6667 0 0.6667  1'); // Lines are not stacked
+  });
+
+  it('warns when pie has more than six slices', async () => {
+    const log = vi.spyOn(console, 'log').mockImplementation(() => {});
+    const rows = Array.from(
+      { length: 7 },
+      (_, i) => `<tr><th>${i}</th><td>1</td></tr>`,
+    );
+    await render('data-variant="pie"', rows.join(''));
+    expect(log).toHaveBeenCalledTimes(1);
+    log.mockRestore();
+  });
+
   it('keeps table semantics', async () => {
     const { table, cells } = await render();
 

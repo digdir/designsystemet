@@ -8,7 +8,7 @@ Chart er under utvikling. Har du tilbakemelding eller innspill, meld fra på [Gi
 
 <Story story="Preview" layout="block" />
 
-Chart tegner en vanlig [tabell](/no/components/docs/table/overview) som et søyle-, stolpe- eller linjediagram. Du skriver tabellen, og diagrammet tegnes ut fra tallene i den. Tabellen blir aldri erstattet, så skjermlesere leser diagrammet som en tabell. La alle andre også få bytte til tabellvisning, slik som i eksempelet over.
+Chart tegner en vanlig [tabell](/no/components/docs/table/overview) som et søyle-, stolpe-, linje-, areal-, kake- eller smultringdiagram. Du skriver tabellen, og diagrammet tegnes ut fra tallene i den. Tabellen blir aldri erstattet, så skjermlesere leser diagrammet som en tabell. La alle andre også få bytte til tabellvisning, slik som i eksempelet over.
 
 Chart er ment for enkle diagrammer med få serier. Det er et fundament du kan bygge videre på, ikke et fullverdig diagrambibliotek.
 
@@ -18,7 +18,7 @@ Chart er ment for enkle diagrammer med få serier. Det er et fundament du kan by
 
 **Unngå chart når**
 - brukerne først og fremst skal lese eller sammenligne nøyaktige tall, bruk heller en [tabell](/no/components/docs/table/overview)
-- du trenger kakediagram, kart, zooming eller andre avanserte visualiseringer
+- du trenger kart, zooming eller andre avanserte visualiseringer
 - du har flere enn seks serier, eller så mange kategorier at kategorinavnene ikke får plass
 
 ## Eksempel
@@ -28,10 +28,25 @@ Bruk `line` for å vise utvikling over tid. Hver serie har sin egen punktform, s
 
 <Story story="Line" layout="block" />
 
+### Areal
+Bruk `area` for å vise hvordan en total og delene den består av utvikler seg over tid. Arealer stables alltid oppå hverandre, siden arealer foran hverandre ville skjult verdier. Det gjør totalen lett å lese, men de enkelte delene vanskeligere, bortsett fra den nederste.
+
+<Story story="Area" layout="block" />
+
 ### Stolpe
 Bruk `bar` når kategorinavnene er lange, eller når det er mange kategorier. Liggende stolper viser alltid verdien, i enden av stolpen eller inni hvert segment når de er stablet.
 
 <Story story="Bar" layout="block" />
+
+### Kake
+Bruk `pie` for å vise hvordan en helhet er delt i noen få deler. Hver rad er et kakestykke, og tabellen vises som tegnforklaring med verdiene, siden kakestykker er vanskelige å sammenligne med øyet. Bruk maks seks rader, og bare positive verdier. Har tabellen flere kolonner med verdier, tegnes bare den første.
+
+<Story story="Pie" layout="block" />
+
+### Smultring
+`donut` er en kake med hull, og fungerer på samme måte. Endre størrelsen på hullet med `--dsc-chart-hole-size`.
+
+<Story story="Donut" layout="block" />
 
 ### Stablet
 Bruk `data-stacked` for å vise hvordan hver kategori er delt opp. Stablede diagrammer gjør det lett å sammenligne totaler, men vanskeligere å sammenligne de enkelte delene. Kombiner med `data-show-values` for å vise verdien inni hvert segment. Verdier som ikke får plass i segmentet sitt, skjules.

@@ -655,7 +655,7 @@ export const SixSeriesEn = () => (
 
 export const Live = () => {
   const [live, setLive] = useState(true);
-  const [rows, setRows] = useState<[string, number, number][]>([]);
+  const [rows, setRows] = useState<[number, string, number, number][]>([]);
 
   useEffect(() => {
     if (!live) return;
@@ -668,7 +668,10 @@ export const Live = () => {
     const onMove = () => moves++;
     const timer = setInterval(() => {
       const time = new Date().toLocaleTimeString('nb');
-      setRows((rows) => [...rows.slice(-7), [time, frames, moves]]); // Keep the last 8 seconds
+      setRows((rows) => [
+        ...rows.slice(-7), // Keep the last 8 seconds
+        [(rows.at(-1)?.[0] ?? 0) + 1, time, frames, moves],
+      ]);
       frames = moves = 0;
     }, 1000);
 
@@ -705,8 +708,8 @@ export const Live = () => {
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {rows.map(([time, frames, moves]) => (
-            <Table.Row key={time}>
+          {rows.map(([id, time, frames, moves]) => (
+            <Table.Row key={id}>
               <Table.HeaderCell scope='row'>{time}</Table.HeaderCell>
               <Table.Cell>{frames}</Table.Cell>
               <Table.Cell>{moves}</Table.Cell>
@@ -720,7 +723,7 @@ export const Live = () => {
 
 export const LiveEn = () => {
   const [live, setLive] = useState(true);
-  const [rows, setRows] = useState<[string, number, number][]>([]);
+  const [rows, setRows] = useState<[number, string, number, number][]>([]);
 
   useEffect(() => {
     if (!live) return;
@@ -733,7 +736,10 @@ export const LiveEn = () => {
     const onMove = () => moves++;
     const timer = setInterval(() => {
       const time = new Date().toLocaleTimeString('en-GB');
-      setRows((rows) => [...rows.slice(-7), [time, frames, moves]]); // Keep the last 8 seconds
+      setRows((rows) => [
+        ...rows.slice(-7), // Keep the last 8 seconds
+        [(rows.at(-1)?.[0] ?? 0) + 1, time, frames, moves],
+      ]);
       frames = moves = 0;
     }, 1000);
 
@@ -766,8 +772,8 @@ export const LiveEn = () => {
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {rows.map(([time, frames, moves]) => (
-            <Table.Row key={time}>
+          {rows.map(([id, time, frames, moves]) => (
+            <Table.Row key={id}>
               <Table.HeaderCell scope='row'>{time}</Table.HeaderCell>
               <Table.Cell>{frames}</Table.Cell>
               <Table.Cell>{moves}</Table.Cell>
@@ -778,3 +784,249 @@ export const LiveEn = () => {
     </EXPERIMENTAL_Chart>
   );
 };
+
+export const Pie = () => (
+  <EXPERIMENTAL_Chart data-variant='pie'>
+    <Table>
+      <caption>Husholdninger etter type, prosent</caption>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell scope='col'>Husholdningstype</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Andel</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Aleneboende</Table.HeaderCell>
+          <Table.Cell>39</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Par uten barn</Table.HeaderCell>
+          <Table.Cell>24</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Par med barn</Table.HeaderCell>
+          <Table.Cell>21</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Enslig med barn</Table.HeaderCell>
+          <Table.Cell>6</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Andre husholdninger</Table.HeaderCell>
+          <Table.Cell>10</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </EXPERIMENTAL_Chart>
+);
+
+export const PieEn = () => (
+  <EXPERIMENTAL_Chart data-variant='pie'>
+    <Table>
+      <caption>Households by type, per cent</caption>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell scope='col'>Type of household</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Share</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Living alone</Table.HeaderCell>
+          <Table.Cell>39</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>
+            Couple without children
+          </Table.HeaderCell>
+          <Table.Cell>24</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Couple with children</Table.HeaderCell>
+          <Table.Cell>21</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Single parent</Table.HeaderCell>
+          <Table.Cell>6</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Other households</Table.HeaderCell>
+          <Table.Cell>10</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </EXPERIMENTAL_Chart>
+);
+
+export const Area = () => (
+  <EXPERIMENTAL_Chart data-variant='area'>
+    <Table>
+      <caption>Strømproduksjon etter kilde, TWh</caption>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell scope='col'>År</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Vannkraft</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Vindkraft</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Solkraft</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2019</Table.HeaderCell>
+          <Table.Cell>124</Table.Cell>
+          <Table.Cell>6</Table.Cell>
+          <Table.Cell>0,1</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2020</Table.HeaderCell>
+          <Table.Cell>139</Table.Cell>
+          <Table.Cell>10</Table.Cell>
+          <Table.Cell>0,2</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2021</Table.HeaderCell>
+          <Table.Cell>142</Table.Cell>
+          <Table.Cell>12</Table.Cell>
+          <Table.Cell>0,4</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2022</Table.HeaderCell>
+          <Table.Cell>127</Table.Cell>
+          <Table.Cell>14</Table.Cell>
+          <Table.Cell>1,5</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2023</Table.HeaderCell>
+          <Table.Cell>134</Table.Cell>
+          <Table.Cell>15</Table.Cell>
+          <Table.Cell>4</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2024</Table.HeaderCell>
+          <Table.Cell>139</Table.Cell>
+          <Table.Cell>17</Table.Cell>
+          <Table.Cell>7</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </EXPERIMENTAL_Chart>
+);
+
+export const AreaEn = () => (
+  <EXPERIMENTAL_Chart data-variant='area'>
+    <Table>
+      <caption>Electricity production by source, TWh</caption>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell scope='col'>Year</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Hydro power</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Wind power</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Solar power</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2019</Table.HeaderCell>
+          <Table.Cell>124</Table.Cell>
+          <Table.Cell>6</Table.Cell>
+          <Table.Cell>0.1</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2020</Table.HeaderCell>
+          <Table.Cell>139</Table.Cell>
+          <Table.Cell>10</Table.Cell>
+          <Table.Cell>0.2</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2021</Table.HeaderCell>
+          <Table.Cell>142</Table.Cell>
+          <Table.Cell>12</Table.Cell>
+          <Table.Cell>0.4</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2022</Table.HeaderCell>
+          <Table.Cell>127</Table.Cell>
+          <Table.Cell>14</Table.Cell>
+          <Table.Cell>1.5</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2023</Table.HeaderCell>
+          <Table.Cell>134</Table.Cell>
+          <Table.Cell>15</Table.Cell>
+          <Table.Cell>4</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>2024</Table.HeaderCell>
+          <Table.Cell>139</Table.Cell>
+          <Table.Cell>17</Table.Cell>
+          <Table.Cell>7</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </EXPERIMENTAL_Chart>
+);
+
+export const Donut = () => (
+  <EXPERIMENTAL_Chart data-variant='donut'>
+    <Table>
+      <caption>Hovedkilde til oppvarming i boliger, prosent</caption>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell scope='col'>Oppvarming</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Andel</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Varmepumpe</Table.HeaderCell>
+          <Table.Cell>46</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Panelovner</Table.HeaderCell>
+          <Table.Cell>29</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Vedovn</Table.HeaderCell>
+          <Table.Cell>14</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Fjernvarme</Table.HeaderCell>
+          <Table.Cell>11</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </EXPERIMENTAL_Chart>
+);
+
+export const DonutEn = () => (
+  <EXPERIMENTAL_Chart data-variant='donut'>
+    <Table>
+      <caption>Main source of heating in dwellings, per cent</caption>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell scope='col'>Heating</Table.HeaderCell>
+          <Table.HeaderCell scope='col'>Share</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Heat pump</Table.HeaderCell>
+          <Table.Cell>46</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Panel heaters</Table.HeaderCell>
+          <Table.Cell>29</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>Wood stove</Table.HeaderCell>
+          <Table.Cell>14</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell scope='row'>District heating</Table.HeaderCell>
+          <Table.Cell>11</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  </EXPERIMENTAL_Chart>
+);

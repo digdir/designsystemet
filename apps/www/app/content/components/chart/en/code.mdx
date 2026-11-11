@@ -35,8 +35,8 @@ The web component reads the numbers in the table and passes them to the CSS as C
 
 | Attribute | Values | Default | Description |
 |---|---|---|---|
-| `data-variant` | `column`, `bar`, `line`, `table` | `column` | How the table is drawn. `table` shows the table as it is. |
-| `data-stacked` | boolean | off | Stacks the values of each row. Only for `column` and `bar`. |
+| `data-variant` | `column`, `bar`, `line`, `area`, `pie`, `donut`, `table` | `column` | How the table is drawn. `table` shows the table as it is. |
+| `data-stacked` | boolean | off | Stacks the values of each row. Only for `column` and `bar`, as `area` is always stacked. |
 | `data-show-values` | boolean | off | Always shows the values in the chart. `bar` always shows values. |
 | `data-min` | number | `0` | Extends the axis down to this value. Can not be higher than zero or the lowest value in the table. |
 | `data-max` | number | highest value | Extends the axis up to this value, for example to give several charts the same scale. Can not be lower than the highest value in the table. |
@@ -103,9 +103,9 @@ If you change the colors, you must make sure that each color has at least 3:1 co
 | `<ds-chart>` | `--_ds-chart-series` | Number of series |
 | `<ds-chart>` | `--_ds-chart-zero` | Where zero is on the axis |
 | `<ds-chart>` | `--_ds-chart-max-chars` | Number of characters in the longest value |
-| `<td>` | `--_ds-chart-value` | Where the value is on the axis |
-| `<td>` | `--_ds-chart-from`, `--_ds-chart-to` | Where the column or bar starts and ends, also when stacked |
-| `<td>` | `--_ds-chart-next` | The value of the next row in the same series, used to draw lines |
+| `<td>` | `--_ds-chart-value` | Where the value is on the axis. For `area`, where the stacked value is, and for `pie` and `donut`, the share of the total |
+| `<td>` | `--_ds-chart-from`, `--_ds-chart-to` | Where the column or bar starts and ends, also when stacked. For `pie` and `donut`, where the slice starts and ends |
+| `<td>` | `--_ds-chart-next` | The value of the next row in the same series, used to draw lines. For `area`, `--_ds-chart-next-from` is also set |
 | `<td>` | `--_ds-chart-chars` | Number of characters in the value, used to hide values that do not fit |
 
 If you do not want to use JavaScript, you can set the same CSS variables on the server and use `<div class="ds-chart">`. You must then also add the roles `<ds-chart>` adds: `role="table"` on `<table>`, `rowgroup` on `<thead>`, `<tbody>` and `<tfoot>`, `row` on `<tr>`, `columnheader` and `rowheader` on `<th>`, and `cell` on `<td>`. This ensures the chart is read as a table in all browsers. The scale logic is exported to help with the calculations:

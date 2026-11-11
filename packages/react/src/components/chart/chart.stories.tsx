@@ -15,7 +15,7 @@ const meta = preview.meta({
   argTypes: {
     'data-variant': {
       control: 'radio',
-      options: ['column', 'bar', 'line', 'table'],
+      options: ['column', 'bar', 'line', 'area', 'pie', 'donut', 'table'],
     },
     'data-stacked': { control: 'boolean' },
     'data-show-values': { control: 'boolean' },
@@ -115,6 +115,42 @@ const waste: Data = {
     ['2022', 172, 62, 48, 19, 12, 9],
     ['2023', 165, 68, 44, 20, 14, 9],
     ['2024', 158, 74, 41, 21, 17, 10],
+  ],
+};
+
+const households: Data = {
+  caption: 'Husholdninger etter type, prosent',
+  head: ['Husholdningstype', 'Andel'],
+  rows: [
+    ['Aleneboende', 39],
+    ['Par uten barn', 24],
+    ['Par med barn', 21],
+    ['Enslig med barn', 6],
+    ['Andre husholdninger', 10],
+  ],
+};
+
+const production: Data = {
+  caption: 'Strømproduksjon etter kilde, TWh',
+  head: ['År', 'Vannkraft', 'Vindkraft', 'Solkraft'],
+  rows: [
+    ['2019', 124, 6, 0.1],
+    ['2020', 139, 10, 0.2],
+    ['2021', 142, 12, 0.4],
+    ['2022', 127, 14, 1.5],
+    ['2023', 134, 15, 4],
+    ['2024', 139, 17, 7],
+  ],
+};
+
+const heating: Data = {
+  caption: 'Hovedkilde til oppvarming i boliger, prosent',
+  head: ['Oppvarming', 'Andel'],
+  rows: [
+    ['Varmepumpe', 46],
+    ['Panelovner', 29],
+    ['Vedovn', 14],
+    ['Fjernvarme', 11],
   ],
 };
 
@@ -220,6 +256,43 @@ export const WithTableToggle = meta.story({
 });
 
 /**
+ * Each row is a slice, and the table is shown as legend with the values.
+ * Use for parts of a whole, with six rows at most.
+ */
+export const Pie = meta.story({
+  args: { 'data-variant': 'pie' },
+  render: (args: ChartProps) => (
+    <Chart {...args}>
+      <DataTable {...households} />
+    </Chart>
+  ),
+});
+
+/**
+ * Pie with a hole. Change the size of the hole with `--dsc-chart-hole-size`.
+ */
+export const Donut = meta.story({
+  args: { 'data-variant': 'donut' },
+  render: (args: ChartProps) => (
+    <Chart {...args}>
+      <DataTable {...heating} />
+    </Chart>
+  ),
+});
+
+/**
+ * Areas are always stacked, as areas on top of each other would hide values.
+ */
+export const Area = meta.story({
+  args: { 'data-variant': 'area' },
+  render: (args: ChartProps) => (
+    <Chart {...args}>
+      <DataTable {...production} />
+    </Chart>
+  ),
+});
+
+/**
  * Chart has six combinations of color, pattern and shape, so six series is the
  * most a chart can show before the combinations repeat.
  */
@@ -258,7 +331,7 @@ export const CustomColors = meta.story({
  */
 const LiveChart = () => {
   const [live, setLive] = useState(true);
-  const [rows, setRows] = useState<[string, number, number][]>([]);
+  const [rows, setRows] = useState<[number, string, number, number][]>([]);
 
   useEffect(() => {
     if (!live) return;
@@ -271,7 +344,10 @@ const LiveChart = () => {
     const onMove = () => moves++;
     const timer = setInterval(() => {
       const time = new Date().toLocaleTimeString('nb');
-      setRows((rows) => [...rows.slice(-7), [time, frames, moves]]); // Keep the last 8 seconds
+      setRows((rows) => [
+        ...rows.slice(-7), // Keep the last 8 seconds
+        [(rows.at(-1)?.[0] ?? 0) + 1, time, frames, moves],
+      ]);
       frames = moves = 0;
     }, 1000);
 
@@ -308,8 +384,8 @@ const LiveChart = () => {
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {rows.map(([time, frames, moves]) => (
-            <Table.Row key={time}>
+          {rows.map(([id, time, frames, moves]) => (
+            <Table.Row key={id}>
               <Table.HeaderCell scope='row'>{time}</Table.HeaderCell>
               <Table.Cell>{frames}</Table.Cell>
               <Table.Cell>{moves}</Table.Cell>
