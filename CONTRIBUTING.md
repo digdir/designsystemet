@@ -100,6 +100,7 @@ When creating a pull request for Designsystemet, there are a few things to keep 
 We use [Changesets](https://github.com/changesets/changesets) to manage versioning and changelogs.
 
 Changes in `/packages/*`, will flag a need for adding a changeset to document changes.
+So will changes to patterns and best practices on designsystemet.no (`apps/www/app/content/patterns` and `apps/www/app/content/best-practices`). Select `@web/www` when writing a changeset for these, or add the `skip-docs-changeset` label to the pull request if users don't need to know about the change, like a fixed typo.
 We recommend you look at previous releases and what wording has been used there to describe changes.
 At a minimum, a prefix for which part or component the changes apply to.
 
