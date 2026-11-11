@@ -1,10 +1,14 @@
-import parserBabel from 'prettier/plugins/babel';
-import parserEstree from 'prettier/plugins/estree';
-import parserHtml from 'prettier/plugins/html';
-import parserMarkdown from 'prettier/plugins/markdown';
-import parserPostcss from 'prettier/plugins/postcss';
-import parserTypescript from 'prettier/plugins/typescript';
-import * as prettier from 'prettier/standalone';
+/*
+ * Prettier and its parser plugins are large (several MB), so they're loaded on first use instead of with the page.
+ * Only the plugins for the language being formatted are loaded.
+ */
+const babel = () => import('prettier/plugins/babel');
+const estree = () => import('prettier/plugins/estree');
+const html = () => import('prettier/plugins/html');
+const markdown = () => import('prettier/plugins/markdown');
+const postcss = () => import('prettier/plugins/postcss');
+const typescript = () => import('prettier/plugins/typescript');
+const yaml = () => import('prettier/plugins/yaml');
 
 type SupportedLanguage =
   | 'json'
@@ -25,69 +29,69 @@ type SupportedLanguage =
 
 interface LanguageConfig {
   parser: string;
-  plugins: unknown[];
+  plugins: (() => Promise<unknown>)[];
 }
 
 const languageParserMap: Record<SupportedLanguage, LanguageConfig> = {
   json: {
     parser: 'json',
-    plugins: [parserBabel, parserEstree],
+    plugins: [babel, estree],
   },
   javascript: {
     parser: 'babel',
-    plugins: [parserBabel, parserEstree],
+    plugins: [babel, estree],
   },
   js: {
     parser: 'babel',
-    plugins: [parserBabel, parserEstree],
+    plugins: [babel, estree],
   },
   typescript: {
     parser: 'typescript',
-    plugins: [parserTypescript, parserEstree],
+    plugins: [typescript, estree],
   },
   ts: {
     parser: 'typescript',
-    plugins: [parserTypescript, parserEstree],
+    plugins: [typescript, estree],
   },
   jsx: {
     parser: 'babel',
-    plugins: [parserBabel, parserEstree],
+    plugins: [babel, estree],
   },
   tsx: {
     parser: 'typescript',
-    plugins: [parserTypescript, parserEstree],
+    plugins: [typescript, estree],
   },
   css: {
     parser: 'css',
-    plugins: [parserPostcss],
+    plugins: [postcss],
   },
   scss: {
     parser: 'scss',
-    plugins: [parserPostcss],
+    plugins: [postcss],
   },
   less: {
     parser: 'less',
-    plugins: [parserPostcss],
+    plugins: [postcss],
   },
   html: {
     parser: 'html',
-    plugins: [parserHtml],
+    plugins: [html],
   },
   markdown: {
     parser: 'markdown',
-    plugins: [parserMarkdown],
+    plugins: [markdown],
   },
   md: {
     parser: 'markdown',
-    plugins: [parserMarkdown],
+    plugins: [markdown],
   },
   yaml: {
     parser: 'yaml',
-    plugins: [parserBabel],
+    plugins: [yaml],
   },
   yml: {
     parser: 'yaml',
-    plugins: [parserBabel],
+    plugins: [yaml],
   },
 };
 
@@ -109,10 +113,14 @@ export async function prettifyCode(
   }
 
   try {
+    const [prettier, ...plugins] = await Promise.all([
+      import('prettier/standalone'),
+      ...config.plugins.map((load) => load()),
+    ]);
     const formatted = await prettier.format(code, {
       parser: config.parser,
       // biome-ignore lint: Prettier plugin types are complex and vary
-      plugins: config.plugins as any,
+      plugins: plugins as any,
     });
     return formatted;
   } catch (_error) {

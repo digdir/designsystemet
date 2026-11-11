@@ -1,6 +1,6 @@
 import type { Color } from '@digdir/designsystemet/internal';
-import { ColorModal } from '@internal/components';
 import { type JSX, useEffect, useRef, useState } from 'react';
+import { ColorModal } from '~/_components/color-modal/color-modal';
 
 type UseColorModalResult = {
   colorModalRef: React.RefObject<HTMLDialogElement | null>;

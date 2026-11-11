@@ -5,7 +5,7 @@ on:
     paths:
       - "packages/**"
       - "apps/**"
-      - "plugins/**"
+      - "figma/**"
       - "biome.jsonc"
 
 permissions:

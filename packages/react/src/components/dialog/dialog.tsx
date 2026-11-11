@@ -57,19 +57,9 @@ export type DialogProps = MergeRight<
 >;
 
 /**
- * Dialog component, used to display a dialog dialog.
+ * Dialog component, used to display a dialog.
  *
- * @example with TriggerContext
- * <Dialog.TriggerContext>
- *   <Dialog.Trigger>Open Dialog</Dialog.Trigger>
- *   <Dialog>
- *     <Dialog.Block>
- *       Content
- *     </Dialog.Block>
- *   </Dialog>
- * </Dialog.TriggerContext>
- *
- * @example without TriggerContext
+ * @example
  * const dialogRef = useRef<HTMLDialogElement>(null);
  *
  * ...
@@ -116,6 +106,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
 
     return (
       <Component
+        suppressHydrationWarning // Since dialog.ts will add aria-label attribute dynamically
         className={cl('ds-dialog', className)}
         data-placement={placement}
         data-modal={modal} // Needed for dialog-trigger.tsx

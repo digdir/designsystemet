@@ -3,7 +3,6 @@ import { generateColorScale, semanticColorSpec } from '../../../../colors/index.
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import type { Token, TokenSet } from '../../../types.ts';
-import { addSeverityColors } from '../../../utils.ts';
 
 /**
  * Group colors by color scheme, returning a partial record of color scales for the specified scheme.
@@ -44,7 +43,7 @@ export const getThemeColorScales = (
   colorScheme: ColorScheme,
 ): Record<string, ColorScale> => {
   const { overrides } = theme;
-  const colors: Record<string, CssColor> = { ...addSeverityColors(theme.colors), ...(overrides?.severity || {}) };
+  const colors: Record<string, CssColor> = { ...theme.colors, ...(overrides?.severity || {}) };
 
   const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
 

@@ -1,7 +1,6 @@
 import type { ColorScheme } from '@digdir/designsystemet/internal';
-import { Button } from '@digdir/designsystemet-react';
+import { ToggleGroup } from '@digdir/designsystemet-react';
 import { MoonIcon, SunIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
@@ -27,38 +26,35 @@ export const AppearanceToggle = ({
   const [, setQuery] = useSearchParams();
 
   return (
-    <div className={classes.toggle} role='radiogroup'>
+    <ToggleGroup
+      className={classes.group}
+      aria-label={t('appearanceToggle.label')}
+      value={colorScheme}
+      variant='secondary'
+      data-size='sm'
+      onChange={(value) =>
+        setQuery(
+          (previous) => {
+            previous.set('appearance', value);
+            return previous;
+          },
+          { replace: true, preventScrollReset: true },
+        )
+      }
+    >
       {colorSchemes.map((scheme) => (
-        <Button
-          data-size='sm'
-          className={cl(classes.item)}
+        <ToggleGroup.Item
+          className={classes.item}
           key={scheme.value}
-          onClick={() => {
-            setQuery(
-              (prev) => {
-                prev.set('appearance', scheme.value);
-                return prev;
-              },
-              {
-                replace: true,
-                preventScrollReset: true,
-              },
-            );
-          }}
-          variant={scheme.value === colorScheme ? 'primary' : 'secondary'}
-          data-color='neutral'
-          aria-label={`${t('appearanceToggle.set-to')} ${scheme.name} ${t('appearanceToggle.view')}`}
-          aria-checked={scheme.value === colorScheme}
-          aria-current={scheme.value === colorScheme}
-          role='radio'
+          value={scheme.value}
         >
           {' '}
           {scheme.value === 'light' && <SunIcon aria-hidden />}
           {scheme.value === 'dark' && <MoonIcon aria-hidden />}
           {scheme.name}
           {showLabel && <>{scheme.name}</>}
-        </Button>
+        </ToggleGroup.Item>
       ))}
-    </div>
+    </ToggleGroup>
   );
 };

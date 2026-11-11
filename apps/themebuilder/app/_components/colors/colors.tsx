@@ -4,19 +4,13 @@ import { Scale } from '../color-scale/color-scale';
 import classes from './colors.module.css';
 
 export const Colors = () => {
-  const { severityEnabled } = useThemebuilder();
-
   return (
     <div className={classes.rows}>
       <ThemeColors />
       <Divider />
       <NeutralColor />
-      {severityEnabled && (
-        <>
-          <Divider />
-          <SeverityColors />
-        </>
-      )}
+      <Divider />
+      <SeverityColors />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import no from '@internal/components/src/_locales/no';
+import colorModal from './no/color-modal';
 import themeModal from './no/theme-modal';
 
 export default {
@@ -23,7 +24,6 @@ export default {
         'Denne siden kan være slettet eller flyttet, eller det er en feil i lenken.',
     },
     generic: {
-      title: 'Feil',
       'go-to-homepage': 'Gå til forsiden',
     },
   },
@@ -36,6 +36,16 @@ export default {
   },
   themeBuilder: {
     title: 'Temabygger',
+    'active-theme': 'Tema',
+    'toggle-editor': 'Åpne eller lukke temaredigering',
+    'edit-themes': 'Rediger temaer',
+    'theme-names': 'Temanavn',
+    'remove-theme': 'Slett tema {{name}}',
+    'add-theme': 'Legg til tema',
+    'theme-name': 'Temanavn',
+    'invalid-theme-name':
+      'Bruk små bokstaver, tall og bindestreker mellom ord.',
+    'duplicate-theme-name': 'Et tema med dette navnet finnes allerede.',
     'documentation-link': 'Les dokumentasjon om eget tema',
   },
   configPaste: {
@@ -49,8 +59,6 @@ export default {
     'validation-success': 'Konfigurasjonen er gyldig! Velg et tema nedenfor.',
     'no-themes': 'Ingen temaer funnet i konfigurasjonen',
     'edit-theme': 'Rediger tema',
-    button: 'Fortsett fra konfigurasjonsfil',
-    'dialog-heading': 'Lim inn config',
     'import-config': 'Importer config',
   },
   tabs: {
@@ -66,8 +74,6 @@ export default {
       'Hver farge som blir valgt med verktøyet får sitt eget kort i seksjonen til høyre slik at du kan se hvordan fargene harmonerer sammen.',
     note: 'Merk at kontrastfargen inne i knappen endrer seg fra hvit til svart, avhengig av om den valgte fargen er lys eller mørk for å oppnå best mulig kontrast.',
     view: 'Visning:',
-    light: 'Lys',
-    dark: 'Mørk',
     'example-heading': 'Farger gjør livet mer fargerikt',
     checkbox: 'Checkbox',
     switch: 'Switch',
@@ -82,7 +88,6 @@ export default {
     password: 'Passord',
     'forgot-password': 'Glemt passord?',
     login: 'Logg inn',
-    'device-type': 'Enhetstype:',
     mobile: 'Mobil',
     tablet: 'Tablet',
     computer: 'Datamaskin',
@@ -91,12 +96,7 @@ export default {
     news: 'Nyheter',
     'news-title': 'Reiste alene til storbyen',
     'news-description': 'Mona kvist ville finne drømmen i New York City',
-    articles: 'Artikler',
-    contact: 'Kontakt',
     search: 'Søk',
-    menu: 'Meny',
-    subheading: 'Here is a sub heading',
-    'read-more': 'Les mer',
     'people-you-may-know': 'Folk du kanskje kjenner',
     follow: 'Følg',
     'all-users': 'Alle brukere',
@@ -110,12 +110,26 @@ export default {
     phone: 'Telefon',
     settings: 'Innstillinger',
     'admin-display': 'Her kan du administrere visning',
-    'dark-mode': 'Mørk modus',
     'display-mode': 'Visningsmodus',
     'select-color': 'Velg farge',
   },
+  'color-modal': colorModal,
   themeModal,
   colorPane: {
+    'token-overrides': 'Tokenoverstyringer',
+    'confirm-add-title': 'Legg til en farge i alle temaer?',
+    'confirm-add-description':
+      'Dette legger til en farge med samme startverdi i alle {{count}} temaer. Hvert tema kan deretter ha sin egen fargeverdi.',
+    'confirm-add': 'Legg til i alle temaer',
+    'confirm-remove-title': 'Slett en farge fra alle temaer?',
+    'confirm-remove-description':
+      'Dette sletter «{{name}}» og dens tokenoverstyringer fra alle {{count}} temaer. Dette kan ikke angres.',
+    'confirm-remove': 'Slett fra alle temaer',
+    'confirm-rename-title': 'Endre fargenavn i alle temaer?',
+    'confirm-rename-description':
+      'Dette endrer navnet fra «{{from}}» til «{{to}}» i alle {{count}} temaer, inkludert tokenoverstyringene. Eksisterende fargeverdier beholdes.',
+    'confirm-rename': 'Endre navn i alle temaer',
+    'name-duplicate-error': 'En farge med dette navnet finnes allerede',
     add: 'Legg til',
     'edit-color': 'Rediger farge',
     save: 'Lagre',
@@ -132,6 +146,7 @@ export default {
     color: 'Farge',
   },
   appearanceToggle: {
+    label: 'Utseende',
     light: 'Lys',
     dark: 'Mørk',
     'set-to': 'Sett til',
@@ -166,14 +181,15 @@ export default {
     'select-color': 'Velg farge for å se kontraster',
   },
   borderRadius: {
-    suggested: 'Foreslått basis Border radius',
-    manual: 'Manuell basis Border radius',
-    'define-value': 'Definer basisverdien for border-radius',
+    label: 'Hjørneavrunding',
+    suggested: 'Foreslått hjørneavrunding',
+    manual: 'Manuell hjørneavrunding',
+    'define-value': 'Definer basisverdien for hjørneavrunding',
     none: 'Ingen',
-    small: 'Small',
-    medium: 'Medium',
-    large: 'Large',
-    full: 'Full',
+    small: 'Liten',
+    medium: 'Middels',
+    large: 'Stor',
+    full: 'Maksimal',
   },
   overrides: {
     heading: 'Fargeoverstyringer',

@@ -1,4 +1,3 @@
-import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { ButtonHTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
@@ -38,9 +37,7 @@ const ComboboxClearButton = forwardRef<
       }}
       type='button'
       aria-label={clearButtonLabel}
-    >
-      <XMarkIcon height='1.5em' width='1.5em' title='Clear selection' />
-    </button>
+    />
   );
 });
 

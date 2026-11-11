@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { type CssColor, generateColorScale } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
+import { colorsSchema } from '../../../../schemas/schema-color.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
 import { generateColorScheme, getThemeColorScales, groupByScheme } from './color-scheme.ts';
 
@@ -121,9 +122,10 @@ describe('generateColorScheme', () => {
 describe('getThemeColorScales', () => {
   const NEUTRAL: CssColor = '#444444';
   const ACCENT: CssColor = '#0062BA';
-  const colors = { neutral: NEUTRAL, accent: ACCENT };
+  // Parsed like a validated config, which adds the default severity colors.
+  const colors = colorsSchema.parse({ neutral: NEUTRAL, accent: ACCENT });
 
-  it('adds the default severity colors after the theme colors', () => {
+  it('includes the severity colors after the theme colors', () => {
     const scales = getThemeColorScales({ colors }, 'light');
 
     expect(Object.keys(scales)).toEqual(['neutral', 'accent', 'info', 'success', 'warning', 'danger']);

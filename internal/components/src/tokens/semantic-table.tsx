@@ -21,7 +21,11 @@ export const SemanticVariablesTable = ({
   const previewTokens = tokens ?? semanticTokens;
 
   return (
-    <div key={caption} className={classes['overflow-table']}>
+    <div
+      key={caption}
+      className={`${classes['overflow-table']} ds-focus`}
+      tabIndex={0}
+    >
       <Table data-color='accent'>
         <caption>{caption}</caption>
         <Table.Head>

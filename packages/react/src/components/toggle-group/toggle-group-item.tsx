@@ -68,10 +68,10 @@ export const ToggleGroupItem = forwardRef<
   return (
     <label
       ref={ref}
-      {...labelProps}
-      className={cl('ds-button', className)}
-      data-variant='tertiary'
       aria-disabled={ariaDisabled ?? disabled}
+      className={cl('ds-button', className)}
+      data-variant='tertiary' // @deprecated No need to set data-variant, just kept for backwards compatibility
+      {...labelProps}
     >
       <input
         aria-disabled={ariaDisabled}

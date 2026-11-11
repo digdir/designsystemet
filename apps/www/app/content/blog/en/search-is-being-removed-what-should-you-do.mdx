@@ -1,0 +1,59 @@
+---
+title: Search is being removed, what should you do?
+description: We are removing Search from Designsystemet. Here is why, and how can you build your own search field with a few lines of CSS?
+date: 2026-11-04
+author: Designsystemet
+imageSrc: /img/blog/search-is-being-removed-what-should-you-do/search.webp
+imageAlt: Illustration of a search field with a magnifying glass icon.
+search_terms: search, search field, searchfield
+---
+
+`Search` is deprecated and will be removed in the next major version of Designsystemet. Your code still works for now, but your editor will mark the component as deprecated.
+
+## Why are we removing `Search`?
+
+A search field looks simple, but there are many ways to make one. Some services want a search button, others only an icon. Some search as you type, others when you press <kbd>Enter</kbd>. Some show suggestions, others go straight to the results. And a search field in a header often looks quite different from one in a form.
+
+The `Search` component supported some situations, but not all. It also made some choices for you that don't necessarily suit everyone. For example, it decided where the icon goes and how the search button is attached to the field. If your needs were different, you had to work against the component instead of with it.
+
+We think these choices belong to you. You know your users and your content best. So instead of one component with fixed behaviour, we'd rather give you the building blocks:
+
+- **`Input` with `type="search"`** gives you a search field that screen readers announce as a search field. Add `enterkeyhint="search"` if you want mobile keyboards to show a search key.
+- **`Button`** to submit the search.
+
+## What should you do if you're using it?
+
+You don't need to change anything right away, but you should switch before the next major version.
+
+In many cases, all you need is an `Input` with `type="search"` inside a `Field` with a `Label`.
+
+If you want a search button, a search icon or a clear button in the field, you'll find examples at the bottom of this article. It's a small amount of CSS that you can copy and change to suit your needs.
+
+| Before          | After                                          |
+| --------------- | ---------------------------------------------- |
+| `Search`        | A `<form>` or `<div>` with your own class name |
+| `Search.Input`  | `Input` with `type="search"`                   |
+| `Search.Button` | `Button` with `type="submit"`                  |
+| `Search.Clear`  | `<button>` with `type="reset"`                 |
+
+In Figma, you can keep the Search component as it is, or adapt it to your needs.
+
+## Examples
+
+In [this CodeSandbox (codesandbox.io)](https://codesandbox.io/p/sandbox/9jhssd), you'll find examples of search fields made with our React components: with a search icon, with a visible label, with a search button and with a clear button.
+
+The styles are in the file `search.css` in the sandbox. It has everything `Search` did, in one file. To use it:
+
+1. Copy `search.css` into your project, and import it after `@digdir/designsystemet-css`.
+2. Add the class `search` to a `<form>` or `<div>` around your `Input` and `Button`. The class name is just an example, so feel free to use one that fits your project.
+3. Give the search field a name. A visible label is best, but `aria-label` is fine when it's obvious what the field is for, like a search field in the header.
+
+If you want a clear button, use a `<button type="reset">` inside a `<form>`, and give the field a `placeholder`. You can use `placeholder=" "` if you don't want any placeholder text. The button only shows an icon, so give it an `aria-label`, such as "Clear". The comment at the top of `search.css` explains the rest.
+
+A reset button resets every field in the form, not just the search field. It also does nothing if you control the field with `value` and `onChange` in React. In that case, clear your state in the button's `onClick` instead.
+
+## Questions?
+
+If you have questions or need help switching, get in touch on [Slack](/slack) or create an issue on [GitHub (github.com)](https://github.com/digdir/designsystemet/issues/new).
+
+<Contributors authors={['Michael Marszalek']} />

@@ -49,9 +49,14 @@ const BorderRadius = ({ value }: { value: string }) => {
 
 const Opacity = ({ value }: { value: string }) => {
   return (
-    <div style={{ opacity: value }} lang='en'>
-      opacity
-    </div>
+    <div
+      aria-hidden='true'
+      className={classes.color}
+      style={{
+        opacity: value,
+        backgroundColor: 'var(--ds-color-neutral-text-default)',
+      }}
+    />
   );
 };
 

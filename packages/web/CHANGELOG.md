@@ -1,5 +1,41 @@
 # @digdir/designsystemet-web
 
+## 1.24.0
+
+### Patch Changes
+
+- **Suggestion:** No longer counts the hidden empty option in the screen reader hit count when other options are shown ([#5457](https://github.com/digdir/designsystemet/pull/5457))
+
+- Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479))
+
+- **Dialog:** Fixed accessible name warning when heading is present ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+
+- Update npm non-major dependencies ([#5553](https://github.com/digdir/designsystemet/pull/5553))
+
+- Update npm non-major dependencies ([#5521](https://github.com/digdir/designsystemet/pull/5521))
+
+- Automatically load relevant helpers when using isolated component files (`dialog` loads `invokers`, `field` loads `readonly`, `togglegroup` loads `readonly` and `focusgroup`) ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
+- **Dialog:** Automatically uses the first heading as its accessible name if one is missing, and warns when neither is provided. ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
+## 1.23.0
+
+### Patch Changes
+
+- **Pagination:** Previous and next buttons now respect existing `aria-label` attributes. ([#5401](https://github.com/digdir/designsystemet/pull/5401)) by [@stianmorsund](https://github.com/stianmorsund)
+
+- Update npm non-major dependencies ([#5373](https://github.com/digdir/designsystemet/pull/5373))
+
+- **Popover:** Support floating positioning with `data-placement` without requiring `ds-popover` class name or the internal `--_ds-floating` CSS property. ([#5397](https://github.com/digdir/designsystemet/pull/5397))
+
+- **Popover:** Patched polyfill to prevent issues in non-Node.js SSR environments ([#5395](https://github.com/digdir/designsystemet/pull/5395))
+
+- **Suggestion:** Uses `u-combobox@2.1.5` to resolve correct input value when selecting datalist option in multiple mode ([#5407](https://github.com/digdir/designsystemet/pull/5407))
+
+- **Suggestion:** The listbox now matches the width of the input before it is revealed, and keeps matching it when the input is resized while the listbox is open. ([#5393](https://github.com/digdir/designsystemet/pull/5393))
+
+- **Suggestion:** Hide the "Create" option on initial render when input is empty ([#5411](https://github.com/digdir/designsystemet/pull/5411))
+
 ## 1.22.0
 
 ### Minor Changes

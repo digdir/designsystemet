@@ -96,6 +96,9 @@ const baseColorTemplate: TokenSet = {
       visited: {
         $type: 'color',
         $value: '{color.link.visited}',
+        $deprecated: 'Style .ds-link:visited instead.',
+        // We add description in addition for now so its extra visible in Token Studio
+        $description: 'Deprecated: style .ds-link:visited instead.',
       },
     },
   },

@@ -28,7 +28,10 @@
   &:lang(no),
   &:lang(nb),
   &:lang(nn) {
-    --dsc-chip-removable-label: 'Trykk for å fjerne'; /* Only set default label if Norwegian */
+    --dsc-chip-removable-label: 'Trykk for å fjerne';
+  }
+  &:lang(en) {
+    --dsc-chip-removable-label: 'Press to remove';
   }
 
   forced-color-adjust: none; /* Prevent "backplate" behind text, see https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/ */
@@ -61,7 +64,7 @@
   }
 
   @composes ds-print-preserve from './base.css';
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 
   & > input {
     inset-block-start: var(--_dsc-chip-spacing);
@@ -81,7 +84,7 @@
 
   /* Show focus ring when input inside is focused by keyboard interaction */
   &:has(:focus-visible) {
-    @composes ds-focus--visible from './base.css';
+    @composes ds-focus--visible from './utils.css';
   }
 
   &:disabled,

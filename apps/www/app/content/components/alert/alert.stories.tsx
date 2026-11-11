@@ -5,6 +5,10 @@ import {
   Link,
   Paragraph,
 } from '@digdir/designsystemet-react';
+import {
+  ArrowsCirclepathIcon,
+  ExclamationmarkTriangleIcon,
+} from '@navikt/aksel-icons';
 import { useState } from 'react';
 
 export const Preview = () => {
@@ -162,6 +166,62 @@ export const VariantDangerEn = () => (
     </Paragraph>
   </Alert>
 );
+
+export const Closable = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  return (
+    isVisible && (
+      <Alert role='alert' data-color='danger'>
+        <Paragraph>
+          Kunne ikke lagre dokumentet på grunn av ustabil nettforbindelse.
+        </Paragraph>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-size-3)',
+            marginTop: 'var(--ds-size-3)',
+          }}
+        >
+          <Button data-variant='primary' onClick={() => setIsVisible(false)}>
+            <ArrowsCirclepathIcon /> Prøv igjen
+          </Button>
+          <Button data-variant='tertiary' onClick={() => setIsVisible(false)}>
+            <ExclamationmarkTriangleIcon /> Meld feil
+          </Button>
+        </div>
+      </Alert>
+    )
+  );
+};
+
+export const ClosableEn = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  return (
+    isVisible && (
+      <Alert role='alert' data-color='danger'>
+        <Paragraph>
+          Could not save the document due to an unstable internet connection.
+        </Paragraph>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-size-3)',
+            marginTop: 'var(--ds-size-3)',
+          }}
+        >
+          <Button data-variant='primary' onClick={() => setIsVisible(false)}>
+            <ArrowsCirclepathIcon /> Try again
+          </Button>
+          <Button data-variant='tertiary' onClick={() => setIsVisible(false)}>
+            <ExclamationmarkTriangleIcon /> Report error
+          </Button>
+        </div>
+      </Alert>
+    )
+  );
+};
 
 export const WithHeading = () => (
   <Alert role='status'>

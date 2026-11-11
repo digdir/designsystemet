@@ -1,0 +1,31 @@
+---
+title: Accessibility
+description: Accessibility considerations that apply generally or across several components.
+---
+
+All components in Designsystemet are developed to give everyone a good user experience, regardless of permanent or temporary disabilities. The [WCAG 2.1 (w3.org)](https://www.w3.org/TR/WCAG21/) level AA requirements are a minimum, and we go further wherever we can. When we discover errors or shortcomings in a component that affect its accessibility, these tasks are always prioritised first by the team.
+
+## What Designsystemet solves, and what you need to do yourself
+Designsystemet can help you with parts of the WCAG requirements that are part of the accessibility regulations, but compliance also depends on how components are used and on content.
+
+Here you'll find considerations that apply generally or across several components. Considerations specific to a single component are documented under the "Accessibility" tab in that component's overview. 
+
+### Designsystemet solves this:
+
+- **Focus states:** Clear and visible focus states for interactive elements on all backgrounds.
+- **Color contrast:** Sufficient contrast and shape of content for both low vision and color blind users.
+- **Keyboard accessibility:** All interactive elements can be reached and operated with a keyboard.
+- **Scalable design:** Adaptation to different screen sizes, zoom, or preferred text size.
+- **Role and state:** Support for assistive technology through semantics and ARIA attributes.
+- **Accessible forms:** Correct structure, association, and validation.
+- **Interactive element size:** Sufficient touch target size based on WCAG 2.2 criterion 2.5.8, which is guidance beyond today's legally required WCAG 2.1 requirements.
+
+### You need to make sure of this yourself:
+- **Semantic HTML:** Use appropriate elements to convey the correct role and heading hierarchy.
+- **Text alternatives:** Use appropriate text alternatives for non-text content. The requirements are documented on the individual component pages.
+- **Specify content language:** Set the correct language code for the page, for example `<html lang="en">` for English.
+- **Correct token usage:** If a token is called `border`, use it for border and not background, etc.
+- **Color scheme (optional):** Use `<body data-color-scheme="auto">` to follow the user's system preferences.
+- **Keyboard navigation is taken care of by Designsystemet**, but note that if you use `event.preventDefault()` on a keypress event, you block the browser's default behaviour. In that case, you must test the keyboard navigation yourself.
+
+[Our wiki on GitHub has a detailed overview of which WCAG requirements Designsystemet helps you meet](https://github.com/digdir/designsystemet/wiki/Designsystemet-hjelper-deg-%C3%A5-oppfylla-WCAG%E2%80%90kravane)

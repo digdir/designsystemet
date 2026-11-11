@@ -11,7 +11,7 @@ import {
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useId, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { useThemeSearchParams } from '~/_hooks/use-theme-search-params';
 import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from '../color-overrides.module.css';
 
@@ -40,7 +40,7 @@ const ColorOverrideInput = ({
   mode,
   defaultColor,
 }: ColorOverrideInputProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useThemeSearchParams();
   const [localValue, setLocalValue] = useState<string | undefined>(undefined);
   const [validHex, setValidHex] = useState(true);
 

@@ -66,12 +66,13 @@
     }
 
     /* Render focus inside so it is easier to make full window width and place in overflow: hidden containers */
-    @composes ds-focus--inset from './base.css';
+    @composes ds-focus--inset from './utils.css';
     /*preserve header for print but not background-color on content*/
     @composes ds-print-preserve from './base.css';
 
     &::before {
       all: unset;
+      align-self: start;
       background: currentcolor;
       forced-color-adjust: none; /* Enable drawing with background property */
       border-radius: var(--ds-border-radius-md);
@@ -80,6 +81,7 @@
       height: var(--dsc-details-icon-size);
       mask: 50% / contain no-repeat var(--dsc-details-icon-url);
       width: var(--dsc-details-icon-size);
+      translate: 0 calc(0.5lh - 50%);
     }
   }
 

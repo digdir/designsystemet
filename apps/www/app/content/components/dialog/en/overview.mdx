@@ -4,22 +4,26 @@ search_terms: modal, window, confirmation, overlay
 
 <Story story="Preview" />
 
+<Card data-color="info">
+  Many people refer to this component simply as a “modal”. In Designsystemet, we use dialog, which is based on the native HTML `<dialog>` element, and distinguish between [modal and non-modal dialogs (nngroup.com)](https://www.nngroup.com/articles/modal-nonmodal-dialog/) based on how they behave.
+</Card>
+
 **Use a modal dialog when**
 - users need to confirm a critical action, such as deleting something that cannot be undone  
 - users must see a specific dialog and are required to respond to it  
 - you need to ensure that users notice important information  
 
-**Avoid using a modal dialog when**
+**Use a non-modal dialog when**
+- users should be able to keep working while the dialog is open
+- you are certain the non-modal dialog will not cover other content - regardless of screen size
+
+**Avoid modal and non-modal dialog when**
 - the content is extensive or complex  
 - the content is one of several steps in a process  
-- you need to notify users about something that does not require action. Use [alert](/en/components/docs/alert/overview) or a non-modal dialog instead  
+- you need to notify users about something that does not require action. Use [alert](/en/components/docs/alert/overview) instead  
 - you want to provide short, optional information, use [popover](/en/components/docs/popover/overview)  
 
 See also the [system notifications pattern](/en/patterns/systemnotifications#when-do-we-use-modals) for more guidance on when a modal dialog should be used.
-
-<Card data-color="info">
-  Many people refer to this component simply as a “modal”. In Designsystemet, we use dialog, which is based on the native HTML `<dialog>` element, and distinguish between [modal and non-modal dialogs (nngroup.com)](https://www.nngroup.com/articles/modal-nonmodal-dialog/) based on how they behave.
-</Card>
 
 ## Examples
 

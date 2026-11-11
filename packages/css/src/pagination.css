@@ -8,9 +8,14 @@
   &:lang(no),
   &:lang(nb),
   &:lang(nn) {
-    --dsc-pagination-label: 'Bla i sider'; /* Only set default label if Norwegian */
+    --dsc-pagination-label: 'Bla i sider';
     --dsc-pagination-label-prev: 'Forrige side';
     --dsc-pagination-label-next: 'Neste side';
+  }
+  &:lang(en) {
+    --dsc-pagination-label: 'Navigate between pages';
+    --dsc-pagination-label-prev: 'Previous page';
+    --dsc-pagination-label-next: 'Next page';
   }
 
   & :is(ol, ul) {

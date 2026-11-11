@@ -66,7 +66,7 @@ export const WithDataColor = () => {
 
 export const WithMultiColorUse = () => {
   return (
-    <svg height='3rem' width='3rem'>
+    <svg height='3em' width='3em'>
       <title>Flerfarget grafikk med fire farger.</title>
       <use href='/img/blog/colorsvg/component-graphic.svg#component-icon'></use>
     </svg>

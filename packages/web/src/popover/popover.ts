@@ -65,6 +65,7 @@ function toggle(
   const isPopover = el instanceof HTMLElement && attr(el, 'popover') !== null;
   const prev = POPOVERS.get(el as HTMLElement);
 
+  if (newState === 'open' && oldState === newState) return; // Keep existing positioning for a no-op open
   if (newState === 'open' && prev && prev.source === source) return; // Prevent double binding
   prev?.cleanup(); // Cleanup if previously bound popover exists to avoid multiple autoUpdate memory leaks
   if (newState === 'closed' || !isPopover) return;
@@ -72,7 +73,7 @@ function toggle(
     const css = el.id && `[popovertarget="${el.id}"],[commandfor="${el.id}"]`;
     source = (css && getRoot(el).querySelector<HTMLElement>(css)) || undefined; // Polyfill ToggleEvent .source for older browsers
   }
-  if (!source || source === el || (oldState && oldState === newState)) return; // No need to update
+  if (!source || source === el) return; // No need to update
   const dsFloating = getCSSProp(el, '--_ds-floating');
   const attrPlacement = attr(el, ATTR_PLACE) ?? attr(source, ATTR_PLACE);
 

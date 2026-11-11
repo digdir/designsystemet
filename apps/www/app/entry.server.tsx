@@ -49,7 +49,9 @@ export default async function handleRequest(
     // Ensure requests from bots and SPA Mode renders wait for all content to load before responding
     // https://react.dev/reference/react-dom/server/renderToPipeableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation
     const readyOption: keyof RenderToPipeableStreamOptions =
-      (userAgent && isbot(userAgent)) || routerContext.isSpaMode
+      request.headers.get('accept')?.includes('text/markdown') ||
+      (userAgent && isbot(userAgent)) ||
+      routerContext.isSpaMode
         ? 'onAllReady'
         : 'onShellReady';
 

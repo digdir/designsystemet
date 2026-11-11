@@ -79,7 +79,7 @@ describe('cssVariableName matches the tokens build output', () => {
     const config = configSchema.parse({
       themes: { [themeName]: { colors: { neutral: '#444444', brand: '#0062BA' } } },
     });
-    const theme = { name: themeName, ...config.themes[themeName] } as Theme;
+    const theme = { name: themeName, ...config.themes?.[themeName] } as Theme;
 
     const files = await formatThemeCSS(theme, { verbose: false, tailwind: false });
     const css = files.map((file) => file.output).join('\n');

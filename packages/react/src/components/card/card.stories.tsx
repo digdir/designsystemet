@@ -2,6 +2,7 @@ import preview from '../../../../../apps/storybook/.storybook/preview';
 import {
   cat1Img,
   cat5Img,
+  iframeContent,
   severityColors,
   themeColors,
 } from '../../../stories/constants';
@@ -72,7 +73,7 @@ export const Media = meta.story(() => (
       <Card.Block>
         <iframe
           data-chromatic='ignore'
-          src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
+          srcDoc={iframeContent}
           width='320px'
           height='179px'
           allow='autoplay; fullscreen; picture-in-picture'
@@ -107,7 +108,7 @@ export const Video = meta.story(() => (
     <Card.Block>
       <iframe
         data-chromatic='ignore'
-        src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
+        srcDoc={iframeContent}
         width='320px'
         height='179px'
         allow='autoplay; fullscreen; picture-in-picture'

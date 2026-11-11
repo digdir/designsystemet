@@ -1,12 +1,20 @@
 .content {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .leftSection,
 .rightSection {
-  flex-grow: 1;
-  flex-basis: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+  /* Lets the code blocks scroll instead of widening the column. */
+  min-width: 0;
+}
+
+.leftSection > *,
+.rightSection > * {
+  min-width: 0;
 }
 
 .leftSection {
@@ -15,10 +23,12 @@
 }
 
 .rightSection {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ds-size-4);
-  width: 100%;
+  padding-left: var(--ds-size-8);
+}
+
+.leftSection > button,
+.rightSection > button {
+  align-self: flex-start;
 }
 
 .infoBoxes {
@@ -76,13 +86,41 @@
   justify-content: center;
 }
 
+.snippet {
+  position: relative;
+}
+
+/* Covers the code block while it is busy. The code block stays rendered underneath (hidden, so it
+   isn't seen or read out), so it doesn't flicker when the skeleton goes away. */
+.snippet > .snippet-skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  height: auto;
+}
+
+.snippet[aria-busy='true'] > :not(.snippet-skeleton) {
+  visibility: hidden;
+}
+
 .snippet code {
   background-color: transparent;
   display: block;
 }
 
-.snippet-themecss pre {
+.snippet pre {
   height: 250px;
+}
+
+.command {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+}
+
+.command code {
+  background-color: transparent;
+  display: block;
 }
 
 .modalHeader {
@@ -106,12 +144,13 @@
 }
 
 .modal {
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
 .step {
   display: flex;
   gap: var(--ds-size-4);
+  margin-block-start: var(--ds-size-4);
   & > span {
     background-color: var(--ds-color-accent-base-default);
     color: var(--ds-color-accent-base-contrast-default);
@@ -122,6 +161,7 @@
     display: grid;
     place-items: center;
     font-size: var(--ds-body-sm-font-size);
+    font-weight: 500;
   }
 }
 
@@ -131,7 +171,7 @@
 
 @media (max-width: 1150px) {
   .content {
-    flex-direction: column;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .leftSection {
@@ -141,7 +181,6 @@
 
   .rightSection {
     padding: 0;
-    margin-top: 32px;
-    width: 100%;
+    margin-top: var(--ds-size-8);
   }
 }

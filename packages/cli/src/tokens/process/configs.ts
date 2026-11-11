@@ -16,16 +16,28 @@ import { buildOptions } from './platform.ts';
 import { dsName, resolveMath, sizeRem, unitless } from './transformers.ts';
 import { getMultidimensionalThemes, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.ts';
 
-void register(StyleDictionary, { withSDBuiltins: false });
+let registration: Promise<void> | undefined;
 
-StyleDictionary.registerTransform(sizeRem);
-StyleDictionary.registerTransform(dsName);
-StyleDictionary.registerTransform(resolveMath);
-StyleDictionary.registerTransform(unitless);
+/**
+ * Registers the transforms and formats the build uses with Style Dictionary. Done on first use rather than on
+ * import, so that importing the package has no side effects and bundlers can leave out what isn't used.
+ */
+export const registerStyleDictionary = (): Promise<void> => {
+  registration ??= (async () => {
+    await register(StyleDictionary, { withSDBuiltins: false });
 
-for (const format of Object.values(formats)) {
-  StyleDictionary.registerFormat(format);
-}
+    StyleDictionary.registerTransform(sizeRem);
+    StyleDictionary.registerTransform(dsName);
+    StyleDictionary.registerTransform(resolveMath);
+    StyleDictionary.registerTransform(unitless);
+
+    for (const format of Object.values(formats)) {
+      StyleDictionary.registerFormat(format);
+    }
+  })();
+
+  return registration;
+};
 
 export const configs = {
   colorSchemeVariables,

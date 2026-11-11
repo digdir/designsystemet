@@ -1,4 +1,7 @@
-import { Avatar, EXPERIMENTAL_AvatarStack } from '@digdir/designsystemet-react';
+import {
+  Avatar,
+  AvatarStack as DSAvatarStack,
+} from '@digdir/designsystemet-react';
 import classes from './avatar-stack.module.css';
 
 type AvatarStackProps = {
@@ -76,10 +79,7 @@ export const AvatarStack = ({ authors, ...rest }: AvatarStackProps) => {
   }
 
   return (
-    <EXPERIMENTAL_AvatarStack
-      className={classes.avatarStackOverrides}
-      {...rest}
-    >
+    <DSAvatarStack className={classes.avatarStackOverrides} {...rest}>
       {uniqueAvatars.map((avatarKey) => (
         <li key={avatarKey}>
           <Avatar aria-hidden>
@@ -87,6 +87,6 @@ export const AvatarStack = ({ authors, ...rest }: AvatarStackProps) => {
           </Avatar>
         </li>
       ))}
-    </EXPERIMENTAL_AvatarStack>
+    </DSAvatarStack>
   );
 };

@@ -104,8 +104,7 @@ const ColorContrastMapper = ({
   variant: string;
 }) => {
   const { t } = useTranslation();
-  const { colorScheme, colors, severityColors, severityEnabled } =
-    useThemebuilder();
+  const { colorScheme, colors, severityColors } = useThemebuilder();
   const [selectedColor, setSelectedColor] = useState('dominant');
 
   const getMappedTheme = (): ColorScale => {
@@ -119,13 +118,10 @@ const ColorContrastMapper = ({
         }
       }
 
-      // Check severity colors if enabled
-      if (severityEnabled) {
-        for (const color of severityColors) {
-          if (color.name === selectedColor) {
-            colorTheme = color.colors;
-            break;
-          }
+      for (const color of severityColors) {
+        if (color.name === selectedColor) {
+          colorTheme = color.colors;
+          break;
         }
       }
     }
@@ -165,15 +161,22 @@ const ColorContrastMapper = ({
               {color.name}
             </Select.Option>
           ))}
-          {severityEnabled &&
-            severityColors.map((color, index) => (
-              <Select.Option key={`severity-${index}`} value={color.name}>
-                {color.name}
-              </Select.Option>
-            ))}
+          {severityColors.map((color, index) => (
+            <Select.Option key={`severity-${index}`} value={color.name}>
+              {color.name}
+            </Select.Option>
+          ))}
         </Select>
       </Field>
-      <div className={classes.tableContainer}>
+      <section
+        className={cl(classes.tableContainer, 'ds-focus')}
+        tabIndex={0}
+        aria-label={
+          variant === 'base-colors'
+            ? t('colorContrasts.base-colors')
+            : t('colorContrasts.text-vs-background')
+        }
+      >
         <table className={classes.table}>
           <tbody>
             <tr>
@@ -197,7 +200,7 @@ const ColorContrastMapper = ({
             ))}
           </tbody>
         </table>
-      </div>
+      </section>
     </>
   );
 };

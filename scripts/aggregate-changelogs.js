@@ -10,6 +10,10 @@
  * `published-packages` is the output of changesets/action:
  *   [{ "name": "@digdir/designsystemet-react", "version": "1.20.1" }, ...]
  *
+ * The Figma packages are private, so they are never in `published-packages`.
+ * They share the version of the code packages, so their changes for the same
+ * version are added too.
+ *
  * The exported helpers are also used by scripts/sync-changelogs.js to build the
  * consolidated changelog for www.
  */
@@ -19,14 +23,18 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = process.cwd();
 const PACKAGE_DIRS = ['packages'];
+const FIGMA_DIRS = ['figma'];
+// What a package's changelog says for a version that only bumped it with the others.
+export const NO_CHANGES = 'No changes in this release.';
 
 /**
- * Finds every package under PACKAGE_DIRS.
+ * Finds every package in the given folders, by default PACKAGE_DIRS.
+ * @param {string[]} [dirs] folders, relative to the root, whose subfolders are packages
  * @returns {Promise<Map<string, { name: string, dir: string, version: string }>>} keyed by package name
  */
-export async function findPackages() {
+export async function findPackages(dirs = PACKAGE_DIRS) {
   const byName = new Map();
-  for (const base of PACKAGE_DIRS) {
+  for (const base of dirs) {
     let entries = [];
     try {
       entries = await fs.readdir(path.join(ROOT, base));
@@ -120,6 +128,22 @@ async function main() {
 
   const pkgs = await findPackages();
   const sections = [];
+
+  const versions = new Set(published.map(({ version }) => version));
+  for (const pkg of (await findPackages(FIGMA_DIRS)).values()) {
+    if (!versions.has(pkg.version)) continue;
+    let body = null;
+    try {
+      body = extractVersionSection(
+        await fs.readFile(path.join(pkg.dir, 'CHANGELOG.md'), 'utf8'),
+        pkg.version,
+      );
+    } catch {}
+    // Most releases only bump the Figma packages along with the code
+    if (!body || body === NO_CHANGES) continue;
+    pkgs.set(pkg.name, pkg);
+    published.push({ name: pkg.name, version: pkg.version });
+  }
 
   for (const { name, version } of [...published].sort((a, b) =>
     a.name.localeCompare(b.name),

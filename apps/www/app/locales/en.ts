@@ -3,6 +3,10 @@ import type no from './no';
 
 export default {
   ...en,
+  'version-banner': {
+    message:
+      'This documentation covers Designsystemet {{version}}, which is an older version. For the latest version, see',
+  },
   frontpage: {
     heading: 'Designsystemet helps you build better digital services',
     'get-started': {
@@ -157,6 +161,9 @@ export default {
       'Designsystemet contains basic components that can be used independently of framework, and combined in many different ways and in various patterns.',
     changelog: {
       title: 'Changelog',
+    },
+    accessibility: {
+      title: 'Accessibility',
     },
     'css-variables': {
       caption: 'CSS Variables',

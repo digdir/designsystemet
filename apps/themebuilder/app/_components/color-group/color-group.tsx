@@ -2,7 +2,6 @@ import type {
   SemanticColorNames,
   ThemeInfo,
 } from '@digdir/designsystemet/internal';
-import { RovingFocusItem } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -44,20 +43,18 @@ export const ColorGroup = ({
       <div className={cl(classes.colors)}>
         {colorNames.map((colorName, index) => {
           const color = colorScale[colorScheme][colorName];
-          const { number, hex } = color;
+          const { hex } = color;
           return (
             <Fragment key={index + 'fragment' + namespace}>
-              <RovingFocusItem value={namespace + number} asChild>
-                <ColorButton
-                  color={hex}
-                  colorName={colorName}
-                  aria-label={t('colorGroup.see-more', {
-                    namespace,
-                    color: color?.displayName,
-                  })}
-                  onClick={() => openColorModal(color, namespace)}
-                />
-              </RovingFocusItem>
+              <ColorButton
+                color={hex}
+                colorName={colorName}
+                aria-label={t('colorGroup.see-more', {
+                  namespace,
+                  color: color?.displayName,
+                })}
+                onClick={() => openColorModal(color, namespace)}
+              />
             </Fragment>
           );
         })}

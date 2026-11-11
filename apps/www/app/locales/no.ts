@@ -2,6 +2,10 @@ import no from '@internal/components/src/_locales/no';
 
 export default {
   ...no,
+  'version-banner': {
+    message:
+      'Denne dokumentasjonen gjelder Designsystemet {{version}}, som er en eldre versjon. For den nyeste versjonen, se',
+  },
   frontpage: {
     heading: 'Designsystemet hjelper deg å lage gode digitale tjenester',
     'get-started': {
@@ -155,6 +159,9 @@ export default {
       'Designsystemet inneholder grunnleggende komponenter som kan brukes uavhengig av rammeverk, og settes sammen på mange ulike måter og i forskjellige mønstre.',
     changelog: {
       title: 'Endringslogg',
+    },
+    accessibility: {
+      title: 'Universell utforming',
     },
     'css-variables': {
       caption: 'CSS-variabler',

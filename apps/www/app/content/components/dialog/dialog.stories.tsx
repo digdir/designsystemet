@@ -17,7 +17,10 @@ export const Preview = () => {
   return (
     <>
       <Button command='show-modal' commandfor='my-dialog-preview'>
-        Open Dialog
+        Open modal Dialog
+      </Button>
+      <Button command='--show-non-modal' commandfor='my-dialog-preview'>
+        Open non-modal Dialog
       </Button>
       <Dialog id='my-dialog-preview'>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
@@ -48,24 +51,6 @@ export const WithCommand = () => (
     </Dialog>
   </>
 );
-
-export const TriggerContext = () => {
-  return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog>
-        <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-          Dialog header
-        </Heading>
-        <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-          doloremque obcaecati assumenda odio ducimus sunt et.
-        </Paragraph>
-        <Paragraph data-size='sm'>Dialog footer</Paragraph>
-      </Dialog>
-    </Dialog.TriggerContext>
-  );
-};
 
 export const WithRef = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);

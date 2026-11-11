@@ -1,17 +1,3 @@
-/**
- * Visually hide an element, but leave it available for screen readers
- */
-.ds-sr-only {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
 :root {
   --ds-font-size-minus-1: max(0.9em, 0.875rem); /* Default to 90% of font-size, but minimum 14px */
   --ds-font-size-plus-1: 1.1em; /* Default to 110% */
@@ -41,13 +27,9 @@ body,
   background: var(--ds-color-neutral-background-default);
 }
 
-.ds-icon {
-  display: inline-block; /* Overwrite Tailwind setting display: block on <svg> */
-  flex-shrink: 0;
-  font-size: 1em;
-  height: var(--ds-icon-size);
-  vertical-align: middle;
-  width: var(--ds-icon-size);
+/* Ensure text color changes when swapping color mode */
+[data-color] {
+  color: var(--ds-color-text-default);
 }
 
 .ds-readonly-icon::before {
@@ -71,85 +53,6 @@ body,
 .ds-print-preserve {
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
-}
-
-/**
- * Apply a focus outline on an element when it is focused with keyboard
- */
-.ds-focus:focus-visible {
-  @composes ds-focus--visible from './base.css';
-}
-
-/**
- * Apply a focus outline that is inset on an element when it is focused with keyboard
- */
-.ds-focus--inset:focus-visible {
-  @composes ds-focus--visible--inset from './base.css';
-}
-/**
- * Apply a focus outline where the inner segment is inset and the outer segment is not ("middle" between ds-focus and ds-focus--inset)
- */
-.ds-focus--middle:focus-visible {
-  @composes ds-focus--visible--middle from './base.css';
-}
-
-/**
- * Focus outline that can be composed if it needs a specific selector
- */
-.ds-focus--visible {
-  /**
-   * We use both box-shadow and outline to ensure that the focus style is visible,
-   * in case box-shadow is overridden.
-   */
-  box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow));
-  outline: var(--_ds--focus, var(--dsc-focus-outline));
-  outline-offset: var(--_ds--focus, var(--ds-border-width-focus));
-
-  /**
-   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
-   * https://css-tricks.com/the-css-custom-property-toggle-trick/
-   */
-  * {
-    --_ds--focus: ;
-  }
-}
-
-/**
- * Focus outline on the inside that can be composed if it needs a specific selector
- */
-.ds-focus--visible--inset {
-  /**
-   * We use both box-shadow and outline to ensure that the focus style is visible,
-   * in case box-shadow is overridden.
-   */
-  box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow-inset));
-  outline: var(--_ds--focus, var(--dsc-focus-outline));
-  outline-offset: calc(var(--_ds--focus, var(--ds-border-width-focus)) * -1);
-
-  /**
-   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
-   * https://css-tricks.com/the-css-custom-property-toggle-trick/
-   */
-  * {
-    --_ds--focus: ;
-  }
-}
-.ds-focus--visible--middle {
-  /**
-   * We use both box-shadow and outline to ensure that the focus style is visible,
-   * in case box-shadow is overridden.
-   */
-  box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow-middle));
-  outline: var(--_ds--focus, var(--dsc-focus-outline));
-  outline-offset: calc(var(--_ds--focus, 0));
-
-  /**
-   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
-   * https://css-tricks.com/the-css-custom-property-toggle-trick/
-   */
-  * {
-    --_ds--focus: ;
-  }
 }
 
 .ds-checkbox--checked {
@@ -254,4 +157,133 @@ body {
   --ds-icon-size: var(--ds-size-6);
 
   font-size: var(--ds-body-md-font-size);
+}
+
+/**
+ * Visually hide an element, but leave it available for screen readers
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
+.ds-sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/**
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
+.ds-icon {
+  display: inline-block; /* Overwrite Tailwind setting display: block on <svg> */
+  flex-shrink: 0;
+  font-size: 1em;
+  height: var(--ds-icon-size);
+  vertical-align: middle;
+  width: var(--ds-icon-size);
+}
+
+/**
+ * Apply a focus outline on an element when it is focused with keyboard
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
+.ds-focus:focus-visible {
+  @composes ds-focus--visible from './utils.css';
+}
+
+/**
+ * Apply a focus outline that is inset on an element when it is focused with keyboard
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
+.ds-focus--inset:focus-visible {
+  @composes ds-focus--visible--inset from './utils.css';
+}
+
+/**
+ * Apply a focus outline where the inner segment is inset and the outer segment is not ("middle" between ds-focus and ds-focus--inset)
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
+.ds-focus--middle:focus-visible {
+  @composes ds-focus--visible--middle from './utils.css';
+}
+
+/**
+ * Focus outline that can be composed if it needs a specific selector
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
+.ds-focus--visible {
+  /**
+   * We use both box-shadow and outline to ensure that the focus style is visible,
+   * in case box-shadow is overridden.
+   */
+  box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow));
+  outline: var(--_ds--focus, var(--dsc-focus-outline));
+  outline-offset: var(--_ds--focus, var(--ds-border-width-focus));
+
+  /**
+   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
+   * https://css-tricks.com/the-css-custom-property-toggle-trick/
+   */
+  * {
+    --_ds--focus: ;
+  }
+}
+
+/**
+ * Focus outline on the inside that can be composed if it needs a specific selector
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
+.ds-focus--visible--inset {
+  /**
+   * We use both box-shadow and outline to ensure that the focus style is visible,
+   * in case box-shadow is overridden.
+   */
+  box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow-inset));
+  outline: var(--_ds--focus, var(--dsc-focus-outline));
+  outline-offset: calc(var(--_ds--focus, var(--ds-border-width-focus)) * -1);
+
+  /**
+   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
+   * https://css-tricks.com/the-css-custom-property-toggle-trick/
+   */
+  * {
+    --_ds--focus: ;
+  }
+}
+/**
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
+.ds-focus--visible--middle {
+  /**
+   * We use both box-shadow and outline to ensure that the focus style is visible,
+   * in case box-shadow is overridden.
+   */
+  box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow-middle));
+  outline: var(--_ds--focus, var(--dsc-focus-outline));
+  outline-offset: calc(var(--_ds--focus, 0));
+
+  /**
+   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
+   * https://css-tricks.com/the-css-custom-property-toggle-trick/
+   */
+  * {
+    --_ds--focus: ;
+  }
+}
+
+/**
+ * Apply a focus outline on an element when it or any of its descendants are focused
+ * @deprecated Use the equivalent class in utils.css instead.
+ */
+.ds-focus--within:focus-within {
+  @composes ds-focus--visible from './utils.css';
+
+  /* remove focus from element that has real focus */
+  & :focus-visible {
+    outline: none;
+    --dsc-focus-boxShadow: none;
+  }
 }

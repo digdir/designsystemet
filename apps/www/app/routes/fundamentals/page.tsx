@@ -15,6 +15,7 @@ import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import { getStories } from '../../_utils/get-stories.server';
+import changelogClasses from '../components/component.module.css';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
@@ -50,7 +51,7 @@ export async function loader({ params }: Route.LoaderArgs) {
   };
 }
 
-export const meta = ({ loaderData }: Route.MetaArgs) => {
+export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   if (!loaderData)
     return [
       {
@@ -63,6 +64,7 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
   return generateMetadata({
     title,
     description,
+    pathname: location.pathname,
   });
 };
 
@@ -115,7 +117,14 @@ export default function Fundamentals({
           </Button>
         </div>
       </TableOfContents>
-      <div className={cl(classes.content, 'u-rich-text')}>
+      <div
+        className={cl(
+          classes.content,
+          // Generated changelogs (e.g. figma/changelog) get the components changelog's heading spacing.
+          frontmatter.changelog && changelogClasses.changelog,
+          'u-rich-text',
+        )}
+      >
         <MDXComponents
           code={code}
           components={{

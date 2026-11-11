@@ -45,6 +45,14 @@ export const loader = async ({
   // Add changelog to an empty category
   cats[' '].push(changelogItem);
 
+  const accessibilityItem = {
+    title: t('components.accessibility.title'),
+    url: `/${lang}/components/accessibility`,
+    order: 2,
+  };
+  // Add universal design/accessibility page to an empty category
+  cats[' '].push(accessibilityItem);
+
   // Get all folders in components-docs/{lang}
   const docsFolders = getFoldersInContentDir(join('components-docs', lang));
   const reactUtilities = new Set([

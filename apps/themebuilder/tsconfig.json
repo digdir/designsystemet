@@ -9,7 +9,12 @@
   ],
   "exclude": ["**/dist/**/*"],
   "compilerOptions": {
-    "types": ["node", "vite/client", "../../internal/digdir/themes/types.d.ts"],
+    "types": [
+      "node",
+      "vite/client",
+      "@digdir/designsystemet-react/react-types",
+      "../../internal/digdir/themes/types.d.ts"
+    ],
     "module": "ES2022",
     "rootDirs": [".", "./.react-router/types"],
     "paths": {

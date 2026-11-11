@@ -1,9 +1,14 @@
-.toggle {
-  display: flex;
-  gap: var(--ds-size-4);
+.group {
+  flex-wrap: wrap;
+  max-width: 100%;
+  height: auto;
 }
 
 .item {
   flex: 1 1;
   width: 100px;
+}
+
+.group > .item {
+  height: var(--dsc-togglegroup-button-size);
 }

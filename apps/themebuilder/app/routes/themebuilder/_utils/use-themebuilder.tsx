@@ -41,21 +41,21 @@ export const useThemebuilder = () => {
   const {
     colors,
     severityColors,
-    severityEnabled,
     colorScheme,
     baseBorderRadius,
     overrides,
     tab,
+    workspace,
   } = useLoaderData<Route.ComponentProps['loaderData']>();
 
   return {
     colors,
     severityColors,
-    severityEnabled,
     colorScheme,
     baseBorderRadius,
     overrides,
     tab,
+    workspace,
   };
 };
 

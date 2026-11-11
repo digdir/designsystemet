@@ -65,13 +65,11 @@
     2
   ); /* Distance between edge of input and chip */
 
-  /* Only set default texts if Norwegian */
   &:lang(no),
   &:lang(nb),
   &:lang(nn) {
     --dsc-suggestion-create-text: 'Legg til "{value}"';
     --dsc-suggestion-empty-text: 'Tomt';
-
     --dsc-suggestion-sr-added: 'La til';
     --dsc-suggestion-sr-clear: 'Fjern tekst';
     --dsc-suggestion-sr-empty: 'Ingen valgte';
@@ -84,6 +82,22 @@
     --dsc-suggestion-sr-removed: 'Fjernet';
     --dsc-suggestion-sr-singular: '%d forslag';
     --dsc-suggestion-sr-toggle: 'Forslag';
+  }
+  &:lang(en) {
+    --dsc-suggestion-create-text: 'Add "{value}"';
+    --dsc-suggestion-empty-text: 'Empty';
+    --dsc-suggestion-sr-added: 'Added';
+    --dsc-suggestion-sr-clear: 'Clear text';
+    --dsc-suggestion-sr-empty: 'None selected';
+    --dsc-suggestion-sr-found: 'Navigate left to find %d selected';
+    --dsc-suggestion-sr-invalid: 'Invalid value';
+    --dsc-suggestion-sr-items: 'Selected';
+    --dsc-suggestion-sr-of: 'of';
+    --dsc-suggestion-sr-plural: '%d suggestions';
+    --dsc-suggestion-sr-remove: 'Press to remove';
+    --dsc-suggestion-sr-removed: 'Removed';
+    --dsc-suggestion-sr-singular: '%d suggestions';
+    --dsc-suggestion-sr-toggle: 'Suggesions';
   }
 
   /* "proxy" so attrOrCSS works even if changing --ds- prefix */
@@ -155,7 +169,7 @@
 
     @composes ds-print-preserve from './base.css';
     &:focus {
-      @composes ds-focus--visible from './base.css'; /* Using :focus as focus can also be set by mouse clicking on <data> */
+      @composes ds-focus--visible from './utils.css'; /* Using :focus as focus can also be set by mouse clicking on <data> */
       z-index: 2; /* Place focus ring on top */
     }
     &:hover {
@@ -243,7 +257,7 @@
 
     /* Use same effect as hover instead of regular focus ring, because we want to render the focus ring inside the u-datalist */
     &[data-activedescendant] {
-      @composes ds-focus--visible--middle from './base.css';
+      @composes ds-focus--visible--middle from './utils.css';
     }
 
     &[data-empty]:not([value]) {
@@ -293,9 +307,6 @@
   /**
    * Creatable
    */
-  &:not([data-creatable]) > u-datalist:has(u-option[aria-hidden='false']:not([data-empty])) > u-option[data-empty] {
-    display: none; /* Hide empty option when there are other visible options */
-  }
   &:not([data-creatable]) > u-datalist > u-option[data-empty] {
     padding-inline-start: var(--dsc-suggestion-option-padding);
     background: none;
@@ -400,7 +411,7 @@
     scale: 0.75;
     width: var(--dsc-suggestion-clear-size);
 
-    @composes ds-focus from './base.css';
+    @composes ds-focus from './utils.css';
 
     &:hover {
       background: var(--dsc-suggestion-clear-background--hover);

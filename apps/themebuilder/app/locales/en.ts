@@ -1,4 +1,5 @@
 import en from '@internal/components/src/_locales/en';
+import colorModal from './en/color-modal';
 import themeModal from './en/theme-modal';
 import type no from './no';
 
@@ -24,7 +25,6 @@ export default {
         "The page you are looking for can't be found. It may have been deleted or moved, or there may be an error in the link.",
     },
     generic: {
-      title: 'Sorry, something went wrong.',
       'go-to-homepage': 'Go to homepage',
     },
   },
@@ -37,6 +37,16 @@ export default {
   },
   themeBuilder: {
     title: 'Theme Builder',
+    'active-theme': 'Theme',
+    'toggle-editor': 'Open or close theme editor',
+    'edit-themes': 'Edit themes',
+    'theme-names': 'Theme names',
+    'remove-theme': 'Delete theme {{name}}',
+    'add-theme': 'Add theme',
+    'theme-name': 'Theme name',
+    'invalid-theme-name':
+      'Use lowercase letters, numbers, and single hyphens between words.',
+    'duplicate-theme-name': 'A theme with this name already exists.',
     'documentation-link': 'Read the documentation about custom themes',
   },
   configPaste: {
@@ -50,8 +60,6 @@ export default {
     'validation-success': 'Config is valid! Select a theme below.',
     'no-themes': 'No themes found in config',
     'edit-theme': 'Edit theme',
-    button: 'Continue from config file',
-    'dialog-heading': 'Paste config',
     'import-config': 'Import config',
   },
   tabs: {
@@ -67,8 +75,6 @@ export default {
       'Each colour selected with the tool gets its own card in the section on the right so you can see how the colours harmonise together.',
     note: 'Note that the contrast colour inside the button changes from white to black, depending on whether the selected colour is light or dark, to achieve the best possible contrast.',
     view: 'View:',
-    light: 'Light',
-    dark: 'Dark',
     'example-heading': 'Colours make life more colourful',
     checkbox: 'Checkbox',
     switch: 'Switch',
@@ -83,7 +89,6 @@ export default {
     password: 'Password',
     'forgot-password': 'Forgotten password?',
     login: 'Log in',
-    'device-type': 'Device type:',
     mobile: 'Mobile',
     tablet: 'Tablet',
     computer: 'Computer',
@@ -92,12 +97,7 @@ export default {
     news: 'News',
     'news-title': 'Travelled alone to the big city',
     'news-description': 'Mona Kvist wanted to find her dream in New York City',
-    articles: 'Articles',
-    contact: 'Contact',
     search: 'Search',
-    menu: 'Menu',
-    subheading: 'Here is a sub heading',
-    'read-more': 'Read more',
     'people-you-may-know': 'People you may know',
     follow: 'Follow',
     'all-users': 'All users',
@@ -111,12 +111,26 @@ export default {
     phone: 'Phone',
     settings: 'Settings',
     'admin-display': 'Here you can manage display',
-    'dark-mode': 'Dark mode',
     'display-mode': 'Display mode',
     'select-color': 'Choose colour',
   },
+  'color-modal': colorModal,
   themeModal,
   colorPane: {
+    'token-overrides': 'Token overrides',
+    'confirm-add-title': 'Add a color to all themes?',
+    'confirm-add-description':
+      'This adds a color with the same starting value to all {{count}} themes. Each theme can then have its own color value.',
+    'confirm-add': 'Add to all themes',
+    'confirm-remove-title': 'Delete a color from all themes?',
+    'confirm-remove-description':
+      'This deletes "{{name}}" and its token overrides from all {{count}} themes. This cannot be undone.',
+    'confirm-remove': 'Delete from all themes',
+    'confirm-rename-title': 'Rename a color in all themes?',
+    'confirm-rename-description':
+      'This renames "{{from}}" to "{{to}}" in all {{count}} themes, including its token overrides. Existing color values are preserved.',
+    'confirm-rename': 'Rename in all themes',
+    'name-duplicate-error': 'A color with this name already exists',
     add: 'Add',
     'edit-color': 'Edit colour',
     save: 'Save',
@@ -133,6 +147,7 @@ export default {
     color: 'Colour',
   },
   appearanceToggle: {
+    label: 'Appearance',
     light: 'Light',
     dark: 'Dark',
     'set-to': 'Set to',
@@ -167,6 +182,7 @@ export default {
     'select-color': 'Select colour to see contrasts',
   },
   borderRadius: {
+    label: 'Border radius',
     suggested: 'Suggested base border radius',
     manual: 'Manual base border radius',
     'define-value': 'Define the base value for border radius',

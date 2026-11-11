@@ -1,15 +1,14 @@
 import type { TransformedToken } from 'style-dictionary/types';
 import { describe, expect, it } from 'vitest';
+import { addSeverityColors } from '../schemas/defaults.ts';
 import type { Theme } from './types.ts';
 import {
-  addSeverityColors,
   getValue,
   inlineTokens,
   isDigit,
   orderBySize,
   pathStartsWithOneOf,
   shortSizeName,
-  toColorNames,
   typeEquals,
 } from './utils.ts';
 
@@ -98,12 +97,5 @@ describe('addSeverityColors', () => {
     const result = addSeverityColors(colors);
     expect(result.danger).toBe('#FF0000');
     expect(Object.keys(result)).toEqual(['accent', 'neutral', 'info', 'success', 'warning', 'danger']);
-  });
-});
-
-describe('toColorNames', () => {
-  it('returns user colors followed by all severity colors', () => {
-    const colors = { accent: '#0062BA', warning: '#EA9B1B' } as Theme['colors'];
-    expect(toColorNames(colors)).toEqual(['accent', 'info', 'success', 'warning', 'danger']);
   });
 });

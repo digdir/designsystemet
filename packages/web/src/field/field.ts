@@ -1,3 +1,4 @@
+import '../readonly/readonly'; // Load to ensure read only works as users expect
 import {
   announce,
   attr,
@@ -14,7 +15,6 @@ import {
   warn,
 } from '../utils/utils';
 
-// TODO: Document that Validation must be hidden with "hidden" attribute (or completely removed from DOM), not display: none
 declare global {
   interface HTMLElementTagNameMap {
     'ds-field': DSFieldElement;

@@ -1,4 +1,3 @@
-import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { Label } from '../../label/label';
 import { Paragraph } from '../../paragraph/paragraph';
@@ -19,7 +18,6 @@ const ComboboxLabel = ({
   description,
   hideLabel,
   size,
-  readOnly,
   formFieldProps,
 }: ComboboxLabelProps) => {
   return (
@@ -30,12 +28,6 @@ const ComboboxLabel = ({
           htmlFor={formFieldProps.inputProps.id}
           className={cl('ds-combobox__label', hideLabel && `ds-sr-only`)}
         >
-          {readOnly && (
-            <PadlockLockedFillIcon
-              aria-hidden
-              className={'ds-combobox__readonly__icon'}
-            />
-          )}
           {label}
         </Label>
       )}

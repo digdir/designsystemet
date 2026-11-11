@@ -14,7 +14,10 @@
   &:lang(no),
   &:lang(nb),
   &:lang(nn) {
-    --dsc-breadcrumbs-label: 'Du er her:'; /* Only set default label if Norwegian */
+    --dsc-breadcrumbs-label: 'Du er her:';
+  }
+  &:lang(en) {
+    --dsc-breadcrumbs-label: 'You are here:';
   }
 
   & > :is(ol, ul) {

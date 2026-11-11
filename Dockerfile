@@ -2,7 +2,7 @@ ARG PORT
 ARG HOST
 ARG APP_ENV
 # find sha for image on https://hub.docker.com/_/node/tags
-FROM node:24.21.0-slim@sha256:2fe369e969550cde8e867afc3fe370b260140cab4a23d467074295b42163d553 AS base
+FROM node:24.22.2-slim@sha256:c86ecead9e55a5210ac1727de38a4ca840bf03dcaf34dc9749addbf383b1920c AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ENV CI=true
@@ -21,7 +21,9 @@ WORKDIR /usr/src/app
 ARG PORT
 ARG HOST
 ARG APP_ENV
+ARG DOCUMENTATION_VERSION
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
+ENV DOCUMENTATION_VERSION=$DOCUMENTATION_VERSION
 # RR v8 prerenders via an in-process Vite preview server over HTTP. Force IPv4
 # localhost resolution so the prerender can connect to it (avoids
 # `ECONNREFUSED 127.0.0.1` when `localhost` resolves to IPv6 in the container).
@@ -32,6 +34,8 @@ RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 FROM base AS www
 COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
+ARG DOCUMENTATION_VERSION
+ENV DOCUMENTATION_VERSION=$DOCUMENTATION_VERSION
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
 CMD [ "node", "server.js" ]
@@ -61,10 +65,8 @@ ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm deploy --filter=@web/storybook --prod /prod/@web/storybook
 
-FROM nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752 AS storybook
-# remove default config
-RUN rm /etc/nginx/conf.d/default.conf
-COPY /apps/storybook/nginx.conf /etc/nginx/conf.d/storybook.conf
+FROM cgr.dev/chainguard/nginx:latest@sha256:d74ba9e5cf9f6b049807e27a5a14a8cd2550ac428143b7d15ea3dbad282f4ed1 AS storybook
+# distroless image (no shell), so replace the default config by overwriting it
+COPY /apps/storybook/nginx.conf /etc/nginx/conf.d/nginx.default.conf
 COPY --from=storybook-build /prod/@web/storybook/dist /usr/share/nginx/html
 EXPOSE 6006
-CMD ["nginx", "-g", "daemon off;"]

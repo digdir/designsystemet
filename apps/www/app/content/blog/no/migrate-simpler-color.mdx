@@ -28,10 +28,10 @@ Før du starter i Figma, må `designsystem.config.json` og `design-tokens` være
 
 Kjører dere CLI-et med `designsystemet tokens create --clean`, migreres fargene og configen automatisk. Dere kan også gjøre dette manuelt ved å flytte fargene fra `main` og `support` til `color` i config-filen.
 
-Du kan sjekke om design tokens er oppdatert ved å se i mappen `semantic/modes`:
+Du kan sjekke om design tokens er oppdatert ved å se i mappen `semantic`:
 
-- inneholder den `support color` og `main color`, bruker dere fortsatt forrige struktur
-- inneholder den kun `color`, bruker dere den nye strukturen
+- inneholder den `modes` med `main-color` og `support-color`, bruker dere fortsatt forrige struktur
+- inneholder den `color` direkte, uten `modes`, bruker dere den nye strukturen
 
 <Image
       src='/img/blog/migrate-simpler-color/migrate-folders.png'
@@ -144,7 +144,7 @@ Oppdater variabelstrukturen før du eksporterer tokens fra Token Studio. Da havn
 
 ## Steg 3 – Synkroniser oppdaterte tokens med Token Studio
 
-Før dere eksporterer tokens til Figma, må tokenstrukturen i GitHub være oppdatert til den nye fargestrukturen. Sjekk at `semantic/modes` kun inneholder `color`, og ikke `main color` eller `support color`.
+Før dere eksporterer tokens til Figma, må tokenstrukturen i GitHub være oppdatert til den nye fargestrukturen. Sjekk at `semantic` inneholder `color`, og ikke lenger `modes` med `main-color` og `support-color`.
 
 **Gjør dette:**
 1. Push oppdaterte tokens til GitHub hvis dere ikke allerede har gjort det.

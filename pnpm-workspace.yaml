@@ -1,7 +1,7 @@
 packages:
   - packages/*
   - apps/*
-  - plugins/*
+  - figma/*
   - internal/*
   - test/*
 allowBuilds:
@@ -29,6 +29,6 @@ syncInjectedDepsAfterScripts:
   - build:www
   - build:themebuilder
   - build:storybook
-nodeVersion: "24.19.0"
+nodeVersion: "24.22.2"
 patchedDependencies:
-  '@oddbird/popover-polyfill': patches/@oddbird__popover-polyfill.patch
+  '@u-elements/u-combobox': patches/@u-elements__u-combobox.patch

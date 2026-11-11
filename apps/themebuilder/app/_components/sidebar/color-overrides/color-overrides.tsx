@@ -1,4 +1,11 @@
-import { Card, Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Card,
+  Dialog,
+  Heading,
+  Paragraph,
+} from '@digdir/designsystemet-react';
+import { PencilIcon } from '@navikt/aksel-icons';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
@@ -6,25 +13,25 @@ import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import ColorDetails from './_components/color-details';
 import classes from './color-overrides.module.css';
 
-type ColorOverridesProps = {
-  triggerButton: React.ReactNode;
-};
-
-export const ColorOverrides = ({ triggerButton }: ColorOverridesProps) => {
-  const { colors, severityColors, severityEnabled } = useThemebuilder();
+export const ColorOverrides = () => {
+  const { colors, severityColors } = useThemebuilder();
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const allColors: ColorTheme[] = [
-    ...colors,
-    ...(severityEnabled ? (severityColors as ColorTheme[]) : []),
-  ];
+  const allColors: ColorTheme[] = [...colors, ...severityColors];
 
   return (
-    <Dialog.TriggerContext>
-      <Dialog.Trigger asChild onClick={() => dialogRef.current?.showModal()}>
-        {triggerButton}
-      </Dialog.Trigger>
+    <>
+      <Button
+        variant='secondary'
+        data-size='sm'
+        className={classes.overridesBtn}
+        aria-haspopup='dialog'
+        onClick={() => dialogRef.current?.showModal()}
+      >
+        <PencilIcon aria-hidden />
+        {t('colorPane.token-overrides')}
+      </Button>
       <Dialog ref={dialogRef} closedby='any' className={classes.dialog}>
         <Dialog.Block>
           <Heading data-size='xs'>{t('overrides.heading')}</Heading>
@@ -41,6 +48,6 @@ export const ColorOverrides = ({ triggerButton }: ColorOverridesProps) => {
           </Card>
         </Dialog.Block>
       </Dialog>
-    </Dialog.TriggerContext>
+    </>
   );
 };

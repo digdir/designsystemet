@@ -2,12 +2,19 @@
 
 ## Usage
 
-It is common to get confused between fieldset and field.
-A good rule of thumb is that **fieldset is a set of field**.
+Field groups a label, an optional description, a form element (such as input, textarea, or select), and a validation message.
 
-Field can be used with input, textarea and select. **NOTE**: textfield already has field built in, and therefore cannot be used inside a field.
+Add the class name `ds-field` to the `<ds-field>` element. `<ds-field>` automatically adds accessibility attributes and support for optional character count.
+`<ds-field>` also links the validation message across fields if it is placed inside a [fieldset](/no/components/docs/fieldset/code).
 
-Add the class name `ds-field` to the `<ds-field>` element. `<ds-field>` links together label, input, description, validation message and counter.
+<Alert>
+**Field or fieldset?**
+
+Field is used for individual form elements, while [fieldset](/no/components/docs/fieldset/code) is used to group multiple fields together.
+A good rule of thumb is that a **fieldset is a set of fields**.
+</Alert>
+
+**Note**: The React component [textfield](/no/components/docs/textfield/code) already has field built-in and should therefore not be placed inside a field.
 
 ```html
 <ds-field class="ds-field">

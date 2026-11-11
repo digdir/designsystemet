@@ -2,7 +2,7 @@
   --dsc-link-color: var(--ds-color-text-subtle);
   --dsc-link-color--hover: var(--ds-color-text-default);
   --dsc-link-color--active: var(--ds-color-text-default);
-  --dsc-link-color--visited: var(--dsc-link-color);
+  --dsc-link-color--visited: var(--dsc-link-color); /* @deprecated Style .ds-link:visited instead */
   --dsc-link-background--active: transparent; /* @deprecated Kept for backwards compatibility */
   --dsc-link-text-decoration-thickness--hover: 0.12em; /* 2px ish */
   --dsc-link-text-decoration-thickness: 0.06em; /* 1px ish */
@@ -28,7 +28,7 @@
   }
 
   & > :is(img, svg) {
-    @composes ds-icon from './base.css';
+    @composes ds-icon from './utils.css';
   }
 
   /*
@@ -53,6 +53,7 @@
   /**
    * States (using :where to allow all components to easily overwrite)
    */
+  /* @deprecated Kept for backwards compatibility with --dsc-link-color--visited */
   &:where(:visited) {
     color: var(--dsc-link-color--visited);
   }
@@ -65,7 +66,7 @@
     }
   }
 
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 
   &:where(:active) {
     background: var(--dsc-link-background--active);

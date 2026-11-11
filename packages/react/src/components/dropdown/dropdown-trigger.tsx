@@ -9,6 +9,8 @@ export type DropdownTriggerProps = PopoverTriggerProps;
 /**
  * DropdownTrigger component, used within a Dropdown.TriggerContext to open a Dropdown.
  *
+ * @deprecated Will be removed in the next major version. Use a `Button` with `popovertarget` set to the dropdown's `id` instead.
+ *
  * @example
  * <Dropdown.TriggerContext>
  *  <Dropdown.Trigger>Dropdown</Dropdown.Trigger>

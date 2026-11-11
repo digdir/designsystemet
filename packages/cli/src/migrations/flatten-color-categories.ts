@@ -19,7 +19,7 @@ type Automigrate = {
   name: string;
   check: (config: any) => boolean;
   message: string;
-  yes: (config: string) => string;
+  yes: (config: string, context?: { configFilePath?: string }) => string;
   no: (config: string) => string;
 };
 

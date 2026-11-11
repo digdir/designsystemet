@@ -1,5 +1,6 @@
 import * as ds from '@digdir/designsystemet-react';
 import { useSynchronizedAnimation } from '@digdir/designsystemet-react';
+import { HighlightedCode } from '@internal/components';
 import * as aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { prettify } from 'htmlfy';
@@ -24,6 +25,7 @@ import {
   withLive,
 } from 'react-live';
 import { useLocation } from 'react-router';
+import { renderStoryHtml } from '~/_utils/render-story';
 import classes from './live-component.module.css';
 
 /* vsLight's attr-name color (rgb(255, 0, 0)) is only 4:1 against white, below the 4.5:1 required for normal text. */
@@ -183,7 +185,7 @@ const Editor = ({
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Tab') {
+    if (showHTML || event.key === 'Tab') {
       return;
     }
 
@@ -266,12 +268,13 @@ const Editor = ({
           <kbd>{t('live-component.activateB')}</kbd>{' '}
           {t('live-component.activateC')}
         </div>
-        <LiveEditor
-          className={cl(classes.editor, !showHTML && classes.hidden)}
-          disabled
-          code={rawHtml}
+        <HighlightedCode
+          className={classes.htmlEditor}
+          hidden={hidden || !showHTML}
           language='html'
-        />
+        >
+          {rawHtml}
+        </HighlightedCode>
         <LiveEditor
           key={resetCount}
           onChange={live.onChange}
@@ -341,7 +344,7 @@ export const LiveComponent = ({
     'light',
   );
   const [useInverted, setUseInverted] = useState(false);
-  const [html, setHtml] = useState<string>('');
+  const [html, setHtml] = useState(() => renderStoryHtml(story, scopes));
   const previewColorScheme = useInverted ? invertedColorScheme : colorScheme;
   const editorId = useId();
 

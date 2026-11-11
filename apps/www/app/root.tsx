@@ -118,6 +118,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   return data({
     lang: params.lang || 'no',
+    documentationVersion: process.env.DOCUMENTATION_VERSION?.trim() || null,
     menu,
     centerLinks,
   });
@@ -141,6 +142,7 @@ function Document({ children }: DocumentProps) {
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='text-scale' content='scale' />
         <Links />
         <Meta />
       </head>
