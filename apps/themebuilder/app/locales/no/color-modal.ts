@@ -1,5 +1,7 @@
 export default {
   hexcode: 'Hexkode',
+  colorformat: 'Fargeformat',
+  'html-attribute': 'HTML-attributt',
   'css-variable': 'CSS variabel',
   'relative-luminance': 'Relativ luminans',
   'can-be-used-against': 'Kan brukes mot',
