@@ -1,0 +1,42 @@
+# Users link to and copy our patterns and best practices, so they need to know when these change.
+# PRs that change them must have a changeset for @web/www, which ends up in the release notes.
+# Add the "skip-docs-changeset" label for changes that aren't worth telling users about, like typos.
+name: Has docs changeset
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+
+permissions:
+  contents: read
+
+env:
+  SKIP_LABEL: skip-docs-changeset
+
+jobs:
+  checks:
+    name: if changes are made to patterns or best practices
+    runs-on: ubuntu-latest
+    # The changesets release PR consumes (deletes) all changesets, so it never has any
+    if: ${{ github.head_ref != 'changeset-release/main' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Look for a docs changeset
+        id: check
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+        run: bash ./.github/workflows/scripts/check-changeset-docs.sh
+
+      - name: Require a docs changeset
+        if: ${{ steps.check.outputs.changes-docs == 'true' && steps.check.outputs.has-changeset != 'true' && !contains(github.event.pull_request.labels.*.name, env.SKIP_LABEL) }}
+        run: |
+          echo "::error::This PR changes patterns or best practices, but has no changeset for @web/www. Run \`pnpm changeset\` and select @web/www to describe what changed, or add the \"$SKIP_LABEL\" label if users don't need to know about the change."
+          exit 1
