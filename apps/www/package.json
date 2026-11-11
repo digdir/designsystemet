@@ -1,6 +1,7 @@
 {
   "name": "@web/www",
   "private": true,
+  "version": "1.24.0",
   "type": "module",
   "scripts": {
     "build": "react-router typegen && react-router build",
