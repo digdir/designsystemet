@@ -58,7 +58,7 @@
   &[data-clickdelegatefor] {
     cursor: pointer;
   }
-  &:has(input[type='radio'], input[type='checkbox']) {
+  &:where(:has(input[type='radio'], input[type='checkbox'])) {
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
@@ -151,6 +151,36 @@
       cursor: default;
       --_dsc-field-border-color: var(--dsc-field-border-color--readonly);
       --_dsc-field-outline-width: var(--ds-border-width-default);
+    }
+  }
+
+  &[data-variant='chip'] {
+    background: var(--ds-color-surface-tinted);
+    padding: var(--ds-size-1);
+    border-radius: var(--ds-border-radius-default);
+    border: var(--ds-border-width-default) solid var(--ds-color-border-subtle);
+
+    & > input {
+      --dsc-input-background: transparent;
+      --dsc-input-border-color: var(--ds-color-border-strong);
+    }
+
+    &:has(> input[type='radio']) {
+      border-radius: min(100%, var(--ds-size-5));
+    }
+
+    &:not([hidden]) {
+      display: inline-grid; /* Allow placing next to eachother */
+    }
+
+    &:has(> input[aria-invalid='true']) {
+      background: var(--ds-color-danger-surface-tinted);
+      border-color: var(--ds-color-danger-border-subtle);
+    }
+
+    &:has(> input[readonly], > input[aria-readonly='true']) {
+      background: var(--ds-color-neutral-surface-tinted);
+      border-color: var(--ds-color-neutral-border-subtle);
     }
   }
 }

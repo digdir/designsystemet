@@ -4,6 +4,7 @@ import {
   Button,
   Divider,
   Field,
+  Fieldset,
   Input,
   Label,
   Tag,
@@ -114,4 +115,143 @@ export const Optional = meta.story(() => (
     </Label>
     <Input />
   </Field>
+));
+
+export const Outline = meta.story(() => (
+  <>
+    <Fieldset>
+      <Fieldset.Legend>Using variant="outline"</Fieldset.Legend>
+      <Field data-variant='outline'>
+        <Label>With description</Label>
+        <Field.Description>Description text</Field.Description>
+        <Input type='checkbox' />
+      </Field>
+      <Field data-variant='outline'>
+        <Label>Checked</Label>
+        <Input type='checkbox' defaultChecked />
+      </Field>
+      <Field data-variant='outline'>
+        <Label>With error state</Label>
+        <Input type='checkbox' defaultChecked />
+        <ValidationMessage>Error message</ValidationMessage>
+      </Field>
+      <Field data-variant='outline'>
+        <Label>With error state</Label>
+        <Input type='checkbox' defaultChecked />
+        <ValidationMessage>Error message</ValidationMessage>
+      </Field>
+      <Field data-variant='outline'>
+        <Label>Disabled not checked</Label>
+        <Input type='checkbox' disabled />
+      </Field>
+      <Field data-variant='outline'>
+        <Label>Disabled checked</Label>
+        <Input type='checkbox' disabled defaultChecked />
+      </Field>
+      <Field data-variant='outline'>
+        <Label>Readonly not checked</Label>
+        <Input type='checkbox' readOnly />
+      </Field>
+      <Field data-variant='outline'>
+        <Label>Readonly checked</Label>
+        <Input type='checkbox' readOnly defaultChecked />
+      </Field>
+    </Fieldset>
+  </>
+));
+
+export const Chip = meta.story(() => (
+  <>
+    <Fieldset>
+      <Fieldset.Legend>Using variant="chip"</Fieldset.Legend>
+      <div
+        style={{
+          display: 'flex',
+          gap: 'var(--ds-size-2)',
+          flexWrap: 'wrap',
+          alignItems: 'start',
+        }}
+      >
+        <Field data-variant='chip'>
+          <Label>Not checked</Label>
+          <Input type='checkbox' />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>Checked</Label>
+          <Input type='checkbox' defaultChecked />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>With description</Label>
+          <Field.Description>Description text</Field.Description>
+          <Input type='checkbox' />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>With error state</Label>
+          <Input type='checkbox' defaultChecked />
+          <ValidationMessage>Error message</ValidationMessage>
+        </Field>
+        <Field data-variant='chip'>
+          <Label>With error state</Label>
+          <Input type='checkbox' defaultChecked />
+          <ValidationMessage>Error message</ValidationMessage>
+        </Field>
+        <Field data-variant='chip'>
+          <Label>Disabled not checked</Label>
+          <Input type='checkbox' disabled />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>Disabled checked</Label>
+          <Input type='checkbox' disabled defaultChecked />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>Readonly not checked</Label>
+          <Input type='checkbox' readOnly />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>Readonly checked</Label>
+          <Input type='checkbox' readOnly defaultChecked />
+        </Field>
+        <div style={{ width: '100%', height: '1em' }} />
+        <Field data-variant='chip'>
+          <Label>Not checked</Label>
+          <Input type='radio' />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>Checked</Label>
+          <Input type='radio' defaultChecked />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>With description</Label>
+          <Field.Description>Description text</Field.Description>
+          <Input type='radio' />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>With error state</Label>
+          <Input type='radio' defaultChecked />
+          <ValidationMessage>Error message</ValidationMessage>
+        </Field>
+        <Field data-variant='chip'>
+          <Label>With error state</Label>
+          <Input type='radio' defaultChecked />
+          <ValidationMessage>Error message</ValidationMessage>
+        </Field>
+        <Field data-variant='chip'>
+          <Label>Disabled not checked</Label>
+          <Input type='radio' disabled />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>Disabled checked</Label>
+          <Input type='radio' disabled defaultChecked />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>Readonly not checked</Label>
+          <Input type='radio' readOnly />
+        </Field>
+        <Field data-variant='chip'>
+          <Label>Readonly checked</Label>
+          <Input type='radio' readOnly defaultChecked />
+        </Field>
+      </div>
+    </Fieldset>
+  </>
 ));
