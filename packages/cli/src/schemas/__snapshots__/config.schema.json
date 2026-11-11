@@ -205,7 +205,10 @@
                       "base-contrast-default",
                       "surface-muted",
                       "border-muted",
-                      "text-muted"
+                      "text-muted",
+                      "surface-invalid",
+                      "border-invalid",
+                      "text-invalid"
                     ]
                   },
                   "additionalProperties": {

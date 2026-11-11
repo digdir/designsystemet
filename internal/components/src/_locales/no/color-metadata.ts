@@ -81,4 +81,16 @@ export default {
     long: 'Text Muted brukes som en dempet tekstfarge.',
     short: 'Dempet tekstfarge.',
   },
+  'surface-invalid': {
+    long: 'Surface Invalid brukes som bakgrunn på overflater med valideringsfeil.',
+    short: 'Bakgrunn for valideringsfeil.',
+  },
+  'border-invalid': {
+    long: 'Border Invalid brukes som kantlinje på elementer med valideringsfeil.',
+    short: 'Kantlinje for valideringsfeil.',
+  },
+  'text-invalid': {
+    long: 'Text Invalid brukes som tekstfarge for valideringsfeil.',
+    short: 'Tekstfarge for valideringsfeil.',
+  },
 };

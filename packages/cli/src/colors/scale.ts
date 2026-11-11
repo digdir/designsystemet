@@ -1,10 +1,19 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
 import { semanticColorSpec } from './specs.ts';
-import type { ChromaAdjustment, ColorScale, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
+import type {
+  ChromaAdjustment,
+  ColorScale,
+  ColorScheme,
+  CssColor,
+  SemanticColorNames,
+  SemanticColorSpec,
+  ThemeInfo,
+} from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
 export const RESERVED_COLORS = ['success', 'warning', 'danger', 'info'];
+const invalidColorNames: InvalidColorNames[] = ['border-invalid', 'surface-invalid', 'text-invalid'];
 
 type ColorScaleSpec = SemanticColorSpec;
 
@@ -52,6 +61,11 @@ export const generateColorScale = (
       ...colors['base-contrast-default'],
       hex: generateColorContrast(baseColors.default, 'default'),
     };
+
+    // Hardcoded colors
+    for (const invalidColorName of invalidColorNames) {
+      colors[invalidColorName].hex = invalidColors[colorScheme][invalidColorName];
+    }
   }
 
   return colors;
@@ -135,4 +149,20 @@ const adjustChroma = (hex: CssColor, adjustment: ChromaAdjustment, colorScheme: 
   const adjusted = chroma(L, target, Number.isNaN(H) ? 0 : H, 'oklch').hex();
   // Re-fit luminance so contrast is identical to the unadjusted step.
   return chroma(adjusted).luminance(chroma(hex).luminance()).hex() as CssColor;
+};
+
+type InvalidColorNames = Extract<SemanticColorNames, 'text-invalid' | 'border-invalid' | 'surface-invalid'>;
+
+/** Generated colorscale using default severity color for danger: #C01B1B */
+const invalidColors: Record<ColorScheme, Record<InvalidColorNames, CssColor>> = {
+  light: {
+    'surface-invalid': '#f8e4e4', // danger-surface-tinted
+    'border-invalid': '#ce4d4d', // danger-border-default
+    'text-invalid': '#b81a1a', // danger-text-subtle
+  },
+  dark: {
+    'surface-invalid': '#4f1f1b',
+    'border-invalid': '#bc6b64',
+    'text-invalid': '#d19a96',
+  },
 };

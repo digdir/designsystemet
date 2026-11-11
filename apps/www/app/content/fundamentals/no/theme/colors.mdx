@@ -2,7 +2,7 @@
 title: Farger
 sidebar_title: Farger
 description: Hvordan de semantiske fargene er bygget opp, og hvordan du bruker dem i lys og mørk modus.
-date: 2025-06-30
+date: 2026-11-11
 category: Tema
 color: red
 icon: PaletteIcon
@@ -120,6 +120,7 @@ I mørk modus blir `surface-default`, `surface-tinted`, `surface-hover` og `surf
 * `surface-hover` kan brukes til hover-tilstander for elementer eller til å skape visuelle hierarkier i Surface-laget når den kombineres med `surface-tinted` og `surface-active`.
 * `surface-active` kan brukes til active-tilstander for elementer eller til å forsterke hierarkiet i Surface-laget sammen med `surface-tinted` og `surface-hover`.
 * `surface-muted` er en versjon av `surface-tinted` med lav fargemetning (chroma) og samme kontrast. Den kan brukes til dempede flater uten at du trenger en egen nøytral fargeskala.
+* `surface-invalid` er en fast rød bakgrunn som brukes på flater med valideringsfeil. Den er lik i alle fargeskalaer, slik at ugyldige tilstander ser like ut uansett `data-color`.
 
 <Image
   src='/img/fundamentals/theme/colors/color-surface.png'
@@ -139,6 +140,7 @@ Fargen bør ikke være den eneste visuelle indikatoren på at et element er inte
 Fargen har god kontrast (over 3:1) mot alle background-fargene, `surface-default` og `surface-tinted`.
 * `border-strong` har god kontrast (over 3:1) mot alle background- og surface-fargene og kan brukes på rammer for å gjøre elementer ekstra synlige.
 * `border-muted` er en versjon av `border-default` med lav fargemetning (chroma) og samme kontrast. Den kan brukes til dempede rammer uten at du trenger en egen nøytral fargeskala.
+* `border-invalid` er en fast rød kantlinje som brukes på elementer med valideringsfeil. Den er lik i alle fargeskalaer.
 
 <Image
   src='/img/fundamentals/theme/colors/color-border.png'
@@ -159,6 +161,7 @@ Den bør brukes på hovedinnholdet og den primære teksten på en side.
 Hvis temaet ditt har en Neutral-fargeskala, kan denne fargen fra den være en fin farge å bruke på mesteparten av teksten.
 Fargen har god kontrast (**4.5:1**) mot alle background- og surface-fargene.
 * `text-muted` er en versjon av `text-subtle` med lav fargemetning (chroma) og samme kontrast. Den kan brukes til dempet tekst uten at du trenger en egen nøytral fargeskala.
+* `text-invalid` er en fast rød tekstfarge som brukes på feilmeldinger ved validering. Den er lik i alle fargeskalaer.
 
 <Image
   src='/img/fundamentals/theme/colors/color-text.png'
