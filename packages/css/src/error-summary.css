@@ -1,8 +1,8 @@
 .ds-error-summary {
-  --dsc-errorsummary-background: var(--ds-color-danger-surface-tinted);
+  --dsc-errorsummary-background: var(--ds-color-surface-invalid);
   --dsc-errorsummary-border-radius: var(--ds-border-radius-md);
   --dsc-errorsummary-padding: var(--ds-size-7);
-  --dsc-errorsummary-color: var(--ds-color-danger-text-default);
+  --dsc-errorsummary-color: var(--ds-color-text-invalid);
   --dsc-errorsummary-link-color: var(--dsc-errorsummary-color); /* @deprecated */
   --dsc-errorsummary-heading-color: var(--dsc-errorsummary-color); /* @deprecated */
 

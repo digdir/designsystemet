@@ -115,7 +115,7 @@
     &[data-variant='outline'] {
       --dsc-field-border-color: var(--ds-color-border-muted);
       --dsc-field-border-color--checked: var(--ds-color-border-default);
-      --dsc-field-border-color--invalid: var(--ds-color-danger-border-default);
+      --dsc-field-border-color--invalid: var(--ds-color-border-invalid);
       --dsc-field-border-color--readonly: var(--ds-color-border-muted);
       --dsc-field-border-radius: var(--ds-border-radius-lg);
       --dsc-field-border-style: solid;
