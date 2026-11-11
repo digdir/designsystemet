@@ -50,6 +50,12 @@ test('does not move when focused on focusgroup root', async () => {
 
   await userEvent.keyboard('{ArrowLeft}');
   expect(root).toHaveFocus();
+
+  await userEvent.keyboard('{ArrowDown}');
+  expect(root).toHaveFocus();
+
+  await userEvent.keyboard('{ArrowRight}');
+  expect(root).toHaveFocus();
 });
 
 test('does not move when focused on element that is not a focusgroup item', async () => {
@@ -79,6 +85,12 @@ test('does not move when there is only one item even with wrap', async () => {
 
   await userEvent.keyboard('{ArrowLeft}');
   expect(getById('item1')).toHaveFocus();
+
+  await userEvent.keyboard('{ArrowDown}');
+  expect(getById('item1')).toHaveFocus();
+
+  await userEvent.keyboard('{ArrowRight}');
+  expect(getById('item1')).toHaveFocus();
 });
 
 test('does not move when there is only one item', async () => {
@@ -91,6 +103,12 @@ test('does not move when there is only one item', async () => {
   expect(getById('item1')).toHaveFocus();
 
   await userEvent.keyboard('{ArrowLeft}');
+  expect(getById('item1')).toHaveFocus();
+
+  await userEvent.keyboard('{ArrowDown}');
+  expect(getById('item1')).toHaveFocus();
+
+  await userEvent.keyboard('{ArrowRight}');
   expect(getById('item1')).toHaveFocus();
 });
 
@@ -106,6 +124,12 @@ test('does not move when focused on element outside focusgroup', async () => {
   expect(getById('out')).toHaveFocus();
 
   await userEvent.keyboard('{ArrowLeft}');
+  expect(getById('out')).toHaveFocus();
+
+  await userEvent.keyboard('{ArrowDown}');
+  expect(getById('out')).toHaveFocus();
+
+  await userEvent.keyboard('{ArrowRight}');
   expect(getById('out')).toHaveFocus();
 });
 
@@ -231,8 +255,10 @@ test('skip hidden candidates', async () => {
 
   getById('item3').focus();
   await userEvent.keyboard('{ArrowLeft}');
-
   expect(getById('item1')).toHaveFocus();
+
+  await userEvent.keyboard('{ArrowRight}');
+  expect(getById('item3')).toHaveFocus();
 });
 
 test('wraps successfully when there are non-item elements before and after items', async () => {
@@ -393,38 +419,6 @@ test('vertical: wraps backward when block axis and wrap are supported', async ()
   getById('item1').focus();
   await userEvent.keyboard('{ArrowUp}');
   expect(getById('item3')).toHaveFocus();
-});
-
-describe('nested focusgroup is not an item of parent focusgroup', () => {
-  test('arrow left at first item of inner does not bleed into parent (no wrap)', async () => {
-    document.body.innerHTML = `<div id="outer" focusgroup="toolbar nomemory">
-        <button tabindex="0" id="btn1">btn1</button>
-        <div id="inner" focusgroup="toolbar nomemory">
-          <button tabindex="0" id="inner_btn1">inner btn1</button>
-          <button tabindex="0" id="inner_btn2">inner btn2</button>
-        </div>
-        <button tabindex="0" id="btn4">btn4</button>
-      </div>`;
-
-    getById('inner_btn1').focus();
-    await userEvent.keyboard('{ArrowLeft}');
-    expect(getById('inner_btn1')).toHaveFocus();
-  });
-
-  test("inner backward navigation moves to previous inner item, not parent's previous item", async () => {
-    document.body.innerHTML = `<div id="outer" focusgroup="toolbar nomemory">
-        <button tabindex="0" id="btn1">btn1</button>
-        <div id="inner" focusgroup="toolbar nomemory">
-          <button tabindex="0" id="inner_btn1">inner btn1</button>
-          <button tabindex="0" id="inner_btn2">inner btn2</button>
-        </div>
-        <button tabindex="0" id="btn4">btn4</button>
-      </div>`;
-
-    getById('inner_btn2').focus();
-    await userEvent.keyboard('{ArrowLeft}');
-    expect(getById('inner_btn1')).toHaveFocus();
-  });
 });
 
 describe('behavior token can appear in any position', () => {
@@ -1077,20 +1071,6 @@ test('moves to next item and skips non-focusable elements', async () => {
   expect(getById('item3')).toHaveFocus();
 });
 
-test('does not move when focused on focusgroup root', async () => {
-  document.body.innerHTML = `<div id="root" tabindex="0" focusgroup="toolbar inline block">
-      <span id="item1" tabindex="0">item1</span>
-      <span id="item2" tabindex="0">item2</span>
-    </div>`;
-
-  getById('root').focus();
-  await userEvent.keyboard('{ArrowDown}');
-  expect(getById('root')).toHaveFocus();
-
-  await userEvent.keyboard('{ArrowRight}');
-  expect(getById('root')).toHaveFocus();
-});
-
 test('does not move when focused on focusable element that is not a focusgroup item', async () => {
   document.body.innerHTML = `<span id="nonitem1" tabindex="0">nonitem1</span>
     <div tabindex="0" focusgroup="toolbar inline block">
@@ -1104,47 +1084,6 @@ test('does not move when focused on focusable element that is not a focusgroup i
 
   await userEvent.keyboard('{ArrowRight}');
   expect(getById('nonitem1')).toHaveFocus();
-});
-
-test('does not move when focused on element outside focusgroup', async () => {
-  document.body.innerHTML = `<span id="out" tabindex="0">out</span>
-    <div focusgroup="toolbar inline block">
-      <span id="item1" tabindex="0">item1</span>
-      <span id="item2" tabindex="0">item2</span>
-    </div>`;
-
-  getById('out').focus();
-  await userEvent.keyboard('{ArrowDown}');
-  expect(getById('out')).toHaveFocus();
-
-  await userEvent.keyboard('{ArrowRight}');
-  expect(getById('out')).toHaveFocus();
-});
-
-test('does not move when there is only one item', async () => {
-  document.body.innerHTML = `<div focusgroup="toolbar inline block">
-      <span id="item1" tabindex="0">item1</span>
-    </div>`;
-
-  getById('item1').focus();
-  await userEvent.keyboard('{ArrowDown}');
-  expect(getById('item1')).toHaveFocus();
-
-  await userEvent.keyboard('{ArrowRight}');
-  expect(getById('item1')).toHaveFocus();
-});
-
-test('does not move when there is only one item even with wrap', async () => {
-  document.body.innerHTML = `<div focusgroup="toolbar inline block wrap">
-      <span id="item1" tabindex="0">item1</span>
-    </div>`;
-
-  getById('item1').focus();
-  await userEvent.keyboard('{ArrowDown}');
-  expect(getById('item1')).toHaveFocus();
-
-  await userEvent.keyboard('{ArrowRight}');
-  expect(getById('item1')).toHaveFocus();
 });
 
 test('does not wrap when wrap is not supported', async () => {
@@ -1256,6 +1195,36 @@ describe('nested focusgroup is item of parent focusgroup', () => {
 });
 
 describe('nested focusgroup is not an item of parent focusgroup', () => {
+  test('arrow left at first item of inner does not bleed into parent (no wrap)', async () => {
+    document.body.innerHTML = `<div id="outer" focusgroup="toolbar nomemory">
+        <button tabindex="0" id="btn1">btn1</button>
+        <div id="inner" focusgroup="toolbar nomemory">
+          <button tabindex="0" id="inner_btn1">inner btn1</button>
+          <button tabindex="0" id="inner_btn2">inner btn2</button>
+        </div>
+        <button tabindex="0" id="btn4">btn4</button>
+      </div>`;
+
+    getById('inner_btn1').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('inner_btn1')).toHaveFocus();
+  });
+
+  test("inner backward navigation moves to previous inner item, not parent's previous item", async () => {
+    document.body.innerHTML = `<div id="outer" focusgroup="toolbar nomemory">
+        <button tabindex="0" id="btn1">btn1</button>
+        <div id="inner" focusgroup="toolbar nomemory">
+          <button tabindex="0" id="inner_btn1">inner btn1</button>
+          <button tabindex="0" id="inner_btn2">inner btn2</button>
+        </div>
+        <button tabindex="0" id="btn4">btn4</button>
+      </div>`;
+
+    getById('inner_btn2').focus();
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(getById('inner_btn1')).toHaveFocus();
+  });
+
   test('arrow right at last item of inner does not bleed into parent (no wrap)', async () => {
     document.body.innerHTML = `<div id="outer" focusgroup="toolbar nomemory">
         <button tabindex="0" id="btn1">btn1</button>
@@ -1582,23 +1551,6 @@ describe('Vertical writing-mode swaps inline and block axes', () => {
       expect(getById('item2')).toHaveFocus();
     });
   });
-});
-
-test('skip hidden candidates', async () => {
-  document.body.innerHTML = `
-    <div focusgroup="tablist">
-      <button tabindex="0" id="item1">item1</button>
-      <div hidden>
-        <button tabindex="0">item2</button>
-      </div>
-      <button tabindex="0" id="item3">item3</button>
-    </div>
-  `;
-
-  getById('item1').focus();
-  await userEvent.keyboard('{ArrowRight}');
-
-  expect(getById('item3')).toHaveFocus();
 });
 
 test('horizontal: does not move when axis (ArrowRight) is not supported (block only)', async () => {

@@ -31,7 +31,12 @@ const linkVisitedOverrideSchema = z
     light: colorSchema.optional().describe('A hex color that overrides light mode'),
     dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
   })
-  .describe('Overrides for the "link-visited" color');
+  .meta({
+    description: 'Deprecated: style .ds-link:visited instead. Overrides for the "link-visited" color',
+    deprecated: true,
+    // Non-standard JSON schema keyword, shown by VS Code instead of a generic deprecation warning
+    deprecationMessage: 'Style .ds-link:visited instead.',
+  });
 
 const focusOverrideSchema = z
   .object({

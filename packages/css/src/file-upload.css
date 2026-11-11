@@ -30,7 +30,7 @@
   }
   .ds-field[tabindex]:focus-visible &,
   &:focus-within {
-    @composes ds-focus--visible from './base.css';
+    @composes ds-focus--visible from './utils.css';
   }
 
   &:hover {

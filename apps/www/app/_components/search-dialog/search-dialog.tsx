@@ -4,8 +4,8 @@ import {
   Dialog,
   Heading,
   Paragraph,
-  Search,
   Skeleton,
+  EXPERIMENTAL_Suggestion as Suggestion,
   Tag,
 } from '@digdir/designsystemet-react';
 import type { Color, SeverityColors } from '@digdir/designsystemet-types';
@@ -20,7 +20,7 @@ import {
   TasklistIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx';
-import type { ChangeEvent, CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, InputEvent, ReactNode } from 'react';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { highlightText } from '~/_utils/highlight';
@@ -48,10 +48,13 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   const [isQuickLoading, setIsQuickLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [resultAnnounce, setresultAnnounce] = useState('');
-  const latestQueryRef = useRef<string>('');
+  const searchRef = useRef<AbortController | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  // The input isn't controlled, as Suggestion manages its value
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const performSearch = async (searchQuery: string) => {
+    searchRef.current?.abort(); // Cancel searches that are still in flight
     if (!searchQuery.trim()) {
       setQuickResults([]);
       setIsQuickLoading(false);
@@ -59,8 +62,13 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
       return;
     }
 
-    latestQueryRef.current = searchQuery;
     await handleSearch(searchQuery);
+  };
+
+  const searchFor = (value: string) => {
+    if (inputRef.current) inputRef.current.value = value;
+    setQuery(value);
+    performSearch(value);
   };
 
   const debouncedCallback = useDebounceCallback((value: string) => {
@@ -73,17 +81,19 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
     setresultAnnounce(value);
   }, 1000);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const handleInputChange = (e: InputEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
     setIsTyping(true);
     setQuery(value);
     debouncedCallback(value);
   };
 
   const handleClear = () => {
+    searchRef.current?.abort(); // Cancel searches that are still in flight
     setQuery('');
     setQuickResults([]);
     setIsQuickLoading(false);
+    debouncedAnnounce('');
   };
 
   const handleClose = () => {
@@ -95,32 +105,33 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   };
 
   const handleDialogClose = () => {
-    setQuery('');
-    setQuickResults([]);
-    setIsQuickLoading(false);
+    if (inputRef.current) inputRef.current.value = '';
+    handleClear();
     onClose();
   };
 
   const handleSearch = async (query: string) => {
     setIsQuickLoading(true);
     const controller = new AbortController();
+    searchRef.current = controller;
     try {
       const response = await fetch(
         `/api/search?q=${encodeURIComponent(query)}&lang=${lang}`,
         { signal: controller.signal },
       );
-      const data = await response.json();
-      setQuickResults(data.results || []);
+      if (!response.ok) throw new Error(`Search failed: ${response.status}`);
+      const { results = [] } = await response.json();
+      if (controller.signal.aborted) return;
+      setQuickResults(results);
       debouncedAnnounce(
-        `${t('search.srA')} ${data.results.length} ${t('search.srB')} ${query}`,
+        `${t('search.srA')} ${results.length} ${t('search.srB')} ${query}`,
       );
     } catch (error) {
-      if ((error as Error).name !== 'AbortError') {
-        console.error('Search error:', error);
-        if (latestQueryRef.current === query) setQuickResults([]);
-      }
+      if (controller.signal.aborted) return;
+      console.error('Search error:', error);
+      setQuickResults([]);
     } finally {
-      if (latestQueryRef.current === query) setIsQuickLoading(false);
+      if (!controller.signal.aborted) setIsQuickLoading(false);
     }
   };
 
@@ -196,17 +207,18 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
           <Heading data-size='sm' className={classes.title}>
             {t('search.title')}
           </Heading>
-          <Search>
-            <Search.Input
+          <Suggestion>
+            <Suggestion.Input
+              ref={inputRef}
+              type='search'
               className={classes.input}
               autoFocus={true}
               aria-label={t('search.label')}
               placeholder={t('search.placeholder')}
-              value={query}
-              onChange={handleInputChange}
+              onInput={handleInputChange}
             />
-            <Search.Clear onClick={handleClear} />
-          </Search>
+            <Suggestion.Clear onClick={handleClear} />
+          </Suggestion>
           <div
             className='ds-sr-only'
             aria-live='assertive'
@@ -291,38 +303,18 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
               {t('search.suggestions-title')}
             </Paragraph>
             <div className={classes.suggestionsList}>
-              <Chip.Button
-                onClick={() => {
-                  setQuery('Button');
-                  performSearch('Button');
-                }}
-              >
+              <Chip.Button onClick={() => searchFor('Button')}>
                 Button
               </Chip.Button>
 
-              <Chip.Button
-                onClick={() => {
-                  setQuery('Design tokens');
-                  performSearch('Design tokens');
-                }}
-              >
+              <Chip.Button onClick={() => searchFor('Design tokens')}>
                 Design tokens
               </Chip.Button>
 
-              <Chip.Button
-                onClick={() => {
-                  setQuery(t('search.suggestions.1'));
-                  performSearch(t('search.suggestions.1'));
-                }}
-              >
+              <Chip.Button onClick={() => searchFor(t('search.suggestions.1'))}>
                 {t('search.suggestions.1')}
               </Chip.Button>
-              <Chip.Button
-                onClick={() => {
-                  setQuery(t('search.suggestions.2'));
-                  performSearch(t('search.suggestions.2'));
-                }}
-              >
+              <Chip.Button onClick={() => searchFor(t('search.suggestions.2'))}>
                 {t('search.suggestions.2')}
               </Chip.Button>
             </div>

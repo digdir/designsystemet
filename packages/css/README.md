@@ -3,6 +3,7 @@
 CSS implementation of the Designsystemet components
 
 - Uses [@layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `ds`
+  - Import it before your theme, so the order of our layers (`@layer ds`) is set first.
 - Use this with your theme generated with `npx @digdir/designsystemet` or from [Themebuilder](https://theme.designsystemet.no/)
   - Alternative you can use a default starter theme under `/theme`.
 
@@ -14,33 +15,28 @@ See our [CSS documentation](https://designsystemet.no/en/fundamentals/code/css) 
 
 ### Tailwind
 
-If you are using Tailwind with [Preflight](https://tailwindcss.com/docs/preflight) make sure to load Designsystemet first.
 
 #### v4
+Set `tailwind` to `"v4"` on the `css` output in your `@digdir/designsystemet` config file to generate a `<your-designsystemet-theme>.tailwind.css` next to your `<your-designsystemet-theme>.css`.
+Import it first, as it declares the layer order for you:
 
 ```css
-@import url('@digdir/designsystemet-css');
-@import url('tailwindcss');
-```
-
-To make Tailwind utilities use Designsystemet's design tokens, also import the generated Tailwind theme file.
-Set `tailwind` to `"v4"` or `"v3"` on the `css` output in your `@digdir/designsystemet` config file to generate a `<theme>.tailwind.css` next to every `<theme>.css`.
-
-```css
-@import url('@digdir/designsystemet-css');
-@import url('@digdir/designsystemet-css/theme.css');
-
-@import url('tailwindcss');
-@import url('@digdir/designsystemet-css/theme/designsystemet.tailwind.css');
+@import '<your-designsystemet-theme>.tailwind.css';
+@import '@digdir/designsystemet-css';
+@import '<your-designsystemet-theme>.css';
+@import 'tailwindcss';
 ```
 
 See [Tailwind CSS in the documentation](https://designsystemet.no/en/fundamentals/code/css#tailwind-css) for details.
 
 #### v3 and older
-```css
-@import url('@digdir/designsystemet-css');
+Set `tailwind` to `"v3"` on the `css` output in your `@digdir/designsystemet` config file to generate a v3 compatible `<your-designsystemet-theme>.tailwind.css` next to your `<your-designsystemet-theme>.css`.
+Import it first, as it declares the layer order for you:
 
-@layer tailwind-base, ds;
+```css
+@import '<your-designsystemet-theme>.tailwind.css';
+@import '@digdir/designsystemet-css';
+@import '<your-designsystemet-theme>.css';
 
 @layer tailwind-base {
   @tailwind base;
