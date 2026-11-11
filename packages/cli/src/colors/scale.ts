@@ -64,7 +64,7 @@ export const generateColorScale = (
 
     // Hardcoded colors
     for (const invalidColorName of invalidColorNames) {
-      colors[invalidColorName].hex = invalidColors[colorScheme][invalidColorName];
+      colors[invalidColorName].hex = invalidColors[invalidColorName][colorScheme];
     }
   }
 
@@ -154,15 +154,8 @@ const adjustChroma = (hex: CssColor, adjustment: ChromaAdjustment, colorScheme: 
 type InvalidColorNames = Extract<SemanticColorNames, 'text-invalid' | 'border-invalid' | 'surface-invalid'>;
 
 /** Generated colorscale using default severity color for danger: #C01B1B */
-const invalidColors: Record<ColorScheme, Record<InvalidColorNames, CssColor>> = {
-  light: {
-    'surface-invalid': '#f8e4e4', // danger-surface-tinted
-    'border-invalid': '#ce4d4d', // danger-border-default
-    'text-invalid': '#b81a1a', // danger-text-subtle
-  },
-  dark: {
-    'surface-invalid': '#4f1f1b',
-    'border-invalid': '#bc6b64',
-    'text-invalid': '#d19a96',
-  },
+const invalidColors: Record<InvalidColorNames, Record<ColorScheme, CssColor>> = {
+  'surface-invalid': { light: '#f8e4e4', dark: '#4f1f1b' }, // danger-surface-tinted
+  'border-invalid': { light: '#ce4d4d', dark: '#bc6b64' }, // danger-border-default
+  'text-invalid': { light: '#b81a1a', dark: '#d19a96' }, // danger-text-subtle
 };
