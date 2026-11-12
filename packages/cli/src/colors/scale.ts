@@ -1,7 +1,7 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
-import { getSemanticColorByNumber, semanticColorSpec } from './specs.ts';
-import type { ColorNumber, ColorScale, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
+import { semanticColorSpec } from './specs.ts';
+import type { ColorScale, ColorScheme, CssColor, SemanticColorNames, SemanticColorSpec, ThemeInfo } from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
 export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info'];
@@ -124,8 +124,8 @@ const generateColorContrast = (color: CssColor, type: 'default' | 'subtle'): Css
  * Returns the css variable for a color.
  * @deprecated This function is planned for removal.
  * @param colorType The type of color
- * @param colorNumber The number of the color
+ * @param colorName The name of the color step
  */
-export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
-  return `--ds-color-${colorType}-${getSemanticColorByNumber(colorNumber).displayName.toLowerCase().replace(/\s/g, '-')}`;
+export const getCssVariable = (colorType: string, colorName: SemanticColorNames) => {
+  return `--ds-color-${colorType}-${colorName}`;
 };

@@ -51,7 +51,7 @@ describe('generateColorSchemes', () => {
 
 describe('getCssVariable', () => {
   it('builds the variable name from color type and number', () => {
-    expect(getCssVariable('accent', 1)).toBe('--ds-color-accent-background-default');
-    expect(getCssVariable('neutral', 12)).toBe('--ds-color-neutral-base-default');
+    expect(getCssVariable('accent', 'background-default')).toBe('--ds-color-accent-background-default');
+    expect(getCssVariable('neutral', 'base-default')).toBe('--ds-color-neutral-base-default');
   });
 });

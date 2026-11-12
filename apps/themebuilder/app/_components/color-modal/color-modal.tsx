@@ -36,7 +36,7 @@ export const ColorModal = ({
   const { t } = useTranslation();
 
   // TMP: Quick fix to give variable names without namespace specified
-  const cssVariable = getCssVariable(namespace, number).replace(
+  const cssVariable = getCssVariable(namespace, name).replace(
     `--ds-color-${namespace}-`,
     `--ds-color-`,
   );
