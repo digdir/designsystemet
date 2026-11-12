@@ -2,6 +2,8 @@ import type no from '../no/color-modal';
 
 export default {
   hexcode: 'Hexcode',
+  colorformat: 'Color format',
+  'html-attribute': 'HTML attribute',
   'css-variable': 'CSS variable',
   'relative-luminance': 'Relative luminance',
   'can-be-used-against': 'Can be used against',

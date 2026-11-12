@@ -10,6 +10,10 @@
  * `published-packages` is the output of changesets/action:
  *   [{ "name": "@digdir/designsystemet-react", "version": "1.20.1" }, ...]
  *
+ * The Figma packages and the documentation (www) are private, so they are
+ * never in `published-packages`. They share the version of the code packages,
+ * so their changes for the same version are added too.
+ *
  * The exported helpers are also used by scripts/sync-changelogs.js to build the
  * consolidated changelog for www.
  */
@@ -19,6 +23,12 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = process.cwd();
 const PACKAGE_DIRS = ['packages'];
+// Private packages that are versioned with the code, but not published to npm
+const PRIVATE_DIRS = ['figma', 'apps'];
+// Headings for packages whose name says little in the release notes
+const DISPLAY_NAMES = { '@web/www': 'Documentation' };
+// What a package's changelog says for a version that only bumped it with the others.
+export const NO_CHANGES = 'No changes in this release.';
 
 /**
  * Finds every package in the given folders, by default PACKAGE_DIRS.
@@ -122,6 +132,22 @@ async function main() {
   const pkgs = await findPackages();
   const sections = [];
 
+  const versions = new Set(published.map(({ version }) => version));
+  for (const pkg of (await findPackages(PRIVATE_DIRS)).values()) {
+    if (!versions.has(pkg.version)) continue;
+    let body = null;
+    try {
+      body = extractVersionSection(
+        await fs.readFile(path.join(pkg.dir, 'CHANGELOG.md'), 'utf8'),
+        pkg.version,
+      );
+    } catch {}
+    // Most releases only bump these packages along with the code
+    if (!body || body === NO_CHANGES) continue;
+    pkgs.set(pkg.name, pkg);
+    published.push({ name: pkg.name, version: pkg.version });
+  }
+
   for (const { name, version } of [...published].sort((a, b) =>
     a.name.localeCompare(b.name),
   )) {
@@ -139,7 +165,7 @@ async function main() {
       console.error(`Warning: no changelog entry found for ${name}@${version}`);
       body = '_No changelog entry found._';
     }
-    sections.push(`## ${name}@${version}\n\n${body}`);
+    sections.push(`## ${DISPLAY_NAMES[name] ?? name}@${version}\n\n${body}`);
   }
 
   process.stdout.write(`${sections.join('\n\n')}\n`);

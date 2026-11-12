@@ -1,5 +1,5 @@
 import { ChevronDownIcon, ChevronUpIcon, LinkIcon } from '@navikt/aksel-icons';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Button, Dialog } from '../';
@@ -42,6 +42,45 @@ const meta = preview.meta({
 export const Preview = meta.story({
   render: (args) => {
     return (
+      <>
+        <Button
+          popovertarget='dropdown-preview'
+          data-color={args['data-color']}
+        >
+          Dropdown
+        </Button>
+        <Dropdown {...args} id='dropdown-preview'>
+          <Dropdown.Heading>First heading</Dropdown.Heading>
+          <Dropdown.List>
+            <Dropdown.Item>
+              <Dropdown.Button>Button 1.1</Dropdown.Button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>Button 1.2</Dropdown.Button>
+            </Dropdown.Item>
+          </Dropdown.List>
+          <Dropdown.Heading>Second heading</Dropdown.Heading>
+          <Dropdown.List>
+            <Dropdown.Item>
+              <Dropdown.Button>Button 2.1</Dropdown.Button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>Button 2.2</Dropdown.Button>
+            </Dropdown.Item>
+          </Dropdown.List>
+        </Dropdown>
+      </>
+    );
+  },
+
+  args: {
+    placement: 'bottom-end',
+  },
+});
+
+export const DeprecatedTriggerContext = meta.story({
+  render: (args) => {
+    return (
       <Dropdown.TriggerContext>
         <Dropdown.Trigger data-color={args['data-color']}>
           Dropdown
@@ -78,9 +117,9 @@ export const Preview = meta.story({
 export const Icons = meta.story({
   render: (args) => {
     return (
-      <Dropdown.TriggerContext>
-        <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
-        <Dropdown {...args}>
+      <>
+        <Button popovertarget='dropdown-icons'>Dropdown</Button>
+        <Dropdown {...args} id='dropdown-icons'>
           <Dropdown.List>
             <Dropdown.Item>
               <Dropdown.Button asChild>
@@ -108,24 +147,29 @@ export const Icons = meta.story({
             </Dropdown.Item>
           </Dropdown.List>
         </Dropdown>
-      </Dropdown.TriggerContext>
+      </>
     );
   },
 });
 
 export const Controlled = meta.story(() => {
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    dropdownRef.current?.togglePopover(open);
+  }, [open]);
+
   return (
-    <Dropdown.TriggerContext>
-      <Dropdown.Trigger>
+    <>
+      <Button popovertarget='dropdown-controlled'>
         Dropdown
-        {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
-      </Dropdown.Trigger>
+        {open ? <ChevronUpIcon aria-hidden /> : <ChevronDownIcon aria-hidden />}
+      </Button>
       <Dropdown
-        open={open}
-        onClose={() => setOpen(false)}
-        onOpen={() => setOpen(true)}
+        ref={dropdownRef}
+        id='dropdown-controlled'
+        onToggle={(event) => setOpen(event.newState === 'open')}
       >
         <Dropdown.List>
           <Dropdown.Item>
@@ -140,43 +184,6 @@ export const Controlled = meta.story(() => {
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.TriggerContext>
-  );
-});
-
-export const ControlledExternalTrigger = meta.story(() => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <Button popovertarget='dropdown'>Dropdown</Button>
-      <Dropdown
-        id='dropdown'
-        open={open}
-        onClose={() => setOpen(false)}
-        onOpen={() => setOpen(true)}
-      >
-        <Dropdown.List>
-          <Dropdown.Item>
-            <Dropdown.Button>Item</Dropdown.Button>
-          </Dropdown.Item>
-        </Dropdown.List>
-      </Dropdown>
-    </>
-  );
-});
-
-export const WithoutTrigger = meta.story(() => {
-  return (
-    <>
-      <Button popovertarget='dropdown'>Dropdown</Button>
-      <Dropdown id='dropdown'>
-        <Dropdown.List>
-          <Dropdown.Item>
-            <Dropdown.Button>Item</Dropdown.Button>
-          </Dropdown.Item>
-        </Dropdown.List>
-      </Dropdown>
     </>
   );
 });
@@ -184,23 +191,24 @@ export const WithoutTrigger = meta.story(() => {
 export const WithNestedDialog = meta.story({
   render: (args) => {
     return (
-      <Dropdown.TriggerContext>
-        <Dropdown.Trigger data-color={args['data-color']}>
+      <>
+        <Button
+          popovertarget='dropdown-nested-dialog'
+          data-color={args['data-color']}
+        >
           Dropdown
-        </Dropdown.Trigger>
-        <Dropdown {...args}>
+        </Button>
+        <Dropdown {...args} id='dropdown-nested-dialog'>
           <Dropdown.List>
             <Dropdown.Item>
-              <Dialog.TriggerContext>
-                <Dialog.Trigger asChild>
-                  <Dropdown.Button>Dialog</Dropdown.Button>
-                </Dialog.Trigger>
-                <Dialog>Min dialog</Dialog>
-              </Dialog.TriggerContext>
+              <Dropdown.Button command='show-modal' commandfor='nested-dialog'>
+                Dialog
+              </Dropdown.Button>
+              <Dialog id='nested-dialog'>Min dialog</Dialog>
             </Dropdown.Item>
           </Dropdown.List>
         </Dropdown>
-      </Dropdown.TriggerContext>
+      </>
     );
   },
 
@@ -232,23 +240,21 @@ export const WithAdjacentDialog = meta.story({
   render: (args) => {
     return (
       <>
-        <Dropdown.TriggerContext>
-          <Dropdown.Trigger data-color={args['data-color']}>
-            Dropdown
-          </Dropdown.Trigger>
-          <Dropdown {...args}>
-            <Dropdown.List>
-              <Dropdown.Item>
-                <Dropdown.Button
-                  command='show-modal'
-                  commandFor='adjacent-modal'
-                >
-                  Dialog
-                </Dropdown.Button>
-              </Dropdown.Item>
-            </Dropdown.List>
-          </Dropdown>
-        </Dropdown.TriggerContext>
+        <Button
+          popovertarget='dropdown-adjacent-dialog'
+          data-color={args['data-color']}
+        >
+          Dropdown
+        </Button>
+        <Dropdown {...args} id='dropdown-adjacent-dialog'>
+          <Dropdown.List>
+            <Dropdown.Item>
+              <Dropdown.Button command='show-modal' commandfor='adjacent-modal'>
+                Dialog
+              </Dropdown.Button>
+            </Dropdown.Item>
+          </Dropdown.List>
+        </Dropdown>
         <Dialog id='adjacent-modal'>Min dialog</Dialog>
       </>
     );
@@ -258,27 +264,30 @@ export const WithAdjacentDialog = meta.story({
 export const WithNestedDropdown = meta.story({
   render: (args) => {
     return (
-      <Dropdown.TriggerContext>
-        <Dropdown.Trigger data-color={args['data-color']}>
+      <>
+        <Button
+          popovertarget='dropdown-nested-dropdown'
+          data-color={args['data-color']}
+        >
           Dropdown
-        </Dropdown.Trigger>
-        <Dropdown {...args}>
+        </Button>
+        <Dropdown {...args} id='dropdown-nested-dropdown'>
           <Dropdown.List>
             <Dropdown.Item>
-              <Dropdown.TriggerContext>
-                <Dropdown.Trigger variant='tertiary'>Dropdown</Dropdown.Trigger>
-                <Dropdown>
-                  <Dropdown.List>
-                    <Dropdown.Item>
-                      <Dropdown.Button>Nested</Dropdown.Button>
-                    </Dropdown.Item>
-                  </Dropdown.List>
-                </Dropdown>
-              </Dropdown.TriggerContext>
+              <Button variant='tertiary' popovertarget='dropdown-nested'>
+                Dropdown
+              </Button>
+              <Dropdown id='dropdown-nested'>
+                <Dropdown.List>
+                  <Dropdown.Item>
+                    <Dropdown.Button>Nested</Dropdown.Button>
+                  </Dropdown.Item>
+                </Dropdown.List>
+              </Dropdown>
             </Dropdown.Item>
           </Dropdown.List>
         </Dropdown>
-      </Dropdown.TriggerContext>
+      </>
     );
   },
 });

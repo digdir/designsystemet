@@ -1,8 +1,18 @@
 @charset "UTF-8";
 @layer ds.theme.color-scheme, ds.theme.color, ds.theme.forced-colors;
 /*
-build: v1.23.0
-design-tokens: v1.23.0
+build: v1.24.0
+design-tokens: v1.24.0
+
+All designsystemet.no styles are in the "ds" layer. The @layer line is optional.
+Use it to put a CSS reset before "ds" and your own customizations after it.
+It must come before the first import.
+
+Import this file after @digdir/designsystemet-css, for example:
+
+@layer my-reset, ds, my-customizations;
+@import '@digdir/designsystemet-css';
+@import '<your-designsystemet-theme>.css';
 */
 
 @layer ds.theme.size-mode {
@@ -222,7 +232,7 @@ design-tokens: v1.23.0
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #292c30;
-  --ds-link-color-visited: #663299;
+  --ds-link-color-visited: #663299; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
 }
@@ -359,7 +369,7 @@ design-tokens: v1.23.0
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #292c30;
-  --ds-link-color-visited: #663299;
+  --ds-link-color-visited: #663299; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
 }
@@ -661,7 +671,7 @@ design-tokens: v1.23.0
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #17181a;
   --ds-color-focus-outer: #ececec;
-  --ds-link-color-visited: #b49acd;
+  --ds-link-color-visited: #b49acd; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
 }
@@ -798,7 +808,7 @@ design-tokens: v1.23.0
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #17181a;
   --ds-color-focus-outer: #ececec;
-  --ds-link-color-visited: #b49acd;
+  --ds-link-color-visited: #b49acd; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
 }

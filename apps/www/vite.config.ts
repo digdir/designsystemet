@@ -20,6 +20,9 @@ function mdxFullReload() {
 
 export default defineConfig(({ isSsrBuild, command }) => ({
   build: {
+    dynamicImportVarsOptions: {
+      exclude: [/node_modules\/(?!.*microlighter)/],
+    },
     rolldownOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
   },
   css: {
@@ -42,6 +45,7 @@ export default defineConfig(({ isSsrBuild, command }) => ({
     noExternal: ['@navikt/aksel-icons', 'ramda'],
   },
   optimizeDeps: {
+    exclude: ['microlighter'],
     include: ['react', 'react-dom', 'react-router'],
   },
   server: {

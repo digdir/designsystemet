@@ -22,8 +22,4 @@
   path {
     fill: currentColor;
   }
-
-  &:visited {
-    color: var(--dsc-link-color--visited);
-  }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "1.23.0",
+  "version": "1.24.0",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -49,16 +49,15 @@
     "digdir"
   ],
   "scripts": {
-    "build": "rimraf dist && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme && postcss ./src/v2/*.css --dir ./dist/src/v2",
-    "build:theme": "pnpm node ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./theme --experimental-tailwind"
+    "build": "rimraf dist && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme && postcss ./src/v2/*.css --dir ./dist/src/v2"
   },
   "dependencies": {
     "@digdir/designsystemet-types": "workspace:*"
   },
   "devDependencies": {
-    "autoprefixer": "10.6.1",
+    "autoprefixer": "10.6.2",
     "cssnano": "9.9.0",
-    "postcss": "8.5.31",
+    "postcss": "8.5.32",
     "postcss-cli": "12.0.0",
     "postcss-import": "17.0.1",
     "postcss-nesting": "14.0.3",

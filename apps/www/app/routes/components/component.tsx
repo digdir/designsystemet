@@ -26,7 +26,7 @@ import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
-import { generateMetadata } from '~/_utils/metadata';
+import { generateMetadata, withMetaImage } from '~/_utils/metadata';
 import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/component';
@@ -199,14 +199,14 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   };
 };
 
-export const meta = ({ loaderData }: Route.MetaArgs) => {
+export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   if (!loaderData?.linkMetadata)
     return [
       {
         title: 'Designsystemet',
       },
     ];
-  return loaderData.linkMetadata;
+  return withMetaImage(loaderData.linkMetadata, location.pathname);
 };
 
 export default function Components({

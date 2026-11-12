@@ -1,21 +1,22 @@
 import { act, render, screen } from '@testing-library/react';
+import { Button } from '../button/button';
+import type { DropdownProps } from './';
 import { Dropdown } from './';
-import type { DropdownTriggerContextProps } from './dropdown-trigger-context';
 
-const Comp = (args: Partial<DropdownTriggerContextProps>) => {
+const Comp = ({ children, ...args }: Partial<DropdownProps>) => {
   return (
-    <Dropdown.TriggerContext {...args}>
-      <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
-      <Dropdown>
+    <>
+      <Button popovertarget='dropdown'>Dropdown</Button>
+      <Dropdown id='dropdown' {...args}>
         <Dropdown.Heading>Links</Dropdown.Heading>
         <Dropdown.List>
           <Dropdown.Item>
             <Dropdown.Button>Item</Dropdown.Button>
           </Dropdown.Item>
-          {args.children}
+          {children}
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.TriggerContext>
+    </>
   );
 };
 
@@ -62,5 +63,27 @@ describe('Dropdown', async () => {
     await act(async () => screen.getByRole('button').click());
     expect(screen.getByText('Anchor')).toHaveAttribute('href', '/');
     expect(screen.getByText('Anchor').tagName).toBe('A');
+  });
+
+  /* Deprecated, remove with TriggerContext in the next major version */
+  it('should open with TriggerContext', async () => {
+    render(
+      <Dropdown.TriggerContext>
+        <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
+        <Dropdown>
+          <Dropdown.List>
+            <Dropdown.Item>
+              <Dropdown.Button>Item</Dropdown.Button>
+            </Dropdown.Item>
+          </Dropdown.List>
+        </Dropdown>
+      </Dropdown.TriggerContext>,
+    );
+
+    expect(screen.getByText('Item')).not.toBeVisible();
+    await act(async () =>
+      screen.getByRole('button', { name: 'Dropdown' }).click(),
+    );
+    expect(screen.getByText('Item')).toBeVisible();
   });
 });
