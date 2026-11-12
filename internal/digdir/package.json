@@ -14,9 +14,5 @@
   ],
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "rimraf": "6.1.3",
-    "@digdir/designsystemet": "workspace:^"
-  }
+  "license": "ISC"
 }

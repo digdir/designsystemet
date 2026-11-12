@@ -1,7 +1,6 @@
 import type { Color } from '@digdir/designsystemet/internal';
 import {
   convertColor,
-  getCssVariable,
   getLuminanceFromColor,
 } from '@digdir/designsystemet/internal';
 import {
@@ -35,11 +34,7 @@ export const ColorModal = ({
   );
   const { t } = useTranslation();
 
-  // TMP: Quick fix to give variable names without namespace specified
-  const cssVariable = getCssVariable(namespace, name).replace(
-    `--ds-color-${namespace}-`,
-    `--ds-color-`,
-  );
+  const cssVariable = `--ds-color-${name}`;
   const handleColorFormat = (event: ChangeEvent<HTMLSelectElement>) => {
     setConvertedColor(convertColor(hex, event.target.value));
   };
