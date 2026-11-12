@@ -225,8 +225,8 @@ export const semanticColorSpec: SemanticColorSpec = {
     group: 'border',
     displayName: 'Border invalid',
     luminance: {
-      light: 0.19,
-      dark: 0.22,
+      light: 0.13,
+      dark: 0.298,
     },
   },
   'text-invalid': {

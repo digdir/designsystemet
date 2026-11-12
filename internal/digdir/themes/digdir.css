@@ -121,7 +121,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-accent-border-muted: #6c7a88;
   --ds-color-accent-text-muted: #525e6e;
   --ds-color-accent-surface-invalid: #f8e4e4;
-  --ds-color-accent-border-invalid: #ce4d4d;
+  --ds-color-accent-border-invalid: #c32525;
   --ds-color-accent-text-invalid: #370808;
   --ds-color-brand1-background-default: #ffffff;
   --ds-color-brand1-background-tinted: #fef0f1;
@@ -143,7 +143,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand1-border-muted: #8a7371;
   --ds-color-brand1-text-muted: #6c5958;
   --ds-color-brand1-surface-invalid: #f8e4e4;
-  --ds-color-brand1-border-invalid: #ce4d4d;
+  --ds-color-brand1-border-invalid: #c32525;
   --ds-color-brand1-text-invalid: #370808;
   --ds-color-brand2-background-default: #ffffff;
   --ds-color-brand2-background-tinted: #fbf3df;
@@ -165,7 +165,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand2-border-muted: #7f786a;
   --ds-color-brand2-text-muted: #625c51;
   --ds-color-brand2-surface-invalid: #f8e4e4;
-  --ds-color-brand2-border-invalid: #ce4d4d;
+  --ds-color-brand2-border-invalid: #c32525;
   --ds-color-brand2-text-invalid: #370808;
   --ds-color-brand3-background-default: #ffffff;
   --ds-color-brand3-background-tinted: #eaf5fe;
@@ -187,7 +187,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand3-border-muted: #6c7b89;
   --ds-color-brand3-text-muted: #535f6a;
   --ds-color-brand3-surface-invalid: #f8e4e4;
-  --ds-color-brand3-border-invalid: #ce4d4d;
+  --ds-color-brand3-border-invalid: #c32525;
   --ds-color-brand3-text-invalid: #370808;
   --ds-color-neutral-background-default: #ffffff;
   --ds-color-neutral-background-tinted: #f3f4f4;
@@ -209,7 +209,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-neutral-border-muted: #77797b;
   --ds-color-neutral-text-muted: #5b5d60;
   --ds-color-neutral-surface-invalid: #f8e4e4;
-  --ds-color-neutral-border-invalid: #ce4d4d;
+  --ds-color-neutral-border-invalid: #c32525;
   --ds-color-neutral-text-invalid: #370808;
   --ds-color-info-background-default: #ffffff;
   --ds-color-info-background-tinted: #edf5fa;
@@ -231,7 +231,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-info-border-muted: #6c7a88;
   --ds-color-info-text-muted: #535f6c;
   --ds-color-info-surface-invalid: #f8e4e4;
-  --ds-color-info-border-invalid: #ce4d4d;
+  --ds-color-info-border-invalid: #c32525;
   --ds-color-info-text-invalid: #370808;
   --ds-color-success-background-default: #ffffff;
   --ds-color-success-background-tinted: #ecf6ee;
@@ -253,7 +253,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-success-border-muted: #6d7d6d;
   --ds-color-success-text-muted: #536152;
   --ds-color-success-surface-invalid: #f8e4e4;
-  --ds-color-success-border-invalid: #ce4d4d;
+  --ds-color-success-border-invalid: #c32525;
   --ds-color-success-text-invalid: #370808;
   --ds-color-warning-background-default: #ffffff;
   --ds-color-warning-background-tinted: #fcf2e2;
@@ -275,7 +275,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-warning-border-muted: #82776a;
   --ds-color-warning-text-muted: #655c52;
   --ds-color-warning-surface-invalid: #f8e4e4;
-  --ds-color-warning-border-invalid: #ce4d4d;
+  --ds-color-warning-border-invalid: #c32525;
   --ds-color-warning-text-invalid: #370808;
   --ds-color-danger-background-default: #ffffff;
   --ds-color-danger-background-tinted: #fbf1f1;
@@ -297,7 +297,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-border-muted: #8a7371;
   --ds-color-danger-text-muted: #6d5955;
   --ds-color-danger-surface-invalid: #f8e4e4;
-  --ds-color-danger-border-invalid: #ce4d4d;
+  --ds-color-danger-border-invalid: #c32525;
   --ds-color-danger-text-invalid: #370808;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #181a1c;
@@ -328,7 +328,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-accent-border-muted: #6c7a88;
   --ds-color-accent-text-muted: #525e6e;
   --ds-color-accent-surface-invalid: #f8e4e4;
-  --ds-color-accent-border-invalid: #ce4d4d;
+  --ds-color-accent-border-invalid: #c32525;
   --ds-color-accent-text-invalid: #370808;
   --ds-color-brand1-background-default: #ffffff;
   --ds-color-brand1-background-tinted: #fef0f1;
@@ -350,7 +350,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand1-border-muted: #8a7371;
   --ds-color-brand1-text-muted: #6c5958;
   --ds-color-brand1-surface-invalid: #f8e4e4;
-  --ds-color-brand1-border-invalid: #ce4d4d;
+  --ds-color-brand1-border-invalid: #c32525;
   --ds-color-brand1-text-invalid: #370808;
   --ds-color-brand2-background-default: #ffffff;
   --ds-color-brand2-background-tinted: #fbf3df;
@@ -372,7 +372,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand2-border-muted: #7f786a;
   --ds-color-brand2-text-muted: #625c51;
   --ds-color-brand2-surface-invalid: #f8e4e4;
-  --ds-color-brand2-border-invalid: #ce4d4d;
+  --ds-color-brand2-border-invalid: #c32525;
   --ds-color-brand2-text-invalid: #370808;
   --ds-color-brand3-background-default: #ffffff;
   --ds-color-brand3-background-tinted: #eaf5fe;
@@ -394,7 +394,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand3-border-muted: #6c7b89;
   --ds-color-brand3-text-muted: #535f6a;
   --ds-color-brand3-surface-invalid: #f8e4e4;
-  --ds-color-brand3-border-invalid: #ce4d4d;
+  --ds-color-brand3-border-invalid: #c32525;
   --ds-color-brand3-text-invalid: #370808;
   --ds-color-neutral-background-default: #ffffff;
   --ds-color-neutral-background-tinted: #f3f4f4;
@@ -416,7 +416,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-neutral-border-muted: #77797b;
   --ds-color-neutral-text-muted: #5b5d60;
   --ds-color-neutral-surface-invalid: #f8e4e4;
-  --ds-color-neutral-border-invalid: #ce4d4d;
+  --ds-color-neutral-border-invalid: #c32525;
   --ds-color-neutral-text-invalid: #370808;
   --ds-color-info-background-default: #ffffff;
   --ds-color-info-background-tinted: #edf5fa;
@@ -438,7 +438,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-info-border-muted: #6c7a88;
   --ds-color-info-text-muted: #535f6c;
   --ds-color-info-surface-invalid: #f8e4e4;
-  --ds-color-info-border-invalid: #ce4d4d;
+  --ds-color-info-border-invalid: #c32525;
   --ds-color-info-text-invalid: #370808;
   --ds-color-success-background-default: #ffffff;
   --ds-color-success-background-tinted: #ecf6ee;
@@ -460,7 +460,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-success-border-muted: #6d7d6d;
   --ds-color-success-text-muted: #536152;
   --ds-color-success-surface-invalid: #f8e4e4;
-  --ds-color-success-border-invalid: #ce4d4d;
+  --ds-color-success-border-invalid: #c32525;
   --ds-color-success-text-invalid: #370808;
   --ds-color-warning-background-default: #ffffff;
   --ds-color-warning-background-tinted: #fcf2e2;
@@ -482,7 +482,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-warning-border-muted: #82776a;
   --ds-color-warning-text-muted: #655c52;
   --ds-color-warning-surface-invalid: #f8e4e4;
-  --ds-color-warning-border-invalid: #ce4d4d;
+  --ds-color-warning-border-invalid: #c32525;
   --ds-color-warning-text-invalid: #370808;
   --ds-color-danger-background-default: #ffffff;
   --ds-color-danger-background-tinted: #fbf1f1;
@@ -504,7 +504,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-border-muted: #8a7371;
   --ds-color-danger-text-muted: #6d5955;
   --ds-color-danger-surface-invalid: #f8e4e4;
-  --ds-color-danger-border-invalid: #ce4d4d;
+  --ds-color-danger-border-invalid: #c32525;
   --ds-color-danger-text-invalid: #370808;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #181a1c;
@@ -700,7 +700,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-accent-border-muted: #758393;
   --ds-color-accent-text-muted: #9ea9b6;
   --ds-color-accent-surface-invalid: #4f1f1b;
-  --ds-color-accent-border-invalid: #bc6b64;
+  --ds-color-accent-border-invalid: #c7837d;
   --ds-color-accent-text-invalid: #f5eae9;
   --ds-color-brand1-background-default: #241313;
   --ds-color-brand1-background-tinted: #301919;
@@ -722,7 +722,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand1-border-muted: #937c7a;
   --ds-color-brand1-text-muted: #bba2a1;
   --ds-color-brand1-surface-invalid: #4f1f1b;
-  --ds-color-brand1-border-invalid: #bc6b64;
+  --ds-color-brand1-border-invalid: #c7837d;
   --ds-color-brand1-text-invalid: #f5eae9;
   --ds-color-brand2-background-default: #1c170d;
   --ds-color-brand2-background-tinted: #261f11;
@@ -744,7 +744,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand2-border-muted: #8b806e;
   --ds-color-brand2-text-muted: #b1a693;
   --ds-color-brand2-surface-invalid: #4f1f1b;
-  --ds-color-brand2-border-invalid: #bc6b64;
+  --ds-color-brand2-border-invalid: #c7837d;
   --ds-color-brand2-text-invalid: #f5eae9;
   --ds-color-brand3-background-default: #0e1923;
   --ds-color-brand3-background-tinted: #12212e;
@@ -766,7 +766,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand3-border-muted: #738392;
   --ds-color-brand3-text-muted: #99aaba;
   --ds-color-brand3-surface-invalid: #4f1f1b;
-  --ds-color-brand3-border-invalid: #bc6b64;
+  --ds-color-brand3-border-invalid: #c7837d;
   --ds-color-brand3-text-invalid: #f5eae9;
   --ds-color-neutral-background-default: #13181f;
   --ds-color-neutral-background-tinted: #192029;
@@ -788,7 +788,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-neutral-border-muted: #7f8284;
   --ds-color-neutral-text-muted: #a6a8aa;
   --ds-color-neutral-surface-invalid: #4f1f1b;
-  --ds-color-neutral-border-invalid: #bc6b64;
+  --ds-color-neutral-border-invalid: #c7837d;
   --ds-color-neutral-text-invalid: #f5eae9;
   --ds-color-info-background-default: #0d1925;
   --ds-color-info-background-tinted: #112130;
@@ -810,7 +810,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-info-border-muted: #738392;
   --ds-color-info-text-muted: #9ca9b6;
   --ds-color-info-surface-invalid: #4f1f1b;
-  --ds-color-info-border-invalid: #bc6b64;
+  --ds-color-info-border-invalid: #c7837d;
   --ds-color-info-text-invalid: #f5eae9;
   --ds-color-success-background-default: #0d1b0d;
   --ds-color-success-background-tinted: #112411;
@@ -832,7 +832,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-success-border-muted: #778576;
   --ds-color-success-text-muted: #9cac9b;
   --ds-color-success-surface-invalid: #4f1f1b;
-  --ds-color-success-border-invalid: #bc6b64;
+  --ds-color-success-border-invalid: #c7837d;
   --ds-color-success-text-invalid: #f5eae9;
   --ds-color-warning-background-default: #1e160d;
   --ds-color-warning-background-tinted: #281e11;
@@ -854,7 +854,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-warning-border-muted: #8d7f70;
   --ds-color-warning-text-muted: #b5a694;
   --ds-color-warning-surface-invalid: #4f1f1b;
-  --ds-color-warning-border-invalid: #bc6b64;
+  --ds-color-warning-border-invalid: #c7837d;
   --ds-color-warning-text-invalid: #f5eae9;
   --ds-color-danger-background-default: #2a100e;
   --ds-color-danger-background-tinted: #371512;
@@ -876,7 +876,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-border-muted: #947c79;
   --ds-color-danger-text-muted: #b8a3a1;
   --ds-color-danger-surface-invalid: #4f1f1b;
-  --ds-color-danger-border-invalid: #bc6b64;
+  --ds-color-danger-border-invalid: #c7837d;
   --ds-color-danger-text-invalid: #f5eae9;
   --ds-color-focus-inner: #17181a;
   --ds-color-focus-outer: #ececec;
@@ -907,7 +907,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-accent-border-muted: #758393;
   --ds-color-accent-text-muted: #9ea9b6;
   --ds-color-accent-surface-invalid: #4f1f1b;
-  --ds-color-accent-border-invalid: #bc6b64;
+  --ds-color-accent-border-invalid: #c7837d;
   --ds-color-accent-text-invalid: #f5eae9;
   --ds-color-brand1-background-default: #241313;
   --ds-color-brand1-background-tinted: #301919;
@@ -929,7 +929,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand1-border-muted: #937c7a;
   --ds-color-brand1-text-muted: #bba2a1;
   --ds-color-brand1-surface-invalid: #4f1f1b;
-  --ds-color-brand1-border-invalid: #bc6b64;
+  --ds-color-brand1-border-invalid: #c7837d;
   --ds-color-brand1-text-invalid: #f5eae9;
   --ds-color-brand2-background-default: #1c170d;
   --ds-color-brand2-background-tinted: #261f11;
@@ -951,7 +951,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand2-border-muted: #8b806e;
   --ds-color-brand2-text-muted: #b1a693;
   --ds-color-brand2-surface-invalid: #4f1f1b;
-  --ds-color-brand2-border-invalid: #bc6b64;
+  --ds-color-brand2-border-invalid: #c7837d;
   --ds-color-brand2-text-invalid: #f5eae9;
   --ds-color-brand3-background-default: #0e1923;
   --ds-color-brand3-background-tinted: #12212e;
@@ -973,7 +973,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-brand3-border-muted: #738392;
   --ds-color-brand3-text-muted: #99aaba;
   --ds-color-brand3-surface-invalid: #4f1f1b;
-  --ds-color-brand3-border-invalid: #bc6b64;
+  --ds-color-brand3-border-invalid: #c7837d;
   --ds-color-brand3-text-invalid: #f5eae9;
   --ds-color-neutral-background-default: #13181f;
   --ds-color-neutral-background-tinted: #192029;
@@ -995,7 +995,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-neutral-border-muted: #7f8284;
   --ds-color-neutral-text-muted: #a6a8aa;
   --ds-color-neutral-surface-invalid: #4f1f1b;
-  --ds-color-neutral-border-invalid: #bc6b64;
+  --ds-color-neutral-border-invalid: #c7837d;
   --ds-color-neutral-text-invalid: #f5eae9;
   --ds-color-info-background-default: #0d1925;
   --ds-color-info-background-tinted: #112130;
@@ -1017,7 +1017,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-info-border-muted: #738392;
   --ds-color-info-text-muted: #9ca9b6;
   --ds-color-info-surface-invalid: #4f1f1b;
-  --ds-color-info-border-invalid: #bc6b64;
+  --ds-color-info-border-invalid: #c7837d;
   --ds-color-info-text-invalid: #f5eae9;
   --ds-color-success-background-default: #0d1b0d;
   --ds-color-success-background-tinted: #112411;
@@ -1039,7 +1039,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-success-border-muted: #778576;
   --ds-color-success-text-muted: #9cac9b;
   --ds-color-success-surface-invalid: #4f1f1b;
-  --ds-color-success-border-invalid: #bc6b64;
+  --ds-color-success-border-invalid: #c7837d;
   --ds-color-success-text-invalid: #f5eae9;
   --ds-color-warning-background-default: #1e160d;
   --ds-color-warning-background-tinted: #281e11;
@@ -1061,7 +1061,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-warning-border-muted: #8d7f70;
   --ds-color-warning-text-muted: #b5a694;
   --ds-color-warning-surface-invalid: #4f1f1b;
-  --ds-color-warning-border-invalid: #bc6b64;
+  --ds-color-warning-border-invalid: #c7837d;
   --ds-color-warning-text-invalid: #f5eae9;
   --ds-color-danger-background-default: #2a100e;
   --ds-color-danger-background-tinted: #371512;
@@ -1083,7 +1083,7 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-border-muted: #947c79;
   --ds-color-danger-text-muted: #b8a3a1;
   --ds-color-danger-surface-invalid: #4f1f1b;
-  --ds-color-danger-border-invalid: #bc6b64;
+  --ds-color-danger-border-invalid: #c7837d;
   --ds-color-danger-text-invalid: #f5eae9;
   --ds-color-focus-inner: #17181a;
   --ds-color-focus-outer: #ececec;
