@@ -16,107 +16,38 @@ import './app.css';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from '~/_hooks/use-change-language';
 
-export const links: Route.LinksFunction = () => {
-  return [
-    {
-      rel: 'stylesheet',
-      href: 'https://altinncdn.no/fonts/inter/v4.1/inter-latin.css',
-      integrity:
-        'sha384-dMo4FR/05iqPHBhxdybPejGKOwjCpktk6XnfJDAOP4AyMh7JFC7cCWsnOKLv7tJF',
-      crossOrigin: 'anonymous',
-    },
-  ];
-};
+// Convension from React router
+export const links: Route.LinksFunction = () => [
+  {
+    rel: 'stylesheet',
+    href: 'https://altinncdn.no/fonts/inter/v4.1/inter-latin.css',
+    crossOrigin: 'anonymous',
+    integrity:
+      'sha384-dMo4FR/05iqPHBhxdybPejGKOwjCpktk6XnfJDAOP4AyMh7JFC7cCWsnOKLv7tJF',
+  },
+];
 
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const url = new URL(request.url);
-  const lang = params.lang;
+  const { lang } = params;
 
-  if (lang === undefined) {
-    return redirect(`/no${url.search}`);
-  }
-
-  /* Redirect from old path to new path, with search params */
-  if (lang === 'themebuilder') {
-    return redirect(`/no${url.search}`);
-  }
-
-  if (lang !== 'no' && lang !== 'en') {
-    return redirect('/no');
-  }
-
+  if (lang === undefined) return redirect(`/no${url.search}`);
+  if (lang === 'themebuilder') return redirect(`/no${url.search}`); // Redirect from old path to new path, with search params
+  if (lang !== 'no' && lang !== 'en') return redirect('/no');
   if (url.pathname.match('/.*/$')) {
-    /* do this to make sure we keep params */
-    url.pathname = url.pathname.replace(/\/+$/, '');
+    url.pathname = url.pathname.replace(/\/+$/, ''); // do this to make sure we keep params
     return redirect(url.toString());
   }
 
-  const centerLinks = [
-    {
-      text: 'footer.about',
-      url: `https://designsystemet.no/${lang}/intro/about-the-design-system`,
-    },
-    {
-      text: 'footer.privacy',
-      url: `https://designsystemet.no/${lang}/intro/privacy-policy`,
-    },
-    {
-      text: 'footer.accessibility',
-      url: 'https://uustatus.no/nb/erklaringer/publisert/faeb324d-9b3f-40b0-b715-92cac356a916',
-    },
-  ];
-
-  const menu = [
-    {
-      name: 'navigation.intro',
-      href: `https://designsystemet.no/${lang}/intro`,
-    },
-    {
-      name: 'navigation.fundamentals',
-      href: `https://designsystemet.no/${lang}/fundamentals`,
-    },
-    {
-      name: 'navigation.components',
-      href: `https://designsystemet.no/${lang}/components`,
-    },
-    {
-      name: 'navigation.patterns',
-      href: `https://designsystemet.no/${lang}/patterns`,
-    },
-    {
-      name: 'navigation.best-practices',
-      href: `https://designsystemet.no/${lang}/best-practices`,
-    },
-    {
-      name: 'navigation.blog',
-      href: `https://designsystemet.no/${lang}/blog`,
-    },
-    {
-      name: 'navigation.theme-builder',
-      href: `/${lang}`,
-    },
-  ];
-
-  return data({
-    lang: params.lang,
-    centerLinks,
-    menu,
-  });
+  return data({ lang });
 };
 
-type DocumentProps = {
-  children: React.ReactNode;
-};
-
-function Document({ children }: DocumentProps) {
+function Document({ children }: { children: React.ReactNode }) {
   const { i18n } = useTranslation();
+  const lang = i18n.language;
 
   return (
-    <html
-      lang={i18n.language}
-      dir={i18n.dir(i18n.language)}
-      data-color-scheme='auto'
-    >
+    <html lang={lang} dir={i18n.dir(lang)} data-color-scheme='auto'>
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -173,14 +104,10 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   return (
     <Document>
-      <main className='pt-16 p-4 container mx-auto'>
+      <main>
         <h1>{message}</h1>
         <p>{details}</p>
-        {stack && (
-          <pre className='w-full p-4 overflow-x-auto'>
-            <code>{stack}</code>
-          </pre>
-        )}
+        {stack && <pre>{stack}</pre>}
       </main>
     </Document>
   );

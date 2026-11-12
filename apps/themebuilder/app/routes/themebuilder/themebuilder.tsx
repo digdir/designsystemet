@@ -1,26 +1,40 @@
 import { AppearanceToggle } from '~/_components/appearance-toggle/appearance-toggle';
 import { EditThemesDialog } from '~/_components/edit-themes-dialog/edit-themes-dialog';
-import { Sidebar } from '~/_components/sidebar/sidebar';
-import { ThemeHeader } from '~/_components/theme-header/theme-header';
 import { ColorModalProvider } from '~/_utils/color-modal-context';
 import { ThemePages } from '../../layouts/themebuilder/layout';
 import classes from './page.module.css';
 import 'react-color-palette/css';
 import type { ColorScheme } from '@digdir/designsystemet/internal';
-import { Field, Label, Select } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Dialog,
+  Field,
+  Heading,
+  Label,
+  Link,
+  Select,
+  Tabs,
+} from '@digdir/designsystemet-react';
+import { CircleIcon, PaletteIcon } from '@navikt/aksel-icons';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   parsePath,
   redirect,
   useLoaderData,
+  useRouteLoaderData,
   useSearchParams,
 } from 'react-router';
+import { BorderRadiusInput } from '~/_components/border-radius-input/border-radius-input';
+import { ConfigPaste } from '~/_components/config-paste/config-paste';
+import { ColorPage } from '~/_components/sidebar/color-page/color-page';
+import { TokenModal } from '~/_components/token-modal/token-modal';
 import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
+import type { ThemeWorkspace } from '~/_utils/theme-workspace';
 import {
   editorParams,
   readWorkspace,
-  type ThemeWorkspace,
   workspaceParams,
 } from '~/_utils/theme-workspace';
 import i18n from '~/i18next.server';
@@ -147,6 +161,7 @@ export const meta: Route.MetaFunction = ({ loaderData }: Route.MetaArgs) => {
 };
 
 export default function Page() {
+  const { lang } = useRouteLoaderData('themebuilder');
   const { workspace, colors, severityColors, overrides, baseBorderRadius } =
     useLoaderData<typeof loader>();
   const [, setParams] = useSearchParams();
@@ -183,59 +198,102 @@ export default function Page() {
     },
   };
 
+  const [tab, setTab] = useState('colors');
+
   return (
-    <ColorModalProvider>
-      <ThemeHeader />
-      <main className={classes.page} id='main'>
-        <div className={classes.container}>
-          <div className={classes.sideBarContainer}>
-            <Sidebar />
-          </div>
-          <div className={classes.content}>
-            <div className={classes.toolbar}>
-              <div className={classes.themeGroup}>
-                <Field className={classes.themeSelector} data-size='sm'>
-                  <Label>{t('themeBuilder.active-theme')}</Label>
-                  <div className={classes.themeControls}>
-                    <Select
-                      value={workspace?.activeTheme || 'theme'}
-                      onChange={(event) => {
-                        const theme = event.currentTarget.value;
-                        setParams(
-                          (previous) => {
-                            const next = new URLSearchParams(previous);
-                            next.set('theme', theme);
-                            next.delete('severity-enabled');
-                            return next;
-                          },
-                          { preventScrollReset: true },
-                        );
-                      }}
-                    >
-                      {themeNames.map((name) => (
-                        <Select.Option key={name} value={name}>
-                          {name}
-                        </Select.Option>
-                      ))}
-                    </Select>
+    <Tabs className={classes.page} value={tab} onChange={setTab}>
+      <header>
+        <Link
+          aria-label='designsystemet.no'
+          href={`https://designsystemet.no/${lang}/`}
+          style={{ color: 'inherit' }}
+        >
+          {''}
+        </Link>
+        <h1>Tema og variabler</h1>
+        <TokenModal />
+        <Button
+          command='show-modal'
+          commandFor='config-paste'
+          data-variant='secondary'
+        >
+          {t('configPaste.import-config')}
+        </Button>
+        <Dialog id='config-paste' closedby='any'>
+          <Heading level={2}>{t('configPaste.import-config')}</Heading>
+          <ConfigPaste />
+        </Dialog>
+      </header>
+      <Tabs.List data-size='sm'>
+        <Tabs.Tab aria-controls='panel' value='colors'>
+          <PaletteIcon />
+          {t('tabs.colors')}
+        </Tabs.Tab>
+        <Tabs.Tab aria-controls='panel' value='border'>
+          <CircleIcon />
+          Kant
+        </Tabs.Tab>
+        {/* <Tabs.Tab aria-controls='panel' value='fonts'>
+          <FileTextIcon />
+          Fonter
+        </Tabs.Tab> */}
+      </Tabs.List>
+      <div role='tabpanel' id='panel'>
+        <main id='main'>
+          {tab === 'colors' && <ColorPage />}
+          {tab === 'border' && <BorderRadiusInput />}
+          <div>
+            <ColorModalProvider>
+              <div className={classes.container}>
+                <div className={classes.sideBarContainer}></div>
+                <div className={classes.content}>
+                  <div className={classes.toolbar}>
+                    <div className={classes.themeGroup}>
+                      <Field className={classes.themeSelector} data-size='sm'>
+                        <Label>{t('themeBuilder.active-theme')}</Label>
+                        <div className={classes.themeControls}>
+                          <Select
+                            value={workspace?.activeTheme || 'theme'}
+                            onChange={(event) => {
+                              const theme = event.currentTarget.value;
+                              setParams(
+                                (previous) => {
+                                  const next = new URLSearchParams(previous);
+                                  next.set('theme', theme);
+                                  next.delete('severity-enabled');
+                                  return next;
+                                },
+                                { preventScrollReset: true },
+                              );
+                            }}
+                          >
+                            {themeNames.map((name) => (
+                              <Select.Option key={name} value={name}>
+                                {name}
+                              </Select.Option>
+                            ))}
+                          </Select>
+                        </div>
+                      </Field>
+                      <EditThemesDialog
+                        workspace={currentWorkspace}
+                        onSave={(updated) =>
+                          setParams(
+                            (previous) => workspaceParams(updated, previous),
+                            { preventScrollReset: true },
+                          )
+                        }
+                      />
+                    </div>
+                    <AppearanceToggle />
                   </div>
-                </Field>
-                <EditThemesDialog
-                  workspace={currentWorkspace}
-                  onSave={(updated) =>
-                    setParams(
-                      (previous) => workspaceParams(updated, previous),
-                      { preventScrollReset: true },
-                    )
-                  }
-                />
+                  <ThemePages />
+                </div>
               </div>
-              <AppearanceToggle />
-            </div>
-            <ThemePages />
+            </ColorModalProvider>
           </div>
-        </div>
-      </main>
-    </ColorModalProvider>
+        </main>
+      </div>
+    </Tabs>
   );
 }

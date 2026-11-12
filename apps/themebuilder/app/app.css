@@ -1,5 +1,3 @@
-@layer normalize, ds;
-
 @layer view-transitions {
   @property --circle-wipe-progress {
     inherits: false;
@@ -43,7 +41,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
   margin: 0;
-  padding: 0;
+
   /*prevent layout shift when opening color-modal (on windows)*/
   &:has(dialog[open]) {
     overflow: scroll;
@@ -54,81 +52,123 @@ body {
   }
 }
 
-#main {
-  min-height: 80svh;
-}
-
-@layer normalize {
-  * {
-    box-sizing: border-box;
+@layer mt.design {
+  /* Using :where to only reset browser agent standards, but allow other selectors (i.e. .something > *) to still winn */
+  :where(.grid:not([hidden])) {
+    display: grid;
   }
-
-  body {
+  :where(.flex:not([hidden])) {
+    display: flex;
+  }
+  :where(.flex, .grid) {
+    list-style: none;
     margin: 0;
+    padding: 0;
+  }
+  :where(.grid > *, .flex > *) {
+    box-sizing: border-box;
+    margin-block: 0; /* Disable margin on lists, headings, paragraphs etc. */
+    min-width: 0; /* https://css-tricks.com/preventing-a-grid-blowout/ */
   }
 
-  main {
-    display: block;
-  }
+  /**
+   * Shared
+   */
+  /* biome-ignore format: next class */
+  .grid,
+	.flex {
+		box-sizing: border-box;
+		flex-wrap: wrap;
+		gap: var(--ds-size-3);
 
-  abbr[title] {
-    border-bottom: none; /* 1 */
-    text-decoration: underline dotted; /* 2 */
-  }
+		& > svg { flex-shrink: 0 } /* Never shrink svgs */
+		&[data-gap="0"] { gap: 0px }
+		&[data-gap="1"] { gap: var(--ds-size-1) } /* 4px */
+		&[data-gap="2"] { gap: var(--ds-size-2) } /* 8px */
+		&[data-gap="3"] { gap: var(--ds-size-3) } /* 12px */
+		&[data-gap="4"] { gap: var(--ds-size-4) } /* 16px */
+		&[data-gap="5"] { gap: var(--ds-size-5) } /* 20px */
+		&[data-gap="6"] { gap: var(--ds-size-6) } /* 24px */
+		&[data-gap="7"] { gap: var(--ds-size-7) } /* 28px */
+		&[data-gap="8"] { gap: var(--ds-size-8) } /* 32px */
+		&[data-gap="9"] { gap: var(--ds-size-9) } /* 36px */
+		&[data-gap="10"] { gap: var(--ds-size-10) } /* 40px */
+		&[data-gap="11"] { gap: var(--ds-size-11) } /* 44px */
+		&[data-gap="12"] { gap: var(--ds-size-12) } /* 48px */
+		&[data-gap="13"] { gap: var(--ds-size-13) } /* 52px */
+		&[data-gap="14"] { gap: var(--ds-size-14) } /* 56px */
+		&[data-gap="15"] { gap: var(--ds-size-15) } /* 60px */
+		&[data-gap="18"] { gap: var(--ds-size-18) } /* 60px */
+		&[data-gap="22"] { gap: var(--ds-size-22) } /* 72px */
+		&[data-gap="26"] { gap: var(--ds-size-26) } /* 104px */
+		&[data-gap="30"] { gap: var(--ds-size-30) } /* 120px */
 
-  b,
-  strong {
-    font-weight: bolder;
-  }
+		&[data-align="center"] { align-items: center }
+		&[data-align="end"] { align-items: end}
+		&[data-align="start"] { align-items: start }
+		&[data-align="stretch"] { align-items: stretch }
 
-  code,
-  kbd,
-  samp {
-    font-family: monospace; /* 1 */
-    font-size: 1em; /* 2 */
-  }
+		&[data-align-content="start"] { align-content: start }
+		&[data-align-content="center"] { align-content: center }
+		&[data-align-content="end"] { align-content: end }
+		&[data-align-content="stretch"] { align-content: stretch }
+		&[data-align-content="space-around"] { align-content: space-around }
+		&[data-align-content="space-between"] { align-content: space-between }
+		&[data-align-content="space-evenly"] { align-content: space-evenly }
 
-  small {
-    font-size: 80%;
-  }
+		&[data-justify="start"] { justify-content: start }
+		&[data-justify="center"] { justify-content: center }
+		&[data-justify="end"] { justify-content: end }
+		&[data-justify="space-around"] { justify-content: space-around }
+		&[data-justify="space-between"] { justify-content: space-between }
+		&[data-justify="space-evenly"] { justify-content: space-evenly }
 
-  sub,
-  sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-  }
+		& > [data-align-self="center"] { align-self: center }
+		& > [data-align-self="end"] { align-self: end}
+		& > [data-align-self="start"] { align-self: start }
+		& > [data-align-self="stretch"] { align-self: stretch }
+		& > [data-justify-self="start"] { justify-self: start }
+		& > [data-justify-self="center"] { justify-self: center }
+		& > [data-justify-self="end"] { justify-self: end }
+		& > [data-justify-self="stretch"] { justify-self: stretch }
+	}
 
-  sub {
-    bottom: -0.25em;
-  }
+  /**
+   * Flex
+   */
+  /* biome-ignore format: next class */
+  .flex[data-nowrap] { flex-wrap: nowrap }
 
-  sup {
-    top: -0.5em;
-  }
-
-  img {
-    border-style: none;
-  }
-
-  [hidden] {
-    display: none;
+  /**
+   * Grid
+   */
+  /* biome-ignore format: next class */
+  .grid{
+    &[data-justify="center"] { justify-items: center }
+	  &[data-items] {
+      --dsc-grid-size: 0px; /* Set default layout width */
+      --dsc-grid-grow: auto-fit; /* Allows columns to grow to fit container */
+      grid-template-columns: repeat(var(--dsc-grid-grow), minmax(min(100%, var(--dsc-grid-size)), 1fr)); /* From https://moderncss.dev/solutions-to-replace-the-12-column-grid/ */
+    }
+	  &[data-fixed] { --dsc-grid-grow: auto-fill } /* "Fixes" sizes by causing max repetitions of columns - even empty if needed */
+	  &[data-nowrap] { grid-auto-flow: column; grid-auto-columns: var(--dsc-grid-size) }
+	  &[data-items="auto"] { --dsc-grid-size: 0px }
+	  &[data-items="25"] { --dsc-grid-size: calc(1rem / 16 * 25) }
+	  &[data-items="50"] { --dsc-grid-size: calc(1rem / 16 * 50) }
+	  &[data-items="75"] { --dsc-grid-size: calc(1rem / 16 * 75) }
+	  &[data-items="100"] { --dsc-grid-size: calc(1rem / 16 * 100) }
+	  &[data-items="150"] { --dsc-grid-size: calc(1rem / 16 * 150) }
+	  &[data-items="200"] { --dsc-grid-size: calc(1rem / 16 * 200) }
+	  &[data-items="250"] { --dsc-grid-size: calc(1rem / 16 * 250) }
+	  &[data-items="300"] { --dsc-grid-size: calc(1rem / 16 * 300) }
+	  &[data-items="350"] { --dsc-grid-size: calc(1rem / 16 * 350) }
+	  &[data-items="400"] { --dsc-grid-size: calc(1rem / 16 * 400) }
+	  &[data-items="450"] { --dsc-grid-size: calc(1rem / 16 * 450) }
+	  &[data-items="500"] { --dsc-grid-size: calc(1rem / 16 * 500) }
   }
 }
 
-.is-sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  box-shadow: 0 2px 20px 0 #c5c5c5;
-  background-color: #fff !important;
-  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-}
-
-& code:not(pre > code) {
+/* & code:not(pre > code) {
   padding: 2px 5px;
   font-size: 0.9em;
   line-height: 1;
@@ -201,4 +241,4 @@ body {
     position: relative;
     z-index: 1;
   }
-}
+} */
