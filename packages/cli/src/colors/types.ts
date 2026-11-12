@@ -47,6 +47,15 @@ export type ColorScaleStep<T> = {
     light: number;
     dark: number;
   };
+  /** Optional chroma adjustment, applied after luminance. Omit to keep the chroma of the color. */
+  chroma?: ChromaAdjustment;
+};
+
+export type ChromaAdjustment = {
+  /** Multiplier for the chroma of the step, per color scheme */
+  factor: Record<ColorScheme, number>;
+  /** Upper limit for the resulting chroma (OKLCH) */
+  max?: number;
 };
 
 export type Color = ColorScaleStep<SemanticColorNames> & {
