@@ -157,5 +157,5 @@ type InvalidColorNames = Extract<SemanticColorNames, 'text-invalid' | 'border-in
 const invalidColors: Record<InvalidColorNames, Record<ColorScheme, CssColor>> = {
   'surface-invalid': { light: '#f8e4e4', dark: '#4f1f1b' }, // danger-surface-tinted
   'border-invalid': { light: '#ce4d4d', dark: '#bc6b64' }, // danger-border-default
-  'text-invalid': { light: '#b81a1a', dark: '#d19a96' }, // danger-text-subtle
+  'text-invalid': { light: '#370808', dark: '#f5eae9' }, // danger-text-default
 };
