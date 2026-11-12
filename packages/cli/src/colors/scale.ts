@@ -13,7 +13,13 @@ import type {
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
 export const RESERVED_COLORS = ['success', 'warning', 'danger', 'info'];
-const invalidColorNames: InvalidColorNames[] = ['border-invalid', 'surface-invalid', 'text-invalid'];
+
+/** Fixed red used for the invalid steps. Same as the default severity color for danger. */
+const INVALID_BASE_COLOR: CssColor = '#C01B1B';
+
+type InvalidColorNames = Extract<SemanticColorNames, 'text-invalid' | 'border-invalid' | 'surface-invalid'>;
+
+const invalidColorNames: InvalidColorNames[] = ['surface-invalid', 'border-invalid', 'text-invalid'];
 
 type ColorScaleSpec = SemanticColorSpec;
 
@@ -29,14 +35,7 @@ export const generateColorScale = (
   colorScheme: ColorScheme,
   colorScaleSpec: ColorScaleSpec = semanticColorSpec,
 ): ColorScale => {
-  let interpolationColor = color;
-
-  // Reduce saturation in dark mode for the interpolation colors
-  if (colorScheme === 'dark') {
-    const [L, C, H] = chroma(color).oklch();
-    const chromaModifier = 0.7;
-    interpolationColor = chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
-  }
+  const interpolationColor = getInterpolationColor(color, colorScheme);
 
   const colors = R.mapObjIndexed((step) => {
     const luminance = step.luminance[colorScheme];
@@ -62,9 +61,11 @@ export const generateColorScale = (
       hex: generateColorContrast(baseColors.default, 'default'),
     };
 
-    // Hardcoded colors
-    for (const invalidColorName of invalidColorNames) {
-      colors[invalidColorName].hex = invalidColors[invalidColorName][colorScheme];
+    // Invalid steps stay red in every scale: luminance from the spec, hue from a fixed red.
+    const invalidInterpolationColor = getInterpolationColor(INVALID_BASE_COLOR, colorScheme);
+    for (const name of invalidColorNames) {
+      const luminance = colorScaleSpec[name].luminance[colorScheme];
+      colors[name] = { ...colors[name], hex: chroma(invalidInterpolationColor).luminance(luminance).hex() as CssColor };
     }
   }
 
@@ -151,11 +152,10 @@ const adjustChroma = (hex: CssColor, adjustment: ChromaAdjustment, colorScheme: 
   return chroma(adjusted).luminance(chroma(hex).luminance()).hex() as CssColor;
 };
 
-type InvalidColorNames = Extract<SemanticColorNames, 'text-invalid' | 'border-invalid' | 'surface-invalid'>;
-
-/** Generated colorscale using default severity color for danger: #C01B1B */
-const invalidColors: Record<InvalidColorNames, Record<ColorScheme, CssColor>> = {
-  'surface-invalid': { light: '#f8e4e4', dark: '#4f1f1b' }, // danger-surface-tinted
-  'border-invalid': { light: '#ce4d4d', dark: '#bc6b64' }, // danger-border-default
-  'text-invalid': { light: '#370808', dark: '#f5eae9' }, // danger-text-default
-};
+/** Returns the color used for luminance interpolation. Saturation is reduced in dark mode. */
+function getInterpolationColor(color: CssColor, colorScheme: ColorScheme): CssColor {
+  if (colorScheme !== 'dark') return color;
+  const [L, C, H] = chroma(color).oklch();
+  const chromaModifier = 0.7;
+  return chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
+}

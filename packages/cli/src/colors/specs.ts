@@ -215,8 +215,8 @@ export const semanticColorSpec: SemanticColorSpec = {
     group: 'surface',
     displayName: 'Surface invalid',
     luminance: {
-      light: 1,
-      dark: 1,
+      light: 0.81,
+      dark: 0.027,
     },
   },
   'border-invalid': {
@@ -225,8 +225,8 @@ export const semanticColorSpec: SemanticColorSpec = {
     group: 'border',
     displayName: 'Border invalid',
     luminance: {
-      light: 1,
-      dark: 1,
+      light: 0.19,
+      dark: 0.22,
     },
   },
   'text-invalid': {
@@ -235,8 +235,8 @@ export const semanticColorSpec: SemanticColorSpec = {
     group: 'text',
     displayName: 'Text invalid',
     luminance: {
-      light: 1,
-      dark: 1,
+      light: 0.01,
+      dark: 0.84,
     },
   },
 };
