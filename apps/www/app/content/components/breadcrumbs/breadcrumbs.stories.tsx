@@ -106,7 +106,7 @@ export const LongItems = () => (
   <Breadcrumbs aria-label='Brødsmulesti'>
     <Breadcrumbs.Link
       href='#'
-      aria-label='Tilbake til helsesertifikat for sjømat'
+      aria-label='Tilbake til Slik søker du om helsesertifikat for sjømat'
     >
       Slik søker du om helsesertifikat for sjømat
     </Breadcrumbs.Link>
