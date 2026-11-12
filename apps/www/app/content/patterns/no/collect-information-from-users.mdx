@@ -97,11 +97,23 @@ Hvis informasjon er forhåndsutfylt, skal det være tydelig hvor informasjonen k
 
 Informasjon brukeren ikke kan endre vises som vanlig tekst, ikke i låste skjemafelt.
 
-Som hovedregel, ikke utfør valg i flervalgsspørsmål i radiogrupper og nedtrekksvalg, på vegne av brukeren, men vis gjerne ofte brukte valg først. For eksempel:
-- ingen valg skal være forhåndsaktivert i radiogrupper
-- ingen valg skal være forhåndsvalgt i nedtrekksmenyer
+<Image
+  src="/img/patterns/collect-information/collect-information-prefill.png"
+  alt=""
+  boxShadow={false}
+  caption='Eksempel på forhåndsutfylt informasjon som brukeren kan bekrefte eller endre.'
+/>
 
-(EKSEMPEL ikke gjør: radiogruppe med forhåndsvalgt "bokmål", gjør heller kort med valgt målform og knapp "endre")
+Ikke forhåndsvelg alternativer i radiogrupper eller nedtrekksmenyer, men vis gjerne de mest brukte alternativene først.
+
+<div className="dodont-row">
+  <DoDont story="DontPreselectedOption">
+Ikke forhåndsvelg et alternativ. Da er det lett å gå videre uten å ta stilling til spørsmålet, og du kan ikke vite om brukeren faktisk har valgt.
+  </DoDont>
+  <DoDont story="DoMostUsedOptionFirst">
+La brukeren velge selv, men legg de mest brukte alternativene øverst. Her ligger norsk og samisk først, skilt fra resten av språkene med en linje. Resten står i alfabetisk rekkefølge.
+  </DoDont>
+</div>
 
 ## Hjelp brukeren å unngå feil
 
@@ -136,6 +148,8 @@ Før brukeren sender inn informasjon, bør de få mulighet til å kontrollere hv
 
 ## Gi brukeren informasjon etter innsending
 Innsendingen er ikke slutten på tjenesten, men heller ofte del av en dialog. Brukeren må få en umiddelbar bekreftelse, vite hva som forventes videre, og enkelt kunne følge saken over tid.
+
+
 ### Vis informasjonen der brukeren er
 Hovedregelen er at all informasjon, kvitteringer, status og svar skal vises direkte i brukergrensesnittet, enten det er på nettsiden, i en innlogget side, i en app eller i et fagsystem. Ikke-webdokumenter (som PDF) bør aldri være den primære måten å formidle informasjon på.
 - **Gi en umiddelbar kvittering i grensesnittet:** Bekreft at innsendingen er mottatt med dato, klokkeslett og en entydig referanse (f.eks. saksnummer eller arkivreferanse). Send også kvitteringen til innsenders epostadresse, Digipost eller altinn-innboksen, denne sendte kvitteringen bør inneholde en lenke til et sted hvor brukeren kan følge saken.
@@ -145,6 +159,13 @@ Hovedregelen er at all informasjon, kvitteringer, status og svar skal vises dire
 - **Gjør det enkelt å ettersende:** Forklar hvordan brukeren kan supplere med ny informasjon eller dokumentasjon, og hvilke frister som gjelder.
 - **Skap en sammenhengende dialog:** Unngå at oppfølgingen stykkes opp i løsrevne brev, e-poster eller meldinger uten kontekst. Bruk gjerne nasjonale fellesløsninger som **[Dialogporten (digdir.no)](https://samarbeid.digdir.no/dataaltinnno/dialogporten/2940)** for å samle status, meldinger, tidslinje og videre handlinger i én strukturert dialogtråd.
 - **Gi rom for kommentarer:** Gi brukeren mulighet til å å legge til utfyllende kommentar eller opplysninger før innsending hvis saken krever ekstra kontekst. Gi brukeren eventuelt en forklaring på hvordan slike tilleggsopplysninger kan sendes inn etter innsending.
+
+<Image
+  src="/img/patterns/collect-information/collect-information-receipt.png"
+  alt=""
+  boxShadow={false}
+  caption='Eksempel på kvittering som vises etter innsending, med informasjon om videre oppfølging, og mulighet for å endre eller supplere opplysningene som ble sendt inn.'
+/>
 
 ## Relevante WCAG-kriterier
 
@@ -188,7 +209,6 @@ Dette mønsteret bygger på nasjonale arkitekturprinsipper, digitaliseringsstrat
 * **[Arkivlova og arkivforskriften (lovdata.no)](https://lovdata.no/lov/1992-12-04-126):**
   * Krav til journalføring, sporbarhet og arkivering av innsendte opplysninger og dokumentasjon.
 * **[Arkitekturprinsippene: prinsipp 4 del og gjenbruk data (digdir.no)](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061)**
-  * «Kun én gang»-prinsippet betyr at innbyggere og virksomheter ikke skal måtte oppgi opplysninger som det offentlige allerede har tilgang til. Før du ber brukeren fylle ut informasjon, skal du undersøke om dataene kan hentes og gjenbrukes fra eksisterende registre eller fagsystemer på en lovlig og trygg måte.
 
 ### Strategier og arkitekturprinsipper for offentlig sektor
 
@@ -198,13 +218,12 @@ Dette mønsteret bygger på nasjonale arkitekturprinsipper, digitaliseringsstrat
   * *Bygg tillit:* Sikre transparens rundt hvilke opplysninger som hentes inn og hvordan de behandles.
 * **[Nasjonal digitaliseringsstrategi 2024-2030 (regjeringen.no)](https://www.regjeringen.no/no/dokumenter/nasjonal-digitaliseringsstrategi-2024-2030/id3054178/):**
   * «Fremtidens digitale Norge» setter klare mål om sammenhengende tjenester, økt datadeling og automatisering av prosesser.
-* **«Kun én gang»-prinsippet (Once-Only Principle):**
-  * Innbyggere og virksomheter skal slippe å oppgi samme opplysninger til det offentlige flere ganger dersom opplysningene allerede finnes i autoritative registre.
+* **[«Kun én gang»-prinsippet](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061)** betyr at innbyggere og virksomheter ikke skal måtte oppgi opplysninger som det offentlige allerede har tilgang til. Før du ber brukeren fylle ut informasjon, skal du undersøke om dataene kan hentes og gjenbrukes fra eksisterende registre eller fagsystemer på en lovlig og trygg måte.
 
 ### Standarder og faglige veiledere
 
 * **[ELMER 3: Retningslinjer for brukergrensesnitt i offentlige skjema på nett (brukskvalitet.brreg.no)](https://brukskvalitet.brreg.no/):**
-  * Tidligere obligatorisk standard i *Forskrift om IT-standarder i offentlig forvaltning § 11*, hvis prinsipper og anbefalinger videreføres og moderniseres i dette mønsteret.
+  * Obligatorisk standard i *Forskrift om IT-standarder i offentlig forvaltning § 11*, hvis prinsipper og anbefalinger videreføres og moderniseres i dette mønsteret.
 * **[Uu-tilsynets veiledning for skjemautfylling (uutilsynet.no)](https://www.uutilsynet.no/veiledning/skjema/38):**
   * Veiledning for lovpålagte tilgjengelighetskrav til struktur, ledetekster og feilhåndtering.
 * **[Klarspråk i digitale tjenester (sprakradet.no)](https://www.sprakradet.no/Klarsprak/):**
