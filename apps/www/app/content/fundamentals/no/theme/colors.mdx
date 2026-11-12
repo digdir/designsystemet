@@ -2,7 +2,7 @@
 title: Farger
 sidebar_title: Farger
 description: Hvordan de semantiske fargene er bygget opp, og hvordan du bruker dem i lys og mørk modus.
-date: 2025-06-30
+date: 2026-11-09
 category: Tema
 color: red
 icon: PaletteIcon
@@ -62,7 +62,7 @@ Har du allerede et tema, kan du importere config-filen din i temabyggeren og få
 ## Lys og mørk modus
 
 Her beskriver vi hvordan fargene genereres som standard. 
-Du kan [overstyre enkeltfarger](/no/fundamentals/code/cli-config#overrides) for lys og mørk modus, og da må du selv passe på at de fungerer og har god nok kontrast.
+I config-filen kan du [sette enkeltsteg i en fargeskala selv](/no/fundamentals/code/cli-config#fargesteg), i lys og mørk modus. Stegene du ikke setter, blir generert. Steg du setter selv, blir ikke justert, så da må du selv passe på at de fungerer og har god nok kontrast.
 
 Stegene i en fargeskala har samme navn og samme rolle både i lys og mørk modus, men endrer fargeverdiene bak tokenene. 
 Dette gjør det mulig å bytte mellom lys og mørk modus uten å måtte endre farger i designet, 
@@ -88,7 +88,7 @@ En fargeskala har derfor flere Background- og Surface-farger per fargeskala. De 
 
 ### Base-fargene oppfører seg litt annerledes
 `base-default` tar utgangspunkt i fargen som velges i temabyggeren. 
-I lys modus brukes denne direkte, mens den i mørk modus justeres automatisk for å fungere bedre på mørke flater.
+I lys modus brukes denne direkte, mens den i mørk modus justeres automatisk for å fungere bedre på mørke flater, med mindre du setter `base-default` for mørk modus selv i config-filen.
 
 Se også sidene om [Fargar i kode](/no/fundamentals/code/colors) og [Modes i Figma](/no/fundamentals/figma/modes-in-figma) for hvordan du bytter mellom lys og mørk modus i praksis.
 

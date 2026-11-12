@@ -23,6 +23,7 @@ describe('configFromCss', () => {
       $schema: expect.stringContaining('https://designsystemet.no/schemas/'),
       themes: {
         designsystemet: {
+          // Every step is generated, so each color is written as its base color.
           colors: {
             accent: '#0062BA',
             brand1: '#0D7A5F',

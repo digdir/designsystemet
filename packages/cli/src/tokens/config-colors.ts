@@ -1,8 +1,9 @@
 import { generateColorScale } from '../colors/scale.ts';
+import { semanticColorNames } from '../colors/specs.ts';
 import type { ColorScheme, CssColor, SemanticColorNames, SeverityColorNames } from '../colors/types.ts';
 import { severityColors, visitedLinkColor } from '../schemas/defaults.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
-import { colorNameSchema } from '../schemas/schema-color.ts';
+import { type ColorSteps, colorNameSchema } from '../schemas/schema-color.ts';
 
 type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
 type Overrides = NonNullable<ThemeConfig['overrides']>;
@@ -19,7 +20,14 @@ export type ThemeColorValues = {
   focusOuter?: SchemeColors;
 };
 
-export type ConfigColors = Pick<ThemeConfig, 'colors' | 'overrides'> & {
+export type ConfigColors = {
+  /**
+   * Each color by color name: its base color, or, when steps differ from the scale generated from it, its color
+   * steps with the base color and only the steps that differ, e.g. `accent` → `text-default` → { dark }.
+   */
+  colors: Record<string, CssColor | ColorSteps>;
+  /** The visited link and focus colors that aren't the defaults. Colors are never overrides. */
+  overrides?: Pick<Overrides, 'linkVisited' | 'focus'>;
   /** What couldn't be included in the config. */
   warnings: string[];
 };
@@ -28,9 +36,10 @@ const SCHEMES: ColorScheme[] = ['light', 'dark'];
 
 /**
  * The `colors` and `overrides` of the theme config that generated these colors. Each color's base color is its
- * `base-default` in light, which is the input color unchanged; every other step is generated from it, so steps that
- * differ from the generated scale (e.g. ones edited by hand) become overrides. Severity colors, the visited link color
- * and the focus colors are only included when they aren't the defaults, like the theme builder does.
+ * `base-default` in light, which the rest of its scale is generated from. A color is written as its base color, or,
+ * when steps differ from the generated scale (e.g. ones edited by hand), as color steps with the base color and only
+ * the steps that differ. Severity colors are only included when they aren't the default, and the visited link color
+ * and the focus colors only when they aren't the defaults, like the theme builder does.
  */
 export function configColorsFromValues({
   scales,
@@ -39,12 +48,10 @@ export function configColorsFromValues({
   focusOuter,
 }: ThemeColorValues): ConfigColors {
   const warnings: string[] = [];
-  // Maps, as the color names come from the input: assigning them as object keys could reach Object.prototype
-  // through a name like `__proto__`. They become objects with Object.fromEntries, which only adds own properties.
-  const colors = new Map<string, CssColor>();
-  const severity = new Map<SeverityColorNames, CssColor>();
-  const colorOverrides = new Map<string, Map<SemanticColorNames, SchemeColors>>();
-  const overrides: Overrides = {};
+  // A Map, as the color names come from the input: assigning them as object keys could reach Object.prototype
+  // through a name like `__proto__`. It becomes an object with Object.fromEntries, which only adds own properties.
+  const colors = new Map<string, CssColor | ColorSteps>();
+  const overrides: Pick<Overrides, 'linkVisited' | 'focus'> = {};
 
   for (const [colorName, steps] of scales) {
     if (!colorNameSchema.safeParse(colorName).success) {
@@ -58,45 +65,20 @@ export function configColorsFromValues({
       continue;
     }
 
-    // Severity colors are always generated, so they are only in the config when they aren't the default.
-    if (isSeverityColor(colorName)) {
-      if (!isSameColor(base, severityColors[colorName])) {
-        severity.set(colorName, base);
-      }
-    } else {
-      colors.set(colorName, base);
-    }
-
+    // A missing step, e.g. a variable deleted in Figma, is left out of the color, so the config generates it.
     for (const scheme of SCHEMES) {
-      const scale = generateColorScale(base, scheme);
-      const missing: SemanticColorNames[] = [];
-      for (const [stepName, step] of Object.entries(scale) as [
-        SemanticColorNames,
-        (typeof scale)[SemanticColorNames],
-      ][]) {
-        const actual = steps.get(stepName)?.[scheme];
-        if (!actual) {
-          missing.push(stepName);
-        } else if (!isSameColor(actual, step.hex)) {
-          const stepOverrides = colorOverrides.get(colorName) ?? new Map<SemanticColorNames, SchemeColors>();
-          colorOverrides.set(colorName, stepOverrides);
-          stepOverrides.set(stepName, { ...stepOverrides.get(stepName), [scheme]: actual });
-        }
-      }
-      // A missing step, e.g. a variable deleted in Figma, can't be an override, so the config generates it.
+      const missing = semanticColorNames.filter((stepName) => !steps.get(stepName)?.[scheme]);
       if (missing.length > 0) {
-        warnings.push(missingStepsWarning(colorName, scheme, missing, Object.keys(scale).length));
+        warnings.push(missingStepsWarning(colorName, scheme, missing));
       }
     }
-  }
 
-  if (colorOverrides.size > 0) {
-    overrides.colors = Object.fromEntries(
-      [...colorOverrides].map(([colorName, stepOverrides]) => [colorName, Object.fromEntries(stepOverrides)]),
-    );
-  }
-  if (severity.size > 0) {
-    overrides.severity = Object.fromEntries(severity);
+    const changed = changedSteps(steps, base);
+    // Severity colors are always generated, so they are only in the config when they aren't the default.
+    if (isSeverityColor(colorName) && isSameColor(base, severityColors[colorName]) && changed.size === 0) {
+      continue;
+    }
+    colors.set(colorName, changed.size === 0 ? base : toColorSteps(changed, base));
   }
 
   // A missing value, e.g. a variable deleted in Figma, can't be an override, so the config uses the default.
@@ -119,8 +101,7 @@ export function configColorsFromValues({
     overrides.linkVisited = linkVisitedOverride;
   }
 
-  // The focus colors default to neutral's background and text colors, after any overrides,
-  // which are the values already in the scales.
+  // The focus colors default to neutral's background and text colors, which are the values already in the scales.
   const neutral = scales.get('neutral');
   const focusInnerOverride = diffFromDefaults(focusInner, (scheme) => neutral?.get('background-default')?.[scheme]);
   const focusOuterOverride = diffFromDefaults(focusOuter, (scheme) => neutral?.get('text-default')?.[scheme]);
@@ -138,20 +119,56 @@ export function configColorsFromValues({
   };
 }
 
-function missingStepsWarning(
-  colorName: string,
-  scheme: ColorScheme,
-  missing: SemanticColorNames[],
-  stepCount: number,
-): string {
-  const generates = 'so importing the config generates';
-  if (missing.length === stepCount) {
-    return `Color "${colorName}" has no colors in ${scheme}, ${generates} them from the base color.`;
+/** The steps as a color in the config, in step order, with the base color in `base-default` light. */
+function toColorSteps(steps: Map<SemanticColorNames, SchemeColors>, base: CssColor): ColorSteps {
+  // Step names are the fixed spec names, never input, so they are safe as object keys.
+  const colorSteps: Partial<Record<SemanticColorNames, SchemeColors>> = {};
+  for (const stepName of semanticColorNames) {
+    const step: SchemeColors = {};
+    for (const scheme of SCHEMES) {
+      const color = steps.get(stepName)?.[scheme];
+      if (color) {
+        step[scheme] = color;
+      }
+    }
+    if (Object.keys(step).length > 0) {
+      colorSteps[stepName] = step;
+    }
   }
-  if (missing.length === stepCount - 1 && !missing.includes('base-default')) {
-    return `Color "${colorName}" has only its base color in ${scheme}, ${generates} the rest from it.`;
+  // `base-default` in light is always set, as it's the base color.
+  return { ...colorSteps, 'base-default': { ...colorSteps['base-default'], light: base } } as ColorSteps;
+}
+
+/** The steps and schemes that differ from the scale generated from the base color. Missing steps don't. */
+function changedSteps(
+  steps: Map<SemanticColorNames, SchemeColors>,
+  base: CssColor,
+): Map<SemanticColorNames, SchemeColors> {
+  const changed = new Map<SemanticColorNames, SchemeColors>();
+  for (const scheme of SCHEMES) {
+    const scale = generateColorScale(base, scheme);
+    for (const stepName of semanticColorNames) {
+      const actual = steps.get(stepName)?.[scheme];
+      if (actual !== undefined && !isSameColor(actual, scale[stepName].hex)) {
+        changed.set(stepName, { ...changed.get(stepName), [scheme]: actual });
+      }
+    }
   }
-  return `Color "${colorName}" has no ${missing.join(', ')} in ${scheme}, ${generates} ${missing.length === 1 ? 'it' : 'them'} from the base color.`;
+  return changed;
+}
+
+function missingStepsWarning(colorName: string, scheme: ColorScheme, missing: SemanticColorNames[]): string {
+  const generated = 'importing the config generates them from the base color';
+  if (missing.length === semanticColorNames.length) {
+    return `Color "${colorName}" has no colors in ${scheme}, so they're left out of the config, and ${generated}.`;
+  }
+  if (missing.length === semanticColorNames.length - 1 && !missing.includes('base-default')) {
+    return `Color "${colorName}" has only its base color in ${scheme}, so the other steps are left out of the config, and ${generated}.`;
+  }
+  if (missing.length === 1) {
+    return `Color "${colorName}" has no ${missing[0]} in ${scheme}, so it's left out of the config, and importing the config generates it from the base color.`;
+  }
+  return `Color "${colorName}" has no ${missing.join(', ')} in ${scheme}, so they're left out of the config, and ${generated}.`;
 }
 
 /** The colors that differ from their defaults, or undefined if none do. */

@@ -6,7 +6,12 @@ import { ColorModalProvider } from '~/_utils/color-modal-context';
 import { ThemePages } from '../../layouts/themebuilder/layout';
 import classes from './page.module.css';
 import 'react-color-palette/css';
-import type { ColorScheme } from '@digdir/designsystemet/internal';
+import {
+  type ColorDefinition,
+  type ColorScheme,
+  getBaseColor,
+  severityColors,
+} from '@digdir/designsystemet/internal';
 import { Field, Label, Select } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -39,7 +44,13 @@ const toQueryString = (obj: Record<string, string>) =>
   Object.entries(obj)
     .map(([key, value]) => `${key}:${value}`)
     .join(QUERY_SEPARATOR);
-const THEME = themeConfig.themes.designsystemet.colors;
+// The base color of each color in the root config, which may also set its steps. Severity colors have their own
+// defaults in the builder, so they aren't default colors.
+const THEME = Object.fromEntries(
+  Object.entries(themeConfig.themes.designsystemet.colors)
+    .filter(([name]) => !Object.hasOwn(severityColors, name))
+    .map(([name, color]) => [name, getBaseColor(color as ColorDefinition)]),
+);
 const COLORS = toQueryString(THEME);
 
 export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';

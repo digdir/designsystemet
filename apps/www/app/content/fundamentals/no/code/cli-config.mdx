@@ -37,7 +37,7 @@ Både `designsystemet.config.json` og `designsystemet.config.jsonc` blir funne a
 ```
 
 Over har me definert eit tema som heiter `my-theme` med nokre fargar og border radius.
-Kvar farge er definert direkte under `colors`, der nøkkelen er namnet på fargen og verdien er ein hexkode.
+Kvar farge er definert direkte under `colors`, der nøkkelen er namnet på fargen og verdien er ein hexkode, eller eit objekt med fargesteg. Sjå [Colors](#colors).
 
 ## Køyre CLI
 
@@ -195,7 +195,7 @@ Du kan ha fleire tema, og kvart tema kan ha sine eigne fargar, border radius, ty
 | colors | Objekt | Ja | Inneheld alle fargar for temaet. |
 | borderRadius | Tal | Nei | Base border radius for temaet. |
 | typography | Objekt | Nei | Inneheld typografi innstillingar for temaet. |
-| overrides | Objekt | Nei | Inneheld overskrivingar for fargar og severity-fargar. |
+| overrides | Objekt | Nei | Inneheld overskrivingar for fokusfargar. Å overskrive fargar og severity-fargar her er utdatert, sjå [Overrides](#overrides). |
 
 ### Typography
 | Namn | Type | Påkrevd | Forklaring |
@@ -209,61 +209,123 @@ Viss du inkluderer `typography` i temaet ditt, må `fontFamily` vere definert.
 ### Colors
 | Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
-| "fargeNavn" | Streng | Nei | Ein farge for temaet. |
-| neutral | Streng | Ja | Nøytral farge for temaet. |
+| "fargeNavn" | Streng eller objekt | Nei | Ein farge for temaet. |
+| neutral | Streng eller objekt | Ja | Nøytral farge for temaet. |
+| success, warning, danger, info | Streng eller objekt | Nei | Severity-fargar. Standardfargane blir brukt for dei du ikkje set. |
 
-Fargane blir definert direkte under `colors`, der nøkkelen er fargen sitt namn og verdien er ein hexkode.
+Fargane blir definert direkte under `colors`, der nøkkelen er fargen sitt namn. Verdien er anten:
+
+- ein hexkode. Heile fargeskalaen blir generert frå han.
+- eit objekt med [fargesteg](#fargesteg), der du kan setje kvart steg i skalaen i lys og mørk modus.
 
 ```json
 {
   "primary": "#0062BA",
   "accent": "#1E98F5",
-  "neutral": "#1E2B3C"
+  "neutral": "#1E2B3C",
+  "danger": "#C01B1B"
 }
 ```
+
+#### Fargesteg
+| Namn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| base-default | Objekt | Ja | Steget `base-default`. `light`-verdien er påkrevd, og er basefargen til skalaen. |
+| "stegNamn" | Objekt | Nei | Eitt av dei andre stega i fargeskalaen, sjå [Fargenavn](#fargenavn). |
+
+Kvart steg har ein `light`- og/eller `dark`-verdi som er ein hexkode.
+
+```json
+{
+  "accent": {
+    "base-default": { "light": "#0062BA", "dark": "#4D9BE0" },
+    "border-default": { "light": "#5A8BC4" },
+    "background-tinted": { "light": "#E8F1FB", "dark": "#0B1D30" }
+  }
+}
+```
+
+`base-default.light` er basefargen, den same som hexkoden du elles ville gitt fargen. Alle steg og modusar du ikkje set, blir genererte frå han.
+Over får `accent` skalaen som blir generert frå `#0062BA`, bortsett frå verdiane som er sette. `border-default` i mørk modus blir til dømes framleis generert.
+Set du `base-default.dark`, endrar det berre dette steget i mørk modus. Dei andre stega i mørk modus blir framleis genererte frå `base-default.light`.
+
+[Temabyggeren](https://theme.designsystemet.no) eksporterer fargane du har justert på denne forma, med berre stega du har endra. Andre fargar blir eksporterte som hexkodar.
+
+Severity-fargane (`success`, `warning`, `danger`, `info`) blir sette på same måte, direkte under `colors`.
+
+<Alert data-color="warning">
+Fargar du set sjølv, blir ikkje justerte for å oppfylle kontrastkrav. Du må sjølv passe på at dei fungerer og har god nok kontrast, både i lys og mørk modus. Sjå [Kontrast](/no/fundamentals/theme/colors#kontrast).
+</Alert>
+
+##### Fargenavn
+
+<ColorScaleTable />
 
 ### Overrides
 | Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
-| colors | Objekt | Nei | Inneheld overskrivingar for individuelle fargesteg |
-| severity | Objekt | Nei | Inneheld overskrivingar for severity-fargar |
-| linkVisited | Objekt | Nei | Inneheld overskrivingar for farge på besøkte lenker |
+| colors | Objekt | Nei | **Utdatert:** set [fargestega](#fargesteg) på fargen i `colors` i staden. |
+| severity | Objekt | Nei | **Utdatert:** set severity-fargen i [`colors`](#colors) i staden. |
+| linkVisited | Objekt | Nei | **Utdatert:** style `.ds-link:visited` i staden. |
 | focus | Objekt | Nei | Inneheld overskrivingar for fokus fargar |
+
+`overrides.colors` og `overrides.severity` verkar framleis. Er ein farge sett både i `colors` og i `overrides`, er det `overrides` som gjeld. CLI-en tilbyr å migrere config-fila di automatisk, og fargane blir dei same.
 
 #### overrides.colors
 | Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
 | "fargeNavn" | Objekt | Nei | Overskrivingar for ein spesifikk farge |
 
+<Alert data-color="warning">
+`overrides.colors` er utdatert. Set [fargestega](#fargesteg) på fargen i `colors` i staden.
+</Alert>
+
 Overstyringen av `colors` lar deg tilpasse spesifikke semantiske fargetokens for kvar farge som er definert i temaets.
 
 Kvar nøkkel i `colors`-objektet skal samsvare med eit fargenavn frå fargane dine, eller ein av severity-fargane (`success`, `warning`, `danger`, `info`).
 
 For kvar farge kan du overstyre individuelle semantiske tokener som `background-default`, `border-subtle`, `text-default` osv.
-Kvar tokenoverstyring har ein `light` og/eller `dark` verdi som peikar til ein heksadesimal kode.
+Kvar tokenoverstyring har ein `light` og/eller `dark` verdi som peikar til ein heksadesimal kode. Sjå [Fargenavn](#fargenavn).
 
 ```json
 {
+  "colors": {
+    "dominant": "#0062BA"
+  },
   "overrides": {
     "colors": {
       "dominant": {
         "background-default": {
           "light": "#ff0000",
           "dark": "#000fff"
-        },
+        }
       }
     }
   }
 }
 ```
-##### Fargenavn
 
-<ColorScaleTable />
+For å flytte dette til `colors`, byt ut hexkoden med fargesteg, og legg hexkoden i `base-default.light`:
+
+```json
+{
+  "colors": {
+    "dominant": {
+      "base-default": { "light": "#0062BA" },
+      "background-default": { "light": "#ff0000", "dark": "#000fff" }
+    }
+  }
+}
+```
 
 #### overrides.severity
 | Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
 | "fargeNavn" | Streng | Nei | Hex-farge som skal settast som base |
+
+<Alert data-color="warning">
+`overrides.severity` er utdatert. Set severity-fargen direkte i `colors` i staden, til dømes `"danger": "#C01B1B"`.
+</Alert>
 
 Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity, som er `success`, `warning`, `danger` og `info`.
 
@@ -298,39 +360,23 @@ Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity
   "themes": {
     "my-theme": {
       "colors": {
-        "primary": "#0062BA",
+        "primary": {
+          "base-default": { "light": "#0062BA", "dark": "#4D9BE0" },
+          "border-default": { "light": "#5A8BC4" },
+          "background-tinted": { "light": "#E8F1FB", "dark": "#0B1D30" }
+        },
         "accent": "#1E98F5",
         "extra1": "#F45F63",
         "neutral": "#1E2B3C",
-        "extra2": "#E5AA20"
+        "extra2": "#E5AA20",
+        "success": "#28a745",
+        "warning": "#ffc107",
+        "danger": "#dc3545",
+        "info": "#17a2b8"
       },
       "borderRadius": 4,
       "typography": {
         "fontFamily": "Inter"
-      },
-      "overrides": {
-        "colors": {
-          "primary": {
-            "background-default": {
-              "light": "#ff0000",
-              "dark": "#000fff"
-            },
-            "text-default": {
-              "light": "#00ff00",
-              "dark": "#00ffff"
-            }
-          }
-        },
-        "severity": {
-          "success":  "#28a745",
-          "warning": "#ffc107",
-          "danger": "#dc3545",
-          "info": "#17a2b8"
-        },
-        "linkVisited": {
-          "light": "#ff1234",
-          "dark": "#1234ff"
-        }
       }
     }
   }
