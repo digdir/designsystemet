@@ -23,7 +23,20 @@ export default mergeConfig(viteConfig, {
     watch: false,
     browser: {
       enabled: true,
-      instances: [{ browser: 'chromium' }],
+      instances: [
+        { browser: 'chromium' },
+        // Some elements are only shown on small screens, e.g. the back link in Breadcrumbs.
+        // Run the stories at mobile width as well, so the a11y checks cover them.
+        // Storybook sets the viewport for each story from its globals, so a browser `viewport` here has no effect.
+        // The key is the one @storybook/addon-vitest reads initial globals from.
+        {
+          browser: 'chromium',
+          name: 'chromium-mobile',
+          provide: {
+            'storybook/test-initial-globals': { viewport: { value: '320px' } },
+          },
+        },
+      ],
       provider: playwright(),
       headless: true,
     },
