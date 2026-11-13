@@ -39,36 +39,6 @@ export const Preview = meta.story({
   ),
 });
 
-export const Variants = meta.story(() => (
-  <>
-    <Field>
-      <Label>color variant default</Label>
-      <FileUpload>
-        <Field.Description>Drop file here</Field.Description>
-        <Field.Description>
-          File must be in csv format and less than 2MB
-        </Field.Description>
-        <Button asChild data-variant='secondary'>
-          <span>Upload file</span>
-        </Button>
-        <input type='file' />
-      </FileUpload>
-    </Field>
-    <Field>
-      <Label>color variant neutral</Label>
-      <FileUpload data-color='neutral'>
-        <Field.Description>Drop file here</Field.Description>
-        <Field.Description>
-          File must be in csv format and less than 2MB
-        </Field.Description>
-        <Button asChild data-variant='secondary'>
-          <span>Upload file</span>
-        </Button>
-        <input type='file' />
-      </FileUpload>
-    </Field>
-  </>
-));
 export const LinkAlt = meta.story(() => (
   <Field>
     <Label>Upload file</Label>
@@ -90,9 +60,6 @@ export const ReadOnly = meta.story(() => (
     <Field.Description>description text</Field.Description>
     <FileUpload>
       <Field.Description>Upload limit reached</Field.Description>
-      <Button asChild data-variant='secondary'>
-        <span>Upload file</span>
-      </Button>
       <input type='file' readOnly={true} />
     </FileUpload>
   </Field>

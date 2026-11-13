@@ -113,7 +113,7 @@ export const semanticColorSpec: SemanticColorSpec = {
     group: 'text',
     displayName: 'Text Default',
     luminance: {
-      light: 0.0245,
+      light: 0.01,
       dark: 0.84,
     },
   },
@@ -165,6 +165,48 @@ export const semanticColorSpec: SemanticColorSpec = {
     luminance: {
       light: 1,
       dark: 1,
+    },
+  },
+  'surface-muted': {
+    number: 17,
+    name: 'surface-muted',
+    group: 'surface',
+    displayName: 'Surface Muted',
+    luminance: {
+      light: 0.81,
+      dark: 0.027,
+    },
+    chroma: {
+      factor: { light: 0.2, dark: 0.4 },
+      max: 0.03,
+    },
+  },
+  'border-muted': {
+    number: 18,
+    name: 'border-muted',
+    group: 'border',
+    displayName: 'Border Muted',
+    luminance: {
+      light: 0.19,
+      dark: 0.22,
+    },
+    chroma: {
+      factor: { light: 0.2, dark: 0.4 },
+      max: 0.03,
+    },
+  },
+  'text-muted': {
+    number: 19,
+    name: 'text-muted',
+    group: 'text',
+    displayName: 'Text Muted',
+    luminance: {
+      light: 0.11,
+      dark: 0.39,
+    },
+    chroma: {
+      factor: { light: 0.2, dark: 0.4 },
+      max: 0.03,
     },
   },
 };

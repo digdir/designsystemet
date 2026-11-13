@@ -136,7 +136,6 @@ export default {
     save: 'Save',
     cancel: 'Cancel',
     'remove-color': 'Remove colour',
-    'neutral-info': 'The neutral colour cannot be removed or renamed.',
     'severity-info': 'The severity colour cannot be removed or renamed.',
     name: 'Name',
     'name-placeholder': 'Write the name here...',

@@ -1,10 +1,10 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
 import { semanticColorSpec } from './specs.ts';
-import type { ColorScale, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
+import type { ChromaAdjustment, ColorScale, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
-export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info'];
+export const RESERVED_COLORS = ['success', 'warning', 'danger', 'info'];
 
 type ColorScaleSpec = SemanticColorSpec;
 
@@ -31,9 +31,10 @@ export const generateColorScale = (
 
   const colors = R.mapObjIndexed((step) => {
     const luminance = step.luminance[colorScheme];
+    const hex = chroma(interpolationColor).luminance(luminance).hex() as CssColor;
     return {
       ...step,
-      hex: chroma(interpolationColor).luminance(luminance).hex() as CssColor,
+      hex: step.chroma ? adjustChroma(hex, step.chroma, colorScheme) : hex,
     };
   }, colorScaleSpec);
 
@@ -118,4 +119,20 @@ const generateColorContrast = (color: CssColor, type: 'default' | 'subtle'): Css
   }
 
   return color;
+};
+
+/**
+ * Scales the chroma of a color while keeping its luminance, so contrast is unchanged.
+ *
+ * @param hex The color to adjust
+ * @param adjustment Chroma factor per color scheme, and an optional upper limit
+ * @param colorScheme The color scheme the color is generated for
+ */
+const adjustChroma = (hex: CssColor, adjustment: ChromaAdjustment, colorScheme: ColorScheme): CssColor => {
+  const [L, C, H] = chroma(hex).oklch();
+  const chromaValue = Number.isNaN(C) ? 0 : C;
+  const target = Math.min(chromaValue * adjustment.factor[colorScheme], adjustment.max ?? Number.POSITIVE_INFINITY);
+  const adjusted = chroma(L, target, Number.isNaN(H) ? 0 : H, 'oklch').hex();
+  // Re-fit luminance so contrast is identical to the unadjusted step.
+  return chroma(adjusted).luminance(chroma(hex).luminance()).hex() as CssColor;
 };

@@ -20,6 +20,9 @@ export const semanticColorMap = {
   'base-active': 14,
   'base-contrast-subtle': 15,
   'base-contrast-default': 16,
+  'surface-muted': 17,
+  'border-muted': 18,
+  'text-muted': 19,
 } as const;
 
 type SemanticColorMap = typeof semanticColorMap;
@@ -44,6 +47,15 @@ export type ColorScaleStep<T> = {
     light: number;
     dark: number;
   };
+  /** Optional chroma adjustment, applied after luminance. Omit to keep the chroma of the color. */
+  chroma?: ChromaAdjustment;
+};
+
+export type ChromaAdjustment = {
+  /** Multiplier for the chroma of the step, per color scheme */
+  factor: Record<ColorScheme, number>;
+  /** Upper limit for the resulting chroma (OKLCH) */
+  max?: number;
 };
 
 export type Color = ColorScaleStep<SemanticColorNames> & {

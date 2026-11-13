@@ -241,9 +241,9 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
     // Extract colors
     const colors = extractColors(themeTokens, themeName);
 
-    if (!colors.neutral) {
-      console.warn(pc.yellow(`\nWarning: No neutral color found for theme ${themeName}`));
-      continue; // Skip this theme as neutral is required
+    if (Object.keys(colors).length === 0) {
+      console.warn(pc.yellow(`\nWarning: No colors found for theme ${themeName}`));
+      continue; // Skip this theme as it needs at least one color
     }
 
     const borderRadius = extractBorderRadius(themeConfig);

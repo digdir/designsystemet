@@ -135,7 +135,6 @@ export default {
     save: 'Lagre',
     cancel: 'Avbryt',
     'remove-color': 'Fjern farge',
-    'neutral-info': 'Neutral fargen kan ikke fjernes eller endres navn på.',
     'severity-info': 'Severity fargen kan ikke fjernes eller endres navn på.',
     name: 'Navn',
     'name-placeholder': 'Skriv navnet her...',

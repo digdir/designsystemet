@@ -3,7 +3,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "background-default"
       ],
       "variable": "--ds-color-background-default",
@@ -12,7 +12,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "background-tinted"
       ],
       "variable": "--ds-color-background-tinted",
@@ -21,7 +21,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "surface-default"
       ],
       "variable": "--ds-color-surface-default",
@@ -30,7 +30,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "surface-tinted"
       ],
       "variable": "--ds-color-surface-tinted",
@@ -39,7 +39,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "surface-hover"
       ],
       "variable": "--ds-color-surface-hover",
@@ -48,7 +48,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "surface-active"
       ],
       "variable": "--ds-color-surface-active",
@@ -57,7 +57,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "border-subtle"
       ],
       "variable": "--ds-color-border-subtle",
@@ -66,7 +66,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "border-default"
       ],
       "variable": "--ds-color-border-default",
@@ -75,7 +75,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "border-strong"
       ],
       "variable": "--ds-color-border-strong",
@@ -84,7 +84,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "text-subtle"
       ],
       "variable": "--ds-color-text-subtle",
@@ -93,7 +93,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "text-default"
       ],
       "variable": "--ds-color-text-default",
@@ -102,7 +102,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "base-default"
       ],
       "variable": "--ds-color-base-default",
@@ -111,7 +111,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "base-hover"
       ],
       "variable": "--ds-color-base-hover",
@@ -120,7 +120,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "base-active"
       ],
       "variable": "--ds-color-base-active",
@@ -129,7 +129,7 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "base-contrast-subtle"
       ],
       "variable": "--ds-color-base-contrast-subtle",
@@ -138,595 +138,38 @@
     {
       "path": [
         "color",
-        "main",
+        "primary",
         "base-contrast-default"
       ],
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-primary-base-contrast-default)"
-    }
-  ],
-  "neutral": [
-    {
-      "path": [
-        "color",
-        "neutral",
-        "background-default"
-      ],
-      "variable": "--ds-color-background-default",
-      "value": "var(--ds-color-neutral-background-default)"
     },
     {
       "path": [
         "color",
-        "neutral",
-        "background-tinted"
+        "primary",
+        "surface-muted"
       ],
-      "variable": "--ds-color-background-tinted",
-      "value": "var(--ds-color-neutral-background-tinted)"
+      "variable": "--ds-color-surface-muted",
+      "value": "var(--ds-color-primary-surface-muted)"
     },
     {
       "path": [
         "color",
-        "neutral",
-        "surface-default"
+        "primary",
+        "border-muted"
       ],
-      "variable": "--ds-color-surface-default",
-      "value": "var(--ds-color-neutral-surface-default)"
+      "variable": "--ds-color-border-muted",
+      "value": "var(--ds-color-primary-border-muted)"
     },
     {
       "path": [
         "color",
-        "neutral",
-        "surface-tinted"
+        "primary",
+        "text-muted"
       ],
-      "variable": "--ds-color-surface-tinted",
-      "value": "var(--ds-color-neutral-surface-tinted)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "surface-hover"
-      ],
-      "variable": "--ds-color-surface-hover",
-      "value": "var(--ds-color-neutral-surface-hover)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "surface-active"
-      ],
-      "variable": "--ds-color-surface-active",
-      "value": "var(--ds-color-neutral-surface-active)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "border-subtle"
-      ],
-      "variable": "--ds-color-border-subtle",
-      "value": "var(--ds-color-neutral-border-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "border-default"
-      ],
-      "variable": "--ds-color-border-default",
-      "value": "var(--ds-color-neutral-border-default)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "border-strong"
-      ],
-      "variable": "--ds-color-border-strong",
-      "value": "var(--ds-color-neutral-border-strong)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "text-subtle"
-      ],
-      "variable": "--ds-color-text-subtle",
-      "value": "var(--ds-color-neutral-text-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "text-default"
-      ],
-      "variable": "--ds-color-text-default",
-      "value": "var(--ds-color-neutral-text-default)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "base-default"
-      ],
-      "variable": "--ds-color-base-default",
-      "value": "var(--ds-color-neutral-base-default)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "base-hover"
-      ],
-      "variable": "--ds-color-base-hover",
-      "value": "var(--ds-color-neutral-base-hover)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "base-active"
-      ],
-      "variable": "--ds-color-base-active",
-      "value": "var(--ds-color-neutral-base-active)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "base-contrast-subtle"
-      ],
-      "variable": "--ds-color-base-contrast-subtle",
-      "value": "var(--ds-color-neutral-base-contrast-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "neutral",
-        "base-contrast-default"
-      ],
-      "variable": "--ds-color-base-contrast-default",
-      "value": "var(--ds-color-neutral-base-contrast-default)"
-    }
-  ],
-  "success": [
-    {
-      "path": [
-        "color",
-        "success",
-        "background-default"
-      ],
-      "variable": "--ds-color-background-default",
-      "value": "var(--ds-color-success-background-default)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "background-tinted"
-      ],
-      "variable": "--ds-color-background-tinted",
-      "value": "var(--ds-color-success-background-tinted)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "surface-default"
-      ],
-      "variable": "--ds-color-surface-default",
-      "value": "var(--ds-color-success-surface-default)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "surface-tinted"
-      ],
-      "variable": "--ds-color-surface-tinted",
-      "value": "var(--ds-color-success-surface-tinted)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "surface-hover"
-      ],
-      "variable": "--ds-color-surface-hover",
-      "value": "var(--ds-color-success-surface-hover)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "surface-active"
-      ],
-      "variable": "--ds-color-surface-active",
-      "value": "var(--ds-color-success-surface-active)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "border-subtle"
-      ],
-      "variable": "--ds-color-border-subtle",
-      "value": "var(--ds-color-success-border-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "border-default"
-      ],
-      "variable": "--ds-color-border-default",
-      "value": "var(--ds-color-success-border-default)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "border-strong"
-      ],
-      "variable": "--ds-color-border-strong",
-      "value": "var(--ds-color-success-border-strong)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "text-subtle"
-      ],
-      "variable": "--ds-color-text-subtle",
-      "value": "var(--ds-color-success-text-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "text-default"
-      ],
-      "variable": "--ds-color-text-default",
-      "value": "var(--ds-color-success-text-default)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "base-default"
-      ],
-      "variable": "--ds-color-base-default",
-      "value": "var(--ds-color-success-base-default)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "base-hover"
-      ],
-      "variable": "--ds-color-base-hover",
-      "value": "var(--ds-color-success-base-hover)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "base-active"
-      ],
-      "variable": "--ds-color-base-active",
-      "value": "var(--ds-color-success-base-active)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "base-contrast-subtle"
-      ],
-      "variable": "--ds-color-base-contrast-subtle",
-      "value": "var(--ds-color-success-base-contrast-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
-        "base-contrast-default"
-      ],
-      "variable": "--ds-color-base-contrast-default",
-      "value": "var(--ds-color-success-base-contrast-default)"
-    }
-  ],
-  "danger": [
-    {
-      "path": [
-        "color",
-        "danger",
-        "background-default"
-      ],
-      "variable": "--ds-color-background-default",
-      "value": "var(--ds-color-danger-background-default)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "background-tinted"
-      ],
-      "variable": "--ds-color-background-tinted",
-      "value": "var(--ds-color-danger-background-tinted)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "surface-default"
-      ],
-      "variable": "--ds-color-surface-default",
-      "value": "var(--ds-color-danger-surface-default)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "surface-tinted"
-      ],
-      "variable": "--ds-color-surface-tinted",
-      "value": "var(--ds-color-danger-surface-tinted)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "surface-hover"
-      ],
-      "variable": "--ds-color-surface-hover",
-      "value": "var(--ds-color-danger-surface-hover)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "surface-active"
-      ],
-      "variable": "--ds-color-surface-active",
-      "value": "var(--ds-color-danger-surface-active)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "border-subtle"
-      ],
-      "variable": "--ds-color-border-subtle",
-      "value": "var(--ds-color-danger-border-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "border-default"
-      ],
-      "variable": "--ds-color-border-default",
-      "value": "var(--ds-color-danger-border-default)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "border-strong"
-      ],
-      "variable": "--ds-color-border-strong",
-      "value": "var(--ds-color-danger-border-strong)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "text-subtle"
-      ],
-      "variable": "--ds-color-text-subtle",
-      "value": "var(--ds-color-danger-text-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "text-default"
-      ],
-      "variable": "--ds-color-text-default",
-      "value": "var(--ds-color-danger-text-default)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "base-default"
-      ],
-      "variable": "--ds-color-base-default",
-      "value": "var(--ds-color-danger-base-default)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "base-hover"
-      ],
-      "variable": "--ds-color-base-hover",
-      "value": "var(--ds-color-danger-base-hover)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "base-active"
-      ],
-      "variable": "--ds-color-base-active",
-      "value": "var(--ds-color-danger-base-active)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "base-contrast-subtle"
-      ],
-      "variable": "--ds-color-base-contrast-subtle",
-      "value": "var(--ds-color-danger-base-contrast-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "base-contrast-default"
-      ],
-      "variable": "--ds-color-base-contrast-default",
-      "value": "var(--ds-color-danger-base-contrast-default)"
-    }
-  ],
-  "warning": [
-    {
-      "path": [
-        "color",
-        "warning",
-        "background-default"
-      ],
-      "variable": "--ds-color-background-default",
-      "value": "var(--ds-color-warning-background-default)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "background-tinted"
-      ],
-      "variable": "--ds-color-background-tinted",
-      "value": "var(--ds-color-warning-background-tinted)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "surface-default"
-      ],
-      "variable": "--ds-color-surface-default",
-      "value": "var(--ds-color-warning-surface-default)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "surface-tinted"
-      ],
-      "variable": "--ds-color-surface-tinted",
-      "value": "var(--ds-color-warning-surface-tinted)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "surface-hover"
-      ],
-      "variable": "--ds-color-surface-hover",
-      "value": "var(--ds-color-warning-surface-hover)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "surface-active"
-      ],
-      "variable": "--ds-color-surface-active",
-      "value": "var(--ds-color-warning-surface-active)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "border-subtle"
-      ],
-      "variable": "--ds-color-border-subtle",
-      "value": "var(--ds-color-warning-border-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "border-default"
-      ],
-      "variable": "--ds-color-border-default",
-      "value": "var(--ds-color-warning-border-default)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "border-strong"
-      ],
-      "variable": "--ds-color-border-strong",
-      "value": "var(--ds-color-warning-border-strong)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "text-subtle"
-      ],
-      "variable": "--ds-color-text-subtle",
-      "value": "var(--ds-color-warning-text-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "text-default"
-      ],
-      "variable": "--ds-color-text-default",
-      "value": "var(--ds-color-warning-text-default)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "base-default"
-      ],
-      "variable": "--ds-color-base-default",
-      "value": "var(--ds-color-warning-base-default)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "base-hover"
-      ],
-      "variable": "--ds-color-base-hover",
-      "value": "var(--ds-color-warning-base-hover)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "base-active"
-      ],
-      "variable": "--ds-color-base-active",
-      "value": "var(--ds-color-warning-base-active)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "base-contrast-subtle"
-      ],
-      "variable": "--ds-color-base-contrast-subtle",
-      "value": "var(--ds-color-warning-base-contrast-subtle)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
-        "base-contrast-default"
-      ],
-      "variable": "--ds-color-base-contrast-default",
-      "value": "var(--ds-color-warning-base-contrast-default)"
+      "variable": "--ds-color-text-muted",
+      "value": "var(--ds-color-primary-text-muted)"
     }
   ],
   "info": [
@@ -873,6 +316,552 @@
       ],
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-info-base-contrast-default)"
+    },
+    {
+      "path": [
+        "color",
+        "info",
+        "surface-muted"
+      ],
+      "variable": "--ds-color-surface-muted",
+      "value": "var(--ds-color-info-surface-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "info",
+        "border-muted"
+      ],
+      "variable": "--ds-color-border-muted",
+      "value": "var(--ds-color-info-border-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "info",
+        "text-muted"
+      ],
+      "variable": "--ds-color-text-muted",
+      "value": "var(--ds-color-info-text-muted)"
+    }
+  ],
+  "success": [
+    {
+      "path": [
+        "color",
+        "success",
+        "background-default"
+      ],
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-success-background-default)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "background-tinted"
+      ],
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-success-background-tinted)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "surface-default"
+      ],
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-success-surface-default)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "surface-tinted"
+      ],
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-success-surface-tinted)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "surface-hover"
+      ],
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-success-surface-hover)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "surface-active"
+      ],
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-success-surface-active)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "border-subtle"
+      ],
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-success-border-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "border-default"
+      ],
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-success-border-default)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "border-strong"
+      ],
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-success-border-strong)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "text-subtle"
+      ],
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-success-text-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "text-default"
+      ],
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-success-text-default)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "base-default"
+      ],
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-success-base-default)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "base-hover"
+      ],
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-success-base-hover)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "base-active"
+      ],
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-success-base-active)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "base-contrast-subtle"
+      ],
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-success-base-contrast-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "base-contrast-default"
+      ],
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-success-base-contrast-default)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "surface-muted"
+      ],
+      "variable": "--ds-color-surface-muted",
+      "value": "var(--ds-color-success-surface-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "border-muted"
+      ],
+      "variable": "--ds-color-border-muted",
+      "value": "var(--ds-color-success-border-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "text-muted"
+      ],
+      "variable": "--ds-color-text-muted",
+      "value": "var(--ds-color-success-text-muted)"
+    }
+  ],
+  "warning": [
+    {
+      "path": [
+        "color",
+        "warning",
+        "background-default"
+      ],
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-warning-background-default)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "background-tinted"
+      ],
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-warning-background-tinted)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "surface-default"
+      ],
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-warning-surface-default)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "surface-tinted"
+      ],
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-warning-surface-tinted)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "surface-hover"
+      ],
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-warning-surface-hover)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "surface-active"
+      ],
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-warning-surface-active)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "border-subtle"
+      ],
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-warning-border-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "border-default"
+      ],
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-warning-border-default)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "border-strong"
+      ],
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-warning-border-strong)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "text-subtle"
+      ],
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-warning-text-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "text-default"
+      ],
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-warning-text-default)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "base-default"
+      ],
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-warning-base-default)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "base-hover"
+      ],
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-warning-base-hover)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "base-active"
+      ],
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-warning-base-active)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "base-contrast-subtle"
+      ],
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-warning-base-contrast-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "base-contrast-default"
+      ],
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-warning-base-contrast-default)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "surface-muted"
+      ],
+      "variable": "--ds-color-surface-muted",
+      "value": "var(--ds-color-warning-surface-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "border-muted"
+      ],
+      "variable": "--ds-color-border-muted",
+      "value": "var(--ds-color-warning-border-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "text-muted"
+      ],
+      "variable": "--ds-color-text-muted",
+      "value": "var(--ds-color-warning-text-muted)"
+    }
+  ],
+  "danger": [
+    {
+      "path": [
+        "color",
+        "danger",
+        "background-default"
+      ],
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-danger-background-default)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "background-tinted"
+      ],
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-danger-background-tinted)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "surface-default"
+      ],
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-danger-surface-default)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "surface-tinted"
+      ],
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-danger-surface-tinted)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "surface-hover"
+      ],
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-danger-surface-hover)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "surface-active"
+      ],
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-danger-surface-active)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "border-subtle"
+      ],
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-danger-border-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "border-default"
+      ],
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-danger-border-default)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "border-strong"
+      ],
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-danger-border-strong)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "text-subtle"
+      ],
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-danger-text-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "text-default"
+      ],
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-danger-text-default)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "base-default"
+      ],
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-danger-base-default)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "base-hover"
+      ],
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-danger-base-hover)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "base-active"
+      ],
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-danger-base-active)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "base-contrast-subtle"
+      ],
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-danger-base-contrast-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "base-contrast-default"
+      ],
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-danger-base-contrast-default)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "surface-muted"
+      ],
+      "variable": "--ds-color-surface-muted",
+      "value": "var(--ds-color-danger-surface-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "border-muted"
+      ],
+      "variable": "--ds-color-border-muted",
+      "value": "var(--ds-color-danger-border-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "text-muted"
+      ],
+      "variable": "--ds-color-text-muted",
+      "value": "var(--ds-color-danger-text-muted)"
     }
   ]
 }
