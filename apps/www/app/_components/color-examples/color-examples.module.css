@@ -65,8 +65,8 @@
 
 .overview {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--ds-size-6) var(--ds-size-8);
+  flex-direction: column;
+  gap: var(--ds-size-6);
 }
 
 .group {
