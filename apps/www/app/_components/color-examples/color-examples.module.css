@@ -35,7 +35,6 @@
 
 .rowLabel {
   align-self: flex-start;
-  font-size: var(--ds-font-size-2);
 }
 
 .swatches {
@@ -49,10 +48,9 @@
   align-items: center;
   justify-content: center;
   min-height: var(--ds-size-14);
-  padding: var(--ds-size-2) var(--ds-size-3);
+  padding: var(--ds-size-2);
   border-radius: var(--ds-border-radius-md);
   text-align: center;
-  font-size: var(--ds-font-size-3);
   background: light-dark(var(--bg-light), var(--bg-dark));
   color: light-dark(var(--fg-light), var(--fg-dark));
   border: 2px solid light-dark(var(--border-light, transparent), var(--border-dark, transparent));
@@ -92,7 +90,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--ds-size-1);
-  width: 4.5rem;
+  width: 5.5rem;
 }
 
 .stepColor {
@@ -104,7 +102,6 @@
 }
 
 .stepLabel {
-  font-size: var(--ds-font-size-1);
   color: var(--ds-color-neutral-text-subtle);
   text-align: center;
 }
