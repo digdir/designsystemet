@@ -180,6 +180,10 @@ export default {
     'base-colors-description':
       'The colours selected in the tool get the Base Default token in each colour scale. This means it is important to choose a colour that has over 3:1 contrast against surface colours if it is to be used as an important, meaningful colour. The tool also creates two contrast colours that can be safely used on top of the base colours. These contrast colours become either light or dark depending on the base colour.',
     'select-color': 'Select colour to see contrasts',
+    'min-contrast': 'Required: {{ratio}}:1',
+    'min-contrast-failed': 'Below the required {{ratio}}:1',
+    'min-contrast-description':
+      'The contrast Designsystemet guarantees between these steps in every colour scale. The requirements come from the colour specification.',
   },
   borderRadius: {
     label: 'Border radius',
