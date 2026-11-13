@@ -7,6 +7,10 @@ on:
       - "apps/**"
       - "figma/**"
       - "biome.jsonc"
+      # Dependency updates can break the build and types without touching any package files
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
 
 permissions:
   contents: read
