@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "@floating-ui/react": "0.26.23",
-    "@navikt/aksel-icons": "8.21.0",
+    "@navikt/aksel-icons": "8.22.1",
     "@radix-ui/react-slot": "1.5.0",
-    "@tanstack/react-virtual": "3.14.25",
+    "@tanstack/react-virtual": "3.14.26",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },

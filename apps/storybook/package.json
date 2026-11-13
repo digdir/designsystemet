@@ -20,22 +20,22 @@
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@navikt/aksel-icons": "8.21.0",
-    "@storybook/addon-a11y": "10.6.5",
-    "@storybook/addon-docs": "10.6.5",
-    "@storybook/addon-themes": "10.6.5",
-    "@storybook/addon-vitest": "10.6.5",
-    "@storybook/react-vite": "10.6.5",
+    "@navikt/aksel-icons": "8.22.1",
+    "@storybook/addon-a11y": "10.6.6",
+    "@storybook/addon-docs": "10.6.6",
+    "@storybook/addon-themes": "10.6.6",
+    "@storybook/addon-vitest": "10.6.6",
+    "@storybook/react-vite": "10.6.6",
     "@types/ramda": "0.32.0",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "@vitest/browser": "5.0.5",
+    "@vitest/browser": "5.1.0",
     "axe-playwright": "2.2.2",
-    "playwright": "1.64.1",
+    "playwright": "1.65.0",
     "ramda": "0.32.0",
     "react-docgen-typescript": "2.4.0",
-    "storybook": "10.6.5",
-    "storybook-addon-pseudo-states": "10.6.5",
-    "vitest": "5.0.5"
+    "storybook": "10.6.6",
+    "storybook-addon-pseudo-states": "10.6.6",
+    "vitest": "5.1.0"
   }
 }
