@@ -20,7 +20,6 @@
 
 - Only use context if it's absolutely necessary, or can lead to a better consumer experience
 
-
 ## Files
 
 - Export components from an index file, avoiding the use of `export * from './Component'`
