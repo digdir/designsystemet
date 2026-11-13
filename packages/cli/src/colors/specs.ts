@@ -1,6 +1,10 @@
 import type { SemanticColorNames, SemanticColorSpec } from './types.ts';
 import { semanticColorMap } from './types.ts';
 
+const backgrounds: SemanticColorNames[] = ['background-default', 'background-tinted'];
+const surfaces: SemanticColorNames[] = ['surface-default', 'surface-tinted'];
+const interactiveSurfaces: SemanticColorNames[] = ['surface-hover', 'surface-active'];
+
 /**
  * Specification for a semantic color scale.
  *
@@ -86,6 +90,7 @@ export const semanticColorSpec: SemanticColorSpec = {
       light: 0.19,
       dark: 0.22,
     },
+    minContrast: [{ ratio: 3, against: [...backgrounds, ...surfaces] }],
   },
   'border-strong': {
     number: 9,
@@ -96,6 +101,7 @@ export const semanticColorSpec: SemanticColorSpec = {
       light: 0.11,
       dark: 0.39,
     },
+    minContrast: [{ ratio: 3, against: [...backgrounds, ...surfaces, ...interactiveSurfaces] }],
   },
   'text-subtle': {
     number: 10,
@@ -106,6 +112,7 @@ export const semanticColorSpec: SemanticColorSpec = {
       light: 0.11,
       dark: 0.39,
     },
+    minContrast: [{ ratio: 4.5, against: [...backgrounds, ...surfaces] }],
   },
   'text-default': {
     number: 11,
@@ -116,6 +123,7 @@ export const semanticColorSpec: SemanticColorSpec = {
       light: 0.0245,
       dark: 0.84,
     },
+    minContrast: [{ ratio: 4.5, against: [...backgrounds, ...surfaces, ...interactiveSurfaces] }],
   },
   'base-default': {
     number: 12,
@@ -156,6 +164,7 @@ export const semanticColorSpec: SemanticColorSpec = {
       light: 1,
       dark: 1,
     },
+    minContrast: [{ ratio: 4.5, against: ['base-default'] }],
   },
   'base-contrast-default': {
     number: 16,
@@ -166,6 +175,7 @@ export const semanticColorSpec: SemanticColorSpec = {
       light: 1,
       dark: 1,
     },
+    minContrast: [{ ratio: 4.5, against: ['base-default', 'base-hover'] }],
   },
 };
 

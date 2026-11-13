@@ -1,6 +1,9 @@
+import chroma from 'chroma-js';
 import { describe, expect, it } from 'vitest';
 import { generateColorScale, generateColorSchemes } from './scale.ts';
 import { semanticColorNames, semanticColorSpec } from './specs.ts';
+import type { ColorScheme, CssColor } from './types.ts';
+import { getContrastFromHex } from './utils.ts';
 
 const BASE_COLOR = '#0062BA';
 const HEX_PATTERN = /^#[0-9a-f]{6}$/i;
@@ -38,6 +41,51 @@ describe('generateColorScale', () => {
 
   it('is deterministic', () => {
     expect(generateColorScale(BASE_COLOR, 'dark')).toEqual(generateColorScale(BASE_COLOR, 'dark'));
+  });
+});
+
+describe('minContrast', () => {
+  // 24 hues × 6 lightness levels × 3 chroma levels in OKLCH, plus a few fixed colors
+  const sampleColors: CssColor[] = [];
+  for (let hue = 0; hue < 360; hue += 15) {
+    for (const lightness of [0.25, 0.4, 0.5, 0.6, 0.75, 0.9]) {
+      for (const chromaValue of [0.03, 0.12, 0.25]) {
+        sampleColors.push(chroma.oklch(lightness, chromaValue, hue).hex() as CssColor);
+      }
+    }
+  }
+  sampleColors.push('#0062BA', '#C01B1B', '#068718', '#EA9B1B', '#1E2B3C', '#ffffff', '#000000', '#808080');
+
+  /**
+   * Known failures in the generator. Remove an entry when it is fixed.
+   *
+   * In dark mode base-hover is lighter than base-default, but base-contrast-default is chosen from
+   * base-default only. For mid-tone colors where white barely passes on base-default, it fails on base-hover.
+   */
+  const knownFailures: Record<ColorScheme, string[]> = {
+    light: [],
+    dark: [
+      '#00868f: base-contrast-default vs base-hover',
+      '#008969: base-contrast-default vs base-hover',
+      '#f0004d: base-contrast-default vs base-hover',
+    ],
+  };
+
+  it.each(['light', 'dark'] as const)('every generated %s scale meets the minimum contrast in the spec', (scheme) => {
+    const failures = new Set<string>();
+    for (const color of sampleColors) {
+      const scale = generateColorScale(color, scheme);
+      for (const step of Object.values(semanticColorSpec)) {
+        for (const { ratio, against } of step.minContrast ?? []) {
+          for (const other of against) {
+            if (getContrastFromHex(scale[step.name].hex, scale[other].hex) < ratio) {
+              failures.add(`${color}: ${step.name} vs ${other}`);
+            }
+          }
+        }
+      }
+    }
+    expect([...failures].sort()).toEqual(knownFailures[scheme]);
   });
 });
 
