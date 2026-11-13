@@ -1,83 +1,44 @@
+/* Note: Spinner has same animation regardless of motion preference, as it is a small element */
 .ds-spinner {
   --dsc-spinner-background: var(--ds-color-surface-tinted);
-  --dsc-spinner-stroke: var(--ds-color-border-default);
+  --dsc-spinner-color: var(--ds-color-border-default);
+  --dsc-spinner-icon-size: var(--ds-size-11);
+  --dsc-spinner-icon-url: var(--ds-icon-spinner);
+  --dsc-spinner-label: 'Loading...';
 
-  --dsc-spinner-animation-duration: 2s;
-
-  animation: ds-spinner-rotate-animation linear infinite var(--dsc-spinner-animation-duration);
   box-sizing: border-box;
-  height: var(--ds-size-11);
-  width: auto;
+  color: var(--dsc-spinner-color);
+  display: inline-block;
+  vertical-align: middle;
+
+  &::before {
+    forced-color-adjust: none;
+    background: currentcolor;
+    content: ''; /* Ensure content for screen readers */
+    display: block;
+    flex-shrink: 0;
+    height: var(--dsc-spinner-icon-size);
+    mask: center / contain no-repeat var(--dsc-spinner-icon-url);
+    width: var(--dsc-spinner-icon-size);
+  }
+  &:empty::before {
+    content: var(--dsc-spinner-label); /* Ensure content for screen readers */
+  }
 
   /* Ensure consistent size when explicitly setting data-size */
   &[data-size='2xs'] {
-    height: 0.75rem;
+    --dsc-spinner-icon-size: var(--ds-size-3);
   }
-
   &[data-size='xs'] {
-    height: 1.25rem;
+    --dsc-spinner-icon-size: var(--ds-icon-size);
   }
-
   &[data-size='sm'] {
-    height: 2rem;
+    --dsc-spinner-icon-size: var(--ds-size-8);
   }
-
-  &[data-size='md'] {
-    height: 2.75rem;
-  }
-
   &[data-size='lg'] {
-    height: 3.75rem;
+    --dsc-spinner-icon-size: var(--ds-size-15);
   }
-
   &[data-size='xl'] {
-    height: 5.5rem;
-  }
-}
-
-.ds-spinner__background {
-  stroke: var(--dsc-spinner-background);
-}
-
-.ds-spinner__circle {
-  animation: ds-spinner-stroke-animation ease-in-out infinite var(--dsc-spinner-animation-duration);
-  stroke-dasharray: 1px, 200px;
-  stroke: var(--dsc-spinner-stroke);
-  transform-origin: center;
-}
-
-/* Prefers reduced motion needs longer animation,
-but don't remove it since it is not decorative.
-*/
-@media (prefers-reduced-motion: reduce) {
-  .ds-spinner {
-    animation-duration: 6s;
-  }
-}
-
-@keyframes ds-spinner-rotate-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes ds-spinner-stroke-animation {
-  0% {
-    stroke-dasharray: 1px, 200px;
-    stroke-dashoffset: 0;
-  }
-
-  50% {
-    stroke-dasharray: 100px, 200px;
-    stroke-dashoffset: -15px;
-  }
-
-  100% {
-    stroke-dasharray: 1px, 200px;
-    stroke-dashoffset: -120px;
+    --dsc-spinner-icon-size: var(--ds-size-22);
   }
 }
