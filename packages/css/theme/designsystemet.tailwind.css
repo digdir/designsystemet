@@ -24,7 +24,6 @@ Requires Tailwind CSS v3. Import this file first, before designsystemet.no and T
   --color-accent-base-default: var(--ds-color-accent-base-default);
   --color-accent-base-hover: var(--ds-color-accent-base-hover);
   --color-accent-border-default: var(--ds-color-accent-border-default);
-  --color-accent-border-invalid: var(--ds-color-accent-border-invalid);
   --color-accent-border-muted: var(--ds-color-accent-border-muted);
   --color-accent-border-strong: var(--ds-color-accent-border-strong);
   --color-accent-border-subtle: var(--ds-color-accent-border-subtle);
@@ -46,7 +45,6 @@ Requires Tailwind CSS v3. Import this file first, before designsystemet.no and T
   --color-base-default: var(--ds-color-base-default);
   --color-base-hover: var(--ds-color-base-hover);
   --color-border-default: var(--ds-color-border-default);
-  --color-border-invalid: var(--ds-color-border-invalid);
   --color-border-muted: var(--ds-color-border-muted);
   --color-border-strong: var(--ds-color-border-strong);
   --color-border-subtle: var(--ds-color-border-subtle);
@@ -58,7 +56,6 @@ Requires Tailwind CSS v3. Import this file first, before designsystemet.no and T
   --color-brand1-base-default: var(--ds-color-brand1-base-default);
   --color-brand1-base-hover: var(--ds-color-brand1-base-hover);
   --color-brand1-border-default: var(--ds-color-brand1-border-default);
-  --color-brand1-border-invalid: var(--ds-color-brand1-border-invalid);
   --color-brand1-border-muted: var(--ds-color-brand1-border-muted);
   --color-brand1-border-strong: var(--ds-color-brand1-border-strong);
   --color-brand1-border-subtle: var(--ds-color-brand1-border-subtle);
@@ -80,7 +77,6 @@ Requires Tailwind CSS v3. Import this file first, before designsystemet.no and T
   --color-brand2-base-default: var(--ds-color-brand2-base-default);
   --color-brand2-base-hover: var(--ds-color-brand2-base-hover);
   --color-brand2-border-default: var(--ds-color-brand2-border-default);
-  --color-brand2-border-invalid: var(--ds-color-brand2-border-invalid);
   --color-brand2-border-muted: var(--ds-color-brand2-border-muted);
   --color-brand2-border-strong: var(--ds-color-brand2-border-strong);
   --color-brand2-border-subtle: var(--ds-color-brand2-border-subtle);
@@ -102,7 +98,6 @@ Requires Tailwind CSS v3. Import this file first, before designsystemet.no and T
   --color-danger-base-default: var(--ds-color-danger-base-default);
   --color-danger-base-hover: var(--ds-color-danger-base-hover);
   --color-danger-border-default: var(--ds-color-danger-border-default);
-  --color-danger-border-invalid: var(--ds-color-danger-border-invalid);
   --color-danger-border-muted: var(--ds-color-danger-border-muted);
   --color-danger-border-strong: var(--ds-color-danger-border-strong);
   --color-danger-border-subtle: var(--ds-color-danger-border-subtle);
@@ -124,7 +119,6 @@ Requires Tailwind CSS v3. Import this file first, before designsystemet.no and T
   --color-info-base-default: var(--ds-color-info-base-default);
   --color-info-base-hover: var(--ds-color-info-base-hover);
   --color-info-border-default: var(--ds-color-info-border-default);
-  --color-info-border-invalid: var(--ds-color-info-border-invalid);
   --color-info-border-muted: var(--ds-color-info-border-muted);
   --color-info-border-strong: var(--ds-color-info-border-strong);
   --color-info-border-subtle: var(--ds-color-info-border-subtle);
@@ -146,7 +140,6 @@ Requires Tailwind CSS v3. Import this file first, before designsystemet.no and T
   --color-neutral-base-default: var(--ds-color-neutral-base-default);
   --color-neutral-base-hover: var(--ds-color-neutral-base-hover);
   --color-neutral-border-default: var(--ds-color-neutral-border-default);
-  --color-neutral-border-invalid: var(--ds-color-neutral-border-invalid);
   --color-neutral-border-muted: var(--ds-color-neutral-border-muted);
   --color-neutral-border-strong: var(--ds-color-neutral-border-strong);
   --color-neutral-border-subtle: var(--ds-color-neutral-border-subtle);
@@ -168,7 +161,6 @@ Requires Tailwind CSS v3. Import this file first, before designsystemet.no and T
   --color-success-base-default: var(--ds-color-success-base-default);
   --color-success-base-hover: var(--ds-color-success-base-hover);
   --color-success-border-default: var(--ds-color-success-border-default);
-  --color-success-border-invalid: var(--ds-color-success-border-invalid);
   --color-success-border-muted: var(--ds-color-success-border-muted);
   --color-success-border-strong: var(--ds-color-success-border-strong);
   --color-success-border-subtle: var(--ds-color-success-border-subtle);
@@ -200,7 +192,6 @@ Requires Tailwind CSS v3. Import this file first, before designsystemet.no and T
   --color-warning-base-default: var(--ds-color-warning-base-default);
   --color-warning-base-hover: var(--ds-color-warning-base-hover);
   --color-warning-border-default: var(--ds-color-warning-border-default);
-  --color-warning-border-invalid: var(--ds-color-warning-border-invalid);
   --color-warning-border-muted: var(--ds-color-warning-border-muted);
   --color-warning-border-strong: var(--ds-color-warning-border-strong);
   --color-warning-border-subtle: var(--ds-color-warning-border-subtle);

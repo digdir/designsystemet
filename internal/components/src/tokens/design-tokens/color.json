@@ -184,15 +184,6 @@
       "path": [
         "color",
         "primary",
-        "border-invalid"
-      ],
-      "variable": "--ds-color-border-invalid",
-      "value": "var(--ds-color-primary-border-invalid)"
-    },
-    {
-      "path": [
-        "color",
-        "primary",
         "text-invalid"
       ],
       "variable": "--ds-color-text-invalid",
@@ -379,15 +370,6 @@
       ],
       "variable": "--ds-color-surface-invalid",
       "value": "var(--ds-color-info-surface-invalid)"
-    },
-    {
-      "path": [
-        "color",
-        "info",
-        "border-invalid"
-      ],
-      "variable": "--ds-color-border-invalid",
-      "value": "var(--ds-color-info-border-invalid)"
     },
     {
       "path": [
@@ -584,15 +566,6 @@
       "path": [
         "color",
         "success",
-        "border-invalid"
-      ],
-      "variable": "--ds-color-border-invalid",
-      "value": "var(--ds-color-success-border-invalid)"
-    },
-    {
-      "path": [
-        "color",
-        "success",
         "text-invalid"
       ],
       "variable": "--ds-color-text-invalid",
@@ -784,15 +757,6 @@
       "path": [
         "color",
         "warning",
-        "border-invalid"
-      ],
-      "variable": "--ds-color-border-invalid",
-      "value": "var(--ds-color-warning-border-invalid)"
-    },
-    {
-      "path": [
-        "color",
-        "warning",
         "text-invalid"
       ],
       "variable": "--ds-color-text-invalid",
@@ -979,15 +943,6 @@
       ],
       "variable": "--ds-color-surface-invalid",
       "value": "var(--ds-color-danger-surface-invalid)"
-    },
-    {
-      "path": [
-        "color",
-        "danger",
-        "border-invalid"
-      ],
-      "variable": "--ds-color-border-invalid",
-      "value": "var(--ds-color-danger-border-invalid)"
     },
     {
       "path": [

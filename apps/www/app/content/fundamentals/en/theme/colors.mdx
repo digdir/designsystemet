@@ -2,7 +2,7 @@
 title: Colors
 sidebar_title: Colors
 description: How the semantic colors are structured, and how you use them in light and dark mode.
-date: 2026-11-11
+date: 2026-11-13
 category: Theme
 color: red
 icon: PaletteIcon
@@ -140,7 +140,6 @@ The color should not be the only visual indicator that an element is interactive
 The color has good contrast (over 3:1) against all background colors, `surface-default`, and `surface-tinted`.
 * `border-strong` has good contrast (over 3:1) against all background and surface colors and can be used on frames to make elements extra visible.
 * `border-muted` is a low-chroma version of `border-default` with the same contrast. It can be used for quiet borders without needing a separate neutral color scale.
-* `border-invalid` is a fixed red border used on elements with validation errors. It is the same in every color scale.
 
 <Image
   src="/img/fundamentals/theme/colors/color-border.png"
@@ -160,7 +159,7 @@ It should be used for the main content and the primary text on a page.
 If your theme has a Neutral color scale, this color from it can be a nice color to use for most of the text.
 The color has good contrast (**4.5:1**) against all background and surface colors.
 * `text-muted` is a low-chroma version of `text-subtle` with the same contrast. It can be used for quiet text without needing a separate neutral color scale.
-* `text-invalid` is a fixed red text color used for validation error messages. It is the same in every color scale.
+* `text-invalid` is a fixed red color used for validation error messages and for the border of fields with validation errors. It is the same in every color scale.
 
 <Image
   src="/img/fundamentals/theme/colors/color-text.png"

@@ -207,7 +207,6 @@
                       "border-muted",
                       "text-muted",
                       "surface-invalid",
-                      "border-invalid",
                       "text-invalid"
                     ]
                   },

@@ -17,9 +17,9 @@ export const RESERVED_COLORS = ['success', 'warning', 'danger', 'info'];
 /** Fixed red used for the invalid steps. Same as the default severity color for danger. */
 const INVALID_BASE_COLOR: CssColor = '#C01B1B';
 
-type InvalidColorNames = Extract<SemanticColorNames, 'text-invalid' | 'border-invalid' | 'surface-invalid'>;
+type InvalidColorNames = Extract<SemanticColorNames, 'text-invalid' | 'surface-invalid'>;
 
-const invalidColorNames: InvalidColorNames[] = ['surface-invalid', 'border-invalid', 'text-invalid'];
+const invalidColorNames: InvalidColorNames[] = ['surface-invalid', 'text-invalid'];
 
 type ColorScaleSpec = SemanticColorSpec;
 

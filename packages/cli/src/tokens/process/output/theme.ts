@@ -48,7 +48,6 @@ function forcedColors() {
     'border-default': 'ButtonBorder',
     'border-strong': 'ButtonBorder',
     'border-muted': 'ButtonBorder',
-    'border-invalid': 'CanvasText',
     'text-subtle': 'CanvasText',
     'text-default': 'CanvasText',
     'text-muted': 'GrayText',

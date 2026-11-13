@@ -86,12 +86,8 @@ export default {
     long: 'Surface Invalid is used as a background on surfaces with validation errors.',
     short: 'Background for validation errors.',
   },
-  'border-invalid': {
-    long: 'Border Invalid is used as a border on elements with validation errors.',
-    short: 'Border for validation errors.',
-  },
   'text-invalid': {
-    long: 'Text Invalid is used as a text color for validation errors.',
-    short: 'Text color for validation errors.',
+    long: 'Text Invalid is used as a text and border color for validation errors.',
+    short: 'Text and border color for validation errors.',
   },
 } satisfies typeof no;

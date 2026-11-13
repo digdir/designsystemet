@@ -30,11 +30,11 @@
   --dsc-input-color: var(--ds-color-text-default);
   /* Stroke is used as the dot in radio, and checkmark in checkboxes */
   --dsc-input-stroke-color: var(--ds-color-base-contrast-default);
-  --dsc-input-stroke-color--invalid: var(--ds-color-base-contrast-default);
+  --dsc-input-stroke-color--invalid: var(--ds-color-surface-invalid);
   --dsc-input-stroke-width: 0.05em;
   /* Accent color, used in checkboxes and radio */
   --dsc-input-accent-color: var(--ds-color-base-default);
-  --dsc-input-accent-color--invalid: var(--ds-color-border-invalid);
+  --dsc-input-accent-color--invalid: var(--ds-color-text-invalid);
 
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
   --_dsc-input-diagonal-1: transparent calc(48% - var(--dsc-input-stroke-width));

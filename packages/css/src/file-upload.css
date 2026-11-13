@@ -48,7 +48,7 @@
     --dsc-file-upload-border-color: var(--ds-color-border-muted);
   }
   &:has([aria-invalid='true']) {
-    border-color: var(--ds-color-border-invalid);
+    border-color: var(--ds-color-text-invalid);
   }
 
   & > input[type='file'] {
