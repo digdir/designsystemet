@@ -8,6 +8,24 @@ on:
       - "packages/**"
       - "apps/storybook/**"
       - "figma/**"
+      # Dependency updates can break tests without touching any package files
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+
+  # main gets a push run so a breakage that slips through shows up right away
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/test.yml
+      - .github/workflows/scripts/free-disk-space.sh
+      - "packages/**"
+      - "apps/storybook/**"
+      - "figma/**"
+      # Dependency updates can break tests without touching any package files
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
 
 permissions:
   checks: write

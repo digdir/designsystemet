@@ -202,10 +202,10 @@ export const AsButton = meta.story(() => (
 
 export const SlotAndInitials = meta.story(() => (
   <>
-    <Avatar aria-label='xs' asChild>
+    <Avatar aria-label='DS Designsystemet' asChild>
       <button type='button'>DS</button>
     </Avatar>
-    <Avatar aria-label='xs' asChild>
+    <Avatar aria-label='0 notifications' asChild>
       <button type='button'>0</button>
     </Avatar>
     <Avatar aria-label='xs' asChild>
