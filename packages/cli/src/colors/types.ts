@@ -39,15 +39,10 @@ export type ColorScaleStep<T> = {
   name: T;
   number: ColorNumber;
   displayName: string;
-  description: {
-    short: string;
-    long: string;
-  };
   group: string;
   luminance: {
     light: number;
     dark: number;
-    contrast: number;
   };
 };
 
