@@ -9,7 +9,6 @@
       "@digdir/designsystemet-react": ["./packages/react/src/index.ts"],
       "@digdir/designsystemet-react/colors": ["./packages/react/src/colors.ts"]
     },
-    "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     // This allows our files to use window. Should be removed when RSC is added
