@@ -52,10 +52,15 @@ const getContrastTargets = (steps: SemanticColorNames[]) =>
 const textAndBorders = namesOf(
   specSteps.filter(({ group }) => group === 'border' || group === 'text'),
 );
-const baseSteps = specSteps.filter(({ group }) => group === 'base');
-/** Base steps with a contrast requirement are the ones used on top of the others */
-const baseContrasts = namesOf(baseSteps.filter((step) => step.minContrast));
-const baseFills = namesOf(baseSteps.filter((step) => !step.minContrast));
+const baseFills: SemanticColorNames[] = [
+  'base-default',
+  'base-hover',
+  'base-active',
+];
+const baseContrasts: SemanticColorNames[] = [
+  'base-contrast-subtle',
+  'base-contrast-default',
+];
 
 export const ColorContrasts = () => {
   const { t } = useTranslation();
@@ -96,7 +101,7 @@ export const ColorContrasts = () => {
             </div>
             <div className={classes.tagGroup}>
               <div className={classes.requirement}>
-                {t('colorContrasts.min-contrast', { ratio: 4.5 })}
+                {t('colorContrasts.min-contrast', { ratio: 'x' })}
               </div>
               <Paragraph data-size='sm'>
                 {t('colorContrasts.min-contrast-description')}

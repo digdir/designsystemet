@@ -2,7 +2,7 @@ import chroma from 'chroma-js';
 import { describe, expect, it } from 'vitest';
 import { generateColorScale, generateColorSchemes } from './scale.ts';
 import { semanticColorNames, semanticColorSpec } from './specs.ts';
-import type { ColorScheme, CssColor } from './types.ts';
+import type { CssColor } from './types.ts';
 import { getContrastFromHex } from './utils.ts';
 
 const BASE_COLOR = '#0062BA';
@@ -56,21 +56,6 @@ describe('minContrast', () => {
   }
   sampleColors.push('#0062BA', '#C01B1B', '#068718', '#EA9B1B', '#1E2B3C', '#ffffff', '#000000', '#808080');
 
-  /**
-   * Known failures in the generator. Remove an entry when it is fixed.
-   *
-   * In dark mode base-hover is lighter than base-default, but base-contrast-default is chosen from
-   * base-default only. For mid-tone colors where white barely passes on base-default, it fails on base-hover.
-   */
-  const knownFailures: Record<ColorScheme, string[]> = {
-    light: [],
-    dark: [
-      '#00868f: base-contrast-default vs base-hover',
-      '#008969: base-contrast-default vs base-hover',
-      '#f0004d: base-contrast-default vs base-hover',
-    ],
-  };
-
   it.each(['light', 'dark'] as const)('every generated %s scale meets the minimum contrast in the spec', (scheme) => {
     const failures = new Set<string>();
     for (const color of sampleColors) {
@@ -85,7 +70,7 @@ describe('minContrast', () => {
         }
       }
     }
-    expect([...failures].sort()).toEqual(knownFailures[scheme]);
+    expect([...failures]).toEqual([]);
   });
 });
 

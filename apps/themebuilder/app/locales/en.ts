@@ -183,7 +183,7 @@ export default {
     'min-contrast': 'Required: {{ratio}}:1',
     'min-contrast-failed': 'Below the required {{ratio}}:1',
     'min-contrast-description':
-      'The contrast Designsystemet guarantees between these steps in every colour scale. The requirements come from the colour specification.',
+      'The minimum contrast these steps should have against each other in every colour scale, either 3:1 or 4.5:1. The requirements come from the colour specification.',
   },
   borderRadius: {
     label: 'Border radius',

@@ -182,7 +182,7 @@ export default {
     'min-contrast': 'Krav: {{ratio}}:1',
     'min-contrast-failed': 'Under kravet på {{ratio}}:1',
     'min-contrast-description':
-      'Kontrasten Designsystemet garanterer mellom disse trinnene i alle fargeskalaer. Kravene kommer fra fargespesifikasjonen.',
+      'Minimumskontrasten disse trinnene skal ha mot hverandre i alle fargeskalaer, enten 3:1 eller 4.5:1. Kravene kommer fra fargespesifikasjonen.',
   },
   borderRadius: {
     label: 'Hjørneavrunding',
