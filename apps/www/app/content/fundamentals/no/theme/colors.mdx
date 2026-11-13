@@ -28,12 +28,9 @@ Som standard kommer Designsystemet med fargeskalaene Accent, Neutral, Brand1, Br
 
 * **Gruppe** Hver fargeskala er delt inn i gruppene Background, Surface, Border, Text og Base. Disse gruppene beskriver bruksområdene til fargene. Text-gruppen skal for eksempel brukes på tekst og ikoner.
 
-<Image
-  src='/img/fundamentals/theme/colors/fargeskala-success.png'
-  alt='Viser hvordan fargeskalaene er delt opp i grupper'
-  boxShadow={false}
-  
-  caption='Viser en fargeskala og de 5 gruppene som fargene er delt inn i.'
+<ColorScaleOverview
+  color='green'
+  caption='Viser en fargeskala og gruppene som fargene er delt inn i. Fargene er generert med den samme koden som Temabyggeren bruker.'
 />
 
 * **Variant** Inne i hver gruppe finnes det varianter som beskriver hvordan fargene ser ut eller skal brukes. 
@@ -120,12 +117,9 @@ I mørk modus blir disse fire fargene gradvis lysere, med `surface-active` som d
 * `surface-hover` kan brukes til hover-tilstander for elementer eller til å skape visuelle hierarkier i Surface-laget når den kombineres med `surface-tinted` og `surface-active`.
 * `surface-active` kan brukes til active-tilstander for elementer eller til å forsterke hierarkiet i Surface-laget sammen med `surface-tinted` og `surface-hover`.
 
-<Image
-  src='/img/fundamentals/theme/colors/color-surface.png'
-  alt='Viser hvordan Surface-tinted ser ut for 7 fargeskalaer generert med Temabyggeren.'
-  boxShadow={false}
-  
-  caption='Viser hvordan Surface-tinted ser ut for 7 fargeskalaer generert med Temabyggeren.'
+<ColorSwatches
+  steps={['surface-tinted']}
+  caption='Viser hvordan Surface-tinted ser ut for 7 fargeskalaer.'
 />
 
 ### Border
@@ -137,12 +131,9 @@ Fargen bør ikke være den eneste visuelle indikatoren på at et element er inte
 * `border-default` brukes på skjemakomponenter eller på andre meningsbærende rammer.
 * `border-strong` har høyere kontrast enn `border-default` og kan brukes på rammer for å gjøre elementer ekstra synlige.
 
-<Image
-  src='/img/fundamentals/theme/colors/color-border.png'
-  alt='Viser hvordan Border-subtle og Border-default ser ut for 8 fargeskalaer generert med Temabyggeren.'
-  boxShadow={false}
-  
-  caption='Første rad viser farger med Border-subtle, mens den andre raden viser Border-default.'
+<ColorSwatches
+  steps={['border-subtle', 'border-default']}
+  caption='Viser hvordan Border-subtle og Border-default ser ut for 7 fargeskalaer.'
 />
 
 ### Text
@@ -154,12 +145,9 @@ Den forsøker også å bevare mest mulig av fargemetningen fra den opprinnelige 
 Den bør brukes på hovedinnholdet og den primære teksten på en side.
 Denne fargen i Neutral varianten kan være en fin farge å bruke på mesteparten av teksten.
 
-<Image
-  src='/img/fundamentals/theme/colors/color-text.png'
-  alt='Skjermbilde av Figma som viser hvordan Text-default og Text-subtle ser ut for 8 forskjellige fargeskalaer generert med Temabyggeren.'
-  boxShadow={false}
-  
-  caption='Viser hvordan Text-default og Text-subtle ser ut for 8 forskjellige fargeskalaer generert med Temabyggeren.'
+<ColorSwatches
+  steps={['text-default', 'text-subtle']}
+  caption='Viser hvordan Text-default og Text-subtle ser ut for 7 fargeskalaer.'
 />
 
 ### Base
@@ -175,11 +163,8 @@ Samtidig skaper de kontrast mot background- og surface-fargene, noe som forsterk
 * `base-active` kan brukes til active-tilstander for solide elementer eller til å forsterke hierarkiet i Base-laget sammen med `base-default` og `base-hover`.
 * `base-contrast-subtle` og `base-contrast-default` brukes som tekst- og ikonfarge oppå base-fargene fra samme fargeskala. Se kolonnen «Minimumskontrast» i tabellen over for hvilke base-farger de kan brukes på.
 
-<Image
-  src='/img/fundamentals/theme/colors/color-base.png'
-  alt='Skjermbilde av Figma som viser hvordan Base-default og Base-contrast-default ser ut.'
-  boxShadow={false}
-  
+<ColorSwatches
+  steps={['base-default']}
   caption='Viser bokser med Base-default som bakgrunn og Base-contrast-default som tekstfarge.'
 />
 

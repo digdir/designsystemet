@@ -1,0 +1,107 @@
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+  max-width: var(--media-max-width);
+  margin: var(--ds-size-8) 0;
+}
+
+.caption {
+  color: var(--ds-color-neutral-text-subtle);
+  text-wrap: pretty;
+  max-width: var(--short-content-width);
+}
+
+/* Neutral card around the examples */
+.card {
+  padding: var(--ds-size-6);
+  border-radius: var(--ds-border-radius-xl);
+  background: var(--ds-color-neutral-background-tinted);
+}
+
+/* ColorSwatches */
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-6);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-2);
+}
+
+.rowLabel {
+  align-self: flex-start;
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+  gap: var(--ds-size-3);
+}
+
+.swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--ds-size-14);
+  padding: var(--ds-size-2);
+  border-radius: var(--ds-border-radius-md);
+  text-align: center;
+  background: light-dark(var(--bg-light), var(--bg-dark));
+  color: light-dark(var(--fg-light), var(--fg-dark));
+  border: 2px solid light-dark(var(--border-light, transparent), var(--border-dark, transparent));
+
+  /* White steps would disappear against a white page */
+  &:is([data-group='background'], [data-group='surface'], [data-group='text']) {
+    box-shadow: inset 0 0 0 1px var(--ds-color-neutral-border-subtle);
+  }
+}
+
+/* ColorScaleOverview */
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-6);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-2);
+}
+
+.groupLabel {
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.groupSteps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-2);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ds-size-1);
+  width: 5.5rem;
+}
+
+.stepColor {
+  width: 100%;
+  height: var(--ds-size-12);
+  border-radius: var(--ds-border-radius-md);
+  background: light-dark(var(--bg-light), var(--bg-dark));
+  box-shadow: inset 0 0 0 1px var(--ds-color-neutral-border-subtle);
+}
+
+.stepLabel {
+  color: var(--ds-color-neutral-text-subtle);
+  text-align: center;
+}
