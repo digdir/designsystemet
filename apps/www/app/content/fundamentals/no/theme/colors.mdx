@@ -2,7 +2,7 @@
 title: Farger
 sidebar_title: Farger
 description: Hvordan de semantiske fargene er bygget opp, og hvordan du bruker dem i lys og mørk modus.
-date: 2025-06-30
+date: 2026-11-13
 category: Tema
 color: red
 icon: PaletteIcon
@@ -43,11 +43,7 @@ Tinted betyr for eksempel at fargen har et hint av farge i seg, mens Hover betyr
 Som standard er de semantiske fargene laget for å oppfylle kontrastkrav, uansett hvilken base-farge du har valgt. 
 Det gjelder særlig tekstfarger mot background- og surface-farger.
 
-Eksempler:
-
-- `text-default` har alltid god nok kontrast mot alle background- og surface-farger.
-- `text-subtle` har alltid god nok kontrast mot alle background-farger, `surface-default` og `surface-hover`.
-- `base-contrast-default` og `base-contrast-subtle` har alltid god nok kontrast mot `base-default`.
+Kolonnen «Kontrast» i [tabellen over fargene](#slik-bruker-du-fargene) viser hvilken kontrast hver farge har, og mot hvilke andre farger i samme fargeskala.
 
 ### Kontrasten til `base-default` må du sjekke selv
 `base-default` er et unntak. I lys modus er fargen alltid den samme som fargen du har valgt, for å ivareta brandet ditt best mulig. 
@@ -134,9 +130,8 @@ Border-fargene brukes for å fargelegge rammer (strokes) til elementer.
 * `border-subtle` har lav kontrast mot background- og surface-fargene og bør kun brukes til dekorative formål. 
 Vanlige bruksområder er skillelinjer og dekorative rammer.
 Fargen bør ikke være den eneste visuelle indikatoren på at et element er interaktivt.
-* `border-default` brukes på skjemakomponenter eller på andre meningsbærende rammer. 
-Fargen har god kontrast (over 3:1) mot alle background-fargene, `surface-default` og `surface-tinted`.
-* `border-strong` har god kontrast (over 3:1) mot alle background- og surface-fargene og kan brukes på rammer for å gjøre elementer ekstra synlige.
+* `border-default` brukes på skjemakomponenter eller på andre meningsbærende rammer.
+* `border-strong` har høyere kontrast enn `border-default` og kan brukes på rammer for å gjøre elementer ekstra synlige.
 
 <Image
   src='/img/fundamentals/theme/colors/color-border.png'
@@ -150,12 +145,10 @@ Fargen har god kontrast (over 3:1) mot alle background-fargene, `surface-default
 Text-fargene brukes på tekst og ikoner.
 
 * `text-subtle` er en lys tekstfarge som kan brukes for å skape variasjon i typografien eller for å indikere hierarkiske nivåer av viktighet.
-Den forsøker også å bevare mest mulig av fargemetningen fra den opprinnelige fargen valgt i Temabyggeren. 
-Fargen har god kontrast (**4.5:1**) mot alle background-fargene, `surface-default` og `surface-tinted`.
+Den forsøker også å bevare mest mulig av fargemetningen fra den opprinnelige fargen valgt i Temabyggeren.
 * `text-default` er en tekstfarge med høy kontrast, optimal for lesbarhet. 
 Den bør brukes på hovedinnholdet og den primære teksten på en side.
 Denne fargen i Neutral varianten kan være en fin farge å bruke på mesteparten av teksten.
-Fargen har god kontrast (**4.5:1**) mot alle background- og surface-fargene.
 
 <Image
   src='/img/fundamentals/theme/colors/color-text.png'
@@ -171,13 +164,12 @@ Fargene bidrar til å lede oppmerksomheten mot viktige designelementer og etable
 Samtidig skaper de kontrast mot background- og surface-fargene, noe som forsterker lesbarhet og visuell tydelighet.
 
 `base-hover`- og `base-active`-fargene genereres ut fra lysheten eller mørkheten til `base-default`-fargen for å skape jevne visuelle overganger mellom tilstandene. 
-Kontrastfargene blir enten hvite eller svarte avhengig av lysstyrken til `base-default`-fargen for å sikre god kontrast og lesbarhet.
+`base-contrast-default` blir enten hvit eller svart, avhengig av hva som gir best kontrast mot base-fargene. `base-contrast-subtle` går i samme retning.
 
 * `base-default` kan brukes for å fargelegge solide bakgrunner til elementer. Fargen (hex-koden) som blir valgt i temabyggeren blir plassert under `base-default`.
 * `base-hover` kan brukes til hover-tilstander for solide elementer eller til å skape visuelle hierarkier i Base-laget når den kombineres med `base-default` og `base-active`.
 * `base-active` kan brukes til active-tilstander for solide elementer eller til å forsterke hierarkiet i Base-laget sammen med `base-default` og `base-hover`.
-* `base-contrast-subtle` har god kontrast (**4.5:1**) mot `base-default`-fargen fra samme fargeskala og kan trygt brukes som tekst-farge mot denne.
-* `base-contrast-default` har god kontrast (**4.5:1**) mot `base-default`- og `base-hover`-fargene fra samme fargeskala, og kan trygt brukes som en tekst-farge mot disse.
+* `base-contrast-subtle` og `base-contrast-default` brukes som tekst- og ikonfarge oppå base-fargene fra samme fargeskala. Se kolonnen «Kontrast» i tabellen over for hvilke base-farger de kan brukes på.
 
 <Image
   src='/img/fundamentals/theme/colors/color-base.png'

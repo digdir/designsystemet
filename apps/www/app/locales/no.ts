@@ -222,6 +222,9 @@ export default {
   'color-info-table': {
     name: 'Navn',
     usage: 'Bruksområde',
+    contrast: 'Kontrast',
+    'contrast-against': '{{ratio}}:1 mot',
+    'all-in-group': 'alle {{group}}-farger',
   },
   'image-banner': {
     'play-video': 'Spill av video',
