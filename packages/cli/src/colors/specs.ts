@@ -235,8 +235,8 @@ export const semanticColorSpec: SemanticColorSpec = {
     group: 'text',
     displayName: 'Text Invalid',
     luminance: {
-      light: 0.01,
-      dark: 0.84,
+      light: 0.11,
+      dark: 0.39,
     },
   },
 };
