@@ -643,14 +643,7 @@ importers:
         specifier: 6.0.3
         version: 6.0.3
 
-  internal/digdir:
-    devDependencies:
-      '@digdir/designsystemet':
-        specifier: workspace:^
-        version: link:../../packages/cli
-      rimraf:
-        specifier: 6.1.4
-        version: 6.1.4
+  internal/digdir: {}
 
   packages/cli:
     dependencies:
