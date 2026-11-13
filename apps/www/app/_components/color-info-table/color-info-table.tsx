@@ -26,7 +26,7 @@ export const ColorInfoTable = () => {
         {specSteps.map((item) => {
           return (
             <Table.Row key={item.name}>
-              <Table.Cell>{item.number + '. ' + item.name}</Table.Cell>
+              <Table.Cell>{item.name}</Table.Cell>
               <Table.Cell>{t(`color-metadata.${item.name}.short`)}</Table.Cell>
               <Table.Cell>
                 {item.minContrast?.map((requirement) => (
