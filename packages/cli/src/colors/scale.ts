@@ -1,10 +1,25 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
 import { semanticColorSpec } from './specs.ts';
-import type { ChromaAdjustment, ColorScale, ColorScheme, CssColor, SemanticColorSpec, ThemeInfo } from './types.ts';
+import type {
+  ChromaAdjustment,
+  ColorScale,
+  ColorScheme,
+  CssColor,
+  SemanticColorNames,
+  SemanticColorSpec,
+  ThemeInfo,
+} from './types.ts';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.ts';
 
 export const RESERVED_COLORS = ['success', 'warning', 'danger', 'info'];
+
+/** Fixed red used for the invalid steps. Same as the default severity color for danger. */
+const INVALID_BASE_COLOR: CssColor = '#C01B1B';
+
+type InvalidColorNames = Extract<SemanticColorNames, 'text-invalid' | 'surface-invalid'>;
+
+const invalidColorNames: InvalidColorNames[] = ['surface-invalid', 'text-invalid'];
 
 type ColorScaleSpec = SemanticColorSpec;
 
@@ -20,14 +35,7 @@ export const generateColorScale = (
   colorScheme: ColorScheme,
   colorScaleSpec: ColorScaleSpec = semanticColorSpec,
 ): ColorScale => {
-  let interpolationColor = color;
-
-  // Reduce saturation in dark mode for the interpolation colors
-  if (colorScheme === 'dark') {
-    const [L, C, H] = chroma(color).oklch();
-    const chromaModifier = 0.7;
-    interpolationColor = chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
-  }
+  const interpolationColor = getInterpolationColor(color, colorScheme);
 
   const colors = R.mapObjIndexed((step) => {
     const luminance = step.luminance[colorScheme];
@@ -52,6 +60,13 @@ export const generateColorScale = (
       ...colors['base-contrast-default'],
       hex: generateColorContrast(baseColors.default, 'default'),
     };
+
+    // Invalid steps stay red in every scale: luminance from the spec, hue from a fixed red.
+    const invalidInterpolationColor = getInterpolationColor(INVALID_BASE_COLOR, colorScheme);
+    for (const name of invalidColorNames) {
+      const luminance = colorScaleSpec[name].luminance[colorScheme];
+      colors[name] = { ...colors[name], hex: chroma(invalidInterpolationColor).luminance(luminance).hex() as CssColor };
+    }
   }
 
   return colors;
@@ -136,3 +151,11 @@ const adjustChroma = (hex: CssColor, adjustment: ChromaAdjustment, colorScheme: 
   // Re-fit luminance so contrast is identical to the unadjusted step.
   return chroma(adjusted).luminance(chroma(hex).luminance()).hex() as CssColor;
 };
+
+/** Returns the color used for luminance interpolation. Saturation is reduced in dark mode. */
+function getInterpolationColor(color: CssColor, colorScheme: ColorScheme): CssColor {
+  if (colorScheme !== 'dark') return color;
+  const [L, C, H] = chroma(color).oklch();
+  const chromaModifier = 0.7;
+  return chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
+}

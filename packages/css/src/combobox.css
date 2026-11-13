@@ -106,8 +106,8 @@
 }
 
 .ds-textfield--error .ds-textfield__input:not(:focus-visible) {
-  border-color: var(--ds-color-danger-border-default);
-  box-shadow: inset 0 0 0 1px var(--ds-color-danger-border-default);
+  border-color: var(--ds-color-text-invalid);
+  box-shadow: inset 0 0 0 1px var(--ds-color-text-invalid);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -227,7 +227,7 @@
 }
 
 .ds-combobox__input__wrapper.ds-combobox--error {
-  border-color: var(--ds-color-danger-border-default);
+  border-color: var(--ds-color-text-invalid);
   border-width: 2px;
 }
 

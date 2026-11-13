@@ -1,10 +1,8 @@
 .ds-error-summary {
-  --dsc-errorsummary-background: var(--ds-color-danger-surface-tinted);
+  --dsc-errorsummary-background: var(--ds-color-surface-invalid);
   --dsc-errorsummary-border-radius: var(--ds-border-radius-md);
   --dsc-errorsummary-padding: var(--ds-size-7);
-  --dsc-errorsummary-color: var(--ds-color-danger-text-default);
-  --dsc-errorsummary-link-color: var(--dsc-errorsummary-color); /* @deprecated */
-  --dsc-errorsummary-heading-color: var(--dsc-errorsummary-color); /* @deprecated */
+  --dsc-errorsummary-color: var(--ds-color-text-invalid);
 
   color: var(--dsc-errorsummary-color);
   background: var(--dsc-errorsummary-background);
@@ -19,20 +17,8 @@
     display: block;
   }
 
-  /* @deprecated: User should use ds-heading instead */
-  & :is(h1, h2, h3, h4, h5, h6) {
-    color: var(--dsc-errorsummary-heading-color);
-    font-size: var(--ds-font-size-plus-1);
-    margin-bottom: var(--ds-size-2);
-  }
-
   & a {
-    color: var(--dsc-errorsummary-link-color); /* @deprecated */
-  }
-
-  /* @deprecated: User should use ds-list instead */
-  & li:last-of-type {
-    margin-bottom: 0;
+    color: inherit;
   }
 }
 @keyframes _is-visible {

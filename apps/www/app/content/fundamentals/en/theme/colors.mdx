@@ -2,7 +2,7 @@
 title: Colors
 sidebar_title: Colors
 description: How the semantic colors are structured, and how you use them in light and dark mode.
-date: 2026-10-28
+date: 2026-11-13
 category: Theme
 color: red
 icon: PaletteIcon
@@ -121,6 +121,7 @@ In dark mode, `surface-default`, `surface-tinted`, `surface-hover` and `surface-
 * `surface-hover` can be used for hover states for elements or to create visual hierarchies in the Surface layer when combined with `surface-tinted` and `surface-active`.
 * `surface-active` can be used for active states for elements or to strengthen the hierarchy in the Surface layer together with `surface-tinted` and `surface-hover`.
 * `surface-muted` is a low-chroma version of `surface-tinted` with the same contrast. It can be used for quiet surfaces without needing a separate neutral color scale.
+* `surface-invalid` is a fixed red background used on surfaces with validation errors. It is the same in every color scale, so invalid states look the same regardless of `data-color`.
 
 <Image
   src="/img/fundamentals/theme/colors/color-surface.png"
@@ -158,6 +159,7 @@ It should be used for the main content and the primary text on a page.
 If your theme has a Neutral color scale, this color from it can be a nice color to use for most of the text.
 The color has good contrast (**4.5:1**) against all background and surface colors.
 * `text-muted` is a low-chroma version of `text-subtle` with the same contrast. It can be used for quiet text without needing a separate neutral color scale.
+* `text-invalid` is a fixed red color used for validation error messages and for the border of fields with validation errors. It is the same in every color scale.
 
 <Image
   src="/img/fundamentals/theme/colors/color-text.png"

@@ -170,6 +170,24 @@
       ],
       "variable": "--ds-color-text-muted",
       "value": "var(--ds-color-primary-text-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "primary",
+        "surface-invalid"
+      ],
+      "variable": "--ds-color-surface-invalid",
+      "value": "var(--ds-color-primary-surface-invalid)"
+    },
+    {
+      "path": [
+        "color",
+        "primary",
+        "text-invalid"
+      ],
+      "variable": "--ds-color-text-invalid",
+      "value": "var(--ds-color-primary-text-invalid)"
     }
   ],
   "info": [
@@ -343,6 +361,24 @@
       ],
       "variable": "--ds-color-text-muted",
       "value": "var(--ds-color-info-text-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "info",
+        "surface-invalid"
+      ],
+      "variable": "--ds-color-surface-invalid",
+      "value": "var(--ds-color-info-surface-invalid)"
+    },
+    {
+      "path": [
+        "color",
+        "info",
+        "text-invalid"
+      ],
+      "variable": "--ds-color-text-invalid",
+      "value": "var(--ds-color-info-text-invalid)"
     }
   ],
   "success": [
@@ -516,6 +552,24 @@
       ],
       "variable": "--ds-color-text-muted",
       "value": "var(--ds-color-success-text-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "surface-invalid"
+      ],
+      "variable": "--ds-color-surface-invalid",
+      "value": "var(--ds-color-success-surface-invalid)"
+    },
+    {
+      "path": [
+        "color",
+        "success",
+        "text-invalid"
+      ],
+      "variable": "--ds-color-text-invalid",
+      "value": "var(--ds-color-success-text-invalid)"
     }
   ],
   "warning": [
@@ -689,6 +743,24 @@
       ],
       "variable": "--ds-color-text-muted",
       "value": "var(--ds-color-warning-text-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "surface-invalid"
+      ],
+      "variable": "--ds-color-surface-invalid",
+      "value": "var(--ds-color-warning-surface-invalid)"
+    },
+    {
+      "path": [
+        "color",
+        "warning",
+        "text-invalid"
+      ],
+      "variable": "--ds-color-text-invalid",
+      "value": "var(--ds-color-warning-text-invalid)"
     }
   ],
   "danger": [
@@ -862,6 +934,24 @@
       ],
       "variable": "--ds-color-text-muted",
       "value": "var(--ds-color-danger-text-muted)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "surface-invalid"
+      ],
+      "variable": "--ds-color-surface-invalid",
+      "value": "var(--ds-color-danger-surface-invalid)"
+    },
+    {
+      "path": [
+        "color",
+        "danger",
+        "text-invalid"
+      ],
+      "variable": "--ds-color-text-invalid",
+      "value": "var(--ds-color-danger-text-invalid)"
     }
   ]
 }

@@ -209,6 +209,26 @@ export const semanticColorSpec: SemanticColorSpec = {
       max: 0.03,
     },
   },
+  'surface-invalid': {
+    number: 20,
+    name: 'surface-invalid',
+    group: 'surface',
+    displayName: 'Surface Invalid',
+    luminance: {
+      light: 0.81,
+      dark: 0.027,
+    },
+  },
+  'text-invalid': {
+    number: 21,
+    name: 'text-invalid',
+    group: 'text',
+    displayName: 'Text Invalid',
+    luminance: {
+      light: 0.11,
+      dark: 0.39,
+    },
+  },
 };
 
 export const semanticColorNames = Object.keys(semanticColorMap) as SemanticColorNames[];

@@ -23,6 +23,8 @@ export const semanticColorMap = {
   'surface-muted': 17,
   'border-muted': 18,
   'text-muted': 19,
+  'surface-invalid': 20,
+  'text-invalid': 21,
 } as const;
 
 type SemanticColorMap = typeof semanticColorMap;

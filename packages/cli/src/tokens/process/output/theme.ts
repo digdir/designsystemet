@@ -43,6 +43,7 @@ function forcedColors() {
     'surface-hover': 'ButtonFace',
     'surface-active': 'ButtonFace',
     'surface-muted': 'ButtonFace',
+    'surface-invalid': 'Canvas',
     'border-subtle': 'ButtonBorder',
     'border-default': 'ButtonBorder',
     'border-strong': 'ButtonBorder',
@@ -50,6 +51,7 @@ function forcedColors() {
     'text-subtle': 'CanvasText',
     'text-default': 'CanvasText',
     'text-muted': 'GrayText',
+    'text-invalid': 'CanvasText',
     'base-default':
       'Highlight' /* Using Highlight instead of Accent as Windows contrast mode uses same color for Canvas and Accent */,
     'base-hover': 'Highlight',
