@@ -1,10 +1,11 @@
 import themeConfig from '../../../designsystemet.config.json';
 
-export const themeColors = [
-  ...Object.keys(themeConfig.themes.designsystemet.colors),
-];
-
 export const severityColors = ['success', 'warning', 'danger', 'info'];
+
+// Severity colors are in `colors` in the config, and listed on their own here
+export const themeColors = Object.keys(
+  themeConfig.themes.designsystemet.colors,
+).filter((color) => !severityColors.includes(color));
 
 export const cat1Img = (
   <img

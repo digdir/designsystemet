@@ -3,6 +3,7 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import type { z } from 'zod';
 import { fromError } from 'zod-validation-error';
+import { applyLegacyDefaults } from './config-version.ts';
 
 export const deprecatedCLIOptions = {
   outDir: 'out-dir',
@@ -56,6 +57,7 @@ function makeFriendlyError(err: unknown) {
  * Validates a configuration object against a provided Zod schema.
  *
  * Populates default values from the schema and returns the validated configuration object.
+ * A config from before severity colors were optional gets the default severity colors first.
  *
  * @template T - The expected type of the validated configuration.
  * @param schema - A Zod schema used to validate the configuration object.
@@ -65,7 +67,7 @@ function makeFriendlyError(err: unknown) {
  */
 export function validateConfig<T>(schema: z.ZodType<T>, unvalidatedConfig: Record<string, unknown>): T {
   try {
-    return schema.parse(unvalidatedConfig) as T;
+    return schema.parse(applyLegacyDefaults(unvalidatedConfig)) as T;
   } catch (err) {
     const validationError = makeFriendlyError(err);
     throw new Error(validationError?.toString());

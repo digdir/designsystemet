@@ -1,5 +1,5 @@
 {
-  "$schema": "packages/cli/dist/config.schema.json",
+  "$schema": "packages/cli/dist/config.v2.schema.json",
   "output": [
     { "type": "css", "dir": "./packages/css/theme", "tailwind": "v3" },
     { "type": "types", "dir": "./packages/css/theme" }
@@ -10,7 +10,11 @@
         "accent": "#0062BA",
         "brand1": "#0D7A5F",
         "brand2": "#5B3FA0",
-        "neutral": "#24272B"
+        "neutral": "#24272B",
+        "info": "#0A71C0",
+        "success": "#068718",
+        "warning": "#EA9B1B",
+        "danger": "#C01B1B"
       }
     }
   }

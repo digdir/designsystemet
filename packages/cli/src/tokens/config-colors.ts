@@ -1,6 +1,6 @@
 import { generateColorScale } from '../colors/scale.ts';
-import type { ColorScheme, CssColor, SemanticColorNames, SeverityColorNames } from '../colors/types.ts';
-import { focusColor, severityColors, visitedLinkColor } from '../schemas/defaults.ts';
+import type { ColorScheme, CssColor, SemanticColorNames } from '../colors/types.ts';
+import { focusColor, visitedLinkColor } from '../schemas/defaults.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { colorNameSchema } from '../schemas/schema-color.ts';
 
@@ -29,8 +29,9 @@ const SCHEMES: ColorScheme[] = ['light', 'dark'];
 /**
  * The `colors` and `overrides` of the theme config that generated these colors. Each color's base color is its
  * `base-default` in light, which is the input color unchanged; every other step is generated from it, so steps that
- * differ from the generated scale (e.g. ones edited by hand) become overrides. Severity colors, the visited link color
- * and the focus colors are only included when they aren't the defaults, like the theme builder does.
+ * differ from the generated scale (e.g. ones edited by hand) become overrides. Severity colors are in `colors` like
+ * any other color. The visited link color and the focus colors are only included when they aren't the defaults,
+ * like the theme builder does.
  */
 export function configColorsFromValues({
   scales,
@@ -42,7 +43,6 @@ export function configColorsFromValues({
   // Maps, as the color names come from the input: assigning them as object keys could reach Object.prototype
   // through a name like `__proto__`. They become objects with Object.fromEntries, which only adds own properties.
   const colors = new Map<string, CssColor>();
-  const severity = new Map<SeverityColorNames, CssColor>();
   const colorOverrides = new Map<string, Map<SemanticColorNames, SchemeColors>>();
   const overrides: Overrides = {};
 
@@ -58,14 +58,8 @@ export function configColorsFromValues({
       continue;
     }
 
-    // Severity colors are always generated, so they are only in the config when they aren't the default.
-    if (isSeverityColor(colorName)) {
-      if (!isSameColor(base, severityColors[colorName])) {
-        severity.set(colorName, base);
-      }
-    } else {
-      colors.set(colorName, base);
-    }
+    // Severity colors are optional, so the ones a theme has are in `colors` like any other color.
+    colors.set(colorName, base);
 
     for (const scheme of SCHEMES) {
       const scale = generateColorScale(base, scheme);
@@ -94,9 +88,6 @@ export function configColorsFromValues({
     overrides.colors = Object.fromEntries(
       [...colorOverrides].map(([colorName, stepOverrides]) => [colorName, Object.fromEntries(stepOverrides)]),
     );
-  }
-  if (severity.size > 0) {
-    overrides.severity = Object.fromEntries(severity);
   }
 
   // A missing value, e.g. a variable deleted in Figma, can't be an override, so the config uses the default.
@@ -171,11 +162,6 @@ function diffFromDefaults(
     }
   }
   return Object.keys(diff).length > 0 ? diff : undefined;
-}
-
-function isSeverityColor(name: string): name is SeverityColorNames {
-  // Own properties only, so names every object has, like `constructor`, aren't severity colors.
-  return Object.hasOwn(severityColors, name);
 }
 
 function isSameColor(a: string, b: string): boolean {

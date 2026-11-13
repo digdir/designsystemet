@@ -2,6 +2,7 @@ import {
   type ColorScheme,
   type CssColor,
   configColorsFromValues,
+  configSchemaUrl,
   defaultBorderRadius,
   defaultFontFamily,
   type ExternalConfigSchemaInput,
@@ -145,7 +146,8 @@ export async function exportConfig(
   }
 
   const config: ExportedConfig['config'] = {
-    $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
+    // The versioned schema marks the config as one where a theme only has the severity colors in its `colors`
+    $schema: configSchemaUrl(pkg.version),
     themes: Object.fromEntries(themes),
   };
 

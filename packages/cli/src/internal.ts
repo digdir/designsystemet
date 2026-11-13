@@ -31,6 +31,14 @@ export {
 } from './figma/collections.ts';
 export { figmaVariableScopes, figmaVariableType } from './figma/scopes.ts';
 export {
+  applyLegacyDefaults,
+  CONFIG_VERSION,
+  configSchemaUrl,
+  getConfigVersion,
+  isLegacyConfig,
+  toCurrentConfig,
+} from './schemas/config-version.ts';
+export {
   defaultBorderRadius,
   defaultFontFamily,
   severityColors,

@@ -8,8 +8,10 @@ vi.mock('@inquirer/confirm', () => ({ default: confirm }));
 
 type ParsedConfig = { outDir?: string; output?: unknown; themes: { theme: { colors: Record<string, unknown> } } };
 
-// Eligible for both automigrations: the old color categories and the deprecated `outDir`.
+// Eligible for two automigrations: the old color categories and the deprecated `outDir`.
+// The versioned `$schema` keeps the severity colors migration out of these tests.
 const config = JSON.stringify({
+  $schema: 'node_modules/@digdir/designsystemet/dist/config.v2.schema.json',
   outDir: 'tokens',
   themes: { theme: { colors: { main: { accent: '#0062BA' }, support: {}, neutral: '#1E2B3C' } } },
 });

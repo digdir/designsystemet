@@ -1,7 +1,7 @@
 ---
 title: CLI Config
 description: Informasjon om korleis du bruker CLI config fil.
-date: 2026-11-09
+date: 2026-11-13
 category: Kode
 color: blue
 icon: FileJsonIcon
@@ -22,7 +22,7 @@ Både `designsystemet.config.json` og `designsystemet.config.jsonc` blir funne a
 
 ```json
 {
-  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "$schema": "node_modules/@digdir/designsystemet/dist/config.v2.schema.json",
   "themes": {
     "my-theme": {
       "colors": {
@@ -65,7 +65,7 @@ Kommandoane `tokens create` og `tokens build` er utdaterte og blir fjerna i ein 
 
 | Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
-| $schema | Streng | Nei | Sti til JSON schema for validering. Anbefalt: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
+| $schema | Streng | Nei | Sti eller URL til JSON schema for validering. Den fortel òg CLI-en kva versjon av konfigurasjonen dette er, sjå [Severity-fargar](#severity-fargar). Anbefalt: `node_modules/@digdir/designsystemet/dist/config.v2.schema.json`. |
 | output | Liste | Nei | Kva CLI-et skal lage, og kvar. Standard er `["css"]`. Sjå [Output](#output). |
 | themes | Objekt | Nei | Inneheld alle tema du vil definere. Kvar nøkkel er namnet på temaet. Påkrevd for outputar som blir laga frå tema, sjå [Bygge utan tema](#bygge-utan-tema). |
 | outDir | Streng | Nei | **Utdatert:** bruk `output[].dir` i staden. |
@@ -195,7 +195,7 @@ Du kan ha fleire tema, og kvart tema kan ha sine eigne fargar, border radius, ty
 | colors | Objekt | Ja | Inneheld alle fargar for temaet. |
 | borderRadius | Tal | Nei | Base border radius for temaet. |
 | typography | Objekt | Nei | Inneheld typografi innstillingar for temaet. |
-| overrides | Objekt | Nei | Inneheld overskrivingar for fargar og severity-fargar. |
+| overrides | Objekt | Nei | Inneheld overskrivingar for fargar. |
 
 ### Typography
 | Namn | Type | Påkrevd | Forklaring |
@@ -213,7 +213,24 @@ Viss du inkluderer `typography` i temaet ditt, må `fontFamily` vere definert.
 
 Fargane blir definert direkte under `colors`, der nøkkelen er fargen sitt namn og verdien er ein hexkode.
 Fargenamn kan berre innehalde små bokstavar (a-z), tal (0-9) og bindestrek (-).
-`colors` må innehalde minst éin farge som ikkje er ein severity-farge (`success`, `warning`, `danger`, `info`). Severity-fargane blir lagt til automatisk.
+`colors` må innehalde minst éin farge som ikkje er ein severity-farge (`success`, `warning`, `danger`, `info`).
+
+#### Severity-fargar
+
+Severity-fargane `info`, `success`, `warning` og `danger` er valfrie. Legg dei temaet ditt treng til i `colors`, med den hex-koden du vil. Dette er standardfargane:
+
+```json
+"colors": {
+  "info": "#0A71C0",
+  "success": "#068718",
+  "warning": "#EA9B1B",
+  "danger": "#C01B1B"
+}
+```
+
+Ein severity-farge som ikkje ligg i `colors`, er ikkje ein del av temaet. Komponentar som ber om han, til dømes med `data-color="danger"`, brukar då fargen dei arvar.
+
+Før versjon 2 vart alle fire severity-fargane lagt til i alle tema automatisk. CLI-en les versjonen til ein konfigurasjon frå `$schema`. Når konfigurasjonen ikkje peikar til eit versjonert schema, tilbyr CLI-en å leggje dei fire standardfargane til i `colors` og å oppdatere `$schema`, slik at temaet ditt blir som før. Etterpå kan du fjerne dei du ikkje brukar.
 
 ```json
 {
@@ -227,7 +244,7 @@ Fargenamn kan berre innehalde små bokstavar (a-z), tal (0-9) og bindestrek (-).
 | Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
 | colors | Objekt | Nei | Inneheld overskrivingar for individuelle fargesteg |
-| severity | Objekt | Nei | Inneheld overskrivingar for severity-fargar |
+| severity | Objekt | Nei | Utgått. Legg severity-fargar i `colors` i staden. |
 | linkVisited | Objekt | Nei | Inneheld overskrivingar for farge på besøkte lenker |
 | focus | Objekt | Nei | Inneheld overskrivingar for fokus fargar |
 
@@ -266,7 +283,7 @@ Kvar tokenoverstyring har ein `light` og/eller `dark` verdi som peikar til ein h
 | ---- | ---- | ------- | ----------- |
 | "fargeNavn" | Streng | Nei | Hex-farge som skal settast som base |
 
-Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity, som er `success`, `warning`, `danger` og `info`.
+Utgått. Severity-fargar blir sette i `colors` som alle andre fargar, sjå [Severity-fargar](#severity-fargar). Når CLI-en oppdaterer ein konfigurasjon til versjon 2, flyttar han `overrides.severity` inn i `colors` for deg.
 
 #### overrides.linkVisited
 | Namn | Type | Påkrevd | Forklaring |
@@ -292,7 +309,7 @@ Utan overskrivingar brukar indre fokus `background-default` og ytre fokus `text-
 
 ```json
 {
-  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "$schema": "node_modules/@digdir/designsystemet/dist/config.v2.schema.json",
   "output": [
     { "type": "design-tokens", "dir": "./designsystemet/design-tokens" },
     { "type": "css", "dir": "./designsystemet", "tokensDir": "./designsystemet/design-tokens" },
@@ -305,7 +322,11 @@ Utan overskrivingar brukar indre fokus `background-default` og ytre fokus `text-
         "accent": "#1E98F5",
         "extra1": "#F45F63",
         "neutral": "#1E2B3C",
-        "extra2": "#E5AA20"
+        "extra2": "#E5AA20",
+        "success": "#28a745",
+        "warning": "#ffc107",
+        "danger": "#dc3545",
+        "info": "#17a2b8"
       },
       "borderRadius": 4,
       "typography": {
@@ -323,12 +344,6 @@ Utan overskrivingar brukar indre fokus `background-default` og ytre fokus `text-
               "dark": "#00ffff"
             }
           }
-        },
-        "severity": {
-          "success":  "#28a745",
-          "warning": "#ffc107",
-          "danger": "#dc3545",
-          "info": "#17a2b8"
         },
         "linkVisited": {
           "light": "#ff1234",

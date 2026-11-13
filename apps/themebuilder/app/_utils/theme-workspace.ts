@@ -1,9 +1,15 @@
 import {
   type ExternalConfigSchemaInput,
   externalConfigSchema,
+  severityColors,
+  toCurrentConfig,
 } from '@digdir/designsystemet/internal';
+import pkg from '@digdir/designsystemet/package.json';
 import LZString from 'lz-string';
-import { parseColorOverrides } from '../routes/themebuilder/_utils/use-themebuilder';
+import {
+  parseColorOverrides,
+  removedSeverityFromQuery,
+} from '../routes/themebuilder/_utils/use-themebuilder';
 import { configThemeToUrl } from './config-to-url';
 
 export type WorkspaceTheme = NonNullable<
@@ -71,6 +77,7 @@ export function addWorkspaceTheme(
 const themeKeys = [
   'colors',
   'severity',
+  'severity-removed',
   'severity-enabled',
   'color-overrides',
   'border-radius',
@@ -83,7 +90,11 @@ export function readWorkspace(params: URLSearchParams): ThemeWorkspace | null {
     const decoded = LZString.decompressFromEncodedURIComponent(encoded || '');
     if (!decoded || decoded.length > 1_000_000)
       throw new Error('Invalid config');
-    const config: WorkspaceConfig = JSON.parse(decoded);
+    // A config from before severity colors were optional gets the ones it had by default in its `colors`
+    const config: WorkspaceConfig = toCurrentConfig(
+      JSON.parse(decoded),
+      pkg.version,
+    );
     externalConfigSchema.parse(config);
     if (!config.themes) throw new Error('Missing themes');
     const names = Object.keys(config.themes);
@@ -143,24 +154,31 @@ export function updateWorkspace(
   const workspace = readWorkspace(params);
   if (!workspace) return edited;
   const previous = workspace.config.themes[workspace.activeTheme];
-  const colors = Object.fromEntries(
-    (edited.get('colors') || '')
-      .split(' ')
-      .filter(Boolean)
-      .map((entry) => entry.split(':')),
-  );
-  const severity = Object.fromEntries(
+  const changedSeverity = Object.fromEntries(
     (edited.get('severity') || '')
       .split(' ')
       .filter(Boolean)
       .map((entry) => entry.split(':')),
   );
+  const removedSeverity: string[] = removedSeverityFromQuery(
+    edited.get('severity-removed'),
+  );
+  // Severity colors are optional, so the ones the theme has are in `colors`, after its other colors
+  const colors = Object.fromEntries([
+    ...(edited.get('colors') || '')
+      .split(' ')
+      .filter(Boolean)
+      .map((entry) => entry.split(':'))
+      .filter(([name]) => !Object.hasOwn(severityColors, name)),
+    ...Object.entries(severityColors)
+      .filter(([name]) => !removedSeverity.includes(name))
+      .map(([name, hex]) => [name, changedSeverity[name] || hex]),
+  ]);
   const overrides = {
     ...previous.overrides,
     colors: parseColorOverrides(edited.get('color-overrides')),
   };
   delete overrides.severity;
-  if (Object.keys(severity).length) overrides.severity = severity;
   const active = {
     ...previous,
     colors,

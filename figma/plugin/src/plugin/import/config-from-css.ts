@@ -1,4 +1,7 @@
-import { generateConfigFromCSS } from '@digdir/designsystemet/internal';
+import {
+  configSchemaUrl,
+  generateConfigFromCSS,
+} from '@digdir/designsystemet/internal';
 import pkg from '@digdir/designsystemet/package.json';
 import type { CssFile } from '../../types';
 
@@ -49,8 +52,9 @@ export function configFromCss(files: CssFile[]): {
   return {
     config: `${JSON.stringify(
       {
-        $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
         ...config,
+        // The versioned schema marks the config as one where a theme only has the severity colors in its `colors`
+        $schema: configSchemaUrl(pkg.version),
       },
       null,
       2,

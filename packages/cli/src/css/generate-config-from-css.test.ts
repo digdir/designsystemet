@@ -18,7 +18,8 @@ async function buildThemeCSS(name: string, input: ThemeInput): Promise<string> {
 
 // A theme with every kind of color override, a font family and a border radius.
 const themeWithOverrides: ThemeInput = {
-  colors: { accent: '#0062ba', 'my-brand': '#5b3fa0', neutral: '#24272b' },
+  // Severity colors are optional, so a theme only has the ones in its colors: here only danger.
+  colors: { accent: '#0062ba', 'my-brand': '#5b3fa0', neutral: '#24272b', danger: '#aa0000' },
   typography: { fontFamily: 'IBM Plex Sans' },
   borderRadius: 8,
   overrides: {
@@ -26,14 +27,13 @@ const themeWithOverrides: ThemeInput = {
       accent: { 'background-tinted': { light: '#ff0000' } },
       'my-brand': { 'text-default': { light: '#111111', dark: '#eeeeee' } },
     },
-    severity: { danger: '#aa0000' },
     linkVisited: { light: '#123456' },
     focus: { outer: { dark: '#abcdef' } },
   },
 };
 // A second theme with the same color names, as every theme in a config needs.
 const plainTheme: ThemeInput = {
-  colors: { accent: '#0d7a5f', 'my-brand': '#8a1c4a', neutral: '#1e2b3c' },
+  colors: { accent: '#0d7a5f', 'my-brand': '#8a1c4a', neutral: '#1e2b3c', danger: '#c01b1b' },
   borderRadius: 0,
 };
 // A theme without neutral, with the default focus colors.

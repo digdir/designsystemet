@@ -41,6 +41,7 @@ export const useThemebuilder = () => {
   const {
     colors,
     severityColors,
+    removedSeverityColors,
     colorScheme,
     baseBorderRadius,
     overrides,
@@ -51,6 +52,7 @@ export const useThemebuilder = () => {
   return {
     colors,
     severityColors,
+    removedSeverityColors,
     colorScheme,
     baseBorderRadius,
     overrides,
@@ -86,12 +88,29 @@ export function createColorsAndVariables(color: CssColor) {
   };
 }
 
+/** The severity colors a theme doesn't have, from the `severity-removed` query parameter. */
+export function removedSeverityFromQuery(
+  removedParam: string | null,
+): SeverityColorNames[] {
+  const removed = (removedParam || '').split(QUERY_SEPARATOR);
+  return (Object.keys(severityColors) as SeverityColorNames[]).filter((name) =>
+    removed.includes(name),
+  );
+}
+
+/**
+ * The severity colors of the theme. Severity colors are optional: a theme has all of them
+ * unless they are in `severity-removed`, with the default color unless `severity` has another.
+ */
 export function createSeverityColorsFromQuery(
   severityParam: string | null,
+  removedParam: string | null = null,
 ): SeverityColorTheme[] {
   const severityThemeColors: SeverityColorTheme[] = [];
+  const removed = removedSeverityFromQuery(removedParam);
 
   for (let [key, hex] of Object.entries(severityColors)) {
+    if (removed.includes(key as SeverityColorNames)) continue;
     let isDefault = true;
 
     // Check if this severity color is overridden in the query params

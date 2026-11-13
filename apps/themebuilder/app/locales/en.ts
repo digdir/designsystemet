@@ -136,7 +136,8 @@ export default {
     save: 'Save',
     cancel: 'Cancel',
     'remove-color': 'Remove colour',
-    'severity-info': 'The severity colour cannot be removed or renamed.',
+    'severity-info':
+      'A severity colour cannot be renamed. You can remove it if your theme does not need it, and add it again later.',
     name: 'Name',
     'name-placeholder': 'Write the name here...',
     'name-description': 'Use only letters a-z, numbers and hyphens',

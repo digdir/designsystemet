@@ -230,6 +230,11 @@ export type ConfigSchemaThemeInput = z.input<typeof themeSchema>;
 
 /** The full config schema with every field the CLI understands, used to validate a config file. */
 export const configSchema = z.object({
+  // Kept when validating, as the config version is read from it. See `getConfigVersion`.
+  $schema: z
+    .string()
+    .optional()
+    .describe('Path or URL to the JSON schema for this file. Also tells the CLI which version of the config this is.'),
   ...outputConfigShape,
   themes: themesSchema,
 });

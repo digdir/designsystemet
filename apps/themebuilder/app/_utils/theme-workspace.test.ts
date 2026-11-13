@@ -8,7 +8,9 @@ import {
   workspaceParams,
 } from './theme-workspace';
 
+// A current config, where a theme only has the severity colors in its `colors`: these themes have none.
 const config = {
+  $schema: 'https://designsystemet.no/schemas/config/2.0.0.json',
   outDir: './custom-tokens',
   themes: {
     first: {
@@ -186,7 +188,7 @@ describe('compressed theme workspace', () => {
         .colors,
     ).toEqual({ neutral: '#444444', brand: '#abcdef' });
   });
-  it('deletes color overrides from every theme without deleting severity overrides', () => {
+  it('deletes color overrides from every theme without deleting severity colors', () => {
     const withOverrides = {
       ...config,
       themes: Object.fromEntries(
@@ -194,9 +196,9 @@ describe('compressed theme workspace', () => {
           name,
           {
             ...theme,
+            colors: { ...theme.colors, danger: '#ab1234' },
             overrides: {
               colors: { accent: { 'text-default': { light: '#123456' } } },
-              severity: { danger: '#ab1234' },
             },
           },
         ]),
@@ -207,12 +209,80 @@ describe('compressed theme workspace', () => {
       activeTheme: 'first',
     });
     const edited = editorParams(params);
+    expect(edited.get('severity')).toBe('danger:#ab1234');
+    expect(edited.get('severity-removed')).toBe('info success warning');
     edited.set('colors', 'neutral:#333333');
     const removed = readWorkspace(updateWorkspace(params, edited));
     for (const theme of Object.values(removed?.config.themes || {})) {
       expect(theme.overrides?.colors).toBeUndefined();
-      expect(theme.overrides?.severity).toEqual({ danger: '#ab1234' });
+      expect(theme.overrides?.severity).toBeUndefined();
+      expect(theme.colors.danger).toBe('#ab1234');
+      expect(Object.keys(theme.colors)).toEqual(['neutral', 'danger']);
     }
+  });
+  it('adds and removes severity colors in every theme, as colors', () => {
+    const params = workspaceParams({ config, activeTheme: 'first' });
+    const edited = editorParams(params);
+    // The themes have no severity colors
+    expect(edited.get('severity-removed')).toBe('info success warning danger');
+
+    // Adds danger with its own color, and info with the default color
+    edited.set('severity', 'danger:#ab1234');
+    edited.set('severity-removed', 'success warning');
+    const added = updateWorkspace(params, edited);
+    expect(readWorkspace(added)?.config.themes.first.colors).toEqual({
+      accent: '#123456',
+      neutral: '#333333',
+      info: '#0A71C0',
+      danger: '#ab1234',
+    });
+    expect(readWorkspace(added)?.config.themes.second.colors).toEqual({
+      accent: '#654321',
+      neutral: '#444444',
+      info: '#0A71C0',
+      danger: '#ab1234',
+    });
+    expect(
+      readWorkspace(added)?.config.themes.first.overrides?.severity,
+    ).toBeUndefined();
+    expect(added.has('severity-removed')).toBe(false);
+
+    // Removes both again
+    const removed = editorParams(added);
+    removed.delete('severity');
+    removed.set('severity-removed', 'info success warning danger');
+    const removedWorkspace = readWorkspace(updateWorkspace(added, removed));
+    expect(removedWorkspace?.config.themes.first.colors).toEqual(
+      config.themes.first.colors,
+    );
+    expect(removedWorkspace?.config.themes.second.colors).toEqual(
+      config.themes.second.colors,
+    );
+  });
+  it('gives a config from before severity colors were optional the ones it had by default', () => {
+    const legacy = {
+      themes: {
+        first: {
+          colors: { accent: '#123456' },
+          overrides: { severity: { danger: '#ab1234' } },
+        },
+      },
+    };
+    const workspace = readWorkspace(
+      workspaceParams({ config: legacy, activeTheme: 'first' }),
+    );
+    expect(workspace?.config.themes.first).toEqual({
+      colors: {
+        accent: '#123456',
+        info: '#0A71C0',
+        success: '#068718',
+        warning: '#EA9B1B',
+        danger: '#ab1234',
+      },
+    });
+    expect(workspace?.config.$schema).toBe(
+      'https://designsystemet.no/schemas/config/2.0.0.json',
+    );
   });
   it('preserves per-theme overrides regardless of the legacy severity flag', () => {
     const params = workspaceParams({ config, activeTheme: 'first' });
@@ -227,19 +297,9 @@ describe('compressed theme workspace', () => {
     );
     const severity = editorParams(next);
     severity.set('severity-enabled', 'false');
-    severity.set('severity', 'danger:#ab1234');
-    const overridden = updateWorkspace(next, severity);
-    expect(
-      readWorkspace(overridden)?.config.themes.first.overrides?.severity,
-    ).toEqual({ danger: '#ab1234' });
-    expect(overridden.has('severity-enabled')).toBe(false);
-    const disabled = editorParams(overridden);
-    disabled.delete('severity');
-    const disabledWorkspace = updateWorkspace(overridden, disabled);
-    expect(
-      readWorkspace(disabledWorkspace)?.config.themes.first.overrides?.severity,
-    ).toBeUndefined();
-    expect(readWorkspace(overridden)?.config.themes.second).toEqual(
+    const flagged = updateWorkspace(next, severity);
+    expect(flagged.has('severity-enabled')).toBe(false);
+    expect(readWorkspace(flagged)?.config.themes.second).toEqual(
       config.themes.second,
     );
   });

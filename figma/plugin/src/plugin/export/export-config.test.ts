@@ -8,9 +8,17 @@ import type { ValueSpec } from '../types';
 import { exportConfig } from './export-config';
 import type { CollectionData } from './types';
 
-/** The collections an import of `themes` creates in Figma, as `readCollections` would read them back. */
+/**
+ * The collections an import of `themes` creates in Figma, as `readCollections` would read them back.
+ * The config has a versioned schema, so a theme only has the severity colors in its `colors`.
+ */
 async function syncedCollections(themes: object): Promise<CollectionData[]> {
-  const model = await createTokenModel(JSON.stringify({ themes }));
+  const model = await createTokenModel(
+    JSON.stringify({
+      $schema: 'https://designsystemet.no/schemas/config/2.0.0.json',
+      themes,
+    }),
+  );
   const specs = buildCollectionSpecs(
     model,
     getTokenSetLookupOrder(model),
@@ -49,11 +57,15 @@ describe('exportConfig', () => {
   it('returns the config the file was synced from', async () => {
     const themes = {
       alpha: {
-        colors: { accent: '#0062ba', brand: '#5b3fa0', neutral: '#24272b' },
+        colors: {
+          accent: '#0062ba',
+          brand: '#5b3fa0',
+          neutral: '#24272b',
+          danger: '#b00020',
+        },
         typography: { fontFamily: 'Roboto' },
         borderRadius: 8,
         overrides: {
-          severity: { danger: '#b00020' },
           colors: {
             accent: {
               'background-tinted': { light: '#eef5ff', dark: '#101828' },
@@ -65,7 +77,12 @@ describe('exportConfig', () => {
         },
       },
       beta: {
-        colors: { accent: '#0d7a5f', brand: '#7a1f2b', neutral: '#24272b' },
+        colors: {
+          accent: '#0d7a5f',
+          brand: '#7a1f2b',
+          neutral: '#24272b',
+          danger: '#c01b1b',
+        },
       },
     };
 
@@ -97,16 +114,14 @@ describe('exportConfig', () => {
     const { config } = await exportConfig(
       await syncedCollections({
         theme: {
-          colors: { accent: '#0062BA', neutral: '#24272B' },
-          overrides: { severity: { danger: '#B00020' } },
+          colors: { accent: '#0062BA', neutral: '#24272B', danger: '#B00020' },
         },
       }),
     );
 
     expect(config.themes).toEqual({
       theme: {
-        colors: { accent: '#0062ba', neutral: '#24272b' },
-        overrides: { severity: { danger: '#b00020' } },
+        colors: { accent: '#0062ba', neutral: '#24272b', danger: '#b00020' },
       },
     });
   });

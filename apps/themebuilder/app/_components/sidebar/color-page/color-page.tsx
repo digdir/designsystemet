@@ -1,4 +1,8 @@
 import {
+  severityColors as defaultSeverityColors,
+  type SeverityColorNames,
+} from '@digdir/designsystemet/internal';
+import {
   Button,
   Dialog,
   Divider,
@@ -36,15 +40,18 @@ const DEFAULT_COLOR = '#0062ba';
 
 export const ColorPage = () => {
   const { t } = useTranslation();
-  const { colors, severityColors, workspace } = useThemebuilder();
+  const { colors, severityColors, removedSeverityColors, workspace } =
+    useThemebuilder();
   const [query, setQuery] = useThemeSearchParams();
   const confirmationRef = useRef<HTMLDialogElement>(null);
   const confirmationId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const returnFocusName = useRef<string | null>(null);
   const [pendingAction, setPendingAction] = useState<
-    'add' | 'remove' | 'rename' | null
+    'add' | 'remove' | 'rename' | 'add-severity' | null
   >(null);
+  const [pendingSeverity, setPendingSeverity] =
+    useState<SeverityColorNames | null>(null);
   const themeCount = workspace
     ? Object.keys(workspace.config.themes).length
     : 1;
@@ -78,7 +85,9 @@ export const ColorPage = () => {
 
   const themeColorCount = colors.length;
   const committedName =
-    colors[editorState.index]?.name || editorState.initialName;
+    editorState.colorType === 'severity'
+      ? editorState.name
+      : colors[editorState.index]?.name || editorState.initialName;
 
   const updateColorInParams = (
     hex: string,
@@ -116,11 +125,11 @@ export const ColorPage = () => {
     const severityParam = params.get('severity') || '';
     const severityArray = severityParam.split(QUERY_SEPARATOR).filter(Boolean);
 
-    // Find the severity color and check if it's the default
-    const defaultColor = severityColors.find((sc) => sc.name === name);
-    if (!defaultColor) return;
+    // Only severity colors that aren't the default color are in the query
+    if (!Object.hasOwn(defaultSeverityColors, name)) return;
+    const defaultHex = defaultSeverityColors[name as SeverityColorNames];
 
-    const isDefault = hex.toLowerCase() === defaultColor.hex.toLowerCase();
+    const isDefault = hex.toLowerCase() === defaultHex.toLowerCase();
 
     // Remove existing entry for this severity color
     const filtered = severityArray.filter((s) => !s.startsWith(`${name}:`));
@@ -198,6 +207,31 @@ export const ColorPage = () => {
     }));
   };
 
+  /** Severity colors are optional. A removed one is kept in `severity-removed`, so it can be added again. */
+  const setSeverityRemoved = (name: string, isRemoved: boolean) => {
+    const updatedParams = new URLSearchParams(query);
+    const removed = removedSeverityColors.filter((n) => n !== name);
+    if (isRemoved) {
+      removed.push(name as SeverityColorNames);
+      // A removed color has no color of its own, so it is added again with the default
+      const changed = (updatedParams.get('severity') || '')
+        .split(QUERY_SEPARATOR)
+        .filter((entry) => entry && !entry.startsWith(`${name}:`));
+      if (changed.length) {
+        updatedParams.set('severity', changed.join(QUERY_SEPARATOR));
+      } else {
+        updatedParams.delete('severity');
+      }
+    }
+    if (removed.length) {
+      updatedParams.set('severity-removed', removed.join(QUERY_SEPARATOR));
+    } else {
+      updatedParams.delete('severity-removed');
+    }
+
+    setQuery(updatedParams, { replace: true, preventScrollReset: true });
+  };
+
   const removeColor = (index: number) => {
     if (index < 0) return;
 
@@ -261,6 +295,27 @@ export const ColorPage = () => {
                   name={severityColor.name}
                   onClick={() => openSeverityColorEditor(severityColor, index)}
                 />
+              ))}
+              {removedSeverityColors.map((name) => (
+                <Button
+                  key={name}
+                  data-action='add-severity'
+                  data-color-name={name}
+                  variant='secondary'
+                  className={classes.btn}
+                  onClick={() => {
+                    if (themeCount > 1) {
+                      setPendingSeverity(name);
+                      setPendingAction('add-severity');
+                      confirmationRef.current?.showModal();
+                    } else {
+                      setSeverityRemoved(name, false);
+                    }
+                  }}
+                >
+                  {t('colorPane.add')} {name}
+                  <PlusIcon aria-hidden />
+                </Button>
               ))}
             </div>
           </div>
@@ -342,17 +397,12 @@ export const ColorPage = () => {
             closeEditor();
           }}
           onRemove={() => {
-            // Reset to default by removing from query params
-            const updatedParams = new URLSearchParams(query);
-            updateSeverityColorInParams(
-              editorState.initialHex,
-              editorState.name,
-              updatedParams,
-            );
-            setQuery(updatedParams, {
-              replace: true,
-              preventScrollReset: true,
-            });
+            if (themeCount > 1) {
+              setPendingAction('remove');
+              confirmationRef.current?.showModal();
+              return;
+            }
+            setSeverityRemoved(editorState.name, true);
             closeEditor();
           }}
           onCancel={() => {
@@ -388,7 +438,10 @@ export const ColorPage = () => {
         closedby='any'
         aria-labelledby={`${confirmationId}-heading`}
         aria-describedby={`${confirmationId}-description`}
-        onClose={() => setPendingAction(null)}
+        onClose={() => {
+          setPendingAction(null);
+          setPendingSeverity(null);
+        }}
         id='color-dialog'
       >
         <Dialog.Block>
@@ -424,8 +477,15 @@ export const ColorPage = () => {
                 confirmationRef.current?.close();
                 if (pendingAction === 'add') {
                   openNewColorEditor();
+                } else if (pendingAction === 'add-severity') {
+                  if (pendingSeverity)
+                    setSeverityRemoved(pendingSeverity, false);
                 } else if (pendingAction === 'remove') {
-                  removeColor(editorState.index);
+                  if (editorState.colorType === 'severity') {
+                    setSeverityRemoved(editorState.name, true);
+                  } else {
+                    removeColor(editorState.index);
+                  }
                   closeEditor();
                 } else if (pendingAction === 'rename') {
                   updateColorInParams(

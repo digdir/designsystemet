@@ -1,9 +1,19 @@
-import type { ExternalConfigSchemaInput as ConfigSchema } from '@digdir/designsystemet/internal';
+import {
+  type ExternalConfigSchemaInput as ConfigSchema,
+  severityColors,
+} from '@digdir/designsystemet/internal';
 
 const QUERY_SEPARATOR = ' ';
 
+const severityNames = Object.keys(severityColors) as Array<
+  keyof typeof severityColors
+>;
+
 /**
- * Converts a theme config object to a themebuilder URL with query parameters
+ * Converts a theme config object to a themebuilder URL with query parameters.
+ *
+ * Severity colors are optional and are in `colors` in the config. In the URL they have their own parameters:
+ * `severity` for the ones that aren't the default color, and `severity-removed` for the ones the theme doesn't have.
  */
 export function configThemeToUrl(
   theme: Pick<
@@ -14,21 +24,28 @@ export function configThemeToUrl(
 ): string {
   const params = new URLSearchParams();
 
-  // Convert colors (a flat record of name -> hex)
-  if (theme.colors && Object.keys(theme.colors).length > 0) {
-    const colors = Object.entries(theme.colors)
-      .map(([name, hex]) => `${name}:${hex}`)
-      .join(QUERY_SEPARATOR);
-    params.set('colors', colors);
-  }
+  // Convert colors (a flat record of name -> hex), without the severity colors
+  const colors = Object.entries(theme.colors || {})
+    .filter(([name]) => !Object.hasOwn(severityColors, name))
+    .map(([name, hex]) => `${name}:${hex}`)
+    .join(QUERY_SEPARATOR);
+  if (colors) params.set('colors', colors);
 
-  // Convert severity colors if overridden
-  if (theme.overrides?.severity) {
-    const severityColors = Object.entries(theme.overrides.severity)
-      .map(([name, hex]) => `${name}:${hex}`)
-      .join(QUERY_SEPARATOR);
-    params.set('severity', severityColors);
-  }
+  // Severity colors that aren't the default color
+  const changedSeverity = severityNames
+    .filter((name) => {
+      const hex = theme.colors?.[name];
+      return hex && hex.toLowerCase() !== severityColors[name].toLowerCase();
+    })
+    .map((name) => `${name}:${theme.colors?.[name]}`)
+    .join(QUERY_SEPARATOR);
+  if (changedSeverity) params.set('severity', changedSeverity);
+
+  // Severity colors the theme doesn't have
+  const removedSeverity = severityNames
+    .filter((name) => !theme.colors?.[name])
+    .join(QUERY_SEPARATOR);
+  if (removedSeverity) params.set('severity-removed', removedSeverity);
 
   // Convert color overrides to URL params
   if (theme.overrides?.colors) {

@@ -2,7 +2,9 @@
 import {
   type ExternalConfigSchemaInput as ConfigSchema,
   externalConfigSchema as configSchema,
+  toCurrentConfig,
 } from '@digdir/designsystemet/internal';
+import pkg from '@digdir/designsystemet/package.json';
 import {
   Button,
   Field,
@@ -36,9 +38,13 @@ export function ConfigPaste() {
     }
 
     try {
-      const parsed = isConfigWithOldColorSchema(configText)
-        ? migrateConfigWithOldColorSchema(configText)
-        : JSON.parse(configText);
+      // A config from before severity colors were optional gets the ones it had by default in its `colors`
+      const parsed = toCurrentConfig(
+        isConfigWithOldColorSchema(configText)
+          ? migrateConfigWithOldColorSchema(configText)
+          : JSON.parse(configText),
+        pkg.version,
+      );
 
       const result = configSchema.safeParse(parsed);
       if (!result.success) {

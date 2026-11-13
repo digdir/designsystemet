@@ -1,5 +1,6 @@
 import {
   type CssColor,
+  configSchemaUrl,
   defaultBorderRadius,
   type ExternalConfigSchemaInput,
 } from '@digdir/designsystemet/internal';
@@ -17,17 +18,6 @@ export const useTokenModal = () => {
 
   const [name, setName] = useState('theme');
 
-  // Get non-default severity colors
-  const severityOverrides = severityColors
-    .filter((sc) => !sc.isDefault)
-    .reduce(
-      (acc, sc) => {
-        acc[sc.name] = sc.hex;
-        return acc;
-      },
-      {} as Record<string, CssColor>,
-    );
-
   const colorOverrides: Record<
     string,
     Record<string, { light?: CssColor; dark?: CssColor }>
@@ -39,8 +29,9 @@ export const useTokenModal = () => {
     }
   });
 
+  // Severity colors are optional, so the ones the theme has are in `colors` like any other color
   const theme: ThemeConfig = {
-    colors: colors.reduce(
+    colors: [...colors, ...severityColors].reduce(
       (acc, color) => {
         acc[color.name] = color.colors.light['base-default']?.hex || '#';
         return acc;
@@ -58,26 +49,17 @@ export const useTokenModal = () => {
 
   const themeConfig: ThemeConfig = {
     colors: theme.colors,
-    ...(Object.keys(severityOverrides).length > 0 ||
-    Object.keys(colorOverrides).length > 0
-      ? {
-          overrides: {
-            ...(Object.keys(severityOverrides).length > 0 && {
-              severity: severityOverrides,
-            }),
-            ...(Object.keys(colorOverrides).length > 0 && {
-              colors: colorOverrides,
-            }),
-          },
-        }
-      : {}),
+    ...(Object.keys(colorOverrides).length > 0 && {
+      overrides: { colors: colorOverrides },
+    }),
     ...(theme.borderRadius !== undefined && {
       borderRadius: theme.borderRadius,
     }),
   };
 
   const configSnippet = {
-    $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
+    // The versioned schema marks the config as one where a theme only has the severity colors in its `colors`
+    $schema: configSchemaUrl(pkg.version),
     themes: {
       [name]: themeConfig,
     },

@@ -2,6 +2,7 @@ import postcss from 'postcss';
 import pkg from '../../package.json' with { type: 'json' };
 import { semanticColorNames } from '../colors/specs.ts';
 import type { ColorScheme, CssColor, SemanticColorNames } from '../colors/types.ts';
+import { configSchemaUrl } from '../schemas/config-version.ts';
 import { defaultBorderRadius, defaultFontFamily } from '../schemas/defaults.ts';
 import { validateConfig } from '../schemas/helpers.ts';
 import { type ExternalConfigSchemaInput, externalConfigSchema } from '../schemas/schema.ts';
@@ -39,7 +40,8 @@ const OTHER_COLORS = new Map<string, keyof Omit<ThemeColorValues, 'scales'>>([
  */
 export function generateConfigFromCSS(themes: Record<string, string>): GeneratedConfigFromCSS {
   const warnings: string[] = [];
-  const config: ExternalConfigSchemaInput = { themes: {} };
+  // The versioned schema marks the config as one where only the severity colors in `colors` are used.
+  const config: ExternalConfigSchemaInput = { $schema: configSchemaUrl(pkg.version), themes: {} };
 
   for (const [themeName, css] of Object.entries(themes)) {
     const theme = readThemeCSS(themeName, css);

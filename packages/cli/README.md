@@ -56,7 +56,7 @@ To get started, use this template for a `designsystemet.config.json` file:
 
 ```jsonc
 {
-  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "$schema": "node_modules/@digdir/designsystemet/dist/config.v2.schema.json",
 }
 ```
 
@@ -65,7 +65,7 @@ In editors which support JSON Schema, the `$schema` will then  give you editor h
 #### Minimal config example
 ```jsonc
 {
-  "$schema": "./node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "$schema": "./node_modules/@digdir/designsystemet/dist/config.v2.schema.json",
   "themes": {
     "theme": {
       "colors": {

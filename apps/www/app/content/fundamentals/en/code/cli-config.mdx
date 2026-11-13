@@ -1,7 +1,7 @@
 ---
 title: CLI Config
 description: Information on how to use the CLI config file.
-date: 2026-11-09
+date: 2026-11-13
 category: Code
 color: blue
 icon: FileJsonIcon
@@ -22,7 +22,7 @@ Both `designsystemet.config.json` and `designsystemet.config.jsonc` are detected
 
 ```json
 {
-  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "$schema": "node_modules/@digdir/designsystemet/dist/config.v2.schema.json",
   "themes": {
     "my-theme": {
       "colors": {
@@ -65,7 +65,7 @@ The `tokens create` and `tokens build` commands are deprecated and will be remov
 
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
-| $schema | String | No | Path to JSON schema for validation. Recommended: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
+| $schema | String | No | Path or URL to the JSON schema for validation. It also tells the CLI which version of the config this is, see [Severity colours](#severity-colours). Recommended: `node_modules/@digdir/designsystemet/dist/config.v2.schema.json`. |
 | output | Array | No | What the CLI should create, and where. Defaults to `["css"]`. See [Output](#output). |
 | themes | Object | No | Contains all themes you want to define. Each key is the name of the theme. Required by outputs that are created from themes, see [Building without themes](#building-without-themes). |
 | outDir | String | No | **Deprecated:** use `output[].dir` instead. |
@@ -194,7 +194,7 @@ You can have multiple themes, and each theme can have its own colours, border ra
 | colors | Object | Yes | Contains all colours for the theme. |
 | borderRadius | Number | No | Base border radius for the theme. |
 | typography | Object | No | Contains typography settings for the theme. |
-| overrides | Object | No | Contains overrides for colours and severity colours. |
+| overrides | Object | No | Contains overrides for colours. |
 
 ### Typography
 | Name | Type | Required | Description |
@@ -212,7 +212,24 @@ If you include `typography` in your theme, `fontFamily` must be defined.
 
 Colours are defined directly under `colors`, where the key is the colour's name and the value is a hex code.
 Colour names may only contain lowercase letters (a-z), digits (0-9) and hyphens (-).
-`colors` must contain at least one colour that is not a severity colour (`success`, `warning`, `danger`, `info`). The severity colours are added automatically.
+`colors` must contain at least one colour that is not a severity colour (`success`, `warning`, `danger`, `info`).
+
+#### Severity colours
+
+The severity colours `info`, `success`, `warning` and `danger` are optional. Add the ones your theme needs to `colors`, with any hex code you like. These are the default colours:
+
+```json
+"colors": {
+  "info": "#0A71C0",
+  "success": "#068718",
+  "warning": "#EA9B1B",
+  "danger": "#C01B1B"
+}
+```
+
+A severity colour that is not in `colors` is not part of the theme. Components that ask for it, for example `data-color="danger"`, then use the colour they inherit.
+
+Before version 2, all four severity colours were added to every theme automatically. The CLI reads the version of a config from its `$schema`. When the config does not point to a versioned schema, the CLI offers to add the four default colours to `colors` and to update `$schema`, so your theme stays the same. After that you can remove the ones you do not use.
 
 ```json
 {
@@ -226,7 +243,7 @@ Colour names may only contain lowercase letters (a-z), digits (0-9) and hyphens 
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
 | colors | Object | No | Contains overrides for individual colour tokens |
-| severity | Object | No | Contains overrides for severity colours |
+| severity | Object | No | Deprecated. Add severity colours to `colors` instead. |
 | linkVisited | Object | No | Contains overrides for visited link colour |
 | focus | Object | No | Contains overrides for focus colours |
 
@@ -271,7 +288,7 @@ Each token override has a `light` and/or `dark` value that points to a hex code.
 | ---- | ---- | ------- | ----------- |
 | "colorName" | String | No | Hex colour to set as base |
 
-The `severity` override allows you to customise the colours used for severity, which are `success`, `warning`, `danger`, and `info`.
+Deprecated. Severity colours are set in `colors` like any other colour, see [Severity colours](#severity-colours). When the CLI updates a config to version 2, it moves `overrides.severity` into `colors` for you.
 
 #### overrides.linkVisited
 | Name | Type | Required | Description |
@@ -297,7 +314,7 @@ Without overrides, inner focus uses `background-default` and outer focus uses `t
 
 ```json
 {
-  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "$schema": "node_modules/@digdir/designsystemet/dist/config.v2.schema.json",
   "output": [
     { "type": "design-tokens", "dir": "./designsystemet/design-tokens" },
     { "type": "css", "dir": "./designsystemet", "tokensDir": "./designsystemet/design-tokens" },
@@ -310,7 +327,11 @@ Without overrides, inner focus uses `background-default` and outer focus uses `t
         "accent": "#1E98F5",
         "neutral": "#1E2B3C",
         "extra1": "#F45F63",
-        "extra2": "#E5AA20"
+        "extra2": "#E5AA20",
+        "success": "#28a745",
+        "warning": "#ffc107",
+        "danger": "#dc3545",
+        "info": "#17a2b8"
       },
       "borderRadius": 4,
       "typography": {
@@ -328,12 +349,6 @@ Without overrides, inner focus uses `background-default` and outer focus uses `t
               "dark": "#00ffff"
             }
           }
-        },
-        "severity": {
-          "success":  "#28a745",
-          "warning": "#ffc107",
-          "danger": "#dc3545",
-          "info": "#17a2b8"
         },
         "linkVisited": {
           "light": "#ff1234",

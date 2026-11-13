@@ -16,17 +16,18 @@ export const severityColors: Record<SeverityColorNames, CssColor> = {
 
 export const severityColorNames = Object.keys(severityColors) as Array<keyof typeof severityColors>;
 
-/** Non-severity colors first (in user order), then all severity colors at the end in severityColors order.
- * User-defined severity colors keep their value but are moved to the end.
+/** Non-severity colors first (in user order), then the theme's severity colors at the end in severityColors order.
+ * Severity colors are optional: only the ones in `colors` are kept, none are added.
  *
  * We do this because we want severity colors to always be last when design-tokens are visualized in Token Studio and Figma Variables.
  */
-export function addSeverityColors<T extends Record<string, string>>(colors: T): T {
+export function sortSeverityColorsLast<T extends Record<string, string>>(colors: T): T {
   const result = new Map(Object.entries(colors));
-  for (const [name, value] of Object.entries(severityColors)) {
+  for (const name of Object.keys(severityColors)) {
     const userValue = result.get(name);
+    if (userValue === undefined) continue;
     result.delete(name); // Deleting and re-adding moves the key to the end
-    result.set(name, userValue ?? value);
+    result.set(name, userValue);
   }
   return Object.fromEntries(result) as T;
 }

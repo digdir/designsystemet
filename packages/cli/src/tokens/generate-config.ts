@@ -2,6 +2,7 @@ import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.ts';
 import { legacyBuildDir, toConfigRelative, toOutput } from '../migrations/new-output-field.ts';
+import { VERSIONED_SCHEMA_FILE } from '../schemas/config-version.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { dsfs } from '../utils/filesystem.ts';
 
@@ -226,6 +227,8 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
   // Tokens were built with `tokens build`, which saved CSS and types in `design-tokens-build` where it was run.
   const buildDir = toConfigRelative(legacyBuildDir, { configFilePath: outFile });
   const config: ExternalConfigSchemaInput = {
+    // The versioned schema marks the config as one where only the severity colors in `colors` are used.
+    $schema: `node_modules/@digdir/designsystemet/dist/${VERSIONED_SCHEMA_FILE}`,
     output: toOutput(relativeTokensDir, { buildDir }),
     themes: configThemes,
   };

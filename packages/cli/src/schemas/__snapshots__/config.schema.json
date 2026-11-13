@@ -2,6 +2,10 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
+    "$schema": {
+      "description": "Path or URL to the JSON schema for this file. Also tells the CLI which version of the config this is.",
+      "type": "string"
+    },
     "output": {
       "description": "An array of output types. These are run in the order they are specified.",
       "default": [

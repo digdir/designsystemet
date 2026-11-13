@@ -34,7 +34,10 @@ declare module '@digdir/designsystemet-types' {
 ${colorsWithoutSeverity.map((color) => `    ${color.includes('-') ? `'${color}'` : color}: never;`).join('\n')}
   }
   export interface SeverityColorDefinitions {
-${severityColorNames.map((color) => `    ${color}: never;`).join('\n')}
+${severityColorNames
+  .filter((color) => colors.includes(color))
+  .map((color) => `    ${color}: never;`)
+  .join('\n')}
   }
 }
 `.trimStart();

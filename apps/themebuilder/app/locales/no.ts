@@ -135,7 +135,8 @@ export default {
     save: 'Lagre',
     cancel: 'Avbryt',
     'remove-color': 'Fjern farge',
-    'severity-info': 'Severity fargen kan ikke fjernes eller endres navn på.',
+    'severity-info':
+      'En severity-farge kan ikke endre navn. Du kan fjerne den hvis temaet ditt ikke trenger den, og legge den til igjen senere.',
     name: 'Navn',
     'name-placeholder': 'Skriv navnet her...',
     'name-description': 'Bruk kun bokstavene a-z, tall og bindestrek',

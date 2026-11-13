@@ -1,6 +1,6 @@
 import type { TransformedToken } from 'style-dictionary/types';
 import { describe, expect, it } from 'vitest';
-import { addSeverityColors } from '../schemas/defaults.ts';
+import { sortSeverityColorsLast } from '../schemas/defaults.ts';
 import type { Theme } from './types.ts';
 import {
   getValue,
@@ -86,16 +86,16 @@ describe('orderBySize', () => {
   });
 });
 
-describe('addSeverityColors', () => {
-  it('appends missing severity colors at the end', () => {
+describe('sortSeverityColorsLast', () => {
+  it('does not add severity colors that are missing', () => {
     const colors = { accent: '#0062BA' } as Theme['colors'];
-    expect(Object.keys(addSeverityColors(colors))).toEqual(['accent', 'info', 'success', 'warning', 'danger']);
+    expect(Object.keys(sortSeverityColorsLast(colors))).toEqual(['accent']);
   });
 
   it('keeps user-defined severity color values but moves them to the end', () => {
-    const colors = { accent: '#0062BA', danger: '#FF0000', neutral: '#444444' } as Theme['colors'];
-    const result = addSeverityColors(colors);
+    const colors = { danger: '#FF0000', accent: '#0062BA', info: '#0000FF', neutral: '#444444' } as Theme['colors'];
+    const result = sortSeverityColorsLast(colors);
     expect(result.danger).toBe('#FF0000');
-    expect(Object.keys(result)).toEqual(['accent', 'neutral', 'info', 'success', 'warning', 'danger']);
+    expect(Object.keys(result)).toEqual(['accent', 'neutral', 'info', 'danger']);
   });
 });

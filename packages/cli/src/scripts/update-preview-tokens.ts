@@ -1,6 +1,7 @@
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
+import { severityColors } from '../schemas/defaults.ts';
 import { validateConfig } from '../schemas/helpers.ts';
 import { configSchema } from '../schemas/schema.ts';
 import { colorsSchema } from '../schemas/schema-color.ts';
@@ -111,8 +112,9 @@ if (!themes) {
 formatTheme({
   name: 'test',
   borderRadius: themes.designsystemet.borderRadius,
-  // Parsed so the default severity colors are added, like for a validated config.
+  // The preview shows the default severity colors too.
   colors: colorsSchema.parse({
+    ...severityColors,
     primary: themes.designsystemet.colors.accent,
   }),
   typography: themes.designsystemet.typography,

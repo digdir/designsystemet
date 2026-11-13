@@ -6,7 +6,12 @@ import { ColorModalProvider } from '~/_utils/color-modal-context';
 import { ThemePages } from '../../layouts/themebuilder/layout';
 import classes from './page.module.css';
 import 'react-color-palette/css';
-import type { ColorScheme } from '@digdir/designsystemet/internal';
+import {
+  type ColorScheme,
+  configSchemaUrl,
+  severityColors as defaultSeverityColors,
+} from '@digdir/designsystemet/internal';
+import pkg from '@digdir/designsystemet/package.json';
 import { Field, Label, Select } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -31,6 +36,7 @@ import {
   createSeverityColorsFromQuery,
   parseColorOverrides,
   QUERY_SEPARATOR,
+  removedSeverityFromQuery,
   type SeverityColorTheme,
 } from './_utils/use-themebuilder';
 import type { Route } from './+types/themebuilder';
@@ -39,7 +45,12 @@ const toQueryString = (obj: Record<string, string>) =>
   Object.entries(obj)
     .map(([key, value]) => `${key}:${value}`)
     .join(QUERY_SEPARATOR);
-const THEME = themeConfig.themes.designsystemet.colors;
+// The severity colors have their own query parameters, and are all in a theme by default
+const THEME = Object.fromEntries(
+  Object.entries(themeConfig.themes.designsystemet.colors).filter(
+    ([name]) => !Object.hasOwn(defaultSeverityColors, name),
+  ),
+);
 const COLORS = toQueryString(THEME);
 
 export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';
@@ -113,6 +124,7 @@ export const loader = async ({
 
   const severityColors = createSeverityColorsFromQuery(
     urlParams.get('severity'),
+    urlParams.get('severity-removed'),
   );
 
   return {
@@ -122,6 +134,9 @@ export const loader = async ({
       severityColors,
       overridesMap,
     ) as SeverityColorTheme[],
+    removedSeverityColors: removedSeverityFromQuery(
+      urlParams.get('severity-removed'),
+    ),
     overrides: overridesMap,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
@@ -159,10 +174,12 @@ export default function Page() {
   const currentWorkspace: ThemeWorkspace = workspace || {
     activeTheme: 'theme',
     config: {
+      // The versioned schema marks the config as one where a theme only has the severity colors in its `colors`
+      $schema: configSchemaUrl(pkg.version),
       themes: {
         theme: {
           colors: Object.fromEntries(
-            colors.map((color) => [
+            [...colors, ...severityColors].map((color) => [
               color.name,
               color.hex || color.colors.light['base-default'].hex,
             ]),
@@ -170,13 +187,6 @@ export default function Page() {
           borderRadius: baseBorderRadius,
           overrides: {
             colors: overrides,
-            ...(severityColors.some((color) => !color.isDefault) && {
-              severity: Object.fromEntries(
-                severityColors
-                  .filter((color) => !color.isDefault)
-                  .map((color) => [color.name, color.hex]),
-              ),
-            }),
           },
         },
       },

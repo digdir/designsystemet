@@ -123,10 +123,7 @@ export const ColorPane = ({
             onRemove();
           }}
           className={cl(classes.removeBtn)}
-          hidden={
-            colorType === 'severity' ||
-            (colorType === 'color' && themeColorCount <= 1)
-          }
+          hidden={colorType === 'color' && themeColorCount <= 1}
         >
           {t('colorPane.remove-color')}
           <TrashIcon aria-hidden />

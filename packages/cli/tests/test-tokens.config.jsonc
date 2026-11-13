@@ -1,5 +1,5 @@
 {
-  "$schema": "../dist/config.schema.json",
+  "$schema": "../dist/config.v2.schema.json",
   "outDir": "tests/config/design-tokens",
   "clean": true,
   "themes": {
@@ -10,7 +10,11 @@
         "hyphen-color": "#F45F63",
         "double-hyphen-color": "#E5AA20",
         //"ignore-commented-color": "#F45F63",
-        "neutral": "#303030"
+        "neutral": "#303030",
+        "info": "#0A71C0",
+        "success": "#068718",
+        "warning": "#EA9B1B",
+        "danger": "#ff00ff"
       },
       "typography": {
         "fontFamily": "Inter"
@@ -35,9 +39,6 @@
             }
           }
         },
-        "severity": {
-          "danger": "#ff00ff"
-        },
         "linkVisited": {
           "light": "#ff1234",
           "dark": "#1234ff"
@@ -60,7 +61,11 @@
         "complimentary": "#00ff00",
         "hyphen-color": "#abcdef",
         "double-hyphen-color": "#123456",
-        "neutral": "#c05030"
+        "neutral": "#c05030",
+        "info": "#0A71C0",
+        "success": "#068718",
+        "warning": "#EA9B1B",
+        "danger": "#C01B1B"
       },
       "typography": {
         "fontFamily": "Roboto"
