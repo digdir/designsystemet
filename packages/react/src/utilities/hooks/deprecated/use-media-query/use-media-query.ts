@@ -11,6 +11,7 @@ type UseMediaQueryOptions = {
 
 const IS_SERVER = typeof window === 'undefined';
 
+// @deprecated v2
 export function useMediaQuery(
   query: string,
   {

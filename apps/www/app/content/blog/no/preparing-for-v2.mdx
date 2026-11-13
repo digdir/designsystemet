@@ -1,0 +1,91 @@
+---
+title: V2 er på vei med bedre farger og ryddigere kode – slik blir du klar
+description: V2 er ingen drastisk omskriving, men en liten utvidelse av fargesystemet og enda bedre utnyttelse av webstandarder.
+date: 2026-11-13
+author: designsystemet.no
+---
+
+Da `@digdir/designsystemet-web` ble lansert i februar, tok designsystemet.no et viktig steg mot prosjektets visjon:
+å tilby små, robuste byggeklosser basert på webstandarder, som er enkle å bruke og bygge videre på for alle.
+V2 fortsetter i samme retning. Vi utvider fargesystemet, og fjerner gamle løsninger til fordel for webstandarder.
+
+## Nye fargetrinn
+
+Flere har meldt fra om utfordringer med at komponenter i dag "låner" farger på tvers av fargeskalaer.
+For eksempel bruker input-komponenten farger fra `danger` når feltet er ugyldig, og fra `neutral` når feltet er i lesemodus.
+
+Derfor får hver fargeskala noen nye fargetrinn: `surface-muted`, `border-muted`, `text-muted`, `surface-invalid` og `text-invalid`.
+Da kan komponentene hente alle fargene sine fra én og samme skala, og det blir lettere å lage fargeskalaer uten uforutsette konsekvenser ved bruk.
+
+## Slik forbereder du koden
+
+Vi vet at breaking changes tar tid å håndtere, og det er viktig for oss at overgangen blir smidig.
+Slik kan du gjøre deg klar allerede nå:
+
+1. **Bruk siste 1.x-versjon** av `@digdir/designsystemet*`-pakkene.
+2. **Se etter advarsler:** TypeScript markerer utgåtte props i editor, React- og web-pakken skriver advarsler i konsoll, og CLI varsler i terminal.
+3. **Bytt ut utgått kode:** Koden i listene under er allerede markert som `@deprecated` i v1, og kan byttes ut uten å vente på v2.
+
+<div class="ds-card">
+<Details>
+<Details.Summary>Endringer for alle</Details.Summary>
+<div>
+- **ToggleGroup:**
+  - ❌ Ikke bruk `data-toggle-group="LABEL"`
+  - ✅ Bruk `focusgroup="radiogroup" aria-label="LABEL"`
+  - 💡 ToggleGroup fortsetter å fungerer selv om du ikke gjør endrer noe, men skjermlesere vil mangle label/navn på gruppen
+- **Spinner:**
+  - ❌ Ikke bruk `svg` inni `ds-spinner`
+  - ✅ Spinner tegnes automatisk med CSS `::before`
+- **Laster du individuelle CSS-filer?**
+  - ❌ Ikke bruk `togglegroup.css` og `skiplink.css`
+  - ✅ Bruk `toggle-group.css` og `skip-link.css`
+  - 💡 Filnavnene har vært tilgjengelige og anbefalt lenge, men gjør for sikkerhetsskyld en sjekk i din kode
+- **Search:**
+  - [Les blogginnlegget om utfasingen av Search og alternativer](/no/blog/search-is-being-removed-what-should-you-do)
+</div>
+</Details>
+<Details>
+<Details.Summary>Endringer kun for React</Details.Summary>
+<div>
+- **Typer:**
+  - ❌ Ikke importer fra `@digdir/designsystemet-react/colors` og `@digdir/designsystemet/types`
+  - ✅ Importer fra `@digdir/designsystemet-types`
+  - 💡 Importen har vært tilgjengelige og anbefalt lenge, men gjør for sikkerhetsskyld en sjekk i din kode
+- **ToggleGroup.Item:**
+  - ❌ Ikke bruk `icon`-prop
+  - ✅ Legg ikonet inni `ToggleGroup.Item`
+  - ⚠️ Attributtet `data-variant` er ikke nødvendig, og settes derfor ikke automatisk i v2. Sjekk at stylingen din ikke er avhengig av dette attributtet.
+- **RovingFocus:**
+  - ❌ Ikke bruk `RovingFocusRoot` og `RovingFocusItem`
+  - ✅ Bruk [`focusgroup`](/no/components/utilities/focusgroup)
+- **Utilities:**
+  - ❌ Ikke bruk `useDebounceCallback`, `useSynchronizedAnimation`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` og `MergeRight`. Disse fjernes i v2.
+  - ✅ Bruk utilities fra biblioteker som for eksempel [usehooks-ts.com](https://usehooks-ts.com/)
+</div>
+</Details>
+<Details>
+<Details.Summary>Endringer i CLI</Details.Summary>
+<div>
+- ❌ Ikke bruk parameterne `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` og `--theme`
+- ✅ Bruk en [konfigurasjonsfil](/no/fundamentals/start-here/own-theme)
+</div>
+</Details>
+</div>
+
+## Hva med Suggestion?
+
+Suggestion har lenge vært markert som eksperimentell.
+Dette er den mest komplekse komponenten i designsystemet.no, og de mange måtene dere har tatt den i bruk på,
+har gitt oss mye god tilbakemelding om hva den bør støtte og hva den kan løse bedre.
+Vi jobber jobber nå målrettet med en videreutvikling som vi vil lansere, før vi gjør den endelig stabil.
+
+## Spørsmål?
+
+Ta kontakt med oss på [Slack](https://designsystemet.no/slack) eller opprett en sak på [GitHub (github.com)](https://github.com/digdir/designsystemet/issues) hvis du står fast eller mener vi har glemt noe.
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+  ]}
+/>
