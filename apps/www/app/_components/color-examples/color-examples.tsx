@@ -3,6 +3,7 @@ import {
   semanticColorSpec,
 } from '@digdir/designsystemet/internal';
 import { Alert } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
 import type { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
@@ -83,7 +84,7 @@ export const ColorSwatches = ({ steps, caption }: ColorSwatchesProps) => {
 
   return (
     <figure className={classes.figure}>
-      <div className={classes.rows}>
+      <div className={cl(classes.card, classes.rows)}>
         {steps.map((step) => (
           <div key={step} className={classes.row}>
             <code className={classes.rowLabel}>{step}</code>
@@ -131,7 +132,7 @@ export const ColorScaleOverview = ({
 
   return (
     <figure className={classes.figure}>
-      <div className={classes.overview}>
+      <div className={cl(classes.card, classes.overview)}>
         {groups.map((group) => (
           <div key={group} className={classes.group}>
             <div className={classes.groupLabel}>
