@@ -1,4 +1,4 @@
-/* @deprecated: This file can be removed in the next major version. */
+/* @deprecated v2: This file can be removed in the next major version. */
 .ds-togglegroup {
   --dsc-togglegroup-background: var(--ds-color-surface-default);
   --dsc-togglegroup-border-width: var(--ds-border-width-default);
