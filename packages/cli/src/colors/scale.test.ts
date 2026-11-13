@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { generateColorScale, generateColorSchemes, getCssVariable } from './scale.ts';
+import { generateColorScale, generateColorSchemes } from './scale.ts';
 import { semanticColorNames, semanticColorSpec } from './specs.ts';
 
 const BASE_COLOR = '#0062BA';
@@ -46,12 +46,5 @@ describe('generateColorSchemes', () => {
     const schemes = generateColorSchemes(BASE_COLOR);
     expect(schemes.light).toEqual(generateColorScale(BASE_COLOR, 'light'));
     expect(schemes.dark).toEqual(generateColorScale(BASE_COLOR, 'dark'));
-  });
-});
-
-describe('getCssVariable', () => {
-  it('builds the variable name from color type and number', () => {
-    expect(getCssVariable('accent', 1)).toBe('--ds-color-accent-background-default');
-    expect(getCssVariable('neutral', 12)).toBe('--ds-color-neutral-base-default');
   });
 });

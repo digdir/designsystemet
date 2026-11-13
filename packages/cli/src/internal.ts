@@ -12,7 +12,6 @@ export {
   generateColorScale,
   generateColorSchemes,
   getContrastFromHex,
-  getCssVariable,
   getLuminanceFromColor,
   RESERVED_COLORS,
   type SemanticColorNames,

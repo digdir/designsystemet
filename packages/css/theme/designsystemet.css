@@ -2,7 +2,6 @@
 @layer ds.theme.color-scheme, ds.theme.color, ds.theme.forced-colors;
 /*
 build: v1.24.0
-design-tokens: v1.24.0
 
 All designsystemet.no styles are in the "ds" layer. The @layer line is optional.
 Use it to put a CSS reset before "ds" and your own customizations after it.
