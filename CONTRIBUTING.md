@@ -135,5 +135,4 @@ To make commit messages and the changelog more specific and readable, you have t
 - Fix a bug: `fix(Button): correct padding when only icon`.
 - Adding documentation: `docs(Table): added paragraph about table header and using interderminate checkboxes`.
 
-
 ![te](https://i.imgur.com/Uw0qA1O.png)
