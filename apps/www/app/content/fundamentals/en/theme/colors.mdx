@@ -29,11 +29,9 @@ More scales can be added using the [Theme Builder](https://theme.designsystemet.
 * **Group** Each color scale is divided into the groups Background, Surface, Border, Text, and Base. 
 These groups describe the areas of use for the colors. For example, the Text group should be used for text and icons.
 
-<Image
-  src="/img/fundamentals/theme/colors/fargeskala-success.png"
-  alt="Shows how color scales are divided into groups"
-  boxShadow={false}
-  caption="Shows a color scale and the 5 groups that the colors are divided into."
+<ColorScaleOverview
+  color="#068718"
+  caption="Shows a color scale and the groups that the colors are divided into. The colors are generated with the same code the Theme Builder uses."
 />
 
 * **Variant** Within each group, there are variants that describe how the colors look or should be used. 
@@ -120,11 +118,9 @@ In dark mode, these four colors become gradually lighter, with `surface-active` 
 * `surface-hover` can be used for hover states for elements or to create visual hierarchies in the Surface layer when combined with `surface-tinted` and `surface-active`.
 * `surface-active` can be used for active states for elements or to strengthen the hierarchy in the Surface layer together with `surface-tinted` and `surface-hover`.
 
-<Image
-  src="/img/fundamentals/theme/colors/color-surface.png"
-  alt="Shows how Surface-tinted looks for 7 color scales generated with the Theme Builder."
-  boxShadow={false}
-  caption="Shows how Surface-tinted looks for 7 color scales generated with the Theme Builder."
+<ColorSwatches
+  steps={['surface-tinted']}
+  caption="Shows how Surface-tinted looks for 7 color scales."
 />
 
 ### Border
@@ -136,11 +132,9 @@ The color should not be the only visual indicator that an element is interactive
 * `border-default` is used on form components or on other meaningful frames.
 * `border-strong` has higher contrast than `border-default` and can be used on frames to make elements extra visible.
 
-<Image
-  src="/img/fundamentals/theme/colors/color-border.png"
-  alt="Shows how Border-subtle and Border-default look for 8 color scales generated with the Theme Builder."
-  boxShadow={false}
-  caption="The first row shows colors with Border-subtle, while the second row shows Border-default."
+<ColorSwatches
+  steps={['border-subtle', 'border-default']}
+  caption="Shows how Border-subtle and Border-default look for 7 color scales."
 />
 
 ### Text
@@ -152,11 +146,9 @@ It also tries to preserve as much of the color saturation from the original colo
 It should be used for the main content and the primary text on a page.
 This color in the Neutral variant can be a nice color to use for most of the text.
 
-<Image
-  src="/img/fundamentals/theme/colors/color-text.png"
-  alt="Screenshot of Figma showing how Text-default and Text-subtle look for 8 different color scales generated with the Theme Builder."
-  boxShadow={false}
-  caption="Shows how Text-default and Text-subtle look for 8 different color scales generated with the Theme Builder."
+<ColorSwatches
+  steps={['text-default', 'text-subtle']}
+  caption="Shows how Text-default and Text-subtle look for 7 color scales."
 />
 
 ### Base
@@ -172,10 +164,8 @@ The `base-hover` and `base-active` colors are generated based on the lightness o
 * `base-active` can be used for active states for solid elements or to strengthen the hierarchy in the Base layer together with `base-default` and `base-hover`.
 * `base-contrast-subtle` and `base-contrast-default` are used as text and icon colors on top of the base colors from the same color scale. See the "Minimum contrast" column in the table above for which base colors they can be used on.
 
-<Image
-  src="/img/fundamentals/theme/colors/color-base.png"
-  alt="Screenshot of Figma showing how Base-default and Base-contrast-default look."
-  boxShadow={false}
+<ColorSwatches
+  steps={['base-default']}
   caption="Shows boxes with Base-default as background and Base-contrast-default as text color."
 />
 

@@ -40,6 +40,10 @@ import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type ComponentType, type JSX, type ReactNode, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RRLink, useLoaderData } from 'react-router';
+import {
+  ColorScaleOverview,
+  ColorSwatches,
+} from '~/_components/color-examples/color-examples';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
@@ -101,6 +105,8 @@ const defaultComponents = {
   ResponsiveIframe,
   Contributors,
   ColorInfoTable,
+  ColorScaleOverview,
+  ColorSwatches,
   p: (props: ParagraphProps) => <Paragraph {...props} />,
   Link: ({ href, ...props }: LinkProps) => (
     <Link {...props} asChild>

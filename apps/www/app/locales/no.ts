@@ -219,6 +219,17 @@ export default {
       normal: 'Klikk for å forstørre bilde.',
     },
   },
+  'color-examples': {
+    colors: {
+      red: 'Rød',
+      orange: 'Oransje',
+      yellow: 'Gul',
+      green: 'Grønn',
+      teal: 'Turkis',
+      blue: 'Blå',
+      purple: 'Lilla',
+    },
+  },
   'color-info-table': {
     name: 'Navn',
     usage: 'Bruksområde',
