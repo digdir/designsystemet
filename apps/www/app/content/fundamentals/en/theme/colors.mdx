@@ -43,7 +43,7 @@ For example, Tinted means the color has a hint of color in it, while Hover means
 By default, the semantic colors are designed to meet contrast requirements, regardless of which base color you have chosen. 
 This applies in particular to text colors against background and surface colors.
 
-The "Contrast" column in the [table of colors](#all-colors-in-a-color-scale) shows the contrast each color has, and against which other colors in the same color scale.
+The "Minimum contrast" column in the [table of colors](#all-colors-in-a-color-scale) shows the minimum contrast each color has, and against which other colors in the same color scale.
 
 ### You have to check the contrast of `base-default` yourself
 `base-default` is an exception. In light mode, it is always the same as the color you selected, to preserve your brand as accurately as possible. 
@@ -90,7 +90,7 @@ See also the pages on [Colors in code](/en/fundamentals/code/colors) and [Modes 
 
 ## All colors in a color scale
 Each color scale consists of a total of 16 colors, designed to cover different needs in the design.
-The table shows what each color is used for, and the contrast it has against other colors in the same color scale.
+The table shows what each color is used for, and the minimum contrast it has against other colors in the same color scale.
 
 <ColorInfoTable />
 
@@ -170,7 +170,7 @@ The `base-hover` and `base-active` colors are generated based on the lightness o
 * `base-default` can be used to color solid backgrounds of elements. The color (hex code) chosen in the theme builder is placed under `base-default`.
 * `base-hover` can be used for hover states for solid elements or to create visual hierarchies in the Base layer when combined with `base-default` and `base-active`.
 * `base-active` can be used for active states for solid elements or to strengthen the hierarchy in the Base layer together with `base-default` and `base-hover`.
-* `base-contrast-subtle` and `base-contrast-default` are used as text and icon colors on top of the base colors from the same color scale. See the "Contrast" column in the table above for which base colors they can be used on.
+* `base-contrast-subtle` and `base-contrast-default` are used as text and icon colors on top of the base colors from the same color scale. See the "Minimum contrast" column in the table above for which base colors they can be used on.
 
 <Image
   src="/img/fundamentals/theme/colors/color-base.png"

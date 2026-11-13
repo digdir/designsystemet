@@ -223,7 +223,7 @@ export default {
   'color-info-table': {
     name: 'Name',
     usage: 'Usage',
-    contrast: 'Contrast',
+    contrast: 'Minimum contrast',
     'contrast-against': '{{ratio}}:1 against',
     'all-in-group': 'all {{group}} colors',
   },

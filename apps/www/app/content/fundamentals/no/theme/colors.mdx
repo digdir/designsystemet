@@ -43,7 +43,7 @@ Tinted betyr for eksempel at fargen har et hint av farge i seg, mens Hover betyr
 Som standard er de semantiske fargene laget for å oppfylle kontrastkrav, uansett hvilken base-farge du har valgt. 
 Det gjelder særlig tekstfarger mot background- og surface-farger.
 
-Kolonnen «Kontrast» i [tabellen over fargene](#alle-fargene-i-en-fargeskala) viser hvilken kontrast hver farge har, og mot hvilke andre farger i samme fargeskala.
+Kolonnen «Minimumskontrast» i [tabellen over fargene](#alle-fargene-i-en-fargeskala) viser hvilken kontrast hver farge minst har, og mot hvilke andre farger i samme fargeskala.
 
 ### Kontrasten til `base-default` må du sjekke selv
 `base-default` er et unntak. I lys modus er fargen alltid den samme som fargen du har valgt, for å ivareta brandet ditt best mulig. 
@@ -90,7 +90,7 @@ Se også sidene om [Fargar i kode](/no/fundamentals/code/colors) og [Modes i Fig
 
 ## Alle fargene i en fargeskala
 Hver fargeskala består av totalt 16 farger, utformet for å dekke ulike behov i designet.
-Tabellen viser hva hver farge brukes til, og hvilken kontrast den har mot andre farger i samme fargeskala.
+Tabellen viser hva hver farge brukes til, og hvilken kontrast den minst har mot andre farger i samme fargeskala.
 
 <ColorInfoTable />
 
@@ -173,7 +173,7 @@ Samtidig skaper de kontrast mot background- og surface-fargene, noe som forsterk
 * `base-default` kan brukes for å fargelegge solide bakgrunner til elementer. Fargen (hex-koden) som blir valgt i temabyggeren blir plassert under `base-default`.
 * `base-hover` kan brukes til hover-tilstander for solide elementer eller til å skape visuelle hierarkier i Base-laget når den kombineres med `base-default` og `base-active`.
 * `base-active` kan brukes til active-tilstander for solide elementer eller til å forsterke hierarkiet i Base-laget sammen med `base-default` og `base-hover`.
-* `base-contrast-subtle` og `base-contrast-default` brukes som tekst- og ikonfarge oppå base-fargene fra samme fargeskala. Se kolonnen «Kontrast» i tabellen over for hvilke base-farger de kan brukes på.
+* `base-contrast-subtle` og `base-contrast-default` brukes som tekst- og ikonfarge oppå base-fargene fra samme fargeskala. Se kolonnen «Minimumskontrast» i tabellen over for hvilke base-farger de kan brukes på.
 
 <Image
   src='/img/fundamentals/theme/colors/color-base.png'

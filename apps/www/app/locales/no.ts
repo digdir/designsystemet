@@ -222,7 +222,7 @@ export default {
   'color-info-table': {
     name: 'Navn',
     usage: 'Bruksområde',
-    contrast: 'Kontrast',
+    contrast: 'Minimumskontrast',
     'contrast-against': '{{ratio}}:1 mot',
     'all-in-group': 'alle {{group}}-farger',
   },
