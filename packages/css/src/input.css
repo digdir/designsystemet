@@ -34,7 +34,7 @@
   --dsc-input-stroke-width: 0.05em;
   /* Accent color, used in checkboxes and radio */
   --dsc-input-accent-color: var(--ds-color-base-default);
-  --dsc-input-accent-color--invalid: var(--ds-color-danger-text-subtle);
+  --dsc-input-accent-color--invalid: var(--ds-color-danger-base-default);
 
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
   --_dsc-input-diagonal-1: transparent calc(48% - var(--dsc-input-stroke-width));

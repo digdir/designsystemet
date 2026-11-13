@@ -198,6 +198,7 @@ export { Popover, PopoverTrigger, PopoverTriggerContext } from './popover';
 export type { RadioProps } from './radio/radio';
 export { Radio } from './radio/radio';
 
+// @deprecated v2
 export type {
   SearchButtonProps,
   SearchClearProps,

@@ -18,6 +18,7 @@ const ATTR_TOGGLEGROUP = 'data-toggle-group';
 const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
 let IS_ARROW: boolean | undefined; // Used to prevent clicks that are a result of keyboard navigation
 
+// @deprecated v2
 const handleMutations = (root: Document, records?: MutationRecord[]) => {
   for (const r of records || [null]) {
     if (r?.attributeName === ATTR_TOGGLEGROUP) deprecate(r.target as Element);
@@ -55,7 +56,7 @@ const getRadioInFocusGroup = (e: Event) => {
   }
 };
 
-// @deprecated: Supports migration from data-toggle-group to focusgroup="radiogroup".
+// @deprecated v2: Supports migration from data-toggle-group to focusgroup="radiogroup".
 const deprecate = (el: Element) => {
   if (el.hasAttribute(ATTR_FOCUSGROUP)) return; // Ignore if already migrated
   const label = attrOrCSS(el, ATTR_TOGGLEGROUP);
@@ -70,6 +71,7 @@ const deprecate = (el: Element) => {
 onHotReload('toggle-group', () => [
   on(document, 'click', handleRadioClick, true), // Use capture to ensure we run before React and other listeners
   on(document, 'keydown', handleKeydown),
+  // @deprecated v2
   onMutation(document, handleMutations, {
     attributeFilter: [ATTR_TOGGLEGROUP],
     attributes: true,
