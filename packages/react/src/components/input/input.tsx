@@ -27,7 +27,7 @@ export type InputProps = MergeRight<
       | 'number'
       | 'password'
       | 'radio'
-      /* | "range" */
+      | 'range'
       /* | "reset" */
       | 'search'
       /* | "submit" */
