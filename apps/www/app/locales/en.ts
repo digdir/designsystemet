@@ -223,6 +223,9 @@ export default {
   'color-info-table': {
     name: 'Name',
     usage: 'Usage',
+    contrast: 'Minimum contrast',
+    'contrast-against': '{{ratio}}:1 against',
+    'all-in-group': 'all {{group}} colors',
   },
   'image-banner': {
     'play-video': 'Play video',
