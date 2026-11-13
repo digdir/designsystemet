@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.24.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5613](https://github.com/digdir/designsystemet/pull/5613))
+
 ## 1.24.0
 
 ### Patch Changes
