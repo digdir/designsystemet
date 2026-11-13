@@ -9,6 +9,10 @@ import { ColorScaleTable } from '~/_components/color-scale-table/color-scale-tab
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
+import {
+  getColorExamples,
+  usesColorExamples,
+} from '~/_utils/color-examples.server';
 import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -48,6 +52,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     lang: params.lang,
     toc: result.toc,
     stories,
+    colorExamples: usesColorExamples(fileContent) ? getColorExamples() : null,
   };
 }
 
