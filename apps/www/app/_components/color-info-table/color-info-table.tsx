@@ -1,10 +1,7 @@
-import { semanticColorSpec } from '@digdir/designsystemet/internal';
 import { Table } from '@digdir/designsystemet-react';
 import { Fragment, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-
-const specSteps = Object.values(semanticColorSpec);
-const groups = [...new Set(specSteps.map((step) => step.group))];
+import { specGroups, specSteps } from '~/_utils/color-spec';
 
 type ContrastRequirement = NonNullable<
   (typeof specSteps)[number]['minContrast']
@@ -56,7 +53,7 @@ const ContrastRequirementText = ({
   const { t, i18n } = useTranslation();
 
   const items: ReactNode[] = [];
-  for (const group of groups) {
+  for (const group of specGroups) {
     const stepsInGroup = specSteps.filter((step) => step.group === group);
     const included = stepsInGroup.filter(({ name }) => against.includes(name));
     if (included.length > 1 && included.length === stepsInGroup.length) {

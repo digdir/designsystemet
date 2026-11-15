@@ -30,12 +30,15 @@ const toHexes = (scale: Record<SemanticColorNames, { hex: CssColor }>) =>
     Object.entries(scale).map(([step, color]) => [step, color.hex]),
   ) as StepHexes;
 
+let colorExamples: ColorExample[] | undefined;
+
 /**
  * Generates the example color scales on the server (at build time when prerendering),
  * so the color generator isn't shipped to the browser. Only hex values are returned.
+ * The result is always the same, so it is only generated once.
  */
-export const getColorExamples = (): ColorExample[] =>
-  Object.entries(sampleColors).map(([name, hex]) => {
+export const getColorExamples = (): ColorExample[] => {
+  colorExamples ??= Object.entries(sampleColors).map(([name, hex]) => {
     const { light, dark } = generateColorSchemes(hex);
     return {
       name: name as SampleColorName,
@@ -43,7 +46,5 @@ export const getColorExamples = (): ColorExample[] =>
       dark: toHexes(dark),
     };
   });
-
-/** Only pages that use the color example components need the data */
-export const usesColorExamples = (mdx: string) =>
-  /<(ColorSwatches|ColorScaleOverview)\b/.test(mdx);
+  return colorExamples;
+};
