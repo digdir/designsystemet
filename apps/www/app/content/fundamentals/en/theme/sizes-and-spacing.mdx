@@ -18,18 +18,28 @@ These are developed to adapt to different needs across screen sizes and use case
 
 
 `Small` is ideal for compact interfaces where space utilization is important, such as on mobile devices, expert tools, or administrative interfaces. 
-It is recommended to use this size on websites with a base font of 16px.
+Body text is 16px in this size.
 
-`Medium` serves as the standard for most common use cases, and is recommended to use with a base font of 18px. 
+`Medium` is the default and suits most common use cases. Body text is 18px in this size. 
 This size provides a good balance between readability and space utilization and is particularly well-suited for desktop interfaces and larger display surfaces.
 
 `Large` provides increased readability and clarity. It can be used in desktop interfaces or when visibility and accessibility are important. It can also be used in a defined context on the page to highlight key elements. 
-It is recommended to use this size with a base font of 21px.
+Body text is 21px in this size.
 
-<ComponentSizeBalance caption='Many of the medium components have a fixed height of 48px.' />
+You choose a size with the `data-size` attribute. The size applies to the element and everything inside it, and changes the text size, the components and the spacing. Without `data-size`, `Medium` is used.
+
+```html
+<div data-size="sm">
+  <!-- Everything in here is Small -->
+</div>
+```
+
+The pixel values on this page apply to the default theme values and the browser's default font size (16px). The sizes are calculated in `rem`, so they follow the font size the user has chosen.
+
+<ComponentSizeBalance caption='Many of the medium components have the same height.' />
 
 Components within a specific size are designed to work together. 
-For example, many `medium` components have a height of 48px and a base font of 18px, which ensures a harmonious visual balance when placed next to each other.
+For example, many `medium` components have a minimum height of 48px and 18px text, which ensures a harmonious visual balance when placed next to each other.
 
 
 <ComponentSizeMix caption='Example where Medium and Large components are used together.' />

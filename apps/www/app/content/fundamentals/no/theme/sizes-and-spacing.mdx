@@ -19,18 +19,28 @@ Disse er utviklet for å tilpasse seg ulike behov på tvers av skjermstørrelser
 
 
 `Small` er ideell for kompakte grensesnitt der plassutnyttelse er viktig, som på mobile enheter, ekspertverktøy eller administrasjonsgrensesnitt. 
-Det er anbefalt å bruke denne størrelsen på  nettsider med en basefont på 16px.
+Brødteksten er 16px i denne størrelsen.
 
-`Medium` fungerer som standard for de fleste vanlige bruksområder, og er anbefalt å bruke sammen med en basefont på 18px. 
+`Medium` er standard og passer for de fleste vanlige bruksområder. Brødteksten er 18px i denne størrelsen. 
 Størrelsen gir en god balanse mellom lesbarhet og plassutnyttelse og egner seg spesielt godt for desktop-grensesnitt og større visningsflater.
 
 `Large` gir økt lesbarhet og tydelighet. Den kan brukes i desktop-grensesnitt eller når synlighet og tilgjengelighet er viktig. Den kan også brukes i en avgrenset kontekst på siden, for å fremheve sentrale elementer. 
-Det er anbefalt å bruke størrelsen sammen med en basefont på 21px.
+Brødteksten er 21px i denne størrelsen.
 
-<ComponentSizeBalance caption='Mange av medium-komponentene har en fast høyde på 48px.' />
+Du velger størrelse med `data-size`-attributtet. Størrelsen gjelder for elementet og alt innholdet i det, og endrer både tekststørrelsen, komponentene og avstandene. Uten `data-size` brukes `Medium`.
+
+```html
+<div data-size="sm">
+  <!-- Alt her inne er Small -->
+</div>
+```
+
+Pikselverdiene på denne siden gjelder for standardverdiene i temaet og standard skriftstørrelse i nettleseren (16px). Størrelsene regnes ut i `rem`, så de følger skriftstørrelsen brukeren har valgt.
+
+<ComponentSizeBalance caption='Mange av medium-komponentene har samme høyde.' />
 
 Komponenter innenfor en bestemt størrelse er designet for å fungere sammen. 
-For eksempel har mange `medium`-komponenter en høyde på 48px og en basefont på 18px, noe som sikrer en harmonisk visuell balanse når de plasseres ved siden av hverandre.
+For eksempel har mange `medium`-komponenter en minstehøyde på 48px og 18px tekst, noe som sikrer en harmonisk visuell balanse når de plasseres ved siden av hverandre.
 
 
 <ComponentSizeMix caption='Eksempel der Medium og Large komponenter er brukt sammen.' />
