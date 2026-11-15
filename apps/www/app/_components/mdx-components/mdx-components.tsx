@@ -44,6 +44,11 @@ import { ColorInfoTable } from '~/_components/color-info-table/color-info-table'
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
+import {
+  ComponentSizeBalance,
+  ComponentSizeMix,
+  ComponentSizes,
+} from '~/_components/size-examples/size-examples';
 import { CssVariables } from '../css-variables/css-variables';
 import { DoDont } from '../do-dont/do-dont';
 import {
@@ -101,6 +106,9 @@ const defaultComponents = {
   ResponsiveIframe,
   Contributors,
   ColorInfoTable,
+  ComponentSizeBalance,
+  ComponentSizeMix,
+  ComponentSizes,
   p: (props: ParagraphProps) => <Paragraph {...props} />,
   Link: ({ href, ...props }: LinkProps) => (
     <Link {...props} asChild>

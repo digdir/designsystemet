@@ -231,6 +231,18 @@ export default {
       purple: 'Purple',
     },
   },
+  'size-examples': {
+    button: 'Button',
+    'font-size': '{{size}} font',
+    'medium-title': 'Example with Medium components',
+    input: 'Input text',
+    device: 'Device',
+    desktop: 'Desktop',
+    mobile: 'Mobile',
+    search: 'Search',
+    'new-user': 'New user',
+    'log-in': 'Log in',
+  },
   'color-info-table': {
     name: 'Name',
     usage: 'Usage',
