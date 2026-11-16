@@ -16,7 +16,10 @@ import { PencilIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useThemeStore } from '~/_utils/theme-store';
-import type { WorkspaceConfig } from '~/_utils/theme-workspace';
+import {
+  normalizeConfig,
+  type WorkspaceConfig,
+} from '~/_utils/theme-workspace';
 import classes from './config-paste.module.css';
 
 export function ConfigPaste() {
@@ -58,7 +61,9 @@ export function ConfigPaste() {
         setErrors([t('configPaste.no-themes')]);
         return;
       }
-      setValidatedConfig({ ...validated, themes: validated.themes });
+      setValidatedConfig(
+        normalizeConfig({ ...validated, themes: validated.themes }),
+      );
     } catch (err) {
       console.error('Config validation error:', err);
       setErrors([

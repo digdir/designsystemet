@@ -1,7 +1,7 @@
-import type { ColorScale, ColorScheme, CssColor, SemanticColorNames } from '../../../../colors/index.ts';
+import type { ColorScale, ColorScheme, CssColor, SemanticColorNames, ThemeInfo } from '../../../../colors/index.ts';
 import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
-import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
+import type { ColorOverrideSchema, ColorOverrideSchemaInput } from '../../../../schemas/schema-overrides.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
 /**
@@ -32,11 +32,11 @@ export const groupByScheme = (
 };
 
 /**
- * Resolves every color scale of a theme for one color scheme: the theme's colors plus the
- * default severity colors, with `overrides.severity` and `overrides.colors` applied.
+ * Resolves every color scale of a theme for one color scheme: the theme's colors, with
+ * `overrides.severity` and `overrides.colors` applied. Only the colors in the theme are resolved,
+ * so the default severity colors are included when the theme comes from a validated config.
  *
- * This is what the token generator turns into color-scheme tokens; previews (e.g. the Figma
- * plugin) use it directly so they show the same colors the tokens end up with.
+ * This is what the token generator turns into color-scheme tokens.
  */
 export const getThemeColorScales = (
   theme: { colors: Record<string, CssColor>; overrides?: ColorOverrideSchema },
@@ -60,6 +60,23 @@ export const getThemeColorScales = (
   }
 
   return colorScales;
+};
+
+/**
+ * Resolves every color of a theme in light and dark mode, see `getThemeColorScales`.
+ *
+ * Takes a theme as it is written in a config, so previews (e.g. the theme builder) can show
+ * the colors of a config they are editing, with the same result as the generated tokens.
+ */
+export const getThemeColorSchemes = (theme: {
+  colors: Record<string, string>;
+  overrides?: ColorOverrideSchemaInput;
+}): Record<string, ThemeInfo> => {
+  const resolved = theme as Parameters<typeof getThemeColorScales>[0];
+  const light = getThemeColorScales(resolved, 'light');
+  const dark = getThemeColorScales(resolved, 'dark');
+
+  return Object.fromEntries(Object.keys(light).map((name) => [name, { light: light[name], dark: dark[name] }]));
 };
 
 const toColorNumberTokens = (colorScale: ColorScale): TokenSet => {

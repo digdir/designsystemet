@@ -1,54 +1,35 @@
-import type { CssColor } from '@digdir/designsystemet/internal';
 import { Divider, Field, Label, Select } from '@digdir/designsystemet-react';
 import { ColorTokensTable } from '@internal/components';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { styleColorVars } from '~/_utils/generate-color-vars';
+import { previewColorVars } from '~/_utils/theme-colors';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 
 export const ColorVariables = () => {
   const { t } = useTranslation();
-  const ref = useRef<HTMLDivElement>(null);
-  const { colors, colorScheme, severityColors } = useThemebuilder();
-
-  const neutralColor = colors?.find((c) => c.name === 'neutral')?.hex || '';
-  const [previewColor, setPreviewColor] = useState(colors?.[0] || '');
-
-  const style = {
-    ...styleColorVars(neutralColor as CssColor, colorScheme, 'neutral'),
-    ...styleColorVars(previewColor.hex as CssColor, colorScheme),
-  };
-
-  const allColors = [...(colors ?? []), ...severityColors];
+  const { colors, colorScheme } = useThemebuilder();
+  const [previewName, setPreviewName] = useState('');
+  const previewColor =
+    colors.find((color) => color.name === previewName) || colors[0];
 
   return (
     <>
-      {colors ? (
-        <>
-          <Field>
-            <Label>{t('overview.select-color')}</Label>
-            <Select
-              value={previewColor.name}
-              onChange={(v) => {
-                if (!colors) return;
-                const selectedColor = allColors.find(
-                  (c) => c.name === v.target.value,
-                );
-                setPreviewColor(selectedColor ?? colors[0]);
-              }}
-            >
-              {allColors.map((color) => (
-                <Select.Option key={color.name} value={color.name}>
-                  {color.name}
-                </Select.Option>
-              ))}
-            </Select>
-          </Field>
-          <Divider />
-        </>
-      ) : null}
+      <Field>
+        <Label>{t('overview.select-color')}</Label>
+        <Select
+          value={previewColor?.name}
+          onChange={(event) => setPreviewName(event.target.value)}
+        >
+          {colors.map((color) => (
+            <Select.Option key={color.name} value={color.name}>
+              {color.name}
+            </Select.Option>
+          ))}
+        </Select>
+      </Field>
+      <Divider />
 
-      <div ref={ref} style={style}>
+      <div style={previewColorVars(colors, previewColor, colorScheme)}>
         <ColorTokensTable withPreview />
       </div>
     </>

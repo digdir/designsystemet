@@ -7,14 +7,16 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { resolveThemeColors } from './theme-colors';
+import { type ColorTheme, resolveThemeColors } from './theme-colors';
 import {
   type ThemeWorkspace,
   updateActiveTheme,
   type WorkspaceTheme,
 } from './theme-workspace';
 
-type ThemeStore = ReturnType<typeof resolveThemeColors> & {
+type ThemeStore = {
+  /** Every color of the theme that is shown, in the order of the config */
+  colors: ColorTheme[];
   /** The config being edited and the theme that is shown. This is the only theme state in the theme builder. */
   workspace: ThemeWorkspace;
   setWorkspace: Dispatch<SetStateAction<ThemeWorkspace>>;
@@ -47,7 +49,7 @@ export function ThemeStoreProvider({
       theme,
       updateTheme: (update: (theme: WorkspaceTheme) => WorkspaceTheme) =>
         setWorkspace((previous) => updateActiveTheme(previous, update)),
-      ...resolveThemeColors(theme),
+      colors: resolveThemeColors(theme),
     }),
     [workspace, theme],
   );

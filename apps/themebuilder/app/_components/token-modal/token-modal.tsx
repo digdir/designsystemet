@@ -1,10 +1,7 @@
 import {
   Button,
   Dialog,
-  Field,
   Heading,
-  Input,
-  Label,
   Link,
   Paragraph,
 } from '@digdir/designsystemet-react';
@@ -20,14 +17,11 @@ import { useTokenModal } from './use-token-modal';
 export const TokenModal = () => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDialogElement>(null);
-  const { themeName, setThemeName, buildSnippet, configSnippet, themes } =
-    useTokenModal();
+  const { themeName, buildSnippet, configSnippet, themes } = useTokenModal();
   // Generating the CSS takes a moment, so only do it while the modal is open.
   const [isOpen, setIsOpen] = useState(false);
   const themeNames = Object.keys(themes);
   const hasMultipleThemes = themeNames.length > 1;
-  // What is typed in the name field. It only becomes the theme's name while it is a valid name.
-  const [typedName, setTypedName] = useState<string | null>(null);
   // Which theme to show the CSS file for, when the config has several themes
   const [cssThemeName, setCssThemeName] = useState(themeName);
   const selectedThemeName =
@@ -69,32 +63,6 @@ export const TokenModal = () => {
             </span>
           </Heading>
         </Dialog.Block>
-        {!hasMultipleThemes && (
-          <Dialog.Block>
-            <Field>
-              <Heading className={classes.modalHeader} data-size='xs' level={3}>
-                <Label>{t('themeModal.theme-name')}</Label>
-              </Heading>
-              <Field.Description>
-                {t('themeModal.theme-name-description')}
-              </Field.Description>
-              <Input
-                name='themeName'
-                value={typedName ?? themeName}
-                onBlur={() => setTypedName(null)}
-                onChange={(e) => {
-                  const value = e.currentTarget.value
-                    .replace(/\s+/g, '-')
-                    .replace(/[^A-Z0-9-]+/gi, '')
-                    .toLowerCase();
-
-                  setTypedName(value);
-                  setThemeName(value);
-                }}
-              />
-            </Field>
-          </Dialog.Block>
-        )}
         <Dialog.Block>
           {/* Two ways to use the theme, side by side: a config file for the CLI, or the generated CSS file. */}
           <div className={classes.content}>

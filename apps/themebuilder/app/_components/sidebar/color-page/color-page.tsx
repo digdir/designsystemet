@@ -11,35 +11,34 @@ import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
 import { useThemeStore } from '~/_utils/theme-store';
 import {
+  REQUIRED_COLOR,
   removeThemeColor,
-  setSeverityColor,
   setThemeColor,
+  type ThemeWorkspace,
 } from '~/_utils/theme-workspace';
-import type {
-  ColorTheme,
-  SeverityColorTheme,
-} from '~/routes/themebuilder/_utils/use-themebuilder';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { ColorInput } from '../../color-input/color-input';
 import { ColorOverrides } from '../color-overrides/color-overrides';
 import { ColorPane } from '../color-pane/color-pane';
 import classes from './color-page.module.css';
 
-type ColorEditorState = {
-  activePanel: 'add-color' | 'edit-color' | 'edit-severity' | 'none';
-  colorType: 'color' | 'neutral' | 'severity';
-  index: number;
+type ColorEditor = {
+  /** Whether the color was added when the editor opened */
+  isNew: boolean;
+  /** The name the color has in the theme */
   name: string;
-  initialName: string;
-  initialHex: string;
+  /** The name in the name field. It becomes the color's name when the editor is saved. */
+  typedName: string;
+  /** The workspace when the editor opened, which cancelling goes back to */
+  opened: ThemeWorkspace;
 };
 
 const DEFAULT_COLOR = '#0062ba';
 
 export const ColorPage = () => {
   const { t } = useTranslation();
-  const { colors, severityColors, workspace } = useThemebuilder();
-  const { updateTheme } = useThemeStore();
+  const { colors, workspace } = useThemebuilder();
+  const { setWorkspace, updateTheme } = useThemeStore();
   const confirmationRef = useRef<HTMLDialogElement>(null);
   const confirmationId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -49,19 +48,12 @@ export const ColorPage = () => {
   >(null);
   const themeCount = Object.keys(workspace.config.themes).length;
 
-  const [editorState, setEditorState] = useState<ColorEditorState>({
-    activePanel: 'none',
-    colorType: 'color',
-    index: 0,
-    name: '',
-    initialName: '',
-    initialHex: DEFAULT_COLOR,
-  });
-
+  const [editor, setEditor] = useState<ColorEditor | null>(null);
   const [color, setColor] = useColor(DEFAULT_COLOR);
+  const isOpen = editor !== null;
+
   useEffect(() => {
-    if (editorState.activePanel !== 'none' || returnFocusName.current === null)
-      return;
+    if (isOpen || returnFocusName.current === null) return;
     const target = Array.from(
       containerRef.current?.querySelectorAll<HTMLButtonElement>(
         '[data-color-name]',
@@ -74,166 +66,73 @@ export const ColorPage = () => {
       )
     )?.focus();
     returnFocusName.current = null;
-  }, [editorState.activePanel]);
+  }, [isOpen]);
 
-  const neutralIndex = colors.findIndex((c) => c.name === 'neutral');
-  const neutralColor = neutralIndex >= 0 ? colors[neutralIndex] : undefined;
-  const themeColorCount = colors.filter((c) => c.name !== 'neutral').length;
-  const committedName =
-    colors[editorState.index]?.name || editorState.initialName;
+  /* A change to a color is shown at once. The editor keeps the workspace from when it opened, so it can be cancelled. */
+  const openEditor = (name: string, hex: string, isNew = false) => {
+    setColor(ColorService.convert('hex', hex));
+    setEditor({ isNew, name, typedName: name, opened: workspace });
+  };
 
-  /** Sets the name and color of the color at `index`, or adds a color when `index` is after the last one */
-  const updateColor = (
-    hex: string,
-    name: string,
-    type: ColorEditorState['colorType'],
-    index: number,
-  ) => {
-    if (index < 0 || !hex || !name) return;
-    const current = colors[index]?.name;
+  const addColor = () => {
+    let suffix = 1;
+    while (colors.some((color) => color.name === `color-${suffix}`)) suffix++;
+    const name = `color-${suffix}`;
 
+    openEditor(name, DEFAULT_COLOR, true);
     updateTheme((theme) =>
-      type === 'severity'
-        ? setSeverityColor(theme, name as SeverityColorTheme['name'], hex)
-        : setThemeColor(theme, current, name, hex),
+      setThemeColor(theme, undefined, name, DEFAULT_COLOR),
     );
   };
 
-  const openColorEditor = (
-    colorTheme: ColorTheme,
-    index: number,
-    type: 'color' | 'neutral',
-  ) => {
-    const hexColor = colorTheme.colors.light['base-default'].hex;
-
-    setColor(ColorService.convert('hex', hexColor));
-
-    setEditorState({
-      activePanel: 'edit-color',
-      colorType: type,
-      index: index,
-      name: colorTheme.name,
-      initialName: colorTheme.name,
-      initialHex: hexColor,
-    });
-  };
-
-  const openNewColorEditor = () => {
-    let suffix = themeColorCount + 1;
-    while (colors.some((color) => color.name === `color-${suffix}`)) suffix++;
-    const newColorName = `color-${suffix}`;
-    const index = colors.length;
-
-    setColor(ColorService.convert('hex', DEFAULT_COLOR));
-
-    setEditorState({
-      activePanel: 'add-color',
-      colorType: 'color',
-      index,
-      name: newColorName,
-      initialName: newColorName,
-      initialHex: DEFAULT_COLOR,
-    });
-
-    updateColor(DEFAULT_COLOR, newColorName, 'color', index);
-  };
-
-  const openSeverityColorEditor = (
-    severityColor: SeverityColorTheme,
-    index: number,
-  ) => {
-    const hexColor = severityColor.hex;
-
-    setColor(ColorService.convert('hex', hexColor));
-
-    setEditorState({
-      activePanel: 'edit-severity',
-      colorType: 'severity',
-      index: index,
-      name: severityColor.name,
-      initialName: severityColor.name,
-      initialHex: hexColor,
-    });
-  };
-
-  const closeEditor = (focusName = committedName) => {
+  const closeEditor = (focusName = editor?.name ?? null) => {
     returnFocusName.current = focusName;
-    setEditorState((prev) => ({
-      ...prev,
-      activePanel: 'none',
-    }));
+    setEditor(null);
   };
 
-  const removeColor = (index: number) => {
-    const name = colors[index]?.name;
-    if (name) updateTheme((theme) => removeThemeColor(theme, name));
+  const rename = ({ name, typedName }: ColorEditor) => {
+    updateTheme((theme) =>
+      setThemeColor(theme, name, typedName, theme.colors[name]),
+    );
+    closeEditor(typedName);
+  };
+
+  const remove = ({ name }: ColorEditor) => {
+    updateTheme((theme) => removeThemeColor(theme, name));
+    closeEditor();
+  };
+
+  /* Adding, removing and renaming a color applies to every theme, so it is confirmed when there are several */
+  const confirm = (action: typeof pendingAction, run: () => void) => {
+    if (themeCount === 1) return run();
+    setPendingAction(action);
+    confirmationRef.current?.showModal();
   };
 
   return (
     <div className={classes.container} ref={containerRef}>
-      {editorState.activePanel === 'none' && (
+      {!editor && (
         <>
           <div className={classes.group}>
             <div className={classes.colors}>
-              {colors.map((colorTheme, index) =>
-                colorTheme.name === 'neutral' ? null : (
-                  <ColorInput
-                    key={index}
-                    color={colorTheme.colors.light['base-default'].hex}
-                    name={colorTheme.name}
-                    onClick={() => openColorEditor(colorTheme, index, 'color')}
-                  />
-                ),
-              )}
+              {colors.map((colorTheme) => (
+                <ColorInput
+                  key={colorTheme.name}
+                  color={colorTheme.hex}
+                  name={colorTheme.name}
+                  onClick={() => openEditor(colorTheme.name, colorTheme.hex)}
+                />
+              ))}
               <Button
                 data-action='add-color'
                 variant='secondary'
                 className={classes.btn}
-                onClick={() => {
-                  if (themeCount > 1) {
-                    setPendingAction('add');
-                    confirmationRef.current?.showModal();
-                  } else {
-                    openNewColorEditor();
-                  }
-                }}
+                onClick={() => confirm('add', addColor)}
                 aria-label={`${t('colorPane.add')} ${t('themeModal.color')}`}
               >
                 {t('colorPane.add')} {t('themeModal.color')}
                 <PlusIcon aria-hidden />
               </Button>
-            </div>
-          </div>
-          <Divider />
-          {neutralColor && (
-            <div className={classes.group}>
-              <div className={classes.colors}>
-                <ColorInput
-                  color={neutralColor.colors.light['base-default'].hex}
-                  name={neutralColor.name}
-                  onClick={() =>
-                    openColorEditor(neutralColor, neutralIndex, 'neutral')
-                  }
-                />
-              </div>
-            </div>
-          )}
-          <Divider />
-          <div className={classes.group}>
-            <div className={classes.groupHeader}>
-              <Heading data-size='2xs'>
-                {t('themeModal.severity-colors')}
-              </Heading>
-            </div>
-            <div className={classes.colors}>
-              {severityColors.map((severityColor, index) => (
-                <ColorInput
-                  key={severityColor.name}
-                  color={severityColor.hex}
-                  name={severityColor.name}
-                  onClick={() => openSeverityColorEditor(severityColor, index)}
-                />
-              ))}
             </div>
           </div>
           <Divider />
@@ -243,115 +142,30 @@ export const ColorPage = () => {
         </>
       )}
 
-      {(editorState.activePanel === 'add-color' ||
-        editorState.activePanel === 'edit-color') && (
+      {editor && (
         <ColorPane
-          onClose={() => {
-            if (
-              themeCount > 1 &&
-              editorState.colorType === 'color' &&
-              editorState.name !== committedName
-            ) {
-              setPendingAction('rename');
-              confirmationRef.current?.showModal();
-              return;
-            }
-            closeEditor();
-          }}
-          onRemove={() => {
-            if (editorState.colorType === 'color') {
-              if (themeCount > 1) {
-                setPendingAction('remove');
-                confirmationRef.current?.showModal();
-                return;
-              }
-              removeColor(editorState.index);
-            }
-            closeEditor();
-          }}
-          onCancel={() => {
-            if (editorState.activePanel === 'edit-color') {
-              updateColor(
-                editorState.initialHex,
-                editorState.initialName,
-                editorState.colorType,
-                editorState.index,
-              );
-            }
-            closeEditor();
-          }}
-          type={editorState.activePanel}
-          color={color}
-          name={editorState.name}
-          committedName={committedName}
-          setColor={(newColor) => {
-            setColor(newColor);
-            updateColor(
-              newColor.hex,
-              themeCount > 1 ? committedName : editorState.name,
-              editorState.colorType,
-              editorState.index,
-            );
-          }}
-          setName={(newName) => {
-            setEditorState((prev) => ({ ...prev, name: newName }));
-            if (themeCount === 1) {
-              updateColor(
-                color.hex,
-                newName,
-                editorState.colorType,
-                editorState.index,
-              );
-            }
-          }}
-          colorType={
-            editorState.colorType === 'severity'
-              ? 'neutral'
-              : editorState.colorType
+          onClose={() =>
+            editor.typedName === editor.name
+              ? closeEditor()
+              : confirm('rename', () => rename(editor))
           }
-        />
-      )}
-
-      {editorState.activePanel === 'edit-severity' && (
-        <ColorPane
-          onClose={() => {
-            closeEditor();
-          }}
-          onRemove={() => {
-            updateColor(
-              editorState.initialHex,
-              editorState.name,
-              editorState.colorType,
-              editorState.index,
-            );
-            closeEditor();
-          }}
+          onRemove={() => confirm('remove', () => remove(editor))}
           onCancel={() => {
-            updateColor(
-              editorState.initialHex,
-              editorState.initialName,
-              editorState.colorType,
-              editorState.index,
-            );
+            setWorkspace(editor.opened);
             closeEditor();
           }}
-          type='edit-color'
+          type={editor.isNew ? 'add-color' : 'edit-color'}
           color={color}
-          name={editorState.name}
-          committedName={editorState.name}
+          name={editor.typedName}
+          committedName={editor.name}
           setColor={(newColor) => {
             setColor(newColor);
-            updateColor(
-              newColor.hex,
-              editorState.name,
-              editorState.colorType,
-              editorState.index,
+            updateTheme((theme) =>
+              setThemeColor(theme, editor.name, editor.name, newColor.hex),
             );
           }}
-          setName={() => {
-            // Name changes not allowed for severity colors
-          }}
-          colorType='severity'
+          setName={(typedName) => setEditor({ ...editor, typedName })}
+          colorType={editor.name === REQUIRED_COLOR ? 'neutral' : 'color'}
         />
       )}
       <Dialog
@@ -377,13 +191,13 @@ export const ColorPage = () => {
           <Paragraph id={`${confirmationId}-description`}>
             {pendingAction === 'remove'
               ? t('colorPane.confirm-remove-description', {
-                  name: committedName,
+                  name: editor?.name,
                   count: themeCount,
                 })
               : pendingAction === 'rename'
                 ? t('colorPane.confirm-rename-description', {
-                    from: committedName,
-                    to: editorState.name,
+                    from: editor?.name,
+                    to: editor?.typedName,
                     count: themeCount,
                   })
                 : t('colorPane.confirm-add-description', { count: themeCount })}
@@ -393,20 +207,9 @@ export const ColorPage = () => {
               data-color={pendingAction === 'remove' ? 'danger' : 'accent'}
               onClick={() => {
                 confirmationRef.current?.close();
-                if (pendingAction === 'add') {
-                  openNewColorEditor();
-                } else if (pendingAction === 'remove') {
-                  removeColor(editorState.index);
-                  closeEditor();
-                } else if (pendingAction === 'rename') {
-                  updateColor(
-                    colors[editorState.index]?.hex || color.hex,
-                    editorState.name,
-                    editorState.colorType,
-                    editorState.index,
-                  );
-                  closeEditor(editorState.name);
-                }
+                if (pendingAction === 'add') addColor();
+                else if (editor && pendingAction === 'remove') remove(editor);
+                else if (editor && pendingAction === 'rename') rename(editor);
               }}
             >
               {pendingAction === 'remove' ? (

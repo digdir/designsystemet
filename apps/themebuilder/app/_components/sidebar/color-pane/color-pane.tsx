@@ -1,4 +1,3 @@
-import { RESERVED_COLORS } from '@digdir/designsystemet/internal';
 import {
   Button,
   Heading,
@@ -10,6 +9,7 @@ import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 import { ColorPicker, type IColor, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
+import { REQUIRED_COLOR } from '~/_utils/theme-workspace';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './color-pane.module.css';
 
@@ -23,7 +23,7 @@ type ColorPaneProps = {
   setName: (name: string) => void;
   onCancel: () => void;
   onRemove: () => void;
-  colorType: 'color' | 'neutral' | 'severity';
+  colorType: 'color' | 'neutral';
 };
 
 export const ColorPane = ({
@@ -46,7 +46,9 @@ export const ColorPane = ({
   const [localColor, setLocalColor] = useColor(color.hex);
 
   const { colors } = useThemebuilder();
-  const themeColorCount = colors.filter((c) => c.name !== 'neutral').length;
+  const themeColorCount = colors.filter(
+    (c) => c.name !== REQUIRED_COLOR,
+  ).length;
   const [colorError, setColorError] = useState('');
   const headingText = (() => {
     return type === 'add-color'
@@ -56,14 +58,13 @@ export const ColorPane = ({
 
   const checkNameIsValid = () => {
     if (colorType === 'neutral') return true;
-    if (colorType === 'severity') return true;
     if (!name?.trim()) {
       setColorError(t('colorPane.name-empty-error'));
       return false;
     }
 
     const nameLower = name.toLowerCase();
-    if (RESERVED_COLORS.includes(nameLower)) {
+    if (nameLower === REQUIRED_COLOR) {
       setColorError(t('colorPane.name-reserved-error'));
       return false;
     }
@@ -124,11 +125,7 @@ export const ColorPane = ({
             onRemove();
           }}
           className={cl(classes.removeBtn)}
-          hidden={
-            colorType === 'neutral' ||
-            colorType === 'severity' ||
-            (colorType === 'color' && themeColorCount <= 1)
-          }
+          hidden={colorType === 'neutral' || themeColorCount <= 1}
         >
           {t('colorPane.remove-color')}
           <TrashIcon aria-hidden />
@@ -142,12 +139,7 @@ export const ColorPane = ({
           {t('colorPane.neutral-info')}
         </Paragraph>
       )}
-      {colorType === 'severity' && (
-        <Paragraph data-size='sm' className={classes.desc}>
-          {t('colorPane.severity-info')}
-        </Paragraph>
-      )}
-      {colorType !== 'neutral' && colorType !== 'severity' && (
+      {colorType !== 'neutral' && (
         <Textfield
           placeholder={t('colorPane.name-placeholder')}
           label={t('colorPane.name')}

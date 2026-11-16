@@ -1,9 +1,4 @@
-import {
-  type ColorScheme,
-  type CssColor,
-  generateColorSchemes,
-  type ThemeInfo,
-} from '@digdir/designsystemet/internal';
+import type { ColorScheme, ThemeInfo } from '@digdir/designsystemet/internal';
 
 export const generateColorVars = (
   colors: ThemeInfo,
@@ -17,23 +12,4 @@ export const generateColorVars = (
   }
 
   return style;
-};
-
-/** Generates a record with `--ds` CSS variables for the provided color inteded to be used with `style` property */
-export const styleColorVars = (
-  color: CssColor,
-  colorScheme: ColorScheme,
-  /** Optional prefix for the CSS variable name. `--ds-color-<prefix>-<color.name>`*/
-  prefix?: string,
-) => {
-  if (!color) return {};
-
-  const vars = {} as Record<string, string>;
-
-  Object.assign(
-    vars,
-    generateColorVars(generateColorSchemes(color), colorScheme, prefix || ''),
-  );
-
-  return vars;
 };
