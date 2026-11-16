@@ -70,6 +70,13 @@
   }
 }
 
+/* The tab panel of the chosen view. Its children are spaced like the rest of the content. */
+.view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+}
+
 .panel {
   background-color: var(--ds-color-neutral-background-tinted);
   border: 1px solid var(--ds-color-neutral-border-subtle);
