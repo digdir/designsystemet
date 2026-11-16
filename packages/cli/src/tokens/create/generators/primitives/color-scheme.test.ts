@@ -195,7 +195,7 @@ describe('getThemeColorScales', () => {
       }
     });
 
-    it('applies the deprecated color overrides after the steps', () => {
+    it('applies the color overrides after the steps', () => {
       const overrides: ColorOverrideSchema = {
         colors: { accent: { 'text-subtle': { dark: '#222222' }, 'border-subtle': { dark: '#333333' } } },
       };
@@ -207,7 +207,7 @@ describe('getThemeColorScales', () => {
       expect(dark['background-default'].hex).toBe('#000000');
     });
 
-    it('replaces a severity color with steps by the deprecated severity override', () => {
+    it('replaces a severity color with steps by the severity override', () => {
       const severityColors = colorsSchema.parse({
         neutral: NEUTRAL,
         accent: ACCENT,

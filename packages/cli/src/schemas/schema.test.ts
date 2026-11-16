@@ -1,7 +1,6 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import { type ConfigSchemaThemeInput, configSchema, externalConfigSchema, themesSchema } from './schema.ts';
-import { warnDeprecatedOverrides } from './schema-overrides.ts';
 
 const baseTheme: ConfigSchemaThemeInput = {
   colors: { neutral: '#444444', accent: '#0062BA' },
@@ -170,9 +169,16 @@ describe('themeSchema color steps', () => {
 
     expect(result.success).toBe(true);
     expect(result.data?.a.colors.accent).toEqual(accent);
-    expect(
-      externalConfigSchema.safeParse({ themes: { a: { ...baseTheme, colors: colorsWith(accent) } } }).success,
-    ).toBe(true);
+  });
+
+  it('is internal: the public config only accepts a hex color', () => {
+    const publicTheme = (accent: unknown) => ({ themes: { a: { colors: colorsWith(accent) } } });
+
+    expect(externalConfigSchema.safeParse(publicTheme('#0062BA')).success).toBe(true);
+
+    const result = externalConfigSchema.safeParse(publicTheme({ 'base-default': { light: '#0062BA' } }));
+    expect(result.success).toBe(false);
+    expect(result.error?.issues.map((issue) => issue.path.join('.'))).toEqual(['themes.a.colors.accent']);
   });
 
   it.each([
@@ -200,37 +206,6 @@ describe('themeSchema color steps', () => {
     const result = parseThemes({ a: { ...baseTheme, colors: { accent: { 'base-default': { light: '#0062BA' } } } } });
 
     expect(result.success).toBe(false);
-  });
-});
-
-describe('warnDeprecatedOverrides', () => {
-  it('warns once per deprecated color override, naming the themes that use it', () => {
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-
-    warnDeprecatedOverrides({
-      themes: {
-        a: { overrides: { colors: {}, linkVisited: {} } },
-        b: { overrides: { colors: {}, severity: {} } },
-        c: {},
-      },
-    });
-
-    expect(warn.mock.calls.map(([message]) => String(message))).toEqual([
-      expect.stringContaining('"overrides.colors" (in themes "a", "b") is deprecated'),
-      expect.stringContaining('"overrides.severity" (in theme "b") is deprecated'),
-    ]);
-    warn.mockRestore();
-  });
-
-  it('does not warn without color overrides, or about a config that is not an object yet', () => {
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-
-    warnDeprecatedOverrides({ themes: { a: { overrides: { focus: {} } }, b: null } });
-    warnDeprecatedOverrides({ themes: 'not themes' });
-    warnDeprecatedOverrides({});
-
-    expect(warn).not.toHaveBeenCalled();
-    warn.mockRestore();
   });
 });
 

@@ -35,7 +35,7 @@ export const groupByScheme = (
 /**
  * Resolves every color scale of a theme for one color scheme: the theme's colors plus the
  * default severity colors. Each scale is generated from the color's base color, then the steps
- * the color sets itself are applied, then the deprecated `overrides.severity` and `overrides.colors`.
+ * the color sets itself are applied, then `overrides.severity` and `overrides.colors`.
  *
  * This is what the token generator turns into color-scheme tokens; previews (e.g. the Figma
  * plugin) use it directly so they show the same colors the tokens end up with.
@@ -45,7 +45,7 @@ export const getThemeColorScales = (
   colorScheme: ColorScheme,
 ): Record<string, ColorScale> => {
   const { overrides } = theme;
-  // Deprecated: `overrides.severity` replaces the whole color, including any steps it sets.
+  // `overrides.severity` replaces the whole color, including any steps it sets.
   const colors: Record<string, ColorDefinition | CssColor> = { ...theme.colors, ...(overrides?.severity || {}) };
 
   const colorSteps = groupByScheme(

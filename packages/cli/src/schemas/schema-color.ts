@@ -59,9 +59,12 @@ export const colorDefinitionSchema = z
     'A color. Either a hex color, which the whole color scale is generated from, or an object with the color steps of the scale, which lets you set each step in light and dark mode.',
   );
 
-/** A color as written in the config: a base color, or the steps of its scale. */
+/**
+ * A color in the internal config: a base color, or the steps of its scale.
+ * The public config only takes a base color, see {@link externalColorsSchema}.
+ */
 export type ColorDefinition = z.infer<typeof colorDefinitionSchema>;
-/** The steps of a color scale as written in the config. */
+/** The steps of a color scale in the internal config. */
 export type ColorSteps = z.infer<typeof colorStepsSchema>;
 
 /** The base color of a color, which its scale is generated from: the color itself, or its `base-default` in light. */
@@ -81,11 +84,26 @@ export const colorNameSchema = z
   })
   .describe('The name of a color, used in token paths and CSS variables.');
 
+const requireNeutral = {
+  check: (colors: Record<string, unknown>) => Object.hasOwn(colors, 'neutral'),
+  message: 'Theme colors must include a "neutral" color.',
+};
+
+/** The colors of a theme in the internal config, where a color can also be the steps of its scale. */
 export const colorsSchema = z
   .record(colorNameSchema, colorDefinitionSchema)
-  .refine((c) => Object.hasOwn(c, 'neutral'), {
-    message: 'Theme colors must include a "neutral" color.',
-  })
+  .refine(requireNeutral.check, { message: requireNeutral.message })
+  // Adds the default severity colors that are missing, and moves all severity colors last.
+  .transform(addSeverityColors)
+  .meta({ description: 'Defines the colors for this theme' });
+
+/**
+ * The colors of a theme in the public config: only base colors. Color steps are internal until they are
+ * exposed here; in the public config, steps are set with `overrides.colors`.
+ */
+export const externalColorsSchema = z
+  .record(colorNameSchema, colorSchema)
+  .refine(requireNeutral.check, { message: requireNeutral.message })
   // Adds the default severity colors that are missing, and moves all severity colors last.
   .transform(addSeverityColors)
   .meta({ description: 'Defines the colors for this theme' });

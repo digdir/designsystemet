@@ -14,7 +14,6 @@ import {
   type ExternalConfigSchemaInput,
   externalConfigSchema,
 } from '../src/schemas/schema.ts';
-import { warnDeprecatedOverrides } from '../src/schemas/schema-overrides.ts';
 import { buildTokens, createTypesFromTokens } from '../src/tokens/build.ts';
 import { createTokens, getTokenSetDimensions, systemTokenToFiles, tokenSetsToFiles } from '../src/tokens/create.ts';
 import { formatThemeCSS } from '../src/tokens/format.ts';
@@ -32,7 +31,6 @@ import {
   type Location,
   locate,
 } from '../src/utils/paths.ts';
-import { stringifyConfig } from '../src/utils/stringify-config.ts';
 import { DEFAULT_CONFIG_FILEPATH, getConfigFile, requireThemes } from './config.ts';
 import { DEFAULT_TOKENS_CREATE_DIR, makeTokenCommands } from './deprecated.ts';
 import { configOption, dryOption, verboseOption } from './options.ts';
@@ -82,7 +80,6 @@ program
       : await checkAutomigrate(configFile, configFilePath, opts.yes);
 
     const parsedConfig = parseConfig<ExternalConfigSchemaInput>(updatedConfigFile);
-    warnDeprecatedOverrides(parsedConfig);
 
     // This command only reads `output`. If `outDir` or `clean` are still in the config, because the migration was
     // declined or skipped, stop before anything is cleaned or written instead of silently ignoring them.
@@ -242,9 +239,7 @@ program.addCommand(makeTokenCommands({ createDesignTokens, buildCss }));
 
 program
   .command('generate-config-from-tokens')
-  .description(
-    'Generate a config file from existing design tokens. Colors are written as base colors only, so color steps changed by hand in the tokens are not included.',
-  )
+  .description('Generate a config file from existing design tokens. Will not include overrides.')
   .option('-d, --dir <string>', 'Path to design tokens directory', DEFAULT_TOKENS_CREATE_DIR)
   .option('-o, --out <string>', 'Output path for config file', DEFAULT_CONFIG_FILEPATH)
   .addOption(dryOption('Dry run - show config without writing file'))
@@ -264,11 +259,11 @@ program
       if (dry) {
         console.log();
         console.log('Generated config (dry run):');
-        console.log(stringifyConfig(config));
+        console.log(JSON.stringify(config, null, 2));
       }
 
       if (configFilePath) {
-        const configJson = stringifyConfig(config);
+        const configJson = JSON.stringify(config, null, 2);
         await dsfs.writeFile(configFilePath, configJson);
         console.log();
         console.log(`\n✅ Config file written to ${pc.blue(configFilePath)}`);
