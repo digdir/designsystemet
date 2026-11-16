@@ -68,7 +68,6 @@ export default {
     colorsystem: 'Colour system',
     colors: 'Colours',
     dimensions: 'Dimensions',
-    variables: 'Variables',
   },
   colorPreview: {
     title: 'See your colours in use',
@@ -150,8 +149,6 @@ export default {
     label: 'Appearance',
     light: 'Light',
     dark: 'Dark',
-    'set-to': 'Set to',
-    view: 'view',
   },
   colorGroup: {
     'see-more': 'See more about {{namespace}} {{color}}',
@@ -198,6 +195,8 @@ export default {
   },
   overrides: {
     heading: 'Color Overrides',
+    'invalid-hex': 'Enter a valid hex colour, for example #0062BA.',
+    'color-picker': 'colour picker',
     description:
       'Override specific token colors for light and dark modes. Make sure to check contrasts after changes.',
   },

@@ -66,7 +66,6 @@ export default {
     colorsystem: 'Fargesystem',
     colors: 'Farger',
     dimensions: 'Dimensjoner',
-    variables: 'Variabler',
   },
   colorPreview: {
     title: 'Se fargene dine i bruk',
@@ -148,8 +147,6 @@ export default {
     label: 'Utseende',
     light: 'Lys',
     dark: 'Mørk',
-    'set-to': 'Sett til',
-    view: 'visning',
   },
   colorGroup: {
     'see-more': 'Se mer om {{namespace}} {{color}}',
@@ -196,6 +193,8 @@ export default {
   },
   overrides: {
     heading: 'Fargeoverstyringer',
+    'invalid-hex': 'Skriv inn en gyldig hex-farge, for eksempel #0062BA.',
+    'color-picker': 'fargevelger',
     description:
       'Overstyr spesifikke tokenfarger for lys og mørk modus. Sørg for å sjekke kontraster etter endringer.',
   },

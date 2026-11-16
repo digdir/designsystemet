@@ -156,11 +156,11 @@ export function ConfigPaste() {
                     </Paragraph>
                     <div className={classes.colorPreview}>
                       {themeConfig.colors &&
-                        Object.values(themeConfig.colors)
+                        Object.entries(themeConfig.colors)
                           .slice(0, 7)
-                          .map((color, idx) => (
+                          .map(([name, color]) => (
                             <div
-                              key={idx}
+                              key={name}
                               className={classes.colorDot}
                               style={{ backgroundColor: color }}
                               title={color}

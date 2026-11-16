@@ -3,7 +3,6 @@ import type {
   ThemeInfo,
 } from '@digdir/designsystemet/internal';
 import cl from 'clsx/lite';
-import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useColorModalContext } from '~/_components/color-modal/color-modal-context';
 import { useThemebuilder } from '~/_hooks/use-themebuilder';
@@ -34,28 +33,27 @@ export const ColorGroup = ({
       {header && <div className={cl(classes.header)}>{header}</div>}
       {header && names && (
         <div className={classes.names}>
-          {names.map((name, index) => (
-            <div key={index + 'name' + namespace}>{name}</div>
+          {names.map((name) => (
+            <div key={name}>{name}</div>
           ))}
         </div>
       )}
 
       <div className={cl(classes.colors)}>
-        {colorNames.map((colorName, index) => {
+        {colorNames.map((colorName) => {
           const color = colorScale[colorScheme][colorName];
           const { hex } = color;
           return (
-            <Fragment key={index + 'fragment' + namespace}>
-              <ColorButton
-                color={hex}
-                colorName={colorName}
-                aria-label={t('colorGroup.see-more', {
-                  namespace,
-                  color: color?.displayName,
-                })}
-                onClick={() => openColorModal(color, namespace)}
-              />
-            </Fragment>
+            <ColorButton
+              key={colorName}
+              color={hex}
+              colorName={colorName}
+              aria-label={t('colorGroup.see-more', {
+                namespace,
+                color: color?.displayName,
+              })}
+              onClick={() => openColorModal(color, namespace)}
+            />
           );
         })}
       </div>
