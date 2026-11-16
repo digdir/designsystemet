@@ -2,11 +2,10 @@ import {
   type SemanticColorNames,
   semanticColorSpec,
 } from '@digdir/designsystemet/internal';
-import { Paragraph } from '@digdir/designsystemet-react';
-import cl from 'clsx/lite';
 import type { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
+import { ExampleFigure } from '~/_components/example-figure/example-figure';
 import type {
   ColorExample,
   SampleColorName,
@@ -43,12 +42,6 @@ function assertSteps(steps: unknown): asserts steps is SemanticColorNames[] {
     );
   }
 }
-
-const Caption = ({ children }: { children: string }) => (
-  <Paragraph className={classes.caption} data-size='sm' asChild>
-    <figcaption>{children}</figcaption>
-  </Paragraph>
-);
 
 /** CSS variables with the light and dark value of a step, used with `light-dark()` in the CSS */
 const stepVars = (
@@ -111,28 +104,25 @@ export const ColorSwatches = ({ steps, caption }: ColorSwatchesProps) => {
   assertSteps(steps);
 
   return (
-    <figure className={classes.figure}>
-      <div className={cl(classes.card, classes.rows)}>
-        {steps.map((step) => (
-          <div key={step} className={classes.row}>
-            <code className={classes.rowLabel}>{step}</code>
-            <div className={classes.swatches}>
-              {sampleScales.map((scheme) => (
-                <div
-                  key={scheme.name}
-                  className={classes.swatch}
-                  data-group={semanticColorSpec[step].group}
-                  style={getSwatchVars(scheme, step)}
-                >
-                  {t(`color-examples.colors.${scheme.name}`)}
-                </div>
-              ))}
-            </div>
+    <ExampleFigure caption={caption} className={classes.rows}>
+      {steps.map((step) => (
+        <div key={step} className={classes.row}>
+          <code className={classes.rowLabel}>{step}</code>
+          <div className={classes.swatches}>
+            {sampleScales.map((scheme) => (
+              <div
+                key={scheme.name}
+                className={classes.swatch}
+                data-group={semanticColorSpec[step].group}
+                style={getSwatchVars(scheme, step)}
+              >
+                {t(`color-examples.colors.${scheme.name}`)}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      {caption && <Caption>{caption}</Caption>}
-    </figure>
+        </div>
+      ))}
+    </ExampleFigure>
   );
 };
 
@@ -159,32 +149,29 @@ export const ColorScaleOverview = ({
   }
 
   return (
-    <figure className={classes.figure}>
-      <div className={cl(classes.card, classes.overview)}>
-        {specGroups.map((group) => (
-          <div key={group} className={classes.group}>
-            <div className={classes.groupLabel}>
-              {group.charAt(0).toUpperCase() + group.slice(1)}
-            </div>
-            <div className={classes.groupSteps}>
-              {specSteps
-                .filter((step) => step.group === group)
-                .map(({ name }) => (
-                  <div key={name} className={classes.step}>
-                    <div
-                      className={classes.stepColor}
-                      style={stepVars(scheme, 'bg', name)}
-                    />
-                    <span className={classes.stepLabel}>
-                      {name.replace(`${group}-`, '')}
-                    </span>
-                  </div>
-                ))}
-            </div>
+    <ExampleFigure caption={caption} className={classes.overview}>
+      {specGroups.map((group) => (
+        <div key={group} className={classes.group}>
+          <div className={classes.groupLabel}>
+            {group.charAt(0).toUpperCase() + group.slice(1)}
           </div>
-        ))}
-      </div>
-      {caption && <Caption>{caption}</Caption>}
-    </figure>
+          <div className={classes.groupSteps}>
+            {specSteps
+              .filter((step) => step.group === group)
+              .map(({ name }) => (
+                <div key={name} className={classes.step}>
+                  <div
+                    className={classes.stepColor}
+                    style={stepVars(scheme, 'bg', name)}
+                  />
+                  <span className={classes.stepLabel}>
+                    {name.replace(`${group}-`, '')}
+                  </span>
+                </div>
+              ))}
+          </div>
+        </div>
+      ))}
+    </ExampleFigure>
   );
 };
