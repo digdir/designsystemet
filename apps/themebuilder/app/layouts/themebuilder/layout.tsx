@@ -4,7 +4,6 @@ import { type ReactNode, useId } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppearanceToggle } from '~/_components/appearance-toggle/appearance-toggle';
 import { ColorContrasts } from '~/_components/color-contrasts/color-contrasts';
-import { ColorModalProvider } from '~/_components/color-modal/color-modal-context';
 import { ColorPreview } from '~/_components/color-preview/color-preview';
 import { ColorTokens } from '~/_components/color-tokens/color-tokens';
 import { Colors } from '~/_components/colors/colors';
@@ -13,7 +12,7 @@ import { ExamplesComponents } from '~/_components/examples-components/examples-c
 import { PageHeader } from '~/_components/page-header/page-header';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import { ViewTabs, viewTabId } from '~/_components/view-tabs/view-tabs';
-import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { useColorScheme } from '~/_hooks/use-color-scheme';
 import { useView, type ViewName } from '~/_hooks/use-view';
 import { useThemeStore } from '~/model/theme-store';
 import classes from './layout.module.css';
@@ -40,7 +39,7 @@ export const ThemebuilderLayout = () => {
   ];
 
   return (
-    <ColorModalProvider>
+    <>
       <PageHeader>
         <ViewTabs
           id={tabsId}
@@ -93,12 +92,12 @@ export const ThemebuilderLayout = () => {
           </div>
         </div>
       </main>
-    </ColorModalProvider>
+    </>
   );
 };
 
 const ColorSystemView = () => {
-  const { colorScheme } = useThemebuilder();
+  const [colorScheme] = useColorScheme();
 
   return (
     <>
@@ -124,14 +123,11 @@ const ColorSystemView = () => {
 };
 
 const ExamplesView = () => {
-  const { colorScheme, baseBorderRadius } = useThemebuilder();
+  const [colorScheme] = useColorScheme();
 
   return (
     <div className={classes.basicPanel} data-color-scheme={colorScheme}>
-      <ExamplesComponents
-        colorScheme={colorScheme}
-        borderRadius={baseBorderRadius}
-      />
+      <ExamplesComponents />
     </div>
   );
 };

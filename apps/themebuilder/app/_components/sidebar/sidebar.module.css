@@ -24,9 +24,10 @@
   }
 }
 
+/* On low screens the opened editor fills the window from top to bottom, instead of having the height of `.sidebar` */
 @media screen and (max-height: 1080px) {
   .showSidebar {
-    height: calc(100vh - 40px - var(--sidebar-height));
+    height: auto;
   }
 }
 
@@ -72,15 +73,6 @@
   }
 }
 
-.appearance {
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-  background-color: var(--ds-color-neutral-background-tinted);
-
-  & h4 {
-    margin-bottom: var(--ds-size-2);
-  }
-}
-
 .toggle {
   position: fixed;
   top: 120px;
@@ -109,8 +101,6 @@
 }
 
 .modal {
-  /* --dsc-dialog-spacing: var(--ds-size-2); */
-
   min-height: 90vh;
   flex-direction: column;
 
@@ -127,22 +117,4 @@
     height: 80vh;
     padding: 0;
   }
-
-  & .tabContent {
-    overflow-x: none;
-    overflow-y: none;
-  }
-
-  /* & .tabPanel {
-    padding: var(--ds-size-4) 0;
-  } */
-}
-
-.configButton {
-  display: block;
-}
-
-.configDialog {
-  width: 90vw;
-  max-width: 1200px;
 }

@@ -7,12 +7,11 @@ import {
 } from '@digdir/designsystemet-react';
 import { PencilIcon, PlusIcon, TrashIcon } from '@navikt/aksel-icons';
 import { useEffect, useId, useRef, useState } from 'react';
-import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import { useThemeStore } from '~/model/theme-store';
 import {
   canRenameColor,
+  newColorName,
   REQUIRED_COLOR,
   removeThemeColor,
   setThemeColor,
@@ -35,21 +34,43 @@ type ColorEditor = {
 
 const DEFAULT_COLOR = '#0062ba';
 
+type Action = 'add' | 'remove' | 'rename';
+
+/* Adding, removing and renaming a color applies to every theme, so it is confirmed when there are several */
+const confirmations = {
+  add: {
+    title: 'colorPane.confirm-add-title',
+    description: 'colorPane.confirm-add-description',
+    label: 'colorPane.confirm-add',
+    Icon: PlusIcon,
+  },
+  remove: {
+    title: 'colorPane.confirm-remove-title',
+    description: 'colorPane.confirm-remove-description',
+    label: 'colorPane.confirm-remove',
+    Icon: TrashIcon,
+  },
+  rename: {
+    title: 'colorPane.confirm-rename-title',
+    description: 'colorPane.confirm-rename-description',
+    label: 'colorPane.confirm-rename',
+    Icon: PencilIcon,
+  },
+} as const;
+
+/** The colors of the theme, and the editor for the one that is being edited */
 export const ColorPage = () => {
   const { t } = useTranslation();
-  const { colors, workspace } = useThemebuilder();
-  const { updateTheme } = useThemeStore();
+  const { colors, workspace, updateTheme } = useThemeStore();
   const confirmationRef = useRef<HTMLDialogElement>(null);
   const confirmationId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const returnFocusName = useRef<string | null>(null);
-  const [pendingAction, setPendingAction] = useState<
-    'add' | 'remove' | 'rename' | null
-  >(null);
+  /* The action the confirmation dialog asks about */
+  const [confirming, setConfirming] = useState<Action>('add');
   const themeCount = Object.keys(workspace.config.themes).length;
 
   const [editor, setEditor] = useState<ColorEditor | null>(null);
-  const [color, setColor] = useColor(DEFAULT_COLOR);
   const isOpen = editor !== null;
 
   useEffect(() => {
@@ -70,45 +91,43 @@ export const ColorPage = () => {
 
   /* A change of the base color is shown at once, so the editor keeps the color it opened with to be able to cancel.
    * The name is only changed when the editor is saved. */
-  const openEditor = (name: string, hex: string, isNew = false) => {
-    setColor(ColorService.convert('hex', hex));
+  const openEditor = (name: string, hex: string, isNew = false) =>
     setEditor({ isNew, name, typedName: name, initialHex: hex });
-  };
-
-  const addColor = () => {
-    let suffix = 1;
-    while (colors.some((color) => color.name === `color-${suffix}`)) suffix++;
-    const name = `color-${suffix}`;
-
-    openEditor(name, DEFAULT_COLOR, true);
-    updateTheme((theme) =>
-      setThemeColor(theme, undefined, name, DEFAULT_COLOR),
-    );
-  };
 
   const closeEditor = (focusName = editor?.name ?? null) => {
     returnFocusName.current = focusName;
     setEditor(null);
   };
 
-  const rename = ({ name, typedName }: ColorEditor) => {
-    updateTheme((theme) =>
-      setThemeColor(theme, name, typedName, theme.colors[name]),
-    );
-    closeEditor(typedName);
+  const setHex = (name: string, hex: string) =>
+    updateTheme((theme) => setThemeColor(theme, name, name, hex));
+
+  const run = (action: Action) => {
+    if (action === 'add') {
+      const name = newColorName(colors.map((color) => color.name));
+      updateTheme((theme) =>
+        setThemeColor(theme, undefined, name, DEFAULT_COLOR),
+      );
+      openEditor(name, DEFAULT_COLOR, true);
+    } else if (editor && action === 'remove') {
+      updateTheme((theme) => removeThemeColor(theme, editor.name));
+      closeEditor();
+    } else if (editor) {
+      const { name, typedName } = editor;
+      updateTheme((theme) =>
+        setThemeColor(theme, name, typedName, theme.colors[name]),
+      );
+      closeEditor(typedName);
+    }
   };
 
-  const remove = ({ name }: ColorEditor) => {
-    updateTheme((theme) => removeThemeColor(theme, name));
-    closeEditor();
-  };
-
-  /* Adding, removing and renaming a color applies to every theme, so it is confirmed when there are several */
-  const confirm = (action: typeof pendingAction, run: () => void) => {
-    if (themeCount === 1) return run();
-    setPendingAction(action);
+  const confirm = (action: Action) => {
+    if (themeCount === 1) return run(action);
+    setConfirming(action);
     confirmationRef.current?.showModal();
   };
+
+  const confirmation = confirmations[confirming];
 
   return (
     <div className={classes.container} ref={containerRef}>
@@ -128,10 +147,9 @@ export const ColorPage = () => {
                 data-action='add-color'
                 variant='secondary'
                 className={classes.btn}
-                onClick={() => confirm('add', addColor)}
-                aria-label={`${t('colorPane.add')} ${t('themeModal.color')}`}
+                onClick={() => confirm('add')}
               >
-                {t('colorPane.add')} {t('themeModal.color')}
+                {t('colorPane.add-color')}
                 <PlusIcon aria-hidden />
               </Button>
             </div>
@@ -145,29 +163,23 @@ export const ColorPage = () => {
 
       {editor && (
         <ColorPane
-          onClose={() =>
-            editor.typedName === editor.name
-              ? closeEditor()
-              : confirm('rename', () => rename(editor))
+          isNew={editor.isNew}
+          hex={
+            colors.find((color) => color.name === editor.name)?.hex ??
+            editor.initialHex
           }
-          onRemove={() => confirm('remove', () => remove(editor))}
+          onColorChange={(hex) => setHex(editor.name, hex)}
+          name={editor.typedName}
+          setName={(typedName) => setEditor({ ...editor, typedName })}
+          committedName={editor.name}
+          onSave={() =>
+            editor.typedName === editor.name ? closeEditor() : confirm('rename')
+          }
           onCancel={() => {
-            updateTheme((theme) =>
-              setThemeColor(theme, editor.name, editor.name, editor.initialHex),
-            );
+            setHex(editor.name, editor.initialHex);
             closeEditor();
           }}
-          type={editor.isNew ? 'add-color' : 'edit-color'}
-          color={color}
-          name={editor.typedName}
-          committedName={editor.name}
-          setColor={(newColor) => {
-            setColor(newColor);
-            updateTheme((theme) =>
-              setThemeColor(theme, editor.name, editor.name, newColor.hex),
-            );
-          }}
-          setName={(typedName) => setEditor({ ...editor, typedName })}
+          onRemove={() => confirm('remove')}
           canRename={canRenameColor(editor.name)}
           canRemove={editor.name !== REQUIRED_COLOR}
           info={
@@ -184,64 +196,37 @@ export const ColorPage = () => {
         closedby='any'
         aria-labelledby={`${confirmationId}-heading`}
         aria-describedby={`${confirmationId}-description`}
-        onClose={() => setPendingAction(null)}
-        id='color-dialog'
+        id={confirmationId}
       >
         <Dialog.Block>
           <Heading id={`${confirmationId}-heading`} level={2} data-size='sm'>
-            {t(
-              pendingAction === 'remove'
-                ? 'colorPane.confirm-remove-title'
-                : pendingAction === 'rename'
-                  ? 'colorPane.confirm-rename-title'
-                  : 'colorPane.confirm-add-title',
-            )}
+            {t(confirmation.title)}
           </Heading>
         </Dialog.Block>
         <Dialog.Block>
           <Paragraph id={`${confirmationId}-description`}>
-            {pendingAction === 'remove'
-              ? t('colorPane.confirm-remove-description', {
-                  name: editor?.name,
-                  count: themeCount,
-                })
-              : pendingAction === 'rename'
-                ? t('colorPane.confirm-rename-description', {
-                    from: editor?.name,
-                    to: editor?.typedName,
-                    count: themeCount,
-                  })
-                : t('colorPane.confirm-add-description', { count: themeCount })}
+            {t(confirmation.description, {
+              name: editor?.name,
+              from: editor?.name,
+              to: editor?.typedName,
+              count: themeCount,
+            })}
           </Paragraph>
           <div className={classes.confirmationActions}>
             <Button
-              data-color={pendingAction === 'remove' ? 'danger' : 'accent'}
+              data-color={confirming === 'remove' ? 'danger' : 'accent'}
               onClick={() => {
                 confirmationRef.current?.close();
-                if (pendingAction === 'add') addColor();
-                else if (editor && pendingAction === 'remove') remove(editor);
-                else if (editor && pendingAction === 'rename') rename(editor);
+                run(confirming);
               }}
             >
-              {pendingAction === 'remove' ? (
-                <TrashIcon aria-hidden />
-              ) : pendingAction === 'rename' ? (
-                <PencilIcon aria-hidden />
-              ) : (
-                <PlusIcon aria-hidden />
-              )}
-              {t(
-                pendingAction === 'remove'
-                  ? 'colorPane.confirm-remove'
-                  : pendingAction === 'rename'
-                    ? 'colorPane.confirm-rename'
-                    : 'colorPane.confirm-add',
-              )}
+              <confirmation.Icon aria-hidden />
+              {t(confirmation.label)}
             </Button>
             <Button
               variant='secondary'
               command='close'
-              commandfor='color-dialog'
+              commandfor={confirmationId}
             >
               {t('colorPane.cancel')}
             </Button>

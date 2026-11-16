@@ -11,36 +11,30 @@ import {
   Table,
 } from '@digdir/designsystemet-react';
 import { ClipboardButton } from '@internal/components';
-import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import classes from './color-modal.module.css';
 import { capitalizeFirstLetter, getColorCombinations } from './util';
 
 type ColorModalProps = {
-  colorModalRef: React.Ref<HTMLDialogElement> | null;
+  /** The name of the color the step belongs to */
   namespace: string;
   color: Color;
+  onClose: () => void;
 };
 
-export const ColorModal = ({
-  colorModalRef,
-  namespace,
-  color,
-}: ColorModalProps) => {
+/** A dialog with details about one step of a color. It is open while it is rendered. */
+export const ColorModal = ({ namespace, color, onClose }: ColorModalProps) => {
   const { displayName, name, number, hex } = color;
-  const [convertedColor, setConvertedColor] = useState<string>(
-    convertColor(hex, 'oklch'),
-  );
+  const [format, setFormat] = useState('oklch');
   const { t } = useTranslation();
 
+  const convertedColor = convertColor(hex, format);
   const cssVariable = `--ds-color-${name}`;
-  const handleColorFormat = (event: ChangeEvent<HTMLSelectElement>) => {
-    setConvertedColor(convertColor(hex, event.target.value));
-  };
+  const combinations = getColorCombinations(number);
 
   return (
-    <Dialog ref={colorModalRef} closedby='any' style={{ maxWidth: 650 }}>
+    <Dialog open closedby='any' className={classes.dialog} onClose={onClose}>
       <Dialog.Block>
         <Heading data-size='xs'>
           {`${capitalizeFirstLetter(namespace)} ${displayName}`}
@@ -54,19 +48,10 @@ export const ColorModal = ({
         <Paragraph data-size='sm' className={classes.description}>
           {t(`color-metadata.${name}.long`)}
         </Paragraph>
-        <Table
-          data-size='sm'
-          style={
-            {
-              '--dsc-table-border-width': '0',
-              '--dsc-table-padding':
-                'var(--ds-size-2) var(--ds-size-4) var(--ds-size-2) 0',
-            } as React.CSSProperties
-          }
-        >
+        <Table data-size='sm' className={classes.table}>
           <tbody>
             <tr>
-              <th scope='row' style={{ width: '20ch' }}>
+              <th scope='row' className={classes.label}>
                 {t('color-modal.hexcode')}
               </th>
               <td>
@@ -77,8 +62,8 @@ export const ColorModal = ({
             <tr>
               <th scope='row'>
                 <Select
-                  defaultValue='oklch'
-                  onChange={handleColorFormat}
+                  value={format}
+                  onChange={(event) => setFormat(event.target.value)}
                   aria-label={t('color-modal.colorformat')}
                 >
                   <Select.Option value='hct'>HCT</Select.Option>
@@ -115,13 +100,10 @@ export const ColorModal = ({
               <th scope='row'>{t('color-modal.relative-luminance')}</th>
               <td>{getLuminanceFromColor(hex).toFixed(3)}</td>
             </tr>
-            {number !== 9 && number !== 10 && number !== 11 && (
+            {combinations && (
               <tr>
                 <th scope='row'>{t('color-modal.can-be-used-against')}</th>
-                <td>
-                  {/* @ts-ignore -- we trust the string passed to t() here */}
-                  {t(getColorCombinations(number))}
-                </td>
+                <td>{t(combinations)}</td>
               </tr>
             )}
           </tbody>

@@ -1,5 +1,4 @@
 import {
-  data,
   isRouteErrorResponse,
   Links,
   Meta,
@@ -32,12 +31,8 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const url = new URL(request.url);
   const lang = params.lang;
 
-  if (lang === undefined) {
-    return redirect(`/no${url.search}`);
-  }
-
-  /* Redirect from old path to new path, with search params */
-  if (lang === 'themebuilder') {
+  /* No language, or the old path `/themebuilder`: go to Norwegian, with search params */
+  if (lang === undefined || lang === 'themebuilder') {
     return redirect(`/no${url.search}`);
   }
 
@@ -51,57 +46,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     return redirect(url.toString());
   }
 
-  const centerLinks = [
-    {
-      text: 'footer.about',
-      url: `https://designsystemet.no/${lang}/intro/about-the-design-system`,
-    },
-    {
-      text: 'footer.privacy',
-      url: `https://designsystemet.no/${lang}/intro/privacy-policy`,
-    },
-    {
-      text: 'footer.accessibility',
-      url: 'https://uustatus.no/nb/erklaringer/publisert/faeb324d-9b3f-40b0-b715-92cac356a916',
-    },
-  ];
-
-  const menu = [
-    {
-      name: 'navigation.intro',
-      href: `https://designsystemet.no/${lang}/intro`,
-    },
-    {
-      name: 'navigation.fundamentals',
-      href: `https://designsystemet.no/${lang}/fundamentals`,
-    },
-    {
-      name: 'navigation.components',
-      href: `https://designsystemet.no/${lang}/components`,
-    },
-    {
-      name: 'navigation.patterns',
-      href: `https://designsystemet.no/${lang}/patterns`,
-    },
-    {
-      name: 'navigation.best-practices',
-      href: `https://designsystemet.no/${lang}/best-practices`,
-    },
-    {
-      name: 'navigation.blog',
-      href: `https://designsystemet.no/${lang}/blog`,
-    },
-    {
-      name: 'navigation.theme-builder',
-      href: `/${lang}`,
-    },
-  ];
-
-  return data({
-    lang: params.lang,
-    centerLinks,
-    menu,
-  });
+  return { lang };
 };
 
 type DocumentProps = {
@@ -173,11 +118,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   return (
     <Document>
-      <main className='pt-16 p-4 container mx-auto'>
+      <main>
         <h1>{message}</h1>
         <p>{details}</p>
         {stack && (
-          <pre className='w-full p-4 overflow-x-auto'>
+          <pre>
             <code>{stack}</code>
           </pre>
         )}

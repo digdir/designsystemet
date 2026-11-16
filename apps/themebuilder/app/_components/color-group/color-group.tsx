@@ -1,58 +1,62 @@
 import type {
+  Color,
   SemanticColorNames,
   ThemeInfo,
 } from '@digdir/designsystemet/internal';
-import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
-import { useColorModalContext } from '~/_components/color-modal/color-modal-context';
-import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { useColorScheme } from '~/_hooks/use-color-scheme';
 import { ColorButton } from '../color-button/color-button';
 import classes from './color-group.module.css';
 
 type ColorGroupProps = {
-  header: string;
+  /** The name of the group. When set, it is shown above the steps together with their names. */
+  header?: string;
   colorNames: SemanticColorNames[];
+  /** The names of the steps, in the order of `colorNames` */
+  names: string[];
   colorScale: ThemeInfo;
-  names?: string[];
+  /** The name of the color */
   namespace: string;
+  onSelect: (step: Color) => void;
 };
 
+/** The steps of one group of a color scale, such as Background or Border */
 export const ColorGroup = ({
   header,
   colorNames,
   names,
   colorScale,
   namespace,
+  onSelect,
 }: ColorGroupProps) => {
-  const { colorScheme } = useThemebuilder();
+  const [colorScheme] = useColorScheme();
   const { t } = useTranslation();
-  const { openColorModal } = useColorModalContext();
 
   return (
     <div>
-      {header && <div className={cl(classes.header)}>{header}</div>}
-      {header && names && (
-        <div className={classes.names}>
-          {names.map((name) => (
-            <div key={name}>{name}</div>
-          ))}
-        </div>
+      {header && (
+        <>
+          <div className={classes.header}>{header}</div>
+          <div className={classes.names}>
+            {names.map((name) => (
+              <div key={name}>{name}</div>
+            ))}
+          </div>
+        </>
       )}
 
-      <div className={cl(classes.colors)}>
+      <div className={classes.colors}>
         {colorNames.map((colorName) => {
           const color = colorScale[colorScheme][colorName];
-          const { hex } = color;
           return (
             <ColorButton
               key={colorName}
-              color={hex}
-              colorName={colorName}
+              color={color.hex}
               aria-label={t('colorGroup.see-more', {
                 namespace,
-                color: color?.displayName,
+                color: color.displayName,
               })}
-              onClick={() => openColorModal(color, namespace)}
+              onClick={() => onSelect(color)}
             />
           );
         })}

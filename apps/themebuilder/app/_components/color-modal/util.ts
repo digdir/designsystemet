@@ -1,27 +1,26 @@
-export const capitalizeFirstLetter = (str: string) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-};
+export const capitalizeFirstLetter = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1);
 
-export const getColorCombinations = (colorNumber: number) => {
-  let text = '';
-  if (colorNumber === 1 || colorNumber === 2) {
-    text += 'color-modal.color-combinations.all-colors';
-  } else if (colorNumber === 3 || colorNumber === 4 || colorNumber === 5) {
-    text += 'color-modal.color-combinations.background-subtle-and-default';
-  } else if (colorNumber === 6) {
-    text +=
-      'color-modal.color-combinations.background-colors-and-surface-default';
-  } else if (colorNumber === 7 || colorNumber === 8) {
-    text +=
-      'color-modal.color-combinations.background-colors-and-surface-default';
-  } else if (colorNumber === 12) {
-    text +=
-      'color-modal.color-combinations.background-colors-and-surface-default';
-  } else if (colorNumber === 13 || colorNumber === 14) {
-    text +=
-      'color-modal.color-combinations.background-colors-and-surface-colors';
-  } else if (colorNumber === 15 || colorNumber === 16) {
-    text += 'color-modal.color-combinations.base-colors';
-  }
-  return text;
-};
+const combinations = {
+  1: 'color-modal.color-combinations.all-colors',
+  2: 'color-modal.color-combinations.all-colors',
+  3: 'color-modal.color-combinations.background-subtle-and-default',
+  4: 'color-modal.color-combinations.background-subtle-and-default',
+  5: 'color-modal.color-combinations.background-subtle-and-default',
+  6: 'color-modal.color-combinations.background-colors-and-surface-default',
+  7: 'color-modal.color-combinations.background-colors-and-surface-default',
+  8: 'color-modal.color-combinations.background-colors-and-surface-default',
+  12: 'color-modal.color-combinations.background-colors-and-surface-default',
+  13: 'color-modal.color-combinations.background-colors-and-surface-colors',
+  14: 'color-modal.color-combinations.background-colors-and-surface-colors',
+  15: 'color-modal.color-combinations.base-colors',
+  16: 'color-modal.color-combinations.base-colors',
+} as const;
+
+/** The translation key for what a step can be used against, by the number of the step. Steps 9 to 11 have none. */
+export const getColorCombinations = (colorNumber: number) =>
+  (
+    combinations as Partial<
+      Record<number, (typeof combinations)[keyof typeof combinations]>
+    >
+  )[colorNumber];

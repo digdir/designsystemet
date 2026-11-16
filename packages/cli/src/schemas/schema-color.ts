@@ -12,6 +12,9 @@ const hexPatterns = [
 
 const colorRegex = new RegExp(`^(${hexPatterns.join('|')})$`);
 
+/** Whether a value is a hex color a config accepts: 3, 4, 6 or 8 hex digits after `#` */
+export const isHexColor = (value: string) => colorRegex.test(value);
+
 export const colorSchema = z
   .string()
   .regex(colorRegex)

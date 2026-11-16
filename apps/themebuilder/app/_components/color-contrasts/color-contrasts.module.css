@@ -16,7 +16,6 @@
 }
 
 .table {
-  background-color: #e2e2e2;
   margin-bottom: 16px;
   margin-top: 12px;
   table-layout: fixed;
@@ -142,15 +141,6 @@
 .headerHex {
   color: var(--ds-color-neutral-text-subtle);
   font-weight: 400;
-}
-
-.contrastChart {
-  background-color: transparent;
-}
-
-.subHeading {
-  margin-top: 8px;
-  margin-bottom: -4px;
 }
 
 .fieldGroup {

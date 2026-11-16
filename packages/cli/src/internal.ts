@@ -9,18 +9,15 @@ export {
   type ColorScheme,
   type CssColor,
   convertColor,
-  generateColorScale,
   generateColorSchemes,
   getContrastFromHex,
   getLuminanceFromColor,
-  RESERVED_COLORS,
   type SemanticColorNames,
-  type SeverityColorNames,
   semanticColorNames,
   semanticColorSpec,
   type ThemeInfo,
 } from './colors/index.ts';
-export { type GeneratedConfigFromCSS, generateConfigFromCSS } from './css/generate-config-from-css.ts';
+export { generateConfigFromCSS } from './css/generate-config-from-css.ts';
 export { figmaCodeSyntax } from './figma/code-syntax.ts';
 export {
   FIGMA_COLLECTION,
@@ -30,28 +27,26 @@ export {
   toFigmaCollections,
 } from './figma/collections.ts';
 export { figmaVariableScopes, figmaVariableType } from './figma/scopes.ts';
+export { flattenColors, isOldColorSchema } from './migrations/flatten-color-categories.ts';
 export {
   defaultBorderRadius,
   defaultFontFamily,
   severityColors,
-  visitedLinkColor,
 } from './schemas/defaults.ts';
 export { parseConfig, validateConfig } from './schemas/helpers.ts';
 export {
   type ConfigSchema,
   configSchema,
-  type ExternalConfigSchema,
   type ExternalConfigSchemaInput,
   externalConfigSchema,
 } from './schemas/schema.ts';
-export { themeNameSchema } from './schemas/schema-color.ts';
+export { isHexColor, themeNameSchema } from './schemas/schema-color.ts';
 export {
-  type ConfigColors,
   configColorsFromValues,
   type SchemeColors,
   type ThemeColorValues,
 } from './tokens/config-colors.ts';
-export { getThemeColorScales, getThemeColorSchemes } from './tokens/create/generators/primitives/color-scheme.ts';
+export { getThemeColorSchemes } from './tokens/create/generators/primitives/color-scheme.ts';
 export { createSystemTokens, createTokens, getTokenSetDimensions } from './tokens/create.ts';
 export { formatThemeCSS } from './tokens/format.ts';
-export type { BorderRadiusConfig, TokenSets } from './tokens/types.ts';
+export type { TokenSets } from './tokens/types.ts';

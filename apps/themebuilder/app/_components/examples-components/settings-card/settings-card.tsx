@@ -4,14 +4,14 @@ import {
   Paragraph,
   Radio,
   useRadioGroup,
-  ValidationMessage,
 } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 import classes from './settings-card.module.css';
+
 export const SettingsCard = () => {
   const { t } = useTranslation();
   const { getRadioProps } = useRadioGroup({
-    name: 'my-group',
+    name: 'display-mode',
     value: 'datamaskin',
   });
 
@@ -31,7 +31,6 @@ export const SettingsCard = () => {
           {...getRadioProps('datamaskin')}
         />
         <Radio label={t('overview.tv')} {...getRadioProps('tv')} />
-        <ValidationMessage hidden id=':re:' />
       </Fieldset>
     </div>
   );

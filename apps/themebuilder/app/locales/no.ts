@@ -129,7 +129,7 @@ export default {
       'Dette endrer navnet fra «{{from}}» til «{{to}}» i alle {{count}} temaer, inkludert tokenoverstyringene. Eksisterende fargeverdier beholdes.',
     'confirm-rename': 'Endre navn i alle temaer',
     'name-duplicate-error': 'En farge med dette navnet finnes allerede',
-    add: 'Legg til',
+    'add-color': 'Legg til Farge',
     'edit-color': 'Rediger farge',
     save: 'Lagre',
     cancel: 'Avbryt',

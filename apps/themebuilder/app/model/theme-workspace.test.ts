@@ -1,12 +1,14 @@
 import { externalConfigSchema } from '@digdir/designsystemet/internal';
 import { describe, expect, it } from 'vitest';
 import {
-  addWorkspaceTheme,
   canRenameColor,
+  colorNameError,
   defaultWorkspace,
+  newColorName,
   normalizeConfig,
   removeThemeColor,
   renameWorkspaceThemes,
+  sanitizeColorName,
   setColorOverride,
   setThemeColor,
   type ThemeWorkspace,
@@ -30,18 +32,6 @@ const config = {
 };
 
 describe('theme workspace', () => {
-  it('adds an independent copy of the active theme and retains config settings', () => {
-    const workspace = addWorkspaceTheme(
-      { config, activeTheme: 'first' },
-      'new-theme',
-    );
-    expect(workspace.activeTheme).toBe('new-theme');
-    expect(workspace.config.outDir).toBe(config.outDir);
-    expect(workspace.config.themes['new-theme']).toEqual(config.themes.first);
-    expect(workspace.config.themes['new-theme']).not.toBe(config.themes.first);
-    workspace.config.themes['new-theme'].colors.accent = '#abcdef';
-    expect(config.themes.first.colors.accent).toBe('#123456');
-  });
   it('renames and adds themes in order, keeping the active theme selected', () => {
     const workspace = renameWorkspaceThemes({ config, activeTheme: 'first' }, [
       { from: 'second', name: 'dark' },
@@ -84,15 +74,16 @@ describe('theme workspace', () => {
       renameWorkspaceThemes(workspace, [{ from: 'missing', name: 'ok' }]),
     ).toThrow('Unknown theme');
   });
-  it('rejects duplicate and invalid theme names without changing the workspace', () => {
+  it('rejects duplicate and invalid names for new themes without changing the workspace', () => {
     const workspace = { config, activeTheme: 'first' };
-    expect(() => addWorkspaceTheme(workspace, 'first')).toThrow(
-      'Theme already exists',
-    );
+    const first = { from: 'first', name: 'first' };
+    expect(() =>
+      renameWorkspaceThemes(workspace, [first, { from: null, name: 'first' }]),
+    ).toThrow('Theme already exists');
     for (const name of ['', 'New Theme', '__proto__', 'Theme', 'tema-æ']) {
-      expect(() => addWorkspaceTheme(workspace, name)).toThrow(
-        'Invalid theme name',
-      );
+      expect(() =>
+        renameWorkspaceThemes(workspace, [first, { from: null, name }]),
+      ).toThrow('Invalid theme name');
     }
     expect(Object.keys(config.themes)).toEqual(['first', 'second']);
   });
@@ -223,6 +214,17 @@ describe('theme workspace', () => {
     expect(
       setThemeColor(theme, 'neutral', 'neutral', '#000000').colors,
     ).toEqual({ accent: '#123456', neutral: '#000000' });
+  });
+  it('makes typed text a color name and says why a name cannot be used', () => {
+    expect(sanitizeColorName('My Brand_2 æ!')).toBe('my-brand2-');
+    const names = ['neutral', 'accent', 'color-1'];
+    expect(colorNameError('', names, 'accent')).toBe('empty');
+    expect(colorNameError('neutral', names, 'accent')).toBe('reserved');
+    expect(colorNameError('color-1', names, 'accent')).toBe('duplicate');
+    expect(colorNameError('accent', names, 'accent')).toBeNull();
+    expect(colorNameError('brand', names, 'accent')).toBeNull();
+    expect(newColorName(names)).toBe('color-2');
+    expect(newColorName([])).toBe('color-1');
   });
   it('sets and removes step overrides one color scheme at a time', () => {
     let theme = setColorOverride(

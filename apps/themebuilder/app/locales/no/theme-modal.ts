@@ -7,7 +7,6 @@ export default {
   slack: 'Slack (åpnes i ny fane)',
   or: 'eller lag et',
   'github-issue': 'Github issue (åpnes i ny fane)',
-  color: 'Farge',
   config: {
     heading: 'Config-fil',
     description:

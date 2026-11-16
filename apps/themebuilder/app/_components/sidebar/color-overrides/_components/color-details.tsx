@@ -1,4 +1,5 @@
 import {
+  isHexColor,
   type SemanticColorNames,
   semanticColorNames,
   semanticColorSpec,
@@ -13,7 +14,7 @@ import {
 import cl from 'clsx/lite';
 import { useId, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { ColorTheme } from '~/_hooks/use-themebuilder';
+import type { ColorTheme } from '~/model/theme-colors';
 import { useThemeStore } from '~/model/theme-store';
 import { setColorOverride } from '~/model/theme-workspace';
 import classes from '../color-overrides.module.css';
@@ -28,14 +29,6 @@ type ColorOverrideInputProps = {
   mode: 'light' | 'dark';
   defaultColor?: string;
 };
-
-const hexPatterns = [
-  // Hex colors: #000, #0000, #000000, #00000000
-  `#[0-9a-fA-F]{3}`,
-  `#[0-9a-fA-F]{4}`,
-  `#[0-9a-fA-F]{6}`,
-  `#[0-9a-fA-F]{8}`,
-];
 
 const ColorOverrideInput = ({
   colorName,
@@ -70,8 +63,7 @@ const ColorOverrideInput = ({
     if (localValue === undefined) return;
 
     const value = localValue.trim();
-    const hexRegex = new RegExp(`^(${hexPatterns.join('|')})$`);
-    if (value && !hexRegex.test(value)) {
+    if (value && !isHexColor(value)) {
       setValidHex(false);
       return;
     }
