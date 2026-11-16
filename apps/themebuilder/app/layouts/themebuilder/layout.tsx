@@ -13,7 +13,7 @@ import { ColorTokens } from '~/_components/color-tokens/color-tokens';
 import { ColorVariables } from '~/_components/color-variables';
 import { Colors } from '~/_components/colors/colors';
 import { ExamplesComponents } from '~/_components/examples-components/examples-components';
-import { useThemebuilder } from '../../routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import classes from './layout.module.css';
 
 export const ThemePages = () => {

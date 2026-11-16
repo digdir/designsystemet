@@ -16,12 +16,12 @@ import {
   useSearchParams,
 } from 'react-router';
 import { isProduction } from '~/_utils/is-production.server';
-import { legacyThemeKeys } from '~/_utils/legacy-url';
-import { readLegacyUrl } from '~/_utils/legacy-url.server';
 import { generateMetadata } from '~/_utils/metadata';
-import { ThemeStoreProvider, useThemeStore } from '~/_utils/theme-store';
-import { defaultWorkspace } from '~/_utils/theme-workspace';
 import i18n from '~/i18next.server';
+import { legacyThemeKeys } from '~/model/legacy-url';
+import { readLegacyUrl } from '~/model/legacy-url.server';
+import { ThemeStoreProvider, useThemeStore } from '~/model/theme-store';
+import { defaultWorkspace } from '~/model/theme-workspace';
 import type { Route } from './+types/themebuilder';
 
 export const loader = async ({

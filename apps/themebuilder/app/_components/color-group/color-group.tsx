@@ -5,8 +5,8 @@ import type {
 import cl from 'clsx/lite';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import { useColorModalContext } from '~/_utils/color-modal-context';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { ColorButton } from '../color-button/color-button';
 import classes from './color-group.module.css';
 

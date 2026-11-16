@@ -14,7 +14,7 @@ import {
   isValidThemeName,
   renameWorkspaceThemes,
   type ThemeWorkspace,
-} from '~/_utils/theme-workspace';
+} from '~/model/theme-workspace';
 import classes from './edit-themes-dialog.module.css';
 
 type Row = {

@@ -4,7 +4,7 @@ import { useRouteLoaderData, useSearchParams } from 'react-router';
 import {
   type ThemebuilderTabs,
   useThemebuilder,
-} from '~/routes/themebuilder/_utils/use-themebuilder';
+} from '~/_hooks/use-themebuilder';
 import classes from './theme-header.module.css';
 
 export const ThemeHeader = () => {

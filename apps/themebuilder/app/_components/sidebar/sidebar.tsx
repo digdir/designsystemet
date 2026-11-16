@@ -4,7 +4,7 @@ import { CogIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import { BorderRadiusInput } from '../border-radius-input/border-radius-input';
 import { ConfigPaste } from '../config-paste/config-paste';
 import { TokenModal } from '../token-modal/token-modal';

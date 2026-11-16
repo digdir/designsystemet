@@ -8,7 +8,7 @@ import {
 import { PencilIcon } from '@navikt/aksel-icons';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import ColorDetails from './_components/color-details';
 import classes from './color-overrides.module.css';
 

@@ -3,8 +3,8 @@ import { useDebounceCallback } from '@internal/components';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemeStore } from '~/_utils/theme-store';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { useThemeStore } from '~/model/theme-store';
 import classes from './border-radius-input.module.css';
 
 export const BorderRadiusInput = () => {

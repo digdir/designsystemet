@@ -2,8 +2,8 @@ import { Divider, Field, Label, Select } from '@digdir/designsystemet-react';
 import { ColorTokensTable } from '@internal/components';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { previewColorVars } from '~/_utils/theme-colors';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { previewColorVars } from '~/model/theme-colors';
 
 export const ColorVariables = () => {
   const { t } = useTranslation();

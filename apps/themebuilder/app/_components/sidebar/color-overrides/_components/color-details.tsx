@@ -12,9 +12,9 @@ import {
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useId, useState } from 'react';
-import { useThemeStore } from '~/_utils/theme-store';
-import { setColorOverride } from '~/_utils/theme-workspace';
-import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
+import type { ColorTheme } from '~/_hooks/use-themebuilder';
+import { useThemeStore } from '~/model/theme-store';
+import { setColorOverride } from '~/model/theme-workspace';
 import classes from '../color-overrides.module.css';
 
 type ColorDetailsProps = {

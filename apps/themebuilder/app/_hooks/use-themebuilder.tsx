@@ -3,9 +3,9 @@ import {
   defaultBorderRadius,
 } from '@digdir/designsystemet/internal';
 import { useSearchParams } from 'react-router';
-import { useThemeStore } from '~/_utils/theme-store';
+import { useThemeStore } from '~/model/theme-store';
 
-export type { ColorTheme } from '~/_utils/theme-colors';
+export type { ColorTheme } from '~/model/theme-colors';
 
 export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';
 

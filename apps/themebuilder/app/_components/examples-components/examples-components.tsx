@@ -15,9 +15,9 @@ import {
 import { styleBorderRadiusVars } from '@internal/components';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { previewColorVars } from '~/_utils/theme-colors';
-import { REQUIRED_COLOR } from '~/_utils/theme-workspace';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { previewColorVars } from '~/model/theme-colors';
+import { REQUIRED_COLOR } from '~/model/theme-workspace';
 import classes from './examples-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
 import { TableCard } from './table-card/table-card';

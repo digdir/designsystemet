@@ -15,11 +15,8 @@ import {
 import { PencilIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemeStore } from '~/_utils/theme-store';
-import {
-  normalizeConfig,
-  type WorkspaceConfig,
-} from '~/_utils/theme-workspace';
+import { useThemeStore } from '~/model/theme-store';
+import { normalizeConfig, type WorkspaceConfig } from '~/model/theme-workspace';
 import classes from './config-paste.module.css';
 
 export function ConfigPaste() {
