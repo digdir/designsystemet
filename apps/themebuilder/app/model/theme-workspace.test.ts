@@ -219,6 +219,8 @@ describe('theme workspace', () => {
     expect(sanitizeColorName('My Brand_2 æ!')).toBe('my-brand2-');
     const names = ['neutral', 'accent', 'color-1'];
     expect(colorNameError('', names, 'accent')).toBe('empty');
+    for (const name of ['-', 'my-', '-my', 'my--brand'])
+      expect(colorNameError(name, names, 'accent')).toBe('invalid');
     expect(colorNameError('neutral', names, 'accent')).toBe('reserved');
     expect(colorNameError('color-1', names, 'accent')).toBe('duplicate');
     expect(colorNameError('accent', names, 'accent')).toBeNull();

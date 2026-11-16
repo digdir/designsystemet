@@ -38,6 +38,7 @@ type ColorEditorProps = {
 
 const nameErrors = {
   empty: 'colorEditor.name-empty-error',
+  invalid: 'colorEditor.name-invalid-error',
   reserved: 'colorEditor.name-reserved-error',
   duplicate: 'colorEditor.name-duplicate-error',
 } as const;

@@ -3,12 +3,10 @@ import {
   semanticColorNames,
 } from '@digdir/designsystemet/internal';
 import LZString from 'lz-string';
-import { importConfig } from './import-config';
+import { importConfig, validateConfig } from './import-config';
 import { legacyThemeKeys } from './legacy-url';
-import { resolveThemeColors } from './theme-colors';
 import {
   defaultWorkspace,
-  normalizeConfig,
   type ThemeWorkspace,
   type WorkspaceTheme,
 } from './theme-workspace';
@@ -43,13 +41,14 @@ function readColorOverrides(value: string | null) {
   for (const entry of (value || '').split(' ')) {
     const [colorName, stepName, ...modes] = entry.split('|');
     const step = semanticColorNames.find((name) => name === stepName);
-    // `__proto__` as a key would reach the prototype of every object
+    // `__proto__` as a key would set the prototype of the object
     if (!colorName || colorName === '__proto__' || !step) continue;
     for (const mode of modes) {
       const [scheme, hex] = mode.split(':');
       if ((scheme !== 'light' && scheme !== 'dark') || !isHexColor(hex || ''))
         continue;
-      overrides[colorName] ??= {};
+      // Only own keys: a color named `constructor` or `toString` must not reach what every object inherits
+      if (!Object.hasOwn(overrides, colorName)) overrides[colorName] = {};
       overrides[colorName][step] = {
         ...overrides[colorName][step],
         [scheme]: hex,
@@ -86,14 +85,11 @@ export function readLegacyUrl(params: URLSearchParams): ThemeWorkspace | null {
   if (params.has('config')) return readCompressedConfig(params);
   if (!legacyThemeKeys.some((key) => params.has(key))) return null;
 
-  try {
-    const workspace = readThemeParams(params);
-    // Resolving the colors fails for a value that is not a color. Better here than while the page renders.
-    Object.values(workspace.config.themes).forEach(resolveThemeColors);
-    return workspace;
-  } catch {
-    throw new Error('Invalid theme builder URL');
-  }
+  const workspace = readThemeParams(params);
+  // The same check as for an imported config, so that a link cannot hold a theme the CLI would reject
+  const result = validateConfig(workspace.config);
+  if (!('config' in result)) throw new Error('Invalid theme builder URL');
+  return { ...workspace, config: result.config };
 }
 
 function readThemeParams(params: URLSearchParams): ThemeWorkspace {
@@ -122,5 +118,5 @@ function readThemeParams(params: URLSearchParams): ThemeWorkspace {
   const borderRadius = Number.parseInt(params.get('border-radius') || '', 10);
   if (borderRadius >= 0) theme.borderRadius = borderRadius;
 
-  return { ...workspace, config: normalizeConfig(workspace.config) };
+  return workspace;
 }

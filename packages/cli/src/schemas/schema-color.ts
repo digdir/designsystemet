@@ -22,13 +22,15 @@ export const colorSchema = z
   .describe(`A hex color, which is used for creating a color scale.`);
 
 // Color names end up in token paths, CSS variables and class names, so they are restricted to
-// lowercase letters, digits and hyphens. Matches the sanitizing done by the theme builder.
-const namePattern = /^[a-z0-9-]+$/;
+// lowercase letters and digits, with single hyphens between them. A name cannot start or end with a hyphen:
+// `--a` would be a custom property or a command line flag, and `a-` and `a--b` read as mistakes.
+const namePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export const colorNameSchema = z
   .string()
   .regex(namePattern, {
-    message: 'Color names may only contain lowercase letters (a-z), digits (0-9) and hyphens (-).',
+    message:
+      'Color names may only contain lowercase letters (a-z) and digits (0-9), with single hyphens (-) between them.',
   })
   .describe('The name of a color, used in token paths and CSS variables.');
 
@@ -38,7 +40,8 @@ export const colorNameSchema = z
 export const themeNameSchema = z
   .string()
   .regex(namePattern, {
-    message: 'Theme names may only contain lowercase letters (a-z), digits (0-9) and hyphens (-).',
+    message:
+      'Theme names may only contain lowercase letters (a-z) and digits (0-9), with single hyphens (-) between them.',
   })
   .describe('The name of a theme, used in file names, CSS selectors and token paths.');
 

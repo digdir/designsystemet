@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { importConfig } from './import-config';
+import { importConfig, validateConfig } from './import-config';
 
 const theme = { colors: { neutral: '#1E2B3C', accent: '#0062BA' } };
 
@@ -53,6 +53,23 @@ describe('importConfig', () => {
       brand1: '#F45F63',
       neutral: '#1E2B3C',
     });
+  });
+
+  it('reads comments and trailing commas, like the CLI does', () => {
+    const result = importConfig(`{
+      // my theme
+      "themes": { "one": { "colors": { "neutral": "#1E2B3C", "accent": "#0062BA", }, }, },
+    }`);
+    expect('config' in result).toBe(true);
+  });
+
+  it('rejects names the CLI does not accept', () => {
+    for (const name of ['Accent', '-', 'brand-', 'a--b']) {
+      const result = validateConfig({
+        themes: { one: { colors: { ...theme.colors, [name]: '#0062BA' } } },
+      });
+      expect(result).toMatchObject({ error: 'invalid' });
+    }
   });
 
   it('tells empty text, missing themes and invalid configs apart', () => {

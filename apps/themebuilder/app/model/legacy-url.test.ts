@@ -224,10 +224,30 @@ describe('theme builder URL', () => {
     expect(({} as Record<string, unknown>)['text-default']).toBeUndefined();
   });
 
-  it('rejects a link with a color that is not a color', () => {
+  it('keeps overrides for colors named like object properties to the theme', () => {
+    const workspace = readLegacyUrl(
+      new URLSearchParams(
+        `${base}&color-overrides=constructor|base-default|light:%23ff0000+toString|base-default|dark:%2300ff00`,
+      ),
+    );
+    expect(workspace).not.toBeNull();
+    expect(Object.hasOwn(Object, 'base-default')).toBe(false);
+    expect(Object.hasOwn(Object.prototype.toString, 'base-default')).toBe(
+      false,
+    );
+    expect(Object.hasOwn(Function.prototype, 'base-default')).toBe(false);
+  });
+
+  it('rejects a link with a theme the CLI would not build', () => {
     for (const search of [
       'colors=accent',
       'colors=accent:%2312+neutral:%23333',
+      // not a hex color
+      'colors=accent:red+neutral:%23444444',
+      // not a valid color name
+      'colors=Accent:%230062BA+neutral:%23444444',
+      // no neutral color
+      'colors=accent:%230062BA',
     ]) {
       expect(() => readLegacyUrl(new URLSearchParams(search))).toThrow(
         'Invalid theme builder URL',

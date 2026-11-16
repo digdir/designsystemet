@@ -148,7 +148,7 @@
             "type": "object",
             "propertyNames": {
               "type": "string",
-              "pattern": "^[a-z0-9-]+$",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
               "description": "The name of a color, used in token paths and CSS variables."
             },
             "additionalProperties": {

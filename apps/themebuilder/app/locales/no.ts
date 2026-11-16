@@ -50,7 +50,8 @@ export default {
     'remove-theme': 'Slett tema {{name}}',
     'add-theme': 'Legg til tema',
     'theme-name': 'Temanavn',
-    'invalid-theme-name': 'Bruk kun små bokstaver a-z, tall og bindestrek.',
+    'invalid-theme-name':
+      'Bruk kun små bokstaver a-z og tall, med enkle bindestreker mellom.',
     'duplicate-theme-name': 'Et tema med dette navnet finnes allerede.',
   },
   importConfig: {
@@ -142,7 +143,10 @@ export default {
     'neutral-info': 'Neutral fargen kan ikke fjernes eller endres navn på.',
     name: 'Navn',
     'name-placeholder': 'Skriv navnet her...',
-    'name-description': 'Bruk kun bokstavene a-z, tall og bindestrek',
+    'name-description':
+      'Bruk kun små bokstaver a-z og tall, med enkle bindestreker mellom',
+    'name-invalid-error':
+      'Navnet må starte og slutte med en bokstav eller et tall, med enkle bindestreker mellom',
     'name-empty-error': 'Navnet på fargen kan ikke være tomt',
     'severity-info': 'Severity-farger kan ikke få nytt navn.',
     'name-reserved-error': 'Fargen kan ikke hete «neutral»',

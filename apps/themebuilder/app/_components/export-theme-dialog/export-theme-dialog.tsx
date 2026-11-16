@@ -33,15 +33,24 @@ export const ExportThemeDialog = () => {
     : workspace.activeTheme;
   const themeCss = useThemeCss(cssThemeName, themes[cssThemeName], isOpen);
 
-  /* The config file is the theme store's config as it is. A config made here gets the schema of this version. */
-  const configJson = JSON.stringify(
-    {
-      $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
-      ...workspace.config,
-    },
-    null,
-    2,
-  );
+  /* The config file is the theme store's config, with the schema of this version: the theme builder
+   * writes the config the way this version does, also when it was imported from an older one. */
+  const {
+    $schema: _,
+    ...config
+  }: typeof workspace.config & {
+    $schema?: string;
+  } = workspace.config;
+  const configJson = isOpen
+    ? JSON.stringify(
+        {
+          $schema: `https://designsystemet.no/schemas/config/${pkg.version}.json`,
+          ...config,
+        },
+        null,
+        2,
+      )
+    : '';
 
   return (
     <>

@@ -18,7 +18,7 @@ import classes from './import-config-dialog.module.css';
 /** A button that opens a dialog where a config file is pasted, checked and opened in the theme builder */
 export function ImportConfigDialog() {
   const { t } = useTranslation();
-  const { setWorkspace } = useThemeStore();
+  const { replaceWorkspace } = useThemeStore();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [configText, setConfigText] = useState('');
   /* The result of the last validation, until the text is changed */
@@ -145,7 +145,10 @@ export function ImportConfigDialog() {
                             variant='secondary'
                             aria-label={`${t('importConfig.edit-theme')} ${themeName}`}
                             onClick={() => {
-                              setWorkspace({ config, activeTheme: themeName });
+                              replaceWorkspace({
+                                config,
+                                activeTheme: themeName,
+                              });
                               close();
                             }}
                           >
