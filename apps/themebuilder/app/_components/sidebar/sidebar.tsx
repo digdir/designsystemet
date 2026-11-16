@@ -77,10 +77,10 @@ export const Sidebar = () => {
             </Tabs.List>
             <div className={classes.tabContent}>
               <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage key={workspace?.activeTheme} />
+                <ColorPage key={workspace.activeTheme} />
               </Tabs.Panel>
               <Tabs.Panel className={classes.tabPanel} value='dimensions'>
-                <BorderRadiusInput key={workspace?.activeTheme} />
+                <BorderRadiusInput key={workspace.activeTheme} />
               </Tabs.Panel>
             </div>
           </Tabs>
@@ -118,10 +118,10 @@ export const Sidebar = () => {
                 <Tabs.Tab value='dimensions'>{t('tabs.dimensions')}</Tabs.Tab>
               </Tabs.List>
               <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage key={workspace?.activeTheme} />
+                <ColorPage key={workspace.activeTheme} />
               </Tabs.Panel>
               <Tabs.Panel className={classes.tabPanel} value='dimensions'>
-                <BorderRadiusInput key={workspace?.activeTheme} />
+                <BorderRadiusInput key={workspace.activeTheme} />
               </Tabs.Panel>
             </Tabs>
             <div className={classes.modalBottom}>

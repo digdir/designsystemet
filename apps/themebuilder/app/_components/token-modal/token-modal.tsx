@@ -20,26 +20,24 @@ import { useTokenModal } from './use-token-modal';
 export const TokenModal = () => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDialogElement>(null);
-  const {
-    themeName,
-    setThemeName,
-    buildSnippet,
-    configSnippet,
-    isWorkspace,
-    workspaceThemes,
-    themeConfig,
-  } = useTokenModal();
+  const { themeName, setThemeName, buildSnippet, configSnippet, themes } =
+    useTokenModal();
   // Generating the CSS takes a moment, so only do it while the modal is open.
   const [isOpen, setIsOpen] = useState(false);
-  const themeNames = Object.keys(workspaceThemes ?? {});
+  const themeNames = Object.keys(themes);
   const hasMultipleThemes = themeNames.length > 1;
+  // What is typed in the name field. It only becomes the theme's name while it is a valid name.
+  const [typedName, setTypedName] = useState<string | null>(null);
   // Which theme to show the CSS file for, when the config has several themes
   const [cssThemeName, setCssThemeName] = useState(themeName);
-  const selectedThemeName = hasMultipleThemes ? cssThemeName : themeName;
-  const selectedWorkspaceTheme = workspaceThemes?.[selectedThemeName];
-  const cssTheme = selectedWorkspaceTheme
-    ? { name: selectedThemeName, config: selectedWorkspaceTheme }
-    : { name: themeName, config: themeConfig };
+  const selectedThemeName =
+    hasMultipleThemes && Object.hasOwn(themes, cssThemeName)
+      ? cssThemeName
+      : themeName;
+  const cssTheme = {
+    name: selectedThemeName,
+    config: themes[selectedThemeName],
+  };
   const themeCss = useThemeCss(cssTheme.name, cssTheme.config, isOpen);
 
   return (
@@ -77,21 +75,20 @@ export const TokenModal = () => {
               <Heading className={classes.modalHeader} data-size='xs' level={3}>
                 <Label>{t('themeModal.theme-name')}</Label>
               </Heading>
-              {!isWorkspace && (
-                <Field.Description>
-                  {t('themeModal.theme-name-description')}
-                </Field.Description>
-              )}
+              <Field.Description>
+                {t('themeModal.theme-name-description')}
+              </Field.Description>
               <Input
                 name='themeName'
-                readOnly={isWorkspace}
-                value={themeName}
+                value={typedName ?? themeName}
+                onBlur={() => setTypedName(null)}
                 onChange={(e) => {
                   const value = e.currentTarget.value
                     .replace(/\s+/g, '-')
                     .replace(/[^A-Z0-9-]+/gi, '')
                     .toLowerCase();
 
+                  setTypedName(value);
                   setThemeName(value);
                 }}
               />

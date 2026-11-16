@@ -1,8 +1,10 @@
 import { Heading, Link } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData, useSearchParams } from 'react-router';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-import type { ThemebuilderTabs } from '~/routes/themebuilder/themebuilder';
+import {
+  type ThemebuilderTabs,
+  useThemebuilder,
+} from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './theme-header.module.css';
 
 export const ThemeHeader = () => {

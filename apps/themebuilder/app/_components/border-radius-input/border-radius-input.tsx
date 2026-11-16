@@ -3,26 +3,16 @@ import { useDebounceCallback } from '@internal/components';
 import cl from 'clsx/lite';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemeSearchParams } from '~/_hooks/use-theme-search-params';
+import { useThemeStore } from '~/_utils/theme-store';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './border-radius-input.module.css';
 
 export const BorderRadiusInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
-  const [, setQuery] = useThemeSearchParams();
-  const setBorderRadius = (value: number) => {
-    setQuery(
-      (prev) => {
-        prev.set('border-radius', value.toString());
-        return prev;
-      },
-      {
-        replace: true,
-        preventScrollReset: true,
-      },
-    );
-  };
+  const { updateTheme } = useThemeStore();
+  const setBorderRadius = (borderRadius: number) =>
+    updateTheme((theme) => ({ ...theme, borderRadius }));
   const { baseBorderRadius } = useThemebuilder();
 
   const borderRadiusItems = [

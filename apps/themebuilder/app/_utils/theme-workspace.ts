@@ -1,10 +1,11 @@
 import {
+  type ColorScheme,
   type ExternalConfigSchemaInput,
-  externalConfigSchema,
+  RESERVED_COLORS,
+  type SemanticColorNames,
+  severityColors,
 } from '@digdir/designsystemet/internal';
-import LZString from 'lz-string';
-import { parseColorOverrides } from '../routes/themebuilder/_utils/use-themebuilder';
-import { configThemeToUrl } from './config-to-url';
+import defaultConfig from '../../../../designsystemet.config.json';
 
 export type WorkspaceTheme = NonNullable<
   ExternalConfigSchemaInput['themes']
@@ -68,152 +69,165 @@ export function addWorkspaceTheme(
   };
 }
 
-const themeKeys = [
-  'colors',
-  'severity',
-  'severity-enabled',
-  'color-overrides',
-  'border-radius',
-];
+/** The workspace the theme builder starts with: one theme named `theme` with the colors of the Designsystemet theme. */
+export const defaultWorkspace = (): ThemeWorkspace => ({
+  activeTheme: 'theme',
+  config: {
+    themes: {
+      theme: { colors: { ...defaultConfig.themes.designsystemet.colors } },
+    },
+  },
+});
 
-export function readWorkspace(params: URLSearchParams): ThemeWorkspace | null {
-  const encoded = params.get('config');
-  if (!params.has('config')) return null;
-  try {
-    const decoded = LZString.decompressFromEncodedURIComponent(encoded || '');
-    if (!decoded || decoded.length > 1_000_000)
-      throw new Error('Invalid config');
-    const config: WorkspaceConfig = JSON.parse(decoded);
-    externalConfigSchema.parse(config);
-    if (!config.themes) throw new Error('Missing themes');
-    const names = Object.keys(config.themes);
-    const activeTheme = params.get('theme') || names[0];
-    if (!activeTheme || !Object.hasOwn(config.themes, activeTheme))
-      throw new Error('Unknown theme');
-    return { config, activeTheme };
-  } catch {
-    throw new Error('Invalid theme workspace URL');
+/** Removes empty `overrides` objects, so an edited theme does not leave them behind in the config. */
+function pruneOverrides(theme: WorkspaceTheme): WorkspaceTheme {
+  if (!theme.overrides) return theme;
+  const overrides = { ...theme.overrides };
+  if (overrides.colors) {
+    const colors = Object.fromEntries(
+      Object.entries(overrides.colors)
+        .map(([name, steps]) => [
+          name,
+          Object.fromEntries(
+            Object.entries(steps).filter(
+              ([, modes]) => modes && Object.keys(modes).length,
+            ),
+          ),
+        ])
+        .filter(([, steps]) => Object.keys(steps).length),
+    );
+    if (Object.keys(colors).length) overrides.colors = colors;
+    else delete overrides.colors;
   }
+  if (overrides.severity && !Object.keys(overrides.severity).length)
+    delete overrides.severity;
+  const { overrides: _, ...rest } = theme;
+  return Object.keys(overrides).length ? { ...rest, overrides } : rest;
 }
 
-export function workspaceParams(
+/**
+ * Edits the active theme. Every theme in a config has the same color names, so a color that the edit
+ * adds, removes or renames is added, removed or renamed in the other themes too.
+ * A renamed color keeps each theme's own value and step overrides.
+ */
+export function updateActiveTheme(
   workspace: ThemeWorkspace,
-  params = new URLSearchParams(),
-) {
-  const next = new URLSearchParams(params);
-  for (const key of themeKeys) {
-    next.delete(key);
-  }
-  next.set(
-    'config',
-    LZString.compressToEncodedURIComponent(JSON.stringify(workspace.config)),
-  );
-  next.set('theme', workspace.activeTheme);
-  return next;
-}
-
-export function workspaceToUrl(
-  config: WorkspaceConfig,
-  activeTheme: string,
-  lang = 'no',
-) {
-  return `/${lang}?${workspaceParams({ config, activeTheme }, new URLSearchParams({ appearance: 'light', tab: 'colorsystem' }))}`;
-}
-
-export function editorParams(params: URLSearchParams) {
-  const workspace = readWorkspace(params);
-  if (!workspace) return new URLSearchParams(params);
-  const themeParams = new URL(
-    configThemeToUrl(workspace.config.themes[workspace.activeTheme]),
-    'https://themebuilder.local',
-  ).searchParams;
-  const next = new URLSearchParams(params);
-  for (const key of themeKeys) {
-    next.delete(key);
-    const value = themeParams.get(key);
-    if (value !== null) next.set(key, value);
-  }
-  return next;
-}
-
-export function updateWorkspace(
-  params: URLSearchParams,
-  edited: URLSearchParams,
-) {
-  const workspace = readWorkspace(params);
-  if (!workspace) return edited;
+  update: (theme: WorkspaceTheme) => WorkspaceTheme,
+): ThemeWorkspace {
   const previous = workspace.config.themes[workspace.activeTheme];
-  const colors = Object.fromEntries(
-    (edited.get('colors') || '')
-      .split(' ')
-      .filter(Boolean)
-      .map((entry) => entry.split(':')),
-  );
-  const severity = Object.fromEntries(
-    (edited.get('severity') || '')
-      .split(' ')
-      .filter(Boolean)
-      .map((entry) => entry.split(':')),
-  );
-  const overrides = {
-    ...previous.overrides,
-    colors: parseColorOverrides(edited.get('color-overrides')),
-  };
-  delete overrides.severity;
-  if (Object.keys(severity).length) overrides.severity = severity;
-  const active = {
-    ...previous,
-    colors,
-    overrides,
-    borderRadius: Number(edited.get('border-radius') || 4),
-  };
+  const active = update(previous);
+  if (active === previous) return workspace;
   const removed = Object.keys(previous.colors).filter(
-    (name) => !Object.hasOwn(colors, name),
+    (name) => !Object.hasOwn(active.colors, name),
   );
-  const added = Object.keys(colors).filter(
+  const added = Object.keys(active.colors).filter(
     (name) => !Object.hasOwn(previous.colors, name),
   );
-  const renamed =
-    removed.length === 1 &&
-    added.length === 1 &&
-    Object.keys(previous.colors).length === Object.keys(colors).length;
+  const renamed = removed.length === 1 && added.length === 1;
+
   const themes = Object.fromEntries(
-    Object.entries(workspace.config.themes).map(([name, theme]) => {
-      if (name !== workspace.activeTheme && !removed.length && !added.length)
-        return [name, theme];
-      const updated: WorkspaceTheme =
-        name === workspace.activeTheme
-          ? active
-          : {
-              ...theme,
-              colors: { ...theme.colors },
-              overrides: {
-                ...theme.overrides,
-                colors: { ...theme.overrides?.colors },
-              },
-            };
-      for (const colorName of added) {
-        if (name !== workspace.activeTheme)
-          updated.colors[colorName] = renamed
-            ? theme.colors[removed[0]]
-            : colors[colorName];
+    Object.entries(workspace.config.themes).map(([themeName, theme]) => {
+      const isActive = themeName === workspace.activeTheme;
+      if (!removed.length && !added.length)
+        return [themeName, isActive ? pruneOverrides(active) : theme];
+
+      const colors = isActive
+        ? active.colors
+        : Object.fromEntries(
+            Object.entries(theme.colors).flatMap(([name, value]) => {
+              if (renamed && name === removed[0]) return [[added[0], value]];
+              return removed.includes(name) ? [] : [[name, value]];
+            }),
+          );
+      for (const name of added) colors[name] ??= active.colors[name];
+
+      const source = isActive ? active : theme;
+      const colorOverrides = { ...source.overrides?.colors };
+      for (const name of removed) {
+        if (renamed && colorOverrides[name])
+          colorOverrides[added[0]] = colorOverrides[name];
+        delete colorOverrides[name];
       }
-      const colorOverrides = updated.overrides?.colors;
-      for (const colorName of removed) {
-        if (renamed && colorOverrides?.[colorName])
-          colorOverrides[added[0]] = colorOverrides[colorName];
-        delete updated.colors[colorName];
-        delete colorOverrides?.[colorName];
-      }
-      if (colorOverrides && Object.keys(colorOverrides).length === 0)
-        delete updated.overrides?.colors;
-      if (updated.overrides && Object.keys(updated.overrides).length === 0)
-        delete updated.overrides;
-      return [name, updated];
+      return [
+        themeName,
+        pruneOverrides({
+          ...source,
+          colors,
+          overrides: { ...source.overrides, colors: colorOverrides },
+        }),
+      ];
     }),
   );
-  return workspaceParams(
-    { ...workspace, config: { ...workspace.config, themes } },
-    edited,
+  return { ...workspace, config: { ...workspace.config, themes } };
+}
+
+/**
+ * Sets the name and base color of a color. `current` is the name the color has now, or `undefined` for a new color.
+ * A color keeps its position when it is renamed. The edit is ignored when the new name is reserved or taken by another color.
+ */
+export function setThemeColor(
+  theme: WorkspaceTheme,
+  current: string | undefined,
+  name: string,
+  hex: string,
+): WorkspaceTheme {
+  const exists = current !== undefined && Object.hasOwn(theme.colors, current);
+  if (
+    name !== current &&
+    (Object.hasOwn(theme.colors, name) || RESERVED_COLORS.includes(name))
+  )
+    return theme;
+  const entries = Object.entries(theme.colors);
+  const colors = Object.fromEntries(
+    exists
+      ? entries.map((entry) => (entry[0] === current ? [name, hex] : entry))
+      : [...entries, [name, hex]],
   );
+  return { ...theme, colors };
+}
+
+export function removeThemeColor(
+  theme: WorkspaceTheme,
+  name: string,
+): WorkspaceTheme {
+  const { [name]: _, ...colors } = theme.colors;
+  return { ...theme, colors };
+}
+
+/** Replaces a severity color. Setting it to the default color removes the replacement. */
+export function setSeverityColor(
+  theme: WorkspaceTheme,
+  name: keyof typeof severityColors,
+  hex: string,
+): WorkspaceTheme {
+  const { [name]: _, ...severity } = { ...theme.overrides?.severity };
+  if (hex.toLowerCase() !== severityColors[name].toLowerCase())
+    Object.assign(severity, { [name]: hex });
+  return pruneOverrides({
+    ...theme,
+    overrides: { ...theme.overrides, severity },
+  });
+}
+
+/** Overrides one step of a color in one color scheme. An empty `hex` removes the override. */
+export function setColorOverride(
+  theme: WorkspaceTheme,
+  colorName: string,
+  step: SemanticColorNames,
+  scheme: ColorScheme,
+  hex: string,
+): WorkspaceTheme {
+  const colors = theme.overrides?.colors;
+  const { [scheme]: _, ...modes } = { ...colors?.[colorName]?.[step] };
+  if (hex) Object.assign(modes, { [scheme]: hex });
+  return pruneOverrides({
+    ...theme,
+    overrides: {
+      ...theme.overrides,
+      colors: {
+        ...colors,
+        [colorName]: { ...colors?.[colorName], [step]: modes },
+      },
+    },
+  });
 }
