@@ -44,6 +44,7 @@ export {
   type ExternalConfigSchemaInput,
   externalConfigSchema,
 } from './schemas/schema.ts';
+export { themeNameSchema } from './schemas/schema-color.ts';
 export {
   type ConfigColors,
   configColorsFromValues,

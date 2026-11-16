@@ -45,7 +45,7 @@ export default {
     'add-theme': 'Add theme',
     'theme-name': 'Theme name',
     'invalid-theme-name':
-      'Use lowercase letters, numbers, and single hyphens between words.',
+      'Use only lowercase letters a-z, numbers and hyphens.',
     'duplicate-theme-name': 'A theme with this name already exists.',
     'documentation-link': 'Read the documentation about custom themes',
   },

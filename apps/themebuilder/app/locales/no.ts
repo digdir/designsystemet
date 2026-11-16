@@ -43,8 +43,7 @@ export default {
     'remove-theme': 'Slett tema {{name}}',
     'add-theme': 'Legg til tema',
     'theme-name': 'Temanavn',
-    'invalid-theme-name':
-      'Bruk små bokstaver, tall og bindestreker mellom ord.',
+    'invalid-theme-name': 'Bruk kun små bokstaver a-z, tall og bindestrek.',
     'duplicate-theme-name': 'Et tema med dette navnet finnes allerede.',
     'documentation-link': 'Les dokumentasjon om eget tema',
   },
