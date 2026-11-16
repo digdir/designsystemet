@@ -1,4 +1,4 @@
-import type { ColorScheme, CssColor } from '@digdir/designsystemet/internal';
+import type { ColorScheme } from '@digdir/designsystemet/internal';
 import {
   Avatar,
   Button,
@@ -15,7 +15,7 @@ import {
 import { styleBorderRadiusVars } from '@internal/components';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { styleColorVars } from '~/_utils/generate-color-vars';
+import { previewColorVars } from '~/_utils/theme-colors';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './examples-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
@@ -41,22 +41,23 @@ const users = [
 
 type ExamplesComponentsProps = {
   colorScheme?: ColorScheme;
-  color?: CssColor;
   borderRadius?: number;
 };
 
 export const ExamplesComponents = ({
   colorScheme = 'light',
-  color = '#0062BA',
   borderRadius = 4,
 }: ExamplesComponentsProps) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { colors } = useThemebuilder();
 
-  const neutralColor =
-    colors?.find((c) => c.name === 'neutral')?.hex || '#F5F7FA';
-  const [previewColor, setPreviewColor] = useState(colors?.[0]?.hex || color);
+  /* The neutral color is always part of the examples, so it is not a color to choose */
+  const previewColors = colors.filter((color) => color.name !== 'neutral');
+  const [previewName, setPreviewName] = useState('');
+  const previewColor =
+    previewColors.find((color) => color.name === previewName) ||
+    previewColors[0];
 
   useEffect(() => {
     if (ref.current) {
@@ -67,59 +68,28 @@ export const ExamplesComponents = ({
     }
   }, [borderRadius]);
 
-  useEffect(() => {
-    setPreviewColor(color);
-  }, [color]);
-
-  useEffect(() => {
-    if (!colors) return;
-    const allColors = colors.filter((c) => c.name !== 'neutral');
-    /* if select colors is gone, set to default */
-    if (!allColors.find((c) => c.hex === previewColor)) {
-      setPreviewColor(color);
-    }
-  }, [colors]);
-
   const style = {
-    ...styleColorVars(neutralColor as CssColor, colorScheme, 'neutral'),
-    ...styleColorVars(previewColor as CssColor, colorScheme),
+    ...previewColorVars(colors, previewColor, colorScheme),
     ...styleBorderRadiusVars,
   };
 
   return (
     <>
-      {colors ? (
-        <>
-          <Field>
-            <Label>{t('overview.select-color')}</Label>
-            <Select
-              value={previewColor}
-              onChange={(v) => {
-                if (!colors) return;
-                const allColors = colors.filter((c) => c.name !== 'neutral');
-                /* find the selected color */
-                let selected = allColors.find(
-                  (c) => c.hex === v.target.value,
-                )?.hex;
-                if (!selected) {
-                  selected = allColors[0]?.hex;
-                }
-                setPreviewColor(selected as CssColor);
-              }}
-            >
-              {colors
-                .filter((c) => c.name !== 'neutral')
-                .map((color) => (
-                  <Select.Option key={color.name} value={color.hex}>
-                    {color.name}
-                  </Select.Option>
-                ))}
-            </Select>
-          </Field>
+      <Field>
+        <Label>{t('overview.select-color')}</Label>
+        <Select
+          value={previewColor?.name}
+          onChange={(event) => setPreviewName(event.target.value)}
+        >
+          {previewColors.map((color) => (
+            <Select.Option key={color.name} value={color.name}>
+              {color.name}
+            </Select.Option>
+          ))}
+        </Select>
+      </Field>
 
-          <Divider />
-        </>
-      ) : null}
+      <Divider />
 
       <div ref={ref} style={style}>
         <div className={classes.inner}>

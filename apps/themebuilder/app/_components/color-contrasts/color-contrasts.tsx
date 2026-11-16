@@ -142,29 +142,13 @@ const ColorContrastMapper = ({
   variant: string;
 }) => {
   const { t } = useTranslation();
-  const { colorScheme, colors, severityColors } = useThemebuilder();
+  const { colorScheme, colors } = useThemebuilder();
   const [selectedColor, setSelectedColor] = useState('dominant');
 
   const getMappedTheme = (): ColorScale => {
-    let colorTheme = colors?.[0]?.colors || initialTheme;
-
-    if (selectedColor !== 'dominant') {
-      for (const color of colors) {
-        if (color.name === selectedColor) {
-          colorTheme = color.colors;
-          break;
-        }
-      }
-
-      for (const color of severityColors) {
-        if (color.name === selectedColor) {
-          colorTheme = color.colors;
-          break;
-        }
-      }
-    }
-
-    return colorTheme[colorScheme];
+    const color =
+      colors.find((color) => color.name === selectedColor) || colors[0];
+    return (color?.colors || initialTheme)[colorScheme];
   };
 
   const mappedTheme = getMappedTheme();
@@ -196,11 +180,6 @@ const ColorContrastMapper = ({
         >
           {colors.map((color, colorIndex) => (
             <Select.Option key={`color-${colorIndex}`} value={color.name}>
-              {color.name}
-            </Select.Option>
-          ))}
-          {severityColors.map((color, index) => (
-            <Select.Option key={`severity-${index}`} value={color.name}>
               {color.name}
             </Select.Option>
           ))}

@@ -5,6 +5,7 @@ import {
 import LZString from 'lz-string';
 import {
   defaultWorkspace,
+  normalizeConfig,
   type ThemeWorkspace,
   type WorkspaceConfig,
   type WorkspaceTheme,
@@ -77,7 +78,7 @@ function readCompressedConfig(params: URLSearchParams): ThemeWorkspace {
     const activeTheme = params.get('theme') || Object.keys(config.themes)[0];
     if (!activeTheme || !Object.hasOwn(config.themes, activeTheme))
       throw new Error('Unknown theme');
-    return { config, activeTheme };
+    return { config: normalizeConfig(config), activeTheme };
   } catch {
     throw new Error('Invalid theme builder URL');
   }
@@ -102,6 +103,7 @@ export function readLegacyUrl(params: URLSearchParams): ThemeWorkspace | null {
         ...readColors(params.get('support')),
         ...(neutral && { neutral }),
       };
+  // Old links never held the severity colors, only replacements for them
   if (Object.keys(colors).length) theme.colors = colors;
 
   const severity = readColors(params.get('severity'));
@@ -115,5 +117,5 @@ export function readLegacyUrl(params: URLSearchParams): ThemeWorkspace | null {
   const borderRadius = Number.parseInt(params.get('border-radius') || '', 10);
   if (borderRadius >= 0) theme.borderRadius = borderRadius;
 
-  return workspace;
+  return { ...workspace, config: normalizeConfig(workspace.config) };
 }

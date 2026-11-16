@@ -1,8 +1,9 @@
+import { severityColors } from '@digdir/designsystemet/internal';
 import LZString from 'lz-string';
 import { describe, expect, it } from 'vitest';
 import { readLegacyUrl } from './legacy-url';
 import { resolveThemeColors } from './theme-colors';
-import { defaultWorkspace } from './theme-workspace';
+import { defaultWorkspace, normalizeConfig } from './theme-workspace';
 
 /**
  * Pins what an old theme builder link resolves to: every step of every color in light and dark.
@@ -11,12 +12,12 @@ import { defaultWorkspace } from './theme-workspace';
 const resolveUrl = (search: string) => {
   const workspace = readLegacyUrl(new URLSearchParams(search));
   if (!workspace) throw new Error('The URL holds no theme');
-  const { colors, severityColors: severity } = resolveThemeColors(
+  const colors = resolveThemeColors(
     workspace.config.themes[workspace.activeTheme],
   );
 
   return Object.fromEntries(
-    [...colors, ...severity].map((color) => [
+    colors.map((color) => [
       color.name,
       Object.fromEntries(
         Object.values(color.colors.light).map((step) => [
@@ -103,7 +104,7 @@ describe('theme builder URL', () => {
     ).toEqual(resolveUrl(base));
   });
 
-  it('reads the config a link holds, and nothing else from the URL', () => {
+  it('reads the theme a link holds, with severity colors as colors of the theme', () => {
     const theme = (search: string) => {
       const workspace = readLegacyUrl(new URLSearchParams(search));
       return workspace?.config.themes[workspace.activeTheme];
@@ -114,15 +115,19 @@ describe('theme builder URL', () => {
         `${base}&severity=danger:%23AA0000&border-radius=12&color-overrides=accent|text-subtle|dark:%23eeeeee&appearance=dark&tab=examples`,
       ),
     ).toEqual({
-      colors: { accent: '#0062BA', neutral: '#1E2B3C' },
+      colors: {
+        accent: '#0062BA',
+        neutral: '#1E2B3C',
+        ...severityColors,
+        danger: '#AA0000',
+      },
       borderRadius: 12,
       overrides: {
         colors: { accent: { 'text-subtle': { dark: '#eeeeee' } } },
-        severity: { danger: '#AA0000' },
       },
     });
     expect(theme(base)).toEqual({
-      colors: { accent: '#0062BA', neutral: '#1E2B3C' },
+      colors: { accent: '#0062BA', neutral: '#1E2B3C', ...severityColors },
     });
   });
 
@@ -138,6 +143,7 @@ describe('theme builder URL', () => {
       brand1: '#F45F63',
       brand2: '#E5AA20',
       neutral: '#1E2B3C',
+      ...severityColors,
     });
   });
 
@@ -172,14 +178,21 @@ describe('theme builder URL', () => {
       LZString.compressToEncodedURIComponent(JSON.stringify(value));
 
     it('reads the whole config and the active theme', () => {
+      const expected = normalizeConfig(config);
+      expect(expected.outDir).toBe(config.outDir);
+      expect(expected.themes.second.colors).toEqual({
+        ...config.themes.second.colors,
+        ...severityColors,
+      });
+
       expect(
         readLegacyUrl(
           new URLSearchParams({ config: compress(config), theme: 'second' }),
         ),
-      ).toEqual({ config, activeTheme: 'second' });
+      ).toEqual({ config: expected, activeTheme: 'second' });
       expect(
         readLegacyUrl(new URLSearchParams({ config: compress(config) })),
-      ).toEqual({ config, activeTheme: 'first' });
+      ).toEqual({ config: expected, activeTheme: 'first' });
     });
 
     it('rejects a config that is corrupt, invalid or has an unknown active theme', () => {

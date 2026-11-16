@@ -5,7 +5,7 @@ import {
 import { useSearchParams } from 'react-router';
 import { useThemeStore } from '~/_utils/theme-store';
 
-export type { ColorTheme, SeverityColorTheme } from '~/_utils/theme-colors';
+export type { ColorTheme } from '~/_utils/theme-colors';
 
 export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';
 
@@ -13,14 +13,13 @@ const tabs: ThemebuilderTabs[] = ['colorsystem', 'examples', 'variables'];
 
 /** The theme that is shown, from the theme store, and how it is viewed, from the URL. */
 export const useThemebuilder = () => {
-  const { colors, severityColors, theme, workspace } = useThemeStore();
+  const { colors, theme, workspace } = useThemeStore();
   const [params] = useSearchParams();
   // `overview` is the old name of the examples tab
   const tab = (params.get('tab') || '').replace('overview', 'examples');
 
   return {
     colors,
-    severityColors,
     colorScheme: (params.get('appearance') === 'dark'
       ? 'dark'
       : 'light') as ColorScheme,

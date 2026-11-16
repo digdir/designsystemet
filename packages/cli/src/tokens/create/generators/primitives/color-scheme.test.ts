@@ -3,7 +3,7 @@ import { type CssColor, generateColorScale } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import { colorsSchema } from '../../../../schemas/schema-color.ts';
 import type { ColorOverrideSchema } from '../../../../schemas/schema-overrides.ts';
-import { generateColorScheme, getThemeColorScales, groupByScheme } from './color-scheme.ts';
+import { generateColorScheme, getThemeColorScales, getThemeColorSchemes, groupByScheme } from './color-scheme.ts';
 
 const NEUTRAL: CssColor = '#444444';
 const ACCENT: CssColor = '#0062BA';
@@ -145,5 +145,23 @@ describe('getThemeColorScales', () => {
     expect(getThemeColorScales({ colors, overrides }, 'dark').accent['background-default'].hex).toBe(
       generateColorScale(ACCENT, 'dark')['background-default'].hex,
     );
+  });
+});
+
+describe('getThemeColorSchemes', () => {
+  it('resolves the colors a config lists, in light and dark, without adding severity colors', () => {
+    const theme = {
+      colors: { accent: '#0062BA', neutral: '#444444', danger: '#C01B1B' },
+      overrides: { colors: { accent: { 'background-default': { light: '#1A589F' } } } },
+    };
+    const schemes = getThemeColorSchemes(theme);
+
+    expect(Object.keys(schemes)).toEqual(['accent', 'neutral', 'danger']);
+    expect(schemes.neutral).toEqual({
+      light: generateColorScale('#444444', 'light'),
+      dark: generateColorScale('#444444', 'dark'),
+    });
+    expect(schemes.accent.light['background-default'].hex).toBe('#1A589F');
+    expect(schemes.accent.dark).toEqual(generateColorScale('#0062BA', 'dark'));
   });
 });

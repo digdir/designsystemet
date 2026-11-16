@@ -1,7 +1,6 @@
 import {
   type ColorScheme,
   type ExternalConfigSchemaInput,
-  RESERVED_COLORS,
   type SemanticColorNames,
   severityColors,
 } from '@digdir/designsystemet/internal';
@@ -17,6 +16,12 @@ export type WorkspaceConfig = ExternalConfigSchemaInput & {
 };
 
 export type ThemeWorkspace = { config: WorkspaceConfig; activeTheme: string };
+
+/**
+ * The color every theme must have. It cannot be renamed or removed in the theme builder.
+ * It becomes an ordinary color when the CLI no longer requires it (#5527); then this constant and its uses can be removed.
+ */
+export const REQUIRED_COLOR = 'neutral';
 
 export const isValidThemeName = (name: string) =>
   /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name);
@@ -69,12 +74,20 @@ export function addWorkspaceTheme(
   };
 }
 
-/** The workspace the theme builder starts with: one theme named `theme` with the colors of the Designsystemet theme. */
+/**
+ * The workspace the theme builder starts with: one theme named `theme` with the colors of the Designsystemet theme
+ * and the default severity colors. Severity colors are colors like any other, and can be changed or removed.
+ */
 export const defaultWorkspace = (): ThemeWorkspace => ({
   activeTheme: 'theme',
   config: {
     themes: {
-      theme: { colors: { ...defaultConfig.themes.designsystemet.colors } },
+      theme: {
+        colors: {
+          ...defaultConfig.themes.designsystemet.colors,
+          ...severityColors,
+        },
+      },
     },
   },
 });
@@ -99,8 +112,6 @@ function pruneOverrides(theme: WorkspaceTheme): WorkspaceTheme {
     if (Object.keys(colors).length) overrides.colors = colors;
     else delete overrides.colors;
   }
-  if (overrides.severity && !Object.keys(overrides.severity).length)
-    delete overrides.severity;
   const { overrides: _, ...rest } = theme;
   return Object.keys(overrides).length ? { ...rest, overrides } : rest;
 }
@@ -163,7 +174,8 @@ export function updateActiveTheme(
 
 /**
  * Sets the name and base color of a color. `current` is the name the color has now, or `undefined` for a new color.
- * A color keeps its position when it is renamed. The edit is ignored when the new name is reserved or taken by another color.
+ * A color keeps its position when it is renamed. The edit is ignored when the new name is taken by another color.
+ * The required color cannot be renamed.
  */
 export function setThemeColor(
   theme: WorkspaceTheme,
@@ -174,7 +186,7 @@ export function setThemeColor(
   const exists = current !== undefined && Object.hasOwn(theme.colors, current);
   if (
     name !== current &&
-    (Object.hasOwn(theme.colors, name) || RESERVED_COLORS.includes(name))
+    (Object.hasOwn(theme.colors, name) || current === REQUIRED_COLOR)
   )
     return theme;
   const entries = Object.entries(theme.colors);
@@ -192,21 +204,6 @@ export function removeThemeColor(
 ): WorkspaceTheme {
   const { [name]: _, ...colors } = theme.colors;
   return { ...theme, colors };
-}
-
-/** Replaces a severity color. Setting it to the default color removes the replacement. */
-export function setSeverityColor(
-  theme: WorkspaceTheme,
-  name: keyof typeof severityColors,
-  hex: string,
-): WorkspaceTheme {
-  const { [name]: _, ...severity } = { ...theme.overrides?.severity };
-  if (hex.toLowerCase() !== severityColors[name].toLowerCase())
-    Object.assign(severity, { [name]: hex });
-  return pruneOverrides({
-    ...theme,
-    overrides: { ...theme.overrides, severity },
-  });
 }
 
 /** Overrides one step of a color in one color scheme. An empty `hex` removes the override. */
@@ -230,4 +227,34 @@ export function setColorOverride(
       },
     },
   });
+}
+
+/**
+ * Makes a config from a file or an old link fit the theme builder, where severity colors are ordinary colors:
+ * - `overrides.severity` is moved into `colors`
+ * - the default severity colors are added to themes that lack them, since the CLI adds them to such a theme when it builds it
+ */
+export function normalizeConfig(config: WorkspaceConfig): WorkspaceConfig {
+  const themes = Object.fromEntries(
+    Object.entries(config.themes).map(([name, theme]) => {
+      const { severity, ...overrides } = { ...theme.overrides };
+      return [
+        name,
+        pruneOverrides({
+          ...theme,
+          colors: Object.assign(
+            { ...theme.colors },
+            ...Object.entries(severityColors).map(([name, hex]) => ({
+              [name]:
+                severity?.[name as keyof typeof severity] ||
+                theme.colors[name] ||
+                hex,
+            })),
+          ),
+          overrides,
+        }),
+      ];
+    }),
+  );
+  return { ...config, themes };
 }

@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import {
   addWorkspaceTheme,
+  normalizeConfig,
   removeThemeColor,
   renameWorkspaceThemes,
   setColorOverride,
-  setSeverityColor,
   setThemeColor,
   type ThemeWorkspace,
   updateActiveTheme,
@@ -203,11 +203,15 @@ describe('theme workspace', () => {
       expect(theme.overrides).toEqual({ severity: { danger: '#ab1234' } });
     }
   });
-  it('ignores a color name that is reserved or taken by another color', () => {
+  it('ignores a name taken by another color, and does not rename neutral', () => {
     const theme = config.themes.first;
 
     expect(setThemeColor(theme, 'accent', 'neutral', '#000000')).toBe(theme);
-    expect(setThemeColor(theme, 'accent', 'danger', '#000000')).toBe(theme);
+    expect(setThemeColor(theme, 'neutral', 'grey', '#000000')).toBe(theme);
+    expect(setThemeColor(theme, 'accent', 'danger', '#000000').colors).toEqual({
+      danger: '#000000',
+      neutral: '#333333',
+    });
     expect(setThemeColor(theme, undefined, 'accent', '#000000')).toBe(theme);
     expect(
       setThemeColor(theme, 'neutral', 'neutral', '#000000').colors,
@@ -252,12 +256,41 @@ describe('theme workspace', () => {
     ).toBeUndefined();
     expect(config.themes.first).not.toHaveProperty('overrides');
   });
-  it('replaces a severity color, and removes the replacement when it is set to the default', () => {
-    const theme = setSeverityColor(config.themes.first, 'danger', '#ab1234');
-    expect(theme.overrides).toEqual({ severity: { danger: '#ab1234' } });
-    expect(setSeverityColor(theme, 'info', '#0a71c0')).toEqual(theme);
-    expect(
-      setSeverityColor(theme, 'danger', '#C01B1B').overrides,
-    ).toBeUndefined();
+  it('makes severity colors ordinary colors of an imported config', () => {
+    const imported = normalizeConfig({
+      outDir: './custom-tokens',
+      themes: {
+        plain: { colors: { accent: '#123456', neutral: '#333333' } },
+        replaced: {
+          colors: { warning: '#111111', accent: '#123456', neutral: '#333333' },
+          overrides: {
+            severity: { danger: '#ab1234', warning: '#222222' },
+            colors: { danger: { 'text-default': { light: '#000000' } } },
+          },
+        },
+      },
+    });
+
+    expect(imported.outDir).toBe('./custom-tokens');
+    expect(Object.entries(imported.themes.plain.colors)).toEqual([
+      ['accent', '#123456'],
+      ['neutral', '#333333'],
+      ['info', '#0A71C0'],
+      ['success', '#068718'],
+      ['warning', '#EA9B1B'],
+      ['danger', '#C01B1B'],
+    ]);
+    expect(imported.themes.plain).not.toHaveProperty('overrides');
+    expect(Object.entries(imported.themes.replaced.colors)).toEqual([
+      ['warning', '#222222'],
+      ['accent', '#123456'],
+      ['neutral', '#333333'],
+      ['info', '#0A71C0'],
+      ['success', '#068718'],
+      ['danger', '#ab1234'],
+    ]);
+    expect(imported.themes.replaced.overrides).toEqual({
+      colors: { danger: { 'text-default': { light: '#000000' } } },
+    });
   });
 });

@@ -8,17 +8,14 @@ import {
 import { PencilIcon } from '@navikt/aksel-icons';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import ColorDetails from './_components/color-details';
 import classes from './color-overrides.module.css';
 
 export const ColorOverrides = () => {
-  const { colors, severityColors } = useThemebuilder();
+  const { colors } = useThemebuilder();
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
-
-  const allColors: ColorTheme[] = [...colors, ...severityColors];
 
   return (
     <>
@@ -42,9 +39,9 @@ export const ColorOverrides = () => {
 
         <Dialog.Block>
           <Card data-color='neutral' variant='tinted'>
-            {allColors.map((color) => {
-              return <ColorDetails key={color.name} color={color} />;
-            })}
+            {colors.map((color) => (
+              <ColorDetails key={color.name} color={color} />
+            ))}
           </Card>
         </Dialog.Block>
       </Dialog>
