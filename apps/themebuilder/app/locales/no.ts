@@ -48,10 +48,9 @@ export default {
     'documentation-link': 'Les dokumentasjon om eget tema',
   },
   configPaste: {
-    title: 'Eller lim inn innholdet i filen',
-    upload: 'Last opp en konfigurasjonsfil',
+    title: 'Importer fra konfigurasjonsfil',
     description:
-      'Har du allerede en konfigurasjonsfil? Last den opp eller lim den inn her for å velge og redigere et tema. Den erstatter temaene du jobber med nå.',
+      'Har du allerede en konfigurasjonsfil? Lim den inn her for å velge og redigere et tema. Den erstatter temaene du jobber med nå.',
     placeholder: 'Lim inn innholdet fra designsystemet.config.json her...',
     validate: 'Valider konfigurasjon',
     'select-theme': 'Velg et tema å redigere',

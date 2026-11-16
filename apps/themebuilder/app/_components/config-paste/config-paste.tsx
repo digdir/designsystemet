@@ -6,7 +6,6 @@ import {
 import {
   Button,
   Field,
-  Input,
   Label,
   Paragraph,
   Textarea,
@@ -73,26 +72,10 @@ export function ConfigPaste() {
 
   return (
     <div className={classes.container}>
-      <Field>
-        <Label>{t('configPaste.upload')}</Label>
-        <Field.Description>{t('configPaste.description')}</Field.Description>
-        <Input
-          type='file'
-          accept='.json,application/json'
-          onChange={async (event) => {
-            const input = event.currentTarget;
-            const text = await input.files?.[0]?.text();
-            if (text === undefined) return;
-            setConfigText(text);
-            handleValidate(text);
-            // Lets the same file be uploaded again after it is corrected
-            input.value = '';
-          }}
-        />
-      </Field>
       <div className={classes.textareaWrapper}>
         <Field>
           <Label>{t('configPaste.title')}</Label>
+          <Field.Description>{t('configPaste.description')}</Field.Description>
           <Textarea
             className={classes.textarea}
             value={configText}
