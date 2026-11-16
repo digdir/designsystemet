@@ -6,6 +6,7 @@ import {
   redirect,
   Scripts,
   ScrollRestoration,
+  type ShouldRevalidateFunctionArgs,
 } from 'react-router';
 
 import type { Route } from './+types/root';
@@ -48,6 +49,13 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   return { lang };
 };
+
+/* The loader only depends on the path. Left to run for every change of the URL, it would run when the view tab or
+ * the appearance is changed, and a second change made while it runs would start from the old URL and undo the first. */
+export const shouldRevalidate = ({
+  currentUrl,
+  nextUrl,
+}: ShouldRevalidateFunctionArgs) => currentUrl.pathname !== nextUrl.pathname;
 
 type DocumentProps = {
   children: React.ReactNode;

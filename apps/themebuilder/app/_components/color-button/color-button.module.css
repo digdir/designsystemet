@@ -1,4 +1,4 @@
-.box {
+.swatch {
   height: 46px;
   width: 70px;
   display: flex;
@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-.box:hover:not(:focus-visible) {
+.swatch:hover:not(:focus-visible) {
   border-color: var(--ds-color-neutral-border-default);
   outline: 2px solid var(--ds-color-neutral-border-default);
   outline-offset: 1px;

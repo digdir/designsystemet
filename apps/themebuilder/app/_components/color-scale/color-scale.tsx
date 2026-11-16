@@ -5,7 +5,7 @@ import {
   type ThemeInfo,
 } from '@digdir/designsystemet/internal';
 import { ColorGroup } from '../color-group/color-group';
-import { capitalizeFirstLetter } from '../color-modal/util';
+import { capitalizeFirstLetter } from '../color-step-dialog/util';
 
 import classes from './color-scale.module.css';
 
