@@ -12,6 +12,11 @@ import {
 import { ColorScaleTable } from '~/_components/color-scale-table/color-scale-table';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import {
+  ComponentSizeBalance,
+  ComponentSizeMix,
+  ComponentSizes,
+} from '~/_components/size-examples/size-examples';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
 import { getColorExamples } from '~/_utils/color-examples.server';
 import { formatDate } from '~/_utils/date';
@@ -139,6 +144,10 @@ export default function Fundamentals({
             ColorScaleOverview:
               ColorScaleOverview as React.ComponentType<unknown>,
             ColorSwatches: ColorSwatches as React.ComponentType<unknown>,
+            ComponentSizes: ComponentSizes as React.ComponentType<unknown>,
+            ComponentSizeBalance:
+              ComponentSizeBalance as React.ComponentType<unknown>,
+            ComponentSizeMix: ComponentSizeMix as React.ComponentType<unknown>,
           }}
         />
         <EditPageOnGithub />
