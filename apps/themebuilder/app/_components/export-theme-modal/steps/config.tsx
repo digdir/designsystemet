@@ -4,7 +4,7 @@ import { DownloadIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router';
 import { downloadFile } from '../download-file';
-import classes from '../token-modal.module.css';
+import classes from '../export-theme-modal.module.css';
 
 const CONFIG_FILENAME = 'designsystemet.config.json';
 
