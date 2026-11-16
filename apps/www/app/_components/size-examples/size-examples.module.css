@@ -73,7 +73,8 @@
 }
 
 .pageMain .search {
-  width: 22rem;
+  flex: 1;
+  width: 18rem;
 }
 
 /* ComponentSizeMix */
@@ -128,7 +129,6 @@
 /* Dashed outline in the color of the size, matching the legend */
 .marked {
   display: flex;
-  flex-wrap: wrap;
   gap: var(--ds-size-2);
   box-sizing: border-box;
   max-width: 100%;
@@ -137,11 +137,11 @@
   outline: 2px dashed var(--mark-color);
 }
 
-[data-mark='md'] {
+:is(.marked, .legend > li)[data-mark='md'] {
   --mark-color: var(--ds-color-success-border-default);
 }
 
-[data-mark='lg'] {
+:is(.marked, .legend > li)[data-mark='lg'] {
   --mark-color: var(--ds-color-brand2-border-default);
 }
 

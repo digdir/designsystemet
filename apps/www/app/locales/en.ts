@@ -234,6 +234,7 @@ export default {
   'size-examples': {
     button: 'Button',
     'font-size': '{{size}} font',
+    height: 'Height',
     'medium-title': 'Example with Medium components',
     input: 'Input text',
     device: 'Device',

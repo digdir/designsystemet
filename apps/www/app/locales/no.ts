@@ -233,6 +233,7 @@ export default {
   'size-examples': {
     button: 'Knapp',
     'font-size': '{{size}} font',
+    height: 'Høyde',
     'medium-title': 'Eksempel med Medium-komponenter',
     input: 'Input tekst',
     device: 'Enhet',
