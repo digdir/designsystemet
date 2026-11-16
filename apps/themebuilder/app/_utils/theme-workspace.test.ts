@@ -1,6 +1,9 @@
+import { externalConfigSchema } from '@digdir/designsystemet/internal';
 import { describe, expect, it } from 'vitest';
 import {
   addWorkspaceTheme,
+  canRenameColor,
+  defaultWorkspace,
   normalizeConfig,
   removeThemeColor,
   renameWorkspaceThemes,
@@ -8,6 +11,7 @@ import {
   setThemeColor,
   type ThemeWorkspace,
   updateActiveTheme,
+  type WorkspaceTheme,
 } from './theme-workspace';
 
 const config = {
@@ -208,6 +212,9 @@ describe('theme workspace', () => {
 
     expect(setThemeColor(theme, 'accent', 'neutral', '#000000')).toBe(theme);
     expect(setThemeColor(theme, 'neutral', 'grey', '#000000')).toBe(theme);
+    expect(setThemeColor(theme, 'gone', 'gone', '#000000')).toBe(theme);
+    expect(setThemeColor(theme, 'gone', 'other', '#000000')).toBe(theme);
+    expect(removeThemeColor(theme, 'neutral')).toBe(theme);
     expect(setThemeColor(theme, 'accent', 'danger', '#000000').colors).toEqual({
       danger: '#000000',
       neutral: '#333333',
@@ -292,5 +299,55 @@ describe('theme workspace', () => {
     expect(imported.themes.replaced.overrides).toEqual({
       colors: { danger: { 'text-default': { light: '#000000' } } },
     });
+  });
+
+  it('does not rename a severity color, but lets it be recoloured and removed', () => {
+    const theme = {
+      colors: { accent: '#123456', neutral: '#333333', danger: '#C01B1B' },
+    };
+
+    expect(canRenameColor('danger')).toBe(false);
+    expect(canRenameColor('neutral')).toBe(false);
+    expect(canRenameColor('accent')).toBe(true);
+    expect(setThemeColor(theme, 'danger', 'error', '#C01B1B')).toBe(theme);
+    expect(
+      setThemeColor(theme, 'danger', 'danger', '#ab1234').colors.danger,
+    ).toBe('#ab1234');
+    expect(removeThemeColor(theme, 'danger').colors).toEqual({
+      accent: '#123456',
+      neutral: '#333333',
+    });
+  });
+
+  it('adds a color named like an object property to every theme', () => {
+    const next = updateActiveTheme({ config, activeTheme: 'first' }, (theme) =>
+      setThemeColor(theme, undefined, 'constructor', '#abcdef'),
+    );
+
+    for (const theme of Object.values(next.config.themes)) {
+      expect(Object.hasOwn(theme.colors, 'constructor')).toBe(true);
+      expect(theme.colors.constructor).toBe('#abcdef');
+    }
+  });
+
+  it('keeps the config valid through edits', () => {
+    let workspace = defaultWorkspace();
+    const edits = [
+      (theme: WorkspaceTheme) =>
+        setThemeColor(theme, undefined, 'brand', '#abcdef'),
+      (theme: WorkspaceTheme) =>
+        setThemeColor(theme, 'brand', 'primary', '#abcdef'),
+      (theme: WorkspaceTheme) =>
+        setColorOverride(theme, 'primary', 'text-default', 'dark', '#112233'),
+      (theme: WorkspaceTheme) => removeThemeColor(theme, 'accent'),
+      (theme: WorkspaceTheme) => removeThemeColor(theme, 'neutral'),
+      (theme: WorkspaceTheme) => removeThemeColor(theme, 'danger'),
+    ];
+    for (const edit of edits) {
+      workspace = updateActiveTheme(workspace, edit);
+      expect(externalConfigSchema.safeParse(workspace.config).success).toBe(
+        true,
+      );
+    }
   });
 });

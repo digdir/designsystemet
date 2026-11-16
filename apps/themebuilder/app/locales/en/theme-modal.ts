@@ -2,9 +2,6 @@ import type no from '../no/theme-modal';
 
 export default {
   'use-theme': 'Use theme',
-  'theme-name': 'Give your theme a name',
-  'theme-name-description':
-    'The name should represent the organisation or product you are profiling.',
   'generating-css': 'Generating CSS...',
   'own-theme': 'your own theme (opens in new tab)',
   'help-heading': 'Something not working?',
@@ -33,5 +30,4 @@ export default {
     error: 'Could not generate CSS for the theme.',
     'select-theme': 'Theme',
   },
-  'severity-colors': 'Severity',
 } as typeof no;

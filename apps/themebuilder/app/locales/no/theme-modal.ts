@@ -1,8 +1,5 @@
 export default {
   'use-theme': 'Ta i bruk tema',
-  'theme-name': 'Gi temaet ditt et navn',
-  'theme-name-description':
-    'Navnet bør representere virksomheten eller produktet du skal profilere.',
   'generating-css': 'Genererer CSS...',
   'own-theme': 'eget tema (åpnes i ny fane)',
   'help-heading': 'Noe som ikke fungerer?',
@@ -31,5 +28,4 @@ export default {
     error: 'Kunne ikke generere CSS for temaet.',
     'select-theme': 'Velg tema',
   },
-  'severity-colors': 'Severity',
 };

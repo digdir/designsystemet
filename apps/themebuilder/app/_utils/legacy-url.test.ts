@@ -1,7 +1,7 @@
 import { severityColors } from '@digdir/designsystemet/internal';
 import LZString from 'lz-string';
 import { describe, expect, it } from 'vitest';
-import { readLegacyUrl } from './legacy-url';
+import { readLegacyUrl } from './legacy-url.server';
 import { resolveThemeColors } from './theme-colors';
 import { defaultWorkspace, normalizeConfig } from './theme-workspace';
 
@@ -209,5 +209,29 @@ describe('theme builder URL', () => {
         );
       }
     });
+  });
+
+  it('leaves out step overrides that cannot be shown', () => {
+    const theme = readLegacyUrl(
+      new URLSearchParams(
+        `${base}&color-overrides=accent|text-default|light:zzz|dark:%23112233+accent|no-such-step|light:%23112233+__proto__|text-default|light:%23112233`,
+      ),
+    )?.config.themes.theme;
+
+    expect(theme?.overrides).toEqual({
+      colors: { accent: { 'text-default': { dark: '#112233' } } },
+    });
+    expect(({} as Record<string, unknown>)['text-default']).toBeUndefined();
+  });
+
+  it('rejects a link with a color that is not a color', () => {
+    for (const search of [
+      'colors=accent',
+      'colors=accent:%2312+neutral:%23333',
+    ]) {
+      expect(() => readLegacyUrl(new URLSearchParams(search))).toThrow(
+        'Invalid theme builder URL',
+      );
+    }
   });
 });
