@@ -16,7 +16,7 @@ import {
 import cl from 'clsx/lite';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import classes from './color-contrasts.module.css';
 
 const initialTheme = generateColorSchemes('#0062BA');

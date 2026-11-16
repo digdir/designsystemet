@@ -9,14 +9,14 @@ import { PencilIcon, PlusIcon, TrashIcon } from '@navikt/aksel-icons';
 import { useEffect, useId, useRef, useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
-import { useThemeStore } from '~/_utils/theme-store';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { useThemeStore } from '~/model/theme-store';
 import {
   canRenameColor,
   REQUIRED_COLOR,
   removeThemeColor,
   setThemeColor,
-} from '~/_utils/theme-workspace';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+} from '~/model/theme-workspace';
 import { ColorInput } from '../../color-input/color-input';
 import { ColorOverrides } from '../color-overrides/color-overrides';
 import { ColorPane } from '../color-pane/color-pane';

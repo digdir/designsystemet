@@ -9,8 +9,8 @@ import {
 import cl from 'clsx/lite';
 import { type HTMLAttributes, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { generateColorVars } from '~/_utils/generate-color-vars';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { generateColorVars } from '~/model/generate-color-vars';
 import listClasses from './card.module.css';
 import classes from './color-preview.module.css';
 

@@ -1,4 +1,4 @@
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import { Scale } from '../color-scale/color-scale';
 import classes from './colors.module.css';
 

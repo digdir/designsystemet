@@ -3,7 +3,7 @@ import { ToggleGroup } from '@digdir/designsystemet-react';
 import { MoonIcon, SunIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import classes from './appearance-toggle.module.css';
 
 type AppearanceToggleProps = {

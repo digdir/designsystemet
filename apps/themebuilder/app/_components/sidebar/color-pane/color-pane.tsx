@@ -9,8 +9,8 @@ import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 import { ColorPicker, type IColor, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
-import { REQUIRED_COLOR } from '~/_utils/theme-workspace';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { REQUIRED_COLOR } from '~/model/theme-workspace';
 import classes from './color-pane.module.css';
 
 type ColorPaneProps = {

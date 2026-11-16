@@ -1,6 +1,6 @@
 import pkg from '@digdir/designsystemet/package.json';
 import { useLoaderData } from 'react-router';
-import { useThemeStore } from '~/_utils/theme-store';
+import { useThemeStore } from '~/model/theme-store';
 
 export const useTokenModal = () => {
   const { isProduction } = useLoaderData();
