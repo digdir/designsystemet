@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import {
   addWorkspaceTheme,
-  editorParams,
-  readWorkspace,
+  removeThemeColor,
   renameWorkspaceThemes,
-  updateWorkspace,
-  workspaceParams,
+  setColorOverride,
+  setSeverityColor,
+  setThemeColor,
+  type ThemeWorkspace,
+  updateActiveTheme,
 } from './theme-workspace';
 
 const config = {
@@ -23,7 +25,7 @@ const config = {
   },
 };
 
-describe('compressed theme workspace', () => {
+describe('theme workspace', () => {
   it('adds an independent copy of the active theme and retains config settings', () => {
     const workspace = addWorkspaceTheme(
       { config, activeTheme: 'first' },
@@ -35,7 +37,6 @@ describe('compressed theme workspace', () => {
     expect(workspace.config.themes['new-theme']).not.toBe(config.themes.first);
     workspace.config.themes['new-theme'].colors.accent = '#abcdef';
     expect(config.themes.first.colors.accent).toBe('#123456');
-    expect(readWorkspace(workspaceParams(workspace))).toEqual(workspace);
   });
   it('renames and adds themes in order, keeping the active theme selected', () => {
     const workspace = renameWorkspaceThemes({ config, activeTheme: 'first' }, [
@@ -91,34 +92,25 @@ describe('compressed theme workspace', () => {
     }
     expect(Object.keys(config.themes)).toEqual(['first', 'second']);
   });
-  it('round-trips the whole config without injecting defaults', () => {
-    const params = workspaceParams({ config, activeTheme: 'second' });
-    expect(readWorkspace(params)).toEqual({ config, activeTheme: 'second' });
-    expect(params.has('colors')).toBe(false);
-    expect(params.get('config')?.length).toBeLessThan(
-      encodeURIComponent(JSON.stringify(config)).length,
-    );
+  it('edits the active theme and leaves the other themes and config settings as they are', () => {
+    const workspace: ThemeWorkspace = { config, activeTheme: 'first' };
+    const next = updateActiveTheme(workspace, (theme) => ({
+      ...setThemeColor(theme, 'accent', 'accent', '#abcdef'),
+      borderRadius: 12,
+    }));
+
+    expect(next.config.themes.first).toEqual({
+      ...config.themes.first,
+      colors: { accent: '#abcdef', neutral: '#333333' },
+      borderRadius: 12,
+    });
+    expect(next.config.themes.second).toBe(config.themes.second);
+    expect(next.config.outDir).toBe(config.outDir);
+    expect(next.activeTheme).toBe('first');
+    expect(config.themes.first.colors.accent).toBe('#123456');
+    expect(updateActiveTheme(workspace, (theme) => theme)).toBe(workspace);
   });
-  it('preserves inactive themes and settings through edits and switching', () => {
-    const params = workspaceParams({ config, activeTheme: 'first' });
-    const edited = editorParams(params);
-    edited.set('border-radius', '12');
-    edited.set('colors', 'accent:#abcdef neutral:#333333');
-    const next = updateWorkspace(params, edited);
-    expect(readWorkspace(next)?.config.themes.first.overrides).toBeUndefined();
-    expect(readWorkspace(next)?.config.themes.second).toEqual(
-      config.themes.second,
-    );
-    expect(readWorkspace(next)?.config.outDir).toBe(config.outDir);
-    expect(readWorkspace(next)?.config.themes.first.typography).toEqual(
-      config.themes.first.typography,
-    );
-    next.set('theme', 'second');
-    expect(editorParams(next).get('border-radius')).toBe('2');
-    next.set('theme', 'first');
-    expect(editorParams(next).get('border-radius')).toBe('12');
-  });
-  it('renames shared colors without losing theme values or token overrides', () => {
+  it("renames a color in every theme, keeping each theme's value, position and step overrides", () => {
     const withOverrides = {
       ...config,
       themes: Object.fromEntries(
@@ -140,53 +132,53 @@ describe('compressed theme workspace', () => {
         ]),
       ),
     };
-    const params = workspaceParams({
-      config: withOverrides,
-      activeTheme: 'first',
-    });
-    const edited = editorParams(params);
-    edited.set('colors', 'brand:#123456 neutral:#333333');
-    const next = readWorkspace(updateWorkspace(params, edited));
-    expect(next?.config.themes.second.colors).toEqual({
-      brand: '#654321',
-      neutral: '#444444',
-    });
-    expect(next?.config.themes.first.colors.brand).toBe('#123456');
+    const next = updateActiveTheme(
+      { config: withOverrides, activeTheme: 'first' },
+      (theme) => setThemeColor(theme, 'accent', 'brand', '#123456'),
+    );
+
+    expect(Object.entries(next.config.themes.first.colors)).toEqual([
+      ['brand', '#123456'],
+      ['neutral', '#333333'],
+    ]);
+    expect(Object.entries(next.config.themes.second.colors)).toEqual([
+      ['brand', '#654321'],
+      ['neutral', '#444444'],
+    ]);
     for (const [name, theme] of Object.entries(withOverrides.themes)) {
-      expect(
-        next?.config.themes[name].overrides?.colors?.accent,
-      ).toBeUndefined();
-      expect(next?.config.themes[name].overrides?.colors?.brand).toEqual(
-        theme.overrides.colors.accent,
-      );
+      expect(next.config.themes[name].overrides?.colors).toEqual({
+        brand: theme.overrides.colors.accent,
+      });
     }
   });
-  it('keeps legacy links and rejects corrupt or unknown workspaces', () => {
-    const legacy = new URLSearchParams('colors=accent%3A%23123456');
-    expect(editorParams(legacy).toString()).toBe(legacy.toString());
-    expect(() => readWorkspace(new URLSearchParams('config=broken'))).toThrow();
-    expect(() => readWorkspace(new URLSearchParams('config='))).toThrow();
-    const params = workspaceParams({ config, activeTheme: 'missing' });
-    expect(() => readWorkspace(params)).toThrow();
-  });
-  it('adds and removes shared colors while preserving theme values', () => {
-    const params = workspaceParams({ config, activeTheme: 'first' });
-    const edited = editorParams(params);
-    edited.set('colors', 'accent:#123456 neutral:#333333 brand:#abcdef');
-    const added = updateWorkspace(params, edited);
-    expect(readWorkspace(added)?.config.themes.second.colors).toEqual({
+  it('adds and removes a color in every theme', () => {
+    const added = updateActiveTheme({ config, activeTheme: 'first' }, (theme) =>
+      setThemeColor(theme, undefined, 'brand', '#abcdef'),
+    );
+    expect(added.config.themes.first.colors).toEqual({
+      accent: '#123456',
+      neutral: '#333333',
+      brand: '#abcdef',
+    });
+    expect(added.config.themes.second.colors).toEqual({
       accent: '#654321',
       neutral: '#444444',
       brand: '#abcdef',
     });
-    const removed = editorParams(added);
-    removed.set('colors', 'neutral:#333333 brand:#abcdef');
-    expect(
-      readWorkspace(updateWorkspace(added, removed))?.config.themes.second
-        .colors,
-    ).toEqual({ neutral: '#444444', brand: '#abcdef' });
+
+    const removed = updateActiveTheme(added, (theme) =>
+      removeThemeColor(theme, 'accent'),
+    );
+    expect(removed.config.themes.first.colors).toEqual({
+      neutral: '#333333',
+      brand: '#abcdef',
+    });
+    expect(removed.config.themes.second.colors).toEqual({
+      neutral: '#444444',
+      brand: '#abcdef',
+    });
   });
-  it('deletes color overrides from every theme without deleting severity overrides', () => {
+  it('removes the step overrides of a removed color from every theme, and keeps severity colors', () => {
     const withOverrides = {
       ...config,
       themes: Object.fromEntries(
@@ -202,45 +194,70 @@ describe('compressed theme workspace', () => {
         ]),
       ),
     };
-    const params = workspaceParams({
-      config: withOverrides,
-      activeTheme: 'first',
-    });
-    const edited = editorParams(params);
-    edited.set('colors', 'neutral:#333333');
-    const removed = readWorkspace(updateWorkspace(params, edited));
-    for (const theme of Object.values(removed?.config.themes || {})) {
-      expect(theme.overrides?.colors).toBeUndefined();
-      expect(theme.overrides?.severity).toEqual({ danger: '#ab1234' });
+    const removed = updateActiveTheme(
+      { config: withOverrides, activeTheme: 'first' },
+      (theme) => removeThemeColor(theme, 'accent'),
+    );
+
+    for (const theme of Object.values(removed.config.themes)) {
+      expect(theme.overrides).toEqual({ severity: { danger: '#ab1234' } });
     }
   });
-  it('preserves per-theme overrides regardless of the legacy severity flag', () => {
-    const params = workspaceParams({ config, activeTheme: 'first' });
-    const edited = editorParams(params);
-    edited.set(
-      'color-overrides',
-      'accent|text-default|light:#abcdef|dark:#fedcba',
-    );
-    const next = updateWorkspace(params, edited);
-    expect(editorParams(next).get('color-overrides')).toBe(
-      edited.get('color-overrides'),
-    );
-    const severity = editorParams(next);
-    severity.set('severity-enabled', 'false');
-    severity.set('severity', 'danger:#ab1234');
-    const overridden = updateWorkspace(next, severity);
+  it('ignores a color name that is reserved or taken by another color', () => {
+    const theme = config.themes.first;
+
+    expect(setThemeColor(theme, 'accent', 'neutral', '#000000')).toBe(theme);
+    expect(setThemeColor(theme, 'accent', 'danger', '#000000')).toBe(theme);
+    expect(setThemeColor(theme, undefined, 'accent', '#000000')).toBe(theme);
     expect(
-      readWorkspace(overridden)?.config.themes.first.overrides?.severity,
-    ).toEqual({ danger: '#ab1234' });
-    expect(overridden.has('severity-enabled')).toBe(false);
-    const disabled = editorParams(overridden);
-    disabled.delete('severity');
-    const disabledWorkspace = updateWorkspace(overridden, disabled);
+      setThemeColor(theme, 'neutral', 'neutral', '#000000').colors,
+    ).toEqual({ accent: '#123456', neutral: '#000000' });
+  });
+  it('sets and removes step overrides one color scheme at a time', () => {
+    let theme = setColorOverride(
+      config.themes.first,
+      'accent',
+      'text-default',
+      'light',
+      '#abcdef',
+    );
+    theme = setColorOverride(
+      theme,
+      'accent',
+      'text-default',
+      'dark',
+      '#fedcba',
+    );
+    theme = setColorOverride(
+      theme,
+      'neutral',
+      'border-subtle',
+      'dark',
+      '#111111',
+    );
+    expect(theme.overrides).toEqual({
+      colors: {
+        accent: { 'text-default': { light: '#abcdef', dark: '#fedcba' } },
+        neutral: { 'border-subtle': { dark: '#111111' } },
+      },
+    });
+
+    theme = setColorOverride(theme, 'accent', 'text-default', 'light', '');
+    theme = setColorOverride(theme, 'neutral', 'border-subtle', 'dark', '');
+    expect(theme.overrides).toEqual({
+      colors: { accent: { 'text-default': { dark: '#fedcba' } } },
+    });
     expect(
-      readWorkspace(disabledWorkspace)?.config.themes.first.overrides?.severity,
+      setColorOverride(theme, 'accent', 'text-default', 'dark', '').overrides,
     ).toBeUndefined();
-    expect(readWorkspace(overridden)?.config.themes.second).toEqual(
-      config.themes.second,
-    );
+    expect(config.themes.first).not.toHaveProperty('overrides');
+  });
+  it('replaces a severity color, and removes the replacement when it is set to the default', () => {
+    const theme = setSeverityColor(config.themes.first, 'danger', '#ab1234');
+    expect(theme.overrides).toEqual({ severity: { danger: '#ab1234' } });
+    expect(setSeverityColor(theme, 'info', '#0a71c0')).toEqual(theme);
+    expect(
+      setSeverityColor(theme, 'danger', '#C01B1B').overrides,
+    ).toBeUndefined();
   });
 });

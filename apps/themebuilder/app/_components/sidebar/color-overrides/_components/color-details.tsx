@@ -1,4 +1,5 @@
 import {
+  type SemanticColorNames,
   semanticColorNames,
   semanticColorSpec,
 } from '@digdir/designsystemet/internal';
@@ -11,7 +12,8 @@ import {
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useId, useState } from 'react';
-import { useThemeSearchParams } from '~/_hooks/use-theme-search-params';
+import { useThemeStore } from '~/_utils/theme-store';
+import { setColorOverride } from '~/_utils/theme-workspace';
 import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from '../color-overrides.module.css';
 
@@ -21,7 +23,7 @@ type ColorDetailsProps = {
 
 type ColorOverrideInputProps = {
   colorName: string;
-  tokenName: string;
+  tokenName: SemanticColorNames;
   mode: 'light' | 'dark';
   defaultColor?: string;
 };
@@ -40,7 +42,7 @@ const ColorOverrideInput = ({
   mode,
   defaultColor,
 }: ColorOverrideInputProps) => {
-  const [searchParams, setSearchParams] = useThemeSearchParams();
+  const { theme, updateTheme } = useThemeStore();
   const [localValue, setLocalValue] = useState<string | undefined>(undefined);
   const [validHex, setValidHex] = useState(true);
 
@@ -48,31 +50,10 @@ const ColorOverrideInput = ({
   const colorInputId = `color-input-${genId}`;
   const inputId = `input-${genId}`;
 
-  // Get the committed value from URL
-  const getCommittedValue = (): string => {
-    const currentOverrides = searchParams.get('color-overrides') || '';
-    const overridesArray = currentOverrides
-      ? currentOverrides.split(' ').filter(Boolean)
-      : [];
+  const committedValue =
+    theme.overrides?.colors?.[colorName]?.[tokenName]?.[mode] || '';
 
-    const override = overridesArray.find((o) =>
-      o.startsWith(`${colorName}|${tokenName}|`),
-    );
-
-    if (!override) return '';
-
-    const parts = override.split('|');
-    for (let i = 2; i < parts.length; i++) {
-      const [m, hex] = parts[i].split(':');
-      if (m === mode) return hex;
-    }
-
-    return '';
-  };
-
-  const committedValue = getCommittedValue();
-
-  // Clear local value if it matches the committed value (URL has updated)
+  // Clear local value if it matches the committed value (the theme has updated)
   if (localValue !== undefined && localValue.trim() === committedValue) {
     setLocalValue(undefined);
   }
@@ -86,69 +67,23 @@ const ColorOverrideInput = ({
   const handleBlur = () => {
     if (localValue === undefined) return;
 
-    const currentOverrides = searchParams.get('color-overrides') || '';
-    const overridesArray = currentOverrides
-      ? currentOverrides.split(' ').filter(Boolean)
-      : [];
-
-    // Find the existing override for this color/token combo
-    const existingIndex = overridesArray.findIndex((o) =>
-      o.startsWith(`${colorName}|${tokenName}|`),
-    );
-
-    // Get current values from URL to preserve the other mode
-    let currentLight = '';
-    let currentDark = '';
-    if (existingIndex >= 0) {
-      const parts = overridesArray[existingIndex].split('|');
-      for (let i = 2; i < parts.length; i++) {
-        const [m, hex] = parts[i].split(':');
-        if (m === 'light') currentLight = hex;
-        if (m === 'dark') currentDark = hex;
-      }
-    }
-
-    // Remove existing override
-    if (existingIndex >= 0) {
-      overridesArray.splice(existingIndex, 1);
-    }
-
-    // Update the value for this mode
-    const finalLight = mode === 'light' ? localValue.trim() : currentLight;
-    const finalDark = mode === 'dark' ? localValue.trim() : currentDark;
-
-    if (finalLight || finalDark) {
-      const parts = [colorName, tokenName];
-      if (finalLight) parts.push(`light:${finalLight}`);
-      if (finalDark) parts.push(`dark:${finalDark}`);
-      overridesArray.push(parts.join('|'));
-    }
-
-    // check if the new localValue is a valid hex color
+    const value = localValue.trim();
     const hexRegex = new RegExp(`^(${hexPatterns.join('|')})$`);
-    if (localValue.trim() && !hexRegex.test(localValue.trim())) {
+    if (value && !hexRegex.test(value)) {
       setValidHex(false);
       return;
     }
 
-    // Update URL params
-    const newParams = new URLSearchParams(searchParams);
-    if (overridesArray.length > 0) {
-      newParams.set('color-overrides', overridesArray.join(' '));
-    } else {
-      newParams.delete('color-overrides');
-    }
-    setSearchParams(newParams, { replace: true, preventScrollReset: true });
+    updateTheme((theme) =>
+      setColorOverride(theme, colorName, tokenName, mode, value),
+    );
   };
 
   return (
     <div className='ds-field'>
       <Label htmlFor={inputId}>
         <span className='ds-sr-only'>{colorName} </span>
-        {
-          semanticColorSpec[tokenName as keyof typeof semanticColorSpec]
-            .displayName
-        }{' '}
+        {semanticColorSpec[tokenName].displayName}{' '}
         {mode === 'light' ? 'Light' : 'Dark'}
       </Label>
       <Field.Affixes>
