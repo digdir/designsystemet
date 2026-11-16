@@ -1,15 +1,15 @@
 import {
-  externalConfigSchema,
+  isHexColor,
   semanticColorNames,
 } from '@digdir/designsystemet/internal';
 import LZString from 'lz-string';
+import { importConfig } from './import-config';
 import { legacyThemeKeys } from './legacy-url';
 import { resolveThemeColors } from './theme-colors';
 import {
   defaultWorkspace,
   normalizeConfig,
   type ThemeWorkspace,
-  type WorkspaceConfig,
   type WorkspaceTheme,
 } from './theme-workspace';
 
@@ -32,8 +32,6 @@ const readColors = (value: string | null) =>
       .map((entry) => entry.split(':')),
   );
 
-const isHex = (value: string) => /^#[0-9a-f]{3,8}$/i.test(value);
-
 /**
  * Reads `color|step|light:hex|dark:hex color|step|dark:hex`.
  * Steps that do not exist and values that are not hex colors are left out, as they cannot be shown.
@@ -49,7 +47,7 @@ function readColorOverrides(value: string | null) {
     if (!colorName || colorName === '__proto__' || !step) continue;
     for (const mode of modes) {
       const [scheme, hex] = mode.split(':');
-      if ((scheme !== 'light' && scheme !== 'dark') || !isHex(hex || ''))
+      if ((scheme !== 'light' && scheme !== 'dark') || !isHexColor(hex || ''))
         continue;
       overrides[colorName] ??= {};
       overrides[colorName][step] = {
@@ -68,13 +66,13 @@ function readCompressedConfig(params: URLSearchParams): ThemeWorkspace {
     );
     if (!decoded || decoded.length > 1_000_000)
       throw new Error('Invalid config');
-    const config: WorkspaceConfig = JSON.parse(decoded);
-    externalConfigSchema.parse(config);
-    if (!config.themes) throw new Error('Missing themes');
+    const result = importConfig(decoded);
+    if (!('config' in result)) throw new Error('Invalid config');
+    const { config } = result;
     const activeTheme = params.get('theme') || Object.keys(config.themes)[0];
-    if (!activeTheme || !Object.hasOwn(config.themes, activeTheme))
+    if (!Object.hasOwn(config.themes, activeTheme))
       throw new Error('Unknown theme');
-    return { config: normalizeConfig(config), activeTheme };
+    return { config, activeTheme };
   } catch {
     throw new Error('Invalid theme builder URL');
   }

@@ -3,17 +3,15 @@ import { useDebounceCallback } from '@internal/components';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import { useThemeStore } from '~/model/theme-store';
 import classes from './border-radius-input.module.css';
 
 export const BorderRadiusInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
-  const { updateTheme } = useThemeStore();
+  const { borderRadius: baseBorderRadius, updateTheme } = useThemeStore();
   const setBorderRadius = (borderRadius: number) =>
     updateTheme((theme) => ({ ...theme, borderRadius }));
-  const { baseBorderRadius } = useThemebuilder();
 
   /* The field is not controlled, so that it can be typed in freely. It follows the theme when the
    * value changes from somewhere else, such as a suggested value or an imported config. */

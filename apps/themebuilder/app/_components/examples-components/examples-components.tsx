@@ -1,4 +1,3 @@
-import type { ColorScheme } from '@digdir/designsystemet/internal';
 import {
   Avatar,
   Button,
@@ -13,10 +12,11 @@ import {
   Textfield,
 } from '@digdir/designsystemet-react';
 import { styleBorderRadiusVars } from '@internal/components';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { useColorScheme } from '~/_hooks/use-color-scheme';
 import { previewColorVars } from '~/model/theme-colors';
+import { useThemeStore } from '~/model/theme-store';
 import { REQUIRED_COLOR } from '~/model/theme-workspace';
 import classes from './examples-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
@@ -40,18 +40,10 @@ const users = [
   },
 ];
 
-type ExamplesComponentsProps = {
-  colorScheme?: ColorScheme;
-  borderRadius?: number;
-};
-
-export const ExamplesComponents = ({
-  colorScheme = 'light',
-  borderRadius = 4,
-}: ExamplesComponentsProps) => {
+export const ExamplesComponents = () => {
   const { t } = useTranslation();
-  const ref = useRef<HTMLDivElement>(null);
-  const { colors } = useThemebuilder();
+  const [colorScheme] = useColorScheme();
+  const { colors, borderRadius } = useThemeStore();
 
   /* The neutral color is always part of the examples, so it is not a color to choose */
   const previewColors = colors.filter((color) => color.name !== REQUIRED_COLOR);
@@ -60,18 +52,10 @@ export const ExamplesComponents = ({
     previewColors.find((color) => color.name === previewName) ||
     previewColors[0];
 
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.style.setProperty(
-        '--ds-border-radius-base',
-        `${borderRadius / 16}rem`,
-      );
-    }
-  }, [borderRadius]);
-
-  const style = {
+  const style: Record<string, string> = {
     ...previewColorVars(colors, previewColor, colorScheme),
     ...styleBorderRadiusVars,
+    '--ds-border-radius-base': `${borderRadius / 16}rem`,
   };
 
   return (
@@ -92,7 +76,7 @@ export const ExamplesComponents = ({
 
       <Divider />
 
-      <div ref={ref} style={style}>
+      <div style={style}>
         <div className={classes.inner}>
           <div className={classes.card}>
             <Heading data-size='2xs'>{t('overview.login-title')}</Heading>

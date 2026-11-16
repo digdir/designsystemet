@@ -9,7 +9,6 @@ export default {
   slack: 'Slack (opens in new tab)',
   or: 'or create a',
   'github-issue': 'Github issue (opens in new tab)',
-  color: 'Colour',
   config: {
     heading: 'Config file',
     description:

@@ -33,7 +33,6 @@ export const loader = async ({
 
   return {
     workspace,
-    lang,
     metadata: generateMetadata({
       title: t('meta.title'),
       description: t('meta.description'),
@@ -49,14 +48,13 @@ export const shouldRevalidate = ({
 }: ShouldRevalidateFunctionArgs) => currentParams.lang !== nextParams.lang;
 
 export const meta: Route.MetaFunction = ({ loaderData }: Route.MetaArgs) => {
-  if (!loaderData?.metadata)
-    return [
-      {
-        title: 'Theme Builder - Designsystemet',
-        description: 'Build your own theme for Designsystemet',
-      },
-    ];
-  return loaderData.metadata;
+  return (
+    loaderData?.metadata ??
+    generateMetadata({
+      title: 'Theme Builder',
+      description: 'Build your own theme for Designsystemet',
+    })
+  );
 };
 
 export default function Page() {

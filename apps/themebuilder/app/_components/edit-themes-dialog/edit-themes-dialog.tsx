@@ -36,6 +36,7 @@ export const EditThemesDialog = ({
 }: EditThemesDialogProps) => {
   const { t } = useTranslation();
   const headingId = useId();
+  const dialogId = useId();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const nextId = useRef(0);
   const [rows, setRows] = useState<Row[]>([]);
@@ -93,7 +94,7 @@ export const EditThemesDialog = ({
         ref={dialogRef}
         closedby='any'
         aria-labelledby={headingId}
-        id='edit-themes-dialog'
+        id={dialogId}
       >
         <Dialog.Block>
           <Heading id={headingId} level={2} data-size='sm'>
@@ -175,7 +176,7 @@ export const EditThemesDialog = ({
                 type='button'
                 variant='secondary'
                 command='close'
-                commandfor='edit-themes-dialog'
+                commandfor={dialogId}
               >
                 {t('colorPane.cancel')}
               </Button>

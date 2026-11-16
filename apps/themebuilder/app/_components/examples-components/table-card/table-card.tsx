@@ -41,13 +41,11 @@ export const TableCard = () => {
             <Select.Option value='blank'>
               {t('overview.select-action')}
             </Select.Option>
-            <Select.Option value='everest'>
+            <Select.Option value='duplicate'>
               {t('overview.duplicate')}
             </Select.Option>
-            <Select.Option value='aconcagua'>
-              {t('overview.delete')}
-            </Select.Option>
-            <Select.Option value='denali'>{t('overview.update')}</Select.Option>
+            <Select.Option value='delete'>{t('overview.delete')}</Select.Option>
+            <Select.Option value='update'>{t('overview.update')}</Select.Option>
           </Select>
           <Button data-size='sm' className={classes.submitBtn}>
             {t('overview.execute')}
@@ -69,15 +67,14 @@ export const TableCard = () => {
           overflowX: 'auto',
         }}
       >
-        {' '}
         <Table data-size='sm' border data-color='neutral'>
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
+              <Table.HeaderCell sort='none'>
                 {t('overview.name')}
               </Table.HeaderCell>
               <Table.HeaderCell>{t('overview.email')}</Table.HeaderCell>
-              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
+              <Table.HeaderCell sort='none'>
                 {t('overview.phone')}
               </Table.HeaderCell>
             </Table.Row>

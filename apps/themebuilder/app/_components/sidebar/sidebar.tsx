@@ -1,154 +1,105 @@
-import { Button, Dialog, Heading, Tabs } from '@digdir/designsystemet-react';
+import { Dialog, Heading, Tabs } from '@digdir/designsystemet-react';
 import { useMediaQuery } from '@internal/components';
 import { CogIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { useThemeStore } from '~/model/theme-store';
 import { BorderRadiusInput } from '../border-radius-input/border-radius-input';
 import { ConfigPaste } from '../config-paste/config-paste';
 import { ExportThemeModal } from '../export-theme-modal/export-theme-modal';
 import { ColorPage } from './color-page/color-page';
 import classes from './sidebar.module.css';
 
+/** How far the page is scrolled before the editor sticks to the top of the window */
+const STICKY_SCROLL_Y = 135;
+
+/**
+ * The theme editor. It is a panel next to the page on wide screens, a panel that is opened with a button on
+ * medium screens, and a dialog opened with the same button on small screens.
+ */
 export const Sidebar = () => {
   const { t } = useTranslation();
-  const { workspace } = useThemebuilder();
-  const configPasteDialogRef = useRef<HTMLDialogElement>(null);
-
-  const [activePage, setActivePage] = useState<'colors' | 'dimensions'>(
-    'colors',
-  );
-
+  const { workspace } = useThemeStore();
+  const [activeTab, setActiveTab] = useState('colors');
   const isMobile = useMediaQuery('(max-width: 768px)');
-  const [modalOpen, setModalOpen] = useState(false);
-
+  /* Whether the editor is opened with the button. On wide screens it is always shown. */
+  const [open, setOpen] = useState(false);
   const [isSticky, setSticky] = useState(false);
-  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const shouldBeSticky = window.scrollY > 135;
-      if (isSticky !== shouldBeSticky) {
-        setSticky(shouldBeSticky);
-      }
-    };
-
+    const handleScroll = () => setSticky(window.scrollY > STICKY_SCROLL_Y);
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isSticky]);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  /* The editor is rendered once, so that there is one of each field, dialog and editing state */
+  const tabs = (
+    <Tabs value={activeTab} onChange={setActiveTab}>
+      <Tabs.List>
+        <Tabs.Tab value='colors'>{t('tabs.colors')}</Tabs.Tab>
+        <Tabs.Tab value='dimensions'>{t('tabs.dimensions')}</Tabs.Tab>
+      </Tabs.List>
+      <div className={classes.tabContent}>
+        <Tabs.Panel className={classes.tabPanel} value='colors'>
+          <ColorPage key={workspace.activeTheme} />
+        </Tabs.Panel>
+        <Tabs.Panel className={classes.tabPanel} value='dimensions'>
+          <BorderRadiusInput key={workspace.activeTheme} />
+        </Tabs.Panel>
+      </div>
+    </Tabs>
+  );
+  const actions = (
+    <>
+      <ExportThemeModal />
+      <ConfigPaste />
+    </>
+  );
 
   return (
-    <>
-      <div>
-        <button
-          className={cl(
-            classes.toggle,
-            showSidebar && classes.toggleOpen,
-            'ds-focus-visible',
-          )}
-          onClick={() => {
-            !isMobile && setShowSidebar(!showSidebar);
-            isMobile && setModalOpen(true);
-          }}
-          aria-label={t('themeBuilder.toggle-editor')}
-          aria-expanded={isMobile ? modalOpen : showSidebar}
-        >
-          <CogIcon aria-hidden height='1.5rem' width='1.5rem' />
-        </button>
-        <div
-          className={cl(
-            classes.sidebar,
-            isSticky && classes.sticky,
-            showSidebar && classes.showSidebar,
-          )}
-        >
-          <Tabs
-            value={activePage}
-            onChange={(value: string) =>
-              setActivePage(value as 'colors' | 'dimensions')
-            }
-          >
-            <Tabs.List>
-              <Tabs.Tab value='colors'>{t('tabs.colors')}</Tabs.Tab>
-              <Tabs.Tab value='dimensions'>{t('tabs.dimensions')}</Tabs.Tab>
-            </Tabs.List>
-            <div className={classes.tabContent}>
-              <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage key={workspace.activeTheme} />
-              </Tabs.Panel>
-              <Tabs.Panel className={classes.tabPanel} value='dimensions'>
-                <BorderRadiusInput key={workspace.activeTheme} />
-              </Tabs.Panel>
-            </div>
-          </Tabs>
-
-          <div className={classes.bottom} data-size='sm'>
-            <ExportThemeModal />
-            <Button
-              onClick={() => configPasteDialogRef.current?.showModal()}
-              className={classes.configButton}
-              variant='secondary'
-            >
-              {t('configPaste.import-config')}
-            </Button>
-          </div>
-        </div>
-      </div>
-      {isMobile && (
+    <div>
+      <button
+        type='button'
+        className={cl(
+          classes.toggle,
+          open && !isMobile && classes.toggleOpen,
+          'ds-focus-visible',
+        )}
+        onClick={() => setOpen(isMobile || !open)}
+        aria-label={t('themeBuilder.toggle-editor')}
+        aria-expanded={open}
+      >
+        <CogIcon aria-hidden height='1.5rem' width='1.5rem' />
+      </button>
+      {isMobile ? (
         <Dialog
-          open={modalOpen}
+          open={open}
           className={classes.modal}
-          onClose={() => setModalOpen(false)}
+          onClose={() => setOpen(false)}
         >
           <Dialog.Block>
             <Heading>{t('themeBuilder.title')}</Heading>
           </Dialog.Block>
           <Dialog.Block className={classes.tabsWrapper}>
-            <Tabs
-              value={activePage}
-              onChange={(value) =>
-                setActivePage(value as 'colors' | 'dimensions')
-              }
-            >
-              <Tabs.List>
-                <Tabs.Tab value='colors'>{t('tabs.colors')}</Tabs.Tab>
-                <Tabs.Tab value='dimensions'>{t('tabs.dimensions')}</Tabs.Tab>
-              </Tabs.List>
-              <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage key={workspace.activeTheme} />
-              </Tabs.Panel>
-              <Tabs.Panel className={classes.tabPanel} value='dimensions'>
-                <BorderRadiusInput key={workspace.activeTheme} />
-              </Tabs.Panel>
-            </Tabs>
-            <div className={classes.modalBottom}>
-              <ExportThemeModal />
-              <Button
-                onClick={() => configPasteDialogRef.current?.showModal()}
-                className={classes.configButton}
-                variant='secondary'
-              >
-                {t('configPaste.import-config')}
-              </Button>
-            </div>
+            {tabs}
+            <div className={classes.modalBottom}>{actions}</div>
           </Dialog.Block>
         </Dialog>
+      ) : (
+        <div
+          className={cl(
+            classes.sidebar,
+            isSticky && classes.sticky,
+            open && classes.showSidebar,
+          )}
+        >
+          {tabs}
+          <div className={classes.bottom} data-size='sm'>
+            {actions}
+          </div>
+        </div>
       )}
-      <Dialog
-        ref={configPasteDialogRef}
-        closedby='any'
-        className={classes.configDialog}
-      >
-        <Dialog.Block>
-          <Heading level={2}>{t('configPaste.import-config')}</Heading>
-        </Dialog.Block>
-        <Dialog.Block>
-          <ConfigPaste />
-        </Dialog.Block>
-      </Dialog>
-    </>
+    </div>
   );
 };

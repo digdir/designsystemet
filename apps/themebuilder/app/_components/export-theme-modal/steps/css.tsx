@@ -7,48 +7,45 @@ import {
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { DownloadIcon } from '@navikt/aksel-icons';
-import { clsx } from 'clsx';
+import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { downloadFile } from '../download-file';
 import classes from '../export-theme-modal.module.css';
 
-export default function Css({
+export function Css({
   themeName,
+  themeNames,
+  onThemeChange,
   css,
   isGenerating,
   error,
-  hasMultipleThemes,
-  cssTheme,
-  themeNames,
-  setCssThemeName,
 }: {
+  /** The theme the CSS is for */
   themeName: string;
+  /** The themes to choose between. The choice is only shown when there are several. */
+  themeNames: string[];
+  onThemeChange: (name: string) => void;
   css: string;
   isGenerating: boolean;
   error: Error | null;
-  cssTheme: { name: string };
-  themeNames: string[];
-  setCssThemeName: (name: string) => void;
-  hasMultipleThemes: boolean;
 }) {
   const { t } = useTranslation();
   const filename = `${themeName}.css`;
+  const hasMultipleThemes = themeNames.length > 1;
 
   return (
     <>
       {hasMultipleThemes && (
         <Field data-size='sm'>
           {/** biome-ignore lint/a11y/noLabelWithoutControl: field adds this */}
-          <label className={clsx(classes.step, 'ds-paragraph')}>
+          <label className={cl(classes.step, 'ds-paragraph')}>
             <span>1</span>
             {t('themeModal.css.select-theme')}
           </label>
           <Select
-            value={cssTheme.name}
-            onChange={(event) => setCssThemeName(event.currentTarget.value)}
-            style={{
-              marginBlockStart: 'var(--ds-size-4)',
-            }}
+            value={themeName}
+            onChange={(event) => onThemeChange(event.currentTarget.value)}
+            className={classes.themeSelect}
           >
             {themeNames.map((name) => (
               <Select.Option key={name} value={name}>
@@ -60,7 +57,7 @@ export default function Css({
       )}
       <div className={classes.step}>
         <span>{hasMultipleThemes ? 2 : 1}</span>
-        <Paragraph>{t('themeModal.css.step-one', { filename })}</Paragraph>
+        <Paragraph>{t('themeModal.css.step-one')}</Paragraph>
       </div>
       {error ? (
         <Paragraph data-color='danger'>{t('themeModal.css.error')}</Paragraph>

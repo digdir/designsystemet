@@ -4,7 +4,6 @@ import {
   getThemeColorSchemes,
   type ThemeInfo,
 } from '@digdir/designsystemet/internal';
-import { generateColorVars } from './generate-color-vars';
 import { REQUIRED_COLOR, type WorkspaceTheme } from './theme-workspace';
 
 /** A color of a theme: its name, its base color and its resolved scale in light and dark mode */
@@ -24,6 +23,22 @@ export const resolveThemeColors = (theme: WorkspaceTheme): ColorTheme[] =>
     hex: theme.colors[name] as CssColor,
     colors,
   }));
+
+/**
+ * CSS variables for every step of a colour in a colour scheme. Without `prefix` they are the variables of
+ * the active colour (`--ds-color-*`), with it those of a named colour (`--ds-color-<prefix>-*`).
+ */
+export const generateColorVars = (
+  colors: ThemeInfo,
+  colorScheme: ColorScheme,
+  prefix?: string,
+) =>
+  Object.fromEntries(
+    Object.values(colors[colorScheme]).map((color) => [
+      `--ds-color-${prefix ? `${prefix}-` : ''}${color.name}`,
+      color.hex,
+    ]),
+  );
 
 /** CSS variables that make `color` the color of the elements they are set on, together with the theme's neutral color */
 export const previewColorVars = (

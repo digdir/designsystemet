@@ -5,22 +5,28 @@ import {
   Textfield,
 } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon, TrashIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
-import { ColorPicker, type IColor, useColor } from 'react-color-palette';
+import { ColorPicker, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/_hooks/use-themebuilder';
-import { REQUIRED_COLOR } from '~/model/theme-workspace';
+import { useThemeStore } from '~/model/theme-store';
+import {
+  colorNameError,
+  REQUIRED_COLOR,
+  sanitizeColorName,
+} from '~/model/theme-workspace';
 import classes from './color-pane.module.css';
 
 type ColorPaneProps = {
-  onClose: () => void;
-  type: 'add-color' | 'edit-color' | 'none';
-  color: IColor;
-  setColor: (color: IColor) => void;
+  /** Whether the color was added when the editor opened. A new color cannot be cancelled, only removed. */
+  isNew: boolean;
+  hex: string;
+  onColorChange: (hex: string) => void;
+  /** The name in the name field */
   name: string;
-  committedName: string;
   setName: (name: string) => void;
+  /** The name the color has in the theme */
+  committedName: string;
+  onSave: () => void;
   onCancel: () => void;
   onRemove: () => void;
   /** Whether the color has a name field */
@@ -30,82 +36,60 @@ type ColorPaneProps = {
   info?: string;
 };
 
+const nameErrors = {
+  empty: 'colorPane.name-empty-error',
+  reserved: 'colorPane.name-reserved-error',
+  duplicate: 'colorPane.name-duplicate-error',
+} as const;
+
+/** The form for the name and base color of one color */
 export const ColorPane = ({
-  onClose,
-  type,
-  color,
-  setColor,
+  isNew,
+  hex,
+  onColorChange,
   name,
-  committedName,
-  onCancel,
   setName,
+  committedName,
+  onSave,
+  onCancel,
   onRemove,
   canRename,
   canRemove,
   info,
 }: ColorPaneProps) => {
   const { t } = useTranslation();
+  const { colors } = useThemeStore();
   const editorRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     editorRef.current?.querySelector<HTMLInputElement>('input')?.focus();
   }, []);
-  const [localColor, setLocalColor] = useColor(color.hex);
+  /* The picker keeps its own color while it is dragged, and the theme gets it when the drag ends */
+  const [pickerColor, setPickerColor] = useColor(hex);
+  const [nameError, setNameError] = useState('');
 
-  const { colors } = useThemebuilder();
   const themeColorCount = colors.filter(
-    (c) => c.name !== REQUIRED_COLOR,
+    (color) => color.name !== REQUIRED_COLOR,
   ).length;
-  const [colorError, setColorError] = useState('');
-  const headingText = (() => {
-    return type === 'add-color'
-      ? `${t('colorPane.add')} ${t('themeModal.color')}`
-      : t('colorPane.edit-color');
-  })();
 
-  const checkNameIsValid = () => {
-    if (!canRename) return true;
-    if (!name?.trim()) {
-      setColorError(t('colorPane.name-empty-error'));
-      return false;
-    }
-
-    const nameLower = name.toLowerCase();
-    if (nameLower === REQUIRED_COLOR) {
-      setColorError(t('colorPane.name-reserved-error'));
-      return false;
-    }
-
-    if (
-      colors.some(
-        (color) => color.name === nameLower && color.name !== committedName,
-      )
-    ) {
-      setColorError(t('colorPane.name-duplicate-error'));
-      return false;
-    }
-
-    setColorError('');
-    return true;
-  };
-
-  const closeTab = () => {
-    setColorError('');
-    onClose();
+  const checkName = () => {
+    const error = canRename
+      ? colorNameError(
+          name,
+          colors.map((color) => color.name),
+          committedName,
+        )
+      : null;
+    setNameError(error ? t(nameErrors[error]) : '');
+    return !error;
   };
 
   return (
-    <div
-      ref={editorRef}
-      className={cl(classes.colorPage, type.includes('color') && classes.show)}
-    >
+    <div ref={editorRef} className={classes.editor}>
       <div className={classes.topBtnGroup}>
         <Button
           data-size='sm'
           variant='tertiary'
-          onClick={() => {
-            if (!checkNameIsValid()) return;
-            closeTab();
-          }}
+          onClick={() => checkName() && onSave()}
           className={classes.back}
         >
           <ChevronLeftIcon aria-hidden />
@@ -115,10 +99,8 @@ export const ColorPane = ({
           data-size='sm'
           variant='tertiary'
           data-color='neutral'
-          hidden={type !== 'edit-color'}
-          onClick={() => {
-            onCancel();
-          }}
+          hidden={isNew}
+          onClick={onCancel}
           className={classes.cancel}
         >
           {t('colorPane.cancel')}
@@ -127,10 +109,8 @@ export const ColorPane = ({
           data-size='sm'
           variant='tertiary'
           data-color='danger'
-          onClick={() => {
-            onRemove();
-          }}
-          className={cl(classes.removeBtn)}
+          onClick={onRemove}
+          className={classes.removeBtn}
           hidden={!canRemove || themeColorCount <= 1}
         >
           {t('colorPane.remove-color')}
@@ -138,7 +118,7 @@ export const ColorPane = ({
         </Button>
       </div>
       <Heading data-size='xs' className={classes.title}>
-        {headingText}
+        {t(isNew ? 'colorPane.add-color' : 'colorPane.edit-color')}
       </Heading>
       {info && (
         <Paragraph data-size='sm' className={classes.desc}>
@@ -153,29 +133,23 @@ export const ColorPane = ({
           className={classes.name}
           data-size='sm'
           value={name}
-          onChange={(e) => {
-            const value = e.currentTarget.value
-              .replace(/\s+/g, '-')
-              .replace(/[^A-Z0-9-]+/gi, '')
-              .toLowerCase();
-            setName(value);
-          }}
-          onBlur={checkNameIsValid}
-          error={colorError}
+          onChange={(e) => setName(sanitizeColorName(e.currentTarget.value))}
+          onBlur={checkName}
+          error={nameError}
         />
       )}
       <div className={classes.label}>{t('colorPane.color')}</div>
       <div className={classes.colorPreviewContainer}>
         <div
-          style={{ backgroundColor: localColor.hex }}
+          style={{ backgroundColor: pickerColor.hex }}
           className={classes.colorPreview}
         />
       </div>
       <ColorPicker
         hideAlpha
-        color={localColor}
-        onChange={setLocalColor}
-        onChangeComplete={setColor}
+        color={pickerColor}
+        onChange={setPickerColor}
+        onChangeComplete={(color) => onColorChange(color.hex)}
         hideInput={['rgb', 'hsv']}
       />
     </div>

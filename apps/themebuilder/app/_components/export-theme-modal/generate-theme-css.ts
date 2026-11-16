@@ -1,11 +1,10 @@
 import {
   configSchema,
-  type ExternalConfigSchemaInput,
   externalConfigSchema,
   formatThemeCSS,
 } from '@digdir/designsystemet/internal';
 
-type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
+import type { WorkspaceTheme } from '~/model/theme-workspace';
 
 /**
  * Generates the CSS for a theme the same way the CLI does, by validating it like a config file and
@@ -13,7 +12,7 @@ type ThemeConfig = NonNullable<ExternalConfigSchemaInput['themes']>[string];
  */
 export const generateThemeCss = async (
   name: string,
-  themeConfig: ThemeConfig,
+  themeConfig: WorkspaceTheme,
 ) => {
   // Validate against the public schema first, then fill in the internal defaults, like the CLI and Figma plugin.
   const externalConfig = externalConfigSchema.parse({

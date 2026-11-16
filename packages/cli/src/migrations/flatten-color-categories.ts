@@ -5,7 +5,8 @@ import { parseJsonc } from '../schemas/helpers.ts';
 
 const formattingOptions = { insertSpaces: true, tabSize: 2 } as const;
 
-const flattenColors = (colors: any) => {
+/** Moves the colors of the old `main` and `support` categories into one list, with `neutral` last */
+export const flattenColors = (colors: any) => {
   const { main, support, neutral, ...restColors } = colors;
   return {
     ...restColors,
@@ -23,7 +24,8 @@ type Automigrate = {
   no: (config: string) => string;
 };
 
-const isOldColorSchema = (theme: any): boolean => {
+/** Whether a theme has its colors in the old `main`, `support` and `neutral` categories */
+export const isOldColorSchema = (theme: any): boolean => {
   return (
     theme.colors &&
     Object.keys(theme.colors).length === 3 &&

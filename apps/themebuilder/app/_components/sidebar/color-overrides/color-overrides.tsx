@@ -8,12 +8,12 @@ import {
 import { PencilIcon } from '@navikt/aksel-icons';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { useThemeStore } from '~/model/theme-store';
 import ColorDetails from './_components/color-details';
 import classes from './color-overrides.module.css';
 
 export const ColorOverrides = () => {
-  const { colors } = useThemebuilder();
+  const { colors } = useThemeStore();
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
 

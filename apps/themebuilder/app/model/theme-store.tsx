@@ -1,3 +1,4 @@
+import { defaultBorderRadius } from '@digdir/designsystemet/internal';
 import {
   createContext,
   type Dispatch,
@@ -22,6 +23,8 @@ type ThemeStore = {
   setWorkspace: Dispatch<SetStateAction<ThemeWorkspace>>;
   /** The theme that is shown */
   theme: WorkspaceTheme;
+  /** The base border radius of the theme that is shown, in px */
+  borderRadius: number;
   /** Edits the theme that is shown, see `updateActiveTheme` */
   updateTheme: (update: (theme: WorkspaceTheme) => WorkspaceTheme) => void;
 };
@@ -50,6 +53,7 @@ export function ThemeStoreProvider({
       updateTheme: (update: (theme: WorkspaceTheme) => WorkspaceTheme) =>
         setWorkspace((previous) => updateActiveTheme(previous, update)),
       colors: resolveThemeColors(theme),
+      borderRadius: theme.borderRadius ?? defaultBorderRadius,
     }),
     [workspace, theme],
   );

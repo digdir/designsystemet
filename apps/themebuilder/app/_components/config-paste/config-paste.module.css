@@ -1,3 +1,12 @@
+.trigger {
+  display: block;
+}
+
+.dialog {
+  width: 90vw;
+  max-width: 1200px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -62,4 +71,9 @@
   height: 20px;
   border-radius: 50%;
   border: 1px solid var(--ds-color-neutral-border-default);
+}
+
+.selectTheme {
+  font-weight: 500;
+  margin-bottom: var(--ds-size-2);
 }

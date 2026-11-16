@@ -32,6 +32,35 @@ export const REQUIRED_COLOR = 'neutral';
 export const canRenameColor = (name: string) =>
   name !== REQUIRED_COLOR && !Object.hasOwn(severityColors, name);
 
+/** Makes typed text a color name: spaces become hyphens, and characters the CLI does not allow in a color name are removed */
+export const sanitizeColorName = (text: string) =>
+  text
+    .replace(/\s+/g, '-')
+    .replace(/[^A-Z0-9-]+/gi, '')
+    .toLowerCase();
+
+/**
+ * Why a color cannot be given a name, or `null` when it can.
+ * `names` are the names of the theme's colors, and `current` the name the color has now.
+ */
+export const colorNameError = (
+  name: string,
+  names: string[],
+  current: string,
+): 'empty' | 'reserved' | 'duplicate' | null => {
+  if (!name.trim()) return 'empty';
+  if (name === REQUIRED_COLOR) return 'reserved';
+  if (name !== current && names.includes(name)) return 'duplicate';
+  return null;
+};
+
+/** A name for a new color that no color has: `color-1`, `color-2` and so on */
+export const newColorName = (names: string[]) => {
+  let suffix = 1;
+  while (names.includes(`color-${suffix}`)) suffix++;
+  return `color-${suffix}`;
+};
+
 /** Whether a name can be used for a theme. The rule is the CLI's, and the same as for color names. */
 export const isValidThemeName = (name: string) =>
   themeNameSchema.safeParse(name).success;
@@ -63,25 +92,6 @@ export function renameWorkspaceThemes(
     if (from === workspace.activeTheme) activeTheme = name;
   }
   return { config: { ...workspace.config, themes }, activeTheme };
-}
-
-export function addWorkspaceTheme(
-  workspace: ThemeWorkspace,
-  name: string,
-): ThemeWorkspace {
-  if (!isValidThemeName(name)) throw new Error('Invalid theme name');
-  if (Object.hasOwn(workspace.config.themes, name))
-    throw new Error('Theme already exists');
-  return {
-    config: {
-      ...workspace.config,
-      themes: {
-        ...workspace.config.themes,
-        [name]: structuredClone(workspace.config.themes[workspace.activeTheme]),
-      },
-    },
-    activeTheme: name,
-  };
 }
 
 /**
