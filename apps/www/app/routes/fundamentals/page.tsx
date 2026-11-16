@@ -5,10 +5,15 @@ import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse } from 'react-router';
+import {
+  ColorScaleOverview,
+  ColorSwatches,
+} from '~/_components/color-examples/color-examples';
 import { ColorScaleTable } from '~/_components/color-scale-table/color-scale-table';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
+import { getColorExamples } from '~/_utils/color-examples.server';
 import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -48,6 +53,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     lang: params.lang,
     toc: result.toc,
     stories,
+    colorExamples: getColorExamples(),
   };
 }
 
@@ -129,6 +135,10 @@ export default function Fundamentals({
           code={code}
           components={{
             ColorScaleTable: ColorScaleTable as React.ComponentType<unknown>,
+            // These read `colorExamples` from this page's loader
+            ColorScaleOverview:
+              ColorScaleOverview as React.ComponentType<unknown>,
+            ColorSwatches: ColorSwatches as React.ComponentType<unknown>,
           }}
         />
         <EditPageOnGithub />

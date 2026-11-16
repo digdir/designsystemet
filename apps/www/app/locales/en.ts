@@ -220,6 +220,17 @@ export default {
       normal: 'Click to enlarge image.',
     },
   },
+  'color-examples': {
+    colors: {
+      red: 'Red',
+      orange: 'Orange',
+      yellow: 'Yellow',
+      green: 'Green',
+      teal: 'Teal',
+      blue: 'Blue',
+      purple: 'Purple',
+    },
+  },
   'color-info-table': {
     name: 'Name',
     usage: 'Usage',
