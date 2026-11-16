@@ -16,6 +16,7 @@ import { styleBorderRadiusVars } from '@internal/components';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { previewColorVars } from '~/_utils/theme-colors';
+import { REQUIRED_COLOR } from '~/_utils/theme-workspace';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './examples-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
@@ -53,7 +54,7 @@ export const ExamplesComponents = ({
   const { colors } = useThemebuilder();
 
   /* The neutral color is always part of the examples, so it is not a color to choose */
-  const previewColors = colors.filter((color) => color.name !== 'neutral');
+  const previewColors = colors.filter((color) => color.name !== REQUIRED_COLOR);
   const [previewName, setPreviewName] = useState('');
   const previewColor =
     previewColors.find((color) => color.name === previewName) ||
