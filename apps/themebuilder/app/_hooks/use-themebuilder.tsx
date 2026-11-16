@@ -7,16 +7,10 @@ import { useThemeStore } from '~/model/theme-store';
 
 export type { ColorTheme } from '~/model/theme-colors';
 
-export type ThemebuilderTabs = 'examples' | 'colorsystem';
-
-const tabs: ThemebuilderTabs[] = ['colorsystem', 'examples'];
-
-/** The theme that is shown, from the theme store, and how it is viewed, from the URL. */
+/** The theme that is shown, from the theme store, and its colour scheme, from the URL. */
 export const useThemebuilder = () => {
   const { colors, theme, workspace } = useThemeStore();
   const [params] = useSearchParams();
-  // `overview` is the old name of the examples tab
-  const tab = (params.get('tab') || '').replace('overview', 'examples');
 
   return {
     colors,
@@ -24,7 +18,6 @@ export const useThemebuilder = () => {
       ? 'dark'
       : 'light') as ColorScheme,
     baseBorderRadius: theme.borderRadius ?? defaultBorderRadius,
-    tab: tabs.find((name) => name === tab) || tabs[0],
     workspace,
   };
 };

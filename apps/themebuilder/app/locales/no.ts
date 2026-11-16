@@ -62,6 +62,7 @@ export default {
     'import-config': 'Importer config',
   },
   tabs: {
+    label: 'Visning',
     examples: 'Eksempler',
     colorsystem: 'Fargesystem',
     colors: 'Farger',

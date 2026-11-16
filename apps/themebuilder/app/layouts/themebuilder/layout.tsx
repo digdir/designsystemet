@@ -1,5 +1,6 @@
 import { Field, Label, Select } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
+import { type ReactNode, useId } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppearanceToggle } from '~/_components/appearance-toggle/appearance-toggle';
 import { ColorContrasts } from '~/_components/color-contrasts/color-contrasts';
@@ -9,20 +10,46 @@ import { ColorTokens } from '~/_components/color-tokens/color-tokens';
 import { Colors } from '~/_components/colors/colors';
 import { EditThemesDialog } from '~/_components/edit-themes-dialog/edit-themes-dialog';
 import { ExamplesComponents } from '~/_components/examples-components/examples-components';
+import { PageHeader } from '~/_components/page-header/page-header';
 import { Sidebar } from '~/_components/sidebar/sidebar';
-import { ThemeHeader } from '~/_components/theme-header/theme-header';
+import { ViewTabs, viewTabId } from '~/_components/view-tabs/view-tabs';
 import { useThemebuilder } from '~/_hooks/use-themebuilder';
+import { useView, type ViewName } from '~/_hooks/use-view';
 import { useThemeStore } from '~/model/theme-store';
 import classes from './layout.module.css';
 
-/** The theme builder page: the header with the tabs, the editor in the sidebar, and the theme shown in the chosen tab */
+/** The theme builder page: the header with the tabs, the editor in the sidebar, and the theme shown in the chosen view */
 export const ThemebuilderLayout = () => {
   const { workspace, setWorkspace } = useThemeStore();
   const { t } = useTranslation();
+  const [view, setView] = useView();
+  const tabsId = useId();
+
+  /* The views of the theme. The tabs and the content both come from this list. */
+  const views: { value: ViewName; label: string; content: ReactNode }[] = [
+    {
+      value: 'colorsystem',
+      label: t('tabs.colorsystem'),
+      content: <ColorSystemView />,
+    },
+    {
+      value: 'examples',
+      label: t('tabs.examples'),
+      content: <ExamplesView />,
+    },
+  ];
 
   return (
     <ColorModalProvider>
-      <ThemeHeader />
+      <PageHeader>
+        <ViewTabs
+          id={tabsId}
+          aria-label={t('tabs.label')}
+          views={views}
+          value={view}
+          onChange={setView}
+        />
+      </PageHeader>
       <main className={classes.page} id='main'>
         <div className={classes.container}>
           <div className={classes.sideBarContainer}>
@@ -56,7 +83,13 @@ export const ThemebuilderLayout = () => {
               </div>
               <AppearanceToggle />
             </div>
-            <TabContent />
+            <div
+              role='tabpanel'
+              aria-labelledby={viewTabId(tabsId, view)}
+              className={classes.view}
+            >
+              {views.find(({ value }) => value === view)?.content}
+            </div>
           </div>
         </div>
       </main>
@@ -64,42 +97,41 @@ export const ThemebuilderLayout = () => {
   );
 };
 
-const TabContent = () => {
-  const { colorScheme, baseBorderRadius, tab } = useThemebuilder();
+const ColorSystemView = () => {
+  const { colorScheme } = useThemebuilder();
 
-  switch (tab) {
-    case 'examples':
-      return (
-        <div className={classes.basicPanel} data-color-scheme={colorScheme}>
-          <ExamplesComponents
-            colorScheme={colorScheme}
-            borderRadius={baseBorderRadius}
-          />
-        </div>
-      );
-    case 'colorsystem':
-      return (
-        <>
-          <div
-            className={cl(classes.basicPanel, classes.colorsContainer)}
-            data-color-scheme={colorScheme}
-          >
-            <Colors />
-          </div>
+  return (
+    <>
+      <div
+        className={cl(classes.basicPanel, classes.colorsContainer)}
+        data-color-scheme={colorScheme}
+      >
+        <Colors />
+      </div>
 
-          <div className={classes.panel} data-color-scheme={colorScheme}>
-            <ColorPreview />
-          </div>
-          <div className={classes.panel} data-color-scheme={colorScheme}>
-            <ColorTokens />
-          </div>
+      <div className={classes.panel} data-color-scheme={colorScheme}>
+        <ColorPreview />
+      </div>
+      <div className={classes.panel} data-color-scheme={colorScheme}>
+        <ColorTokens />
+      </div>
 
-          <div className={classes.panel} data-color-scheme={colorScheme}>
-            <ColorContrasts />
-          </div>
-        </>
-      );
-    default:
-      return null;
-  }
+      <div className={classes.panel} data-color-scheme={colorScheme}>
+        <ColorContrasts />
+      </div>
+    </>
+  );
+};
+
+const ExamplesView = () => {
+  const { colorScheme, baseBorderRadius } = useThemebuilder();
+
+  return (
+    <div className={classes.basicPanel} data-color-scheme={colorScheme}>
+      <ExamplesComponents
+        colorScheme={colorScheme}
+        borderRadius={baseBorderRadius}
+      />
+    </div>
+  );
 };
