@@ -40,16 +40,17 @@ export const generateColorScale = (
   // Overwrite with modified base colors for the specified color scheme
   if (colorScaleSpec['base-default']) {
     const baseColors = generateBaseColors(color, colorScheme);
+    const contrastDefault = generateContrastDefault([baseColors.default, baseColors.hover]);
     colors['base-default'] = { ...colors['base-default'], hex: baseColors.default };
     colors['base-hover'] = { ...colors['base-hover'], hex: baseColors.hover };
     colors['base-active'] = { ...colors['base-active'], hex: baseColors.active };
     colors['base-contrast-subtle'] = {
       ...colors['base-contrast-subtle'],
-      hex: generateColorContrast(baseColors.default, 'subtle'),
+      hex: generateContrastSubtle(baseColors.default, contrastDefault),
     };
     colors['base-contrast-default'] = {
       ...colors['base-contrast-default'],
-      hex: generateColorContrast(baseColors.default, 'default'),
+      hex: contrastDefault,
     };
   }
 
@@ -97,25 +98,25 @@ const generateBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
 };
 
 /**
- * Generates contrast color for given color
+ * Picks white or black, whichever has the best contrast against all the given colors.
  *
- * @param color color
- * @param type 'default' | 'subtle'
+ * @param backgrounds The colors the contrast color is used on, e.g. base-default and base-hover
  */
-const generateColorContrast = (color: CssColor, type: 'default' | 'subtle'): CssColor => {
-  if (type === 'default') {
-    return chroma.contrast(color, '#ffffff') >= chroma.contrast(color, '#000000') ? '#ffffff' : '#000000';
-  }
+const generateContrastDefault = (backgrounds: CssColor[]): CssColor => {
+  const lowestContrast = (color: CssColor) => Math.min(...backgrounds.map((bg) => chroma.contrast(bg, color)));
+  return lowestContrast('#ffffff') >= lowestContrast('#000000') ? '#ffffff' : '#000000';
+};
 
-  if (type === 'subtle') {
-    const contrastWhite = chroma.contrast(color, '#ffffff');
-    const contrastBlack = chroma.contrast(color, '#000000');
-    const lightness = getLightnessFromHex(color);
-    const modifier = lightness <= 40 || lightness >= 60 ? 60 : 50;
-    const targetLightness = contrastWhite >= contrastBlack ? lightness + modifier : lightness - modifier;
+/**
+ * Generates a subtle contrast color for a base color, in the same direction as the default contrast color.
+ *
+ * @param color The base color
+ * @param contrastDefault The default contrast color, white or black
+ */
+const generateContrastSubtle = (color: CssColor, contrastDefault: CssColor): CssColor => {
+  const lightness = getLightnessFromHex(color);
+  const modifier = lightness <= 40 || lightness >= 60 ? 60 : 50;
+  const targetLightness = contrastDefault === '#ffffff' ? lightness + modifier : lightness - modifier;
 
-    return chroma(color).luminance(getLuminanceFromLightness(targetLightness)).hex() as CssColor;
-  }
-
-  return color;
+  return chroma(color).luminance(getLuminanceFromLightness(targetLightness)).hex() as CssColor;
 };

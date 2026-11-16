@@ -4,6 +4,7 @@ import {
   generateColorSchemes,
   getContrastFromHex,
   type SemanticColorNames,
+  semanticColorSpec,
 } from '@digdir/designsystemet/internal';
 import {
   Field,
@@ -19,6 +20,47 @@ import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './color-contrasts.module.css';
 
 const initialTheme = generateColorSchemes('#0062BA');
+
+const specSteps = Object.values(semanticColorSpec);
+const namesOf = (steps: typeof specSteps) => steps.map((step) => step.name);
+
+/** The minimum contrast the color spec requires between two steps, if any */
+const getMinContrast = (a: SemanticColorNames, b: SemanticColorNames) => {
+  const ratios = [
+    ...(semanticColorSpec[a].minContrast ?? []).filter(({ against }) =>
+      against.includes(b),
+    ),
+    ...(semanticColorSpec[b].minContrast ?? []).filter(({ against }) =>
+      against.includes(a),
+    ),
+  ].map(({ ratio }) => ratio);
+  return ratios.length > 0 ? Math.max(...ratios) : undefined;
+};
+
+/** Every step that one of `steps` has a contrast requirement against, in scale order */
+const getContrastTargets = (steps: SemanticColorNames[]) =>
+  namesOf(
+    specSteps.filter(({ name }) =>
+      steps.some((step) =>
+        semanticColorSpec[step].minContrast?.some(({ against }) =>
+          against.includes(name),
+        ),
+      ),
+    ),
+  );
+
+const textAndBorders = namesOf(
+  specSteps.filter(({ group }) => group === 'border' || group === 'text'),
+);
+const baseFills: SemanticColorNames[] = [
+  'base-default',
+  'base-hover',
+  'base-active',
+];
+const baseContrasts: SemanticColorNames[] = [
+  'base-contrast-subtle',
+  'base-contrast-default',
+];
 
 export const ColorContrasts = () => {
   const { t } = useTranslation();
@@ -57,36 +99,32 @@ export const ColorContrasts = () => {
                 {t('colorContrasts.deco-description')}
               </Paragraph>
             </div>
+            <div className={classes.tagGroup}>
+              <div className={classes.requirement}>
+                {t('colorContrasts.min-contrast', { ratio: 'x' })}
+              </div>
+              <Paragraph data-size='sm'>
+                {t('colorContrasts.min-contrast-description')}
+              </Paragraph>
+            </div>
           </div>
         </div>
       </div>
       <div className='panelRight'>
         <ColorContrastMapper
           variant='text-vs-background'
-          vertical={[
-            'border-subtle',
-            'border-default',
-            'border-strong',
-            'text-subtle',
-            'text-default',
-          ]}
-          horizontal={[
-            'background-default',
-            'background-tinted',
-            'surface-default',
-            'surface-tinted',
-            'surface-hover',
-          ]}
+          vertical={textAndBorders}
+          horizontal={getContrastTargets(textAndBorders)}
         />
         <ColorContrastMapper
           variant='base-colors'
-          vertical={['base-default', 'base-hover', 'base-active']}
+          vertical={baseFills}
           horizontal={[
+            // Not required by the spec, but the base color should have 3:1 against these to be meaningful
             'background-default',
             'background-tinted',
             'surface-default',
-            'base-contrast-subtle',
-            'base-contrast-default',
+            ...baseContrasts,
           ]}
         />
       </div>
@@ -193,6 +231,7 @@ const ColorContrastMapper = ({
                     <TdCell
                       color1={mappedTheme[color1]}
                       color2={mappedTheme[color2]}
+                      minContrast={getMinContrast(color1, color2)}
                     />
                   </td>
                 ))}
@@ -233,7 +272,16 @@ const ContrastTag = ({ contrast }: { contrast: number }) => {
     <div className={cl(classes.tag, classes[className])}>{displayText}</div>
   );
 };
-const TdCell = ({ color1, color2 }: { color1: Color; color2: Color }) => {
+const TdCell = ({
+  color1,
+  color2,
+  minContrast,
+}: {
+  color1: Color;
+  color2: Color;
+  minContrast?: number;
+}) => {
+  const { t } = useTranslation();
   const contrast = getContrastFromHex(color1.hex, color2.hex);
   const formattedContrast = Math.floor(contrast * 10) / 10;
 
@@ -255,6 +303,16 @@ const TdCell = ({ color1, color2 }: { color1: Color; color2: Color }) => {
         </div>
         <div className={classes.contrast}>{formattedContrast}:1</div>
       </div>
+      {minContrast !== undefined &&
+        (contrast < minContrast ? (
+          <div className={cl(classes.requirement, classes.failed)}>
+            {t('colorContrasts.min-contrast-failed', { ratio: minContrast })}
+          </div>
+        ) : (
+          <div className={classes.requirement}>
+            {t('colorContrasts.min-contrast', { ratio: minContrast })}
+          </div>
+        ))}
     </div>
   );
 };

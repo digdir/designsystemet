@@ -179,6 +179,10 @@ export default {
     'base-colors-description':
       'Fargene som blir valgt i verktøyet får tokenet Base Default i hver fargeskala. Dette betyr at det er viktig å velge en farge som har over 3:1 kontrast mot overflatefarger om den skal brukes som en viktig, meningsbærende farge. Verktøyet lager også to kontrastfarger som trygt kan brukes oppå base fargene. Disse kontrastfargene blir enten lyse eller mørke avhengig av base fargen.',
     'select-color': 'Velg farge for å se kontraster',
+    'min-contrast': 'Krav: {{ratio}}:1',
+    'min-contrast-failed': 'Under kravet på {{ratio}}:1',
+    'min-contrast-description':
+      'Minimumskontrasten disse trinnene skal ha mot hverandre i alle fargeskalaer, enten 3:1 eller 4.5:1. Kravene kommer fra fargespesifikasjonen.',
   },
   borderRadius: {
     label: 'Hjørneavrunding',
