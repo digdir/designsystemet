@@ -135,11 +135,14 @@ describe('themesSchema cross-theme validation', () => {
 });
 
 describe('themeSchema color validation', () => {
-  it.each(['Accent', 'brand 2', 'brand_2', 'brand.2', 'ærlig'])('rejects the color name "%s"', (colorName) => {
-    const result = parseThemes({ a: { ...baseTheme, colors: { neutral: '#444444', [colorName]: '#0062BA' } } });
+  it.each(['Accent', 'brand 2', 'brand_2', 'brand.2', 'ærlig', '-', '-brand', 'brand-', 'brand--2'])(
+    'rejects the color name "%s"',
+    (colorName) => {
+      const result = parseThemes({ a: { ...baseTheme, colors: { neutral: '#444444', [colorName]: '#0062BA' } } });
 
-    expect(issuePaths(result)).toEqual([`a.colors.${colorName}`]);
-  });
+      expect(issuePaths(result)).toEqual([`a.colors.${colorName}`]);
+    },
+  );
 
   it.each(['accent', 'brand2', 'brand-2', '2nd-brand'])('accepts the color name "%s"', (colorName) => {
     const result = parseThemes({ a: { ...baseTheme, colors: { neutral: '#444444', [colorName]: '#0062BA' } } });
@@ -301,7 +304,7 @@ describe('themeNameSchema', () => {
     for (const name of ['theme', 'my-theme', 'theme2', '2024']) {
       expect(themeNameSchema.safeParse(name).success).toBe(true);
     }
-    for (const name of ['', 'My Theme', 'myTheme', 'my_theme', 'tema-æ', '__proto__']) {
+    for (const name of ['', 'My Theme', 'myTheme', 'my_theme', 'tema-æ', '__proto__', '-', '--a', 'a-', 'a--b']) {
       expect(themeNameSchema.safeParse(name).success).toBe(false);
     }
   });

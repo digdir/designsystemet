@@ -31,6 +31,15 @@ type ColorOverrideInputProps = {
   defaultColor?: string;
 };
 
+/** `<input type='color'>` only takes `#rrggbb`, while an override can also be `#rgb`, `#rgba` or `#rrggbbaa` */
+const toPickerValue = (hex: string) => {
+  const digits = hex.slice(1);
+  if (!isHexColor(hex)) return undefined;
+  return digits.length <= 4
+    ? `#${[...digits.slice(0, 3)].map((digit) => digit + digit).join('')}`
+    : `#${digits.slice(0, 6)}`;
+};
+
 const ColorOverrideInput = ({
   colorName,
   step,
@@ -88,7 +97,11 @@ const ColorOverrideInput = ({
           </label>
           <input
             type='color'
-            value={displayValue || defaultColor || '#000000'}
+            value={
+              toPickerValue(displayValue) ||
+              toPickerValue(defaultColor || '') ||
+              '#000000'
+            }
             onChange={(e) => {
               handleChange(e.target.value);
               setValidHex(true);

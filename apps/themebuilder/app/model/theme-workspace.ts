@@ -32,7 +32,13 @@ export const REQUIRED_COLOR = 'neutral';
 export const canRenameColor = (name: string) =>
   name !== REQUIRED_COLOR && !Object.hasOwn(severityColors, name);
 
-/** Makes typed text a color name: spaces become hyphens, and characters the CLI does not allow in a color name are removed */
+/** The CLI's rule for the names of colors and themes: lowercase letters and digits, with single hyphens between them */
+const isValidName = (name: string) => themeNameSchema.safeParse(name).success;
+
+/**
+ * Makes typed text a color name: spaces become hyphens, and characters the CLI does not allow in a color name are removed.
+ * The result can still be invalid while it is typed, such as `my-` on the way to `my-brand`; see `colorNameError`.
+ */
 export const sanitizeColorName = (text: string) =>
   text
     .replace(/\s+/g, '-')
@@ -47,8 +53,9 @@ export const colorNameError = (
   name: string,
   names: string[],
   current: string,
-): 'empty' | 'reserved' | 'duplicate' | null => {
+): 'empty' | 'invalid' | 'reserved' | 'duplicate' | null => {
   if (!name.trim()) return 'empty';
+  if (!isValidName(name)) return 'invalid';
   if (name === REQUIRED_COLOR) return 'reserved';
   if (name !== current && names.includes(name)) return 'duplicate';
   return null;
@@ -62,8 +69,7 @@ export const newColorName = (names: string[]) => {
 };
 
 /** Whether a name can be used for a theme. The rule is the CLI's, and the same as for color names. */
-export const isValidThemeName = (name: string) =>
-  themeNameSchema.safeParse(name).success;
+export const isValidThemeName = (name: string) => isValidName(name);
 
 /**
  * Renames, adds and removes themes in a single update.

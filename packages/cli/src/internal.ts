@@ -33,7 +33,7 @@ export {
   defaultFontFamily,
   severityColors,
 } from './schemas/defaults.ts';
-export { parseConfig, validateConfig } from './schemas/helpers.ts';
+export { parseConfig, parseJsonc, validateConfig } from './schemas/helpers.ts';
 export {
   type ConfigSchema,
   configSchema,

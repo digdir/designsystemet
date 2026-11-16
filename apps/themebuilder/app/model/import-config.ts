@@ -3,6 +3,7 @@ import {
   externalConfigSchema,
   flattenColors,
   isOldColorSchema,
+  parseJsonc,
 } from '@digdir/designsystemet/internal';
 import { normalizeConfig, type WorkspaceConfig } from './theme-workspace';
 
@@ -34,21 +35,27 @@ const flattenOldColors = (config: unknown) => {
 
 /**
  * Reads the text of a config file into a config the theme builder can edit.
- * This is the only way a config from outside gets into the theme builder: a pasted file and an old shared link both go through it.
+ * The text is read like the CLI reads a config file, so it can have comments and trailing commas.
  */
 export function importConfig(text: string): ImportedConfig {
   if (!text.trim()) return { error: 'empty' };
 
-  let config: unknown;
   try {
-    config = flattenOldColors(JSON.parse(text));
+    return validateConfig(parseJsonc(text));
   } catch (error) {
     return {
       error: 'invalid',
       messages: [error instanceof Error ? error.message : String(error)],
     };
   }
+}
 
+/**
+ * Checks a config against the config schema and makes it a config the theme builder can edit.
+ * This is the only way a config from outside gets into the theme builder: a pasted file and an old shared link both go through it.
+ */
+export function validateConfig(input: unknown): ImportedConfig {
+  const config = flattenOldColors(input);
   const result = externalConfigSchema.safeParse(config);
   if (!result.success) {
     return {

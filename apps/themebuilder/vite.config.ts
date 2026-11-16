@@ -9,6 +9,7 @@ const internalComponentsDir = fileURLToPath(
 export default defineConfig(({ isSsrBuild, command }) => ({
   plugins: [reactRouter()],
   ssr: {
+    // `ramda` is not a dependency of this app, but of `@internal/components`, which is bundled from source
     noExternal: ['@navikt/aksel-icons', 'ramda'],
   },
   // In dev, resolve @internal/components directly to its source so edits

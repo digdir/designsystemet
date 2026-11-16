@@ -52,7 +52,7 @@ export default {
     'add-theme': 'Add theme',
     'theme-name': 'Theme name',
     'invalid-theme-name':
-      'Use only lowercase letters a-z, numbers and hyphens.',
+      'Use only lowercase letters a-z and numbers, with single hyphens between them.',
     'duplicate-theme-name': 'A theme with this name already exists.',
   },
   importConfig: {
@@ -144,7 +144,10 @@ export default {
     'neutral-info': 'The neutral colour cannot be removed or renamed.',
     name: 'Name',
     'name-placeholder': 'Write the name here...',
-    'name-description': 'Use only letters a-z, numbers and hyphens',
+    'name-description':
+      'Use only lowercase letters a-z and numbers, with single hyphens between them',
+    'name-invalid-error':
+      'The name must start and end with a letter or number, with single hyphens between them',
     'name-empty-error': 'The colour name cannot be empty',
     'severity-info': 'Severity colours cannot be renamed.',
     'name-reserved-error': 'The colour cannot be named "neutral"',

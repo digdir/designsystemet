@@ -20,9 +20,14 @@ const STICKY_SCROLL_Y = 135;
  */
 export const ThemeEditor = () => {
   const { t } = useTranslation();
-  const { workspace } = useThemeStore();
+  const { workspace, revision } = useThemeStore();
+  /* The editors start over for another theme, and when the config is replaced */
+  const editorKey = `${revision} ${workspace.activeTheme}`;
   const [activeTab, setActiveTab] = useState('colors');
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  /* The first render is the same on the server and in the browser; the dialog replaces the panel right after on small screens */
+  const isMobile = useMediaQuery('(max-width: 768px)', {
+    initializeWithValue: false,
+  });
   /* Whether the editor is opened with the button. On wide screens it is always shown. */
   const [open, setOpen] = useState(false);
   const [isSticky, setSticky] = useState(false);
@@ -42,10 +47,10 @@ export const ThemeEditor = () => {
       </Tabs.List>
       <div className={classes.tabContent}>
         <Tabs.Panel className={classes.tabPanel} value='colors'>
-          <ColorSettings key={workspace.activeTheme} />
+          <ColorSettings key={editorKey} />
         </Tabs.Panel>
         <Tabs.Panel className={classes.tabPanel} value='dimensions'>
-          <BorderRadiusSettings key={workspace.activeTheme} />
+          <BorderRadiusSettings key={editorKey} />
         </Tabs.Panel>
       </div>
     </Tabs>
