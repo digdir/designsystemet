@@ -7,7 +7,26 @@ import classes from './consent-banner.module.css';
 
 type BannerProps = { lang: string } & HTMLAttributes<HTMLElement>;
 
-const hideIfAnsweredScript = `(function(){try{var m=document.cookie.match(/(?:^|; )${userConsent.name}=([^;]+)/);if(m&&JSON.parse(atob(decodeURIComponent(m[1]))).version===${JSON.stringify(CONSENT_VERSION)})document.currentScript.previousElementSibling.hidden=true}catch(e){}})()`;
+const UNSAFE_JS_CHAR_MAP: Record<string, string> = {
+  '<': '\\u003C',
+  '>': '\\u003E',
+  '/': '\\u002F',
+  '\\': '\\\\',
+  '\b': '\\b',
+  '\f': '\\f',
+  '\n': '\\n',
+  '\r': '\\r',
+  '\t': '\\t',
+  '\0': '\\0',
+  '\u2028': '\\u2028',
+  '\u2029': '\\u2029',
+};
+
+function escapeUnsafeJsString(str: string) {
+  return str.replace(/[<>/\\\b\f\n\r\t\0\u2028\u2029]/g, (char) => UNSAFE_JS_CHAR_MAP[char]);
+}
+
+const hideIfAnsweredScript = `(function(){try{var m=document.cookie.match(/(?:^|; )${userConsent.name}=([^;]+)/);if(m&&JSON.parse(atob(decodeURIComponent(m[1]))).version===${escapeUnsafeJsString(JSON.stringify(CONSENT_VERSION))})document.currentScript.previousElementSibling.hidden=true}catch(e){}})()`;
 
 export const ConsentBanner = forwardRef<HTMLElement, BannerProps>(
   function ConsentBanner({ lang, ...rest }, ref) {
