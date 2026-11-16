@@ -8,7 +8,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { type ColorTheme, resolveThemeColors } from './theme-colors';
+import { resolveThemeColors, type ThemeColor } from './theme-colors';
 import {
   type ThemeWorkspace,
   updateActiveTheme,
@@ -17,7 +17,7 @@ import {
 
 type ThemeStore = {
   /** Every color of the theme that is shown, in the order of the config */
-  colors: ColorTheme[];
+  colors: ThemeColor[];
   /** The config being edited and the theme that is shown. This is the only theme state in the theme builder. */
   workspace: ThemeWorkspace;
   setWorkspace: Dispatch<SetStateAction<ThemeWorkspace>>;

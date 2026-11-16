@@ -1,0 +1,32 @@
+import type no from '../no/export-theme';
+
+export default {
+  'use-theme': 'Use theme',
+  'generating-css': 'Generating CSS...',
+  'own-theme': 'your own theme (opens in new tab)',
+  'help-heading': 'Something not working?',
+  'help-description': 'Send us a message on',
+  slack: 'Slack (opens in new tab)',
+  or: 'or create a',
+  'github-issue': 'Github issue (opens in new tab)',
+  config: {
+    heading: 'Config file',
+    description:
+      'Use this when you want to get started with Figma and generate design tokens, a CSS file or other kinds of code.',
+    download: 'Download {{filename}}',
+    'step-one':
+      'Download the config file to the folder where you want the tokens and CSS to be generated.',
+    'step-two':
+      'Open a terminal in the same folder as the config file. Run the code snippets to generate tokens and CSS variables for code.',
+    help: 'Read more about how to synchronize tokens with Figma here:',
+  },
+  css: {
+    heading: 'CSS file',
+    description:
+      'Use this when you want to prototype in code and get started quickly.',
+    'step-one': 'Download and import it after "@digdir/designsystemet-css".',
+    download: 'Download {{filename}}',
+    error: 'Could not generate CSS for the theme.',
+    'select-theme': 'Theme',
+  },
+} satisfies typeof no;

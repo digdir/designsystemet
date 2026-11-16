@@ -10,7 +10,7 @@ import cl from 'clsx/lite';
 import { type HTMLAttributes, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useColorScheme } from '~/_hooks/use-color-scheme';
-import { type ColorTheme, generateColorVars } from '~/model/theme-colors';
+import { generateColorVars, type ThemeColor } from '~/model/theme-colors';
 import { useThemeStore } from '~/model/theme-store';
 import listClasses from './card.module.css';
 import classes from './color-preview.module.css';
@@ -77,7 +77,7 @@ export const ColorPreview = () => {
 };
 
 type CardProps = {
-  color: ColorTheme;
+  color: ThemeColor;
   view?: ViewType;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'color'>;
 

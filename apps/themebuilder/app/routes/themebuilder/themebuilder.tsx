@@ -6,10 +6,10 @@ import {
   useLoaderData,
   useSearchParams,
 } from 'react-router';
+import { Themebuilder } from '~/_components/themebuilder/themebuilder';
 import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
-import { ThemebuilderLayout } from '~/layouts/themebuilder/layout';
 import { legacyThemeKeys } from '~/model/legacy-url';
 import { readLegacyUrl } from '~/model/legacy-url.server';
 import { ThemeStoreProvider } from '~/model/theme-store';
@@ -78,7 +78,7 @@ export default function Page() {
 
   return (
     <ThemeStoreProvider initial={workspace}>
-      <ThemebuilderLayout />
+      <Themebuilder />
     </ThemeStoreProvider>
   );
 }

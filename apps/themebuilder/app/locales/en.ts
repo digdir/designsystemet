@@ -1,6 +1,6 @@
 import en from '@internal/components/src/_locales/en';
-import colorModal from './en/color-modal';
-import themeModal from './en/theme-modal';
+import colorStepDialog from './en/color-step-dialog';
+import exportTheme from './en/export-theme';
 import type no from './no';
 
 export default {
@@ -31,6 +31,10 @@ export default {
   accessibility: {
     'skip-link': 'Skip to main content',
   },
+  common: {
+    save: 'Save',
+    cancel: 'Cancel',
+  },
   meta: {
     title: 'Theme Builder',
     description: 'Build your own theme with Design System',
@@ -39,6 +43,9 @@ export default {
     title: 'Theme Builder',
     'active-theme': 'Theme',
     'toggle-editor': 'Open or close theme editor',
+    'documentation-link': 'Read the documentation about custom themes',
+  },
+  editThemes: {
     'edit-themes': 'Edit themes',
     'theme-names': 'Theme names',
     'remove-theme': 'Delete theme {{name}}',
@@ -47,9 +54,8 @@ export default {
     'invalid-theme-name':
       'Use only lowercase letters a-z, numbers and hyphens.',
     'duplicate-theme-name': 'A theme with this name already exists.',
-    'documentation-link': 'Read the documentation about custom themes',
   },
-  configPaste: {
+  importConfig: {
     title: 'Import from config file',
     description:
       'Already have a config file? Paste it here to select and edit a theme. It replaces the themes you are working on now.',
@@ -62,10 +68,12 @@ export default {
     'edit-theme': 'Edit theme',
     'import-config': 'Import config',
   },
-  tabs: {
+  viewTabs: {
     label: 'View',
     examples: 'Examples',
     colorsystem: 'Colour system',
+  },
+  editorTabs: {
     colors: 'Colours',
     dimensions: 'Dimensions',
   },
@@ -83,7 +91,7 @@ export default {
     grid: 'Grid',
     list: 'List',
   },
-  overview: {
+  examples: {
     'login-title': 'Log in to the portal',
     name: 'Name',
     password: 'Password',
@@ -114,10 +122,9 @@ export default {
     'display-mode': 'Display mode',
     'select-color': 'Choose colour',
   },
-  'color-modal': colorModal,
-  themeModal,
-  colorPane: {
-    'token-overrides': 'Token overrides',
+  colorStepDialog,
+  exportTheme,
+  colorEditor: {
     'confirm-add-title': 'Add a color to all themes?',
     'confirm-add-description':
       'This adds a color with the same starting value to all {{count}} themes. Each theme can then have its own color value.',
@@ -133,8 +140,6 @@ export default {
     'name-duplicate-error': 'A color with this name already exists',
     'add-color': 'Add Colour',
     'edit-color': 'Edit colour',
-    save: 'Save',
-    cancel: 'Cancel',
     'remove-color': 'Remove colour',
     'neutral-info': 'The neutral colour cannot be removed or renamed.',
     name: 'Name',
@@ -153,7 +158,7 @@ export default {
   colorGroup: {
     'see-more': 'See more about {{namespace}} {{color}}',
   },
-  'color-tokens': {
+  colorPreviewTokens: {
     title: 'Color Tokens',
     description:
       'Here you can see which tokens have been used to create the cards in the section above.',
@@ -194,6 +199,7 @@ export default {
     full: 'Full',
   },
   overrides: {
+    open: 'Token overrides',
     heading: 'Color Overrides',
     'invalid-hex': 'Enter a valid hex colour, for example #0062BA.',
     'color-picker': 'colour picker',

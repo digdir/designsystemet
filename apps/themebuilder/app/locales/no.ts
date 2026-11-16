@@ -1,6 +1,6 @@
 import no from '@internal/components/src/_locales/no';
-import colorModal from './no/color-modal';
-import themeModal from './no/theme-modal';
+import colorStepDialog from './no/color-step-dialog';
+import exportTheme from './no/export-theme';
 
 export default {
   ...no,
@@ -30,6 +30,10 @@ export default {
   accessibility: {
     'skip-link': 'Hopp til hovedinnhold',
   },
+  common: {
+    save: 'Lagre',
+    cancel: 'Avbryt',
+  },
   meta: {
     title: 'Temabygger',
     description: 'Bygg ditt eget tema med Designsystemet',
@@ -38,6 +42,9 @@ export default {
     title: 'Temabygger',
     'active-theme': 'Tema',
     'toggle-editor': 'Åpne eller lukke temaredigering',
+    'documentation-link': 'Les dokumentasjon om eget tema',
+  },
+  editThemes: {
     'edit-themes': 'Rediger temaer',
     'theme-names': 'Temanavn',
     'remove-theme': 'Slett tema {{name}}',
@@ -45,9 +52,8 @@ export default {
     'theme-name': 'Temanavn',
     'invalid-theme-name': 'Bruk kun små bokstaver a-z, tall og bindestrek.',
     'duplicate-theme-name': 'Et tema med dette navnet finnes allerede.',
-    'documentation-link': 'Les dokumentasjon om eget tema',
   },
-  configPaste: {
+  importConfig: {
     title: 'Importer fra konfigurasjonsfil',
     description:
       'Har du allerede en konfigurasjonsfil? Lim den inn her for å velge og redigere et tema. Den erstatter temaene du jobber med nå.',
@@ -60,10 +66,12 @@ export default {
     'edit-theme': 'Rediger tema',
     'import-config': 'Importer config',
   },
-  tabs: {
+  viewTabs: {
     label: 'Visning',
     examples: 'Eksempler',
     colorsystem: 'Fargesystem',
+  },
+  editorTabs: {
     colors: 'Farger',
     dimensions: 'Dimensjoner',
   },
@@ -81,7 +89,7 @@ export default {
     grid: 'Rutenett',
     list: 'Liste',
   },
-  overview: {
+  examples: {
     'login-title': 'Logg inn i portalen',
     name: 'Navn',
     password: 'Passord',
@@ -112,10 +120,9 @@ export default {
     'display-mode': 'Visningsmodus',
     'select-color': 'Velg farge',
   },
-  'color-modal': colorModal,
-  themeModal,
-  colorPane: {
-    'token-overrides': 'Tokenoverstyringer',
+  colorStepDialog,
+  exportTheme,
+  colorEditor: {
     'confirm-add-title': 'Legg til en farge i alle temaer?',
     'confirm-add-description':
       'Dette legger til en farge med samme startverdi i alle {{count}} temaer. Hvert tema kan deretter ha sin egen fargeverdi.',
@@ -131,8 +138,6 @@ export default {
     'name-duplicate-error': 'En farge med dette navnet finnes allerede',
     'add-color': 'Legg til Farge',
     'edit-color': 'Rediger farge',
-    save: 'Lagre',
-    cancel: 'Avbryt',
     'remove-color': 'Fjern farge',
     'neutral-info': 'Neutral fargen kan ikke fjernes eller endres navn på.',
     name: 'Navn',
@@ -151,7 +156,7 @@ export default {
   colorGroup: {
     'see-more': 'Se mer om {{namespace}} {{color}}',
   },
-  'color-tokens': {
+  colorPreviewTokens: {
     title: 'Fargetokens',
     description:
       'Her ser du hvilke tokens som er brukt for å lage kortene i seksjonen over.',
@@ -192,6 +197,7 @@ export default {
     full: 'Maksimal',
   },
   overrides: {
+    open: 'Tokenoverstyringer',
     heading: 'Fargeoverstyringer',
     'invalid-hex': 'Skriv inn en gyldig hex-farge, for eksempel #0062BA.',
     'color-picker': 'fargevelger',

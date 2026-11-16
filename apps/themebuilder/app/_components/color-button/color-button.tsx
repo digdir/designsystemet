@@ -10,7 +10,7 @@ type ColorButtonProps = {
 export const ColorButton = ({ color, ...rest }: ColorButtonProps) => (
   <button
     style={{ backgroundColor: color }}
-    className={cl(classes.box, 'ds-focus')}
+    className={cl(classes.swatch, 'ds-focus')}
     type='button'
     {...rest}
   />
