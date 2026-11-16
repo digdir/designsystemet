@@ -5,7 +5,7 @@ import {
   type ThemeInfo,
 } from '@digdir/designsystemet/internal';
 import { generateColorVars } from './generate-color-vars';
-import type { WorkspaceTheme } from './theme-workspace';
+import { REQUIRED_COLOR, type WorkspaceTheme } from './theme-workspace';
 
 /** A color of a theme: its name, its base color and its resolved scale in light and dark mode */
 export type ColorTheme = {
@@ -31,9 +31,11 @@ export const previewColorVars = (
   color: ColorTheme | undefined,
   colorScheme: ColorScheme,
 ) => {
-  const neutral = colors.find(({ name }) => name === 'neutral');
+  // Components use the required color through its own variables, `--ds-color-neutral-*`
+  const required = colors.find(({ name }) => name === REQUIRED_COLOR);
   return {
-    ...(neutral && generateColorVars(neutral.colors, colorScheme, 'neutral')),
+    ...(required &&
+      generateColorVars(required.colors, colorScheme, REQUIRED_COLOR)),
     ...(color && generateColorVars(color.colors, colorScheme)),
   };
 };
