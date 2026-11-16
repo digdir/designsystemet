@@ -1,8 +1,8 @@
 import { AppearanceToggle } from '~/_components/appearance-toggle/appearance-toggle';
+import { ColorModalProvider } from '~/_components/color-modal/color-modal-context';
 import { EditThemesDialog } from '~/_components/edit-themes-dialog/edit-themes-dialog';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import { ThemeHeader } from '~/_components/theme-header/theme-header';
-import { ColorModalProvider } from '~/_utils/color-modal-context';
 import { ThemePages } from '../../layouts/themebuilder/layout';
 import classes from './page.module.css';
 import 'react-color-palette/css';
