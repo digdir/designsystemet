@@ -4,6 +4,7 @@ import type { HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '../_utils';
 import typographyTokens from './design-tokens/typography.json';
+import classes from './table.module.css';
 
 type TokenTableProps = {
   tokens: PreviewToken[];
@@ -82,7 +83,11 @@ const TypographySetTables = ({
     return Object.entries(groupByTypography).map(
       ([typographyName, typographyTokens]) => {
         return (
-          <div key={typographyName}>
+          <div
+            key={typographyName}
+            className={`${classes['overflow-table']} ds-focus`}
+            tabIndex={0}
+          >
             <Table data-color='neutral'>
               <caption>
                 <Heading level={5} data-size='sm'>
@@ -144,7 +149,11 @@ export const TypographyTable = ({ tokens }: TokenTableProps) => {
     return isTypography ? (
       <TypographySetTables key={path} tokens={groupByTypography} />
     ) : (
-      <div key={path}>
+      <div
+        key={path}
+        className={`${classes['overflow-table']} ds-focus`}
+        tabIndex={0}
+      >
         <Table data-color='neutral' key={path}>
           <caption>
             <Heading level={5} data-size='sm'>
