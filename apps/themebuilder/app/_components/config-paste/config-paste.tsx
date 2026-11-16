@@ -6,6 +6,7 @@ import {
 import {
   Button,
   Field,
+  Input,
   Label,
   Paragraph,
   Textarea,
@@ -14,19 +15,19 @@ import {
 import { PencilIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router';
-import { type WorkspaceConfig, workspaceToUrl } from '~/_utils/theme-workspace';
+import { useThemeStore } from '~/_utils/theme-store';
+import type { WorkspaceConfig } from '~/_utils/theme-workspace';
 import classes from './config-paste.module.css';
 
 export function ConfigPaste() {
   const { t } = useTranslation();
-  const { lang } = useParams();
+  const { setWorkspace } = useThemeStore();
   const [configText, setConfigText] = useState('');
   const [validatedConfig, setValidatedConfig] =
     useState<WorkspaceConfig | null>(null);
   const [errors, setErrors] = useState<string[]>([]);
 
-  const handleValidate = () => {
+  const handleValidate = (configText: string) => {
     setErrors([]);
     setValidatedConfig(null);
 
@@ -70,10 +71,26 @@ export function ConfigPaste() {
 
   return (
     <div className={classes.container}>
+      <Field>
+        <Label>{t('configPaste.upload')}</Label>
+        <Field.Description>{t('configPaste.description')}</Field.Description>
+        <Input
+          type='file'
+          accept='.json,application/json'
+          onChange={async (event) => {
+            const input = event.currentTarget;
+            const text = await input.files?.[0]?.text();
+            if (text === undefined) return;
+            setConfigText(text);
+            handleValidate(text);
+            // Lets the same file be uploaded again after it is corrected
+            input.value = '';
+          }}
+        />
+      </Field>
       <div className={classes.textareaWrapper}>
         <Field>
           <Label>{t('configPaste.title')}</Label>
-          <Field.Description>{t('configPaste.description')}</Field.Description>
           <Textarea
             className={classes.textarea}
             value={configText}
@@ -81,7 +98,6 @@ export function ConfigPaste() {
             placeholder={t('configPaste.placeholder')}
             rows={15}
             aria-invalid={errors.length > 0 || undefined}
-            autoFocus
             suppressHydrationWarning
           />
           <ul lang='en'>
@@ -95,7 +111,11 @@ export function ConfigPaste() {
       </div>
 
       <div className={classes.actions}>
-        <Button onClick={handleValidate} data-color='accent' data-size='sm'>
+        <Button
+          onClick={() => handleValidate(configText)}
+          data-color='accent'
+          data-size='sm'
+        >
           {t('configPaste.validate')}
         </Button>
         {configText && (
@@ -147,24 +167,21 @@ export function ConfigPaste() {
                     </div>
                   </div>
                   <Button
-                    asChild
                     data-size='sm'
                     variant='secondary'
                     aria-label={`${t('configPaste.edit-theme')} ${themeName}`}
+                    onClick={(event) => {
+                      setWorkspace({
+                        config: validatedConfig,
+                        activeTheme: themeName,
+                      });
+                      setConfigText('');
+                      setValidatedConfig(null);
+                      event.currentTarget.closest('dialog')?.close();
+                    }}
                   >
-                    <Link
-                      to={workspaceToUrl(
-                        validatedConfig,
-                        themeName,
-                        lang || 'no',
-                      )}
-                      onClick={(event) => {
-                        event.currentTarget.closest('dialog')?.close();
-                      }}
-                    >
-                      <PencilIcon aria-hidden='true' />
-                      {t('configPaste.edit-theme')}
-                    </Link>
+                    <PencilIcon aria-hidden='true' />
+                    {t('configPaste.edit-theme')}
                   </Button>
                 </div>
               ))}

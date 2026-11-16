@@ -9,15 +9,17 @@ import { PencilIcon, PlusIcon, TrashIcon } from '@navikt/aksel-icons';
 import { useEffect, useId, useRef, useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
-import { useThemeSearchParams } from '~/_hooks/use-theme-search-params';
+import { useThemeStore } from '~/_utils/theme-store';
+import {
+  removeThemeColor,
+  setSeverityColor,
+  setThemeColor,
+} from '~/_utils/theme-workspace';
 import type {
   ColorTheme,
   SeverityColorTheme,
 } from '~/routes/themebuilder/_utils/use-themebuilder';
-import {
-  QUERY_SEPARATOR,
-  useThemebuilder,
-} from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { ColorInput } from '../../color-input/color-input';
 import { ColorOverrides } from '../color-overrides/color-overrides';
 import { ColorPane } from '../color-pane/color-pane';
@@ -37,7 +39,7 @@ const DEFAULT_COLOR = '#0062ba';
 export const ColorPage = () => {
   const { t } = useTranslation();
   const { colors, severityColors, workspace } = useThemebuilder();
-  const [query, setQuery] = useThemeSearchParams();
+  const { updateTheme } = useThemeStore();
   const confirmationRef = useRef<HTMLDialogElement>(null);
   const confirmationId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -45,9 +47,7 @@ export const ColorPage = () => {
   const [pendingAction, setPendingAction] = useState<
     'add' | 'remove' | 'rename' | null
   >(null);
-  const themeCount = workspace
-    ? Object.keys(workspace.config.themes).length
-    : 1;
+  const themeCount = Object.keys(workspace.config.themes).length;
 
   const [editorState, setEditorState] = useState<ColorEditorState>({
     activePanel: 'none',
@@ -82,61 +82,21 @@ export const ColorPage = () => {
   const committedName =
     colors[editorState.index]?.name || editorState.initialName;
 
-  const updateColorInParams = (
+  /** Sets the name and color of the color at `index`, or adds a color when `index` is after the last one */
+  const updateColor = (
     hex: string,
     name: string,
-    type: string,
+    type: ColorEditorState['colorType'],
     index: number,
   ) => {
     if (index < 0 || !hex || !name) return;
+    const current = colors[index]?.name;
 
-    const updatedParams = new URLSearchParams(query);
-
-    if (type === 'color' || type === 'neutral') {
-      const colorParam = query.get('colors') || '';
-      const colorArray = colorParam.split(QUERY_SEPARATOR).filter(Boolean);
-
-      if (index < colorArray.length) {
-        colorArray[index] = `${name}:${hex}`;
-      } else {
-        colorArray.push(`${name}:${hex}`);
-      }
-
-      updatedParams.set('colors', colorArray.join(QUERY_SEPARATOR));
-    } else if (type === 'severity') {
-      updateSeverityColorInParams(hex, name, updatedParams);
-    }
-
-    setQuery(updatedParams, { replace: true, preventScrollReset: true });
-  };
-
-  const updateSeverityColorInParams = (
-    hex: string,
-    name: string,
-    params: URLSearchParams,
-  ) => {
-    const severityParam = params.get('severity') || '';
-    const severityArray = severityParam.split(QUERY_SEPARATOR).filter(Boolean);
-
-    // Find the severity color and check if it's the default
-    const defaultColor = severityColors.find((sc) => sc.name === name);
-    if (!defaultColor) return;
-
-    const isDefault = hex.toLowerCase() === defaultColor.hex.toLowerCase();
-
-    // Remove existing entry for this severity color
-    const filtered = severityArray.filter((s) => !s.startsWith(`${name}:`));
-
-    // Only add if it's not the default value
-    if (!isDefault) {
-      filtered.push(`${name}:${hex}`);
-    }
-
-    if (filtered.length > 0) {
-      params.set('severity', filtered.join(QUERY_SEPARATOR));
-    } else {
-      params.delete('severity');
-    }
+    updateTheme((theme) =>
+      type === 'severity'
+        ? setSeverityColor(theme, name as SeverityColorTheme['name'], hex)
+        : setThemeColor(theme, current, name, hex),
+    );
   };
 
   const openColorEditor = (
@@ -175,7 +135,7 @@ export const ColorPage = () => {
       initialHex: DEFAULT_COLOR,
     });
 
-    updateColorInParams(DEFAULT_COLOR, newColorName, 'color', index);
+    updateColor(DEFAULT_COLOR, newColorName, 'color', index);
   };
 
   const openSeverityColorEditor = (
@@ -205,18 +165,8 @@ export const ColorPage = () => {
   };
 
   const removeColor = (index: number) => {
-    if (index < 0) return;
-
-    const updatedParams = new URLSearchParams(query);
-    const colorParam = query.get('colors') || '';
-    const colorArray = colorParam.split(QUERY_SEPARATOR).filter(Boolean);
-    colorArray.splice(index, 1);
-    updatedParams.set('colors', colorArray.join(QUERY_SEPARATOR));
-
-    setQuery(updatedParams, {
-      replace: true,
-      preventScrollReset: true,
-    });
+    const name = colors[index]?.name;
+    if (name) updateTheme((theme) => removeThemeColor(theme, name));
   };
 
   return (
@@ -321,7 +271,7 @@ export const ColorPage = () => {
           }}
           onCancel={() => {
             if (editorState.activePanel === 'edit-color') {
-              updateColorInParams(
+              updateColor(
                 editorState.initialHex,
                 editorState.initialName,
                 editorState.colorType,
@@ -336,7 +286,7 @@ export const ColorPage = () => {
           committedName={committedName}
           setColor={(newColor) => {
             setColor(newColor);
-            updateColorInParams(
+            updateColor(
               newColor.hex,
               themeCount > 1 ? committedName : editorState.name,
               editorState.colorType,
@@ -346,7 +296,7 @@ export const ColorPage = () => {
           setName={(newName) => {
             setEditorState((prev) => ({ ...prev, name: newName }));
             if (themeCount === 1) {
-              updateColorInParams(
+              updateColor(
                 color.hex,
                 newName,
                 editorState.colorType,
@@ -368,21 +318,16 @@ export const ColorPage = () => {
             closeEditor();
           }}
           onRemove={() => {
-            // Reset to default by removing from query params
-            const updatedParams = new URLSearchParams(query);
-            updateSeverityColorInParams(
+            updateColor(
               editorState.initialHex,
               editorState.name,
-              updatedParams,
+              editorState.colorType,
+              editorState.index,
             );
-            setQuery(updatedParams, {
-              replace: true,
-              preventScrollReset: true,
-            });
             closeEditor();
           }}
           onCancel={() => {
-            updateColorInParams(
+            updateColor(
               editorState.initialHex,
               editorState.initialName,
               editorState.colorType,
@@ -396,7 +341,7 @@ export const ColorPage = () => {
           committedName={editorState.name}
           setColor={(newColor) => {
             setColor(newColor);
-            updateColorInParams(
+            updateColor(
               newColor.hex,
               editorState.name,
               editorState.colorType,
@@ -454,7 +399,7 @@ export const ColorPage = () => {
                   removeColor(editorState.index);
                   closeEditor();
                 } else if (pendingAction === 'rename') {
-                  updateColorInParams(
+                  updateColor(
                     colors[editorState.index]?.hex || color.hex,
                     editorState.name,
                     editorState.colorType,

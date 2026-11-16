@@ -50,9 +50,10 @@ export default {
     'documentation-link': 'Read the documentation about custom themes',
   },
   configPaste: {
-    title: 'Import from config file',
+    title: 'Or paste the content of the file',
+    upload: 'Upload a config file',
     description:
-      'Already have a config file? Paste it here to select and edit a theme.',
+      'Already have a config file? Upload it or paste it here to select and edit a theme. It replaces the themes you are working on now.',
     placeholder: 'Paste your designsystemet.config.json content here...',
     validate: 'Validate config',
     'select-theme': 'Select a theme to edit',
