@@ -66,7 +66,9 @@ export const getThemeColorScales = (
  * Resolves every color of a theme in light and dark mode, see `getThemeColorScales`.
  *
  * Takes a theme as it is written in a config, so previews (e.g. the theme builder) can show
- * the colors of a config they are editing, with the same result as the generated tokens.
+ * the colors of a config they are editing. Nothing is validated or added: only the colors the
+ * theme lists are resolved (no default severity colors), hex values are used as written, and
+ * a value that is not a color throws. Validate with the config schema first when that matters.
  */
 export const getThemeColorSchemes = (theme: {
   colors: Record<string, string>;

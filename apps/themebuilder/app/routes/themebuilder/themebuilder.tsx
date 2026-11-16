@@ -16,7 +16,8 @@ import {
   useSearchParams,
 } from 'react-router';
 import { isProduction } from '~/_utils/is-production.server';
-import { legacyThemeKeys, readLegacyUrl } from '~/_utils/legacy-url';
+import { legacyThemeKeys } from '~/_utils/legacy-url';
+import { readLegacyUrl } from '~/_utils/legacy-url.server';
 import { generateMetadata } from '~/_utils/metadata';
 import { ThemeStoreProvider, useThemeStore } from '~/_utils/theme-store';
 import { defaultWorkspace } from '~/_utils/theme-workspace';

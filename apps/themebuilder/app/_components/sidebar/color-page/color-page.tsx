@@ -11,10 +11,10 @@ import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
 import { useThemeStore } from '~/_utils/theme-store';
 import {
+  canRenameColor,
   REQUIRED_COLOR,
   removeThemeColor,
   setThemeColor,
-  type ThemeWorkspace,
 } from '~/_utils/theme-workspace';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { ColorInput } from '../../color-input/color-input';
@@ -29,8 +29,8 @@ type ColorEditor = {
   name: string;
   /** The name in the name field. It becomes the color's name when the editor is saved. */
   typedName: string;
-  /** The workspace when the editor opened, which cancelling goes back to */
-  opened: ThemeWorkspace;
+  /** The base color when the editor opened, which cancelling goes back to */
+  initialHex: string;
 };
 
 const DEFAULT_COLOR = '#0062ba';
@@ -38,7 +38,7 @@ const DEFAULT_COLOR = '#0062ba';
 export const ColorPage = () => {
   const { t } = useTranslation();
   const { colors, workspace } = useThemebuilder();
-  const { setWorkspace, updateTheme } = useThemeStore();
+  const { updateTheme } = useThemeStore();
   const confirmationRef = useRef<HTMLDialogElement>(null);
   const confirmationId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -68,10 +68,11 @@ export const ColorPage = () => {
     returnFocusName.current = null;
   }, [isOpen]);
 
-  /* A change to a color is shown at once. The editor keeps the workspace from when it opened, so it can be cancelled. */
+  /* A change of the base color is shown at once, so the editor keeps the color it opened with to be able to cancel.
+   * The name is only changed when the editor is saved. */
   const openEditor = (name: string, hex: string, isNew = false) => {
     setColor(ColorService.convert('hex', hex));
-    setEditor({ isNew, name, typedName: name, opened: workspace });
+    setEditor({ isNew, name, typedName: name, initialHex: hex });
   };
 
   const addColor = () => {
@@ -151,7 +152,9 @@ export const ColorPage = () => {
           }
           onRemove={() => confirm('remove', () => remove(editor))}
           onCancel={() => {
-            setWorkspace(editor.opened);
+            updateTheme((theme) =>
+              setThemeColor(theme, editor.name, editor.name, editor.initialHex),
+            );
             closeEditor();
           }}
           type={editor.isNew ? 'add-color' : 'edit-color'}
@@ -165,7 +168,15 @@ export const ColorPage = () => {
             );
           }}
           setName={(typedName) => setEditor({ ...editor, typedName })}
-          colorType={editor.name === REQUIRED_COLOR ? 'neutral' : 'color'}
+          canRename={canRenameColor(editor.name)}
+          canRemove={editor.name !== REQUIRED_COLOR}
+          info={
+            editor.name === REQUIRED_COLOR
+              ? t('colorPane.neutral-info')
+              : canRenameColor(editor.name)
+                ? undefined
+                : t('colorPane.severity-info')
+          }
         />
       )}
       <Dialog

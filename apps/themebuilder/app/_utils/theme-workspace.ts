@@ -23,6 +23,14 @@ export type ThemeWorkspace = { config: WorkspaceConfig; activeTheme: string };
  */
 export const REQUIRED_COLOR = 'neutral';
 
+/**
+ * Whether a color can be renamed. The required color cannot, and neither can severity colors for now:
+ * the CLI adds the severity colors a theme lacks, so a renamed one would come back next to its new name.
+ * The severity part can be removed when the CLI no longer adds them.
+ */
+export const canRenameColor = (name: string) =>
+  name !== REQUIRED_COLOR && !Object.hasOwn(severityColors, name);
+
 export const isValidThemeName = (name: string) =>
   /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name);
 
@@ -150,12 +158,14 @@ export function updateActiveTheme(
               return removed.includes(name) ? [] : [[name, value]];
             }),
           );
-      for (const name of added) colors[name] ??= active.colors[name];
+      for (const name of added) {
+        if (!Object.hasOwn(colors, name)) colors[name] = active.colors[name];
+      }
 
       const source = isActive ? active : theme;
       const colorOverrides = { ...source.overrides?.colors };
       for (const name of removed) {
-        if (renamed && colorOverrides[name])
+        if (renamed && Object.hasOwn(colorOverrides, name))
           colorOverrides[added[0]] = colorOverrides[name];
         delete colorOverrides[name];
       }
@@ -174,8 +184,8 @@ export function updateActiveTheme(
 
 /**
  * Sets the name and base color of a color. `current` is the name the color has now, or `undefined` for a new color.
- * A color keeps its position when it is renamed. The edit is ignored when the new name is taken by another color.
- * The required color cannot be renamed.
+ * A color keeps its position when it is renamed. The edit is ignored when `current` is not a color of the theme,
+ * when the new name is taken by another color, and when the color cannot be renamed (see `canRenameColor`).
  */
 export function setThemeColor(
   theme: WorkspaceTheme,
@@ -183,25 +193,28 @@ export function setThemeColor(
   name: string,
   hex: string,
 ): WorkspaceTheme {
-  const exists = current !== undefined && Object.hasOwn(theme.colors, current);
+  const isNew = current === undefined;
+  if (!isNew && !Object.hasOwn(theme.colors, current)) return theme;
   if (
     name !== current &&
-    (Object.hasOwn(theme.colors, name) || current === REQUIRED_COLOR)
+    (Object.hasOwn(theme.colors, name) || (!isNew && !canRenameColor(current)))
   )
     return theme;
   const entries = Object.entries(theme.colors);
   const colors = Object.fromEntries(
-    exists
-      ? entries.map((entry) => (entry[0] === current ? [name, hex] : entry))
-      : [...entries, [name, hex]],
+    isNew
+      ? [...entries, [name, hex]]
+      : entries.map((entry) => (entry[0] === current ? [name, hex] : entry)),
   );
   return { ...theme, colors };
 }
 
+/** Removes a color. The required color is never removed. */
 export function removeThemeColor(
   theme: WorkspaceTheme,
   name: string,
 ): WorkspaceTheme {
+  if (name === REQUIRED_COLOR) return theme;
   const { [name]: _, ...colors } = theme.colors;
   return { ...theme, colors };
 }

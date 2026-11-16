@@ -23,7 +23,11 @@ type ColorPaneProps = {
   setName: (name: string) => void;
   onCancel: () => void;
   onRemove: () => void;
-  colorType: 'color' | 'neutral';
+  /** Whether the color has a name field */
+  canRename: boolean;
+  canRemove: boolean;
+  /** Shown under the heading, to explain what cannot be done with the color */
+  info?: string;
 };
 
 export const ColorPane = ({
@@ -36,7 +40,9 @@ export const ColorPane = ({
   onCancel,
   setName,
   onRemove,
-  colorType,
+  canRename,
+  canRemove,
+  info,
 }: ColorPaneProps) => {
   const { t } = useTranslation();
   const editorRef = useRef<HTMLDivElement>(null);
@@ -57,7 +63,7 @@ export const ColorPane = ({
   })();
 
   const checkNameIsValid = () => {
-    if (colorType === 'neutral') return true;
+    if (!canRename) return true;
     if (!name?.trim()) {
       setColorError(t('colorPane.name-empty-error'));
       return false;
@@ -125,7 +131,7 @@ export const ColorPane = ({
             onRemove();
           }}
           className={cl(classes.removeBtn)}
-          hidden={colorType === 'neutral' || themeColorCount <= 1}
+          hidden={!canRemove || themeColorCount <= 1}
         >
           {t('colorPane.remove-color')}
           <TrashIcon aria-hidden />
@@ -134,12 +140,12 @@ export const ColorPane = ({
       <Heading data-size='xs' className={classes.title}>
         {headingText}
       </Heading>
-      {colorType === 'neutral' && (
+      {info && (
         <Paragraph data-size='sm' className={classes.desc}>
-          {t('colorPane.neutral-info')}
+          {info}
         </Paragraph>
       )}
-      {colorType !== 'neutral' && (
+      {canRename && (
         <Textfield
           placeholder={t('colorPane.name-placeholder')}
           label={t('colorPane.name')}

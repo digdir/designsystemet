@@ -142,8 +142,8 @@ export default {
     'name-placeholder': 'Write the name here...',
     'name-description': 'Use only letters a-z, numbers and hyphens',
     'name-empty-error': 'The colour name cannot be empty',
-    'name-reserved-error':
-      'The colour name cannot be the same as our system colours',
+    'severity-info': 'Severity colours cannot be renamed.',
+    'name-reserved-error': 'The colour cannot be named "neutral"',
     color: 'Colour',
   },
   appearanceToggle: {

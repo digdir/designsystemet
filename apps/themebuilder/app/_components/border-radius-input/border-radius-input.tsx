@@ -1,7 +1,7 @@
 import { Heading, Textfield } from '@digdir/designsystemet-react';
 import { useDebounceCallback } from '@internal/components';
 import cl from 'clsx/lite';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useThemeStore } from '~/_utils/theme-store';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
@@ -14,6 +14,14 @@ export const BorderRadiusInput = () => {
   const setBorderRadius = (borderRadius: number) =>
     updateTheme((theme) => ({ ...theme, borderRadius }));
   const { baseBorderRadius } = useThemebuilder();
+
+  /* The field is not controlled, so that it can be typed in freely. It follows the theme when the
+   * value changes from somewhere else, such as a suggested value or an imported config. */
+  useEffect(() => {
+    const input = inputRef.current;
+    if (input && document.activeElement !== input)
+      input.value = baseBorderRadius.toString();
+  }, [baseBorderRadius]);
 
   const borderRadiusItems = [
     { name: t('borderRadius.none'), value: 0 },
@@ -58,9 +66,6 @@ export const BorderRadiusInput = () => {
               key={item.value}
               onClick={() => {
                 setBorderRadius(item.value);
-                if (inputRef.current) {
-                  inputRef.current.value = item.value.toString();
-                }
               }}
             >
               <span className={classes.text}>{item.name}</span>

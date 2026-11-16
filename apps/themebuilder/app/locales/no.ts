@@ -141,8 +141,8 @@ export default {
     'name-placeholder': 'Skriv navnet her...',
     'name-description': 'Bruk kun bokstavene a-z, tall og bindestrek',
     'name-empty-error': 'Navnet på fargen kan ikke være tomt',
-    'name-reserved-error':
-      'Navnet på fargen kan ikke være det samme som våre systemfarger',
+    'severity-info': 'Severity-farger kan ikke få nytt navn.',
+    'name-reserved-error': 'Fargen kan ikke hete «neutral»',
     color: 'Farge',
   },
   appearanceToggle: {
