@@ -1,3 +1,75 @@
+.page {
+  position: relative;
+}
+
+.content {
+  padding: 32px 40px 40px 40px;
+  width: calc(100% - 550px);
+  margin-bottom: 40px;
+  flex-grow: 500;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+
+  @media screen and (max-width: 1900px) {
+    padding: var(--ds-size-2);
+  }
+}
+
+.sideBarContainer {
+  width: 420px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-4);
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.themeGroup {
+  display: flex;
+  gap: var(--ds-size-2);
+  align-items: flex-end;
+  flex: 1;
+  min-width: min(100%, 280px);
+  max-width: 360px;
+}
+
+.themeSelector {
+  flex: 1;
+
+  & select {
+    flex: 1;
+    width: 0;
+    text-overflow: ellipsis;
+  }
+}
+
+.themeControls {
+  display: flex;
+  gap: var(--ds-size-2);
+  align-items: center;
+}
+
+@media screen and (max-width: 1900px) {
+  .content {
+    width: 100%;
+  }
+}
+
 .panel {
   background-color: var(--ds-color-neutral-background-tinted);
   border: 1px solid var(--ds-color-neutral-border-subtle);
@@ -21,14 +93,4 @@
 
 .colorsContainer {
   overflow: auto;
-}
-
-.variablesPanel {
-  display: grid;
-  gap: var(--ds-size-4);
-  justify-content: center;
-
-  > * > * {
-    max-width: 600px;
-  }
 }

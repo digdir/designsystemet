@@ -178,8 +178,8 @@ const ColorContrastMapper = ({
           aria-label={t('colorContrasts.select-color')}
           value={selectedColor}
         >
-          {colors.map((color, colorIndex) => (
-            <Select.Option key={`color-${colorIndex}`} value={color.name}>
+          {colors.map((color) => (
+            <Select.Option key={color.name} value={color.name}>
               {color.name}
             </Select.Option>
           ))}
@@ -198,15 +198,15 @@ const ColorContrastMapper = ({
           <tbody>
             <tr>
               <th />
-              {horizontal.map((color, index) => (
-                <ThCell key={index} color={mappedTheme[color]} />
+              {horizontal.map((color) => (
+                <ThCell key={color} color={mappedTheme[color]} />
               ))}
             </tr>
-            {vertical.map((color2, index) => (
-              <tr key={index}>
+            {vertical.map((color2) => (
+              <tr key={color2}>
                 <ThCell color={mappedTheme[color2]} />
-                {horizontal.map((color1, index) => (
-                  <td key={index} className={classes.td}>
+                {horizontal.map((color1) => (
+                  <td key={color1} className={classes.td}>
                     <TdCell
                       color1={mappedTheme[color1]}
                       color2={mappedTheme[color2]}

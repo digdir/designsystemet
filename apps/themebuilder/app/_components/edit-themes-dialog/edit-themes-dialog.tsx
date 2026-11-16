@@ -113,7 +113,7 @@ export const EditThemesDialog = ({
               <Fieldset.Description
                 style={{ marginBlockEnd: 'var(--ds-size-4)' }}
               >
-                Bruk kun bokstavene a-z, tall og bindestrek
+                {t('themeBuilder.invalid-theme-name')}
               </Fieldset.Description>
               <ul className={classes.rows}>
                 {rows.map((row, index) => (

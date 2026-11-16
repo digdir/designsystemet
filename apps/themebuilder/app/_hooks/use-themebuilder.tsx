@@ -7,9 +7,9 @@ import { useThemeStore } from '~/model/theme-store';
 
 export type { ColorTheme } from '~/model/theme-colors';
 
-export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';
+export type ThemebuilderTabs = 'examples' | 'colorsystem';
 
-const tabs: ThemebuilderTabs[] = ['colorsystem', 'examples', 'variables'];
+const tabs: ThemebuilderTabs[] = ['colorsystem', 'examples'];
 
 /** The theme that is shown, from the theme store, and how it is viewed, from the URL. */
 export const useThemebuilder = () => {

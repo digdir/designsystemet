@@ -6,13 +6,7 @@ import { useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import classes from './appearance-toggle.module.css';
 
-type AppearanceToggleProps = {
-  showLabel?: boolean;
-};
-
-export const AppearanceToggle = ({
-  showLabel = false,
-}: AppearanceToggleProps) => {
+export const AppearanceToggle = () => {
   const { t } = useTranslation();
   const colorSchemes: {
     name: string;
@@ -48,11 +42,9 @@ export const AppearanceToggle = ({
           key={scheme.value}
           value={scheme.value}
         >
-          {' '}
           {scheme.value === 'light' && <SunIcon aria-hidden />}
           {scheme.value === 'dark' && <MoonIcon aria-hidden />}
           {scheme.name}
-          {showLabel && <>{scheme.name}</>}
         </ToggleGroup.Item>
       ))}
     </ToggleGroup>

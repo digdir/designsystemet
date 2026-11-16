@@ -12,6 +12,7 @@ import {
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useId, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ColorTheme } from '~/_hooks/use-themebuilder';
 import { useThemeStore } from '~/model/theme-store';
 import { setColorOverride } from '~/model/theme-workspace';
@@ -42,6 +43,7 @@ const ColorOverrideInput = ({
   mode,
   defaultColor,
 }: ColorOverrideInputProps) => {
+  const { t } = useTranslation();
   const { theme, updateTheme } = useThemeStore();
   const [localValue, setLocalValue] = useState<string | undefined>(undefined);
   const [validHex, setValidHex] = useState(true);
@@ -84,12 +86,12 @@ const ColorOverrideInput = ({
       <Label htmlFor={inputId}>
         <span className='ds-sr-only'>{colorName} </span>
         {semanticColorSpec[tokenName].displayName}{' '}
-        {mode === 'light' ? 'Light' : 'Dark'}
+        {t(`appearanceToggle.${mode}`)}
       </Label>
       <Field.Affixes>
         <Field.Affix aria-hidden='false'>
           <label htmlFor={colorInputId} className='ds-sr-only'>
-            {colorName} color picker
+            {colorName} {t('overrides.color-picker')}
           </label>
           <input
             type='color'
@@ -100,7 +102,6 @@ const ColorOverrideInput = ({
             }}
             onBlur={handleBlur}
             className={cl(classes.colorInput, 'ds-focus')}
-            title='Pick a color'
             id={colorInputId}
           />
         </Field.Affix>
@@ -117,9 +118,7 @@ const ColorOverrideInput = ({
         />
       </Field.Affixes>
       {!validHex && (
-        <ValidationMessage>
-          Please enter a valid hex color code.
-        </ValidationMessage>
+        <ValidationMessage>{t('overrides.invalid-hex')}</ValidationMessage>
       )}
     </div>
   );

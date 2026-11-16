@@ -19,7 +19,6 @@ export const ThemeHeader = () => {
   }[] = [
     { name: t('tabs.colorsystem'), value: 'colorsystem' },
     { name: t('tabs.examples'), value: 'examples' },
-    // { name: t('tabs.variables'), value: 'variables' }, // hide variables tab for now
   ];
 
   return (
