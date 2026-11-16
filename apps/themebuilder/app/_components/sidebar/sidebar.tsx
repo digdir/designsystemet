@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useThemebuilder } from '~/_hooks/use-themebuilder';
 import { BorderRadiusInput } from '../border-radius-input/border-radius-input';
 import { ConfigPaste } from '../config-paste/config-paste';
-import { TokenModal } from '../token-modal/token-modal';
+import { ExportThemeModal } from '../export-theme-modal/export-theme-modal';
 import { ColorPage } from './color-page/color-page';
 import classes from './sidebar.module.css';
 
@@ -86,7 +86,7 @@ export const Sidebar = () => {
           </Tabs>
 
           <div className={classes.bottom} data-size='sm'>
-            <TokenModal />
+            <ExportThemeModal />
             <Button
               onClick={() => configPasteDialogRef.current?.showModal()}
               className={classes.configButton}
@@ -125,7 +125,7 @@ export const Sidebar = () => {
               </Tabs.Panel>
             </Tabs>
             <div className={classes.modalBottom}>
-              <TokenModal />
+              <ExportThemeModal />
               <Button
                 onClick={() => configPasteDialogRef.current?.showModal()}
                 className={classes.configButton}

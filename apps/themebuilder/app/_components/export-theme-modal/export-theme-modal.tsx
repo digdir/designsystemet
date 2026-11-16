@@ -8,16 +8,17 @@ import {
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import classes from './export-theme-modal.module.css';
 import Config from './steps/config';
 import Css from './steps/css';
-import classes from './token-modal.module.css';
+import { useExportThemeModal } from './use-export-theme-modal';
 import { useThemeCss } from './use-theme-css';
-import { useTokenModal } from './use-token-modal';
 
-export const TokenModal = () => {
+export const ExportThemeModal = () => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDialogElement>(null);
-  const { themeName, buildSnippet, configSnippet, themes } = useTokenModal();
+  const { themeName, buildSnippet, configSnippet, themes } =
+    useExportThemeModal();
   // Generating the CSS takes a moment, so only do it while the modal is open.
   const [isOpen, setIsOpen] = useState(false);
   const themeNames = Object.keys(themes);

@@ -10,7 +10,7 @@ import { DownloadIcon } from '@navikt/aksel-icons';
 import { clsx } from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { downloadFile } from '../download-file';
-import classes from '../token-modal.module.css';
+import classes from '../export-theme-modal.module.css';
 
 export default function Css({
   themeName,
