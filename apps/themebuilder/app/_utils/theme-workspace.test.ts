@@ -89,7 +89,7 @@ describe('theme workspace', () => {
     expect(() => addWorkspaceTheme(workspace, 'first')).toThrow(
       'Theme already exists',
     );
-    for (const name of ['', 'New Theme', '__proto__', 'bad--name']) {
+    for (const name of ['', 'New Theme', '__proto__', 'Theme', 'tema-æ']) {
       expect(() => addWorkspaceTheme(workspace, name)).toThrow(
         'Invalid theme name',
       );

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import { type ConfigSchemaThemeInput, configSchema, externalConfigSchema, themesSchema } from './schema.ts';
+import { themeNameSchema } from './schema-color.ts';
 
 const baseTheme: ConfigSchemaThemeInput = {
   colors: { neutral: '#444444', accent: '#0062BA' },
@@ -292,5 +293,22 @@ describe('external schema', () => {
     await expect(`${JSON.stringify(jsonSchema, undefined, 2)}\n`).toMatchFileSnapshot(
       './__snapshots__/config.schema.json',
     );
+  });
+});
+
+describe('themeNameSchema', () => {
+  it('accepts lowercase letters, digits and hyphens, like color names', () => {
+    for (const name of ['theme', 'my-theme', 'theme2', '2024']) {
+      expect(themeNameSchema.safeParse(name).success).toBe(true);
+    }
+    for (const name of ['', 'My Theme', 'myTheme', 'my_theme', 'tema-æ', '__proto__']) {
+      expect(themeNameSchema.safeParse(name).success).toBe(false);
+    }
+  });
+
+  it('is not enforced by the config schema yet', () => {
+    const themes = { 'My Theme': { colors: { accent: '#0062BA', neutral: '#1E2B3C' } } };
+
+    expect(externalConfigSchema.safeParse({ themes }).success).toBe(true);
   });
 });

@@ -20,12 +20,24 @@ export const colorSchema = z
 
 // Color names end up in token paths, CSS variables and class names, so they are restricted to
 // lowercase letters, digits and hyphens. Matches the sanitizing done by the theme builder.
+const namePattern = /^[a-z0-9-]+$/;
+
 export const colorNameSchema = z
   .string()
-  .regex(/^[a-z0-9-]+$/, {
+  .regex(namePattern, {
     message: 'Color names may only contain lowercase letters (a-z), digits (0-9) and hyphens (-).',
   })
   .describe('The name of a color, used in token paths and CSS variables.');
+
+// Theme names end up in file names, CSS selectors and token paths, so they follow the same rule as color names.
+// The config schema does not enforce this yet, since that would reject existing configs. Tools that create
+// themes, like the theme builder, use it so that new theme names are safe.
+export const themeNameSchema = z
+  .string()
+  .regex(namePattern, {
+    message: 'Theme names may only contain lowercase letters (a-z), digits (0-9) and hyphens (-).',
+  })
+  .describe('The name of a theme, used in file names, CSS selectors and token paths.');
 
 export const colorsSchema = z
   .record(colorNameSchema, colorSchema)

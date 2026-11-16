@@ -3,6 +3,7 @@ import {
   type ExternalConfigSchemaInput,
   type SemanticColorNames,
   severityColors,
+  themeNameSchema,
 } from '@digdir/designsystemet/internal';
 import defaultConfig from '../../../../designsystemet.config.json';
 
@@ -31,8 +32,9 @@ export const REQUIRED_COLOR = 'neutral';
 export const canRenameColor = (name: string) =>
   name !== REQUIRED_COLOR && !Object.hasOwn(severityColors, name);
 
+/** Whether a name can be used for a theme. The rule is the CLI's, and the same as for color names. */
 export const isValidThemeName = (name: string) =>
-  /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name);
+  themeNameSchema.safeParse(name).success;
 
 /**
  * Renames, adds and removes themes in a single update.
