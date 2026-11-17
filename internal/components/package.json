@@ -8,6 +8,9 @@
   "files": [
     "src/**"
   ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "types": "tsc --noEmit"
   },

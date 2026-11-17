@@ -1,4 +1,5 @@
-import * as Aksel from '@navikt/aksel-icons';
+import * as frontmatterIcons from 'virtual:frontmatter-icons';
+import { InformationIcon, LayersIcon } from '@navikt/aksel-icons';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router';
@@ -57,7 +58,7 @@ export default function Intro() {
       <Banner
         style={{ marginBottom: 'var(--page-spacing-top)' }}
         data-color='brand2'
-        icon={<Aksel.InformationIcon />}
+        icon={<InformationIcon />}
       >
         <BannerHeading level={1}>{t('intro.title')}</BannerHeading>
         <BannerIngress>{t('intro.description')}</BannerIngress>
@@ -67,10 +68,11 @@ export default function Intro() {
           <Fragment key={key}>
             <Grid>
               {value.map((item) => {
-                const Icon = item.icon
-                  ? // biome-ignore lint/performance/noDynamicNamespaceImportAccess: this should be safe because we prerender the page
-                    Aksel[item.icon as keyof typeof Aksel]
-                  : Aksel.LayersIcon;
+                const Icon =
+                  // biome-ignore lint/performance/noDynamicNamespaceImportAccess: only holds the icons used in frontmatter
+                  frontmatterIcons[
+                    item.icon as keyof typeof frontmatterIcons
+                  ] ?? LayersIcon;
                 return (
                   <FundamentalsCard
                     key={item.title}
