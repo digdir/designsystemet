@@ -6,23 +6,39 @@
   --dsc-spinner-icon-url: var(--ds-icon-spinner);
   --dsc-spinner-label: 'Loading...';
 
+  appearance: none; /* Strip <progress> styling */
+  background: none;
+  border: none; /* Strip <progress> styling */
   box-sizing: border-box;
   color: var(--dsc-spinner-color);
   display: inline-block;
+  height: var(--dsc-spinner-icon-size);
   vertical-align: middle;
+  width: var(--dsc-spinner-icon-size);
 
-  &::before {
+  /* Need to be separate/repeated to be parsed in all browsers */
+  &::-moz-progress-bar {
     forced-color-adjust: none;
     background: currentcolor;
-    content: ''; /* Ensure content for screen readers */
+    content: var(--dsc-spinner-label); /* Ensure content for screen readers */
     display: block;
     flex-shrink: 0;
     height: var(--dsc-spinner-icon-size);
     mask: center / contain no-repeat var(--dsc-spinner-icon-url);
     width: var(--dsc-spinner-icon-size);
   }
-  &:empty::before {
+  &::-webkit-progress-bar {
+    forced-color-adjust: none;
+    background: currentcolor;
     content: var(--dsc-spinner-label); /* Ensure content for screen readers */
+    display: block;
+    flex-shrink: 0;
+    height: var(--dsc-spinner-icon-size);
+    mask: center / contain no-repeat var(--dsc-spinner-icon-url);
+    width: var(--dsc-spinner-icon-size);
+  }
+  &::-webkit-progress-value {
+    background: none;
   }
 
   /* Ensure consistent size when explicitly setting data-size */
