@@ -1,5 +1,5 @@
 import type { ColorScale, ColorScheme, CssColor, SemanticColorNames, ThemeInfo } from '../../../../colors/index.ts';
-import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
+import { convertToHex, generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
 import type { ColorOverrideSchema, ColorOverrideSchemaInput } from '../../../../schemas/schema-overrides.ts';
 import type { Token, TokenSet } from '../../../types.ts';
@@ -67,14 +67,20 @@ export const getThemeColorScales = (
  *
  * Takes a theme as it is written in a config, so previews (e.g. the theme builder) can show
  * the colors of a config they are editing. Nothing is validated or added: only the colors the
- * theme lists are resolved (no default severity colors), hex values are used as written, and
- * a value that is not a color throws. Validate with the config schema first when that matters.
+ * theme lists are resolved (no default severity colors), and a value that is not a color throws.
+ * Base colors are made six-digit hex first, as the config schema does, so `#abc` gives the scale of `#aabbcc`. Validate with the config schema first when that matters.
  */
 export const getThemeColorSchemes = (theme: {
   colors: Record<string, string>;
   overrides?: ColorOverrideSchemaInput;
 }): Record<string, ThemeInfo> => {
-  const resolved = theme as Parameters<typeof getThemeColorScales>[0];
+  const toHex = (colors: Record<string, string>) =>
+    Object.fromEntries(Object.entries(colors).map(([name, color]) => [name, convertToHex(color)]));
+  const { severity, ...overrides } = theme.overrides ?? {};
+  const resolved = {
+    colors: toHex(theme.colors),
+    overrides: { ...overrides, ...(severity && { severity: toHex(severity) }) },
+  } as Parameters<typeof getThemeColorScales>[0];
   const light = getThemeColorScales(resolved, 'light');
   const dark = getThemeColorScales(resolved, 'dark');
 

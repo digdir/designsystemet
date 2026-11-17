@@ -164,4 +164,17 @@ describe('getThemeColorSchemes', () => {
     expect(schemes.accent.light['background-default'].hex).toBe('#1A589F');
     expect(schemes.accent.dark).toEqual(generateColorScale('#0062BA', 'dark'));
   });
+
+  it('gives a short hex color the scale of its six-digit form', () => {
+    const short = getThemeColorSchemes({
+      colors: { accent: '#abc', neutral: '#444' },
+      overrides: { severity: { danger: '#c11' } },
+    });
+    const long = getThemeColorSchemes({
+      colors: { accent: '#aabbcc', neutral: '#444444' },
+      overrides: { severity: { danger: '#cc1111' } },
+    });
+
+    expect(short).toEqual(long);
+  });
 });

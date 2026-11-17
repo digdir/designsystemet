@@ -55,6 +55,15 @@ describe('importConfig', () => {
     });
   });
 
+  it('keeps colors that are named like the old categories', () => {
+    const colors = { main: '#0062BA', support: '#F45F63', neutral: '#1E2B3C' };
+    const result = importConfig(
+      JSON.stringify({ themes: { one: { colors } } }),
+    );
+    if (!('config' in result)) throw new Error('Expected a config');
+    expect(result.config.themes.one.colors).toMatchObject(colors);
+  });
+
   it('reads comments and trailing commas, like the CLI does', () => {
     const result = importConfig(`{
       // my theme

@@ -25,11 +25,7 @@ const flattenOldColors = (config: unknown) => {
   const themes = Object.fromEntries(
     Object.entries(config.themes).map(([name, theme]) => [
       name,
-      isRecord(theme) &&
-      isRecord(theme.colors) &&
-      isRecord(theme.colors.main) &&
-      isRecord(theme.colors.support) &&
-      isOldColorSchema(theme)
+      isRecord(theme) && isOldColorSchema(theme)
         ? { ...theme, colors: flattenColors(theme.colors) }
         : theme,
     ]),

@@ -54,6 +54,7 @@ const ColorOverrideInput = ({
   const genId = useId();
   const colorInputId = `color-input-${genId}`;
   const inputId = `input-${genId}`;
+  const errorId = `error-${genId}`;
 
   const committedValue =
     theme.overrides?.colors?.[colorName]?.[step]?.[colorScheme] || '';
@@ -121,10 +122,15 @@ const ColorOverrideInput = ({
           }}
           onBlur={handleBlur}
           className={classes.input}
+          /* The field is a plain element, so the message is not connected to the input automatically */
+          aria-invalid={!validHex}
+          aria-describedby={validHex ? undefined : errorId}
         />
       </Field.Affixes>
       {!validHex && (
-        <ValidationMessage>{t('overrides.invalid-hex')}</ValidationMessage>
+        <ValidationMessage id={errorId}>
+          {t('overrides.invalid-hex')}
+        </ValidationMessage>
       )}
     </div>
   );
