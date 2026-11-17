@@ -1,5 +1,4 @@
 import { Heading, Table } from '@digdir/designsystemet-react';
-import * as R from 'ramda';
 import type { HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '../_utils';
@@ -11,8 +10,17 @@ type TokenTableProps = {
 
 type PreviewToken = { variable: string; value: string; path: string[] };
 
-const groupedByPathIndex = (index = 0) =>
-  R.groupBy((token: PreviewToken) => token.path[index] || 'rest');
+/** Groups the tokens by the part of their path at `index`. Tokens with a shorter path end up in `rest`. */
+const groupedByPathIndex =
+  (index = 0) =>
+  (tokens: PreviewToken[]) => {
+    const groups: Partial<Record<string, PreviewToken[]>> = {};
+    for (const token of tokens) {
+      const key = token.path[index] || 'rest';
+      groups[key] = [...(groups[key] ?? []), token];
+    }
+    return groups;
+  };
 
 export const LineHeight = ({ value }: { value: string }) => {
   return (
