@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": minor
 ---
 
-**Spinner:** No longer renders an SVG, but instead using a `::before` element and CSS only
+**Spinner:** No longer renders an SVG, but instead a `<progress>` element and with CSS only painting the spinner graphic
