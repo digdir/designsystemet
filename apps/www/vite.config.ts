@@ -42,8 +42,7 @@ export default defineConfig(({ isSsrBuild, command }) => ({
       : { tsconfigPaths: true },
   plugins: [reactRouter(), mdxFullReload()],
   ssr: {
-    // `ramda` is not a dependency of this app, but of the CLI (`@digdir/designsystemet/internal`), which is bundled into the server build
-    noExternal: ['@navikt/aksel-icons', 'ramda'],
+    noExternal: ['@navikt/aksel-icons'],
   },
   optimizeDeps: {
     exclude: ['microlighter'],
