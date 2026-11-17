@@ -24,14 +24,20 @@ type Automigrate = {
   no: (config: string) => string;
 };
 
-/** Whether a theme has its colors in the old `main`, `support` and `neutral` categories */
+const isCategory = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+
+/**
+ * Whether a theme has its colors in the old `main`, `support` and `neutral` categories.
+ * `main` and `support` must be categories: three colors that happen to have these names are not the old schema.
+ */
 export const isOldColorSchema = (theme: any): boolean => {
+  const colors = theme?.colors;
   return (
-    theme.colors &&
-    Object.keys(theme.colors).length === 3 &&
-    theme.colors.main &&
-    theme.colors.support &&
-    theme.colors.neutral
+    isCategory(colors) &&
+    Object.keys(colors).length === 3 &&
+    isCategory(colors.main) &&
+    isCategory(colors.support) &&
+    Boolean(colors.neutral)
   );
 };
 
