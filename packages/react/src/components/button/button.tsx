@@ -26,7 +26,7 @@ export type ButtonProps = MergeRight<
     /**
      * Toggle loading state.
      */
-    'aria-busy'?: boolean;
+    'aria-busy'?: ButtonHTMLAttributes<HTMLButtonElement>['aria-busy'];
     /**
      * Toggle loading state.
      *  @deprecated Please use `aria-busy={true}` instead
