@@ -28,23 +28,24 @@ Under er et eksempel som viser hvordan fokus automatisk flyttes til error summar
 
 ## React
 
-Error summary består av flere delkomponenter:
-- `ErrorSummary.Heading` definerer overskriften.
-- `ErrorSummary.List` definerer listen med feil.
-- Hver feil representeres som en `ErrorSummary.Item` som inneholder en `ErrorSummary.Link`.
-- Hver `ErrorSummary.Link` må ha en `href` til den unike identifikatoren for et skjemafelt, slik at brukeren kan navigere til riktig sted i skjemaet.
+Bruk `Heading`, `List` og `Link` inne i `ErrorSummary`:
+- `Heading` definerer overskriften. Bruk nivå 2–6, siden `ErrorSummary` bruker første `h2`–`h6` som tilgjengelig navn.
+- `List.Unordered` inneholder listen med feil, med én `List.Item` per feil.
+- Hver feil har en `Link` med `href` til den unike identifikatoren for et skjemafelt, slik at brukeren kan navigere til riktig sted i skjemaet.
 
 ```tsx
-import { ErrorSummary } from '@digdir/designsystemet-react';
+import { ErrorSummary, Heading, Link, List } from '@digdir/designsystemet-react';
 
 <ErrorSummary>
-  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
-  <ErrorSummary.List>
-    <ErrorSummary.Item>
-      <ErrorSummary.Link href='#some-field-id'>Item</ErrorSummary.Link>
-    </ErrorSummary.Item>
-  </ErrorSummary.List>
+  <Heading>Heading</Heading>
+  <List.Unordered>
+    <List.Item>
+      <Link href='#some-field-id'>Item</Link>
+    </List.Item>
+  </List.Unordered>
 </ErrorSummary>
 ```
+
+Delkomponentene `ErrorSummary.Heading`, `ErrorSummary.List`, `ErrorSummary.Item` og `ErrorSummary.Link` er fortsatt tilgjengelige, og rendrer de samme komponentene.
 
 <ReactComponentDocs />

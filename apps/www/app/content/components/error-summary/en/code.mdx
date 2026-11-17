@@ -20,7 +20,7 @@ Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors wi
 
 ### Use with text fields
 
-In order for `ErrorSummary.Link` to navigate to the fields with errors, the fields must have a unique `id` that matches the `href` in the link.
+In order for the links to navigate to the fields with errors, the fields must have a unique `id` that matches the `href` in the link.
 
 <Story story="WithFormEn" layout="column" startAsInert />
 
@@ -32,23 +32,24 @@ Below is an example of how focus is automatically moved to error summary when it
 
 ## React
 
-Error summary consists of several subcomponents:
-- `ErrorSummary.Heading` defines the heading.
-- `ErrorSummary.List` defines the list of errors.
-- Each error is represented as an `ErrorSummary.Item` containing an `ErrorSummary.Link`.
-- Each `ErrorSummary.Link` must have an `href` to the unique identifier for a form field, so that the user can navigate to the correct place in the form.
+Use `Heading`, `List` and `Link` inside `ErrorSummary`:
+- `Heading` defines the heading. Use level 2–6, since `ErrorSummary` uses the first `h2`–`h6` as its accessible name.
+- `List.Unordered` contains the list of errors, with one `List.Item` per error.
+- Each error has a `Link` with an `href` to the unique identifier for a form field, so that the user can navigate to the correct place in the form.
 
 ```tsx
-import { ErrorSummary } from '@digdir/designsystemet-react';
+import { ErrorSummary, Heading, Link, List } from '@digdir/designsystemet-react';
 
 <ErrorSummary>
-  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
-  <ErrorSummary.List>
-    <ErrorSummary.Item>
-      <ErrorSummary.Link href='#some-field-id'>Item</ErrorSummary.Link>
-    </ErrorSummary.Item>
-  </ErrorSummary.List>
+  <Heading>Heading</Heading>
+  <List.Unordered>
+    <List.Item>
+      <Link href='#some-field-id'>Item</Link>
+    </List.Item>
+  </List.Unordered>
 </ErrorSummary>
 ```
+
+The subcomponents `ErrorSummary.Heading`, `ErrorSummary.List`, `ErrorSummary.Item` and `ErrorSummary.Link` are still available, and render the same components.
 
 <ReactComponentDocs />
