@@ -6,7 +6,7 @@ export type SpinnerProps = {
    * Spinner size
    */
   'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-} & ComponentPropsWithoutRef<'span'>;
+} & ComponentPropsWithoutRef<'progress'>;
 
 /**
  * Spinner component used for indicating busy or indeterminate loading.
