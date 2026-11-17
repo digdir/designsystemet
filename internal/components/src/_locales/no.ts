@@ -33,6 +33,10 @@ export default {
     copy: 'Kopier',
     copied: 'Kopiert',
   },
+  'code-block': {
+    'enable-wrap': 'Aktiver linjeskift',
+    'disable-wrap': 'Deaktiver linjeskift',
+  },
   'color-metadata': colorMetadata,
   'token-preview': {
     size: {
