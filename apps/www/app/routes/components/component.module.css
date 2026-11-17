@@ -53,6 +53,7 @@
     font-size: 0.9em;
     line-height: 1;
     white-space: break-spaces;
+    overflow-wrap: anywhere;
     background-color: var(--ds-color-neutral-background-tinted);
     border-radius: var(--ds-border-radius-md);
     display: inline;

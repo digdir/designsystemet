@@ -19,6 +19,11 @@
     code {
       font-size: min(0.8em, 14px);
     }
+
+    @media (max-width: 40em) {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
   }
 
   .highlightedCode {

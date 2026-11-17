@@ -101,6 +101,7 @@
     margin: 0 auto;
     padding-inline: var(--content-inline-padding);
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     &:has(.l-sidebar-left) {
       max-width: var(--max-page-width);
       grid-template-columns: var(--sidebar-left-width) minmax(0, 1fr);
@@ -396,6 +397,8 @@
       font-size: 0.9em;
       line-height: 1;
       white-space: break-spaces;
+      /* long selectors and paths may break anywhere instead of widening the page */
+      overflow-wrap: anywhere;
       background-color: var(--ds-color-neutral-background-tinted);
       border-radius: var(--ds-border-radius-md);
       display: inline;
