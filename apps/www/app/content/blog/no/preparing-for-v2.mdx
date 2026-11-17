@@ -26,51 +26,243 @@ Slik kan du gjøre deg klar allerede nå:
 2. **Se etter advarsler:** TypeScript markerer utgåtte props i editor, React- og web-pakken skriver advarsler i konsoll, og CLI varsler i terminal.
 3. **Bytt ut utgått kode:** Koden i listene under er allerede markert som `@deprecated` i v1, og kan byttes ut uten å vente på v2.
 
+<div data-wide-content>
 <div class="ds-card">
 <Details>
 <Details.Summary>Endringer for alle</Details.Summary>
-<div>
-- **ToggleGroup:**
-  - ❌ Ikke bruk `data-toggle-group="LABEL"`
-  - ✅ Bruk `focusgroup="radiogroup" aria-label="LABEL"`
-  - 💡 ToggleGroup fortsetter å fungerer selv om du ikke gjør endrer noe, men skjermlesere vil mangle label/navn på gruppen
-- **Spinner:**
-  - ❌ Ikke bruk `svg` inni `ds-spinner`
-  - ✅ Spinner tegnes automatisk med CSS `::before`
-- **Laster du individuelle CSS-filer?**
-  - ❌ Ikke bruk `togglegroup.css` og `skiplink.css`
-  - ✅ Bruk `toggle-group.css` og `skip-link.css`
-  - 💡 Filnavnene har vært tilgjengelige og anbefalt lenge, men gjør for sikkerhetsskyld en sjekk i din kode
-- **Search:**
-  - [Les blogginnlegget om utfasingen av Search og alternativer](/no/blog/search-is-being-removed-what-should-you-do)
+<div data-size='sm'>
+{/* <style>{`main details table { table-layout: fixed }main details table code { white-space: wrap }`}</style> */}
+| Komponent: | Ikke bruk: | Bruk (virker allerede i v1): | Merk: | 
+| :--------- | :--------- | :--------------------------- | :---- |
+| **ToggleGroup** | `data-toggle-group="LABEL"` | `focusgroup="radiogroup" aria-label="LABEL"` | Fungerer også uten endring, men mister label i skjermleser |
+| **Spinner** | `<svg class="ds-spinner">` | `<progress class="ds-spinner">`<br />og `<button aria-busy="true">` | CSS tegner spinner-grafikk automatisk |
+| **Individuelle CSS-filer** | Gamle navn `togglegroup.css` og `skiplink.css` | Nye navn `toggle-group.css` og `skip-link.css` | Nye filnavn har vært tilgjengelig og anbefalt lenge |
+| **Search** | Fases ut |[Les blogginnlegget om utfasingen av Search og alternativer](/no/blog/search-is-being-removed-what-should-you-do) |  |
 </div>
 </Details>
 <Details>
 <Details.Summary>Endringer kun for React</Details.Summary>
-<div>
-- **Typer:**
-  - ❌ Ikke importer fra `@digdir/designsystemet-react/colors` og `@digdir/designsystemet/types`
-  - ✅ Importer fra `@digdir/designsystemet-types`
-  - 💡 Importen har vært tilgjengelige og anbefalt lenge, men gjør for sikkerhetsskyld en sjekk i din kode
-- **ToggleGroup.Item:**
-  - ❌ Ikke bruk `icon`-prop
-  - ✅ Legg ikonet inni `ToggleGroup.Item`
-  - ⚠️ Attributtet `data-variant` er ikke nødvendig, og settes derfor ikke automatisk i v2. Sjekk at stylingen din ikke er avhengig av dette attributtet.
-- **RovingFocus:**
-  - ❌ Ikke bruk `RovingFocusRoot` og `RovingFocusItem`
-  - ✅ Bruk [`focusgroup`](/no/components/utilities/focusgroup)
-- **Utilities:**
-  - ❌ Ikke bruk `useDebounceCallback`, `useSynchronizedAnimation`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` og `MergeRight`. Disse fjernes i v2.
-  - ✅ Bruk utilities fra biblioteker som for eksempel [usehooks-ts.com](https://usehooks-ts.com/)
+<div data-size='sm'>
+| Komponent: | Ikke bruk: | Bruk (virker allerede i v1): | Merk: | 
+| :--------- | :--------- | :--------------------------- | :---- |
+| **Typer** | Gamle imports: `@digdir/designsystemet/types` `@digdir/designsystemet-react/colors` | Ny import: `@digdir/designsystemet-types` | Ny import har vært tilgjengelig og anbefalt lenge |
+| **ToggleGroup.Item** | `data-variant` og `icon` | Ikke style basert på `data-variant` og legg ikon inni `ToggleGroup.Item` |  |
+| **RovingFocus** | `RovingFocusRoot` og `RovingFocusItem` | [focusgroup](/no/components/utilities/focusgroup) | |
+| **Utilities** | Flere utils fjernes, se under | Kopierer inn kode inn i ditt prosjekt ved behov: | |
+
+
+<Details style={{ marginTop: '1em' }}>
+<Details.Summary>Kode for `useDebounceCallback`</Details.Summary>
+
+```ts
+import { useEffect, useRef } from 'react';
+
+type DebounceFunction<T> = (...args: T[]) => void;
+
+export function useDebounceCallback<T>(
+  callback: DebounceFunction<T>,
+  delay = 50,
+) {
+  const timeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    // Cleanup the previous timeout on re-render
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  const debouncedCallback = (...args: T[]) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = window.setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
+
+  return debouncedCallback;
+}
+```
+
+</Details>
+<Details>
+<Details.Summary>Kode for `useSynchronizedAnimation`</Details.Summary>
+
+```ts
+// Inspired by Sam Selikoff
+// https://github.com/samselikoff/2022-02-24-use-synchronized-animation/blob/main/src/App.js
+import { useEffect, useLayoutEffect, useRef } from 'react';
+
+/**
+ * Synchronizes the css animation of multiple elements with the same `animationName`.
+ *
+ * @example
+ * const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
+ *
+ * <div ref={ref} />
+ */
+export function useSynchronizedAnimation<T>(animationName: string) {
+  const ref = useRef<T>(null);
+  const useHook = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+
+  useHook(() => {
+    const animations = document
+      .getAnimations()
+      .filter(
+        (animation) =>
+          'animationName' in animation &&
+          animation.animationName === animationName,
+      );
+
+    const firstOfType = animations.find(
+      (animation) =>
+        'animationName' in animation &&
+        animation.animationName === animationName,
+    );
+
+    const myAnimation = animations.find(
+      (animation) =>
+        (animation.effect as KeyframeEffect)?.target === ref.current,
+    );
+
+    if (myAnimation && myAnimation === firstOfType) {
+      myAnimation.currentTime = 0;
+    }
+
+    if (
+      myAnimation &&
+      firstOfType?.currentTime &&
+      myAnimation !== firstOfType
+    ) {
+      myAnimation.currentTime = firstOfType.currentTime;
+    }
+
+    return () => {
+      if (myAnimation && firstOfType?.currentTime) {
+        myAnimation.currentTime = firstOfType.currentTime;
+      }
+    };
+  }, [animationName]);
+
+  return ref;
+}
+```
+
+</Details>
+<Details>
+<Details.Summary>Kode for `useIsomorphicLayoutEffect`</Details.Summary>
+
+```ts
+import { useEffect, useLayoutEffect } from 'react';
+
+export const useIsomorphicLayoutEffect =
+  typeof window === 'undefined' ? useEffect : useLayoutEffect;
+```
+
+</Details>
+<Details>
+<Details.Summary>Kode for `useMediaQuery`</Details.Summary>
+
+```ts
+import { useEffect, useLayoutEffect, useState } from 'react';
+
+type UseMediaQueryOptions = {
+  defaultValue?: boolean;
+  initializeWithValue?: boolean;
+};
+
+export function useMediaQuery(
+  query: string,
+  {
+    defaultValue = false,
+    initializeWithValue = true,
+  }: UseMediaQueryOptions = {},
+): boolean {
+  const useHook = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+  const onChange = () => setMatches(getMatches(query));
+  const getMatches = (query: string): boolean => {
+    if (typeof window === 'undefined') return defaultValue;
+    return window.matchMedia(query).matches;
+  };
+  const [matches, setMatches] = useState<boolean>(() => {
+    return initializeWithValue ? defaultValue : getMatches(query);
+  });
+
+  useHook(() => {
+    const matchMedia = window.matchMedia(query);
+    onChange(); // Triggered at the first client-side load and if query changes
+
+    // Use deprecated `addListener` and `removeListener` to support Safari < 14
+    if (matchMedia.addListener) matchMedia.addListener(onChange);
+    else matchMedia.addEventListener('change', onChange);
+
+    return () => {
+      if (matchMedia.removeListener) matchMedia.removeListener(onChange);
+      else matchMedia.removeEventListener('change', onChange);
+    };
+  }, [query]);
+
+  return matches;
+}
+```
+
+</Details>
+<Details>
+<Details.Summary>Kode for `omit`</Details.Summary>
+
+```ts
+type UnknownRecord = Record<string | number | symbol, unknown>;
+
+/**
+ * Returns a partial copy of an object omitting the keys specified.
+ * @example omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+ */
+export const omit = (names: string[], obj: UnknownRecord): object => {
+  const result: UnknownRecord = {};
+  const index: UnknownRecord = {};
+  let idx = 0;
+  const len = names.length;
+
+  while (idx < len) {
+    index[names[idx]] = 1;
+    idx += 1;
+  }
+
+  for (const prop in obj)
+    if (!Object.hasOwn(index, prop))
+      result[prop] = obj[prop];
+
+  return result;
+};
+```
+
+</Details>
+<Details>
+<Details.Summary>Kode for `MergeRight`</Details.Summary>
+
+```ts
+/**
+ * Create a new type with the properties of the first type merged with the properties of the second type.
+ * If a key exists in both types, the property from the *second* type will be used.
+ */
+export type MergeRight<T1, T2> = Omit<T1, keyof T2> & T2;
+```
+
+</Details>
+
 </div>
 </Details>
 <Details>
 <Details.Summary>Endringer i CLI</Details.Summary>
 <div>
-- ❌ Ikke bruk parameterne `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` og `--theme`
-- ✅ Bruk en [konfigurasjonsfil](/no/fundamentals/start-here/own-theme)
+Bruk en [konfigurasjonsfil](/no/fundamentals/start-here/own-theme) istedenfor parameterne `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` og `--theme`
 </div>
 </Details>
+</div>
 </div>
 
 ## Hva med Suggestion?
