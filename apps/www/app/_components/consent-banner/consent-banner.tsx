@@ -22,9 +22,11 @@ const UNSAFE_JS_CHAR_MAP: Record<string, string> = {
   '\u2029': '\\u2029',
 };
 
-function escapeUnsafeJsString(str: string) {
-  return str.replace(/[<>/\\\b\f\n\r\t\0\u2028\u2029]/g, (char) => UNSAFE_JS_CHAR_MAP[char]);
-}
+const escapeUnsafeJsString = (str: string) =>
+  str.replace(
+    /[<>/\\\b\f\n\r\t\0\u2028\u2029]/g,
+    (char) => UNSAFE_JS_CHAR_MAP[char],
+  );
 
 const hideIfAnsweredScript = `(function(){try{var m=document.cookie.match(/(?:^|; )${userConsent.name}=([^;]+)/);if(m&&JSON.parse(atob(decodeURIComponent(m[1]))).version===${escapeUnsafeJsString(JSON.stringify(CONSENT_VERSION))})document.currentScript.previousElementSibling.hidden=true}catch(e){}})()`;
 
