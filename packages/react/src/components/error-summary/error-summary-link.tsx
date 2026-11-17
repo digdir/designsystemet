@@ -17,5 +17,5 @@ export const ErrorSummaryLink = forwardRef<
   HTMLAnchorElement,
   ErrorSummaryLinkProps
 >(function ErrorSummaryLink({ ...rest }: ErrorSummaryLinkProps, ref) {
-  return <Link ref={ref} data-color='neutral' {...rest} />;
+  return <Link ref={ref} {...rest} />;
 });
