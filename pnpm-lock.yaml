@@ -451,9 +451,6 @@ importers:
       prism-react-renderer:
         specifier: 2.4.1
         version: 2.4.1(react@19.3.1)
-      ramda:
-        specifier: 0.32.0
-        version: 0.32.0
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -503,9 +500,6 @@ importers:
       '@types/node':
         specifier: 24.19.2
         version: 24.19.2
-      '@types/ramda':
-        specifier: 0.32.0
-        version: 0.32.0
       '@types/react':
         specifier: 19.3.0
         version: 19.3.0
