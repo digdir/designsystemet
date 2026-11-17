@@ -11,33 +11,43 @@ export const ColorInfoTable = () => {
   const { t } = useTranslation();
 
   return (
-    <Table data-color='neutral' zebra border style={{ margin: '2rem 0' }}>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>{t('color-info-table.name')}</Table.HeaderCell>
-          <Table.HeaderCell>{t('color-info-table.usage')}</Table.HeaderCell>
-          <Table.HeaderCell>{t('color-info-table.contrast')}</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        {specSteps.map((item) => {
-          return (
-            <Table.Row key={item.name}>
-              <Table.Cell>{item.name}</Table.Cell>
-              <Table.Cell>{t(`color-metadata.${item.name}.short`)}</Table.Cell>
-              <Table.Cell>
-                {item.minContrast?.map((requirement) => (
-                  <ContrastRequirementText
-                    key={requirement.ratio}
-                    requirement={requirement}
-                  />
-                )) ?? '–'}
-              </Table.Cell>
-            </Table.Row>
-          );
-        })}
-      </Table.Body>
-    </Table>
+    <div
+      className='ds-focus'
+      style={{ margin: '2rem 0', maxWidth: '100%', overflowX: 'auto' }}
+      tabIndex={0}
+    >
+      <Table data-color='neutral' zebra border>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell>{t('color-info-table.name')}</Table.HeaderCell>
+            <Table.HeaderCell>{t('color-info-table.usage')}</Table.HeaderCell>
+            <Table.HeaderCell>
+              {t('color-info-table.contrast')}
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          {specSteps.map((item) => {
+            return (
+              <Table.Row key={item.name}>
+                <Table.Cell>{item.name}</Table.Cell>
+                <Table.Cell>
+                  {t(`color-metadata.${item.name}.short`)}
+                </Table.Cell>
+                <Table.Cell>
+                  {item.minContrast?.map((requirement) => (
+                    <ContrastRequirementText
+                      key={requirement.ratio}
+                      requirement={requirement}
+                    />
+                  )) ?? '–'}
+                </Table.Cell>
+              </Table.Row>
+            );
+          })}
+        </Table.Body>
+      </Table>
+    </div>
   );
 };
 
