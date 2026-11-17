@@ -16,6 +16,13 @@ export type SpinnerProps = {
  */
 export const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>(
   function Spinner({ className, ...rest }: SpinnerProps, ref) {
-    return <span className={cl('ds-spinner', className)} ref={ref} {...rest} />;
+    return (
+      <span
+        className={cl('ds-spinner', className)}
+        role='progressbar'
+        ref={ref}
+        {...rest}
+      />
+    );
   },
 );
