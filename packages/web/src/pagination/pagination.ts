@@ -10,11 +10,11 @@ export type PaginationOptions = {
 };
 
 export type PaginationResult = {
-  /** Previous page. `value` is `0` when on the first page */
+  /** Previous page. `inert` is `true` when on the first page */
   prev: PaginationStep;
-  /** Next page. `value` is `0` when on the last page */
+  /** Next page. `inert` is `true` when on the last page */
   next: PaginationStep;
-  /** Steps to render. A `value` of `0` marks an ellipsis */
+  /** Steps to render. `inert` is `true` when ellipsis */
   pages: PaginationStep[];
 };
 
@@ -22,7 +22,9 @@ export type PaginationResult = {
 export type PaginationStep = {
   /** Set to `page` when this is the current page */
   'aria-current'?: 'page';
-  /** Page number, or `0` when there is no page (ellipsis, or first/last page) */
+  /** Whether the step is inert (and thus paint an ellipsis in CSS) */
+  inert?: true;
+  /** Page number */
   value: number;
 };
 
@@ -40,10 +42,11 @@ export const pagination = ({
   if (show > 3 && end < total) pages.splice(-2, 2, 0, total);
 
   return {
-    prev: { value: now > 1 ? now - 1 : 0 },
-    next: { value: now < total ? now + 1 : 0 },
+    prev: { inert: now <= 1 || undefined, value: Math.max(now - 1, 1) },
+    next: { inert: now >= total || undefined, value: Math.min(now + 1, total) },
     pages: pages.map((value) => ({
       ...(value === now ? { 'aria-current': 'page' as const } : {}),
+      inert: !value || undefined,
       value,
     })),
   };

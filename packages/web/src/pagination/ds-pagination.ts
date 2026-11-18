@@ -72,8 +72,8 @@ const render = (self: DSPaginationElement) => {
       const value = page?.value ? `${page?.value}` : null;
 
       attr(el, 'aria-current', page?.['aria-current'] || null);
-      attr(el, 'hidden', page ? null : ''); // Completely hide when not ellipsis
-      attr(el, 'inert', value ? null : ''); // Inert if ellipsis
+      attr(el, 'inert', page?.inert ? '' : null); // Inert if ellipsis
+      attr(el, 'hidden', page ? null : ''); // Completely hide when not a page
 
       if (!isEdge) attr(el, ARIA_LABEL, value);
       else if (!attr(el, ARIA_LABELLEDBY) && !el.textContent?.trim())

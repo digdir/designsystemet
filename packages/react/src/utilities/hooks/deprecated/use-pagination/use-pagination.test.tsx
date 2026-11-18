@@ -91,7 +91,7 @@ describe('usePagination', () => {
 
     result.current.prevButtonProps.onClick?.(event);
 
-    expect(mockOnChange).not.toHaveBeenCalledWith(event, 2);
+    expect(mockOnChange).not.toHaveBeenCalled();
   });
 
   it('should not render negative pages', () => {

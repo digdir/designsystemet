@@ -66,11 +66,12 @@ export const usePagination = ({
 }: UsePaginationProps) =>
   useMemo(() => {
     const { next, prev, pages } = pagination({ current, total, show });
-    const handleClick = (page: number) => (event: MouseEvent<HTMLElement>) => {
-      if (page < 1 || page > total) return event.preventDefault(); // Prevent out of bounds navigation
-      onChange?.(event, page);
-      if (!event.defaultPrevented) setCurrentPage?.(page); // Allow stopping change by calling event.preventDefault() in onChange
-    };
+    const handleClick =
+      (page: number, inert?: boolean) => (event: MouseEvent<HTMLElement>) => {
+        if (inert) return event.preventDefault(); // Prevent out of bounds navigation
+        onChange?.(event, page);
+        if (!event.defaultPrevented) setCurrentPage?.(page); // Allow stopping change by calling event.preventDefault() in onChange
+      };
 
     return {
       /** Number of steps */
@@ -82,22 +83,22 @@ export const usePagination = ({
         /**
          * Unique key for the item
          */
-        itemKey: page.value ? `page-${page.value}` : `ellipsis-${index}`, // React key utility
+        itemKey: page.inert ? `ellipsis-${index}` : `page-${page.value}`, // React key utility
         /**
          * Properties to spread on Pagination.Button
          */
         buttonProps: {
           'aria-current': page['aria-current'],
-          onClick: handleClick(page.value),
+          onClick: handleClick(page.value, page.inert),
         },
       })),
       /** Properties to spread on Pagination.Button used for previous navigation */
-      prevButtonProps: { onClick: handleClick(prev.value) },
+      prevButtonProps: { onClick: handleClick(prev.value, prev.inert) },
       /** Properties to spread on Pagination.Button used for next navigation */
-      nextButtonProps: { onClick: handleClick(next.value) },
+      nextButtonProps: { onClick: handleClick(next.value, next.inert) },
       /** Indication if previous page action should be shown or not */
-      hasPrev: !!prev.value,
+      hasPrev: !prev.inert,
       /** Indication if next page action should be shown or not */
-      hasNext: !!next.value,
+      hasNext: !next.inert,
     };
   }, [current, total, show]);

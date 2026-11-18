@@ -1,6 +1,5 @@
-import { useArgs } from 'storybook/preview-api';
+import { type PaginationOptions, pagination } from '@digdir/designsystemet-web';
 import preview from '../../../../../apps/storybook/.storybook/preview';
-import { type UsePaginationProps, usePagination } from '../../utilities';
 import { Pagination } from './';
 
 const meta = preview.meta({
@@ -10,36 +9,32 @@ const meta = preview.meta({
 
 export const Preview = meta.story(() => {
   return (
-    <Pagination>
+    <Pagination aria-label='Sidenavigering'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button aria-label='Forrige side'>
-            Forrige
-          </Pagination.Button>
+          <Pagination.Button>Forrige</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 1'>1</Pagination.Button>
+          <Pagination.Button>1</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 2' aria-current='true'>
-            2
-          </Pagination.Button>
+          <Pagination.Button aria-current='page'>2</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item />
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 9'>9</Pagination.Button>
+          <Pagination.Button>9</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 10'>10</Pagination.Button>
+          <Pagination.Button>10</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Neste side'>Neste</Pagination.Button>
+          <Pagination.Button>Neste</Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
     </Pagination>
@@ -48,44 +43,27 @@ export const Preview = meta.story(() => {
 
 export const WithAnchor = meta.story({
   render: (args) => {
-    const [, updateArgs] = useArgs();
-    const { pages, nextButtonProps, prevButtonProps } = usePagination({
-      ...(args as UsePaginationProps),
-      setCurrentPage: (currentPage) => updateArgs({ currentPage }),
-    });
+    const { current, total, show } = args as PaginationOptions;
+    const { pages, prev, next } = pagination({ current, total, show });
 
     return (
       <Pagination aria-label='Sidenavigering'>
         <Pagination.List>
           <Pagination.Item>
-            <Pagination.Button
-              asChild
-              aria-label='Forrige side'
-              {...prevButtonProps}
-            >
-              <a href='#forrige-side'>Forrige</a>
+            <Pagination.Button asChild inert={prev.inert}>
+              <a href={`#side-${prev.value}`}>Forrige</a>
             </Pagination.Button>
           </Pagination.Item>
-          {pages.map(({ page, itemKey, buttonProps }) => (
-            <Pagination.Item key={itemKey}>
-              {typeof page === 'number' && (
-                <Pagination.Button
-                  asChild
-                  aria-label={`Side ${page}`}
-                  {...buttonProps}
-                >
-                  <a href={`#side-${page}`}>{page}</a>
-                </Pagination.Button>
-              )}
+          {pages.map(({ value, ...props }, index) => (
+            <Pagination.Item key={value || `ellipsis-${index}`}>
+              <Pagination.Button asChild {...props}>
+                <a href={`#side-${value}`}>{value}</a>
+              </Pagination.Button>
             </Pagination.Item>
           ))}
           <Pagination.Item>
-            <Pagination.Button
-              asChild
-              aria-label='Neste side'
-              {...nextButtonProps}
-            >
-              <a href='#neste-side'>Neste</a>
+            <Pagination.Button asChild inert={next.inert}>
+              <a href={`#side-${next.value}`}>Neste</a>
             </Pagination.Button>
           </Pagination.Item>
         </Pagination.List>
@@ -94,32 +72,29 @@ export const WithAnchor = meta.story({
   },
 
   args: {
-    currentPage: 2,
-    onChange: console.log, // Open console to see this event
-    totalPages: 10,
-    showPages: 7,
+    current: 2,
+    total: 10,
+    show: 7,
   },
 });
 
 export const Mobile = meta.story(() => (
-  <Pagination>
+  <Pagination aria-label='Sidenavigering'>
     <Pagination.List>
       <Pagination.Item>
         <Pagination.Button aria-label='Forrige side' />
       </Pagination.Item>
 
       <Pagination.Item>
-        <Pagination.Button aria-label='Side 2'>2</Pagination.Button>
+        <Pagination.Button>2</Pagination.Button>
       </Pagination.Item>
 
       <Pagination.Item>
-        <Pagination.Button aria-label='Side 3' aria-current='true'>
-          3
-        </Pagination.Button>
+        <Pagination.Button aria-current='page'>3</Pagination.Button>
       </Pagination.Item>
 
       <Pagination.Item>
-        <Pagination.Button aria-label='Side 4'>4</Pagination.Button>
+        <Pagination.Button>4</Pagination.Button>
       </Pagination.Item>
 
       <Pagination.Item>
@@ -130,24 +105,22 @@ export const Mobile = meta.story(() => (
 ));
 
 export const RTL = meta.story(() => (
-  <Pagination dir='rtl'>
+  <Pagination aria-label='Sidenavigering' dir='rtl'>
     <Pagination.List>
       <Pagination.Item>
         <Pagination.Button aria-label='Forrige side' />
       </Pagination.Item>
 
       <Pagination.Item>
-        <Pagination.Button aria-label='Side 2'>2</Pagination.Button>
+        <Pagination.Button>2</Pagination.Button>
       </Pagination.Item>
 
       <Pagination.Item>
-        <Pagination.Button aria-label='Side 3' aria-current='true'>
-          3
-        </Pagination.Button>
+        <Pagination.Button aria-current='page'>3</Pagination.Button>
       </Pagination.Item>
 
       <Pagination.Item>
-        <Pagination.Button aria-label='Side 4'>4</Pagination.Button>
+        <Pagination.Button>4</Pagination.Button>
       </Pagination.Item>
 
       <Pagination.Item>

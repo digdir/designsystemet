@@ -68,13 +68,13 @@
     },
     "./ds-pagination": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/pagination/pagination.js",
-      "require": "./dist/cjs/pagination/pagination.cjs"
+      "import": "./dist/esm/pagination/ds-pagination.js",
+      "require": "./dist/cjs/pagination/ds-pagination.cjs"
     },
     "./pagination": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/pagination/pagination-helper.js",
-      "require": "./dist/cjs/pagination/pagination-helper.cjs"
+      "import": "./dist/esm/pagination/pagination.js",
+      "require": "./dist/cjs/pagination/pagination.cjs"
     },
     "./popover": {
       "types": "./dist/index.d.ts",

@@ -5,6 +5,8 @@ import { forwardRef, version } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
+const IS_REACT_19 = version.startsWith('19');
+
 export type ButtonProps = MergeRight<
   DefaultProps &
     Omit<
@@ -68,6 +70,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       asChild,
       className,
       icon = false,
+      inert,
       loading = false,
       variant,
       popoverTarget,
@@ -80,10 +83,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) {
     const Component = asChild ? Slot : 'button';
     const popoverVal = popoverTarget ?? popovertarget;
-    const popoverKey = version.startsWith('19')
-      ? 'popoverTarget'
-      : 'popovertarget';
-
+    const popoverKey = IS_REACT_19 ? 'popoverTarget' : 'popovertarget';
+    const inertVal = inert ? (IS_REACT_19 ? true : '') : inert; // React 19 uses true, React 18 uses ''
     const commandForVal = commandFor ?? commandfor;
 
     // Fallbacks to undefined to prevent rendering attribute="false"
@@ -95,6 +96,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         data-icon={icon || undefined}
         commandfor={commandForVal}
         data-variant={variant}
+        inert={inertVal as unknown as boolean}
         ref={ref}
         /* don't set type when we use `asChild` */
         type={asChild ? undefined : 'button'}

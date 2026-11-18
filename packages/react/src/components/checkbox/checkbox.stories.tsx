@@ -9,14 +9,11 @@ import {
   Fieldset,
   Pagination,
   Paragraph,
+  pagination,
   Table,
   ValidationMessage,
 } from '../../';
-import {
-  type UseCheckboxGroupProps,
-  useCheckboxGroup,
-  usePagination,
-} from '../../utilities';
+import { type UseCheckboxGroupProps, useCheckboxGroup } from '../../utilities';
 
 const meta = preview.meta({
   title: 'Komponenter/Checkbox',
@@ -371,26 +368,18 @@ export const Conditional = meta.story({
 export const InTableWithPagination = meta.story({
   render: (args) => {
     const itemsPerPage = 3;
-    const [currentPage, setCurrentPage] = useState(1);
-
+    const [current, setCurrent] = useState(1);
+    const total = Math.ceil(tableData.length / itemsPerPage);
+    const { pages, prev, next } = pagination({ current, total, show: total });
     const { getCheckboxProps } = useCheckboxGroup(
       args as UseCheckboxGroupProps,
     );
 
-    const totalPages = Math.ceil(tableData.length / itemsPerPage);
-
-    const pagination = usePagination({
-      currentPage,
-      setCurrentPage,
-      totalPages,
-      showPages: totalPages,
-    });
-
     // Compute the slice of users to display on the current page
     const currentData = useMemo(() => {
-      const startIndex = (currentPage - 1) * itemsPerPage;
+      const startIndex = (current - 1) * itemsPerPage;
       return tableData.slice(startIndex, startIndex + itemsPerPage);
-    }, [currentPage]);
+    }, [current]);
 
     return (
       <div>
@@ -432,24 +421,25 @@ export const InTableWithPagination = meta.story({
         <Pagination>
           <Pagination.List>
             <Pagination.Item>
-              <Pagination.Button {...pagination.prevButtonProps}>
+              <Pagination.Button
+                inert={prev.inert}
+                onClick={() => setCurrent(prev.value)}
+              >
                 Forrige
               </Pagination.Button>
             </Pagination.Item>
-            {pagination.pages.map(({ itemKey, buttonProps, page }) => (
-              <Pagination.Item key={itemKey}>
-                {typeof page === 'number' && (
-                  <Pagination.Button
-                    {...buttonProps}
-                    aria-label={`Side ${page}`}
-                  >
-                    {page}
-                  </Pagination.Button>
-                )}
+            {pages.map(({ value, ...props }, index) => (
+              <Pagination.Item key={value || `ellipsis-${index}`}>
+                <Pagination.Button {...props} onClick={() => setCurrent(value)}>
+                  {value}
+                </Pagination.Button>
               </Pagination.Item>
             ))}
             <Pagination.Item>
-              <Pagination.Button {...pagination.nextButtonProps}>
+              <Pagination.Button
+                inert={next.inert}
+                onClick={() => setCurrent(next.value)}
+              >
                 Neste
               </Pagination.Button>
             </Pagination.Item>

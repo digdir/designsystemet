@@ -124,7 +124,7 @@ describe('pagination component', () => {
     expect(next).toHaveAttribute('aria-label', 'Neste side');
   });
 
-  it('marks hidden steps as not focusable', async () => {
+  it('marks ellipsis steps as inert', async () => {
     document.body.innerHTML = `
       <ds-pagination data-current="1" data-total="100" data-href="/page/%d" aria-label="Pagination">
      <ol>
@@ -141,15 +141,17 @@ describe('pagination component', () => {
 
     const paginationEl = document.querySelector('ds-pagination');
     const links = paginationEl?.querySelectorAll('button');
-    const hidden = links?.[4];
+    const ellipsis = links?.[4];
 
     await tick(); // Let mutation observer run
-    expect(hidden).toHaveAttribute('hidden', ''); // Ellipsis
-    expect(hidden).not.toHaveAttribute('inert', '');
-    expect(hidden).not.toHaveAttribute('aria-current');
+    expect(ellipsis).toHaveAttribute('inert', ''); // Ellipsis
+    expect(ellipsis).not.toHaveAttribute('hidden');
+    expect(ellipsis).not.toHaveAttribute('aria-current');
+    expect(links?.[0]).toHaveAttribute('inert', ''); // Prev is inert on first page
+    expect(links?.[6]).not.toHaveAttribute('inert'); // Next
   });
 
-  it('marks surplus steps with hidden="until-found"', async () => {
+  it('marks surplus steps with hidden', async () => {
     document.body.innerHTML = `
       <ds-pagination data-current="1" data-total="3" aria-label="Pagination">
         <ol>
@@ -166,7 +168,7 @@ describe('pagination component', () => {
     const surplus = document.querySelector('[data-testid="surplus"]');
 
     await tick(); // Let mutation observer run
-    expect(surplus).toHaveAttribute('hidden', 'until-found');
+    expect(surplus).toHaveAttribute('hidden', '');
     expect(surplus).not.toHaveAttribute('value');
   });
 });
