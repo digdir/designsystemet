@@ -1,5 +1,5 @@
 ---
-"@digdir/designsystemet-css": minor
+"@digdir/designsystemet-css": patch
 ---
 
-**ErrorSummary**: Removed the `--dsc-errorsummary-link-color` and `--dsc-errorsummary-heading-color` variables, and the default styles for headings and list items inside the summary. Use `Heading` and `List` for these. The summary text and links now use `--dsc-errorsummary-color`.
+**ErrorSummary**: Added `--dsc-errorsummary-color` for the text and links in the summary, so links now use the danger text color instead of the neutral one. Deprecated `--dsc-errorsummary-link-color` and `--dsc-errorsummary-heading-color`, which now default to `--dsc-errorsummary-color`, and the default styles for headings and list items inside the summary. Use `Heading` and `List` for these.
