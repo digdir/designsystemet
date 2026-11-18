@@ -43,7 +43,7 @@ This is how you can get ready now:
 <Details>
 <Details.Summary>Changes for everyone</Details.Summary>
 <div data-size='sm'>
-| Component | Don't use | Use (already works in v1) | Note |
+| Component | Don't use | Use (works in v1 too) | Note |
 | :-------- | :-------- | :------------------------ | :--- |
 | **ToggleGroup** | `data-toggle-group="LABEL"` | `focusgroup="radiogroup" aria-label="LABEL"` | Also works without changes, but screen readers will not announce the name of the group |
 | **Spinner** | `<svg class="ds-spinner">` | `<progress class="ds-spinner">`<br />and `<button aria-busy="true">` | CSS draws the spinner automatically |
@@ -54,14 +54,14 @@ This is how you can get ready now:
 <Details>
 <Details.Summary>Changes for React only</Details.Summary>
 <div data-size='sm'>
-| Component | Don't use | Use (already works in v1) | Note |
+| Component | Don't use | Use (works in v1 too) | Note |
 | :-------- | :-------- | :------------------------ | :--- |
 | **Types** | The old import `@digdir/designsystemet-react/colors` | The new import `@digdir/designsystemet-types` | The new import has been available and recommended for a long time |
 | **ToggleGroup.Item** | `data-variant` and `icon` | Don't style based on `data-variant`, and put the icon directly in `ToggleGroup.Item` |  |
 | **RovingFocus** | `RovingFocusRoot` and `RovingFocusItem` | [focusgroup](/en/components/utilities/focusgroup) |  |
-| **Utilities** | <ul><li>[`useDebounceCallback`](#usedebouncecallback)</li><li>[`useSynchronizedAnimation`](#usesynchronizedanimation)</li><li>[`useIsomorphicLayoutEffect`](#useisomorphiclayouteffect)</li><li>[`useMediaQuery`](#usemediaquery)</li><li>[`omit`](#omit)</li><li>[`MergeRight`](#mergeright)</li></ul> | Copy the code into your project if you need it. Select a function to see its code. |  |
+| **Utilities** | [`useDebounceCallback`](#usedebouncecallback), [`useSynchronizedAnimation`](#usesynchronizedanimation), [`useIsomorphicLayoutEffect`](#useisomorphiclayouteffect), [`useMediaQuery`](#usemediaquery), [`omit`](#omit), [`MergeRight`](#mergeright) | Copy the code into your project if you need it. Select a function to see its code. |  |
 
-
+<br />
 ### `useDebounceCallback`
 
 ```ts
