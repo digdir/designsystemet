@@ -140,6 +140,7 @@ jobs:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      THEMEBUILDER_DATABASE_URL: ${{ secrets.THEMEBUILDER_DATABASE_URL }}
   deploy-storybook:
     permissions:
       id-token: write

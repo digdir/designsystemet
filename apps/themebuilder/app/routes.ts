@@ -13,4 +13,6 @@ export default [
       route('/themebuilder', 'routes/redirect-themebuilder.tsx'),
     ]),
   ]),
+  route('/api/themes', 'routes/api-themes.ts'),
+  route('/api/themes/:id', 'routes/api-theme.ts'),
 ] satisfies RouteConfig;

@@ -55,6 +55,47 @@ export default {
       'Use only lowercase letters a-z and numbers, with single hyphens between them.',
     'duplicate-theme-name': 'A theme with this name already exists.',
   },
+  shareTheme: {
+    share: 'Share as link',
+    description:
+      'Create links that open your themes in the theme builder. The themes are then saved on our server, and your changes are saved as you work.',
+    'two-links':
+      'You get one link for viewing the themes, and one that also lets others change them.',
+    linked:
+      'Your changes are saved as you work. Share the view link to show your themes, or the edit link to let others change them.',
+    create: 'Create links',
+    creating: 'Creating links...',
+    'view-link': 'Link for viewing',
+    'view-link-description':
+      'Opens your themes. Changes made from this link are not saved.',
+    'edit-link': 'Link for editing',
+    'edit-link-description': 'Anyone with this link can change your themes.',
+    'copy-view': 'Copy view link',
+    'copy-edit': 'Copy edit link',
+    'copied-view': 'The view link is copied.',
+    'copied-edit': 'The edit link is copied.',
+    'copy-failed':
+      'The link could not be copied. It is selected, so you can copy it yourself.',
+    'copy-description':
+      'Want to keep working without changing what others see on these links?',
+    'create-copy': 'Create a copy with new links',
+    'copy-created':
+      'You are now working in a copy. Your changes are saved to the new links.',
+    close: 'Close',
+    'error-generic': 'The links could not be created. Please try again later.',
+    'error-rate-limited':
+      'You have created many links in a short time. Please wait a few minutes and try again.',
+    'error-too-large':
+      'There are too many themes or colours to share as a link.',
+    synced: 'Synced',
+    syncing: 'Syncing...',
+    'sync-failed': 'Not synced. Trying again...',
+    retry: 'Try now',
+    'sync-too-large': 'Not synced. There are too many themes or colours.',
+    'sync-rejected': 'Not synced. These changes cannot be saved.',
+    'sync-gone': 'The link no longer exists. Your changes are not saved.',
+    'view-only': 'View only. Your changes are not saved.',
+  },
   importConfig: {
     title: 'Import from config file',
     description:

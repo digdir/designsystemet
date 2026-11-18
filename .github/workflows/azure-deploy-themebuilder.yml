@@ -23,6 +23,9 @@ on:
         required: true
       AZURE_SUBSCRIPTION_ID:
         required: true
+      THEMEBUILDER_DATABASE_URL:
+        required: false
+        description: "Postgres URL for shared themes. Only used for production; without it themes cannot be shared"
 
 permissions:
   id-token: write
@@ -84,6 +87,15 @@ jobs:
           ACR_NAME: ${{ env.ACR_NAME }}
         run: bash ./.github/workflows/scripts/get-acr-creds.sh
 
+      - name: set database secret (production only)
+        id: database
+        if: ${{ inputs.environment == 'production' }}
+        env:
+          APP_NAME: ${{ env.APP_NAME }}
+          RESOURCE_GROUP: ${{ env.RESOURCE_GROUP }}
+          DATABASE_URL: ${{ secrets.THEMEBUILDER_DATABASE_URL }}
+        run: bash ./.github/workflows/scripts/set-containerapp-database-secret.sh
+
       - name: deploy (no mi; use registry creds)
         uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703 # v2.x
         with:
@@ -96,7 +108,7 @@ jobs:
           registryPassword: ${{ steps.acr.outputs.pass }}
           targetPort: ${{ env.PORT }}
           ingress: external
-          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}"
+          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}${{ steps.database.outputs.env && format(' {0}', steps.database.outputs.env) || '' }}"
           location: "norwayeast"
 
       - name: fetch fqdn
