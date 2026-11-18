@@ -27,10 +27,23 @@ export function createRateLimiter(limit: number, windowMs: number) {
 }
 
 /**
+ * How many proxies the app runs behind. Each proxy adds the address it got the request from to the end of
+ * `X-Forwarded-For`, so this is how far from the end the address of the client is. In Azure it is one, the ingress
+ * of the container app. It must be raised with `TRUSTED_PROXIES` when something is put in front of that, such as
+ * a CDN: otherwise all clients are counted as the one address of the CDN.
+ */
+const trustedProxies = () =>
+  Math.max(1, Number.parseInt(process.env.TRUSTED_PROXIES ?? '', 10) || 1);
+
+/**
  * What a client is counted by: its IP address, which is only held in memory and never saved or logged.
- * The app runs behind one proxy, which adds the address it got the request from to the end of `X-Forwarded-For`.
- * Earlier entries come from the client and cannot be trusted. Without a proxy, as in development, all clients are counted as one.
+ * It is the address the first of the proxies got the request from, see `trustedProxies`. Earlier entries of
+ * `X-Forwarded-For` come from the client and cannot be trusted. Without the header, as in development, or with
+ * fewer entries than there are proxies, all clients are counted as one.
  */
 export const clientKey = (request: Request) =>
-  request.headers.get('x-forwarded-for')?.split(',').at(-1)?.trim() ||
-  'unknown';
+  request.headers
+    .get('x-forwarded-for')
+    ?.split(',')
+    .at(-trustedProxies())
+    ?.trim() || 'unknown';

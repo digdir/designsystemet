@@ -7,6 +7,8 @@ const SAVE_DELAY = 600;
 /** How long to wait before a save that failed is tried again, in ms. The wait doubles for each failure in a row, up to the longest. */
 const RETRY_DELAY = 5000;
 const LONGEST_RETRY_DELAY = 60_000;
+/** Browsers only let a request outlive the page when its body is at most this large, in bytes */
+const KEEPALIVE_LIMIT = 64 * 1024;
 
 /**
  * Whether the config is the one its shared link has:
@@ -24,21 +26,34 @@ export type SyncStatus =
   | 'rejected'
   | 'gone';
 
-const putTheme = (id: string, config: WorkspaceConfig, keepalive = false) =>
+const putTheme = (
+  id: string,
+  body: string,
+  options: { keepalive?: boolean; signal?: AbortSignal } = {},
+) =>
   fetch(`${SHARE_THEME_PATH}/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ config }),
-    keepalive,
+    body,
+    ...options,
   });
+
+const bodyOf = (config: WorkspaceConfig) => JSON.stringify({ config });
+
+/** A save that is on its way: the link and config it saves, and what stops it */
+type Saving = {
+  id: string;
+  config: WorkspaceConfig;
+  controller: AbortController;
+};
 
 /**
  * Saves the config to its shared link as it is edited. Until a link is made, nothing is saved.
  *
  * The theme builder never waits for the server: an edit is shown at once and saved in the background
  * when the user pauses. A save that fails changes nothing on screen but the status; the edits are kept
- * and the save is tried again, with longer and longer waits. One save runs at a time, so an older config
- * can never land after a newer one. When the link no longer exists, the config is no longer linked to it.
+ * and the save is tried again, with longer and longer waits. One save runs at a time for a link, so an older
+ * config does not land after a newer one. When the link no longer exists, the config is no longer linked to it.
  */
 export function useSharedThemeSync(
   config: WorkspaceConfig,
@@ -61,21 +76,35 @@ export function useSharedThemeSync(
   const isUnsaved = shared !== null && shared.config !== config && !isRejected;
 
   /* What `save` reads, so that it saves the config as it is when it runs, not as it was when it was scheduled */
-  const latest = useRef({ config, shared, isSaving: false });
+  const latest = useRef({
+    config,
+    shared,
+    isRejected,
+    saving: null as Saving | null,
+  });
   useEffect(() => {
     latest.current.config = config;
     latest.current.shared = shared;
+    latest.current.isRejected = isRejected;
   });
 
   const save = useCallback(async () => {
-    const { config, shared, isSaving } = latest.current;
-    if (!shared || isSaving || shared.config === config) return;
-    latest.current.isSaving = true;
-    const response = await putTheme(shared.id, config).catch(() => null);
-    latest.current.isSaving = false;
+    const { config, shared } = latest.current;
+    if (!shared || shared.config === config) return;
+    /* A save to a link the config no longer has, as after a copy is made, does not hold back the saves to its new link */
+    if (latest.current.saving?.id === shared.id) return;
+    const saving = { id: shared.id, config, controller: new AbortController() };
+    latest.current.saving = saving;
+    const response = await putTheme(shared.id, bodyOf(config), {
+      signal: saving.controller.signal,
+    }).catch(() => null);
+    if (latest.current.saving === saving) latest.current.saving = null;
     /* The config has been given another link while this was saved, and the outcome says nothing about that link */
     if (latest.current.shared?.id !== shared.id) return;
-    if (response?.ok) {
+    if (saving.controller.signal.aborted) {
+      /* It was stopped as the page was left. A page that comes back, as from the back button, saves again. */
+      setRetry(({ failures }) => ({ failures, at: 0 }));
+    } else if (response?.ok) {
       setRetry({ failures: 0, at: 0 });
       /* Edits made while it was saved make the config differ from this one, which schedules the next save */
       setShared({ ...shared, config });
@@ -100,12 +129,23 @@ export function useSharedThemeSync(
     return () => clearTimeout(timer);
   }, [isUnsaved, config, shared, rejected, retry, save]);
 
-  /* Edits that have not been saved when the page is left are sent on the way out */
+  /* Edits that have not been saved when the page is left are sent on the way out, in a request that outlives the page */
   useEffect(() => {
     const flush = () => {
-      const { config, shared } = latest.current;
-      if (shared && shared.config !== config)
-        void putTheme(shared.id, config, true).catch(() => {});
+      const { config, shared, isRejected, saving } = latest.current;
+      if (!shared || shared.config === config || isRejected) return;
+      const body = bodyOf(config);
+      /* A config that is too large is sent in a plain request, which the browser may drop when the page is gone */
+      const keepalive = new Blob([body]).size <= KEEPALIVE_LIMIT;
+      const onItsWay = saving?.id === shared.id ? saving : null;
+      if (onItsWay?.config === config) {
+        /* The save that is on its way already has these edits, and a plain request would not do better */
+        if (!keepalive) return;
+      } else {
+        /* A save with older edits is stopped, so that it does not land after this one */
+        onItsWay?.controller.abort();
+      }
+      void putTheme(shared.id, body, { keepalive }).catch(() => {});
     };
     window.addEventListener('pagehide', flush);
     return () => window.removeEventListener('pagehide', flush);
