@@ -2,13 +2,6 @@ import { act, render, screen } from '@testing-library/react';
 import { Button } from './button';
 
 describe('Button', () => {
-  beforeAll(() => {
-    // Spinner for loading state uses animations, which we need to mock
-    if (!document.getAnimations) {
-      document.getAnimations = () => [];
-    }
-  });
-
   it('should render as aria-disabled when aria-disabled is true regardless of variant', () => {
     render(<Button aria-disabled='true' />);
 
@@ -55,15 +48,5 @@ describe('Button', () => {
     );
     expect(screen.getByRole('link')).not.toHaveAttribute('type');
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
-  });
-
-  it('should not render children when icon-only button is loading', () => {
-    render(
-      <Button loading icon>
-        Button text
-      </Button>,
-    );
-    expect(screen.queryByText('Button text')).not.toBeInTheDocument();
-    expect(screen.getByRole('button')).toHaveAttribute('aria-busy');
   });
 });

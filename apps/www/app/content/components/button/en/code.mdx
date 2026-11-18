@@ -31,7 +31,7 @@ If you only have an icon in the button, you can set `data-icon="true"` to make i
 
 ### Buttons that load
 
-If you want a button that loads, you have to add a loading indicator and `aria-busy="true"` yourself.
+If you want a button that loads, set `aria-busy="true"`. The loading indicator is then drawn in CSS, so you do not have to add one yourself. If the button only contains an icon, the icon is hidden while loading.
 
 Note: `aria-busy` does not prevent the button from triggering interactions. It only affects appearance and accessibility, not functionality.
 If the button should not be able to perform actions, you must add logic yourself to prevent the callback function from running.
@@ -56,11 +56,11 @@ import { Button } from '@digdir/designsystemet-react';
 
 ### Extra logic for buttons that load
 
-In React, we use `loading={true}` to show that the button is loading something. Here you can also pass in your own loading component if our [`Spinner`](/en/components/docs/spinner/code) does not fit.
+In React, we use `aria-busy={true}` to show that the button is loading something. The loading indicator is drawn in CSS, so you do not have to add one yourself. To replace the graphic, set `--dsc-button-loading-icon-url`.
 
 <Story story="LoadingEn" language="react"/>
 
-In the example above, `aria-busy="true"` is automatically set when `loading={true}`. This is the recommended way to show that a button is loading.
+The `loading` prop still works, but is deprecated in favour of `aria-busy`.
 
 ### Button as link
 
