@@ -15,10 +15,13 @@ type PreviewToken = { variable: string; value: string; path: string[] };
 const groupedByPathIndex =
   (index = 0) =>
   (tokens: PreviewToken[]) => {
-    const groups: Partial<Record<string, PreviewToken[]>> = {};
+    /* Without a prototype, so that a path part like `constructor` is a group like any other */
+    const groups: Partial<Record<string, PreviewToken[]>> = Object.create(null);
     for (const token of tokens) {
       const key = token.path[index] || 'rest';
-      groups[key] = [...(groups[key] ?? []), token];
+      const group = groups[key] ?? [];
+      group.push(token);
+      groups[key] = group;
     }
     return groups;
   };
