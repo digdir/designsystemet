@@ -124,9 +124,8 @@ export const Loading = meta.story(() => (
       {/* When loading is true and icon is set, loading will take precedence */}
       <PencilWritingIcon aria-hidden />
     </Button>
-
-    <Button loading aria-label='Rediger' dir='rtl'>
-      Hei
+    <Button loading dir='rtl'>
+      Rediger
     </Button>
   </>
 ));
