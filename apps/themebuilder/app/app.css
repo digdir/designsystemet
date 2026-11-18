@@ -22,12 +22,10 @@
 
 :root {
   --header-height: 75px;
-  --grid-max-width: 1400px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
   --grid-gap: var(--ds-size-8);
   --page-spacing-top: var(--ds-size-14);
   --page-spacing-bottom: var(--ds-size-14);
-  --media-max-width: 800px;
   /*padding shrinks from size-7 to size-4 between 1000px and 500px*/
   /*https://chrisburnell.com/clamp-calculator/?font-size-root=16&size-min=16&size-max=28&viewport-min=500&viewport-max=1000&viewport-units=vi*/
   --content-inline-padding: clamp(var(--ds-size-4), calc(0.27rem + 2.4vw), var(--ds-size-7));
@@ -44,7 +42,7 @@ body {
   font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
   margin: 0;
   padding: 0;
-  /*prevent layout shift when opening color-modal (on windows)*/
+  /*prevent layout shift when opening a dialog (on windows)*/
   &:has(dialog[open]) {
     overflow: scroll;
     scrollbar-color: transparent transparent;
@@ -117,17 +115,6 @@ body {
   }
 }
 
-.is-sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 999;
-  box-shadow: 0 2px 20px 0 #c5c5c5;
-  background-color: #fff !important;
-  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-}
-
 & code:not(pre > code) {
   padding: 2px 5px;
   font-size: 0.9em;
@@ -190,10 +177,6 @@ body {
 .panelBottom {
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   margin-top: auto;
-}
-
-.content {
-  min-height: 100svh;
 }
 
 @layer overrides {

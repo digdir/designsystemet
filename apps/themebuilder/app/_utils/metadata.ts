@@ -1,12 +1,11 @@
 export const generateMetadata = ({
   title,
   description,
-  image = '/img/designsystemet-meta.png',
 }: {
   title: string;
   description: string;
-  image?: string;
 }) => {
+  const image = '/img/designsystemet-meta.png';
   return [
     {
       title: `${title} - Designsystemet`,
@@ -29,7 +28,7 @@ export const generateMetadata = ({
     },
     {
       property: 'og:url',
-      content: 'https://designsystemet.no',
+      content: 'https://theme.designsystemet.no',
     },
     {
       property: 'twitter:title',

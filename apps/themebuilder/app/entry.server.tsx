@@ -7,8 +7,6 @@ import { renderToPipeableStream } from 'react-dom/server';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import type { EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
-import en from '~/locales/en';
-import no from '~/locales/no';
 import i18n from './i18n';
 
 export const streamTimeout = 5_000;
@@ -28,18 +26,7 @@ export default async function handleRequest(
       ? 'en'
       : 'no';
 
-  await instance.use(initReactI18next).init({
-    ...i18n,
-    lng,
-    resources: {
-      en: {
-        translation: en,
-      },
-      no: {
-        translation: no,
-      },
-    },
-  } as Parameters<typeof instance.init>[0]);
+  await instance.use(initReactI18next).init({ ...i18n, lng });
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;

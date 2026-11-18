@@ -1,0 +1,93 @@
+import { Heading, Textfield } from '@digdir/designsystemet-react';
+import { useDebounceCallback } from '@internal/components';
+import cl from 'clsx/lite';
+import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useThemeStore } from '~/model/theme-store';
+import classes from './border-radius-settings.module.css';
+
+export const BorderRadiusSettings = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
+  const { borderRadius: baseBorderRadius, updateTheme } = useThemeStore();
+  const setBorderRadius = (borderRadius: number) =>
+    updateTheme((theme) => ({ ...theme, borderRadius }));
+
+  /* The field is not controlled, so that it can be typed in freely. It follows the theme when the
+   * value changes from somewhere else, such as a suggested value or an imported config. */
+  useEffect(() => {
+    const input = inputRef.current;
+    if (input && document.activeElement !== input)
+      input.value = baseBorderRadius.toString();
+  }, [baseBorderRadius]);
+
+  const borderRadiusItems = [
+    { name: t('borderRadius.none'), value: 0 },
+    { name: t('borderRadius.small'), value: 4 },
+    { name: t('borderRadius.medium'), value: 8 },
+    { name: t('borderRadius.large'), value: 12 },
+    { name: t('borderRadius.full'), value: 9999 },
+  ];
+
+  const debouncedCallback = useDebounceCallback((value: string) => {
+    const updatedValue = parseInt(value, 10);
+    if (updatedValue >= 0) {
+      setBorderRadius(updatedValue);
+    } else {
+      setBorderRadius(0);
+    }
+  }, 1000);
+
+  return (
+    <div>
+      <Heading className={classes.heading} data-size='xs'>
+        {t('borderRadius.suggested')}
+      </Heading>
+      <div
+        className={classes.items}
+        role='radiogroup'
+        aria-label={t('borderRadius.label')}
+        focusgroup='radiogroup wrap'
+        suppressHydrationWarning // Since @digdir/designsystemet-web adds attributes
+      >
+        {borderRadiusItems.map((item) => {
+          const checked = baseBorderRadius === item.value;
+          return (
+            // biome-ignore lint/a11y/useSemanticElements: focusgroup radiogroup with custom preview content
+            <button
+              type='button'
+              role='radio'
+              aria-checked={checked}
+              className={cl('ds-focus', classes.box, checked && classes.active)}
+              // React only renders unknown attributes as strings, so `true` would be dropped
+              {...(checked && { focusgroupstart: '' as unknown as boolean })}
+              key={item.value}
+              onClick={() => {
+                setBorderRadius(item.value);
+              }}
+            >
+              <span className={classes.text}>{item.name}</span>
+              <span
+                className={classes.inner}
+                aria-hidden='true'
+                style={{ borderRadius: item.value }}
+              />
+            </button>
+          );
+        })}
+      </div>
+      <Heading className={classes.heading} data-size='xs'>
+        {t('borderRadius.manual')}
+      </Heading>
+      <Textfield
+        label={t('borderRadius.define-value')}
+        defaultValue={baseBorderRadius}
+        onChange={(e) => {
+          debouncedCallback(e.target.value);
+        }}
+        type='number'
+        ref={inputRef}
+      ></Textfield>
+    </div>
+  );
+};

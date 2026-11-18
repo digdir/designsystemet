@@ -306,9 +306,6 @@ importers:
       '@navikt/aksel-icons':
         specifier: 8.22.1
         version: 8.22.1(react@19.3.1)
-      '@radix-ui/react-slot':
-        specifier: 1.5.0
-        version: 1.5.0(@types/react@19.3.0)(react@19.3.1)
       '@react-router/express':
         specifier: 8.5.1
         version: 8.5.1(express@5.3.0)(react-router@8.5.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(typescript@6.0.3)
@@ -370,18 +367,12 @@ importers:
       '@types/node':
         specifier: 24.19.2
         version: 24.19.2
-      '@types/ramda':
-        specifier: 0.32.0
-        version: 0.32.0
       '@types/react':
         specifier: 19.3.0
         version: 19.3.0
       '@types/react-dom':
         specifier: 19.3.0
         version: 19.3.0(@types/react@19.3.0)
-      ramda:
-        specifier: 0.32.0
-        version: 0.32.0
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -460,9 +451,6 @@ importers:
       prism-react-renderer:
         specifier: 2.4.1
         version: 2.4.1(react@19.3.1)
-      ramda:
-        specifier: 0.32.0
-        version: 0.32.0
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -512,9 +500,6 @@ importers:
       '@types/node':
         specifier: 24.19.2
         version: 24.19.2
-      '@types/ramda':
-        specifier: 0.32.0
-        version: 0.32.0
       '@types/react':
         specifier: 19.3.0
         version: 19.3.0
@@ -614,9 +599,6 @@ importers:
       prettier:
         specifier: 3.9.10
         version: 3.9.10
-      ramda:
-        specifier: 0.32.0
-        version: 0.32.0
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -630,9 +612,6 @@ importers:
         specifier: 8.5.1
         version: 8.5.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
     devDependencies:
-      '@types/ramda':
-        specifier: 0.32.0
-        version: 0.32.0
       '@types/react':
         specifier: 19.3.0
         version: 19.3.0

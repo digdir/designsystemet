@@ -14,7 +14,7 @@ import {
   isValidThemeName,
   renameWorkspaceThemes,
   type ThemeWorkspace,
-} from '~/_utils/theme-workspace';
+} from '~/model/theme-workspace';
 import classes from './edit-themes-dialog.module.css';
 
 type Row = {
@@ -36,6 +36,7 @@ export const EditThemesDialog = ({
 }: EditThemesDialogProps) => {
   const { t } = useTranslation();
   const headingId = useId();
+  const dialogId = useId();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const nextId = useRef(0);
   const [rows, setRows] = useState<Row[]>([]);
@@ -55,11 +56,11 @@ export const EditThemesDialog = ({
     const validated = rows.map((row) => {
       const name = row.name.trim();
       let error: string | undefined;
-      if (!isValidThemeName(name)) error = t('themeBuilder.invalid-theme-name');
+      if (!isValidThemeName(name)) error = t('editThemes.invalid-theme-name');
       else if (
         rows.some((other) => other !== row && other.name.trim() === name)
       )
-        error = t('themeBuilder.duplicate-theme-name');
+        error = t('editThemes.duplicate-theme-name');
       return { ...row, name, error };
     });
     setRows(validated);
@@ -71,12 +72,12 @@ export const EditThemesDialog = ({
 
   return (
     <>
-      <Tooltip content={t('themeBuilder.edit-themes')}>
+      <Tooltip content={t('editThemes.edit-themes')}>
         <Button
           variant='secondary'
           icon
           data-size='sm'
-          aria-label={t('themeBuilder.edit-themes')}
+          aria-label={t('editThemes.edit-themes')}
           onClick={() => {
             setRows(
               Object.keys(workspace.config.themes).map((name) =>
@@ -93,11 +94,11 @@ export const EditThemesDialog = ({
         ref={dialogRef}
         closedby='any'
         aria-labelledby={headingId}
-        id='edit-themes-dialog'
+        id={dialogId}
       >
         <Dialog.Block>
           <Heading id={headingId} level={2} data-size='sm'>
-            {t('themeBuilder.edit-themes')}
+            {t('editThemes.edit-themes')}
           </Heading>
         </Dialog.Block>
         <Divider style={{ margin: 0 }} />
@@ -109,18 +110,18 @@ export const EditThemesDialog = ({
         >
           <Dialog.Block>
             <Fieldset data-size='md'>
-              <Fieldset.Legend>{t('themeBuilder.theme-names')}</Fieldset.Legend>
+              <Fieldset.Legend>{t('editThemes.theme-names')}</Fieldset.Legend>
               <Fieldset.Description
                 style={{ marginBlockEnd: 'var(--ds-size-4)' }}
               >
-                Bruk kun bokstavene a-z, tall og bindestrek
+                {t('editThemes.invalid-theme-name')}
               </Fieldset.Description>
               <ul className={classes.rows}>
                 {rows.map((row, index) => (
                   <li key={row.id} className={classes.row}>
                     <Textfield
                       className={classes.field}
-                      aria-label={`${t('themeBuilder.theme-name')} ${index + 1}`}
+                      aria-label={`${t('editThemes.theme-name')} ${index + 1}`}
                       value={row.name}
                       error={row.error}
                       autoFocus={row.from === null}
@@ -136,7 +137,7 @@ export const EditThemesDialog = ({
                         variant='tertiary'
                         data-color='danger'
                         icon
-                        aria-label={t('themeBuilder.remove-theme', {
+                        aria-label={t('editThemes.remove-theme', {
                           name: row.name || index + 1,
                         })}
                         onClick={() =>
@@ -144,7 +145,7 @@ export const EditThemesDialog = ({
                             previous.filter((item) => item.id !== row.id),
                           )
                         }
-                        data-tooltip={t('themeBuilder.remove-theme', {
+                        data-tooltip={t('editThemes.remove-theme', {
                           name: row.name || index + 1,
                         })}
                       >
@@ -164,20 +165,20 @@ export const EditThemesDialog = ({
               }
             >
               <PlusIcon aria-hidden />
-              {t('themeBuilder.add-theme')}
+              {t('editThemes.add-theme')}
             </Button>
           </Dialog.Block>
           <Divider style={{ margin: 0 }} />
           <Dialog.Block>
             <div className={classes.actions}>
-              <Button type='submit'>{t('colorPane.save')}</Button>
+              <Button type='submit'>{t('common.save')}</Button>
               <Button
                 type='button'
                 variant='secondary'
                 command='close'
-                commandfor='edit-themes-dialog'
+                commandfor={dialogId}
               >
-                {t('colorPane.cancel')}
+                {t('common.cancel')}
               </Button>
             </div>
           </Dialog.Block>

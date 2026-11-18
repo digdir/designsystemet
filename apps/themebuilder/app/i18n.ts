@@ -1,12 +1,13 @@
 import en from '~/locales/en';
 import no from '~/locales/no';
 
+/** The i18next options shared by the server, the browser and the loaders */
 export default {
   supportedLngs: ['en', 'no'],
   fallbackLng: 'no',
   resources: {
-    en,
-    no,
+    en: { translation: en },
+    no: { translation: no },
   },
 };
 

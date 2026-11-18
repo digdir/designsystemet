@@ -1,0 +1,38 @@
+.tabs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--ds-size-6);
+}
+
+.tab {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  text-transform: capitalize;
+  padding: var(--ds-size-3) var(--ds-size-6);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: inherit;
+  border-radius: var(--ds-border-radius-md);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  &[aria-selected='false'] {
+    color: var(--ds-color-neutral-text-default);
+  }
+
+  &[aria-selected='true'] {
+    background-color: var(--ds-color-neutral-background-default);
+  }
+
+  /* Backgrounds are removed in forced colors, so the selected tab gets a line instead */
+  @media (forced-colors: active) {
+    &[aria-selected='true'] {
+      border-bottom: 3px solid SelectedItem;
+      padding-bottom: calc(var(--ds-size-3) - 3px);
+    }
+  }
+}

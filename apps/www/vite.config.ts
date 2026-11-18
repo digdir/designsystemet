@@ -125,7 +125,7 @@ export default defineConfig(({ isSsrBuild, command }) => ({
       : { tsconfigPaths: true },
   plugins: [reactRouter(), mdxFullReload(), contentIcons(command)],
   ssr: {
-    noExternal: ['@navikt/aksel-icons', 'ramda'],
+    noExternal: ['@navikt/aksel-icons'],
   },
   optimizeDeps: {
     exclude: ['microlighter'],

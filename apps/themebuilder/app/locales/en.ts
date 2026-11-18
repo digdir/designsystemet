@@ -1,6 +1,6 @@
 import en from '@internal/components/src/_locales/en';
-import colorModal from './en/color-modal';
-import themeModal from './en/theme-modal';
+import colorStepDialog from './en/color-step-dialog';
+import exportTheme from './en/export-theme';
 import type no from './no';
 
 export default {
@@ -31,6 +31,10 @@ export default {
   accessibility: {
     'skip-link': 'Skip to main content',
   },
+  common: {
+    save: 'Save',
+    cancel: 'Cancel',
+  },
   meta: {
     title: 'Theme Builder',
     description: 'Build your own theme with Design System',
@@ -39,20 +43,22 @@ export default {
     title: 'Theme Builder',
     'active-theme': 'Theme',
     'toggle-editor': 'Open or close theme editor',
+    'documentation-link': 'Read the documentation about custom themes',
+  },
+  editThemes: {
     'edit-themes': 'Edit themes',
     'theme-names': 'Theme names',
     'remove-theme': 'Delete theme {{name}}',
     'add-theme': 'Add theme',
     'theme-name': 'Theme name',
     'invalid-theme-name':
-      'Use lowercase letters, numbers, and single hyphens between words.',
+      'Use only lowercase letters a-z and numbers, with single hyphens between them.',
     'duplicate-theme-name': 'A theme with this name already exists.',
-    'documentation-link': 'Read the documentation about custom themes',
   },
-  configPaste: {
+  importConfig: {
     title: 'Import from config file',
     description:
-      'Already have a config file? Paste it here to select and edit a theme.',
+      'Already have a config file? Paste it here to select and edit a theme. It replaces the themes you are working on now.',
     placeholder: 'Paste your designsystemet.config.json content here...',
     validate: 'Validate config',
     'select-theme': 'Select a theme to edit',
@@ -62,12 +68,14 @@ export default {
     'edit-theme': 'Edit theme',
     'import-config': 'Import config',
   },
-  tabs: {
+  viewTabs: {
+    label: 'View',
     examples: 'Examples',
     colorsystem: 'Colour system',
+  },
+  editorTabs: {
     colors: 'Colours',
     dimensions: 'Dimensions',
-    variables: 'Variables',
   },
   colorPreview: {
     title: 'See your colours in use',
@@ -83,7 +91,7 @@ export default {
     grid: 'Grid',
     list: 'List',
   },
-  overview: {
+  examples: {
     'login-title': 'Log in to the portal',
     name: 'Name',
     password: 'Password',
@@ -114,10 +122,9 @@ export default {
     'display-mode': 'Display mode',
     'select-color': 'Choose colour',
   },
-  'color-modal': colorModal,
-  themeModal,
-  colorPane: {
-    'token-overrides': 'Token overrides',
+  colorStepDialog,
+  exportTheme,
+  colorEditor: {
     'confirm-add-title': 'Add a color to all themes?',
     'confirm-add-description':
       'This adds a color with the same starting value to all {{count}} themes. Each theme can then have its own color value.',
@@ -131,32 +138,30 @@ export default {
       'This renames "{{from}}" to "{{to}}" in all {{count}} themes, including its token overrides. Existing color values are preserved.',
     'confirm-rename': 'Rename in all themes',
     'name-duplicate-error': 'A color with this name already exists',
-    add: 'Add',
+    'add-color': 'Add Colour',
     'edit-color': 'Edit colour',
-    save: 'Save',
-    cancel: 'Cancel',
     'remove-color': 'Remove colour',
     'neutral-info': 'The neutral colour cannot be removed or renamed.',
-    'severity-info': 'The severity colour cannot be removed or renamed.',
     name: 'Name',
     'name-placeholder': 'Write the name here...',
-    'name-description': 'Use only letters a-z, numbers and hyphens',
+    'name-description':
+      'Use only lowercase letters a-z and numbers, with single hyphens between them',
+    'name-invalid-error':
+      'The name must start and end with a letter or number, with single hyphens between them',
     'name-empty-error': 'The colour name cannot be empty',
-    'name-reserved-error':
-      'The colour name cannot be the same as our system colours',
+    'severity-info': 'Severity colours cannot be renamed.',
+    'name-reserved-error': 'The colour cannot be named "neutral"',
     color: 'Colour',
   },
   appearanceToggle: {
     label: 'Appearance',
     light: 'Light',
     dark: 'Dark',
-    'set-to': 'Set to',
-    view: 'view',
   },
   colorGroup: {
     'see-more': 'See more about {{namespace}} {{color}}',
   },
-  'color-tokens': {
+  colorPreviewTokens: {
     title: 'Color Tokens',
     description:
       'Here you can see which tokens have been used to create the cards in the section above.',
@@ -197,7 +202,10 @@ export default {
     full: 'Full',
   },
   overrides: {
+    open: 'Token overrides',
     heading: 'Color Overrides',
+    'invalid-hex': 'Enter a valid hex colour, for example #0062BA.',
+    'color-picker': 'colour picker',
     description:
       'Override specific token colors for light and dark modes. Make sure to check contrasts after changes.',
   },
