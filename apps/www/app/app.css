@@ -313,7 +313,7 @@
     & > h5,
     & > h6,
     /* Headings inside details, cards and other wrappers can be linked to as well */
-    & :is(h2, h3, h4, h5, h6)[id] {
+      & :is(h2, h3, h4, h5, h6)[id] {
       scroll-margin-top: calc(var(--header-height) + 1lh);
     }
     & > h2 {
