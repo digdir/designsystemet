@@ -31,7 +31,7 @@ Har du anna innhald, som tekst, vil knappen automatisk få luft rundt ikonet.
 <Story story="Icons" />
 
 ### Knappar som lastar 
-Dersom du skal ha ein knapp som lastar må du sjølv legge til laste-indikator og `aria-busy="true"`.
+Dersom du skal ha ein knapp som lastar, set du `aria-busy="true"`. Laste-indikatoren blir då teikna i CSS, så du treng ikkje legge til ein sjølv. Dersom knappen berre inneheld eit ikon, blir ikonet skjult medan han lastar.
 
 Merk: `aria-busy` hindrar ikkje at knappen utløyser interaksjonar. Den påverkar berre utsjånad og tilgjengelegheit, ikkje funksjonaliteten.
 Dersom knappen ikkje skal kunne utføre handlingar, må du sjølv legge inn logikk som hindrar at callback-funksjonen blir køyrd.
@@ -56,11 +56,11 @@ import { Button } from '@digdir/designsystemet-react';
 
 ### Ekstra logikk for knappar som lastar
 
-I React brukar me `loading={true}` for å vise at knappen lastar noko. Her kan du også sende inn din eigen loading-komponent dersom vår [`Spinner`](/no/components/docs/spinner/code) ikkje passar.
+I React brukar me `aria-busy={true}` for å vise at knappen lastar noko. Laste-indikatoren blir teikna i CSS, så du treng ikkje legge til ein sjølv. For å byte ut grafikken, set `--dsc-button-loading-icon-url`.
 
 <Story story="Loading" language="react"/>
 
-I eksempelet over blir `aria-busy="true"` sett automatisk når `loading={true}`. Dette er den anbefalte måten å vise at ein knapp lastar på.
+`loading`-propen fungerer framleis, men er utfasa til fordel for `aria-busy`.
 
 ### Knapp som lenkje
 

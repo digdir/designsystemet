@@ -23,7 +23,7 @@ export const Preview = meta.story({
   },
 });
 
-export const Variants = meta.story(() => (
+export const Colors = meta.story(() => (
   <>
     {[...themeColors, ...severityColors].map((color) => (
       <Spinner
