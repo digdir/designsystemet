@@ -59,11 +59,11 @@ Slik kan du gjøre deg klar allerede nå:
 | **Typer** | Den gamle importen `@digdir/designsystemet-react/colors` | Den nye importen `@digdir/designsystemet-types` | Den nye importen har vært tilgjengelig og anbefalt lenge |
 | **ToggleGroup.Item** | `data-variant` og `icon` | Ikke style etter `data-variant`, og legg ikonet direkte i `ToggleGroup.Item` |  |
 | **RovingFocus** | `RovingFocusRoot` og `RovingFocusItem` | [focusgroup](/no/components/utilities/focusgroup) |  |
-| **Hjelpefunksjoner** | Flere hjelpefunksjoner fjernes, se under | Kopier koden under inn i prosjektet ditt ved behov |  |
+| **Hjelpefunksjoner** | <ul><li>[`useDebounceCallback`](#usedebouncecallback)</li><li>[`useSynchronizedAnimation`](#usesynchronizedanimation)</li><li>[`useIsomorphicLayoutEffect`](#useisomorphiclayouteffect)</li><li>[`useMediaQuery`](#usemediaquery)</li><li>[`omit`](#omit)</li><li>[`MergeRight`](#mergeright)</li></ul> | Kopier koden inn i prosjektet ditt ved behov. Trykk på en funksjon for å se koden. |  |
 
+<br/>
 
-<Details style={{ marginTop: '1em' }}>
-<Details.Summary>Kode for `useDebounceCallback`</Details.Summary>
+### `useDebounceCallback`
 
 ```ts
 import { useEffect, useRef } from 'react';
@@ -99,9 +99,7 @@ export function useDebounceCallback<T>(
 }
 ```
 
-</Details>
-<Details>
-<Details.Summary>Kode for `useSynchronizedAnimation`</Details.Summary>
+### `useSynchronizedAnimation`
 
 ```ts
 // Inspired by Sam Selikoff
@@ -163,9 +161,7 @@ export function useSynchronizedAnimation<T>(animationName: string) {
 }
 ```
 
-</Details>
-<Details>
-<Details.Summary>Kode for `useIsomorphicLayoutEffect`</Details.Summary>
+### `useIsomorphicLayoutEffect`
 
 ```ts
 import { useEffect, useLayoutEffect } from 'react';
@@ -174,9 +170,7 @@ export const useIsomorphicLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect;
 ```
 
-</Details>
-<Details>
-<Details.Summary>Kode for `useMediaQuery`</Details.Summary>
+### `useMediaQuery`
 
 ```ts
 import { useEffect, useLayoutEffect, useState } from 'react';
@@ -221,9 +215,7 @@ export function useMediaQuery(
 }
 ```
 
-</Details>
-<Details>
-<Details.Summary>Kode for `omit`</Details.Summary>
+### `omit`
 
 ```ts
 type UnknownRecord = Record<string | number | symbol, unknown>;
@@ -251,9 +243,7 @@ export const omit = (names: string[], obj: UnknownRecord): object => {
 };
 ```
 
-</Details>
-<Details>
-<Details.Summary>Kode for `MergeRight`</Details.Summary>
+### `MergeRight`
 
 ```ts
 /**
@@ -263,7 +253,6 @@ export const omit = (names: string[], obj: UnknownRecord): object => {
 export type MergeRight<T1, T2> = Omit<T1, keyof T2> & T2;
 ```
 
-</Details>
 
 </div>
 </Details>
