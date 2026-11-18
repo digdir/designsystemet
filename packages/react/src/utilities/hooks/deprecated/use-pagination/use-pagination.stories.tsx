@@ -1,6 +1,6 @@
 import { useArgs } from 'storybook/preview-api';
-import preview from '../../../../../../apps/storybook/.storybook/preview';
-import { Pagination } from '../../../components';
+import preview from '../../../../../../../apps/storybook/.storybook/preview';
+import { Pagination } from '../../../../components';
 import { type UsePaginationProps, usePagination } from './use-pagination';
 
 const UsePagination = (_props: UsePaginationProps) => (
@@ -14,10 +14,12 @@ const meta = preview.meta({
 });
 
 export const Preview = meta.story({
-  render: (args) => {
+  render: () => {
     const [, updateArgs] = useArgs();
     const { pages, nextButtonProps, prevButtonProps } = usePagination({
-      ...(args as UsePaginationProps),
+      currentPage: 2,
+      totalPages: 10,
+      showPages: 7,
       setCurrentPage: (currentPage) => updateArgs({ currentPage }),
     });
 
@@ -46,11 +48,5 @@ export const Preview = meta.story({
         </Pagination.List>
       </Pagination>
     );
-  },
-
-  args: {
-    currentPage: 2,
-    totalPages: 10,
-    showPages: 7,
   },
 });
