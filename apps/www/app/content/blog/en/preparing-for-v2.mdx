@@ -1,71 +1,290 @@
 ---
-title: Get ready for Designsystemet v2
-description: The next major version of Designsystemet removes everything marked as deprecated in v1. Here is how to prepare now.
-date: 2026-10-26
-author: Designsystemet
+title: V2 is on its way with better colors and cleaner code – here is how to get ready
+description: V2 is not a big rewrite, but a small extension of the color system and even better use of web standards.
+date: 2026-11-18
+author: designsystemet.no
 ---
 
-The next major version of Designsystemet is on its way. The most important change in v2 is that we remove everything marked as deprecated in v1. Throughout 1.x we have replaced a number of props, classes, attributes and exports with better solutions, but kept the old ones so nothing would break for you. In v2 we clean this up.
+When `@digdir/designsystemet-web` was released in February, designsystemet.no took an important step towards our vision:
+to offer small, robust building blocks based on web standards, that are easy for everyone to use and build on.
+V2 continues in the same direction. We extend the color system and remove old solutions in favour of web standards.
 
-If you don't use any of the deprecated features, upgrading will be easy.
+## What's new
 
-## How to prepare
+### New Figma plugin
+
+For a long time we have relied on a third-party solution to import themes into Figma.
+Now we are making our own plugin, which simplifies the process and gives us full control over the import.
+This makes it easier for you to manage your theme in Figma.
+
+### New color steps
+
+It has long been a small challenge to make neutral colors harmonize with the base color of a color scale.
+Input, for example, takes colors from `neutral` when the field is read-only.
+
+That is why every color scale gets three new color steps: `surface-muted`, `border-muted` and `text-muted`.
+This makes it easier to get a neutral look that harmonizes with the color scale, without components having to take colors from another scale.
+
+### And much more
+
+On top of this come many improvements to the theme builder and the CLI.
+
+## How to prepare your code
+
+We know that breaking changes take time to handle, and a smooth transition matters to us.
+This is how you can get ready now:
 
 1. **Upgrade to the latest 1.x version** of all `@digdir/designsystemet*` packages.
-2. **Look for warnings.** TypeScript strikes through deprecated props and exports in your editor. The React and web packages log warnings in the console, and the CLI prints warnings in the terminal.
-3. **Switch to the replacements** in the list below. Everything in the list already works in v1, so you can make the changes now and upgrade to v2 without further changes. The only exception is `AvatarStack`, which gets its new name in v2.
+2. **Look for warnings:** TypeScript marks deprecated props and exports in your editor, the React and web packages log warnings in the console, and the CLI prints warnings in the terminal.
+3. **Replace deprecated code:** Everything in the lists below is already marked as `@deprecated` in v1, and the replacements already work. So you can switch now, without waiting for v2.
 
-## What changes in v2
+<div data-wide-content>
+<div className="ds-card">
+<Details>
+<Details.Summary>Changes for everyone</Details.Summary>
+<div data-size='sm'>
+| Component | Don't use | Use (already works in v1) | Note |
+| :-------- | :-------- | :------------------------ | :--- |
+| **ToggleGroup** | `data-toggle-group="LABEL"` | `focusgroup="radiogroup" aria-label="LABEL"` | Also works without changes, but screen readers will not announce the name of the group |
+| **Spinner** | `<svg class="ds-spinner">` | `<progress class="ds-spinner">`<br />and `<button aria-busy="true">` | CSS draws the spinner automatically |
+| **Individual CSS files** | The old names `togglegroup.css` and `skiplink.css` | The new names `toggle-group.css` and `skip-link.css` | The new file names have been available and recommended for a long time |
+| **Search** | Removed | [Read the blog post about why Search is being removed, and what to use instead](/en/blog/search-is-being-removed-what-should-you-do) |  |
+</div>
+</Details>
+<Details>
+<Details.Summary>Changes for React only</Details.Summary>
+<div data-size='sm'>
+| Component | Don't use | Use (already works in v1) | Note |
+| :-------- | :-------- | :------------------------ | :--- |
+| **Types** | The old import `@digdir/designsystemet-react/colors` | The new import `@digdir/designsystemet-types` | The new import has been available and recommended for a long time |
+| **ToggleGroup.Item** | `data-variant` and `icon` | Don't style based on `data-variant`, and put the icon directly in `ToggleGroup.Item` |  |
+| **RovingFocus** | `RovingFocusRoot` and `RovingFocusItem` | [focusgroup](/en/components/utilities/focusgroup) |  |
+| **Utilities** | Several utilities are removed, see below | Copy the code below into your project if you need it |  |
 
-The changes are grouped by who they affect. **HTML and React** applies whether you use the CSS and web packages directly or the React components. **React** applies only to `@digdir/designsystemet-react`. Changes marked **visual only** affect how things look, but not how they work.
 
-### Removed from React
+<Details style={{ marginTop: '1em' }}>
+<Details.Summary>Code for `useDebounceCallback`</Details.Summary>
 
-- **AvatarStack:** `EXPERIMENTAL_AvatarStack` is renamed to `AvatarStack`, because the component is no longer experimental. Change the import when you upgrade to v2.
-- **Combobox:** Use [`Suggestion`](/en/components/docs/suggestion/overview).
-- **Dialog, Dropdown and Popover:** `TriggerContext` and `Trigger` are removed. Connect a `Button` with `popovertarget` set to the `id` of the dropdown or popover, or with `command="show-modal"` and `commandfor` set to the `id` of the dialog.
-- **RovingFocusRoot and RovingFocusItem:** Use the [`focusgroup`](/en/components/utilities/focusgroup) attribute.
-- **Search:** `Search`, `Search.Input`, `Search.Clear` and `Search.Button` are removed. Use [`Input`](/en/components/docs/input/overview) with `type="search"` in a `Field`, or `Suggestion` with `Suggestion.Clear` if you need a clear button.
-- **Utilities:** `useDebounceCallback`, `useIsomorphicLayoutEffect`, `useMediaQuery`, `omit` and the `MergeRight` type are removed. Use a utility library or write your own function.
-- **Types:** The `Size` type and the `@digdir/designsystemet-react/colors` module are removed. Use `@digdir/designsystemet-types`.
+```ts
+import { useEffect, useRef } from 'react';
 
-### HTML and React: changes behaviour
+type DebounceFunction<T> = (...args: T[]) => void;
 
-- **Avatar:** `initials` and `data-initials` are replaced by text as children.
-- **AvatarStack:** `suffix` is replaced by a trailing `<li>` with text.
-- **Dialog:** `data-command="close"` is replaced by `command="close"` and `commandfor="DIALOG-ID"`.
-- **Field.Counter:** `hint` is removed. It has had no effect for a while.
-- **Field and Fieldset:** A `<p>` directly after a `<label>` or `<legend>` is no longer styled as a description. Use `data-field="description"`.
-- **SkipLink:** `.ds-skiplink` and `skiplink.css` are replaced by `.ds-skip-link` and `skip-link.css`.
-- **Suggestion and Search:** `.ds-search`, `search.css` and the `--dsc-search-*` variables are replaced by `.ds-suggestion`, `suggestion.css` and the matching `--dsc-suggestion-*` variables. The old `<del>` element for clearing is no longer supported. Use `<button type="reset">` (`Suggestion.Clear` in React). `aria-label` on `Suggestion.Clear` is replaced by `data-sr-clear`, and `singular` and `plural` on `Suggestion.List` are replaced by `data-sr-singular` and `data-sr-plural` on `Suggestion`.
-- **ToggleGroup:** `.ds-togglegroup` and `togglegroup.css` are replaced by `.ds-toggle-group` and `toggle-group.css`. `data-toggle-group` and the `--dsc-togglegroup-label` variable are replaced by `aria-label` or `aria-labelledby`. Without React, use `focusgroup="radiogroup"` with `aria-label`.
+export function useDebounceCallback<T>(
+  callback: DebounceFunction<T>,
+  delay = 50,
+) {
+  const timeoutRef = useRef<number | null>(null);
 
-### React: changes behaviour
+  useEffect(() => {
+    // Cleanup the previous timeout on re-render
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
-- **Dialog, Field, ErrorSummary and Pagination:** `asChild` is removed.
-- **Pagination:** The active element no longer gets its own styling when you set `data-variant="tertiary"` manually.
-- **Select:** `readOnly` is replaced by `aria-readonly`.
-- **ToggleGroup:** `icon` on `ToggleGroup.Item` is removed. Children with a manually set `data-variant="tertiary"` no longer get their own active styling.
-- **Tooltip:** `open` is removed, use a [`Popover`](/en/components/docs/popover/overview) instead. `type` is removed because it has no effect.
+  const debouncedCallback = (...args: T[]) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
 
-### HTML and React: visual only
+    timeoutRef.current = window.setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
 
-- **Avatar:** `variant="square"` and `data-variant="square"` are replaced by the CSS variable `--dsc-avatar-radius`. `data-size="xs"` is removed.
-- **AvatarStack:** Square avatars in the stack no longer override the stack's radius. Use the CSS variable `--dsc-avatar-stack-radius`.
-- **Details:** The misspelled variable `--dsc-details-border-block-wdith` is replaced by `--dsc-details-border-block-width`.
-- **Dialog:** The close button must use `command="close"`. The older `<form method="dialog">` variant is removed.
-- **Label:** `weight` and `data-weight` are removed. Field sets the right font weight automatically.
-- **Link:** The variable `--dsc-link-background--active` is removed.
+  return debouncedCallback;
+}
+```
 
-### React: visual only
+</Details>
+<Details>
+<Details.Summary>Code for `useSynchronizedAnimation`</Details.Summary>
 
-- **AvatarStack:** `gap`, `avatarSize` and `overlap` are replaced by the CSS variables `--dsc-avatar-stack-gap`, `--dsc-avatar-stack-size` and `--dsc-avatar-stack-overlap`.
-- **Skeleton:** `characters` is removed. Use `width` or text as children.
+```ts
+// Inspired by Sam Selikoff
+// https://github.com/samselikoff/2022-02-24-use-synchronized-animation/blob/main/src/App.js
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
-### CLI
+/**
+ * Synchronizes the css animation of multiple elements with the same `animationName`.
+ *
+ * @example
+ * const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
+ *
+ * <div ref={ref} />
+ */
+export function useSynchronizedAnimation<T>(animationName: string) {
+  const ref = useRef<T>(null);
+  const useHook = typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-- The CLI options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme` are removed. Use a [config file](/en/fundamentals/start-here/own-theme).
-- `@digdir/designsystemet/types` is replaced by `@digdir/designsystemet-types`.
+  useHook(() => {
+    const animations = document
+      .getAnimations()
+      .filter(
+        (animation) =>
+          'animationName' in animation &&
+          animation.animationName === animationName,
+      );
+
+    const firstOfType = animations.find(
+      (animation) =>
+        'animationName' in animation &&
+        animation.animationName === animationName,
+    );
+
+    const myAnimation = animations.find(
+      (animation) =>
+        (animation.effect as KeyframeEffect)?.target === ref.current,
+    );
+
+    if (myAnimation && myAnimation === firstOfType) {
+      myAnimation.currentTime = 0;
+    }
+
+    if (
+      myAnimation &&
+      firstOfType?.currentTime &&
+      myAnimation !== firstOfType
+    ) {
+      myAnimation.currentTime = firstOfType.currentTime;
+    }
+
+    return () => {
+      if (myAnimation && firstOfType?.currentTime) {
+        myAnimation.currentTime = firstOfType.currentTime;
+      }
+    };
+  }, [animationName]);
+
+  return ref;
+}
+```
+
+</Details>
+<Details>
+<Details.Summary>Code for `useIsomorphicLayoutEffect`</Details.Summary>
+
+```ts
+import { useEffect, useLayoutEffect } from 'react';
+
+export const useIsomorphicLayoutEffect =
+  typeof window === 'undefined' ? useEffect : useLayoutEffect;
+```
+
+</Details>
+<Details>
+<Details.Summary>Code for `useMediaQuery`</Details.Summary>
+
+```ts
+import { useEffect, useLayoutEffect, useState } from 'react';
+
+type UseMediaQueryOptions = {
+  defaultValue?: boolean;
+  initializeWithValue?: boolean;
+};
+
+export function useMediaQuery(
+  query: string,
+  {
+    defaultValue = false,
+    initializeWithValue = true,
+  }: UseMediaQueryOptions = {},
+): boolean {
+  const useHook = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+  const onChange = () => setMatches(getMatches(query));
+  const getMatches = (query: string): boolean => {
+    if (typeof window === 'undefined') return defaultValue;
+    return window.matchMedia(query).matches;
+  };
+  const [matches, setMatches] = useState<boolean>(() => {
+    return initializeWithValue ? getMatches(query) : defaultValue;
+  });
+
+  useHook(() => {
+    const matchMedia = window.matchMedia(query);
+    onChange(); // Triggered at the first client-side load and if query changes
+
+    // Use deprecated `addListener` and `removeListener` to support Safari < 14
+    if (matchMedia.addListener) matchMedia.addListener(onChange);
+    else matchMedia.addEventListener('change', onChange);
+
+    return () => {
+      if (matchMedia.removeListener) matchMedia.removeListener(onChange);
+      else matchMedia.removeEventListener('change', onChange);
+    };
+  }, [query]);
+
+  return matches;
+}
+```
+
+</Details>
+<Details>
+<Details.Summary>Code for `omit`</Details.Summary>
+
+```ts
+type UnknownRecord = Record<string | number | symbol, unknown>;
+
+/**
+ * Returns a partial copy of an object omitting the keys specified.
+ * @example omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
+ */
+export const omit = (names: string[], obj: UnknownRecord): object => {
+  const result: UnknownRecord = {};
+  const index: UnknownRecord = {};
+  let idx = 0;
+  const len = names.length;
+
+  while (idx < len) {
+    index[names[idx]] = 1;
+    idx += 1;
+  }
+
+  for (const prop in obj)
+    if (!Object.hasOwn(index, prop))
+      result[prop] = obj[prop];
+
+  return result;
+};
+```
+
+</Details>
+<Details>
+<Details.Summary>Code for `MergeRight`</Details.Summary>
+
+```ts
+/**
+ * Create a new type with the properties of the first type merged with the properties of the second type.
+ * If a key exists in both types, the property from the *second* type will be used.
+ */
+export type MergeRight<T1, T2> = Omit<T1, keyof T2> & T2;
+```
+
+</Details>
+
+</div>
+</Details>
+<Details>
+<Details.Summary>Changes in the CLI</Details.Summary>
+<div>
+
+- Use a [config file](/en/fundamentals/start-here/own-theme) instead of the options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme`.
+- Import types from `@digdir/designsystemet-types` instead of `@digdir/designsystemet/types`.
+
+</div>
+</Details>
+</div>
+</div>
+
+## What about Suggestion?
+
+Suggestion has been marked as experimental for a long time.
+It is the most complex component in designsystemet.no, and the many ways you use it
+have given us a lot of good feedback on what it should support, and what it can solve better.
+We are now working on a new version, which we will release before we make the component stable.
 
 ## Questions?
 
@@ -74,5 +293,7 @@ Reach out to us on [Slack](https://designsystemet.no/slack) or open an issue on 
 <Contributors
   authors={[
     'Michael Marszalek',
+    'Eirik Backer',
+    'Tobias Barsnes',
   ]}
 />
