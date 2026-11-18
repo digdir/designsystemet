@@ -1,3 +1,4 @@
+import { stripUnknownConfigKeys } from '@digdir/designsystemet/internal';
 import { data } from 'react-router';
 import { validateConfig } from './import-config';
 import { clientKey, createRateLimiter } from './rate-limit.server';
@@ -49,7 +50,8 @@ export function isFromThemeBuilder(request: Request) {
 
 /**
  * Reads the config of a request to share or update a theme. The config goes through the same check
- * as an imported config file, so only a config the CLI accepts is saved. It is saved in full, as it was written.
+ * as an imported config file, so only a config the CLI accepts is saved. It is saved as it was written,
+ * but without the keys the CLI does not know: the schema ignores those, so they could hold anything.
  */
 export async function readSharedConfig(
   request: Request,
@@ -67,8 +69,9 @@ export async function readSharedConfig(
   }
   const result = validateConfig(input?.config);
   if (!('config' in result)) return { error: 'invalid', status: 400 };
-  return isWithinShareLimits(result.config)
-    ? { config: result.config }
+  const config = stripUnknownConfigKeys(result.config);
+  return isWithinShareLimits(config)
+    ? { config }
     : { error: 'too-large', status: 413 };
 }
 

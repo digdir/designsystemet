@@ -1,6 +1,10 @@
 import { randomInt } from 'node:crypto';
 import postgres from 'postgres';
 import cliPackage from '../../../../packages/cli/package.json';
+import {
+  databaseToken,
+  usesDatabaseIdentity,
+} from './database-identity.server';
 import { validateConfig } from './import-config';
 import {
   isSharedThemeId,
@@ -16,8 +20,9 @@ import type { WorkspaceConfig } from './theme-workspace';
  * by anyone who has opened its link. The id is the only key: whoever has it can read and change the theme.
  * A theme also has a view id, which only lets whoever has it read the theme. Nothing about the user is saved.
  *
- * The themes are rows in the Postgres database that `DATABASE_URL` points to. Themes cannot be shared without it,
- * as in the previews of pull requests; see `canShareThemes`.
+ * The themes are rows in the Postgres database that `DATABASE_URL` points to. Themes cannot be shared without it;
+ * see `canShareThemes`. The URL has a password, or none when the server signs in as its managed identity;
+ * see `database-identity.server.ts`.
  *
  * `config` is `json`, not `jsonb`: the order of the colors in a config is the order they are shown in,
  * and `jsonb` does not keep the order of keys. For the same reason the config is sent as text
@@ -69,6 +74,10 @@ async function connect() {
   if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
   if (!database) {
     const sql = postgres(process.env.DATABASE_URL, {
+      // Without a password in the URL, a server in Azure signs in as its managed identity
+      ...(usesDatabaseIdentity(process.env.DATABASE_URL) && {
+        password: databaseToken,
+      }),
       max: 5,
       idle_timeout: 30,
       connect_timeout: 10,

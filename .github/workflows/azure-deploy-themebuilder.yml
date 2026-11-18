@@ -16,6 +16,10 @@ on:
         type: boolean
         default: false
         description: "Whether to update PR comment with deployment URL"
+      database_identity:
+        required: false
+        type: string
+        description: "Name of the managed identity the app signs in to the database as, when the database URL has no password"
     secrets:
       AZURE_CLIENT_ID:
         required: true
@@ -25,7 +29,7 @@ on:
         required: true
       THEMEBUILDER_DATABASE_URL:
         required: false
-        description: "Postgres URL for shared themes. Only used for production; without it themes cannot be shared"
+        description: "Postgres URL for shared themes. Without it themes cannot be shared. Previews must never be given the URL of the production database"
 
 permissions:
   id-token: write
@@ -87,13 +91,13 @@ jobs:
           ACR_NAME: ${{ env.ACR_NAME }}
         run: bash ./.github/workflows/scripts/get-acr-creds.sh
 
-      - name: set database secret (production only)
+      - name: set up database
         id: database
-        if: ${{ inputs.environment == 'production' }}
         env:
           APP_NAME: ${{ env.APP_NAME }}
           RESOURCE_GROUP: ${{ env.RESOURCE_GROUP }}
           DATABASE_URL: ${{ secrets.THEMEBUILDER_DATABASE_URL }}
+          DATABASE_IDENTITY: ${{ inputs.database_identity }}
         run: bash ./.github/workflows/scripts/set-containerapp-database-secret.sh
 
       - name: deploy (no mi; use registry creds)
@@ -110,6 +114,15 @@ jobs:
           ingress: external
           environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}${{ steps.database.outputs.env && format(' {0}', steps.database.outputs.env) || '' }}"
           location: "norwayeast"
+
+      - name: set up database (first deploy of the app)
+        if: ${{ steps.database.outputs.after_deploy == 'true' }}
+        env:
+          APP_NAME: ${{ env.APP_NAME }}
+          RESOURCE_GROUP: ${{ env.RESOURCE_GROUP }}
+          DATABASE_URL: ${{ secrets.THEMEBUILDER_DATABASE_URL }}
+          DATABASE_IDENTITY: ${{ inputs.database_identity }}
+        run: bash ./.github/workflows/scripts/set-containerapp-database-secret.sh after-deploy
 
       - name: fetch fqdn
         id: fqdn
