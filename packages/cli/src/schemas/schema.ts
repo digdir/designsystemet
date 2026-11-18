@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import { z } from 'zod';
 import { borderRadiusNumberSchema, borderRadiusSchema } from './schema-border-radius.ts';
 import { borderWidthSchema } from './schema-border-width.ts';
-import { colorsSchema } from './schema-color.ts';
+import { colorsSchema, externalColorsSchema } from './schema-color.ts';
 import { opacitySchema } from './schema-opacity.ts';
 import { outputConfigShape } from './schema-output.ts';
 import { overridesSchema } from './schema-overrides.ts';
@@ -255,12 +255,14 @@ const externalThemeMask = {
 /**
  * A theme restricted to the keys and shapes of the public config, without the internal-only cross-key refinements.
  * Typography is limited to the `{ fontFamily }` shorthand and border-radius to a number, as the public config
- * has no named typography sets or border-radius steps. Strict, so internal-only and misspelled keys are
+ * has no named typography sets or border-radius steps. Colors are limited to base colors, as color steps are
+ * internal for now. Strict, so internal-only and misspelled keys are
  * rejected instead of silently stripped.
  */
 const externalThemeSchema = themeObjectSchema
   .pick(externalThemeMask)
   .extend({
+    colors: externalColorsSchema,
     typography: typographyShorthandSchema,
     borderRadius: borderRadiusNumberSchema,
   })

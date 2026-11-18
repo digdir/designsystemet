@@ -45,6 +45,13 @@ export {
   externalConfigSchema,
 } from './schemas/schema.ts';
 export {
+  type ColorDefinition,
+  type ColorSteps,
+  colorDefinitionSchema,
+  getBaseColor,
+  getColorSteps,
+} from './schemas/schema-color.ts';
+export {
   type ConfigColors,
   configColorsFromValues,
   type SchemeColors,
