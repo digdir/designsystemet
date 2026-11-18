@@ -3,7 +3,7 @@
   --dsc-errorsummary-border-radius: var(--ds-border-radius-md);
   --dsc-errorsummary-padding: var(--ds-size-7);
   --dsc-errorsummary-color: var(--ds-color-danger-text-default);
-  --dsc-errorsummary-link-color: var(--dsc-errorsummary-color); /* @deprecated */
+  --dsc-errorsummary-link-color: var(--ds-color-neutral-text-default, var(--dsc-errorsummary-color)); /* @deprecated Neutral for now, links use --dsc-errorsummary-color in the next major version */
   --dsc-errorsummary-heading-color: var(--dsc-errorsummary-color); /* @deprecated */
 
   color: var(--dsc-errorsummary-color);
