@@ -50,14 +50,12 @@ export function ThemeStoreProvider({
   const [revision, setRevision] = useState(0);
   const theme = workspace.config.themes[workspace.activeTheme];
 
-  /* The scales only depend on the colors and their overrides, so other edits, such as the border radius, do not regenerate them */
-  const colorKey = JSON.stringify({
-    colors: theme.colors,
-    overrides: theme.overrides,
-  });
+  /* The scales only depend on the colors and their overrides. Edits keep the parts of a theme they do not
+   * change, so other edits, such as the border radius, do not regenerate them. */
+  const { colors: themeColors, overrides } = theme;
   const colors = useMemo(
-    () => resolveThemeColors(JSON.parse(colorKey)),
-    [colorKey],
+    () => resolveThemeColors({ colors: themeColors, overrides }),
+    [themeColors, overrides],
   );
 
   const store = useMemo(
