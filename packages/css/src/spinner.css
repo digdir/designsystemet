@@ -1,60 +1,44 @@
 /* Note: Spinner has same animation regardless of motion preference, as it is a small element */
 .ds-spinner {
-  --dsc-spinner-background: var(--ds-color-surface-tinted);
-  --dsc-spinner-color: var(--ds-color-border-default);
-  --dsc-spinner-icon-size: var(--ds-size-11);
   --dsc-spinner-icon-url: var(--ds-icon-spinner);
-  --dsc-spinner-label: 'Loading...';
 
   appearance: none; /* Strip <progress> styling */
-  background: none;
+  aspect-ratio: 1;
+  background: currentcolor;
   border: none; /* Strip <progress> styling */
   box-sizing: border-box;
-  color: var(--dsc-spinner-color);
+  color: var(--ds-color-border-default);
   display: inline-block;
-  height: var(--dsc-spinner-icon-size);
+  flex-shrink: 0;
+  forced-color-adjust: none;
+  height: auto;
+  mask: center / contain no-repeat var(--dsc-spinner-icon-url);
   vertical-align: middle;
-  width: var(--dsc-spinner-icon-size);
+  width: var(--ds-size-11);
 
-  /* Need to be separate/repeated to be parsed in all browsers */
+  /* Need to be separate to be parsed in all browsers */
   &::-moz-progress-bar {
-    forced-color-adjust: none;
-    background: currentcolor;
-    content: var(--dsc-spinner-label); /* Ensure content for screen readers */
-    display: block;
-    flex-shrink: 0;
-    height: var(--dsc-spinner-icon-size);
-    mask: center / contain no-repeat var(--dsc-spinner-icon-url);
-    width: var(--dsc-spinner-icon-size);
+    background: none;
   }
-  &::-webkit-progress-bar {
-    forced-color-adjust: none;
-    background: currentcolor;
-    content: var(--dsc-spinner-label); /* Ensure content for screen readers */
-    display: block;
-    flex-shrink: 0;
-    height: var(--dsc-spinner-icon-size);
-    mask: center / contain no-repeat var(--dsc-spinner-icon-url);
-    width: var(--dsc-spinner-icon-size);
-  }
+  &::-webkit-progress-bar,
   &::-webkit-progress-value {
     background: none;
   }
 
   /* Ensure consistent size when explicitly setting data-size */
   &[data-size='2xs'] {
-    --dsc-spinner-icon-size: var(--ds-size-3);
+    width: var(--ds-size-3);
   }
   &[data-size='xs'] {
-    --dsc-spinner-icon-size: var(--ds-icon-size);
+    width: var(--ds-icon-size);
   }
   &[data-size='sm'] {
-    --dsc-spinner-icon-size: var(--ds-size-8);
+    width: var(--ds-size-8);
   }
   &[data-size='lg'] {
-    --dsc-spinner-icon-size: var(--ds-size-15);
+    width: var(--ds-size-15);
   }
   &[data-size='xl'] {
-    --dsc-spinner-icon-size: var(--ds-size-22);
+    width: var(--ds-size-22);
   }
 }
