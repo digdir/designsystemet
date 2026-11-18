@@ -165,9 +165,6 @@ settings:
 
 packageExtensionsChecksum: sha256-IQSNU9cJtri1P9xMWAvG91nRHacWCj8xtjZCK1etLxM=
 
-patchedDependencies:
-  '@u-elements/u-combobox': cc7865a3a670f3261b11237f255f54527999236cdeda0a6d5d3f05fc782a33ec
-
 importers:
 
   .:
@@ -830,11 +827,11 @@ importers:
         specifier: ^1.8.0
         version: 1.8.0
       '@u-elements/u-combobox':
-        specifier: ^2.1.5
-        version: 2.1.5(patch_hash=cc7865a3a670f3261b11237f255f54527999236cdeda0a6d5d3f05fc782a33ec)
+        specifier: ^3.0.3
+        version: 3.0.3
       '@u-elements/u-datalist':
-        specifier: ^2.0.3
-        version: 2.0.3
+        specifier: ^3.0.2
+        version: 3.0.2
       '@u-elements/u-details':
         specifier: ^1.0.0
         version: 1.0.0
@@ -2859,11 +2856,11 @@ packages:
   '@types/ws@8.18.2':
     resolution: {integrity: sha512-67MQl+fpWKVTT1NYdnmo3U4sc/xPo/zQBncVnI74qmQa0z/b+1g6iYqNmGCPbxO+zz2aklb08a0oHfegiVd0/w==}
 
-  '@u-elements/u-combobox@2.1.5':
-    resolution: {integrity: sha512-SnuSbE0OSSSut41tZYtLClXifWXO29n3Y+D2EBNRlbVUuSfcgG46yrOjiwbwxkfAX6WpJ6UciMwSHGW3xcegMA==}
+  '@u-elements/u-combobox@3.0.3':
+    resolution: {integrity: sha512-hNV1Z52xdzcKpgQeVGtTftcva4FELTk8RIvzMUV/pD22GkbQXNKhP4T5eacZwdaDWtkMGCDfUBYjzZ3Rc/HTGA==}
 
-  '@u-elements/u-datalist@2.0.3':
-    resolution: {integrity: sha512-1/N53P9CtmpTQQN/S8fQG0JEQqQmpAmAVhuPTskycrn74DJUdi2lKYdyGW7X4tg6ANsi4iGLn5Bv3NLHoCrzIg==}
+  '@u-elements/u-datalist@3.0.2':
+    resolution: {integrity: sha512-GLwGElVif6CWBAvptiC6/+NirmxxkbaZRxQw5jCSKWIwav36OjMwYbbhTMYw7XFB8m1KMnaq+NvVMyTi+U6dwg==}
 
   '@u-elements/u-details@1.0.0':
     resolution: {integrity: sha512-CA0w0VTH/vWWouFWEw7XIws3RUCBm2dh7ity+sbDXgpc6yz5NkoMpeDTdB/DHpI+/YInULz0XLOTrw8b7KX3Qg==}
@@ -7825,9 +7822,9 @@ snapshots:
     dependencies:
       '@types/node': 26.6.6
 
-  '@u-elements/u-combobox@2.1.5(patch_hash=cc7865a3a670f3261b11237f255f54527999236cdeda0a6d5d3f05fc782a33ec)': {}
+  '@u-elements/u-combobox@3.0.3': {}
 
-  '@u-elements/u-datalist@2.0.3': {}
+  '@u-elements/u-datalist@3.0.2': {}
 
   '@u-elements/u-details@1.0.0': {}
 

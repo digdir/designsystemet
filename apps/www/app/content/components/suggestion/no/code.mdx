@@ -49,6 +49,45 @@ Du kan lese mer om hvordan du bruker disse i [u-elements sin `u-combobox` dokume
 
 <CssAttributes exclude={['activedescendant']} />
 
+## Tekster og oversettelser
+
+Alle tekster i Suggestion settes med CSS-variabler, også tekstene som bare leses opp av skjermleser. Norsk (`lang="no"`, `lang="nb"` eller `lang="nn"`) og engelsk (`lang="en"`) er innebygd, og Suggestion bruker nærmeste `lang`-attributt for å velge mellom dem.
+
+| CSS-variabel | Brukes til | Norsk standard |
+| --- | --- | --- |
+| `--dsc-suggestion-empty-text` | Tekst på et tomt `data-empty`-alternativ | `'Ingen søketreff'` |
+| `--dsc-suggestion-create-text` | Tekst foran den skrevne verdien på alternativet for å legge til, med `data-creatable` | `'Legg til'` |
+| `--dsc-suggestion-sr-clear` | Ledetekst for tøm-knappen | `'Fjern tekst'` |
+| `--dsc-suggestion-sr-toggle` | Ledetekst for knappen som åpner og lukker listen | `'Forslag'` |
+| `--dsc-suggestion-sr-singular` | Antall treff, der `%d` er antallet | `'%d forslag'` |
+| `--dsc-suggestion-sr-plural` | Antall treff, der `%d` er antallet | `'%d forslag'` |
+| `--dsc-suggestion-sr-added` | Leses opp når et element blir valgt | `'La til'` |
+| `--dsc-suggestion-sr-removed` | Leses opp når et element blir fjernet | `'Fjernet'` |
+| `--dsc-suggestion-sr-remove` | Hint på valgte elementer | `'Trykk for å fjerne'` |
+| `--dsc-suggestion-sr-items` | Ledetekst for de valgte elementene | `'Valgte'` |
+| `--dsc-suggestion-sr-empty` | Leses opp når ingen elementer er valgt | `'Ingen valgte'` |
+| `--dsc-suggestion-sr-found` | Hint om valgte elementer, der `%d` er antallet | `'Naviger til venstre for å finne %d valgte'` |
+| `--dsc-suggestion-sr-of` | Mellom posisjon og totalt antall, som i "1 av 3" | `'av'` |
+| `--dsc-suggestion-sr-invalid` | Leses opp når verdien er ugyldig | `'Ugyldig valg'` |
+
+For å endre en tekst, sett CSS-variabelen på selve suggestion:
+
+```html
+<ds-suggestion class="ds-suggestion" style="--dsc-suggestion-sr-plural: '%d resultater'">
+```
+
+For å legge til et annet språk, legg til en regel for det språket. Merk at regelen din må være mer spesifikk enn `.ds-suggestion:lang(no)` hvis du vil overstyre et av de innebygde språkene:
+
+```css
+.ds-suggestion:lang(sv) {
+  --dsc-suggestion-empty-text: 'Inga träffar';
+  --dsc-suggestion-sr-clear: 'Rensa text';
+  /* ...og resten av variablene */
+}
+```
+
+Tidligere ble tekstene satt med `data-sr-*`-attributter. Disse attributtene leses ikke lenger, så bruk CSS-variablene i stedet.
+
 
 ## Eksempel
 
@@ -69,13 +108,13 @@ Med `data-creatable` på suggestion kan en bruker opprette nye valgte alternativ
 
 ### Tøm valget
 
-Legg til en knapp med `type="reset"` og `aria-label` for å la brukeren tømme valget.
+Legg til en knapp med `type="reset"` for å la brukeren tømme valget. Knappen får ledetekst fra `--dsc-suggestion-sr-clear`.
 
 <Story story='Preview' />
 
 ### Åpne og lukk liste
 
-Legg til en knapp med `type="button" aria-expanded="false"` og `aria-label` for å la brukeren åpne og lukke listen.
+Legg til en knapp med `type="button" aria-expanded="false"` for å la brukeren åpne og lukke listen. Knappen får ledetekst fra `--dsc-suggestion-sr-toggle`.
 
 ### Med ekstern data
 
@@ -100,7 +139,7 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
   <Suggestion.Toggle />
   <Suggestion.Clear />
   <Suggestion.List>
-    <Suggestion.Empty>Tomt</Suggestion.Empty>
+    <Suggestion.Option data-empty>Ingen treff</Suggestion.Option>
     <Suggestion.Option label="Sogndal" value="sogndal">
       Sogndal
     </Suggestion.Option>
@@ -117,12 +156,31 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
 
 ### Eksempel på kontrollert flervalg
 
-Har du behov for å kontrollere hvilke alternativer som er valgt, kan du bruke `selected` og `onSelectedChange` på `Suggestion`.
+Har du behov for å kontrollere hvilke alternativer som er valgt, rendrer du de valgte elementene som `<data>` inne i `Suggestion`, og oppdaterer state i `oncomboboxbeforeselect`. Hjelpefunksjonen `suggestion` gjør om state til `{ label, value }`-elementer, bruker eventen på state, og rendrer hvert element:
+
+```tsx
+import { EXPERIMENTAL_Suggestion as Suggestion, suggestion } from '@digdir/designsystemet-react'
+
+const [selected, setSelected] = useState(suggestion(['Oslo']));
+const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (e) =>
+  setSelected(suggestion(selected, e));
+
+<Suggestion
+  data-multiple
+  oncomboboxbeforeselect={handleSelect}
+>
+  {suggestion(selected, ({ label, value }) => (
+    <data key={value} value={value}>{label}</data>
+  ))}
+  <Suggestion.Input />
+  ...
+</Suggestion>
+```
 
 <Story story='ControlledMultiple' layout='column' language="react" />
 
 ### Filter
-Filter er som standard på, og filteret ser etter teksten i input. Du kan sende inn ditt eget filter. Under vises et eksempel som skrur av filteret helt.
+Filter er som standard på, og filteret ser etter teksten i input. Legg til `data-nofilter` på `Suggestion.List` for å skru av det innebygde filteret, og render kun alternativene du vil vise. Under vises et eksempel med eget filter.
 
 <Story story='Filter' language="react"  />
 

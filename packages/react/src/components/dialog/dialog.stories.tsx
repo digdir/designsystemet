@@ -317,7 +317,7 @@ export const DialogWithSuggestion = meta.story({
                 <Suggestion.Input />
                 <Suggestion.Clear />
                 <Suggestion.List>
-                  <Suggestion.Empty>Tomt</Suggestion.Empty>
+                  <Suggestion.Option data-empty>Tomt</Suggestion.Option>
                   {DATA_PLACES.map((place) => (
                     <Suggestion.Option key={place} value={place}>
                       {place}

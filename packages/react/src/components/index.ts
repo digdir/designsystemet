@@ -215,10 +215,8 @@ export type {
   SuggestionInputProps,
   SuggestionItem,
   SuggestionListProps,
-  SuggestionMultipleProps,
   SuggestionOptionProps,
   SuggestionProps,
-  SuggestionSingleProps,
   SuggestionToggleProps,
 } from './suggestion';
 export {
@@ -229,6 +227,7 @@ export {
   EXPERIMENTAL_SuggestionList,
   EXPERIMENTAL_SuggestionOption,
   EXPERIMENTAL_SuggestionToggle,
+  suggestion,
 } from './suggestion';
 
 export type { SwitchProps } from './switch/switch';

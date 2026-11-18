@@ -1,28 +1,20 @@
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext, useEffect } from 'react';
-import '@digdir/designsystemet-web'; // Load u-datalist polyfill
+import { forwardRef } from 'react';
+import '@digdir/designsystemet-web/ds-suggestion'; // Load ds-suggestion and u-datalist polyfill
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { SuggestionContext } from './suggestion';
 
 export type SuggestionListProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDataListElement>,
   {
     /**
-     * The screen reader announcement for singular Suggestion, where %d is the number of Suggestions
-     * @deprecated Please use `data-sr-singular` on `<Suggestion>` instead
+     * Set to true to allow custom filtering
      */
-    singular?: string;
-    /**
-     * The screen reader announcement for plural Suggestions, where %d is the number of Suggestions
-     * @deprecated Please use `data-sr-plural` on `<Suggestion>` instead
-     */
-    plural?: string;
+    'data-nofilter'?: boolean;
     /**
      * Whether to enable auto placement.
-     * @default true
      */
-    autoPlacement?: boolean;
+    'data-autoplacement'?: boolean;
   }
 >;
 
@@ -40,24 +32,12 @@ export type SuggestionListProps = MergeRight<
 export const SuggestionList = forwardRef<
   HTMLDataListElement,
   SuggestionListProps
->(function SuggestionList(
-  { singular, plural, className, id, autoPlacement = true, ...rest },
-  ref,
-) {
-  const { handleFilter } = useContext(SuggestionContext);
-
-  useEffect(handleFilter); // Must run on every render
-
+>(function SuggestionList({ className, ...rest }, ref) {
   return (
     <u-datalist
       class={className} // Using "class" since React does not translate className on custom elements
-      data-nofilter
-      data-sr-plural={plural}
-      data-sr-singular={singular}
-      popover='manual'
-      ref={ref}
-      role='listbox' // Is also set by <ds-suggestion> but nice to have to please tests
       suppressHydrationWarning // Since <u-datalist> adds attributes
+      ref={ref}
       {...rest}
     />
   );

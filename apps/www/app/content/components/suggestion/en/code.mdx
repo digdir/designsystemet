@@ -50,6 +50,45 @@ You can read more about how to use these in the [u-elements `u-combobox` documen
 
 <CssAttributes exclude={['activedescendant']} />
 
+## Texts and translations
+
+All texts in Suggestion are set with CSS variables, including the texts that are only read by screen readers. Norwegian (`lang="no"`, `lang="nb"` or `lang="nn"`) and English (`lang="en"`) are built in, and Suggestion uses the closest `lang` attribute to choose between them.
+
+| CSS variable | Used for | English default |
+| --- | --- | --- |
+| `--dsc-suggestion-empty-text` | Text on an empty `data-empty` option | `'No hits'` |
+| `--dsc-suggestion-create-text` | Text before the typed value on the create option with `data-creatable` | `'Add'` |
+| `--dsc-suggestion-sr-clear` | Label for the clear button | `'Clear text'` |
+| `--dsc-suggestion-sr-toggle` | Label for the toggle button | `'Suggestions'` |
+| `--dsc-suggestion-sr-singular` | Number of hits, where `%d` is the number | `'%d suggestion'` |
+| `--dsc-suggestion-sr-plural` | Number of hits, where `%d` is the number | `'%d suggestions'` |
+| `--dsc-suggestion-sr-added` | Announced when an item is selected | `'Added'` |
+| `--dsc-suggestion-sr-removed` | Announced when an item is removed | `'Removed'` |
+| `--dsc-suggestion-sr-remove` | Hint on selected items | `'Press to remove'` |
+| `--dsc-suggestion-sr-items` | Label for the selected items | `'Selected'` |
+| `--dsc-suggestion-sr-empty` | Announced when no items are selected | `'None selected'` |
+| `--dsc-suggestion-sr-found` | Hint about selected items, where `%d` is the number | `'Navigate left to find %d selected'` |
+| `--dsc-suggestion-sr-of` | Between position and total, as in "1 of 3" | `'of'` |
+| `--dsc-suggestion-sr-invalid` | Announced when the value is invalid | `'Invalid value'` |
+
+To change a text, set the CSS variable on the suggestion itself:
+
+```html
+<ds-suggestion class="ds-suggestion" style="--dsc-suggestion-sr-plural: '%d results'">
+```
+
+To add another language, add a rule for that language. Note that your rule must be more specific than `.ds-suggestion:lang(en)` if you want to override one of the built-in languages:
+
+```css
+.ds-suggestion:lang(sv) {
+  --dsc-suggestion-empty-text: 'Inga träffar';
+  --dsc-suggestion-sr-clear: 'Rensa text';
+  /* ...and the rest of the variables */
+}
+```
+
+The texts were previously set with `data-sr-*` attributes. These attributes are no longer read, so use the CSS variables instead.
+
 ## Examples
 
 <Alert>
@@ -69,13 +108,13 @@ With `data-creatable` on suggestion, a user can create new selected options by e
 
 ### Clear selection
 
-Add a button with `type="reset"` and `aria-label` to allow users to clear the selection.
+Add a button with `type="reset"` to allow users to clear the selection. The button gets its label from `--dsc-suggestion-sr-clear`.
 
 <Story story='PreviewEn' />
 
 ### Toggle list
 
-Add a button with `type="button" aria-expanded="false"` and `aria-label` to allow users to toggle the list.
+Add a button with `type="button" aria-expanded="false"` to allow users to toggle the list. The button gets its label from `--dsc-suggestion-sr-toggle`.
 
 <Story story='PreviewEn' />
 
@@ -102,7 +141,7 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
   <Suggestion.Toggle />
   <Suggestion.Clear />
   <Suggestion.List>
-    <Suggestion.Empty>Empty</Suggestion.Empty>
+    <Suggestion.Option data-empty>No results</Suggestion.Option>
     <Suggestion.Option label="Sogndal" value="sogndal">
       Sogndal
     </Suggestion.Option>
@@ -117,12 +156,31 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
 
 ### Controlled multiple choice example
 
-If you need to control which options are selected, you can use `selected` and `onSelectedChange` on `Suggestion`.
+If you need to control which options are selected, render the selected items as `<data>` elements inside `Suggestion`, and update your state in `oncomboboxbeforeselect`. The `suggestion` helper converts your state to `{ label, value }` items, applies the event to your state, and renders each item:
+
+```tsx
+import { EXPERIMENTAL_Suggestion as Suggestion, suggestion } from '@digdir/designsystemet-react'
+
+const [selected, setSelected] = useState(suggestion(['Oslo']));
+const handleSelect: SuggestionProps['oncomboboxbeforeselect'] = (e) =>
+  setSelected(suggestion(selected, e));
+
+<Suggestion
+  data-multiple
+  oncomboboxbeforeselect={handleSelect}
+>
+  {suggestion(selected, ({ label, value }) => (
+    <data key={value} value={value}>{label}</data>
+  ))}
+  <Suggestion.Input />
+  ...
+</Suggestion>
+```
 
 <Story story='ControlledMultipleEn' layout='column' language="react" />
 
 ### Filter
 
-Filter is enabled by default, and the filter searches based on the text in the input. You can pass your own filter. The example below shows how to turn the filter off entirely.
+Filter is enabled by default, and the filter searches based on the text in the input. Add `data-nofilter` on `Suggestion.List` to turn off the built-in filter, and only render the options you want to show. The example below shows a custom filter.
 
 <Story story='Filter' language="react" />

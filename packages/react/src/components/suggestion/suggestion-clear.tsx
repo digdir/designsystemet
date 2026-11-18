@@ -1,17 +1,8 @@
 import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import type { MergeRight } from '../../utilities';
 
-export type SuggestionClearProps = MergeRight<
-  DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,
-  {
-    /**
-     * Aria label for the clear button
-     * @deprecated Please use `--dsc-suggestion-sr-clear` or `data-sr-clear` on Suggestion to set label.
-     */
-    'aria-label'?: string;
-  }
->;
+export type SuggestionClearProps = DefaultProps &
+  ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
  * Component that provides a clear button for the Suggestion input.

@@ -44,7 +44,18 @@ const meta = preview.meta({
   title: 'Inverted',
   parameters: {
     layout: 'fullscreen',
-    a11y: { manual: true },
+    a11y: {
+      manual: true,
+      config: {
+        rules: [
+          {
+            // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.
+            id: 'aria-allowed-role',
+            enabled: false,
+          },
+        ],
+      },
+    },
   },
   decorators: [
     (Story) => (
@@ -313,7 +324,7 @@ export const Inverted = meta.story({
             <Suggestion.Input />
             <Suggestion.Clear />
             <Suggestion.List>
-              <Suggestion.Empty>Tomt</Suggestion.Empty>
+              <Suggestion.Option data-empty>Tomt</Suggestion.Option>
               <Suggestion.Option value='Sogndal'>Sogndal</Suggestion.Option>
               <Suggestion.Option value='Oslo'>Oslo</Suggestion.Option>
             </Suggestion.List>
