@@ -200,6 +200,7 @@ export const semanticColorSpec: SemanticColorSpec = {
       light: 0.19,
       dark: 0.22,
     },
+    minContrast: [{ ratio: 3, against: [...backgrounds, ...surfaces] }],
     chroma: {
       factor: { light: 0.2, dark: 0.4 },
       max: 0.03,
@@ -214,6 +215,7 @@ export const semanticColorSpec: SemanticColorSpec = {
       light: 0.11,
       dark: 0.39,
     },
+    minContrast: [{ ratio: 4.5, against: [...backgrounds, ...surfaces] }],
     chroma: {
       factor: { light: 0.2, dark: 0.4 },
       max: 0.03,
