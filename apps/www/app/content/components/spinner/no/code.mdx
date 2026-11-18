@@ -1,9 +1,12 @@
-<Story story="Preview" defaultOpen truncateSvg={false}/>
+<Story story="Preview" defaultOpen />
 
 ## Bruk
 
-Legg klassenavnet `ds-spinner` på en `<svg>`-tagg for å lage en spinner.
-`<svg>`-en skal ha to `<circle>`-elementer inni seg for å lage spinneren.
+Legg klassenavnet `ds-spinner` på en `<progress>`-tagg for å lage en spinner.
+
+```html
+<progress class="ds-spinner" aria-label="Henter kaffi"></progress>
+```
 
 ## CSS variabler og data-attributter
 
