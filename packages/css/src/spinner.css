@@ -1,4 +1,5 @@
-/* Note: Spinner has same animation regardless of motion preference, as it is a small element */
+/* Note: Animation lives in --ds-icon-spinner, which slows down on prefers-reduced-motion.
+The animation is not decorative, so we slow it down rather than remove it. */
 .ds-spinner {
   --dsc-spinner-icon-url: var(--ds-icon-spinner);
 

@@ -1,6 +1,6 @@
 ---
-"@digdir/designsystemet-css": patch
-"@digdir/designsystemet-react": patch
+"@digdir/designsystemet-css": minor
+"@digdir/designsystemet-react": minor
 ---
 
-**Button:** Now renders spinner in CSS `::before` when `aria-busy="true"`
+**Button:** Now renders spinner in CSS `::before` when `aria-busy="true"`, so no need to add an `<svg>` inside

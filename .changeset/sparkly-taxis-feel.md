@@ -1,5 +1,5 @@
 ---
-"@digdir/designsystemet-react": minor
+"@digdir/designsystemet-react": major
 ---
 
 **Button:** No longer supports `loading={ReactNode}`, please instead use `aria-busy="true"` to render loading state

@@ -6,6 +6,11 @@
   --ds-icon-size: var(--ds-size-6);
   --ds-icon-spinner: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' fill='none' stroke='currentcolor' stroke-width='5' stroke-linecap='round'%3E%3Cstyle%3E @keyframes rotate %7B to %7B rotate:360deg %7D %7D @keyframes stroke %7B 50%25 %7Bstroke-dasharray:100,200;stroke-dashoffset:-15;transform:rotate(0deg)%7D to %7Bstroke-dasharray:1,200;stroke-dashoffset:-120;transform:rotate(15deg)%7D %7D circle:last-child%7Banimation:stroke ease-in-out infinite 2s,rotate linear infinite 2s;transform-origin:center%7D%3C/style%3E%3Ccircle cx='25' cy='25' r='20' opacity='.1'%3E%3C/circle%3E%3Ccircle cx='25' cy='25' r='20' stroke-dasharray='1, 200'%3E%3C/circle%3E%3C/svg%3E");
 
+  /* Slow down spinner if prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    --ds-icon-spinner: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' fill='none' stroke='currentcolor' stroke-width='5' stroke-linecap='round'%3E%3Cstyle%3E @keyframes rotate %7B to %7B rotate:360deg %7D %7D @keyframes stroke %7B 50%25 %7Bstroke-dasharray:100,200;stroke-dashoffset:-15;transform:rotate(0deg)%7D to %7Bstroke-dasharray:1,200;stroke-dashoffset:-120;transform:rotate(15deg)%7D %7D circle:last-child%7Banimation:stroke ease-in-out infinite 6s,rotate linear infinite 6s;transform-origin:center%7D%3C/style%3E%3Ccircle cx='25' cy='25' r='20' opacity='.1'%3E%3C/circle%3E%3Ccircle cx='25' cy='25' r='20' stroke-dasharray='1, 200'%3E%3C/circle%3E%3C/svg%3E");
+  }
+
   /* font-size adjustments if supporting round() */
   @supports (width: round(down, 0.1em, 1px)) {
     --ds-font-size-minus-1: round(down, max(0.9em, 0.875rem), 1px); /* Default to 90% of font-size, but minimum 14px */
