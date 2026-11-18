@@ -43,8 +43,6 @@ describe('usePagination', () => {
 
     expect(result.current.hasPrev).toBe(false);
     expect(result.current.hasNext).toBe(true);
-    expect(result.current.prevButtonProps['aria-hidden']).toBe(true);
-    expect(result.current.nextButtonProps['aria-hidden']).toBe(false);
   });
 
   it('should prevent next when at end', () => {
@@ -54,8 +52,18 @@ describe('usePagination', () => {
 
     expect(result.current.hasPrev).toBe(true);
     expect(result.current.hasNext).toBe(false);
-    expect(result.current.prevButtonProps['aria-hidden']).toBe(false);
-    expect(result.current.nextButtonProps['aria-hidden']).toBe(true);
+  });
+
+  it('marks the current page and does not leak value', () => {
+    const { result } = renderHook(() =>
+      usePagination({ totalPages: 10, currentPage: 3, showPages: 5 }),
+    );
+    const current = result.current.pages.find(({ page }) => page === 3);
+
+    expect(current?.buttonProps).toEqual({
+      'aria-current': 'page',
+      onClick: expect.any(Function),
+    });
   });
 
   it('should trigger onChange when clicking button', () => {

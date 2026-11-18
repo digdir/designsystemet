@@ -1,7 +1,6 @@
 import { pagination } from '@digdir/designsystemet-web';
 import type { MouseEvent } from 'react';
 import { useMemo } from 'react';
-import type { PaginationButtonProps } from '../../../components';
 
 export type UsePaginationProps = {
   /**
@@ -75,38 +74,30 @@ export const usePagination = ({
 
     return {
       /** Number of steps */
-      pages: pages.map(({ page, current }, index) => ({
+      pages: pages.map((page, index) => ({
         /**
          * Page number or "ellipsis" for the ellipsis item
          */
-        page: page || 'ellipsis',
+        page: page.value || 'ellipsis',
         /**
          * Unique key for the item
          */
-        itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
+        itemKey: page.value ? `page-${page.value}` : `ellipsis-${index}`, // React key utility
         /**
          * Properties to spread on Pagination.Button
          */
-        buttonProps: (page
-          ? {
-              'aria-current': current ? 'true' : undefined,
-              onClick: handleClick(page),
-            }
-          : null) as PaginationButtonProps | null,
+        buttonProps: {
+          'aria-current': page['aria-current'],
+          onClick: handleClick(page.value),
+        },
       })),
       /** Properties to spread on Pagination.Button used for previous navigation */
-      prevButtonProps: {
-        'aria-hidden': !prev, // Using aria-hidden to support all HTML elements because of potential asChild
-        onClick: handleClick(prev),
-      } as PaginationButtonProps,
+      prevButtonProps: { onClick: handleClick(prev.value) },
       /** Properties to spread on Pagination.Button used for next navigation */
-      nextButtonProps: {
-        'aria-hidden': !next, // Using aria-hidden to support all HTML elements because of potential asChild
-        onClick: handleClick(next),
-      } as PaginationButtonProps,
+      nextButtonProps: { onClick: handleClick(next.value) },
       /** Indication if previous page action should be shown or not */
-      hasPrev: !!prev,
+      hasPrev: !!prev.value,
       /** Indication if next page action should be shown or not */
-      hasNext: !!next,
+      hasNext: !!next.value,
     };
   }, [current, total, show]);

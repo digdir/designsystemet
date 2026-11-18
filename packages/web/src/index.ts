@@ -12,6 +12,7 @@ import './tooltip/tooltip';
 export * from './breadcrumbs/breadcrumbs';
 export * from './error-summary/error-summary';
 export * from './field/field';
+export * from './pagination/ds-pagination';
 export * from './pagination/pagination';
 export * from './suggestion/suggestion';
 export * from './tabs/tabs';

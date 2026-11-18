@@ -71,6 +71,11 @@
       "import": "./dist/esm/pagination/pagination.js",
       "require": "./dist/cjs/pagination/pagination.cjs"
     },
+    "./pagination": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/pagination/pagination-helper.js",
+      "require": "./dist/cjs/pagination/pagination-helper.cjs"
+    },
     "./popover": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/popover/popover.js",
