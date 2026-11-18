@@ -1,10 +1,11 @@
 import {
+  type Color,
   type SemanticColorNames,
   semanticColorSpec,
   type ThemeInfo,
 } from '@digdir/designsystemet/internal';
 import { ColorGroup } from '../color-group/color-group';
-import { capitalizeFirstLetter } from '../color-modal/util';
+import { capitalizeFirstLetter } from '../color-step-dialog/util';
 
 import classes from './color-scale.module.css';
 
@@ -32,25 +33,31 @@ const groups = Object.values(semanticColorSpec).reduce<Group[]>(
 
 type ScaleProps = {
   colorScale: ThemeInfo;
-  showHeader?: boolean;
+  /** Whether the names of the groups and steps are shown above the scale */
+  showHeader: boolean;
+  /** The name of the color */
   namespace: string;
+  onSelect: (step: Color) => void;
 };
 
-export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
-  return (
-    <div className={classes.themes}>
-      <div className={classes.test} focusgroup='menu inline'>
-        {groups.map(({ header, colorNames, names }) => (
-          <ColorGroup
-            key={header}
-            header={showHeader ? header : ''}
-            colorNames={colorNames}
-            colorScale={colorScale}
-            names={names}
-            namespace={namespace}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
+/** The scale of one color: a button for every step, in the groups of the spec */
+export const Scale = ({
+  colorScale,
+  showHeader,
+  namespace,
+  onSelect,
+}: ScaleProps) => (
+  <div className={classes.groups} focusgroup='menu inline'>
+    {groups.map(({ header, colorNames, names }) => (
+      <ColorGroup
+        key={header}
+        header={showHeader ? header : undefined}
+        colorNames={colorNames}
+        colorScale={colorScale}
+        names={names}
+        namespace={namespace}
+        onSelect={onSelect}
+      />
+    ))}
+  </div>
+);

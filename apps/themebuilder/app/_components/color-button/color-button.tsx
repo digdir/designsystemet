@@ -1,28 +1,17 @@
-import type { SemanticColorNames } from '@digdir/designsystemet/internal';
-import { Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import * as R from 'ramda';
-import { forwardRef } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import classes from './color-button.module.css';
 
 type ColorButtonProps = {
-  colorName: SemanticColorNames;
   color: string;
-  featured?: boolean;
-} & Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>;
 
-export const ColorButton = forwardRef<HTMLButtonElement, ColorButtonProps>(
-  ({ color, featured, ...rest }, ref) => {
-    return (
-      <Slottable>
-        <button
-          ref={ref}
-          style={{ backgroundColor: color }}
-          className={cl(classes.box, featured && classes.featured, 'ds-focus')}
-          type='button'
-          {...R.omit(['colorName'], rest)}
-        />
-      </Slottable>
-    );
-  },
+/** A button that shows a colour */
+export const ColorButton = ({ color, ...rest }: ColorButtonProps) => (
+  <button
+    style={{ backgroundColor: color }}
+    className={cl(classes.swatch, 'ds-focus')}
+    type='button'
+    {...rest}
+  />
 );
