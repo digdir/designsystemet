@@ -28,8 +28,13 @@ export const ThemeEditor = () => {
   const isMobile = useMediaQuery('(max-width: 768px)', {
     initializeWithValue: false,
   });
-  /* Whether the editor is opened with the button. On wide screens it is always shown. */
-  const [open, setOpen] = useState(false);
+  /* Whether the panel is opened with the button, on medium screens. On wide screens it is always shown. */
+  const [panelOpen, setPanelOpen] = useState(false);
+  /* Whether the dialog is open, on small screens. It is kept apart from the panel, so that a window
+   * that becomes small with the panel open does not get a dialog on top of the page. */
+  const [dialogOpen, setDialogOpen] = useState(false);
+  if (!isMobile && dialogOpen) setDialogOpen(false);
+  const open = isMobile ? dialogOpen : panelOpen;
   const [isSticky, setSticky] = useState(false);
 
   useEffect(() => {
@@ -68,10 +73,12 @@ export const ThemeEditor = () => {
         type='button'
         className={cl(
           classes.toggle,
-          open && !isMobile && classes.toggleOpen,
+          panelOpen && !isMobile && classes.toggleOpen,
           'ds-focus-visible',
         )}
-        onClick={() => setOpen(isMobile || !open)}
+        onClick={() =>
+          isMobile ? setDialogOpen(true) : setPanelOpen(!panelOpen)
+        }
         aria-label={t('themeBuilder.toggle-editor')}
         aria-expanded={open}
       >
@@ -79,9 +86,9 @@ export const ThemeEditor = () => {
       </button>
       {isMobile ? (
         <Dialog
-          open={open}
+          open={dialogOpen}
           className={classes.mobileDialog}
-          onClose={() => setOpen(false)}
+          onClose={() => setDialogOpen(false)}
         >
           <Dialog.Block>
             <Heading>{t('themeBuilder.title')}</Heading>
@@ -96,7 +103,7 @@ export const ThemeEditor = () => {
           className={cl(
             classes.panel,
             isSticky && classes.sticky,
-            open && classes.opened,
+            panelOpen && classes.opened,
           )}
         >
           {tabs}
