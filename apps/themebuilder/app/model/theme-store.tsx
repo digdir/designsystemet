@@ -85,13 +85,10 @@ export function ThemeStoreProvider({
   const theme = workspace.config.themes[workspace.activeTheme];
 
   /* The scales only depend on the colors and their overrides, so other edits, such as the border radius, do not regenerate them */
-  const colorKey = JSON.stringify({
-    colors: theme.colors,
-    overrides: theme.overrides,
-  });
+  const { colors: themeColors, overrides } = theme;
   const colors = useMemo(
-    () => resolveThemeColors(JSON.parse(colorKey)),
-    [colorKey],
+    () => resolveThemeColors({ colors: themeColors, overrides }),
+    [themeColors, overrides],
   );
 
   const store = useMemo(

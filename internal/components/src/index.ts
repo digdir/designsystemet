@@ -2,6 +2,7 @@ export { useDebounceCallback } from './_hooks/use-debounce-callback/use-debounce
 export { useMediaQuery } from './_hooks/use-media-query/use-media-query';
 export { ClipboardButton } from './clipboard-button/clipboard-button';
 export { CodeBlock, HighlightedCode } from './code-block/code-block';
+export { isPrettifySupported, prettifyCode } from './code-block/prettify';
 export { ContentContainer } from './content-container/content-container';
 export { Error404 } from './errors/error-404';
 export type { FooterLinkListItemProps } from './footer/footer';

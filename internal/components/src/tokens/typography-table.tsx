@@ -3,6 +3,7 @@ import type { HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '../_utils';
 import typographyTokens from './design-tokens/typography.json';
+import classes from './table.module.css';
 
 type TokenTableProps = {
   tokens: PreviewToken[];
@@ -14,10 +15,13 @@ type PreviewToken = { variable: string; value: string; path: string[] };
 const groupedByPathIndex =
   (index = 0) =>
   (tokens: PreviewToken[]) => {
-    const groups: Partial<Record<string, PreviewToken[]>> = {};
+    /* Without a prototype, so that a path part like `constructor` is a group like any other */
+    const groups: Partial<Record<string, PreviewToken[]>> = Object.create(null);
     for (const token of tokens) {
       const key = token.path[index] || 'rest';
-      groups[key] = [...(groups[key] ?? []), token];
+      const group = groups[key] ?? [];
+      group.push(token);
+      groups[key] = group;
     }
     return groups;
   };
@@ -90,7 +94,11 @@ const TypographySetTables = ({
     return Object.entries(groupByTypography).map(
       ([typographyName, typographyTokens]) => {
         return (
-          <div key={typographyName}>
+          <div
+            key={typographyName}
+            className={`${classes['overflow-table']} ds-focus`}
+            tabIndex={0}
+          >
             <Table data-color='neutral'>
               <caption>
                 <Heading level={5} data-size='sm'>
@@ -152,7 +160,11 @@ export const TypographyTable = ({ tokens }: TokenTableProps) => {
     return isTypography ? (
       <TypographySetTables key={path} tokens={groupByTypography} />
     ) : (
-      <div key={path}>
+      <div
+        key={path}
+        className={`${classes['overflow-table']} ds-focus`}
+        tabIndex={0}
+      >
         <Table data-color='neutral' key={path}>
           <caption>
             <Heading level={5} data-size='sm'>

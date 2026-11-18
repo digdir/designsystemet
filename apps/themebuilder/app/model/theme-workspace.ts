@@ -1,5 +1,6 @@
 import {
   type ColorScheme,
+  colorNameSchema,
   type ExternalConfigSchemaInput,
   type SemanticColorNames,
   severityColors,
@@ -32,8 +33,9 @@ export const REQUIRED_COLOR = 'neutral';
 export const canRenameColor = (name: string) =>
   name !== REQUIRED_COLOR && !Object.hasOwn(severityColors, name);
 
-/** The CLI's rule for the names of colors and themes: lowercase letters and digits, with single hyphens between them */
-const isValidName = (name: string) => themeNameSchema.safeParse(name).success;
+/** The CLI's rule for the name of a color: lowercase letters and digits, with single hyphens between them */
+const isValidColorName = (name: string) =>
+  colorNameSchema.safeParse(name).success;
 
 /**
  * Makes typed text a color name: spaces become hyphens, and characters the CLI does not allow in a color name are removed.
@@ -55,7 +57,7 @@ export const colorNameError = (
   current: string,
 ): 'empty' | 'invalid' | 'reserved' | 'duplicate' | null => {
   if (!name.trim()) return 'empty';
-  if (!isValidName(name)) return 'invalid';
+  if (!isValidColorName(name)) return 'invalid';
   if (name === REQUIRED_COLOR) return 'reserved';
   if (name !== current && names.includes(name)) return 'duplicate';
   return null;
@@ -68,8 +70,9 @@ export const newColorName = (names: string[]) => {
   return `color-${suffix}`;
 };
 
-/** Whether a name can be used for a theme. The rule is the CLI's, and the same as for color names. */
-export const isValidThemeName = (name: string) => isValidName(name);
+/** Whether a name can be used for a theme. The rule is the CLI's rule for theme names. */
+export const isValidThemeName = (name: string) =>
+  themeNameSchema.safeParse(name).success;
 
 /**
  * Renames, adds and removes themes in a single update.
@@ -165,8 +168,12 @@ export function updateActiveTheme(
   const themes = Object.fromEntries(
     Object.entries(workspace.config.themes).map(([themeName, theme]) => {
       const isActive = themeName === workspace.activeTheme;
-      if (!removed.length && !added.length)
-        return [themeName, isActive ? pruneOverrides(active) : theme];
+      if (!removed.length && !added.length) {
+        if (!isActive) return [themeName, theme];
+        /* Overrides the edit did not touch are kept as the same object, so that what is derived from them is not made again */
+        const untouched = active.overrides === previous.overrides;
+        return [themeName, untouched ? active : pruneOverrides(active)];
+      }
 
       const colors = isActive
         ? active.colors

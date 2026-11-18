@@ -105,6 +105,21 @@ describe('theme workspace', () => {
     expect(config.themes.first.colors.accent).toBe('#123456');
     expect(updateActiveTheme(workspace, (theme) => theme)).toBe(workspace);
   });
+  it('keeps the colors and overrides an edit does not change as the same objects', () => {
+    const start = updateActiveTheme({ config, activeTheme: 'first' }, (theme) =>
+      setColorOverride(theme, 'accent', 'base-default', 'light', '#ff0000'),
+    );
+    const before = start.config.themes.first;
+    const after = updateActiveTheme(start, (theme) => ({
+      ...theme,
+      borderRadius: 12,
+    })).config.themes.first;
+
+    expect(after.borderRadius).toBe(12);
+    expect(after.colors).toBe(before.colors);
+    expect(after.overrides).toBe(before.overrides);
+  });
+
   it("renames a color in every theme, keeping each theme's value, position and step overrides", () => {
     const withOverrides = {
       ...config,

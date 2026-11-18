@@ -19,6 +19,14 @@
     code {
       font-size: min(0.8em, 14px);
     }
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+
+    &.noWrap {
+      white-space: pre;
+      overflow-wrap: normal;
+    }
   }
 
   .highlightedCode {
@@ -42,11 +50,18 @@
     contain: inline-size;
   }
 
+  .wrapButton,
   .copyButton {
     border-radius: 0;
-    margin-left: auto;
     font-weight: var(--ds-font-weight-regular);
+  }
+  .copyButton {
     border-top-right-radius: var(--border-radius);
+  }
+
+  .wrapButton svg {
+    height: 1.5em;
+    width: 1.5em;
   }
   .stack {
     display: grid;
