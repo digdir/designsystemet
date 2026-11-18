@@ -5,6 +5,7 @@ export type ErrorSummaryLinkProps = LinkProps;
 
 /**
  * ErrorSummary link component, used to link to a specific error. Used within an ErrorSummary.Item.
+ * Renders a `Link`, which you can also use directly.
  *
  * @example
  * <ErrorSummary>

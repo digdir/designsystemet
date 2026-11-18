@@ -5,6 +5,7 @@ export type ErrorSummaryHeadingProps = HeadingProps;
 
 /**
  * ErrorSummary heading component, used to display a heading for the error summary.
+ * Renders a `Heading`, which you can also use directly.
  *
  * @example
  * <ErrorSummary>

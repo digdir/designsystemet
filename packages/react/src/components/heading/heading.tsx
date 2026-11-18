@@ -34,7 +34,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       <Component
         className={cl(`ds-heading`, className)}
         ref={ref}
-        suppressHydrationWarning // Since <ds-error-summary> adds id
+        suppressHydrationWarning // Since <ds-error-summary> will add id attribute dynamically
         {...rest}
       />
     );

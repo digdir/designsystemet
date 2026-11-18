@@ -5,12 +5,14 @@
 The class name `ds-error-summary` is used on the `<ds-error-summary>` element.
 The web component handles focus when it becomes visible and `aria-labelledby` automatically.
 
+Start with a heading (`h2`–`h6`) with the class `ds-heading`, which becomes the accessible name of the error summary.
 We add a `<ul class="ds-list">` after the heading which contains a list of errors.
 Each error is a `<li>` with a link (`<a>`) that has the class `ds-link` and an `href` to the relevant field with the error.
 
 ## CSS variables and data attributes
 
-Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors with [data-color](/en/fundamentals/code/colors). The component will inherit from the closest parent where these are set.
+Sizes are controlled with [data-size](/en/fundamentals/code/sizes). The component will inherit from the closest parent where this is set.
+The colors always come from the `danger` color, and do not follow [data-color](/en/fundamentals/code/colors).
 
 <CssVariables />
 

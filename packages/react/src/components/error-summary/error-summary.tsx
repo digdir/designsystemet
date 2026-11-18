@@ -18,15 +18,15 @@ export type ErrorSummaryProps = {
  *
  * @example
  * <ErrorSummary>
- *   <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
- *   <ErrorSummary.List>
- *     <ErrorSummary.Item>
- *       <ErrorSummary.Link href='#'>Error 1</ErrorSummary.Link>
- *     </ErrorSummary.Item>
- *     <ErrorSummary.Item>
- *       <ErrorSummary.Link href='#'>Error 2</ErrorSummary.Link>
- *     </ErrorSummary.Item>
- *   </ErrorSummary.List>
+ *   <Heading>Heading</Heading>
+ *   <List.Unordered>
+ *     <List.Item>
+ *       <Link href='#'>Error 1</Link>
+ *     </List.Item>
+ *     <List.Item>
+ *       <Link href='#'>Error 2</Link>
+ *     </List.Item>
+ *   </List.Unordered>
  * </ErrorSummary>
  */
 export const ErrorSummary = forwardRef<
