@@ -34,6 +34,7 @@
 
 - Icons should be data-uri encoded, and set in custom properties ending in `-icon`
   - We place the icons using pseudo elements with `mask`
+  - When an icon is a global source, shared by more than one component, name it `--ds-icon-{NAME}` instead. Components then point their own icon custom property at it, so the graphic stays overridable per component. For example `--dsc-spinner-icon-url: var(--ds-icon-spinner)`.
 - When using duplicate code, try to use `@composes`
 - When a certain DOM structure is needed, target for this structure. It should break if another structure is used.
 - Use `@media(hover: hover) and (pointer: fine)` to only get hover on devices that benefit from it
