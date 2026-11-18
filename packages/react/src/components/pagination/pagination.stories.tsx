@@ -128,3 +128,31 @@ export const Mobile = meta.story(() => (
     </Pagination.List>
   </Pagination>
 ));
+
+export const RTL = meta.story(() => (
+  <Pagination dir='rtl'>
+    <Pagination.List>
+      <Pagination.Item>
+        <Pagination.Button aria-label='Forrige side' />
+      </Pagination.Item>
+
+      <Pagination.Item>
+        <Pagination.Button aria-label='Side 2'>2</Pagination.Button>
+      </Pagination.Item>
+
+      <Pagination.Item>
+        <Pagination.Button aria-label='Side 3' aria-current='true'>
+          3
+        </Pagination.Button>
+      </Pagination.Item>
+
+      <Pagination.Item>
+        <Pagination.Button aria-label='Side 4'>4</Pagination.Button>
+      </Pagination.Item>
+
+      <Pagination.Item>
+        <Pagination.Button aria-label='Neste side' />
+      </Pagination.Item>
+    </Pagination.List>
+  </Pagination>
+));
