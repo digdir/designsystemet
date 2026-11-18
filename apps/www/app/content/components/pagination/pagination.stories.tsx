@@ -81,10 +81,7 @@ export const WithButton = () => {
     <Pagination aria-label='Sidenavigering'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button
-            inert={prev.inert}
-            onClick={() => setCurrent(prev.value)}
-          >
+          <Pagination.Button {...prev} onClick={() => setCurrent(prev.value)}>
             Forrige
           </Pagination.Button>
         </Pagination.Item>
@@ -96,10 +93,7 @@ export const WithButton = () => {
           </Pagination.Item>
         ))}
         <Pagination.Item>
-          <Pagination.Button
-            inert={next.inert}
-            onClick={() => setCurrent(next.value)}
-          >
+          <Pagination.Button {...next} onClick={() => setCurrent(next.value)}>
             Neste
           </Pagination.Button>
         </Pagination.Item>
@@ -120,10 +114,7 @@ export const WithButtonEn = () => {
     <Pagination aria-label='Page navigation'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button
-            inert={prev.inert}
-            onClick={() => setCurrent(prev.value)}
-          >
+          <Pagination.Button {...prev} onClick={() => setCurrent(prev.value)}>
             Previous
           </Pagination.Button>
         </Pagination.Item>
@@ -135,10 +126,7 @@ export const WithButtonEn = () => {
           </Pagination.Item>
         ))}
         <Pagination.Item>
-          <Pagination.Button
-            inert={next.inert}
-            onClick={() => setCurrent(next.value)}
-          >
+          <Pagination.Button {...next} onClick={() => setCurrent(next.value)}>
             Next
           </Pagination.Button>
         </Pagination.Item>
@@ -158,8 +146,10 @@ export const WithAnchor = () => {
     <Pagination aria-label='Sidenavigering'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button asChild inert={prev.inert}>
-            <a href={`#side-${prev.value}`}>Forrige</a>
+          <Pagination.Button asChild>
+            <a inert={prev.inert} href={`#side-${prev.value}`}>
+              Forrige
+            </a>
           </Pagination.Button>
         </Pagination.Item>
         {pages.map(({ value, ...props }, index) => (
@@ -170,8 +160,10 @@ export const WithAnchor = () => {
           </Pagination.Item>
         ))}
         <Pagination.Item>
-          <Pagination.Button asChild inert={next.inert}>
-            <a href={`#side-${next.value}`}>Neste</a>
+          <Pagination.Button asChild>
+            <a inert={next.inert} href={`#side-${next.value}`}>
+              Neste
+            </a>
           </Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
@@ -189,8 +181,10 @@ export const WithAnchorEn = () => {
     <Pagination aria-label='Page navigation'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button asChild inert={prev.inert}>
-            <a href={`#page-${prev.value}`}>Previous</a>
+          <Pagination.Button asChild>
+            <a inert={prev.inert} href={`#page-${prev.value}`}>
+              Previous
+            </a>
           </Pagination.Button>
         </Pagination.Item>
         {pages.map(({ value, ...props }, index) => (
@@ -201,8 +195,10 @@ export const WithAnchorEn = () => {
           </Pagination.Item>
         ))}
         <Pagination.Item>
-          <Pagination.Button asChild inert={next.inert}>
-            <a href={`#page-${next.value}`}>Next</a>
+          <Pagination.Button asChild>
+            <a inert={next.inert} href={`#page-${next.value}`}>
+              Next
+            </a>
           </Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
