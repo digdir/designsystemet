@@ -25,8 +25,7 @@ Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors wi
 `pagination` is a plain function that calculates which steps to show. It has no dependencies on the DOM or any framework, so you can use it in React, Vue, Svelte, on the server or in plain JavaScript. You render the elements yourself, and the function tells you what each element should contain.
 
 ```ts
-import { pagination } from '@digdir/designsystemet-web';
-// or from '@digdir/designsystemet-react' if you already use the React package
+import { pagination } from '@digdir/designsystemet-web/pagination';
 
 const { prev, next, pages } = pagination({ current: 5, total: 10, show: 7 });
 ```
@@ -67,6 +66,8 @@ Properties that do not apply are `undefined`, so you can spread a step directly 
   ],
 }
 ```
+
+Set `inert` on the previous and next button/link, as shown in the examples below. The previous/next button is only hidden when it has `inert`, so without it the button stays visible and clickable on the first and last page.
 
 ## React
 

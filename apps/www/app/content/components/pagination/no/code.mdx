@@ -25,8 +25,7 @@ Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [d
 `pagination` er en ren funksjon som regner ut hvilke steg som skal vises. Den er ikke avhengig av DOM eller noe rammeverk, så du kan bruke den i React, Vue, Svelte, på serveren eller i ren JavaScript. Du tegner ut elementene selv, og funksjonen forteller deg hva hvert element skal inneholde.
 
 ```ts
-import { pagination } from '@digdir/designsystemet-web';
-// eller fra '@digdir/designsystemet-react' om du allerede bruker React-pakken
+import { pagination } from '@digdir/designsystemet-web/pagination';
 
 const { prev, next, pages } = pagination({ current: 5, total: 10, show: 7 });
 ```
@@ -66,6 +65,8 @@ Egenskaper som ikke gjelder er `undefined`, så du kan spre et steg direkte på 
   ],
 }
 ```
+
+Sett `inert` på forrige- og neste-knappen/lenken, slik eksemplene under viser. Forrige/neste-knappen skjules kun når den har `inert`, så uten denne forblir knappen synlig og klikkbar på første og siste side.
 
 ## React
 

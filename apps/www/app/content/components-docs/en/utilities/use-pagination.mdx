@@ -4,6 +4,10 @@ sidebar_title: usePagination
 order: 40
 ---
 
+<Alert data-color="warning">
+This hook is deprecated, please use the [`pagination` helper](/en/components/docs/pagination/code) instead.
+</Alert>
+
 <Story story="Preview" />
 
 A React hook to handle pagination.
@@ -21,7 +25,7 @@ const pagination = {
   pages: Array<{
     page: number | string; // Number of page, or "ellipsis" string if the button should be ...
     itemKey: string; // key you can pass to Pagination.Item to ensure correct focus handling
-    buttonProps: PaginationButtonProps; // Properties you can spread on Pagination.Button
+    buttonProps: PaginationButtonProps | null; // Properties you can spread on Pagination.Button, or null for ellipsis
   }>
 }
 ```

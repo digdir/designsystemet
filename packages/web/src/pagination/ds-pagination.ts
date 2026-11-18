@@ -22,7 +22,6 @@ const ATTR_HREF = 'data-href';
 
 export class DSPaginationElement extends DSElement {
   _unmutate?: () => void; // Using underscore instead of private fields for backwards compatibility
-  _render?: () => void;
 
   static get observedAttributes() {
     return [ARIA_LABEL, ARIA_LABELLEDBY, ATTR_CURRENT, ATTR_TOTAL, ATTR_HREF]; // Using ES2015 syntax for backwards compatibility
@@ -50,7 +49,7 @@ export class DSPaginationElement extends DSElement {
   }
   disconnectedCallback() {
     this._unmutate?.();
-    this._unmutate = this._render = undefined;
+    this._unmutate = undefined;
   }
 }
 
@@ -79,7 +78,7 @@ const render = (self: DSPaginationElement) => {
       else if (!attr(el, ARIA_LABELLEDBY) && !el.textContent?.trim())
         attr(el, ARIA_LABEL, attrOrCSS(el, ARIA_LABEL)); // If prev/next is not named by consumer fallback to CSS-variable in Norwegian
 
-      if (isLink) attr(el, 'href', href.replace('%d', value || '#'));
+      if (isLink) attr(el, 'href', href.replace('%d', value || '0'));
       attr(el, 'value', el.nodeName === 'BUTTON' ? value : null);
     });
   }

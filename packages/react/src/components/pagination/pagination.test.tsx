@@ -1,4 +1,6 @@
+import { pagination } from '@digdir/designsystemet-web/pagination';
 import { render, screen } from '@testing-library/react';
+import '../../../../css/src/pagination.css'; // Needed to test prev/next visibility, which is controlled by CSS
 import { Pagination } from './';
 import type { PaginationProps } from './pagination';
 
@@ -85,5 +87,47 @@ describe('Pagination.Button', () => {
 
     expect(screen.getByText('1')).toBeInTheDocument();
     expect(screen.getByRole('link')).toBeInTheDocument();
+  });
+});
+
+describe('Pagination prev/next visibility', () => {
+  const total = 10;
+  const cases = [1, 2, 3].flatMap((show) =>
+    [1, 5, total].map((current) => ({ show, current })),
+  );
+
+  it.each(cases)('show $show on page $current of 10', ({ show, current }) => {
+    const { pages, prev, next } = pagination({ current, total, show });
+
+    render(
+      <Pagination aria-label='Pagination'>
+        <Pagination.List>
+          <Pagination.Item>
+            <Pagination.Button inert={prev.inert}>Forrige</Pagination.Button>
+          </Pagination.Item>
+          {pages.map(({ value, ...props }, index) => (
+            <Pagination.Item key={value || `ellipsis-${index}`}>
+              <Pagination.Button {...props}>{value}</Pagination.Button>
+            </Pagination.Item>
+          ))}
+          <Pagination.Item>
+            <Pagination.Button inert={next.inert}>Neste</Pagination.Button>
+          </Pagination.Item>
+        </Pagination.List>
+      </Pagination>,
+    );
+
+    const prevButton = screen.getByText('Forrige');
+    const nextButton = screen.getByText('Neste');
+    const currentButton = screen.getByText(`${current}`);
+
+    expect(currentButton).toBeVisible();
+    expect(currentButton).toHaveAttribute('aria-current', 'page');
+
+    if (current > 1) expect(prevButton).toBeVisible();
+    else expect(prevButton).not.toBeVisible();
+
+    if (current < total) expect(nextButton).toBeVisible();
+    else expect(nextButton).not.toBeVisible();
   });
 });

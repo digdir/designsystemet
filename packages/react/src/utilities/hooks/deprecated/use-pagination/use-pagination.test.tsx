@@ -66,6 +66,49 @@ describe('usePagination', () => {
     });
   });
 
+  it('returns null buttonProps for ellipsis entries', () => {
+    const { result } = renderHook(() =>
+      usePagination({ totalPages: 10, currentPage: 5, showPages: 7 }),
+    );
+    const { pages } = result.current;
+
+    expect(pages.map(({ page }) => page)).toEqual([
+      1,
+      'ellipsis',
+      4,
+      5,
+      6,
+      'ellipsis',
+      10,
+    ]);
+    expect(pages[1]).toEqual({
+      page: 'ellipsis',
+      itemKey: 'ellipsis-1',
+      buttonProps: null,
+    });
+    expect(pages[5]).toEqual({
+      page: 'ellipsis',
+      itemKey: 'ellipsis-5',
+      buttonProps: null,
+    });
+
+    for (const { page, buttonProps } of pages)
+      if (page !== 'ellipsis') expect(buttonProps).not.toBeNull();
+  });
+
+  it('marks prev/next as inert only when out of bounds', () => {
+    const at = (currentPage: number) =>
+      renderHook(() => usePagination({ totalPages: 10, currentPage })).result
+        .current;
+
+    expect(at(1).prevButtonProps.inert).toBe(true);
+    expect(at(1).nextButtonProps.inert).toBeUndefined();
+    expect(at(5).prevButtonProps.inert).toBeUndefined();
+    expect(at(5).nextButtonProps.inert).toBeUndefined();
+    expect(at(10).prevButtonProps.inert).toBeUndefined();
+    expect(at(10).nextButtonProps.inert).toBe(true);
+  });
+
   it('should trigger onChange when clicking button', () => {
     const mockOnChange = vi.fn();
     const event = {

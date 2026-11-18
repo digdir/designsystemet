@@ -4,10 +4,11 @@
 "@digdir/designsystemet-web": major
 ---
 
-**Pagination:** Now uses `hidden` to hide buttons/links instead of arbitrary `aria-label` values. Previous/next are hidden by CSS only, so `aria-hidden` is no longer needed.
-
-Breaking:
-- `pagination()` from `@digdir/designsystemet-web` returns a new shape: `prev` and `next` are `{ value: number }` instead of `number`, and each entry in `pages` is `{ value: number, 'aria-current'?: 'page' }` instead of `{ page, current, key }`. `key` is removed — use the page number or the array index for React keys.
-- `usePagination()` no longer returns `aria-hidden` on `prevButtonProps`/`nextButtonProps`.
+**Pagination:**
+- Now uses `inert` to hide buttons/links instead of arbitrary `aria-label` values.
+- The `pagination()` helper is available without side effects from `@digdir/designsystemet-web/pagination`, and is re-exported from `@digdir/designsystemet-react` together with the types `PaginationOptions`, `PaginationResult` and `PaginationStep`.
+- `Button` in `@digdir/designsystemet-react` supports `inert` in both React 18 and 19.
+- `usePagination()` is deprecated. Use the `pagination()` helper instead.
+- `aria-current="page"` is used instead of `aria-current="true"`
 - The `--dsc-pagination-ellipsis` CSS variable is removed. Use `--dsc-pagination-ellipsis-size` to control the ellipsis width.
 - The deprecated styling for manually setting `data-variant="tertiary"` on the current page is removed — `aria-current` alone drives active styling.

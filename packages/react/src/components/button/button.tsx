@@ -5,7 +5,7 @@ import { forwardRef, version } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
-const IS_REACT_19 = version.startsWith('19');
+const IS_REACT_19 = Number(version.split('.')[0]) >= 19;
 
 export type ButtonProps = MergeRight<
   DefaultProps &
@@ -84,7 +84,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const Component = asChild ? Slot : 'button';
     const popoverVal = popoverTarget ?? popovertarget;
     const popoverKey = IS_REACT_19 ? 'popoverTarget' : 'popovertarget';
-    const inertVal = inert ? (IS_REACT_19 ? true : '') : inert; // React 19 uses true, React 18 uses ''
+    const inertVal = inert ? (IS_REACT_19 ? true : '') : undefined; // React 19 uses true, React 18 uses ''
     const commandForVal = commandFor ?? commandfor;
 
     // Fallbacks to undefined to prevent rendering attribute="false"

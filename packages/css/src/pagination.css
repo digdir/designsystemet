@@ -1,7 +1,7 @@
 .ds-pagination {
   --dsc-pagination-gap: var(--ds-size-2);
   --dsc-pagination-icon-size: var(--ds-icon-size);
-  --dsc-pagination-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M9.47 5.97a.75.75 0 0 1 1.06 0l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06L14.44 12 9.47 7.03a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
+  --dsc-pagination-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M14.53 5.97a.75.75 0 0 0-1.06 0l-5.5 5.5a.75.75 0 0 0 0 1.06l5.5 5.5a.75.75 0 1 0 1.06-1.06L9.56 12l4.97-4.97a.75.75 0 0 0 0-1.06'/%3E%3C/svg%3E");
   --dsc-pagination-ellipsis-size: var(--ds-size-12);
   --_ds-aria-label: var(--dsc-pagination-label); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
 
@@ -37,10 +37,7 @@
       --_ds-aria-label: var(--dsc-pagination-label-next);
     }
 
-    & > li:first-child:has(+ li > [aria-current]:not([aria-current='false'])) /* If first is succeeded by current */,
-    & > li:has(> [aria-current]:not([aria-current='false'])) + li:last-child /* If last is preceded by current */,
-    & > li:has(> [aria-current]:not([aria-current='false'])) + li:has(> [hidden]) ~ li:last-child /* If last is preceded by current and only hidden items */,
-    & > li:has(> [inert]):is(:first-child, :last-child) /* If last or first is non-interactive */ {
+    & > li:is(:first-child, :last-child):has(> [inert]) {
       visibility: hidden; /* Hide prev/next when last/first-page */
     }
 
@@ -69,15 +66,21 @@
     }
     & > li:last-child > ::before {
       order: 1;
-    }
-    &:dir(ltr) > li:first-child > ::before,
-    &:dir(rtl) > li:last-child > ::before {
       rotate: 180deg;
     }
 
+    /* :dir() does not have 100% support, so only apply for RTL */
+    &:dir(rtl) > li:first-child > ::before {
+      rotate: 180deg;
+    }
+    &:dir(rtl) > li:last-child > ::before {
+      rotate: 0deg;
+    }
+
     & > li:not(:first-child, :last-child) {
+      /* Use <li> with no content or [inert] content as ellipsis */
       &:is(:empty, :has(> [inert]))::before {
-        content: '\2026'; /* Use <li> with no content or [inert] content as ellipsis */
+        content: '\2026'; /* "Ellipsis" should be announced by screen readers */
         display: block;
         text-align: center;
         min-width: var(--dsc-pagination-ellipsis-size);

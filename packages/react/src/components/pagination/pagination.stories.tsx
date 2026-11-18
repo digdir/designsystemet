@@ -1,4 +1,5 @@
-import { type PaginationOptions, pagination } from '@digdir/designsystemet-web';
+import { pagination } from '@digdir/designsystemet-web';
+import { useState } from 'react';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { Pagination } from './';
 
@@ -42,9 +43,12 @@ export const Preview = meta.story(() => {
 });
 
 export const WithAnchor = meta.story({
-  render: (args) => {
-    const { current, total, show } = args as PaginationOptions;
-    const { pages, prev, next } = pagination({ current, total, show });
+  render: () => {
+    const { pages, prev, next } = pagination({
+      current: 2,
+      total: 10,
+      show: 7,
+    });
 
     return (
       <Pagination aria-label='Sidenavigering'>
@@ -69,12 +73,6 @@ export const WithAnchor = meta.story({
         </Pagination.List>
       </Pagination>
     );
-  },
-
-  args: {
-    current: 2,
-    total: 10,
-    show: 7,
   },
 });
 
@@ -129,3 +127,42 @@ export const RTL = meta.story(() => (
     </Pagination.List>
   </Pagination>
 ));
+
+export const WithHelper = meta.story(() => {
+  const [current, setCurrent] = useState(2);
+  const { pages, prev, next } = pagination({
+    current,
+    total: 10,
+    show: 2,
+  });
+
+  return (
+    <Pagination aria-label='Sidenavigering'>
+      <Pagination.List>
+        <Pagination.Item>
+          <Pagination.Button
+            inert={prev.inert}
+            onClick={() => setCurrent(prev.value)}
+          >
+            Forrige
+          </Pagination.Button>
+        </Pagination.Item>
+        {pages.map(({ value, ...props }, index) => (
+          <Pagination.Item key={value || `ellipsis-${index}`}>
+            <Pagination.Button {...props} onClick={() => setCurrent(value)}>
+              {value}
+            </Pagination.Button>
+          </Pagination.Item>
+        ))}
+        <Pagination.Item>
+          <Pagination.Button
+            inert={next.inert}
+            onClick={() => setCurrent(next.value)}
+          >
+            Neste
+          </Pagination.Button>
+        </Pagination.Item>
+      </Pagination.List>
+    </Pagination>
+  );
+});
