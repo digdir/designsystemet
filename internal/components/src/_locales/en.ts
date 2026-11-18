@@ -34,6 +34,10 @@ export default {
     copy: 'Copy',
     copied: 'Copied',
   },
+  'code-block': {
+    'enable-wrap': 'Enable line wrapping',
+    'disable-wrap': 'Disable line wrapping',
+  },
   'color-metadata': colorMetadata,
   'token-preview': {
     size: {
