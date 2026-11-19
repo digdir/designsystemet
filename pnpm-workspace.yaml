@@ -16,6 +16,9 @@ injectWorkspacePackages: true
 minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - "@u-elements/*"
+  # temp, can be removed monday 23 nov
+  - "@react-router/*"
+  - react-router
 packageExtensions:
   "@navikt/aksel-icons":
     peerDependencies:
@@ -29,6 +32,6 @@ syncInjectedDepsAfterScripts:
   - build:www
   - build:themebuilder
   - build:storybook
-nodeVersion: "24.22.2"
+nodeVersion: "24.22.3"
 patchedDependencies:
   '@u-elements/u-combobox': patches/@u-elements__u-combobox.patch
