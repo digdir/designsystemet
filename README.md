@@ -53,6 +53,8 @@ Learn how you can contribute to this project by reading our [Code of Conduct](./
 
 Our [documentation](https://designsystemet.no/en/fundamentals/code/setup) and [patterns](https://designsystemet.no/en/patterns) are available as Markdown. Append `.md` to a page URL or request it with `Accept: text/markdown`. See [llms.txt](https://designsystemet.no/llms.txt) for a documentation index.
 
+For task-specific agent guidance, see the [Designsystemet skill](./skills/designsystemet/SKILL.md).
+
 ## Contributors
 
 We are lucky to have a great group of people who have contributed to Designsystemet.
