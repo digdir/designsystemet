@@ -1,5 +1,6 @@
 ---
 "@digdir/designsystemet": patch
+"@digdir/designsystemet-css": patch
 "figma-plugin": patch
 ---
 
