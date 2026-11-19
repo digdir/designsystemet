@@ -32,6 +32,29 @@ describe('importing a config', () => {
     vi.restoreAllMocks();
   });
 
+  it('gives whole-number sizes their exact value in every size mode', async () => {
+    const model = await createTokenModel(
+      JSON.stringify({
+        themes: { test: { colors: { accent: '#0062ba', neutral: '#24272b' } } },
+      }),
+    );
+    const specs = buildCollectionSpecs(
+      model,
+      getTokenSetLookupOrder(model),
+      createImportLog(),
+    );
+    const size = specs.find((spec) => spec.name === 'Size');
+    const sizeValue = (name: string, mode: string) =>
+      size?.variables.get(name)?.valuesByMode.get(mode);
+
+    // Large is 4 / 18 * 21 = 4.666… per step, so every third step is a whole number. Dividing
+    // first made these 13.999… in floating point, which floor() turned into 13 instead of 14.
+    expect(sizeValue('_size/3', 'large')).toEqual({ kind: 'raw', value: 14 });
+    expect(sizeValue('_size/30', 'large')).toEqual({ kind: 'raw', value: 140 });
+    expect(sizeValue('_size/3', 'medium')).toEqual({ kind: 'raw', value: 12 });
+    expect(sizeValue('_size/3', 'small')).toEqual({ kind: 'raw', value: 10 });
+  });
+
   it('never runs a value from the config as code', async () => {
     vi.spyOn(console, 'log').mockImplementation(() => {});
     const probe = vi.fn((value: unknown) => value);

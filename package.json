@@ -5,10 +5,10 @@
   "private": true,
   "packageManager": "pnpm@12.18.0",
   "engines": {
-    "node": ">=24.22.2",
+    "node": ">=24.22.3",
     "runtime": {
       "name": "node",
-      "version": "24.22.2",
+      "version": "24.22.3",
       "onFail": "download"
     }
   },
