@@ -43,7 +43,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     ['primitives/modes/size/global', generateSizeGlobal(size)],
     ...sizeModes.map((sizeMode): [string, TokenSet] => [
       `primitives/modes/typography/size/${sizeMode}`,
-      generateTypographyMode(sizeMode, typography),
+      generateTypographyMode(sizeMode, typography, size),
     ]),
     ...Object.entries(typography.fonts).map(([setName, set]): [string, TokenSet] => [
       `primitives/modes/typography/${setName}/${name}`,
