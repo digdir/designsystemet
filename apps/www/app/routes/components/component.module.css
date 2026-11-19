@@ -24,7 +24,7 @@
     margin-bottom: var(--ds-size-4);
   }
   h3 {
-    margin-top: var(--ds-size-9);
+    margin-top: var(--ds-size-2);
     margin-bottom: var(--ds-size-3);
   }
   h4 {
@@ -71,15 +71,40 @@
   margin-bottom: var(--ds-size-14);
   overflow-wrap: anywhere;
 
+  /* The version stays in view while its release is read, as a release can be several screens long */
   > header {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 1;
+    margin-bottom: var(--ds-size-2);
+    background: var(--ds-color-neutral-background-default);
+  }
+  /* Changes fade out under the stuck version. Over the empty space below an unstuck one, it is not visible */
+  > header::after {
+    content: '';
+    position: absolute;
+    inset: 100% 0 auto;
+    height: var(--ds-size-3);
+    background: linear-gradient(var(--ds-color-neutral-background-default), transparent);
+    pointer-events: none;
+  }
+  > header > div {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     column-gap: var(--ds-size-2);
-    margin-bottom: var(--ds-size-5);
+    padding-block: var(--ds-size-3);
   }
   h2 {
     margin: 0;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   }
   /* Tables keep whole words in their cells and scroll sideways in their wrapper when too wide */
   table {
@@ -141,6 +166,11 @@
     background: var(--ds-color-neutral-base-default);
     color: var(--ds-color-neutral-base-contrast-default);
   }
+}
+/* Major changes can break things for the reader, so they stand out from the rest */
+.changelogType[data-change-type='major'] .changelogTypeHeading svg {
+  background: var(--ds-color-warning-base-default);
+  color: var(--ds-color-warning-base-contrast-default);
 }
 .changelogTags {
   display: flex;

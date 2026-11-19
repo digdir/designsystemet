@@ -22,7 +22,11 @@ import {
 import cl from 'clsx/lite';
 import { type ComponentProps, createContext, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { isRouteErrorResponse, useSearchParams } from 'react-router';
+import {
+  isRouteErrorResponse,
+  Link as RRLink,
+  useSearchParams,
+} from 'react-router';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -81,7 +85,11 @@ function ChangelogSection(props: unknown) {
   if (type) {
     const { title, icon: Icon } = CHANGE_TYPES[type];
     return (
-      <section {...rest} className={classes.changelogType}>
+      <section
+        {...rest}
+        className={classes.changelogType}
+        data-change-type={type}
+      >
         <Heading
           level={3}
           data-size='xs'
@@ -132,6 +140,31 @@ function ChangelogItem(props: unknown) {
   );
 }
 
+/**
+ * The version of a release, linking to that release alone. A link to the heading's id would not
+ * work, as the release is only rendered on one of the pages.
+ */
+function ChangelogVersion(props: unknown) {
+  const { 'data-version': version, id } = props as ComponentProps<'h2'> & {
+    'data-version'?: string;
+  };
+  const { t } = useTranslation();
+  if (!version) return null;
+
+  return (
+    <Heading level={2} data-size='md' id={id}>
+      <RRLink
+        to={{ search: new URLSearchParams({ version }).toString() }}
+        aria-label={t('components.changelog.version-link', { version })}
+        preventScrollReset
+        className='ds-focus'
+      >
+        <span lang='en'>{version}</span>
+      </RRLink>
+    </Heading>
+  );
+}
+
 function ChangelogDate(props: unknown) {
   const { dateTime } = props as ComponentProps<'time'>;
   const { lang } = useContext(ChangelogFilters);
@@ -153,6 +186,7 @@ const changelogComponents = {
   section: ChangelogSection,
   li: ChangelogItem,
   time: ChangelogDate,
+  h2: ChangelogVersion,
 };
 
 export async function loader({ params }: Route.LoaderArgs) {
@@ -337,6 +371,9 @@ export default function Changelogs({
         className={cl(classes.textPage, classes.changelog, 'u-rich-text')}
         lang='en'
       >
+        {filteredReleases.length === 0 ? (
+          <Paragraph lang={lang}>{t('components.changelog.empty')}</Paragraph>
+        ) : null}
         <ChangelogFilters
           value={{
             versions: visibleVersions,

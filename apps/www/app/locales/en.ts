@@ -167,6 +167,9 @@ export default {
       results_one: '{{count}} version',
       results_other: '{{count}} versions',
       reset: 'Reset filters',
+      empty:
+        'This version has no changes in the selected packages. Choose other packages or reset the filters.',
+      'version-link': 'Version {{version}}, show only this version',
       pagination: 'Changelog pages',
       'previous-page': 'Previous page',
       'next-page': 'Next page',
@@ -218,6 +221,9 @@ export default {
   mdx: {
     error: {
       loading: 'Could not load content',
+    },
+    table: {
+      scrollable: 'Table, scrolls sideways',
     },
   },
   video: {

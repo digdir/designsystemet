@@ -165,6 +165,9 @@ export default {
       results_one: '{{count}} versjon',
       results_other: '{{count}} versjoner',
       reset: 'Nullstill filter',
+      empty:
+        'Denne versjonen har ingen endringer i de valgte pakkene. Velg andre pakker eller nullstill filteret.',
+      'version-link': 'Versjon {{version}}, vis bare denne versjonen',
       pagination: 'Sider i endringsloggen',
       'previous-page': 'Forrige side',
       'next-page': 'Neste side',
@@ -217,6 +220,9 @@ export default {
   mdx: {
     error: {
       loading: 'Kunne ikke laste innhold',
+    },
+    table: {
+      scrollable: 'Tabell, kan rulles sidelengs',
     },
   },
   video: {

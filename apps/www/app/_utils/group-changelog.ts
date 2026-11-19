@@ -105,7 +105,7 @@ const element = (
  * several packages is listed once with the packages it applies to:
  *
  *   <section data-release data-packages>
- *     <header> <h2>version</h2> <time/> </header>
+ *     <header> <div> <h2>version</h2> <time/> </div> </header>
  *     <section data-change-type data-packages> <ul> <li data-packages>change</li> … </ul> </section>
  *   </section>
  */
@@ -224,7 +224,8 @@ export function groupChangelog(tree: Root) {
       sections.push(element('p', {}, [{ type: 'text', value: NO_CHANGES }]));
     }
 
-    const header = [heading as unknown as ElementContent];
+    // Rendered as a link to the release, see ChangelogVersion
+    const header = [element('h2', { 'data-version': version }, [])];
     if (date) header.push(element('time', { dateTime: date }, []));
 
     nodes[index] = element(
@@ -233,7 +234,7 @@ export function groupChangelog(tree: Root) {
         'data-release': version,
         'data-packages': sortPackages(releasePackages).join(','),
       },
-      [element('header', {}, header), ...sections],
+      [element('header', {}, [element('div', {}, header)]), ...sections],
     ) as unknown as Node;
   }
 }
