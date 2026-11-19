@@ -42,7 +42,7 @@ const themeSchema = themeObjectSchema.superRefine((theme, ctx) => {
   // so a missing step does not also flag every reference in the components.
   const stepModes = stepNames.map((step) => theme.typography.size[step]).filter((mode) => mode !== undefined);
   const modes = stepModes.length > 0 ? stepModes : Object.values(theme.typography.size);
-  const sharedKeys = (group: 'lineHeight' | 'letterSpacing' | 'fontSize') => {
+  const sharedKeys = (group: 'lineHeight' | 'letterSpacing') => {
     const keys = new Set<string>();
     for (const key of Object.keys(modes[0]?.[group] ?? {})) {
       if (modes.every((mode) => key in mode[group])) {
@@ -108,7 +108,7 @@ const themeSchema = themeObjectSchema.superRefine((theme, ctx) => {
     'line-height': sharedKeys('lineHeight'),
     'font-weight': fontWeightKeys,
     'letter-spacing': sharedKeys('letterSpacing'),
-    'font-size': sharedKeys('fontSize'),
+    'font-size': new Set(Object.keys(theme.typography.fontSize)),
   };
 
   checkGroup(theme.typography.components, ['typography', 'components'], availableKeys);
@@ -146,6 +146,7 @@ const getSharedThemeValues = (theme: ConfigSchemaTheme): SharedThemeValue[] => {
     },
     { path: ['typography', 'fonts'], description: 'typography set names', value: Object.keys(theme.typography.fonts) },
     { path: ['typography', 'size'], description: 'size-mode typography', value: theme.typography.size },
+    { path: ['typography', 'fontSize'], description: 'font-size scale', value: theme.typography.fontSize },
     {
       path: ['typography', 'components'],
       description: 'typography components',

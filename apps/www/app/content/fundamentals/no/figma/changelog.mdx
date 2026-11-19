@@ -23,7 +23,83 @@ changelog: true
   }}
 >
 
+## 1.24.1
+
+<Divider/>
+
+### figma-plugin
+
+#### Patch Changes
+
+- **typography**: Font sizes in the Small and Large size modes are now the same in Figma as in the generated CSS ([#5609](https://github.com/digdir/designsystemet/issues/5609)). (thanks @ssb-cgn) ([#5647](https://github.com/digdir/designsystemet/pull/5647))
+  
+  The CSS does not change. In Figma, the font-size variables for Small and Large change the next time you import your theme. The same values are used in the `design-tokens` output:
+  
+  | Step | Small | Large |
+  |---|---|---|
+  | 1 | 11 → 11 | 13 → 14 |
+  | 2 | 13 → 12 | 16 → 16 |
+  | 3 | 14 → 14 | 18 → 19 |
+  | 4 | 16 → 16 | 21 → 21 |
+  | 5 | 18 → 19 | 24 → 25 |
+  | 6 | 21 → 21 | 30 → 28 |
+  | 7 | 24 → 27 | 36 → 35 |
+  | 8 | 30 → 32 | 48 → 42 |
+  | 9 | 36 → 43 | 60 → 56 |
+  | 10 | 48 → 53 | 72 → 70 |
+- **size**: In the Large size mode, `--ds-size-3`, `-6`, `-9`, `-12`, `-15`, `-18` and `-30` are 1px larger, now matching the intended values in Figma and in all browsers. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
+  
+  These sizes are whole numbers (14, 28, 42, 56, 70, 84 and 140px), but a floating-point rounding error in the size formula made Figma, Chrome and Safari round them down to 1px less, while Firefox could show the intended value. The formula now multiplies before dividing, so the result is exact. Small and Medium do not change.
+  
+  In Figma, the size variables for Large change the next time you import your theme.
+
+<Divider/>
+
+### figma-ui-kit
+
+#### Patch Changes
+
+- **Typography:** Font sizes in the Small and Large size modes now match code. Headings change the most: they get bigger in Small and smaller in Large. Medium does not change. ([#5647](https://github.com/digdir/designsystemet/pull/5647)) ([#5650](https://github.com/digdir/designsystemet/pull/5650))
+  
+  | Variable | Small | Large |
+  |---|---|---|
+  | `font-size/1` | 11 → 11 | 13 → 14 |
+  | `font-size/2` | 13 → 12 | 16 → 16 |
+  | `font-size/3` | 14 → 14 | 18 → 19 |
+  | `font-size/4` | 16 → 16 | 21 → 21 |
+  | `font-size/5` | 18 → 19 | 24 → 25 |
+  | `font-size/6` | 21 → 21 | 30 → 28 |
+  | `font-size/7` | 24 → 27 | 36 → 35 |
+  | `font-size/8` | 30 → 32 | 48 → 42 |
+  | `font-size/9` | 36 → 43 | 60 → 56 |
+  | `font-size/10` | 48 → 53 | 72 → 70 |
+- **Size:** Some sizes in the Large size mode are 1px larger, as intended and as in code. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648)) ([#5650](https://github.com/digdir/designsystemet/pull/5650))
+  
+  | Variable | Large |
+  |---|---|
+  | `size/3` | 13 → 14 |
+  | `size/6` | 27 → 28 |
+  | `size/9` | 41 → 42 |
+  | `size/12` | 55 → 56 |
+  | `size/15` | 69 → 70 |
+  | `size/18` | 83 → 84 |
+  | `size/30` | 139 → 140 |
+
+</div>
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
 ## 1.24.0
+
+<small style={{ color: "var(--ds-color-neutral-text-subtle)" }}>
+  <time dateTime="2026-11-09">9. november 2026</time>
+</small>
 
 <Divider/>
 

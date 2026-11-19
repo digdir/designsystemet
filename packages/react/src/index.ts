@@ -9,10 +9,10 @@ export type {
 } from '@digdir/designsystemet-web/pagination'; // Re-export pagination-helper
 export { pagination } from '@digdir/designsystemet-web/pagination'; // Re-export pagination-helper
 export * from './components';
-export { omit } from './components/Combobox/omit/omit'; //deprecated
+export { omit } from './components/Combobox/omit/omit'; // @deprecated v2
 export type { DefaultProps, LabelRequired, Placement } from './types';
 export type {
-  /** @deprecated This export is deprecated. */
+  /** @deprecated v2 This export is deprecated. */
   MergeRight,
   UseCheckboxGroupProps,
   /** @deprecated This export is deprecated. Use pagination utility function instead. */
@@ -20,17 +20,20 @@ export type {
   UseRadioGroupProps,
 } from './utilities';
 export {
+  /** @deprecated v2 This export is deprecated. Use focusgroup attribute instead */
   RovingFocusItem,
+  /** @deprecated v2 This export is deprecated. Use focusgroup attribute instead */
   RovingFocusRoot,
   useCheckboxGroup,
-  /** @deprecated This export is deprecated. Use utility libraries or create your own utility function. */
+  /** @deprecated v2 This export is deprecated. Use utility libraries or create your own utility function. */
   useDebounceCallback,
-  /** @deprecated This export is deprecated. Use utility libraries or create your own utility function. */
+  /** @deprecated v2 This export is deprecated. Use utility libraries or create your own utility function. */
   useIsomorphicLayoutEffect,
-  /** @deprecated This export is deprecated. Use utility libraries or create your own utility function. */
+  /** @deprecated v2 This export is deprecated. Use utility libraries or create your own utility function. */
   useMediaQuery,
   /** @deprecated This export is deprecated. Use pagination utility function instead. */
   usePagination,
   useRadioGroup,
+  /** @deprecated v2 This export is deprecated. Use utility libraries or create your own utility function. */
   useSynchronizedAnimation,
 } from './utilities';

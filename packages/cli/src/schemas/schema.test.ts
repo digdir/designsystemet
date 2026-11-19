@@ -112,9 +112,9 @@ describe('themesSchema cross-theme validation', () => {
         ...baseTheme,
         typography: {
           size: {
-            small: { lineHeight: { sm: '120%', md: '140%', lg: '160%' }, fontSize: fontSizeScale(11) },
-            medium: { letterSpacing: { '1': '-2%' }, fontSize: fontSizeScale(12) },
-            large: { fontSize: fontSizeScale(13) },
+            small: { lineHeight: { sm: '120%', md: '140%', lg: '160%' } },
+            medium: { letterSpacing: { '1': '-2%' } },
+            large: {},
           },
           components: { heading: { xl: { fontWeight: '{font-weight.semibold}' } } },
         },
@@ -175,7 +175,7 @@ describe('themeSchema typography validation', () => {
           steps: { compact: { base: 18, step: 4, baseFontSize: 14 } },
         },
         typography: {
-          size: { compact: { fontSize: fontSizeScale(10) } },
+          size: { compact: {} },
         },
       },
     });
@@ -183,20 +183,24 @@ describe('themeSchema typography validation', () => {
     expect(issuePaths(result)).toEqual([]);
   });
 
-  it('rejects component references to font-sizes missing from a size step', () => {
+  it('rejects component references to font-sizes missing from the font-size scale', () => {
     const result = parseThemes({
       a: {
         ...baseTheme,
         typography: {
-          size: {
-            small: { fontSize: fontSizeScale(11) },
-            medium: { fontSize: fontSizeScale(12) },
-            // Missing font-size 9 and 10 in one mode, so components may not reference them.
-            large: { fontSize: Object.fromEntries(Object.entries(fontSizeScale(13)).slice(0, 8)) },
-          },
+          // Missing font-size 9 and 10, so components may not reference them.
+          fontSize: Object.fromEntries(Object.entries(fontSizeScale(12)).slice(0, 8)),
           components: { heading: { xl: { fontSize: '{font-size.9}' } } },
         },
       },
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it.each(['12px', '0.75rem', 'large', ''])('rejects the font size %j, which is not a unitless number', (value) => {
+    const result = parseThemes({
+      a: { ...baseTheme, typography: { fontSize: { ...fontSizeScale(12), '1': value } } },
     });
 
     expect(result.success).toBe(false);
