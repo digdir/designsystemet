@@ -3,11 +3,8 @@
   --dsc-errorsummary-border-radius: var(--ds-border-radius-md);
   --dsc-errorsummary-padding: var(--ds-size-7);
   --dsc-errorsummary-color: var(--ds-color-danger-text-default);
-  --dsc-errorsummary-link-color: var(
-    --ds-color-neutral-text-default,
-    var(--dsc-errorsummary-color)
-  ); /* @deprecated Neutral for now, links use --dsc-errorsummary-color in the next major version */
-  --dsc-errorsummary-heading-color: var(--dsc-errorsummary-color); /* @deprecated */
+  --dsc-errorsummary-link-color: currentcolor; /* @deprecated  */
+  --dsc-errorsummary-heading-color: currentcolor; /* @deprecated */
 
   color: var(--dsc-errorsummary-color);
   background: var(--dsc-errorsummary-background);
@@ -22,12 +19,11 @@
     display: block;
   }
 
-  /* @deprecated: User should use ds-heading instead */
-  & :is(h1, h2, h3, h4, h5, h6) {
-    color: var(--dsc-errorsummary-heading-color);
-    font-size: var(--ds-font-size-plus-1);
-    margin-bottom: var(--ds-size-2);
-  }
+& :is(h1, h2, h3, h4, h5, h6) {
+color: var(--dsc-errorsummary-heading-color); /* @deprecated */
+font-size: var(--ds-font-size-plus-1);
+margin-bottom: var(--ds-size-2);
+}
 
   & a {
     color: var(--dsc-errorsummary-link-color); /* @deprecated */
