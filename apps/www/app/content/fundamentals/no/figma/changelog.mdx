@@ -25,42 +25,10 @@ changelog: true
 
 ## 1.24.1
 
-<Divider/>
+### Patch Changes
 
-### figma-plugin
+- **Typography:** Font sizes in the Small and Large size modes now match code. Headings change the most: they get bigger in Small and smaller in Large. Medium does not change. ([#5609](https://github.com/digdir/designsystemet/issues/5609)) (thanks @ssb-cgn) ([#5647](https://github.com/digdir/designsystemet/pull/5647))
 
-#### Patch Changes
-
-- **typography**: Font sizes in the Small and Large size modes are now the same in Figma as in the generated CSS ([#5609](https://github.com/digdir/designsystemet/issues/5609)). (thanks @ssb-cgn) ([#5647](https://github.com/digdir/designsystemet/pull/5647))
-  
-  The CSS does not change. In Figma, the font-size variables for Small and Large change the next time you import your theme. The same values are used in the `design-tokens` output:
-  
-  | Step | Small | Large |
-  |---|---|---|
-  | 1 | 11 → 11 | 13 → 14 |
-  | 2 | 13 → 12 | 16 → 16 |
-  | 3 | 14 → 14 | 18 → 19 |
-  | 4 | 16 → 16 | 21 → 21 |
-  | 5 | 18 → 19 | 24 → 25 |
-  | 6 | 21 → 21 | 30 → 28 |
-  | 7 | 24 → 27 | 36 → 35 |
-  | 8 | 30 → 32 | 48 → 42 |
-  | 9 | 36 → 43 | 60 → 56 |
-  | 10 | 48 → 53 | 72 → 70 |
-- **size**: In the Large size mode, `--ds-size-3`, `-6`, `-9`, `-12`, `-15`, `-18` and `-30` are 1px larger, now matching the intended values in Figma and in all browsers. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
-  
-  These sizes are whole numbers (14, 28, 42, 56, 70, 84 and 140px), but a floating-point rounding error in the size formula made Figma, Chrome and Safari round them down to 1px less, while Firefox could show the intended value. The formula now multiplies before dividing, so the result is exact. Small and Medium do not change.
-  
-  In Figma, the size variables for Large change the next time you import your theme.
-
-<Divider/>
-
-### figma-ui-kit
-
-#### Patch Changes
-
-- **Typography:** Font sizes in the Small and Large size modes now match code. Headings change the most: they get bigger in Small and smaller in Large. Medium does not change. ([#5647](https://github.com/digdir/designsystemet/pull/5647)) ([#5650](https://github.com/digdir/designsystemet/pull/5650))
-  
   | Variable | Small | Large |
   |---|---|---|
   | `font-size/1` | 11 → 11 | 13 → 14 |
@@ -73,8 +41,11 @@ changelog: true
   | `font-size/8` | 30 → 32 | 48 → 42 |
   | `font-size/9` | 36 → 43 | 60 → 56 |
   | `font-size/10` | 48 → 53 | 72 → 70 |
-- **Size:** Some sizes in the Large size mode are 1px larger, as intended and as in code. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648)) ([#5650](https://github.com/digdir/designsystemet/pull/5650))
-  
+
+  _CLI · Figma plugin · Figma UI kit_
+
+- **Size:** Some sizes in the Large size mode are 1px larger, as intended. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
+
   | Variable | Large |
   |---|---|
   | `size/3` | 13 → 14 |
@@ -84,6 +55,8 @@ changelog: true
   | `size/15` | 69 → 70 |
   | `size/18` | 83 → 84 |
   | `size/30` | 139 → 140 |
+
+  _CLI · CSS · Figma plugin · Figma UI kit_
 
 </div>
 
@@ -101,15 +74,15 @@ changelog: true
   <time dateTime="2026-11-09">9. november 2026</time>
 </small>
 
-<Divider/>
-
-### figma-ui-kit
-
-#### Patch Changes
+### Patch Changes
 
 - **Link:** The icon on visited links now uses `text/subtle`, the same color as the link text. It used to use `link/color/visited`, an old variable that is no longer in use. If you have your own copy of the UI kit, see [how to fix it in Figma](https://github.com/digdir/designsystemet/issues/4969#issuecomment-6472970682). ([#4969](https://github.com/digdir/designsystemet/issues/4969)) ([#5574](https://github.com/digdir/designsystemet/pull/5574))
 
+  _Figma UI kit_
+
 - **Search** Deprecated in Figma and will be removed in the next major version. [Read more about what you should do in Figma here](https://github.com/digdir/designsystemet/issues/5578) ([#5578](https://github.com/digdir/designsystemet/issues/5578)) ([#5596](https://github.com/digdir/designsystemet/pull/5596)) by [@Thunear](https://github.com/Thunear)
+
+  _Figma UI kit_
 
 </div>
 
@@ -127,39 +100,61 @@ changelog: true
   <time dateTime="2026-10-02">2. oktober 2026</time>
 </small>
 
-<Divider/>
-
-### figma-ui-kit
-
-#### Minor Changes
+### Minor Changes
 
 - **Select:** Published in Figma, with a simple list in place of the browser's own dropdown, which looks different in every browser ([#4436](https://github.com/digdir/designsystemet/issues/4436))
 
+  _Figma UI kit_
+
 - **Chip:** Long labels are now truncated with an ellipsis, as in code ([#5049](https://github.com/digdir/designsystemet/issues/5049))
+
+  _Figma UI kit_
 
 - **Tag:** Added examples with the `outline` variant ([#4482](https://github.com/digdir/designsystemet/issues/4482))
 
-#### Patch Changes
+  _Figma UI kit_
+
+### Patch Changes
 
 - **Checkbox, Radio, Select, Suggestion, Switch, Textfield, Textarea:** Only the input itself is shown as disabled, not the label and description, which can still be relevant to read ([#5306](https://github.com/digdir/designsystemet/issues/5306))
 
+  _Figma UI kit_
+
 - **LinkCard:** The title underline now behaves like `Link`, with 6% thickness by default and 12% on hover and active ([#5284](https://github.com/digdir/designsystemet/issues/5284))
+
+  _Figma UI kit_
 
 - **Form components:** Labels are now semibold and descriptions use `text-default`, to make them easier to tell apart ([#3913](https://github.com/digdir/designsystemet/issues/3913))
 
+  _Figma UI kit_
+
 - **ErrorSummary:** Padding is now `size-7` on all sides, and the list has `size-1` left padding to align with code ([#5195](https://github.com/digdir/designsystemet/issues/5195))
+
+  _Figma UI kit_
 
 - **Suggestion:** The chevron now points the right way when the list is open ([#5198](https://github.com/digdir/designsystemet/issues/5198))
 
+  _Figma UI kit_
+
 - **Search:** Left padding without a search icon is now `size-3`, as in code ([#5197](https://github.com/digdir/designsystemet/issues/5197), [#5402](https://github.com/digdir/designsystemet/issues/5402))
+
+  _Figma UI kit_
 
 - **Textfield:** Left padding is now `size-3`, as in code ([#5402](https://github.com/digdir/designsystemet/issues/5402))
 
+  _Figma UI kit_
+
 - **Button:** Icon size in icon buttons now matches code ([#5192](https://github.com/digdir/designsystemet/issues/5192))
+
+  _Figma UI kit_
 
 - **List:** Added a small left padding, so list items align with the text above them ([#5196](https://github.com/digdir/designsystemet/issues/5196))
 
+  _Figma UI kit_
+
 - Updated component descriptions to match the documentation ([#5369](https://github.com/digdir/designsystemet/issues/5369))
+
+  _Figma UI kit_
 
 </div>
 
@@ -177,19 +172,21 @@ changelog: true
   <time dateTime="2026-08-18">18. august 2026</time>
 </small>
 
-<Divider/>
-
-### figma-ui-kit
-
-#### Minor Changes
+### Minor Changes
 
 - **FileUpload:** New component ([#1236](https://github.com/digdir/designsystemet/issues/1236))
 
-#### Patch Changes
+  _Figma UI kit_
+
+### Patch Changes
 
 - **Button:** Text in secondary and tertiary buttons no longer changes color on hover and active, as in code ([#5132](https://github.com/digdir/designsystemet/issues/5132))
 
+  _Figma UI kit_
+
 - **ToggleGroup:** Icons now use `text-default` instead of `text-subtle`, as in code ([#5158](https://github.com/digdir/designsystemet/issues/5158))
+
+  _Figma UI kit_
 
 </div>
 
@@ -207,17 +204,19 @@ changelog: true
   <time dateTime="2026-06-26">26. juni 2026</time>
 </small>
 
-<Divider/>
-
-### figma-ui-kit
-
-#### Minor Changes
+### Minor Changes
 
 - **Color:** The **Main color** and **Support color** collections are merged into one **Color** collection, and colors are chosen with color modes, as in code. The `main`, `support` and `neutral` component variants are removed ([#4545](https://github.com/digdir/designsystemet/issues/4545))
 
+  _Figma UI kit_
+
 - **ButtonGroup:** Removed, as it isn't a component in code. Spacing between buttons is a layout decision for each team ([#5024](https://github.com/digdir/designsystemet/issues/5024))
 
+  _Figma UI kit_
+
 - **ChipGroup:** Removed, as it isn't a component in code. Spacing between chips is a layout decision for each team ([#5025](https://github.com/digdir/designsystemet/issues/5025))
+
+  _Figma UI kit_
 
 </div>
 
@@ -235,59 +234,101 @@ changelog: true
   <time dateTime="2026-05-08">8. mai 2026</time>
 </small>
 
-<Divider/>
-
-### figma-ui-kit
-
-#### Minor Changes
+### Minor Changes
 
 - **AvatarStack:** New component for showing a group of avatars ([#2305](https://github.com/digdir/designsystemet/issues/2305))
 
+  _Figma UI kit_
+
 - **Checkbox, Radio:** New outline variant, which shows the input and its label as a tile ([#526](https://github.com/digdir/designsystemet/issues/526))
+
+  _Figma UI kit_
 
 - **Dialog:** Added a drawer version ([#4354](https://github.com/digdir/designsystemet/issues/4354))
 
+  _Figma UI kit_
+
 - **Suggestion:** Redesigned ([#4661](https://github.com/digdir/designsystemet/issues/4661), [#4664](https://github.com/digdir/designsystemet/issues/4664))
+
+  _Figma UI kit_
 
 - **Dropdown:** Option buttons support the `danger` variant ([#4266](https://github.com/digdir/designsystemet/issues/4266))
 
+  _Figma UI kit_
+
 - Added a guide to setting up your own icon library ([#4097](https://github.com/digdir/designsystemet/issues/4097))
 
-#### Patch Changes
+  _Figma UI kit_
+
+### Patch Changes
 
 - **Checkbox:** The checkmark now scales correctly ([#4493](https://github.com/digdir/designsystemet/issues/4493))
 
+  _Figma UI kit_
+
 - **Checkbox:** Added the missing stroke when checked and indeterminate ([#4880](https://github.com/digdir/designsystemet/issues/4880))
+
+  _Figma UI kit_
 
 - **Checkbox, Chip:** Fixed wrong color variables on Checkbox and the radio Chip ([#4559](https://github.com/digdir/designsystemet/issues/4559))
 
+  _Figma UI kit_
+
 - **Card:** Moved the top padding from `_content` to the paragraph, so content in the slot doesn't get an extra 8px at the top ([#4796](https://github.com/digdir/designsystemet/issues/4796))
+
+  _Figma UI kit_
 
 - **Dialog:** Fixed an upside-down icon ([#4603](https://github.com/digdir/designsystemet/issues/4603))
 
+  _Figma UI kit_
+
 - **Pagination:** Buttons now scale correctly with size modes ([#4717](https://github.com/digdir/designsystemet/issues/4717))
+
+  _Figma UI kit_
 
 - **Popover:** Fixed contrast in the HelpText example ([#4894](https://github.com/digdir/designsystemet/issues/4894))
 
+  _Figma UI kit_
+
 - **Skeleton, Spinner:** Moved to separate pages, as on the website ([#4364](https://github.com/digdir/designsystemet/issues/4364))
+
+  _Figma UI kit_
 
 - **Textfield:** Prefix and suffix now hug their content ([#4815](https://github.com/digdir/designsystemet/issues/4815))
 
+  _Figma UI kit_
+
 - **Textfield:** Removed an unused base component ([#4385](https://github.com/digdir/designsystemet/issues/4385))
+
+  _Figma UI kit_
 
 - **ToggleGroup:** Fixed icon and background colors ([#4818](https://github.com/digdir/designsystemet/issues/4818))
 
+  _Figma UI kit_
+
 - **ToggleGroup:** Fixed the name of a subcomponent ([#4632](https://github.com/digdir/designsystemet/issues/4632))
+
+  _Figma UI kit_
 
 - **Typography:** Removed a duplicate `secondary` mode. `Secondary` is kept ([#4523](https://github.com/digdir/designsystemet/issues/4523))
 
+  _Figma UI kit_
+
 - Padding set to 0 is now connected to the `0` variable, so Figma suggests related variables ([#4081](https://github.com/digdir/designsystemet/issues/4081))
+
+  _Figma UI kit_
 
 - Fixed invalid `0` variables in components ([#4902](https://github.com/digdir/designsystemet/issues/4902))
 
+  _Figma UI kit_
+
 - Cleaned up the "Base components" page and removed unused components ([#4312](https://github.com/digdir/designsystemet/issues/4312))
 
+  _Figma UI kit_
+
 - Cleaned up the test page and the focus page
+
+  _Figma UI kit_
 
 </div>
 
@@ -305,45 +346,73 @@ changelog: true
   <time dateTime="2025-12-12">12. desember 2025</time>
 </small>
 
-<Divider/>
-
-### figma-ui-kit
-
-#### Minor Changes
+### Minor Changes
 
 - **Tag:** New `outline` variant, for tags on `surface-tinted` components and surfaces ([#3478](https://github.com/digdir/designsystemet/issues/3478))
 
+  _Figma UI kit_
+
 - **Paragraph:** Renamed the "Body" component to "Paragraph", as in code ([#4273](https://github.com/digdir/designsystemet/issues/4273))
+
+  _Figma UI kit_
 
 - **Tabs:** Added a neutral version ([#4198](https://github.com/digdir/designsystemet/issues/4198))
 
+  _Figma UI kit_
+
 - **Tabs:** Added a property for choosing the icon when "Show icon" is on ([#4249](https://github.com/digdir/designsystemet/issues/4249))
 
-#### Patch Changes
+  _Figma UI kit_
+
+### Patch Changes
 
 - **Card:** Fixed wrong typography variables and styles ([#4108](https://github.com/digdir/designsystemet/issues/4108))
 
+  _Figma UI kit_
+
 - **Chip:** The x icon in removable chips now uses a variable ([#4163](https://github.com/digdir/designsystemet/issues/4163))
+
+  _Figma UI kit_
 
 - **Form components:** Adjusted line height and spacing between label and description ([#4136](https://github.com/digdir/designsystemet/issues/4136))
 
+  _Figma UI kit_
+
 - **List:** In list items that are links, each line of text is now underlined, not only the text block as a whole ([#2763](https://github.com/digdir/designsystemet/issues/2763))
+
+  _Figma UI kit_
 
 - **Popover:** `Popover.Trigger` now looks like in code ([#3445](https://github.com/digdir/designsystemet/issues/3445))
 
+  _Figma UI kit_
+
 - **Switch:** Added the missing variant and fixed double opacity when disabled ([#4306](https://github.com/digdir/designsystemet/issues/4306))
+
+  _Figma UI kit_
 
 - **Table:** Added a property for swapping the content of cells ([#4253](https://github.com/digdir/designsystemet/issues/4253))
 
+  _Figma UI kit_
+
 - **Table:** Cell subcomponents no longer have `/` in their names ([#4255](https://github.com/digdir/designsystemet/issues/4255))
+
+  _Figma UI kit_
 
 - **Table:** Fixed the cell with a checkbox ([#4256](https://github.com/digdir/designsystemet/issues/4256))
 
+  _Figma UI kit_
+
 - **Table:** Cells with icons now have the same height as cells with only text, in all sizes ([#4252](https://github.com/digdir/designsystemet/issues/4252))
+
+  _Figma UI kit_
 
 - Removed missing libraries, from components and styles copied from other files ([#4247](https://github.com/digdir/designsystemet/issues/4247))
 
+  _Figma UI kit_
+
 - Fixed missing components, mostly in examples ([#4305](https://github.com/digdir/designsystemet/issues/4305))
+
+  _Figma UI kit_
 
 </div>
 
@@ -361,57 +430,97 @@ changelog: true
   <time dateTime="2025-10-01">1. oktober 2025</time>
 </small>
 
-<Divider/>
-
-### figma-ui-kit
-
-#### Minor Changes
+### Minor Changes
 
 - **Select:** Added a page with examples and information ([#4025](https://github.com/digdir/designsystemet/issues/4025))
 
+  _Figma UI kit_
+
 - **ToggleGroup:** New `secondary` variant, and design changes ([#3553](https://github.com/digdir/designsystemet/issues/3553))
+
+  _Figma UI kit_
 
 - **Tag:** Icons can now be added ([#1884](https://github.com/digdir/designsystemet/issues/1884))
 
+  _Figma UI kit_
+
 - **List:** Bullet points are now instances that can be swapped ([#3915](https://github.com/digdir/designsystemet/issues/3915))
+
+  _Figma UI kit_
 
 - **Suggestion:** Multisuggestion is now part of the Suggestion page, as in code ([#3932](https://github.com/digdir/designsystemet/issues/3932))
 
+  _Figma UI kit_
+
 - **Suggestion:** The list now has up to 10 options instead of 5 ([#4083](https://github.com/digdir/designsystemet/issues/4083))
+
+  _Figma UI kit_
 
 - **Form components:** Added an option to show the required tag ([#3958](https://github.com/digdir/designsystemet/issues/3958))
 
+  _Figma UI kit_
+
 - **Table:** Added a guide to building your own table with the cell components ([#3914](https://github.com/digdir/designsystemet/issues/3914))
 
-#### Patch Changes
+  _Figma UI kit_
+
+### Patch Changes
 
 - **Alert:** Removed the max width on the text, so it spans the full width ([#3892](https://github.com/digdir/designsystemet/issues/3892))
 
+  _Figma UI kit_
+
 - **Card:** All variants now have the same structure ([#3982](https://github.com/digdir/designsystemet/issues/3982))
+
+  _Figma UI kit_
 
 - **Card:** Fixed tag colors in the tag group ([#3716](https://github.com/digdir/designsystemet/issues/3716))
 
+  _Figma UI kit_
+
 - **Card:** The title and the tag group no longer overlap in large cards ([#3983](https://github.com/digdir/designsystemet/issues/3983))
+
+  _Figma UI kit_
 
 - **Card, LinkCard:** Headings now have the same font size ([#3898](https://github.com/digdir/designsystemet/issues/3898))
 
+  _Figma UI kit_
+
 - **Checkbox:** Fixed a wrong token ([#3813](https://github.com/digdir/designsystemet/issues/3813))
+
+  _Figma UI kit_
 
 - **Checkbox:** Removed the ghost variable `border-width/highlight` ([#4031](https://github.com/digdir/designsystemet/issues/4031))
 
+  _Figma UI kit_
+
 - **Dropdown:** Renamed variant properties, and text changes to `text-default` on hover and pressed, as in code ([#3912](https://github.com/digdir/designsystemet/issues/3912))
+
+  _Figma UI kit_
 
 - **Dropdown:** Buttons and headers in the neutral dropdown no longer look the same ([#3672](https://github.com/digdir/designsystemet/issues/3672))
 
+  _Figma UI kit_
+
 - **Link:** Added a hover style to the underline ([#3934](https://github.com/digdir/designsystemet/issues/3934))
+
+  _Figma UI kit_
 
 - **Link:** The focus style is now the same as on other components, instead of a background fill ([#4042](https://github.com/digdir/designsystemet/issues/4042))
 
+  _Figma UI kit_
+
 - **Tooltip:** Fixed missing arrows and arrows with the wrong color in the examples ([#4024](https://github.com/digdir/designsystemet/issues/4024))
+
+  _Figma UI kit_
 
 - Swapping a component no longer adds a border to the swapped element ([#3928](https://github.com/digdir/designsystemet/issues/3928))
 
+  _Figma UI kit_
+
 - Updated outdated links on the intro page ([#4082](https://github.com/digdir/designsystemet/issues/4082))
+
+  _Figma UI kit_
 
 </div>
 
@@ -429,47 +538,77 @@ changelog: true
   <time dateTime="2025-06-04">4. juni 2025</time>
 </small>
 
-<Divider/>
-
-### figma-ui-kit
-
-#### Minor Changes
+### Minor Changes
 
 - Variables now have Designsystemet's CSS syntax, so Dev Mode shows CSS variables that exist ([#3690](https://github.com/digdir/designsystemet/issues/3690))
 
-#### Patch Changes
+  _Figma UI kit_
+
+### Patch Changes
 
 - **Body:** Fixed the font size of medium weight text ([#3566](https://github.com/digdir/designsystemet/issues/3566))
 
+  _Figma UI kit_
+
 - **Chip:** Fixed the base component in active radio chips ([#3642](https://github.com/digdir/designsystemet/issues/3642))
+
+  _Figma UI kit_
 
 - **Dropdown:** Items are now centered horizontally, and the small icon is 24px ([#3464](https://github.com/digdir/designsystemet/issues/3464))
 
+  _Figma UI kit_
+
 - **Dropdown:** Fixed a wrong variable in the neutral dropdown ([#3636](https://github.com/digdir/designsystemet/issues/3636))
+
+  _Figma UI kit_
 
 - **Link:** The icon is now centered vertically in the large variant ([#3538](https://github.com/digdir/designsystemet/issues/3538))
 
+  _Figma UI kit_
+
 - **LinkCard:** Now responsive with long titles ([#3481](https://github.com/digdir/designsystemet/issues/3481))
+
+  _Figma UI kit_
 
 - **LinkCard:** Changed the order of the state options to default, hover, active
 
+  _Figma UI kit_
+
 - **Multisuggestion:** Uses a checkmark instead of a checkbox ([#3678](https://github.com/digdir/designsystemet/issues/3678))
+
+  _Figma UI kit_
 
 - **Multisuggestion:** Chips are moved up, between the label and the field ([#3677](https://github.com/digdir/designsystemet/issues/3677))
 
+  _Figma UI kit_
+
 - **Pagination:** Removed disabled buttons from the example, to align with [#3454](https://github.com/digdir/designsystemet/issues/3454)
+
+  _Figma UI kit_
 
 - **Radio:** Added a variable on the legend in the horizontal variant ([#3573](https://github.com/digdir/designsystemet/issues/3573))
 
+  _Figma UI kit_
+
 - **Search:** Fixed the position of the focus indicator ([#3523](https://github.com/digdir/designsystemet/issues/3523))
+
+  _Figma UI kit_
 
 - **Suggestion:** Removed the padding in the list, as in code ([#3689](https://github.com/digdir/designsystemet/issues/3689))
 
+  _Figma UI kit_
+
 - **Switch:** Fixed a wrong variable on the neutral switch knob ([#3652](https://github.com/digdir/designsystemet/issues/3652))
+
+  _Figma UI kit_
 
 - **Textarea:** Removed an unused base container
 
+  _Figma UI kit_
+
 - Removed some ghost variables
+
+  _Figma UI kit_
 
 </div>
 
@@ -487,41 +626,65 @@ changelog: true
   <time dateTime="2025-04-07">7. april 2025</time>
 </small>
 
-<Divider/>
-
-### figma-ui-kit
-
-#### Minor Changes
+### Minor Changes
 
 - **Multisuggestion:** Renamed from Multiselect, as in code
 
+  _Figma UI kit_
+
 - **Typography:** Heading size7 is renamed to xxlarge, and sizes are named sm, md and lg
 
-#### Patch Changes
+  _Figma UI kit_
+
+### Patch Changes
 
 - **Button:** Now styled as in code, with a `size-2` gap and no horizontal padding on the text ([#3401](https://github.com/digdir/designsystemet/issues/3401))
 
+  _Figma UI kit_
+
 - **Card:** Fixed the background token ([#3335](https://github.com/digdir/designsystemet/issues/3335))
+
+  _Figma UI kit_
 
 - **Tabs:** Removed an invisible line, and the text element now has a bottom border, closer to code
 
+  _Figma UI kit_
+
 - **Tabs:** Fixed wrong variables in examples
+
+  _Figma UI kit_
 
 - **ToggleGroup:** Updated with the visual changes from code ([#3399](https://github.com/digdir/designsystemet/issues/3399))
 
+  _Figma UI kit_
+
 - **ToggleGroup:** Fixed wrong variables
+
+  _Figma UI kit_
 
 - **Tooltip:** Fixed the color of hidden arrows
 
+  _Figma UI kit_
+
 - Components use surface variables instead of background variables, which can behave oddly in dark mode ([#3353](https://github.com/digdir/designsystemet/issues/3353))
+
+  _Figma UI kit_
 
 - Components use the Divider component
 
+  _Figma UI kit_
+
 - Removed a blue color from Radio on the example page
+
+  _Figma UI kit_
 
 - Example pages hug their content in height
 
+  _Figma UI kit_
+
 - Fixed ghost variables in examples
+
+  _Figma UI kit_
 
 </div>
 
@@ -539,65 +702,113 @@ changelog: true
   <time dateTime="2025-02-28">28. februar 2025</time>
 </small>
 
-<Divider/>
-
-### figma-ui-kit
-
-#### Minor Changes
+### Minor Changes
 
 - **Divider:** New component ([#3047](https://github.com/digdir/designsystemet/issues/3047))
 
+  _Figma UI kit_
+
 - **Dialog:** Added a backdrop
+
+  _Figma UI kit_
 
 - **Details:** Added a component property for the slot component
 
+  _Figma UI kit_
+
 - **Typography:** Added Heading XXL
+
+  _Figma UI kit_
 
 - Renamed the `ds-disabled-opacity` token to `ds-opacity-disabled` ([#3204](https://github.com/digdir/designsystemet/issues/3204))
 
+  _Figma UI kit_
+
 - Components are aligned with code in naming, properties and use of tokens ([#3160](https://github.com/digdir/designsystemet/issues/3160))
 
-#### Patch Changes
+  _Figma UI kit_
+
+### Patch Changes
 
 - **Badge:** Flexible width
 
+  _Figma UI kit_
+
 - **Card, Details:** The slot component uses the full width
+
+  _Figma UI kit_
 
 - **Checkbox:** The danger variant uses `neutral-background` instead of `danger-background`, and `danger-text-subtle` instead of a border, as in code
 
+  _Figma UI kit_
+
 - **Checkbox:** Read-only uses `text-default` instead of `text-subtle` on the check and line, as in code
+
+  _Figma UI kit_
 
 - **Chip:** Added size variables to the x icon
 
+  _Figma UI kit_
+
 - **IconToggleGroup:** Uses main instead of accent
+
+  _Figma UI kit_
 
 - **Radio:** Uses main instead of accent
 
+  _Figma UI kit_
+
 - **Radio:** The danger variant uses `neutral-background` instead of `danger-background`, and `danger-text-subtle` instead of a border, as in code
+
+  _Figma UI kit_
 
 - **Radio:** Read-only uses `text-default` instead of `text-subtle` on the inner circle, as in code
 
+  _Figma UI kit_
+
 - **Radio:** Fixed table examples
+
+  _Figma UI kit_
 
 - **Switch:** Border color changed from `border-strong` to `border-default`
 
+  _Figma UI kit_
+
 - **Switch:** Fixed the disabled look, which used a gray background
+
+  _Figma UI kit_
 
 - **Switch:** The dot in read-only changed from `subtle` to `text-default`
 
+  _Figma UI kit_
+
 - **Tooltip:** Simplified
+
+  _Figma UI kit_
 
 - The example themes use the color names "primary" and "accent" for main, and "extra1" and "extra2" for support
 
+  _Figma UI kit_
+
 - Added extra typography to the "Etat1" and "Etat2" examples, for testing a switch to another typography
+
+  _Figma UI kit_
 
 - The Button, Card, Details and Tag pages use the default theme instead of a specific one
 
+  _Figma UI kit_
+
 - Fixed wrong icon colors on the example pages
+
+  _Figma UI kit_
 
 - Fixed broken table examples
 
+  _Figma UI kit_
+
 - Removed missing variables
+
+  _Figma UI kit_
 
 </div>
 
