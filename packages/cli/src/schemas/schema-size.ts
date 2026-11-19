@@ -1,7 +1,10 @@
 import { z } from 'zod';
 
+// Multiply before dividing, so every intermediate value is a whole number and only the last division can be
+// inexact. Dividing first gives e.g. 4 / 18 * 21 = 4.666…, and 4.666… * 3 = 13.999… in floating point,
+// which `floor` turns into 13 instead of 14.
 const sizeScale = (steps: number[]): Record<string, string> =>
-  Object.fromEntries(steps.map((step) => [String(step), `floor({step} / {base} * {baseFontSize} * ${step})`]));
+  Object.fromEntries(steps.map((step) => [String(step), `floor({step} * ${step} * {baseFontSize} / {base})`]));
 
 export const sizeSchema = z
   .object({
