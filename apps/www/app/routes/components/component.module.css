@@ -32,6 +32,13 @@
   li > p {
     margin-bottom: 0;
   }
+  /* The packages a change affects, as tags under the change */
+  li > [data-packages] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ds-size-2);
+    margin-top: var(--ds-size-2);
+  }
 }
 
 .header {
