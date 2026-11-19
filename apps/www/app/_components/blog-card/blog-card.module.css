@@ -10,6 +10,7 @@
 
   a:focus-visible {
     outline: none;
+    box-shadow: none;
   }
 
   &:hover {

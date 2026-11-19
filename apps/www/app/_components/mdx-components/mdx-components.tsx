@@ -36,8 +36,17 @@ import {
   SizeVariablesTable,
   TypographyVariablesTable,
 } from '@internal/components';
+import cl from 'clsx/lite';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
-import { type ComponentType, type JSX, type ReactNode, useMemo } from 'react';
+import {
+  type ComponentType,
+  type JSX,
+  type ReactNode,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RRLink, useLoaderData } from 'react-router';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
@@ -55,6 +64,42 @@ import { RoiCalculator } from '../roi-calculator/roi-calcuator';
 import { VideoCard } from '../video-card/video-card';
 import classes from './mdx-components.module.css';
 
+/**
+ * Scrolls a table that is too wide for the page. While it scrolls, it is a named region that can
+ * be focused, so the table can also be scrolled with the keyboard.
+ */
+const TableWrapper = ({ children }: { children: ReactNode }) => {
+  const { t } = useTranslation();
+  const ref = useRef<HTMLDivElement>(null);
+  const [isScrollable, setIsScrollable] = useState(false);
+
+  useEffect(() => {
+    const wrapper = ref.current;
+    if (!wrapper) return;
+    const update = () =>
+      setIsScrollable(wrapper.scrollWidth > wrapper.clientWidth);
+    const observer = new ResizeObserver(update);
+    observer.observe(wrapper);
+    if (wrapper.firstElementChild) observer.observe(wrapper.firstElementChild);
+    update();
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={cl(classes.tableWrapper, 'ds-focus')}
+      {...(isScrollable && {
+        tabIndex: 0,
+        role: 'region',
+        'aria-label': t('mdx.table.scrollable'),
+      })}
+    >
+      {children}
+    </div>
+  );
+};
+
 const defaultComponents = {
   VideoCard,
   Alert,
@@ -67,9 +112,9 @@ const defaultComponents = {
   Divider,
   Tabs,
   Table: (props: TableProps) => (
-    <div className={classes.tableWrapper}>
+    <TableWrapper>
       <Table {...props} />
-    </div>
+    </TableWrapper>
   ),
   TableHead,
   TableRow,
@@ -134,9 +179,9 @@ const defaultComponents = {
     );
   },
   table: (props: TableProps) => (
-    <div className={classes.tableWrapper}>
+    <TableWrapper>
       <Table data-color='neutral' border zebra {...props} />
-    </div>
+    </TableWrapper>
   ),
   CssVariables,
   RoiCalculator,

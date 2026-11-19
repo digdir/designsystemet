@@ -159,6 +159,19 @@ export default {
       'Designsystemet inneholder grunnleggende komponenter som kan brukes uavhengig av rammeverk, og settes sammen på mange ulike måter og i forskjellige mønstre.',
     changelog: {
       title: 'Endringslogg',
+      version: 'Versjon',
+      'all-versions': 'Alle versjoner',
+      packages: 'Pakker',
+      results_one: '{{count}} versjon',
+      results_other: '{{count}} versjoner',
+      reset: 'Nullstill filter',
+      empty:
+        'Denne versjonen har ingen endringer i de valgte pakkene. Velg andre pakker eller nullstill filteret.',
+      'version-link': 'Versjon {{version}}, vis bare denne versjonen',
+      pagination: 'Sider i endringsloggen',
+      'previous-page': 'Forrige side',
+      'next-page': 'Neste side',
+      page: 'Side {{page}}',
     },
     accessibility: {
       title: 'Universell utforming',
@@ -207,6 +220,9 @@ export default {
   mdx: {
     error: {
       loading: 'Kunne ikke laste innhold',
+    },
+    table: {
+      scrollable: 'Tabell, kan rulles sidelengs',
     },
   },
   video: {

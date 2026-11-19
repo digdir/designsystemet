@@ -161,6 +161,19 @@ export default {
       'Designsystemet contains basic components that can be used independently of framework, and combined in many different ways and in various patterns.',
     changelog: {
       title: 'Changelog',
+      version: 'Version',
+      'all-versions': 'All versions',
+      packages: 'Packages',
+      results_one: '{{count}} version',
+      results_other: '{{count}} versions',
+      reset: 'Reset filters',
+      empty:
+        'This version has no changes in the selected packages. Choose other packages or reset the filters.',
+      'version-link': 'Version {{version}}, show only this version',
+      pagination: 'Changelog pages',
+      'previous-page': 'Previous page',
+      'next-page': 'Next page',
+      page: 'Page {{page}}',
     },
     accessibility: {
       title: 'Accessibility',
@@ -208,6 +221,9 @@ export default {
   mdx: {
     error: {
       loading: 'Could not load content',
+    },
+    table: {
+      scrollable: 'Table, scrolls sideways',
     },
   },
   video: {

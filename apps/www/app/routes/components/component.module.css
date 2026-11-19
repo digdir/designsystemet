@@ -12,6 +12,8 @@
 }
 /*needs spacings for nested headings*/
 .changelog {
+  /* A grid item: without this, a wide table or code block widens the page instead of scrolling */
+  min-width: 0;
   h2,
   h3,
   h4 {
@@ -31,6 +33,156 @@
   }
   li > p {
     margin-bottom: 0;
+  }
+}
+
+.changelogFilters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--ds-size-5) var(--ds-size-8);
+  margin-block: var(--ds-size-6) var(--ds-size-10);
+  padding-bottom: var(--ds-size-4);
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+}
+.changelogChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-2);
+}
+.changelogVersion {
+  flex: 0 1 12rem;
+}
+.changelogStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-3);
+  flex-basis: 100%;
+  min-height: var(--ds-size-10);
+  color: var(--ds-color-neutral-text-subtle);
+}
+.changelogPagination {
+  margin-block: var(--ds-size-4);
+  ul {
+    flex-wrap: wrap;
+  }
+}
+.changelogRelease {
+  margin-bottom: var(--ds-size-14);
+  overflow-wrap: anywhere;
+
+  /* The version stays in view while its release is read, as a release can be several screens long */
+  > header {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 1;
+    margin-bottom: var(--ds-size-2);
+    background: var(--ds-color-neutral-background-default);
+  }
+  /* Changes fade out under the stuck version. Over the empty space below an unstuck one, it is not visible */
+  > header::after {
+    content: '';
+    position: absolute;
+    inset: 100% 0 auto;
+    height: var(--ds-size-3);
+    background: linear-gradient(var(--ds-color-neutral-background-default), transparent);
+    pointer-events: none;
+  }
+  > header > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: var(--ds-size-2);
+    padding-block: var(--ds-size-3);
+  }
+  h2 {
+    margin: 0;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+  /* Tables keep whole words in their cells and scroll sideways in their wrapper when too wide */
+  table {
+    overflow-wrap: break-word;
+
+    code {
+      white-space: nowrap;
+    }
+  }
+  /* Everything under the release heading hangs on a line, tying the changes to their version */
+  > :not(header) {
+    border-left: 1px solid var(--ds-color-neutral-border-default);
+    margin: 0 0 0 var(--ds-size-1);
+    padding: var(--ds-size-1) 0 var(--ds-size-4) var(--ds-size-6);
+  }
+}
+.changelogDate {
+  color: var(--ds-color-neutral-text-subtle);
+  font-size: var(--ds-font-size-5);
+
+  &::before {
+    content: '–' / '';
+    margin-right: var(--ds-size-2);
+  }
+}
+.changelogType {
+  ul {
+    margin: 0;
+  }
+  li {
+    margin-block: 0 var(--ds-size-5);
+  }
+  li:last-child {
+    margin-bottom: var(--ds-size-2);
+  }
+  /* Space between the paragraphs, tables, code and nested lists of a change */
+  li > * + * {
+    margin-top: var(--ds-size-4);
+  }
+  li > :is(ul, ol) {
+    margin-block: var(--ds-size-2) 0;
+  }
+  li li {
+    margin-bottom: var(--ds-size-1);
+  }
+}
+.changelogTypeHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-3);
+
+  /* Overrides the heading spacing of .changelog, which is also used by the Figma changelog */
+  .changelogRelease & {
+    margin: var(--ds-size-2) 0 var(--ds-size-3);
+  }
+
+  svg {
+    box-sizing: content-box;
+    flex-shrink: 0;
+    font-size: var(--ds-size-6);
+    padding: var(--ds-size-2);
+    border-radius: var(--ds-border-radius-full);
+    background: var(--ds-color-neutral-base-default);
+    color: var(--ds-color-neutral-base-contrast-default);
+  }
+}
+/* Major changes can break things for the reader, so they stand out from the rest */
+.changelogType[data-change-type='major'] .changelogTypeHeading svg {
+  background: var(--ds-color-warning-base-default);
+  color: var(--ds-color-warning-base-contrast-default);
+}
+.changelogTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-2);
+
+  li > & {
+    margin: var(--ds-size-3) 0 0;
   }
 }
 
