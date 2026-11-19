@@ -84,11 +84,8 @@ const typographySizeSchema = z
         '9': z.string().meta({ description: letterSpacingDescription }).default('1.5%'),
       })
       .prefault({}),
-    fontSize: z
-      .record(z.string(), z.string())
-      .meta({ description: 'The unitless font-size scale for this size mode, keyed by scale number' }),
   })
-  .describe('Defines the line-heights, letter-spacings and font-size scale for a size mode');
+  .describe('Defines the line-heights and letter-spacings for a size mode');
 
 export type TypographySizeSchema = z.infer<typeof typographySizeSchema>;
 
@@ -114,11 +111,19 @@ const typographyObjectSchema = z
         description:
           'Typography values per size mode, keyed by the step name from `size.steps`. Shared by all typography sets.',
       })
-      .prefault({
-        small: { fontSize: fontSizeScale([11, 13, 14, 16, 18, 21, 24, 30, 36, 48]) },
-        medium: { fontSize: fontSizeScale([12, 14, 16, 18, 21, 24, 30, 36, 48, 60]) },
-        large: { fontSize: fontSizeScale([13, 16, 18, 21, 24, 30, 36, 48, 60, 72]) },
-      }),
+      .prefault({ small: {}, medium: {}, large: {} }),
+    fontSize: z
+      .record(
+        z.string(),
+        z.string().regex(/^\d+(\.\d+)?$/, {
+          message: 'Font sizes must be unitless numbers in pixels, e.g. "16".',
+        }),
+      )
+      .meta({
+        description:
+          'The unitless font-size scale, keyed by scale number, at a font size of `size.steps.<step>.base`. Each size step multiplies it by `baseFontSize / base` and rounds to whole pixels, the same way the CSS scales font sizes.',
+      })
+      .default(fontSizeScale([12, 14, 16, 18, 21, 24, 30, 36, 48, 60])),
     components: z
       .object({
         heading: z
