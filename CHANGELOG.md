@@ -1,0 +1,3461 @@
+# designsystemet changelog
+
+<!--
+  Built by scripts/group-changelogs.js from the CHANGELOG.md of every package, when versioning.
+  Each change is listed once, with the packages it affects in the line under it.
+  Versions already here are not rebuilt, so they can be edited by hand.
+  The changelog pages on www are built from this file by scripts/sync-changelogs.js.
+-->
+
+## designsystemet 1.24.1
+
+### Patch Changes
+
+- **Typography:** Font sizes in the Small and Large size modes now match code. Headings change the most: they get bigger in Small and smaller in Large. Medium does not change. ([#5609](https://github.com/digdir/designsystemet/issues/5609)) (thanks @ssb-cgn) ([#5647](https://github.com/digdir/designsystemet/pull/5647))
+
+  | Variable | Small | Large |
+  |---|---|---|
+  | `font-size/1` | 11 → 11 | 13 → 14 |
+  | `font-size/2` | 13 → 12 | 16 → 16 |
+  | `font-size/3` | 14 → 14 | 18 → 19 |
+  | `font-size/4` | 16 → 16 | 21 → 21 |
+  | `font-size/5` | 18 → 19 | 24 → 25 |
+  | `font-size/6` | 21 → 21 | 30 → 28 |
+  | `font-size/7` | 24 → 27 | 36 → 35 |
+  | `font-size/8` | 30 → 32 | 48 → 42 |
+  | `font-size/9` | 36 → 43 | 60 → 56 |
+  | `font-size/10` | 48 → 53 | 72 → 70 |
+
+  _`@digdir/designsystemet` · `figma-plugin` · `figma-ui-kit`_
+
+- **Size:** Some sizes in the Large size mode are 1px larger, as intended. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
+
+  | Variable | Large |
+  |---|---|
+  | `size/3` | 13 → 14 |
+  | `size/6` | 27 → 28 |
+  | `size/9` | 41 → 42 |
+  | `size/12` | 55 → 56 |
+  | `size/15` | 69 → 70 |
+  | `size/18` | 83 → 84 |
+  | `size/30` | 139 → 140 |
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `figma-plugin` · `figma-ui-kit`_
+
+- **config**: A theme with exactly three colors named `main`, `support` and `neutral` is no longer mistaken for the old color categories and migrated. ([#5633](https://github.com/digdir/designsystemet/pull/5633))
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#5613](https://github.com/digdir/designsystemet/pull/5613))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- `base-contrast-default` is now chosen so it has enough contrast against both `base-default` and `base-hover`, not only `base-default`. Some mid-tone colors get black instead of white, mostly in dark mode, and `base-contrast-subtle` follows the same direction. ([#5623](https://github.com/digdir/designsystemet/pull/5623))
+
+  _`@digdir/designsystemet`_
+
+- **config**: Color names can no longer start or end with a hyphen, or have two hyphens in a row. Names like `-brand`, `brand-` and `brand--2` are rejected; `brand-2` is still valid. ([#5633](https://github.com/digdir/designsystemet/pull/5633))
+
+  _`@digdir/designsystemet`_
+
+- **Tabs**: Use `DSTabsElement` instead of `DSTabElement` as the type for `ref` and props on the root `Tabs` component. ([#5644](https://github.com/digdir/designsystemet/pull/5644))
+
+  _`@digdir/designsystemet-react`_
+
+- Re-export custom element types from `@digdir/designsystemet-web` (`DSErrorSummaryElement`, `DSFieldElement` etc.) ([#5644](https://github.com/digdir/designsystemet/pull/5644))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.24.0
+
+### Minor Changes
+
+- New `types` output for generating TypeScript declarations for your theme's colors (`types.d.ts`). The `css` output no longer creates type declarations by default, so add `"types"` to `output` to get them. ([#5444](https://github.com/digdir/designsystemet/pull/5444))
+
+  _`@digdir/designsystemet`_
+
+- **CLI:** New `output` field for choosing what the CLI creates. It defaults to `["css"]`. Each output is saved in a default folder, which you can change with `dir`: ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+  - `"css"`: CSS, in `designsystemet`
+  - `"types"`: type declarations, in `designsystemet`
+  - `"design-tokens"`: design tokens, in `designsystemet/design-tokens`
+
+  _`@digdir/designsystemet`_
+
+- **CLI:** Set `cleanDir` to `true` on an output in the new `output` field to delete the files in its `dir` before generating files. `cleanDir` is `false` by default, like `clean`. Design tokens that are built from (`tokensDir`), and folders of outputs with `cleanDir: false`, are kept when they are inside a cleaned folder. Before deleting anything, the CLI stops with an error if a cleaned folder contains the config file, is one of those folders, is a symlink, or has a symlink on the way to one of them or to another output. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+  _`@digdir/designsystemet`_
+
+- New `tailwind` option on the `css` output. Set this to the desired Tailwind version to generate `<theme>.tailwind.css`. Defaults to `false`, which does not generate a Tailwind file. ([#5438](https://github.com/digdir/designsystemet/pull/5438))
+  - `"v3"` generates the same file as before.
+  - `"v4"` uses `@theme inline`, so Tailwind utilities reference the `--ds-*` variables directly and `data-color`, `data-color-scheme` and `data-size` also apply to them, at any depth in the DOM.
+
+  _`@digdir/designsystemet`_
+
+- New `ds-focus--within` helper class that adds the focus ring when the element or any of its descendants have focus (`:focus-within`). ([#5569](https://github.com/digdir/designsystemet/pull/5569))
+
+  _`@digdir/designsystemet-css`_
+
+- **CSS:** Ensure utility classes such as `.ds-focus` and `.ds-icon` always take precedence over component by assigning them to a new CSS layer `ds.utils`, ordered after `ds.components`. For example `ds-sr-only` will now correctly take precedence over `ds-label`. ([#5594](https://github.com/digdir/designsystemet/pull/5594))
+
+  _`@digdir/designsystemet-css`_
+
+### Patch Changes
+
+- Fix `<theme>.tailwind.css` missing variables `--text-sm`, `--text-md` and `--text-lg`, mapped to the body font sizes. Generate a new theme file to get the updated fixed file. ([#5451](https://github.com/digdir/designsystemet/pull/5451))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css`_
+
+- **Deprecated:** Commands `token create` and `token build`. Use `designsystemet` with new `output` field in `designsystemet.config.json` to configure outputs. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+  _`@digdir/designsystemet`_
+
+- Deprecated unused design token `link.color.visited`, CSS custom property `--ds-link-color-visited` and config option `overrides.linkVisited`. To style visited links, style `.ds-link:visited` instead. ([#5574](https://github.com/digdir/designsystemet/pull/5574))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css`_
+
+- Replace `fast-glob` with Node's built-in `fs.glob` in CSS migrations. Thanks @wfeiring ([#5505](https://github.com/digdir/designsystemet/pull/5505))
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#5506](https://github.com/digdir/designsystemet/pull/5506))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- Update npm non-major dependencies ([#5553](https://github.com/digdir/designsystemet/pull/5553))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- Update npm non-major dependencies ([#5588](https://github.com/digdir/designsystemet/pull/5588))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#5521](https://github.com/digdir/designsystemet/pull/5521))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Deprecated:** `outDir` and `clean` are deprecated in the Config schema, and replaced by `output[].dir` and `output[].cleanDir` for the respective output type. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+  _`@digdir/designsystemet`_
+
+- **CLI:** The config file (`designsystemet.config.json`), including `typography`, is no longer experimental. Future changes to the config schema follow semver and come with automatic migrations. ([#5597](https://github.com/digdir/designsystemet/pull/5597))
+
+  _`@digdir/designsystemet`_
+
+- **Tailwind:** Sets CSS `@layer` in `<theme>.tailwind.css` for easier usage ([#5570](https://github.com/digdir/designsystemet/pull/5570))
+
+  _`@digdir/designsystemet`_
+
+- Add banner about usage to generated CSS theme and tailwind files. ([#5570](https://github.com/digdir/designsystemet/pull/5570))
+
+  _`@digdir/designsystemet`_
+
+- **Link:** Deprecated CSS custom property `--dsc-link-color--visited`. Style `.ds-link:visited` instead. ([#5574](https://github.com/digdir/designsystemet/pull/5574))
+
+  _`@digdir/designsystemet-css`_
+
+- **data-color:** Sets `color` to `--ds-color-text-default` so text color updates when the color mode changes. ([#5419](https://github.com/digdir/designsystemet/pull/5419))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion:** No longer counts the hidden empty option in the screen reader hit count when other options are shown ([#5457](https://github.com/digdir/designsystemet/pull/5457))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-web`_
+
+- **Breadcrumbs, Chip, Dialog, Pagination, Suggestion:** Added English translations of the default labels set in CSS custom properties. ([#5501](https://github.com/digdir/designsystemet/pull/5501))
+
+  _`@digdir/designsystemet-css`_
+
+- **Table:** No longer causes sort buttons to overflow border-radius (thanks @ericbstie) ([#5441](https://github.com/digdir/designsystemet/pull/5441))
+
+  _`@digdir/designsystemet-css`_
+
+- **Alert, Error summary, Table:** Revert `border-radius` from `--ds-border-radius-lg` to `--ds-border-radius-md` to harmonize with sibling elements ([#5440](https://github.com/digdir/designsystemet/pull/5440))
+
+  _`@digdir/designsystemet-css`_
+
+- **Table**: Applies hover and sorted background to `th[aria-sort]` instead of nested `<button>` ([#5441](https://github.com/digdir/designsystemet/pull/5441))
+
+  _`@digdir/designsystemet-css`_
+
+- **Dialog:** Added a default label through the CSS custom property `--dsc-dialog-close-label` for the close button. ([#5501](https://github.com/digdir/designsystemet/pull/5501))
+
+  _`@digdir/designsystemet-css`_
+
+- **Combobox**: Use inline SVGs for icons ([#5514](https://github.com/digdir/designsystemet/pull/5514))
+
+  _`@digdir/designsystemet-css`_
+
+- **Dialog:** Deprecates `TriggerContext` and `Trigger`, which will be removed in the next major version. Use native [Invokers Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) on `Button` with `command="show-modal"` (or `command="--show-non-modal"`) and `commandfor` set to the dialog's `id`. ([#5580](https://github.com/digdir/designsystemet/pull/5580))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dropdown, Popover:** Deprecates `TriggerContext` and `Trigger`, which will be removed in the next major version. Use native [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using) on `Button` with `popovertarget` set to the popover's or dropdown's `id`. ([#5580](https://github.com/digdir/designsystemet/pull/5580))
+
+  _`@digdir/designsystemet-react`_
+
+- **Search:** Deprecates `Search`, `Search.Input`, `Search.Clear` and `Search.Button`, which will be removed in the next major version. Read [Search is being removed, what should you do?](https://designsystemet.no/en/blog/search-is-being-removed-what-should-you-do) for how to add a search button, search icon or clear button. ([#5579](https://github.com/digdir/designsystemet/pull/5579))
+
+  _`@digdir/designsystemet-react`_
+
+- **Combobox:** Removed inline SVGs, now using inline CSS icons ([#5514](https://github.com/digdir/designsystemet/pull/5514))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog:** Fixed accessible name warning when heading is present ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **ToggleGroup:** Now allows overwriting `data-variant` on `ToggleGroup.Item` ([#5455](https://github.com/digdir/designsystemet/pull/5455))
+
+  _`@digdir/designsystemet-react`_
+
+- Remove `@navikt/aksel-icons` as a dependency ([#5514](https://github.com/digdir/designsystemet/pull/5514))
+
+  _`@digdir/designsystemet-react`_
+
+- **AvatarStack:** Now stable, please switch from `EXPERIMENTAL_AvatarStack` to `AvatarStack` ([#5496](https://github.com/digdir/designsystemet/pull/5496))
+
+  _`@digdir/designsystemet-react`_
+
+- **Popover, Dropdown:** Now stay in sync when opened or closed with the native Popover API, such as `showPopover()`, `hidePopover()` or `togglePopover()`, when not using `open`. Before, the next click on the trigger could do nothing, and `Esc` or a click outside would not close it. ([#5582](https://github.com/digdir/designsystemet/pull/5582))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog:** Automatically uses the first heading as its accessible name if one is missing, and warns when neither is provided. ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Textarea:** Fixed hydration warning ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+
+  _`@digdir/designsystemet-react`_
+
+- Automatically load relevant helpers when using isolated component files (`dialog` loads `invokers`, `field` loads `readonly`, `togglegroup` loads `readonly` and `focusgroup`) ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
+  _`@digdir/designsystemet-web`_
+
+- **Link:** The icon on visited links now uses `text/subtle`, the same color as the link text. It used to use `link/color/visited`, an old variable that is no longer in use. If you have your own copy of the UI kit, see [how to fix it in Figma](https://github.com/digdir/designsystemet/issues/4969#issuecomment-6472970682). ([#4969](https://github.com/digdir/designsystemet/issues/4969)) ([#5574](https://github.com/digdir/designsystemet/pull/5574))
+
+  _`figma-ui-kit`_
+
+- **Search** Deprecated in Figma and will be removed in the next major version. [Read more about what you should do in Figma here](https://github.com/digdir/designsystemet/issues/5578) ([#5578](https://github.com/digdir/designsystemet/issues/5578)) ([#5596](https://github.com/digdir/designsystemet/pull/5596)) by [@Thunear](https://github.com/Thunear)
+
+  _`figma-ui-kit`_
+
+## designsystemet 1.23.0
+
+### Minor Changes
+
+- **Field:** No longer reduces opacity on label and description when containing a disabled input, improving readability. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+  _`@digdir/designsystemet-css`_
+
+- **Select:** Published in Figma, with a simple list in place of the browser's own dropdown, which looks different in every browser ([#4436](https://github.com/digdir/designsystemet/issues/4436))
+
+  _`figma-ui-kit`_
+
+- **Chip:** Long labels are now truncated with an ellipsis, as in code ([#5049](https://github.com/digdir/designsystemet/issues/5049))
+
+  _`figma-ui-kit`_
+
+- **Tag:** Added examples with the `outline` variant ([#4482](https://github.com/digdir/designsystemet/issues/4482))
+
+  _`figma-ui-kit`_
+
+### Patch Changes
+
+- **CLI:** Generated theme CSS now includes forced-colors support for high contrast mode. ([#5403](https://github.com/digdir/designsystemet/pull/5403))
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#5373](https://github.com/digdir/designsystemet/pull/5373))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **CLI** Remove internal functions that were exposed by default. ([#5410](https://github.com/digdir/designsystemet/pull/5410))
+
+  _`@digdir/designsystemet`_
+
+- **cli**: Color names in `themes.<theme>.colors` are now validated and may only contain lowercase letters (a-z), digits (0-9) and hyphens (-), matching the names produced by the theme builder. ([#5357](https://github.com/digdir/designsystemet/pull/5357))
+
+  _`@digdir/designsystemet`_
+
+- **Details:** Adjust default `padding-block` from `--ds-size-2` to `--ds-size-4` to match Figma ([#5411](https://github.com/digdir/designsystemet/pull/5411))
+
+  _`@digdir/designsystemet-css`_
+
+- **Field:** Radio and checkbox descriptions now use a smaller font size to create better visual hierarchy. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+  _`@digdir/designsystemet-css`_
+
+- **Label:** The default font weight is now `semibold` to better distinguish labels from body text. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+  _`@digdir/designsystemet-css`_
+
+- **Fieldset:** Description text now inherits color instead of using a fixed neutral color, making it easier to swap color palettes. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+  _`@digdir/designsystemet-css`_
+
+- **Field:** Description text now inherits color instead of using a fixed neutral color, making it easier to swap color palettes. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+
+  _`@digdir/designsystemet-css`_
+
+- **Details:** The chevron now aligns with the first line of text when the text wraps, matching the Figma design. ([#5421](https://github.com/digdir/designsystemet/pull/5421))
+
+  _`@digdir/designsystemet-css`_
+
+- **CSS:** Color tokens now automatically map to the appropriate CSS system colors when forced-colors mode is enabled, such as Windows High Contrast Mode. ([#5403](https://github.com/digdir/designsystemet/pull/5403))
+
+  _`@digdir/designsystemet-css`_
+
+- **Pagination:** Now supports `--dsc-pagination-label-prev` and `--dsc-pagination-label-next` CSS custom properties for defining prev/next labels. ([#5401](https://github.com/digdir/designsystemet/pull/5401)) by [@stianmorsund](https://github.com/stianmorsund)
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion:** Added `--dsc-suggestion-search-icon-spacing`, and increased spacing before search icon from `--ds-size-2` to `--ds-size-3` to match Figma ([#5411](https://github.com/digdir/designsystemet/pull/5411))
+
+  _`@digdir/designsystemet-css`_
+
+- **Pagination:** Previous and next buttons now respect existing `aria-label` attributes. ([#5401](https://github.com/digdir/designsystemet/pull/5401)) by [@stianmorsund](https://github.com/stianmorsund)
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Suggestion:** Hide the "Create" option on initial render when input is empty ([#5411](https://github.com/digdir/designsystemet/pull/5411))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Popover:** Support floating positioning with `data-placement` without requiring `ds-popover` class name or the internal `--_ds-floating` CSS property. ([#5397](https://github.com/digdir/designsystemet/pull/5397))
+
+  _`@digdir/designsystemet-web`_
+
+- **Popover:** Patched polyfill to prevent issues in non-Node.js SSR environments ([#5395](https://github.com/digdir/designsystemet/pull/5395))
+
+  _`@digdir/designsystemet-web`_
+
+- **Suggestion:** Uses `u-combobox@2.1.5` to resolve correct input value when selecting datalist option in multiple mode ([#5407](https://github.com/digdir/designsystemet/pull/5407))
+
+  _`@digdir/designsystemet-web`_
+
+- **Suggestion:** The listbox now matches the width of the input before it is revealed, and keeps matching it when the input is resized while the listbox is open. ([#5393](https://github.com/digdir/designsystemet/pull/5393))
+
+  _`@digdir/designsystemet-web`_
+
+- **Checkbox, Radio, Select, Suggestion, Switch, Textfield, Textarea:** Only the input itself is shown as disabled, not the label and description, which can still be relevant to read ([#5306](https://github.com/digdir/designsystemet/issues/5306))
+
+  _`figma-ui-kit`_
+
+- **LinkCard:** The title underline now behaves like `Link`, with 6% thickness by default and 12% on hover and active ([#5284](https://github.com/digdir/designsystemet/issues/5284))
+
+  _`figma-ui-kit`_
+
+- **Form components:** Labels are now semibold and descriptions use `text-default`, to make them easier to tell apart ([#3913](https://github.com/digdir/designsystemet/issues/3913))
+
+  _`figma-ui-kit`_
+
+- **ErrorSummary:** Padding is now `size-7` on all sides, and the list has `size-1` left padding to align with code ([#5195](https://github.com/digdir/designsystemet/issues/5195))
+
+  _`figma-ui-kit`_
+
+- **Suggestion:** The chevron now points the right way when the list is open ([#5198](https://github.com/digdir/designsystemet/issues/5198))
+
+  _`figma-ui-kit`_
+
+- **Search:** Left padding without a search icon is now `size-3`, as in code ([#5197](https://github.com/digdir/designsystemet/issues/5197), [#5402](https://github.com/digdir/designsystemet/issues/5402))
+
+  _`figma-ui-kit`_
+
+- **Textfield:** Left padding is now `size-3`, as in code ([#5402](https://github.com/digdir/designsystemet/issues/5402))
+
+  _`figma-ui-kit`_
+
+- **Button:** Icon size in icon buttons now matches code ([#5192](https://github.com/digdir/designsystemet/issues/5192))
+
+  _`figma-ui-kit`_
+
+- **List:** Added a small left padding, so list items align with the text above them ([#5196](https://github.com/digdir/designsystemet/issues/5196))
+
+  _`figma-ui-kit`_
+
+- Updated component descriptions to match the documentation ([#5369](https://github.com/digdir/designsystemet/issues/5369))
+
+  _`figma-ui-kit`_
+
+## designsystemet 1.22.0
+
+### Minor Changes
+
+- **Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Suggestion.Clear:** `aria-label` prop deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-clear` or attribute `data-sr-clear` on Suggestion. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion:** `singular` and `plural` props deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-singular` and `--dsc-suggestion-sr-plural` or attributes `data-sr-singular` and `data-sr-plural`. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  _`@digdir/designsystemet-react`_
+
+- **Search.Clear:** `aria-label` prop deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-clear` or attribute `data-sr-clear` on Search. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  _`@digdir/designsystemet-react`_
+
+### Patch Changes
+
+- **Tag:** Now gets accessible focus outline if rendered as interactive element to support tag clouds etc. ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+
+  _`@digdir/designsystemet-css`_
+
+- **Radio:** Fixed tiny rendering glitch gap between hover outline and border at 400% zoom. ([#5341](https://github.com/digdir/designsystemet/pull/5341))
+
+  _`@digdir/designsystemet-css`_
+
+- **Avatar:** Now scales initials text to match avatar size ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+
+  _`@digdir/designsystemet-css`_
+
+- **Breadcrumbs:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+  _`@digdir/designsystemet-css`_
+
+- **Chip:** Improve optical spacing between input/icon and text, which leads to slightly slimmer chip width. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
+
+  _`@digdir/designsystemet-css`_
+
+- **Dropdown:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+  _`@digdir/designsystemet-css`_
+
+- **AvatarStack:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+  _`@digdir/designsystemet-css`_
+
+- **Chip:** Removable chips now automatically include screen reader instructions. Customize the instructions using `aria-label` or the new `--dsc-chip-removable-label` CSS custom property. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
+
+  _`@digdir/designsystemet-css`_
+
+- **Avatar:** Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+  - **deprecated**` data-initials` will be removed in next major release.
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **Link:** Adjusted the default `--dsc-link-text-decoration-thickness` to `0.06em` (from `0.0625em`) and `--dsc-link-text-decoration-thickness--hover` to `0.12em` (from `0.125em`) for slimmer, more consistent underlines across cards, headings, and links. ([#5365](https://github.com/digdir/designsystemet/pull/5365))
+
+  _`@digdir/designsystemet-css`_
+
+- **Card:** Now supports `--dsc-card-link-text-decoration-thickness` and `--dsc-card-link-text-decoration-thickness--hover` aligning underline behaviour with link component ([#5365](https://github.com/digdir/designsystemet/pull/5365))
+
+  _`@digdir/designsystemet-css`_
+
+- **Pagination:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+
+  _`@digdir/designsystemet-css`_
+
+- **Utils:** Correctly unescapes quotes in localized CSS custom property texts (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Search:** Now correctly sets state of clear button also when programmatically changing `value` (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Suggestion:** Now correctly renders focus ring in Safari (thanks @ssb-cgn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Suggestion:** Now correctly renders clear button state when rendered asynchronously (thanks @stianmorsund) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Search:** No longer causes hydration warning when server side rendered. ([#5368](https://github.com/digdir/designsystemet/pull/5368))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tag:** Now supports `asChild` property ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion:** Now correctly handles internal state when preventing a selection (thanks @olemartinorg) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Suggestion:** Now correctly renders `data-empty` option when not creatable (thanks @lassopicasso) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Tooltips:** Now only warns about missing `tabindex` if not explicitly set and not if label which has implicit interaction ([#5353](https://github.com/digdir/designsystemet/pull/5353))
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.21.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334)) by [@renovate](https://github.com/apps/renovate)
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-web`_
+
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302)) by [@renovate](https://github.com/apps/renovate)
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-web`_
+
+- **Avatar:** When `data-variant="square"`, default `border-radius` is adjusted to `--ds-border-radius-md` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
+
+  _`@digdir/designsystemet-css`_
+
+- **Alert, Errorsummary, Table:** Default `border-radius` adjusted to `--ds-border-radius-lg` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
+
+  _`@digdir/designsystemet-css`_
+
+- **Link:** Reduced the default underline offset from 27% to 24% to avoid collisions with character descenders ([#5325](https://github.com/digdir/designsystemet/pull/5325))
+
+  _`@digdir/designsystemet-css`_
+
+- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334))
+
+  _`@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302))
+
+  _`@digdir/designsystemet-react`_
+
+- Restored the framework type imports in `dist/index.d.ts`, so the JSX/element type augmentations for `ds-*` custom elements resolve again ([#5331](https://github.com/digdir/designsystemet/pull/5331))
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.21.0
+
+### Minor Changes
+
+- **Avatar:** Deprecates `variant="square"` prop in favour of CSS `--dsc-avatar-radius` ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+  _`@digdir/designsystemet-react`_
+
+### Patch Changes
+
+- fix color generation for severity colors defined in `colors` which were previously ignored. ([#5239](https://github.com/digdir/designsystemet/pull/5239))
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276)) by [@renovate](https://github.com/apps/renovate)
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **AvatarStack:** `overlap` and `--dsc-avatar-stack-overlap` property now needs to be a valid [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length) ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- fix default icon scaling not following sizing defined by `data-size`. (Thanks @Svish) ([#5281](https://github.com/digdir/designsystemet/pull/5281))
+
+  _`@digdir/designsystemet-css`_
+
+- **Avatar:** Now supports `--dsc-avatar-radius` ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+  _`@digdir/designsystemet-css`_
+
+- Update dependency postcss-import to v17 ([#5278](https://github.com/digdir/designsystemet/pull/5278)) by [@renovate](https://github.com/apps/renovate)
+
+  _`@digdir/designsystemet-css`_
+
+- **AvatarStack:** Now supports `--dsc-avatar-stack-radius` ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+  _`@digdir/designsystemet-css`_
+
+- **AvatarStack:** No longer needs `suffix` or `data-suffix`; for example, you can place `+10` text directly inside a trailing `<li>`. ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **AvatarStack:** Now uses `<ul>` and needs `<li>` to wrap each avatar ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **AvatarStack:** Deprecates `gap`, `overlap` and `avatarSize` props in favour of CSS custom properties ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.20.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5242](https://github.com/digdir/designsystemet/pull/5242))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Dialog:** no longer blocks content when controlled and closed programatically ([#5252](https://github.com/digdir/designsystemet/pull/5252))
+
+  _`@digdir/designsystemet-react`_
+
+- **Button**: `loading={true}` no longer sets `aria-disabled="true"` internally ([#5248](https://github.com/digdir/designsystemet/pull/5248))
+
+  _`@digdir/designsystemet-react`_
+
+- Now bundled using `tsdown` instead of `rollup` ([#5215](https://github.com/digdir/designsystemet/pull/5215))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion:** No longer gives hydration warning when `selected` prop is provided ([#5236](https://github.com/digdir/designsystemet/pull/5236))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion:** no longer moves focus to chip when clicking inside datalist ([#5216](https://github.com/digdir/designsystemet/pull/5216))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- Now bundling the `ESM`, `CJS`, and `UMD` formats using `tsdown`. ([#5222](https://github.com/digdir/designsystemet/pull/5222))
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.20.0
+
+### Minor Changes
+
+- **Search:** `Search` is now built on top of `<ds-suggestion>` supporting clear button also without React ([#5126](https://github.com/digdir/designsystemet/pull/5126))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+### Patch Changes
+
+- Reduce minimum required node version to `>=22.0.0`. ([#5165](https://github.com/digdir/designsystemet/pull/5165))
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- Bump minimum required Node.js version to `>=22.12.0` as required by `commander`. ([#5212](https://github.com/digdir/designsystemet/pull/5212))
+
+  _`@digdir/designsystemet`_
+
+- Change url for config schema on www.designsystemet.no, from `cli` to `config` to better reflect which file the schema is for. ([#5211](https://github.com/digdir/designsystemet/pull/5211))
+  ```json
+  "$schema": "https://designsystemet.no/schemas/config/[VERSION].json"
+  ```
+
+  _`@digdir/designsystemet`_
+
+- **Badge:** now uses `--dsc-badge-size--count` as minimum size when `data-count` is defined ([#5213](https://github.com/digdir/designsystemet/pull/5213))
+
+  _`@digdir/designsystemet-css`_
+
+- **Errorsummary**: Now has consistent padding `--ds-size-7` on all sides ([#5219](https://github.com/digdir/designsystemet/pull/5219))
+
+  _`@digdir/designsystemet-css`_
+
+- **file-upload**: hover does not give solid border anymore ([#5182](https://github.com/digdir/designsystemet/pull/5182))
+
+  _`@digdir/designsystemet-css`_
+
+- **file-upload**: block padding is now `--ds-size-7` ([#5182](https://github.com/digdir/designsystemet/pull/5182))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion:** Skip unnecessary matching after clicking option in single mode ([#5207](https://github.com/digdir/designsystemet/pull/5207))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **ValidationMessage:** Now correctly sets `aria-invalid="true"` only if `danger` color ([#5149](https://github.com/digdir/designsystemet/pull/5149))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Suggestion**: Hide the empty state when options are initially available. ([#5189](https://github.com/digdir/designsystemet/pull/5189))
+
+  _`@digdir/designsystemet-web`_
+
+- **clickdelegatefor**: Now allows native label click, avoiding duplicate input activation. ([#5201](https://github.com/digdir/designsystemet/pull/5201))
+
+  _`@digdir/designsystemet-web`_
+
+- **popover:** Prevent ResizeObserver loop errors when positioning the option list. ([#5164](https://github.com/digdir/designsystemet/pull/5164))
+
+  _`@digdir/designsystemet-web`_
+
+- **popover**: Won't resize overscroll on scroll while open ([#5175](https://github.com/digdir/designsystemet/pull/5175))
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.19.1
+
+### Patch Changes
+
+- Fix missing tailwind variables (opacity and shadow) in default theme that was introduced in [#5139](https://github.com/digdir/designsystemet/pull/5139) ([#5162](https://github.com/digdir/designsystemet/pull/5162))
+
+  _`@digdir/designsystemet-css`_
+
+## designsystemet 1.19.0
+
+### Minor Changes
+
+- **cli**: Add support for JSONC config files. Config files may now contain comments and trailing commas, and a `designsystemet.config.jsonc` file is auto-detected in addition to `designsystemet.config.json`. ([#5051](https://github.com/digdir/designsystemet/pull/5051))
+
+  _`@digdir/designsystemet`_
+
+- **file-upload**: New experimental component. Style with the `ds-file-upload` class. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **New experimental component**: `FileUpload`. Use it by importing `EXPERIMENTAL_FileUpload` from `@digdir/designsystemet-react`. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+  _`@digdir/designsystemet-react`_
+
+- **ToggleGroup:** Deprecates `data-toggle-group` in favor of `focusgroup="radiogroup"` with `aria-label`. ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **focusgroup:** is now automatically polyfilled according to [upcoming specification](https://open-ui.org/components/scoped-focusgroup.explainer/) ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+  _`@digdir/designsystemet-web`_
+
+- **Web:** All functionality now supports rendering inside Shadow DOM ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+  _`@digdir/designsystemet-web`_
+
+- **FileUpload:** New component ([#1236](https://github.com/digdir/designsystemet/issues/1236))
+
+  _`figma-ui-kit`_
+
+### Patch Changes
+
+- Update dependency tsdown to v0.22.14 ([#5102](https://github.com/digdir/designsystemet/pull/5102))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-web`_
+
+- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- fixed missing types error that might occur for `@tokens-studio/types`. ([#5061](https://github.com/digdir/designsystemet/pull/5061))
+
+  _`@digdir/designsystemet`_
+
+- Update dependency colorjs.io to ^0.7.1 ([#5121](https://github.com/digdir/designsystemet/pull/5121))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet`_
+
+- Update dependency colorjs.io to ^0.7.0 ([#5108](https://github.com/digdir/designsystemet/pull/5108))
+
+  _`@digdir/designsystemet`_
+
+- Reduced package size by removing unintended declaration map files being generated. ([#5065](https://github.com/digdir/designsystemet/pull/5065))
+
+  _`@digdir/designsystemet`_
+
+- Clarified error message when different theme colors are detected ([#5068](https://github.com/digdir/designsystemet/pull/5068))
+
+  _`@digdir/designsystemet`_
+
+- New exports for internal use (not documented). ([#5068](https://github.com/digdir/designsystemet/pull/5068))
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Tailwind:** `--experimental-tailwind` now also generates `--shadow-*` and `--opacity-disabled` config ([#5139](https://github.com/digdir/designsystemet/pull/5139))
+
+  _`@digdir/designsystemet`_
+
+- `typography` and `borderRadius` are no longer required in the config file. If omitted, defaults will be used: `typography.fontFamily = "Inter"` and `borderRadius = 4`. ([#5099](https://github.com/digdir/designsystemet/pull/5099))
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- - add option `-v` and `--version` for display version number. ([#5098](https://github.com/digdir/designsystemet/pull/5098))
+  - add option `-h` and `--help` for display help.
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Dialog:** now applies a `z-index` even when opened in non-modal mode (without a backdrop). ([#5123](https://github.com/digdir/designsystemet/pull/5123))
+
+  _`@digdir/designsystemet-css`_
+
+- **ds-dropdown:** no longer requires the `ds-popover` class added on the same element. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+
+  _`@digdir/designsystemet-css`_
+
+- fix loading order for popover-polyfill ([#5027](https://github.com/digdir/designsystemet/pull/5027))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-web`_
+
+- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Chip:** now aligns checkbox, radio and x to top when multi-line text ([#5083](https://github.com/digdir/designsystemet/pull/5083))
+
+  _`@digdir/designsystemet-css`_
+
+- Update npm non-major dependencies ([#5072](https://github.com/digdir/designsystemet/pull/5072))
+
+  _`@digdir/designsystemet-react`_
+
+- **React types:** allow all values of `data-color` in all components ([#5082](https://github.com/digdir/designsystemet/pull/5082))
+
+  _`@digdir/designsystemet-react`_
+
+- fix component types for `data-color` and `data-size` to behave the same on components as globally ([#5156](https://github.com/digdir/designsystemet/pull/5156))
+
+  _`@digdir/designsystemet-react`_
+
+- **Global types:** added `focusgroup` and `focusgroupstart` to the global HTML attribute types. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog:** now adds `aria-haspopup` on focus event to enhance performance and support Shadow DOM rendering ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **clickdelegatefor**: Fixes an issue with using `data-clickdelegatefor` inside of `<details>` ([#5074](https://github.com/digdir/designsystemet/pull/5074))
+
+  _`@digdir/designsystemet-web`_
+
+- **Breadcrumbs, Pagination, ToggleGroup:** support `aria-labelledby` ([#5081](https://github.com/digdir/designsystemet/pull/5081))
+
+  _`@digdir/designsystemet-web`_
+
+- Update dependency @oddbird/popover-polyfill to v0.7.1 ([#5101](https://github.com/digdir/designsystemet/pull/5101))
+
+  _`@digdir/designsystemet-web`_
+
+- **Field:** now scopes internal cache to DSFieldElement class to avoid version conflicts ([#5077](https://github.com/digdir/designsystemet/pull/5077))
+
+  _`@digdir/designsystemet-web`_
+
+- **Tooltip:** allow `data-tooltip` with CSS ID selector like `#id` to retrieve text from another element ([#5081](https://github.com/digdir/designsystemet/pull/5081))
+
+  _`@digdir/designsystemet-web`_
+
+- **tooltip**: Now inherits nearest `data-size` ([#5119](https://github.com/digdir/designsystemet/pull/5119))
+
+  _`@digdir/designsystemet-web`_
+
+- **clickdelegatefor:** now only skips interactive child elements ([#5080](https://github.com/digdir/designsystemet/pull/5080))
+
+  _`@digdir/designsystemet-web`_
+
+- **Button:** Text in secondary and tertiary buttons no longer changes color on hover and active, as in code ([#5132](https://github.com/digdir/designsystemet/issues/5132))
+
+  _`figma-ui-kit`_
+
+- **ToggleGroup:** Icons now use `text-default` instead of `text-subtle`, as in code ([#5158](https://github.com/digdir/designsystemet/issues/5158))
+
+  _`figma-ui-kit`_
+
+## designsystemet 1.18.0
+
+### Minor Changes
+
+- **Chip:** now by default keeps text on a single line and truncates with ellipsis if needed, but allows text wrapping by adding `data-wrap="wrap"` ([#5040](https://github.com/digdir/designsystemet/pull/5040))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+### Patch Changes
+
+- Now correctly creates CSS variables when color name has hyphen ([#5044](https://github.com/digdir/designsystemet/pull/5044))
+
+  _`@digdir/designsystemet`_
+
+- **@charset**: remove redundant `@charset` as this simplifies merging Designsystemet with other CSS files ([#5041](https://github.com/digdir/designsystemet/pull/5041))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion:** now always correctly syncs input value in single mode ([#5043](https://github.com/digdir/designsystemet/pull/5043))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.17.0
+
+### Minor Changes
+
+- Removed color categories `main` and `support`. All colors are now defined in config file under `themes.<name>.colors` (just like neutral). ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+  _`@digdir/designsystemet`_
+
+- Remove `UNSAFE_COLOR_GROUPS` env variable as its no longer relevant ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+  _`@digdir/designsystemet`_
+
+- Added support for auto-migrations which checks files and prompts users about needed migrations. ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+  _`@digdir/designsystemet`_
+
+- **Color:** The **Main color** and **Support color** collections are merged into one **Color** collection, and colors are chosen with color modes, as in code. The `main`, `support` and `neutral` component variants are removed ([#4545](https://github.com/digdir/designsystemet/issues/4545))
+
+  _`figma-ui-kit`_
+
+- **ButtonGroup:** Removed, as it isn't a component in code. Spacing between buttons is a layout decision for each team ([#5024](https://github.com/digdir/designsystemet/issues/5024))
+
+  _`figma-ui-kit`_
+
+- **ChipGroup:** Removed, as it isn't a component in code. Spacing between chips is a layout decision for each team ([#5025](https://github.com/digdir/designsystemet/issues/5025))
+
+  _`figma-ui-kit`_
+
+### Patch Changes
+
+- Increased minimum required `node` version 24.16.0. ([#4917](https://github.com/digdir/designsystemet/pull/4917))
+
+  _`@digdir/designsystemet`_
+
+- **Avatar:** now scales correctly also when rendered as `<button>` ([#5029](https://github.com/digdir/designsystemet/pull/5029))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **Field, Fieldset:** `disabled` and `read only` styling is now only affected by form elements with class name set to `ds-input` ([#5028](https://github.com/digdir/designsystemet/pull/5028))
+
+  _`@digdir/designsystemet-css`_
+
+- **Tabs:** enhanced support for server side rendering ([#5032](https://github.com/digdir/designsystemet/pull/5032))
+
+  _`@digdir/designsystemet-react`_
+
+- **Avatar, Badge, Card, Details, Paragraph, Popover, Skeleton, Tag**: Remove redundant default value for `variant` prop: ([#4999](https://github.com/digdir/designsystemet/pull/4999))
+  - Avatar - circle
+  - Badge - base
+  - Card - default
+  - Details - default
+  - Paragraph - default
+  - Popover - default
+  - Skeleton - rectangle
+  - Tag - default
+
+  _`@digdir/designsystemet-react`_
+
+- **tooltip**: Fixes a bug where tooltip would reappear on mousedown outside trigger ([#5012](https://github.com/digdir/designsystemet/pull/5012))
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.16.1
+
+### Patch Changes
+
+- fix(deps): update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **base**: `ds-icon` no longer defines `fill`. Users must make sure their icons inherit color the correct way for their icons. ([#5013](https://github.com/digdir/designsystemet/pull/5013))
+
+  _`@digdir/designsystemet-css`_
+
+## designsystemet 1.16.0
+
+### Minor Changes
+
+- **Root:** Add `--ds-icon-size` variable for easier consistent icon sizing. Size `--ds-size-6` by default. ([#4971](https://github.com/digdir/designsystemet/pull/4971))
+  **Root:** Increased `read-only` icon size from `1.2em` to `6` for consistency and configurable using `--ds-icon-size`
+  **Alert, Chip, Suggestion Chip, Search, IconButton:** Decreased icon size from `7` to `6` for consistency and configurable using `--ds-icon-size`
+  **Dialog:** Add missing `--dsc-dialog-icon-size` variable
+
+  _`@digdir/designsystemet-css`_
+
+### Patch Changes
+
+- **Avatar**: Now fully supports rendering as a `<button>` ([#4968](https://github.com/digdir/designsystemet/pull/4968))
+  **Button, Tabs, Tag**: No longer shrink inside `display: flex`, preventing unintended multi-line text wrapping
+  **Button:** Added missing `--dsc-button-border-radius` CSS custom property
+  **Button**: Added missing `--dsc-button-color--active` CSS custom property
+  **Chip**: Now correctly inherits `text-align` when rendered as a `<button>`
+  **Chip**: Prevents the remove icon (`x`) from shrinking when `data-variant="removable"` contains long text
+  **Dialog**: Now centers correctly when placed inside a `display: flex` container
+  **Field**: Now uses `column-gap` instead of `padding` to create spacing between `radio`/`checkbox` inputs and their labels.
+  **Heading**: Prevents page breaks immediately after headings when printing
+  **Input:** Added missing `--dsc-input-border-radius` CSS custom property
+  **Input**: Placeholder text is now styled using the `--dsc-input-color-placeholder` CSS custom property
+  **Input**: Fixes a [Safari bug](https://stackoverflow.com/q/73896040) where `input[type="date"]` placeholder text could appear cyan
+  **Input**: Enforces a minimum `font-size` of `16px` to prevent mobile browser zooming, and adds `--dsc-input-font-size` for overwriting this
+  **Pagination, ToggleGroup**: Interactive elements are now styled correctly regardless of `data-variant`
+  **ToggleGroup**: Now supports `<a>` elements as interactive controls
+  **ToggleGroup:** Outer edge now uses `outline` instead of `border` in both `primary` and `secondary` variants for consistent rendering
+  **Table**: Added `--dsc-table-vertical-align` CSS custom property
+  **Table**: Prevents page breaks within tables when printing
+  **Tag:** Added missing `--dsc-tag-border-radius` CSS custom property
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion:** Better handle React async rendering child `<u-datalist>` element ([#4933](https://github.com/digdir/designsystemet/pull/4933))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog:** do not trigger `close` event when using controlled mode ([#4965](https://github.com/digdir/designsystemet/pull/4965))
+
+  _`@digdir/designsystemet-react`_
+
+- **Label**: Removed unneeded default value for `weight` prop. ([#4955](https://github.com/digdir/designsystemet/pull/4955))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion:** Updated VoiceOver compatibility - both with and without QuickNav ([#4970](https://github.com/digdir/designsystemet/pull/4970))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Dialog:** Apply `autofocus` only for dialog-level animations, not nested element animations ([#4958](https://github.com/digdir/designsystemet/pull/4958))
+
+  _`@digdir/designsystemet-react`_
+
+- **Button**: No longer renders a redundant `data-variant` attribute in HTML when no `variant` is specified. ([#4968](https://github.com/digdir/designsystemet/pull/4968))
+  **Field**: Added missing TypeScript support for `data-position` when using `radio` or `checkbox` inputs.
+  **usePagination**: No longer outputs redundant `variant` props
+
+  _`@digdir/designsystemet-react`_
+
+- Export missing types `DefaultProps` and `Placement` ([#4978](https://github.com/digdir/designsystemet/pull/4978))
+
+  _`@digdir/designsystemet-react`_
+
+- **Popover, Tooltip, Dropdown:** No longer requires arrow to be drawn by `::before` element to correctly calculate arrow size ([#4951](https://github.com/digdir/designsystemet/pull/4951))
+
+  _`@digdir/designsystemet-web`_
+
+- **Popover:** Automatically run Popover API polyfill if needed in older browsers ([#4983](https://github.com/digdir/designsystemet/pull/4983))
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.15.0
+
+### Minor Changes
+
+- **SuggestionInput:** Remove unsupported props `role` and `data-indeterminate` that would break `Suggestion` ([#4883](https://github.com/digdir/designsystemet/pull/4883))
+
+  _`@digdir/designsystemet-react`_
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- Add deprecation warning for cli options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme`. Use JSON config file instead. ([#4912](https://github.com/digdir/designsystemet/pull/4912))
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#4910](https://github.com/digdir/designsystemet/pull/4910))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **Dropdown**: Removed hardcoded `font-weight` on some heading elements. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+  _`@digdir/designsystemet-css`_
+
+- Added new export for testing experimental changes. Use this by appending `/experimental_v2` to your package import: `@digdir/designsystemet-css/experimental_v2`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion**: Added `--dsc-suggestion-option-checkmark-border-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+  _`@digdir/designsystemet-css`_
+
+- **Field**: Added `--dsc-field-description-color`, `--dsc-field-affix-background`, and `--dsc-field-affix-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+  _`@digdir/designsystemet-css`_
+
+- **Fieldset**: Added `--dsc-fieldset-description-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+  _`@digdir/designsystemet-css`_
+
+- **Card**: when using a link in a Card, ensure plain `<a>` tags without `class="ds-link"` also get the correct focus styling. ([#4896](https://github.com/digdir/designsystemet/pull/4896))
+
+  _`@digdir/designsystemet-css`_
+
+- **Tooltip**: deprecate `type` prop, as it no longer does anything ([#4898](https://github.com/digdir/designsystemet/pull/4898))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tooltip**: the React component will no longer override existing accessible text. It now correctly sets `aria-description` in that case. If there is no accessible text, `aria-label` will be used as before. ([#4898](https://github.com/digdir/designsystemet/pull/4898))
+
+  _`@digdir/designsystemet-react`_
+
+- **useCheckboxGroup** and **useRadioGroup**: these hooks now also accept the prop `variant`, which sets the variant for all the checkboxes or radios in the group. ([#4864](https://github.com/digdir/designsystemet/pull/4864))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog**: Fix dialog with nested dialog getting a close event when the nested one was closed ([#4899](https://github.com/digdir/designsystemet/pull/4899))
+
+  _`@digdir/designsystemet-react`_
+
+- **Popover:** now correctly calculates width of source element also in Firefox ([#4921](https://github.com/digdir/designsystemet/pull/4921))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Popover:** No longer closes with "Escape" key if a Dialog element is open above the popover ([#4788](https://github.com/digdir/designsystemet/pull/4788))
+
+  _`@digdir/designsystemet-react`_
+
+- **Heading**: fix wrong default in `HeadingProps` for `data-size` ([#4926](https://github.com/digdir/designsystemet/pull/4926))
+
+  _`@digdir/designsystemet-react`_
+
+- **Error summary**: Now only sets `aria-labelledby` based on heading element if `aria-label` or `aria-labelledby` is not already set, and logs a warning if neither of these are set and no heading element is present. ([#4895](https://github.com/digdir/designsystemet/pull/4895))
+
+  _`@digdir/designsystemet-web`_
+
+- **Error summary**: Set `role="group"` since the implicit role "generic" does not allow `aria-labelledby`, which is used in the component ([#4895](https://github.com/digdir/designsystemet/pull/4895))
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.14.0
+
+### Minor Changes
+
+- **Field / Radio / Checkbox / Switch**: Now supports `data-variant="outline"` for an outlined tile look. ([#4625](https://github.com/digdir/designsystemet/pull/4625))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion**: `Suggestion.Clear` underlying element changed from `del`to `button type='reset'`. This means types, props and ref are now `HTMLButtonElement` instead of `HTMLModElement`. ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+  _`@digdir/designsystemet-react`_
+
+- **ErrorSummary:** fix `ErrorSummaryProps` and `ref` types to use the correct type; `DSErrorSummaryElement` (instead of `HTMLDivElement`) ([#4817](https://github.com/digdir/designsystemet/pull/4817))
+
+  _`@digdir/designsystemet-react`_
+
+- **Field / Radio / Checkbox / Switch**: added `variant='outline' for an outlined tile look` ([#4625](https://github.com/digdir/designsystemet/pull/4625))
+
+  _`@digdir/designsystemet-react`_
+
+- **AvatarStack:** New component for showing a group of avatars ([#2305](https://github.com/digdir/designsystemet/issues/2305))
+
+  _`figma-ui-kit`_
+
+- **Checkbox, Radio:** New outline variant, which shows the input and its label as a tile ([#526](https://github.com/digdir/designsystemet/issues/526))
+
+  _`figma-ui-kit`_
+
+- **Dialog:** Added a drawer version ([#4354](https://github.com/digdir/designsystemet/issues/4354))
+
+  _`figma-ui-kit`_
+
+- **Suggestion:** Redesigned ([#4661](https://github.com/digdir/designsystemet/issues/4661), [#4664](https://github.com/digdir/designsystemet/issues/4664))
+
+  _`figma-ui-kit`_
+
+- **Dropdown:** Option buttons support the `danger` variant ([#4266](https://github.com/digdir/designsystemet/issues/4266))
+
+  _`figma-ui-kit`_
+
+- Added a guide to setting up your own icon library ([#4097](https://github.com/digdir/designsystemet/issues/4097))
+
+  _`figma-ui-kit`_
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4809](https://github.com/digdir/designsystemet/pull/4809))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- Update npm non-major dependencies ([#4859](https://github.com/digdir/designsystemet/pull/4859))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Suggestion**: fixed dropdown so it no longer has a brief flash in wrong position ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Suggestion:** now uses attribute `data-activedescendant` under the hood to add focus styling on option elements ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion**: fixed icons being invisible in forced colors mode ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+  _`@digdir/designsystemet-css`_
+
+- **base**: added `.ds-focus--middle` / `.ds-focus--visible--middle` classes for use in the `suggestion` redesign ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion**: changes to design: ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+  - dropdown border and background-color to neutral
+  - new hover styles on items
+  - adjusted spacings
+  - `multiple` now has checkboxes
+  - CSS variables:
+    - Added:
+      - `--dsc-suggestion-option-background--hover`
+      - `--dsc-suggestion-list-padding`
+      - `--dsc-suggestion-list-offset`
+      - `--dsc-suggestion-option-gap`
+    - Removed:
+      - `--dsc-suggestion-option-border-color`
+    - Changed default value:
+      - `--dsc-suggestion-option-background--selected`
+      - `--dsc-suggestion-option-border-radius`
+      - `--dsc-suggestion-option-padding`
+      - `--dsc-suggestion-list-background`
+      - `--dsc-suggestion-list-gap`
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion:** fixed an issue where value did not properly clear when moving focus between multiple instances ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Tabs:** fix issue where `aria-controls` combined with `aria-selected` was not respected on initial render ([#4821](https://github.com/digdir/designsystemet/pull/4821))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- Update `invokers-polyfill` to 1.0.3 ([#4784](https://github.com/digdir/designsystemet/pull/4784))
+
+  _`@digdir/designsystemet-web`_
+
+- update dependencies to new major version: ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+  - @u-elements/u-combobox to 2.0.4
+  - @u-elements/u-datalist to 2.0.1
+
+  _`@digdir/designsystemet-web`_
+
+- **Suggestion:** fix to ensure input has role `combobox` (not `textbox`) on first render. ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+  _`@digdir/designsystemet-web`_
+
+- **Checkbox:** The checkmark now scales correctly ([#4493](https://github.com/digdir/designsystemet/issues/4493))
+
+  _`figma-ui-kit`_
+
+- **Checkbox:** Added the missing stroke when checked and indeterminate ([#4880](https://github.com/digdir/designsystemet/issues/4880))
+
+  _`figma-ui-kit`_
+
+- **Checkbox, Chip:** Fixed wrong color variables on Checkbox and the radio Chip ([#4559](https://github.com/digdir/designsystemet/issues/4559))
+
+  _`figma-ui-kit`_
+
+- **Card:** Moved the top padding from `_content` to the paragraph, so content in the slot doesn't get an extra 8px at the top ([#4796](https://github.com/digdir/designsystemet/issues/4796))
+
+  _`figma-ui-kit`_
+
+- **Dialog:** Fixed an upside-down icon ([#4603](https://github.com/digdir/designsystemet/issues/4603))
+
+  _`figma-ui-kit`_
+
+- **Pagination:** Buttons now scale correctly with size modes ([#4717](https://github.com/digdir/designsystemet/issues/4717))
+
+  _`figma-ui-kit`_
+
+- **Popover:** Fixed contrast in the HelpText example ([#4894](https://github.com/digdir/designsystemet/issues/4894))
+
+  _`figma-ui-kit`_
+
+- **Skeleton, Spinner:** Moved to separate pages, as on the website ([#4364](https://github.com/digdir/designsystemet/issues/4364))
+
+  _`figma-ui-kit`_
+
+- **Textfield:** Prefix and suffix now hug their content ([#4815](https://github.com/digdir/designsystemet/issues/4815))
+
+  _`figma-ui-kit`_
+
+- **Textfield:** Removed an unused base component ([#4385](https://github.com/digdir/designsystemet/issues/4385))
+
+  _`figma-ui-kit`_
+
+- **ToggleGroup:** Fixed icon and background colors ([#4818](https://github.com/digdir/designsystemet/issues/4818))
+
+  _`figma-ui-kit`_
+
+- **ToggleGroup:** Fixed the name of a subcomponent ([#4632](https://github.com/digdir/designsystemet/issues/4632))
+
+  _`figma-ui-kit`_
+
+- **Typography:** Removed a duplicate `secondary` mode. `Secondary` is kept ([#4523](https://github.com/digdir/designsystemet/issues/4523))
+
+  _`figma-ui-kit`_
+
+- Padding set to 0 is now connected to the `0` variable, so Figma suggests related variables ([#4081](https://github.com/digdir/designsystemet/issues/4081))
+
+  _`figma-ui-kit`_
+
+- Fixed invalid `0` variables in components ([#4902](https://github.com/digdir/designsystemet/issues/4902))
+
+  _`figma-ui-kit`_
+
+- Cleaned up the "Base components" page and removed unused components ([#4312](https://github.com/digdir/designsystemet/issues/4312))
+
+  _`figma-ui-kit`_
+
+- Cleaned up the test page and the focus page
+
+  _`figma-ui-kit`_
+
+## designsystemet 1.13.3
+
+### Patch Changes
+
+- Remove included `/configs` files that were used internally ([#4763](https://github.com/digdir/designsystemet/pull/4763))
+
+  _`@digdir/designsystemet`_
+
+- **card**: use designsystemet focus outline when card itself is a link or button ([#4768](https://github.com/digdir/designsystemet/pull/4768))
+
+  _`@digdir/designsystemet-css`_
+
+- **Tabs:** Has improved synchronous rendering for easier snapshot testing ([#4745](https://github.com/digdir/designsystemet/pull/4745))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Field:** Now respects manually set `aria-invalid` attribute ([#4765](https://github.com/digdir/designsystemet/pull/4765))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Textfield:** when `aria-invalid` is now correcly both set and removed based on the `error` prop ([#4765](https://github.com/digdir/designsystemet/pull/4765))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.13.2
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4694](https://github.com/digdir/designsystemet/pull/4694))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- update npm non-major dependencies ([#4677](https://github.com/digdir/designsystemet/pull/4677))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- update npm non-major dependencies ([#4668](https://github.com/digdir/designsystemet/pull/4668))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- **Card**: ensure underline on link in heading has same thickness as in version 1.11.1 ([#4723](https://github.com/digdir/designsystemet/pull/4723))
+
+  _`@digdir/designsystemet-css`_
+
+- **Link**: Spacing for icons in links are now the same as in version 1.11.1 ([#4722](https://github.com/digdir/designsystemet/pull/4722))
+
+  _`@digdir/designsystemet-css`_
+
+- **Breadcrumbs:** Renders correcly as `display: block` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  _`@digdir/designsystemet-css`_
+
+- **details**: support `details` in nested cards where the inner is variant `default` and the outer is `tinted` ([#4724](https://github.com/digdir/designsystemet/pull/4724))
+
+  _`@digdir/designsystemet-css`_
+
+- **Link**: Fix spacing when icon is present ([#4707](https://github.com/digdir/designsystemet/pull/4707))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **toggle-group**: fix overflow scroll and remove user-agent set inline margins ([#4702](https://github.com/digdir/designsystemet/pull/4702))
+
+  _`@digdir/designsystemet-css`_
+
+- **Field**: `<ds-field>` should now respect existing `aria-describedby` and `aria-invalid` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Pagination:** fix `PaginationButton` missing some `Button` props ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tabs**: Now supports programmatically triggering click on controlled `Tabs` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tabs**: `defaultValue` now works as expected ([#4709](https://github.com/digdir/designsystemet/pull/4709))
+
+  _`@digdir/designsystemet-react`_
+
+- **Button**: add `command`and `commandfor`as explicit types on `ButtonProps` ([#4676](https://github.com/digdir/designsystemet/pull/4676))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog:** Use `ref` in `Dialog.TriggerContext` for better performance ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  _`@digdir/designsystemet-react`_
+
+- **Field Counter:** Now includes fallback texts to support test environments without CSS ([#4727](https://github.com/digdir/designsystemet/pull/4727))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Field:** No longer uses `CSS.supports` to play nice with Jest + JSDOM ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  _`@digdir/designsystemet-web`_
+
+- fixed some native keystrokes being ignored if readonly fields were focused ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  _`@digdir/designsystemet-web`_
+
+- `invokers-polyfill` is now bundled inline as part of source files for better compatibility with Jest module resolving. ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  _`@digdir/designsystemet-web`_
+
+- update dependency `invokers-polyfill` to v1 ([#4683](https://github.com/digdir/designsystemet/pull/4683))
+
+  _`@digdir/designsystemet-web`_
+
+- Remove `@u-elements/u-progress` as a dependency ([#4736](https://github.com/digdir/designsystemet/pull/4736))
+
+  _`@digdir/designsystemet-web`_
+
+- **All components:** Renders instantly for easier test setup ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  _`@digdir/designsystemet-web`_
+
+- update dependency @u-elements/u-details to v1 ([#4734](https://github.com/digdir/designsystemet/pull/4734))
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.13.1
+
+### Patch Changes
+
+- fix: add missing references for token sync in Figma ([#4659](https://github.com/digdir/designsystemet/pull/4659))
+
+  _`@digdir/designsystemet`_
+
+- **input**: fix height of empty date and time inputs on iOS Safari ([#4634](https://github.com/digdir/designsystemet/pull/4634))
+
+  _`@digdir/designsystemet-css`_
+
+- define `browser` field in `package.json` for easier use client-side in browser and CDN. ([#4646](https://github.com/digdir/designsystemet/pull/4646))
+
+  _`@digdir/designsystemet-css`_
+
+- **dropdown**: don't style `button, a, [role="button"]` in a nested `<dialog>` ([#4651](https://github.com/digdir/designsystemet/pull/4651))
+
+  _`@digdir/designsystemet-css`_
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Tabs**: `onChange` was not called when keyboard changes active tab ([#4616](https://github.com/digdir/designsystemet/pull/4616))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dropdown**: `className` in subcomponents was not forwarded to DOM-element ([#4655](https://github.com/digdir/designsystemet/pull/4655))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tabs**: fix controlled version not behaving properly ([#4635](https://github.com/digdir/designsystemet/pull/4635))
+
+  _`@digdir/designsystemet-react`_
+
+- **input:** add suppressHydrationWarning as attributes will be added by ds-field ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+  _`@digdir/designsystemet-react`_
+
+- update dependency rolldown to v1.0.0-rc.9 ([#4642](https://github.com/digdir/designsystemet/pull/4642))
+
+  _`@digdir/designsystemet-web`_
+
+- Fixed an issue in **tooltip** that caused delay on all touch interactions on iOS devices ([#4657](https://github.com/digdir/designsystemet/pull/4657))
+
+  _`@digdir/designsystemet-web`_
+
+- **popover**: stop positioning non-popovers. ([#4651](https://github.com/digdir/designsystemet/pull/4651))
+  - This fixes an issue with nested `<dialog>`s in popovers
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.13.0
+
+### Minor Changes
+
+- Add individual exports ([#4565](https://github.com/digdir/designsystemet/pull/4565))
+
+  _`@digdir/designsystemet-web`_
+
+### Patch Changes
+
+- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **Badge, Button, Spinner, Tabs, Tag**: Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **select**: fixed missing chevron icon when `readonly` ([#4585](https://github.com/digdir/designsystemet/pull/4585))
+
+  _`@digdir/designsystemet-css`_
+
+- **badge**: ensure badge is positioned above focus-ring when using `.ds-badge--position` ([#4511](https://github.com/digdir/designsystemet/pull/4511))
+
+  _`@digdir/designsystemet-css`_
+
+- **card**: Fix deeply nested `.ds-details` removing padding ([#4576](https://github.com/digdir/designsystemet/pull/4576))
+
+  _`@digdir/designsystemet-css`_
+
+- **ToggleGroupItem**: Add missing props for backward compatibility. An internal rewrite from `button` to `label+input` in version v1.12.0 led to a lack of some props on `ToggleGroupItem` related to `button`. ([#4580](https://github.com/digdir/designsystemet/pull/4580))
+
+  _`@digdir/designsystemet-react`_
+
+- **toggle-group**: re-introduce support for disabled items ([#4618](https://github.com/digdir/designsystemet/pull/4618))
+
+  _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- **Details**: use `DetailsHTMLAttributes` type to allow `name` attribute ([#4557](https://github.com/digdir/designsystemet/pull/4557))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog**: fixed non-modal Dialog not opening when using `Dialog.Trigger` ([#4611](https://github.com/digdir/designsystemet/pull/4611))
+
+  _`@digdir/designsystemet-react`_
+
+- **AvatarStack**: changed underlying element from `figure` to `span` to avoid html-validation issues when used inside a `span` ([#4579](https://github.com/digdir/designsystemet/pull/4579))
+
+  _`@digdir/designsystemet-react`_
+
+- **AvatarStack**: replaced tabindex="-1" with no tabindex at all when `expandable`is not set ([#4579](https://github.com/digdir/designsystemet/pull/4579))
+
+  _`@digdir/designsystemet-react`_
+
+- Tooltip now supports being changed programmatically ([#4562](https://github.com/digdir/designsystemet/pull/4562))
+
+  _`@digdir/designsystemet-web`_
+
+- Update dependency rolldown to v1.0.0-rc.7 ([#4606](https://github.com/digdir/designsystemet/pull/4606))
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.12.1
+
+### Patch Changes
+
+- **Avatar**: fixed an issue where tooltip could not be set ([#4534](https://github.com/digdir/designsystemet/pull/4534))
+
+  _`@digdir/designsystemet-react`_
+
+- **tooltip:** prevent errors when pressing esc before tooltip is mounted ([#4535](https://github.com/digdir/designsystemet/pull/4535))
+
+  _`@digdir/designsystemet-web`_
+
+- **field**: update counter when `data-limit` attribute changes ([#4535](https://github.com/digdir/designsystemet/pull/4535))
+
+  _`@digdir/designsystemet-web`_
+
+## designsystemet 1.12.0
+
+### Minor Changes
+
+- **input**: add support for `[aria-readonly='true']` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **field**: add new css variables: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+  `--dsc-field-counter-over: '%d tegn for mye';`
+  `--dsc-field-counter-under: '%d tegn igjen';`
+
+  _`@digdir/designsystemet-css`_
+
+- Support for new package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **popover**: add `--dsc-popover-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **fieldset**: add `--dsc-fieldset-gap` with default value `var(--ds-size-4)` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **tooltip**: add `--dsc-tooltip-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **dropdown**: add `--dsc-dropdown-placement` with default value `bottom` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **pagination**: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+  - add `--dsc-pagination-ellipsis` with default value `'\2026'`
+  - set `--dsc-pagination-label: 'Bla i sider';` if language is `'nn'`, `'nb'` or `'no'`
+
+  _`@digdir/designsystemet-css`_
+
+- **Input** Support for new attribute `data-indeterminate` to toggle indeterminate state when `type="checkbox"` inside `Field`/`ds-field`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **ToggleGroup**: Updated DOM structure and now uses new web observer `data-toggle-group`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- Add `suppressHydrationWarning` to various components. This is to support `@digdir/designsystemet-web` being used internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **Field.Counter**: Deprecate `hint` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **Field**: Deprecated `asChild` as this component now uses `<ds-field>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **ErrorSummary**: Deprecate `asChild` as this component now uses `<ds-error-summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **Select**: Deprecate `readOnly`. Use `aria-readonly` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **RovingFocus**: Deprecate component. This will be removed in the next major version ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tooltip**: Deprecate `open`. This should not be used on Tooltip. Use a `Popover` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog**: Deprecate `data-command="close"`. Use `command="close"` and `commandfor="DIALOG-ID"` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- New package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  | Custom elements    |
+  | ------------------ |
+  | `ds-breadcrumbs`   |
+  | `ds-error-summary` |
+  | `ds-field`         |
+  | `ds-pagination`    |
+  | `ds-suggestion`    |
+  | `ds-tabs`          |
+  | `ds-tablist`       |
+  | `ds-tab`           |
+  | `ds-tabpanel`      |
+
+  | Observer                |                                                                             |
+  | ----------------------- | --------------------------------------------------------------------------- |
+  | `data-clickdelegatefor` | Used for delegating click event                                             |
+  | `data-toggle-group`     | Used for adding arrow navigation plus Enter-key support                     |
+  | `data-tooltip`          | Used for adding tooltip text on element                                     |
+  | `readonly`              | Used for fixing `readonly` support on `select` and `input` elements         |
+  | `popover`               | Event listnener on `popovertarget` for placement of `ds-floating` elements. |
+
+  | Polyfill                 |                                                                                                                |
+  | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+  | `details` & `summary`    | Bugfix for Firefox.                                                                                            |
+  | `dialog`                 | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
+  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill).                                       |
+
+  _`@digdir/designsystemet-web`_
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
+
+- update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- **suggestion**: various changes to chip styling. You no longer need to pass a class to `<data>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **link**: don't set `:visited` color and set default `border-radius` to 0 ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **dialog**: style `.ds-dialog button[command='close']:empty::before` with X-icon ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **toggle-group**: remove `--dsc-togglegroup-text-color`, as this was not used ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **Card**: fix issues with deeply nested heading links. Now uses web observer `data-clickdelegatefor` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **toggle-group**: add styling for new DOM structure introduced in `@digdir/designsystemet-web` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **field**: add styling for `<ds-field>` counter. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **tabs**: add support for `<ds-tabs>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **breadcrumbs**: don't remove underline on `a[aria-current='page']`, but on `li:last-child a` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- added class `ds-floating`, which is used on floating elements internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-css`_
+
+- **Breadcrumbs**: Now uses `<ds-breadcrumbs>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **Card**: Fix deeply nested anchors in headings causing navigation ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **Pagination**: Now uses `<ds-pagination>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tabs**: Now uses `<ds-tabs>` and related web components internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tooltip**: Now uses `data-tooltip` from `@digdir/designsystemet-web` internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+- **Details**: Use `<details>` and `<summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.11.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4469](https://github.com/digdir/designsystemet/pull/4469))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- update dependency colorjs.io to ^0.6.1 ([#4422](https://github.com/digdir/designsystemet/pull/4422))
+
+  _`@digdir/designsystemet`_
+
+- update npm non-major dependencies ([#4445](https://github.com/digdir/designsystemet/pull/4445))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- update npm non-major dependencies ([#4423](https://github.com/digdir/designsystemet/pull/4423))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- **AvatarStack**: override user-agent margins on figure ([#4431](https://github.com/digdir/designsystemet/pull/4431))
+
+  _`@digdir/designsystemet-css`_
+
+- update dependency postcss-nesting to v14 ([#4424](https://github.com/digdir/designsystemet/pull/4424))
+
+  _`@digdir/designsystemet-css`_
+
+- Removed browserlist entry `"cover 90% in NO"` due to an apparent error in the dataset causing excessive irrelevant prefixing. This reduces the size of `index.css` from 157 to 113kb. ([#4434](https://github.com/digdir/designsystemet/pull/4434))
+
+  _`@digdir/designsystemet-css`_
+
+- **Avatar**: fix - removed aria-hidden and role=img when asChild ([#4445](https://github.com/digdir/designsystemet/pull/4445))
+
+  _`@digdir/designsystemet-react`_
+
+- update dependency @navikt/aksel-icons to v8 ([#4447](https://github.com/digdir/designsystemet/pull/4447))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.11.0
+
+### Minor Changes
+
+- **Version `1.10.0` was released by accident, and we are skipping to `1.11.0`** ([#4392](https://github.com/digdir/designsystemet/pull/4392))
+  - Version `1.10.0` is deprecated on npm, and not accessible on Github. Use `1.11.0` or newer.
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-types`_
+
+- **avatar-stack**: New experimental component ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+  _`@digdir/designsystemet-css`_
+
+- **Avatar**: added `asChild` prop ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+  _`@digdir/designsystemet-react`_
+
+- **AvatarStack**: New experimental component ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: Add new prop `autoPlacement`, which is by default `true` ([#4359](https://github.com/digdir/designsystemet/pull/4359))
+  - This means that `Suggestion` will now try to stay within the viewport on the y-axis
+
+  _`@digdir/designsystemet-react`_
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4373](https://github.com/digdir/designsystemet/pull/4373))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Update dependency zod-validation-error to v5 ([#4401](https://github.com/digdir/designsystemet/pull/4401))
+
+  _`@digdir/designsystemet`_
+
+- Update dependency colorjs.io to ^0.6.0 ([#4372](https://github.com/digdir/designsystemet/pull/4372))
+
+  _`@digdir/designsystemet`_
+
+- Remove `change-case` as dependency ([#4343](https://github.com/digdir/designsystemet/pull/4343))
+
+  _`@digdir/designsystemet`_
+
+- Update `@types/node` to `24.10.7` ([#4396](https://github.com/digdir/designsystemet/pull/4396))
+  - This does not affect the node versions we support
+
+  _`@digdir/designsystemet`_
+
+- update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- update npm non-major dependencies ([#4398](https://github.com/digdir/designsystemet/pull/4398))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#4347](https://github.com/digdir/designsystemet/pull/4347))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- **avatar**: added `--dsc-avatar-font-size` to easier override font size ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+  _`@digdir/designsystemet-css`_
+
+- Hover styles for cards containing `<a>` inside a heading will no longer propagate to wrapping cards ([#4360](https://github.com/digdir/designsystemet/pull/4360))
+
+  _`@digdir/designsystemet-css`_
+
+- **card**: Fix focus being clipped on nested `<summary>` ([#4379](https://github.com/digdir/designsystemet/pull/4379))
+
+  _`@digdir/designsystemet-css`_
+
+- **Dialog**: removed media-query that forces 100% width under 640px ([#4345](https://github.com/digdir/designsystemet/pull/4345))
+
+  _`@digdir/designsystemet-css`_
+
+- **dialog**: More gentle animations when using `data-placement` ([#4350](https://github.com/digdir/designsystemet/pull/4350))
+
+  _`@digdir/designsystemet-css`_
+
+- Removed `sideEffects:false` property used by some bundlers to help tree-shake cjs files. ([#4376](https://github.com/digdir/designsystemet/pull/4376))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: Always call `onSelectedChange`, and return `null` instead of `undefined` ([#4388](https://github.com/digdir/designsystemet/pull/4388))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.9.0
+
+### Minor Changes
+
+- Add ability to override focus colors from config: ([#4320](https://github.com/digdir/designsystemet/pull/4320))
+
+  ```json
+  {
+    "overrides": {
+      "focus": {
+        "inner": { "light": "HEX", "dark": "HEX" },
+        "outer": { "light": "HEX", "dark": "HEX" }
+      }
+    }
+  }
+  ```
+
+  This comes with a change to you design tokens, where focus colors are now on the theme layer.
+  Make sure you rebuild your tokens: `npx @digdir/designsystemet tokens create <options> --clean`
+
+  _`@digdir/designsystemet`_
+
+- **Dialog**: `data-placement` selector styles the Dialog as a "drawer"-component from the direction given (`left | right | top | bottom` or `center` which is the default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
+  Added 3 new local variables:
+  - `--dsc-dialog-placement-inline-max-width` (max-width when placement="left | right")
+  - `--dsc-dialog-placement-block-max-width` (max-width when placement="top | bottom")
+  - `--dsc-dialog-transition-duration` (duration for the slide in animations)
+
+  _`@digdir/designsystemet-css`_
+
+- **Dialog**: added `placement` prop. This will set `data-placement` and style the `Dialog` as a "drawer"-component from the direction given: `left | right | top | bottom` or `center` (default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
+
+  _`@digdir/designsystemet-react`_
+
+### Patch Changes
+
+- Update `@tokens-studio/sd-transforms` to `2.0.3` ([#4315](https://github.com/digdir/designsystemet/pull/4315))
+
+  _`@digdir/designsystemet`_
+
+- **Input, Search, Suggestion, Textfield**: Uppercase Å was cut off at the top in Chrome and Safari, making it look like Ă ([#4301](https://github.com/digdir/designsystemet/pull/4301))
+
+  _`@digdir/designsystemet-css`_
+
+- **link**: Style background, border, and padding regardless of default browser styles ([#4231](https://github.com/digdir/designsystemet/issues/4231)) ([#4302](https://github.com/digdir/designsystemet/pull/4302))
+
+  _`@digdir/designsystemet-css`_
+
+- Add export for a default theme under `/theme`. ([#4328](https://github.com/digdir/designsystemet/pull/4328))
+  If you are using the default theme from `@digdir/designsystemet-theme`, we recommend importing the CSS from `@digdir/designsystemet-css/theme.css` and removing `@digdir/designsystemet-theme` from your dependencies.
+
+  _`@digdir/designsystemet-css`_
+
+- **SuggestionClear**: send `onClick`. In earlier versions `onClick` was never called ([#4327](https://github.com/digdir/designsystemet/pull/4327))
+
+  _`@digdir/designsystemet-react`_
+
+- **Popover**: Fix controlled open state going out of sync ([#4314](https://github.com/digdir/designsystemet/pull/4314))
+
+  _`@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#4308](https://github.com/digdir/designsystemet/pull/4308))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.8.0
+
+### Minor Changes
+
+- Move submodule `@digdir/designsystemet/types` to a new package `@digdir/designsystemet-types` and change all references. ([#4241](https://github.com/digdir/designsystemet/pull/4241))
+
+  After re-running `tokens build` downstream, this removes transitive dependencies on runtime dependencies on CLI tools like `commander` and `style-dictionary` which are never used in runtime, but are required for the CLI to function. It also makes code which doesn't use the CLI unaffected by our node version limitations (currently >= 22 due to `style-dictionary`).
+
+  `@digdir/designsystemet/types` is preserved for now as a deprecated re-export of `@digdir/designsystemet-types` to avoid breaking people's builds.
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react` · `@digdir/designsystemet-types`_
+
+- **Tag:** New `outline` variant, for tags on `surface-tinted` components and surfaces ([#3478](https://github.com/digdir/designsystemet/issues/3478))
+
+  _`figma-ui-kit`_
+
+- **Paragraph:** Renamed the "Body" component to "Paragraph", as in code ([#4273](https://github.com/digdir/designsystemet/issues/4273))
+
+  _`figma-ui-kit`_
+
+- **Tabs:** Added a neutral version ([#4198](https://github.com/digdir/designsystemet/issues/4198))
+
+  _`figma-ui-kit`_
+
+- **Tabs:** Added a property for choosing the icon when "Show icon" is on ([#4249](https://github.com/digdir/designsystemet/issues/4249))
+
+  _`figma-ui-kit`_
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4275](https://github.com/digdir/designsystemet/pull/4275))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#4262](https://github.com/digdir/designsystemet/pull/4262))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Update dependency @tokens-studio/sd-transforms to v2 ([#4271](https://github.com/digdir/designsystemet/pull/4271))
+
+  _`@digdir/designsystemet`_
+
+- **badge**: Set `display: inline-flex` on `.ds-badge` ([#4269](https://github.com/digdir/designsystemet/pull/4269))
+
+  _`@digdir/designsystemet-css`_
+
+- **select**: Fix `:hover` on `<label>` adding border to `<select>` ([#4248](https://github.com/digdir/designsystemet/pull/4248))
+
+  _`@digdir/designsystemet-css`_
+
+- **Popover**: Fix unnecesary call of `onOpen` and missing call of `onClose` ([#4230](https://github.com/digdir/designsystemet/pull/4230))
+  - Don't call `onOpen` when clicking `Popover.Trigger` when `Popover` is already open.
+  - Call `onClose` when a controlled `Popover` is closed by clicking on `Popover.Trigger`.
+
+  _`@digdir/designsystemet-react`_
+
+- Update `react` and `react-dom` to `19.2.1` ([#4276](https://github.com/digdir/designsystemet/pull/4276))
+
+  _`@digdir/designsystemet-react`_
+
+- **Card:** Fixed wrong typography variables and styles ([#4108](https://github.com/digdir/designsystemet/issues/4108))
+
+  _`figma-ui-kit`_
+
+- **Chip:** The x icon in removable chips now uses a variable ([#4163](https://github.com/digdir/designsystemet/issues/4163))
+
+  _`figma-ui-kit`_
+
+- **Form components:** Adjusted line height and spacing between label and description ([#4136](https://github.com/digdir/designsystemet/issues/4136))
+
+  _`figma-ui-kit`_
+
+- **List:** In list items that are links, each line of text is now underlined, not only the text block as a whole ([#2763](https://github.com/digdir/designsystemet/issues/2763))
+
+  _`figma-ui-kit`_
+
+- **Popover:** `Popover.Trigger` now looks like in code ([#3445](https://github.com/digdir/designsystemet/issues/3445))
+
+  _`figma-ui-kit`_
+
+- **Switch:** Added the missing variant and fixed double opacity when disabled ([#4306](https://github.com/digdir/designsystemet/issues/4306))
+
+  _`figma-ui-kit`_
+
+- **Table:** Added a property for swapping the content of cells ([#4253](https://github.com/digdir/designsystemet/issues/4253))
+
+  _`figma-ui-kit`_
+
+- **Table:** Cell subcomponents no longer have `/` in their names ([#4255](https://github.com/digdir/designsystemet/issues/4255))
+
+  _`figma-ui-kit`_
+
+- **Table:** Fixed the cell with a checkbox ([#4256](https://github.com/digdir/designsystemet/issues/4256))
+
+  _`figma-ui-kit`_
+
+- **Table:** Cells with icons now have the same height as cells with only text, in all sizes ([#4252](https://github.com/digdir/designsystemet/issues/4252))
+
+  _`figma-ui-kit`_
+
+- Removed missing libraries, from components and styles copied from other files ([#4247](https://github.com/digdir/designsystemet/issues/4247))
+
+  _`figma-ui-kit`_
+
+- Fixed missing components, mostly in examples ([#4305](https://github.com/digdir/designsystemet/issues/4305))
+
+  _`figma-ui-kit`_
+
+## designsystemet 1.7.3
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4233](https://github.com/digdir/designsystemet/pull/4233))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tooltip**: Check if `trim()` is available ([#4239](https://github.com/digdir/designsystemet/pull/4239))
+  - Fixes if `Tooltip` has `<svg>` as a child
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.7.2
+
+### Patch Changes
+
+- Add option to override `linkVisited` color in config: ([#4182](https://github.com/digdir/designsystemet/pull/4182))
+
+  ```json
+  "theme": {
+    "overrides": {
+      "linkVisited": {
+        "light": "#ff1234",
+        "dark": "#1234ff"
+      }
+    }
+  }
+  ```
+
+  _`@digdir/designsystemet`_
+
+- New command that lets you generate a config file from your design tokens: ([#4207](https://github.com/digdir/designsystemet/pull/4207))
+  `npx @digdir/designsystemet generate-config-from-tokens --dir <path to design tokens>`
+  - This command does not include any overrides you may have done.
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- For your config file, you can now get the schema file from designsystemet.no ([#4195](https://github.com/digdir/designsystemet/pull/4195))
+  ```json
+  "$schema": "https://designsystemet.no/schemas/cli/[VERSION].json"
+  ```
+
+  _`@digdir/designsystemet`_
+
+- **input**: Remove hover effect when `<label>` is hovered ([#4196](https://github.com/digdir/designsystemet/pull/4196))
+
+  _`@digdir/designsystemet-css`_
+
+- **tag**: Add new variant, `[data-variant="outline"]`. ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - To use the old variant, either don't set `data-variant`, or set it to `default`.
+
+  _`@digdir/designsystemet-css`_
+
+- **card**: Add support for `<picture>` ([#4137](https://github.com/digdir/designsystemet/pull/4137))
+
+  _`@digdir/designsystemet-css`_
+
+- **search**: Don't set `position: relative`, but use `isolation: isolate` on `.ds-search` ([#4212](https://github.com/digdir/designsystemet/pull/4212))
+  - This removes `z-index` on `button[type="reset"]`
+
+  _`@digdir/designsystemet-css`_
+
+- **tag**: New css variables to go with `[data-variant="outline"]`: ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - `--dsc-tag-border-width`
+  - `--dsc-tag-border-color`
+  - `--dsc-tag-border-style`
+
+  _`@digdir/designsystemet-css`_
+
+- Update `@u-elements/combobox` to v1.0.4 ([#4226](https://github.com/digdir/designsystemet/pull/4226))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog**: If the browser supports `closedBy` on `<dialog>`, we let the browser handle it ([#4210](https://github.com/digdir/designsystemet/pull/4210))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tooltip**: Tooltip is now automatically `aria-describedby` or `aria-labelledby` based on the content of the trigger component. ([#4202](https://github.com/digdir/designsystemet/pull/4202))
+  - This can be overridden with the new `type`-prop that accepts `decribedby` or `labelledby`.
+
+  _`@digdir/designsystemet-react`_
+
+- **Tag**: Add new prop `variant` ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - Accepts `default|outline`. `default` is the default value.
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.7.1
+
+### Patch Changes
+
+- **Suggestion**: Fix `onSelectedChange` not always calling the latest callback ([#4176](https://github.com/digdir/designsystemet/pull/4176))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.7.0
+
+### Minor Changes
+
+- Restructure design tokens: ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+  - Removes `primitives/modes/color-scheme/[dark/light]/global.json`
+  - Removes global colors (red, green, blue, orange, purple)
+  - Moved severity colors directly to your theme file
+  - `"link.color.visited"` now references `"$value": "color.link.visited"` from your theme file
+
+  Make sure to regenerate your design tokens: `npx @digdir/designsystemet tokens create <options> --clean`
+
+  _`@digdir/designsystemet`_
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Export zod schema and type for config file: ([#4170](https://github.com/digdir/designsystemet/pull/4170))
+  - `configSchema`
+  - `type ConfigSchema`
+
+  _`@digdir/designsystemet`_
+
+- Add option override severity colors from config. ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+  You can override the base-hexcode, as well as individual steps:
+
+  ```json
+  "theme": {
+    "overrides": {
+      "colors": {
+        "danger": {
+          "background-default": {
+            "light": "#0000ff",
+            "dark": "#0000ff"
+          }
+        }
+      },
+      "severity": {
+        "danger": "#ff00ff"
+      }
+    }
+  }
+  ```
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#4167](https://github.com/digdir/designsystemet/pull/4167))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Update dependency ramda to ^0.32.0 ([#4146](https://github.com/digdir/designsystemet/pull/4146))
+
+  _`@digdir/designsystemet`_
+
+- **Field**: Set `display: block` on `<label>` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+  _`@digdir/designsystemet-css`_
+
+- **ToggleGroup**: ensure ToggleGroup has same height as Button, and that individual buttons within the group never wrap their text ([#4139](https://github.com/digdir/designsystemet/pull/4139))
+
+  _`@digdir/designsystemet-css`_
+
+- **ToggleGroup**: use correct border-color (`--ds-color-text-default`) to match text/icon color on selected button in secondary variant ([#4139](https://github.com/digdir/designsystemet/pull/4139))
+
+  _`@digdir/designsystemet-css`_
+
+- **Label**: Use `line-height: var(--ds-body-md-line-height);` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+  _`@digdir/designsystemet-css`_
+
+- **Field**: `data-field="description"` no longer gets `margin-top` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+  _`@digdir/designsystemet-css`_
+
+- **chip**: Remove hover effect on `.ds-input` ([#4165](https://github.com/digdir/designsystemet/pull/4165))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion, Tooltip, Popover**: Positioning of floating elements rounded to nearest pixel ([#4142](https://github.com/digdir/designsystemet/pull/4142))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog**: Removed the autofocus attribute from built in closeButton, which prevented setting autofocus on other elements in Dialog. ([#4159](https://github.com/digdir/designsystemet/pull/4159))
+
+  _`@digdir/designsystemet-react`_
+
+- **Field.Counter**: Adjustments to how it works internally. ([#4140](https://github.com/digdir/designsystemet/pull/4140))
+  Now, none of the validation messages underneath are `aria-described` on the input/textarea. This is done by an `aria-live` region only for screenreaders.
+
+  A new `hint` prop has been added, to announce how many characters are allowed when entering the input/textarea. Default value is `'Maks %d tegn tillatt.'`.
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.6.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4129](https://github.com/digdir/designsystemet/pull/4129))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- **pagination**: If direct child of `li` has `aria-hidden="true"` it sets `visibility: hidden;` ([#4123](https://github.com/digdir/designsystemet/pull/4123))
+
+  _`@digdir/designsystemet-css`_
+
+- **input**: Add outline on `:hover` when not `:focus-visible`, `:disabled` or `[readonly]`. This adds a few new CSS variables: ([#4125](https://github.com/digdir/designsystemet/pull/4125))
+  - `--dsc-input-outline-color--hover`
+  - `--dsc-input-outline-color--toggle--hover`
+  - `--dsc-input-outline-width--hover`
+  - `--dsc-input-outline-style--hover`
+
+  _`@digdir/designsystemet-css`_
+
+- **Chip, Tag**: Ensure font size scales correctly with the current size mode by using the token `--ds-body-sm-font-size`. Note: there might be a small visual change for `Chip` used without explicit `data-size`, since it used to have `font-size: 90%`. ([#4098](https://github.com/digdir/designsystemet/pull/4098))
+
+  _`@digdir/designsystemet-css`_
+
+- **Button**: For `icon`-buttons, dont render children if loading is true ([#4023](https://github.com/digdir/designsystemet/pull/4023))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: Updated u-combobox to 1.0.2 to fix a bug where input would not clear in conrolled mode ([#4119](https://github.com/digdir/designsystemet/pull/4119))
+
+  _`@digdir/designsystemet-react`_
+
+- **usePagination**: Hide prev/next buttons with `aria-hidden="true"` and `visibility: hidden;` instead of disabling ([#4123](https://github.com/digdir/designsystemet/pull/4123))
+
+  _`@digdir/designsystemet-react`_
+
+- **Textfield**: Move counter error message before error ([#4104](https://github.com/digdir/designsystemet/pull/4104))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.6.0
+
+### Minor Changes
+
+- **toggle-group**: Added new secondary design available with `data-variant="secondary"` (or `variant="secondary"` in react) ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+
+  _`@digdir/designsystemet-css`_
+
+- **toggle-group**: Changed border-radius to `--ds-border-radius-default`, border-color to `--ds-color-border-default` and color to `--ds-color-text-default`. ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+
+  _`@digdir/designsystemet-css`_
+
+- **ToggleGroup**: Added new prop `variant` to enable new `secondary` design option ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+
+  _`@digdir/designsystemet-react`_
+
+- **Select:** Added a page with examples and information ([#4025](https://github.com/digdir/designsystemet/issues/4025))
+
+  _`figma-ui-kit`_
+
+- **ToggleGroup:** New `secondary` variant, and design changes ([#3553](https://github.com/digdir/designsystemet/issues/3553))
+
+  _`figma-ui-kit`_
+
+- **Tag:** Icons can now be added ([#1884](https://github.com/digdir/designsystemet/issues/1884))
+
+  _`figma-ui-kit`_
+
+- **List:** Bullet points are now instances that can be swapped ([#3915](https://github.com/digdir/designsystemet/issues/3915))
+
+  _`figma-ui-kit`_
+
+- **Suggestion:** Multisuggestion is now part of the Suggestion page, as in code ([#3932](https://github.com/digdir/designsystemet/issues/3932))
+
+  _`figma-ui-kit`_
+
+- **Suggestion:** The list now has up to 10 options instead of 5 ([#4083](https://github.com/digdir/designsystemet/issues/4083))
+
+  _`figma-ui-kit`_
+
+- **Form components:** Added an option to show the required tag ([#3958](https://github.com/digdir/designsystemet/issues/3958))
+
+  _`figma-ui-kit`_
+
+- **Table:** Added a guide to building your own table with the cell components ([#3914](https://github.com/digdir/designsystemet/issues/3914))
+
+  _`figma-ui-kit`_
+
+### Patch Changes
+
+- Add possiblity to override colors in config: ([#4073](https://github.com/digdir/designsystemet/pull/4073))
+
+  ```json
+  {
+    "theme": {
+      "overrides": {
+        "colors": {
+          "dominant": {
+            "background-default": {
+              "light": "#ff0000",
+              "dark": "#000fff"
+            },
+            "background-tinted": {
+              "light": "#f0ff00",
+              "dark": "#ff00ff"
+            }
+          }
+        }
+      }
+    }
+  }
+  ```
+
+  _`@digdir/designsystemet`_
+
+- Font size variables are now rounded to the nearest pixel. This affects size modes "sm" and "lg", which had subpixel values after v1.5.0. ([#4070](https://github.com/digdir/designsystemet/pull/4070))
+
+  _`@digdir/designsystemet`_
+
+- Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Update supported engines. Now supports node `>=20 <25` ([#3925](https://github.com/digdir/designsystemet/pull/3925))
+
+  _`@digdir/designsystemet`_
+
+- **link**: Change `:focus-visible` styling to use border, not background ([#4095](https://github.com/digdir/designsystemet/pull/4095))
+  - Removes `--dsc-link-background--focus`
+  - Removes `--dsc-link-color--focus`
+
+  _`@digdir/designsystemet-css`_
+
+- **link**: Add `--dsc-link-border-radius`, default is `var(--ds-border-radius-md)` ([#4095](https://github.com/digdir/designsystemet/pull/4095))
+
+  _`@digdir/designsystemet-css`_
+
+- **Dropdown**: `Dropdown.Heading` (h2-h6) - changed color to text-default and font-weight to 500 ([#4076](https://github.com/digdir/designsystemet/pull/4076))
+
+  _`@digdir/designsystemet-css`_
+
+- **Spinner**: Allow using `aria-hidden` when `aria-label` is set, which can be useful to hide or show the element from the accessibility tree based on some UI state like whether a visual label is also rendered. ([#4077](https://github.com/digdir/designsystemet/pull/4077))
+
+  _`@digdir/designsystemet-react`_
+
+- **Avatar**: Allow using `aria-hidden` instead of `aria-label` in situations with visible text ([#4077](https://github.com/digdir/designsystemet/pull/4077))
+
+  _`@digdir/designsystemet-react`_
+
+- **Alert:** Removed the max width on the text, so it spans the full width ([#3892](https://github.com/digdir/designsystemet/issues/3892))
+
+  _`figma-ui-kit`_
+
+- **Card:** All variants now have the same structure ([#3982](https://github.com/digdir/designsystemet/issues/3982))
+
+  _`figma-ui-kit`_
+
+- **Card:** Fixed tag colors in the tag group ([#3716](https://github.com/digdir/designsystemet/issues/3716))
+
+  _`figma-ui-kit`_
+
+- **Card:** The title and the tag group no longer overlap in large cards ([#3983](https://github.com/digdir/designsystemet/issues/3983))
+
+  _`figma-ui-kit`_
+
+- **Card, LinkCard:** Headings now have the same font size ([#3898](https://github.com/digdir/designsystemet/issues/3898))
+
+  _`figma-ui-kit`_
+
+- **Checkbox:** Fixed a wrong token ([#3813](https://github.com/digdir/designsystemet/issues/3813))
+
+  _`figma-ui-kit`_
+
+- **Checkbox:** Removed the ghost variable `border-width/highlight` ([#4031](https://github.com/digdir/designsystemet/issues/4031))
+
+  _`figma-ui-kit`_
+
+- **Dropdown:** Renamed variant properties, and text changes to `text-default` on hover and pressed, as in code ([#3912](https://github.com/digdir/designsystemet/issues/3912))
+
+  _`figma-ui-kit`_
+
+- **Dropdown:** Buttons and headers in the neutral dropdown no longer look the same ([#3672](https://github.com/digdir/designsystemet/issues/3672))
+
+  _`figma-ui-kit`_
+
+- **Link:** Added a hover style to the underline ([#3934](https://github.com/digdir/designsystemet/issues/3934))
+
+  _`figma-ui-kit`_
+
+- **Link:** The focus style is now the same as on other components, instead of a background fill ([#4042](https://github.com/digdir/designsystemet/issues/4042))
+
+  _`figma-ui-kit`_
+
+- **Tooltip:** Fixed missing arrows and arrows with the wrong color in the examples ([#4024](https://github.com/digdir/designsystemet/issues/4024))
+
+  _`figma-ui-kit`_
+
+- Swapping a component no longer adds a border to the swapped element ([#3928](https://github.com/digdir/designsystemet/issues/3928))
+
+  _`figma-ui-kit`_
+
+- Updated outdated links on the intro page ([#4082](https://github.com/digdir/designsystemet/issues/4082))
+
+  _`figma-ui-kit`_
+
+## designsystemet 1.5.1
+
+### Patch Changes
+
+- Update dependency @types/ramda to ^0.31.1 ([#4060](https://github.com/digdir/designsystemet/pull/4060))
+
+  _`@digdir/designsystemet`_
+
+- **Field**: Make sure `<select>` and `<textarea>` is not on same line as label ([#4048](https://github.com/digdir/designsystemet/pull/4048))
+
+  _`@digdir/designsystemet-css`_
+
+- **Field.Counter**: Update count when react controls the input ([#4047](https://github.com/digdir/designsystemet/pull/4047))
+
+  _`@digdir/designsystemet-react`_
+
+- **Popover**: Only call `onClose` when `Popover` is open ([#4065](https://github.com/digdir/designsystemet/pull/4065))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.5.0
+
+### Minor Changes
+
+- Sizing and size modes have been reimplemented align code and Figma implementations, and to support setting size mode in css queries. ([#3866](https://github.com/digdir/designsystemet/pull/3866))
+
+  `--ds-size-*` variables are now independent of the element's font size, and only depend on the size mode, which aligns the code implementation with how the modes already worked in Figma. **Important**: This will have a large visual impact on existing code where size variables have been used to style Heading elements (e.g. margin).
+
+  Read [Sizes in code](https://www.designsystemet.no/en/fundamentals/code/sizes) for info on how size modes work after these changes.
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4039](https://github.com/digdir/designsystemet/pull/4039))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- **Details**: Updated `u-details` package to adress an issue where you could tab into the content when details was closed (firefox only) ([#4022](https://github.com/digdir/designsystemet/pull/4022))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.4.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Update npm non-major dependencies ([#4014](https://github.com/digdir/designsystemet/pull/4014))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- **Card**: If `.ds-link` is used in a heading, remove focus and active styling ([#4005](https://github.com/digdir/designsystemet/pull/4005))
+
+  _`@digdir/designsystemet-css`_
+
+- **Fieldset**: Removed uneccessary margin when visually hiding `Fieldset.Legend` with `.ds-sr-only` ([#3996](https://github.com/digdir/designsystemet/pull/3996))
+
+  _`@digdir/designsystemet-css`_
+
+- **Button**: Change sizes of svg and icon ([#3998](https://github.com/digdir/designsystemet/pull/3998))
+  - In icon button (`[data-icon]`), it is `1.5em`
+  - In normal button, it is `1.3em`
+
+  _`@digdir/designsystemet-css`_
+
+- **Switch**: correct jsdoc on `label` prop ([#3984](https://github.com/digdir/designsystemet/pull/3984))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.3.0
+
+### Minor Changes
+
+- Renamed $designsystemet.json to $designsystemet.jsonc so token-studio ignores the file ([#3970](https://github.com/digdir/designsystemet/pull/3970))
+
+  _`@digdir/designsystemet`_
+
+- **Suggestion**: TypeScript typing now depends on whether `multiple` is true or false. When `multiple` is true, `selected`, `defaultSelected` and `onSelectedChange` are typed for arrays of items. Otherwise, they are typed for single items. ([#3909](https://github.com/digdir/designsystemet/pull/3909))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: Removed type `SuggestionValues`, as this union is no longer useful. Use `string` or `SuggestionItem` when `multiple` is `false`, and `string[]` or `SuggestionItem[]` when `multiple` is `true`. ([#3909](https://github.com/digdir/designsystemet/pull/3909))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: remove deprecated props `value`, `defaultValue` and `onValueChange`. Use `selected`, `defaultSelected` and `onSelectedChange` instead. ([#3909](https://github.com/digdir/designsystemet/pull/3909))
+
+  _`@digdir/designsystemet-react`_
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3973](https://github.com/digdir/designsystemet/pull/3973))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- update u-elements/u-details to 0.1.3 ([#3981](https://github.com/digdir/designsystemet/pull/3981))
+
+  _`@digdir/designsystemet-react`_
+
+- update u-elements/u-combobox to 1.0.1 ([#3981](https://github.com/digdir/designsystemet/pull/3981))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: Remove deprecated `Suggestion.Chips` ([#3981](https://github.com/digdir/designsystemet/pull/3981))
+
+  _`@digdir/designsystemet-react`_
+
+- update u-elements/u-datalist to 1.0.14 ([#3981](https://github.com/digdir/designsystemet/pull/3981))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.2.0
+
+### Minor Changes
+
+- **Badge**: Allow adjusting the position of the badge using css variables `--dsc-badge-{top,bottom,left,right}` ([#3965](https://github.com/digdir/designsystemet/pull/3965))
+
+  _`@digdir/designsystemet-css`_
+
+- **Link**: Automatically add recommended spacing to icons (svg or img), when there is also a `<span>` present. ([#3942](https://github.com/digdir/designsystemet/pull/3942))
+  - `<Link><Icon />Text</Link>` will not get spacing
+  - `<Link><Icon /> Text</Link>` will get a leading underlined space character between icon and text, which looks bad
+  - `<Link><Icon /><span>Text</span></Link>` will get recommended spacing
+
+  _`@digdir/designsystemet-css`_
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3923](https://github.com/digdir/designsystemet/pull/3923))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Replace `chalk` with `picocolors` ([#3910](https://github.com/digdir/designsystemet/pull/3910))
+
+  _`@digdir/designsystemet`_
+
+- **Dialog**: Rework close button ([#3959](https://github.com/digdir/designsystemet/pull/3959))
+  - An empty button with `data-command="close"` will get an "X" icon
+  - If `button[data-command="close"]` is the first child of `.ds-dialog`, it will float to the top right
+
+  _`@digdir/designsystemet-css`_
+
+- **Field**: Don't check for hidden elements ([#3950](https://github.com/digdir/designsystemet/pull/3950))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog**: Add `data-command="close"`, which you can use to close the modal. ([#3959](https://github.com/digdir/designsystemet/pull/3959))
+  - This removes use of `<form>` on our close button
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog**: Deprecate `asChild`. Should always be a `<dialog>` element. Will be removed in the next major version ([#3940](https://github.com/digdir/designsystemet/pull/3940))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tabs.Panel**: Add `aria-labelledby` to associated button ([#3939](https://github.com/digdir/designsystemet/pull/3939))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tabs**: Don't conditionally render `TabPanel`, use `hidden` instead ([#3936](https://github.com/digdir/designsystemet/pull/3936))
+  - If any of your `TabPanel` components have heavy code, consider conditional rendering to improve performance
+
+  _`@digdir/designsystemet-react`_
+
+- Update dependency @u-elements/u-details to ^0.1.2 ([#3955](https://github.com/digdir/designsystemet/pull/3955))
+
+  _`@digdir/designsystemet-react`_
+
+- **Skeleton**: Deprecate `characters` prop, which never had any effect. ([#3961](https://github.com/digdir/designsystemet/pull/3961))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tooltip**: Close on click outside, applicable for mobile devices ([#3957](https://github.com/digdir/designsystemet/pull/3957))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.10
+
+### Patch Changes
+
+- Update dependency zod-validation-error to v4 ([#3897](https://github.com/digdir/designsystemet/pull/3897))
+
+  _`@digdir/designsystemet`_
+
+- update dependency @types/ramda to ^0.31.0 ([#3922](https://github.com/digdir/designsystemet/pull/3922))
+
+  _`@digdir/designsystemet`_
+
+- Update dependency zod to v4 ([#3896](https://github.com/digdir/designsystemet/pull/3896))
+
+  _`@digdir/designsystemet`_
+
+- Updated non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Updated non-major dependencies ([#3894](https://github.com/digdir/designsystemet/pull/3894))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- **Details:** Using `margin` instead of `padding` to style children of `Details`, to allow direct children such as `Button` ([#3883](https://github.com/digdir/designsystemet/pull/3883))
+
+  _`@digdir/designsystemet-css`_
+
+- **Dialog**: Respect default prevented keydown event ([#3908](https://github.com/digdir/designsystemet/pull/3908))
+
+  _`@digdir/designsystemet-react`_
+
+- Update `@u-elements/u-datalist` to 1.0.12 ([#3908](https://github.com/digdir/designsystemet/pull/3908))
+
+  _`@digdir/designsystemet-react`_
+
+- Update `@u-elements/u-combobox` to 0.0.20 ([#3908](https://github.com/digdir/designsystemet/pull/3908))
+
+  _`@digdir/designsystemet-react`_
+
+- **RovingFocus**: Eliminate unnecessary rerender ([#3929](https://github.com/digdir/designsystemet/pull/3929))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.9
+
+### Patch Changes
+
+- Add documentation for augmented React data attribute types (`data-color`, `data-size`, `data-color-scheme`) ([#3881](https://github.com/digdir/designsystemet/pull/3881))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.8
+
+### Patch Changes
+
+- Add typings for `ColorScheme` (used for `data-color-scheme`) ([#3879](https://github.com/digdir/designsystemet/pull/3879))
+
+  _`@digdir/designsystemet`_
+
+- Add typings for `data-color-scheme` on JSX elements in React using `react-types.d.ts` ([#3879](https://github.com/digdir/designsystemet/pull/3879))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.7
+
+### Patch Changes
+
+- Deprecate unintended exported `omit` utility ([#3873](https://github.com/digdir/designsystemet/pull/3873))
+
+  _`@digdir/designsystemet-react`_
+
+- Deprecate `useDebounceCallback`, `useIsomorphicLayoutEffect` and `useMediaQuery`. Use utility libraries or create your own utility function. ([#3873](https://github.com/digdir/designsystemet/pull/3873))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.6
+
+### Patch Changes
+
+- Added new type declaration files for theme types when building tokens; `types.d.ts`. **_Use this instead of `colors.d.ts`._** ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+  _`@digdir/designsystemet`_
+
+- Deprecate `colors.d.ts` from `tokens build`. Replaced by `types.d.ts`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+  _`@digdir/designsystemet`_
+
+- Updated non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Add new export for augmented theme types; `@digdir/designsystemet/types`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+  Use this with generated theme declaration file for types for your theme.
+
+  _`@digdir/designsystemet`_
+
+- Fix missing jsdocs for compound components (Component with sub-components on the component, e.g. `Details.Summary` etc) ([#3865](https://github.com/digdir/designsystemet/pull/3865))
+
+  _`@digdir/designsystemet-react`_
+
+- Deprecate `@digdir/designsystemet-react/color` module. Replaced by `@digdir/designsystemet/types`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.5
+
+### Patch Changes
+
+- **Table:** ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+  - sorting icon never shrinks, even when using `Button` component (which is `display: flex`) as parent
+  - with `data-border` adjusts `border-radius` according to `border-width`
+
+  _`@digdir/designsystemet-css`_
+
+- **Tabs:** adjusted to allow non-tab-button-elements inside `tablist` ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+
+  _`@digdir/designsystemet-css`_
+
+- **Details:** content using `overflow: hidden` to prevent margin clipping ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion:** Fix controlled value being cleared if edited in React 18 strict mode. ([#3853](https://github.com/digdir/designsystemet/pull/3853))
+
+  _`@digdir/designsystemet-react`_
+
+- **Dialog**: Fix `onClose` being called twice when React is in strict mode ([#3854](https://github.com/digdir/designsystemet/pull/3854))
+
+  _`@digdir/designsystemet-react`_
+
+- **Field, Checkbox, Radio, Switch, Textfield**: Fix duplicate ids in `aria-describedby` when React is in strict mode ([#3854](https://github.com/digdir/designsystemet/pull/3854))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion:** ([#3857](https://github.com/digdir/designsystemet/pull/3857))
+  - Deprecated `value`, use `selected` instead
+  - Deprecated `defaultValue`, use `defaultSelected` instead
+  - Deprecated `onValueChange`, use `onSelectedChange` instead
+  - Deprecated `Suggestion.Chips`, use `renderSelected` on `Suggestion` instead
+  - Add `onBeforeMatch` to `Suggestion` for custom matching
+  - Revert input `value` to current `selected` when no match
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.4
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Fixed type declaration producing invalid syntax when a color name includes hyphens ([#3802](https://github.com/digdir/designsystemet/pull/3802))
+
+  _`@digdir/designsystemet`_
+
+- fix: letter-spacing now uses `em` unit instead of invalid percentage unit ([#3759](https://github.com/digdir/designsystemet/pull/3759))
+  - **Note:** Users should run `npx @digdir/designsystemet@latest tokens build <options>` to rebuild css-variables with now valid letter-spacing. This will result in a slight visual change in the typography.
+
+  _`@digdir/designsystemet`_
+
+- Removed non-working `--preview` option ([#3758](https://github.com/digdir/designsystemet/pull/3758))
+
+  _`@digdir/designsystemet`_
+
+- Updated non-major dependencies ([#3838](https://github.com/digdir/designsystemet/pull/3838))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- **Avatar**: Text as children have same font-size as data-initials ([#3835](https://github.com/digdir/designsystemet/pull/3835))
+
+  _`@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **Select**: Flip chevron when open, uses [`:open` with limited availability](https://developer.mozilla.org/en-US/docs/Web/CSS/:open). Does not work in Safari ([#3846](https://github.com/digdir/designsystemet/pull/3846))
+
+  _`@digdir/designsystemet-css`_
+
+- **SkipLink**: Class is now `ds-skip-link`. Filename is now `skip-link.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
+  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
+
+  _`@digdir/designsystemet-css`_
+
+- **ToggleGroup**: Class is now `ds-toggle-group`. Filename is now `toggle-group.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
+  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
+
+  _`@digdir/designsystemet-css`_
+
+- Internal change: Removed index files that only exported one component. ([#3836](https://github.com/digdir/designsystemet/pull/3836))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: fix crash when changing the value if the initial value was an empty string ([#3818](https://github.com/digdir/designsystemet/pull/3818))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: now triggers change on enter or blur, or when clicking an option - not while typing ([#3833](https://github.com/digdir/designsystemet/pull/3833))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: Use popover API for datalist ([#3845](https://github.com/digdir/designsystemet/pull/3845))
+
+  _`@digdir/designsystemet-react`_
+
+- Internal change: Use kebab case instead of pascal case for files and folders ([#3819](https://github.com/digdir/designsystemet/pull/3819))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.3
+
+### Patch Changes
+
+- **Field**: The gap between `label` and `Radio`/`Checkbox`/`Switch` is now clickable ([#3785](https://github.com/digdir/designsystemet/pull/3785))
+
+  _`@digdir/designsystemet-css`_
+
+- **Details**: Single outer padding when multiple children ([#3796](https://github.com/digdir/designsystemet/pull/3796))
+
+  _`@digdir/designsystemet-css`_
+
+- Round to nearest 1px a few places ([#3786](https://github.com/digdir/designsystemet/pull/3786))
+
+  _`@digdir/designsystemet-css`_
+
+- **Field**: Make sure there will be no duplicate IDs when having multiple of the same `data-field` type ([#3794](https://github.com/digdir/designsystemet/pull/3794))
+
+  _`@digdir/designsystemet-react`_
+
+- **Textfield**: Fix wrong type definition for `type` prop ([#3797](https://github.com/digdir/designsystemet/pull/3797))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: Visual value didn't correctly update in single mode when controlled value was updated externally ([#3782](https://github.com/digdir/designsystemet/pull/3782))
+
+  _`@digdir/designsystemet-react`_
+
+- Fix typo in `Suggestion.Chips` jsdoc ([#3798](https://github.com/digdir/designsystemet/pull/3798))
+
+  _`@digdir/designsystemet-react`_
+
+- **usePagination**: Don't send negative pages if `showPages` is greater than `totalPages` ([#3793](https://github.com/digdir/designsystemet/pull/3793))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.2
+
+### Patch Changes
+
+- Preserve visual appearance of components in print, excluding large surface backgrounds ([#3765](https://github.com/digdir/designsystemet/pull/3765))
+
+  _`@digdir/designsystemet-css`_
+
+- **Suggestion**: Ensure the hidden `<select>` element, which is only rendered when `Suggestion` has a `name`, gets a deterministic id instead of one that changes on every page load. ([#3777](https://github.com/digdir/designsystemet/pull/3777))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.1
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Fix zod schema error when creating tokens from config file ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
+  _`@digdir/designsystemet`_
+
+- **Suggestion**: Reduced padding around `chip` remove-button ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
+  _`@digdir/designsystemet-css`_
+
+- **Tooltip**: Will now stay open when mouse is moved to the `Tooltip` ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.1.0
+
+### Minor Changes
+
+- **Suggestion**: API has changed to support multiple values. See [Storybook for documentation](https://storybook.designsystemet.no/?path=/docs/komponenter-suggestion--docs) ([#3675](https://github.com/digdir/designsystemet/pull/3675))
+
+  _`@digdir/designsystemet-react`_
+
+- **MultiSuggestion**: Remove component. Use `<Suggestion>` with `multiple`. See [Storybook](https://storybook.designsystemet.no/?path=/docs/komponenter-suggestion--docs) for documentation ([#3675](https://github.com/digdir/designsystemet/pull/3675))
+
+  _`@digdir/designsystemet-react`_
+
+### Patch Changes
+
+- Update dependency `@commander-js/extra-typings` to v14 ([#3734](https://github.com/digdir/designsystemet/pull/3734))
+
+  _`@digdir/designsystemet`_
+
+- Add experimental option to generate Tailwind config. ([#3710](https://github.com/digdir/designsystemet/pull/3710))
+  Use `--experimental-tailwind` when running `tokens build` to generate.
+
+  _`@digdir/designsystemet`_
+
+- Round `--ds-size-*` CSS variables by 1px instead of by 0.0625rem. With the ([#3681](https://github.com/digdir/designsystemet/pull/3681))
+  default root font size (16px) the result is the same, but if the user has
+  changed the browser's font size we now avoid fractional pixels.
+
+  _`@digdir/designsystemet`_
+
+- Remove unused dependencies ([#3737](https://github.com/digdir/designsystemet/pull/3737))
+
+  _`@digdir/designsystemet`_
+
+- Updated non-major dependencies ([#3696](https://github.com/digdir/designsystemet/pull/3696))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Updated non-major dependencies ([#3732](https://github.com/digdir/designsystemet/pull/3732))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- **Field**: Add `asChild` prop to change the default rendered element ([#3704](https://github.com/digdir/designsystemet/pull/3704))
+
+  _`@digdir/designsystemet-react`_
+
+- fix(Tab): static `useId()` in rendering ([#3731](https://github.com/digdir/designsystemet/pull/3731))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.0.8
+
+### Minor Changes
+
+- Variables now have Designsystemet's CSS syntax, so Dev Mode shows CSS variables that exist ([#3690](https://github.com/digdir/designsystemet/issues/3690))
+
+  _`figma-ui-kit`_
+
+### Patch Changes
+
+- **Body:** Fixed the font size of medium weight text ([#3566](https://github.com/digdir/designsystemet/issues/3566))
+
+  _`figma-ui-kit`_
+
+- **Chip:** Fixed the base component in active radio chips ([#3642](https://github.com/digdir/designsystemet/issues/3642))
+
+  _`figma-ui-kit`_
+
+- **Dropdown:** Items are now centered horizontally, and the small icon is 24px ([#3464](https://github.com/digdir/designsystemet/issues/3464))
+
+  _`figma-ui-kit`_
+
+- **Dropdown:** Fixed a wrong variable in the neutral dropdown ([#3636](https://github.com/digdir/designsystemet/issues/3636))
+
+  _`figma-ui-kit`_
+
+- **Link:** The icon is now centered vertically in the large variant ([#3538](https://github.com/digdir/designsystemet/issues/3538))
+
+  _`figma-ui-kit`_
+
+- **LinkCard:** Now responsive with long titles ([#3481](https://github.com/digdir/designsystemet/issues/3481))
+
+  _`figma-ui-kit`_
+
+- **LinkCard:** Changed the order of the state options to default, hover, active
+
+  _`figma-ui-kit`_
+
+- **Multisuggestion:** Uses a checkmark instead of a checkbox ([#3678](https://github.com/digdir/designsystemet/issues/3678))
+
+  _`figma-ui-kit`_
+
+- **Multisuggestion:** Chips are moved up, between the label and the field ([#3677](https://github.com/digdir/designsystemet/issues/3677))
+
+  _`figma-ui-kit`_
+
+- **Pagination:** Removed disabled buttons from the example, to align with [#3454](https://github.com/digdir/designsystemet/issues/3454)
+
+  _`figma-ui-kit`_
+
+- **Radio:** Added a variable on the legend in the horizontal variant ([#3573](https://github.com/digdir/designsystemet/issues/3573))
+
+  _`figma-ui-kit`_
+
+- **Search:** Fixed the position of the focus indicator ([#3523](https://github.com/digdir/designsystemet/issues/3523))
+
+  _`figma-ui-kit`_
+
+- **Suggestion:** Removed the padding in the list, as in code ([#3689](https://github.com/digdir/designsystemet/issues/3689))
+
+  _`figma-ui-kit`_
+
+- **Switch:** Fixed a wrong variable on the neutral switch knob ([#3652](https://github.com/digdir/designsystemet/issues/3652))
+
+  _`figma-ui-kit`_
+
+- **Textarea:** Removed an unused base container
+
+  _`figma-ui-kit`_
+
+- Removed some ghost variables
+
+  _`figma-ui-kit`_
+
+## designsystemet 1.0.7
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3594](https://github.com/digdir/designsystemet/pull/3594))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+- Updated non-major dependencies ([#3630](https://github.com/digdir/designsystemet/pull/3630))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Updated non-major dependencies ([#3656](https://github.com/digdir/designsystemet/pull/3656))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Remove outdated `@layer` definition in generated theme file ([#3551](https://github.com/digdir/designsystemet/pull/3551))
+
+  _`@digdir/designsystemet`_
+
+- Update zod to v4 ([#3639](https://github.com/digdir/designsystemet/pull/3639))
+
+  _`@digdir/designsystemet`_
+
+- Small fixes related to rtl text direction support in multiple components ([#3580](https://github.com/digdir/designsystemet/pull/3580))
+
+  _`@digdir/designsystemet-css`_
+
+- `Tooltip`: add support for [Popover-Polyfill](https://github.com/oddbird/popover-polyfill) ([#3645](https://github.com/digdir/designsystemet/pull/3645))
+
+  _`@digdir/designsystemet-css`_
+
+- Fix `@charset` using wrong quotations marks ([#3551](https://github.com/digdir/designsystemet/pull/3551))
+
+  _`@digdir/designsystemet-css`_
+
+- **Dialog**: Prefix keyframes (`slide-in`, `fade-in`) with `ds-dialog` ([#3602](https://github.com/digdir/designsystemet/pull/3602))
+
+  _`@digdir/designsystemet-css`_
+
+- **MultiSuggestion**: Fix typo in displayname ([#3586](https://github.com/digdir/designsystemet/pull/3586))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.0.6
+
+### Patch Changes
+
+- Added `convertColor` and `getLuminanceFromColor` functions ([#3512](https://github.com/digdir/designsystemet/pull/3512))
+
+  _`@digdir/designsystemet`_
+
+- Updated non-major dependencies ([#3514](https://github.com/digdir/designsystemet/pull/3514))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Added colorjs.io as dependency ([#3512](https://github.com/digdir/designsystemet/pull/3512))
+
+  _`@digdir/designsystemet`_
+
+- Table: Use font weight `--ds-font-weight-semibold` on header cells (`th`) ([#3508](https://github.com/digdir/designsystemet/pull/3508))
+
+  _`@digdir/designsystemet-css`_
+
+- **Tooltip**: Change element to `span` to be able to render in `p` and similar elements ([#3577](https://github.com/digdir/designsystemet/pull/3577))
+
+  _`@digdir/designsystemet-react`_
+
+- `ErrorSummary`: no longer sets `aria-live`, `aria-relevant` and `role` attributes. This implementation caused [accessibility issues](https://github.com/digdir/designsystemet/issues/3417). See the updated accesibility documentation for `ErrorSummary` for guidance on how to properly announce the content to screen readers. ([#3555](https://github.com/digdir/designsystemet/pull/3555))
+
+  _`@digdir/designsystemet-react`_
+
+- Export `LabelRequired` type ([#3564](https://github.com/digdir/designsystemet/pull/3564))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.0.5
+
+### Patch Changes
+
+- Fix empty theme file being built when no `support-color` were defined ([#3511](https://github.com/digdir/designsystemet/pull/3511))
+
+  _`@digdir/designsystemet`_
+
+- Add design-token version to metadata in built theme file ([#3510](https://github.com/digdir/designsystemet/pull/3510))
+
+  _`@digdir/designsystemet`_
+
+## designsystemet 1.0.4
+
+### Patch Changes
+
+- Remove incomplete `react-beta-to-v1` migration. ([#3495](https://github.com/digdir/designsystemet/pull/3495))
+
+  _`@digdir/designsystemet`_
+
+- Improved `tokens build` console log and when files are written to disk ([#3338](https://github.com/digdir/designsystemet/pull/3338))
+
+  _`@digdir/designsystemet`_
+
+- Updated metadata in theme file ([#3479](https://github.com/digdir/designsystemet/pull/3479))
+
+  _`@digdir/designsystemet`_
+
+- Add file (`$designsystemet.json`) with metadata for `tokens create` ([#3498](https://github.com/digdir/designsystemet/pull/3498))
+
+  _`@digdir/designsystemet`_
+
+- Refactored `tokens build` and `create` code to support future features ([#3338](https://github.com/digdir/designsystemet/pull/3338))
+
+  _`@digdir/designsystemet`_
+
+- Updated non-major dependencies ([#3351](https://github.com/digdir/designsystemet/pull/3351))
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+
+- Remove individual theme CSS files from `tokens build`. ([#3475](https://github.com/digdir/designsystemet/pull/3475))
+
+  _`@digdir/designsystemet`_
+
+- `tokens build` should no longer pick up unwanted CSS files when making single theme file ([#3338](https://github.com/digdir/designsystemet/pull/3338))
+
+  _`@digdir/designsystemet`_
+
+- Add `unset:all` to `summary::before` for correct styling. ([#3458](https://github.com/digdir/designsystemet/pull/3458))
+
+  _`@digdir/designsystemet-css`_
+
+- Add empty typings for easier import in typescript ([#3446](https://github.com/digdir/designsystemet/pull/3446))
+
+  _`@digdir/designsystemet-css`_
+
+- **Fieldset**: Fix visual regression in 1.0.3 which added unintended padding on `<legend>` ([#3427](https://github.com/digdir/designsystemet/pull/3427))
+
+  _`@digdir/designsystemet-css`_
+
+- Update React to 19.1.0. [Changelog](https://github.com/facebook/react/releases/tag/v19.1.0) ([#3426](https://github.com/digdir/designsystemet/pull/3426))
+
+  _`@digdir/designsystemet-react`_
+
+- **Details**: Update `@u-elements/u-details` to `0.1.1` ([#3458](https://github.com/digdir/designsystemet/pull/3458))
+
+  _`@digdir/designsystemet-react`_
+
+- **Suggestion**: Fix keyboard focus trap on list ([#3422](https://github.com/digdir/designsystemet/pull/3422))
+
+  _`@digdir/designsystemet-react`_
+
+- **Tooltip**: Add `autoPlacement` prop. By default `true`, set to `false` to disable auto placement ([#3429](https://github.com/digdir/designsystemet/pull/3429))
+
+  _`@digdir/designsystemet-react`_
+
+- **MultiSuggestion**: Fix keyboard focus trap on list ([#3422](https://github.com/digdir/designsystemet/pull/3422))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.0.3
+
+### Minor Changes
+
+- **Multisuggestion:** Renamed from Multiselect, as in code
+
+  _`figma-ui-kit`_
+
+- **Typography:** Heading size7 is renamed to xxlarge, and sizes are named sm, md and lg
+
+  _`figma-ui-kit`_
+
+### Patch Changes
+
+- Fix `data-color` and `data-color-scheme` used on the same element not working in some browsers ([#3354](https://github.com/digdir/designsystemet/pull/3354))
+
+  _`@digdir/designsystemet`_
+
+- Dark mode color adjustments ([#3386](https://github.com/digdir/designsystemet/pull/3386))
+  - Reduced the saturation of the colors in dark mode by about 50%.
+  - Made the background- and surface colors a bit darker.
+  - Made the text-default color a bit brighter for better contrast.
+
+  _`@digdir/designsystemet`_
+
+- General color adjustments ([#3386](https://github.com/digdir/designsystemet/pull/3386))
+  - Changed the luminance of border-default to work on top of surface-hover with 3:1 contrast.
+  - Changed the luminance of text-subtle and border-strong to work on top of surface-hover with 4.5:1 contrast.
+
+  _`@digdir/designsystemet`_
+
+- Replaced usage of `background-default`/`background-tinted` color-variables with `surface-default`/`surface-tinted` in components ([#3412](https://github.com/digdir/designsystemet/pull/3412))
+  - `Details`
+  - `Input`
+  - `Field`
+  - `Suggestion`/`MultiSuggestion`
+  - `ToggleGroup`
+
+  _`@digdir/designsystemet-css`_
+
+- **ToggleGroup**: Removed padding between border and buttons, moved focus to be inset on buttons ([#3356](https://github.com/digdir/designsystemet/pull/3356))
+
+  _`@digdir/designsystemet-css`_
+
+- **Label:** Move readonly styling from label to base for more robust setup. Now styles any label & legend element inside field & fieldset. ([#3413](https://github.com/digdir/designsystemet/pull/3413))
+
+  _`@digdir/designsystemet-css`_
+
+- **Details**: Added `--dsc-details-border-block-width` to fix typo in `--dsc-details-border-block-wdith`. ([#3405](https://github.com/digdir/designsystemet/pull/3405))
+  The old variable is kept as is, so there are no breaking changes.
+
+  _`@digdir/designsystemet-css`_
+
+- Added new class `ds-readonly-icon` for displaying a the readonly icon (padlock) before an element. ([#3413](https://github.com/digdir/designsystemet/pull/3413))
+
+  _`@digdir/designsystemet-css`_
+
+- **ToggleGroup**: Add horizontal scroll when items can't fit in container ([#3356](https://github.com/digdir/designsystemet/pull/3356))
+
+  _`@digdir/designsystemet-css`_
+
+- **Dropdown**: Fix `className` not being applied to `DropdownButton` ([#3384](https://github.com/digdir/designsystemet/pull/3384))
+
+  _`@digdir/designsystemet-react`_
+
+- **Field**: Removed logic that added `aria-disabled` to elements with `data-field` attribute if input was disabled ([#3407](https://github.com/digdir/designsystemet/pull/3407))
+
+  _`@digdir/designsystemet-react`_
+
+- **Button:** Now styled as in code, with a `size-2` gap and no horizontal padding on the text ([#3401](https://github.com/digdir/designsystemet/issues/3401))
+
+  _`figma-ui-kit`_
+
+- **Card:** Fixed the background token ([#3335](https://github.com/digdir/designsystemet/issues/3335))
+
+  _`figma-ui-kit`_
+
+- **Tabs:** Removed an invisible line, and the text element now has a bottom border, closer to code
+
+  _`figma-ui-kit`_
+
+- **Tabs:** Fixed wrong variables in examples
+
+  _`figma-ui-kit`_
+
+- **ToggleGroup:** Updated with the visual changes from code ([#3399](https://github.com/digdir/designsystemet/issues/3399))
+
+  _`figma-ui-kit`_
+
+- **ToggleGroup:** Fixed wrong variables
+
+  _`figma-ui-kit`_
+
+- **Tooltip:** Fixed the color of hidden arrows
+
+  _`figma-ui-kit`_
+
+- Components use surface variables instead of background variables, which can behave oddly in dark mode ([#3353](https://github.com/digdir/designsystemet/issues/3353))
+
+  _`figma-ui-kit`_
+
+- Components use the Divider component
+
+  _`figma-ui-kit`_
+
+- Removed a blue color from Radio on the example page
+
+  _`figma-ui-kit`_
+
+- Example pages hug their content in height
+
+  _`figma-ui-kit`_
+
+- Fixed ghost variables in examples
+
+  _`figma-ui-kit`_
+
+## designsystemet 1.0.2
+
+### Patch Changes
+
+- Improve build for built in colors. ([#3247](https://github.com/digdir/designsystemet/pull/3247))
+
+  _`@digdir/designsystemet`_
+
+- Fix missing `--ds-color-surface-default` for colors `danger`, `warning`, `info`, `success` and `neutral`. ([#3247](https://github.com/digdir/designsystemet/pull/3247))
+
+  _`@digdir/designsystemet`_
+
+- **Card**: Fix default background color token ([#3331](https://github.com/digdir/designsystemet/pull/3331))
+
+  _`@digdir/designsystemet-css`_
+
+- **useCheckboxGroup**: Fix React crashing when conditionally rendering `getCheckboxProps`. ([#3342](https://github.com/digdir/designsystemet/pull/3342))
+
+  _`@digdir/designsystemet-react`_
+
+- **useRadioGroup**: Fix React crashing when conditionally rendering `getRadioProps` ([#3342](https://github.com/digdir/designsystemet/pull/3342))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.0.1
+
+### Patch Changes
+
+- **MultiSuggestion**: Export component ([#3305](https://github.com/digdir/designsystemet/pull/3305))
+
+  _`@digdir/designsystemet-react`_
+
+## designsystemet 1.0.0
+
+### Major Changes
+
+- 🎉 Version 1.0 of Designsystemet! 🎉 ([#3290](https://github.com/digdir/designsystemet/pull/3290))
+
+  We are excited to announce the release of Version 1.0 of Designsystemet! This marks a significant milestone as we establish a solid foundation for future development. 🚀
+
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+
+### Minor Changes
+
+- **Divider:** New component ([#3047](https://github.com/digdir/designsystemet/issues/3047))
+
+  _`figma-ui-kit`_
+
+- **Dialog:** Added a backdrop
+
+  _`figma-ui-kit`_
+
+- **Details:** Added a component property for the slot component
+
+  _`figma-ui-kit`_
+
+- **Typography:** Added Heading XXL
+
+  _`figma-ui-kit`_
+
+- Renamed the `ds-disabled-opacity` token to `ds-opacity-disabled` ([#3204](https://github.com/digdir/designsystemet/issues/3204))
+
+  _`figma-ui-kit`_
+
+- Components are aligned with code in naming, properties and use of tokens ([#3160](https://github.com/digdir/designsystemet/issues/3160))
+
+  _`figma-ui-kit`_
+
+### Patch Changes
+
+- **Badge:** Flexible width
+
+  _`figma-ui-kit`_
+
+- **Card, Details:** The slot component uses the full width
+
+  _`figma-ui-kit`_
+
+- **Checkbox:** The danger variant uses `neutral-background` instead of `danger-background`, and `danger-text-subtle` instead of a border, as in code
+
+  _`figma-ui-kit`_
+
+- **Checkbox:** Read-only uses `text-default` instead of `text-subtle` on the check and line, as in code
+
+  _`figma-ui-kit`_
+
+- **Chip:** Added size variables to the x icon
+
+  _`figma-ui-kit`_
+
+- **IconToggleGroup:** Uses main instead of accent
+
+  _`figma-ui-kit`_
+
+- **Radio:** Uses main instead of accent
+
+  _`figma-ui-kit`_
+
+- **Radio:** The danger variant uses `neutral-background` instead of `danger-background`, and `danger-text-subtle` instead of a border, as in code
+
+  _`figma-ui-kit`_
+
+- **Radio:** Read-only uses `text-default` instead of `text-subtle` on the inner circle, as in code
+
+  _`figma-ui-kit`_
+
+- **Radio:** Fixed table examples
+
+  _`figma-ui-kit`_
+
+- **Switch:** Border color changed from `border-strong` to `border-default`
+
+  _`figma-ui-kit`_
+
+- **Switch:** Fixed the disabled look, which used a gray background
+
+  _`figma-ui-kit`_
+
+- **Switch:** The dot in read-only changed from `subtle` to `text-default`
+
+  _`figma-ui-kit`_
+
+- **Tooltip:** Simplified
+
+  _`figma-ui-kit`_
+
+- The example themes use the color names "primary" and "accent" for main, and "extra1" and "extra2" for support
+
+  _`figma-ui-kit`_
+
+- Added extra typography to the "Etat1" and "Etat2" examples, for testing a switch to another typography
+
+  _`figma-ui-kit`_
+
+- The Button, Card, Details and Tag pages use the default theme instead of a specific one
+
+  _`figma-ui-kit`_
+
+- Fixed wrong icon colors on the example pages
+
+  _`figma-ui-kit`_
+
+- Fixed broken table examples
+
+  _`figma-ui-kit`_
+
+- Removed missing variables
+
+  _`figma-ui-kit`_
