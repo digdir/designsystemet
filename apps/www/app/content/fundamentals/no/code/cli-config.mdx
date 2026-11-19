@@ -1,7 +1,7 @@
 ---
 title: CLI Config
 description: Informasjon om korleis du bruker CLI config fil.
-date: 2026-11-09
+date: 2026-11-19
 category: Kode
 color: blue
 icon: FileJsonIcon
@@ -280,7 +280,7 @@ Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity
 | inner | Objekt | Nei | Inneheld fargar for indre fokus |
 | outer | Objekt | Nei | Inneheld fargar for ytre fokus |
 
-Utan overskrivingar brukar indre fokus `background-default` og ytre fokus `text-default` frå `neutral` dersom temaet har den, elles frå den første fargen i temaet som ikkje er ein severity-farge.
+Utan overskrivingar brukar indre fokus `background-default` og ytre fokus `text-default` frå ein fargeskala laga frå `#24272B`. Fargane i temaet påverkar ikkje fokusfargane.
 
 ##### overrides.focus.(inner|outer)
 | Namn | Type | Påkrevd | Forklaring |
