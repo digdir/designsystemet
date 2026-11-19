@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.24.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#5613](https://github.com/digdir/designsystemet/pull/5613))
+
+- **Tabs**: Use `DSTabsElement` instead of `DSTabElement` as the type for `ref` and props on the root `Tabs` component. ([#5644](https://github.com/digdir/designsystemet/pull/5644))
+
+- Re-export custom element types from `@digdir/designsystemet-web` (`DSErrorSummaryElement`, `DSFieldElement` etc.) ([#5644](https://github.com/digdir/designsystemet/pull/5644))
+
 ## 1.24.0
 
 ### Patch Changes
