@@ -26,6 +26,7 @@
     "isbot": "5.2.3",
     "lz-string": "1.5.0",
     "morgan": "1.12.1",
+    "postgres": "4.1.1",
     "react": "19.3.1",
     "react-color-palette": "7.3.1",
     "react-dom": "19.3.1",

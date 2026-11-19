@@ -12,6 +12,7 @@ on:
       - ".github/workflows/scripts/get-acr-creds.sh"
       - ".github/workflows/scripts/get-containerapp-fqdn.sh"
       - ".github/workflows/scripts/preview-comment-links.sh"
+      - ".github/workflows/scripts/set-containerapp-database-secret.sh"
       - "Dockerfile"
 
 permissions:
@@ -27,7 +28,11 @@ jobs:
       environment: preview
       pr_number: ${{ github.event.number }}
       update_comment: true
+      database_identity: ${{ vars.THEMEBUILDER_PREVIEW_DATABASE_IDENTITY }}
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      # Previews have no database, and themes cannot be shared in them. To try a change to the database,
+      # set this secret to the URL of a test database for a while. Never the production database.
+      THEMEBUILDER_DATABASE_URL: ${{ secrets.THEMEBUILDER_PREVIEW_DATABASE_URL }}

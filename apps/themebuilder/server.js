@@ -39,6 +39,13 @@ if (DEVELOPMENT) {
     '/assets',
     express.static('dist/client/assets', { immutable: true, maxAge: '1y' }),
   );
+  // The ids of a shared theme are all it takes to open or change the theme, so they are kept out of the logs
+  morgan.token('url', (req) =>
+    (req.originalUrl || req.url).replace(
+      /([?&](?:id|view)=|\/api\/themes\/)[^&/?#]+/g,
+      '$1***',
+    ),
+  );
   app.use(morgan('tiny'));
   app.use(
     '/.well-known',
