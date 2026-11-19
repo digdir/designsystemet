@@ -117,23 +117,7 @@
 
   _`@digdir/designsystemet`_
 
-- Update npm non-major dependencies ([#5506](https://github.com/digdir/designsystemet/pull/5506))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
-
-- Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
-
-- Update npm non-major dependencies ([#5553](https://github.com/digdir/designsystemet/pull/5553))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
-
-- Update npm non-major dependencies ([#5588](https://github.com/digdir/designsystemet/pull/5588))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
-
-- Update npm non-major dependencies ([#5521](https://github.com/digdir/designsystemet/pull/5521))
+- Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479), [#5506](https://github.com/digdir/designsystemet/pull/5506), [#5521](https://github.com/digdir/designsystemet/pull/5521), [#5553](https://github.com/digdir/designsystemet/pull/5553), [#5588](https://github.com/digdir/designsystemet/pull/5588))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
@@ -494,13 +478,9 @@
 
 ### Patch Changes
 
-- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334)) by [@renovate](https://github.com/apps/renovate)
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302), [#5334](https://github.com/digdir/designsystemet/pull/5334))
 
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-web`_
-
-- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302)) by [@renovate](https://github.com/apps/renovate)
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-web`_
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
 - **Avatar:** When `data-variant="square"`, default `border-radius` is adjusted to `--ds-border-radius-md` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
 
@@ -513,14 +493,6 @@
 - **Link:** Reduced the default underline offset from 27% to 24% to avoid collisions with character descenders ([#5325](https://github.com/digdir/designsystemet/pull/5325))
 
   _`@digdir/designsystemet-css`_
-
-- Update npm non-major dependencies ([#5334](https://github.com/digdir/designsystemet/pull/5334))
-
-  _`@digdir/designsystemet-react`_
-
-- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302))
-
-  _`@digdir/designsystemet-react`_
 
 - Restored the framework type imports in `dist/index.d.ts`, so the JSX/element type augmentations for `ds-*` custom elements resolve again ([#5331](https://github.com/digdir/designsystemet/pull/5331))
 
@@ -540,7 +512,7 @@
 
   _`@digdir/designsystemet`_
 
-- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276)) by [@renovate](https://github.com/apps/renovate)
+- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
@@ -727,9 +699,9 @@
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-web`_
 
-- Update npm non-major dependencies ([#5122](https://github.com/digdir/designsystemet/pull/5122))
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057), [#5072](https://github.com/digdir/designsystemet/pull/5072), [#5103](https://github.com/digdir/designsystemet/pull/5103), [#5122](https://github.com/digdir/designsystemet/pull/5122), [#5136](https://github.com/digdir/designsystemet/pull/5136))
 
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
 - fixed missing types error that might occur for `@tokens-studio/types`. ([#5061](https://github.com/digdir/designsystemet/pull/5061))
 
@@ -755,10 +727,6 @@
 
   _`@digdir/designsystemet`_
 
-- Update npm non-major dependencies ([#5136](https://github.com/digdir/designsystemet/pull/5136))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
-
 - **Tailwind:** `--experimental-tailwind` now also generates `--shadow-*` and `--opacity-disabled` config ([#5139](https://github.com/digdir/designsystemet/pull/5139))
 
   _`@digdir/designsystemet`_
@@ -767,18 +735,10 @@
 
   _`@digdir/designsystemet`_
 
-- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
-
 - - add option `-v` and `--version` for display version number. ([#5098](https://github.com/digdir/designsystemet/pull/5098))
   - add option `-h` and `--help` for display help.
 
   _`@digdir/designsystemet`_
-
-- Update npm non-major dependencies ([#5103](https://github.com/digdir/designsystemet/pull/5103))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
 - **Dialog:** now applies a `z-index` even when opened in non-modal mode (without a backdrop). ([#5123](https://github.com/digdir/designsystemet/pull/5123))
 
@@ -799,10 +759,6 @@
 - **Chip:** now aligns checkbox, radio and x to top when multi-line text ([#5083](https://github.com/digdir/designsystemet/pull/5083))
 
   _`@digdir/designsystemet-css`_
-
-- Update npm non-major dependencies ([#5072](https://github.com/digdir/designsystemet/pull/5072))
-
-  _`@digdir/designsystemet-react`_
 
 - **React types:** allow all values of `data-color` in all components ([#5082](https://github.com/digdir/designsystemet/pull/5082))
 
@@ -944,7 +900,7 @@
 
 ### Patch Changes
 
-- fix(deps): update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
+- Update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
@@ -1035,17 +991,13 @@
 
 ### Patch Changes
 
-- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889))
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889), [#4910](https://github.com/digdir/designsystemet/pull/4910))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
 - Add deprecation warning for cli options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme`. Use JSON config file instead. ([#4912](https://github.com/digdir/designsystemet/pull/4912))
 
   _`@digdir/designsystemet`_
-
-- Update npm non-major dependencies ([#4910](https://github.com/digdir/designsystemet/pull/4910))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
 
 - **Dropdown**: Removed hardcoded `font-weight` on some heading elements. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
 
@@ -1153,15 +1105,7 @@
 
 ### Patch Changes
 
-- Update npm non-major dependencies ([#4809](https://github.com/digdir/designsystemet/pull/4809))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
-
-- Update npm non-major dependencies ([#4859](https://github.com/digdir/designsystemet/pull/4859))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
-
-- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783))
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783), [#4809](https://github.com/digdir/designsystemet/pull/4809), [#4859](https://github.com/digdir/designsystemet/pull/4859))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
@@ -1321,21 +1265,13 @@
 
 ### Patch Changes
 
-- update npm non-major dependencies ([#4694](https://github.com/digdir/designsystemet/pull/4694))
+- Update npm non-major dependencies ([#4668](https://github.com/digdir/designsystemet/pull/4668), [#4677](https://github.com/digdir/designsystemet/pull/4677), [#4694](https://github.com/digdir/designsystemet/pull/4694))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
 - Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
-
-- update npm non-major dependencies ([#4677](https://github.com/digdir/designsystemet/pull/4677))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
-
-- update npm non-major dependencies ([#4668](https://github.com/digdir/designsystemet/pull/4668))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
 - **Card**: ensure underline on link in heading has same thickness as in version 1.11.1 ([#4723](https://github.com/digdir/designsystemet/pull/4723))
 
@@ -1441,7 +1377,7 @@
 
   _`@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
-- update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
+- Update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
 
   _`@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
 
@@ -1484,17 +1420,9 @@
 
 ### Patch Changes
 
-- update npm non-major dependencie ([#4607](https://github.com/digdir/designsystemet/pull/4607))
+- Update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548), [#4573](https://github.com/digdir/designsystemet/pull/4573), [#4607](https://github.com/digdir/designsystemet/pull/4607))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
-
-- update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
-
-- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
 
 - **Badge, Button, Spinner, Tabs, Tag**: Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
 
@@ -1672,13 +1600,9 @@
 
 ### Patch Changes
 
-- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+- Update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497), [#4517](https://github.com/digdir/designsystemet/pull/4517))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react` · `@digdir/designsystemet-web`_
-
-- update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
 - **suggestion**: various changes to chip styling. You no longer need to pass a class to `<data>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
 
@@ -1748,21 +1672,13 @@
 
 ### Patch Changes
 
-- update npm non-major dependencies ([#4469](https://github.com/digdir/designsystemet/pull/4469))
+- Update npm non-major dependencies ([#4423](https://github.com/digdir/designsystemet/pull/4423), [#4445](https://github.com/digdir/designsystemet/pull/4445), [#4469](https://github.com/digdir/designsystemet/pull/4469))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
 
 - update dependency colorjs.io to ^0.6.1 ([#4422](https://github.com/digdir/designsystemet/pull/4422))
 
   _`@digdir/designsystemet`_
-
-- update npm non-major dependencies ([#4445](https://github.com/digdir/designsystemet/pull/4445))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
-
-- update npm non-major dependencies ([#4423](https://github.com/digdir/designsystemet/pull/4423))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
 - **AvatarStack**: override user-agent margins on figure ([#4431](https://github.com/digdir/designsystemet/pull/4431))
 
@@ -1812,9 +1728,9 @@
 
 ### Patch Changes
 
-- update npm non-major dependencies ([#4373](https://github.com/digdir/designsystemet/pull/4373))
+- Update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336), [#4347](https://github.com/digdir/designsystemet/pull/4347), [#4373](https://github.com/digdir/designsystemet/pull/4373), [#4398](https://github.com/digdir/designsystemet/pull/4398))
 
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
+  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
 
 - Update dependency zod-validation-error to v5 ([#4401](https://github.com/digdir/designsystemet/pull/4401))
 
@@ -1832,18 +1748,6 @@
   - This does not affect the node versions we support
 
   _`@digdir/designsystemet`_
-
-- update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
-
-- update npm non-major dependencies ([#4398](https://github.com/digdir/designsystemet/pull/4398))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
-
-- Update npm non-major dependencies ([#4347](https://github.com/digdir/designsystemet/pull/4347))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
 - **avatar**: added `--dsc-avatar-font-size` to easier override font size ([#4331](https://github.com/digdir/designsystemet/pull/4331))
 
@@ -1968,15 +1872,7 @@
 
 ### Patch Changes
 
-- Update npm non-major dependencies ([#4275](https://github.com/digdir/designsystemet/pull/4275))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
-
-- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
-
-- Update npm non-major dependencies ([#4262](https://github.com/digdir/designsystemet/pull/4262))
+- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242), [#4262](https://github.com/digdir/designsystemet/pull/4262), [#4275](https://github.com/digdir/designsystemet/pull/4275))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
 
@@ -2088,11 +1984,7 @@
 
   _`@digdir/designsystemet`_
 
-- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
-
-- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193), [#4214](https://github.com/digdir/designsystemet/pull/4214))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
 
@@ -2170,7 +2062,7 @@
 
 ### Patch Changes
 
-- Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147))
+- Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147), [#4167](https://github.com/digdir/designsystemet/pull/4167))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
@@ -2202,10 +2094,6 @@
   ```
 
   _`@digdir/designsystemet`_
-
-- Update npm non-major dependencies ([#4167](https://github.com/digdir/designsystemet/pull/4167))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
 - Update dependency ramda to ^0.32.0 ([#4146](https://github.com/digdir/designsystemet/pull/4146))
 
@@ -2254,11 +2142,7 @@
 
 ### Patch Changes
 
-- Update npm non-major dependencies ([#4129](https://github.com/digdir/designsystemet/pull/4129))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
-
-- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110))
+- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110), [#4129](https://github.com/digdir/designsystemet/pull/4129))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
@@ -2505,13 +2389,9 @@
 
 ### Patch Changes
 
-- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989))
+- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989), [#4014](https://github.com/digdir/designsystemet/pull/4014))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
-
-- Update npm non-major dependencies ([#4014](https://github.com/digdir/designsystemet/pull/4014))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
 - **Card**: If `.ds-link` is used in a heading, remove focus and active styling ([#4005](https://github.com/digdir/designsystemet/pull/4005))
 
@@ -2654,13 +2534,9 @@
 
   _`@digdir/designsystemet`_
 
-- Updated non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890))
+- Update npm non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890), [#3894](https://github.com/digdir/designsystemet/pull/3894))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
-
-- Updated non-major dependencies ([#3894](https://github.com/digdir/designsystemet/pull/3894))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
 - **Details:** Using `margin` instead of `padding` to style children of `Details`, to allow direct children such as `Button` ([#3883](https://github.com/digdir/designsystemet/pull/3883))
 
@@ -2726,7 +2602,7 @@
 
   _`@digdir/designsystemet`_
 
-- Updated non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))
+- Update npm non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
@@ -2787,7 +2663,7 @@
 
 ### Patch Changes
 
-- Updated non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803))
+- Update npm non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803), [#3838](https://github.com/digdir/designsystemet/pull/3838))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
 
@@ -2803,10 +2679,6 @@
 - Removed non-working `--preview` option ([#3758](https://github.com/digdir/designsystemet/pull/3758))
 
   _`@digdir/designsystemet`_
-
-- Updated non-major dependencies ([#3838](https://github.com/digdir/designsystemet/pull/3838))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
 - **Avatar**: Text as children have same font-size as data-initials ([#3835](https://github.com/digdir/designsystemet/pull/3835))
 
@@ -2898,7 +2770,7 @@
 
 ### Patch Changes
 
-- Updated non-major dependencies ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+- Update npm non-major dependencies ([#3774](https://github.com/digdir/designsystemet/pull/3774))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
 
@@ -2947,11 +2819,7 @@
 
   _`@digdir/designsystemet`_
 
-- Updated non-major dependencies ([#3696](https://github.com/digdir/designsystemet/pull/3696))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
-
-- Updated non-major dependencies ([#3732](https://github.com/digdir/designsystemet/pull/3732))
+- Update npm non-major dependencies ([#3696](https://github.com/digdir/designsystemet/pull/3696), [#3732](https://github.com/digdir/designsystemet/pull/3732))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
 
@@ -3041,17 +2909,9 @@
 
 ### Patch Changes
 
-- Updated non-major dependencies ([#3594](https://github.com/digdir/designsystemet/pull/3594))
+- Update npm non-major dependencies ([#3594](https://github.com/digdir/designsystemet/pull/3594), [#3630](https://github.com/digdir/designsystemet/pull/3630), [#3656](https://github.com/digdir/designsystemet/pull/3656))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-css` · `@digdir/designsystemet-react`_
-
-- Updated non-major dependencies ([#3630](https://github.com/digdir/designsystemet/pull/3630))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
-
-- Updated non-major dependencies ([#3656](https://github.com/digdir/designsystemet/pull/3656))
-
-  _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
 - Remove outdated `@layer` definition in generated theme file ([#3551](https://github.com/digdir/designsystemet/pull/3551))
 
@@ -3089,7 +2949,7 @@
 
   _`@digdir/designsystemet`_
 
-- Updated non-major dependencies ([#3514](https://github.com/digdir/designsystemet/pull/3514))
+- Update npm non-major dependencies ([#3514](https://github.com/digdir/designsystemet/pull/3514))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 
@@ -3149,7 +3009,7 @@
 
   _`@digdir/designsystemet`_
 
-- Updated non-major dependencies ([#3351](https://github.com/digdir/designsystemet/pull/3351))
+- Update npm non-major dependencies ([#3351](https://github.com/digdir/designsystemet/pull/3351))
 
   _`@digdir/designsystemet` · `@digdir/designsystemet-react`_
 

@@ -108,6 +108,51 @@ function parseItems(body) {
 // The packages are versioned together, so these only say that the others were bumped as well
 const isDependencyBump = (text) => text.startsWith('- Updated dependencies');
 
+// Renovate's grouped updates, written in a few ways over time, e.g. "Update npm non-major
+// dependencies" or "fix(deps): update npm non-major dependencies". They say nothing more
+// than their links, so each version lists them as one entry.
+const DEPENDENCY_UPDATES =
+  /^- (?:fix\(deps\): )?updated? (?:npm )?non-major dependencie?s?\b/i;
+const DEPENDENCY_UPDATES_TEXT = 'Update npm non-major dependencies';
+// Links to pull requests, e.g. [#5613](…), or to commits, e.g. [`cc33a61`](…)
+const CHANGE_LINK = /\[(?:#\d+|`[0-9a-f]+`)\]\([^)]+\)/g;
+
+/**
+ * Merges the dependency updates of a version into one entry, with the links of all of them.
+ * @param {Map<string, { bump: string, packages: string[] }>} changes entry text → change
+ */
+function mergeDependencyUpdates(changes) {
+  const updates = [...changes].filter(([text]) =>
+    DEPENDENCY_UPDATES.test(text),
+  );
+  if (updates.length === 0) return changes;
+
+  const links = new Set();
+  const packages = new Set();
+  let bump = updates[0][1].bump;
+  for (const [text, change] of updates) {
+    for (const [link] of text.matchAll(CHANGE_LINK)) links.add(link);
+    for (const name of change.packages) packages.add(name);
+    if (BUMPS.indexOf(change.bump) < BUMPS.indexOf(bump)) bump = change.bump;
+  }
+  const merged = {
+    bump,
+    packages: [...packages].sort((a, b) => packageOrder(a) - packageOrder(b)),
+  };
+  // Pull requests in number order, then commits
+  const linkOrder = (link) => Number(/\[#(\d+)\]/.exec(link)?.[1] ?? Infinity);
+  const sortedLinks = [...links].sort((x, y) => linkOrder(x) - linkOrder(y));
+  const text = `- ${DEPENDENCY_UPDATES_TEXT} (${sortedLinks.join(', ')})`;
+
+  // In the place of the first of them
+  const result = new Map();
+  for (const [entry, change] of changes) {
+    if (!DEPENDENCY_UPDATES.test(entry)) result.set(entry, change);
+    else if (!result.has(text)) result.set(text, merged);
+  }
+  return result;
+}
+
 /**
  * Merges the package changelogs into one list of changes per version.
  * @param {Iterable<{ name: string, dir: string }>} pkgs
@@ -142,7 +187,11 @@ export async function groupChangelogs(pkgs) {
       }
     }
   }
-  return new Map([...versions].sort(([a], [b]) => compareVersions(b, a)));
+  return new Map(
+    [...versions]
+      .sort(([a], [b]) => compareVersions(b, a))
+      .map(([version, changes]) => [version, mergeDependencyUpdates(changes)]),
+  );
 }
 
 /** Compares two `x.y.z` versions numerically. */
