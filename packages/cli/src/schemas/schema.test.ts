@@ -198,6 +198,14 @@ describe('themeSchema typography validation', () => {
     expect(result.success).toBe(false);
   });
 
+  it.each(['12px', '0.75rem', 'large', ''])('rejects the font size %j, which is not a unitless number', (value) => {
+    const result = parseThemes({
+      a: { ...baseTheme, typography: { fontSize: { ...fontSizeScale(12), '1': value } } },
+    });
+
+    expect(result.success).toBe(false);
+  });
+
   it('accepts the font-family reference but rejects other single-segment references', () => {
     const valid = parseThemes({
       a: { ...baseTheme, typography: { components: { heading: { xl: { fontFamily: '{font-family}' } } } } },

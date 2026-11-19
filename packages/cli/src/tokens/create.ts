@@ -33,6 +33,14 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     throw new Error(`Theme "${name}" must define at least one typography set`);
   }
 
+  const sizeStep = (mode: SizeModes) => {
+    const step = size.steps[mode];
+    if (!step) {
+      throw new Error(`Missing size step "${mode}" in theme size configuration`);
+    }
+    return step;
+  };
+
   /** Keys here must match the keys in `selectedTokenSets` in `generate$Themes` */
   const tokenSets: TokenSets = new Map([
     ['primitives/globals', generateGlobals(shadow, borderWidth, opacity)],
@@ -43,7 +51,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     ['primitives/modes/size/global', generateSizeGlobal(size)],
     ...sizeModes.map((sizeMode): [string, TokenSet] => [
       `primitives/modes/typography/size/${sizeMode}`,
-      generateTypographyMode(sizeMode, typography, size),
+      generateTypographyMode(sizeMode, typography, sizeStep(sizeMode)),
     ]),
     ...Object.entries(typography.fonts).map(([setName, set]): [string, TokenSet] => [
       `primitives/modes/typography/${setName}/${name}`,

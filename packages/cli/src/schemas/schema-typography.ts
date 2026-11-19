@@ -113,7 +113,12 @@ const typographyObjectSchema = z
       })
       .prefault({ small: {}, medium: {}, large: {} }),
     fontSize: z
-      .record(z.string(), z.string())
+      .record(
+        z.string(),
+        z.string().regex(/^\d+(\.\d+)?$/, {
+          message: 'Font sizes must be unitless numbers in pixels, e.g. "16".',
+        }),
+      )
       .meta({
         description:
           'The unitless font-size scale, keyed by scale number, at a font size of `size.steps.<step>.base`. Each size step multiplies it by `baseFontSize / base` and rounds to whole pixels, the same way the CSS scales font sizes.',
