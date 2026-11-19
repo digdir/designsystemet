@@ -1,10 +1,11 @@
 ---
 "@digdir/designsystemet": patch
+"figma-plugin": patch
 ---
 
-**tokens create**: The `font-size` tokens for the Small and Large size modes now match the font sizes in the generated CSS, so Figma and code show the same font sizes ([#5609](https://github.com/digdir/designsystemet/issues/5609)).
+**typography**: Font sizes in the Small and Large size modes are now the same in Figma as in the generated CSS ([#5609](https://github.com/digdir/designsystemet/issues/5609)).
 
-The generated CSS does not change. The Small and Large `font-size` tokens change, and so do the Figma variables after you import them:
+The CSS does not change. In Figma, the font-size variables for Small and Large change the next time you import your theme with the plugin. The same values are used in the `design-tokens` output:
 
 | Step | Small | Large |
 |---|---|---|
