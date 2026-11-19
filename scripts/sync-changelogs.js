@@ -34,7 +34,7 @@ const CODE_PACKAGES = [
 ];
 const FIGMA_PACKAGES = ['figma-plugin', 'figma-ui-kit'];
 
-// Short names for the packages, shown under each change on www
+// Short names for the packages, shown as tags under each change on www
 const LABELS = {
   '@digdir/designsystemet': 'CLI',
   '@digdir/designsystemet-css': 'CSS',
@@ -104,8 +104,11 @@ function formatVersion(version, changes, date) {
     if (entries.length === 0) continue;
     out += `### ${bump}\n\n`;
     for (const { text, packages } of entries) {
-      const labels = packages.map((name) => LABELS[name] ?? name);
-      out += `${text}\n\n  _${labels.join(' · ')}_\n\n`;
+      const tags = packages
+        .map((name) => `<Tag>${LABELS[name] ?? name}</Tag>`)
+        .join('');
+      // Styled by `[data-packages]` in apps/www/app/routes/components/component.module.css
+      out += `${text}\n\n  <div data-packages>${tags}</div>\n\n`;
     }
   }
 
