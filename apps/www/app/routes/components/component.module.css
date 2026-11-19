@@ -10,47 +10,10 @@
 .textPageHeader {
   margin-bottom: var(--ds-size-5);
 }
-.changelogFilters {
-  display: grid;
-  gap: var(--ds-size-6);
-  padding-block: var(--ds-size-5) var(--ds-size-8);
-  margin-bottom: var(--ds-size-6);
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-}
-.changelogVersion {
-  width: 100%;
-  max-width: 20rem;
-}
-.changelogPagination {
-  margin-block: var(--ds-size-4);
-  ul {
-    flex-wrap: wrap;
-  }
-}
-.changelogCheckboxes {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: var(--ds-size-6);
-  row-gap: var(--ds-size-2);
-  overflow-wrap: anywhere;
-}
-.changelogRelease {
-  border: 1px solid var(--ds-color-neutral-border-subtle);
-  border-radius: var(--ds-border-radius-md);
-  padding: var(--ds-size-5);
-  margin-bottom: var(--ds-size-4);
-  overflow-wrap: anywhere;
-}
-.changelogPackage {
-  border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  margin-top: var(--ds-size-6);
-  padding-top: var(--ds-size-6);
-  h3:first-child {
-    margin-top: 0;
-  }
-}
 /*needs spacings for nested headings*/
 .changelog {
+  /* A grid item: without this, a wide table or code block widens the page instead of scrolling */
+  min-width: 0;
   h2,
   h3,
   h4 {
@@ -70,6 +33,122 @@
   }
   li > p {
     margin-bottom: 0;
+  }
+}
+
+.changelogFilters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--ds-size-5) var(--ds-size-8);
+  margin-block: var(--ds-size-6) var(--ds-size-10);
+  padding-bottom: var(--ds-size-4);
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+}
+.changelogChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-2);
+}
+.changelogVersion {
+  flex: 0 1 12rem;
+}
+.changelogStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-3);
+  flex-basis: 100%;
+  min-height: var(--ds-size-10);
+  color: var(--ds-color-neutral-text-subtle);
+}
+.changelogPagination {
+  margin-block: var(--ds-size-4);
+  ul {
+    flex-wrap: wrap;
+  }
+}
+.changelogRelease {
+  margin-bottom: var(--ds-size-14);
+  overflow-wrap: anywhere;
+
+  > header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: var(--ds-size-2);
+    margin-bottom: var(--ds-size-5);
+  }
+  h2 {
+    margin: 0;
+  }
+  /* Tables keep whole words in their cells and scroll sideways in their wrapper when too wide */
+  table {
+    overflow-wrap: break-word;
+
+    code {
+      white-space: nowrap;
+    }
+  }
+  /* Everything under the release heading hangs on a line, tying the changes to their version */
+  > :not(header) {
+    border-left: 1px solid var(--ds-color-neutral-border-default);
+    margin: 0 0 0 var(--ds-size-1);
+    padding: var(--ds-size-1) 0 var(--ds-size-4) var(--ds-size-6);
+  }
+}
+.changelogDate {
+  color: var(--ds-color-neutral-text-subtle);
+  font-size: var(--ds-font-size-5);
+
+  &::before {
+    content: '–' / '';
+    margin-right: var(--ds-size-2);
+  }
+}
+.changelogType {
+  ul {
+    margin: 0;
+  }
+  li {
+    margin-block: 0 var(--ds-size-5);
+  }
+  li:last-child {
+    margin-bottom: var(--ds-size-2);
+  }
+  /* Space between the paragraphs, tables, code and nested lists of a change */
+  li > * + * {
+    margin-top: var(--ds-size-4);
+  }
+  li > :is(ul, ol) {
+    margin-block: var(--ds-size-2) 0;
+  }
+  li li {
+    margin-bottom: var(--ds-size-1);
+  }
+}
+.changelogTypeHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-3);
+  margin: 0 0 var(--ds-size-4);
+
+  svg {
+    box-sizing: content-box;
+    flex-shrink: 0;
+    font-size: var(--ds-size-6);
+    padding: var(--ds-size-2);
+    border-radius: var(--ds-border-radius-full);
+    background: var(--ds-color-neutral-base-default);
+    color: var(--ds-color-neutral-base-contrast-default);
+  }
+}
+.changelogTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-2);
+
+  li > & {
+    margin: var(--ds-size-3) 0 0;
   }
 }
 

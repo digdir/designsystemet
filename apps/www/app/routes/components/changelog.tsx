@@ -1,7 +1,8 @@
 import { join } from 'node:path';
 import {
   Alert,
-  Checkbox,
+  Button,
+  Chip,
   Field,
   Fieldset,
   Heading,
@@ -9,111 +10,150 @@ import {
   Pagination,
   Paragraph,
   Select,
+  Tag,
   usePagination,
 } from '@digdir/designsystemet-react';
 import { Error404 } from '@internal/components';
+import {
+  ExclamationmarkTriangleIcon,
+  PackageIcon,
+  SparklesIcon,
+} from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import type { Element, Root } from 'hast';
 import { type ComponentProps, createContext, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, useSearchParams } from 'react-router';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import {
+  CHANGELOG_PACKAGES,
+  type ChangeType,
+  groupChangelog,
+  parseReleases,
+} from '~/_utils/group-changelog';
 import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/changelog';
 import classes from './component.module.css';
 
-const ChangelogFilters = createContext<{
-  versions: string[] | null;
-  packages: string[] | null;
-}>({ versions: null, packages: null });
-
 const RELEASES_PER_PAGE = 10;
 
+const CHANGE_TYPES = {
+  major: { title: 'Major Changes', icon: ExclamationmarkTriangleIcon },
+  minor: { title: 'Minor Changes', icon: SparklesIcon },
+  patch: { title: 'Patch Changes', icon: PackageIcon },
+} satisfies Record<ChangeType, unknown>;
+
+const ChangelogFilters = createContext<{
+  /** The releases on the current page */
+  versions: string[];
+  /** The packages to show changes for, or null for all */
+  packages: string[] | null;
+  lang: string;
+}>({ versions: [], packages: null, lang: 'en' });
+
+type DataProps = {
+  'data-release'?: string;
+  'data-change-type'?: ChangeType;
+  'data-packages'?: string;
+};
+
+function useIsFiltered(packages?: string) {
+  const { packages: selected } = useContext(ChangelogFilters);
+  if (!selected || !packages) return false;
+  return !packages.split(',').some((id) => selected.includes(id));
+}
+
+/** A release, or the changes of one type in a release. See groupChangelog for the structure. */
 function ChangelogSection(props: unknown) {
-  const { versions, packages } = useContext(ChangelogFilters);
-  const section = props as ComponentProps<'section'> & {
-    'data-version'?: string;
-    'data-package'?: string;
-    'data-packages'?: string;
-  };
+  const {
+    'data-release': release,
+    'data-change-type': type,
+    'data-packages': packages,
+    children,
+    ...rest
+  } = props as ComponentProps<'section'> & DataProps;
+  const { versions } = useContext(ChangelogFilters);
+  const isFiltered = useIsFiltered(packages);
 
-  if (
-    (section['data-version'] &&
-      versions &&
-      !versions.includes(section['data-version'])) ||
-    (packages &&
-      section['data-package'] &&
-      !packages.includes(section['data-package'])) ||
-    (packages &&
-      section['data-packages'] &&
-      !section['data-packages']
-        .split(',')
-        .some((name) => packages.includes(name)))
-  ) {
-    return null;
-  }
+  if (isFiltered || (release && !versions.includes(release))) return null;
 
-  return <section {...section} />;
-}
-
-function groupChangelog(tree: Root) {
-  for (const [index, release] of tree.children.entries()) {
-    if (
-      !('name' in release) ||
-      release.name !== 'div' ||
-      !('children' in release)
-    )
-      continue;
-    const heading = release.children.find(
-      (child) => child.type === 'element' && child.tagName === 'h2',
+  if (type) {
+    const { title, icon: Icon } = CHANGE_TYPES[type];
+    return (
+      <section {...rest} className={classes.changelogType}>
+        <Heading
+          level={3}
+          data-size='xs'
+          className={classes.changelogTypeHeading}
+        >
+          <Icon aria-hidden />
+          {title}
+        </Heading>
+        {children}
+      </section>
     );
-    if (heading?.type !== 'element') continue;
-    const version = heading.children
-      .filter((child) => child.type === 'text')
-      .map((child) => child.value)
-      .join('');
-    const children: Element['children'] = [];
-    const packages: string[] = [];
-    let currentPackage: Element | undefined;
-
-    for (const child of release.children) {
-      if ('name' in child && child.name === 'Divider') continue;
-      if (child.type === 'element' && child.tagName === 'h3') {
-        const name = child.children
-          .filter((node) => node.type === 'text')
-          .map((node) => node.value)
-          .join('');
-        packages.push(name);
-        currentPackage = {
-          type: 'element',
-          tagName: 'section',
-          properties: {
-            className: [classes.changelogPackage],
-            'data-package': name,
-          },
-          children: [],
-        };
-        children.push(currentPackage);
-      }
-      (currentPackage?.children ?? children).push(child);
-    }
-
-    tree.children[index] = {
-      type: 'element',
-      tagName: 'section',
-      properties: {
-        className: [classes.changelogRelease],
-        'data-version': version,
-        'data-packages': packages.join(','),
-      },
-      children,
-    };
   }
+
+  return (
+    <section {...rest} className={cl(release && classes.changelogRelease)}>
+      {children}
+    </section>
+  );
 }
 
-const changelogComponents = { section: ChangelogSection };
+/** A change, with the packages it was released in */
+function ChangelogItem(props: unknown) {
+  const {
+    'data-packages': packages,
+    children,
+    ...rest
+  } = props as ComponentProps<'li'> & DataProps;
+  const isFiltered = useIsFiltered(packages);
+
+  if (isFiltered) return null;
+  if (!packages) return <li {...rest}>{children}</li>;
+
+  const ids = packages.split(',');
+  return (
+    <li {...rest}>
+      {children}
+      <p className={classes.changelogTags}>
+        <span className='ds-sr-only'>Packages: </span>
+        {CHANGELOG_PACKAGES.filter(({ id }) => ids.includes(id)).map(
+          ({ id, name, label, color }) => (
+            <Tag key={id} data-color={color} data-size='sm' title={name}>
+              {label}
+            </Tag>
+          ),
+        )}
+      </p>
+    </li>
+  );
+}
+
+function ChangelogDate(props: unknown) {
+  const { dateTime } = props as ComponentProps<'time'>;
+  const { lang } = useContext(ChangelogFilters);
+  if (!dateTime) return null;
+
+  return (
+    <time dateTime={dateTime} lang={lang} className={classes.changelogDate}>
+      {new Intl.DateTimeFormat(lang === 'no' ? 'nb-NO' : 'en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'UTC',
+      }).format(new Date(dateTime))}
+    </time>
+  );
+}
+
+const changelogComponents = {
+  section: ChangelogSection,
+  li: ChangelogItem,
+  time: ChangelogDate,
+};
 
 export async function loader({ params }: Route.LoaderArgs) {
   // Read the file content
@@ -130,24 +170,11 @@ export async function loader({ params }: Route.LoaderArgs) {
 
   // Bundle the MDX content
   const result = await generateFromMdx(fileContent, groupChangelog);
-  const releases: { version: string; packages: string[] }[] = [];
-  for (const item of result.toc) {
-    if (item.level === 2) {
-      releases.push({ version: item.title, packages: [] });
-    } else {
-      releases.at(-1)?.packages.push(item.title);
-    }
-  }
+  const releases = parseReleases(fileContent);
 
   return {
     code: result.code,
     releases,
-    versions: releases.map((release) => release.version),
-    packages: [
-      ...new Set(
-        result.toc.filter((item) => item.level === 3).map((item) => item.title),
-      ),
-    ],
     frontmatter: result.frontmatter,
     lang: params.lang,
     metadata: {
@@ -175,21 +202,24 @@ export const meta = ({ loaderData, location }: Route.MetaArgs) => {
 };
 
 export default function Changelogs({
-  loaderData: { code, lang, versions, packages, releases },
+  loaderData: { code, lang, releases },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const requestedVersion = searchParams.get('version') ?? '';
-  const version = versions.includes(requestedVersion) ? requestedVersion : '';
-  const selectedPackages = searchParams.has('package')
-    ? packages.filter((name) => searchParams.getAll('package').includes(name))
-    : packages;
+  const version = releases.some((item) => item.version === requestedVersion)
+    ? requestedVersion
+    : '';
+  // No selected packages means no filter: changes in all packages are shown
+  const selectedPackages = CHANGELOG_PACKAGES.map(({ id }) => id).filter((id) =>
+    searchParams.getAll('package').includes(id),
+  );
+  const isFiltered = Boolean(version) || selectedPackages.length > 0;
   const filteredReleases = releases.filter(
     (release) =>
       (!version || release.version === version) &&
-      selectedPackages.length > 0 &&
-      (release.packages.length === 0 ||
-        release.packages.some((name) => selectedPackages.includes(name))),
+      (!selectedPackages.length ||
+        release.packages.some((id) => selectedPackages.includes(id))),
   );
   const totalPages = Math.ceil(filteredReleases.length / RELEASES_PER_PAGE);
   const requestedPage = Number(searchParams.get('page') ?? 1);
@@ -216,43 +246,6 @@ export default function Changelogs({
       });
     },
   });
-  const pagination =
-    totalPages > 1 ? (
-      <Pagination
-        aria-label={t('components.changelog.pagination')}
-        className={classes.changelogPagination}
-        data-size='sm'
-      >
-        <Pagination.List>
-          <Pagination.Item>
-            <Pagination.Button
-              {...prevButtonProps}
-              data-icon
-              aria-label={t('components.changelog.previous-page')}
-            />
-          </Pagination.Item>
-          {pages.map(({ page, itemKey, buttonProps }) => (
-            <Pagination.Item key={itemKey}>
-              {typeof page === 'number' && (
-                <Pagination.Button
-                  {...buttonProps}
-                  aria-label={t('components.changelog.page', { page })}
-                >
-                  {page}
-                </Pagination.Button>
-              )}
-            </Pagination.Item>
-          ))}
-          <Pagination.Item>
-            <Pagination.Button
-              {...nextButtonProps}
-              data-icon
-              aria-label={t('components.changelog.next-page')}
-            />
-          </Pagination.Item>
-        </Pagination.List>
-      </Pagination>
-    ) : null;
 
   function updateFilters(nextVersion: string, nextPackages: string[]) {
     setSearchParams(
@@ -262,10 +255,7 @@ export default function Changelogs({
         next.delete('package');
         next.delete('page');
         if (nextVersion) next.set('version', nextVersion);
-        if (nextPackages.length !== packages.length) {
-          for (const name of nextPackages) next.append('package', name);
-          if (!nextPackages.length) next.set('package', '');
-        }
+        for (const id of nextPackages) next.append('package', id);
         return next;
       },
       { preventScrollReset: true },
@@ -279,10 +269,36 @@ export default function Changelogs({
           {t('components.changelog.title', 'Changelog')}
         </Heading>
       </div>
-      <div
-        className={cl(classes.textPage, classes.changelogFilters)}
-        data-size='sm'
-      >
+      {lang !== 'en' ? (
+        <Alert lang='no' className={classes.textPage}>
+          Endringslogger er kun tilgjengelige på engelsk
+        </Alert>
+      ) : null}
+      <div className={cl(classes.textPage, classes.changelogFilters)}>
+        <Fieldset>
+          <Fieldset.Legend>
+            {t('components.changelog.packages')}
+          </Fieldset.Legend>
+          <div className={classes.changelogChips}>
+            {CHANGELOG_PACKAGES.map(({ id, name, label }) => (
+              <Chip.Checkbox
+                key={id}
+                title={name}
+                checked={selectedPackages.includes(id)}
+                onChange={(event) =>
+                  updateFilters(
+                    version,
+                    event.target.checked
+                      ? [...selectedPackages, id]
+                      : selectedPackages.filter((item) => item !== id),
+                  )
+                }
+              >
+                {label}
+              </Chip.Checkbox>
+            ))}
+          </div>
+        </Fieldset>
         <Field className={classes.changelogVersion}>
           <Label htmlFor='changelog-version'>
             {t('components.changelog.version')}
@@ -297,58 +313,76 @@ export default function Changelogs({
             <Select.Option value=''>
               {t('components.changelog.all-versions')}
             </Select.Option>
-            {versions.map((item) => (
-              <Select.Option key={item} value={item}>
-                {item}
+            {releases.map((item) => (
+              <Select.Option key={item.version} value={item.version}>
+                {item.version}
               </Select.Option>
             ))}
           </Select>
         </Field>
-        <Fieldset>
-          <Fieldset.Legend>
-            {t('components.changelog.packages')}
-          </Fieldset.Legend>
-          <div className={classes.changelogCheckboxes}>
-            {packages.map((name) => (
-              <Checkbox
-                key={name}
-                label={name}
-                checked={selectedPackages.includes(name)}
-                onChange={(event) =>
-                  updateFilters(
-                    version,
-                    event.target.checked
-                      ? [...selectedPackages, name]
-                      : selectedPackages.filter((item) => item !== name),
-                  )
-                }
-              />
-            ))}
-          </div>
-        </Fieldset>
+        <div className={classes.changelogStatus}>
+          <Paragraph role='status' data-size='sm'>
+            {t('components.changelog.results', {
+              count: filteredReleases.length,
+            })}
+          </Paragraph>
+          {isFiltered ? (
+            <Button variant='tertiary' onClick={() => updateFilters('', [])}>
+              {t('components.changelog.reset')}
+            </Button>
+          ) : null}
+        </div>
       </div>
-      {pagination}
       <div
         className={cl(classes.textPage, classes.changelog, 'u-rich-text')}
         lang='en'
       >
-        {lang !== 'en' ? (
-          <Alert lang='no'>
-            Endringslogger er kun tilgjengelige på engelsk
-          </Alert>
-        ) : null}
-        <div role='status' lang={lang}>
-          {selectedPackages.length === 0 ? (
-            <Paragraph>{t('components.changelog.no-packages')}</Paragraph>
-          ) : null}
-        </div>
         <ChangelogFilters
-          value={{ versions: visibleVersions, packages: selectedPackages }}
+          value={{
+            versions: visibleVersions,
+            packages: selectedPackages.length ? selectedPackages : null,
+            lang,
+          }}
         >
           <MDXComponents code={code} components={changelogComponents} />
         </ChangelogFilters>
       </div>
-      {pagination}
+      {totalPages > 1 ? (
+        <Pagination
+          aria-label={t('components.changelog.pagination')}
+          className={classes.changelogPagination}
+          data-size='sm'
+        >
+          <Pagination.List>
+            <Pagination.Item>
+              <Pagination.Button
+                {...prevButtonProps}
+                data-icon
+                aria-label={t('components.changelog.previous-page')}
+              />
+            </Pagination.Item>
+            {pages.map(({ page, itemKey, buttonProps }) => (
+              <Pagination.Item key={itemKey}>
+                {typeof page === 'number' && (
+                  <Pagination.Button
+                    {...buttonProps}
+                    aria-label={t('components.changelog.page', { page })}
+                  >
+                    {page}
+                  </Pagination.Button>
+                )}
+              </Pagination.Item>
+            ))}
+            <Pagination.Item>
+              <Pagination.Button
+                {...nextButtonProps}
+                data-icon
+                aria-label={t('components.changelog.next-page')}
+              />
+            </Pagination.Item>
+          </Pagination.List>
+        </Pagination>
+      ) : null}
     </>
   );
 }
