@@ -19,11 +19,11 @@
     display: block;
   }
 
-& :is(h1, h2, h3, h4, h5, h6) {
-color: var(--dsc-errorsummary-heading-color); /* @deprecated */
-font-size: var(--ds-font-size-plus-1);
-margin-bottom: var(--ds-size-2);
-}
+  & :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--dsc-errorsummary-heading-color); /* @deprecated */
+    font-size: var(--ds-font-size-plus-1);
+    margin-bottom: var(--ds-size-2);
+  }
 
   & a {
     color: var(--dsc-errorsummary-link-color); /* @deprecated */
