@@ -70,6 +70,8 @@ export default function Changelogs({
       <div
         className={cl(classes.textPage, classes.changelog, 'u-rich-text')}
         lang='en'
+        // The components layout is neutral; the changelog uses accent, e.g. for the package tags
+        data-color='accent'
       >
         {lang !== 'en' ? (
           <Alert lang='no'>
