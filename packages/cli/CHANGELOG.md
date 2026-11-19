@@ -1,5 +1,38 @@
 # Change Log
 
+## 1.24.1
+
+### Patch Changes
+
+- **typography**: Font sizes in the Small and Large size modes are now the same in Figma as in the generated CSS ([#5609](https://github.com/digdir/designsystemet/issues/5609)). (thanks @ssb-cgn) ([#5647](https://github.com/digdir/designsystemet/pull/5647))
+  
+  The CSS does not change. In Figma, the font-size variables for Small and Large change the next time you import your theme. The same values are used in the `design-tokens` output:
+  
+  | Step | Small | Large |
+  |---|---|---|
+  | 1 | 11 → 11 | 13 → 14 |
+  | 2 | 13 → 12 | 16 → 16 |
+  | 3 | 14 → 14 | 18 → 19 |
+  | 4 | 16 → 16 | 21 → 21 |
+  | 5 | 18 → 19 | 24 → 25 |
+  | 6 | 21 → 21 | 30 → 28 |
+  | 7 | 24 → 27 | 36 → 35 |
+  | 8 | 30 → 32 | 48 → 42 |
+  | 9 | 36 → 43 | 60 → 56 |
+  | 10 | 48 → 53 | 72 → 70 |
+- **size**: In the Large size mode, `--ds-size-3`, `-6`, `-9`, `-12`, `-15`, `-18` and `-30` are 1px larger, now matching the intended values in Figma and in all browsers. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
+  
+  These sizes are whole numbers (14, 28, 42, 56, 70, 84 and 140px), but a floating-point rounding error in the size formula made Figma, Chrome and Safari round them down to 1px less, while Firefox could show the intended value. The formula now multiplies before dividing, so the result is exact. Small and Medium do not change.
+  
+  In Figma, the size variables for Large change the next time you import your theme.
+- **config**: A theme with exactly three colors named `main`, `support` and `neutral` is no longer mistaken for the old color categories and migrated. ([#5633](https://github.com/digdir/designsystemet/pull/5633))
+
+- Update npm non-major dependencies ([#5613](https://github.com/digdir/designsystemet/pull/5613))
+
+- `base-contrast-default` is now chosen so it has enough contrast against both `base-default` and `base-hover`, not only `base-default`. Some mid-tone colors get black instead of white, mostly in dark mode, and `base-contrast-subtle` follows the same direction. ([#5623](https://github.com/digdir/designsystemet/pull/5623))
+
+- **config**: Color names can no longer start or end with a hyphen, or have two hyphens in a row. Names like `-brand`, `brand-` and `brand--2` are rejected; `brand-2` is still valid. ([#5633](https://github.com/digdir/designsystemet/pull/5633))
+
 ## 1.24.0
 
 ### Minor Changes
