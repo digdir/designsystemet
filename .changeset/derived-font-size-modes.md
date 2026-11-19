@@ -5,7 +5,7 @@
 
 **typography**: Font sizes in the Small and Large size modes are now the same in Figma as in the generated CSS ([#5609](https://github.com/digdir/designsystemet/issues/5609)).
 
-The CSS does not change. In Figma, the font-size variables for Small and Large change the next time you import your theme with the plugin. The same values are used in the `design-tokens` output:
+The CSS does not change. In Figma, the font-size variables for Small and Large change the next time you import your theme. The same values are used in the `design-tokens` output:
 
 | Step | Small | Large |
 |---|---|---|
