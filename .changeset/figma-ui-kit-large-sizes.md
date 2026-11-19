@@ -2,7 +2,7 @@
 "figma-ui-kit": patch
 ---
 
-**Size:** Some sizes in the Large size mode are 1px larger, as intended and as in code. A rounding error made them 1px too small. Small and Medium do not change.
+**Size:** Some sizes in the Large size mode are 1px larger, as intended and as in code. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
 
 | Variable | Large |
 |---|---|

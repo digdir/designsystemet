@@ -2,7 +2,7 @@
 "figma-ui-kit": patch
 ---
 
-**Typography:** Font sizes in the Small and Large size modes now match code. Headings change the most: they get bigger in Small and smaller in Large. Medium does not change. ([#5609](https://github.com/digdir/designsystemet/issues/5609))
+**Typography:** Font sizes in the Small and Large size modes now match code. Headings change the most: they get bigger in Small and smaller in Large. Medium does not change. ([#5647](https://github.com/digdir/designsystemet/pull/5647))
 
 | Variable | Small | Large |
 |---|---|---|
