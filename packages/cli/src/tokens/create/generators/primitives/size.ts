@@ -3,7 +3,9 @@ import type { SizeConfig, SizeModes, TokenSet } from '../../../types.ts';
 /**
  * Maps the placeholders used in the size scale formulas from the config
  * to the token references used in the generated token sets.
- * The full unit expression is replaced first so it resolves to `{_size.unit}`.
+ * The full unit expression is replaced first so it resolves to `{_size.unit}`. The default scale multiplies
+ * before dividing and doesn't contain it; this only applies to configs that still use the old
+ * `{step} / {base} * {baseFontSize} * n` form, which keeps its 1px rounding error in some size modes.
  */
 const placeholderReplacements: [placeholder: string, tokenReference: string][] = [
   ['{step} / {base} * {baseFontSize}', '{_size.unit}'],

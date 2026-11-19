@@ -26,7 +26,9 @@ const overrideSizingFormula = (format: (t: TransformedToken) => string, token: T
   if (token.path[1] === 'unit') {
     calc = `calc(1rem * ${value})`;
   } else if (value.startsWith('floor')) {
-    calc = value.replace(/^floor\((.*)\)$/, 'calc($1)');
+    const expression = value.replace(/^floor\((.*)\)$/, '$1');
+    // `--ds-size-unit` is already a length (it includes 1rem). Formulas that don't use it are unitless, so add 1rem here.
+    calc = expression.includes('var(--ds-size-unit)') ? `calc(${expression})` : `calc(1rem * ${expression})`;
     round = `round(down, ${calc}, 1px)`;
   } else {
     calc = value.includes('*') ? `calc(${value})` : value;
