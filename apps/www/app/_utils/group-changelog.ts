@@ -225,7 +225,13 @@ export function groupChangelog(tree: Root) {
     }
 
     // Rendered as a link to the release, see ChangelogVersion
-    const header = [element('h2', { 'data-version': version }, [])];
+    const header = [
+      element(
+        'h2',
+        { id: `v${version.replaceAll('.', '-')}`, 'data-version': version },
+        [],
+      ),
+    ];
     if (date) header.push(element('time', { dateTime: date }, []));
 
     nodes[index] = element(

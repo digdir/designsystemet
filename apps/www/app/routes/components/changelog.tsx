@@ -20,11 +20,20 @@ import {
   SparklesIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { type ComponentProps, createContext, useContext } from 'react';
+import {
+  type ComponentProps,
+  createContext,
+  useContext,
+  useMemo,
+  useSyncExternalStore,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   isRouteErrorResponse,
   Link as RRLink,
+  type ShouldRevalidateFunctionArgs,
+  useLocation,
+  useNavigation,
   useSearchParams,
 } from 'react-router';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
@@ -235,11 +244,49 @@ export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   });
 };
 
+/** The loader only depends on the language, so filtering and paging should not fetch it again */
+export const shouldRevalidate = ({
+  currentParams,
+  nextParams,
+}: ShouldRevalidateFunctionArgs) => currentParams.lang !== nextParams.lang;
+
+const NO_FILTERS = new URLSearchParams();
+const subscribeToNothing = () => () => {};
+
+/**
+ * The filters in the URL.
+ *
+ * The page is prerendered without them, so they are ignored until the page has hydrated. Otherwise
+ * a link with filters would not match the prerendered HTML.
+ *
+ * While navigating to other filters, the ones being navigated to are returned, so the page responds
+ * at once instead of when the loaders of the layouts are done.
+ */
+function useFilterParams() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { pathname } = useLocation();
+  const pending = useNavigation().location;
+  const isHydrated = useSyncExternalStore(
+    subscribeToNothing,
+    () => true,
+    () => false,
+  );
+  const pendingSearch = pending?.pathname === pathname ? pending.search : null;
+  const params = useMemo(
+    () =>
+      pendingSearch === null
+        ? searchParams
+        : new URLSearchParams(pendingSearch),
+    [pendingSearch, searchParams],
+  );
+  return [isHydrated ? params : NO_FILTERS, setSearchParams] as const;
+}
+
 export default function Changelogs({
   loaderData: { code, lang, releases },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useFilterParams();
   const requestedVersion = searchParams.get('version') ?? '';
   const version = releases.some((item) => item.version === requestedVersion)
     ? requestedVersion
@@ -272,12 +319,12 @@ export default function Changelogs({
     totalPages: Math.max(1, totalPages),
     showPages: 5,
     setCurrentPage: (page) => {
-      setSearchParams((previous) => {
-        const next = new URLSearchParams(previous);
-        next.delete('page');
-        if (page > 1) next.set('page', String(page));
-        return next;
-      });
+      // usePagination keeps this callback until the page or number of pages change, so it can be
+      // from a render with other filters. The URL always has the current ones.
+      const next = new URLSearchParams(window.location.search);
+      next.delete('page');
+      if (page > 1) next.set('page', String(page));
+      setSearchParams(next);
     },
   });
 

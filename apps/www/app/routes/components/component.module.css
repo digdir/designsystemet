@@ -24,7 +24,7 @@
     margin-bottom: var(--ds-size-4);
   }
   h3 {
-    margin-top: var(--ds-size-2);
+    margin-top: var(--ds-size-9);
     margin-bottom: var(--ds-size-3);
   }
   h4 {
@@ -155,7 +155,11 @@
   display: flex;
   align-items: center;
   gap: var(--ds-size-3);
-  margin: 0 0 var(--ds-size-4);
+
+  /* Overrides the heading spacing of .changelog, which is also used by the Figma changelog */
+  .changelogRelease & {
+    margin: var(--ds-size-2) 0 var(--ds-size-3);
+  }
 
   svg {
     box-sizing: content-box;
