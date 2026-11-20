@@ -1,57 +1,65 @@
-export const highlightText = (query: string, scope: HTMLElement) => {
-  if (!query || !scope) return;
-  // Find all text nodes in the article. We'll search within
-  // these text nodes.
-  const treeWalker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT);
-  const allTextNodes = [];
-  let currentNode = treeWalker.nextNode();
-  while (currentNode) {
-    allTextNodes.push(currentNode);
-    currentNode = treeWalker.nextNode();
-  }
+type HighlightOptions = {
+  /**
+   * The name of the highlight, styled with `::highlight(<name>)`
+   * @default 'custom-highlight'
+   */
+  name?: string;
+  /** Which text nodes to search, e.g. to leave out labels. All text in `scope` by default. */
+  accept?: (node: Text) => boolean;
+};
 
-  //not supported in older browsers
-  if (!CSS.highlights) {
-    return;
-  }
+/**
+ * Highlights text in `scope` with the CSS Custom Highlight API, which does not change the DOM.
+ * Replaces the earlier highlight with the same name. Browsers without the API show no highlights.
+ *
+ * @param query the text to highlight, or several words to highlight wherever each is found.
+ * Matches ignore case. Text split by markup, e.g. half in `<code>`, is not highlighted.
+ */
+export const highlightText = (
+  query: string | string[],
+  scope: HTMLElement,
+  { name = 'custom-highlight', accept }: HighlightOptions = {},
+) => {
+  // Not supported in older browsers
+  if (typeof CSS === 'undefined' || !CSS.highlights || !scope) return;
 
-  // Remove only search results, preserving syntax highlights.
-  CSS.highlights.delete('custom-highlight');
+  // Remove only this highlight, preserving others such as syntax highlights
+  CSS.highlights.delete(name);
 
-  // Clean-up the search query and bail-out if
-  // if it's empty.
-  const str = query.trim().toLowerCase();
-  if (!str) {
-    return;
-  }
+  const words = (Array.isArray(query) ? query : [query])
+    .map((word) => word.trim().toLowerCase())
+    .filter(Boolean);
+  if (!words.length) return;
 
-  // Iterate over all text nodes and find matches.
-  const ranges = allTextNodes
-    .map((el) => ({ el, text: el.textContent?.toLowerCase() }))
-    .map(({ text, el }) => {
-      if (!text) return [];
-      const indices = [];
-      let startPos = 0;
-      while (startPos < text.length) {
-        const index = text.indexOf(str, startPos);
-        if (index === -1) break;
-        indices.push(index);
-        startPos = index + str.length;
-      }
+  const treeWalker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
+    acceptNode: (node) =>
+      !accept || accept(node as Text)
+        ? NodeFilter.FILTER_ACCEPT
+        : NodeFilter.FILTER_REJECT,
+  });
 
-      // Create a range object for each instance of
-      // str we found in the text node.
-      return indices.map((index) => {
+  // A range for each place a word is found in a text node
+  const ranges: Range[] = [];
+  for (let node = treeWalker.nextNode(); node; node = treeWalker.nextNode()) {
+    const text = node.textContent?.toLowerCase() ?? '';
+    for (const word of words) {
+      for (
+        let index = text.indexOf(word);
+        index !== -1;
+        index = text.indexOf(word, index + word.length)
+      ) {
         const range = new Range();
-        range.setStart(el, index);
-        range.setEnd(el, index + str.length);
-        return range;
-      });
-    });
+        range.setStart(node, index);
+        range.setEnd(node, index + word.length);
+        ranges.push(range);
+      }
+    }
+  }
 
-  // Create a Highlight object for the ranges.
-  const searchResultsHighlight = new Highlight(...ranges.flat());
+  CSS.highlights.set(name, new Highlight(...ranges));
+};
 
-  // Register the Highlight object in the registry.
-  CSS.highlights.set('custom-highlight', searchResultsHighlight);
+/** Removes the highlight with this name, see highlightText */
+export const clearHighlight = (name = 'custom-highlight') => {
+  if (typeof CSS !== 'undefined' && CSS.highlights) CSS.highlights.delete(name);
 };

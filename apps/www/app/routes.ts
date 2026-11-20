@@ -88,14 +88,14 @@ export default [
               id: 'components-page',
             }),
           ]),
-          route('/changelog', 'routes/components/changelog.tsx', {
-            id: 'changelog-page',
-          }),
           route('/*', 'routes/components/text.tsx', {
             id: 'component-text-page',
           }),
         ]),
       ]),
+      route('/changelog', 'routes/changelog/changelog.tsx', {
+        id: 'changelog',
+      }),
       route('*', 'routes/not-found.tsx', {
         id: 'not-found-lang',
       }),
