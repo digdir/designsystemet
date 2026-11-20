@@ -489,6 +489,18 @@ export default function Changelog({
     )
     .map((release) => release.version);
 
+  // The changelog is large, so it is rendered once, and its components only render again when
+  // the filters change. Not on every key typed in the search field, or every other render.
+  const visibleKey = visibleVersions.join();
+  const filters = useMemo(
+    () => ({ versions: visibleKey.split(','), version, matches, lang }),
+    [visibleKey, version, matches, lang],
+  );
+  const changelog = useMemo(
+    () => <MDXComponents code={code} components={changelogComponents} />,
+    [code],
+  );
+
   function updateFilters(nextVersion: string, nextPackages: string[]) {
     updateParams((next) => {
       next.delete('version');
@@ -660,11 +672,7 @@ export default function Changelog({
           {filteredReleases.length === 0 ? (
             <Paragraph lang={lang}>{t('changelog.empty')}</Paragraph>
           ) : null}
-          <ChangelogFilters
-            value={{ versions: visibleVersions, version, matches, lang }}
-          >
-            <MDXComponents code={code} components={changelogComponents} />
-          </ChangelogFilters>
+          <ChangelogFilters value={filters}>{changelog}</ChangelogFilters>
         </div>
 
         {totalPages > 1 ? (
