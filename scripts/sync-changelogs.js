@@ -17,6 +17,7 @@ import { releaseDateMarkup } from './changelog-date.js';
 import {
   BUMPS,
   CHANGELOG_FILE,
+  DEPENDENCY_UPDATES_TEXT,
   parseGroupedChangelog,
 } from './group-changelogs.js';
 
@@ -83,12 +84,121 @@ function getReleaseDate(version) {
   return fromChangelog || null;
 }
 
+// Most entries start with the component or topic they are about in bold, e.g. `- **Dialog:** …`,
+// or a few without the colon, e.g. `- **Search** Deprecated …`
+const PREFIX =
+  /^- \*\*(?:(?<name>[^*\n]+?)(?::\*\*|\*\*:)|(?<word>[^\s*`]+)\*\*(?= [A-Z]))\s*/;
+const prefixName = (text) => {
+  const groups = PREFIX.exec(text)?.groups;
+  return groups?.name ?? groups?.word;
+};
+// The same name is written in several ways, e.g. `ToggleGroup`, `toggle-group` and `ds-toggle-group`
+const prefixKey = (name) =>
+  name
+    .toLowerCase()
+    .replace(/^ds-/, '')
+    .replace(/[^a-z0-9,]/g, '');
+
+/**
+ * The name to show for each prefix: the spelling used most, preferring one that starts with a
+ * capital letter, as the React components do.
+ * @param {Map<string, { text: string }[]>} versions
+ * @returns {Map<string, string>} prefix key → name
+ */
+function prefixLabels(versions) {
+  const counts = new Map();
+  for (const changes of versions.values()) {
+    for (const { text } of changes) {
+      const name = prefixName(text);
+      if (!name) continue;
+      const spellings = counts.get(prefixKey(name)) ?? new Map();
+      spellings.set(name, (spellings.get(name) ?? 0) + 1);
+      counts.set(prefixKey(name), spellings);
+    }
+  }
+  const capitalized = (name) => (/^[A-Z]/.test(name) ? 1 : 0);
+  return new Map(
+    [...counts].map(([key, spellings]) => [
+      key,
+      [...spellings].sort(
+        ([a, x], [b, y]) => capitalized(b) - capitalized(a) || y - x,
+      )[0][0],
+    ]),
+  );
+}
+
+/** Indents every line of `text` by `spaces`, so it can be nested in a list item. */
+const indent = (text, spaces) =>
+  text
+    .split('\n')
+    .map((line) => (line ? ' '.repeat(spaces) + line : line))
+    .join('\n');
+
+/**
+ * @param {{ text: string, packages: string[] }} change
+ * @param {number} depth how deeply the entry is nested, 0 for the top level
+ */
+function formatEntry({ text, packages }, depth = 0) {
+  const tags = packages
+    .map((name) => `<Tag>${LABELS[name] ?? name}</Tag>`)
+    .join('');
+  // Styled by `[data-packages]` in apps/www/app/routes/components/component.module.css
+  return indent(`${text}\n\n  <div data-packages>${tags}</div>\n\n`, depth * 2);
+}
+
+/**
+ * The entries of one bump, grouped by their prefix: first the ones without a prefix, then one
+ * group per component or topic in alphabetical order, then the dependency updates. A group with
+ * several entries is shown as a nested list under its name.
+ * @param {{ text: string, packages: string[] }[]} entries
+ * @param {Map<string, string>} labels prefix key → name, see prefixLabels
+ */
+function formatEntries(entries, labels) {
+  const general = [];
+  const groups = new Map();
+  const last = [];
+  for (const entry of entries) {
+    const name = prefixName(entry.text);
+    if (entry.text.startsWith(`- ${DEPENDENCY_UPDATES_TEXT}`)) last.push(entry);
+    else if (!name) general.push(entry);
+    else {
+      const label = labels.get(prefixKey(name)) ?? name;
+      groups.set(label, [...(groups.get(label) ?? []), entry]);
+    }
+  }
+
+  let out = general.map((entry) => formatEntry(entry)).join('');
+  const sorted = [...groups].sort(([a], [b]) =>
+    a.localeCompare(b, 'en', { sensitivity: 'base' }),
+  );
+  for (const [label, group] of sorted) {
+    if (group.length === 1) {
+      // Shown with the same spelling as in the groups
+      const [entry] = group;
+      out += formatEntry({
+        ...entry,
+        text: entry.text.replace(PREFIX, `- **${label}:** `),
+      });
+      continue;
+    }
+    out += `- **${label}**\n\n`;
+    for (const entry of group) {
+      out += formatEntry(
+        { ...entry, text: entry.text.replace(PREFIX, '- ') },
+        1,
+      );
+    }
+  }
+  return out + last.map((entry) => formatEntry(entry)).join('');
+}
+
 /**
  * @param {string} version
  * @param {{ bump: string, text: string, packages: string[] }[]} changes the changes to show
  * @param {string | null} date the release date as `YYYY-MM-DD`, or null to leave the version undated
+ * @param {Map<string, string>} labels prefix key → name, see prefixLabels
  */
-function formatVersion(version, changes, date) {
+function formatVersion(version, changes, date, labels) {
   let out = `<div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",
   borderRadius: "var(--ds-border-radius-md)",
@@ -102,28 +212,18 @@ function formatVersion(version, changes, date) {
   for (const bump of BUMPS) {
     const entries = changes.filter((change) => change.bump === bump);
     if (entries.length === 0) continue;
-    out += `### ${bump}\n\n`;
-    for (const { text, packages } of entries) {
-      const tags = packages
-        .map((name) => `<Tag>${LABELS[name] ?? name}</Tag>`)
-        .join('');
-      // Styled by `[data-packages]` in apps/www/app/routes/components/component.module.css
-      out += `${text}\n\n  <div data-packages>${tags}</div>\n\n`;
-    }
+    out += `### ${bump}\n\n${formatEntries(entries, labels)}`;
   }
 
   return `${out}</div>\n\n`;
 }
 
 /**
- * The versions in the root CHANGELOG.md, newest first, with only the changes that affect at least
- * one of `packages`.
- * @param {string[]} packages short package names, as in the root CHANGELOG.md
+ * The versions, newest first, with only the changes that affect at least one of `packages`.
+ * @param {Map<string, { bump: string, text: string, packages: string[] }[]>} versions from the root CHANGELOG.md
+ * @param {string[]} packages package names, as in the root CHANGELOG.md
  */
-async function readChanges(packages) {
-  const versions = parseGroupedChangelog(
-    await fs.readFile(CHANGELOG_FILE, 'utf8'),
-  );
+function filterChanges(versions, packages) {
   return new Map(
     [...versions].map(([version, changes]) => [
       version,
@@ -134,16 +234,18 @@ async function readChanges(packages) {
   );
 }
 
-async function writeComponentsChangelog() {
+/** @param {{ versions: Map<string, any[]>, labels: Map<string, string> }} changelog */
+async function writeComponentsChangelog({ versions, labels }) {
   await fs.mkdir(WWW, { recursive: true });
   const pkgs = [...(await findPackages()).values()];
 
   let consolidatedContent = '';
-  for (const [version, changes] of await readChanges(CODE_PACKAGES)) {
+  for (const [version, changes] of filterChanges(versions, CODE_PACKAGES)) {
     consolidatedContent += formatVersion(
       version,
       changes,
       getReleaseDate(version),
+      labels,
     );
   }
 
@@ -187,7 +289,8 @@ const FIGMA_PAGES = {
 // version heading; see figma/README.md.
 const PUBLISHED_DATE = /^_Published (\d{4}-\d{2}-\d{2})_\s*$\n*/m;
 
-async function writeFigmaChangelog() {
+/** @param {{ versions: Map<string, any[]>, labels: Map<string, string> }} changelog */
+async function writeFigmaChangelog({ versions, labels }) {
   // The published dates are only in the Figma packages' own changelogs
   const pkgs = [...(await findPackages(['figma'])).values()];
   const publishedDates = new Map();
@@ -200,12 +303,12 @@ async function writeFigmaChangelog() {
   }
 
   let consolidatedContent = '';
-  for (const [version, changes] of await readChanges(FIGMA_PACKAGES)) {
+  for (const [version, changes] of filterChanges(versions, FIGMA_PACKAGES)) {
     const date = publishedDates.get(version) ?? null;
     // The Figma packages are versioned with the code by changesets, so most code releases add a
     // version without changes to them. Only versions with changes, or that were published, are shown.
     if (changes.length === 0 && !date) continue;
-    consolidatedContent += formatVersion(version, changes, date);
+    consolidatedContent += formatVersion(version, changes, date, labels);
   }
 
   for (const [lang, { frontmatter, intro }] of Object.entries(FIGMA_PAGES)) {
@@ -233,8 +336,13 @@ ${consolidatedContent}</div>
 }
 
 async function main() {
-  await writeComponentsChangelog();
-  await writeFigmaChangelog();
+  const versions = parseGroupedChangelog(
+    await fs.readFile(CHANGELOG_FILE, 'utf8'),
+  );
+  // From every change, so a component has the same name on both pages and in every version
+  const changelog = { versions, labels: prefixLabels(versions) };
+  await writeComponentsChangelog(changelog);
+  await writeFigmaChangelog(changelog);
 }
 
 main().catch((e) => {
