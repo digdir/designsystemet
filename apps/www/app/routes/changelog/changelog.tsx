@@ -241,27 +241,6 @@ function Changes({
   );
 }
 
-/** Several changes to the same component or topic */
-function ChangeGroup({
-  name,
-  packages,
-  children,
-}: {
-  name: string;
-  packages?: string;
-  children?: ReactNode;
-}) {
-  const isFiltered = useIsFiltered(packages);
-  if (isFiltered) return null;
-
-  return (
-    <li className={classes.changeGroup}>
-      <strong>{name}</strong>
-      <ul>{children}</ul>
-    </li>
-  );
-}
-
 /** A change, with the packages it was released in */
 function Change({
   packages,
@@ -294,7 +273,6 @@ function Change({
 const changelogComponents = {
   Release,
   Changes,
-  ChangeGroup,
   Change,
 } as unknown as Record<string, ComponentType<unknown>>;
 
