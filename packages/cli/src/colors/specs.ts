@@ -2,7 +2,8 @@ import type { SemanticColorNames, SemanticColorSpec } from './types.ts';
 import { semanticColorMap } from './types.ts';
 
 const backgrounds: SemanticColorNames[] = ['background-default', 'background-tinted'];
-const surfaces: SemanticColorNames[] = ['surface-default', 'surface-tinted'];
+// Components put text and borders on all of these, e.g. read-only fields on surface-muted
+const surfaces: SemanticColorNames[] = ['surface-default', 'surface-tinted', 'surface-muted'];
 const interactiveSurfaces: SemanticColorNames[] = ['surface-hover', 'surface-active'];
 
 /**
