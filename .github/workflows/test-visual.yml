@@ -3,7 +3,7 @@ name: Visual tests
 on:
   # pr runs ONLY when the pr is in review, and on new pushes to that pr
   pull_request:
-    branches: [main, next]
+    branches: [main, next, feat-v2]
     types: [opened, ready_for_review, synchronize, reopened]
     paths:
       - .github/workflows/test-visual.yml
