@@ -221,6 +221,60 @@ export function formatVersion(version, changes) {
   return out.join('\n\n');
 }
 
+// The line the changeset generator adds before the change of a first-time contributor
+const THANKS = /^- 🎉 Thanks /;
+
+/**
+ * The key a change is sorted by: its text without list marker, bold, code marks and case, so
+ * `**Dialog:** …` sorts as `dialog: …`. Dependency updates come last.
+ */
+const sortKey = (entry) => {
+  const text =
+    entry
+      .replace(THANKS, '')
+      .split('\n')
+      .find((line) => line.startsWith('- ') && !THANKS.test(line)) ?? entry;
+  const key = text
+    .replace(/^- /, '')
+    .replace(/[*`_]/g, '')
+    .trim()
+    .toLowerCase();
+  return key.startsWith(DEPENDENCY_UPDATES_TEXT.toLowerCase())
+    ? `\uffff${key}`
+    : key;
+};
+
+/**
+ * Sorts the changes under each bump heading of a version section alphabetically, see sortKey.
+ * Only the order changes: the text of each change, with any edits made by hand, is kept as it is.
+ * @param {string} section from `## designsystemet <version>` to the next version
+ */
+export function sortSection(section) {
+  return section
+    .split(/^(?=### )/m)
+    .map((block) => {
+      // Before the first change: the heading, or the version heading and its notes
+      const [head, ...entries] = block.split(/^(?=- )/m);
+      if (entries.length < 2) return block;
+      // A thanks line stays with the change after it
+      const changes = [];
+      for (const entry of entries) {
+        const previous = changes.at(-1);
+        if (previous && THANKS.test(previous))
+          changes[changes.length - 1] += entry;
+        else changes.push(entry);
+      }
+      const trailing = changes.at(-1).match(/\n*$/)[0];
+      const sorted = changes
+        .map((change) => change.replace(/\n*$/, ''))
+        .sort((a, b) =>
+          sortKey(a).localeCompare(sortKey(b), 'en', { sensitivity: 'base' }),
+        );
+      return `${head}${sorted.join('\n\n')}${trailing}`;
+    })
+    .join('');
+}
+
 /**
  * Parses the root CHANGELOG.md.
  * @param {string} md
@@ -304,9 +358,10 @@ async function main() {
     added++;
   }
 
+  // Every version, also those already in the file, so the changes are always in order
   const body = [...sections]
     .sort(([a], [b]) => compareVersions(b, a))
-    .map(([, section]) => section)
+    .map(([, section]) => sortSection(section))
     .join('\n\n');
   await fs.writeFile(CHANGELOG_FILE, `${HEADER}\n${body}\n`, 'utf8');
   console.log(
