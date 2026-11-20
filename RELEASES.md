@@ -13,7 +13,7 @@ Otherwise you will get an `Error: Validation Failed: {"resource":"PullRequest","
 
 2. Approve and merge the PR.
 
-3. The Release workflow will now publish the new package versions to npm and create a [GitHub release](https://github.com/digdir/designsystemet/releases). After the packages have been published, new versions of `www`, `themebuilder` and `storybook` will be published.
+3. The Release workflow will now publish the new package versions to npm and create a [GitHub release](https://github.com/digdir/designsystemet/releases), with the version's section of the root `CHANGELOG.md` as its notes. After the packages have been published, new versions of `www`, `themebuilder` and `storybook` will be published.
 
 4. Verify that the new version is available on [npm](https://www.npmjs.com/package/@digdir/designsystemet) (under the `latest` tag) and on [GitHub releases](https://github.com/digdir/designsystemet/releases).
 
