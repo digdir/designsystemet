@@ -39,7 +39,7 @@ export const loader = async ({
 
   const changelogItem = {
     title: t('components.changelog.title'),
-    url: `/${lang}/components/changelog`,
+    url: `/${lang}/changelog`,
     order: 1,
   };
   // Add changelog to an empty category

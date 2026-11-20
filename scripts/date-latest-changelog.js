@@ -13,10 +13,9 @@
 import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { RELEASE_DATE_PATTERN, releaseDateMarkup } from './changelog-date.js';
 
 const file = path.resolve(
-  process.argv[2] ?? 'apps/www/app/content/components-docs/changelog.mdx',
+  process.argv[2] ?? 'apps/www/app/content/changelog/changelog.mdx',
 );
 
 function getReleaseDate(version) {
@@ -48,18 +47,14 @@ async function main() {
     return;
   }
 
-  const heading = `## ${version}\n`;
-  const start = content.indexOf(heading);
-  if (start === -1) {
-    console.log(`No "## ${version}" section found; nothing to date.`);
+  const opening = new RegExp(
+    `<Release version="${version.replaceAll('.', '\\.')}"([^>]*)>`,
+  ).exec(content);
+  if (!opening) {
+    console.log(`No <Release version="${version}"> found; nothing to date.`);
     return;
   }
-  const sectionEnd = content.indexOf('\n## ', start + heading.length);
-  const section = content.slice(
-    start,
-    sectionEnd === -1 ? undefined : sectionEnd,
-  );
-  if (RELEASE_DATE_PATTERN.test(section)) {
+  if (/\sdate="/.test(opening[1])) {
     console.log(`${version} is already dated.`);
     return;
   }
@@ -72,8 +67,8 @@ async function main() {
     return;
   }
 
-  const insertAt = start + heading.length;
-  const updated = `${content.slice(0, insertAt)}\n${releaseDateMarkup(date)}\n${content.slice(insertAt)}`;
+  const insertAt = opening.index + `<Release version="${version}"`.length;
+  const updated = `${content.slice(0, insertAt)} date="${date}"${content.slice(insertAt)}`;
   await fs.writeFile(file, updated, 'utf8');
   console.log(`Dated ${version} as ${date}.`);
 }

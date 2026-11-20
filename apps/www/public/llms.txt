@@ -19,7 +19,7 @@ The component index links to each component's overview. Component pages include 
 - [React](https://designsystemet.no/en/fundamentals/code/react.md): React-specific usage.
 - [Components](https://designsystemet.no/en/components.md): Find component overview, code and accessibility pages.
 - [Accessibility](https://designsystemet.no/en/components/accessibility.md): General accessibility guidance.
-- [Changelog](https://designsystemet.no/en/components/changelog.md): Changes between releases.
+- [Changelog](https://designsystemet.no/en/changelog.md): Changes between releases.
 
 ## Patterns and usage
 

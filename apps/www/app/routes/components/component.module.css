@@ -10,37 +10,6 @@
 .textPageHeader {
   margin-bottom: var(--ds-size-5);
 }
-/*needs spacings for nested headings*/
-.changelog {
-  h2,
-  h3,
-  h4 {
-    scroll-margin-top: calc(var(--header-height) + 1lh);
-  }
-  h2 {
-    margin-top: 0;
-    margin-bottom: var(--ds-size-4);
-  }
-  h3 {
-    margin-top: var(--ds-size-9);
-    margin-bottom: var(--ds-size-3);
-  }
-  h4 {
-    margin-top: var(--ds-size-8);
-    margin-bottom: var(--ds-size-3);
-  }
-  li > p {
-    margin-bottom: 0;
-  }
-  /* The packages a change affects, as tags under the change */
-  li > [data-packages] {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--ds-size-2);
-    margin-top: var(--ds-size-2);
-  }
-}
-
 .header {
   container: header-container / inline-size;
   grid-area: header;

@@ -9,7 +9,7 @@ Otherwise you will get an `Error: Validation Failed: {"resource":"PullRequest","
 
 1. Once a changeset is in `main`, the [Release workflow](https://github.com/digdir/designsystemet/actions/workflows/release.yml) picks up the changesets (inside `.changeset/`) and opens a PR with bumped versions and changelogs.
 
-   The PR also adds the new version to [`changelog.json`](changelog.json), where each change is listed once with the packages it affects, and builds the changelog pages on www from it. If two entries describe the same change, for example one for code and one for Figma, merge them there and run `node scripts/sync-changelogs.js`. Versions already in `changelog.json` are not rebuilt, so the edits are kept.
+   The PR also adds the new version to [`changelog.json`](changelog.json), where each change is listed once with the packages it affects, and builds the changelog page on www (`/en/changelog`) from it. If two entries describe the same change, for example one for code and one for Figma, merge them there and run `node scripts/sync-changelogs.js`. Versions already in `changelog.json` are not rebuilt, so the edits are kept.
 
 2. Approve and merge the PR.
 
