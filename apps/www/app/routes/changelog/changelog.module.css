@@ -26,10 +26,14 @@
   padding-bottom: var(--ds-size-4);
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 }
+.search {
+  flex-basis: 100%;
+  max-width: 28rem;
+}
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ds-size-2);
+  gap: var(--ds-size-3);
 }
 .status {
   display: flex;
@@ -155,15 +159,23 @@
   color: var(--ds-color-warning-base-contrast-default);
 }
 
+/* The words searched for, see useSearchHighlight. The underline also marks them where the
+   background is hard to tell apart, e.g. in forced colors or for color blind readers. */
+.releases ::highlight(changelog-search) {
+  background-color: var(--ds-color-success-base-default);
+  color: var(--ds-color-success-base-contrast-default);
+}
+
 .change {
-  margin-block: 0 var(--ds-size-5);
+  /* Room between the changes, so each change and its tags read as one */
+  margin-block: 0 var(--ds-size-7);
 
   /* Space between the paragraphs, tables, code and nested lists of a change */
   > * {
     margin-block: 0;
   }
   > * + * {
-    margin-top: var(--ds-size-3);
+    margin-top: var(--ds-size-2);
   }
 }
 
