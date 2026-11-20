@@ -1,52 +1,53 @@
 /**
- * The packages in the changelog, in the order they are shown. The ids are used in
- * app/content/changelog/changelog.mdx (written by scripts/sync-changelogs.js) and in the URL of
- * the changelog page, e.g. `/en/changelog?package=css&package=react`.
+ * The packages in the changelog, in the order they are shown: by color, see below. The ids are
+ * used in app/content/changelog/changelog.mdx (written by scripts/sync-changelogs.js) and in the
+ * URL of the changelog page, e.g. `/en/changelog?package=css&package=react`.
  *
- * The colors group the packages: code, Figma and documentation.
+ * The colors group the packages, on the tags under each change and on the filter chips: the
+ * styles (CSS and Web, success), React (brand3), Figma (brand1), and the rest (neutral).
  */
 export const CHANGELOG_PACKAGES = [
-  {
-    id: 'cli',
-    name: '@digdir/designsystemet',
-    label: 'CLI',
-    color: 'accent',
-  },
   {
     id: 'css',
     name: '@digdir/designsystemet-css',
     label: 'CSS',
-    color: 'accent',
-  },
-  {
-    id: 'react',
-    name: '@digdir/designsystemet-react',
-    label: 'React',
-    color: 'accent',
+    color: 'success',
   },
   {
     id: 'web',
     name: '@digdir/designsystemet-web',
     label: 'Web',
-    color: 'accent',
+    color: 'success',
   },
   {
-    id: 'types',
-    name: '@digdir/designsystemet-types',
-    label: 'Types',
-    color: 'accent',
+    id: 'react',
+    name: '@digdir/designsystemet-react',
+    label: 'React',
+    color: 'brand3',
   },
   {
     id: 'figma-plugin',
     name: 'Figma plugin',
     label: 'Figma plugin',
-    color: 'brand2',
+    color: 'brand1',
   },
   {
     id: 'figma-ui-kit',
     name: 'Figma UI kit',
     label: 'Figma UI kit',
-    color: 'brand2',
+    color: 'brand1',
+  },
+  {
+    id: 'cli',
+    name: '@digdir/designsystemet',
+    label: 'CLI',
+    color: 'neutral',
+  },
+  {
+    id: 'types',
+    name: '@digdir/designsystemet-types',
+    label: 'Types',
+    color: 'neutral',
   },
   {
     id: 'www',

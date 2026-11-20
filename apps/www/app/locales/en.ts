@@ -87,14 +87,17 @@ export default {
     title: 'Changelog',
     description:
       'What has changed in each version of the code packages, the Figma file and the documentation.',
+    search: 'Search the changelog',
     packages: 'Show changes in',
     documentation: 'Documentation',
     version: 'Version',
+    matches_one: '{{count}} matching change',
+    matches_other: '{{count}} matching changes',
     results_one: '{{count}} version',
     results_other: '{{count}} versions',
     reset: 'Reset filters',
     empty:
-      'No versions have changes in the selected packages. Choose other packages or reset the filters.',
+      'No changes match the filters. Try other words or packages, or reset the filters.',
     released: 'Released',
     'figma-published': 'Published in Figma',
     'no-changes': 'No changes in this version.',

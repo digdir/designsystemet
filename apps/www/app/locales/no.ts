@@ -86,14 +86,17 @@ export default {
     title: 'Endringslogg',
     description:
       'Hva som er endret i hver versjon av kodepakkene, Figma-filen og dokumentasjonen.',
+    search: 'Søk i endringsloggen',
     packages: 'Vis endringer i',
     documentation: 'Dokumentasjon',
     version: 'Versjon',
+    matches_one: '{{count}} endring passer søket',
+    matches_other: '{{count}} endringer passer søket',
     results_one: '{{count}} versjon',
     results_other: '{{count}} versjoner',
     reset: 'Nullstill filter',
     empty:
-      'Ingen versjoner har endringer i de valgte pakkene. Velg andre pakker eller nullstill filteret.',
+      'Ingen endringer passer filteret. Prøv andre ord eller pakker, eller nullstill filteret.',
     released: 'Utgitt',
     'figma-published': 'Publisert i Figma',
     'no-changes': 'Ingen endringer i denne versjonen.',
