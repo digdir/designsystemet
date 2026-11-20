@@ -107,13 +107,13 @@ export const AsLinkEn = () => (
 
 export const Loading = () => (
   <>
-    <Button variant='primary' loading>
+    <Button variant='primary' aria-busy>
       Laster…
     </Button>
-    <Button variant='secondary' loading>
+    <Button variant='secondary' aria-busy>
       Laster…
     </Button>
-    <Button variant='tertiary' loading>
+    <Button variant='tertiary' aria-busy>
       Laster…
     </Button>
   </>
@@ -121,13 +121,13 @@ export const Loading = () => (
 
 export const LoadingEn = () => (
   <>
-    <Button variant='primary' loading>
+    <Button variant='primary' aria-busy>
       Loading…
     </Button>
-    <Button variant='secondary' loading>
+    <Button variant='secondary' aria-busy>
       Loading…
     </Button>
-    <Button variant='tertiary' loading>
+    <Button variant='tertiary' aria-busy>
       Loading…
     </Button>
   </>

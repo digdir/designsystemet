@@ -5,6 +5,7 @@ export type ErrorSummaryHeadingProps = HeadingProps;
 
 /**
  * ErrorSummary heading component, used to display a heading for the error summary.
+ * Renders a `Heading`, which you can also use directly.
  *
  * @example
  * <ErrorSummary>
@@ -15,5 +16,5 @@ export const ErrorSummaryHeading = forwardRef<
   HTMLHeadingElement,
   ErrorSummaryHeadingProps
 >(function ErrorSummaryHeading(rest: ErrorSummaryHeadingProps, ref) {
-  return <Heading ref={ref} suppressHydrationWarning {...rest} />; // Suppress hydration warning since we will get an ID from <ds-error-summary>
+  return <Heading ref={ref} {...rest} />;
 });

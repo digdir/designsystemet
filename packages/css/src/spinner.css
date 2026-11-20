@@ -1,83 +1,45 @@
+/* Note: Animation lives in --ds-icon-spinner, which slows down on prefers-reduced-motion.
+The animation is not decorative, so we slow it down rather than remove it. */
 .ds-spinner {
-  --dsc-spinner-background: var(--ds-color-surface-tinted);
-  --dsc-spinner-stroke: var(--ds-color-border-default);
+  --dsc-spinner-icon-url: var(--ds-icon-spinner);
 
-  --dsc-spinner-animation-duration: 2s;
-
-  animation: ds-spinner-rotate-animation linear infinite var(--dsc-spinner-animation-duration);
+  appearance: none; /* Strip <progress> styling */
+  aspect-ratio: 1;
+  background: currentcolor;
+  border: none; /* Strip <progress> styling */
   box-sizing: border-box;
-  height: var(--ds-size-11);
-  width: auto;
+  color: var(--ds-color-border-default);
+  display: inline-block;
+  flex-shrink: 0;
+  forced-color-adjust: none;
+  height: auto;
+  mask: center / contain no-repeat var(--dsc-spinner-icon-url);
+  vertical-align: middle;
+  width: var(--ds-size-11);
+
+  /* Need to be separate to be parsed in all browsers */
+  &::-moz-progress-bar {
+    background: none;
+  }
+  &::-webkit-progress-bar,
+  &::-webkit-progress-value {
+    background: none;
+  }
 
   /* Ensure consistent size when explicitly setting data-size */
   &[data-size='2xs'] {
-    height: 0.75rem;
+    width: var(--ds-size-3);
   }
-
   &[data-size='xs'] {
-    height: 1.25rem;
+    width: var(--ds-icon-size);
   }
-
   &[data-size='sm'] {
-    height: 2rem;
+    width: var(--ds-size-8);
   }
-
-  &[data-size='md'] {
-    height: 2.75rem;
-  }
-
   &[data-size='lg'] {
-    height: 3.75rem;
+    width: var(--ds-size-15);
   }
-
   &[data-size='xl'] {
-    height: 5.5rem;
-  }
-}
-
-.ds-spinner__background {
-  stroke: var(--dsc-spinner-background);
-}
-
-.ds-spinner__circle {
-  animation: ds-spinner-stroke-animation ease-in-out infinite var(--dsc-spinner-animation-duration);
-  stroke-dasharray: 1px, 200px;
-  stroke: var(--dsc-spinner-stroke);
-  transform-origin: center;
-}
-
-/* Prefers reduced motion needs longer animation,
-but don't remove it since it is not decorative.
-*/
-@media (prefers-reduced-motion: reduce) {
-  .ds-spinner {
-    animation-duration: 6s;
-  }
-}
-
-@keyframes ds-spinner-rotate-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes ds-spinner-stroke-animation {
-  0% {
-    stroke-dasharray: 1px, 200px;
-    stroke-dashoffset: 0;
-  }
-
-  50% {
-    stroke-dasharray: 100px, 200px;
-    stroke-dashoffset: -15px;
-  }
-
-  100% {
-    stroke-dasharray: 1px, 200px;
-    stroke-dashoffset: -120px;
+    width: var(--ds-size-22);
   }
 }
