@@ -157,11 +157,11 @@ Automatically takes focus when visible and sets `aria-labelledby` to the first c
 
 ```html
 <ds-error-summary class="ds-error-summary">
-  <h2>Summary</h2>
-  <ul>
-    <li><a href="#none">Error 1</a></li>
-    <li><a href="#none">Error 2</a></li>
-    <li><a href="#none">Error 3</a></li>
+  <h2 class="ds-heading">Summary</h2>
+  <ul class="ds-list">
+    <li><a class="ds-link" href="#none">Error 1</a></li>
+    <li><a class="ds-link" href="#none">Error 2</a></li>
+    <li><a class="ds-link" href="#none">Error 3</a></li>
   </ul>
 </ds-error-summary>
 ```
