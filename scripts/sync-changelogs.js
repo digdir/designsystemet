@@ -1,9 +1,9 @@
 /**
- * Builds the consolidated changelogs for www from the CHANGELOG.md of every
- * package: one for the code packages, and one for the Figma packages (the
- * UI kit and the plugin). Aggregation lives in
- * scripts/aggregate-changelogs.js; this file only formats the result as MDX
- * and writes it.
+ * Builds the changelog pages for www from the root CHANGELOG.md, where each change is listed once
+ * with the packages it affects: one page for the code packages, and one for the Figma packages
+ * (the UI kit and the plugin). Each page shows the changes that affect at least one of its
+ * packages. The root CHANGELOG.md is built by scripts/group-changelogs.js; this file only
+ * formats it as MDX and writes it.
  */
 import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
@@ -14,13 +14,37 @@ import {
   NO_CHANGES,
 } from './aggregate-changelogs.js';
 import { releaseDateMarkup } from './changelog-date.js';
+import {
+  BUMPS,
+  CHANGELOG_FILE,
+  parseGroupedChangelog,
+} from './group-changelogs.js';
 
 const ROOT = process.cwd();
 const WWW = path.join(ROOT, 'apps/www/app/content/components-docs');
 const WWW_FIGMA = path.join(ROOT, 'apps/www/app/content/fundamentals');
 
-// Stop at "## 0.101.0" - this is the first entry before version 1
-const CUTOFF_VERSION = '0.101.0';
+// The packages each page shows changes for
+const CODE_PACKAGES = [
+  '@digdir/designsystemet',
+  '@digdir/designsystemet-css',
+  '@digdir/designsystemet-react',
+  '@digdir/designsystemet-web',
+  '@digdir/designsystemet-types',
+];
+const FIGMA_PACKAGES = ['figma-plugin', 'figma-ui-kit'];
+
+// Short names for the packages, shown as tags under each change on www
+const LABELS = {
+  '@digdir/designsystemet': 'CLI',
+  '@digdir/designsystemet-css': 'CSS',
+  '@digdir/designsystemet-react': 'React',
+  '@digdir/designsystemet-web': 'Web',
+  '@digdir/designsystemet-types': 'Types',
+  'figma-plugin': 'Figma plugin',
+  'figma-ui-kit': 'Figma UI kit',
+  '@web/www': 'Documentation',
+};
 
 function git(args) {
   try {
@@ -61,10 +85,10 @@ function getReleaseDate(version) {
 
 /**
  * @param {string} version
- * @param {Map<string, string>} packages package name → changelog body
+ * @param {{ bump: string, text: string, packages: string[] }[]} changes the changes to show
  * @param {string | null} date the release date as `YYYY-MM-DD`, or null to leave the version undated
  */
-function formatVersion(version, packages, date) {
+function formatVersion(version, changes, date) {
   let out = `<div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",
   borderRadius: "var(--ds-border-radius-md)",
@@ -74,28 +98,51 @@ function formatVersion(version, packages, date) {
 >\n\n## ${version}\n\n`;
   if (date) out += `${releaseDateMarkup(date)}\n\n`;
 
-  for (const [pkgName, body] of packages) {
-    if (!body) continue;
-    // Adjust heading levels: ### (h3) -> #### (h4)
-    const content = body.replace(/^###\s+/gm, '#### ');
-    out += `<Divider/>\n\n### ${pkgName}\n\n${content}\n\n`;
+  if (changes.length === 0) out += `${NO_CHANGES}\n\n`;
+  for (const bump of BUMPS) {
+    const entries = changes.filter((change) => change.bump === bump);
+    if (entries.length === 0) continue;
+    out += `### ${bump}\n\n`;
+    for (const { text, packages } of entries) {
+      const tags = packages
+        .map((name) => `<Tag>${LABELS[name] ?? name}</Tag>`)
+        .join('');
+      // Styled by `[data-packages]` in apps/www/app/routes/components/component.module.css
+      out += `${text}\n\n  <div data-packages>${tags}</div>\n\n`;
+    }
   }
 
   return `${out}</div>\n\n`;
 }
 
+/**
+ * The versions in the root CHANGELOG.md, newest first, with only the changes that affect at least
+ * one of `packages`.
+ * @param {string[]} packages short package names, as in the root CHANGELOG.md
+ */
+async function readChanges(packages) {
+  const versions = parseGroupedChangelog(
+    await fs.readFile(CHANGELOG_FILE, 'utf8'),
+  );
+  return new Map(
+    [...versions].map(([version, changes]) => [
+      version,
+      changes.filter((change) =>
+        change.packages.some((name) => packages.includes(name)),
+      ),
+    ]),
+  );
+}
+
 async function writeComponentsChangelog() {
   await fs.mkdir(WWW, { recursive: true });
   const pkgs = [...(await findPackages()).values()];
-  const allVersions = await aggregateChangelogs(pkgs, {
-    until: CUTOFF_VERSION,
-  });
 
   let consolidatedContent = '';
-  for (const [version, packages] of allVersions) {
+  for (const [version, changes] of await readChanges(CODE_PACKAGES)) {
     consolidatedContent += formatVersion(
       version,
-      packages,
+      changes,
       getReleaseDate(version),
     );
   }
@@ -141,22 +188,24 @@ const FIGMA_PAGES = {
 const PUBLISHED_DATE = /^_Published (\d{4}-\d{2}-\d{2})_\s*$\n*/m;
 
 async function writeFigmaChangelog() {
+  // The published dates are only in the Figma packages' own changelogs
   const pkgs = [...(await findPackages(['figma'])).values()];
-  const allVersions = await aggregateChangelogs(pkgs);
+  const publishedDates = new Map();
+  for (const [version, packages] of await aggregateChangelogs(pkgs)) {
+    for (const body of packages.values()) {
+      const date = PUBLISHED_DATE.exec(body)?.[1];
+      if (date && !publishedDates.has(version))
+        publishedDates.set(version, date);
+    }
+  }
 
   let consolidatedContent = '';
-  for (const [version, packages] of allVersions) {
-    let date = null;
-    const bodies = new Map();
-    for (const [name, body] of packages) {
-      date ??= PUBLISHED_DATE.exec(body)?.[1] ?? null;
-      const content = body.replace(PUBLISHED_DATE, '').trim();
-      if (content && content !== NO_CHANGES) bodies.set(name, content);
-    }
+  for (const [version, changes] of await readChanges(FIGMA_PACKAGES)) {
+    const date = publishedDates.get(version) ?? null;
     // The Figma packages are versioned with the code by changesets, so most code releases add a
     // version without changes to them. Only versions with changes, or that were published, are shown.
-    if (bodies.size === 0 && !date) continue;
-    consolidatedContent += formatVersion(version, bodies, date);
+    if (changes.length === 0 && !date) continue;
+    consolidatedContent += formatVersion(version, changes, date);
   }
 
   for (const [lang, { frontmatter, intro }] of Object.entries(FIGMA_PAGES)) {
