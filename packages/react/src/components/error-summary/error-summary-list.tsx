@@ -5,6 +5,7 @@ export type ErrorSummaryListProps = ListUnorderedProps;
 
 /**
  * ErrorSummary list component, used to display a list of errors.
+ * Renders a `List.Unordered`, which you can also use directly.
  *
  * @example
  * <ErrorSummary>

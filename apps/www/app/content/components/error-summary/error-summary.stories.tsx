@@ -1,27 +1,28 @@
-import { Button, ErrorSummary, Textfield } from '@digdir/designsystemet-react';
+import {
+  Button,
+  ErrorSummary,
+  Heading,
+  Link,
+  List,
+  Textfield,
+} from '@digdir/designsystemet-react';
 import { useState } from 'react';
 
 export const Preview = () => {
   return (
     <ErrorSummary>
-      <ErrorSummary.Heading>
-        For å gå videre må du rette opp følgende feil:
-      </ErrorSummary.Heading>
-      <ErrorSummary.List>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href='#'>
-            Fødselsdato kan ikke være etter år 2005
-          </ErrorSummary.Link>
-        </ErrorSummary.Item>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href='#'>
-            Telefonnummer kan kun inneholde siffer
-          </ErrorSummary.Link>
-        </ErrorSummary.Item>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href='#'>E-post må være gyldig</ErrorSummary.Link>
-        </ErrorSummary.Item>
-      </ErrorSummary.List>
+      <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+      <List.Unordered>
+        <List.Item>
+          <Link href='#'>Fødselsdato kan ikke være etter år 2005</Link>
+        </List.Item>
+        <List.Item>
+          <Link href='#'>Telefonnummer kan kun inneholde siffer</Link>
+        </List.Item>
+        <List.Item>
+          <Link href='#'>E-post må være gyldig</Link>
+        </List.Item>
+      </List.Unordered>
     </ErrorSummary>
   );
 };
@@ -29,24 +30,18 @@ export const Preview = () => {
 export const PreviewEn = () => {
   return (
     <ErrorSummary>
-      <ErrorSummary.Heading>
-        To proceed, you must correct the following errors:
-      </ErrorSummary.Heading>
-      <ErrorSummary.List>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href='#'>
-            Birthdate cannot be after the year 2005
-          </ErrorSummary.Link>
-        </ErrorSummary.Item>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href='#'>
-            Phone number can only contain digits
-          </ErrorSummary.Link>
-        </ErrorSummary.Item>
-        <ErrorSummary.Item>
-          <ErrorSummary.Link href='#'>Email must be valid</ErrorSummary.Link>
-        </ErrorSummary.Item>
-      </ErrorSummary.List>
+      <Heading>To proceed, you must correct the following errors:</Heading>
+      <List.Unordered>
+        <List.Item>
+          <Link href='#'>Birthdate cannot be after the year 2005</Link>
+        </List.Item>
+        <List.Item>
+          <Link href='#'>Phone number can only contain digits</Link>
+        </List.Item>
+        <List.Item>
+          <Link href='#'>Email must be valid</Link>
+        </List.Item>
+      </List.Unordered>
     </ErrorSummary>
   );
 };
@@ -68,21 +63,15 @@ export const WithForm = () => {
       />
 
       <ErrorSummary>
-        <ErrorSummary.Heading>
-          For å gå videre må du rette opp følgende feil:
-        </ErrorSummary.Heading>
-        <ErrorSummary.List>
-          <ErrorSummary.Item>
-            <ErrorSummary.Link href='#fornavn'>
-              Fornavn må være minst 2 tegn
-            </ErrorSummary.Link>
-          </ErrorSummary.Item>
-          <ErrorSummary.Item>
-            <ErrorSummary.Link href='#telefon'>
-              Telefonnummer kan kun inneholde siffer
-            </ErrorSummary.Link>
-          </ErrorSummary.Item>
-        </ErrorSummary.List>
+        <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+        <List.Unordered>
+          <List.Item>
+            <Link href='#fornavn'>Fornavn må være minst 2 tegn</Link>
+          </List.Item>
+          <List.Item>
+            <Link href='#telefon'>Telefonnummer kan kun inneholde siffer</Link>
+          </List.Item>
+        </List.Unordered>
       </ErrorSummary>
     </>
   );
@@ -105,21 +94,17 @@ export const WithFormEn = () => {
       />
 
       <ErrorSummary>
-        <ErrorSummary.Heading>
-          To proceed, you must correct the following errors:
-        </ErrorSummary.Heading>
-        <ErrorSummary.List>
-          <ErrorSummary.Item>
-            <ErrorSummary.Link href='#first-name'>
+        <Heading>To proceed, you must correct the following errors:</Heading>
+        <List.Unordered>
+          <List.Item>
+            <Link href='#first-name'>
               First name must be at least 2 characters
-            </ErrorSummary.Link>
-          </ErrorSummary.Item>
-          <ErrorSummary.Item>
-            <ErrorSummary.Link href='#phone'>
-              Phone number can only contain digits
-            </ErrorSummary.Link>
-          </ErrorSummary.Item>
-        </ErrorSummary.List>
+            </Link>
+          </List.Item>
+          <List.Item>
+            <Link href='#phone'>Phone number can only contain digits</Link>
+          </List.Item>
+        </List.Unordered>
       </ErrorSummary>
     </>
   );
@@ -143,21 +128,17 @@ export const ShowHide = () => {
       </div>
       {show && (
         <ErrorSummary>
-          <ErrorSummary.Heading>
-            For å gå videre må du rette opp følgende feil:
-          </ErrorSummary.Heading>
-          <ErrorSummary.List>
-            <ErrorSummary.Item>
-              <ErrorSummary.Link href='#fornavn'>
-                Fornavn må være minst 2 tegn
-              </ErrorSummary.Link>
-            </ErrorSummary.Item>
-            <ErrorSummary.Item>
-              <ErrorSummary.Link href='#telefon'>
+          <Heading>For å gå videre må du rette opp følgende feil:</Heading>
+          <List.Unordered>
+            <List.Item>
+              <Link href='#fornavn'>Fornavn må være minst 2 tegn</Link>
+            </List.Item>
+            <List.Item>
+              <Link href='#telefon'>
                 Telefonnummer kan kun inneholde siffer
-              </ErrorSummary.Link>
-            </ErrorSummary.Item>
-          </ErrorSummary.List>
+              </Link>
+            </List.Item>
+          </List.Unordered>
         </ErrorSummary>
       )}
     </>
@@ -177,26 +158,22 @@ export const ShowHideEn = () => {
         }}
       >
         <Button onClick={() => setShow(!show)}>
-          {show ? 'Skjul' : 'Send inn skjema'}
+          {show ? 'Hide' : 'Submit form'}
         </Button>
       </div>
       {show && (
         <ErrorSummary>
-          <ErrorSummary.Heading>
-            To proceed, you must correct the following errors:
-          </ErrorSummary.Heading>
-          <ErrorSummary.List>
-            <ErrorSummary.Item>
-              <ErrorSummary.Link href='#first-name'>
+          <Heading>To proceed, you must correct the following errors:</Heading>
+          <List.Unordered>
+            <List.Item>
+              <Link href='#first-name'>
                 First name must be at least 2 characters
-              </ErrorSummary.Link>
-            </ErrorSummary.Item>
-            <ErrorSummary.Item>
-              <ErrorSummary.Link href='#phone'>
-                Phone number can only contain digits
-              </ErrorSummary.Link>
-            </ErrorSummary.Item>
-          </ErrorSummary.List>
+              </Link>
+            </List.Item>
+            <List.Item>
+              <Link href='#phone'>Phone number can only contain digits</Link>
+            </List.Item>
+          </List.Unordered>
         </ErrorSummary>
       )}
     </>
