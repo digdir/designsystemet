@@ -2,6 +2,7 @@ import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.ts';
 import { legacyBuildDir, toConfigRelative, toOutput } from '../migrations/new-output-field.ts';
+import { severityColorNames } from '../schemas/defaults.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { dsfs } from '../utils/filesystem.ts';
 
@@ -241,9 +242,11 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
     // Extract colors
     const colors = extractColors(themeTokens, themeName);
 
-    if (Object.keys(colors).length === 0) {
-      console.warn(pc.yellow(`\nWarning: No colors found for theme ${themeName}`));
-      continue; // Skip this theme as it needs at least one color
+    // The severity colors are added by default, so a theme needs at least one color of its own,
+    // as in the config schema
+    if (!Object.keys(colors).some((name) => !(severityColorNames as string[]).includes(name))) {
+      console.warn(pc.yellow(`\nWarning: No colors besides the severity colors found for theme ${themeName}`));
+      continue;
     }
 
     const borderRadius = extractBorderRadius(themeConfig);
