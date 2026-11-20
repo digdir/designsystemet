@@ -11,6 +11,9 @@
  *   node scripts/group-changelogs.js --all               rebuilds every version
  *   node scripts/group-changelogs.js --release <version> prints the section of a version, for its
  *                                                        GitHub release (see create-aggregated-release.sh)
+ *                                                        and the release PR (see update-release-pr-body.sh)
+ *     --file <path>                                      reads that CHANGELOG.md instead, e.g. from the
+ *                                                        release PR's branch
  *
  * Versions already in CHANGELOG.md are kept as they are, so they can be edited by hand, e.g. to
  * merge two entries that describe the same change for different readers.
@@ -329,11 +332,14 @@ async function main() {
   const release = process.argv.indexOf('--release');
   if (release !== -1) {
     const version = process.argv[release + 1]?.replace(/^v/, '');
+    const fileArg = process.argv.indexOf('--file');
+    const file =
+      fileArg === -1 ? CHANGELOG_FILE : path.resolve(process.argv[fileArg + 1]);
     const section = version
-      ? extractRelease(await fs.readFile(CHANGELOG_FILE, 'utf8'), version)
+      ? extractRelease(await fs.readFile(file, 'utf8'), version)
       : null;
     if (!section) {
-      console.error(`No "## designsystemet ${version}" in CHANGELOG.md`);
+      console.error(`No "## designsystemet ${version}" in ${file}`);
       process.exit(1);
     }
     process.stdout.write(`${section}\n`);

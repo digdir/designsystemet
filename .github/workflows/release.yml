@@ -103,6 +103,13 @@ jobs:
           # instead of one release/tag per package.
           create-github-releases: false
           push-git-tags: false
+      - name: Show the grouped changelog in the release PR
+        if: ${{ steps.changesets.outputs.pr-number != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.changesets.outputs.pr-number }}
+          BRANCH: changeset-release/${{ github.ref_name }}
+        run: bash ./.github/workflows/scripts/update-release-pr-body.sh
       - name: Create aggregated GitHub release
         if: ${{ steps.changesets.outputs.published == 'true' }}
         env:
