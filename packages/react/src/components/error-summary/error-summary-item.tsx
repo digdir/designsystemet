@@ -5,6 +5,7 @@ export type ErrorSummaryItemProps = ListItemProps;
 
 /**
  * ErrorSummaryItem component, used to display an error link in the ErrorSummary.
+ * Renders a `List.Item`, which you can also use directly.
  *
  * @example
  * <ErrorSummaryItem>

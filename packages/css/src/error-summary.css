@@ -2,9 +2,11 @@
   --dsc-errorsummary-background: var(--ds-color-danger-surface-tinted);
   --dsc-errorsummary-border-radius: var(--ds-border-radius-md);
   --dsc-errorsummary-padding: var(--ds-size-7);
-  --dsc-errorsummary-link-color: var(--ds-color-neutral-text-default);
-  --dsc-errorsummary-heading-color: var(--ds-color-danger-text-default);
+  --dsc-errorsummary-color: var(--ds-color-danger-text-default);
+  --dsc-errorsummary-link-color: currentcolor; /* @deprecated  */
+  --dsc-errorsummary-heading-color: currentcolor; /* @deprecated */
 
+  color: var(--dsc-errorsummary-color);
   background: var(--dsc-errorsummary-background);
   border-radius: var(--dsc-errorsummary-border-radius);
   box-sizing: border-box;
@@ -18,15 +20,16 @@
   }
 
   & :is(h1, h2, h3, h4, h5, h6) {
-    color: var(--dsc-errorsummary-heading-color);
+    color: var(--dsc-errorsummary-heading-color); /* @deprecated */
     font-size: var(--ds-font-size-plus-1);
     margin-bottom: var(--ds-size-2);
   }
 
   & a {
-    color: var(--dsc-errorsummary-link-color);
+    color: var(--dsc-errorsummary-link-color); /* @deprecated */
   }
 
+  /* @deprecated: User should use ds-list instead */
   & li:last-of-type {
     margin-bottom: 0;
   }
