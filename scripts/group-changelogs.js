@@ -309,13 +309,20 @@ export function parseGroupedChangelog(md) {
  * @param {string} version
  */
 export function extractRelease(md, version) {
+  // Only `x.y.z`. The version comes from the command line, so it is compared as text, and never
+  // made into a regular expression.
+  if (!/^\d+\.\d+\.\d+$/.test(version)) return null;
   const heading = `## designsystemet ${version}`;
-  const start = md.search(
-    new RegExp(`^${heading.replaceAll('.', '\\.')}\\s*$`, 'm'),
-  );
+  const lines = md.split('\n');
+  const start = lines.findIndex((line) => line.trimEnd() === heading);
   if (start === -1) return null;
-  const end = md.indexOf('\n## designsystemet ', start + heading.length);
-  return md.slice(start, end === -1 ? undefined : end).trim();
+  const end = lines.findIndex(
+    (line, index) => index > start && line.startsWith('## designsystemet '),
+  );
+  return lines
+    .slice(start, end === -1 ? undefined : end)
+    .join('\n')
+    .trim();
 }
 
 async function main() {
