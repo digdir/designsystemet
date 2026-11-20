@@ -28,13 +28,16 @@ const isSeverityColor = (name: string) => Object.hasOwn(severityColors, name);
  */
 export const canRenameColor = (name: string) => !isSeverityColor(name);
 
+/** Whether colors with these names meet the CLI's rule of at least one color that is not a severity color */
+const hasOwnColor = (names: string[]) =>
+  names.some((name) => !isSeverityColor(name));
+
 /**
  * Whether a color can be removed. `names` are the names of the theme's colors.
  * The CLI needs at least one color that is not a severity color, so the last one cannot be removed.
  */
 export const canRemoveColor = (names: string[], name: string) =>
-  isSeverityColor(name) ||
-  names.some((other) => other !== name && !isSeverityColor(other));
+  hasOwnColor(names.filter((other) => other !== name));
 
 /** The CLI's rule for the name of a color: lowercase letters and digits, with single hyphens between them */
 const isValidColorName = (name: string) =>
@@ -58,10 +61,13 @@ export const colorNameError = (
   name: string,
   names: string[],
   current: string,
-): 'empty' | 'invalid' | 'duplicate' | null => {
+): 'empty' | 'invalid' | 'duplicate' | 'severity-only' | null => {
   if (!name.trim()) return 'empty';
   if (!isValidColorName(name)) return 'invalid';
   if (name !== current && names.includes(name)) return 'duplicate';
+  /* Renaming the last color of its own to a missing severity color would leave only severity colors */
+  if (!hasOwnColor(names.map((other) => (other === current ? name : other))))
+    return 'severity-only';
   return null;
 };
 
@@ -212,7 +218,8 @@ export function updateActiveTheme(
 /**
  * Sets the name and base color of a color. `current` is the name the color has now, or `undefined` for a new color.
  * A color keeps its position when it is renamed. The edit is ignored when `current` is not a color of the theme,
- * when the new name is taken by another color, and when the color cannot be renamed (see `canRenameColor`).
+ * when the new name is taken by another color, when the color cannot be renamed (see `canRenameColor`),
+ * and when the theme would be left with only severity colors.
  */
 export function setThemeColor(
   theme: WorkspaceTheme,
@@ -233,6 +240,7 @@ export function setThemeColor(
       ? [...entries, [name, hex]]
       : entries.map((entry) => (entry[0] === current ? [name, hex] : entry)),
   );
+  if (!hasOwnColor(Object.keys(colors))) return theme;
   return { ...theme, colors };
 }
 

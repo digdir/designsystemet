@@ -359,6 +359,27 @@ describe('theme workspace', () => {
     });
   });
 
+  it('does not rename the last color that is not a severity color to a severity color', () => {
+    const theme = { colors: { neutral: '#333333', success: '#068718' } };
+    const names = Object.keys(theme.colors);
+
+    expect(colorNameError('danger', names, 'neutral')).toBe('severity-only');
+    expect(setThemeColor(theme, 'neutral', 'danger', '#C01B1B')).toBe(theme);
+    expect(colorNameError('brand', names, 'neutral')).toBeNull();
+    expect(
+      Object.keys(setThemeColor(theme, 'neutral', 'brand', '#333333').colors),
+    ).toEqual(['brand', 'success']);
+
+    /* Another color of its own is left, so the rename is fine */
+    const withAccent = { colors: { ...theme.colors, accent: '#123456' } };
+    expect(
+      colorNameError('danger', Object.keys(withAccent.colors), 'neutral'),
+    ).toBeNull();
+    expect(
+      setThemeColor(withAccent, 'neutral', 'danger', '#C01B1B').colors,
+    ).toEqual({ danger: '#C01B1B', success: '#068718', accent: '#123456' });
+  });
+
   it('adds a color named like an object property to every theme', () => {
     const next = updateActiveTheme({ config, activeTheme: 'first' }, (theme) =>
       setThemeColor(theme, undefined, 'constructor', '#abcdef'),

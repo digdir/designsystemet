@@ -138,6 +138,8 @@ export default {
       'This renames "{{from}}" to "{{to}}" in all {{count}} themes, including its token overrides. Existing color values are preserved.',
     'confirm-rename': 'Rename in all themes',
     'name-duplicate-error': 'A color with this name already exists',
+    'name-severity-only-error':
+      'A theme needs at least one colour that is not a severity colour',
     'add-color': 'Add Colour',
     'edit-color': 'Edit colour',
     'remove-color': 'Remove colour',

@@ -36,6 +36,7 @@ const nameErrors = {
   empty: 'colorEditor.name-empty-error',
   invalid: 'colorEditor.name-invalid-error',
   duplicate: 'colorEditor.name-duplicate-error',
+  'severity-only': 'colorEditor.name-severity-only-error',
 } as const;
 
 /** The form for the name and base color of one color */
