@@ -83,6 +83,28 @@ export default {
       email: 'email',
     },
   },
+  changelog: {
+    title: 'Changelog',
+    description:
+      'What has changed in each version of the code packages, the Figma file and the documentation.',
+    packages: 'Show changes in',
+    documentation: 'Documentation',
+    version: 'Version',
+    results_one: '{{count}} version',
+    results_other: '{{count}} versions',
+    reset: 'Reset filters',
+    empty:
+      'No versions have changes in the selected packages. Choose other packages or reset the filters.',
+    released: 'Released',
+    'figma-published': 'Published in Figma',
+    'no-changes': 'No changes in this version.',
+    'packages-label': 'Packages:',
+    pagination: 'Changelog pages',
+    'previous-page': 'Previous page',
+    'next-page': 'Next page',
+    page: 'Page {{page}}',
+    'page-of': 'page {{page}} of {{total}}',
+  },
   sidebar: {
     Components: 'Components',
     Blogg: 'Blog',

@@ -1,49 +1,58 @@
 /**
- * Builds the changelog pages for www from the root CHANGELOG.md, where each change is listed once
- * with the packages it affects: one page for the code packages, and one for the Figma packages
- * (the UI kit and the plugin). Each page shows the changes that affect at least one of its
- * packages. The root CHANGELOG.md is built by scripts/group-changelogs.js; this file only
- * formats it as MDX and writes it.
+ * Builds the changelog page for www from the root CHANGELOG.md, where each change is listed once
+ * with the packages it affects. The page lists every package, and can be filtered by package, see
+ * apps/www/app/routes/changelog/changelog.tsx. The root CHANGELOG.md is built by
+ * scripts/group-changelogs.js; this file only formats it as MDX and writes it.
+ *
+ * The MDX uses these components, so the page can filter and style the changes:
+ *
+ *   <Release version="1.24.1" date="2026-11-18" figmaPublished="2026-11-19" packages="cli,css">
+ *     <Changes type="patch" packages="cli,css">
+ *       <Change packages="cli,css"> markdown </Change>
+ *       <ChangeGroup name="Dialog" packages="react"> <Change …/> <Change …/> </ChangeGroup>
+ *     </Changes>
+ *   </Release>
  */
 import { execFileSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import {
-  aggregateChangelogs,
-  findPackages,
-  NO_CHANGES,
-} from './aggregate-changelogs.js';
-import { releaseDateMarkup } from './changelog-date.js';
+import { aggregateChangelogs, findPackages } from './aggregate-changelogs.js';
 import {
   BUMPS,
   CHANGELOG_FILE,
+  DEPENDENCY_UPDATES_TEXT,
   parseGroupedChangelog,
 } from './group-changelogs.js';
 
 const ROOT = process.cwd();
-const WWW = path.join(ROOT, 'apps/www/app/content/components-docs');
-const WWW_FIGMA = path.join(ROOT, 'apps/www/app/content/fundamentals');
+export const CHANGELOG_MDX = path.join(
+  ROOT,
+  'apps/www/app/content/changelog/changelog.mdx',
+);
 
-// The packages each page shows changes for
-const CODE_PACKAGES = [
-  '@digdir/designsystemet',
-  '@digdir/designsystemet-css',
-  '@digdir/designsystemet-react',
-  '@digdir/designsystemet-web',
-  '@digdir/designsystemet-types',
-];
-const FIGMA_PACKAGES = ['figma-plugin', 'figma-ui-kit'];
+// The ids used for the packages on www, in the filters and the URL
+const PACKAGE_IDS = {
+  '@digdir/designsystemet': 'cli',
+  '@digdir/designsystemet-css': 'css',
+  '@digdir/designsystemet-react': 'react',
+  '@digdir/designsystemet-web': 'web',
+  '@digdir/designsystemet-types': 'types',
+  'figma-plugin': 'figma-plugin',
+  'figma-ui-kit': 'figma-ui-kit',
+  '@web/www': 'www',
+};
+const PACKAGE_ORDER = Object.values(PACKAGE_IDS);
 
-// Short names for the packages, shown as tags under each change on www
-const LABELS = {
-  '@digdir/designsystemet': 'CLI',
-  '@digdir/designsystemet-css': 'CSS',
-  '@digdir/designsystemet-react': 'React',
-  '@digdir/designsystemet-web': 'Web',
-  '@digdir/designsystemet-types': 'Types',
-  'figma-plugin': 'Figma plugin',
-  'figma-ui-kit': 'Figma UI kit',
-  '@web/www': 'Documentation',
+/** The ids of the packages, in a fixed order and without duplicates, e.g. `cli,css` */
+const packageIds = (names) =>
+  [...new Set(names.map((name) => PACKAGE_IDS[name] ?? name))]
+    .sort((a, b) => PACKAGE_ORDER.indexOf(a) - PACKAGE_ORDER.indexOf(b))
+    .join(',');
+
+const BUMP_TYPES = {
+  'Major Changes': 'major',
+  'Minor Changes': 'minor',
+  'Patch Changes': 'patch',
 };
 
 function git(args) {
@@ -83,158 +92,183 @@ function getReleaseDate(version) {
   return fromChangelog || null;
 }
 
-/**
- * @param {string} version
- * @param {{ bump: string, text: string, packages: string[] }[]} changes the changes to show
- * @param {string | null} date the release date as `YYYY-MM-DD`, or null to leave the version undated
- */
-function formatVersion(version, changes, date) {
-  let out = `<div style={{
-  border: "1px solid var(--ds-color-neutral-border-subtle)",
-  borderRadius: "var(--ds-border-radius-md)",
-  padding: "var(--ds-size-5)",
-  marginBottom: "var(--ds-size-4)"
-  }}
->\n\n## ${version}\n\n`;
-  if (date) out += `${releaseDateMarkup(date)}\n\n`;
+// Most entries start with the component or topic they are about in bold, e.g. `- **Dialog:** …`,
+// or a few without the colon, e.g. `- **Search** Deprecated …`
+const PREFIX =
+  /^- \*\*(?:(?<name>[^*\n]+?)(?::\*\*|\*\*:)|(?<word>[^\s*`]+)\*\*(?= [A-Z]))\s*/;
+const prefixName = (text) => {
+  const groups = PREFIX.exec(text)?.groups;
+  return groups?.name ?? groups?.word;
+};
+// The same name is written in several ways, e.g. `ToggleGroup`, `toggle-group` and `ds-toggle-group`
+const prefixKey = (name) =>
+  name
+    .toLowerCase()
+    .replace(/^ds-/, '')
+    .replace(/[^a-z0-9,]/g, '');
 
-  if (changes.length === 0) out += `${NO_CHANGES}\n\n`;
-  for (const bump of BUMPS) {
-    const entries = changes.filter((change) => change.bump === bump);
-    if (entries.length === 0) continue;
-    out += `### ${bump}\n\n`;
-    for (const { text, packages } of entries) {
-      const tags = packages
-        .map((name) => `<Tag>${LABELS[name] ?? name}</Tag>`)
-        .join('');
-      // Styled by `[data-packages]` in apps/www/app/routes/components/component.module.css
-      out += `${text}\n\n  <div data-packages>${tags}</div>\n\n`;
+/**
+ * The name to show for each prefix: the spelling used most, preferring one that starts with a
+ * capital letter, as the React components do.
+ * @param {Map<string, { text: string }[]>} versions
+ * @returns {Map<string, string>} prefix key → name
+ */
+function prefixLabels(versions) {
+  const counts = new Map();
+  for (const changes of versions.values()) {
+    for (const { text } of changes) {
+      const name = prefixName(text);
+      if (!name) continue;
+      const spellings = counts.get(prefixKey(name)) ?? new Map();
+      spellings.set(name, (spellings.get(name) ?? 0) + 1);
+      counts.set(prefixKey(name), spellings);
     }
   }
-
-  return `${out}</div>\n\n`;
-}
-
-/**
- * The versions in the root CHANGELOG.md, newest first, with only the changes that affect at least
- * one of `packages`.
- * @param {string[]} packages short package names, as in the root CHANGELOG.md
- */
-async function readChanges(packages) {
-  const versions = parseGroupedChangelog(
-    await fs.readFile(CHANGELOG_FILE, 'utf8'),
-  );
+  const capitalized = (name) => (/^[A-Z]/.test(name) ? 1 : 0);
   return new Map(
-    [...versions].map(([version, changes]) => [
-      version,
-      changes.filter((change) =>
-        change.packages.some((name) => packages.includes(name)),
-      ),
+    [...counts].map(([key, spellings]) => [
+      key,
+      [...spellings].sort(
+        ([a, x], [b, y]) => capitalized(b) - capitalized(a) || y - x,
+      )[0][0],
     ]),
   );
 }
 
-async function writeComponentsChangelog() {
-  await fs.mkdir(WWW, { recursive: true });
-  const pkgs = [...(await findPackages()).values()];
+/**
+ * The text of an entry without its list marker, and its other lines without the indentation that
+ * kept them in the list item, so they are read as markdown of their own.
+ */
+const unlist = (text) =>
+  text
+    .replace(/^- /, '')
+    .split('\n')
+    .map((line) => line.replace(/^ {2}/, ''))
+    .join('\n');
 
-  let consolidatedContent = '';
-  for (const [version, changes] of await readChanges(CODE_PACKAGES)) {
-    consolidatedContent += formatVersion(
-      version,
-      changes,
-      getReleaseDate(version),
-    );
+/** @param {{ text: string, packages: string[] }} change */
+const formatChange = ({ text, packages }) =>
+  `<Change packages="${packageIds(packages)}">\n\n${unlist(text)}\n\n</Change>\n\n`;
+
+/**
+ * The changes of one bump, grouped by their prefix: first the ones without a prefix, then one
+ * group per component or topic in alphabetical order, then the dependency updates. A group with
+ * several changes is shown once, with its changes under it.
+ * @param {{ text: string, packages: string[] }[]} entries
+ * @param {Map<string, string>} labels prefix key → name, see prefixLabels
+ */
+function formatChanges(entries, labels) {
+  const general = [];
+  const groups = new Map();
+  const last = [];
+  for (const entry of entries) {
+    const name = prefixName(entry.text);
+    if (entry.text.startsWith(`- ${DEPENDENCY_UPDATES_TEXT}`)) last.push(entry);
+    else if (!name) general.push(entry);
+    else {
+      const label = labels.get(prefixKey(name)) ?? name;
+      groups.set(label, [...(groups.get(label) ?? []), entry]);
+    }
   }
 
-  const latestVersion = pkgs[0]?.version;
-
-  const content = `---
-title: "Changelog"
-latestVersion: ${latestVersion}
----
-
-${consolidatedContent}`;
-
-  await fs.writeFile(path.join(WWW, 'changelog.mdx'), content, 'utf8');
+  let out = general.map(formatChange).join('');
+  const sorted = [...groups].sort(([a], [b]) =>
+    a.localeCompare(b, 'en', { sensitivity: 'base' }),
+  );
+  for (const [label, group] of sorted) {
+    if (group.length === 1) {
+      // Shown with the same spelling as in the groups
+      const [entry] = group;
+      out += formatChange({
+        ...entry,
+        text: entry.text.replace(PREFIX, `- **${label}:** `),
+      });
+      continue;
+    }
+    out += `<ChangeGroup name="${label}" packages="${packageIds(group.flatMap((entry) => entry.packages))}">\n\n`;
+    for (const entry of group) {
+      out += formatChange({ ...entry, text: entry.text.replace(PREFIX, '- ') });
+    }
+    out += '</ChangeGroup>\n\n';
+  }
+  return out + last.map(formatChange).join('');
 }
 
-// Shown in the Figma section of Fundamentals, next to "Get updates". The changelogs are only in English.
-const FIGMA_PAGES = {
-  en: {
-    frontmatter: {
-      title: 'Figma changelog',
-      sidebar_title: 'Changelog',
-      description:
-        'What has changed in each version of the Designsystemet Figma file.',
-    },
-    intro: '',
-  },
-  no: {
-    frontmatter: {
-      title: 'Endringslogg for Figma',
-      sidebar_title: 'Endringslogg',
-      description:
-        'Hva som er endret i hver versjon av Figma-filen til Designsystemet.',
-    },
-    intro:
-      "<Alert lang='no'>Endringslogger er kun tilgjengelige på engelsk</Alert>\n\n",
-  },
-};
+/**
+ * @param {string} version
+ * @param {{ bump: string, text: string, packages: string[] }[]} changes
+ * @param {{ date: string | null, figmaPublished: string | undefined }} dates as `YYYY-MM-DD`. A
+ * version without a date is dated at deploy time, see scripts/date-latest-changelog.js.
+ * @param {Map<string, string>} labels prefix key → name, see prefixLabels
+ */
+function formatRelease(version, changes, { date, figmaPublished }, labels) {
+  const attributes = [`version="${version}"`];
+  if (date) attributes.push(`date="${date}"`);
+  if (figmaPublished) attributes.push(`figmaPublished="${figmaPublished}"`);
+  attributes.push(
+    `packages="${packageIds(changes.flatMap((change) => change.packages))}"`,
+  );
+
+  let out = `<Release ${attributes.join(' ')}>\n\n`;
+  for (const bump of BUMPS) {
+    const entries = changes.filter((change) => change.bump === bump);
+    if (entries.length === 0) continue;
+    const packages = packageIds(entries.flatMap((entry) => entry.packages));
+    out += `<Changes type="${BUMP_TYPES[bump]}" packages="${packages}">\n\n${formatChanges(entries, labels)}</Changes>\n\n`;
+  }
+  return `${out}</Release>\n\n`;
+}
 
 // The Figma file is published by hand, not with the code, so its versions have no tags to date them
 // by. Instead, the date is written in the changelog as a `_Published YYYY-MM-DD_` line under the
 // version heading; see figma/README.md.
-const PUBLISHED_DATE = /^_Published (\d{4}-\d{2}-\d{2})_\s*$\n*/m;
+const PUBLISHED_DATE = /^_Published (\d{4}-\d{2}-\d{2})_\s*$/m;
 
-async function writeFigmaChangelog() {
-  // The published dates are only in the Figma packages' own changelogs
+/** The dates the Figma file was published, by version. */
+async function figmaPublishedDates() {
   const pkgs = [...(await findPackages(['figma'])).values()];
-  const publishedDates = new Map();
+  const dates = new Map();
   for (const [version, packages] of await aggregateChangelogs(pkgs)) {
     for (const body of packages.values()) {
       const date = PUBLISHED_DATE.exec(body)?.[1];
-      if (date && !publishedDates.has(version))
-        publishedDates.set(version, date);
+      if (date && !dates.has(version)) dates.set(version, date);
     }
   }
-
-  let consolidatedContent = '';
-  for (const [version, changes] of await readChanges(FIGMA_PACKAGES)) {
-    const date = publishedDates.get(version) ?? null;
-    // The Figma packages are versioned with the code by changesets, so most code releases add a
-    // version without changes to them. Only versions with changes, or that were published, are shown.
-    if (changes.length === 0 && !date) continue;
-    consolidatedContent += formatVersion(version, changes, date);
-  }
-
-  for (const [lang, { frontmatter, intro }] of Object.entries(FIGMA_PAGES)) {
-    const dir = path.join(WWW_FIGMA, lang, 'figma');
-    await fs.mkdir(dir, { recursive: true });
-    const content = `---
-title: ${frontmatter.title}
-sidebar_title: ${frontmatter.sidebar_title}
-description: ${frontmatter.description}
-category: Figma
-color: yellow
-icon: ClockDashedIcon
-published: true
-order: 50
-search_terms: changelog
-changelog: true
----
-
-${intro}<div lang="en">
-
-${consolidatedContent}</div>
-`;
-    await fs.writeFile(path.join(dir, 'changelog.mdx'), content, 'utf8');
-  }
+  return dates;
 }
 
 async function main() {
-  await writeComponentsChangelog();
-  await writeFigmaChangelog();
+  const versions = parseGroupedChangelog(
+    await fs.readFile(CHANGELOG_FILE, 'utf8'),
+  );
+  // From every change, so a component has the same name in every version
+  const labels = prefixLabels(versions);
+  const published = await figmaPublishedDates();
+
+  let releases = '';
+  for (const [version, changes] of versions) {
+    releases += formatRelease(
+      version,
+      changes,
+      {
+        date: getReleaseDate(version),
+        figmaPublished: published.get(version),
+      },
+      labels,
+    );
+  }
+
+  const latestVersion = [...versions.keys()][0];
+  const content = `---
+title: Changelog
+description: What has changed in each version of the code packages, the Figma file and the documentation.
+latestVersion: ${latestVersion}
+---
+
+${releases}`;
+
+  await fs.mkdir(path.dirname(CHANGELOG_MDX), { recursive: true });
+  await fs.writeFile(CHANGELOG_MDX, content, 'utf8');
 }
 
 main().catch((e) => {

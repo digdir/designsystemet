@@ -82,6 +82,28 @@ export default {
       email: 'e-post',
     },
   },
+  changelog: {
+    title: 'Endringslogg',
+    description:
+      'Hva som er endret i hver versjon av kodepakkene, Figma-filen og dokumentasjonen.',
+    packages: 'Vis endringer i',
+    documentation: 'Dokumentasjon',
+    version: 'Versjon',
+    results_one: '{{count}} versjon',
+    results_other: '{{count}} versjoner',
+    reset: 'Nullstill filter',
+    empty:
+      'Ingen versjoner har endringer i de valgte pakkene. Velg andre pakker eller nullstill filteret.',
+    released: 'Utgitt',
+    'figma-published': 'Publisert i Figma',
+    'no-changes': 'Ingen endringer i denne versjonen.',
+    'packages-label': 'Pakker:',
+    pagination: 'Sider i endringsloggen',
+    'previous-page': 'Forrige side',
+    'next-page': 'Neste side',
+    page: 'Side {{page}}',
+    'page-of': 'side {{page}} av {{total}}',
+  },
   sidebar: {
     Components: 'Komponenter',
     Blogg: 'Blogg',

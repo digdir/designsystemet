@@ -202,8 +202,8 @@ export function generatePrerenderPaths(): string[] {
     '/en',
     ...basePaths,
     ...contentPaths,
-    '/no/components/changelog',
-    '/en/components/changelog',
+    '/no/changelog',
+    '/en/changelog',
     ...componentPaths,
   ];
 }
