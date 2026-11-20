@@ -22,22 +22,20 @@ export type ThemeWorkspace = { config: WorkspaceConfig; activeTheme: string };
 const isSeverityColor = (name: string) => Object.hasOwn(severityColors, name);
 
 /**
- * Whether a color can be renamed. Severity colors cannot for now:
- * the CLI adds the severity colors a theme lacks, so a renamed one would come back next to its new name.
+ * Whether a color can be renamed. Severity colors cannot for now: every theme has them,
+ * since the CLI adds the severity colors a theme lacks, so a renamed one would come back next to its new name.
  * This can be removed when the CLI no longer adds them.
  */
 export const canRenameColor = (name: string) => !isSeverityColor(name);
 
-/** Whether colors with these names meet the CLI's rule of at least one color that is not a severity color */
-const hasOwnColor = (names: string[]) =>
-  names.some((name) => !isSeverityColor(name));
-
 /**
  * Whether a color can be removed. `names` are the names of the theme's colors.
- * The CLI needs at least one color that is not a severity color, so the last one cannot be removed.
+ * Severity colors cannot, since the CLI would add them back when it builds the theme (see `canRenameColor`).
+ * The CLI also needs at least one color that is not a severity color, so the last one cannot be removed either.
  */
 export const canRemoveColor = (names: string[], name: string) =>
-  hasOwnColor(names.filter((other) => other !== name));
+  !isSeverityColor(name) &&
+  names.some((other) => other !== name && !isSeverityColor(other));
 
 /** The CLI's rule for the name of a color: lowercase letters and digits, with single hyphens between them */
 const isValidColorName = (name: string) =>
@@ -61,13 +59,10 @@ export const colorNameError = (
   name: string,
   names: string[],
   current: string,
-): 'empty' | 'invalid' | 'duplicate' | 'severity-only' | null => {
+): 'empty' | 'invalid' | 'duplicate' | null => {
   if (!name.trim()) return 'empty';
   if (!isValidColorName(name)) return 'invalid';
   if (name !== current && names.includes(name)) return 'duplicate';
-  /* Renaming the last color of its own to a missing severity color would leave only severity colors */
-  if (!hasOwnColor(names.map((other) => (other === current ? name : other))))
-    return 'severity-only';
   return null;
 };
 
@@ -113,7 +108,7 @@ export function renameWorkspaceThemes(
 
 /**
  * The workspace the theme builder starts with: one theme named `theme` with the colors of the Designsystemet theme
- * and the default severity colors. Severity colors are colors like any other, and can be changed or removed.
+ * and the default severity colors. Severity colors can be changed, but not renamed or removed.
  */
 export const defaultWorkspace = (): ThemeWorkspace => ({
   activeTheme: 'theme',
@@ -218,8 +213,7 @@ export function updateActiveTheme(
 /**
  * Sets the name and base color of a color. `current` is the name the color has now, or `undefined` for a new color.
  * A color keeps its position when it is renamed. The edit is ignored when `current` is not a color of the theme,
- * when the new name is taken by another color, when the color cannot be renamed (see `canRenameColor`),
- * and when the theme would be left with only severity colors.
+ * when the new name is taken by another color, and when the color cannot be renamed (see `canRenameColor`).
  */
 export function setThemeColor(
   theme: WorkspaceTheme,
@@ -240,7 +234,6 @@ export function setThemeColor(
       ? [...entries, [name, hex]]
       : entries.map((entry) => (entry[0] === current ? [name, hex] : entry)),
   );
-  if (!hasOwnColor(Object.keys(colors))) return theme;
   return { ...theme, colors };
 }
 
@@ -278,7 +271,7 @@ export function setColorOverride(
 }
 
 /**
- * Makes a config from a file or an old link fit the theme builder, where severity colors are ordinary colors:
+ * Makes a config from a file or an old link fit the theme builder, where severity colors are in `colors` like the other colors:
  * - `overrides.severity` is moved into `colors`
  * - the default severity colors are added to themes that lack them, since the CLI adds them to such a theme when it builds it
  */

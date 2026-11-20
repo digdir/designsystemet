@@ -327,10 +327,11 @@ describe('theme workspace', () => {
     });
   });
 
-  it('does not rename a severity color, but lets it be recoloured and removed', () => {
+  it('does not rename or remove a severity color, but lets it be recoloured', () => {
     const theme = {
       colors: { accent: '#123456', neutral: '#333333', danger: '#C01B1B' },
     };
+    const names = Object.keys(theme.colors);
 
     expect(canRenameColor('danger')).toBe(false);
     expect(canRenameColor('neutral')).toBe(true);
@@ -339,45 +340,26 @@ describe('theme workspace', () => {
     expect(
       setThemeColor(theme, 'danger', 'danger', '#ab1234').colors.danger,
     ).toBe('#ab1234');
-    expect(removeThemeColor(theme, 'danger').colors).toEqual({
-      accent: '#123456',
-      neutral: '#333333',
-    });
+    expect(canRemoveColor(names, 'danger')).toBe(false);
+    expect(removeThemeColor(theme, 'danger')).toBe(theme);
   });
 
   it('keeps the last color that is not a severity color, since the CLI needs one', () => {
     const theme = { colors: { accent: '#123456', danger: '#C01B1B' } };
 
     expect(canRemoveColor(['accent', 'danger'], 'accent')).toBe(false);
-    expect(canRemoveColor(['accent', 'danger'], 'danger')).toBe(true);
     expect(canRemoveColor(['accent', 'neutral', 'danger'], 'accent')).toBe(
       true,
     );
     expect(removeThemeColor(theme, 'accent')).toBe(theme);
-    expect(removeThemeColor(theme, 'danger').colors).toEqual({
-      accent: '#123456',
-    });
   });
 
-  it('does not rename the last color that is not a severity color to a severity color', () => {
-    const theme = { colors: { neutral: '#333333', success: '#068718' } };
+  it('does not rename a color to a severity color, since every theme has them', () => {
+    const theme = { colors: { neutral: '#333333', danger: '#C01B1B' } };
     const names = Object.keys(theme.colors);
 
-    expect(colorNameError('danger', names, 'neutral')).toBe('severity-only');
+    expect(colorNameError('danger', names, 'neutral')).toBe('duplicate');
     expect(setThemeColor(theme, 'neutral', 'danger', '#C01B1B')).toBe(theme);
-    expect(colorNameError('brand', names, 'neutral')).toBeNull();
-    expect(
-      Object.keys(setThemeColor(theme, 'neutral', 'brand', '#333333').colors),
-    ).toEqual(['brand', 'success']);
-
-    /* Another color of its own is left, so the rename is fine */
-    const withAccent = { colors: { ...theme.colors, accent: '#123456' } };
-    expect(
-      colorNameError('danger', Object.keys(withAccent.colors), 'neutral'),
-    ).toBeNull();
-    expect(
-      setThemeColor(withAccent, 'neutral', 'danger', '#C01B1B').colors,
-    ).toEqual({ danger: '#C01B1B', success: '#068718', accent: '#123456' });
   });
 
   it('adds a color named like an object property to every theme', () => {

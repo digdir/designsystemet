@@ -137,8 +137,6 @@ export default {
       'Dette endrer navnet fra «{{from}}» til «{{to}}» i alle {{count}} temaer, inkludert tokenoverstyringene. Eksisterende fargeverdier beholdes.',
     'confirm-rename': 'Endre navn i alle temaer',
     'name-duplicate-error': 'En farge med dette navnet finnes allerede',
-    'name-severity-only-error':
-      'Et tema trenger minst én farge som ikke er en severity-farge',
     'add-color': 'Legg til Farge',
     'edit-color': 'Rediger farge',
     'remove-color': 'Fjern farge',
@@ -149,7 +147,8 @@ export default {
     'name-invalid-error':
       'Navnet må starte og slutte med en bokstav eller et tall, med enkle bindestreker mellom',
     'name-empty-error': 'Navnet på fargen kan ikke være tomt',
-    'severity-info': 'Severity-farger kan ikke få nytt navn.',
+    'severity-info':
+      'Severity-farger er med i alle temaer, så de kan ikke få nytt navn eller fjernes.',
     color: 'Farge',
   },
   appearanceToggle: {
