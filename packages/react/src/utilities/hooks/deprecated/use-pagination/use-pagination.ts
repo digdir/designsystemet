@@ -1,7 +1,6 @@
 import { pagination } from '@digdir/designsystemet-web';
 import type { MouseEvent } from 'react';
 import { useMemo } from 'react';
-import type { PaginationButtonProps } from '../../../components';
 
 export type UsePaginationProps = {
   /**
@@ -31,6 +30,8 @@ export type UsePaginationProps = {
 
 /**
  * Hook to help manage pagination state
+ *
+ * @deprecated Use the `pagination` utility function instead.
  *
  * @example
  * const { pages, nextButtonProps, prevButtonProps } = usePagination({
@@ -67,46 +68,47 @@ export const usePagination = ({
 }: UsePaginationProps) =>
   useMemo(() => {
     const { next, prev, pages } = pagination({ current, total, show });
-    const handleClick = (page: number) => (event: MouseEvent<HTMLElement>) => {
-      if (page < 1 || page > total) return event.preventDefault(); // Prevent out of bounds navigation
-      onChange?.(event, page);
-      if (!event.defaultPrevented) setCurrentPage?.(page); // Allow stopping change by calling event.preventDefault() in onChange
-    };
+    const handleClick =
+      (page: number, inert?: boolean) => (event: MouseEvent<HTMLElement>) => {
+        if (inert) return event.preventDefault(); // Prevent out of bounds navigation
+        onChange?.(event, page);
+        if (!event.defaultPrevented) setCurrentPage?.(page); // Allow stopping change by calling event.preventDefault() in onChange
+      };
 
     return {
       /** Number of steps */
-      pages: pages.map(({ page, current }, index) => ({
+      pages: pages.map((page, index) => ({
         /**
          * Page number or "ellipsis" for the ellipsis item
          */
-        page: page || 'ellipsis',
+        page: page.value || 'ellipsis',
         /**
          * Unique key for the item
          */
-        itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
+        itemKey: page.inert ? `ellipsis-${index}` : `page-${page.value}`, // React key utility
         /**
          * Properties to spread on Pagination.Button
          */
-        buttonProps: (page
-          ? {
-              'aria-current': current ? 'true' : undefined,
-              onClick: handleClick(page),
-            }
-          : null) as PaginationButtonProps | null,
+        buttonProps: page.inert
+          ? null
+          : {
+              'aria-current': page['aria-current'],
+              onClick: handleClick(page.value),
+            },
       })),
       /** Properties to spread on Pagination.Button used for previous navigation */
       prevButtonProps: {
-        'aria-hidden': !prev, // Using aria-hidden to support all HTML elements because of potential asChild
-        onClick: handleClick(prev),
-      } as PaginationButtonProps,
+        inert: prev.inert,
+        onClick: handleClick(prev.value, prev.inert),
+      },
       /** Properties to spread on Pagination.Button used for next navigation */
       nextButtonProps: {
-        'aria-hidden': !next, // Using aria-hidden to support all HTML elements because of potential asChild
-        onClick: handleClick(next),
-      } as PaginationButtonProps,
+        inert: next.inert,
+        onClick: handleClick(next.value, next.inert),
+      },
       /** Indication if previous page action should be shown or not */
-      hasPrev: !!prev,
+      hasPrev: !prev.inert,
       /** Indication if next page action should be shown or not */
-      hasNext: !!next,
+      hasNext: !next.inert,
     };
   }, [current, total, show]);

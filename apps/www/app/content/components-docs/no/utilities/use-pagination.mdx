@@ -4,6 +4,10 @@ sidebar_title: usePagination
 order: 40
 ---
 
+<Alert data-color="warning">
+Denne hooken er utdatert, vennligst bruk [hjelpefunksjonen `pagination`](/no/components/docs/pagination/code) istedenfor.
+</Alert>
+
 <Story story="Preview" />
 
 En React-hook for å håndtere paginering.
@@ -21,7 +25,7 @@ const pagination = {
   pages: Array<{
     page: number | string; // Tall for side, eller "ellipsis" streng dersom knappen skal være ...
     itemKey: string; // key du kan sende til Pagination.Item for å sikre riktig fokushåndtering
-    buttonProps: PaginationButtonProps; // Properties du kan spre på Pagination.Button
+    buttonProps: PaginationButtonProps | null; // Properties du kan spre på Pagination.Button, eller null for ellipse
   }>
 }
 ```
