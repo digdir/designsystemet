@@ -7,8 +7,10 @@
  * they are published with each package.
  *
  * Usage:
- *   node scripts/group-changelogs.js         adds the versions that are missing from CHANGELOG.md
- *   node scripts/group-changelogs.js --all   rebuilds every version
+ *   node scripts/group-changelogs.js                     adds the versions that are missing from CHANGELOG.md
+ *   node scripts/group-changelogs.js --all               rebuilds every version
+ *   node scripts/group-changelogs.js --release <version> prints the section of a version, for its
+ *                                                        GitHub release (see create-aggregated-release.sh)
  *
  * Versions already in CHANGELOG.md are kept as they are, so they can be edited by hand, e.g. to
  * merge two entries that describe the same change for different readers.
@@ -246,7 +248,37 @@ export function parseGroupedChangelog(md) {
   return versions;
 }
 
+/**
+ * The section of a version in CHANGELOG.md, from its `## designsystemet <version>` heading to the
+ * next version, or null if it is not there.
+ * @param {string} md
+ * @param {string} version
+ */
+export function extractRelease(md, version) {
+  const heading = `## designsystemet ${version}`;
+  const start = md.search(
+    new RegExp(`^${heading.replaceAll('.', '\\.')}\\s*$`, 'm'),
+  );
+  if (start === -1) return null;
+  const end = md.indexOf('\n## designsystemet ', start + heading.length);
+  return md.slice(start, end === -1 ? undefined : end).trim();
+}
+
 async function main() {
+  const release = process.argv.indexOf('--release');
+  if (release !== -1) {
+    const version = process.argv[release + 1]?.replace(/^v/, '');
+    const section = version
+      ? extractRelease(await fs.readFile(CHANGELOG_FILE, 'utf8'), version)
+      : null;
+    if (!section) {
+      console.error(`No "## designsystemet ${version}" in CHANGELOG.md`);
+      process.exit(1);
+    }
+    process.stdout.write(`${section}\n`);
+    return;
+  }
+
   const rebuild = process.argv.includes('--all');
   let existing = '';
   if (!rebuild) {
