@@ -98,6 +98,7 @@
 }
 
 .ds-textfield__description {
+  color: var(--ds-color-text-subtle);
   margin-top: calc(var(--ds-size-2) * -1);
 }
 
