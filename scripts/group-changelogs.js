@@ -113,7 +113,7 @@ const isDependencyBump = (text) => text.startsWith('- Updated dependencies');
 // than their links, so each version lists them as one entry.
 const DEPENDENCY_UPDATES =
   /^- (?:fix\(deps\): )?updated? (?:npm )?non-major dependencie?s?\b/i;
-const DEPENDENCY_UPDATES_TEXT = 'Update npm non-major dependencies';
+export const DEPENDENCY_UPDATES_TEXT = 'Update npm non-major dependencies';
 // Links to pull requests, e.g. [#5613](…), or to commits, e.g. [`cc33a61`](…)
 const CHANGE_LINK = /\[(?:#\d+|`[0-9a-f]+`)\]\([^)]+\)/g;
 
