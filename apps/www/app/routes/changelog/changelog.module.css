@@ -88,8 +88,8 @@
   > div {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    column-gap: var(--ds-size-4);
+    align-items: center;
+    column-gap: var(--ds-size-2);
     padding-block: var(--ds-size-3);
   }
 
@@ -125,10 +125,28 @@
 .releaseDates {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 var(--ds-size-4);
+  align-items: center;
+  gap: 0 var(--ds-size-2);
   margin: 0;
   color: var(--ds-color-neutral-text-subtle);
   font-size: var(--ds-font-size-3);
+
+  /* A dot before each date separates it from the version and the date before it */
+  > span::before {
+    content: '•' / '';
+    margin-right: var(--ds-size-2);
+  }
+
+  /* On small screens the dates go under the version, one per line, so no dots start the lines */
+  @media (max-width: 40rem) {
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: start;
+
+    > span::before {
+      content: none;
+    }
+  }
 }
 
 .changes {
@@ -149,8 +167,9 @@
     font-size: var(--ds-size-6);
     padding: var(--ds-size-2);
     border-radius: var(--ds-border-radius-full);
-    background: var(--ds-color-neutral-surface-tinted);
-    color: var(--ds-color-neutral-text-default);
+    /* Dark with a light icon: enough contrast, and it stands out from the light surfaces around it */
+    background: var(--ds-color-neutral-base-default);
+    color: var(--ds-color-neutral-base-contrast-default);
   }
 }
 /* Major changes can break things for the reader, so they stand out from the rest */
@@ -188,6 +207,10 @@
 
   li {
     margin: 0;
+  }
+  /* Small text, so a heavier weight keeps it readable */
+  li > * {
+    font-weight: 500;
   }
 }
 
