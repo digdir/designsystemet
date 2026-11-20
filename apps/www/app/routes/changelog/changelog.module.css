@@ -167,17 +167,6 @@
   }
 }
 
-.changeGroup {
-  margin-block: 0 var(--ds-size-5);
-
-  > ul {
-    margin-top: var(--ds-size-2);
-  }
-  .change {
-    margin-bottom: var(--ds-size-4);
-  }
-}
-
 .tags {
   display: flex;
   flex-wrap: wrap;

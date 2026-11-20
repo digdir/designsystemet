@@ -9,7 +9,6 @@
  *   <Release version="1.24.1" date="2026-11-18" figmaPublished="2026-11-19" packages="cli,css">
  *     <Changes type="patch" packages="cli,css">
  *       <Change packages="cli,css"> markdown </Change>
- *       <ChangeGroup name="Dialog" packages="react"> <Change …/> <Change …/> </ChangeGroup>
  *     </Changes>
  *   </Release>
  */
@@ -20,7 +19,6 @@ import { aggregateChangelogs, findPackages } from './aggregate-changelogs.js';
 import {
   BUMPS,
   CHANGELOG_FILE,
-  DEPENDENCY_UPDATES_TEXT,
   parseGroupedChangelog,
 } from './group-changelogs.js';
 
@@ -92,49 +90,6 @@ function getReleaseDate(version) {
   return fromChangelog || null;
 }
 
-// Most entries start with the component or topic they are about in bold, e.g. `- **Dialog:** …`,
-// or a few without the colon, e.g. `- **Search** Deprecated …`
-const PREFIX =
-  /^- \*\*(?:(?<name>[^*\n]+?)(?::\*\*|\*\*:)|(?<word>[^\s*`]+)\*\*(?= [A-Z]))\s*/;
-const prefixName = (text) => {
-  const groups = PREFIX.exec(text)?.groups;
-  return groups?.name ?? groups?.word;
-};
-// The same name is written in several ways, e.g. `ToggleGroup`, `toggle-group` and `ds-toggle-group`
-const prefixKey = (name) =>
-  name
-    .toLowerCase()
-    .replace(/^ds-/, '')
-    .replace(/[^a-z0-9,]/g, '');
-
-/**
- * The name to show for each prefix: the spelling used most, preferring one that starts with a
- * capital letter, as the React components do.
- * @param {Map<string, { text: string }[]>} versions
- * @returns {Map<string, string>} prefix key → name
- */
-function prefixLabels(versions) {
-  const counts = new Map();
-  for (const changes of versions.values()) {
-    for (const { text } of changes) {
-      const name = prefixName(text);
-      if (!name) continue;
-      const spellings = counts.get(prefixKey(name)) ?? new Map();
-      spellings.set(name, (spellings.get(name) ?? 0) + 1);
-      counts.set(prefixKey(name), spellings);
-    }
-  }
-  const capitalized = (name) => (/^[A-Z]/.test(name) ? 1 : 0);
-  return new Map(
-    [...counts].map(([key, spellings]) => [
-      key,
-      [...spellings].sort(
-        ([a, x], [b, y]) => capitalized(b) - capitalized(a) || y - x,
-      )[0][0],
-    ]),
-  );
-}
-
 /**
  * The text of an entry without its list marker, and its other lines without the indentation that
  * kept them in the list item, so they are read as markdown of their own.
@@ -151,57 +106,12 @@ const formatChange = ({ text, packages }) =>
   `<Change packages="${packageIds(packages)}">\n\n${unlist(text)}\n\n</Change>\n\n`;
 
 /**
- * The changes of one bump, grouped by their prefix: first the ones without a prefix, then one
- * group per component or topic in alphabetical order, then the dependency updates. A group with
- * several changes is shown once, with its changes under it.
- * @param {{ text: string, packages: string[] }[]} entries
- * @param {Map<string, string>} labels prefix key → name, see prefixLabels
- */
-function formatChanges(entries, labels) {
-  const general = [];
-  const groups = new Map();
-  const last = [];
-  for (const entry of entries) {
-    const name = prefixName(entry.text);
-    if (entry.text.startsWith(`- ${DEPENDENCY_UPDATES_TEXT}`)) last.push(entry);
-    else if (!name) general.push(entry);
-    else {
-      const label = labels.get(prefixKey(name)) ?? name;
-      groups.set(label, [...(groups.get(label) ?? []), entry]);
-    }
-  }
-
-  let out = general.map(formatChange).join('');
-  const sorted = [...groups].sort(([a], [b]) =>
-    a.localeCompare(b, 'en', { sensitivity: 'base' }),
-  );
-  for (const [label, group] of sorted) {
-    if (group.length === 1) {
-      // Shown with the same spelling as in the groups
-      const [entry] = group;
-      out += formatChange({
-        ...entry,
-        text: entry.text.replace(PREFIX, `- **${label}:** `),
-      });
-      continue;
-    }
-    out += `<ChangeGroup name="${label}" packages="${packageIds(group.flatMap((entry) => entry.packages))}">\n\n`;
-    for (const entry of group) {
-      out += formatChange({ ...entry, text: entry.text.replace(PREFIX, '- ') });
-    }
-    out += '</ChangeGroup>\n\n';
-  }
-  return out + last.map(formatChange).join('');
-}
-
-/**
  * @param {string} version
  * @param {{ bump: string, text: string, packages: string[] }[]} changes
  * @param {{ date: string | null, figmaPublished: string | undefined }} dates as `YYYY-MM-DD`. A
  * version without a date is dated at deploy time, see scripts/date-latest-changelog.js.
- * @param {Map<string, string>} labels prefix key → name, see prefixLabels
  */
-function formatRelease(version, changes, { date, figmaPublished }, labels) {
+function formatRelease(version, changes, { date, figmaPublished }) {
   const attributes = [`version="${version}"`];
   if (date) attributes.push(`date="${date}"`);
   if (figmaPublished) attributes.push(`figmaPublished="${figmaPublished}"`);
@@ -214,7 +124,7 @@ function formatRelease(version, changes, { date, figmaPublished }, labels) {
     const entries = changes.filter((change) => change.bump === bump);
     if (entries.length === 0) continue;
     const packages = packageIds(entries.flatMap((entry) => entry.packages));
-    out += `<Changes type="${BUMP_TYPES[bump]}" packages="${packages}">\n\n${formatChanges(entries, labels)}</Changes>\n\n`;
+    out += `<Changes type="${BUMP_TYPES[bump]}" packages="${packages}">\n\n${entries.map(formatChange).join('')}</Changes>\n\n`;
   }
   return `${out}</Release>\n\n`;
 }
@@ -241,21 +151,14 @@ async function main() {
   const versions = parseGroupedChangelog(
     await fs.readFile(CHANGELOG_FILE, 'utf8'),
   );
-  // From every change, so a component has the same name in every version
-  const labels = prefixLabels(versions);
   const published = await figmaPublishedDates();
 
   let releases = '';
   for (const [version, changes] of versions) {
-    releases += formatRelease(
-      version,
-      changes,
-      {
-        date: getReleaseDate(version),
-        figmaPublished: published.get(version),
-      },
-      labels,
-    );
+    releases += formatRelease(version, changes, {
+      date: getReleaseDate(version),
+      figmaPublished: published.get(version),
+    });
   }
 
   const latestVersion = [...versions.keys()][0];
