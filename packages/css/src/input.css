@@ -10,24 +10,24 @@
   --dsc-input-font-size: max(1rem, 1em); /* Minimum 16px to prevent zoom in iOS, but allow inheriting font-size */
   --dsc-input-line-height: var(--ds-line-height-md);
   /* Background */
-  --dsc-input-background--readonly: var(--ds-color-neutral-surface-tinted);
-  --dsc-input-background: var(--ds-color-neutral-surface-default);
+  --dsc-input-background--readonly: var(--ds-color-surface-muted);
+  --dsc-input-background: var(--ds-color-surface-default);
   /* Border */
-  --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
-  --dsc-input-border-color: var(--ds-color-neutral-border-default);
+  --dsc-input-border-color--readonly: var(--ds-color-border-muted);
+  --dsc-input-border-color: var(--ds-color-border-muted);
   --dsc-input-border-radius: var(--ds-border-radius-md);
   --dsc-input-border-style: solid;
   --dsc-input-border-width--toggle: max(var(--ds-border-width-default), calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
   --dsc-input-border-width: var(--ds-border-width-default);
   /* hover */
-  --dsc-input-outline-color--hover: var(--ds-color-neutral-border-default);
+  --dsc-input-outline-color--hover: var(--ds-color-border-default);
   --dsc-input-outline-color--toggle--hover: var(--dsc-input-accent-color);
   --dsc-input-outline-width--hover: var(--ds-border-width-default);
   --dsc-input-outline-style--hover: solid;
   /* Color */
-  --dsc-input-color--readonly: var(--ds-color-neutral-text-default);
+  --dsc-input-color--readonly: var(--ds-color-text-muted);
   --dsc-input-color-placeholder: color-mix(in srgb, var(--dsc-input-color), transparent 30%);
-  --dsc-input-color: var(--ds-color-neutral-text-default);
+  --dsc-input-color: var(--ds-color-text-default);
   /* Stroke is used as the dot in radio, and checkmark in checkboxes */
   --dsc-input-stroke-color: var(--ds-color-base-contrast-default);
   --dsc-input-stroke-color--invalid: var(--ds-color-danger-base-contrast-default);

@@ -10,9 +10,9 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useThemeStore } from '~/model/theme-store';
 import {
+  canRemoveColor,
   canRenameColor,
   newColorName,
-  REQUIRED_COLOR,
   removeThemeColor,
   setThemeColor,
 } from '~/model/theme-workspace';
@@ -181,13 +181,14 @@ export const ColorSettings = () => {
           }}
           onRemove={() => confirm('remove')}
           canRename={canRenameColor(editor.name)}
-          canRemove={editor.name !== REQUIRED_COLOR}
+          canRemove={canRemoveColor(
+            colors.map((color) => color.name),
+            editor.name,
+          )}
           info={
-            editor.name === REQUIRED_COLOR
-              ? t('colorEditor.neutral-info')
-              : canRenameColor(editor.name)
-                ? undefined
-                : t('colorEditor.severity-info')
+            canRenameColor(editor.name)
+              ? undefined
+              : t('colorEditor.severity-info')
           }
         />
       )}

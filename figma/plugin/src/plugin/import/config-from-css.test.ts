@@ -27,7 +27,6 @@ describe('configFromCss', () => {
             accent: '#0062BA',
             brand1: '#0D7A5F',
             brand2: '#5B3FA0',
-            neutral: '#24272B',
           },
         },
       },
