@@ -234,4 +234,7 @@ Requires Tailwind CSS v3. Import this file first, before designsystemet.no and T
       --color-base-active: var(--ds-color-base-active);
       --color-base-contrast-subtle: var(--ds-color-base-contrast-subtle);
       --color-base-contrast-default: var(--ds-color-base-contrast-default);
+      --color-surface-muted: var(--ds-color-surface-muted);
+      --color-border-muted: var(--ds-color-border-muted);
+      --color-text-muted: var(--ds-color-text-muted);
     }
