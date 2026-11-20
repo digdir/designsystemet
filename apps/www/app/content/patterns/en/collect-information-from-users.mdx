@@ -1,0 +1,234 @@
+---
+title: How to collect information from users
+sidebar_title: Collect information
+category: Basic patterns
+description: When you collect information from users, it should be easy to understand what information they need to provide, why it is needed, and what happens next.
+partners: Digdir, Brønnøysundregistrene
+search_terms: forms, user information, submission, questions, data collection
+date: 2026-09-23
+order: 1
+---
+
+<Card data-color='brand3' variant="tinted">
+  Relevant recommendations from [ELMER 3 (digdir.no)](https://www.digdir.no/standarder/elmer-enklare-og-meir-effektiv-rapportering/1679) are renewed and continued here, as part of the work on shared patterns for good forms and data collection flows.
+</Card>
+
+To collect information or ask users to do something, the solution must meet legal requirements for universal design, privacy and good administrative practice. This guide shows what you should consider beyond the minimum requirements, from needs and data sources to design and maintenance. The goal is for users to have their rights safeguarded and to be able to complete the task in a safe and predictable way.
+
+## Preparation: Clarify purpose, needs and responsibilities
+
+Before you build the service or flow, clarify what the solution should do, why you need the information and how it will be managed. This makes it easier to choose the right channel, the right level of guidance, the right type of field and the right order of questions.
+
+- What do users want to achieve?
+- What is the purpose of collecting the information?
+- What information must be collected, and what is your legal basis for asking for it?
+- Does the information already exist in registers, case management systems or other sources you can use?
+- Does the task need to be solved with a form, or can you achieve the purpose in another way?
+- Can the information be retrieved or submitted where users already work, for example in a case management system?
+- Who owns the solution, the data and its ongoing management?
+
+## Only ask for the information you need
+
+Start by assessing what information is actually needed to complete the task. Avoid asking for information that is "nice to have", or that you already have access to. Feel free to ask clarifying questions and for choices that make it possible to adapt the rest of the flow, even if the answer itself will not be submitted.
+
+- Do not ask for information you already have access to, for example from open registers or sources you have a legal basis to retrieve information from.
+- Avoid optional fields where possible. Read more about [required and optional form fields](/en/patterns/required-and-optional-fields).
+- Do not ask users to enter the same information more than once.
+- Explain why you need the information if it is not obvious.
+- Collect the information as late as possible, when it is relevant to users.
+- Place follow-up questions directly below the choice that triggers them, or later in the flow if necessary.
+
+For example, do not ask for attachments before a choice indicates that attachments are required. Instead, ask for the attachment immediately after the choice that triggers the requirement. There is no need to gather all attachment requirements at the end, or to show a general attachment step before you know whether attachments are needed.
+
+This is related to the [once-only principle (digdir.no)](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061): users should not have to provide the same information more than once if the organisation can retrieve or reuse it in a safe and lawful way.
+
+## Adapt to the target group and situation
+
+Different user groups can have different needs for guidance, flexibility and support. Some will fill in information once as private individuals, while others do the same task often as part of their working day.
+
+Find out who will use the solution, and what situation they are in when they collect or submit information. Consider whether users need a step-by-step process, a shorter flow or support in a case management system they already use.
+
+Adapt language, help texts and examples to the target group. Test the solution with users who resemble the actual target groups.
+
+Clearly show who users are signed in as and who they represent in the context of the data collection. Follow the [pattern for representation and signing in](/en/patterns/representation).
+
+## Divide the task into understandable parts
+
+Large forms are easier to fill in when the questions are divided into logical parts. Content on the same page or in the same section should clearly belong together.
+
+- Group questions about the same topic.
+- Use short and descriptive headings for each part.
+- Avoid too many questions on the same page.
+- Show where users are in the process when the form has several steps.
+
+If several fields belong together, use [Fieldset](/en/components/docs/fieldset/overview) to give the fields a shared heading and context.
+
+Also make sure the name of the service is clear on all pages in the flow. The name should be based on the user's goal or explain what kind of information is being collected.
+
+Make sure there are clear and predictable buttons for navigating between steps and for completing the task. See the [pattern for placement, order and language in buttons](/en/patterns/button-placement-and-order).
+
+### Let users take breaks in long processes
+
+In large or complex forms, progress and entered data should be saved along the way. Make it safe for users to stop, to look up information and continue filling in the form later. Also make sure data is saved in a way that lets users continue after unexpected interruptions, such as power outages.
+
+## Write questions and labels users understand
+
+Use words that are natural to users, not internal terms from the system or regulations. Questions and labels should make it clear what users need to fill in. Use help text when users need an explanation, format requirements or examples, and use the same term throughout the form.
+
+Avoid placeholder text as the only explanation. It disappears when users start typing, and is not enough to explain what the field is about.
+
+Read more about [labels and questions in forms](/en/best-practices/content-work/questions).
+
+## Choose the right type of field
+
+The field you choose should match the type of information users need to provide. The right field makes it easier to understand what is expected and reduces the risk of errors.
+
+- Use [Textfield](/en/components/docs/textfield/overview) for short answers.
+- Use [Textarea](/en/components/docs/textarea/overview) when users need to write longer free text.
+- Use [Radio](/en/components/docs/radio/overview) when users need to choose one option.
+- Use [Checkbox](/en/components/docs/checkbox/overview) when users can choose several options or confirm something.
+- Use [Select](/en/components/docs/select/overview) with caution. It can make it harder to get an overview of the options.
+- Use [FileUpload](/en/components/docs/file-upload/overview) only when users actually need to upload documentation.
+- Use [Switch](/en/components/docs/switch/overview) only for settings in forms, not for choices and data that will be submitted.
+
+## When information is prefilled or retrieved from other sources
+
+If information is prefilled, it should be clear where the information comes from, and how users can change it if needed.
+
+Information users cannot change is shown as plain text, not in locked form fields.
+
+<Image
+  src="/img/patterns/collect-information/collect-information-prefill.png"
+  alt=""
+  boxShadow={false}
+  caption='Example of prefilled information that users can confirm or change.'
+/>
+
+Do not preselect options in radio groups or dropdown menus, but feel free to show the most frequently used options first.
+
+<div className="dodont-row">
+  <DoDont story="DontPreselectedOption">
+Do not preselect an option. It makes it easy to move on without considering the question, and you cannot know whether users have actually made a choice.
+  </DoDont>
+  <DoDont story="DoMostUsedOptionFirst">
+Let users choose for themselves, but place the most frequently used options at the top. Here, Norwegian and Sami come first, separated from the other languages by a line. The rest are in alphabetical order.
+  </DoDont>
+</div>
+
+## Help users avoid errors
+
+It is better to prevent errors than to correct them afterwards. Give users enough information before they fill in the form, and make sure the system accepts common variations in how information is entered.
+
+Some concrete measures can make it easier to fill in correctly:
+
+- Show format requirements before users fill in the field.
+- Accept common ways of writing where possible, for example spaces in phone numbers, or slashes, hyphens and full stops as separators in dates.
+- Use autocomplete where the field concerns users' own personal information.
+- Show a character limit if the field has a maximum number of characters.
+- Let users go back and change their answers.
+- Warn users about actions and choices that will delete previously entered information, or if they try to navigate away from an incomplete session where data has not been saved.
+
+If users still make mistakes, see the pattern for [user-triggered error messages](/en/patterns/errors).
+
+## Provide help, accessibility and maintenance
+
+Users should be able to get help when they are stuck. Provide access to contact information, the privacy statement and other important background information where users need it.
+
+The solution must work on the screens and platforms the target group uses. Make sure it works on both small and large screens, and respect users' settings, such as light or dark mode and reduced motion.
+
+Test the solution with the target group, and review the content when needed. Ensure traceability if questions, labels or guidance change over time.
+
+## Let users review before submitting
+
+Before users submit information, they should be able to review what they have filled in. This is especially important when the submission has consequences, or when the form consists of several steps.
+
+- Show a summary of the answers before submission.
+- Make it easy to go back and change information.
+- Clearly state what happens when users submit.
+
+## Give users information after submission
+Submission is not the end of the service, but often part of a dialogue. Users must get an immediate confirmation, know what is expected next, and be able to easily follow the case over time.
+
+### Show the information where users are
+The main rule is that all information, receipts, status and responses should be shown directly in the user interface, whether on the website, a signed-in page, an app or a case management system. Non-web documents (such as PDF) should never be the primary way of communicating information.
+- **Give an immediate receipt in the interface:** Confirm that the submission has been received, with date, time and a unique reference (for example a case number or archive reference). Also send the receipt to the submitter's email address, Digipost or Altinn inbox. This receipt should include a link to a place where users can follow the case.
+- **Show submitted information directly:** Let users see what was submitted in the interface they are using. Downloading documents should only be a secondary option (or for files users have uploaded themselves).
+- **Present the result directly:** With automated case processing, the result, decision and justification should be shown directly in the interface, not wrapped in attached documents.
+- **Set clear expectations for the next steps:** With manual case processing, you must state the expected processing time, who is handling the case, and how users will be notified of updates.
+- **Make it easy to submit additional information:** Explain how users can add new information or documentation, and which deadlines apply.
+- **Create a coherent dialogue:** Avoid splitting the follow-up into separate letters, emails or messages without context. Consider using national common solutions such as **[Dialogporten (digdir.no)](https://samarbeid.digdir.no/dataaltinnno/dialogporten/2940)** to gather status, messages, timeline and further actions in one structured dialogue thread.
+- **Allow room for comments:** Give users the option to add a supplementary comment or information before submission if the case requires extra context. If relevant, explain how such additional information can be submitted after submission.
+
+<Image
+  src="/img/patterns/collect-information/collect-information-receipt.png"
+  alt=""
+  boxShadow={false}
+  caption='Example of a receipt shown after submission, with information about follow-up and the option to change or add to the submitted information.'
+/>
+
+## Relevant WCAG criteria
+
+See also these relevant WCAG criteria when collecting information from users:
+
+- **[1.3.1 Info and Relationships (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html):**  
+  Visual structures and relationships (such as labels, instructions and groupings with `Fieldset`) must be conveyed programmatically to assistive technology.
+- **[1.3.5 Identify Input Purpose (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html):**  
+  The browser should be able to automatically suggest and prefill users' own information (such as name, address and email via `autocomplete`), which saves time and prevents typing errors.
+- **[2.4.6 Headings and Labels (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html):**  
+  Headings, section titles and field labels are unique, concise and describe exactly what is expected of users.
+- **[3.2.2 On Input (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/on-input.html):**  
+  Changing the value of a field or selecting a radio button should never automatically submit data or unexpectedly change the context of the page without users being informed in advance.
+- **[3.3.1 Error Identification (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html):**  
+  When an input error occurs, the error must be detected, described in text and point directly to the field concerned.
+- **[3.3.2 Labels or Instructions (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html):**  
+  All fields that require input must have visible and explanatory labels or instructions, including required formats before filling in.
+- **[3.3.3 Error Suggestion (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion.html):**  
+  If the system detects an incorrect format or missing information, users must get a concrete and understandable suggestion for how to correct the error.
+- **[3.3.4 Error Prevention (Legal, Financial, Data) (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/error-prevention-legal-financial-data.html):**  
+  For submissions with legal or financial consequences, users must be able to review and correct the information in a summary before final submission.
+- **[4.1.2 Name, Role, Value (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html):**  
+  Ensures that all interactive components and input fields have the correct name, role and updated state, which is conveyed to screen readers and other assistive technologies.
+
+## Relevant sources and regulations
+
+This pattern builds on national architecture principles, digitalisation strategies and established administrative law requirements. Most of the sources are in Norwegian.
+
+### Laws, regulations and good administrative practice
+
+* **[Public Administration Act – forvaltningsloven (lovdata.no)](https://lovdata.no/lov/1967-02-10):**
+  * **Section 11 Duty to provide guidance:** The administration has a duty to guide users within its area of responsibility, so that citizens can safeguard their rights and obligations.
+  * **Section 17 Duty to investigate:** The administrative body must ensure that the case is as well informed as possible before a decision is made, without placing an unnecessary burden on users.
+  * **Section 15 a Electronic communication:** Facilitates secure electronic interaction between citizens and the administration.
+* **[General Data Protection Regulation (GDPR) Article 5 (lovdata.no)](https://lovdata.no/lov/2018-06-15-38/gdpr/a5):**
+  * **Principles relating to processing of personal data:** In particular the principles of *lawfulness and fairness*, *purpose limitation*, *data minimisation* (do not collect more than necessary) and *accuracy*.
+* **[eAdministration Regulations – eForvaltningsforskriften (lovdata.no)](https://lovdata.no/forskrift/2004-06-25-988):**
+  * Regulates requirements for electronic case processing, secure authentication, authorisations and electronic signatures.
+* **[Regulations on universal design of ICT solutions (lovdata.no)](https://lovdata.no/forskrift/2013-06-21-732):**
+  * Requires public and private organisations to follow the requirements in WCAG 2.1 at level A and AA.
+* **[Archives Act and Archives Regulations – arkivlova og arkivforskriften (lovdata.no)](https://lovdata.no/lov/1992-12-04-126):**
+  * Requirements for registration, traceability and archiving of submitted information and documentation.
+* **[Architecture principles: principle 4 share and reuse data (digdir.no)](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061)**
+
+### Strategies and architecture principles for the public sector
+
+* **[Overarching architecture principles for digitalisation of the public sector (digdir.no)](https://www.digdir.no/nasjonal-arkitektur/overordnede-arkitekturprinsipper/1066):**
+  * *Start with users' needs:* Services should be designed holistically and adapted to users' life events or situations.
+  * *Share and reuse data:* Public organisations should share data with each other to avoid duplicate reporting.
+  * *Build trust:* Ensure transparency about what information is collected and how it is processed.
+* **[National digitalisation strategy 2024–2030 (regjeringen.no)](https://www.regjeringen.no/no/dokumenter/nasjonal-digitaliseringsstrategi-2024-2030/id3054178/):**
+  * "The digital Norway of the future" sets clear goals for coherent services, increased data sharing and automation of processes.
+* **[The once-only principle (digdir.no)](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061)** means that citizens and businesses should not have to provide information that the public sector already has access to. Before you ask users to fill in information, find out whether the data can be retrieved and reused from existing registers or case management systems in a lawful and secure way.
+
+### Standards and professional guidance
+
+* **[ELMER 3: Guidelines for user interfaces in public online forms (brukskvalitet.brreg.no)](https://brukskvalitet.brreg.no/):**
+  * Mandatory standard under *Regulations on IT standards in public administration, section 11*, whose principles and recommendations are continued and modernised in this pattern.
+* **[The Authority for Universal Design of ICT's guidance on forms (uutilsynet.no)](https://www.uutilsynet.no/veiledning/skjema/38):**
+  * Guidance on statutory accessibility requirements for structure, labels and error handling.
+* **[Plain language in digital services (sprakradet.no)](https://www.sprakradet.no/Klarsprak/):**
+  * The Language Council of Norway's guidelines for clear, user-friendly and precise language in public digital services.
+
+<Contributors
+  headingLevel={2}
+  authors={['Roy Halvor Frimanslund (Brønnøysundregistrene)', 'Marianne Røsvik (Digdir)']}
+/>
