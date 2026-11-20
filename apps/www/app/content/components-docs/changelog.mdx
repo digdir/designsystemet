@@ -19,42 +19,6 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- `base-contrast-default` is now chosen so it has enough contrast against both `base-default` and `base-hover`, not only `base-default`. Some mid-tone colors get black instead of white, mostly in dark mode, and `base-contrast-subtle` follows the same direction. ([#5623](https://github.com/digdir/designsystemet/pull/5623))
-
-  <div data-packages><Tag>CLI</Tag></div>
-
-- Re-export custom element types from `@digdir/designsystemet-web` (`DSErrorSummaryElement`, `DSFieldElement` etc.) ([#5644](https://github.com/digdir/designsystemet/pull/5644))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **config**
-
-  - A theme with exactly three colors named `main`, `support` and `neutral` is no longer mistaken for the old color categories and migrated. ([#5633](https://github.com/digdir/designsystemet/pull/5633))
-
-    <div data-packages><Tag>CLI</Tag></div>
-
-  - Color names can no longer start or end with a hyphen, or have two hyphens in a row. Names like `-brand`, `brand-` and `brand--2` are rejected; `brand-2` is still valid. ([#5633](https://github.com/digdir/designsystemet/pull/5633))
-
-    <div data-packages><Tag>CLI</Tag></div>
-
-- **Size:** Some sizes in the Large size mode are 1px larger, as intended. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
-
-  | Variable | Large |
-  |---|---|
-  | `size/3` | 13 → 14 |
-  | `size/6` | 27 → 28 |
-  | `size/9` | 41 → 42 |
-  | `size/12` | 55 → 56 |
-  | `size/15` | 69 → 70 |
-  | `size/18` | 83 → 84 |
-  | `size/30` | 139 → 140 |
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>Figma plugin</Tag><Tag>Figma UI kit</Tag></div>
-
-- **Tabs:** Use `DSTabsElement` instead of `DSTabElement` as the type for `ref` and props on the root `Tabs` component. ([#5644](https://github.com/digdir/designsystemet/pull/5644))
-
-  <div data-packages><Tag>React</Tag></div>
-
 - **Typography:** Font sizes in the Small and Large size modes now match code. Headings change the most: they get bigger in Small and smaller in Large. Medium does not change. ([#5609](https://github.com/digdir/designsystemet/issues/5609)) (thanks @ssb-cgn) ([#5647](https://github.com/digdir/designsystemet/pull/5647))
 
   | Variable | Small | Large |
@@ -72,9 +36,43 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag><Tag>Figma plugin</Tag><Tag>Figma UI kit</Tag></div>
 
+- **Size:** Some sizes in the Large size mode are 1px larger, as intended. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
+
+  | Variable | Large |
+  |---|---|
+  | `size/3` | 13 → 14 |
+  | `size/6` | 27 → 28 |
+  | `size/9` | 41 → 42 |
+  | `size/12` | 55 → 56 |
+  | `size/15` | 69 → 70 |
+  | `size/18` | 83 → 84 |
+  | `size/30` | 139 → 140 |
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>Figma plugin</Tag><Tag>Figma UI kit</Tag></div>
+
+- **config**: A theme with exactly three colors named `main`, `support` and `neutral` is no longer mistaken for the old color categories and migrated. ([#5633](https://github.com/digdir/designsystemet/pull/5633))
+
+  <div data-packages><Tag>CLI</Tag></div>
+
 - Update npm non-major dependencies ([#5613](https://github.com/digdir/designsystemet/pull/5613))
 
   <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- `base-contrast-default` is now chosen so it has enough contrast against both `base-default` and `base-hover`, not only `base-default`. Some mid-tone colors get black instead of white, mostly in dark mode, and `base-contrast-subtle` follows the same direction. ([#5623](https://github.com/digdir/designsystemet/pull/5623))
+
+  <div data-packages><Tag>CLI</Tag></div>
+
+- **config**: Color names can no longer start or end with a hyphen, or have two hyphens in a row. Names like `-brand`, `brand-` and `brand--2` are rejected; `brand-2` is still valid. ([#5633](https://github.com/digdir/designsystemet/pull/5633))
+
+  <div data-packages><Tag>CLI</Tag></div>
+
+- **Tabs**: Use `DSTabsElement` instead of `DSTabElement` as the type for `ref` and props on the root `Tabs` component. ([#5644](https://github.com/digdir/designsystemet/pull/5644))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- Re-export custom element types from `@digdir/designsystemet-web` (`DSErrorSummaryElement`, `DSFieldElement` etc.) ([#5644](https://github.com/digdir/designsystemet/pull/5644))
+
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -98,6 +96,17 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- **CLI:** New `output` field for choosing what the CLI creates. It defaults to `["css"]`. Each output is saved in a default folder, which you can change with `dir`: ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+  - `"css"`: CSS, in `designsystemet`
+  - `"types"`: type declarations, in `designsystemet`
+  - `"design-tokens"`: design tokens, in `designsystemet/design-tokens`
+
+  <div data-packages><Tag>CLI</Tag></div>
+
+- **CLI:** Set `cleanDir` to `true` on an output in the new `output` field to delete the files in its `dir` before generating files. `cleanDir` is `false` by default, like `clean`. Design tokens that are built from (`tokensDir`), and folders of outputs with `cleanDir: false`, are kept when they are inside a cleaned folder. Before deleting anything, the CLI stops with an error if a cleaned folder contains the config file, is one of those folders, is a symlink, or has a symlink on the way to one of them or to another output. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+  <div data-packages><Tag>CLI</Tag></div>
+
 - New `tailwind` option on the `css` output. Set this to the desired Tailwind version to generate `<theme>.tailwind.css`. Defaults to `false`, which does not generate a Tailwind file. ([#5438](https://github.com/digdir/designsystemet/pull/5438))
   - `"v3"` generates the same file as before.
   - `"v4"` uses `@theme inline`, so Tailwind utilities reference the `--ds-*` variables directly and `data-color`, `data-color-scheme` and `data-size` also apply to them, at any depth in the DOM.
@@ -107,19 +116,6 @@ latestVersion: 1.24.1
 - New `ds-focus--within` helper class that adds the focus ring when the element or any of its descendants have focus (`:focus-within`). ([#5569](https://github.com/digdir/designsystemet/pull/5569))
 
   <div data-packages><Tag>CSS</Tag></div>
-
-- **CLI**
-
-  - New `output` field for choosing what the CLI creates. It defaults to `["css"]`. Each output is saved in a default folder, which you can change with `dir`: ([#5416](https://github.com/digdir/designsystemet/pull/5416))
-    - `"css"`: CSS, in `designsystemet`
-    - `"types"`: type declarations, in `designsystemet`
-    - `"design-tokens"`: design tokens, in `designsystemet/design-tokens`
-
-    <div data-packages><Tag>CLI</Tag></div>
-
-  - Set `cleanDir` to `true` on an output in the new `output` field to delete the files in its `dir` before generating files. `cleanDir` is `false` by default, like `clean`. Design tokens that are built from (`tokensDir`), and folders of outputs with `cleanDir: false`, are kept when they are inside a cleaned folder. Before deleting anything, the CLI stops with an error if a cleaned folder contains the config file, is one of those folders, is a symlink, or has a symlink on the way to one of them or to another output. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
-
-    <div data-packages><Tag>CLI</Tag></div>
 
 - **CSS:** Ensure utility classes such as `.ds-focus` and `.ds-icon` always take precedence over component by assigning them to a new CSS layer `ds.utils`, ordered after `ds.components`. For example `ds-sr-only` will now correctly take precedence over `ds-label`. ([#5594](https://github.com/digdir/designsystemet/pull/5594))
 
@@ -131,6 +127,10 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag></div>
 
+- **Deprecated:** Commands `token create` and `token build`. Use `designsystemet` with new `output` field in `designsystemet.config.json` to configure outputs. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+  <div data-packages><Tag>CLI</Tag></div>
+
 - Deprecated unused design token `link.color.visited`, CSS custom property `--ds-link-color-visited` and config option `overrides.linkVisited`. To style visited links, style `.ds-link:visited` instead. ([#5574](https://github.com/digdir/designsystemet/pull/5574))
 
   <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag></div>
@@ -139,85 +139,67 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- Add banner about usage to generated CSS theme and tailwind files. ([#5570](https://github.com/digdir/designsystemet/pull/5570))
+- Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479), [#5506](https://github.com/digdir/designsystemet/pull/5506), [#5521](https://github.com/digdir/designsystemet/pull/5521), [#5553](https://github.com/digdir/designsystemet/pull/5553), [#5588](https://github.com/digdir/designsystemet/pull/5588))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Deprecated:** `outDir` and `clean` are deprecated in the Config schema, and replaced by `output[].dir` and `output[].cleanDir` for the respective output type. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
 
   <div data-packages><Tag>CLI</Tag></div>
-
-- Remove `@navikt/aksel-icons` as a dependency ([#5514](https://github.com/digdir/designsystemet/pull/5514))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- Automatically load relevant helpers when using isolated component files (`dialog` loads `invokers`, `field` loads `readonly`, `togglegroup` loads `readonly` and `focusgroup`) ([#5447](https://github.com/digdir/designsystemet/pull/5447))
-
-  <div data-packages><Tag>Web</Tag></div>
-
-- **Alert, Error summary, Table:** Revert `border-radius` from `--ds-border-radius-lg` to `--ds-border-radius-md` to harmonize with sibling elements ([#5440](https://github.com/digdir/designsystemet/pull/5440))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **AvatarStack:** Now stable, please switch from `EXPERIMENTAL_AvatarStack` to `AvatarStack` ([#5496](https://github.com/digdir/designsystemet/pull/5496))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Breadcrumbs, Chip, Dialog, Pagination, Suggestion:** Added English translations of the default labels set in CSS custom properties. ([#5501](https://github.com/digdir/designsystemet/pull/5501))
-
-  <div data-packages><Tag>CSS</Tag></div>
 
 - **CLI:** The config file (`designsystemet.config.json`), including `typography`, is no longer experimental. Future changes to the config schema follow semver and come with automatic migrations. ([#5597](https://github.com/digdir/designsystemet/pull/5597))
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **Combobox**
+- **Tailwind:** Sets CSS `@layer` in `<theme>.tailwind.css` for easier usage ([#5570](https://github.com/digdir/designsystemet/pull/5570))
 
-  - Use inline SVGs for icons ([#5514](https://github.com/digdir/designsystemet/pull/5514))
+  <div data-packages><Tag>CLI</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- Add banner about usage to generated CSS theme and tailwind files. ([#5570](https://github.com/digdir/designsystemet/pull/5570))
 
-  - Removed inline SVGs, now using inline CSS icons ([#5514](https://github.com/digdir/designsystemet/pull/5514))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **data-color:** Sets `color` to `--ds-color-text-default` so text color updates when the color mode changes. ([#5419](https://github.com/digdir/designsystemet/pull/5419))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Deprecated**
-
-  - Commands `token create` and `token build`. Use `designsystemet` with new `output` field in `designsystemet.config.json` to configure outputs. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
-
-    <div data-packages><Tag>CLI</Tag></div>
-
-  - `outDir` and `clean` are deprecated in the Config schema, and replaced by `output[].dir` and `output[].cleanDir` for the respective output type. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
-
-    <div data-packages><Tag>CLI</Tag></div>
-
-- **Dialog**
-
-  - Added a default label through the CSS custom property `--dsc-dialog-close-label` for the close button. ([#5501](https://github.com/digdir/designsystemet/pull/5501))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Deprecates `TriggerContext` and `Trigger`, which will be removed in the next major version. Use native [Invokers Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) on `Button` with `command="show-modal"` (or `command="--show-non-modal"`) and `commandfor` set to the dialog's `id`. ([#5580](https://github.com/digdir/designsystemet/pull/5580))
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - Fixed accessible name warning when heading is present ([#5473](https://github.com/digdir/designsystemet/pull/5473))
-
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
-
-  - Automatically uses the first heading as its accessible name if one is missing, and warns when neither is provided. ([#5447](https://github.com/digdir/designsystemet/pull/5447))
-
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
-
-- **Dropdown, Popover:** Deprecates `TriggerContext` and `Trigger`, which will be removed in the next major version. Use native [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using) on `Button` with `popovertarget` set to the popover's or dropdown's `id`. ([#5580](https://github.com/digdir/designsystemet/pull/5580))
-
-  <div data-packages><Tag>React</Tag></div>
+  <div data-packages><Tag>CLI</Tag></div>
 
 - **Link:** Deprecated CSS custom property `--dsc-link-color--visited`. Style `.ds-link:visited` instead. ([#5574](https://github.com/digdir/designsystemet/pull/5574))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Popover, Dropdown:** Now stay in sync when opened or closed with the native Popover API, such as `showPopover()`, `hidePopover()` or `togglePopover()`, when not using `open`. Before, the next click on the trigger could do nothing, and `Esc` or a click outside would not close it. ([#5582](https://github.com/digdir/designsystemet/pull/5582))
+- **data-color:** Sets `color` to `--ds-color-text-default` so text color updates when the color mode changes. ([#5419](https://github.com/digdir/designsystemet/pull/5419))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Suggestion:** No longer counts the hidden empty option in the screen reader hit count when other options are shown ([#5457](https://github.com/digdir/designsystemet/pull/5457))
+
+  <div data-packages><Tag>CSS</Tag><Tag>Web</Tag></div>
+
+- **Breadcrumbs, Chip, Dialog, Pagination, Suggestion:** Added English translations of the default labels set in CSS custom properties. ([#5501](https://github.com/digdir/designsystemet/pull/5501))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Table:** No longer causes sort buttons to overflow border-radius (thanks @ericbstie) ([#5441](https://github.com/digdir/designsystemet/pull/5441))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Alert, Error summary, Table:** Revert `border-radius` from `--ds-border-radius-lg` to `--ds-border-radius-md` to harmonize with sibling elements ([#5440](https://github.com/digdir/designsystemet/pull/5440))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Table**: Applies hover and sorted background to `th[aria-sort]` instead of nested `<button>` ([#5441](https://github.com/digdir/designsystemet/pull/5441))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Dialog:** Added a default label through the CSS custom property `--dsc-dialog-close-label` for the close button. ([#5501](https://github.com/digdir/designsystemet/pull/5501))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Combobox**: Use inline SVGs for icons ([#5514](https://github.com/digdir/designsystemet/pull/5514))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Dialog:** Deprecates `TriggerContext` and `Trigger`, which will be removed in the next major version. Use native [Invokers Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) on `Button` with `command="show-modal"` (or `command="--show-non-modal"`) and `commandfor` set to the dialog's `id`. ([#5580](https://github.com/digdir/designsystemet/pull/5580))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dropdown, Popover:** Deprecates `TriggerContext` and `Trigger`, which will be removed in the next major version. Use native [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using) on `Button` with `popovertarget` set to the popover's or dropdown's `id`. ([#5580](https://github.com/digdir/designsystemet/pull/5580))
 
   <div data-packages><Tag>React</Tag></div>
 
@@ -225,35 +207,41 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Suggestion:** No longer counts the hidden empty option in the screen reader hit count when other options are shown ([#5457](https://github.com/digdir/designsystemet/pull/5457))
-
-  <div data-packages><Tag>CSS</Tag><Tag>Web</Tag></div>
-
-- **Table**
-
-  - No longer causes sort buttons to overflow border-radius (thanks @ericbstie) ([#5441](https://github.com/digdir/designsystemet/pull/5441))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Applies hover and sorted background to `th[aria-sort]` instead of nested `<button>` ([#5441](https://github.com/digdir/designsystemet/pull/5441))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-- **Tailwind:** Sets CSS `@layer` in `<theme>.tailwind.css` for easier usage ([#5570](https://github.com/digdir/designsystemet/pull/5570))
-
-  <div data-packages><Tag>CLI</Tag></div>
-
-- **Textarea:** Fixed hydration warning ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+- **Combobox:** Removed inline SVGs, now using inline CSS icons ([#5514](https://github.com/digdir/designsystemet/pull/5514))
 
   <div data-packages><Tag>React</Tag></div>
+
+- **Dialog:** Fixed accessible name warning when heading is present ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
 
 - **ToggleGroup:** Now allows overwriting `data-variant` on `ToggleGroup.Item` ([#5455](https://github.com/digdir/designsystemet/pull/5455))
 
   <div data-packages><Tag>React</Tag></div>
 
-- Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479), [#5506](https://github.com/digdir/designsystemet/pull/5506), [#5521](https://github.com/digdir/designsystemet/pull/5521), [#5553](https://github.com/digdir/designsystemet/pull/5553), [#5588](https://github.com/digdir/designsystemet/pull/5588))
+- Remove `@navikt/aksel-icons` as a dependency ([#5514](https://github.com/digdir/designsystemet/pull/5514))
 
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>React</Tag></div>
+
+- **AvatarStack:** Now stable, please switch from `EXPERIMENTAL_AvatarStack` to `AvatarStack` ([#5496](https://github.com/digdir/designsystemet/pull/5496))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Popover, Dropdown:** Now stay in sync when opened or closed with the native Popover API, such as `showPopover()`, `hidePopover()` or `togglePopover()`, when not using `open`. Before, the next click on the trigger could do nothing, and `Esc` or a click outside would not close it. ([#5582](https://github.com/digdir/designsystemet/pull/5582))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dialog:** Automatically uses the first heading as its accessible name if one is missing, and warns when neither is provided. ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Textarea:** Fixed hydration warning ([#5473](https://github.com/digdir/designsystemet/pull/5473))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- Automatically load relevant helpers when using isolated component files (`dialog` loads `invokers`, `field` loads `readonly`, `togglegroup` loads `readonly` and `focusgroup`) ([#5447](https://github.com/digdir/designsystemet/pull/5447))
+
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -279,45 +267,27 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- **CLI**
+- **CLI:** Generated theme CSS now includes forced-colors support for high contrast mode. ([#5403](https://github.com/digdir/designsystemet/pull/5403))
 
-  - Generated theme CSS now includes forced-colors support for high contrast mode. ([#5403](https://github.com/digdir/designsystemet/pull/5403))
+  <div data-packages><Tag>CLI</Tag></div>
 
-    <div data-packages><Tag>CLI</Tag></div>
+- Update npm non-major dependencies ([#5373](https://github.com/digdir/designsystemet/pull/5373))
 
-  - Remove internal functions that were exposed by default. ([#5410](https://github.com/digdir/designsystemet/pull/5410))
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
 
-    <div data-packages><Tag>CLI</Tag></div>
+- **CLI** Remove internal functions that were exposed by default. ([#5410](https://github.com/digdir/designsystemet/pull/5410))
 
-  - Color names in `themes.<theme>.colors` are now validated and may only contain lowercase letters (a-z), digits (0-9) and hyphens (-), matching the names produced by the theme builder. ([#5357](https://github.com/digdir/designsystemet/pull/5357))
+  <div data-packages><Tag>CLI</Tag></div>
 
-    <div data-packages><Tag>CLI</Tag></div>
+- **cli**: Color names in `themes.<theme>.colors` are now validated and may only contain lowercase letters (a-z), digits (0-9) and hyphens (-), matching the names produced by the theme builder. ([#5357](https://github.com/digdir/designsystemet/pull/5357))
 
-- **CSS:** Color tokens now automatically map to the appropriate CSS system colors when forced-colors mode is enabled, such as Windows High Contrast Mode. ([#5403](https://github.com/digdir/designsystemet/pull/5403))
+  <div data-packages><Tag>CLI</Tag></div>
+
+- **Details:** Adjust default `padding-block` from `--ds-size-2` to `--ds-size-4` to match Figma ([#5411](https://github.com/digdir/designsystemet/pull/5411))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Details**
-
-  - Adjust default `padding-block` from `--ds-size-2` to `--ds-size-4` to match Figma ([#5411](https://github.com/digdir/designsystemet/pull/5411))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - The chevron now aligns with the first line of text when the text wraps, matching the Figma design. ([#5421](https://github.com/digdir/designsystemet/pull/5421))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-- **Field**
-
-  - Radio and checkbox descriptions now use a smaller font size to create better visual hierarchy. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Description text now inherits color instead of using a fixed neutral color, making it easier to swap color palettes. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-- **Fieldset:** Description text now inherits color instead of using a fixed neutral color, making it easier to swap color palettes. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
+- **Field:** Radio and checkbox descriptions now use a smaller font size to create better visual hierarchy. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
 
   <div data-packages><Tag>CSS</Tag></div>
 
@@ -325,47 +295,53 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Pagination**
+- **Fieldset:** Description text now inherits color instead of using a fixed neutral color, making it easier to swap color palettes. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
 
-  - Now supports `--dsc-pagination-label-prev` and `--dsc-pagination-label-next` CSS custom properties for defining prev/next labels. ([#5401](https://github.com/digdir/designsystemet/pull/5401)) by [@stianmorsund](https://github.com/stianmorsund)
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **Field:** Description text now inherits color instead of using a fixed neutral color, making it easier to swap color palettes. ([#5372](https://github.com/digdir/designsystemet/pull/5372))
 
-  - Previous and next buttons now respect existing `aria-label` attributes. ([#5401](https://github.com/digdir/designsystemet/pull/5401)) by [@stianmorsund](https://github.com/stianmorsund)
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+- **Details:** The chevron now aligns with the first line of text when the text wraps, matching the Figma design. ([#5421](https://github.com/digdir/designsystemet/pull/5421))
 
-- **Popover**
+  <div data-packages><Tag>CSS</Tag></div>
 
-  - Support floating positioning with `data-placement` without requiring `ds-popover` class name or the internal `--_ds-floating` CSS property. ([#5397](https://github.com/digdir/designsystemet/pull/5397))
+- **CSS:** Color tokens now automatically map to the appropriate CSS system colors when forced-colors mode is enabled, such as Windows High Contrast Mode. ([#5403](https://github.com/digdir/designsystemet/pull/5403))
 
-    <div data-packages><Tag>Web</Tag></div>
+  <div data-packages><Tag>CSS</Tag></div>
 
-  - Patched polyfill to prevent issues in non-Node.js SSR environments ([#5395](https://github.com/digdir/designsystemet/pull/5395))
+- **Pagination:** Now supports `--dsc-pagination-label-prev` and `--dsc-pagination-label-next` CSS custom properties for defining prev/next labels. ([#5401](https://github.com/digdir/designsystemet/pull/5401)) by [@stianmorsund](https://github.com/stianmorsund)
 
-    <div data-packages><Tag>Web</Tag></div>
+  <div data-packages><Tag>CSS</Tag></div>
 
-- **Suggestion**
+- **Suggestion:** Added `--dsc-suggestion-search-icon-spacing`, and increased spacing before search icon from `--ds-size-2` to `--ds-size-3` to match Figma ([#5411](https://github.com/digdir/designsystemet/pull/5411))
 
-  - Added `--dsc-suggestion-search-icon-spacing`, and increased spacing before search icon from `--ds-size-2` to `--ds-size-3` to match Figma ([#5411](https://github.com/digdir/designsystemet/pull/5411))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **Pagination:** Previous and next buttons now respect existing `aria-label` attributes. ([#5401](https://github.com/digdir/designsystemet/pull/5401)) by [@stianmorsund](https://github.com/stianmorsund)
 
-  - Hide the "Create" option on initial render when input is empty ([#5411](https://github.com/digdir/designsystemet/pull/5411))
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
 
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+- **Suggestion:** Hide the "Create" option on initial render when input is empty ([#5411](https://github.com/digdir/designsystemet/pull/5411))
 
-  - Uses `u-combobox@2.1.5` to resolve correct input value when selecting datalist option in multiple mode ([#5407](https://github.com/digdir/designsystemet/pull/5407))
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
 
-    <div data-packages><Tag>Web</Tag></div>
+- **Popover:** Support floating positioning with `data-placement` without requiring `ds-popover` class name or the internal `--_ds-floating` CSS property. ([#5397](https://github.com/digdir/designsystemet/pull/5397))
 
-  - The listbox now matches the width of the input before it is revealed, and keeps matching it when the input is resized while the listbox is open. ([#5393](https://github.com/digdir/designsystemet/pull/5393))
+  <div data-packages><Tag>Web</Tag></div>
 
-    <div data-packages><Tag>Web</Tag></div>
+- **Popover:** Patched polyfill to prevent issues in non-Node.js SSR environments ([#5395](https://github.com/digdir/designsystemet/pull/5395))
 
-- Update npm non-major dependencies ([#5373](https://github.com/digdir/designsystemet/pull/5373))
+  <div data-packages><Tag>Web</Tag></div>
 
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+- **Suggestion:** Uses `u-combobox@2.1.5` to resolve correct input value when selecting datalist option in multiple mode ([#5407](https://github.com/digdir/designsystemet/pull/5407))
+
+  <div data-packages><Tag>Web</Tag></div>
+
+- **Suggestion:** The listbox now matches the width of the input before it is revealed, and keeps matching it when the input is resized while the listbox is open. ([#5393](https://github.com/digdir/designsystemet/pull/5393))
+
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -385,68 +361,25 @@ latestVersion: 1.24.1
 
 ### Minor Changes
 
-- **Search.Clear:** `aria-label` prop deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-clear` or attribute `data-sr-clear` on Search. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+- **Suggestion:** Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
 
-  <div data-packages><Tag>React</Tag></div>
-
-- **Suggestion**
-
-  - Now supports setting localization through [CSS Custom Properties](https://designsystemet.no/no/components/docs/suggestion/code#css-variabler-og-data-attributter) (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
-
-    <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
-
-  - `singular` and `plural` props deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-singular` and `--dsc-suggestion-sr-plural` or attributes `data-sr-singular` and `data-sr-plural`. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
-
-    <div data-packages><Tag>React</Tag></div>
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
 
 - **Suggestion.Clear:** `aria-label` prop deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-clear` or attribute `data-sr-clear` on Suggestion. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
 
   <div data-packages><Tag>React</Tag></div>
 
+- **Suggestion:** `singular` and `plural` props deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-singular` and `--dsc-suggestion-sr-plural` or attributes `data-sr-singular` and `data-sr-plural`. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Search.Clear:** `aria-label` prop deprecated in React. Please use CSS custom properties `--dsc-suggestion-sr-clear` or attribute `data-sr-clear` on Search. ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  <div data-packages><Tag>React</Tag></div>
+
 ### Patch Changes
 
-- **Avatar**
-
-  - Now scales initials text to match avatar size ([#5340](https://github.com/digdir/designsystemet/pull/5340))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
-    - **deprecated**` data-initials` will be removed in next major release.
-
-    <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
-
-- **AvatarStack:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Breadcrumbs:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Card:** Now supports `--dsc-card-link-text-decoration-thickness` and `--dsc-card-link-text-decoration-thickness--hover` aligning underline behaviour with link component ([#5365](https://github.com/digdir/designsystemet/pull/5365))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Chip**
-
-  - Improve optical spacing between input/icon and text, which leads to slightly slimmer chip width. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Removable chips now automatically include screen reader instructions. Customize the instructions using `aria-label` or the new `--dsc-chip-removable-label` CSS custom property. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-- **Dropdown:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Link:** Adjusted the default `--dsc-link-text-decoration-thickness` to `0.06em` (from `0.0625em`) and `--dsc-link-text-decoration-thickness--hover` to `0.12em` (from `0.125em`) for slimmer, more consistent underlines across cards, headings, and links. ([#5365](https://github.com/digdir/designsystemet/pull/5365))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Pagination:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
+- **Tag:** Now gets accessible focus outline if rendered as interactive element to support tag clouds etc. ([#5361](https://github.com/digdir/designsystemet/pull/5361))
 
   <div data-packages><Tag>CSS</Tag></div>
 
@@ -454,51 +387,82 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Search**
+- **Avatar:** Now scales initials text to match avatar size ([#5340](https://github.com/digdir/designsystemet/pull/5340))
 
-  - Now correctly sets state of clear button also when programmatically changing `value` (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+- **Breadcrumbs:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
 
-  - No longer causes hydration warning when server side rendered. ([#5368](https://github.com/digdir/designsystemet/pull/5368))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>React</Tag></div>
+- **Chip:** Improve optical spacing between input/icon and text, which leads to slightly slimmer chip width. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
 
-- **Suggestion**
+  <div data-packages><Tag>CSS</Tag></div>
 
-  - Now correctly renders focus ring in Safari (thanks @ssb-cgn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+- **Dropdown:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
 
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>CSS</Tag></div>
 
-  - Now correctly renders clear button state when rendered asynchronously (thanks @stianmorsund) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+- **AvatarStack:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
 
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>CSS</Tag></div>
 
-  - Now correctly handles internal state when preventing a selection (thanks @olemartinorg) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+- **Chip:** Removable chips now automatically include screen reader instructions. Customize the instructions using `aria-label` or the new `--dsc-chip-removable-label` CSS custom property. ([#5330](https://github.com/digdir/designsystemet/pull/5330))
 
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>CSS</Tag></div>
 
-  - Now correctly renders `data-empty` option when not creatable (thanks @lassopicasso) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+- **Avatar:** Now supports direct text content, removing the need for inner `<span>` or `data-initials`. ([#5340](https://github.com/digdir/designsystemet/pull/5340))
+  - **deprecated**` data-initials` will be removed in next major release.
 
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
 
-- **Tag**
+- **Link:** Adjusted the default `--dsc-link-text-decoration-thickness` to `0.06em` (from `0.0625em`) and `--dsc-link-text-decoration-thickness--hover` to `0.12em` (from `0.125em`) for slimmer, more consistent underlines across cards, headings, and links. ([#5365](https://github.com/digdir/designsystemet/pull/5365))
 
-  - Now gets accessible focus outline if rendered as interactive element to support tag clouds etc. ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **Card:** Now supports `--dsc-card-link-text-decoration-thickness` and `--dsc-card-link-text-decoration-thickness--hover` aligning underline behaviour with link component ([#5365](https://github.com/digdir/designsystemet/pull/5365))
 
-  - Now supports `asChild` property ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>React</Tag></div>
+- **Pagination:** Now correctly announced as a list by VoiceOver in Safari ([#5367](https://github.com/digdir/designsystemet/pull/5367))
 
-- **Tooltips:** Now only warns about missing `tabindex` if not explicitly set and not if label which has implicit interaction ([#5353](https://github.com/digdir/designsystemet/pull/5353))
-
-  <div data-packages><Tag>Web</Tag></div>
+  <div data-packages><Tag>CSS</Tag></div>
 
 - **Utils:** Correctly unescapes quotes in localized CSS custom property texts (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
 
   <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Search:** Now correctly sets state of clear button also when programmatically changing `value` (thanks @unekinn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Suggestion:** Now correctly renders focus ring in Safari (thanks @ssb-cgn) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Suggestion:** Now correctly renders clear button state when rendered asynchronously (thanks @stianmorsund) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Search:** No longer causes hydration warning when server side rendered. ([#5368](https://github.com/digdir/designsystemet/pull/5368))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Tag:** Now supports `asChild` property ([#5361](https://github.com/digdir/designsystemet/pull/5361))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Suggestion:** Now correctly handles internal state when preventing a selection (thanks @olemartinorg) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Suggestion:** Now correctly renders `data-empty` option when not creatable (thanks @lassopicasso) ([#5321](https://github.com/digdir/designsystemet/pull/5321))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Tooltips:** Now only warns about missing `tabindex` if not explicitly set and not if label which has implicit interaction ([#5353](https://github.com/digdir/designsystemet/pull/5353))
+
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -518,15 +482,15 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- Restored the framework type imports in `dist/index.d.ts`, so the JSX/element type augmentations for `ds-*` custom elements resolve again ([#5331](https://github.com/digdir/designsystemet/pull/5331))
+- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302), [#5334](https://github.com/digdir/designsystemet/pull/5334))
 
-  <div data-packages><Tag>Web</Tag></div>
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
 
-- **Alert, Error summary, Table:** Default `border-radius` adjusted to `--ds-border-radius-lg` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
+- **Avatar:** When `data-variant="square"`, default `border-radius` is adjusted to `--ds-border-radius-md` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Avatar:** When `data-variant="square"`, default `border-radius` is adjusted to `--ds-border-radius-md` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
+- **Alert, Errorsummary, Table:** Default `border-radius` adjusted to `--ds-border-radius-lg` to harmonize with element size ([#5326](https://github.com/digdir/designsystemet/pull/5326))
 
   <div data-packages><Tag>CSS</Tag></div>
 
@@ -534,9 +498,9 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- Update npm non-major dependencies ([#5302](https://github.com/digdir/designsystemet/pull/5302), [#5334](https://github.com/digdir/designsystemet/pull/5334))
+- Restored the framework type imports in `dist/index.d.ts`, so the JSX/element type augmentations for `ds-*` custom elements resolve again ([#5331](https://github.com/digdir/designsystemet/pull/5331))
 
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -566,11 +530,15 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **AvatarStack:** `overlap` and `--dsc-avatar-stack-overlap` property now needs to be a valid [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length) ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
+
 - fix default icon scaling not following sizing defined by `data-size`. (Thanks @Svish) ([#5281](https://github.com/digdir/designsystemet/pull/5281))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- Update dependency postcss-import to v17 ([#5278](https://github.com/digdir/designsystemet/pull/5278)) by [@renovate](https://github.com/apps/renovate)
 
   <div data-packages><Tag>CSS</Tag></div>
 
@@ -578,31 +546,25 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **AvatarStack**
+- Update dependency postcss-import to v17 ([#5278](https://github.com/digdir/designsystemet/pull/5278)) by [@renovate](https://github.com/apps/renovate)
 
-  - `overlap` and `--dsc-avatar-stack-overlap` property now needs to be a valid [CSS length](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length) ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
+- **AvatarStack:** Now supports `--dsc-avatar-stack-radius` ([#5234](https://github.com/digdir/designsystemet/pull/5234))
 
-  - Now supports `--dsc-avatar-stack-radius` ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **AvatarStack:** No longer needs `suffix` or `data-suffix`; for example, you can place `+10` text directly inside a trailing `<li>`. ([#5234](https://github.com/digdir/designsystemet/pull/5234))
 
-  - No longer needs `suffix` or `data-suffix`; for example, you can place `+10` text directly inside a trailing `<li>`. ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
+- **AvatarStack:** Now uses `<ul>` and needs `<li>` to wrap each avatar ([#5234](https://github.com/digdir/designsystemet/pull/5234))
 
-  - Now uses `<ul>` and needs `<li>` to wrap each avatar ([#5234](https://github.com/digdir/designsystemet/pull/5234))
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
+- **AvatarStack:** Deprecates `gap`, `overlap` and `avatarSize` props in favour of CSS custom properties ([#5234](https://github.com/digdir/designsystemet/pull/5234))
 
-  - Deprecates `gap`, `overlap` and `avatarSize` props in favour of CSS custom properties ([#5234](https://github.com/digdir/designsystemet/pull/5234))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#5276](https://github.com/digdir/designsystemet/pull/5276))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -622,35 +584,33 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- Now bundled using `tsdown` instead of `rollup` ([#5215](https://github.com/digdir/designsystemet/pull/5215))
+- Update npm non-major dependencies ([#5242](https://github.com/digdir/designsystemet/pull/5242))
 
-  <div data-packages><Tag>React</Tag></div>
-
-- Now bundling the `ESM`, `CJS`, and `UMD` formats using `tsdown`. ([#5222](https://github.com/digdir/designsystemet/pull/5222))
-
-  <div data-packages><Tag>Web</Tag></div>
-
-- **Button:** `loading={true}` no longer sets `aria-disabled="true"` internally ([#5248](https://github.com/digdir/designsystemet/pull/5248))
-
-  <div data-packages><Tag>React</Tag></div>
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
 
 - **Dialog:** no longer blocks content when controlled and closed programatically ([#5252](https://github.com/digdir/designsystemet/pull/5252))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Suggestion**
+- **Button**: `loading={true}` no longer sets `aria-disabled="true"` internally ([#5248](https://github.com/digdir/designsystemet/pull/5248))
 
-  - No longer gives hydration warning when `selected` prop is provided ([#5236](https://github.com/digdir/designsystemet/pull/5236))
+  <div data-packages><Tag>React</Tag></div>
 
-    <div data-packages><Tag>React</Tag></div>
+- Now bundled using `tsdown` instead of `rollup` ([#5215](https://github.com/digdir/designsystemet/pull/5215))
 
-  - no longer moves focus to chip when clicking inside datalist ([#5216](https://github.com/digdir/designsystemet/pull/5216))
+  <div data-packages><Tag>React</Tag></div>
 
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+- **Suggestion:** No longer gives hydration warning when `selected` prop is provided ([#5236](https://github.com/digdir/designsystemet/pull/5236))
 
-- Update npm non-major dependencies ([#5242](https://github.com/digdir/designsystemet/pull/5242))
+  <div data-packages><Tag>React</Tag></div>
 
-  <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+- **Suggestion:** no longer moves focus to chip when clicking inside datalist ([#5216](https://github.com/digdir/designsystemet/pull/5216))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- Now bundling the `ESM`, `CJS`, and `UMD` formats using `tsdown`. ([#5222](https://github.com/digdir/designsystemet/pull/5222))
+
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -680,6 +640,10 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
 - Bump minimum required Node.js version to `>=22.12.0` as required by `commander`. ([#5212](https://github.com/digdir/designsystemet/pull/5212))
 
   <div data-packages><Tag>CLI</Tag></div>
@@ -695,51 +659,41 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **clickdelegatefor:** Now allows native label click, avoiding duplicate input activation. ([#5201](https://github.com/digdir/designsystemet/pull/5201))
-
-  <div data-packages><Tag>Web</Tag></div>
-
-- **ErrorSummary:** Now has consistent padding `--ds-size-7` on all sides ([#5219](https://github.com/digdir/designsystemet/pull/5219))
+- **Errorsummary**: Now has consistent padding `--ds-size-7` on all sides ([#5219](https://github.com/digdir/designsystemet/pull/5219))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **FileUpload**
+- **file-upload**: hover does not give solid border anymore ([#5182](https://github.com/digdir/designsystemet/pull/5182))
 
-  - hover does not give solid border anymore ([#5182](https://github.com/digdir/designsystemet/pull/5182))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **file-upload**: block padding is now `--ds-size-7` ([#5182](https://github.com/digdir/designsystemet/pull/5182))
 
-  - block padding is now `--ds-size-7` ([#5182](https://github.com/digdir/designsystemet/pull/5182))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **Suggestion:** Skip unnecessary matching after clicking option in single mode ([#5207](https://github.com/digdir/designsystemet/pull/5207))
 
-- **Popover**
-
-  - Prevent ResizeObserver loop errors when positioning the option list. ([#5164](https://github.com/digdir/designsystemet/pull/5164))
-
-    <div data-packages><Tag>Web</Tag></div>
-
-  - Won't resize overscroll on scroll while open ([#5175](https://github.com/digdir/designsystemet/pull/5175))
-
-    <div data-packages><Tag>Web</Tag></div>
-
-- **Suggestion**
-
-  - Skip unnecessary matching after clicking option in single mode ([#5207](https://github.com/digdir/designsystemet/pull/5207))
-
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
-
-  - Hide the empty state when options are initially available. ([#5189](https://github.com/digdir/designsystemet/pull/5189))
-
-    <div data-packages><Tag>Web</Tag></div>
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
 
 - **ValidationMessage:** Now correctly sets `aria-invalid="true"` only if `danger` color ([#5149](https://github.com/digdir/designsystemet/pull/5149))
 
   <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
 
-- Update npm non-major dependencies ([#5174](https://github.com/digdir/designsystemet/pull/5174))
+- **Suggestion**: Hide the empty state when options are initially available. ([#5189](https://github.com/digdir/designsystemet/pull/5189))
 
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>Web</Tag></div>
+
+- **clickdelegatefor**: Now allows native label click, avoiding duplicate input activation. ([#5201](https://github.com/digdir/designsystemet/pull/5201))
+
+  <div data-packages><Tag>Web</Tag></div>
+
+- **popover:** Prevent ResizeObserver loop errors when positioning the option list. ([#5164](https://github.com/digdir/designsystemet/pull/5164))
+
+  <div data-packages><Tag>Web</Tag></div>
+
+- **popover**: Won't resize overscroll on scroll while open ([#5175](https://github.com/digdir/designsystemet/pull/5175))
+
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -781,29 +735,29 @@ latestVersion: 1.24.1
 
 ### Minor Changes
 
-- **CLI:** Add support for JSONC config files. Config files may now contain comments and trailing commas, and a `designsystemet.config.jsonc` file is auto-detected in addition to `designsystemet.config.json`. ([#5051](https://github.com/digdir/designsystemet/pull/5051))
+- **cli**: Add support for JSONC config files. Config files may now contain comments and trailing commas, and a `designsystemet.config.jsonc` file is auto-detected in addition to `designsystemet.config.json`. ([#5051](https://github.com/digdir/designsystemet/pull/5051))
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **FileUpload:** New experimental component. Style with the `ds-file-upload` class. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+- **file-upload**: New experimental component. Style with the `ds-file-upload` class. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
 
   <div data-packages><Tag>CSS</Tag></div>
-
-- **focusgroup:** is now automatically polyfilled according to [upcoming specification](https://open-ui.org/components/scoped-focusgroup.explainer/) ([#5095](https://github.com/digdir/designsystemet/pull/5095))
-
-  <div data-packages><Tag>Web</Tag></div>
-
-- **New experimental component:** `FileUpload`. Use it by importing `EXPERIMENTAL_FileUpload` from `@digdir/designsystemet-react`. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
-
-  <div data-packages><Tag>React</Tag></div>
 
 - **Suggestion:** added toggle list button ([#5039](https://github.com/digdir/designsystemet/pull/5039))
 
   <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
 
+- **New experimental component**: `FileUpload`. Use it by importing `EXPERIMENTAL_FileUpload` from `@digdir/designsystemet-react`. ([#4540](https://github.com/digdir/designsystemet/pull/4540))
+
+  <div data-packages><Tag>React</Tag></div>
+
 - **ToggleGroup:** Deprecates `data-toggle-group` in favor of `focusgroup="radiogroup"` with `aria-label`. ([#5095](https://github.com/digdir/designsystemet/pull/5095))
 
   <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **focusgroup:** is now automatically polyfilled according to [upcoming specification](https://open-ui.org/components/scoped-focusgroup.explainer/) ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+  <div data-packages><Tag>Web</Tag></div>
 
 - **Web:** All functionality now supports rendering inside Shadow DOM ([#5095](https://github.com/digdir/designsystemet/pull/5095))
 
@@ -814,6 +768,10 @@ latestVersion: 1.24.1
 - Update dependency tsdown to v0.22.14 ([#5102](https://github.com/digdir/designsystemet/pull/5102))
 
   <div data-packages><Tag>CLI</Tag><Tag>Web</Tag></div>
+
+- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057), [#5072](https://github.com/digdir/designsystemet/pull/5072), [#5103](https://github.com/digdir/designsystemet/pull/5103), [#5122](https://github.com/digdir/designsystemet/pull/5122), [#5136](https://github.com/digdir/designsystemet/pull/5136))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
 
 - fixed missing types error that might occur for `@tokens-studio/types`. ([#5061](https://github.com/digdir/designsystemet/pull/5061))
 
@@ -839,6 +797,10 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- **Tailwind:** `--experimental-tailwind` now also generates `--shadow-*` and `--opacity-disabled` config ([#5139](https://github.com/digdir/designsystemet/pull/5139))
+
+  <div data-packages><Tag>CLI</Tag></div>
+
 - `typography` and `borderRadius` are no longer required in the config file. If omitted, defaults will be used: `typography.fontFamily = "Inter"` and `borderRadius = 4`. ([#5099](https://github.com/digdir/designsystemet/pull/5099))
 
   <div data-packages><Tag>CLI</Tag></div>
@@ -848,15 +810,43 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- **Dialog:** now applies a `z-index` even when opened in non-modal mode (without a backdrop). ([#5123](https://github.com/digdir/designsystemet/pull/5123))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **ds-dropdown:** no longer requires the `ds-popover` class added on the same element. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
 - fix loading order for popover-polyfill ([#5027](https://github.com/digdir/designsystemet/pull/5027))
 
   <div data-packages><Tag>CSS</Tag><Tag>Web</Tag></div>
+
+- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Chip:** now aligns checkbox, radio and x to top when multi-line text ([#5083](https://github.com/digdir/designsystemet/pull/5083))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **React types:** allow all values of `data-color` in all components ([#5082](https://github.com/digdir/designsystemet/pull/5082))
+
+  <div data-packages><Tag>React</Tag></div>
 
 - fix component types for `data-color` and `data-size` to behave the same on components as globally ([#5156](https://github.com/digdir/designsystemet/pull/5156))
 
   <div data-packages><Tag>React</Tag></div>
 
-- Update dependency @oddbird/popover-polyfill to v0.7.1 ([#5101](https://github.com/digdir/designsystemet/pull/5101))
+- **Global types:** added `focusgroup` and `focusgroupstart` to the global HTML attribute types. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dialog:** now adds `aria-haspopup` on focus event to enhance performance and support Shadow DOM rendering ([#5095](https://github.com/digdir/designsystemet/pull/5095))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **clickdelegatefor**: Fixes an issue with using `data-clickdelegatefor` inside of `<details>` ([#5074](https://github.com/digdir/designsystemet/pull/5074))
 
   <div data-packages><Tag>Web</Tag></div>
 
@@ -864,67 +854,25 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>Web</Tag></div>
 
-- **Chip:** now aligns checkbox, radio and x to top when multi-line text ([#5083](https://github.com/digdir/designsystemet/pull/5083))
+- Update dependency @oddbird/popover-polyfill to v0.7.1 ([#5101](https://github.com/digdir/designsystemet/pull/5101))
 
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **clickdelegatefor**
-
-  - Fixes an issue with using `data-clickdelegatefor` inside of `<details>` ([#5074](https://github.com/digdir/designsystemet/pull/5074))
-
-    <div data-packages><Tag>Web</Tag></div>
-
-  - now only skips interactive child elements ([#5080](https://github.com/digdir/designsystemet/pull/5080))
-
-    <div data-packages><Tag>Web</Tag></div>
-
-- **Dialog**
-
-  - now applies a `z-index` even when opened in non-modal mode (without a backdrop). ([#5123](https://github.com/digdir/designsystemet/pull/5123))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - now adds `aria-haspopup` on focus event to enhance performance and support Shadow DOM rendering ([#5095](https://github.com/digdir/designsystemet/pull/5095))
-
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
-
-- **Dropdown:** no longer requires the `ds-popover` class added on the same element. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
-
-  <div data-packages><Tag>CSS</Tag></div>
+  <div data-packages><Tag>Web</Tag></div>
 
 - **Field:** now scopes internal cache to DSFieldElement class to avoid version conflicts ([#5077](https://github.com/digdir/designsystemet/pull/5077))
 
   <div data-packages><Tag>Web</Tag></div>
 
-- **Global types:** added `focusgroup` and `focusgroupstart` to the global HTML attribute types. ([#5133](https://github.com/digdir/designsystemet/pull/5133))
+- **Tooltip:** allow `data-tooltip` with CSS ID selector like `#id` to retrieve text from another element ([#5081](https://github.com/digdir/designsystemet/pull/5081))
 
-  <div data-packages><Tag>React</Tag></div>
+  <div data-packages><Tag>Web</Tag></div>
 
-- **React types:** allow all values of `data-color` in all components ([#5082](https://github.com/digdir/designsystemet/pull/5082))
+- **tooltip**: Now inherits nearest `data-size` ([#5119](https://github.com/digdir/designsystemet/pull/5119))
 
-  <div data-packages><Tag>React</Tag></div>
+  <div data-packages><Tag>Web</Tag></div>
 
-- **Suggestion:** Now support `data-empty` on option, showing empty-state text in normal mode or a create button in `data-creatable` mode. ([#5097](https://github.com/digdir/designsystemet/pull/5097))
+- **clickdelegatefor:** now only skips interactive child elements ([#5080](https://github.com/digdir/designsystemet/pull/5080))
 
-  <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
-
-- **Tailwind:** `--experimental-tailwind` now also generates `--shadow-*` and `--opacity-disabled` config ([#5139](https://github.com/digdir/designsystemet/pull/5139))
-
-  <div data-packages><Tag>CLI</Tag></div>
-
-- **Tooltip**
-
-  - allow `data-tooltip` with CSS ID selector like `#id` to retrieve text from another element ([#5081](https://github.com/digdir/designsystemet/pull/5081))
-
-    <div data-packages><Tag>Web</Tag></div>
-
-  - Now inherits nearest `data-size` ([#5119](https://github.com/digdir/designsystemet/pull/5119))
-
-    <div data-packages><Tag>Web</Tag></div>
-
-- Update npm non-major dependencies ([#5057](https://github.com/digdir/designsystemet/pull/5057), [#5072](https://github.com/digdir/designsystemet/pull/5072), [#5103](https://github.com/digdir/designsystemet/pull/5103), [#5122](https://github.com/digdir/designsystemet/pull/5122), [#5136](https://github.com/digdir/designsystemet/pull/5136))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -954,7 +902,7 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **@charset:** remove redundant `@charset` as this simplifies merging Designsystemet with other CSS files ([#5041](https://github.com/digdir/designsystemet/pull/5041))
+- **@charset**: remove redundant `@charset` as this simplifies merging Designsystemet with other CSS files ([#5041](https://github.com/digdir/designsystemet/pull/5041))
 
   <div data-packages><Tag>CSS</Tag></div>
 
@@ -1002,7 +950,15 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
 
-- **Avatar, Badge, Card, Details, Paragraph, Popover, Skeleton, Tag:** Remove redundant default value for `variant` prop: ([#4999](https://github.com/digdir/designsystemet/pull/4999))
+- **Field, Fieldset:** `disabled` and `read only` styling is now only affected by form elements with class name set to `ds-input` ([#5028](https://github.com/digdir/designsystemet/pull/5028))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Tabs:** enhanced support for server side rendering ([#5032](https://github.com/digdir/designsystemet/pull/5032))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Avatar, Badge, Card, Details, Paragraph, Popover, Skeleton, Tag**: Remove redundant default value for `variant` prop: ([#4999](https://github.com/digdir/designsystemet/pull/4999))
   - Avatar - circle
   - Badge - base
   - Card - default
@@ -1014,15 +970,7 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Field, Fieldset:** `disabled` and `read only` styling is now only affected by form elements with class name set to `ds-input` ([#5028](https://github.com/digdir/designsystemet/pull/5028))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Tabs:** enhanced support for server side rendering ([#5032](https://github.com/digdir/designsystemet/pull/5032))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Tooltip:** Fixes a bug where tooltip would reappear on mousedown outside trigger ([#5012](https://github.com/digdir/designsystemet/pull/5012))
+- **tooltip**: Fixes a bug where tooltip would reappear on mousedown outside trigger ([#5012](https://github.com/digdir/designsystemet/pull/5012))
 
   <div data-packages><Tag>Web</Tag></div>
 
@@ -1044,13 +992,13 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- **base:** `ds-icon` no longer defines `fill`. Users must make sure their icons inherit color the correct way for their icons. ([#5013](https://github.com/digdir/designsystemet/pull/5013))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
 - Update npm non-major dependencies ([#4945](https://github.com/digdir/designsystemet/pull/4945))
 
   <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **base**: `ds-icon` no longer defines `fill`. Users must make sure their icons inherit color the correct way for their icons. ([#5013](https://github.com/digdir/designsystemet/pull/5013))
+
+  <div data-packages><Tag>CSS</Tag></div>
 
 </div>
 
@@ -1079,11 +1027,7 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- Export missing types `DefaultProps` and `Placement` ([#4978](https://github.com/digdir/designsystemet/pull/4978))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Avatar:** Now fully supports rendering as a `<button>` ([#4968](https://github.com/digdir/designsystemet/pull/4968))
+- **Avatar**: Now fully supports rendering as a `<button>` ([#4968](https://github.com/digdir/designsystemet/pull/4968))
   **Button, Tabs, Tag**: No longer shrink inside `display: flex`, preventing unintended multi-line text wrapping
   **Button:** Added missing `--dsc-button-border-radius` CSS custom property
   **Button**: Added missing `--dsc-button-color--active` CSS custom property
@@ -1105,43 +1049,43 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Button:** No longer renders a redundant `data-variant` attribute in HTML when no `variant` is specified. ([#4968](https://github.com/digdir/designsystemet/pull/4968))
+- **Suggestion:** Better handle React async rendering child `<u-datalist>` element ([#4933](https://github.com/digdir/designsystemet/pull/4933))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dialog:** do not trigger `close` event when using controlled mode ([#4965](https://github.com/digdir/designsystemet/pull/4965))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Label**: Removed unneeded default value for `weight` prop. ([#4955](https://github.com/digdir/designsystemet/pull/4955))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Suggestion:** Updated VoiceOver compatibility - both with and without QuickNav ([#4970](https://github.com/digdir/designsystemet/pull/4970))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Dialog:** Apply `autofocus` only for dialog-level animations, not nested element animations ([#4958](https://github.com/digdir/designsystemet/pull/4958))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Button**: No longer renders a redundant `data-variant` attribute in HTML when no `variant` is specified. ([#4968](https://github.com/digdir/designsystemet/pull/4968))
   **Field**: Added missing TypeScript support for `data-position` when using `radio` or `checkbox` inputs.
   **usePagination**: No longer outputs redundant `variant` props
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Dialog**
-
-  - do not trigger `close` event when using controlled mode ([#4965](https://github.com/digdir/designsystemet/pull/4965))
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - Apply `autofocus` only for dialog-level animations, not nested element animations ([#4958](https://github.com/digdir/designsystemet/pull/4958))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Label:** Removed unneeded default value for `weight` prop. ([#4955](https://github.com/digdir/designsystemet/pull/4955))
+- Export missing types `DefaultProps` and `Placement` ([#4978](https://github.com/digdir/designsystemet/pull/4978))
 
   <div data-packages><Tag>React</Tag></div>
-
-- **Popover:** Automatically run Popover API polyfill if needed in older browsers ([#4983](https://github.com/digdir/designsystemet/pull/4983))
-
-  <div data-packages><Tag>Web</Tag></div>
 
 - **Popover, Tooltip, Dropdown:** No longer requires arrow to be drawn by `::before` element to correctly calculate arrow size ([#4951](https://github.com/digdir/designsystemet/pull/4951))
 
   <div data-packages><Tag>Web</Tag></div>
 
-- **Suggestion**
+- **Popover:** Automatically run Popover API polyfill if needed in older browsers ([#4983](https://github.com/digdir/designsystemet/pull/4983))
 
-  - Better handle React async rendering child `<u-datalist>` element ([#4933](https://github.com/digdir/designsystemet/pull/4933))
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - Updated VoiceOver compatibility - both with and without QuickNav ([#4970](https://github.com/digdir/designsystemet/pull/4970))
-
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -1167,79 +1111,73 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
+- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889), [#4910](https://github.com/digdir/designsystemet/pull/4910))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
 - Add deprecation warning for cli options `--main-colors`, `--support-colors`, `--neutral-color`, `--font-family`, `--border-radius` and `--theme`. Use JSON config file instead. ([#4912](https://github.com/digdir/designsystemet/pull/4912))
 
   <div data-packages><Tag>CLI</Tag></div>
+
+- **Dropdown**: Removed hardcoded `font-weight` on some heading elements. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+  <div data-packages><Tag>CSS</Tag></div>
 
 - Added new export for testing experimental changes. Use this by appending `/experimental_v2` to your package import: `@digdir/designsystemet-css/experimental_v2`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
 
   <div data-packages><Tag>CSS</Tag></div>
 
+- **Suggestion**: Added `--dsc-suggestion-option-checkmark-border-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Field**: Added `--dsc-field-description-color`, `--dsc-field-affix-background`, and `--dsc-field-affix-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Fieldset**: Added `--dsc-fieldset-description-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Card**: when using a link in a Card, ensure plain `<a>` tags without `class="ds-link"` also get the correct focus styling. ([#4896](https://github.com/digdir/designsystemet/pull/4896))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Tooltip**: deprecate `type` prop, as it no longer does anything ([#4898](https://github.com/digdir/designsystemet/pull/4898))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Tooltip**: the React component will no longer override existing accessible text. It now correctly sets `aria-description` in that case. If there is no accessible text, `aria-label` will be used as before. ([#4898](https://github.com/digdir/designsystemet/pull/4898))
+
+  <div data-packages><Tag>React</Tag></div>
+
 - **useCheckboxGroup** and **useRadioGroup**: these hooks now also accept the prop `variant`, which sets the variant for all the checkboxes or radios in the group. ([#4864](https://github.com/digdir/designsystemet/pull/4864))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Card:** when using a link in a Card, ensure plain `<a>` tags without `class="ds-link"` also get the correct focus styling. ([#4896](https://github.com/digdir/designsystemet/pull/4896))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Dialog:** Fix dialog with nested dialog getting a close event when the nested one was closed ([#4899](https://github.com/digdir/designsystemet/pull/4899))
+- **Dialog**: Fix dialog with nested dialog getting a close event when the nested one was closed ([#4899](https://github.com/digdir/designsystemet/pull/4899))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Dropdown:** Removed hardcoded `font-weight` on some heading elements. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
+- **Popover:** now correctly calculates width of source element also in Firefox ([#4921](https://github.com/digdir/designsystemet/pull/4921))
 
-  <div data-packages><Tag>CSS</Tag></div>
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
 
-- **ErrorSummary**
-
-  - Now only sets `aria-labelledby` based on heading element if `aria-label` or `aria-labelledby` is not already set, and logs a warning if neither of these are set and no heading element is present. ([#4895](https://github.com/digdir/designsystemet/pull/4895))
-
-    <div data-packages><Tag>Web</Tag></div>
-
-  - Set `role="group"` since the implicit role "generic" does not allow `aria-labelledby`, which is used in the component ([#4895](https://github.com/digdir/designsystemet/pull/4895))
-
-    <div data-packages><Tag>Web</Tag></div>
-
-- **Field:** Added `--dsc-field-description-color`, `--dsc-field-affix-background`, and `--dsc-field-affix-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Fieldset:** Added `--dsc-fieldset-description-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Heading:** fix wrong default in `HeadingProps` for `data-size` ([#4926](https://github.com/digdir/designsystemet/pull/4926))
+- **Popover:** No longer closes with "Escape" key if a Dialog element is open above the popover ([#4788](https://github.com/digdir/designsystemet/pull/4788))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Popover**
+- **Heading**: fix wrong default in `HeadingProps` for `data-size` ([#4926](https://github.com/digdir/designsystemet/pull/4926))
 
-  - now correctly calculates width of source element also in Firefox ([#4921](https://github.com/digdir/designsystemet/pull/4921))
+  <div data-packages><Tag>React</Tag></div>
 
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+- **Error summary**: Now only sets `aria-labelledby` based on heading element if `aria-label` or `aria-labelledby` is not already set, and logs a warning if neither of these are set and no heading element is present. ([#4895](https://github.com/digdir/designsystemet/pull/4895))
 
-  - No longer closes with "Escape" key if a Dialog element is open above the popover ([#4788](https://github.com/digdir/designsystemet/pull/4788))
+  <div data-packages><Tag>Web</Tag></div>
 
-    <div data-packages><Tag>React</Tag></div>
+- **Error summary**: Set `role="group"` since the implicit role "generic" does not allow `aria-labelledby`, which is used in the component ([#4895](https://github.com/digdir/designsystemet/pull/4895))
 
-- **Suggestion:** Added `--dsc-suggestion-option-checkmark-border-color`. ([#4903](https://github.com/digdir/designsystemet/pull/4903))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Tooltip**
-
-  - deprecate `type` prop, as it no longer does anything ([#4898](https://github.com/digdir/designsystemet/pull/4898))
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - the React component will no longer override existing accessible text. It now correctly sets `aria-description` in that case. If there is no accessible text, `aria-label` will be used as before. ([#4898](https://github.com/digdir/designsystemet/pull/4898))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#4889](https://github.com/digdir/designsystemet/pull/4889), [#4910](https://github.com/digdir/designsystemet/pull/4910))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -1259,25 +1197,73 @@ latestVersion: 1.24.1
 
 ### Minor Changes
 
+- **Field / Radio / Checkbox / Switch**: Now supports `data-variant="outline"` for an outlined tile look. ([#4625](https://github.com/digdir/designsystemet/pull/4625))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Suggestion**: `Suggestion.Clear` underlying element changed from `del`to `button type='reset'`. This means types, props and ref are now `HTMLButtonElement` instead of `HTMLModElement`. ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+  <div data-packages><Tag>React</Tag></div>
+
 - **ErrorSummary:** fix `ErrorSummaryProps` and `ref` types to use the correct type; `DSErrorSummaryElement` (instead of `HTMLDivElement`) ([#4817](https://github.com/digdir/designsystemet/pull/4817))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Field / Radio / Checkbox / Switch**
-
-  - Now supports `data-variant="outline"` for an outlined tile look. ([#4625](https://github.com/digdir/designsystemet/pull/4625))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - added `variant='outline' for an outlined tile look` ([#4625](https://github.com/digdir/designsystemet/pull/4625))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Suggestion:** `Suggestion.Clear` underlying element changed from `del`to `button type='reset'`. This means types, props and ref are now `HTMLButtonElement` instead of `HTMLModElement`. ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+- **Field / Radio / Checkbox / Switch**: added `variant='outline' for an outlined tile look` ([#4625](https://github.com/digdir/designsystemet/pull/4625))
 
   <div data-packages><Tag>React</Tag></div>
 
 ### Patch Changes
+
+- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783), [#4809](https://github.com/digdir/designsystemet/pull/4809), [#4859](https://github.com/digdir/designsystemet/pull/4859))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Suggestion**: fixed dropdown so it no longer has a brief flash in wrong position ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Suggestion:** now uses attribute `data-activedescendant` under the hood to add focus styling on option elements ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Suggestion**: fixed icons being invisible in forced colors mode ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **base**: added `.ds-focus--middle` / `.ds-focus--visible--middle` classes for use in the `suggestion` redesign ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Suggestion**: changes to design: ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+  - dropdown border and background-color to neutral
+  - new hover styles on items
+  - adjusted spacings
+  - `multiple` now has checkboxes
+  - CSS variables:
+    - Added:
+      - `--dsc-suggestion-option-background--hover`
+      - `--dsc-suggestion-list-padding`
+      - `--dsc-suggestion-list-offset`
+      - `--dsc-suggestion-option-gap`
+    - Removed:
+      - `--dsc-suggestion-option-border-color`
+    - Changed default value:
+      - `--dsc-suggestion-option-background--selected`
+      - `--dsc-suggestion-option-border-radius`
+      - `--dsc-suggestion-option-padding`
+      - `--dsc-suggestion-list-background`
+      - `--dsc-suggestion-list-gap`
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Suggestion:** fixed an issue where value did not properly clear when moving focus between multiple instances ([#4816](https://github.com/digdir/designsystemet/pull/4816))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Tabs:** fix issue where `aria-controls` combined with `aria-selected` was not respected on initial render ([#4821](https://github.com/digdir/designsystemet/pull/4821))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
 
 - Update `invokers-polyfill` to 1.0.3 ([#4784](https://github.com/digdir/designsystemet/pull/4784))
 
@@ -1289,61 +1275,9 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>Web</Tag></div>
 
-- **base:** added `.ds-focus--middle` / `.ds-focus--visible--middle` classes for use in the `suggestion` redesign ([#4731](https://github.com/digdir/designsystemet/pull/4731))
+- **Suggestion:** fix to ensure input has role `combobox` (not `textbox`) on first render. ([#4816](https://github.com/digdir/designsystemet/pull/4816))
 
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Suggestion**
-
-  - fixed dropdown so it no longer has a brief flash in wrong position ([#4731](https://github.com/digdir/designsystemet/pull/4731))
-
-    <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
-
-  - now uses attribute `data-activedescendant` under the hood to add focus styling on option elements ([#4816](https://github.com/digdir/designsystemet/pull/4816))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - fixed icons being invisible in forced colors mode ([#4731](https://github.com/digdir/designsystemet/pull/4731))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - changes to design: ([#4731](https://github.com/digdir/designsystemet/pull/4731))
-    - dropdown border and background-color to neutral
-    - new hover styles on items
-    - adjusted spacings
-    - `multiple` now has checkboxes
-    - CSS variables:
-      - Added:
-        - `--dsc-suggestion-option-background--hover`
-        - `--dsc-suggestion-list-padding`
-        - `--dsc-suggestion-list-offset`
-        - `--dsc-suggestion-option-gap`
-      - Removed:
-        - `--dsc-suggestion-option-border-color`
-      - Changed default value:
-        - `--dsc-suggestion-option-background--selected`
-        - `--dsc-suggestion-option-border-radius`
-        - `--dsc-suggestion-option-padding`
-        - `--dsc-suggestion-list-background`
-        - `--dsc-suggestion-list-gap`
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - fixed an issue where value did not properly clear when moving focus between multiple instances ([#4816](https://github.com/digdir/designsystemet/pull/4816))
-
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
-
-  - fix to ensure input has role `combobox` (not `textbox`) on first render. ([#4816](https://github.com/digdir/designsystemet/pull/4816))
-
-    <div data-packages><Tag>Web</Tag></div>
-
-- **Tabs:** fix issue where `aria-controls` combined with `aria-selected` was not respected on initial render ([#4821](https://github.com/digdir/designsystemet/pull/4821))
-
-  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
-
-- Update npm non-major dependencies ([#4783](https://github.com/digdir/designsystemet/pull/4783), [#4809](https://github.com/digdir/designsystemet/pull/4809), [#4859](https://github.com/digdir/designsystemet/pull/4859))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -1367,15 +1301,15 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **Card:** use designsystemet focus outline when card itself is a link or button ([#4768](https://github.com/digdir/designsystemet/pull/4768))
+- **card**: use designsystemet focus outline when card itself is a link or button ([#4768](https://github.com/digdir/designsystemet/pull/4768))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Field:** Now respects manually set `aria-invalid` attribute ([#4765](https://github.com/digdir/designsystemet/pull/4765))
+- **Tabs:** Has improved synchronous rendering for easier snapshot testing ([#4745](https://github.com/digdir/designsystemet/pull/4745))
 
   <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
 
-- **Tabs:** Has improved synchronous rendering for easier snapshot testing ([#4745](https://github.com/digdir/designsystemet/pull/4745))
+- **Field:** Now respects manually set `aria-invalid` attribute ([#4765](https://github.com/digdir/designsystemet/pull/4765))
 
   <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
 
@@ -1401,9 +1335,69 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
+- Update npm non-major dependencies ([#4668](https://github.com/digdir/designsystemet/pull/4668), [#4677](https://github.com/digdir/designsystemet/pull/4677), [#4694](https://github.com/digdir/designsystemet/pull/4694))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
 - Pin `@digdir` dependencies ([#4725](https://github.com/digdir/designsystemet/pull/4725))
 
   <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Card**: ensure underline on link in heading has same thickness as in version 1.11.1 ([#4723](https://github.com/digdir/designsystemet/pull/4723))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Link**: Spacing for icons in links are now the same as in version 1.11.1 ([#4722](https://github.com/digdir/designsystemet/pull/4722))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Breadcrumbs:** Renders correcly as `display: block` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **details**: support `details` in nested cards where the inner is variant `default` and the outer is `tinted` ([#4724](https://github.com/digdir/designsystemet/pull/4724))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Link**: Fix spacing when icon is present ([#4707](https://github.com/digdir/designsystemet/pull/4707))
+
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
+
+- **toggle-group**: fix overflow scroll and remove user-agent set inline margins ([#4702](https://github.com/digdir/designsystemet/pull/4702))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Field**: `<ds-field>` should now respect existing `aria-describedby` and `aria-invalid` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Pagination:** fix `PaginationButton` missing some `Button` props ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Tabs**: Now supports programmatically triggering click on controlled `Tabs` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Tabs**: `defaultValue` now works as expected ([#4709](https://github.com/digdir/designsystemet/pull/4709))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Button**: add `command`and `commandfor`as explicit types on `ButtonProps` ([#4676](https://github.com/digdir/designsystemet/pull/4676))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dialog:** Use `ref` in `Dialog.TriggerContext` for better performance ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Field Counter:** Now includes fallback texts to support test environments without CSS ([#4727](https://github.com/digdir/designsystemet/pull/4727))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Field:** No longer uses `CSS.supports` to play nice with Jest + JSDOM ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+
+  <div data-packages><Tag>Web</Tag></div>
 
 - fixed some native keystrokes being ignored if readonly fields were focused ([#4672](https://github.com/digdir/designsystemet/pull/4672))
 
@@ -1421,79 +1415,13 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>Web</Tag></div>
 
-- update dependency @u-elements/u-details to v1 ([#4734](https://github.com/digdir/designsystemet/pull/4734))
-
-  <div data-packages><Tag>Web</Tag></div>
-
 - **All components:** Renders instantly for easier test setup ([#4672](https://github.com/digdir/designsystemet/pull/4672))
 
   <div data-packages><Tag>Web</Tag></div>
 
-- **Breadcrumbs:** Renders correcly as `display: block` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
+- update dependency @u-elements/u-details to v1 ([#4734](https://github.com/digdir/designsystemet/pull/4734))
 
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Button:** add `command`and `commandfor`as explicit types on `ButtonProps` ([#4676](https://github.com/digdir/designsystemet/pull/4676))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Card:** ensure underline on link in heading has same thickness as in version 1.11.1 ([#4723](https://github.com/digdir/designsystemet/pull/4723))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Details:** support `details` in nested cards where the inner is variant `default` and the outer is `tinted` ([#4724](https://github.com/digdir/designsystemet/pull/4724))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Dialog:** Use `ref` in `Dialog.TriggerContext` for better performance ([#4672](https://github.com/digdir/designsystemet/pull/4672))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Field**
-
-  - `<ds-field>` should now respect existing `aria-describedby` and `aria-invalid` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
-
-    <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
-
-  - No longer uses `CSS.supports` to play nice with Jest + JSDOM ([#4672](https://github.com/digdir/designsystemet/pull/4672))
-
-    <div data-packages><Tag>Web</Tag></div>
-
-- **Field.Counter:** Now includes fallback texts to support test environments without CSS ([#4727](https://github.com/digdir/designsystemet/pull/4727))
-
-  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
-
-- **Link**
-
-  - Spacing for icons in links are now the same as in version 1.11.1 ([#4722](https://github.com/digdir/designsystemet/pull/4722))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Fix spacing when icon is present ([#4707](https://github.com/digdir/designsystemet/pull/4707))
-
-    <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
-
-- **Pagination:** fix `PaginationButton` missing some `Button` props ([#4672](https://github.com/digdir/designsystemet/pull/4672))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Tabs**
-
-  - Now supports programmatically triggering click on controlled `Tabs` ([#4672](https://github.com/digdir/designsystemet/pull/4672))
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - `defaultValue` now works as expected ([#4709](https://github.com/digdir/designsystemet/pull/4709))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **ToggleGroup:** fix overflow scroll and remove user-agent set inline margins ([#4702](https://github.com/digdir/designsystemet/pull/4702))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- Update npm non-major dependencies ([#4668](https://github.com/digdir/designsystemet/pull/4668), [#4677](https://github.com/digdir/designsystemet/pull/4677), [#4694](https://github.com/digdir/designsystemet/pull/4694))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>Web</Tag></div>
 
 </div>
 
@@ -1517,9 +1445,41 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- **input**: fix height of empty date and time inputs on iOS Safari ([#4634](https://github.com/digdir/designsystemet/pull/4634))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
 - define `browser` field in `package.json` for easier use client-side in browser and CDN. ([#4646](https://github.com/digdir/designsystemet/pull/4646))
 
   <div data-packages><Tag>CSS</Tag></div>
+
+- **dropdown**: don't style `button, a, [role="button"]` in a nested `<dialog>` ([#4651](https://github.com/digdir/designsystemet/pull/4651))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **dropdown:** selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- Update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Tabs**: `onChange` was not called when keyboard changes active tab ([#4616](https://github.com/digdir/designsystemet/pull/4616))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dropdown**: `className` in subcomponents was not forwarded to DOM-element ([#4655](https://github.com/digdir/designsystemet/pull/4655))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Tabs**: fix controlled version not behaving properly ([#4635](https://github.com/digdir/designsystemet/pull/4635))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **input:** add suppressHydrationWarning as attributes will be added by ds-field ([#4656](https://github.com/digdir/designsystemet/pull/4656))
+
+  <div data-packages><Tag>React</Tag></div>
 
 - update dependency rolldown to v1.0.0-rc.9 ([#4642](https://github.com/digdir/designsystemet/pull/4642))
 
@@ -1529,48 +1489,10 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>Web</Tag></div>
 
-- **Dropdown**
-
-  - don't style `button, a, [role="button"]` in a nested `<dialog>` ([#4651](https://github.com/digdir/designsystemet/pull/4651))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - selector only targeting direct children ([#4656](https://github.com/digdir/designsystemet/pull/4656))
-
-    <div data-packages><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
-
-  - `className` in subcomponents was not forwarded to DOM-element ([#4655](https://github.com/digdir/designsystemet/pull/4655))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Input**
-
-  - fix height of empty date and time inputs on iOS Safari ([#4634](https://github.com/digdir/designsystemet/pull/4634))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - add suppressHydrationWarning as attributes will be added by ds-field ([#4656](https://github.com/digdir/designsystemet/pull/4656))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Popover:** stop positioning non-popovers. ([#4651](https://github.com/digdir/designsystemet/pull/4651))
+- **popover**: stop positioning non-popovers. ([#4651](https://github.com/digdir/designsystemet/pull/4651))
   - This fixes an issue with nested `<dialog>`s in popovers
 
   <div data-packages><Tag>Web</Tag></div>
-
-- **Tabs**
-
-  - `onChange` was not called when keyboard changes active tab ([#4616](https://github.com/digdir/designsystemet/pull/4616))
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - fix controlled version not behaving properly ([#4635](https://github.com/digdir/designsystemet/pull/4635))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([`cc33a61`](https://github.com/digdir/designsystemet/commit/cc33a615610dfd3c5ca43070e0247924828244ee))
-
-  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
 
 </div>
 
@@ -1596,6 +1518,50 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
+- Update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548), [#4573](https://github.com/digdir/designsystemet/pull/4573), [#4607](https://github.com/digdir/designsystemet/pull/4607))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Badge, Button, Spinner, Tabs, Tag**: Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
+
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
+
+- **select**: fixed missing chevron icon when `readonly` ([#4585](https://github.com/digdir/designsystemet/pull/4585))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **badge**: ensure badge is positioned above focus-ring when using `.ds-badge--position` ([#4511](https://github.com/digdir/designsystemet/pull/4511))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **card**: Fix deeply nested `.ds-details` removing padding ([#4576](https://github.com/digdir/designsystemet/pull/4576))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **ToggleGroupItem**: Add missing props for backward compatibility. An internal rewrite from `button` to `label+input` in version v1.12.0 led to a lack of some props on `ToggleGroupItem` related to `button`. ([#4580](https://github.com/digdir/designsystemet/pull/4580))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **toggle-group**: re-introduce support for disabled items ([#4618](https://github.com/digdir/designsystemet/pull/4618))
+
+  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **Details**: use `DetailsHTMLAttributes` type to allow `name` attribute ([#4557](https://github.com/digdir/designsystemet/pull/4557))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dialog**: fixed non-modal Dialog not opening when using `Dialog.Trigger` ([#4611](https://github.com/digdir/designsystemet/pull/4611))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **AvatarStack**: changed underlying element from `figure` to `span` to avoid html-validation issues when used inside a `span` ([#4579](https://github.com/digdir/designsystemet/pull/4579))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **AvatarStack**: replaced tabindex="-1" with no tabindex at all when `expandable`is not set ([#4579](https://github.com/digdir/designsystemet/pull/4579))
+
+  <div data-packages><Tag>React</Tag></div>
+
 - Tooltip now supports being changed programmatically ([#4562](https://github.com/digdir/designsystemet/pull/4562))
 
   <div data-packages><Tag>Web</Tag></div>
@@ -1603,52 +1569,6 @@ latestVersion: 1.24.1
 - Update dependency rolldown to v1.0.0-rc.7 ([#4606](https://github.com/digdir/designsystemet/pull/4606))
 
   <div data-packages><Tag>Web</Tag></div>
-
-- **AvatarStack**
-
-  - changed underlying element from `figure` to `span` to avoid html-validation issues when used inside a `span` ([#4579](https://github.com/digdir/designsystemet/pull/4579))
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - replaced tabindex="-1" with no tabindex at all when `expandable`is not set ([#4579](https://github.com/digdir/designsystemet/pull/4579))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Badge:** ensure badge is positioned above focus-ring when using `.ds-badge--position` ([#4511](https://github.com/digdir/designsystemet/pull/4511))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Badge, Button, Spinner, Tabs, Tag:** Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
-
-  <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
-
-- **Card:** Fix deeply nested `.ds-details` removing padding ([#4576](https://github.com/digdir/designsystemet/pull/4576))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Details:** use `DetailsHTMLAttributes` type to allow `name` attribute ([#4557](https://github.com/digdir/designsystemet/pull/4557))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Dialog:** fixed non-modal Dialog not opening when using `Dialog.Trigger` ([#4611](https://github.com/digdir/designsystemet/pull/4611))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Select:** fixed missing chevron icon when `readonly` ([#4585](https://github.com/digdir/designsystemet/pull/4585))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **ToggleGroup:** re-introduce support for disabled items ([#4618](https://github.com/digdir/designsystemet/pull/4618))
-
-  <div data-packages><Tag>React</Tag><Tag>Web</Tag></div>
-
-- **ToggleGroupItem:** Add missing props for backward compatibility. An internal rewrite from `button` to `label+input` in version v1.12.0 led to a lack of some props on `ToggleGroupItem` related to `button`. ([#4580](https://github.com/digdir/designsystemet/pull/4580))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548), [#4573](https://github.com/digdir/designsystemet/pull/4573), [#4607](https://github.com/digdir/designsystemet/pull/4607))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
 
 </div>
 
@@ -1668,15 +1588,15 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- **Avatar:** fixed an issue where tooltip could not be set ([#4534](https://github.com/digdir/designsystemet/pull/4534))
+- **Avatar**: fixed an issue where tooltip could not be set ([#4534](https://github.com/digdir/designsystemet/pull/4534))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Field:** update counter when `data-limit` attribute changes ([#4535](https://github.com/digdir/designsystemet/pull/4535))
+- **tooltip:** prevent errors when pressing esc before tooltip is mounted ([#4535](https://github.com/digdir/designsystemet/pull/4535))
 
   <div data-packages><Tag>Web</Tag></div>
 
-- **Tooltip:** prevent errors when pressing esc before tooltip is mounted ([#4535](https://github.com/digdir/designsystemet/pull/4535))
+- **field**: update counter when `data-limit` attribute changes ([#4535](https://github.com/digdir/designsystemet/pull/4535))
 
   <div data-packages><Tag>Web</Tag></div>
 
@@ -1698,11 +1618,79 @@ latestVersion: 1.24.1
 
 ### Minor Changes
 
+- **input**: add support for `[aria-readonly='true']` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **field**: add new css variables: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+  `--dsc-field-counter-over: '%d tegn for mye';`
+  `--dsc-field-counter-under: '%d tegn igjen';`
+
+  <div data-packages><Tag>CSS</Tag></div>
+
 - Support for new package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
 
   <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
 
+- **popover**: add `--dsc-popover-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **fieldset**: add `--dsc-fieldset-gap` with default value `var(--ds-size-4)` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **tooltip**: add `--dsc-tooltip-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **dropdown**: add `--dsc-dropdown-placement` with default value `bottom` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **pagination**: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+  - add `--dsc-pagination-ellipsis` with default value `'\2026'`
+  - set `--dsc-pagination-label: 'Bla i sider';` if language is `'nn'`, `'nb'` or `'no'`
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Input** Support for new attribute `data-indeterminate` to toggle indeterminate state when `type="checkbox"` inside `Field`/`ds-field`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **ToggleGroup**: Updated DOM structure and now uses new web observer `data-toggle-group`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
+
 - Add `suppressHydrationWarning` to various components. This is to support `@digdir/designsystemet-web` being used internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Field.Counter**: Deprecate `hint` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Field**: Deprecated `asChild` as this component now uses `<ds-field>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **ErrorSummary**: Deprecate `asChild` as this component now uses `<ds-error-summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Select**: Deprecate `readOnly`. Use `aria-readonly` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **RovingFocus**: Deprecate component. This will be removed in the next major version ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Tooltip**: Deprecate `open`. This should not be used on Tooltip. Use a `Popover` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dialog**: Deprecate `data-command="close"`. Use `command="close"` and `commandfor="DIALOG-ID"` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
 
   <div data-packages><Tag>React</Tag></div>
 
@@ -1736,157 +1724,75 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>Web</Tag></div>
 
-- **Dialog:** Deprecate `data-command="close"`. Use `command="close"` and `commandfor="DIALOG-ID"` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Dropdown:** add `--dsc-dropdown-placement` with default value `bottom` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **ErrorSummary:** Deprecate `asChild` as this component now uses `<ds-error-summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Field**
-
-  - add new css variables: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-    `--dsc-field-counter-over: '%d tegn for mye';`
-    `--dsc-field-counter-under: '%d tegn igjen';`
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Deprecated `asChild` as this component now uses `<ds-field>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Field.Counter:** Deprecate `hint` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Fieldset:** add `--dsc-fieldset-gap` with default value `var(--ds-size-4)` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Input**
-
-  - add support for `[aria-readonly='true']` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Support for new attribute `data-indeterminate` to toggle indeterminate state when `type="checkbox"` inside `Field`/`ds-field`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Pagination:** ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-  - add `--dsc-pagination-ellipsis` with default value `'\2026'`
-  - set `--dsc-pagination-label: 'Bla i sider';` if language is `'nn'`, `'nb'` or `'no'`
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Popover:** add `--dsc-popover-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **RovingFocus:** Deprecate component. This will be removed in the next major version ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Select:** Deprecate `readOnly`. Use `aria-readonly` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **ToggleGroup:** Updated DOM structure and now uses new web observer `data-toggle-group`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Tooltip**
-
-  - add `--dsc-tooltip-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Deprecate `open`. This should not be used on Tooltip. Use a `Popover` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>React</Tag></div>
-
 ### Patch Changes
+
+- Update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497), [#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+
+- **suggestion**: various changes to chip styling. You no longer need to pass a class to `<data>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **link**: don't set `:visited` color and set default `border-radius` to 0 ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **dialog**: style `.ds-dialog button[command='close']:empty::before` with X-icon ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **toggle-group**: remove `--dsc-togglegroup-text-color`, as this was not used ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Card**: fix issues with deeply nested heading links. Now uses web observer `data-clickdelegatefor` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
+
+- **toggle-group**: add styling for new DOM structure introduced in `@digdir/designsystemet-web` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **field**: add styling for `<ds-field>` counter. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **tabs**: add support for `<ds-tabs>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **breadcrumbs**: don't remove underline on `a[aria-current='page']`, but on `li:last-child a` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>CSS</Tag></div>
 
 - added class `ds-floating`, which is used on floating elements internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Breadcrumbs**
-
-  - don't remove underline on `a[aria-current='page']`, but on `li:last-child a` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Now uses `<ds-breadcrumbs>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Card**
-
-  - fix issues with deeply nested heading links. Now uses web observer `data-clickdelegatefor` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
-
-  - Fix deeply nested anchors in headings causing navigation ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Details:** Use `<details>` and `<summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+- **Breadcrumbs**: Now uses `<ds-breadcrumbs>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Dialog:** style `.ds-dialog button[command='close']:empty::before` with X-icon ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Field:** add styling for `<ds-field>` counter. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Link:** don't set `:visited` color and set default `border-radius` to 0 ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Pagination:** Now uses `<ds-pagination>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+- **Card**: Fix deeply nested anchors in headings causing navigation ([#4409](https://github.com/digdir/designsystemet/pull/4409))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Suggestion:** various changes to chip styling. You no longer need to pass a class to `<data>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Tabs**
-
-  - add support for `<ds-tabs>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Now uses `<ds-tabs>` and related web components internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **ToggleGroup**
-
-  - remove `--dsc-togglegroup-text-color`, as this was not used ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - add styling for new DOM structure introduced in `@digdir/designsystemet-web` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-- **Tooltip:** Now uses `data-tooltip` from `@digdir/designsystemet-web` internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+- **Pagination**: Now uses `<ds-pagination>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
 
   <div data-packages><Tag>React</Tag></div>
 
-- Update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497), [#4517](https://github.com/digdir/designsystemet/pull/4517))
+- **Tabs**: Now uses `<ds-tabs>` and related web components internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
 
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Web</Tag></div>
+  <div data-packages><Tag>React</Tag></div>
+
+- **Tooltip**: Now uses `data-tooltip` from `@digdir/designsystemet-web` internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Details**: Use `<details>` and `<summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -1906,9 +1812,17 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
+- Update npm non-major dependencies ([#4423](https://github.com/digdir/designsystemet/pull/4423), [#4445](https://github.com/digdir/designsystemet/pull/4445), [#4469](https://github.com/digdir/designsystemet/pull/4469))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+
 - update dependency colorjs.io to ^0.6.1 ([#4422](https://github.com/digdir/designsystemet/pull/4422))
 
   <div data-packages><Tag>CLI</Tag></div>
+
+- **AvatarStack**: override user-agent margins on figure ([#4431](https://github.com/digdir/designsystemet/pull/4431))
+
+  <div data-packages><Tag>CSS</Tag></div>
 
 - update dependency postcss-nesting to v14 ([#4424](https://github.com/digdir/designsystemet/pull/4424))
 
@@ -1918,21 +1832,13 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CSS</Tag></div>
 
+- **Avatar**: fix - removed aria-hidden and role=img when asChild ([#4445](https://github.com/digdir/designsystemet/pull/4445))
+
+  <div data-packages><Tag>React</Tag></div>
+
 - update dependency @navikt/aksel-icons to v8 ([#4447](https://github.com/digdir/designsystemet/pull/4447))
 
   <div data-packages><Tag>React</Tag></div>
-
-- **Avatar:** fix - removed aria-hidden and role=img when asChild ([#4445](https://github.com/digdir/designsystemet/pull/4445))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **AvatarStack:** override user-agent margins on figure ([#4431](https://github.com/digdir/designsystemet/pull/4431))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- Update npm non-major dependencies ([#4423](https://github.com/digdir/designsystemet/pull/4423), [#4445](https://github.com/digdir/designsystemet/pull/4445), [#4469](https://github.com/digdir/designsystemet/pull/4469))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -1957,26 +1863,28 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag><Tag>Types</Tag></div>
 
-- **Avatar:** added `asChild` prop ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+- **avatar-stack**: New experimental component ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Avatar**: added `asChild` prop ([#4331](https://github.com/digdir/designsystemet/pull/4331))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **AvatarStack**
+- **AvatarStack**: New experimental component ([#4331](https://github.com/digdir/designsystemet/pull/4331))
 
-  - New experimental component ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+  <div data-packages><Tag>React</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - New experimental component ([#4331](https://github.com/digdir/designsystemet/pull/4331))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Suggestion:** Add new prop `autoPlacement`, which is by default `true` ([#4359](https://github.com/digdir/designsystemet/pull/4359))
+- **Suggestion**: Add new prop `autoPlacement`, which is by default `true` ([#4359](https://github.com/digdir/designsystemet/pull/4359))
   - This means that `Suggestion` will now try to stay within the viewport on the y-axis
 
   <div data-packages><Tag>React</Tag></div>
 
 ### Patch Changes
+
+- Update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336), [#4347](https://github.com/digdir/designsystemet/pull/4347), [#4373](https://github.com/digdir/designsystemet/pull/4373), [#4398](https://github.com/digdir/designsystemet/pull/4398))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
 
 - Update dependency zod-validation-error to v5 ([#4401](https://github.com/digdir/designsystemet/pull/4401))
 
@@ -1995,7 +1903,23 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- **avatar**: added `--dsc-avatar-font-size` to easier override font size ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
 - Hover styles for cards containing `<a>` inside a heading will no longer propagate to wrapping cards ([#4360](https://github.com/digdir/designsystemet/pull/4360))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **card**: Fix focus being clipped on nested `<summary>` ([#4379](https://github.com/digdir/designsystemet/pull/4379))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Dialog**: removed media-query that forces 100% width under 640px ([#4345](https://github.com/digdir/designsystemet/pull/4345))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **dialog**: More gentle animations when using `data-placement` ([#4350](https://github.com/digdir/designsystemet/pull/4350))
 
   <div data-packages><Tag>CSS</Tag></div>
 
@@ -2003,31 +1927,9 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Avatar:** added `--dsc-avatar-font-size` to easier override font size ([#4331](https://github.com/digdir/designsystemet/pull/4331))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Card:** Fix focus being clipped on nested `<summary>` ([#4379](https://github.com/digdir/designsystemet/pull/4379))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Dialog**
-
-  - removed media-query that forces 100% width under 640px ([#4345](https://github.com/digdir/designsystemet/pull/4345))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - More gentle animations when using `data-placement` ([#4350](https://github.com/digdir/designsystemet/pull/4350))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-- **Suggestion:** Always call `onSelectedChange`, and return `null` instead of `undefined` ([#4388](https://github.com/digdir/designsystemet/pull/4388))
+- **Suggestion**: Always call `onSelectedChange`, and return `null` instead of `undefined` ([#4388](https://github.com/digdir/designsystemet/pull/4388))
 
   <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336), [#4347](https://github.com/digdir/designsystemet/pull/4347), [#4373](https://github.com/digdir/designsystemet/pull/4373), [#4398](https://github.com/digdir/designsystemet/pull/4398))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -2065,19 +1967,17 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **Dialog**
+- **Dialog**: `data-placement` selector styles the Dialog as a "drawer"-component from the direction given (`left | right | top | bottom` or `center` which is the default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
+  Added 3 new local variables:
+  - `--dsc-dialog-placement-inline-max-width` (max-width when placement="left | right")
+  - `--dsc-dialog-placement-block-max-width` (max-width when placement="top | bottom")
+  - `--dsc-dialog-transition-duration` (duration for the slide in animations)
 
-  - `data-placement` selector styles the Dialog as a "drawer"-component from the direction given (`left | right | top | bottom` or `center` which is the default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
-    Added 3 new local variables:
-    - `--dsc-dialog-placement-inline-max-width` (max-width when placement="left | right")
-    - `--dsc-dialog-placement-block-max-width` (max-width when placement="top | bottom")
-    - `--dsc-dialog-transition-duration` (duration for the slide in animations)
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **Dialog**: added `placement` prop. This will set `data-placement` and style the `Dialog` as a "drawer"-component from the direction given: `left | right | top | bottom` or `center` (default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
 
-  - added `placement` prop. This will set `data-placement` and style the `Dialog` as a "drawer"-component from the direction given: `left | right | top | bottom` or `center` (default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
-
-    <div data-packages><Tag>React</Tag></div>
+  <div data-packages><Tag>React</Tag></div>
 
 ### Patch Changes
 
@@ -2085,24 +1985,24 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- **Input, Search, Suggestion, Textfield**: Uppercase Å was cut off at the top in Chrome and Safari, making it look like Ă ([#4301](https://github.com/digdir/designsystemet/pull/4301))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **link**: Style background, border, and padding regardless of default browser styles ([#4231](https://github.com/digdir/designsystemet/issues/4231)) ([#4302](https://github.com/digdir/designsystemet/pull/4302))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
 - Add export for a default theme under `/theme`. ([#4328](https://github.com/digdir/designsystemet/pull/4328))
   If you are using the default theme from `@digdir/designsystemet-theme`, we recommend importing the CSS from `@digdir/designsystemet-css/theme.css` and removing `@digdir/designsystemet-theme` from your dependencies.
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Input, Search, Suggestion, Textfield:** Uppercase Å was cut off at the top in Chrome and Safari, making it look like Ă ([#4301](https://github.com/digdir/designsystemet/pull/4301))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Link:** Style background, border, and padding regardless of default browser styles ([#4231](https://github.com/digdir/designsystemet/issues/4231)) ([#4302](https://github.com/digdir/designsystemet/pull/4302))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Popover:** Fix controlled open state going out of sync ([#4314](https://github.com/digdir/designsystemet/pull/4314))
+- **SuggestionClear**: send `onClick`. In earlier versions `onClick` was never called ([#4327](https://github.com/digdir/designsystemet/pull/4327))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Suggestion.Clear:** send `onClick`. In earlier versions `onClick` was never called ([#4327](https://github.com/digdir/designsystemet/pull/4327))
+- **Popover**: Fix controlled open state going out of sync ([#4314](https://github.com/digdir/designsystemet/pull/4314))
 
   <div data-packages><Tag>React</Tag></div>
 
@@ -2138,31 +2038,31 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
+- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242), [#4262](https://github.com/digdir/designsystemet/pull/4262), [#4275](https://github.com/digdir/designsystemet/pull/4275))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+
 - Update dependency @tokens-studio/sd-transforms to v2 ([#4271](https://github.com/digdir/designsystemet/pull/4271))
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- Update `react` and `react-dom` to `19.2.1` ([#4276](https://github.com/digdir/designsystemet/pull/4276))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Badge:** Set `display: inline-flex` on `.ds-badge` ([#4269](https://github.com/digdir/designsystemet/pull/4269))
+- **badge**: Set `display: inline-flex` on `.ds-badge` ([#4269](https://github.com/digdir/designsystemet/pull/4269))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Popover:** Fix unnecesary call of `onOpen` and missing call of `onClose` ([#4230](https://github.com/digdir/designsystemet/pull/4230))
+- **select**: Fix `:hover` on `<label>` adding border to `<select>` ([#4248](https://github.com/digdir/designsystemet/pull/4248))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Popover**: Fix unnecesary call of `onOpen` and missing call of `onClose` ([#4230](https://github.com/digdir/designsystemet/pull/4230))
   - Don't call `onOpen` when clicking `Popover.Trigger` when `Popover` is already open.
   - Call `onClose` when a controlled `Popover` is closed by clicking on `Popover.Trigger`.
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Select:** Fix `:hover` on `<label>` adding border to `<select>` ([#4248](https://github.com/digdir/designsystemet/pull/4248))
+- Update `react` and `react-dom` to `19.2.1` ([#4276](https://github.com/digdir/designsystemet/pull/4276))
 
-  <div data-packages><Tag>CSS</Tag></div>
-
-- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242), [#4262](https://github.com/digdir/designsystemet/pull/4262), [#4275](https://github.com/digdir/designsystemet/pull/4275))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -2182,12 +2082,12 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- **Tooltip:** Check if `trim()` is available ([#4239](https://github.com/digdir/designsystemet/pull/4239))
-  - Fixes if `Tooltip` has `<svg>` as a child
+- Update npm non-major dependencies ([#4233](https://github.com/digdir/designsystemet/pull/4233))
 
   <div data-packages><Tag>React</Tag></div>
 
-- Update npm non-major dependencies ([#4233](https://github.com/digdir/designsystemet/pull/4233))
+- **Tooltip**: Check if `trim()` is available ([#4239](https://github.com/digdir/designsystemet/pull/4239))
+  - Fixes if `Tooltip` has `<svg>` as a child
 
   <div data-packages><Tag>React</Tag></div>
 
@@ -2230,6 +2130,10 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193), [#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+
 - For your config file, you can now get the schema file from designsystemet.no ([#4195](https://github.com/digdir/designsystemet/pull/4195))
   ```json
   "$schema": "https://designsystemet.no/schemas/cli/[VERSION].json"
@@ -2237,54 +2141,48 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- Update `@u-elements/combobox` to v1.0.4 ([#4226](https://github.com/digdir/designsystemet/pull/4226))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Card:** Add support for `<picture>` ([#4137](https://github.com/digdir/designsystemet/pull/4137))
+- **input**: Remove hover effect when `<label>` is hovered ([#4196](https://github.com/digdir/designsystemet/pull/4196))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Dialog:** If the browser supports `closedBy` on `<dialog>`, we let the browser handle it ([#4210](https://github.com/digdir/designsystemet/pull/4210))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Input:** Remove hover effect when `<label>` is hovered ([#4196](https://github.com/digdir/designsystemet/pull/4196))
+- **tag**: Add new variant, `[data-variant="outline"]`. ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - To use the old variant, either don't set `data-variant`, or set it to `default`.
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Search:** Don't set `position: relative`, but use `isolation: isolate` on `.ds-search` ([#4212](https://github.com/digdir/designsystemet/pull/4212))
+- **card**: Add support for `<picture>` ([#4137](https://github.com/digdir/designsystemet/pull/4137))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **search**: Don't set `position: relative`, but use `isolation: isolate` on `.ds-search` ([#4212](https://github.com/digdir/designsystemet/pull/4212))
   - This removes `z-index` on `button[type="reset"]`
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Tag**
+- **tag**: New css variables to go with `[data-variant="outline"]`: ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - `--dsc-tag-border-width`
+  - `--dsc-tag-border-color`
+  - `--dsc-tag-border-style`
 
-  - Add new variant, `[data-variant="outline"]`. ([#4173](https://github.com/digdir/designsystemet/pull/4173))
-    - To use the old variant, either don't set `data-variant`, or set it to `default`.
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- Update `@u-elements/combobox` to v1.0.4 ([#4226](https://github.com/digdir/designsystemet/pull/4226))
 
-  - New css variables to go with `[data-variant="outline"]`: ([#4173](https://github.com/digdir/designsystemet/pull/4173))
-    - `--dsc-tag-border-width`
-    - `--dsc-tag-border-color`
-    - `--dsc-tag-border-style`
+  <div data-packages><Tag>React</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **Dialog**: If the browser supports `closedBy` on `<dialog>`, we let the browser handle it ([#4210](https://github.com/digdir/designsystemet/pull/4210))
 
-  - Add new prop `variant` ([#4173](https://github.com/digdir/designsystemet/pull/4173))
-    - Accepts `default|outline`. `default` is the default value.
+  <div data-packages><Tag>React</Tag></div>
 
-    <div data-packages><Tag>React</Tag></div>
-
-- **Tooltip:** Tooltip is now automatically `aria-describedby` or `aria-labelledby` based on the content of the trigger component. ([#4202](https://github.com/digdir/designsystemet/pull/4202))
+- **Tooltip**: Tooltip is now automatically `aria-describedby` or `aria-labelledby` based on the content of the trigger component. ([#4202](https://github.com/digdir/designsystemet/pull/4202))
   - This can be overridden with the new `type`-prop that accepts `decribedby` or `labelledby`.
 
   <div data-packages><Tag>React</Tag></div>
 
-- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193), [#4214](https://github.com/digdir/designsystemet/pull/4214))
+- **Tag**: Add new prop `variant` ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - Accepts `default|outline`. `default` is the default value.
 
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -2304,7 +2202,7 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- **Suggestion:** Fix `onSelectedChange` not always calling the latest callback ([#4176](https://github.com/digdir/designsystemet/pull/4176))
+- **Suggestion**: Fix `onSelectedChange` not always calling the latest callback ([#4176](https://github.com/digdir/designsystemet/pull/4176))
 
   <div data-packages><Tag>React</Tag></div>
 
@@ -2337,6 +2235,10 @@ latestVersion: 1.24.1
   <div data-packages><Tag>CLI</Tag></div>
 
 ### Patch Changes
+
+- Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147), [#4167](https://github.com/digdir/designsystemet/pull/4167))
+
+  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
 
 - Export zod schema and type for config file: ([#4170](https://github.com/digdir/designsystemet/pull/4170))
   - `configSchema`
@@ -2371,52 +2273,44 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **Chip:** Remove hover effect on `.ds-input` ([#4165](https://github.com/digdir/designsystemet/pull/4165))
+- **Field**: Set `display: block` on `<label>` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Dialog:** Removed the autofocus attribute from built in closeButton, which prevented setting autofocus on other elements in Dialog. ([#4159](https://github.com/digdir/designsystemet/pull/4159))
+- **ToggleGroup**: ensure ToggleGroup has same height as Button, and that individual buttons within the group never wrap their text ([#4139](https://github.com/digdir/designsystemet/pull/4139))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **ToggleGroup**: use correct border-color (`--ds-color-text-default`) to match text/icon color on selected button in secondary variant ([#4139](https://github.com/digdir/designsystemet/pull/4139))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Label**: Use `line-height: var(--ds-body-md-line-height);` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Field**: `data-field="description"` no longer gets `margin-top` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **chip**: Remove hover effect on `.ds-input` ([#4165](https://github.com/digdir/designsystemet/pull/4165))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Suggestion, Tooltip, Popover**: Positioning of floating elements rounded to nearest pixel ([#4142](https://github.com/digdir/designsystemet/pull/4142))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Field**
+- **Dialog**: Removed the autofocus attribute from built in closeButton, which prevented setting autofocus on other elements in Dialog. ([#4159](https://github.com/digdir/designsystemet/pull/4159))
 
-  - Set `display: block` on `<label>` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+  <div data-packages><Tag>React</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - `data-field="description"` no longer gets `margin-top` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-- **Field.Counter:** Adjustments to how it works internally. ([#4140](https://github.com/digdir/designsystemet/pull/4140))
+- **Field.Counter**: Adjustments to how it works internally. ([#4140](https://github.com/digdir/designsystemet/pull/4140))
   Now, none of the validation messages underneath are `aria-described` on the input/textarea. This is done by an `aria-live` region only for screenreaders.
 
   A new `hint` prop has been added, to announce how many characters are allowed when entering the input/textarea. Default value is `'Maks %d tegn tillatt.'`.
 
   <div data-packages><Tag>React</Tag></div>
-
-- **Label:** Use `line-height: var(--ds-body-md-line-height);` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Suggestion, Tooltip, Popover:** Positioning of floating elements rounded to nearest pixel ([#4142](https://github.com/digdir/designsystemet/pull/4142))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **ToggleGroup**
-
-  - ensure ToggleGroup has same height as Button, and that individual buttons within the group never wrap their text ([#4139](https://github.com/digdir/designsystemet/pull/4139))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - use correct border-color (`--ds-color-text-default`) to match text/icon color on selected button in secondary variant ([#4139](https://github.com/digdir/designsystemet/pull/4139))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-- Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147), [#4167](https://github.com/digdir/designsystemet/pull/4167))
-
-  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -2436,15 +2330,15 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- **Button:** For `icon`-buttons, dont render children if loading is true ([#4023](https://github.com/digdir/designsystemet/pull/4023))
+- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110), [#4129](https://github.com/digdir/designsystemet/pull/4129))
 
-  <div data-packages><Tag>React</Tag></div>
+  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
 
-- **Chip, Tag:** Ensure font size scales correctly with the current size mode by using the token `--ds-body-sm-font-size`. Note: there might be a small visual change for `Chip` used without explicit `data-size`, since it used to have `font-size: 90%`. ([#4098](https://github.com/digdir/designsystemet/pull/4098))
+- **pagination**: If direct child of `li` has `aria-hidden="true"` it sets `visibility: hidden;` ([#4123](https://github.com/digdir/designsystemet/pull/4123))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Input:** Add outline on `:hover` when not `:focus-visible`, `:disabled` or `[readonly]`. This adds a few new CSS variables: ([#4125](https://github.com/digdir/designsystemet/pull/4125))
+- **input**: Add outline on `:hover` when not `:focus-visible`, `:disabled` or `[readonly]`. This adds a few new CSS variables: ([#4125](https://github.com/digdir/designsystemet/pull/4125))
   - `--dsc-input-outline-color--hover`
   - `--dsc-input-outline-color--toggle--hover`
   - `--dsc-input-outline-width--hover`
@@ -2452,25 +2346,25 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Pagination:** If direct child of `li` has `aria-hidden="true"` it sets `visibility: hidden;` ([#4123](https://github.com/digdir/designsystemet/pull/4123))
+- **Chip, Tag**: Ensure font size scales correctly with the current size mode by using the token `--ds-body-sm-font-size`. Note: there might be a small visual change for `Chip` used without explicit `data-size`, since it used to have `font-size: 90%`. ([#4098](https://github.com/digdir/designsystemet/pull/4098))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Suggestion:** Updated u-combobox to 1.0.2 to fix a bug where input would not clear in conrolled mode ([#4119](https://github.com/digdir/designsystemet/pull/4119))
+- **Button**: For `icon`-buttons, dont render children if loading is true ([#4023](https://github.com/digdir/designsystemet/pull/4023))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Textfield:** Move counter error message before error ([#4104](https://github.com/digdir/designsystemet/pull/4104))
+- **Suggestion**: Updated u-combobox to 1.0.2 to fix a bug where input would not clear in conrolled mode ([#4119](https://github.com/digdir/designsystemet/pull/4119))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **usePagination:** Hide prev/next buttons with `aria-hidden="true"` and `visibility: hidden;` instead of disabling ([#4123](https://github.com/digdir/designsystemet/pull/4123))
+- **usePagination**: Hide prev/next buttons with `aria-hidden="true"` and `visibility: hidden;` instead of disabling ([#4123](https://github.com/digdir/designsystemet/pull/4123))
 
   <div data-packages><Tag>React</Tag></div>
 
-- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110), [#4129](https://github.com/digdir/designsystemet/pull/4129))
+- **Textfield**: Move counter error message before error ([#4104](https://github.com/digdir/designsystemet/pull/4104))
 
-  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -2490,19 +2384,17 @@ latestVersion: 1.24.1
 
 ### Minor Changes
 
-- **ToggleGroup**
+- **toggle-group**: Added new secondary design available with `data-variant="secondary"` (or `variant="secondary"` in react) ([#4092](https://github.com/digdir/designsystemet/pull/4092))
 
-  - Added new secondary design available with `data-variant="secondary"` (or `variant="secondary"` in react) ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **toggle-group**: Changed border-radius to `--ds-border-radius-default`, border-color to `--ds-color-border-default` and color to `--ds-color-text-default`. ([#4092](https://github.com/digdir/designsystemet/pull/4092))
 
-  - Changed border-radius to `--ds-border-radius-default`, border-color to `--ds-color-border-default` and color to `--ds-color-text-default`. ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **ToggleGroup**: Added new prop `variant` to enable new `secondary` design option ([#4092](https://github.com/digdir/designsystemet/pull/4092))
 
-  - Added new prop `variant` to enable new `secondary` design option ([#4092](https://github.com/digdir/designsystemet/pull/4092))
-
-    <div data-packages><Tag>React</Tag></div>
+  <div data-packages><Tag>React</Tag></div>
 
 ### Patch Changes
 
@@ -2535,37 +2427,35 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))
+
+  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
+
 - Update supported engines. Now supports node `>=20 <25` ([#3925](https://github.com/digdir/designsystemet/pull/3925))
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **Avatar:** Allow using `aria-hidden` instead of `aria-label` in situations with visible text ([#4077](https://github.com/digdir/designsystemet/pull/4077))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Dropdown:** `Dropdown.Heading` (h2-h6) - changed color to text-default and font-weight to 500 ([#4076](https://github.com/digdir/designsystemet/pull/4076))
+- **link**: Change `:focus-visible` styling to use border, not background ([#4095](https://github.com/digdir/designsystemet/pull/4095))
+  - Removes `--dsc-link-background--focus`
+  - Removes `--dsc-link-color--focus`
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Link**
+- **link**: Add `--dsc-link-border-radius`, default is `var(--ds-border-radius-md)` ([#4095](https://github.com/digdir/designsystemet/pull/4095))
 
-  - Change `:focus-visible` styling to use border, not background ([#4095](https://github.com/digdir/designsystemet/pull/4095))
-    - Removes `--dsc-link-background--focus`
-    - Removes `--dsc-link-color--focus`
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **Dropdown**: `Dropdown.Heading` (h2-h6) - changed color to text-default and font-weight to 500 ([#4076](https://github.com/digdir/designsystemet/pull/4076))
 
-  - Add `--dsc-link-border-radius`, default is `var(--ds-border-radius-md)` ([#4095](https://github.com/digdir/designsystemet/pull/4095))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
-
-- **Spinner:** Allow using `aria-hidden` when `aria-label` is set, which can be useful to hide or show the element from the accessibility tree based on some UI state like whether a visual label is also rendered. ([#4077](https://github.com/digdir/designsystemet/pull/4077))
+- **Spinner**: Allow using `aria-hidden` when `aria-label` is set, which can be useful to hide or show the element from the accessibility tree based on some UI state like whether a visual label is also rendered. ([#4077](https://github.com/digdir/designsystemet/pull/4077))
 
   <div data-packages><Tag>React</Tag></div>
 
-- Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))
+- **Avatar**: Allow using `aria-hidden` instead of `aria-label` in situations with visible text ([#4077](https://github.com/digdir/designsystemet/pull/4077))
 
-  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -2589,15 +2479,15 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **Field:** Make sure `<select>` and `<textarea>` is not on same line as label ([#4048](https://github.com/digdir/designsystemet/pull/4048))
+- **Field**: Make sure `<select>` and `<textarea>` is not on same line as label ([#4048](https://github.com/digdir/designsystemet/pull/4048))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Field.Counter:** Update count when react controls the input ([#4047](https://github.com/digdir/designsystemet/pull/4047))
+- **Field.Counter**: Update count when react controls the input ([#4047](https://github.com/digdir/designsystemet/pull/4047))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Popover:** Only call `onClose` when `Popover` is open ([#4065](https://github.com/digdir/designsystemet/pull/4065))
+- **Popover**: Only call `onClose` when `Popover` is open ([#4065](https://github.com/digdir/designsystemet/pull/4065))
 
   <div data-packages><Tag>React</Tag></div>
 
@@ -2629,13 +2519,13 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- **Details:** Updated `u-details` package to adress an issue where you could tab into the content when details was closed (firefox only) ([#4022](https://github.com/digdir/designsystemet/pull/4022))
-
-  <div data-packages><Tag>React</Tag></div>
-
 - Update npm non-major dependencies ([#4039](https://github.com/digdir/designsystemet/pull/4039))
 
   <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
+
+- **Details**: Updated `u-details` package to adress an issue where you could tab into the content when details was closed (firefox only) ([#4022](https://github.com/digdir/designsystemet/pull/4022))
+
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -2655,27 +2545,27 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- **Button:** Change sizes of svg and icon ([#3998](https://github.com/digdir/designsystemet/pull/3998))
+- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989), [#4014](https://github.com/digdir/designsystemet/pull/4014))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+
+- **Card**: If `.ds-link` is used in a heading, remove focus and active styling ([#4005](https://github.com/digdir/designsystemet/pull/4005))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Fieldset**: Removed uneccessary margin when visually hiding `Fieldset.Legend` with `.ds-sr-only` ([#3996](https://github.com/digdir/designsystemet/pull/3996))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Button**: Change sizes of svg and icon ([#3998](https://github.com/digdir/designsystemet/pull/3998))
   - In icon button (`[data-icon]`), it is `1.5em`
   - In normal button, it is `1.3em`
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Card:** If `.ds-link` is used in a heading, remove focus and active styling ([#4005](https://github.com/digdir/designsystemet/pull/4005))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Fieldset:** Removed uneccessary margin when visually hiding `Fieldset.Legend` with `.ds-sr-only` ([#3996](https://github.com/digdir/designsystemet/pull/3996))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Switch:** correct jsdoc on `label` prop ([#3984](https://github.com/digdir/designsystemet/pull/3984))
+- **Switch**: correct jsdoc on `label` prop ([#3984](https://github.com/digdir/designsystemet/pull/3984))
 
   <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989), [#4014](https://github.com/digdir/designsystemet/pull/4014))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -2699,21 +2589,23 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **Suggestion**
+- **Suggestion**: TypeScript typing now depends on whether `multiple` is true or false. When `multiple` is true, `selected`, `defaultSelected` and `onSelectedChange` are typed for arrays of items. Otherwise, they are typed for single items. ([#3909](https://github.com/digdir/designsystemet/pull/3909))
 
-  - TypeScript typing now depends on whether `multiple` is true or false. When `multiple` is true, `selected`, `defaultSelected` and `onSelectedChange` are typed for arrays of items. Otherwise, they are typed for single items. ([#3909](https://github.com/digdir/designsystemet/pull/3909))
+  <div data-packages><Tag>React</Tag></div>
 
-    <div data-packages><Tag>React</Tag></div>
+- **Suggestion**: Removed type `SuggestionValues`, as this union is no longer useful. Use `string` or `SuggestionItem` when `multiple` is `false`, and `string[]` or `SuggestionItem[]` when `multiple` is `true`. ([#3909](https://github.com/digdir/designsystemet/pull/3909))
 
-  - Removed type `SuggestionValues`, as this union is no longer useful. Use `string` or `SuggestionItem` when `multiple` is `false`, and `string[]` or `SuggestionItem[]` when `multiple` is `true`. ([#3909](https://github.com/digdir/designsystemet/pull/3909))
+  <div data-packages><Tag>React</Tag></div>
 
-    <div data-packages><Tag>React</Tag></div>
+- **Suggestion**: remove deprecated props `value`, `defaultValue` and `onValueChange`. Use `selected`, `defaultSelected` and `onSelectedChange` instead. ([#3909](https://github.com/digdir/designsystemet/pull/3909))
 
-  - remove deprecated props `value`, `defaultValue` and `onValueChange`. Use `selected`, `defaultSelected` and `onSelectedChange` instead. ([#3909](https://github.com/digdir/designsystemet/pull/3909))
-
-    <div data-packages><Tag>React</Tag></div>
+  <div data-packages><Tag>React</Tag></div>
 
 ### Patch Changes
+
+- Update npm non-major dependencies ([#3973](https://github.com/digdir/designsystemet/pull/3973))
+
+  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
 
 - update u-elements/u-details to 0.1.3 ([#3981](https://github.com/digdir/designsystemet/pull/3981))
 
@@ -2723,17 +2615,13 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>React</Tag></div>
 
+- **Suggestion**: Remove deprecated `Suggestion.Chips` ([#3981](https://github.com/digdir/designsystemet/pull/3981))
+
+  <div data-packages><Tag>React</Tag></div>
+
 - update u-elements/u-datalist to 1.0.14 ([#3981](https://github.com/digdir/designsystemet/pull/3981))
 
   <div data-packages><Tag>React</Tag></div>
-
-- **Suggestion:** Remove deprecated `Suggestion.Chips` ([#3981](https://github.com/digdir/designsystemet/pull/3981))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#3973](https://github.com/digdir/designsystemet/pull/3973))
-
-  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -2753,11 +2641,11 @@ latestVersion: 1.24.1
 
 ### Minor Changes
 
-- **Badge:** Allow adjusting the position of the badge using css variables `--dsc-badge-{top,bottom,left,right}` ([#3965](https://github.com/digdir/designsystemet/pull/3965))
+- **Badge**: Allow adjusting the position of the badge using css variables `--dsc-badge-{top,bottom,left,right}` ([#3965](https://github.com/digdir/designsystemet/pull/3965))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Link:** Automatically add recommended spacing to icons (svg or img), when there is also a `<span>` present. ([#3942](https://github.com/digdir/designsystemet/pull/3942))
+- **Link**: Automatically add recommended spacing to icons (svg or img), when there is also a `<span>` present. ([#3942](https://github.com/digdir/designsystemet/pull/3942))
   - `<Link><Icon />Text</Link>` will not get spacing
   - `<Link><Icon /> Text</Link>` will get a leading underlined space character between icon and text, which looks bad
   - `<Link><Icon /><span>Text</span></Link>` will get recommended spacing
@@ -2766,55 +2654,53 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
+- Update npm non-major dependencies ([#3923](https://github.com/digdir/designsystemet/pull/3923))
+
+  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
+
 - Replace `chalk` with `picocolors` ([#3910](https://github.com/digdir/designsystemet/pull/3910))
 
   <div data-packages><Tag>CLI</Tag></div>
+
+- **Dialog**: Rework close button ([#3959](https://github.com/digdir/designsystemet/pull/3959))
+  - An empty button with `data-command="close"` will get an "X" icon
+  - If `button[data-command="close"]` is the first child of `.ds-dialog`, it will float to the top right
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Field**: Don't check for hidden elements ([#3950](https://github.com/digdir/designsystemet/pull/3950))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dialog**: Add `data-command="close"`, which you can use to close the modal. ([#3959](https://github.com/digdir/designsystemet/pull/3959))
+  - This removes use of `<form>` on our close button
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dialog**: Deprecate `asChild`. Should always be a `<dialog>` element. Will be removed in the next major version ([#3940](https://github.com/digdir/designsystemet/pull/3940))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Tabs.Panel**: Add `aria-labelledby` to associated button ([#3939](https://github.com/digdir/designsystemet/pull/3939))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Tabs**: Don't conditionally render `TabPanel`, use `hidden` instead ([#3936](https://github.com/digdir/designsystemet/pull/3936))
+  - If any of your `TabPanel` components have heavy code, consider conditional rendering to improve performance
+
+  <div data-packages><Tag>React</Tag></div>
 
 - Update dependency @u-elements/u-details to ^0.1.2 ([#3955](https://github.com/digdir/designsystemet/pull/3955))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Dialog**
-
-  - Rework close button ([#3959](https://github.com/digdir/designsystemet/pull/3959))
-    - An empty button with `data-command="close"` will get an "X" icon
-    - If `button[data-command="close"]` is the first child of `.ds-dialog`, it will float to the top right
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Add `data-command="close"`, which you can use to close the modal. ([#3959](https://github.com/digdir/designsystemet/pull/3959))
-    - This removes use of `<form>` on our close button
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - Deprecate `asChild`. Should always be a `<dialog>` element. Will be removed in the next major version ([#3940](https://github.com/digdir/designsystemet/pull/3940))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Field:** Don't check for hidden elements ([#3950](https://github.com/digdir/designsystemet/pull/3950))
+- **Skeleton**: Deprecate `characters` prop, which never had any effect. ([#3961](https://github.com/digdir/designsystemet/pull/3961))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Skeleton:** Deprecate `characters` prop, which never had any effect. ([#3961](https://github.com/digdir/designsystemet/pull/3961))
+- **Tooltip**: Close on click outside, applicable for mobile devices ([#3957](https://github.com/digdir/designsystemet/pull/3957))
 
   <div data-packages><Tag>React</Tag></div>
-
-- **Tabs:** Don't conditionally render `TabPanel`, use `hidden` instead ([#3936](https://github.com/digdir/designsystemet/pull/3936))
-  - If any of your `TabPanel` components have heavy code, consider conditional rendering to improve performance
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Tabs.Panel:** Add `aria-labelledby` to associated button ([#3939](https://github.com/digdir/designsystemet/pull/3939))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Tooltip:** Close on click outside, applicable for mobile devices ([#3957](https://github.com/digdir/designsystemet/pull/3957))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#3923](https://github.com/digdir/designsystemet/pull/3923))
-
-  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -2846,6 +2732,18 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- Update npm non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890), [#3894](https://github.com/digdir/designsystemet/pull/3894))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+
+- **Details:** Using `margin` instead of `padding` to style children of `Details`, to allow direct children such as `Button` ([#3883](https://github.com/digdir/designsystemet/pull/3883))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Dialog**: Respect default prevented keydown event ([#3908](https://github.com/digdir/designsystemet/pull/3908))
+
+  <div data-packages><Tag>React</Tag></div>
+
 - Update `@u-elements/u-datalist` to 1.0.12 ([#3908](https://github.com/digdir/designsystemet/pull/3908))
 
   <div data-packages><Tag>React</Tag></div>
@@ -2854,21 +2752,9 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Details:** Using `margin` instead of `padding` to style children of `Details`, to allow direct children such as `Button` ([#3883](https://github.com/digdir/designsystemet/pull/3883))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Dialog:** Respect default prevented keydown event ([#3908](https://github.com/digdir/designsystemet/pull/3908))
+- **RovingFocus**: Eliminate unnecessary rerender ([#3929](https://github.com/digdir/designsystemet/pull/3929))
 
   <div data-packages><Tag>React</Tag></div>
-
-- **RovingFocus:** Eliminate unnecessary rerender ([#3929](https://github.com/digdir/designsystemet/pull/3929))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890), [#3894](https://github.com/digdir/designsystemet/pull/3894))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -2970,6 +2856,10 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- Update npm non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))
+
+  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
+
 - Add new export for augmented theme types; `@digdir/designsystemet/types`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
   Use this with generated theme declaration file for types for your theme.
 
@@ -2982,10 +2872,6 @@ latestVersion: 1.24.1
 - Deprecate `@digdir/designsystemet-react/color` module. Replaced by `@digdir/designsystemet/types`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
 
   <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))
-
-  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -3005,34 +2891,6 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
-- **Details:** content using `overflow: hidden` to prevent margin clipping ([#3859](https://github.com/digdir/designsystemet/pull/3859))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Dialog:** Fix `onClose` being called twice when React is in strict mode ([#3854](https://github.com/digdir/designsystemet/pull/3854))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Field, Checkbox, Radio, Switch, Textfield:** Fix duplicate ids in `aria-describedby` when React is in strict mode ([#3854](https://github.com/digdir/designsystemet/pull/3854))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Suggestion**
-
-  - Fix controlled value being cleared if edited in React 18 strict mode. ([#3853](https://github.com/digdir/designsystemet/pull/3853))
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - ([#3857](https://github.com/digdir/designsystemet/pull/3857))
-    - Deprecated `value`, use `selected` instead
-    - Deprecated `defaultValue`, use `defaultSelected` instead
-    - Deprecated `onValueChange`, use `onSelectedChange` instead
-    - Deprecated `Suggestion.Chips`, use `renderSelected` on `Suggestion` instead
-    - Add `onBeforeMatch` to `Suggestion` for custom matching
-    - Revert input `value` to current `selected` when no match
-
-    <div data-packages><Tag>React</Tag></div>
-
 - **Table:** ([#3859](https://github.com/digdir/designsystemet/pull/3859))
   - sorting icon never shrinks, even when using `Button` component (which is `display: flex`) as parent
   - with `data-border` adjusts `border-radius` according to `border-width`
@@ -3042,6 +2900,32 @@ latestVersion: 1.24.1
 - **Tabs:** adjusted to allow non-tab-button-elements inside `tablist` ([#3859](https://github.com/digdir/designsystemet/pull/3859))
 
   <div data-packages><Tag>CSS</Tag></div>
+
+- **Details:** content using `overflow: hidden` to prevent margin clipping ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Suggestion:** Fix controlled value being cleared if edited in React 18 strict mode. ([#3853](https://github.com/digdir/designsystemet/pull/3853))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Dialog**: Fix `onClose` being called twice when React is in strict mode ([#3854](https://github.com/digdir/designsystemet/pull/3854))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Field, Checkbox, Radio, Switch, Textfield**: Fix duplicate ids in `aria-describedby` when React is in strict mode ([#3854](https://github.com/digdir/designsystemet/pull/3854))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Suggestion:** ([#3857](https://github.com/digdir/designsystemet/pull/3857))
+  - Deprecated `value`, use `selected` instead
+  - Deprecated `defaultValue`, use `defaultSelected` instead
+  - Deprecated `onValueChange`, use `onSelectedChange` instead
+  - Deprecated `Suggestion.Chips`, use `renderSelected` on `Suggestion` instead
+  - Add `onBeforeMatch` to `Suggestion` for custom matching
+  - Revert input `value` to current `selected` when no match
+
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -3061,6 +2945,10 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
+- Update npm non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803), [#3838](https://github.com/digdir/designsystemet/pull/3838))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+
 - Fixed type declaration producing invalid syntax when a color name includes hyphens ([#3802](https://github.com/digdir/designsystemet/pull/3802))
 
   <div data-packages><Tag>CLI</Tag></div>
@@ -3074,49 +2962,43 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- **Avatar**: Text as children have same font-size as data-initials ([#3835](https://github.com/digdir/designsystemet/pull/3835))
+
+  <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
+
+- **Select**: Flip chevron when open, uses [`:open` with limited availability](https://developer.mozilla.org/en-US/docs/Web/CSS/:open). Does not work in Safari ([#3846](https://github.com/digdir/designsystemet/pull/3846))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **SkipLink**: Class is now `ds-skip-link`. Filename is now `skip-link.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
+  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **ToggleGroup**: Class is now `ds-toggle-group`. Filename is now `toggle-group.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
+  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
+
+  <div data-packages><Tag>CSS</Tag></div>
+
 - Internal change: Removed index files that only exported one component. ([#3836](https://github.com/digdir/designsystemet/pull/3836))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Suggestion**: fix crash when changing the value if the initial value was an empty string ([#3818](https://github.com/digdir/designsystemet/pull/3818))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Suggestion**: now triggers change on enter or blur, or when clicking an option - not while typing ([#3833](https://github.com/digdir/designsystemet/pull/3833))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Suggestion**: Use popover API for datalist ([#3845](https://github.com/digdir/designsystemet/pull/3845))
 
   <div data-packages><Tag>React</Tag></div>
 
 - Internal change: Use kebab case instead of pascal case for files and folders ([#3819](https://github.com/digdir/designsystemet/pull/3819))
 
   <div data-packages><Tag>React</Tag></div>
-
-- **Avatar:** Text as children have same font-size as data-initials ([#3835](https://github.com/digdir/designsystemet/pull/3835))
-
-  <div data-packages><Tag>CSS</Tag><Tag>React</Tag></div>
-
-- **Select:** Flip chevron when open, uses [`:open` with limited availability](https://developer.mozilla.org/en-US/docs/Web/CSS/:open). Does not work in Safari ([#3846](https://github.com/digdir/designsystemet/pull/3846))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **SkipLink:** Class is now `ds-skip-link`. Filename is now `skip-link.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
-  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Suggestion**
-
-  - fix crash when changing the value if the initial value was an empty string ([#3818](https://github.com/digdir/designsystemet/pull/3818))
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - now triggers change on enter or blur, or when clicking an option - not while typing ([#3833](https://github.com/digdir/designsystemet/pull/3833))
-
-    <div data-packages><Tag>React</Tag></div>
-
-  - Use popover API for datalist ([#3845](https://github.com/digdir/designsystemet/pull/3845))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **ToggleGroup:** Class is now `ds-toggle-group`. Filename is now `toggle-group.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
-  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- Update npm non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803), [#3838](https://github.com/digdir/designsystemet/pull/3838))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -3136,37 +3018,35 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
+- **Field**: The gap between `label` and `Radio`/`Checkbox`/`Switch` is now clickable ([#3785](https://github.com/digdir/designsystemet/pull/3785))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Details**: Single outer padding when multiple children ([#3796](https://github.com/digdir/designsystemet/pull/3796))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
 - Round to nearest 1px a few places ([#3786](https://github.com/digdir/designsystemet/pull/3786))
 
   <div data-packages><Tag>CSS</Tag></div>
+
+- **Field**: Make sure there will be no duplicate IDs when having multiple of the same `data-field` type ([#3794](https://github.com/digdir/designsystemet/pull/3794))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Textfield**: Fix wrong type definition for `type` prop ([#3797](https://github.com/digdir/designsystemet/pull/3797))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Suggestion**: Visual value didn't correctly update in single mode when controlled value was updated externally ([#3782](https://github.com/digdir/designsystemet/pull/3782))
+
+  <div data-packages><Tag>React</Tag></div>
 
 - Fix typo in `Suggestion.Chips` jsdoc ([#3798](https://github.com/digdir/designsystemet/pull/3798))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Details:** Single outer padding when multiple children ([#3796](https://github.com/digdir/designsystemet/pull/3796))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Field**
-
-  - The gap between `label` and `Radio`/`Checkbox`/`Switch` is now clickable ([#3785](https://github.com/digdir/designsystemet/pull/3785))
-
-    <div data-packages><Tag>CSS</Tag></div>
-
-  - Make sure there will be no duplicate IDs when having multiple of the same `data-field` type ([#3794](https://github.com/digdir/designsystemet/pull/3794))
-
-    <div data-packages><Tag>React</Tag></div>
-
-- **Suggestion:** Visual value didn't correctly update in single mode when controlled value was updated externally ([#3782](https://github.com/digdir/designsystemet/pull/3782))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Textfield:** Fix wrong type definition for `type` prop ([#3797](https://github.com/digdir/designsystemet/pull/3797))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **usePagination:** Don't send negative pages if `showPages` is greater than `totalPages` ([#3793](https://github.com/digdir/designsystemet/pull/3793))
+- **usePagination**: Don't send negative pages if `showPages` is greater than `totalPages` ([#3793](https://github.com/digdir/designsystemet/pull/3793))
 
   <div data-packages><Tag>React</Tag></div>
 
@@ -3192,7 +3072,7 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Suggestion:** Ensure the hidden `<select>` element, which is only rendered when `Suggestion` has a `name`, gets a deterministic id instead of one that changes on every page load. ([#3777](https://github.com/digdir/designsystemet/pull/3777))
+- **Suggestion**: Ensure the hidden `<select>` element, which is only rendered when `Suggestion` has a `name`, gets a deterministic id instead of one that changes on every page load. ([#3777](https://github.com/digdir/designsystemet/pull/3777))
 
   <div data-packages><Tag>React</Tag></div>
 
@@ -3214,21 +3094,21 @@ latestVersion: 1.24.1
 
 ### Patch Changes
 
+- Update npm non-major dependencies ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+
 - Fix zod schema error when creating tokens from config file ([#3774](https://github.com/digdir/designsystemet/pull/3774))
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **Suggestion:** Reduced padding around `chip` remove-button ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+- **Suggestion**: Reduced padding around `chip` remove-button ([#3774](https://github.com/digdir/designsystemet/pull/3774))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Tooltip:** Will now stay open when mouse is moved to the `Tooltip` ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+- **Tooltip**: Will now stay open when mouse is moved to the `Tooltip` ([#3774](https://github.com/digdir/designsystemet/pull/3774))
 
   <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#3774](https://github.com/digdir/designsystemet/pull/3774))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -3248,11 +3128,11 @@ latestVersion: 1.24.1
 
 ### Minor Changes
 
-- **MultiSuggestion:** Remove component. Use `<Suggestion>` with `multiple`. See [Storybook](https://storybook.designsystemet.no/?path=/docs/komponenter-suggestion--docs) for documentation ([#3675](https://github.com/digdir/designsystemet/pull/3675))
+- **Suggestion**: API has changed to support multiple values. See [Storybook for documentation](https://storybook.designsystemet.no/?path=/docs/komponenter-suggestion--docs) ([#3675](https://github.com/digdir/designsystemet/pull/3675))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Suggestion:** API has changed to support multiple values. See [Storybook for documentation](https://storybook.designsystemet.no/?path=/docs/komponenter-suggestion--docs) ([#3675](https://github.com/digdir/designsystemet/pull/3675))
+- **MultiSuggestion**: Remove component. Use `<Suggestion>` with `multiple`. See [Storybook](https://storybook.designsystemet.no/?path=/docs/komponenter-suggestion--docs) for documentation ([#3675](https://github.com/digdir/designsystemet/pull/3675))
 
   <div data-packages><Tag>React</Tag></div>
 
@@ -3277,17 +3157,17 @@ latestVersion: 1.24.1
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- fix(Tab): static `useId()` in rendering ([#3731](https://github.com/digdir/designsystemet/pull/3731))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Field:** Add `asChild` prop to change the default rendered element ([#3704](https://github.com/digdir/designsystemet/pull/3704))
-
-  <div data-packages><Tag>React</Tag></div>
-
 - Update npm non-major dependencies ([#3696](https://github.com/digdir/designsystemet/pull/3696), [#3732](https://github.com/digdir/designsystemet/pull/3732))
 
   <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+
+- **Field**: Add `asChild` prop to change the default rendered element ([#3704](https://github.com/digdir/designsystemet/pull/3704))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- fix(Tab): static `useId()` in rendering ([#3731](https://github.com/digdir/designsystemet/pull/3731))
+
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -3325,6 +3205,10 @@ No changes in this release.
 
 ### Patch Changes
 
+- Update npm non-major dependencies ([#3594](https://github.com/digdir/designsystemet/pull/3594), [#3630](https://github.com/digdir/designsystemet/pull/3630), [#3656](https://github.com/digdir/designsystemet/pull/3656))
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
+
 - Remove outdated `@layer` definition in generated theme file ([#3551](https://github.com/digdir/designsystemet/pull/3551))
 
   <div data-packages><Tag>CLI</Tag></div>
@@ -3345,17 +3229,13 @@ No changes in this release.
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **Dialog:** Prefix keyframes (`slide-in`, `fade-in`) with `ds-dialog` ([#3602](https://github.com/digdir/designsystemet/pull/3602))
+- **Dialog**: Prefix keyframes (`slide-in`, `fade-in`) with `ds-dialog` ([#3602](https://github.com/digdir/designsystemet/pull/3602))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **MultiSuggestion:** Fix typo in displayname ([#3586](https://github.com/digdir/designsystemet/pull/3586))
+- **MultiSuggestion**: Fix typo in displayname ([#3586](https://github.com/digdir/designsystemet/pull/3586))
 
   <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#3594](https://github.com/digdir/designsystemet/pull/3594), [#3630](https://github.com/digdir/designsystemet/pull/3630), [#3656](https://github.com/digdir/designsystemet/pull/3656))
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -3379,6 +3259,10 @@ No changes in this release.
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- Update npm non-major dependencies ([#3514](https://github.com/digdir/designsystemet/pull/3514))
+
+  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
+
 - Added colorjs.io as dependency ([#3512](https://github.com/digdir/designsystemet/pull/3512))
 
   <div data-packages><Tag>CLI</Tag></div>
@@ -3387,6 +3271,10 @@ No changes in this release.
 
   <div data-packages><Tag>CSS</Tag></div>
 
+- **Tooltip**: Change element to `span` to be able to render in `p` and similar elements ([#3577](https://github.com/digdir/designsystemet/pull/3577))
+
+  <div data-packages><Tag>React</Tag></div>
+
 - `ErrorSummary`: no longer sets `aria-live`, `aria-relevant` and `role` attributes. This implementation caused [accessibility issues](https://github.com/digdir/designsystemet/issues/3417). See the updated accesibility documentation for `ErrorSummary` for guidance on how to properly announce the content to screen readers. ([#3555](https://github.com/digdir/designsystemet/pull/3555))
 
   <div data-packages><Tag>React</Tag></div>
@@ -3394,14 +3282,6 @@ No changes in this release.
 - Export `LabelRequired` type ([#3564](https://github.com/digdir/designsystemet/pull/3564))
 
   <div data-packages><Tag>React</Tag></div>
-
-- **Tooltip:** Change element to `span` to be able to render in `p` and similar elements ([#3577](https://github.com/digdir/designsystemet/pull/3577))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#3514](https://github.com/digdir/designsystemet/pull/3514))
-
-  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -3467,6 +3347,10 @@ No changes in this release.
 
   <div data-packages><Tag>CLI</Tag></div>
 
+- Update npm non-major dependencies ([#3351](https://github.com/digdir/designsystemet/pull/3351))
+
+  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
+
 - Remove individual theme CSS files from `tokens build`. ([#3475](https://github.com/digdir/designsystemet/pull/3475))
 
   <div data-packages><Tag>CLI</Tag></div>
@@ -3483,33 +3367,29 @@ No changes in this release.
 
   <div data-packages><Tag>CSS</Tag></div>
 
+- **Fieldset**: Fix visual regression in 1.0.3 which added unintended padding on `<legend>` ([#3427](https://github.com/digdir/designsystemet/pull/3427))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
 - Update React to 19.1.0. [Changelog](https://github.com/facebook/react/releases/tag/v19.1.0) ([#3426](https://github.com/digdir/designsystemet/pull/3426))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Details:** Update `@u-elements/u-details` to `0.1.1` ([#3458](https://github.com/digdir/designsystemet/pull/3458))
+- **Details**: Update `@u-elements/u-details` to `0.1.1` ([#3458](https://github.com/digdir/designsystemet/pull/3458))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Fieldset:** Fix visual regression in 1.0.3 which added unintended padding on `<legend>` ([#3427](https://github.com/digdir/designsystemet/pull/3427))
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **MultiSuggestion:** Fix keyboard focus trap on list ([#3422](https://github.com/digdir/designsystemet/pull/3422))
+- **Suggestion**: Fix keyboard focus trap on list ([#3422](https://github.com/digdir/designsystemet/pull/3422))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Suggestion:** Fix keyboard focus trap on list ([#3422](https://github.com/digdir/designsystemet/pull/3422))
+- **Tooltip**: Add `autoPlacement` prop. By default `true`, set to `false` to disable auto placement ([#3429](https://github.com/digdir/designsystemet/pull/3429))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **Tooltip:** Add `autoPlacement` prop. By default `true`, set to `false` to disable auto placement ([#3429](https://github.com/digdir/designsystemet/pull/3429))
+- **MultiSuggestion**: Fix keyboard focus trap on list ([#3422](https://github.com/digdir/designsystemet/pull/3422))
 
   <div data-packages><Tag>React</Tag></div>
-
-- Update npm non-major dependencies ([#3351](https://github.com/digdir/designsystemet/pull/3351))
-
-  <div data-packages><Tag>CLI</Tag><Tag>React</Tag></div>
 
 </div>
 
@@ -3555,36 +3435,34 @@ No changes in this release.
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- Added new class `ds-readonly-icon` for displaying a the readonly icon (padlock) before an element. ([#3413](https://github.com/digdir/designsystemet/pull/3413))
+- **ToggleGroup**: Removed padding between border and buttons, moved focus to be inset on buttons ([#3356](https://github.com/digdir/designsystemet/pull/3356))
 
   <div data-packages><Tag>CSS</Tag></div>
-
-- **Details:** Added `--dsc-details-border-block-width` to fix typo in `--dsc-details-border-block-wdith`. ([#3405](https://github.com/digdir/designsystemet/pull/3405))
-  The old variable is kept as is, so there are no breaking changes.
-
-  <div data-packages><Tag>CSS</Tag></div>
-
-- **Dropdown:** Fix `className` not being applied to `DropdownButton` ([#3384](https://github.com/digdir/designsystemet/pull/3384))
-
-  <div data-packages><Tag>React</Tag></div>
-
-- **Field:** Removed logic that added `aria-disabled` to elements with `data-field` attribute if input was disabled ([#3407](https://github.com/digdir/designsystemet/pull/3407))
-
-  <div data-packages><Tag>React</Tag></div>
 
 - **Label:** Move readonly styling from label to base for more robust setup. Now styles any label & legend element inside field & fieldset. ([#3413](https://github.com/digdir/designsystemet/pull/3413))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **ToggleGroup**
+- **Details**: Added `--dsc-details-border-block-width` to fix typo in `--dsc-details-border-block-wdith`. ([#3405](https://github.com/digdir/designsystemet/pull/3405))
+  The old variable is kept as is, so there are no breaking changes.
 
-  - Removed padding between border and buttons, moved focus to be inset on buttons ([#3356](https://github.com/digdir/designsystemet/pull/3356))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- Added new class `ds-readonly-icon` for displaying a the readonly icon (padlock) before an element. ([#3413](https://github.com/digdir/designsystemet/pull/3413))
 
-  - Add horizontal scroll when items can't fit in container ([#3356](https://github.com/digdir/designsystemet/pull/3356))
+  <div data-packages><Tag>CSS</Tag></div>
 
-    <div data-packages><Tag>CSS</Tag></div>
+- **ToggleGroup**: Add horizontal scroll when items can't fit in container ([#3356](https://github.com/digdir/designsystemet/pull/3356))
+
+  <div data-packages><Tag>CSS</Tag></div>
+
+- **Dropdown**: Fix `className` not being applied to `DropdownButton` ([#3384](https://github.com/digdir/designsystemet/pull/3384))
+
+  <div data-packages><Tag>React</Tag></div>
+
+- **Field**: Removed logic that added `aria-disabled` to elements with `data-field` attribute if input was disabled ([#3407](https://github.com/digdir/designsystemet/pull/3407))
+
+  <div data-packages><Tag>React</Tag></div>
 
 </div>
 
@@ -3612,15 +3490,15 @@ No changes in this release.
 
   <div data-packages><Tag>CLI</Tag></div>
 
-- **Card:** Fix default background color token ([#3331](https://github.com/digdir/designsystemet/pull/3331))
+- **Card**: Fix default background color token ([#3331](https://github.com/digdir/designsystemet/pull/3331))
 
   <div data-packages><Tag>CSS</Tag></div>
 
-- **useCheckboxGroup:** Fix React crashing when conditionally rendering `getCheckboxProps`. ([#3342](https://github.com/digdir/designsystemet/pull/3342))
+- **useCheckboxGroup**: Fix React crashing when conditionally rendering `getCheckboxProps`. ([#3342](https://github.com/digdir/designsystemet/pull/3342))
 
   <div data-packages><Tag>React</Tag></div>
 
-- **useRadioGroup:** Fix React crashing when conditionally rendering `getRadioProps` ([#3342](https://github.com/digdir/designsystemet/pull/3342))
+- **useRadioGroup**: Fix React crashing when conditionally rendering `getRadioProps` ([#3342](https://github.com/digdir/designsystemet/pull/3342))
 
   <div data-packages><Tag>React</Tag></div>
 
@@ -3642,7 +3520,7 @@ No changes in this release.
 
 ### Patch Changes
 
-- **MultiSuggestion:** Export component ([#3305](https://github.com/digdir/designsystemet/pull/3305))
+- **MultiSuggestion**: Export component ([#3305](https://github.com/digdir/designsystemet/pull/3305))
 
   <div data-packages><Tag>React</Tag></div>
 
