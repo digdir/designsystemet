@@ -257,10 +257,7 @@ function Release({
             <p className={classes.releaseDates} lang={lang}>
               {date ? (
                 <span>
-                  <span className={figmaPublished ? undefined : 'ds-sr-only'}>
-                    {t('changelog.released')}{' '}
-                  </span>
-                  <ChangelogDate date={date} />
+                  {t('changelog.released')} <ChangelogDate date={date} />
                 </span>
               ) : null}
               {figmaPublished ? (
@@ -588,9 +585,10 @@ export default function Changelog({
 
         {/* Disabled until hydrated, as changes before that would be lost */}
         <search className={classes.filters}>
+          {/* The label is a direct child of Field, which spaces it from the field and links them */}
           <Field className={classes.search}>
+            <Label>{t('changelog.search')}</Label>
             <Suggestion>
-              <Label>{t('changelog.search')}</Label>
               <Input
                 type='search'
                 value={searchInput}
