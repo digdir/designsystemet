@@ -25,7 +25,6 @@ type SystemColorVariables =
   | 'ButtonFace'
   | 'ButtonBorder'
   | 'CanvasText'
-  | 'GrayText'
   | 'Highlight'
   | 'HighlightText';
 
@@ -49,7 +48,8 @@ function forcedColors() {
     'border-muted': 'ButtonBorder',
     'text-subtle': 'CanvasText',
     'text-default': 'CanvasText',
-    'text-muted': 'GrayText',
+    /* Not GrayText: that reads as disabled, but read-only values and affixes are active content */
+    'text-muted': 'CanvasText',
     'base-default':
       'Highlight' /* Using Highlight instead of Accent as Windows contrast mode uses same color for Canvas and Accent */,
     'base-hover': 'Highlight',

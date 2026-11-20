@@ -1216,7 +1216,7 @@ Import this file after @digdir/designsystemet-css, for example:
     --ds-color-border-muted: ButtonBorder;
     --ds-color-text-subtle: CanvasText;
     --ds-color-text-default: CanvasText;
-    --ds-color-text-muted: GrayText;
+    --ds-color-text-muted: CanvasText;
     --ds-color-base-default: Highlight;
     --ds-color-base-hover: Highlight;
     --ds-color-base-active: Highlight;
