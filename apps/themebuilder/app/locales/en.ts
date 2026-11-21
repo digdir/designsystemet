@@ -67,6 +67,7 @@ export default {
     'no-themes': 'No themes found in config',
     'edit-theme': 'Edit theme',
     'import-config': 'Import config',
+    upload: 'Pick file',
   },
   viewTabs: {
     label: 'View',
