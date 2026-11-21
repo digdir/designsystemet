@@ -26,18 +26,6 @@ const severityColorOverrideSchema = z
   .optional()
   .describe('An object with severity color names as keys');
 
-const linkVisitedOverrideSchema = z
-  .object({
-    light: colorSchema.optional().describe('A hex color that overrides light mode'),
-    dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
-  })
-  .meta({
-    description: 'Deprecated: style .ds-link:visited instead. Overrides for the "link-visited" color',
-    deprecated: true,
-    // Non-standard JSON schema keyword, shown by VS Code instead of a generic deprecation warning
-    deprecationMessage: 'Style .ds-link:visited instead.',
-  });
-
 const focusOverrideSchema = z
   .object({
     inner: z
@@ -61,7 +49,6 @@ export const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
     severity: severityColorOverrideSchema.optional(),
-    linkVisited: linkVisitedOverrideSchema.optional(),
     focus: focusOverrideSchema.optional(),
   })
   .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')

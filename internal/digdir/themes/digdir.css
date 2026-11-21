@@ -247,7 +247,6 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #1f2c3d;
-  --ds-link-color-visited: #663299; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
 }
@@ -400,7 +399,6 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #1f2c3d;
-  --ds-link-color-visited: #663299; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
 }
@@ -718,7 +716,6 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #13181f;
   --ds-color-focus-outer: #ebeced;
-  --ds-link-color-visited: #b49acd; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
 }
@@ -871,7 +868,6 @@ Import this file after @digdir/designsystemet-css, for example:
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #13181f;
   --ds-color-focus-outer: #ebeced;
-  --ds-link-color-visited: #b49acd; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
 }

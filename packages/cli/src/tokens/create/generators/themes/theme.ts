@@ -17,12 +17,6 @@ export const generateTheme = (
     color: {
       ...themeColorTokens,
       ...themeBaseFileColor,
-      link: {
-        visited: {
-          $type: 'color',
-          $value: `{${themeName}.link.visited}`,
-        },
-      },
       focus: {
         'inner-color': {
           $type: 'color',

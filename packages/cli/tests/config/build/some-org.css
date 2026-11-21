@@ -243,7 +243,6 @@ with layers like a CSS reset before "ds" and your own customizations after it:
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #00ff00;
   --ds-color-focus-outer: #ffff00;
-  --ds-link-color-visited: #ff1234; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
 }
@@ -396,7 +395,6 @@ with layers like a CSS reset before "ds" and your own customizations after it:
   --ds-color-danger-base-contrast-default: #000000;
   --ds-color-focus-inner: #00ff00;
   --ds-color-focus-outer: #ffff00;
-  --ds-link-color-visited: #ff1234; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: light;
 }
@@ -714,7 +712,6 @@ with layers like a CSS reset before "ds" and your own customizations after it:
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #00ffff;
   --ds-color-focus-outer: #ff00aa;
-  --ds-link-color-visited: #1234ff; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
 }
@@ -867,7 +864,6 @@ with layers like a CSS reset before "ds" and your own customizations after it:
   --ds-color-danger-base-contrast-default: #ffffff;
   --ds-color-focus-inner: #00ffff;
   --ds-color-focus-outer: #ff00aa;
-  --ds-link-color-visited: #1234ff; /** Deprecated: style .ds-link:visited instead. */
 
   color-scheme: dark;
 }
