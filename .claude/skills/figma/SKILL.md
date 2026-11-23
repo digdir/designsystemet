@@ -1,14 +1,16 @@
 ---
 
-name: figma-plugin
-description: Rules for the Figma plugin and for changes that show up in Figma. Use when changing anything in figma/plugin or packages/cli/src/figma, or when a CLI or CSS change alters Figma variables or which variables components use.
+name: figma
+description: Rules for the Figma plugin and the Figma UI kit, and for changes that show up in Figma. Use when changing anything in figma/ or packages/cli/src/figma, when writing a figma-plugin or figma-ui-kit changeset, or when a CLI or CSS change alters Figma variables or which variables components use.
 ---
 
-# Working on the Figma plugin
+# Working with Figma: the plugin and the UI kit
 
-Building, loading and testing the plugin is described in `figma/plugin/README.md`. This file has what the README does not say.
+Building, loading and testing the plugin is described in `figma/plugin/README.md`, and versioning and publishing of the UI kit in `figma/README.md`. This file has what they do not say.
 
-## Before you start
+The UI kit itself is a Figma file, not code. In this repo, `figma/ui-kit/` only holds its version, its changelog and the starter theme it uses.
+
+## Before you start on the plugin
 
 - The plugin uses the CLI's built `dist`. `pnpm build:plugin` builds the CLI too, but `pnpm watch:plugin` does not. After a change in `packages/cli`, run `pnpm build:cli` again.
 
@@ -26,7 +28,7 @@ Building, loading and testing the plugin is described in `figma/plugin/README.md
 - Add every new message to the `FigmaMessages` union in `figma/plugin/src/types.ts`.
 - Messages to the UI are type checked. Messages from the UI are not: `postToPlugin` takes any payload, so check its fields against the type by hand.
 
-## Testing
+## Testing the plugin
 
 - Unit tests fake the `figma` global with `vi.stubGlobal`; see `figma/plugin/src/plugin/import/variable-sync.test.ts`.
 - Then go through "Testing in Figma" in `figma/plugin/README.md`. The tests do not cover what Figma itself does.
@@ -36,4 +38,5 @@ Building, loading and testing the plugin is described in `figma/plugin/README.md
 - A change to the plugin needs a `figma-plugin` changeset.
 - A CLI or CSS change that alters variables, their values, or which variables the components use, also needs a `figma-ui-kit` changeset in the same pull request. CI reminds you with a comment, and requires it when the pull request has the 🎨 figma label.
 - Write it for designers: use Figma's words (variables, modes), and say what they must do in their own copy of the UI kit, if anything.
+- If one text works for both developers and designers, add `figma-ui-kit` to the code changeset instead of writing a second one. The change is then listed once in the changelog.
 - How to write and publish them is in `figma/README.md`.

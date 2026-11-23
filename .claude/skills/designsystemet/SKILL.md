@@ -22,6 +22,11 @@ description: Repo-wide conventions for designsystemet.no — the project name in
 - Start the text with the component in bold, with the colon inside the bold: `**Button:** What changed`. For several: `**Checkbox, Radio:**`.
 - Never list an ignored package (`@web/themebuilder`, `@web/storybook`, `@internal/*`); it breaks the release.
 - Don't add a link to the pull request; the changelog generator adds it.
+- Keep the text on one line. The link to the pull request is added to the first line, so a second line ends up after it.
+- The text ends up in an MDX page on designsystemet.no. Write code such as `<Button>` or `{value}` in backticks; outside them, `<`, `{` and `}` are read as MDX and can break the build.
+- When the same text fits several packages, list them all in one changeset. Changes with identical text are shown once in the changelog, with their packages. A second changeset in other words is shown as a separate change.
+- A new change goes in a changeset, not straight into the root `CHANGELOG.md`. `scripts/group-changelogs.js` adds each new version to it from the package changelogs at release.
+- The root `CHANGELOG.md` can be edited by hand, and versions already in it are not rebuilt. Use that to reword a change, merge duplicates, or write notes about a release, usually in the release pull request; see `RELEASES.md`.
 - We sometimes credit a contributor, or someone whose feedback led to the change, with their GitHub `@username` in the text. Check that the username exists, so we don't credit or notify a stranger.
 
 ## Dependencies
