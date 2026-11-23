@@ -9,7 +9,6 @@ import { generateColorTokens } from './create/generators/semantic/color.ts';
 import { generateSemanticStyle } from './create/generators/semantic/style.ts';
 import { generateTheme } from './create/generators/themes/theme.ts';
 import type { OutputFile, SizeModes, Theme, TokenSet, TokenSetDimensions, TokenSets } from './types.ts';
-import { addSeverityColors, toColorNames } from './utils.ts';
 
 export type { ThemeObject_ } from './create/generators/$themes.ts';
 
@@ -25,8 +24,7 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
   const { typography, name, borderRadius, overrides, size, shadow, opacity, borderWidth } = theme;
   const { colorSchemes, sizeModes } = tokenSetDimensions;
 
-  const colors = addSeverityColors(theme.colors);
-  const colorNames = toColorNames(colors);
+  const colorNames = Object.keys(theme.colors);
   const colorTokens = Object.entries(generateColorTokens(colorNames, name));
 
   // The first typography set provides the theme font-weight references shared across sets.
@@ -35,6 +33,15 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     throw new Error(`Theme "${name}" must define at least one typography set`);
   }
 
+  const sizeStep = (mode: SizeModes) => {
+    const step = size.steps[mode];
+    if (!step) {
+      throw new Error(`Missing size step "${mode}" in theme size configuration`);
+    }
+    return step;
+  };
+
+  /** Keys here must match the keys in `selectedTokenSets` in `generate$Themes` */
   const tokenSets: TokenSets = new Map([
     ['primitives/globals', generateGlobals(shadow, borderWidth, opacity)],
     ...sizeModes.map((sizeMode): [string, TokenSet] => [
@@ -44,14 +51,14 @@ export const createTokens = async (theme: Theme, tokenSetDimensions: TokenSetDim
     ['primitives/modes/size/global', generateSizeGlobal(size)],
     ...sizeModes.map((sizeMode): [string, TokenSet] => [
       `primitives/modes/typography/size/${sizeMode}`,
-      generateTypographyMode(sizeMode, typography),
+      generateTypographyMode(sizeMode, typography, sizeStep(sizeMode)),
     ]),
     ...Object.entries(typography.fonts).map(([setName, set]): [string, TokenSet] => [
       `primitives/modes/typography/${setName}/${name}`,
       generateTypography(name, set),
     ]),
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
-      [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
+      [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, theme.colors, overrides)],
     ]),
     [`themes/${name}`, generateTheme(colorNames, name, borderRadius, primaryTypography)],
     ...colorTokens.map(([colorName, colorSetTokens]): [string, TokenSet] => [

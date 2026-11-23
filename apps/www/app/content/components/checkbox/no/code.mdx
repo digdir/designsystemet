@@ -1,6 +1,5 @@
 <Story story="Preview" defaultOpen/>
 
-
 ## Bruk
 
 Bruk klassenavnet `ds-input` på `<input>` sammen med `type="checkbox"`.
@@ -23,7 +22,7 @@ For et gyldig skjemaelement anbefaler vi å bruke `<ds-field>` sammen med en `<l
 </ds-field>
 ```
 
-## CSS variablar og data-attributter
+## CSS variabler og data-attributter
 Størrelser styres med [`data-size`](/no/fundamentals/code/sizes) og farger med [`data-color`](/no/fundamentals/code/colors). Komponenten vil arve nærmeste forelder med disse satt.
 
 Checkbox er `ds-input` med `type="checkbox"` så variabler og data-attributter som gjelder for [input](/no/components/docs/input/overview) gjelder også for checkbox.
@@ -31,7 +30,6 @@ Checkbox er `ds-input` med `type="checkbox"` så variabler og data-attributter s
 <CssAttributes />
 
 <CssVariables />
-
 
 ## Eksempler
 
@@ -41,27 +39,27 @@ Bruk [fieldset](/no/components/docs/fieldset/code) for gruppering av flere valg.
 
 <Story story="Group" />
 
-
 ### Outline
 `data-variant="outline"` legger på ekstra padding og en ramme rundt valget slik at det blir en større klikkflate.
 
 <Story story="Outline" />
 
-### Readonly  
-`type="checkbox"` er alltid `:read-only`, og har ikke støtte for dette på samme måte som input-typer du kan skrive i. 
+### Readonly
+Fra web standard, er checkbox er alltid `:read-only` siden du ikke kan skrive tekst.
 
-Dersom du setter `readonly` på checkbox sørger vi for at den oppfører seg som om den kun har lesetilgang, ved å stoppe `onClick` og `onChange`.
+Designsystemet sørger imidlertid for at `readonly` attributt oppfører seg som skrivebeskyttet ved å forhindre `click` og `change`.
 
-Brukeren vil fortsatt kunne fokusere på elementet.
+Bruk `input[type="checkbox"][readonly]` som CSS selector i dersom du trenger å utvide styling av en checkbox med readonly attributt.
+
+Brukeren vil fortsatt kunne sette fokus på elementet.
 
 <Story story="ReadOnly"  />
-
 
 ## React
 
 I React er det enklere å bygge opp en checkbox, da vi har en ferdig komponent som tar seg av det meste av logikken og tilstandshåndteringen for oss.
 
-`Checkbox` er ein samansatt komponent som bruker [field](/no/components/docs/field/overview), [label](/no/components/docs/label/overview), [validation message](/no/components/docs/validation-message/overview) og [input](/no/components/docs/input/overview) for å lage ein checkbox.
+`Checkbox` er en samansatt komponent som bruker [field](/no/components/docs/field/overview), [label](/no/components/docs/label/overview), [validation message](/no/components/docs/validation-message/overview) og [input](/no/components/docs/input/overview) for å lage en checkbox.
 
 I tillegg har vi en egen [useCheckboxGroup](/no/components/utilities/use-checkbox-group) React-hook for å lettere håndtere en gruppe av Checkbox-komponenter.
 
@@ -73,10 +71,9 @@ import { Checkbox } from '@digdir/designsystemet-react';
 
 <ReactComponentDocs />
 
-
 ### Indeterminate checkbox
 
-Bruk [useCheckboxGroup](/no/components/utilities/use-checkbox-group) for å lage en overordnet checkbox som kan velge eller fjerne alle alternativer i gruppen. 
+Bruk [useCheckboxGroup](/no/components/utilities/use-checkbox-group) for å koble en overordnet checkbox som kan velge eller fjerne alle alternativer i gruppen. 
 
 Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere checkbox er markert i gruppen. Den vises som en vanlig checkbox dersom alle i gruppen har samme tilstand.
 

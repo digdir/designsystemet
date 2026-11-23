@@ -1,6 +1,13 @@
-import * as ds from '@digdir/designsystemet-react';
-import { useSynchronizedAnimation } from '@digdir/designsystemet-react';
-import * as aksel from '@navikt/aksel-icons';
+import { Button, ToggleGroup } from '@digdir/designsystemet-react';
+import { HighlightedCode } from '@internal/components';
+import {
+  ArrowsCirclepathIcon,
+  ChevronDownIcon,
+  ClipboardCheckmarkIcon,
+  FilesIcon,
+  MoonIcon,
+  SunIcon,
+} from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { prettify } from 'htmlfy';
 import { themes } from 'prism-react-renderer';
@@ -13,8 +20,6 @@ import {
   useRef,
   useState,
 } from 'react';
-import { renderToString } from 'react-dom/server';
-import { useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 import {
   LiveEditor,
@@ -25,6 +30,7 @@ import {
 } from 'react-live';
 import { useLocation } from 'react-router';
 import classes from './live-component.module.css';
+import { liveScope, loadAllIcons } from './scope';
 
 /* vsLight's attr-name color (rgb(255, 0, 0)) is only 4:1 against white, below the 4.5:1 required for normal text. */
 const accessibleVsLight: typeof themes.vsLight = {
@@ -36,37 +42,12 @@ const accessibleVsLight: typeof themes.vsLight = {
   ],
 };
 
-const SyncedBox = () => {
-  const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
-
-  return (
-    <div
-      ref={ref}
-      style={{
-        animation: 'spin 2s linear infinite',
-        width: '30px',
-        height: '30px',
-        backgroundColor: 'red',
-      }}
-    />
-  );
-};
-
-const scopes = {
-  ...ds,
-  ...aksel,
-  useState,
-  useEffect,
-  useRef,
-  useId,
-  SyncedBox,
-  useDropzone,
-};
-
 type Language = 'react' | 'html';
 
 export type LiveComponentProps = {
   story: string;
+  /** `story` rendered to HTML */
+  html: string;
   layout?: 'row' | 'column' | 'centered' | 'block';
   language?: Language;
   defaultOpen?: boolean;
@@ -110,6 +91,15 @@ const Editor = ({
   const [resetCount, setResetCount] = useState(0);
   const [showHTML, setShowHTML] = useState(language === 'html');
   const [copied, setCopied] = useState('');
+  const latestCode = useRef(live.code);
+
+  const onChange = (code: string) => {
+    latestCode.current = code;
+    // The story as written only needs the icons that are already loaded
+    if (code === live.code) return live.onChange(code);
+    // Edited code may use any icon. Run whatever is newest once they have loaded.
+    loadAllIcons().then(() => live.onChange(latestCode.current));
+  };
 
   // Truncate SVGs to <svg></svg> to reduce noise, preserving aria-* and class attributes
   const truncatedHtml = truncateSvg
@@ -148,7 +138,7 @@ const Editor = ({
   }, [resetCount]);
 
   const reset = () => {
-    live.onChange(live.code);
+    onChange(live.code);
     setResetCount(resetCount + 1);
     setTimeout(() => {
       const editor = wrapperRef.current?.querySelector(
@@ -183,7 +173,7 @@ const Editor = ({
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Tab') {
+    if (showHTML || event.key === 'Tab') {
       return;
     }
 
@@ -211,7 +201,7 @@ const Editor = ({
       aria-label={t('live-component.show-code')}
       hidden={hidden}
     >
-      <ds.ToggleGroup
+      <ToggleGroup
         className={classes.language}
         variant='secondary'
         aria-label={t('live-component.language')}
@@ -220,10 +210,10 @@ const Editor = ({
         onChange={(v) => setShowHTML(v === 'true')}
         data-color='neutral'
       >
-        <ds.ToggleGroup.Item value='true'>HTML</ds.ToggleGroup.Item>
-        <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
-      </ds.ToggleGroup>
-      <ds.Button
+        <ToggleGroup.Item value='true'>HTML</ToggleGroup.Item>
+        <ToggleGroup.Item value='false'>React</ToggleGroup.Item>
+      </ToggleGroup>
+      <Button
         data-color='neutral'
         variant='tertiary'
         className={classes.action}
@@ -232,10 +222,10 @@ const Editor = ({
         hidden={live.newCode === undefined || live.newCode === live.code}
         type='button'
       >
-        <aksel.ArrowsCirclepathIcon />
+        <ArrowsCirclepathIcon />
         <span className={classes.resetText}>{t('live-component.reset')}</span>
-      </ds.Button>
-      <ds.Button
+      </Button>
+      <Button
         data-color='neutral'
         variant='tertiary'
         className={cl(classes.copy, classes.action)}
@@ -245,16 +235,22 @@ const Editor = ({
         type='button'
       >
         <span className={cl(classes.stack, copied)}>
-          <aksel.FilesIcon aria-hidden />
-          <aksel.ClipboardCheckmarkIcon aria-hidden />
+          <FilesIcon aria-hidden />
+          <ClipboardCheckmarkIcon aria-hidden />
         </span>
         <span>{t('live-component.copy')}</span>
-      </ds.Button>
+      </Button>
       {/* biome-ignore lint/a11y/noStaticElementInteractions: <need to manage keyboard events from here> */}
       <div
         ref={wrapperRef}
         className={classes.editorWrapper}
         onKeyDown={handleKeyDown}
+        onFocus={(event) => {
+          // About to edit: fetch the icons now so the first keystroke doesn't wait for them
+          if ((event.target as HTMLElement).closest('.live-editor')) {
+            loadAllIcons();
+          }
+        }}
       >
         <div
           className={cl(classes['activate-editor'], 'ds-focus--visible')}
@@ -266,15 +262,16 @@ const Editor = ({
           <kbd>{t('live-component.activateB')}</kbd>{' '}
           {t('live-component.activateC')}
         </div>
-        <LiveEditor
-          className={cl(classes.editor, !showHTML && classes.hidden)}
-          disabled
-          code={rawHtml}
+        <HighlightedCode
+          className={classes.htmlEditor}
+          hidden={hidden || !showHTML}
           language='html'
-        />
+        >
+          {rawHtml}
+        </HighlightedCode>
         <LiveEditor
           key={resetCount}
-          onChange={live.onChange}
+          onChange={onChange}
           className={cl(
             classes.editor,
             classes['live-editor'],
@@ -295,38 +292,49 @@ const EditorWithLive = withLive(Editor) as ComponentType<{
 }>;
 
 /**
- * Hidden component that captures the SSR HTML using renderToString.
+ * Hidden component that captures the HTML of edited code using renderToString.
  * This gives us the HTML that React produces before hydration,
  * rather than the DOM after client-side rendering.
  */
 type HtmlCaptureProps = {
   live: ContextValue;
-  onHtmlCapture: (html: string) => void;
+  onHtmlCapture: (html: string | undefined) => void;
 };
 
 const HtmlCapture = ({ live, onHtmlCapture }: HtmlCaptureProps) => {
   const Element = live.element;
+  const isEdited = live.newCode !== undefined && live.newCode !== live.code;
 
   useEffect(() => {
-    if (Element) {
+    // The loader has already rendered the story as it was written
+    if (!isEdited) return onHtmlCapture(undefined);
+    if (!Element) return;
+
+    let isCurrent = true;
+    // Only needed once someone edits, so it isn't part of what every page loads
+    import('react-dom/server').then(({ renderToString }) => {
+      if (!isCurrent) return;
       try {
-        const html = renderToString(createElement(Element));
-        onHtmlCapture(html);
+        onHtmlCapture(renderToString(createElement(Element)));
       } catch {
         onHtmlCapture('Unable to render HTML');
       }
-    }
-  }, [Element, onHtmlCapture]);
+    });
+    return () => {
+      isCurrent = false;
+    };
+  }, [Element, isEdited, onHtmlCapture]);
 
   return null;
 };
 
 const HtmlCaptureWithLive = withLive(HtmlCapture) as ComponentType<{
-  onHtmlCapture: (html: string) => void;
+  onHtmlCapture: (html: string | undefined) => void;
 }>;
 
 export const LiveComponent = ({
   story,
+  html,
   layout = 'centered',
   language = 'react',
   defaultOpen = false,
@@ -341,7 +349,7 @@ export const LiveComponent = ({
     'light',
   );
   const [useInverted, setUseInverted] = useState(false);
-  const [html, setHtml] = useState<string>('');
+  const [editedHtml, setEditedHtml] = useState<string>();
   const previewColorScheme = useInverted ? invertedColorScheme : colorScheme;
   const editorId = useId();
 
@@ -384,12 +392,12 @@ export const LiveComponent = ({
   return (
     <LiveProvider
       code={story}
-      scope={scopes}
+      scope={liveScope}
       noInline
       theme={colorScheme === 'dark' ? themes.vsDark : accessibleVsLight}
     >
-      {/* Hidden component that captures SSR HTML using renderToString */}
-      <HtmlCaptureWithLive onHtmlCapture={setHtml} />
+      {/* Hidden component that captures the HTML of edited code */}
+      <HtmlCaptureWithLive onHtmlCapture={setEditedHtml} />
       <div
         className={cl(classes.preview, 'u-long-content')}
         data-color='accent'
@@ -407,7 +415,7 @@ export const LiveComponent = ({
           }}
         />
         <LiveError className={cl('ds-alert', classes['live-preview-error'])} />
-        <ds.Button
+        <Button
           data-color='neutral'
           data-size='sm'
           variant='tertiary'
@@ -418,12 +426,12 @@ export const LiveComponent = ({
           aria-label={t('live-component.invert-color-scheme')}
         >
           {previewColorScheme === 'dark' ? (
-            <aksel.SunIcon aria-hidden />
+            <SunIcon aria-hidden />
           ) : (
-            <aksel.MoonIcon aria-hidden />
+            <MoonIcon aria-hidden />
           )}
-        </ds.Button>
-        <ds.Button
+        </Button>
+        <Button
           data-color='neutral'
           data-size='sm'
           variant='tertiary'
@@ -432,15 +440,15 @@ export const LiveComponent = ({
           className={classes.codeButton}
           aria-controls={editorId}
         >
-          <aksel.ChevronDownIcon aria-hidden />
+          <ChevronDownIcon aria-hidden />
           {showEditor
             ? t('live-component.hide-code')
             : t('live-component.show-code')}
-        </ds.Button>
+        </Button>
       </div>
       <EditorWithLive
         id={editorId}
-        html={html}
+        html={editedHtml ?? html}
         hidden={!showEditor}
         language={language}
         truncateSvg={truncateSvg}

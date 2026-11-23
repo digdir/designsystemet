@@ -2,7 +2,7 @@ import { expandTypesMap } from '@tokens-studio/sd-transforms';
 import { pathStartsWithOneOf, typeEquals } from '../../utils.ts';
 import { formats } from '../formats/css.ts';
 import { buildOptions } from '../platform.ts';
-import { sizeRem, typographyName } from '../transformers.ts';
+import { dsName, sizeRem } from '../transformers.ts';
 
 import { basePxFontSize, type GetStyleDictionaryConfig, isTypographySetPrimitive, prefix } from './shared.ts';
 
@@ -28,13 +28,12 @@ export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typograph
         buildPath: `${theme}/`,
         basePxFontSize,
         transforms: [
-          'name/kebab',
+          dsName.name,
           'ts/size/px',
           sizeRem.name,
           'ts/size/lineheight',
           'ts/typography/fontWeight',
           'ts/size/css/letterspacing',
-          typographyName.name,
         ],
         files: [
           {

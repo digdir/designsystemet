@@ -1,4 +1,4 @@
-/* @deprecated: This file can be removed in the next major version. */
+/* @deprecated v2: This file can be removed in the next major version. */
 .ds-togglegroup {
   --dsc-togglegroup-background: var(--ds-color-surface-default);
   --dsc-togglegroup-border-width: var(--ds-border-width-default);
@@ -31,7 +31,7 @@
     min-height: var(--dsc-togglegroup-button-size);
     min-width: fit-content;
 
-    @composes ds-focus--inset from './base.css';
+    @composes ds-focus--inset from './utils.css';
 
     &:focus-visible {
       border-radius: var(--dsc-togglegroup-border-radius);
@@ -40,17 +40,6 @@
     &[data-icon] {
       height: var(--dsc-togglegroup-button-size);
       width: var(--dsc-togglegroup-button-size);
-    }
-
-    @media (forced-colors: active) {
-      &[aria-checked='true'] {
-        background: ButtonText;
-        color: CanvasText;
-
-        & svg {
-          color: CanvasText;
-        }
-      }
     }
   }
 }

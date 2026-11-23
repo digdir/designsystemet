@@ -155,7 +155,7 @@ export const ReadOnly = meta.story(() => {
 
 export const AriaDisabled = meta.story(() => {
   return (
-    <ToggleGroup aria-label='Filtrering'>
+    <ToggleGroup aria-label='Filtrering' defaultValue='innboks'>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item aria-disabled='true' value='utkast'>
         Utkast

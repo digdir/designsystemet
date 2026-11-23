@@ -1,5 +1,6 @@
 import en from '@internal/components/src/_locales/en';
-import themeModal from './en/theme-modal';
+import colorStepDialog from './en/color-step-dialog';
+import exportTheme from './en/export-theme';
 import type no from './no';
 
 export default {
@@ -24,12 +25,15 @@ export default {
         "The page you are looking for can't be found. It may have been deleted or moved, or there may be an error in the link.",
     },
     generic: {
-      title: 'Sorry, something went wrong.',
       'go-to-homepage': 'Go to homepage',
     },
   },
   accessibility: {
     'skip-link': 'Skip to main content',
+  },
+  common: {
+    save: 'Save',
+    cancel: 'Cancel',
   },
   meta: {
     title: 'Theme Builder',
@@ -37,12 +41,24 @@ export default {
   },
   themeBuilder: {
     title: 'Theme Builder',
+    'active-theme': 'Theme',
+    'toggle-editor': 'Open or close theme editor',
     'documentation-link': 'Read the documentation about custom themes',
   },
-  configPaste: {
+  editThemes: {
+    'edit-themes': 'Edit themes',
+    'theme-names': 'Theme names',
+    'remove-theme': 'Delete theme {{name}}',
+    'add-theme': 'Add theme',
+    'theme-name': 'Theme name',
+    'invalid-theme-name':
+      'Use only lowercase letters a-z and numbers, with single hyphens between them.',
+    'duplicate-theme-name': 'A theme with this name already exists.',
+  },
+  importConfig: {
     title: 'Import from config file',
     description:
-      'Already have a config file? Paste it here to select and edit a theme.',
+      'Already have a config file? Paste it here to select and edit a theme. It replaces the themes you are working on now.',
     placeholder: 'Paste your designsystemet.config.json content here...',
     validate: 'Validate config',
     'select-theme': 'Select a theme to edit',
@@ -50,16 +66,16 @@ export default {
     'validation-success': 'Config is valid! Select a theme below.',
     'no-themes': 'No themes found in config',
     'edit-theme': 'Edit theme',
-    button: 'Continue from config file',
-    'dialog-heading': 'Paste config',
     'import-config': 'Import config',
   },
-  tabs: {
+  viewTabs: {
+    label: 'View',
     examples: 'Examples',
     colorsystem: 'Colour system',
+  },
+  editorTabs: {
     colors: 'Colours',
     dimensions: 'Dimensions',
-    variables: 'Variables',
   },
   colorPreview: {
     title: 'See your colours in use',
@@ -67,8 +83,6 @@ export default {
       'Each colour selected with the tool gets its own card in the section on the right so you can see how the colours harmonise together.',
     note: 'Note that the contrast colour inside the button changes from white to black, depending on whether the selected colour is light or dark, to achieve the best possible contrast.',
     view: 'View:',
-    light: 'Light',
-    dark: 'Dark',
     'example-heading': 'Colours make life more colourful',
     checkbox: 'Checkbox',
     switch: 'Switch',
@@ -77,13 +91,12 @@ export default {
     grid: 'Grid',
     list: 'List',
   },
-  overview: {
+  examples: {
     'login-title': 'Log in to the portal',
     name: 'Name',
     password: 'Password',
     'forgot-password': 'Forgotten password?',
     login: 'Log in',
-    'device-type': 'Device type:',
     mobile: 'Mobile',
     tablet: 'Tablet',
     computer: 'Computer',
@@ -92,12 +105,7 @@ export default {
     news: 'News',
     'news-title': 'Travelled alone to the big city',
     'news-description': 'Mona Kvist wanted to find her dream in New York City',
-    articles: 'Articles',
-    contact: 'Contact',
     search: 'Search',
-    menu: 'Menu',
-    subheading: 'Here is a sub heading',
-    'read-more': 'Read more',
     'people-you-may-know': 'People you may know',
     follow: 'Follow',
     'all-users': 'All users',
@@ -111,37 +119,49 @@ export default {
     phone: 'Phone',
     settings: 'Settings',
     'admin-display': 'Here you can manage display',
-    'dark-mode': 'Dark mode',
     'display-mode': 'Display mode',
     'select-color': 'Choose colour',
   },
-  themeModal,
-  colorPane: {
-    add: 'Add',
+  colorStepDialog,
+  exportTheme,
+  colorEditor: {
+    'confirm-add-title': 'Add a color to all themes?',
+    'confirm-add-description':
+      'This adds a color with the same starting value to all {{count}} themes. Each theme can then have its own color value.',
+    'confirm-add': 'Add to all themes',
+    'confirm-remove-title': 'Delete a color from all themes?',
+    'confirm-remove-description':
+      'This deletes "{{name}}" and its token overrides from all {{count}} themes. This cannot be undone.',
+    'confirm-remove': 'Delete from all themes',
+    'confirm-rename-title': 'Rename a color in all themes?',
+    'confirm-rename-description':
+      'This renames "{{from}}" to "{{to}}" in all {{count}} themes, including its token overrides. Existing color values are preserved.',
+    'confirm-rename': 'Rename in all themes',
+    'name-duplicate-error': 'A color with this name already exists',
+    'add-color': 'Add Colour',
     'edit-color': 'Edit colour',
-    save: 'Save',
-    cancel: 'Cancel',
     'remove-color': 'Remove colour',
     'neutral-info': 'The neutral colour cannot be removed or renamed.',
-    'severity-info': 'The severity colour cannot be removed or renamed.',
     name: 'Name',
     'name-placeholder': 'Write the name here...',
-    'name-description': 'Use only letters a-z, numbers and hyphens',
+    'name-description':
+      'Use only lowercase letters a-z and numbers, with single hyphens between them',
+    'name-invalid-error':
+      'The name must start and end with a letter or number, with single hyphens between them',
     'name-empty-error': 'The colour name cannot be empty',
-    'name-reserved-error':
-      'The colour name cannot be the same as our system colours',
+    'severity-info': 'Severity colours cannot be renamed.',
+    'name-reserved-error': 'The colour cannot be named "neutral"',
     color: 'Colour',
   },
   appearanceToggle: {
+    label: 'Appearance',
     light: 'Light',
     dark: 'Dark',
-    'set-to': 'Set to',
-    view: 'view',
   },
   colorGroup: {
     'see-more': 'See more about {{namespace}} {{color}}',
   },
-  'color-tokens': {
+  colorPreviewTokens: {
     title: 'Color Tokens',
     description:
       'Here you can see which tokens have been used to create the cards in the section above.',
@@ -165,8 +185,13 @@ export default {
     'base-colors-description':
       'The colours selected in the tool get the Base Default token in each colour scale. This means it is important to choose a colour that has over 3:1 contrast against surface colours if it is to be used as an important, meaningful colour. The tool also creates two contrast colours that can be safely used on top of the base colours. These contrast colours become either light or dark depending on the base colour.',
     'select-color': 'Select colour to see contrasts',
+    'min-contrast': 'Required: {{ratio}}:1',
+    'min-contrast-failed': 'Below the required {{ratio}}:1',
+    'min-contrast-description':
+      'The minimum contrast these steps should have against each other in every colour scale, either 3:1 or 4.5:1. The requirements come from the colour specification.',
   },
   borderRadius: {
+    label: 'Border radius',
     suggested: 'Suggested base border radius',
     manual: 'Manual base border radius',
     'define-value': 'Define the base value for border radius',
@@ -177,7 +202,10 @@ export default {
     full: 'Full',
   },
   overrides: {
+    open: 'Token overrides',
     heading: 'Color Overrides',
+    'invalid-hex': 'Enter a valid hex colour, for example #0062BA.',
+    'color-picker': 'colour picker',
     description:
       'Override specific token colors for light and dark modes. Make sure to check contrasts after changes.',
   },

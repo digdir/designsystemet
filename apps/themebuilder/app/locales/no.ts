@@ -1,5 +1,6 @@
 import no from '@internal/components/src/_locales/no';
-import themeModal from './no/theme-modal';
+import colorStepDialog from './no/color-step-dialog';
+import exportTheme from './no/export-theme';
 
 export default {
   ...no,
@@ -23,12 +24,15 @@ export default {
         'Denne siden kan være slettet eller flyttet, eller det er en feil i lenken.',
     },
     generic: {
-      title: 'Feil',
       'go-to-homepage': 'Gå til forsiden',
     },
   },
   accessibility: {
     'skip-link': 'Hopp til hovedinnhold',
+  },
+  common: {
+    save: 'Lagre',
+    cancel: 'Avbryt',
   },
   meta: {
     title: 'Temabygger',
@@ -36,12 +40,24 @@ export default {
   },
   themeBuilder: {
     title: 'Temabygger',
+    'active-theme': 'Tema',
+    'toggle-editor': 'Åpne eller lukke temaredigering',
     'documentation-link': 'Les dokumentasjon om eget tema',
   },
-  configPaste: {
+  editThemes: {
+    'edit-themes': 'Rediger temaer',
+    'theme-names': 'Temanavn',
+    'remove-theme': 'Slett tema {{name}}',
+    'add-theme': 'Legg til tema',
+    'theme-name': 'Temanavn',
+    'invalid-theme-name':
+      'Bruk kun små bokstaver a-z og tall, med enkle bindestreker mellom.',
+    'duplicate-theme-name': 'Et tema med dette navnet finnes allerede.',
+  },
+  importConfig: {
     title: 'Importer fra konfigurasjonsfil',
     description:
-      'Har du allerede en konfigurasjonsfil? Lim den inn her for å velge og redigere et tema.',
+      'Har du allerede en konfigurasjonsfil? Lim den inn her for å velge og redigere et tema. Den erstatter temaene du jobber med nå.',
     placeholder: 'Lim inn innholdet fra designsystemet.config.json her...',
     validate: 'Valider konfigurasjon',
     'select-theme': 'Velg et tema å redigere',
@@ -49,16 +65,16 @@ export default {
     'validation-success': 'Konfigurasjonen er gyldig! Velg et tema nedenfor.',
     'no-themes': 'Ingen temaer funnet i konfigurasjonen',
     'edit-theme': 'Rediger tema',
-    button: 'Fortsett fra konfigurasjonsfil',
-    'dialog-heading': 'Lim inn config',
     'import-config': 'Importer config',
   },
-  tabs: {
+  viewTabs: {
+    label: 'Visning',
     examples: 'Eksempler',
     colorsystem: 'Fargesystem',
+  },
+  editorTabs: {
     colors: 'Farger',
     dimensions: 'Dimensjoner',
-    variables: 'Variabler',
   },
   colorPreview: {
     title: 'Se fargene dine i bruk',
@@ -66,8 +82,6 @@ export default {
       'Hver farge som blir valgt med verktøyet får sitt eget kort i seksjonen til høyre slik at du kan se hvordan fargene harmonerer sammen.',
     note: 'Merk at kontrastfargen inne i knappen endrer seg fra hvit til svart, avhengig av om den valgte fargen er lys eller mørk for å oppnå best mulig kontrast.',
     view: 'Visning:',
-    light: 'Lys',
-    dark: 'Mørk',
     'example-heading': 'Farger gjør livet mer fargerikt',
     checkbox: 'Checkbox',
     switch: 'Switch',
@@ -76,13 +90,12 @@ export default {
     grid: 'Rutenett',
     list: 'Liste',
   },
-  overview: {
+  examples: {
     'login-title': 'Logg inn i portalen',
     name: 'Navn',
     password: 'Passord',
     'forgot-password': 'Glemt passord?',
     login: 'Logg inn',
-    'device-type': 'Enhetstype:',
     mobile: 'Mobil',
     tablet: 'Tablet',
     computer: 'Datamaskin',
@@ -91,12 +104,7 @@ export default {
     news: 'Nyheter',
     'news-title': 'Reiste alene til storbyen',
     'news-description': 'Mona kvist ville finne drømmen i New York City',
-    articles: 'Artikler',
-    contact: 'Kontakt',
     search: 'Søk',
-    menu: 'Meny',
-    subheading: 'Here is a sub heading',
-    'read-more': 'Les mer',
     'people-you-may-know': 'Folk du kanskje kjenner',
     follow: 'Følg',
     'all-users': 'Alle brukere',
@@ -110,37 +118,49 @@ export default {
     phone: 'Telefon',
     settings: 'Innstillinger',
     'admin-display': 'Her kan du administrere visning',
-    'dark-mode': 'Mørk modus',
     'display-mode': 'Visningsmodus',
     'select-color': 'Velg farge',
   },
-  themeModal,
-  colorPane: {
-    add: 'Legg til',
+  colorStepDialog,
+  exportTheme,
+  colorEditor: {
+    'confirm-add-title': 'Legg til en farge i alle temaer?',
+    'confirm-add-description':
+      'Dette legger til en farge med samme startverdi i alle {{count}} temaer. Hvert tema kan deretter ha sin egen fargeverdi.',
+    'confirm-add': 'Legg til i alle temaer',
+    'confirm-remove-title': 'Slett en farge fra alle temaer?',
+    'confirm-remove-description':
+      'Dette sletter «{{name}}» og dens tokenoverstyringer fra alle {{count}} temaer. Dette kan ikke angres.',
+    'confirm-remove': 'Slett fra alle temaer',
+    'confirm-rename-title': 'Endre fargenavn i alle temaer?',
+    'confirm-rename-description':
+      'Dette endrer navnet fra «{{from}}» til «{{to}}» i alle {{count}} temaer, inkludert tokenoverstyringene. Eksisterende fargeverdier beholdes.',
+    'confirm-rename': 'Endre navn i alle temaer',
+    'name-duplicate-error': 'En farge med dette navnet finnes allerede',
+    'add-color': 'Legg til Farge',
     'edit-color': 'Rediger farge',
-    save: 'Lagre',
-    cancel: 'Avbryt',
     'remove-color': 'Fjern farge',
     'neutral-info': 'Neutral fargen kan ikke fjernes eller endres navn på.',
-    'severity-info': 'Severity fargen kan ikke fjernes eller endres navn på.',
     name: 'Navn',
     'name-placeholder': 'Skriv navnet her...',
-    'name-description': 'Bruk kun bokstavene a-z, tall og bindestrek',
+    'name-description':
+      'Bruk kun små bokstaver a-z og tall, med enkle bindestreker mellom',
+    'name-invalid-error':
+      'Navnet må starte og slutte med en bokstav eller et tall, med enkle bindestreker mellom',
     'name-empty-error': 'Navnet på fargen kan ikke være tomt',
-    'name-reserved-error':
-      'Navnet på fargen kan ikke være det samme som våre systemfarger',
+    'severity-info': 'Severity-farger kan ikke få nytt navn.',
+    'name-reserved-error': 'Fargen kan ikke hete «neutral»',
     color: 'Farge',
   },
   appearanceToggle: {
+    label: 'Utseende',
     light: 'Lys',
     dark: 'Mørk',
-    'set-to': 'Sett til',
-    view: 'visning',
   },
   colorGroup: {
     'see-more': 'Se mer om {{namespace}} {{color}}',
   },
-  'color-tokens': {
+  colorPreviewTokens: {
     title: 'Fargetokens',
     description:
       'Her ser du hvilke tokens som er brukt for å lage kortene i seksjonen over.',
@@ -164,19 +184,27 @@ export default {
     'base-colors-description':
       'Fargene som blir valgt i verktøyet får tokenet Base Default i hver fargeskala. Dette betyr at det er viktig å velge en farge som har over 3:1 kontrast mot overflatefarger om den skal brukes som en viktig, meningsbærende farge. Verktøyet lager også to kontrastfarger som trygt kan brukes oppå base fargene. Disse kontrastfargene blir enten lyse eller mørke avhengig av base fargen.',
     'select-color': 'Velg farge for å se kontraster',
+    'min-contrast': 'Krav: {{ratio}}:1',
+    'min-contrast-failed': 'Under kravet på {{ratio}}:1',
+    'min-contrast-description':
+      'Minimumskontrasten disse trinnene skal ha mot hverandre i alle fargeskalaer, enten 3:1 eller 4.5:1. Kravene kommer fra fargespesifikasjonen.',
   },
   borderRadius: {
-    suggested: 'Foreslått basis Border radius',
-    manual: 'Manuell basis Border radius',
-    'define-value': 'Definer basisverdien for border-radius',
+    label: 'Hjørneavrunding',
+    suggested: 'Foreslått hjørneavrunding',
+    manual: 'Manuell hjørneavrunding',
+    'define-value': 'Definer basisverdien for hjørneavrunding',
     none: 'Ingen',
-    small: 'Small',
-    medium: 'Medium',
-    large: 'Large',
-    full: 'Full',
+    small: 'Liten',
+    medium: 'Middels',
+    large: 'Stor',
+    full: 'Maksimal',
   },
   overrides: {
+    open: 'Tokenoverstyringer',
     heading: 'Fargeoverstyringer',
+    'invalid-hex': 'Skriv inn en gyldig hex-farge, for eksempel #0062BA.',
+    'color-picker': 'fargevelger',
     description:
       'Overstyr spesifikke tokenfarger for lys og mørk modus. Sørg for å sjekke kontraster etter endringer.',
   },

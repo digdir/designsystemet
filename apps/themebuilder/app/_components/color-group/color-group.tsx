@@ -1,64 +1,63 @@
 import type {
+  Color,
   SemanticColorNames,
   ThemeInfo,
-} from '@digdir/designsystemet/color';
-import { RovingFocusItem } from '@digdir/designsystemet-react';
-import cl from 'clsx/lite';
-import { Fragment } from 'react';
+} from '@digdir/designsystemet/internal';
 import { useTranslation } from 'react-i18next';
-import { useColorModalContext } from '~/_utils/color-modal-context';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useColorScheme } from '~/_hooks/use-color-scheme';
 import { ColorButton } from '../color-button/color-button';
 import classes from './color-group.module.css';
 
 type ColorGroupProps = {
-  header: string;
+  /** The name of the group. When set, it is shown above the steps together with their names. */
+  header?: string;
   colorNames: SemanticColorNames[];
+  /** The names of the steps, in the order of `colorNames` */
+  names: string[];
   colorScale: ThemeInfo;
-  names?: string[];
+  /** The name of the color */
   namespace: string;
+  onSelect: (step: Color) => void;
 };
 
+/** The steps of one group of a color scale, such as Background or Border */
 export const ColorGroup = ({
   header,
   colorNames,
   names,
   colorScale,
   namespace,
+  onSelect,
 }: ColorGroupProps) => {
-  const { colorScheme } = useThemebuilder();
+  const [colorScheme] = useColorScheme();
   const { t } = useTranslation();
-  const { openColorModal } = useColorModalContext();
 
   return (
     <div>
-      {header && <div className={cl(classes.header)}>{header}</div>}
-      {header && names && (
-        <div className={classes.names}>
-          {names.map((name, index) => (
-            <div key={index + 'name' + namespace}>{name}</div>
-          ))}
-        </div>
+      {header && (
+        <>
+          <div className={classes.header}>{header}</div>
+          <div className={classes.names}>
+            {names.map((name) => (
+              <div key={name}>{name}</div>
+            ))}
+          </div>
+        </>
       )}
 
-      <div className={cl(classes.colors)}>
-        {colorNames.map((colorName, index) => {
+      <div className={classes.colors}>
+        {colorNames.map((colorName) => {
           const color = colorScale[colorScheme][colorName];
-          const { number, hex } = color;
           return (
-            <Fragment key={index + 'fragment' + namespace}>
-              <RovingFocusItem value={namespace + number} asChild>
-                <ColorButton
-                  color={hex}
-                  colorName={colorName}
-                  aria-label={t('colorGroup.see-more', {
-                    namespace,
-                    color: color?.displayName,
-                  })}
-                  onClick={() => openColorModal(color, namespace)}
-                />
-              </RovingFocusItem>
-            </Fragment>
+            <ColorButton
+              key={colorName}
+              color={color.hex}
+              aria-label={t('colorGroup.see-more', {
+                namespace,
+                color: color.displayName,
+              })}
+              onClick={() => onSelect(color)}
+            />
           );
         })}
       </div>

@@ -18,20 +18,7 @@ export type DropdownProps = MergeRight<
 /**
  * Dropdown component, used to display a list of options.
  *
- * @example with TriggerContext
- * <Dropdown.TriggerContext>
- *   <Dropdown.Trigger>Dropdown trigger</Dropdown.Trigger>
- *   <Dropdown placement='bottom-end'>
- *     <Dropdown.Heading>Dropdown</Dropdown.Heading>
- *     <Dropdown.List>
- *       <Dropdown.Item>
- *         <Dropdown.Button>Option</Dropdown.Button>
- *       </Dropdown.Item>
- *     </Dropdown.List>
- *   </Dropdown>
- * </Dropdown.TriggerContext>
- *
- * @example without TriggerContext
+ * @example
  * <Button popovertarget="my-dropdown">Trigger</Button>
  * <Dropdown id="my-dropdown">
  *   <Dropdown.Heading>Heading</Dropdown.Heading>

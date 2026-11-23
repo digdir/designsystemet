@@ -1,5 +1,94 @@
 # Change Log
 
+## 1.24.1
+
+### Patch Changes
+
+- **typography**: Font sizes in the Small and Large size modes are now the same in Figma as in the generated CSS ([#5609](https://github.com/digdir/designsystemet/issues/5609)). (thanks @ssb-cgn) ([#5647](https://github.com/digdir/designsystemet/pull/5647))
+  
+  The CSS does not change. In Figma, the font-size variables for Small and Large change the next time you import your theme. The same values are used in the `design-tokens` output:
+  
+  | Step | Small | Large |
+  |---|---|---|
+  | 1 | 11 → 11 | 13 → 14 |
+  | 2 | 13 → 12 | 16 → 16 |
+  | 3 | 14 → 14 | 18 → 19 |
+  | 4 | 16 → 16 | 21 → 21 |
+  | 5 | 18 → 19 | 24 → 25 |
+  | 6 | 21 → 21 | 30 → 28 |
+  | 7 | 24 → 27 | 36 → 35 |
+  | 8 | 30 → 32 | 48 → 42 |
+  | 9 | 36 → 43 | 60 → 56 |
+  | 10 | 48 → 53 | 72 → 70 |
+- **size**: In the Large size mode, `--ds-size-3`, `-6`, `-9`, `-12`, `-15`, `-18` and `-30` are 1px larger, now matching the intended values in Figma and in all browsers. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
+  
+  These sizes are whole numbers (14, 28, 42, 56, 70, 84 and 140px), but a floating-point rounding error in the size formula made Figma, Chrome and Safari round them down to 1px less, while Firefox could show the intended value. The formula now multiplies before dividing, so the result is exact. Small and Medium do not change.
+  
+  In Figma, the size variables for Large change the next time you import your theme.
+- **config**: A theme with exactly three colors named `main`, `support` and `neutral` is no longer mistaken for the old color categories and migrated. ([#5633](https://github.com/digdir/designsystemet/pull/5633))
+
+- Update npm non-major dependencies ([#5613](https://github.com/digdir/designsystemet/pull/5613))
+
+- `base-contrast-default` is now chosen so it has enough contrast against both `base-default` and `base-hover`, not only `base-default`. Some mid-tone colors get black instead of white, mostly in dark mode, and `base-contrast-subtle` follows the same direction. ([#5623](https://github.com/digdir/designsystemet/pull/5623))
+
+- **config**: Color names can no longer start or end with a hyphen, or have two hyphens in a row. Names like `-brand`, `brand-` and `brand--2` are rejected; `brand-2` is still valid. ([#5633](https://github.com/digdir/designsystemet/pull/5633))
+
+## 1.24.0
+
+### Minor Changes
+
+- New `types` output for generating TypeScript declarations for your theme's colors (`types.d.ts`). The `css` output no longer creates type declarations by default, so add `"types"` to `output` to get them. ([#5444](https://github.com/digdir/designsystemet/pull/5444))
+
+- **CLI:** New `output` field for choosing what the CLI creates. It defaults to `["css"]`. Each output is saved in a default folder, which you can change with `dir`: ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+  - `"css"`: CSS, in `designsystemet`
+  - `"types"`: type declarations, in `designsystemet`
+  - `"design-tokens"`: design tokens, in `designsystemet/design-tokens`
+- **CLI:** Set `cleanDir` to `true` on an output in the new `output` field to delete the files in its `dir` before generating files. `cleanDir` is `false` by default, like `clean`. Design tokens that are built from (`tokensDir`), and folders of outputs with `cleanDir: false`, are kept when they are inside a cleaned folder. Before deleting anything, the CLI stops with an error if a cleaned folder contains the config file, is one of those folders, is a symlink, or has a symlink on the way to one of them or to another output. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+- New `tailwind` option on the `css` output. Set this to the desired Tailwind version to generate `<theme>.tailwind.css`. Defaults to `false`, which does not generate a Tailwind file. ([#5438](https://github.com/digdir/designsystemet/pull/5438))
+  - `"v3"` generates the same file as before.
+  - `"v4"` uses `@theme inline`, so Tailwind utilities reference the `--ds-*` variables directly and `data-color`, `data-color-scheme` and `data-size` also apply to them, at any depth in the DOM.
+
+### Patch Changes
+
+- Fix `<theme>.tailwind.css` missing variables `--text-sm`, `--text-md` and `--text-lg`, mapped to the body font sizes. Generate a new theme file to get the updated fixed file. ([#5451](https://github.com/digdir/designsystemet/pull/5451))
+
+- **Deprecated:** Commands `token create` and `token build`. Use `designsystemet` with new `output` field in `designsystemet.config.json` to configure outputs. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+- Deprecated unused design token `link.color.visited`, CSS custom property `--ds-link-color-visited` and config option `overrides.linkVisited`. To style visited links, style `.ds-link:visited` instead. ([#5574](https://github.com/digdir/designsystemet/pull/5574))
+
+- Replace `fast-glob` with Node's built-in `fs.glob` in CSS migrations. Thanks @wfeiring ([#5505](https://github.com/digdir/designsystemet/pull/5505))
+
+- Update npm non-major dependencies ([#5506](https://github.com/digdir/designsystemet/pull/5506))
+
+- Update npm non-major dependencies ([#5479](https://github.com/digdir/designsystemet/pull/5479))
+
+- Update npm non-major dependencies ([#5553](https://github.com/digdir/designsystemet/pull/5553))
+
+- Update npm non-major dependencies ([#5588](https://github.com/digdir/designsystemet/pull/5588))
+
+- Update npm non-major dependencies ([#5521](https://github.com/digdir/designsystemet/pull/5521))
+
+- **Deprecated:** `outDir` and `clean` are deprecated in the Config schema, and replaced by `output[].dir` and `output[].cleanDir` for the respective output type. ([#5416](https://github.com/digdir/designsystemet/pull/5416))
+
+- **CLI:** The config file (`designsystemet.config.json`), including `typography`, is no longer experimental. Future changes to the config schema follow semver and come with automatic migrations. ([#5597](https://github.com/digdir/designsystemet/pull/5597))
+
+- **Tailwind:** Sets CSS `@layer` in `<theme>.tailwind.css` for easier usage ([#5570](https://github.com/digdir/designsystemet/pull/5570))
+
+- Add banner about usage to generated CSS theme and tailwind files. ([#5570](https://github.com/digdir/designsystemet/pull/5570))
+
+## 1.23.0
+
+### Patch Changes
+
+- **CLI:** Generated theme CSS now includes forced-colors support for high contrast mode. ([#5403](https://github.com/digdir/designsystemet/pull/5403))
+
+- Update npm non-major dependencies ([#5373](https://github.com/digdir/designsystemet/pull/5373))
+
+- **CLI** Remove internal functions that were exposed by default. ([#5410](https://github.com/digdir/designsystemet/pull/5410))
+
+- **cli**: Color names in `themes.<theme>.colors` are now validated and may only contain lowercase letters (a-z), digits (0-9) and hyphens (-), matching the names produced by the theme builder. ([#5357](https://github.com/digdir/designsystemet/pull/5357))
+
 ## 1.22.0
 
 No changes in this release.

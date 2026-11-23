@@ -42,7 +42,7 @@ const themeSchema = themeObjectSchema.superRefine((theme, ctx) => {
   // so a missing step does not also flag every reference in the components.
   const stepModes = stepNames.map((step) => theme.typography.size[step]).filter((mode) => mode !== undefined);
   const modes = stepModes.length > 0 ? stepModes : Object.values(theme.typography.size);
-  const sharedKeys = (group: 'lineHeight' | 'letterSpacing' | 'fontSize') => {
+  const sharedKeys = (group: 'lineHeight' | 'letterSpacing') => {
     const keys = new Set<string>();
     for (const key of Object.keys(modes[0]?.[group] ?? {})) {
       if (modes.every((mode) => key in mode[group])) {
@@ -108,7 +108,7 @@ const themeSchema = themeObjectSchema.superRefine((theme, ctx) => {
     'line-height': sharedKeys('lineHeight'),
     'font-weight': fontWeightKeys,
     'letter-spacing': sharedKeys('letterSpacing'),
-    'font-size': sharedKeys('fontSize'),
+    'font-size': new Set(Object.keys(theme.typography.fontSize)),
   };
 
   checkGroup(theme.typography.components, ['typography', 'components'], availableKeys);
@@ -146,6 +146,7 @@ const getSharedThemeValues = (theme: ConfigSchemaTheme): SharedThemeValue[] => {
     },
     { path: ['typography', 'fonts'], description: 'typography set names', value: Object.keys(theme.typography.fonts) },
     { path: ['typography', 'size'], description: 'size-mode typography', value: theme.typography.size },
+    { path: ['typography', 'fontSize'], description: 'font-size scale', value: theme.typography.fontSize },
     {
       path: ['typography', 'components'],
       description: 'typography components',
@@ -221,7 +222,8 @@ export const themesSchema = z
   .meta({
     description:
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names, size configuration, shadows, border widths, opacities, border-radius step names and typography sets.',
-  });
+  })
+  .optional();
 
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
 /** The pre-validation shape of a theme, i.e. what users write: defaulted fields are optional. */
@@ -234,6 +236,9 @@ export const configSchema = z.object({
 });
 
 export type ConfigSchema = z.infer<typeof configSchema>;
+
+/** The themes of a config. `themes` is optional, since it's only needed by outputs that are created from themes. */
+export type ConfigSchemaThemes = NonNullable<ConfigSchema['themes']>;
 
 export type ConfigSchemaInput = z.input<typeof configSchema>;
 
@@ -264,15 +269,19 @@ const externalThemeSchema = themeObjectSchema
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
 /**
- * The public config: {@link configSchema} without `output`, and with themes restricted to the public keys.
+ * The public config: {@link configSchema}, including `output`, with themes restricted to the public keys.
  * Use this when exposing the schema externally (the public JSON schema, the theme builder and the Figma plugin);
  * use {@link configSchema} to validate a config in the CLI.
  */
-export const externalConfigSchema = configSchema.omit({ output: true }).extend({
-  themes: z.record(z.string(), externalThemeSchema).superRefine(checkThemes).meta({
-    description:
-      'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names.',
-  }),
+export const externalConfigSchema = configSchema.extend({
+  themes: z
+    .record(z.string(), externalThemeSchema)
+    .superRefine(checkThemes)
+    .meta({
+      description:
+        'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name. All themes must define the same color names.',
+    })
+    .optional(),
 });
 
 export type ExternalConfigSchema = z.infer<typeof externalConfigSchema>;

@@ -2,14 +2,12 @@ import { useEffect, useState } from 'react';
 import { hasConsent } from '~/_utils/consent.client';
 
 export function useShowConsentBanner() {
-  const [showBanner, setShowBanner] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
     // Check if user already has consent
     const checkConsent = async () => {
-      if (!(await hasConsent())) {
-        setShowBanner(true);
-      }
+      setShowBanner(!(await hasConsent()));
     };
 
     checkConsent();

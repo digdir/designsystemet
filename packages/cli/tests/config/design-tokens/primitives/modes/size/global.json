@@ -2,83 +2,83 @@
   "_size": {
     "0": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 0)"
+      "$value": "floor({_size.step} * 0 * {_size.mode-font-size} / {_size.base})"
     },
     "1": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 1)"
+      "$value": "floor({_size.step} * 1 * {_size.mode-font-size} / {_size.base})"
     },
     "2": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 2)"
+      "$value": "floor({_size.step} * 2 * {_size.mode-font-size} / {_size.base})"
     },
     "3": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 3)"
+      "$value": "floor({_size.step} * 3 * {_size.mode-font-size} / {_size.base})"
     },
     "4": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 4)"
+      "$value": "floor({_size.step} * 4 * {_size.mode-font-size} / {_size.base})"
     },
     "5": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 5)"
+      "$value": "floor({_size.step} * 5 * {_size.mode-font-size} / {_size.base})"
     },
     "6": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 6)"
+      "$value": "floor({_size.step} * 6 * {_size.mode-font-size} / {_size.base})"
     },
     "7": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 7)"
+      "$value": "floor({_size.step} * 7 * {_size.mode-font-size} / {_size.base})"
     },
     "8": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 8)"
+      "$value": "floor({_size.step} * 8 * {_size.mode-font-size} / {_size.base})"
     },
     "9": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 9)"
+      "$value": "floor({_size.step} * 9 * {_size.mode-font-size} / {_size.base})"
     },
     "10": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 10)"
+      "$value": "floor({_size.step} * 10 * {_size.mode-font-size} / {_size.base})"
     },
     "11": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 11)"
+      "$value": "floor({_size.step} * 11 * {_size.mode-font-size} / {_size.base})"
     },
     "12": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 12)"
+      "$value": "floor({_size.step} * 12 * {_size.mode-font-size} / {_size.base})"
     },
     "13": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 13)"
+      "$value": "floor({_size.step} * 13 * {_size.mode-font-size} / {_size.base})"
     },
     "14": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 14)"
+      "$value": "floor({_size.step} * 14 * {_size.mode-font-size} / {_size.base})"
     },
     "15": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 15)"
+      "$value": "floor({_size.step} * 15 * {_size.mode-font-size} / {_size.base})"
     },
     "18": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 18)"
+      "$value": "floor({_size.step} * 18 * {_size.mode-font-size} / {_size.base})"
     },
     "22": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 22)"
+      "$value": "floor({_size.step} * 22 * {_size.mode-font-size} / {_size.base})"
     },
     "26": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 26)"
+      "$value": "floor({_size.step} * 26 * {_size.mode-font-size} / {_size.base})"
     },
     "30": {
       "$type": "dimension",
-      "$value": "floor({_size.unit} * 30)"
+      "$value": "floor({_size.step} * 30 * {_size.mode-font-size} / {_size.base})"
     },
     "mode-font-size": {
       "$type": "number",

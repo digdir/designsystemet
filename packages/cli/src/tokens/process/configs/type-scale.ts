@@ -1,6 +1,6 @@
 import { pathStartsWithOneOf, typeEquals } from '../../utils.ts';
 import { formats } from '../formats/css.ts';
-import { sizeRem, typographyName } from '../transformers.ts';
+import { dsName, sizeRem } from '../transformers.ts';
 import { basePxFontSize, type GetStyleDictionaryConfig, isTypographySetPrimitive, prefix } from './shared.ts';
 
 export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme }) => {
@@ -20,14 +20,7 @@ export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme }) => {
         layer,
         buildPath: `${theme}/`,
         basePxFontSize,
-        transforms: [
-          'name/kebab',
-          'ts/size/px',
-          sizeRem.name,
-          'ts/size/lineheight',
-          'ts/typography/fontWeight',
-          typographyName.name,
-        ],
+        transforms: [dsName.name, 'ts/size/px', sizeRem.name, 'ts/size/lineheight', 'ts/typography/fontWeight'],
         files: [
           {
             destination: `type-scale.css`,

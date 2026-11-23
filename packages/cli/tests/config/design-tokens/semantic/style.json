@@ -609,7 +609,9 @@
     "color": {
       "visited": {
         "$type": "color",
-        "$value": "{color.link.visited}"
+        "$value": "{color.link.visited}",
+        "$deprecated": "Style .ds-link:visited instead.",
+        "$description": "Deprecated: style .ds-link:visited instead."
       }
     }
   },

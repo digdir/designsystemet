@@ -1,6 +1,6 @@
 .ds-error-summary {
   --dsc-errorsummary-background: var(--ds-color-danger-surface-tinted);
-  --dsc-errorsummary-border-radius: var(--ds-border-radius-lg);
+  --dsc-errorsummary-border-radius: var(--ds-border-radius-md);
   --dsc-errorsummary-padding: var(--ds-size-7);
   --dsc-errorsummary-link-color: var(--ds-color-neutral-text-default);
   --dsc-errorsummary-heading-color: var(--ds-color-danger-text-default);
@@ -11,7 +11,7 @@
   padding: var(--dsc-errorsummary-padding);
   animation: _is-visible 0ms; /* Used in JS to detect visibility */
 
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 
   &:not([hidden]) {
     display: block;

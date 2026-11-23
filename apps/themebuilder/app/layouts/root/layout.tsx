@@ -1,6 +1,7 @@
 import { SkipLink } from '@digdir/designsystemet-react';
 import {
   ContentContainer,
+  Error404,
   Figma,
   Footer,
   type FooterLinkListItemProps,
@@ -9,152 +10,120 @@ import {
   Slack,
 } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
-import type { Route as RootRoute } from './../../+types/root';
+import { isRouteErrorResponse, Outlet, useParams } from 'react-router';
 import type { Route } from './+types/layout';
+
+/** `Header` and `Footer` take their texts as translation keys, which they type as `TemplateStringsArray` */
+const key = (text: string | string[]) =>
+  text as unknown as TemplateStringsArray;
+
+const site = 'https://designsystemet.no';
+
+const menu = (lang: string) => [
+  { name: key('navigation.intro'), href: `${site}/${lang}/intro` },
+  {
+    name: key('navigation.fundamentals'),
+    href: `${site}/${lang}/fundamentals`,
+  },
+  { name: key('navigation.components'), href: `${site}/${lang}/components` },
+  { name: key('navigation.patterns'), href: `${site}/${lang}/patterns` },
+  {
+    name: key('navigation.best-practices'),
+    href: `${site}/${lang}/best-practices`,
+  },
+  { name: key('navigation.blog'), href: `${site}/${lang}/blog` },
+  { name: key('navigation.theme-builder'), href: `/${lang}` },
+];
+
+const centerLinks = (lang: string): FooterLinkListItemProps[] => [
+  {
+    text: key('footer.about'),
+    url: `${site}/${lang}/intro/about-the-design-system`,
+  },
+  { text: key('footer.privacy'), url: `${site}/${lang}/intro/privacy-policy` },
+  {
+    text: key('footer.accessibility'),
+    url: 'https://uustatus.no/nb/erklaringer/publisert/faeb324d-9b3f-40b0-b715-92cac356a916',
+  },
+];
 
 const rightLinks: FooterLinkListItemProps[] = [
   {
-    text: 'designsystem@digdir.no' as unknown as FooterLinkListItemProps['text'],
+    text: key('designsystem@digdir.no'),
     url: 'mailto:designsystem@digdir.no',
     prefix: (
       <EnvelopeClosedIcon aria-hidden='true' height='1.5em' width='1.5em' />
     ),
   },
   {
-    text: ['footer.slack'] as unknown as FooterLinkListItemProps['text'],
-    url: 'https://designsystemet.no/slack',
+    text: key(['footer.slack']),
+    url: `${site}/slack`,
     prefix: <Slack />,
   },
   {
-    text: 'Github' as unknown as FooterLinkListItemProps['text'],
+    text: key('Github'),
     url: 'https://github.com/digdir/designsystemet',
     prefix: <Github />,
   },
   {
-    text: 'Figma' as unknown as FooterLinkListItemProps['text'],
+    text: key('Figma'),
     url: 'https://www.figma.com/@designsystemet',
     prefix: <Figma />,
   },
 ];
 
-export default function RootLayout() {
+/** The header and footer every page has, also the error page */
+const Shell = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation();
-  const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
-    RootRoute.ComponentProps['loaderData'],
-    'centerLinks'
-  > & {
-    centerLinks: FooterLinkListItemProps[];
-    menu: {
-      name: TemplateStringsArray;
-      href: string;
-    }[];
-  };
+  const { lang = 'no' } = useParams();
 
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
-      <Header
-        menu={menu}
-        logoLink={`https://designsystemet.no/${lang}`}
-        themeSwitcher
-      />
-      <Outlet />
-      <Footer
-        centerLinks={centerLinks}
-        rightLinks={rightLinks as FooterLinkListItemProps[]}
-      />
+      <Header menu={menu(lang)} logoLink={`${site}/${lang}`} themeSwitcher />
+      {children}
+      <Footer centerLinks={centerLinks(lang)} rightLinks={rightLinks} />
     </>
+  );
+};
+
+export default function RootLayout() {
+  return (
+    <Shell>
+      <Outlet />
+    </Shell>
   );
 }
 
-type ErrorWrapperRootProps = {
-  children: React.ReactNode;
-  lang: string;
-  menu: {
-    name: TemplateStringsArray;
-    href: string;
-  }[];
-  centerLinks: {
-    text: TemplateStringsArray;
-    url: string;
-  }[];
-  rightLinks: {
-    text: TemplateStringsArray;
-    url: string;
-    prefix?: React.ReactNode;
-  }[];
-};
-
-const ErrorWrapperRoot = ({
-  children,
-  lang,
-  menu,
-  centerLinks,
-  rightLinks,
-}: ErrorWrapperRootProps) => {
-  const { t } = useTranslation();
-
-  return (
-    <>
-      <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
-      <Header
-        menu={menu}
-        logoLink={`https://designsystemet.no/${lang}`}
-        themeSwitcher
-      />
-      <main id='main'>
-        <ContentContainer>{children}</ContentContainer>
-      </main>
-      <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
-    </>
-  );
-};
-
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const { t } = useTranslation();
-  const message = t('errors.default.title');
-  let details = t('errors.default.details');
-  let stack: string | undefined;
-
-  const loaderData = useRouteLoaderData(
-    'root',
-  ) as RootRoute.ComponentProps['loaderData'] & {
-    centerLinks: FooterLinkListItemProps[];
-    menu: {
-      name: TemplateStringsArray;
-      href: string;
-    }[];
-  };
-
-  if (!loaderData) {
-    return '<Error404 />';
-  }
-
-  if (isRouteErrorResponse(error)) {
-    if (error.status === 404) {
-      return '<Error404 />';
-    }
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
+  const isNotFound = isRouteErrorResponse(error) && error.status === 404;
+  const isDevError =
+    import.meta.env.DEV &&
+    !isRouteErrorResponse(error) &&
+    error instanceof Error;
 
   return (
-    <ErrorWrapperRoot
-      lang={loaderData.lang}
-      menu={loaderData.menu}
-      centerLinks={loaderData.centerLinks}
-      rightLinks={[]}
-    >
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre>
-          <code>{stack}</code>
-        </pre>
-      )}
-    </ErrorWrapperRoot>
+    <Shell>
+      <main id='main'>
+        <ContentContainer>
+          {isNotFound ? (
+            <Error404 />
+          ) : (
+            <>
+              <h1>{t('errors.default.title')}</h1>
+              <p>{isDevError ? error.message : t('errors.default.details')}</p>
+              {isDevError && error.stack && (
+                <pre>
+                  <code>{error.stack}</code>
+                </pre>
+              )}
+            </>
+          )}
+        </ContentContainer>
+      </main>
+    </Shell>
   );
 }

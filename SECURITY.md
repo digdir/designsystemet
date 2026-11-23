@@ -9,18 +9,22 @@ You can find our security.txt here: [security.txt](https://designsystemet.no/.we
 We use several automated mechanisms to help detect and reduce risk:
 
 ### GitHub Security Features
+
 - GitHub code scanning for static analysis.
 - Dependency scanning and alerts for known vulnerabilities.
 
 ### Renovate
+
 - Automated dependency updates.
-- Renovate is configured to *only propose updates for packages that have been published for at least 3 days*.  
+- Renovate is configured to _only propose updates for packages that have been published for at least 3 days_.  
   This allows time for the ecosystem to discover and revert problematic releases.
 
 ### Dependency manager 
+
 We use [pnpm](https://pnpm.io) for managing dependencies.
 
 We have configured pnpm with the following:
+
 - No dependency version newer than 72 hours is installed.
 - Prevent transitive dependencies from using exotic sources.
 - By default block script execution for dependencies.

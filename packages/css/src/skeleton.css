@@ -3,6 +3,7 @@
   --dsc-skeleton-animation: ds-skeleton-opacity-fade var(--dsc-skeleton-animation-duration) linear infinite alternate;
   --dsc-skeleton-background: var(--ds-color-neutral-surface-tinted);
 
+  forced-color-adjust: none; /* Skeleton should not be affected by forced colors */
   animation: var(--dsc-skeleton-animation);
   border-radius: var(--ds-border-radius-lg);
   box-sizing: border-box;
@@ -52,10 +53,6 @@
 
   @media (prefers-reduced-motion: reduce) {
     animation-duration: 1.6s;
-  }
-
-  @media (forced-colors: active) {
-    opacity: 0;
   }
 }
 

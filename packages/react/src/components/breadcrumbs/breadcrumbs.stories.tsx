@@ -65,7 +65,7 @@ export const LongItems = meta.story({
     <Breadcrumbs {...args}>
       <Breadcrumbs.Link
         href='#'
-        aria-label='Tilbake til helsesertifikat for sjømat'
+        aria-label='Tilbake til Slik søker du om helsesertifikat for sjømat'
       >
         Slik søker du om helsesertifikat for sjømat
       </Breadcrumbs.Link>

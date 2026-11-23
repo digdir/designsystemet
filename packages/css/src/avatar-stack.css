@@ -19,7 +19,7 @@
   transition: --_dsc-avatar-stack-overlap 0.2s ease;
   width: max-content;
   @composes ds-list--unstyled from './base.css';
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 
   &:not([hidden]) {
     display: flex;
@@ -41,7 +41,7 @@
     --dsc-avatar-size: var(--dsc-avatar-stack-size); /* Need to overwrite size to mask correctly */
   }
   & > li > .ds-avatar:focus-visible {
-    @composes ds-focus--visible from './base.css';
+    @composes ds-focus--visible from './utils.css';
     mask: none;
     z-index: 1;
   }

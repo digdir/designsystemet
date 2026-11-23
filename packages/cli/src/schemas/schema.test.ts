@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import { type ConfigSchemaThemeInput, configSchema, externalConfigSchema, themesSchema } from './schema.ts';
+import { themeNameSchema } from './schema-color.ts';
 
 const baseTheme: ConfigSchemaThemeInput = {
   colors: { neutral: '#444444', accent: '#0062BA' },
@@ -111,9 +112,9 @@ describe('themesSchema cross-theme validation', () => {
         ...baseTheme,
         typography: {
           size: {
-            small: { lineHeight: { sm: '120%', md: '140%', lg: '160%' }, fontSize: fontSizeScale(11) },
-            medium: { letterSpacing: { '1': '-2%' }, fontSize: fontSizeScale(12) },
-            large: { fontSize: fontSizeScale(13) },
+            small: { lineHeight: { sm: '120%', md: '140%', lg: '160%' } },
+            medium: { letterSpacing: { '1': '-2%' } },
+            large: {},
           },
           components: { heading: { xl: { fontWeight: '{font-weight.semibold}' } } },
         },
@@ -134,11 +135,14 @@ describe('themesSchema cross-theme validation', () => {
 });
 
 describe('themeSchema color validation', () => {
-  it.each(['Accent', 'brand 2', 'brand_2', 'brand.2', 'ærlig'])('rejects the color name "%s"', (colorName) => {
-    const result = parseThemes({ a: { ...baseTheme, colors: { neutral: '#444444', [colorName]: '#0062BA' } } });
+  it.each(['Accent', 'brand 2', 'brand_2', 'brand.2', 'ærlig', '-', '-brand', 'brand-', 'brand--2'])(
+    'rejects the color name "%s"',
+    (colorName) => {
+      const result = parseThemes({ a: { ...baseTheme, colors: { neutral: '#444444', [colorName]: '#0062BA' } } });
 
-    expect(issuePaths(result)).toEqual([`a.colors.${colorName}`]);
-  });
+      expect(issuePaths(result)).toEqual([`a.colors.${colorName}`]);
+    },
+  );
 
   it.each(['accent', 'brand2', 'brand-2', '2nd-brand'])('accepts the color name "%s"', (colorName) => {
     const result = parseThemes({ a: { ...baseTheme, colors: { neutral: '#444444', [colorName]: '#0062BA' } } });
@@ -171,7 +175,7 @@ describe('themeSchema typography validation', () => {
           steps: { compact: { base: 18, step: 4, baseFontSize: 14 } },
         },
         typography: {
-          size: { compact: { fontSize: fontSizeScale(10) } },
+          size: { compact: {} },
         },
       },
     });
@@ -179,20 +183,24 @@ describe('themeSchema typography validation', () => {
     expect(issuePaths(result)).toEqual([]);
   });
 
-  it('rejects component references to font-sizes missing from a size step', () => {
+  it('rejects component references to font-sizes missing from the font-size scale', () => {
     const result = parseThemes({
       a: {
         ...baseTheme,
         typography: {
-          size: {
-            small: { fontSize: fontSizeScale(11) },
-            medium: { fontSize: fontSizeScale(12) },
-            // Missing font-size 9 and 10 in one mode, so components may not reference them.
-            large: { fontSize: Object.fromEntries(Object.entries(fontSizeScale(13)).slice(0, 8)) },
-          },
+          // Missing font-size 9 and 10, so components may not reference them.
+          fontSize: Object.fromEntries(Object.entries(fontSizeScale(12)).slice(0, 8)),
           components: { heading: { xl: { fontSize: '{font-size.9}' } } },
         },
       },
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it.each(['12px', '0.75rem', 'large', ''])('rejects the font size %j, which is not a unitless number', (value) => {
+    const result = parseThemes({
+      a: { ...baseTheme, typography: { fontSize: { ...fontSizeScale(12), '1': value } } },
     });
 
     expect(result.success).toBe(false);
@@ -292,5 +300,22 @@ describe('external schema', () => {
     await expect(`${JSON.stringify(jsonSchema, undefined, 2)}\n`).toMatchFileSnapshot(
       './__snapshots__/config.schema.json',
     );
+  });
+});
+
+describe('themeNameSchema', () => {
+  it('accepts lowercase letters, digits and hyphens, like color names', () => {
+    for (const name of ['theme', 'my-theme', 'theme2', '2024']) {
+      expect(themeNameSchema.safeParse(name).success).toBe(true);
+    }
+    for (const name of ['', 'My Theme', 'myTheme', 'my_theme', 'tema-æ', '__proto__', '-', '--a', 'a-', 'a--b']) {
+      expect(themeNameSchema.safeParse(name).success).toBe(false);
+    }
+  });
+
+  it('is not enforced by the config schema yet', () => {
+    const themes = { 'My Theme': { colors: { accent: '#0062BA', neutral: '#1E2B3C' } } };
+
+    expect(externalConfigSchema.safeParse({ themes }).success).toBe(true);
   });
 });

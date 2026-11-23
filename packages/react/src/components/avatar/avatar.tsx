@@ -64,7 +64,7 @@ export type AvatarProps = MergeRight<
  * Avatars are used to represent people or entities.
  *
  * @example
- * <Avatar aria-label="John Doe" initials="JD" />
+ * <Avatar aria-label="John Doe">JD</Avatar>
  *
  * @example
  * <Avatar aria-label="John Doe">

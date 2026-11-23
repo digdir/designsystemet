@@ -6,16 +6,16 @@ on:
       environment:
         required: true
         type: string
-        description: 'Deployment environment (production, preview)'
+        description: "Deployment environment (production, preview)"
       pr_number:
         required: false
         type: string
-        description: 'PR number for preview deployments'
+        description: "PR number for preview deployments"
       update_comment:
         required: false
         type: boolean
         default: false
-        description: 'Whether to update PR comment with deployment URL'
+        description: "Whether to update PR comment with deployment URL"
     secrets:
       AZURE_CLIENT_ID:
         required: true
@@ -64,7 +64,7 @@ jobs:
         run: az acr login --name "$ACR_NAME"
 
       - name: build & push image
-        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
         with:
           context: .
           file: ./Dockerfile
@@ -85,7 +85,7 @@ jobs:
         run: bash ./.github/workflows/scripts/get-acr-creds.sh
 
       - name: deploy (no mi; use registry creds)
-        uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703 # v2
+        uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703 # v2.x
         with:
           resourceGroup: ${{ env.RESOURCE_GROUP }}
           containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}

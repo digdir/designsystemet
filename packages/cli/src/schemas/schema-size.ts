@@ -1,7 +1,11 @@
 import { z } from 'zod';
 
+// Multiply before dividing, so only the last division can be inexact and whole-number results stay exact.
+// Dividing first gives e.g. 4 / 18 * 21 = 4.666…, and 4.666… * 3 = 13.999… in floating point, which `floor`
+// turns into 13 instead of 14. In the tokens the products are whole numbers. In CSS, `--ds-size-mode-font-size`
+// is `baseFontSize / 16` (e.g. 1.3125), which is still exact in binary for any whole `baseFontSize`.
 const sizeScale = (steps: number[]): Record<string, string> =>
-  Object.fromEntries(steps.map((step) => [String(step), `floor({step} / {base} * {baseFontSize} * ${step})`]));
+  Object.fromEntries(steps.map((step) => [String(step), `floor({step} * ${step} * {baseFontSize} / {base})`]));
 
 export const sizeSchema = z
   .object({

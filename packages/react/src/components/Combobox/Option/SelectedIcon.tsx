@@ -1,4 +1,3 @@
-import { CheckmarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 
 type SelectedIconProps = {
@@ -13,14 +12,7 @@ const SelectedIcon = ({ multiple, selected }: SelectedIconProps) => {
         multiple && 'ds-combobox__option__icon-wrapper',
         selected && 'ds-combobox__option__icon-wrapper--selected',
       )}
-    >
-      {selected && (
-        <CheckmarkIcon
-          className={'ds-combobox__option__icon-wrapper__icon'}
-          aria-hidden
-        />
-      )}
-    </div>
+    />
   );
 };
 

@@ -1,4 +1,4 @@
-/* .ds-search is kept for backwards compatibility */
+/* @deprecated v2 .ds-search is kept for backwards compatibility */
 .ds-search {
   --dsc-search-padding-inline: var(--dsc-suggestion-clear-gap);
   --dsc-search-clear-padding: var(--dsc-suggestion-clear-padding);
@@ -21,6 +21,7 @@
 
   --dsc-suggestion-search-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M10.5 3.25a7.25 7.25 0 1 0 4.57 12.88l5.41 5.41a.75.75 0 1 0 1.06-1.06l-5.41-5.41A7.25 7.25 0 0 0 10.5 3.25M4.75 10.5a5.75 5.75 0 1 1 11.5 0 5.75 5.75 0 0 1-11.5 0'/%3E%3C/svg%3E");
   --dsc-suggestion-search-icon-size: var(--ds-icon-size);
+  --dsc-suggestion-search-icon-spacing: var(--ds-size-3);
 
   --dsc-suggestion-clear-gap: var(--ds-size-2);
   --dsc-suggestion-clear-padding: var(--ds-size-1);
@@ -64,13 +65,11 @@
     2
   ); /* Distance between edge of input and chip */
 
-  /* Only set default texts if Norwegian */
   &:lang(no),
   &:lang(nb),
   &:lang(nn) {
     --dsc-suggestion-create-text: 'Legg til "{value}"';
     --dsc-suggestion-empty-text: 'Tomt';
-
     --dsc-suggestion-sr-added: 'La til';
     --dsc-suggestion-sr-clear: 'Fjern tekst';
     --dsc-suggestion-sr-empty: 'Ingen valgte';
@@ -83,6 +82,22 @@
     --dsc-suggestion-sr-removed: 'Fjernet';
     --dsc-suggestion-sr-singular: '%d forslag';
     --dsc-suggestion-sr-toggle: 'Forslag';
+  }
+  &:lang(en) {
+    --dsc-suggestion-create-text: 'Add "{value}"';
+    --dsc-suggestion-empty-text: 'Empty';
+    --dsc-suggestion-sr-added: 'Added';
+    --dsc-suggestion-sr-clear: 'Clear text';
+    --dsc-suggestion-sr-empty: 'None selected';
+    --dsc-suggestion-sr-found: 'Navigate left to find %d selected';
+    --dsc-suggestion-sr-invalid: 'Invalid value';
+    --dsc-suggestion-sr-items: 'Selected';
+    --dsc-suggestion-sr-of: 'of';
+    --dsc-suggestion-sr-plural: '%d suggestions';
+    --dsc-suggestion-sr-remove: 'Press to remove';
+    --dsc-suggestion-sr-removed: 'Removed';
+    --dsc-suggestion-sr-singular: '%d suggestions';
+    --dsc-suggestion-sr-toggle: 'Suggesions';
   }
 
   /* "proxy" so attrOrCSS works even if changing --ds- prefix */
@@ -124,6 +139,7 @@
     cursor: pointer;
     display: block;
     font-size: var(--dsc-suggestion-chip-font-size);
+    forced-color-adjust: none; /* Prevent "backplate" behind text, see https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/ */
     height: var(--dsc-suggestion-chip-height);
     line-height: var(--ds-line-height-sm);
     min-width: 0; /* Allow text-overflow: ellipsis to work when placed inside display: flex */
@@ -139,6 +155,7 @@
     &::after {
       content: '';
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       height: var(--dsc-suggestion-chip-icon-size);
       inset-block-start: 50%;
       inset-inline-end: var(--dsc-suggestion-chip-spacing);
@@ -148,15 +165,11 @@
       position: absolute;
       translate: 0 -50%;
       width: var(--dsc-suggestion-chip-icon-size);
-      @media (forced-colors: active) {
-        background-color: CanvasText;
-        forced-color-adjust: none; /* To be able to draw check */
-      }
     }
 
     @composes ds-print-preserve from './base.css';
     &:focus {
-      @composes ds-focus--visible from './base.css'; /* Using :focus as focus can also be set by mouse clicking on <data> */
+      @composes ds-focus--visible from './utils.css'; /* Using :focus as focus can also be set by mouse clicking on <data> */
       z-index: 2; /* Place focus ring on top */
     }
     &:hover {
@@ -236,18 +249,15 @@
         inset-inline-start: var(--dsc-suggestion-option-padding);
         mask: var(--dsc-suggestion-option-checkmark-url) center / contain no-repeat;
         background: currentcolor;
+        forced-color-adjust: none; /* Enable drawing with background property */
         width: var(--dsc-suggestion-option-checkmark-size);
         height: var(--dsc-suggestion-option-checkmark-size);
-        @media (forced-colors: active) {
-          background-color: LinkText;
-          forced-color-adjust: none; /* To be able to draw check */
-        }
       }
     }
 
     /* Use same effect as hover instead of regular focus ring, because we want to render the focus ring inside the u-datalist */
     &[data-activedescendant] {
-      @composes ds-focus--visible--middle from './base.css';
+      @composes ds-focus--visible--middle from './utils.css';
     }
 
     &[data-empty]:not([value]) {
@@ -297,9 +307,6 @@
   /**
    * Creatable
    */
-  &:not([data-creatable]) > u-datalist:has(u-option[aria-hidden='false']:not([data-empty])) > u-option[data-empty] {
-    display: none; /* Hide empty option when there are other visible options */
-  }
   &:not([data-creatable]) > u-datalist > u-option[data-empty] {
     padding-inline-start: var(--dsc-suggestion-option-padding);
     background: none;
@@ -322,6 +329,7 @@
     &::before {
       display: block;
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       color: inherit;
       mask: var(--dsc-suggestion-create-icon-url) center / contain no-repeat;
     }
@@ -346,24 +354,21 @@
   /* Hide x native icon of input type="search" since we have a custom x-component */
 
   & > input[type='search'] {
-    padding-inline-start: calc(var(--dsc-suggestion-search-icon-size) + var(--dsc-suggestion-clear-gap) * 2);
+    padding-inline-start: calc(var(--dsc-suggestion-search-icon-spacing) + var(--dsc-suggestion-search-icon-size) + var(--dsc-suggestion-clear-gap));
   }
   & > input[type='search']::-webkit-search-cancel-button {
     display: none;
   }
   &:has(> input[type='search'])::after {
     grid-area: input;
-    margin-inline-start: var(--dsc-suggestion-clear-gap);
+    margin-inline-start: var(--dsc-suggestion-search-icon-spacing);
     pointer-events: none;
     background: currentcolor;
+    forced-color-adjust: none; /* Enable drawing with background property */
     content: '';
     height: var(--dsc-suggestion-search-icon-size);
     width: var(--dsc-suggestion-search-icon-size);
     mask: var(--dsc-suggestion-search-icon-url) center / contain no-repeat;
-
-    @media (forced-colors: active) {
-      background: CanvasText;
-    }
   }
 
   /**
@@ -406,7 +411,7 @@
     scale: 0.75;
     width: var(--dsc-suggestion-clear-size);
 
-    @composes ds-focus from './base.css';
+    @composes ds-focus from './utils.css';
 
     &:hover {
       background: var(--dsc-suggestion-clear-background--hover);
@@ -419,14 +424,11 @@
     &:empty::before {
       content: '';
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       display: block;
       height: 100%;
       mask: var(--dsc-suggestion-clear-icon-url) center / contain no-repeat;
       width: 100%;
-      @media (forced-colors: active) {
-        background-color: canvastext;
-        forced-color-adjust: none; /* To be able to draw check */
-      }
     }
   }
   & > button[aria-expanded]:empty::before {

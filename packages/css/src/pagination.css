@@ -8,7 +8,14 @@
   &:lang(no),
   &:lang(nb),
   &:lang(nn) {
-    --dsc-pagination-label: 'Bla i sider'; /* Only set default label if Norwegian */
+    --dsc-pagination-label: 'Bla i sider';
+    --dsc-pagination-label-prev: 'Forrige side';
+    --dsc-pagination-label-next: 'Neste side';
+  }
+  &:lang(en) {
+    --dsc-pagination-label: 'Navigate between pages';
+    --dsc-pagination-label-prev: 'Previous page';
+    --dsc-pagination-label-next: 'Next page';
   }
 
   & :is(ol, ul) {
@@ -24,6 +31,13 @@
     & > li:first-child > [aria-hidden='true'],
     & > li:last-child > [aria-hidden='true'] {
       visibility: hidden;
+    }
+
+    & > li:first-child {
+      --_ds-aria-label: var(--dsc-pagination-label-prev);
+    }
+    & > li:last-child {
+      --_ds-aria-label: var(--dsc-pagination-label-next);
     }
 
     /* Recreates button data-variant="tertiary" when not selected */
@@ -66,14 +80,11 @@
     & > li:last-child > ::before {
       content: '';
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       height: var(--dsc-pagination-icon-size);
       mask: center / contain no-repeat var(--dsc-pagination-icon-url);
       width: var(--dsc-pagination-icon-size);
       order: 1;
-
-      @media (forced-colors: active) {
-        background: LinkText;
-      }
     }
 
     & > li:first-child > ::before {
@@ -88,7 +99,7 @@
       rotate: 180deg;
     }
 
-    /* Keeping empty-li styling for backwards compatiblity */
+    /* @deprecated Keeping empty-li styling for backwards compatibility */
     & > li:empty::before {
       content: var(--dsc-pagination-ellipsis);
       display: block;

@@ -26,7 +26,8 @@ import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
-import { generateMetadata } from '~/_utils/metadata';
+import { generateMetadata, withMetaImage } from '~/_utils/metadata';
+import { getStoryHtml } from '~/_utils/story-html';
 import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/component';
@@ -199,14 +200,14 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   };
 };
 
-export const meta = ({ loaderData }: Route.MetaArgs) => {
+export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   if (!loaderData?.linkMetadata)
     return [
       {
         title: 'Designsystemet',
       },
     ];
-  return loaderData.linkMetadata;
+  return withMetaImage(loaderData.linkMetadata, location.pathname);
 };
 
 export default function Components({
@@ -286,6 +287,7 @@ export default function Components({
             <LiveComponent
               key={story.name}
               story={`${story.code.trim()}\nrender(<${story.name} />)`}
+              html={getStoryHtml(story)}
             />
           ))
         )}
@@ -315,7 +317,7 @@ const CssVars = () => {
   return cssVars ? <CssVariables vars={cssVars} /> : null;
 };
 
-const Attributes = () => {
+const Attributes = ({ exclude = [] }: { exclude?: string[] }) => {
   const { t } = useTranslation();
 
   const data =
@@ -324,9 +326,14 @@ const Attributes = () => {
     return <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>;
 
   const { cssAttrs } = data;
+  const filteredCssAttrs: Record<string, string> = {};
 
-  return cssAttrs ? (
-    <CssAttributes vars={cssAttrs} />
+  // Filter out excluded properties
+  for (const [name, value] of Object.entries(cssAttrs))
+    if (!exclude.includes(name)) filteredCssAttrs[name] = value;
+
+  return Object.entries(filteredCssAttrs).length ? (
+    <CssAttributes vars={filteredCssAttrs} />
   ) : (
     <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>
   );

@@ -1,4 +1,9 @@
-import { Button, Link, Paragraph, Search } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Link,
+  Paragraph,
+  EXPERIMENTAL_Suggestion as Suggestion,
+} from '@digdir/designsystemet-react';
 import { useDebounceCallback } from '@internal/components';
 import { ChevronRightLastIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
@@ -133,14 +138,14 @@ export const Sidebar = ({
           </Paragraph>
         )}
         {searchable ? (
-          <Search className={classes.search} data-size='sm'>
-            <Search.Input
+          <Suggestion className={classes.search} data-size='sm'>
+            <Suggestion.Input
+              type='search'
               aria-label={t('sidebar.search.label', 'Search')}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onInput={(e) => setQuery(e.currentTarget.value)}
             />
-            <Search.Clear onClick={() => setQuery('')} />
-          </Search>
+            <Suggestion.Clear onClick={() => setQuery('')} />
+          </Suggestion>
         ) : null}
         {searchable ? (
           <div

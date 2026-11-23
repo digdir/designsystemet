@@ -127,14 +127,26 @@
 @media screen and (max-width: 860px) {
   .content {
     font-size: var(--ds-body-sm-font-size);
+
+    & > h2 {
+      font-size: var(--ds-heading-sm-font-size);
+    }
+
+    & > h3 {
+      font-size: var(--ds-heading-xs-font-size);
+    }
+
+    & > h4,
+    & > h5,
+    & > h6 {
+      font-size: var(--ds-heading-2xs-font-size);
+    }
   }
   .intro {
     margin-top: var(--ds-size-8);
     text-align: initial;
     gap: var(--ds-size-3);
     & h1 {
-      font-size: var(--ds-font-size-6);
-      font-weight: 500;
       text-wrap: pretty;
     }
   }

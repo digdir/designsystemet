@@ -38,7 +38,6 @@ export default defineMain({
     },
   },
   stories: [
-    '../../../packages/*/!(node_modules)/**/*.mdx',
     '../../../packages/*/!(node_modules)/**/*.@(stories|chromatic).@(ts|tsx)',
   ],
   features: {
