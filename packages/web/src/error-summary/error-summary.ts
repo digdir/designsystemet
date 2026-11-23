@@ -52,7 +52,7 @@ const render = (self: DSErrorSummaryElement) => {
     warn(
       'Missing accessible name on:',
       self,
-      `\nAdd a heading (h2–h6), or set ${ARIA_LABEL} or ${ARIA_LABELLEDBY} to provide an accessible name for screen readers.`,
+      `\nAdd a heading (h2-h6), or set ${ARIA_LABEL} or ${ARIA_LABELLEDBY} to provide an accessible name for screen readers.`,
     );
   }
 };

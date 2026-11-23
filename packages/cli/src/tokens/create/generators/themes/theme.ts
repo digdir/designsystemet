@@ -1,13 +1,18 @@
 import * as R from 'ramda';
 import { type ColorNumber, semanticColorMap } from '../../../../colors/types.ts';
-import type { Token, TokenSet } from '../../../types.ts';
+import type { BorderRadiusConfig, Token, TokenSet, TypographySet } from '../../../types.ts';
 
-export const generateTheme = (colorNames: string[], themeName: string, borderRadius: number) => {
+export const generateTheme = (
+  colorNames: string[],
+  themeName: string,
+  borderRadius: BorderRadiusConfig,
+  typography: TypographySet,
+) => {
   const themeColorTokens = Object.fromEntries(
     colorNames.map((colorName) => [colorName, generateColorScaleTokens(colorName, themeName)]),
   );
 
-  const { color: themeBaseFileColor, ...remainingThemeFile } = generateBase(themeName);
+  const { color: themeBaseFileColor, ...remainingThemeFile } = generateBase(themeName, borderRadius, typography);
   const themeFile = {
     color: {
       ...themeColorTokens,
@@ -32,11 +37,9 @@ export const generateTheme = (colorNames: string[], themeName: string, borderRad
     ...remainingThemeFile,
   };
 
-  const baseBorderRadius = R.lensPath(['border-radius', 'base', '$value']);
-  const updatedThemeFile = R.set(baseBorderRadius, String(borderRadius), themeFile);
   const token = JSON.parse(
     JSON.stringify(
-      updatedThemeFile,
+      themeFile,
       (key, value) => {
         if (key === '$value') {
           return (value as string).replace('<theme>', themeName);
@@ -51,60 +54,58 @@ export const generateTheme = (colorNames: string[], themeName: string, borderRad
   return token;
 };
 
-const generateBase = (themeName: string): TokenSet => ({
+/**
+ * Maps the placeholders used in the border-radius step formulas from the config
+ * to the token references used in the generated token sets.
+ */
+const placeholderReplacements: [placeholder: string, tokenReference: string][] = [
+  ['{base}', '{border-radius.base}'],
+  ['{scale}', '{border-radius.scale}'],
+];
+
+const toTokenFormula = (formula: string): string =>
+  placeholderReplacements.reduce((value, [placeholder, tokenReference]) => {
+    return value.replaceAll(placeholder, tokenReference);
+  }, formula);
+
+const generateBorderRadius = (borderRadius: BorderRadiusConfig): TokenSet => ({
+  // The steps are output as a numbered scale, in the order they are defined in the config.
+  ...Object.fromEntries(
+    Object.values(borderRadius.steps).map((formula, index) => [
+      String(index + 1),
+      {
+        $type: 'dimension',
+        $value: toTokenFormula(formula),
+      },
+    ]),
+  ),
+  base: {
+    $type: 'dimension',
+    $value: String(borderRadius.base),
+  },
+  scale: {
+    $type: 'dimension',
+    $value: String(borderRadius.scale),
+  },
+});
+
+const generateBase = (themeName: string, borderRadius: BorderRadiusConfig, typography: TypographySet): TokenSet => ({
   color: {},
   'font-family': {
     $type: 'fontFamilies',
     $value: `{${themeName}.font-family}`,
   },
-  'font-weight': {
-    medium: {
-      $type: 'fontWeights',
-      $value: `{${themeName}.font-weight.medium}`,
-    },
-    semibold: {
-      $type: 'fontWeights',
-      $value: `{${themeName}.font-weight.semibold}`,
-    },
-    regular: {
-      $type: 'fontWeights',
-      $value: `{${themeName}.font-weight.regular}`,
-    },
-  },
-  'border-radius': {
-    '1': {
-      $type: 'dimension',
-      $value: 'min({border-radius.base}*0.5,{border-radius.scale})',
-    },
-    '2': {
-      $type: 'dimension',
-      $value: 'min({border-radius.base},{border-radius.scale}*2)',
-    },
-    '3': {
-      $type: 'dimension',
-      $value: 'min({border-radius.base}*2,{border-radius.scale}*5)',
-    },
-    '4': {
-      $type: 'dimension',
-      $value: 'min({border-radius.base}*3,{border-radius.scale}*7)',
-    },
-    '5': {
-      $type: 'dimension',
-      $value: '{border-radius.base}',
-    },
-    '6': {
-      $type: 'dimension',
-      $value: '9999',
-    },
-    base: {
-      $type: 'dimension',
-      $value: '4',
-    },
-    scale: {
-      $type: 'dimension',
-      $value: '4',
-    },
-  },
+  // Each font-weight from the config references the theme's font-weight token by the same name
+  'font-weight': Object.fromEntries(
+    Object.keys(typography.fontWeight).map((name) => [
+      name,
+      {
+        $type: 'fontWeights',
+        $value: `{${themeName}.font-weight.${name}}`,
+      },
+    ]),
+  ),
+  'border-radius': generateBorderRadius(borderRadius),
 });
 
 const generateColorScaleTokens = (colorName: string, themeName: string): Record<ColorNumber, Token> => {

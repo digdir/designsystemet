@@ -2,6 +2,7 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
 import { extractExportedFunctions } from './extract-stories.server';
+import { addStoryHtml } from './render-story.server';
 
 export const getStories = async ({ path }: { path: string }) => {
   const dirname = cwd();
@@ -22,7 +23,7 @@ export const getStories = async ({ path }: { path: string }) => {
 
     const storyContent = readFileSync(join(basePath, path), 'utf-8');
 
-    return extractExportedFunctions(storyContent);
+    return addStoryHtml(extractExportedFunctions(storyContent));
   } catch (_error) {
     console.error(`Error reading content from story: ${path}`);
     return null;

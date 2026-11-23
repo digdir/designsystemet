@@ -25,6 +25,7 @@ import {
   TableHeaderCell,
   type TableProps,
   TableRow,
+  Tabs,
 } from '@digdir/designsystemet-react';
 import {
   BorderRadiusVariablesTable,
@@ -43,6 +44,7 @@ import { ColorInfoTable } from '~/_components/color-info-table/color-info-table'
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
+import { getStoryHtml, type RenderedStory } from '~/_utils/story-html';
 import { CssVariables } from '../css-variables/css-variables';
 import { DoDont } from '../do-dont/do-dont';
 import {
@@ -63,6 +65,7 @@ const defaultComponents = {
   Card,
   CardBlock,
   Divider,
+  Tabs,
   Table: (props: TableProps) => (
     <div className={classes.tableWrapper}>
       <Table {...props} />
@@ -116,9 +119,18 @@ const defaultComponents = {
     },
   }) => {
     return (
-      <CodeBlock language={className.replace('language-', '')}>
-        {children}
-      </CodeBlock>
+      <div data-documentation-code-block>
+        <pre hidden>
+          <code className={className}>{children}</code>
+        </pre>
+        {/* Already formatted when the MDX was compiled, see prettifyCodeBlocks */}
+        <CodeBlock
+          language={className.replace('language-', '')}
+          prettify={false}
+        >
+          {children}
+        </CodeBlock>
+      </div>
     );
   },
   table: (props: TableProps) => (
@@ -168,17 +180,22 @@ export const MDXComponents = ({
   );
 };
 
-const Story = ({ story, language = 'html', ...rest }: LiveComponentProps) => {
-  const { stories } = useLoaderData();
+const Story = ({
+  story,
+  language = 'html',
+  ...rest
+}: Omit<LiveComponentProps, 'html'>) => {
+  const { stories } = useLoaderData() as {
+    stories?: RenderedStory[] | null;
+  };
   if (!stories) return null;
 
-  const foundStory = stories.find(
-    (s: { name: string; code: string }) => s.name === story,
-  );
+  const foundStory = stories.find((s) => s.name === story);
   if (!foundStory) return <Alert lang='en'>Story not found: {story}</Alert>;
   return (
     <LiveComponent
       story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+      html={getStoryHtml(foundStory)}
       language={language}
       {...rest}
     />
@@ -195,7 +212,7 @@ const DoDontComponent = ({
   children?: ReactNode;
 }) => {
   const { dodont } = useLoaderData() as {
-    dodont?: { name: string; code: string }[] | null;
+    dodont?: RenderedStory[] | null;
   };
   if (!dodont) return <Alert lang='en'>Do/Dont not found: {story}</Alert>;
 
@@ -207,6 +224,7 @@ const DoDontComponent = ({
       layout={layout}
       variant={variant}
       code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+      html={getStoryHtml(foundStory)}
     >
       {children}
     </DoDont>

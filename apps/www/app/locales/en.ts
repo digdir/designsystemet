@@ -3,6 +3,10 @@ import type no from './no';
 
 export default {
   ...en,
+  'version-banner': {
+    message:
+      'This documentation covers Designsystemet {{version}}, which is an older version. For the latest version, see',
+  },
   frontpage: {
     heading: 'Designsystemet helps you build better digital services',
     'get-started': {
@@ -158,6 +162,9 @@ export default {
     changelog: {
       title: 'Changelog',
     },
+    accessibility: {
+      title: 'Accessibility',
+    },
     'css-variables': {
       caption: 'CSS Variables',
       name: 'Name',
@@ -213,9 +220,36 @@ export default {
       normal: 'Click to enlarge image.',
     },
   },
+  'color-examples': {
+    colors: {
+      red: 'Red',
+      orange: 'Orange',
+      yellow: 'Yellow',
+      green: 'Green',
+      teal: 'Teal',
+      blue: 'Blue',
+      purple: 'Purple',
+    },
+  },
+  'size-examples': {
+    button: 'Button',
+    'font-size': '{{size}} font',
+    height: 'Height',
+    'medium-title': 'Example with Medium components',
+    input: 'Input text',
+    device: 'Device',
+    desktop: 'Desktop',
+    mobile: 'Mobile',
+    search: 'Search',
+    'new-user': 'New user',
+    'log-in': 'Log in',
+  },
   'color-info-table': {
     name: 'Name',
     usage: 'Usage',
+    contrast: 'Minimum contrast',
+    'contrast-against': '{{ratio}}:1 against',
+    'all-in-group': 'all {{group}} colors',
   },
   'image-banner': {
     'play-video': 'Play video',

@@ -1,7 +1,7 @@
-import type { ColorScale, ColorScheme, CssColor, SemanticColorNames } from '../../../../colors/index.ts';
-import { generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
+import type { ColorScale, ColorScheme, CssColor, SemanticColorNames, ThemeInfo } from '../../../../colors/index.ts';
+import { convertToHex, generateColorScale, semanticColorSpec } from '../../../../colors/index.ts';
 import { visitedLinkColor } from '../../../../schemas/defaults.ts';
-import type { ColorOverrideSchema } from '../../../../schemas/v1.1/schema.ts';
+import type { ColorOverrideSchema, ColorOverrideSchemaInput } from '../../../../schemas/schema-overrides.ts';
 import type { Token, TokenSet } from '../../../types.ts';
 
 /**
@@ -31,6 +31,62 @@ export const groupByScheme = (
   return grouped;
 };
 
+/**
+ * Resolves every color scale of a theme for one color scheme: the theme's colors, with
+ * `overrides.severity` and `overrides.colors` applied. Only the colors in the theme are resolved,
+ * so the default severity colors are included when the theme comes from a validated config.
+ *
+ * This is what the token generator turns into color-scheme tokens.
+ */
+export const getThemeColorScales = (
+  theme: { colors: Record<string, CssColor>; overrides?: ColorOverrideSchema },
+  colorScheme: ColorScheme,
+): Record<string, ColorScale> => {
+  const { overrides } = theme;
+  const colors: Record<string, CssColor> = { ...theme.colors, ...(overrides?.severity || {}) };
+
+  const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
+
+  const colorScales: Record<string, ColorScale> = {};
+
+  for (const [colorName, color] of Object.entries(colors)) {
+    let colorScale = generateColorScale(color, colorScheme);
+    const colorOverride = colorOverrides[colorName];
+
+    if (colorOverride) {
+      colorScale = { ...colorScale, ...colorOverride };
+    }
+    colorScales[colorName] = colorScale;
+  }
+
+  return colorScales;
+};
+
+/**
+ * Resolves every color of a theme in light and dark mode, see `getThemeColorScales`.
+ *
+ * Takes a theme as it is written in a config, so previews (e.g. the theme builder) can show
+ * the colors of a config they are editing. Nothing is validated or added: only the colors the
+ * theme lists are resolved (no default severity colors), and a value that is not a color throws.
+ * Base colors are made six-digit hex first, as the config schema does, so `#abc` gives the scale of `#aabbcc`. Validate with the config schema first when that matters.
+ */
+export const getThemeColorSchemes = (theme: {
+  colors: Record<string, string>;
+  overrides?: ColorOverrideSchemaInput;
+}): Record<string, ThemeInfo> => {
+  const toHex = (colors: Record<string, string>) =>
+    Object.fromEntries(Object.entries(colors).map(([name, color]) => [name, convertToHex(color)]));
+  const { severity, ...overrides } = theme.overrides ?? {};
+  const resolved = {
+    colors: toHex(theme.colors),
+    overrides: { ...overrides, ...(severity && { severity: toHex(severity) }) },
+  } as Parameters<typeof getThemeColorScales>[0];
+  const light = getThemeColorScales(resolved, 'light');
+  const dark = getThemeColorScales(resolved, 'dark');
+
+  return Object.fromEntries(Object.keys(light).map((name) => [name, { light: light[name], dark: dark[name] }]));
+};
+
 const toColorNumberTokens = (colorScale: ColorScale): TokenSet => {
   const tokens: TokenSet = {};
 
@@ -55,21 +111,7 @@ export const generateColorScheme = (
   colors: Record<string, CssColor>,
   overrides?: ColorOverrideSchema,
 ): TokenSet => {
-  const colorsWithSeverityOverrides: Record<string, CssColor> = { ...colors, ...(overrides?.severity || {}) };
-
-  const colorOverrides = groupByScheme(overrides?.colors || {}, colorScheme);
-
-  const colorScales: Record<string, ColorScale> = {};
-
-  for (const [colorName, color] of Object.entries(colorsWithSeverityOverrides)) {
-    let colorScale = generateColorScale(color, colorScheme);
-    const colorOverride = colorOverrides[colorName];
-
-    if (colorOverride) {
-      colorScale = { ...colorScale, ...colorOverride };
-    }
-    colorScales[colorName] = colorScale;
-  }
+  const colorScales = getThemeColorScales({ colors, overrides }, colorScheme);
 
   const defaultLinkVisitedToken = generateColorScale(visitedLinkColor, colorScheme)['base-default'].hex;
   const linkOverride = overrides?.linkVisited?.[colorScheme];

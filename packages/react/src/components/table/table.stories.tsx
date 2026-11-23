@@ -200,6 +200,81 @@ export const Sortable = meta.story({
   },
 });
 
+export const SortableWithBorder = meta.story({
+  render: (args) => {
+    const [sortField, setSortField] = useState<
+      keyof (typeof dummyData)[0] | null
+    >(null);
+    const [sortDirection, setSortDirection] =
+      useState<TableHeaderCellProps['sort']>(undefined);
+
+    const handleSort = (field: keyof (typeof dummyData)[0]) => {
+      if (sortField === field && sortDirection === 'descending') {
+        setSortField(null);
+        setSortDirection(undefined);
+      } else {
+        setSortField(field);
+        setSortDirection(
+          sortField === field && sortDirection === 'ascending'
+            ? 'descending'
+            : 'ascending',
+        );
+      }
+    };
+
+    const sortedData = [...dummyData].sort((a, b) => {
+      if (sortField === null) return 0;
+      if (a[sortField] < b[sortField])
+        return sortDirection === 'ascending' ? -1 : 1;
+      if (a[sortField] > b[sortField])
+        return sortDirection === 'ascending' ? 1 : -1;
+      return 0;
+    });
+
+    return (
+      <Table {...args} style={{ maxWidth: 500 }}>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell
+              sort={sortField === 'navn' ? sortDirection : 'none'}
+              onClick={() => handleSort('navn')}
+            >
+              Fornavn eller annet navn over flere linjer
+            </Table.HeaderCell>
+            <Table.HeaderCell>Epostit</Table.HeaderCell>
+            <Table.HeaderCell
+              sort={sortField === 'telefon' ? sortDirection : 'none'}
+              onClick={() => handleSort('telefon')}
+            >
+              Telefon
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          {sortedData.map((row) => (
+            <Table.Row key={row.id}>
+              <Table.Cell>{row.navn}</Table.Cell>
+              <Table.Cell>{row.epost}</Table.Cell>
+              <Table.Cell>{row.telefon}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    );
+  },
+
+  parameters: {
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  },
+  args: {
+    border: true,
+  },
+});
+
 export const StickyHeader = meta.story({
   render: (args) => {
     const rows = Array.from({ length: 50 }, (_, i) => i + 1);

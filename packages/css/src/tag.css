@@ -1,5 +1,6 @@
 .ds-tag {
   --dsc-tag-background: var(--ds-color-surface-tinted);
+  --dsc-tag-background--hover: var(--ds-color-surface-hover);
   --dsc-tag-color: var(--ds-color-text-default);
   --dsc-tag-min-height: var(--ds-size-8);
   --dsc-tag-padding: 0 var(--ds-size-2);
@@ -23,12 +24,15 @@
   line-height: var(--ds-line-height-sm);
   min-height: var(--dsc-tag-min-height);
   padding: var(--dsc-tag-padding);
+  text-decoration: none;
+  vertical-align: middle;
   width: max-content;
   word-break: break-word;
   @composes ds-print-preserve from './base.css';
+  @composes ds-focus from './utils.css'; /* Add focus outline support in case renderes as <button> or <a> */
 
   & :is(img, svg) {
-    @composes ds-icon from './base.css';
+    @composes ds-icon from './utils.css';
   }
 
   &:not([hidden]) {
@@ -39,9 +43,8 @@
     --dsc-tag-border-color: var(--ds-color-border-subtle);
   }
 
-  @media (forced-colors: active) {
-    border-width: var(--ds-border-width-default);
-    border-style: solid;
-    border-color: CanvasText;
+  &:is(button, a, [role='button']):hover {
+    cursor: pointer;
+    background: var(--dsc-tag-background--hover);
   }
 }

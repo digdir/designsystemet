@@ -1,3 +1,5 @@
+@import 'microlighter/themes/github.css' layer(codeblock);
+
 @layer codeblock {
   .codeBlock {
     max-width: 100%;
@@ -7,7 +9,6 @@
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
     height: fit-content;
-    background-color: var(--ds-color-neutral-background-default);
     font-family: monospace;
     margin-block: 0;
     line-height: 1.5;
@@ -15,15 +16,29 @@
     border-top: initial;
     scrollbar-color: var(--ds-color-neutral-border-default) transparent;
 
-    & :global(.token.plain),
-    & :global(.token.plain-text) {
-      color: var(--ds-color-neutral-text-default);
-    }
-    & :global(.token-line) {
-      display: block;
-    }
     code {
       font-size: min(0.8em, 14px);
+    }
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+
+    &.noWrap {
+      white-space: pre;
+      overflow-wrap: normal;
+    }
+  }
+
+  .highlightedCode {
+    background-color: var(--syntax-background);
+    color: var(--syntax-foreground);
+    /* Follow the app's selected scheme instead of the theme's system preference. */
+    color-scheme: inherit;
+    :global([data-color-scheme='light']) & {
+      color-scheme: light;
+    }
+    :global([data-color-scheme='dark']) & {
+      color-scheme: dark;
     }
   }
 
@@ -35,11 +50,18 @@
     contain: inline-size;
   }
 
+  .wrapButton,
   .copyButton {
     border-radius: 0;
-    margin-left: auto;
     font-weight: var(--ds-font-weight-regular);
+  }
+  .copyButton {
     border-top-right-radius: var(--border-radius);
+  }
+
+  .wrapButton svg {
+    height: 1.5em;
+    width: 1.5em;
   }
   .stack {
     display: grid;

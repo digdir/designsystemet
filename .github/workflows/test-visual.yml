@@ -12,7 +12,6 @@ on:
       - "packages/**/package.json"
       - "packages/**/*.stories.tsx?"
       - "apps/storybook/**"
-      - "design-tokens/**/*.jsonc?"
 
   # main gets a push run so chromatic can auto-accept baselines there
   push:
@@ -23,7 +22,6 @@ on:
       - "packages/**/package.json"
       - "packages/**/*.stories.tsx?"
       - "apps/storybook/**"
-      - "design-tokens/**/*.jsonc?"
 permissions:
   contents: write
   pull-requests: write
@@ -54,8 +52,10 @@ jobs:
         run: pnpm build
       - name: Build storybook
         run: pnpm build:storybook
+      - name: Prepare Chromatic metadata file
+        run: touch apps/storybook/chromatic.log
       - name: Chromatic (visual + interaction)
-        uses: chromaui/action@2a0b63f30233c48591844a46d451b9cf68128186 # v18.7.2
+        uses: chromaui/action@f305ef908327aee3b80b0e6b3bbb60a742eaa049 # v18.13.6
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
@@ -81,7 +81,7 @@ jobs:
       - name: Build storybook
         run: pnpm build:storybook
       - name: Chromatic (auto-accept on main)
-        uses: chromaui/action@2a0b63f30233c48591844a46d451b9cf68128186 # v18.7.2
+        uses: chromaui/action@f305ef908327aee3b80b0e6b3bbb60a742eaa049 # v18.13.6
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

@@ -5,16 +5,27 @@ import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse } from 'react-router';
+import {
+  ColorScaleOverview,
+  ColorSwatches,
+} from '~/_components/color-examples/color-examples';
 import { ColorScaleTable } from '~/_components/color-scale-table/color-scale-table';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import {
+  ComponentSizeBalance,
+  ComponentSizeMix,
+  ComponentSizes,
+} from '~/_components/size-examples/size-examples';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
+import { getColorExamples } from '~/_utils/color-examples.server';
 import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import { getStories } from '../../_utils/get-stories.server';
+import changelogClasses from '../components/component.module.css';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
@@ -47,10 +58,11 @@ export async function loader({ params }: Route.LoaderArgs) {
     lang: params.lang,
     toc: result.toc,
     stories,
+    colorExamples: getColorExamples(),
   };
 }
 
-export const meta = ({ loaderData }: Route.MetaArgs) => {
+export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   if (!loaderData)
     return [
       {
@@ -63,6 +75,7 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
   return generateMetadata({
     title,
     description,
+    pathname: location.pathname,
   });
 };
 
@@ -115,11 +128,26 @@ export default function Fundamentals({
           </Button>
         </div>
       </TableOfContents>
-      <div className={cl(classes.content, 'u-rich-text')}>
+      <div
+        className={cl(
+          classes.content,
+          // Generated changelogs (e.g. figma/changelog) get the components changelog's heading spacing.
+          frontmatter.changelog && changelogClasses.changelog,
+          'u-rich-text',
+        )}
+      >
         <MDXComponents
           code={code}
           components={{
             ColorScaleTable: ColorScaleTable as React.ComponentType<unknown>,
+            // These read `colorExamples` from this page's loader
+            ColorScaleOverview:
+              ColorScaleOverview as React.ComponentType<unknown>,
+            ColorSwatches: ColorSwatches as React.ComponentType<unknown>,
+            ComponentSizes: ComponentSizes as React.ComponentType<unknown>,
+            ComponentSizeBalance:
+              ComponentSizeBalance as React.ComponentType<unknown>,
+            ComponentSizeMix: ComponentSizeMix as React.ComponentType<unknown>,
           }}
         />
         <EditPageOnGithub />

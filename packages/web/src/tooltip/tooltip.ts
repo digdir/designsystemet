@@ -82,7 +82,12 @@ const setupText = (el: Element, canAnnounce = true) => {
     attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
     attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
     attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
-    if ((el as HTMLElement).tabIndex === -1)
+
+    if (
+      (el as HTMLElement).tabIndex === -1 && // Default tabindex property of all Elements is -1
+      !el.hasAttribute('tabindex') && // But we want to allow attribute set to tabindex="-1" for example in focus groups
+      el.nodeName !== 'LABEL' // And labels will have focusable inputs, so their text is reactable anyway
+    )
       warn('Missing tabindex="0" attribute on: ', el);
   }
   if (el === OPEN && TIP?.textContent !== text) {

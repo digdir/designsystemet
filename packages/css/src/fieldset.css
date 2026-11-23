@@ -1,7 +1,6 @@
 .ds-fieldset {
   --dsc-fieldset-gap: var(--ds-size-4);
-  --_dsc-fieldset-gap--half: calc(var(--dsc-fieldset-gap) / 2);
-  --dsc-fieldset-description-color: var(--ds-color-neutral-text-subtle);
+  --dsc-fieldset-description-color: inherit;
 
   border: 0;
   margin: 0;
@@ -22,18 +21,12 @@
     margin-block: var(--dsc-fieldset-gap) 0;
   }
 
-  & > legend + p /* Kept for backwards compatibility */,
+  & > legend + p /* @deprecated Kept for backwards compatibility */,
   & > [data-field='description'] {
     color: var(--dsc-fieldset-description-color);
   }
-  & > legend + p /* Kept for backwards compatibility */,
+  & > legend + p /* @deprecated Kept for backwards compatibility */,
   & > legend + [data-field='description'] {
     margin-block-start: 0; /* Reset margin for description after legend */
-  }
-
-  &:disabled > legend,
-  &:disabled > legend + p /* Kept for backwards compatibility */,
-  &:disabled > [data-field='description'] {
-    opacity: var(--ds-opacity-disabled);
   }
 }

@@ -2,7 +2,7 @@ ARG PORT
 ARG HOST
 ARG APP_ENV
 # find sha for image on https://hub.docker.com/_/node/tags
-FROM node:24.20.0-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e AS base
+FROM node:24.22.3-slim@sha256:dc26ae92c9fb15cf6b1d63e20f0944b2efe0f115b20e00be48fb23fceb061c54 AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ENV CI=true
@@ -21,7 +21,9 @@ WORKDIR /usr/src/app
 ARG PORT
 ARG HOST
 ARG APP_ENV
+ARG DOCUMENTATION_VERSION
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
+ENV DOCUMENTATION_VERSION=$DOCUMENTATION_VERSION
 # RR v8 prerenders via an in-process Vite preview server over HTTP. Force IPv4
 # localhost resolution so the prerender can connect to it (avoids
 # `ECONNREFUSED 127.0.0.1` when `localhost` resolves to IPv6 in the container).
@@ -32,9 +34,11 @@ RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 FROM base AS www
 COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
+ARG DOCUMENTATION_VERSION
+ENV DOCUMENTATION_VERSION=$DOCUMENTATION_VERSION
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
-CMD [ "pnpm", "start" ]
+CMD [ "node", "server.js" ]
 
 FROM packages AS themebuilder-build
 WORKDIR /usr/src/app
@@ -50,7 +54,7 @@ COPY --from=themebuilder-build /prod/@web/themebuilder /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
-CMD [ "pnpm", "start" ]
+CMD [ "node", "server.js" ]
 
 FROM packages AS storybook-build
 RUN pnpm build:storybook
@@ -61,10 +65,8 @@ ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm deploy --filter=@web/storybook --prod /prod/@web/storybook
 
-FROM nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752 AS storybook
-# remove default config
-RUN rm /etc/nginx/conf.d/default.conf
-COPY /apps/storybook/nginx.conf /etc/nginx/conf.d/storybook.conf
+FROM cgr.dev/chainguard/nginx:latest@sha256:d660885b01f715c21d4bcece4457bef7440cbc8d349b8d5931900cb08b935bdc AS storybook
+# distroless image (no shell), so replace the default config by overwriting it
+COPY /apps/storybook/nginx.conf /etc/nginx/conf.d/nginx.default.conf
 COPY --from=storybook-build /prod/@web/storybook/dist /usr/share/nginx/html
 EXPOSE 6006
-CMD ["nginx", "-g", "daemon off;"]

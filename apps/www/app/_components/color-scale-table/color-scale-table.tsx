@@ -1,4 +1,4 @@
-import { semanticColorNames } from '@digdir/designsystemet/color';
+import { semanticColorNames } from '@digdir/designsystemet/internal';
 import { Table, type TableProps } from '@digdir/designsystemet-react';
 
 export type ColorScaleTableProps = TableProps;

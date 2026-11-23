@@ -23,6 +23,7 @@ import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
+import { getStoryHtml } from '~/_utils/story-html';
 import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
 import type { Route } from './+types/text';
 import classes from './component.module.css';
@@ -65,7 +66,7 @@ export async function loader({ params }: Route.LoaderArgs) {
   };
 }
 
-export const meta = ({ loaderData }: Route.MetaArgs) => {
+export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   if (!loaderData)
     return [
       {
@@ -79,6 +80,7 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
   return generateMetadata({
     title,
     description: frontmatter.description,
+    pathname: location.pathname,
   });
 };
 
@@ -121,7 +123,7 @@ export default function Text({
   );
 }
 
-const Story = ({ story, layout }: LiveComponentProps) => {
+const Story = ({ story, layout }: Omit<LiveComponentProps, 'html'>) => {
   const data = useRouteLoaderData<Route.ComponentProps['loaderData']>(
     'component-text-page',
   );
@@ -134,6 +136,7 @@ const Story = ({ story, layout }: LiveComponentProps) => {
   return (
     <LiveComponent
       story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+      html={getStoryHtml(foundStory)}
       layout={layout}
     />
   );

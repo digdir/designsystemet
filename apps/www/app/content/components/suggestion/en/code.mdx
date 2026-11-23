@@ -48,7 +48,7 @@ You can read more about how to use these in the [u-elements `u-combobox` documen
 
 <CssVariables />
 
-<CssAttributes />
+<CssAttributes exclude={['activedescendant']} />
 
 ## Examples
 
@@ -78,6 +78,18 @@ Add a button with `type="reset"` and `aria-label` to allow users to clear the se
 Add a button with `type="button" aria-expanded="false"` and `aria-label` to allow users to toggle the list.
 
 <Story story='PreviewEn' />
+
+### With external data
+
+<Story story='FetchExternal' />
+
+### With dynamic suggestions
+
+<Story story='EmailSuggestionsEn' />
+
+### Click to navigate
+
+<Story story='ClickToNavigateEn' />
 
 
 ## React

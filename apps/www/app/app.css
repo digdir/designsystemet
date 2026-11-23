@@ -28,7 +28,6 @@
   }
   :root {
     height: 100%;
-    overscroll-behavior: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: none; /* https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/ */
     --logo-red: #f05f63;
@@ -59,6 +58,14 @@
       scrollbar-gutter: stable;
     }
   }
+
+  /* Disable overscroll behavior for fine pointer devices, so they can drag down to refresh */
+  @media (pointer: fine) {
+    :root {
+      overscroll-behavior: none;
+    }
+  }
+
   body {
     min-height: 100%;
     font-family: 'Inter', sans-serif;
@@ -94,6 +101,7 @@
     margin: 0 auto;
     padding-inline: var(--content-inline-padding);
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     &:has(.l-sidebar-left) {
       max-width: var(--max-page-width);
       grid-template-columns: var(--sidebar-left-width) minmax(0, 1fr);
@@ -303,7 +311,9 @@
     & > h3,
     & > h4,
     & > h5,
-    & > h6 {
+    & > h6,
+    /* Headings inside details, cards and other wrappers can be linked to as well */
+      & :is(h2, h3, h4, h5, h6)[id] {
       scroll-margin-top: calc(var(--header-height) + 1lh);
     }
     & > h2 {
@@ -323,6 +333,10 @@
 
     & > :where(div, table, section) {
       margin-block: var(--ds-size-8);
+    }
+
+    & > details {
+      margin-block-end: var(--ds-size-6);
     }
 
     & > ul,
@@ -385,6 +399,8 @@
       font-size: 0.9em;
       line-height: 1;
       white-space: break-spaces;
+      /* long selectors and paths may break anywhere instead of widening the page */
+      overflow-wrap: anywhere;
       background-color: var(--ds-color-neutral-background-tinted);
       border-radius: var(--ds-border-radius-md);
       display: inline;

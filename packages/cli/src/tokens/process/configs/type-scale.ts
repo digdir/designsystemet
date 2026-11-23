@@ -1,7 +1,7 @@
 import { pathStartsWithOneOf, typeEquals } from '../../utils.ts';
 import { formats } from '../formats/css.ts';
-import { sizeRem, typographyName } from '../transformers.ts';
-import { basePxFontSize, type GetStyleDictionaryConfig, prefix } from './shared.ts';
+import { dsName, sizeRem } from '../transformers.ts';
+import { basePxFontSize, type GetStyleDictionaryConfig, isTypographySetPrimitive, prefix } from './shared.ts';
 
 export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme }) => {
   const selector = ':root, [data-size]';
@@ -20,14 +20,7 @@ export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme }) => {
         layer,
         buildPath: `${theme}/`,
         basePxFontSize,
-        transforms: [
-          'name/kebab',
-          'ts/size/px',
-          sizeRem.name,
-          'ts/size/lineheight',
-          'ts/typography/fontWeight',
-          typographyName.name,
-        ],
+        transforms: [dsName.name, 'ts/size/px', sizeRem.name, 'ts/size/lineheight', 'ts/typography/fontWeight'],
         files: [
           {
             destination: `type-scale.css`,
@@ -35,8 +28,8 @@ export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme }) => {
             filter: (token) => {
               const included = typeEquals(['typography', 'dimension', 'fontsize'], token);
 
-              // Remove primitive typgography tokens
-              if (/primitives\/modes\/typography\/(primary|secondary)/.test(token.filePath)) return false;
+              // Remove the typography set primitives, whatever the set is named
+              if (isTypographySetPrimitive(token)) return false;
 
               return (
                 included &&

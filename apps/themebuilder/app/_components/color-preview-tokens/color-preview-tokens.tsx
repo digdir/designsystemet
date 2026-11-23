@@ -1,0 +1,22 @@
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
+import { useTranslation } from 'react-i18next';
+import classes from './color-preview-tokens.module.css';
+export const ColorPreviewTokens = () => {
+  const { t } = useTranslation();
+  return (
+    <div className='panelContainer'>
+      <div className='panelLeft'>
+        <div className='panelTop'>
+          <Heading data-size='xs'>{t('colorPreviewTokens.title')}</Heading>
+          <Paragraph data-size='sm'>
+            {t('colorPreviewTokens.description')}
+          </Paragraph>
+        </div>
+      </div>
+      <div className={cl('panelRight', classes.right)}>
+        <img className={classes.img} src='/img/color-tokens.png' alt='' />
+      </div>
+    </div>
+  );
+};

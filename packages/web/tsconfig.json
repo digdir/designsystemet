@@ -6,6 +6,6 @@
     "outDir": "dist/esm",
     "composite": true
   },
-  "include": ["src/**/*", "package.json"],
+  "include": ["src/**/*", "package.json", "vitest-matchers.d.ts"],
   "exclude": ["node_modules", "dist"]
 }

@@ -29,8 +29,10 @@ describe('pagination component', () => {
 
     await tick(); // Let mutation observer run
     expect(paginationEl).toHaveAttribute('role', 'navigation');
-    expect(prev).toHaveAttribute('aria-label', '1');
-    expect(next).toHaveAttribute('aria-label', '3');
+    expect(prev).not.toHaveAttribute('aria-label'); // Text content is the accessible name
+    expect(prev).toHaveAttribute('href', '/page/1');
+    expect(next).not.toHaveAttribute('aria-label');
+    expect(next).toHaveAttribute('href', '/page/3');
     expect(links?.[2]).toHaveAttribute('aria-label', '2');
     expect(links?.[2]).toHaveAttribute('aria-current', 'true');
   });
@@ -51,6 +53,51 @@ describe('pagination component', () => {
     const paginationEl = document.querySelector('ds-pagination') as HTMLElement;
     expect(paginationEl).toHaveAttribute('aria-labelledby', 'pg-label');
     expect(paginationEl).not.toHaveAttribute('aria-label');
+  });
+
+  it('keeps aria-label on text-less previous/next buttons', async () => {
+    document.body.innerHTML = `
+      <ds-pagination data-current="3" data-total="5" aria-label="Pagination">
+        <ol>
+          <li><button class="ds-button" data-testid="prev" aria-label="Forrige side"></button></li>
+          <li><button class="ds-button"></button></li>
+          <li><button class="ds-button"></button></li>
+          <li><button class="ds-button"></button></li>
+          <li><button class="ds-button" data-testid="next" aria-label="Neste side"></button></li>
+        </ol>
+      </ds-pagination>
+    `;
+
+    const paginationEl = document.querySelector('ds-pagination');
+    const prev = paginationEl?.querySelector('[data-testid="prev"]');
+    const next = paginationEl?.querySelector('[data-testid="next"]');
+
+    await tick(); // Let mutation observer run
+    expect(prev).toHaveAttribute('aria-label', 'Forrige side');
+    expect(prev).toHaveAttribute('value', '2');
+    expect(next).toHaveAttribute('aria-label', 'Neste side');
+    expect(next).toHaveAttribute('value', '4');
+  });
+
+  it('falls back to CSS label on text-less previous/next buttons', async () => {
+    document.body.innerHTML = `
+      <ds-pagination data-current="2" data-total="5" aria-label="Pagination">
+        <ol>
+          <li><button class="ds-button" data-testid="prev" style="--_ds-aria-label: 'Forrige side'"></button></li>
+          <li><button class="ds-button"></button></li>
+          <li><button class="ds-button"></button></li>
+          <li><button class="ds-button" data-testid="next" style="--_ds-aria-label: 'Neste side'"></button></li>
+        </ol>
+      </ds-pagination>
+    `;
+
+    const paginationEl = document.querySelector('ds-pagination');
+    const prev = paginationEl?.querySelector('[data-testid="prev"]');
+    const next = paginationEl?.querySelector('[data-testid="next"]');
+
+    await tick(); // Let mutation observer run
+    expect(prev).toHaveAttribute('aria-label', 'Forrige side');
+    expect(next).toHaveAttribute('aria-label', 'Neste side');
   });
 
   it('marks hidden steps as not focusable', async () => {

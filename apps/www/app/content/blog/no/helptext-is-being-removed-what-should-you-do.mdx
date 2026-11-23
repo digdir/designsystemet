@@ -36,7 +36,7 @@ Det vil etter kvart kome eit mønster for ulike typar hjelpetekst.
 ## Kode
 
 Koden under kan du bruke for å komponere din eigen `HelpText`-komponent.
-CSS-snutten inkluderer ikon, klassen legger du på `Popover.Trigger`.
+CSS-snutten inkluderer ikon, klassen legger du på `Button` som åpner `Popover`.
 
 ### CSS
 
@@ -108,19 +108,22 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
     { placement = "right", children, ...rest },
     ref
   ) {
+    const popoverId = useId();
+
     return (
-      <Popover.TriggerContext>
-        <Popover.Trigger
+      <>
+        <Button
           className="ds-helptext"
           ref={ref}
           variant="tertiary"
           data-color="info"
+          popovertarget={popoverId}
           {...rest}
         />
-        <Popover placement={placement} data-color="info">
+        <Popover id={popoverId} placement={placement} data-color="info">
           {children}
         </Popover>
-      </Popover.TriggerContext>
+      </>
     );
   }
 );

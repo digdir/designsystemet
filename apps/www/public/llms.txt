@@ -1,0 +1,40 @@
+# Designsystemet
+
+> Designsystemet is a framework-independent component library and usage guidance for accessible public services.
+
+Append `.md` to documentation page URLs to retrieve Markdown without browser JavaScript or special headers. The normal page URL also supports `Accept: text/markdown`. Links to other documentation pages stay in Markdown. Both formats come from the same website content.
+
+Check the consuming project's installed package versions and framework before writing code. Website documentation describes the current release; use matching release documentation and types when working with an older version. Do not invent components, imports, attributes, or design tokens.
+
+`@digdir/designsystemet-css` provides styles and needs a theme. `@digdir/designsystemet-web` provides framework-independent behaviour and can be used with or without our CSS. `@digdir/designsystemet-react` provides React components. Follow the project's existing setup rather than installing all packages.
+
+The component index links to each component's overview. Component pages include links to their available Overview, Code and Accessibility pages, including in Markdown. Follow Code for APIs and implementation details, and Accessibility for requirements and checks before implementing a component. Some components have only an overview; follow the provided links rather than guessing URLs.
+
+## Start here
+
+- [Setup](https://designsystemet.no/en/fundamentals/code/setup.md): Installation, JavaScript imports, CSS and theme setup.
+- [CSS](https://designsystemet.no/en/fundamentals/code/css.md): Layers, data attributes, helpers and Tailwind integration.
+- [Colors](https://designsystemet.no/en/fundamentals/code/colors.md): Theme colors and color schemes.
+- [Sizes](https://designsystemet.no/en/fundamentals/code/sizes.md): Component sizing and spacing.
+- [React](https://designsystemet.no/en/fundamentals/code/react.md): React-specific usage.
+- [Components](https://designsystemet.no/en/components.md): Find component overview, code and accessibility pages.
+- [Accessibility](https://designsystemet.no/en/components/accessibility.md): General accessibility guidance.
+- [Changelog](https://designsystemet.no/en/components/changelog.md): Changes between releases.
+
+## Patterns and usage
+
+Read the relevant pattern before composing a UI. Component APIs explain how; patterns explain when and why. Preserve semantic HTML, keyboard interaction, labels, focus management and validation behaviour. Use documented theme tokens for custom styling.
+
+- [All patterns](https://designsystemet.no/en/patterns.md): Discover usage guidance and composition examples.
+- [Error messages](https://designsystemet.no/en/patterns/errors.md): Field validation and error summaries.
+- [Consent banners](https://designsystemet.no/en/patterns/consent-banner.md): Genuine choices, accessible interaction and examples.
+- [Required and optional fields](https://designsystemet.no/en/patterns/required-and-optional-fields.md): Form labelling.
+- [Button placement and order](https://designsystemet.no/en/patterns/button-placement-and-order.md): Action placement.
+
+## Norwegian documentation
+
+- [Oppsett](https://designsystemet.no/no/fundamentals/code/setup.md)
+- [Komponenter](https://designsystemet.no/no/components.md)
+- [Mønstre](https://designsystemet.no/no/patterns.md)
+
+Documentation may be used as context for AI assistance. Production allows model training via Content-Signal; PR previews and other environments opt out and disallow crawling. No MCP server or tool-specific skill is required.

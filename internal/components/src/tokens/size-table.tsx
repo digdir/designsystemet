@@ -55,6 +55,9 @@ export const SizeVariablesTable = ({
               <Table.HeaderCell>
                 {t('token-preview.table.name')}
               </Table.HeaderCell>
+              <Table.HeaderCell>
+                {t('token-preview.table.figma')}
+              </Table.HeaderCell>
               {withPreview && (
                 <>
                   <Table.HeaderCell>
@@ -72,6 +75,11 @@ export const SizeVariablesTable = ({
               <Table.Row key={variable}>
                 <Table.Cell>
                   <code>{variable}</code>
+                </Table.Cell>
+                <Table.Cell>
+                  {Number.isNaN(Number(variable.slice(-1)))
+                    ? null
+                    : variable.replace('--ds-size-', 'size ')}
                 </Table.Cell>
 
                 {withPreview && (

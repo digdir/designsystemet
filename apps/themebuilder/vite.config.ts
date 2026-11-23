@@ -9,7 +9,7 @@ const internalComponentsDir = fileURLToPath(
 export default defineConfig(({ isSsrBuild, command }) => ({
   plugins: [reactRouter()],
   ssr: {
-    noExternal: ['@navikt/aksel-icons', 'ramda'],
+    noExternal: ['@navikt/aksel-icons'],
   },
   // In dev, resolve @internal/components directly to its source so edits
   // hot-reload. In build mode, use normal node_modules resolution so
@@ -22,9 +22,13 @@ export default defineConfig(({ isSsrBuild, command }) => ({
         }
       : { tsconfigPaths: true },
   build: {
+    dynamicImportVarsOptions: {
+      exclude: [/node_modules\/(?!.*microlighter)/],
+    },
     rolldownOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
   },
   optimizeDeps: {
+    exclude: ['microlighter'],
     include: ['react', 'react-dom', 'react-router'],
   },
   oxc: {

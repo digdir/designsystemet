@@ -8,7 +8,7 @@
   --dsc-details-icon-gap: var(--ds-size-2);
   --dsc-details-icon-size: var(--ds-icon-size);
   --dsc-details-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
-  --dsc-details-padding: var(--ds-size-2) var(--ds-size-4);
+  --dsc-details-padding: var(--ds-size-4);
   --dsc-details-size: var(--ds-size-14);
   --dsc-details-background: var(--ds-color-surface-default);
   --dsc-details-summary-color: var(--ds-color-text-default);
@@ -66,27 +66,22 @@
     }
 
     /* Render focus inside so it is easier to make full window width and place in overflow: hidden containers */
-    @composes ds-focus--inset from './base.css';
+    @composes ds-focus--inset from './utils.css';
     /*preserve header for print but not background-color on content*/
     @composes ds-print-preserve from './base.css';
 
     &::before {
       all: unset;
+      align-self: start;
       background: currentcolor;
+      forced-color-adjust: none; /* Enable drawing with background property */
       border-radius: var(--ds-border-radius-md);
       content: '';
       flex-shrink: 0;
       height: var(--dsc-details-icon-size);
       mask: 50% / contain no-repeat var(--dsc-details-icon-url);
       width: var(--dsc-details-icon-size);
-    }
-
-    @media (forced-colors: active) {
-      color: ButtonText;
-
-      &::before {
-        background: ButtonText;
-      }
+      translate: 0 calc(0.5lh - 50%);
     }
   }
 

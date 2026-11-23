@@ -22,9 +22,9 @@ export const links = () => {
   return [
     {
       rel: 'stylesheet',
-      href: 'https://altinncdn.no/fonts/inter/v4.1/inter.css',
+      href: 'https://altinncdn.no/fonts/inter/v4.1/inter-latin.css',
       integrity:
-        'sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD',
+        'sha384-dMo4FR/05iqPHBhxdybPejGKOwjCpktk6XnfJDAOP4AyMh7JFC7cCWsnOKLv7tJF',
       crossOrigin: 'anonymous',
     },
   ];
@@ -118,6 +118,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   return data({
     lang: params.lang || 'no',
+    documentationVersion: process.env.DOCUMENTATION_VERSION?.trim() || null,
     menu,
     centerLinks,
   });
@@ -141,6 +142,7 @@ function Document({ children }: DocumentProps) {
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='text-scale' content='scale' />
         <Links />
         <Meta />
       </head>

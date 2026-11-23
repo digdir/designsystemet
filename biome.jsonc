@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.5.12/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "assist": {
     "actions": { "source": { "organizeImports": "on" } }
   },
@@ -16,7 +16,6 @@
       "!.changeset",
       "!**/design-tokens/*",
       "!**/dist",
-      "!**/packages/theme/**/*.css", // TODO delete after @digdir/designsystemet-theme is migrated
       "!**/internal/digdir/**/*.css",
       "!**/packages/css/theme/**/*.css",
       "!**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
@@ -24,7 +23,12 @@
       "!**/package.json", // changeset wants the files to be formatted differently
       "!**/wc/public",
       "!**/content/schemas/**/*.json",
-      "!**/packages/cli/tests/**/*.css"
+      "!**/packages/cli/tests/**/*.css",
+      "!**/__snapshots__", // vitest file snapshots must keep the exact serialization the test produces
+      "!pnpm-lock.yaml",
+      "!pnpm-workspace.yaml",
+      "!**/README.md",
+      "!**/CHANGELOG.md"
     ]
   },
   "formatter": {
@@ -62,6 +66,7 @@
       "correctness": {
         "useUniqueElementIds": "off",
         "useExhaustiveDependencies": "off",
+        "noComponentHookFactories": "off",
         "noUnusedImports": {
           "options": {},
           "level": "warn",
