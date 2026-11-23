@@ -27,6 +27,20 @@ changelog: true
 
 ### Patch Changes
 
+- **Size:** Some sizes in the Large size mode are 1px larger, as intended. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
+
+  | Variable | Large |
+  |---|---|
+  | `size/3` | 13 → 14 |
+  | `size/6` | 27 → 28 |
+  | `size/9` | 41 → 42 |
+  | `size/12` | 55 → 56 |
+  | `size/15` | 69 → 70 |
+  | `size/18` | 83 → 84 |
+  | `size/30` | 139 → 140 |
+
+  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>Figma plugin</Tag><Tag>Figma UI kit</Tag></div>
+
 - **Typography:** Font sizes in the Small and Large size modes now match code. Headings change the most: they get bigger in Small and smaller in Large. Medium does not change. ([#5609](https://github.com/digdir/designsystemet/issues/5609)) (thanks @ssb-cgn) ([#5647](https://github.com/digdir/designsystemet/pull/5647))
 
   | Variable | Small | Large |
@@ -43,20 +57,6 @@ changelog: true
   | `font-size/10` | 48 → 53 | 72 → 70 |
 
   <div data-packages><Tag>CLI</Tag><Tag>Figma plugin</Tag><Tag>Figma UI kit</Tag></div>
-
-- **Size:** Some sizes in the Large size mode are 1px larger, as intended. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
-
-  | Variable | Large |
-  |---|---|
-  | `size/3` | 13 → 14 |
-  | `size/6` | 27 → 28 |
-  | `size/9` | 41 → 42 |
-  | `size/12` | 55 → 56 |
-  | `size/15` | 69 → 70 |
-  | `size/18` | 83 → 84 |
-  | `size/30` | 139 → 140 |
-
-  <div data-packages><Tag>CLI</Tag><Tag>CSS</Tag><Tag>Figma plugin</Tag><Tag>Figma UI kit</Tag></div>
 
 </div>
 
@@ -102,11 +102,11 @@ changelog: true
 
 ### Minor Changes
 
-- **Select:** Published in Figma, with a simple list in place of the browser's own dropdown, which looks different in every browser ([#4436](https://github.com/digdir/designsystemet/issues/4436))
+- **Chip:** Long labels are now truncated with an ellipsis, as in code ([#5049](https://github.com/digdir/designsystemet/issues/5049))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Chip:** Long labels are now truncated with an ellipsis, as in code ([#5049](https://github.com/digdir/designsystemet/issues/5049))
+- **Select:** Published in Figma, with a simple list in place of the browser's own dropdown, which looks different in every browser ([#4436](https://github.com/digdir/designsystemet/issues/4436))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -116,15 +116,11 @@ changelog: true
 
 ### Patch Changes
 
+- **Button:** Icon size in icon buttons now matches code ([#5192](https://github.com/digdir/designsystemet/issues/5192))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
 - **Checkbox, Radio, Select, Suggestion, Switch, Textfield, Textarea:** Only the input itself is shown as disabled, not the label and description, which can still be relevant to read ([#5306](https://github.com/digdir/designsystemet/issues/5306))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **LinkCard:** The title underline now behaves like `Link`, with 6% thickness by default and 12% on hover and active ([#5284](https://github.com/digdir/designsystemet/issues/5284))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **Form components:** Labels are now semibold and descriptions use `text-default`, to make them easier to tell apart ([#3913](https://github.com/digdir/designsystemet/issues/3913))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -132,7 +128,15 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Suggestion:** The chevron now points the right way when the list is open ([#5198](https://github.com/digdir/designsystemet/issues/5198))
+- **Form components:** Labels are now semibold and descriptions use `text-default`, to make them easier to tell apart ([#3913](https://github.com/digdir/designsystemet/issues/3913))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **LinkCard:** The title underline now behaves like `Link`, with 6% thickness by default and 12% on hover and active ([#5284](https://github.com/digdir/designsystemet/issues/5284))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **List:** Added a small left padding, so list items align with the text above them ([#5196](https://github.com/digdir/designsystemet/issues/5196))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -140,15 +144,11 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
+- **Suggestion:** The chevron now points the right way when the list is open ([#5198](https://github.com/digdir/designsystemet/issues/5198))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
 - **Textfield:** Left padding is now `size-3`, as in code ([#5402](https://github.com/digdir/designsystemet/issues/5402))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **Button:** Icon size in icon buttons now matches code ([#5192](https://github.com/digdir/designsystemet/issues/5192))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **List:** Added a small left padding, so list items align with the text above them ([#5196](https://github.com/digdir/designsystemet/issues/5196))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -206,15 +206,15 @@ changelog: true
 
 ### Minor Changes
 
-- **Color:** The **Main color** and **Support color** collections are merged into one **Color** collection, and colors are chosen with color modes, as in code. The `main`, `support` and `neutral` component variants are removed ([#4545](https://github.com/digdir/designsystemet/issues/4545))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
 - **ButtonGroup:** Removed, as it isn't a component in code. Spacing between buttons is a layout decision for each team ([#5024](https://github.com/digdir/designsystemet/issues/5024))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 - **ChipGroup:** Removed, as it isn't a component in code. Spacing between chips is a layout decision for each team ([#5025](https://github.com/digdir/designsystemet/issues/5025))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **Color:** The **Main color** and **Support color** collections are merged into one **Color** collection, and colors are chosen with color modes, as in code. The `main`, `support` and `neutral` component variants are removed ([#4545](https://github.com/digdir/designsystemet/issues/4545))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -236,6 +236,10 @@ changelog: true
 
 ### Minor Changes
 
+- Added a guide to setting up your own icon library ([#4097](https://github.com/digdir/designsystemet/issues/4097))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
 - **AvatarStack:** New component for showing a group of avatars ([#2305](https://github.com/digdir/designsystemet/issues/2305))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
@@ -248,25 +252,17 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Suggestion:** Redesigned ([#4661](https://github.com/digdir/designsystemet/issues/4661), [#4664](https://github.com/digdir/designsystemet/issues/4664))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
 - **Dropdown:** Option buttons support the `danger` variant ([#4266](https://github.com/digdir/designsystemet/issues/4266))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- Added a guide to setting up your own icon library ([#4097](https://github.com/digdir/designsystemet/issues/4097))
+- **Suggestion:** Redesigned ([#4661](https://github.com/digdir/designsystemet/issues/4661), [#4664](https://github.com/digdir/designsystemet/issues/4664))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 ### Patch Changes
 
-- **Checkbox:** The checkmark now scales correctly ([#4493](https://github.com/digdir/designsystemet/issues/4493))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **Checkbox:** Added the missing stroke when checked and indeterminate ([#4880](https://github.com/digdir/designsystemet/issues/4880))
+- **Card:** Moved the top padding from `_content` to the paragraph, so content in the slot doesn't get an extra 8px at the top ([#4796](https://github.com/digdir/designsystemet/issues/4796))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -274,11 +270,31 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Card:** Moved the top padding from `_content` to the paragraph, so content in the slot doesn't get an extra 8px at the top ([#4796](https://github.com/digdir/designsystemet/issues/4796))
+- **Checkbox:** Added the missing stroke when checked and indeterminate ([#4880](https://github.com/digdir/designsystemet/issues/4880))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **Checkbox:** The checkmark now scales correctly ([#4493](https://github.com/digdir/designsystemet/issues/4493))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- Cleaned up the "Base components" page and removed unused components ([#4312](https://github.com/digdir/designsystemet/issues/4312))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- Cleaned up the test page and the focus page
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 - **Dialog:** Fixed an upside-down icon ([#4603](https://github.com/digdir/designsystemet/issues/4603))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- Fixed invalid `0` variables in components ([#4902](https://github.com/digdir/designsystemet/issues/4902))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- Padding set to 0 is now connected to the `0` variable, so Figma suggests related variables ([#4081](https://github.com/digdir/designsystemet/issues/4081))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -314,22 +330,6 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- Padding set to 0 is now connected to the `0` variable, so Figma suggests related variables ([#4081](https://github.com/digdir/designsystemet/issues/4081))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- Fixed invalid `0` variables in components ([#4902](https://github.com/digdir/designsystemet/issues/4902))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- Cleaned up the "Base components" page and removed unused components ([#4312](https://github.com/digdir/designsystemet/issues/4312))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- Cleaned up the test page and the focus page
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
 </div>
 
 <div style={{
@@ -348,10 +348,6 @@ changelog: true
 
 ### Minor Changes
 
-- **Tag:** New `outline` variant, for tags on `surface-tinted` components and surfaces ([#3478](https://github.com/digdir/designsystemet/issues/3478))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
 - **Paragraph:** Renamed the "Body" component to "Paragraph", as in code ([#4273](https://github.com/digdir/designsystemet/issues/4273))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
@@ -364,6 +360,10 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
+- **Tag:** New `outline` variant, for tags on `surface-tinted` components and surfaces ([#3478](https://github.com/digdir/designsystemet/issues/3478))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
 ### Patch Changes
 
 - **Card:** Fixed wrong typography variables and styles ([#4108](https://github.com/digdir/designsystemet/issues/4108))
@@ -371,6 +371,10 @@ changelog: true
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 - **Chip:** The x icon in removable chips now uses a variable ([#4163](https://github.com/digdir/designsystemet/issues/4163))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- Fixed missing components, mostly in examples ([#4305](https://github.com/digdir/designsystemet/issues/4305))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -386,6 +390,10 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
+- Removed missing libraries, from components and styles copied from other files ([#4247](https://github.com/digdir/designsystemet/issues/4247))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
 - **Switch:** Added the missing variant and fixed double opacity when disabled ([#4306](https://github.com/digdir/designsystemet/issues/4306))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
@@ -398,19 +406,11 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Table:** Fixed the cell with a checkbox ([#4256](https://github.com/digdir/designsystemet/issues/4256))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
 - **Table:** Cells with icons now have the same height as cells with only text, in all sizes ([#4252](https://github.com/digdir/designsystemet/issues/4252))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- Removed missing libraries, from components and styles copied from other files ([#4247](https://github.com/digdir/designsystemet/issues/4247))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- Fixed missing components, mostly in examples ([#4305](https://github.com/digdir/designsystemet/issues/4305))
+- **Table:** Fixed the cell with a checkbox ([#4256](https://github.com/digdir/designsystemet/issues/4256))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -432,19 +432,15 @@ changelog: true
 
 ### Minor Changes
 
-- **Select:** Added a page with examples and information ([#4025](https://github.com/digdir/designsystemet/issues/4025))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **ToggleGroup:** New `secondary` variant, and design changes ([#3553](https://github.com/digdir/designsystemet/issues/3553))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **Tag:** Icons can now be added ([#1884](https://github.com/digdir/designsystemet/issues/1884))
+- **Form components:** Added an option to show the required tag ([#3958](https://github.com/digdir/designsystemet/issues/3958))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 - **List:** Bullet points are now instances that can be swapped ([#3915](https://github.com/digdir/designsystemet/issues/3915))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **Select:** Added a page with examples and information ([#4025](https://github.com/digdir/designsystemet/issues/4025))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -456,17 +452,25 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Form components:** Added an option to show the required tag ([#3958](https://github.com/digdir/designsystemet/issues/3958))
+- **Table:** Added a guide to building your own table with the cell components ([#3914](https://github.com/digdir/designsystemet/issues/3914))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Table:** Added a guide to building your own table with the cell components ([#3914](https://github.com/digdir/designsystemet/issues/3914))
+- **Tag:** Icons can now be added ([#1884](https://github.com/digdir/designsystemet/issues/1884))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **ToggleGroup:** New `secondary` variant, and design changes ([#3553](https://github.com/digdir/designsystemet/issues/3553))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 ### Patch Changes
 
 - **Alert:** Removed the max width on the text, so it spans the full width ([#3892](https://github.com/digdir/designsystemet/issues/3892))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **Card, LinkCard:** Headings now have the same font size ([#3898](https://github.com/digdir/designsystemet/issues/3898))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -482,10 +486,6 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Card, LinkCard:** Headings now have the same font size ([#3898](https://github.com/digdir/designsystemet/issues/3898))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
 - **Checkbox:** Fixed a wrong token ([#3813](https://github.com/digdir/designsystemet/issues/3813))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
@@ -494,11 +494,11 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Dropdown:** Renamed variant properties, and text changes to `text-default` on hover and pressed, as in code ([#3912](https://github.com/digdir/designsystemet/issues/3912))
+- **Dropdown:** Buttons and headers in the neutral dropdown no longer look the same ([#3672](https://github.com/digdir/designsystemet/issues/3672))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Dropdown:** Buttons and headers in the neutral dropdown no longer look the same ([#3672](https://github.com/digdir/designsystemet/issues/3672))
+- **Dropdown:** Renamed variant properties, and text changes to `text-default` on hover and pressed, as in code ([#3912](https://github.com/digdir/designsystemet/issues/3912))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -510,11 +510,11 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Tooltip:** Fixed missing arrows and arrows with the wrong color in the examples ([#4024](https://github.com/digdir/designsystemet/issues/4024))
+- Swapping a component no longer adds a border to the swapped element ([#3928](https://github.com/digdir/designsystemet/issues/3928))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- Swapping a component no longer adds a border to the swapped element ([#3928](https://github.com/digdir/designsystemet/issues/3928))
+- **Tooltip:** Fixed missing arrows and arrows with the wrong color in the examples ([#4024](https://github.com/digdir/designsystemet/issues/4024))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -554,11 +554,11 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Dropdown:** Items are now centered horizontally, and the small icon is 24px ([#3464](https://github.com/digdir/designsystemet/issues/3464))
+- **Dropdown:** Fixed a wrong variable in the neutral dropdown ([#3636](https://github.com/digdir/designsystemet/issues/3636))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Dropdown:** Fixed a wrong variable in the neutral dropdown ([#3636](https://github.com/digdir/designsystemet/issues/3636))
+- **Dropdown:** Items are now centered horizontally, and the small icon is 24px ([#3464](https://github.com/digdir/designsystemet/issues/3464))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -566,19 +566,19 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **LinkCard:** Now responsive with long titles ([#3481](https://github.com/digdir/designsystemet/issues/3481))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
 - **LinkCard:** Changed the order of the state options to default, hover, active
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Multisuggestion:** Uses a checkmark instead of a checkbox ([#3678](https://github.com/digdir/designsystemet/issues/3678))
+- **LinkCard:** Now responsive with long titles ([#3481](https://github.com/digdir/designsystemet/issues/3481))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 - **Multisuggestion:** Chips are moved up, between the label and the field ([#3677](https://github.com/digdir/designsystemet/issues/3677))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **Multisuggestion:** Uses a checkmark instead of a checkbox ([#3678](https://github.com/digdir/designsystemet/issues/3678))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -587,6 +587,10 @@ changelog: true
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 - **Radio:** Added a variable on the legend in the horizontal variant ([#3573](https://github.com/digdir/designsystemet/issues/3573))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- Removed some ghost variables
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -603,10 +607,6 @@ changelog: true
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 - **Textarea:** Removed an unused base container
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- Removed some ghost variables
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -646,26 +646,6 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Tabs:** Removed an invisible line, and the text element now has a bottom border, closer to code
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **Tabs:** Fixed wrong variables in examples
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **ToggleGroup:** Updated with the visual changes from code ([#3399](https://github.com/digdir/designsystemet/issues/3399))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **ToggleGroup:** Fixed wrong variables
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **Tooltip:** Fixed the color of hidden arrows
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
 - Components use surface variables instead of background variables, which can behave oddly in dark mode ([#3353](https://github.com/digdir/designsystemet/issues/3353))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
@@ -674,15 +654,35 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- Removed a blue color from Radio on the example page
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
 - Example pages hug their content in height
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 - Fixed ghost variables in examples
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- Removed a blue color from Radio on the example page
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **Tabs:** Fixed wrong variables in examples
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **Tabs:** Removed an invisible line, and the text element now has a bottom border, closer to code
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **ToggleGroup:** Fixed wrong variables
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **ToggleGroup:** Updated with the visual changes from code ([#3399](https://github.com/digdir/designsystemet/issues/3399))
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **Tooltip:** Fixed the color of hidden arrows
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -704,11 +704,7 @@ changelog: true
 
 ### Minor Changes
 
-- **Divider:** New component ([#3047](https://github.com/digdir/designsystemet/issues/3047))
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **Dialog:** Added a backdrop
+- Components are aligned with code in naming, properties and use of tokens ([#3160](https://github.com/digdir/designsystemet/issues/3160))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -716,7 +712,11 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Typography:** Added Heading XXL
+- **Dialog:** Added a backdrop
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **Divider:** New component ([#3047](https://github.com/digdir/designsystemet/issues/3047))
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -724,11 +724,15 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- Components are aligned with code in naming, properties and use of tokens ([#3160](https://github.com/digdir/designsystemet/issues/3160))
+- **Typography:** Added Heading XXL
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
 ### Patch Changes
+
+- Added extra typography to the "Etat1" and "Etat2" examples, for testing a switch to another typography
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
 
 - **Badge:** Flexible width
 
@@ -738,11 +742,11 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Checkbox:** The danger variant uses `neutral-background` instead of `danger-background`, and `danger-text-subtle` instead of a border, as in code
+- **Checkbox:** Read-only uses `text-default` instead of `text-subtle` on the check and line, as in code
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Checkbox:** Read-only uses `text-default` instead of `text-subtle` on the check and line, as in code
+- **Checkbox:** The danger variant uses `neutral-background` instead of `danger-background`, and `danger-text-subtle` instead of a border, as in code
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -750,15 +754,19 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
+- Fixed broken table examples
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- Fixed wrong icon colors on the example pages
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
 - **IconToggleGroup:** Uses main instead of accent
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Radio:** Uses main instead of accent
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- **Radio:** The danger variant uses `neutral-background` instead of `danger-background`, and `danger-text-subtle` instead of a border, as in code
+- **Radio:** Fixed table examples
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -766,7 +774,15 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Radio:** Fixed table examples
+- **Radio:** The danger variant uses `neutral-background` instead of `danger-background`, and `danger-text-subtle` instead of a border, as in code
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- **Radio:** Uses main instead of accent
+
+  <div data-packages><Tag>Figma UI kit</Tag></div>
+
+- Removed missing variables
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -782,7 +798,7 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- **Tooltip:** Simplified
+- The Button, Card, Details and Tag pages use the default theme instead of a specific one
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
@@ -790,23 +806,7 @@ changelog: true
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
-- Added extra typography to the "Etat1" and "Etat2" examples, for testing a switch to another typography
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- The Button, Card, Details and Tag pages use the default theme instead of a specific one
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- Fixed wrong icon colors on the example pages
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- Fixed broken table examples
-
-  <div data-packages><Tag>Figma UI kit</Tag></div>
-
-- Removed missing variables
+- **Tooltip:** Simplified
 
   <div data-packages><Tag>Figma UI kit</Tag></div>
 
