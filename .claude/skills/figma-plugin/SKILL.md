@@ -1,5 +1,4 @@
 ---
-
 name: figma-plugin
 description: Rules for the Figma plugin and for changes that show up in Figma. Use when changing anything in figma/plugin or packages/cli/src/figma, or when a CLI or CSS change alters Figma variables or which variables components use.
 ---

@@ -1,5 +1,4 @@
 ---
-
 name: www-content
 description: Rules for pages and blog posts on designsystemet.no. Use when adding, editing, moving or renaming anything under apps/www/app/content, including component documentation.
 ---
@@ -12,7 +11,8 @@ description: Rules for pages and blog posts on designsystemet.no. Use when addin
 
 ## Pages
 
-- A page is only shown in the sidebar when its frontmatter has `published: true` and a `category`. Without them it is hidden, with no error.
+- A page is only shown in the sidebar when its frontmatter has a `category`. Fundamentals, intro and best practices also need `published: true`. Without them the page is hidden, with no error.
+- When you edit a page, set the frontmatter `date:` to today. Blog posts keep their date.
 - `order` sorts the page within its category, `sidebar_title` gives a shorter name in the sidebar, and `search_terms` is a comma-separated list of extra words for the search.
 - When you move or rename a page, add a redirect from the old address in `apps/www/app/_utils/redirects.server.ts`, and update the links to it in both languages.
 
@@ -29,6 +29,11 @@ description: Rules for pages and blog posts on designsystemet.no. Use when addin
 - A wrong story name does not fail the build. The page shows "Story not found", so look at the page in both languages.
 - Readers see the story's source as it is written, so keep each story complete and good enough to copy.
 - Do not write tables of props, CSS variables or data attributes by hand. They are generated from the code.
+
+## Changesets
+
+- A change under `content/patterns` or `content/best-practices` needs a changeset for `@web/www`; CI fails without one. Users link to and copy these pages, so write what changed for them.
+- For a change users don't need to know about, like a typo, the `skip-docs-changeset` label on the pull request passes the check instead.
 
 ## Going live
 

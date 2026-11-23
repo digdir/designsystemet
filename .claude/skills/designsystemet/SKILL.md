@@ -1,7 +1,6 @@
 ---
-
 name: designsystemet
-description: Conventions for working in the designsystemet.no repo. Use for any change to packages, the Figma plugin, docs or pull requests here.
+description: Repo-wide conventions for designsystemet.no — the project name in prose, pull request titles, changesets and lockfile cleanup. Use for any change to packages, the Figma plugin, docs or pull requests here.
 ---
 
 # Working in designsystemet.no
@@ -9,7 +8,6 @@ description: Conventions for working in the designsystemet.no repo. Use for any 
 ## Writing
 
 - The project is called designsystemet.no in prose, not Designsystemet.
-- When you edit a docs page in apps/www, set the frontmatter `date:` to today. Blog posts keep their date.
 
 ## Pull requests
 
