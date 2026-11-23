@@ -1,4 +1,5 @@
 ---
+
 name: cli-generated-files
 description: Regenerate the committed files that come from the CLI. Use after changing anything under packages/cli/src (colors, tokens, schemas, figma), designsystemet.config.json or internal/digdir/digdir.config.json.
 ---

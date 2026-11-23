@@ -1,4 +1,5 @@
 ---
+
 name: designsystemet
 description: Repo-wide conventions for designsystemet.no — the project name in prose, pull request titles, changesets and lockfile cleanup. Use for any change to packages, the Figma plugin, docs or pull requests here.
 ---

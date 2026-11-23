@@ -1,4 +1,5 @@
 ---
+
 name: www-content
 description: Rules for pages and blog posts on designsystemet.no. Use when adding, editing, moving or renaming anything under apps/www/app/content, including component documentation.
 ---
