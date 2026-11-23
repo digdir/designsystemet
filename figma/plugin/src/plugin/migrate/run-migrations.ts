@@ -54,13 +54,20 @@ export async function runMigrations(
   const pause = createPause(onDetail);
   const summaries: MigrationSummary[] = [];
 
-  // Undo takes back all the migrations at once.
-  if (!dryRun) figma.commitUndo();
-  for (const migration of chosen) {
-    summaries.push(await runMigration(migration, dryRun, pause));
+  if (dryRun) {
+    for (const migration of chosen) {
+      summaries.push(await runMigration(migration, true, pause));
+    }
+    return summaries;
   }
-  if (!dryRun) {
-    figma.commitUndo();
+
+  // Undo takes back all the migrations at once, including the record of them, so the record and the layers
+  // stay in step. If a migration fails partway, what it changed is still one step that Undo takes back.
+  figma.commitUndo();
+  try {
+    for (const migration of chosen) {
+      summaries.push(await runMigration(migration, false, pause));
+    }
     const applied = readApplied();
     for (const summary of summaries) {
       if (summary.error) continue;
@@ -70,6 +77,13 @@ export async function runMigrations(
       };
     }
     figma.root.setPluginData(DATA_KEY, JSON.stringify(applied));
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(
+      `${message.replace(/\.?$/, '.')} Some components may already have changed. Use Undo in Figma to take the changes back.`,
+    );
+  } finally {
+    figma.commitUndo();
   }
   return summaries;
 }

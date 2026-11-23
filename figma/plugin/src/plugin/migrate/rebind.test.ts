@@ -4,6 +4,7 @@ import {
   normalizePageName,
   type RebindRules,
   rebindComponents,
+  sourceLayerId,
 } from './rebind';
 import type { MigrationLog } from './types';
 
@@ -42,6 +43,7 @@ type FakeNode = {
   children?: FakeNode[];
   parent?: FakeNode | { type: string };
   explicitVariableModes: Record<string, string>;
+  overrides?: Array<{ id: string; overriddenFields: string[] }>;
 };
 
 const node = (
@@ -253,5 +255,219 @@ describe('describeVariable', () => {
     expect(describeVariable({ collection: 'Size', name: 'size/1' })).toBe(
       'Size/size/1',
     );
+  });
+});
+
+/** Stubs a file with one page, Dialog, holding the given components, and links each layer to its parent. */
+function stubFile(components: FakeNode[], figmaProps: object = {}) {
+  const link = (parent: FakeNode) => {
+    for (const child of parent.children ?? []) {
+      child.parent = parent;
+      link(child);
+    }
+  };
+  for (const component of components) {
+    component.parent = { type: 'PAGE' };
+    link(component);
+  }
+  const page = {
+    name: '❖  Dialog',
+    loadAsync: async () => {},
+    findAllWithCriteria: () => components,
+  };
+  vi.stubGlobal('figma', {
+    mixed: Symbol('mixed'),
+    root: { children: [page] },
+    variables: {
+      getLocalVariableCollectionsAsync: async () => [
+        { id: 'semantic', name: 'Semantic', modes: [] },
+        { id: 'color', name: 'Color', modes: [] },
+      ],
+      getLocalVariablesAsync: async () => VARIABLES,
+      getVariableByIdAsync: async (id: string) =>
+        VARIABLES.find((v) => v.id === id) ?? null,
+      getVariableCollectionByIdAsync: async () => null,
+      setBoundVariableForPaint: (
+        paint: object,
+        _field: string,
+        variable: { id: string },
+      ) => ({
+        ...paint,
+        boundVariables: { color: { type: 'VARIABLE_ALIAS', id: variable.id } },
+      }),
+    },
+    ...figmaProps,
+  });
+}
+
+describe('rebindComponents in a dry run', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('counts an override in a nested instance once, whatever order the targets are in', async () => {
+    // _Header has a close button whose icon fill is overridden. Dialog has an instance of _Header, so the
+    // same icon is in Dialog too, two instances deep, following _Header.
+    const header = node({
+      id: '5:5',
+      name: '_Header',
+      type: 'COMPONENT',
+      children: [
+        node({
+          id: '6:6',
+          name: 'Close',
+          type: 'INSTANCE',
+          overrides: [{ id: 'I6:6;7:7', overriddenFields: ['fills'] }],
+          children: [
+            node({
+              id: 'I6:6;7:7',
+              name: 'Icon',
+              type: 'VECTOR',
+              fills: [bound('n-text')],
+            }),
+          ],
+        }),
+      ],
+    });
+    const dialog = node({
+      id: '1:1',
+      name: 'Dialog',
+      type: 'COMPONENT',
+      children: [
+        node({
+          id: '8:8',
+          name: '_Header',
+          type: 'INSTANCE',
+          children: [
+            node({
+              id: 'I8:8;6:6',
+              name: 'Close',
+              type: 'INSTANCE',
+              children: [
+                node({
+                  id: 'I8:8;6:6;7:7',
+                  name: 'Icon',
+                  type: 'VECTOR',
+                  fills: [bound('n-text')],
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    });
+    stubFile([dialog, header]);
+    const log = newLog();
+
+    await rebindComponents(
+      [
+        { page: 'Dialog', name: 'Dialog' },
+        { page: 'Dialog', name: '_Header' },
+      ],
+      rules,
+      { dryRun: true, log, pause: noPause },
+    );
+
+    expect([...log.changes.values()]).toEqual([
+      {
+        component: '_Header',
+        what: 'Fill',
+        from: 'neutral text-default',
+        to: 'text-default',
+        count: 1,
+      },
+    ]);
+  });
+
+  it('counts a layer in an instance that was overridden with the same variable as its main component', async () => {
+    const border = node({
+      id: '2:2',
+      name: 'Border',
+      type: 'RECTANGLE',
+      strokes: [bound('n-border')],
+    });
+    const overridden = node({
+      id: 'I3:3;2:2',
+      name: 'Border',
+      type: 'RECTANGLE',
+      strokes: [bound('n-border')],
+    });
+    const instance = node({
+      id: '3:3',
+      name: 'Close',
+      type: 'INSTANCE',
+      overrides: [{ id: 'I3:3;2:2', overriddenFields: ['strokes'] }],
+      children: [overridden],
+    });
+    stubFile([
+      node({
+        id: '1:1',
+        name: 'Dialog',
+        type: 'COMPONENT',
+        children: [border, instance],
+      }),
+    ]);
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect([...log.changes.values()].map((change) => change.count)).toEqual([
+      2,
+    ]);
+  });
+
+  it('warns about text in a font that isn’t available, and doesn’t count it', async () => {
+    const text = {
+      ...node({
+        id: '9:9',
+        name: 'Title',
+        type: 'TEXT',
+        fills: [bound('n-text')],
+      }),
+      characters: 'Text',
+      getStyledTextSegments: () => [
+        { start: 0, end: 4, fills: [bound('n-text')] },
+      ],
+      getRangeAllFontNames: () => [{ family: 'Missing', style: 'Regular' }],
+    };
+    stubFile(
+      [
+        node({
+          id: '1:1',
+          name: 'Dialog',
+          type: 'COMPONENT',
+          children: [text],
+        }),
+      ],
+      {
+        loadFontAsync: async () => {
+          throw new Error('Font not found');
+        },
+      },
+    );
+    const log = newLog();
+
+    await rebindComponents([{ page: 'Dialog', name: 'Dialog' }], rules, {
+      dryRun: true,
+      log,
+      pause: noPause,
+    });
+
+    expect(log.changes.size).toBe(0);
+    expect(log.warnings).toEqual([
+      "Skipped text in Dialog, as the font Missing Regular isn't available.",
+    ]);
+  });
+});
+
+describe('sourceLayerId', () => {
+  it('gives the same layer one instance down', () => {
+    expect(sourceLayerId('I1:2;3:4')).toBe('3:4');
+    expect(sourceLayerId('I1:2;3:4;5:6')).toBe('I3:4;5:6');
+    expect(sourceLayerId('3:4')).toBeNull();
   });
 });

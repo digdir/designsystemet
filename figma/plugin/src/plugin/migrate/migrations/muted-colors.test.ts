@@ -244,6 +244,43 @@ describe('mutedColorRule', () => {
   });
 });
 
+describe('mutedColorRule variant names', () => {
+  it('ignores case, and only counts read-only and readonly as read-only', () => {
+    const fileUpload = { component: 'File upload', path: '/Dropzone' };
+    expect(
+      mutedColorRule(
+        paint({
+          ...fileUpload,
+          variant: 'State=Hover',
+          variable: color('surface-tinted'),
+        }),
+      ),
+    ).toBeNull();
+    expect(
+      mutedColorRule(
+        paint({
+          ...fileUpload,
+          variant: 'State=Disabled',
+          property: 'stroke',
+          variable: neutral('border-subtle'),
+        }),
+      ),
+    ).toEqual(color('border-muted'));
+    const inputText = {
+      component: 'Select',
+      path: '/input/Left content/Selected/Input text',
+      property: 'text' as const,
+      variable: neutral('text-default'),
+    };
+    expect(
+      mutedColorRule(paint({ ...inputText, variant: 'state=readonly' })),
+    ).toEqual(color('text-muted'));
+    expect(
+      mutedColorRule(paint({ ...inputText, variant: 'state=already-open' })),
+    ).toEqual(color('text-default'));
+  });
+});
+
 describe('MUTED_COLOR_COMPONENTS', () => {
   it('lists each component once', () => {
     const keys = MUTED_COLOR_COMPONENTS.map(

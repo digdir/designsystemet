@@ -110,6 +110,56 @@ describe('runMigrations', () => {
     expect(listMigrations()[0].appliedAt).toEqual(expect.any(String));
   });
 
+  const MUTED_VARIABLES = ['surface-muted', 'border-muted', 'text-muted'].map(
+    (name) => ({ id: name, name, variableCollectionId: 'color' }),
+  );
+
+  // Records the order of undo steps and plugin data writes on the stubbed figma global.
+  function recordCalls(): string[] {
+    const calls: string[] = [];
+    const stub = (globalThis as unknown as { figma: PluginAPI }).figma;
+    const setPluginData = stub.root.setPluginData.bind(stub.root);
+    stub.commitUndo = () => calls.push('commitUndo') && undefined;
+    stub.root.setPluginData = (key, value) => {
+      calls.push('setPluginData');
+      setPluginData(key, value);
+    };
+    return calls;
+  }
+
+  it('writes the record inside the undo step, so Undo takes it back with the changes', async () => {
+    stubEmptyFile(MUTED_VARIABLES);
+    const calls = recordCalls();
+
+    await runMigrations(['muted-colors'], false);
+
+    expect(calls).toEqual(['commitUndo', 'setPluginData', 'commitUndo']);
+  });
+
+  it('closes the undo step and says how to undo when a migration fails partway', async () => {
+    stubEmptyFile();
+    const calls = recordCalls();
+    MIGRATIONS.push({
+      id: 'test-fails',
+      title: 'Fails',
+      description: '',
+      requires: [],
+      run: async () => {
+        throw new Error('Layer is locked');
+      },
+    });
+
+    try {
+      await expect(runMigrations(['test-fails'], false)).rejects.toThrow(
+        'Layer is locked. Some components may already have changed. Use Undo in Figma to take the changes back.',
+      );
+    } finally {
+      MIGRATIONS.pop();
+    }
+    expect(calls).toEqual(['commitUndo', 'commitUndo']);
+    expect(listMigrations().find((m) => m.id === 'test-fails')).toBeUndefined();
+  });
+
   it('only runs the chosen migrations', async () => {
     stubEmptyFile();
 

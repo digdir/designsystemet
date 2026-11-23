@@ -2,8 +2,9 @@
 //
 // The components are found by page and name, as in the UI kit. Each layer's fills, strokes and text colors are
 // passed to the rules, which say which variable to use instead, if any. Main components are changed first,
-// and then what's left in the instances inside them: a layer in an instance follows its main component unless
-// it was overridden, so only overrides need changing there.
+// and then what's left in the instances inside them. A layer in an instance of a target component follows the
+// change unless it was overridden, so only its overrides are left to change. Layers in instances of other
+// components, e.g. text from Typography in Dialog, are changed in place, which overrides them there.
 
 import type { MigrationContext, MigrationLog, VariableRef } from './types';
 
@@ -48,6 +49,9 @@ type Root = {
   node: ComponentNode | ComponentSetNode;
 };
 
+/** A change to one paint: what it was bound to, and what it's bound to now (or `removed`). */
+type PaintChange = { property: PaintProperty; from: string; to: string };
+
 /** Rebinds the paints in the target components. In a dry run, only logs what would change. */
 export async function rebindComponents(
   targets: ComponentTarget[],
@@ -58,19 +62,22 @@ export async function rebindComponents(
   const variables = await createVariableIndex();
   const roots = await findComponents(targets, log);
   const fonts = createFontLoader();
+  const overrides = createOverrideIndex();
   const warn = createWarn(log);
 
-  // In a dry run nothing changes, so layers in instances still look like their main components'. Remember
-  // what would change in the main components, so the layers that follow them aren't counted twice.
-  const plannedInMain = new Map<string, string>();
+  // The variables each changed layer used before, by layer ID and property. In a dry run nothing changes, so a
+  // layer in an instance still looks like the layer it comes from. If they match and the instance layer isn't
+  // overridden, it changes with that layer when applied, so it isn't counted again.
+  const changedLayers = new Map<string, string>();
 
+  // The paints with the rules applied, and what changed, or null if nothing did.
   const rebindPaints = async (
     paints: readonly Paint[],
     layer: LayerContext,
     property: PaintProperty,
-  ): Promise<Paint[] | null> => {
-    let changed = false;
+  ): Promise<{ paints: Paint[]; changes: PaintChange[] } | null> => {
     const result: Paint[] = [];
+    const changes: PaintChange[] = [];
     for (const paint of paints) {
       const id =
         paint.type === 'SOLID' ? paint.boundVariables?.color?.id : undefined;
@@ -87,14 +94,11 @@ export async function rebindComponents(
         continue;
       }
       if (target === 'remove') {
-        countChange(
-          log,
-          layer.component,
+        changes.push({
           property,
-          describeVariable(variable),
-          'removed',
-        );
-        changed = true;
+          from: describeVariable(variable),
+          to: 'removed',
+        });
         continue;
       }
       const replacement = variables.find(target);
@@ -105,14 +109,11 @@ export async function rebindComponents(
         result.push(paint);
         continue;
       }
-      countChange(
-        log,
-        layer.component,
+      changes.push({
         property,
-        describeVariable(variable),
-        describeVariable(target),
-      );
-      changed = true;
+        from: describeVariable(variable),
+        to: describeVariable(target),
+      });
       result.push(
         figma.variables.setBoundVariableForPaint(
           paint as SolidPaint,
@@ -121,52 +122,17 @@ export async function rebindComponents(
         ),
       );
     }
-    return changed ? result : null;
+    return changes.length > 0 ? { paints: result, changes } : null;
   };
 
-  const visitLayer = async (
-    node: SceneNode,
-    layer: LayerContext,
-    inInstance: boolean,
-    pass: 'main' | 'instances',
-  ) => {
-    if (rules.skip?.(node)) return;
-
-    if ((pass === 'main') !== inInstance) {
-      for (const property of ['fill', 'stroke'] as const) {
-        const signature = paintSignature(node, property);
-        if (!signature) continue;
-        // A layer in an instance that hasn't been overridden changes with its main component's layer.
-        if (
-          pass === 'instances' &&
-          dryRun &&
-          plannedInMain.get(`${mainLayerId(node)}|${property}`) === signature
-        ) {
-          continue;
-        }
-        const changed = await rebindProperty(node, layer, property);
-        if (changed && pass === 'main')
-          plannedInMain.set(`${node.id}|${property}`, signature);
-      }
-      if (pass === 'main' && rules.clearMode) {
-        await clearModes(node, layer);
-      }
+  const count = (layer: LayerContext, changes: PaintChange[]) => {
+    for (const { property, from, to } of changes) {
+      countChange(log, layer.component, property, from, to);
     }
-
-    if ('children' in node) {
-      for (const child of node.children) {
-        await visitLayer(
-          child,
-          { ...layer, path: `${layer.path}/${child.name}` },
-          inInstance || node.type === 'INSTANCE',
-          pass,
-        );
-      }
-    }
-    await pause();
   };
 
-  // Rebinds a layer's fills (text colors for text) or strokes. Returns whether anything changed.
+  // Rebinds a layer's fills (text colors for text) or strokes. Changes are counted once they're made, or in a
+  // dry run once they could be. Returns whether anything changed.
   const rebindProperty = async (
     node: SceneNode,
     layer: LayerContext,
@@ -176,7 +142,8 @@ export async function rebindComponents(
       if (!('strokes' in node)) return false;
       const strokes = await rebindPaints(node.strokes, layer, 'stroke');
       if (!strokes) return false;
-      if (!dryRun) node.strokes = strokes;
+      if (!dryRun) node.strokes = strokes.paints;
+      count(layer, strokes.changes);
       return true;
     }
     if (!('fills' in node)) return false;
@@ -184,19 +151,25 @@ export async function rebindComponents(
       if (node.fills === figma.mixed) return false;
       const fills = await rebindPaints(node.fills, layer, 'fill');
       if (!fills) return false;
-      if (!dryRun) node.fills = fills;
+      if (!dryRun) node.fills = fills.paints;
+      count(layer, fills.changes);
       return true;
     }
     // Text can have different colors in different ranges.
-    const segments = node.getStyledTextSegments(['fills']);
-    const updates: Array<{ start: number; end: number; fills: Paint[] }> = [];
-    for (const segment of segments) {
+    const updates: Array<{ start: number; end: number; paints: Paint[] }> = [];
+    const changes: PaintChange[] = [];
+    for (const segment of node.getStyledTextSegments(['fills'])) {
       const fills = await rebindPaints(segment.fills, layer, 'text');
-      if (fills)
-        updates.push({ start: segment.start, end: segment.end, fills });
+      if (!fills) continue;
+      updates.push({
+        start: segment.start,
+        end: segment.end,
+        paints: fills.paints,
+      });
+      changes.push(...fills.changes);
     }
     if (updates.length === 0) return false;
-    if (dryRun) return true;
+    // Text can only be changed with its fonts loaded. Loading changes nothing, so a dry run checks it too.
     const missingFont = await fonts.load(node);
     if (missingFont) {
       warn(
@@ -204,10 +177,38 @@ export async function rebindComponents(
       );
       return false;
     }
-    for (const { start, end, fills } of updates) {
-      node.setRangeFills(start, end, fills);
+    if (!dryRun) {
+      for (const { start, end, paints } of updates) {
+        node.setRangeFills(start, end, paints);
+      }
     }
+    count(layer, changes);
     return true;
+  };
+
+  const rebindLayer = async (node: SceneNode, layer: LayerContext) => {
+    for (const property of ['fill', 'stroke'] as const) {
+      const signature = paintSignature(node, property);
+      if (!signature) continue;
+      if (dryRun && followsChangedLayer(node, property, signature)) continue;
+      if (await rebindProperty(node, layer, property)) {
+        changedLayers.set(`${node.id}|${property}`, signature);
+      }
+    }
+  };
+
+  // Whether a layer in an instance will change with the layer it comes from, which this run changes.
+  const followsChangedLayer = (
+    node: SceneNode,
+    property: 'fill' | 'stroke',
+    signature: string,
+  ): boolean => {
+    const source = sourceLayerId(node.id);
+    return (
+      source !== null &&
+      changedLayers.get(`${source}|${property}`) === signature &&
+      !overrides.isOverridden(node, property)
+    );
   };
 
   const clearModes = async (node: SceneNode, layer: LayerContext) => {
@@ -236,22 +237,54 @@ export async function rebindComponents(
     }
   };
 
-  for (const pass of ['main', 'instances'] as const) {
-    for (const { target, node } of roots) {
-      const variants = node.type === 'COMPONENT_SET' ? node.children : [node];
-      for (const variant of variants) {
+  // First the layers in the main components, collecting the layers in instances for afterwards.
+  const inInstances: Array<{ node: SceneNode; layer: LayerContext }> = [];
+  const visitLayer = async (
+    node: SceneNode,
+    layer: LayerContext,
+    inInstance: boolean,
+  ) => {
+    if (rules.skip?.(node)) return;
+    if (inInstance) {
+      inInstances.push({ node, layer });
+    } else {
+      await rebindLayer(node, layer);
+      if (rules.clearMode) await clearModes(node, layer);
+    }
+    if ('children' in node) {
+      for (const child of node.children) {
         await visitLayer(
-          variant,
-          {
-            component: target.name.trim(),
-            variant: node.type === 'COMPONENT_SET' ? variant.name : '',
-            path: '',
-          },
-          false,
-          pass,
+          child,
+          { ...layer, path: `${layer.path}/${child.name}` },
+          inInstance || node.type === 'INSTANCE',
         );
       }
     }
+    await pause();
+  };
+
+  for (const { target, node } of roots) {
+    const variants = node.type === 'COMPONENT_SET' ? node.children : [node];
+    for (const variant of variants) {
+      await visitLayer(
+        variant,
+        {
+          component: target.name.trim(),
+          variant: node.type === 'COMPONENT_SET' ? variant.name : '',
+          path: '',
+        },
+        false,
+      );
+    }
+  }
+
+  // Then the layers in instances. Shallow ones first, so a layer nested deeper is handled after the layer it
+  // comes from, e.g. one in an instance of _Header in Dialog after the same layer in _Header itself.
+  const depth = (node: SceneNode) => node.id.split(';').length;
+  inInstances.sort((a, b) => depth(a.node) - depth(b.node));
+  for (const { node, layer } of inInstances) {
+    await rebindLayer(node, layer);
+    await pause();
   }
 }
 
@@ -417,9 +450,48 @@ function paintSignature(node: SceneNode, property: 'fill' | 'stroke'): string {
   return ids.some(Boolean) ? ids.join(',') : '';
 }
 
-/** A layer in an instance has an ID like `I1:2;3:4`, ending with the ID of the layer in its main component. */
-export const mainLayerId = (node: SceneNode): string =>
-  node.id.split(';').pop() ?? node.id;
+/**
+ * The ID of the layer a layer in an instance comes from, one level down: the same layer in the instance's main
+ * component. `I1:2;3:4` comes from `3:4`, and `I1:2;3:4;5:6` from `I3:4;5:6`. Null for a layer not in an instance.
+ */
+export function sourceLayerId(id: string): string | null {
+  if (!id.startsWith('I')) return null;
+  const parts = id.slice(1).split(';');
+  if (parts.length < 2) return null;
+  return parts.length === 2 ? parts[1] : `I${parts.slice(1).join(';')}`;
+}
+
+/** Whether a layer's fills or strokes were overridden in one of the instances it's in. */
+function createOverrideIndex() {
+  const byInstance = new Map<string, Map<string, Set<string>>>();
+  const fieldsOf = (instance: InstanceNode) => {
+    let fields = byInstance.get(instance.id);
+    if (!fields) {
+      fields = new Map(
+        (instance.overrides ?? []).map(({ id, overriddenFields }) => [
+          id,
+          new Set<string>(overriddenFields),
+        ]),
+      );
+      byInstance.set(instance.id, fields);
+    }
+    return fields;
+  };
+  return {
+    isOverridden: (node: SceneNode, property: 'fill' | 'stroke'): boolean => {
+      const field = property === 'fill' ? 'fills' : 'strokes';
+      for (let parent = node.parent; parent; parent = parent.parent) {
+        if (
+          parent.type === 'INSTANCE' &&
+          fieldsOf(parent).get(node.id)?.has(field)
+        ) {
+          return true;
+        }
+      }
+      return false;
+    },
+  };
+}
 
 function createFontLoader() {
   const loaded = new Set<string>();

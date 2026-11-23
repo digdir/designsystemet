@@ -25,7 +25,7 @@ The plugin explains this to users in [the about view](./src/ui/views/about.tsx).
 
 When a release changes which variables the UI kit's components use, users with their own copy of the UI kit need their layers updated too. An import can't do this, as it only updates variables and styles. A migration does: **Update UI kit** in the plugin lists the migrations, the user chooses which to run, sees a summary of what will change in each component, and then applies them. Undo in Figma takes back all of it at once. The file records which migrations were applied, and when.
 
-A migration finds the UI kit's components by page and name, and rebinds the color variables on their layers by rules (see [rebind.ts](./src/plugin/migrate/rebind.ts)). It changes main components first; layers in instances follow them, so only overrides in instances are changed.
+A migration finds the UI kit's components by page and name, and rebinds the color variables on their layers by rules (see [rebind.ts](./src/plugin/migrate/rebind.ts)). It changes main components first. Layers in instances of those components follow them, so only their overrides are changed there. Layers in instances of other components, e.g. text from Typography in Dialog, are changed in place, which overrides them in that component.
 
 To add a migration:
 

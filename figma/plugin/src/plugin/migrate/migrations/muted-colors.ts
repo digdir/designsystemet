@@ -56,14 +56,14 @@ function neutralStep(variable: VariableRef): string | null {
 /** The variable a paint in a UI kit component should use with muted colors. */
 export function mutedColorRule(context: PaintContext): PaintTarget {
   const { component, variant, path, property, variable } = context;
-  const readOnly = /read/i.test(variant);
+  const readOnly = /read-?only/i.test(variant);
   const isDescription = /^\/label and description\/description$/i.test(path);
 
   // File upload changed more than its neutral colors: the drop zone has no background unless hovered, and
   // the read-only drop zone is muted.
   if (component === 'File upload') {
-    const disabled = /disabled/.test(variant);
-    if (path === '/Dropzone' && property === 'fill' && !/hover/.test(variant))
+    const disabled = /disabled/i.test(variant);
+    if (path === '/Dropzone' && property === 'fill' && !/hover/i.test(variant))
       return 'remove';
     if (/Dropzone-description$/.test(path))
       return color(disabled ? 'text-muted' : 'text-default');
