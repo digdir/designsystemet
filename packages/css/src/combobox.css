@@ -431,7 +431,7 @@
   aspect-ratio: 1 / 1;
   border: 2px solid var(--ds-color-border-muted);
   border-radius: var(--ds-border-radius-sm);
-  background-color: var(--ds-color-surface-muted);
+  background-color: var(--ds-color-surface-default);
   display: grid;
   place-items: center;
 }
