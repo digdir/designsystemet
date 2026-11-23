@@ -255,14 +255,13 @@ export default {
     'pause-video': 'Sett video på pause',
   },
   'live-component': {
-    activateA: 'Trykk',
-    activateB: 'Enter',
-    activateC: 'for å redigere',
+    'edit-code': 'Rediger React-kode',
+    code: 'Kode',
     'show-code': 'Vis kode',
-    'hide-code': 'Skjul kode',
     'invert-color-scheme': 'flipp mellom mørk og lys modus',
-    language: 'Språk',
+    language: 'Kodespråk',
     copy: 'Kopier',
+    copied: 'Kopiert',
     reset: 'Nullstill',
   },
   toc: {
