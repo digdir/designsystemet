@@ -4,13 +4,13 @@ sidebar_title: Dato og klokkeslett
 category: Spør brukerne om...
 description: Gjør det enkelt for brukerne å oppgi dato og klokkeslett. Ta utgangspunkt i hva de skal oppgi, og velg en løsning som passer oppgaven og behovene deres.
 partners: Digdir, Brønnøysundregistrene
-date: 2026-03-05
+date: 2026-11-23
 order: 10
 ---
 
 Hvordan du ber brukerne om dato og klokkeslett, bør ta utgangspunkt i hvilken informasjon du faktisk trenger. Noen datoer er enkle å huske, som fødselsdatoer, mens andre datoer må brukerne lese fra dokumenter eller kort. I noen situasjoner holder det med en omtrentlig dato, eller et tidspunkt i forhold til i dag. Andre ganger skal brukerne velge en dato eller et tidspunkt fra et forhåndsdefinert utvalg.
 
-Unngå å gjøre oppgaven mer komplisert enn nødvendig. Et vanlig tekstfelt, separate felt for dag, måned og år eller en datovelger kan alle være gode løsninger i ulike situasjoner. Velg løsning ut fra brukerens oppgave og hvilken funksjonalitet og styring den krever.
+Unngå å gjøre oppgaven mer komplisert enn nødvendig. Et vanlig tekstfelt, separate felt for dag, måned og år, nettleserens innebygde datovelger eller ferdige valg kan alle være gode løsninger i ulike situasjoner. Velg løsning ut fra brukerens oppgave og hvilken funksjonalitet og styring den krever.
 
 ## Kjente datoer
 
@@ -20,13 +20,13 @@ Du kan bruke ett felt for hele datoen eller separate felt for dag, måned og år
 
 Når du ber brukerne om en dato slik den står i et bankkort, pass eller annet dokument, bør rekkefølgen og formatet samsvare med dokumentet. Det gjør det enklere å overføre datoen korrekt og reduserer risikoen for feil.
 
-Gjør det tydelig hvilket datoformat du forventer. Du kan for eksempel angi datoformatet i beskrivelsen, slik at informasjonen også er tilgjengelig for brukere av skjermleser.
+Gjør det tydelig hvilket datoformat du forventer. Du kan for eksempel angi datoformatet i ledeteksten eller beskrivelsen, slik at informasjonen også er tilgjengelig for brukere av skjermleser.
 
 <Story story="KnownDates" />
 
 I eksempelet over bruker vi `inputmode="numeric"` for å gi brukeren numerisk tastatur på mobil og nettbrett. Vi velger bevisst å ikke bruke `type="number"` for dag, måned og år. `type="number"` er utviklet for numeriske verdier som kan økes og reduseres. Det gir funksjonalitet som spinnknapper og automatisk validering. Dette er ikke alltid hensiktsmessig når brukeren skal skrive inn en dato, og kan gi [tilgjengelighetsutfordringer (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility).
 
-Legg til rette for fleksibilitet i hva brukerne kan skrive inn. Godta for eksempel både «5» og «05» for dag og måned, og både «90» og «1990» for år. Hvis du krever et bestemt format, må dette fremgå tydelig, og feilmeldinger bør forklare nøyaktig hva som er galt. 
+Legg til rette for fleksibilitet i hva brukerne kan skrive inn. Godta for eksempel både «5» og «05» for dag og måned, og både «90» og «1990» for år når det er entydig hvilket år brukeren mener. Hvis du krever et bestemt format, må dette fremgå tydelig, og feilmeldinger bør forklare nøyaktig hva som er galt. 
 
 ## Dato fra et forhåndsdefinert utvalg
 Hvis du vet at brukerne skal velge en dato eller et tidspunkt fra et begrenset utvalg, for eksempel ledige timer den kommende uken, kan det være mer effektivt å tilby disse datoene som ferdige valg.
@@ -51,7 +51,7 @@ En [`Input`](/no/components/docs/input/overview) med `type="date"` er ett altern
 
 Vær oppmerksom på at `type="date"` styres av brukerens operativsystem og regionale innstillinger, ikke av språket på nettsiden. Det kan føre til at datoen vises i et annet format enn brukeren forventer. Vurder om det er behov for ekstra tydelighet, for eksempel ved å vise valgt dato i klartekst med måned skrevet med bokstaver, eller på annen måte bekrefte datoen før den lagres.
 
-Vær også oppmerksom på at funksjonalitet, utseende og interaksjon varierer mellom nettlesere, operativsystemer og enheter. Du har også begrenset kontroll over presentasjon, inntasting og validering. Vurder derfor om den innebygde datovelgeren dekker behovet, eller om du trenger ekstra funksjonalitet. Uansett hvilken løsning du velger, bør brukerne så langt det er mulig kunne skrive inn datoen direkte når de kjenner den.
+Vær også oppmerksom på at funksjonalitet, utseende og interaksjon varierer mellom nettlesere, operativsystemer og enheter. Du har også begrenset kontroll over presentasjon, inntasting og validering. Vurder derfor om den innebygde datovelgeren dekker behovet. Trenger du for eksempel mer presis styring av hvilke datoer som kan velges og hvordan inntastingen fungerer, kan en egenutviklet datovelger være et bedre valg. Uansett hvilken løsning du velger, bør brukerne så langt det er mulig kunne skrive inn datoen direkte når de kjenner den.
 
 ## Start- og sluttdato
 
@@ -63,7 +63,7 @@ Plasser feltene i logisk rekkefølge. Hvis datoene avhenger av hverandre, må va
 
 Noen brukere opplever det som mer effektivt å velge start- og sluttdato i én samlet kalenderkontroll. Siden dette ikke finnes som en innebygd HTML-kontroll, må løsningen utvikles spesielt for formålet. Vær oppmerksom på at en slik løsning kan være vanskeligere å forstå for enkelte brukere. 
 
-## Klokkeslett – start og slutt
+## Start- og sluttid
 
 Når brukerne skal oppgi et tidsintervall, som åpningstid eller varighet på et møte, kan du bruke en [`Input`](/no/components/docs/input/overview) med `type="time"`. Det lar brukerne skrive klokkeslettet direkte, samtidig som nettleseren tilbyr støtte for å velge klokkeslett.
 
@@ -80,7 +80,7 @@ For eksempel kan du la brukerne oppgi omtrentlig tid i et fritekstfelt, eller ti
 
 ## Dato relativt til en annen dato
 
-I noen situasjoner er det mer naturlig å spørre om tidspunkter relativt til en annen dato, for eksempel når brukerne setter opp en påminnelse. Da kan det være bedre å bruke en [`Select`](/no/components/docs/select/overview) for å gi brukerne valg om «i morgen», «om 3 dager» eller «1 dag før». Hvis ukedag er viktig for oppgaven, bør denne vises tydelig i tillegg.
+I noen situasjoner er det mer naturlig å spørre om tidspunkter relativt til en annen dato, for eksempel når brukerne setter opp en påminnelse. Da kan det være bedre å bruke en [`Select`](/no/components/docs/select/overview) for å gi brukerne valg som «1 time før», «1 dag før» eller «1 uke før». Hvis ukedag er viktig for oppgaven, bør denne vises tydelig i tillegg.
 
 <Story story="RelativeDate" />
 
@@ -91,7 +91,7 @@ Start med behovet, og velg den løsningen som lar brukerne løse oppgaven raskes
 - Vis ferdige valg når alternativene er begrensede
 - La brukerne skrive datoen direkte når de allerede kjenner den
 - Spør bare om så presis dato og tid som situasjonen krever
-- Vurder om nettleserens innebygde støtte (`type="date"` og `type="time"`) dekker behovet, eller om du trenger ekstra funksjonalitet
+- Vurder om nettleserens innebygde støtte (`type="date"` og `type="time"`) dekker behovet ditt, eller om du trenger en egenutviklet datovelger med mer funksjonalitet
 
 ## Kilder og relevant informasjon
 - [Who needs a JavaScript date picker? (dbushell.com)](https://pikaday.dbushell.com/)
@@ -103,10 +103,6 @@ Start med behovet, og velg den løsningen som lar brukerne løse oppgaven raskes
     'Marianne Røsvik (Digdir)',
     'Roy Halvor Frimanslund (Brønnøysundregistrene)',
     'Ole Martin Tangen Vad (Brønnøysundregistrene)',
-    'Eivind Løland-Andersen (Skatteetaten)',
-    'Morten Tollefsen (Nav)',
-    'Sjur Grønningsæter (Nav)',
-    'Chris Arnesen (Politiet)',
     'Lasse Febakke Straum (Digdir)',
     'Frank Dahle (Digdir)',
     'Tobias Barsnes (Digdir)',
