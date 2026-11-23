@@ -279,6 +279,16 @@ function Release({
   );
 }
 
+/**
+ * Notes about a version, written by hand in the root CHANGELOG.md. They are about the whole
+ * release, not one package, and are not searched, so they are hidden while filtering.
+ */
+function ReleaseNotes({ children }: { children?: ReactNode }) {
+  const { matches } = useContext(ChangelogFilters);
+  if (matches) return null;
+  return <div className={classes.releaseNotes}>{children}</div>;
+}
+
 /** The changes of one type in a version */
 function Changes({
   n,
@@ -337,6 +347,7 @@ function Change({
 
 const changelogComponents = {
   Release,
+  ReleaseNotes,
   Changes,
   Change,
 } as unknown as Record<string, ComponentType<unknown>>;

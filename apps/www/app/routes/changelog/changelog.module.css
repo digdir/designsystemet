@@ -149,6 +149,17 @@
   }
 }
 
+/* Notes about the release, before its changes */
+.releaseNotes {
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
 .changes {
   ul:not(.tags) {
     margin: 0;
