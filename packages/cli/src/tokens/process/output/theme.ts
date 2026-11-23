@@ -20,13 +20,7 @@ const getFileNameWithoutExtension = (path: string) => {
   return pathSegments[pathSegments.length - 1].split('.').slice(0, -1).join('.');
 };
 
-type SystemColorVariables =
-  | 'Canvas'
-  | 'ButtonFace'
-  | 'ButtonBorder'
-  | 'CanvasText'
-  | 'Highlight'
-  | 'HighlightText';
+type SystemColorVariables = 'Canvas' | 'ButtonFace' | 'ButtonBorder' | 'CanvasText' | 'Highlight' | 'HighlightText';
 
 const forcedColorsLayer = 'ds.theme.forced-colors';
 
