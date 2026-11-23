@@ -1,7 +1,9 @@
 {
   "$schema": "../../packages/cli/dist/config.schema.json",
-  "outDir": "./ignore/design-tokens",
-  "clean": true,
+  "output": [
+    { "type": "css", "dir": "./themes", "cleanDir": true },
+    { "type": "types", "dir": "./themes", "cleanDir": true }
+  ],
   "themes": {
     "digdir": {
       "colors": {

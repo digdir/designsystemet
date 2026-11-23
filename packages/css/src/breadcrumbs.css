@@ -5,19 +5,24 @@
   --dsc-breadcrumbs-color: var(--ds-color-text-subtle);
   --_ds-aria-label: var(--dsc-breadcrumbs-label); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
 
+  color: var(--dsc-breadcrumbs-color);
+
   &:not([hidden]) {
     display: block; /* Needed for <ds-breadcrumbs> element */
   }
 
-  &:is(:lang(no), :lang(nb), :lang(nn)) {
-    --dsc-breadcrumbs-label: 'Du er her:'; /* Only set default label if Norwegian */
+  &:lang(no),
+  &:lang(nb),
+  &:lang(nn) {
+    --dsc-breadcrumbs-label: 'Du er her:';
+  }
+  &:lang(en) {
+    --dsc-breadcrumbs-label: 'You are here:';
   }
 
   & > :is(ol, ul) {
+    @composes ds-list--unstyled from './base.css';
     flex-wrap: wrap;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
     gap: var(--dsc-breadcrumbs-spacing) 0;
 
     &:not([hidden]) {
@@ -28,7 +33,8 @@
   /* Draw chevron between items and before back link */
   & li:where(:not(:last-child))::after,
   & > :not(ol, ul)::before {
-    background: var(--dsc-breadcrumbs-color);
+    background: currentcolor;
+    forced-color-adjust: none; /* Enable drawing with background property */
     content: '';
     display: inline-block;
     flex-shrink: 0; /* Prevent shrinking chevron */
@@ -38,10 +44,6 @@
     vertical-align: middle;
     width: var(--dsc-breadcrumbs-icon-size);
     @composes ds-print-preserve from './base.css';
-
-    @media (forced-colors: active) {
-      background: CanvasText;
-    }
   }
 
   & li:last-child a {

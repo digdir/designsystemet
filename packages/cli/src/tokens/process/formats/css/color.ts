@@ -3,6 +3,7 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
 
+import { cssVariableName } from '../../../css-variables.ts';
 import { isSemanticToken } from '../../../utils.ts';
 import { buildOptions } from '../../platform.ts';
 
@@ -73,10 +74,8 @@ export const colorCategory: Format = {
       }),
       (token: TransformedToken) => ({
         ...token,
-        // Strip the color name (e.g. "color-brand1-" -> "color-"). Color names can
-        // contain hyphens (e.g. "my-brand"), so remove the exact name from the path
-        // rather than matching with \w+, which would stop at the first hyphen.
-        name: token.name.replace(`color-${token.path[1]}-`, 'color-'),
+        // Inside a [data-color] scope the color name is left out: "color-brand1-..." -> "color-...".
+        name: cssVariableName(token.path, token.filePath, { colorScoped: true })?.slice(2) ?? token.name,
         original: {
           ...token.original,
           $value: `{${token.path.join('.')}}`,

@@ -13,6 +13,7 @@
   --dsc-button-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-button-size: var(--ds-size-12);
 
+  forced-color-adjust: none; /* Prevent "backplate" behind text, see https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/ */
   align-items: center;
   background: var(--dsc-button-background);
   border-color: var(--dsc-button-border-color);
@@ -38,7 +39,7 @@
   width: fit-content; /* If button placed inside display: flex */
 
   @composes ds-print-preserve from './base.css';
-  @composes ds-focus from './base.css';
+  @composes ds-focus from './utils.css';
 
   &[data-variant='secondary'],
   &[data-variant='tertiary'] {
@@ -58,7 +59,7 @@
   }
 
   & :is(img, svg) {
-    @composes ds-icon from './base.css';
+    @composes ds-icon from './utils.css';
   }
 
   &:focus-visible {

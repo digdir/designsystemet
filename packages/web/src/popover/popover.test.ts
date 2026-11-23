@@ -40,6 +40,22 @@ describe('popover floating behavior', () => {
     expect(popover?.style.translate).toBeFalsy();
   });
 
+  it('applies floating styles when --_ds-floating is not set, but data-placement exists', async () => {
+    render(`
+      <button popovertarget="my-popover">Open</button>
+      <div id="my-popover" data-placement popover="auto">Content</div>
+    `);
+
+    const trigger = document.querySelector('button');
+    const popover = document.getElementById('my-popover');
+
+    trigger?.click();
+    await waitForPositioned(popover);
+    expect(popover?.matches(':popover-open')).toBe(true);
+    expect(popover).toHaveAttribute('data-floating');
+    expect(popover?.style.translate).toBeTruthy();
+  });
+
   it('positions the popover using floating-ui when --_ds-floating is set', async () => {
     render(`
       <button popovertarget="my-popover">Open</button>
@@ -82,7 +98,7 @@ describe('popover floating behavior', () => {
   });
 
   // Only test in browser as it requires ResizeObserver
-  it('defers dimension changes to avoid resizing during ResizeObserver delivery', {
+  it('matches the source width before revealing, and defers maxHeight to avoid resizing during ResizeObserver delivery', {
     tags: ['browser'],
   }, async () => {
     const animationFrames: FrameRequestCallback[] = [];
@@ -110,8 +126,12 @@ describe('popover floating behavior', () => {
       timeout: 1500,
     });
 
+    // translate is what reveals the popover, so the width has to be in place by
+    // now - otherwise it is visible for a frame at its own content width.
+    expect(popover?.style.width).toBe('120px');
+
+    // maxHeight depends on the available space, so it stays deferred.
     expect(animationFrames.length).toBeGreaterThan(0);
-    expect(popover?.style.width).toBe('');
     expect(popover?.style.maxHeight).toBe('');
 
     // Flush frames, including any scheduled while flushing
@@ -119,8 +139,35 @@ describe('popover floating behavior', () => {
       animationFrames.shift()?.(performance.now());
     }
 
-    expect(popover?.style.width).toBe('120px');
     expect(popover?.style.maxHeight).not.toBe('');
+  });
+
+  // Only test in browser as it requires ResizeObserver
+  it('keeps the width in sync when the source resizes while open', {
+    tags: ['browser'],
+  }, async () => {
+    render(`
+      <button style="width: 120px" popovertarget="my-popover">Open</button>
+      <div
+        id="my-popover"
+        popover="auto"
+        style="--_ds-floating: top; --_ds-floating-overscroll: fit"
+      >Content</div>
+    `);
+
+    document.querySelector('button')?.click();
+
+    const popover = document.getElementById('my-popover');
+    await vi.waitFor(() => expect(popover?.style.width).toBe('120px'), {
+      timeout: 1500,
+    });
+
+    const trigger = document.querySelector('button');
+    if (trigger) trigger.style.width = '300px';
+
+    await vi.waitFor(() => expect(popover?.style.width).toBe('300px'), {
+      timeout: 1500,
+    });
   });
 
   it('does not position when data-placement is "none"', async () => {
@@ -396,5 +443,92 @@ describe('popover duplicate toggle guard', () => {
     expect(popover?.matches(':popover-open')).toBe(true);
     expect(popover).toHaveAttribute('data-floating');
     expect(popover?.style.translate).not.toBe('');
+  });
+
+  it('keeps positioning when togglePopover(true) is called on an already open popover', {
+    tags: ['browser'], // Only run in browsers as this relies on ResizeObserver
+  }, async () => {
+    // Mirrors controlled React usage, where onToggle updates state and an
+    // effect then calls togglePopover(open) on the already open popover.
+    // autoUpdate() cleanup disconnects its ResizeObservers, so spying on
+    // disconnect() of the observers created for this popover tells whether
+    // the positioning subscription was dropped.
+    render(`
+      <button id="trigger" popovertarget="my-popover">Open</button>
+      <div id="my-popover" popover="manual" style="--_ds-floating: top">Content</div>
+    `);
+
+    const trigger = document.getElementById('trigger');
+    const popover = document.getElementById('my-popover');
+    const OriginalResizeObserver = window.ResizeObserver;
+    const observers: ResizeObserver[] = [];
+    const resizeObserverSpy = vi
+      .spyOn(window, 'ResizeObserver')
+      .mockImplementation(function (
+        this: unknown,
+        callback: ResizeObserverCallback,
+      ) {
+        const observer = new OriginalResizeObserver(callback); // Delegate to the real observer so autoUpdate() still works
+        observers.push(observer);
+        return observer;
+      });
+
+    popover?.togglePopover({ force: true, source: trigger as HTMLElement });
+    await tick();
+    resizeObserverSpy.mockRestore();
+
+    const disconnectSpies = observers.map((observer) =>
+      vi.spyOn(observer, 'disconnect'),
+    );
+    popover?.togglePopover(true);
+    await tick();
+
+    expect(popover?.matches(':popover-open')).toBe(true);
+    expect(observers.length).toBeGreaterThan(0);
+    for (const spy of disconnectSpies) expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('cleans up positioning on a coalesced closed to closed toggle event', {
+    tags: ['browser'], // Only run in browsers as this relies on ResizeObserver
+  }, async () => {
+    // When a popover opens and closes before the queued "toggle" event fires,
+    // the browser coalesces both into one event with oldState and newState
+    // "closed". That event must still drop the positioning subscription.
+    render(`
+      <button id="trigger" popovertarget="my-popover">Open</button>
+      <div id="my-popover" popover="manual" style="--_ds-floating: top">Content</div>
+    `);
+
+    const trigger = document.getElementById('trigger');
+    const popover = document.getElementById('my-popover');
+    const OriginalResizeObserver = window.ResizeObserver;
+    const observers: ResizeObserver[] = [];
+    const resizeObserverSpy = vi
+      .spyOn(window, 'ResizeObserver')
+      .mockImplementation(function (
+        this: unknown,
+        callback: ResizeObserverCallback,
+      ) {
+        const observer = new OriginalResizeObserver(callback); // Delegate to the real observer so autoUpdate() still works
+        observers.push(observer);
+        return observer;
+      });
+
+    popover?.togglePopover({ force: true, source: trigger as HTMLElement });
+    await tick();
+    resizeObserverSpy.mockRestore();
+
+    const disconnectSpies = observers.map((observer) =>
+      vi.spyOn(observer, 'disconnect'),
+    );
+    popover?.dispatchEvent(
+      Object.assign(new Event('toggle'), {
+        oldState: 'closed',
+        newState: 'closed',
+      }),
+    );
+
+    expect(observers.length).toBeGreaterThan(0);
+    for (const spy of disconnectSpies) expect(spy).toHaveBeenCalled();
   });
 });

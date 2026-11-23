@@ -2,14 +2,7 @@ import { BriefcaseIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { cat1Img, cat3Img, cat4Img, cat5Img } from '../../../stories/constants';
-import {
-  Avatar,
-  EXPERIMENTAL_AvatarStack as AvatarStack,
-  Checkbox,
-  Field,
-  Label,
-  Tooltip,
-} from '../';
+import { Avatar, AvatarStack, Checkbox, Field, Label, Tooltip } from '../';
 
 const meta = preview.meta({
   title: 'Komponenter/AvatarStack',
@@ -43,17 +36,11 @@ export const Preview = meta.story({
       </li>
       <li>
         <Avatar aria-label='Navn'>
-          <BriefcaseIcon />
+          <BriefcaseIcon aria-hidden='true' />
         </Avatar>
       </li>
       <li>
-        <Avatar aria-label='Navn' initials='sm' />
-      </li>
-      <li>
         <Avatar aria-label='Navn'>md</Avatar>
-      </li>
-      <li>
-        <Avatar aria-label='Navn' initials='ON' />
       </li>
     </AvatarStack>
   ),
@@ -125,14 +112,11 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
             <Avatar aria-label='Navn'>sm</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='sm' />
           </li>
         </AvatarStack>
         <AvatarStack data-size='md' {...args}>
@@ -141,14 +125,11 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
             <Avatar aria-label='Navn'>md</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='md' />
           </li>
         </AvatarStack>
         <AvatarStack data-size='lg' {...args}>
@@ -157,25 +138,22 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
             <Avatar aria-label='Navn'>lg</Avatar>
           </li>
-          <li>
-            <Avatar aria-label='Navn' initials='lg' />
-          </li>
         </AvatarStack>
       </fieldset>
       <fieldset>
-        <legend>Avatar size 3em</legend>
+        <legend>Avatar size --ds-size-12</legend>
         <AvatarStack
           {...args}
           data-size='sm'
           style={
             {
-              '--dsc-avatar-stack-size': '3em',
+              '--dsc-avatar-stack-size': 'var(--ds-size-12)',
             } as React.CSSProperties
           }
         >
@@ -184,14 +162,11 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
             <Avatar aria-label='Navn'>sm</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='sm' />
           </li>
         </AvatarStack>
         <AvatarStack
@@ -199,7 +174,7 @@ export const DataSize = meta.story({
           {...args}
           style={
             {
-              '--dsc-avatar-stack-size': '3em',
+              '--dsc-avatar-stack-size': 'var(--ds-size-12)',
             } as React.CSSProperties
           }
         >
@@ -208,14 +183,11 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
             <Avatar aria-label='Navn'>md</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='md' />
           </li>
         </AvatarStack>
         <AvatarStack
@@ -223,7 +195,7 @@ export const DataSize = meta.story({
           {...args}
           style={
             {
-              '--dsc-avatar-stack-size': '3em',
+              '--dsc-avatar-stack-size': 'var(--ds-size-12)',
             } as React.CSSProperties
           }
         >
@@ -232,14 +204,11 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
             <Avatar aria-label='Navn'>lg</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='lg' />
           </li>
         </AvatarStack>
       </fieldset>
@@ -259,14 +228,11 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
             <Avatar aria-label='Navn'>sm</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='sm' />
           </li>
         </AvatarStack>
         <AvatarStack
@@ -283,14 +249,11 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
             <Avatar aria-label='Navn'>md</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='md' />
           </li>
         </AvatarStack>
         <AvatarStack
@@ -307,14 +270,11 @@ export const DataSize = meta.story({
           </li>
           <li>
             <Avatar aria-label='Navn'>
-              <BriefcaseIcon />
+              <BriefcaseIcon aria-hidden='true' />
             </Avatar>
           </li>
           <li>
             <Avatar aria-label='Navn'>lg</Avatar>
-          </li>
-          <li>
-            <Avatar aria-label='Navn' initials='lg' />
           </li>
         </AvatarStack>
       </fieldset>
@@ -322,7 +282,7 @@ export const DataSize = meta.story({
   ),
 });
 
-export const ShapeVariants = meta.story({
+export const Radius = meta.story({
   render: (args) => (
     <AvatarStack
       {...args}

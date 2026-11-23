@@ -1,0 +1,29 @@
+.dialog {
+  max-width: 650px;
+}
+
+.content {
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.description {
+  margin-bottom: var(--ds-size-7);
+  line-height: 150%;
+  text-wrap: pretty;
+}
+
+.colorPreview {
+  width: 100%;
+  height: var(--ds-size-26);
+  border-block: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+}
+
+.table {
+  --dsc-table-border-width: 0;
+  --dsc-table-padding: var(--ds-size-2) var(--ds-size-4) var(--ds-size-2) 0;
+}
+
+.label {
+  width: 20ch;
+}

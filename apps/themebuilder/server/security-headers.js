@@ -9,13 +9,8 @@ const connectSrc = [
   .join(' ');
 
 /**
- * Security/CSP headers and TRACE blocking.
- *
- * In RR v7 these were applied by the bundled `server/app.ts`. Under RR v8 the
- * SSR build no longer bundles `server/app.ts` (it emits the React Router server
- * build instead), so the production server in `server.js` drives the request
- * handler directly and applies this middleware itself. Keep in sync with the
- * inline copy in `server/app.ts`, which still serves the dev server.
+ * Security/CSP headers and TRACE blocking, for both servers:
+ * `server/app.ts` in development and `server.js` in production.
  */
 export function securityHeaders(req, res, next) {
   res.setHeader('X-Content-Type-Options', 'nosniff');

@@ -7,7 +7,7 @@ export type SuggestionClearProps = MergeRight<
   {
     /**
      * Aria label for the clear button
-     * @default 'Tøm'
+     * @deprecated Please use `--dsc-suggestion-sr-clear` or `data-sr-clear` on Suggestion to set label.
      */
     'aria-label'?: string;
   }
@@ -29,10 +29,9 @@ export type SuggestionClearProps = MergeRight<
 export const SuggestionClear = forwardRef<
   HTMLButtonElement,
   SuggestionClearProps
->(function SuggestionClear({ 'aria-label': label = 'Tøm', ...rest }, ref) {
+>(function SuggestionClear(rest, ref) {
   return (
     <button
-      aria-label={label}
       hidden
       ref={ref}
       suppressHydrationWarning // Since <ds-suggestion> adds attributes

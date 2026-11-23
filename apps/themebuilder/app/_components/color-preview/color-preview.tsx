@@ -9,7 +9,9 @@ import {
 import cl from 'clsx/lite';
 import { type HTMLAttributes, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { useColorScheme } from '~/_hooks/use-color-scheme';
+import { generateColorVars, type ThemeColor } from '~/model/theme-colors';
+import { useThemeStore } from '~/model/theme-store';
 import listClasses from './card.module.css';
 import classes from './color-preview.module.css';
 
@@ -26,19 +28,9 @@ const CardWrapper = ({ color, view, ...rest }: CardProps) =>
 
 export const ColorPreview = () => {
   const { t } = useTranslation();
-  const { colorScheme, colors, severityColors, severityEnabled } =
-    useThemebuilder();
+  const [colorScheme] = useColorScheme();
+  const { colors } = useThemeStore();
   const [view, setView] = useState<ViewType>(DEFAULT_VIEW);
-
-  const allColors = [...colors, ...(severityEnabled ? severityColors : [])];
-
-  const prepVariables = (variables: Record<string, string>) => {
-    const prepped: Record<string, string> = {};
-    Object.entries(variables).forEach(([key, value]) => {
-      prepped[key.replace('neutral-', '')] = value;
-    });
-    return prepped;
-  };
 
   return (
     <div className='panelContainer'>
@@ -51,7 +43,7 @@ export const ColorPreview = () => {
         <div className='panelBottom'>
           <div className={classes.label}>{t('colorPreview.view')}</div>
           <ToggleGroup
-            aria-label='Visning'
+            aria-label={t('colorPreview.view')}
             data-size='sm'
             defaultValue={DEFAULT_VIEW}
             onChange={(value: string) => setView(value as ViewType)}
@@ -71,25 +63,21 @@ export const ColorPreview = () => {
           view === 'grid' ? classes.grid : classes.list,
         )}
       >
-        {allColors.map((color, index) => {
-          const variables =
-            color.variables?.[colorScheme as keyof typeof color.variables];
-          return (
-            <CardWrapper
-              view={view}
-              key={`${color.name}-${index}`}
-              color={color}
-              style={variables ? prepVariables(variables) : {}}
-            />
-          );
-        })}
+        {colors.map((color) => (
+          <CardWrapper
+            view={view}
+            key={color.name}
+            color={color}
+            style={generateColorVars(color.colors, colorScheme)}
+          />
+        ))}
       </div>
     </div>
   );
 };
 
 type CardProps = {
-  color: ReturnType<typeof useThemebuilder>['colors'][number];
+  color: ThemeColor;
   view?: ViewType;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'color'>;
 

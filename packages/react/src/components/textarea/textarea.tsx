@@ -15,7 +15,12 @@ export type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   function Textarea({ className, ...rest }, ref) {
     return (
-      <textarea className={cl('ds-input', className)} ref={ref} {...rest} />
+      <textarea
+        suppressHydrationWarning // Since <ds-field> adds attributes
+        className={cl('ds-input', className)}
+        ref={ref}
+        {...rest}
+      />
     );
   },
 );

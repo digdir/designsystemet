@@ -1,0 +1,89 @@
+.inner {
+  display: flex;
+  gap: var(--ds-size-6);
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.card {
+  border-radius: var(--ds-border-radius-md);
+  background-color: var(--ds-color-neutral-surface-default);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  padding: 24px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.img {
+  width: 100%;
+  border-radius: var(--ds-border-radius-md);
+  height: 200px;
+}
+
+.imgText {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.imgTitle {
+  margin-bottom: 0;
+  margin-top: 6px;
+}
+
+.imgDesc {
+  color: var(--ds-color-neutral-text-subtle);
+  font-size: 16px;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  gap: 16px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.user:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.userRole {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ds-color-neutral-text-subtle);
+  margin-bottom: -1px;
+}
+
+.userRole {
+  color: var(--ds-color-neutral-text-subtle);
+  font-size: 16px;
+}
+
+.avatar {
+  font-size: 16px;
+}

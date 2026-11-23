@@ -2,6 +2,10 @@ import no from '@internal/components/src/_locales/no';
 
 export default {
   ...no,
+  'version-banner': {
+    message:
+      'Denne dokumentasjonen gjelder Designsystemet {{version}}, som er en eldre versjon. For den nyeste versjonen, se',
+  },
   frontpage: {
     heading: 'Designsystemet hjelper deg å lage gode digitale tjenester',
     'get-started': {
@@ -156,6 +160,9 @@ export default {
     changelog: {
       title: 'Endringslogg',
     },
+    accessibility: {
+      title: 'Universell utforming',
+    },
     'css-variables': {
       caption: 'CSS-variabler',
       name: 'Navn',
@@ -212,9 +219,36 @@ export default {
       normal: 'Klikk for å forstørre bilde.',
     },
   },
+  'color-examples': {
+    colors: {
+      red: 'Rød',
+      orange: 'Oransje',
+      yellow: 'Gul',
+      green: 'Grønn',
+      teal: 'Turkis',
+      blue: 'Blå',
+      purple: 'Lilla',
+    },
+  },
+  'size-examples': {
+    button: 'Knapp',
+    'font-size': '{{size}} font',
+    height: 'Høyde',
+    'medium-title': 'Eksempel med Medium-komponenter',
+    input: 'Input tekst',
+    device: 'Enhet',
+    desktop: 'Desktop',
+    mobile: 'Mobil',
+    search: 'Søk',
+    'new-user': 'Ny bruker',
+    'log-in': 'Logg inn',
+  },
   'color-info-table': {
     name: 'Navn',
     usage: 'Bruksområde',
+    contrast: 'Minimumskontrast',
+    'contrast-against': '{{ratio}}:1 mot',
+    'all-in-group': 'alle {{group}}-farger',
   },
   'image-banner': {
     'play-video': 'Spill av video',

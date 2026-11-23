@@ -2,6 +2,7 @@ import { forwardRef, type InputHTMLAttributes } from 'react';
 import type { DefaultProps } from '../../types';
 import { Input } from '../input/input';
 
+/** @deprecated Will be removed in the next major version. */
 export type SearchInputProps = DefaultProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'type'> & {
     /**
@@ -13,6 +14,8 @@ export type SearchInputProps = DefaultProps &
 
 /**
  * SearchInput component, used to display a search input within the Search component.
+ *
+ * @deprecated Will be removed in the next major version. Use `Input` with `type="search"` in a `Field` instead.
  *
  * @example
  * <Search>

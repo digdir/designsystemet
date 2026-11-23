@@ -33,6 +33,11 @@ export const ClipboardButton = ({
       {/* @ts-ignore -- we trust the string passed to t() here */}
       <Tooltip content={t(toolTipText)}>
         <Button
+          style={{
+            display: 'inline-flex',
+            verticalAlign: 'middle',
+            marginInline: 'var(--ds-size-1)',
+          }}
           onMouseEnter={() =>
             setToolTipText(
               title === 'clipboard-button.copy' && ariaLabel

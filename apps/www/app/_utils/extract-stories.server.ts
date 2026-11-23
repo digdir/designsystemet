@@ -1,9 +1,9 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
+import { addStoryHtml } from './render-story.server';
+import type { RenderedStory } from './story-html';
 
-type StoryEntry = {
-  name: string;
-  code: string;
+type StoryEntry = RenderedStory & {
   file: string;
 };
 
@@ -102,7 +102,7 @@ export const extractStories = (
       const full = join(baseDir, file);
       const src = readFileSync(full, 'utf-8');
       const fns = extractExportedFunctions(src);
-      return fns.map((f) => ({ ...f, file }));
+      return addStoryHtml(fns).map((f) => ({ ...f, file }));
     });
     storiesCache.set(cacheKey, { signature, stories: result });
     return result;

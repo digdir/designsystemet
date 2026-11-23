@@ -1,0 +1,171 @@
+/* Height marker */
+
+.measured {
+  display: flex;
+  align-items: stretch;
+  gap: var(--ds-size-3);
+}
+
+.heightMarker {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-2);
+  color: var(--ds-color-brand2-text-subtle);
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.bracket {
+  align-self: stretch;
+  width: var(--ds-size-3);
+  border-block: 2px solid currentcolor;
+  background: linear-gradient(currentcolor, currentcolor) center / 2px 100% no-repeat;
+}
+
+/* Reserve room so the layout doesn't move when the size is measured */
+.measurement {
+  min-width: 3em;
+}
+
+/* ComponentSizes */
+
+.sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-6) var(--ds-size-10);
+}
+
+.size {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-3);
+}
+
+.fontSize {
+  min-height: 1lh;
+  color: var(--ds-color-neutral-text-subtle);
+}
+
+/* ComponentSizeBalance */
+
+.balance {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-3);
+}
+
+.title {
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.components {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-3);
+}
+
+.input {
+  width: 10rem;
+}
+
+.search {
+  width: 14rem;
+  max-width: 100%;
+}
+
+.pageMain .search {
+  flex: 1;
+  width: 18rem;
+}
+
+/* ComponentSizeMix */
+
+.mix {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+}
+
+.page {
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: var(--ds-border-radius-md);
+  background: var(--ds-color-neutral-background-default);
+}
+
+.pageHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-size-3);
+  padding: var(--ds-size-3) var(--ds-size-4);
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+
+  & > .marked {
+    margin-inline-start: auto;
+  }
+}
+
+.pageMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ds-size-4);
+  padding: var(--ds-size-6) var(--ds-size-4);
+}
+
+.placeholderAvatar {
+  width: var(--ds-size-8);
+  aspect-ratio: 1;
+  border-radius: var(--ds-border-radius-full);
+  background: var(--ds-color-neutral-surface-active);
+}
+
+.placeholderText {
+  width: 6rem;
+  height: var(--ds-size-3);
+  border-radius: var(--ds-border-radius-full);
+  background: var(--ds-color-neutral-surface-active);
+}
+
+/* Dashed outline in the color of the size, matching the legend */
+.marked {
+  display: flex;
+  gap: var(--ds-size-2);
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: var(--ds-size-2);
+  border-radius: var(--ds-border-radius-md);
+  outline: 2px dashed var(--mark-color);
+}
+
+:is(.marked, .legend > li)[data-mark='md'] {
+  --mark-color: var(--ds-color-success-border-default);
+}
+
+:is(.marked, .legend > li)[data-mark='lg'] {
+  --mark-color: var(--ds-color-brand2-border-default);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-2) var(--ds-size-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  & > li {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-size-2);
+    margin: 0;
+
+    &::before {
+      content: '';
+      width: var(--ds-size-4);
+      height: var(--ds-size-4);
+      border-radius: var(--ds-border-radius-sm);
+      outline: 2px dashed var(--mark-color);
+      outline-offset: -2px;
+    }
+  }
+}

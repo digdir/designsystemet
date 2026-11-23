@@ -1,4 +1,4 @@
-import type { DSTabElement } from '@digdir/designsystemet-web';
+import type { DSTabsElement } from '@digdir/designsystemet-web';
 import '@digdir/designsystemet-web'; // Import ds-tabs custom element
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -8,7 +8,7 @@ import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
 
 export type TabsProps = MergeRight<
-  DefaultProps & Omit<HTMLAttributes<DSTabElement>, 'onChange' | 'value'>,
+  DefaultProps & Omit<HTMLAttributes<DSTabsElement>, 'onChange' | 'value'>,
   {
     /**
      * Controlled state for `Tabs` component
@@ -52,7 +52,7 @@ export const Context = createContext<ContextProps>({});
  *   <Tabs.Panel value='3'>content 3</Tabs.Panel>
  * </Tabs>
  */
-export const Tabs = forwardRef<DSTabElement, TabsProps>(function Tabs(
+export const Tabs = forwardRef<DSTabsElement, TabsProps>(function Tabs(
   { value, defaultValue, className, onChange, ...rest },
   ref,
 ) {
@@ -60,7 +60,7 @@ export const Tabs = forwardRef<DSTabElement, TabsProps>(function Tabs(
   const [uncontrolledValue, setUncontrolledValue] = useState<
     string | undefined
   >(defaultValue);
-  const tabsRef = useRef<DSTabElement>(null);
+  const tabsRef = useRef<DSTabsElement>(null);
   const valuePrefix = useId(); // Used to generate unique value-based ids for tabs and panels
   const mergedRefs = useMergeRefs([ref, tabsRef]);
 

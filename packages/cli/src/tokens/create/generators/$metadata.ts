@@ -14,15 +14,16 @@ export function generate$Metadata(
   themeNames: string[],
   colorNames: string[],
 ): Metadata {
-  const { colorSchemes, sizeModes } = tokenSetDimensions;
+  const { colorSchemes, sizeModes, typographies } = tokenSetDimensions;
   return {
     tokenSetOrder: [
       'primitives/globals',
       ...sizeModes.map((size) => `primitives/modes/size/${size}`),
       'primitives/modes/size/global',
       ...sizeModes.map((size) => `primitives/modes/typography/size/${size}`),
-      ...themeNames.map((theme) => `primitives/modes/typography/primary/${theme}`),
-      ...themeNames.map((theme) => `primitives/modes/typography/secondary/${theme}`),
+      ...typographies.flatMap((typography) =>
+        themeNames.map((theme) => `primitives/modes/typography/${typography}/${theme}`),
+      ),
       ...colorSchemes.flatMap((scheme) => [
         ...themeNames.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`),
       ]),

@@ -1,5 +1,18 @@
 import '@digdir/designsystemet-web';
 
+/* Re-export types used in props and refs */
+export type {
+  DSBreadcrumbsElement,
+  DSErrorSummaryElement,
+  DSFieldElement,
+  DSPaginationElement,
+  DSSuggestionElement,
+  DSTabElement,
+  DSTabListElement,
+  DSTabPanelElement,
+  DSTabsElement,
+} from '@digdir/designsystemet-web';
+
 export type { AlertProps } from './alert/alert';
 export { Alert } from './alert/alert';
 
@@ -7,7 +20,10 @@ export type { AvatarProps } from './avatar/avatar';
 export { Avatar } from './avatar/avatar';
 
 export type { AvatarStackProps } from './avatar-stack/avatar-stack';
-export { EXPERIMENTAL_AvatarStack } from './avatar-stack/avatar-stack';
+export {
+  AvatarStack,
+  EXPERIMENTAL_AvatarStack,
+} from './avatar-stack/avatar-stack';
 
 export type { BadgePositionProps, BadgeProps } from './badge';
 export { Badge, BadgePosition } from './badge';
@@ -182,6 +198,7 @@ export { Popover, PopoverTrigger, PopoverTriggerContext } from './popover';
 export type { RadioProps } from './radio/radio';
 export { Radio } from './radio/radio';
 
+// @deprecated v2
 export type {
   SearchButtonProps,
   SearchClearProps,

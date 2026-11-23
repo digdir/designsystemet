@@ -2,7 +2,7 @@ import { BriefcaseIcon, HeartIcon } from '@navikt/aksel-icons';
 import preview from '../../../../../apps/storybook/.storybook/preview';
 import { cat3Img, themeColors } from '../../../stories/constants';
 
-import { Avatar, type AvatarProps, Badge, Dropdown } from '../';
+import { Avatar, type AvatarProps, Badge, Button, Dropdown } from '../';
 
 const meta = preview.meta({
   title: 'Komponenter/Avatar',
@@ -22,8 +22,6 @@ const meta = preview.meta({
 export const Preview = meta.story({
   args: {
     'aria-label': 'Ola Nordmann',
-    variant: 'circle',
-    children: '',
   },
 });
 
@@ -31,22 +29,30 @@ export const NoName = meta.story(() => <Avatar aria-label='Ola' />);
 
 export const Sizes = meta.story(() => (
   <>
-    <Avatar data-size='xs' aria-label='extra small' initials='xs' />
+    <Avatar data-size='xs' aria-label='extra small'>
+      xs
+    </Avatar>
     <Avatar data-size='xs' aria-label='extra small' />
     <Avatar data-size='xs' aria-label='extra small'>
       <HeartIcon aria-hidden />
     </Avatar>
-    <Avatar data-size='sm' aria-label='small' initials='sm' />
+    <Avatar data-size='sm' aria-label='small'>
+      sm
+    </Avatar>
     <Avatar data-size='sm' aria-label='small' />
     <Avatar data-size='sm' aria-label='small'>
       <HeartIcon aria-hidden />
     </Avatar>
-    <Avatar data-size='md' aria-label='medium' initials='md' />
+    <Avatar data-size='md' aria-label='medium'>
+      md
+    </Avatar>
     <Avatar data-size='md' aria-label='medium' />
     <Avatar data-size='md' aria-label='medium'>
       <HeartIcon aria-hidden />
     </Avatar>
-    <Avatar data-size='lg' aria-label='large' initials='lg' />
+    <Avatar data-size='lg' aria-label='large'>
+      lg
+    </Avatar>
     <Avatar data-size='lg' aria-label='large' />
     <Avatar data-size='lg' aria-label='large'>
       <HeartIcon aria-hidden />
@@ -66,14 +72,26 @@ export const ColorVariants = meta.story(() => (
   </>
 ));
 
-export const ShapeVariants = meta.story(() => (
+export const Radius = meta.story(() => (
   <>
-    <Avatar variant='circle' aria-label='variant circle' />
-    <Avatar variant='square' aria-label='variant square' />
-    <Avatar variant='circle' aria-label='Ola Nordmann'>
-      ON
-    </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordmann'>
+    <Avatar aria-label='radius default' />
+    <Avatar
+      aria-label='radius md 1'
+      style={
+        {
+          '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
+        } as React.CSSProperties
+      }
+    />
+    <Avatar aria-label='Ola Nordmann'>ON</Avatar>
+    <Avatar
+      aria-label='radius md 2'
+      style={
+        {
+          '--dsc-avatar-radius': 'var(--ds-border-radius-md)',
+        } as React.CSSProperties
+      }
+    >
       ON
     </Avatar>
   </>
@@ -85,14 +103,15 @@ export const WithImage = meta.story(() => (
 
 export const InDropdown = meta.story({
   render: () => (
-    <Dropdown.TriggerContext>
-      <Dropdown.Trigger variant='tertiary'>
+    <>
+      <Button variant='tertiary' popovertarget='avatar-dropdown'>
         <Avatar aria-label='Ola Nordmann' data-size='sm'>
           ON
         </Avatar>
         Velg Profil
-      </Dropdown.Trigger>
+      </Button>
       <Dropdown
+        id='avatar-dropdown'
         placement='bottom-end'
         autoPlacement={false}
         data-size='md'
@@ -120,7 +139,7 @@ export const InDropdown = meta.story({
           </Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
-    </Dropdown.TriggerContext>
+    </>
   ),
 
   parameters: {
@@ -177,6 +196,20 @@ export const AsButton = meta.story(() => (
       <button type='button'>
         <HeartIcon aria-hidden />
       </button>
+    </Avatar>
+  </>
+));
+
+export const SlotAndInitials = meta.story(() => (
+  <>
+    <Avatar aria-label='DS Designsystemet' asChild>
+      <button type='button'>DS</button>
+    </Avatar>
+    <Avatar aria-label='0 notifications' asChild>
+      <button type='button'>0</button>
+    </Avatar>
+    <Avatar aria-label='xs' asChild>
+      <button type='button'>{cat3Img}</button>
     </Avatar>
   </>
 ));

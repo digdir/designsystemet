@@ -138,11 +138,19 @@ const redirects: Redirect[] = [
 
   {
     from: '/en/fundamentals/introduction/accessibility',
-    to: '/en/intro/accessibility',
+    to: '/en/components/accessibility',
   },
   {
     from: '/no/fundamentals/introduction/accessibility',
-    to: '/no/intro/accessibility',
+    to: '/no/components/accessibility',
+  },
+  {
+    from: '/en/intro/accessibility',
+    to: '/en/components/accessibility',
+  },
+  {
+    from: '/no/intro/accessibility',
+    to: '/no/components/accessibility',
   },
 
   {

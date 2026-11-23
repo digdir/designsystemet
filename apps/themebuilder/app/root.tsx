@@ -1,5 +1,4 @@
 import {
-  data,
   isRouteErrorResponse,
   Links,
   Meta,
@@ -7,6 +6,7 @@ import {
   redirect,
   Scripts,
   ScrollRestoration,
+  type ShouldRevalidateFunctionArgs,
 } from 'react-router';
 
 import type { Route } from './+types/root';
@@ -20,9 +20,9 @@ export const links: Route.LinksFunction = () => {
   return [
     {
       rel: 'stylesheet',
-      href: 'https://altinncdn.no/fonts/inter/v4.1/inter.css',
+      href: 'https://altinncdn.no/fonts/inter/v4.1/inter-latin.css',
       integrity:
-        'sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD',
+        'sha384-dMo4FR/05iqPHBhxdybPejGKOwjCpktk6XnfJDAOP4AyMh7JFC7cCWsnOKLv7tJF',
       crossOrigin: 'anonymous',
     },
   ];
@@ -32,12 +32,8 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const url = new URL(request.url);
   const lang = params.lang;
 
-  if (lang === undefined) {
-    return redirect(`/no${url.search}`);
-  }
-
-  /* Redirect from old path to new path, with search params */
-  if (lang === 'themebuilder') {
+  /* No language, or the old path `/themebuilder`: go to Norwegian, with search params */
+  if (lang === undefined || lang === 'themebuilder') {
     return redirect(`/no${url.search}`);
   }
 
@@ -51,58 +47,15 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     return redirect(url.toString());
   }
 
-  const centerLinks = [
-    {
-      text: 'footer.about',
-      url: `https://designsystemet.no/${lang}/intro/about-the-design-system`,
-    },
-    {
-      text: 'footer.privacy',
-      url: `https://designsystemet.no/${lang}/intro/privacy-policy`,
-    },
-    {
-      text: 'footer.accessibility',
-      url: 'https://uustatus.no/nb/erklaringer/publisert/faeb324d-9b3f-40b0-b715-92cac356a916',
-    },
-  ];
-
-  const menu = [
-    {
-      name: 'navigation.intro',
-      href: `https://designsystemet.no/${lang}/intro`,
-    },
-    {
-      name: 'navigation.fundamentals',
-      href: `https://designsystemet.no/${lang}/fundamentals`,
-    },
-    {
-      name: 'navigation.components',
-      href: `https://designsystemet.no/${lang}/components`,
-    },
-    {
-      name: 'navigation.patterns',
-      href: `https://designsystemet.no/${lang}/patterns`,
-    },
-    {
-      name: 'navigation.best-practices',
-      href: `https://designsystemet.no/${lang}/best-practices`,
-    },
-    {
-      name: 'navigation.blog',
-      href: `https://designsystemet.no/${lang}/blog`,
-    },
-    {
-      name: 'navigation.theme-builder',
-      href: `/${lang}`,
-    },
-  ];
-
-  return data({
-    lang: params.lang,
-    centerLinks,
-    menu,
-  });
+  return { lang };
 };
+
+/* The loader only depends on the path. Left to run for every change of the URL, it would run when the view tab or
+ * the appearance is changed, and a second change made while it runs would start from the old URL and undo the first. */
+export const shouldRevalidate = ({
+  currentUrl,
+  nextUrl,
+}: ShouldRevalidateFunctionArgs) => currentUrl.pathname !== nextUrl.pathname;
 
 type DocumentProps = {
   children: React.ReactNode;
@@ -120,6 +73,7 @@ function Document({ children }: DocumentProps) {
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='text-scale' content='scale' />
         <Links />
         <Meta />
         {process.env.NODE_ENV === 'development' && (
@@ -172,11 +126,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   return (
     <Document>
-      <main className='pt-16 p-4 container mx-auto'>
+      <main>
         <h1>{message}</h1>
         <p>{details}</p>
         {stack && (
-          <pre className='w-full p-4 overflow-x-auto'>
+          <pre>
             <code>{stack}</code>
           </pre>
         )}

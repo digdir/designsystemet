@@ -1,7 +1,7 @@
 import {
   Avatar,
+  AvatarStack,
   Checkbox,
-  EXPERIMENTAL_AvatarStack,
   Field,
   Label,
   Tooltip,
@@ -10,7 +10,7 @@ import { BriefcaseIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 
 export const Preview = () => (
-  <EXPERIMENTAL_AvatarStack>
+  <AvatarStack>
     <li>
       <Avatar aria-label='cat'>
         <img src='/img/component-docs/cats/cat1.webp' alt='' />
@@ -30,7 +30,7 @@ export const Preview = () => (
     <li>
       <Avatar aria-label='Ola Nordman'>on</Avatar>
     </li>
-  </EXPERIMENTAL_AvatarStack>
+  </AvatarStack>
 );
 
 export const Playground = () => {
@@ -108,7 +108,7 @@ export const Playground = () => {
         </Field>
       </fieldset>
       <br />
-      <EXPERIMENTAL_AvatarStack
+      <AvatarStack
         expandable={expandable || undefined}
         style={
           {
@@ -143,7 +143,7 @@ export const Playground = () => {
           </Avatar>
         </li>
         <li>+10</li>
-      </EXPERIMENTAL_AvatarStack>
+      </AvatarStack>
     </>
   );
 };
@@ -159,7 +159,7 @@ export const Expandable = () => (
   >
     <fieldset>
       <legend>expandable</legend>
-      <EXPERIMENTAL_AvatarStack expandable>
+      <AvatarStack expandable>
         <li>
           <Avatar aria-label=''>
             <img src='/img/component-docs/cats/cat1.webp' alt='' />
@@ -180,11 +180,11 @@ export const Expandable = () => (
             <img src='/img/component-docs/cats/cat6.webp' alt='' />
           </Avatar>
         </li>
-      </EXPERIMENTAL_AvatarStack>
+      </AvatarStack>
     </fieldset>
     <fieldset>
       <legend>expandable="fixed"</legend>
-      <EXPERIMENTAL_AvatarStack expandable='fixed'>
+      <AvatarStack expandable='fixed'>
         <li>
           <Avatar aria-label=''>
             <img src='/img/component-docs/cats/cat1.webp' alt='' />
@@ -205,41 +205,49 @@ export const Expandable = () => (
             <img src='/img/component-docs/cats/cat6.webp' alt='' />
           </Avatar>
         </li>
-      </EXPERIMENTAL_AvatarStack>
+      </AvatarStack>
     </fieldset>
   </div>
 );
 
-export const ShapeVariants = () => (
-  <EXPERIMENTAL_AvatarStack aria-label='example of square avatars' expandable>
+export const Radius = () => (
+  <AvatarStack
+    aria-label='example of square avatars'
+    expandable
+    style={
+      {
+        '--dsc-avatar-stack-radius': 'var(--ds-border-radius-md)',
+      } as React.CSSProperties
+    }
+  >
     <li>
-      <Avatar variant='square' aria-label='variant square' />
+      <Avatar aria-label='variant square' />
     </li>
     <li>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
+      <Avatar aria-label='Ola Nordmann'>
         <img src='/img/component-docs/cats/cat1.webp' alt='' />
       </Avatar>
     </li>
     <li>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
+      <Avatar aria-label='Ola Nordmann'>
         <img src='/img/component-docs/cats/cat2.webp' alt='' />
       </Avatar>
     </li>
     <li>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
+      <Avatar aria-label='Ola Nordmann'>
         <img src='/img/component-docs/cats/cat3.webp' alt='' />
       </Avatar>
     </li>
     <li>
-      <Avatar variant='square' aria-label='Ola Nordmann'>
+      <Avatar aria-label='Ola Nordmann'>
         <img src='/img/component-docs/cats/cat4.webp' alt='' />
       </Avatar>
     </li>
-  </EXPERIMENTAL_AvatarStack>
+  </AvatarStack>
 );
 
 export const DataSize = () => (
-  <EXPERIMENTAL_AvatarStack
+  <AvatarStack
     style={
       {
         '--dsc-avatar-stack-size': 'clamp(5rem, 1.5rem + 2vw, 10rem)',
@@ -266,11 +274,11 @@ export const DataSize = () => (
         <img src='/img/component-docs/cats/cat1.webp' alt='' />
       </Avatar>
     </li>
-  </EXPERIMENTAL_AvatarStack>
+  </AvatarStack>
 );
 
 export const Gap = () => (
-  <EXPERIMENTAL_AvatarStack
+  <AvatarStack
     style={
       {
         '--dsc-avatar-stack-gap': '6px',
@@ -278,23 +286,23 @@ export const Gap = () => (
     }
   >
     <li>
-      <Avatar aria-label='' initials='AA' />
+      <Avatar aria-label=''>AA</Avatar>
     </li>
     <li>
-      <Avatar aria-label='' initials='BB' />
+      <Avatar aria-label=''>BB</Avatar>
     </li>
     <li>
-      <Avatar aria-label='' initials='CC' />
+      <Avatar aria-label=''>CC</Avatar>
     </li>
     <li>
-      <Avatar aria-label='' initials='DD' />
+      <Avatar aria-label=''>DD</Avatar>
     </li>
-  </EXPERIMENTAL_AvatarStack>
+  </AvatarStack>
 );
 
 export const AdditionalAvatars = () => (
   <>
-    <EXPERIMENTAL_AvatarStack>
+    <AvatarStack>
       <li>
         <Avatar aria-label=''>
           <img src='/img/component-docs/cats/cat1.webp' alt='' />
@@ -306,7 +314,7 @@ export const AdditionalAvatars = () => (
         </Avatar>
       </li>
       <li>
-        <Avatar aria-label='' initials='sm' />
+        <Avatar aria-label=''>sm</Avatar>
       </li>
       <li>
         <Avatar
@@ -317,8 +325,8 @@ export const AdditionalAvatars = () => (
           +14
         </Avatar>
       </li>
-    </EXPERIMENTAL_AvatarStack>
-    <EXPERIMENTAL_AvatarStack>
+    </AvatarStack>
+    <AvatarStack>
       <li>
         <Avatar aria-label=''>
           <img src='/img/component-docs/cats/cat1.webp' alt='' />
@@ -330,13 +338,13 @@ export const AdditionalAvatars = () => (
         </Avatar>
       </li>
       <li>
-        <Avatar aria-label='' initials='sm' />
+        <Avatar aria-label=''>sm</Avatar>
       </li>
       <li>
-        <Avatar aria-label='' initials='on' />
+        <Avatar aria-label=''>on</Avatar>
       </li>
       <li>+14</li>
-    </EXPERIMENTAL_AvatarStack>
+    </AvatarStack>
   </>
 );
 
@@ -344,7 +352,7 @@ export const WithTooltipAndLink = () => (
   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ds-size-4)' }}>
     <fieldset>
       <legend>Link + Tooltip</legend>
-      <EXPERIMENTAL_AvatarStack aria-label='contributors'>
+      <AvatarStack aria-label='contributors'>
         <li>
           <Tooltip content='Ola Katt'>
             <Avatar aria-label='' asChild>
@@ -379,11 +387,11 @@ export const WithTooltipAndLink = () => (
             </Avatar>
           </Tooltip>
         </li>
-      </EXPERIMENTAL_AvatarStack>
+      </AvatarStack>
     </fieldset>
     <fieldset>
       <legend>Link + Tooltip expandable</legend>
-      <EXPERIMENTAL_AvatarStack expandable='fixed' aria-label='contributors'>
+      <AvatarStack expandable='fixed' aria-label='contributors'>
         <li>
           <Tooltip content='Ola Katt'>
             <Avatar aria-label='' asChild>
@@ -418,7 +426,7 @@ export const WithTooltipAndLink = () => (
             </Avatar>
           </Tooltip>
         </li>
-      </EXPERIMENTAL_AvatarStack>
+      </AvatarStack>
     </fieldset>
   </div>
 );

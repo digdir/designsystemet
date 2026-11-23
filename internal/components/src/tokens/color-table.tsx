@@ -18,35 +18,43 @@ export const ColorTokensTable = ({
   const { t } = useTranslation();
 
   return (
-    <Table data-size='sm'>
-      <caption>{caption ?? t('token-preview.color.caption')}</caption>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
-          {withPreview && (
+    <div className={`${classes['overflow-table']} ds-focus`} tabIndex={0}>
+      <Table data-size='sm'>
+        <caption>{caption ?? t('token-preview.color.caption')}</caption>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
             <Table.HeaderCell>
-              {t('token-preview.table.preview')}
+              {t('token-preview.table.figma')}
             </Table.HeaderCell>
-          )}
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        {colorStructure.map(({ variable }) => (
-          <Table.Row key={variable}>
-            <Table.Cell>
-              <code>{variable}</code>
-            </Table.Cell>
             {withPreview && (
-              <Table.Cell>
-                <div
-                  className={classes.color}
-                  style={{ backgroundColor: `var(${variable})` }}
-                ></div>
-              </Table.Cell>
+              <Table.HeaderCell>
+                {t('token-preview.table.preview')}
+              </Table.HeaderCell>
             )}
           </Table.Row>
-        ))}
-      </Table.Body>
-    </Table>
+        </Table.Head>
+        <Table.Body>
+          {colorStructure.map(({ variable }) => (
+            <Table.Row key={variable}>
+              <Table.Cell>
+                <code>{variable}</code>
+              </Table.Cell>
+              <Table.Cell>
+                {variable.replace('--ds-color-', 'color/main/')}
+              </Table.Cell>
+              {withPreview && (
+                <Table.Cell>
+                  <div
+                    className={classes.color}
+                    style={{ backgroundColor: `var(${variable})` }}
+                  ></div>
+                </Table.Cell>
+              )}
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    </div>
   );
 };

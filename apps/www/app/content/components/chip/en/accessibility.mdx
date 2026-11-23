@@ -1,7 +1,70 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## Announce changes on the page
 
-## Notify users about changes on the page
+If parts of the page are updated while the user interacts with a chip, screen reader users must be informed about those changes. Use an `ARIA live region` to communicate updates such as an updated result count or other dynamic information.
 
-If parts of the page are updated while the user interacts with a `Chip`, we must ensure that screen reader users are informed. Use an `ARIA live region` to announce updates, such as the number of results or other dynamic changes.
+<span data-size="sm">
+WCAG: [4.1.3 Status Messages (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html)
+</span>
+
+<Divider/>
+
+## What you need to verify yourself
+
+**A group of multiple input chips must be placed in a `fieldset` with an accessible name**
+
+Give the `fieldset` an accessible name using either `legend`, `aria-label`, or `aria-labelledby`.
+
+<span data-size="sm"> 
+WCAG: [1.3.1 Info and Relationships (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships)
+</span> 
+<span data-size="sm">
+WCAG: [4.1.2 Name, Role, Value (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+</span> 
+
+<Divider/>
+\
+**A group of multiple chips that are removable or clickable should be placed in a list**
+
+The list should usually be unordered (`<ul>`). Consider giving the list an `aria-label` or an associated heading.
+
+<span data-size="sm"> 
+WCAG: [1.3.1 Info and Relationships (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships)
+</span> 
+<span data-size="sm">
+WCAG: [4.1.2 Name, Role, Value (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+</span> 
+
+<Divider/>
+\
+**Avoid long text strings in chips where possible**
+
+Long text strings can be difficult to read inside a chip. Use short and meaningful labels wherever possible.
+
+If longer text is required, it may be necessary to truncate the visual presentation. Ensure that the complete content remains accessible, for instance through an accessible tooltip.
+
+<span data-size="sm"> 
+WCAG: [2.5.3 Label in Name (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/label-in-name)
+</span> 
+
+<Divider/>
+
+## Test with a keyboard
+
+**Verify that you can:**
+- reach the chip using <kbd>Tab</kbd>
+- interact with button chips using both <kbd>Space</kbd> and <kbd>Enter</kbd>
+- select and deselect checkbox chips using <kbd>Space</kbd>
+- navigate to and select radio chips using the arrow keys
+
+<span data-size="sm">
+WCAG: [2.1.1 Keyboard (W3C)](https://www.w3.org/WAI/WCAG21/Understanding/keyboard)
+</span>
+
+<Divider/>
+
+## Handled by the design system
+
+- The component uses semantic HTML elements such as `input`, `label`, and `button` to comply with WCAG 4.1.2 Name, Role, Value.
+- The design system includes styles for focus and hover. Verify that these are visible during keyboard focus and pointer hover (mouseover) respectively.
+- Color contrast is handled by the design system's color system. If you deviate from the recommended color tokens, verify that the combination of text and background colors meets the required contrast ratios for the chip.
+- Sizing and scaling are handled by the design system's sizing system. If you deviate from it, verify that the chip remains usable when text is resized or when screen magnification is used, without loss of information or functionality.

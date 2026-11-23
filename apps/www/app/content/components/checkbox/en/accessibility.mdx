@@ -66,3 +66,11 @@ The error message must make it clear which field contains an error, what is wron
 - check and uncheck it using <kbd>Space</kbd>
 - reach all checkboxes in a group using <kbd>Tab</kbd>
 - navigate back to a previous checkbox using <kbd>Shift</kbd> + <kbd>Tab</kbd>
+
+<Divider/>
+## Handled by Designsystemet
+
+- When checkbox is used in a [field](/en/components/docs/field/overview), semantic connections to the label, description, and validation message are handled to support WCAG 4.1.2 Name, Role, Value.
+- Designsystemet includes styles for focus, hover, checked, indeterminate, invalid, and read-only states. Still check that these are visible when using keyboard focus and mouse hover.
+- Color contrast is handled by Designsystemet's color system. If you deviate from the recommended color tokens, verify that the combination of text and background colors meets the required contrast ratios for checkbox.
+- Sizing and scaling are handled by Designsystemet's sizing system. If you deviate from it, verify that checkbox remains usable when text is resized or when screen magnification is used, without loss of information or functionality.

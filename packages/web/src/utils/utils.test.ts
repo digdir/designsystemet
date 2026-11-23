@@ -28,12 +28,21 @@ describe('utils', () => {
     expect(el).not.toHaveAttribute('data-test');
   });
 
-  it('attrOrCSS reads from CSS custom property and strips quotes', () => {
-    const el = document.createElement('div');
-    document.body.appendChild(el); // Needed for getComputedStyle to work, which is used by attrOrCSS
+  it('attrOrCSS reads from CSS custom property and strips surrounding quotes', () => {
+    const el = document.body.appendChild(document.createElement('div')); // Needed for getComputedStyle to work, which is used by attrOrCSS
     el.style.setProperty('--_ds-test', '"property-value"');
 
     expect(attrOrCSS(el, 'test')).toBe('property-value');
+  });
+
+  it('attrOrCSS reads from CSS custom property and unescapes internal quotes', () => {
+    const el = document.body.appendChild(document.createElement('div')); // Needed for getComputedStyle to work, which is used by attrOrCSS
+
+    el.style.setProperty('--_ds-test', 'property \\"hei\\" value');
+    expect(attrOrCSS(el, 'test')).toBe('property "hei" value');
+
+    el.style.setProperty('--_ds-test', "property \\'hei\\' value");
+    expect(attrOrCSS(el, 'test')).toBe("property 'hei' value");
   });
 
   it('warn respects dsWarnings flag', () => {

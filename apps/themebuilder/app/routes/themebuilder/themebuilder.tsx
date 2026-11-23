@@ -1,36 +1,20 @@
-import { AppearanceToggle } from '~/_components/appearance-toggle/appearance-toggle';
-import { Sidebar } from '~/_components/sidebar/sidebar';
-import { ThemeHeader } from '~/_components/theme-header/theme-header';
-import { ColorModalProvider } from '~/_utils/color-modal-context';
-import { ThemePages } from '../../layouts/themebuilder/layout';
-import classes from './page.module.css';
 import 'react-color-palette/css';
-import type { ColorScheme } from '@digdir/designsystemet';
-import { parsePath, redirect } from 'react-router';
+import { useEffect } from 'react';
+import {
+  parsePath,
+  type ShouldRevalidateFunctionArgs,
+  useLoaderData,
+  useSearchParams,
+} from 'react-router';
+import { Themebuilder } from '~/_components/themebuilder/themebuilder';
 import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
-import themeConfig from '../../../../../designsystemet.config.json';
-import {
-  applyOverridesToColors,
-  createColorsFromQuery,
-  createSeverityColorsFromQuery,
-  parseColorOverrides,
-  QUERY_SEPARATOR,
-  type SeverityColorTheme,
-} from './_utils/use-themebuilder';
+import { legacyThemeKeys } from '~/model/legacy-url';
+import { readLegacyUrl } from '~/model/legacy-url.server';
+import { ThemeStoreProvider } from '~/model/theme-store';
+import { defaultWorkspace } from '~/model/theme-workspace';
 import type { Route } from './+types/themebuilder';
-
-const toQueryString = (obj: Record<string, string>) =>
-  Object.entries(obj)
-    .map(([key, value]) => `${key}:${value}`)
-    .join(QUERY_SEPARATOR);
-const THEME = themeConfig.themes.designsystemet.colors;
-const COLORS = toQueryString(THEME);
-
-export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';
-
-const DEFAULT_TAB: ThemebuilderTabs = 'colorsystem';
 
 export const loader = async ({
   params: { lang },
@@ -39,75 +23,16 @@ export const loader = async ({
   const t = await i18n.getFixedT(lang);
 
   const { search } = parsePath(request.url);
-  const urlParams = new URLSearchParams(search);
-
-  /* if we have no params, push some default values */
-  if (urlParams.toString() === '') {
-    const newParams = new URLSearchParams({
-      colors: COLORS,
-      appearance: 'light',
-      'border-radius': '4',
-      tab: DEFAULT_TAB,
-    });
-
-    return redirect(`/${lang}?${newParams.toString()}`);
+  let workspace = defaultWorkspace();
+  try {
+    /* Links shared before the theme moved out of the URL still open their theme */
+    workspace = readLegacyUrl(new URLSearchParams(search)) || workspace;
+  } catch {
+    throw new Response('Invalid theme builder URL', { status: 400 });
   }
-
-  if (urlParams.get('tab') === 'overview') {
-    urlParams.set('tab', 'examples' as ThemebuilderTabs);
-    return redirect(`/${lang}?${urlParams.toString()}`);
-  }
-
-  /* Backwards compatibility: merge legacy `main`, `support` and `neutral`
-   * params into the single `colors` param and redirect to normalize the URL. */
-  if (
-    !urlParams.has('colors') &&
-    (urlParams.has('main') ||
-      urlParams.has('support') ||
-      urlParams.has('neutral'))
-  ) {
-    const legacyColors = [
-      urlParams.get('main'),
-      urlParams.get('support'),
-      urlParams.get('neutral') ? `neutral:${urlParams.get('neutral')}` : null,
-    ]
-      .filter(Boolean)
-      .join(QUERY_SEPARATOR);
-
-    urlParams.delete('main');
-    urlParams.delete('support');
-    urlParams.delete('neutral');
-    urlParams.set('colors', legacyColors);
-
-    return redirect(`/${lang}?${urlParams.toString()}`);
-  }
-
-  const colors = createColorsFromQuery(urlParams.get('colors') || COLORS);
-
-  // Parse and apply color overrides
-  const overridesParam = urlParams.get('color-overrides');
-  const overridesMap = parseColorOverrides(overridesParam);
-
-  const colorsWithOverrides = applyOverridesToColors(colors, overridesMap);
-
-  const severityColors = createSeverityColorsFromQuery(
-    urlParams.get('severity'),
-  );
-
-  const severityEnabled = urlParams.get('severity-enabled') === 'true';
 
   return {
-    colors: colorsWithOverrides,
-    severityColors: applyOverridesToColors(
-      severityColors,
-      overridesMap,
-    ) as SeverityColorTheme[],
-    severityEnabled,
-    overrides: overridesMap,
-    colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
-    baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
-    tab: urlParams.get('tab') || DEFAULT_TAB,
-    lang,
+    workspace,
     metadata: generateMetadata({
       title: t('meta.title'),
       description: t('meta.description'),
@@ -116,34 +41,44 @@ export const loader = async ({
   };
 };
 
+/* The loader only depends on the language. The tab and appearance are read from the URL in the browser. */
+export const shouldRevalidate = ({
+  currentParams,
+  nextParams,
+}: ShouldRevalidateFunctionArgs) => currentParams.lang !== nextParams.lang;
+
 export const meta: Route.MetaFunction = ({ loaderData }: Route.MetaArgs) => {
-  if (!loaderData?.metadata)
-    return [
-      {
-        title: 'Theme Builder - Designsystemet',
-        description: 'Build your own theme for Designsystemet',
-      },
-    ];
-  return loaderData.metadata;
+  return (
+    loaderData?.metadata ??
+    generateMetadata({
+      title: 'Theme Builder',
+      description: 'Build your own theme for Designsystemet',
+    })
+  );
 };
 
 export default function Page() {
+  const { workspace } = useLoaderData<typeof loader>();
+  const [params, setParams] = useSearchParams();
+
+  /* A shared link's theme is now in the theme store, so the theme is removed from the URL.
+   * Left there, it would look like the URL follows the edits, which it no longer does. */
+  const hasLegacyTheme = legacyThemeKeys.some((key) => params.has(key));
+  useEffect(() => {
+    if (!hasLegacyTheme) return;
+    setParams(
+      (previous) => {
+        const next = new URLSearchParams(previous);
+        for (const key of legacyThemeKeys) next.delete(key);
+        return next;
+      },
+      { replace: true, preventScrollReset: true },
+    );
+  }, [hasLegacyTheme, setParams]);
+
   return (
-    <ColorModalProvider>
-      <ThemeHeader />
-      <main className={classes.page} id='main'>
-        <div className={classes.container}>
-          <div className={classes.sideBarContainer}>
-            <Sidebar />
-          </div>
-          <div className={classes.content}>
-            <div className={classes.toolbar}>
-              <AppearanceToggle />
-            </div>
-            <ThemePages />
-          </div>
-        </div>
-      </main>
-    </ColorModalProvider>
+    <ThemeStoreProvider initial={workspace}>
+      <Themebuilder />
+    </ThemeStoreProvider>
   );
 }

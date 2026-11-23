@@ -39,16 +39,23 @@ export type ColorScaleStep<T> = {
   name: T;
   number: ColorNumber;
   displayName: string;
-  description: {
-    short: string;
-    long: string;
-  };
-  group: string;
+  group: 'background' | 'surface' | 'border' | 'text' | 'base';
   luminance: {
     light: number;
     dark: number;
-    contrast: number;
   };
+  /**
+   * Contrast this step must meet against other steps in the same scale.
+   * Omit when the step is decorative, or when its contrast depends on the chosen color.
+   */
+  minContrast?: ContrastRequirement[];
+};
+
+export type ContrastRequirement = {
+  /** Minimum WCAG contrast ratio, e.g. 3 for non-text content (1.4.11) or 4.5 for text (1.4.3) */
+  ratio: number;
+  /** The steps this step must meet `ratio` against */
+  against: SemanticColorNames[];
 };
 
 export type Color = ColorScaleStep<SemanticColorNames> & {

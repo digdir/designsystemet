@@ -29,6 +29,12 @@ The component will inherit from the closest parent where these are set.
 
 <CssAttributes />
 
+## Validation and error state
+
+By design, the Input does not automatically receive error styling based on the browser's built-in `:invalid` state.
+To give you control over when the error state is displayed, we recommend instead showing and hiding an associated [Validation message](/en/components/docs/validation-message/overview) with the `hidden` attribute.
+When the [Validation message](/en/components/docs/validation-message/overview) and the Input are placed within the same [Field](/en/components/docs/field/overview), the Input automatically receives `aria-invalid="true"` when necessary.
+
 ## Examples
 
 ### ReadOnly

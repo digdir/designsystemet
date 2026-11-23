@@ -1,15 +1,24 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
-import type { ColorScheme } from '../index.ts';
-import type { ConfigSchemaTheme } from '../schemas/v1.1/schema.ts';
+import type { ColorScheme } from '../colors/index.ts';
+import type { ConfigSchemaTheme } from '../schemas/schema.ts';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.ts';
 
-export type Token =
-  | { $value: string | Record<string, string>[]; $type: string }
-  | { $type: 'boxShadow'; $value: Record<'x' | 'y' | 'blur' | 'spread' | 'color', string>[] }
-  | {
-      $type: 'typography';
-      $value: Record<'fontFamily' | 'fontWeight' | 'lineHeight' | 'fontSize' | 'letterSpacing', string>;
-    };
+type TokenMetadata = {
+  /** @see https://www.designtokens.org/tr/2025.10/format/#description */
+  $description?: string;
+  /** @see https://www.designtokens.org/tr/2025.10/format/#deprecated */
+  $deprecated?: string;
+};
+
+export type Token = TokenMetadata &
+  (
+    | { $type: string; $value: string | Record<string, string>[] }
+    | { $type: 'boxShadow'; $value: Record<'x' | 'y' | 'blur' | 'spread' | 'color', string>[] }
+    | {
+        $type: 'typography';
+        $value: Record<'fontFamily' | 'fontWeight' | 'lineHeight' | 'fontSize' | 'letterSpacing', string>;
+      }
+  );
 
 export type TokenSet = {
   [key: string]: Token | TokenSet;
@@ -17,6 +26,22 @@ export type TokenSet = {
 export type TokenSets = Map<string, TokenSet>;
 
 export type Typography = Theme['typography'];
+
+/** A named typography set, i.e. one entry in `typography.fonts`. */
+export type TypographySet = Typography['fonts'][string];
+
+/** The component typography shared by all typography sets. */
+export type TypographyComponents = Typography['components'];
+
+export type SizeConfig = Theme['size'];
+
+export type BorderRadiusConfig = Theme['borderRadius'];
+
+export type ShadowConfig = Theme['shadow'];
+
+export type BorderWidthConfig = Theme['borderWidth'];
+
+export type OpacityConfig = Theme['opacity'];
 
 export type Theme = {
   name: string;
@@ -42,6 +67,7 @@ export type ThemeDimension = keyof ThemePermutation;
 export type TokenSetDimensions = {
   colorSchemes: ColorScheme[];
   sizeModes: SizeModes[];
+  typographies: string[];
 };
 
 export type GetSDConfigOptions = {

@@ -8,6 +8,8 @@ export type PopoverTriggerContextProps = {
 /**
  * PopoverTriggerContext component, use to wrap a Popover.Trigger and Popover.
  *
+ * @deprecated Will be removed in the next major version. Connect a `Button` to the popover with `popovertarget` set to the popover's `id` instead.
+ *
  * @example
  * <PopoverTriggerContext>
  *   <PopoverTrigger>Open Popover</PopoverTrigger>

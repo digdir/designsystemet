@@ -34,22 +34,11 @@ export default {
     copy: 'Copy',
     copied: 'Copied',
   },
-  'color-metadata': colorMetadata,
-  'color-modal': {
-    hexcode: 'Hexcode',
-    'css-variable': 'CSS variable',
-    'relative-luminance': 'Relative luminance',
-    'can-be-used-against': 'Can be used against',
-    'color-combinations': {
-      'all-colors': 'All colors',
-      'background-subtle-and-default': 'Background subtle and Default',
-      'background-colors-and-surface-default':
-        'Background colors and Surface Default',
-      'background-colors-and-surface-colors':
-        'Background colors and Surface colors',
-      'base-colors': 'Base colors',
-    },
+  'code-block': {
+    'enable-wrap': 'Enable line wrapping',
+    'disable-wrap': 'Disable line wrapping',
   },
+  'color-metadata': colorMetadata,
   'token-preview': {
     size: {
       'select-label': 'Select size',
@@ -80,6 +69,7 @@ export default {
     'no-results': 'No results found',
     table: {
       name: 'Variable name',
+      figma: 'Figma',
       preview: 'Preview',
       value: 'Value',
     },

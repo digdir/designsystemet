@@ -7,6 +7,7 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 export const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
+// @deprecated v2: the export is removed, but Spinner and Skeleton still use the hook
 /**
  * Synchronizes the css animation of multiple elements with the same `animationName`.
  *

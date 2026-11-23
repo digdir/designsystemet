@@ -7,7 +7,6 @@
   "zip": true,
   "externals": [
     "packages/css/**/*.css",
-    "packages/theme/**/*.css",
     "apps/storybook/{.storybook,story-utils}/**/*"
   ]
 }

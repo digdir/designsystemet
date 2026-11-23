@@ -1,7 +1,7 @@
 import { checkAndEvaluateMath } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import type { Transform } from 'style-dictionary/types';
-
+import { CSS_VARIABLE_PREFIX, cssVariableName, toCssVariableSegments } from '../css-variables.ts';
 import { getValue, pathStartsWithOneOf, typeEquals } from '../utils.ts';
 
 const isPx = R.test(/\b\d+px\b/g);
@@ -33,14 +33,17 @@ export const sizeRem: Transform = {
   },
 };
 
-export const typographyName: Transform = {
-  name: 'name/typography',
+/**
+ * Names tokens with the shared {@link cssVariableName} rules so the CSS output and the Figma plugin agree.
+ * Tokens that are never output as a CSS property keep Style Dictionary's plain kebab name for reference resolution.
+ */
+export const dsName: Transform = {
+  name: 'ds/name',
   type: 'name',
-  transitive: true,
-  // expanded tokens have different type so we match on path instead
-  filter: (token) => pathStartsWithOneOf(['typography'], token),
-  transform: (token) => {
-    return token.name.replace('-typography', '');
+  transform: (token, config) => {
+    const prefix = config.prefix ?? CSS_VARIABLE_PREFIX;
+    const name = cssVariableName(token.path, token.filePath ?? '');
+    return name ? name.slice(2) : toCssVariableSegments([prefix, ...token.path]);
   },
 };
 

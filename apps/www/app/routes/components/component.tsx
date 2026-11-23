@@ -26,8 +26,10 @@ import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
-import { generateMetadata } from '~/_utils/metadata';
+import { generateMetadata, withMetaImage } from '~/_utils/metadata';
+import { getStoryHtml } from '~/_utils/story-html';
 import { stripTrailingSlash } from '~/_utils/strip-trailing-slash';
+import i18n from '~/i18next.server';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
 
@@ -43,6 +45,11 @@ const cssCache = new Map<
   }
 >();
 const warnedCssFiles = new Set<string>();
+const componentPages = ['overview', 'code', 'accessibility'] as const;
+type ComponentPage = (typeof componentPages)[number];
+
+const isComponentPage = (page: string): page is ComponentPage =>
+  componentPages.includes(page as ComponentPage);
 
 const getComponentCss = (cssFile: string) => {
   const cached = cssCache.get(cssFile);
@@ -81,7 +88,8 @@ const getComponentCss = (cssFile: string) => {
 export { ErrorBoundary } from '~/root';
 
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
-  const { component, lang } = params;
+  const { component } = params;
+  const lang = params.lang ?? 'no';
 
   if (!component) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
@@ -133,7 +141,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   // requests append a `.data` suffix (e.g. `/accessibility.data`) to request.url.
   // stripTrailingSlash: RR v8 prerenders HTML with a trailing slash, which the
   // splat would otherwise include (e.g. `code/` → reading `code/.mdx`).
-  const compPage = stripTrailingSlash(params['*']);
+  const compPage = stripTrailingSlash(params['*']) ?? '';
 
   const componentDocs = getComponentDocs(component);
 
@@ -155,6 +163,14 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     jsonMetadata.cssFile,
   );
 
+  const t = await i18n.getFixedT(lang);
+  const pageTitleSuffix = isComponentPage(compPage)
+    ? t(`component.${compPage}`)
+    : undefined;
+  const pageTitle = pageTitleSuffix
+    ? `${jsonMetadata[lang].title} ${pageTitleSuffix}`
+    : jsonMetadata[lang].title;
+
   return {
     component,
     stories: storyEntries,
@@ -167,7 +183,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       tabs: jsonMetadata.tabs !== false,
     },
     linkMetadata: generateMetadata({
-      title: jsonMetadata[lang].title,
+      title: pageTitle,
       description: jsonMetadata[lang].subtitle,
     }),
     cssSource,
@@ -184,14 +200,14 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   };
 };
 
-export const meta = ({ loaderData }: Route.MetaArgs) => {
+export const meta = ({ loaderData, location }: Route.MetaArgs) => {
   if (!loaderData?.linkMetadata)
     return [
       {
         title: 'Designsystemet',
       },
     ];
-  return loaderData.linkMetadata;
+  return withMetaImage(loaderData.linkMetadata, location.pathname);
 };
 
 export default function Components({
@@ -271,6 +287,7 @@ export default function Components({
             <LiveComponent
               key={story.name}
               story={`${story.code.trim()}\nrender(<${story.name} />)`}
+              html={getStoryHtml(story)}
             />
           ))
         )}
@@ -300,7 +317,7 @@ const CssVars = () => {
   return cssVars ? <CssVariables vars={cssVars} /> : null;
 };
 
-const Attributes = () => {
+const Attributes = ({ exclude = [] }: { exclude?: string[] }) => {
   const { t } = useTranslation();
 
   const data =
@@ -309,9 +326,14 @@ const Attributes = () => {
     return <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>;
 
   const { cssAttrs } = data;
+  const filteredCssAttrs: Record<string, string> = {};
 
-  return cssAttrs ? (
-    <CssAttributes vars={cssAttrs} />
+  // Filter out excluded properties
+  for (const [name, value] of Object.entries(cssAttrs))
+    if (!exclude.includes(name)) filteredCssAttrs[name] = value;
+
+  return Object.entries(filteredCssAttrs).length ? (
+    <CssAttributes vars={filteredCssAttrs} />
   ) : (
     <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>
   );

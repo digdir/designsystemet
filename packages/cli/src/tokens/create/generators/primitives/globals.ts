@@ -1,147 +1,48 @@
-import type { TokenSet } from '../../../types.ts';
+import type { BorderWidthConfig, OpacityConfig, ShadowConfig, TokenSet } from '../../../types.ts';
+import { numericKeyedValues } from '../../../utils.ts';
 
-const globals: TokenSet = {
-  'border-width': {
-    '1': {
-      $type: 'borderWidth',
-      $value: '1px',
-    },
-    '3': {
-      $type: 'borderWidth',
-      $value: '3px',
-    },
-  },
-  shadow: {
-    '100': {
-      $type: 'boxShadow',
-      $value: [
-        {
-          color: 'rgba(0,0,0,0.16)',
-          x: '0',
-          y: '0',
-          blur: '1',
-          spread: '0',
-        },
-        {
-          x: '0',
-          y: '1',
-          blur: '2',
-          spread: '0',
-          color: 'rgba(0,0,0,0.12)',
-        },
-      ],
-    },
-    '200': {
-      $type: 'boxShadow',
-      $value: [
-        {
-          color: 'rgba(0,0,0,0.15)',
-          x: '0',
-          y: '0',
-          blur: '1',
-          spread: '0',
-        },
-        {
-          color: 'rgba(0,0,0,0.12)',
-          x: '0',
-          y: '1',
-          blur: '2',
-          spread: '0',
-        },
-        {
-          x: '0',
-          y: '2',
-          blur: '4',
-          spread: '0',
-          color: 'rgba(0,0,0,0.1)',
-        },
-      ],
-    },
-    '300': {
-      $type: 'boxShadow',
-      $value: [
-        {
-          color: 'rgba(0,0,0,0.14)',
-          x: '0',
-          y: '0',
-          blur: '1',
-          spread: '0',
-        },
-        {
-          color: 'rgba(0,0,0,0.12)',
-          x: '0',
-          y: '2',
-          blur: '4',
-          spread: '0',
-        },
-        {
-          x: '0',
-          y: '4',
-          blur: '8',
-          spread: '0',
-          color: 'rgba(0,0,0,0.12)',
-        },
-      ],
-    },
-    '400': {
-      $type: 'boxShadow',
-      $value: [
-        {
-          color: 'rgba(0,0,0,0.13)',
-          x: '0',
-          y: '0',
-          blur: '1',
-          spread: '0',
-        },
-        {
-          color: 'rgba(0,0,0,0.13)',
-          x: '0',
-          y: '3',
-          blur: '5',
-          spread: '0',
-        },
-        {
-          x: '0',
-          y: '6',
-          blur: '12',
-          spread: '0',
-          color: 'rgba(0,0,0,0.14)',
-        },
-      ],
-    },
-    '500': {
-      $type: 'boxShadow',
-      $value: [
-        {
-          color: 'rgba(0,0,0,0.12)',
-          x: '0',
-          y: '0',
-          blur: '1',
-          spread: '0',
-        },
-        {
-          color: 'rgba(0,0,0,0.16)',
-          x: '0',
-          y: '4',
-          blur: '8',
-          spread: '0',
-        },
-        {
-          x: '0',
-          y: '12',
-          blur: '24',
-          spread: '0',
-          color: 'rgba(0,0,0,0.16)',
-        },
-      ],
-    },
-  },
-  opacity: {
-    '30': {
-      $type: 'opacity',
-      $value: '30%',
-    },
-  },
-} satisfies TokenSet;
+// The shadow steps are output as a numbered scale (100, 200, ...), in the order they are defined in the config.
+const generateShadows = (shadow: ShadowConfig): TokenSet =>
+  Object.fromEntries(
+    Object.values(shadow).map((declaration, index) => [
+      String((index + 1) * 100),
+      {
+        $type: 'boxShadow',
+        $value: declaration,
+      },
+    ]),
+  );
 
-export const generateGlobals = () => globals;
+// The border-width primitives are keyed by their numeric width, e.g. '3px' -> '3'.
+const generateBorderWidths = (borderWidth: BorderWidthConfig): TokenSet =>
+  Object.fromEntries(
+    numericKeyedValues(borderWidth, 'border-width').map(([key, value]) => [
+      key,
+      {
+        $type: 'borderWidth',
+        $value: value,
+      },
+    ]),
+  );
+
+// The opacity primitives are keyed by their numeric value, e.g. '30%' -> '30'.
+const generateOpacities = (opacity: OpacityConfig): TokenSet =>
+  Object.fromEntries(
+    numericKeyedValues(opacity, 'opacity').map(([key, value]) => [
+      key,
+      {
+        $type: 'opacity',
+        $value: value,
+      },
+    ]),
+  );
+
+export const generateGlobals = (
+  shadow: ShadowConfig,
+  borderWidth: BorderWidthConfig,
+  opacity: OpacityConfig,
+): TokenSet => ({
+  'border-width': generateBorderWidths(borderWidth),
+  shadow: generateShadows(shadow),
+  opacity: generateOpacities(opacity),
+});

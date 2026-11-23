@@ -1,0 +1,9 @@
+.panelDesc {
+  color: var(--ds-color-neutral-text-subtle);
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.radioGroup {
+  margin-top: 16px;
+}

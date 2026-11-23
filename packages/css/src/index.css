@@ -1,4 +1,4 @@
-@layer ds.theme, ds.base, ds.components;
+@layer ds.theme, ds.base, ds.components, ds.utils;
 
 /** Import order defines ordinal specificity for layers */
 @import url('./base.css') layer(ds.base);
@@ -38,3 +38,4 @@
 @import url('./avatar-stack.css') layer(ds.components);
 @import url('./suggestion.css') layer(ds.components);
 @import url('./combobox.css') layer(ds.components);
+@import url('./utils.css') layer(ds.utils);

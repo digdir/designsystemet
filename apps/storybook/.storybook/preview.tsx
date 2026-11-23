@@ -8,7 +8,6 @@ import './style.css';
 import '../../../packages/css/src/index.css';
 import '../../../packages/css/theme/designsystemet.css';
 
-import { DocsContainer } from '@storybook/addon-docs/blocks';
 import isChromatic from 'chromatic/isChromatic';
 import type { ViewportMap } from 'storybook/viewport';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
@@ -27,20 +26,6 @@ for (const width of viewportWidths) {
     },
   };
 }
-
-const DocsContainerWithWrapper: typeof DocsContainer = ({
-  children,
-  context,
-  ...props
-}) => {
-  return (
-    <div className='custom-docs-wrapper'>
-      <DocsContainer context={context} {...props}>
-        {children}
-      </DocsContainer>
-    </div>
-  );
-};
 
 export default definePreview({
   tags: ['a11y-test'],
@@ -67,8 +52,6 @@ export default definePreview({
     viewMode: 'docs',
     docs: {
       theme: customTheme,
-      //@ts-ignore
-      container: DocsContainerWithWrapper,
       /* @ts-ignore this is a type error as of 9.0.6*/
       codePanel: true,
     },

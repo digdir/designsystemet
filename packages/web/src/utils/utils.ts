@@ -77,7 +77,9 @@ export const attr = (
 export const getCSSProp = (el: Element, prop: string) =>
   getComputedStyle(el).getPropertyValue(prop).trim();
 
-const STRIP_QUOTES = /^["']|["']$/g; // Matches surrounding single or double quotes
+const QUOTES_STRIP_SURROUNDING = /^["']|["']$/g; // Matches surrounding single or double quotes
+const QUOTES_MATCH = /\\(["'])/g;
+
 /**
  * attrOrCSS
  * @description Retrieves and updates attribute based on attribute or CSS property value
@@ -88,7 +90,10 @@ const STRIP_QUOTES = /^["']|["']$/g; // Matches surrounding single or double quo
 export const attrOrCSS = (el: Element, name: string) => {
   let value = attr(el, name);
   if (!value)
-    value = getCSSProp(el, `--_ds-${name}`).replace(STRIP_QUOTES, '').trim();
+    value = getCSSProp(el, `--_ds-${name}`)
+      .replace(QUOTES_STRIP_SURROUNDING, '')
+      .replace(QUOTES_MATCH, '$1') // Unescape quotes
+      .trim();
   return value || null;
 };
 
