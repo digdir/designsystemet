@@ -1,4 +1,4 @@
-import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Badge, Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { FileExportIcon, PaletteIcon, RocketIcon } from '@navikt/aksel-icons';
 
 // A utility on the start page: a small card with an icon and a short label. Add new utilities to the list
@@ -7,6 +7,8 @@ type Utility = {
   label: string;
   icon: React.ReactNode;
   onClick: () => void;
+  /** A count shown in the card's corner, e.g. migrations not applied to this file. Hidden when 0. */
+  badge?: { count: number; label: string };
 };
 
 // The start view: import a theme into this file, and the utilities, e.g. updating a copy of the UI kit.
@@ -14,14 +16,25 @@ type Utility = {
 export function HomeView({
   onImport,
   onUpdateKit,
+  pendingMigrations = 0,
   onExport,
 }: {
   onImport: () => void;
   onUpdateKit: () => void;
+  /** The number of migrations not applied to this file yet. */
+  pendingMigrations?: number;
   onExport?: () => void;
 }): React.JSX.Element {
   const utilities: Utility[] = [
-    { label: 'Update UI kit', icon: <RocketIcon />, onClick: onUpdateKit },
+    {
+      label: 'Update UI kit',
+      icon: <RocketIcon />,
+      onClick: onUpdateKit,
+      badge: {
+        count: pendingMigrations,
+        label: `${pendingMigrations} ${pendingMigrations === 1 ? 'update' : 'updates'} not applied`,
+      },
+    },
     ...(onExport
       ? [
           {
@@ -67,7 +80,7 @@ export function HomeView({
           Utilities
         </Heading>
         <div className='home-utility-grid'>
-          {utilities.map(({ label, icon, onClick }) => (
+          {utilities.map(({ label, icon, onClick, badge }) => (
             <Card
               key={label}
               data-color='neutral'
@@ -79,6 +92,19 @@ export function HomeView({
                   {icon}
                 </span>
                 <span className='home-utility-label'>{label}</span>
+                {badge && badge.count > 0 && (
+                  <>
+                    {/* The count is drawn by CSS, so screen readers get it as text instead. */}
+                    <Badge
+                      aria-hidden
+                      data-color='accent'
+                      count={badge.count}
+                      maxCount={9}
+                      className='home-utility-badge'
+                    />
+                    <span className='ds-sr-only'>, {badge.label}</span>
+                  </>
+                )}
               </button>
             </Card>
           ))}

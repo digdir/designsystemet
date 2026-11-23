@@ -197,6 +197,17 @@ textarea {
   font-weight: var(--ds-font-weight-medium);
 }
 
+/* Room for the badge in the card's corner. */
+.home-view button.home-utility-card {
+  position: relative;
+}
+
+.home-utility-badge {
+  position: absolute;
+  inset-block-start: var(--ds-size-3);
+  inset-inline-end: var(--ds-size-3);
+}
+
 .home-card-icon {
   flex: none;
   display: flex;

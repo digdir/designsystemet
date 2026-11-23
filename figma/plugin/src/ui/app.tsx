@@ -240,7 +240,7 @@ function App() {
   );
 
   useEffect(() => {
-    return onPluginMessage((msg) => {
+    const stopListening = onPluginMessage((msg) => {
       switch (msg.type) {
         case 'import-progress':
           dispatch({
@@ -293,6 +293,10 @@ function App() {
           break;
       }
     });
+    // For the home view's badge: how many migrations this file hasn't had yet.
+    postToPlugin('list-migrations');
+
+    return stopListening;
   }, []);
 
   const importConfig = () => {
@@ -321,6 +325,10 @@ function App() {
   const canApply = state.migrations.summaries.some(
     (summary) => !summary.error && summary.total > 0,
   );
+
+  // Migrations not applied to this file yet, for the badge on the Update UI kit card.
+  const pendingMigrations =
+    state.migrations.available?.filter((m) => !m.appliedAt).length ?? 0;
 
   const exportedConfig =
     state.exported?.status === 'success' ? state.exported.config : null;
@@ -354,6 +362,7 @@ function App() {
           <HomeView
             onImport={() => dispatch({ type: 'show-import' })}
             onUpdateKit={showMigrations}
+            pendingMigrations={pendingMigrations}
             onExport={FEAT_EXPORT ? exportConfig : undefined}
           />
         )}
