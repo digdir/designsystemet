@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { convertToHex } from '../colors/index.ts';
-import { addSeverityColors, severityColorNames } from './defaults.ts';
+import { addSeverityColors, hasOwnColor } from './defaults.ts';
 
 const hexPatterns = [
   // Hex colors: #000, #0000, #000000, #00000000
@@ -48,7 +48,7 @@ export const themeNameSchema = z
 export const colorsSchema = z
   .record(colorNameSchema, colorSchema)
   // The severity colors are added by default, so a theme needs at least one color of its own.
-  .refine((c) => Object.keys(c).some((name) => !(severityColorNames as string[]).includes(name)), {
+  .refine((c) => hasOwnColor(Object.keys(c)), {
     message: 'Theme colors must include at least one color that is not a severity color.',
   })
   // Adds the default severity colors that are missing, and moves all severity colors last.

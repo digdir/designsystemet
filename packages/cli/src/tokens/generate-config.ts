@@ -2,7 +2,7 @@ import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.ts';
 import { legacyBuildDir, toConfigRelative, toOutput } from '../migrations/new-output-field.ts';
-import { severityColorNames } from '../schemas/defaults.ts';
+import { hasOwnColor } from '../schemas/defaults.ts';
 import type { ExternalConfigSchemaInput } from '../schemas/schema.ts';
 import { dsfs } from '../utils/filesystem.ts';
 
@@ -244,7 +244,7 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
 
     // The severity colors are added by default, so a theme needs at least one color of its own,
     // as in the config schema
-    if (!Object.keys(colors).some((name) => !(severityColorNames as string[]).includes(name))) {
+    if (!hasOwnColor(Object.keys(colors))) {
       console.warn(pc.yellow(`\nWarning: No colors besides the severity colors found for theme ${themeName}`));
       continue;
     }

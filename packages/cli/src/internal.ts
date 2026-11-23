@@ -31,6 +31,8 @@ export { flattenColors, isOldColorSchema } from './migrations/flatten-color-cate
 export {
   defaultBorderRadius,
   defaultFontFamily,
+  hasOwnColor,
+  isSeverityColor,
   severityColors,
 } from './schemas/defaults.ts';
 export { parseConfig, parseJsonc, validateConfig } from './schemas/helpers.ts';

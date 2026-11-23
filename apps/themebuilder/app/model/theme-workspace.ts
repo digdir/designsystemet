@@ -2,6 +2,8 @@ import {
   type ColorScheme,
   colorNameSchema,
   type ExternalConfigSchemaInput,
+  hasOwnColor,
+  isSeverityColor,
   type SemanticColorNames,
   severityColors,
   themeNameSchema,
@@ -19,8 +21,6 @@ export type WorkspaceConfig = ExternalConfigSchemaInput & {
 
 export type ThemeWorkspace = { config: WorkspaceConfig; activeTheme: string };
 
-const isSeverityColor = (name: string) => Object.hasOwn(severityColors, name);
-
 /**
  * Whether a color can be renamed. Severity colors cannot for now: every theme has them,
  * since the CLI adds the severity colors a theme lacks, so a renamed one would come back next to its new name.
@@ -35,7 +35,7 @@ export const canRenameColor = (name: string) => !isSeverityColor(name);
  */
 export const canRemoveColor = (names: string[], name: string) =>
   !isSeverityColor(name) &&
-  names.some((other) => other !== name && !isSeverityColor(other));
+  hasOwnColor(names.filter((other) => other !== name));
 
 /** The CLI's rule for the name of a color: lowercase letters and digits, with single hyphens between them */
 const isValidColorName = (name: string) =>
