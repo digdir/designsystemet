@@ -1,0 +1,85 @@
+---
+title: Innovasjon Norge bygger Koble på Designsystemet
+description: Innovasjon Norge bruker Designsystemet som fundament i sitt eget komponentbibliotek, Koble, og har tatt det i bruk i blant annet Nettbank, Min side og Prosjekthjelpen.
+date: 2026-11-23
+author: Innovasjon Norge, Digdir
+imageSrc: /img/blog/innovasjonnorge/innovasjonnorge-front.webp
+imageAlt: Innovasjon Norges logo ved siden av en oversikt over fargetokens i temaet Innovasjon Norge, med navn og fargekoder for primærfargen i lys modus.
+imageCaption: Innovasjon Norge har generert egne tokens med temabyggeren, og bruker dem i komponentbiblioteket Koble.
+search_terms: koble, nettbank, prosjekthjelpen, min side
+---
+
+Innovasjon Norge har bygget sitt eget komponentbibliotek, [Koble](https://koble.innovasjonnorge.no/?path=/docs/introduction-hva-er-koble--docs), med Designsystemet som fundament. I dag bruker de fleste av Innovasjon Norges løsninger og tjenester Koble, og eldre løsninger blir gradvis flyttet over.
+
+Vi har stilt Innovasjon Norge noen spørsmål om hvorfor de valgte å bygge videre på Designsystemet, hvordan de bruker det i dag, og hva de har lært underveis.
+
+## Hva var bakgrunnen for at Innovasjon Norge begynte å bruke Designsystemet?
+
+Vi var godt i gang med å bygge opp et nytt og forbedret komponentbibliotek, Koble. Hovedfokuset hadde vært å bygge komponenter som passet til [innovasjonnorge.no](https://www.innovasjonnorge.no) først, og deretter komponenter til våre interne sider. Her var det bruk for mange av komponentene som fulgte med rett ut av boksen i Designsystemet. Det virket derfor som en veldig god mulighet til å få fart på vårt eget komponentbibliotek, slik at flere produktteam kunne ta det i bruk.
+
+I tillegg var det godt å kunne lene seg på noe som er ment å være en standard på tvers av offentlige virksomheter.
+
+## Hvor og hvordan bruker dere Designsystemet i dag?
+
+Vi bruker Designsystemet som fundament i vårt eget komponentbibliotek, Koble. De fleste løsningene og tjenestene våre bruker Koble i dag, og vi har en pågående jobb med å migrere eldre løsninger over til Koble.
+
+Eksempler på tjenester er Nettbank, Min side og Prosjekthjelpen.
+
+### Nettbank
+
+<Image
+  src='/img/blog/innovasjonnorge/nettbank.webp'
+  alt='Fire skjermbilder fra Nettbank: startsiden for søknad om utbetaling med informasjonsboks, et skjema med tekstfelt og filopplasting, en side for utbetaling og dokumentasjon, og et skjema for endring av vilkår for lån og tilskudd.'
+  caption='I Nettbank kan kundene blant annet søke om utbetaling og om endring av vilkår for lån og tilskudd.'
+  boxShadow={true}
+/>
+
+### Min side og Prosjekthjelpen
+
+<Image
+  src='/img/blog/innovasjonnorge/minside.webp'
+  alt='Skjermbilder fra Min side hos Innovasjon Norge: forsiden med kort for lån, tilskudd, søknader og oppgaver, en tabell med oppgaver og en dialog for å fjerne kobling til en aktør.'
+  caption='På Min side får kundene oversikt over søknader, henvendelser og oppgaver.'
+  boxShadow={true}
+/>
+
+<Image
+  src='/img/blog/innovasjonnorge/prosjekthjelpen.webp'
+  alt='Fire skjermbilder fra en søknad: en oppsummeringsside med stegliste og varselboks, et skjema om bedriften i dag, en liste over aktiviteter med tilhørende kostnader, og utvidbare seksjoner med spørsmål og svar om søknadsprosessen.'
+  caption='Søknader i Min side og Prosjekthjelpen er bygget opp av komponenter fra Koble.'
+  boxShadow={true}
+/>
+
+## Hvordan har dere tilpasset Designsystemet til Innovasjon Norges egen visuelle profil og behov?
+
+Vi har tilpasset fargene og generert egne tokens med hjelp fra [temabyggeren](https://theme.designsystemet.no/no). Der det var nødvendig, har vi også tilpasset og endret enkelte farger i fargeskalaen manuelt.
+
+I tillegg har vi justert skriftstørrelse og skrifttype, samt radius på enkelte komponenter.
+
+`Button`-komponenten har et annet visuelt uttrykk hos oss, men bruker `Button` fra Designsystemet som fundament. Når vi lager nye komponenter, bruker vi også Designsystemet som utgangspunkt.
+
+## Hva opplever dere som de største gevinstene ved å bruke et felles designsystem i bunn?
+
+- Et solid og godt fundament for komponenter, som oppfyller mange av kravene som stilles, og som samtidig er fleksibelt nok til at vi kan tilpasse det til egne behov.
+- Gode retningslinjer, dokumentasjon og mønstre vi kan lene oss på.
+- Det er åpen kildekode, og vi kan hente inspirasjon fra andre som også bruker Designsystemet som fundament.
+- Et veldig profesjonelt, hyggelig og dyktig team som bygger Designsystemet.
+
+## Hva har vært mest utfordrende, eller hva har dere måttet løse selv?
+
+Det var egentlig overraskende enkelt å ta Designsystemet inn i vårt eksisterende bibliotek og samkjøre det med vårt eget oppsett.
+
+Det vi må jobbe med, er å migrere komponenter vi hadde fra før, og som ikke finnes i Designsystemet, slik at de bruker samme struktur og tokens som komponentene som er basert på Designsystemet. Det er ingen krise, men det kan av og til være forvirrende for dem som bruker biblioteket.
+
+## Hva ønsker dere fra Designsystemet fremover?
+
+Fortsett med det fantastiske arbeidet! En bonus er flere gode mønstre og retningslinjer. De er veldig verdifulle og hjelper oss med å utvikle løsningene og tjenestene våre.
+
+Vi har laget noen script for å holde oss i synk med dokumentasjonen til Designsystemet. Det fungerer greit, men det er ikke alltid like lett å vedlikeholde når vi i noen tilfeller har egne retningslinjer.
+
+<Contributors
+  authors={[
+    'Georg Bakken Idland (Innovasjon Norge)',
+    'Marianne Røsvik (Digdir)',
+  ]}
+/>
