@@ -11,7 +11,7 @@ Otherwise you will get an `Error: Validation Failed: {"resource":"PullRequest","
 
    The PR also adds the new version to [`changelog.json`](changelog.json), where each change is listed once with the packages it affects. The GitHub release and the changelog page on www (`/en/changelog`) are built from it, so edit the version there:
    - If two entries describe the same change, for example one for code and one for Figma, merge them into one, with the packages of both.
-   - To introduce the release, write notes in markdown in the version's `notes` field.
+   - To introduce the release, write notes in markdown in the version's `notes` field, without headings.
 
    Make the edits in the release PR right before you merge it. The Release workflow makes the PR again each time something is merged to `main`, and that removes edits made to it. Versions already in `changelog.json` on `main` are not rebuilt, so edits there are kept. The page on www is built again from `changelog.json` every time www is deployed, but the GitHub release is only made once, when the version is published.
 

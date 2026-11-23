@@ -270,9 +270,9 @@ function Release({
           ) : null}
         </div>
       </header>
-      {packages ? (
-        children
-      ) : (
+      {/* Also a version without changes can have notes */}
+      {children}
+      {packages ? null : (
         <Paragraph lang={lang}>{t('changelog.no-changes')}</Paragraph>
       )}
     </section>
