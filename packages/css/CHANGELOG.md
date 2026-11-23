@@ -4,11 +4,18 @@
 
 ### Patch Changes
 
-- **size**: In the Large size mode, `--ds-size-3`, `-6`, `-9`, `-12`, `-15`, `-18` and `-30` are 1px larger, now matching the intended values in Figma and in all browsers. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
-  
-  These sizes are whole numbers (14, 28, 42, 56, 70, 84 and 140px), but a floating-point rounding error in the size formula made Figma, Chrome and Safari round them down to 1px less, while Firefox could show the intended value. The formula now multiplies before dividing, so the result is exact. Small and Medium do not change.
-  
-  In Figma, the size variables for Large change the next time you import your theme.
+- **Size:** Some sizes in the Large size mode are 1px larger, as intended. A rounding error made them 1px too small. Small and Medium do not change. ([#5648](https://github.com/digdir/designsystemet/pull/5648))
+
+  | Variable | Large |
+  |---|---|
+  | `size/3` | 13 → 14 |
+  | `size/6` | 27 → 28 |
+  | `size/9` | 41 → 42 |
+  | `size/12` | 55 → 56 |
+  | `size/15` | 69 → 70 |
+  | `size/18` | 83 → 84 |
+  | `size/30` | 139 → 140 |
+
 - Update npm non-major dependencies ([#5613](https://github.com/digdir/designsystemet/pull/5613))
 
 ## 1.24.0
