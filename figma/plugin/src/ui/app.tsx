@@ -2,7 +2,12 @@ import '@digdir/designsystemet-css/theme';
 import '@digdir/designsystemet-css';
 import { Button, Heading } from '@digdir/designsystemet-react';
 import { useEffect, useReducer, useState } from 'react';
-import type { FigmaMessages, Notification } from '../types';
+import type {
+  FigmaMessages,
+  MigrationInfo,
+  MigrationSummary,
+  Notification,
+} from '../types';
 import './app.css';
 import { onPluginMessage, postToPlugin } from './plugin-messages';
 import { copyText, downloadText } from './save-text';
@@ -12,6 +17,7 @@ import { FinishedView } from './views/finished';
 import { HomeView } from './views/home';
 import { ImportView } from './views/import';
 import { ImportingView, type Progress } from './views/importing';
+import { type MigrationsState, MigrationsView } from './views/migrations';
 import { NotificationsView } from './views/notifications';
 
 // One view is shown at a time, each replacing the main area.
@@ -22,7 +28,8 @@ type View =
   | 'importing'
   | 'finished'
   | 'notifications'
-  | 'export';
+  | 'export'
+  | 'migrations';
 
 type UiState = {
   view: View;
@@ -32,9 +39,13 @@ type UiState = {
   notifications: Notification[];
   /** The config created from this file, shown in the export view. */
   exported: ExportState | null;
+  /** Choosing, previewing and applying migrations, in the migrations view. */
+  migrations: MigrationsState;
 };
 
-const START_VIEW: View = 'import';
+const START_VIEW: View = 'home';
+// Feature toggle: export, which creates a config from the variables in this file. Turned off for now.
+const FEAT_EXPORT = false;
 
 const initialState: UiState = {
   view: START_VIEW,
@@ -42,6 +53,12 @@ const initialState: UiState = {
   result: null,
   notifications: [],
   exported: null,
+  migrations: {
+    available: null,
+    selected: [],
+    status: 'select',
+    summaries: [],
+  },
 };
 
 type Action =
@@ -57,6 +74,15 @@ type Action =
   | { type: 'show-about' }
   | { type: 'export-started' }
   | { type: 'export-finished'; exported: ExportState }
+  | { type: 'show-migrations' }
+  | { type: 'migrations-listed'; available: MigrationInfo[] }
+  | { type: 'migrations-started'; ids: string[]; dryRun: boolean }
+  | {
+      type: 'migrations-finished';
+      dryRun: boolean;
+      summaries: MigrationSummary[];
+      error?: string;
+    }
   | { type: 'go-back' };
 
 function reducer(state: UiState, action: Action): UiState {
@@ -90,7 +116,53 @@ function reducer(state: UiState, action: Action): UiState {
       return { ...state, view: 'export', exported: { status: 'loading' } };
     case 'export-finished':
       return { ...state, exported: action.exported };
+    case 'show-migrations':
+      return {
+        ...state,
+        view: 'migrations',
+        migrations: initialState.migrations,
+      };
+    case 'migrations-listed':
+      return {
+        ...state,
+        migrations: {
+          ...state.migrations,
+          available: action.available,
+        },
+      };
+    case 'migrations-started':
+      return {
+        ...state,
+        migrations: {
+          ...state.migrations,
+          selected: action.ids,
+          status: action.dryRun ? 'previewing' : 'running',
+          error: undefined,
+        },
+      };
+    case 'migrations-finished':
+      return {
+        ...state,
+        migrations: {
+          ...state.migrations,
+          // A failure goes back to choosing, with the error shown there.
+          status: action.error ? 'select' : action.dryRun ? 'preview' : 'done',
+          summaries: action.summaries,
+          error: action.error,
+        },
+      };
     case 'go-back':
+      // From the preview or the result, go back to choosing migrations.
+      if (
+        state.view === 'migrations' &&
+        (state.migrations.status === 'preview' ||
+          state.migrations.status === 'done')
+      ) {
+        return {
+          ...state,
+          migrations: { ...state.migrations, status: 'select' },
+        };
+      }
       return { ...state, view: previousView(state) };
   }
 }
@@ -101,6 +173,8 @@ function previousView(state: UiState): View {
     case 'about':
     case 'finished':
       return 'import';
+    case 'migrations':
+      return START_VIEW;
     case 'notifications':
       return state.result?.status === 'success' ? 'finished' : 'import';
     default:
@@ -115,6 +189,8 @@ function viewTitle(view: View): string {
       return 'Designsystemet';
     case 'export':
       return 'Export';
+    case 'migrations':
+      return 'Update UI kit';
     default:
       return 'Import';
   }
@@ -197,6 +273,24 @@ function App() {
                 : { status: 'error', message: msg.message ?? 'Unknown error' },
           });
           break;
+        case 'migrations-list':
+          dispatch({ type: 'migrations-listed', available: msg.migrations });
+          break;
+        case 'migrations-result':
+          dispatch({
+            type: 'migrations-finished',
+            dryRun: msg.dryRun,
+            summaries: msg.summaries,
+            error:
+              msg.status === 'error'
+                ? `Could not ${msg.dryRun ? 'preview' : 'apply'} the migrations: ${msg.message ?? 'Unknown error'}`
+                : undefined,
+          });
+          // Applied migrations are recorded in the file, so list them again to show when they were applied.
+          if (!msg.dryRun && msg.status === 'success') {
+            postToPlugin('list-migrations');
+          }
+          break;
       }
     });
   }, []);
@@ -212,11 +306,34 @@ function App() {
     postToPlugin('export-config');
   };
 
+  const showMigrations = () => {
+    dispatch({ type: 'show-migrations' });
+    postToPlugin('list-migrations');
+  };
+
+  // Previews the chosen migrations, or applies the ones that were previewed.
+  const runMigrations = (ids: string[], dryRun: boolean) => {
+    dispatch({ type: 'migrations-started', ids, dryRun });
+    postToPlugin('run-migrations', { ids, dryRun });
+  };
+
+  // Something to apply: a previewed migration that can run and has changes.
+  const canApply = state.migrations.summaries.some(
+    (summary) => !summary.error && summary.total > 0,
+  );
+
   const exportedConfig =
     state.exported?.status === 'success' ? state.exported.config : null;
 
   // Every view but the start view and a running import has a way back.
-  const canGoBack = state.view !== START_VIEW && state.view !== 'importing';
+  const canGoBack =
+    state.view !== START_VIEW &&
+    state.view !== 'importing' &&
+    !(
+      state.view === 'migrations' &&
+      (state.migrations.status === 'previewing' ||
+        state.migrations.status === 'running')
+    );
 
   // The number of warning entries. Not the number of affected items: some entries summarise several.
   const warningCount =
@@ -224,7 +341,8 @@ function App() {
 
   return (
     <div className='app'>
-      {START_VIEW === 'home' ? (
+      {/* The home view has its own title. */}
+      {START_VIEW === 'home' && state.view !== 'home' ? (
         <header>
           <Heading>{viewTitle(state.view)}</Heading>
         </header>
@@ -235,7 +353,8 @@ function App() {
         {state.view === 'home' && (
           <HomeView
             onImport={() => dispatch({ type: 'show-import' })}
-            onExport={exportConfig}
+            onUpdateKit={showMigrations}
+            onExport={FEAT_EXPORT ? exportConfig : undefined}
           />
         )}
         {state.view === 'import' && (
@@ -256,6 +375,12 @@ function App() {
         )}
         {state.view === 'export' && state.exported && (
           <ExportView exported={state.exported} />
+        )}
+        {state.view === 'migrations' && (
+          <MigrationsView
+            state={state.migrations}
+            onChoose={(id) => runMigrations([id], true)}
+          />
         )}
       </main>
       {/* Stays mounted across views, so screen readers announce the outcome when the view changes. */}
@@ -286,6 +411,13 @@ function App() {
                   onClick={() => dispatch({ type: 'show-about' })}
                 >
                   What does importing do?
+                </Button>
+                <Button
+                  data-color='neutral'
+                  variant='tertiary'
+                  onClick={showMigrations}
+                >
+                  Update UI kit
                 </Button>
               </>
             ) : (
@@ -330,6 +462,15 @@ function App() {
             </Button>
           </div>
         )}
+        {state.view === 'migrations' &&
+          state.migrations.status === 'preview' && (
+            <Button
+              onClick={() => runMigrations(state.migrations.selected, false)}
+              disabled={!canApply}
+            >
+              Apply changes
+            </Button>
+          )}
         {state.view === 'finished' && state.notifications.length > 0 && (
           <Button
             onClick={() => dispatch({ type: 'show-notifications' })}

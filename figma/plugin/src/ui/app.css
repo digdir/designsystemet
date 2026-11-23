@@ -16,7 +16,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: var(--ds-size-4) var(--ds-size-5);
+  padding: var(--ds-size-4) var(--view-padding-inline);
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
@@ -25,7 +25,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   gap: var(--ds-size-2);
-  padding: var(--ds-size-4);
+  padding: var(--ds-size-4) var(--view-padding-inline);
   &:has(button) {
     border-top: 1px solid var(--ds-color-neutral-border-subtle);
   }
@@ -54,6 +54,9 @@ textarea {
 }
 
 .app {
+  /* The padding around each view's content, shared so views line up. Header and footer use the same inline padding. */
+  --view-padding-inline: var(--ds-size-6);
+  --view-padding: var(--ds-size-5) var(--view-padding-inline);
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   height: 100vh;
@@ -65,7 +68,7 @@ textarea {
   gap: var(--ds-size-4);
   box-sizing: border-box;
   height: 100%;
-  padding: var(--ds-size-4);
+  padding: var(--view-padding);
   overflow-y: auto;
 }
 
@@ -110,7 +113,7 @@ textarea {
   gap: var(--ds-size-3);
   box-sizing: border-box;
   height: 100%;
-  padding: var(--ds-size-4) var(--ds-size-5);
+  padding: var(--view-padding);
   overflow-y: auto;
 }
 
@@ -120,17 +123,108 @@ textarea {
 }
 
 .home-view {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  align-content: center;
-  gap: var(--ds-size-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-7);
   box-sizing: border-box;
   height: 100%;
-  padding: var(--ds-size-6) var(--ds-size-5);
+  padding: var(--view-padding);
   overflow-y: auto;
+}
 
-  & .ds-card > .ds-button {
-    margin-top: var(--ds-size-4);
+.home-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-2);
+  max-width: 32rem;
+
+  & .ds-paragraph {
+    color: var(--ds-color-neutral-text-subtle);
+  }
+}
+
+.home-utilities {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+  /* A step more space above the utilities than between the intro and the import card. */
+  margin-top: calc(var(--ds-size-8) - var(--ds-size-7));
+}
+
+/* Room for more utilities: three columns, so each utility takes a third of the width however many there are. */
+.home-utility-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ds-size-4);
+}
+
+/* Cards that are buttons: their text aligned like other cards, not centered as in buttons. */
+:is(.home-view, .migrations-view) button.ds-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  text-align: start;
+}
+
+/* The home cards space their content with gap, instead of the card's margins between children. */
+.home-view button.ds-card > * {
+  margin-block: 0;
+}
+
+/* The main action: icon on the left, text on the right. */
+.home-view button.home-main-card {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--ds-size-4);
+}
+
+.home-main-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-1);
+}
+
+.home-view button.home-utility-card {
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-size-3);
+  min-height: 9rem;
+  text-align: center;
+}
+
+.home-utility-label {
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.home-card-icon {
+  flex: none;
+  display: flex;
+  width: var(--ds-size-8);
+  height: var(--ds-size-8);
+
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.migration-status {
+  color: var(--ds-color-neutral-text-subtle);
+}
+
+.migration-status--applied {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-1);
+  color: var(--ds-color-success-text-default);
+  font-weight: var(--ds-font-weight-semibold);
+
+  & svg {
+    flex: none;
+    width: 1.25em;
+    height: 1.25em;
+    color: var(--ds-color-success-base-default);
   }
 }
 
@@ -145,7 +239,7 @@ textarea {
   gap: var(--ds-size-3);
   box-sizing: border-box;
   height: 100%;
-  padding: var(--ds-size-4) var(--ds-size-5);
+  padding: var(--view-padding);
   overflow-y: auto;
 }
 
@@ -168,4 +262,20 @@ textarea {
   height: var(--ds-size-14);
   width: var(--ds-size-14);
   color: var(--ds-color-success-base-default);
+}
+
+.migrations-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-3);
+  box-sizing: border-box;
+  height: 100%;
+  padding: var(--view-padding);
+  overflow-y: auto;
+}
+
+.migration-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-2);
 }

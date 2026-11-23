@@ -10,6 +10,7 @@ import {
   type OnStep,
 } from './import/import-to-figma';
 import { createImportLog } from './import/log';
+import { listMigrations, runMigrations } from './migrate/run-migrations';
 
 /** Steps reported to the UI: validating, creating tokens, preparing the import, then the Figma import's own steps. */
 const TOTAL_STEPS = 3 + IMPORT_STEPS;
@@ -64,6 +65,30 @@ figma.ui.onmessage = async (msg: FigmaMessages) => {
         message: error instanceof Error ? error.message : String(error),
       });
       console.error('Error exporting config:', error);
+    }
+    return;
+  }
+
+  if (msg.type === 'list-migrations') {
+    postMessage('migrations-list', { migrations: listMigrations() });
+    return;
+  }
+
+  if (msg.type === 'run-migrations') {
+    try {
+      postMessage('migrations-result', {
+        dryRun: msg.dryRun,
+        status: 'success',
+        summaries: await runMigrations(msg.ids, msg.dryRun),
+      });
+    } catch (error) {
+      postMessage('migrations-result', {
+        dryRun: msg.dryRun,
+        status: 'error',
+        summaries: [],
+        message: error instanceof Error ? error.message : String(error),
+      });
+      console.error('Error running migrations:', error);
     }
     return;
   }

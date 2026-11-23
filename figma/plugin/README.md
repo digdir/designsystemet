@@ -21,9 +21,25 @@ The plugin explains this to users in [the about view](./src/ui/views/about.tsx).
 - Text and effect styles can't have modes, so they get the values of the first theme, in the light color scheme.
 - The fonts in the config must be available in Figma. The import stops before writing anything if one isn't.
 
+## Migrations
+
+When a release changes which variables the UI kit's components use, users with their own copy of the UI kit need their layers updated too. An import can't do this, as it only updates variables and styles. A migration does: **Update UI kit** in the plugin lists the migrations, the user chooses which to run, sees a summary of what will change in each component, and then applies them. Undo in Figma takes back all of it at once. The file records which migrations were applied, and when.
+
+A migration finds the UI kit's components by page and name, and rebinds the color variables on their layers by rules (see [rebind.ts](./src/plugin/migrate/rebind.ts)). It changes main components first; layers in instances follow them, so only overrides in instances are changed.
+
+To add a migration:
+
+1. Write it in [src/plugin/migrate/migrations](./src/plugin/migrate/migrations), like [muted-colors.ts](./src/plugin/migrate/migrations/muted-colors.ts): the components to change, the rules, and the variables a config must have added first (`requires`). Give it an `id` that never changes.
+2. Add it at the end of `MIGRATIONS` in [run-migrations.ts](./src/plugin/migrate/run-migrations.ts).
+3. Test the rules, and run it on a copy of the UI kit from before the change. Compare the result with the updated UI kit.
+
+| Migration | What it does |
+| --- | --- |
+| `muted-colors` | Components no longer use the neutral color: borders, read-only fields and secondary text use the muted colors, and the rest the component's own color ([#5351](https://github.com/digdir/designsystemet/issues/5351)). |
+
 ### Features that are turned off
 
-- **Export:** creates a config from the variables and styles in the file. Set `START_VIEW` to `'home'` in [app.tsx](./src/ui/app.tsx) to choose between import and export when the plugin opens.
+- **Export:** creates a config from the variables and styles in the file. Set `FEAT_EXPORT` to `true` in [app.tsx](./src/ui/app.tsx) to show it as a utility on the start page.
 - **Import from CSS:** creates a config from theme CSS built by Designsystemet, e.g. `designsystemet.css`. Set `FEAT_CSS_IMPORT` to `true` in [import.tsx](./src/ui/views/import.tsx).
 
 ## Development
@@ -50,6 +66,7 @@ Other scripts, run in this folder:
 - [src/plugin](./src/plugin): runs in Figma and reads and writes the file. [code.ts](./src/plugin/code.ts) handles the messages from the UI.
   - [import](./src/plugin/import): builds tokens from the config with the CLI, and writes them to the file.
   - [export](./src/plugin/export): reads the file and creates a config.
+  - [migrate](./src/plugin/migrate): updates the layers in a copy of the UI kit, see [Migrations](#migrations).
 - [src/ui](./src/ui): the plugin window, in React with Designsystemet. It's built into one HTML file, as Figma requires.
 - [src/types.ts](./src/types.ts): the messages between the UI and the plugin.
 
@@ -63,6 +80,7 @@ Import a config into an empty file, and into a file that has had an earlier impo
 4. **Effect styles:** every shadow is there.
 5. **Code syntax:** edit a variable in the Semantic collection. Its code syntax for Web is the CSS variable, e.g. `var(--ds-color-background-default)`.
 6. **Importing again:** import the same config again. The import log says "No changes", and Timings says no variable values were written.
+7. **Migrations:** in a copy of the UI kit from before a migration, import a config, click **Update UI kit**, and preview the migration. Check the summary, apply it, and compare the components with the updated UI kit. Preview it again: there's nothing to change.
 
 ## Versions and publishing
 
