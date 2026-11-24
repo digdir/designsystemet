@@ -19,7 +19,6 @@
     display: block;
   }
 
-  /* @deprecated: User should use ds-heading instead */
   & :is(h1, h2, h3, h4, h5, h6) {
     color: var(--dsc-errorsummary-heading-color); /* @deprecated */
     font-size: var(--ds-font-size-plus-1);
