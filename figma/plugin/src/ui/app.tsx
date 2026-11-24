@@ -165,7 +165,6 @@ function App() {
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // Plugin messages come from window.top with Figma's origin. Don't compare event.source with window.parent.
       if (event.origin !== 'https://www.figma.com') return;
       const msg = event.data?.pluginMessage as FigmaMessages | undefined;
       if (!msg) return;

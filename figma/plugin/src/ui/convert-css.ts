@@ -7,7 +7,6 @@ type ConvertCssResult = Extract<FigmaMessages, { type: 'convert-css-result' }>;
 export function convertCss(files: CssFile[]): Promise<ConvertCssResult> {
   return new Promise((resolve) => {
     const handleMessage = (event: MessageEvent) => {
-      // Plugin messages come from window.top with Figma's origin. Don't compare event.source with window.parent.
       if (event.origin !== 'https://www.figma.com') return;
       const msg = event.data?.pluginMessage as FigmaMessages | undefined;
       if (msg?.type !== 'convert-css-result') return;
