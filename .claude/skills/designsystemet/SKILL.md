@@ -15,6 +15,7 @@ description: Repo-wide conventions for designsystemet.no — the project name in
 - Titles follow Conventional Commits: at most 100 characters, lowercase start of the subject, no trailing period.
 - Every user-facing change to a published package needs a changeset. Breaking changes are `major` and say what the user must do.
 - A chore or internal change in `packages/cli`, `packages/css`, `packages/react` or `packages/web` that doesn't affect users needs an empty changeset to pass the check: a file in `.changeset/` with only two `---` lines.
+- Before a pull request is marked ready for review or the team is asked to review it, have an agent review the changes (for example with `/code-review`), and fix or answer what it finds. Until then, keep the pull request as a draft.
 - CONTRIBUTING.md asks AI agents to add a `pr_implementation.md` file. That is for contributors outside the team, who work from a fork. Don't add it when the branch is pushed to `digdir/designsystemet` itself.
 
 ## Changesets
