@@ -152,14 +152,14 @@ describe('rebindComponents', () => {
 
     expect([...log.changes.values()]).toEqual([
       {
-        component: 'Dialog',
+        page: 'Dialog',
         what: 'Border',
         from: 'neutral border-subtle',
         to: 'border-muted',
         count: 1,
       },
       {
-        component: 'Dialog',
+        page: 'Dialog',
         what: 'Fill',
         from: 'neutral text-default',
         to: 'text-default',
@@ -370,7 +370,8 @@ describe('rebindComponents in a dry run', () => {
 
     expect([...log.changes.values()]).toEqual([
       {
-        component: '_Header',
+        // _Header is on the Dialog page, so its changes are listed under Dialog.
+        page: 'Dialog',
         what: 'Fill',
         from: 'neutral text-default',
         to: 'text-default',

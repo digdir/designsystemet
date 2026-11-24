@@ -9,6 +9,7 @@ const neutral = (step: string) => ({
 const color = (name: string) => ({ collection: 'Color', name });
 
 const paint = (overrides: Partial<PaintContext>): PaintContext => ({
+  page: 'Dialog',
   component: 'Dialog',
   variant: '',
   path: '',

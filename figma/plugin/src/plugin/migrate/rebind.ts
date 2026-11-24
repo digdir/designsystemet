@@ -16,6 +16,8 @@ export type ComponentTarget = {
 
 /** Where a layer is: the target component, the variant it's in, and its path below the variant. */
 export type LayerContext = {
+  /** The page the target component is on, as the migration names it, e.g. `Checkbox`. Changes are grouped by it. */
+  page: string;
   component: string;
   /** The variant's name, e.g. `state=read-only`, or '' for a component that isn't a set. */
   variant: string;
@@ -127,7 +129,7 @@ export async function rebindComponents(
 
   const count = (layer: LayerContext, changes: PaintChange[]) => {
     for (const { property, from, to } of changes) {
-      countChange(log, layer.component, property, from, to);
+      countChange(log, layer.page, property, from, to);
     }
   };
 
@@ -228,7 +230,7 @@ export async function rebindComponents(
         continue;
       countChange(
         log,
-        layer.component,
+        layer.page,
         'mode',
         `${collection.name} ${mode.name}`,
         'inherited',
@@ -269,6 +271,7 @@ export async function rebindComponents(
       await visitLayer(
         variant,
         {
+          page: target.page,
           component: target.name.trim(),
           variant: node.type === 'COMPONENT_SET' ? variant.name : '',
           path: '',
@@ -386,18 +389,18 @@ const WHAT: Record<PaintProperty | 'mode', string> = {
   mode: 'Color mode',
 };
 
-/** Counts one more layer with this change. */
+/** Counts one more layer with this change, in the component that the page holds. */
 function countChange(
   log: MigrationLog,
-  component: string,
+  page: string,
   property: PaintProperty | 'mode',
   from: string,
   to: string,
 ): void {
   const what = WHAT[property];
-  const key = [component, what, from, to].join('|');
+  const key = [page, what, from, to].join('|');
   const change = log.changes.get(key) ?? {
-    component,
+    page,
     what,
     from,
     to,

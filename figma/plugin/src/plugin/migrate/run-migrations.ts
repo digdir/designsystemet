@@ -114,16 +114,16 @@ async function runMigration(
   return summary();
 }
 
-/** Groups the changes by component, keeping the order they were found in. */
+/** Groups the changes by component, i.e. by page in the UI kit, keeping the order they were found in. */
 export function summarize(
   log: MigrationLog,
 ): Pick<MigrationSummary, 'components' | 'total'> {
   const components: MigrationSummary['components'] = [];
   let total = 0;
-  for (const { component, ...change } of log.changes.values()) {
-    let entry = components.find((c) => c.name === component);
+  for (const { page, ...change } of log.changes.values()) {
+    let entry = components.find((c) => c.name === page);
     if (!entry) {
-      entry = { name: component, changes: [] };
+      entry = { name: page, changes: [] };
       components.push(entry);
     }
     entry.changes.push(change);

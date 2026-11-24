@@ -157,7 +157,7 @@ function MigrationSummaryView({
       ) : (
         <Paragraph>
           {done ? 'Updated' : 'Will update'}{' '}
-          {plural(components.length, 'component')}:
+          {plural(components.length, 'page')}:
         </Paragraph>
       )}
       {warnings.length > 0 && (

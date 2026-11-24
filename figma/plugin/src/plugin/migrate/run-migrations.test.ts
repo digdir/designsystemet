@@ -17,9 +17,9 @@ describe('MIGRATIONS', () => {
 describe('summarize', () => {
   it('groups the changes by component and totals them', () => {
     const log: MigrationLog = { changes: new Map(), warnings: [] };
-    const add = (component: string, what: string, count: number) =>
-      log.changes.set(`${component}|${what}`, {
-        component,
+    const add = (page: string, what: string, count: number) =>
+      log.changes.set(`${page}|${what}`, {
+        page,
         what,
         from: 'a',
         to: 'b',

@@ -13,8 +13,11 @@ export type VariableRef = {
   name: string;
 };
 
-/** One kind of change in a component, e.g. Textfield's borders going from neutral border-default to border-muted. */
-export type MigrationChange = MigrationChangeSummary & { component: string };
+/**
+ * One kind of change in a component, e.g. Textfield's borders going from neutral border-default to border-muted.
+ * Grouped by page, as each page in the UI kit is one component, with its base components on the same page.
+ */
+export type MigrationChange = MigrationChangeSummary & { page: string };
 
 /** What a migration found and did. */
 export type MigrationLog = {
