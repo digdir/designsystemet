@@ -39,4 +39,5 @@ The UI kit itself is a Figma file, not code. In this repo, `figma/ui-kit/` only 
 - A CLI or CSS change that alters variables, their values, or which variables the components use, also needs a `figma-ui-kit` changeset in the same pull request. CI reminds you with a comment, and requires it when the pull request has the 🎨 figma label.
 - Write it for designers: use Figma's words (variables, modes), and say what they must do in their own copy of the UI kit, if anything.
 - If one text works for both developers and designers, add `figma-ui-kit` to the code changeset instead of writing a second one. The change is then listed once in the changelog.
+- If you have a connector for Figma, ask for a link to the Figma file, and check that a `figma-ui-kit` changeset matches what is changed there: the components, variables and values it names.
 - How to write and publish them is in `figma/README.md`.
