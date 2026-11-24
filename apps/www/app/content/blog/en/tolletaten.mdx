@@ -1,0 +1,57 @@
+---
+title: From Material UI to Designsystemet at Norwegian Customs
+description: Norwegian Customs has replaced its old component library based on Material UI with its own design system built on Designsystemet.
+date: 2026-11-24
+author: Tolletaten, Digdir
+categories: [case]
+imageSrc: /img/blog/tolletaten/tolletaten-front.webp
+imageAlt: The Norwegian Customs logo next to a screenshot of the customs calculator on toll.no, with a form for item, price and currency, and a table showing the result.
+search_terms: norwegian customs, material ui, toll.no, customs calculator
+---
+
+We asked Norwegian Customs a few questions about why they chose to build on Designsystemet, how they use it today, and what they have learned along the way.
+
+## Why did Norwegian Customs start using Designsystemet?
+
+We previously had a component library built on Material UI that was ready to be replaced. At the same time, our design community was growing, and we had a greater need for a complete design system, not just a component library.
+
+That is when we started looking at how we could put a new design system in place. We explored several options, and found that the work on the shared Designsystemet had come so far and was of such high quality that we wanted to adopt it.
+
+What made us choose Designsystemet already at an early stage was the opportunity to be part of a larger network of technologists with similar needs, while also being able to help shape it.
+
+## Where and how do you use Designsystemet today?
+
+We have built our own design system on top of Designsystemet, using the React components from Designsystemet as building blocks, but with our own visual identity. As a general rule, we also follow the patterns from Designsystemet, and refer to them in our own documentation.
+
+All new applications at Norwegian Customs must use Designsystemet, and we have also put effort into migrating existing applications. As a result, almost all our applications now have a consistent look, and we have become more aware that the bigger picture should also be more consistent across applications.
+
+Most of the services we deliver are for internal users. Among our public services, we use Designsystemet on [toll.no](https://www.toll.no), among others.
+
+## How have you adapted Designsystemet to Norwegian Customs' visual identity and needs?
+
+Norwegian Customs has its own visual identity, so we used its colours as a starting point and generated design tokens with the [theme builder](https://theme.designsystemet.no/en). For internal services, we have reduced the size of the components by one step, but otherwise we find that the default setup in Designsystemet works well for us.
+
+Even though the components from Designsystemet cover almost all our needs, we have some domain-specific cases where we have created our own components. In those cases, we use existing components as a starting point, and make sure the new components follow the same patterns for colour and size as the other components.
+
+## What do you see as the biggest benefits of using a shared design system as a foundation?
+
+We save a lot of time, both on development and design. We have almost all the building blocks we need to create a solution, with thorough and good documentation, without having to spend time on development and maintenance ourselves. Because the components are so close to standard HTML elements, they are very easy to use, while still being flexible.
+
+We also often use the documentation on patterns and good practice, which saves us from long internal discussions.
+
+The network around Designsystemet is also invaluable. Whenever we run into challenges, help is never far away.
+
+## What has been the most challenging, or what have you had to solve yourselves?
+
+At first, we had some challenges getting established teams to adopt the new components. But that passed as soon as they saw how much easier it is to write new code with the components from Designsystemet.
+
+## What would you like from Designsystemet going forward?
+
+We are actually quite happy with the components that exist today. So what we would like instead is even more patterns and more documentation of good practice for how different types of screens should be set up, and how the components can be used together.
+
+<Contributors
+  authors={[
+    'Marit Gjøstøl Ytterland (Tolletaten)',
+    'Marianne Røsvik (Digdir)',
+  ]}
+/>
