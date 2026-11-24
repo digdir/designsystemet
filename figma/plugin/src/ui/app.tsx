@@ -4,7 +4,7 @@ import { Button, Heading } from '@digdir/designsystemet-react';
 import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification } from '../types';
 import './app.css';
-import { postToPlugin } from './post-to-plugin';
+import { onPluginMessage, postToPlugin } from './post-to-plugin';
 import { copyText, downloadText } from './save-text';
 import { AboutView } from './views/about';
 import { type ExportState, ExportView } from './views/export';
@@ -164,10 +164,7 @@ function App() {
   );
 
   useEffect(() => {
-    const handleMessage = (event: MessageEvent) => {
-      if (event.origin !== 'https://www.figma.com') return;
-      const msg = event.data?.pluginMessage as FigmaMessages | undefined;
-      if (!msg) return;
+    return onPluginMessage((msg) => {
       switch (msg.type) {
         case 'import-progress':
           dispatch({
@@ -201,13 +198,7 @@ function App() {
           });
           break;
       }
-    };
-
-    window.addEventListener('message', handleMessage);
-
-    return () => {
-      window.removeEventListener('message', handleMessage);
-    };
+    });
   }, []);
 
   const importConfig = () => {
