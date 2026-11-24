@@ -95,6 +95,46 @@ describe('mutedColorRule', () => {
     ).toEqual(color('text-default'));
   });
 
+  it('mutes the checkmark, radio dot and switch thumb when read-only', () => {
+    const indicators = [
+      [
+        '.input checkbox',
+        'check=checked, type=read-only',
+        '/.Scalable checkmark/medium/shape',
+      ],
+      [
+        '.input checkbox',
+        'check=intermediate, type=read-only',
+        '/intermediate',
+      ],
+      ['.input radio', 'checked=true, type=read-only', '/indicator'],
+      ['.switch base component', 'State=read-only, Checked=true', '/sirkel'],
+    ];
+    for (const [component, variant, path] of indicators) {
+      expect(
+        mutedColorRule(
+          paint({
+            component,
+            variant,
+            path,
+            variable: neutral('text-default'),
+          }),
+        ),
+      ).toEqual(color('text-muted'));
+    }
+    // Not when the input isn't read-only.
+    expect(
+      mutedColorRule(
+        paint({
+          component: '.switch base component',
+          variant: 'State=default, Checked=false',
+          path: '/sirkel',
+          variable: neutral('text-default'),
+        }),
+      ),
+    ).toEqual(color('text-default'));
+  });
+
   it('uses the text color for field descriptions, also in read-only fields', () => {
     expect(
       mutedColorRule(

@@ -43,6 +43,19 @@ export const MUTED_COLOR_COMPONENTS: ComponentTarget[] = [
   { page: 'Tabs', name: '_tab elements base' },
   { page: 'Tabs', name: 'Tabs' },
   { page: 'Tooltip', name: 'Tooltip' },
+  // Checkbox, Radio and Switch are styled by input.css and field.css, so they changed with the other fields.
+  ...['.input checkbox', '.input and label', 'Checkbox'].map((name) => ({
+    page: 'Checkbox',
+    name,
+  })),
+  ...['.input radio', '.input and label', 'Radio'].map((name) => ({
+    page: 'Radio',
+    name,
+  })),
+  ...['.switch base component', 'Switch'].map((name) => ({
+    page: 'Switch',
+    name,
+  })),
 ];
 
 /** The step of a neutral variable in the Semantic collection, e.g. `border-subtle`, or null for other variables. */
@@ -51,6 +64,14 @@ function neutralStep(variable: VariableRef): string | null {
   return variable.collection === 'Semantic' && variable.name.startsWith(prefix)
     ? variable.name.slice(prefix.length)
     : null;
+}
+
+/** Whether a layer is a checkbox's checkmark, a radio's dot or a switch's thumb, which CSS draws in the text color. */
+function isToggleIndicator(path: string): boolean {
+  return (
+    /\/(intermediate|indicator|sirkel)$/.test(path) ||
+    /\/\.Scalable checkmark\//.test(path)
+  );
 }
 
 /** The variable a paint in a UI kit component should use with muted colors. */
@@ -106,7 +127,11 @@ export function mutedColorRule(context: PaintContext): PaintTarget {
       }
       return color('text-subtle');
     case 'text-default':
-      if (readOnly && /input te(xt|kst)$/i.test(path))
+      // The value of a read-only field: its text, or the checkmark, radio dot or switch thumb.
+      if (
+        readOnly &&
+        (/input te(xt|kst)$/i.test(path) || isToggleIndicator(path))
+      )
         return color('text-muted');
       return color('text-default');
     default:
