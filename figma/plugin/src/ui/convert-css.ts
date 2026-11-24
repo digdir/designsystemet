@@ -1,5 +1,5 @@
 import type { CssFile, FigmaMessages } from '../types';
-import { onPluginMessage, postToPlugin } from './post-to-plugin';
+import { onPluginMessage, postToPlugin } from './plugin-messages';
 
 type ConvertCssResult = Extract<FigmaMessages, { type: 'convert-css-result' }>;
 

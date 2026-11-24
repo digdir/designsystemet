@@ -4,7 +4,7 @@ import { Button, Heading } from '@digdir/designsystemet-react';
 import { useEffect, useReducer, useState } from 'react';
 import type { FigmaMessages, Notification } from '../types';
 import './app.css';
-import { onPluginMessage, postToPlugin } from './post-to-plugin';
+import { onPluginMessage, postToPlugin } from './plugin-messages';
 import { copyText, downloadText } from './save-text';
 import { AboutView } from './views/about';
 import { type ExportState, ExportView } from './views/export';
