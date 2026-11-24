@@ -1,117 +1,55 @@
-import {
-  ARIA_LABEL,
-  ARIA_LABELLEDBY,
-  attr,
-  attrOrCSS,
-  customElements,
-  DSElement,
-  onMutation,
-  warn,
-} from '../utils/utils';
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ds-pagination': DSPaginationElement;
-  }
-}
-
-const ATTR_CURRENT = 'data-current';
-const ATTR_TOTAL = 'data-total';
-const ATTR_HREF = 'data-href';
-
 // Expose pagination logic if wanting to do custom rendering (i.e. in React/Vue/etc)
-export const pagination = ({ current = 1, total = 10, show = 7 }) => ({
-  prev: current > 1 ? current - 1 : 0,
-  next: current < total ? current + 1 : 0,
-  pages: getSteps(current, total, show).map((page, index) => ({
-    current: page === current && ('page' as const),
-    key: `key-${page}-${index}`,
-    page,
-  })),
-});
 
-export class DSPaginationElement extends DSElement {
-  _unmutate?: () => void; // Using underscore instead of private fields for backwards compatibility
-  _render?: () => void;
-
-  static get observedAttributes() {
-    return [ARIA_LABEL, ARIA_LABELLEDBY, ATTR_CURRENT, ATTR_TOTAL, ATTR_HREF]; // Using ES2015 syntax for backwards compatibility
-  }
-  connectedCallback() {
-    // Check for required attributes
-    const total = attr(this, ATTR_TOTAL);
-    const current = attr(this, ATTR_CURRENT);
-    if (current && !total) warn(`Missing ${ATTR_TOTAL} attribute on:`, this);
-    if (total && !current) warn(`Missing ${ATTR_CURRENT} attribute on:`, this);
-
-    const label = attrOrCSS(this, ARIA_LABEL);
-    const labelledby = attr(this, ARIA_LABELLEDBY)?.trim();
-    if (label || labelledby) attr(this, ARIA_LABEL, labelledby ? null : label);
-    else warn(`Missing ${ARIA_LABEL} on:`, this);
-
-    attr(this, 'role', 'navigation');
-    this._unmutate = onMutation(this, render, {
-      childList: true,
-      subtree: true,
-    });
-  }
-  attributeChangedCallback() {
-    if (this._unmutate) render(this); // Ensure we do not run any renders before connectedCallback
-  }
-  disconnectedCallback() {
-    this._unmutate?.();
-    this._unmutate = this._render = undefined;
-  }
-}
-
-const isNamedByAriaLabel = (el: Element) =>
-  !el.textContent?.trim() && !attr(el, ARIA_LABELLEDBY);
-
-const render = (self: DSPaginationElement) => {
-  const current = Number(attr(self, ATTR_CURRENT));
-  const total = Number(attr(self, ATTR_TOTAL));
-
-  // Allowing server side generated pagination, buy only doing client side updates if total/current attributes are provided
-  if (current && total) {
-    const items = self.querySelectorAll('button,a');
-    const show = items.length - 2;
-    const href = attr(self, ATTR_HREF);
-    const { next, prev, pages } = pagination({ current, total, show });
-    items.forEach((item, i) => {
-      const isStep = i !== 0 && !!items[i + 1]; // First is prev, last is next
-      const page = isStep ? pages[i - 1]?.page : i ? next : prev;
-      attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
-
-      if (isStep) {
-        // Also drives CSS content, hides items without a page, and keeps Axe and the VoiceOver rotor happy
-        attr(item, ARIA_LABEL, `${page ?? 'hidden'}`);
-      } else if (isNamedByAriaLabel(item)) {
-        // If prev/next is not named by consumer fallback to CSS-variable in Norwegian
-        attr(item, ARIA_LABEL, attrOrCSS(item, ARIA_LABEL));
-      }
-
-      attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
-      attr(item, 'tabindex', page ? null : '-1');
-      if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);
-      if (href && item instanceof HTMLAnchorElement)
-        attr(item, 'href', href.replace('%d', `${page}`));
-    });
-  }
+export type PaginationOptions = {
+  /** The current page number @default 1 */
+  current?: number;
+  /** The total number of pages @default 10 */
+  total?: number;
+  /** The maximum number of steps to show @default 7 */
+  show?: number;
 };
 
-const getSteps = (
-  now: number,
-  max: number,
-  show = Number.POSITIVE_INFINITY,
-) => {
-  const offset = (show - 1) / 2;
-  const start = Math.max(Math.min(now - Math.floor(offset), max - show + 1), 1);
-  const end = Math.min(Math.max(now + Math.ceil(offset), show), max);
+export type PaginationResult = {
+  /** Previous page. `inert` is `true` when on the first page */
+  prev: PaginationStep;
+  /** Next page. `inert` is `true` when on the last page */
+  next: PaginationStep;
+  /** Steps to render. `inert` is `true` when ellipsis */
+  pages: PaginationStep[];
+};
+
+/** A single pagination step */
+export type PaginationStep = {
+  /** Set to `page` when this is the current page */
+  'aria-current'?: 'page';
+  /** Whether the step is inert (and thus paint an ellipsis in CSS) */
+  inert?: true;
+  /** Page number */
+  value: number;
+};
+
+export const pagination = ({
+  current = 1,
+  total = 10,
+  show = 7,
+}: PaginationOptions = {}): PaginationResult => {
+  const max = Math.max(total, 1); // There is always at least one page
+  const now = Math.min(Math.max(Math.round(current) || 1, 1), max); // Clamp to 1...max so out of range input can not produce invalid steps
+  const mid = (show - 1) / 2;
+  const start = Math.max(Math.min(now - Math.floor(mid), max - show + 1), 1);
+  const end = Math.min(Math.max(now + Math.ceil(mid), show), max);
   const pages = Array.from({ length: end + 1 - start }, (_, i) => i + start);
 
   if (show > 4 && start > 1) pages.splice(0, 2, 1, 0);
   if (show > 3 && end < max) pages.splice(-2, 2, 0, max);
-  return pages;
-};
 
-customElements.define('ds-pagination', DSPaginationElement);
+  return {
+    prev: { inert: now <= 1 || undefined, value: Math.max(now - 1, 1) },
+    next: { inert: now >= max || undefined, value: Math.min(now + 1, max) },
+    pages: pages.map((value) => ({
+      ...(value === now ? { 'aria-current': 'page' as const } : {}),
+      inert: !value || undefined,
+      value,
+    })),
+  };
+};

@@ -68,6 +68,11 @@
     },
     "./ds-pagination": {
       "types": "./dist/index.d.ts",
+      "import": "./dist/esm/pagination/ds-pagination.js",
+      "require": "./dist/cjs/pagination/ds-pagination.cjs"
+    },
+    "./pagination": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/esm/pagination/pagination.js",
       "require": "./dist/cjs/pagination/pagination.cjs"
     },

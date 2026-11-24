@@ -1,38 +1,34 @@
-import { Pagination, usePagination } from '@digdir/designsystemet-react';
+import { Pagination, pagination } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 
 export const Preview = () => {
   return (
-    <Pagination aria-label='pagineringsmeny'>
+    <Pagination aria-label='Sidenavigering'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button aria-label='Forrige side'>
-            Forrige
-          </Pagination.Button>
+          <Pagination.Button>Forrige</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 1'>1</Pagination.Button>
+          <Pagination.Button>1</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 2' aria-current='true'>
-            2
-          </Pagination.Button>
+          <Pagination.Button aria-current='page'>2</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item />
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 9'>9</Pagination.Button>
+          <Pagination.Button>9</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 10'>10</Pagination.Button>
+          <Pagination.Button>10</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Neste side'>Neste</Pagination.Button>
+          <Pagination.Button>Neste</Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
     </Pagination>
@@ -41,36 +37,98 @@ export const Preview = () => {
 
 export const PreviewEn = () => {
   return (
-    <Pagination aria-label='Pagination menu'>
+    <Pagination aria-label='Page navigation'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button aria-label='Previous page'>
-            Previous
-          </Pagination.Button>
+          <Pagination.Button>Previous</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 1'>1</Pagination.Button>
+          <Pagination.Button>1</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 2' aria-current='true'>
-            2
-          </Pagination.Button>
+          <Pagination.Button aria-current='page'>2</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item />
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 9'>9</Pagination.Button>
+          <Pagination.Button>9</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 10'>10</Pagination.Button>
+          <Pagination.Button>10</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Next page'>Next</Pagination.Button>
+          <Pagination.Button>Next</Pagination.Button>
+        </Pagination.Item>
+      </Pagination.List>
+    </Pagination>
+  );
+};
+
+export const WithButton = () => {
+  const [current, setCurrent] = useState(2);
+  const { pages, prev, next } = pagination({
+    current,
+    total: 10,
+    show: 7,
+  });
+
+  return (
+    <Pagination aria-label='Sidenavigering'>
+      <Pagination.List>
+        <Pagination.Item>
+          <Pagination.Button {...prev} onClick={() => setCurrent(prev.value)}>
+            Forrige
+          </Pagination.Button>
+        </Pagination.Item>
+        {pages.map(({ value, ...props }, index) => (
+          <Pagination.Item key={value || `ellipsis-${index}`}>
+            <Pagination.Button {...props} onClick={() => setCurrent(value)}>
+              {value}
+            </Pagination.Button>
+          </Pagination.Item>
+        ))}
+        <Pagination.Item>
+          <Pagination.Button {...next} onClick={() => setCurrent(next.value)}>
+            Neste
+          </Pagination.Button>
+        </Pagination.Item>
+      </Pagination.List>
+    </Pagination>
+  );
+};
+
+export const WithButtonEn = () => {
+  const [current, setCurrent] = useState(2);
+  const { pages, prev, next } = pagination({
+    current,
+    total: 10,
+    show: 7,
+  });
+
+  return (
+    <Pagination aria-label='Page navigation'>
+      <Pagination.List>
+        <Pagination.Item>
+          <Pagination.Button {...prev} onClick={() => setCurrent(prev.value)}>
+            Previous
+          </Pagination.Button>
+        </Pagination.Item>
+        {pages.map(({ value, ...props }, index) => (
+          <Pagination.Item key={value || `ellipsis-${index}`}>
+            <Pagination.Button {...props} onClick={() => setCurrent(value)}>
+              {value}
+            </Pagination.Button>
+          </Pagination.Item>
+        ))}
+        <Pagination.Item>
+          <Pagination.Button {...next} onClick={() => setCurrent(next.value)}>
+            Next
+          </Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
     </Pagination>
@@ -78,46 +136,30 @@ export const PreviewEn = () => {
 };
 
 export const WithAnchor = () => {
-  const [currentPage, setCurrentPage] = useState(2);
-  const { pages, nextButtonProps, prevButtonProps } = usePagination({
-    currentPage,
-    setCurrentPage,
-    totalPages: 10,
-    showPages: 7,
+  const { pages, prev, next } = pagination({
+    current: 2,
+    total: 10,
+    show: 7,
   });
 
   return (
     <Pagination aria-label='Sidenavigering'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button
-            asChild
-            aria-label='Forrige side'
-            {...prevButtonProps}
-          >
-            <a href='#forrige-side'>Forrige</a>
+          <Pagination.Button asChild inert={prev.inert}>
+            <a href={`#side-${prev.value}`}>Forrige</a>
           </Pagination.Button>
         </Pagination.Item>
-        {pages.map(({ page, itemKey, buttonProps }) => (
-          <Pagination.Item key={itemKey}>
-            {typeof page === 'number' && (
-              <Pagination.Button
-                asChild
-                aria-label={`Side ${page}`}
-                {...buttonProps}
-              >
-                <a href={`#side-${page}`}>{page}</a>
-              </Pagination.Button>
-            )}
+        {pages.map(({ value, ...props }, index) => (
+          <Pagination.Item key={value || `ellipsis-${index}`}>
+            <Pagination.Button asChild {...props}>
+              <a href={`#side-${value}`}>{value}</a>
+            </Pagination.Button>
           </Pagination.Item>
         ))}
         <Pagination.Item>
-          <Pagination.Button
-            asChild
-            aria-label='Neste side'
-            {...nextButtonProps}
-          >
-            <a href='#neste-side'>Neste</a>
+          <Pagination.Button asChild inert={next.inert}>
+            <a href={`#side-${next.value}`}>Neste</a>
           </Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
@@ -126,46 +168,29 @@ export const WithAnchor = () => {
 };
 
 export const WithAnchorEn = () => {
-  const [currentPage, setCurrentPage] = useState(2);
-  const { pages, nextButtonProps, prevButtonProps } = usePagination({
-    currentPage,
-    setCurrentPage,
-    totalPages: 10,
-    showPages: 7,
+  const { pages, prev, next } = pagination({
+    current: 2,
+    total: 10,
+    show: 7,
   });
-
   return (
-    <Pagination aria-label='Pagination menu'>
+    <Pagination aria-label='Page navigation'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button
-            asChild
-            aria-label='Previous page'
-            {...prevButtonProps}
-          >
-            <a href='#previous-page'>Previous</a>
+          <Pagination.Button asChild inert={prev.inert}>
+            <a href={`#page-${prev.value}`}>Previous</a>
           </Pagination.Button>
         </Pagination.Item>
-        {pages.map(({ page, itemKey, buttonProps }) => (
-          <Pagination.Item key={itemKey}>
-            {typeof page === 'number' && (
-              <Pagination.Button
-                asChild
-                aria-label={`Page ${page}`}
-                {...buttonProps}
-              >
-                <a href={`#page-${page}`}>{page}</a>
-              </Pagination.Button>
-            )}
+        {pages.map(({ value, ...props }, index) => (
+          <Pagination.Item key={value || `ellipsis-${index}`}>
+            <Pagination.Button asChild {...props}>
+              <a href={`#page-${value}`}>{value}</a>
+            </Pagination.Button>
           </Pagination.Item>
         ))}
         <Pagination.Item>
-          <Pagination.Button
-            asChild
-            aria-label='Next page'
-            {...nextButtonProps}
-          >
-            <a href='#next-page'>Next</a>
+          <Pagination.Button asChild inert={next.inert}>
+            <a href={`#page-${next.value}`}>Next</a>
           </Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
@@ -175,24 +200,22 @@ export const WithAnchorEn = () => {
 
 export const Mobile = () => {
   return (
-    <Pagination aria-label='Pagination menu'>
+    <Pagination aria-label='Sidenavigering'>
       <Pagination.List>
         <Pagination.Item>
           <Pagination.Button aria-label='Forrige side' />
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 2'>2</Pagination.Button>
+          <Pagination.Button>2</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 3' aria-current='true'>
-            3
-          </Pagination.Button>
+          <Pagination.Button aria-current='page'>3</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 4'>4</Pagination.Button>
+          <Pagination.Button>4</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
@@ -205,22 +228,22 @@ export const Mobile = () => {
 
 export const MobileEn = () => {
   return (
-    <Pagination aria-label='Pagination menu'>
+    <Pagination aria-label='Page navigation'>
       <Pagination.List>
         <Pagination.Item>
           <Pagination.Button aria-label='Previous page' />
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 2'>2</Pagination.Button>
+          <Pagination.Button>2</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 3'>3</Pagination.Button>
+          <Pagination.Button aria-current='page'>3</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Page 4'>4</Pagination.Button>
+          <Pagination.Button>4</Pagination.Button>
         </Pagination.Item>
 
         <Pagination.Item>

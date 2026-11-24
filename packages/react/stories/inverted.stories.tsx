@@ -379,25 +379,19 @@ export const Inverted = meta.story({
         <Pagination>
           <Pagination.List>
             <Pagination.Item>
-              <Pagination.Button aria-label='Forrige side'>
-                Forrige
-              </Pagination.Button>
+              <Pagination.Button>Forrige</Pagination.Button>
             </Pagination.Item>
             <Pagination.Item>
-              <Pagination.Button aria-label='Side 1'>1</Pagination.Button>
+              <Pagination.Button>1</Pagination.Button>
             </Pagination.Item>
             <Pagination.Item>
-              <Pagination.Button aria-label='Side 2' aria-current='true'>
-                2
-              </Pagination.Button>
+              <Pagination.Button aria-current='page'>2</Pagination.Button>
             </Pagination.Item>
             <Pagination.Item>
-              <Pagination.Button aria-label='Side 3'>3</Pagination.Button>
+              <Pagination.Button>3</Pagination.Button>
             </Pagination.Item>
             <Pagination.Item>
-              <Pagination.Button aria-label='Neste side'>
-                Neste
-              </Pagination.Button>
+              <Pagination.Button>Neste</Pagination.Button>
             </Pagination.Item>
           </Pagination.List>
         </Pagination>

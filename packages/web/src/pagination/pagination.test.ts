@@ -3,136 +3,101 @@
 import { describe, expect, it } from 'vitest';
 import { pagination } from './pagination';
 
-const tick = async (_?: unknown) =>
-  await new Promise((resolve) => setTimeout(resolve)); // Let MutationObserver run Loop
-
-describe('pagination component', () => {
-  it('has correct aria attributes', async () => {
-    document.body.innerHTML = `
-      <ds-pagination data-current="2" data-total="5" data-href="/page/%d" aria-label="Pagination">
-       <ol>
-          <li><a class="ds-button" data-testid="prev" href="#none">prev</a></li>
-          <li><a class="ds-button" href="/page/1"></a></li>
-          <li><a class="ds-button" href="/page/2"></a></li>
-          <li><a class="ds-button" href="/page/3"></a></li>
-          <li><a class="ds-button" href="/page/4"></a></li>
-          <li><a class="ds-button" href="/page/5"></a></li>
-          <li><a class="ds-button" data-testid="next" href="#none">next</a></li>
-       </ol>
-      </ds-pagination>
-    `;
-
-    const paginationEl = document.querySelector('ds-pagination');
-    const prev = paginationEl?.querySelector('[data-testid="prev"]');
-    const next = paginationEl?.querySelector('[data-testid="next"]');
-    const links = paginationEl?.querySelectorAll('a');
-
-    await tick(); // Let mutation observer run
-    expect(paginationEl).toHaveAttribute('role', 'navigation');
-    expect(prev).not.toHaveAttribute('aria-label'); // Text content is the accessible name
-    expect(prev).toHaveAttribute('href', '/page/1');
-    expect(next).not.toHaveAttribute('aria-label');
-    expect(next).toHaveAttribute('href', '/page/3');
-    expect(links?.[2]).toHaveAttribute('aria-label', '2');
-    expect(links?.[2]).toHaveAttribute('aria-current', 'true');
-  });
-
-  it('respects aria-labelledby and does not set aria-label', async () => {
-    document.body.innerHTML = `
-      <span id="pg-label">External label</span>
-      <ds-pagination data-current="2" data-total="5" data-href="/page/%d" aria-labelledby="pg-label">
-        <ol>
-          <li><a class="ds-button" href="#none">prev</a></li>
-          <li><a class="ds-button" href="/page/1"></a></li>
-          <li><a class="ds-button" href="/page/2"></a></li>
-          <li><a class="ds-button" href="#none">next</a></li>
-        </ol>
-      </ds-pagination>
-    `;
-
-    const paginationEl = document.querySelector('ds-pagination') as HTMLElement;
-    expect(paginationEl).toHaveAttribute('aria-labelledby', 'pg-label');
-    expect(paginationEl).not.toHaveAttribute('aria-label');
-  });
-
-  it('keeps aria-label on text-less previous/next buttons', async () => {
-    document.body.innerHTML = `
-      <ds-pagination data-current="3" data-total="5" aria-label="Pagination">
-        <ol>
-          <li><button class="ds-button" data-testid="prev" aria-label="Forrige side"></button></li>
-          <li><button class="ds-button"></button></li>
-          <li><button class="ds-button"></button></li>
-          <li><button class="ds-button"></button></li>
-          <li><button class="ds-button" data-testid="next" aria-label="Neste side"></button></li>
-        </ol>
-      </ds-pagination>
-    `;
-
-    const paginationEl = document.querySelector('ds-pagination');
-    const prev = paginationEl?.querySelector('[data-testid="prev"]');
-    const next = paginationEl?.querySelector('[data-testid="next"]');
-
-    await tick(); // Let mutation observer run
-    expect(prev).toHaveAttribute('aria-label', 'Forrige side');
-    expect(prev).toHaveAttribute('value', '2');
-    expect(next).toHaveAttribute('aria-label', 'Neste side');
-    expect(next).toHaveAttribute('value', '4');
-  });
-
-  it('falls back to CSS label on text-less previous/next buttons', async () => {
-    document.body.innerHTML = `
-      <ds-pagination data-current="2" data-total="5" aria-label="Pagination">
-        <ol>
-          <li><button class="ds-button" data-testid="prev" style="--_ds-aria-label: 'Forrige side'"></button></li>
-          <li><button class="ds-button"></button></li>
-          <li><button class="ds-button"></button></li>
-          <li><button class="ds-button" data-testid="next" style="--_ds-aria-label: 'Neste side'"></button></li>
-        </ol>
-      </ds-pagination>
-    `;
-
-    const paginationEl = document.querySelector('ds-pagination');
-    const prev = paginationEl?.querySelector('[data-testid="prev"]');
-    const next = paginationEl?.querySelector('[data-testid="next"]');
-
-    await tick(); // Let mutation observer run
-    expect(prev).toHaveAttribute('aria-label', 'Forrige side');
-    expect(next).toHaveAttribute('aria-label', 'Neste side');
-  });
-
-  it('marks hidden steps as not focusable', async () => {
-    document.body.innerHTML = `
-      <ds-pagination data-current="1" data-total="100" data-href="/page/%d" aria-label="Pagination">
-     <ol>
-        <li><button class="ds-button">prev</button></li>
-        <li><button class="ds-button">1</button></li>
-        <li><button class="ds-button">2</button></li>
-        <li><button class="ds-button">3</button></li>
-        <li><button class="ds-button">4</button></li>
-        <li><button class="ds-button">5</button></li>
-        <li><button class="ds-button">next</button></li>
-      </ol>
-      </ds-pagination>
-    `;
-
-    const paginationEl = document.querySelector('ds-pagination');
-    const links = paginationEl?.querySelectorAll('button');
-    const hidden = links?.[4];
-
-    await tick(); // Let mutation observer run
-    expect(hidden).toHaveAttribute('role', 'none');
-    expect(hidden).toHaveAttribute('tabindex', '-1');
-    expect(hidden).not.toHaveAttribute('aria-current');
-  });
-});
-
 describe('pagination helper', () => {
+  it('should provide correct amount of pages with 10 pages when current page is 6', () => {
+    const expected = [
+      [6],
+      [6, 7],
+      [5, 6, 7],
+      [5, 6, '', 10],
+      [1, '', 6, '', 10],
+      [1, '', 6, 7, '', 10],
+      [1, '', 5, 6, 7, '', 10],
+      [1, '', 5, 6, 7, 8, 9, 10],
+      [1, '', 4, 5, 6, 7, 8, 9, 10],
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    ];
+
+    for (const expectPages of expected) {
+      const { pages } = pagination({
+        total: 10,
+        current: 6,
+        show: expectPages.length,
+      });
+
+      expect(pages).toHaveLength(expectPages.length);
+
+      expectPages.forEach((value, index) => {
+        expect(pages[index].value).toBe(value || 0);
+      });
+    }
+  });
+
   it('generates steps with ellipsis markers', () => {
     const result = pagination({ current: 1, total: 10, show: 5 });
 
-    expect(result.prev).toBe(0);
-    expect(result.next).toBe(2);
-    expect(result.pages.map((page) => page.page)).toEqual([1, 2, 3, 0, 10]);
-    expect(result.pages[0].current).toBe('page');
+    expect(result.prev).toEqual({ inert: true, value: 1 }); // Clamped and inert on first page
+    expect(result.next).toEqual({ inert: undefined, value: 2 });
+    expect(result.pages.map(({ value }) => value)).toEqual([1, 2, 3, 0, 10]);
+    expect(result.pages.map(({ inert }) => inert)).toEqual([
+      undefined,
+      undefined,
+      undefined,
+      true, // Ellipsis
+      undefined,
+    ]);
+    expect(result.pages[0]['aria-current']).toBe('page');
+    expect(result.pages[1]['aria-current']).toBeUndefined();
+  });
+
+  it('marks next as inert and clamps value on the last page', () => {
+    const result = pagination({ current: 10, total: 10, show: 5 });
+
+    expect(result.prev).toEqual({ inert: undefined, value: 9 });
+    expect(result.next).toEqual({ inert: true, value: 10 });
+  });
+
+  it('clamps out of range current to the first page', () => {
+    for (const current of [0, -5, Number.NaN]) {
+      const result = pagination({ current, total: 10, show: 5 });
+
+      expect(result.prev).toEqual({ inert: true, value: 1 }); // Behaves as page 1
+      expect(result.next).toEqual({ inert: undefined, value: 2 });
+      expect(result.pages[0]['aria-current']).toBe('page');
+    }
+  });
+
+  it('clamps current above total to the last page', () => {
+    const result = pagination({ current: 50, total: 10, show: 5 });
+
+    expect(result.prev).toEqual({ inert: undefined, value: 9 }); // Not page 49
+    expect(result.next).toEqual({ inert: true, value: 10 });
+    expect(result.pages.at(-1)?.['aria-current']).toBe('page');
+  });
+
+  it('never marks an ellipsis as the current page', () => {
+    for (const current of [0, -5, 50, Number.NaN, 2.5]) {
+      const { pages } = pagination({ current, total: 100, show: 7 });
+
+      for (const page of pages)
+        if (page.inert) expect(page['aria-current']).toBeUndefined();
+    }
+  });
+
+  it('rounds fractional current to a whole page', () => {
+    const result = pagination({ current: 2.5, total: 10, show: 5 });
+
+    expect(result.prev).toEqual({ inert: undefined, value: 2 });
+    expect(result.next).toEqual({ inert: undefined, value: 4 });
+  });
+
+  it('handles a total below one as a single page', () => {
+    for (const total of [0, -5]) {
+      const result = pagination({ current: 1, total, show: 5 });
+
+      expect(result.prev).toEqual({ inert: true, value: 1 });
+      expect(result.next).toEqual({ inert: true, value: 1 }); // Not page 0
+      expect(result.pages).toEqual([{ 'aria-current': 'page', value: 1 }]); // Consistent with prev/next
+    }
   });
 });

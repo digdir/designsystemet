@@ -1,11 +1,11 @@
 export { useDebounceCallback } from './deprecated/use-debounce-callback/use-debounce-callback';
 export { useIsomorphicLayoutEffect } from './deprecated/use-isomorphic-layout-effect/use-isomorphic-layout-effect';
 export { useMediaQuery } from './deprecated/use-media-query/use-media-query';
+export type { UsePaginationProps } from './deprecated/use-pagination/use-pagination';
+export { usePagination } from './deprecated/use-pagination/use-pagination';
 export type { UseCheckboxGroupProps } from './use-checkbox-group/use-checkbox-group';
 export { useCheckboxGroup } from './use-checkbox-group/use-checkbox-group';
 export { useMergeRefs } from './use-merge-refs/use-merge-refs';
-export type { UsePaginationProps } from './use-pagination/use-pagination';
-export { usePagination } from './use-pagination/use-pagination';
 export type { UseRadioGroupProps } from './use-radio-group/use-radio-group';
 export { useRadioGroup } from './use-radio-group/use-radio-group';
 export { useSynchronizedAnimation } from './use-synchronized-animation/use-synchronized-animation';

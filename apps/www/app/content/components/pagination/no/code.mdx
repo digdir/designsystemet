@@ -20,50 +20,66 @@ Størrelser styres med [data-size](/no/fundamentals/code/sizes) og farger med [d
 
 <CssAttributes />
 
+## Hjelpefunksjonen `pagination`
+
+`pagination` er en ren funksjon som regner ut hvilke steg som skal vises. Den er ikke avhengig av DOM eller noe rammeverk, så du kan bruke den i React, Vue, Svelte, på serveren eller i ren JavaScript. Du tegner ut elementene selv, og funksjonen forteller deg hva hvert element skal inneholde.
+
+```ts
+import { pagination } from '@digdir/designsystemet-web/pagination';
+
+const { prev, next, pages } = pagination({ current: 5, total: 10, show: 7 });
+```
+
+### Input
+
+| Valg      | Type     | Standard | Beskrivelse                                                  |
+| --------- | -------- | -------- | ------------------------------------------------------------ |
+| `current` | `number` | `1`      | Nummeret på gjeldende side                                   |
+| `total`   | `number` | `10`     | Totalt antall sider                                          |
+| `show`    | `number` | `7`      | Maks antall steg som skal vises, inkludert ellipser          |
+
+### Output
+
+Funksjonen returnerer et objekt med `prev`, `next` og `pages`. Hver av disse beskriver ett element i pagineringen:
+
+| Nøkkel  | Element                           | Innhold                                                                        |
+| ------- | --------------------------------- | ------------------------------------------------------------------------------ |
+| `prev`  | Forrige-knappen                   | `value` er forrige sidenummer. `inert` er `true` når du er på første side      |
+| `next`  | Neste-knappen                     | `value` er neste sidenummer. `inert` er `true` når du er på siste side         |
+| `pages` | Ett objekt per pagineringssteg | `value` er sidenummeret.<br />`inert` er `true` for en ellipse. <br />`aria-current` er `page` for gjeldende side |
+
+Egenskaper som ikke gjelder er `undefined`, så du kan spre et steg direkte på et element i rammeverk som React. Eksempelet over returnerer:
+
+```ts
+{
+  prev: { value: 4 },
+  next: { value: 6 },
+  pages: [
+    { value: 1 },
+    { value: 0, inert: true }, // Ellipse
+    { value: 4 },
+    { value: 5, 'aria-current': 'page' },
+    { value: 6 },
+    { value: 0, inert: true }, // Ellipse
+    { value: 10 },
+  ],
+}
+```
+
+Sett `inert` på forrige- og neste-knappen/lenken, slik eksemplene under viser. Forrige/neste-knappen skjules kun når den har `inert`, så uten denne forblir knappen synlig og klikkbar på første og siste side.
+
 ## React
 
 Pagination er en komponent uten state, og du må selv styre hvilke sider som er vist.
 
-Bruk `usePagination` for paginering-logikk sammen med de enkle delkomponentene. [Les mer om `usePagination`](/no/components/utilities/use-pagination).
+Bruk `pagination` hjelpefunksjonen for å forenkle uttegning:
 
-```tsx
-import { Pagination } from '@digdir/designsystemet-react';
-
-<Pagination>
-  <Pagination.List>
-    <Pagination.Item>
-      <Pagination.Button aria-label='Forrige side'>
-        Forrige
-      </Pagination.Button>
-    </Pagination.Item>
-
-    <Pagination.Item>
-      <Pagination.Button aria-label='Side 1'>
-        1
-      </Pagination.Button>
-    </Pagination.Item>
-
-    <Pagination.Item />
-
-    <Pagination.Item>
-      <Pagination.Button aria-label='Side 10'>
-        10
-      </Pagination.Button>
-    </Pagination.Item>
-
-    <Pagination.Item>
-      <Pagination.Button aria-label='Neste side'>
-        Neste
-      </Pagination.Button>
-    </Pagination.Item>
-  </Pagination.List>
-</Pagination>
-```
+<Story story="WithButton" language="react" />
 
 <ReactComponentDocs />
 
 ### Ekstra logikk for å lage paginering med lenker
 
-Under ser du `usePagination` brukt sammen med pagination for å lage paginering med lenker. Du bruker `asChild` for å endre `Pagination.Button` til `<a>`.
+Under ser du `pagination` brukt sammen med pagination for å lage paginering med lenker. Du bruker `asChild` for å endre `Pagination.Button` til `<a>`.
 
 <Story story="WithAnchor" language="react" />

@@ -20,52 +20,68 @@ Sizes are controlled with [data-size](/en/fundamentals/code/sizes) and colors wi
 
 <CssAttributes />
 
+## The `pagination` helper
+
+`pagination` is a plain function that calculates which steps to show. It has no dependencies on the DOM or any framework, so you can use it in React, Vue, Svelte, on the server or in plain JavaScript. You render the elements yourself, and the function tells you what each element should contain.
+
+```ts
+import { pagination } from '@digdir/designsystemet-web/pagination';
+
+const { prev, next, pages } = pagination({ current: 5, total: 10, show: 7 });
+```
+
+### Input
+
+| Option    | Type     | Default | Description                                                         |
+| --------- | -------- | ------- | ------------------------------------------------------------------- |
+| `current` | `number` | `1`     | The current page number                                             |
+| `total`   | `number` | `10`    | The total number of pages                                           |
+| `show`    | `number` | `7`     | The maximum number of steps to show, including ellipsis             |
+
+### Output
+
+The function returns an object with `prev`, `next` and `pages`. Each of these describe one element in the pagination:
+
+| Key     | Element                        | Content                                                                          |
+| ------- | ------------------------------ | -------------------------------------------------------------------------------- |
+| `prev`  | The previous button            | `value` is the previous page number. `inert` is `true` when you are on the first page |
+| `next`  | The next button                | `value` is the next page number. `inert` is `true` when you are on the last page      |
+| `pages` | One list item per array entry  | `value` is the page number.<br />`inert` is `true` for an ellipsis<br />`aria-current` is `page` for the current page |
+
+
+Properties that do not apply are `undefined`, so you can spread a step directly onto an element in frameworks such as React. The example above returns:
+
+```ts
+{
+  prev: { value: 4 },
+  next: { value: 6 },
+  pages: [
+    { value: 1 },
+    { value: 0, inert: true }, // Ellipsis
+    { value: 4 },
+    { value: 5, 'aria-current': 'page' },
+    { value: 6 },
+    { value: 0, inert: true }, // Ellipsis
+    { value: 10 },
+  ],
+}
+```
+
+Set `inert` on the previous and next button/link, as shown in the examples below. The previous/next button is only hidden when it has `inert`, so without it the button stays visible and clickable on the first and last page.
+
 ## React
 
 Pagination is a stateless component, and you must control which pages are displayed.
 
-Use `usePagination` for pagination logic together with the single-part components.
-[Read more about `usePagination`](/en/components/utilities/use-pagination).
+Use `pagination` helper to simplify rendering:
 
-```tsx
-import { Pagination } from '@digdir/designsystemet-react';
-
-<Pagination>
-  <Pagination.List>
-    <Pagination.Item>
-      <Pagination.Button aria-label='Previous page'>
-        Previous
-      </Pagination.Button>
-    </Pagination.Item>
-
-    <Pagination.Item>
-      <Pagination.Button aria-label='Page 1'>
-        1
-      </Pagination.Button>
-    </Pagination.Item>
-
-    <Pagination.Item />
-
-    <Pagination.Item>
-      <Pagination.Button aria-label='Page 10'>
-        10
-      </Pagination.Button>
-    </Pagination.Item>
-
-    <Pagination.Item>
-      <Pagination.Button aria-label='Next page'>
-        Next
-      </Pagination.Button>
-    </Pagination.Item>
-  </Pagination.List>
-</Pagination>
-```
+<Story story="WithButtonEn" language="react"/>
 
 <ReactComponentDocs />
 
 ### Additional logic for creating pagination with links
 
-Below you see `usePagination` used with pagination to create pagination with links.
+Below you see `pagination` used with pagination to create pagination with links.
 
 You use `asChild` to change `Pagination.Button` to `<a>`.
 

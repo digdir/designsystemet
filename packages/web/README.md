@@ -67,6 +67,7 @@ import '@digdir/designsystemet-web/fieldset';
 import '@digdir/designsystemet-web/focusgroup';
 import '@digdir/designsystemet-web/invokers';
 import '@digdir/designsystemet-web/ds-pagination';
+import { pagination } from '@digdir/designsystemet-web/pagination';
 import '@digdir/designsystemet-web/popover';
 import '@digdir/designsystemet-web/readonly';
 import '@digdir/designsystemet-web/ds-suggestion';

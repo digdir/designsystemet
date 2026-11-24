@@ -11,7 +11,7 @@
   --dsc-validation-message-spacing: var(--ds-size-2);
 
   background: var(--dsc-validation-message-background);
-  border-radius: var(--ds-border-radius-md);
+  border-radius: var(--dsc-validation-message-border-radius);
   color: var(--dsc-validation-message-color);
   padding: var(--dsc-validation-message-spacing);
   padding-inline-start: calc(var(--dsc-validation-message-spacing) + var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-gap));

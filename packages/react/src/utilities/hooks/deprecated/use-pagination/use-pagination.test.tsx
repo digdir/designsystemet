@@ -43,8 +43,6 @@ describe('usePagination', () => {
 
     expect(result.current.hasPrev).toBe(false);
     expect(result.current.hasNext).toBe(true);
-    expect(result.current.prevButtonProps['aria-hidden']).toBe(true);
-    expect(result.current.nextButtonProps['aria-hidden']).toBe(false);
   });
 
   it('should prevent next when at end', () => {
@@ -54,8 +52,61 @@ describe('usePagination', () => {
 
     expect(result.current.hasPrev).toBe(true);
     expect(result.current.hasNext).toBe(false);
-    expect(result.current.prevButtonProps['aria-hidden']).toBe(false);
-    expect(result.current.nextButtonProps['aria-hidden']).toBe(true);
+  });
+
+  it('marks the current page and does not leak value', () => {
+    const { result } = renderHook(() =>
+      usePagination({ totalPages: 10, currentPage: 3, showPages: 5 }),
+    );
+    const current = result.current.pages.find(({ page }) => page === 3);
+
+    expect(current?.buttonProps).toEqual({
+      'aria-current': 'page',
+      onClick: expect.any(Function),
+    });
+  });
+
+  it('returns null buttonProps for ellipsis entries', () => {
+    const { result } = renderHook(() =>
+      usePagination({ totalPages: 10, currentPage: 5, showPages: 7 }),
+    );
+    const { pages } = result.current;
+
+    expect(pages.map(({ page }) => page)).toEqual([
+      1,
+      'ellipsis',
+      4,
+      5,
+      6,
+      'ellipsis',
+      10,
+    ]);
+    expect(pages[1]).toEqual({
+      page: 'ellipsis',
+      itemKey: 'ellipsis-1',
+      buttonProps: null,
+    });
+    expect(pages[5]).toEqual({
+      page: 'ellipsis',
+      itemKey: 'ellipsis-5',
+      buttonProps: null,
+    });
+
+    for (const { page, buttonProps } of pages)
+      if (page !== 'ellipsis') expect(buttonProps).not.toBeNull();
+  });
+
+  it('marks prev/next as inert only when out of bounds', () => {
+    const at = (currentPage: number) =>
+      renderHook(() => usePagination({ totalPages: 10, currentPage })).result
+        .current;
+
+    expect(at(1).prevButtonProps.inert).toBe(true);
+    expect(at(1).nextButtonProps.inert).toBeUndefined();
+    expect(at(5).prevButtonProps.inert).toBeUndefined();
+    expect(at(5).nextButtonProps.inert).toBeUndefined();
+    expect(at(10).prevButtonProps.inert).toBeUndefined();
+    expect(at(10).nextButtonProps.inert).toBe(true);
   });
 
   it('should trigger onChange when clicking button', () => {
@@ -83,7 +134,7 @@ describe('usePagination', () => {
 
     result.current.prevButtonProps.onClick?.(event);
 
-    expect(mockOnChange).not.toHaveBeenCalledWith(event, 2);
+    expect(mockOnChange).not.toHaveBeenCalled();
   });
 
   it('should not render negative pages', () => {
