@@ -325,7 +325,7 @@
 }
 
 .ds-combobox__clear-button:not(:disabled):hover {
-  background-color: var(--ds-color-surface-tinted);
+  background-color: var(--ds-color-surface-muted);
 }
 
 .ds-combobox__disabled {
@@ -367,7 +367,7 @@
 }
 
 .ds-combobox__input__wrapper:focus-within:hover {
-  border-color: var(--ds-color-border-default);
+  border-color: var(--ds-color-border-muted);
 }
 
 .ds-combobox__empty {
