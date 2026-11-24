@@ -1,5 +1,4 @@
 ---
-
 name: cli-generated-files
 description: Regenerate the committed files that come from the CLI. Use after changing anything under packages/cli/src (colors, tokens, schemas, figma), designsystemet.config.json or internal/digdir/digdir.config.json.
 ---
@@ -14,7 +13,8 @@ Several generated files are committed, and CI does not check that they are up to
 2. `pnpm update:theme`
    - Rewrites `packages/css/theme/` (`designsystemet.css`, `designsystemet.tailwind.css`, `types.d.ts`, `colors.d.ts`) and `internal/digdir/themes/`.
 3. `pnpm test:cli`
-   - Rewrites the fixtures in `packages/cli/tests/config/design-tokens/` and `packages/cli/tests/config/build/`.
+   - Rewrites the fixtures in `packages/cli/tests/config/design-tokens/` and `packages/cli/tests/config/build/`, then runs the unit tests.
+   - If the config schema changed, the unit tests fail on its snapshot. Check that the schema diff is what you meant, update the snapshot with `pnpm --filter @digdir/designsystemet test:unit -u`, and go on to step 4. See "Config schema changes" below.
 4. `pnpm update:preview-tokens`
    - Only when sizes, typography, colors or semantic tokens change. Rewrites `internal/components/src/tokens/design-tokens/`, which the token tables in the docs use.
 
