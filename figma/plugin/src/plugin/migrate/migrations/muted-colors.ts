@@ -42,6 +42,27 @@ const PLAIN_COLOR_COMPONENTS: ComponentTarget[] = [
 ];
 const PLAIN_COLOR_PAGES = new Set(PLAIN_COLOR_COMPONENTS.map((c) => c.page));
 
+/**
+ * Helpers for the UI kit's own pages and internal icons, which aren't components in code. They move to the same
+ * step of the component's own color, subtle text too.
+ */
+const SAME_STEP_COMPONENTS: ComponentTarget[] = [
+  ...[
+    '.Browser',
+    '.Mobile-top',
+    '.logo-example',
+    '_⚙️Base components header',
+    '_⚙️Component header',
+    '_⚙️Component examples header',
+    '.fargeklatt',
+  ].map((name) => ({ page: 'Base components', name })),
+  ...['.INTERNAL ICONS', '.Scalable checkmark/medium'].map((name) => ({
+    page: 'Icons',
+    name,
+  })),
+];
+const SAME_STEP_PAGES = new Set(SAME_STEP_COMPONENTS.map((c) => c.page));
+
 /** The components in the UI kit whose colors changed, by page. */
 export const MUTED_COLOR_COMPONENTS: ComponentTarget[] = [
   ...['_Header', '_Content', '_Footer', 'Dialog'].map((name) => ({
@@ -87,6 +108,7 @@ export const MUTED_COLOR_COMPONENTS: ComponentTarget[] = [
   })),
   ...PLAIN_COLOR_COMPONENTS,
   { page: 'Base components', name: '.Slot component' },
+  ...SAME_STEP_COMPONENTS,
 ];
 
 /** The step of a neutral variable in the Semantic collection, e.g. `border-subtle`, or null for other variables. */
@@ -142,6 +164,8 @@ export function mutedColorRule(context: PaintContext): PaintTarget {
     if (step === 'text-subtle') return color('text-muted');
     return color(step);
   }
+
+  if (SAME_STEP_PAGES.has(context.page)) return color(step);
 
   if (PLAIN_COLOR_PAGES.has(context.page)) {
     // Text in these components comes from base.css, which gives it `text-default`.

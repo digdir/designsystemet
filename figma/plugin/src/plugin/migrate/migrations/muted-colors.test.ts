@@ -251,6 +251,18 @@ describe('mutedColorRule', () => {
     ).toEqual(color('border-muted'));
   });
 
+  it('keeps the same step in the UI kit’s helpers and internal icons, subtle text too', () => {
+    for (const [page, component, step] of [
+      ['Base components', '.Browser', 'text-subtle'],
+      ['Base components', '_⚙️Component header', 'border-subtle'],
+      ['Icons', '.INTERNAL ICONS', 'text-default'],
+    ]) {
+      expect(
+        mutedColorRule(paint({ page, component, variable: neutral(step) })),
+      ).toEqual(color(step));
+    }
+  });
+
   it('uses the muted steps for the slot placeholder, also in instances of it', () => {
     const slot = [
       { page: 'Base components', component: '.Slot component', path: '' },
