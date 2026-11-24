@@ -156,7 +156,7 @@ function MigrationSummaryView({
         </Paragraph>
       ) : (
         <Paragraph>
-          {done ? 'Made' : 'Will make'} {plural(total, 'change')} in{' '}
+          {done ? 'Updated' : 'Will update'}{' '}
           {plural(components.length, 'component')}:
         </Paragraph>
       )}
@@ -172,14 +172,7 @@ function MigrationSummaryView({
       )}
       {components.map((component) => (
         <Details key={component.name}>
-          <Details.Summary>
-            {component.name} (
-            {plural(
-              component.changes.reduce((sum, change) => sum + change.count, 0),
-              'change',
-            )}
-            )
-          </Details.Summary>
+          <Details.Summary>{component.name}</Details.Summary>
           <Details.Content>
             <ul className='notification-details'>
               {component.changes.map((change, index) => (
