@@ -1,6 +1,7 @@
 ---
+
 name: web
-description: Rules for testing the web components in packages/web. Use when changing or adding anything under packages/web, or when a test there fails in one browser only.
+description: Rules for working on the web components in packages/web, so far that their tests must pass in Chromium, Firefox and WebKit. Use when changing or adding anything under packages/web, or when a test there fails in one browser only.
 ---
 
 # Working on the web components (`packages/web`)
